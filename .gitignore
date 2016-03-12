@@ -1,0 +1,10 @@
+*~
+.DS_Store
+#*#
+*.bak
+*.pyc
+*.elc
+_build
+
+tool_config.sh
+*.autodoc.log
