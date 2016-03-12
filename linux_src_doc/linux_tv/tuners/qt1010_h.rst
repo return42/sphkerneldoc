@@ -1,0 +1,42 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+qt1010.h
+========
+
+
+
+.. _xref_qt1010_attach:
+
+qt1010_attach
+=============
+
+.. c:function:: struct dvb_frontend * qt1010_attach (struct dvb_frontend * fe, struct i2c_adapter * i2c, struct qt1010_config * cfg)
+
+    
+
+    :param struct dvb_frontend * fe:
+
+        _undescribed_
+
+    :param struct i2c_adapter * i2c:
+
+        _undescribed_
+
+    :param struct qt1010_config * cfg:
+
+        _undescribed_
+
+
+
+Description
+-----------
+
+
+
+**param** fe   frontend to attach to
+**param** i2c  i2c adapter to use
+**param** cfg  tuner hw based configuration
+**return** fe  pointer on success, NULL on failure
+
+

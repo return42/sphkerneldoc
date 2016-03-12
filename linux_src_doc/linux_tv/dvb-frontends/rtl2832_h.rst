@@ -1,0 +1,70 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+rtl2832.h
+=========
+
+
+
+.. _xref_struct_rtl2832_platform_data:
+
+struct rtl2832_platform_data
+============================
+
+.. c:type:: struct rtl2832_platform_data
+
+    Platform data for the rtl2832 driver
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct rtl2832_platform_data {
+    u32 clk;
+    #define RTL2832_TUNER_FC2580    0x21
+    #define RTL2832_TUNER_TUA9001   0x24
+    #define RTL2832_TUNER_FC0012    0x26
+    #define RTL2832_TUNER_E4000     0x27
+    #define RTL2832_TUNER_FC0013    0x29
+    #define RTL2832_TUNER_R820T     0x2a
+    #define RTL2832_TUNER_R828D     0x2b
+    #define RTL2832_TUNER_SI2157    0x2c
+    u8 tuner;
+    struct dvb_frontend* (* get_dvb_frontend) (struct i2c_client *);
+    struct i2c_adapter* (* get_i2c_adapter) (struct i2c_client *);
+    int (* enable_slave_ts) (struct i2c_client *);
+    int (* pid_filter) (struct dvb_frontend *, u8, u16, int);
+    int (* pid_filter_ctrl) (struct dvb_frontend *, int);
+  };
+
+
+
+Members
+-------
+
+:``u32 clk``:
+    Clock frequency (4000000, 16000000, 25000000, 28800000).
+
+:``u8 tuner``:
+    Used tuner model.
+
+:``struct dvb_frontend* (*)(struct i2c_client *) get_dvb_frontend``:
+    Get DVB frontend.
+
+:``struct i2c_adapter* (*)(struct i2c_client *) get_i2c_adapter``:
+    Get I2C adapter.
+
+:``int (*)(struct i2c_client *) enable_slave_ts``:
+    Enable slave TS IF.
+
+:``int (*)(struct dvb_frontend *, u8, u16, int) pid_filter``:
+    Set PID to PID filter.
+
+:``int (*)(struct dvb_frontend *, int) pid_filter_ctrl``:
+    Control PID filter.
+
+
+

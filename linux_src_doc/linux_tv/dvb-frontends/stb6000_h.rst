@@ -1,0 +1,42 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+stb6000.h
+=========
+
+
+
+.. _xref_stb6000_attach:
+
+stb6000_attach
+==============
+
+.. c:function:: struct dvb_frontend * stb6000_attach (struct dvb_frontend * fe, int addr, struct i2c_adapter * i2c)
+
+    
+
+    :param struct dvb_frontend * fe:
+
+        _undescribed_
+
+    :param int addr:
+
+        _undescribed_
+
+    :param struct i2c_adapter * i2c:
+
+        _undescribed_
+
+
+
+Description
+-----------
+
+
+
+**param** fe Frontend to attach to.
+**param** addr i2c address of the tuner.
+**param** i2c i2c adapter to use.
+**return** FE pointer on success, NULL on failure.
+
+

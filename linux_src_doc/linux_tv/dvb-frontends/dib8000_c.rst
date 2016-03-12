@@ -1,0 +1,39 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+dib8000.c
+=========
+
+
+
+.. _xref_is_manual_mode:
+
+is_manual_mode
+==============
+
+.. c:function:: int is_manual_mode (struct dtv_frontend_properties * c)
+
+    Check if TMCC should be used for parameters settings
+
+    :param struct dtv_frontend_properties * c:
+        struct dvb_frontend_properties
+
+
+
+Description
+-----------
+
+By default, TMCC table should be used for parameter settings on most
+usercases. However, sometimes it is desirable to lock the demod to
+use the manual parameters.
+
+
+On manual mode, the current dib8000_tune state machine is very restrict:
+It requires that both per-layer and per-transponder parameters to be
+properly specified, otherwise the device won't lock.
+
+
+Check if all those conditions are properly satisfied before allowing
+the device to use the manual frequency lock mode.
+
+

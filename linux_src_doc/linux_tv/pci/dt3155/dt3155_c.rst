@@ -1,0 +1,125 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+dt3155.c
+========
+
+
+
+.. _xref_read_i2c_reg:
+
+read_i2c_reg
+============
+
+.. c:function:: int read_i2c_reg (void __iomem * addr, u8 index, u8 * data)
+
+    reads an internal i2c register
+
+    :param void __iomem * addr:
+        dt3155 mmio base address
+
+    :param u8 index:
+        index (internal address) of register to read
+
+    :param u8 * data:
+        pointer to byte the read data will be placed in
+
+
+
+returns
+-------
+
+zero on success or error code
+
+
+This function starts reading the specified (by index) register
+and busy waits for the process to finish. The result is placed
+in a byte pointed by data.
+
+
+
+
+.. _xref_write_i2c_reg:
+
+write_i2c_reg
+=============
+
+.. c:function:: int write_i2c_reg (void __iomem * addr, u8 index, u8 data)
+
+    writes to an internal i2c register
+
+    :param void __iomem * addr:
+        dt3155 mmio base address
+
+    :param u8 index:
+        index (internal address) of register to read
+
+    :param u8 data:
+        data to be written
+
+
+
+returns
+-------
+
+zero on success or error code
+
+
+This function starts writing the specified (by index) register
+and busy waits for the process to finish.
+
+
+
+
+.. _xref_write_i2c_reg_nowait:
+
+write_i2c_reg_nowait
+====================
+
+.. c:function:: void write_i2c_reg_nowait (void __iomem * addr, u8 index, u8 data)
+
+    writes to an internal i2c register
+
+    :param void __iomem * addr:
+        dt3155 mmio base address
+
+    :param u8 index:
+        index (internal address) of register to read
+
+    :param u8 data:
+        data to be written
+
+
+
+Description
+-----------
+
+This function starts writing the specified (by index) register
+and then returns.
+
+
+
+
+.. _xref_wait_i2c_reg:
+
+wait_i2c_reg
+============
+
+.. c:function:: int wait_i2c_reg (void __iomem * addr)
+
+    waits the read/write to finish
+
+    :param void __iomem * addr:
+        dt3155 mmio base address
+
+
+
+returns
+-------
+
+zero on success or error code
+
+
+This function waits reading/writing to finish.
+
+
