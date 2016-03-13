@@ -6,7 +6,7 @@
                                 Doc from sources
 ================================================================================
 
-:STATE: POV: autodoc generation of rst-files is simple but works (improve- &
+:STATE: autodoc generation of rst-files is simple, but works (improve- &
     expandable)
 
 Building reStructuredText doc trees would be done by:
@@ -25,6 +25,7 @@ generated documents
 
 .. toctree::
    :maxdepth: 2
+   :glob:
 
-   linux_src_doc/index
+   linux_src_doc/*/index
 

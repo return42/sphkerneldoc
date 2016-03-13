@@ -41,4 +41,3 @@ migrated documents
 
    linux_misc_doc/index
 
-

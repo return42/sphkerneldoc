@@ -22,8 +22,8 @@ SCRIPT_FOLDER="${REPO_ROOT}/scripts"
 
 
 LINUX_SRC_TREE=/where/is/your/linux/clone
-AUTODOC_FOLDER="${REPO_ROOT}/linux_src_doc"
-LINUX_MISC_DOC="${REPO_ROOT}/linux_misc_doc"
+AUTODOC_FOLDER="${REPO_ROOT}/doc/linux_src_doc"
+LINUX_MISC_DOC="${REPO_ROOT}/doc/linux_misc_doc"
 
 KERNEL_DOC_SCRIPT="${SCRIPT_FOLDER}/kernel-doc"
 

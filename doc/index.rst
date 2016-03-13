@@ -26,11 +26,11 @@ The Kerner's documentation (the scope of content to migrate) is made up from:
 
 ... what more should we consider?
 
-In this POV only one (huge) document is created. In the long run the
+In this POC only one (huge) document is created. In the long run the
 documentation has to be chunked into small *projects*, each with it's own
-document, which can be generated and distributed alone. Cross reference between
-this *projects* will be ensured by `intersphinx`_. The term *project* has to be
-defined.
+document, which can be generated and distributed stand-alone. Cross reference
+between these *projects* will be ensured by `intersphinx`_. The term *project*
+has to be defined.
 
 
 Discussion & related efforts
