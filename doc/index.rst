@@ -32,6 +32,15 @@ document, which can be generated and distributed stand-alone. Cross reference
 between these *projects* will be ensured by `intersphinx`_. The term *project*
 has to be defined.
 
+Miscellaneous
+=============
+
+.. toctree::
+   :maxdepth: 1
+
+   articles/faq
+   articles/table_concerns
+
 
 Discussion & related efforts
 ============================
@@ -40,7 +49,6 @@ Discussion & related efforts
 * http://static.lwn.net/kerneldoc/index.html
 * https://git.linuxtv.org/mchehab/v4l2-docs-poc.git/
 * https://mchehab.fedorapeople.org/media-kabi-docs-test/asciidoc_tests/media_api.html
-
 
 
 Indices and tables
