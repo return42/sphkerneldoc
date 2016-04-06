@@ -3,7 +3,13 @@
 .. _xref_migrated_docbock:
 
 ================================================================================
-                            Migratet DocBook content
+                              Books (aka DocBook)
 ================================================================================
 
-:STATE: to be to do ...
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   books/*/index
+
+

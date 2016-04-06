@@ -42,7 +42,7 @@ test123(){
     # may we need some filters? / at least we can include as plain text ...
 
     echo
-    sync_txt2rst kernel-doc-nano-HOWTO.txt "${LINUX_MISC_DOC}"
+    sync_literalinclude kernel-doc-nano-HOWTO.txt "${LINUX_MISC_DOC}" "kernel-doc nano-HOWTO"
     sync_literalinclude kernel-parameters.txt  "${LINUX_MISC_DOC}" "Kernel parameters"
 
     insert_index_files "${LINUX_MISC_DOC}"

@@ -6,10 +6,8 @@
 .. _`Markdown`: http://daringfireball.net/projects/markdown/
 
 ================================================================================
-                       Misc doc from *Documentation* tree
+                         Documentation (aka Text-Files)
 ================================================================================
-
-:STATE: in progress ...
 
 Sync kernels' documentation would be done by:
 
@@ -17,21 +15,6 @@ Sync kernels' documentation would be done by:
 
    ./scripts/syncdoc.sh
 
-Methods to sync and migrate documents from the origin:
-
-* If doc-files are using any proprietary / individual markup,
-
-  import / sync these files as *literalinclude*.
-
-* If doc-files are allready using the `reST`_ markup.
-
-  import / sync these files *as is*.
-
-* If doc-files use `Markdown`_ or any other known markup
-
-  convert with known tools and import / sync these files.
-
-* suggestions?
 
 migrated documents
 ==================

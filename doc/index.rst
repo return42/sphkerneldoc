@@ -12,19 +12,12 @@
 Welcome to the Linux Kernel's documentation. This is a proof of concept, a
 toolchain to migrate the Kernel's documentation to the `Sphinx-Doc`_ generator.
 
-* https://sphkerneldoc.readthedocs.org
-* https://github.com/return42/sphkerneldoc.git
-
-The Kerner's documentation (the scope of content to migrate) is made up from:
-
 .. toctree::
    :maxdepth: 1
 
-   doc_from_source
-   misc_doc_from_tree
-   migrated_docbock
-
-... what more should we consider?
+   books
+   linux_misc_doc
+   linux_src_doc
 
 In this POC only one (huge) document is created. In the long run the
 documentation has to be chunked into small *projects*, each with it's own
@@ -38,8 +31,18 @@ Miscellaneous
 .. toctree::
    :maxdepth: 1
 
+   articles/dbtools
    articles/faq
    articles/table_concerns
+   LICENSE
+
+
+Resources
+=========
+
+* https://sphkerneldoc.readthedocs.org
+* https://github.com/return42/sphkerneldoc.git
+* https://github.com/torvalds/linux
 
 
 Discussion & related efforts

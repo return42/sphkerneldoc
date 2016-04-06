@@ -57,7 +57,7 @@ intersphinx_mapping = {}
 #
 #     :ref:`comparison manual <python:comparisons>`
 #
-intersphinx_mapping['python']  = ('https://docs.python.org/', None)
+intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
 
 
 # Add any Sphinx extension module names here, as strings. They can be

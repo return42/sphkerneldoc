@@ -265,7 +265,6 @@ waitKEY(){
 
 _colors=0
 if tput setaf 1 &> /dev/null; then
-    tput sgr0
 
     BOLD=$(tput bold)
     _color_Off=$(tput sgr0)
@@ -631,6 +630,23 @@ cloneGitRepository() {
 	popd > /dev/null
     fi
 }
+
+# ----------------------------------------------------------------------------
+function _py_argcomplete() {
+# ----------------------------------------------------------------------------
+
+    local IFS=$(echo -e '\v')
+    COMPREPLY=( $(IFS="$IFS" \
+                     COMP_LINE="$COMP_LINE" \
+                     COMP_POINT="$COMP_POINT" \
+                     _ARGCOMPLETE_COMP_WORDBREAKS="$COMP_WORDBREAKS" \
+                     _ARGCOMPLETE=1 \
+                     "$1" 8>&1 9>&2 1>/dev/null) )
+    if [[ $? != 0 ]]; then
+        unset COMPREPLY
+    fi
+}
+
 
 # ----------------------------------------------------------------------------
 aptInstallPackages(){

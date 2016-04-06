@@ -16,63 +16,15 @@ fi
 # handsOn Scripts
 # ===============
 
-# SCRIPT_FOLDER: Ordner mit den Skripten für die Setups
-#
-SCRIPT_FOLDER="${REPO_ROOT}/scripts"
-
-
 LINUX_SRC_TREE=/where/is/your/linux/clone
-AUTODOC_FOLDER="${REPO_ROOT}/doc/linux_src_doc"
-LINUX_MISC_DOC="${REPO_ROOT}/doc/linux_misc_doc"
-
+SCRIPT_FOLDER="${REPO_ROOT}/scripts"
+DOC_FOLDER="${REPO_ROOT}/doc"
+AUTODOC_FOLDER="${DOC_FOLDER}/linux_src_doc"
+BOOKS_FOLDER="${DOC_FOLDER}/books"
+LINUX_MISC_DOC="${DOC_FOLDER}/linux_misc_doc"
 KERNEL_DOC_SCRIPT="${SCRIPT_FOLDER}/kernel-doc"
-
-
-# TEMPLATES: Ordner in dem die vorlagen für die Setups zu finden sind
-#
 TEMPLATES="${REPO_ROOT}/templates"
-
-# CACHE: Ordner in dem die Downloads und Builds gecached werden
-#
-#CACHE=${REPO_ROOT}/cache
-
-# CONFIG: Ordner unter dem die Konfiguration eines Hosts gesichert werden soll
-#
-#CONFIG="${REPO_ROOT}/config_$(hostname)"
-
-# WWW_USER: Benutzer für die Prozesse des WEB-Servers
-#
-#WWW_USER=www-data
-
-# WWW_FOLDER: Ordner in dem die Resourcen des WEB-Servers liegen
-#
-#WWW_FOLDER=/var/www
-
-# =========
-# toolchain
-# =========
-
-# THREE_WAY_MERGE_CMD: Kommando oder Funktion mit der ein (interaktives)
-# drei-Wege Merge gemacht werden kann. Das Kommando muss die vier Argumente für
-# Dateinamen entgegennehmen.
-#
-#    $THREE_WAY_MERGE_CMD {mine} {yours} {ancestor} {merged}
-#
-#THREE_WAY_MERGE_CMD=merge3FilesWithEmacs
-
-# MERGE_CMD: Kommando oder Funktion mit der ein (interaktiver) Merge gemacht
-# werden kann. Das Kommando muss die drei Argumente für Dateinamen
-# entgegennehmen.
-#
-#     $MERGE_CMD {file_a} {file_b} {merged}
-#
-#MERGE_CMD=merge2FilesWithEmacs
-
-# DIFF_CMD: Kommando oder Funktion mit der ein diff angezeigt werden soll. Im
-# Default wird ``colordiff`` verwendet, wenn das nicht vorhanden ist, dann wird
-# das ganz normale ``diff`` verwendet.
-#
-#DIFF_CMD=colordiff
+CACHE=${REPO_ROOT}/cache
 
 # ----------------------------------------------------------------------------
 setupInfo () {
@@ -112,6 +64,7 @@ fi
 
 if [[ ! -r "${LINUX_SRC_TREE}" ]]; then
     echo "ERROR: can't find linux source at: ${LINUX_SRC_TREE}"
+    echo "ERROR: check your ${REPO_ROOT}/tool_config.sh"
     exit
 fi
 
@@ -122,4 +75,3 @@ else
    source ${SCRIPT_FOLDER}/common.sh
    checkEnviroment
 fi
-
