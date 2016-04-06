@@ -1,0 +1,1012 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+==========
+drm_edid.c
+==========
+
+
+
+.. _xref_drm_edid_header_is_valid:
+
+drm_edid_header_is_valid
+========================
+
+.. c:function:: int drm_edid_header_is_valid (const u8 * raw_edid)
+
+    sanity check the header of the base EDID block
+
+    :param const u8 * raw_edid:
+        pointer to raw base EDID block
+
+
+
+Description
+-----------
+
+Sanity check the header of the base EDID block.
+
+
+
+Return
+------
+
+8 if the header is perfect, down to 0 if it's totally wrong.
+
+
+
+
+.. _xref_drm_edid_block_valid:
+
+drm_edid_block_valid
+====================
+
+.. c:function:: bool drm_edid_block_valid (u8 * raw_edid, int block, bool print_bad_edid, bool * edid_corrupt)
+
+    Sanity check the EDID block (base or extension)
+
+    :param u8 * raw_edid:
+        pointer to raw EDID block
+
+    :param int block:
+        type of block to validate (0 for base, extension otherwise)
+
+    :param bool print_bad_edid:
+        if true, dump bad EDID blocks to the console
+
+    :param bool * edid_corrupt:
+        if true, the header or checksum is invalid
+
+
+
+Description
+-----------
+
+Validate a base or extension EDID block and optionally dump bad blocks to
+the console.
+
+
+
+Return
+------
+
+True if the block is valid, false otherwise.
+
+
+
+
+.. _xref_drm_edid_is_valid:
+
+drm_edid_is_valid
+=================
+
+.. c:function:: bool drm_edid_is_valid (struct edid * edid)
+
+    sanity check EDID data
+
+    :param struct edid * edid:
+        EDID data
+
+
+
+Description
+-----------
+
+Sanity-check an entire EDID record (including extensions)
+
+
+
+Return
+------
+
+True if the EDID data is valid, false otherwise.
+
+
+
+
+.. _xref_drm_do_probe_ddc_edid:
+
+drm_do_probe_ddc_edid
+=====================
+
+.. c:function:: int drm_do_probe_ddc_edid (void * data, u8 * buf, unsigned int block, size_t len)
+
+    get EDID information via I2C
+
+    :param void * data:
+        I2C device adapter
+
+    :param u8 * buf:
+        EDID data buffer to be filled
+
+    :param unsigned int block:
+        128 byte EDID block to start fetching from
+
+    :param size_t len:
+        EDID data buffer length to fetch
+
+
+
+Description
+-----------
+
+Try to fetch EDID information by calling I2C driver functions.
+
+
+
+Return
+------
+
+0 on success or -1 on failure.
+
+
+
+
+.. _xref_drm_do_get_edid:
+
+drm_do_get_edid
+===============
+
+.. c:function:: struct edid * drm_do_get_edid (struct drm_connector * connector, int (*get_edid_block) (void *data, u8 *buf, unsigned int block, 			      size_t len, void * data)
+
+    get EDID data using a custom EDID block read function
+
+    :param struct drm_connector * connector:
+        connector we're probing
+
+    :param int (*)(void *data, u8 *buf, unsigned int block, 			      size_t len) get_edid_block:
+        EDID block read function
+
+    :param void * data:
+        private data passed to the block read function
+
+
+
+Description
+-----------
+
+When the I2C adapter connected to the DDC bus is hidden behind a device that
+exposes a different interface to read EDID blocks this function can be used
+to get EDID data using a custom block read function.
+
+
+As in the general case the DDC bus is accessible by the kernel at the I2C
+level, drivers must make all reasonable efforts to expose it as an I2C
+adapter and use :c:func:`drm_get_edid` instead of abusing this function.
+
+
+
+Return
+------
+
+Pointer to valid EDID or NULL if we couldn't find any.
+
+
+
+
+.. _xref_drm_probe_ddc:
+
+drm_probe_ddc
+=============
+
+.. c:function:: bool drm_probe_ddc (struct i2c_adapter * adapter)
+
+    probe DDC presence
+
+    :param struct i2c_adapter * adapter:
+        I2C adapter to probe
+
+
+
+Return
+------
+
+True on success, false on failure.
+
+
+
+
+.. _xref_drm_get_edid:
+
+drm_get_edid
+============
+
+.. c:function:: struct edid * drm_get_edid (struct drm_connector * connector, struct i2c_adapter * adapter)
+
+    get EDID data, if available
+
+    :param struct drm_connector * connector:
+        connector we're probing
+
+    :param struct i2c_adapter * adapter:
+        I2C adapter to use for DDC
+
+
+
+Description
+-----------
+
+Poke the given I2C channel to grab EDID data if possible.  If found,
+attach it to the connector.
+
+
+
+Return
+------
+
+Pointer to valid EDID or NULL if we couldn't find any.
+
+
+
+
+.. _xref_drm_get_edid_switcheroo:
+
+drm_get_edid_switcheroo
+=======================
+
+.. c:function:: struct edid * drm_get_edid_switcheroo (struct drm_connector * connector, struct i2c_adapter * adapter)
+
+    get EDID data for a vga_switcheroo output
+
+    :param struct drm_connector * connector:
+        connector we're probing
+
+    :param struct i2c_adapter * adapter:
+        I2C adapter to use for DDC
+
+
+
+Description
+-----------
+
+Wrapper around :c:func:`drm_get_edid` for laptops with dual GPUs using one set of
+outputs. The wrapper adds the requisite vga_switcheroo calls to temporarily
+switch DDC to the GPU which is retrieving EDID.
+
+
+
+Return
+------
+
+Pointer to valid EDID or ``NULL`` if we couldn't find any.
+
+
+
+
+.. _xref_drm_edid_duplicate:
+
+drm_edid_duplicate
+==================
+
+.. c:function:: struct edid * drm_edid_duplicate (const struct edid * edid)
+
+    duplicate an EDID and the extensions
+
+    :param const struct edid * edid:
+        EDID to duplicate
+
+
+
+Return
+------
+
+Pointer to duplicated EDID or NULL on allocation failure.
+
+
+
+
+.. _xref_edid_vendor:
+
+edid_vendor
+===========
+
+.. c:function:: bool edid_vendor (struct edid * edid, char * vendor)
+
+    match a string against EDID's obfuscated vendor field
+
+    :param struct edid * edid:
+        EDID to match
+
+    :param char * vendor:
+        vendor string
+
+
+
+Description
+-----------
+
+Returns true if **vendor** is in **edid**, false otherwise
+
+
+
+
+.. _xref_edid_get_quirks:
+
+edid_get_quirks
+===============
+
+.. c:function:: u32 edid_get_quirks (struct edid * edid)
+
+    return quirk flags for a given EDID
+
+    :param struct edid * edid:
+        EDID to process
+
+
+
+Description
+-----------
+
+This tells subsequent routines what fixes they need to apply.
+
+
+
+
+.. _xref_edid_fixup_preferred:
+
+edid_fixup_preferred
+====================
+
+.. c:function:: void edid_fixup_preferred (struct drm_connector * connector, u32 quirks)
+
+    set preferred modes based on quirk list
+
+    :param struct drm_connector * connector:
+        has mode list to fix up
+
+    :param u32 quirks:
+        quirks list
+
+
+
+Description
+-----------
+
+Walk the mode list for **connector**, clearing the preferred status
+on existing modes and setting it anew for the right mode ala **quirks**.
+
+
+
+
+.. _xref_standard_timing_level:
+
+standard_timing_level
+=====================
+
+.. c:function:: int standard_timing_level (struct edid * edid)
+
+    get std. timing level(CVT/GTF/DMT)
+
+    :param struct edid * edid:
+        EDID block to scan
+
+
+
+
+.. _xref_drm_mode_std:
+
+drm_mode_std
+============
+
+.. c:function:: struct drm_display_mode * drm_mode_std (struct drm_connector * connector, struct edid * edid, struct std_timing * t)
+
+    convert standard mode info (width, height, refresh) into mode
+
+    :param struct drm_connector * connector:
+        connector of for the EDID block
+
+    :param struct edid * edid:
+        EDID block to scan
+
+    :param struct std_timing * t:
+        standard timing params
+
+
+
+Description
+-----------
+
+Take the standard timing params (in this case width, aspect, and refresh)
+and convert them into a real mode using CVT/GTF/DMT.
+
+
+
+
+.. _xref_drm_mode_detailed:
+
+drm_mode_detailed
+=================
+
+.. c:function:: struct drm_display_mode * drm_mode_detailed (struct drm_device * dev, struct edid * edid, struct detailed_timing * timing, u32 quirks)
+
+    create a new mode from an EDID detailed timing section
+
+    :param struct drm_device * dev:
+        DRM device (needed to create new mode)
+
+    :param struct edid * edid:
+        EDID block
+
+    :param struct detailed_timing * timing:
+        EDID detailed timing info
+
+    :param u32 quirks:
+        quirks to apply
+
+
+
+Description
+-----------
+
+An EDID detailed timing block contains enough info for us to create and
+return a new struct drm_display_mode.
+
+
+
+
+.. _xref_add_established_modes:
+
+add_established_modes
+=====================
+
+.. c:function:: int add_established_modes (struct drm_connector * connector, struct edid * edid)
+
+    get est. modes from EDID and add them
+
+    :param struct drm_connector * connector:
+        connector to add mode(s) to
+
+    :param struct edid * edid:
+        EDID block to scan
+
+
+
+Description
+-----------
+
+Each EDID block contains a bitmap of the supported "established modes" list
+(defined above).  Tease them out and add them to the global modes list.
+
+
+
+
+.. _xref_add_standard_modes:
+
+add_standard_modes
+==================
+
+.. c:function:: int add_standard_modes (struct drm_connector * connector, struct edid * edid)
+
+    get std. modes from EDID and add them
+
+    :param struct drm_connector * connector:
+        connector to add mode(s) to
+
+    :param struct edid * edid:
+        EDID block to scan
+
+
+
+Description
+-----------
+
+Standard modes can be calculated using the appropriate standard (DMT,
+GTF or CVT. Grab them from **edid** and add them to the list.
+
+
+
+
+.. _xref_drm_match_cea_mode:
+
+drm_match_cea_mode
+==================
+
+.. c:function:: u8 drm_match_cea_mode (const struct drm_display_mode * to_match)
+
+    look for a CEA mode matching given mode
+
+    :param const struct drm_display_mode * to_match:
+        display mode
+
+
+
+Return
+------
+
+The CEA Video ID (VIC) of the mode or 0 if it isn't a CEA-861
+mode.
+
+
+
+
+.. _xref_drm_get_cea_aspect_ratio:
+
+drm_get_cea_aspect_ratio
+========================
+
+.. c:function:: enum hdmi_picture_aspect drm_get_cea_aspect_ratio (const u8 video_code)
+
+    get the picture aspect ratio corresponding to the input VIC from the CEA mode list
+
+    :param const u8 video_code:
+        ID given to each of the CEA modes
+
+
+
+Description
+-----------
+
+Returns picture aspect ratio
+
+
+
+
+.. _xref_drm_edid_to_eld:
+
+drm_edid_to_eld
+===============
+
+.. c:function:: void drm_edid_to_eld (struct drm_connector * connector, struct edid * edid)
+
+    build ELD from EDID
+
+    :param struct drm_connector * connector:
+        connector corresponding to the HDMI/DP sink
+
+    :param struct edid * edid:
+        EDID to parse
+
+
+
+Description
+-----------
+
+Fill the ELD (EDID-Like Data) buffer for passing to the audio driver. The
+Conn_Type, HDCP and Port_ID ELD fields are left for the graphics driver to
+fill in.
+
+
+
+
+.. _xref_drm_edid_to_sad:
+
+drm_edid_to_sad
+===============
+
+.. c:function:: int drm_edid_to_sad (struct edid * edid, struct cea_sad ** sads)
+
+    extracts SADs from EDID
+
+    :param struct edid * edid:
+        EDID to parse
+
+    :param struct cea_sad ** sads:
+        pointer that will be set to the extracted SADs
+
+
+
+Description
+-----------
+
+Looks for CEA EDID block and extracts SADs (Short Audio Descriptors) from it.
+
+
+
+Note
+----
+
+The returned pointer needs to be freed using :c:func:`kfree`.
+
+
+
+Return
+------
+
+The number of found SADs or negative number on error.
+
+
+
+
+.. _xref_drm_edid_to_speaker_allocation:
+
+drm_edid_to_speaker_allocation
+==============================
+
+.. c:function:: int drm_edid_to_speaker_allocation (struct edid * edid, u8 ** sadb)
+
+    extracts Speaker Allocation Data Blocks from EDID
+
+    :param struct edid * edid:
+        EDID to parse
+
+    :param u8 ** sadb:
+        pointer to the speaker block
+
+
+
+Description
+-----------
+
+Looks for CEA EDID block and extracts the Speaker Allocation Data Block from it.
+
+
+
+Note
+----
+
+The returned pointer needs to be freed using :c:func:`kfree`.
+
+
+
+Return
+------
+
+The number of found Speaker Allocation Blocks or negative number on
+error.
+
+
+
+
+.. _xref_drm_av_sync_delay:
+
+drm_av_sync_delay
+=================
+
+.. c:function:: int drm_av_sync_delay (struct drm_connector * connector, const struct drm_display_mode * mode)
+
+    compute the HDMI/DP sink audio-video sync delay
+
+    :param struct drm_connector * connector:
+        connector associated with the HDMI/DP sink
+
+    :param const struct drm_display_mode * mode:
+        the display mode
+
+
+
+Return
+------
+
+The HDMI/DP sink's audio-video sync delay in milliseconds or 0 if
+the sink doesn't support audio or video.
+
+
+
+
+.. _xref_drm_select_eld:
+
+drm_select_eld
+==============
+
+.. c:function:: struct drm_connector * drm_select_eld (struct drm_encoder * encoder)
+
+    select one ELD from multiple HDMI/DP sinks
+
+    :param struct drm_encoder * encoder:
+        the encoder just changed display mode
+
+
+
+Description
+-----------
+
+It's possible for one encoder to be associated with multiple HDMI/DP sinks.
+The policy is now hard coded to simply use the first HDMI/DP sink's ELD.
+
+
+
+Return
+------
+
+The connector associated with the first HDMI/DP sink that has ELD
+attached to it.
+
+
+
+
+.. _xref_drm_detect_hdmi_monitor:
+
+drm_detect_hdmi_monitor
+=======================
+
+.. c:function:: bool drm_detect_hdmi_monitor (struct edid * edid)
+
+    detect whether monitor is HDMI
+
+    :param struct edid * edid:
+        monitor EDID information
+
+
+
+Description
+-----------
+
+Parse the CEA extension according to CEA-861-B.
+
+
+
+Return
+------
+
+True if the monitor is HDMI, false if not or unknown.
+
+
+
+
+.. _xref_drm_detect_monitor_audio:
+
+drm_detect_monitor_audio
+========================
+
+.. c:function:: bool drm_detect_monitor_audio (struct edid * edid)
+
+    check monitor audio capability
+
+    :param struct edid * edid:
+        EDID block to scan
+
+
+
+Description
+-----------
+
+Monitor should have CEA extension block.
+If monitor has 'basic audio', but no CEA audio blocks, it's 'basic
+audio' only. If there is any audio extension block and supported
+audio format, assume at least 'basic audio' support, even if 'basic
+audio' is not defined in EDID.
+
+
+
+Return
+------
+
+True if the monitor supports audio, false otherwise.
+
+
+
+
+.. _xref_drm_rgb_quant_range_selectable:
+
+drm_rgb_quant_range_selectable
+==============================
+
+.. c:function:: bool drm_rgb_quant_range_selectable (struct edid * edid)
+
+    is RGB quantization range selectable?
+
+    :param struct edid * edid:
+        EDID block to scan
+
+
+
+Description
+-----------
+
+Check whether the monitor reports the RGB quantization range selection
+as supported. The AVI infoframe can then be used to inform the monitor
+which quantization range (full or limited) is used.
+
+
+
+Return
+------
+
+True if the RGB quantization range is selectable, false otherwise.
+
+
+
+
+.. _xref_drm_assign_hdmi_deep_color_info:
+
+drm_assign_hdmi_deep_color_info
+===============================
+
+.. c:function:: bool drm_assign_hdmi_deep_color_info (struct edid * edid, struct drm_display_info * info, struct drm_connector * connector)
+
+    detect whether monitor supports hdmi deep color modes and update drm_display_info if so.
+
+    :param struct edid * edid:
+        monitor EDID information
+
+    :param struct drm_display_info * info:
+        Updated with maximum supported deep color bpc and color format
+               if deep color supported.
+
+    :param struct drm_connector * connector:
+        DRM connector, used only for debug output
+
+
+
+Description
+-----------
+
+Parse the CEA extension according to CEA-861-B.
+Return true if HDMI deep color supported, false if not or unknown.
+
+
+
+
+.. _xref_drm_add_display_info:
+
+drm_add_display_info
+====================
+
+.. c:function:: void drm_add_display_info (struct edid * edid, struct drm_display_info * info, struct drm_connector * connector)
+
+    pull display info out if present
+
+    :param struct edid * edid:
+        EDID data
+
+    :param struct drm_display_info * info:
+        display info (attached to connector)
+
+    :param struct drm_connector * connector:
+        connector whose edid is used to build display info
+
+
+
+Description
+-----------
+
+Grab any available display info and stuff it into the drm_display_info
+structure that's part of the connector.  Useful for tracking bpp and
+color spaces.
+
+
+
+
+.. _xref_drm_add_edid_modes:
+
+drm_add_edid_modes
+==================
+
+.. c:function:: int drm_add_edid_modes (struct drm_connector * connector, struct edid * edid)
+
+    add modes from EDID data, if available
+
+    :param struct drm_connector * connector:
+        connector we're probing
+
+    :param struct edid * edid:
+        EDID data
+
+
+
+Description
+-----------
+
+Add the specified modes to the connector's mode list.
+
+
+
+Return
+------
+
+The number of modes added or 0 if we couldn't find any.
+
+
+
+
+.. _xref_drm_add_modes_noedid:
+
+drm_add_modes_noedid
+====================
+
+.. c:function:: int drm_add_modes_noedid (struct drm_connector * connector, int hdisplay, int vdisplay)
+
+    add modes for the connectors without EDID
+
+    :param struct drm_connector * connector:
+        connector we're probing
+
+    :param int hdisplay:
+        the horizontal display limit
+
+    :param int vdisplay:
+        the vertical display limit
+
+
+
+Description
+-----------
+
+Add the specified modes to the connector's mode list. Only when the
+hdisplay/vdisplay is not beyond the given limit, it will be added.
+
+
+
+Return
+------
+
+The number of modes added or 0 if we couldn't find any.
+
+
+
+
+.. _xref_drm_set_preferred_mode:
+
+drm_set_preferred_mode
+======================
+
+.. c:function:: void drm_set_preferred_mode (struct drm_connector * connector, int hpref, int vpref)
+
+    Sets the preferred mode of a connector
+
+    :param struct drm_connector * connector:
+        connector whose mode list should be processed
+
+    :param int hpref:
+        horizontal resolution of preferred mode
+
+    :param int vpref:
+        vertical resolution of preferred mode
+
+
+
+Description
+-----------
+
+Marks a mode as preferred if it matches the resolution specified by **hpref**
+and **vpref**.
+
+
+
+
+.. _xref_drm_hdmi_avi_infoframe_from_display_mode:
+
+drm_hdmi_avi_infoframe_from_display_mode
+========================================
+
+.. c:function:: int drm_hdmi_avi_infoframe_from_display_mode (struct hdmi_avi_infoframe * frame, const struct drm_display_mode * mode)
+
+    fill an HDMI AVI infoframe with data from a DRM display mode
+
+    :param struct hdmi_avi_infoframe * frame:
+        HDMI AVI infoframe
+
+    :param const struct drm_display_mode * mode:
+        DRM display mode
+
+
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+
+
+
+.. _xref_drm_hdmi_vendor_infoframe_from_display_mode:
+
+drm_hdmi_vendor_infoframe_from_display_mode
+===========================================
+
+.. c:function:: int drm_hdmi_vendor_infoframe_from_display_mode (struct hdmi_vendor_infoframe * frame, const struct drm_display_mode * mode)
+
+    fill an HDMI infoframe with data from a DRM display mode
+
+    :param struct hdmi_vendor_infoframe * frame:
+        HDMI vendor infoframe
+
+    :param const struct drm_display_mode * mode:
+        DRM display mode
+
+
+
+Description
+-----------
+
+Note that there's is a need to send HDMI vendor infoframes only when using a
+4k or stereoscopic 3D mode. So when giving any other mode as input this
+function will return -EINVAL, error that can be safely ignored.
+
+
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+

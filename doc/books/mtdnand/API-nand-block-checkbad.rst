@@ -1,0 +1,36 @@
+
+.. _API-nand-block-checkbad:
+
+===================
+nand_block_checkbad
+===================
+
+*man nand_block_checkbad(9)*
+
+*4.6.0-rc1*
+
+[GENERIC] Check if a block is marked bad
+
+
+Synopsis
+========
+
+.. c:function:: int nand_block_checkbad( struct mtd_info * mtd, loff_t ofs, int allowbbt )
+
+Arguments
+=========
+
+``mtd``
+    MTD device structure
+
+``ofs``
+    offset from device start
+
+``allowbbt``
+    1, if its allowed to access the bbt area
+
+
+Description
+===========
+
+Check, if the block is bad. Either by reading the bad block table or calling of the scan function.

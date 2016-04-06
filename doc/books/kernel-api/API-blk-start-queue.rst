@@ -1,0 +1,31 @@
+
+.. _API-blk-start-queue:
+
+===============
+blk_start_queue
+===============
+
+*man blk_start_queue(9)*
+
+*4.6.0-rc1*
+
+restart a previously stopped queue
+
+
+Synopsis
+========
+
+.. c:function:: void blk_start_queue( struct request_queue * q )
+
+Arguments
+=========
+
+``q``
+    The ``struct request_queue`` in question
+
+
+Description
+===========
+
+``blk_start_queue`` will clear the stop flag on the queue, and call the request_fn for the queue if it was in a stopped state when entered. Also see ``blk_stop_queue``. Queue lock
+must be held.

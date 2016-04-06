@@ -1,0 +1,209 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=============
+dma-mapping.c
+=============
+
+
+
+.. _xref_dmam_alloc_coherent:
+
+dmam_alloc_coherent
+===================
+
+.. c:function:: void * dmam_alloc_coherent (struct device * dev, size_t size, dma_addr_t * dma_handle, gfp_t gfp)
+
+    Managed dma_alloc_coherent()
+
+    :param struct device * dev:
+        Device to allocate coherent memory for
+
+    :param size_t size:
+        Size of allocation
+
+    :param dma_addr_t * dma_handle:
+        Out argument for allocated DMA handle
+
+    :param gfp_t gfp:
+        Allocation flags
+
+
+
+Description
+-----------
+
+Managed :c:func:`dma_alloc_coherent`.  Memory allocated using this function
+will be automatically released on driver detach.
+
+
+
+RETURNS
+-------
+
+Pointer to allocated memory on success, NULL on failure.
+
+
+
+
+.. _xref_dmam_free_coherent:
+
+dmam_free_coherent
+==================
+
+.. c:function:: void dmam_free_coherent (struct device * dev, size_t size, void * vaddr, dma_addr_t dma_handle)
+
+    Managed dma_free_coherent()
+
+    :param struct device * dev:
+        Device to free coherent memory for
+
+    :param size_t size:
+        Size of allocation
+
+    :param void * vaddr:
+        Virtual address of the memory to free
+
+    :param dma_addr_t dma_handle:
+        DMA handle of the memory to free
+
+
+
+Description
+-----------
+
+Managed :c:func:`dma_free_coherent`.
+
+
+
+
+.. _xref_dmam_alloc_noncoherent:
+
+dmam_alloc_noncoherent
+======================
+
+.. c:function:: void * dmam_alloc_noncoherent (struct device * dev, size_t size, dma_addr_t * dma_handle, gfp_t gfp)
+
+    Managed dma_alloc_non_coherent()
+
+    :param struct device * dev:
+        Device to allocate non_coherent memory for
+
+    :param size_t size:
+        Size of allocation
+
+    :param dma_addr_t * dma_handle:
+        Out argument for allocated DMA handle
+
+    :param gfp_t gfp:
+        Allocation flags
+
+
+
+Description
+-----------
+
+Managed :c:func:`dma_alloc_non_coherent`.  Memory allocated using this
+function will be automatically released on driver detach.
+
+
+
+RETURNS
+-------
+
+Pointer to allocated memory on success, NULL on failure.
+
+
+
+
+.. _xref_dmam_free_noncoherent:
+
+dmam_free_noncoherent
+=====================
+
+.. c:function:: void dmam_free_noncoherent (struct device * dev, size_t size, void * vaddr, dma_addr_t dma_handle)
+
+    Managed dma_free_noncoherent()
+
+    :param struct device * dev:
+        Device to free noncoherent memory for
+
+    :param size_t size:
+        Size of allocation
+
+    :param void * vaddr:
+        Virtual address of the memory to free
+
+    :param dma_addr_t dma_handle:
+        DMA handle of the memory to free
+
+
+
+Description
+-----------
+
+Managed :c:func:`dma_free_noncoherent`.
+
+
+
+
+.. _xref_dmam_declare_coherent_memory:
+
+dmam_declare_coherent_memory
+============================
+
+.. c:function:: int dmam_declare_coherent_memory (struct device * dev, phys_addr_t phys_addr, dma_addr_t device_addr, size_t size, int flags)
+
+    Managed dma_declare_coherent_memory()
+
+    :param struct device * dev:
+        Device to declare coherent memory for
+
+    :param phys_addr_t phys_addr:
+        Physical address of coherent memory to be declared
+
+    :param dma_addr_t device_addr:
+        Device address of coherent memory to be declared
+
+    :param size_t size:
+        Size of coherent memory to be declared
+
+    :param int flags:
+        Flags
+
+
+
+Description
+-----------
+
+Managed :c:func:`dma_declare_coherent_memory`.
+
+
+
+RETURNS
+-------
+
+0 on success, -errno on failure.
+
+
+
+
+.. _xref_dmam_release_declared_memory:
+
+dmam_release_declared_memory
+============================
+
+.. c:function:: void dmam_release_declared_memory (struct device * dev)
+
+    Managed dma_release_declared_memory().
+
+    :param struct device * dev:
+        Device to release declared coherent memory for
+
+
+
+Description
+-----------
+
+Managed :c:func:`dmam_release_declared_memory`.
+
+

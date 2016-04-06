@@ -1,0 +1,36 @@
+
+.. _API-i2c-smbus-write-byte-data:
+
+=========================
+i2c_smbus_write_byte_data
+=========================
+
+*man i2c_smbus_write_byte_data(9)*
+
+*4.6.0-rc1*
+
+SMBus “write byte” protocol
+
+
+Synopsis
+========
+
+.. c:function:: s32 i2c_smbus_write_byte_data( const struct i2c_client * client, u8 command, u8 value )
+
+Arguments
+=========
+
+``client``
+    Handle to slave device
+
+``command``
+    Byte interpreted by slave
+
+``value``
+    Byte being written
+
+
+Description
+===========
+
+This executes the SMBus “write byte” protocol, returning negative errno else zero on success.

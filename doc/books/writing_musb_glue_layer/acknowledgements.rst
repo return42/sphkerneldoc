@@ -1,0 +1,10 @@
+
+.. _acknowledgements:
+
+================
+Acknowledgements
+================
+
+Many thanks to Lars-Peter Clausen and Maarten ter Huurne for answering my questions while I was writing the JZ4740 glue layer and for helping me out getting the code in good shape.
+
+I would also like to thank the Qi-Hardware community at large for its cheerful guidance and support.

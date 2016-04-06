@@ -1,0 +1,51 @@
+
+.. _API-drm-event-reserve-init-locked:
+
+=============================
+drm_event_reserve_init_locked
+=============================
+
+*man drm_event_reserve_init_locked(9)*
+
+*4.6.0-rc1*
+
+init a DRM event and reserve space for it
+
+
+Synopsis
+========
+
+.. c:function:: int drm_event_reserve_init_locked( struct drm_device * dev, struct drm_file * file_priv, struct drm_pending_event * p, struct drm_event * e )
+
+Arguments
+=========
+
+``dev``
+    DRM device
+
+``file_priv``
+    DRM file private data
+
+``p``
+    tracking structure for the pending event
+
+``e``
+    actual event data to deliver to userspace
+
+
+Description
+===========
+
+This function prepares the passed in event for eventual delivery. If the event doesn't get delivered (because the IOCTL fails later on, before queuing up anything) then the even
+must be cancelled and freed using ``drm_event_cancel_free``. Successfully initialized events should be sent out using ``drm_send_event`` or ``drm_send_event_locked`` to signal
+completion of the asynchronous event to userspace.
+
+If callers embedded ``p`` into a larger structure it must be allocated with kmalloc and ``p`` must be the first member element.
+
+This is the locked version of ``drm_event_reserve_init`` for callers which already hold dev->event_lock.
+
+
+RETURNS
+=======
+
+0 on success or a negative error code on failure.

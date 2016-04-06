@@ -71,6 +71,50 @@ Rendered as:
 | body row 4 |            | - blocks. |
 +------------+------------+-----------+
 
+
+Nested Tables
+=============
+
+Nested tables are ugly, don't use them. This is only for test, how it would be
+rendered.
+
+.. code-block:: rst
+
+   +-----------+----------------------------------------------------+
+   | W/NW cell | N/NE cell                                          |
+   |           +-------------+--------------------------+-----------+
+   |           | W/NW center | N/NE center              | E/SE cell |
+   |           |             +------------+-------------+           |
+   |           |             | +--------+ | E/SE center |           |
+   |           |             | | nested | |             |           |
+   |           |             | +--------+ |             |           |
+   |           |             | | table  | |             |           |
+   |           |             | +--------+ |             |           |
+   |           +-------------+------------+             |           |
+   |           | S/SE center              |             |           |
+   +-----------+--------------------------+-------------+           |
+   | S/SW cell                                          |           |
+   +----------------------------------------------------+-----------+
+
+Rendered as:
+
++-----------+----------------------------------------------------+
+| W/NW cell | N/NE cell                                          |
+|           +-------------+--------------------------+-----------+
+|           | W/NW center | N/NE center              | E/SE cell |
+|           |             +------------+-------------+           |
+|           |             | +--------+ | E/SE center |           |
+|           |             | | nested | |             |           |
+|           |             | +--------+ |             |           |
+|           |             | | table  | |             |           |
+|           |             | +--------+ |             |           |
+|           +-------------+------------+             |           |
+|           | S/SE center              |             |           |
++-----------+--------------------------+-------------+           |
+| S/SW cell                                          |           |
++----------------------------------------------------+-----------+
+
+
 List tables
 ===========
 
@@ -148,8 +192,8 @@ raw HTML tables
 ===============
 
 If HTML is the only format you want to render, you could use a raw-import of a
-HTML table markup. But be aware, this breaks the separation of presentation and
-content. HTML-Tables are only rendered within a HTML output.
+HTML table markup. But be aware, this breaks the separation of *presentation from
+content*. HTML-Tables are only rendered within a HTML output.
 
 .. raw:: html
 

@@ -1,0 +1,41 @@
+
+.. _API-task-clear-jobctl-pending:
+
+=========================
+task_clear_jobctl_pending
+=========================
+
+*man task_clear_jobctl_pending(9)*
+
+*4.6.0-rc1*
+
+clear jobctl pending bits
+
+
+Synopsis
+========
+
+.. c:function:: void task_clear_jobctl_pending( struct task_struct * task, unsigned long mask )
+
+Arguments
+=========
+
+``task``
+    target task
+
+``mask``
+    pending bits to clear
+
+
+Description
+===========
+
+Clear ``mask`` from ``task``->jobctl. ``mask`` must be subset of ``JOBCTL_PENDING_MASK``. If ``JOBCTL_STOP_PENDING`` is being cleared, other STOP bits are cleared together.
+
+If clearing of ``mask`` leaves no stop or trap pending, this function calls ``task_clear_jobctl_trapping``.
+
+
+CONTEXT
+=======
+
+Must be called with ``task``->sighand->siglock held.

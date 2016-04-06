@@ -1,0 +1,45 @@
+
+.. _API-pci-write-legacy-io:
+
+===================
+pci_write_legacy_io
+===================
+
+*man pci_write_legacy_io(9)*
+
+*4.6.0-rc1*
+
+write byte(s) to legacy I/O port space
+
+
+Synopsis
+========
+
+.. c:function:: ssize_t pci_write_legacy_io( struct file * filp, struct kobject * kobj, struct bin_attribute * bin_attr, char * buf, loff_t off, size_t count )
+
+Arguments
+=========
+
+``filp``
+    open sysfs file
+
+``kobj``
+    kobject corresponding to file to read from
+
+``bin_attr``
+    struct bin_attribute for this file
+
+``buf``
+    buffer containing value to be written
+
+``off``
+    offset into legacy I/O port space
+
+``count``
+    number of bytes to write
+
+
+Description
+===========
+
+Writes 1, 2, or 4 bytes from legacy I/O port space using an arch specific callback routine (pci_legacy_write).

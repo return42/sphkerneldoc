@@ -1,0 +1,124 @@
+
+.. _vidioc-dv-timings-cap:
+
+=========================================================
+ioctl VIDIOC_DV_TIMINGS_CAP, VIDIOC_SUBDEV_DV_TIMINGS_CAP
+=========================================================
+
+*man VIDIOC_DV_TIMINGS_CAP(2)*
+
+VIDIOC_SUBDEV_DV_TIMINGS_CAP
+The capabilities of the Digital Video receiver/transmitter
+
+
+Synopsis
+========
+
+.. c:function:: int ioctl( int fd, int request, struct v4l2_dv_timings_cap *argp )
+
+Arguments
+=========
+
+``fd``
+    File descriptor returned by :ref:`open() <func-open>`.
+
+``request``
+    VIDIOC_DV_TIMINGS_CAP, VIDIOC_SUBDEV_DV_TIMINGS_CAP
+
+``argp``
+
+
+Description
+===========
+
+    **Note**
+
+    This is an :ref:`experimental <experimental>` interface and may change in the future.
+
+To query the capabilities of the DV receiver/transmitter applications can call the ``VIDIOC_DV_TIMINGS_CAP`` ioctl on a video node and the driver will fill in the structure. Note
+that drivers may return different values after switching the video input or output.
+
+When implemented by the driver DV capabilities of subdevices can be queried by calling the ``VIDIOC_SUBDEV_DV_TIMINGS_CAP`` ioctl directly on a subdevice node. The capabilities are
+specific to inputs (for DV receivers) or outputs (for DV transmitters), applications must specify the desired pad number in the struct
+:ref:`v4l2_dv_timings_cap <v4l2-dv-timings-cap>` ``pad`` field. Attempts to query capabilities on a pad that doesn't support them will return an EINVAL error code.
+
+
+.. _v4l2-bt-timings-cap:
+
+.. table:: struct v4l2_bt_timings_cap
+
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``min_width``                                 | Minimum width of the active video in pixels.                                               |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``max_width``                                 | Maximum width of the active video in pixels.                                               |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``min_height``                                | Minimum height of the active video in lines.                                               |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``max_height``                                | Maximum height of the active video in lines.                                               |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u64                                         | ``min_pixelclock``                            | Minimum pixelclock frequency in Hz.                                                        |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u64                                         | ``max_pixelclock``                            | Maximum pixelclock frequency in Hz.                                                        |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``standards``                                 | The video standard(s) supported by the hardware. See :ref:`dv-bt-standards`   for a list   |
+    |                                               |                                               | of standards.                                                                              |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``capabilities``                              | Several flags giving more information about the capabilities. See                          |
+    |                                               |                                               | :ref:`dv-bt-cap-capabilities`   for a description of the flags.                            |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+    | __u32                                         | ``reserved``  [16]                            | Reserved for future extensions. Drivers must set the array to zero.                        |
+    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+
+
+
+.. _v4l2-dv-timings-cap:
+
+.. table:: struct v4l2_dv_timings_cap
+
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    | __u32                                                        | ``type``                                                     | Type of DV timings as listed in :ref:`dv-timing-types`.      |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    | __u32                                                        | ``pad``                                                      | Pad number as reported by the media controller API. This     |
+    |                                                              |                                                              | field is only used when operating on a subdevice node. When  |
+    |                                                              |                                                              | operating on a video node applications must set this field   |
+    |                                                              |                                                              | to zero.                                                     |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    | __u32                                                        | ``reserved``  [2]                                            | Reserved for future extensions. Drivers must set the array   |
+    |                                                              |                                                              | to zero.                                                     |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    | union                                                        |                                                              |                                                              |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    |                                                              | struct :ref:`v4l2_bt_timings_cap     <v4l2-bt-timings-cap>`  | ``bt``                                                       |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+    |                                                              | __u32                                                        | ``raw_data``  [32]                                           |
+    +--------------------------------------------------------------+--------------------------------------------------------------+--------------------------------------------------------------+
+
+
+
+.. _dv-bt-cap-capabilities:
+
+.. table:: DV BT Timing capabilities
+
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    | Flag                                                                                       | Description                                                                                |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    |                                                                                            |                                                                                            |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    | V4L2_DV_BT_CAP_INTERLACED                                                                  | Interlaced formats are supported.                                                          |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    | V4L2_DV_BT_CAP_PROGRESSIVE                                                                 | Progressive formats are supported.                                                         |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    | V4L2_DV_BT_CAP_REDUCED_BLANKING                                                            | CVT/GTF specific: the timings can make use of reduced blanking (CVT) or the 'Secondary     |
+    |                                                                                            | GTF' curve (GTF).                                                                          |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+    | V4L2_DV_BT_CAP_CUSTOM                                                                      | Can support non-standard timings, i.e. timings not belonging to the standards set in the   |
+    |                                                                                            | ``standards`` field.                                                                       |
+    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+
+
+
+Return Value
+============
+
+On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
+chapter.
