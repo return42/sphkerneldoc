@@ -21,7 +21,7 @@ To create the OPL3 component, you have two functions to call. The first one is a
 
 .. code-block:: c
 
-      struct snd_opl3 &#x22C6;opl3;
+      struct snd_opl3 *opl3;
       snd_opl3_create(card, lport, rport, OPL3_HW_OPL3_XXX,
                       integrated, &opl3);
 
@@ -38,7 +38,7 @@ When the accessing the hardware requires special method instead of the standard 
 
 .. code-block:: c
 
-      struct snd_opl3 &#x22C6;opl3;
+      struct snd_opl3 *opl3;
       snd_opl3_new(card, OPL3_HW_OPL3_XXX, &opl3);
 
 Then set ``command``, ``private_data`` and ``private_free`` for the private access function, the private data and the destructor. The l_port and r_port are not necessarily set.
@@ -52,7 +52,7 @@ If the opl3 instance is created successfully, then create a hwdep device for thi
 
 .. code-block:: c
 
-      struct snd_hwdep &#x22C6;opl3hwdep;
+      struct snd_hwdep *opl3hwdep;
       snd_opl3_hwdep_new(opl3, 0, 1, &opl3hwdep);
 
 The first argument is the ``opl3_t`` instance you created, and the second is the index number, usually 0.
@@ -73,7 +73,7 @@ The creation of the ``hwdep`` instance is done via ``snd_hwdep_new()``.
 
 .. code-block:: c
 
-      struct snd_hwdep &#x22C6;hw;
+      struct snd_hwdep *hw;
       snd_hwdep_new(card, "My HWDEP", 0, &hw);
 
 where the third argument is the index number.
@@ -84,7 +84,7 @@ You can then pass any pointer value to the ``private_data``. If you assign a pri
 
 .. code-block:: c
 
-      struct mydata &#x22C6;p = kmalloc(sizeof(&#x22C6;p), GFP_KERNEL);
+      struct mydata *p = kmalloc(sizeof(*p), GFP_KERNEL);
       hw->private_data = p;
       hw->private_free = mydata_free;
 
@@ -93,9 +93,9 @@ and the implementation of the destructor would be:
 
 .. code-block:: c
 
-      static void mydata_free(struct snd_hwdep &#x22C6;hw)
+      static void mydata_free(struct snd_hwdep *hw)
       {
-              struct mydata &#x22C6;p = hw->private_data;
+              struct mydata *p = hw->private_data;
               kfree(p);
       }
 

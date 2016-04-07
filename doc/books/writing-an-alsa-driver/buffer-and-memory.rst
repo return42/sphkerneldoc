@@ -70,10 +70,10 @@ like below, a bit differently depending whether the direction is playback or cap
 
 .. code-block:: c
 
-      static int playback_copy(struct snd_pcm_substream &#x22C6;substream, int channel,
-                   snd_pcm_uframes_t pos, void &#x22C6;src, snd_pcm_uframes_t count);
-      static int capture_copy(struct snd_pcm_substream &#x22C6;substream, int channel,
-                   snd_pcm_uframes_t pos, void &#x22C6;dst, snd_pcm_uframes_t count);
+      static int playback_copy(struct snd_pcm_substream *substream, int channel,
+                   snd_pcm_uframes_t pos, void *src, snd_pcm_uframes_t count);
+      static int capture_copy(struct snd_pcm_substream *substream, int channel,
+                   snd_pcm_uframes_t pos, void *dst, snd_pcm_uframes_t count);
 
 In the case of interleaved samples, the second argument (``channel``) is not used. The third argument (``pos``) points the current position offset in frames.
 
@@ -110,7 +110,7 @@ The ``silence`` callback is also implemented in a similar way.
 
 .. code-block:: c
 
-      static int silence(struct snd_pcm_substream &#x22C6;substream, int channel,
+      static int silence(struct snd_pcm_substream *substream, int channel,
                          snd_pcm_uframes_t pos, snd_pcm_uframes_t count);
 
 The meanings of arguments are the same as in the ``copy`` callback, although there is no ``src/dst`` argument. In the case of interleaved samples, the channel argument has no
@@ -143,7 +143,7 @@ created as substream->dma_private. You can cast the pointer like:
 
 .. code-block:: c
 
-      struct snd_sg_buf &#x22C6;sgbuf = (struct snd_sg_buf &#x22C6;)substream->dma_private;
+      struct snd_sg_buf *sgbuf = (struct snd_sg_buf *)substream->dma_private;
 
 Then call ``snd_pcm_lib_malloc_pages()`` in the ``hw_params`` callback as well as in the case of normal PCI buffer. The SG-buffer handler will allocate the non-contiguous kernel
 pages of the given size and map them onto the virtually contiguous memory. The virtual pointer is addressed in runtime->dma_area. The physical address (runtime->dma_addr) is set
@@ -170,11 +170,11 @@ The implementation of ``page`` callback would be like this:
 
       #include <linux/vmalloc.h>
 
-      /&#x22C6; get the physical page pointer on the given offset &#x22C6;/
-      static struct page &#x22C6;mychip_page(struct snd_pcm_substream &#x22C6;substream,
+      /* get the physical page pointer on the given offset */
+      static struct page *mychip_page(struct snd_pcm_substream *substream,
                                       unsigned long offset)
       {
-              void &#x22C6;pageptr = substream->runtime->dma_area + offset;
+              void *pageptr = substream->runtime->dma_area + offset;
               return vmalloc_to_page(pageptr);
       }
 

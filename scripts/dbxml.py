@@ -839,6 +839,10 @@ class Code(XMLTag):
         else:
             self.breakFlag = True
 
+# ------------------------------------------------------------------------------
+class Computeroutput(Code):   pass
+# ------------------------------------------------------------------------------
+
 # ==============================================================================
 class LiteralBlock(XMLTag):
     tag = None
@@ -855,6 +859,7 @@ class LiteralBlock(XMLTag):
         ctx.language = node.get("language") or self.language
         # FIXME: pass "*" as &#x22C6;
         text = self.getText(node).replace(u"⋆", "*")
+        text = text.replace("&#x22C6;", "*")  # comes from unnecessary ``<![CDATA[ ...`` usages
         ctx.literal  = self.blockText(self.rstBlock, text).strip("\n")
         return ctx
 
@@ -867,7 +872,6 @@ class LiteralBlock(XMLTag):
 # ------------------------------------------------------------------------------
 class Literallayout(LiteralBlock):    pass
 class Screen(LiteralBlock):           pass
-class Computeroutput(LiteralBlock):   pass
 # ------------------------------------------------------------------------------
 
 # ==============================================================================

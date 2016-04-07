@@ -17,48 +17,48 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
 .. code-block:: c
 
       struct mychip {
-              struct snd_card &#x22C6;card;
-              struct pci_dev &#x22C6;pci;
+              struct snd_card *card;
+              struct pci_dev *pci;
 
               unsigned long port;
               int irq;
       };
 
-      static int snd_mychip_free(struct mychip &#x22C6;chip)
+      static int snd_mychip_free(struct mychip *chip)
       {
-              /&#x22C6; disable hardware here if any &#x22C6;/
-              .... /&#x22C6; (not implemented in this document) &#x22C6;/
+              /* disable hardware here if any */
+              .... /* (not implemented in this document) */
 
-              /&#x22C6; release the irq &#x22C6;/
+              /* release the irq */
               if (chip->irq >= 0)
                       free_irq(chip->irq, chip);
-              /&#x22C6; release the I/O ports & memory &#x22C6;/
+              /* release the I/O ports & memory */
               pci_release_regions(chip->pci);
-              /&#x22C6; disable the PCI entry &#x22C6;/
+              /* disable the PCI entry */
               pci_disable_device(chip->pci);
-              /&#x22C6; release the data &#x22C6;/
+              /* release the data */
               kfree(chip);
               return 0;
       }
 
-      /&#x22C6; chip-specific constructor &#x22C6;/
-      static int snd_mychip_create(struct snd_card &#x22C6;card,
-                                   struct pci_dev &#x22C6;pci,
-                                   struct mychip &#x22C6;&#x22C6;rchip)
+      /* chip-specific constructor */
+      static int snd_mychip_create(struct snd_card *card,
+                                   struct pci_dev *pci,
+                                   struct mychip **rchip)
       {
-              struct mychip &#x22C6;chip;
+              struct mychip *chip;
               int err;
               static struct snd_device_ops ops = {
                      .dev_free = snd_mychip_dev_free,
               };
 
-              &#x22C6;rchip = NULL;
+              *rchip = NULL;
 
-              /&#x22C6; initialize the PCI entry &#x22C6;/
+              /* initialize the PCI entry */
               err = pci_enable_device(pci);
               if (err < 0)
                       return err;
-              /&#x22C6; check PCI availability (28bit DMA) &#x22C6;/
+              /* check PCI availability (28bit DMA) */
               if (pci_set_dma_mask(pci, DMA_BIT_MASK(28)) < 0 ||
                   pci_set_consistent_dma_mask(pci, DMA_BIT_MASK(28)) < 0) {
                       printk(KERN_ERR "error to set 28bit mask DMAn");
@@ -66,18 +66,18 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
                       return -ENXIO;
               }
 
-              chip = kzalloc(sizeof(&#x22C6;chip), GFP_KERNEL);
+              chip = kzalloc(sizeof(*chip), GFP_KERNEL);
               if (chip == NULL) {
                       pci_disable_device(pci);
                       return -ENOMEM;
               }
 
-              /&#x22C6; initialize the stuff &#x22C6;/
+              /* initialize the stuff */
               chip->card = card;
               chip->pci = pci;
               chip->irq = -1;
 
-              /&#x22C6; (1) PCI resource allocation &#x22C6;/
+              /* (1) PCI resource allocation */
               err = pci_request_regions(pci, "My Chip");
               if (err < 0) {
                       kfree(chip);
@@ -93,8 +93,8 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
               }
               chip->irq = pci->irq;
 
-              /&#x22C6; (2) initialization of the chip hardware &#x22C6;/
-              .... /&#x22C6;   (not implemented in this document) &#x22C6;/
+              /* (2) initialization of the chip hardware */
+              .... /*   (not implemented in this document) */
 
               err = snd_device_new(card, SNDRV_DEV_LOWLEVEL, chip, &ops);
               if (err < 0) {
@@ -102,11 +102,11 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
                       return err;
               }
 
-              &#x22C6;rchip = chip;
+              *rchip = chip;
               return 0;
       }
 
-      /&#x22C6; PCI IDs &#x22C6;/
+      /* PCI IDs */
       static struct pci_device_id snd_mychip_ids[] = {
               { PCI_VENDOR_ID_FOO, PCI_DEVICE_ID_BAR,
                 PCI_ANY_ID, PCI_ANY_ID, 0, 0, 0, },
@@ -115,7 +115,7 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
       };
       MODULE_DEVICE_TABLE(pci, snd_mychip_ids);
 
-      /&#x22C6; pci_driver definition &#x22C6;/
+      /* pci_driver definition */
       static struct pci_driver driver = {
               .name = KBUILD_MODNAME,
               .id_table = snd_mychip_ids,
@@ -123,13 +123,13 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
               .remove = snd_mychip_remove,
       };
 
-      /&#x22C6; module initialization &#x22C6;/
+      /* module initialization */
       static int __init alsa_card_mychip_init(void)
       {
               return pci_register_driver(&driver);
       }
 
-      /&#x22C6; module clean up &#x22C6;/
+      /* module clean up */
       static void __exit alsa_card_mychip_exit(void)
       {
               pci_unregister_driver(&driver);
@@ -138,7 +138,7 @@ In this section, we'll complete the chip-specific constructor, destructor and PC
       module_init(alsa_card_mychip_init)
       module_exit(alsa_card_mychip_exit)
 
-      EXPORT_NO_SYMBOLS; /&#x22C6; for old kernels only &#x22C6;/
+      EXPORT_NO_SYMBOLS; /* for old kernels only */
 
 
 .. _pci-resource-some-haftas:
@@ -181,7 +181,7 @@ Now assume that the PCI device has an I/O port with 8 bytes and an interrupt. Th
 .. code-block:: c
 
       struct mychip {
-              struct snd_card &#x22C6;card;
+              struct snd_card *card;
 
               unsigned long port;
               int irq;
@@ -232,9 +232,9 @@ I won't give details about the interrupt handler at this point, but at least its
 
 .. code-block:: c
 
-      static irqreturn_t snd_mychip_interrupt(int irq, void &#x22C6;dev_id)
+      static irqreturn_t snd_mychip_interrupt(int irq, void *dev_id)
       {
-              struct mychip &#x22C6;chip = dev_id;
+              struct mychip *chip = dev_id;
               ....
               return IRQ_HANDLED;
       }
@@ -291,7 +291,7 @@ The management of a memory-mapped region is almost as same as the management of 
       struct mychip {
               ....
               unsigned long iobase_phys;
-              void __iomem &#x22C6;iobase_virt;
+              void __iomem *iobase_virt;
       };
 
 and the allocation would be like below:
@@ -312,7 +312,7 @@ and the corresponding destructor would be:
 
 .. code-block:: c
 
-      static int snd_mychip_free(struct mychip &#x22C6;chip)
+      static int snd_mychip_free(struct mychip *chip)
       {
               ....
               if (chip->iobase_virt)

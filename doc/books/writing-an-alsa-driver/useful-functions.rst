@@ -31,14 +31,7 @@ alsa-driver with ``--with-debug=full`` option. You need to give explicitly ``--w
 snd_BUG()
 =========
 
-It shows the
-
-
-
-::
-
-    BUG?
-message and stack trace as well as ``snd_BUG_ON`` at the point. It's useful to show that a fatal error happens there.
+It shows the ``BUG?`` message and stack trace as well as ``snd_BUG_ON`` at the point. It's useful to show that a fatal error happens there.
 
 When no debug flag is set, this macro is ignored.
 
@@ -63,11 +56,5 @@ or it can be used as the condition,
       if (snd_BUG_ON(non_zero_is_bug))
               return -EINVAL;
 
-The macro takes an conditional expression to evaluate. When ``CONFIG_SND_DEBUG``, is set, if the expression is non-zero, it shows the warning message such as
-
-
-
-::
-
-    BUG? (xxx)
+The macro takes an conditional expression to evaluate. When ``CONFIG_SND_DEBUG``, is set, if the expression is non-zero, it shows the warning message such as ``BUG? (xxx)``
 normally followed by stack trace. In both cases it returns the evaluated value.

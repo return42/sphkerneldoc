@@ -13,7 +13,7 @@ To create a proc file, call ``snd_card_proc_new()``.
 
 .. code-block:: c
 
-      struct snd_info_entry &#x22C6;entry;
+      struct snd_info_entry *entry;
       int err = snd_card_proc_new(card, "my-file", &entry);
 
 where the second argument specifies the name of the proc file to be created. The above example will create a file ``my-file`` under the card directory, e.g.
@@ -35,18 +35,18 @@ callback function, which is defined like
 
 .. code-block:: c
 
-      static void my_proc_read(struct snd_info_entry &#x22C6;entry,
-                               struct snd_info_buffer &#x22C6;buffer);
+      static void my_proc_read(struct snd_info_entry *entry,
+                               struct snd_info_buffer *buffer);
 
 In the read callback, use ``snd_iprintf()`` for output strings, which works just like normal ``printf()``. For example,
 
 
 .. code-block:: c
 
-      static void my_proc_read(struct snd_info_entry &#x22C6;entry,
-                               struct snd_info_buffer &#x22C6;buffer)
+      static void my_proc_read(struct snd_info_entry *entry,
+                               struct snd_info_buffer *buffer)
       {
-              struct my_chip &#x22C6;chip = entry->private_data;
+              struct my_chip *chip = entry->private_data;
 
               snd_iprintf(buffer, "This is my chip!n");
               snd_iprintf(buffer, "Port = %ldn", chip->port);
@@ -91,10 +91,10 @@ The read/write callbacks of raw mode are more direct than the text mode. You nee
 
 .. code-block:: c
 
-      static ssize_t my_file_io_read(struct snd_info_entry &#x22C6;entry,
-                                  void &#x22C6;file_private_data,
-                                  struct file &#x22C6;file,
-                                  char &#x22C6;buf,
+      static ssize_t my_file_io_read(struct snd_info_entry *entry,
+                                  void *file_private_data,
+                                  struct file *file,
+                                  char *buf,
                                   size_t count,
                                   loff_t pos)
       {

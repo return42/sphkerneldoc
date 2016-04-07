@@ -38,7 +38,7 @@ The example code below does not include any hardware access routines but shows o
       #include <sound/pcm.h>
       ....
 
-      /&#x22C6; hardware definition &#x22C6;/
+      /* hardware definition */
       static struct snd_pcm_hardware snd_mychip_playback_hw = {
               .info = (SNDRV_PCM_INFO_MMAP |
                        SNDRV_PCM_INFO_INTERLEAVED |
@@ -57,7 +57,7 @@ The example code below does not include any hardware access routines but shows o
               .periods_max =      1024,
       };
 
-      /&#x22C6; hardware definition &#x22C6;/
+      /* hardware definition */
       static struct snd_pcm_hardware snd_mychip_capture_hw = {
               .info = (SNDRV_PCM_INFO_MMAP |
                        SNDRV_PCM_INFO_INTERLEAVED |
@@ -76,73 +76,73 @@ The example code below does not include any hardware access routines but shows o
               .periods_max =      1024,
       };
 
-      /&#x22C6; open callback &#x22C6;/
-      static int snd_mychip_playback_open(struct snd_pcm_substream &#x22C6;substream)
+      /* open callback */
+      static int snd_mychip_playback_open(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              struct snd_pcm_runtime &#x22C6;runtime = substream->runtime;
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              struct snd_pcm_runtime *runtime = substream->runtime;
 
               runtime->hw = snd_mychip_playback_hw;
-              /&#x22C6; more hardware-initialization will be done here &#x22C6;/
+              /* more hardware-initialization will be done here */
               ....
               return 0;
       }
 
-      /&#x22C6; close callback &#x22C6;/
-      static int snd_mychip_playback_close(struct snd_pcm_substream &#x22C6;substream)
+      /* close callback */
+      static int snd_mychip_playback_close(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              /&#x22C6; the hardware-specific codes will be here &#x22C6;/
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              /* the hardware-specific codes will be here */
               ....
               return 0;
 
       }
 
-      /&#x22C6; open callback &#x22C6;/
-      static int snd_mychip_capture_open(struct snd_pcm_substream &#x22C6;substream)
+      /* open callback */
+      static int snd_mychip_capture_open(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              struct snd_pcm_runtime &#x22C6;runtime = substream->runtime;
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              struct snd_pcm_runtime *runtime = substream->runtime;
 
               runtime->hw = snd_mychip_capture_hw;
-              /&#x22C6; more hardware-initialization will be done here &#x22C6;/
+              /* more hardware-initialization will be done here */
               ....
               return 0;
       }
 
-      /&#x22C6; close callback &#x22C6;/
-      static int snd_mychip_capture_close(struct snd_pcm_substream &#x22C6;substream)
+      /* close callback */
+      static int snd_mychip_capture_close(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              /&#x22C6; the hardware-specific codes will be here &#x22C6;/
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              /* the hardware-specific codes will be here */
               ....
               return 0;
 
       }
 
-      /&#x22C6; hw_params callback &#x22C6;/
-      static int snd_mychip_pcm_hw_params(struct snd_pcm_substream &#x22C6;substream,
-                                   struct snd_pcm_hw_params &#x22C6;hw_params)
+      /* hw_params callback */
+      static int snd_mychip_pcm_hw_params(struct snd_pcm_substream *substream,
+                                   struct snd_pcm_hw_params *hw_params)
       {
               return snd_pcm_lib_malloc_pages(substream,
                                          params_buffer_bytes(hw_params));
       }
 
-      /&#x22C6; hw_free callback &#x22C6;/
-      static int snd_mychip_pcm_hw_free(struct snd_pcm_substream &#x22C6;substream)
+      /* hw_free callback */
+      static int snd_mychip_pcm_hw_free(struct snd_pcm_substream *substream)
       {
               return snd_pcm_lib_free_pages(substream);
       }
 
-      /&#x22C6; prepare callback &#x22C6;/
-      static int snd_mychip_pcm_prepare(struct snd_pcm_substream &#x22C6;substream)
+      /* prepare callback */
+      static int snd_mychip_pcm_prepare(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              struct snd_pcm_runtime &#x22C6;runtime = substream->runtime;
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              struct snd_pcm_runtime *runtime = substream->runtime;
 
-              /&#x22C6; set up the hardware with the current configuration
-               &#x22C6; for example...
-               &#x22C6;/
+              /* set up the hardware with the current configuration
+               * for example...
+               */
               mychip_set_sample_format(chip, runtime->format);
               mychip_set_sample_rate(chip, runtime->rate);
               mychip_set_channels(chip, runtime->channels);
@@ -152,17 +152,17 @@ The example code below does not include any hardware access routines but shows o
               return 0;
       }
 
-      /&#x22C6; trigger callback &#x22C6;/
-      static int snd_mychip_pcm_trigger(struct snd_pcm_substream &#x22C6;substream,
+      /* trigger callback */
+      static int snd_mychip_pcm_trigger(struct snd_pcm_substream *substream,
                                         int cmd)
       {
               switch (cmd) {
               case SNDRV_PCM_TRIGGER_START:
-                      /&#x22C6; do something to start the PCM engine &#x22C6;/
+                      /* do something to start the PCM engine */
                       ....
                       break;
               case SNDRV_PCM_TRIGGER_STOP:
-                      /&#x22C6; do something to stop the PCM engine &#x22C6;/
+                      /* do something to stop the PCM engine */
                       ....
                       break;
               default:
@@ -170,19 +170,19 @@ The example code below does not include any hardware access routines but shows o
               }
       }
 
-      /&#x22C6; pointer callback &#x22C6;/
+      /* pointer callback */
       static snd_pcm_uframes_t
-      snd_mychip_pcm_pointer(struct snd_pcm_substream &#x22C6;substream)
+      snd_mychip_pcm_pointer(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
+              struct mychip *chip = snd_pcm_substream_chip(substream);
               unsigned int current_ptr;
 
-              /&#x22C6; get the current hardware pointer &#x22C6;/
+              /* get the current hardware pointer */
               current_ptr = mychip_get_hw_pointer(chip);
               return current_ptr;
       }
 
-      /&#x22C6; operators &#x22C6;/
+      /* operators */
       static struct snd_pcm_ops snd_mychip_playback_ops = {
               .open =        snd_mychip_playback_open,
               .close =       snd_mychip_playback_close,
@@ -194,7 +194,7 @@ The example code below does not include any hardware access routines but shows o
               .pointer =     snd_mychip_pcm_pointer,
       };
 
-      /&#x22C6; operators &#x22C6;/
+      /* operators */
       static struct snd_pcm_ops snd_mychip_capture_ops = {
               .open =        snd_mychip_capture_open,
               .close =       snd_mychip_capture_close,
@@ -206,14 +206,14 @@ The example code below does not include any hardware access routines but shows o
               .pointer =     snd_mychip_pcm_pointer,
       };
 
-      /&#x22C6;
-       &#x22C6;  definitions of capture are omitted here...
-       &#x22C6;/
+      /*
+       *  definitions of capture are omitted here...
+       */
 
-      /&#x22C6; create a pcm device &#x22C6;/
-      static int snd_mychip_new_pcm(struct mychip &#x22C6;chip)
+      /* create a pcm device */
+      static int snd_mychip_new_pcm(struct mychip *chip)
       {
-              struct snd_pcm &#x22C6;pcm;
+              struct snd_pcm *pcm;
               int err;
 
               err = snd_pcm_new(chip->card, "My Chip", 0, 1, 1, &pcm);
@@ -222,16 +222,16 @@ The example code below does not include any hardware access routines but shows o
               pcm->private_data = chip;
               strcpy(pcm->name, "My Chip");
               chip->pcm = pcm;
-              /&#x22C6; set operators &#x22C6;/
+              /* set operators */
               snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_PLAYBACK,
                               &snd_mychip_playback_ops);
               snd_pcm_set_ops(pcm, SNDRV_PCM_STREAM_CAPTURE,
                               &snd_mychip_capture_ops);
-              /&#x22C6; pre-allocation of buffers &#x22C6;/
-              /&#x22C6; NOTE: this may fail &#x22C6;/
+              /* pre-allocation of buffers */
+              /* NOTE: this may fail */
               snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV,
                                                     snd_dma_pci_data(chip->pci),
-                                                    64&#x22C6;1024, 64&#x22C6;1024);
+                                                    64*1024, 64*1024);
               return 0;
       }
 
@@ -246,9 +246,9 @@ A pcm instance is allocated by the ``snd_pcm_new()`` function. It would be bette
 
 .. code-block:: c
 
-      static int snd_mychip_new_pcm(struct mychip &#x22C6;chip)
+      static int snd_mychip_new_pcm(struct mychip *chip)
       {
-              struct snd_pcm &#x22C6;pcm;
+              struct snd_pcm *pcm;
               int err;
 
               err = snd_pcm_new(chip->card, "My Chip", 0, 1, 1, &pcm);
@@ -275,7 +275,7 @@ substream you are referring to, then it can be obtained from struct ``snd_pcm_su
 
 .. code-block:: c
 
-      struct snd_pcm_substream &#x22C6;substream;
+      struct snd_pcm_substream *substream;
       int index = substream->number;
 
 After the pcm is created, you need to set operators for each pcm stream.
@@ -313,7 +313,7 @@ After setting the operators, you probably will want to pre-allocate the buffer. 
 
       snd_pcm_lib_preallocate_pages_for_all(pcm, SNDRV_DMA_TYPE_DEV,
                                             snd_dma_pci_data(chip->pci),
-                                            64&#x22C6;1024, 64&#x22C6;1024);
+                                            64*1024, 64*1024);
 
 It will allocate a buffer up to 64kB as default. Buffer management details will be described in the later section :ref:`Buffer and Memory Management <buffer-and-memory>`.
 
@@ -339,22 +339,22 @@ The destructor would be necessary if you created special records internally and 
 
 .. code-block:: c
 
-      static void mychip_pcm_free(struct snd_pcm &#x22C6;pcm)
+      static void mychip_pcm_free(struct snd_pcm *pcm)
       {
-              struct mychip &#x22C6;chip = snd_pcm_chip(pcm);
-              /&#x22C6; free your own data &#x22C6;/
+              struct mychip *chip = snd_pcm_chip(pcm);
+              /* free your own data */
               kfree(chip->my_private_pcm_data);
-              /&#x22C6; do what you like else &#x22C6;/
+              /* do what you like else */
               ....
       }
 
-      static int snd_mychip_new_pcm(struct mychip &#x22C6;chip)
+      static int snd_mychip_new_pcm(struct mychip *chip)
       {
-              struct snd_pcm &#x22C6;pcm;
+              struct snd_pcm *pcm;
               ....
-              /&#x22C6; allocate your own data &#x22C6;/
+              /* allocate your own data */
               chip->my_private_pcm_data = kmalloc(...);
-              /&#x22C6; set the destructor &#x22C6;/
+              /* set the destructor */
               pcm->private_data = chip;
               pcm->private_free = mychip_pcm_free;
               ....
@@ -375,25 +375,25 @@ The definition of runtime instance is found in ``<sound/pcm.h>``. Here are the c
 .. code-block:: c
 
     struct _snd_pcm_runtime {
-        /&#x22C6; -- Status -- &#x22C6;/
-        struct snd_pcm_substream &#x22C6;trigger_master;
-        snd_timestamp_t trigger_tstamp; /&#x22C6; trigger timestamp &#x22C6;/
+        /* -- Status -- */
+        struct snd_pcm_substream *trigger_master;
+        snd_timestamp_t trigger_tstamp; /* trigger timestamp */
         int overrange;
         snd_pcm_uframes_t avail_max;
-        snd_pcm_uframes_t hw_ptr_base;  /&#x22C6; Position at buffer restart &#x22C6;/
-        snd_pcm_uframes_t hw_ptr_interrupt; /&#x22C6; Position at interrupt time&#x22C6;/
+        snd_pcm_uframes_t hw_ptr_base;  /* Position at buffer restart */
+        snd_pcm_uframes_t hw_ptr_interrupt; /* Position at interrupt time*/
 
-        /&#x22C6; -- HW params -- &#x22C6;/
-        snd_pcm_access_t access;    /&#x22C6; access mode &#x22C6;/
-        snd_pcm_format_t format;    /&#x22C6; SNDRV_PCM_FORMAT_&#x22C6; &#x22C6;/
-        snd_pcm_subformat_t subformat;  /&#x22C6; subformat &#x22C6;/
-        unsigned int rate;      /&#x22C6; rate in Hz &#x22C6;/
-        unsigned int channels;      /&#x22C6; channels &#x22C6;/
-        snd_pcm_uframes_t period_size;  /&#x22C6; period size &#x22C6;/
-        unsigned int periods;       /&#x22C6; periods &#x22C6;/
-        snd_pcm_uframes_t buffer_size;  /&#x22C6; buffer size &#x22C6;/
-        unsigned int tick_time;     /&#x22C6; tick time &#x22C6;/
-        snd_pcm_uframes_t min_align;    /&#x22C6; Min alignment for the format &#x22C6;/
+        /* -- HW params -- */
+        snd_pcm_access_t access;    /* access mode */
+        snd_pcm_format_t format;    /* SNDRV_PCM_FORMAT_* */
+        snd_pcm_subformat_t subformat;  /* subformat */
+        unsigned int rate;      /* rate in Hz */
+        unsigned int channels;      /* channels */
+        snd_pcm_uframes_t period_size;  /* period size */
+        unsigned int periods;       /* periods */
+        snd_pcm_uframes_t buffer_size;  /* buffer size */
+        unsigned int tick_time;     /* tick time */
+        snd_pcm_uframes_t min_align;    /* Min alignment for the format */
         size_t byte_align;
         unsigned int frame_bits;
         unsigned int sample_bits;
@@ -401,53 +401,53 @@ The definition of runtime instance is found in ``<sound/pcm.h>``. Here are the c
         unsigned int rate_num;
         unsigned int rate_den;
 
-        /&#x22C6; -- SW params -- &#x22C6;/
-        struct timespec tstamp_mode;    /&#x22C6; mmap timestamp is updated &#x22C6;/
+        /* -- SW params -- */
+        struct timespec tstamp_mode;    /* mmap timestamp is updated */
         unsigned int period_step;
-        unsigned int sleep_min;     /&#x22C6; min ticks to sleep &#x22C6;/
+        unsigned int sleep_min;     /* min ticks to sleep */
         snd_pcm_uframes_t start_threshold;
         snd_pcm_uframes_t stop_threshold;
-        snd_pcm_uframes_t silence_threshold; /&#x22C6; Silence filling happens when
-                            noise is nearest than this &#x22C6;/
-        snd_pcm_uframes_t silence_size; /&#x22C6; Silence filling size &#x22C6;/
-        snd_pcm_uframes_t boundary; /&#x22C6; pointers wrap point &#x22C6;/
+        snd_pcm_uframes_t silence_threshold; /* Silence filling happens when
+                            noise is nearest than this */
+        snd_pcm_uframes_t silence_size; /* Silence filling size */
+        snd_pcm_uframes_t boundary; /* pointers wrap point */
 
         snd_pcm_uframes_t silenced_start;
         snd_pcm_uframes_t silenced_size;
 
-        snd_pcm_sync_id_t sync;     /&#x22C6; hardware synchronization ID &#x22C6;/
+        snd_pcm_sync_id_t sync;     /* hardware synchronization ID */
 
-        /&#x22C6; -- mmap -- &#x22C6;/
-        volatile struct snd_pcm_mmap_status &#x22C6;status;
-        volatile struct snd_pcm_mmap_control &#x22C6;control;
+        /* -- mmap -- */
+        volatile struct snd_pcm_mmap_status *status;
+        volatile struct snd_pcm_mmap_control *control;
         atomic_t mmap_count;
 
-        /&#x22C6; -- locking / scheduling -- &#x22C6;/
+        /* -- locking / scheduling -- */
         spinlock_t lock;
         wait_queue_head_t sleep;
         struct timer_list tick_timer;
-        struct fasync_struct &#x22C6;fasync;
+        struct fasync_struct *fasync;
 
-        /&#x22C6; -- private section -- &#x22C6;/
-        void &#x22C6;private_data;
-        void (&#x22C6;private_free)(struct snd_pcm_runtime &#x22C6;runtime);
+        /* -- private section -- */
+        void *private_data;
+        void (*private_free)(struct snd_pcm_runtime *runtime);
 
-        /&#x22C6; -- hardware description -- &#x22C6;/
+        /* -- hardware description -- */
         struct snd_pcm_hardware hw;
         struct snd_pcm_hw_constraints hw_constraints;
 
-        /&#x22C6; -- timer -- &#x22C6;/
-        unsigned int timer_resolution;  /&#x22C6; timer resolution &#x22C6;/
+        /* -- timer -- */
+        unsigned int timer_resolution;  /* timer resolution */
 
-        /&#x22C6; -- DMA -- &#x22C6;/
-        unsigned char &#x22C6;dma_area; /&#x22C6; DMA area &#x22C6;/
-        dma_addr_t dma_addr;        /&#x22C6; physical bus address (not accessible from main CPU) &#x22C6;/
-        size_t dma_bytes;       /&#x22C6; size of DMA area &#x22C6;/
+        /* -- DMA -- */
+        unsigned char *dma_area;    /* DMA area */
+        dma_addr_t dma_addr;        /* physical bus address (not accessible from main CPU) */
+        size_t dma_bytes;       /* size of DMA area */
 
-        struct snd_dma_buffer &#x22C6;dma_buffer_p; /&#x22C6; allocated buffer &#x22C6;/
+        struct snd_dma_buffer *dma_buffer_p;    /* allocated buffer */
 
     #if defined(CONFIG_SND_PCM_OSS) || defined(CONFIG_SND_PCM_OSS_MODULE)
-        /&#x22C6; -- OSS things -- &#x22C6;/
+        /* -- OSS things -- */
         struct snd_pcm_oss_runtime oss;
     #endif
     };
@@ -472,9 +472,9 @@ can still use the same hardware descriptor and change the channels_max later:
 
 .. code-block:: c
 
-              struct snd_pcm_runtime &#x22C6;runtime = substream->runtime;
+              struct snd_pcm_runtime *runtime = substream->runtime;
               ...
-              runtime->hw = snd_mychip_playback_hw; /&#x22C6; common definition &#x22C6;/
+              runtime->hw = snd_mychip_playback_hw; /* common definition */
               if (chip->model == VERY_OLD_ONE)
                       runtime->hw.channels_max = 1;
 
@@ -600,11 +600,11 @@ Don't mix this with ``pcm->private_data``. The ``pcm->private_data`` usually poi
 
 .. code-block:: c
 
-      static int snd_xxx_open(struct snd_pcm_substream &#x22C6;substream)
+      static int snd_xxx_open(struct snd_pcm_substream *substream)
       {
-              struct my_pcm_data &#x22C6;data;
+              struct my_pcm_data *data;
               ....
-              data = kmalloc(sizeof(&#x22C6;data), GFP_KERNEL);
+              data = kmalloc(sizeof(*data), GFP_KERNEL);
               substream->runtime->private_data = data;
               ....
       }
@@ -627,7 +627,7 @@ macro.
 .. code-block:: c
 
       int xxx() {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
+              struct mychip *chip = snd_pcm_substream_chip(substream);
               ....
       }
 
@@ -644,7 +644,7 @@ open callback
 
 .. code-block:: c
 
-      static int snd_xxx_open(struct snd_pcm_substream &#x22C6;substream);
+      static int snd_xxx_open(struct snd_pcm_substream *substream);
 
 This is called when a pcm substream is opened.
 
@@ -653,10 +653,10 @@ At least, here you have to initialize the runtime->hw record. Typically, this is
 
 .. code-block:: c
 
-      static int snd_xxx_open(struct snd_pcm_substream &#x22C6;substream)
+      static int snd_xxx_open(struct snd_pcm_substream *substream)
       {
-              struct mychip &#x22C6;chip = snd_pcm_substream_chip(substream);
-              struct snd_pcm_runtime &#x22C6;runtime = substream->runtime;
+              struct mychip *chip = snd_pcm_substream_chip(substream);
+              struct snd_pcm_runtime *runtime = substream->runtime;
 
               runtime->hw = snd_mychip_playback_hw;
               return 0;
@@ -677,7 +677,7 @@ close callback
 
 .. code-block:: c
 
-      static int snd_xxx_close(struct snd_pcm_substream &#x22C6;substream);
+      static int snd_xxx_close(struct snd_pcm_substream *substream);
 
 Obviously, this is called when a pcm substream is closed.
 
@@ -686,7 +686,7 @@ Any private instance for a pcm substream allocated in the open callback will be 
 
 .. code-block:: c
 
-      static int snd_xxx_close(struct snd_pcm_substream &#x22C6;substream)
+      static int snd_xxx_close(struct snd_pcm_substream *substream)
       {
               ....
               kfree(substream->runtime->private_data);
@@ -710,8 +710,8 @@ hw_params callback
 
 .. code-block:: c
 
-      static int snd_xxx_hw_params(struct snd_pcm_substream &#x22C6;substream,
-                                   struct snd_pcm_hw_params &#x22C6;hw_params);
+      static int snd_xxx_hw_params(struct snd_pcm_substream *substream,
+                                   struct snd_pcm_hw_params *hw_params);
 
 This is called when the hardware parameter (``hw_params``) is set up by the application, that is, once when the buffer size, the period size, the format, etc. are defined for the
 pcm substream.
@@ -746,7 +746,7 @@ hw_free callback
 
 .. code-block:: c
 
-      static int snd_xxx_hw_free(struct snd_pcm_substream &#x22C6;substream);
+      static int snd_xxx_hw_free(struct snd_pcm_substream *substream);
 
 This is called to release the resources allocated via ``hw_params``. For example, releasing the buffer via ``snd_pcm_lib_malloc_pages()`` is done by calling the following:
 
@@ -766,7 +766,7 @@ prepare callback
 
 .. code-block:: c
 
-      static int snd_xxx_prepare(struct snd_pcm_substream &#x22C6;substream);
+      static int snd_xxx_prepare(struct snd_pcm_substream *substream);
 
 This callback is called when the pcm is “prepared”. You can set the format type, sample rate, etc. here. The difference from ``hw_params`` is that the ``prepare`` callback will be
 called each time ``snd_pcm_prepare()`` is called, i.e. when recovering after underruns, etc.
@@ -788,7 +788,7 @@ trigger callback
 
 .. code-block:: c
 
-      static int snd_xxx_trigger(struct snd_pcm_substream &#x22C6;substream, int cmd);
+      static int snd_xxx_trigger(struct snd_pcm_substream *substream, int cmd);
 
 This is called when the pcm is started, stopped or paused.
 
@@ -799,10 +799,10 @@ Which action is specified in the second argument, ``SNDRV_PCM_TRIGGER_XXX`` in `
 
       switch (cmd) {
       case SNDRV_PCM_TRIGGER_START:
-              /&#x22C6; do something to start the PCM engine &#x22C6;/
+              /* do something to start the PCM engine */
               break;
       case SNDRV_PCM_TRIGGER_STOP:
-              /&#x22C6; do something to stop the PCM engine &#x22C6;/
+              /* do something to stop the PCM engine */
               break;
       default:
               return -EINVAL;
@@ -827,7 +827,7 @@ pointer callback
 
 .. code-block:: c
 
-      static snd_pcm_uframes_t snd_xxx_pointer(struct snd_pcm_substream &#x22C6;substream)
+      static snd_pcm_uframes_t snd_xxx_pointer(struct snd_pcm_substream *substream)
 
 This callback is called when the PCM middle layer inquires the current hardware position on the buffer. The position must be returned in frames, ranging from 0 to buffer_size - 1.
 
@@ -899,17 +899,17 @@ Typical code would be like:
 
 .. code-block:: c
 
-      static irqreturn_t snd_mychip_interrupt(int irq, void &#x22C6;dev_id)
+      static irqreturn_t snd_mychip_interrupt(int irq, void *dev_id)
       {
-              struct mychip &#x22C6;chip = dev_id;
+              struct mychip *chip = dev_id;
               spin_lock(&chip->lock);
               ....
               if (pcm_irq_invoked(chip)) {
-                      /&#x22C6; call updater, unlock before it &#x22C6;/
+                      /* call updater, unlock before it */
                       spin_unlock(&chip->lock);
                       snd_pcm_period_elapsed(chip->substream);
                       spin_lock(&chip->lock);
-                      /&#x22C6; acknowledge the interrupt if necessary &#x22C6;/
+                      /* acknowledge the interrupt if necessary */
               }
               ....
               spin_unlock(&chip->lock);
@@ -931,37 +931,37 @@ Typical code would be like the following.
 
 .. code-block:: c
 
-      static irqreturn_t snd_mychip_interrupt(int irq, void &#x22C6;dev_id)
+      static irqreturn_t snd_mychip_interrupt(int irq, void *dev_id)
       {
-              struct mychip &#x22C6;chip = dev_id;
+              struct mychip *chip = dev_id;
               spin_lock(&chip->lock);
               ....
               if (pcm_irq_invoked(chip)) {
                       unsigned int last_ptr, size;
-                      /&#x22C6; get the current hardware pointer (in frames) &#x22C6;/
+                      /* get the current hardware pointer (in frames) */
                       last_ptr = get_hw_ptr(chip);
-                      /&#x22C6; calculate the processed frames since the
-                       &#x22C6; last update
-                       &#x22C6;/
+                      /* calculate the processed frames since the
+                       * last update
+                       */
                       if (last_ptr < chip->last_ptr)
                               size = runtime->buffer_size + last_ptr
                                        - chip->last_ptr;
                       else
                               size = last_ptr - chip->last_ptr;
-                      /&#x22C6; remember the last updated point &#x22C6;/
+                      /* remember the last updated point */
                       chip->last_ptr = last_ptr;
-                      /&#x22C6; accumulate the size &#x22C6;/
+                      /* accumulate the size */
                       chip->size += size;
-                      /&#x22C6; over the period boundary? &#x22C6;/
+                      /* over the period boundary? */
                       if (chip->size >= runtime->period_size) {
-                              /&#x22C6; reset the accumulator &#x22C6;/
+                              /* reset the accumulator */
                               chip->size %= runtime->period_size;
-                              /&#x22C6; call updater &#x22C6;/
+                              /* call updater */
                               spin_unlock(&chip->lock);
                               snd_pcm_period_elapsed(substream);
                               spin_lock(&chip->lock);
                       }
-                      /&#x22C6; acknowledge the interrupt if necessary &#x22C6;/
+                      /* acknowledge the interrupt if necessary */
               }
               ....
               spin_unlock(&chip->lock);
@@ -1021,7 +1021,7 @@ For example, in order to restrict the sample rates in the some supported values,
               .mask = 0,
       };
 
-      static int snd_mychip_pcm_open(struct snd_pcm_substream &#x22C6;substream)
+      static int snd_mychip_pcm_open(struct snd_pcm_substream *substream)
       {
               int err;
               ....
@@ -1040,12 +1040,12 @@ You can build a rule like this:
 
 .. code-block:: c
 
-      static int hw_rule_channels_by_format(struct snd_pcm_hw_params &#x22C6;params,
-                                            struct snd_pcm_hw_rule &#x22C6;rule)
+      static int hw_rule_channels_by_format(struct snd_pcm_hw_params *params,
+                                            struct snd_pcm_hw_rule *rule)
       {
-              struct snd_interval &#x22C6;c = hw_param_interval(params,
+              struct snd_interval *c = hw_param_interval(params,
                             SNDRV_PCM_HW_PARAM_CHANNELS);
-              struct snd_mask &#x22C6;f = hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT);
+              struct snd_mask *f = hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT);
               struct snd_interval ch;
 
               snd_interval_any(&ch);
@@ -1072,15 +1072,15 @@ setting the format. Thus you also need to define the inverse rule:
 
 .. code-block:: c
 
-      static int hw_rule_format_by_channels(struct snd_pcm_hw_params &#x22C6;params,
-                                            struct snd_pcm_hw_rule &#x22C6;rule)
+      static int hw_rule_format_by_channels(struct snd_pcm_hw_params *params,
+                                            struct snd_pcm_hw_rule *rule)
       {
-              struct snd_interval &#x22C6;c = hw_param_interval(params,
+              struct snd_interval *c = hw_param_interval(params,
                     SNDRV_PCM_HW_PARAM_CHANNELS);
-              struct snd_mask &#x22C6;f = hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT);
+              struct snd_mask *f = hw_param_mask(params, SNDRV_PCM_HW_PARAM_FORMAT);
               struct snd_mask fmt;
 
-              snd_mask_any(&fmt);    /&#x22C6; Init the struct &#x22C6;/
+              snd_mask_any(&fmt);    /* Init the struct */
               if (c->min < 2) {
                       fmt.bits[0] &= SNDRV_PCM_FMTBIT_S16_LE;
                       return snd_mask_refine(f, &fmt);

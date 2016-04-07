@@ -150,8 +150,8 @@ control with a single element:
 
 .. code-block:: c
 
-      static int snd_myctl_mono_info(struct snd_kcontrol &#x22C6;kcontrol,
-                              struct snd_ctl_elem_info &#x22C6;uinfo)
+      static int snd_myctl_mono_info(struct snd_kcontrol *kcontrol,
+                              struct snd_ctl_elem_info *uinfo)
       {
               uinfo->type = SNDRV_CTL_ELEM_TYPE_BOOLEAN;
               uinfo->count = 1;
@@ -169,10 +169,10 @@ The enumerated type is a bit different from others. You'll need to set the strin
 
 .. code-block:: c
 
-      static int snd_myctl_enum_info(struct snd_kcontrol &#x22C6;kcontrol,
-                              struct snd_ctl_elem_info &#x22C6;uinfo)
+      static int snd_myctl_enum_info(struct snd_kcontrol *kcontrol,
+                              struct snd_ctl_elem_info *uinfo)
       {
-              static char &#x22C6;texts[4] = {
+              static char *texts[4] = {
                       "First", "Second", "Third", "Fourth"
               };
               uinfo->type = SNDRV_CTL_ELEM_TYPE_ENUMERATED;
@@ -191,10 +191,10 @@ argument; it's a matter of taste.)
 
 .. code-block:: c
 
-      static int snd_myctl_enum_info(struct snd_kcontrol &#x22C6;kcontrol,
-                              struct snd_ctl_elem_info &#x22C6;uinfo)
+      static int snd_myctl_enum_info(struct snd_kcontrol *kcontrol,
+                              struct snd_ctl_elem_info *uinfo)
       {
-              static char &#x22C6;texts[4] = {
+              static char *texts[4] = {
                       "First", "Second", "Third", "Fourth"
               };
               return snd_ctl_enum_info(uinfo, 1, 4, texts);
@@ -216,10 +216,10 @@ For example,
 
 .. code-block:: c
 
-      static int snd_myctl_get(struct snd_kcontrol &#x22C6;kcontrol,
-                               struct snd_ctl_elem_value &#x22C6;ucontrol)
+      static int snd_myctl_get(struct snd_kcontrol *kcontrol,
+                               struct snd_ctl_elem_value *ucontrol)
       {
-              struct mychip &#x22C6;chip = snd_kcontrol_chip(kcontrol);
+              struct mychip *chip = snd_kcontrol_chip(kcontrol);
               ucontrol->value.integer.value[0] = get_some_value(chip);
               return 0;
       }
@@ -237,8 +237,8 @@ and is retrieved in callbacks like
 
 .. code-block:: c
 
-      static int snd_sbmixer_get_single(struct snd_kcontrol &#x22C6;kcontrol,
-                                        struct snd_ctl_elem_value &#x22C6;ucontrol)
+      static int snd_sbmixer_get_single(struct snd_kcontrol *kcontrol,
+                                        struct snd_ctl_elem_value *ucontrol)
       {
               int reg = kcontrol->private_value & 0xff;
               int shift = (kcontrol->private_value >> 16) & 0xff;
@@ -262,10 +262,10 @@ For example,
 
 .. code-block:: c
 
-      static int snd_myctl_put(struct snd_kcontrol &#x22C6;kcontrol,
-                               struct snd_ctl_elem_value &#x22C6;ucontrol)
+      static int snd_myctl_put(struct snd_kcontrol *kcontrol,
+                               struct snd_ctl_elem_value *ucontrol)
       {
-              struct mychip &#x22C6;chip = snd_kcontrol_chip(kcontrol);
+              struct mychip *chip = snd_kcontrol_chip(kcontrol);
               int changed = 0;
               if (chip->current_value !=
                    ucontrol->value.integer.value[0]) {

@@ -28,7 +28,7 @@ To create a rawmidi device, call the ``snd_rawmidi_new`` function:
 
 .. code-block:: c
 
-      struct snd_rawmidi &#x22C6;rmidi;
+      struct snd_rawmidi *rmidi;
       err = snd_rawmidi_new(chip->card, "MyMIDI", 0, outs, ins, &rmidi);
       if (err < 0)
               return err;
@@ -74,13 +74,13 @@ If there are more than one substream, you should give a unique name to each of t
 
 .. code-block:: c
 
-      struct snd_rawmidi_substream &#x22C6;substream;
+      struct snd_rawmidi_substream *substream;
       list_for_each_entry(substream,
                           &rmidi->streams[SNDRV_RAWMIDI_STREAM_OUTPUT].substreams,
                           list {
               sprintf(substream->name, "My MIDI Port %d", substream->number + 1);
       }
-      /&#x22C6; same for SNDRV_RAWMIDI_STREAM_INPUT &#x22C6;/
+      /* same for SNDRV_RAWMIDI_STREAM_INPUT */
 
 
 .. _rawmidi-interface-callbacks:
@@ -95,7 +95,7 @@ If there is more than one port, your callbacks can determine the port index from
 
 .. code-block:: c
 
-      struct snd_rawmidi_substream &#x22C6;substream;
+      struct snd_rawmidi_substream *substream;
       int index = substream->number;
 
 
@@ -107,7 +107,7 @@ open callback
 
 .. code-block:: c
 
-      static int snd_xxx_open(struct snd_rawmidi_substream &#x22C6;substream);
+      static int snd_xxx_open(struct snd_rawmidi_substream *substream);
 
 This is called when a substream is opened. You can initialize the hardware here, but you shouldn't start transmitting/receiving data yet.
 
@@ -120,7 +120,7 @@ close callback
 
 .. code-block:: c
 
-      static int snd_xxx_close(struct snd_rawmidi_substream &#x22C6;substream);
+      static int snd_xxx_close(struct snd_rawmidi_substream *substream);
 
 Guess what.
 
@@ -135,7 +135,7 @@ trigger callback for output substreams
 
 .. code-block:: c
 
-      static void snd_xxx_output_trigger(struct snd_rawmidi_substream &#x22C6;substream, int up);
+      static void snd_xxx_output_trigger(struct snd_rawmidi_substream *substream, int up);
 
 This is called with a nonzero ``up`` parameter when there is some data in the substream buffer that must be transmitted.
 
@@ -150,7 +150,7 @@ there are no more data in the buffer. After the data have been transmitted succe
               if (snd_mychip_try_to_transmit(data))
                       snd_rawmidi_transmit_ack(substream, 1);
               else
-                      break; /&#x22C6; hardware FIFO full &#x22C6;/
+                      break; /* hardware FIFO full */
       }
 
 If you know beforehand that the hardware will accept data, you can use the ``snd_rawmidi_transmit`` function which reads some data and removes them from the buffer at once:
@@ -161,7 +161,7 @@ If you know beforehand that the hardware will accept data, you can use the ``snd
       while (snd_mychip_transmit_possible()) {
               unsigned char data;
               if (snd_rawmidi_transmit(substream, &data, 1) != 1)
-                      break; /&#x22C6; no more data &#x22C6;/
+                      break; /* no more data */
               snd_mychip_transmit(data);
       }
 
@@ -181,7 +181,7 @@ trigger callback for input substreams
 
 .. code-block:: c
 
-      static void snd_xxx_input_trigger(struct snd_rawmidi_substream &#x22C6;substream, int up);
+      static void snd_xxx_input_trigger(struct snd_rawmidi_substream *substream, int up);
 
 This is called with a nonzero ``up`` parameter to enable receiving data, or with a zero ``up`` parameter do disable receiving data.
 
@@ -210,7 +210,7 @@ drain callback
 
 .. code-block:: c
 
-      static void snd_xxx_drain(struct snd_rawmidi_substream &#x22C6;substream);
+      static void snd_xxx_drain(struct snd_rawmidi_substream *substream);
 
 This is only used with output substreams. This function should wait until all data read from the substream buffer have been transmitted. This ensures that the device can be closed
 and the driver unloaded without losing data.

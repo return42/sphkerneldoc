@@ -14,7 +14,7 @@ programming:
 .. code-block:: c
 
       static int index[SNDRV_CARDS] = SNDRV_DEFAULT_IDX;
-      static char &#x22C6;id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
+      static char *id[SNDRV_CARDS] = SNDRV_DEFAULT_STR;
       static int enable[SNDRV_CARDS] = SNDRV_DEFAULT_ENABLE_PNP;
 
 If the module supports only a single card, they could be single variables, instead. ``enable`` option is not always necessary in this case, but it would be better to have a dummy

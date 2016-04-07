@@ -27,7 +27,7 @@ To create a rawmidi object, call ``snd_mpu401_uart_new()``.
 
 .. code-block:: c
 
-      struct snd_rawmidi &#x22C6;rmidi;
+      struct snd_rawmidi *rmidi;
       snd_mpu401_uart_new(card, 0, MPU401_HW_MPU401, port, info_flags,
                           irq, &rmidi);
 
@@ -58,7 +58,7 @@ afterward. However, ``snd_mpu401`` pointer is not returned explicitly by ``snd_m
 
 .. code-block:: c
 
-      struct snd_mpu401 &#x22C6;mpu;
+      struct snd_mpu401 *mpu;
       mpu = rmidi->private_data;
 
 and reset the cport as you like:

@@ -23,30 +23,30 @@ Full Code Example
 
       struct mychip {
               ....
-              struct snd_ac97 &#x22C6;ac97;
+              struct snd_ac97 *ac97;
               ....
       };
 
-      static unsigned short snd_mychip_ac97_read(struct snd_ac97 &#x22C6;ac97,
+      static unsigned short snd_mychip_ac97_read(struct snd_ac97 *ac97,
                                                  unsigned short reg)
       {
-              struct mychip &#x22C6;chip = ac97->private_data;
+              struct mychip *chip = ac97->private_data;
               ....
-              /&#x22C6; read a register value here from the codec &#x22C6;/
+              /* read a register value here from the codec */
               return the_register_value;
       }
 
-      static void snd_mychip_ac97_write(struct snd_ac97 &#x22C6;ac97,
+      static void snd_mychip_ac97_write(struct snd_ac97 *ac97,
                                        unsigned short reg, unsigned short val)
       {
-              struct mychip &#x22C6;chip = ac97->private_data;
+              struct mychip *chip = ac97->private_data;
               ....
-              /&#x22C6; write the given register value to the codec &#x22C6;/
+              /* write the given register value to the codec */
       }
 
-      static int snd_mychip_ac97(struct mychip &#x22C6;chip)
+      static int snd_mychip_ac97(struct mychip *chip)
       {
-              struct snd_ac97_bus &#x22C6;bus;
+              struct snd_ac97_bus *bus;
               struct snd_ac97_template ac97;
               int err;
               static struct snd_ac97_bus_ops ops = {
@@ -73,7 +73,7 @@ To create an ac97 instance, first call ``snd_ac97_bus`` with an ``ac97_bus_ops_t
 
 .. code-block:: c
 
-      struct snd_ac97_bus &#x22C6;bus;
+      struct snd_ac97_bus *bus;
       static struct snd_ac97_bus_ops ops = {
             .write = snd_mychip_ac97_write,
             .read = snd_mychip_ac97_read,
@@ -112,10 +112,10 @@ The ``read`` callback returns the register value specified in the argument.
 
 .. code-block:: c
 
-      static unsigned short snd_mychip_ac97_read(struct snd_ac97 &#x22C6;ac97,
+      static unsigned short snd_mychip_ac97_read(struct snd_ac97 *ac97,
                                                  unsigned short reg)
       {
-              struct mychip &#x22C6;chip = ac97->private_data;
+              struct mychip *chip = ac97->private_data;
               ....
               return the_register_value;
       }
@@ -127,7 +127,7 @@ Meanwhile, the ``write`` callback is used to set the register value.
 
 .. code-block:: c
 
-      static void snd_mychip_ac97_write(struct snd_ac97 &#x22C6;ac97,
+      static void snd_mychip_ac97_write(struct snd_ac97 *ac97,
                            unsigned short reg, unsigned short val)
 
 These callbacks are non-atomic like the control API callbacks.

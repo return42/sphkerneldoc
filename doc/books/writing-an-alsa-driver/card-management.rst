@@ -22,7 +22,7 @@ As mentioned above, to create a card instance, call ``snd_card_new()``.
 
 .. code-block:: c
 
-      struct snd_card &#x22C6;card;
+      struct snd_card *card;
       int err;
       err = snd_card_new(&pci->dev, index, id, module, extra_size, &card);
 
@@ -98,7 +98,7 @@ In return, the allocated record can be accessed as
 
 .. code-block:: c
 
-      struct mychip &#x22C6;chip = card->private_data;
+      struct mychip *chip = card->private_data;
 
 With this method, you don't have to allocate twice. The record is released together with the card instance.
 
@@ -113,12 +113,12 @@ After allocating a card instance via ``snd_card_new()`` (with ``0`` on the 4th a
 
 .. code-block:: c
 
-      struct snd_card &#x22C6;card;
-      struct mychip &#x22C6;chip;
+      struct snd_card *card;
+      struct mychip *chip;
       err = snd_card_new(&pci->dev, index[dev], id[dev], THIS_MODULE,
                          0, &card);
       .....
-      chip = kzalloc(sizeof(&#x22C6;chip), GFP_KERNEL);
+      chip = kzalloc(sizeof(*chip), GFP_KERNEL);
 
 The chip record should have the field to hold the card pointer at least,
 
@@ -126,7 +126,7 @@ The chip record should have the field to hold the card pointer at least,
 .. code-block:: c
 
       struct mychip {
-              struct snd_card &#x22C6;card;
+              struct snd_card *card;
               ....
       };
 
@@ -153,7 +153,7 @@ Next, initialize the fields, and register this chip record as a low-level device
 
 .. code-block:: c
 
-      static int snd_mychip_dev_free(struct snd_device &#x22C6;device)
+      static int snd_mychip_dev_free(struct snd_device *device)
       {
               return snd_mychip_free(device->device_data);
       }

@@ -27,14 +27,14 @@ bus the device is connected to. In the case of PCI drivers, the callbacks look l
 .. code-block:: c
 
       #ifdef CONFIG_PM
-      static int snd_my_suspend(struct pci_dev &#x22C6;pci, pm_message_t state)
+      static int snd_my_suspend(struct pci_dev *pci, pm_message_t state)
       {
-              .... /&#x22C6; do things for suspend &#x22C6;/
+              .... /* do things for suspend */
               return 0;
       }
-      static int snd_my_resume(struct pci_dev &#x22C6;pci)
+      static int snd_my_resume(struct pci_dev *pci)
       {
-              .... /&#x22C6; do things for suspend &#x22C6;/
+              .... /* do things for suspend */
               return 0;
       }
       #endif
@@ -60,22 +60,22 @@ A typical code would be like:
 
 .. code-block:: c
 
-      static int mychip_suspend(struct pci_dev &#x22C6;pci, pm_message_t state)
+      static int mychip_suspend(struct pci_dev *pci, pm_message_t state)
       {
-              /&#x22C6; (1) &#x22C6;/
-              struct snd_card &#x22C6;card = pci_get_drvdata(pci);
-              struct mychip &#x22C6;chip = card->private_data;
-              /&#x22C6; (2) &#x22C6;/
+              /* (1) */
+              struct snd_card *card = pci_get_drvdata(pci);
+              struct mychip *chip = card->private_data;
+              /* (2) */
               snd_power_change_state(card, SNDRV_CTL_POWER_D3hot);
-              /&#x22C6; (3) &#x22C6;/
+              /* (3) */
               snd_pcm_suspend_all(chip->pcm);
-              /&#x22C6; (4) &#x22C6;/
+              /* (4) */
               snd_ac97_suspend(chip->ac97);
-              /&#x22C6; (5) &#x22C6;/
+              /* (5) */
               snd_mychip_save_registers(chip);
-              /&#x22C6; (6) &#x22C6;/
+              /* (6) */
               snd_mychip_stop_hardware(chip);
-              /&#x22C6; (7) &#x22C6;/
+              /* (7) */
               pci_disable_device(pci);
               pci_save_state(pci);
               return 0;
@@ -102,24 +102,24 @@ A typical code would be like:
 
 .. code-block:: c
 
-      static int mychip_resume(struct pci_dev &#x22C6;pci)
+      static int mychip_resume(struct pci_dev *pci)
       {
-              /&#x22C6; (1) &#x22C6;/
-              struct snd_card &#x22C6;card = pci_get_drvdata(pci);
-              struct mychip &#x22C6;chip = card->private_data;
-              /&#x22C6; (2) &#x22C6;/
+              /* (1) */
+              struct snd_card *card = pci_get_drvdata(pci);
+              struct mychip *chip = card->private_data;
+              /* (2) */
               pci_restore_state(pci);
               pci_enable_device(pci);
               pci_set_master(pci);
-              /&#x22C6; (3) &#x22C6;/
+              /* (3) */
               snd_mychip_reinit_chip(chip);
-              /&#x22C6; (4) &#x22C6;/
+              /* (4) */
               snd_mychip_restore_registers(chip);
-              /&#x22C6; (5) &#x22C6;/
+              /* (5) */
               snd_ac97_resume(chip->ac97);
-              /&#x22C6; (6) &#x22C6;/
+              /* (6) */
               snd_mychip_restart_chip(chip);
-              /&#x22C6; (7) &#x22C6;/
+              /* (7) */
               snd_power_change_state(card, SNDRV_CTL_POWER_D0);
               return 0;
       }
@@ -134,18 +134,18 @@ field, in case you created the chip data individually.
 
 .. code-block:: c
 
-      static int snd_mychip_probe(struct pci_dev &#x22C6;pci,
-                                  const struct pci_device_id &#x22C6;pci_id)
+      static int snd_mychip_probe(struct pci_dev *pci,
+                                  const struct pci_device_id *pci_id)
       {
               ....
-              struct snd_card &#x22C6;card;
-              struct mychip &#x22C6;chip;
+              struct snd_card *card;
+              struct mychip *chip;
               int err;
               ....
               err = snd_card_new(&pci->dev, index[dev], id[dev], THIS_MODULE,
                                  0, &card);
               ....
-              chip = kzalloc(sizeof(&#x22C6;chip), GFP_KERNEL);
+              chip = kzalloc(sizeof(*chip), GFP_KERNEL);
               ....
               card->private_data = chip;
               ....
@@ -156,12 +156,12 @@ When you created the chip data with ``snd_card_new()``, it's anyway accessible v
 
 .. code-block:: c
 
-      static int snd_mychip_probe(struct pci_dev &#x22C6;pci,
-                                  const struct pci_device_id &#x22C6;pci_id)
+      static int snd_mychip_probe(struct pci_dev *pci,
+                                  const struct pci_device_id *pci_id)
       {
               ....
-              struct snd_card &#x22C6;card;
-              struct mychip &#x22C6;chip;
+              struct snd_card *card;
+              struct mychip *chip;
               int err;
               ....
               err = snd_card_new(&pci->dev, index[dev], id[dev], THIS_MODULE,
