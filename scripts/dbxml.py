@@ -29,7 +29,7 @@ RESOUCE_FORMAT = "%s_files"
 INT_ENTITES = Container()
 INT_ENTITES["nbsp"] = r" "
 for x in ["frac12", "frac13", "frac14", "times", "copy", "hellip", "le", "ge"
-          , "sub", "sup", "micro", "plusmn", "mdash", "alpha", "num" ]:
+          , "sub", "sup", "micro", "plusmn", "mdash", "alpha", "num", "ndash" ]:
     INT_ENTITES[x] = xml_unescape("&%s;" % x)
 
 # ==============================================================================
