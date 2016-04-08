@@ -34,7 +34,7 @@ import re
 from common import CLI, FSPath
 from common import PANDOC_EXE, xml2json, jsonFilter, json2rst
 from dbxml import XMLTag, filterXML, subEntities, Table, RESOUCE_FORMAT, INT_ENTITES
-from dbxml import hook_copy_file_resource, hook_chunk_by_tag
+from dbxml import hook_copy_file_resource, hook_chunk_by_tag, hook_fix_broken_tables
 
 #from pprint import pformat, pprint
 
@@ -146,6 +146,7 @@ def db2rst(cliArgs):                                    # pylint: disable=W0613
 def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 # ==============================================================================
 
+    files_with_broken_tables = ["kernel-locking/cheatsheet", ]
 
     chunkPathes = ["part", "chapter", "part/chapter", ".//refentry" ]
     folder = CACHE / origFile.SKIPSUFFIX
@@ -176,9 +177,14 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
     # XML-filter
     xmlFilter = XMLTag()
     for hook in [
-            hook_chunk_by_tag(*chunkPathes),
-            hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
+            hook_chunk_by_tag(*chunkPathes)
+            , hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
         xmlFilter.parseData.hooks.add(hook)
+
+    # buggy DocBook files ...
+    xmlFilter.parseData.hooks.add(
+        hook_fix_broken_tables(
+            fname_list=files_with_broken_tables))
 
     filterXML(folder, inFile, outFile
               , xmlFilter     = xmlFilter
@@ -216,9 +222,6 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
                 dstFolder = dst.DIRNAME / folder.BASENAME
                 MSG("install file-folder %s" % dstFolder)
                 resource.copytree(dstFolder)
-
-
-
 
 
 # ==============================================================================

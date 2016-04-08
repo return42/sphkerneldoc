@@ -198,6 +198,60 @@ def hook_chunk_by_tag(*chunkPathes):
         return node
     return hookFunc
 
+# ==============================================================================
+def hook_fix_broken_tables(fname_list=None, id_list=None):
+# ==============================================================================
+
+    fname_list = fname_list or []
+    id_list    = id_list    or []
+
+    def hookFunc(node, rstPrefix, parseData):
+
+        if node.tag != "table":
+            return node
+
+        fname = parseData.folder.BASENAME / parseData.fname.SKIPSUFFIX
+        if (node.get("id") not in id_list and fname not in fname_list):
+            return node
+
+        table  = node
+        tgroup = table.find("tgroup")
+        cols   = int(tgroup.get("cols"))
+        thead  = tgroup.find("thead")
+        tbody  = tgroup.find("tbody")
+
+        if thead is not None:
+            # is there any row in the header with more entries as defined cols?
+            for row in thead.findall("row"):
+                entries = row.findall("entry")
+                if len(entries) > cols:
+                    cols = len(entries)
+                    tgroup.set("cols", str(cols))
+
+        for row in tbody.findall("row"):
+            # is there any row in the body with more entries as defined cols?
+            entries = row.findall("entry")
+            if len(entries) > cols:
+                cols = len(entries)
+                tgroup.set("cols", str(cols))
+
+        if thead is not None:
+            # add missing entries to header rows
+            for row in thead.findall("row"):
+                entries = row.findall("entry")
+                if len(entries) < cols:
+                    for x in range(cols - len(entries)):
+                        row.append(node.makeelement("entry"))
+
+        # add missing entries to body rows
+        for row in tbody.findall("row"):
+            entries = row.findall("entry")
+
+            if len(entries) < cols:
+                for x in range(cols - len(entries)):
+                    row.append(node.makeelement("entry"))
+        return node
+    return hookFunc
 
 
 # ==============================================================================
