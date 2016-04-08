@@ -1,0 +1,33 @@
+
+.. _API-netif-start-subqueue:
+
+====================
+netif_start_subqueue
+====================
+
+*man netif_start_subqueue(9)*
+
+*4.6.0-rc1*
+
+allow sending packets on subqueue
+
+
+Synopsis
+========
+
+.. c:function:: void netif_start_subqueue( struct net_device * dev, u16 queue_index )
+
+Arguments
+=========
+
+``dev``
+    network device
+
+``queue_index``
+    sub queue index
+
+
+Description
+===========
+
+Start individual transmit queue of a device with multiple transmit queues.

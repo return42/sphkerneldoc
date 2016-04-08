@@ -1,0 +1,36 @@
+
+.. _API-ioremap-nocache:
+
+===============
+ioremap_nocache
+===============
+
+*man ioremap_nocache(9)*
+
+*4.6.0-rc1*
+
+map bus memory into CPU space
+
+
+Synopsis
+========
+
+.. c:function:: void __iomem ⋆ ioremap_nocache( resource_size_t offset, unsigned long size )
+
+Arguments
+=========
+
+``offset``
+    bus address of the memory
+
+``size``
+    size of the resource to map
+
+
+Description
+===========
+
+ioremap performs a platform specific sequence of operations to make bus memory CPU accessible via the readb/readw/readl/writeb/ writew/writel functions and the other mmio helpers.
+The returned address is not guaranteed to be usable directly as a virtual address.
+
+If the area you are trying to map is a PCI BAR you should have a look at ``pci_iomap``.
