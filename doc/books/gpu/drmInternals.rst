@@ -1028,10 +1028,10 @@ Output discovery and initialization example
 
 .. code-block:: c
 
-    void intel_crt_init(struct drm_device &#x22C6;dev)
+    void intel_crt_init(struct drm_device *dev)
     {
-        struct drm_connector &#x22C6;connector;
-        struct intel_output &#x22C6;intel_output;
+        struct drm_connector *connector;
+        struct intel_output *intel_output;
 
         intel_output = kzalloc(sizeof(struct intel_output), GFP_KERNEL);
         if (!intel_output)
@@ -1047,7 +1047,7 @@ Output discovery and initialization example
         drm_mode_connector_attach_encoder(&intel_output->base,
                           &intel_output->enc);
 
-        /&#x22C6; Set up the DDC bus. &#x22C6;/
+        /* Set up the DDC bus. */
         intel_output->ddc_bus = intel_i2c_create(dev, GPIOA, "CRTDDC_A");
         if (!intel_output->ddc_bus) {
             dev_printk(KERN_ERR, &dev->pdev->dev, "DDC bus registration "

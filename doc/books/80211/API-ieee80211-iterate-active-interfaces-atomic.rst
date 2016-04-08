@@ -1,0 +1,40 @@
+
+.. _API-ieee80211-iterate-active-interfaces-atomic:
+
+==========================================
+ieee80211_iterate_active_interfaces_atomic
+==========================================
+
+*man ieee80211_iterate_active_interfaces_atomic(9)*
+
+*4.6.0-rc1*
+
+iterate active interfaces
+
+
+Synopsis
+========
+
+.. c:function:: void ieee80211_iterate_active_interfaces_atomic( struct ieee80211_hw * hw, u32 iter_flags, void (*iterator) void *data, u8 *mac, struct ieee80211_vif *vif, void * data )
+
+Arguments
+=========
+
+``hw``
+    the hardware struct of which the interfaces should be iterated over
+
+``iter_flags``
+    iteration flags, see ``enum`` ieee80211_interface_iteration_flags
+
+``iterator``
+    the iterator function to call, cannot sleep
+
+``data``
+    first argument of the iterator function
+
+
+Description
+===========
+
+This function iterates over the interfaces associated with a given hardware that are currently active and calls the callback for them. This function requires the iterator callback
+function to be atomic, if that is not desired, use ``ieee80211_iterate_active_interfaces`` instead. Does not iterate over a new interface during ``add_interface``.

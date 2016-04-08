@@ -1,0 +1,42 @@
+
+.. _API-snd-soc-dapm-nc-pin-unlocked:
+
+============================
+snd_soc_dapm_nc_pin_unlocked
+============================
+
+*man snd_soc_dapm_nc_pin_unlocked(9)*
+
+*4.6.0-rc1*
+
+permanently disable pin.
+
+
+Synopsis
+========
+
+.. c:function:: int snd_soc_dapm_nc_pin_unlocked( struct snd_soc_dapm_context * dapm, const char * pin )
+
+Arguments
+=========
+
+``dapm``
+    DAPM context
+
+``pin``
+    pin name
+
+
+Description
+===========
+
+Marks the specified pin as being not connected, disabling it along any parent or child widgets. At present this is identical to ``snd_soc_dapm_disable_pin`` but in future it will
+be extended to do additional things such as disabling controls which only affect paths through the pin.
+
+Requires external locking.
+
+
+NOTE
+====
+
+``snd_soc_dapm_sync`` needs to be called after this for DAPM to do any widget power switching.
