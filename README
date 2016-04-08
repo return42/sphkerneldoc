@@ -1,0 +1,8 @@
+Linux Kernel's documentation
+
+Welcome to the Linux Kernel’s documentation. This is a proof of concept, a
+toolchain to migrate the Kernel’s documentation to the Sphinx-Doc generator.
+
+Project documentation is available at:
+
+* http://return42.github.io/sphkerneldoc
