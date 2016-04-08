@@ -6,21 +6,25 @@
 .. _`Markdown`: http://daringfireball.net/projects/markdown/
 
 ================================================================================
-                         Documentation (aka Text-Files)
+                              documentation (text)
 ================================================================================
 
-Sync kernels' documentation would be done by:
+Text files from the kernel source tarball's *Documentation* subdirectory.
+Syncing kernels' documentation would be done by:
 
 .. code-block:: bash
 
    ./scripts/syncdoc.sh
 
 
-migrated documents
+migrated text docs
 ==================
 
-.. toctree::
-   :maxdepth: 2
+* `misc docs <../linux_misc_doc/index.html>`_
 
-   linux_misc_doc/index
+syncdoc.sh
+==========
 
+:STATE: quick hack / search is a benfit, what more can be achieved?
+
+.. include:: refs.txt

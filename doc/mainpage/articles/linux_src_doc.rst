@@ -1,7 +1,9 @@
 .. -*- coding: utf-8; mode: rst -*-
 
+.. _xref_linux_src_doc:
+
 ================================================================================
-                             Source Code (aka autodoc)
+                             source code (autodoc)
 ================================================================================
 
 Source code documentation from *autodoc*.
@@ -13,9 +15,17 @@ Source code documentation from *autodoc*.
 The script ``autodoc.sh`` uses a modified version of ``kernel-doc`` to extract
 the *doc-comments* in reStructuredText.
 
-.. toctree::
-   :maxdepth: 2
-   :glob:
+* `Linux kernel source <../linux_src_doc/index.html>`_
 
-   Linux kernel source <linux_src_doc/index>
+.. _xref_kernel-doc_reST:
 
+kernel-doc reST
+===============
+
+:STATE: quick hack / needed a concept with clear IDs to refer with
+        `intersphinx`_
+
+comming soon ...
+
+
+.. include:: refs.txt

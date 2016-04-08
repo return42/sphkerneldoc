@@ -1,8 +1,5 @@
 #!/usr/bin/env bash
 # -*- coding: utf-8; mode: sh -*-
-# ----------------------------------------------------------------------------
-# Purpose: print infos of setup
-# ----------------------------------------------------------------------------
 
 source $(dirname ${BASH_SOURCE[0]})/setup.sh
 
@@ -19,15 +16,14 @@ main(){
 # ----------------------------------------------------------------------------
 
     case $1 in
-        test123)
-            test123
+        txt2rst)
+            txt2rst
             ;;
         *)
             echo
 	    echo "usage:"
             echo
-	    echo "    [VERBOSE=1] \\"
-	    echo "    $0 [test123]"
+	    echo "    [VERBOSE=1] $0 [txt2rst]"
             echo
             ;;
     esac
@@ -35,8 +31,8 @@ main(){
 
 
 # ----------------------------------------------------------------------------
-test123(){
-    rstHeading "test some stuff"
+txt2rst(){
+    rstHeading "build reST structure"
 # ----------------------------------------------------------------------------
 
     # may we need some filters? / at least we can include as plain text ...
@@ -44,7 +40,6 @@ test123(){
     echo
     sync_literalinclude kernel-doc-nano-HOWTO.txt "${LINUX_MISC_DOC}" "kernel-doc nano-HOWTO"
     sync_literalinclude kernel-parameters.txt  "${LINUX_MISC_DOC}" "Kernel parameters"
-
     insert_index_files "${LINUX_MISC_DOC}"
 }
 
@@ -80,9 +75,6 @@ sync_literalinclude(){
         echo ""
     } > "${target}.rst"
 }
-
-
-
 
 
 # ----------------------------------------------------------------------------

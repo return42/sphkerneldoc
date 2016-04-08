@@ -42,7 +42,7 @@ What does *autodoc* mean
 
 The term *autodoc* adresses the automatic creation of reST files from the source
 code, it is simular to (based on) the ``kernel-doc`` script. In the section
-:ref:`xref_doc_from_source` a modified version of ``kernel-doc`` is introduced,
+:ref:`xref_linux_src_doc` a modified version of ``kernel-doc`` is introduced,
 which creates reST files from kernel's sources.
 
 
@@ -50,22 +50,10 @@ which creates reST files from kernel's sources.
 References
 ==========
 
-.. _`reST (spec)`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
-.. _`reST (quickref)`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
-
-.. _`docutils`: http://docutils.sourceforge.net/docs/index.html
-.. _`docutils FAQ`: http://docutils.sourceforge.net/FAQ.html
-
-.. _`pocoo`: http://www.pocoo.org/
-.. _`sphinx-doc`: http://www.sphinx-doc.org/
-.. _`sphinx-doc FAQ`: http://www.sphinx-doc.org/en/stable/faq.html
-.. _`sphinx domains`: http://www.sphinx-doc.org/en/stable/domains.html
-.. _`sphinx cross refences`: http://www.sphinx-doc.org/en/stable/markup/inline.html#cross-referencing-arbitrary-locations
-.. _`sphinx.ext.intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx
-
 * `reST (spec)`_, `reST (quickref)`_
 * `docutils`_, `docutils FAQ`_
 * `sphinx-doc`_, `sphinx-doc FAQ`_, `pocoo`_
 * `sphinx domains`_
 * `sphinx cross refences`_, `sphinx.ext.intersphinx`_
 
+.. include:: refs.txt

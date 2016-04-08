@@ -7,7 +7,7 @@ DocBook to reST migration
 =========================
 
 In gerneral XML tools are used to convert DockBook XML, e.g. XSL Stylesheets to
-convert DocBook XML into various formats (e.g. one of theses
+convert DocBook XML into various formats (examples:
 http://docbook.sourceforge.net/release/xsl/current).
 
 I haven't found any XSL Template to convert DocBook to reST, and I'am not
@@ -27,7 +27,7 @@ toolbox, by doing this, please take notice of the dbtools :ref:`xref_LICENSE`.
 dbtools requirements
 ====================
 
-The ``scripts/dbtools`` script requires python3 and `lxml`_::
+The ``scripts/dbtools`` script requires python3, `lxml`_ and pandoc(-filters)::
 
    $ sudo apt-get install python3 python3-pip python3-lxml
 
@@ -40,8 +40,8 @@ remarks on pandoc
 =================
 
 There are plenty docbook converter out. Most of them have common, that they
-implementing there own (less XML) parsers and they allways implement only a
-subset of the DocBook markup.
+implement there own (less XML) parsers and they always implement only a subset
+of the DocBook markup.
 
 The coverage of the pandoc DocBook reader is the most advanced, but it is also a
 subset.  If the pandoc reader does not implement a markup, it will not be in the
@@ -79,7 +79,7 @@ will not do all these XML stuff, like reading external entities.
 
 With option ``--reference-links``, pandoc will create *reference links*. This
 means, the *link-name* is used in the running text and the reference to the
-target is defined at the end of the document.
+target is defined at the end of the document (covered by ``dbtools``).
 
 .. code-block:: rst
 
@@ -94,6 +94,5 @@ DocBook documentation is available from:
 
 * http://docbook.org/tdg/en/html/docbook.html
 
+.. include:: refs.txt
 
-
-.. _lxml: http://lxml.de/

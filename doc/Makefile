@@ -1,216 +1,197 @@
-# Makefile for Sphinx documentation
-#
+# -*- coding: utf-8; mode: make -*-
 
-# You can set these variables from the command line.
-SPHINXOPTS    =
-SPHINXBUILD   = sphinx-build
-PAPER         =
-BUILDDIR      = _build
+# This makefile is used to convert the kernel documentation to reStructuredText
+# and build all books (aka DocBooks) with sphinx.
 
-# User-friendly check for sphinx-build
-ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
-$(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, then set the SPHINXBUILD environment variable to point to the full path of the '$(SPHINXBUILD)' executable. Alternatively you can add the directory with the executable to your PATH. If you don't have Sphinx installed, grab it from http://sphinx-doc.org/)
-endif
+REPO_ROOT      := ..
+SCRIPT_FOLDER  := $(REPO_ROOT)/scripts
+TEMPLATES      := $(REPO_ROOT)/templates
+CACHE          := $(REPO_ROOT)/cache
+DOC_FOLDER     := .
+BOOKS_FOLDER   := books
+AUTODOC_FOLDER := linux_src_doc
+LINUX_MISC_DOC := linux_misc_doc
 
-# Internal variables.
+# External programs used
+
+SPHINXBUILD    := sphinx-build
+KERNELDOC      := $(SCRIPT_FOLDER)/kernel-doc
+DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
+AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
+SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
+
+
+GH_PAGES := $(CACHE)/gh-pages
+BOOKS   := $(wildcard $(BOOKS_FOLDER)/*)
+
+# sphinx-doc setup
+SPHINXOPTS  :=
+PAPER       := a4
+
 PAPEROPT_a4     = -D latex_paper_size=a4
 PAPEROPT_letter = -D latex_paper_size=letter
-ALLSPHINXOPTS   = -d $(BUILDDIR)/doctrees $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+ALLSPHINXOPTS   = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
+# TODO: include linux/Documentation/DocBook/Makefile and run "make xmldocs" as
+# prerequisite
+
+# User-friendly check for sphinx-build
+ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
+$(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, grab it from http://sphinx-doc.org/)
+endif
+FMT = cat
+ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
+FMT = fmt
+endif
+
+# !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
+# !!! own treatment
+
+DOCBOOKS := z8530book.xml device-drivers.xml \
+	    kernel-hacking.xml kernel-locking.xml deviceiobook.xml \
+	    writing_usb_driver.xml networking.xml \
+	    kernel-api.xml filesystems.xml lsm.xml usb.xml kgdb.xml \
+	    gadget.xml libata.xml mtdnand.xml librs.xml rapidio.xml \
+	    genericirq.xml s390-drivers.xml uio-howto.xml scsi.xml \
+	    80211.xml debugobjects.xml sh.xml regulator.xml \
+	    alsa-driver-api.xml writing-an-alsa-driver.xml \
+	    tracepoint.xml gpu.xml w1.xml \
+	    writing_musb_glue_layer.xml crypto-API.xml iio.xml
+
+# ------------------------------------------------------------------------------
+# usage
+# ------------------------------------------------------------------------------
+
 .PHONY: help
 help:
-	@echo "Please use \`make <target>' where <target> is one of"
-	@echo "  html       to make standalone HTML files"
-	@echo "  dirhtml    to make HTML files named index.html in directories"
-	@echo "  singlehtml to make a single large HTML file"
-	@echo "  pickle     to make pickle files"
-	@echo "  json       to make JSON files"
-	@echo "  htmlhelp   to make HTML files and a HTML help project"
-	@echo "  qthelp     to make HTML files and a qthelp project"
-	@echo "  applehelp  to make an Apple Help Book"
-	@echo "  devhelp    to make HTML files and a Devhelp project"
-	@echo "  epub       to make an epub"
-	@echo "  latex      to make LaTeX files, you can set PAPER=a4 or PAPER=letter"
-	@echo "  latexpdf   to make LaTeX files and run them through pdflatex"
-	@echo "  latexpdfja to make LaTeX files and run them through platex/dvipdfmx"
-	@echo "  text       to make text files"
-	@echo "  man        to make manual pages"
-	@echo "  texinfo    to make Texinfo files"
-	@echo "  info       to make Texinfo files and run them through makeinfo"
-	@echo "  gettext    to make PO message catalogs"
-	@echo "  changes    to make an overview of all changed/added/deprecated items"
-	@echo "  xml        to make Docutils-native XML files"
-	@echo "  pseudoxml  to make pseudoxml-XML files for display purposes"
-	@echo "  linkcheck  to check all external links for integrity"
-	@echo "  doctest    to run all doctests embedded in the documentation (if enabled)"
-	@echo "  coverage   to run coverage check of the documentation (if enabled)"
-
-.PHONY: clean
-clean:
-	rm -rf $(BUILDDIR)/*
-
-.PHONY: html
-html:
-	$(SPHINXBUILD) -b html $(ALLSPHINXOPTS) $(BUILDDIR)/html
+	@echo "Please use \`make <target>' where <target> is one of ..."
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html."
-
-.PHONY: dirhtml
-dirhtml:
-	$(SPHINXBUILD) -b dirhtml $(ALLSPHINXOPTS) $(BUILDDIR)/dirhtml
+	@echo "  allhtml   : builds all HTML targets ..."
+	@echo "  mainpage  : build HTML main-page"
+	@echo "  htmlbooks : build HTML book(s) from the reST files"
+	@echo "  autodoc   : build HTML of source-code reST files (see src2rst)"
+	@echo "  miscdoc   : build HTML from misc reST files (see txt2rst)"
 	@echo
-	@echo "Build finished. The HTML pages are in $(BUILDDIR)/dirhtml."
-
-.PHONY: singlehtml
-singlehtml:
-	$(SPHINXBUILD) -b singlehtml $(ALLSPHINXOPTS) $(BUILDDIR)/singlehtml
+	@echo "  make {book} [target] builds only the HTML of {book}",
+	@echo "  valid values for {book} are: \n\n     $(BOOKS)" | $(FMT)
 	@echo
-	@echo "Build finished. The HTML page is in $(BUILDDIR)/singlehtml."
-
-.PHONY: pickle
-pickle:
-	$(SPHINXBUILD) -b pickle $(ALLSPHINXOPTS) $(BUILDDIR)/pickle
+	@echo "  media2rst : convert linux_tv (media book) DocBook-XML to reST"
+	@echo "  rstbooks  : convert kernel's DocBook-XML books to reST"
+	@echo "  src2rst   : generate reST documentation from source code"
+	@echo "  txt2rst   : build reST from misc. kernel doc text files"
 	@echo
-	@echo "Build finished; now you can process the pickle files."
-
-.PHONY: json
-json:
-	$(SPHINXBUILD) -b json $(ALLSPHINXOPTS) $(BUILDDIR)/json
+	@echo "  .. hint:"
 	@echo
-	@echo "Build finished; now you can process the JSON files."
-
-.PHONY: htmlhelp
-htmlhelp:
-	$(SPHINXBUILD) -b htmlhelp $(ALLSPHINXOPTS) $(BUILDDIR)/htmlhelp
+	@echo "      The reST files are versioned within this reposetory."
 	@echo
-	@echo "Build finished; now you can run HTML Help Workshop with the" \
-	      ".hhp project file in $(BUILDDIR)/htmlhelp."
-
-.PHONY: qthelp
-qthelp:
-	$(SPHINXBUILD) -b qthelp $(ALLSPHINXOPTS) $(BUILDDIR)/qthelp
+	@echo "  make {filename}.rst [target] converts only {filename}.xml to reST,"
+	@echo "  valid values for {filename} are: \n\n    $(RST)" | $(FMT)
 	@echo
-	@echo "Build finished; now you can run "qcollectiongenerator" with the" \
-	      ".qhcp project file in $(BUILDDIR)/qthelp, like this:"
-	@echo "# qcollectiongenerator $(BUILDDIR)/qthelp/Kernel-Doc.qhcp"
-	@echo "To view the help file:"
-	@echo "# assistant -collectionFile $(BUILDDIR)/qthelp/Kernel-Doc.qhc"
 
-.PHONY: applehelp
-applehelp:
-	$(SPHINXBUILD) -b applehelp $(ALLSPHINXOPTS) $(BUILDDIR)/applehelp
-	@echo
-	@echo "Build finished. The help book is in $(BUILDDIR)/applehelp."
-	@echo "N.B. You won't be able to view it unless you put it in" \
-	      "~/Library/Documentation/Help or install it in your application" \
-	      "bundle."
+# ------------------------------------------------------------------------------
+# github-pages
+# ------------------------------------------------------------------------------
 
-.PHONY: devhelp
-devhelp:
-	$(SPHINXBUILD) -b devhelp $(ALLSPHINXOPTS) $(BUILDDIR)/devhelp
-	@echo
-	@echo "Build finished."
-	@echo "To view the help file:"
-	@echo "# mkdir -p $$HOME/.local/share/devhelp/Kernel-Doc"
-	@echo "# ln -s $(BUILDDIR)/devhelp $$HOME/.local/share/devhelp/Kernel-Doc"
-	@echo "# devhelp"
+.PHONY: allhtml
+allhtml: mainpage htmlbooks autodoc miscdoc
 
-.PHONY: epub
-epub:
-	$(SPHINXBUILD) -b epub $(ALLSPHINXOPTS) $(BUILDDIR)/epub
-	@echo
-	@echo "Build finished. The epub file is in $(BUILDDIR)/epub."
+$(GH_PAGES):
+	mkdir $(GH_PAGES)
 
-.PHONY: latex
-latex:
-	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
-	@echo
-	@echo "Build finished; the LaTeX files are in $(BUILDDIR)/latex."
-	@echo "Run \`make' in that directory to run these through (pdf)latex" \
-	      "(use \`make latexpdf' here to do that automatically)."
+# ------------------------------------------------------------------------------
+# mainpage
+# ------------------------------------------------------------------------------
 
-.PHONY: latexpdf
-latexpdf:
-	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
-	@echo "Running LaTeX files through pdflatex..."
-	$(MAKE) -C $(BUILDDIR)/latex all-pdf
-	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+.PHONY: mainpage
+mainpage: | $(GH_PAGES)
+	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)
 
-.PHONY: latexpdfja
-latexpdfja:
-	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
-	@echo "Running LaTeX files through platex and dvipdfmx..."
-	$(MAKE) -C $(BUILDDIR)/latex all-pdf-ja
-	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
+.PHONY: clean-mainpage
+clean-mainpage:
+	rm -rf $(addprefix $(GH_PAGES)/, articles _sources _static)
+	rm -f $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
 
-.PHONY: text
-text:
-	$(SPHINXBUILD) -b text $(ALLSPHINXOPTS) $(BUILDDIR)/text
-	@echo
-	@echo "Build finished. The text files are in $(BUILDDIR)/text."
+# ------------------------------------------------------------------------------
+# BOOKs
+# ------------------------------------------------------------------------------
 
-.PHONY: man
-man:
-	$(SPHINXBUILD) -b man $(ALLSPHINXOPTS) $(BUILDDIR)/man
-	@echo
-	@echo "Build finished. The manual pages are in $(BUILDDIR)/man."
+# DocBook-XML --> reST
+# --------------------
 
-.PHONY: texinfo
-texinfo:
-	$(SPHINXBUILD) -b texinfo $(ALLSPHINXOPTS) $(BUILDDIR)/texinfo
-	@echo
-	@echo "Build finished. The Texinfo files are in $(BUILDDIR)/texinfo."
-	@echo "Run \`make' in that directory to run these through makeinfo" \
-	      "(use \`make info' here to do that automatically)."
+RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
+rstbooks: $(RST)
 
-.PHONY: info
-info:
-	$(SPHINXBUILD) -b texinfo $(ALLSPHINXOPTS) $(BUILDDIR)/texinfo
-	@echo "Running Texinfo files through makeinfo..."
-	make -C $(BUILDDIR)/texinfo info
-	@echo "makeinfo finished; the Info files are in $(BUILDDIR)/texinfo."
+.PHONY:	$(RST)
+$(RST):
+	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.xml, ${@})
 
-.PHONY: gettext
-gettext:
-	$(SPHINXBUILD) -b gettext $(I18NSPHINXOPTS) $(BUILDDIR)/locale
-	@echo
-	@echo "Build finished. The message catalogs are in $(BUILDDIR)/locale."
+# the linux_tv book has it's own treatment
+g.PHONY: media2rst
+media2rst:
+	$(DBTOOLS_SCRIPT) media2rst
 
-.PHONY: changes
-changes:
-	$(SPHINXBUILD) -b changes $(ALLSPHINXOPTS) $(BUILDDIR)/changes
-	@echo
-	@echo "The overview file is in $(BUILDDIR)/changes."
+# reST --> HTML (sphinx-doc projects)
+# -----------------------------------
 
-.PHONY: linkcheck
-linkcheck:
-	$(SPHINXBUILD) -b linkcheck $(ALLSPHINXOPTS) $(BUILDDIR)/linkcheck
-	@echo
-	@echo "Link check complete; look for any errors in the above output " \
-	      "or in $(BUILDDIR)/linkcheck/output.txt."
+.PHONY: htmlbooks
+htmlbooks: $(BOOKS)
 
-.PHONY: doctest
-doctest:
-	$(SPHINXBUILD) -b doctest $(ALLSPHINXOPTS) $(BUILDDIR)/doctest
-	@echo "Testing of doctests in the sources finished, look at the " \
-	      "results in $(BUILDDIR)/doctest/output.txt."
+.PHONY: $(BOOKS)
+$(BOOKS): | $(GH_PAGES)
+	@echo "building $@ ..."
+	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)/$@
 
-.PHONY: coverage
-coverage:
-	$(SPHINXBUILD) -b coverage $(ALLSPHINXOPTS) $(BUILDDIR)/coverage
-	@echo "Testing of coverage in the sources finished, look at the " \
-	      "results in $(BUILDDIR)/coverage/python.txt."
+book-dirs := $(addprefix $(GH_PAGES)/, $(BOOKS))
 
-.PHONY: xml
-xml:
-	$(SPHINXBUILD) -b xml $(ALLSPHINXOPTS) $(BUILDDIR)/xml
-	@echo
-	@echo "Build finished. The XML files are in $(BUILDDIR)/xml."
+.PHONY: clean-books
+clean-books:
+	rm -rf $(book-dirs)
 
-.PHONY: pseudoxml
-pseudoxml:
-	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
-	@echo
-	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
+# ------------------------------------------------------------------------------
+# source-code
+# ------------------------------------------------------------------------------
+
+# autodoc reST
+# ------------
+
+.PHONY: src2rst
+src2rst:
+	rm -rf $(AUTODOC_FOLDER)
+	$(AUTODOC_SCRIPT)
+
+# reST --> HTML
+# -------------
+
+.PHONY: autodoc
+autodoc:
+	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(GH_PAGES)/$(AUTODOC_FOLDER)
+
+.PHONY:
+clean-autodoc:
+	rm -rf $(GH_PAGES)/$(AUTODOC_FOLDER)
+
+# ------------------------------------------------------------------------------
+# misc text docs
+# ------------------------------------------------------------------------------
+
+# reST include
+# ------------
+
+.PHONY: txt2rst
+txt2rst:
+	rm -rf $(LINUX_MISC_DOC)
+	$(SYNCDOC_SCRIPT) txt2rst
+
+# reST --> HTML
+# -------------
+
+.PHONY: miscdoc
+miscdoc:
+	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(GH_PAGES)/$(LINUX_MISC_DOC)
+
+.PHONY:
+clean-miscdoc:
+	rm -rf $(GH_PAGES)/$(LINUX_MISC_DOC)
+

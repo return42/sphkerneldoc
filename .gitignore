@@ -5,6 +5,6 @@
 *.pyc
 *.elc
 _build
-
+/cache
 tool_config.sh
 *.autodoc.log

@@ -1,29 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-.. _`Sphinx-Doc`: http://www.sphinx-doc.org/
-.. _`intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
-
 .. _xref_linux_kernel_doc:
 
 ================================================================================
-                       Linux Kernel's documentation (POC)
+                          Linux Kernel's documentation
 ================================================================================
 
 Welcome to the Linux Kernel's documentation. This is a proof of concept, a
 toolchain to migrate the Kernel's documentation to the `Sphinx-Doc`_ generator.
 
+
+Migrated documentation
+======================
+
 .. toctree::
    :maxdepth: 1
 
-   books
-   linux_misc_doc
-   linux_src_doc
-
-In this POC only one (huge) document is created. In the long run the
-documentation has to be chunked into small *projects*, each with it's own
-document, which can be generated and distributed stand-alone. Cross reference
-between these *projects* will be ensured by `intersphinx`_. The term *project*
-has to be defined.
+   articles/books
+   articles/linux_misc_doc
+   articles/linux_src_doc
 
 Miscellaneous
 =============
@@ -40,7 +35,7 @@ Miscellaneous
 Resources
 =========
 
-* https://sphkerneldoc.readthedocs.org
+* https://return42.github.io/sphkerneldoc
 * https://github.com/return42/sphkerneldoc.git
 * https://github.com/torvalds/linux
 
@@ -53,10 +48,10 @@ Discussion & related efforts
 * https://git.linuxtv.org/mchehab/v4l2-docs-poc.git/
 * https://mchehab.fedorapeople.org/media-kabi-docs-test/asciidoc_tests/media_api.html
 
-
-Indices and tables
-==================
+Indices
+=======
 
 * :ref:`genindex`
 * :ref:`search`
 
+.. _`Sphinx-Doc`: http://www.sphinx-doc.org/

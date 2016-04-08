@@ -55,7 +55,7 @@ def main():
 
     # pylint: disable=W0612
 
-    cli = CLI(description=__doc__)
+    cli = CLI(description="Tools to migrate DocBook-XML to reST.")
 
     # media2rst
     # ---------
@@ -82,23 +82,8 @@ def main():
         "--noinstall", action = 'store_true'
         , help = "don't install converted files (default: %(default)s)" )
     cmd.add_argument(
-        "filename", nargs="*"
-        , help="DocBook files converting to reST (default: %(default)s)"
-        , default=[
-            "kernel-hacking.xml"
-            , "kernel-api.xml"
-            , "crypto-API.xml"
- 	    , "device-drivers.xml"
-            , "filesystems.xml"
-            , "gadget.xml"
-            # , "gpu.xml"  FIXME: .. läuft auf eine Exception / muss ic mir noch anschauen
-            , "kernel-locking.xml"
-            , "mtdnand.xml"
- 	    , "scsi.xml"
-            , "usb.xml"
-            , "writing-an-alsa-driver.xml"
-            , "writing_musb_glue_layer.xml"
-            , "writing_usb_driver.xml" ])
+        "filename", nargs="+"
+        , help="DocBook-XML file to convert to reST  (e.g 'kernel-hacking.xml')")
 
 
     # fiddle

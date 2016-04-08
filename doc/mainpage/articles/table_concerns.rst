@@ -255,12 +255,11 @@ content*. HTML-Tables are only rendered within a HTML output.
 Miscellaneous & thougth
 =======================
 
-* Emacs `Table Mode <https://www.emacswiki.org/emacs/TableMode>`_
-* Online `Tables Generator <http://www.tablesgenerator.com/text_tables>`_
+* `Emacs Table Mode`_
+* `Online Tables Generator`_
 
 Internal the docutils uses a representation according to the `OASIS XML Exchange
-Table Model <https://www.oasis-open.org/specs/tm9901.html>`_ (same as DocBook).
-It would be nice to have a `directive
+Table Model`_ (same as DocBook).  It would be nice to have a `directive
 <http://www.sphinx-doc.org/en/stable/extdev/tutorial.html#the-directive-classes>`_
 ``xml-table`` (like ``csv-table``) wich reads *OASIS XML Exchange Table*
 data. This directive might be a big step forward to migrate the massive table
@@ -269,3 +268,4 @@ based DocBook documentation from Kernel-docs.  `rusty
 yet).
 
 
+.. include:: refs.txt
