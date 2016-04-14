@@ -4,9 +4,7 @@
 ccwdev.h
 ========
 
-
-
-.. _xref_struct_ccw_device:
+.. _`ccw_device`:
 
 struct ccw_device
 =================
@@ -36,38 +34,35 @@ Definition
 Members
 -------
 
-:``spinlock_t * ccwlock``:
+:``ccwlock``:
     pointer to device lock
 
-:``struct ccw_device_id id``:
+:``id``:
     id of this device
 
-:``struct ccw_driver * drv``:
+:``drv``:
     ccw driver for this device
 
-:``struct device dev``:
+:``dev``:
     embedded device structure
 
-:``int online``:
+:``online``:
     online status of device
 
-:``void (*) (struct ccw_device *, unsigned long, struct irb *) handler``:
+:``handler``:
     interrupt handler
-
 
 
 
 Description
 -----------
 
-**handler** is a member of the device rather than the driver since a driver
+``handler`` is a member of the device rather than the driver since a driver
 can have different interrupt handlers for different ccw devices
 (multi-subchannel drivers).
 
 
-
-
-.. _xref_struct_ccw_driver:
+.. _`ccw_driver`:
 
 struct ccw_driver
 =================
@@ -107,53 +102,52 @@ Definition
 Members
 -------
 
-:``struct ccw_device_id * ids``:
+:``ids``:
     ids supported by this driver
 
-:``int (*) (struct ccw_device *) probe``:
+:``probe``:
     function called on probe
 
-:``void (*) (struct ccw_device *) remove``:
+:``remove``:
     function called on remove
 
-:``int (*) (struct ccw_device *) set_online``:
+:``set_online``:
     called when setting device online
 
-:``int (*) (struct ccw_device *) set_offline``:
+:``set_offline``:
     called when setting device offline
 
-:``int (*) (struct ccw_device *, int) notify``:
+:``notify``:
     notify driver of device state changes
 
-:``void (*) (struct ccw_device *, int *) path_event``:
+:``path_event``:
     notify driver of channel path events
 
-:``void (*) (struct ccw_device *) shutdown``:
+:``shutdown``:
     called at device shutdown
 
-:``int (*) (struct ccw_device *) prepare``:
+:``prepare``:
     prepare for pm state transition
 
-:``void (*) (struct ccw_device *) complete``:
-    undo work done in **prepare**
+:``complete``:
+    undo work done in ``prepare``
 
-:``int (*)(struct ccw_device *) freeze``:
+:``freeze``:
     callback for freezing during hibernation snapshotting
 
-:``int (*) (struct ccw_device *) thaw``:
-    undo work done in **freeze**
+:``thaw``:
+    undo work done in ``freeze``
 
-:``int (*)(struct ccw_device *) restore``:
+:``restore``:
     callback for restoring after hibernation
 
-:``enum uc_todo (*) (struct ccw_device *, struct irb *) uc_handler``:
+:``uc_handler``:
     callback for unit check handler
 
-:``struct device_driver driver``:
+:``driver``:
     embedded device driver structure
 
-:``enum interruption_class int_class``:
+:``int_class``:
     interruption class to use for accounting interrupts
-
 
 

@@ -4,9 +4,7 @@
 ilsel.c
 =======
 
-
-
-.. _xref_ilsel_enable:
+.. _`ilsel_enable`:
 
 ilsel_enable
 ============
@@ -19,6 +17,7 @@ ilsel_enable
         ILSEL source (see ilsel_source_t enum in include/asm-sh/ilsel.h).
 
 
+.. _`ilsel_enable.description`:
 
 Description
 -----------
@@ -28,14 +27,11 @@ available interrupt level. Callers should take care to order callsites
 noting descending interrupt levels. Aliasing FPGA and external board
 IRQs need to use :c:func:`ilsel_enable_fixed`.
 
-
 The return value is an IRQ number that can later be taken down with
 :c:func:`ilsel_disable`.
 
 
-
-
-.. _xref_ilsel_enable_fixed:
+.. _`ilsel_enable_fixed`:
 
 ilsel_enable_fixed
 ==================
@@ -51,6 +47,7 @@ ilsel_enable_fixed
         Interrupt level (1 - 15)
 
 
+.. _`ilsel_enable_fixed.description`:
 
 Description
 -----------
@@ -59,13 +56,10 @@ Enables a given ILSEL source at a fixed interrupt level. Necessary
 both for level reservation as well as for aliased sources that only
 exist on special ILSEL#s.
 
-
 Returns an IRQ number (as :c:func:`ilsel_enable`).
 
 
-
-
-.. _xref_ilsel_disable:
+.. _`ilsel_disable`:
 
 ilsel_disable
 =============
@@ -78,10 +72,10 @@ ilsel_disable
         Bit position for ILSEL set value (retval from enable routines)
 
 
+.. _`ilsel_disable.description`:
 
 Description
 -----------
 
 Disable a previously enabled ILSEL set.
-
 

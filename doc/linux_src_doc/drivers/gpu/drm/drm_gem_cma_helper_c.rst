@@ -4,24 +4,36 @@
 drm_gem_cma_helper.c
 ====================
 
+.. _`cma-helpers`:
+
+cma helpers
+===========
+
+The Contiguous Memory Allocator reserves a pool of memory at early boot
+that is used to service requests for large blocks of contiguous memory.
+
+The DRM GEM/CMA helpers use this allocator as a means to provide buffer
+objects that are physically contiguous in memory. This is useful for
+display drivers that are unable to map scattered buffers via an IOMMU.
 
 
-.. _xref___drm_gem_cma_create:
+.. _`__drm_gem_cma_create`:
 
 __drm_gem_cma_create
 ====================
 
-.. c:function:: struct drm_gem_cma_object * __drm_gem_cma_create (struct drm_device * drm, size_t size)
+.. c:function:: struct drm_gem_cma_object *__drm_gem_cma_create (struct drm_device *drm, size_t size)
 
     Create a GEM CMA object without allocating memory
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
     :param size_t size:
         size of the object to allocate
 
 
+.. _`__drm_gem_cma_create.description`:
 
 Description
 -----------
@@ -29,33 +41,28 @@ Description
 This function creates and initializes a GEM CMA object of the given size,
 but doesn't allocate any memory to back the object.
 
-
-
-Returns
--------
-
+Returns:
 A struct drm_gem_cma_object * on success or an :c:func:`ERR_PTR`-encoded negative
 error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_create:
+.. _`drm_gem_cma_create`:
 
 drm_gem_cma_create
 ==================
 
-.. c:function:: struct drm_gem_cma_object * drm_gem_cma_create (struct drm_device * drm, size_t size)
+.. c:function:: struct drm_gem_cma_object *drm_gem_cma_create (struct drm_device *drm, size_t size)
 
     allocate an object with the given size
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
     :param size_t size:
         size of the object to allocate
 
 
+.. _`drm_gem_cma_create.description`:
 
 Description
 -----------
@@ -64,39 +71,34 @@ This function creates a CMA GEM object and allocates a contiguous chunk of
 memory as backing store. The backing memory has the writecombine attribute
 set.
 
-
-
-Returns
--------
-
+Returns:
 A struct drm_gem_cma_object * on success or an :c:func:`ERR_PTR`-encoded negative
 error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_create_with_handle:
+.. _`drm_gem_cma_create_with_handle`:
 
 drm_gem_cma_create_with_handle
 ==============================
 
-.. c:function:: struct drm_gem_cma_object * drm_gem_cma_create_with_handle (struct drm_file * file_priv, struct drm_device * drm, size_t size, uint32_t * handle)
+.. c:function:: struct drm_gem_cma_object *drm_gem_cma_create_with_handle (struct drm_file *file_priv, struct drm_device *drm, size_t size, uint32_t *handle)
 
     allocate an object with the given size and return a GEM handle to it
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file-private structure to register the handle for
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
     :param size_t size:
         size of the object to allocate
 
-    :param uint32_t * handle:
+    :param uint32_t \*handle:
         return location for the GEM handle
 
 
+.. _`drm_gem_cma_create_with_handle.description`:
 
 Description
 -----------
@@ -105,30 +107,25 @@ This function creates a CMA GEM object, allocating a physically contiguous
 chunk of memory as backing store. The GEM object is then added to the list
 of object associated with the given file and a handle to it is returned.
 
-
-
-Returns
--------
-
+Returns:
 A struct drm_gem_cma_object * on success or an :c:func:`ERR_PTR`-encoded negative
 error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_free_object:
+.. _`drm_gem_cma_free_object`:
 
 drm_gem_cma_free_object
 =======================
 
-.. c:function:: void drm_gem_cma_free_object (struct drm_gem_object * gem_obj)
+.. c:function:: void drm_gem_cma_free_object (struct drm_gem_object *gem_obj)
 
     free resources associated with a CMA GEM object
 
-    :param struct drm_gem_object * gem_obj:
+    :param struct drm_gem_object \*gem_obj:
         GEM object to free
 
 
+.. _`drm_gem_cma_free_object.description`:
 
 Description
 -----------
@@ -139,27 +136,26 @@ Drivers using the CMA helpers should set this as their DRM driver's
 ->:c:func:`gem_free_object` callback.
 
 
-
-
-.. _xref_drm_gem_cma_dumb_create_internal:
+.. _`drm_gem_cma_dumb_create_internal`:
 
 drm_gem_cma_dumb_create_internal
 ================================
 
-.. c:function:: int drm_gem_cma_dumb_create_internal (struct drm_file * file_priv, struct drm_device * drm, struct drm_mode_create_dumb * args)
+.. c:function:: int drm_gem_cma_dumb_create_internal (struct drm_file *file_priv, struct drm_device *drm, struct drm_mode_create_dumb *args)
 
     create a dumb buffer object
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file-private structure to create the dumb buffer for
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
-    :param struct drm_mode_create_dumb * args:
+    :param struct drm_mode_create_dumb \*args:
         IOCTL data
 
 
+.. _`drm_gem_cma_dumb_create_internal.description`:
 
 Description
 -----------
@@ -169,35 +165,30 @@ an internal helper that can be wrapped by a driver to account for hardware
 with more specific alignment requirements. It should not be used directly
 as the ->:c:func:`dumb_create` callback in a DRM driver.
 
-
-
-Returns
--------
-
+Returns:
 0 on success or a negative error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_dumb_create:
+.. _`drm_gem_cma_dumb_create`:
 
 drm_gem_cma_dumb_create
 =======================
 
-.. c:function:: int drm_gem_cma_dumb_create (struct drm_file * file_priv, struct drm_device * drm, struct drm_mode_create_dumb * args)
+.. c:function:: int drm_gem_cma_dumb_create (struct drm_file *file_priv, struct drm_device *drm, struct drm_mode_create_dumb *args)
 
     create a dumb buffer object
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file-private structure to create the dumb buffer for
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
-    :param struct drm_mode_create_dumb * args:
+    :param struct drm_mode_create_dumb \*args:
         IOCTL data
 
 
+.. _`drm_gem_cma_dumb_create.description`:
 
 Description
 -----------
@@ -207,43 +198,37 @@ integer number of bytes per pixel. Drivers for hardware that doesn't have
 any additional restrictions on the pitch can directly use this function as
 their ->:c:func:`dumb_create` callback.
 
-
 For hardware with additional restrictions, drivers can adjust the fields
 set up by userspace and pass the IOCTL data along to the
 :c:func:`drm_gem_cma_dumb_create_internal` function.
 
-
-
-Returns
--------
-
+Returns:
 0 on success or a negative error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_dumb_map_offset:
+.. _`drm_gem_cma_dumb_map_offset`:
 
 drm_gem_cma_dumb_map_offset
 ===========================
 
-.. c:function:: int drm_gem_cma_dumb_map_offset (struct drm_file * file_priv, struct drm_device * drm, u32 handle, u64 * offset)
+.. c:function:: int drm_gem_cma_dumb_map_offset (struct drm_file *file_priv, struct drm_device *drm, u32 handle, u64 *offset)
 
     return the fake mmap offset for a CMA GEM object
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file-private structure containing the GEM object
 
-    :param struct drm_device * drm:
+    :param struct drm_device \*drm:
         DRM device
 
     :param u32 handle:
         GEM object handle
 
-    :param u64 * offset:
+    :param u64 \*offset:
         return location for the fake mmap offset
 
 
+.. _`drm_gem_cma_dumb_map_offset.description`:
 
 Description
 -----------
@@ -252,75 +237,59 @@ This function look up an object by its handle and returns the fake mmap
 offset associated with it. Drivers using the CMA helpers should set this
 as their DRM driver's ->:c:func:`dumb_map_offset` callback.
 
-
-
-Returns
--------
-
+Returns:
 0 on success or a negative error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_mmap:
+.. _`drm_gem_cma_mmap`:
 
 drm_gem_cma_mmap
 ================
 
-.. c:function:: int drm_gem_cma_mmap (struct file * filp, struct vm_area_struct * vma)
+.. c:function:: int drm_gem_cma_mmap (struct file *filp, struct vm_area_struct *vma)
 
     memory-map a CMA GEM object
 
-    :param struct file * filp:
+    :param struct file \*filp:
         file object
 
-    :param struct vm_area_struct * vma:
+    :param struct vm_area_struct \*vma:
         VMA for the area to be mapped
 
 
+.. _`drm_gem_cma_mmap.description`:
 
 Description
 -----------
 
 This function implements an augmented version of the GEM DRM file mmap
-
-
-
-operation for CMA objects
--------------------------
-
-In addition to the usual GEM VMA setup it
+operation for CMA objects: In addition to the usual GEM VMA setup it
 immediately faults in the entire object instead of using on-demaind
 faulting. Drivers which employ the CMA helpers should use this function
 as their ->:c:func:`mmap` handler in the DRM device file's file_operations
 structure.
 
-
-
-Returns
--------
-
+Returns:
 0 on success or a negative error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_describe:
+.. _`drm_gem_cma_describe`:
 
 drm_gem_cma_describe
 ====================
 
-.. c:function:: void drm_gem_cma_describe (struct drm_gem_cma_object * cma_obj, struct seq_file * m)
+.. c:function:: void drm_gem_cma_describe (struct drm_gem_cma_object *cma_obj, struct seq_file *m)
 
     describe a CMA GEM object for debugfs
 
-    :param struct drm_gem_cma_object * cma_obj:
+    :param struct drm_gem_cma_object \*cma_obj:
         CMA GEM object
 
-    :param struct seq_file * m:
+    :param struct seq_file \*m:
         debugfs file handle
 
 
+.. _`drm_gem_cma_describe.description`:
 
 Description
 -----------
@@ -329,21 +298,20 @@ This function can be used to dump a human-readable representation of the
 CMA GEM object into a synthetic file.
 
 
-
-
-.. _xref_drm_gem_cma_prime_get_sg_table:
+.. _`drm_gem_cma_prime_get_sg_table`:
 
 drm_gem_cma_prime_get_sg_table
 ==============================
 
-.. c:function:: struct sg_table * drm_gem_cma_prime_get_sg_table (struct drm_gem_object * obj)
+.. c:function:: struct sg_table *drm_gem_cma_prime_get_sg_table (struct drm_gem_object *obj)
 
     provide a scatter/gather table of pinned pages for a CMA GEM object
 
-    :param struct drm_gem_object * obj:
+    :param struct drm_gem_object \*obj:
         GEM object
 
 
+.. _`drm_gem_cma_prime_get_sg_table.description`:
 
 Description
 -----------
@@ -352,35 +320,30 @@ This function exports a scatter/gather table suitable for PRIME usage by
 calling the standard DMA mapping API. Drivers using the CMA helpers should
 set this as their DRM driver's ->:c:func:`gem_prime_get_sg_table` callback.
 
-
-
-Returns
--------
-
+Returns:
 A pointer to the scatter/gather table of pinned pages or NULL on failure.
 
 
-
-
-.. _xref_drm_gem_cma_prime_import_sg_table:
+.. _`drm_gem_cma_prime_import_sg_table`:
 
 drm_gem_cma_prime_import_sg_table
 =================================
 
-.. c:function:: struct drm_gem_object * drm_gem_cma_prime_import_sg_table (struct drm_device * dev, struct dma_buf_attachment * attach, struct sg_table * sgt)
+.. c:function:: struct drm_gem_object *drm_gem_cma_prime_import_sg_table (struct drm_device *dev, struct dma_buf_attachment *attach, struct sg_table *sgt)
 
     produce a CMA GEM object from another driver's scatter/gather table of pinned pages
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         device to import into
 
-    :param struct dma_buf_attachment * attach:
+    :param struct dma_buf_attachment \*attach:
         DMA-BUF attachment
 
-    :param struct sg_table * sgt:
+    :param struct sg_table \*sgt:
         scatter/gather table of pinned pages
 
 
+.. _`drm_gem_cma_prime_import_sg_table.description`:
 
 Description
 -----------
@@ -391,33 +354,28 @@ another driver. Imported buffers must be physically contiguous in memory
 use the CMA helpers should set this as their DRM driver's
 ->:c:func:`gem_prime_import_sg_table` callback.
 
-
-
-Returns
--------
-
+Returns:
 A pointer to a newly created GEM object or an ERR_PTR-encoded negative
 error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_prime_mmap:
+.. _`drm_gem_cma_prime_mmap`:
 
 drm_gem_cma_prime_mmap
 ======================
 
-.. c:function:: int drm_gem_cma_prime_mmap (struct drm_gem_object * obj, struct vm_area_struct * vma)
+.. c:function:: int drm_gem_cma_prime_mmap (struct drm_gem_object *obj, struct vm_area_struct *vma)
 
     memory-map an exported CMA GEM object
 
-    :param struct drm_gem_object * obj:
+    :param struct drm_gem_object \*obj:
         GEM object
 
-    :param struct vm_area_struct * vma:
+    :param struct vm_area_struct \*vma:
         VMA for the area to be mapped
 
 
+.. _`drm_gem_cma_prime_mmap.description`:
 
 Description
 -----------
@@ -426,29 +384,24 @@ This function maps a buffer imported via DRM PRIME into a userspace
 process's address space. Drivers that use the CMA helpers should set this
 as their DRM driver's ->:c:func:`gem_prime_mmap` callback.
 
-
-
-Returns
--------
-
+Returns:
 0 on success or a negative error code on failure.
 
 
-
-
-.. _xref_drm_gem_cma_prime_vmap:
+.. _`drm_gem_cma_prime_vmap`:
 
 drm_gem_cma_prime_vmap
 ======================
 
-.. c:function:: void * drm_gem_cma_prime_vmap (struct drm_gem_object * obj)
+.. c:function:: void *drm_gem_cma_prime_vmap (struct drm_gem_object *obj)
 
     map a CMA GEM object into the kernel's virtual address space
 
-    :param struct drm_gem_object * obj:
+    :param struct drm_gem_object \*obj:
         GEM object
 
 
+.. _`drm_gem_cma_prime_vmap.description`:
 
 Description
 -----------
@@ -459,32 +412,27 @@ kernel virtual address space this simply returns the cached virtual
 address. Drivers using the CMA helpers should set this as their DRM
 driver's ->:c:func:`gem_prime_vmap` callback.
 
-
-
-Returns
--------
-
+Returns:
 The kernel virtual address of the CMA GEM object's backing store.
 
 
-
-
-.. _xref_drm_gem_cma_prime_vunmap:
+.. _`drm_gem_cma_prime_vunmap`:
 
 drm_gem_cma_prime_vunmap
 ========================
 
-.. c:function:: void drm_gem_cma_prime_vunmap (struct drm_gem_object * obj, void * vaddr)
+.. c:function:: void drm_gem_cma_prime_vunmap (struct drm_gem_object *obj, void *vaddr)
 
     unmap a CMA GEM object from the kernel's virtual address space
 
-    :param struct drm_gem_object * obj:
+    :param struct drm_gem_object \*obj:
         GEM object
 
-    :param void * vaddr:
+    :param void \*vaddr:
         kernel virtual address where the CMA GEM object was mapped
 
 
+.. _`drm_gem_cma_prime_vunmap.description`:
 
 Description
 -----------
@@ -493,5 +441,4 @@ This function removes a buffer exported via DRM PRIME from the kernel's
 virtual address space. This is a no-op because CMA buffers cannot be
 unmapped from kernel space. Drivers using the CMA helpers should set this
 as their DRM driver's ->:c:func:`gem_prime_vunmap` callback.
-
 

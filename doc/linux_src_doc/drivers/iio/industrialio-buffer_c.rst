@@ -4,30 +4,29 @@
 industrialio-buffer.c
 =====================
 
-
-
-.. _xref_iio_buffer_read_first_n_outer:
+.. _`iio_buffer_read_first_n_outer`:
 
 iio_buffer_read_first_n_outer
 =============================
 
-.. c:function:: ssize_t iio_buffer_read_first_n_outer (struct file * filp, char __user * buf, size_t n, loff_t * f_ps)
+.. c:function:: ssize_t iio_buffer_read_first_n_outer (struct file *filp, char __user *buf, size_t n, loff_t *f_ps)
 
     chrdev read for buffer access
 
-    :param struct file * filp:
+    :param struct file \*filp:
         File structure pointer for the char device
 
-    :param char __user * buf:
+    :param char __user \*buf:
         Destination buffer for iio buffer read
 
     :param size_t n:
         First n bytes to read
 
-    :param loff_t * f_ps:
+    :param loff_t \*f_ps:
         Long offset provided by the user as a seek position
 
 
+.. _`iio_buffer_read_first_n_outer.description`:
 
 Description
 -----------
@@ -35,57 +34,50 @@ Description
 This function relies on all buffer implementations having an
 iio_buffer as their first element.
 
+Return: negative values corresponding to error codes or ret != 0
+for ending the reading activity
 
 
-Return
-------
-
-negative values corresponding to error codes or ret != 0
-	   for ending the reading activity
-
-
-
-
-.. _xref_iio_buffer_poll:
+.. _`iio_buffer_poll`:
 
 iio_buffer_poll
 ===============
 
-.. c:function:: unsigned int iio_buffer_poll (struct file * filp, struct poll_table_struct * wait)
+.. c:function:: unsigned int iio_buffer_poll (struct file *filp, struct poll_table_struct *wait)
 
     poll the buffer to find out if it has data
 
-    :param struct file * filp:
+    :param struct file \*filp:
         File structure pointer for device access
 
-    :param struct poll_table_struct * wait:
+    :param struct poll_table_struct \*wait:
         Poll table structure pointer for which the driver adds
-        		a wait queue
+        a wait queue
 
 
+.. _`iio_buffer_poll.description`:
 
-Return
-------
+Description
+-----------
 
-(POLLIN | POLLRDNORM) if data is available for reading
-	   or 0 for other cases
-
-
+Return: (POLLIN | POLLRDNORM) if data is available for reading
+or 0 for other cases
 
 
-.. _xref_iio_buffer_wakeup_poll:
+.. _`iio_buffer_wakeup_poll`:
 
 iio_buffer_wakeup_poll
 ======================
 
-.. c:function:: void iio_buffer_wakeup_poll (struct iio_dev * indio_dev)
+.. c:function:: void iio_buffer_wakeup_poll (struct iio_dev *indio_dev)
 
     Wakes up the buffer waitqueue
 
-    :param struct iio_dev * indio_dev:
+    :param struct iio_dev \*indio_dev:
         The IIO device
 
 
+.. _`iio_buffer_wakeup_poll.description`:
 
 Description
 -----------
@@ -94,27 +86,26 @@ Wakes up the event waitqueue used for :c:func:`poll`. Should usually
 be called when the device is unregistered.
 
 
-
-
-.. _xref_iio_scan_mask_set:
+.. _`iio_scan_mask_set`:
 
 iio_scan_mask_set
 =================
 
-.. c:function:: int iio_scan_mask_set (struct iio_dev * indio_dev, struct iio_buffer * buffer, int bit)
+.. c:function:: int iio_scan_mask_set (struct iio_dev *indio_dev, struct iio_buffer *buffer, int bit)
 
     set particular bit in the scan mask
 
-    :param struct iio_dev * indio_dev:
+    :param struct iio_dev \*indio_dev:
         the iio device
 
-    :param struct iio_buffer * buffer:
+    :param struct iio_buffer \*buffer:
         the buffer whose scan mask we are interested in
 
     :param int bit:
         the bit to be set.
 
 
+.. _`iio_scan_mask_set.description`:
 
 Description
 -----------
@@ -124,24 +115,23 @@ buffers might request, hence this code only verifies that the
 individual buffers request is plausible.
 
 
-
-
-.. _xref_iio_validate_scan_mask_onehot:
+.. _`iio_validate_scan_mask_onehot`:
 
 iio_validate_scan_mask_onehot
 =============================
 
-.. c:function:: bool iio_validate_scan_mask_onehot (struct iio_dev * indio_dev, const unsigned long * mask)
+.. c:function:: bool iio_validate_scan_mask_onehot (struct iio_dev *indio_dev, const unsigned long *mask)
 
     Validates that exactly one channel is selected
 
-    :param struct iio_dev * indio_dev:
+    :param struct iio_dev \*indio_dev:
         the iio device
 
-    :param const unsigned long * mask:
+    :param const unsigned long \*mask:
         scan mask to be checked
 
 
+.. _`iio_validate_scan_mask_onehot.description`:
 
 Description
 -----------
@@ -151,9 +141,7 @@ can be used for devices where only one channel can be active for sampling at
 a time.
 
 
-
-
-.. _xref_struct_iio_demux_table:
+.. _`iio_demux_table`:
 
 struct iio_demux_table
 ======================
@@ -181,35 +169,34 @@ Definition
 Members
 -------
 
-:``unsigned from``:
+:``from``:
     index to copy from
 
-:``unsigned to``:
+:``to``:
     index to copy to
 
-:``unsigned length``:
+:``length``:
     how many bytes to copy
 
-:``struct list_head l``:
+:``l``:
     list head used for management
 
 
 
-
-
-.. _xref_iio_buffer_release:
+.. _`iio_buffer_release`:
 
 iio_buffer_release
 ==================
 
-.. c:function:: void iio_buffer_release (struct kref * ref)
+.. c:function:: void iio_buffer_release (struct kref *ref)
 
     Free a buffer's resources
 
-    :param struct kref * ref:
+    :param struct kref \*ref:
         Pointer to the kref embedded in the iio_buffer struct
 
 
+.. _`iio_buffer_release.description`:
 
 Description
 -----------
@@ -220,21 +207,20 @@ call this function manually, always use :c:func:`iio_buffer_put` when done using
 buffer.
 
 
-
-
-.. _xref_iio_buffer_get:
+.. _`iio_buffer_get`:
 
 iio_buffer_get
 ==============
 
-.. c:function:: struct iio_buffer * iio_buffer_get (struct iio_buffer * buffer)
+.. c:function:: struct iio_buffer *iio_buffer_get (struct iio_buffer *buffer)
 
     Grab a reference to the buffer
 
-    :param struct iio_buffer * buffer:
+    :param struct iio_buffer \*buffer:
         The buffer to grab a reference for, may be NULL
 
 
+.. _`iio_buffer_get.description`:
 
 Description
 -----------
@@ -242,18 +228,15 @@ Description
 Returns the pointer to the buffer that was passed into the function.
 
 
-
-
-.. _xref_iio_buffer_put:
+.. _`iio_buffer_put`:
 
 iio_buffer_put
 ==============
 
-.. c:function:: void iio_buffer_put (struct iio_buffer * buffer)
+.. c:function:: void iio_buffer_put (struct iio_buffer *buffer)
 
     Release the reference to the buffer
 
-    :param struct iio_buffer * buffer:
+    :param struct iio_buffer \*buffer:
         The buffer to release the reference for, may be NULL
-
 

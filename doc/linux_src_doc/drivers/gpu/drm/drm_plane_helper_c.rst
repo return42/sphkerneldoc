@@ -4,55 +4,86 @@
 drm_plane_helper.c
 ==================
 
+.. _`overview`:
+
+overview
+========
+
+This helper library has two parts. The first part has support to implement
+primary plane support on top of the normal CRTC configuration interface.
+Since the legacy ->set_config interface ties the primary plane together with
+the CRTC state this does not allow userspace to disable the primary plane
+itself.  To avoid too much duplicated code use
+:c:func:`drm_plane_helper_check_update` which can be used to enforce the same
+restrictions as primary planes had thus. The default primary plane only
+expose XRBG8888 and ARGB8888 as valid pixel formats for the attached
+framebuffer.
+
+Drivers are highly recommended to implement proper support for primary
+planes, and newly merged drivers must not rely upon these transitional
+helpers.
+
+The second part also implements transitional helpers which allow drivers to
+gradually switch to the atomic helper infrastructure for plane updates. Once
+that switch is complete drivers shouldn't use these any longer, instead using
+the proper legacy implementations for update and disable plane hooks provided
+by the atomic helpers.
+
+Again drivers are strongly urged to switch to the new interfaces.
+
+The plane helpers share the function table structures with other helpers,
+specifically also the atomic helpers. See struct :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>` for
+the details.
 
 
-.. _xref_drm_plane_helper_check_update:
+.. _`drm_plane_helper_check_update`:
 
 drm_plane_helper_check_update
 =============================
 
-.. c:function:: int drm_plane_helper_check_update (struct drm_plane * plane, struct drm_crtc * crtc, struct drm_framebuffer * fb, struct drm_rect * src, struct drm_rect * dest, const struct drm_rect * clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool * visible)
+.. c:function:: int drm_plane_helper_check_update (struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_rect *src, struct drm_rect *dest, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool *visible)
 
     Check plane update for validity
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane object to update
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         owning CRTC of owning plane
 
-    :param struct drm_framebuffer * fb:
+    :param struct drm_framebuffer \*fb:
         framebuffer to flip onto plane
 
-    :param struct drm_rect * src:
+    :param struct drm_rect \*src:
         source coordinates in 16.16 fixed point
 
-    :param struct drm_rect * dest:
+    :param struct drm_rect \*dest:
         integer destination coordinates
 
-    :param const struct drm_rect * clip:
+    :param const struct drm_rect \*clip:
         integer clipping coordinates
 
     :param int min_scale:
-        minimum **src**:**dest** scaling factor in 16.16 fixed point
+        minimum ``src``\ :\ ``dest`` scaling factor in 16.16 fixed point
 
     :param int max_scale:
-        maximum **src**:**dest** scaling factor in 16.16 fixed point
+        maximum ``src``\ :\ ``dest`` scaling factor in 16.16 fixed point
 
     :param bool can_position:
         is it legal to position the plane such that it
-                       doesn't cover the entire crtc?  This will generally
-                       only be false for primary planes.
+        doesn't cover the entire crtc?  This will generally
+        only be false for primary planes.
 
     :param bool can_update_disabled:
         can the plane be updated while the crtc
-                              is disabled?
+        is disabled?
 
-    :param bool * visible:
+    :param bool \*visible:
         output parameter indicating whether plane is still visible after
-                  clipping
+        clipping
 
 
+.. _`drm_plane_helper_check_update.description`:
 
 Description
 -----------
@@ -62,32 +93,26 @@ their own plane handling rather than helper-provided implementations may
 still wish to call this function to avoid duplication of error checking
 code.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Zero if update appears valid, error code on failure
 
 
-
-
-.. _xref_drm_primary_helper_update:
+.. _`drm_primary_helper_update`:
 
 drm_primary_helper_update
 =========================
 
-.. c:function:: int drm_primary_helper_update (struct drm_plane * plane, struct drm_crtc * crtc, struct drm_framebuffer * fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
+.. c:function:: int drm_primary_helper_update (struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
 
     Helper for primary plane update
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane object to update
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         owning CRTC of owning plane
 
-    :param struct drm_framebuffer * fb:
+    :param struct drm_framebuffer \*fb:
         framebuffer to flip onto plane
 
     :param int crtc_x:
@@ -103,18 +128,19 @@ drm_primary_helper_update
         height of primary plane rectangle on crtc
 
     :param uint32_t src_x:
-        x offset of **fb** for panning
+        x offset of ``fb`` for panning
 
     :param uint32_t src_y:
-        y offset of **fb** for panning
+        y offset of ``fb`` for panning
 
     :param uint32_t src_w:
-        width of source rectangle in **fb**
+        width of source rectangle in ``fb``
 
     :param uint32_t src_h:
-        height of source rectangle in **fb**
+        height of source rectangle in ``fb``
 
 
+.. _`drm_primary_helper_update.description`:
 
 Description
 -----------
@@ -124,43 +150,37 @@ is called in response to a userspace SetPlane operation on the plane with a
 non-NULL framebuffer.  We call the driver's modeset handler to update the
 framebuffer.
 
-
 :c:func:`SetPlane` on a primary plane of a disabled CRTC is not supported, and will
 return an error.
 
-
 Note that we make some assumptions about hardware limitations that may not be
 true for all hardware --
-  1) Primary plane cannot be repositioned.
-  2) Primary plane cannot be scaled.
-  3) Primary plane must cover the entire CRTC.
-  4) Subpixel positioning is not supported.
+1) Primary plane cannot be repositioned.
+2) Primary plane cannot be scaled.
+3) Primary plane must cover the entire CRTC.
+4) Subpixel positioning is not supported.
+
 Drivers for hardware that don't have these restrictions can provide their
 own implementation rather than using this helper.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Zero on success, error code on failure
 
 
-
-
-.. _xref_drm_primary_helper_disable:
+.. _`drm_primary_helper_disable`:
 
 drm_primary_helper_disable
 ==========================
 
-.. c:function:: int drm_primary_helper_disable (struct drm_plane * plane)
+.. c:function:: int drm_primary_helper_disable (struct drm_plane *plane)
 
     Helper for primary plane disable
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane to disable
 
 
+.. _`drm_primary_helper_disable.description`:
 
 Description
 -----------
@@ -171,36 +191,30 @@ NULL framebuffer parameter.  It unconditionally fails the disable call with
 -EINVAL the only way to disable the primary plane without driver support is
 to disable the entier CRTC. Which does not match the plane ->disable hook.
 
-
 Note that some hardware may be able to disable the primary plane without
 disabling the whole CRTC.  Drivers for such hardware should provide their
 own disable handler that disables just the primary plane (and they'll likely
 need to provide their own update handler as well to properly re-enable a
 disabled primary plane).
 
-
-
-RETURNS
--------
-
+RETURNS:
 Unconditionally returns -EINVAL.
 
 
-
-
-.. _xref_drm_primary_helper_destroy:
+.. _`drm_primary_helper_destroy`:
 
 drm_primary_helper_destroy
 ==========================
 
-.. c:function:: void drm_primary_helper_destroy (struct drm_plane * plane)
+.. c:function:: void drm_primary_helper_destroy (struct drm_plane *plane)
 
     Helper for primary plane destruction
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane to destroy
 
 
+.. _`drm_primary_helper_destroy.description`:
 
 Description
 -----------
@@ -210,27 +224,26 @@ is called during CRTC destruction.  We disable the primary plane, remove
 it from the DRM plane list, and deallocate the plane structure.
 
 
-
-
-.. _xref_drm_crtc_init:
+.. _`drm_crtc_init`:
 
 drm_crtc_init
 =============
 
-.. c:function:: int drm_crtc_init (struct drm_device * dev, struct drm_crtc * crtc, const struct drm_crtc_funcs * funcs)
+.. c:function:: int drm_crtc_init (struct drm_device *dev, struct drm_crtc *crtc, const struct drm_crtc_funcs *funcs)
 
     Legacy CRTC initialization function
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         CRTC object to init
 
-    :param const struct drm_crtc_funcs * funcs:
+    :param const struct drm_crtc_funcs \*funcs:
         callbacks for the new CRTC
 
 
+.. _`drm_crtc_init.description`:
 
 Description
 -----------
@@ -238,32 +251,26 @@ Description
 Initialize a CRTC object with a default helper-provided primary plane and no
 cursor plane.
 
-
-
-Returns
--------
-
+Returns:
 Zero on success, error code on failure.
 
 
-
-
-.. _xref_drm_plane_helper_update:
+.. _`drm_plane_helper_update`:
 
 drm_plane_helper_update
 =======================
 
-.. c:function:: int drm_plane_helper_update (struct drm_plane * plane, struct drm_crtc * crtc, struct drm_framebuffer * fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
+.. c:function:: int drm_plane_helper_update (struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, int crtc_x, int crtc_y, unsigned int crtc_w, unsigned int crtc_h, uint32_t src_x, uint32_t src_y, uint32_t src_w, uint32_t src_h)
 
     Transitional helper for plane update
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane object to update
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         owning CRTC of owning plane
 
-    :param struct drm_framebuffer * fb:
+    :param struct drm_framebuffer \*fb:
         framebuffer to flip onto plane
 
     :param int crtc_x:
@@ -279,18 +286,19 @@ drm_plane_helper_update
         height of primary plane rectangle on crtc
 
     :param uint32_t src_x:
-        x offset of **fb** for panning
+        x offset of ``fb`` for panning
 
     :param uint32_t src_y:
-        y offset of **fb** for panning
+        y offset of ``fb`` for panning
 
     :param uint32_t src_w:
-        width of source rectangle in **fb**
+        width of source rectangle in ``fb``
 
     :param uint32_t src_h:
-        height of source rectangle in **fb**
+        height of source rectangle in ``fb``
 
 
+.. _`drm_plane_helper_update.description`:
 
 Description
 -----------
@@ -299,32 +307,26 @@ Provides a default plane update handler using the atomic plane update
 functions. It is fully left to the driver to check plane constraints and
 handle corner-cases like a fully occluded or otherwise invisible plane.
 
-
 This is useful for piecewise transitioning of a driver to the atomic helpers.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Zero on success, error code on failure
 
 
-
-
-.. _xref_drm_plane_helper_disable:
+.. _`drm_plane_helper_disable`:
 
 drm_plane_helper_disable
 ========================
 
-.. c:function:: int drm_plane_helper_disable (struct drm_plane * plane)
+.. c:function:: int drm_plane_helper_disable (struct drm_plane *plane)
 
     Transitional helper for plane disable
 
-    :param struct drm_plane * plane:
+    :param struct drm_plane \*plane:
         plane to disable
 
 
+.. _`drm_plane_helper_disable.description`:
 
 Description
 -----------
@@ -333,14 +335,8 @@ Provides a default plane disable handler using the atomic plane update
 functions. It is fully left to the driver to check plane constraints and
 handle corner-cases like a fully occluded or otherwise invisible plane.
 
-
 This is useful for piecewise transitioning of a driver to the atomic helpers.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Zero on success, error code on failure
-
 

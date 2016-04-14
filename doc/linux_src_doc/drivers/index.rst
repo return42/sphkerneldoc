@@ -19,3 +19,22 @@ drivers
    iio/index
    input/index
    media/index
+   message/index
+   mtd/index
+   net/index
+   parport/index
+   pci/index
+   platform/index
+   pnp/index
+   pwm/index
+   rapidio/index
+   regulator/index
+   s390/index
+   scsi/index
+   sh/index
+   spi/index
+   tty/index
+   uio/index
+   usb/index
+   video/index
+   w1/index

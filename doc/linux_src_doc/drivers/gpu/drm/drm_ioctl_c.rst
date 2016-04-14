@@ -4,27 +4,26 @@
 drm_ioctl.c
 ===========
 
-
-
-.. _xref_drm_noop:
+.. _`drm_noop`:
 
 drm_noop
 ========
 
-.. c:function:: int drm_noop (struct drm_device * dev, void * data, struct drm_file * file_priv)
+.. c:function:: int drm_noop (struct drm_device *dev, void *data, struct drm_file *file_priv)
 
     DRM no-op ioctl implemntation
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device for the ioctl
 
-    :param void * data:
+    :param void \*data:
         data pointer for the ioctl
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file for the ioctl call
 
 
+.. _`drm_noop.description`:
 
 Description
 -----------
@@ -33,31 +32,29 @@ This no-op implementation for drm ioctls is useful for deprecated
 functionality where we can't return a failure code because existing userspace
 checks the result of the ioctl, but doesn't care about the action.
 
-
 Always returns successfully with 0.
 
 
-
-
-.. _xref_drm_invalid_op:
+.. _`drm_invalid_op`:
 
 drm_invalid_op
 ==============
 
-.. c:function:: int drm_invalid_op (struct drm_device * dev, void * data, struct drm_file * file_priv)
+.. c:function:: int drm_invalid_op (struct drm_device *dev, void *data, struct drm_file *file_priv)
 
     DRM invalid ioctl implemntation
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device for the ioctl
 
-    :param void * data:
+    :param void \*data:
         data pointer for the ioctl
 
-    :param struct drm_file * file_priv:
+    :param struct drm_file \*file_priv:
         DRM file for the ioctl call
 
 
+.. _`drm_invalid_op.description`:
 
 Description
 -----------
@@ -69,22 +66,19 @@ transitioned to kms gradually and so kept the old legacy tables around. This
 only applies to radeon and i915 kms drivers, other drivers shouldn't need to
 use this function.
 
-
 Always fails with a return value of -EINVAL.
 
 
-
-
-.. _xref_drm_ioctl:
+.. _`drm_ioctl`:
 
 drm_ioctl
 =========
 
-.. c:function:: long drm_ioctl (struct file * filp, unsigned int cmd, unsigned long arg)
+.. c:function:: long drm_ioctl (struct file *filp, unsigned int cmd, unsigned long arg)
 
     ioctl callback implementation for DRM drivers
 
-    :param struct file * filp:
+    :param struct file \*filp:
         file this ioctl is called on
 
     :param unsigned int cmd:
@@ -94,39 +88,35 @@ drm_ioctl
         user argument
 
 
+.. _`drm_ioctl.description`:
 
-Looks up the ioctl function in the 
------------------------------------
+Description
+-----------
 
-:ioctls table, checking for root
+Looks up the ioctl function in the ::ioctls table, checking for root
 previleges if so required, and dispatches to the respective function.
 
-
-
-Returns
--------
-
+Returns:
 Zero on success, negative error code on failure.
 
 
-
-
-.. _xref_drm_ioctl_flags:
+.. _`drm_ioctl_flags`:
 
 drm_ioctl_flags
 ===============
 
-.. c:function:: bool drm_ioctl_flags (unsigned int nr, unsigned int * flags)
+.. c:function:: bool drm_ioctl_flags (unsigned int nr, unsigned int *flags)
 
     Check for core ioctl and return ioctl permission flags
 
     :param unsigned int nr:
         ioctl number
 
-    :param unsigned int * flags:
+    :param unsigned int \*flags:
         where to return the ioctl permission flags
 
 
+.. _`drm_ioctl_flags.description`:
 
 Description
 -----------
@@ -135,11 +125,6 @@ This ioctl is only used by the vmwgfx driver to augment the access checks
 done by the drm core and insofar a pretty decent layering violation. This
 shouldn't be used by any drivers.
 
-
-
-Returns
--------
-
-True if the **nr** corresponds to a DRM core ioctl numer, false otherwise.
-
+Returns:
+True if the ``nr`` corresponds to a DRM core ioctl numer, false otherwise.
 

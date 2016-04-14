@@ -4,9 +4,7 @@
 tlb_64.h
 ========
 
-
-
-.. _xref_for_each_dtlb_entry:
+.. _`for_each_dtlb_entry`:
 
 for_each_dtlb_entry
 ===================
@@ -19,9 +17,7 @@ for_each_dtlb_entry
         TLB entry
 
 
-
-
-.. _xref_for_each_itlb_entry:
+.. _`for_each_itlb_entry`:
 
 for_each_itlb_entry
 ===================
@@ -34,9 +30,7 @@ for_each_itlb_entry
         TLB entry
 
 
-
-
-.. _xref___flush_tlb_slot:
+.. _`__flush_tlb_slot`:
 
 __flush_tlb_slot
 ================
@@ -47,5 +41,4 @@ __flush_tlb_slot
 
     :param unsigned long long slot:
         Address of TLB slot.
-
 

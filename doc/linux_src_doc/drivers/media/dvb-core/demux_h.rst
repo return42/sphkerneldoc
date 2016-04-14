@@ -4,9 +4,52 @@
 demux.h
 =======
 
+.. _`digital-tv-demux`:
+
+Digital TV Demux
+================
+
+The Kernel Digital TV Demux kABI defines a driver-internal interface for
+registering low-level, hardware specific driver to a hardware independent
+demux layer. It is only of interest for Digital TV device driver writers.
+The header file for this kABI is named demux.h and located in
+drivers/media/dvb-core.
+
+The demux kABI should be implemented for each demux in the system. It is
+used to select the TS source of a demux and to manage the demux resources.
+When the demux client allocates a resource via the demux kABI, it receives
+a pointer to the kABI of that resource.
+
+Each demux receives its TS input from a DVB front-end or from memory, as
+set via this demux kABI. In a system with more than one front-end, the kABI
+can be used to select one of the DVB front-ends as a TS source for a demux,
+unless this is fixed in the HW platform.
+
+The demux kABI only controls front-ends regarding to their connections with
+demuxes; the kABI used to set the other front-end parameters, such as
+tuning, are devined via the Digital TV Frontend kABI.
+
+The functions that implement the abstract interface demux should be defined
+static or module private and registered to the Demux core for external
+access. It is not necessary to implement every function in the struct
+:c:type:`struct dmx_demux <dmx_demux>`. For example, a demux interface might support Section filtering,
+but not PES filtering. The kABI client is expected to check the value of any
+function pointer before calling the function: the value of NULL means
+that the function is not available.
+
+Whenever the functions of the demux API modify shared data, the
+possibilities of lost update and race condition problems should be
+addressed, e.g. by protecting parts of code with mutexes.
+
+Note that functions called from a bottom half context must not sleep.
+Even a simple memory allocation without using ``GFP_ATOMIC`` can result in a
+kernel thread being put to sleep if swapping is needed. For example, the
+Linux Kernel calls the functions of a network device interface from a
+bottom half context. Thus, if a demux kABI function is called from network
+device code, the function must not sleep.
 
 
-.. _xref_enum ts_filter_type:
+.. _`ts_filter_type`:
 
 enum ts_filter_type
 ===================
@@ -25,19 +68,17 @@ Constants
 
 :``TS_PAYLOAD_ONLY``:
     In case TS_PACKET is set, only send the TS payload
-    			(<=184 bytes per packet) to callback
+    (<=184 bytes per packet) to callback
 
 :``TS_DECODER``:
     Send stream to built-in decoder (if present).
 
 :``TS_DEMUX``:
     In case TS_PACKET is set, send the TS to the demux
-    			device, not to the dvr device
+    device, not to the dvr device
 
 
-
-
-.. _xref_struct_dmx_ts_feed:
+.. _`dmx_ts_feed`:
 
 struct dmx_ts_feed
 ==================
@@ -67,24 +108,23 @@ Definition
 Members
 -------
 
-:``int is_filtering``:
+:``is_filtering``:
     Set to non-zero when filtering in progress
 
-:``struct dmx_demux * parent``:
+:``parent``:
     pointer to struct dmx_demux
 
-:``void * priv``:
+:``priv``:
     pointer to private data of the API client
 
-:``int (*)(struct dmx_ts_feed *feed,u16 pid,int type,enum dmx_ts_pes pes_type,size_t circular_buffer_size,struct timespec timeout) set``:
+:``set``:
     sets the TS filter
 
-:``int (*)(struct dmx_ts_feed *feed) start_filtering``:
+:``start_filtering``:
     starts TS filtering
 
-:``int (*)(struct dmx_ts_feed *feed) stop_filtering``:
+:``stop_filtering``:
     stops TS filtering
-
 
 
 
@@ -96,9 +136,7 @@ Using this API, the client can set the filtering properties to start/stop
 filtering TS packets on a particular TS feed.
 
 
-
-
-.. _xref_struct_dmx_section_filter:
+.. _`dmx_section_filter`:
 
 struct dmx_section_filter
 =========================
@@ -127,24 +165,23 @@ Definition
 Members
 -------
 
-:``u8 filter_value[DMX_MAX_FILTER_SIZE]``:
+:``filter_value[DMX_MAX_FILTER_SIZE]``:
     Contains up to 16 bytes (128 bits) of the TS section header
-    		  that will be matched by the section filter
+    that will be matched by the section filter
 
-:``u8 filter_mask[DMX_MAX_FILTER_SIZE]``:
+:``filter_mask[DMX_MAX_FILTER_SIZE]``:
     Contains a 16 bytes (128 bits) filter mask with the bits
-    		  specified by **filter_value** that will be used on the filter
-    		  match logic.
+    specified by ``filter_value`` that will be used on the filter
+    match logic.
 
-:``u8 filter_mode[DMX_MAX_FILTER_SIZE]``:
+:``filter_mode[DMX_MAX_FILTER_SIZE]``:
     Contains a 16 bytes (128 bits) filter mode.
 
-:``struct dmx_section_feed * parent``:
+:``parent``:
     Pointer to struct dmx_section_feed.
 
-:``void * priv``:
+:``priv``:
     Pointer to private data of the API client.
-
 
 
 
@@ -152,16 +189,13 @@ Description
 -----------
 
 
-
-The **filter_mask** controls which bits of **filter_value** are compared with
+The ``filter_mask`` controls which bits of ``filter_value`` are compared with
 the section headers/payload. On a binary value of 1 in filter_mask, the
 corresponding bits are compared. The filter only accepts sections that are
 equal to filter_value in all the tested bit positions.
 
 
-
-
-.. _xref_struct_dmx_section_feed:
+.. _`dmx_section_feed`:
 
 struct dmx_section_feed
 =======================
@@ -194,41 +228,40 @@ Definition
 Members
 -------
 
-:``int is_filtering``:
+:``is_filtering``:
     Set to non-zero when filtering in progress
 
-:``struct dmx_demux * parent``:
+:``parent``:
     pointer to struct dmx_demux
 
-:``void * priv``:
+:``priv``:
     pointer to private data of the API client
 
-:``int check_crc``:
+:``check_crc``:
     If non-zero, check the CRC values of filtered sections.
 
-:``int (*)(struct dmx_section_feed *feed,u16 pid,size_t circular_buffer_size,int check_crc) set``:
+:``set``:
     sets the section filter
 
-:``int (*)(struct dmx_section_feed *feed,struct dmx_section_filter **filter) allocate_filter``:
+:``allocate_filter``:
     This function is used to allocate a section filter on
-    			the demux. It should only be called when no filtering
-    			is in progress on this section feed. If a filter cannot
-    			be allocated, the function fails with -ENOSPC.
+    the demux. It should only be called when no filtering
+    is in progress on this section feed. If a filter cannot
+    be allocated, the function fails with -ENOSPC.
 
-:``int (*)(struct dmx_section_feed *feed,struct dmx_section_filter *filter) release_filter``:
+:``release_filter``:
     This function releases all the resources of a
-    			previously allocated section filter. The function
-    			should not be called while filtering is in progress
-    			on this section feed. After calling this function,
-    			the caller should not try to dereference the filter
-    			pointer.
+    previously allocated section filter. The function
+    should not be called while filtering is in progress
+    on this section feed. After calling this function,
+    the caller should not try to dereference the filter
+    pointer.
 
-:``int (*)(struct dmx_section_feed *feed) start_filtering``:
+:``start_filtering``:
     starts section filtering
 
-:``int (*)(struct dmx_section_feed *feed) stop_filtering``:
+:``stop_filtering``:
     stops section filtering
-
 
 
 
@@ -240,33 +273,58 @@ Using this API, the client can set the filtering properties to start/stop
 filtering TS packets on a particular TS feed.
 
 
+.. _`demux-callback`:
+
+Demux Callback
+==============
+
+This kernel-space API comprises the callback functions that deliver filtered
+data to the demux client. Unlike the other DVB kABIs, these functions are
+provided by the client and called from the demux code.
+
+The function pointers of this abstract interface are not packed into a
+structure as in the other demux APIs, because the callback functions are
+registered and used independent of each other. As an example, it is possible
+for the API client to provide several callback functions for receiving TS
+packets and no callbacks for PES packets or sections.
+
+The functions that implement the callback API need not be re-entrant: when
+a demux driver calls one of these functions, the driver is not allowed to
+call the function again before the original call returns. If a callback is
+triggered by a hardware interrupt, it is recommended to use the Linux
+bottom half mechanism or start a tasklet instead of making the callback
+function call directly from a hardware interrupt.
+
+This mechanism is implemented by :c:func:`dmx_ts_cb` and :c:func:`dmx_section_cb`
+callbacks.
 
 
-.. _xref_dmx_ts_cb:
+.. _`dmx_ts_cb`:
 
 dmx_ts_cb
 =========
 
-.. c:function:: int dmx_ts_cb (const u8 * buffer1, size_t buffer1_length, const u8 * buffer2, size_t buffer2_length, struct dmx_ts_feed * source)
+.. c:function:: int dmx_ts_cb (const u8 *buffer1, size_t buffer1_length, const u8 *buffer2, size_t buffer2_length, struct dmx_ts_feed *source)
 
     DVB demux TS filter callback function prototype
 
-    :param const u8 * buffer1:
+    :param const u8 \*buffer1:
         Pointer to the start of the filtered TS packets.
 
     :param size_t buffer1_length:
         Length of the TS data in buffer1.
 
-    :param const u8 * buffer2:
+    :param const u8 \*buffer2:
         Pointer to the tail of the filtered TS packets, or NULL.
 
     :param size_t buffer2_length:
         Length of the TS data in buffer2.
 
-    :param struct dmx_ts_feed * source:
+    :param struct dmx_ts_feed \*source:
         Indicates which TS feed is the source of the callback.
 
 
+.. _`dmx_ts_cb.description`:
 
 Description
 -----------
@@ -278,27 +336,25 @@ the :c:type:`struct dmx_demux <dmx_demux>`.
 Any TS packets that match the filter settings are copied to a circular
 buffer. The filtered TS packets are delivered to the client using this
 callback function. The size of the circular buffer is controlled by the
-circular_buffer_size parameter of the :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.**set** function.
-It is expected that the **buffer1** and **buffer2** callback parameters point to
+circular_buffer_size parameter of the :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set`` function.
+It is expected that the ``buffer1`` and ``buffer2`` callback parameters point to
 addresses within the circular buffer, but other implementations are also
 possible. Note that the called party should not try to free the memory
-the **buffer1** and **buffer2** parameters point to.
+the ``buffer1`` and ``buffer2`` parameters point to.
 
-
-When this function is called, the **buffer1** parameter typically points to
+When this function is called, the ``buffer1`` parameter typically points to
 the start of the first undelivered TS packet within a circular buffer.
-The **buffer2** buffer parameter is normally NULL, except when the received
+The ``buffer2`` buffer parameter is normally NULL, except when the received
 TS packets have crossed the last address of the circular buffer and
-”wrapped” to the beginning of the buffer. In the latter case the **buffer1**
+”wrapped” to the beginning of the buffer. In the latter case the ``buffer1``
 parameter would contain an address within the circular buffer, while the
-**buffer2** parameter would contain the first address of the circular buffer.
-The number of bytes delivered with this function (i.e. **buffer1_length** +
-**buffer2_length**) is usually equal to the value of callback_length parameter
+``buffer2`` parameter would contain the first address of the circular buffer.
+The number of bytes delivered with this function (i.e. ``buffer1_length`` +
+``buffer2_length``\ ) is usually equal to the value of callback_length parameter
 given in the :c:func:`set` function, with one exception: if a timeout occurs before
 receiving callback_length bytes of TS data, any undelivered packets are
 immediately delivered to the client by calling this function. The timeout
 duration is controlled by the :c:func:`set` function in the TS Feed API.
-
 
 If a TS packet is received with errors that could not be fixed by the
 TS-level forward error correction (FEC), the Transport_error_indicator
@@ -309,55 +365,51 @@ is possible that the circular buffer eventually fills up. If this happens,
 the demux driver should discard any TS packets received while the buffer
 is full and return -EOVERFLOW.
 
-
 The type of data returned to the callback can be selected by the
-:c:type:`struct dmx_ts_feed <dmx_ts_feed>`.**set** function. The type parameter decides if the raw
+:c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set`` function. The type parameter decides if the raw
 TS packet (TS_PACKET) or just the payload (TS_PACKET|TS_PAYLOAD_ONLY)
 should be returned. If additionally the TS_DECODER bit is set the stream
 will also be sent to the hardware MPEG decoder.
 
+Return::
+
+        0, on success;
+        -EOVERFLOW, on buffer overflow.
 
 
-Return
-------
-
-	0, on success;
-	-EOVERFLOW, on buffer overflow.
-
-
-
-
-.. _xref_dmx_section_cb:
+.. _`dmx_section_cb`:
 
 dmx_section_cb
 ==============
 
-.. c:function:: int dmx_section_cb (const u8 * buffer1, size_t buffer1_len, const u8 * buffer2, size_t buffer2_len, struct dmx_section_filter * source)
+.. c:function:: int dmx_section_cb (const u8 *buffer1, size_t buffer1_len, const u8 *buffer2, size_t buffer2_len, struct dmx_section_filter *source)
 
     DVB demux TS filter callback function prototype
 
-    :param const u8 * buffer1:
-        Pointer to the start of the filtered section, e.g.
-        			within the circular buffer of the demux driver.
+    :param const u8 \*buffer1:
+        Pointer to the start of the filtered section, e.g.::
+
+                                within the circular buffer of the demux driver.
 
     :param size_t buffer1_len:
-        Length of the filtered section data in **buffer1**,
-        			including headers and CRC.
+        Length of the filtered section data in ``buffer1``\ ,
+        including headers and CRC.
 
-    :param const u8 * buffer2:
+    :param const u8 \*buffer2:
         Pointer to the tail of the filtered section data,
-        			or NULL. Useful to handle the wrapping of a
-        			circular buffer.
+        or NULL. Useful to handle the wrapping of a
+        circular buffer.
 
     :param size_t buffer2_len:
-        Length of the filtered section data in **buffer2**,
-        			including headers and CRC.
+        Length of the filtered section data in ``buffer2``\ ,
+        including headers and CRC.
 
-    :param struct dmx_section_filter * source:
+    :param struct dmx_section_filter \*source:
         Indicates which section feed is the source of the
-        			callback.
+        callback.
 
 
+.. _`dmx_section_cb.description`:
 
 Description
 -----------
@@ -365,7 +417,7 @@ Description
 This function callback prototype, provided by the client of the demux API,
 is called from the demux code. The function is only called when
 filtering of sections has been enabled using the function
-:c:type:`struct dmx_ts_feed <dmx_ts_feed>`.**start_filtering**. When the demux driver has received a
+:c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``start_filtering``\ . When the demux driver has received a
 complete section that matches at least one section filter, the client
 is notified via this callback function. Normally this function is called
 for each received section; however, it is also possible to deliver
@@ -377,15 +429,13 @@ implementation should maintain a circular buffer for received sections.
 However, this is not necessary if the Section Feed API is implemented as
 a client of the TS Feed API, because the TS Feed implementation then
 buffers the received data. The size of the circular buffer can be
-configured using the :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.**set** function in the Section Feed API.
+configured using the :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set`` function in the Section Feed API.
 If there is no room in the circular buffer when a new section is received,
 the section must be discarded. If this happens, the value of the success
 parameter should be DMX_OVERRUN_ERROR on the next callback.
 
 
-
-
-.. _xref_enum dmx_frontend_source:
+.. _`dmx_frontend_source`:
 
 enum dmx_frontend_source
 ========================
@@ -401,17 +451,15 @@ Constants
 
 :``DMX_MEMORY_FE``:
     The source of the demux is memory. It means that
-    			the MPEG-TS to be filtered comes from userspace,
-    			via :c:func:`write` syscall.
+    the MPEG-TS to be filtered comes from userspace,
+    via :c:func:`write` syscall.
 
 :``DMX_FRONTEND_0``:
     The source of the demux is a frontend connected
-    			to the demux.
+    to the demux.
 
 
-
-
-.. _xref_struct_dmx_frontend:
+.. _`dmx_frontend`:
 
 struct dmx_frontend
 ===================
@@ -437,26 +485,23 @@ Definition
 Members
 -------
 
-:``struct list_head connectivity_list``:
+:``connectivity_list``:
     List of front-ends that can be connected to a
-    			particular demux;
+    particular demux;
 
-:``enum dmx_frontend_source source``:
+:``source``:
     Type of the frontend.
 
 
 
+Description
+-----------
 
-FIXME
------
-
-this structure should likely be replaced soon by some
-	media-controller based logic.
-
+FIXME: this structure should likely be replaced soon by some
+media-controller based logic.
 
 
-
-.. _xref_enum dmx_demux_caps:
+.. _`dmx_demux_caps`:
 
 enum dmx_demux_caps
 ===================
@@ -480,16 +525,13 @@ Constants
     set if :c:func:`write` available.
 
 
-
 Description
 -----------
 
 Those flags are OR'ed in the :c:type:`struct dmx_demux <dmx_demux>`.:c:type:`struct capabilities <capabilities>` field
 
 
-
-
-.. _xref_struct_dmx_demux:
+.. _`dmx_demux`:
 
 struct dmx_demux
 ================
@@ -529,207 +571,207 @@ Definition
 Members
 -------
 
-:``enum dmx_demux_caps capabilities``:
+:``capabilities``:
     Bitfield of capability flags.
 
-:``struct dmx_frontend * frontend``:
+:``frontend``:
     Front-end connected to the demux
 
-:``void * priv``:
+:``priv``:
     Pointer to private data of the API client
 
-:``int (*)(struct dmx_demux *demux) open``:
+:``open``:
     This function reserves the demux for use by the caller and, if
-    	necessary, initializes the demux. When the demux is no longer needed,
-    	the function **close** should be called. It should be possible for
-    	multiple clients to access the demux at the same time. Thus, the
-    	function implementation should increment the demux usage count when
-    	**open** is called and decrement it when **close** is called.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EUSERS, if maximum usage count was reached;
-    		-EINVAL, on bad parameter.
+    necessary, initializes the demux. When the demux is no longer needed,
+    the function ``close`` should be called. It should be possible for
+    multiple clients to access the demux at the same time. Thus, the
+    function implementation should increment the demux usage count when
+    ``open`` is called and decrement it when ``close`` is called.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    It returns
+    0 on success;
+    -EUSERS, if maximum usage count was reached;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux) close``:
+:``close``:
     This function reserves the demux for use by the caller and, if
-    	necessary, initializes the demux. When the demux is no longer needed,
-    	the function **close** should be called. It should be possible for
-    	multiple clients to access the demux at the same time. Thus, the
-    	function implementation should increment the demux usage count when
-    	**open** is called and decrement it when **close** is called.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	It returns
-    		0 on success;
-    		-ENODEV, if demux was not in use (e. g. no users);
-    		-EINVAL, on bad parameter.
+    necessary, initializes the demux. When the demux is no longer needed,
+    the function ``close`` should be called. It should be possible for
+    multiple clients to access the demux at the same time. Thus, the
+    function implementation should increment the demux usage count when
+    ``open`` is called and decrement it when ``close`` is called.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    It returns
+    0 on success;
+    -ENODEV, if demux was not in use (e. g. no users);
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux, const char __user *buf,size_t count) write``:
+:``write``:
     This function provides the demux driver with a memory buffer
-    	containing TS packets. Instead of receiving TS packets from the DVB
-    	front-end, the demux driver software will read packets from memory.
-    	Any clients of this demux with active TS, PES or Section filters will
-    	receive filtered data via the Demux callback API (see 0). The function
-    	returns when all the data in the buffer has been consumed by the demux.
-    	Demux hardware typically cannot read TS from memory. If this is the
-    	case, memory-based filtering has to be implemented entirely in software.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **buf** function parameter contains a pointer to the TS data in
-    	kernel-space memory.
-    	The **count** function parameter contains the length of the TS data.
-    	It returns
-    		0 on success;
-    		-ERESTARTSYS, if mutex lock was interrupted;
-    		-EINTR, if a signal handling is pending;
-    		-ENODEV, if demux was removed;
-    		-EINVAL, on bad parameter.
+    containing TS packets. Instead of receiving TS packets from the DVB
+    front-end, the demux driver software will read packets from memory.
+    Any clients of this demux with active TS, PES or Section filters will
+    receive filtered data via the Demux callback API (see 0). The function
+    returns when all the data in the buffer has been consumed by the demux.
+    Demux hardware typically cannot read TS from memory. If this is the
+    case, memory-based filtering has to be implemented entirely in software.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``buf`` function parameter contains a pointer to the TS data in
+    kernel-space memory.
+    The ``count`` function parameter contains the length of the TS data.
+    It returns
+    0 on success;
+    -ERESTARTSYS, if mutex lock was interrupted;
+    -EINTR, if a signal handling is pending;
+    -ENODEV, if demux was removed;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_ts_feed **feed,dmx_ts_cb callback) allocate_ts_feed``:
+:``allocate_ts_feed``:
     Allocates a new TS feed, which is used to filter the TS
-    	packets carrying a certain PID. The TS feed normally corresponds to a
-    	hardware PID filter on the demux chip.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **feed** function parameter contains a pointer to the TS feed API and
-    	instance data.
-    	The **callback** function parameter contains a pointer to the callback
-    	function for passing received TS packet.
-    	It returns
-    		0 on success;
-    		-ERESTARTSYS, if mutex lock was interrupted;
-    		-EBUSY, if no more TS feeds is available;
-    		-EINVAL, on bad parameter.
+    packets carrying a certain PID. The TS feed normally corresponds to a
+    hardware PID filter on the demux chip.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``feed`` function parameter contains a pointer to the TS feed API and
+    instance data.
+    The ``callback`` function parameter contains a pointer to the callback
+    function for passing received TS packet.
+    It returns
+    0 on success;
+    -ERESTARTSYS, if mutex lock was interrupted;
+    -EBUSY, if no more TS feeds is available;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_ts_feed *feed) release_ts_feed``:
-    Releases the resources allocated with **allocate_ts_feed**.
-    	Any filtering in progress on the TS feed should be stopped before
-    	calling this function.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **feed** function parameter contains a pointer to the TS feed API and
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EINVAL on bad parameter.
+:``release_ts_feed``:
+    Releases the resources allocated with ``allocate_ts_feed``\ .::
 
-:``int (*)(struct dmx_demux *demux,struct dmx_section_feed **feed,dmx_section_cb callback) allocate_section_feed``:
+            Any filtering in progress on the TS feed should be stopped before
+            calling this function.
+            The ``demux`` function parameter contains a pointer to the demux API and
+            instance data.
+            The ``feed`` function parameter contains a pointer to the TS feed API and
+            instance data.
+            It returns
+                    0 on success;
+                    -EINVAL on bad parameter.
+
+:``allocate_section_feed``:
     Allocates a new section feed, i.e. a demux resource
-    	for filtering and receiving sections. On platforms with hardware
-    	support for section filtering, a section feed is directly mapped to
-    	the demux HW. On other platforms, TS packets are first PID filtered in
-    	hardware and a hardware section filter then emulated in software. The
-    	caller obtains an API pointer of type dmx_section_feed_t as an out
-    	parameter. Using this API the caller can set filtering parameters and
-    	start receiving sections.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **feed** function parameter contains a pointer to the TS feed API and
-    	instance data.
-    	The **callback** function parameter contains a pointer to the callback
-    	function for passing received TS packet.
-    	It returns
-    		0 on success;
-    		-EBUSY, if no more TS feeds is available;
-    		-EINVAL, on bad parameter.
+    for filtering and receiving sections. On platforms with hardware
+    support for section filtering, a section feed is directly mapped to
+    the demux HW. On other platforms, TS packets are first PID filtered in
+    hardware and a hardware section filter then emulated in software. The
+    caller obtains an API pointer of type dmx_section_feed_t as an out
+    parameter. Using this API the caller can set filtering parameters and
+    start receiving sections.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``feed`` function parameter contains a pointer to the TS feed API and
+    instance data.
+    The ``callback`` function parameter contains a pointer to the callback
+    function for passing received TS packet.
+    It returns
+    0 on success;
+    -EBUSY, if no more TS feeds is available;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_section_feed *feed) release_section_feed``:
+:``release_section_feed``:
     Releases the resources allocated with
-    	**allocate_section_feed**, including allocated filters. Any filtering in
-    	progress on the section feed should be stopped before calling this
-    	function.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **feed** function parameter contains a pointer to the TS feed API and
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EINVAL, on bad parameter.
+    ``allocate_section_feed``\ , including allocated filters. Any filtering in
+    progress on the section feed should be stopped before calling this
+    function.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``feed`` function parameter contains a pointer to the TS feed API and
+    instance data.
+    It returns
+    0 on success;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_frontend *frontend) add_frontend``:
+:``add_frontend``:
     Registers a connectivity between a demux and a front-end,
-    	i.e., indicates that the demux can be connected via a call to
-    	**connect_frontend** to use the given front-end as a TS source. The
-    	client of this function has to allocate dynamic or static memory for
-    	the frontend structure and initialize its fields before calling this
-    	function. This function is normally called during the driver
-    	initialization. The caller must not free the memory of the frontend
-    	struct before successfully calling **remove_frontend**.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **frontend** function parameter contains a pointer to the front-end
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EINVAL, on bad parameter.
+    i.e., indicates that the demux can be connected via a call to
+    ``connect_frontend`` to use the given front-end as a TS source. The
+    client of this function has to allocate dynamic or static memory for
+    the frontend structure and initialize its fields before calling this
+    function. This function is normally called during the driver
+    initialization. The caller must not free the memory of the frontend
+    struct before successfully calling ``remove_frontend``\ .
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``frontend`` function parameter contains a pointer to the front-end
+    instance data.
+    It returns
+    0 on success;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_frontend *frontend) remove_frontend``:
+:``remove_frontend``:
     Indicates that the given front-end, registered by a call
-    	to **add_frontend**, can no longer be connected as a TS source by this
-    	demux. The function should be called when a front-end driver or a demux
-    	driver is removed from the system. If the front-end is in use, the
-    	function fails with the return value of -EBUSY. After successfully
-    	calling this function, the caller can free the memory of the frontend
-    	struct if it was dynamically allocated before the **add_frontend**
-    	operation.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **frontend** function parameter contains a pointer to the front-end
-    	instance data.
-    	It returns
-    		0 on success;
-    		-ENODEV, if the front-end was not found,
-    		-EINVAL, on bad parameter.
+    to ``add_frontend``\ , can no longer be connected as a TS source by this
+    demux. The function should be called when a front-end driver or a demux
+    driver is removed from the system. If the front-end is in use, the
+    function fails with the return value of -EBUSY. After successfully
+    calling this function, the caller can free the memory of the frontend
+    struct if it was dynamically allocated before the ``add_frontend``
+    operation.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``frontend`` function parameter contains a pointer to the front-end
+    instance data.
+    It returns
+    0 on success;
+    -ENODEV, if the front-end was not found,
+    -EINVAL, on bad parameter.
 
-:``struct list_head *(*)(struct dmx_demux *demux) get_frontends``:
+:``get_frontends``:
     Provides the APIs of the front-ends that have been
-    	registered for this demux. Any of the front-ends obtained with this
-    	call can be used as a parameter for **connect_frontend**. The include
-    	file demux.h contains the macro :c:func:`DMX_FE_ENTRY` for converting an
-    	element of the generic type struct :c:type:`struct list_head <list_head>` * to the type
-    	struct :c:type:`struct dmx_frontend <dmx_frontend>` *. The caller must not free the memory of any of
-    	the elements obtained via this function call.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	It returns a struct list_head pointer to the list of front-end
-    	interfaces, or NULL in the case of an empty list.
+    registered for this demux. Any of the front-ends obtained with this
+    call can be used as a parameter for ``connect_frontend``\ . The include
+    file demux.h contains the macro :c:func:`DMX_FE_ENTRY` for converting an
+    element of the generic type struct :c:type:`struct list_head <list_head>` * to the type
+    struct :c:type:`struct dmx_frontend <dmx_frontend>` *. The caller must not free the memory of any of
+    the elements obtained via this function call.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    It returns a struct list_head pointer to the list of front-end
+    interfaces, or NULL in the case of an empty list.
 
-:``int (*)(struct dmx_demux *demux,struct dmx_frontend *frontend) connect_frontend``:
+:``connect_frontend``:
     Connects the TS output of the front-end to the input of
-    	the demux. A demux can only be connected to a front-end registered to
-    	the demux with the function **add_frontend**. It may or may not be
-    	possible to connect multiple demuxes to the same front-end, depending
-    	on the capabilities of the HW platform. When not used, the front-end
-    	should be released by calling **disconnect_frontend**.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **frontend** function parameter contains a pointer to the front-end
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EINVAL, on bad parameter.
+    the demux. A demux can only be connected to a front-end registered to
+    the demux with the function ``add_frontend``\ . It may or may not be
+    possible to connect multiple demuxes to the same front-end, depending
+    on the capabilities of the HW platform. When not used, the front-end
+    should be released by calling ``disconnect_frontend``\ .
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``frontend`` function parameter contains a pointer to the front-end
+    instance data.
+    It returns
+    0 on success;
+    -EINVAL, on bad parameter.
 
-:``int (*)(struct dmx_demux *demux) disconnect_frontend``:
+:``disconnect_frontend``:
     Disconnects the demux and a front-end previously
-    	connected by a **connect_frontend** call.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	It returns
-    		0 on success;
-    		-EINVAL on bad parameter.
+    connected by a ``connect_frontend`` call.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    It returns
+    0 on success;
+    -EINVAL on bad parameter.
 
-:``int (*)(struct dmx_demux *demux, u16 *pids) get_pes_pids``:
+:``get_pes_pids``:
     Get the PIDs for DMX_PES_AUDIO0, DMX_PES_VIDEO0,
-    	DMX_PES_TELETEXT0, DMX_PES_SUBTITLE0 and DMX_PES_PCR0.
-    	The **demux** function parameter contains a pointer to the demux API and
-    	instance data.
-    	The **pids** function parameter contains an array with five u16 elements
-    	where the PIDs will be stored.
-    	It returns
-    		0 on success;
-    		-EINVAL on bad parameter.
-
+    DMX_PES_TELETEXT0, DMX_PES_SUBTITLE0 and DMX_PES_PCR0.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``pids`` function parameter contains an array with five u16 elements
+    where the PIDs will be stored.
+    It returns
+    0 on success;
+    -EINVAL on bad parameter.
 
 

@@ -4,9 +4,7 @@
 cio.h
 =====
 
-
-
-.. _xref_struct_ccw1:
+.. _`ccw1`:
 
 struct ccw1
 ===========
@@ -34,18 +32,17 @@ Definition
 Members
 -------
 
-:``__u8 cmd_code``:
+:``cmd_code``:
     command code
 
-:``__u8 flags``:
+:``flags``:
     flags, like IDA addressing, etc.
 
-:``__u16 count``:
+:``count``:
     byte count
 
-:``__u32 cda``:
+:``cda``:
     data address
-
 
 
 
@@ -57,9 +54,7 @@ operations with the device or the control unit. Only Format-1 channel
 command words are supported.
 
 
-
-
-.. _xref_struct_erw:
+.. _`erw`:
 
 struct erw
 ==========
@@ -93,41 +88,39 @@ Definition
 Members
 -------
 
-:``__u32:3 res0``:
+:``res0``:
     reserved
 
-:``__u32:1 auth``:
+:``auth``:
     authorization check
 
-:``__u32:1 pvrf``:
+:``pvrf``:
     path-verification-required flag
 
-:``__u32:1 cpt``:
+:``cpt``:
     channel-path timeout
 
-:``__u32:1 fsavf``:
+:``fsavf``:
     failing storage address validity flag
 
-:``__u32:1 cons``:
+:``cons``:
     concurrent sense
 
-:``__u32:1 scavf``:
+:``scavf``:
     secondary ccw address validity flag
 
-:``__u32:1 fsaf``:
+:``fsaf``:
     failing storage address format
 
-:``__u32:6 scnt``:
-    sense count, if **cons** == ``1``
+:``scnt``:
+    sense count, if ``cons`` == ``1``
 
-:``__u32:16 res16``:
+:``res16``:
     reserved
 
 
 
-
-
-.. _xref_struct_erw_eadm:
+.. _`erw_eadm`:
 
 struct erw_eadm
 ===============
@@ -153,17 +146,15 @@ Definition
 Members
 -------
 
-:``__u32:1 b``:
+:``b``:
     aob error
 
-:``__u32:1 r``:
+:``r``:
     arsb error
 
 
 
-
-
-.. _xref_struct_sublog:
+.. _`sublog`:
 
 struct sublog
 =============
@@ -198,44 +189,42 @@ Definition
 Members
 -------
 
-:``__u32:1 res0``:
+:``res0``:
     reserved
 
-:``__u32:7 esf``:
+:``esf``:
     extended status flags
 
-:``__u32:8 lpum``:
+:``lpum``:
     last path used mask
 
-:``__u32:1 arep``:
+:``arep``:
     ancillary report
 
-:``__u32:5 fvf``:
+:``fvf``:
     field-validity flags
 
-:``__u32:2 sacc``:
+:``sacc``:
     storage access code
 
-:``__u32:2 termc``:
+:``termc``:
     termination code
 
-:``__u32:1 devsc``:
+:``devsc``:
     device-status check
 
-:``__u32:1 serr``:
+:``serr``:
     secondary error
 
-:``__u32:1 ioerr``:
+:``ioerr``:
     i/o-error alert
 
-:``__u32:3 seqc``:
+:``seqc``:
     sequence code
 
 
 
-
-
-.. _xref_struct_esw0:
+.. _`esw0`:
 
 struct esw0
 ===========
@@ -263,23 +252,21 @@ Definition
 Members
 -------
 
-:``struct sublog sublog``:
+:``sublog``:
     subchannel logout
 
-:``struct erw erw``:
+:``erw``:
     extended report word
 
-:``__u32 faddr[2]``:
+:``faddr[2]``:
     failing storage address
 
-:``__u32 saddr``:
+:``saddr``:
     secondary ccw address
 
 
 
-
-
-.. _xref_struct_esw1:
+.. _`esw1`:
 
 struct esw1
 ===========
@@ -308,26 +295,24 @@ Definition
 Members
 -------
 
-:``__u8 zero0``:
+:``zero0``:
     reserved zeros
 
-:``__u8 lpum``:
+:``lpum``:
     last path used mask
 
-:``__u16 zero16``:
+:``zero16``:
     reserved zeros
 
-:``struct erw erw``:
+:``erw``:
     extended report word
 
-:``__u32 zeros[3]``:
+:``zeros[3]``:
     three fullwords of zeros
 
 
 
-
-
-.. _xref_struct_esw2:
+.. _`esw2`:
 
 struct esw2
 ===========
@@ -356,26 +341,24 @@ Definition
 Members
 -------
 
-:``__u8 zero0``:
+:``zero0``:
     reserved zeros
 
-:``__u8 lpum``:
+:``lpum``:
     last path used mask
 
-:``__u16 dcti``:
+:``dcti``:
     device-connect-time interval
 
-:``struct erw erw``:
+:``erw``:
     extended report word
 
-:``__u32 zeros[3]``:
+:``zeros[3]``:
     three fullwords of zeros
 
 
 
-
-
-.. _xref_struct_esw3:
+.. _`esw3`:
 
 struct esw3
 ===========
@@ -404,26 +387,24 @@ Definition
 Members
 -------
 
-:``__u8 zero0``:
+:``zero0``:
     reserved zeros
 
-:``__u8 lpum``:
+:``lpum``:
     last path used mask
 
-:``__u16 res``:
+:``res``:
     reserved
 
-:``struct erw erw``:
+:``erw``:
     extended report word
 
-:``__u32 zeros[3]``:
+:``zeros[3]``:
     three fullwords of zeros
 
 
 
-
-
-.. _xref_struct_esw_eadm:
+.. _`esw_eadm`:
 
 struct esw_eadm
 ===============
@@ -449,17 +430,15 @@ Definition
 Members
 -------
 
-:``__u32 sublog``:
+:``sublog``:
     subchannel logout
 
-:``struct erw_eadm erw``:
+:``erw``:
     extended report word
 
 
 
-
-
-.. _xref_struct_irb:
+.. _`irb`:
 
 struct irb
 ==========
@@ -486,15 +465,14 @@ Definition
 Members
 -------
 
-:``union scsw scsw``:
+:``scsw``:
     subchannel status word
 
-:``union esw``:
+:``esw``:
     extended status word
 
-:``__u8 ecw[32]``:
+:``ecw[32]``:
     extended control word
-
 
 
 
@@ -503,17 +481,15 @@ Description
 
 The irb that is handed to the device driver when an interrupt occurs. For
 solicited interrupts, the common I/O layer already performs checks whether
-a field is valid; a field not being valid is always passed as ``0``.
-If a unit check occurred, **ecw** may contain sense data; this is retrieved
+a field is valid; a field not being valid is always passed as ``0``\ .
+If a unit check occurred, ``ecw`` may contain sense data; this is retrieved
 by the common I/O layer itself if the device doesn't support concurrent
 sense (so that the device driver never needs to perform basic sene itself).
 For unsolicited interrupts, the irb is passed as-is (expect for sense data,
 if applicable).
 
 
-
-
-.. _xref_struct_ciw:
+.. _`ciw`:
 
 struct ciw
 ==========
@@ -542,26 +518,24 @@ Definition
 Members
 -------
 
-:``__u32:2 et``:
+:``et``:
     entry type
 
-:``__u32:2 reserved``:
+:``reserved``:
     reserved bits
 
-:``__u32:4 ct``:
+:``ct``:
     command type
 
-:``__u32:8 cmd``:
+:``cmd``:
     command code
 
-:``__u32:16 count``:
+:``count``:
     command count
 
 
 
-
-
-.. _xref_struct_ccw_dev_id:
+.. _`ccw_dev_id`:
 
 struct ccw_dev_id
 =================
@@ -587,12 +561,11 @@ Definition
 Members
 -------
 
-:``u8 ssid``:
+:``ssid``:
     subchannel set id
 
-:``u16 devno``:
+:``devno``:
     device number
-
 
 
 
@@ -602,46 +575,35 @@ Description
 This structure is not directly based on any hardware structure. The
 hardware identifies a device by its device number and its subchannel,
 which is in turn identified by its id. In order to get a unique identifier
-for ccw devices across subchannel sets, **struct** ccw_dev_id has been
+for ccw devices across subchannel sets, ``struct`` ccw_dev_id has been
 introduced.
 
 
-
-
-.. _xref_ccw_dev_id_is_equal:
+.. _`ccw_dev_id_is_equal`:
 
 ccw_dev_id_is_equal
 ===================
 
-.. c:function:: int ccw_dev_id_is_equal (struct ccw_dev_id * dev_id1, struct ccw_dev_id * dev_id2)
+.. c:function:: int ccw_dev_id_is_equal (struct ccw_dev_id *dev_id1, struct ccw_dev_id *dev_id2)
 
     compare two ccw_dev_ids
 
-    :param struct ccw_dev_id * dev_id1:
+    :param struct ccw_dev_id \*dev_id1:
         a ccw_dev_id
 
-    :param struct ccw_dev_id * dev_id2:
+    :param struct ccw_dev_id \*dev_id2:
         another ccw_dev_id
+        Returns::
+
+         ``1`` if the two structures are equal field-by-field,
+         ``0`` if not.
+
+        Context::
+
+         any
 
 
-
-Returns
--------
-
- ``1`` if the two structures are equal field-by-field,
- ``0`` if not.
-
-
-
-Context
--------
-
- any
-
-
-
-
-.. _xref_pathmask_to_pos:
+.. _`pathmask_to_pos`:
 
 pathmask_to_pos
 ===============
@@ -652,5 +614,4 @@ pathmask_to_pos
 
     :param u8 mask:
         pathmask with at least one bit set
-
 

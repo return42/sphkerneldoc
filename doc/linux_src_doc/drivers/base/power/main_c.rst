@@ -4,24 +4,20 @@
 main.c
 ======
 
-
-
-.. _xref_device_pm_sleep_init:
+.. _`device_pm_sleep_init`:
 
 device_pm_sleep_init
 ====================
 
-.. c:function:: void device_pm_sleep_init (struct device * dev)
+.. c:function:: void device_pm_sleep_init (struct device *dev)
 
     Initialize system suspend-related device fields.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device object being initialized.
 
 
-
-
-.. _xref_device_pm_lock:
+.. _`device_pm_lock`:
 
 device_pm_lock
 ==============
@@ -34,9 +30,7 @@ device_pm_lock
         no arguments
 
 
-
-
-.. _xref_device_pm_unlock:
+.. _`device_pm_unlock`:
 
 device_pm_unlock
 ================
@@ -49,177 +43,159 @@ device_pm_unlock
         no arguments
 
 
-
-
-.. _xref_device_pm_add:
+.. _`device_pm_add`:
 
 device_pm_add
 =============
 
-.. c:function:: void device_pm_add (struct device * dev)
+.. c:function:: void device_pm_add (struct device *dev)
 
     Add a device to the PM core's list of active devices.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to add to the list.
 
 
-
-
-.. _xref_device_pm_remove:
+.. _`device_pm_remove`:
 
 device_pm_remove
 ================
 
-.. c:function:: void device_pm_remove (struct device * dev)
+.. c:function:: void device_pm_remove (struct device *dev)
 
     Remove a device from the PM core's list of active devices.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to be removed from the list.
 
 
-
-
-.. _xref_device_pm_move_before:
+.. _`device_pm_move_before`:
 
 device_pm_move_before
 =====================
 
-.. c:function:: void device_pm_move_before (struct device * deva, struct device * devb)
+.. c:function:: void device_pm_move_before (struct device *deva, struct device *devb)
 
     Move device in the PM core's list of active devices.
 
-    :param struct device * deva:
+    :param struct device \*deva:
         Device to move in dpm_list.
 
-    :param struct device * devb:
-        Device **deva** should come before.
+    :param struct device \*devb:
+        Device ``deva`` should come before.
 
 
-
-
-.. _xref_device_pm_move_after:
+.. _`device_pm_move_after`:
 
 device_pm_move_after
 ====================
 
-.. c:function:: void device_pm_move_after (struct device * deva, struct device * devb)
+.. c:function:: void device_pm_move_after (struct device *deva, struct device *devb)
 
     Move device in the PM core's list of active devices.
 
-    :param struct device * deva:
+    :param struct device \*deva:
         Device to move in dpm_list.
 
-    :param struct device * devb:
-        Device **deva** should come after.
+    :param struct device \*devb:
+        Device ``deva`` should come after.
 
 
-
-
-.. _xref_device_pm_move_last:
+.. _`device_pm_move_last`:
 
 device_pm_move_last
 ===================
 
-.. c:function:: void device_pm_move_last (struct device * dev)
+.. c:function:: void device_pm_move_last (struct device *dev)
 
     Move device to end of the PM core's list of devices.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to move in dpm_list.
 
 
-
-
-.. _xref_dpm_wait:
+.. _`dpm_wait`:
 
 dpm_wait
 ========
 
-.. c:function:: void dpm_wait (struct device * dev, bool async)
+.. c:function:: void dpm_wait (struct device *dev, bool async)
 
     Wait for a PM operation to complete.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to wait for.
 
     :param bool async:
         If unset, wait only if the device's power.async_suspend flag is set.
 
 
-
-
-.. _xref_pm_op:
+.. _`pm_op`:
 
 pm_op
 =====
 
-.. c:function:: pm_callback_t pm_op (const struct dev_pm_ops * ops, pm_message_t state)
+.. c:function:: pm_callback_t pm_op (const struct dev_pm_ops *ops, pm_message_t state)
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops * ops:
+    :param const struct dev_pm_ops \*ops:
         PM operations to choose from.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_pm_late_early_op:
+.. _`pm_late_early_op`:
 
 pm_late_early_op
 ================
 
-.. c:function:: pm_callback_t pm_late_early_op (const struct dev_pm_ops * ops, pm_message_t state)
+.. c:function:: pm_callback_t pm_late_early_op (const struct dev_pm_ops *ops, pm_message_t state)
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops * ops:
+    :param const struct dev_pm_ops \*ops:
         PM operations to choose from.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
 
+.. _`pm_late_early_op.description`:
 
 Description
 -----------
 
-Runtime PM is disabled for **dev** while this function is being executed.
+Runtime PM is disabled for ``dev`` while this function is being executed.
 
 
-
-
-.. _xref_pm_noirq_op:
+.. _`pm_noirq_op`:
 
 pm_noirq_op
 ===========
 
-.. c:function:: pm_callback_t pm_noirq_op (const struct dev_pm_ops * ops, pm_message_t state)
+.. c:function:: pm_callback_t pm_noirq_op (const struct dev_pm_ops *ops, pm_message_t state)
 
     Return the PM operation appropriate for given PM event.
 
-    :param const struct dev_pm_ops * ops:
+    :param const struct dev_pm_ops \*ops:
         PM operations to choose from.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
 
+.. _`pm_noirq_op.description`:
 
 Description
 -----------
 
-The driver of **dev** will not receive interrupts while this function is being
+The driver of ``dev`` will not receive interrupts while this function is being
 executed.
 
 
-
-
-.. _xref_dpm_watchdog_handler:
+.. _`dpm_watchdog_handler`:
 
 dpm_watchdog_handler
 ====================
@@ -232,6 +208,7 @@ dpm_watchdog_handler
         Watchdog object address.
 
 
+.. _`dpm_watchdog_handler.description`:
 
 Description
 -----------
@@ -241,51 +218,45 @@ There's not much we can do here to recover so :c:func:`panic` to
 capture a crash-dump in pstore.
 
 
-
-
-.. _xref_dpm_watchdog_set:
+.. _`dpm_watchdog_set`:
 
 dpm_watchdog_set
 ================
 
-.. c:function:: void dpm_watchdog_set (struct dpm_watchdog * wd, struct device * dev)
+.. c:function:: void dpm_watchdog_set (struct dpm_watchdog *wd, struct device *dev)
 
     Enable pm watchdog for given device.
 
-    :param struct dpm_watchdog * wd:
+    :param struct dpm_watchdog \*wd:
         Watchdog. Must be allocated on the stack.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
 
-
-
-.. _xref_dpm_watchdog_clear:
+.. _`dpm_watchdog_clear`:
 
 dpm_watchdog_clear
 ==================
 
-.. c:function:: void dpm_watchdog_clear (struct dpm_watchdog * wd)
+.. c:function:: void dpm_watchdog_clear (struct dpm_watchdog *wd)
 
     Disable suspend/resume watchdog.
 
-    :param struct dpm_watchdog * wd:
+    :param struct dpm_watchdog \*wd:
         Watchdog to disable.
 
 
-
-
-.. _xref_device_resume_noirq:
+.. _`device_resume_noirq`:
 
 device_resume_noirq
 ===================
 
-.. c:function:: int device_resume_noirq (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int device_resume_noirq (struct device *dev, pm_message_t state, bool async)
 
     Execute an "early resume" callback for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -295,17 +266,16 @@ device_resume_noirq
         If true, the device is being resumed asynchronously.
 
 
+.. _`device_resume_noirq.description`:
 
 Description
 -----------
 
-The driver of **dev** will not receive interrupts while this function is being
+The driver of ``dev`` will not receive interrupts while this function is being
 executed.
 
 
-
-
-.. _xref_dpm_resume_noirq:
+.. _`dpm_resume_noirq`:
 
 dpm_resume_noirq
 ================
@@ -318,6 +288,7 @@ dpm_resume_noirq
         PM transition of the system being carried out.
 
 
+.. _`dpm_resume_noirq.description`:
 
 Description
 -----------
@@ -326,18 +297,16 @@ Call the "noirq" resume handlers for all devices in dpm_noirq_list and
 enable device drivers to receive interrupts.
 
 
-
-
-.. _xref_device_resume_early:
+.. _`device_resume_early`:
 
 device_resume_early
 ===================
 
-.. c:function:: int device_resume_early (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int device_resume_early (struct device *dev, pm_message_t state, bool async)
 
     Execute an "early resume" callback for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -347,16 +316,15 @@ device_resume_early
         If true, the device is being resumed asynchronously.
 
 
+.. _`device_resume_early.description`:
 
 Description
 -----------
 
-Runtime PM is disabled for **dev** while this function is being executed.
+Runtime PM is disabled for ``dev`` while this function is being executed.
 
 
-
-
-.. _xref_dpm_resume_early:
+.. _`dpm_resume_early`:
 
 dpm_resume_early
 ================
@@ -369,9 +337,7 @@ dpm_resume_early
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_dpm_resume_start:
+.. _`dpm_resume_start`:
 
 dpm_resume_start
 ================
@@ -384,18 +350,16 @@ dpm_resume_start
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_device_resume:
+.. _`device_resume`:
 
 device_resume
 =============
 
-.. c:function:: int device_resume (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int device_resume (struct device *dev, pm_message_t state, bool async)
 
     Execute "resume" callbacks for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -405,9 +369,7 @@ device_resume
         If true, the device is being resumed asynchronously.
 
 
-
-
-.. _xref_dpm_resume:
+.. _`dpm_resume`:
 
 dpm_resume
 ==========
@@ -420,6 +382,7 @@ dpm_resume
         PM transition of the system being carried out.
 
 
+.. _`dpm_resume.description`:
 
 Description
 -----------
@@ -428,27 +391,23 @@ Execute the appropriate "resume" callback for all devices whose status
 indicates that they are suspended.
 
 
-
-
-.. _xref_device_complete:
+.. _`device_complete`:
 
 device_complete
 ===============
 
-.. c:function:: void device_complete (struct device * dev, pm_message_t state)
+.. c:function:: void device_complete (struct device *dev, pm_message_t state)
 
     Complete a PM transition for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_dpm_complete:
+.. _`dpm_complete`:
 
 dpm_complete
 ============
@@ -461,6 +420,7 @@ dpm_complete
         PM transition of the system being carried out.
 
 
+.. _`dpm_complete.description`:
 
 Description
 -----------
@@ -469,9 +429,7 @@ Execute the ->:c:func:`complete` callbacks for all devices whose PM status is no
 DPM_ON (this allows new devices to be registered).
 
 
-
-
-.. _xref_dpm_resume_end:
+.. _`dpm_resume_end`:
 
 dpm_resume_end
 ==============
@@ -484,6 +442,7 @@ dpm_resume_end
         PM transition of the system being carried out.
 
 
+.. _`dpm_resume_end.description`:
 
 Description
 -----------
@@ -492,9 +451,7 @@ Execute "resume" callbacks for all devices and complete the PM transition of
 the system.
 
 
-
-
-.. _xref_resume_event:
+.. _`resume_event`:
 
 resume_event
 ============
@@ -507,6 +464,7 @@ resume_event
         PM message representing a sleep state.
 
 
+.. _`resume_event.description`:
 
 Description
 -----------
@@ -515,18 +473,16 @@ Return a PM message representing the resume event corresponding to given
 sleep state.
 
 
-
-
-.. _xref___device_suspend_noirq:
+.. _`__device_suspend_noirq`:
 
 __device_suspend_noirq
 ======================
 
-.. c:function:: int __device_suspend_noirq (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int __device_suspend_noirq (struct device *dev, pm_message_t state, bool async)
 
     Execute a "late suspend" callback for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -536,17 +492,16 @@ __device_suspend_noirq
         If true, the device is being suspended asynchronously.
 
 
+.. _`__device_suspend_noirq.description`:
 
 Description
 -----------
 
-The driver of **dev** will not receive interrupts while this function is being
+The driver of ``dev`` will not receive interrupts while this function is being
 executed.
 
 
-
-
-.. _xref_dpm_suspend_noirq:
+.. _`dpm_suspend_noirq`:
 
 dpm_suspend_noirq
 =================
@@ -559,6 +514,7 @@ dpm_suspend_noirq
         PM transition of the system being carried out.
 
 
+.. _`dpm_suspend_noirq.description`:
 
 Description
 -----------
@@ -567,18 +523,16 @@ Prevent device drivers from receiving interrupts and call the "noirq" suspend
 handlers for all non-sysdev devices.
 
 
-
-
-.. _xref___device_suspend_late:
+.. _`__device_suspend_late`:
 
 __device_suspend_late
 =====================
 
-.. c:function:: int __device_suspend_late (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int __device_suspend_late (struct device *dev, pm_message_t state, bool async)
 
     Execute a "late suspend" callback for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -588,16 +542,15 @@ __device_suspend_late
         If true, the device is being suspended asynchronously.
 
 
+.. _`__device_suspend_late.description`:
 
 Description
 -----------
 
-Runtime PM is disabled for **dev** while this function is being executed.
+Runtime PM is disabled for ``dev`` while this function is being executed.
 
 
-
-
-.. _xref_dpm_suspend_late:
+.. _`dpm_suspend_late`:
 
 dpm_suspend_late
 ================
@@ -610,9 +563,7 @@ dpm_suspend_late
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_dpm_suspend_end:
+.. _`dpm_suspend_end`:
 
 dpm_suspend_end
 ===============
@@ -625,42 +576,38 @@ dpm_suspend_end
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_legacy_suspend:
+.. _`legacy_suspend`:
 
 legacy_suspend
 ==============
 
-.. c:function:: int legacy_suspend (struct device * dev, pm_message_t state, int (*cb) (struct device *dev, pm_message_t state, char * info)
+.. c:function:: int legacy_suspend (struct device *dev, pm_message_t state, int (*cb) (struct device *dev, pm_message_t state, char *info)
 
     Execute a legacy (bus or class) suspend callback for device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to suspend.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
-    :param int (*)(struct device *dev, pm_message_t state) cb:
+    :param int (\*cb) (struct device \*dev, pm_message_t state):
         Suspend callback to execute.
 
-    :param char * info:
+    :param char \*info:
         string description of caller.
 
 
-
-
-.. _xref___device_suspend:
+.. _`__device_suspend`:
 
 __device_suspend
 ================
 
-.. c:function:: int __device_suspend (struct device * dev, pm_message_t state, bool async)
+.. c:function:: int __device_suspend (struct device *dev, pm_message_t state, bool async)
 
     Execute "suspend" callbacks for given device.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
@@ -670,9 +617,7 @@ __device_suspend
         If true, the device is being suspended asynchronously.
 
 
-
-
-.. _xref_dpm_suspend:
+.. _`dpm_suspend`:
 
 dpm_suspend
 ===========
@@ -685,24 +630,23 @@ dpm_suspend
         PM transition of the system being carried out.
 
 
-
-
-.. _xref_device_prepare:
+.. _`device_prepare`:
 
 device_prepare
 ==============
 
-.. c:function:: int device_prepare (struct device * dev, pm_message_t state)
+.. c:function:: int device_prepare (struct device *dev, pm_message_t state)
 
     Prepare a device for system power transition.
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to handle.
 
     :param pm_message_t state:
         PM transition of the system being carried out.
 
 
+.. _`device_prepare.description`:
 
 Description
 -----------
@@ -711,9 +655,7 @@ Execute the ->:c:func:`prepare` callback(s) for given device.  No new children o
 device may be registered after this function has returned.
 
 
-
-
-.. _xref_dpm_prepare:
+.. _`dpm_prepare`:
 
 dpm_prepare
 ===========
@@ -726,6 +668,7 @@ dpm_prepare
         PM transition of the system being carried out.
 
 
+.. _`dpm_prepare.description`:
 
 Description
 -----------
@@ -733,9 +676,7 @@ Description
 Execute the ->:c:func:`prepare` callback(s) for all devices.
 
 
-
-
-.. _xref_dpm_suspend_start:
+.. _`dpm_suspend_start`:
 
 dpm_suspend_start
 =================
@@ -748,6 +689,7 @@ dpm_suspend_start
         PM transition of the system being carried out.
 
 
+.. _`dpm_suspend_start.description`:
 
 Description
 -----------
@@ -756,47 +698,43 @@ Prepare all non-sysdev devices for system PM transition and execute "suspend"
 callbacks for them.
 
 
-
-
-.. _xref_device_pm_wait_for_dev:
+.. _`device_pm_wait_for_dev`:
 
 device_pm_wait_for_dev
 ======================
 
-.. c:function:: int device_pm_wait_for_dev (struct device * subordinate, struct device * dev)
+.. c:function:: int device_pm_wait_for_dev (struct device *subordinate, struct device *dev)
 
     Wait for suspend/resume of a device to complete.
 
-    :param struct device * subordinate:
-        Device that needs to wait for **dev**.
+    :param struct device \*subordinate:
+        Device that needs to wait for ``dev``\ .
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to wait for.
 
 
-
-
-.. _xref_dpm_for_each_dev:
+.. _`dpm_for_each_dev`:
 
 dpm_for_each_dev
 ================
 
-.. c:function:: void dpm_for_each_dev (void * data, void (*fn) (struct device *, void *)
+.. c:function:: void dpm_for_each_dev (void *data, void (*fn) (struct device *, void *)
 
     device iterator.
 
-    :param void * data:
+    :param void \*data:
         data for the callback.
 
-    :param void (*)(struct device *, void *) fn:
+    :param void (\*fn) (struct device \*, void \*):
         function to be called for each device.
 
 
+.. _`dpm_for_each_dev.description`:
 
 Description
 -----------
 
-Iterate over devices in dpm_list, and call **fn** for each device,
-passing it **data**.
-
+Iterate over devices in dpm_list, and call ``fn`` for each device,
+passing it ``data``\ .
 

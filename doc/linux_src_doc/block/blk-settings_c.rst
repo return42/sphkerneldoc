@@ -4,24 +4,23 @@
 blk-settings.c
 ==============
 
-
-
-.. _xref_blk_queue_prep_rq:
+.. _`blk_queue_prep_rq`:
 
 blk_queue_prep_rq
 =================
 
-.. c:function:: void blk_queue_prep_rq (struct request_queue * q, prep_rq_fn * pfn)
+.. c:function:: void blk_queue_prep_rq (struct request_queue *q, prep_rq_fn *pfn)
 
     set a prepare_request function for queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         queue
 
-    :param prep_rq_fn * pfn:
+    :param prep_rq_fn \*pfn:
         prepare_request function
 
 
+.. _`blk_queue_prep_rq.description`:
 
 Description
 -----------
@@ -32,24 +31,23 @@ the function is to prepare a request for I/O, it can be used to build a
 cdb from the request data for instance.
 
 
-
-
-.. _xref_blk_queue_unprep_rq:
+.. _`blk_queue_unprep_rq`:
 
 blk_queue_unprep_rq
 ===================
 
-.. c:function:: void blk_queue_unprep_rq (struct request_queue * q, unprep_rq_fn * ufn)
+.. c:function:: void blk_queue_unprep_rq (struct request_queue *q, unprep_rq_fn *ufn)
 
     set an unprepare_request function for queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         queue
 
-    :param unprep_rq_fn * ufn:
+    :param unprep_rq_fn \*ufn:
         unprepare_request function
 
 
+.. _`blk_queue_unprep_rq.description`:
 
 Description
 -----------
@@ -60,72 +58,75 @@ of the function is to deallocate any data that was allocated in the
 prepare_request callback.
 
 
-
-
-.. _xref_blk_set_default_limits:
+.. _`blk_set_default_limits`:
 
 blk_set_default_limits
 ======================
 
-.. c:function:: void blk_set_default_limits (struct queue_limits * lim)
+.. c:function:: void blk_set_default_limits (struct queue_limits *lim)
 
     reset limits to default values
 
-    :param struct queue_limits * lim:
+    :param struct queue_limits \*lim:
         the queue_limits structure to reset
 
 
+.. _`blk_set_default_limits.description`:
 
 Description
 -----------
+
+Description::
 
   Returns a queue_limit struct to its default state.
 
 
-
-
-.. _xref_blk_set_stacking_limits:
+.. _`blk_set_stacking_limits`:
 
 blk_set_stacking_limits
 =======================
 
-.. c:function:: void blk_set_stacking_limits (struct queue_limits * lim)
+.. c:function:: void blk_set_stacking_limits (struct queue_limits *lim)
 
     set default limits for stacking devices
 
-    :param struct queue_limits * lim:
+    :param struct queue_limits \*lim:
         the queue_limits structure to reset
 
 
+.. _`blk_set_stacking_limits.description`:
 
 Description
 -----------
+
+Description::
 
   Returns a queue_limit struct to its default state. Should be used
   by stacking drivers like DM that have no internal limits.
 
 
-
-
-.. _xref_blk_queue_make_request:
+.. _`blk_queue_make_request`:
 
 blk_queue_make_request
 ======================
 
-.. c:function:: void blk_queue_make_request (struct request_queue * q, make_request_fn * mfn)
+.. c:function:: void blk_queue_make_request (struct request_queue *q, make_request_fn *mfn)
 
     define an alternate make_request function for a device
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device to be affected
 
-    :param make_request_fn * mfn:
+    :param make_request_fn \*mfn:
         the alternate make_request function
 
 
+.. _`blk_queue_make_request.description`:
 
 Description
 -----------
+
+Description::
 
    The normal way for :c:type:`struct bios <bios>` to be passed to a device
    driver is for them to be collected into requests on a request
@@ -137,76 +138,73 @@ Description
    directly to them.  This can be achieved by providing a function
    to :c:func:`blk_queue_make_request`.
 
+Caveat::
 
-
-Caveat
-------
-
-   The driver that does this *must* be able to deal appropriately
+   The driver that does this \*must\* be able to deal appropriately
    with buffers in "highmemory". This can be accomplished by either calling
    :c:func:`__bio_kmap_atomic` to get a temporary kernel mapping, or by calling
    :c:func:`blk_queue_bounce` to create a buffer in normal memory.
 
 
-
-
-.. _xref_blk_queue_bounce_limit:
+.. _`blk_queue_bounce_limit`:
 
 blk_queue_bounce_limit
 ======================
 
-.. c:function:: void blk_queue_bounce_limit (struct request_queue * q, u64 max_addr)
+.. c:function:: void blk_queue_bounce_limit (struct request_queue *q, u64 max_addr)
 
     set bounce buffer limit for queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param u64 max_addr:
         the maximum address the device can handle
 
 
+.. _`blk_queue_bounce_limit.description`:
 
 Description
 -----------
 
+Description::
+
    Different hardware can have different requirements as to what pages
    it can do I/O directly to. A low level driver can call
    blk_queue_bounce_limit to have lower memory pages allocated as bounce
-   buffers for doing I/O to pages residing above **max_addr**.
+   buffers for doing I/O to pages residing above ``max_addr``\ .
 
 
-
-
-.. _xref_blk_queue_max_hw_sectors:
+.. _`blk_queue_max_hw_sectors`:
 
 blk_queue_max_hw_sectors
 ========================
 
-.. c:function:: void blk_queue_max_hw_sectors (struct request_queue * q, unsigned int max_hw_sectors)
+.. c:function:: void blk_queue_max_hw_sectors (struct request_queue *q, unsigned int max_hw_sectors)
 
     set max sectors for a request for this queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int max_hw_sectors:
         max hardware sectors in the usual 512b unit
 
 
+.. _`blk_queue_max_hw_sectors.description`:
 
 Description
 -----------
+
+Description::
 
    Enables a low level driver to set a hard upper limit,
    max_hw_sectors, on the size of requests.  max_hw_sectors is set by
    the device driver based upon the capabilities of the I/O
    controller.
 
-
    max_dev_sectors is a hard limit imposed by the storage device for
    READ/WRITE requests. It is set by the disk driver.
-
 
    max_sectors is a soft limit imposed by the block layer for
    filesystem type requests.  This value can be overridden on a
@@ -214,27 +212,28 @@ Description
    The soft limit can not exceed max_hw_sectors.
 
 
-
-
-.. _xref_blk_queue_chunk_sectors:
+.. _`blk_queue_chunk_sectors`:
 
 blk_queue_chunk_sectors
 =======================
 
-.. c:function:: void blk_queue_chunk_sectors (struct request_queue * q, unsigned int chunk_sectors)
+.. c:function:: void blk_queue_chunk_sectors (struct request_queue *q, unsigned int chunk_sectors)
 
     set size of the chunk for this queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int chunk_sectors:
         chunk sectors in the usual 512b unit
 
 
+.. _`blk_queue_chunk_sectors.description`:
 
 Description
 -----------
+
+Description::
 
    If a driver doesn't want IOs to cross a given chunk size, it can set
    this limit and prevent merging across chunks. Note that the chunk size
@@ -244,169 +243,170 @@ Description
    prepared to split single page bios.
 
 
-
-
-.. _xref_blk_queue_max_discard_sectors:
+.. _`blk_queue_max_discard_sectors`:
 
 blk_queue_max_discard_sectors
 =============================
 
-.. c:function:: void blk_queue_max_discard_sectors (struct request_queue * q, unsigned int max_discard_sectors)
+.. c:function:: void blk_queue_max_discard_sectors (struct request_queue *q, unsigned int max_discard_sectors)
 
     set max sectors for a single discard
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int max_discard_sectors:
         maximum number of sectors to discard
 
 
-
-
-.. _xref_blk_queue_max_write_same_sectors:
+.. _`blk_queue_max_write_same_sectors`:
 
 blk_queue_max_write_same_sectors
 ================================
 
-.. c:function:: void blk_queue_max_write_same_sectors (struct request_queue * q, unsigned int max_write_same_sectors)
+.. c:function:: void blk_queue_max_write_same_sectors (struct request_queue *q, unsigned int max_write_same_sectors)
 
     set max sectors for a single write same
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int max_write_same_sectors:
         maximum number of sectors to write per command
 
 
-
-
-.. _xref_blk_queue_max_segments:
+.. _`blk_queue_max_segments`:
 
 blk_queue_max_segments
 ======================
 
-.. c:function:: void blk_queue_max_segments (struct request_queue * q, unsigned short max_segments)
+.. c:function:: void blk_queue_max_segments (struct request_queue *q, unsigned short max_segments)
 
     set max hw segments for a request for this queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned short max_segments:
         max number of segments
 
 
+.. _`blk_queue_max_segments.description`:
 
 Description
 -----------
+
+Description::
 
    Enables a low level driver to set an upper limit on the number of
    hw data segments in a request.
 
 
-
-
-.. _xref_blk_queue_max_segment_size:
+.. _`blk_queue_max_segment_size`:
 
 blk_queue_max_segment_size
 ==========================
 
-.. c:function:: void blk_queue_max_segment_size (struct request_queue * q, unsigned int max_size)
+.. c:function:: void blk_queue_max_segment_size (struct request_queue *q, unsigned int max_size)
 
     set max segment size for blk_rq_map_sg
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int max_size:
         max size of segment in bytes
 
 
+.. _`blk_queue_max_segment_size.description`:
 
 Description
 -----------
+
+Description::
 
    Enables a low level driver to set an upper limit on the size of a
    coalesced segment
 
 
-
-
-.. _xref_blk_queue_logical_block_size:
+.. _`blk_queue_logical_block_size`:
 
 blk_queue_logical_block_size
 ============================
 
-.. c:function:: void blk_queue_logical_block_size (struct request_queue * q, unsigned short size)
+.. c:function:: void blk_queue_logical_block_size (struct request_queue *q, unsigned short size)
 
     set logical block size for the queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned short size:
         the logical block size, in bytes
 
 
+.. _`blk_queue_logical_block_size.description`:
 
 Description
 -----------
+
+Description::
 
   This should be set to the lowest possible block size that the
   storage device can address.  The default of 512 covers most
   hardware.
 
 
-
-
-.. _xref_blk_queue_physical_block_size:
+.. _`blk_queue_physical_block_size`:
 
 blk_queue_physical_block_size
 =============================
 
-.. c:function:: void blk_queue_physical_block_size (struct request_queue * q, unsigned int size)
+.. c:function:: void blk_queue_physical_block_size (struct request_queue *q, unsigned int size)
 
     set physical block size for the queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int size:
         the physical block size, in bytes
 
 
+.. _`blk_queue_physical_block_size.description`:
 
 Description
 -----------
+
+Description::
 
   This should be set to the lowest possible sector size that the
   hardware can operate on without reverting to read-modify-write
   operations.
 
 
-
-
-.. _xref_blk_queue_alignment_offset:
+.. _`blk_queue_alignment_offset`:
 
 blk_queue_alignment_offset
 ==========================
 
-.. c:function:: void blk_queue_alignment_offset (struct request_queue * q, unsigned int offset)
+.. c:function:: void blk_queue_alignment_offset (struct request_queue *q, unsigned int offset)
 
     set physical block alignment offset
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int offset:
         alignment offset in bytes
 
 
+.. _`blk_queue_alignment_offset.description`:
 
 Description
 -----------
+
+Description::
 
   Some devices are naturally misaligned to compensate for things like
   the legacy DOS partition table 63-sector offset.  Low-level drivers
@@ -414,27 +414,28 @@ Description
   naturally aligned.
 
 
-
-
-.. _xref_blk_limits_io_min:
+.. _`blk_limits_io_min`:
 
 blk_limits_io_min
 =================
 
-.. c:function:: void blk_limits_io_min (struct queue_limits * limits, unsigned int min)
+.. c:function:: void blk_limits_io_min (struct queue_limits *limits, unsigned int min)
 
     set minimum request size for a device
 
-    :param struct queue_limits * limits:
+    :param struct queue_limits \*limits:
         the queue limits
 
     :param unsigned int min:
         smallest I/O size in bytes
 
 
+.. _`blk_limits_io_min.description`:
 
 Description
 -----------
+
+Description::
 
   Some devices have an internal block size bigger than the reported
   hardware sector size.  This function can be used to signal the
@@ -442,27 +443,28 @@ Description
   penalty.
 
 
-
-
-.. _xref_blk_queue_io_min:
+.. _`blk_queue_io_min`:
 
 blk_queue_io_min
 ================
 
-.. c:function:: void blk_queue_io_min (struct request_queue * q, unsigned int min)
+.. c:function:: void blk_queue_io_min (struct request_queue *q, unsigned int min)
 
     set minimum request size for the queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int min:
         smallest I/O size in bytes
 
 
+.. _`blk_queue_io_min.description`:
 
 Description
 -----------
+
+Description::
 
   Storage devices may report a granularity or preferred minimum I/O
   size which is the smallest request the device can perform without
@@ -473,27 +475,28 @@ Description
   operations is desired.
 
 
-
-
-.. _xref_blk_limits_io_opt:
+.. _`blk_limits_io_opt`:
 
 blk_limits_io_opt
 =================
 
-.. c:function:: void blk_limits_io_opt (struct queue_limits * limits, unsigned int opt)
+.. c:function:: void blk_limits_io_opt (struct queue_limits *limits, unsigned int opt)
 
     set optimal request size for a device
 
-    :param struct queue_limits * limits:
+    :param struct queue_limits \*limits:
         the queue limits
 
     :param unsigned int opt:
         smallest I/O size in bytes
 
 
+.. _`blk_limits_io_opt.description`:
 
 Description
 -----------
+
+Description::
 
   Storage devices may report an optimal I/O size, which is the
   device's preferred unit for sustained I/O.  This is rarely reported
@@ -503,27 +506,28 @@ Description
   sustained throughput is desired.
 
 
-
-
-.. _xref_blk_queue_io_opt:
+.. _`blk_queue_io_opt`:
 
 blk_queue_io_opt
 ================
 
-.. c:function:: void blk_queue_io_opt (struct request_queue * q, unsigned int opt)
+.. c:function:: void blk_queue_io_opt (struct request_queue *q, unsigned int opt)
 
     set optimal request size for the queue
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int opt:
         optimal request size in bytes
 
 
+.. _`blk_queue_io_opt.description`:
 
 Description
 -----------
+
+Description::
 
   Storage devices may report an optimal I/O size, which is the
   device's preferred unit for sustained I/O.  This is rarely reported
@@ -533,48 +537,47 @@ Description
   sustained throughput is desired.
 
 
-
-
-.. _xref_blk_queue_stack_limits:
+.. _`blk_queue_stack_limits`:
 
 blk_queue_stack_limits
 ======================
 
-.. c:function:: void blk_queue_stack_limits (struct request_queue * t, struct request_queue * b)
+.. c:function:: void blk_queue_stack_limits (struct request_queue *t, struct request_queue *b)
 
     inherit underlying queue limits for stacked drivers
 
-    :param struct request_queue * t:
+    :param struct request_queue \*t:
         the stacking driver (top)
 
-    :param struct request_queue * b:
+    :param struct request_queue \*b:
         the underlying device (bottom)
 
 
-
-
-.. _xref_blk_stack_limits:
+.. _`blk_stack_limits`:
 
 blk_stack_limits
 ================
 
-.. c:function:: int blk_stack_limits (struct queue_limits * t, struct queue_limits * b, sector_t start)
+.. c:function:: int blk_stack_limits (struct queue_limits *t, struct queue_limits *b, sector_t start)
 
     adjust queue_limits for stacked devices
 
-    :param struct queue_limits * t:
+    :param struct queue_limits \*t:
         the stacking driver limits (top device)
 
-    :param struct queue_limits * b:
+    :param struct queue_limits \*b:
         the underlying queue limits (bottom, component device)
 
     :param sector_t start:
         first data sector within component device
 
 
+.. _`blk_stack_limits.description`:
 
 Description
 -----------
+
+Description::
 
    This function is used by stacking drivers like MD and DM to ensure
    that all component devices have compatible block sizes and
@@ -582,7 +585,6 @@ Description
    struct (top) and then iteratively call the stacking function for
    all component (bottom) devices.  The stacking function will
    attempt to combine the values and ensure proper alignment.
-
 
    Returns 0 if the top and bottom queue_limits are compatible.  The
    top device's block sizes and alignment offsets may be adjusted to
@@ -592,147 +594,144 @@ Description
    the alignment_offset is undefined.
 
 
-
-
-.. _xref_bdev_stack_limits:
+.. _`bdev_stack_limits`:
 
 bdev_stack_limits
 =================
 
-.. c:function:: int bdev_stack_limits (struct queue_limits * t, struct block_device * bdev, sector_t start)
+.. c:function:: int bdev_stack_limits (struct queue_limits *t, struct block_device *bdev, sector_t start)
 
     adjust queue limits for stacked drivers
 
-    :param struct queue_limits * t:
+    :param struct queue_limits \*t:
         the stacking driver limits (top device)
 
-    :param struct block_device * bdev:
+    :param struct block_device \*bdev:
         the component block_device (bottom)
 
     :param sector_t start:
         first data sector within component device
 
 
+.. _`bdev_stack_limits.description`:
 
 Description
 -----------
+
+Description::
 
    Merges queue limits for a top device and a block_device.  Returns
    0 if alignment didn't change.  Returns -1 if adding the bottom
    device caused misalignment.
 
 
-
-
-.. _xref_disk_stack_limits:
+.. _`disk_stack_limits`:
 
 disk_stack_limits
 =================
 
-.. c:function:: void disk_stack_limits (struct gendisk * disk, struct block_device * bdev, sector_t offset)
+.. c:function:: void disk_stack_limits (struct gendisk *disk, struct block_device *bdev, sector_t offset)
 
     adjust queue limits for stacked drivers
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         MD/DM gendisk (top)
 
-    :param struct block_device * bdev:
+    :param struct block_device \*bdev:
         the underlying block device (bottom)
 
     :param sector_t offset:
         offset to beginning of data within component device
 
 
+.. _`disk_stack_limits.description`:
 
 Description
 -----------
+
+Description::
 
    Merges the limits for a top level gendisk and a bottom level
    block_device.
 
 
-
-
-.. _xref_blk_queue_dma_pad:
+.. _`blk_queue_dma_pad`:
 
 blk_queue_dma_pad
 =================
 
-.. c:function:: void blk_queue_dma_pad (struct request_queue * q, unsigned int mask)
+.. c:function:: void blk_queue_dma_pad (struct request_queue *q, unsigned int mask)
 
     set pad mask
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int mask:
         pad mask
 
 
+.. _`blk_queue_dma_pad.description`:
 
 Description
 -----------
 
 Set dma pad mask.
 
-
 Appending pad buffer to a request modifies the last entry of a
 scatter list such that it includes the pad buffer.
 
 
-
-
-.. _xref_blk_queue_update_dma_pad:
+.. _`blk_queue_update_dma_pad`:
 
 blk_queue_update_dma_pad
 ========================
 
-.. c:function:: void blk_queue_update_dma_pad (struct request_queue * q, unsigned int mask)
+.. c:function:: void blk_queue_update_dma_pad (struct request_queue *q, unsigned int mask)
 
     update pad mask
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int mask:
         pad mask
 
 
+.. _`blk_queue_update_dma_pad.description`:
 
 Description
 -----------
 
 Update dma pad mask.
 
-
 Appending pad buffer to a request modifies the last entry of a
 scatter list such that it includes the pad buffer.
 
 
-
-
-.. _xref_blk_queue_dma_drain:
+.. _`blk_queue_dma_drain`:
 
 blk_queue_dma_drain
 ===================
 
-.. c:function:: int blk_queue_dma_drain (struct request_queue * q, dma_drain_needed_fn * dma_drain_needed, void * buf, unsigned int size)
+.. c:function:: int blk_queue_dma_drain (struct request_queue *q, dma_drain_needed_fn *dma_drain_needed, void *buf, unsigned int size)
 
     Set up a drain buffer for excess dma.
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
-    :param dma_drain_needed_fn * dma_drain_needed:
+    :param dma_drain_needed_fn \*dma_drain_needed:
         fn which returns non-zero if drain is necessary
 
-    :param void * buf:
+    :param void \*buf:
         physically contiguous buffer
 
     :param unsigned int size:
         size of the buffer in bytes
 
 
+.. _`blk_queue_dma_drain.description`:
 
 Description
 -----------
@@ -746,100 +745,93 @@ aren't DMA elements to contain the excess transfer.  What this API
 does is adjust the queue so that the buf is always appended
 silently to the scatterlist.
 
-
-
-Note
-----
-
-This routine adjusts max_hw_segments to make room for appending
+Note: This routine adjusts max_hw_segments to make room for appending
 the drain buffer.  If you call :c:func:`blk_queue_max_segments` after calling
 this routine, you must set the limit to one fewer than your device
 can support otherwise there won't be room for the drain buffer.
 
 
-
-
-.. _xref_blk_queue_segment_boundary:
+.. _`blk_queue_segment_boundary`:
 
 blk_queue_segment_boundary
 ==========================
 
-.. c:function:: void blk_queue_segment_boundary (struct request_queue * q, unsigned long mask)
+.. c:function:: void blk_queue_segment_boundary (struct request_queue *q, unsigned long mask)
 
     set boundary rules for segment merging
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned long mask:
         the memory boundary mask
 
 
-
-
-.. _xref_blk_queue_virt_boundary:
+.. _`blk_queue_virt_boundary`:
 
 blk_queue_virt_boundary
 =======================
 
-.. c:function:: void blk_queue_virt_boundary (struct request_queue * q, unsigned long mask)
+.. c:function:: void blk_queue_virt_boundary (struct request_queue *q, unsigned long mask)
 
     set boundary rules for bio merging
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned long mask:
         the memory boundary mask
 
 
-
-
-.. _xref_blk_queue_dma_alignment:
+.. _`blk_queue_dma_alignment`:
 
 blk_queue_dma_alignment
 =======================
 
-.. c:function:: void blk_queue_dma_alignment (struct request_queue * q, int mask)
+.. c:function:: void blk_queue_dma_alignment (struct request_queue *q, int mask)
 
     set dma length and memory alignment
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param int mask:
         alignment mask
 
 
+.. _`blk_queue_dma_alignment.description`:
 
-description
+Description
 -----------
+
+description::
 
    set required memory and length alignment for direct dma transactions.
    this is used when building direct io requests for the queue.
 
 
-
-
-.. _xref_blk_queue_update_dma_alignment:
+.. _`blk_queue_update_dma_alignment`:
 
 blk_queue_update_dma_alignment
 ==============================
 
-.. c:function:: void blk_queue_update_dma_alignment (struct request_queue * q, int mask)
+.. c:function:: void blk_queue_update_dma_alignment (struct request_queue *q, int mask)
 
     update dma length and memory alignment
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param int mask:
         alignment mask
 
 
+.. _`blk_queue_update_dma_alignment.description`:
 
-description
+Description
 -----------
+
+description::
 
    update required memory and length alignment for direct dma transactions.
    If the requested alignment is larger than the current alignment, then
@@ -849,30 +841,28 @@ description
    alignments without having them interfere.
 
 
-
-
-.. _xref_blk_queue_flush:
+.. _`blk_queue_flush`:
 
 blk_queue_flush
 ===============
 
-.. c:function:: void blk_queue_flush (struct request_queue * q, unsigned int flush)
+.. c:function:: void blk_queue_flush (struct request_queue *q, unsigned int flush)
 
     configure queue's cache flush capability
 
-    :param struct request_queue * q:
+    :param struct request_queue \*q:
         the request queue for the device
 
     :param unsigned int flush:
         0, REQ_FLUSH or REQ_FLUSH | REQ_FUA
 
 
+.. _`blk_queue_flush.description`:
 
 Description
 -----------
 
-Tell block layer cache flush capability of **q**.  If it supports
+Tell block layer cache flush capability of ``q``\ .  If it supports
 flushing, REQ_FLUSH should be set.  If it supports bypassing
 write cache for individual writes, REQ_FUA should be set.
-
 

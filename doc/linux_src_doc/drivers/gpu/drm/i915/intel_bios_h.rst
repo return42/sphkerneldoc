@@ -4,9 +4,7 @@
 intel_bios.h
 ============
 
-
-
-.. _xref_struct_vbt_header:
+.. _`vbt_header`:
 
 struct vbt_header
 =================
@@ -38,35 +36,33 @@ Definition
 Members
 -------
 
-:``u8 signature[20]``:
+:``signature[20]``:
     VBT signature, always starts with "$VBT"
 
-:``u16 version``:
+:``version``:
     Version of this structure
 
-:``u16 header_size``:
+:``header_size``:
     Size of this structure
 
-:``u16 vbt_size``:
+:``vbt_size``:
     Size of VBT (VBT Header, BDB Header and data blocks)
 
-:``u8 vbt_checksum``:
+:``vbt_checksum``:
     Checksum
 
-:``u8 reserved0``:
+:``reserved0``:
     Reserved
 
-:``u32 bdb_offset``:
+:``bdb_offset``:
     Offset of :c:type:`struct bdb_header <bdb_header>` from beginning of VBT
 
-:``u32 aim_offset[4]``:
+:``aim_offset[4]``:
     Offsets of add-in data blocks from beginning of VBT
 
 
 
-
-
-.. _xref_struct_bdb_header:
+.. _`bdb_header`:
 
 struct bdb_header
 =================
@@ -94,17 +90,16 @@ Definition
 Members
 -------
 
-:``u8 signature[16]``:
+:``signature[16]``:
     BDB signature "BIOS_DATA_BLOCK"
 
-:``u16 version``:
+:``version``:
     Version of the data block definitions
 
-:``u16 header_size``:
+:``header_size``:
     Size of this structure
 
-:``u16 bdb_size``:
+:``bdb_size``:
     Size of BDB (BDB Header and data blocks)
-
 
 

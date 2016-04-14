@@ -4,9 +4,7 @@
 dvb_math.h
 ==========
 
-
-
-.. _xref_intlog2:
+.. _`intlog2`:
 
 intlog2
 =======
@@ -19,32 +17,26 @@ intlog2
         The value (must be != 0)
 
 
+.. _`intlog2.description`:
 
-to use rational values you can use the following method
--------------------------------------------------------
+Description
+-----------
+
+to use rational values you can use the following method::
 
   intlog2(value) = intlog2(value * 2^x) - x * 2^24
 
+Some usecase examples::
+
+        intlog2(8) will give 3 << 24 = 3 * 2^24
+        intlog2(9) will give 3 << 24 + ... = 3.16... * 2^24
+        intlog2(1.5) = intlog2(3) - 2^24 = 0.584... * 2^24
 
 
-Some usecase examples
----------------------
-
-	intlog2(8) will give 3 << 24 = 3 * 2^24
-	intlog2(9) will give 3 << 24 + ... = 3.16... * 2^24
-	intlog2(1.5) = intlog2(3) - 2^24 = 0.584... * 2^24
+return: log2(value) * 2^24
 
 
-
-return
-------
-
-log2(value) * 2^24
-
-
-
-
-.. _xref_intlog10:
+.. _`intlog10`:
 
 intlog10
 ========
@@ -57,28 +49,21 @@ intlog10
         The value (must be != 0)
 
 
+.. _`intlog10.description`:
 
-to use rational values you can use the following method
--------------------------------------------------------
+Description
+-----------
+
+to use rational values you can use the following method::
 
   intlog10(value) = intlog10(value * 10^x) - x * 2^24
 
+An usecase example::
 
-
-An usecase example
-------------------
-
-	intlog10(1000) will give 3 << 24 = 3 * 2^24
+        intlog10(1000) will give 3 << 24 = 3 * 2^24
   due to the implementation intlog10(1000) might be not exactly 3 * 2^24
-
 
 look at intlog2 for similar examples
 
-
-
-return
-------
-
-log10(value) * 2^24
-
+return: log10(value) * 2^24
 

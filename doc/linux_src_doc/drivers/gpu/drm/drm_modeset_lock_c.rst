@@ -4,21 +4,50 @@
 drm_modeset_lock.c
 ==================
 
+.. _`kms-locking`:
+
+kms locking
+===========
+
+As KMS moves toward more fine grained locking, and atomic ioctl where
+userspace can indirectly control locking order, it becomes necessary
+to use ww_mutex and acquire-contexts to avoid deadlocks.  But because
+the locking is more distributed around the driver code, we want a bit
+of extra utility/tracking out of our acquire-ctx.  This is provided
+by drm_modeset_lock / drm_modeset_acquire_ctx.
+
+For basic principles of ww_mutex, see: Documentation/locking/ww-mutex-design.txt
+
+The basic usage pattern is to::
+
+    drm_modeset_acquire_init(:c:type:`struct ctx <ctx>`)
+    retry:
+    foreach (lock in random_ordered_set_of_locks) {
+        ret = drm_modeset_lock(lock, :c:type:`struct ctx <ctx>`)
+        if (ret == -EDEADLK) {
+            drm_modeset_backoff(:c:type:`struct ctx <ctx>`);
+            goto retry;
+        }
+    }
+    ... do stuff ...
+    drm_modeset_drop_locks(:c:type:`struct ctx <ctx>`);
+    drm_modeset_acquire_fini(:c:type:`struct ctx <ctx>`);
 
 
-.. _xref_drm_modeset_lock_all:
+.. _`drm_modeset_lock_all`:
 
 drm_modeset_lock_all
 ====================
 
-.. c:function:: void drm_modeset_lock_all (struct drm_device * dev)
+.. c:function:: void drm_modeset_lock_all (struct drm_device *dev)
 
     take all modeset locks
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
 
+.. _`drm_modeset_lock_all.description`:
 
 Description
 -----------
@@ -26,7 +55,6 @@ Description
 This function takes all modeset locks, suitable where a more fine-grained
 scheme isn't (yet) implemented. Locks must be dropped by calling the
 :c:func:`drm_modeset_unlock_all` function.
-
 
 This function is deprecated. It allocates a lock acquisition context and
 stores it in the DRM device's ->mode_config. This facilitate conversion of
@@ -36,28 +64,26 @@ and care must be taken not to nest calls. New code should use the
 :c:func:`drm_modeset_lock_all_ctx` function and pass in the context explicitly.
 
 
-
-
-.. _xref_drm_modeset_unlock_all:
+.. _`drm_modeset_unlock_all`:
 
 drm_modeset_unlock_all
 ======================
 
-.. c:function:: void drm_modeset_unlock_all (struct drm_device * dev)
+.. c:function:: void drm_modeset_unlock_all (struct drm_device *dev)
 
     drop all modeset locks
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
 
+.. _`drm_modeset_unlock_all.description`:
 
 Description
 -----------
 
 This function drops all modeset locks taken by a previous call to the
 :c:func:`drm_modeset_lock_all` function.
-
 
 This function is deprecated. It uses the lock acquisition context stored
 in the DRM device's ->mode_config. This facilitates conversion of existing
@@ -67,24 +93,23 @@ be taken not to nest calls. New code should pass the acquisition context
 directly to the :c:func:`drm_modeset_drop_locks` function.
 
 
-
-
-.. _xref_drm_modeset_lock_crtc:
+.. _`drm_modeset_lock_crtc`:
 
 drm_modeset_lock_crtc
 =====================
 
-.. c:function:: void drm_modeset_lock_crtc (struct drm_crtc * crtc, struct drm_plane * plane)
+.. c:function:: void drm_modeset_lock_crtc (struct drm_crtc *crtc, struct drm_plane *plane)
 
     lock crtc with hidden acquire ctx for a plane update
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         DRM CRTC
 
-    :param struct drm_plane * plane:
-        DRM plane to be updated on **crtc**
+    :param struct drm_plane \*plane:
+        DRM plane to be updated on ``crtc``
 
 
+.. _`drm_modeset_lock_crtc.description`:
 
 Description
 -----------
@@ -94,26 +119,24 @@ primary or cursor plane) using a hidden acquire context. This is necessary so
 that drivers internally using the atomic interfaces can grab further locks
 with the lock acquire context.
 
-
-Note that **plane** can be NULL, e.g. when the cursor support hasn't yet been
+Note that ``plane`` can be NULL, e.g. when the cursor support hasn't yet been
 converted to universal planes yet.
 
 
-
-
-.. _xref_drm_modeset_legacy_acquire_ctx:
+.. _`drm_modeset_legacy_acquire_ctx`:
 
 drm_modeset_legacy_acquire_ctx
 ==============================
 
-.. c:function:: struct drm_modeset_acquire_ctx * drm_modeset_legacy_acquire_ctx (struct drm_crtc * crtc)
+.. c:function:: struct drm_modeset_acquire_ctx *drm_modeset_legacy_acquire_ctx (struct drm_crtc *crtc)
 
     find acquire ctx for legacy ioctls
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         drm crtc
 
 
+.. _`drm_modeset_legacy_acquire_ctx.description`:
 
 Description
 -----------
@@ -124,21 +147,20 @@ legacy operations take all locks and use a global acquire context. This
 function grabs the right one.
 
 
-
-
-.. _xref_drm_modeset_unlock_crtc:
+.. _`drm_modeset_unlock_crtc`:
 
 drm_modeset_unlock_crtc
 =======================
 
-.. c:function:: void drm_modeset_unlock_crtc (struct drm_crtc * crtc)
+.. c:function:: void drm_modeset_unlock_crtc (struct drm_crtc *crtc)
 
     drop crtc lock
 
-    :param struct drm_crtc * crtc:
+    :param struct drm_crtc \*crtc:
         drm crtc
 
 
+.. _`drm_modeset_unlock_crtc.description`:
 
 Description
 -----------
@@ -147,21 +169,20 @@ This drops the crtc lock acquire with :c:func:`drm_modeset_lock_crtc` and all ot
 locks acquired through the hidden context.
 
 
-
-
-.. _xref_drm_warn_on_modeset_not_all_locked:
+.. _`drm_warn_on_modeset_not_all_locked`:
 
 drm_warn_on_modeset_not_all_locked
 ==================================
 
-.. c:function:: void drm_warn_on_modeset_not_all_locked (struct drm_device * dev)
+.. c:function:: void drm_warn_on_modeset_not_all_locked (struct drm_device *dev)
 
     check that all modeset locks are locked
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         device
 
 
+.. _`drm_warn_on_modeset_not_all_locked.description`:
 
 Description
 -----------
@@ -169,54 +190,49 @@ Description
 Useful as a debug assert.
 
 
-
-
-.. _xref_drm_modeset_acquire_init:
+.. _`drm_modeset_acquire_init`:
 
 drm_modeset_acquire_init
 ========================
 
-.. c:function:: void drm_modeset_acquire_init (struct drm_modeset_acquire_ctx * ctx, uint32_t flags)
+.. c:function:: void drm_modeset_acquire_init (struct drm_modeset_acquire_ctx *ctx, uint32_t flags)
 
     initialize acquire context
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
 
     :param uint32_t flags:
         for future
 
 
-
-
-.. _xref_drm_modeset_acquire_fini:
+.. _`drm_modeset_acquire_fini`:
 
 drm_modeset_acquire_fini
 ========================
 
-.. c:function:: void drm_modeset_acquire_fini (struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: void drm_modeset_acquire_fini (struct drm_modeset_acquire_ctx *ctx)
 
     cleanup acquire context
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
 
 
-
-
-.. _xref_drm_modeset_drop_locks:
+.. _`drm_modeset_drop_locks`:
 
 drm_modeset_drop_locks
 ======================
 
-.. c:function:: void drm_modeset_drop_locks (struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: void drm_modeset_drop_locks (struct drm_modeset_acquire_ctx *ctx)
 
     drop all locks
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
 
 
+.. _`drm_modeset_drop_locks.description`:
 
 Description
 -----------
@@ -224,21 +240,20 @@ Description
 Drop all locks currently held against this acquire context.
 
 
-
-
-.. _xref_drm_modeset_backoff:
+.. _`drm_modeset_backoff`:
 
 drm_modeset_backoff
 ===================
 
-.. c:function:: void drm_modeset_backoff (struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: void drm_modeset_backoff (struct drm_modeset_acquire_ctx *ctx)
 
     deadlock avoidance backoff
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
 
 
+.. _`drm_modeset_backoff.description`:
 
 Description
 -----------
@@ -248,21 +263,20 @@ you must call this function to drop all currently held locks and
 block until the contended lock becomes available.
 
 
-
-
-.. _xref_drm_modeset_backoff_interruptible:
+.. _`drm_modeset_backoff_interruptible`:
 
 drm_modeset_backoff_interruptible
 =================================
 
-.. c:function:: int drm_modeset_backoff_interruptible (struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: int drm_modeset_backoff_interruptible (struct drm_modeset_acquire_ctx *ctx)
 
     deadlock avoidance backoff
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
 
 
+.. _`drm_modeset_backoff_interruptible.description`:
 
 Description
 -----------
@@ -270,24 +284,23 @@ Description
 Interruptible version of :c:func:`drm_modeset_backoff`
 
 
-
-
-.. _xref_drm_modeset_lock:
+.. _`drm_modeset_lock`:
 
 drm_modeset_lock
 ================
 
-.. c:function:: int drm_modeset_lock (struct drm_modeset_lock * lock, struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: int drm_modeset_lock (struct drm_modeset_lock *lock, struct drm_modeset_acquire_ctx *ctx)
 
     take modeset lock
 
-    :param struct drm_modeset_lock * lock:
+    :param struct drm_modeset_lock \*lock:
         lock to take
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         acquire ctx
 
 
+.. _`drm_modeset_lock.description`:
 
 Description
 -----------
@@ -299,24 +312,23 @@ deadlock scenario has been detected and it is an error to attempt
 to take any more locks without first calling :c:func:`drm_modeset_backoff`.
 
 
-
-
-.. _xref_drm_modeset_lock_interruptible:
+.. _`drm_modeset_lock_interruptible`:
 
 drm_modeset_lock_interruptible
 ==============================
 
-.. c:function:: int drm_modeset_lock_interruptible (struct drm_modeset_lock * lock, struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: int drm_modeset_lock_interruptible (struct drm_modeset_lock *lock, struct drm_modeset_acquire_ctx *ctx)
 
     take modeset lock
 
-    :param struct drm_modeset_lock * lock:
+    :param struct drm_modeset_lock \*lock:
         lock to take
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         acquire ctx
 
 
+.. _`drm_modeset_lock_interruptible.description`:
 
 Description
 -----------
@@ -324,39 +336,36 @@ Description
 Interruptible version of :c:func:`drm_modeset_lock`
 
 
-
-
-.. _xref_drm_modeset_unlock:
+.. _`drm_modeset_unlock`:
 
 drm_modeset_unlock
 ==================
 
-.. c:function:: void drm_modeset_unlock (struct drm_modeset_lock * lock)
+.. c:function:: void drm_modeset_unlock (struct drm_modeset_lock *lock)
 
     drop modeset lock
 
-    :param struct drm_modeset_lock * lock:
+    :param struct drm_modeset_lock \*lock:
         lock to release
 
 
-
-
-.. _xref_drm_modeset_lock_all_ctx:
+.. _`drm_modeset_lock_all_ctx`:
 
 drm_modeset_lock_all_ctx
 ========================
 
-.. c:function:: int drm_modeset_lock_all_ctx (struct drm_device * dev, struct drm_modeset_acquire_ctx * ctx)
+.. c:function:: int drm_modeset_lock_all_ctx (struct drm_device *dev, struct drm_modeset_acquire_ctx *ctx)
 
     take all modeset locks
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
-    :param struct drm_modeset_acquire_ctx * ctx:
+    :param struct drm_modeset_acquire_ctx \*ctx:
         lock acquisition context
 
 
+.. _`drm_modeset_lock_all_ctx.description`:
 
 Description
 -----------
@@ -364,21 +373,13 @@ Description
 This function takes all modeset locks, suitable where a more fine-grained
 scheme isn't (yet) implemented.
 
-
 Unlike :c:func:`drm_modeset_lock_all`, it doesn't take the dev->mode_config.mutex
 since that lock isn't required for modeset state changes. Callers which
 need to grab that lock too need to do so outside of the acquire context
-**ctx**.
-
+``ctx``\ .
 
 Locks acquired with this function should be released by calling the
-:c:func:`drm_modeset_drop_locks` function on **ctx**.
+:c:func:`drm_modeset_drop_locks` function on ``ctx``\ .
 
-
-
-Returns
--------
-
-0 on success or a negative error-code on failure.
-
+Returns: 0 on success or a negative error-code on failure.
 

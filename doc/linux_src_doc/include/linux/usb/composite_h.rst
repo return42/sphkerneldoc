@@ -1,0 +1,633 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+===========
+composite.h
+===========
+
+.. _`usb_os_desc_ext_prop`:
+
+struct usb_os_desc_ext_prop
+===========================
+
+.. c:type:: struct usb_os_desc_ext_prop
+
+    describes one "Extended Property"
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_os_desc_ext_prop {
+    struct list_head entry;
+    u8 type;
+    int name_len;
+    char * name;
+    int data_len;
+    char * data;
+    struct config_item item;
+  };
+
+
+
+Members
+-------
+
+:``entry``:
+    used to keep a list of extended properties
+
+:``type``:
+    Extended Property type
+
+:``name_len``:
+    Extended Property unicode name length, including terminating '\0'
+
+:``name``:
+    Extended Property name
+
+:``data_len``:
+    Length of Extended Property blob (for unicode store double len)
+
+:``data``:
+    Extended Property blob
+
+:``item``:
+    Represents this Extended Property in configfs
+
+
+
+.. _`usb_os_desc`:
+
+struct usb_os_desc
+==================
+
+.. c:type:: struct usb_os_desc
+
+    describes OS descriptors associated with one interface
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_os_desc {
+    char * ext_compat_id;
+    struct list_head ext_prop;
+    int ext_prop_len;
+    int ext_prop_count;
+    struct mutex * opts_mutex;
+    struct config_group group;
+    struct module * owner;
+  };
+
+
+
+Members
+-------
+
+:``ext_compat_id``:
+    16 bytes of "Compatible ID" and "Subcompatible ID"
+
+:``ext_prop``:
+    Extended Properties list
+
+:``ext_prop_len``:
+    Total length of Extended Properties blobs
+
+:``ext_prop_count``:
+    Number of Extended Properties
+
+:``opts_mutex``:
+    Optional mutex protecting config data of a usb_function_instance
+
+:``group``:
+    Represents OS descriptors associated with an interface in configfs
+
+:``owner``:
+    Module associated with this OS descriptor
+
+
+
+.. _`usb_os_desc_table`:
+
+struct usb_os_desc_table
+========================
+
+.. c:type:: struct usb_os_desc_table
+
+    describes OS descriptors associated with one interface of a usb_function
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_os_desc_table {
+    int if_id;
+    struct usb_os_desc * os_desc;
+  };
+
+
+
+Members
+-------
+
+:``if_id``:
+    Interface id
+
+:``os_desc``:
+    "Extended Compatibility ID" and "Extended Properties" of the
+    interface
+
+
+
+Description
+-----------
+
+Each interface can have at most one "Extended Compatibility ID" and a
+number of "Extended Properties".
+
+
+.. _`usb_function`:
+
+struct usb_function
+===================
+
+.. c:type:: struct usb_function
+
+    describes one function of a configuration
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_function {
+    const char * name;
+    struct usb_gadget_strings ** strings;
+    struct usb_descriptor_header ** fs_descriptors;
+    struct usb_descriptor_header ** hs_descriptors;
+    struct usb_descriptor_header ** ss_descriptors;
+    struct usb_descriptor_header ** ssp_descriptors;
+    struct usb_configuration * config;
+    struct usb_os_desc_table * os_desc_table;
+    unsigned os_desc_n;
+    int (* bind) (struct usb_configuration *,struct usb_function *);
+    void (* unbind) (struct usb_configuration *,struct usb_function *);
+    void (* free_func) (struct usb_function *f);
+    struct module * mod;
+    int (* set_alt) (struct usb_function *,unsigned interface, unsigned alt);
+    int (* get_alt) (struct usb_function *,unsigned interface);
+    void (* disable) (struct usb_function *);
+    int (* setup) (struct usb_function *,const struct usb_ctrlrequest *);
+    bool (* req_match) (struct usb_function *,const struct usb_ctrlrequest *);
+    void (* suspend) (struct usb_function *);
+    void (* resume) (struct usb_function *);
+    int (* get_status) (struct usb_function *);
+    int (* func_suspend) (struct usb_function *,u8 suspend_opt);
+  };
+
+
+
+Members
+-------
+
+:``name``:
+    For diagnostics, identifies the function.
+
+:``strings``:
+    tables of strings, keyed by identifiers assigned during :c:func:`bind`
+    and by language IDs provided in control requests
+
+:``fs_descriptors``:
+    Table of full (or low) speed descriptors, using interface and
+    string identifiers assigned during @:c:func:`bind`.  If this pointer is null,
+    the function will not be available at full speed (or at low speed).
+
+:``hs_descriptors``:
+    Table of high speed descriptors, using interface and
+    string identifiers assigned during @:c:func:`bind`.  If this pointer is null,
+    the function will not be available at high speed.
+
+:``ss_descriptors``:
+    Table of super speed descriptors, using interface and
+    string identifiers assigned during @:c:func:`bind`. If this
+    pointer is null after initiation, the function will not
+    be available at super speed.
+
+:``ssp_descriptors``:
+    Table of super speed plus descriptors, using
+    interface and string identifiers assigned during @:c:func:`bind`. If
+    this pointer is null after initiation, the function will not
+    be available at super speed plus.
+
+:``config``:
+    assigned when @:c:func:`usb_add_function` is called; this is the
+    configuration with which this function is associated.
+
+:``os_desc_table``:
+    Table of (interface id, os descriptors) pairs. The function
+    can expose more than one interface. If an interface is a member of
+    an IAD, only the first interface of IAD has its entry in the table.
+
+:``os_desc_n``:
+    Number of entries in os_desc_table
+
+:``bind``:
+    Before the gadget can register, all of its functions :c:func:`bind` to the
+    available resources including string and interface identifiers used
+    in interface or class descriptors; endpoints; I/O buffers; and so on.
+
+:``unbind``:
+    Reverses ``bind``\ ; called as a side effect of unregistering the
+    driver which added this function.
+
+:``free_func``:
+    free the struct usb_function.
+
+:``mod``:
+    (internal) points to the module that created this structure.
+
+:``set_alt``:
+    (REQUIRED) Reconfigures altsettings; function drivers may
+    initialize usb_ep.driver data at this time (when it is used).
+    Note that setting an interface to its current altsetting resets
+    interface state, and that all interfaces have a disabled state.
+
+:``get_alt``:
+    Returns the active altsetting.  If this is not provided,
+    then only altsetting zero is supported.
+
+:``disable``:
+    (REQUIRED) Indicates the function should be disabled.  Reasons
+    include host resetting or reconfiguring the gadget, and disconnection.
+
+:``setup``:
+    Used for interface-specific control requests.
+
+:``req_match``:
+    Tests if a given class request can be handled by this function.
+
+:``suspend``:
+    Notifies functions when the host stops sending USB traffic.
+
+:``resume``:
+    Notifies functions when the host restarts USB traffic.
+
+:``get_status``:
+    Returns function status as a reply to
+    :c:func:`GetStatus` request when the recipient is Interface.
+
+:``func_suspend``:
+    callback to be called when
+    SetFeature(FUNCTION_SUSPEND) is reseived
+
+
+
+Description
+-----------
+
+A single USB function uses one or more interfaces, and should in most
+cases support operation at both full and high speeds.  Each function is
+associated by @:c:func:`usb_add_function` with a one configuration; that function
+causes @:c:func:`bind` to be called so resources can be allocated as part of
+setting up a gadget driver.  Those resources include endpoints, which
+should be allocated using @:c:func:`usb_ep_autoconfig`.
+
+To support dual speed operation, a function driver provides descriptors
+for both high and full speed operation.  Except in rare cases that don't
+involve bulk endpoints, each speed needs different endpoint descriptors.
+
+Function drivers choose their own strategies for managing instance data.
+The simplest strategy just declares it "static', which means the function
+can only be activated once.  If the function needs to be exposed in more
+than one configuration at a given speed, it needs to support multiple
+usb_function structures (one for each configuration).
+
+A more complex strategy might encapsulate a ``usb_function`` structure inside
+a driver-specific instance structure to allows multiple activations.  An
+example of multiple activations might be a CDC ACM function that supports
+two or more distinct instances within the same configuration, providing
+several independent logical data links to a USB host.
+
+
+.. _`usb_configuration`:
+
+struct usb_configuration
+========================
+
+.. c:type:: struct usb_configuration
+
+    represents one gadget configuration
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_configuration {
+    const char * label;
+    struct usb_gadget_strings ** strings;
+    const struct usb_descriptor_header ** descriptors;
+    void (* unbind) (struct usb_configuration *);
+    int (* setup) (struct usb_configuration *,const struct usb_ctrlrequest *);
+    u8 bConfigurationValue;
+    u8 iConfiguration;
+    u8 bmAttributes;
+    u16 MaxPower;
+    struct usb_composite_dev * cdev;
+  };
+
+
+
+Members
+-------
+
+:``label``:
+    For diagnostics, describes the configuration.
+
+:``strings``:
+    Tables of strings, keyed by identifiers assigned during @:c:func:`bind`
+    and by language IDs provided in control requests.
+
+:``descriptors``:
+    Table of descriptors preceding all function descriptors.::
+
+            Examples include OTG and vendor-specific descriptors.
+
+:``unbind``:
+    Reverses ``bind``\ ; called as a side effect of unregistering the
+    driver which added this configuration.
+
+:``setup``:
+    Used to delegate control requests that aren't handled by standard
+    device infrastructure or directed at a specific interface.
+
+:``bConfigurationValue``:
+    Copied into configuration descriptor.
+
+:``iConfiguration``:
+    Copied into configuration descriptor.
+
+:``bmAttributes``:
+    Copied into configuration descriptor.
+
+:``MaxPower``:
+    Power consumtion in mA. Used to compute bMaxPower in the
+    configuration descriptor after considering the bus speed.
+
+:``cdev``:
+    assigned by @:c:func:`usb_add_config` before calling @:c:func:`bind`; this is
+    the device associated with this configuration.
+
+
+
+Description
+-----------
+
+Configurations are building blocks for gadget drivers structured around
+function drivers.  Simple USB gadgets require only one function and one
+configuration, and handle dual-speed hardware by always providing the same
+functionality.  Slightly more complex gadgets may have more than one
+single-function configuration at a given speed; or have configurations
+that only work at one speed.
+
+Composite devices are, by definition, ones with configurations which
+include more than one function.
+
+The lifecycle of a usb_configuration includes allocation, initialization
+of the fields described above, and calling @:c:func:`usb_add_config` to set up
+internal data and bind it to a specific device.  The configuration's
+@:c:func:`bind` method is then used to initialize all the functions and then
+call @:c:func:`usb_add_function` for them.
+
+Those functions would normally be independent of each other, but that's
+not mandatory.  CDC WMC devices are an example where functions often
+depend on other functions, with some functions subsidiary to others.
+Such interdependency may be managed in any way, so long as all of the
+descriptors complete by the time the composite driver returns from
+its :c:func:`bind` routine.
+
+
+.. _`usb_composite_driver`:
+
+struct usb_composite_driver
+===========================
+
+.. c:type:: struct usb_composite_driver
+
+    groups configurations into a gadget
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_composite_driver {
+    const char * name;
+    const struct usb_device_descriptor * dev;
+    struct usb_gadget_strings ** strings;
+    enum usb_device_speed max_speed;
+    unsigned needs_serial:1;
+    int (* bind) (struct usb_composite_dev *cdev);
+    int (* unbind) (struct usb_composite_dev *);
+    void (* disconnect) (struct usb_composite_dev *);
+    void (* suspend) (struct usb_composite_dev *);
+    void (* resume) (struct usb_composite_dev *);
+    struct usb_gadget_driver gadget_driver;
+  };
+
+
+
+Members
+-------
+
+:``name``:
+    For diagnostics, identifies the driver.
+
+:``dev``:
+    Template descriptor for the device, including default device
+    identifiers.
+
+:``strings``:
+    tables of strings, keyed by identifiers assigned during ``bind``
+    and language IDs provided in control requests. Note: The first entries
+    are predefined. The first entry that may be used is
+    USB_GADGET_FIRST_AVAIL_IDX
+
+:``max_speed``:
+    Highest speed the driver supports.
+
+:``needs_serial``:
+    set to 1 if the gadget needs userspace to provide
+    a serial number.  If one is not provided, warning will be printed.
+
+:``bind``:
+    (REQUIRED) Used to allocate resources that are shared across the
+    whole device, such as string IDs, and add its configurations using
+    @:c:func:`usb_add_config`. This may fail by returning a negative errno
+    value; it should return zero on successful initialization.
+
+:``unbind``:
+    Reverses ``bind``\ ; called as a side effect of unregistering
+    this driver.
+
+:``disconnect``:
+    optional driver disconnect method
+
+:``suspend``:
+    Notifies when the host stops sending USB traffic,
+    after function notifications
+
+:``resume``:
+    Notifies configuration when the host restarts USB traffic,
+    before function notifications
+
+:``gadget_driver``:
+    Gadget driver controlling this driver
+
+
+
+Description
+-----------
+
+Devices default to reporting self powered operation.  Devices which rely
+on bus powered operation should report this in their ``bind`` method.
+
+Before returning from ``bind``\ , various fields in the template descriptor
+may be overridden.  These include the idVendor/idProduct/bcdDevice values
+normally to bind the appropriate host side driver, and the three strings
+(iManufacturer, iProduct, iSerialNumber) normally used to provide user
+meaningful device identifiers.  (The strings will not be defined unless
+they are defined in ``dev`` and ``strings``\ .)  The correct ep0 maxpacket size
+is also reported, as defined by the underlying controller driver.
+
+
+.. _`module_usb_composite_driver`:
+
+module_usb_composite_driver
+===========================
+
+.. c:function:: module_usb_composite_driver ( __usb_composite_driver)
+
+    Helper macro for registering a USB gadget composite driver
+
+    :param __usb_composite_driver:
+        usb_composite_driver struct
+
+
+.. _`module_usb_composite_driver.description`:
+
+Description
+-----------
+
+Helper macro for USB gadget composite drivers which do not do anything
+special in module init/exit. This eliminates a lot of boilerplate. Each
+module may only use this macro once, and calling it replaces :c:func:`module_init`
+and :c:func:`module_exit`
+
+
+.. _`usb_composite_dev`:
+
+struct usb_composite_dev
+========================
+
+.. c:type:: struct usb_composite_dev
+
+    represents one composite usb gadget
+
+
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct usb_composite_dev {
+    struct usb_gadget * gadget;
+    struct usb_request * req;
+    struct usb_request * os_desc_req;
+    struct usb_configuration * config;
+    u8 qw_sign[OS_STRING_QW_SIGN_LEN];
+    u8 b_vendor_code;
+    struct usb_configuration * os_desc_config;
+    unsigned int use_os_string:1;
+  };
+
+
+
+Members
+-------
+
+:``gadget``:
+    read-only, abstracts the gadget's usb peripheral controller
+
+:``req``:
+    used for control responses; buffer is pre-allocated
+
+:``os_desc_req``:
+    used for OS descriptors responses; buffer is pre-allocated
+
+:``config``:
+    the currently active configuration
+
+:``qw_sign[OS_STRING_QW_SIGN_LEN]``:
+    qwSignature part of the OS string
+
+:``b_vendor_code``:
+    bMS_VendorCode part of the OS string
+
+:``os_desc_config``:
+    the configuration to be used with OS descriptors
+
+:``use_os_string``:
+    false by default, interested gadgets set it
+
+
+
+Description
+-----------
+
+One of these devices is allocated and initialized before the
+associated device driver's :c:func:`bind` is called.
+
+OPEN ISSUE:  it appears that some WUSB devices will need to be
+built by combining a normal (wired) gadget with a wireless one.
+This revision of the gadget framework should probably try to make
+sure doing that won't hurt too much.
+
+One notion for how to handle Wireless USB devices involves:
+(a) a second gadget here, discovery mechanism TBD, but likely
+needing separate "register/unregister WUSB gadget" calls;
+
+(b) updates to usb_gadget to include flags "is it wireless",
+"is it wired", plus (presumably in a wrapper structure)
+bandgroup and PHY info;
+
+(c) presumably a wireless_ep wrapping a usb_ep, and reporting
+wireless-specific parameters like maxburst and maxsequence;
+
+(d) configurations that are specific to wireless links;
+(e) function drivers that understand wireless configs and will
+support wireless for (additional) function instances;
+
+(f) a function to support association setup (like CBAF), not
+necessarily requiring a wireless adapter;
+
+(g) composite device setup that can create one or more wireless
+configs, including appropriate association setup support;
+
+(h) more, TBD.
+

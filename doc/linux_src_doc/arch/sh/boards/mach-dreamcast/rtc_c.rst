@@ -4,21 +4,20 @@
 rtc.c
 =====
 
-
-
-.. _xref_aica_rtc_gettimeofday:
+.. _`aica_rtc_gettimeofday`:
 
 aica_rtc_gettimeofday
 =====================
 
-.. c:function:: void aica_rtc_gettimeofday (struct timespec * ts)
+.. c:function:: void aica_rtc_gettimeofday (struct timespec *ts)
 
     Get the time from the AICA RTC
 
-    :param struct timespec * ts:
+    :param struct timespec \*ts:
         pointer to resulting timespec
 
 
+.. _`aica_rtc_gettimeofday.description`:
 
 Description
 -----------
@@ -26,9 +25,7 @@ Description
 Grabs the current RTC seconds counter and adjusts it to the Unix Epoch.
 
 
-
-
-.. _xref_aica_rtc_settimeofday:
+.. _`aica_rtc_settimeofday`:
 
 aica_rtc_settimeofday
 =====================
@@ -41,10 +38,10 @@ aica_rtc_settimeofday
         contains the time_t to set
 
 
+.. _`aica_rtc_settimeofday.description`:
 
 Description
 -----------
 
-Adjusts the given **tv** to the AICA Epoch and sets the RTC seconds counter.
-
+Adjusts the given ``tv`` to the AICA Epoch and sets the RTC seconds counter.
 

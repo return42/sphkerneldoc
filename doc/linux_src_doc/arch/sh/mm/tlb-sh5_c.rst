@@ -4,9 +4,7 @@
 tlb-sh5.c
 =========
 
-
-
-.. _xref_sh64_tlb_init:
+.. _`sh64_tlb_init`:
 
 sh64_tlb_init
 =============
@@ -19,9 +17,7 @@ sh64_tlb_init
         no arguments
 
 
-
-
-.. _xref_sh64_next_free_dtlb_entry:
+.. _`sh64_next_free_dtlb_entry`:
 
 sh64_next_free_dtlb_entry
 =========================
@@ -34,9 +30,7 @@ sh64_next_free_dtlb_entry
         no arguments
 
 
-
-
-.. _xref_sh64_get_wired_dtlb_entry:
+.. _`sh64_get_wired_dtlb_entry`:
 
 sh64_get_wired_dtlb_entry
 =========================
@@ -49,9 +43,7 @@ sh64_get_wired_dtlb_entry
         no arguments
 
 
-
-
-.. _xref_sh64_put_wired_dtlb_entry:
+.. _`sh64_put_wired_dtlb_entry`:
 
 sh64_put_wired_dtlb_entry
 =========================
@@ -64,6 +56,7 @@ sh64_put_wired_dtlb_entry
         Address of TLB slot.
 
 
+.. _`sh64_put_wired_dtlb_entry.description`:
 
 Description
 -----------
@@ -71,9 +64,7 @@ Description
 Works like a stack, last one to allocate must be first one to free.
 
 
-
-
-.. _xref_sh64_setup_tlb_slot:
+.. _`sh64_setup_tlb_slot`:
 
 sh64_setup_tlb_slot
 ===================
@@ -95,17 +86,16 @@ sh64_setup_tlb_slot
         Physical address.
 
 
+.. _`sh64_setup_tlb_slot.description`:
 
 Description
 -----------
 
-Load up a virtual<->physical translation for **eaddr**<->**paddr** in the
-pre-allocated TLB slot **config_addr** (see sh64_get_wired_dtlb_entry).
+Load up a virtual<->physical translation for ``eaddr``\ <->\ ``paddr`` in the
+pre-allocated TLB slot ``config_addr`` (see sh64_get_wired_dtlb_entry).
 
 
-
-
-.. _xref_sh64_teardown_tlb_slot:
+.. _`sh64_teardown_tlb_slot`:
 
 sh64_teardown_tlb_slot
 ======================
@@ -118,10 +108,10 @@ sh64_teardown_tlb_slot
         Address of TLB slot.
 
 
+.. _`sh64_teardown_tlb_slot.description`:
 
 Description
 -----------
 
-Teardown any existing mapping in the TLB slot **config_addr**.
-
+Teardown any existing mapping in the TLB slot ``config_addr``\ .
 

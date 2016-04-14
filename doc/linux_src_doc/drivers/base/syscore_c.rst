@@ -4,39 +4,33 @@
 syscore.c
 =========
 
-
-
-.. _xref_register_syscore_ops:
+.. _`register_syscore_ops`:
 
 register_syscore_ops
 ====================
 
-.. c:function:: void register_syscore_ops (struct syscore_ops * ops)
+.. c:function:: void register_syscore_ops (struct syscore_ops *ops)
 
     Register a set of system core operations.
 
-    :param struct syscore_ops * ops:
+    :param struct syscore_ops \*ops:
         System core operations to register.
 
 
-
-
-.. _xref_unregister_syscore_ops:
+.. _`unregister_syscore_ops`:
 
 unregister_syscore_ops
 ======================
 
-.. c:function:: void unregister_syscore_ops (struct syscore_ops * ops)
+.. c:function:: void unregister_syscore_ops (struct syscore_ops *ops)
 
     Unregister a set of system core operations.
 
-    :param struct syscore_ops * ops:
+    :param struct syscore_ops \*ops:
         System core operations to unregister.
 
 
-
-
-.. _xref_syscore_suspend:
+.. _`syscore_suspend`:
 
 syscore_suspend
 ===============
@@ -49,18 +43,16 @@ syscore_suspend
         no arguments
 
 
+.. _`syscore_suspend.description`:
 
 Description
 -----------
 
 
-
 This function is executed with one CPU on-line and disabled interrupts.
 
 
-
-
-.. _xref_syscore_resume:
+.. _`syscore_resume`:
 
 syscore_resume
 ==============
@@ -73,18 +65,16 @@ syscore_resume
         no arguments
 
 
+.. _`syscore_resume.description`:
 
 Description
 -----------
 
 
-
 This function is executed with one CPU on-line and disabled interrupts.
 
 
-
-
-.. _xref_syscore_shutdown:
+.. _`syscore_shutdown`:
 
 syscore_shutdown
 ================
@@ -95,5 +85,4 @@ syscore_shutdown
 
     :param void:
         no arguments
-
 

@@ -4,9 +4,7 @@
 init.c
 ======
 
-
-
-.. _xref_driver_init:
+.. _`driver_init`:
 
 driver_init
 ===========
@@ -19,13 +17,12 @@ driver_init
         no arguments
 
 
+.. _`driver_init.description`:
 
 Description
 -----------
 
 
-
 Call the driver model init functions to initialize their
 subsystems. Called early from init/main.c.
-
 

@@ -17,6 +17,8 @@ i915
    i915_gem_tiling_c
    i915_guc_submission_c
    i915_irq_c
+   i915_reg_h
+   i915_trace_h
    i915_vgpu_c
    intel_atomic_plane_c
    intel_audio_c
@@ -27,6 +29,7 @@ i915
    intel_fbc_c
    intel_fifo_underrun_c
    intel_frontbuffer_c
+   intel_guc_fwif_h
    intel_guc_loader_c
    intel_hotplug_c
    intel_lrc_c

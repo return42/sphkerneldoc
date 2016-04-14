@@ -4,217 +4,181 @@
 genhd.c
 =======
 
-
-
-.. _xref_disk_get_part:
+.. _`disk_get_part`:
 
 disk_get_part
 =============
 
-.. c:function:: struct hd_struct * disk_get_part (struct gendisk * disk, int partno)
+.. c:function:: struct hd_struct *disk_get_part (struct gendisk *disk, int partno)
 
     get partition
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to look partition from
 
     :param int partno:
         partition number
 
 
+.. _`disk_get_part.description`:
 
 Description
 -----------
 
-Look for partition **partno** from **disk**.  If found, increment
+Look for partition ``partno`` from ``disk``\ .  If found, increment
 reference count and return it.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Pointer to the found partition on success, NULL if not found.
 
 
-
-
-.. _xref_disk_part_iter_init:
+.. _`disk_part_iter_init`:
 
 disk_part_iter_init
 ===================
 
-.. c:function:: void disk_part_iter_init (struct disk_part_iter * piter, struct gendisk * disk, unsigned int flags)
+.. c:function:: void disk_part_iter_init (struct disk_part_iter *piter, struct gendisk *disk, unsigned int flags)
 
     initialize partition iterator
 
-    :param struct disk_part_iter * piter:
+    :param struct disk_part_iter \*piter:
         iterator to initialize
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to iterate over
 
     :param unsigned int flags:
-        DISK_PITER_* flags
+        DISK_PITER_\* flags
 
 
+.. _`disk_part_iter_init.description`:
 
 Description
 -----------
 
-Initialize **piter** so that it iterates over partitions of **disk**.
+Initialize ``piter`` so that it iterates over partitions of ``disk``\ .
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
 
-
-
-.. _xref_disk_part_iter_next:
+.. _`disk_part_iter_next`:
 
 disk_part_iter_next
 ===================
 
-.. c:function:: struct hd_struct * disk_part_iter_next (struct disk_part_iter * piter)
+.. c:function:: struct hd_struct *disk_part_iter_next (struct disk_part_iter *piter)
 
     proceed iterator to the next partition and return it
 
-    :param struct disk_part_iter * piter:
+    :param struct disk_part_iter \*piter:
         iterator of interest
 
 
+.. _`disk_part_iter_next.description`:
 
 Description
 -----------
 
-Proceed **piter** to the next partition and return it.
+Proceed ``piter`` to the next partition and return it.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
 
-
-
-.. _xref_disk_part_iter_exit:
+.. _`disk_part_iter_exit`:
 
 disk_part_iter_exit
 ===================
 
-.. c:function:: void disk_part_iter_exit (struct disk_part_iter * piter)
+.. c:function:: void disk_part_iter_exit (struct disk_part_iter *piter)
 
     finish up partition iteration
 
-    :param struct disk_part_iter * piter:
+    :param struct disk_part_iter \*piter:
         iter of interest
 
 
+.. _`disk_part_iter_exit.description`:
 
 Description
 -----------
 
-Called when iteration is over.  Cleans up **piter**.
+Called when iteration is over.  Cleans up ``piter``\ .
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
 
-
-
-.. _xref_disk_map_sector_rcu:
+.. _`disk_map_sector_rcu`:
 
 disk_map_sector_rcu
 ===================
 
-.. c:function:: struct hd_struct * disk_map_sector_rcu (struct gendisk * disk, sector_t sector)
+.. c:function:: struct hd_struct *disk_map_sector_rcu (struct gendisk *disk, sector_t sector)
 
     map sector to partition
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         gendisk of interest
 
     :param sector_t sector:
         sector to map
 
 
+.. _`disk_map_sector_rcu.description`:
 
 Description
 -----------
 
-Find out which partition **sector** maps to on **disk**.  This is
+Find out which partition ``sector`` maps to on ``disk``\ .  This is
 primarily used for stats accounting.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 RCU read locked.  The returned partition pointer is valid only
 while preemption is disabled.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Found partition on success, part0 is returned if no partition matches
 
 
-
-
-.. _xref_register_blkdev:
+.. _`register_blkdev`:
 
 register_blkdev
 ===============
 
-.. c:function:: int register_blkdev (unsigned int major, const char * name)
+.. c:function:: int register_blkdev (unsigned int major, const char *name)
 
     register a new block device
 
     :param unsigned int major:
-        the requested major device number [1..255]. If **major**=0, try to
-                allocate any unused major number.
+        the requested major device number [1..255]. If ``major``\ =0, try to
+        allocate any unused major number.
 
-    :param const char * name:
+    :param const char \*name:
         the name of the new block device as a zero terminated string
 
 
+.. _`register_blkdev.description`:
 
 Description
 -----------
 
-The **name** must be unique within the system.
+The ``name`` must be unique within the system.
 
+The return value depends on the ``major`` input parameter.::
 
-The return value depends on the **major** input parameter.
  - if a major device number was requested in range [1..255] then the
    function returns zero on success, or a negative error code
- - if any unused major number was requested with **major**=0 parameter
+ - if any unused major number was requested with ``major``\ =0 parameter
    then the return value is the allocated major number in range
    [1..255] or a negative error code otherwise
 
 
-
-
-.. _xref_blk_mangle_minor:
+.. _`blk_mangle_minor`:
 
 blk_mangle_minor
 ================
@@ -227,71 +191,53 @@ blk_mangle_minor
         minor number to mangle
 
 
+.. _`blk_mangle_minor.description`:
 
 Description
 -----------
 
-Scatter consecutively allocated **minor** number apart if MANGLE_DEVT
+Scatter consecutively allocated ``minor`` number apart if MANGLE_DEVT
 is enabled.  Mangling twice gives the original value.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Mangled value.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
 
-
-
-.. _xref_blk_alloc_devt:
+.. _`blk_alloc_devt`:
 
 blk_alloc_devt
 ==============
 
-.. c:function:: int blk_alloc_devt (struct hd_struct * part, dev_t * devt)
+.. c:function:: int blk_alloc_devt (struct hd_struct *part, dev_t *devt)
 
     allocate a dev_t for a partition
 
-    :param struct hd_struct * part:
+    :param struct hd_struct \*part:
         partition to allocate dev_t for
 
-    :param dev_t * devt:
+    :param dev_t \*devt:
         out parameter for resulting dev_t
 
 
+.. _`blk_alloc_devt.description`:
 
 Description
 -----------
 
 Allocate a dev_t for block device.
 
-
-
-RETURNS
--------
-
-0 on success, allocated dev_t is returned in ***devt**.  -errno on
+RETURNS:
+0 on success, allocated dev_t is returned in \*\ ``devt``\ .  -errno on
 failure.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Might sleep.
 
 
-
-
-.. _xref_blk_free_devt:
+.. _`blk_free_devt`:
 
 blk_free_devt
 =============
@@ -304,203 +250,169 @@ blk_free_devt
         dev_t to free
 
 
+.. _`blk_free_devt.description`:
 
 Description
 -----------
 
-Free **devt** which was allocated using :c:func:`blk_alloc_devt`.
+Free ``devt`` which was allocated using :c:func:`blk_alloc_devt`.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Might sleep.
 
 
-
-
-.. _xref_add_disk:
+.. _`add_disk`:
 
 add_disk
 ========
 
-.. c:function:: void add_disk (struct gendisk * disk)
+.. c:function:: void add_disk (struct gendisk *disk)
 
     add partitioning information to kernel list
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         per-device partitioning information
 
 
+.. _`add_disk.description`:
 
 Description
 -----------
 
-This function registers the partitioning information in **disk**
+This function registers the partitioning information in ``disk``
 with the kernel.
 
+FIXME: error handling
 
 
-FIXME
------
-
-error handling
-
-
-
-
-.. _xref_get_gendisk:
+.. _`get_gendisk`:
 
 get_gendisk
 ===========
 
-.. c:function:: struct gendisk * get_gendisk (dev_t devt, int * partno)
+.. c:function:: struct gendisk *get_gendisk (dev_t devt, int *partno)
 
     get partitioning information for a given device
 
     :param dev_t devt:
         device to get partitioning information for
 
-    :param int * partno:
+    :param int \*partno:
         returned partition index
 
 
+.. _`get_gendisk.description`:
 
 Description
 -----------
 
 This function gets the structure containing partitioning
-information for the given device **devt**.
+information for the given device ``devt``\ .
 
 
-
-
-.. _xref_bdget_disk:
+.. _`bdget_disk`:
 
 bdget_disk
 ==========
 
-.. c:function:: struct block_device * bdget_disk (struct gendisk * disk, int partno)
+.. c:function:: struct block_device *bdget_disk (struct gendisk *disk, int partno)
 
     do bdget() by gendisk and partition number
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         gendisk of interest
 
     :param int partno:
         partition number
 
 
+.. _`bdget_disk.description`:
 
 Description
 -----------
 
-Find partition **partno** from **disk**, do :c:func:`bdget` on it.
+Find partition ``partno`` from ``disk``\ , do :c:func:`bdget` on it.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Resulting block_device on success, NULL on failure.
 
 
-
-
-.. _xref_disk_replace_part_tbl:
+.. _`disk_replace_part_tbl`:
 
 disk_replace_part_tbl
 =====================
 
-.. c:function:: void disk_replace_part_tbl (struct gendisk * disk, struct disk_part_tbl * new_ptbl)
+.. c:function:: void disk_replace_part_tbl (struct gendisk *disk, struct disk_part_tbl *new_ptbl)
 
-    replace disk-\\\gt;part_tbl in RCU-safe way
+    replace disk->part_tbl in RCU-safe way
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to replace part_tbl for
 
-    :param struct disk_part_tbl * new_ptbl:
+    :param struct disk_part_tbl \*new_ptbl:
         new part_tbl to install
 
 
+.. _`disk_replace_part_tbl.description`:
 
 Description
 -----------
 
-Replace disk->part_tbl with **new_ptbl** in RCU-safe way.  The
+Replace disk->part_tbl with ``new_ptbl`` in RCU-safe way.  The
 original ptbl is freed using RCU callback.
 
-
-
-LOCKING
--------
-
+LOCKING:
 Matching bd_mutx locked.
 
 
-
-
-.. _xref_disk_expand_part_tbl:
+.. _`disk_expand_part_tbl`:
 
 disk_expand_part_tbl
 ====================
 
-.. c:function:: int disk_expand_part_tbl (struct gendisk * disk, int partno)
+.. c:function:: int disk_expand_part_tbl (struct gendisk *disk, int partno)
 
-    expand disk-\\\gt;part_tbl
+    expand disk->part_tbl
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to expand part_tbl for
 
     :param int partno:
         expand such that this partno can fit in
 
 
+.. _`disk_expand_part_tbl.description`:
 
 Description
 -----------
 
-Expand disk->part_tbl such that **partno** can fit in.  disk->part_tbl
+Expand disk->part_tbl such that ``partno`` can fit in.  disk->part_tbl
 uses RCU to allow unlocked dereferencing for stats and other stuff.
 
-
-
-LOCKING
--------
-
+LOCKING:
 Matching bd_mutex locked, might sleep.
 
-
-
-RETURNS
--------
-
+RETURNS:
 0 on success, -errno on failure.
 
 
-
-
-.. _xref_disk_block_events:
+.. _`disk_block_events`:
 
 disk_block_events
 =================
 
-.. c:function:: void disk_block_events (struct gendisk * disk)
+.. c:function:: void disk_block_events (struct gendisk *disk)
 
     block and flush disk event checking
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to block events for
 
 
+.. _`disk_block_events.description`:
 
 Description
 -----------
@@ -510,33 +422,27 @@ isn't in progress and won't happen until unblocked by
 :c:func:`disk_unblock_events`.  Events blocking is counted and the actual
 unblocking happens after the matching number of unblocks are done.
 
-
 Note that this intentionally does not block event checking from
 :c:func:`disk_clear_events`.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Might sleep.
 
 
-
-
-.. _xref_disk_unblock_events:
+.. _`disk_unblock_events`:
 
 disk_unblock_events
 ===================
 
-.. c:function:: void disk_unblock_events (struct gendisk * disk)
+.. c:function:: void disk_unblock_events (struct gendisk *disk)
 
     unblock disk event checking
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to unblock events for
 
 
+.. _`disk_unblock_events.description`:
 
 Description
 -----------
@@ -544,78 +450,63 @@ Description
 Undo :c:func:`disk_block_events`.  When the block count reaches zero, it
 starts events polling if configured.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Don't care.  Safe to call from irq context.
 
 
-
-
-.. _xref_disk_flush_events:
+.. _`disk_flush_events`:
 
 disk_flush_events
 =================
 
-.. c:function:: void disk_flush_events (struct gendisk * disk, unsigned int mask)
+.. c:function:: void disk_flush_events (struct gendisk *disk, unsigned int mask)
 
     schedule immediate event checking and flushing
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to check and flush events for
 
     :param unsigned int mask:
         events to flush
 
 
+.. _`disk_flush_events.description`:
 
 Description
 -----------
 
-Schedule immediate event checking on **disk** if not blocked.  Events in
-**mask** are scheduled to be cleared from the driver.  Note that this
-doesn't clear the events from **disk**->ev.
+Schedule immediate event checking on ``disk`` if not blocked.  Events in
+``mask`` are scheduled to be cleared from the driver.  Note that this
+doesn't clear the events from ``disk``\ ->ev.
+
+CONTEXT:
+If ``mask`` is non-zero must be called with bdev->bd_mutex held.
 
 
-
-CONTEXT
--------
-
-If **mask** is non-zero must be called with bdev->bd_mutex held.
-
-
-
-
-.. _xref_disk_clear_events:
+.. _`disk_clear_events`:
 
 disk_clear_events
 =================
 
-.. c:function:: unsigned int disk_clear_events (struct gendisk * disk, unsigned int mask)
+.. c:function:: unsigned int disk_clear_events (struct gendisk *disk, unsigned int mask)
 
     synchronously check, clear and return pending events
 
-    :param struct gendisk * disk:
+    :param struct gendisk \*disk:
         disk to fetch and clear events from
 
     :param unsigned int mask:
         mask of events to be fetched and cleared
 
 
+.. _`disk_clear_events.description`:
 
 Description
 -----------
 
-Disk events are synchronously checked and pending events in **mask**
+Disk events are synchronously checked and pending events in ``mask``
 are cleared and returned.  This ignores the block count.
 
-
-
-CONTEXT
--------
-
+CONTEXT:
 Might sleep.
-
 

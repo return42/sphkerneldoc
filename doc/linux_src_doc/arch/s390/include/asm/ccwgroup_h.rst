@@ -4,9 +4,7 @@
 ccwgroup.h
 ==========
 
-
-
-.. _xref_struct_ccwgroup_device:
+.. _`ccwgroup_device`:
 
 struct ccwgroup_device
 ======================
@@ -35,27 +33,25 @@ Definition
 Members
 -------
 
-:``enum state``:
+:``state``:
     online/offline state
 
-:``unsigned int count``:
+:``count``:
     number of attached slave devices
 
-:``struct device dev``:
+:``dev``:
     embedded device structure
 
-:``struct work_struct ungroup_work``:
+:``ungroup_work``:
     work to be done when a ccwgroup notifier has action
-    	type ``BUS_NOTIFY_UNBIND_DRIVER``
+    type ``BUS_NOTIFY_UNBIND_DRIVER``
 
-:``struct ccw_device * cdev[0]``:
+:``cdev[0]``:
     variable number of slave devices, allocated as needed
 
 
 
-
-
-.. _xref_struct_ccwgroup_driver:
+.. _`ccwgroup_driver`:
 
 struct ccwgroup_driver
 ======================
@@ -90,38 +86,37 @@ Definition
 Members
 -------
 
-:``int (*) (struct ccwgroup_device *) setup``:
+:``setup``:
     function called during device creation to setup the device
 
-:``void (*) (struct ccwgroup_device *) remove``:
+:``remove``:
     function called on remove
 
-:``int (*) (struct ccwgroup_device *) set_online``:
+:``set_online``:
     function called when device is set online
 
-:``int (*) (struct ccwgroup_device *) set_offline``:
+:``set_offline``:
     function called when device is set offline
 
-:``void (*)(struct ccwgroup_device *) shutdown``:
+:``shutdown``:
     function called when device is shut down
 
-:``int (*) (struct ccwgroup_device *) prepare``:
+:``prepare``:
     prepare for pm state transition
 
-:``void (*) (struct ccwgroup_device *) complete``:
-    undo work done in **prepare**
+:``complete``:
+    undo work done in ``prepare``
 
-:``int (*)(struct ccwgroup_device *) freeze``:
+:``freeze``:
     callback for freezing during hibernation snapshotting
 
-:``int (*) (struct ccwgroup_device *) thaw``:
-    undo work done in **freeze**
+:``thaw``:
+    undo work done in ``freeze``
 
-:``int (*)(struct ccwgroup_device *) restore``:
+:``restore``:
     callback for restoring after hibernation
 
-:``struct device_driver driver``:
+:``driver``:
     embedded driver structure
-
 
 

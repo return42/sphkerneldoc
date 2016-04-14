@@ -4,24 +4,23 @@
 drm_platform.c
 ==============
 
-
-
-.. _xref_drm_platform_init:
+.. _`drm_platform_init`:
 
 drm_platform_init
 =================
 
-.. c:function:: int drm_platform_init (struct drm_driver * driver, struct platform_device * platform_device)
+.. c:function:: int drm_platform_init (struct drm_driver *driver, struct platform_device *platform_device)
 
     Register a platform device with the DRM subsystem
 
-    :param struct drm_driver * driver:
+    :param struct drm_driver \*driver:
         DRM device driver
 
-    :param struct platform_device * platform_device:
+    :param struct platform_device \*platform_device:
         platform device to register
 
 
+.. _`drm_platform_init.description`:
 
 Description
 -----------
@@ -30,19 +29,8 @@ Registers the specified DRM device driver and platform device with the DRM
 subsystem, initializing a drm_device structure and calling the driver's
 .:c:func:`load` function.
 
-
-
-NOTE
-----
-
-This function is deprecated, please use :c:func:`drm_dev_alloc` and
+NOTE: This function is deprecated, please use :c:func:`drm_dev_alloc` and
 :c:func:`drm_dev_register` instead and remove your ->:c:func:`load` callback.
 
-
-
-Return
-------
-
-0 on success or a negative error code on failure.
-
+Return: 0 on success or a negative error code on failure.
 

@@ -4,30 +4,29 @@
 dma-mapping.c
 =============
 
-
-
-.. _xref_dmam_alloc_coherent:
+.. _`dmam_alloc_coherent`:
 
 dmam_alloc_coherent
 ===================
 
-.. c:function:: void * dmam_alloc_coherent (struct device * dev, size_t size, dma_addr_t * dma_handle, gfp_t gfp)
+.. c:function:: void *dmam_alloc_coherent (struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t gfp)
 
     Managed dma_alloc_coherent()
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to allocate coherent memory for
 
     :param size_t size:
         Size of allocation
 
-    :param dma_addr_t * dma_handle:
+    :param dma_addr_t \*dma_handle:
         Out argument for allocated DMA handle
 
     :param gfp_t gfp:
         Allocation flags
 
 
+.. _`dmam_alloc_coherent.description`:
 
 Description
 -----------
@@ -35,38 +34,33 @@ Description
 Managed :c:func:`dma_alloc_coherent`.  Memory allocated using this function
 will be automatically released on driver detach.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Pointer to allocated memory on success, NULL on failure.
 
 
-
-
-.. _xref_dmam_free_coherent:
+.. _`dmam_free_coherent`:
 
 dmam_free_coherent
 ==================
 
-.. c:function:: void dmam_free_coherent (struct device * dev, size_t size, void * vaddr, dma_addr_t dma_handle)
+.. c:function:: void dmam_free_coherent (struct device *dev, size_t size, void *vaddr, dma_addr_t dma_handle)
 
     Managed dma_free_coherent()
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to free coherent memory for
 
     :param size_t size:
         Size of allocation
 
-    :param void * vaddr:
+    :param void \*vaddr:
         Virtual address of the memory to free
 
     :param dma_addr_t dma_handle:
         DMA handle of the memory to free
 
 
+.. _`dmam_free_coherent.description`:
 
 Description
 -----------
@@ -74,30 +68,29 @@ Description
 Managed :c:func:`dma_free_coherent`.
 
 
-
-
-.. _xref_dmam_alloc_noncoherent:
+.. _`dmam_alloc_noncoherent`:
 
 dmam_alloc_noncoherent
 ======================
 
-.. c:function:: void * dmam_alloc_noncoherent (struct device * dev, size_t size, dma_addr_t * dma_handle, gfp_t gfp)
+.. c:function:: void *dmam_alloc_noncoherent (struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t gfp)
 
     Managed dma_alloc_non_coherent()
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to allocate non_coherent memory for
 
     :param size_t size:
         Size of allocation
 
-    :param dma_addr_t * dma_handle:
+    :param dma_addr_t \*dma_handle:
         Out argument for allocated DMA handle
 
     :param gfp_t gfp:
         Allocation flags
 
 
+.. _`dmam_alloc_noncoherent.description`:
 
 Description
 -----------
@@ -105,38 +98,33 @@ Description
 Managed :c:func:`dma_alloc_non_coherent`.  Memory allocated using this
 function will be automatically released on driver detach.
 
-
-
-RETURNS
--------
-
+RETURNS:
 Pointer to allocated memory on success, NULL on failure.
 
 
-
-
-.. _xref_dmam_free_noncoherent:
+.. _`dmam_free_noncoherent`:
 
 dmam_free_noncoherent
 =====================
 
-.. c:function:: void dmam_free_noncoherent (struct device * dev, size_t size, void * vaddr, dma_addr_t dma_handle)
+.. c:function:: void dmam_free_noncoherent (struct device *dev, size_t size, void *vaddr, dma_addr_t dma_handle)
 
     Managed dma_free_noncoherent()
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to free noncoherent memory for
 
     :param size_t size:
         Size of allocation
 
-    :param void * vaddr:
+    :param void \*vaddr:
         Virtual address of the memory to free
 
     :param dma_addr_t dma_handle:
         DMA handle of the memory to free
 
 
+.. _`dmam_free_noncoherent.description`:
 
 Description
 -----------
@@ -144,18 +132,16 @@ Description
 Managed :c:func:`dma_free_noncoherent`.
 
 
-
-
-.. _xref_dmam_declare_coherent_memory:
+.. _`dmam_declare_coherent_memory`:
 
 dmam_declare_coherent_memory
 ============================
 
-.. c:function:: int dmam_declare_coherent_memory (struct device * dev, phys_addr_t phys_addr, dma_addr_t device_addr, size_t size, int flags)
+.. c:function:: int dmam_declare_coherent_memory (struct device *dev, phys_addr_t phys_addr, dma_addr_t device_addr, size_t size, int flags)
 
     Managed dma_declare_coherent_memory()
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to declare coherent memory for
 
     :param phys_addr_t phys_addr:
@@ -171,39 +157,34 @@ dmam_declare_coherent_memory
         Flags
 
 
+.. _`dmam_declare_coherent_memory.description`:
 
 Description
 -----------
 
 Managed :c:func:`dma_declare_coherent_memory`.
 
-
-
-RETURNS
--------
-
+RETURNS:
 0 on success, -errno on failure.
 
 
-
-
-.. _xref_dmam_release_declared_memory:
+.. _`dmam_release_declared_memory`:
 
 dmam_release_declared_memory
 ============================
 
-.. c:function:: void dmam_release_declared_memory (struct device * dev)
+.. c:function:: void dmam_release_declared_memory (struct device *dev)
 
     Managed dma_release_declared_memory().
 
-    :param struct device * dev:
+    :param struct device \*dev:
         Device to release declared coherent memory for
 
 
+.. _`dmam_release_declared_memory.description`:
 
 Description
 -----------
 
 Managed :c:func:`dmam_release_declared_memory`.
-
 

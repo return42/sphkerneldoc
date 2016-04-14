@@ -4,18 +4,16 @@
 input.c
 =======
 
-
-
-.. _xref_input_event:
+.. _`input_event`:
 
 input_event
 ===========
 
-.. c:function:: void input_event (struct input_dev * dev, unsigned int type, unsigned int code, int value)
+.. c:function:: void input_event (struct input_dev *dev, unsigned int type, unsigned int code, int value)
 
     report new input event
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         device that generated the event
 
     :param unsigned int type:
@@ -28,6 +26,7 @@ input_event
         value of the event
 
 
+.. _`input_event.description`:
 
 Description
 -----------
@@ -35,12 +34,7 @@ Description
 This function should be used by drivers implementing various input
 devices to report input events. See also :c:func:`input_inject_event`.
 
-
-
-NOTE
-----
-
-:c:func:`input_event` may be safely used right after input device was
+NOTE: :c:func:`input_event` may be safely used right after input device was
 allocated with :c:func:`input_allocate_device`, even before it is registered
 with :c:func:`input_register_device`, but the event will not reach any of the
 input handlers. Such early invocation of :c:func:`input_event` may be used
@@ -48,18 +42,16 @@ to 'seed' initial state of a switch or initial position of absolute
 axis, etc.
 
 
-
-
-.. _xref_input_inject_event:
+.. _`input_inject_event`:
 
 input_inject_event
 ==================
 
-.. c:function:: void input_inject_event (struct input_handle * handle, unsigned int type, unsigned int code, int value)
+.. c:function:: void input_inject_event (struct input_handle *handle, unsigned int type, unsigned int code, int value)
 
     send input event from input handler
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         input handle to send event through
 
     :param unsigned int type:
@@ -72,6 +64,7 @@ input_inject_event
         value of the event
 
 
+.. _`input_inject_event.description`:
 
 Description
 -----------
@@ -81,21 +74,20 @@ Similar to :c:func:`input_event` but will ignore event if device is
 the device.
 
 
-
-
-.. _xref_input_alloc_absinfo:
+.. _`input_alloc_absinfo`:
 
 input_alloc_absinfo
 ===================
 
-.. c:function:: void input_alloc_absinfo (struct input_dev * dev)
+.. c:function:: void input_alloc_absinfo (struct input_dev *dev)
 
     allocates array of input_absinfo structs
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         the input device emitting absolute events
 
 
+.. _`input_alloc_absinfo.description`:
 
 Description
 -----------
@@ -104,21 +96,20 @@ If the absinfo struct the caller asked for is already allocated, this
 functions will not do anything.
 
 
-
-
-.. _xref_input_grab_device:
+.. _`input_grab_device`:
 
 input_grab_device
 =================
 
-.. c:function:: int input_grab_device (struct input_handle * handle)
+.. c:function:: int input_grab_device (struct input_handle *handle)
 
     grabs device for exclusive use
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         input handle that wants to own the device
 
 
+.. _`input_grab_device.description`:
 
 Description
 -----------
@@ -128,21 +119,20 @@ the device are delivered only to this handle. Also events injected
 by other input handles are ignored while device is grabbed.
 
 
-
-
-.. _xref_input_release_device:
+.. _`input_release_device`:
 
 input_release_device
 ====================
 
-.. c:function:: void input_release_device (struct input_handle * handle)
+.. c:function:: void input_release_device (struct input_handle *handle)
 
     release previously grabbed device
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         input handle that owns the device
 
 
+.. _`input_release_device.description`:
 
 Description
 -----------
@@ -153,21 +143,20 @@ to the device have their :c:func:`start` method called so they have a change
 to synchronize device state with the rest of the system.
 
 
-
-
-.. _xref_input_open_device:
+.. _`input_open_device`:
 
 input_open_device
 =================
 
-.. c:function:: int input_open_device (struct input_handle * handle)
+.. c:function:: int input_open_device (struct input_handle *handle)
 
     open input device
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         handle through which device is being accessed
 
 
+.. _`input_open_device.description`:
 
 Description
 -----------
@@ -176,21 +165,20 @@ This function should be called by input handlers when they
 want to start receive events from given input device.
 
 
-
-
-.. _xref_input_close_device:
+.. _`input_close_device`:
 
 input_close_device
 ==================
 
-.. c:function:: void input_close_device (struct input_handle * handle)
+.. c:function:: void input_close_device (struct input_handle *handle)
 
     close input device
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         handle through which device is being accessed
 
 
+.. _`input_close_device.description`:
 
 Description
 -----------
@@ -199,25 +187,24 @@ This function should be called by input handlers when they
 want to stop receive events from given input device.
 
 
-
-
-.. _xref_input_scancode_to_scalar:
+.. _`input_scancode_to_scalar`:
 
 input_scancode_to_scalar
 ========================
 
-.. c:function:: int input_scancode_to_scalar (const struct input_keymap_entry * ke, unsigned int * scancode)
+.. c:function:: int input_scancode_to_scalar (const struct input_keymap_entry *ke, unsigned int *scancode)
 
-    converts scancode in \\\amp;struct input_keymap_entry
+    converts scancode in &struct input_keymap_entry
 
-    :param const struct input_keymap_entry * ke:
+    :param const struct input_keymap_entry \*ke:
         keymap entry containing scancode to be converted.
 
-    :param unsigned int * scancode:
+    :param unsigned int \*scancode:
         pointer to the location where converted scancode should
-        	be stored.
+        be stored.
 
 
+.. _`input_scancode_to_scalar.description`:
 
 Description
 -----------
@@ -227,24 +214,23 @@ into scalar form understood by legacy keymap handling methods. These
 methods expect scancodes to be represented as 'unsigned int'.
 
 
-
-
-.. _xref_input_get_keycode:
+.. _`input_get_keycode`:
 
 input_get_keycode
 =================
 
-.. c:function:: int input_get_keycode (struct input_dev * dev, struct input_keymap_entry * ke)
+.. c:function:: int input_get_keycode (struct input_dev *dev, struct input_keymap_entry *ke)
 
     retrieve keycode currently mapped to a given scancode
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         input device which keymap is being queried
 
-    :param struct input_keymap_entry * ke:
+    :param struct input_keymap_entry \*ke:
         keymap entry
 
 
+.. _`input_get_keycode.description`:
 
 Description
 -----------
@@ -253,24 +239,23 @@ This function should be called by anyone interested in retrieving current
 keymap. Presently evdev handlers use it.
 
 
-
-
-.. _xref_input_set_keycode:
+.. _`input_set_keycode`:
 
 input_set_keycode
 =================
 
-.. c:function:: int input_set_keycode (struct input_dev * dev, const struct input_keymap_entry * ke)
+.. c:function:: int input_set_keycode (struct input_dev *dev, const struct input_keymap_entry *ke)
 
     attribute a keycode to a given scancode
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         input device which keymap is being updated
 
-    :param const struct input_keymap_entry * ke:
+    :param const struct input_keymap_entry \*ke:
         new keymap entry
 
 
+.. _`input_set_keycode.description`:
 
 Description
 -----------
@@ -279,21 +264,20 @@ This function should be called by anyone needing to update current
 keymap. Presently keyboard and evdev handlers use it.
 
 
-
-
-.. _xref_input_reset_device:
+.. _`input_reset_device`:
 
 input_reset_device
 ==================
 
-.. c:function:: void input_reset_device (struct input_dev * dev)
+.. c:function:: void input_reset_device (struct input_dev *dev)
 
     reset/restore the state of input device
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         input device whose state needs to be reset
 
 
+.. _`input_reset_device.description`:
 
 Description
 -----------
@@ -303,14 +287,12 @@ bring internal state and state if the hardware in sync with each other.
 We mark all keys as released, restore LED state, repeat rate, etc.
 
 
-
-
-.. _xref_input_allocate_device:
+.. _`input_allocate_device`:
 
 input_allocate_device
 =====================
 
-.. c:function:: struct input_dev * input_allocate_device ( void)
+.. c:function:: struct input_dev *input_allocate_device ( void)
 
     allocate memory for new input device
 
@@ -318,45 +300,38 @@ input_allocate_device
         no arguments
 
 
+.. _`input_allocate_device.description`:
 
 Description
 -----------
 
 
+Returns prepared struct input_dev or ``NULL``\ .
 
-Returns prepared struct input_dev or ``NULL``.
-
-
-
-NOTE
-----
-
-Use :c:func:`input_free_device` to free devices that have not been
+NOTE: Use :c:func:`input_free_device` to free devices that have not been
 registered; :c:func:`input_unregister_device` should be used for already
 registered devices.
 
 
-
-
-.. _xref_devm_input_allocate_device:
+.. _`devm_input_allocate_device`:
 
 devm_input_allocate_device
 ==========================
 
-.. c:function:: struct input_dev * devm_input_allocate_device (struct device * dev)
+.. c:function:: struct input_dev *devm_input_allocate_device (struct device *dev)
 
     allocate managed input device
 
-    :param struct device * dev:
+    :param struct device \*dev:
         device owning the input device being created
 
 
+.. _`devm_input_allocate_device.description`:
 
 Description
 -----------
 
-Returns prepared struct input_dev or ``NULL``.
-
+Returns prepared struct input_dev or ``NULL``\ .
 
 Managed input devices do not need to be explicitly unregistered or
 freed as it will be done automatically when owner device unbinds from
@@ -367,30 +342,24 @@ variants, regular ones work with both managed and unmanaged devices,
 should you need them. In most cases however, managed input device need
 not be explicitly unregistered or freed.
 
-
-
-NOTE
-----
-
-the owner device is set up as parent of input device and users
+NOTE: the owner device is set up as parent of input device and users
 should not override it.
 
 
-
-
-.. _xref_input_free_device:
+.. _`input_free_device`:
 
 input_free_device
 =================
 
-.. c:function:: void input_free_device (struct input_dev * dev)
+.. c:function:: void input_free_device (struct input_dev *dev)
 
     free memory occupied by input_dev structure
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         input device to free
 
 
+.. _`input_free_device.description`:
 
 Description
 -----------
@@ -400,30 +369,22 @@ was not called yet or if it failed. Once device was registered
 use :c:func:`input_unregister_device` and memory will be freed once last
 reference to the device is dropped.
 
-
 Device should be allocated by :c:func:`input_allocate_device`.
 
-
-
-NOTE
-----
-
-If there are references to the input device then memory
+NOTE: If there are references to the input device then memory
 will not be freed until last reference is dropped.
 
 
-
-
-.. _xref_input_set_capability:
+.. _`input_set_capability`:
 
 input_set_capability
 ====================
 
-.. c:function:: void input_set_capability (struct input_dev * dev, unsigned int type, unsigned int code)
+.. c:function:: void input_set_capability (struct input_dev *dev, unsigned int type, unsigned int code)
 
     mark device as capable of a certain event
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         device that is capable of emitting or accepting event
 
     :param unsigned int type:
@@ -433,6 +394,7 @@ input_set_capability
         event code
 
 
+.. _`input_set_capability.description`:
 
 Description
 -----------
@@ -441,18 +403,16 @@ In addition to setting up corresponding bit in appropriate capability
 bitmap the function also adjusts dev->evbit.
 
 
-
-
-.. _xref_input_enable_softrepeat:
+.. _`input_enable_softrepeat`:
 
 input_enable_softrepeat
 =======================
 
-.. c:function:: void input_enable_softrepeat (struct input_dev * dev, int delay, int period)
+.. c:function:: void input_enable_softrepeat (struct input_dev *dev, int delay, int period)
 
     enable software autorepeat
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         input device
 
     :param int delay:
@@ -462,6 +422,7 @@ input_enable_softrepeat
         repeat period
 
 
+.. _`input_enable_softrepeat.description`:
 
 Description
 -----------
@@ -469,21 +430,20 @@ Description
 Enable software autorepeat on the input device.
 
 
-
-
-.. _xref_input_register_device:
+.. _`input_register_device`:
 
 input_register_device
 =====================
 
-.. c:function:: int input_register_device (struct input_dev * dev)
+.. c:function:: int input_register_device (struct input_dev *dev)
 
     register device with input core
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         device to be registered
 
 
+.. _`input_register_device.description`:
 
 Description
 -----------
@@ -495,7 +455,6 @@ If function fails the device must be freed with :c:func:`input_free_device`.
 Once device has been successfully registered it can be unregistered
 with :c:func:`input_unregister_device`; :c:func:`input_free_device` should not be
 called in this case.
-
 
 Note that this function is also used to register managed input devices
 (ones allocated with :c:func:`devm_input_allocate_device`). Such managed input
@@ -509,21 +468,20 @@ happen later, when devres stack is unwound to the point where device
 allocation was made.
 
 
-
-
-.. _xref_input_unregister_device:
+.. _`input_unregister_device`:
 
 input_unregister_device
 =======================
 
-.. c:function:: void input_unregister_device (struct input_dev * dev)
+.. c:function:: void input_unregister_device (struct input_dev *dev)
 
     unregister previously registered device
 
-    :param struct input_dev * dev:
+    :param struct input_dev \*dev:
         device to be unregistered
 
 
+.. _`input_unregister_device.description`:
 
 Description
 -----------
@@ -532,21 +490,20 @@ This function unregisters an input device. Once device is unregistered
 the caller should not try to access it as it may get freed at any moment.
 
 
-
-
-.. _xref_input_register_handler:
+.. _`input_register_handler`:
 
 input_register_handler
 ======================
 
-.. c:function:: int input_register_handler (struct input_handler * handler)
+.. c:function:: int input_register_handler (struct input_handler *handler)
 
     register a new input handler
 
-    :param struct input_handler * handler:
+    :param struct input_handler \*handler:
         handler to be registered
 
 
+.. _`input_register_handler.description`:
 
 Description
 -----------
@@ -556,21 +513,20 @@ devices in the system and attaches it to all input devices that
 are compatible with the handler.
 
 
-
-
-.. _xref_input_unregister_handler:
+.. _`input_unregister_handler`:
 
 input_unregister_handler
 ========================
 
-.. c:function:: void input_unregister_handler (struct input_handler * handler)
+.. c:function:: void input_unregister_handler (struct input_handler *handler)
 
     unregisters an input handler
 
-    :param struct input_handler * handler:
+    :param struct input_handler \*handler:
         handler to be unregistered
 
 
+.. _`input_unregister_handler.description`:
 
 Description
 -----------
@@ -579,53 +535,51 @@ This function disconnects a handler from its input devices and
 removes it from lists of known handlers.
 
 
-
-
-.. _xref_input_handler_for_each_handle:
+.. _`input_handler_for_each_handle`:
 
 input_handler_for_each_handle
 =============================
 
-.. c:function:: int input_handler_for_each_handle (struct input_handler * handler, void * data, int (*fn) (struct input_handle *, void *)
+.. c:function:: int input_handler_for_each_handle (struct input_handler *handler, void *data, int (*fn) (struct input_handle *, void *)
 
     handle iterator
 
-    :param struct input_handler * handler:
+    :param struct input_handler \*handler:
         input handler to iterate
 
-    :param void * data:
+    :param void \*data:
         data for the callback
 
-    :param int (*)(struct input_handle *, void *) fn:
+    :param int (\*fn) (struct input_handle \*, void \*):
         function to be called for each handle
 
 
+.. _`input_handler_for_each_handle.description`:
 
 Description
 -----------
 
-Iterate over **bus**'s list of devices, and call **fn** for each, passing
-it **data** and stop when **fn** returns a non-zero value. The function is
+Iterate over ``bus``\ 's list of devices, and call ``fn`` for each, passing
+it ``data`` and stop when ``fn`` returns a non-zero value. The function is
 using RCU to traverse the list and therefore may be using in atomic
-contexts. The **fn** callback is invoked from RCU critical section and
+contexts. The ``fn`` callback is invoked from RCU critical section and
 thus must not sleep.
 
 
-
-
-.. _xref_input_register_handle:
+.. _`input_register_handle`:
 
 input_register_handle
 =====================
 
-.. c:function:: int input_register_handle (struct input_handle * handle)
+.. c:function:: int input_register_handle (struct input_handle *handle)
 
     register a new input handle
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         handle to register
 
 
+.. _`input_register_handle.description`:
 
 Description
 -----------
@@ -634,26 +588,24 @@ This function puts a new input handle onto device's
 and handler's lists so that events can flow through
 it once it is opened using :c:func:`input_open_device`.
 
-
 This function is supposed to be called from handler's
 :c:func:`connect` method.
 
 
-
-
-.. _xref_input_unregister_handle:
+.. _`input_unregister_handle`:
 
 input_unregister_handle
 =======================
 
-.. c:function:: void input_unregister_handle (struct input_handle * handle)
+.. c:function:: void input_unregister_handle (struct input_handle *handle)
 
     unregister an input handle
 
-    :param struct input_handle * handle:
+    :param struct input_handle \*handle:
         handle to unregister
 
 
+.. _`input_unregister_handle.description`:
 
 Description
 -----------
@@ -661,14 +613,11 @@ Description
 This function removes input handle from device's
 and handler's lists.
 
-
 This function is supposed to be called from handler's
 :c:func:`disconnect` method.
 
 
-
-
-.. _xref_input_get_new_minor:
+.. _`input_get_new_minor`:
 
 input_get_new_minor
 ===================
@@ -687,19 +636,18 @@ input_get_new_minor
         whether we can also take ID from the dynamic range
 
 
+.. _`input_get_new_minor.description`:
 
 Description
 -----------
 
 This function allocates a new device minor for from input major namespace.
-Caller can request legacy minor by specifying **legacy_base** and **legacy_num**
+Caller can request legacy minor by specifying ``legacy_base`` and ``legacy_num``
 parameters and whether ID can be allocated from dynamic range if there are
 no free IDs in legacy range.
 
 
-
-
-.. _xref_input_free_minor:
+.. _`input_free_minor`:
 
 input_free_minor
 ================
@@ -712,11 +660,11 @@ input_free_minor
         minor to be released
 
 
+.. _`input_free_minor.description`:
 
 Description
 -----------
 
 This function releases previously allocated input minor so that it can be
 reused later.
-
 

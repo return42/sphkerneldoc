@@ -10,3 +10,12 @@ linux_src_doc
    arch/index
    block/index
    drivers/index
+   fs/index
+   include/index
+   ipc/index
+   kernel/index
+   lib/index
+   mm/index
+   net/index
+   security/index
+   sound/index

@@ -4,21 +4,52 @@
 intel_psr.c
 ===========
 
+.. _`panel-self-refresh--psr-srd-`:
+
+Panel Self Refresh (PSR/SRD)
+============================
+
+Since Haswell Display controller supports Panel Self-Refresh on display
+panels witch have a remote frame buffer (RFB) implemented according to PSR
+spec in eDP1.3. PSR feature allows the display to go to lower standby states
+when system is idle but display is on as it eliminates display refresh
+request to DDR memory completely as long as the frame buffer for that
+display is unchanged.
+
+Panel Self Refresh must be supported by both Hardware (source) and
+Panel (sink).
+
+PSR saves power by caching the framebuffer in the panel RFB, which allows us
+to power down the link and memory controller. For DSI panels the same idea
+is called "manual mode".
+
+The implementation uses the hardware-based PSR support which automatically
+enters/exits self-refresh mode. The hardware takes care of sending the
+required DP aux message and could even retrain the link (that part isn't
+enabled yet though). The hardware also keeps track of any frontbuffer
+changes to know when to exit self-refresh mode again. Unfortunately that
+part doesn't work too well, hence why the i915 PSR support uses the
+software frontbuffer tracking to make sure it doesn't miss a screen
+update. For this integration :c:func:`intel_psr_invalidate` and :c:func:`intel_psr_flush`
+get called by the frontbuffer tracking code. Note that because of locking
+issues the self-refresh re-enable code is done from a work queue, which
+must be correctly synchronized/cancelled when shutting down the pipe."
 
 
-.. _xref_intel_psr_enable:
+.. _`intel_psr_enable`:
 
 intel_psr_enable
 ================
 
-.. c:function:: void intel_psr_enable (struct intel_dp * intel_dp)
+.. c:function:: void intel_psr_enable (struct intel_dp *intel_dp)
 
     Enable PSR
 
-    :param struct intel_dp * intel_dp:
+    :param struct intel_dp \*intel_dp:
         Intel DP
 
 
+.. _`intel_psr_enable.description`:
 
 Description
 -----------
@@ -26,21 +57,20 @@ Description
 This function can only be called after the pipe is fully trained and enabled.
 
 
-
-
-.. _xref_intel_psr_disable:
+.. _`intel_psr_disable`:
 
 intel_psr_disable
 =================
 
-.. c:function:: void intel_psr_disable (struct intel_dp * intel_dp)
+.. c:function:: void intel_psr_disable (struct intel_dp *intel_dp)
 
     Disable PSR
 
-    :param struct intel_dp * intel_dp:
+    :param struct intel_dp \*intel_dp:
         Intel DP
 
 
+.. _`intel_psr_disable.description`:
 
 Description
 -----------
@@ -48,24 +78,23 @@ Description
 This function needs to be called before disabling pipe.
 
 
-
-
-.. _xref_intel_psr_single_frame_update:
+.. _`intel_psr_single_frame_update`:
 
 intel_psr_single_frame_update
 =============================
 
-.. c:function:: void intel_psr_single_frame_update (struct drm_device * dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_psr_single_frame_update (struct drm_device *dev, unsigned frontbuffer_bits)
 
     Single Frame Update
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
 
 
+.. _`intel_psr_single_frame_update.description`:
 
 Description
 -----------
@@ -76,24 +105,23 @@ So far it is only implemented for Valleyview and Cherryview because
 hardware requires this to be done before a page flip.
 
 
-
-
-.. _xref_intel_psr_invalidate:
+.. _`intel_psr_invalidate`:
 
 intel_psr_invalidate
 ====================
 
-.. c:function:: void intel_psr_invalidate (struct drm_device * dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_psr_invalidate (struct drm_device *dev, unsigned frontbuffer_bits)
 
     Invalidade PSR
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
 
 
+.. _`intel_psr_invalidate.description`:
 
 Description
 -----------
@@ -103,22 +131,19 @@ with the software frontbuffer tracking. This function gets called every
 time frontbuffer rendering starts and a buffer gets dirtied. PSR must be
 disabled if the frontbuffer mask contains a buffer relevant to PSR.
 
-
 Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits."
 
 
-
-
-.. _xref_intel_psr_flush:
+.. _`intel_psr_flush`:
 
 intel_psr_flush
 ===============
 
-.. c:function:: void intel_psr_flush (struct drm_device * dev, unsigned frontbuffer_bits, enum fb_op_origin origin)
+.. c:function:: void intel_psr_flush (struct drm_device *dev, unsigned frontbuffer_bits, enum fb_op_origin origin)
 
     Flush PSR
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
     :param unsigned frontbuffer_bits:
@@ -128,6 +153,7 @@ intel_psr_flush
         which operation caused the flush
 
 
+.. _`intel_psr_flush.description`:
 
 Description
 -----------
@@ -137,30 +163,27 @@ with the software frontbuffer tracking. This function gets called every
 time frontbuffer rendering has completed and flushed out to memory. PSR
 can be enabled again if no other frontbuffer relevant to PSR is dirty.
 
-
 Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits.
 
 
-
-
-.. _xref_intel_psr_init:
+.. _`intel_psr_init`:
 
 intel_psr_init
 ==============
 
-.. c:function:: void intel_psr_init (struct drm_device * dev)
+.. c:function:: void intel_psr_init (struct drm_device *dev)
 
     Init basic PSR work and mutex.
 
-    :param struct drm_device * dev:
+    :param struct drm_device \*dev:
         DRM device
 
 
+.. _`intel_psr_init.description`:
 
 Description
 -----------
 
 This function is  called only once at driver load to initialize basic
 PSR stuff.
-
 

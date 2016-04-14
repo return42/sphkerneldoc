@@ -4,9 +4,7 @@
 dvbdev.h
 ========
 
-
-
-.. _xref_struct_dvb_adapter:
+.. _`dvb_adapter`:
 
 struct dvb_adapter
 ==================
@@ -46,57 +44,55 @@ Definition
 Members
 -------
 
-:``int num``:
+:``num``:
     Number of the adapter
 
-:``struct list_head list_head``:
+:``list_head``:
     List with the DVB adapters
 
-:``struct list_head device_list``:
+:``device_list``:
     List with the DVB devices
 
-:``const char * name``:
+:``name``:
     Name of the adapter
 
-:``u8 proposed_mac[6]``:
+:``proposed_mac[6]``:
     proposed MAC address for the adapter
 
-:``void * priv``:
+:``priv``:
     private data
 
-:``struct device * device``:
+:``device``:
     pointer to struct device
 
-:``struct module * module``:
+:``module``:
     pointer to struct module
 
-:``int mfe_shared``:
+:``mfe_shared``:
     mfe shared: indicates mutually exclusive frontends
-    			Thie usage of this flag is currently deprecated
+    Thie usage of this flag is currently deprecated
 
-:``struct dvb_device * mfe_dvbdev``:
+:``mfe_dvbdev``:
     Frontend device in use, in the case of MFE
 
-:``struct mutex mfe_lock``:
+:``mfe_lock``:
     Lock to prevent using the other frontends when MFE is
-    			used.
+    used.
 
-:``struct media_device * mdev``:
+:``mdev``:
     pointer to struct media_device, used when the media
-    			controller is used.
+    controller is used.
 
-:``struct media_entity * conn``:
+:``conn``:
     RF connector. Used only if the device has no separate
-    			tuner.
+    tuner.
 
-:``struct media_pad * conn_pads``:
-    pointer to struct media_pad associated with **conn**;
-
-
+:``conn_pads``:
+    pointer to struct media_pad associated with ``conn``\ ;
 
 
 
-.. _xref_struct_dvb_device:
+.. _`dvb_device`:
 
 struct dvb_device
 =================
@@ -141,69 +137,68 @@ Definition
 Members
 -------
 
-:``struct list_head list_head``:
+:``list_head``:
     List head with all DVB devices
 
-:``const struct file_operations * fops``:
+:``fops``:
     pointer to struct file_operations
 
-:``struct dvb_adapter * adapter``:
+:``adapter``:
     pointer to the adapter that holds this device node
 
-:``int type``:
+:``type``:
     type of the device: DVB_DEVICE_SEC, DVB_DEVICE_FRONTEND,
-    		DVB_DEVICE_DEMUX, DVB_DEVICE_DVR, DVB_DEVICE_CA, DVB_DEVICE_NET
+    DVB_DEVICE_DEMUX, DVB_DEVICE_DVR, DVB_DEVICE_CA, DVB_DEVICE_NET
 
-:``int minor``:
+:``minor``:
     devnode minor number. Major number is always DVB_MAJOR.
 
-:``u32 id``:
+:``id``:
     device ID number, inside the adapter
 
-:``int readers``:
+:``readers``:
     Initialized by the caller. Each call to :c:func:`open` in Read Only mode
-    		decreases this counter by one.
+    decreases this counter by one.
 
-:``int writers``:
+:``writers``:
     Initialized by the caller. Each call to :c:func:`open` in Read/Write
-    		mode decreases this counter by one.
+    mode decreases this counter by one.
 
-:``int users``:
+:``users``:
     Initialized by the caller. Each call to :c:func:`open` in any mode
-    		decreases this counter by one.
+    decreases this counter by one.
 
-:``wait_queue_head_t wait_queue``:
+:``wait_queue``:
     wait queue, used to wait for certain events inside one of
-    		the DVB API callers
+    the DVB API callers
 
-:``int (*)(struct file *file, unsigned int cmd, void *arg) kernel_ioctl``:
+:``kernel_ioctl``:
     callback function used to handle ioctl calls from userspace.
 
-:``const char * name``:
+:``name``:
     Name to be used for the device at the Media Controller
 
-:``struct media_intf_devnode * intf_devnode``:
+:``intf_devnode``:
     Pointer to media_intf_devnode. Used by the dvbdev core to
-    		store the MC device node interface
+    store the MC device node interface
 
-:``unsigned tsout_num_entities``:
+:``tsout_num_entities``:
     Number of Transport Stream output entities
 
-:``struct media_entity * entity``:
+:``entity``:
     pointer to struct media_entity associated with the device node
 
-:``struct media_entity * tsout_entity``:
+:``tsout_entity``:
     array with MC entities associated to each TS output node
 
-:``struct media_pad * pads``:
-    pointer to struct media_pad associated with **entity**;
+:``pads``:
+    pointer to struct media_pad associated with ``entity``\ ;
 
-:``struct media_pad * tsout_pads``:
-    array with the source pads for each **tsout_entity**
+:``tsout_pads``:
+    array with the source pads for each ``tsout_entity``
 
-:``void * priv``:
+:``priv``:
     private data
-
 
 
 
@@ -215,117 +210,108 @@ order to create the device nodes. Usually, driver should not initialize
 this struct diretly.
 
 
-
-
-.. _xref_dvb_register_adapter:
+.. _`dvb_register_adapter`:
 
 dvb_register_adapter
 ====================
 
-.. c:function:: int dvb_register_adapter (struct dvb_adapter * adap, const char * name, struct module * module, struct device * device, short * adapter_nums)
+.. c:function:: int dvb_register_adapter (struct dvb_adapter *adap, const char *name, struct module *module, struct device *device, short *adapter_nums)
 
     Registers a new DVB adapter
 
-    :param struct dvb_adapter * adap:
+    :param struct dvb_adapter \*adap:
         pointer to struct dvb_adapter
 
-    :param const char * name:
+    :param const char \*name:
         Adapter's name
 
-    :param struct module * module:
+    :param struct module \*module:
         initialized with THIS_MODULE at the caller
 
-    :param struct device * device:
+    :param struct device \*device:
         pointer to struct device that corresponds to the device driver
 
-    :param short * adapter_nums:
-        Array with a list of the numbers for **dvb_register_adapter**;
-        		to select among them. Typically, initialized with:
-        		DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nums)
+    :param short \*adapter_nums:
+        Array with a list of the numbers for ``dvb_register_adapter``\ ;
+        to select among them. Typically, initialized with:
+        DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nums)
 
 
-
-
-.. _xref_dvb_unregister_adapter:
+.. _`dvb_unregister_adapter`:
 
 dvb_unregister_adapter
 ======================
 
-.. c:function:: int dvb_unregister_adapter (struct dvb_adapter * adap)
+.. c:function:: int dvb_unregister_adapter (struct dvb_adapter *adap)
 
     Unregisters a DVB adapter
 
-    :param struct dvb_adapter * adap:
+    :param struct dvb_adapter \*adap:
         pointer to struct dvb_adapter
 
 
-
-
-.. _xref_dvb_register_device:
+.. _`dvb_register_device`:
 
 dvb_register_device
 ===================
 
-.. c:function:: int dvb_register_device (struct dvb_adapter * adap, struct dvb_device ** pdvbdev, const struct dvb_device * template, void * priv, int type, int demux_sink_pads)
+.. c:function:: int dvb_register_device (struct dvb_adapter *adap, struct dvb_device **pdvbdev, const struct dvb_device *template, void *priv, int type, int demux_sink_pads)
 
     Registers a new DVB device
 
-    :param struct dvb_adapter * adap:
+    :param struct dvb_adapter \*adap:
         pointer to struct dvb_adapter
 
-    :param struct dvb_device ** pdvbdev:
+    :param struct dvb_device \*\*pdvbdev:
         pointer to the place where the new struct dvb_device will be
-        		stored
+        stored
 
-    :param const struct dvb_device * template:
+    :param const struct dvb_device \*template:
         Template used to create :c:type:`struct pdvbdev <pdvbdev>`;
 
-    :param void * priv:
+    :param void \*priv:
         private data
 
     :param int type:
-        type of the device: ``DVB_DEVICE_SEC``, ``DVB_DEVICE_FRONTEND``,
-        		``DVB_DEVICE_DEMUX``, ``DVB_DEVICE_DVR``, ``DVB_DEVICE_CA``,
-        		``DVB_DEVICE_NET``
+        type of the device: ``DVB_DEVICE_SEC``\ , ``DVB_DEVICE_FRONTEND``\ ,
+        ``DVB_DEVICE_DEMUX``\ , ``DVB_DEVICE_DVR``\ , ``DVB_DEVICE_CA``\ ,
+        ``DVB_DEVICE_NET``
 
     :param int demux_sink_pads:
         Number of demux outputs, to be used to create the TS
-        		outputs via the Media Controller.
+        outputs via the Media Controller.
 
 
-
-
-.. _xref_dvb_unregister_device:
+.. _`dvb_unregister_device`:
 
 dvb_unregister_device
 =====================
 
-.. c:function:: void dvb_unregister_device (struct dvb_device * dvbdev)
+.. c:function:: void dvb_unregister_device (struct dvb_device *dvbdev)
 
     Unregisters a DVB device
 
-    :param struct dvb_device * dvbdev:
+    :param struct dvb_device \*dvbdev:
         pointer to struct dvb_device
 
 
-
-
-.. _xref_dvb_create_media_graph:
+.. _`dvb_create_media_graph`:
 
 dvb_create_media_graph
 ======================
 
-.. c:function:: int dvb_create_media_graph (struct dvb_adapter * adap, bool create_rf_connector)
+.. c:function:: int dvb_create_media_graph (struct dvb_adapter *adap, bool create_rf_connector)
 
     Creates media graph for the Digital TV part of the device.
 
-    :param struct dvb_adapter * adap:
+    :param struct dvb_adapter \*adap:
         pointer to struct dvb_adapter
 
     :param bool create_rf_connector:
         if true, it creates the RF connector too
 
 
+.. _`dvb_create_media_graph.description`:
 
 Description
 -----------
@@ -336,5 +322,4 @@ capable of working with multiple tuners or multiple frontends, but it
 won't create links if the device has multiple tuners and multiple frontends
 or if the device has multiple muxes. In such case, the caller driver should
 manually create the remaining links.
-
 

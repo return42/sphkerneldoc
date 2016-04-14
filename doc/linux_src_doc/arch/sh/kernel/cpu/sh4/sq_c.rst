@@ -4,9 +4,7 @@
 sq.c
 ====
 
-
-
-.. _xref_sq_flush_range:
+.. _`sq_flush_range`:
 
 sq_flush_range
 ==============
@@ -22,22 +20,21 @@ sq_flush_range
         the length to flush
 
 
+.. _`sq_flush_range.description`:
 
 Description
 -----------
 
-Flushes the store queue cache from **start** to **start** + **len** in a
+Flushes the store queue cache from ``start`` to ``start`` + ``len`` in a
 linear fashion.
 
 
-
-
-.. _xref_sq_remap:
+.. _`sq_remap`:
 
 sq_remap
 ========
 
-.. c:function:: unsigned long sq_remap (unsigned long phys, unsigned int size, const char * name, pgprot_t prot)
+.. c:function:: unsigned long sq_remap (unsigned long phys, unsigned int size, const char *name, pgprot_t prot)
 
     Map a physical address through the Store Queues
 
@@ -47,25 +44,24 @@ sq_remap
     :param unsigned int size:
         Length of mapping.
 
-    :param const char * name:
+    :param const char \*name:
         User invoking mapping.
 
     :param pgprot_t prot:
         Protection bits.
 
 
+.. _`sq_remap.description`:
 
 Description
 -----------
 
-Remaps the physical address **phys** through the next available store queue
-address of **size** length. **name** is logged at boot time as well as through
+Remaps the physical address ``phys`` through the next available store queue
+address of ``size`` length. ``name`` is logged at boot time as well as through
 the sysfs interface.
 
 
-
-
-.. _xref_sq_unmap:
+.. _`sq_unmap`:
 
 sq_unmap
 ========
@@ -78,12 +74,12 @@ sq_unmap
         Pre-allocated Store Queue mapping.
 
 
+.. _`sq_unmap.description`:
 
 Description
 -----------
 
-Unmaps the store queue allocation **map** that was previously created by
+Unmaps the store queue allocation ``map`` that was previously created by
 :c:func:`sq_remap`. Also frees up the pte that was previously inserted into
 the kernel page table and discards the UTLB translation.
-
 
