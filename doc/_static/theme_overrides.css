@@ -1,17 +1,44 @@
+/* -*- coding: utf-8; mode: css -*-
+ *
+ * This is a customization of th Read The Doc (RTD) theme.
+ *
+ */
 
-/* override table width restrictions */
-/* https://github.com/snide/sphinx_rtd_theme/issues/117#issuecomment-153083280 */
+@media screen {
 
-@media screen and (min-width: 767px) {
+    /* inline literal: drop the borderbox and red color */
 
-  .wy-table-responsive table td {
-    /* !important prevents the common CSS stylesheets from
-       overriding this as on RTD they are loaded after this stylesheet */
-    white-space: normal !important;
-  }
+    code,.rst-content tt,.rst-content code {
+        color: inherit;
+        border: none;
+        background: inherit;
+        font-size: 85%;
+    }
 
-  .wy-table-responsive {
-    overflow: visible !important;
-  }
+    .rst-content tt.literal,.rst-content tt.literal,.rst-content code.literal {
+        color: inherit;
+    }
+
+    /* captions:
+     *
+     *   - captions should have 100% (not 85%) font size
+     *   - hide the permalink symbol as long as link is not hovered
+     */
+
+    caption, .wy-table caption,.rst-content table.docutils caption,.rst-content table.field-list caption {
+        font-size: 100%;
+    }
+
+    caption a.headerlink { opacity: 0; }
+    caption a.headerlink:hover { opacity: 1; }
+
+    /* table:
+     *
+     *   - Sequences of whitespace should collapse into a single whitespace.
+     *   - make the overflow visible
+     */
+
+    .wy-table-responsive table td { white-space: normal; }
+    .wy-table-responsive { overflow: visible; }
 
 }
