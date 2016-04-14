@@ -458,7 +458,7 @@ while ($ARGV[0] =~ m/^-(.*)/) {
 # continue execution near EOF;
 
 sub usage {
-    print "Usage: $0 [ -docbook | -html | -html5 | -text | -man | -list ]\n";
+    print "Usage: $0 [ -docbook | -rst | -html | -html5 | -text | -man | -list ]\n";
     print "         [ -no-doc-sections ]\n";
     print "         [ -function funcname [ -function funcname ...] ]\n";
     print "         [ -nofunction funcname [ -nofunction funcname ...] ]\n";

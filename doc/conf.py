@@ -32,12 +32,10 @@ import os
 # Usually you set "language" from the command line for these cases.
 language = None
 
-# Intersphinx
-# -----------
+# external links
+# --------------
 #
-# usage example:
-#
-#     :man:`dvbv5-scan`
+# usage:  :man:`dvbv5-scan`
 
 extlinks = {
     'man' : ('http://manpages.ubuntu.com/cgi-bin/search.py?q=%s', ' ')
@@ -46,19 +44,15 @@ extlinks = {
     , 'launchpad' : ('https://launchpad.net/%s/trunk', 'launchpad')
     }
 
+
 # Intersphinx
 # -----------
 #
+# usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
+
 intersphinx_mapping = {}
-
-# refer to the Python standard library.
-#
-# usage example:
-#
-#     :ref:`comparison manual <python:comparisons>`
-#
 intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
-
+intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -180,7 +174,7 @@ html_static_path = ['_static']
 
 html_context = {
     'css_files': [
-        '_static/theme_overrides.css',  # overrides for wide tables in RTD theme
+        '_static/theme_overrides.css',
     ],
 }
 

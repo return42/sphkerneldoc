@@ -1,0 +1,14 @@
+/* -*- coding: utf-8; mode: css -*-
+ *
+ * This is a customization of the alabaster theme.
+ *
+ */
+
+@media screen {
+
+    /* link: drop the (bottom) border */
+    a.reference { border: none; }
+    div.sphinxsidebar h3 a, div.sphinxsidebar a { border: none; }
+    div.sphinxsidebar h3 a:hover { border-bottom: 1px solid #999;}
+
+}

@@ -65,12 +65,13 @@ Reasons to migrate to reST + Sphinx-Doc
 
 * `Sphinx-Doc`_ is widely used and the tools are well maintained. `Sphinx-Doc`_
   is less academical and has down-to-earth answers where DocBook and it's
-  toolchains often fails (e.g. built-in: search-page, automatic indices, cross
-  references, code highlighter).
+  toolchains often fails. E.g. sphinx has *built-in* search-page, automatic
+  indices, a code highlighter an solution for :ref:`cross_references` and much
+  more.
 
 * ASCII markup is already in the source-code comments. reST extends these markup
   ability while existing toolchains can be further used. The ``kernel-doc``
-  script needs only a reST output, thats all (see :ref:`xref_kernel-doc_reST`).
+  script needs only a reST output, thats all (see :ref:`xref_kernel-doc`).
 
 * ASCII markups are easy for authoring. reST has a clear syntax definition and
   is the most expressive and expandable ASCII markup.

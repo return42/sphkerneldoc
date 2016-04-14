@@ -97,6 +97,9 @@ help:
 .PHONY: allhtml
 allhtml: mainpage htmlbooks htmlsrc miscdoc
 
+.PHONY: clean-allhtml
+clean-allhtml: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
+
 $(GH_PAGES):
 	mkdir $(GH_PAGES)
 
@@ -110,8 +113,8 @@ mainpage: | $(GH_PAGES)
 
 .PHONY: clean-mainpage
 clean-mainpage:
-	rm -rf $(addprefix $(GH_PAGES)/, articles _sources _static)
-	rm -f $(CACHE)/doctrees/mainpage $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
+	rm -rf $(addprefix $(GH_PAGES)/, articles _sources _static) $(CACHE)/doctrees/mainpage
+	rm -f $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
 
 # ------------------------------------------------------------------------------
 # BOOKs
@@ -144,10 +147,11 @@ $(BOOKS): | $(GH_PAGES)
 	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)/$@
 
 book-dirs := $(addprefix $(GH_PAGES)/, $(BOOKS))
+book-doctrees := $(addprefix $(CACHE)/doctrees/, $(BOOKS))
 
 .PHONY: clean-books
-clean-books:
-	rm -rf $(book-dirs)
+clean-htmlbooks:
+	rm -rf $(book-dirs) $(book-doctrees)
 
 # ------------------------------------------------------------------------------
 # source-code

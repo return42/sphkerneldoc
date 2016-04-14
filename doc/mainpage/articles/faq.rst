@@ -31,11 +31,11 @@ Brandl.  One of these reST extensions is the `sphinx domains`_ to document
 source code (e.g. ``C`` / ``C++``). An other extension to name is the concept of
 `sphinx cross refences`_ and the `sphinx.ext.intersphinx`_ extension. With this
 extension the `sphinx-doc`_ documentation generator genrates links to other
-projects documentation. E.g. refer a content in the documentation of the python
-project with ``:ref:`built-in types <python:bltin-types>``` (:ref:`built-in
-types <python:bltin-types>`). Beside these *built-in* extensions, there are
-plenty extensions out in the web. Finally, `sphinx-doc`_ is distributed by all
-known package managers.
+projects documentation. E.g. refer a content in the documentation of the linux
+source tree with ``:ref:`dtv_get_frontend <linux:dtv_get_frontend>```
+(:ref:`dtv_get_frontend <linux:dtv_get_frontend>` ). Beside these *built-in*
+extensions, there are plenty extensions out in the web. Finally, `sphinx-doc`_
+is distributed by all known package managers.
 
 What does *autodoc* mean
 ------------------------
