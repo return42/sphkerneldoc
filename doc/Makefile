@@ -70,8 +70,8 @@ help:
 	@echo
 	@echo "  allhtml   : builds all HTML targets ..."
 	@echo "  mainpage  : build HTML main-page"
-	@echo "  htmlbooks : build HTML book(s) from the reST files"
-	@echo "  autodoc   : build HTML of source-code reST files (see src2rst)"
+	@echo "  htmlbooks : build HTML books from the reST files (see rstbooks)"
+	@echo "  htmlsrc   : build HTML of source-code reST files (see src2rst)"
 	@echo "  miscdoc   : build HTML from misc reST files (see txt2rst)"
 	@echo
 	@echo "  make {book} [target] builds only the HTML of {book}",
@@ -86,7 +86,7 @@ help:
 	@echo
 	@echo "      The reST files are versioned within this reposetory."
 	@echo
-	@echo "  make {filename}.rst [target] converts only {filename}.xml to reST,"
+	@echo "  make {fname}.rst converts only {filename}.xml to reST,"
 	@echo "  valid values for {filename} are: \n\n    $(RST)" | $(FMT)
 	@echo
 
@@ -95,7 +95,7 @@ help:
 # ------------------------------------------------------------------------------
 
 .PHONY: allhtml
-allhtml: mainpage htmlbooks autodoc miscdoc
+allhtml: mainpage htmlbooks htmlsrc miscdoc
 
 $(GH_PAGES):
 	mkdir $(GH_PAGES)
@@ -111,7 +111,7 @@ mainpage: | $(GH_PAGES)
 .PHONY: clean-mainpage
 clean-mainpage:
 	rm -rf $(addprefix $(GH_PAGES)/, articles _sources _static)
-	rm -f $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
+	rm -f $(CACHE)/doctrees/mainpage $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
 
 # ------------------------------------------------------------------------------
 # BOOKs
@@ -164,13 +164,13 @@ src2rst:
 # reST --> HTML
 # -------------
 
-.PHONY: autodoc
-autodoc:
+.PHONY: htmlsrc
+htmlsrc:
 	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(GH_PAGES)/$(AUTODOC_FOLDER)
 
 .PHONY:
-clean-autodoc:
-	rm -rf $(GH_PAGES)/$(AUTODOC_FOLDER)
+clean-htmlsrc:
+	rm -rf $(GH_PAGES)/$(AUTODOC_FOLDER) $(CACHE)/doctrees/$(AUTODOC_FOLDER)
 
 # ------------------------------------------------------------------------------
 # misc text docs

@@ -9,7 +9,6 @@
 Welcome to the Linux Kernel's documentation. This is a proof of concept, a
 toolchain to migrate the Kernel's documentation to the `Sphinx-Doc`_ generator.
 
-
 Migrated documentation
 ======================
 

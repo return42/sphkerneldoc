@@ -28,6 +28,7 @@ main(){
         fi
     done < "$SCRIPT_FOLDER/src_filelist"
     insert_index_files "${AUTODOC_FOLDER}"
+    popd > /dev/null
 
 }
 # ----------------------------------------------------------------------------
@@ -36,12 +37,12 @@ autodoc_folder() {
 
     local SRC="$1"
     local PRJ_AUTODOC="$2"
+    local fname
 
-    local src_file
-    for src_file in $(find "${1}" -name '*.h' -or -name '*.c'); do
-        autodoc_file "$src_file" "$PRJ_AUTODOC"
+    info_msg "autodoc folder:  '${SRC}'"
+    for fname in $(find "${SRC}" -name '*.h' -or -name '*.c'); do
+        autodoc_file "$fname" "$PRJ_AUTODOC"
     done
-    popd > /dev/null
 }
 
 # ----------------------------------------------------------------------------
@@ -56,10 +57,7 @@ autodoc_file() {
     local tmp_file=$(mktemp)
     local tmp_file_log=$(mktemp)
 
-    rm -f "${tmp_file}"
-    rm -f "${tmp_file_log}"
-
-    "$KERNEL_DOC_SCRIPT" -no-doc-sections -rst "${src_file}" > "$tmp_file" 2> "$tmp_file_log"
+    "$KERNEL_DOC_SCRIPT" -rst "${src_file}" > "$tmp_file" 2> "$tmp_file_log"
 
     if [[ -s "$tmp_file" ]]; then
 
@@ -68,11 +66,9 @@ autodoc_file() {
 
         {   echo ".. -*- coding: utf-8; mode: rst -*-"
             rstHeading "$(basename $src_file)"  part-nc
-            echo
             cat "$tmp_file"
         }  > "$rst_file"
 
-        rm -f "${tmp_file}"
 
         if [[ -s "$tmp_file_log" ]]; then
             mv "$tmp_file_log" "${rst_file}.autodoc.log"
@@ -81,6 +77,8 @@ autodoc_file() {
     else
         [[ 0 < $VERBOSE ]] && info_msg "file $src_file has no doc-strings"
     fi
+    rm -f "${tmp_file}"
+    rm -f "${tmp_file_log}"
 
 }
 

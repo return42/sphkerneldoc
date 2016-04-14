@@ -2,7 +2,6 @@ arch/powerpc/sysdev/fsl_rio.c
 arch/s390/include/asm/ccwdev.h
 arch/s390/include/asm/ccwgroup.h
 arch/s390/include/asm/cio.h
-arch/s390/include/asm/cmb.h
 arch/sh/boards/mach-dreamcast/rtc.c
 arch/sh/boards/mach-x3proto/ilsel.c
 arch/sh/include/asm/tlb_64.h
@@ -48,8 +47,6 @@ drivers/base/transport_class.c
 drivers/char/misc.c
 drivers/dma-buf/dma-buf.c
 drivers/dma-buf/fence.c
-drivers/dma-buf/reservation.c
-drivers/dma-buf/seqno-fence.c
 drivers/firmware/dmi_scan.c
 drivers/firmware/edd.c
 drivers/gpu/drm/drm_atomic.c
@@ -172,7 +169,6 @@ drivers/s390/cio/ccwgroup.c
 drivers/s390/cio/cmf.c
 drivers/s390/cio/device.c
 drivers/s390/cio/device_ops.c
-drivers/scsi/constants.c
 drivers/scsi/hosts.c
 drivers/scsi/scsi.c
 drivers/scsi/scsi_devinfo.c
@@ -208,10 +204,6 @@ drivers/usb/core/usb.c
 drivers/usb/gadget/composite.c
 drivers/usb/gadget/config.c
 drivers/usb/gadget/function/f_acm.c
-drivers/usb/gadget/function/f_ecm.c
-drivers/usb/gadget/function/f_obex.c
-drivers/usb/gadget/function/f_serial.c
-drivers/usb/gadget/function/f_subset.c
 drivers/usb/gadget/usbstring.c
 drivers/video/fbdev/core/fbcmap.c
 drivers/video/fbdev/core/fbmem.c
@@ -269,7 +261,6 @@ include/drm/drm_modes.h
 include/drm/drm_modeset_helper_vtables.h
 include/drm/drm_modeset_lock.h
 include/drm/drm_rect.h
-include/drm/drm_rect.h rect utils
 include/drm/drm_vma_manager.h
 include/drm/i915_component.h
 include/linux/apple-gmux.h
@@ -286,11 +277,10 @@ include/linux/hdmi.h
 include/linux/hrtimer.h
 include/linux/hsi/hsi.h
 include/linux/i2c.h
-include/linux/idr.h idr sync
+include/linux/idr.h
 include/linux/iio/buffer.h
 include/linux/iio/iio.h
 include/linux/iio/trigger.h
-include/linux/init.h
 include/linux/input-polldev.h
 include/linux/input.h
 include/linux/input/matrix_keypad.h
@@ -316,7 +306,6 @@ include/linux/pwm.h
 include/linux/regulator/consumer.h
 include/linux/regulator/driver.h
 include/linux/regulator/machine.h
-include/linux/reservation.h
 include/linux/rio.h
 include/linux/rio_drv.h
 include/linux/rslib.h
@@ -415,7 +404,6 @@ lib/crc32.c
 lib/crc7.c
 lib/debugobjects.c
 lib/idr.c
-lib/idr.c IDA description
 lib/kobject.c
 lib/kstrtox.c
 lib/pci_iomap.c
@@ -455,7 +443,6 @@ net/sunrpc/rpcb_clnt.c
 net/sunrpc/sched.c
 net/sunrpc/socklib.c
 net/sunrpc/stats.c
-net/sunrpc/sunrpc_syms.c
 net/sunrpc/svc_xprt.c
 net/sunrpc/xdr.c
 net/sunrpc/xprt.c

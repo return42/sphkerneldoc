@@ -275,7 +275,7 @@ my @highlights_rst = (
                        [$type_struct_full, "\\:c\\:type\\:`\$1 \$2 <\$2>`"],
                        [$type_enum_full, "\\:c\\:type\\:`\$1 \$2 <\$2>`"],
                        [$type_struct, "\\:c\\:type\\:`struct \$1 <\$1>`"],
-                       [$type_param, "**\$1**"]
+                       [$type_param, "``\$1``"]
 		      );
 my $blankline_rst = "\n";
 
@@ -303,6 +303,7 @@ my $no_doc_sections = 0;
 my @highlights = @highlights_man;
 my $blankline = $blankline_man;
 my $modulename = "Kernel API";
+my $id_prefix = "";            # see output_anchor_rst()
 my $function_only = 0;
 my $show_not_found = 0;
 
@@ -371,7 +372,9 @@ my $doc_end = '\*/';
 my $doc_com = '\s*\*\s*';
 my $doc_com_body = '\s*\* ?';
 my $doc_decl = $doc_com . '(\w+)';
-my $doc_sect = $doc_com . '([' . $doc_special . ']?[\w\s]+):(.*)';
+
+#my $doc_sect = $doc_com . '([' . $doc_special . ']?[\w\s]+):(.*)'; # this matches normal lines like "lorem items:\n item1\n item2"
+my $doc_sect = $doc_com . '([' . $doc_special . '][\w\s]+):(.*)';
 my $doc_content = $doc_com_body . '(.*)';
 my $doc_block = $doc_com . 'DOC:\s*(.*)?';
 my $doc_split_start = '^\s*/\*\*\s*$';
@@ -1730,24 +1733,114 @@ sub output_blockhead_text(%) {
     }
 }
 
-##
-# output in restructured text
-#
+# ------------------------------------------------------------------------------
+# output in reStructuredText (reST)
+# ------------------------------------------------------------------------------
 
-#
-# This could use some work; it's used to output the DOC: sections, and
-# starts by putting out the name of the doc section itself, but that tends
-# to duplicate a header already in the template file.
-#
-sub output_blockhead_rst(%) {
-    my %args = %{$_[0]};
-    my ($parameter, $section);
+sub reformat_block_rst {
+    my $contents = shift;
+    my @lines;
+    my $l;
+    my $common_prefix = "unknown";
+    my $blockflag = 0;
+    my $stripleadingws = 0;
 
-    foreach $section (@{$args{'sectionlist'}}) {
-	print "**$section**\n\n";
-	output_highlight_rst($args{'sections'}{$section});
-	print "\n";
+    $contents =~ s/\t/        /g; # untabify
+    foreach $l (split "\n", $contents) {
+        if (! $l eq "") {
+            $l =~ s/\\\\\\/\&/g;               # broken \\\\amp replacement
+            #$l =~ s/\*``/\\\*``/g;             # leading pointer at inline: *``foo``
+            #$l =~ s/``([\*<])/``\\$1/g;        # trailing pointer at inline: ``foo``*
+            #$l =~ s/(\*[a-zA-Z_0-9-]+[^\*])/\\$1/g; # leading pointer at word: lorem *foo ipsum
+
+            # do not use pointer as inline markup
+            $l =~ s/([a-zA-Z_0-9-`]+)\*([^\*])/$1\\*$2/g;
+            $l =~ s/([^\*])\*([a-zA-Z_0-9-`]+)/$1\\*$2/g;
+
+            # escape vators at the end of constants
+            $l =~ s/(``[a-zA-Z_0-9-]+``)([^\s])/$1\\ $2/g;
+            $l =~ s/([^\s])(``[a-zA-Z_0-9-]+``)/$1\\ $2/g;
+
+            # Use indentation of the very first line as *common whitespace
+            # prefix* which is not needed for a block layout.
+
+            if ($common_prefix eq "unknown") {
+                if ($l =~ m/^(\s*)/ ) {
+                    $common_prefix = $1;
+                } else {
+                    $common_prefix = "";
+                }
+            }
+            # strip the common whitespace prefix from the line
+            $l =~ s/^$common_prefix//;;
+
+            if ($l =~ m/^(\s+)([^\s].*)/ ) {
+
+                # There are additional leading whitespaces, this needs some
+                # estimations.
+
+                # As long as the (old) kernel-doc markup does not defined any
+                # text-markup for lists, diagrams etc. the authors used
+                # individual text-markup for there needs. This individual
+                # markups has not been rendered in the docbook output, but
+                # should (I hope so) be rendered in the rst outpout well.
+
+                my $pointer = -1;
+
+                if (! $blockflag) {
+                    $blockflag = 1;
+                    while ($lines[$pointer] eq ""){
+                        $pointer--;
+                    }
+                    my $lastline = $lines[$pointer];
+                    if ($l =~ m/^[-+\*0-9]+[\.\)]?\s+/i) {
+                        # This is a indented list
+                        $stripleadingws = 0;
+                    } elsif ($lastline =~ m/^[-+\*0-9]+[\.\)]?\s+/i) {
+                        # This is new line of an unindent list item
+                        $stripleadingws = 0;
+                    } elsif (substr($lastline, -1) eq ":"){
+                        # last line ends with ":" we treat this as a literalblock
+                        if (substr($lastline, -2) ne "::") {
+                            $lines[$pointer] = $lines[$pointer] . ":";
+                            if ($pointer == -1) {
+                                # add the missing line to delemit the next block
+                                push @lines, "";
+                                $pointer--;
+                            }
+                        }
+                    } elsif (substr($lines[$pointer], -1) eq "."){
+                        # last line ends with "." we treat this as a literalblock
+                        $lines[$pointer] = $lines[$pointer] . "::";
+                        if ($pointer == -1) {
+                            # add the missing line to delemit the next block
+                            push @lines, "";
+                            $pointer--;
+                        }
+                    } else {
+                        $stripleadingws = 1;
+                    }
+                }
+                if ($stripleadingws){
+                    $l =~ s/^\s+//;
+                }
+            } else {
+                # No more additional leading whitespaces, stop the estimations.
+                if ($blockflag == 1) {
+                    # end the block with a trailing newline
+                    if ((@lines) && ($lines[-1] ne "")){
+                        push @lines, "";
+                    }
+                }
+                $blockflag = 0;
+                $stripleadingws = 0;
+            }
+        } else {
+            # do nothing
+        }
+        push @lines, $l;
     }
+    return join "\n", @lines;
 }
 
 sub output_highlight_rst {
@@ -1756,33 +1849,116 @@ sub output_highlight_rst {
 
     # undo the evil effects of xml_escape() earlier
     $contents = xml_unescape($contents);
-
     eval $dohighlight;
     die $@ if $@;
 
+    if (! $output_preformatted) {
+        $contents = reformat_block_rst($contents);
+    }
     foreach $line (split "\n", $contents) {
-	if ($line eq "") {
-	    print $blankline;
-	} else {
-	    $line =~ s/\\\\\\/\&/g;
+	if (! $line eq "") {
 	    print $lineprefix, $line;
 	}
+        print $blankline;
+    }
+}
+
+sub output_anchor_rst {
+    my $id = shift;
+    my $module = shift;
+    # Declartions like function etc. can set the global id_prefix. With the
+    # prefix it is possible to set an unique ID (anchor) e.g for the *example*
+    # block of a function ( ``.. _foo.example:`` or ``.. _foo.return:``)
+    if ($id_prefix ne "") {
+        $id = $id_prefix . "." . $id ;
+    }
+    # FIXME?: modulename's default is "Kernel API". This prefix is not needed,
+    # as long as only exported symbols are used within the source-code
+    # documentation? For internal documentation purpose, the caller of the
+    # kernel-doc script has to set the option "-module {modName}".
+    if ($module ne "Kernel API") {
+        $id = $module . "-" . $id;
+    }
+    $id =~ s/[^A-Za-z0-9\._]/-/g;
+    $id = lc $id;
+    print "\n" . ".. _`" . $id . "`:\n";
+}
+
+sub output_section_rst(%) {
+    my %args = %{$_[0]};
+    my ($section, $header);
+
+    foreach $section (@{$args{'sectionlist'}}) {
+        $header = strip($section);
+
+        if ($id_prefix ne "") {
+            output_anchor_rst($header, $args{'module'});
+        }
+
+        print "\n" . $section . "\n";
+        print "-" x length($section);
+        print "\n\n";
+
+        if ($header =~ m/EXAMPLE/i) {
+            $output_preformatted = 1;
+            print ".. code-block:: c\n\n";
+        } else {
+            $output_preformatted = 0;
+        }
+
+	output_highlight_rst($args{'sections'}{$section});
 	print "\n";
+        $output_preformatted = 0;
+    }
+}
+
+sub output_blockhead_rst(%) {
+    my %args = %{$_[0]};
+    my ($section, $header);
+
+    foreach $section (@{$args{'sectionlist'}}) {
+        $header = strip($section);
+
+        output_anchor_rst($header, $args{'module'});
+
+        print "\n$header\n";
+        print "=" x length($header);
+        print "\n";
+
+        if ($header =~ m/EXAMPLE/i) {
+            $output_preformatted = 1;
+            print ".. code-block:: c\n\n";
+        } else {
+            $output_preformatted = 0;
+        }
+
+        output_highlight_rst($args{'sections'}{$section});
+        $output_preformatted = 0;
+        print "\n";
     }
 }
 
 sub output_function_rst(%) {
     my %args = %{$_[0]};
-    my ($parameter, $section);
+    my ($functype, $parameter, $section, $header);
     my $start;
 
-    print "\n\n" . ".. _xref_" . $args{'function'} . ":";
-    print "\n\n" . $args{'function'} . "\n";
+    $header = strip($args{'function'});
+    output_anchor_rst($header, $args{'module'});
+
+    print "\n" . $header . "\n";
     print "=" x length($args{'function'});
 
     print "\n\n.. c:function:: ";
-    if ($args{'functiontype'} ne "") {
-	$start = $args{'functiontype'} . " " . $args{'function'} . " (";
+    $functype = $args{'functiontype'};
+    $functype =~ s/\s+/ /g;
+    if ($functype ne "") {
+        if ($functype =~ m/\*$/) {
+            # pointer
+	    $start = $functype . $args{'function'} . " (";
+	} else {
+            $start = $functype . " " . $args{'function'} . " (";
+        }
     } else {
 	$start = $args{'function'} . " (";
     }
@@ -1795,52 +1971,68 @@ sub output_function_rst(%) {
 	}
 	$count++;
 	$type = $args{'parametertypes'}{$parameter};
+        $type =~ s/\s+/ /g;
+
 	if ($type =~ m/([^\(]*\(\*)\s*\)\s*\(([^\)]*)\)/) {
 	    # pointer-to-function
 	    print $1 . $parameter . ") (" . $2;
+        } elsif ($type =~ m/\*$/) {
+            # pointer
+	    print $type . $parameter;
 	} else {
 	    print $type . " " . $parameter;
 	}
     }
-    print ")\n\n    " . $args{'purpose'} . "\n\n";
-
-    #print "**Parameters**\n\n";
-    foreach $parameter (@{$args{'parameterlist'}}) {
-	my $parameter_name = $parameter;
-	#$parameter_name =~ s/\[.*//;
-	$type = $args{'parametertypes'}{$parameter};
-
-	if ($type ne "") {
-	    print "    :param $type $parameter:\n";
-	} else {
-	    print "    :param $parameter:\n";
-	}
-	if ($args{'parameterdescs'}{$parameter_name} ne $undescribed) {
-            $lineprefix="        ";
-	    output_highlight_rst($args{'parameterdescs'}{$parameter_name});
-            $lineprefix="";
-	} else {
-	    print "\n        _undescribed_\n";
-	}
-	print "\n";
+    print ")\n\n";
+    if (strip($args{'purpose'})) {
+        print "    " . xml_unescape($args{'purpose'}) . "\n\n";
     }
+    if ($#{$args{'parameterlist'}} >= 0) {
+        foreach $parameter (@{$args{'parameterlist'}}) {
+            my $parameter_name = $parameter;
+            my $buf1;
+            my $buf2;
+            $parameter_name =~ s/\[.*//;
+            $type = $args{'parametertypes'}{$parameter};
+            $type =~ s/\s+/ /g;
+            if ($type ne "") {
+                if ($type =~ m/([^\(]*\(\*)\s*\)\s*\(([^\)]*)\)/) {
+                    # pointer-to-function
+                    my $buf1 = $1;
+                    my $buf2 = $2;
+                    $buf1 =~ s/\*/\\\*/g;
+                    $buf2 =~ s/\*/\\\*/g;
+                    print "    :param ${buf1}${parameter_name}) (${buf2}):\n";
+                } elsif ($type =~ m/([^\*]*)(\*+)$/) {
+                    # pointer & pointer to pointer
+                    my $buf1 = $1;
+                    my $buf2 = $2;
+                    $buf1 =~ s/\*/\\\*/g;
+                    $buf2 =~ s/\*/\\\*/g;
+                    print "    :param ${buf1}${buf2}${parameter_name}:\n";
+                } else {
+                    my $buf1 = $type;
+                    $buf1 =~ s/\*/\\\*/g;
+                    print "    :param ${buf1} ${parameter_name}:\n";
+                }
+            } else {
+                print "    :param $parameter_name:\n";
+            }
+            if ($args{'parameterdescs'}{$parameter_name} ne $undescribed) {
+                $lineprefix="        ";
+                output_highlight_rst($args{'parameterdescs'}{$parameter_name});
+                $lineprefix="";
+            } else {
+                print "\n        *undescribed*\n";
+            }
+            print "\n";
+        }
+    }
+    $id_prefix = $header;
     output_section_rst(@_);
+    $id_prefix = "";
 }
 
-sub output_section_rst(%) {
-    my %args = %{$_[0]};
-    my $section;
-    foreach $section (@{$args{'sectionlist'}}) {
-
-        print "\n\n" . $section . "\n";
-        print "-" x length($section);
-        print "\n\n";
-	output_highlight_rst($args{'sections'}{$section});
-	print "\n";
-
-    }
-    print "\n";
-}
 
 sub output_enum_rst(%) {
     my %args = %{$_[0]};
@@ -1848,8 +2040,9 @@ sub output_enum_rst(%) {
     my $count;
     my $name = "enum " . $args{'enum'};
 
-    print "\n\n" . ".. _xref_" . $name . ":";
-    print "\n\n" . $name . "\n";
+    output_anchor_rst(strip($args{'enum'}), $args{'module'});
+
+    print "\n" . $name . "\n";
     print "=" x length($name);
 
     print "\n\n.. c:type:: " . $name . "\n\n";
@@ -1879,8 +2072,9 @@ sub output_typedef_rst(%) {
     my $count;
     my $name = "typedef " . $args{'typedef'};
 
-    print "\n\n" . ".. _xref_" . $args{'name'} . ":";
-    print "\n\n" . $args{'name'} . "\n";
+    output_anchor_rst(strip($args{'typedef'}), $args{'module'});
+
+    print "\n" . $args{'name'} . "\n";
     print "=" x length($args{'name'});
 
     ### FIXME: should the name below contain "typedef" or not?
@@ -1895,8 +2089,9 @@ sub output_struct_rst(%) {
     my ($parameter);
     my $name = $args{'type'} . " " . $args{'struct'};
 
-    print "\n\n" . ".. _xref_" . $args{'type'} . "_" . $args{'struct'} . ":";
-    print "\n\n" . $name . "\n";
+    output_anchor_rst(strip($args{'struct'}), $args{'module'});
+
+    print "\n" . $name . "\n";
     print "=" x length($name);
 
     print "\n\n.. c:type:: " . $name . "\n\n";
@@ -1943,8 +2138,9 @@ sub output_struct_rst(%) {
 	$parameter_name =~ s/\[.*//;
 
 	($args{'parameterdescs'}{$parameter_name} ne $undescribed) || next;
-	$type = $args{'parametertypes'}{$parameter};
-	print ":``$type $parameter``:" . "\n";
+	#$type = $args{'parametertypes'}{$parameter};
+	#print ":``$type $parameter``:" . "\n";
+	print ":``$parameter``:" . "\n";
 	output_highlight_rst($args{'parameterdescs'}{$parameter_name});
 	print "\n";
     }
@@ -2387,7 +2583,7 @@ sub check_return_section {
         if (($return_type eq "") || ($return_type =~ /void\s*\w*\s*$/)) {
                 return;
         }
-
+        # FIXME: this fails, as many kerne-doc comments use "Returns:" or "RETURN:"
         if (!defined($sections{$section_return}) ||
             $sections{$section_return} eq "") {
                 print STDERR "${file}:$.: warning: " .
@@ -2679,6 +2875,13 @@ sub local_unescape($) {
 	return $text;
 }
 
+sub strip($) {
+    my $string = shift;
+    $string =~ s/^\s+//;
+    $string =~ s/\s+$//;
+    return $string;
+}
+
 sub process_file($) {
     my $file;
     my $identifier;
@@ -2687,7 +2890,6 @@ sub process_file($) {
     my $in_purpose = 0;
     my $initial_section_counter = $section_counter;
     my ($orig_file) = @_;
-
     if (defined($ENV{'SRCTREE'})) {
 	$file = "$ENV{'SRCTREE'}" . "/" . $orig_file;
     }
@@ -2713,11 +2915,11 @@ sub process_file($) {
 	}
 	if ($state == 0) {
 	    if (/$doc_start/o) {
-		$state = 1;		# next line is always the function name
+		$state = 1;
 		$in_doc_sect = 0;
 	    }
-	} elsif ($state == 1) {	# this line is the function name (always)
-	    if (/$doc_block/o) {
+	} elsif ($state == 1) {
+            if (/$doc_block/o) {
 		$state = 4;
 		$contents = "";
 		if ( $1 eq "" ) {
