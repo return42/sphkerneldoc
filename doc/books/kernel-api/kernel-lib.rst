@@ -59,29 +59,7 @@ CRC Functions
     API-crc7-be
     API-crc16
     API-crc-itu-t
-
-
-===========
-lib/crc32.c
-===========
-
-*man lib/crc32.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``lib/crc32.c`` at this point, but none was found. This dummy section is inserted to allow
-    generation to continue.
-
-
-.. toctree::
-    :maxdepth: 1
-
+    kernel-lib-000-004-008
     API-crc-ccitt
 
 .. _idr:

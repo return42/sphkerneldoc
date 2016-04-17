@@ -16,7 +16,7 @@ This section covers core driver infrastructure used by both the display and the 
 
 
 Runtime Power Management
-========================
+------------------------
 
 The i915 driver supports dynamic enabling and disabling of entire hardware blocks at runtime. This is especially important on the display side where software is supposed to control
 many power gates manually on recent hardware, since on the GT side a lot of the power management is done by the hardware. But even there some manual control at the device level is
@@ -51,7 +51,7 @@ actual power wells present for a given platform.
     API-intel-uncore-forcewake-put--locked
 
 Interrupt Handling
-==================
+------------------
 
 These functions provide the basic support for enabling and disabling the interrupt handling support. There's a lot more functionality in i915_irq.c and related files, but that
 will be described in separate chapters.
@@ -65,7 +65,7 @@ will be described in separate chapters.
     API-intel-runtime-pm-enable-interrupts
 
 Intel GVT-g Guest Support(vGPU)
-===============================
+-------------------------------
 
 Intel GVT-g is a graphics virtualization technology which shares the GPU among multiple virtual machines on a time-sharing basis. Each virtual machine is presented a virtual GPU
 (vGPU), which has equivalent features as the underlying physical GPU (pGPU), so i915 driver can run seamlessly in a virtual machine. This file provides vGPU specific optimizations
@@ -94,14 +94,14 @@ topics.
 
 
 Mode Setting Infrastructure
-===========================
+---------------------------
 
 The i915 driver is thus far the only DRM driver which doesn't use the common DRM helper code to implement mode setting sequences. Thus it has its own tailor-made infrastructure for
 executing a display configuration change.
 
 
 Frontbuffer Tracking
-====================
+--------------------
 
 Many features require us to track changes to the currently active frontbuffer, especially rendering targeted at the frontbuffer.
 
@@ -134,7 +134,7 @@ display power management features using these functions is deprecated and should
     API-i915-gem-track-fb
 
 Display FIFO Underrun Reporting
-===============================
+-------------------------------
 
 The i915 driver checks for display fifo underruns using the interrupt signals provided by the hardware. This is enabled by default and fairly useful to debug display issues,
 especially watermark settings.
@@ -159,14 +159,14 @@ The code also supports underrun detection on the PCH transcoder.
     API-intel-check-pch-fifo-underruns
 
 Plane Configuration
-===================
+-------------------
 
 This section covers plane configuration and composition with the primary plane, sprites, cursors and overlays. This includes the infrastructure to do atomic vsync'ed updates of all
 this state and also tightly coupled topics like watermark setup and computation, framebuffer compression and panel self refresh.
 
 
 Atomic Plane Helpers
-====================
+--------------------
 
 The functions here are used by the atomic plane helper functions to implement legacy plane updates (i.e., drm_plane-> ``update_plane`` and drm_plane-> ``disable_plane``). This
 allows plane updates to use the atomic state infrastructure and perform plane updates as separate prepare/check/commit/cleanup steps.
@@ -182,14 +182,14 @@ allows plane updates to use the atomic state infrastructure and perform plane up
     API-intel-plane-atomic-set-property
 
 Output Probing
-==============
+--------------
 
 This section covers output probing and related infrastructure like the hotplug interrupt storm detection and mitigation code. Note that the i915 driver still uses most of the
 common DRM helper code for output probing, so those sections fully apply.
 
 
 Hotplug
-=======
+-------
 
 Simply put, hotplug occurs when a display is connected to or disconnected from the system. However, there may be adapters and docking stations and Display Port short pulses and MST
 devices involved, complicating matters.
@@ -227,7 +227,7 @@ any other display such as HDMI or DVI enabled on the same port will have proper 
     API-intel-hpd-init
 
 High Definition Audio
-=====================
+---------------------
 
 The graphics and audio drivers together support High Definition Audio over HDMI and Display Port. The audio programming sequences are divided into audio codec and controller enable
 and disable sequences. The graphics driver handles the audio codec sequences, while the audio driver handles the audio controller sequences.
@@ -256,7 +256,7 @@ called in audio driver. The struct i915_audio_component_audio_ops ⋆audio_ops i
     API-struct-i915-audio-component
 
 Panel Self Refresh PSR (PSR/SRD)
-================================
+--------------------------------
 
 Since Haswell Display controller supports Panel Self-Refresh on display panels witch have a remote frame buffer (RFB) implemented according to PSR spec in eDP1.3. PSR feature
 allows the display to go to lower standby states when system is idle but display is on as it eliminates display refresh request to DDR memory completely as long as the frame buffer
@@ -284,7 +284,7 @@ work queue, which must be correctly synchronized/cancelled when shutting down th
     API-intel-psr-init
 
 Frame Buffer Compression (FBC)
-==============================
+------------------------------
 
 FBC tries to save memory bandwidth (and so power consumption) by compressing the amount of memory used by the display. It is total transparent to user space and completely handled
 in the kernel.
@@ -309,7 +309,7 @@ cases where we have to forcibly disable it to allow proper screen updates.
     API-intel-fbc-init
 
 Display Refresh Rate Switching (DRRS)
-=====================================
+-------------------------------------
 
 Display Refresh Rate Switching (DRRS) is a power conservation feature which enables swtching between low and high refresh rates, dynamically, based on the usage scenario. This
 feature is applicable for internal panels.
@@ -341,7 +341,7 @@ DRRS can be further extended to support other internal panels and also the scena
     API-intel-dp-drrs-init
 
 DPIO
-====
+----
 
 VLV, CHV and BXT have slightly peculiar display PHYs for driving DP/HDMI ports. DPIO is the name given to such a display PHY. These PHYs don't follow the standard programming model
 using direct MMIO registers, and instead their registers must be accessed trough IOSF sideband. VLV has one such PHY for driving ports B and C, and CHV adds another PHY for driving
@@ -393,7 +393,7 @@ Single channel PHY (CHV/BXT) ----------------- | CH0 | | CMN/PLL/REF | |--------
 
 
 CSR firmware support for DMC
-============================
+----------------------------
 
 Display Context Save and Restore (CSR) firmware support added from gen9 onwards to drive newly added DMC (Display microcontroller) in display engine to save and restore the state
 of display engine when it enter into low-power state and comes back to normal.
@@ -411,7 +411,7 @@ Once the firmware is written into the registers status will be moved from FW_UNI
     API-intel-csr-ucode-fini
 
 Video BIOS Table (VBT)
-======================
+----------------------
 
 The Video BIOS Table, or VBT, provides platform and board specific configuration information to the driver that is not discoverable or available through other means. The
 configuration is mostly related to display hardware. The VBT is available via the ACPI OpRegion or, on older systems, in the PCI ROM.
@@ -438,7 +438,7 @@ This sections covers all things related to the GEM implementation in the i915 dr
 
 
 Batchbuffer Parsing
-===================
+-------------------
 
 Motivation: Certain OpenGL features (e.g. transform feedback, performance monitoring) require userspace code to submit batches containing commands such as MI_LOAD_REGISTER_IMM
 to access various registers. Unfortunately, some generations of the hardware will noop these commands in “unsecure” batches (which includes all userspace batches submitted via
@@ -482,7 +482,7 @@ including the privileged memory checks, via a general bitmasking mechanism.
     API-i915-cmd-parser-get-version
 
 Batchbuffer Pools
-=================
+-----------------
 
 In order to submit batch buffers as 'secure', the software command parser must ensure that a batch buffer cannot be modified after parsing. It does this by copying the user
 provided batch buffer contents to a kernel owned buffer from which the hardware will actually execute, and by carefully managing the address space bindings for such buffers.
@@ -499,7 +499,7 @@ should they arise.
     API-i915-gem-batch-pool-get
 
 Logical Rings, Logical Ring Contexts and Execlists
-==================================================
+--------------------------------------------------
 
 Motivation: GEN8 brings an expansion of the HW contexts: “Logical Ring Contexts”. These expanded contexts enable a number of new abilities, especially “Execlists” (also implemented
 in this file).
@@ -577,7 +577,7 @@ getting preempted with the same context and optimizes the context switch flow by
     API-intel-lr-context-deferred-alloc
 
 Global GTT views
-================
+----------------
 
 Background and previous state
 
@@ -628,7 +628,7 @@ Core API is designed to have copy semantics which means that passed in struct i9
     API-i915-ggtt-view-size
 
 GTT Fences and Swizzling
-========================
+------------------------
 
 
 .. toctree::
@@ -644,7 +644,7 @@ GTT Fences and Swizzling
     API-i915-gem-object-save-bit-17-swizzle
 
 Global GTT Fence Handling
-=========================
++++++++++++++++++++++++++
 
 Important to avoid confusions: “fences” in the i915 driver are not execution fences used to track command completion but hardware detiler objects which wrap a given range of the
 global GTT. Each platform has only a fairly limited set of these objects.
@@ -663,7 +663,7 @@ Internally these functions will synchronize with userspace access by removing CP
 
 
 Hardware Tiling and Swizzling Details
-=====================================
++++++++++++++++++++++++++++++++++++++
 
 The idea behind tiling is to increase cache hit rates by rearranging pixel data so that a group of pixel accesses are in the same cacheline. Performance improvement from doing this
 on the back/depth buffer are on the order of 30%.
@@ -691,7 +691,7 @@ XORed in), and the GPU is reading from the pages (bit 6, 9, and 10 XORed in), re
 
 
 Object Tiling IOCTLs
-====================
+--------------------
 
 
 .. toctree::
@@ -713,7 +713,7 @@ handled in userspace entirely without the kernel's invovlement.
 
 
 Buffer Object Eviction
-======================
+----------------------
 
 This section documents the interface functions for evicting buffer objects to make space available in the virtual gpu address spaces. Note that this is mostly orthogonal to
 shrinking buffer objects caches, which has the goal to make main memory (shared with the gpu through the unified memory architecture) available.
@@ -726,7 +726,7 @@ shrinking buffer objects caches, which has the goal to make main memory (shared 
     API-i915-gem-evict-vm
 
 Buffer Object Memory Shrinking
-==============================
+------------------------------
 
 This section documents the interface function for shrinking memory usage of buffer object caches. Shrinking is used to make main memory available. Note that this is mostly
 orthogonal to evicting buffer objects, which has the goal to make space in gpu virtual address spaces.
@@ -745,7 +745,7 @@ GuC
 
 
 GuC-specific firmware loader
-============================
+----------------------------
 
 intel_guc: Top level structure of guc. It handles firmware loading and manages client pool and doorbells. intel_guc owns a i915_guc_client to replace the legacy ExecList
 submission.
@@ -768,7 +768,7 @@ i915_guc_load_status will print out firmware loading status and scratch register
     API-intel-guc-ucode-fini
 
 GuC-based command submission
-============================
+----------------------------
 
 i915_guc_client: We use the term client to avoid confusion with contexts. A i915_guc_client is equivalent to GuC object guc_context_desc. This context descriptor is allocated
 from a pool of 1024 entries. Kernel driver will allocate doorbell and workqueue for it. Also the process descriptor (guc_process_desc), which is mapped to client space. So the
@@ -798,7 +798,7 @@ needed to support legacy submission via GuC, which represents in-order queue. Th
     API-intel-guc-resume
 
 GuC Firmware Layout
-===================
+-------------------
 
 The GuC firmware layout looks like this:
 
@@ -822,7 +822,7 @@ This sections covers all things related to the tracepoints implemented in the i9
 
 
 i915_ppgtt_create and i915_ppgtt_release
-========================================
+----------------------------------------
 
 With full ppgtt enabled each process using drm will allocate at least one translation table. With these traces it is possible to keep track of the allocation and of the lifetime of
 the tables; this can be used during testing/debug to verify that we are not leaking ppgtts. These traces identify the ppgtt through the vm pointer, which is also printed by the
@@ -830,13 +830,13 @@ i915_vma_bind and i915_vma_unbind tracepoints.
 
 
 i915_context_create and i915_context_free
-=========================================
+-----------------------------------------
 
 These tracepoints are used to track creation and deletion of contexts. If full ppgtt is enabled, they also print the address of the vm assigned to the context.
 
 
 switch_mm
-=========
+---------
 
 This tracepoint allows tracking of the mm switch, which is an important point in the lifetime of the vm in the legacy submission path. This tracepoint is called only if full ppgtt
 is enabled.

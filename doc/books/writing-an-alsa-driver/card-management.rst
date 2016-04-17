@@ -81,7 +81,7 @@ In general, there are two ways of allocating the chip record.
 .. _card-management-chip-specific-snd-card-new:
 
 1. Allocating via snd_card_new().
-=================================
+---------------------------------
 
 As mentioned above, you can pass the extra-data-length to the 5th argument of ``snd_card_new()``, i.e.
 
@@ -106,7 +106,7 @@ With this method, you don't have to allocate twice. The record is released toget
 .. _card-management-chip-specific-allocate-extra:
 
 2. Allocating an extra device.
-==============================
+------------------------------
 
 After allocating a card instance via ``snd_card_new()`` (with ``0`` on the 4th arg), call ``kzalloc()``.
 

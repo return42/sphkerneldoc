@@ -23,8 +23,8 @@ MA 02111-1307 USA
 Preface
 =======
 
-This document describes how to write an `ALSA (Advanced Linux Sound Architecture)`_ driver. The document focuses mainly on PCI soundcards. In the case of other device types, the
-API might be different, too. However, at least the ALSA kernel API is consistent, and therefore it would be still a bit help for writing them.
+This document describes how to write an `ALSA (Advanced Linux Sound Architecture) <http://www.alsa-project.org/>`__ driver. The document focuses mainly on PCI soundcards. In
+the case of other device types, the API might be different, too. However, at least the ALSA kernel API is consistent, and therefore it would be still a bit help for writing them.
 
 This document targets people who already have enough C language skills and have basic linux kernel programming knowledge. This document doesn't explain the general topic of linux
 kernel coding and doesn't cover low-level driver implementation details. It only describes the standard way to write a PCI sound driver on ALSA.
@@ -55,5 +55,3 @@ This document is still a draft version. Any feedback and corrections, please!!
     how-to-put-your-driver
     useful-functions
     acknowledgments
-
-.. _ALSA (Advanced Linux Sound Architecture): http://www.alsa-project.org/

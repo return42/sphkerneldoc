@@ -101,7 +101,7 @@ Sometimes a tasklet or timer might want to share data with another tasklet or ti
 .. _lock-tasklets-same:
 
 The Same Tasklet/Timer
-======================
+----------------------
 
 Since a tasklet is never run on two CPUs at once, you don't need to worry about your tasklet being reentrant (running twice at once), even on SMP.
 
@@ -109,7 +109,7 @@ Since a tasklet is never run on two CPUs at once, you don't need to worry about 
 .. _lock-tasklets-different:
 
 Different Tasklets/Timers
-=========================
+-------------------------
 
 If another tasklet/timer wants to share data with your tasklet or timer , you will both need to use ``spin_lock()`` and ``spin_unlock()`` calls. ``spin_lock_bh()`` is unnecessary
 here, as you are already in a tasklet, and none will be run on the same CPU.
@@ -126,7 +126,7 @@ Often a softirq might want to share data with itself or a tasklet/timer.
 .. _lock-softirqs-same:
 
 The Same Softirq
-================
+----------------
 
 The same softirq can run on the other CPUs: you can use a per-CPU array (see :ref:`per-cpu`) for better performance. If you're going so far as to use a softirq, you probably care
 about scalable performance enough to justify the extra complexity.
@@ -137,7 +137,7 @@ You'll need to use ``spin_lock()`` and ``spin_unlock()`` for shared data.
 .. _lock-softirqs-different:
 
 Different Softirqs
-==================
+------------------
 
 You'll need to use ``spin_lock()`` and ``spin_unlock()`` for shared data, whether it be a timer, tasklet, different softirq or the same or another softirq: any of them could be
 running on a different CPU.

@@ -10,24 +10,10 @@ Driver Entry and Exit points
 ============================
 
 
+.. toctree::
+    :maxdepth: 1
 
-====================
-include/linux/init.h
-====================
-
-*man include/linux/init.h(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``include/linux/init.h`` at this point, but none was found. This dummy section is inserted
-    to allow generation to continue.
-
+    Basics-000-001-002
 
 Atomic and pointer manipulation
 ===============================
@@ -324,29 +310,7 @@ Kernel utility functions
     API-kmsg-dump-rewind
     API-panic
     API-add-taint
-
-
-============
-kernel/sys.c
-============
-
-*man kernel/sys.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``kernel/sys.c`` at this point, but none was found. This dummy section is inserted to allow
-    generation to continue.
-
-
-.. toctree::
-    :maxdepth: 1
-
+    Basics-000-009-032
     API-init-srcu-struct
     API-cleanup-srcu-struct
     API-synchronize-srcu

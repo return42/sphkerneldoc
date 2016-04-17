@@ -41,7 +41,7 @@ Media Bus Formats
 .. _v4l2-mbus-pixelcode:
 
 Media Bus Pixel Codes
-=====================
+---------------------
 
 The media bus pixel codes describe image formats as flowing over physical busses (both between separate physical components and inside SoC devices). This should not be confused
 with the V4L2 pixel formats that describe, using four character codes, image formats as stored in memory.
@@ -51,7 +51,7 @@ there is no one-to-one correspondance between them.
 
 
 Packed RGB Formats
-==================
+++++++++++++++++++
 
 Those formats transfer pixel data as red, green and blue components. The format code is made of the following information.
 
@@ -821,7 +821,7 @@ bit mapping will be named ``MEDIA_BUS_FMT_RGB888_1X7X4_JEIDA``, for example.
 
 
 Bayer Formats
-=============
++++++++++++++
 
 Those formats transfer pixel data as red, green and blue components. The format code is made of the following information.
 
@@ -1397,7 +1397,7 @@ Bayer Formats
 
 
 Packed YUV Formats
-==================
+++++++++++++++++++
 
 Those data formats transfer pixel data as (possibly downsampled) Y, U and V components. Some formats include dummy bits in some of their samples and are collectively referred to as
 "YDYC" (Y-Dummy-Y-Chroma) formats. One cannot rely on the values of these dummy bits as those are undefined.
@@ -3570,7 +3570,7 @@ YUV Formats
 
 
 HSV/HSL Formats
-===============
++++++++++++++++
 
 Those formats transfer pixel data as RGB values in a cylindrical-coordinate system using Hue-Saturation-Value or Hue-Saturation-Lightness components. The format code is made of the
 following information.
@@ -3730,7 +3730,7 @@ HSV/HSL formats
 
 
 JPEG Compressed Formats
-=======================
++++++++++++++++++++++++
 
 Those data formats consist of an ordered sequence of 8-bit bytes obtained from JPEG compression process. Additionally to the ``_JPEG`` postfix the format code is made of the
 following information.
@@ -3760,7 +3760,7 @@ The following table lists existing JPEG compressed formats.
 .. _v4l2-mbus-vendor-spec-fmts:
 
 Vendor and Device Specific Formats
-==================================
+++++++++++++++++++++++++++++++++++
 
     **Note**
 

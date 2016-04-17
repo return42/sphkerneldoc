@@ -278,8 +278,9 @@ this License will not have their licenses terminated so long as such parties rem
 10. FUTURE REVISIONS OF THIS LICENSE
 ====================================
 
-The `Free Software Foundation`_ may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions will be similar in spirit to the
-present version, but may differ in detail to address new problems or concerns. See `http://www.gnu.org/copyleft/`_.
+The `Free Software Foundation <http://www.gnu.org/fsf/fsf.html>`__ may publish new, revised versions of the GNU Free Documentation License from time to time. Such new versions
+will be similar in spirit to the present version, but may differ in detail to address new problems or concerns. See
+`http://www.gnu.org/copyleft/ <http://www.gnu.org/copyleft>`__.
 
 Each version of the License is given a distinguishing version number. If the :ref:`Document <fdl-document>` specifies that a particular numbered version of this License “or any
 later version” applies to it, you have the option of following the terms and conditions either of that specified version or of any later version that has been published (not as a
@@ -303,9 +304,5 @@ To use this License in a document you have written, include a copy of the Licens
 If you have no :ref:`Invariant Sections <fdl-invariant>`, write “with no Invariant Sections” instead of saying which ones are invariant. If you have no
 :ref:`Front-Cover Texts <fdl-cover-texts>`, write “no Front-Cover Texts” instead of “Front-Cover Texts being LIST”; likewise for :ref:`Back-Cover Texts <fdl-cover-texts>`.
 
-If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the `GNU
-General Public License`_, to permit their use in free software.
-
-.. _Free Software Foundation: http://www.gnu.org/fsf/fsf.html
-.. _`http://www.gnu.org/copyleft/`: http://www.gnu.org/copyleft
-.. _GNU General Public License: http://www.gnu.org/copyleft/gpl.html
+If your document contains nontrivial examples of program code, we recommend releasing these examples in parallel under your choice of free software license, such as the
+`GNU General Public License <http://www.gnu.org/copyleft/gpl.html>`__, to permit their use in free software.

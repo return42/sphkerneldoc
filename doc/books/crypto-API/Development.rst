@@ -50,7 +50,7 @@ operate on exactly one block at a time and there are no dependencies between blo
 
 
 Registration specifics
-======================
+----------------------
 
 The registration of [CIPHER] algorithm is specific in that struct crypto_alg field .cra_type is empty. The .cra_u.cipher has to be filled in with proper callbacks to implement
 this transformation.
@@ -59,7 +59,7 @@ See struct cipher_alg below.
 
 
 Cipher Definition With struct cipher_alg
-========================================
+----------------------------------------
 
 Struct cipher_alg defines a single block cipher.
 
@@ -97,7 +97,7 @@ the transformation functions. They output the result into a scatterlist of data 
 
 
 Registration Specifics
-======================
+----------------------
 
 The registration of multi-block cipher algorithms is one of the most standard procedures throughout the crypto API.
 
@@ -107,7 +107,7 @@ which may imply moving of data.
 
 
 Cipher Definition With struct blkcipher_alg and ablkcipher_alg
-==============================================================
+--------------------------------------------------------------
 
 Struct blkcipher_alg defines a synchronous block cipher whereas struct ablkcipher_alg defines an asynchronous block cipher.
 
@@ -115,7 +115,7 @@ Please refer to the single block cipher description for schematics of the block 
 
 
 Specifics Of Asynchronous Multi-Block Cipher
-============================================
+--------------------------------------------
 
 There are a couple of specifics to the asynchronous interface.
 
@@ -130,7 +130,7 @@ Example of transformations: crc32, md5, sha1, sha256,...
 
 
 Registering And Unregistering The Transformation
-================================================
+------------------------------------------------
 
 There are multiple ways to register a HASH transformation, depending on whether the transformation is synchronous [SHASH] or asynchronous [AHASH] and the amount of HASH
 transformations we are registering. You can find the prototypes defined in include/crypto/internal/hash.h:
@@ -155,7 +155,7 @@ The respective counterparts for unregistering the HASH transformation are as fol
 
 
 Cipher Definition With struct shash_alg and ahash_alg
-=====================================================
+-----------------------------------------------------
 
 Here are schematics of how these functions are called when operated from other part of the kernel. Note that the .setkey() call might happen before or after any of these schematics
 happen, but must not happen during any of these are in-flight. Please note that calling .init() followed immediately by .finish() is also a perfectly valid transformation.
@@ -208,7 +208,7 @@ Here is a schematic of how the .export()/.import() functions are called when use
 
 
 Specifics Of Asynchronous HASH Transformation
-=============================================
+---------------------------------------------
 
 Some of the drivers will want to use the Generic ScatterWalk in case the implementation needs to be fed separate chunks of the scatterlist which contains the input data. The buffer
 containing the resulting hash will always be properly aligned to .cra_alignmask so there is no need to worry about this.

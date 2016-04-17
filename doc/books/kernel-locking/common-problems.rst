@@ -64,7 +64,7 @@ do?). Remember, the other programmers are out to get you, so don't do this.
 .. _techs-deadlock-overprevent:
 
 Overzealous Prevention Of Deadlocks
-===================================
+-----------------------------------
 
 Deadlocks are problematic, but not as bad as data corruption. Code which grabs a read lock, searches a list, fails to find what it wants, drops the read lock, grabs a write lock
 and inserts the object has a race condition.

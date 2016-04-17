@@ -6,8 +6,8 @@ The USB Filesystem (usbfs)
 ==========================
 
 This chapter presents the Linux *usbfs*. You may prefer to avoid writing new kernel code for your USB driver; that's the problem that usbfs set out to solve. User mode device
-drivers are usually packaged as applications or libraries, and may use usbfs through some programming library that wraps it. Such libraries include `libusb`_ for C/C++, and `jUSB`_
-for Java.
+drivers are usually packaged as applications or libraries, and may use usbfs through some programming library that wraps it. Such libraries include
+`libusb <http://libusb.sourceforge.net>`__ for C/C++, and `jUSB <http://jUSB.sourceforge.net>`__ for Java.
 
     **Note**
 
@@ -186,7 +186,7 @@ them will ignore configurations and altsettings.
 .. _usbfs-mgmt:
 
 Management/Status Requests
-==========================
+--------------------------
 
 A number of usbfs requests don't deal very directly with device I/O. They mostly relate to device management and status. These are all synchronous requests.
 
@@ -289,7 +289,7 @@ USBDEVFS_DROP_PRIVILEGES
 .. _usbfs-sync:
 
 Synchronous I/O Support
-=======================
+-----------------------
 
 Synchronous requests involve the kernel blocking until the user mode request completes, either by finishing successfully or by reporting an error. In most cases this is the
 simplest way to use usbfs, although as noted above it does prevent performing I/O to more than one endpoint at a time.
@@ -376,7 +376,7 @@ USBDEVFS_SETCONFIGURATION
 .. _usbfs-async:
 
 Asynchronous I/O Support
-========================
+------------------------
 
 As mentioned above, there are situations where it may be important to initiate concurrent operations from user mode code. This is particularly important for periodic transfers
 (interrupt and isochronous), but it can be used for other kinds of USB requests too. In such cases, the asynchronous requests described here are essential. Rather than submitting
@@ -433,6 +433,3 @@ USBDEVFS_REAPURBNDELAY
 
 USBDEVFS_SUBMITURB
     *TBS*
-
-.. _libusb: http://libusb.sourceforge.net
-.. _jUSB: http://jUSB.sourceforge.net

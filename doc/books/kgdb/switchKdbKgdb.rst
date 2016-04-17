@@ -13,7 +13,7 @@ Switching between kdb and kgdb
 
 
 Switching from kgdb to kdb
-==========================
+--------------------------
 
 There are two ways to switch from kgdb to kdb: you can use gdb to issue a maintenance packet, or you can blindly type the command $3#33. Whenever the kernel debugger stops in kgdb
 mode it will print the message ``KGDB or $3#33 for KDB``. It is important to note that you have to type the sequence correctly in one pass. You cannot type a backspace or delete
@@ -31,7 +31,7 @@ because kgdb will interpret that as part of the debug stream.
 
 
 Change from kdb to kgdb
-=======================
+-----------------------
 
 There are two ways you can change from kdb to kgdb. You can manually enter kgdb mode by issuing the kgdb command from the kdb shell prompt, or you can connect gdb while the kdb
 shell prompt is active. The kdb shell looks for the typical first commands that gdb would issue with the gdb remote protocol and if it sees one of those commands it automatically

@@ -44,14 +44,14 @@ See :ref:`subdev` for more information on how each selection target affects the 
 
 
 Types of selection targets
-==========================
+--------------------------
 
 There are two types of selection targets: actual and bounds. The actual targets are the targets which configure the hardware. The BOUNDS target will return a rectangle that contain
 all possible actual rectangles.
 
 
 Discovering supported features
-==============================
+------------------------------
 
 To discover which targets are supported, the user can perform ``VIDIOC_SUBDEV_G_SELECTION`` on them. Any unsupported target will return ``EINVAL``.
 

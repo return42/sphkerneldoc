@@ -21,7 +21,7 @@ You should also make sure that the memory mapping you need exists and has the si
 
 There is a tool called ``lsuio`` that lists UIO devices and their attributes. It is available here:
 
-http://www.osadl.org/projects/downloads/UIO/user/
+`http://www.osadl.org/projects/downloads/UIO/user/ <http://www.osadl.org/projects/downloads/UIO/user/>`__
 
 With ``lsuio`` you can quickly check if your kernel module is loaded and which attributes it exports. Have a look at the manpage for details.
 

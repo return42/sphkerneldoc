@@ -16,7 +16,7 @@ struct ata_port_operations
 
 
 Disable ATA port
-================
+----------------
 
 
 .. code-block:: c
@@ -30,7 +30,7 @@ Called from ata_bus_probe() on a failed probe. Called from ata_scsi_release().
 
 
 Post-IDENTIFY device configuration
-==================================
+----------------------------------
 
 
 .. code-block:: c
@@ -44,7 +44,7 @@ This entry may be specified as NULL in ata_port_operations.
 
 
 Set PIO/DMA mode
-================
+----------------
 
 
 .. code-block:: c
@@ -67,7 +67,7 @@ be valid at this point. That is the library records the decisions for the modes 
 
 
 Taskfile read/write
-===================
+-------------------
 
 
 .. code-block:: c
@@ -80,7 +80,7 @@ set of taskfile register values. Most drivers for taskfile-based hardware (PIO o
 
 
 PIO data read/write
-===================
+-------------------
 
 
 .. code-block:: c
@@ -92,7 +92,7 @@ one of ata_sff_data_xfer_noirq(), ata_sff_data_xfer(), or ata_sff_data_xfer32().
 
 
 ATA command execute
-===================
+-------------------
 
 
 .. code-block:: c
@@ -103,7 +103,7 @@ causes an ATA command, previously loaded with ->tf_load(), to be initiated in ha
 
 
 Per-cmd ATAPI DMA capabilities filter
-=====================================
+-------------------------------------
 
 
 .. code-block:: c
@@ -116,7 +116,7 @@ This hook may be specified as NULL, in which case libata will assume that atapi 
 
 
 Read specific ATA shadow registers
-==================================
+----------------------------------
 
 
 .. code-block:: c
@@ -129,7 +129,7 @@ for taskfile-based hardware use ata_sff_check_status() for this hook.
 
 
 Write specific ATA shadow register
-==================================
+----------------------------------
 
 
 .. code-block:: c
@@ -140,7 +140,7 @@ Write the device control ATA shadow register to the hardware. Most drivers don't
 
 
 Select ATA device on bus
-========================
+------------------------
 
 
 .. code-block:: c
@@ -154,7 +154,7 @@ Most drivers for taskfile-based hardware use ata_sff_dev_select() for this hook.
 
 
 Private tuning method
-=====================
+---------------------
 
 
 .. code-block:: c
@@ -171,7 +171,7 @@ and have custom tuning rules, typically raid controllers that use ATA commands b
 
 
 Control PCI IDE BMDMA engine
-============================
+----------------------------
 
 
 .. code-block:: c
@@ -197,7 +197,7 @@ Many legacy IDE drivers use ata_bmdma_status() as the bmdma_status() hook.
 
 
 High-level taskfile hooks
-=========================
+-------------------------
 
 
 .. code-block:: c
@@ -215,7 +215,7 @@ ata_qc_issue_prot() calls ->tf_load(), ->bmdma_setup(), and ->bmdma_start() as n
 
 
 Exception and probe handling (EH)
-=================================
+---------------------------------
 
 
 .. code-block:: c
@@ -262,7 +262,7 @@ Perform any hardware-specific actions necessary to finish processing after execu
 
 
 Hardware interrupt handling
-===========================
+---------------------------
 
 
 .. code-block:: c
@@ -282,7 +282,7 @@ Most legacy IDE drivers use ata_sff_irq_clear() for the irq_clear() hook, which 
 
 
 SATA phy read/write
-===================
+-------------------
 
 
 .. code-block:: c
@@ -297,7 +297,7 @@ SCR_ERROR, or SCR_ACTIVE.
 
 
 Init and shutdown
-=================
+-----------------
 
 
 .. code-block:: c

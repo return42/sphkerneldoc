@@ -1,6 +1,7 @@
 
 .. _overlay:
 
+=======================
 Video Overlay Interface
 =======================
 
@@ -91,7 +92,7 @@ or overlay as well (:ref:`VIDIOC_S_FMT <vidioc-g-fmt>`) may fail with an EBUSY e
 .. _v4l2-window:
 
 struct v4l2_window
-==================
+------------------
 
 ``struct v4l2_rect w``
     Size and position of the window relative to the top, left corner of the frame buffer defined with :ref:`VIDIOC_S_FBUF <vidioc-g-fbuf>`. The window can extend the frame
@@ -157,7 +158,7 @@ parent structure with padding bytes at the end, are not affected.
 .. _v4l2-clip:
 
 struct v4l2_clip
-================
+----------------
 
 The X Window system defines "regions" which are vectors of struct BoxRec { short x1, y1, x2, y2; } with width = x2 - x1 and height = y2 - y1, so one cannot pass X11 clip lists
 directly.
@@ -172,7 +173,7 @@ directly.
 .. _v4l2-rect:
 
 struct v4l2_rect
-================
+----------------
 
 ``__s32 left``
     Horizontal offset of the top, left corner of the rectangle, in pixels.

@@ -69,7 +69,7 @@ in reverse order:
 .. _iioattr:
 
 IIO device sysfs interface
-==========================
+--------------------------
 
 Attributes are sysfs files used to expose chip info and also allowing applications to set various configuration parameters. For device with index X, attributes can be found under
 ``/sys/bus/iio/iio:deviceX/ `` directory. Common attributes are:
@@ -89,7 +89,7 @@ Available standard attributes for IIO devices are described in the ``Documentati
 .. _iiochannel:
 
 IIO device channels
-===================
+-------------------
 
 
 .. toctree::
@@ -235,7 +235,7 @@ node, thus reducing the CPU load.
 .. _iiobuffersysfs:
 
 IIO buffer sysfs interface
-==========================
+--------------------------
 
 An IIO buffer has an associated attributes directory under ``
       /sys/bus/iio/iio:deviceX/buffer/``. Here are the existing attributes:
@@ -249,7 +249,7 @@ An IIO buffer has an associated attributes directory under ``
 .. _iiobuffersetup:
 
 IIO buffer setup
-================
+----------------
 
 The meta information associated with a channel reading placed in a buffer is called a *scan element*. The important bits configuring scan elements are exposed to userspace
 applications via the ``
@@ -376,7 +376,7 @@ for a number of sensors and also it may be completely unrelated to the sensor it
 .. _iiotrigsysfs:
 
 IIO trigger sysfs interface
-===========================
+---------------------------
 
 -  /sys/bus/iio/devices/triggerY
    , this file is created once an IIO trigger is registered with the IIO core and corresponds to trigger with index Y. Because triggers can be very different depending on type
@@ -396,7 +396,7 @@ IIO trigger sysfs interface
 .. _iiotrigattr:
 
 IIO trigger setup
-=================
+-----------------
 
 Let's see a simple example of how to setup a trigger to be used by a driver.
 
@@ -423,7 +423,7 @@ Let's see a simple example of how to setup a trigger to be used by a driver.
 .. _iiotrigsetup:
 
 IIO trigger ops
-===============
+---------------
 
 
 .. toctree::
@@ -449,7 +449,7 @@ Now that we know what buffers and triggers are let's see how they work together.
 .. _iiotrigbufsetup:
 
 IIO triggered buffer setup
-==========================
+--------------------------
 
 
 .. toctree::

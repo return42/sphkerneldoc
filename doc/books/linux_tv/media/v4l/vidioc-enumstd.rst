@@ -134,7 +134,7 @@ tapes in this mode for display on a 50/60 Hz agnostic PAL TV.
     #define V4L2_STD_ATSC_16_VSB    ((v4l2_std_id)0x02000000)
 
 ``V4L2_STD_ATSC_8_VSB`` and ``V4L2_STD_ATSC_16_VSB`` are U.S. terrestrial digital TV standards. Presently the V4L2 API does not support digital TV. See also the Linux DVB API at
-https://linuxtv.org.
+`https://linuxtv.org <https://linuxtv.org>`__.
 
 
 .. code-block:: c

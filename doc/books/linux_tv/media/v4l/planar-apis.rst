@@ -1,6 +1,7 @@
 
 .. _planar-apis:
 
+=============================
 Single- and multi-planar APIs
 =============================
 

@@ -70,7 +70,7 @@ Hardware ECC support
 .. _Functions_and_constants:
 
 Functions and constants
-=======================
+-----------------------
 
 The nand driver supports three different types of hardware ECC.
 
@@ -114,7 +114,7 @@ The board driver must provide following functions:
 .. _Hardware_ECC_with_syndrome_calculation:
 
 Hardware ECC with syndrome calculation
-======================================
+--------------------------------------
 
 Many hardware ECC implementations provide Reed-Solomon codes and calculate an error syndrome on read. The syndrome must be converted to a standard Reed-Solomon syndrome before
 calling the error correction code in the generic Reed-Solomon library.
@@ -166,7 +166,7 @@ flash chip itself.
 .. _Flash_based_tables:
 
 Flash based tables
-==================
+------------------
 
 It may be desired or necessary to keep a bad block table in FLASH. For AG-AND chips this is mandatory, as they have no factory marked bad blocks. They have factory marked good
 blocks. The marker pattern is erased when the block is erased to be reused. So in case of powerloss before writing the pattern back to the chip this block would be lost and added
@@ -194,7 +194,7 @@ are
 .. _User_defined_tables:
 
 User defined tables
-===================
+-------------------
 
 User defined tables are created by filling out a nand_bbt_descr structure and storing the pointer in the nand_chip structure member bbt_td before calling nand_scan(). If a
 mirror table is necessary a second structure must be created and a pointer to this structure must be stored in bbt_md inside the nand_chip structure. If the bbt_md member is set
@@ -306,7 +306,7 @@ Placement schemes are defined by a nand_oobinfo structure
 .. _Placement_defined_by_fs_driver:
 
 Placement defined by fs driver
-==============================
+------------------------------
 
 The calling function provides a pointer to a nand_oobinfo structure which defines the ecc placement. For writes the caller must provide a spare area buffer along with the data
 buffer. The spare area buffer size is (number of pages) ⋆ (size of spare area). For reads the buffer size is (number of pages) ⋆ ((size of spare area) + (number of ecc steps per
@@ -326,7 +326,7 @@ If the spare area buffer is NULL then only the ECC placement is done according t
 .. _Automatic_placement:
 
 Automatic placement
-===================
+-------------------
 
 Automatic placement uses the built in defaults to place the ecc bytes in the spare area. If filesystem data have to be stored / read into the spare area then the calling function
 must provide a buffer. The buffer size per page is determined by the oobfree array in the nand_oobinfo structure.
@@ -343,7 +343,7 @@ Spare area autoplacement default schemes
 .. _pagesize_256:
 
 256 byte pagesize
-=================
+-----------------
 
 
 
@@ -376,7 +376,7 @@ Spare area autoplacement default schemes
 .. _pagesize_512:
 
 512 byte pagesize
-=================
+-----------------
 
 
 
@@ -417,7 +417,7 @@ Spare area autoplacement default schemes
 .. _pagesize_2048:
 
 2048 byte pagesize
-==================
+------------------
 
 
 

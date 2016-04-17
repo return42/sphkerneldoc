@@ -1,0 +1,18 @@
+
+
+===================================
+drivers/usb/gadget/function/f_ecm.c
+===================================
+
+*man drivers/usb/gadget/function/f_ecm.c(None)*
+
+Document generation inconsistency
+
+
+Oops
+====
+
+    **Warning**
+
+    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_ecm.c`` at this point, but none was found. This dummy
+    section is inserted to allow generation to continue.

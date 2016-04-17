@@ -462,7 +462,7 @@ In the sections below, important records are explained.
 .. _pcm-interface-runtime-hw:
 
 Hardware Description
-====================
+--------------------
 
 The hardware descriptor (struct ``snd_pcm_hardware``) contains the definitions of the fundamental hardware configuration. Above all, you'll need to define this in
 :ref:`the open callback <pcm-interface-operators-open-callback>`. Note that the runtime instance holds the copy of the descriptor, not the pointer to the existing descriptor.
@@ -543,7 +543,7 @@ Typically, you'll have a hardware descriptor as below:
 .. _pcm-interface-runtime-config:
 
 PCM Configurations
-==================
+------------------
 
 Ok, let's go back again to the PCM runtime records. The most frequently referred records in the runtime instance are the PCM configurations. The PCM configurations are stored in
 the runtime instance after the application sends ``hw_params`` data via alsa-lib. There are many fields copied from hw_params and sw_params structs. For example, ``format`` holds
@@ -564,7 +564,7 @@ Also, many software parameters (sw_params) are stored in frames, too. Please che
 .. _pcm-interface-runtime-dma:
 
 DMA Buffer Information
-======================
+----------------------
 
 The DMA buffer is defined by the following four fields, ``dma_area``, ``dma_addr``, ``dma_bytes`` and ``dma_private``. The ``dma_area`` holds the buffer pointer (the logical
 address). You can call ``memcpy`` from/to this pointer. Meanwhile, ``dma_addr`` holds the physical address of the buffer. This field is specified only when the buffer is a linear
@@ -579,7 +579,7 @@ You can use ``dma_private`` as you like, too.
 .. _pcm-interface-runtime-status:
 
 Running Status
-==============
+--------------
 
 The running status can be referred via ``runtime->status``. This is the pointer to the struct ``snd_pcm_mmap_status`` record. For example, you can get the current DMA hardware
 pointer via ``runtime->status->hw_ptr``.
@@ -591,7 +591,7 @@ recommended.
 .. _pcm-interface-runtime-private:
 
 Private Data
-============
+------------
 
 You can allocate a record for the substream and store it in ``runtime->private_data``. Usually, this is done in :ref:`the open callback <pcm-interface-operators-open-callback>`.
 Don't mix this with ``pcm->private_data``. The ``pcm->private_data`` usually points to the chip instance assigned statically at the creation of PCM, while the
@@ -639,7 +639,7 @@ directions.
 .. _pcm-interface-operators-open-callback:
 
 open callback
-=============
+-------------
 
 
 .. code-block:: c
@@ -672,7 +672,7 @@ If the hardware configuration needs more constraints, set the hardware constrain
 .. _pcm-interface-operators-close-callback:
 
 close callback
-==============
+--------------
 
 
 .. code-block:: c
@@ -697,7 +697,7 @@ Any private instance for a pcm substream allocated in the open callback will be 
 .. _pcm-interface-operators-ioctl-callback:
 
 ioctl callback
-==============
+--------------
 
 This is used for any special call to pcm ioctls. But usually you can pass a generic ioctl callback, ``snd_pcm_lib_ioctl``.
 
@@ -705,7 +705,7 @@ This is used for any special call to pcm ioctls. But usually you can pass a gene
 .. _pcm-interface-operators-hw-params-callback:
 
 hw_params callback
-==================
+------------------
 
 
 .. code-block:: c
@@ -741,7 +741,7 @@ Another note is that this callback is non-atomic (schedulable) as default, i.e. 
 .. _pcm-interface-operators-hw-free-callback:
 
 hw_free callback
-================
+----------------
 
 
 .. code-block:: c
@@ -761,7 +761,7 @@ This function is always called before the close callback is called. Also, the ca
 .. _pcm-interface-operators-prepare-callback:
 
 prepare callback
-================
+----------------
 
 
 .. code-block:: c
@@ -783,7 +783,7 @@ Be careful that this callback will be called many times at each setup, too.
 .. _pcm-interface-operators-trigger-callback:
 
 trigger callback
-================
+----------------
 
 
 .. code-block:: c
@@ -822,7 +822,7 @@ possible, just really triggering the DMA. The other stuff should be initialized 
 .. _pcm-interface-operators-pointer-callback:
 
 pointer callback
-================
+----------------
 
 
 .. code-block:: c
@@ -840,7 +840,7 @@ This callback is also atomic as default.
 .. _pcm-interface-operators-copy-silence:
 
 copy and silence callbacks
-==========================
+--------------------------
 
 These callbacks are not mandatory, and can be omitted in most cases. These callbacks are used when the hardware buffer cannot be in the normal memory space. Some chips have their
 own buffer on the hardware which is not mappable. In such a case, you have to transfer the data manually from the memory buffer to the hardware buffer. Or, if the buffer is
@@ -853,7 +853,7 @@ If these two callbacks are defined, copy and set-silence operations are done by 
 .. _pcm-interface-operators-ack:
 
 ack callback
-============
+------------
 
 This callback is also not mandatory. This callback is called when the appl_ptr is updated in read or write operations. Some drivers like emu10k1-fx and cs46xx need to track the
 current appl_ptr for the internal buffer, and this callback is useful only for such a purpose.
@@ -864,7 +864,7 @@ This callback is atomic as default.
 .. _pcm-interface-operators-page-callback:
 
 page callback
-=============
+-------------
 
 This callback is optional too. This callback is used mainly for non-contiguous buffers. The mmap calls this callback to get the page address. Some examples will be explained in the
 later section :ref:`Buffer and Memory Management <buffer-and-memory>`, too.
@@ -884,7 +884,7 @@ There are several types of sound chips to generate the interrupts.
 .. _pcm-interface-interrupt-handler-boundary:
 
 Interrupts at the period (fragment) boundary
-============================================
+--------------------------------------------
 
 This is the most frequently found type: the hardware generates an interrupt at each period boundary. In this case, you can call ``snd_pcm_period_elapsed()`` at each interrupt.
 
@@ -920,7 +920,7 @@ Typical code would be like:
 .. _pcm-interface-interrupt-handler-timer:
 
 High frequency timer interrupts
-===============================
+-------------------------------
 
 This happens when the hardware doesn't generate interrupts at the period boundary but issues timer interrupts at a fixed timer rate (e.g. es1968 or ymfpci drivers). In this case,
 you need to check the current hardware position and accumulate the processed sample length at each interrupt. When the accumulated size exceeds the period size, call
@@ -972,7 +972,7 @@ Typical code would be like the following.
 .. _pcm-interface-interrupt-handler-both:
 
 On calling snd_pcm_period_elapsed()
-===================================
+-----------------------------------
 
 In both cases, even if more than one period are elapsed, you don't have to call ``snd_pcm_period_elapsed()`` many times. Call only once. And the pcm layer will check the current
 hardware pointer and update to the latest status.

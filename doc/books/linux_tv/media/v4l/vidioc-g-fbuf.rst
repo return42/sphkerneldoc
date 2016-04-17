@@ -262,4 +262,4 @@ EINVAL
 
 .. [1]
    A physical base address may not suit all platforms. GK notes in theory we should pass something like PCI device + memory region + offset instead. If you encounter problems
-   please discuss on the linux-media mailing list: https://linuxtv.org/lists.php.
+   please discuss on the linux-media mailing list: `https://linuxtv.org/lists.php <https://linuxtv.org/lists.php>`__.

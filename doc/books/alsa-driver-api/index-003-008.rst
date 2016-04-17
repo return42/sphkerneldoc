@@ -1,0 +1,143 @@
+
+====
+ASoC
+====
+
+
+ASoC Core API
+=============
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-struct-snd-soc-jack-pin
+    API-struct-snd-soc-jack-zone
+    API-struct-snd-soc-jack-gpio
+    API-snd-soc-component-to-codec
+    API-snd-soc-component-to-platform
+    API-snd-soc-dapm-to-component
+    API-snd-soc-dapm-to-codec
+    API-snd-soc-dapm-to-platform
+    API-snd-soc-component-get-dapm
+    API-snd-soc-codec-get-dapm
+    API-snd-soc-codec-init-bias-level
+    API-snd-soc-codec-get-bias-level
+    API-snd-soc-codec-force-bias-level
+    API-snd-soc-dapm-kcontrol-codec
+    API-snd-soc-cache-sync
+    API-snd-soc-codec-init-regmap
+    API-snd-soc-codec-exit-regmap
+    API-snd-soc-kcontrol-component
+    API-snd-soc-kcontrol-codec
+    API-snd-soc-kcontrol-platform
+    API-snd-soc-add-dai-link
+    API-snd-soc-remove-dai-link
+    API-snd-soc-runtime-set-dai-fmt
+    API-snd-soc-cnew
+    API-snd-soc-add-component-controls
+    API-snd-soc-add-codec-controls
+    API-snd-soc-add-platform-controls
+    API-snd-soc-add-card-controls
+    API-snd-soc-add-dai-controls
+    API-snd-soc-dai-set-sysclk
+    API-snd-soc-codec-set-sysclk
+    API-snd-soc-dai-set-clkdiv
+    API-snd-soc-dai-set-pll
+    API-snd-soc-dai-set-bclk-ratio
+    API-snd-soc-dai-set-fmt
+    API-snd-soc-dai-set-tdm-slot
+    API-snd-soc-dai-set-channel-map
+    API-snd-soc-dai-set-tristate
+    API-snd-soc-dai-digital-mute
+    API-snd-soc-register-card
+    API-snd-soc-unregister-card
+    API-snd-soc-register-dai
+    API-snd-soc-component-init-regmap
+    API-snd-soc-component-exit-regmap
+    API-snd-soc-unregister-component
+    API-snd-soc-add-platform
+    API-snd-soc-register-platform
+    API-snd-soc-remove-platform
+    API-snd-soc-unregister-platform
+    API-snd-soc-register-codec
+    API-snd-soc-unregister-codec
+    API-devm-snd-soc-register-component
+    API-devm-snd-soc-register-platform
+    API-devm-snd-soc-register-card
+    API-devm-snd-dmaengine-pcm-register
+    API-snd-soc-component-read
+    API-snd-soc-component-write
+    API-snd-soc-component-update-bits
+    API-snd-soc-component-update-bits-async
+    API-snd-soc-component-async-complete
+    API-snd-soc-component-test-bits
+    API-snd-soc-update-bits
+    API-snd-soc-test-bits
+    API-snd-soc-set-runtime-hwparams
+    API-snd-soc-info-enum-double
+    API-snd-soc-get-enum-double
+    API-snd-soc-put-enum-double
+    API-snd-soc-info-volsw
+    API-snd-soc-info-volsw-sx
+    API-snd-soc-get-volsw
+    API-snd-soc-put-volsw
+    API-snd-soc-get-volsw-sx
+    API-snd-soc-put-volsw-sx
+    API-snd-soc-info-volsw-range
+    API-snd-soc-put-volsw-range
+    API-snd-soc-get-volsw-range
+    API-snd-soc-limit-volume
+    API-snd-soc-info-xr-sx
+    API-snd-soc-get-xr-sx
+    API-snd-soc-put-xr-sx
+    API-snd-soc-get-strobe
+    API-snd-soc-put-strobe
+    API-snd-soc-new-compress
+
+ASoC DAPM API
+=============
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-snd-soc-dapm-kcontrol-widget
+    API-snd-soc-dapm-kcontrol-dapm
+    API-snd-soc-dapm-force-bias-level
+    API-snd-soc-dapm-sync-unlocked
+    API-snd-soc-dapm-sync
+    API-snd-soc-dapm-add-routes
+    API-snd-soc-dapm-del-routes
+    API-snd-soc-dapm-weak-routes
+    API-snd-soc-dapm-new-widgets
+    API-snd-soc-dapm-get-volsw
+    API-snd-soc-dapm-put-volsw
+    API-snd-soc-dapm-get-enum-double
+    API-snd-soc-dapm-put-enum-double
+    API-snd-soc-dapm-info-pin-switch
+    API-snd-soc-dapm-get-pin-switch
+    API-snd-soc-dapm-put-pin-switch
+    API-snd-soc-dapm-new-controls
+    API-snd-soc-dapm-enable-pin-unlocked
+    API-snd-soc-dapm-enable-pin
+    API-snd-soc-dapm-force-enable-pin-unlocked
+    API-snd-soc-dapm-force-enable-pin
+    API-snd-soc-dapm-disable-pin-unlocked
+    API-snd-soc-dapm-disable-pin
+    API-snd-soc-dapm-nc-pin-unlocked
+    API-snd-soc-dapm-nc-pin
+    API-snd-soc-dapm-get-pin-status
+    API-snd-soc-dapm-ignore-suspend
+    API-snd-soc-dapm-free
+
+ASoC DMA Engine API
+===================
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-snd-dmaengine-pcm-prepare-slave-config
+    API-snd-dmaengine-pcm-register
+    API-snd-dmaengine-pcm-unregister

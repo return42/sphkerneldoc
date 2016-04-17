@@ -1,18 +1,17 @@
 
 .. _net:
 
-===============
++++++++++++++++
 DVB Network API
-===============
-
++++++++++++++++
 The DVB net device controls the mapping of data packages that are part of a transport stream to be mapped into a virtual network interface, visible through the standard Linux
 network protocol stack.
 
 Currently, two encapsulations are supported:
 
--  `Multi Protocol Encapsulation (MPE)`_
+-  `Multi Protocol Encapsulation (MPE) <http://en.wikipedia.org/wiki/Multiprotocol_Encapsulation>`__
 
--  `Ultra Lightweight Encapsulation (ULE)`_
+-  `Ultra Lightweight Encapsulation (ULE) <http://en.wikipedia.org/wiki/Unidirectional_Lightweight_Encapsulation>`__
 
 In order to create the Linux virtual network interfaces, an application needs to tell to the Kernel what are the PIDs and the encapsulation types that are present on the transport
 stream. This is done through ``/dev/dvb/adapter?/net?`` device node. The data will be available via virtual ``dvb?_?`` network interfaces, and will be controled/routed via the
@@ -23,9 +22,9 @@ Data types and and ioctl definitions are defined via ``linux/dvb/net.h`` header.
 
 .. _net_fcalls:
 
+++++++++++++++++++++++
 DVB net Function Calls
-======================
-
+++++++++++++++++++++++
 
 .. _NET_ADD_IF:
 
@@ -173,6 +172,3 @@ RETURN VALUE
 
 On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
 chapter.
-
-.. _Multi Protocol Encapsulation (MPE): http://en.wikipedia.org/wiki/Multiprotocol_Encapsulation
-.. _Ultra Lightweight Encapsulation (ULE): http://en.wikipedia.org/wiki/Unidirectional_Lightweight_Encapsulation

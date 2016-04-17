@@ -69,7 +69,7 @@ should be not a big deal to implement such functionality.
 
 
 Decoding with syndrome calculation, direct data correction
-==========================================================
+----------------------------------------------------------
 
 
 .. code-block:: c
@@ -87,7 +87,7 @@ Decoding with syndrome calculation, direct data correction
 
 
 Decoding with syndrome given by hardware decoder, direct data correction
-========================================================================
+------------------------------------------------------------------------
 
 
 .. code-block:: c
@@ -107,7 +107,7 @@ Decoding with syndrome given by hardware decoder, direct data correction
 
 
 Decoding with syndrome given by hardware decoder, no direct data correction.
-============================================================================
+----------------------------------------------------------------------------
 
 Note: It's not necessary to give data and received parity to the decoder.
 

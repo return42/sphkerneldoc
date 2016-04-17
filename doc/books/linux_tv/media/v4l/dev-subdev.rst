@@ -1,6 +1,7 @@
 
 .. _subdev:
 
+====================
 Sub-device Interface
 ====================
 
@@ -96,7 +97,7 @@ error code pad-level format configuration is not supported by the sub-device.
 
 
 Format Negotiation
-==================
+------------------
 
 Acceptable formats on pads can (and usually do) depend on a number of external parameters, such as formats on other pads, active links, or even controls. Finding a combination of
 formats on all pads in a video pipeline, acceptable to both application and driver, can't rely on formats enumeration only. A format negotiation mechanism is required.
@@ -174,7 +175,7 @@ using the try formats returned during the last negotiation iteration. This guara
 .. _v4l2-subdev-selections:
 
 Selections: cropping, scaling and composition
-=============================================
+---------------------------------------------
 
 Many sub-devices support cropping frames on their input or output pads (or possible even on both). Cropping is used to select the area of interest in an image, typically on an
 image sensor or a video decoder. It can also be used as part of digital zoom implementations to select the area of the image that will be scaled up.
@@ -202,24 +203,24 @@ The drivers should always use the closest possible rectangle the user requests o
 
 
 Types of selection targets
-==========================
+--------------------------
 
 
 Actual targets
-==============
+++++++++++++++
 
 Actual targets (without a postfix) reflect the actual hardware configuration at any point of time. There is a BOUNDS target corresponding to every actual target.
 
 
 BOUNDS targets
-==============
+++++++++++++++
 
 BOUNDS targets is the smallest rectangle that contains all valid actual rectangles. It may not be possible to set the actual rectangle as large as the BOUNDS rectangle, however.
 This may be because e.g. a sensor's pixel array is not rectangular but cross-shaped or round. The maximum size may also be smaller than the BOUNDS rectangle.
 
 
 Order of configuration and format propagation
-=============================================
+---------------------------------------------
 
 Inside subdevs, the order of image processing steps will always be from the sink pad towards the source pad. This is also reflected in the order in which the configuration must be
 performed by the user: the changes made will be propagated to any subsequent stages. If this behaviour is not desired, the user must set ``V4L2_SEL_FLAG_KEEP_CONFIG`` flag. This

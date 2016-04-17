@@ -33,7 +33,8 @@ Description
 
 This ioctl is used to set the generation of a 22kHz tone burst for mini DiSEqC satellite selection for 2x1 switches. This call requires read/write permissions.
 
-It provides support for what's specified at `Digital Satellite Equipment Control (DiSEqC) - Simple "ToneBurst" Detection Circuit specification.`_
+It provides support for what's specified at
+`Digital Satellite Equipment Control (DiSEqC) - Simple "ToneBurst" Detection Circuit specification. <http://www.eutelsat.com/files/contributed/satellites/pdf/Diseqc/associated%20docs/simple_tone_burst_detec.pdf>`__
 
 RETURN VALUE
 
@@ -60,5 +61,3 @@ enum fe_sec_mini_cmd
     +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
 
 
-
-.. _Digital Satellite Equipment Control (DiSEqC) - Simple "ToneBurst" Detection Circuit specification.: http://www.eutelsat.com/files/contributed/satellites/pdf/Diseqc/associated%20docs/simple_tone_burst_detec.pdf

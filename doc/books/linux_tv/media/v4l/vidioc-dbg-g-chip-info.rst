@@ -35,7 +35,7 @@ Description
     This is an :ref:`experimental <experimental>` interface and may change in the future.
 
 For driver debugging purposes this ioctl allows test applications to query the driver about the chips present on the TV card. Regular applications must not use it. When you found a
-chip specific bug, please contact the linux-media mailing list (https://linuxtv.org/lists.php) so it can be fixed.
+chip specific bug, please contact the linux-media mailing list (`https://linuxtv.org/lists.php <https://linuxtv.org/lists.php>`__) so it can be fixed.
 
 Additionally the Linux kernel must be compiled with the ``CONFIG_VIDEO_ADV_DEBUG`` option to enable this ioctl.
 
@@ -51,7 +51,8 @@ When ``match.type`` is ``V4L2_CHIP_MATCH_SUBDEV``, ``match.addr`` selects the nt
 On success, the ``name`` field will contain a chip name and the ``flags`` field will contain ``V4L2_CHIP_FL_READABLE`` if the driver supports reading registers from the device or
 ``V4L2_CHIP_FL_WRITABLE`` if the driver supports writing registers to the device.
 
-We recommended the v4l2-dbg utility over calling this ioctl directly. It is available from the LinuxTV v4l-dvb repository; see https://linuxtv.org/repo/ for access instructions.
+We recommended the v4l2-dbg utility over calling this ioctl directly. It is available from the LinuxTV v4l-dvb repository; see
+`https://linuxtv.org/repo/ <https://linuxtv.org/repo/>`__ for access instructions.
 
 
 .. _name-v4l2-dbg-match:

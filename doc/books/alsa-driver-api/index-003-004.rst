@@ -1,0 +1,69 @@
+
+=================
+Control/Mixer API
+=================
+
+
+General Control Interface
+=========================
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-snd-ctl-notify
+    API-snd-ctl-new1
+    API-snd-ctl-free-one
+    API-snd-ctl-add
+    API-snd-ctl-replace
+    API-snd-ctl-remove
+    API-snd-ctl-remove-id
+    API-snd-ctl-activate-id
+    API-snd-ctl-rename-id
+    API-snd-ctl-find-numid
+    API-snd-ctl-find-id
+    API-snd-ctl-register-ioctl
+    API-snd-ctl-register-ioctl-compat
+    API-snd-ctl-unregister-ioctl
+    API-snd-ctl-unregister-ioctl-compat
+    API-snd-ctl-boolean-mono-info
+    API-snd-ctl-boolean-stereo-info
+    API-snd-ctl-enum-info
+
+AC97 Codec API
+==============
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-snd-ac97-write
+    API-snd-ac97-read
+    API-snd-ac97-write-cache
+    API-snd-ac97-update
+    API-snd-ac97-update-bits
+    API-snd-ac97-get-short-name
+    API-snd-ac97-bus
+    API-snd-ac97-mixer
+    API-snd-ac97-update-power
+    API-snd-ac97-suspend
+    API-snd-ac97-resume
+    API-snd-ac97-tune-hardware
+    API-snd-ac97-set-rate
+    API-snd-ac97-pcm-assign
+    API-snd-ac97-pcm-open
+    API-snd-ac97-pcm-close
+    API-snd-ac97-pcm-double-rate-rules
+
+Virtual Master Control API
+==========================
+
+
+.. toctree::
+    :maxdepth: 1
+
+    API-snd-ctl-make-virtual-master
+    API-snd-ctl-add-vmaster-hook
+    API-snd-ctl-sync-vmaster
+    API-snd-ctl-add-slave
+    API-snd-ctl-add-slave-uncached

@@ -25,11 +25,11 @@ DRM API. We will first go through the ``drm_driver`` static information fields, 
 
 
 Driver Information
-==================
+------------------
 
 
 Driver Features
-===============
++++++++++++++++
 
 Drivers inform the DRM core about their requirements and supported features by setting appropriate flags in the ``driver_features`` field. Since those flags influence the DRM core
 behaviour since registration time, most of them must be set to registering the ``drm_driver`` instance.
@@ -75,7 +75,7 @@ DRIVER_ATOMIC
 
 
 Major, Minor and Patchlevel
-===========================
++++++++++++++++++++++++++++
 
 int major; int minor; int patchlevel;
 The DRM core identifies driver versions by a major, minor and patch level triplet. The information is printed to the kernel log at initialization time and passed to userspace
@@ -87,7 +87,7 @@ than the driver minor, the DRM_IOCTL_SET_VERSION call will return an error. Othe
 
 
 Name, Description and Date
-==========================
+++++++++++++++++++++++++++
 
 char ⋆name; char ⋆desc; char ⋆date;
 The driver name is printed to the kernel log at initialization time, used for IRQ registration and passed to userspace through DRM_IOCTL_VERSION.
@@ -99,7 +99,7 @@ useless. The DRM core prints it to the kernel log at initialization time and pas
 
 
 Device Instance and Driver Handling
-===================================
+-----------------------------------
 
 A device instance for a drm driver is represented by struct ``drm_device``. This is allocated with ``drm_dev_alloc``, usually from bus-specific ->``probe`` callbacks implemented by
 the driver. The driver then needs to initialize all the various subsystems for the drm device like memory management, vblank handling, modesetting support and intial output
@@ -131,13 +131,13 @@ Also note that embedding of ``drm_device`` is currently not (yet) supported (but
     API-drm-dev-set-unique
 
 Driver Load
-===========
+-----------
 
 
 .. _drm-irq-registration:
 
 IRQ Registration
-================
+++++++++++++++++
 
 The DRM core tries to facilitate IRQ handler registration and unregistration by providing ``drm_irq_install`` and ``drm_irq_uninstall`` functions. Those functions only support a
 single interrupt per device, devices that use more than one IRQs need to be handled manually.
@@ -170,14 +170,14 @@ When manually registering IRQs, drivers must not set the DRIVER_HAVE_IRQ driver 
 
 
 Memory Manager Initialization
-=============================
++++++++++++++++++++++++++++++
 
 Every DRM driver requires a memory manager which must be initialized at load time. DRM currently contains two memory managers, the Translation Table Manager (TTM) and the Graphics
 Execution Manager (GEM). This document describes the use of the GEM memory manager only. See :ref:`drm-memory-management` for details.
 
 
 Miscellaneous Device Configuration
-==================================
+++++++++++++++++++++++++++++++++++
 
 Another task that may be necessary for PCI devices during configuration is mapping the video BIOS. On many devices, the VBIOS describes device configuration, LCD panel timings (if
 any), and contains flags indicating device state. Mapping the BIOS can be done using the pci_map_rom() call, a convenience function that takes care of mapping the actual ROM,
@@ -187,7 +187,7 @@ hangs or memory corruption.
 
 
 Bus-specific Device Registration and PCI Support
-================================================
+------------------------------------------------
 
 A number of functions are provided to help with device registration. The functions deal with PCI and platform devices respectively and are only provided for historical reasons.
 These are all deprecated and shouldn't be used in new drivers. Besides that there's a few helpers for pci drivers.
@@ -221,13 +221,13 @@ but has no video RAM management capabilities and is thus limited to UMA devices.
 
 
 The Translation Table Manager (TTM)
-===================================
+-----------------------------------
 
 TTM design background and information belongs here.
 
 
 TTM initialization
-==================
+++++++++++++++++++
 
     **Warning**
 
@@ -262,13 +262,14 @@ object, ttm_global_item_ref() is used to create an initial reference count for t
 .. _drm-gem:
 
 The Graphics Execution Manager (GEM)
-====================================
+------------------------------------
 
 The GEM design approach has resulted in a memory manager that doesn't provide full coverage of all (or even all common) use cases in its userspace or kernel API. GEM exposes a set
 of standard memory-related operations to userspace and a set of helper functions to drivers, and let drivers implement hardware-specific operations with their own private API.
 
-The GEM userspace API is described in the `GEM - the Graphics Execution Manager`_ article on LWN. While slightly outdated, the document provides a good overview of the GEM API
-principles. Buffer allocation and read and write operations, described as part of the common GEM API, are currently implemented using driver-specific ioctls.
+The GEM userspace API is described in the `GEM - the Graphics Execution Manager <http://lwn.net/Articles/283798/>`__ article on LWN. While slightly outdated, the document
+provides a good overview of the GEM API principles. Buffer allocation and read and write operations, described as part of the common GEM API, are currently implemented using
+driver-specific ioctls.
 
 GEM is data-agnostic. It manages abstract buffer objects without knowing what individual buffers contain. APIs that require knowledge of buffer contents or purpose, such as buffer
 allocation or synchronization primitives, are thus outside of the scope of GEM and must be implemented using driver-specific ioctls.
@@ -285,7 +286,7 @@ Device-specific operations, such as command execution, pinning, buffer read & wr
 
 
 GEM Initialization
-==================
+++++++++++++++++++
 
 Drivers that use GEM must set the DRIVER_GEM bit in the struct ``drm_driver`` ``driver_features`` field. The DRM core will then automatically initialize the GEM core before
 calling the load operation. Behind the scene, this will create a DRM Memory Manager object which provides an address space pool for object allocation.
@@ -296,7 +297,7 @@ managed by GEM, and must be initialized separately into its own DRM MM object.
 
 
 GEM Objects Creation
-====================
+++++++++++++++++++++
 
 GEM splits creation of GEM objects and allocation of the memory that backs them in two distinct operations.
 
@@ -319,7 +320,7 @@ Drivers can create GEM objects with no shmfs backing (called private GEM objects
 
 
 GEM Objects Lifetime
-====================
+++++++++++++++++++++
 
 All GEM objects are reference-counted by the GEM core. References can be acquired and release by ``calling drm_gem_object_reference`` and ``drm_gem_object_unreference``
 respectively. The caller must hold the ``drm_device`` ``struct_mutex`` lock when calling ``drm_gem_object_reference``. As a convenience, GEM provides
@@ -333,7 +334,7 @@ need to be released with ``drm_gem_object_release``.
 
 
 GEM Objects Naming
-==================
+++++++++++++++++++
 
 Communication between userspace and the kernel refers to GEM objects using local handles, global names or, more recently, file descriptors. All of those are 32-bit integer values;
 the usual Linux kernel limits apply to the file descriptors.
@@ -363,7 +364,7 @@ dma-bufs.
 .. _drm-gem-objects-mapping:
 
 GEM Objects Mapping
-===================
++++++++++++++++++++
 
 Because mapping operations are fairly heavyweight GEM favours read/write-like access to buffers, implemented through driver-specific ioctls, over mapping buffers to userspace.
 However, when random access to the buffer is needed (to perform software rendering for instance), direct access to the object can be more efficient.
@@ -397,7 +398,7 @@ Drivers that want to map the GEM object upfront instead of handling page faults 
 
 
 Memory Coherency
-================
+++++++++++++++++
 
 When mapped to the device or used in a command buffer, backing pages for an object are flushed to memory and marked write combined so as to be coherent with the GPU. Likewise, if
 the CPU accesses an object after the GPU has finished rendering to the object, then the object must be made coherent with the CPU's view of memory, usually involving GPU cache
@@ -407,7 +408,7 @@ blocks the client and waits for rendering to complete before performing any nece
 
 
 Command Execution
-=================
++++++++++++++++++
 
 Perhaps the most important GEM function for GPU devices is providing a command execution interface to clients. Client programs construct command buffers containing references to
 previously allocated memory objects, and then submit them to GEM. At that point, GEM takes care to bind all the objects into the GTT, execute the buffer, and provide necessary
@@ -419,7 +420,7 @@ libdrm.
 
 
 GEM Function Reference
-======================
+----------------------
 
 
 .. toctree::
@@ -447,7 +448,7 @@ GEM Function Reference
     API-drm-gem-object-unreference-unlocked
 
 VMA Offset Manager
-==================
+------------------
 
 The vma-manager is responsible to map arbitrary driver-dependent memory regions into the linear user address-space. It provides offsets to the caller which can then be used on the
 address_space of the drm-device. It takes care to not overlap regions, size them appropriately and to not confuse mm-core by inconsistent fake vm_pgoff fields. Drivers shouldn't
@@ -491,14 +492,14 @@ However, the caller is responsible for destroying already existing mappings, if 
 .. _drm-prime-support:
 
 PRIME Buffer Sharing
-====================
+--------------------
 
 PRIME is the cross device buffer sharing framework in drm, originally created for the OPTIMUS range of multi-gpu platforms. To userspace PRIME buffers are dma-buf based file
 descriptors.
 
 
 Overview and Driver Interface
-=============================
++++++++++++++++++++++++++++++
 
 Similar to GEM global names, PRIME file descriptors are also used to share buffer objects across processes. They offer additional security: as file descriptors must be explicitly
 sent over UNIX domain sockets to be shared between applications, they can't be guessed like the globally unique GEM names.
@@ -520,7 +521,7 @@ struct dma_buf ⋆dma_buf); These two operations are mandatory for GEM drivers t
 
 
 PRIME Helper Functions
-======================
+++++++++++++++++++++++
 
 Drivers can implement ``gem_prime_export`` and ``gem_prime_import`` in terms of simpler APIs by using the helper functions ``drm_gem_prime_export`` and ``drm_gem_prime_import``.
 These functions implement dma-buf support in terms of six lower-level driver callbacks:
@@ -536,7 +537,7 @@ Import callback:
 
 
 PRIME Function References
-=========================
+-------------------------
 
 
 .. toctree::
@@ -552,11 +553,11 @@ PRIME Function References
     API-drm-prime-gem-destroy
 
 DRM MM Range Allocator
-======================
+----------------------
 
 
 Overview
-========
+++++++++
 
 drm_mm provides a simple range allocator. The drivers are free to use the resource allocator from the linux core if it suits them, the upside of drm_mm is that it's in the DRM
 core. Which means that it's easier to extend for some of the crazier special purpose needs of gpus.
@@ -583,7 +584,7 @@ Finally iteration helpers to walk all nodes and all holes are provided as are so
 
 
 LRU Scan/Eviction Support
-=========================
++++++++++++++++++++++++++
 
 Very often GPUs need to have continuous allocations for a given object. When evicting objects to make space for a new one it is therefore not most efficient when we simply start to
 select all objects from the tail of an LRU until there's a suitable hole: Especially for big objects or nodes that otherwise have special allocation constraints there's a good
@@ -601,7 +602,7 @@ O(scanned_objects). So like the free stack which needs to be walked before a sca
 
 
 DRM MM Range Allocator Function References
-==========================================
+------------------------------------------
 
 
 .. toctree::
@@ -631,7 +632,7 @@ DRM MM Range Allocator Function References
     API-drm-mm-insert-node-in-range
 
 CMA Helper Functions Reference
-==============================
+------------------------------
 
 The Contiguous Memory Allocator reserves a pool of memory at early boot that is used to service requests for large blocks of contiguous memory.
 
@@ -672,7 +673,7 @@ fails. Once done, mode configuration must be setup by initializing the following
 
 
 Display Modes Function Reference
-================================
+--------------------------------
 
 
 .. toctree::
@@ -709,7 +710,7 @@ Display Modes Function Reference
     API-drm-mode-create-from-cmdline-mode
 
 Atomic Mode Setting Function Reference
-======================================
+--------------------------------------
 
 
 .. toctree::
@@ -747,7 +748,7 @@ Atomic Mode Setting Function Reference
     API-drm-atomic-connector-get-property
 
 Frame Buffer Abstraction
-========================
+------------------------
 
 Frame buffers are abstract memory objects that provide a source of pixels to scanout to a CRTC. Applications explicitly request the creation of frame buffers through the
 DRM_IOCTL_MODE_ADDFB(2) ioctls and receive an opaque handle that can be passed to the KMS CRTC control, plane configuration and page flip functions.
@@ -763,7 +764,7 @@ is embedded into the fbdev helper struct) drivers can manually clean up a frameb
 
 
 Dumb Buffer Objects
-===================
+-------------------
 
 The KMS API doesn't standardize backing storage object creation and leaves it to driver-specific ioctls. Furthermore actually creating a buffer object even for GEM-based drivers is
 done through a driver-specific ioctl - GEM only has a common userspace interface for sharing and destroying objects. While not an issue for full-fledged graphics stacks that
@@ -789,7 +790,7 @@ allocate suitable buffer objects.
 
 
 Output Polling
-==============
+--------------
 
 void (⋆output_poll_changed)(struct drm_device ⋆dev);
 This operation notifies the driver that the status of one or more connectors has changed. Drivers that use the fb helper can just call the ``drm_fb_helper_hotplug_event`` function
@@ -797,7 +798,7 @@ to handle this operation.
 
 
 Locking
-=======
+-------
 
 Beside some lookup structures with their own locking (which is hidden behind the interface functions) most of the modeset state is protected by the ``dev-<mode_config.lock`` mutex
 and additionally per-crtc locks to allow cursor updates, pageflips and similar operations to occur concurrently with background tasks like output detection. Operations which cross
@@ -816,7 +817,7 @@ initializing mode setting.
 
 
 CRTCs (struct drm_crtc)
-=======================
+-----------------------
 
 A CRTC is an abstraction representing a part of the chip that contains a pointer to a scanout buffer. Therefore, the number of CRTCs available determines how many independent
 scanout buffers can be active at any given time. The CRTC structure contains several fields to support this: a pointer to some video memory (abstracted as a frame buffer object), a
@@ -824,14 +825,14 @@ display mode, and an (x, y) offset into the video memory to support panning or c
 
 
 CRTC Initialization
-===================
++++++++++++++++++++
 
 A KMS device must create and register at least one struct ``drm_crtc`` instance. The instance is allocated and zeroed by the driver, possibly as part of a larger structure, and
 registered with a call to ``drm_crtc_init`` with a pointer to CRTC functions.
 
 
 Planes (struct drm_plane)
-=========================
+-------------------------
 
 A plane represents an image source that can be blended with or overlayed on top of a CRTC during the scanout process. Planes are associated with a frame buffer to crop a portion of
 the image memory (source) and optionally scale it to a destination size. The result is then blended with or overlayed on top of a CRTC.
@@ -850,7 +851,7 @@ capability bit to indicate that they wish to receive a universal plane list cont
 
 
 Plane Initialization
-====================
+++++++++++++++++++++
 
 To create a plane, a KMS drivers allocates and zeroes an instances of struct ``drm_plane`` (possibly as part of a larger structure) and registers it with a call to
 ``drm_universal_plane_init``. The function takes a bitmask of the CRTCs that can be associated with the plane, a pointer to the plane functions, a list of format supported formats,
@@ -862,7 +863,7 @@ capabilities.
 
 
 Encoders (struct drm_encoder)
-=============================
+-----------------------------
 
 An encoder takes pixel data from a CRTC and converts it to a format suitable for any attached connectors. On some devices, it may be possible to have a CRTC send data to more than
 one encoder. In that case, both encoders would receive data from the same scanout buffer, resulting in a "cloned" display configuration across the connectors attached to each
@@ -870,7 +871,7 @@ encoder.
 
 
 Encoder Initialization
-======================
+++++++++++++++++++++++
 
 As for CRTCs, a KMS driver must create, initialize and register at least one struct ``drm_encoder`` instance. The instance is allocated and zeroed by the driver, possibly as part
 of a larger structure.
@@ -892,7 +893,7 @@ responsible for attaching the encoders they want to use to a CRTC.
 
 
 Connectors (struct drm_connector)
-=================================
+---------------------------------
 
 A connector is the final destination for pixel data on a device, and usually connects directly to an external display device like a monitor or laptop panel. A connector can only be
 attached to one encoder at a time. The connector is also the structure where information about the attached display is kept, so it contains fields for display data, EDID data, DPMS
@@ -900,7 +901,7 @@ attached to one encoder at a time. The connector is also the structure where inf
 
 
 Connector Initialization
-========================
+++++++++++++++++++++++++
 
 Finally a KMS driver must create, initialize, register and attach at least one struct ``drm_connector`` instance. The instance is created as other KMS objects and initialized by
 setting the following fields.
@@ -960,7 +961,7 @@ for changes. Connectors that can generate hotplug interrupts must be marked with
 
 
 Connector Operations
-====================
+++++++++++++++++++++
 
     **Note**
 
@@ -1012,7 +1013,7 @@ connection status probes, should return connector_status_unknown.
 
 
 Cleanup
-=======
+-------
 
 The DRM core manages its objects' lifetime. When an object is not needed anymore the core calls its destroy function, which must clean up and free every resource allocated for the
 object. Every ``drm_⋆_init`` call must be matched with a corresponding ``drm_⋆_cleanup`` call to cleanup CRTCs (``drm_crtc_cleanup``), planes (``drm_plane_cleanup``), encoders
@@ -1023,7 +1024,7 @@ Connectors state change detection must be cleanup up with a call to ``drm_kms_he
 
 
 Output discovery and initialization example
-===========================================
+-------------------------------------------
 
 
 .. code-block:: c
@@ -1070,7 +1071,7 @@ performing monitor detection. Once the process is complete, the new connector is
 
 
 KMS API Functions
-=================
+-----------------
 
 
 .. toctree::
@@ -1152,7 +1153,7 @@ KMS API Functions
     API-drm-mode-create-tile-group
 
 KMS Data Structures
-===================
+-------------------
 
 
 .. toctree::
@@ -1182,7 +1183,7 @@ KMS Data Structures
     API-drm-encoder-crtc-ok
 
 KMS Locking
-===========
+-----------
 
 As KMS moves toward more fine grained locking, and atomic ioctl where userspace can indirectly control locking order, it becomes necessary to use ww_mutex and acquire-contexts to
 avoid deadlocks. But because the locking is more distributed around the driver code, we want a bit of extra utility/tracking out of our acquire-ctx. This is provided by
@@ -1239,11 +1240,11 @@ The mid-layer is not split between CRTC, encoder and connector operations. To us
 
 
 Atomic Modeset Helper Functions Reference
-=========================================
+-----------------------------------------
 
 
 Overview
-========
+++++++++
 
 This helper library provides implementations of check and commit functions on top of the CRTC modeset helper callbacks and the plane helper callbacks. It also provides convenience
 implementations for the atomic state handling callbacks for drivers which don't need to subclass the drm core structures to add their own additional internal state.
@@ -1260,7 +1261,7 @@ The atomic helper uses the same function table structures as all other modesetti
 
 
 Implementing Asynchronous Atomic Commit
-=======================================
++++++++++++++++++++++++++++++++++++++++
 
 For now the atomic helpers don't support async commit directly. If there is real need it could be added though, using the dma-buf fence infrastructure for generic synchronization
 with outstanding rendering.
@@ -1284,7 +1285,7 @@ framebuffers after the old framebuffer is no longer being displayed.
 
 
 Atomic State Reset and Initialization
-=====================================
++++++++++++++++++++++++++++++++++++++
 
 Both the drm core and the atomic helpers assume that there is always the full and correct atomic software state for all connectors, CRTCs and planes available. Which is a bit a
 problem on driver load and also after system suspend. One way to solve this is to have a hardware state read-out infrastructure which reconstructs the full software state (e.g. the
@@ -1348,7 +1349,7 @@ On the upside the precise state tracking of atomic simplifies system suspend and
     API-drm-atomic-helper-legacy-gamma-set
 
 Modeset Helper Reference for Common Vtables
-===========================================
+-------------------------------------------
 
 
 .. toctree::
@@ -1371,7 +1372,7 @@ To make this clear all the helper vtables are pulled together in this location h
 
 
 Legacy CRTC/Modeset Helper Functions Reference
-==============================================
+----------------------------------------------
 
 
 .. toctree::
@@ -1407,7 +1408,7 @@ These legacy modeset helpers use the same function table structures as all other
 
 
 Output Probing Helper Functions Reference
-=========================================
+-----------------------------------------
 
 This library provides some helper code for output probing. It provides an implementation of the core connector->fill_modes interface with
 drm_helper_probe_single_connector_modes.
@@ -1434,7 +1435,7 @@ The probe helpers share the function table structures with other display helper 
     API-drm-helper-hpd-irq-event
 
 fbdev Helper Functions Reference
-================================
+--------------------------------
 
 The fb helper functions are useful to provide an fbdev on top of a drm kernel mode setting driver. They can be used mostly independently from the crtc helper functions used by many
 drivers to implement the kernel mode setting interfaces.
@@ -1492,7 +1493,7 @@ configuration using the detected hardware, drivers should call ``drm_fb_helper_s
     API-struct-drm-fb-helper
 
 Display Port Helper Functions Reference
-=======================================
+---------------------------------------
 
 These functions contain some common logic and helpers at various abstraction levels to deal with Display Port sink devices and related things like DP aux channel transfers, EDID
 reading over DP aux channels, decoding certain DPCD blocks, ...
@@ -1522,7 +1523,7 @@ transactions are supported.
     API-drm-dp-aux-unregister
 
 Display Port MST Helper Functions Reference
-===========================================
+-------------------------------------------
 
 These functions contain parts of the DisplayPort 1.2a MultiStream Transport protocol. The helpers contain a topology manager and bandwidth manager. The helpers encapsulate the
 sending and received of sideband msgs.
@@ -1555,7 +1556,7 @@ sending and received of sideband msgs.
     API-drm-dp-mst-topology-mgr-destroy
 
 MIPI DSI Helper Functions Reference
-===================================
+-----------------------------------
 
 These functions contain some common logic and helpers to deal with MIPI DSI peripherals.
 
@@ -1607,7 +1608,7 @@ Helpers are provided for a number of standard MIPI DSI command as well as a subs
     API-mipi-dsi-driver-unregister
 
 EDID Helper Functions Reference
-===============================
+-------------------------------
 
 
 .. toctree::
@@ -1638,7 +1639,7 @@ EDID Helper Functions Reference
     API-drm-hdmi-vendor-infoframe-from-display-mode
 
 Rectangle Utilities Reference
-=============================
+-----------------------------
 
 Utility functions to help manage rectangular areas for clipping, scaling, etc. calculations.
 
@@ -1665,7 +1666,7 @@ Utility functions to help manage rectangular areas for clipping, scaling, etc. c
     API-drm-rect-rotate-inv
 
 Flip-work Helper Reference
-==========================
+--------------------------
 
 Util to queue up work to run from work-queue context after flip/vblank. Typically this can be used to defer unref of framebuffer's, cursor bo's, etc until after vblank. The APIs
 are all thread-safe. Moreover, drm_flip_work_queue_task and drm_flip_work_queue can be called in atomic context.
@@ -1684,7 +1685,7 @@ are all thread-safe. Moreover, drm_flip_work_queue_task and drm_flip_work_queue 
     API-drm-flip-work-cleanup
 
 HDMI Infoframes Helper Reference
-================================
+--------------------------------
 
 Strictly speaking this is not a DRM helper library but generally useable by any driver interfacing with HDMI outputs like v4l or alsa drivers. But it nicely fits into the overall
 topic of mode setting helper libraries and hence is also included here.
@@ -1707,7 +1708,7 @@ topic of mode setting helper libraries and hence is also included here.
     API-hdmi-infoframe-unpack
 
 Plane Helper Reference
-======================
+----------------------
 
 
 .. toctree::
@@ -1736,18 +1737,18 @@ The plane helpers share the function table structures with other helpers, specif
 
 
 Tile group
-==========
+----------
 
 Tile groups are used to represent tiled monitors with a unique integer identifier. Tiled monitors using DisplayID v1.3 have a unique 8-byte handle, we store this in a tile group,
 so we have a common identifier for all tiles in a monitor group.
 
 
 Bridges
-=======
+-------
 
 
 Overview
-========
+++++++++
 
 struct ``drm_bridge`` represents a device that hangs on to an encoder. These are handy when a regular ``drm_encoder`` entity isn't enough to represent the entire encoder chain.
 
@@ -1769,7 +1770,7 @@ Both legacy CRTC helpers and the new atomic modeset helpers support bridges.
 
 
 Default bridge callback sequence
-================================
+++++++++++++++++++++++++++++++++
 
 The ``drm_bridge_funcs`` ops are populated by the bridge driver. The DRM internals (atomic and CRTC helpers) use the helpers defined in drm_bridge.c These helpers call a specific
 ``drm_bridge_funcs`` op for all the bridges during encoder configuration.
@@ -1849,7 +1850,7 @@ the target object, a pointer to the previously created property and an initial i
 
 
 Existing KMS Properties
-=======================
+-----------------------
 
 The following table gives description of drm properties exposed by various modules/drivers.
 
@@ -2879,7 +2880,7 @@ Resources allocated by ``drm_vblank_init`` must be freed with a call to ``drm_vb
 
 
 Vertical Blanking and Interrupt Handling Functions Reference
-============================================================
+------------------------------------------------------------
 
 
 .. toctree::
@@ -2922,7 +2923,7 @@ Open/Close, File Operations and IOCTLs
 
 
 Open and Close
-==============
+--------------
 
 int (⋆firstopen) (struct drm_device ⋆); void (⋆lastclose) (struct drm_device ⋆); int (⋆open) (struct drm_device ⋆, struct drm_file ⋆); void (⋆preclose) (struct drm_device ⋆,
 struct drm_file ⋆); void (⋆postclose) (struct drm_device ⋆, struct drm_file ⋆);
@@ -2949,7 +2950,7 @@ not do any further cleanup. Only legacy UMS drivers might need to clean up devic
 
 
 File Operations
-===============
+---------------
 
 Drivers must define the file operations structure that forms the DRM userspace API entry point, even though most of those operations are implemented in the DRM core. The mandatory
 functions are ``drm_open``, ``drm_read``, ``drm_ioctl`` and drm_compat_ioctl if CONFIG_COMPAT is enabled. Drivers which implement private ioctls that require 32/64 bit
@@ -2981,7 +2982,7 @@ drm_compat_ioctl, #endif .poll = drm_poll, .read = drm_read, .llseek = no_llseek
     API-drm-send-event
 
 IOCTLs
-======
+------
 
 struct drm_ioctl_desc ⋆ioctls; int num_ioctls;
     Driver-specific ioctls descriptors table.
@@ -3035,7 +3036,7 @@ of registering as a real driver. This also includes some of the old generic buff
 
 
 Legacy Suspend/Resume
-=====================
+---------------------
 
 The DRM core provides some suspend/resume code, but drivers wanting full suspend/resume support should provide save() and restore() functions. These are called at suspend,
 hibernate, or resume time, and should perform any state save or restore required by your device across suspend or hibernate states.
@@ -3046,8 +3047,6 @@ provided by their bus type (usually through the struct ``device_driver`` dev_pm_
 
 
 Legacy DMA Services
-===================
+-------------------
 
 This should cover how DMA mapping etc. is supported by the core. These functions are deprecated and should not be used.
-
-.. _GEM - the Graphics Execution Manager: http://lwn.net/Articles/283798/

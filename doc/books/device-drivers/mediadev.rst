@@ -134,7 +134,7 @@ Digital TV (DVB) devices
 
 
 Digital TV Common functions
-===========================
+---------------------------
 
 
 .. toctree::
@@ -156,7 +156,7 @@ Digital TV Common functions
     API-dvb-create-media-graph
 
 Digital TV Frontend kABI
-========================
+------------------------
 
 The Digital TV Frontend kABI defines a driver-internal interface for registering low-level, hardware specific driver to a hardware independent frontend layer. It is only of
 interest for Digital TV device driver writers. The header file for this API is named dvb_frontend.h and located in drivers/media/dvb-core.
@@ -194,7 +194,7 @@ A few other optional functions are provided to handle some special cases.
     API-dvb-frontend-sleep-until
 
 Digital TV Demux kABI
-=====================
+---------------------
 
 The Kernel Digital TV Demux kABI defines a driver-internal interface for registering low-level, hardware specific driver to a hardware independent demux layer. It is only of
 interest for Digital TV device driver writers. The header file for this kABI is named demux.h and located in drivers/media/dvb-core.
@@ -221,7 +221,7 @@ network device code, the function must not sleep.
 
 
 Demux Callback API
-==================
+++++++++++++++++++
 
 This kernel-space API comprises the callback functions that deliver filtered data to the demux client. Unlike the other DVB kABIs, these functions are provided by the client and
 called from the demux code.
@@ -251,7 +251,7 @@ This mechanism is implemented by ``dmx_ts_cb`` and ``dmx_section_cb`` callbacks.
     API-struct-dmx-demux
 
 Digital TV Conditional Access kABI
-==================================
+----------------------------------
 
 
 .. toctree::

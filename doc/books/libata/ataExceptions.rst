@@ -27,7 +27,7 @@ In the following sections, two recovery actions - reset and reconfiguring transp
 .. _excatHSMviolation:
 
 HSM violation
-=============
+-------------
 
 This error is indicated when STATUS value doesn't match HSM requirement during issuing or execution any ATA/ATAPI command.
 
@@ -50,7 +50,7 @@ errors.
 .. _excatDevErr:
 
 ATA/ATAPI device error (non-NCQ / non-CHECK CONDITION)
-======================================================
+------------------------------------------------------
 
 These are errors detected and reported by ATA/ATAPI devices indicating device problems. For this type of errors, STATUS and ERROR register values are valid and describe error
 condition. Note that some of ATA bus errors are detected by ATA/ATAPI devices and reported using the same mechanism as device errors. Those cases are described later in this
@@ -109,7 +109,7 @@ So, it seems reasonable to assume that "na" bits are cleared to zero by devices 
 .. _excatATAPIcc:
 
 ATAPI device CHECK CONDITION
-============================
+----------------------------
 
 ATAPI device CHECK CONDITION error is indicated by set CHK bit (ERR bit) in the STATUS register after the last byte of CDB is transferred for a PACKET command. For this kind of
 errors, sense data should be acquired to gather information regarding the errors. REQUEST SENSE packet command should be used to acquire sense data.
@@ -121,7 +121,7 @@ Once sense data is acquired, this type of errors can be handled similarly to oth
 .. _excatNCQerr:
 
 ATA device error (NCQ)
-======================
+----------------------
 
 NCQ command error is indicated by cleared BSY and set ERR bit during NCQ command phase (one or more NCQ commands outstanding). Although STATUS and ERROR registers will contain
 valid values describing the error, READ LOG EXT is required to clear the error condition, determine which command has failed and acquire more information.
@@ -138,7 +138,7 @@ If READ LOG EXT Log Page 10h fails or reports NQ, we're thoroughly screwed. This
 .. _excatATAbusErr:
 
 ATA bus error
-=============
+-------------
 
 ATA bus error means that data corruption occurred during transmission over ATA bus (SATA or PATA). This type of errors can be indicated by
 
@@ -161,7 +161,7 @@ more information.
 .. _excatPCIbusErr:
 
 PCI bus error
-=============
+-------------
 
 Data corruption or other failures during transmission over PCI (or other system bus). For standard BMDMA, this is indicated by Error bit in the BMDMA Status register. This type of
 errors must be logged as it indicates something is very wrong with the system. Resetting host controller is recommended.
@@ -170,7 +170,7 @@ errors must be logged as it indicates something is very wrong with the system. R
 .. _excatLateCompletion:
 
 Late completion
-===============
+---------------
 
 This occurs when timeout occurs and the timeout handler finds out that the timed out command has completed successfully or with error. This is usually caused by lost interrupts.
 This type of errors must be logged. Resetting host controller is recommended.
@@ -179,7 +179,7 @@ This type of errors must be logged. Resetting host controller is recommended.
 .. _excatUnknown:
 
 Unknown error (timeout)
-=======================
+-----------------------
 
 This is when timeout occurs and the command is still processing or the host and device are in unknown state. When this occurs, HSM could be in any valid or invalid state. To bring
 the device to known state and make it forget about the timed out command, resetting is necessary. The timed out command may be retried.
@@ -190,7 +190,7 @@ Timeouts can also be caused by transmission errors. Refer to :ref:`excatATAbusEr
 .. _excatHoplugPM:
 
 Hotplug and power management exceptions
-=======================================
+---------------------------------------
 
 <<TODO: fill here>>
 
@@ -206,7 +206,7 @@ This section discusses several important recovery actions.
 .. _exrecClr:
 
 Clearing error condition
-========================
+------------------------
 
 Many controllers require its error registers to be cleared by error handler. Different controllers may have different requirements.
 
@@ -216,7 +216,7 @@ For SATA, it's strongly recommended to clear at least SError register during err
 .. _exrecRst:
 
 Reset
-=====
+-----
 
 During EH, resetting is necessary in the following cases.
 
@@ -286,7 +286,7 @@ further operation. OS driver is required to implement revalidation mechanism to 
 .. _exrecReconf:
 
 Reconfigure transport
-=====================
+---------------------
 
 For both PATA and SATA, a lot of corners are cut for cheap connectors, cables or controllers and it's quite common to see high transmission error rate. This can be mitigated by
 lowering transmission speed.

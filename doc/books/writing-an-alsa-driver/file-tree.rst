@@ -64,7 +64,7 @@ and are dependent upon the kernel config.
 .. _file-tree-core-directory-oss:
 
 core/oss
-========
+--------
 
 The codes for PCM and mixer OSS emulation modules are stored in this directory. The rawmidi OSS emulation is included in the ALSA rawmidi code since it's quite small. The sequencer
 code is stored in ``core/seq/oss`` directory (see :ref:`below <file-tree-core-directory-seq-oss>`).
@@ -73,7 +73,7 @@ code is stored in ``core/seq/oss`` directory (see :ref:`below <file-tree-core-di
 .. _file-tree-core-directory-ioctl32:
 
 core/ioctl32
-============
+------------
 
 This directory contains the 32bit-ioctl wrappers for 64bit architectures such like x86-64, ppc64 and sparc64. For 32bit and alpha architectures, these are not compiled.
 
@@ -81,7 +81,7 @@ This directory contains the 32bit-ioctl wrappers for 64bit architectures such li
 .. _file-tree-core-directory-seq:
 
 core/seq
-========
+--------
 
 This directory and its sub-directories are for the ALSA sequencer. This directory contains the sequencer core and primary sequencer modules such like snd-seq-midi, snd-seq-virmidi,
 etc. They are compiled only when ``CONFIG_SND_SEQUENCER`` is set in the kernel config.
@@ -90,7 +90,7 @@ etc. They are compiled only when ``CONFIG_SND_SEQUENCER`` is set in the kernel c
 .. _file-tree-core-directory-seq-oss:
 
 core/seq/oss
-============
+------------
 
 This contains the OSS sequencer emulation codes.
 
@@ -98,7 +98,7 @@ This contains the OSS sequencer emulation codes.
 .. _file-tree-core-directory-deq-instr:
 
 core/seq/instr
-==============
+--------------
 
 This directory contains the modules for the sequencer instrument layer.
 
@@ -124,7 +124,7 @@ and the serial MIDI driver are found in this directory. In the sub-directories, 
 .. _file-tree-drivers-directory-mpu401:
 
 drivers/mpu401
-==============
+--------------
 
 The MPU401 and MPU401-UART modules are stored here.
 
@@ -132,7 +132,7 @@ The MPU401 and MPU401-UART modules are stored here.
 .. _file-tree-drivers-directory-opl3:
 
 drivers/opl3 and opl4
-=====================
+---------------------
 
 The OPL3 and OPL4 FM-synth stuff is found here.
 
@@ -151,7 +151,7 @@ complicated for such a purpose.
 .. _file-tree-i2c-directory-l3:
 
 i2c/l3
-======
+------
 
 This is a sub-directory for ARM L3 i2c.
 

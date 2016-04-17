@@ -44,9 +44,10 @@ The fourth part covers the Media Controller API.
 
 It should also be noted that a media device may also have audio components, like mixers, PCM capture, PCM playback, etc, which are controlled via ALSA API.
 
-For additional information and for the latest development code, see: https://linuxtv.org.
+For additional information and for the latest development code, see: `https://linuxtv.org <https://linuxtv.org>`__.
 
-For discussing improvements, reporting troubles, sending new drivers, etc, please mail to: `Linux Media Mailing List (LMML).`_.
+For discussing improvements, reporting troubles, sending new drivers, etc, please mail to:
+`Linux Media Mailing List (LMML). <http://vger.kernel.org/vger-lists.html#linux-media>`__.
 
 
 .. toctree::
@@ -58,5 +59,3 @@ For discussing improvements, reporting troubles, sending new drivers, etc, pleas
     media/v4l/media-controller
     media/v4l/gen-errors
     media/v4l/fdl-appendix
-
-.. _Linux Media Mailing List (LMML).: http://vger.kernel.org/vger-lists.html#linux-media

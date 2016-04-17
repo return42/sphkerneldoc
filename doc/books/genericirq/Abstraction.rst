@@ -87,13 +87,13 @@ initialization.
 .. _Default_flow_implementations:
 
 Default flow implementations
-============================
+----------------------------
 
 
 .. _Helper_functions:
 
 Helper functions
-================
+++++++++++++++++
 
 The helper functions call the chip primitives and are used by the default flow implementations. The following helper functions are implemented (simplified excerpt):
 
@@ -134,13 +134,13 @@ The helper functions call the chip primitives and are used by the default flow i
 .. _Default_flow_handler_implementations:
 
 Default flow handler implementations
-====================================
+------------------------------------
 
 
 .. _Default_Level_IRQ_flow_handler:
 
 Default Level IRQ flow handler
-==============================
+++++++++++++++++++++++++++++++
 
 handle_level_irq provides a generic implementation for level-triggered interrupts.
 
@@ -157,7 +157,7 @@ The following control flow is implemented (simplified excerpt):
 .. _Default_FASTEOI_IRQ_flow_handler:
 
 Default Fast EOI IRQ flow handler
-=================================
++++++++++++++++++++++++++++++++++
 
 handle_fasteoi_irq provides a generic implementation for interrupts, which only need an EOI at the end of the handler.
 
@@ -173,7 +173,7 @@ The following control flow is implemented (simplified excerpt):
 .. _Default_Edge_IRQ_flow_handler:
 
 Default Edge IRQ flow handler
-=============================
++++++++++++++++++++++++++++++
 
 handle_edge_irq provides a generic implementation for edge-triggered interrupts.
 
@@ -201,7 +201,7 @@ The following control flow is implemented (simplified excerpt):
 .. _Default_simple_IRQ_flow_handler:
 
 Default simple IRQ flow handler
-===============================
++++++++++++++++++++++++++++++++
 
 handle_simple_irq provides a generic implementation for simple interrupts.
 
@@ -218,7 +218,7 @@ The following control flow is implemented (simplified excerpt):
 .. _Default_per_CPU_flow_handler:
 
 Default per CPU flow handler
-============================
+++++++++++++++++++++++++++++
 
 handle_percpu_irq provides a generic implementation for per CPU interrupts.
 
@@ -239,7 +239,7 @@ The following control flow is implemented (simplified excerpt):
 .. _EOI_Edge_IRQ_flow_handler:
 
 EOI Edge IRQ flow handler
-=========================
++++++++++++++++++++++++++
 
 handle_edge_eoi_irq provides an abnomination of the edge handler which is solely used to tame a badly wreckaged irq controller on powerpc/cell.
 
@@ -247,7 +247,7 @@ handle_edge_eoi_irq provides an abnomination of the edge handler which is solely
 .. _BAD_IRQ_flow_handler:
 
 Bad IRQ flow handler
-====================
+++++++++++++++++++++
 
 handle_bad_irq is used for spurious interrupts which have no real handler assigned..
 
@@ -255,7 +255,7 @@ handle_bad_irq is used for spurious interrupts which have no real handler assign
 .. _Quirks_and_optimizations:
 
 Quirks and optimizations
-========================
+------------------------
 
 The generic functions are intended for 'clean' architectures and chips, which have no platform-specific IRQ handling quirks. If an architecture needs to implement quirks on the
 'flow' level then it can do so by overriding the high-level irq-flow handler.
@@ -264,7 +264,7 @@ The generic functions are intended for 'clean' architectures and chips, which ha
 .. _Delayed_interrupt_disable:
 
 Delayed interrupt disable
-=========================
+-------------------------
 
 This per interrupt selectable feature, which was introduced by Russell King in the ARM interrupt implementation, does not mask an interrupt at the hardware level when
 disable_irq() is called. The interrupt is kept enabled and is masked in the flow handler when an interrupt event happens. This prevents losing edge interrupts on hardware which

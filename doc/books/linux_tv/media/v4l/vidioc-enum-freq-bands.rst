@@ -75,7 +75,8 @@ This ioctl is supported if the ``V4L2_TUNER_CAP_FREQ_BANDS`` capability of the c
     | __u32                                         | ``modulation``                                | The supported modulation systems of this frequency band. See :ref:`band-modulation`.       |
     |                                               |                                               | Note that currently only one modulation system per frequency band is supported. More work  |
     |                                               |                                               | will need to be done if multiple modulation systems are possible. Contact the linux-media  |
-    |                                               |                                               | mailing list (https://linuxtv.org/lists.php) if you need that functionality.               |
+    |                                               |                                               | mailing list (`https://linuxtv.org/lists.php  <https://linuxtv.org/lists.php>`__)    if    |
+    |                                               |                                               | you need that functionality.                                                               |
     +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
     | __u32                                         | ``reserved``  [9]                             | Reserved for future extensions. Applications and drivers must set the array to zero.       |
     +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+

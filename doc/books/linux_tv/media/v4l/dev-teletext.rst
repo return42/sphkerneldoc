@@ -1,6 +1,7 @@
 
 .. _ttx:
 
+==================
 Teletext Interface
 ==================
 
@@ -9,7 +10,7 @@ cache memory. Such devices are usually implemented as microcontrollers with seri
 and home-brew devices connected to the PC parallel port.
 
 The Teletext API was designed by Martin Buck. It was defined in the kernel header file ``linux/videotext.h``, the specification is available from
-ftp://ftp.gwdg.de/pub/linux/misc/videotext/. (Videotext is the name of the German public television Teletext service.)
+`ftp://ftp.gwdg.de/pub/linux/misc/videotext/ <ftp://ftp.gwdg.de/pub/linux/misc/videotext/>`__. (Videotext is the name of the German public television Teletext service.)
 
 Eventually the Teletext API was integrated into the V4L API with character device file names ``/dev/vtx0`` to ``/dev/vtx31``, device major number 81, minor numbers 192 to 223.
 

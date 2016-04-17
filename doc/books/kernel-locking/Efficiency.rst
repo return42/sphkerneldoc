@@ -15,7 +15,7 @@ the lock held, and then grab the lock only when we are ready to insert it in the
 Acquisition times depend on how much damage the lock operations do to the pipeline (pipeline stalls) and how likely it is that this CPU was the last one to grab the lock (ie. is
 the lock cache-hot for this CPU): on a machine with more CPUs, this likelihood drops fast. Consider a 700MHz Intel Pentium III: an instruction takes about 0.7ns, an atomic
 increment takes about 58ns, a lock which is cache-hot on this CPU takes 160ns, and a cacheline transfer from another CPU takes an additional 170 to 360ns. (These figures from Paul
-McKenney's `Linux Journal RCU article`_).
+McKenney's `Linux Journal RCU article <http://www.linuxjournal.com/article.php?sid=6993>`__).
 
 These two aims conflict: holding a lock for a short time might be done by splitting locks into parts (such as in our final per-object-lock example), but this increases the number
 of lock acquisitions, and the results are often slower than having a single lock. This is another reason to advocate locking simplicity.
@@ -215,5 +215,3 @@ all other accesses are done as so:
 
 The ``disable_irq()`` prevents the irq handler from running (and waits for it to finish if it's currently running on other CPUs). The spinlock prevents any other accesses happening
 at the same time. Naturally, this is slower than just a ``spin_lock_irq()`` call, so it only makes sense if this type of access happens extremely rarely.
-
-.. _Linux Journal RCU article: http://www.linuxjournal.com/article.php?sid=6993

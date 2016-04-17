@@ -882,4 +882,5 @@ Deprecated Packed RGB Image Formats
 
 
 
-A test utility to determine which RGB formats a driver actually supports is available from the LinuxTV v4l-dvb repository. See https://linuxtv.org/repo/ for access instructions.
+A test utility to determine which RGB formats a driver actually supports is available from the LinuxTV v4l-dvb repository. See
+`https://linuxtv.org/repo/ <https://linuxtv.org/repo/>`__ for access instructions.

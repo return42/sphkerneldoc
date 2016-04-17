@@ -59,7 +59,8 @@ These ioctls are optional, not all drivers may support them. However when a driv
 
 ``VIDIOC_DBG_G_REGISTER`` and ``VIDIOC_DBG_S_REGISTER`` were introduced in Linux 2.6.21, but their API was changed to the one described here in kernel 2.6.29.
 
-We recommended the v4l2-dbg utility over calling these ioctls directly. It is available from the LinuxTV v4l-dvb repository; see https://linuxtv.org/repo/ for access instructions.
+We recommended the v4l2-dbg utility over calling these ioctls directly. It is available from the LinuxTV v4l-dvb repository; see
+`https://linuxtv.org/repo/ <https://linuxtv.org/repo/>`__ for access instructions.
 
 
 .. _v4l2-dbg-match:

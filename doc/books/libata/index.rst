@@ -7,8 +7,8 @@ libATA Developer's Guide
 
 **Copyright** 2003-2006 : Jeff Garzik
 
-The contents of this file are subject to the Open Software License version 1.1 that can be found at http://fedoraproject.org/wiki/Licensing:OSL1.1 and is included herein by
-reference.
+The contents of this file are subject to the Open Software License version 1.1 that can be found at
+`http://fedoraproject.org/wiki/Licensing:OSL1.1 <http://fedoraproject.org/wiki/Licensing:OSL1.1>`__ and is included herein by reference.
 
 Alternatively, the contents of this file may be used under the terms of the GNU General Public License version 2 (the "GPL") as distributed in the kernel source COPYING file, in
 which case the provisions of the GPL are applicable instead of the above. If you wish to allow the use of your version of this file only under the terms of the GPL and not to allow

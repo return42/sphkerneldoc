@@ -1,6 +1,7 @@
 
 .. _sliced:
 
+=========================
 Sliced VBI Data Interface
 =========================
 
@@ -350,7 +351,7 @@ The following subsections specify the format of the embedded sliced VBI data.
 
 
 MPEG Stream Embedded, Sliced VBI Data Format: NONE
-==================================================
+--------------------------------------------------
 
 The :ref:`V4L2_MPEG_STREAM_VBI_FMT_NONE <v4l2-mpeg-stream-vbi-fmt>` embedded sliced VBI format shall be interpreted by drivers as a control to cease embedding sliced VBI
 data in MPEG streams. Neither the device nor driver shall insert "empty" embedded sliced VBI data packets in the MPEG stream when this format is set. No MPEG stream data structures
@@ -358,7 +359,7 @@ are specified for this format.
 
 
 MPEG Stream Embedded, Sliced VBI Data Format: IVTV
-==================================================
+--------------------------------------------------
 
 The :ref:`V4L2_MPEG_STREAM_VBI_FMT_IVTV <v4l2-mpeg-stream-vbi-fmt>` embedded sliced VBI format, when supported, indicates to the driver to embed up to 36 lines of sliced VBI
 data per frame in an MPEG-2 *Private Stream 1 PES* packet encapsulated in an MPEG-2 *Program Pack* in the MPEG stream.

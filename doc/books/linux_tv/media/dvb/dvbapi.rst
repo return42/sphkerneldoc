@@ -17,78 +17,12 @@ LINUX DVB API
     net
     legacy_dvb_apis
     examples
-
-.. _audio_h:
-
-=====================
-DVB Audio Header File
-=====================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../audio.h
-
-.. _ca_h:
-
-==================================
-DVB Conditional Access Header File
-==================================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../ca.h
-
-.. _dmx_h:
-
-=====================
-DVB Demux Header File
-=====================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../dmx.h
-
-.. _frontend_h:
-
-========================
-DVB Frontend Header File
-========================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../frontend.h
-
-.. _net_h:
-
-=======================
-DVB Network Header File
-=======================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../net.h
-
-.. _video_h:
-
-=====================
-DVB Video Header File
-=====================
-
-
-.. toctree::
-    :maxdepth: 1
-
-    ../../video.h
+    audio_h
+    ca_h
+    dmx_h
+    frontend_h
+    net_h
+    video_h
 
 ======================
 Revision and Copyright

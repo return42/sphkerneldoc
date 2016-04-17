@@ -322,7 +322,7 @@ versions the framework does not hold a reference count, but they are more compli
 .. _examples-refcnt-atomic:
 
 Using Atomic Operations For The Reference Count
-===============================================
+-----------------------------------------------
 
 In practice, ``atomic_t`` would usually be used for ``refcnt``. There are a number of atomic operations defined in ``include/asm/atomic.h``: these are guaranteed to be seen
 atomically from all CPUs in the system, so no lock is required. In this case, it is simpler than using spinlocks, although for anything non-trivial using spinlocks is clearer. The

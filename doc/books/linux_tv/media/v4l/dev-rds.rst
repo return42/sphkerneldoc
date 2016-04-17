@@ -1,6 +1,7 @@
 
 .. _rds:
 
+=============
 RDS Interface
 =============
 
@@ -13,7 +14,8 @@ Note that the RBDS standard as is used in the USA is almost identical to the RDS
 different meanings. See the RBDS standard for more information.
 
 The RBDS standard also specifies support for MMBS (Modified Mobile Search). This is a proprietary format which seems to be discontinued. The RDS interface does not support this
-format. Should support for MMBS (or the so-called 'E blocks' in general) be needed, then please contact the linux-media mailing list: https://linuxtv.org/lists.php.
+format. Should support for MMBS (or the so-called 'E blocks' in general) be needed, then please contact the linux-media mailing list:
+`https://linuxtv.org/lists.php <https://linuxtv.org/lists.php>`__.
 
 
 Querying Capabilities
@@ -23,7 +25,8 @@ Devices supporting the RDS capturing API set the ``V4L2_CAP_RDS_CAPTURE`` flag i
 :ref:`VIDIOC_QUERYCAP <vidioc-querycap>` ioctl. Any tuner that supports RDS will set the ``V4L2_TUNER_CAP_RDS`` flag in the ``capability`` field of struct
 :ref:`v4l2_tuner <v4l2-tuner>`. If the driver only passes RDS blocks without interpreting the data the ``V4L2_TUNER_CAP_RDS_BLOCK_IO`` flag has to be set, see
 :ref:`Reading RDS data <reading-rds-data>`. For future use the flag ``V4L2_TUNER_CAP_RDS_CONTROLS`` has also been defined. However, a driver for a radio tuner with this
-capability does not yet exist, so if you are planning to write such a driver you should discuss this on the linux-media mailing list: https://linuxtv.org/lists.php.
+capability does not yet exist, so if you are planning to write such a driver you should discuss this on the linux-media mailing list:
+`https://linuxtv.org/lists.php <https://linuxtv.org/lists.php>`__.
 
 Whether an RDS signal is present can be detected by looking at the ``rxsubchans`` field of struct :ref:`v4l2_tuner <v4l2-tuner>`: the ``V4L2_TUNER_SUB_RDS`` will be set if RDS
 data was detected.

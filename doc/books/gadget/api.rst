@@ -209,96 +209,11 @@ Composite Device Functions
 At this writing, a few of the current gadget drivers have been converted to this framework. Near-term plans include converting all of them, except for "gadgetfs".
 
 
+.. toctree::
+    :maxdepth: 1
 
-===================================
-drivers/usb/gadget/function/f_acm.c
-===================================
-
-*man drivers/usb/gadget/function/f_acm.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_acm.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
-
-
-
-===================================
-drivers/usb/gadget/function/f_ecm.c
-===================================
-
-*man drivers/usb/gadget/function/f_ecm.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_ecm.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
-
-
-
-======================================
-drivers/usb/gadget/function/f_subset.c
-======================================
-
-*man drivers/usb/gadget/function/f_subset.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_subset.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
-
-
-
-====================================
-drivers/usb/gadget/function/f_obex.c
-====================================
-
-*man drivers/usb/gadget/function/f_obex.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_obex.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
-
-
-
-======================================
-drivers/usb/gadget/function/f_serial.c
-======================================
-
-*man drivers/usb/gadget/function/f_serial.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_serial.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
+    api-000-011-003
+    api-000-011-005
+    api-000-011-007
+    api-000-011-009
+    api-000-011-011

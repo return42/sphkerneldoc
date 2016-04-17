@@ -15,7 +15,7 @@ Overview
 .. _journaling_details:
 
 Details
-=======
+-------
 
 The journalling layer is easy to use. You need to first of all create a journal_t data structure. There are two calls to do this dependent on how you decide to allocate the
 physical media on which the journal resides. The jbd2_journal_init_inode() call is for journals stored in filesystem inodes, or the jbd2_journal_init_dev() call can be used
@@ -87,7 +87,7 @@ The opportunities for abuse and DOS attacks with this should be obvious, if you 
 .. _jbd_summary:
 
 Summary
-=======
+-------
 
 Using the journal is a matter of wrapping the different context changes, being each mount, each modification (transaction) and each changed buffer to tell the journalling layer
 about them.
@@ -105,7 +105,7 @@ cookie of some sort. Obviously the hiding is not enforced as this is 'C'.
 .. _structures:
 
 Structures
-==========
+----------
 
 
 .. toctree::
@@ -128,7 +128,7 @@ The functions here are split into two groups those that affect a journal as a wh
 .. _journal_level:
 
 Journal Level
-=============
+-------------
 
 
 .. toctree::
@@ -156,7 +156,7 @@ Journal Level
 .. _transaction_level:
 
 Transasction Level
-==================
+------------------
 
 
 .. toctree::
@@ -183,9 +183,6 @@ Transasction Level
 See also
 ========
 
-`Journaling the Linux ext2fs Filesystem, LinuxExpo 98, Stephen Tweedie`_
+`Journaling the Linux ext2fs Filesystem, LinuxExpo 98, Stephen Tweedie <http://kernel.org/pub/linux/kernel/people/sct/ext3/journal-design.ps.gz>`__
 
-`Ext3 Journalling FileSystem, OLS 2000, Dr. Stephen Tweedie`_
-
-.. _Journaling the Linux ext2fs Filesystem, LinuxExpo 98, Stephen Tweedie: http://kernel.org/pub/linux/kernel/people/sct/ext3/journal-design.ps.gz
-.. _Ext3 Journalling FileSystem, OLS 2000, Dr. Stephen Tweedie: http://olstrans.sourceforge.net/release/OLS2000-ext3/OLS2000-ext3.html
+`Ext3 Journalling FileSystem, OLS 2000, Dr. Stephen Tweedie <http://olstrans.sourceforge.net/release/OLS2000-ext3/OLS2000-ext3.html>`__

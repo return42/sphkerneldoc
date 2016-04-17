@@ -73,9 +73,6 @@ First draft.
 Further information
 ===================
 
--  `OSADL homepage.`_
+-  `OSADL homepage. <http://www.osadl.org>`__
 
--  `Linutronix homepage.`_
-
-.. _OSADL homepage.: http://www.osadl.org
-.. _Linutronix homepage.: http://www.linutronix.de
+-  `Linutronix homepage. <http://www.linutronix.de>`__

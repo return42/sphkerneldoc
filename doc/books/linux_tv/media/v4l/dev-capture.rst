@@ -1,6 +1,7 @@
 
 .. _capture:
 
+=======================
 Video Capture Interface
 =======================
 

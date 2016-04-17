@@ -189,7 +189,7 @@ In the ``probe`` callback, the following scheme is often used.
 .. _basic-flow-constructor-device-index:
 
 1) Check and increment the device index.
-========================================
+----------------------------------------
 
 
 .. code-block:: c
@@ -212,7 +212,7 @@ later (:ref:`step 7 <basic-flow-constructor-set-pci>`).
 .. _basic-flow-constructor-create-card:
 
 2) Create a card instance
-=========================
+-------------------------
 
 
 .. code-block:: c
@@ -229,7 +229,7 @@ The details will be explained in the section :ref:`Management of Cards and Compo
 .. _basic-flow-constructor-create-main:
 
 3) Create a main component
-==========================
+--------------------------
 
 In this part, the PCI resources are allocated.
 
@@ -250,7 +250,7 @@ The details will be explained in the section :ref:`PCI Resource Management <pci-
 .. _basic-flow-constructor-main-component:
 
 4) Set the driver ID and name strings.
-======================================
+--------------------------------------
 
 
 .. code-block:: c
@@ -269,7 +269,7 @@ The shortname field is a string shown as more verbose name. The longname field c
 .. _basic-flow-constructor-create-other:
 
 5) Create other components, such as mixer, MIDI, etc.
-=====================================================
+-----------------------------------------------------
 
 Here you define the basic components such as :ref:`PCM <pcm-interface>`, mixer (e.g. :ref:`AC97 <api-ac97>`), MIDI (e.g. :ref:`MPU-401 <midi-interface>`), and other
 interfaces. Also, if you want a :ref:`proc file <proc-interface>`, define it here, too.
@@ -278,7 +278,7 @@ interfaces. Also, if you want a :ref:`proc file <proc-interface>`, define it her
 .. _basic-flow-constructor-register-card:
 
 6) Register the card instance.
-==============================
+------------------------------
 
 
 .. code-block:: c
@@ -295,7 +295,7 @@ Will be explained in the section :ref:`Management of Cards and Components <card-
 .. _basic-flow-constructor-set-pci:
 
 7) Set the PCI driver data and return zero.
-===========================================
+-------------------------------------------
 
 
 .. code-block:: c

@@ -23,7 +23,7 @@ generations it's GPIO pin 6 of the Intel PCH. The GPE merely signals that an int
 
 
 Graphics mux
-============
+------------
 
 :5: http://pimg-fpiw.uspto.gov/fdd/07/870/086/0.pdf :6: http://www.nxp.com/documents/data_sheet/CBTL06141.pdf :7: http://www.ti.com/lit/ds/symlink/hd3ss212.pdf :8:
 https://www.pericom.com/assets/Datasheets/PI3VDP12412.pdf :9: http://www.ti.com/lit/ds/symlink/sn74lv4066a.pdf :10:
@@ -57,13 +57,13 @@ setting, the EFI firmware tells gmux to switch the panel and the external DP con
 
 
 Power control
-=============
+-------------
 
 gmux is able to cut power to the discrete GPU. It automatically takes care of the correct sequence to tear down and bring up the power rails for core voltage, VRAM and PCIe.
 
 
 Backlight control
-=================
+-----------------
 
 :3: http://www.ti.com/lit/ds/symlink/lp8543.pdf :4: http://www.ti.com/lit/ds/symlink/lp8545.pdf
 
@@ -73,7 +73,7 @@ models use a {4}[TI LP8545].
 
 
 Public functions
-================
+----------------
 
 
 .. toctree::

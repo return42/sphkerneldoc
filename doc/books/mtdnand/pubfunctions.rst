@@ -20,29 +20,7 @@ identifier. See the chapter "Documentation hints" for an explanation.
     API-nand-scan-tail
     API-nand-scan
     API-nand-release
-
-
-===========================
-drivers/mtd/nand/nand_bbt.c
-===========================
-
-*man drivers/mtd/nand/nand_bbt.c(None)*
-
-Document generation inconsistency
-
-
-Oops
-====
-
-    **Warning**
-
-    The template for this document tried to insert the structured comment from the file ``drivers/mtd/nand/nand_bbt.c`` at this point, but none was found. This dummy section is
-    inserted to allow generation to continue.
-
-
-.. toctree::
-    :maxdepth: 1
-
+    pubfunctions-000-012
     API---nand-calculate-ecc
     API-nand-calculate-ecc
     API---nand-correct-data

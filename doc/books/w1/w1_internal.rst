@@ -15,7 +15,7 @@ W1 API internal to the kernel
 .. _w1.h:
 
 drivers/w1/w1.h
-===============
+---------------
 
 W1 core functions.
 
@@ -33,7 +33,7 @@ W1 core functions.
 .. _w1.c:
 
 drivers/w1/w1.c
-===============
+---------------
 
 W1 core functions.
 
@@ -47,7 +47,7 @@ W1 core functions.
 .. _w1_family.h:
 
 drivers/w1/w1_family.h
-======================
+----------------------
 
 Allows registering device family operations.
 
@@ -61,7 +61,7 @@ Allows registering device family operations.
 .. _w1_family.c:
 
 drivers/w1/w1_family.c
-======================
+----------------------
 
 Allows registering device family operations.
 
@@ -75,7 +75,7 @@ Allows registering device family operations.
 .. _w1_int.c:
 
 drivers/w1/w1_int.c
-===================
+-------------------
 
 W1 internal initialization for master devices.
 
@@ -89,7 +89,7 @@ W1 internal initialization for master devices.
 .. _w1_netlink.h:
 
 drivers/w1/w1_netlink.h
-=======================
+-----------------------
 
 W1 external netlink API structures and commands.
 
@@ -106,7 +106,7 @@ W1 external netlink API structures and commands.
 .. _w1_io.c:
 
 drivers/w1/w1_io.c
-==================
+------------------
 
 W1 input/output.
 

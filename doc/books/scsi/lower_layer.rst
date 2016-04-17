@@ -19,19 +19,19 @@ In SCSI language a bus capable of carrying SCSI commands is called a "transport"
 .. _scsi_debug.c:
 
 Debug transport
-===============
+---------------
 
 The file drivers/scsi/scsi_debug.c simulates a host adapter with a variable number of disks (or disk like devices) attached, sharing a common amount of RAM. Does a lot of checking
 to make sure that we are not getting blocks mixed up, and panics the kernel if anything out of the ordinary is seen.
 
 To be more realistic, the simulated devices have the transport attributes of SAS disks.
 
-For documentation see http://sg.danny.cz/sg/sdebug26.html
+For documentation see `http://sg.danny.cz/sg/sdebug26.html <http://sg.danny.cz/sg/sdebug26.html>`__
 
 
 .. _todo:
 
 todo
-====
+----
 
 Parallel (fast/wide/ultra) SCSI, USB, SATA, SAS, Fibre Channel, FireWire, ATAPI devices, Infiniband, I20, iSCSI, Parallel ports, netlink...

@@ -5,8 +5,8 @@
 USB On-The-GO (OTG)
 ===================
 
-USB OTG support on Linux 2.6 was initially developed by Texas Instruments for `OMAP`_ 16xx and 17xx series processors. Other OTG systems should work in similar ways, but the
-hardware level details could be very different.
+USB OTG support on Linux 2.6 was initially developed by Texas Instruments for `OMAP <http://www.omap.com>`__ 16xx and 17xx series processors. Other OTG systems should work in
+similar ways, but the hardware level details could be very different.
 
 Systems need specialized hardware support to implement OTG, notably including a special *Mini-AB* jack and associated transceiver to support *Dual-Role* operation: they can act
 either as a host, using the standard Linux-USB host side driver stack, or as a peripheral, using this "gadget" framework. To do that, the system software relies on small additions
@@ -36,5 +36,3 @@ hardware-specific code for each USB Host or Peripheral controller, and how the H
 an *OTG Controller Driver*, managing the OTG transceiver and the OTG state machine logic as well as much of the root hub behavior for the OTG port. The OTG controller driver needs
 to activate and deactivate USB controllers depending on the relevant device role. Some related changes were needed inside usbcore, so that it can identify OTG-capable devices and
 respond appropriately to HNP or SRP protocols.
-
-.. _OMAP: http://www.omap.com

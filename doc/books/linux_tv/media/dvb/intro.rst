@@ -14,7 +14,7 @@ What you need to know
 The reader of this document is required to have some knowledge in the area of digital video broadcasting (DVB) and should be familiar with part I of the MPEG2 specification ISO/IEC
 13818 (aka ITU-T H.222), i.e you should know what a program/transport stream (PS/TS) is and what is meant by a packetized elementary stream (PES) or an I-frame.
 
-Various DVB standards documents are available from ``_ and/or ` <http://www.etsi.org>`__.
+Various DVB standards documents are available from http://www.dvb.org and/or http://www.etsi.org.
 
 It is also necessary to know how to access unix/linux devices and how to use ioctl calls. This also includes the knowledge of C or C++.
 
@@ -28,9 +28,9 @@ The first API for DVB cards we used at Convergence in late 1999 was an extension
 really well suited to be used for DVB cards and their new features like recording MPEG streams and filtering several section and PES data streams at the same time.
 
 In early 2000, we were approached by Nokia with a proposal for a new standard Linux DVB API. As a commitment to the development of terminals based on open standards, Nokia and
-Convergence made it available to all Linux developers and published it on ` <https://linuxtv.org>`__ in September 2000. Convergence is the maintainer of the Linux DVB API. Together
-with the LinuxTV community (i.e. you, the reader of this document), the Linux DVB API will be constantly reviewed and improved. With the Linux driver for the Siemens/Hauppauge DVB
-PCI card Convergence provides a first implementation of the Linux DVB API.
+Convergence made it available to all Linux developers and published it on https://linuxtv.org in September 2000. Convergence is the maintainer of the Linux DVB API. Together with
+the LinuxTV community (i.e. you, the reader of this document), the Linux DVB API will be constantly reviewed and improved. With the Linux driver for the Siemens/Hauppauge DVB PCI
+card Convergence provides a first implementation of the Linux DVB API.
 
 
 .. _overview:
@@ -152,5 +152,3 @@ For each of the DVB devices a corresponding include file exists. The DVB API inc
 
 To enable applications to support different API version, an additional include file ``linux/dvb/version.h`` exists, which defines the constant ``DVB_API_VERSION``. This document
 describes ``DVB_API_VERSION 5.10``.
-
-.. _: http://www.dvb.org

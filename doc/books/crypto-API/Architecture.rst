@@ -211,7 +211,7 @@ form a logical subset.
 
 
 Generic AEAD Cipher Structure
-=============================
+-----------------------------
 
 The following ASCII art decomposes the kernel crypto API layers when using the AEAD cipher with the automated IV generation. The shown example is used by the IPSEC layer.
 
@@ -295,7 +295,7 @@ When the IPSEC layer triggers the esp_input() function, the same call sequence i
 
 
 Generic Block Cipher Structure
-==============================
+------------------------------
 
 Generic block ciphers follow the same concept as depicted with the ASCII art picture above.
 
@@ -304,7 +304,7 @@ block chaining mode is CBC.
 
 
 Generic Keyed Message Digest Structure
-======================================
+--------------------------------------
 
 Keyed message digest implementations again follow the same concept as depicted in the ASCII art picture above.
 

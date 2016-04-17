@@ -17,7 +17,7 @@ Chip option constants
 .. _Constants_for_chip_id_table:
 
 Constants for chip id table
-===========================
+---------------------------
 
 These constants are defined in nand.h. They are ored together to describe the chip functionality.
 
@@ -43,7 +43,7 @@ These constants are defined in nand.h. They are ored together to describe the ch
 .. _Constants_for_runtime_options:
 
 Constants for runtime options
-=============================
+-----------------------------
 
 These constants are defined in nand.h. They are ored together to describe the functionality.
 

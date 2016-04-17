@@ -15,7 +15,7 @@ SH-4
 .. _sq:
 
 Store Queue API
-===============
+---------------
 
 
 .. toctree::
@@ -34,7 +34,7 @@ SH-5
 .. _tlb:
 
 TLB Interfaces
-==============
+--------------
 
 
 .. toctree::

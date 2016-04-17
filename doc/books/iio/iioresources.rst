@@ -18,6 +18,6 @@ Resources
 
 Besides the code, there are some good online documentation sources:
 
--  Industrial I/O mailing list
--  Analog Device IIO wiki page
--  Using the Linux IIO framework for SDR, Lars-Peter Clausen's presentation at FOSDEM
+-  !ri!`Industrial I/O mailing list <http://marc.info/?l=linux-iio>`__
+-  !ri!`Analog Device IIO wiki page <http://wiki.analog.com/software/linux/docs/iio/iio>`__
+-  !ri!`Using the Linux IIO framework for SDR, Lars-Peter Clausen's presentation at FOSDEM <https://fosdem.org/2015/schedule/event/iiosdr/>`__

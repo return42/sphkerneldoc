@@ -20,7 +20,7 @@ be used by user space applications that require cryptographic services from the 
 Some details of the in-kernel kernel crypto API aspects do not apply to user space, however. This includes the difference between synchronous and asynchronous invocations. The user
 space API call is fully synchronous.
 
-[1] http://www.chronox.de/libkcapi.html
+[1] `http://www.chronox.de/libkcapi.html <http://www.chronox.de/libkcapi.html>`__
 
 
 User Space API General Remarks
@@ -197,7 +197,7 @@ The authenticated decryption operation may indicate an integrity error. Such bre
 
 
 AEAD Memory Structure
-=====================
+---------------------
 
 The AEAD cipher operates with the following information that is communicated between user and kernel space as one data stream:
 
@@ -304,4 +304,4 @@ User space API example
 Please see [1] for libkcapi which provides an easy-to-use wrapper around the aforementioned Netlink kernel interface. [1] also contains a test application that invokes all libkcapi
 API calls.
 
-[1] http://www.chronox.de/libkcapi.html
+[1] `http://www.chronox.de/libkcapi.html <http://www.chronox.de/libkcapi.html>`__

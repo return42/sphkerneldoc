@@ -84,7 +84,7 @@ There are some exceptions:
 .. _control-interface-control-names-global:
 
 Global capture and playback
-===========================
+---------------------------
 
 “Capture Source”, “Capture Switch” and “Capture Volume” are used for the global capture (input) source, switch and volume. Similarly, “Playback Switch” and “Playback Volume” are
 used for the global output gain switch and volume.
@@ -93,7 +93,7 @@ used for the global output gain switch and volume.
 .. _control-interface-control-names-tone:
 
 Tone-controls
-=============
+-------------
 
 tone-control switch and volumes are specified like “Tone Control - XXX”, e.g. “Tone Control - Switch”, “Tone Control - Bass”, “Tone Control - Center”.
 
@@ -101,7 +101,7 @@ tone-control switch and volumes are specified like “Tone Control - XXX”, e.g
 .. _control-interface-control-names-3d:
 
 3D controls
-===========
+-----------
 
 3D-control switches and volumes are specified like “3D Control - XXX”, e.g. “3D Control - Switch”, “3D Control - Center”, “3D Control - Space”.
 
@@ -109,7 +109,7 @@ tone-control switch and volumes are specified like “Tone Control - XXX”, e.g
 .. _control-interface-control-names-mic:
 
 Mic boost
-=========
+---------
 
 Mic-boost switch is set as “Mic Boost” or “Mic Boost (6dB)”.
 
@@ -142,7 +142,7 @@ Callbacks
 .. _control-interface-callbacks-info:
 
 info callback
-=============
+-------------
 
 The ``info`` callback is used to get detailed information on this control. This must store the values of the given struct ``snd_ctl_elem_info`` object. For example, for a boolean
 control with a single element:
@@ -207,7 +207,7 @@ a mono channel boolean item, just like ``snd_myctl_mono_info`` above, and the la
 .. _control-interface-callbacks-get:
 
 get callback
-============
+------------
 
 This callback is used to read the current value of the control and to return to user-space.
 
@@ -253,7 +253,7 @@ In the ``get`` callback, you have to fill all the elements if the control has mo
 .. _control-interface-callbacks-put:
 
 put callback
-============
+------------
 
 This callback is used to write a value from user-space.
 
@@ -284,7 +284,7 @@ As in the ``get`` callback, when the control has more than one elements, all ele
 .. _control-interface-callbacks-all:
 
 Callbacks are not atomic
-========================
+------------------------
 
 All these three callbacks are basically not atomic.
 

@@ -102,7 +102,7 @@ If there is more than one port, your callbacks can determine the port index from
 .. _rawmidi-interface-op-open:
 
 open callback
-=============
+-------------
 
 
 .. code-block:: c
@@ -115,7 +115,7 @@ This is called when a substream is opened. You can initialize the hardware here,
 .. _rawmidi-interface-op-close:
 
 close callback
-==============
+--------------
 
 
 .. code-block:: c
@@ -130,7 +130,7 @@ The ``open`` and ``close`` callbacks of a rawmidi device are serialized with a m
 .. _rawmidi-interface-op-trigger-out:
 
 trigger callback for output substreams
-======================================
+--------------------------------------
 
 
 .. code-block:: c
@@ -176,7 +176,7 @@ The ``trigger`` callback is called with a zero ``up`` parameter when the transmi
 .. _rawmidi-interface-op-trigger-in:
 
 trigger callback for input substreams
-=====================================
+-------------------------------------
 
 
 .. code-block:: c
@@ -205,7 +205,7 @@ When data reception is enabled, your interrupt handler should call ``snd_rawmidi
 .. _rawmidi-interface-op-drain:
 
 drain callback
-==============
+--------------
 
 
 .. code-block:: c

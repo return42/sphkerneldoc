@@ -136,7 +136,7 @@ kgdboc internals
 
 
 kgdboc and uarts
-================
+----------------
 
 The kgdboc driver is actually a very thin driver that relies on the underlying low level to the hardware driver having "polling hooks" to which the tty driver is attached. In the
 initial implementation of kgdboc the serial_core was changed to expose a low level UART hook for doing polled mode reading and writing of a single character while in an atomic
@@ -160,7 +160,7 @@ You need to be very careful with any kind of lock you consider, because failing 
 .. _kgdbocKbd:
 
 kgdboc and keyboards
-====================
+--------------------
 
 The kgdboc driver contains logic to configure communications with an attached keyboard. The keyboard infrastructure is only compiled into the kernel when CONFIG_KDB_KEYBOARD=y is
 set in the kernel configuration.
@@ -172,7 +172,7 @@ the array called ``kdb_poll_funcs[]``. The kdb_get_kbd_char() is the top-level f
 .. _kgdbocKms:
 
 kgdboc and kms
-==============
+--------------
 
 The kgdboc driver contains logic to request the graphics display to switch to a text context when you are using "kgdboc=kms,kbd", provided that you have a video driver which has a
 frame buffer console and atomic kernel mode setting support.

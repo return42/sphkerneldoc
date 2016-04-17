@@ -29,7 +29,7 @@ tool to aid in diagnosing crashes or doing analysis of memory with kdb while all
 .. _kgdbocArgs:
 
 kgdboc arguments
-================
+----------------
 
 Usage: ``kgdboc=[kms][[,]kbd][[,]serial_device][,baud]``
 
@@ -48,7 +48,7 @@ be observed if you use any of the optional configurations together. Using kms + 
 .. _kgdbocArgs1:
 
 Using loadable module or built-in
-=================================
++++++++++++++++++++++++++++++++++
 
 1. As a kernel built-in:
 
@@ -69,7 +69,7 @@ Using loadable module or built-in
 .. _kgdbocArgs2:
 
 Configure kgdboc at runtime with sysfs
-======================================
+++++++++++++++++++++++++++++++++++++++
 
 At run time you can enable or disable kgdboc by echoing a parameters into the sysfs. Here are two examples:
 
@@ -87,7 +87,7 @@ NOTE: You do not need to specify the baud if you are configuring the console on 
 .. _kgdbocArgs3:
 
 More examples
-=============
++++++++++++++
 
 You can configure kgdboc to use the keyboard, and/or a serial device depending on if you are using kdb and/or kgdb, in one of the following scenarios.
 
