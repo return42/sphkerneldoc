@@ -148,7 +148,7 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 
     files_with_broken_tables = ["kernel-locking/cheatsheet", ]
 
-    chunkPathes = ["part", "chapter", "part/chapter", ".//refentry" ]
+    chunkPathes = ["book", "part", "chapter", ".//refentry"]
     folder = CACHE / origFile.SKIPSUFFIX
 
     MSG("==== convert DocBook %s to reST / chunking: %s ===="

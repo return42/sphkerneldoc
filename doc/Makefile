@@ -68,40 +68,49 @@ DOCBOOKS := z8530book.xml device-drivers.xml \
 help:
 	@echo "Please use \`make <target>' where <target> is one of ..."
 	@echo
-	@echo "  allhtml   : builds all HTML targets ..."
-	@echo "  mainpage  : build HTML main-page"
-	@echo "  htmlbooks : build HTML books from the reST files (see rstbooks)"
-	@echo "  htmlsrc   : build HTML of source-code reST files (see src2rst)"
-	@echo "  miscdoc   : build HTML from misc reST files (see txt2rst)"
+	@echo "  all-HTML : builds all HTML targets:"
 	@echo
-	@echo "  make {book} [target] builds only the HTML of {book}",
-	@echo "  valid values for {book} are: \n\n     $(BOOKS)" | $(FMT)
+	@echo "    mainpage  : build HTML main-page"
+	@echo "    htmlbooks : build HTML books from the reST files (see dbxml2rst)"
+	@echo "    htmlsrc   : build HTML of source-code reST files (see src2rst)"
+	@echo "    miscdoc   : build HTML from misc reST files (see txt2rst)"
 	@echo
-	@echo "  media2rst : convert linux_tv (media book) DocBook-XML to reST"
-	@echo "  rstbooks  : convert kernel's DocBook-XML books to reST"
-	@echo "  src2rst   : generate reST documentation from source code"
-	@echo "  txt2rst   : build reST from misc. kernel doc text files"
+	@echo "  make {book} : builds only the HTML of {book}, valid"
+	@echo "                values for {book} are: \n\n    $(BOOKS)" | $(FMT)
+	@echo
+	@echo "  all-reST : builds all reST targets:"
+	@echo
+	@echo "    dbxml2rst : convert kernel's DocBook-XML books to reST"
+	@echo "    media2rst : convert linux_tv (media book) DocBook-XML to reST"
+	@echo "    src2rst   : generate reST documentation from source code"
+	@echo "    txt2rst   : build reST from misc. linux/Documentaion text files"
 	@echo
 	@echo "  .. hint:"
 	@echo
-	@echo "      The reST files are versioned within this reposetory."
+	@echo "    The reST files are versioned within *this* reposetory."
 	@echo
-	@echo "  make {fname}.rst converts only {filename}.xml to reST,"
-	@echo "  valid values for {filename} are: \n\n    $(RST)" | $(FMT)
+	@echo "  make {fname} : converts only {fname}.xml to reST, valid"
+	@echo "                 values for {fname} are: \n\n   $(RST)" | $(FMT)
 	@echo
 
 # ------------------------------------------------------------------------------
-# github-pages
+# main targets
 # ------------------------------------------------------------------------------
 
-.PHONY: allhtml
-allhtml: mainpage htmlbooks htmlsrc miscdoc
+# update reST in reposetory
+.PHONY: all-reST
+all-reST: dbxml2rst media2rst src2rst txt2rst
 
-.PHONY: clean-allhtml
-clean-allhtml: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
+# update github-pages
+.PHONY: all-HTML
+all-HTML: mainpage htmlbooks htmlsrc miscdoc
+
+.PHONY: clean-HTML
+clean-HTML: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
 
 $(GH_PAGES):
 	mkdir $(GH_PAGES)
+
 
 # ------------------------------------------------------------------------------
 # mainpage
@@ -124,7 +133,7 @@ clean-mainpage:
 # --------------------
 
 RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
-rstbooks: $(RST)
+dbxml2rst: $(RST)
 
 .PHONY:	$(RST)
 $(RST):
@@ -149,7 +158,7 @@ $(BOOKS): | $(GH_PAGES)
 book-dirs := $(addprefix $(GH_PAGES)/, $(BOOKS))
 book-doctrees := $(addprefix $(CACHE)/doctrees/, $(BOOKS))
 
-.PHONY: clean-books
+.PHONY: clean-htmlbooks
 clean-htmlbooks:
 	rm -rf $(book-dirs) $(book-doctrees)
 

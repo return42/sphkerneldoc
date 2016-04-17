@@ -6,6 +6,12 @@
 
 source $(dirname ${BASH_SOURCE[0]})/setup.sh
 
+# TODO:
+# grep -h "^\!" linux/Documentation/DocBook/*.tmpl | sed -e 's/^..\([^ ]*\).*$/\1/g' | uniq -u > ../db_tmpl_filelist.txt
+# grep -lR "^EXPORT_SYMBOL" linux > export_symbol_filelist.txt
+# cat db_tmpl_filelist.txt export_symbol_filelist.txt | sort | uniq -u > src_filelist
+
+
 # ----------------------------------------------------------------------------
 # Config
 # ----------------------------------------------------------------------------

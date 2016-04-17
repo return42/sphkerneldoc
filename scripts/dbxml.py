@@ -152,10 +152,10 @@ def hook_copy_file_resource(srcFolder):
         dstFolder.makedirs()
 
         for tag in filerefList:
-            fileref = FSPath(tag.get("fileref"))
+            fileref = FSPath(tag.get("fileref")).BASENAME
             src = next(srcFolder.reMatchFind(fileref), None)
             if src is None:
-                raise Exception("fileref: %s does not exists" % fileref)
+                raise Exception("fileref: %s could not found in %s" % (fileref, srcFolder))
             src.copyfile(dstFolder)
             tag.set("fileref", resFolder / fileref )
             #SDK.CONSOLE()
@@ -179,22 +179,38 @@ def hook_chunk_by_tag(*chunkPathes):
         # run this hook only on the root node
         if node.getparent() is not None:
             return node
+        realNode = node
+
+        if (node.tag == "dummy"
+            and len(node) == 1
+            and node[0].get("chunkNode") is not None):
+            realNode = node[0]
 
         for tag in chunkPathes:
-            chunkNodes = node.findall("%s" % tag)
+            chunkNodes = realNode.findall("%s" % tag)
             for elem in chunkNodes:
                 if elem.get("chunkNode") is not None:
                     continue
                 ID = elem.get("id")
                 if ID is None:
-                    #SDK.CONSOLE()
-                    #raise Exception("chunk by tag requires a ID attribute")
-                    continue
+                    # generate unique ID by counting preceding siblings on any
+                    # hierarchy level.
+                    _p = elem
+                    ID = []
+                    while _p is not None:
+                        if _p.tag == "dummy":
+                            break
+                        ID.insert(0, len(list(_p.itersiblings(preceding=True))))
+                        _p = _p.getparent()
+                    ID = "-".join(["%03d" % x for x in ID])
+                    ID = "%s-%s" % (parseData.fname.BASENAME.SKIPSUFFIX, ID)
                 ext_entity = parseData.fname.DIRNAME / ("%s.xml" % ID)
                 XMLTag.chunkNode(
                     elem
                     , parseData.folder
                     , ext_entity.suffix(parseData.fname.SUFFIX))
+            if len(chunkNodes):
+                break
         return node
     return hookFunc
 
@@ -253,6 +269,23 @@ def hook_fix_broken_tables(fname_list=None, id_list=None):
         return node
     return hookFunc
 
+# ==============================================================================
+def hook_replaceTag(id2TagMap):
+# ==============================================================================
+
+    id2TagMap = id2TagMap
+
+    def hookFunc(node, rstPrefix, parseData):
+        # run this hook only on the root node
+        if node.getparent() is not None:
+            return node
+        for ID, newTag in id2TagMap.items():
+            elem = node.find(".//*[@id='%s']" % ID)
+            if elem is not None:
+                newNode = XMLTag.copyNode(elem, newTag, moveID=True)
+                XMLTag.replaceNode(elem, newNode)
+        return node
+    return hookFunc
 
 # ==============================================================================
 class XMLTagType(type):
@@ -413,6 +446,8 @@ class XMLTag(metaclass=XMLTagType):
         new.text = node.text
         new.tail = node.tail
         new[:] = node
+        for k,v in node.items():
+            new.set(k, v)
         if moveID:
             ID = node.get("id")
             if ID is not None:
@@ -616,7 +651,6 @@ class LinkTag(XMLTag):
     def replaceText(self, node, rstPrefix):
         ctx = self.getContext(node)
         rst = self.rstMarkup
-        # FIXME: droped ref-text, because it is (mostly) redundant and long refs are killed by tables
         if not ctx.text:
             rst = ":ref:`%(linkend)s`"
         return rst % ctx
@@ -625,6 +659,25 @@ class LinkTag(XMLTag):
 class Link(LinkTag): pass
 class Xref(LinkTag): pass
 # ------------------------------------------------------------------------------
+
+# ==============================================================================
+class Ulink(LinkTag):
+# ==============================================================================
+
+    rstMarkup = "`%(text)s <%(linkend)s>`__"
+
+    def getContext(self, node):
+        ctx = super().getContext(node)
+        ctx.linkend = self.normalizeID(node.attrib.get("url"))
+        return ctx
+
+    def replaceText(self, node, rstPrefix):
+        ctx = self.getContext(node)
+        rst = self.rstMarkup
+        # FIXME: droped ref-text, because it is (mostly) redundant and long refs are killed by tables
+        if not ctx.text:
+            rst = "%(linkend)s"
+        return rst % ctx
 
 # ==============================================================================
 class Constant(XMLTag):
@@ -724,10 +777,30 @@ class StructureTag(XMLTag):
         #print("%r preText -->|%s|<--" % (node, (rst % ctx)))
         return rst % ctx
 
+# ==============================================================================
+class Section(StructureTag):
+# ==============================================================================
+
+    rstTitleMarkup = "="
+    def applyFilter(self, node, rstPrefix):
+        sectLevel = 0
+        parent = node.getparent()
+        while parent is not None:
+            if parent.tag in ["section",]:
+                #SDK.CONSOLE()
+                sectLevel += 1
+            parent = parent.getparent()
+        self.rstTitleMarkup = "=-+~.^"[sectLevel]
+        super().applyFilter(node, rstPrefix="")
+
+    def rstTitle(self, title):
+        return ("\n" + title
+                + "\n" + (self.rstTitleMarkup * len(title))
+                + "\n\n")
+
 # ------------------------------------------------------------------------------
 class Appendix(StructureTag):       replaceTag = "chapter"
 class Bibliography(StructureTag):   replaceTag = "chapter"
-class Section(StructureTag):        rstTitleMarkup = "="
 class Legalnotice(StructureTag):    replaceTag = "section"
 class Para(StructureTag):           pass
 class Sect1(StructureTag):          replaceTag = "section"
@@ -758,9 +831,10 @@ class Part(StructureTag):
         return ("\n"   + (cls.rstTitleMarkup * len(title))
                 + "\n" + title
                 + "\n" + (cls.rstTitleMarkup * len(title))
-                + "\n")
+                + "\n\n")
 
 class Bookinfo(StructureTag): replaceTag = "part"
+class Setinfo(StructureTag): replaceTag = "part"
 
 # ------------------------------------------------------------------------------
 class Chapter(StructureTag):
@@ -1326,7 +1400,7 @@ class Biblioentry(XMLTag):
     def preText(self, node, rstPrefix):
         ctx = self.getContext(node)
         rst = "\n" if not ctx.ID else self.rstAnchor
-        if ctx.abbrev:       rst += Section.rstTitle(ctx.abbrev)
+        if ctx.abbrev:       rst += Section().rstTitle(ctx.abbrev)
         if ctx.title:        rst += "\n:title:     %(title)s"
         if ctx.subtitle:     rst += "\n:subtitle:  %(subtitle)s"
 

@@ -373,8 +373,8 @@ my $doc_com = '\s*\*\s*';
 my $doc_com_body = '\s*\* ?';
 my $doc_decl = $doc_com . '(\w+)';
 
-#my $doc_sect = $doc_com . '([' . $doc_special . ']?[\w\s]+):(.*)'; # this matches normal lines like "lorem items:\n item1\n item2"
-my $doc_sect = $doc_com . '([' . $doc_special . '][\w\s]+):(.*)';
+my $doc_sect = $doc_com . '([' . $doc_special . ']?[\w\s]+):(.*)'; # this matches normal lines like "lorem items:\n item1\n item2"
+#my $doc_sect = $doc_com . '([' . $doc_special . '][\w\s]+):(.*)';
 my $doc_content = $doc_com_body . '(.*)';
 my $doc_block = $doc_com . 'DOC:\s*(.*)?';
 my $doc_split_start = '^\s*/\*\*\s*$';
@@ -1737,6 +1737,27 @@ sub output_blockhead_text(%) {
 # output in reStructuredText (reST)
 # ------------------------------------------------------------------------------
 
+sub escape_line_rst {
+    my $l = shift;
+    $l =~ s/\\\\\\/\&/g;               # broken \\\\amp replacement
+    #$l =~ s/\*``/\\\*``/g;             # leading pointer at inline: *``foo``
+    #$l =~ s/``([\*<])/``\\$1/g;        # trailing pointer at inline: ``foo``*
+    #$l =~ s/(\*[a-zA-Z_0-9-]+[^\*])/\\$1/g; # leading pointer at word: lorem *foo ipsum
+
+    # mask trailing "foo_*"
+    $l =~ s/_\*/\\_\\*/g;
+
+    # do not use pointer as inline markup
+    $l =~ s/([a-zA-Z_0-9-`]+)\*([^\*])/$1\\*$2/g;
+    $l =~ s/([^\*])\*([a-zA-Z_0-9-`]+)/$1\\*$2/g;
+
+    # escape vectors at the end of constants
+    $l =~ s/(``[a-zA-Z_0-9-]+``)([^\s])/$1\\ $2/g;
+    $l =~ s/([^\s])(``[a-zA-Z_0-9-]+``)/$1\\ $2/g;
+    return $l;
+}
+
+
 sub reformat_block_rst {
     my $contents = shift;
     my @lines;
@@ -1748,22 +1769,9 @@ sub reformat_block_rst {
     $contents =~ s/\t/        /g; # untabify
     foreach $l (split "\n", $contents) {
         if (! $l eq "") {
-            $l =~ s/\\\\\\/\&/g;               # broken \\\\amp replacement
-            #$l =~ s/\*``/\\\*``/g;             # leading pointer at inline: *``foo``
-            #$l =~ s/``([\*<])/``\\$1/g;        # trailing pointer at inline: ``foo``*
-            #$l =~ s/(\*[a-zA-Z_0-9-]+[^\*])/\\$1/g; # leading pointer at word: lorem *foo ipsum
-
-            # do not use pointer as inline markup
-            $l =~ s/([a-zA-Z_0-9-`]+)\*([^\*])/$1\\*$2/g;
-            $l =~ s/([^\*])\*([a-zA-Z_0-9-`]+)/$1\\*$2/g;
-
-            # escape vators at the end of constants
-            $l =~ s/(``[a-zA-Z_0-9-]+``)([^\s])/$1\\ $2/g;
-            $l =~ s/([^\s])(``[a-zA-Z_0-9-]+``)/$1\\ $2/g;
-
+            $l = escape_line_rst($l);
             # Use indentation of the very first line as *common whitespace
             # prefix* which is not needed for a block layout.
-
             if ($common_prefix eq "unknown") {
                 if ($l =~ m/^(\s*)/ ) {
                     $common_prefix = $1;
@@ -1793,12 +1801,22 @@ sub reformat_block_rst {
                         $pointer--;
                     }
                     my $lastline = $lines[$pointer];
-                    if ($l =~ m/^[-+\*0-9]+[\.\)]?\s+/i) {
+                    if ($l =~ m/^\s*[-+\*0-9]+[\.\)]?\s+/i) {
                         # This is a indented list
                         $stripleadingws = 0;
-                    } elsif ($lastline =~ m/^[-+\*0-9]+[\.\)]?\s+/i) {
+                        if ($pointer == -1) {
+                            # add the missing line to delemit the next block
+                            push @lines, "";
+                            $pointer--;
+                        }
+                    } elsif ($lastline =~ m/^\s*[-+\*0-9]+[\.\)]?\s+/i) {
                         # This is new line of an unindent list item
                         $stripleadingws = 0;
+                        if ($pointer == -1) {
+                            # add the missing line to delemit the next block
+                            push @lines, "";
+                            $pointer--;
+                        }
                     } elsif (substr($lastline, -1) eq ":"){
                         # last line ends with ":" we treat this as a literalblock
                         if (substr($lastline, -2) ne "::") {
@@ -1809,7 +1827,7 @@ sub reformat_block_rst {
                                 $pointer--;
                             }
                         }
-                    } elsif (substr($lines[$pointer], -1) eq "."){
+                    } elsif ( ($lines[-1] eq "") && (substr($lines[$pointer], -1) eq ".")) {
                         # last line ends with "." we treat this as a literalblock
                         $lines[$pointer] = $lines[$pointer] . "::";
                         if ($pointer == -1) {
@@ -1849,8 +1867,11 @@ sub output_highlight_rst {
 
     # undo the evil effects of xml_escape() earlier
     $contents = xml_unescape($contents);
+
+#   print STDERR "contents b4:$contents\n";
     eval $dohighlight;
     die $@ if $@;
+#   print STDERR "contents af:$contents\n";
 
     if (! $output_preformatted) {
         $contents = reformat_block_rst($contents);
@@ -1881,7 +1902,7 @@ sub output_anchor_rst {
     }
     $id =~ s/[^A-Za-z0-9\._]/-/g;
     $id = lc $id;
-    print "\n" . ".. _`" . $id . "`:\n";
+    print "\n\n" . ".. _`" . $id . "`:\n";
 }
 
 sub output_section_rst(%) {
@@ -1940,14 +1961,16 @@ sub output_blockhead_rst(%) {
 
 sub output_function_rst(%) {
     my %args = %{$_[0]};
-    my ($functype, $parameter, $section, $header);
+    my ($functype, $parameter, $section);
     my $start;
 
-    $header = strip($args{'function'});
-    output_anchor_rst($header, $args{'module'});
+    my $name   = strip($args{'function'});
+    my $header = strip($args{'function'});
+
+    output_anchor_rst($name, $args{'module'});
 
     print "\n" . $header . "\n";
-    print "=" x length($args{'function'});
+    print "=" x length($header);
 
     print "\n\n.. c:function:: ";
     $functype = $args{'functiontype'};
@@ -1955,12 +1978,12 @@ sub output_function_rst(%) {
     if ($functype ne "") {
         if ($functype =~ m/\*$/) {
             # pointer
-	    $start = $functype . $args{'function'} . " (";
+	    $start = $functype . $name . " (";
 	} else {
-            $start = $functype . " " . $args{'function'} . " (";
+            $start = $functype . " " . $name . " (";
         }
     } else {
-	$start = $args{'function'} . " (";
+	$start = $name . " (";
     }
     print $start;
 
@@ -1985,7 +2008,7 @@ sub output_function_rst(%) {
     }
     print ")\n\n";
     if (strip($args{'purpose'})) {
-        print "    " . xml_unescape($args{'purpose'}) . "\n\n";
+        print "    " . escape_line_rst(xml_unescape($args{'purpose'})) . "\n\n";
     }
     if ($#{$args{'parameterlist'}} >= 0) {
         foreach $parameter (@{$args{'parameterlist'}}) {
@@ -2028,7 +2051,7 @@ sub output_function_rst(%) {
             print "\n";
         }
     }
-    $id_prefix = $header;
+    $id_prefix = $name;
     output_section_rst(@_);
     $id_prefix = "";
 }
@@ -2038,70 +2061,106 @@ sub output_enum_rst(%) {
     my %args = %{$_[0]};
     my ($parameter);
     my $count;
-    my $name = "enum " . $args{'enum'};
 
-    output_anchor_rst(strip($args{'enum'}), $args{'module'});
+    my $name   = strip($args{'enum'});
+    my $header = "enum " . $name;
 
-    print "\n" . $name . "\n";
-    print "=" x length($name);
+    output_anchor_rst($name, $args{'module'});
+
+    print "\n" . $header . "\n";
+    print "=" x length($header);
+
+    # .. c:type:: name // The signature should just be the type name.
 
     print "\n\n.. c:type:: " . $name . "\n\n";
-    print "    " . $args{'purpose'} . "\n\n";
+    print "    " . $args{'purpose'} . "\n";
 
-    print "\n\n" . "Constants" . "\n";
+    $id_prefix = $name;
+    output_anchor_rst("definition", $args{'module'});
+    $id_prefix = "";
+    print "\n" . "Definition" . "\n";
+    print "-" x length("Definition");
+    print "\n";
+
+    print "\n.. code-block:: c\n\n";
+    print "    enum " . $name . " {\n";
+    $count = 0;
+    foreach $parameter (@{$args{'parameterlist'}}) {
+	print "      $parameter";
+	if ($count != $#{$args{'parameterlist'}}) {
+	    $count++;
+	    print ",";
+	}
+	print "\n";
+    }
+    print "    };\n";
+
+    $id_prefix = $name;
+    output_anchor_rst("constants", $args{'module'});
+    $id_prefix = "";
+    print "\n" . "Constants" . "\n";
     print "-" x length("Constants");
-    print "\n\n";
+    print "\n";
 
     foreach $parameter (@{$args{'parameterlist'}}) {
-        $lineprefix="    ";
-	print ":``$parameter``:\n";
+	print "\n:``$parameter``:\n";
 	if ($args{'parameterdescs'}{$parameter} ne $undescribed) {
+            $lineprefix="    ";
 	    output_highlight_rst($args{'parameterdescs'}{$parameter});
+            $lineprefix="";
 	} else {
 	    print $lineprefix . "-- undescribed --\n";
 	}
-        $lineprefix="";
-	print "\n";
     }
+    $id_prefix = $name;
     output_section_rst(@_);
+    $id_prefix = "";
 }
 
 sub output_typedef_rst(%) {
     my %args = %{$_[0]};
     my ($parameter);
     my $count;
-    my $name = "typedef " . $args{'typedef'};
 
-    output_anchor_rst(strip($args{'typedef'}), $args{'module'});
+    my $name   = strip($args{'typedef'});
+    my $header = "typedef " . $name;
 
-    print "\n" . $args{'name'} . "\n";
-    print "=" x length($args{'name'});
+    output_anchor_rst($name, $args{'module'});
 
-    ### FIXME: should the name below contain "typedef" or not?
+    print "\n" . $header . "\n";
+    print "=" x length($header);
+
     print "\n\n.. c:type:: " . $name . "\n\n";
     print "    " . $args{'purpose'} . "\n\n";
 
+    $id_prefix = $name;
     output_section_rst(@_);
+    $id_prefix = "";
 }
 
 sub output_struct_rst(%) {
     my %args = %{$_[0]};
     my ($parameter);
-    my $name = $args{'type'} . " " . $args{'struct'};
 
-    output_anchor_rst(strip($args{'struct'}), $args{'module'});
+    my $name   = strip($args{'struct'});
+    my $header = $args{'type'} . " " . $name;
 
-    print "\n" . $name . "\n";
-    print "=" x length($name);
+    output_anchor_rst($name, $args{'module'});
+
+    print "\n" . $header . "\n";
+    print "=" x length($header);
 
     print "\n\n.. c:type:: " . $name . "\n\n";
-    print "    " . $args{'purpose'} . "\n\n";
+    print "    " . $args{'purpose'} . "\n";
 
-    print "\n\n" . "Definition" . "\n";
+    $id_prefix = $name;
+    output_anchor_rst("definition", $args{'module'});
+    $id_prefix = "";
+    print "\n" . "Definition" . "\n";
     print "-" x length("Definition");
-    print "\n\n";
+    print "\n";
 
-    print ".. code-block:: c\n\n";
+    print "\n.. code-block:: c\n\n";
     print "  " . $args{'type'} . " " . $args{'struct'} . " {\n";
     foreach $parameter (@{$args{'parameterlist'}}) {
 	if ($parameter =~ /^#/) {
@@ -2124,13 +2183,16 @@ sub output_struct_rst(%) {
 	    print "    " . $type . " " . $parameter . ";\n";
 	}
     }
-    print "  };\n\n";
+    print "  };\n";
 
-    print "\n\n" . "Members" . "\n";
+    $id_prefix = $name;
+    output_anchor_rst("members", $args{'module'});
+    $id_prefix = "";
+
+    print "\n" . "Members" . "\n";
     print "-" x length("Members");
     print "\n\n";
 
-    $lineprefix="    ";
     foreach $parameter (@{$args{'parameterlist'}}) {
 	($parameter =~ /^#/) && next;
 
@@ -2138,15 +2200,18 @@ sub output_struct_rst(%) {
 	$parameter_name =~ s/\[.*//;
 
 	($args{'parameterdescs'}{$parameter_name} ne $undescribed) || next;
-	#$type = $args{'parametertypes'}{$parameter};
-	#print ":``$type $parameter``:" . "\n";
-	print ":``$parameter``:" . "\n";
-	output_highlight_rst($args{'parameterdescs'}{$parameter_name});
+
+        print ":``$parameter``:" . "\n";
+        $lineprefix="    ";
+        output_highlight_rst($args{'parameterdescs'}{$parameter_name});
+        $lineprefix="";
 	print "\n";
     }
-    $lineprefix="";
     print "\n";
+
+    $id_prefix = $name;
     output_section_rst(@_);
+    $id_prefix = "";
 }
 
 
@@ -2642,7 +2707,10 @@ sub dump_function($$) {
         $return_type = $1;
         $declaration_name = $2;
         $noret = 1;
-    } elsif ($prototype =~ m/^()([a-zA-Z0-9_~:]+)\s*\(([^\(]*)\)/ ||
+    } elsif (
+        # match: void (*foo) (int bar);
+	$prototype =~ m/^(\w+)\s+\(\*([a-zA-Z0-9_]+)\)\s*\(([^\(]*)\)/ ||
+        $prototype =~ m/^()([a-zA-Z0-9_~:]+)\s*\(([^\(]*)\)/ ||
 	$prototype =~ m/^(\w+)\s+([a-zA-Z0-9_~:]+)\s*\(([^\(]*)\)/ ||
 	$prototype =~ m/^(\w+\s*\*)\s*([a-zA-Z0-9_~:]+)\s*\(([^\(]*)\)/ ||
 	$prototype =~ m/^(\w+\s+\w+)\s+([a-zA-Z0-9_~:]+)\s*\(([^\(]*)\)/ ||
@@ -2661,6 +2729,8 @@ sub dump_function($$) {
 	$prototype =~ m/^(\w+\s+\w+\s*\*\s*\w+\s*\*\s*)\s*([a-zA-Z0-9_~:]+)\s*\(([^\{]*)\)/)  {
 	$return_type = $1;
 	$declaration_name = $2;
+        # print STDERR "xxxxxxxxxx $return_type\n";
+        # print STDERR "xxxxxxxxxx $declaration_name\n";
 	my $args = $3;
 
 	create_parameterlist($args, ',', $file);
