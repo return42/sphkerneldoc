@@ -4,16 +4,18 @@
 drm_fb_helper.h
 ===============
 
+
 .. _`drm_fb_helper_surface_size`:
 
 struct drm_fb_helper_surface_size
 =================================
 
-.. c:type:: struct drm_fb_helper_surface_size
+.. c:type:: drm_fb_helper_surface_size
 
     describes fbdev size and scanout surface size
 
 
+.. _`drm_fb_helper_surface_size.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`drm_fb_helper_surface_size.members`:
 
 Members
 -------
@@ -54,6 +57,9 @@ Members
 
 
 
+
+.. _`drm_fb_helper_surface_size.description`:
+
 Description
 -----------
 
@@ -68,16 +74,18 @@ So what is passed to :c:func:`drm_fb_helper_fill_var` should be fb_width/fb_heig
 rather than the surface size.
 
 
+
 .. _`drm_fb_helper_funcs`:
 
 struct drm_fb_helper_funcs
 ==========================
 
-.. c:type:: struct drm_fb_helper_funcs
+.. c:type:: drm_fb_helper_funcs
 
     driver callbacks for the fbdev emulation library
 
 
+.. _`drm_fb_helper_funcs.definition`:
 
 Definition
 ----------
@@ -92,6 +100,7 @@ Definition
   };
 
 
+.. _`drm_fb_helper_funcs.members`:
 
 Members
 -------
@@ -152,6 +161,9 @@ Members
 
 
 
+
+.. _`drm_fb_helper_funcs.description`:
+
 Description
 -----------
 
@@ -159,16 +171,18 @@ Description
 Driver callbacks used by the fbdev emulation helper library.
 
 
+
 .. _`drm_fb_helper`:
 
 struct drm_fb_helper
 ====================
 
-.. c:type:: struct drm_fb_helper
+.. c:type:: drm_fb_helper
 
     main structure to emulate fbdev on top of KMS
 
 
+.. _`drm_fb_helper.definition`:
 
 Definition
 ----------
@@ -192,6 +206,7 @@ Definition
   };
 
 
+.. _`drm_fb_helper.members`:
 
 Members
 -------
@@ -245,6 +260,9 @@ Members
     does not require ASYNC commits).
 
 
+
+
+.. _`drm_fb_helper.description`:
 
 Description
 -----------

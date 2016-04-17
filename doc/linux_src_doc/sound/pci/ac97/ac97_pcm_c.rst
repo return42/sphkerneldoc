@@ -4,6 +4,7 @@
 ac97_pcm.c
 ==========
 
+
 .. _`snd_ac97_set_rate`:
 
 snd_ac97_set_rate
@@ -23,6 +24,7 @@ snd_ac97_set_rate
         the sample rate to set
 
 
+
 .. _`snd_ac97_set_rate.description`:
 
 Description
@@ -39,7 +41,15 @@ if the codec supports them.
 AC97_SPDIF is accepted as a pseudo register to modify the SPDIF
 status bits.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_set_rate.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_ac97_pcm_assign`:
@@ -61,6 +71,7 @@ snd_ac97_pcm_assign
         PCMs to be assigned
 
 
+
 .. _`snd_ac97_pcm_assign.description`:
 
 Description
@@ -70,7 +81,15 @@ It assigns available AC97 slots for given PCMs. If none or only
 some slots are available, pcm->xxx.slots and pcm->xxx.rslots[] members
 are reduced and might be zero.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_pcm_assign.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_ac97_pcm_open`:
@@ -95,6 +114,7 @@ snd_ac97_pcm_open
         a subset of allocated slots (snd_ac97_pcm_assign) for this pcm
 
 
+
 .. _`snd_ac97_pcm_open.description`:
 
 Description
@@ -102,7 +122,15 @@ Description
 
 It locks the specified slots and sets the given rate to AC97 registers.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_pcm_open.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_ac97_pcm_close`:
@@ -118,6 +146,7 @@ snd_ac97_pcm_close
         the ac97 pcm instance
 
 
+
 .. _`snd_ac97_pcm_close.description`:
 
 Description
@@ -125,7 +154,15 @@ Description
 
 It frees the locked AC97 slots.
 
-Return: Zero.
+
+
+.. _`snd_ac97_pcm_close.return`:
+
+Return
+------
+
+Zero.
+
 
 
 .. _`snd_ac97_pcm_double_rate_rules`:
@@ -141,6 +178,7 @@ snd_ac97_pcm_double_rate_rules
         the runtime of the ac97 front playback pcm
 
 
+
 .. _`snd_ac97_pcm_double_rate_rules.description`:
 
 Description
@@ -149,5 +187,12 @@ Description
 Installs the hardware constraint rules to prevent using double rates and
 more than two channels at the same time.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_pcm_double_rate_rules.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
 

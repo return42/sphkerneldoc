@@ -4,6 +4,7 @@
 pcm_lib.c
 =========
 
+
 .. _`snd_pcm_set_ops`:
 
 snd_pcm_set_ops
@@ -23,12 +24,14 @@ snd_pcm_set_ops
         the operator table
 
 
+
 .. _`snd_pcm_set_ops.description`:
 
 Description
 -----------
 
 Sets the given PCM operators to the pcm instance.
+
 
 
 .. _`snd_pcm_set_sync`:
@@ -44,12 +47,14 @@ snd_pcm_set_sync
         the pcm substream
 
 
+
 .. _`snd_pcm_set_sync.description`:
 
 Description
 -----------
 
 Sets the PCM sync identifier for the card.
+
 
 
 .. _`snd_interval_refine`:
@@ -68,6 +73,7 @@ snd_interval_refine
         the interval value to refer to
 
 
+
 .. _`snd_interval_refine.description`:
 
 Description
@@ -77,8 +83,16 @@ Refines the interval value with the reference value.
 The interval is changed to the range satisfying both intervals.
 The interval status (min, max, integer, etc.) are evaluated.
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+
+
+.. _`snd_interval_refine.return`:
+
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_interval_div`:
@@ -100,6 +114,7 @@ snd_interval_div
         quotient
 
 
+
 .. _`snd_interval_div.description`:
 
 Description
@@ -108,6 +123,7 @@ Description
 c = a / b
 
 Returns non-zero if the value is changed, zero if not changed.
+
 
 
 .. _`snd_interval_muldivk`:
@@ -132,6 +148,7 @@ snd_interval_muldivk
         result
 
 
+
 .. _`snd_interval_muldivk.description`:
 
 Description
@@ -140,6 +157,7 @@ Description
 c = a * b / k
 
 Returns non-zero if the value is changed, zero if not changed.
+
 
 
 .. _`snd_interval_mulkdiv`:
@@ -164,6 +182,7 @@ snd_interval_mulkdiv
         result
 
 
+
 .. _`snd_interval_mulkdiv.description`:
 
 Description
@@ -172,6 +191,7 @@ Description
 c = a * k / b
 
 Returns non-zero if the value is changed, zero if not changed.
+
 
 
 .. _`snd_interval_ratnum`:
@@ -199,13 +219,15 @@ snd_interval_ratnum
         pointer to store the resultant denominator
 
 
-.. _`snd_interval_ratnum.description`:
 
-Description
------------
+.. _`snd_interval_ratnum.return`:
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_interval_ratden`:
@@ -233,13 +255,15 @@ snd_interval_ratden
         pointer to store the resultant denominator
 
 
-.. _`snd_interval_ratden.description`:
 
-Description
------------
+.. _`snd_interval_ratden.return`:
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_interval_list`:
@@ -264,6 +288,7 @@ snd_interval_list
         the bit-mask to evaluate
 
 
+
 .. _`snd_interval_list.description`:
 
 Description
@@ -273,8 +298,16 @@ Refines the interval value from the list.
 When mask is non-zero, only the elements corresponding to bit 1 are
 evaluated.
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+
+
+.. _`snd_interval_list.return`:
+
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_interval_ranges`:
@@ -299,6 +332,7 @@ snd_interval_ranges
         the bit-mask to evaluate
 
 
+
 .. _`snd_interval_ranges.description`:
 
 Description
@@ -308,8 +342,16 @@ Refines the interval value from the list of ranges.
 When mask is non-zero, only the elements corresponding to bit 1 are
 evaluated.
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+
+
+.. _`snd_interval_ranges.return`:
+
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_pcm_hw_rule_add`:
@@ -343,12 +385,14 @@ snd_pcm_hw_rule_add
         variable arguments
 
 
-.. _`snd_pcm_hw_rule_add.description`:
 
-Description
------------
+.. _`snd_pcm_hw_rule_add.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_mask`:
@@ -370,6 +414,7 @@ snd_pcm_hw_constraint_mask
         the bitmap mask
 
 
+
 .. _`snd_pcm_hw_constraint_mask.description`:
 
 Description
@@ -377,7 +422,15 @@ Description
 
 Apply the constraint of the given bitmap mask to a 32-bit mask parameter.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_constraint_mask.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_mask64`:
@@ -399,6 +452,7 @@ snd_pcm_hw_constraint_mask64
         the 64bit bitmap mask
 
 
+
 .. _`snd_pcm_hw_constraint_mask64.description`:
 
 Description
@@ -406,7 +460,15 @@ Description
 
 Apply the constraint of the given bitmap mask to a 64-bit mask parameter.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_constraint_mask64.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_integer`:
@@ -425,6 +487,7 @@ snd_pcm_hw_constraint_integer
         hw_params variable to apply the integer constraint
 
 
+
 .. _`snd_pcm_hw_constraint_integer.description`:
 
 Description
@@ -432,8 +495,16 @@ Description
 
 Apply the constraint of integer to an interval parameter.
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+
+
+.. _`snd_pcm_hw_constraint_integer.return`:
+
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_pcm_hw_constraint_minmax`:
@@ -458,6 +529,7 @@ snd_pcm_hw_constraint_minmax
         the maximal value
 
 
+
 .. _`snd_pcm_hw_constraint_minmax.description`:
 
 Description
@@ -465,8 +537,16 @@ Description
 
 Apply the min/max range constraint to an interval parameter.
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+
+
+.. _`snd_pcm_hw_constraint_minmax.return`:
+
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_pcm_hw_constraint_list`:
@@ -491,6 +571,7 @@ snd_pcm_hw_constraint_list
         list
 
 
+
 .. _`snd_pcm_hw_constraint_list.description`:
 
 Description
@@ -498,7 +579,15 @@ Description
 
 Apply the list of constraints to an interval parameter.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_constraint_list.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_ranges`:
@@ -523,6 +612,7 @@ snd_pcm_hw_constraint_ranges
         ranges
 
 
+
 .. _`snd_pcm_hw_constraint_ranges.description`:
 
 Description
@@ -530,7 +620,15 @@ Description
 
 Apply the list of range constraints to an interval parameter.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_constraint_ranges.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_ratnums`:
@@ -555,12 +653,14 @@ snd_pcm_hw_constraint_ratnums
         struct snd_ratnums constriants
 
 
-.. _`snd_pcm_hw_constraint_ratnums.description`:
 
-Description
------------
+.. _`snd_pcm_hw_constraint_ratnums.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_ratdens`:
@@ -585,12 +685,14 @@ snd_pcm_hw_constraint_ratdens
         struct snd_ratdens constriants
 
 
-.. _`snd_pcm_hw_constraint_ratdens.description`:
 
-Description
------------
+.. _`snd_pcm_hw_constraint_ratdens.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_msbits`:
@@ -615,6 +717,7 @@ snd_pcm_hw_constraint_msbits
         msbits width
 
 
+
 .. _`snd_pcm_hw_constraint_msbits.description`:
 
 Description
@@ -625,7 +728,15 @@ sample format with the specified width has been select. If width is set to 0
 the msbits will be set for any sample format with a width larger than the
 specified msbits.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_constraint_msbits.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_step`:
@@ -650,12 +761,14 @@ snd_pcm_hw_constraint_step
         step size
 
 
-.. _`snd_pcm_hw_constraint_step.description`:
 
-Description
------------
+.. _`snd_pcm_hw_constraint_step.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_constraint_pow2`:
@@ -677,12 +790,14 @@ snd_pcm_hw_constraint_pow2
         hw_params variable to apply the power-of-2 constraint
 
 
-.. _`snd_pcm_hw_constraint_pow2.description`:
 
-Description
------------
+.. _`snd_pcm_hw_constraint_pow2.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_rule_noresample`:
@@ -701,12 +816,14 @@ snd_pcm_hw_rule_noresample
         the rate at which the hardware does not resample
 
 
-.. _`snd_pcm_hw_rule_noresample.description`:
 
-Description
------------
+.. _`snd_pcm_hw_rule_noresample.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_param_value`:
@@ -728,13 +845,15 @@ snd_pcm_hw_param_value
         pointer to the direction (-1,0,1) or ``NULL``
 
 
-.. _`snd_pcm_hw_param_value.description`:
 
-Description
------------
+.. _`snd_pcm_hw_param_value.return`:
 
-Return: The value for field ``var`` if it's fixed in configuration space
+Return
+------
+
+The value for field ``var`` if it's fixed in configuration space
 defined by ``params``\ . -\ ``EINVAL`` otherwise.
+
 
 
 .. _`snd_pcm_hw_param_first`:
@@ -759,6 +878,7 @@ snd_pcm_hw_param_first
         pointer to the direction (-1,0,1) or ``NULL``
 
 
+
 .. _`snd_pcm_hw_param_first.description`:
 
 Description
@@ -767,7 +887,15 @@ Description
 Inside configuration space defined by ``params`` remove from ``var`` all
 values > minimum. Reduce configuration space accordingly.
 
-Return: The minimum, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_param_first.return`:
+
+Return
+------
+
+The minimum, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_param_last`:
@@ -792,6 +920,7 @@ snd_pcm_hw_param_last
         pointer to the direction (-1,0,1) or ``NULL``
 
 
+
 .. _`snd_pcm_hw_param_last.description`:
 
 Description
@@ -800,7 +929,15 @@ Description
 Inside configuration space defined by ``params`` remove from ``var`` all
 values < maximum. Reduce configuration space accordingly.
 
-Return: The maximum, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_param_last.return`:
+
+Return
+------
+
+The maximum, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_hw_params_choose`:
@@ -819,17 +956,33 @@ snd_pcm_hw_params_choose
         the hw_params instance
 
 
+
 .. _`snd_pcm_hw_params_choose.description`:
 
 Description
 -----------
 
 Choose one configuration from configuration space defined by ``params``\ .
-The configuration chosen is that obtained fixing in this order:
+
+
+
+.. _`snd_pcm_hw_params_choose.the-configuration-chosen-is-that-obtained-fixing-in-this-order`:
+
+The configuration chosen is that obtained fixing in this order
+--------------------------------------------------------------
+
 first access, first format, first subformat, min channels,
 min rate, min period time, max buffer size, min tick time
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_hw_params_choose.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_ioctl`:
@@ -851,6 +1004,7 @@ snd_pcm_lib_ioctl
         ioctl argument
 
 
+
 .. _`snd_pcm_lib_ioctl.description`:
 
 Description
@@ -859,7 +1013,15 @@ Description
 Processes the generic ioctl commands for PCM.
 Can be passed as the ioctl callback for PCM ops.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_ioctl.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_period_elapsed`:
@@ -875,6 +1037,7 @@ snd_pcm_period_elapsed
         the pcm substream instance
 
 
+
 .. _`snd_pcm_period_elapsed.description`:
 
 Description
@@ -886,6 +1049,7 @@ pointer, wake up sleepers, etc.
 
 Even if more than one periods have elapsed since the last call, you
 have to call this only once.
+
 
 
 .. _`snd_pcm_add_chmap_ctls`:
@@ -916,11 +1080,20 @@ snd_pcm_add_chmap_ctls
         store struct snd_pcm_chmap instance if non-NULL
 
 
+
 .. _`snd_pcm_add_chmap_ctls.description`:
 
 Description
 -----------
 
 Create channel-mapping control elements assigned to the given PCM stream(s).
-Return: Zero if successful, or a negative error value.
+
+
+
+.. _`snd_pcm_add_chmap_ctls.return`:
+
+Return
+------
+
+Zero if successful, or a negative error value.
 

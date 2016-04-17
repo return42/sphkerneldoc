@@ -4,6 +4,7 @@
 init.c
 ======
 
+
 .. _`driver_init`:
 
 driver_init
@@ -15,6 +16,7 @@ driver_init
 
     :param void:
         no arguments
+
 
 
 .. _`driver_init.description`:

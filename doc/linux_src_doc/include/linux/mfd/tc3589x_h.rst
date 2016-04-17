@@ -1,0 +1,38 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+tc3589x.h
+=========
+
+
+.. _`tc3589x_platform_data`:
+
+struct tc3589x_platform_data
+============================
+
+.. c:type:: tc3589x_platform_data
+
+    TC3589x platform data
+
+
+.. _`tc3589x_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct tc3589x_platform_data {
+    unsigned int block;
+  };
+
+
+.. _`tc3589x_platform_data.members`:
+
+Members
+-------
+
+:``block``:
+    bitmask of blocks to enable (use TC3589x_BLOCK\_\*)
+
+

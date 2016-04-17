@@ -1,0 +1,38 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ad7298.h
+========
+
+
+.. _`ad7298_platform_data`:
+
+struct ad7298_platform_data
+===========================
+
+.. c:type:: ad7298_platform_data
+
+    Platform data for the ad7298 ADC driver
+
+
+.. _`ad7298_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ad7298_platform_data {
+    bool ext_ref;
+  };
+
+
+.. _`ad7298_platform_data.members`:
+
+Members
+-------
+
+:``ext_ref``:
+    Whether to use an external reference voltage.
+
+

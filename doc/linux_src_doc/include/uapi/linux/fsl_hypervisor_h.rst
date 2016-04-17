@@ -4,16 +4,18 @@
 fsl_hypervisor.h
 ================
 
+
 .. _`fsl_hv_ioctl_restart`:
 
 struct fsl_hv_ioctl_restart
 ===========================
 
-.. c:type:: struct fsl_hv_ioctl_restart
+.. c:type:: fsl_hv_ioctl_restart
 
     restart a partition
 
 
+.. _`fsl_hv_ioctl_restart.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_restart.members`:
 
 Members
 -------
@@ -39,10 +42,14 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_restart.description`:
+
 Description
 -----------
 
 Used by FSL_HV_IOCTL_PARTITION_RESTART
+
 
 
 .. _`fsl_hv_ioctl_status`:
@@ -50,11 +57,12 @@ Used by FSL_HV_IOCTL_PARTITION_RESTART
 struct fsl_hv_ioctl_status
 ==========================
 
-.. c:type:: struct fsl_hv_ioctl_status
+.. c:type:: fsl_hv_ioctl_status
 
     get a partition's status
 
 
+.. _`fsl_hv_ioctl_status.definition`:
 
 Definition
 ----------
@@ -68,6 +76,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_status.members`:
 
 Members
 -------
@@ -84,12 +93,15 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_status.description`:
+
 Description
 -----------
 
 Used by FSL_HV_IOCTL_PARTITION_GET_STATUS
 
-Values of 'status'::
+Values of 'status':
 
    0 = Stopped
    1 = Running
@@ -97,16 +109,18 @@ Values of 'status'::
    3 = Stopping
 
 
+
 .. _`fsl_hv_ioctl_start`:
 
 struct fsl_hv_ioctl_start
 =========================
 
-.. c:type:: struct fsl_hv_ioctl_start
+.. c:type:: fsl_hv_ioctl_start
 
     start a partition
 
 
+.. _`fsl_hv_ioctl_start.definition`:
 
 Definition
 ----------
@@ -121,6 +135,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_start.members`:
 
 Members
 -------
@@ -139,10 +154,14 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_start.description`:
+
 Description
 -----------
 
 Used by FSL_HV_IOCTL_PARTITION_START
+
 
 
 .. _`fsl_hv_ioctl_stop`:
@@ -150,11 +169,12 @@ Used by FSL_HV_IOCTL_PARTITION_START
 struct fsl_hv_ioctl_stop
 ========================
 
-.. c:type:: struct fsl_hv_ioctl_stop
+.. c:type:: fsl_hv_ioctl_stop
 
     stop a partition
 
 
+.. _`fsl_hv_ioctl_stop.definition`:
 
 Definition
 ----------
@@ -167,6 +187,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_stop.members`:
 
 Members
 -------
@@ -180,10 +201,14 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_stop.description`:
+
 Description
 -----------
 
 Used by FSL_HV_IOCTL_PARTITION_STOP
+
 
 
 .. _`fsl_hv_ioctl_memcpy`:
@@ -191,11 +216,12 @@ Used by FSL_HV_IOCTL_PARTITION_STOP
 struct fsl_hv_ioctl_memcpy
 ==========================
 
-.. c:type:: struct fsl_hv_ioctl_memcpy
+.. c:type:: fsl_hv_ioctl_memcpy
 
     copy memory between partitions
 
 
+.. _`fsl_hv_ioctl_memcpy.definition`:
 
 Definition
 ----------
@@ -211,6 +237,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_memcpy.members`:
 
 Members
 -------
@@ -235,6 +262,9 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_memcpy.description`:
+
 Description
 -----------
 
@@ -257,16 +287,18 @@ or
 source == remote and target == local
 
 
+
 .. _`fsl_hv_ioctl_doorbell`:
 
 struct fsl_hv_ioctl_doorbell
 ============================
 
-.. c:type:: struct fsl_hv_ioctl_doorbell
+.. c:type:: fsl_hv_ioctl_doorbell
 
     ring a doorbell
 
 
+.. _`fsl_hv_ioctl_doorbell.definition`:
 
 Definition
 ----------
@@ -279,6 +311,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_doorbell.members`:
 
 Members
 -------
@@ -291,10 +324,14 @@ Members
 
 
 
+
+.. _`fsl_hv_ioctl_doorbell.description`:
+
 Description
 -----------
 
 Used by FSL_HV_IOCTL_DOORBELL
+
 
 
 .. _`fsl_hv_ioctl_prop`:
@@ -302,11 +339,12 @@ Used by FSL_HV_IOCTL_DOORBELL
 struct fsl_hv_ioctl_prop
 ========================
 
-.. c:type:: struct fsl_hv_ioctl_prop
+.. c:type:: fsl_hv_ioctl_prop
 
     get/set a device tree property
 
 
+.. _`fsl_hv_ioctl_prop.definition`:
 
 Definition
 ----------
@@ -324,6 +362,7 @@ Definition
   };
 
 
+.. _`fsl_hv_ioctl_prop.members`:
 
 Members
 -------
@@ -350,6 +389,9 @@ Members
     reserved, must be set to 0
 
 
+
+
+.. _`fsl_hv_ioctl_prop.description`:
 
 Description
 -----------

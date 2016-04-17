@@ -4,16 +4,18 @@
 videobuf2-core.h
 ================
 
+
 .. _`vb2_mem_ops`:
 
 struct vb2_mem_ops
 ==================
 
-.. c:type:: struct vb2_mem_ops
+.. c:type:: vb2_mem_ops
 
     memory handling/memory allocator operations
 
 
+.. _`vb2_mem_ops.definition`:
 
 Definition
 ----------
@@ -39,6 +41,7 @@ Definition
   };
 
 
+.. _`vb2_mem_ops.members`:
 
 Members
 -------
@@ -127,14 +130,34 @@ Members
 
 
 
-Description
------------
 
-Required ops for USERPTR types: get_userptr, put_userptr.
-Required ops for MMAP types: alloc, put, num_users, mmap.
+.. _`vb2_mem_ops.required-ops-for-userptr-types`:
+
+Required ops for USERPTR types
+------------------------------
+
+get_userptr, put_userptr.
+
+
+
+.. _`vb2_mem_ops.required-ops-for-mmap-types`:
+
+Required ops for MMAP types
+---------------------------
+
+alloc, put, num_users, mmap.
 Required ops for read/write access types: alloc, put, num_users, vaddr.
-Required ops for DMABUF types: attach_dmabuf, detach_dmabuf, map_dmabuf,
+
+
+
+.. _`vb2_mem_ops.required-ops-for-dmabuf-types`:
+
+Required ops for DMABUF types
+-----------------------------
+
+attach_dmabuf, detach_dmabuf, map_dmabuf,
 unmap_dmabuf.
+
 
 
 .. _`vb2_plane`:
@@ -142,11 +165,12 @@ unmap_dmabuf.
 struct vb2_plane
 ================
 
-.. c:type:: struct vb2_plane
+.. c:type:: vb2_plane
 
     plane information
 
 
+.. _`vb2_plane.definition`:
 
 Definition
 ----------
@@ -165,6 +189,7 @@ Definition
   };
 
 
+.. _`vb2_plane.members`:
 
 Members
 -------
@@ -185,9 +210,8 @@ Members
     size of this plane (NOT the payload) in bytes
 
 :``min_length``:
-    minimum required size of this plane (NOT the payload) in bytes.::
-
-                    ``length`` is always greater or equal to ``min_length``\ .
+    minimum required size of this plane (NOT the payload) in bytes.
+    ``length`` is always greater or equal to ``min_length``\ .
 
 :``m``:
     Union with memtype-specific data (\ ``offset``\ , ``userptr`` or
@@ -202,16 +226,34 @@ Members
 
 
 
+
 .. _`vb2_io_modes`:
 
 enum vb2_io_modes
 =================
 
-.. c:type:: enum vb2_io_modes
+.. c:type:: vb2_io_modes
 
     queue access methods
 
 
+.. _`vb2_io_modes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vb2_io_modes {
+      VB2_MMAP,
+      VB2_USERPTR,
+      VB2_READ,
+      VB2_WRITE,
+      VB2_DMABUF
+    };
+
+
+.. _`vb2_io_modes.constants`:
 
 Constants
 ---------
@@ -237,11 +279,31 @@ Constants
 enum vb2_buffer_state
 =====================
 
-.. c:type:: enum vb2_buffer_state
+.. c:type:: vb2_buffer_state
 
     current video buffer state
 
 
+.. _`vb2_buffer_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vb2_buffer_state {
+      VB2_BUF_STATE_DEQUEUED,
+      VB2_BUF_STATE_PREPARING,
+      VB2_BUF_STATE_PREPARED,
+      VB2_BUF_STATE_QUEUED,
+      VB2_BUF_STATE_REQUEUEING,
+      VB2_BUF_STATE_ACTIVE,
+      VB2_BUF_STATE_DONE,
+      VB2_BUF_STATE_ERROR
+    };
+
+
+.. _`vb2_buffer_state.constants`:
 
 Constants
 ---------
@@ -280,11 +342,12 @@ Constants
 struct vb2_buffer
 =================
 
-.. c:type:: struct vb2_buffer
+.. c:type:: vb2_buffer
 
     represents a video buffer
 
 
+.. _`vb2_buffer.definition`:
 
 Definition
 ----------
@@ -302,6 +365,7 @@ Definition
   };
 
 
+.. _`vb2_buffer.members`:
 
 Members
 -------
@@ -330,16 +394,18 @@ Members
 
 
 
+
 .. _`vb2_ops`:
 
 struct vb2_ops
 ==============
 
-.. c:type:: struct vb2_ops
+.. c:type:: vb2_ops
 
     driver-specific callbacks
 
 
+.. _`vb2_ops.definition`:
 
 Definition
 ----------
@@ -360,6 +426,7 @@ Definition
   };
 
 
+.. _`vb2_ops.members`:
 
 Members
 -------
@@ -367,25 +434,6 @@ Members
 :``queue_setup``:
     called from VIDIOC_REQBUFS and VIDIOC_CREATE_BUFS
     handlers before memory allocation. It can be called
-    twice: if the original number of requested buffers
-    could not be allocated, then it will be called a
-    second time with the actually allocated number of
-    buffers to verify if that is OK.
-    The driver should return the required number of buffers
-    in \*num_buffers, the required number of planes per
-    buffer in \*num_planes, the size of each plane should be
-    set in the sizes[] array and optional per-plane
-    allocator specific context in the alloc_ctxs[] array.
-    When called from VIDIOC_REQBUFS, \*num_planes == 0, the
-    driver has to use the currently configured format to
-    determine the plane sizes and \*num_buffers is the total
-    number of buffers that are being allocated. When called
-    from VIDIOC_CREATE_BUFS, \*num_planes != 0 and it
-    describes the requested number of planes and sizes[]
-    contains the requested plane sizes. If either
-    \*num_planes or the requested sizes are invalid callback
-    must return -EINVAL. In this case \*num_buffers are
-    being allocated additionally to q->num_buffers.
 
 :``wait_prepare``:
     release any locks taken while calling vb2 functions;
@@ -421,13 +469,6 @@ Members
     can access/modify the buffer contents; drivers may
     perform any operations required before userspace
     accesses the buffer; optional. The buffer state can be
-    one of the following: DONE and ERROR occur while
-    streaming is in progress, and the PREPARED state occurs
-    when the queue has been canceled and all pending
-    buffers are being returned to their default DEQUEUED
-    state. Typically you only have to do something if the
-    state is VB2_BUF_STATE_DONE, since in all other cases
-    the buffer contents will be ignored anyway.
 
 :``buf_cleanup``:
     called once before the buffer is freed; drivers may
@@ -466,16 +507,60 @@ Members
 
 
 
+
+.. _`vb2_ops.twice`:
+
+twice
+-----
+
+if the original number of requested buffers
+could not be allocated, then it will be called a
+second time with the actually allocated number of
+buffers to verify if that is OK.
+The driver should return the required number of buffers
+in \*num_buffers, the required number of planes per
+buffer in \*num_planes, the size of each plane should be
+set in the sizes[] array and optional per-plane
+allocator specific context in the alloc_ctxs[] array.
+When called from VIDIOC_REQBUFS, \*num_planes == 0, the
+driver has to use the currently configured format to
+determine the plane sizes and \*num_buffers is the total
+number of buffers that are being allocated. When called
+from VIDIOC_CREATE_BUFS, \*num_planes != 0 and it
+describes the requested number of planes and sizes[]
+contains the requested plane sizes. If either
+\*num_planes or the requested sizes are invalid callback
+must return -EINVAL. In this case \*num_buffers are
+being allocated additionally to q->num_buffers.
+
+
+
+.. _`vb2_ops.one-of-the-following`:
+
+one of the following
+--------------------
+
+DONE and ERROR occur while
+streaming is in progress, and the PREPARED state occurs
+when the queue has been canceled and all pending
+buffers are being returned to their default DEQUEUED
+state. Typically you only have to do something if the
+state is VB2_BUF_STATE_DONE, since in all other cases
+the buffer contents will be ignored anyway.
+
+
+
 .. _`vb2_buf_ops`:
 
 struct vb2_buf_ops
 ==================
 
-.. c:type:: struct vb2_buf_ops
+.. c:type:: vb2_buf_ops
 
     driver-specific callbacks
 
 
+.. _`vb2_buf_ops.definition`:
 
 Definition
 ----------
@@ -489,24 +574,24 @@ Definition
   };
 
 
+.. _`vb2_buf_ops.members`:
 
 Members
 -------
 
 :``fill_user_buffer``:
-    given a vb2_buffer fill in the userspace structure.::
-
-                            For V4L2 this is a struct v4l2_buffer.
+    given a vb2_buffer fill in the userspace structure.
+    For V4L2 this is a struct v4l2_buffer.
 
 :``fill_vb2_buffer``:
-    given a userspace structure, fill in the vb2_buffer.::
-
-                            If the userspace structure is invalid, then this op
-                            will return an error.
+    given a userspace structure, fill in the vb2_buffer.
+    If the userspace structure is invalid, then this op
+    will return an error.
 
 :``copy_timestamp``:
     copy the timestamp from a userspace structure to
     the vb2_buffer struct.
+
 
 
 
@@ -515,11 +600,12 @@ Members
 struct vb2_queue
 ================
 
-.. c:type:: struct vb2_queue
+.. c:type:: vb2_queue
 
     a videobuf queue
 
 
+.. _`vb2_queue.definition`:
 
 Definition
 ----------
@@ -545,6 +631,7 @@ Definition
   };
 
 
+.. _`vb2_queue.members`:
 
 Members
 -------
@@ -552,7 +639,7 @@ Members
 :``type``:
     private buffer type whose content is defined by the vb2-core
     caller. For example, for V4L2, it should match
-    the V4L2_BUF_TYPE_\* in include/uapi/linux/videodev2.h
+    the V4L2_BUF_TYPE\_\* in include/uapi/linux/videodev2.h
 
 :``io_modes``:
     supported io methods (see vb2_io_modes enum)
@@ -599,20 +686,20 @@ Members
     will be used for v4l2.
 
 :``timestamp_flags``:
-    Timestamp flags; V4L2_BUF_FLAG_TIMESTAMP_\* and
-    V4L2_BUF_FLAG_TSTAMP_SRC_*
+    Timestamp flags; V4L2_BUF_FLAG_TIMESTAMP\_\* and
+    V4L2_BUF_FLAG_TSTAMP_SRC\_\*
 
 :``gfp_flags``:
-    additional gfp flags used when allocating the buffers.::
-
-                    Typically this is 0, but it may be e.g. GFP_DMA or __GFP_DMA32
-                    to force the buffer allocation to a specific memory zone.
+    additional gfp flags used when allocating the buffers.
+    Typically this is 0, but it may be e.g. GFP_DMA or __GFP_DMA32
+    to force the buffer allocation to a specific memory zone.
 
 :``min_buffers_needed``:
     the minimum number of buffers needed before
     :c:func:`start_streaming` can be called. Used when a DMA engine
     cannot be started unless at least this number of buffers
     have been queued into the driver.
+
 
 
 
@@ -638,6 +725,7 @@ vb2_thread_start
         the name of the thread. This will be prefixed with "vb2-".
 
 
+
 .. _`vb2_thread_start.description`:
 
 Description
@@ -649,6 +737,7 @@ or ``vb2_thread_stop`` is called.
 This function should not be used for anything else but the videobuf2-dvb
 support. If you think you have another good use-case for this, then please
 contact the linux-media mailinglist first.
+
 
 
 .. _`vb2_thread_stop`:
@@ -664,6 +753,7 @@ vb2_thread_stop
         videobuf queue
 
 
+
 .. _`vb2_is_streaming`:
 
 vb2_is_streaming
@@ -677,6 +767,7 @@ vb2_is_streaming
         videobuf queue
 
 
+
 .. _`vb2_fileio_is_active`:
 
 vb2_fileio_is_active
@@ -688,6 +779,7 @@ vb2_fileio_is_active
 
     :param struct vb2_queue \*q:
         videobuf queue
+
 
 
 .. _`vb2_fileio_is_active.description`:
@@ -704,6 +796,7 @@ userspace. A driver that supports this field format should check for
 this in the queue_setup op and reject it if this function returns true.
 
 
+
 .. _`vb2_is_busy`:
 
 vb2_is_busy
@@ -717,12 +810,14 @@ vb2_is_busy
         videobuf queue
 
 
+
 .. _`vb2_is_busy.description`:
 
 Description
 -----------
 
 This function checks if queue has any buffers allocated.
+
 
 
 .. _`vb2_get_drv_priv`:
@@ -736,6 +831,7 @@ vb2_get_drv_priv
 
     :param struct vb2_queue \*q:
         videobuf queue
+
 
 
 .. _`vb2_set_plane_payload`:
@@ -757,6 +853,7 @@ vb2_set_plane_payload
         payload in bytes
 
 
+
 .. _`vb2_get_plane_payload`:
 
 vb2_get_plane_payload
@@ -771,6 +868,7 @@ vb2_get_plane_payload
 
     :param unsigned int plane_no:
         plane number for which payload should be set
+
 
 
 .. _`vb2_plane_size`:
@@ -789,6 +887,7 @@ vb2_plane_size
         plane number for which size should be returned
 
 
+
 .. _`vb2_start_streaming_called`:
 
 vb2_start_streaming_called
@@ -800,6 +899,7 @@ vb2_start_streaming_called
 
     :param struct vb2_queue \*q:
         videobuf queue
+
 
 
 .. _`vb2_clear_last_buffer_dequeued`:

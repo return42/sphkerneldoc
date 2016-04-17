@@ -4,6 +4,7 @@
 mutex.h
 =======
 
+
 .. _`mutex_init`:
 
 mutex_init
@@ -17,6 +18,7 @@ mutex_init
         the mutex to be initialized
 
 
+
 .. _`mutex_init.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 Initialize the mutex to unlocked state.
 
 It is not allowed to initialize an already locked mutex.
+
 
 
 .. _`mutex_is_locked`:
@@ -38,6 +41,7 @@ mutex_is_locked
 
     :param struct mutex \*lock:
         the mutex to be queried
+
 
 
 .. _`mutex_is_locked.description`:

@@ -4,16 +4,18 @@
 soc.h
 =====
 
+
 .. _`snd_soc_jack_pin`:
 
 struct snd_soc_jack_pin
 =======================
 
-.. c:type:: struct snd_soc_jack_pin
+.. c:type:: snd_soc_jack_pin
 
     Describes a pin to update based on jack detection
 
 
+.. _`snd_soc_jack_pin.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`snd_soc_jack_pin.members`:
 
 Members
 -------
@@ -46,16 +49,18 @@ Members
 
 
 
+
 .. _`snd_soc_jack_zone`:
 
 struct snd_soc_jack_zone
 ========================
 
-.. c:type:: struct snd_soc_jack_zone
+.. c:type:: snd_soc_jack_zone
 
     Describes voltage zones of jack detection
 
 
+.. _`snd_soc_jack_zone.definition`:
 
 Definition
 ----------
@@ -71,6 +76,7 @@ Definition
   };
 
 
+.. _`snd_soc_jack_zone.members`:
 
 Members
 -------
@@ -93,16 +99,18 @@ Members
 
 
 
+
 .. _`snd_soc_jack_gpio`:
 
 struct snd_soc_jack_gpio
 ========================
 
-.. c:type:: struct snd_soc_jack_gpio
+.. c:type:: snd_soc_jack_gpio
 
     Describes a gpio pin for jack detection
 
 
+.. _`snd_soc_jack_gpio.definition`:
 
 Definition
 ----------
@@ -122,6 +130,7 @@ Definition
   };
 
 
+.. _`snd_soc_jack_gpio.members`:
 
 Members
 -------
@@ -159,6 +168,7 @@ Members
 
 
 
+
 .. _`snd_soc_component_to_codec`:
 
 snd_soc_component_to_codec
@@ -172,6 +182,7 @@ snd_soc_component_to_codec
         The component to cast to a CODEC
 
 
+
 .. _`snd_soc_component_to_codec.description`:
 
 Description
@@ -179,6 +190,7 @@ Description
 
 This function must only be used on components that are known to be CODECs.
 Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_component_to_platform`:
@@ -194,6 +206,7 @@ snd_soc_component_to_platform
         The component to cast to a platform
 
 
+
 .. _`snd_soc_component_to_platform.description`:
 
 Description
@@ -201,6 +214,7 @@ Description
 
 This function must only be used on components that are known to be platforms.
 Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_dapm_to_component`:
@@ -216,6 +230,7 @@ snd_soc_dapm_to_component
         The DAPM context to cast to the component
 
 
+
 .. _`snd_soc_dapm_to_component.description`:
 
 Description
@@ -224,6 +239,7 @@ Description
 This function must only be used on DAPM contexts that are known to be part of
 a component (e.g. in a component driver). Otherwise the behavior is
 undefined.
+
 
 
 .. _`snd_soc_dapm_to_codec`:
@@ -239,6 +255,7 @@ snd_soc_dapm_to_codec
         The DAPM context to cast to the CODEC
 
 
+
 .. _`snd_soc_dapm_to_codec.description`:
 
 Description
@@ -246,6 +263,7 @@ Description
 
 This function must only be used on DAPM contexts that are known to be part of
 a CODEC (e.g. in a CODEC driver). Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_dapm_to_platform`:
@@ -261,6 +279,7 @@ snd_soc_dapm_to_platform
         The DAPM context to cast to the platform.
 
 
+
 .. _`snd_soc_dapm_to_platform.description`:
 
 Description
@@ -268,6 +287,7 @@ Description
 
 This function must only be used on DAPM contexts that are known to be part of
 a platform (e.g. in a platform driver). Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_component_get_dapm`:
@@ -283,6 +303,7 @@ snd_soc_component_get_dapm
         The component for which to get the DAPM context
 
 
+
 .. _`snd_soc_codec_get_dapm`:
 
 snd_soc_codec_get_dapm
@@ -296,12 +317,14 @@ snd_soc_codec_get_dapm
         The CODEC for which to get the DAPM context
 
 
-.. _`snd_soc_codec_get_dapm.description`:
 
-Description
------------
+.. _`snd_soc_codec_get_dapm.note`:
 
-Note: Use this function instead of directly accessing the CODEC's dapm field
+Note
+----
+
+Use this function instead of directly accessing the CODEC's dapm field
+
 
 
 .. _`snd_soc_codec_init_bias_level`:
@@ -320,12 +343,14 @@ snd_soc_codec_init_bias_level
         The DAPM level to initialize to
 
 
+
 .. _`snd_soc_codec_init_bias_level.description`:
 
 Description
 -----------
 
 Initializes the CODEC DAPM bias level. See :c:func:`snd_soc_dapm_init_bias_level`.
+
 
 
 .. _`snd_soc_codec_get_bias_level`:
@@ -341,12 +366,14 @@ snd_soc_codec_get_bias_level
         The CODEC for which to get the DAPM bias level
 
 
-.. _`snd_soc_codec_get_bias_level.description`:
 
-Description
------------
+.. _`snd_soc_codec_get_bias_level.returns`:
 
-Returns: The current DAPM bias level of the CODEC.
+Returns
+-------
+
+The current DAPM bias level of the CODEC.
+
 
 
 .. _`snd_soc_codec_force_bias_level`:
@@ -365,6 +392,7 @@ snd_soc_codec_force_bias_level
         The level to set to
 
 
+
 .. _`snd_soc_codec_force_bias_level.description`:
 
 Description
@@ -372,6 +400,7 @@ Description
 
 Forces the CODEC bias level to a specific state. See
 :c:func:`snd_soc_dapm_force_bias_level`.
+
 
 
 .. _`snd_soc_dapm_kcontrol_codec`:
@@ -387,6 +416,7 @@ snd_soc_dapm_kcontrol_codec
         The kcontrol
 
 
+
 .. _`snd_soc_dapm_kcontrol_codec.description`:
 
 Description
@@ -394,6 +424,7 @@ Description
 
 This function must only be used on DAPM contexts that are known to be part of
 a CODEC (e.g. in a CODEC driver). Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_cache_sync`:
@@ -409,12 +440,14 @@ snd_soc_cache_sync
         CODEC to sync
 
 
-.. _`snd_soc_cache_sync.description`:
 
-Description
------------
+.. _`snd_soc_cache_sync.note`:
 
-Note: This function will call :c:func:`regcache_sync`
+Note
+----
+
+This function will call :c:func:`regcache_sync`
+
 
 
 .. _`snd_soc_codec_init_regmap`:
@@ -433,6 +466,7 @@ snd_soc_codec_init_regmap
         The regmap instance that should be used by the CODEC
 
 
+
 .. _`snd_soc_codec_init_regmap.description`:
 
 Description
@@ -442,6 +476,7 @@ This function allows deferred assignment of the regmap instance that is
 associated with the CODEC. Only use this if the regmap instance is not yet
 ready when the CODEC is registered. The function must also be called before
 the first IO attempt of the CODEC.
+
 
 
 .. _`snd_soc_codec_exit_regmap`:
@@ -457,6 +492,7 @@ snd_soc_codec_exit_regmap
         The CODEC for which to de-initialize the regmap instance
 
 
+
 .. _`snd_soc_codec_exit_regmap.description`:
 
 Description
@@ -467,6 +503,7 @@ removes the regmap instance from the CODEC.
 
 This function should only be used if :c:func:`snd_soc_codec_init_regmap` was used to
 initialize the regmap instance.
+
 
 
 .. _`snd_soc_kcontrol_component`:
@@ -482,15 +519,17 @@ snd_soc_kcontrol_component
         The control for which to get the component
 
 
-.. _`snd_soc_kcontrol_component.description`:
 
-Description
------------
+.. _`snd_soc_kcontrol_component.note`:
 
-Note: This function will work correctly if the control has been registered
+Note
+----
+
+This function will work correctly if the control has been registered
 for a component. Either with :c:func:`snd_soc_add_codec_controls` or
 :c:func:`snd_soc_add_platform_controls` or via  table based setup for either a
 CODEC, a platform or component driver. Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_kcontrol_codec`:
@@ -506,14 +545,16 @@ snd_soc_kcontrol_codec
         The control for which to get the CODEC
 
 
-.. _`snd_soc_kcontrol_codec.description`:
 
-Description
------------
+.. _`snd_soc_kcontrol_codec.note`:
 
-Note: This function will only work correctly if the control has been
+Note
+----
+
+This function will only work correctly if the control has been
 registered with :c:func:`snd_soc_add_codec_controls` or via table based setup of
 snd_soc_codec_driver. Otherwise the behavior is undefined.
+
 
 
 .. _`snd_soc_kcontrol_platform`:
@@ -529,12 +570,13 @@ snd_soc_kcontrol_platform
         The control for which to get the platform
 
 
-.. _`snd_soc_kcontrol_platform.description`:
 
-Description
------------
+.. _`snd_soc_kcontrol_platform.note`:
 
-Note: This function will only work correctly if the control has been
+Note
+----
+
+This function will only work correctly if the control has been
 registered with :c:func:`snd_soc_add_platform_controls` or via table based setup of
 a snd_soc_platform_driver. Otherwise the behavior is undefined.
 

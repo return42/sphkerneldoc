@@ -4,6 +4,7 @@
 kgdb.h
 ======
 
+
 .. _`kgdb_skipexception`:
 
 kgdb_skipexception
@@ -20,6 +21,7 @@ kgdb_skipexception
         Current :c:type:`struct pt_regs <pt_regs>`.
 
 
+
 .. _`kgdb_skipexception.description`:
 
 Description
@@ -28,6 +30,7 @@ Description
 On some architectures it is required to skip a breakpoint
 exception when it occurs after a breakpoint has been removed.
 This can be implemented in the architecture specific portion of kgdb.
+
 
 
 .. _`kgdb_breakpoint`:
@@ -43,6 +46,7 @@ kgdb_breakpoint
         no arguments
 
 
+
 .. _`kgdb_breakpoint.description`:
 
 Description
@@ -52,6 +56,7 @@ Description
 This will be implemented as a static inline per architecture.  This
 function is called by the kgdb core to execute an architecture
 specific trap to cause kgdb to enter the exception processing.
+
 
 
 .. _`kgdb_arch_init`:
@@ -67,6 +72,7 @@ kgdb_arch_init
         no arguments
 
 
+
 .. _`kgdb_arch_init.description`:
 
 Description
@@ -75,6 +81,7 @@ Description
 
 This function will handle the initalization of any architecture
 specific callbacks.
+
 
 
 .. _`kgdb_arch_exit`:
@@ -90,6 +97,7 @@ kgdb_arch_exit
         no arguments
 
 
+
 .. _`kgdb_arch_exit.description`:
 
 Description
@@ -98,6 +106,7 @@ Description
 
 This function will handle the uninitalization of any architecture
 specific callbacks, for dynamic registration and unregistration.
+
 
 
 .. _`pt_regs_to_gdb_regs`:
@@ -116,6 +125,7 @@ pt_regs_to_gdb_regs
         The :c:type:`struct pt_regs <pt_regs>` of the current process.
 
 
+
 .. _`pt_regs_to_gdb_regs.description`:
 
 Description
@@ -123,6 +133,7 @@ Description
 
 Convert the pt_regs in ``regs`` into the format for registers that
 GDB expects, stored in ``gdb_regs``\ .
+
 
 
 .. _`sleeping_thread_to_gdb_regs`:
@@ -141,6 +152,7 @@ sleeping_thread_to_gdb_regs
         The :c:type:`struct task_struct <task_struct>` of the desired process.
 
 
+
 .. _`sleeping_thread_to_gdb_regs.description`:
 
 Description
@@ -152,6 +164,7 @@ This function is called when kgdb does not have access to the
 :c:type:`struct pt_regs <pt_regs>` and therefore it should fill the gdb registers
 ``gdb_regs`` with what has        been saved in :c:type:`struct thread_struct <thread_struct>`
 thread field during switch_to.
+
 
 
 .. _`gdb_regs_to_pt_regs`:
@@ -170,6 +183,7 @@ gdb_regs_to_pt_regs
         A pointer to a :c:type:`struct pt_regs <pt_regs>` to hold these values in.
 
 
+
 .. _`gdb_regs_to_pt_regs.description`:
 
 Description
@@ -177,6 +191,7 @@ Description
 
 Convert the GDB regs in ``gdb_regs`` into the pt_regs, and store them
 in ``regs``\ .
+
 
 
 .. _`kgdb_arch_handle_exception`:
@@ -207,6 +222,7 @@ kgdb_arch_handle_exception
         The :c:type:`struct pt_regs <pt_regs>` of the current process.
 
 
+
 .. _`kgdb_arch_handle_exception.description`:
 
 Description
@@ -220,6 +236,7 @@ process more packets, and a ``0`` or ``1`` if it wants to exit from the
 kgdb callback.
 
 
+
 .. _`kgdb_roundup_cpus`:
 
 kgdb_roundup_cpus
@@ -231,6 +248,7 @@ kgdb_roundup_cpus
 
     :param unsigned long flags:
         Current IRQ state
+
 
 
 .. _`kgdb_roundup_cpus.description`:
@@ -251,6 +269,7 @@ the flags that will be used when restoring the interrupts. There is
 On non-SMP systems, this is not called.
 
 
+
 .. _`kgdb_arch_set_pc`:
 
 kgdb_arch_set_pc
@@ -267,6 +286,7 @@ kgdb_arch_set_pc
         The new value for the program counter
 
 
+
 .. _`kgdb_arch_set_pc.description`:
 
 Description
@@ -274,6 +294,7 @@ Description
 
 This function handles updating the program counter and requires an
 architecture specific implementation.
+
 
 
 .. _`kgdb_arch_late`:
@@ -289,6 +310,7 @@ kgdb_arch_late
         no arguments
 
 
+
 .. _`kgdb_arch_late.description`:
 
 Description
@@ -301,16 +323,18 @@ handling things like late initialization of hw breakpoints.  The
 default implementation does nothing.
 
 
+
 .. _`kgdb_arch`:
 
 struct kgdb_arch
 ================
 
-.. c:type:: struct kgdb_arch
+.. c:type:: kgdb_arch
 
     Describe architecture specific values.
 
 
+.. _`kgdb_arch.definition`:
 
 Definition
 ----------
@@ -331,6 +355,7 @@ Definition
   };
 
 
+.. _`kgdb_arch.members`:
 
 Members
 -------
@@ -374,16 +399,18 @@ Members
 
 
 
+
 .. _`kgdb_io`:
 
 struct kgdb_io
 ==============
 
-.. c:type:: struct kgdb_io
+.. c:type:: kgdb_io
 
     Describe the interface for an I/O driver to talk with KGDB.
 
 
+.. _`kgdb_io.definition`:
 
 Definition
 ----------
@@ -402,6 +429,7 @@ Definition
   };
 
 
+.. _`kgdb_io.members`:
 
 Members
 -------

@@ -4,16 +4,18 @@
 videobuf2-memops.h
 ==================
 
+
 .. _`vb2_vmarea_handler`:
 
 struct vb2_vmarea_handler
 =========================
 
-.. c:type:: struct vb2_vmarea_handler
+.. c:type:: vb2_vmarea_handler
 
     common vma refcount tracking handler
 
 
+.. _`vb2_vmarea_handler.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`vb2_vmarea_handler.members`:
 
 Members
 -------

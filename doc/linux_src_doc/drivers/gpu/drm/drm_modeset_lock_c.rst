@@ -4,6 +4,7 @@
 drm_modeset_lock.c
 ==================
 
+
 .. _`kms-locking`:
 
 kms locking
@@ -34,6 +35,7 @@ The basic usage pattern is to::
     drm_modeset_acquire_fini(:c:type:`struct ctx <ctx>`);
 
 
+
 .. _`drm_modeset_lock_all`:
 
 drm_modeset_lock_all
@@ -45,6 +47,7 @@ drm_modeset_lock_all
 
     :param struct drm_device \*dev:
         DRM device
+
 
 
 .. _`drm_modeset_lock_all.description`:
@@ -64,6 +67,7 @@ and care must be taken not to nest calls. New code should use the
 :c:func:`drm_modeset_lock_all_ctx` function and pass in the context explicitly.
 
 
+
 .. _`drm_modeset_unlock_all`:
 
 drm_modeset_unlock_all
@@ -75,6 +79,7 @@ drm_modeset_unlock_all
 
     :param struct drm_device \*dev:
         DRM device
+
 
 
 .. _`drm_modeset_unlock_all.description`:
@@ -93,6 +98,7 @@ be taken not to nest calls. New code should pass the acquisition context
 directly to the :c:func:`drm_modeset_drop_locks` function.
 
 
+
 .. _`drm_modeset_lock_crtc`:
 
 drm_modeset_lock_crtc
@@ -109,6 +115,7 @@ drm_modeset_lock_crtc
         DRM plane to be updated on ``crtc``
 
 
+
 .. _`drm_modeset_lock_crtc.description`:
 
 Description
@@ -121,6 +128,7 @@ with the lock acquire context.
 
 Note that ``plane`` can be NULL, e.g. when the cursor support hasn't yet been
 converted to universal planes yet.
+
 
 
 .. _`drm_modeset_legacy_acquire_ctx`:
@@ -136,6 +144,7 @@ drm_modeset_legacy_acquire_ctx
         drm crtc
 
 
+
 .. _`drm_modeset_legacy_acquire_ctx.description`:
 
 Description
@@ -145,6 +154,7 @@ Legacy ioctl operations like cursor updates or page flips only have per-crtc
 locking, and store the acquire ctx in the corresponding crtc. All other
 legacy operations take all locks and use a global acquire context. This
 function grabs the right one.
+
 
 
 .. _`drm_modeset_unlock_crtc`:
@@ -160,6 +170,7 @@ drm_modeset_unlock_crtc
         drm crtc
 
 
+
 .. _`drm_modeset_unlock_crtc.description`:
 
 Description
@@ -167,6 +178,7 @@ Description
 
 This drops the crtc lock acquire with :c:func:`drm_modeset_lock_crtc` and all other
 locks acquired through the hidden context.
+
 
 
 .. _`drm_warn_on_modeset_not_all_locked`:
@@ -182,12 +194,14 @@ drm_warn_on_modeset_not_all_locked
         device
 
 
+
 .. _`drm_warn_on_modeset_not_all_locked.description`:
 
 Description
 -----------
 
 Useful as a debug assert.
+
 
 
 .. _`drm_modeset_acquire_init`:
@@ -206,6 +220,7 @@ drm_modeset_acquire_init
         for future
 
 
+
 .. _`drm_modeset_acquire_fini`:
 
 drm_modeset_acquire_fini
@@ -217,6 +232,7 @@ drm_modeset_acquire_fini
 
     :param struct drm_modeset_acquire_ctx \*ctx:
         the acquire context
+
 
 
 .. _`drm_modeset_drop_locks`:
@@ -232,12 +248,14 @@ drm_modeset_drop_locks
         the acquire context
 
 
+
 .. _`drm_modeset_drop_locks.description`:
 
 Description
 -----------
 
 Drop all locks currently held against this acquire context.
+
 
 
 .. _`drm_modeset_backoff`:
@@ -253,6 +271,7 @@ drm_modeset_backoff
         the acquire context
 
 
+
 .. _`drm_modeset_backoff.description`:
 
 Description
@@ -261,6 +280,7 @@ Description
 If deadlock is detected (ie. :c:func:`drm_modeset_lock` returns -EDEADLK),
 you must call this function to drop all currently held locks and
 block until the contended lock becomes available.
+
 
 
 .. _`drm_modeset_backoff_interruptible`:
@@ -276,12 +296,14 @@ drm_modeset_backoff_interruptible
         the acquire context
 
 
+
 .. _`drm_modeset_backoff_interruptible.description`:
 
 Description
 -----------
 
 Interruptible version of :c:func:`drm_modeset_backoff`
+
 
 
 .. _`drm_modeset_lock`:
@@ -300,6 +322,7 @@ drm_modeset_lock
         acquire ctx
 
 
+
 .. _`drm_modeset_lock.description`:
 
 Description
@@ -310,6 +333,7 @@ lock will be tracked by the context and can be released by calling
 :c:func:`drm_modeset_drop_locks`.  If -EDEADLK is returned, this means a
 deadlock scenario has been detected and it is an error to attempt
 to take any more locks without first calling :c:func:`drm_modeset_backoff`.
+
 
 
 .. _`drm_modeset_lock_interruptible`:
@@ -328,12 +352,14 @@ drm_modeset_lock_interruptible
         acquire ctx
 
 
+
 .. _`drm_modeset_lock_interruptible.description`:
 
 Description
 -----------
 
 Interruptible version of :c:func:`drm_modeset_lock`
+
 
 
 .. _`drm_modeset_unlock`:
@@ -347,6 +373,7 @@ drm_modeset_unlock
 
     :param struct drm_modeset_lock \*lock:
         lock to release
+
 
 
 .. _`drm_modeset_lock_all_ctx`:
@@ -365,6 +392,7 @@ drm_modeset_lock_all_ctx
         lock acquisition context
 
 
+
 .. _`drm_modeset_lock_all_ctx.description`:
 
 Description
@@ -381,5 +409,12 @@ need to grab that lock too need to do so outside of the acquire context
 Locks acquired with this function should be released by calling the
 :c:func:`drm_modeset_drop_locks` function on ``ctx``\ .
 
-Returns: 0 on success or a negative error-code on failure.
+
+
+.. _`drm_modeset_lock_all_ctx.returns`:
+
+Returns
+-------
+
+0 on success or a negative error-code on failure.
 

@@ -1,0 +1,82 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+==========
+tps65217.h
+==========
+
+
+.. _`tps65217_board`:
+
+struct tps65217_board
+=====================
+
+.. c:type:: tps65217_board
+
+    packages regulator init data
+
+
+.. _`tps65217_board.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct tps65217_board {
+  };
+
+
+.. _`tps65217_board.members`:
+
+Members
+-------
+
+
+
+
+.. _`tps65217_board.description`:
+
+Description
+-----------
+
+Board data may be used to initialize regulator.
+
+
+
+.. _`tps65217`:
+
+struct tps65217
+===============
+
+.. c:type:: tps65217
+
+    tps65217 sub-driver chip access routines
+
+
+.. _`tps65217.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct tps65217 {
+  };
+
+
+.. _`tps65217.members`:
+
+Members
+-------
+
+
+
+
+.. _`tps65217.description`:
+
+Description
+-----------
+
+
+Device data may be used to access the TPS65217 chip
+

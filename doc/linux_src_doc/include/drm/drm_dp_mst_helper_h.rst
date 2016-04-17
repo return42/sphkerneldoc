@@ -4,16 +4,18 @@
 drm_dp_mst_helper.h
 ===================
 
+
 .. _`drm_dp_vcpi`:
 
 struct drm_dp_vcpi
 ==================
 
-.. c:type:: struct drm_dp_vcpi
+.. c:type:: drm_dp_vcpi
 
     Virtual Channel Payload Identifier
 
 
+.. _`drm_dp_vcpi.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`drm_dp_vcpi.members`:
 
 Members
 -------
@@ -46,16 +49,18 @@ Members
 
 
 
+
 .. _`drm_dp_mst_port`:
 
 struct drm_dp_mst_port
 ======================
 
-.. c:type:: struct drm_dp_mst_port
+.. c:type:: drm_dp_mst_port
 
     MST port
 
 
+.. _`drm_dp_mst_port.definition`:
 
 Definition
 ----------
@@ -84,6 +89,7 @@ Definition
   };
 
 
+.. _`drm_dp_mst_port.members`:
 
 Members
 -------
@@ -144,6 +150,9 @@ Members
 
 
 
+
+.. _`drm_dp_mst_port.description`:
+
 Description
 -----------
 
@@ -151,16 +160,18 @@ This structure represents an MST port endpoint on a device somewhere
 in the MST topology.
 
 
+
 .. _`drm_dp_mst_branch`:
 
 struct drm_dp_mst_branch
 ========================
 
-.. c:type:: struct drm_dp_mst_branch
+.. c:type:: drm_dp_mst_branch
 
     MST branch device.
 
 
+.. _`drm_dp_mst_branch.definition`:
 
 Definition
 ----------
@@ -183,6 +194,7 @@ Definition
   };
 
 
+.. _`drm_dp_mst_branch.members`:
 
 Members
 -------
@@ -226,6 +238,9 @@ Members
 
 
 
+
+.. _`drm_dp_mst_branch.description`:
+
 Description
 -----------
 
@@ -234,16 +249,18 @@ primary branch device at the root, along with any other branches connected
 to downstream port of parent branches.
 
 
+
 .. _`drm_dp_mst_topology_mgr`:
 
 struct drm_dp_mst_topology_mgr
 ==============================
 
-.. c:type:: struct drm_dp_mst_topology_mgr
+.. c:type:: drm_dp_mst_topology_mgr
 
     DisplayPort MST manager
 
 
+.. _`drm_dp_mst_topology_mgr.definition`:
 
 Definition
 ----------
@@ -266,6 +283,7 @@ Definition
   };
 
 
+.. _`drm_dp_mst_topology_mgr.members`:
 
 Members
 -------
@@ -308,6 +326,9 @@ Members
     PBN to slots divisor.
 
 
+
+
+.. _`drm_dp_mst_topology_mgr.description`:
 
 Description
 -----------

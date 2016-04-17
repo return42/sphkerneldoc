@@ -4,6 +4,7 @@
 intel_csr.c
 ===========
 
+
 .. _`csr-support-for-dmc`:
 
 csr support for dmc
@@ -22,6 +23,7 @@ FW_UNINITIALIZED to FW_LOADED and for any erroneous condition status will
 be moved to FW_FAILED.
 
 
+
 .. _`intel_csr_load_program`:
 
 intel_csr_load_program
@@ -35,6 +37,7 @@ intel_csr_load_program
         i915 drm device.
 
 
+
 .. _`intel_csr_load_program.description`:
 
 Description
@@ -43,6 +46,7 @@ Description
 CSR firmware is read from a .bin file and kept in internal memory one time.
 Everytime display comes back from low power state this function is called to
 copy the firmware from internal memory to registers.
+
 
 
 .. _`intel_csr_ucode_init`:
@@ -58,6 +62,7 @@ intel_csr_ucode_init
         i915 drm device.
 
 
+
 .. _`intel_csr_ucode_init.description`:
 
 Description
@@ -65,6 +70,7 @@ Description
 
 This function is called at the time of loading the display driver to read
 firmware from a .bin file and copied into a internal memory.
+
 
 
 .. _`intel_csr_ucode_fini`:
@@ -78,6 +84,7 @@ intel_csr_ucode_fini
 
     :param struct drm_i915_private \*dev_priv:
         i915 drm device.
+
 
 
 .. _`intel_csr_ucode_fini.description`:

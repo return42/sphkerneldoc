@@ -1,0 +1,66 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+fm801.c
+=======
+
+
+.. _`fm801`:
+
+struct fm801
+============
+
+.. c:type:: fm801
+
+    describes FM801 chip
+
+
+.. _`fm801.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct fm801 {
+    unsigned long port;
+    unsigned int multichannel:1;
+    unsigned int secondary:1;
+    unsigned char secondary_addr;
+    unsigned int tea575x_tuner;
+    unsigned short ply_ctrl;
+    unsigned short cap_ctrl;
+    #ifdef CONFIG_SND_FM801_TEA575X_BOOL
+    #endif
+    #ifdef CONFIG_PM_SLEEP
+    #endif
+  };
+
+
+.. _`fm801.members`:
+
+Members
+-------
+
+:``port``:
+    I/O port number
+
+:``multichannel``:
+    multichannel support
+
+:``secondary``:
+    secondary codec
+
+:``secondary_addr``:
+    address of the secondary codec
+
+:``tea575x_tuner``:
+    tuner access method & flags
+
+:``ply_ctrl``:
+    playback control
+
+:``cap_ctrl``:
+    capture control
+
+

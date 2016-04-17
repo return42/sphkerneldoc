@@ -4,16 +4,18 @@
 sched.h
 =======
 
+
 .. _`prev_cputime`:
 
 struct prev_cputime
 ===================
 
-.. c:type:: struct prev_cputime
+.. c:type:: prev_cputime
 
     snaphsot of system and user cputime
 
 
+.. _`prev_cputime.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`prev_cputime.members`:
 
 Members
 -------
@@ -44,6 +47,9 @@ Members
 
 
 
+
+.. _`prev_cputime.description`:
+
 Description
 -----------
 
@@ -51,16 +57,18 @@ Stores previous user/system time values such that we can guarantee
 monotonicity.
 
 
+
 .. _`task_cputime`:
 
 struct task_cputime
 ===================
 
-.. c:type:: struct task_cputime
+.. c:type:: task_cputime
 
     collected CPU time counts
 
 
+.. _`task_cputime.definition`:
 
 Definition
 ----------
@@ -74,6 +82,7 @@ Definition
   };
 
 
+.. _`task_cputime.members`:
 
 Members
 -------
@@ -89,6 +98,9 @@ Members
 
 
 
+
+.. _`task_cputime.description`:
+
 Description
 -----------
 
@@ -97,16 +109,18 @@ threads and thread groups.  Most things considering CPU time want to group
 these counts together and treat all three of them in parallel.
 
 
+
 .. _`thread_group_cputimer`:
 
 struct thread_group_cputimer
 ============================
 
-.. c:type:: struct thread_group_cputimer
+.. c:type:: thread_group_cputimer
 
     thread group interval timer counts
 
 
+.. _`thread_group_cputimer.definition`:
 
 Definition
 ----------
@@ -120,6 +134,7 @@ Definition
   };
 
 
+.. _`thread_group_cputimer.members`:
 
 Members
 -------
@@ -137,11 +152,15 @@ Members
 
 
 
+
+.. _`thread_group_cputimer.description`:
+
 Description
 -----------
 
 This structure contains the version of task_cputime, above, that is
 used for thread group CPU timer calculations.
+
 
 
 .. _`pid_alive`:
@@ -157,6 +176,7 @@ pid_alive
         Task structure to be checked.
 
 
+
 .. _`pid_alive.description`:
 
 Description
@@ -166,7 +186,15 @@ Test if a process is not yet dead (at most zombie state)
 If pid_alive fails, then pointers within the task structure
 can be stale and must not be dereferenced.
 
-Return: 1 if the process is alive. 0 otherwise.
+
+
+.. _`pid_alive.return`:
+
+Return
+------
+
+1 if the process is alive. 0 otherwise.
+
 
 
 .. _`is_global_init`:
@@ -182,6 +210,7 @@ is_global_init
         Task structure to be checked.
 
 
+
 .. _`is_global_init.description`:
 
 Description
@@ -189,7 +218,15 @@ Description
 
 Check if a task structure is the first user space task the kernel created.
 
-Return: 1 if the task structure is init. 0 otherwise.
+
+
+.. _`is_global_init.return`:
+
+Return
+------
+
+1 if the task structure is init. 0 otherwise.
+
 
 
 .. _`task_nice`:
@@ -205,12 +242,14 @@ task_nice
         the task in question.
 
 
-.. _`task_nice.description`:
 
-Description
------------
+.. _`task_nice.return`:
 
-Return: The nice value [ -20 ... 0 ... 19 ].
+Return
+------
+
+The nice value [ -20 ... 0 ... 19 ].
+
 
 
 .. _`is_idle_task`:
@@ -226,12 +265,14 @@ is_idle_task
         the task in question.
 
 
-.. _`is_idle_task.description`:
 
-Description
------------
+.. _`is_idle_task.return`:
 
-Return: 1 if ``p`` is an idle task. 0 otherwise.
+Return
+------
+
+1 if ``p`` is an idle task. 0 otherwise.
+
 
 
 .. _`threadgroup_change_begin`:
@@ -247,6 +288,7 @@ threadgroup_change_begin
         task causing the changes
 
 
+
 .. _`threadgroup_change_begin.description`:
 
 Description
@@ -260,6 +302,7 @@ subsystems needing threadgroup stability can hook into for
 synchronization.
 
 
+
 .. _`threadgroup_change_end`:
 
 threadgroup_change_end
@@ -271,6 +314,7 @@ threadgroup_change_end
 
     :param struct task_struct \*tsk:
         task causing the changes
+
 
 
 .. _`threadgroup_change_end.description`:

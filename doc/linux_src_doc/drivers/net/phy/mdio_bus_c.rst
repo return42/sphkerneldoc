@@ -4,6 +4,7 @@
 mdio_bus.c
 ==========
 
+
 .. _`mdiobus_alloc_size`:
 
 mdiobus_alloc_size
@@ -18,13 +19,15 @@ mdiobus_alloc_size
         If non-zero, then bus->priv is points to that memory.
 
 
+
 .. _`mdiobus_alloc_size.description`:
 
 Description
 -----------
 
-Description: called by a bus driver to allocate an mii_bus
+called by a bus driver to allocate an mii_bus
 structure to fill in.
+
 
 
 .. _`devm_mdiobus_alloc_size`:
@@ -43,6 +46,7 @@ devm_mdiobus_alloc_size
         Space to allocate for private structure.
 
 
+
 .. _`devm_mdiobus_alloc_size.description`:
 
 Description
@@ -54,8 +58,15 @@ automatically freed on driver detach.
 If an mii_bus allocated with this function needs to be freed separately,
 :c:func:`devm_mdiobus_free` must be used.
 
-RETURNS:
+
+
+.. _`devm_mdiobus_alloc_size.returns`:
+
+RETURNS
+-------
+
 Pointer to allocated mii_bus on success, NULL on failure.
+
 
 
 .. _`devm_mdiobus_free`:
@@ -74,12 +85,14 @@ devm_mdiobus_free
         the mii_bus associated with the device
 
 
+
 .. _`devm_mdiobus_free.description`:
 
 Description
 -----------
 
 Free mii_bus allocated with :c:func:`devm_mdiobus_alloc_size`.
+
 
 
 .. _`mdiobus_release`:
@@ -95,13 +108,15 @@ mdiobus_release
         the target struct device that contains the mii_bus
 
 
+
 .. _`mdiobus_release.description`:
 
 Description
 -----------
 
-Description: called when the last reference to an mii_bus is
+called when the last reference to an mii_bus is
 dropped, to free the underlying memory.
+
 
 
 .. _`of_mdio_find_bus`:
@@ -117,6 +132,7 @@ of_mdio_find_bus
         Pointer to the mii_bus.
 
 
+
 .. _`of_mdio_find_bus.description`:
 
 Description
@@ -129,6 +145,7 @@ and this must be put once the bus is finished with.
 Because the association of a device_node and mii_bus is made via
 :c:func:`of_mdiobus_register`, the mii_bus cannot be found before it is
 registered with :c:func:`of_mdiobus_register`.
+
 
 
 .. _`__mdiobus_register`:
@@ -147,12 +164,13 @@ __mdiobus_register
         module containing bus accessor functions
 
 
+
 .. _`__mdiobus_register.description`:
 
 Description
 -----------
 
-Description: Called by a bus driver to bring up all the PHYs
+Called by a bus driver to bring up all the PHYs
 on a given bus, and attach them to the bus. Drivers should use
 :c:func:`mdiobus_register` rather than :c:func:`__mdiobus_register` unless they
 need to pass a specific owner module. MDIO devices which are not
@@ -160,6 +178,7 @@ PHYs will not be brought up by this function. They are expected to
 to be explicitly listed in DT and instantiated by :c:func:`of_mdiobus_register`.
 
 Returns 0 on success or < 0 on error.
+
 
 
 .. _`mdiobus_free`:
@@ -175,6 +194,7 @@ mdiobus_free
         mii_bus to free
 
 
+
 .. _`mdiobus_free.description`:
 
 Description
@@ -183,6 +203,7 @@ Description
 This function releases the reference to the underlying device
 object in the mii_bus.  If this is the last reference, the mii_bus
 will be freed.
+
 
 
 .. _`mdiobus_scan`:
@@ -201,6 +222,7 @@ mdiobus_scan
         address on bus to scan
 
 
+
 .. _`mdiobus_scan.description`:
 
 Description
@@ -212,6 +234,7 @@ MDIO devices have such registers, but PHY devices typically
 do. Hence this function assumes anything found is a PHY, or can be
 treated as a PHY. Other MDIO devices, such as switches, will
 probably not be found during the scan.
+
 
 
 .. _`mdiobus_read_nested`:
@@ -233,6 +256,7 @@ mdiobus_read_nested
         register number to read
 
 
+
 .. _`mdiobus_read_nested.description`:
 
 Description
@@ -241,9 +265,17 @@ Description
 In case of nested MDIO bus access avoid lockdep false positives by
 using :c:func:`mutex_lock_nested`.
 
-NOTE: MUST NOT be called from interrupt context,
+
+
+.. _`mdiobus_read_nested.note`:
+
+NOTE
+----
+
+MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
+
 
 
 .. _`mdiobus_read`:
@@ -265,14 +297,16 @@ mdiobus_read
         register number to read
 
 
-.. _`mdiobus_read.description`:
 
-Description
------------
+.. _`mdiobus_read.note`:
 
-NOTE: MUST NOT be called from interrupt context,
+NOTE
+----
+
+MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
+
 
 
 .. _`mdiobus_write_nested`:
@@ -297,6 +331,7 @@ mdiobus_write_nested
         value to write to ``regnum``
 
 
+
 .. _`mdiobus_write_nested.description`:
 
 Description
@@ -305,9 +340,17 @@ Description
 In case of nested MDIO bus access avoid lockdep false positives by
 using :c:func:`mutex_lock_nested`.
 
-NOTE: MUST NOT be called from interrupt context,
+
+
+.. _`mdiobus_write_nested.note`:
+
+NOTE
+----
+
+MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
+
 
 
 .. _`mdiobus_write`:
@@ -332,14 +375,16 @@ mdiobus_write
         value to write to ``regnum``
 
 
-.. _`mdiobus_write.description`:
 
-Description
------------
+.. _`mdiobus_write.note`:
 
-NOTE: MUST NOT be called from interrupt context,
+NOTE
+----
+
+MUST NOT be called from interrupt context,
 because the bus read/write functions may wait for an interrupt
 to conclude the operation.
+
 
 
 .. _`mdio_bus_match`:
@@ -358,12 +403,13 @@ mdio_bus_match
         given MDIO driver
 
 
+
 .. _`mdio_bus_match.description`:
 
 Description
 -----------
 
-Description: Given a MDIO device, and a MDIO driver, return 1 if
+Given a MDIO device, and a MDIO driver, return 1 if
 the driver supports the device.  Otherwise, return 0. This may
 require calling the devices own match function, since different classes
 of MDIO devices have different match criteria.

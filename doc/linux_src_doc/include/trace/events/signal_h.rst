@@ -4,6 +4,7 @@
 signal.h
 ========
 
+
 .. _`trace_signal_generate`:
 
 trace_signal_generate
@@ -26,7 +27,8 @@ trace_signal_generate
         shared or private
 
     :param int result:
-        TRACE_SIGNAL_*
+        TRACE_SIGNAL\_\*
+
 
 
 .. _`trace_signal_generate.description`:
@@ -39,6 +41,7 @@ Current process sends a 'sig' signal to 'task' process with
 'info' is not a pointer and you can't access its field. Instead,
 SEND_SIG_NOINFO means that si_code is SI_USER, and SEND_SIG_PRIV
 means that si_code is SI_KERNEL.
+
 
 
 .. _`trace_signal_deliver`:
@@ -58,6 +61,7 @@ trace_signal_deliver
 
     :param struct k_sigaction \*ka:
         pointer to struct k_sigaction
+
 
 
 .. _`trace_signal_deliver.description`:

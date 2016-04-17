@@ -1,0 +1,39 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+wm9713.c
+========
+
+
+.. _`wm9713_set_pll`:
+
+wm9713_set_pll
+==============
+
+.. c:function:: int wm9713_set_pll (struct snd_soc_codec *codec, int pll_id, unsigned int freq_in, unsigned int freq_out)
+
+    :param struct snd_soc_codec \*codec:
+
+        *undescribed*
+
+    :param int pll_id:
+
+        *undescribed*
+
+    :param unsigned int freq_in:
+
+        *undescribed*
+
+    :param unsigned int freq_out:
+
+        *undescribed*
+
+
+
+.. _`wm9713_set_pll.description`:
+
+Description
+-----------
+
+resynchronisation with the AC97 controller.
+

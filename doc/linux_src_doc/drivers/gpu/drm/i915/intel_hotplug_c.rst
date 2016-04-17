@@ -4,6 +4,7 @@
 intel_hotplug.c
 ===============
 
+
 .. _`hotplug`:
 
 Hotplug
@@ -53,6 +54,7 @@ such as HDMI or DVI enabled on the same port will have proper logic since
 it will use i915_hotplug_work_func where this logic is handled.
 
 
+
 .. _`intel_hpd_irq_storm_detect`:
 
 intel_hpd_irq_storm_detect
@@ -69,6 +71,7 @@ intel_hpd_irq_storm_detect
         the pin to gather stats on
 
 
+
 .. _`intel_hpd_irq_storm_detect.description`:
 
 Description
@@ -83,6 +86,7 @@ otherwise it's considered an irq storm, and the irq state is set to
 ``HPD_MARK_DISABLED``\ .
 
 Return true if an irq storm was detected on ``pin``\ .
+
 
 
 .. _`intel_hpd_irq_handler`:
@@ -104,6 +108,7 @@ intel_hpd_irq_handler
         a mask of hpd pins that may be long hpd pulses
 
 
+
 .. _`intel_hpd_irq_handler.description`:
 
 Description
@@ -120,6 +125,7 @@ Here, we do hotplug irq storm detection and mitigation, and pass further
 processing to appropriate bottom halves.
 
 
+
 .. _`intel_hpd_init`:
 
 intel_hpd_init
@@ -131,6 +137,7 @@ intel_hpd_init
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`intel_hpd_init.description`:

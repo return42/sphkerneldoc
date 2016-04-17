@@ -4,16 +4,18 @@
 firewire-cdev.h
 ===============
 
+
 .. _`fw_cdev_event_common`:
 
 struct fw_cdev_event_common
 ===========================
 
-.. c:type:: struct fw_cdev_event_common
+.. c:type:: fw_cdev_event_common
 
     Common part of all fw_cdev_event_ types
 
 
+.. _`fw_cdev_event_common.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_common.members`:
 
 Members
 -------
@@ -38,6 +41,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_common.description`:
+
 Description
 -----------
 
@@ -49,16 +55,18 @@ corresponding event.  It is big enough to hold a pointer on all platforms.
 The ioctl used to set ``closure`` depends on the ``type`` of event.
 
 
+
 .. _`fw_cdev_event_bus_reset`:
 
 struct fw_cdev_event_bus_reset
 ==============================
 
-.. c:type:: struct fw_cdev_event_bus_reset
+.. c:type:: fw_cdev_event_bus_reset
 
     Sent when a bus reset occurred
 
 
+.. _`fw_cdev_event_bus_reset.definition`:
 
 Definition
 ----------
@@ -77,6 +85,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_bus_reset.members`:
 
 Members
 -------
@@ -107,6 +116,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_bus_reset.description`:
+
 Description
 -----------
 
@@ -119,16 +131,18 @@ If ``bm_node_id`` is 0xffff right after bus reset it can be reread by an
 Kernels with ABI version < 4 do not set ``bm_node_id``\ .
 
 
+
 .. _`fw_cdev_event_response`:
 
 struct fw_cdev_event_response
 =============================
 
-.. c:type:: struct fw_cdev_event_response
+.. c:type:: fw_cdev_event_response
 
     Sent when a response packet was received
 
 
+.. _`fw_cdev_event_response.definition`:
 
 Definition
 ----------
@@ -144,6 +158,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_response.members`:
 
 Members
 -------
@@ -167,6 +182,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_response.description`:
+
 Description
 -----------
 
@@ -181,16 +199,18 @@ broadcast write transactions, and transmission of asynchronous stream
 packets.  ``rcode`` indicates success or failure of such transmissions.
 
 
+
 .. _`fw_cdev_event_request`:
 
 struct fw_cdev_event_request
 ============================
 
-.. c:type:: struct fw_cdev_event_request
+.. c:type:: fw_cdev_event_request
 
     Old version of \\\amp;fw_cdev_event_request2
 
 
+.. _`fw_cdev_event_request.definition`:
 
 Definition
 ----------
@@ -202,6 +222,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_request.members`:
 
 Members
 -------
@@ -211,6 +232,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_request.description`:
+
 Description
 -----------
 
@@ -219,16 +243,18 @@ the client implements ABI version <= 3.  :c:type:`struct fw_cdev_event_request <
 essential information; use :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>` instead.
 
 
+
 .. _`fw_cdev_event_request2`:
 
 struct fw_cdev_event_request2
 =============================
 
-.. c:type:: struct fw_cdev_event_request2
+.. c:type:: fw_cdev_event_request2
 
     Sent on incoming request to an address region
 
 
+.. _`fw_cdev_event_request2.definition`:
 
 Definition
 ----------
@@ -250,6 +276,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_request2.members`:
 
 Members
 -------
@@ -288,6 +315,9 @@ Members
     Incoming data, if any
 
 
+
+
+.. _`fw_cdev_event_request2.description`:
 
 Description
 -----------
@@ -328,16 +358,18 @@ an :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`, it needs to
 card index, node ID, and generation for outbound requests.
 
 
+
 .. _`fw_cdev_event_iso_interrupt`:
 
 struct fw_cdev_event_iso_interrupt
 ==================================
 
-.. c:type:: struct fw_cdev_event_iso_interrupt
+.. c:type:: fw_cdev_event_iso_interrupt
 
     Sent when an iso packet was completed
 
 
+.. _`fw_cdev_event_iso_interrupt.definition`:
 
 Definition
 ----------
@@ -353,6 +385,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_iso_interrupt.members`:
 
 Members
 -------
@@ -374,6 +407,9 @@ Members
     Stripped headers, if any
 
 
+
+
+.. _`fw_cdev_event_iso_interrupt.description`:
 
 Description
 -----------
@@ -409,12 +445,26 @@ consists of the 1394 isochronous packet header, followed by a timestamp
 quadlet if :c:type:`struct fw_cdev_create_iso_context <fw_cdev_create_iso_context>`.header_size > 4, followed by quadlets
 from the packet payload if :c:type:`struct fw_cdev_create_iso_context <fw_cdev_create_iso_context>`.header_size > 8.
 
-Format of 1394 iso packet header:  16 bits data_length, 2 bits tag, 6 bits
+
+
+.. _`fw_cdev_event_iso_interrupt.format-of-1394-iso-packet-header`:
+
+Format of 1394 iso packet header
+--------------------------------
+
+16 bits data_length, 2 bits tag, 6 bits
 channel, 4 bits tcode, 4 bits sy, in big endian byte order.
 data_length is the actual received size of the packet without the four
 1394 iso packet header bytes.
 
-Format of timestamp:  16 bits invalid, 3 bits cycleSeconds, 13 bits
+
+
+.. _`fw_cdev_event_iso_interrupt.format-of-timestamp`:
+
+Format of timestamp
+-------------------
+
+16 bits invalid, 3 bits cycleSeconds, 13 bits
 cycleCount, in big endian byte order.
 
 In version 1 of the ABI, no timestamp quadlet was inserted; instead, payload
@@ -422,16 +472,18 @@ data followed directly after the 1394 is header if header_size > 4.
 Behaviour of ver. 1 of this ABI is no longer available since ABI ver. 2.
 
 
+
 .. _`fw_cdev_event_iso_interrupt_mc`:
 
 struct fw_cdev_event_iso_interrupt_mc
 =====================================
 
-.. c:type:: struct fw_cdev_event_iso_interrupt_mc
+.. c:type:: fw_cdev_event_iso_interrupt_mc
 
     An iso buffer chunk was completed
 
 
+.. _`fw_cdev_event_iso_interrupt_mc.definition`:
 
 Definition
 ----------
@@ -445,6 +497,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_iso_interrupt_mc.members`:
 
 Members
 -------
@@ -461,6 +514,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_iso_interrupt_mc.description`:
+
 Description
 -----------
 
@@ -470,7 +526,7 @@ chunks that have been completely filled and that have the
 ``FW_CDEV_ISO_INTERRUPT`` bit set, or when explicitly requested with
 ``FW_CDEV_IOC_FLUSH_ISO``\ .
 
-The buffer is continuously filled with the following data, per packet::
+The buffer is continuously filled with the following data, per packet:
 
  - the 1394 iso packet header as described at :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`,
    but in little endian byte order,
@@ -490,16 +546,18 @@ for this condition, assemble a broken-up packet from its parts, and not to
 re-queue any buffer chunks in which as yet unread packet parts reside.
 
 
+
 .. _`fw_cdev_event_iso_resource`:
 
 struct fw_cdev_event_iso_resource
 =================================
 
-.. c:type:: struct fw_cdev_event_iso_resource
+.. c:type:: fw_cdev_event_iso_resource
 
     Iso resources were allocated or freed
 
 
+.. _`fw_cdev_event_iso_resource.definition`:
 
 Definition
 ----------
@@ -515,6 +573,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_iso_resource.members`:
 
 Members
 -------
@@ -538,6 +597,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event_iso_resource.description`:
+
 Description
 -----------
 
@@ -553,16 +615,18 @@ reallocation after a bus reset failed.
 ``bandwidth`` is 0 if no bandwidth was (de)allocated or if reallocation failed.
 
 
+
 .. _`fw_cdev_event_phy_packet`:
 
 struct fw_cdev_event_phy_packet
 ===============================
 
-.. c:type:: struct fw_cdev_event_phy_packet
+.. c:type:: fw_cdev_event_phy_packet
 
     A PHY packet was transmitted or received
 
 
+.. _`fw_cdev_event_phy_packet.definition`:
 
 Definition
 ----------
@@ -578,6 +642,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event_phy_packet.members`:
 
 Members
 -------
@@ -600,15 +665,27 @@ Members
 
 
 
+
+.. _`fw_cdev_event_phy_packet.description`:
+
 Description
 -----------
 
 If ``type`` is ``FW_CDEV_EVENT_PHY_PACKET_SENT``\ , ``length`` is 0 and ``data`` empty,
-except in case of a ping packet:  Then, ``length`` is 4, and ``data``\ [0] is the
+
+
+
+.. _`fw_cdev_event_phy_packet.except-in-case-of-a-ping-packet`:
+
+except in case of a ping packet
+-------------------------------
+
+Then, ``length`` is 4, and ``data``\ [0] is the
 ping time in 49.152MHz clocks if ``rcode`` is ``RCODE_COMPLETE``\ .
 
 If ``type`` is ``FW_CDEV_EVENT_PHY_PACKET_RECEIVED``\ , ``length`` is 8 and ``data``
 consists of the two PHY packet quadlets, in host byte order.
+
 
 
 .. _`fw_cdev_event`:
@@ -616,11 +693,12 @@ consists of the two PHY packet quadlets, in host byte order.
 union fw_cdev_event
 ===================
 
-.. c:type:: union fw_cdev_event
+.. c:type:: fw_cdev_event
 
     Convenience union of fw_cdev_event_ types
 
 
+.. _`fw_cdev_event.definition`:
 
 Definition
 ----------
@@ -640,6 +718,7 @@ Definition
   };
 
 
+.. _`fw_cdev_event.members`:
 
 Members
 -------
@@ -678,6 +757,9 @@ Members
 
 
 
+
+.. _`fw_cdev_event.description`:
+
 Description
 -----------
 
@@ -690,16 +772,18 @@ an event into a buffer that is not large enough for it, the data that does
 not fit will be discarded so that the next read(2) will return a new event.
 
 
+
 .. _`fw_cdev_get_info`:
 
 struct fw_cdev_get_info
 =======================
 
-.. c:type:: struct fw_cdev_get_info
+.. c:type:: fw_cdev_get_info
 
     General purpose information ioctl
 
 
+.. _`fw_cdev_get_info.definition`:
 
 Definition
 ----------
@@ -716,6 +800,7 @@ Definition
   };
 
 
+.. _`fw_cdev_get_info.members`:
 
 Members
 -------
@@ -750,6 +835,9 @@ Members
 
 
 
+
+.. _`fw_cdev_get_info.description`:
+
 Description
 -----------
 
@@ -760,16 +848,18 @@ As a side effect, reception of ``FW_CDEV_EVENT_BUS_RESET`` events to be read(2)
 is started by this ioctl.
 
 
+
 .. _`fw_cdev_send_request`:
 
 struct fw_cdev_send_request
 ===========================
 
-.. c:type:: struct fw_cdev_send_request
+.. c:type:: fw_cdev_send_request
 
     Send an asynchronous request packet
 
 
+.. _`fw_cdev_send_request.definition`:
 
 Definition
 ----------
@@ -786,6 +876,7 @@ Definition
   };
 
 
+.. _`fw_cdev_send_request.members`:
 
 Members
 -------
@@ -810,6 +901,9 @@ Members
 
 
 
+
+.. _`fw_cdev_send_request.description`:
+
 Description
 -----------
 
@@ -820,16 +914,18 @@ in the ``data`` field.  Once the transaction completes, the kernel writes an
 user space in the response event.
 
 
+
 .. _`fw_cdev_send_response`:
 
 struct fw_cdev_send_response
 ============================
 
-.. c:type:: struct fw_cdev_send_response
+.. c:type:: fw_cdev_send_response
 
     Send an asynchronous response packet
 
 
+.. _`fw_cdev_send_response.definition`:
 
 Definition
 ----------
@@ -844,6 +940,7 @@ Definition
   };
 
 
+.. _`fw_cdev_send_response.members`:
 
 Members
 -------
@@ -862,6 +959,9 @@ Members
 
 
 
+
+.. _`fw_cdev_send_response.description`:
+
 Description
 -----------
 
@@ -872,16 +972,18 @@ send a reply using this ioctl.  The event has a handle to the kernel-side
 pending transaction, which should be used with this ioctl.
 
 
+
 .. _`fw_cdev_allocate`:
 
 struct fw_cdev_allocate
 =======================
 
-.. c:type:: struct fw_cdev_allocate
+.. c:type:: fw_cdev_allocate
 
     Allocate a CSR in an address range
 
 
+.. _`fw_cdev_allocate.definition`:
 
 Definition
 ----------
@@ -897,6 +999,7 @@ Definition
   };
 
 
+.. _`fw_cdev_allocate.members`:
 
 Members
 -------
@@ -917,6 +1020,9 @@ Members
     First address above the address range (added in ABI v4, 2.6.36)
 
 
+
+
+.. _`fw_cdev_allocate.description`:
 
 Description
 -----------
@@ -951,16 +1057,18 @@ ignored and effectively assumed to be ``offset`` + ``length``\ .
 this can for example be tested by #ifdef FW_CDEV_EVENT_REQUEST2.
 
 
+
 .. _`fw_cdev_deallocate`:
 
 struct fw_cdev_deallocate
 =========================
 
-.. c:type:: struct fw_cdev_deallocate
+.. c:type:: fw_cdev_deallocate
 
     Free a CSR address range or isochronous resource
 
 
+.. _`fw_cdev_deallocate.definition`:
 
 Definition
 ----------
@@ -972,6 +1080,7 @@ Definition
   };
 
 
+.. _`fw_cdev_deallocate.members`:
 
 Members
 -------
@@ -982,16 +1091,18 @@ Members
 
 
 
+
 .. _`fw_cdev_initiate_bus_reset`:
 
 struct fw_cdev_initiate_bus_reset
 =================================
 
-.. c:type:: struct fw_cdev_initiate_bus_reset
+.. c:type:: fw_cdev_initiate_bus_reset
 
     Initiate a bus reset
 
 
+.. _`fw_cdev_initiate_bus_reset.definition`:
 
 Definition
 ----------
@@ -1003,6 +1114,7 @@ Definition
   };
 
 
+.. _`fw_cdev_initiate_bus_reset.members`:
 
 Members
 -------
@@ -1011,6 +1123,9 @@ Members
     ``FW_CDEV_SHORT_RESET`` or ``FW_CDEV_LONG_RESET``
 
 
+
+
+.. _`fw_cdev_initiate_bus_reset.description`:
 
 Description
 -----------
@@ -1025,16 +1140,18 @@ considerably later than the ioctl because the kernel ensures a grace period
 between subsequent bus resets as per IEEE 1394 bus management specification.
 
 
+
 .. _`fw_cdev_add_descriptor`:
 
 struct fw_cdev_add_descriptor
 =============================
 
-.. c:type:: struct fw_cdev_add_descriptor
+.. c:type:: fw_cdev_add_descriptor
 
     Add contents to the local node's config ROM
 
 
+.. _`fw_cdev_add_descriptor.definition`:
 
 Definition
 ----------
@@ -1050,6 +1167,7 @@ Definition
   };
 
 
+.. _`fw_cdev_add_descriptor.members`:
 
 Members
 -------
@@ -1070,6 +1188,9 @@ Members
     Handle to the descriptor, written by the kernel
 
 
+
+
+.. _`fw_cdev_add_descriptor.description`:
 
 Description
 -----------
@@ -1096,16 +1217,18 @@ This ioctl affects the Configuration ROMs of all local nodes.
 The ioctl only succeeds on device files which represent a local node.
 
 
+
 .. _`fw_cdev_remove_descriptor`:
 
 struct fw_cdev_remove_descriptor
 ================================
 
-.. c:type:: struct fw_cdev_remove_descriptor
+.. c:type:: fw_cdev_remove_descriptor
 
     Remove contents from the Configuration ROM
 
 
+.. _`fw_cdev_remove_descriptor.definition`:
 
 Definition
 ----------
@@ -1117,6 +1240,7 @@ Definition
   };
 
 
+.. _`fw_cdev_remove_descriptor.members`:
 
 Members
 -------
@@ -1127,6 +1251,9 @@ Members
 
 
 
+
+.. _`fw_cdev_remove_descriptor.description`:
+
 Description
 -----------
 
@@ -1135,16 +1262,18 @@ nodes' Configuration ROMs.  The kernel will also generate a bus reset to
 signal the change of the Configuration ROM to other nodes.
 
 
+
 .. _`fw_cdev_create_iso_context`:
 
 struct fw_cdev_create_iso_context
 =================================
 
-.. c:type:: struct fw_cdev_create_iso_context
+.. c:type:: fw_cdev_create_iso_context
 
     Create a context for isochronous I/O
 
 
+.. _`fw_cdev_create_iso_context.definition`:
 
 Definition
 ----------
@@ -1161,6 +1290,7 @@ Definition
   };
 
 
+.. _`fw_cdev_create_iso_context.members`:
 
 Members
 -------
@@ -1187,6 +1317,9 @@ Members
 
 
 
+
+.. _`fw_cdev_create_iso_context.description`:
+
 Description
 -----------
 
@@ -1207,11 +1340,18 @@ and must be a multiple of 4.  It is ignored in other context types.
 If a context was successfully created, the kernel writes back a handle to the
 context, which must be passed in for subsequent operations on that context.
 
-Limitations:
+
+
+.. _`fw_cdev_create_iso_context.limitations`:
+
+Limitations
+-----------
+
 No more than one iso context can be created per fd.
 The total number of contexts that all userspace and kernelspace drivers can
 create on a card at a time is a hardware limit, typically 4 or 8 contexts per
 direction, and of them at most one multichannel receive context.
+
 
 
 .. _`fw_cdev_set_iso_channels`:
@@ -1219,11 +1359,12 @@ direction, and of them at most one multichannel receive context.
 struct fw_cdev_set_iso_channels
 ===============================
 
-.. c:type:: struct fw_cdev_set_iso_channels
+.. c:type:: fw_cdev_set_iso_channels
 
     Select channels in multichannel reception
 
 
+.. _`fw_cdev_set_iso_channels.definition`:
 
 Definition
 ----------
@@ -1236,6 +1377,7 @@ Definition
   };
 
 
+.. _`fw_cdev_set_iso_channels.members`:
 
 Members
 -------
@@ -1248,6 +1390,9 @@ Members
 
 
 
+
+.. _`fw_cdev_set_iso_channels.description`:
+
 Description
 -----------
 
@@ -1258,16 +1403,18 @@ on a channel in ``channels``\ .  In that case, the bitmask of all unoccupied
 channels is returned in ``channels``\ .
 
 
+
 .. _`fw_cdev_iso_packet`:
 
 struct fw_cdev_iso_packet
 =========================
 
-.. c:type:: struct fw_cdev_iso_packet
+.. c:type:: fw_cdev_iso_packet
 
     Isochronous packet
 
 
+.. _`fw_cdev_iso_packet.definition`:
 
 Definition
 ----------
@@ -1280,6 +1427,7 @@ Definition
   };
 
 
+.. _`fw_cdev_iso_packet.members`:
 
 Members
 -------
@@ -1294,6 +1442,9 @@ Members
     Header and payload in case of a transmit context.
 
 
+
+
+.. _`fw_cdev_iso_packet.description`:
 
 Description
 -----------
@@ -1360,16 +1511,18 @@ When a buffer chunk with the ``control``\ .INTERRUPT flag set has been filled
 entirely, an :c:type:`struct fw_cdev_event_iso_interrupt_mc <fw_cdev_event_iso_interrupt_mc>` event will be sent.
 
 
+
 .. _`fw_cdev_queue_iso`:
 
 struct fw_cdev_queue_iso
 ========================
 
-.. c:type:: struct fw_cdev_queue_iso
+.. c:type:: fw_cdev_queue_iso
 
     Queue isochronous packets for I/O
 
 
+.. _`fw_cdev_queue_iso.definition`:
 
 Definition
 ----------
@@ -1384,6 +1537,7 @@ Definition
   };
 
 
+.. _`fw_cdev_queue_iso.members`:
 
 Members
 -------
@@ -1401,6 +1555,9 @@ Members
     Isochronous context handle
 
 
+
+
+.. _`fw_cdev_queue_iso.description`:
 
 Description
 -----------
@@ -1420,16 +1577,18 @@ In case of a multichannel receive context, ``data`` must be quadlet-aligned
 relative to the buffer start.
 
 
+
 .. _`fw_cdev_start_iso`:
 
 struct fw_cdev_start_iso
 ========================
 
-.. c:type:: struct fw_cdev_start_iso
+.. c:type:: fw_cdev_start_iso
 
     Start an isochronous transmission or reception
 
 
+.. _`fw_cdev_start_iso.definition`:
 
 Definition
 ----------
@@ -1444,6 +1603,7 @@ Definition
   };
 
 
+.. _`fw_cdev_start_iso.members`:
 
 Members
 -------
@@ -1457,13 +1617,13 @@ Members
     the ``FW_CDEV_ISO_SYNC`` bit set
 
 :``tags``:
-    Tag filter bit mask.  Only valid for isochronous reception.::
-
-                    Determines the tag values for which packets will be accepted.
-                    Use FW_CDEV_ISO_CONTEXT_MATCH_ macros to set ``tags``\ .
+    Tag filter bit mask.  Only valid for isochronous reception.
+    Determines the tag values for which packets will be accepted.
+    Use FW_CDEV_ISO_CONTEXT_MATCH_ macros to set ``tags``\ .
 
 :``handle``:
     Isochronous context handle within which to transmit or receive
+
 
 
 
@@ -1472,11 +1632,12 @@ Members
 struct fw_cdev_stop_iso
 =======================
 
-.. c:type:: struct fw_cdev_stop_iso
+.. c:type:: fw_cdev_stop_iso
 
     Stop an isochronous transmission or reception
 
 
+.. _`fw_cdev_stop_iso.definition`:
 
 Definition
 ----------
@@ -1488,6 +1649,7 @@ Definition
   };
 
 
+.. _`fw_cdev_stop_iso.members`:
 
 Members
 -------
@@ -1497,16 +1659,18 @@ Members
 
 
 
+
 .. _`fw_cdev_flush_iso`:
 
 struct fw_cdev_flush_iso
 ========================
 
-.. c:type:: struct fw_cdev_flush_iso
+.. c:type:: fw_cdev_flush_iso
 
     flush completed iso packets
 
 
+.. _`fw_cdev_flush_iso.definition`:
 
 Definition
 ----------
@@ -1518,6 +1682,7 @@ Definition
   };
 
 
+.. _`fw_cdev_flush_iso.members`:
 
 Members
 -------
@@ -1526,6 +1691,9 @@ Members
     handle of isochronous context to flush
 
 
+
+
+.. _`fw_cdev_flush_iso.description`:
 
 Description
 -----------
@@ -1542,16 +1710,18 @@ events generated by this ioctl are sent synchronously, i.e., are available
 for reading from the file descriptor when this ioctl returns.
 
 
+
 .. _`fw_cdev_get_cycle_timer`:
 
 struct fw_cdev_get_cycle_timer
 ==============================
 
-.. c:type:: struct fw_cdev_get_cycle_timer
+.. c:type:: fw_cdev_get_cycle_timer
 
     read cycle timer register
 
 
+.. _`fw_cdev_get_cycle_timer.definition`:
 
 Definition
 ----------
@@ -1564,6 +1734,7 @@ Definition
   };
 
 
+.. _`fw_cdev_get_cycle_timer.members`:
 
 Members
 -------
@@ -1576,6 +1747,9 @@ Members
 
 
 
+
+.. _`fw_cdev_get_cycle_timer.description`:
+
 Description
 -----------
 
@@ -1586,16 +1760,18 @@ In version 1 and 2 of the ABI, this ioctl returned unreliable (non-
 monotonic) ``cycle_timer`` values on certain controllers.
 
 
+
 .. _`fw_cdev_get_cycle_timer2`:
 
 struct fw_cdev_get_cycle_timer2
 ===============================
 
-.. c:type:: struct fw_cdev_get_cycle_timer2
+.. c:type:: fw_cdev_get_cycle_timer2
 
     read cycle timer register
 
 
+.. _`fw_cdev_get_cycle_timer2.definition`:
 
 Definition
 ----------
@@ -1610,6 +1786,7 @@ Definition
   };
 
 
+.. _`fw_cdev_get_cycle_timer2.members`:
 
 Members
 -------
@@ -1628,6 +1805,9 @@ Members
 
 
 
+
+.. _`fw_cdev_get_cycle_timer2.description`:
+
 Description
 -----------
 
@@ -1644,16 +1824,18 @@ and Linux' ``CLOCK_MONOTONIC_RAW``\ .
 per IEEE 1394 or Isochronous Cycle Timer register per OHCI-1394.
 
 
+
 .. _`fw_cdev_allocate_iso_resource`:
 
 struct fw_cdev_allocate_iso_resource
 ====================================
 
-.. c:type:: struct fw_cdev_allocate_iso_resource
+.. c:type:: fw_cdev_allocate_iso_resource
 
     (De)allocate a channel or bandwidth
 
 
+.. _`fw_cdev_allocate_iso_resource.definition`:
 
 Definition
 ----------
@@ -1668,6 +1850,7 @@ Definition
   };
 
 
+.. _`fw_cdev_allocate_iso_resource.members`:
 
 Members
 -------
@@ -1686,6 +1869,9 @@ Members
     case of ``FW_CDEV_IOC_ALLOCATE_ISO_RESOURCE`` ioctls)
 
 
+
+
+.. _`fw_cdev_allocate_iso_resource.description`:
 
 Description
 -----------
@@ -1720,11 +1906,19 @@ In contrast, ``FW_CDEV_IOC_ALLOCATE_ISO_RESOURCE_ONCE`` allocates iso resources
 for the duration of a bus generation.
 
 ``channels`` is a host-endian bitfield with the least significant bit
-representing channel 0 and the most significant bit representing channel 63:
+
+
+
+.. _`fw_cdev_allocate_iso_resource.representing-channel-0-and-the-most-significant-bit-representing-channel-63`:
+
+representing channel 0 and the most significant bit representing channel 63
+---------------------------------------------------------------------------
+
 1ULL << c for each channel c that is a candidate for (de)allocation.
 
 ``bandwidth`` is expressed in bandwidth allocation units, i.e. the time to send
 one quadlet of data (payload or header data) at speed S1600.
+
 
 
 .. _`fw_cdev_send_stream_packet`:
@@ -1732,11 +1926,12 @@ one quadlet of data (payload or header data) at speed S1600.
 struct fw_cdev_send_stream_packet
 =================================
 
-.. c:type:: struct fw_cdev_send_stream_packet
+.. c:type:: fw_cdev_send_stream_packet
 
     send an asynchronous stream packet
 
 
+.. _`fw_cdev_send_stream_packet.definition`:
 
 Definition
 ----------
@@ -1755,6 +1950,7 @@ Definition
   };
 
 
+.. _`fw_cdev_send_stream_packet.members`:
 
 Members
 -------
@@ -1785,6 +1981,9 @@ Members
 
 
 
+
+.. _`fw_cdev_send_stream_packet.description`:
+
 Description
 -----------
 
@@ -1794,16 +1993,18 @@ writes an :c:type:`struct fw_cdev_event_response <fw_cdev_event_response>` event
 the transmission.
 
 
+
 .. _`fw_cdev_send_phy_packet`:
 
 struct fw_cdev_send_phy_packet
 ==============================
 
-.. c:type:: struct fw_cdev_send_phy_packet
+.. c:type:: fw_cdev_send_phy_packet
 
     send a PHY packet
 
 
+.. _`fw_cdev_send_phy_packet.definition`:
 
 Definition
 ----------
@@ -1817,6 +2018,7 @@ Definition
   };
 
 
+.. _`fw_cdev_send_phy_packet.members`:
 
 Members
 -------
@@ -1832,6 +2034,9 @@ Members
 
 
 
+
+.. _`fw_cdev_send_phy_packet.description`:
+
 Description
 -----------
 
@@ -1846,16 +2051,18 @@ are an exception to this rule.
 The ioctl is only permitted on device files which represent a local node.
 
 
+
 .. _`fw_cdev_receive_phy_packets`:
 
 struct fw_cdev_receive_phy_packets
 ==================================
 
-.. c:type:: struct fw_cdev_receive_phy_packets
+.. c:type:: fw_cdev_receive_phy_packets
 
     start reception of PHY packets
 
 
+.. _`fw_cdev_receive_phy_packets.definition`:
 
 Definition
 ----------
@@ -1867,6 +2074,7 @@ Definition
   };
 
 
+.. _`fw_cdev_receive_phy_packets.members`:
 
 Members
 -------
@@ -1875,6 +2083,9 @@ Members
     Passed back to userspace in phy packet events
 
 
+
+
+.. _`fw_cdev_receive_phy_packets.description`:
 
 Description
 -----------

@@ -4,16 +4,68 @@
 drm_modes.h
 ===========
 
+
 .. _`drm_mode_status`:
 
 enum drm_mode_status
 ====================
 
-.. c:type:: enum drm_mode_status
+.. c:type:: drm_mode_status
 
     hardware support status of a mode
 
 
+.. _`drm_mode_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_mode_status {
+      MODE_OK,
+      MODE_HSYNC,
+      MODE_VSYNC,
+      MODE_H_ILLEGAL,
+      MODE_V_ILLEGAL,
+      MODE_BAD_WIDTH,
+      MODE_NOMODE,
+      MODE_NO_INTERLACE,
+      MODE_NO_DBLESCAN,
+      MODE_NO_VSCAN,
+      MODE_MEM,
+      MODE_VIRTUAL_X,
+      MODE_VIRTUAL_Y,
+      MODE_MEM_VIRT,
+      MODE_NOCLOCK,
+      MODE_CLOCK_HIGH,
+      MODE_CLOCK_LOW,
+      MODE_CLOCK_RANGE,
+      MODE_BAD_HVALUE,
+      MODE_BAD_VVALUE,
+      MODE_BAD_VSCAN,
+      MODE_HSYNC_NARROW,
+      MODE_HSYNC_WIDE,
+      MODE_HBLANK_NARROW,
+      MODE_HBLANK_WIDE,
+      MODE_VSYNC_NARROW,
+      MODE_VSYNC_WIDE,
+      MODE_VBLANK_NARROW,
+      MODE_VBLANK_WIDE,
+      MODE_PANEL,
+      MODE_INTERLACE_WIDTH,
+      MODE_ONE_WIDTH,
+      MODE_ONE_HEIGHT,
+      MODE_ONE_SIZE,
+      MODE_NO_REDUCED,
+      MODE_NO_STEREO,
+      MODE_STALE,
+      MODE_BAD,
+      MODE_ERROR
+    };
+
+
+.. _`drm_mode_status.constants`:
 
 Constants
 ---------
@@ -136,6 +188,8 @@ Constants
     error condition
 
 
+.. _`drm_mode_status.description`:
+
 Description
 -----------
 
@@ -143,16 +197,18 @@ This enum is used to filter out modes not supported by the driver/hardware
 combination.
 
 
+
 .. _`drm_display_mode`:
 
 struct drm_display_mode
 =======================
 
-.. c:type:: struct drm_display_mode
+.. c:type:: drm_display_mode
 
     DRM kernel-internal display mode structure
 
 
+.. _`drm_display_mode.definition`:
 
 Definition
 ----------
@@ -201,6 +257,7 @@ Definition
   };
 
 
+.. _`drm_display_mode.members`:
 
 Members
 -------
@@ -232,7 +289,7 @@ Members
 :``type``:
 
     A bitmask of flags, mostly about the source of a mode. Possible flags
-    are::
+    are:
 
      - DRM_MODE_TYPE_BUILTIN: Meant for hard-coded modes, effectively
        unused.
@@ -244,7 +301,7 @@ Members
        and expose to userspace.
 
     Plus a big list of flags which shouldn't be used at all, but are
-    still around since these flags are also used in the userspace ABI::
+    still around since these flags are also used in the userspace ABI:
 
      - DRM_MODE_TYPE_DEFAULT: Again a leftover, use
        DRM_MODE_TYPE_PREFERRED instead.
@@ -291,7 +348,7 @@ Members
 
 :``flags``:
 
-    Sync and timing flags::
+    Sync and timing flags:
 
      - DRM_MODE_FLAG_PHSYNC: horizontal sync is active high.
      - DRM_MODE_FLAG_NHSYNC: horizontal sync is active low.
@@ -308,7 +365,7 @@ Members
      - DRM_MODE_FLAG_DBLCLK: double-clocked mode.
      - DRM_MODE_FLAG_CLKDIV2: half-clocked mode.
 
-    Additionally there's flags to specify how 3D modes are packed::
+    Additionally there's flags to specify how 3D modes are packed:
 
      - DRM_MODE_FLAG_3D_NONE: normal, non-3D mode.
      - DRM_MODE_FLAG_3D_FRAME_PACKING: 2 full frames for left and right.
@@ -416,6 +473,9 @@ Members
 
 
 
+
+.. _`drm_display_mode.description`:
+
 Description
 -----------
 
@@ -442,6 +502,7 @@ double-clocking and similar things. They are provided as a convenience, and
 can be appropriately computed using :c:func:`drm_mode_set_crtcinfo`.
 
 
+
 .. _`drm_mode_is_stereo`:
 
 drm_mode_is_stereo
@@ -455,12 +516,12 @@ drm_mode_is_stereo
         drm_display_mode to check
 
 
-.. _`drm_mode_is_stereo.description`:
 
-Description
------------
+.. _`drm_mode_is_stereo.returns`:
 
-Returns:
+Returns
+-------
+
 True if the mode is one of the stereo modes (like side-by-side), false if
 not.
 

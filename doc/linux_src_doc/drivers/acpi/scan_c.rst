@@ -4,6 +4,7 @@
 scan.c
 ======
 
+
 .. _`acpi_scan_drop_device`:
 
 acpi_scan_drop_device
@@ -20,6 +21,7 @@ acpi_scan_drop_device
         Address of the ACPI device object to drop.
 
 
+
 .. _`acpi_scan_drop_device.description`:
 
 Description
@@ -32,6 +34,7 @@ The unregistration is carried out asynchronously to avoid running
 :c:func:`acpi_device_del` under the ACPICA's namespace mutex and the list is used to
 ensure the correct ordering (the device objects must be unregistered in the
 same order in which the corresponding namespace nodes are deleted).
+
 
 
 .. _`acpi_dma_supported`:
@@ -47,12 +50,14 @@ acpi_dma_supported
         The pointer to acpi device
 
 
+
 .. _`acpi_dma_supported.description`:
 
 Description
 -----------
 
 Return false if DMA is not supported. Otherwise, return true
+
 
 
 .. _`acpi_get_dma_attr`:
@@ -68,12 +73,14 @@ acpi_get_dma_attr
         The pointer to acpi device
 
 
+
 .. _`acpi_get_dma_attr.description`:
 
 Description
 -----------
 
 Return enum dev_dma_attr.
+
 
 
 .. _`acpi_bus_scan`:
@@ -87,6 +94,7 @@ acpi_bus_scan
 
     :param acpi_handle handle:
         Root of the namespace scope to scan.
+
 
 
 .. _`acpi_bus_scan.description`:
@@ -105,6 +113,7 @@ appropriate driver.
 Must be called under acpi_scan_lock.
 
 
+
 .. _`acpi_bus_trim`:
 
 acpi_bus_trim
@@ -116,6 +125,7 @@ acpi_bus_trim
 
     :param struct acpi_device \*adev:
         Root of the ACPI namespace scope to walk.
+
 
 
 .. _`acpi_bus_trim.description`:

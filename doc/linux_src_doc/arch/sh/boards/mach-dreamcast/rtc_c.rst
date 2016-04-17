@@ -4,6 +4,7 @@
 rtc.c
 =====
 
+
 .. _`aica_rtc_gettimeofday`:
 
 aica_rtc_gettimeofday
@@ -17,12 +18,14 @@ aica_rtc_gettimeofday
         pointer to resulting timespec
 
 
+
 .. _`aica_rtc_gettimeofday.description`:
 
 Description
 -----------
 
 Grabs the current RTC seconds counter and adjusts it to the Unix Epoch.
+
 
 
 .. _`aica_rtc_settimeofday`:
@@ -36,6 +39,7 @@ aica_rtc_settimeofday
 
     :param const time_t secs:
         contains the time_t to set
+
 
 
 .. _`aica_rtc_settimeofday.description`:

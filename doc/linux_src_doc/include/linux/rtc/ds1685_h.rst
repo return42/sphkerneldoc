@@ -1,0 +1,127 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ds1685.h
+========
+
+
+.. _`ds1685_priv`:
+
+struct ds1685_priv
+==================
+
+.. c:type:: ds1685_priv
+
+    DS1685 private data structure.
+
+
+.. _`ds1685_priv.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ds1685_priv {
+    struct rtc_device * dev;
+    void __iomem * regs;
+    u32 regstep;
+    resource_size_t baseaddr;
+    size_t size;
+    spinlock_t lock;
+    struct work_struct work;
+    void (* prepare_poweroff) (void);
+    void (* wake_alarm) (void);
+    void (* post_ram_clear) (void);
+  };
+
+
+.. _`ds1685_priv.members`:
+
+Members
+-------
+
+:``dev``:
+    pointer to the rtc_device structure.
+
+:``regs``:
+    iomapped base address pointer of the RTC registers.
+
+:``regstep``:
+    padding/step size between registers (optional).
+
+:``baseaddr``:
+    base address of the RTC device.
+
+:``size``:
+    resource size.
+
+:``lock``:
+    private lock variable for spin locking/unlocking.
+
+:``work``:
+    private workqueue.
+
+:``prepare_poweroff``:
+    pointer to platform pre-poweroff function.
+
+:``wake_alarm``:
+    pointer to platform wake alarm function.
+
+:``post_ram_clear``:
+    pointer to platform post ram-clear function.
+
+
+
+
+.. _`ds1685_rtc_platform_data`:
+
+struct ds1685_rtc_platform_data
+===============================
+
+.. c:type:: ds1685_rtc_platform_data
+
+    platform data structure.
+
+
+.. _`ds1685_rtc_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ds1685_rtc_platform_data {
+    void (* plat_prepare_poweroff) (void);
+    void (* plat_wake_alarm) (void);
+    void (* plat_post_ram_clear) (void);
+  };
+
+
+.. _`ds1685_rtc_platform_data.members`:
+
+Members
+-------
+
+:``plat_prepare_poweroff``:
+    platform-specific pre-poweroff function.
+
+:``plat_wake_alarm``:
+    platform-specific wake alarm function.
+
+:``plat_post_ram_clear``:
+    platform-specific post ram-clear function.
+
+
+
+
+.. _`ds1685_rtc_platform_data.description`:
+
+Description
+-----------
+
+If your platform needs to use a custom padding/step size between
+registers, or uses one or more of the extended interrupts and needs special
+handling, then include this header file in your platform definition and
+set regstep and the plat\_\* pointers as appropriate.
+

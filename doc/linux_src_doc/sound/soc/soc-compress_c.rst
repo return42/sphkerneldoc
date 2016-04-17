@@ -4,6 +4,7 @@
 soc-compress.c
 ==============
 
+
 .. _`snd_soc_new_compress`:
 
 snd_soc_new_compress
@@ -20,10 +21,11 @@ snd_soc_new_compress
         the device index number (zero based - shared with normal PCMs)
 
 
-.. _`snd_soc_new_compress.description`:
 
-Description
------------
+.. _`snd_soc_new_compress.return`:
 
-Return: 0 for success, else error.
+Return
+------
+
+0 for success, else error.
 

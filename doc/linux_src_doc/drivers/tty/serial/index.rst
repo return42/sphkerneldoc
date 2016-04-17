@@ -7,5 +7,5 @@ serial
 .. toctree::
    :maxdepth: 1
 
-   serial_core_c
+   kgdb_nmi_c
    8250/index

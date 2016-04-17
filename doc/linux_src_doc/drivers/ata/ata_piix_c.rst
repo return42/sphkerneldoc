@@ -4,6 +4,7 @@
 ata_piix.c
 ==========
 
+
 .. _`ich_pata_cable_detect`:
 
 ich_pata_cable_detect
@@ -17,6 +18,7 @@ ich_pata_cable_detect
         Port for which cable detect info is desired
 
 
+
 .. _`ich_pata_cable_detect.description`:
 
 Description
@@ -25,8 +27,15 @@ Description
 Read 80c cable indicator from ATA PCI device's PCI config
 register.  This register is normally set by firmware (BIOS).
 
-LOCKING:
+
+
+.. _`ich_pata_cable_detect.locking`:
+
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`piix_pata_prereset`:
@@ -45,13 +54,14 @@ piix_pata_prereset
         deadline jiffies for the operation
 
 
-.. _`piix_pata_prereset.description`:
 
-Description
------------
+.. _`piix_pata_prereset.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`piix_set_piomode`:
@@ -70,6 +80,7 @@ piix_set_piomode
         Drive in question
 
 
+
 .. _`piix_set_piomode.description`:
 
 Description
@@ -77,8 +88,15 @@ Description
 
 Set PIO mode for device, in host controller PCI config space.
 
-LOCKING:
+
+
+.. _`piix_set_piomode.locking`:
+
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`do_pata_set_dmamode`:
@@ -100,6 +118,7 @@ do_pata_set_dmamode
         set if the chip is an ICH device
 
 
+
 .. _`do_pata_set_dmamode.description`:
 
 Description
@@ -107,8 +126,15 @@ Description
 
 Set UDMA mode for device, in host controller PCI config space.
 
-LOCKING:
+
+
+.. _`do_pata_set_dmamode.locking`:
+
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`piix_set_dmamode`:
@@ -127,6 +153,7 @@ piix_set_dmamode
         um
 
 
+
 .. _`piix_set_dmamode.description`:
 
 Description
@@ -134,8 +161,15 @@ Description
 
 Set MW/UDMA mode for device, in host controller PCI config space.
 
-LOCKING:
+
+
+.. _`piix_set_dmamode.locking`:
+
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`ich_set_dmamode`:
@@ -154,6 +188,7 @@ ich_set_dmamode
         um
 
 
+
 .. _`ich_set_dmamode.description`:
 
 Description
@@ -161,8 +196,15 @@ Description
 
 Set MW/UDMA mode for device, in host controller PCI config space.
 
-LOCKING:
+
+
+.. _`ich_set_dmamode.locking`:
+
+LOCKING
+-------
+
 None (inherited from caller).
+
 
 
 .. _`piix_check_450nx_errata`:
@@ -178,6 +220,7 @@ piix_check_450nx_errata
         the PCI device to check
 
 
+
 .. _`piix_check_450nx_errata.description`:
 
 Description
@@ -185,6 +228,7 @@ Description
 
 Check for the present of 450NX errata #19 and errata #25. If
 they are found return an error code so we can turn off DMA
+
 
 
 .. _`piix_init_one`:
@@ -203,6 +247,7 @@ piix_init_one
         Entry in piix_pci_tbl matching with ``pdev``
 
 
+
 .. _`piix_init_one.description`:
 
 Description
@@ -211,9 +256,21 @@ Description
 Called from kernel PCI layer.  We probe for combined mode (sigh),
 and then hand over control to libata, for it to do the rest.
 
-LOCKING:
+
+
+.. _`piix_init_one.locking`:
+
+LOCKING
+-------
+
 Inherited from PCI layer (may sleep).
 
-RETURNS:
+
+
+.. _`piix_init_one.returns`:
+
+RETURNS
+-------
+
 Zero on success, or -ERRNO value.
 

@@ -4,16 +4,31 @@
 caif_socket.h
 =============
 
+
 .. _`caif_link_selector`:
 
 enum caif_link_selector
 =======================
 
-.. c:type:: enum caif_link_selector
+.. c:type:: caif_link_selector
 
     Physical Link Selection.
 
 
+.. _`caif_link_selector.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_link_selector {
+      CAIF_LINK_HIGH_BANDW,
+      CAIF_LINK_LOW_LATENCY
+    };
+
+
+.. _`caif_link_selector.constants`:
 
 Constants
 ---------
@@ -27,6 +42,8 @@ Constants
     traffic.
 
 
+.. _`caif_link_selector.description`:
+
 Description
 -----------
 
@@ -35,16 +52,34 @@ This enum is used for choosing between CAIF Link Layers when
 setting up CAIF Channels when multiple CAIF Link Layers exists.
 
 
+
 .. _`caif_channel_priority`:
 
 enum caif_channel_priority
 ==========================
 
-.. c:type:: enum caif_channel_priority
+.. c:type:: caif_channel_priority
 
     CAIF channel priorities.
 
 
+.. _`caif_channel_priority.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_channel_priority {
+      CAIF_PRIO_MIN,
+      CAIF_PRIO_LOW,
+      CAIF_PRIO_NORMAL,
+      CAIF_PRIO_HIGH,
+      CAIF_PRIO_MAX
+    };
+
+
+.. _`caif_channel_priority.constants`:
 
 Constants
 ---------
@@ -65,6 +100,8 @@ Constants
     Max priority for channel
 
 
+.. _`caif_channel_priority.description`:
+
 Description
 -----------
 
@@ -75,16 +112,36 @@ is not restricted to the values defined in this enum, any value
 between CAIF_PRIO_MIN and CAIF_PRIO_MAX could be used.
 
 
+
 .. _`caif_protocol_type`:
 
 enum caif_protocol_type
 =======================
 
-.. c:type:: enum caif_protocol_type
+.. c:type:: caif_protocol_type
 
     CAIF Channel type.
 
 
+.. _`caif_protocol_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_protocol_type {
+      CAIFPROTO_AT,
+      CAIFPROTO_DATAGRAM,
+      CAIFPROTO_DATAGRAM_LOOP,
+      CAIFPROTO_UTIL,
+      CAIFPROTO_RFM,
+      CAIFPROTO_DEBUG,
+      _CAIFPROTO_MAX
+    };
+
+
+.. _`caif_protocol_type.constants`:
 
 Constants
 ---------
@@ -108,8 +165,10 @@ Constants
     Debug link
 
 :``_CAIFPROTO_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`caif_protocol_type.description`:
 
 Description
 -----------
@@ -118,16 +177,30 @@ This enum defines the CAIF Channel type to be used. This defines
 the service to connect to on the modem.
 
 
+
 .. _`caif_at_type`:
 
 enum caif_at_type
 =================
 
-.. c:type:: enum caif_at_type
+.. c:type:: caif_at_type
 
     AT Service Endpoint
 
 
+.. _`caif_at_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_at_type {
+      CAIF_ATTYPE_PLAIN
+    };
+
+
+.. _`caif_at_type.constants`:
 
 Constants
 ---------
@@ -141,11 +214,25 @@ Constants
 enum caif_debug_service
 =======================
 
-.. c:type:: enum caif_debug_service
+.. c:type:: caif_debug_service
 
     Debug Service Endpoint
 
 
+.. _`caif_debug_service.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_debug_service {
+      CAIF_RADIO_DEBUG_SERVICE,
+      CAIF_APP_DEBUG_SERVICE
+    };
+
+
+.. _`caif_debug_service.constants`:
 
 Constants
 ---------
@@ -162,11 +249,12 @@ Constants
 struct sockaddr_caif
 ====================
 
-.. c:type:: struct sockaddr_caif
+.. c:type:: sockaddr_caif
 
     the sockaddr structure for CAIF sockets.
 
 
+.. _`sockaddr_caif.definition`:
 
 Definition
 ----------
@@ -179,6 +267,7 @@ Definition
   };
 
 
+.. _`sockaddr_caif.members`:
 
 Members
 -------
@@ -188,13 +277,16 @@ Members
 
 :``u``:
     Union of address data 'switched' by family.
-    :
-    ``u``\ .at:                    Applies when family = CAIFPROTO_AT.
 
 
 
-Description
------------
+
+.. _`sockaddr_caif.`:
+
+ 
+-
+
+``u``\ .at:                    Applies when family = CAIFPROTO_AT.
 
 ``u``\ .at.type:               Type of AT link to set up (enum caif_at_type).
 
@@ -220,9 +312,17 @@ Description
 (caif_debug_type).
 
 ``u``\ .dbg.service:              Service sub-system to connect (caif_debug_service
-Description:
+
+
+
+.. _`sockaddr_caif.description`:
+
+Description
+-----------
+
 This structure holds the connect parameters used for setting up a
 CAIF Channel. It defines the service to connect to on the modem.
+
 
 
 .. _`caif_socket_opts`:
@@ -230,11 +330,26 @@ CAIF Channel. It defines the service to connect to on the modem.
 enum caif_socket_opts
 =====================
 
-.. c:type:: enum caif_socket_opts
+.. c:type:: caif_socket_opts
 
     CAIF option values for getsockopt and setsockopt.
 
 
+.. _`caif_socket_opts.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum caif_socket_opts {
+      CAIFSO_LINK_SELECT,
+      CAIFSO_REQ_PARAM,
+      CAIFSO_RSP_PARAM
+    };
+
+
+.. _`caif_socket_opts.constants`:
 
 Constants
 ---------
@@ -257,6 +372,8 @@ Constants
     channel. (maximum 256 bytes). This option
     is valid after a successful connect.
 
+
+.. _`caif_socket_opts.description`:
 
 Description
 -----------

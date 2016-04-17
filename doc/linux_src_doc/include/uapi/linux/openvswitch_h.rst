@@ -4,16 +4,18 @@
 openvswitch.h
 =============
 
+
 .. _`ovs_header`:
 
 struct ovs_header
 =================
 
-.. c:type:: struct ovs_header
+.. c:type:: ovs_header
 
     header for OVS Generic Netlink messages.
 
 
+.. _`ovs_header.definition`:
 
 Definition
 ----------
@@ -25,6 +27,7 @@ Definition
   };
 
 
+.. _`ovs_header.members`:
 
 Members
 -------
@@ -35,6 +38,9 @@ Members
 
 
 
+
+.. _`ovs_header.description`:
+
 Description
 -----------
 
@@ -42,22 +48,42 @@ Attributes following the header are specific to a particular OVS Generic
 Netlink family, but all of the OVS families use this header.
 
 
+
 .. _`ovs_datapath_attr`:
 
 enum ovs_datapath_attr
 ======================
 
-.. c:type:: enum ovs_datapath_attr
+.. c:type:: ovs_datapath_attr
 
     attributes for %OVS_DP_* commands.
 
 
+.. _`ovs_datapath_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_datapath_attr {
+      OVS_DP_ATTR_UNSPEC,
+      OVS_DP_ATTR_NAME,
+      OVS_DP_ATTR_UPCALL_PID,
+      OVS_DP_ATTR_STATS,
+      OVS_DP_ATTR_MEGAFLOW_STATS,
+      OVS_DP_ATTR_USER_FEATURES,
+      __OVS_DP_ATTR_MAX
+    };
+
+
+.. _`ovs_datapath_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_DP_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_DP_ATTR_NAME``:
     Name of the network device that serves as the "local
@@ -81,11 +107,13 @@ Constants
     datapath. Always present in notifications.
 
 :``OVS_DP_ATTR_USER_FEATURES``:
-    -- undescribed --
+-- undescribed --
 
 :``__OVS_DP_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_datapath_attr.description`:
 
 Description
 -----------
@@ -94,22 +122,46 @@ These attributes follow the :c:type:`struct ovs_header <ovs_header>` within the 
 payload for ``OVS_DP_``\ \* commands.
 
 
+
 .. _`ovs_packet_attr`:
 
 enum ovs_packet_attr
 ====================
 
-.. c:type:: enum ovs_packet_attr
+.. c:type:: ovs_packet_attr
 
     attributes for %OVS_PACKET_* commands.
 
 
+.. _`ovs_packet_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_packet_attr {
+      OVS_PACKET_ATTR_UNSPEC,
+      OVS_PACKET_ATTR_PACKET,
+      OVS_PACKET_ATTR_KEY,
+      OVS_PACKET_ATTR_ACTIONS,
+      OVS_PACKET_ATTR_USERDATA,
+      OVS_PACKET_ATTR_EGRESS_TUN_KEY,
+      OVS_PACKET_ATTR_UNUSED1,
+      OVS_PACKET_ATTR_UNUSED2,
+      OVS_PACKET_ATTR_PROBE,
+      OVS_PACKET_ATTR_MRU,
+      __OVS_PACKET_ATTR_MAX
+    };
+
+
+.. _`ovs_packet_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_PACKET_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_PACKET_ATTR_PACKET``:
     Present for all notifications.  Contains the entire
@@ -144,13 +196,13 @@ Constants
     extracted from the packet as nested ``OVS_TUNNEL_KEY_ATTR_``\ \* attributes.
 
 :``OVS_PACKET_ATTR_UNUSED1``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_PACKET_ATTR_UNUSED2``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_PACKET_ATTR_PROBE``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_PACKET_ATTR_MRU``:
     Present for an ``OVS_PACKET_CMD_ACTION`` and
@@ -158,8 +210,10 @@ Constants
     size.
 
 :``__OVS_PACKET_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_packet_attr.description`:
 
 Description
 -----------
@@ -168,22 +222,43 @@ These attributes follow the :c:type:`struct ovs_header <ovs_header>` within the 
 payload for ``OVS_PACKET_``\ \* commands.
 
 
+
 .. _`ovs_vport_attr`:
 
 enum ovs_vport_attr
 ===================
 
-.. c:type:: enum ovs_vport_attr
+.. c:type:: ovs_vport_attr
 
     attributes for %OVS_VPORT_* commands.
 
 
+.. _`ovs_vport_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_vport_attr {
+      OVS_VPORT_ATTR_UNSPEC,
+      OVS_VPORT_ATTR_PORT_NO,
+      OVS_VPORT_ATTR_TYPE,
+      OVS_VPORT_ATTR_NAME,
+      OVS_VPORT_ATTR_OPTIONS,
+      OVS_VPORT_ATTR_UPCALL_PID,
+      OVS_VPORT_ATTR_STATS,
+      __OVS_VPORT_ATTR_MAX
+    };
+
+
+.. _`ovs_vport_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_VPORT_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_VPORT_ATTR_PORT_NO``:
     32-bit port number within datapath.
@@ -211,8 +286,10 @@ Constants
     packets sent or received through the vport.
 
 :``__OVS_VPORT_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_vport_attr.description`:
 
 Description
 -----------
@@ -230,16 +307,33 @@ For other requests, if ``OVS_VPORT_ATTR_NAME`` is specified then it is used to
 look up the vport to operate on; otherwise dp_idx from the :c:type:`struct ovs_header <ovs_header>` plus ``OVS_VPORT_ATTR_PORT_NO`` determine the vport.
 
 
+
 .. _`ovs_frag_type`:
 
 enum ovs_frag_type
 ==================
 
-.. c:type:: enum ovs_frag_type
+.. c:type:: ovs_frag_type
 
     IPv4 and IPv6 fragment type
 
 
+.. _`ovs_frag_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_frag_type {
+      OVS_FRAG_TYPE_NONE,
+      OVS_FRAG_TYPE_FIRST,
+      OVS_FRAG_TYPE_LATER,
+      __OVS_FRAG_TYPE_MAX
+    };
+
+
+.. _`ovs_frag_type.constants`:
 
 Constants
 ---------
@@ -254,8 +348,10 @@ Constants
     Packet is a fragment with nonzero offset.
 
 :``__OVS_FRAG_TYPE_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_frag_type.description`:
 
 Description
 -----------
@@ -263,22 +359,47 @@ Description
 Used as the ``ipv4_frag`` in :c:type:`struct ovs_key_ipv4 <ovs_key_ipv4>` and as ``ipv6_frag`` :c:type:`struct ovs_key_ipv6 <ovs_key_ipv6>`.
 
 
+
 .. _`ovs_flow_attr`:
 
 enum ovs_flow_attr
 ==================
 
-.. c:type:: enum ovs_flow_attr
+.. c:type:: ovs_flow_attr
 
     attributes for %OVS_FLOW_* commands.
 
 
+.. _`ovs_flow_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_flow_attr {
+      OVS_FLOW_ATTR_UNSPEC,
+      OVS_FLOW_ATTR_KEY,
+      OVS_FLOW_ATTR_ACTIONS,
+      OVS_FLOW_ATTR_STATS,
+      OVS_FLOW_ATTR_TCP_FLAGS,
+      OVS_FLOW_ATTR_USED,
+      OVS_FLOW_ATTR_CLEAR,
+      OVS_FLOW_ATTR_MASK,
+      OVS_FLOW_ATTR_PROBE,
+      OVS_FLOW_ATTR_UFID,
+      OVS_FLOW_ATTR_UFID_FLAGS,
+      __OVS_FLOW_ATTR_MAX
+    };
+
+
+.. _`ovs_flow_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_FLOW_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_FLOW_ATTR_KEY``:
     Nested ``OVS_KEY_ATTR_``\ \* attributes specifying the flow
@@ -323,7 +444,7 @@ Constants
     all flow key bits are exact match bits.
 
 :``OVS_FLOW_ATTR_PROBE``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_FLOW_ATTR_UFID``:
     A value between 1-16 octets specifying a unique
@@ -338,8 +459,10 @@ Constants
     retrieval. Optional for all requests.
 
 :``__OVS_FLOW_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_flow_attr.description`:
 
 Description
 -----------
@@ -348,12 +471,14 @@ These attributes follow the :c:type:`struct ovs_header <ovs_header>` within the 
 payload for ``OVS_FLOW_``\ \* commands.
 
 
+
 .. _`ovs_ufid_f_omit_key`:
 
 OVS_UFID_F_OMIT_KEY
 ===================
 
 .. c:function:: OVS_UFID_F_OMIT_KEY ()
+
 
 
 .. _`ovs_ufid_f_omit_key.description`:
@@ -366,22 +491,39 @@ If a datapath request contains an ``OVS_UFID_F_OMIT_``\ \* flag, then the datapa
 may omit the corresponding ``OVS_FLOW_ATTR_``\ \* from the response.
 
 
+
 .. _`ovs_sample_attr`:
 
 enum ovs_sample_attr
 ====================
 
-.. c:type:: enum ovs_sample_attr
+.. c:type:: ovs_sample_attr
 
     Attributes for %OVS_ACTION_ATTR_SAMPLE action.
 
 
+.. _`ovs_sample_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_sample_attr {
+      OVS_SAMPLE_ATTR_UNSPEC,
+      OVS_SAMPLE_ATTR_PROBABILITY,
+      OVS_SAMPLE_ATTR_ACTIONS,
+      __OVS_SAMPLE_ATTR_MAX
+    };
+
+
+.. _`ovs_sample_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_SAMPLE_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_SAMPLE_ATTR_PROBABILITY``:
     32-bit fraction of packets to sample with
@@ -394,8 +536,10 @@ Constants
     Actions are passed as nested attributes.
 
 :``__OVS_SAMPLE_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_sample_attr.description`:
 
 Description
 -----------
@@ -404,22 +548,41 @@ Executes the specified actions with the given probability on a per-packet
 basis.
 
 
+
 .. _`ovs_userspace_attr`:
 
 enum ovs_userspace_attr
 =======================
 
-.. c:type:: enum ovs_userspace_attr
+.. c:type:: ovs_userspace_attr
 
     Attributes for %OVS_ACTION_ATTR_USERSPACE action.
 
 
+.. _`ovs_userspace_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_userspace_attr {
+      OVS_USERSPACE_ATTR_UNSPEC,
+      OVS_USERSPACE_ATTR_PID,
+      OVS_USERSPACE_ATTR_USERDATA,
+      OVS_USERSPACE_ATTR_EGRESS_TUN_PORT,
+      OVS_USERSPACE_ATTR_ACTIONS,
+      __OVS_USERSPACE_ATTR_MAX
+    };
+
+
+.. _`ovs_userspace_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_USERSPACE_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_USERSPACE_ATTR_PID``:
     u32 Netlink PID to which the ``OVS_PACKET_CMD_ACTION``
@@ -437,7 +600,7 @@ Constants
     If present, send actions with upcall.
 
 :``__OVS_USERSPACE_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`ovs_action_push_mpls`:
@@ -445,11 +608,12 @@ Constants
 struct ovs_action_push_mpls
 ===========================
 
-.. c:type:: struct ovs_action_push_mpls
+.. c:type:: ovs_action_push_mpls
 
     %OVS_ACTION_ATTR_PUSH_MPLS action argument.
 
 
+.. _`ovs_action_push_mpls.definition`:
 
 Definition
 ----------
@@ -462,6 +626,7 @@ Definition
   };
 
 
+.. _`ovs_action_push_mpls.members`:
 
 Members
 -------
@@ -474,6 +639,9 @@ Members
 
 
 
+
+.. _`ovs_action_push_mpls.description`:
+
 Description
 -----------
 
@@ -481,16 +649,18 @@ The only values ``mpls_ethertype`` should ever be given are ``ETH_P_MPLS_UC`` an
 ``ETH_P_MPLS_MC``\ , indicating MPLS unicast or multicast. Other are rejected.
 
 
+
 .. _`ovs_action_push_vlan`:
 
 struct ovs_action_push_vlan
 ===========================
 
-.. c:type:: struct ovs_action_push_vlan
+.. c:type:: ovs_action_push_vlan
 
     %OVS_ACTION_ATTR_PUSH_VLAN action argument.
 
 
+.. _`ovs_action_push_vlan.definition`:
 
 Definition
 ----------
@@ -503,6 +673,7 @@ Definition
   };
 
 
+.. _`ovs_action_push_vlan.members`:
 
 Members
 -------
@@ -516,6 +687,9 @@ Members
 
 
 
+
+.. _`ovs_action_push_vlan.description`:
+
 Description
 -----------
 
@@ -525,22 +699,43 @@ prevent ``OVS_ACTION_ATTR_PUSH_VLAN`` followed by ``OVS_ACTION_ATTR_POP_VLAN``
 from having surprising results.
 
 
+
 .. _`ovs_ct_attr`:
 
 enum ovs_ct_attr
 ================
 
-.. c:type:: enum ovs_ct_attr
+.. c:type:: ovs_ct_attr
 
     Attributes for %OVS_ACTION_ATTR_CT action.
 
 
+.. _`ovs_ct_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_ct_attr {
+      OVS_CT_ATTR_UNSPEC,
+      OVS_CT_ATTR_COMMIT,
+      OVS_CT_ATTR_ZONE,
+      OVS_CT_ATTR_MARK,
+      OVS_CT_ATTR_LABELS,
+      OVS_CT_ATTR_HELPER,
+      OVS_CT_ATTR_NAT,
+      __OVS_CT_ATTR_MAX
+    };
+
+
+.. _`ovs_ct_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_CT_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_CT_ATTR_COMMIT``:
     If present, commits the connection to the conntrack
@@ -565,11 +760,11 @@ Constants
     variable length string defining conntrack ALG.
 
 :``OVS_CT_ATTR_NAT``:
-    Nested OVS_NAT_ATTR_\* for performing L3 network address
+    Nested OVS_NAT_ATTR\_\* for performing L3 network address
     translation (NAT) on the packet.
 
 :``__OVS_CT_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`ovs_nat_attr`:
@@ -577,17 +772,40 @@ Constants
 enum ovs_nat_attr
 =================
 
-.. c:type:: enum ovs_nat_attr
+.. c:type:: ovs_nat_attr
 
     Attributes for %OVS_CT_ATTR_NAT.
 
 
+.. _`ovs_nat_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_nat_attr {
+      OVS_NAT_ATTR_UNSPEC,
+      OVS_NAT_ATTR_SRC,
+      OVS_NAT_ATTR_DST,
+      OVS_NAT_ATTR_IP_MIN,
+      OVS_NAT_ATTR_IP_MAX,
+      OVS_NAT_ATTR_PROTO_MIN,
+      OVS_NAT_ATTR_PROTO_MAX,
+      OVS_NAT_ATTR_PERSISTENT,
+      OVS_NAT_ATTR_PROTO_HASH,
+      OVS_NAT_ATTR_PROTO_RANDOM,
+      __OVS_NAT_ATTR_MAX
+    };
+
+
+.. _`ovs_nat_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_NAT_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_NAT_ATTR_SRC``:
     Flag for Source NAT (mangle source address/port).
@@ -626,7 +844,7 @@ Constants
     Flag for fully randomized L4 port mapping
 
 :``__OVS_NAT_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`ovs_action_attr`:
@@ -634,17 +852,45 @@ Constants
 enum ovs_action_attr
 ====================
 
-.. c:type:: enum ovs_action_attr
+.. c:type:: ovs_action_attr
 
     Action types.
 
 
+.. _`ovs_action_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ovs_action_attr {
+      OVS_ACTION_ATTR_UNSPEC,
+      OVS_ACTION_ATTR_OUTPUT,
+      OVS_ACTION_ATTR_USERSPACE,
+      OVS_ACTION_ATTR_SET,
+      OVS_ACTION_ATTR_PUSH_VLAN,
+      OVS_ACTION_ATTR_POP_VLAN,
+      OVS_ACTION_ATTR_SAMPLE,
+      OVS_ACTION_ATTR_RECIRC,
+      OVS_ACTION_ATTR_HASH,
+      OVS_ACTION_ATTR_PUSH_MPLS,
+      OVS_ACTION_ATTR_POP_MPLS,
+      OVS_ACTION_ATTR_SET_MASKED,
+      OVS_ACTION_ATTR_CT,
+      __OVS_ACTION_ATTR_MAX,
+      OVS_ACTION_ATTR_SET_TO_MASKED,
+       
+    };
+
+
+.. _`ovs_action_attr.constants`:
 
 Constants
 ---------
 
 :``OVS_ACTION_ATTR_UNSPEC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_ACTION_ATTR_OUTPUT``:
     Output packet to port.
@@ -670,10 +916,10 @@ Constants
     the nested ``OVS_SAMPLE_ATTR_``\ \* attributes.
 
 :``OVS_ACTION_ATTR_RECIRC``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_ACTION_ATTR_HASH``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_ACTION_ATTR_PUSH_MPLS``:
     Push a new MPLS label stack entry onto the
@@ -701,15 +947,17 @@ Constants
     entries in the flow key.
 
 :``__OVS_ACTION_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``OVS_ACTION_ATTR_SET_TO_MASKED``:
     Kernel internal masked set action translated
     from the ``OVS_ACTION_ATTR_SET``\ .
 
 :`` ``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`ovs_action_attr.description`:
 
 Description
 -----------

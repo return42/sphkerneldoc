@@ -4,6 +4,7 @@
 drm_dp_mst_topology.c
 =====================
 
+
 .. _`dp-mst-helper`:
 
 dp mst helper
@@ -12,6 +13,7 @@ dp mst helper
 These functions contain parts of the DisplayPort 1.2a MultiStream Transport
 protocol. The helpers contain a topology manager and bandwidth manager.
 The helpers encapsulate the sending and received of sideband msgs.
+
 
 
 .. _`drm_dp_update_payload_part1`:
@@ -25,6 +27,7 @@ drm_dp_update_payload_part1
 
     :param struct drm_dp_mst_topology_mgr \*mgr:
         manager to use.
+
 
 
 .. _`drm_dp_update_payload_part1.description`:
@@ -42,6 +45,7 @@ after calling this the driver should generate ACT and payload
 packets.
 
 
+
 .. _`drm_dp_update_payload_part2`:
 
 drm_dp_update_payload_part2
@@ -55,6 +59,7 @@ drm_dp_update_payload_part2
         manager to use.
 
 
+
 .. _`drm_dp_update_payload_part2.description`:
 
 Description
@@ -64,6 +69,7 @@ This iterates over all proposed virtual channels, and tries to
 allocate space in the link for them. For 0->slots transitions,
 this step writes the remote VC payload commands. For slots->0
 this just resets some internal state.
+
 
 
 .. _`drm_dp_mst_topology_mgr_set_mst`:
@@ -82,6 +88,7 @@ drm_dp_mst_topology_mgr_set_mst
         true to enable MST on this connector - false to disable.
 
 
+
 .. _`drm_dp_mst_topology_mgr_set_mst.description`:
 
 Description
@@ -89,6 +96,7 @@ Description
 
 This is called by the driver when it detects an MST capable device plugged
 into a DP MST capable port, or when a DP MST capable device is unplugged.
+
 
 
 .. _`drm_dp_mst_topology_mgr_suspend`:
@@ -104,6 +112,7 @@ drm_dp_mst_topology_mgr_suspend
         manager to suspend
 
 
+
 .. _`drm_dp_mst_topology_mgr_suspend.description`:
 
 Description
@@ -111,6 +120,7 @@ Description
 
 This function tells the MST device that we can't handle UP messages
 anymore. This should stop it from sending any since we are suspended.
+
 
 
 .. _`drm_dp_mst_topology_mgr_resume`:
@@ -126,6 +136,7 @@ drm_dp_mst_topology_mgr_resume
         manager to resume
 
 
+
 .. _`drm_dp_mst_topology_mgr_resume.description`:
 
 Description
@@ -136,6 +147,7 @@ if it is, it will rewrite the MSTM control bits, and return.
 
 if the device fails this returns -1, and the driver should do
 a full MST reprobe, in case we were undocked.
+
 
 
 .. _`drm_dp_mst_hpd_irq`:
@@ -157,6 +169,7 @@ drm_dp_mst_hpd_irq
         whether the hpd interrupt was consumed or not
 
 
+
 .. _`drm_dp_mst_hpd_irq.description`:
 
 Description
@@ -166,6 +179,7 @@ This should be called from the driver when it detects a short IRQ,
 along with the value of the DEVICE_SERVICE_IRQ_VECTOR_ESI0. The
 topology manager will process the sideband messages received as a result
 of this.
+
 
 
 .. _`drm_dp_mst_detect_port`:
@@ -188,6 +202,7 @@ drm_dp_mst_detect_port
         unverified pointer to a port
 
 
+
 .. _`drm_dp_mst_detect_port.description`:
 
 Description
@@ -195,6 +210,7 @@ Description
 
 This returns the current connection state for a port. It validates the
 port pointer still exists so the caller doesn't require a reference
+
 
 
 .. _`drm_dp_mst_port_has_audio`:
@@ -213,12 +229,14 @@ drm_dp_mst_port_has_audio
         unverified pointer to a port.
 
 
+
 .. _`drm_dp_mst_port_has_audio.description`:
 
 Description
 -----------
 
 This returns whether the port supports audio or not.
+
 
 
 .. _`drm_dp_mst_get_edid`:
@@ -240,6 +258,7 @@ drm_dp_mst_get_edid
         unverified pointer to a port.
 
 
+
 .. _`drm_dp_mst_get_edid.description`:
 
 Description
@@ -248,6 +267,7 @@ Description
 This returns an EDID for the port connected to a connector,
 It validates the pointer still exists so the caller doesn't require a
 reference.
+
 
 
 .. _`drm_dp_find_vcpi_slots`:
@@ -264,6 +284,7 @@ drm_dp_find_vcpi_slots
 
     :param int pbn:
         payload bandwidth to convert into slots.
+
 
 
 .. _`drm_dp_mst_allocate_vcpi`:
@@ -288,6 +309,7 @@ drm_dp_mst_allocate_vcpi
         returned number of slots for this PBN.
 
 
+
 .. _`drm_dp_mst_reset_vcpi_slots`:
 
 drm_dp_mst_reset_vcpi_slots
@@ -304,12 +326,14 @@ drm_dp_mst_reset_vcpi_slots
         unverified pointer to a port.
 
 
+
 .. _`drm_dp_mst_reset_vcpi_slots.description`:
 
 Description
 -----------
 
 This just resets the number of slots for the ports VCPI for later programming.
+
 
 
 .. _`drm_dp_mst_deallocate_vcpi`:
@@ -328,6 +352,7 @@ drm_dp_mst_deallocate_vcpi
         unverified port to deallocate vcpi for
 
 
+
 .. _`drm_dp_check_act_status`:
 
 drm_dp_check_act_status
@@ -341,12 +366,14 @@ drm_dp_check_act_status
         manager to use
 
 
+
 .. _`drm_dp_check_act_status.description`:
 
 Description
 -----------
 
 Check the payload status bits in the DPCD for ACT handled completion.
+
 
 
 .. _`drm_dp_calc_pbn_mode`:
@@ -365,12 +392,14 @@ drm_dp_calc_pbn_mode
         bpp for the mode.
 
 
+
 .. _`drm_dp_calc_pbn_mode.description`:
 
 Description
 -----------
 
 This uses the formula in the spec to calculate the PBN value for a mode.
+
 
 
 .. _`drm_dp_mst_dump_topology`:
@@ -387,12 +416,14 @@ drm_dp_mst_dump_topology
         manager to dump current topology for.
 
 
+
 .. _`drm_dp_mst_dump_topology.description`:
 
 Description
 -----------
 
 helper to dump MST topology to a seq file for debugfs.
+
 
 
 .. _`drm_dp_mst_topology_mgr_init`:
@@ -423,12 +454,14 @@ drm_dp_mst_topology_mgr_init
         the connector object ID the MST device is connected to.
 
 
+
 .. _`drm_dp_mst_topology_mgr_init.description`:
 
 Description
 -----------
 
 Return 0 for success, or negative error code on failure
+
 
 
 .. _`drm_dp_mst_topology_mgr_destroy`:
@@ -444,6 +477,7 @@ drm_dp_mst_topology_mgr_destroy
         manager to destroy
 
 
+
 .. _`drm_dp_mst_register_i2c_bus`:
 
 drm_dp_mst_register_i2c_bus
@@ -457,12 +491,14 @@ drm_dp_mst_register_i2c_bus
         DisplayPort AUX channel
 
 
+
 .. _`drm_dp_mst_register_i2c_bus.description`:
 
 Description
 -----------
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_mst_unregister_i2c_bus`:

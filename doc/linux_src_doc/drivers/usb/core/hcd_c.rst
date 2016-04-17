@@ -4,6 +4,7 @@
 hcd.c
 =====
 
+
 .. _`ascii2desc`:
 
 ascii2desc
@@ -23,17 +24,25 @@ ascii2desc
         Length (in bytes; may be odd) of descriptor buffer.
 
 
-.. _`ascii2desc.description`:
 
-Description
------------
+.. _`ascii2desc.return`:
 
-Return: The number of bytes filled in: 2 + 2\\*strlen(s) or ``len``\ ,
+Return
+------
+
+The number of bytes filled in: 2 + 2\\*strlen(s) or ``len``\ ,
 whichever is less.
 
-Note:
+
+
+.. _`ascii2desc.note`:
+
+Note
+----
+
 USB String descriptors can contain at most 126 characters; input
 strings longer than that are truncated.
+
 
 
 .. _`rh_string`:
@@ -58,6 +67,7 @@ rh_string
         length of the provided buffer
 
 
+
 .. _`rh_string.description`:
 
 Description
@@ -66,8 +76,16 @@ Description
 Produces either a manufacturer, product or serial number string for the
 virtual root hub device.
 
-Return: The number of bytes filled in: the length of the descriptor or
+
+
+.. _`rh_string.return`:
+
+Return
+------
+
+The number of bytes filled in: the length of the descriptor or
 of the provided buffer, whichever is less.
+
 
 
 .. _`usb_bus_init`:
@@ -83,6 +101,7 @@ usb_bus_init
         the bus structure being initialized
 
 
+
 .. _`usb_bus_init.description`:
 
 Description
@@ -90,6 +109,7 @@ Description
 
 This code is used to initialize a usb_bus structure, memory for which is
 separately managed.
+
 
 
 .. _`usb_register_bus`:
@@ -103,7 +123,16 @@ usb_register_bus
 
     :param struct usb_bus \*bus:
         pointer to the bus to register
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`usb_register_bus.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_register_bus.description`:
@@ -114,7 +143,15 @@ Description
 Assigns a bus number, and links the controller into usbcore data
 structures so that it can be seen by scanning the bus list.
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_register_bus.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_deregister_bus`:
@@ -128,7 +165,16 @@ usb_deregister_bus
 
     :param struct usb_bus \*bus:
         pointer to the bus to deregister
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`usb_deregister_bus.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_deregister_bus.description`:
@@ -138,6 +184,7 @@ Description
 
 Recycles the bus number, and unlinks the controller from usbcore data
 structures so that it won't be seen by scanning the bus list.
+
 
 
 .. _`register_root_hub`:
@@ -153,6 +200,7 @@ register_root_hub
         host controller for this root hub
 
 
+
 .. _`register_root_hub.description`:
 
 Description
@@ -163,7 +211,15 @@ the device properly in the device tree and then calls :c:func:`usb_new_device`
 to register the usb device.  It also assigns the root hub's USB address
 (always 1).
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`register_root_hub.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_calc_bus_time`:
@@ -188,16 +244,24 @@ usb_calc_bus_time
         how many bytes in the transaction.
 
 
-.. _`usb_calc_bus_time.description`:
 
-Description
------------
+.. _`usb_calc_bus_time.return`:
 
-Return: Approximate bus time in nanoseconds for a periodic transaction.
+Return
+------
 
-Note:
+Approximate bus time in nanoseconds for a periodic transaction.
+
+
+
+.. _`usb_calc_bus_time.note`:
+
+Note
+----
+
 See USB 2.0 spec section 5.11.3; only periodic transfers need to be
 scheduled in software, this function is only used for such scheduling.
+
 
 
 .. _`usb_hcd_link_urb_to_ep`:
@@ -216,6 +280,7 @@ usb_hcd_link_urb_to_ep
         URB being submitted
 
 
+
 .. _`usb_hcd_link_urb_to_ep.description`:
 
 Description
@@ -226,10 +291,18 @@ method.  The HCD's private spinlock must be held and interrupts must
 be disabled.  The actions carried out here are required for URB
 submission, as well as for endpoint shutdown and for usb_kill_urb.
 
-Return: 0 for no error, otherwise a negative error code (in which case
+
+
+.. _`usb_hcd_link_urb_to_ep.return`:
+
+Return
+------
+
+0 for no error, otherwise a negative error code (in which case
 the :c:func:`enqueue` method must fail).  If no error occurs but :c:func:`enqueue` fails
 anyway, it must call :c:func:`usb_hcd_unlink_urb_from_ep` before releasing
 the private spinlock and returning.
+
 
 
 .. _`usb_hcd_check_unlink_urb`:
@@ -251,6 +324,7 @@ usb_hcd_check_unlink_urb
         error code to store in ``urb`` if the unlink succeeds
 
 
+
 .. _`usb_hcd_check_unlink_urb.description`:
 
 Description
@@ -261,13 +335,21 @@ method.  The HCD's private spinlock must be held and interrupts must
 be disabled.  The actions carried out here are required for making
 sure than an unlink is valid.
 
-Return: 0 for no error, otherwise a negative error code (in which case
+
+
+.. _`usb_hcd_check_unlink_urb.return`:
+
+Return
+------
+
+0 for no error, otherwise a negative error code (in which case
 the :c:func:`dequeue` method must fail).  The possible error codes are::
 
         -EIDRM: ``urb`` was not submitted or has already completed.
                 The completion function may not have been called yet.
 
         -EBUSY: ``urb`` has already been unlinked.
+
 
 
 .. _`usb_hcd_unlink_urb_from_ep`:
@@ -286,6 +368,7 @@ usb_hcd_unlink_urb_from_ep
         URB being unlinked
 
 
+
 .. _`usb_hcd_unlink_urb_from_ep.description`:
 
 Description
@@ -295,6 +378,7 @@ Host controller drivers should call this routine before calling
 :c:func:`usb_hcd_giveback_urb`.  The HCD's private spinlock must be held and
 interrupts must be disabled.  The actions carried out here are required
 for URB completion.
+
 
 
 .. _`usb_hcd_giveback_urb`:
@@ -314,7 +398,16 @@ usb_hcd_giveback_urb
 
     :param int status:
         completion status code for the URB.
-        Context: :c:func:`in_interrupt`
+
+
+
+.. _`usb_hcd_giveback_urb.context`:
+
+Context
+-------
+
+:c:func:`in_interrupt`
+
 
 
 .. _`usb_hcd_giveback_urb.description`:
@@ -331,6 +424,7 @@ or resubmits this URB.
 If ``urb`` was unlinked, the value of ``status`` will be overridden by
 ``urb``\ ->unlinked.  Erroneous short transfers are detected in case
 the HCD hasn't checked for them.
+
 
 
 .. _`usb_hcd_alloc_bandwidth`:
@@ -355,6 +449,7 @@ usb_hcd_alloc_bandwidth
         alternate interface setting that is being installed
 
 
+
 .. _`usb_hcd_alloc_bandwidth.description`:
 
 Description
@@ -370,8 +465,16 @@ To change alternate interface settings, pass in NULL for new_config,
 pass in the current alternate interface setting in cur_alt,
 and pass in the new alternate interface setting in new_alt.
 
-Return: An error if the requested bandwidth change exceeds the
+
+
+.. _`usb_hcd_alloc_bandwidth.return`:
+
+Return
+------
+
+An error if the requested bandwidth change exceeds the
 bus bandwidth or host controller internal resources.
+
 
 
 .. _`usb_hcd_reset_endpoint`:
@@ -390,6 +493,7 @@ usb_hcd_reset_endpoint
         the endpoint to reset.
 
 
+
 .. _`usb_hcd_reset_endpoint.description`:
 
 Description
@@ -397,6 +501,7 @@ Description
 
 Resets any host endpoint state such as the toggle bit, sequence
 number and current window.
+
 
 
 .. _`usb_alloc_streams`:
@@ -424,6 +529,7 @@ usb_alloc_streams
         flags hcd should use to allocate memory.
 
 
+
 .. _`usb_alloc_streams.description`:
 
 Description
@@ -433,8 +539,16 @@ Sets up a group of bulk endpoints to have ``num_streams`` stream IDs available.
 Drivers may queue multiple transfers to different stream IDs, which may
 complete in a different order than they were queued.
 
-Return: On success, the number of allocated streams. On failure, a negative
+
+
+.. _`usb_alloc_streams.return`:
+
+Return
+------
+
+On success, the number of allocated streams. On failure, a negative
 error code.
+
 
 
 .. _`usb_free_streams`:
@@ -459,6 +573,7 @@ usb_free_streams
         flags hcd should use to allocate memory.
 
 
+
 .. _`usb_free_streams.description`:
 
 Description
@@ -467,7 +582,15 @@ Description
 Reverts a group of bulk endpoints back to not using stream IDs.
 Can fail if we are given bad arguments, or HCD is broken.
 
-Return: 0 on success. On failure, a negative error code.
+
+
+.. _`usb_free_streams.return`:
+
+Return
+------
+
+0 on success. On failure, a negative error code.
+
 
 
 .. _`usb_hcd_resume_root_hub`:
@@ -483,6 +606,7 @@ usb_hcd_resume_root_hub
         host controller for this root hub
 
 
+
 .. _`usb_hcd_resume_root_hub.description`:
 
 Description
@@ -492,6 +616,7 @@ The USB host controller calls this function when its root hub is
 suspended (with the remote wakeup feature enabled) and a remote
 wakeup request is received.  The routine submits a workqueue request
 to resume the root hub (that is, manage its downstream ports again).
+
 
 
 .. _`usb_bus_start_enum`:
@@ -508,7 +633,16 @@ usb_bus_start_enum
 
     :param unsigned port_num:
         1-based number of port; usually bus->otg_port
-        Context: :c:func:`in_interrupt`
+
+
+
+.. _`usb_bus_start_enum.context`:
+
+Context
+-------
+
+:c:func:`in_interrupt`
+
 
 
 .. _`usb_bus_start_enum.description`:
@@ -521,7 +655,15 @@ hub_wq identifying and possibly configuring the device.
 This is needed by OTG controller drivers, where it helps meet
 HNP protocol timing requirements for starting a port reset.
 
-Return: 0 if successful.
+
+
+.. _`usb_bus_start_enum.return`:
+
+Return
+------
+
+0 if successful.
+
 
 
 .. _`usb_hcd_irq`:
@@ -540,6 +682,7 @@ usb_hcd_irq
         pointer to the HCD whose IRQ is being signaled
 
 
+
 .. _`usb_hcd_irq.description`:
 
 Description
@@ -548,7 +691,15 @@ Description
 If the controller isn't HALTed, calls the driver's irq handler.
 Checks whether the controller is now dead.
 
-Return: ``IRQ_HANDLED`` if the IRQ was handled. ``IRQ_NONE`` otherwise.
+
+
+.. _`usb_hcd_irq.return`:
+
+Return
+------
+
+``IRQ_HANDLED`` if the IRQ was handled. ``IRQ_NONE`` otherwise.
+
 
 
 .. _`usb_hc_died`:
@@ -564,6 +715,7 @@ usb_hc_died
         pointer to the HCD representing the controller
 
 
+
 .. _`usb_hc_died.description`:
 
 Description
@@ -574,6 +726,7 @@ while operations may still have been pending.  It's called automatically
 by the PCI glue, so only glue for non-PCI busses should need to call it.
 
 Only call this function with the primary HCD.
+
 
 
 .. _`usb_create_shared_hcd`:
@@ -598,7 +751,15 @@ usb_create_shared_hcd
         a pointer to the usb_hcd structure that is sharing the
         PCI device.  Only allocate certain resources for the primary HCD
 
-        Context: !:c:func:`in_interrupt`
+
+
+.. _`usb_create_shared_hcd.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_create_shared_hcd.description`:
@@ -610,8 +771,16 @@ Allocate a struct usb_hcd, with extra space at the end for the
 HC driver's private data.  Initialize the generic members of the
 hcd structure.
 
-Return: On success, a pointer to the created and initialized HCD structure.
+
+
+.. _`usb_create_shared_hcd.return`:
+
+Return
+------
+
+On success, a pointer to the created and initialized HCD structure.
 On failure (e.g. if memory is unavailable), ``NULL``\ .
+
 
 
 .. _`usb_create_hcd`:
@@ -631,7 +800,16 @@ usb_create_hcd
 
     :param const char \*bus_name:
         value to store in hcd->self.bus_name
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`usb_create_hcd.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_create_hcd.description`:
@@ -643,8 +821,16 @@ Allocate a struct usb_hcd, with extra space at the end for the
 HC driver's private data.  Initialize the generic members of the
 hcd structure.
 
-Return: On success, a pointer to the created and initialized HCD
+
+
+.. _`usb_create_hcd.return`:
+
+Return
+------
+
+On success, a pointer to the created and initialized HCD
 structure. On failure (e.g. if memory is unavailable), ``NULL``\ .
+
 
 
 .. _`usb_add_hcd`:
@@ -666,14 +852,16 @@ usb_add_hcd
         Interrupt type flags
 
 
-.. _`usb_add_hcd.description`:
 
-Description
------------
+.. _`usb_add_hcd.finish-the-remaining-parts-of-generic-hcd-initialization`:
 
-Finish the remaining parts of generic HCD initialization: allocate the
+Finish the remaining parts of generic HCD initialization
+--------------------------------------------------------
+
+allocate the
 buffers of consistent memory, register the bus, request the IRQ line,
 and call the driver's :c:func:`reset` and :c:func:`start` routines.
+
 
 
 .. _`usb_remove_hcd`:
@@ -687,7 +875,16 @@ usb_remove_hcd
 
     :param struct usb_hcd \*hcd:
         the usb_hcd structure to remove
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`usb_remove_hcd.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_remove_hcd.description`:

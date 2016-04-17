@@ -4,6 +4,7 @@
 atomic.h
 ========
 
+
 .. _`atomic_read`:
 
 atomic_read
@@ -17,12 +18,14 @@ atomic_read
         pointer of type atomic_t
 
 
+
 .. _`atomic_read.description`:
 
 Description
 -----------
 
 Atomically reads the value of ``v``\ .
+
 
 
 .. _`atomic_set`:
@@ -41,12 +44,14 @@ atomic_set
         required value
 
 
+
 .. _`atomic_set.description`:
 
 Description
 -----------
 
 Atomically sets the value of ``v`` to ``i``\ .
+
 
 
 .. _`atomic_add`:
@@ -65,12 +70,14 @@ atomic_add
         pointer of type atomic_t
 
 
+
 .. _`atomic_add.description`:
 
 Description
 -----------
 
 Atomically adds ``i`` to ``v``\ .
+
 
 
 .. _`atomic_sub`:
@@ -89,12 +96,14 @@ atomic_sub
         pointer of type atomic_t
 
 
+
 .. _`atomic_sub.description`:
 
 Description
 -----------
 
 Atomically subtracts ``i`` from ``v``\ .
+
 
 
 .. _`atomic_sub_and_test`:
@@ -113,6 +122,7 @@ atomic_sub_and_test
         pointer of type atomic_t
 
 
+
 .. _`atomic_sub_and_test.description`:
 
 Description
@@ -121,6 +131,7 @@ Description
 Atomically subtracts ``i`` from ``v`` and returns
 true if the result is zero, or false for all
 other cases.
+
 
 
 .. _`atomic_inc`:
@@ -136,12 +147,14 @@ atomic_inc
         pointer of type atomic_t
 
 
+
 .. _`atomic_inc.description`:
 
 Description
 -----------
 
 Atomically increments ``v`` by 1.
+
 
 
 .. _`atomic_dec`:
@@ -157,12 +170,14 @@ atomic_dec
         pointer of type atomic_t
 
 
+
 .. _`atomic_dec.description`:
 
 Description
 -----------
 
 Atomically decrements ``v`` by 1.
+
 
 
 .. _`atomic_dec_and_test`:
@@ -178,6 +193,7 @@ atomic_dec_and_test
         pointer of type atomic_t
 
 
+
 .. _`atomic_dec_and_test.description`:
 
 Description
@@ -186,6 +202,7 @@ Description
 Atomically decrements ``v`` by 1 and
 returns true if the result is 0, or false for all other
 cases.
+
 
 
 .. _`atomic_inc_and_test`:
@@ -201,6 +218,7 @@ atomic_inc_and_test
         pointer of type atomic_t
 
 
+
 .. _`atomic_inc_and_test.description`:
 
 Description
@@ -209,6 +227,7 @@ Description
 Atomically increments ``v`` by 1
 and returns true if the result is zero, or false for all
 other cases.
+
 
 
 .. _`atomic_add_negative`:
@@ -227,6 +246,7 @@ atomic_add_negative
         pointer of type atomic_t
 
 
+
 .. _`atomic_add_negative.description`:
 
 Description
@@ -235,6 +255,7 @@ Description
 Atomically adds ``i`` to ``v`` and returns true
 if the result is negative, or false when
 result is greater than or equal to zero.
+
 
 
 .. _`atomic_add_return`:
@@ -253,12 +274,14 @@ atomic_add_return
         pointer of type atomic_t
 
 
+
 .. _`atomic_add_return.description`:
 
 Description
 -----------
 
 Atomically adds ``i`` to ``v`` and returns ``i`` + ``v``
+
 
 
 .. _`atomic_sub_return`:
@@ -277,12 +300,14 @@ atomic_sub_return
         pointer of type atomic_t
 
 
+
 .. _`atomic_sub_return.description`:
 
 Description
 -----------
 
 Atomically subtracts ``i`` from ``v`` and returns ``v`` - ``i``
+
 
 
 .. _`__atomic_add_unless`:
@@ -304,6 +329,7 @@ __atomic_add_unless
         ...unless v is equal to u.
 
 
+
 .. _`__atomic_add_unless.description`:
 
 Description
@@ -311,6 +337,7 @@ Description
 
 Atomically adds ``a`` to ``v``\ , so long as ``v`` was not already ``u``\ .
 Returns the old value of ``v``\ .
+
 
 
 .. _`atomic_inc_short`:
@@ -324,6 +351,7 @@ atomic_inc_short
 
     :param short int \*v:
         pointer to type int
+
 
 
 .. _`atomic_inc_short.description`:

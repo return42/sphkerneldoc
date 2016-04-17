@@ -4,6 +4,7 @@
 w1.c
 ====
 
+
 .. _`w1_search`:
 
 w1_search
@@ -24,6 +25,7 @@ w1_search
         Function to call when a device is found
 
 
+
 .. _`w1_search.description`:
 
 Description
@@ -39,6 +41,7 @@ When we can scan all 64 bits without having to choose a path, we are done.
 See "Application note 187 1-wire search algorithm" at www.maxim-ic.com
 
 
+
 .. _`w1_process_callbacks`:
 
 w1_process_callbacks
@@ -52,6 +55,7 @@ w1_process_callbacks
         w1_master device
 
 
+
 .. _`w1_process_callbacks.description`:
 
 Description
@@ -59,5 +63,12 @@ Description
 
 The w1 master list_mutex must be held.
 
-Return: 1 if there were commands to executed 0 otherwise
+
+
+.. _`w1_process_callbacks.return`:
+
+Return
+------
+
+1 if there were commands to executed 0 otherwise
 

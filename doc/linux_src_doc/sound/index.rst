@@ -7,8 +7,14 @@ sound
 .. toctree::
    :maxdepth: 1
 
+   ac97_bus_c
    sound_core_c
+   sound_firmware_c
    core/index
    drivers/index
+   firewire/index
+   hda/index
    pci/index
+   pcmcia/index
    soc/index
+   usb/index

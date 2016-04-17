@@ -7,6 +7,8 @@ core
 .. toctree::
    :maxdepth: 1
 
-   fbcmap_c
-   fbmem_c
+   fb_cmdline_c
+   fbmon_c
+   fb_notify_c
+   fbsysfs_c
    modedb_c

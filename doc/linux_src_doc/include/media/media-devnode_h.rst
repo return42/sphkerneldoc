@@ -4,16 +4,18 @@
 media-devnode.h
 ===============
 
+
 .. _`media_file_operations`:
 
 struct media_file_operations
 ============================
 
-.. c:type:: struct media_file_operations
+.. c:type:: media_file_operations
 
     Media device file operations
 
 
+.. _`media_file_operations.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`media_file_operations.members`:
 
 Members
 -------
@@ -64,16 +67,18 @@ Members
 
 
 
+
 .. _`media_devnode`:
 
 struct media_devnode
 ====================
 
-.. c:type:: struct media_devnode
+.. c:type:: media_devnode
 
     Media device node
 
 
+.. _`media_devnode.definition`:
 
 Definition
 ----------
@@ -91,6 +96,7 @@ Definition
   };
 
 
+.. _`media_devnode.members`:
 
 Members
 -------
@@ -111,12 +117,15 @@ Members
     device node minor number
 
 :``flags``:
-    flags, combination of the MEDIA_FLAG_\* constants
+    flags, combination of the MEDIA_FLAG\_\* constants
 
 :``release``:
     release callback called at the end of :c:func:`media_devnode_release`
 
 
+
+
+.. _`media_devnode.description`:
 
 Description
 -----------
@@ -125,6 +134,7 @@ This structure represents a media-related device node.
 
 The ``parent`` is a physical device. It must be set by core or device drivers
 before registering the node.
+
 
 
 .. _`media_devnode_register`:
@@ -143,6 +153,7 @@ media_devnode_register
         should be filled with ``THIS_MODULE``
 
 
+
 .. _`media_devnode_register.description`:
 
 Description
@@ -159,6 +170,7 @@ the media_devnode structure is \*not\* called, so the caller is responsible for
 freeing any data.
 
 
+
 .. _`media_devnode_unregister`:
 
 media_devnode_unregister
@@ -170,6 +182,7 @@ media_devnode_unregister
 
     :param struct media_devnode \*mdev:
         the device node to unregister
+
 
 
 .. _`media_devnode_unregister.description`:
@@ -184,6 +197,7 @@ This function can safely be called if the device node has never been
 registered or has already been unregistered.
 
 
+
 .. _`media_devnode_data`:
 
 media_devnode_data
@@ -195,6 +209,7 @@ media_devnode_data
 
     :param struct file \*filp:
         pointer to struct :c:type:`struct file <file>`
+
 
 
 .. _`media_devnode_is_registered`:

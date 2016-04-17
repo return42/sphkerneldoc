@@ -4,16 +4,18 @@
 uio_driver.h
 ============
 
+
 .. _`uio_mem`:
 
 struct uio_mem
 ==============
 
-.. c:type:: struct uio_mem
+.. c:type:: uio_mem
 
     description of a UIO memory region
 
 
+.. _`uio_mem.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`uio_mem.members`:
 
 Members
 -------
@@ -57,16 +60,18 @@ Members
 
 
 
+
 .. _`uio_port`:
 
 struct uio_port
 ===============
 
-.. c:type:: struct uio_port
+.. c:type:: uio_port
 
     description of a UIO port region
 
 
+.. _`uio_port.definition`:
 
 Definition
 ----------
@@ -82,6 +87,7 @@ Definition
   };
 
 
+.. _`uio_port.members`:
 
 Members
 -------
@@ -96,10 +102,11 @@ Members
     size of port region
 
 :``porttype``:
-    type of port (see UIO_PORT_\* below)
+    type of port (see UIO_PORT\_\* below)
 
 :``portio``:
     for use by the UIO core only.
+
 
 
 
@@ -108,11 +115,12 @@ Members
 struct uio_info
 ===============
 
-.. c:type:: struct uio_info
+.. c:type:: uio_info
 
     UIO device capabilities
 
 
+.. _`uio_info.definition`:
 
 Definition
 ----------
@@ -136,6 +144,7 @@ Definition
   };
 
 
+.. _`uio_info.members`:
 
 Members
 -------

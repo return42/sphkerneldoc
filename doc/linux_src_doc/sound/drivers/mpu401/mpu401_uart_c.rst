@@ -4,6 +4,7 @@
 mpu401_uart.c
 =============
 
+
 .. _`snd_mpu401_uart_interrupt`:
 
 snd_mpu401_uart_interrupt
@@ -20,6 +21,7 @@ snd_mpu401_uart_interrupt
         mpu401 instance
 
 
+
 .. _`snd_mpu401_uart_interrupt.description`:
 
 Description
@@ -27,7 +29,15 @@ Description
 
 Processes the interrupt for MPU401-UART i/o.
 
-Return: ``IRQ_HANDLED`` if the interrupt was handled. ``IRQ_NONE`` otherwise.
+
+
+.. _`snd_mpu401_uart_interrupt.return`:
+
+Return
+------
+
+``IRQ_HANDLED`` if the interrupt was handled. ``IRQ_NONE`` otherwise.
+
 
 
 .. _`snd_mpu401_uart_interrupt_tx`:
@@ -46,6 +56,7 @@ snd_mpu401_uart_interrupt_tx
         mpu401 instance
 
 
+
 .. _`snd_mpu401_uart_interrupt_tx.description`:
 
 Description
@@ -53,7 +64,15 @@ Description
 
 Processes the interrupt for MPU401-UART output.
 
-Return: ``IRQ_HANDLED`` if the interrupt was handled. ``IRQ_NONE`` otherwise.
+
+
+.. _`snd_mpu401_uart_interrupt_tx.return`:
+
+Return
+------
+
+``IRQ_HANDLED`` if the interrupt was handled. ``IRQ_NONE`` otherwise.
+
 
 
 .. _`snd_mpu401_uart_new`:
@@ -87,6 +106,7 @@ snd_mpu401_uart_new
         the pointer to store the new rawmidi instance
 
 
+
 .. _`snd_mpu401_uart_new.description`:
 
 Description
@@ -98,5 +118,12 @@ Note that the rawmidi instance is returned on the rrawmidi argument,
 not the mpu401 instance itself.  To access to the mpu401 instance,
 cast from rawmidi->private_data (with struct snd_mpu401 magic-cast).
 
-Return: Zero if successful, or a negative error code.
+
+
+.. _`snd_mpu401_uart_new.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code.
 

@@ -4,12 +4,14 @@
 genwqe_card.h
 =============
 
+
 .. _`genwqe_devname`:
 
 GENWQE_DEVNAME
 ==============
 
 .. c:function:: GENWQE_DEVNAME ()
+
 
 
 .. _`genwqe_devname.description`:
@@ -20,10 +22,14 @@ Description
 
 (C) Copyright IBM Corp. 2013
 
-Author: Frank Haverkamp <haver\ ``linux``\ .vnet.ibm.com>
-Author: Joerg-Stephan Vogt <jsvogt\ ``de``\ .ibm.com>
-Author: Michael Jung <mijung\ ``gmx``\ .net>
-Author: Michael Ruettger <michael\ ``ibmra``\ .de>
+
+
+.. _`genwqe_devname.author`:
+
+Author
+------
+
+Michael Ruettger <michael\ ``ibmra``\ .de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (version 2 only)
@@ -35,16 +41,72 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 
+
+.. _`genwqe_devname.author`:
+
+Author
+------
+
+Michael Ruettger <michael\ ``ibmra``\ .de>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License (version 2 only)
+as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+
+
+.. _`genwqe_devname.author`:
+
+Author
+------
+
+Michael Ruettger <michael\ ``ibmra``\ .de>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License (version 2 only)
+as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+
+
+.. _`genwqe_devname.author`:
+
+Author
+------
+
+Michael Ruettger <michael\ ``ibmra``\ .de>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU General Public License (version 2 only)
+as published by the Free Software Foundation.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+GNU General Public License for more details.
+
+
+
 .. _`genwqe_ddcb_cmd`:
 
 struct genwqe_ddcb_cmd
 ======================
 
-.. c:type:: struct genwqe_ddcb_cmd
+.. c:type:: genwqe_ddcb_cmd
 
     User parameter for generic DDCB commands
 
 
+.. _`genwqe_ddcb_cmd.definition`:
 
 Definition
 ----------
@@ -56,6 +118,7 @@ Definition
   };
 
 
+.. _`genwqe_ddcb_cmd.members`:
 
 Members
 -------
@@ -64,6 +127,9 @@ Members
     anonymous
 
 
+
+
+.. _`genwqe_ddcb_cmd.description`:
 
 Description
 -----------
@@ -74,16 +140,18 @@ structure. On the way out the driver will not copy the ASIV data
 back to user-space.
 
 
+
 .. _`genwqe_mem`:
 
 struct genwqe_mem
 =================
 
-.. c:type:: struct genwqe_mem
+.. c:type:: genwqe_mem
 
     Memory pinning/unpinning information
 
 
+.. _`genwqe_mem.definition`:
 
 Definition
 ----------
@@ -96,6 +164,7 @@ Definition
   };
 
 
+.. _`genwqe_mem.members`:
 
 Members
 -------
@@ -105,12 +174,16 @@ Members
 
 :``size``:
     size of the area pin/dma-map/unmap
-    direction:      0: read/1: read and write
 
 
 
-Description
------------
+
+.. _`genwqe_mem.direction`:
+
+direction
+---------
+
+0: read/1: read and write
 
 Avoid pinning and unpinning of memory pages dynamically. Instead
 the idea is to pin the whole buffer space required for DDCB

@@ -4,16 +4,18 @@
 nand.h
 ======
 
+
 .. _`nand_hw_control`:
 
 struct nand_hw_control
 ======================
 
-.. c:type:: struct nand_hw_control
+.. c:type:: nand_hw_control
 
     Control structure for hardware controller (e.g ECC generator) shared among independent devices
 
 
+.. _`nand_hw_control.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`nand_hw_control.members`:
 
 Members
 -------
@@ -44,16 +47,18 @@ Members
 
 
 
+
 .. _`nand_ecc_ctrl`:
 
 struct nand_ecc_ctrl
 ====================
 
-.. c:type:: struct nand_ecc_ctrl
+.. c:type:: nand_ecc_ctrl
 
     Control structure for ECC
 
 
+.. _`nand_ecc_ctrl.definition`:
 
 Definition
 ----------
@@ -88,6 +93,7 @@ Definition
   };
 
 
+.. _`nand_ecc_ctrl.members`:
 
 Members
 -------
@@ -133,14 +139,13 @@ Members
     function for ECC calculation or readback from ECC hardware
 
 :``correct``:
-    function for ECC correction, matching to ECC generator (sw/hw).::
-
-                    Should return a positive number representing the number of
-                    corrected bitflips, -EBADMSG if the number of bitflips exceed
-                    ECC strength, or any other error code if the error is not
-                    directly related to correction.
-                    If -EBADMSG is returned the input buffers should be left
-                    untouched.
+    function for ECC correction, matching to ECC generator (sw/hw).
+    Should return a positive number representing the number of
+    corrected bitflips, -EBADMSG if the number of bitflips exceed
+    ECC strength, or any other error code if the error is not
+    directly related to correction.
+    If -EBADMSG is returned the input buffers should be left
+    untouched.
 
 :``read_page_raw``:
     function to read a raw page without ECC. This function
@@ -191,16 +196,18 @@ Members
 
 
 
+
 .. _`nand_buffers`:
 
 struct nand_buffers
 ===================
 
-.. c:type:: struct nand_buffers
+.. c:type:: nand_buffers
 
     buffer structure for read/write
 
 
+.. _`nand_buffers.definition`:
 
 Definition
 ----------
@@ -214,6 +221,7 @@ Definition
   };
 
 
+.. _`nand_buffers.members`:
 
 Members
 -------
@@ -229,6 +237,9 @@ Members
 
 
 
+
+.. _`nand_buffers.description`:
+
 Description
 -----------
 
@@ -236,16 +247,18 @@ Do not change the order of buffers. databuf and oobrbuf must be in
 consecutive order.
 
 
+
 .. _`nand_chip`:
 
 struct nand_chip
 ================
 
-.. c:type:: struct nand_chip
+.. c:type:: nand_chip
 
     NAND Private Flash Chip Data
 
 
+.. _`nand_chip.definition`:
 
 Definition
 ----------
@@ -312,6 +325,7 @@ Definition
   };
 
 
+.. _`nand_chip.members`:
 
 Members
 -------
@@ -445,10 +459,9 @@ Members
     [INTERN] number of bits per cell. i.e., 1 means SLC.
 
 :``ecc_strength_ds``:
-    [INTERN] ECC correctability from the datasheet.::
-
-                            Minimum amount of bit errors per ``ecc_step_ds`` guaranteed
-                            to be correctable. If unknown, set to zero.
+    [INTERN] ECC correctability from the datasheet.
+    Minimum amount of bit errors per ``ecc_step_ds`` guaranteed
+    to be correctable. If unknown, set to zero.
 
 :``ecc_step_ds``:
     [INTERN] ECC step required by the ``ecc_strength_ds``\ ,
@@ -525,16 +538,18 @@ Members
 
 
 
+
 .. _`nand_flash_dev`:
 
 struct nand_flash_dev
 =====================
 
-.. c:type:: struct nand_flash_dev
+.. c:type:: nand_flash_dev
 
     NAND Flash Device ID Structure
 
 
+.. _`nand_flash_dev.definition`:
 
 Definition
 ----------
@@ -548,6 +563,7 @@ Definition
   };
 
 
+.. _`nand_flash_dev.members`:
 
 Members
 -------
@@ -572,16 +588,18 @@ Members
 
 
 
+
 .. _`nand_manufacturers`:
 
 struct nand_manufacturers
 =========================
 
-.. c:type:: struct nand_manufacturers
+.. c:type:: nand_manufacturers
 
     NAND Flash Manufacturer ID Structure
 
 
+.. _`nand_manufacturers.definition`:
 
 Definition
 ----------
@@ -594,6 +612,7 @@ Definition
   };
 
 
+.. _`nand_manufacturers.members`:
 
 Members
 -------
@@ -606,16 +625,18 @@ Members
 
 
 
+
 .. _`platform_nand_chip`:
 
 struct platform_nand_chip
 =========================
 
-.. c:type:: struct platform_nand_chip
+.. c:type:: platform_nand_chip
 
     chip level device structure
 
 
+.. _`platform_nand_chip.definition`:
 
 Definition
 ----------
@@ -634,6 +655,7 @@ Definition
   };
 
 
+.. _`platform_nand_chip.members`:
 
 Members
 -------
@@ -664,16 +686,18 @@ Members
 
 
 
+
 .. _`platform_nand_ctrl`:
 
 struct platform_nand_ctrl
 =========================
 
-.. c:type:: struct platform_nand_ctrl
+.. c:type:: platform_nand_ctrl
 
     controller level device structure
 
 
+.. _`platform_nand_ctrl.definition`:
 
 Definition
 ----------
@@ -694,6 +718,7 @@ Definition
   };
 
 
+.. _`platform_nand_ctrl.members`:
 
 Members
 -------
@@ -731,10 +756,14 @@ Members
 
 
 
+
+.. _`platform_nand_ctrl.description`:
+
 Description
 -----------
 
 All fields are optional and depend on the hardware driver requirements
+
 
 
 .. _`platform_nand_data`:
@@ -742,11 +771,12 @@ All fields are optional and depend on the hardware driver requirements
 struct platform_nand_data
 =========================
 
-.. c:type:: struct platform_nand_data
+.. c:type:: platform_nand_data
 
     container structure for platform-specific data
 
 
+.. _`platform_nand_data.definition`:
 
 Definition
 ----------
@@ -759,6 +789,7 @@ Definition
   };
 
 
+.. _`platform_nand_data.members`:
 
 Members
 -------
@@ -768,6 +799,7 @@ Members
 
 :``ctrl``:
     controller level device structure
+
 
 
 

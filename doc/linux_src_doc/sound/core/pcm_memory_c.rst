@@ -4,6 +4,7 @@
 pcm_memory.c
 ============
 
+
 .. _`snd_pcm_lib_preallocate_free`:
 
 snd_pcm_lib_preallocate_free
@@ -17,6 +18,7 @@ snd_pcm_lib_preallocate_free
         the pcm substream instance
 
 
+
 .. _`snd_pcm_lib_preallocate_free.description`:
 
 Description
@@ -24,7 +26,15 @@ Description
 
 Releases the pre-allocated buffer of the given substream.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_preallocate_free.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_preallocate_free_for_all`:
@@ -40,6 +50,7 @@ snd_pcm_lib_preallocate_free_for_all
         the pcm instance
 
 
+
 .. _`snd_pcm_lib_preallocate_free_for_all.description`:
 
 Description
@@ -47,7 +58,15 @@ Description
 
 Releases all the pre-allocated buffers on the given pcm.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_preallocate_free_for_all.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_preallocate_pages`:
@@ -63,7 +82,7 @@ snd_pcm_lib_preallocate_pages
         the pcm substream instance
 
     :param int type:
-        DMA type (SNDRV_DMA_TYPE_\*)
+        DMA type (SNDRV_DMA_TYPE\_\*)
 
     :param struct device \*data:
         DMA type dependent data
@@ -75,6 +94,7 @@ snd_pcm_lib_preallocate_pages
         the max. allowed pre-allocation size
 
 
+
 .. _`snd_pcm_lib_preallocate_pages.description`:
 
 Description
@@ -82,7 +102,15 @@ Description
 
 Do pre-allocation for the given DMA buffer type.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_preallocate_pages.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_preallocate_pages_for_all`:
@@ -98,7 +126,7 @@ snd_pcm_lib_preallocate_pages_for_all
         the pcm instance
 
     :param int type:
-        DMA type (SNDRV_DMA_TYPE_\*)
+        DMA type (SNDRV_DMA_TYPE\_\*)
 
     :param void \*data:
         DMA type dependent data
@@ -110,6 +138,7 @@ snd_pcm_lib_preallocate_pages_for_all
         the max. allowed pre-allocation size
 
 
+
 .. _`snd_pcm_lib_preallocate_pages_for_all.description`:
 
 Description
@@ -118,7 +147,15 @@ Description
 Do pre-allocation to all substreams of the given pcm for the
 specified DMA type.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_preallocate_pages_for_all.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_sgbuf_ops_page`:
@@ -137,6 +174,7 @@ snd_pcm_sgbuf_ops_page
         the buffer offset
 
 
+
 .. _`snd_pcm_sgbuf_ops_page.description`:
 
 Description
@@ -144,7 +182,15 @@ Description
 
 Used as the page callback of PCM ops.
 
-Return: The page struct at the given buffer offset. ``NULL`` on failure.
+
+
+.. _`snd_pcm_sgbuf_ops_page.return`:
+
+Return
+------
+
+The page struct at the given buffer offset. ``NULL`` on failure.
+
 
 
 .. _`snd_pcm_lib_malloc_pages`:
@@ -163,6 +209,7 @@ snd_pcm_lib_malloc_pages
         the requested buffer size in bytes
 
 
+
 .. _`snd_pcm_lib_malloc_pages.description`:
 
 Description
@@ -171,8 +218,16 @@ Description
 Allocates the DMA buffer on the BUS type given earlier to
 :c:func:`snd_pcm_lib_preallocate_xxx_pages`.
 
-Return: 1 if the buffer is changed, 0 if not changed, or a negative
+
+
+.. _`snd_pcm_lib_malloc_pages.return`:
+
+Return
+------
+
+1 if the buffer is changed, 0 if not changed, or a negative
 code on failure.
+
 
 
 .. _`snd_pcm_lib_free_pages`:
@@ -188,6 +243,7 @@ snd_pcm_lib_free_pages
         the substream to release the DMA buffer
 
 
+
 .. _`snd_pcm_lib_free_pages.description`:
 
 Description
@@ -195,7 +251,15 @@ Description
 
 Releases the DMA buffer allocated via :c:func:`snd_pcm_lib_malloc_pages`.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_lib_free_pages.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_free_vmalloc_buffer`:
@@ -212,12 +276,14 @@ snd_pcm_lib_free_vmalloc_buffer
         :c:func:`snd_pcm_lib_alloc_vmalloc_buffer`
 
 
-.. _`snd_pcm_lib_free_vmalloc_buffer.description`:
 
-Description
------------
+.. _`snd_pcm_lib_free_vmalloc_buffer.return`:
 
-Return: Zero if successful, or a negative error code on failure.
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_lib_get_vmalloc_page`:
@@ -237,6 +303,7 @@ snd_pcm_lib_get_vmalloc_page
         offset in the buffer
 
 
+
 .. _`snd_pcm_lib_get_vmalloc_page.description`:
 
 Description
@@ -244,5 +311,12 @@ Description
 
 This function is to be used as the page callback in the PCM ops.
 
-Return: The page struct, or ``NULL`` on failure.
+
+
+.. _`snd_pcm_lib_get_vmalloc_page.return`:
+
+Return
+------
+
+The page struct, or ``NULL`` on failure.
 

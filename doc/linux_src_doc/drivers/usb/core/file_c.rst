@@ -4,6 +4,7 @@
 file.c
 ======
 
+
 .. _`usb_register_dev`:
 
 usb_register_dev
@@ -18,6 +19,7 @@ usb_register_dev
 
     :param struct usb_class_driver \*class_driver:
         pointer to the usb_class_driver for this device
+
 
 
 .. _`usb_register_dev.description`:
@@ -36,8 +38,16 @@ This function also creates a usb class device in the sysfs tree.
 :c:func:`usb_deregister_dev` must be called when the driver is done with
 the minor numbers given out by this function.
 
-Return: -EINVAL if something bad happens with trying to register a
+
+
+.. _`usb_register_dev.return`:
+
+Return
+------
+
+-EINVAL if something bad happens with trying to register a
 device, and 0 on success.
+
 
 
 .. _`usb_deregister_dev`:
@@ -54,6 +64,7 @@ usb_deregister_dev
 
     :param struct usb_class_driver \*class_driver:
         pointer to the usb_class_driver for this device
+
 
 
 .. _`usb_deregister_dev.description`:

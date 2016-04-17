@@ -4,16 +4,18 @@
 lirc_dev.h
 ==========
 
+
 .. _`lirc_driver`:
 
 struct lirc_driver
 ==================
 
-.. c:type:: struct lirc_driver
+.. c:type:: lirc_driver
 
     Defines the parameters on a LIRC driver
 
 
+.. _`lirc_driver.definition`:
 
 Definition
 ----------
@@ -42,6 +44,7 @@ Definition
   };
 
 
+.. _`lirc_driver.members`:
 
 Members
 -------
@@ -71,7 +74,7 @@ Members
 
 :``features``:
     lirc compatible hardware features, like LIRC_MODE_RAW,
-    LIRC_CAN_\*, as defined at include/media/lirc.h.
+    LIRC_CAN\_\*, as defined at include/media/lirc.h.
 
 :``chunk_size``:
     Size of each FIFO buffer.

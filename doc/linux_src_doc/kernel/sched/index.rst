@@ -7,7 +7,8 @@ sched
 .. toctree::
    :maxdepth: 1
 
-   core_c
+   completion_c
+   cpufreq_c
    cpupri_c
    fair_c
-   wait_c
+   loadavg_c

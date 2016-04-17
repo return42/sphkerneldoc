@@ -4,16 +4,18 @@
 interrupt.h
 ===========
 
+
 .. _`irqaction`:
 
 struct irqaction
 ================
 
-.. c:type:: struct irqaction
+.. c:type:: irqaction
 
     per interrupt action descriptor
 
 
+.. _`irqaction.definition`:
 
 Definition
 ----------
@@ -37,6 +39,7 @@ Definition
   };
 
 
+.. _`irqaction.members`:
 
 Members
 -------
@@ -66,7 +69,7 @@ Members
     interrupt number
 
 :``flags``:
-    flags (see IRQF_\* above)
+    flags (see IRQF\_\* above)
 
 :``thread_flags``:
     flags related to ``thread``
@@ -82,16 +85,18 @@ Members
 
 
 
+
 .. _`irq_affinity_notify`:
 
 struct irq_affinity_notify
 ==========================
 
-.. c:type:: struct irq_affinity_notify
+.. c:type:: irq_affinity_notify
 
     context for notification of IRQ affinity changes
 
 
+.. _`irq_affinity_notify.definition`:
 
 Definition
 ----------
@@ -107,6 +112,7 @@ Definition
   };
 
 
+.. _`irq_affinity_notify.members`:
 
 Members
 -------
@@ -132,6 +138,7 @@ Members
 
 
 
+
 .. _`irq_set_affinity`:
 
 irq_set_affinity
@@ -148,12 +155,14 @@ irq_set_affinity
         cpumask
 
 
+
 .. _`irq_set_affinity.description`:
 
 Description
 -----------
 
 Fails if cpumask does not contain an online CPU
+
 
 
 .. _`irq_force_affinity`:
@@ -170,6 +179,7 @@ irq_force_affinity
 
     :param const struct cpumask \*cpumask:
         cpumask
+
 
 
 .. _`irq_force_affinity.description`:

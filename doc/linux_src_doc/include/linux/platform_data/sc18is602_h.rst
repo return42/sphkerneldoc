@@ -1,0 +1,34 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+===========
+sc18is602.h
+===========
+
+
+.. _`sc18is602_platform_data`:
+
+struct sc18is602_platform_data
+==============================
+
+.. c:type:: sc18is602_platform_data
+
+    sc18is602 info @clock_frequency SC18IS603 oscillator frequency
+
+
+.. _`sc18is602_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct sc18is602_platform_data {
+  };
+
+
+.. _`sc18is602_platform_data.members`:
+
+Members
+-------
+
+

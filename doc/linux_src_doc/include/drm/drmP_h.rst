@@ -4,6 +4,7 @@
 drmP.h
 ======
 
+
 .. _`drm_error`:
 
 DRM_ERROR
@@ -19,6 +20,7 @@ DRM_ERROR
         variable arguments
 
 
+
 .. _`drm_error.description`:
 
 Description
@@ -27,6 +29,7 @@ Description
 
 \param fmt :c:func:`printf` like format string.
 \param arg arguments
+
 
 
 .. _`drm_error_ratelimited`:
@@ -44,6 +47,7 @@ DRM_ERROR_RATELIMITED
         variable arguments
 
 
+
 .. _`drm_error_ratelimited.description`:
 
 Description
@@ -52,6 +56,7 @@ Description
 
 \param fmt :c:func:`printf` like format string.
 \param arg arguments
+
 
 
 .. _`drm_debug`:
@@ -69,6 +74,7 @@ DRM_DEBUG
         variable arguments
 
 
+
 .. _`drm_debug.description`:
 
 Description
@@ -77,6 +83,7 @@ Description
 
 \param fmt :c:func:`printf` like format string.
 \param arg arguments
+
 
 
 .. _`drm_ioctl_t`:
@@ -99,6 +106,7 @@ drm_ioctl_t
         *undescribed*
 
 
+
 .. _`drm_ioctl_t.description`:
 
 Description
@@ -109,6 +117,7 @@ Description
 \param file_priv DRM file private pointer.
 \param cmd command.
 \param arg argument.
+
 
 
 .. _`drm_ioctl_def_drv`:
@@ -131,6 +140,7 @@ DRM_IOCTL_DEF_DRV
         *undescribed*
 
 
+
 .. _`drm_ioctl_def_drv.description`:
 
 Description
@@ -139,16 +149,18 @@ Description
 ioctl, for use by :c:func:`drm_ioctl`.
 
 
+
 .. _`drm_master`:
 
 struct drm_master
 =================
 
-.. c:type:: struct drm_master
+.. c:type:: drm_master
 
     drm master structure
 
 
+.. _`drm_master.definition`:
 
 Definition
 ----------
@@ -166,6 +178,7 @@ Definition
   };
 
 
+.. _`drm_master.members`:
 
 Members
 -------
@@ -193,6 +206,7 @@ Members
 
 
 
+
 .. _`drm_crtc_vblank_waitqueue`:
 
 drm_crtc_vblank_waitqueue
@@ -204,6 +218,7 @@ drm_crtc_vblank_waitqueue
 
     :param struct drm_crtc \*crtc:
         which CRTC's vblank waitqueue to retrieve
+
 
 
 .. _`drm_crtc_vblank_waitqueue.description`:

@@ -1,0 +1,44 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+wm8996.c
+========
+
+
+.. _`wm8996_detect`:
+
+wm8996_detect
+=============
+
+.. c:function:: int wm8996_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack, wm8996_polarity_fn polarity_cb)
+
+    Enable default WM8996 jack detection
+
+    :param struct snd_soc_codec \*codec:
+
+        *undescribed*
+
+    :param struct snd_soc_jack \*jack:
+
+        *undescribed*
+
+    :param wm8996_polarity_fn polarity_cb:
+
+        *undescribed*
+
+
+
+.. _`wm8996_detect.description`:
+
+Description
+-----------
+
+
+The WM8996 has advanced accessory detection support for headsets.
+This function provides a default implementation which integrates
+the majority of this functionality with minimal user configuration.
+
+This will detect headset, headphone and short circuit button and
+will also detect inverted microphone ground connections and update
+the polarity of the connections.
+

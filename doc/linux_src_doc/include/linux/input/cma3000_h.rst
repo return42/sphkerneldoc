@@ -1,0 +1,66 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+cma3000.h
+=========
+
+
+.. _`cma3000_platform_data`:
+
+struct cma3000_platform_data
+============================
+
+.. c:type:: cma3000_platform_data
+
+    CMA3000 Platform data
+
+
+.. _`cma3000_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct cma3000_platform_data {
+    int fuzz_x;
+    int fuzz_y;
+    int fuzz_z;
+    int g_range;
+    uint8_t mode;
+    uint8_t mdthr;
+    uint8_t mdfftmr;
+    uint8_t ffthr;
+  };
+
+
+.. _`cma3000_platform_data.members`:
+
+Members
+-------
+
+:``fuzz_x``:
+    Noise on X Axis
+
+:``fuzz_y``:
+    Noise on Y Axis
+
+:``fuzz_z``:
+    Noise on Z Axis
+
+:``g_range``:
+    G range in milli g i.e 2000 or 8000
+
+:``mode``:
+    Operating mode
+
+:``mdthr``:
+    Motion detect threshold value
+
+:``mdfftmr``:
+    Motion detect and free fall time value
+
+:``ffthr``:
+    Free fall threshold value
+
+

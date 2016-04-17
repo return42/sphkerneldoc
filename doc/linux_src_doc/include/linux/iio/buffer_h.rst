@@ -4,6 +4,7 @@
 buffer.h
 ========
 
+
 .. _`indio_buffer_flag_fixed_watermark`:
 
 INDIO_BUFFER_FLAG_FIXED_WATERMARK
@@ -14,16 +15,18 @@ INDIO_BUFFER_FLAG_FIXED_WATERMARK
     Watermark level of the buffer can not be configured. It has a fixed value which will be buffer specific.
 
 
+
 .. _`iio_buffer_access_funcs`:
 
 struct iio_buffer_access_funcs
 ==============================
 
-.. c:type:: struct iio_buffer_access_funcs
+.. c:type:: iio_buffer_access_funcs
 
     access functions for buffers.
 
 
+.. _`iio_buffer_access_funcs.definition`:
 
 Definition
 ----------
@@ -45,6 +48,7 @@ Definition
   };
 
 
+.. _`iio_buffer_access_funcs.members`:
 
 Members
 -------
@@ -86,9 +90,12 @@ Members
     Supported operating modes by this buffer type
 
 :``flags``:
-    A bitmask combination of INDIO_BUFFER_FLAG_*
+    A bitmask combination of INDIO_BUFFER_FLAG\_\*
 
 
+
+
+.. _`iio_buffer_access_funcs.description`:
 
 Description
 -----------
@@ -102,16 +109,18 @@ small proportion of these functions.  The core code 'should' cope fine with
 any of them not existing.
 
 
+
 .. _`iio_buffer`:
 
 struct iio_buffer
 =================
 
-.. c:type:: struct iio_buffer
+.. c:type:: iio_buffer
 
     general buffer structure
 
 
+.. _`iio_buffer.definition`:
 
 Definition
 ----------
@@ -137,6 +146,7 @@ Definition
   };
 
 
+.. _`iio_buffer.members`:
 
 Members
 -------
@@ -191,6 +201,7 @@ Members
 
 
 
+
 .. _`iio_update_buffers`:
 
 iio_update_buffers
@@ -210,12 +221,14 @@ iio_update_buffers
         buffer_to_remove
 
 
+
 .. _`iio_update_buffers.description`:
 
 Description
 -----------
 
 Note this will tear down the all buffering and build it up again
+
 
 
 .. _`iio_buffer_init`:
@@ -229,6 +242,7 @@ iio_buffer_init
 
     :param struct iio_buffer \*buffer:
         buffer to be initialized
+
 
 
 .. _`iio_push_to_buffers`:
@@ -247,6 +261,7 @@ iio_push_to_buffers
         Full scan.
 
 
+
 .. _`iio_device_attach_buffer`:
 
 iio_device_attach_buffer
@@ -261,6 +276,7 @@ iio_device_attach_buffer
 
     :param struct iio_buffer \*buffer:
         The buffer to attach to the device
+
 
 
 .. _`iio_device_attach_buffer.description`:

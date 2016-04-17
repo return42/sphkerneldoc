@@ -4,6 +4,7 @@
 amdgpu_drm.h
 ============
 
+
 .. _`amdgpu_ids_flags_fusion`:
 
 AMDGPU_IDS_FLAGS_FUSION

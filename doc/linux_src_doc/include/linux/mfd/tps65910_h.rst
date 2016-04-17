@@ -1,0 +1,72 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+==========
+tps65910.h
+==========
+
+
+.. _`tps65910_board`:
+
+struct tps65910_board
+=====================
+
+.. c:type:: tps65910_board
+
+    
+
+
+.. _`tps65910_board.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct tps65910_board {
+  };
+
+
+.. _`tps65910_board.members`:
+
+Members
+-------
+
+
+
+
+.. _`tps65910_board.description`:
+
+Description
+-----------
+
+Board platform data may be used to initialize regulators.
+
+
+
+.. _`tps65910`:
+
+struct tps65910
+===============
+
+.. c:type:: tps65910
+
+    tps65910 sub-driver chip access routines
+
+
+.. _`tps65910.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct tps65910 {
+  };
+
+
+.. _`tps65910.members`:
+
+Members
+-------
+
+

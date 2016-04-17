@@ -4,6 +4,7 @@
 mei.h
 =====
 
+
 .. _`set-and-unset-event-notification-for-a-connected-client`:
 
 set and unset event notification for a connected client
@@ -12,6 +13,7 @@ set and unset event notification for a connected client
 The IOCTL argument is 1 for enabling event notification and 0 for
 disabling the service
 Return:  -EOPNOTSUPP if the devices doesn't support the feature
+
 
 
 .. _`retrieve-notification`:

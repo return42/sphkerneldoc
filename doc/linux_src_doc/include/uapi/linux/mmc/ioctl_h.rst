@@ -4,16 +4,18 @@
 ioctl.h
 =======
 
+
 .. _`mmc_ioc_multi_cmd`:
 
 struct mmc_ioc_multi_cmd
 ========================
 
-.. c:type:: struct mmc_ioc_multi_cmd
+.. c:type:: mmc_ioc_multi_cmd
 
     multi command information
 
 
+.. _`mmc_ioc_multi_cmd.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`mmc_ioc_multi_cmd.members`:
 
 Members
 -------

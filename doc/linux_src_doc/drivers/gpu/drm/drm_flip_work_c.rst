@@ -4,6 +4,7 @@
 drm_flip_work.c
 ===============
 
+
 .. _`drm_flip_work_allocate_task`:
 
 drm_flip_work_allocate_task
@@ -20,12 +21,14 @@ drm_flip_work_allocate_task
         allocator flags
 
 
+
 .. _`drm_flip_work_allocate_task.description`:
 
 Description
 -----------
 
 Allocate a drm_flip_task object and attach private data to it.
+
 
 
 .. _`drm_flip_work_queue_task`:
@@ -44,6 +47,7 @@ drm_flip_work_queue_task
         the task to handle
 
 
+
 .. _`drm_flip_work_queue_task.description`:
 
 Description
@@ -51,6 +55,7 @@ Description
 
 Queues task, that will later be run (passed back to drm_flip_func_t
 func) on a work queue after :c:func:`drm_flip_work_commit` is called.
+
 
 
 .. _`drm_flip_work_queue`:
@@ -69,6 +74,7 @@ drm_flip_work_queue
         the value to queue
 
 
+
 .. _`drm_flip_work_queue.description`:
 
 Description
@@ -76,6 +82,7 @@ Description
 
 Queues work, that will later be run (passed back to drm_flip_func_t
 func) on a work queue after :c:func:`drm_flip_work_commit` is called.
+
 
 
 .. _`drm_flip_work_commit`:
@@ -94,6 +101,7 @@ drm_flip_work_commit
         the work-queue to run the queued work on
 
 
+
 .. _`drm_flip_work_commit.description`:
 
 Description
@@ -103,6 +111,7 @@ Trigger work previously queued by :c:func:`drm_flip_work_queue` to run
 on a workqueue.  The typical usage would be to queue work (via
 :c:func:`drm_flip_work_queue`) at any point (from vblank irq and/or
 prior), and then from vblank irq commit the queued work.
+
 
 
 .. _`drm_flip_work_init`:
@@ -124,12 +133,14 @@ drm_flip_work_init
         the callback work function
 
 
+
 .. _`drm_flip_work_init.description`:
 
 Description
 -----------
 
 Initializes/allocates resources for the flip-work
+
 
 
 .. _`drm_flip_work_cleanup`:
@@ -143,6 +154,7 @@ drm_flip_work_cleanup
 
     :param struct drm_flip_work \*work:
         the flip-work to cleanup
+
 
 
 .. _`drm_flip_work_cleanup.description`:

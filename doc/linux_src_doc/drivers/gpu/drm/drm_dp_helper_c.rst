@@ -4,6 +4,7 @@
 drm_dp_helper.c
 ===============
 
+
 .. _`dp-helpers`:
 
 dp helpers
@@ -13,6 +14,7 @@ These functions contain some common logic and helpers at various abstraction
 levels to deal with Display Port sink devices and related things like DP aux
 channel transfers, EDID reading over DP aux channels, decoding certain DPCD
 blocks, ...
+
 
 
 .. _`dp-helpers`:
@@ -27,6 +29,7 @@ this by filling in the fields of the drm_dp_aux structure.
 Transactions are described using a hardware-independent drm_dp_aux_msg
 structure, which is passed into a driver's .:c:func:`transfer` implementation.
 Both native and I2C-over-AUX transactions are supported.
+
 
 
 .. _`drm_dp_dpcd_read`:
@@ -51,6 +54,7 @@ drm_dp_dpcd_read
         number of bytes in ``buffer``
 
 
+
 .. _`drm_dp_dpcd_read.description`:
 
 Description
@@ -62,6 +66,7 @@ if the retry count was exceeded. If not all bytes were transferred, this
 function returns -EPROTO. Errors from the underlying AUX channel transfer
 function, with the exception of -EBUSY (which causes the transaction to
 be retried), are propagated to the caller.
+
 
 
 .. _`drm_dp_dpcd_write`:
@@ -86,6 +91,7 @@ drm_dp_dpcd_write
         number of bytes in ``buffer``
 
 
+
 .. _`drm_dp_dpcd_write.description`:
 
 Description
@@ -97,6 +103,7 @@ if the retry count was exceeded. If not all bytes were transferred, this
 function returns -EPROTO. Errors from the underlying AUX channel transfer
 function, with the exception of -EBUSY (which causes the transaction to
 be retried), are propagated to the caller.
+
 
 
 .. _`drm_dp_dpcd_read_link_status`:
@@ -115,6 +122,7 @@ drm_dp_dpcd_read_link_status
         buffer to store the link status in (must be at least 6 bytes)
 
 
+
 .. _`drm_dp_dpcd_read_link_status.description`:
 
 Description
@@ -122,6 +130,7 @@ Description
 
 Returns the number of bytes transferred on success or a negative error
 code on failure.
+
 
 
 .. _`drm_dp_link_probe`:
@@ -140,6 +149,7 @@ drm_dp_link_probe
         pointer to structure in which to return link capabilities
 
 
+
 .. _`drm_dp_link_probe.description`:
 
 Description
@@ -150,6 +160,7 @@ into :c:func:`drm_dp_link_power_up` and :c:func:`drm_dp_link_configure` to power
 configure the link based on the link's capabilities.
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_link_power_up`:
@@ -168,12 +179,14 @@ drm_dp_link_power_up
         pointer to a structure containing the link configuration
 
 
+
 .. _`drm_dp_link_power_up.description`:
 
 Description
 -----------
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_link_power_down`:
@@ -192,12 +205,14 @@ drm_dp_link_power_down
         pointer to a structure containing the link configuration
 
 
+
 .. _`drm_dp_link_power_down.description`:
 
 Description
 -----------
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_link_configure`:
@@ -216,12 +231,14 @@ drm_dp_link_configure
         pointer to a structure containing the link configuration
 
 
+
 .. _`drm_dp_link_configure.description`:
 
 Description
 -----------
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_aux_register`:
@@ -237,12 +254,14 @@ drm_dp_aux_register
         DisplayPort AUX channel
 
 
+
 .. _`drm_dp_aux_register.description`:
 
 Description
 -----------
 
 Returns 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_dp_aux_unregister`:

@@ -4,6 +4,7 @@
 intel_fbc.c
 ===========
 
+
 .. _`frame-buffer-compression--fbc-`:
 
 Frame Buffer Compression (FBC)
@@ -23,6 +24,7 @@ compress/decompress. However there are many known cases where we have to
 forcibly disable it to allow proper screen updates.
 
 
+
 .. _`intel_fbc_is_active`:
 
 intel_fbc_is_active
@@ -36,14 +38,24 @@ intel_fbc_is_active
         i915 device instance
 
 
+
 .. _`intel_fbc_is_active.description`:
 
 Description
 -----------
 
 This function is used to verify the current state of FBC.
-FIXME: This should be tracked in the plane config eventually
+
+
+
+.. _`intel_fbc_is_active.fixme`:
+
+FIXME
+-----
+
+This should be tracked in the plane config eventually
 instead of queried at runtime for most callers.
+
 
 
 .. _`intel_fbc_choose_crtc`:
@@ -62,6 +74,7 @@ intel_fbc_choose_crtc
         the atomic state structure
 
 
+
 .. _`intel_fbc_choose_crtc.description`:
 
 Description
@@ -75,6 +88,7 @@ Later, intel_fbc_enable is going to look for state->enable_fbc and then maybe
 enable FBC for the chosen CRTC. If it does, it will set dev_priv->fbc.crtc.
 
 
+
 .. _`intel_fbc_enable`:
 
 intel_fbc_enable
@@ -86,6 +100,7 @@ intel_fbc_enable
         the CRTC
 
 
+
 .. _`intel_fbc_enable.description`:
 
 Description
@@ -95,6 +110,7 @@ This function checks if the given CRTC was chosen for FBC, then enables it if
 possible. Notice that it doesn't activate FBC. It is valid to call
 intel_fbc_enable multiple times for the same pipe without an
 intel_fbc_disable in the middle, as long as it is deactivated.
+
 
 
 .. _`__intel_fbc_disable`:
@@ -110,6 +126,7 @@ __intel_fbc_disable
         i915 device instance
 
 
+
 .. _`__intel_fbc_disable.description`:
 
 Description
@@ -117,6 +134,7 @@ Description
 
 This is the low level function that actually disables FBC. Callers should
 grab the FBC lock.
+
 
 
 .. _`intel_fbc_disable`:
@@ -132,12 +150,14 @@ intel_fbc_disable
         the CRTC
 
 
+
 .. _`intel_fbc_disable.description`:
 
 Description
 -----------
 
 This function disables FBC if it's associated with the provided CRTC.
+
 
 
 .. _`intel_fbc_global_disable`:
@@ -153,12 +173,14 @@ intel_fbc_global_disable
         i915 device instance
 
 
+
 .. _`intel_fbc_global_disable.description`:
 
 Description
 -----------
 
 This function disables FBC regardless of which CRTC is associated with it.
+
 
 
 .. _`intel_fbc_init_pipe_state`:
@@ -174,6 +196,7 @@ intel_fbc_init_pipe_state
         i915 device instance
 
 
+
 .. _`intel_fbc_init_pipe_state.description`:
 
 Description
@@ -182,6 +205,7 @@ Description
 The FBC code needs to track CRTC visibility since the older platforms can't
 have FBC enabled while multiple pipes are used. This function does the
 initial setup at driver load to make sure FBC is matching the real hardware.
+
 
 
 .. _`intel_fbc_init`:
@@ -195,6 +219,7 @@ intel_fbc_init
 
     :param struct drm_i915_private \*dev_priv:
         the i915 device
+
 
 
 .. _`intel_fbc_init.description`:

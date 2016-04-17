@@ -1,0 +1,56 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ov9650.h
+========
+
+
+.. _`ov9650_platform_data`:
+
+struct ov9650_platform_data
+===========================
+
+.. c:type:: ov9650_platform_data
+
+    ov9650 driver platform data
+
+
+.. _`ov9650_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ov9650_platform_data {
+    unsigned long mclk_frequency;
+    int gpio_pwdn;
+    int gpio_reset;
+  };
+
+
+.. _`ov9650_platform_data.members`:
+
+Members
+-------
+
+:``mclk_frequency``:
+    the sensor's master clock frequency in Hz
+
+:``gpio_pwdn``:
+    number of a GPIO connected to OV965X PWDN pin
+
+:``gpio_reset``:
+    number of a GPIO connected to OV965X RESET pin
+
+
+
+
+.. _`ov9650_platform_data.description`:
+
+Description
+-----------
+
+If any of ``gpio_pwdn`` or ``gpio_reset`` are unused then they should be
+set to a negative value. ``mclk_frequency`` must always be specified.
+

@@ -4,6 +4,7 @@
 sata_sil.c
 ==========
 
+
 .. _`sil_set_mode`:
 
 sil_set_mode
@@ -20,6 +21,7 @@ sil_set_mode
         returned device when we fail
 
 
+
 .. _`sil_set_mode.description`:
 
 Description
@@ -27,6 +29,7 @@ Description
 
 Wrap the libata method for device setup as after the setup we need
 to inspect the results and do some configuration work
+
 
 
 .. _`sil_dev_config`:
@@ -40,6 +43,7 @@ sil_dev_config
 
     :param struct ata_device \*dev:
         Device to be examined
+
 
 
 .. _`sil_dev_config.description`:

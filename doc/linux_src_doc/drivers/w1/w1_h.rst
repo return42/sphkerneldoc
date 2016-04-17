@@ -4,16 +4,18 @@
 w1.h
 ====
 
+
 .. _`w1_reg_num`:
 
 struct w1_reg_num
 =================
 
-.. c:type:: struct w1_reg_num
+.. c:type:: w1_reg_num
 
     broken out slave device id
 
 
+.. _`w1_reg_num.definition`:
 
 Definition
 ----------
@@ -35,6 +37,7 @@ Definition
   };
 
 
+.. _`w1_reg_num.members`:
 
 Members
 -------
@@ -59,16 +62,18 @@ Members
 
 
 
+
 .. _`w1_slave`:
 
 struct w1_slave
 ===============
 
-.. c:type:: struct w1_slave
+.. c:type:: w1_slave
 
     holds a single slave device on the bus
 
 
+.. _`w1_slave.definition`:
 
 Definition
 ----------
@@ -90,6 +95,7 @@ Definition
   };
 
 
+.. _`w1_slave.members`:
 
 Members
 -------
@@ -129,16 +135,18 @@ Members
 
 
 
+
 .. _`w1_bus_master`:
 
 struct w1_bus_master
 ====================
 
-.. c:type:: struct w1_bus_master
+.. c:type:: w1_bus_master
 
     operations available on a bus master
 
 
+.. _`w1_bus_master.definition`:
 
 Definition
 ----------
@@ -161,6 +169,7 @@ Definition
   };
 
 
+.. _`w1_bus_master.members`:
 
 Members
 -------
@@ -214,14 +223,18 @@ Members
 
 
 
-Description
------------
 
-Note: read_bit and write_bit are very low level functions and should only
+.. _`w1_bus_master.note`:
+
+Note
+----
+
+read_bit and write_bit are very low level functions and should only
 be used with hardware that doesn't really support 1-wire operations,
 like a parallel/serial port.
 Either define read_bit and write_bit OR define, at minimum, touch_bit and
 reset_bus.
+
 
 
 .. _`w1_master_flags`:
@@ -229,11 +242,25 @@ reset_bus.
 enum w1_master_flags
 ====================
 
-.. c:type:: enum w1_master_flags
+.. c:type:: w1_master_flags
 
     bitfields used in w1_master.flags
 
 
+.. _`w1_master_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum w1_master_flags {
+      W1_ABORT_SEARCH,
+      W1_WARN_MAX_COUNT
+    };
+
+
+.. _`w1_master_flags.constants`:
 
 Constants
 ---------
@@ -250,11 +277,12 @@ Constants
 struct w1_master
 ================
 
-.. c:type:: struct w1_master
+.. c:type:: w1_master
 
     one per bus master
 
 
+.. _`w1_master.definition`:
 
 Definition
 ----------
@@ -291,6 +319,7 @@ Definition
   };
 
 
+.. _`w1_master.members`:
 
 Members
 -------
@@ -375,16 +404,18 @@ Members
 
 
 
+
 .. _`w1_async_cmd`:
 
 struct w1_async_cmd
 ===================
 
-.. c:type:: struct w1_async_cmd
+.. c:type:: w1_async_cmd
 
     execute callback from the w1_process kthread
 
 
+.. _`w1_async_cmd.definition`:
 
 Definition
 ----------
@@ -397,6 +428,7 @@ Definition
   };
 
 
+.. _`w1_async_cmd.members`:
 
 Members
 -------
@@ -409,6 +441,9 @@ Members
     returning
 
 
+
+
+.. _`w1_async_cmd.description`:
 
 Description
 -----------

@@ -4,6 +4,7 @@
 workqueue.h
 ===========
 
+
 .. _`trace_workqueue_queue_work`:
 
 trace_workqueue_queue_work
@@ -23,6 +24,7 @@ trace_workqueue_queue_work
         pointer to struct work_struct
 
 
+
 .. _`trace_workqueue_queue_work.description`:
 
 Description
@@ -31,6 +33,7 @@ Description
 This event occurs when a work is queued immediately or once a
 delayed work is actually queued on a workqueue (ie: once the delay
 has been reached).
+
 
 
 .. _`trace_workqueue_activate_work`:
@@ -46,6 +49,7 @@ trace_workqueue_activate_work
         pointer to struct work_struct
 
 
+
 .. _`trace_workqueue_activate_work.description`:
 
 Description
@@ -54,6 +58,7 @@ Description
 This event occurs when a queued work is put on the active queue,
 which happens immediately after queueing unless ``max_active`` limit
 is reached.
+
 
 
 .. _`trace_workqueue_execute_start`:
@@ -69,12 +74,14 @@ trace_workqueue_execute_start
         pointer to struct work_struct
 
 
+
 .. _`trace_workqueue_execute_start.description`:
 
 Description
 -----------
 
 Allows to track workqueue execution.
+
 
 
 .. _`trace_workqueue_execute_end`:
@@ -88,6 +95,7 @@ trace_workqueue_execute_end
 
     :param struct work_struct \*work:
         pointer to struct work_struct
+
 
 
 .. _`trace_workqueue_execute_end.description`:

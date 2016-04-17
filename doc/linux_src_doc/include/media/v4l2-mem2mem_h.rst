@@ -4,16 +4,18 @@
 v4l2-mem2mem.h
 ==============
 
+
 .. _`v4l2_m2m_ops`:
 
 struct v4l2_m2m_ops
 ===================
 
-.. c:type:: struct v4l2_m2m_ops
+.. c:type:: v4l2_m2m_ops
 
     mem-to-mem device driver callbacks
 
 
+.. _`v4l2_m2m_ops.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`v4l2_m2m_ops.members`:
 
 Members
 -------
@@ -68,6 +71,7 @@ Members
 
 
 
+
 .. _`v4l2_m2m_num_src_bufs_ready`:
 
 v4l2_m2m_num_src_bufs_ready
@@ -79,6 +83,7 @@ v4l2_m2m_num_src_bufs_ready
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         pointer to struct v4l2_m2m_ctx
+
 
 
 .. _`v4l2_m2m_num_dst_bufs_ready`:
@@ -94,6 +99,7 @@ v4l2_m2m_num_dst_bufs_ready
         pointer to struct v4l2_m2m_ctx
 
 
+
 .. _`v4l2_m2m_next_src_buf`:
 
 v4l2_m2m_next_src_buf
@@ -105,6 +111,7 @@ v4l2_m2m_next_src_buf
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         pointer to struct v4l2_m2m_ctx
+
 
 
 .. _`v4l2_m2m_next_dst_buf`:
@@ -120,6 +127,7 @@ v4l2_m2m_next_dst_buf
         pointer to struct v4l2_m2m_ctx
 
 
+
 .. _`v4l2_m2m_get_src_vq`:
 
 v4l2_m2m_get_src_vq
@@ -131,6 +139,7 @@ v4l2_m2m_get_src_vq
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         pointer to struct v4l2_m2m_ctx
+
 
 
 .. _`v4l2_m2m_get_dst_vq`:
@@ -146,6 +155,7 @@ v4l2_m2m_get_dst_vq
         pointer to struct v4l2_m2m_ctx
 
 
+
 .. _`v4l2_m2m_src_buf_remove`:
 
 v4l2_m2m_src_buf_remove
@@ -157,6 +167,7 @@ v4l2_m2m_src_buf_remove
 
     :param struct v4l2_m2m_ctx \*m2m_ctx:
         pointer to struct v4l2_m2m_ctx
+
 
 
 .. _`v4l2_m2m_dst_buf_remove`:

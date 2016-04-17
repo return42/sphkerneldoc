@@ -4,6 +4,7 @@
 recovery.c
 ==========
 
+
 .. _`jbd2_journal_recover`:
 
 jbd2_journal_recover
@@ -15,6 +16,7 @@ jbd2_journal_recover
 
     :param journal_t \*journal:
         the journal to recover
+
 
 
 .. _`jbd2_journal_recover.description`:
@@ -31,6 +33,7 @@ blocks.  In the third and final pass, we replay any un-revoked blocks
 in the log.
 
 
+
 .. _`jbd2_journal_skip_recovery`:
 
 jbd2_journal_skip_recovery
@@ -42,6 +45,7 @@ jbd2_journal_skip_recovery
 
     :param journal_t \*journal:
         journal to startup
+
 
 
 .. _`jbd2_journal_skip_recovery.description`:

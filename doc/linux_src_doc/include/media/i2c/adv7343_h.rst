@@ -1,0 +1,75 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+adv7343.h
+=========
+
+
+.. _`adv7343_sd_config`:
+
+struct adv7343_sd_config
+========================
+
+.. c:type:: adv7343_sd_config
+
+    SD Only Output Configuration.
+
+
+.. _`adv7343_sd_config.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct adv7343_sd_config {
+    u32 sd_dac_out[2];
+  };
+
+
+.. _`adv7343_sd_config.members`:
+
+Members
+-------
+
+:``sd_dac_out[2]``:
+    array configuring SD DAC Outputs 1 and 2
+
+
+
+
+.. _`adv7343_platform_data`:
+
+struct adv7343_platform_data
+============================
+
+.. c:type:: adv7343_platform_data
+
+    Platform data values and access functions.
+
+
+.. _`adv7343_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct adv7343_platform_data {
+    struct adv7343_power_mode mode_config;
+    struct adv7343_sd_config sd_config;
+  };
+
+
+.. _`adv7343_platform_data.members`:
+
+Members
+-------
+
+:``mode_config``:
+    Configuration for power mode.
+
+:``sd_config``:
+    SD Only Configuration.
+
+

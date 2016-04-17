@@ -4,16 +4,18 @@
 w1_family.h
 ===========
 
+
 .. _`w1_family_ops`:
 
 struct w1_family_ops
 ====================
 
-.. c:type:: struct w1_family_ops
+.. c:type:: w1_family_ops
 
     operations for a family type
 
 
+.. _`w1_family_ops.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`w1_family_ops.members`:
 
 Members
 -------
@@ -42,16 +45,18 @@ Members
 
 
 
+
 .. _`w1_family`:
 
 struct w1_family
 ================
 
-.. c:type:: struct w1_family
+.. c:type:: w1_family
 
     reference counted family structure.
 
 
+.. _`w1_family.definition`:
 
 Definition
 ----------
@@ -66,6 +71,7 @@ Definition
   };
 
 
+.. _`w1_family.members`:
 
 Members
 -------

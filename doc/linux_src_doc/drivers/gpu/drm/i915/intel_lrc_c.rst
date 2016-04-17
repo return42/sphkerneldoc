@@ -4,6 +4,7 @@
 intel_lrc.c
 ===========
 
+
 .. _`logical-rings--logical-ring-contexts-and-execlists`:
 
 Logical Rings, Logical Ring Contexts and Execlists
@@ -109,6 +110,7 @@ with the same context and optimizes the context switch flow by not doing
 preemption, but just sampling the new tail pointer).
 
 
+
 .. _`intel_sanitize_enable_execlists`:
 
 intel_sanitize_enable_execlists
@@ -125,6 +127,7 @@ intel_sanitize_enable_execlists
         value of i915.enable_execlists module parameter.
 
 
+
 .. _`intel_sanitize_enable_execlists.description`:
 
 Description
@@ -133,7 +136,15 @@ Description
 Only certain platforms support Execlists (the prerequisites being
 support for Logical Ring Contexts and Aliasing PPGTT or better).
 
-Return: 1 if Execlists is supported and has to be enabled.
+
+
+.. _`intel_sanitize_enable_execlists.return`:
+
+Return
+------
+
+1 if Execlists is supported and has to be enabled.
+
 
 
 .. _`intel_lr_context_descriptor_update`:
@@ -152,6 +163,7 @@ intel_lr_context_descriptor_update
         Engine the descriptor will be used with
 
 
+
 .. _`intel_lr_context_descriptor_update.description`:
 
 Description
@@ -164,10 +176,11 @@ which remains valid until the context is unpinned.
 
 This is what a descriptor looks like, from LSB to MSB::
 
-   bits 0-11:    flags, GEN8_CTX_\* (cached in ctx_desc_template)
+   bits 0-11:    flags, GEN8_CTX\_\* (cached in ctx_desc_template)
    bits 12-31:    LRCA, GTT address of (the HWSP of) this context
    bits 32-51:    ctx ID, a globally unique tag (the LRCA again!)
    bits 52-63:    reserved, may encode the engine ID (for GuC)
+
 
 
 .. _`intel_execlists_ctx_id`:
@@ -186,13 +199,22 @@ intel_execlists_ctx_id
         Engine to get the ID for
 
 
+
 .. _`intel_execlists_ctx_id.description`:
 
 Description
 -----------
 
 Do not confuse with ctx->id! Unfortunately we have a name overload
-here: the old context ID we pass to userspace as a handler so that
+
+
+
+.. _`intel_execlists_ctx_id.here`:
+
+here
+----
+
+the old context ID we pass to userspace as a handler so that
 they can refer to a context, and the new context ID we pass to the
 ELSP so that the GPU can inform us of the context status via
 interrupts.
@@ -200,7 +222,15 @@ interrupts.
 The context ID is a portion of the context descriptor, so we can
 just extract the required part from the cached descriptor.
 
-Return: 20-bits globally unique context ID.
+
+
+.. _`intel_execlists_ctx_id.return`:
+
+Return
+------
+
+20-bits globally unique context ID.
+
 
 
 .. _`intel_lrc_irq_handler`:
@@ -216,6 +246,7 @@ intel_lrc_irq_handler
         Engine Command Streamer to handle.
 
 
+
 .. _`intel_lrc_irq_handler.description`:
 
 Description
@@ -223,6 +254,7 @@ Description
 
 Check the unread Context Status Buffers and manage the submission of new
 contexts to the ELSP accordingly.
+
 
 
 .. _`intel_logical_ring_begin`:
@@ -241,6 +273,7 @@ intel_logical_ring_begin
         number of DWORDs that we plan to write to the ringbuffer.
 
 
+
 .. _`intel_logical_ring_begin.description`:
 
 Description
@@ -251,7 +284,15 @@ be wrapped, or wait a bit for the tail to be updated). This function takes care 
 and also preallocates a request (every workload submission is still mediated through
 requests, same as it did with legacy ringbuffer submission).
 
-Return: non-zero if the ringbuffer is not ready to be written to.
+
+
+.. _`intel_logical_ring_begin.return`:
+
+Return
+------
+
+non-zero if the ringbuffer is not ready to be written to.
+
 
 
 .. _`intel_execlists_submission`:
@@ -274,6 +315,7 @@ intel_execlists_submission
         list of vmas.
 
 
+
 .. _`intel_execlists_submission.description`:
 
 Description
@@ -282,7 +324,15 @@ Description
 This is the evil twin version of i915_gem_ringbuffer_submission. It abstracts
 away the submission details of the execbuffer ioctl call.
 
-Return: non-zero if the submission fails.
+
+
+.. _`intel_execlists_submission.return`:
+
+Return
+------
+
+non-zero if the submission fails.
+
 
 
 .. _`gen8_init_indirectctx_bb`:
@@ -299,9 +349,6 @@ gen8_init_indirectctx_bb
 
     :param struct i915_wa_ctx_bb \*wa_ctx:
         structure representing wa_ctx
-        offset: specifies start of the batch, should be cache-aligned. This is updated
-        with the offset value received as input.
-        size: size of the batch in DWORDS but HW expects in terms of cachelines
 
     :param uint32_t \*const batch:
         page in which WA are loaded
@@ -314,6 +361,26 @@ gen8_init_indirectctx_bb
         helps us to have multiple batches at different offsets and select them based
         on a criteria. At the moment this batch always start at the beginning of the page
         and at this point we don't have multiple wa_ctx batch buffers.
+
+
+
+.. _`gen8_init_indirectctx_bb.offset`:
+
+offset
+------
+
+specifies start of the batch, should be cache-aligned. This is updated
+with the offset value received as input.
+
+
+
+.. _`gen8_init_indirectctx_bb.size`:
+
+size
+----
+
+size of the batch in DWORDS but HW expects in terms of cachelines
+
 
 
 .. _`gen8_init_indirectctx_bb.description`:
@@ -329,7 +396,15 @@ so it adds NOOPs as padding to make it cacheline aligned.
 MI_BATCH_BUFFER_END will be added to perctx batch and both of them together
 makes a complete batch buffer.
 
-Return: non-zero if we exceed the PAGE_SIZE limit.
+
+
+.. _`gen8_init_indirectctx_bb.return`:
+
+Return
+------
+
+non-zero if we exceed the PAGE_SIZE limit.
+
 
 
 .. _`gen8_init_perctx_bb`:
@@ -346,17 +421,33 @@ gen8_init_perctx_bb
 
     :param struct i915_wa_ctx_bb \*wa_ctx:
         structure representing wa_ctx
-        offset: specifies start of the batch, should be cache-aligned.
-        size: size of the batch in DWORDS but HW expects in terms of cachelines
 
     :param uint32_t \*const batch:
         page in which WA are loaded
 
     :param uint32_t \*offset:
-        This field specifies the start of this batch.::
+        This field specifies the start of this batch.
+        This batch is started immediately after indirect_ctx batch. Since we ensure
+        that indirect_ctx ends on a cacheline this batch is aligned automatically.
 
-          This batch is started immediately after indirect_ctx batch. Since we ensure
-          that indirect_ctx ends on a cacheline this batch is aligned automatically.
+
+
+.. _`gen8_init_perctx_bb.offset`:
+
+offset
+------
+
+specifies start of the batch, should be cache-aligned.
+
+
+
+.. _`gen8_init_perctx_bb.size`:
+
+size
+----
+
+size of the batch in DWORDS but HW expects in terms of cachelines
+
 
 
 .. _`gen8_init_perctx_bb.description`:
@@ -368,6 +459,7 @@ The number of DWORDS written are returned using this field.::
 
  This batch is terminated with MI_BATCH_BUFFER_END and so we need not add padding
  to align it with cacheline as padding after MI_BATCH_BUFFER_END is redundant.
+
 
 
 .. _`intel_logical_ring_cleanup`:
@@ -383,6 +475,7 @@ intel_logical_ring_cleanup
         Engine Command Streamer.
 
 
+
 .. _`intel_logical_rings_init`:
 
 intel_logical_rings_init
@@ -396,6 +489,7 @@ intel_logical_rings_init
         DRM device.
 
 
+
 .. _`intel_logical_rings_init.description`:
 
 Description
@@ -405,7 +499,15 @@ This function inits the engines for an Execlists submission style (the equivalen
 legacy ringbuffer submission world would be i915_gem_init_rings). It does it only for
 those engines that are present in the hardware.
 
-Return: non-zero if the initialization failed.
+
+
+.. _`intel_logical_rings_init.return`:
+
+Return
+------
+
+non-zero if the initialization failed.
+
 
 
 .. _`intel_lr_context_free`:
@@ -421,14 +523,24 @@ intel_lr_context_free
         the LR context to free.
 
 
-.. _`intel_lr_context_free.description`:
 
-Description
------------
+.. _`intel_lr_context_free.the-real-context-freeing-is-done-in-i915_gem_context_free`:
 
-The real context freeing is done in i915_gem_context_free: this only
-takes care of the bits that are LRC related: the per-engine backing
+The real context freeing is done in i915_gem_context_free
+---------------------------------------------------------
+
+this only
+
+
+
+.. _`intel_lr_context_free.takes-care-of-the-bits-that-are-lrc-related`:
+
+takes care of the bits that are LRC related
+-------------------------------------------
+
+the per-engine backing
 objects and the logical ringbuffer.
+
 
 
 .. _`intel_lr_context_size`:
@@ -444,6 +556,7 @@ intel_lr_context_size
         which engine to find the context size for
 
 
+
 .. _`intel_lr_context_size.description`:
 
 Description
@@ -453,11 +566,26 @@ Each engine may require a different amount of space for a context image,
 so when allocating (or copying) an image, this function can be used to
 find the right size for the specific engine.
 
-Return: size (in bytes) of an engine-specific context image
 
-Note: this size includes the HWSP, which is part of the context image
+
+.. _`intel_lr_context_size.return`:
+
+Return
+------
+
+size (in bytes) of an engine-specific context image
+
+
+
+.. _`intel_lr_context_size.note`:
+
+Note
+----
+
+this size includes the HWSP, which is part of the context image
 in LRC mode, but does not include the "shared data page" used with
 GuC submission. The caller should account for this if using the GuC.
+
 
 
 .. _`intel_lr_context_deferred_alloc`:
@@ -476,6 +604,7 @@ intel_lr_context_deferred_alloc
         engine to be used with the context.
 
 
+
 .. _`intel_lr_context_deferred_alloc.description`:
 
 Description
@@ -484,8 +613,23 @@ Description
 This function can be called more than once, with different engines, if we plan
 to use the context with them. The context backing objects and the ringbuffers
 (specially the ringbuffer backing objects) suck a lot of memory up, and that's why
-the creation is a deferred call: it's better to make sure first that we need to use
+
+
+
+.. _`intel_lr_context_deferred_alloc.the-creation-is-a-deferred-call`:
+
+the creation is a deferred call
+-------------------------------
+
+it's better to make sure first that we need to use
 a given ring with the context.
 
-Return: non-zero on error.
+
+
+.. _`intel_lr_context_deferred_alloc.return`:
+
+Return
+------
+
+non-zero on error.
 

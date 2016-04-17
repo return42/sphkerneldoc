@@ -1,0 +1,33 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+rt5514.c
+========
+
+
+.. _`rt5514_calc_dmic_clk`:
+
+rt5514_calc_dmic_clk
+====================
+
+.. c:function:: int rt5514_calc_dmic_clk (struct snd_soc_codec *codec, int rate)
+
+    Calculate the frequency divider parameter of dmic.
+
+    :param struct snd_soc_codec \*codec:
+
+        *undescribed*
+
+    :param int rate:
+        base clock rate.
+
+
+
+.. _`rt5514_calc_dmic_clk.description`:
+
+Description
+-----------
+
+Choose divider parameter that gives the highest possible DMIC frequency in
+1MHz - 3MHz range.
+

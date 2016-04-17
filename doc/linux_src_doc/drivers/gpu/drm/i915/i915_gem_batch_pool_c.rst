@@ -4,6 +4,7 @@
 i915_gem_batch_pool.c
 =====================
 
+
 .. _`batch-pool`:
 
 batch pool
@@ -18,6 +19,7 @@ managing the address space bindings for such buffers.
 The batch pool framework provides a mechanism for the driver to manage a
 set of scratch buffers to use for this purpose. The framework can be
 extended to support other uses cases should they arise.
+
 
 
 .. _`i915_gem_batch_pool_init`:
@@ -36,6 +38,7 @@ i915_gem_batch_pool_init
         the batch buffer pool
 
 
+
 .. _`i915_gem_batch_pool_fini`:
 
 i915_gem_batch_pool_fini
@@ -49,12 +52,14 @@ i915_gem_batch_pool_fini
         the pool to clean up
 
 
-.. _`i915_gem_batch_pool_fini.description`:
 
-Description
------------
+.. _`i915_gem_batch_pool_fini.note`:
 
-Note: Callers must hold the struct_mutex.
+Note
+----
+
+Callers must hold the struct_mutex.
+
 
 
 .. _`i915_gem_batch_pool_get`:
@@ -73,6 +78,7 @@ i915_gem_batch_pool_get
         the minimum desired size of the returned buffer
 
 
+
 .. _`i915_gem_batch_pool_get.description`:
 
 Description
@@ -82,7 +88,21 @@ Returns an inactive buffer from ``pool`` with at least ``size`` bytes,
 with the pages pinned. The caller must :c:func:`i915_gem_object_unpin_pages`
 on the returned object.
 
-Note: Callers must hold the struct_mutex
 
-Return: the buffer object or an error pointer
+
+.. _`i915_gem_batch_pool_get.note`:
+
+Note
+----
+
+Callers must hold the struct_mutex
+
+
+
+.. _`i915_gem_batch_pool_get.return`:
+
+Return
+------
+
+the buffer object or an error pointer
 

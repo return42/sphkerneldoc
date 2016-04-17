@@ -7,4 +7,6 @@ cpu
 .. toctree::
    :maxdepth: 1
 
+   match_c
+   microcode/index
    mtrr/index

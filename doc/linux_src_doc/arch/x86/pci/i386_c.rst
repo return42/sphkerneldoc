@@ -1,0 +1,27 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+i386.c
+======
+
+
+.. _`fs_initcall`:
+
+fs_initcall
+===========
+
+.. c:function:: fs_initcall ( pcibios_assign_resources)
+
+    :param pcibios_assign_resources:
+
+        *undescribed*
+
+
+
+.. _`fs_initcall.description`:
+
+Description
+-----------
+
+give a chance for motherboard reserve resources
+

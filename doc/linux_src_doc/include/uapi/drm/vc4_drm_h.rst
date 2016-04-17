@@ -4,16 +4,18 @@
 vc4_drm.h
 =========
 
+
 .. _`drm_vc4_submit_cl`:
 
 struct drm_vc4_submit_cl
 ========================
 
-.. c:type:: struct drm_vc4_submit_cl
+.. c:type:: drm_vc4_submit_cl
 
     ioctl argument for submitting commands to the 3D engine.
 
 
+.. _`drm_vc4_submit_cl.definition`:
 
 Definition
 ----------
@@ -25,11 +27,15 @@ Definition
   };
 
 
+.. _`drm_vc4_submit_cl.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_submit_cl.description`:
 
 Description
 -----------
@@ -45,16 +51,18 @@ data to its own address space, and then validates and stores it in a GPU
 BO.
 
 
+
 .. _`drm_vc4_wait_seqno`:
 
 struct drm_vc4_wait_seqno
 =========================
 
-.. c:type:: struct drm_vc4_wait_seqno
+.. c:type:: drm_vc4_wait_seqno
 
     ioctl argument for waiting for DRM_VC4_SUBMIT_CL completion using its returned seqno.
 
 
+.. _`drm_vc4_wait_seqno.definition`:
 
 Definition
 ----------
@@ -65,11 +73,15 @@ Definition
   };
 
 
+.. _`drm_vc4_wait_seqno.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_wait_seqno.description`:
 
 Description
 -----------
@@ -79,16 +91,18 @@ timeout_ns is the timeout in nanoseconds, where "0" means "don't
 block, just return the status."
 
 
+
 .. _`drm_vc4_wait_bo`:
 
 struct drm_vc4_wait_bo
 ======================
 
-.. c:type:: struct drm_vc4_wait_bo
+.. c:type:: drm_vc4_wait_bo
 
     ioctl argument for waiting for completion of the last DRM_VC4_SUBMIT_CL on a BO.
 
 
+.. _`drm_vc4_wait_bo.definition`:
 
 Definition
 ----------
@@ -99,11 +113,15 @@ Definition
   };
 
 
+.. _`drm_vc4_wait_bo.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_wait_bo.description`:
 
 Description
 -----------
@@ -114,16 +132,18 @@ rendering to a BO and you want to wait for all rendering to be
 completed.
 
 
+
 .. _`drm_vc4_create_bo`:
 
 struct drm_vc4_create_bo
 ========================
 
-.. c:type:: struct drm_vc4_create_bo
+.. c:type:: drm_vc4_create_bo
 
     ioctl argument for creating VC4 BOs.
 
 
+.. _`drm_vc4_create_bo.definition`:
 
 Definition
 ----------
@@ -134,11 +154,15 @@ Definition
   };
 
 
+.. _`drm_vc4_create_bo.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_create_bo.description`:
 
 Description
 -----------
@@ -148,16 +172,18 @@ There are currently no values for the flags argument, but it may be
 used in a future extension.
 
 
+
 .. _`drm_vc4_mmap_bo`:
 
 struct drm_vc4_mmap_bo
 ======================
 
-.. c:type:: struct drm_vc4_mmap_bo
+.. c:type:: drm_vc4_mmap_bo
 
     ioctl argument for mapping VC4 BOs.
 
 
+.. _`drm_vc4_mmap_bo.definition`:
 
 Definition
 ----------
@@ -168,11 +194,15 @@ Definition
   };
 
 
+.. _`drm_vc4_mmap_bo.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_mmap_bo.description`:
 
 Description
 -----------
@@ -187,16 +217,18 @@ There are currently no values for the flags argument, but it may be
 used in a future extension.
 
 
+
 .. _`drm_vc4_create_shader_bo`:
 
 struct drm_vc4_create_shader_bo
 ===============================
 
-.. c:type:: struct drm_vc4_create_shader_bo
+.. c:type:: drm_vc4_create_shader_bo
 
     ioctl argument for creating VC4 shader BOs.
 
 
+.. _`drm_vc4_create_shader_bo.definition`:
 
 Definition
 ----------
@@ -207,11 +239,15 @@ Definition
   };
 
 
+.. _`drm_vc4_create_shader_bo.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vc4_create_shader_bo.description`:
 
 Description
 -----------
@@ -222,16 +258,18 @@ executed from would allow privlege escalation, shaders must be
 created using this ioctl, and they can't be mmapped later.
 
 
+
 .. _`drm_vc4_get_hang_state`:
 
 struct drm_vc4_get_hang_state
 =============================
 
-.. c:type:: struct drm_vc4_get_hang_state
+.. c:type:: drm_vc4_get_hang_state
 
     ioctl argument for collecting state from a GPU hang for analysis.
 
 
+.. _`drm_vc4_get_hang_state.definition`:
 
 Definition
 ----------
@@ -242,6 +280,7 @@ Definition
   };
 
 
+.. _`drm_vc4_get_hang_state.members`:
 
 Members
 -------

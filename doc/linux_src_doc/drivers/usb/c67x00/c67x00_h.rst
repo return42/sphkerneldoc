@@ -1,0 +1,132 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+c67x00.h
+========
+
+
+.. _`c67x00_sie`:
+
+struct c67x00_sie
+=================
+
+.. c:type:: c67x00_sie
+
+    Common data associated with a SIE
+
+
+.. _`c67x00_sie.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct c67x00_sie {
+    spinlock_t lock;
+    void * private_data;
+    void (* irq) (struct c67x00_sie *sie, u16 int_status, u16 msg);
+    struct c67x00_device * dev;
+    int sie_num;
+    int mode;
+  };
+
+
+.. _`c67x00_sie.members`:
+
+Members
+-------
+
+:``lock``:
+    lock to protect this struct and the associated chip registers
+
+:``private_data``:
+    subdriver dependent data
+
+:``irq``:
+    subdriver dependent irq handler, set NULL when not used
+
+:``dev``:
+    link to common driver structure
+
+:``sie_num``:
+    SIE number on chip, starting from 0
+
+:``mode``:
+    SIE mode (host/peripheral/otg/not used)
+
+
+
+
+.. _`c67x00_lcp`:
+
+struct c67x00_lcp
+=================
+
+.. c:type:: c67x00_lcp
+
+    
+
+
+.. _`c67x00_lcp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct c67x00_lcp {
+  };
+
+
+.. _`c67x00_lcp.members`:
+
+Members
+-------
+
+
+
+
+.. _`c67x00_device`:
+
+struct c67x00_device
+====================
+
+.. c:type:: c67x00_device
+
+    Common data associated with a c67x00 instance
+
+
+.. _`c67x00_device.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct c67x00_device {
+    struct c67x00_hpi hpi;
+    struct c67x00_sie sie[C67X00_SIES];
+    struct platform_device * pdev;
+    struct c67x00_platform_data * pdata;
+  };
+
+
+.. _`c67x00_device.members`:
+
+Members
+-------
+
+:``hpi``:
+    hpi addresses
+
+:``sie[C67X00_SIES]``:
+    array of sie's on this chip
+
+:``pdev``:
+    platform device of instance
+
+:``pdata``:
+    configuration provided by the platform
+
+

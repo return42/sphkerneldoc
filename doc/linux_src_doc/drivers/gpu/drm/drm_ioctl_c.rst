@@ -4,6 +4,7 @@
 drm_ioctl.c
 ===========
 
+
 .. _`drm_noop`:
 
 drm_noop
@@ -23,6 +24,7 @@ drm_noop
         DRM file for the ioctl call
 
 
+
 .. _`drm_noop.description`:
 
 Description
@@ -33,6 +35,7 @@ functionality where we can't return a failure code because existing userspace
 checks the result of the ioctl, but doesn't care about the action.
 
 Always returns successfully with 0.
+
 
 
 .. _`drm_invalid_op`:
@@ -54,6 +57,7 @@ drm_invalid_op
         DRM file for the ioctl call
 
 
+
 .. _`drm_invalid_op.description`:
 
 Description
@@ -67,6 +71,7 @@ only applies to radeon and i915 kms drivers, other drivers shouldn't need to
 use this function.
 
 Always fails with a return value of -EINVAL.
+
 
 
 .. _`drm_ioctl`:
@@ -88,16 +93,24 @@ drm_ioctl
         user argument
 
 
-.. _`drm_ioctl.description`:
 
-Description
------------
+.. _`drm_ioctl.looks-up-the-ioctl-function-in-the`:
 
-Looks up the ioctl function in the ::ioctls table, checking for root
+Looks up the ioctl function in the 
+-----------------------------------
+
+:ioctls table, checking for root
 previleges if so required, and dispatches to the respective function.
 
-Returns:
+
+
+.. _`drm_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative error code on failure.
+
 
 
 .. _`drm_ioctl_flags`:
@@ -116,6 +129,7 @@ drm_ioctl_flags
         where to return the ioctl permission flags
 
 
+
 .. _`drm_ioctl_flags.description`:
 
 Description
@@ -125,6 +139,12 @@ This ioctl is only used by the vmwgfx driver to augment the access checks
 done by the drm core and insofar a pretty decent layering violation. This
 shouldn't be used by any drivers.
 
-Returns:
+
+
+.. _`drm_ioctl_flags.returns`:
+
+Returns
+-------
+
 True if the ``nr`` corresponds to a DRM core ioctl numer, false otherwise.
 

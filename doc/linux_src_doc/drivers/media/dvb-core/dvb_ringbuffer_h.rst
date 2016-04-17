@@ -4,6 +4,7 @@
 dvb_ringbuffer.h
 ================
 
+
 .. _`dvb_ringbuffer_pkt_write`:
 
 dvb_ringbuffer_pkt_write
@@ -24,6 +25,7 @@ dvb_ringbuffer_pkt_write
         returns Number of bytes written, or -EFAULT, -ENOMEM, -EVINAL.
 
 
+
 .. _`dvb_ringbuffer_pkt_read_user`:
 
 dvb_ringbuffer_pkt_read_user
@@ -31,7 +33,7 @@ dvb_ringbuffer_pkt_read_user
 
 .. c:function:: ssize_t dvb_ringbuffer_pkt_read_user (struct dvb_ringbuffer *rbuf, size_t idx, int offset, u8 __user *buf, size_t len)
 
-    Read from a packet in the ringbuffer. Note: unlike dvb_ringbuffer_read(), this does NOT update the read pointer in the ringbuffer. You must use dvb_ringbuffer_pkt_dispose() to mark a packet as no longer required.
+    Read from a packet in the ringbuffer.
 
     :param struct dvb_ringbuffer \*rbuf:
         Ringbuffer concerned.
@@ -49,12 +51,25 @@ dvb_ringbuffer_pkt_read_user
         Size of destination buffer.
 
 
+
+.. _`dvb_ringbuffer_pkt_read_user.note`:
+
+Note
+----
+
+unlike :c:func:`dvb_ringbuffer_read`, this does NOT update the read pointer
+in the ringbuffer. You must use :c:func:`dvb_ringbuffer_pkt_dispose` to mark a
+packet as no longer required.
+
+
+
 .. _`dvb_ringbuffer_pkt_read_user.description`:
 
 Description
 -----------
 
 returns Number of bytes read, or -EFAULT.
+
 
 
 .. _`dvb_ringbuffer_pkt_read`:
@@ -64,7 +79,7 @@ dvb_ringbuffer_pkt_read
 
 .. c:function:: ssize_t dvb_ringbuffer_pkt_read (struct dvb_ringbuffer *rbuf, size_t idx, int offset, u8 *buf, size_t len)
 
-    Read from a packet in the ringbuffer. Note: unlike dvb_ringbuffer_read_user(), this DOES update the read pointer in the ringbuffer.
+    Read from a packet in the ringbuffer.
 
     :param struct dvb_ringbuffer \*rbuf:
         Ringbuffer concerned.
@@ -82,12 +97,24 @@ dvb_ringbuffer_pkt_read
         Size of destination buffer.
 
 
+
+.. _`dvb_ringbuffer_pkt_read.note`:
+
+Note
+----
+
+unlike :c:func:`dvb_ringbuffer_read_user`, this DOES update the read pointer
+in the ringbuffer.
+
+
+
 .. _`dvb_ringbuffer_pkt_read.description`:
 
 Description
 -----------
 
 returns Number of bytes read, or -EFAULT.
+
 
 
 .. _`dvb_ringbuffer_pkt_dispose`:
@@ -104,6 +131,7 @@ dvb_ringbuffer_pkt_dispose
 
     :param size_t idx:
         Packet index as returned by :c:func:`dvb_ringbuffer_pkt_next`.
+
 
 
 .. _`dvb_ringbuffer_pkt_next`:

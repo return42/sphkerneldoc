@@ -1,0 +1,87 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+cb710.h
+=======
+
+
+.. _`cb710_sg_dwiter_write_from_io`:
+
+cb710_sg_dwiter_write_from_io
+=============================
+
+.. c:function:: void cb710_sg_dwiter_write_from_io (struct sg_mapping_iter *miter, void __iomem *port, size_t count)
+
+    transfer data to mapped buffer from 32-bit IO port
+
+    :param struct sg_mapping_iter \*miter:
+        sg mapping iter
+
+    :param void __iomem \*port:
+        PIO port - IO or MMIO address
+
+    :param size_t count:
+        number of 32-bit words to transfer
+
+
+
+.. _`cb710_sg_dwiter_write_from_io.description`:
+
+Description
+-----------
+
+Reads ``count`` 32-bit words from register ``port`` and stores it in
+buffer iterated by ``miter``\ .  Data that would overflow the buffer
+is silently ignored.  Iterator is advanced by 4\\*\ ``count`` bytes
+or to the buffer's end whichever is closer.
+
+
+
+.. _`cb710_sg_dwiter_write_from_io.context`:
+
+Context
+-------
+
+IRQ disabled if the SG_MITER_ATOMIC is set.  Don't care otherwise.
+
+
+
+.. _`cb710_sg_dwiter_read_to_io`:
+
+cb710_sg_dwiter_read_to_io
+==========================
+
+.. c:function:: void cb710_sg_dwiter_read_to_io (struct sg_mapping_iter *miter, void __iomem *port, size_t count)
+
+    transfer data to 32-bit IO port from mapped buffer
+
+    :param struct sg_mapping_iter \*miter:
+        sg mapping iter
+
+    :param void __iomem \*port:
+        PIO port - IO or MMIO address
+
+    :param size_t count:
+        number of 32-bit words to transfer
+
+
+
+.. _`cb710_sg_dwiter_read_to_io.description`:
+
+Description
+-----------
+
+Writes ``count`` 32-bit words to register ``port`` from buffer iterated
+through ``miter``\ .  If buffer ends before ``count`` words are written
+missing data is replaced by zeroes. ``miter`` is advanced by 4\\*\ ``count``
+bytes or to the buffer's end whichever is closer.
+
+
+
+.. _`cb710_sg_dwiter_read_to_io.context`:
+
+Context
+-------
+
+IRQ disabled if the SG_MITER_ATOMIC is set.  Don't care otherwise.
+

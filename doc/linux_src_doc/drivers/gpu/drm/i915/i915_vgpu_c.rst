@@ -4,6 +4,7 @@
 i915_vgpu.c
 ===========
 
+
 .. _`intel-gvt-g-guest-support`:
 
 Intel GVT-g guest support
@@ -32,6 +33,7 @@ emulation module only needs to scan and validate graphics addresses without
 complexity of address translation.
 
 
+
 .. _`i915_check_vgpu`:
 
 i915_check_vgpu
@@ -45,6 +47,7 @@ i915_check_vgpu
         drm device *
 
 
+
 .. _`i915_check_vgpu.description`:
 
 Description
@@ -52,6 +55,7 @@ Description
 
 This function is called at the initialization stage, to detect whether
 running on a vGPU.
+
 
 
 .. _`intel_vgt_deballoon`:
@@ -67,6 +71,7 @@ intel_vgt_deballoon
         no arguments
 
 
+
 .. _`intel_vgt_deballoon.description`:
 
 Description
@@ -75,6 +80,7 @@ Description
 
 This function is called to deallocate the ballooned-out graphic memory, when
 driver is unloaded or when ballooning fails.
+
 
 
 .. _`intel_vgt_balloon`:
@@ -88,6 +94,7 @@ intel_vgt_balloon
 
     :param struct drm_device \*dev:
         drm device
+
 
 
 .. _`intel_vgt_balloon.description`:
@@ -133,6 +140,12 @@ vGPUs in different VMs.::
 
 total GM size ------> +-----------+     +-----------+
 
-Returns:
+
+
+.. _`intel_vgt_balloon.returns`:
+
+Returns
+-------
+
 zero on success, non-zero if configuration invalid or ballooning failed
 

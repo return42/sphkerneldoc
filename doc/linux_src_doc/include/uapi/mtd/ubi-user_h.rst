@@ -4,16 +4,18 @@
 ubi-user.h
 ==========
 
+
 .. _`ubi_attach_req`:
 
 struct ubi_attach_req
 =====================
 
-.. c:type:: struct ubi_attach_req
+.. c:type:: ubi_attach_req
 
     attach MTD device request.
 
 
+.. _`ubi_attach_req.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`ubi_attach_req.members`:
 
 Members
 -------
@@ -49,6 +52,9 @@ Members
     reserved for future, not used, has to be zeroed
 
 
+
+
+.. _`ubi_attach_req.description`:
 
 Description
 -----------
@@ -78,10 +84,15 @@ sub-page of the first page and add needed padding.
 The ``max_beb_per1024`` is the maximum amount of bad PEBs UBI expects on the
 UBI device per 1024 eraseblocks.  This value is often given in an other form
 in the NAND datasheet (min NVB i.e. minimal number of valid blocks). The
-maximum expected bad eraseblocks per 1024 is then::
 
-   1024 * (1 - MinNVB / MaxNVB)
 
+
+.. _`ubi_attach_req.maximum-expected-bad-eraseblocks-per-1024-is-then`:
+
+maximum expected bad eraseblocks per 1024 is then
+-------------------------------------------------
+
+1024 * (1 - MinNVB / MaxNVB)
 Which gives 20 for most NAND devices.  This limit is used in order to derive
 amount of eraseblock UBI reserves for handling new bad blocks. If the device
 has more bad eraseblocks than this limit, UBI does not reserve any physical
@@ -90,16 +101,18 @@ eraseblocks (if any). The accepted range is 0-768. If 0 is given, the
 default kernel value of ``CONFIG_MTD_UBI_BEB_LIMIT`` will be used.
 
 
+
 .. _`ubi_mkvol_req`:
 
 struct ubi_mkvol_req
 ====================
 
-.. c:type:: struct ubi_mkvol_req
+.. c:type:: ubi_mkvol_req
 
     volume description data structure used in volume creation requests.
 
 
+.. _`ubi_mkvol_req.definition`:
 
 Definition
 ----------
@@ -118,6 +131,7 @@ Definition
   };
 
 
+.. _`ubi_mkvol_req.members`:
 
 Members
 -------
@@ -148,6 +162,9 @@ Members
 
 
 
+
+.. _`ubi_mkvol_req.description`:
+
 Description
 -----------
 
@@ -171,16 +188,18 @@ alignment it is possible to update this volume using plane UBI volume image
 BLOBs, without caring about how to properly align them.
 
 
+
 .. _`ubi_rsvol_req`:
 
 struct ubi_rsvol_req
 ====================
 
-.. c:type:: struct ubi_rsvol_req
+.. c:type:: ubi_rsvol_req
 
     a data structure used in volume re-size requests.
 
 
+.. _`ubi_rsvol_req.definition`:
 
 Definition
 ----------
@@ -193,6 +212,7 @@ Definition
   };
 
 
+.. _`ubi_rsvol_req.members`:
 
 Members
 -------
@@ -205,6 +225,9 @@ Members
 
 
 
+
+.. _`ubi_rsvol_req.description`:
+
 Description
 -----------
 
@@ -215,16 +238,18 @@ volume, it must be wiped out first (by means of volume update operation with
 zero number of bytes).
 
 
+
 .. _`ubi_rnvol_req`:
 
 struct ubi_rnvol_req
 ====================
 
-.. c:type:: struct ubi_rnvol_req
+.. c:type:: ubi_rnvol_req
 
     volumes re-name request.
 
 
+.. _`ubi_rnvol_req.definition`:
 
 Definition
 ----------
@@ -237,6 +262,7 @@ Definition
   };
 
 
+.. _`ubi_rnvol_req.members`:
 
 Members
 -------
@@ -248,6 +274,9 @@ Members
     reserved for future, not used, has to be zeroed
 
 
+
+
+.. _`ubi_rnvol_req.description`:
 
 Description
 -----------
@@ -264,10 +293,25 @@ then atomically re-name A1->A and B1->B, in which case old ``A`` and ``B`` will
 be removed.
 
 If it is not desirable to remove old A and B, the re-name request has to
-contain 4 entries: A1->A, A->A1, B1->B, B->B1, in which case old A1 and B1
+
+
+
+.. _`ubi_rnvol_req.contain-4-entries`:
+
+contain 4 entries
+-----------------
+
+A1->A, A->A1, B1->B, B->B1, in which case old A1 and B1
 become A and B, and old A and B will become A1 and B1.
 
-It is also OK to request: A1->A, A1->X, B1->B, B->Y, in which case old A1
+
+
+.. _`ubi_rnvol_req.it-is-also-ok-to-request`:
+
+It is also OK to request
+------------------------
+
+A1->A, A1->X, B1->B, B->Y, in which case old A1
 and B1 become A and B, and old A and B become X and Y.
 
 In other words, in case of re-naming into an existing volume name, the
@@ -275,16 +319,18 @@ existing volume is removed, unless it is re-named as well at the same
 re-name request.
 
 
+
 .. _`ubi_leb_change_req`:
 
 struct ubi_leb_change_req
 =========================
 
-.. c:type:: struct ubi_leb_change_req
+.. c:type:: ubi_leb_change_req
 
     a data structure used in atomic LEB change requests.
 
 
+.. _`ubi_leb_change_req.definition`:
 
 Definition
 ----------
@@ -299,6 +345,7 @@ Definition
   };
 
 
+.. _`ubi_leb_change_req.members`:
 
 Members
 -------
@@ -317,11 +364,22 @@ Members
 
 
 
+
+.. _`ubi_leb_change_req.description`:
+
 Description
 -----------
 
 The ``dtype`` field used to inform UBI about what kind of data will be written
-to the LEB: long term (value 1), short term (value 2), unknown (value 3).
+
+
+
+.. _`ubi_leb_change_req.to-the-leb`:
+
+to the LEB
+----------
+
+long term (value 1), short term (value 2), unknown (value 3).
 UBI tried to pick a PEB with lower erase counter for short term data and a
 PEB with higher erase counter for long term data. But this was not really
 used because users usually do not know this and could easily mislead UBI. We
@@ -330,16 +388,18 @@ field. But for better compatibility with older kernels it is recommended to
 set ``dtype`` to 3 (unknown).
 
 
+
 .. _`ubi_map_req`:
 
 struct ubi_map_req
 ==================
 
-.. c:type:: struct ubi_map_req
+.. c:type:: ubi_map_req
 
     a data structure used in map LEB requests.
 
 
+.. _`ubi_map_req.definition`:
 
 Definition
 ----------
@@ -353,6 +413,7 @@ Definition
   };
 
 
+.. _`ubi_map_req.members`:
 
 Members
 -------
@@ -368,16 +429,18 @@ Members
 
 
 
+
 .. _`ubi_set_vol_prop_req`:
 
 struct ubi_set_vol_prop_req
 ===========================
 
-.. c:type:: struct ubi_set_vol_prop_req
+.. c:type:: ubi_set_vol_prop_req
 
     a data structure used to set an UBI volume property.
 
 
+.. _`ubi_set_vol_prop_req.definition`:
 
 Definition
 ----------
@@ -391,6 +454,7 @@ Definition
   };
 
 
+.. _`ubi_set_vol_prop_req.members`:
 
 Members
 -------
@@ -406,16 +470,18 @@ Members
 
 
 
+
 .. _`ubi_blkcreate_req`:
 
 struct ubi_blkcreate_req
 ========================
 
-.. c:type:: struct ubi_blkcreate_req
+.. c:type:: ubi_blkcreate_req
 
     a data structure used in block creation requests.
 
 
+.. _`ubi_blkcreate_req.definition`:
 
 Definition
 ----------
@@ -427,6 +493,7 @@ Definition
   };
 
 
+.. _`ubi_blkcreate_req.members`:
 
 Members
 -------

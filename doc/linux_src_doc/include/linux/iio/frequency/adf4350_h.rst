@@ -1,0 +1,82 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+adf4350.h
+=========
+
+
+.. _`adf4350_platform_data`:
+
+struct adf4350_platform_data
+============================
+
+.. c:type:: adf4350_platform_data
+
+    platform specific information
+
+
+.. _`adf4350_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct adf4350_platform_data {
+    char name[32];
+    unsigned long clkin;
+    unsigned long channel_spacing;
+    unsigned long long power_up_frequency;
+    unsigned short ref_div_factor;
+    bool ref_doubler_en;
+    bool ref_div2_en;
+    unsigned r2_user_settings;
+    unsigned r3_user_settings;
+    unsigned r4_user_settings;
+    int gpio_lock_detect;
+  };
+
+
+.. _`adf4350_platform_data.members`:
+
+Members
+-------
+
+:``name[32]``:
+    Optional device name.
+
+:``clkin``:
+    REFin frequency in Hz.
+
+:``channel_spacing``:
+    Channel spacing in Hz (influences MODULUS).
+
+:``power_up_frequency``:
+    Optional, If set in Hz the PLL tunes to the desired
+    frequency on probe.
+
+:``ref_div_factor``:
+    Optional, if set the driver skips dynamic calculation
+    and uses this default value instead.
+
+:``ref_doubler_en``:
+    Enables reference doubler.
+
+:``ref_div2_en``:
+    Enables reference divider.
+
+:``r2_user_settings``:
+    User defined settings for ADF4350/1 REGISTER_2.
+
+:``r3_user_settings``:
+    User defined settings for ADF4350/1 REGISTER_3.
+
+:``r4_user_settings``:
+    User defined settings for ADF4350/1 REGISTER_4.
+
+:``gpio_lock_detect``:
+    Optional, if set with a valid GPIO number,
+    pll lock state is tested upon read.
+    If not used - set to -1.
+
+

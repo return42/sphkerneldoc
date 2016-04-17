@@ -1,0 +1,38 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+lp8755.h
+========
+
+
+.. _`lp8755_platform_data`:
+
+struct lp8755_platform_data
+===========================
+
+.. c:type:: lp8755_platform_data
+
+    
+
+
+.. _`lp8755_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lp8755_platform_data {
+    struct regulator_init_data * buck_data[LP8755_BUCK_MAX];
+  };
+
+
+.. _`lp8755_platform_data.members`:
+
+Members
+-------
+
+:``buck_data[LP8755_BUCK_MAX]``:
+    buck0~6 init voltage in uV
+
+

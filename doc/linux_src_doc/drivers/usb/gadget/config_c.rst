@@ -4,6 +4,7 @@
 config.c
 ========
 
+
 .. _`usb_descriptor_fillbuf`:
 
 usb_descriptor_fillbuf
@@ -23,6 +24,7 @@ usb_descriptor_fillbuf
         Array of descriptor pointers, terminated by null pointer.
 
 
+
 .. _`usb_descriptor_fillbuf.description`:
 
 Description
@@ -33,6 +35,7 @@ negative error code if they can't all be copied.  Useful when
 assembling descriptors for an associated set of interfaces used
 as part of configuring a composite device; or in other cases where
 sets of descriptors need to be marshaled.
+
 
 
 .. _`usb_gadget_config_buf`:
@@ -60,6 +63,7 @@ usb_gadget_config_buf
         endpoint, etc) defining all functions in this device configuration.
 
 
+
 .. _`usb_gadget_config_buf.description`:
 
 Description
@@ -76,6 +80,7 @@ in response to USB_REQ_GET_DESCRIPTOR.  They will need to patch the
 resulting bDescriptorType value if USB_DT_OTHER_SPEED_CONFIG is needed.
 
 
+
 .. _`usb_copy_descriptors`:
 
 usb_copy_descriptors
@@ -87,7 +92,16 @@ usb_copy_descriptors
 
     :param struct usb_descriptor_header \*\*src:
         null-terminated vector to copy
-        Context: initialization code, which may sleep
+
+
+
+.. _`usb_copy_descriptors.context`:
+
+Context
+-------
+
+initialization code, which may sleep
+
 
 
 .. _`usb_copy_descriptors.description`:

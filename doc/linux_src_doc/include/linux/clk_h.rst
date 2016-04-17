@@ -4,6 +4,7 @@
 clk.h
 =====
 
+
 .. _`clk-notifier-callback-types`:
 
 clk notifier callback types
@@ -24,16 +25,18 @@ POST_RATE_CHANGE - called after the clk rate change has successfully
 completed.  Callbacks must always return NOTIFY_DONE or NOTIFY_OK.
 
 
+
 .. _`clk_notifier`:
 
 struct clk_notifier
 ===================
 
-.. c:type:: struct clk_notifier
+.. c:type:: clk_notifier
 
     associate a clk with a notifier
 
 
+.. _`clk_notifier.definition`:
 
 Definition
 ----------
@@ -47,6 +50,7 @@ Definition
   };
 
 
+.. _`clk_notifier.members`:
 
 Members
 -------
@@ -62,6 +66,9 @@ Members
 
 
 
+
+.. _`clk_notifier.description`:
+
 Description
 -----------
 
@@ -71,16 +78,18 @@ particular ``clk``\ .  Future notifiers on that ``clk`` are added to the
 ``notifier_head``\ .
 
 
+
 .. _`clk_notifier_data`:
 
 struct clk_notifier_data
 ========================
 
-.. c:type:: struct clk_notifier_data
+.. c:type:: clk_notifier_data
 
     rate data to pass to the notifier callback
 
 
+.. _`clk_notifier_data.definition`:
 
 Definition
 ----------
@@ -94,6 +103,7 @@ Definition
   };
 
 
+.. _`clk_notifier_data.members`:
 
 Members
 -------
@@ -109,6 +119,9 @@ Members
 
 
 
+
+.. _`clk_notifier_data.description`:
+
 Description
 -----------
 
@@ -116,6 +129,7 @@ For a pre-notifier, old_rate is the clk's rate before this rate
 change, and new_rate is what the rate will be in the future.  For a
 post-notifier, old_rate and new_rate are both set to the clk's
 current rate (this was done to optimize the implementation).
+
 
 
 .. _`clk_notifier_register`:
@@ -134,14 +148,16 @@ clk_notifier_register
         notifier block with callback function pointer
 
 
-.. _`clk_notifier_register.description`:
 
-Description
------------
+.. _`clk_notifier_register.protip`:
 
-ProTip: debugging across notifier chains can be frustrating. Make sure that
+ProTip
+------
+
+debugging across notifier chains can be frustrating. Make sure that
 your notifier callback function prints a nice big warning in case of
 failure.
+
 
 
 .. _`clk_notifier_unregister`:
@@ -160,6 +176,7 @@ clk_notifier_unregister
         notifier block which will be unregistered
 
 
+
 .. _`clk_get_accuracy`:
 
 clk_get_accuracy
@@ -173,6 +190,7 @@ clk_get_accuracy
         clock source
 
 
+
 .. _`clk_get_accuracy.description`:
 
 Description
@@ -180,6 +198,7 @@ Description
 
 This gets the clock source accuracy expressed in ppb.
 A perfect clock returns 0.
+
 
 
 .. _`clk_set_phase`:
@@ -198,6 +217,7 @@ clk_set_phase
         number of degrees the signal is shifted
 
 
+
 .. _`clk_set_phase.description`:
 
 Description
@@ -205,6 +225,7 @@ Description
 
 Shifts the phase of a clock signal by the specified degrees. Returns 0 on
 success, -EERROR otherwise.
+
 
 
 .. _`clk_get_phase`:
@@ -220,6 +241,7 @@ clk_get_phase
         clock signal source
 
 
+
 .. _`clk_get_phase.description`:
 
 Description
@@ -227,6 +249,7 @@ Description
 
 Returns the phase shift of a clock node in degrees, otherwise returns
 -EERROR.
+
 
 
 .. _`clk_is_match`:
@@ -245,6 +268,7 @@ clk_is_match
         clk compared against p
 
 
+
 .. _`clk_is_match.description`:
 
 Description
@@ -255,6 +279,7 @@ clock node. Put differently, returns true if struct clk \*p and struct clk \*q
 share the same struct clk_core object.
 
 Returns false otherwise. Note that two NULL clks are treated as matching.
+
 
 
 .. _`clk_prepare`:
@@ -270,6 +295,7 @@ clk_prepare
         clock source
 
 
+
 .. _`clk_prepare.description`:
 
 Description
@@ -278,6 +304,7 @@ Description
 This prepares the clock source for use.
 
 Must not be called from within atomic context.
+
 
 
 .. _`clk_unprepare`:
@@ -293,6 +320,7 @@ clk_unprepare
         clock source
 
 
+
 .. _`clk_unprepare.description`:
 
 Description
@@ -302,6 +330,7 @@ This undoes a previously prepared clock.  The caller must balance
 the number of prepare and unprepare calls.
 
 Must not be called from within atomic context.
+
 
 
 .. _`clk_get`:
@@ -320,6 +349,7 @@ clk_get
         clock consumer ID
 
 
+
 .. _`clk_get.description`:
 
 Description
@@ -336,6 +366,7 @@ Drivers must assume that the clock source is not enabled.
 clk_get should not be called from within interrupt context.
 
 
+
 .. _`devm_clk_get`:
 
 devm_clk_get
@@ -350,6 +381,7 @@ devm_clk_get
 
     :param const char \*id:
         clock consumer ID
+
 
 
 .. _`devm_clk_get.description`:
@@ -371,6 +403,7 @@ The clock will automatically be freed when the device is unbound
 from the bus.
 
 
+
 .. _`clk_enable`:
 
 clk_enable
@@ -384,6 +417,7 @@ clk_enable
         clock source
 
 
+
 .. _`clk_enable.description`:
 
 Description
@@ -394,6 +428,7 @@ If the clock can not be enabled/disabled, this should return success.
 May be called from atomic contexts.
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_disable`:
@@ -409,6 +444,7 @@ clk_disable
         clock source
 
 
+
 .. _`clk_disable.description`:
 
 Description
@@ -419,10 +455,18 @@ a driver and may be shut down.
 
 May be called from atomic contexts.
 
-Implementation detail: if the clock source is shared between
+
+
+.. _`clk_disable.implementation-detail`:
+
+Implementation detail
+---------------------
+
+if the clock source is shared between
 multiple drivers, :c:func:`clk_enable` calls must be balanced by the
 same number of :c:func:`clk_disable` calls for the clock source to be
 disabled.
+
 
 
 .. _`clk_get_rate`:
@@ -438,6 +482,7 @@ clk_get_rate
         clock source
 
 
+
 .. _`clk_put`:
 
 clk_put
@@ -451,16 +496,18 @@ clk_put
         clock source
 
 
-.. _`clk_put.description`:
 
-Description
------------
+.. _`clk_put.note`:
 
-Note: drivers must ensure that all clk_enable calls made on this
+Note
+----
+
+drivers must ensure that all clk_enable calls made on this
 clock source are balanced by clk_disable calls prior to calling
 this function.
 
 clk_put should not be called from within interrupt context.
+
 
 
 .. _`devm_clk_put`:
@@ -479,16 +526,18 @@ devm_clk_put
         clock source acquired with :c:func:`devm_clk_get`
 
 
-.. _`devm_clk_put.description`:
 
-Description
------------
+.. _`devm_clk_put.note`:
 
-Note: drivers must ensure that all clk_enable calls made on this
+Note
+----
+
+drivers must ensure that all clk_enable calls made on this
 clock source are balanced by clk_disable calls prior to calling
 this function.
 
 clk_put should not be called from within interrupt context.
+
 
 
 .. _`clk_round_rate`:
@@ -507,6 +556,7 @@ clk_round_rate
         desired clock rate in Hz
 
 
+
 .. _`clk_round_rate.description`:
 
 Description
@@ -518,15 +568,22 @@ in any way.  In other words::
 
   rate = clk_round_rate(clk, r);
 
-and::
 
-  clk_set_rate(clk, r);
-  rate = clk_get_rate(clk);
+
+.. _`clk_round_rate.and`:
+
+and
+---
+
+
+clk_set_rate(clk, r);
+rate = clk_get_rate(clk);
 
 are equivalent except the former does not modify the clock hardware
 in any way.
 
 Returns rounded clock rate in Hz, or negative errno.
+
 
 
 .. _`clk_set_rate`:
@@ -545,12 +602,14 @@ clk_set_rate
         desired clock rate in Hz
 
 
+
 .. _`clk_set_rate.description`:
 
 Description
 -----------
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_has_parent`:
@@ -569,6 +628,7 @@ clk_has_parent
         parent clock source
 
 
+
 .. _`clk_has_parent.description`:
 
 Description
@@ -578,6 +638,7 @@ This function can be used in drivers that need to check that a clock can be
 the parent of another without actually changing the parent.
 
 Returns true if ``parent`` is a possible parent for ``clk``\ , false otherwise.
+
 
 
 .. _`clk_set_rate_range`:
@@ -599,12 +660,14 @@ clk_set_rate_range
         desired maximum clock rate in Hz, inclusive
 
 
+
 .. _`clk_set_rate_range.description`:
 
 Description
 -----------
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_set_min_rate`:
@@ -623,12 +686,14 @@ clk_set_min_rate
         desired minimum clock rate in Hz, inclusive
 
 
+
 .. _`clk_set_min_rate.description`:
 
 Description
 -----------
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_set_max_rate`:
@@ -647,12 +712,14 @@ clk_set_max_rate
         desired maximum clock rate in Hz, inclusive
 
 
+
 .. _`clk_set_max_rate.description`:
 
 Description
 -----------
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_set_parent`:
@@ -671,12 +738,14 @@ clk_set_parent
         parent clock source
 
 
+
 .. _`clk_set_parent.description`:
 
 Description
 -----------
 
 Returns success (0) or negative errno.
+
 
 
 .. _`clk_get_parent`:
@@ -692,6 +761,7 @@ clk_get_parent
         clock source
 
 
+
 .. _`clk_get_parent.description`:
 
 Description
@@ -699,6 +769,7 @@ Description
 
 Returns struct clk corresponding to parent clock source, or
 valid :c:func:`IS_ERR` condition containing errno.
+
 
 
 .. _`clk_get_sys`:
@@ -715,6 +786,7 @@ clk_get_sys
 
     :param const char \*con_id:
         connection ID
+
 
 
 .. _`clk_get_sys.description`:

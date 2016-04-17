@@ -4,6 +4,7 @@
 netdevice.h
 ===========
 
+
 .. _`napi_schedule_prep`:
 
 napi_schedule_prep
@@ -17,6 +18,7 @@ napi_schedule_prep
         NAPI context
 
 
+
 .. _`napi_schedule_prep.description`:
 
 Description
@@ -26,6 +28,7 @@ Test if NAPI routine is already running, and if not mark
 it as running.  This is used as a condition variable to
 insure only one NAPI poll instance runs.  We also make
 sure there is no pending NAPI disable.
+
 
 
 .. _`napi_schedule`:
@@ -41,6 +44,7 @@ napi_schedule
         NAPI context
 
 
+
 .. _`napi_schedule.description`:
 
 Description
@@ -48,6 +52,7 @@ Description
 
 Schedule NAPI poll routine to be called if it is not already
 running.
+
 
 
 .. _`napi_schedule_irqoff`:
@@ -63,12 +68,14 @@ napi_schedule_irqoff
         NAPI context
 
 
+
 .. _`napi_schedule_irqoff.description`:
 
 Description
 -----------
 
 Variant of :c:func:`napi_schedule`, assuming hard irqs are masked.
+
 
 
 .. _`napi_complete`:
@@ -84,6 +91,7 @@ napi_complete
         NAPI context
 
 
+
 .. _`napi_complete.description`:
 
 Description
@@ -91,6 +99,7 @@ Description
 
 Mark NAPI processing as complete.
 Consider using :c:func:`napi_complete_done` instead.
+
 
 
 .. _`napi_hash_add`:
@@ -106,6 +115,7 @@ napi_hash_add
         NAPI context
 
 
+
 .. _`napi_hash_add.description`:
 
 Description
@@ -113,8 +123,17 @@ Description
 
 Generate a new napi_id and store a ``napi`` under it in napi_hash.
 Used for busy polling (CONFIG_NET_RX_BUSY_POLL).
-Note: This is normally automatically done from :c:func:`netif_napi_add`,
+
+
+
+.. _`napi_hash_add.note`:
+
+Note
+----
+
+This is normally automatically done from :c:func:`netif_napi_add`,
 so might disappear in a future Linux version.
+
 
 
 .. _`napi_hash_del`:
@@ -130,18 +149,28 @@ napi_hash_del
         NAPI context
 
 
-.. _`napi_hash_del.description`:
 
-Description
------------
+.. _`napi_hash_del.warning`:
 
-Warning: caller must observe RCU grace period
+Warning
+-------
+
+caller must observe RCU grace period
 before freeing memory containing ``napi``\ , if
 this function returns true.
-Note: core networking stack automatically calls it
+
+
+
+.. _`napi_hash_del.note`:
+
+Note
+----
+
+core networking stack automatically calls it
 from :c:func:`netif_napi_del`.
 Drivers might want to call this helper to combine all
 the needed RCU grace periods into a single one.
+
 
 
 .. _`napi_disable`:
@@ -157,6 +186,7 @@ napi_disable
         NAPI context
 
 
+
 .. _`napi_disable.description`:
 
 Description
@@ -164,6 +194,7 @@ Description
 
 Stop NAPI from being scheduled on this context.
 Waits till any outstanding processing completes.
+
 
 
 .. _`napi_enable`:
@@ -179,6 +210,7 @@ napi_enable
         NAPI context
 
 
+
 .. _`napi_enable.description`:
 
 Description
@@ -186,6 +218,7 @@ Description
 
 Resume NAPI from being scheduled on this context.
 Must be paired with napi_disable.
+
 
 
 .. _`napi_synchronize`:
@@ -201,6 +234,7 @@ napi_synchronize
         NAPI context
 
 
+
 .. _`napi_synchronize.description`:
 
 Description
@@ -211,16 +245,57 @@ Waits till any outstanding processing completes but
 does not disable future activations.
 
 
+
 .. _`netdev_priv_flags`:
 
 enum netdev_priv_flags
 ======================
 
-.. c:type:: enum netdev_priv_flags
+.. c:type:: netdev_priv_flags
 
     \\\amp;struct net_device priv_flags
 
 
+.. _`netdev_priv_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum netdev_priv_flags {
+      IFF_802_1Q_VLAN,
+      IFF_EBRIDGE,
+      IFF_BONDING,
+      IFF_ISATAP,
+      IFF_WAN_HDLC,
+      IFF_XMIT_DST_RELEASE,
+      IFF_DONT_BRIDGE,
+      IFF_DISABLE_NETPOLL,
+      IFF_MACVLAN_PORT,
+      IFF_BRIDGE_PORT,
+      IFF_OVS_DATAPATH,
+      IFF_TX_SKB_SHARING,
+      IFF_UNICAST_FLT,
+      IFF_TEAM_PORT,
+      IFF_SUPP_NOFCS,
+      IFF_LIVE_ADDR_CHANGE,
+      IFF_MACVLAN,
+      IFF_XMIT_DST_RELEASE_PERM,
+      IFF_IPVLAN_MASTER,
+      IFF_IPVLAN_SLAVE,
+      IFF_L3MDEV_MASTER,
+      IFF_NO_QUEUE,
+      IFF_OPENVSWITCH,
+      IFF_L3MDEV_SLAVE,
+      IFF_TEAM,
+      IFF_RXFH_CONFIGURED,
+      IFF_PHONY_HEADROOM,
+      IFF_MACSEC
+    };
+
+
+.. _`netdev_priv_flags.constants`:
 
 Constants
 ---------
@@ -314,6 +389,8 @@ Constants
     device is a MACsec device
 
 
+.. _`netdev_priv_flags.description`:
+
 Description
 -----------
 
@@ -326,16 +403,18 @@ during any kernel release.
 You should have a pretty good reason to be extending these flags.
 
 
+
 .. _`net_device`:
 
 struct net_device
 =================
 
-.. c:type:: struct net_device
+.. c:type:: net_device
 
     The DEVICE structure. Actually, this whole structure is a big mistake. It mixes I/O data with strictly "high-level" data, and it has to know about almost every data structure used in the INET module.
 
 
+.. _`net_device.definition`:
 
 Definition
 ----------
@@ -388,6 +467,7 @@ Definition
   };
 
 
+.. _`net_device.members`:
 
 Members
 -------
@@ -505,18 +585,15 @@ Members
 
 
 
-Description
------------
 
-FIXME: cleanup struct net_device such that network protocol info
+.. _`net_device.fixme`:
+
+FIXME
+-----
+
+cleanup struct net_device such that network protocol info
 moves out.
 
-
-Description
------------
-
-FIXME: cleanup struct net_device such that network protocol info
-moves out.
 
 
 .. _`netdev_priv`:
@@ -532,12 +609,14 @@ netdev_priv
         network device
 
 
+
 .. _`netdev_priv.description`:
 
 Description
 -----------
 
 Get network device private data
+
 
 
 .. _`netif_napi_add`:
@@ -562,6 +641,7 @@ netif_napi_add
         default weight
 
 
+
 .. _`netif_napi_add.description`:
 
 Description
@@ -569,6 +649,7 @@ Description
 
 :c:func:`netif_napi_add` must be used to initialize a NAPI context prior to calling
 *any\* of the other NAPI-related functions.
+
 
 
 .. _`netif_tx_napi_add`:
@@ -593,6 +674,7 @@ netif_tx_napi_add
         default weight
 
 
+
 .. _`netif_tx_napi_add.description`:
 
 Description
@@ -601,6 +683,7 @@ Description
 This variant of :c:func:`netif_napi_add` should be used from drivers using NAPI
 to exclusively poll a TX queue.
 This will avoid we add it into napi_hash[], thus polluting this hash table.
+
 
 
 .. _`netif_napi_del`:
@@ -616,12 +699,14 @@ netif_napi_del
         NAPI context
 
 
+
 .. _`netif_napi_del.description`:
 
 Description
 -----------
 
 :c:func:`netif_napi_del` removes a NAPI context from the network device NAPI list
+
 
 
 .. _`netif_start_queue`:
@@ -637,12 +722,14 @@ netif_start_queue
         network device
 
 
+
 .. _`netif_start_queue.description`:
 
 Description
 -----------
 
 Allow upper layers to call the device hard_start_xmit routine.
+
 
 
 .. _`netif_wake_queue`:
@@ -658,6 +745,7 @@ netif_wake_queue
         network device
 
 
+
 .. _`netif_wake_queue.description`:
 
 Description
@@ -665,6 +753,7 @@ Description
 
 Allow upper layers to call the device hard_start_xmit routine.
 Used for flow control when transmit resources are available.
+
 
 
 .. _`netif_stop_queue`:
@@ -680,6 +769,7 @@ netif_stop_queue
         network device
 
 
+
 .. _`netif_stop_queue.description`:
 
 Description
@@ -687,6 +777,7 @@ Description
 
 Stop upper layers calling the device hard_start_xmit routine.
 Used for flow control when transmit resources are unavailable.
+
 
 
 .. _`netif_queue_stopped`:
@@ -702,12 +793,14 @@ netif_queue_stopped
         network device
 
 
+
 .. _`netif_queue_stopped.description`:
 
 Description
 -----------
 
 Test if transmit queue on device is currently unable to send.
+
 
 
 .. _`netdev_txq_bql_enqueue_prefetchw`:
@@ -723,6 +816,7 @@ netdev_txq_bql_enqueue_prefetchw
         pointer to transmit queue
 
 
+
 .. _`netdev_txq_bql_enqueue_prefetchw.description`:
 
 Description
@@ -730,6 +824,7 @@ Description
 
 BQL enabled drivers might use this helper in their :c:func:`ndo_start_xmit`,
 to give appropriate hint to the CPU.
+
 
 
 .. _`netdev_txq_bql_complete_prefetchw`:
@@ -745,6 +840,7 @@ netdev_txq_bql_complete_prefetchw
         pointer to transmit queue
 
 
+
 .. _`netdev_txq_bql_complete_prefetchw.description`:
 
 Description
@@ -752,6 +848,7 @@ Description
 
 BQL enabled drivers might use this helper in their TX completion path,
 to give appropriate hint to the CPU.
+
 
 
 .. _`netdev_sent_queue`:
@@ -770,6 +867,7 @@ netdev_sent_queue
         number of bytes queued to the hardware device queue
 
 
+
 .. _`netdev_sent_queue.description`:
 
 Description
@@ -778,6 +876,7 @@ Description
 Report the number of bytes queued for sending/completion to the network
 device hardware queue. ``bytes`` should be a good approximation and should
 exactly match :c:func:`netdev_completed_queue` ``bytes``
+
 
 
 .. _`netdev_completed_queue`:
@@ -799,6 +898,7 @@ netdev_completed_queue
         actual number of bytes sent over the medium
 
 
+
 .. _`netdev_completed_queue.description`:
 
 Description
@@ -807,6 +907,7 @@ Description
 Report the number of bytes and packets transmitted by the network device
 hardware queue over the physical medium, ``bytes`` must exactly match the
 ``bytes`` amount passed to :c:func:`netdev_sent_queue`
+
 
 
 .. _`netdev_reset_queue`:
@@ -822,6 +923,7 @@ netdev_reset_queue
         network device
 
 
+
 .. _`netdev_reset_queue.description`:
 
 Description
@@ -829,6 +931,7 @@ Description
 
 Reset the bytes and packet count of a network device and clear the
 software flow control OFF bit for this network device
+
 
 
 .. _`netdev_cap_txqueue`:
@@ -847,6 +950,7 @@ netdev_cap_txqueue
         given tx queue index
 
 
+
 .. _`netdev_cap_txqueue.description`:
 
 Description
@@ -854,6 +958,7 @@ Description
 
 Returns 0 if given tx queue index >= number of device tx queues,
 otherwise returns the originally passed tx queue index.
+
 
 
 .. _`netif_running`:
@@ -869,12 +974,14 @@ netif_running
         network device
 
 
+
 .. _`netif_running.description`:
 
 Description
 -----------
 
 Test if the device has been brought up.
+
 
 
 .. _`netif_start_subqueue`:
@@ -893,12 +1000,14 @@ netif_start_subqueue
         sub queue index
 
 
+
 .. _`netif_start_subqueue.description`:
 
 Description
 -----------
 
 Start individual transmit queue of a device with multiple transmit queues.
+
 
 
 .. _`netif_stop_subqueue`:
@@ -917,12 +1026,14 @@ netif_stop_subqueue
         sub queue index
 
 
+
 .. _`netif_stop_subqueue.description`:
 
 Description
 -----------
 
 Stop individual transmit queue of a device with multiple transmit queues.
+
 
 
 .. _`__netif_subqueue_stopped`:
@@ -941,12 +1052,14 @@ __netif_subqueue_stopped
         sub queue index
 
 
+
 .. _`__netif_subqueue_stopped.description`:
 
 Description
 -----------
 
 Check individual transmit queue of a device with multiple transmit queues.
+
 
 
 .. _`netif_is_multiqueue`:
@@ -962,12 +1075,14 @@ netif_is_multiqueue
         network device
 
 
+
 .. _`netif_is_multiqueue.description`:
 
 Description
 -----------
 
 Check if device has multiple transmit queues
+
 
 
 .. _`dev_put`:
@@ -983,12 +1098,14 @@ dev_put
         network device
 
 
+
 .. _`dev_put.description`:
 
 Description
 -----------
 
 Release reference to device to allow it to be freed.
+
 
 
 .. _`dev_hold`:
@@ -1004,12 +1121,14 @@ dev_hold
         network device
 
 
+
 .. _`dev_hold.description`:
 
 Description
 -----------
 
 Hold reference to device to keep it from being freed.
+
 
 
 .. _`netif_carrier_ok`:
@@ -1025,12 +1144,14 @@ netif_carrier_ok
         network device
 
 
+
 .. _`netif_carrier_ok.description`:
 
 Description
 -----------
 
 Check if carrier is present on device
+
 
 
 .. _`netif_dormant_on`:
@@ -1044,6 +1165,7 @@ netif_dormant_on
 
     :param struct net_device \*dev:
         network device
+
 
 
 .. _`netif_dormant_on.description`:
@@ -1060,6 +1182,7 @@ demand" interfaces, this new state identifies the situation where the
 interface is waiting for events to place it in the up state.
 
 
+
 .. _`netif_dormant_off`:
 
 netif_dormant_off
@@ -1073,12 +1196,14 @@ netif_dormant_off
         network device
 
 
+
 .. _`netif_dormant_off.description`:
 
 Description
 -----------
 
 Device is not in dormant state.
+
 
 
 .. _`netif_dormant`:
@@ -1094,12 +1219,14 @@ netif_dormant
         network device
 
 
+
 .. _`netif_dormant.description`:
 
 Description
 -----------
 
 Check if carrier is present on device
+
 
 
 .. _`netif_oper_up`:
@@ -1115,12 +1242,14 @@ netif_oper_up
         network device
 
 
+
 .. _`netif_oper_up.description`:
 
 Description
 -----------
 
 Check if carrier is operational
+
 
 
 .. _`netif_device_present`:
@@ -1136,12 +1265,14 @@ netif_device_present
         network device
 
 
+
 .. _`netif_device_present.description`:
 
 Description
 -----------
 
 Check if device has not been removed from system.
+
 
 
 .. _`netif_tx_lock`:
@@ -1157,12 +1288,14 @@ netif_tx_lock
         network device
 
 
+
 .. _`netif_tx_lock.description`:
 
 Description
 -----------
 
 Get network device transmit lock
+
 
 
 .. _`__dev_uc_sync`:
@@ -1184,6 +1317,7 @@ __dev_uc_sync
         function to call if address should be removed
 
 
+
 .. _`__dev_uc_sync.description`:
 
 Description
@@ -1191,6 +1325,7 @@ Description
 
 Add newly added addresses to the interface, and release
 addresses that have been deleted.
+
 
 
 .. _`__dev_uc_unsync`:
@@ -1209,12 +1344,14 @@ __dev_uc_unsync
         function to call if address should be removed
 
 
+
 .. _`__dev_uc_unsync.description`:
 
 Description
 -----------
 
 Remove all addresses that were added to the device by :c:func:`dev_uc_sync`.
+
 
 
 .. _`__dev_mc_sync`:
@@ -1236,6 +1373,7 @@ __dev_mc_sync
         function to call if address should be removed
 
 
+
 .. _`__dev_mc_sync.description`:
 
 Description
@@ -1243,6 +1381,7 @@ Description
 
 Add newly added addresses to the interface, and release
 addresses that have been deleted.
+
 
 
 .. _`__dev_mc_unsync`:
@@ -1259,6 +1398,7 @@ __dev_mc_unsync
 
     :param int (\*unsync) (struct net_device \*, const unsigned char \*):
         function to call if address should be removed
+
 
 
 .. _`__dev_mc_unsync.description`:

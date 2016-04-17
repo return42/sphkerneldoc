@@ -4,6 +4,7 @@
 aead.h
 ======
 
+
 .. _`authenticated-encryption-with-associated-data--aead--cipher-api`:
 
 Authenticated Encryption With Associated Data (AEAD) Cipher API
@@ -60,16 +61,18 @@ calling code must contain a precaution to ensure that this does not result
 in the first scatter gather list entry pointing to a NULL buffer.
 
 
+
 .. _`aead_request`:
 
 struct aead_request
 ===================
 
-.. c:type:: struct aead_request
+.. c:type:: aead_request
 
     AEAD request
 
 
+.. _`aead_request.definition`:
 
 Definition
 ----------
@@ -87,6 +90,7 @@ Definition
   };
 
 
+.. _`aead_request.members`:
 
 Members
 -------
@@ -114,16 +118,18 @@ Members
 
 
 
+
 .. _`aead_alg`:
 
 struct aead_alg
 ===============
 
-.. c:type:: struct aead_alg
+.. c:type:: aead_alg
 
     AEAD cipher definition
 
 
+.. _`aead_alg.definition`:
 
 Definition
 ----------
@@ -144,6 +150,7 @@ Definition
   };
 
 
+.. _`aead_alg.members`:
 
 Members
 -------
@@ -200,10 +207,14 @@ Members
 
 
 
+
+.. _`aead_alg.description`:
+
 Description
 -----------
 
 All fields except ``ivsize`` is mandatory and must be filled.
+
 
 
 .. _`crypto_alloc_aead`:
@@ -226,6 +237,7 @@ crypto_alloc_aead
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_aead.description`:
 
 Description
@@ -235,8 +247,16 @@ Allocate a cipher handle for an AEAD. The returned struct
 crypto_aead is the cipher handle that is required for any subsequent
 API invocation for that AEAD.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_aead.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_aead`:
@@ -252,6 +272,7 @@ crypto_free_aead
         cipher handle to be freed
 
 
+
 .. _`crypto_aead_ivsize`:
 
 crypto_aead_ivsize
@@ -265,6 +286,7 @@ crypto_aead_ivsize
         cipher handle
 
 
+
 .. _`crypto_aead_ivsize.description`:
 
 Description
@@ -273,7 +295,15 @@ Description
 The size of the IV for the aead referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-Return: IV size in bytes
+
+
+.. _`crypto_aead_ivsize.return`:
+
+Return
+------
+
+IV size in bytes
+
 
 
 .. _`crypto_aead_authsize`:
@@ -289,6 +319,7 @@ crypto_aead_authsize
         cipher handle
 
 
+
 .. _`crypto_aead_authsize.description`:
 
 Description
@@ -300,7 +331,15 @@ zero if the cipher implements a hard-coded maximum.
 
 The authentication data may also be known as "tag value".
 
-Return: authentication data size / tag size in bytes
+
+
+.. _`crypto_aead_authsize.return`:
+
+Return
+------
+
+authentication data size / tag size in bytes
+
 
 
 .. _`crypto_aead_blocksize`:
@@ -316,6 +355,7 @@ crypto_aead_blocksize
         cipher handle
 
 
+
 .. _`crypto_aead_blocksize.description`:
 
 Description
@@ -325,7 +365,15 @@ The block size for the AEAD referenced with the cipher handle is returned.
 The caller may use that information to allocate appropriate memory for the
 data returned by the encryption or decryption operation
 
-Return: block size of cipher
+
+
+.. _`crypto_aead_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_aead_setkey`:
@@ -347,6 +395,7 @@ crypto_aead_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_aead_setkey.description`:
 
 Description
@@ -360,7 +409,15 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_aead_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_aead_setauthsize`:
@@ -379,6 +436,7 @@ crypto_aead_setauthsize
         size of the authentication data / tag in bytes
 
 
+
 .. _`crypto_aead_setauthsize.description`:
 
 Description
@@ -387,7 +445,15 @@ Description
 Set the authentication data size / tag size. AEAD requires an authentication
 tag (or MAC) in addition to the associated data.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_aead_setauthsize.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_aead_encrypt`:
@@ -404,13 +470,14 @@ crypto_aead_encrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_aead_encrypt.description`:
 
 Description
 -----------
 
 Encrypt plaintext data using the aead_request handle. That data structure
-and how it is filled with data is discussed with the aead_request_*
+and how it is filled with data is discussed with the aead_request\_\*
 functions.
 
 IMPORTANT NOTE The encryption operation creates the authentication data /
@@ -421,7 +488,15 @@ crypto_aead_setauthsize invocation. The caller must ensure
 that sufficient memory is available for the ciphertext and
 the authentication tag.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_aead_encrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_aead_decrypt`:
@@ -438,13 +513,14 @@ crypto_aead_decrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_aead_decrypt.description`:
 
 Description
 -----------
 
 Decrypt ciphertext data using the aead_request handle. That data structure
-and how it is filled with data is discussed with the aead_request_*
+and how it is filled with data is discussed with the aead_request\_\*
 functions.
 
 IMPORTANT NOTE The caller must concatenate the ciphertext followed by the
@@ -453,12 +529,20 @@ must have the size defined by the crypto_aead_setauthsize
 invocation.
 
 
-Return: 0 if the cipher operation was successful; -EBADMSG: The AEAD
-cipher operation performs the authentication of the data during the
-decryption operation. Therefore, the function returns this error if
-the authentication of the ciphertext was unsuccessful (i.e. the
-integrity of the ciphertext or the associated data was violated);
-< 0 if an error occurred.
+
+.. _`crypto_aead_decrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; -EBADMSG: The AEAD
+
+           cipher operation performs the authentication of the data during the
+           decryption operation. Therefore, the function returns this error if
+           the authentication of the ciphertext was unsuccessful (i.e. the
+           integrity of the ciphertext or the associated data was violated);
+           < 0 if an error occurred.
+
 
 
 .. _`asynchronous-aead-request-handle`:
@@ -470,8 +554,9 @@ The aead_request data structure contains all pointers to data required for
 the AEAD cipher operation. This includes the cipher handle (which can be
 used by multiple aead_request instances), pointer to plaintext and
 ciphertext, asynchronous callback function, etc. It acts as a handle to the
-aead_request_\* API calls in a similar way as AEAD handle to the
-crypto_aead_\* API calls.
+aead_request\_\* API calls in a similar way as AEAD handle to the
+crypto_aead\_\* API calls.
+
 
 
 .. _`crypto_aead_reqsize`:
@@ -487,12 +572,14 @@ crypto_aead_reqsize
         cipher handle
 
 
-.. _`crypto_aead_reqsize.description`:
 
-Description
------------
+.. _`crypto_aead_reqsize.return`:
 
-Return: number of bytes
+Return
+------
+
+number of bytes
+
 
 
 .. _`aead_request_set_tfm`:
@@ -511,6 +598,7 @@ aead_request_set_tfm
         cipher handle that shall be added to the request handle
 
 
+
 .. _`aead_request_set_tfm.description`:
 
 Description
@@ -518,6 +606,7 @@ Description
 
 Allow the caller to replace the existing aead handle in the request
 data structure with a different one.
+
 
 
 .. _`aead_request_alloc`:
@@ -536,6 +625,7 @@ aead_request_alloc
         memory allocation flag that is handed to kmalloc by the API call.
 
 
+
 .. _`aead_request_alloc.description`:
 
 Description
@@ -545,8 +635,16 @@ Allocate the request data structure that must be used with the AEAD
 encrypt and decrypt API calls. During the allocation, the provided aead
 handle is registered in the request data structure.
 
-Return: allocated request handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`aead_request_alloc.return`:
+
+Return
+------
+
+allocated request handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`aead_request_free`:
@@ -560,6 +658,7 @@ aead_request_free
 
     :param struct aead_request \*req:
         request data structure cipher handle to be freed
+
 
 
 .. _`aead_request_set_callback`:
@@ -594,6 +693,7 @@ aead_request_set_callback
         crypto_async_request data structure provided to the callback function.
 
 
+
 .. _`aead_request_set_callback.description`:
 
 Description
@@ -606,6 +706,7 @@ The callback function is registered with the aead_request handle and
 must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
+
 
 
 .. _`aead_request_set_crypt`:
@@ -632,6 +733,7 @@ aead_request_set_crypt
     :param u8 \*iv:
         IV for the cipher operation which must comply with the IV size defined
         by :c:func:`crypto_aead_ivsize`
+
 
 
 .. _`aead_request_set_crypt.description`:
@@ -673,6 +775,7 @@ sg_init_one(:c:type:`struct sg <sg>`, buffer, ptbuflen + (enc ? authsize : 0));
 aead_request_set_crypt(req, :c:type:`struct sg <sg>`, :c:type:`struct sg <sg>`, ptbuflen, iv);
 
 
+
 .. _`aead_request_set_ad`:
 
 aead_request_set_ad
@@ -687,6 +790,7 @@ aead_request_set_ad
 
     :param unsigned int assoclen:
         number of bytes in associated data
+
 
 
 .. _`aead_request_set_ad.description`:

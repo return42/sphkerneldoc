@@ -4,16 +4,18 @@
 ethtool.h
 =========
 
+
 .. _`ethtool_cmd`:
 
 struct ethtool_cmd
 ==================
 
-.. c:type:: struct ethtool_cmd
+.. c:type:: ethtool_cmd
 
     DEPRECATED, link control and status This structure is DEPRECATED, please use struct ethtool_link_settings.
 
 
+.. _`ethtool_cmd.definition`:
 
 Definition
 ----------
@@ -40,6 +42,7 @@ Definition
   };
 
 
+.. _`ethtool_cmd.members`:
 
 Members
 -------
@@ -116,6 +119,9 @@ Members
 
 
 
+
+.. _`ethtool_cmd.description`:
+
 Description
 -----------
 
@@ -149,16 +155,18 @@ and must ignore all fields described as read-only.
 Deprecated fields should be ignored by both users and drivers.
 
 
+
 .. _`ethtool_drvinfo`:
 
 struct ethtool_drvinfo
 ======================
 
-.. c:type:: struct ethtool_drvinfo
+.. c:type:: ethtool_drvinfo
 
     general driver and device information
 
 
+.. _`ethtool_drvinfo.definition`:
 
 Definition
 ----------
@@ -180,6 +188,7 @@ Definition
   };
 
 
+.. _`ethtool_drvinfo.members`:
 
 Members
 -------
@@ -229,6 +238,9 @@ Members
 
 
 
+
+.. _`ethtool_drvinfo.description`:
+
 Description
 -----------
 
@@ -240,16 +252,18 @@ Drivers should set at most ``driver``\ , ``version``\ , ``fw_version`` and
 core fills in the other fields using other driver operations.
 
 
+
 .. _`ethtool_wolinfo`:
 
 struct ethtool_wolinfo
 ======================
 
-.. c:type:: struct ethtool_wolinfo
+.. c:type:: ethtool_wolinfo
 
     Wake-On-Lan configuration
 
 
+.. _`ethtool_wolinfo.definition`:
 
 Definition
 ----------
@@ -264,6 +278,7 @@ Definition
   };
 
 
+.. _`ethtool_wolinfo.members`:
 
 Members
 -------
@@ -272,9 +287,8 @@ Members
     Command number = ``ETHTOOL_GWOL`` or ``ETHTOOL_SWOL``
 
 :``supported``:
-    Bitmask of ``WAKE_``\ \* flags for supported Wake-On-Lan modes.::
-
-            Read-only.
+    Bitmask of ``WAKE_``\ \* flags for supported Wake-On-Lan modes.
+    Read-only.
 
 :``wolopts``:
     Bitmask of ``WAKE_``\ \* flags for enabled Wake-On-Lan modes.
@@ -285,16 +299,18 @@ Members
 
 
 
+
 .. _`ethtool_regs`:
 
 struct ethtool_regs
 ===================
 
-.. c:type:: struct ethtool_regs
+.. c:type:: ethtool_regs
 
     hardware register dump
 
 
+.. _`ethtool_regs.definition`:
 
 Definition
 ----------
@@ -309,6 +325,7 @@ Definition
   };
 
 
+.. _`ethtool_regs.members`:
 
 Members
 -------
@@ -331,6 +348,9 @@ Members
 
 
 
+
+.. _`ethtool_regs.description`:
+
 Description
 -----------
 
@@ -339,16 +359,18 @@ a register dump for the interface.  They must allocate the buffer
 immediately following this structure.
 
 
+
 .. _`ethtool_eeprom`:
 
 struct ethtool_eeprom
 =====================
 
-.. c:type:: struct ethtool_eeprom
+.. c:type:: ethtool_eeprom
 
     EEPROM dump
 
 
+.. _`ethtool_eeprom.definition`:
 
 Definition
 ----------
@@ -364,6 +386,7 @@ Definition
   };
 
 
+.. _`ethtool_eeprom.members`:
 
 Members
 -------
@@ -373,11 +396,10 @@ Members
     ``ETHTOOL_SEEPROM``
 
 :``magic``:
-    A 'magic cookie' value to guard against accidental changes.::
-
-            The value passed in to ``ETHTOOL_SEEPROM`` must match the value
-            returned by ``ETHTOOL_GEEPROM`` for the same device.  This is
-            unused when ``cmd`` is ``ETHTOOL_GMODULEEEPROM``\ .
+    A 'magic cookie' value to guard against accidental changes.
+    The value passed in to ``ETHTOOL_SEEPROM`` must match the value
+    returned by ``ETHTOOL_GEEPROM`` for the same device.  This is
+    unused when ``cmd`` is ``ETHTOOL_GMODULEEEPROM``\ .
 
 :``offset``:
     Offset within the EEPROM to begin reading/writing, in bytes
@@ -392,6 +414,9 @@ Members
 
 
 
+
+.. _`ethtool_eeprom.description`:
+
 Description
 -----------
 
@@ -400,16 +425,18 @@ the length of an on-board or module EEPROM, respectively.  They
 must allocate the buffer immediately following this structure.
 
 
+
 .. _`ethtool_eee`:
 
 struct ethtool_eee
 ==================
 
-.. c:type:: struct ethtool_eee
+.. c:type:: ethtool_eee
 
     Energy Efficient Ethernet information
 
 
+.. _`ethtool_eee.definition`:
 
 Definition
 ----------
@@ -428,6 +455,7 @@ Definition
   };
 
 
+.. _`ethtool_eee.members`:
 
 Members
 -------
@@ -464,16 +492,18 @@ Members
 
 
 
+
 .. _`ethtool_modinfo`:
 
 struct ethtool_modinfo
 ======================
 
-.. c:type:: struct ethtool_modinfo
+.. c:type:: ethtool_modinfo
 
     plugin module eeprom information
 
 
+.. _`ethtool_modinfo.definition`:
 
 Definition
 ----------
@@ -487,6 +517,7 @@ Definition
   };
 
 
+.. _`ethtool_modinfo.members`:
 
 Members
 -------
@@ -502,6 +533,9 @@ Members
 
 
 
+
+.. _`ethtool_modinfo.description`:
+
 Description
 -----------
 
@@ -510,16 +544,18 @@ properly size memory for a subsequent call to ``ETHTOOL_GMODULEEEPROM``\ .
 The type code indicates the eeprom data format
 
 
+
 .. _`ethtool_coalesce`:
 
 struct ethtool_coalesce
 =======================
 
-.. c:type:: struct ethtool_coalesce
+.. c:type:: ethtool_coalesce
 
     coalescing parameters for IRQs and stats updates
 
 
+.. _`ethtool_coalesce.definition`:
 
 Definition
 ----------
@@ -553,6 +589,7 @@ Definition
   };
 
 
+.. _`ethtool_coalesce.members`:
 
 Members
 -------
@@ -650,6 +687,9 @@ Members
 
 
 
+
+.. _`ethtool_coalesce.description`:
+
 Description
 -----------
 
@@ -676,7 +716,8 @@ the driver causes these values to be silently ignored.
 
 When the packet rate is below ``pkt_rate_high`` but above
 ``pkt_rate_low`` (both measured in packets per second) the
-normal {rx,tx}_\* coalescing parameters are used.
+normal {rx,tx}\_\* coalescing parameters are used.
+
 
 
 .. _`ethtool_ringparam`:
@@ -684,11 +725,12 @@ normal {rx,tx}_\* coalescing parameters are used.
 struct ethtool_ringparam
 ========================
 
-.. c:type:: struct ethtool_ringparam
+.. c:type:: ethtool_ringparam
 
     RX/TX ring parameters
 
 
+.. _`ethtool_ringparam.definition`:
 
 Definition
 ----------
@@ -708,6 +750,7 @@ Definition
   };
 
 
+.. _`ethtool_ringparam.members`:
 
 Members
 -------
@@ -748,6 +791,9 @@ Members
 
 
 
+
+.. _`ethtool_ringparam.description`:
+
 Description
 -----------
 
@@ -758,16 +804,18 @@ There may also be driver-dependent minimum values for the number
 of entries per ring.
 
 
+
 .. _`ethtool_channels`:
 
 struct ethtool_channels
 =======================
 
-.. c:type:: struct ethtool_channels
+.. c:type:: ethtool_channels
 
     configuring number of network channel
 
 
+.. _`ethtool_channels.definition`:
 
 Definition
 ----------
@@ -787,6 +835,7 @@ Definition
   };
 
 
+.. _`ethtool_channels.members`:
 
 Members
 -------
@@ -821,10 +870,14 @@ Members
 
 
 
+
+.. _`ethtool_channels.description`:
+
 Description
 -----------
 
 This can be used to configure RX, TX and other channels.
+
 
 
 .. _`ethtool_pauseparam`:
@@ -832,11 +885,12 @@ This can be used to configure RX, TX and other channels.
 struct ethtool_pauseparam
 =========================
 
-.. c:type:: struct ethtool_pauseparam
+.. c:type:: ethtool_pauseparam
 
     Ethernet pause (flow control) parameters
 
 
+.. _`ethtool_pauseparam.definition`:
 
 Definition
 ----------
@@ -851,6 +905,7 @@ Definition
   };
 
 
+.. _`ethtool_pauseparam.members`:
 
 Members
 -------
@@ -868,6 +923,9 @@ Members
     Flag to enable transmission of pause frames
 
 
+
+
+.. _`ethtool_pauseparam.description`:
 
 Description
 -----------
@@ -888,16 +946,37 @@ Otherwise, it is configured directly based on the ``rx_pause`` and
 ``tx_pause`` flags.
 
 
+
 .. _`ethtool_stringset`:
 
 enum ethtool_stringset
 ======================
 
-.. c:type:: enum ethtool_stringset
+.. c:type:: ethtool_stringset
 
     string set ID
 
 
+.. _`ethtool_stringset.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ethtool_stringset {
+      ETH_SS_TEST,
+      ETH_SS_STATS,
+      ETH_SS_PRIV_FLAGS,
+      ETH_SS_NTUPLE_FILTERS,
+      ETH_SS_FEATURES,
+      ETH_SS_RSS_HASH_FUNCS,
+      ETH_SS_TUNABLES,
+      ETH_SS_PHY_STATS
+    };
+
+
+.. _`ethtool_stringset.constants`:
 
 Constants
 ---------
@@ -923,7 +1002,7 @@ Constants
     RSS hush function names
 
 :``ETH_SS_TUNABLES``:
-    -- undescribed --
+-- undescribed --
 
 :``ETH_SS_PHY_STATS``:
     Statistic names, for use with ``ETHTOOL_GPHYSTATS``
@@ -934,11 +1013,12 @@ Constants
 struct ethtool_gstrings
 =======================
 
-.. c:type:: struct ethtool_gstrings
+.. c:type:: ethtool_gstrings
 
     string set for data tagging
 
 
+.. _`ethtool_gstrings.definition`:
 
 Definition
 ----------
@@ -953,6 +1033,7 @@ Definition
   };
 
 
+.. _`ethtool_gstrings.members`:
 
 Members
 -------
@@ -972,6 +1053,9 @@ Members
 
 
 
+
+.. _`ethtool_gstrings.description`:
+
 Description
 -----------
 
@@ -980,16 +1064,18 @@ the string set.  They must allocate a buffer of the appropriate
 size immediately following this structure.
 
 
+
 .. _`ethtool_sset_info`:
 
 struct ethtool_sset_info
 ========================
 
-.. c:type:: struct ethtool_sset_info
+.. c:type:: ethtool_sset_info
 
     string set information
 
 
+.. _`ethtool_sset_info.definition`:
 
 Definition
 ----------
@@ -1003,6 +1089,7 @@ Definition
   };
 
 
+.. _`ethtool_sset_info.members`:
 
 Members
 -------
@@ -1022,15 +1109,21 @@ Members
 
 
 
-Description
------------
 
-Example: The user passes in ``sset_mask`` = 0x7 (sets 0, 1, 2) and on
-return ``sset_mask`` == 0x6 (sets 1, 2).  Then ``data``\ [0] contains the
-size of set 1 and ``data``\ [1] contains the size of set 2.
+.. _`ethtool_sset_info.example`:
+
+Example
+-------
+
+.. code-block:: c
+
+The user passes in ``sset_mask`` = 0x7 (sets 0, 1, 2) and on
+return ``sset_mask`` == 0x6 (sets 1, 2).  Then ``data``[0] contains the
+size of set 1 and ``data``[1] contains the size of set 2.
 
 Users must allocate a buffer of the appropriate size (4 * number of
 sets queried) immediately following this structure.
+
 
 
 .. _`ethtool_test_flags`:
@@ -1038,11 +1131,27 @@ sets queried) immediately following this structure.
 enum ethtool_test_flags
 =======================
 
-.. c:type:: enum ethtool_test_flags
+.. c:type:: ethtool_test_flags
 
     flags definition of ethtool_test
 
 
+.. _`ethtool_test_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ethtool_test_flags {
+      ETH_TEST_FL_OFFLINE,
+      ETH_TEST_FL_FAILED,
+      ETH_TEST_FL_EXTERNAL_LB,
+      ETH_TEST_FL_EXTERNAL_LB_DONE
+    };
+
+
+.. _`ethtool_test_flags.constants`:
 
 Constants
 ---------
@@ -1067,11 +1176,12 @@ Constants
 struct ethtool_test
 ===================
 
-.. c:type:: struct ethtool_test
+.. c:type:: ethtool_test
 
     device self-test invocation
 
 
+.. _`ethtool_test.definition`:
 
 Definition
 ----------
@@ -1086,6 +1196,7 @@ Definition
   };
 
 
+.. _`ethtool_test.members`:
 
 Members
 -------
@@ -1106,6 +1217,9 @@ Members
 
 
 
+
+.. _`ethtool_test.description`:
+
 Description
 -----------
 
@@ -1115,16 +1229,18 @@ buffer of the appropriate size (8 * number of results) immediately
 following this structure.
 
 
+
 .. _`ethtool_stats`:
 
 struct ethtool_stats
 ====================
 
-.. c:type:: struct ethtool_stats
+.. c:type:: ethtool_stats
 
     device-specific statistics
 
 
+.. _`ethtool_stats.definition`:
 
 Definition
 ----------
@@ -1138,6 +1254,7 @@ Definition
   };
 
 
+.. _`ethtool_stats.members`:
 
 Members
 -------
@@ -1153,6 +1270,9 @@ Members
 
 
 
+
+.. _`ethtool_stats.description`:
+
 Description
 -----------
 
@@ -1162,16 +1282,18 @@ buffer of the appropriate size (8 * number of statistics)
 immediately following this structure.
 
 
+
 .. _`ethtool_perm_addr`:
 
 struct ethtool_perm_addr
 ========================
 
-.. c:type:: struct ethtool_perm_addr
+.. c:type:: ethtool_perm_addr
 
     permanent hardware address
 
 
+.. _`ethtool_perm_addr.definition`:
 
 Definition
 ----------
@@ -1185,6 +1307,7 @@ Definition
   };
 
 
+.. _`ethtool_perm_addr.members`:
 
 Members
 -------
@@ -1201,6 +1324,9 @@ Members
 
 
 
+
+.. _`ethtool_perm_addr.description`:
+
 Description
 -----------
 
@@ -1209,16 +1335,18 @@ A buffer size of ``MAX_ADDR_LEN`` should be sufficient for any address
 type.
 
 
+
 .. _`ethtool_tcpip4_spec`:
 
 struct ethtool_tcpip4_spec
 ==========================
 
-.. c:type:: struct ethtool_tcpip4_spec
+.. c:type:: ethtool_tcpip4_spec
 
     flow specification for TCP/IPv4 etc.
 
 
+.. _`ethtool_tcpip4_spec.definition`:
 
 Definition
 ----------
@@ -1234,6 +1362,7 @@ Definition
   };
 
 
+.. _`ethtool_tcpip4_spec.members`:
 
 Members
 -------
@@ -1255,10 +1384,14 @@ Members
 
 
 
+
+.. _`ethtool_tcpip4_spec.description`:
+
 Description
 -----------
 
 This can be used to specify a TCP/IPv4, UDP/IPv4 or SCTP/IPv4 flow.
+
 
 
 .. _`ethtool_ah_espip4_spec`:
@@ -1266,11 +1399,12 @@ This can be used to specify a TCP/IPv4, UDP/IPv4 or SCTP/IPv4 flow.
 struct ethtool_ah_espip4_spec
 =============================
 
-.. c:type:: struct ethtool_ah_espip4_spec
+.. c:type:: ethtool_ah_espip4_spec
 
     flow specification for IPsec/IPv4
 
 
+.. _`ethtool_ah_espip4_spec.definition`:
 
 Definition
 ----------
@@ -1285,6 +1419,7 @@ Definition
   };
 
 
+.. _`ethtool_ah_espip4_spec.members`:
 
 Members
 -------
@@ -1303,10 +1438,14 @@ Members
 
 
 
+
+.. _`ethtool_ah_espip4_spec.description`:
+
 Description
 -----------
 
 This can be used to specify an IPsec transport or tunnel over IPv4.
+
 
 
 .. _`ethtool_usrip4_spec`:
@@ -1314,11 +1453,12 @@ This can be used to specify an IPsec transport or tunnel over IPv4.
 struct ethtool_usrip4_spec
 ==========================
 
-.. c:type:: struct ethtool_usrip4_spec
+.. c:type:: ethtool_usrip4_spec
 
     general flow specification for IPv4
 
 
+.. _`ethtool_usrip4_spec.definition`:
 
 Definition
 ----------
@@ -1335,6 +1475,7 @@ Definition
   };
 
 
+.. _`ethtool_usrip4_spec.members`:
 
 Members
 -------
@@ -1359,16 +1500,18 @@ Members
 
 
 
+
 .. _`ethtool_tcpip6_spec`:
 
 struct ethtool_tcpip6_spec
 ==========================
 
-.. c:type:: struct ethtool_tcpip6_spec
+.. c:type:: ethtool_tcpip6_spec
 
     flow specification for TCP/IPv6 etc.
 
 
+.. _`ethtool_tcpip6_spec.definition`:
 
 Definition
 ----------
@@ -1384,6 +1527,7 @@ Definition
   };
 
 
+.. _`ethtool_tcpip6_spec.members`:
 
 Members
 -------
@@ -1405,10 +1549,14 @@ Members
 
 
 
+
+.. _`ethtool_tcpip6_spec.description`:
+
 Description
 -----------
 
 This can be used to specify a TCP/IPv6, UDP/IPv6 or SCTP/IPv6 flow.
+
 
 
 .. _`ethtool_ah_espip6_spec`:
@@ -1416,11 +1564,12 @@ This can be used to specify a TCP/IPv6, UDP/IPv6 or SCTP/IPv6 flow.
 struct ethtool_ah_espip6_spec
 =============================
 
-.. c:type:: struct ethtool_ah_espip6_spec
+.. c:type:: ethtool_ah_espip6_spec
 
     flow specification for IPsec/IPv6
 
 
+.. _`ethtool_ah_espip6_spec.definition`:
 
 Definition
 ----------
@@ -1435,6 +1584,7 @@ Definition
   };
 
 
+.. _`ethtool_ah_espip6_spec.members`:
 
 Members
 -------
@@ -1453,10 +1603,14 @@ Members
 
 
 
+
+.. _`ethtool_ah_espip6_spec.description`:
+
 Description
 -----------
 
 This can be used to specify an IPsec transport or tunnel over IPv6.
+
 
 
 .. _`ethtool_usrip6_spec`:
@@ -1464,11 +1618,12 @@ This can be used to specify an IPsec transport or tunnel over IPv6.
 struct ethtool_usrip6_spec
 ==========================
 
-.. c:type:: struct ethtool_usrip6_spec
+.. c:type:: ethtool_usrip6_spec
 
     general flow specification for IPv6
 
 
+.. _`ethtool_usrip6_spec.definition`:
 
 Definition
 ----------
@@ -1484,6 +1639,7 @@ Definition
   };
 
 
+.. _`ethtool_usrip6_spec.members`:
 
 Members
 -------
@@ -1505,16 +1661,18 @@ Members
 
 
 
+
 .. _`ethtool_flow_ext`:
 
 struct ethtool_flow_ext
 =======================
 
-.. c:type:: struct ethtool_flow_ext
+.. c:type:: ethtool_flow_ext
 
     additional RX flow fields
 
 
+.. _`ethtool_flow_ext.definition`:
 
 Definition
 ----------
@@ -1529,6 +1687,7 @@ Definition
   };
 
 
+.. _`ethtool_flow_ext.members`:
 
 Members
 -------
@@ -1547,6 +1706,9 @@ Members
 
 
 
+
+.. _`ethtool_flow_ext.description`:
+
 Description
 -----------
 
@@ -1555,16 +1717,18 @@ is set in :c:type:`struct ethtool_rx_flow_spec <ethtool_rx_flow_spec>` ``flow_ty
 ``h_dest`` is valid if ``FLOW_MAC_EXT`` is set.
 
 
+
 .. _`ethtool_rx_flow_spec`:
 
 struct ethtool_rx_flow_spec
 ===========================
 
-.. c:type:: struct ethtool_rx_flow_spec
+.. c:type:: ethtool_rx_flow_spec
 
     classification rule for RX flows
 
 
+.. _`ethtool_rx_flow_spec.definition`:
 
 Definition
 ----------
@@ -1582,6 +1746,7 @@ Definition
   };
 
 
+.. _`ethtool_rx_flow_spec.members`:
 
 Members
 -------
@@ -1615,16 +1780,18 @@ Members
 
 
 
+
 .. _`ethtool_rxnfc`:
 
 struct ethtool_rxnfc
 ====================
 
-.. c:type:: struct ethtool_rxnfc
+.. c:type:: ethtool_rxnfc
 
     command to get or set RX flow classification rules
 
 
+.. _`ethtool_rxnfc.definition`:
 
 Definition
 ----------
@@ -1641,6 +1808,7 @@ Definition
   };
 
 
+.. _`ethtool_rxnfc.members`:
 
 Members
 -------
@@ -1666,6 +1834,9 @@ Members
     Array of used rule locations
 
 
+
+
+.. _`ethtool_rxnfc.description`:
 
 Description
 -----------
@@ -1712,16 +1883,18 @@ defined in future and drivers must return -\ ``EINVAL`` for any
 unrecognised value.
 
 
+
 .. _`ethtool_rxfh_indir`:
 
 struct ethtool_rxfh_indir
 =========================
 
-.. c:type:: struct ethtool_rxfh_indir
+.. c:type:: ethtool_rxfh_indir
 
     command to get or set RX flow hash indirection
 
 
+.. _`ethtool_rxfh_indir.definition`:
 
 Definition
 ----------
@@ -1735,6 +1908,7 @@ Definition
   };
 
 
+.. _`ethtool_rxfh_indir.members`:
 
 Members
 -------
@@ -1743,15 +1917,17 @@ Members
     Specific command number - ``ETHTOOL_GRXFHINDIR`` or ``ETHTOOL_SRXFHINDIR``
 
 :``size``:
-    On entry, the array size of the user buffer, which may be zero.::
-
-            On return from ``ETHTOOL_GRXFHINDIR``\ , the array size of the hardware
-            indirection table.
+    On entry, the array size of the user buffer, which may be zero.
+    On return from ``ETHTOOL_GRXFHINDIR``\ , the array size of the hardware
+    indirection table.
 
 :``ring_index[0]``:
     RX ring/queue index for each hash value
 
 
+
+
+.. _`ethtool_rxfh_indir.description`:
 
 Description
 -----------
@@ -1762,16 +1938,18 @@ the table should be reset to default values.  This last feature
 is not supported by the original implementations.
 
 
+
 .. _`ethtool_rxfh`:
 
 struct ethtool_rxfh
 ===================
 
-.. c:type:: struct ethtool_rxfh
+.. c:type:: ethtool_rxfh
 
     command to get/set RX flow hash indir or/and hash key.
 
 
+.. _`ethtool_rxfh.definition`:
 
 Definition
 ----------
@@ -1788,6 +1966,7 @@ Definition
   };
 
 
+.. _`ethtool_rxfh.members`:
 
 Members
 -------
@@ -1810,9 +1989,8 @@ Members
     hardware hash key.
 
 :``hfunc``:
-    Defines the current RSS hash function used by HW (or to be set to).::
-
-            Valid values are one of the ``ETH_RSS_HASH_``\ \*.
+    Defines the current RSS hash function used by HW (or to be set to).
+    Valid values are one of the ``ETH_RSS_HASH_``\ \*.
 
 :``rss_config[0]``:
     RX ring/queue index for each hash value i.e., indirection table
@@ -1820,6 +1998,9 @@ Members
     bytes.
 
 
+
+
+.. _`ethtool_rxfh.description`:
 
 Description
 -----------
@@ -1831,16 +2012,18 @@ and a ``indir_size`` of zero means the indir table should be reset to default
 values. An hfunc of zero means that hash function setting is not requested.
 
 
+
 .. _`ethtool_rx_ntuple_flow_spec`:
 
 struct ethtool_rx_ntuple_flow_spec
 ==================================
 
-.. c:type:: struct ethtool_rx_ntuple_flow_spec
+.. c:type:: ethtool_rx_ntuple_flow_spec
 
     specification for RX flow filter
 
 
+.. _`ethtool_rx_ntuple_flow_spec.definition`:
 
 Definition
 ----------
@@ -1861,6 +2044,7 @@ Definition
   };
 
 
+.. _`ethtool_rx_ntuple_flow_spec.members`:
 
 Members
 -------
@@ -1892,6 +2076,9 @@ Members
 
 
 
+
+.. _`ethtool_rx_ntuple_flow_spec.description`:
+
 Description
 -----------
 
@@ -1900,16 +2087,18 @@ a field value and mask are both zero this is treated as if all mask
 bits are set i.e. the field is ignored.
 
 
+
 .. _`ethtool_rx_ntuple`:
 
 struct ethtool_rx_ntuple
 ========================
 
-.. c:type:: struct ethtool_rx_ntuple
+.. c:type:: ethtool_rx_ntuple
 
     command to set or clear RX flow filter
 
 
+.. _`ethtool_rx_ntuple.definition`:
 
 Definition
 ----------
@@ -1922,6 +2111,7 @@ Definition
   };
 
 
+.. _`ethtool_rx_ntuple.members`:
 
 Members
 -------
@@ -1934,16 +2124,18 @@ Members
 
 
 
+
 .. _`ethtool_dump`:
 
 struct ethtool_dump
 ===================
 
-.. c:type:: struct ethtool_dump
+.. c:type:: ethtool_dump
 
     used for retrieving, setting device dump
 
 
+.. _`ethtool_dump.definition`:
 
 Definition
 ----------
@@ -1959,6 +2151,7 @@ Definition
   };
 
 
+.. _`ethtool_dump.members`:
 
 Members
 -------
@@ -1986,16 +2179,18 @@ Members
 
 
 
+
 .. _`ethtool_get_features_block`:
 
 struct ethtool_get_features_block
 =================================
 
-.. c:type:: struct ethtool_get_features_block
+.. c:type:: ethtool_get_features_block
 
     block with state of 32 features
 
 
+.. _`ethtool_get_features_block.definition`:
 
 Definition
 ----------
@@ -2010,6 +2205,7 @@ Definition
   };
 
 
+.. _`ethtool_get_features_block.members`:
 
 Members
 -------
@@ -2028,16 +2224,18 @@ Members
 
 
 
+
 .. _`ethtool_gfeatures`:
 
 struct ethtool_gfeatures
 ========================
 
-.. c:type:: struct ethtool_gfeatures
+.. c:type:: ethtool_gfeatures
 
     command to get state of device's features
 
 
+.. _`ethtool_gfeatures.definition`:
 
 Definition
 ----------
@@ -2051,6 +2249,7 @@ Definition
   };
 
 
+.. _`ethtool_gfeatures.members`:
 
 Members
 -------
@@ -2068,16 +2267,18 @@ Members
 
 
 
+
 .. _`ethtool_set_features_block`:
 
 struct ethtool_set_features_block
 =================================
 
-.. c:type:: struct ethtool_set_features_block
+.. c:type:: ethtool_set_features_block
 
     block with request for 32 features
 
 
+.. _`ethtool_set_features_block.definition`:
 
 Definition
 ----------
@@ -2090,6 +2291,7 @@ Definition
   };
 
 
+.. _`ethtool_set_features_block.members`:
 
 Members
 -------
@@ -2102,16 +2304,18 @@ Members
 
 
 
+
 .. _`ethtool_sfeatures`:
 
 struct ethtool_sfeatures
 ========================
 
-.. c:type:: struct ethtool_sfeatures
+.. c:type:: ethtool_sfeatures
 
     command to request change in device's features
 
 
+.. _`ethtool_sfeatures.definition`:
 
 Definition
 ----------
@@ -2125,6 +2329,7 @@ Definition
   };
 
 
+.. _`ethtool_sfeatures.members`:
 
 Members
 -------
@@ -2140,16 +2345,18 @@ Members
 
 
 
+
 .. _`ethtool_ts_info`:
 
 struct ethtool_ts_info
 ======================
 
-.. c:type:: struct ethtool_ts_info
+.. c:type:: ethtool_ts_info
 
     holds a device's timestamping and PHC association
 
 
+.. _`ethtool_ts_info.definition`:
 
 Definition
 ----------
@@ -2165,6 +2372,7 @@ Definition
   };
 
 
+.. _`ethtool_ts_info.members`:
 
 Members
 -------
@@ -2186,6 +2394,9 @@ Members
 
 
 
+
+.. _`ethtool_ts_info.description`:
+
 Description
 -----------
 
@@ -2200,16 +2411,18 @@ HWTSTAMP_FILTER_V1_SYNC is supported by HWTSTAMP_FILTER_V1_EVENT, then the
 driver should only report HWTSTAMP_FILTER_V1_EVENT in this op.
 
 
+
 .. _`ethtool_per_queue_op`:
 
 struct ethtool_per_queue_op
 ===========================
 
-.. c:type:: struct ethtool_per_queue_op
+.. c:type:: ethtool_per_queue_op
 
     apply sub command to the queues in mask.
 
 
+.. _`ethtool_per_queue_op.definition`:
 
 Definition
 ----------
@@ -2224,6 +2437,7 @@ Definition
   };
 
 
+.. _`ethtool_per_queue_op.members`:
 
 Members
 -------
@@ -2242,16 +2456,18 @@ Members
 
 
 
+
 .. _`ethtool_link_settings`:
 
 struct ethtool_link_settings
 ============================
 
-.. c:type:: struct ethtool_link_settings
+.. c:type:: ethtool_link_settings
 
     link control and status
 
 
+.. _`ethtool_link_settings.definition`:
 
 Definition
 ----------
@@ -2272,6 +2488,7 @@ Definition
   };
 
 
+.. _`ethtool_link_settings.members`:
 
 Members
 -------
@@ -2319,6 +2536,9 @@ Members
 
 
 
+
+.. _`ethtool_link_settings.description`:
+
 Description
 -----------
 
@@ -2361,6 +2581,34 @@ by kernel), and rely only on kernel's internal
 and ``link_mode_masks_nwords`` that are not described as read-only or
 deprecated, and must ignore all fields described as read-only.
 
+
+
+.. _`ethtool_link_settings.succeeded`:
+
+succeeded
+---------
+
+stick to ``ETHTOOL_GLINKSETTINGS``\ /\ ``SLINKSETTINGS`` in
+that case.  Conversely, if ``ETHTOOL_GLINKSETTINGS`` fails, use
+``ETHTOOL_GSET`` to query and ``ETHTOOL_SSET`` to change link
+settings; do not use ``ETHTOOL_SLINKSETTINGS`` if
+
+
+
+.. _`ethtool_link_settings.request-size-unsupported-by-kernel`:
+
+request size unsupported by kernel
+----------------------------------
+
+absolute value indicates
+kernel expected size and all the other fields but cmd
+are 0; otherwise (handshake completed), strictly positive
+to indicate size used by kernel and cmd field stays
+``ETHTOOL_GLINKSETTINGS``\ , all other fields populated by driver. For
+
+
+
+.. _`ethtool_link_settings.description`:
 
 Description
 -----------

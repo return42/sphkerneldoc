@@ -4,16 +4,18 @@
 videobuf2-v4l2.h
 ================
 
+
 .. _`vb2_v4l2_buffer`:
 
 struct vb2_v4l2_buffer
 ======================
 
-.. c:type:: struct vb2_v4l2_buffer
+.. c:type:: vb2_v4l2_buffer
 
     video buffer information for v4l2
 
 
+.. _`vb2_v4l2_buffer.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`vb2_v4l2_buffer.members`:
 
 Members
 -------

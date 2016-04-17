@@ -4,6 +4,7 @@
 libata-core.c
 =============
 
+
 .. _`ata_link_next`:
 
 ata_link_next
@@ -20,19 +21,26 @@ ata_link_next
         ATA port containing links to iterate
 
     :param enum ata_link_iter_mode mode:
-        iteration mode, one of ATA_LITER_*
+        iteration mode, one of ATA_LITER\_\*
 
 
-.. _`ata_link_next.description`:
 
-Description
------------
+.. _`ata_link_next.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 Host lock or EH context.
 
-RETURNS:
+
+
+.. _`ata_link_next.returns`:
+
+RETURNS
+-------
+
 Pointer to the next link.
+
 
 
 .. _`ata_dev_next`:
@@ -51,19 +59,26 @@ ata_dev_next
         ATA link containing devices to iterate
 
     :param enum ata_dev_iter_mode mode:
-        iteration mode, one of ATA_DITER_*
+        iteration mode, one of ATA_DITER\_\*
 
 
-.. _`ata_dev_next.description`:
 
-Description
------------
+.. _`ata_dev_next.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 Host lock or EH context.
 
-RETURNS:
+
+
+.. _`ata_dev_next.returns`:
+
+RETURNS
+-------
+
 Pointer to the next device.
+
 
 
 .. _`ata_dev_phys_link`:
@@ -79,6 +94,7 @@ ata_dev_phys_link
         ATA device to look up physical link for
 
 
+
 .. _`ata_dev_phys_link.description`:
 
 Description
@@ -88,11 +104,24 @@ Look up physical link which ``dev`` is attached to.  Note that
 this is different from ``dev``\ ->link only when ``dev`` is on slave
 link.  For all other cases, it's the same as ``dev``\ ->link.
 
-LOCKING:
+
+
+.. _`ata_dev_phys_link.locking`:
+
+LOCKING
+-------
+
 Don't care.
 
-RETURNS:
+
+
+.. _`ata_dev_phys_link.returns`:
+
+RETURNS
+-------
+
 Pointer to the found physical link.
+
 
 
 .. _`ata_force_cbl`:
@@ -108,6 +137,7 @@ ata_force_cbl
         ATA port of interest
 
 
+
 .. _`ata_force_cbl.description`:
 
 Description
@@ -119,8 +149,15 @@ can be specified as part of device force parameters.  For
 example, both "a:40c,1.00:udma4" and "1.00:40c,udma4" have the
 same effect.
 
-LOCKING:
+
+
+.. _`ata_force_cbl.locking`:
+
+LOCKING
+-------
+
 EH context.
+
 
 
 .. _`ata_force_link_limits`:
@@ -134,6 +171,7 @@ ata_force_link_limits
 
     :param struct ata_link \*link:
         ATA link of interest
+
 
 
 .. _`ata_force_link_limits.description`:
@@ -150,8 +188,15 @@ first fan-out link not the host link.  Device number 15 always
 points to the host link whether PMP is attached or not.  If the
 controller has slave link, device number 16 points to it.
 
-LOCKING:
+
+
+.. _`ata_force_link_limits.locking`:
+
+LOCKING
+-------
+
 EH context.
+
 
 
 .. _`ata_force_xfermask`:
@@ -167,6 +212,7 @@ ata_force_xfermask
         ATA device of interest
 
 
+
 .. _`ata_force_xfermask.description`:
 
 Description
@@ -176,8 +222,15 @@ Force xfer_mask according to libata.force and whine about it.
 For consistency with link selection, device number 15 selects
 the first device connected to the host link.
 
-LOCKING:
+
+
+.. _`ata_force_xfermask.locking`:
+
+LOCKING
+-------
+
 EH context.
+
 
 
 .. _`ata_force_horkage`:
@@ -193,6 +246,7 @@ ata_force_horkage
         ATA device of interest
 
 
+
 .. _`ata_force_horkage.description`:
 
 Description
@@ -202,8 +256,15 @@ Force horkage according to libata.force and whine about it.
 For consistency with link selection, device number 15 selects
 the first device connected to the host link.
 
-LOCKING:
+
+
+.. _`ata_force_horkage.locking`:
+
+LOCKING
+-------
+
 EH context.
+
 
 
 .. _`atapi_cmd_type`:
@@ -219,6 +280,7 @@ atapi_cmd_type
         SCSI opcode
 
 
+
 .. _`atapi_cmd_type.description`:
 
 Description
@@ -226,11 +288,24 @@ Description
 
 Determine ATAPI command type from ``opcode``\ .
 
-LOCKING:
+
+
+.. _`atapi_cmd_type.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`atapi_cmd_type.returns`:
+
+RETURNS
+-------
+
 ATAPI_{READ|WRITE|READ_CD|PASS_THRU|MISC}
+
 
 
 .. _`ata_tf_to_fis`:
@@ -255,6 +330,7 @@ ata_tf_to_fis
         Buffer into which data will output
 
 
+
 .. _`ata_tf_to_fis.description`:
 
 Description
@@ -263,8 +339,15 @@ Description
 Converts a standard ATA taskfile to a Serial ATA
 FIS structure (Register - Host to Device).
 
-LOCKING:
+
+
+.. _`ata_tf_to_fis.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
+
 
 
 .. _`ata_tf_from_fis`:
@@ -283,6 +366,7 @@ ata_tf_from_fis
         Taskfile to output
 
 
+
 .. _`ata_tf_from_fis.description`:
 
 Description
@@ -290,8 +374,15 @@ Description
 
 Converts a serial ATA FIS structure to a standard ATA taskfile.
 
-LOCKING:
+
+
+.. _`ata_tf_from_fis.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
+
 
 
 .. _`ata_rwcmd_protocol`:
@@ -310,6 +401,7 @@ ata_rwcmd_protocol
         device tf belongs to
 
 
+
 .. _`ata_rwcmd_protocol.description`:
 
 Description
@@ -318,8 +410,15 @@ Description
 Examine the device configuration and tf->flags to calculate
 the proper read/write commands and protocol to use.
 
-LOCKING:
+
+
+.. _`ata_rwcmd_protocol.locking`:
+
+LOCKING
+-------
+
 caller.
+
 
 
 .. _`ata_tf_read_block`:
@@ -338,20 +437,27 @@ ata_tf_read_block
         ATA device ``tf`` belongs to
 
 
-.. _`ata_tf_read_block.description`:
 
-Description
------------
+.. _`ata_tf_read_block.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 None.
 
 Read block address from ``tf``\ .  This function can handle all
 three address formats - LBA, LBA48 and CHS.  tf->protocol and
 flags select the address format to use.
 
-RETURNS:
+
+
+.. _`ata_tf_read_block.returns`:
+
+RETURNS
+-------
+
 Block address read from ``tf``\ .
+
 
 
 .. _`ata_build_rw_tf`:
@@ -382,21 +488,28 @@ ata_build_rw_tf
         tag
 
 
-.. _`ata_build_rw_tf.description`:
 
-Description
------------
+.. _`ata_build_rw_tf.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 None.
 
 Build ATA taskfile ``tf`` for read/write request described by
 ``block``\ , ``n_block``\ , ``tf_flags`` and ``tag`` on ``dev``\ .
 
-RETURNS:
+
+
+.. _`ata_build_rw_tf.returns`:
+
+RETURNS
+-------
+
 
 0 on success, -ERANGE if the request is too large for ``dev``\ ,
 -EINVAL if the request is invalid.
+
 
 
 .. _`ata_pack_xfermask`:
@@ -418,6 +531,7 @@ ata_pack_xfermask
         udma_mask
 
 
+
 .. _`ata_pack_xfermask.description`:
 
 Description
@@ -426,11 +540,24 @@ Description
 Pack ``pio_mask``\ , ``mwdma_mask`` and ``udma_mask`` into a single
 unsigned int xfer_mask.
 
-LOCKING:
+
+
+.. _`ata_pack_xfermask.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_pack_xfermask.returns`:
+
+RETURNS
+-------
+
 Packed xfer_mask.
+
 
 
 .. _`ata_unpack_xfermask`:
@@ -455,6 +582,7 @@ ata_unpack_xfermask
         resulting udma_mask
 
 
+
 .. _`ata_unpack_xfermask.description`:
 
 Description
@@ -464,6 +592,7 @@ Unpack ``xfer_mask`` into ``pio_mask``\ , ``mwdma_mask`` and ``udma_mask``\ .
 Any NULL distination masks will be ignored.
 
 
+
 .. _`ata_xfer_mask2mode`:
 
 ata_xfer_mask2mode
@@ -471,10 +600,11 @@ ata_xfer_mask2mode
 
 .. c:function:: u8 ata_xfer_mask2mode (unsigned long xfer_mask)
 
-    Find matching XFER_* for the given xfer_mask
+    Find matching XFER\_\* for the given xfer_mask
 
     :param unsigned long xfer_mask:
         xfer_mask of interest
+
 
 
 .. _`ata_xfer_mask2mode.description`:
@@ -482,14 +612,27 @@ ata_xfer_mask2mode
 Description
 -----------
 
-Return matching XFER_\* value for ``xfer_mask``\ .  Only the highest
+Return matching XFER\_\* value for ``xfer_mask``\ .  Only the highest
 bit of ``xfer_mask`` is considered.
 
-LOCKING:
+
+
+.. _`ata_xfer_mask2mode.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
-Matching XFER_\* value, 0xff if no match found.
+
+
+.. _`ata_xfer_mask2mode.returns`:
+
+RETURNS
+-------
+
+Matching XFER\_\* value, 0xff if no match found.
+
 
 
 .. _`ata_xfer_mode2mask`:
@@ -499,10 +642,11 @@ ata_xfer_mode2mask
 
 .. c:function:: unsigned long ata_xfer_mode2mask (u8 xfer_mode)
 
-    Find matching xfer_mask for XFER_*
+    Find matching xfer_mask for XFER\_\*
 
     :param u8 xfer_mode:
-        XFER_\* of interest
+        XFER\_\* of interest
+
 
 
 .. _`ata_xfer_mode2mask.description`:
@@ -512,11 +656,24 @@ Description
 
 Return matching xfer_mask for ``xfer_mode``\ .
 
-LOCKING:
+
+
+.. _`ata_xfer_mode2mask.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_xfer_mode2mask.returns`:
+
+RETURNS
+-------
+
 Matching xfer_mask, 0 if no match found.
+
 
 
 .. _`ata_xfer_mode2shift`:
@@ -526,10 +683,11 @@ ata_xfer_mode2shift
 
 .. c:function:: int ata_xfer_mode2shift (unsigned long xfer_mode)
 
-    Find matching xfer_shift for XFER_*
+    Find matching xfer_shift for XFER\_\*
 
     :param unsigned long xfer_mode:
-        XFER_\* of interest
+        XFER\_\* of interest
+
 
 
 .. _`ata_xfer_mode2shift.description`:
@@ -539,11 +697,24 @@ Description
 
 Return matching xfer_shift for ``xfer_mode``\ .
 
-LOCKING:
+
+
+.. _`ata_xfer_mode2shift.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_xfer_mode2shift.returns`:
+
+RETURNS
+-------
+
 Matching xfer_shift, -1 if no match found.
+
 
 
 .. _`ata_mode_string`:
@@ -559,6 +730,7 @@ ata_mode_string
         mask of bits supported; only highest bit counts.
 
 
+
 .. _`ata_mode_string.description`:
 
 Description
@@ -567,12 +739,25 @@ Description
 Determine string which represents the highest speed
 (highest bit in ``modemask``\ ).
 
-LOCKING:
+
+
+.. _`ata_mode_string.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_mode_string.returns`:
+
+RETURNS
+-------
+
 Constant C string representing highest speed listed in
 ``mode_mask``\ , or the constant C string "<n/a>".
+
 
 
 .. _`ata_dev_classify`:
@@ -588,6 +773,7 @@ ata_dev_classify
         ATA taskfile register set for device to be identified
 
 
+
 .. _`ata_dev_classify.description`:
 
 Description
@@ -597,12 +783,25 @@ Determine from taskfile register contents whether a device is
 ATA or ATAPI, as per "Signature and persistence" section
 of ATA/PI spec (volume 1, sect 5.14).
 
-LOCKING:
+
+
+.. _`ata_dev_classify.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_dev_classify.returns`:
+
+RETURNS
+-------
+
 Device type, ``ATA_DEV_ATA``\ , ``ATA_DEV_ATAPI``\ , ``ATA_DEV_PMP``\ ,
 ``ATA_DEV_ZAC``\ , or ``ATA_DEV_UNKNOWN`` the event of failure.
+
 
 
 .. _`ata_id_string`:
@@ -627,6 +826,7 @@ ata_id_string
         length of string to return. must be an even number.
 
 
+
 .. _`ata_id_string.description`:
 
 Description
@@ -636,8 +836,15 @@ The strings in the IDENTIFY DEVICE page are broken up into
 16-bit chunks.  Run through the string, and output each
 8-bit chunk linearly, regardless of platform.
 
-LOCKING:
+
+
+.. _`ata_id_string.locking`:
+
+LOCKING
+-------
+
 caller.
+
 
 
 .. _`ata_id_c_string`:
@@ -662,6 +869,7 @@ ata_id_c_string
         length of string to return. must be an odd number.
 
 
+
 .. _`ata_id_c_string.description`:
 
 Description
@@ -671,8 +879,15 @@ This function is identical to ata_id_string except that it
 trims trailing spaces and terminates the resulting string with
 null.  ``len`` must be actual maximum length (even number) + 1.
 
-LOCKING:
+
+
+.. _`ata_id_c_string.locking`:
+
+LOCKING
+-------
+
 caller.
+
 
 
 .. _`ata_read_native_max_address`:
@@ -691,6 +906,7 @@ ata_read_native_max_address
         out parameter for the result native max address
 
 
+
 .. _`ata_read_native_max_address.description`:
 
 Description
@@ -699,9 +915,16 @@ Description
 Perform an LBA48 or LBA28 native size query upon the device in
 question.
 
-RETURNS:
+
+
+.. _`ata_read_native_max_address.returns`:
+
+RETURNS
+-------
+
 0 on success, -EACCES if command is aborted by the drive.
 -EIO on other errors.
+
 
 
 .. _`ata_set_max_sectors`:
@@ -720,6 +943,7 @@ ata_set_max_sectors
         new max sectors value to set for the device
 
 
+
 .. _`ata_set_max_sectors.description`:
 
 Description
@@ -727,10 +951,17 @@ Description
 
 Set max sectors of ``dev`` to ``new_sectors``\ .
 
-RETURNS:
+
+
+.. _`ata_set_max_sectors.returns`:
+
+RETURNS
+-------
+
 0 on success, -EACCES if command is aborted or denied (due to
 previous non-volatile SET_MAX) by the drive.  -EIO on other
 errors.
+
 
 
 .. _`ata_hpa_resize`:
@@ -746,6 +977,7 @@ ata_hpa_resize
         Device to resize
 
 
+
 .. _`ata_hpa_resize.description`:
 
 Description
@@ -755,8 +987,15 @@ Read the size of an LBA28 or LBA48 disk with HPA features and resize
 it if required to the full size of the media. The caller must check
 the drive has the HPA feature set enabled.
 
-RETURNS:
+
+
+.. _`ata_hpa_resize.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno on failure.
+
 
 
 .. _`ata_dump_id`:
@@ -772,6 +1011,7 @@ ata_dump_id
         IDENTIFY DEVICE page to dump
 
 
+
 .. _`ata_dump_id.description`:
 
 Description
@@ -780,8 +1020,15 @@ Description
 Dump selected 16-bit words from the given IDENTIFY DEVICE
 page.
 
-LOCKING:
+
+
+.. _`ata_dump_id.locking`:
+
+LOCKING
+-------
+
 caller.
+
 
 
 .. _`ata_id_xfermask`:
@@ -797,6 +1044,7 @@ ata_id_xfermask
         IDENTIFY data to compute xfer mask from
 
 
+
 .. _`ata_id_xfermask.description`:
 
 Description
@@ -805,13 +1053,33 @@ Description
 Compute the xfermask for this device. This is not as trivial
 as it seems if we must consider early devices correctly.
 
-FIXME: pre IDE drive timing (do we care ?).
 
-LOCKING:
+
+.. _`ata_id_xfermask.fixme`:
+
+FIXME
+-----
+
+pre IDE drive timing (do we care ?).
+
+
+
+.. _`ata_id_xfermask.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_id_xfermask.returns`:
+
+RETURNS
+-------
+
 Computed xfermask
+
 
 
 .. _`ata_exec_internal_sg`:
@@ -845,6 +1113,7 @@ ata_exec_internal_sg
         Timeout in msecs (0 for default)
 
 
+
 .. _`ata_exec_internal_sg.description`:
 
 Description
@@ -856,11 +1125,24 @@ conditions are reported via return value.  No recovery action
 is taken after a command times out.  It's caller's duty to
 clean up after timeout.
 
-LOCKING:
+
+
+.. _`ata_exec_internal_sg.locking`:
+
+LOCKING
+-------
+
 None.  Should be called with kernel context, might sleep.
 
-RETURNS:
-Zero on success, AC_ERR_\* mask on failure
+
+
+.. _`ata_exec_internal_sg.returns`:
+
+RETURNS
+-------
+
+Zero on success, AC_ERR\_\* mask on failure
+
 
 
 .. _`ata_exec_internal`:
@@ -894,6 +1176,7 @@ ata_exec_internal
         Timeout in msecs (0 for default)
 
 
+
 .. _`ata_exec_internal.description`:
 
 Description
@@ -902,11 +1185,24 @@ Description
 Wrapper around :c:func:`ata_exec_internal_sg` which takes simple
 buffer instead of sg list.
 
-LOCKING:
+
+
+.. _`ata_exec_internal.locking`:
+
+LOCKING
+-------
+
 None.  Should be called with kernel context, might sleep.
 
-RETURNS:
-Zero on success, AC_ERR_\* mask on failure
+
+
+.. _`ata_exec_internal.returns`:
+
+RETURNS
+-------
+
+Zero on success, AC_ERR\_\* mask on failure
+
 
 
 .. _`ata_pio_need_iordy`:
@@ -922,6 +1218,7 @@ ata_pio_need_iordy
         ATA device
 
 
+
 .. _`ata_pio_need_iordy.description`:
 
 Description
@@ -929,6 +1226,7 @@ Description
 
 Check if the current speed of the device requires IORDY. Used
 by various controllers for chip configuration.
+
 
 
 .. _`ata_pio_mask_no_iordy`:
@@ -944,6 +1242,7 @@ ata_pio_mask_no_iordy
         ATA device
 
 
+
 .. _`ata_pio_mask_no_iordy.description`:
 
 Description
@@ -951,6 +1250,7 @@ Description
 
 Compute the highest mode possible if we are not using iordy. Return
 -1 if no iordy mode is available.
+
 
 
 .. _`ata_do_dev_read_id`:
@@ -972,6 +1272,7 @@ ata_do_dev_read_id
         data buffer
 
 
+
 .. _`ata_do_dev_read_id.description`:
 
 Description
@@ -980,6 +1281,7 @@ Description
 Issue the identify taskfile and hand back the buffer containing
 identify data. For some RAID controllers and for pre ATA devices
 this function is wrapped or replaced by the driver
+
 
 
 .. _`ata_dev_read_id`:
@@ -998,10 +1300,11 @@ ata_dev_read_id
         pointer to class of the target device (may be changed)
 
     :param unsigned int flags:
-        ATA_READID_\* flags
+        ATA_READID\_\* flags
 
     :param u16 \*id:
         buffer to read IDENTIFY data into
+
 
 
 .. _`ata_dev_read_id.description`:
@@ -1014,14 +1317,34 @@ performed on ATA devices and ATA_CMD_ID_ATAPI on ATAPI
 devices.  This function also issues ATA_CMD_INIT_DEV_PARAMS
 for pre-ATA4 drives.
 
-FIXME: ATA_CMD_ID_ATA is optional for early drives and right
+
+
+.. _`ata_dev_read_id.fixme`:
+
+FIXME
+-----
+
+ATA_CMD_ID_ATA is optional for early drives and right
 now we abort if we hit that case.
 
-LOCKING:
+
+
+.. _`ata_dev_read_id.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_dev_read_id.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`ata_dev_configure`:
@@ -1037,6 +1360,7 @@ ata_dev_configure
         Target device to configure
 
 
+
 .. _`ata_dev_configure.description`:
 
 Description
@@ -1045,11 +1369,24 @@ Description
 Configure ``dev`` according to ``dev``\ ->id.  Generic and low-level
 driver specific fixups are also applied.
 
-LOCKING:
+
+
+.. _`ata_dev_configure.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_dev_configure.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise
+
 
 
 .. _`ata_cable_40wire`:
@@ -1065,6 +1402,7 @@ ata_cable_40wire
         port
 
 
+
 .. _`ata_cable_40wire.description`:
 
 Description
@@ -1072,6 +1410,7 @@ Description
 
 Helper method for drivers which want to hardwire 40 wire cable
 detection.
+
 
 
 .. _`ata_cable_80wire`:
@@ -1087,6 +1426,7 @@ ata_cable_80wire
         port
 
 
+
 .. _`ata_cable_80wire.description`:
 
 Description
@@ -1094,6 +1434,7 @@ Description
 
 Helper method for drivers which want to hardwire 80 wire cable
 detection.
+
 
 
 .. _`ata_cable_unknown`:
@@ -1109,12 +1450,14 @@ ata_cable_unknown
         port
 
 
+
 .. _`ata_cable_unknown.description`:
 
 Description
 -----------
 
 Helper method for drivers which have no PATA cable detection.
+
 
 
 .. _`ata_cable_ignore`:
@@ -1130,6 +1473,7 @@ ata_cable_ignore
         port
 
 
+
 .. _`ata_cable_ignore.description`:
 
 Description
@@ -1137,6 +1481,7 @@ Description
 
 Helper method for drivers which don't use cable type to limit
 transfer mode.
+
 
 
 .. _`ata_cable_sata`:
@@ -1152,12 +1497,14 @@ ata_cable_sata
         port
 
 
+
 .. _`ata_cable_sata.description`:
 
 Description
 -----------
 
 Helper method for drivers which have SATA cables
+
 
 
 .. _`ata_bus_probe`:
@@ -1173,6 +1520,7 @@ ata_bus_probe
         Bus to probe
 
 
+
 .. _`ata_bus_probe.description`:
 
 Description
@@ -1182,11 +1530,24 @@ Master ATA bus probing function.  Initiates a hardware-dependent
 bus reset, then attempts to identify any devices found on
 the bus.
 
-LOCKING:
+
+
+.. _`ata_bus_probe.locking`:
+
+LOCKING
+-------
+
 PCI/etc. bus probe sem.
 
-RETURNS:
+
+
+.. _`ata_bus_probe.returns`:
+
+RETURNS
+-------
+
 Zero on success, negative errno otherwise.
+
 
 
 .. _`sata_print_link_status`:
@@ -1202,6 +1563,7 @@ sata_print_link_status
         SATA link to printk link status about
 
 
+
 .. _`sata_print_link_status.description`:
 
 Description
@@ -1209,8 +1571,15 @@ Description
 
 This function prints link speed and status of a SATA link.
 
-LOCKING:
+
+
+.. _`sata_print_link_status.locking`:
+
+LOCKING
+-------
+
 None.
+
 
 
 .. _`ata_dev_pair`:
@@ -1226,6 +1595,7 @@ ata_dev_pair
         device
 
 
+
 .. _`ata_dev_pair.description`:
 
 Description
@@ -1233,6 +1603,7 @@ Description
 
 Obtain the other device on the same cable, or if none is
 present NULL is returned
+
 
 
 .. _`sata_down_spd_limit`:
@@ -1251,6 +1622,7 @@ sata_down_spd_limit
         Additional limit
 
 
+
 .. _`sata_down_spd_limit.description`:
 
 Description
@@ -1265,11 +1637,24 @@ lower than ``spd_limit`` if such speed is supported.  If
 ``spd_limit`` is slower than any supported speed, only the lowest
 supported speed is allowed.
 
-LOCKING:
+
+
+.. _`sata_down_spd_limit.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
 
-RETURNS:
+
+
+.. _`sata_down_spd_limit.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno on failure
+
 
 
 .. _`sata_set_spd_needed`:
@@ -1285,6 +1670,7 @@ sata_set_spd_needed
         Link in question
 
 
+
 .. _`sata_set_spd_needed.description`:
 
 Description
@@ -1295,11 +1681,24 @@ Test whether the spd limit in SControl matches
 whether hardreset is necessary to apply SATA spd
 configuration.
 
-LOCKING:
+
+
+.. _`sata_set_spd_needed.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
 
-RETURNS:
+
+
+.. _`sata_set_spd_needed.returns`:
+
+RETURNS
+-------
+
 1 if SATA spd configuration is needed, 0 otherwise.
+
 
 
 .. _`sata_set_spd`:
@@ -1315,6 +1714,7 @@ sata_set_spd
         Link to set SATA spd for
 
 
+
 .. _`sata_set_spd.description`:
 
 Description
@@ -1322,12 +1722,25 @@ Description
 
 Set SATA spd of ``link`` according to sata_spd_limit.
 
-LOCKING:
+
+
+.. _`sata_set_spd.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
 
-RETURNS:
+
+
+.. _`sata_set_spd.returns`:
+
+RETURNS
+-------
+
 0 if spd doesn't need to be changed, 1 if spd has been
 changed.  Negative errno if SCR registers are inaccessible.
+
 
 
 .. _`ata_timing_cycle2mode`:
@@ -1340,10 +1753,11 @@ ata_timing_cycle2mode
     find xfer mode for the specified cycle duration
 
     :param unsigned int xfer_shift:
-        ATA_SHIFT_\* value for transfer type to examine.
+        ATA_SHIFT\_\* value for transfer type to examine.
 
     :param int cycle:
         cycle duration in ns
+
 
 
 .. _`ata_timing_cycle2mode.description`:
@@ -1356,11 +1770,24 @@ the transfer type specified by ``xfer_shift``\ .  If ``cycle`` is too
 slow for ``xfer_shift``\ , 0xff is returned.  If ``cycle`` is faster
 than the fastest known mode, the fasted mode is returned.
 
-LOCKING:
+
+
+.. _`ata_timing_cycle2mode.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_timing_cycle2mode.returns`:
+
+RETURNS
+-------
+
 Matching xfer_mode, 0xff if no match found.
+
 
 
 .. _`ata_down_xfermask_limit`:
@@ -1376,7 +1803,8 @@ ata_down_xfermask_limit
         Device to adjust xfer masks
 
     :param unsigned int sel:
-        ATA_DNXFER_\* selector
+        ATA_DNXFER\_\* selector
+
 
 
 .. _`ata_down_xfermask_limit.description`:
@@ -1388,11 +1816,24 @@ Adjust xfer masks of ``dev`` downward.  Note that this function
 does not apply the change.  Invoking :c:func:`ata_set_mode` afterwards
 will apply the limit.
 
-LOCKING:
+
+
+.. _`ata_down_xfermask_limit.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
 
-RETURNS:
+
+
+.. _`ata_down_xfermask_limit.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno on failure
+
 
 
 .. _`ata_do_set_mode`:
@@ -1411,6 +1852,7 @@ ata_do_set_mode
         out parameter for failed device
 
 
+
 .. _`ata_do_set_mode.description`:
 
 Description
@@ -1421,11 +1863,24 @@ ATA device disk transfer mode (PIO3, UDMA6, etc.).  If
 :c:func:`ata_dev_set_mode` fails, pointer to the failing device is
 returned in ``r_failed_dev``\ .
 
-LOCKING:
+
+
+.. _`ata_do_set_mode.locking`:
+
+LOCKING
+-------
+
 PCI/etc. bus probe sem.
 
-RETURNS:
+
+
+.. _`ata_do_set_mode.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno otherwise
+
 
 
 .. _`ata_wait_ready`:
@@ -1447,6 +1902,7 @@ ata_wait_ready
         callback to check link readiness
 
 
+
 .. _`ata_wait_ready.description`:
 
 Description
@@ -1460,11 +1916,24 @@ conditions.
 Transient -ENODEV conditions are allowed for
 ATA_TMOUT_FF_WAIT.
 
-LOCKING:
+
+
+.. _`ata_wait_ready.locking`:
+
+LOCKING
+-------
+
 EH context.
 
-RETURNS:
+
+
+.. _`ata_wait_ready.returns`:
+
+RETURNS
+-------
+
 0 if ``linke`` is ready before ``deadline``\ ; otherwise, -errno.
+
 
 
 .. _`ata_wait_after_reset`:
@@ -1486,6 +1955,7 @@ ata_wait_after_reset
         callback to check link readiness
 
 
+
 .. _`ata_wait_after_reset.description`:
 
 Description
@@ -1493,11 +1963,24 @@ Description
 
 Wait for ``link`` to become ready after reset.
 
-LOCKING:
+
+
+.. _`ata_wait_after_reset.locking`:
+
+LOCKING
+-------
+
 EH context.
 
-RETURNS:
+
+
+.. _`ata_wait_after_reset.returns`:
+
+RETURNS
+-------
+
 0 if ``linke`` is ready before ``deadline``\ ; otherwise, -errno.
+
 
 
 .. _`sata_link_debounce`:
@@ -1519,6 +2002,7 @@ sata_link_debounce
         deadline jiffies for the operation
 
 
+
 .. _`sata_link_debounce.description`:
 
 Description
@@ -1534,11 +2018,24 @@ until timeout then returns 0 if DET is stable at 1.
 ``timeout`` is further limited by ``deadline``\ .  The sooner of the
 two is used.
 
-LOCKING:
+
+
+.. _`sata_link_debounce.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`sata_link_debounce.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno on failure.
+
 
 
 .. _`sata_link_resume`:
@@ -1560,6 +2057,7 @@ sata_link_resume
         deadline jiffies for the operation
 
 
+
 .. _`sata_link_resume.description`:
 
 Description
@@ -1567,11 +2065,24 @@ Description
 
 Resume SATA phy ``link`` and debounce it.
 
-LOCKING:
+
+
+.. _`sata_link_resume.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`sata_link_resume.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno on failure.
+
 
 
 .. _`sata_link_scr_lpm`:
@@ -1593,6 +2104,7 @@ sata_link_scr_lpm
         initiate LPM transition to active state
 
 
+
 .. _`sata_link_scr_lpm.description`:
 
 Description
@@ -1604,11 +2116,24 @@ according to ``policy``\ .  If ``policy`` is ATA_LPM_MAX_POWER and
 the link.  This function also clears PHYRDY_CHG before
 returning.
 
-LOCKING:
+
+
+.. _`sata_link_scr_lpm.locking`:
+
+LOCKING
+-------
+
 EH context.
 
-RETURNS:
+
+
+.. _`sata_link_scr_lpm.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`ata_std_prereset`:
@@ -1627,6 +2152,7 @@ ata_std_prereset
         deadline jiffies for the operation
 
 
+
 .. _`ata_std_prereset.description`:
 
 Description
@@ -1638,11 +2164,24 @@ that port, so prereset should be best-effort.  It does its
 best to prepare for reset sequence but if things go wrong, it
 should just whine, not fail.
 
-LOCKING:
+
+
+.. _`ata_std_prereset.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_std_prereset.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`sata_link_hardreset`:
@@ -1670,6 +2209,7 @@ sata_link_hardreset
         optional callback to check link readiness
 
 
+
 .. _`sata_link_hardreset.description`:
 
 Description
@@ -1685,11 +2225,24 @@ responsibility.
 \*\ ``online`` is set to one iff reset succeeded and ``link`` is online
 after reset.
 
-LOCKING:
+
+
+.. _`sata_link_hardreset.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`sata_link_hardreset.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`sata_std_hardreset`:
@@ -1711,6 +2264,7 @@ sata_std_hardreset
         deadline jiffies for the operation
 
 
+
 .. _`sata_std_hardreset.description`:
 
 Description
@@ -1718,11 +2272,24 @@ Description
 
 Standard SATA COMRESET w/o waiting or classification.
 
-LOCKING:
+
+
+.. _`sata_std_hardreset.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`sata_std_hardreset.returns`:
+
+RETURNS
+-------
+
 0 if link offline, -EAGAIN if link online, -errno on errors.
+
 
 
 .. _`ata_std_postreset`:
@@ -1741,6 +2308,7 @@ ata_std_postreset
         classes of attached devices
 
 
+
 .. _`ata_std_postreset.description`:
 
 Description
@@ -1750,8 +2318,15 @@ This function is invoked after a successful reset.  Note that
 the device might have been reset more than once using
 different reset methods before postreset is invoked.
 
-LOCKING:
+
+
+.. _`ata_std_postreset.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
+
 
 
 .. _`ata_dev_same_device`:
@@ -1773,6 +2348,7 @@ ata_dev_same_device
         IDENTIFY page of the new device
 
 
+
 .. _`ata_dev_same_device.description`:
 
 Description
@@ -1782,11 +2358,24 @@ Compare ``new_class`` and ``new_id`` against ``dev`` and determine
 whether ``dev`` is the device indicated by ``new_class`` and
 ``new_id``\ .
 
-LOCKING:
+
+
+.. _`ata_dev_same_device.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_dev_same_device.returns`:
+
+RETURNS
+-------
+
 1 if ``dev`` matches ``new_class`` and ``new_id``\ , 0 otherwise.
+
 
 
 .. _`ata_dev_reread_id`:
@@ -1805,6 +2394,7 @@ ata_dev_reread_id
         read ID flags
 
 
+
 .. _`ata_dev_reread_id.description`:
 
 Description
@@ -1813,11 +2403,24 @@ Description
 Re-read IDENTIFY page and make sure ``dev`` is still attached to
 the port.
 
-LOCKING:
+
+
+.. _`ata_dev_reread_id.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_dev_reread_id.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno otherwise
+
 
 
 .. _`ata_dev_revalidate`:
@@ -1839,6 +2442,7 @@ ata_dev_revalidate
         read ID flags
 
 
+
 .. _`ata_dev_revalidate.description`:
 
 Description
@@ -1847,11 +2451,24 @@ Description
 Re-read IDENTIFY page, make sure ``dev`` is still attached to the
 port and reconfigure it according to the new IDENTIFY page.
 
-LOCKING:
+
+
+.. _`ata_dev_revalidate.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_dev_revalidate.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno otherwise
+
 
 
 .. _`ata_is_40wire`:
@@ -1867,6 +2484,7 @@ ata_is_40wire
         device
 
 
+
 .. _`ata_is_40wire.description`:
 
 Description
@@ -1874,6 +2492,7 @@ Description
 
 Perform drive side detection decoding, allowing for device vendors
 who can't follow the documentation.
+
 
 
 .. _`cable_is_40wire`:
@@ -1887,6 +2506,7 @@ cable_is_40wire
 
     :param struct ata_port \*ap:
         port to consider
+
 
 
 .. _`cable_is_40wire.description`:
@@ -1903,6 +2523,7 @@ impacts hotplug at all).
 Return 1 if the cable appears to be 40 wire.
 
 
+
 .. _`ata_dev_xfermask`:
 
 ata_dev_xfermask
@@ -1916,6 +2537,7 @@ ata_dev_xfermask
         Device to compute xfermask for
 
 
+
 .. _`ata_dev_xfermask.description`:
 
 Description
@@ -1926,8 +2548,15 @@ dev->\*_mask.  This function is responsible for applying all
 known limits including host controller limits, device
 blacklist, etc...
 
-LOCKING:
+
+
+.. _`ata_dev_xfermask.locking`:
+
+LOCKING
+-------
+
 None.
+
 
 
 .. _`ata_dev_set_xfermode`:
@@ -1943,6 +2572,7 @@ ata_dev_set_xfermode
         Device to which command will be sent
 
 
+
 .. _`ata_dev_set_xfermode.description`:
 
 Description
@@ -1951,11 +2581,24 @@ Description
 Issue SET FEATURES - XFER MODE command to device ``dev``
 on port ``ap``\ .
 
-LOCKING:
+
+
+.. _`ata_dev_set_xfermode.locking`:
+
+LOCKING
+-------
+
 PCI/etc. bus probe sem.
 
-RETURNS:
-0 on success, AC_ERR_\* mask otherwise.
+
+
+.. _`ata_dev_set_xfermode.returns`:
+
+RETURNS
+-------
+
+0 on success, AC_ERR\_\* mask otherwise.
+
 
 
 .. _`ata_dev_set_feature`:
@@ -1977,6 +2620,7 @@ ata_dev_set_feature
         The sector count represents the feature to set
 
 
+
 .. _`ata_dev_set_feature.description`:
 
 Description
@@ -1985,11 +2629,24 @@ Description
 Issue SET FEATURES - SATA FEATURES command to device ``dev``
 on port ``ap`` with sector count
 
-LOCKING:
+
+
+.. _`ata_dev_set_feature.locking`:
+
+LOCKING
+-------
+
 PCI/etc. bus probe sem.
 
-RETURNS:
-0 on success, AC_ERR_\* mask otherwise.
+
+
+.. _`ata_dev_set_feature.returns`:
+
+RETURNS
+-------
+
+0 on success, AC_ERR\_\* mask otherwise.
+
 
 
 .. _`ata_dev_init_params`:
@@ -2011,16 +2668,23 @@ ata_dev_init_params
         Number of sectors (taskfile parameter)
 
 
-.. _`ata_dev_init_params.description`:
 
-Description
------------
+.. _`ata_dev_init_params.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
-0 on success, AC_ERR_\* mask otherwise.
+
+
+.. _`ata_dev_init_params.returns`:
+
+RETURNS
+-------
+
+0 on success, AC_ERR\_\* mask otherwise.
+
 
 
 .. _`ata_sg_clean`:
@@ -2036,6 +2700,7 @@ ata_sg_clean
         Command containing DMA memory to be released
 
 
+
 .. _`ata_sg_clean.description`:
 
 Description
@@ -2043,8 +2708,15 @@ Description
 
 Unmap all mapped DMA memory associated with this command.
 
-LOCKING:
+
+
+.. _`ata_sg_clean.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
+
 
 
 .. _`atapi_check_dma`:
@@ -2060,6 +2732,7 @@ atapi_check_dma
         Metadata associated with taskfile to check
 
 
+
 .. _`atapi_check_dma.description`:
 
 Description
@@ -2069,11 +2742,26 @@ Allow low-level driver to filter ATA PACKET commands, returning
 a status indicating whether or not it is OK to use DMA for the
 supplied PACKET command.
 
-LOCKING:
+
+
+.. _`atapi_check_dma.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
 
-RETURNS: 0 when ATAPI DMA can be used
-nonzero otherwise
+
+
+.. _`atapi_check_dma.returns`:
+
+RETURNS
+-------
+
+0 when ATAPI DMA can be used
+
+              nonzero otherwise
+
 
 
 .. _`ata_std_qc_defer`:
@@ -2089,6 +2777,7 @@ ata_std_qc_defer
         ATA command in question
 
 
+
 .. _`ata_std_qc_defer.description`:
 
 Description
@@ -2099,11 +2788,24 @@ not.  As upper layer only knows the queue depth, we are
 responsible for maintaining exclusion.  This function checks
 whether a new command ``qc`` can be issued.
 
-LOCKING:
+
+
+.. _`ata_std_qc_defer.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
 
-RETURNS:
-ATA_DEFER_\* if deferring is needed, 0 otherwise.
+
+
+.. _`ata_std_qc_defer.returns`:
+
+RETURNS
+-------
+
+ATA_DEFER\_\* if deferring is needed, 0 otherwise.
+
 
 
 .. _`ata_sg_init`:
@@ -2125,6 +2827,7 @@ ata_sg_init
         Number of elements in s/g table.
 
 
+
 .. _`ata_sg_init.description`:
 
 Description
@@ -2134,8 +2837,15 @@ Initialize the data-related elements of queued_cmd ``qc``
 to point to a scatter-gather table ``sg``\ , containing ``n_elem``
 elements.
 
-LOCKING:
+
+
+.. _`ata_sg_init.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
+
 
 
 .. _`ata_sg_setup`:
@@ -2151,6 +2861,7 @@ ata_sg_setup
         Command with scatter-gather table to be mapped.
 
 
+
 .. _`ata_sg_setup.description`:
 
 Description
@@ -2158,11 +2869,24 @@ Description
 
 DMA-map the scatter-gather table associated with queued_cmd ``qc``\ .
 
-LOCKING:
+
+
+.. _`ata_sg_setup.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
 
-RETURNS:
+
+
+.. _`ata_sg_setup.returns`:
+
+RETURNS
+-------
+
 Zero on success, negative on error.
+
 
 
 .. _`swap_buf_le16`:
@@ -2181,6 +2905,7 @@ swap_buf_le16
         Number of 16-bit words in buffer.
 
 
+
 .. _`swap_buf_le16.description`:
 
 Description
@@ -2190,8 +2915,15 @@ Swap halves of 16-bit words if needed to convert from
 little-endian byte order to native cpu byte order, or
 vice-versa.
 
-LOCKING:
+
+
+.. _`swap_buf_le16.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
+
 
 
 .. _`ata_qc_new_init`:
@@ -2210,13 +2942,14 @@ ata_qc_new_init
         tag
 
 
-.. _`ata_qc_new_init.description`:
 
-Description
------------
+.. _`ata_qc_new_init.locking`:
 
-LOCKING:
+LOCKING
+-------
+
 None.
+
 
 
 .. _`ata_qc_free`:
@@ -2232,6 +2965,7 @@ ata_qc_free
         Command to complete
 
 
+
 .. _`ata_qc_free.description`:
 
 Description
@@ -2240,8 +2974,15 @@ Description
 Designed to free unused ata_queued_cmd object
 in case something prevents using it.
 
-LOCKING:
+
+
+.. _`ata_qc_free.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
+
 
 
 .. _`ata_qc_complete`:
@@ -2257,6 +2998,7 @@ ata_qc_complete
         Command to complete
 
 
+
 .. _`ata_qc_complete.description`:
 
 Description
@@ -2270,8 +3012,15 @@ successfully completing multiple NCQ commands.
 :c:func:`ata_qc_complete_multiple` should be used instead, which will
 properly update IRQ expect state.
 
-LOCKING:
+
+
+.. _`ata_qc_complete.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
+
 
 
 .. _`ata_qc_complete_multiple`:
@@ -2290,6 +3039,7 @@ ata_qc_complete_multiple
         new qc_active mask
 
 
+
 .. _`ata_qc_complete_multiple.description`:
 
 Description
@@ -2304,11 +3054,24 @@ Always use this function when completing multiple NCQ commands
 from IRQ handlers instead of calling :c:func:`ata_qc_complete`
 multiple times to keep IRQ expect status properly in sync.
 
-LOCKING:
+
+
+.. _`ata_qc_complete_multiple.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
 
-RETURNS:
+
+
+.. _`ata_qc_complete_multiple.returns`:
+
+RETURNS
+-------
+
 Number of completed commands on success, -errno otherwise.
+
 
 
 .. _`ata_qc_issue`:
@@ -2324,6 +3087,7 @@ ata_qc_issue
         command to issue to device
 
 
+
 .. _`ata_qc_issue.description`:
 
 Description
@@ -2334,8 +3098,15 @@ This includes mapping the data into a DMA-able
 area, filling in the S/G table, and finally
 writing the taskfile to hardware, starting the command.
 
-LOCKING:
+
+
+.. _`ata_qc_issue.locking`:
+
+LOCKING
+-------
+
 spin_lock_irqsave(host lock)
+
 
 
 .. _`sata_scr_valid`:
@@ -2351,6 +3122,7 @@ sata_scr_valid
         ATA link to test SCR accessibility for
 
 
+
 .. _`sata_scr_valid.description`:
 
 Description
@@ -2358,11 +3130,24 @@ Description
 
 Test whether SCRs are accessible for ``link``\ .
 
-LOCKING:
+
+
+.. _`sata_scr_valid.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`sata_scr_valid.returns`:
+
+RETURNS
+-------
+
 1 if SCRs are accessible, 0 otherwise.
+
 
 
 .. _`sata_scr_read`:
@@ -2384,6 +3169,7 @@ sata_scr_read
         Place to store read value
 
 
+
 .. _`sata_scr_read.description`:
 
 Description
@@ -2393,11 +3179,24 @@ Read SCR register ``reg`` of ``link`` into \*\ ``val``\ .  This function is
 guaranteed to succeed if ``link`` is ap->link, the cable type of
 the port is SATA and the port implements ->scr_read.
 
-LOCKING:
+
+
+.. _`sata_scr_read.locking`:
+
+LOCKING
+-------
+
 None if ``link`` is ap->link.  Kernel thread context otherwise.
 
-RETURNS:
+
+
+.. _`sata_scr_read.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno on failure.
+
 
 
 .. _`sata_scr_write`:
@@ -2419,6 +3218,7 @@ sata_scr_write
         value to write
 
 
+
 .. _`sata_scr_write.description`:
 
 Description
@@ -2428,11 +3228,24 @@ Write ``val`` to SCR register ``reg`` of ``link``\ .  This function is
 guaranteed to succeed if ``link`` is ap->link, the cable type of
 the port is SATA and the port implements ->scr_read.
 
-LOCKING:
+
+
+.. _`sata_scr_write.locking`:
+
+LOCKING
+-------
+
 None if ``link`` is ap->link.  Kernel thread context otherwise.
 
-RETURNS:
+
+
+.. _`sata_scr_write.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno on failure.
+
 
 
 .. _`sata_scr_write_flush`:
@@ -2454,6 +3267,7 @@ sata_scr_write_flush
         value to write
 
 
+
 .. _`sata_scr_write_flush.description`:
 
 Description
@@ -2462,11 +3276,24 @@ Description
 This function is identical to :c:func:`sata_scr_write` except that this
 function performs flush after writing to the register.
 
-LOCKING:
+
+
+.. _`sata_scr_write_flush.locking`:
+
+LOCKING
+-------
+
 None if ``link`` is ap->link.  Kernel thread context otherwise.
 
-RETURNS:
+
+
+.. _`sata_scr_write_flush.returns`:
+
+RETURNS
+-------
+
 0 on success, negative errno on failure.
+
 
 
 .. _`ata_phys_link_online`:
@@ -2482,6 +3309,7 @@ ata_phys_link_online
         ATA link to test
 
 
+
 .. _`ata_phys_link_online.description`:
 
 Description
@@ -2491,11 +3319,24 @@ Test whether ``link`` is online.  Note that this function returns
 0 if online status of ``link`` cannot be obtained, so
 ata_link_online(link) != !ata_link_offline(link).
 
-LOCKING:
+
+
+.. _`ata_phys_link_online.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_phys_link_online.returns`:
+
+RETURNS
+-------
+
 True if the port online status is available and online.
+
 
 
 .. _`ata_phys_link_offline`:
@@ -2511,6 +3352,7 @@ ata_phys_link_offline
         ATA link to test
 
 
+
 .. _`ata_phys_link_offline.description`:
 
 Description
@@ -2520,11 +3362,24 @@ Test whether ``link`` is offline.  Note that this function
 returns 0 if offline status of ``link`` cannot be obtained, so
 ata_link_online(link) != !ata_link_offline(link).
 
-LOCKING:
+
+
+.. _`ata_phys_link_offline.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_phys_link_offline.returns`:
+
+RETURNS
+-------
+
 True if the port offline status is available and offline.
+
 
 
 .. _`ata_link_online`:
@@ -2540,6 +3395,7 @@ ata_link_online
         ATA link to test
 
 
+
 .. _`ata_link_online.description`:
 
 Description
@@ -2551,11 +3407,24 @@ there's a slave link, this function should only be called on
 the master link and will return true if any of M/S links is
 online.
 
-LOCKING:
+
+
+.. _`ata_link_online.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_link_online.returns`:
+
+RETURNS
+-------
+
 True if the port online status is available and online.
+
 
 
 .. _`ata_link_offline`:
@@ -2571,6 +3440,7 @@ ata_link_offline
         ATA link to test
 
 
+
 .. _`ata_link_offline.description`:
 
 Description
@@ -2582,11 +3452,24 @@ there's a slave link, this function should only be called on
 the master link and will return true if both M/S links are
 offline.
 
-LOCKING:
+
+
+.. _`ata_link_offline.locking`:
+
+LOCKING
+-------
+
 None.
 
-RETURNS:
+
+
+.. _`ata_link_offline.returns`:
+
+RETURNS
+-------
+
 True if the port offline status is available and offline.
+
 
 
 .. _`ata_host_suspend`:
@@ -2605,12 +3488,14 @@ ata_host_suspend
         PM message
 
 
+
 .. _`ata_host_suspend.description`:
 
 Description
 -----------
 
 Suspend ``host``\ .  Actual operation is performed by port suspend.
+
 
 
 .. _`ata_host_resume`:
@@ -2626,12 +3511,14 @@ ata_host_resume
         host to resume
 
 
+
 .. _`ata_host_resume.description`:
 
 Description
 -----------
 
 Resume ``host``\ .  Actual operation is performed by port resume.
+
 
 
 .. _`ata_dev_init`:
@@ -2647,6 +3534,7 @@ ata_dev_init
         Device structure to initialize
 
 
+
 .. _`ata_dev_init.description`:
 
 Description
@@ -2654,8 +3542,15 @@ Description
 
 Initialize ``dev`` in preparation for probing.
 
-LOCKING:
+
+
+.. _`ata_dev_init.locking`:
+
+LOCKING
+-------
+
 Inherited from caller.
+
 
 
 .. _`ata_link_init`:
@@ -2677,6 +3572,7 @@ ata_link_init
         Port multiplier port number
 
 
+
 .. _`ata_link_init.description`:
 
 Description
@@ -2684,8 +3580,15 @@ Description
 
 Initialize ``link``\ .
 
-LOCKING:
+
+
+.. _`ata_link_init.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
+
 
 
 .. _`sata_link_init_spd`:
@@ -2701,6 +3604,7 @@ sata_link_init_spd
         Link to configure sata_spd_limit for
 
 
+
 .. _`sata_link_init_spd.description`:
 
 Description
@@ -2709,11 +3613,24 @@ Description
 Initialize ``link``\ ->[hw_]sata_spd_limit to the currently
 configured value.
 
-LOCKING:
+
+
+.. _`sata_link_init_spd.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep).
 
-RETURNS:
+
+
+.. _`sata_link_init_spd.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno on failure.
+
 
 
 .. _`ata_port_alloc`:
@@ -2729,6 +3646,7 @@ ata_port_alloc
         ATA host this allocated port belongs to
 
 
+
 .. _`ata_port_alloc.description`:
 
 Description
@@ -2736,11 +3654,24 @@ Description
 
 Allocate and initialize basic ATA port resources.
 
-RETURNS:
+
+
+.. _`ata_port_alloc.returns`:
+
+RETURNS
+-------
+
 Allocate ATA port on success, NULL on failure.
 
-LOCKING:
+
+
+.. _`ata_port_alloc.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
+
 
 
 .. _`ata_host_alloc`:
@@ -2759,6 +3690,7 @@ ata_host_alloc
         maximum number of ATA ports associated with this host
 
 
+
 .. _`ata_host_alloc.description`:
 
 Description
@@ -2773,11 +3705,24 @@ initialized to ``max_ports``\ .  The caller is allowed to decrease
 host->n_ports before calling :c:func:`ata_host_register`.  The unused
 ports will be automatically freed on registration.
 
-RETURNS:
+
+
+.. _`ata_host_alloc.returns`:
+
+RETURNS
+-------
+
 Allocate ATA host on success, NULL on failure.
 
-LOCKING:
+
+
+.. _`ata_host_alloc.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
+
 
 
 .. _`ata_host_alloc_pinfo`:
@@ -2799,6 +3744,7 @@ ata_host_alloc_pinfo
         number of ATA ports attached to this host
 
 
+
 .. _`ata_host_alloc_pinfo.description`:
 
 Description
@@ -2808,11 +3754,24 @@ Allocate ATA host and initialize with info from ``ppi``\ .  If NULL
 terminated, ``ppi`` may contain fewer entries than ``n_ports``\ .  The
 last entry will be used for the remaining ports.
 
-RETURNS:
+
+
+.. _`ata_host_alloc_pinfo.returns`:
+
+RETURNS
+-------
+
 Allocate ATA host on success, NULL on failure.
 
-LOCKING:
+
+
+.. _`ata_host_alloc_pinfo.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
+
 
 
 .. _`ata_slave_link_init`:
@@ -2826,6 +3785,7 @@ ata_slave_link_init
 
     :param struct ata_port \*ap:
         port to initialize slave link for
+
 
 
 .. _`ata_slave_link_init.description`:
@@ -2869,11 +3829,24 @@ Note that softreset is called only for the master.  Softreset
 resets both M/S by definition, so SRST on master should handle
 both (the standard method will work just fine).
 
-LOCKING:
+
+
+.. _`ata_slave_link_init.locking`:
+
+LOCKING
+-------
+
 Should be called before host is registered.
 
-RETURNS:
+
+
+.. _`ata_slave_link_init.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno on failure.
+
 
 
 .. _`ata_finalize_port_ops`:
@@ -2887,6 +3860,7 @@ ata_finalize_port_ops
 
     :param struct ata_port_operations \*ops:
         ata_port_operations to finalize
+
 
 
 .. _`ata_finalize_port_ops.description`:
@@ -2907,8 +3881,15 @@ methods and ->inherits is no longer necessary and cleared.
 
 Using ATA_OP_NULL, inheriting ops can force a method to NULL.
 
-LOCKING:
+
+
+.. _`ata_finalize_port_ops.locking`:
+
+LOCKING
+-------
+
 None.
+
 
 
 .. _`ata_host_start`:
@@ -2924,6 +3905,7 @@ ata_host_start
         ATA host to start ports for
 
 
+
 .. _`ata_host_start.description`:
 
 Description
@@ -2935,11 +3917,24 @@ multiple times.  Ports are guaranteed to get started only
 once.  If host->ops isn't initialized yet, its set to the
 first non-dummy port ops.
 
-LOCKING:
+
+
+.. _`ata_host_start.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
 
-RETURNS:
+
+
+.. _`ata_host_start.returns`:
+
+RETURNS
+-------
+
 0 if all ports are started successfully, -errno otherwise.
+
 
 
 .. _`ata_host_init`:
@@ -2961,6 +3956,7 @@ ata_host_init
         port_ops
 
 
+
 .. _`ata_host_register`:
 
 ata_host_register
@@ -2977,6 +3973,7 @@ ata_host_register
         template for SCSI host
 
 
+
 .. _`ata_host_register.description`:
 
 Description
@@ -2987,11 +3984,24 @@ Register initialized ATA host.  ``host`` is allocated using
 starts ports, registers ``host`` with ATA and SCSI layers and
 probe registered devices.
 
-LOCKING:
+
+
+.. _`ata_host_register.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
 
-RETURNS:
+
+
+.. _`ata_host_register.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`ata_host_activate`:
@@ -3019,6 +4029,7 @@ ata_host_activate
         scsi_host_template to use when registering the host
 
 
+
 .. _`ata_host_activate.description`:
 
 Description
@@ -3033,11 +4044,24 @@ An invalid IRQ skips the IRQ registration and expects the host to
 have set polling mode on the port. In this case, ``irq_handler``
 should be NULL.
 
-LOCKING:
+
+
+.. _`ata_host_activate.locking`:
+
+LOCKING
+-------
+
 Inherited from calling layer (may sleep).
 
-RETURNS:
+
+
+.. _`ata_host_activate.returns`:
+
+RETURNS
+-------
+
 0 on success, -errno otherwise.
+
 
 
 .. _`ata_port_detach`:
@@ -3053,6 +4077,7 @@ ata_port_detach
         ATA port to be detached
 
 
+
 .. _`ata_port_detach.description`:
 
 Description
@@ -3062,8 +4087,15 @@ Detach all ATA devices and the associated SCSI devices of ``ap``\ ;
 then, remove the associated SCSI host.  ``ap`` is guaranteed to
 be quiescent on return from this function.
 
-LOCKING:
+
+
+.. _`ata_port_detach.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep).
+
 
 
 .. _`ata_host_detach`:
@@ -3079,6 +4111,7 @@ ata_host_detach
         Host to detach
 
 
+
 .. _`ata_host_detach.description`:
 
 Description
@@ -3086,8 +4119,15 @@ Description
 
 Detach all ports of ``host``\ .
 
-LOCKING:
+
+
+.. _`ata_host_detach.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep).
+
 
 
 .. _`ata_pci_remove_one`:
@@ -3103,6 +4143,7 @@ ata_pci_remove_one
         PCI device that was removed
 
 
+
 .. _`ata_pci_remove_one.description`:
 
 Description
@@ -3112,8 +4153,15 @@ PCI layer indicates to libata via this hook that hot-unplug or
 module unload event has occurred.  Detach all ports.  Resource
 release is handled via devres.
 
-LOCKING:
+
+
+.. _`ata_pci_remove_one.locking`:
+
+LOCKING
+-------
+
 Inherited from PCI layer (may sleep).
+
 
 
 .. _`ata_platform_remove_one`:
@@ -3129,6 +4177,7 @@ ata_platform_remove_one
         Platform device that was removed
 
 
+
 .. _`ata_platform_remove_one.description`:
 
 Description
@@ -3138,8 +4187,15 @@ Platform layer indicates to libata via this hook that hot-unplug or
 module unload event has occurred.  Detach all ports.  Resource
 release is handled via devres.
 
-LOCKING:
+
+
+.. _`ata_platform_remove_one.locking`:
+
+LOCKING
+-------
+
 Inherited from platform layer (may sleep).
+
 
 
 .. _`ata_msleep`:
@@ -3158,6 +4214,7 @@ ata_msleep
         duration to sleep in milliseconds
 
 
+
 .. _`ata_msleep.description`:
 
 Description
@@ -3169,8 +4226,15 @@ after the sleep is complete.  IOW, other ports sharing the
 ``ap``\ ->host will be allowed to own the EH while this task is
 sleeping.
 
-LOCKING:
+
+
+.. _`ata_msleep.locking`:
+
+LOCKING
+-------
+
 Might sleep.
+
 
 
 .. _`ata_wait_register`:
@@ -3201,6 +4265,7 @@ ata_wait_register
         timeout in milliseconds
 
 
+
 .. _`ata_wait_register.description`:
 
 Description
@@ -3215,11 +4280,24 @@ IO-mapped register ``reg`` and tests for the following condition.
 If the condition is met, it returns; otherwise, the process is
 repeated after ``interval_msec`` until timeout.
 
-LOCKING:
+
+
+.. _`ata_wait_register.locking`:
+
+LOCKING
+-------
+
 Kernel thread context (may sleep)
 
-RETURNS:
+
+
+.. _`ata_wait_register.returns`:
+
+RETURNS
+-------
+
 The final register value.
+
 
 
 .. _`sata_lpm_ignore_phy_events`:
@@ -3235,6 +4313,7 @@ sata_lpm_ignore_phy_events
         Link receiving the event
 
 
+
 .. _`sata_lpm_ignore_phy_events.description`:
 
 Description
@@ -3242,9 +4321,12 @@ Description
 
 Test whether the received PHY event has to be ignored or not.
 
-LOCKING:
-None:
 
-RETURNS:
+
+.. _`sata_lpm_ignore_phy_events.returns`:
+
+RETURNS
+-------
+
 True if the event has to be ignored.
 

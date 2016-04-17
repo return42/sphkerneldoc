@@ -4,16 +4,18 @@
 v4l2-ctrls.h
 ============
 
+
 .. _`v4l2_ctrl_ptr`:
 
 union v4l2_ctrl_ptr
 ===================
 
-.. c:type:: union v4l2_ctrl_ptr
+.. c:type:: v4l2_ctrl_ptr
 
     A pointer to a control value.
 
 
+.. _`v4l2_ctrl_ptr.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_ptr.members`:
 
 Members
 -------
@@ -58,16 +61,18 @@ Members
 
 
 
+
 .. _`v4l2_ctrl_ops`:
 
 struct v4l2_ctrl_ops
 ====================
 
-.. c:type:: struct v4l2_ctrl_ops
+.. c:type:: v4l2_ctrl_ops
 
     The control operations that the driver has to provide.
 
 
+.. _`v4l2_ctrl_ops.definition`:
 
 Definition
 ----------
@@ -81,6 +86,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_ops.members`:
 
 Members
 -------
@@ -103,16 +109,18 @@ Members
 
 
 
+
 .. _`v4l2_ctrl_type_ops`:
 
 struct v4l2_ctrl_type_ops
 =========================
 
-.. c:type:: struct v4l2_ctrl_type_ops
+.. c:type:: v4l2_ctrl_type_ops
 
     The control type operations that the driver has to provide.
 
 
+.. _`v4l2_ctrl_type_ops.definition`:
 
 Definition
 ----------
@@ -127,6 +135,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_type_ops.members`:
 
 Members
 -------
@@ -145,16 +154,18 @@ Members
 
 
 
+
 .. _`v4l2_ctrl`:
 
 struct v4l2_ctrl
 ================
 
-.. c:type:: struct v4l2_ctrl
+.. c:type:: v4l2_ctrl
 
     The control structure.
 
 
+.. _`v4l2_ctrl.definition`:
 
 Definition
 ----------
@@ -197,6 +208,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl.members`:
 
 Members
 -------
@@ -255,9 +267,8 @@ Members
     If set, then this control contains an N-dimensional array.
 
 :``has_volatiles``:
-    If set, then one or more members of the cluster are volatile.::
-
-                    Drivers should never touch this flag.
+    If set, then one or more members of the cluster are volatile.
+    Drivers should never touch this flag.
 
 :``call_notify``:
     If set, then call the handler's notify function whenever the
@@ -321,16 +332,18 @@ Members
 
 
 
+
 .. _`v4l2_ctrl_ref`:
 
 struct v4l2_ctrl_ref
 ====================
 
-.. c:type:: struct v4l2_ctrl_ref
+.. c:type:: v4l2_ctrl_ref
 
     The control reference.
 
 
+.. _`v4l2_ctrl_ref.definition`:
 
 Definition
 ----------
@@ -345,6 +358,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_ref.members`:
 
 Members
 -------
@@ -363,6 +377,9 @@ Members
 
 
 
+
+.. _`v4l2_ctrl_ref.description`:
+
 Description
 -----------
 
@@ -371,16 +388,18 @@ keep a sorted-by-control-ID list of all controls, while the next pointer
 is used to link the control in the hash's bucket.
 
 
+
 .. _`v4l2_ctrl_handler`:
 
 struct v4l2_ctrl_handler
 ========================
 
-.. c:type:: struct v4l2_ctrl_handler
+.. c:type:: v4l2_ctrl_handler
 
-    The control handler keeps track of all the controls: both the controls owned by the handler and those inherited from other handlers.
+    The control handler keeps track of all the
 
 
+.. _`v4l2_ctrl_handler.definition`:
 
 Definition
 ----------
@@ -401,6 +420,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_handler.members`:
 
 Members
 -------
@@ -409,9 +429,8 @@ Members
     Default for "lock".
 
 :``lock``:
-    Lock to control access to this handler and its controls.::
-
-                    May be replaced by the user right after init.
+    Lock to control access to this handler and its controls.
+    May be replaced by the user right after init.
 
 :``ctrls``:
     The list of controls owned by this handler.
@@ -428,10 +447,9 @@ Members
     Buckets for the hashing. Allows for quick control lookup.
 
 :``notify``:
-    A notify callback that is called whenever the control changes value.::
-
-                    Note that the handler's lock is held when the notify function
-                    is called!
+    A notify callback that is called whenever the control changes value.
+    Note that the handler's lock is held when the notify function
+    is called!
 
 :``notify_priv``:
     Passed as argument to the v4l2_ctrl notify callback.
@@ -444,16 +462,28 @@ Members
 
 
 
+
+.. _`v4l2_ctrl_handler.controls`:
+
+controls
+--------
+
+both the controls owned by the handler and those inherited
+from other handlers.
+
+
+
 .. _`v4l2_ctrl_config`:
 
 struct v4l2_ctrl_config
 =======================
 
-.. c:type:: struct v4l2_ctrl_config
+.. c:type:: v4l2_ctrl_config
 
     Control configuration structure.
 
 
+.. _`v4l2_ctrl_config.definition`:
 
 Definition
 ----------
@@ -480,6 +510,7 @@ Definition
   };
 
 
+.. _`v4l2_ctrl_config.members`:
 
 Members
 -------
@@ -544,6 +575,7 @@ Members
 
 
 
+
 .. _`v4l2_ctrl_handler_init_class`:
 
 v4l2_ctrl_handler_init_class
@@ -572,6 +604,7 @@ v4l2_ctrl_handler_init_class
         Used by the lock validator if CONFIG_LOCKDEP is set.
 
 
+
 .. _`v4l2_ctrl_handler_init_class.description`:
 
 Description
@@ -582,6 +615,7 @@ also be stored in ``hdl``\ ->error.
 
 Never use this call directly, always use the v4l2_ctrl_handler_init
 macro that hides the ``key`` and ``name`` arguments.
+
 
 
 .. _`v4l2_ctrl_handler_free`:
@@ -597,12 +631,14 @@ v4l2_ctrl_handler_free
         The control handler.
 
 
+
 .. _`v4l2_ctrl_handler_free.description`:
 
 Description
 -----------
 
 Does nothing if ``hdl`` == NULL.
+
 
 
 .. _`v4l2_ctrl_lock`:
@@ -618,6 +654,7 @@ v4l2_ctrl_lock
         The control to lock.
 
 
+
 .. _`v4l2_ctrl_unlock`:
 
 v4l2_ctrl_unlock
@@ -629,6 +666,7 @@ v4l2_ctrl_unlock
 
     :param struct v4l2_ctrl \*ctrl:
         The control to unlock.
+
 
 
 .. _`v4l2_ctrl_handler_setup`:
@@ -644,6 +682,7 @@ v4l2_ctrl_handler_setup
         The control handler.
 
 
+
 .. _`v4l2_ctrl_handler_setup.description`:
 
 Description
@@ -652,6 +691,7 @@ Description
 Button controls will be skipped, as are read-only controls.
 
 If ``hdl`` == NULL, then this just returns 0.
+
 
 
 .. _`v4l2_ctrl_handler_log_status`:
@@ -673,6 +713,7 @@ v4l2_ctrl_handler_log_status
         used.
 
 
+
 .. _`v4l2_ctrl_handler_log_status.description`:
 
 Description
@@ -681,6 +722,7 @@ Description
 For use with VIDIOC_LOG_STATUS.
 
 Does nothing if ``hdl`` == NULL.
+
 
 
 .. _`v4l2_ctrl_new_custom`:
@@ -702,6 +744,7 @@ v4l2_ctrl_new_custom
         The control's driver-specific private data.
 
 
+
 .. _`v4l2_ctrl_new_custom.description`:
 
 Description
@@ -709,6 +752,7 @@ Description
 
 If the :c:type:`struct v4l2_ctrl <v4l2_ctrl>` struct could not be allocated then NULL is returned
 and ``hdl``\ ->error is set to the error code (if it wasn't set already).
+
 
 
 .. _`v4l2_ctrl_new_std`:
@@ -742,6 +786,7 @@ v4l2_ctrl_new_std
         The control's default value.
 
 
+
 .. _`v4l2_ctrl_new_std.description`:
 
 Description
@@ -754,6 +799,7 @@ appropriate error code (if it wasn't set already).
 If ``id`` refers to a menu control, then this function will return NULL.
 
 Use :c:func:`v4l2_ctrl_new_std_menu` when adding menu controls.
+
 
 
 .. _`v4l2_ctrl_new_std_menu`:
@@ -789,6 +835,7 @@ v4l2_ctrl_new_std_menu
         The control's default value.
 
 
+
 .. _`v4l2_ctrl_new_std_menu.description`:
 
 Description
@@ -798,6 +845,7 @@ Same as :c:func:`v4l2_ctrl_new_std`, but ``min`` is set to 0 and the ``mask`` va
 determines which menu items are to be skipped.
 
 If ``id`` refers to a non-menu control, then this function will return NULL.
+
 
 
 .. _`v4l2_ctrl_new_std_menu_items`:
@@ -836,6 +884,7 @@ v4l2_ctrl_new_std_menu_items
         The new menu.
 
 
+
 .. _`v4l2_ctrl_new_std_menu_items.description`:
 
 Description
@@ -843,6 +892,7 @@ Description
 
 Same as :c:func:`v4l2_ctrl_new_std_menu`, but ``qmenu`` will be the driver specific
 menu of this control.
+
 
 
 .. _`v4l2_ctrl_new_int_menu`:
@@ -873,6 +923,7 @@ v4l2_ctrl_new_int_menu
         The control's menu entries.
 
 
+
 .. _`v4l2_ctrl_new_int_menu.description`:
 
 Description
@@ -882,6 +933,7 @@ Same as :c:func:`v4l2_ctrl_new_std_menu`, but ``mask`` is set to 0 and it additi
 takes as an argument an array of integers determining the menu items.
 
 If ``id`` refers to a non-integer-menu control, then this function will return NULL.
+
 
 
 .. _`v4l2_ctrl_add_handler`:
@@ -904,6 +956,7 @@ v4l2_ctrl_add_handler
         This function will filter which controls should be added.
 
 
+
 .. _`v4l2_ctrl_add_handler.description`:
 
 Description
@@ -914,6 +967,7 @@ If ``filter`` is NULL, then all controls are added. Otherwise only those
 controls for which ``filter`` returns true will be added.
 In case of an error ``hdl``\ ->error will be set to the error code (if it
 wasn't set already).
+
 
 
 .. _`v4l2_ctrl_radio_filter`:
@@ -929,16 +983,18 @@ v4l2_ctrl_radio_filter
         The control that is filtered.
 
 
+
 .. _`v4l2_ctrl_radio_filter.description`:
 
 Description
 -----------
 
 This will return true for any controls that are valid for radio device
-nodes. Those are all of the V4L2_CID_AUDIO_\* user controls and all FM
+nodes. Those are all of the V4L2_CID_AUDIO\_\* user controls and all FM
 transmitter class controls.
 
 This function is to be used with :c:func:`v4l2_ctrl_add_handler`.
+
 
 
 .. _`v4l2_ctrl_cluster`:
@@ -955,6 +1011,7 @@ v4l2_ctrl_cluster
 
     :param struct v4l2_ctrl \*\*controls:
         The cluster control array of size ``ncontrols``\ .
+
 
 
 .. _`v4l2_ctrl_auto_cluster`:
@@ -982,6 +1039,7 @@ v4l2_ctrl_auto_cluster
         be volatile.
 
 
+
 .. _`v4l2_ctrl_auto_cluster.description`:
 
 Description
@@ -992,7 +1050,13 @@ the other controls are only active whenever the automatic feature is turned
 off (manual mode). Typical examples: autogain vs gain, auto-whitebalance vs
 red and blue balance, etc.
 
-The behavior of such controls is as follows:
+
+
+.. _`v4l2_ctrl_auto_cluster.the-behavior-of-such-controls-is-as-follows`:
+
+The behavior of such controls is as follows
+-------------------------------------------
+
 
 When the autofoo control is set to automatic, then any manual controls
 are set to inactive and any reads will call g_volatile_ctrl (if the control
@@ -1005,6 +1069,7 @@ going through g_volatile_ctrl.
 In addition, this function will set the V4L2_CTRL_FLAG_UPDATE flag
 on the autofoo control and V4L2_CTRL_FLAG_INACTIVE on the foo control(s)
 if autofoo is in auto mode.
+
 
 
 .. _`v4l2_ctrl_find`:
@@ -1023,6 +1088,7 @@ v4l2_ctrl_find
         The control ID to find.
 
 
+
 .. _`v4l2_ctrl_find.description`:
 
 Description
@@ -1030,6 +1096,7 @@ Description
 
 If ``hdl`` == NULL this will return NULL as well. Will lock the handler so
 do not use from inside :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`.
+
 
 
 .. _`v4l2_ctrl_activate`:
@@ -1048,6 +1115,7 @@ v4l2_ctrl_activate
         True if the control should become active.
 
 
+
 .. _`v4l2_ctrl_activate.description`:
 
 Description
@@ -1059,6 +1127,7 @@ This will usually be called from within the s_ctrl op.
 The V4L2_EVENT_CTRL event will be generated afterwards.
 
 This function assumes that the control handler is locked.
+
 
 
 .. _`v4l2_ctrl_grab`:
@@ -1077,6 +1146,7 @@ v4l2_ctrl_grab
         True if the control should become grabbed.
 
 
+
 .. _`v4l2_ctrl_grab.description`:
 
 Description
@@ -1090,6 +1160,7 @@ driver.
 
 This function assumes that the control handler is not locked and will
 take the lock itself.
+
 
 
 .. _`__v4l2_ctrl_modify_range`:
@@ -1117,6 +1188,7 @@ __v4l2_ctrl_modify_range
         The control's default value.
 
 
+
 .. _`__v4l2_ctrl_modify_range.description`:
 
 Description
@@ -1131,6 +1203,7 @@ control type.
 
 This function assumes that the control handler is not locked and will
 take the lock itself.
+
 
 
 .. _`v4l2_ctrl_modify_range`:
@@ -1158,6 +1231,7 @@ v4l2_ctrl_modify_range
         The control's default value.
 
 
+
 .. _`v4l2_ctrl_modify_range.description`:
 
 Description
@@ -1172,6 +1246,7 @@ control type.
 
 This function assumes that the control handler is not locked and will
 take the lock itself.
+
 
 
 .. _`v4l2_ctrl_notify`:
@@ -1193,6 +1268,7 @@ v4l2_ctrl_notify
         The callback private handle, passed as argument to the callback.
 
 
+
 .. _`v4l2_ctrl_notify.description`:
 
 Description
@@ -1204,6 +1280,7 @@ be removed.
 
 There can be only one notify. If another already exists, then a WARN_ON
 will be issued and the function will do nothing.
+
 
 
 .. _`v4l2_ctrl_get_name`:
@@ -1219,6 +1296,7 @@ v4l2_ctrl_get_name
         The control ID.
 
 
+
 .. _`v4l2_ctrl_get_name.description`:
 
 Description
@@ -1226,6 +1304,7 @@ Description
 
 This function returns the name of the given control ID or NULL if it isn't
 a known control.
+
 
 
 .. _`v4l2_ctrl_get_menu`:
@@ -1241,6 +1320,7 @@ v4l2_ctrl_get_menu
         The control ID.
 
 
+
 .. _`v4l2_ctrl_get_menu.description`:
 
 Description
@@ -1248,6 +1328,7 @@ Description
 
 This function returns the NULL-terminated menu string array name of the
 given control ID or NULL if it isn't a known menu control.
+
 
 
 .. _`v4l2_ctrl_get_int_menu`:
@@ -1266,6 +1347,7 @@ v4l2_ctrl_get_int_menu
         The size of the integer array.
 
 
+
 .. _`v4l2_ctrl_get_int_menu.description`:
 
 Description
@@ -1273,6 +1355,7 @@ Description
 
 This function returns the integer array of the given control ID or NULL if it
 if it isn't a known integer menu control.
+
 
 
 .. _`v4l2_ctrl_g_ctrl`:
@@ -1288,6 +1371,7 @@ v4l2_ctrl_g_ctrl
         The control.
 
 
+
 .. _`v4l2_ctrl_g_ctrl.description`:
 
 Description
@@ -1298,6 +1382,7 @@ framework. This function will lock the control's handler, so it cannot be
 used from within the :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
 
 This function is for integer type controls only.
+
 
 
 .. _`__v4l2_ctrl_s_ctrl`:
@@ -1316,6 +1401,7 @@ __v4l2_ctrl_s_ctrl
         The new value.
 
 
+
 .. _`__v4l2_ctrl_s_ctrl.description`:
 
 Description
@@ -1326,6 +1412,7 @@ framework. This function will lock the control's handler, so it cannot be
 used from within the :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
 
 This function is for integer type controls only.
+
 
 
 .. _`v4l2_ctrl_g_ctrl_int64`:
@@ -1341,6 +1428,7 @@ v4l2_ctrl_g_ctrl_int64
         The control.
 
 
+
 .. _`v4l2_ctrl_g_ctrl_int64.description`:
 
 Description
@@ -1351,6 +1439,7 @@ framework. This function will lock the control's handler, so it cannot be
 used from within the :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
 
 This function is for 64-bit integer type controls only.
+
 
 
 .. _`__v4l2_ctrl_s_ctrl_int64`:
@@ -1367,6 +1456,7 @@ __v4l2_ctrl_s_ctrl_int64
 
     :param s64 val:
         The new value.
+
 
 
 .. _`__v4l2_ctrl_s_ctrl_int64.description`:

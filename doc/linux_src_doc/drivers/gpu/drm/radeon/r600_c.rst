@@ -1,0 +1,264 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+r600.c
+======
+
+
+.. _`r600_get_allowed_info_register`:
+
+r600_get_allowed_info_register
+==============================
+
+.. c:function:: int r600_get_allowed_info_register (struct radeon_device *rdev, u32 reg, u32 *val)
+
+    fetch the register for the info ioctl
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param u32 reg:
+        register offset in bytes
+
+    :param u32 \*val:
+        register value
+
+
+
+.. _`r600_get_allowed_info_register.description`:
+
+Description
+-----------
+
+Returns 0 for success or -EINVAL for an invalid register
+
+
+
+.. _`r600_get_xclk`:
+
+r600_get_xclk
+=============
+
+.. c:function:: u32 r600_get_xclk (struct radeon_device *rdev)
+
+    get the xclk
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r600_get_xclk.description`:
+
+Description
+-----------
+
+Returns the reference clock used by the gfx engine
+(r6xx, IGPs, APUs).
+
+
+
+.. _`r600_vram_gtt_location`:
+
+r600_vram_gtt_location
+======================
+
+.. c:function:: void r600_vram_gtt_location (struct radeon_device *rdev, struct radeon_mc *mc)
+
+    try to find VRAM & GTT location
+
+    :param struct radeon_device \*rdev:
+        radeon device structure holding all necessary informations
+
+    :param struct radeon_mc \*mc:
+        memory controller structure holding memory informations
+
+
+
+.. _`r600_vram_gtt_location.description`:
+
+Description
+-----------
+
+Function will place try to place VRAM at same place as in CPU (PCI)
+address space as some GPU seems to have issue when we reprogram at
+different address space.
+
+If there is not enough space to fit the unvisible VRAM after the
+aperture then we limit the VRAM size to the aperture.
+
+If we are using AGP then place VRAM adjacent to AGP aperture are we need
+them to be in one from GPU point of view so that we can program GPU to
+catch access outside them (weird GPU policy see ??).
+
+This function will never fails, worst case are limiting VRAM or GTT.
+
+
+
+.. _`r600_vram_gtt_location.note`:
+
+Note
+----
+
+GTT start, end, size should be initialized before calling this
+function on AGP platform.
+
+
+
+.. _`r600_gfx_is_lockup`:
+
+r600_gfx_is_lockup
+==================
+
+.. c:function:: bool r600_gfx_is_lockup (struct radeon_device *rdev, struct radeon_ring *ring)
+
+    Check if the GFX engine is locked up
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param struct radeon_ring \*ring:
+        radeon_ring structure holding ring information
+
+
+
+.. _`r600_gfx_is_lockup.description`:
+
+Description
+-----------
+
+Check if the GFX engine is locked up.
+Returns true if the engine appears to be locked up, false if not.
+
+
+
+.. _`r600_semaphore_ring_emit`:
+
+r600_semaphore_ring_emit
+========================
+
+.. c:function:: bool r600_semaphore_ring_emit (struct radeon_device *rdev, struct radeon_ring *ring, struct radeon_semaphore *semaphore, bool emit_wait)
+
+    emit a semaphore on the CP ring
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param struct radeon_ring \*ring:
+        radeon ring buffer object
+
+    :param struct radeon_semaphore \*semaphore:
+        radeon semaphore object
+
+    :param bool emit_wait:
+        Is this a sempahore wait?
+
+
+
+.. _`r600_semaphore_ring_emit.description`:
+
+Description
+-----------
+
+Emits a semaphore signal/wait packet to the CP ring and prevents the PFP
+from running ahead of semaphore waits.
+
+
+
+.. _`r600_copy_cpdma`:
+
+r600_copy_cpdma
+===============
+
+.. c:function:: struct radeon_fence *r600_copy_cpdma (struct radeon_device *rdev, uint64_t src_offset, uint64_t dst_offset, unsigned num_gpu_pages, struct reservation_object *resv)
+
+    copy pages using the CP DMA engine
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param uint64_t src_offset:
+        src GPU address
+
+    :param uint64_t dst_offset:
+        dst GPU address
+
+    :param unsigned num_gpu_pages:
+        number of GPU pages to xfer
+
+    :param struct reservation_object \*resv:
+
+        *undescribed*
+
+
+
+.. _`r600_copy_cpdma.description`:
+
+Description
+-----------
+
+Copy GPU paging using the CP DMA engine (r6xx+).
+Used by the radeon ttm implementation to move pages if
+registered as the asic copy callback.
+
+
+
+.. _`r600_mmio_hdp_flush`:
+
+r600_mmio_hdp_flush
+===================
+
+.. c:function:: void r600_mmio_hdp_flush (struct radeon_device *rdev)
+
+    flush Host Data Path cache via MMIO
+
+    :param struct radeon_device \*rdev:
+
+        *undescribed*
+
+
+
+.. _`r600_mmio_hdp_flush.rdev`:
+
+rdev
+----
+
+radeon device structure
+
+Some R6XX/R7XX don't seem to take into account HDP flushes performed
+through the ring buffer. This leads to corruption in rendering, see
+
+
+
+.. _`r600_mmio_hdp_flush.http`:
+
+http
+----
+
+//bugzilla.kernel.org/show_bug.cgi?id=15186 . To avoid this, we
+directly perform the HDP flush by writing the register through MMIO.
+
+
+
+.. _`r600_get_gpu_clock_counter`:
+
+r600_get_gpu_clock_counter
+==========================
+
+.. c:function:: uint64_t r600_get_gpu_clock_counter (struct radeon_device *rdev)
+
+    return GPU clock counter snapshot
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r600_get_gpu_clock_counter.description`:
+
+Description
+-----------
+
+Fetches a GPU clock counter snapshot (R6xx-cayman).
+Returns the 64 bit clock counter snapshot.
+

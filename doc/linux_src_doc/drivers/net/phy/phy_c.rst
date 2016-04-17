@@ -4,6 +4,7 @@
 phy.c
 =====
 
+
 .. _`phy_print_status`:
 
 phy_print_status
@@ -15,6 +16,7 @@ phy_print_status
 
     :param struct phy_device \*phydev:
         the phy_device struct
+
 
 
 .. _`phy_clear_interrupt`:
@@ -30,6 +32,7 @@ phy_clear_interrupt
         the phy_device struct
 
 
+
 .. _`phy_clear_interrupt.description`:
 
 Description
@@ -39,6 +42,7 @@ If the ``phydev`` driver has an ack_interrupt function, call it to
 ack and clear the phy device's interrupt.
 
 Returns 0 on success or < 0 on error.
+
 
 
 .. _`phy_config_interrupt`:
@@ -57,12 +61,14 @@ phy_config_interrupt
         interrupt flags to configure for this ``phydev``
 
 
+
 .. _`phy_config_interrupt.description`:
 
 Description
 -----------
 
 Returns 0 on success or < 0 on error.
+
 
 
 .. _`phy_aneg_done`:
@@ -78,14 +84,16 @@ phy_aneg_done
         target phy_device struct
 
 
+
 .. _`phy_aneg_done.description`:
 
 Description
 -----------
 
-Description: Return the auto-negotiation status from this ``phydev``
+Return the auto-negotiation status from this ``phydev``
 Returns > 0 on success or < 0 on error. 0 means that auto-negotiation
 is still pending.
+
 
 
 .. _`phy_find_setting`:
@@ -104,15 +112,17 @@ phy_find_setting
         duplex to match
 
 
+
 .. _`phy_find_setting.description`:
 
 Description
 -----------
 
-Description: Searches the settings array for the setting which
+Searches the settings array for the setting which
 matches the desired speed and duplex, and returns the index
 of that setting.  Returns the index of the last setting if
 none of the others match.
+
 
 
 .. _`phy_find_valid`:
@@ -131,15 +141,17 @@ phy_find_valid
         A mask of the valid settings
 
 
+
 .. _`phy_find_valid.description`:
 
 Description
 -----------
 
-Description: Returns the index of the first valid setting less
+Returns the index of the first valid setting less
 than or equal to the one pointed to by idx, as determined by
 the mask in features.  Returns the index of the last setting
 if nothing else matches.
+
 
 
 .. _`phy_check_valid`:
@@ -161,12 +173,14 @@ phy_check_valid
         A mask of the valid settings
 
 
+
 .. _`phy_check_valid.description`:
 
 Description
 -----------
 
-Description: Returns true if there is a valid setting, false otherwise.
+Returns true if there is a valid setting, false otherwise.
+
 
 
 .. _`phy_sanitize_settings`:
@@ -182,14 +196,16 @@ phy_sanitize_settings
         the target phy_device struct
 
 
+
 .. _`phy_sanitize_settings.description`:
 
 Description
 -----------
 
-Description: Make sure the PHY is set to supported speeds and
+Make sure the PHY is set to supported speeds and
 duplexes.  Drop down by one in this order:  1000/FULL,
 1000/HALF, 100/FULL, 100/HALF, 10/FULL, 10/HALF.
+
 
 
 .. _`phy_ethtool_sset`:
@@ -208,18 +224,21 @@ phy_ethtool_sset
         ethtool_cmd
 
 
-.. _`phy_ethtool_sset.description`:
 
-Description
------------
+.. _`phy_ethtool_sset.a-few-notes-about-parameter-checking`:
 
-A few notes about parameter checking:
+A few notes about parameter checking
+------------------------------------
+
 - We don't set port or transceiver, so we don't care what they
+
   were set to.
 
 - :c:func:`phy_start_aneg` will make sure forced settings are sane, and
+
   choose the next best ones from the ones selected, so we don't
   care if ethtool tries to give us bad values.
+
 
 
 .. _`phy_mii_ioctl`:
@@ -241,6 +260,7 @@ phy_mii_ioctl
         ioctl cmd to execute
 
 
+
 .. _`phy_mii_ioctl.description`:
 
 Description
@@ -249,6 +269,7 @@ Description
 Note that this function is currently incompatible with the
 PHYCONTROL layer.  It changes registers without regard to
 current state.  Use at own risk.
+
 
 
 .. _`phy_start_aneg`:
@@ -264,15 +285,17 @@ phy_start_aneg
         the phy_device struct
 
 
+
 .. _`phy_start_aneg.description`:
 
 Description
 -----------
 
-Description: Sanitizes the settings (if we're not autonegotiating
+Sanitizes the settings (if we're not autonegotiating
 them), and then calls the driver's config_aneg function.
 If the PHYCONTROL Layer is operating, we change the state to
 reflect the beginning of Auto-negotiation or forcing.
+
 
 
 .. _`phy_start_machine`:
@@ -288,16 +311,18 @@ phy_start_machine
         the phy_device struct
 
 
+
 .. _`phy_start_machine.description`:
 
 Description
 -----------
 
-Description: The PHY infrastructure can run a state machine
+The PHY infrastructure can run a state machine
 which tracks whether the PHY is starting up, negotiating,
 etc.  This function starts the timer which tracks the state
 of the PHY.  If you want to maintain your own state machine,
 do not call this function.
+
 
 
 .. _`phy_stop_machine`:
@@ -313,14 +338,16 @@ phy_stop_machine
         target phy_device struct
 
 
+
 .. _`phy_stop_machine.description`:
 
 Description
 -----------
 
-Description: Stops the state machine timer, sets the state to UP
+Stops the state machine timer, sets the state to UP
 (unless it wasn't up yet). This function must be called BEFORE
 phy_detach.
+
 
 
 .. _`phy_error`:
@@ -336,6 +363,7 @@ phy_error
         target phy_device struct
 
 
+
 .. _`phy_error.description`:
 
 Description
@@ -345,6 +373,7 @@ Moves the PHY to the HALTED state in response to a read
 or write error, and tells the controller the link is down.
 Must not be called from interrupt context, or while the
 phydev->lock is held.
+
 
 
 .. _`phy_interrupt`:
@@ -363,13 +392,15 @@ phy_interrupt
         phy_device pointer
 
 
+
 .. _`phy_interrupt.description`:
 
 Description
 -----------
 
-Description: When a PHY interrupt occurs, the handler disables
+When a PHY interrupt occurs, the handler disables
 interrupts, and schedules a work task to clear the interrupt.
+
 
 
 .. _`phy_enable_interrupts`:
@@ -385,6 +416,7 @@ phy_enable_interrupts
         target phy_device struct
 
 
+
 .. _`phy_disable_interrupts`:
 
 phy_disable_interrupts
@@ -396,6 +428,7 @@ phy_disable_interrupts
 
     :param struct phy_device \*phydev:
         target phy_device struct
+
 
 
 .. _`phy_start_interrupts`:
@@ -411,17 +444,18 @@ phy_start_interrupts
         target phy_device struct
 
 
+
 .. _`phy_start_interrupts.description`:
 
 Description
 -----------
 
-Description: Request the interrupt for the given PHY.::
+Request the interrupt for the given PHY.
+If this fails, then we set irq to PHY_POLL.
+Otherwise, we enable the interrupts in the PHY.
+This should only be called with a valid IRQ number.
+Returns 0 on success or < 0 on error.
 
-  If this fails, then we set irq to PHY_POLL.
-  Otherwise, we enable the interrupts in the PHY.
-  This should only be called with a valid IRQ number.
-  Returns 0 on success or < 0 on error.
 
 
 .. _`phy_stop_interrupts`:
@@ -437,6 +471,7 @@ phy_stop_interrupts
         target phy_device struct
 
 
+
 .. _`phy_change`:
 
 phy_change
@@ -448,6 +483,7 @@ phy_change
 
     :param struct work_struct \*work:
         work_struct that describes the work to be done
+
 
 
 .. _`phy_stop`:
@@ -463,6 +499,7 @@ phy_stop
         target phy_device struct
 
 
+
 .. _`phy_start`:
 
 phy_start
@@ -476,16 +513,18 @@ phy_start
         target phy_device struct
 
 
+
 .. _`phy_start.description`:
 
 Description
 -----------
 
-Description: Indicates the attached device's readiness to
+Indicates the attached device's readiness to
 handle PHY-related work.  Used during startup to start the
 PHY, and after a call to :c:func:`phy_stop` to resume operation.
 Also used to indicate the MDIO bus has cleared an error
 condition.
+
 
 
 .. _`phy_state_machine`:
@@ -499,6 +538,7 @@ phy_state_machine
 
     :param struct work_struct \*work:
         work_struct that describes the work to be done
+
 
 
 .. _`phy_read_mmd_indirect`:
@@ -520,18 +560,27 @@ phy_read_mmd_indirect
         MMD DEVAD
 
 
+
 .. _`phy_read_mmd_indirect.description`:
 
 Description
 -----------
 
-Description: it reads data from the MMD registers (clause 22 to access to
+it reads data from the MMD registers (clause 22 to access to
 clause 45) of the specified phy address.
-To read these register we have:
+
+
+
+.. _`phy_read_mmd_indirect.to-read-these-register-we-have`:
+
+To read these register we have
+------------------------------
+
 1) Write reg 13 // DEVAD
 2) Write reg 14 // MMD Address
 3) Write reg 13 // MMD Data Command for MMD DEVAD
 3) Read  reg 14 // Read MMD data
+
 
 
 .. _`phy_write_mmd_indirect`:
@@ -556,18 +605,27 @@ phy_write_mmd_indirect
         data to write in the MMD register
 
 
+
 .. _`phy_write_mmd_indirect.description`:
 
 Description
 -----------
 
-Description: Write data from the MMD registers of the specified
+Write data from the MMD registers of the specified
 phy address.
-To write these register we have:
+
+
+
+.. _`phy_write_mmd_indirect.to-write-these-register-we-have`:
+
+To write these register we have
+-------------------------------
+
 1) Write reg 13 // DEVAD
 2) Write reg 14 // MMD Address
 3) Write reg 13 // MMD Data Command for MMD DEVAD
 3) Write reg 14 // Write MMD data
+
 
 
 .. _`phy_init_eee`:
@@ -586,15 +644,17 @@ phy_init_eee
         PHY may stop the clock during LPI
 
 
+
 .. _`phy_init_eee.description`:
 
 Description
 -----------
 
-Description: it checks if the Energy-Efficient Ethernet (EEE)
+it checks if the Energy-Efficient Ethernet (EEE)
 is supported by looking at the MMD registers 3.20 and 7.60/61
 and it programs the MMD register 3.0 setting the "Clock stop enable"
 bit if required.
+
 
 
 .. _`phy_get_eee_err`:
@@ -610,13 +670,15 @@ phy_get_eee_err
         target phy_device struct
 
 
+
 .. _`phy_get_eee_err.description`:
 
 Description
 -----------
 
-Description: it is to report the number of time where the PHY
+it is to report the number of time where the PHY
 failed to complete its normal wake sequence.
+
 
 
 .. _`phy_ethtool_get_eee`:
@@ -635,13 +697,15 @@ phy_ethtool_get_eee
         ethtool_eee data
 
 
+
 .. _`phy_ethtool_get_eee.description`:
 
 Description
 -----------
 
-Description: it reportes the Supported/Advertisement/LP Advertisement
+it reportes the Supported/Advertisement/LP Advertisement
 capabilities.
+
 
 
 .. _`phy_ethtool_set_eee`:
@@ -660,10 +724,11 @@ phy_ethtool_set_eee
         ethtool_eee data
 
 
+
 .. _`phy_ethtool_set_eee.description`:
 
 Description
 -----------
 
-Description: it is to program the Advertisement EEE register.
+it is to program the Advertisement EEE register.
 

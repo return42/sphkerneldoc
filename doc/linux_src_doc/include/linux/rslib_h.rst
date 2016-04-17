@@ -4,16 +4,18 @@
 rslib.h
 =======
 
+
 .. _`rs_control`:
 
 struct rs_control
 =================
 
-.. c:type:: struct rs_control
+.. c:type:: rs_control
 
     rs control structure
 
 
+.. _`rs_control.definition`:
 
 Definition
 ----------
@@ -37,6 +39,7 @@ Definition
   };
 
 
+.. _`rs_control.members`:
 
 Members
 -------

@@ -1,0 +1,28 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+gf100.c
+=======
+
+
+.. _`gf100_gr_wait_idle`:
+
+gf100_gr_wait_idle
+==================
+
+.. c:function:: int gf100_gr_wait_idle (struct gf100_gr *gr)
+
+    :param struct gf100_gr \*gr:
+
+        *undescribed*
+
+
+
+.. _`gf100_gr_wait_idle.description`:
+
+Description
+-----------
+
+MC (0x200) register, or GR is not busy and a context switch is not in
+progress.
+

@@ -1,0 +1,44 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+wm8903.c
+========
+
+
+.. _`wm8903_mic_detect`:
+
+wm8903_mic_detect
+=================
+
+.. c:function:: int wm8903_mic_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack, int det, int shrt)
+
+    Enable microphone detection via the WM8903 IRQ
+
+    :param struct snd_soc_codec \*codec:
+        WM8903 codec
+
+    :param struct snd_soc_jack \*jack:
+        jack to report detection events on
+
+    :param int det:
+        value to report for presence detection
+
+    :param int shrt:
+        value to report for short detection
+
+
+
+.. _`wm8903_mic_detect.description`:
+
+Description
+-----------
+
+Enable microphone detection via IRQ on the WM8903.  If GPIOs are
+being used to bring out signals to the processor then only platform
+data configuration is needed for WM8903 and processor GPIOs should
+be configured using :c:func:`snd_soc_jack_add_gpios` instead.
+
+The current threasholds for detection should be configured using
+micdet_cfg in the platform data.  Using this function will force on
+the microphone bias for the device.
+

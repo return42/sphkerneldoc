@@ -4,6 +4,7 @@
 base.c
 ======
 
+
 .. _`proc_flush_task`:
 
 proc_flush_task
@@ -15,6 +16,7 @@ proc_flush_task
 
     :param struct task_struct \*task:
         task that should be flushed.
+
 
 
 .. _`proc_flush_task.description`:
@@ -38,7 +40,14 @@ useless entries, possibly causing useful dcache entries to be
 flushed instead.  This routine is proved to flush those useless
 dcache entries at process exit time.
 
-NOTE: This routine is just an optimization so it does not guarantee
+
+
+.. _`proc_flush_task.note`:
+
+NOTE
+----
+
+This routine is just an optimization so it does not guarantee
 that no dcache entries will exist at process exit time it
 just makes it very unlikely that any will persist.
 

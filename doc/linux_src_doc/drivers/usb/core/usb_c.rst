@@ -4,6 +4,7 @@
 usb.c
 =====
 
+
 .. _`usb_find_alt_setting`:
 
 usb_find_alt_setting
@@ -23,6 +24,7 @@ usb_find_alt_setting
         alternate interface setting number to search for.
 
 
+
 .. _`usb_find_alt_setting.description`:
 
 Description
@@ -30,7 +32,15 @@ Description
 
 Search the configuration's interface cache for the given alt setting.
 
-Return: The alternate setting, if found. ``NULL`` otherwise.
+
+
+.. _`usb_find_alt_setting.return`:
+
+Return
+------
+
+The alternate setting, if found. ``NULL`` otherwise.
+
 
 
 .. _`usb_ifnum_to_if`:
@@ -47,6 +57,7 @@ usb_ifnum_to_if
 
     :param unsigned ifnum:
         the desired interface
+
 
 
 .. _`usb_ifnum_to_if.description`:
@@ -67,8 +78,16 @@ alternate settings available for this interfaces.
 Don't call this function unless you are bound to one of the interfaces
 on this device or you have locked the device!
 
-Return: A pointer to the interface that has ``ifnum`` as interface number,
+
+
+.. _`usb_ifnum_to_if.return`:
+
+Return
+------
+
+A pointer to the interface that has ``ifnum`` as interface number,
 if found. ``NULL`` otherwise.
+
 
 
 .. _`usb_altnum_to_altsetting`:
@@ -87,6 +106,7 @@ usb_altnum_to_altsetting
         the desired alternate setting number
 
 
+
 .. _`usb_altnum_to_altsetting.description`:
 
 Description
@@ -103,8 +123,16 @@ drivers avoid such mistakes.
 Don't call this function unless you are bound to the intf interface
 or you have locked the device!
 
-Return: A pointer to the entry of the altsetting array of ``intf`` that
+
+
+.. _`usb_altnum_to_altsetting.return`:
+
+Return
+------
+
+A pointer to the entry of the altsetting array of ``intf`` that
 has ``altnum`` as the alternate setting number. ``NULL`` if not found.
+
 
 
 .. _`usb_find_interface`:
@@ -123,6 +151,7 @@ usb_find_interface
         the minor number of the desired device
 
 
+
 .. _`usb_find_interface.description`:
 
 Description
@@ -132,7 +161,15 @@ This walks the bus device list and returns a pointer to the interface
 with the matching minor and driver.  Note, this only works for devices
 that share the USB major number.
 
-Return: A pointer to the interface with the matching major and ``minor``\ .
+
+
+.. _`usb_find_interface.return`:
+
+Return
+------
+
+A pointer to the interface with the matching major and ``minor``\ .
+
 
 
 .. _`usb_for_each_dev`:
@@ -151,6 +188,7 @@ usb_for_each_dev
         callback function to be called for each USB device
 
 
+
 .. _`usb_for_each_dev.description`:
 
 Description
@@ -159,6 +197,7 @@ Description
 Iterate over all USB devices and call ``fn`` for each, passing it ``data``\ . If it
 returns anything other than 0, we break the iteration prematurely and return
 that value.
+
 
 
 .. _`usb_release_dev`:
@@ -174,6 +213,7 @@ usb_release_dev
         device that's been disconnected
 
 
+
 .. _`usb_release_dev.description`:
 
 Description
@@ -181,6 +221,7 @@ Description
 
 Will be called only by the device core when all users of this usb device are
 done.
+
 
 
 .. _`usb_alloc_dev`:
@@ -200,7 +241,16 @@ usb_alloc_dev
 
     :param unsigned port1:
         one-based index of port; ignored for root hubs
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`usb_alloc_dev.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`usb_alloc_dev.description`:
@@ -213,8 +263,16 @@ controllers) should ever call this.
 
 This call may not be used in a non-sleeping context.
 
-Return: On success, a pointer to the allocated usb device. ``NULL`` on
+
+
+.. _`usb_alloc_dev.return`:
+
+Return
+------
+
+On success, a pointer to the allocated usb device. ``NULL`` on
 failure.
+
 
 
 .. _`usb_get_dev`:
@@ -230,6 +288,7 @@ usb_get_dev
         the device being referenced
 
 
+
 .. _`usb_get_dev.description`:
 
 Description
@@ -241,7 +300,15 @@ Drivers for USB interfaces should normally record such references in
 their :c:func:`probe` methods, when they bind to an interface, and release
 them by calling :c:func:`usb_put_dev`, in their :c:func:`disconnect` methods.
 
-Return: A pointer to the device with the incremented reference counter.
+
+
+.. _`usb_get_dev.return`:
+
+Return
+------
+
+A pointer to the device with the incremented reference counter.
+
 
 
 .. _`usb_put_dev`:
@@ -257,6 +324,7 @@ usb_put_dev
         device that's been disconnected
 
 
+
 .. _`usb_put_dev.description`:
 
 Description
@@ -264,6 +332,7 @@ Description
 
 Must be called when a user of a device is finished with it.  When the last
 user of the device calls this function, the memory of the device is freed.
+
 
 
 .. _`usb_get_intf`:
@@ -279,6 +348,7 @@ usb_get_intf
         the interface being referenced
 
 
+
 .. _`usb_get_intf.description`:
 
 Description
@@ -290,7 +360,15 @@ Drivers for USB interfaces should normally record such references in
 their :c:func:`probe` methods, when they bind to an interface, and release
 them by calling :c:func:`usb_put_intf`, in their :c:func:`disconnect` methods.
 
-Return: A pointer to the interface with the incremented reference counter.
+
+
+.. _`usb_get_intf.return`:
+
+Return
+------
+
+A pointer to the interface with the incremented reference counter.
+
 
 
 .. _`usb_put_intf`:
@@ -306,6 +384,7 @@ usb_put_intf
         interface that's been decremented
 
 
+
 .. _`usb_put_intf.description`:
 
 Description
@@ -314,6 +393,7 @@ Description
 Must be called when a user of an interface is finished with it.  When the
 last user of the interface calls this function, the memory of the interface
 is freed.
+
 
 
 .. _`usb_lock_device_for_reset`:
@@ -332,6 +412,7 @@ usb_lock_device_for_reset
         interface bound to the driver making the request (optional)
 
 
+
 .. _`usb_lock_device_for_reset.description`:
 
 Description
@@ -344,7 +425,15 @@ lock, the routine polls repeatedly.  This is to prevent deadlock with
 disconnect; in some drivers (such as usb-storage) the :c:func:`disconnect`
 or :c:func:`suspend` method will block waiting for a device reset to complete.
 
-Return: A negative error code for failure, otherwise 0.
+
+
+.. _`usb_lock_device_for_reset.return`:
+
+Return
+------
+
+A negative error code for failure, otherwise 0.
+
 
 
 .. _`usb_get_current_frame_number`:
@@ -360,19 +449,28 @@ usb_get_current_frame_number
         the device whose bus is being queried
 
 
-.. _`usb_get_current_frame_number.description`:
 
-Description
------------
+.. _`usb_get_current_frame_number.return`:
 
-Return: The current frame number for the USB host controller used
+Return
+------
+
+The current frame number for the USB host controller used
 with the given USB device. This can be used when scheduling
 isochronous requests.
 
-Note: Different kinds of host controller have different "scheduling
+
+
+.. _`usb_get_current_frame_number.note`:
+
+Note
+----
+
+Different kinds of host controller have different "scheduling
 horizons". While one type might support scheduling only 32 frames
 into the future, others could support scheduling up to 1024 frames
 into the future.
+
 
 
 .. _`usb_alloc_coherent`:
@@ -397,17 +495,24 @@ usb_alloc_coherent
         used to return DMA address of buffer
 
 
-.. _`usb_alloc_coherent.description`:
 
-Description
------------
+.. _`usb_alloc_coherent.return`:
 
-Return: Either null (indicating no buffer could be allocated), or the
+Return
+------
+
+Either null (indicating no buffer could be allocated), or the
 cpu-space pointer to a buffer that may be used to perform DMA to the
 specified device.  Such cpu-space buffers are returned along with the DMA
 address (through the pointer provided).
 
-Note:
+
+
+.. _`usb_alloc_coherent.note`:
+
+Note
+----
+
 These buffers are used with URB_NO_xxx_DMA_MAP set in urb->transfer_flags
 to avoid behaviors like using "DMA bounce buffers", or thrashing IOMMU
 hardware during URB completion/resubmit.  The implementation varies between
@@ -417,6 +522,7 @@ architectures where CPU caches are not DMA-coherent.  On systems without
 bus-snooping caches, these buffers are uncached.
 
 When the buffer is no longer used, free it with :c:func:`usb_free_coherent`.
+
 
 
 .. _`usb_free_coherent`:
@@ -441,6 +547,7 @@ usb_free_coherent
         DMA address of buffer
 
 
+
 .. _`usb_free_coherent.description`:
 
 Description
@@ -449,6 +556,7 @@ Description
 This reclaims an I/O buffer, letting it be reused.  The memory must have
 been allocated using :c:func:`usb_alloc_coherent`, and the parameters must match
 those provided in that allocation request.
+
 
 
 .. _`usb_buffer_map`:
@@ -462,6 +570,7 @@ usb_buffer_map
 
     :param struct urb \*urb:
         urb whose transfer_buffer/setup_packet will be mapped
+
 
 
 .. _`usb_buffer_map.description`:
@@ -479,7 +588,15 @@ calls to synchronize memory and dma state.
 
 Reverse the effect of this call with :c:func:`usb_buffer_unmap`.
 
-Return: Either ``NULL`` (indicating no buffer could be mapped), or ``urb``\ .
+
+
+.. _`usb_buffer_map.return`:
+
+Return
+------
+
+Either ``NULL`` (indicating no buffer could be mapped), or ``urb``\ .
+
 
 
 .. _`usb_buffer_dmasync`:
@@ -495,6 +612,7 @@ usb_buffer_dmasync
         urb whose transfer_buffer/setup_packet will be synchronized
 
 
+
 .. _`usb_buffer_unmap`:
 
 usb_buffer_unmap
@@ -508,12 +626,14 @@ usb_buffer_unmap
         urb whose transfer_buffer will be unmapped
 
 
+
 .. _`usb_buffer_unmap.description`:
 
 Description
 -----------
 
 Reverses the effect of :c:func:`usb_buffer_map`.
+
 
 
 .. _`usb_buffer_map_sg`:
@@ -538,15 +658,22 @@ usb_buffer_map_sg
         the number of entries in the scatterlist
 
 
-.. _`usb_buffer_map_sg.description`:
 
-Description
------------
+.. _`usb_buffer_map_sg.return`:
 
-Return: Either < 0 (indicating no buffers could be mapped), or the
+Return
+------
+
+Either < 0 (indicating no buffers could be mapped), or the
 number of DMA mapping array entries in the scatterlist.
 
-Note:
+
+
+.. _`usb_buffer_map_sg.note`:
+
+Note
+----
+
 The caller is responsible for placing the resulting DMA addresses from
 the scatterlist into URB transfer buffer pointers, and for setting the
 URB_NO_TRANSFER_DMA_MAP transfer flag in each of those URBs.
@@ -555,13 +682,14 @@ Top I/O rates come from queuing URBs, instead of waiting for each one
 to complete before starting the next I/O.   This is particularly easy
 to do with scatterlists.  Just allocate and submit one URB for each DMA
 mapping entry returned, stopping on the first error or when all succeed.
-Better yet, use the usb_sg_\*() calls, which do that (and more) for you.
+Better yet, use the usb_sg\_\*() calls, which do that (and more) for you.
 
 This call would normally be used when translating scatterlist requests,
 rather than :c:func:`usb_buffer_map`, since on some hardware (with IOMMUs) it
 may be able to coalesce mappings for improved I/O efficiency.
 
 Reverse the effect of this call with :c:func:`usb_buffer_unmap_sg`.
+
 
 
 .. _`usb_buffer_dmasync_sg`:
@@ -586,6 +714,7 @@ usb_buffer_dmasync_sg
         the positive return value from usb_buffer_map_sg
 
 
+
 .. _`usb_buffer_dmasync_sg.description`:
 
 Description
@@ -593,6 +722,7 @@ Description
 
 Use this when you are re-using a scatterlist's data buffers for
 another USB request.
+
 
 
 .. _`usb_buffer_unmap_sg`:
@@ -615,6 +745,7 @@ usb_buffer_unmap_sg
 
     :param int n_hw_ents:
         the positive return value from usb_buffer_map_sg
+
 
 
 .. _`usb_buffer_unmap_sg.description`:

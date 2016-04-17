@@ -4,6 +4,7 @@
 kfifo.h
 =======
 
+
 .. _`declare_kfifo_ptr`:
 
 DECLARE_KFIFO_PTR
@@ -18,6 +19,7 @@ DECLARE_KFIFO_PTR
 
     :param type:
         type of the fifo elements
+
 
 
 .. _`declare_kfifo`:
@@ -39,6 +41,7 @@ DECLARE_KFIFO
         the number of elements in the fifo, this must be a power of 2
 
 
+
 .. _`init_kfifo`:
 
 INIT_KFIFO
@@ -50,6 +53,7 @@ INIT_KFIFO
 
     :param fifo:
         name of the declared fifo datatype
+
 
 
 .. _`define_kfifo`:
@@ -71,12 +75,14 @@ DEFINE_KFIFO
         the number of elements in the fifo, this must be a power of 2
 
 
-.. _`define_kfifo.description`:
 
-Description
------------
+.. _`define_kfifo.note`:
 
-Note: the macro can be used for global and local fifo data type variables.
+Note
+----
+
+the macro can be used for global and local fifo data type variables.
+
 
 
 .. _`kfifo_initialized`:
@@ -92,6 +98,7 @@ kfifo_initialized
         address of the fifo to check
 
 
+
 .. _`kfifo_initialized.description`:
 
 Description
@@ -99,6 +106,7 @@ Description
 
 Return ``true`` if fifo is initialized, otherwise ``false``\ .
 Assumes the fifo was 0 before.
+
 
 
 .. _`kfifo_esize`:
@@ -114,6 +122,7 @@ kfifo_esize
         address of the fifo to be used
 
 
+
 .. _`kfifo_recsize`:
 
 kfifo_recsize
@@ -125,6 +134,7 @@ kfifo_recsize
 
     :param fifo:
         address of the fifo to be used
+
 
 
 .. _`kfifo_size`:
@@ -140,6 +150,7 @@ kfifo_size
         address of the fifo to be used
 
 
+
 .. _`kfifo_reset`:
 
 kfifo_reset
@@ -153,14 +164,16 @@ kfifo_reset
         address of the fifo to be used
 
 
-.. _`kfifo_reset.description`:
 
-Description
------------
+.. _`kfifo_reset.note`:
 
-Note: usage of :c:func:`kfifo_reset` is dangerous. It should be only called when the
+Note
+----
+
+usage of :c:func:`kfifo_reset` is dangerous. It should be only called when the
 fifo is exclusived locked or when it is secured that no other thread is
 accessing the fifo.
+
 
 
 .. _`kfifo_reset_out`:
@@ -176,14 +189,16 @@ kfifo_reset_out
         address of the fifo to be used
 
 
-.. _`kfifo_reset_out.description`:
 
-Description
------------
+.. _`kfifo_reset_out.note`:
 
-Note: The usage of :c:func:`kfifo_reset_out` is safe until it will be only called
+Note
+----
+
+The usage of :c:func:`kfifo_reset_out` is safe until it will be only called
 from the reader thread and there is only one concurrent reader. Otherwise
 it is dangerous and must be handled in the same way as :c:func:`kfifo_reset`.
+
 
 
 .. _`kfifo_len`:
@@ -199,6 +214,7 @@ kfifo_len
         address of the fifo to be used
 
 
+
 .. _`kfifo_is_empty`:
 
 kfifo_is_empty
@@ -210,6 +226,7 @@ kfifo_is_empty
 
     :param fifo:
         address of the fifo to be used
+
 
 
 .. _`kfifo_is_full`:
@@ -225,6 +242,7 @@ kfifo_is_full
         address of the fifo to be used
 
 
+
 .. _`kfifo_avail`:
 
 kfifo_avail
@@ -236,6 +254,7 @@ kfifo_avail
 
     :param fifo:
         address of the fifo to be used
+
 
 
 .. _`kfifo_skip`:
@@ -251,6 +270,7 @@ kfifo_skip
         address of the fifo to be used
 
 
+
 .. _`kfifo_peek_len`:
 
 kfifo_peek_len
@@ -264,12 +284,14 @@ kfifo_peek_len
         address of the fifo to be used
 
 
+
 .. _`kfifo_peek_len.description`:
 
 Description
 -----------
 
 This function returns the size of the next fifo record in number of bytes.
+
 
 
 .. _`kfifo_alloc`:
@@ -291,6 +313,7 @@ kfifo_alloc
         get_free_pages mask, passed to :c:func:`kmalloc`
 
 
+
 .. _`kfifo_alloc.description`:
 
 Description
@@ -301,6 +324,7 @@ This macro dynamically allocates a new fifo buffer.
 The numer of elements will be rounded-up to a power of 2.
 The fifo will be release with :c:func:`kfifo_free`.
 Return 0 if no error, otherwise an error code.
+
 
 
 .. _`kfifo_free`:
@@ -314,6 +338,7 @@ kfifo_free
 
     :param fifo:
         the fifo to be freed
+
 
 
 .. _`kfifo_init`:
@@ -335,6 +360,7 @@ kfifo_init
         the size of the internal buffer, this have to be a power of 2
 
 
+
 .. _`kfifo_init.description`:
 
 Description
@@ -344,6 +370,7 @@ This macro initialize a fifo using a preallocated buffer.
 
 The numer of elements will be rounded-up to a power of 2.
 Return 0 if no error, otherwise an error code.
+
 
 
 .. _`kfifo_put`:
@@ -362,6 +389,7 @@ kfifo_put
         the data to be added
 
 
+
 .. _`kfifo_put.description`:
 
 Description
@@ -373,6 +401,7 @@ processed elements.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_get`:
@@ -391,6 +420,7 @@ kfifo_get
         address where to store the data
 
 
+
 .. _`kfifo_get.description`:
 
 Description
@@ -402,6 +432,7 @@ processed elements.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_peek`:
@@ -420,6 +451,7 @@ kfifo_peek
         address where to store the data
 
 
+
 .. _`kfifo_peek.description`:
 
 Description
@@ -431,6 +463,7 @@ processed elements.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_in`:
@@ -452,6 +485,7 @@ kfifo_in
         number of elements to be added
 
 
+
 .. _`kfifo_in.description`:
 
 Description
@@ -462,6 +496,7 @@ number of copied elements.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_in_spinlocked`:
@@ -486,6 +521,7 @@ kfifo_in_spinlocked
         pointer to the spinlock to use for locking
 
 
+
 .. _`kfifo_in_spinlocked.description`:
 
 Description
@@ -493,6 +529,7 @@ Description
 
 This macro copies the given values buffer into the fifo and returns the
 number of copied elements.
+
 
 
 .. _`kfifo_out`:
@@ -514,6 +551,7 @@ kfifo_out
         max. number of elements to get
 
 
+
 .. _`kfifo_out.description`:
 
 Description
@@ -524,6 +562,7 @@ copied.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_out_spinlocked`:
@@ -548,6 +587,7 @@ kfifo_out_spinlocked
         pointer to the spinlock to use for locking
 
 
+
 .. _`kfifo_out_spinlocked.description`:
 
 Description
@@ -555,6 +595,7 @@ Description
 
 This macro get the data from the fifo and return the numbers of elements
 copied.
+
 
 
 .. _`kfifo_from_user`:
@@ -579,6 +620,7 @@ kfifo_from_user
         pointer to output variable to store the number of copied bytes
 
 
+
 .. _`kfifo_from_user.description`:
 
 Description
@@ -589,6 +631,7 @@ fifo, depending of the available space and returns -EFAULT/0.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_to_user`:
@@ -613,6 +656,7 @@ kfifo_to_user
         pointer to output variable to store the number of copied bytes
 
 
+
 .. _`kfifo_to_user.description`:
 
 Description
@@ -623,6 +667,7 @@ This macro copies at most ``len`` bytes from the fifo into the
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macro.
+
 
 
 .. _`kfifo_dma_in_prepare`:
@@ -647,6 +692,7 @@ kfifo_dma_in_prepare
         number of elements to transfer
 
 
+
 .. _`kfifo_dma_in_prepare.description`:
 
 Description
@@ -657,6 +703,7 @@ It returns the number entries in the scatterlist array.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macros.
+
 
 
 .. _`kfifo_dma_in_finish`:
@@ -675,6 +722,7 @@ kfifo_dma_in_finish
         number of bytes to received
 
 
+
 .. _`kfifo_dma_in_finish.description`:
 
 Description
@@ -685,6 +733,7 @@ the len parameter. No error checking will be done.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macros.
+
 
 
 .. _`kfifo_dma_out_prepare`:
@@ -709,6 +758,7 @@ kfifo_dma_out_prepare
         number of elements to transfer
 
 
+
 .. _`kfifo_dma_out_prepare.description`:
 
 Description
@@ -721,6 +771,7 @@ A zero means there is no space available and the scatterlist is not filled.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macros.
+
 
 
 .. _`kfifo_dma_out_finish`:
@@ -739,6 +790,7 @@ kfifo_dma_out_finish
         number of bytes transferred
 
 
+
 .. _`kfifo_dma_out_finish.description`:
 
 Description
@@ -749,6 +801,7 @@ the len parameter. No error checking will be done.
 
 Note that with only one concurrent reader and one concurrent
 writer, you don't need extra locking to use these macros.
+
 
 
 .. _`kfifo_out_peek`:
@@ -768,6 +821,7 @@ kfifo_out_peek
 
     :param n:
         max. number of elements to get
+
 
 
 .. _`kfifo_out_peek.description`:

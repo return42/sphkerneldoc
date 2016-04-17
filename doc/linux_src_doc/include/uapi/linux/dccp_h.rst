@@ -4,16 +4,18 @@
 dccp.h
 ======
 
+
 .. _`dccp_hdr`:
 
 struct dccp_hdr
 ===============
 
-.. c:type:: struct dccp_hdr
+.. c:type:: dccp_hdr
 
     generic part of DCCP packet header
 
 
+.. _`dccp_hdr.definition`:
 
 Definition
 ----------
@@ -34,11 +36,15 @@ Definition
   };
 
 
+.. _`dccp_hdr.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr.description`:
 
 Description
 -----------
@@ -55,16 +61,18 @@ Description
 ``dccph_seq`` - sequence number high or low order 24 bits, depends on dccph_x
 
 
+
 .. _`dccp_hdr_ext`:
 
 struct dccp_hdr_ext
 ===================
 
-.. c:type:: struct dccp_hdr_ext
+.. c:type:: dccp_hdr_ext
 
     the low bits of a 48 bit seq packet
 
 
+.. _`dccp_hdr_ext.definition`:
 
 Definition
 ----------
@@ -75,11 +83,15 @@ Definition
   };
 
 
+.. _`dccp_hdr_ext.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr_ext.description`:
 
 Description
 -----------
@@ -88,16 +100,18 @@ Description
 ``dccph_seq_low`` - low 24 bits of a 48 bit seq packet
 
 
+
 .. _`dccp_hdr_request`:
 
 struct dccp_hdr_request
 =======================
 
-.. c:type:: struct dccp_hdr_request
+.. c:type:: dccp_hdr_request
 
     Connection initiation request header
 
 
+.. _`dccp_hdr_request.definition`:
 
 Definition
 ----------
@@ -108,11 +122,15 @@ Definition
   };
 
 
+.. _`dccp_hdr_request.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr_request.description`:
 
 Description
 -----------
@@ -121,16 +139,18 @@ Description
 ``dccph_req_service`` - Service to which the client app wants to connect
 
 
+
 .. _`dccp_hdr_ack_bits`:
 
 struct dccp_hdr_ack_bits
 ========================
 
-.. c:type:: struct dccp_hdr_ack_bits
+.. c:type:: dccp_hdr_ack_bits
 
     acknowledgment bits common to most packets
 
 
+.. _`dccp_hdr_ack_bits.definition`:
 
 Definition
 ----------
@@ -141,11 +161,15 @@ Definition
   };
 
 
+.. _`dccp_hdr_ack_bits.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr_ack_bits.description`:
 
 Description
 -----------
@@ -155,16 +179,18 @@ Description
 ``dccph_resp_ack_nr_low`` - 48 bit ack number low order bits, contains GSR
 
 
+
 .. _`dccp_hdr_response`:
 
 struct dccp_hdr_response
 ========================
 
-.. c:type:: struct dccp_hdr_response
+.. c:type:: dccp_hdr_response
 
     Connection initiation response header
 
 
+.. _`dccp_hdr_response.definition`:
 
 Definition
 ----------
@@ -175,11 +201,15 @@ Definition
   };
 
 
+.. _`dccp_hdr_response.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr_response.description`:
 
 Description
 -----------
@@ -189,16 +219,18 @@ Description
 ``dccph_resp_service`` - Echoes the Service Code on a received DCCP-Request
 
 
+
 .. _`dccp_hdr_reset`:
 
 struct dccp_hdr_reset
 =====================
 
-.. c:type:: struct dccp_hdr_reset
+.. c:type:: dccp_hdr_reset
 
     Unconditionally shut down a connection
 
 
+.. _`dccp_hdr_reset.definition`:
 
 Definition
 ----------
@@ -209,11 +241,15 @@ Definition
   };
 
 
+.. _`dccp_hdr_reset.members`:
 
 Members
 -------
 
 
+
+
+.. _`dccp_hdr_reset.description`:
 
 Description
 -----------

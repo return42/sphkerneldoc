@@ -7,5 +7,5 @@ sysfs
 .. toctree::
    :maxdepth: 1
 
-   file_c
-   symlink_c
+   dir_c
+   group_c

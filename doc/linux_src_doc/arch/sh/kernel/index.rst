@@ -7,4 +7,5 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   cpu/index
+   sh_bios_c
+   unwinder_c

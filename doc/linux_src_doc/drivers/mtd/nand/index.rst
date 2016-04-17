@@ -7,6 +7,8 @@ nand
 .. toctree::
    :maxdepth: 1
 
-   nand_base_c
-   nand_bbt_c
-   nand_ecc_c
+   jz4780_bch_c
+   nand_bch_c
+   nand_timings_c
+   omap_elm_c
+   brcmnand/index

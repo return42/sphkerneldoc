@@ -4,6 +4,7 @@
 i2c-core.c
 ==========
 
+
 .. _`acpi_i2c_register_devices`:
 
 acpi_i2c_register_devices
@@ -17,6 +18,7 @@ acpi_i2c_register_devices
         pointer to adapter
 
 
+
 .. _`acpi_i2c_register_devices.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 Enumerate all I2C slave devices behind this adapter by walking the ACPI
 namespace. When a device is found it will be added to the Linux device
 model and bound to the corresponding ACPI handle.
+
 
 
 .. _`i2c_verify_client`:
@@ -40,6 +43,7 @@ i2c_verify_client
         device, probably from some driver model iterator
 
 
+
 .. _`i2c_verify_client.description`:
 
 Description
@@ -49,6 +53,7 @@ When traversing the driver model tree, perhaps using driver model
 iterators like @:c:func:`device_for_each_child`, you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_client.
+
 
 
 .. _`i2c_lock_adapter`:
@@ -64,6 +69,7 @@ i2c_lock_adapter
         Target I2C bus segment
 
 
+
 .. _`i2c_trylock_adapter`:
 
 i2c_trylock_adapter
@@ -77,6 +83,7 @@ i2c_trylock_adapter
         Target I2C bus segment
 
 
+
 .. _`i2c_unlock_adapter`:
 
 i2c_unlock_adapter
@@ -88,6 +95,7 @@ i2c_unlock_adapter
 
     :param struct i2c_adapter \*adapter:
         Target I2C bus segment
+
 
 
 .. _`i2c_new_device`:
@@ -104,7 +112,16 @@ i2c_new_device
 
     :param struct i2c_board_info const \*info:
         describes one I2C device; bus_num is ignored
-        Context: can sleep
+
+
+
+.. _`i2c_new_device.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_new_device.description`:
@@ -123,6 +140,7 @@ This returns the new i2c client, which may be saved for later use with
 :c:func:`i2c_unregister_device`; or NULL to indicate an error.
 
 
+
 .. _`i2c_unregister_device`:
 
 i2c_unregister_device
@@ -134,7 +152,16 @@ i2c_unregister_device
 
     :param struct i2c_client \*client:
         value returned from :c:func:`i2c_new_device`
-        Context: can sleep
+
+
+
+.. _`i2c_unregister_device.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_new_dummy`:
@@ -151,7 +178,16 @@ i2c_new_dummy
 
     :param u16 address:
         seven bit address to be used
-        Context: can sleep
+
+
+
+.. _`i2c_new_dummy.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_new_dummy.description`:
@@ -172,6 +208,7 @@ This returns the new i2c client, which should be saved for later use with
 :c:func:`i2c_unregister_device`; or NULL to indicate an error.
 
 
+
 .. _`i2c_verify_adapter`:
 
 i2c_verify_adapter
@@ -185,6 +222,7 @@ i2c_verify_adapter
         device, probably from some driver model iterator
 
 
+
 .. _`i2c_verify_adapter.description`:
 
 Description
@@ -194,6 +232,7 @@ When traversing the driver model tree, perhaps using driver model
 iterators like @:c:func:`device_for_each_child`, you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_adapter.
+
 
 
 .. _`__i2c_add_numbered_adapter`:
@@ -207,7 +246,16 @@ __i2c_add_numbered_adapter
 
     :param struct i2c_adapter \*adap:
         the adapter to register (with adap->nr initialized)
-        Context: can sleep
+
+
+
+.. _`__i2c_add_numbered_adapter.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`__i2c_add_numbered_adapter.description`:
@@ -216,6 +264,7 @@ Description
 -----------
 
 See :c:func:`i2c_add_numbered_adapter` for details.
+
 
 
 .. _`i2c_add_adapter`:
@@ -229,7 +278,16 @@ i2c_add_adapter
 
     :param struct i2c_adapter \*adapter:
         the adapter to add
-        Context: can sleep
+
+
+
+.. _`i2c_add_adapter.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_add_adapter.description`:
@@ -247,6 +305,7 @@ in adap->nr, and the specified adapter became available for clients.
 Otherwise, a negative errno value is returned.
 
 
+
 .. _`i2c_add_numbered_adapter`:
 
 i2c_add_numbered_adapter
@@ -258,7 +317,16 @@ i2c_add_numbered_adapter
 
     :param struct i2c_adapter \*adap:
         the adapter to register (with adap->nr initialized)
-        Context: can sleep
+
+
+
+.. _`i2c_add_numbered_adapter.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_add_numbered_adapter.description`:
@@ -285,6 +353,7 @@ and the appropriate driver model device nodes are created.  Otherwise, a
 negative errno value is returned.
 
 
+
 .. _`i2c_del_adapter`:
 
 i2c_del_adapter
@@ -296,7 +365,16 @@ i2c_del_adapter
 
     :param struct i2c_adapter \*adap:
         the adapter being unregistered
-        Context: can sleep
+
+
+
+.. _`i2c_del_adapter.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_del_adapter.description`:
@@ -306,6 +384,7 @@ Description
 
 This unregisters an I2C adapter which was previously registered
 by ``i2c_add_adapter`` or ``i2c_add_numbered_adapter``\ .
+
 
 
 .. _`i2c_parse_fw_timings`:
@@ -328,6 +407,7 @@ i2c_parse_fw_timings
         when properties are not found, otherwise use 0
 
 
+
 .. _`i2c_parse_fw_timings.description`:
 
 Description
@@ -342,6 +422,7 @@ is mainly intended for avoiding regressions of existing drivers which want
 to switch to this function. New drivers almost always should use the defaults.
 
 
+
 .. _`i2c_del_driver`:
 
 i2c_del_driver
@@ -353,7 +434,16 @@ i2c_del_driver
 
     :param struct i2c_driver \*driver:
         the driver being unregistered
-        Context: can sleep
+
+
+
+.. _`i2c_del_driver.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`i2c_use_client`:
@@ -369,6 +459,7 @@ i2c_use_client
         the client being referenced
 
 
+
 .. _`i2c_use_client.description`:
 
 Description
@@ -376,10 +467,19 @@ Description
 
 Each live reference to a client should be refcounted. The driver model does
 that automatically as part of driver binding, so that most drivers don't
-need to do this explicitly: they hold a reference until they're unbound
+
+
+
+.. _`i2c_use_client.need-to-do-this-explicitly`:
+
+need to do this explicitly
+--------------------------
+
+they hold a reference until they're unbound
 from the device.
 
 A pointer to the client with the incremented reference counter is returned.
+
 
 
 .. _`i2c_release_client`:
@@ -395,12 +495,14 @@ i2c_release_client
         the client being no longer referenced
 
 
+
 .. _`i2c_release_client.description`:
 
 Description
 -----------
 
 Must be called when a user of a client is finished with it.
+
 
 
 .. _`__i2c_transfer`:
@@ -423,6 +525,7 @@ __i2c_transfer
         Number of messages to be executed.
 
 
+
 .. _`__i2c_transfer.description`:
 
 Description
@@ -432,6 +535,7 @@ Returns negative errno, else the number of messages executed.
 
 Adapter lock must be held when calling this function. No debug logging
 takes place. adap->algo->master_xfer existence isn't checked.
+
 
 
 .. _`i2c_transfer`:
@@ -454,6 +558,7 @@ i2c_transfer
         Number of messages to be executed.
 
 
+
 .. _`i2c_transfer.description`:
 
 Description
@@ -463,6 +568,7 @@ Returns negative errno, else the number of messages executed.
 
 Note that there is no requirement that each message be sent to
 the same slave address, although that is the most common model.
+
 
 
 .. _`i2c_master_send`:
@@ -484,12 +590,14 @@ i2c_master_send
         How many bytes to write, must be less than 64k since msg.len is u16
 
 
+
 .. _`i2c_master_send.description`:
 
 Description
 -----------
 
 Returns negative errno, or else the number of bytes written.
+
 
 
 .. _`i2c_master_recv`:
@@ -511,12 +619,14 @@ i2c_master_recv
         How many bytes to read, must be less than 64k since msg.len is u16
 
 
+
 .. _`i2c_master_recv.description`:
 
 Description
 -----------
 
 Returns negative errno, or else the number of bytes read.
+
 
 
 .. _`i2c_smbus_read_byte`:
@@ -532,6 +642,7 @@ i2c_smbus_read_byte
         Handle to slave device
 
 
+
 .. _`i2c_smbus_read_byte.description`:
 
 Description
@@ -539,6 +650,7 @@ Description
 
 This executes the SMBus "receive byte" protocol, returning negative errno
 else the byte received from the device.
+
 
 
 .. _`i2c_smbus_write_byte`:
@@ -557,6 +669,7 @@ i2c_smbus_write_byte
         Byte to be sent
 
 
+
 .. _`i2c_smbus_write_byte.description`:
 
 Description
@@ -564,6 +677,7 @@ Description
 
 This executes the SMBus "send byte" protocol, returning negative errno
 else zero on success.
+
 
 
 .. _`i2c_smbus_read_byte_data`:
@@ -582,6 +696,7 @@ i2c_smbus_read_byte_data
         Byte interpreted by slave
 
 
+
 .. _`i2c_smbus_read_byte_data.description`:
 
 Description
@@ -589,6 +704,7 @@ Description
 
 This executes the SMBus "read byte" protocol, returning negative errno
 else a data byte received from the device.
+
 
 
 .. _`i2c_smbus_write_byte_data`:
@@ -610,6 +726,7 @@ i2c_smbus_write_byte_data
         Byte being written
 
 
+
 .. _`i2c_smbus_write_byte_data.description`:
 
 Description
@@ -617,6 +734,7 @@ Description
 
 This executes the SMBus "write byte" protocol, returning negative errno
 else zero on success.
+
 
 
 .. _`i2c_smbus_read_word_data`:
@@ -635,6 +753,7 @@ i2c_smbus_read_word_data
         Byte interpreted by slave
 
 
+
 .. _`i2c_smbus_read_word_data.description`:
 
 Description
@@ -642,6 +761,7 @@ Description
 
 This executes the SMBus "read word" protocol, returning negative errno
 else a 16-bit unsigned "word" received from the device.
+
 
 
 .. _`i2c_smbus_write_word_data`:
@@ -663,6 +783,7 @@ i2c_smbus_write_word_data
         16-bit "word" being written
 
 
+
 .. _`i2c_smbus_write_word_data.description`:
 
 Description
@@ -670,6 +791,7 @@ Description
 
 This executes the SMBus "write word" protocol, returning negative errno
 else zero on success.
+
 
 
 .. _`i2c_smbus_read_block_data`:
@@ -692,6 +814,7 @@ i2c_smbus_read_block_data
         the data returned by the slave.  SMBus allows at most 32 bytes.
 
 
+
 .. _`i2c_smbus_read_block_data.description`:
 
 Description
@@ -704,6 +827,7 @@ Note that using this function requires that the client's adapter support
 the I2C_FUNC_SMBUS_READ_BLOCK_DATA functionality.  Not all adapter drivers
 support this; its emulation through I2C messaging relies on a specific
 mechanism (I2C_M_RECV_LEN) which may not be implemented.
+
 
 
 .. _`i2c_smbus_write_block_data`:
@@ -728,6 +852,7 @@ i2c_smbus_write_block_data
         Byte array which will be written.
 
 
+
 .. _`i2c_smbus_write_block_data.description`:
 
 Description
@@ -735,6 +860,7 @@ Description
 
 This executes the SMBus "block write" protocol, returning negative errno
 else zero on success.
+
 
 
 .. _`i2c_smbus_xfer`:
@@ -753,7 +879,7 @@ i2c_smbus_xfer
         Address of SMBus slave on that bus
 
     :param unsigned short flags:
-        I2C_CLIENT_\* flags (usually zero or I2C_CLIENT_PEC)
+        I2C_CLIENT\_\* flags (usually zero or I2C_CLIENT_PEC)
 
     :param char read_write:
         I2C_SMBUS_READ or I2C_SMBUS_WRITE
@@ -768,6 +894,7 @@ i2c_smbus_xfer
         Data to be read or written
 
 
+
 .. _`i2c_smbus_xfer.description`:
 
 Description
@@ -775,6 +902,7 @@ Description
 
 This executes an SMBus protocol operation, and returns a negative
 errno code else zero on success.
+
 
 
 .. _`i2c_smbus_read_i2c_block_data_or_emulated`:
@@ -799,6 +927,7 @@ i2c_smbus_read_i2c_block_data_or_emulated
         Byte array into which data will be read; big enough to hold
         the data returned by the slave.  SMBus allows at most
         I2C_SMBUS_BLOCK_MAX bytes.
+
 
 
 .. _`i2c_smbus_read_i2c_block_data_or_emulated.description`:

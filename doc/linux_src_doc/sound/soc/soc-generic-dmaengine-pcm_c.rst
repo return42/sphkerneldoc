@@ -4,6 +4,7 @@
 soc-generic-dmaengine-pcm.c
 ===========================
 
+
 .. _`snd_dmaengine_pcm_prepare_slave_config`:
 
 snd_dmaengine_pcm_prepare_slave_config
@@ -23,6 +24,7 @@ snd_dmaengine_pcm_prepare_slave_config
         DMA slave config to prepare
 
 
+
 .. _`snd_dmaengine_pcm_prepare_slave_config.description`:
 
 Description
@@ -34,6 +36,7 @@ DAI DMA data. Internally the function will first call
 snd_hwparams_to_dma_slave_config to fill in the slave config based on the
 hw_params, followed by snd_dmaengine_set_config_from_dai_data to fill in the
 remaining fields based on the DAI DMA data.
+
 
 
 .. _`snd_dmaengine_pcm_register`:
@@ -55,6 +58,7 @@ snd_dmaengine_pcm_register
         Platform specific quirks
 
 
+
 .. _`snd_dmaengine_pcm_unregister`:
 
 snd_dmaengine_pcm_unregister
@@ -66,6 +70,7 @@ snd_dmaengine_pcm_unregister
 
     :param struct device \*dev:
         Parent device the PCM was register with
+
 
 
 .. _`snd_dmaengine_pcm_unregister.description`:

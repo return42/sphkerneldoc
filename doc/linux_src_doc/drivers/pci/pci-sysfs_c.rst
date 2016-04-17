@@ -4,6 +4,7 @@
 pci-sysfs.c
 ===========
 
+
 .. _`pci_read_legacy_io`:
 
 pci_read_legacy_io
@@ -32,6 +33,7 @@ pci_read_legacy_io
         number of bytes to read
 
 
+
 .. _`pci_read_legacy_io.description`:
 
 Description
@@ -39,6 +41,7 @@ Description
 
 Reads 1, 2, or 4 bytes from legacy I/O port space using an arch specific
 callback routine (pci_legacy_read).
+
 
 
 .. _`pci_write_legacy_io`:
@@ -69,6 +72,7 @@ pci_write_legacy_io
         number of bytes to write
 
 
+
 .. _`pci_write_legacy_io.description`:
 
 Description
@@ -76,6 +80,7 @@ Description
 
 Writes 1, 2, or 4 bytes from legacy I/O port space using an arch specific
 callback routine (pci_legacy_write).
+
 
 
 .. _`pci_mmap_legacy_mem`:
@@ -100,6 +105,7 @@ pci_mmap_legacy_mem
         struct vm_area_struct passed to mmap
 
 
+
 .. _`pci_mmap_legacy_mem.description`:
 
 Description
@@ -108,6 +114,7 @@ Description
 Uses an arch specific callback, pci_mmap_legacy_mem_page_range, to mmap
 legacy memory space (first meg of bus space) into application virtual
 memory space.
+
 
 
 .. _`pci_mmap_legacy_io`:
@@ -132,6 +139,7 @@ pci_mmap_legacy_io
         struct vm_area_struct passed to mmap
 
 
+
 .. _`pci_mmap_legacy_io.description`:
 
 Description
@@ -140,6 +148,7 @@ Description
 Uses an arch specific callback, pci_mmap_legacy_io_page_range, to mmap
 legacy IO space (first meg of bus space) into application virtual
 memory space. Returns -ENOSYS if the operation isn't supported
+
 
 
 .. _`pci_adjust_legacy_attr`:
@@ -158,12 +167,14 @@ pci_adjust_legacy_attr
         I/O port or memory
 
 
+
 .. _`pci_adjust_legacy_attr.description`:
 
 Description
 -----------
 
 Stub implementation. Can be overridden by arch if necessary.
+
 
 
 .. _`pci_create_legacy_files`:
@@ -179,6 +190,7 @@ pci_create_legacy_files
         bus to create files under
 
 
+
 .. _`pci_create_legacy_files.description`:
 
 Description
@@ -190,6 +202,7 @@ their associated read, write and mmap files from pci-sysfs.c
 
 On error unwind, but don't propagate the error to the caller
 as it is ok to set up the PCI bus without these files.
+
 
 
 .. _`pci_mmap_resource`:
@@ -214,12 +227,14 @@ pci_mmap_resource
         1 for write_combine mapping
 
 
+
 .. _`pci_mmap_resource.description`:
 
 Description
 -----------
 
 Use the regular PCI mapping routines to map a PCI resource into userspace.
+
 
 
 .. _`pci_remove_resource_files`:
@@ -235,6 +250,7 @@ pci_remove_resource_files
         dev to cleanup
 
 
+
 .. _`pci_remove_resource_files.description`:
 
 Description
@@ -242,6 +258,7 @@ Description
 
 If we created resource files for ``pdev``\ , remove them from sysfs and
 free their resources.
+
 
 
 .. _`pci_create_resource_files`:
@@ -257,12 +274,14 @@ pci_create_resource_files
         dev in question
 
 
+
 .. _`pci_create_resource_files.description`:
 
 Description
 -----------
 
 Walk the resources in ``pdev`` creating files for each resource available.
+
 
 
 .. _`pci_write_rom`:
@@ -293,12 +312,14 @@ pci_write_rom
         number of byte in input
 
 
+
 .. _`pci_write_rom.description`:
 
 Description
 -----------
 
 writing anything except 0 enables it
+
 
 
 .. _`pci_read_rom`:
@@ -329,6 +350,7 @@ pci_read_rom
         number of bytes to read
 
 
+
 .. _`pci_read_rom.description`:
 
 Description
@@ -336,6 +358,7 @@ Description
 
 Put ``count`` bytes starting at ``off`` into ``buf`` from the ROM in the PCI
 device corresponding to ``kobj``\ .
+
 
 
 .. _`pci_remove_sysfs_dev_files`:
@@ -349,6 +372,7 @@ pci_remove_sysfs_dev_files
 
     :param struct pci_dev \*pdev:
         device whose entries we should free
+
 
 
 .. _`pci_remove_sysfs_dev_files.description`:

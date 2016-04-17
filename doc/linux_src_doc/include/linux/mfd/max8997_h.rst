@@ -1,0 +1,99 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+max8997.h
+=========
+
+
+.. _`max8997_muic_platform_data`:
+
+struct max8997_muic_platform_data
+=================================
+
+.. c:type:: max8997_muic_platform_data
+
+    
+
+
+.. _`max8997_muic_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct max8997_muic_platform_data {
+    struct max8997_muic_reg_data * init_data;
+    int num_init_data;
+  };
+
+
+.. _`max8997_muic_platform_data.members`:
+
+Members
+-------
+
+:``init_data``:
+    array of max8997_muic_reg_data
+    used for initializing registers of MAX8997 MUIC device
+
+:``num_init_data``:
+    array size of init_data
+
+
+
+
+.. _`max8997_led_platform_data`:
+
+struct max8997_led_platform_data
+================================
+
+.. c:type:: max8997_led_platform_data
+
+    
+
+
+.. _`max8997_led_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct max8997_led_platform_data {
+    enum max8997_led_mode mode[2];
+    u8 brightness[2];
+  };
+
+
+.. _`max8997_led_platform_data.members`:
+
+Members
+-------
+
+:``mode[2]``:
+    LED mode for each LED device
+
+:``brightness[2]``:
+    initial brightness for each LED device
+
+
+
+
+.. _`max8997_led_platform_data.description`:
+
+Description
+-----------
+
+The number of LED devices for MAX8997 is two
+
+
+
+.. _`max8997_led_platform_data.range`:
+
+range
+-----
+
+[0 - 31]: MAX8997_FLASH_MODE and MAX8997_FLASH_PIN_CONTROL_MODE
+[0 - 15]: MAX8997_MOVIE_MODE and MAX8997_MOVIE_PIN_CONTROL_MODE
+

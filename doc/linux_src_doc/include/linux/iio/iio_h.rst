@@ -4,16 +4,18 @@
 iio.h
 =====
 
+
 .. _`iio_chan_spec_ext_info`:
 
 struct iio_chan_spec_ext_info
 =============================
 
-.. c:type:: struct iio_chan_spec_ext_info
+.. c:type:: iio_chan_spec_ext_info
 
     Extended channel info attribute
 
 
+.. _`iio_chan_spec_ext_info.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`iio_chan_spec_ext_info.members`:
 
 Members
 -------
@@ -50,16 +53,18 @@ Members
 
 
 
+
 .. _`iio_enum`:
 
 struct iio_enum
 ===============
 
-.. c:type:: struct iio_enum
+.. c:type:: iio_enum
 
     Enum channel info attribute
 
 
+.. _`iio_enum.definition`:
 
 Definition
 ----------
@@ -74,6 +79,7 @@ Definition
   };
 
 
+.. _`iio_enum.members`:
 
 Members
 -------
@@ -92,6 +98,9 @@ Members
 
 
 
+
+.. _`iio_enum.description`:
+
 Description
 -----------
 
@@ -103,6 +112,7 @@ contains a list of all available items. The set callback will be called when
 the attribute is updated. The last parameter is the index to the newly
 activated item. The get callback will be used to query the currently active
 item and is supposed to return the index for it.
+
 
 
 .. _`iio_enum`:
@@ -124,12 +134,14 @@ IIO_ENUM
         Pointer to an iio_enum struct
 
 
+
 .. _`iio_enum.description`:
 
 Description
 -----------
 
 This should usually be used together with :c:func:`IIO_ENUM_AVAILABLE`
+
 
 
 .. _`iio_enum_available`:
@@ -148,6 +160,7 @@ IIO_ENUM_AVAILABLE
         Pointer to an iio_enum struct
 
 
+
 .. _`iio_enum_available.description`:
 
 Description
@@ -157,16 +170,18 @@ Creates a read only attribute which lists all the available enum items in a
 space separated list. This should usually be used together with :c:func:`IIO_ENUM`
 
 
+
 .. _`iio_event_spec`:
 
 struct iio_event_spec
 =====================
 
-.. c:type:: struct iio_event_spec
+.. c:type:: iio_event_spec
 
     specification for a channel event
 
 
+.. _`iio_event_spec.definition`:
 
 Definition
 ----------
@@ -183,6 +198,7 @@ Definition
   };
 
 
+.. _`iio_event_spec.members`:
 
 Members
 -------
@@ -212,16 +228,18 @@ Members
 
 
 
+
 .. _`iio_chan_spec`:
 
 struct iio_chan_spec
 ====================
 
-.. c:type:: struct iio_chan_spec
+.. c:type:: iio_chan_spec
 
     specification of a single channel
 
 
+.. _`iio_chan_spec.definition`:
 
 Definition
 ----------
@@ -251,6 +269,7 @@ Definition
   };
 
 
+.. _`iio_chan_spec.members`:
 
 Members
 -------
@@ -275,17 +294,6 @@ Members
 
 :``scan_type``:
     sign:                's' or 'u' to specify signed or unsigned
-    realbits:        Number of valid bits of data
-    storagebits:        Realbits + padding
-    shift:                Shift right by this before masking out
-    realbits.
-    repeat:                Number of times real/storage bits
-    repeats. When the repeat element is
-    more than 1, then the type element in
-    sysfs will show a repeat value.
-    Otherwise, the number of repetitions is
-    omitted.
-    endianness:        little or big endian
 
 :``info_mask_separate``:
     What information is to be exported that is specific to
@@ -311,10 +319,9 @@ Members
     Size of the event_spec array.
 
 :``ext_info``:
-    Array of extended info attributes for this channel.::
-
-                            The array is NULL terminated, the last element should
-                            have its name field set to NULL.
+    Array of extended info attributes for this channel.
+    The array is NULL terminated, the last element should
+    have its name field set to NULL.
 
 :``extend_name``:
     Allows labeling of channel attributes with an
@@ -346,6 +353,58 @@ Members
 
 
 
+
+.. _`iio_chan_spec.realbits`:
+
+realbits
+--------
+
+Number of valid bits of data
+
+
+
+.. _`iio_chan_spec.storagebits`:
+
+storagebits
+-----------
+
+Realbits + padding
+
+
+
+.. _`iio_chan_spec.shift`:
+
+shift
+-----
+
+Shift right by this before masking out
+realbits.
+
+
+
+.. _`iio_chan_spec.repeat`:
+
+repeat
+------
+
+Number of times real/storage bits
+repeats. When the repeat element is
+more than 1, then the type element in
+sysfs will show a repeat value.
+Otherwise, the number of repetitions is
+omitted.
+
+
+
+.. _`iio_chan_spec.endianness`:
+
+endianness
+----------
+
+little or big endian
+
+
+
 .. _`iio_channel_has_info`:
 
 iio_channel_has_info
@@ -362,6 +421,7 @@ iio_channel_has_info
         Type of the info attribute to be checked
 
 
+
 .. _`iio_channel_has_info.description`:
 
 Description
@@ -369,6 +429,7 @@ Description
 
 Returns true if the channels supports reporting values for the given info
 attribute type, false otherwise.
+
 
 
 .. _`iio_get_time_ns`:
@@ -384,16 +445,18 @@ iio_get_time_ns
         no arguments
 
 
+
 .. _`iio_info`:
 
 struct iio_info
 ===============
 
-.. c:type:: struct iio_info
+.. c:type:: iio_info
 
     constant information about device
 
 
+.. _`iio_info.definition`:
 
 Definition
 ----------
@@ -421,6 +484,7 @@ Definition
   };
 
 
+.. _`iio_info.members`:
 
 Members
 -------
@@ -436,28 +500,25 @@ Members
     general purpose device attributes
 
 :``read_raw``:
-    function to request a value from the device.::
-
-                            mask specifies which value. Note 0 means a reading of
-                            the channel in question.  Return value will specify the
-                            type of value returned by the device. val and val2 will
-                            contain the elements making up the returned value.
+    function to request a value from the device.
+    mask specifies which value. Note 0 means a reading of
+    the channel in question.  Return value will specify the
+    type of value returned by the device. val and val2 will
+    contain the elements making up the returned value.
 
 :``read_raw_multi``:
-    function to return values from the device.::
-
-                            mask specifies which value. Note 0 means a reading of
-                            the channel in question.  Return value will specify the
-                            type of value returned by the device. vals pointer
-                            contain the elements making up the returned value.
-                            max_len specifies maximum number of elements
-                            vals pointer can contain. val_len is used to return
-                            length of valid elements in vals.
+    function to return values from the device.
+    mask specifies which value. Note 0 means a reading of
+    the channel in question.  Return value will specify the
+    type of value returned by the device. vals pointer
+    contain the elements making up the returned value.
+    max_len specifies maximum number of elements
+    vals pointer can contain. val_len is used to return
+    length of valid elements in vals.
 
 :``write_raw``:
-    function to write a value to the device.::
-
-                            Parameters are the same as for read_raw.
+    function to write a value to the device.
+    Parameters are the same as for read_raw.
 
 :``write_raw_get_fmt``:
     callback function to query the expected
@@ -488,16 +549,15 @@ Members
     function to read or write register value of device
 
 :``of_xlate``:
-    function pointer to obtain channel specifier index.::
-
-                            When #iio-cells is greater than '0', the driver could
-                            provide a custom of_xlate function that reads the
-                            \*args\* and returns the appropriate index in registered
-                            IIO channels array.
+    function pointer to obtain channel specifier index.
+    When #iio-cells is greater than '0', the driver could
+    provide a custom of_xlate function that reads the
+    \*args\* and returns the appropriate index in registered
+    IIO channels array.
 
 :``hwfifo_set_watermark``:
     function pointer to set the current hardware
-    fifo watermark level; see hwfifo_\* entries in
+    fifo watermark level; see hwfifo\_\* entries in
     Documentation/ABI/testing/sysfs-bus-iio for details on
     how the hardware fifo operates
 
@@ -511,16 +571,18 @@ Members
 
 
 
+
 .. _`iio_buffer_setup_ops`:
 
 struct iio_buffer_setup_ops
 ===========================
 
-.. c:type:: struct iio_buffer_setup_ops
+.. c:type:: iio_buffer_setup_ops
 
     buffer setup related callbacks
 
 
+.. _`iio_buffer_setup_ops.definition`:
 
 Definition
 ----------
@@ -536,6 +598,7 @@ Definition
   };
 
 
+.. _`iio_buffer_setup_ops.members`:
 
 Members
 -------
@@ -559,16 +622,18 @@ Members
 
 
 
+
 .. _`iio_dev`:
 
 struct iio_dev
 ==============
 
-.. c:type:: struct iio_dev
+.. c:type:: iio_dev
 
     industrial I/O device
 
 
+.. _`iio_dev.definition`:
 
 Definition
 ----------
@@ -613,6 +678,7 @@ Definition
   };
 
 
+.. _`iio_dev.members`:
 
 Members
 -------
@@ -717,6 +783,7 @@ Members
 
 
 
+
 .. _`iio_device_put`:
 
 iio_device_put
@@ -728,6 +795,7 @@ iio_device_put
 
     :param struct iio_dev \*indio_dev:
         IIO device structure containing the device
+
 
 
 .. _`dev_to_iio_dev`:
@@ -743,12 +811,14 @@ dev_to_iio_dev
         The device embedded in the IIO device
 
 
-.. _`dev_to_iio_dev.description`:
 
-Description
------------
+.. _`dev_to_iio_dev.note`:
 
-Note: The device must be a IIO device, otherwise the result is undefined.
+Note
+----
+
+The device must be a IIO device, otherwise the result is undefined.
+
 
 
 .. _`iio_device_get`:
@@ -764,12 +834,14 @@ iio_device_get
         IIO device structure
 
 
-.. _`iio_device_get.description`:
 
-Description
------------
+.. _`iio_device_get.returns`:
 
-Returns: The passed IIO device
+Returns
+-------
+
+The passed IIO device
+
 
 
 .. _`iio_device_set_drvdata`:
@@ -788,6 +860,7 @@ iio_device_set_drvdata
         Driver specific data
 
 
+
 .. _`iio_device_set_drvdata.description`:
 
 Description
@@ -795,6 +868,7 @@ Description
 
 Allows to attach an arbitrary pointer to an IIO device, which can later be
 retrieved by :c:func:`iio_device_get_drvdata`.
+
 
 
 .. _`iio_device_get_drvdata`:
@@ -810,12 +884,14 @@ iio_device_get_drvdata
         IIO device structure
 
 
+
 .. _`iio_device_get_drvdata.description`:
 
 Description
 -----------
 
 Returns the data previously set with :c:func:`iio_device_set_drvdata`
+
 
 
 .. _`iio_buffer_enabled`:
@@ -831,6 +907,7 @@ iio_buffer_enabled
         IIO device structure for device
 
 
+
 .. _`iio_get_debugfs_dentry`:
 
 iio_get_debugfs_dentry
@@ -842,6 +919,7 @@ iio_get_debugfs_dentry
 
     :param struct iio_dev \*indio_dev:
         IIO device structure for device
+
 
 
 .. _`iio_degree_to_rad`:
@@ -857,12 +935,14 @@ IIO_DEGREE_TO_RAD
         A value in degree
 
 
+
 .. _`iio_degree_to_rad.description`:
 
 Description
 -----------
 
 Returns the given value converted from degree to rad
+
 
 
 .. _`iio_rad_to_degree`:
@@ -878,12 +958,14 @@ IIO_RAD_TO_DEGREE
         A value in rad
 
 
+
 .. _`iio_rad_to_degree.description`:
 
 Description
 -----------
 
 Returns the given value converted from rad to degree
+
 
 
 .. _`iio_g_to_m_s_2`:
@@ -899,12 +981,14 @@ IIO_G_TO_M_S_2
         A value in g
 
 
+
 .. _`iio_g_to_m_s_2.description`:
 
 Description
 -----------
 
 Returns the given value converted from g to meter / second**2
+
 
 
 .. _`iio_m_s_2_to_g`:
@@ -918,6 +1002,7 @@ IIO_M_S_2_TO_G
 
     :param ms2:
         A value in meter / second**2
+
 
 
 .. _`iio_m_s_2_to_g.description`:

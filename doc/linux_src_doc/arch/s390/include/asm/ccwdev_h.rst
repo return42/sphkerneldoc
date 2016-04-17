@@ -4,16 +4,18 @@
 ccwdev.h
 ========
 
+
 .. _`ccw_device`:
 
 struct ccw_device
 =================
 
-.. c:type:: struct ccw_device
+.. c:type:: ccw_device
 
     channel attached device
 
 
+.. _`ccw_device.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`ccw_device.members`:
 
 Members
 -------
@@ -54,6 +57,9 @@ Members
 
 
 
+
+.. _`ccw_device.description`:
+
 Description
 -----------
 
@@ -62,16 +68,18 @@ can have different interrupt handlers for different ccw devices
 (multi-subchannel drivers).
 
 
+
 .. _`ccw_driver`:
 
 struct ccw_driver
 =================
 
-.. c:type:: struct ccw_driver
+.. c:type:: ccw_driver
 
     device driver for channel attached devices
 
 
+.. _`ccw_driver.definition`:
 
 Definition
 ----------
@@ -98,6 +106,7 @@ Definition
   };
 
 
+.. _`ccw_driver.members`:
 
 Members
 -------

@@ -4,6 +4,7 @@
 drm_rect.c
 ==========
 
+
 .. _`drm_rect_intersect`:
 
 drm_rect_intersect
@@ -20,6 +21,7 @@ drm_rect_intersect
         second rectangle
 
 
+
 .. _`drm_rect_intersect.description`:
 
 Description
@@ -28,9 +30,16 @@ Description
 Calculate the intersection of rectangles ``r1`` and ``r2``\ .
 ``r1`` will be overwritten with the intersection.
 
-RETURNS:
+
+
+.. _`drm_rect_intersect.returns`:
+
+RETURNS
+-------
+
 ``true`` if rectangle ``r1`` is still visible after the operation,
 ``false`` otherwise.
+
 
 
 .. _`drm_rect_clip_scaled`:
@@ -58,6 +67,7 @@ drm_rect_clip_scaled
         vertical scaling factor
 
 
+
 .. _`drm_rect_clip_scaled.description`:
 
 Description
@@ -66,9 +76,16 @@ Description
 Clip rectangle ``dst`` by rectangle ``clip``\ . Clip rectangle ``src`` by the
 same amounts multiplied by ``hscale`` and ``vscale``\ .
 
-RETURNS:
+
+
+.. _`drm_rect_clip_scaled.returns`:
+
+RETURNS
+-------
+
 ``true`` if rectangle ``dst`` is still visible after being clipped,
 ``false`` otherwise
+
 
 
 .. _`drm_rect_calc_hscale`:
@@ -93,6 +110,7 @@ drm_rect_calc_hscale
         maximum allowed horizontal scaling factor
 
 
+
 .. _`drm_rect_calc_hscale.description`:
 
 Description
@@ -101,8 +119,15 @@ Description
 Calculate the horizontal scaling factor as
 (\ ``src`` width) / (\ ``dst`` width).
 
-RETURNS:
+
+
+.. _`drm_rect_calc_hscale.returns`:
+
+RETURNS
+-------
+
 The horizontal scaling factor, or errno of out of limits.
+
 
 
 .. _`drm_rect_calc_vscale`:
@@ -127,6 +152,7 @@ drm_rect_calc_vscale
         maximum allowed vertical scaling factor
 
 
+
 .. _`drm_rect_calc_vscale.description`:
 
 Description
@@ -135,8 +161,15 @@ Description
 Calculate the vertical scaling factor as
 (\ ``src`` height) / (\ ``dst`` height).
 
-RETURNS:
+
+
+.. _`drm_rect_calc_vscale.returns`:
+
+RETURNS
+-------
+
 The vertical scaling factor, or errno of out of limits.
+
 
 
 .. _`drm_rect_calc_hscale_relaxed`:
@@ -161,6 +194,7 @@ drm_rect_calc_hscale_relaxed
         maximum allowed horizontal scaling factor
 
 
+
 .. _`drm_rect_calc_hscale_relaxed.description`:
 
 Description
@@ -175,8 +209,15 @@ decrease the height of rectangle ``dst`` to compensate.
 If the calculated scaling factor is above ``max_vscale``\ ,
 decrease the height of rectangle ``src`` to compensate.
 
-RETURNS:
+
+
+.. _`drm_rect_calc_hscale_relaxed.returns`:
+
+RETURNS
+-------
+
 The horizontal scaling factor.
+
 
 
 .. _`drm_rect_calc_vscale_relaxed`:
@@ -201,6 +242,7 @@ drm_rect_calc_vscale_relaxed
         maximum allowed vertical scaling factor
 
 
+
 .. _`drm_rect_calc_vscale_relaxed.description`:
 
 Description
@@ -215,8 +257,15 @@ decrease the height of rectangle ``dst`` to compensate.
 If the calculated scaling factor is above ``max_vscale``\ ,
 decrease the height of rectangle ``src`` to compensate.
 
-RETURNS:
+
+
+.. _`drm_rect_calc_vscale_relaxed.returns`:
+
+RETURNS
+-------
+
 The vertical scaling factor.
+
 
 
 .. _`drm_rect_debug_print`:
@@ -236,6 +285,7 @@ drm_rect_debug_print
 
     :param bool fixed_point:
         rectangle is in 16.16 fixed point format
+
 
 
 .. _`drm_rect_rotate`:
@@ -260,6 +310,7 @@ drm_rect_rotate
         Transformation to be applied
 
 
+
 .. _`drm_rect_rotate.description`:
 
 Description
@@ -273,6 +324,7 @@ the location of the new origin.
 ``width`` correcsponds to the horizontal and ``height``
 to the vertical axis of the untransformed coordinate
 space.
+
 
 
 .. _`drm_rect_rotate_inv`:
@@ -295,6 +347,7 @@ drm_rect_rotate_inv
 
     :param unsigned int rotation:
         Transformation whose inverse is to be applied
+
 
 
 .. _`drm_rect_rotate_inv.description`:

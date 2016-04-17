@@ -4,6 +4,7 @@
 dmi_scan.c
 ==========
 
+
 .. _`dmi_set_dump_stack_arch_desc`:
 
 dmi_set_dump_stack_arch_desc
@@ -17,6 +18,7 @@ dmi_set_dump_stack_arch_desc
         no arguments
 
 
+
 .. _`dmi_set_dump_stack_arch_desc.description`:
 
 Description
@@ -27,6 +29,7 @@ Invoke :c:func:`dump_stack_set_arch_desc` with DMI system information so that
 DMI identifiers are printed out on task dumps.  Arch boot code should
 call this function after :c:func:`dmi_scan_machine` if it wants to print out DMI
 identifiers on task dumps.
+
 
 
 .. _`dmi_matches`:
@@ -42,6 +45,7 @@ dmi_matches
         pointer to the dmi_system_id structure to check
 
 
+
 .. _`dmi_is_end_of_table`:
 
 dmi_is_end_of_table
@@ -53,6 +57,7 @@ dmi_is_end_of_table
 
     :param const struct dmi_system_id \*dmi:
         pointer to the dmi_system_id structure to check
+
 
 
 .. _`dmi_check_system`:
@@ -73,6 +78,7 @@ dmi_check_system
         successful match.
 
 
+
 .. _`dmi_check_system.description`:
 
 Description
@@ -81,6 +87,7 @@ Description
 Walk the blacklist table running matching functions until someone
 returns non zero or we hit the end. Callback function is called for
 each successful match. Returns the number of matches.
+
 
 
 .. _`dmi_first_match`:
@@ -101,6 +108,7 @@ dmi_first_match
         successful match.
 
 
+
 .. _`dmi_first_match.description`:
 
 Description
@@ -108,6 +116,7 @@ Description
 
 Walk the blacklist table until the first match is found.  Return the
 pointer to the matching entry or NULL if there's no match.
+
 
 
 .. _`dmi_get_system_info`:
@@ -123,6 +132,7 @@ dmi_get_system_info
         data index (see enum dmi_field)
 
 
+
 .. _`dmi_get_system_info.description`:
 
 Description
@@ -130,6 +140,7 @@ Description
 
 Returns one DMI data value, can be used to perform
 complex DMI data checks.
+
 
 
 .. _`dmi_name_in_serial`:
@@ -145,6 +156,7 @@ dmi_name_in_serial
         string to check for
 
 
+
 .. _`dmi_name_in_vendors`:
 
 dmi_name_in_vendors
@@ -156,6 +168,7 @@ dmi_name_in_vendors
 
     :param const char \*str:
         Case sensitive Name
+
 
 
 .. _`dmi_find_device`:
@@ -177,6 +190,7 @@ dmi_find_device
         previous device found in search, or ``NULL`` for new search.
 
 
+
 .. _`dmi_find_device.description`:
 
 Description
@@ -187,6 +201,7 @@ found with a matching ``type`` and ``name``\ , a pointer to its device
 structure is returned.  Otherwise, ``NULL`` is returned.
 A new search is initiated by passing ``NULL`` as the ``from`` argument.
 If ``from`` is not ``NULL``\ , searches continue from next device.
+
 
 
 .. _`dmi_get_date`:
@@ -211,6 +226,7 @@ dmi_get_date
         optional out parameter for the day
 
 
+
 .. _`dmi_get_date.description`:
 
 Description
@@ -226,6 +242,7 @@ invalid part of date set to zero.
 
 On return, year, month and day are guaranteed to be in the
 range of [0,9999], [0,12] and [0,31] respectively.
+
 
 
 .. _`dmi_walk`:
@@ -244,12 +261,14 @@ dmi_walk
         Private data to be passed to the callback function
 
 
+
 .. _`dmi_walk.description`:
 
 Description
 -----------
 
 Returns -1 when the DMI table can't be reached, 0 on success.
+
 
 
 .. _`dmi_match`:
@@ -266,6 +285,7 @@ dmi_match
 
     :param const char \*str:
         string to compare the DMI field to
+
 
 
 .. _`dmi_match.description`:

@@ -4,16 +4,18 @@
 mtd-abi.h
 =========
 
+
 .. _`mtd_write_req`:
 
 struct mtd_write_req
 ====================
 
-.. c:type:: struct mtd_write_req
+.. c:type:: mtd_write_req
 
     data structure for requesting a write operation
 
 
+.. _`mtd_write_req.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`mtd_write_req.members`:
 
 Members
 -------
@@ -58,6 +61,9 @@ Members
 
 
 
+
+.. _`mtd_write_req.description`:
+
 Description
 -----------
 
@@ -67,16 +73,18 @@ write data-only, set ``usr_oob`` == NULL. However, setting both ``usr_data`` and
 ``usr_oob`` to NULL is not allowed.
 
 
+
 .. _`mtd_ecc_stats`:
 
 struct mtd_ecc_stats
 ====================
 
-.. c:type:: struct mtd_ecc_stats
+.. c:type:: mtd_ecc_stats
 
     error correction stats
 
 
+.. _`mtd_ecc_stats.definition`:
 
 Definition
 ----------
@@ -91,6 +99,7 @@ Definition
   };
 
 
+.. _`mtd_ecc_stats.members`:
 
 Members
 -------

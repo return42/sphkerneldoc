@@ -4,6 +4,7 @@
 apple-gmux.h
 ============
 
+
 .. _`apple_gmux_present`:
 
 apple_gmux_present
@@ -17,6 +18,7 @@ apple_gmux_present
         no arguments
 
 
+
 .. _`apple_gmux_present.description`:
 
 Description
@@ -26,6 +28,13 @@ Description
 Drivers may use this to activate quirks specific to dual GPU MacBook Pros
 and Mac Pros, e.g. for deferred probing, runtime pm and backlight.
 
-Return: ``true`` if gmux is present and the kernel was configured
+
+
+.. _`apple_gmux_present.return`:
+
+Return
+------
+
+``true`` if gmux is present and the kernel was configured
 with CONFIG_APPLE_GMUX, ``false`` otherwise.
 

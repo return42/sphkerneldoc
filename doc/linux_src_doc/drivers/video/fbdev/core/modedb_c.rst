@@ -4,6 +4,7 @@
 modedb.c
 ========
 
+
 .. _`fb_try_mode`:
 
 fb_try_mode
@@ -26,6 +27,7 @@ fb_try_mode
         color depth in bits per pixel
 
 
+
 .. _`fb_try_mode.description`:
 
 Description
@@ -34,6 +36,7 @@ Description
 Tries a video mode to test it's validity for device ``info``\ .
 
 Returns 1 on success.
+
 
 
 .. _`fb_find_mode`:
@@ -67,6 +70,7 @@ fb_find_mode
         default color depth in bits per pixel
 
 
+
 .. _`fb_find_mode.description`:
 
 Description
@@ -95,12 +99,20 @@ with <xres>, <yres>, <bpp> and <refresh> decimal numbers and
 
  1024x768MR-8\ ``60m`` - Reduced blank with margins at 60Hz.
 
-NOTE: The passed struct ``var`` is _not_ cleared!  This allows you
+
+
+.. _`fb_find_mode.note`:
+
+NOTE
+----
+
+The passed struct ``var`` is _not_ cleared!  This allows you
 to supply values for e.g. the grayscale and accel_flags fields.
 
 Returns zero for failure, 1 if using specified ``mode_option``\ ,
 2 if using specified ``mode_option`` with an ignored refresh rate,
 3 if default mode is used, 4 if fall back to any valid mode.
+
 
 
 .. _`fb_var_to_videomode`:
@@ -119,6 +131,7 @@ fb_var_to_videomode
         pointer to struct fb_var_screeninfo
 
 
+
 .. _`fb_videomode_to_var`:
 
 fb_videomode_to_var
@@ -133,6 +146,7 @@ fb_videomode_to_var
 
     :param const struct fb_videomode \*mode:
         pointer to struct fb_videomode
+
 
 
 .. _`fb_mode_is_equal`:
@@ -151,13 +165,14 @@ fb_mode_is_equal
         second videomode
 
 
-.. _`fb_mode_is_equal.description`:
 
-Description
------------
+.. _`fb_mode_is_equal.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 1 if equal, 0 if not
+
 
 
 .. _`fb_find_best_mode`:
@@ -176,22 +191,35 @@ fb_find_best_mode
         pointer to struct list_head of modelist
 
 
-.. _`fb_find_best_mode.description`:
 
-Description
------------
+.. _`fb_find_best_mode.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 struct fb_videomode, NULL if none found
 
-IMPORTANT:
+
+
+.. _`fb_find_best_mode.important`:
+
+IMPORTANT
+---------
+
 This function assumes that all modelist entries in
 info->modelist are valid.
 
-NOTES:
+
+
+.. _`fb_find_best_mode.notes`:
+
+NOTES
+-----
+
 Finds best matching videomode which has an equal or greater dimension than
 var->xres and var->yres.  If more than 1 videomode is found, will return
 the videomode with the highest refresh rate
+
 
 
 .. _`fb_find_nearest_mode`:
@@ -210,6 +238,7 @@ fb_find_nearest_mode
         pointer to modelist
 
 
+
 .. _`fb_find_nearest_mode.description`:
 
 Description
@@ -218,6 +247,7 @@ Description
 Finds best matching videomode, smaller or greater in dimension.
 If more than 1 videomode is found, will return the videomode with
 the closest refresh rate.
+
 
 
 .. _`fb_match_mode`:
@@ -236,13 +266,14 @@ fb_match_mode
         pointer to struct list_head of modelist
 
 
-.. _`fb_match_mode.description`:
 
-Description
------------
+.. _`fb_match_mode.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 struct fb_videomode, NULL if none found
+
 
 
 .. _`fb_add_videomode`:
@@ -261,13 +292,14 @@ fb_add_videomode
         struct list_head of modelist
 
 
-.. _`fb_add_videomode.description`:
 
-Description
------------
+.. _`fb_add_videomode.notes`:
 
-NOTES:
+NOTES
+-----
+
 Will only add unmatched mode entries
+
 
 
 .. _`fb_delete_videomode`:
@@ -286,13 +318,14 @@ fb_delete_videomode
         struct list_head of modelist
 
 
-.. _`fb_delete_videomode.description`:
 
-Description
------------
+.. _`fb_delete_videomode.notes`:
 
-NOTES:
+NOTES
+-----
+
 Will remove all matching mode entries
+
 
 
 .. _`fb_destroy_modelist`:
@@ -306,6 +339,7 @@ fb_destroy_modelist
 
     :param struct list_head \*head:
         struct list_head of modelist
+
 
 
 .. _`fb_videomode_to_modelist`:

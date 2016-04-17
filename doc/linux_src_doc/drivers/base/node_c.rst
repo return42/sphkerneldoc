@@ -4,6 +4,7 @@
 node.c
 ======
 
+
 .. _`unregister_node`:
 
 unregister_node
@@ -15,6 +16,7 @@ unregister_node
 
     :param struct node \*node:
         node going away
+
 
 
 .. _`unregister_node.description`:

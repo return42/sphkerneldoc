@@ -4,16 +4,18 @@
 compress_offload.h
 ==================
 
+
 .. _`snd_compressed_buffer`:
 
 struct snd_compressed_buffer
 ============================
 
-.. c:type:: struct snd_compressed_buffer
+.. c:type:: snd_compressed_buffer
 
     compressed buffer
 
 
+.. _`snd_compressed_buffer.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`snd_compressed_buffer.members`:
 
 Members
 -------
@@ -38,16 +41,18 @@ Members
 
 
 
+
 .. _`snd_compr_params`:
 
 struct snd_compr_params
 =======================
 
-.. c:type:: struct snd_compr_params
+.. c:type:: snd_compr_params
 
     compressed stream params
 
 
+.. _`snd_compr_params.definition`:
 
 Definition
 ----------
@@ -61,6 +66,7 @@ Definition
   };
 
 
+.. _`snd_compr_params.members`:
 
 Members
 -------
@@ -76,16 +82,18 @@ Members
 
 
 
+
 .. _`snd_compr_tstamp`:
 
 struct snd_compr_tstamp
 =======================
 
-.. c:type:: struct snd_compr_tstamp
+.. c:type:: snd_compr_tstamp
 
     timestamp descriptor
 
 
+.. _`snd_compr_tstamp.definition`:
 
 Definition
 ----------
@@ -101,6 +109,7 @@ Definition
   };
 
 
+.. _`snd_compr_tstamp.members`:
 
 Members
 -------
@@ -125,16 +134,18 @@ Members
 
 
 
+
 .. _`snd_compr_avail`:
 
 struct snd_compr_avail
 ======================
 
-.. c:type:: struct snd_compr_avail
+.. c:type:: snd_compr_avail
 
     avail descriptor
 
 
+.. _`snd_compr_avail.definition`:
 
 Definition
 ----------
@@ -147,6 +158,7 @@ Definition
   };
 
 
+.. _`snd_compr_avail.members`:
 
 Members
 -------
@@ -159,16 +171,18 @@ Members
 
 
 
+
 .. _`snd_compr_caps`:
 
 struct snd_compr_caps
 =====================
 
-.. c:type:: struct snd_compr_caps
+.. c:type:: snd_compr_caps
 
     caps descriptor
 
 
+.. _`snd_compr_caps.definition`:
 
 Definition
 ----------
@@ -187,6 +201,7 @@ Definition
   };
 
 
+.. _`snd_compr_caps.members`:
 
 Members
 -------
@@ -217,16 +232,18 @@ Members
 
 
 
+
 .. _`snd_compr_codec_caps`:
 
 struct snd_compr_codec_caps
 ===========================
 
-.. c:type:: struct snd_compr_codec_caps
+.. c:type:: snd_compr_codec_caps
 
     query capability of codec
 
 
+.. _`snd_compr_codec_caps.definition`:
 
 Definition
 ----------
@@ -240,6 +257,7 @@ Definition
   };
 
 
+.. _`snd_compr_codec_caps.members`:
 
 Members
 -------
@@ -255,16 +273,31 @@ Members
 
 
 
+
 .. _`sndrv_compress_encoder`:
 
 enum sndrv_compress_encoder
 ===========================
 
-.. c:type:: enum sndrv_compress_encoder
+.. c:type:: sndrv_compress_encoder
 
     
 
 
+.. _`sndrv_compress_encoder.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum sndrv_compress_encoder {
+      SNDRV_COMPRESS_ENCODER_PADDING,
+      SNDRV_COMPRESS_ENCODER_DELAY
+    };
+
+
+.. _`sndrv_compress_encoder.constants`:
 
 Constants
 ---------
@@ -283,11 +316,12 @@ Constants
 struct snd_compr_metadata
 =========================
 
-.. c:type:: struct snd_compr_metadata
+.. c:type:: snd_compr_metadata
 
     compressed stream metadata
 
 
+.. _`snd_compr_metadata.definition`:
 
 Definition
 ----------
@@ -300,6 +334,7 @@ Definition
   };
 
 
+.. _`snd_compr_metadata.members`:
 
 Members
 -------
@@ -312,6 +347,7 @@ Members
 
 
 
+
 .. _`sndrv_compress_ioctl_version`:
 
 SNDRV_COMPRESS_IOCTL_VERSION
@@ -320,24 +356,121 @@ SNDRV_COMPRESS_IOCTL_VERSION
 .. c:function:: SNDRV_COMPRESS_IOCTL_VERSION ()
 
 
-.. _`sndrv_compress_ioctl_version.description`:
 
-Description
------------
+.. _`sndrv_compress_ioctl_version.sndrv_compress_get_caps`:
 
-SNDRV_COMPRESS_GET_CAPS: Query capability of DSP
-SNDRV_COMPRESS_GET_CODEC_CAPS: Query capability of a codec
-SNDRV_COMPRESS_SET_PARAMS: Set codec and stream parameters
-Note: only codec params can be changed runtime and stream params cant be
-SNDRV_COMPRESS_GET_PARAMS: Query codec params
-SNDRV_COMPRESS_TSTAMP: get the current timestamp value
-SNDRV_COMPRESS_AVAIL: get the current buffer avail value.
+SNDRV_COMPRESS_GET_CAPS
+-----------------------
+
+Query capability of DSP
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_get_codec_caps`:
+
+SNDRV_COMPRESS_GET_CODEC_CAPS
+-----------------------------
+
+Query capability of a codec
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_set_params`:
+
+SNDRV_COMPRESS_SET_PARAMS
+-------------------------
+
+Set codec and stream parameters
+
+
+
+.. _`sndrv_compress_ioctl_version.note`:
+
+Note
+----
+
+only codec params can be changed runtime and stream params cant be
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_get_params`:
+
+SNDRV_COMPRESS_GET_PARAMS
+-------------------------
+
+Query codec params
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_tstamp`:
+
+SNDRV_COMPRESS_TSTAMP
+---------------------
+
+get the current timestamp value
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_avail`:
+
+SNDRV_COMPRESS_AVAIL
+--------------------
+
+get the current buffer avail value.
 This also queries the tstamp properties
-SNDRV_COMPRESS_PAUSE: Pause the running stream
-SNDRV_COMPRESS_RESUME: resume a paused stream
-SNDRV_COMPRESS_START: Start a stream
-SNDRV_COMPRESS_STOP: stop a running stream, discarding ring buffer content
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_pause`:
+
+SNDRV_COMPRESS_PAUSE
+--------------------
+
+Pause the running stream
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_resume`:
+
+SNDRV_COMPRESS_RESUME
+---------------------
+
+resume a paused stream
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_start`:
+
+SNDRV_COMPRESS_START
+--------------------
+
+Start a stream
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_stop`:
+
+SNDRV_COMPRESS_STOP
+-------------------
+
+stop a running stream, discarding ring buffer content
 and the buffers currently with DSP
-SNDRV_COMPRESS_DRAIN: Play till end of buffers and stop after that
-SNDRV_COMPRESS_IOCTL_VERSION: Query the API version
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_drain`:
+
+SNDRV_COMPRESS_DRAIN
+--------------------
+
+Play till end of buffers and stop after that
+
+
+
+.. _`sndrv_compress_ioctl_version.sndrv_compress_ioctl_version`:
+
+SNDRV_COMPRESS_IOCTL_VERSION
+----------------------------
+
+Query the API version
 

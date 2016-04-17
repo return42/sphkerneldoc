@@ -4,6 +4,7 @@
 drm_fops.c
 ==========
 
+
 .. _`file-operations`:
 
 file operations
@@ -46,6 +47,7 @@ following is an example #file_operations structure::
     };
 
 
+
 .. _`drm_open`:
 
 drm_open
@@ -62,6 +64,7 @@ drm_open
         file pointer.
 
 
+
 .. _`drm_open.description`:
 
 Description
@@ -71,9 +74,16 @@ This function must be used by drivers as their .:c:func:`open` #file_operations
 method. It looks up the correct DRM device and instantiates all the per-file
 resources for it.
 
-RETURNS:
+
+
+.. _`drm_open.returns`:
+
+RETURNS
+-------
+
 
 0 on success or negative errno value on falure.
+
 
 
 .. _`drm_release`:
@@ -92,6 +102,7 @@ drm_release
         file pointer.
 
 
+
 .. _`drm_release.description`:
 
 Description
@@ -101,9 +112,16 @@ This function must be used by drivers as their .:c:func:`release` #file_operatio
 method. It frees any resources associated with the open file, and if this is
 the last open file for the DRM device also proceeds to call :c:func:`drm_lastclose`.
 
-RETURNS:
+
+
+.. _`drm_release.returns`:
+
+RETURNS
+-------
+
 
 Always succeeds and returns 0.
+
 
 
 .. _`drm_read`:
@@ -128,6 +146,7 @@ drm_read
         offset to read
 
 
+
 .. _`drm_read.description`:
 
 Description
@@ -147,10 +166,17 @@ supply a big enough buffer to fit any event to ensure forward progress. Since
 the maximum event space is currently 4K it's recommended to just use that for
 safety.
 
-RETURNS:
+
+
+.. _`drm_read.returns`:
+
+RETURNS
+-------
+
 
 Number of bytes read (always aligned to full events, and can be 0) or a
 negative error code on failure.
+
 
 
 .. _`drm_poll`:
@@ -169,6 +195,7 @@ drm_poll
         poll waiter table
 
 
+
 .. _`drm_poll.description`:
 
 Description
@@ -181,9 +208,16 @@ means all modern display drivers must use it.
 
 See also :c:func:`drm_read`.
 
-RETURNS:
+
+
+.. _`drm_poll.returns`:
+
+RETURNS
+-------
+
 
 Mask of POLL flags indicating the current status of the file.
+
 
 
 .. _`drm_event_reserve_init_locked`:
@@ -208,6 +242,7 @@ drm_event_reserve_init_locked
         actual event data to deliver to userspace
 
 
+
 .. _`drm_event_reserve_init_locked.description`:
 
 Description
@@ -226,9 +261,16 @@ kmalloc and ``p`` must be the first member element.
 This is the locked version of :c:func:`drm_event_reserve_init` for callers which
 already hold dev->event_lock.
 
-RETURNS:
+
+
+.. _`drm_event_reserve_init_locked.returns`:
+
+RETURNS
+-------
+
 
 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_event_reserve_init`:
@@ -253,6 +295,7 @@ drm_event_reserve_init
         actual event data to deliver to userspace
 
 
+
 .. _`drm_event_reserve_init.description`:
 
 Description
@@ -271,9 +314,16 @@ kmalloc and ``p`` must be the first member element.
 Callers which already hold dev->event_lock should use
 :c:func:`drm_event_reserve_init` instead.
 
-RETURNS:
+
+
+.. _`drm_event_reserve_init.returns`:
+
+RETURNS
+-------
+
 
 0 on success or a negative error code on failure.
+
 
 
 .. _`drm_event_cancel_free`:
@@ -292,6 +342,7 @@ drm_event_cancel_free
         tracking structure for the pending event
 
 
+
 .. _`drm_event_cancel_free.description`:
 
 Description
@@ -299,6 +350,7 @@ Description
 
 This function frees the event ``p`` initialized with :c:func:`drm_event_reserve_init`
 and releases any allocated space.
+
 
 
 .. _`drm_send_event_locked`:
@@ -317,6 +369,7 @@ drm_send_event_locked
         DRM event to deliver
 
 
+
 .. _`drm_send_event_locked.description`:
 
 Description
@@ -330,6 +383,7 @@ Note that the core will take care of unlinking and disarming events when the
 corresponding DRM file is closed. Drivers need not worry about whether the
 DRM file for this event still exists and can call this function upon
 completion of the asynchronous work unconditionally.
+
 
 
 .. _`drm_send_event`:
@@ -346,6 +400,7 @@ drm_send_event
 
     :param struct drm_pending_event \*e:
         DRM event to deliver
+
 
 
 .. _`drm_send_event.description`:

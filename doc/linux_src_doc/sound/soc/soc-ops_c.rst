@@ -4,6 +4,7 @@
 soc-ops.c
 =========
 
+
 .. _`snd_soc_info_enum_double`:
 
 snd_soc_info_enum_double
@@ -20,6 +21,7 @@ snd_soc_info_enum_double
         control element information
 
 
+
 .. _`snd_soc_info_enum_double.description`:
 
 Description
@@ -29,6 +31,7 @@ Callback to provide information about a double enumerated
 mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_enum_double`:
@@ -47,6 +50,7 @@ snd_soc_get_enum_double
         control element information
 
 
+
 .. _`snd_soc_get_enum_double.description`:
 
 Description
@@ -55,6 +59,7 @@ Description
 Callback to get the value of a double enumerated mixer.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_put_enum_double`:
@@ -73,6 +78,7 @@ snd_soc_put_enum_double
         control element information
 
 
+
 .. _`snd_soc_put_enum_double.description`:
 
 Description
@@ -81,6 +87,7 @@ Description
 Callback to set the value of a double enumerated mixer.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_read_signed`:
@@ -111,6 +118,7 @@ snd_soc_read_signed
         Pointer to where the read value should be stored
 
 
+
 .. _`snd_soc_read_signed.description`:
 
 Description
@@ -121,6 +129,7 @@ by 'shift' bits and masked with the given 'mask'. Afterwards it translates
 the given registervalue into a signed integer if sign_bit is non-zero.
 
 Returns 0 on sucess, otherwise an error value
+
 
 
 .. _`snd_soc_info_volsw`:
@@ -139,6 +148,7 @@ snd_soc_info_volsw
         control element information
 
 
+
 .. _`snd_soc_info_volsw.description`:
 
 Description
@@ -148,6 +158,7 @@ Callback to provide information about a single mixer control, or a double
 mixer control that spans 2 registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_info_volsw_sx`:
@@ -166,6 +177,7 @@ snd_soc_info_volsw_sx
         control element information
 
 
+
 .. _`snd_soc_info_volsw_sx.description`:
 
 Description
@@ -177,6 +189,7 @@ have a range that represents both positive and negative values either side
 of zero but without a sign bit.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_volsw`:
@@ -195,6 +208,7 @@ snd_soc_get_volsw
         control element information
 
 
+
 .. _`snd_soc_get_volsw.description`:
 
 Description
@@ -204,6 +218,7 @@ Callback to get the value of a single mixer control, or a double mixer
 control that spans 2 registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_put_volsw`:
@@ -222,6 +237,7 @@ snd_soc_put_volsw
         control element information
 
 
+
 .. _`snd_soc_put_volsw.description`:
 
 Description
@@ -231,6 +247,7 @@ Callback to set the value of a single mixer control, or a double mixer
 control that spans 2 registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_volsw_sx`:
@@ -249,6 +266,7 @@ snd_soc_get_volsw_sx
         control element information
 
 
+
 .. _`snd_soc_get_volsw_sx.description`:
 
 Description
@@ -258,6 +276,7 @@ Callback to get the value of a single mixer control, or a double mixer
 control that spans 2 registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_put_volsw_sx`:
@@ -276,6 +295,7 @@ snd_soc_put_volsw_sx
         control element information
 
 
+
 .. _`snd_soc_put_volsw_sx.description`:
 
 Description
@@ -284,6 +304,7 @@ Description
 Callback to set the value of a double mixer control that spans 2 registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_info_volsw_range`:
@@ -302,6 +323,7 @@ snd_soc_info_volsw_range
         control element information
 
 
+
 .. _`snd_soc_info_volsw_range.description`:
 
 Description
@@ -311,6 +333,7 @@ Callback to provide information, within a range, about a single
 mixer control.
 
 returns 0 for success.
+
 
 
 .. _`snd_soc_put_volsw_range`:
@@ -329,6 +352,7 @@ snd_soc_put_volsw_range
         control element information
 
 
+
 .. _`snd_soc_put_volsw_range.description`:
 
 Description
@@ -337,6 +361,7 @@ Description
 Callback to set the value, within a range, for a single mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_volsw_range`:
@@ -355,6 +380,7 @@ snd_soc_get_volsw_range
         control element information
 
 
+
 .. _`snd_soc_get_volsw_range.description`:
 
 Description
@@ -363,6 +389,7 @@ Description
 Callback to get the value, within a range, of a single mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_limit_volume`:
@@ -384,12 +411,14 @@ snd_soc_limit_volume
         new maximum limit
 
 
+
 .. _`snd_soc_limit_volume.description`:
 
 Description
 -----------
 
 Return 0 for success, else error.
+
 
 
 .. _`snd_soc_info_xr_sx`:
@@ -408,6 +437,7 @@ snd_soc_info_xr_sx
         control element information
 
 
+
 .. _`snd_soc_info_xr_sx.description`:
 
 Description
@@ -418,6 +448,7 @@ span multiple codec registers which together
 forms a single signed value in a MSB/LSB manner.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_xr_sx`:
@@ -436,6 +467,7 @@ snd_soc_get_xr_sx
         control element information
 
 
+
 .. _`snd_soc_get_xr_sx.description`:
 
 Description
@@ -448,6 +480,7 @@ specifying total no of bits used to allow for bitfields
 across the multiple codec registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_put_xr_sx`:
@@ -466,6 +499,7 @@ snd_soc_put_xr_sx
         control element information
 
 
+
 .. _`snd_soc_put_xr_sx.description`:
 
 Description
@@ -478,6 +512,7 @@ specifying total no of bits used to allow for bitfields
 across the multiple codec registers.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_get_strobe`:
@@ -496,6 +531,7 @@ snd_soc_get_strobe
         control element information
 
 
+
 .. _`snd_soc_get_strobe.description`:
 
 Description
@@ -504,6 +540,7 @@ Description
 Callback get the value of a strobe mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_put_strobe`:
@@ -520,6 +557,7 @@ snd_soc_put_strobe
 
     :param struct snd_ctl_elem_value \*ucontrol:
         control element information
+
 
 
 .. _`snd_soc_put_strobe.description`:

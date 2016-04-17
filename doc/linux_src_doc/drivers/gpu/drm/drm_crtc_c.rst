@@ -4,6 +4,7 @@
 drm_crtc.c
 ==========
 
+
 .. _`drm_get_connector_status_name`:
 
 drm_get_connector_status_name
@@ -17,13 +18,15 @@ drm_get_connector_status_name
         connector status to compute name of
 
 
+
 .. _`drm_get_connector_status_name.description`:
 
 Description
 -----------
 
-In contrast to the other drm_get_\\*_name functions this one here returns a
+In contrast to the other drm_get\_\\*_name functions this one here returns a
 const pointer and hence is threadsafe.
+
 
 
 .. _`drm_get_subpixel_order_name`:
@@ -39,6 +42,7 @@ drm_get_subpixel_order_name
         enum of subpixel_order
 
 
+
 .. _`drm_get_subpixel_order_name.description`:
 
 Description
@@ -46,6 +50,7 @@ Description
 
 Note you could abuse this and return something out of bounds, but that
 would be a caller error.  No unscrubbed user data should make it here.
+
 
 
 .. _`drm_get_format_name`:
@@ -61,6 +66,7 @@ drm_get_format_name
         format to compute name of
 
 
+
 .. _`drm_get_format_name.description`:
 
 Description
@@ -69,7 +75,15 @@ Description
 Note that the buffer used by this function is globally shared and owned by
 the function itself.
 
-FIXME: This isn't really multithreading safe.
+
+
+.. _`drm_get_format_name.fixme`:
+
+FIXME
+-----
+
+This isn't really multithreading safe.
+
 
 
 .. _`drm_mode_object_get`:
@@ -91,6 +105,7 @@ drm_mode_object_get
         object type
 
 
+
 .. _`drm_mode_object_get.description`:
 
 Description
@@ -101,8 +116,15 @@ for tracking modes, CRTCs and connectors. Note that despite the _get postfix
 modeset identifiers are _not_ reference counted. Hence don't use this for
 reference counted modeset objects like framebuffers.
 
-Returns:
+
+
+.. _`drm_mode_object_get.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_mode_object_put`:
@@ -121,6 +143,7 @@ drm_mode_object_put
         object to free
 
 
+
 .. _`drm_mode_object_put.description`:
 
 Description
@@ -129,6 +152,7 @@ Description
 Free ``id`` from ``dev``\ 's unique identifier pool. Note that despite the _get
 postfix modeset identifiers are _not_ reference counted. Hence don't use this
 for reference counted modeset objects like framebuffers.
+
 
 
 .. _`drm_mode_object_find`:
@@ -150,6 +174,7 @@ drm_mode_object_find
         type of the mode object
 
 
+
 .. _`drm_mode_object_find.description`:
 
 Description
@@ -159,6 +184,7 @@ Note that framebuffers cannot be looked up with this functions - since those
 are reference counted, they need special treatment.  Even with
 DRM_MODE_OBJECT_ANY (although that will simply return NULL
 rather than :c:func:`WARN_ON`).
+
 
 
 .. _`drm_framebuffer_init`:
@@ -180,6 +206,7 @@ drm_framebuffer_init
         ... with these functions
 
 
+
 .. _`drm_framebuffer_init.description`:
 
 Description
@@ -188,14 +215,27 @@ Description
 Allocates an ID for the framebuffer's parent mode object, sets its mode
 functions & device file and adds it to the master fd list.
 
-IMPORTANT:
+
+
+.. _`drm_framebuffer_init.important`:
+
+IMPORTANT
+---------
+
 This functions publishes the fb and makes it available for concurrent access
 by other users. Which means by this point the fb _must_ be fully set up -
 since all the fb attributes are invariant over its lifetime, no further
 locking but only correct reference counting is required.
 
-Returns:
+
+
+.. _`drm_framebuffer_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_framebuffer_lookup`:
@@ -214,6 +254,7 @@ drm_framebuffer_lookup
         id of the fb object
 
 
+
 .. _`drm_framebuffer_lookup.description`:
 
 Description
@@ -222,6 +263,7 @@ Description
 If successful, this grabs an additional reference to the framebuffer -
 callers need to make sure to eventually unreference the returned framebuffer
 again, using ``drm_framebuffer_unreference``\ .
+
 
 
 .. _`drm_framebuffer_unreference`:
@@ -237,12 +279,14 @@ drm_framebuffer_unreference
         framebuffer to unref
 
 
+
 .. _`drm_framebuffer_unreference.description`:
 
 Description
 -----------
 
 This functions decrements the fb's refcount and frees it if it drops to zero.
+
 
 
 .. _`drm_framebuffer_reference`:
@@ -258,12 +302,14 @@ drm_framebuffer_reference
         framebuffer
 
 
+
 .. _`drm_framebuffer_reference.description`:
 
 Description
 -----------
 
 This functions increments the fb's refcount.
+
 
 
 .. _`drm_framebuffer_unregister_private`:
@@ -279,6 +325,7 @@ drm_framebuffer_unregister_private
         fb to unregister
 
 
+
 .. _`drm_framebuffer_unregister_private.description`:
 
 Description
@@ -288,6 +335,7 @@ Drivers need to call this when cleaning up driver-private framebuffers, e.g.
 those used for fbdev. Note that the caller must hold a reference of it's own,
 i.e. the object may not be destroyed through this call (since it'll lead to a
 locking inversion).
+
 
 
 .. _`drm_framebuffer_cleanup`:
@@ -301,6 +349,7 @@ drm_framebuffer_cleanup
 
     :param struct drm_framebuffer \*fb:
         framebuffer to remove
+
 
 
 .. _`drm_framebuffer_cleanup.description`:
@@ -322,6 +371,7 @@ driver-private objects (e.g. for fbdev) drivers need to explicitly call
 drm_framebuffer_unregister_private.
 
 
+
 .. _`drm_framebuffer_remove`:
 
 drm_framebuffer_remove
@@ -333,6 +383,7 @@ drm_framebuffer_remove
 
     :param struct drm_framebuffer \*fb:
         framebuffer to remove
+
 
 
 .. _`drm_framebuffer_remove.description`:
@@ -347,6 +398,7 @@ passed-in framebuffer. Might take the modeset locks.
 Note that this function optimizes the cleanup away if the caller holds the
 last reference to the framebuffer. It is also guaranteed to not take the
 modeset locks in this case.
+
 
 
 .. _`drm_crtc_init_with_planes`:
@@ -380,6 +432,7 @@ drm_crtc_init_with_planes
         variable arguments
 
 
+
 .. _`drm_crtc_init_with_planes.description`:
 
 Description
@@ -387,8 +440,15 @@ Description
 
 Inits a new object created as base part of a driver crtc object.
 
-Returns:
+
+
+.. _`drm_crtc_init_with_planes.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_crtc_cleanup`:
@@ -404,6 +464,7 @@ drm_crtc_cleanup
         CRTC to cleanup
 
 
+
 .. _`drm_crtc_cleanup.description`:
 
 Description
@@ -412,6 +473,7 @@ Description
 This function cleans up ``crtc`` and removes it from the DRM mode setting
 core. Note that the function does \*not\* free the crtc structure itself,
 this is the responsibility of the caller.
+
 
 
 .. _`drm_crtc_index`:
@@ -427,6 +489,7 @@ drm_crtc_index
         CRTC to find index for
 
 
+
 .. _`drm_crtc_index.description`:
 
 Description
@@ -434,6 +497,7 @@ Description
 
 Given a registered CRTC, return the index of that CRTC within a DRM
 device's list of CRTCs.
+
 
 
 .. _`drm_display_info_set_bus_formats`:
@@ -455,14 +519,16 @@ drm_display_info_set_bus_formats
         the number of entries in the fmts array
 
 
+
 .. _`drm_display_info_set_bus_formats.description`:
 
 Description
 -----------
 
 Store the supported bus formats in display info structure.
-See MEDIA_BUS_FMT_\* definitions in include/uapi/linux/media-bus-format.h for
+See MEDIA_BUS_FMT\_\* definitions in include/uapi/linux/media-bus-format.h for
 a full list of available formats.
+
 
 
 .. _`drm_connector_get_cmdline_mode`:
@@ -478,6 +544,7 @@ drm_connector_get_cmdline_mode
         connector to quwery
 
 
+
 .. _`drm_connector_get_cmdline_mode.description`:
 
 Description
@@ -488,6 +555,7 @@ use of the video= parameter. This function parses that option and
 extracts the user's specified mode (or enable/disable status) for a
 particular connector. This is typically only used during the early fbdev
 setup.
+
 
 
 .. _`drm_connector_init`:
@@ -512,6 +580,7 @@ drm_connector_init
         user visible type of the connector
 
 
+
 .. _`drm_connector_init.description`:
 
 Description
@@ -520,8 +589,15 @@ Description
 Initialises a preallocated connector. Connectors should be
 subclassed as part of driver connector objects.
 
-Returns:
+
+
+.. _`drm_connector_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_connector_cleanup`:
@@ -537,12 +613,14 @@ drm_connector_cleanup
         connector to cleanup
 
 
+
 .. _`drm_connector_cleanup.description`:
 
 Description
 -----------
 
 Cleans up the connector but doesn't free the object.
+
 
 
 .. _`drm_connector_register`:
@@ -558,6 +636,7 @@ drm_connector_register
         the connector to register
 
 
+
 .. _`drm_connector_register.description`:
 
 Description
@@ -565,8 +644,15 @@ Description
 
 Register userspace interfaces for a connector
 
-Returns:
+
+
+.. _`drm_connector_register.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_connector_unregister`:
@@ -582,12 +668,14 @@ drm_connector_unregister
         the connector to unregister
 
 
+
 .. _`drm_connector_unregister.description`:
 
 Description
 -----------
 
 Unregister userspace interfaces for a connector
+
 
 
 .. _`drm_connector_unplug_all`:
@@ -603,6 +691,7 @@ drm_connector_unplug_all
         drm device
 
 
+
 .. _`drm_connector_unplug_all.description`:
 
 Description
@@ -611,6 +700,7 @@ Description
 This function unregisters all connector userspace interfaces in sysfs. Should
 be call when the device is disconnected, e.g. from an usb driver's
 ->disconnect callback.
+
 
 
 .. _`drm_encoder_init`:
@@ -641,6 +731,7 @@ drm_encoder_init
         variable arguments
 
 
+
 .. _`drm_encoder_init.description`:
 
 Description
@@ -649,8 +740,15 @@ Description
 Initialises a preallocated encoder. Encoder should be
 subclassed as part of driver encoder objects.
 
-Returns:
+
+
+.. _`drm_encoder_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_encoder_index`:
@@ -666,6 +764,7 @@ drm_encoder_index
         encoder to find index for
 
 
+
 .. _`drm_encoder_index.description`:
 
 Description
@@ -673,6 +772,7 @@ Description
 
 Given a registered encoder, return the index of that encoder within a DRM
 device's list of encoders.
+
 
 
 .. _`drm_encoder_cleanup`:
@@ -688,12 +788,14 @@ drm_encoder_cleanup
         encoder to cleanup
 
 
+
 .. _`drm_encoder_cleanup.description`:
 
 Description
 -----------
 
 Cleans up the encoder but doesn't free the object.
+
 
 
 .. _`drm_universal_plane_init`:
@@ -733,6 +835,7 @@ drm_universal_plane_init
         variable arguments
 
 
+
 .. _`drm_universal_plane_init.description`:
 
 Description
@@ -740,8 +843,15 @@ Description
 
 Initializes a plane object of type ``type``\ .
 
-Returns:
+
+
+.. _`drm_universal_plane_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_plane_init`:
@@ -775,6 +885,7 @@ drm_plane_init
         plane type (primary vs overlay)
 
 
+
 .. _`drm_plane_init.description`:
 
 Description
@@ -784,8 +895,15 @@ Legacy API to initialize a DRM plane.
 
 New drivers should call :c:func:`drm_universal_plane_init` instead.
 
-Returns:
+
+
+.. _`drm_plane_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_plane_cleanup`:
@@ -801,6 +919,7 @@ drm_plane_cleanup
         plane to cleanup
 
 
+
 .. _`drm_plane_cleanup.description`:
 
 Description
@@ -809,6 +928,7 @@ Description
 This function cleans up ``plane`` and removes it from the DRM mode setting
 core. Note that the function does \*not\* free the plane structure itself,
 this is the responsibility of the caller.
+
 
 
 .. _`drm_plane_index`:
@@ -824,6 +944,7 @@ drm_plane_index
         plane to find index for
 
 
+
 .. _`drm_plane_index.description`:
 
 Description
@@ -831,6 +952,7 @@ Description
 
 Given a registered plane, return the index of that CRTC within a DRM
 device's list of planes.
+
 
 
 .. _`drm_plane_from_index`:
@@ -849,6 +971,7 @@ drm_plane_from_index
         index of registered plane to find for
 
 
+
 .. _`drm_plane_from_index.description`:
 
 Description
@@ -856,6 +979,7 @@ Description
 
 Given a plane index, return the registered plane from DRM device's
 list of planes with matching index.
+
 
 
 .. _`drm_plane_force_disable`:
@@ -871,6 +995,7 @@ drm_plane_force_disable
         plane to disable
 
 
+
 .. _`drm_plane_force_disable.description`:
 
 Description
@@ -880,6 +1005,7 @@ Forces the plane to be disabled.
 
 Used when the plane's current framebuffer is destroyed,
 and when restoring fbdev mode.
+
 
 
 .. _`drm_mode_create_dvi_i_properties`:
@@ -895,12 +1021,14 @@ drm_mode_create_dvi_i_properties
         DRM device
 
 
+
 .. _`drm_mode_create_dvi_i_properties.description`:
 
 Description
 -----------
 
 Called by a driver the first time a DVI-I connector is made.
+
 
 
 .. _`drm_mode_create_tv_properties`:
@@ -922,6 +1050,7 @@ drm_mode_create_tv_properties
         array of pointers to strings containing name of each format
 
 
+
 .. _`drm_mode_create_tv_properties.description`:
 
 Description
@@ -931,6 +1060,7 @@ Called by a driver's TV initialization routine, this function creates
 the TV specific connector properties for a given device.  Caller is
 responsible for allocating a list of format names and passing them to
 this routine.
+
 
 
 .. _`drm_mode_create_scaling_mode_property`:
@@ -946,6 +1076,7 @@ drm_mode_create_scaling_mode_property
         DRM device
 
 
+
 .. _`drm_mode_create_scaling_mode_property.description`:
 
 Description
@@ -953,6 +1084,7 @@ Description
 
 Called by a driver the first time it's needed, must be attached to desired
 connectors.
+
 
 
 .. _`drm_mode_create_aspect_ratio_property`:
@@ -968,6 +1100,7 @@ drm_mode_create_aspect_ratio_property
         DRM device
 
 
+
 .. _`drm_mode_create_aspect_ratio_property.description`:
 
 Description
@@ -976,8 +1109,15 @@ Description
 Called by a driver the first time it's needed, must be attached to desired
 connectors.
 
-Returns:
+
+
+.. _`drm_mode_create_aspect_ratio_property.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_create_dirty_info_property`:
@@ -993,6 +1133,7 @@ drm_mode_create_dirty_info_property
         DRM device
 
 
+
 .. _`drm_mode_create_dirty_info_property.description`:
 
 Description
@@ -1000,6 +1141,7 @@ Description
 
 Called by a driver the first time it's needed, must be attached to desired
 connectors.
+
 
 
 .. _`drm_mode_create_suggested_offset_properties`:
@@ -1015,12 +1157,14 @@ drm_mode_create_suggested_offset_properties
         DRM device
 
 
+
 .. _`drm_mode_create_suggested_offset_properties.description`:
 
 Description
 -----------
 
 Create the the suggested x/y offset property for connectors.
+
 
 
 .. _`drm_mode_getresources`:
@@ -1042,6 +1186,7 @@ drm_mode_getresources
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_getresources.description`:
 
 Description
@@ -1052,8 +1197,15 @@ them to the user, including CRTC, connector and framebuffer configuration.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getresources.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getcrtc`:
@@ -1075,6 +1227,7 @@ drm_mode_getcrtc
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_getcrtc.description`:
 
 Description
@@ -1084,8 +1237,15 @@ Construct a CRTC configuration structure to return to the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getcrtc.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getconnector`:
@@ -1107,6 +1267,7 @@ drm_mode_getconnector
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_getconnector.description`:
 
 Description
@@ -1116,8 +1277,15 @@ Construct a connector configuration structure to return to the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getconnector.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getencoder`:
@@ -1139,6 +1307,7 @@ drm_mode_getencoder
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_getencoder.description`:
 
 Description
@@ -1148,8 +1317,15 @@ Construct a encoder configuration structure to return to the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getencoder.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getplane_res`:
@@ -1171,6 +1347,7 @@ drm_mode_getplane_res
         DRM file info
 
 
+
 .. _`drm_mode_getplane_res.description`:
 
 Description
@@ -1180,8 +1357,15 @@ Construct a list of plane ids to return to the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getplane_res.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getplane`:
@@ -1203,6 +1387,7 @@ drm_mode_getplane
         DRM file info
 
 
+
 .. _`drm_mode_getplane.description`:
 
 Description
@@ -1212,8 +1397,15 @@ Construct a plane configuration structure to return to the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getplane.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_plane_check_pixel_format`:
@@ -1232,14 +1424,15 @@ drm_plane_check_pixel_format
         the pixel format
 
 
-.. _`drm_plane_check_pixel_format.description`:
 
-Description
------------
+.. _`drm_plane_check_pixel_format.returns`:
 
-Returns:
+Returns
+-------
+
 Zero of ``plane`` has ``format`` in its list of supported pixel formats, -EINVAL
 otherwise.
+
 
 
 .. _`drm_mode_setplane`:
@@ -1261,6 +1454,7 @@ drm_mode_setplane
         DRM file info
 
 
+
 .. _`drm_mode_setplane.description`:
 
 Description
@@ -1270,8 +1464,15 @@ Set plane configuration, including placement, fb, scaling, and other factors.
 Or pass a NULL fb to disable (planes may be disabled without providing a
 valid crtc).
 
-Returns:
+
+
+.. _`drm_mode_setplane.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_set_config_internal`:
@@ -1287,6 +1488,7 @@ drm_mode_set_config_internal
         modeset config to set
 
 
+
 .. _`drm_mode_set_config_internal.description`:
 
 Description
@@ -1295,8 +1497,15 @@ Description
 This is a little helper to wrap internal calls to the ->set_config driver
 interface. The only thing it adds is correct refcounting dance.
 
-Returns:
+
+
+.. _`drm_mode_set_config_internal.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_crtc_get_hv_timing`:
@@ -1318,6 +1527,7 @@ drm_crtc_get_hv_timing
         vdisplay value to fill in
 
 
+
 .. _`drm_crtc_get_hv_timing.description`:
 
 Description
@@ -1325,6 +1535,7 @@ Description
 
 The vdisplay value will be doubled if the specified mode is a stereo mode of
 the appropriate layout.
+
 
 
 .. _`drm_crtc_check_viewport`:
@@ -1352,6 +1563,7 @@ drm_crtc_check_viewport
         framebuffer to check size of
 
 
+
 .. _`drm_mode_setcrtc`:
 
 drm_mode_setcrtc
@@ -1371,6 +1583,7 @@ drm_mode_setcrtc
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_setcrtc.description`:
 
 Description
@@ -1380,8 +1593,15 @@ Build a new CRTC configuration based on user request.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_setcrtc.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_cursor_universal`:
@@ -1403,6 +1623,7 @@ drm_mode_cursor_universal
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_cursor_universal.description`:
 
 Description
@@ -1417,8 +1638,15 @@ buffer with a pitch of 4\\*width; the universal plane interface should be used
 directly in cases where the hardware can support other buffer settings and
 userspace wants to make use of these capabilities.
 
-Returns:
+
+
+.. _`drm_mode_cursor_universal.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_cursor_ioctl`:
@@ -1440,6 +1668,7 @@ drm_mode_cursor_ioctl
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_cursor_ioctl.description`:
 
 Description
@@ -1449,8 +1678,15 @@ Set the cursor configuration based on user request.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_cursor_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_cursor2_ioctl`:
@@ -1472,6 +1708,7 @@ drm_mode_cursor2_ioctl
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_cursor2_ioctl.description`:
 
 Description
@@ -1483,8 +1720,15 @@ the hotspot of the pointer.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_cursor2_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_legacy_fb_format`:
@@ -1503,6 +1747,7 @@ drm_mode_legacy_fb_format
         bit depth per pixel
 
 
+
 .. _`drm_mode_legacy_fb_format.description`:
 
 Description
@@ -1510,6 +1755,7 @@ Description
 
 Computes a drm fourcc pixel format code for the given ``bpp``\ /\ ``depth`` values.
 Useful in fbdev emulation code, since that deals in those values.
+
 
 
 .. _`drm_mode_addfb`:
@@ -1531,6 +1777,7 @@ drm_mode_addfb
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_addfb.description`:
 
 Description
@@ -1541,8 +1788,15 @@ original addfb ioctl which only supported RGB formats.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_addfb.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_addfb2`:
@@ -1564,6 +1818,7 @@ drm_mode_addfb2
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_addfb2.description`:
 
 Description
@@ -1575,8 +1830,15 @@ and uses fourcc codes as pixel format specifiers.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_addfb2.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_rmfb`:
@@ -1598,6 +1860,7 @@ drm_mode_rmfb
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_rmfb.description`:
 
 Description
@@ -1607,8 +1870,15 @@ Remove the FB specified by the user.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_rmfb.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_getfb`:
@@ -1630,6 +1900,7 @@ drm_mode_getfb
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_getfb.description`:
 
 Description
@@ -1639,8 +1910,15 @@ Lookup the FB given its ID and return info about it.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getfb.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_dirtyfb_ioctl`:
@@ -1662,6 +1940,7 @@ drm_mode_dirtyfb_ioctl
         drm file for the ioctl call
 
 
+
 .. _`drm_mode_dirtyfb_ioctl.description`:
 
 Description
@@ -1677,8 +1956,15 @@ implement the corresponding ->dirty framebuffer callback.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_dirtyfb_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_fb_release`:
@@ -1694,6 +1980,7 @@ drm_fb_release
         drm file for the ioctl
 
 
+
 .. _`drm_fb_release.description`:
 
 Description
@@ -1703,8 +1990,15 @@ Destroy all the FBs associated with ``filp``\ .
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_fb_release.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_property_create`:
@@ -1729,6 +2023,7 @@ drm_property_create
         number of pre-defined values
 
 
+
 .. _`drm_property_create.description`:
 
 Description
@@ -1742,8 +2037,15 @@ Note that the DRM core keeps a per-device list of properties and that, if
 :c:func:`drm_mode_config_cleanup` is called, it will destroy all properties created
 by the driver.
 
-Returns:
+
+
+.. _`drm_property_create.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_enum`:
@@ -1771,6 +2073,7 @@ drm_property_create_enum
         number of pre-defined values
 
 
+
 .. _`drm_property_create_enum.description`:
 
 Description
@@ -1783,8 +2086,15 @@ freed with drm_property_destroy.
 Userspace is only allowed to set one of the predefined values for enumeration
 properties.
 
-Returns:
+
+
+.. _`drm_property_create_enum.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_bitmask`:
@@ -1815,6 +2125,7 @@ drm_property_create_bitmask
         bitmask of all supported enumeration values
 
 
+
 .. _`drm_property_create_bitmask.description`:
 
 Description
@@ -1827,8 +2138,15 @@ freed with drm_property_destroy.
 Compared to plain enumeration properties userspace is allowed to set any
 or'ed together combination of the predefined property bitflag values
 
-Returns:
+
+
+.. _`drm_property_create_bitmask.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_range`:
@@ -1856,6 +2174,7 @@ drm_property_create_range
         maximum value of the property
 
 
+
 .. _`drm_property_create_range.description`:
 
 Description
@@ -1868,8 +2187,15 @@ freed with drm_property_destroy.
 Userspace is allowed to set any unsigned integer value in the (min, max)
 range inclusive.
 
-Returns:
+
+
+.. _`drm_property_create_range.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_signed_range`:
@@ -1897,6 +2223,7 @@ drm_property_create_signed_range
         maximum value of the property
 
 
+
 .. _`drm_property_create_signed_range.description`:
 
 Description
@@ -1909,8 +2236,15 @@ freed with drm_property_destroy.
 Userspace is allowed to set any signed integer value in the (min, max)
 range inclusive.
 
-Returns:
+
+
+.. _`drm_property_create_signed_range.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_object`:
@@ -1932,7 +2266,8 @@ drm_property_create_object
         name of the property
 
     :param uint32_t type:
-        object type from DRM_MODE_OBJECT_\* defines
+        object type from DRM_MODE_OBJECT\_\* defines
+
 
 
 .. _`drm_property_create_object.description`:
@@ -1947,8 +2282,15 @@ freed with drm_property_destroy.
 Userspace is only allowed to set this to any property value of the given
 ``type``\ . Only useful for atomic properties, which is enforced.
 
-Returns:
+
+
+.. _`drm_property_create_object.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_create_bool`:
@@ -1970,6 +2312,7 @@ drm_property_create_bool
         name of the property
 
 
+
 .. _`drm_property_create_bool.description`:
 
 Description
@@ -1981,8 +2324,15 @@ freed with drm_property_destroy.
 
 This is implemented as a ranged property with only {0, 1} as valid values.
 
-Returns:
+
+
+.. _`drm_property_create_bool.returns`:
+
+Returns
+-------
+
 A pointer to the newly created property on success, NULL on failure.
+
 
 
 .. _`drm_property_add_enum`:
@@ -2007,6 +2357,7 @@ drm_property_add_enum
         symbolic name of the new enumeration
 
 
+
 .. _`drm_property_add_enum.description`:
 
 Description
@@ -2017,8 +2368,15 @@ This functions adds enumerations to a property.
 It's use is deprecated, drivers should use one of the more specific helpers
 to directly create the property with all enumerations already attached.
 
-Returns:
+
+
+.. _`drm_property_add_enum.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_property_destroy`:
@@ -2037,6 +2395,7 @@ drm_property_destroy
         property to destry
 
 
+
 .. _`drm_property_destroy.description`:
 
 Description
@@ -2044,6 +2403,7 @@ Description
 
 This function frees a property including any attached resources like
 enumeration values.
+
 
 
 .. _`drm_object_attach_property`:
@@ -2065,6 +2425,7 @@ drm_object_attach_property
         initial value of the property
 
 
+
 .. _`drm_object_attach_property.description`:
 
 Description
@@ -2073,6 +2434,7 @@ Description
 This attaches the given property to the modeset object with the given initial
 value. Currently this function cannot fail since the properties are stored in
 a statically sized array.
+
 
 
 .. _`drm_object_property_set_value`:
@@ -2094,6 +2456,7 @@ drm_object_property_set_value
         value the property should be set to
 
 
+
 .. _`drm_object_property_set_value.description`:
 
 Description
@@ -2103,8 +2466,15 @@ This functions sets a given property on a given object. This function only
 changes the software state of the property, it does not call into the
 driver's ->set_property callback.
 
-Returns:
+
+
+.. _`drm_object_property_set_value.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_object_property_get_value`:
@@ -2126,6 +2496,7 @@ drm_object_property_get_value
         storage for the property value
 
 
+
 .. _`drm_object_property_get_value.description`:
 
 Description
@@ -2136,8 +2507,15 @@ property. Since there is no driver callback to retrieve the current property
 value this might be out of sync with the hardware, depending upon the driver
 and property.
 
-Returns:
+
+
+.. _`drm_object_property_get_value.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_mode_getproperty_ioctl`:
@@ -2159,6 +2537,7 @@ drm_mode_getproperty_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_getproperty_ioctl.description`:
 
 Description
@@ -2171,8 +2550,15 @@ Blob properties are special
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getproperty_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_property_create_blob`:
@@ -2194,24 +2580,26 @@ drm_property_create_blob
         If specified, copies data into blob
 
 
-.. _`drm_property_create_blob.description`:
-
-Description
------------
-
-Returns:
-New blob property with a single reference on success, or an ERR_PTR
-value on failure.
-
 
 .. _`drm_property_create_blob.description`:
 
 Description
 -----------
 
-Returns:
+
+Creates a new blob property for a specified DRM device, optionally
+copying data.
+
+
+
+.. _`drm_property_create_blob.returns`:
+
+Returns
+-------
+
 New blob property with a single reference on success, or an ERR_PTR
 value on failure.
+
 
 
 .. _`drm_property_free_blob`:
@@ -2227,6 +2615,7 @@ drm_property_free_blob
         Reference
 
 
+
 .. _`drm_property_free_blob.description`:
 
 Description
@@ -2234,6 +2623,7 @@ Description
 
 
 Internal free function for blob properties; must not be used directly.
+
 
 
 .. _`drm_property_unreference_blob`:
@@ -2249,6 +2639,7 @@ drm_property_unreference_blob
         Pointer to blob property
 
 
+
 .. _`drm_property_unreference_blob.description`:
 
 Description
@@ -2256,6 +2647,7 @@ Description
 
 
 Drop a reference on a blob property. May free the object.
+
 
 
 .. _`drm_property_unreference_blob_locked`:
@@ -2271,6 +2663,7 @@ drm_property_unreference_blob_locked
         Pointer to blob property
 
 
+
 .. _`drm_property_unreference_blob_locked.description`:
 
 Description
@@ -2279,6 +2672,7 @@ Description
 
 Drop a reference on a blob property. May free the object. This must be
 called with blob_lock held.
+
 
 
 .. _`drm_property_destroy_user_blobs`:
@@ -2297,6 +2691,7 @@ drm_property_destroy_user_blobs
         destroy all blobs owned by this file handle
 
 
+
 .. _`drm_property_reference_blob`:
 
 drm_property_reference_blob
@@ -2310,6 +2705,7 @@ drm_property_reference_blob
         Pointer to blob property
 
 
+
 .. _`drm_property_reference_blob.description`:
 
 Description
@@ -2317,6 +2713,7 @@ Description
 
 
 Take a new reference on an existing blob property.
+
 
 
 .. _`drm_property_lookup_blob`:
@@ -2335,6 +2732,7 @@ drm_property_lookup_blob
         id of the blob property
 
 
+
 .. _`drm_property_lookup_blob.description`:
 
 Description
@@ -2343,6 +2741,7 @@ Description
 If successful, this takes an additional reference to the blob property.
 callers need to make sure to eventually unreference the returned property
 again, using ``drm_property_unreference_blob``\ .
+
 
 
 .. _`drm_property_replace_global_blob`:
@@ -2374,6 +2773,7 @@ drm_property_replace_global_blob
         ``return`` 0 on success or error on failure
 
 
+
 .. _`drm_property_replace_global_blob.description`:
 
 Description
@@ -2381,7 +2781,15 @@ Description
 
 This function will atomically replace a global property in the blob list,
 optionally updating a property which holds the ID of that property. It is
-guaranteed to be atomic: no caller will be allowed to see intermediate
+
+
+
+.. _`drm_property_replace_global_blob.guaranteed-to-be-atomic`:
+
+guaranteed to be atomic
+-----------------------
+
+no caller will be allowed to see intermediate
 results, and either the entire operation will succeed and clean up the
 previous property, or it will fail and the state will be unchanged.
 
@@ -2398,6 +2806,7 @@ data set for the new path information, obj_holds_id set to the connector's
 base object, and prop_holds_id set to the path property name, will perform
 a completely atomic update. The access to path_blob_ptr is protected by the
 caller holding a lock on the connector.
+
 
 
 .. _`drm_mode_getblob_ioctl`:
@@ -2419,6 +2828,7 @@ drm_mode_getblob_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_getblob_ioctl.description`:
 
 Description
@@ -2429,8 +2839,15 @@ an object's blob property is just a normal modeset object id.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_getblob_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_createblob_ioctl`:
@@ -2452,6 +2869,7 @@ drm_mode_createblob_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_createblob_ioctl.description`:
 
 Description
@@ -2463,8 +2881,15 @@ every potential use, we also require a type to be provided upfront.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_createblob_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_destroyblob_ioctl`:
@@ -2486,6 +2911,7 @@ drm_mode_destroyblob_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_destroyblob_ioctl.description`:
 
 Description
@@ -2495,8 +2921,15 @@ Destroy an existing user-defined blob property.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_destroyblob_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_connector_set_path_property`:
@@ -2515,6 +2948,7 @@ drm_mode_connector_set_path_property
         path to use for property; must not be NULL.
 
 
+
 .. _`drm_mode_connector_set_path_property.description`:
 
 Description
@@ -2525,8 +2959,15 @@ connector path. This is mainly used for DisplayPort MST where
 connectors have a topology and we want to allow userspace to give
 them more meaningful names.
 
-Returns:
+
+
+.. _`drm_mode_connector_set_path_property.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_connector_set_tile_property`:
@@ -2542,6 +2983,7 @@ drm_mode_connector_set_tile_property
         connector to set property on.
 
 
+
 .. _`drm_mode_connector_set_tile_property.description`:
 
 Description
@@ -2551,8 +2993,15 @@ This looks up the tile information for a connector, and creates a
 property for userspace to parse if it exists. The property is of
 the form of 8 integers using ':' as a separator.
 
-Returns:
+
+
+.. _`drm_mode_connector_set_tile_property.returns`:
+
+Returns
+-------
+
 Zero on success, errno on failure.
+
 
 
 .. _`drm_mode_connector_update_edid_property`:
@@ -2571,6 +3020,7 @@ drm_mode_connector_update_edid_property
         new value of the edid property
 
 
+
 .. _`drm_mode_connector_update_edid_property.description`:
 
 Description
@@ -2579,8 +3029,15 @@ Description
 This function creates a new blob modeset object and assigns its id to the
 connector's edid property.
 
-Returns:
+
+
+.. _`drm_mode_connector_update_edid_property.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_connector_property_set_ioctl`:
@@ -2602,6 +3059,7 @@ drm_mode_connector_property_set_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_connector_property_set_ioctl.description`:
 
 Description
@@ -2612,8 +3070,15 @@ calls into a driver's ->set_property callback to update the hardware state
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_connector_property_set_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_plane_set_obj_prop`:
@@ -2635,6 +3100,7 @@ drm_mode_plane_set_obj_prop
         value the property should be set to
 
 
+
 .. _`drm_mode_plane_set_obj_prop.description`:
 
 Description
@@ -2644,8 +3110,15 @@ This functions sets a given property on a given plane object. This function
 calls the driver's ->set_property callback and changes the software state of
 the property if the callback succeeds.
 
-Returns:
+
+
+.. _`drm_mode_plane_set_obj_prop.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_mode_obj_get_properties_ioctl`:
@@ -2667,6 +3140,7 @@ drm_mode_obj_get_properties_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_obj_get_properties_ioctl.description`:
 
 Description
@@ -2678,8 +3152,15 @@ plane objects.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_obj_get_properties_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_obj_set_property_ioctl`:
@@ -2701,6 +3182,7 @@ drm_mode_obj_set_property_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_obj_set_property_ioctl.description`:
 
 Description
@@ -2713,8 +3195,15 @@ crtc and plane objects.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_obj_set_property_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_connector_attach_encoder`:
@@ -2733,6 +3222,7 @@ drm_mode_connector_attach_encoder
         encoder to attach ``connector`` to
 
 
+
 .. _`drm_mode_connector_attach_encoder.description`:
 
 Description
@@ -2742,8 +3232,15 @@ This function links up a connector to an encoder. Note that the routing
 restrictions between encoders and crtcs are exposed to userspace through the
 possible_clones and possible_crtcs bitmasks.
 
-Returns:
+
+
+.. _`drm_mode_connector_attach_encoder.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_crtc_set_gamma_size`:
@@ -2762,6 +3259,7 @@ drm_mode_crtc_set_gamma_size
         size of the gamma table
 
 
+
 .. _`drm_mode_crtc_set_gamma_size.description`:
 
 Description
@@ -2771,8 +3269,15 @@ Drivers which support gamma tables should set this to the supported gamma
 table size when initializing the CRTC. Currently the drm core only supports a
 fixed gamma table size.
 
-Returns:
+
+
+.. _`drm_mode_crtc_set_gamma_size.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_gamma_set_ioctl`:
@@ -2794,6 +3299,7 @@ drm_mode_gamma_set_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_gamma_set_ioctl.description`:
 
 Description
@@ -2804,8 +3310,15 @@ inquire the required gamma table size through drm_mode_gamma_get_ioctl.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_gamma_set_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_gamma_get_ioctl`:
@@ -2827,6 +3340,7 @@ drm_mode_gamma_get_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_gamma_get_ioctl.description`:
 
 Description
@@ -2838,8 +3352,15 @@ allocated storage.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_gamma_get_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_page_flip_ioctl`:
@@ -2861,6 +3382,7 @@ drm_mode_page_flip_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_page_flip_ioctl.description`:
 
 Description
@@ -2875,8 +3397,15 @@ ioctl.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_page_flip_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_config_reset`:
@@ -2892,6 +3421,7 @@ drm_mode_config_reset
         drm device
 
 
+
 .. _`drm_mode_config_reset.description`:
 
 Description
@@ -2900,6 +3430,7 @@ Description
 This functions calls all the crtc's, encoder's and connector's ->reset
 callback. Drivers can use this in e.g. their driver load or resume code to
 reset hardware and software state.
+
 
 
 .. _`drm_mode_create_dumb_ioctl`:
@@ -2921,6 +3452,7 @@ drm_mode_create_dumb_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_create_dumb_ioctl.description`:
 
 Description
@@ -2936,8 +3468,15 @@ case.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_create_dumb_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_mmap_dumb_ioctl`:
@@ -2959,6 +3498,7 @@ drm_mode_mmap_dumb_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_mmap_dumb_ioctl.description`:
 
 Description
@@ -2969,8 +3509,15 @@ memory map a dumb buffer.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_mmap_dumb_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_mode_destroy_dumb_ioctl`:
@@ -2992,6 +3539,7 @@ drm_mode_destroy_dumb_ioctl
         DRM file info
 
 
+
 .. _`drm_mode_destroy_dumb_ioctl.description`:
 
 Description
@@ -3003,8 +3551,15 @@ won't be immediately freed if a framebuffer modeset object still uses it.
 
 Called by the user via ioctl.
 
-Returns:
+
+
+.. _`drm_mode_destroy_dumb_ioctl.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
+
 
 
 .. _`drm_fb_get_bpp_depth`:
@@ -3017,13 +3572,14 @@ drm_fb_get_bpp_depth
     get the bpp/depth values for format
 
     :param uint32_t format:
-        pixel format (DRM_FORMAT_\*)
+        pixel format (DRM_FORMAT\_\*)
 
     :param unsigned int \*depth:
         storage for the depth value
 
     :param int \*bpp:
         storage for the bpp value
+
 
 
 .. _`drm_fb_get_bpp_depth.description`:
@@ -3033,6 +3589,7 @@ Description
 
 This only supports RGB formats here for compat with code that doesn't use
 pixel formats directly yet.
+
 
 
 .. _`drm_format_num_planes`:
@@ -3045,16 +3602,17 @@ drm_format_num_planes
     get the number of planes for format
 
     :param uint32_t format:
-        pixel format (DRM_FORMAT_\*)
+        pixel format (DRM_FORMAT\_\*)
 
 
-.. _`drm_format_num_planes.description`:
 
-Description
------------
+.. _`drm_format_num_planes.returns`:
 
-Returns:
+Returns
+-------
+
 The number of planes used by the specified pixel format.
+
 
 
 .. _`drm_format_plane_cpp`:
@@ -3067,19 +3625,20 @@ drm_format_plane_cpp
     determine the bytes per pixel value
 
     :param uint32_t format:
-        pixel format (DRM_FORMAT_\*)
+        pixel format (DRM_FORMAT\_\*)
 
     :param int plane:
         plane index
 
 
-.. _`drm_format_plane_cpp.description`:
 
-Description
------------
+.. _`drm_format_plane_cpp.returns`:
 
-Returns:
+Returns
+-------
+
 The bytes per pixel value for the specified plane.
+
 
 
 .. _`drm_format_horz_chroma_subsampling`:
@@ -3092,17 +3651,18 @@ drm_format_horz_chroma_subsampling
     get the horizontal chroma subsampling factor
 
     :param uint32_t format:
-        pixel format (DRM_FORMAT_\*)
+        pixel format (DRM_FORMAT\_\*)
 
 
-.. _`drm_format_horz_chroma_subsampling.description`:
 
-Description
------------
+.. _`drm_format_horz_chroma_subsampling.returns`:
 
-Returns:
+Returns
+-------
+
 The horizontal chroma subsampling factor for the
 specified pixel format.
+
 
 
 .. _`drm_format_vert_chroma_subsampling`:
@@ -3115,17 +3675,18 @@ drm_format_vert_chroma_subsampling
     get the vertical chroma subsampling factor
 
     :param uint32_t format:
-        pixel format (DRM_FORMAT_\*)
+        pixel format (DRM_FORMAT\_\*)
 
 
-.. _`drm_format_vert_chroma_subsampling.description`:
 
-Description
------------
+.. _`drm_format_vert_chroma_subsampling.returns`:
 
-Returns:
+Returns
+-------
+
 The vertical chroma subsampling factor for the
 specified pixel format.
+
 
 
 .. _`drm_format_plane_width`:
@@ -3147,13 +3708,14 @@ drm_format_plane_width
         plane index
 
 
-.. _`drm_format_plane_width.description`:
 
-Description
------------
+.. _`drm_format_plane_width.returns`:
 
-Returns:
+Returns
+-------
+
 The width of ``plane``\ , given that the width of the first plane is ``width``\ .
+
 
 
 .. _`drm_format_plane_height`:
@@ -3175,13 +3737,14 @@ drm_format_plane_height
         plane index
 
 
-.. _`drm_format_plane_height.description`:
 
-Description
------------
+.. _`drm_format_plane_height.returns`:
 
-Returns:
+Returns
+-------
+
 The height of ``plane``\ , given that the height of the first plane is ``height``\ .
+
 
 
 .. _`drm_rotation_simplify`:
@@ -3200,6 +3763,7 @@ drm_rotation_simplify
         Supported rotations
 
 
+
 .. _`drm_rotation_simplify.description`:
 
 Description
@@ -3207,7 +3771,14 @@ Description
 
 Attempt to simplify the rotation to a form that is supported.
 Eg. if the hardware supports everything except DRM_REFLECT_X
-one could call this function like this:
+
+
+
+.. _`drm_rotation_simplify.one-could-call-this-function-like-this`:
+
+one could call this function like this
+--------------------------------------
+
 
 drm_rotation_simplify(rotation, BIT(DRM_ROTATE_0) |
 BIT(DRM_ROTATE_90) | BIT(DRM_ROTATE_180) |
@@ -3217,6 +3788,7 @@ to eliminate the DRM_ROTATE_X flag. Depending on what kind of
 transforms the hardware supports, this function may not
 be able to produce a supported transform, so the caller should
 check the result afterwards.
+
 
 
 .. _`drm_mode_config_init`:
@@ -3232,6 +3804,7 @@ drm_mode_config_init
         DRM device
 
 
+
 .. _`drm_mode_config_init.description`:
 
 Description
@@ -3243,6 +3816,7 @@ configuration of ``dev``\ .
 Since this initializes the modeset locks, no locking is possible. Which is no
 problem, since this should happen single threaded at init time. It is the
 driver's problem to ensure this guarantee.
+
 
 
 .. _`drm_mode_config_cleanup`:
@@ -3258,6 +3832,7 @@ drm_mode_config_cleanup
         DRM device
 
 
+
 .. _`drm_mode_config_cleanup.description`:
 
 Description
@@ -3270,7 +3845,15 @@ Note that since this /should/ happen single-threaded at driver/device
 teardown time, no locking is required. It's the driver's job to ensure that
 this guarantee actually holds true.
 
-FIXME: cleanup any dangling user buffer objects too
+
+
+.. _`drm_mode_config_cleanup.fixme`:
+
+FIXME
+-----
+
+cleanup any dangling user buffer objects too
+
 
 
 .. _`tile-group`:
@@ -3282,6 +3865,7 @@ Tile groups are used to represent tiled monitors with a unique
 integer identifier. Tiled monitors using DisplayID v1.3 have
 a unique 8-byte handle, we store this in a tile group, so we
 have a common identifier for all tiles in a monitor group.
+
 
 
 .. _`drm_mode_put_tile_group`:
@@ -3300,12 +3884,14 @@ drm_mode_put_tile_group
         tile group to drop reference to.
 
 
+
 .. _`drm_mode_put_tile_group.description`:
 
 Description
 -----------
 
 drop reference to tile group and free if 0.
+
 
 
 .. _`drm_mode_get_tile_group`:
@@ -3324,6 +3910,7 @@ drm_mode_get_tile_group
         8-bytes unique per monitor.
 
 
+
 .. _`drm_mode_get_tile_group.description`:
 
 Description
@@ -3331,8 +3918,15 @@ Description
 
 Use the unique bytes to get a reference to an existing tile group.
 
-RETURNS:
+
+
+.. _`drm_mode_get_tile_group.returns`:
+
+RETURNS
+-------
+
 tile group or NULL if not found.
+
 
 
 .. _`drm_mode_create_tile_group`:
@@ -3351,6 +3945,7 @@ drm_mode_create_tile_group
         8-bytes unique per monitor.
 
 
+
 .. _`drm_mode_create_tile_group.description`:
 
 Description
@@ -3359,6 +3954,12 @@ Description
 Create a tile group for the unique monitor, and get a unique
 identifier for the tile group.
 
-RETURNS:
+
+
+.. _`drm_mode_create_tile_group.returns`:
+
+RETURNS
+-------
+
 new tile group or error.
 

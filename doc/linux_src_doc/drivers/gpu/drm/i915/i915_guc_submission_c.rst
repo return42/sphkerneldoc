@@ -4,6 +4,7 @@
 i915_guc_submission.c
 =====================
 
+
 .. _`guc-based-command-submission`:
 
 GuC-based command submission
@@ -42,6 +43,7 @@ ELSP context descriptor dword into Work Item.
 See :c:func:`guc_add_workqueue_item`
 
 
+
 .. _`i915_guc_submit`:
 
 i915_guc_submit
@@ -58,12 +60,14 @@ i915_guc_submit
         request associated with the commands
 
 
-.. _`i915_guc_submit.description`:
 
-Description
------------
+.. _`i915_guc_submit.return`:
 
-Return:        0 if succeed
+Return
+------
+
+0 if succeed
+
 
 
 .. _`gem_allocate_guc_obj`:
@@ -82,6 +86,7 @@ gem_allocate_guc_obj
         size of object
 
 
+
 .. _`gem_allocate_guc_obj.description`:
 
 Description
@@ -91,7 +96,15 @@ This is a wrapper to create a gem obj. In order to use it inside GuC, the
 object needs to be pinned lifetime. Also we must pin it to gtt space other
 than [0, GUC_WOPCM_TOP) because this range is reserved inside GuC.
 
-Return:        A drm_i915_gem_object if successful, otherwise NULL.
+
+
+.. _`gem_allocate_guc_obj.return`:
+
+Return
+------
+
+A drm_i915_gem_object if successful, otherwise NULL.
+
 
 
 .. _`gem_release_guc_obj`:
@@ -105,6 +118,7 @@ gem_release_guc_obj
 
     :param struct drm_i915_gem_object \*obj:
         gem obj to be released
+
 
 
 .. _`guc_client_alloc`:
@@ -130,12 +144,14 @@ guc_client_alloc
         context)
 
 
-.. _`guc_client_alloc.description`:
 
-Description
------------
+.. _`guc_client_alloc.return`:
 
-Return:        An i915_guc_client object if success.
+Return
+------
+
+An i915_guc_client object if success.
+
 
 
 .. _`intel_guc_suspend`:
@@ -149,6 +165,7 @@ intel_guc_suspend
 
     :param struct drm_device \*dev:
         drm device
+
 
 
 .. _`intel_guc_resume`:

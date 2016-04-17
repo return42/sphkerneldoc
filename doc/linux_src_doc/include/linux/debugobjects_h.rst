@@ -4,16 +4,18 @@
 debugobjects.h
 ==============
 
+
 .. _`debug_obj`:
 
 struct debug_obj
 ================
 
-.. c:type:: struct debug_obj
+.. c:type:: debug_obj
 
     representaion of an tracked object
 
 
+.. _`debug_obj.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`debug_obj.members`:
 
 Members
 -------
@@ -50,16 +53,18 @@ Members
 
 
 
+
 .. _`debug_obj_descr`:
 
 struct debug_obj_descr
 ======================
 
-.. c:type:: struct debug_obj_descr
+.. c:type:: debug_obj_descr
 
     object type specific debug description structure
 
 
+.. _`debug_obj_descr.definition`:
 
 Definition
 ----------
@@ -77,6 +82,7 @@ Definition
   };
 
 
+.. _`debug_obj_descr.members`:
 
 Members
 -------

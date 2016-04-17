@@ -7,12 +7,10 @@ sunrpc
 .. toctree::
    :maxdepth: 1
 
-   clnt_c
-   rpcb_clnt_c
-   rpc_pipe_c
-   sched_c
-   socklib_c
-   stats_c
-   svc_xprt_c
-   xdr_c
-   xprt_c
+   addr_c
+   auth_c
+   backchannel_rqst_c
+   svc_c
+   svcsock_c
+   timer_c
+   auth_gss/index

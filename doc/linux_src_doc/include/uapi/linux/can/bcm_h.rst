@@ -4,16 +4,18 @@
 bcm.h
 =====
 
+
 .. _`bcm_msg_head`:
 
 struct bcm_msg_head
 ===================
 
-.. c:type:: struct bcm_msg_head
+.. c:type:: bcm_msg_head
 
     head of messages to/from the broadcast manager
 
 
+.. _`bcm_msg_head.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`bcm_msg_head.members`:
 
 Members
 -------

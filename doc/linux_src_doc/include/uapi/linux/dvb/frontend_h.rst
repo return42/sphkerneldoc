@@ -4,16 +4,36 @@
 frontend.h
 ==========
 
+
 .. _`fe_status`:
 
 enum fe_status
 ==============
 
-.. c:type:: enum fe_status
+.. c:type:: fe_status
 
     enumerates the possible frontend status
 
 
+.. _`fe_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum fe_status {
+      FE_HAS_SIGNAL,
+      FE_HAS_CARRIER,
+      FE_HAS_VITERBI,
+      FE_HAS_SYNC,
+      FE_HAS_LOCK,
+      FE_TIMEDOUT,
+      FE_REINIT
+    };
+
+
+.. _`fe_status.constants`:
 
 Constants
 ---------
@@ -46,11 +66,12 @@ Constants
 struct dtv_stats
 ================
 
-.. c:type:: struct dtv_stats
+.. c:type:: dtv_stats
 
     Used for reading a DTV status property
 
 
+.. _`dtv_stats.definition`:
 
 Definition
 ----------
@@ -63,6 +84,7 @@ Definition
   };
 
 
+.. _`dtv_stats.members`:
 
 Members
 -------
@@ -76,6 +98,9 @@ Members
 
 
 
+
+.. _`dtv_stats.description`:
+
 Description
 -----------
 
@@ -87,7 +112,15 @@ On such standards, up to 8 groups of statistics can be provided, one
 for each carrier group (called "layer" on ISDB).
 In order to be consistent with other delivery systems, the first
 value refers to the entire set of carriers ("global").
-dtv_status:scale should use the value FE_SCALE_NOT_AVAILABLE when
+
+
+
+.. _`dtv_stats.dtv_status`:
+
+dtv_status
+----------
+
+scale should use the value FE_SCALE_NOT_AVAILABLE when
 the value for the entire group of carriers or from one specific layer
 is not provided by the hardware.
 st.len should be filled with the latest filled status + 1.
@@ -105,12 +138,14 @@ In other words, for ISDB, those values should be filled like::
         u.st.len = 4;
 
 
+
 .. _`fe_tune_mode_oneshot`:
 
 FE_TUNE_MODE_ONESHOT
 ====================
 
 .. c:function:: FE_TUNE_MODE_ONESHOT ()
+
 
 
 .. _`fe_tune_mode_oneshot.description`:

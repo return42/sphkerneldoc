@@ -4,6 +4,7 @@
 intel_guc_loader.c
 ==================
 
+
 .. _`guc-specific-firmware-loader`:
 
 GuC-specific firmware loader
@@ -34,6 +35,7 @@ i915_guc_load_status will print out firmware loading status and scratch
 registers value.
 
 
+
 .. _`intel_guc_ucode_load`:
 
 intel_guc_ucode_load
@@ -47,6 +49,7 @@ intel_guc_ucode_load
         drm device
 
 
+
 .. _`intel_guc_ucode_load.description`:
 
 Description
@@ -58,7 +61,15 @@ The firmware image should have already been fetched into memory by the
 earlier call to :c:func:`intel_guc_ucode_init`, so here we need only check that
 is succeeded, and then transfer the image to the h/w.
 
-Return:        non-zero code on error
+
+
+.. _`intel_guc_ucode_load.return`:
+
+Return
+------
+
+non-zero code on error
+
 
 
 .. _`intel_guc_ucode_init`:
@@ -74,6 +85,7 @@ intel_guc_ucode_init
         drm device
 
 
+
 .. _`intel_guc_ucode_init.description`:
 
 Description
@@ -83,6 +95,7 @@ Called early during driver load, but after GEM is initialised.
 
 The firmware will be transferred to the GuC's memory later,
 when :c:func:`intel_guc_ucode_load` is called.
+
 
 
 .. _`intel_guc_ucode_fini`:

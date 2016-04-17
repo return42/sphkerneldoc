@@ -4,6 +4,7 @@
 info.c
 ======
 
+
 .. _`snd_info_get_line`:
 
 snd_info_get_line
@@ -23,6 +24,7 @@ snd_info_get_line
         the max. buffer size
 
 
+
 .. _`snd_info_get_line.description`:
 
 Description
@@ -30,7 +32,15 @@ Description
 
 Reads one line from the buffer and stores the string.
 
-Return: Zero if successful, or 1 if error or EOF.
+
+
+.. _`snd_info_get_line.return`:
+
+Return
+------
+
+Zero if successful, or 1 if error or EOF.
+
 
 
 .. _`snd_info_get_str`:
@@ -52,6 +62,7 @@ snd_info_get_str
         the max. length of token - 1
 
 
+
 .. _`snd_info_get_str.description`:
 
 Description
@@ -60,8 +71,16 @@ Description
 Parses the original string and copy a token to the given
 string buffer.
 
-Return: The updated pointer of the original string so that
+
+
+.. _`snd_info_get_str.return`:
+
+Return
+------
+
+The updated pointer of the original string so that
 it can be used for the next call.
+
 
 
 .. _`snd_info_create_module_entry`:
@@ -83,6 +102,7 @@ snd_info_create_module_entry
         the parent directory
 
 
+
 .. _`snd_info_create_module_entry.description`:
 
 Description
@@ -90,7 +110,15 @@ Description
 
 Creates a new info entry and assigns it to the given module.
 
-Return: The pointer of the new instance, or ``NULL`` on failure.
+
+
+.. _`snd_info_create_module_entry.return`:
+
+Return
+------
+
+The pointer of the new instance, or ``NULL`` on failure.
+
 
 
 .. _`snd_info_create_card_entry`:
@@ -112,6 +140,7 @@ snd_info_create_card_entry
         the parent directory
 
 
+
 .. _`snd_info_create_card_entry.description`:
 
 Description
@@ -119,7 +148,15 @@ Description
 
 Creates a new info entry and assigns it to the given card.
 
-Return: The pointer of the new instance, or ``NULL`` on failure.
+
+
+.. _`snd_info_create_card_entry.return`:
+
+Return
+------
+
+The pointer of the new instance, or ``NULL`` on failure.
+
 
 
 .. _`snd_info_free_entry`:
@@ -135,12 +172,14 @@ snd_info_free_entry
         the info entry
 
 
+
 .. _`snd_info_free_entry.description`:
 
 Description
 -----------
 
 Releases the info entry.
+
 
 
 .. _`snd_info_register`:
@@ -156,6 +195,7 @@ snd_info_register
         the info entry
 
 
+
 .. _`snd_info_register.description`:
 
 Description
@@ -163,5 +203,12 @@ Description
 
 Registers the proc info entry.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_info_register.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
 

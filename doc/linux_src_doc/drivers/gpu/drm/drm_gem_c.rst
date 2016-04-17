@@ -4,6 +4,7 @@
 drm_gem.c
 =========
 
+
 .. _`drm_gem_init`:
 
 drm_gem_init
@@ -15,6 +16,7 @@ drm_gem_init
 
     :param struct drm_device \*dev:
         drm_devic structure to initialize
+
 
 
 .. _`drm_gem_object_init`:
@@ -36,6 +38,7 @@ drm_gem_object_init
         object size
 
 
+
 .. _`drm_gem_object_init.description`:
 
 Description
@@ -43,6 +46,7 @@ Description
 
 Initialize an already allocated GEM object of the specified size with
 shmfs backing store.
+
 
 
 .. _`drm_gem_private_object_init`:
@@ -64,6 +68,7 @@ drm_gem_private_object_init
         object size
 
 
+
 .. _`drm_gem_private_object_init.description`:
 
 Description
@@ -72,6 +77,7 @@ Description
 Initialize an already allocated GEM object of the specified size with
 no GEM provided backing store. Instead the caller is responsible for
 backing the object and handling it.
+
 
 
 .. _`drm_gem_object_handle_free`:
@@ -87,6 +93,7 @@ drm_gem_object_handle_free
         GEM object to clean up.
 
 
+
 .. _`drm_gem_object_handle_free.description`:
 
 Description
@@ -97,6 +104,7 @@ Called after the last handle to the object has been closed
 Removes any name for the object. Note that this must be
 called before drm_gem_object_free or we'll be touching
 freed memory
+
 
 
 .. _`drm_gem_handle_delete`:
@@ -115,6 +123,7 @@ drm_gem_handle_delete
         userspace handle to delete
 
 
+
 .. _`drm_gem_handle_delete.description`:
 
 Description
@@ -123,6 +132,7 @@ Description
 Removes the GEM handle from the ``filp`` lookup table which has been added with
 :c:func:`drm_gem_handle_create`. If this is the last handle also cleans up linked
 resources like GEM names.
+
 
 
 .. _`drm_gem_dumb_destroy`:
@@ -144,6 +154,7 @@ drm_gem_dumb_destroy
         the dumb handle to remove
 
 
+
 .. _`drm_gem_dumb_destroy.description`:
 
 Description
@@ -151,6 +162,7 @@ Description
 
 This implements the ->dumb_destroy kms driver callback for drivers which use
 gem to manage their backing storage.
+
 
 
 .. _`drm_gem_handle_create_tail`:
@@ -172,6 +184,7 @@ drm_gem_handle_create_tail
         pointer to return the created handle to the caller
 
 
+
 .. _`drm_gem_handle_create_tail.description`:
 
 Description
@@ -184,6 +197,7 @@ importing an object from either an flink name or a dma-buf.
 Handles must be release again through :c:func:`drm_gem_handle_delete`. This is done
 when userspace closes ``file_priv`` for all attached handles, or through the
 GEM_CLOSE ioctl for individual handles.
+
 
 
 .. _`drm_gem_handle_create`:
@@ -205,6 +219,7 @@ drm_gem_handle_create
         pionter to return the created handle to the caller
 
 
+
 .. _`drm_gem_handle_create.description`:
 
 Description
@@ -213,6 +228,7 @@ Description
 Create a handle for this object. This adds a handle reference
 to the object, which includes a regular reference count. Callers
 will likely want to dereference the object afterwards.
+
 
 
 .. _`drm_gem_free_mmap_offset`:
@@ -228,12 +244,14 @@ drm_gem_free_mmap_offset
         obj in question
 
 
+
 .. _`drm_gem_free_mmap_offset.description`:
 
 Description
 -----------
 
 This routine frees fake offsets allocated by :c:func:`drm_gem_create_mmap_offset`.
+
 
 
 .. _`drm_gem_create_mmap_offset_size`:
@@ -252,6 +270,7 @@ drm_gem_create_mmap_offset_size
         the virtual size
 
 
+
 .. _`drm_gem_create_mmap_offset_size.description`:
 
 Description
@@ -267,6 +286,7 @@ the virtual size differs from the physical size (ie. obj->size).  Otherwise
 just use :c:func:`drm_gem_create_mmap_offset`.
 
 
+
 .. _`drm_gem_create_mmap_offset`:
 
 drm_gem_create_mmap_offset
@@ -278,6 +298,7 @@ drm_gem_create_mmap_offset
 
     :param struct drm_gem_object \*obj:
         obj in question
+
 
 
 .. _`drm_gem_create_mmap_offset.description`:
@@ -293,6 +314,7 @@ structures.
 This routine allocates and attaches a fake offset for ``obj``\ .
 
 
+
 .. _`drm_gem_get_pages`:
 
 drm_gem_get_pages
@@ -304,6 +326,7 @@ drm_gem_get_pages
 
     :param struct drm_gem_object \*obj:
         obj in question
+
 
 
 .. _`drm_gem_get_pages.description`:
@@ -328,6 +351,7 @@ after :c:func:`drm_gem_init_object` via :c:func:`mapping_set_gfp_mask`. shmem-co
 to keep pages in the required zone during swap-in.
 
 
+
 .. _`drm_gem_put_pages`:
 
 drm_gem_put_pages
@@ -350,6 +374,7 @@ drm_gem_put_pages
         if true, the pages will be marked as accessed
 
 
+
 .. _`drm_gem_object_lookup`:
 
 drm_gem_object_lookup
@@ -369,15 +394,16 @@ drm_gem_object_lookup
         userspace handle
 
 
-.. _`drm_gem_object_lookup.description`:
 
-Description
------------
+.. _`drm_gem_object_lookup.returns`:
 
-Returns:
+Returns
+-------
+
 
 A reference to the object named by the handle if such exists on ``filp``\ , NULL
 otherwise.
+
 
 
 .. _`drm_gem_close_ioctl`:
@@ -399,12 +425,14 @@ drm_gem_close_ioctl
         drm file-private structure
 
 
+
 .. _`drm_gem_close_ioctl.description`:
 
 Description
 -----------
 
 Releases the handle to an mm object.
+
 
 
 .. _`drm_gem_flink_ioctl`:
@@ -426,6 +454,7 @@ drm_gem_flink_ioctl
         drm file-private structure
 
 
+
 .. _`drm_gem_flink_ioctl.description`:
 
 Description
@@ -435,6 +464,7 @@ Create a global name for an object, returning the name.
 
 Note that the name does not hold a reference; when the object
 is freed, the name goes away.
+
 
 
 .. _`drm_gem_open_ioctl`:
@@ -456,6 +486,7 @@ drm_gem_open_ioctl
         drm file-private structure
 
 
+
 .. _`drm_gem_open_ioctl.description`:
 
 Description
@@ -465,6 +496,7 @@ Open an object using the global name, returning a handle and the size.
 
 This handle (of course) holds a reference to the object, so the object
 will not go away until the handle is deleted.
+
 
 
 .. _`drm_gem_open`:
@@ -483,6 +515,7 @@ drm_gem_open
         drm file-private structure to set up
 
 
+
 .. _`drm_gem_open.description`:
 
 Description
@@ -490,6 +523,7 @@ Description
 
 Called at device open time, sets up the structure for handling refcounting
 of mm objects.
+
 
 
 .. _`drm_gem_release`:
@@ -508,6 +542,7 @@ drm_gem_release
         drm file-private structure to clean up
 
 
+
 .. _`drm_gem_release.description`:
 
 Description
@@ -516,6 +551,7 @@ Description
 Called at close time when the filp is going away.
 
 Releases any remaining references on objects by this filp.
+
 
 
 .. _`drm_gem_object_free`:
@@ -531,6 +567,7 @@ drm_gem_object_free
         kref of the object to free
 
 
+
 .. _`drm_gem_object_free.description`:
 
 Description
@@ -540,6 +577,7 @@ Called after the last reference to the object has been lost.
 Must be called holding struct_ mutex
 
 Frees the object
+
 
 
 .. _`drm_gem_vm_open`:
@@ -555,6 +593,7 @@ drm_gem_vm_open
         VM area structure
 
 
+
 .. _`drm_gem_vm_open.description`:
 
 Description
@@ -562,6 +601,7 @@ Description
 
 This function implements the #vm_operations_struct :c:func:`open` callback for GEM
 drivers. This must be used together with :c:func:`drm_gem_vm_close`.
+
 
 
 .. _`drm_gem_vm_close`:
@@ -577,6 +617,7 @@ drm_gem_vm_close
         VM area structure
 
 
+
 .. _`drm_gem_vm_close.description`:
 
 Description
@@ -584,6 +625,7 @@ Description
 
 This function implements the #vm_operations_struct :c:func:`close` callback for GEM
 drivers. This must be used together with :c:func:`drm_gem_vm_open`.
+
 
 
 .. _`drm_gem_mmap_obj`:
@@ -603,6 +645,7 @@ drm_gem_mmap_obj
 
     :param struct vm_area_struct \*vma:
         VMA for the area to be mapped
+
 
 
 .. _`drm_gem_mmap_obj.description`:
@@ -629,6 +672,7 @@ Return 0 or success or -EINVAL if the object size is smaller than the VMA
 size, or if no gem_vm_ops are provided.
 
 
+
 .. _`drm_gem_mmap`:
 
 drm_gem_mmap
@@ -643,6 +687,7 @@ drm_gem_mmap
 
     :param struct vm_area_struct \*vma:
         VMA for the area to be mapped
+
 
 
 .. _`drm_gem_mmap.description`:

@@ -1,0 +1,70 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+==========
+tps65218.c
+==========
+
+
+.. _`tps65218_reg_read`:
+
+tps65218_reg_read
+=================
+
+.. c:function:: int tps65218_reg_read (struct tps65218 *tps, unsigned int reg, unsigned int *val)
+
+    :param struct tps65218 \*tps:
+        Device to read from.
+
+    :param unsigned int reg:
+        Register to read.
+
+    :param unsigned int \*val:
+        Contians the value
+
+
+
+.. _`tps65218_reg_write`:
+
+tps65218_reg_write
+==================
+
+.. c:function:: int tps65218_reg_write (struct tps65218 *tps, unsigned int reg, unsigned int val, unsigned int level)
+
+    :param struct tps65218 \*tps:
+
+        *undescribed*
+
+    :param unsigned int reg:
+        Register to write to.
+
+    :param unsigned int val:
+        Value to write.
+
+    :param unsigned int level:
+        Password protected level
+
+
+
+.. _`tps65218_update_bits`:
+
+tps65218_update_bits
+====================
+
+.. c:function:: int tps65218_update_bits (struct tps65218 *tps, unsigned int reg, unsigned int mask, unsigned int val, unsigned int level)
+
+    :param struct tps65218 \*tps:
+
+        *undescribed*
+
+    :param unsigned int reg:
+        Register to read-write to.
+
+    :param unsigned int mask:
+        Mask.
+
+    :param unsigned int val:
+        Value to write.
+
+    :param unsigned int level:
+        Password protected level
+

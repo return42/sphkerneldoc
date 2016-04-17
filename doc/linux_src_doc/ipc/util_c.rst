@@ -4,6 +4,7 @@
 util.c
 ======
 
+
 .. _`ipc_init`:
 
 ipc_init
@@ -17,6 +18,7 @@ ipc_init
         no arguments
 
 
+
 .. _`ipc_init.description`:
 
 Description
@@ -27,8 +29,17 @@ The various sysv ipc resources (semaphores, messages and shared
 memory) are initialised.
 
 A callback routine is registered into the memory hotplug notifier
-chain: since msgmni scales to lowmem this callback routine will be
+
+
+
+.. _`ipc_init.chain`:
+
+chain
+-----
+
+since msgmni scales to lowmem this callback routine will be
 called upon successful memory add / remove to recompute msmgni.
+
 
 
 .. _`ipc_init_ids`:
@@ -44,6 +55,7 @@ ipc_init_ids
         ipc identifier set
 
 
+
 .. _`ipc_init_ids.description`:
 
 Description
@@ -51,6 +63,7 @@ Description
 
 Set up the sequence range to use for the ipc identifier range (limited
 below IPCMNI) then initialise the ids idr.
+
 
 
 .. _`ipc_init_proc_interface`:
@@ -75,6 +88,7 @@ ipc_init_proc_interface
         show routine.
 
 
+
 .. _`ipc_findkey`:
 
 ipc_findkey
@@ -91,6 +105,7 @@ ipc_findkey
         key to find
 
 
+
 .. _`ipc_findkey.description`:
 
 Description
@@ -100,6 +115,7 @@ Returns the locked pointer to the ipc structure if found or NULL
 otherwise. If key is found ipc points to the owning ipc structure
 
 Called with ipc_ids.rwsem held.
+
 
 
 .. _`ipc_get_maxid`:
@@ -115,12 +131,14 @@ ipc_get_maxid
         ipc identifier set
 
 
+
 .. _`ipc_get_maxid.description`:
 
 Description
 -----------
 
 Called with ipc_ids.rwsem held.
+
 
 
 .. _`ipc_addid`:
@@ -142,6 +160,7 @@ ipc_addid
         limit for the number of used ids
 
 
+
 .. _`ipc_addid.description`:
 
 Description
@@ -153,6 +172,7 @@ is returned. The 'new' entry is returned in a locked state on success.
 On failure the entry is not locked and a negative err-code is returned.
 
 Called with writer ipc_ids.rwsem held.
+
 
 
 .. _`ipcget_new`:
@@ -177,6 +197,7 @@ ipcget_new
         its parameters
 
 
+
 .. _`ipcget_new.description`:
 
 Description
@@ -184,6 +205,7 @@ Description
 
 This routine is called by sys_msgget, :c:func:`sys_semget` and :c:func:`sys_shmget`
 when the key is IPC_PRIVATE.
+
 
 
 .. _`ipc_check_perms`:
@@ -208,6 +230,7 @@ ipc_check_perms
         its parameters
 
 
+
 .. _`ipc_check_perms.description`:
 
 Description
@@ -220,6 +243,7 @@ ds IDR.
 On success, the ipc id is returned.
 
 It is called with ipc_ids.rwsem and ipcp->lock held.
+
 
 
 .. _`ipcget_public`:
@@ -244,6 +268,7 @@ ipcget_public
         its parameters
 
 
+
 .. _`ipcget_public.description`:
 
 Description
@@ -255,6 +280,7 @@ It adds a new entry if the key is not found and does some permission
 / security checkings if the key is found.
 
 On success, the ipc id is returned.
+
 
 
 .. _`ipc_rmid`:
@@ -273,6 +299,7 @@ ipc_rmid
         ipc perm structure containing the identifier to remove
 
 
+
 .. _`ipc_rmid.description`:
 
 Description
@@ -280,6 +307,7 @@ Description
 
 ipc_ids.rwsem (as a writer) and the spinlock for this ID are held
 before this function is called, and remain locked on the exit.
+
 
 
 .. _`ipc_alloc`:
@@ -295,6 +323,7 @@ ipc_alloc
         size desired
 
 
+
 .. _`ipc_alloc.description`:
 
 Description
@@ -302,6 +331,7 @@ Description
 
 Allocate memory from the appropriate pools and return a pointer to it.
 NULL is returned if the allocation fails
+
 
 
 .. _`ipc_free`:
@@ -317,12 +347,14 @@ ipc_free
         pointer returned by ipc_alloc
 
 
+
 .. _`ipc_free.description`:
 
 Description
 -----------
 
 Free a block created with :c:func:`ipc_alloc`.
+
 
 
 .. _`ipc_rcu_alloc`:
@@ -338,6 +370,7 @@ ipc_rcu_alloc
         size desired
 
 
+
 .. _`ipc_rcu_alloc.description`:
 
 Description
@@ -345,6 +378,7 @@ Description
 
 Allocate memory for the rcu header structure +  the object.
 Returns the pointer to the object or NULL upon failure.
+
 
 
 .. _`ipcperms`:
@@ -366,6 +400,7 @@ ipcperms
         desired permission set
 
 
+
 .. _`ipcperms.description`:
 
 Description
@@ -375,6 +410,7 @@ Check user, group, other permissions for access
 to ipc resources. return 0 if allowed
 
 ``flag`` will most probably be 0 or S_...UGO from <linux/stat.h>
+
 
 
 .. _`kernel_to_ipc64_perm`:
@@ -393,6 +429,7 @@ kernel_to_ipc64_perm
         new style ipc permissions
 
 
+
 .. _`kernel_to_ipc64_perm.description`:
 
 Description
@@ -400,6 +437,7 @@ Description
 
 Turn the kernel object ``in`` into a set of permissions descriptions
 for returning to userspace (\ ``out``\ ).
+
 
 
 .. _`ipc64_perm_to_ipc_perm`:
@@ -418,6 +456,7 @@ ipc64_perm_to_ipc_perm
         old style ipc permissions
 
 
+
 .. _`ipc64_perm_to_ipc_perm.description`:
 
 Description
@@ -425,6 +464,7 @@ Description
 
 Turn the new style permissions object ``in`` into a compatibility
 object and store it into the ``out`` pointer.
+
 
 
 .. _`ipc_obtain_object_idr`:
@@ -441,6 +481,7 @@ ipc_obtain_object_idr
         ipc id to look for
 
 
+
 .. _`ipc_obtain_object_idr.description`:
 
 Description
@@ -450,6 +491,7 @@ Look for an id in the ipc ids idr and return associated ipc object.
 
 Call inside the RCU critical section.
 The ipc object is \*not\* locked on exit.
+
 
 
 .. _`ipc_lock`:
@@ -468,6 +510,7 @@ ipc_lock
         ipc id to look for
 
 
+
 .. _`ipc_lock.description`:
 
 Description
@@ -476,6 +519,7 @@ Description
 Look for an id in the ipc ids idr and lock the associated ipc object.
 
 The ipc object is locked on successful exit.
+
 
 
 .. _`ipc_obtain_object_check`:
@@ -492,6 +536,7 @@ ipc_obtain_object_check
         ipc id to look for
 
 
+
 .. _`ipc_obtain_object_check.description`:
 
 Description
@@ -504,6 +549,7 @@ Call inside the RCU critical section.
 The ipc object is \*not\* locked on exit.
 
 
+
 .. _`ipcget`:
 
 ipcget
@@ -511,7 +557,7 @@ ipcget
 
 .. c:function:: int ipcget (struct ipc_namespace *ns, struct ipc_ids *ids, const struct ipc_ops *ops, struct ipc_params *params)
 
-    Common sys_*get() code
+    Common sys\_\\*get() code
 
     :param struct ipc_namespace \*ns:
         namespace
@@ -527,12 +573,14 @@ ipcget
         the parameters needed by the previous operations.
 
 
+
 .. _`ipcget.description`:
 
 Description
 -----------
 
 Common routine called by :c:func:`sys_msgget`, :c:func:`sys_semget` and :c:func:`sys_shmget`.
+
 
 
 .. _`ipc_update_perm`:
@@ -549,6 +597,7 @@ ipc_update_perm
 
     :param struct kern_ipc_perm \*out:
         the permission of the ipc to set.
+
 
 
 .. _`ipcctl_pre_down_nolock`:
@@ -579,6 +628,7 @@ ipcctl_pre_down_nolock
         one extra permission parameter used by msq
 
 
+
 .. _`ipcctl_pre_down_nolock.description`:
 
 Description
@@ -587,11 +637,13 @@ Description
 This function does some common audit and permissions check for some IPC_XXX
 cmd and is called from semctl_down, shmctl_down and msgctl_down.
 It must be called without any lock held and
-- retrieves the ipc with the given id in the given table.
-- performs some audit and permission check, depending on the given cmd
-- returns a pointer to the ipc object or otherwise, the corresponding error.
+
+ - retrieves the ipc with the given id in the given table.
+ - performs some audit and permission check, depending on the given cmd
+ - returns a pointer to the ipc object or otherwise, the corresponding error.
 
 Call holding the both the rwsem and the rcu read lock.
+
 
 
 .. _`ipc_parse_version`:
@@ -605,6 +657,7 @@ ipc_parse_version
 
     :param int \*cmd:
         pointer to command
+
 
 
 .. _`ipc_parse_version.description`:

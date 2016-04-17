@@ -4,16 +4,18 @@
 cio.h
 =====
 
+
 .. _`ccw1`:
 
 struct ccw1
 ===========
 
-.. c:type:: struct ccw1
+.. c:type:: ccw1
 
     channel command word
 
 
+.. _`ccw1.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`ccw1.members`:
 
 Members
 -------
@@ -46,6 +49,9 @@ Members
 
 
 
+
+.. _`ccw1.description`:
+
 Description
 -----------
 
@@ -54,16 +60,18 @@ operations with the device or the control unit. Only Format-1 channel
 command words are supported.
 
 
+
 .. _`erw`:
 
 struct erw
 ==========
 
-.. c:type:: struct erw
+.. c:type:: erw
 
     extended report word
 
 
+.. _`erw.definition`:
 
 Definition
 ----------
@@ -84,6 +92,7 @@ Definition
   };
 
 
+.. _`erw.members`:
 
 Members
 -------
@@ -120,16 +129,18 @@ Members
 
 
 
+
 .. _`erw_eadm`:
 
 struct erw_eadm
 ===============
 
-.. c:type:: struct erw_eadm
+.. c:type:: erw_eadm
 
     EADM Subchannel extended report word
 
 
+.. _`erw_eadm.definition`:
 
 Definition
 ----------
@@ -142,6 +153,7 @@ Definition
   };
 
 
+.. _`erw_eadm.members`:
 
 Members
 -------
@@ -154,16 +166,18 @@ Members
 
 
 
+
 .. _`sublog`:
 
 struct sublog
 =============
 
-.. c:type:: struct sublog
+.. c:type:: sublog
 
     subchannel logout area
 
 
+.. _`sublog.definition`:
 
 Definition
 ----------
@@ -185,6 +199,7 @@ Definition
   };
 
 
+.. _`sublog.members`:
 
 Members
 -------
@@ -224,16 +239,18 @@ Members
 
 
 
+
 .. _`esw0`:
 
 struct esw0
 ===========
 
-.. c:type:: struct esw0
+.. c:type:: esw0
 
     Format 0 Extended Status Word (ESW)
 
 
+.. _`esw0.definition`:
 
 Definition
 ----------
@@ -248,6 +265,7 @@ Definition
   };
 
 
+.. _`esw0.members`:
 
 Members
 -------
@@ -266,16 +284,18 @@ Members
 
 
 
+
 .. _`esw1`:
 
 struct esw1
 ===========
 
-.. c:type:: struct esw1
+.. c:type:: esw1
 
     Format 1 Extended Status Word (ESW)
 
 
+.. _`esw1.definition`:
 
 Definition
 ----------
@@ -291,6 +311,7 @@ Definition
   };
 
 
+.. _`esw1.members`:
 
 Members
 -------
@@ -312,16 +333,18 @@ Members
 
 
 
+
 .. _`esw2`:
 
 struct esw2
 ===========
 
-.. c:type:: struct esw2
+.. c:type:: esw2
 
     Format 2 Extended Status Word (ESW)
 
 
+.. _`esw2.definition`:
 
 Definition
 ----------
@@ -337,6 +360,7 @@ Definition
   };
 
 
+.. _`esw2.members`:
 
 Members
 -------
@@ -358,16 +382,18 @@ Members
 
 
 
+
 .. _`esw3`:
 
 struct esw3
 ===========
 
-.. c:type:: struct esw3
+.. c:type:: esw3
 
     Format 3 Extended Status Word (ESW)
 
 
+.. _`esw3.definition`:
 
 Definition
 ----------
@@ -383,6 +409,7 @@ Definition
   };
 
 
+.. _`esw3.members`:
 
 Members
 -------
@@ -404,16 +431,18 @@ Members
 
 
 
+
 .. _`esw_eadm`:
 
 struct esw_eadm
 ===============
 
-.. c:type:: struct esw_eadm
+.. c:type:: esw_eadm
 
     EADM Subchannel Extended Status Word (ESW)
 
 
+.. _`esw_eadm.definition`:
 
 Definition
 ----------
@@ -426,6 +455,7 @@ Definition
   };
 
 
+.. _`esw_eadm.members`:
 
 Members
 -------
@@ -438,16 +468,18 @@ Members
 
 
 
+
 .. _`irb`:
 
 struct irb
 ==========
 
-.. c:type:: struct irb
+.. c:type:: irb
 
     interruption response block
 
 
+.. _`irb.definition`:
 
 Definition
 ----------
@@ -461,6 +493,7 @@ Definition
   };
 
 
+.. _`irb.members`:
 
 Members
 -------
@@ -476,6 +509,9 @@ Members
 
 
 
+
+.. _`irb.description`:
+
 Description
 -----------
 
@@ -489,16 +525,18 @@ For unsolicited interrupts, the irb is passed as-is (expect for sense data,
 if applicable).
 
 
+
 .. _`ciw`:
 
 struct ciw
 ==========
 
-.. c:type:: struct ciw
+.. c:type:: ciw
 
     command information word (CIW) layout
 
 
+.. _`ciw.definition`:
 
 Definition
 ----------
@@ -514,6 +552,7 @@ Definition
   };
 
 
+.. _`ciw.members`:
 
 Members
 -------
@@ -535,16 +574,18 @@ Members
 
 
 
+
 .. _`ccw_dev_id`:
 
 struct ccw_dev_id
 =================
 
-.. c:type:: struct ccw_dev_id
+.. c:type:: ccw_dev_id
 
     unique identifier for ccw devices
 
 
+.. _`ccw_dev_id.definition`:
 
 Definition
 ----------
@@ -557,6 +598,7 @@ Definition
   };
 
 
+.. _`ccw_dev_id.members`:
 
 Members
 -------
@@ -569,6 +611,9 @@ Members
 
 
 
+
+.. _`ccw_dev_id.description`:
+
 Description
 -----------
 
@@ -577,6 +622,7 @@ hardware identifies a device by its device number and its subchannel,
 which is in turn identified by its id. In order to get a unique identifier
 for ccw devices across subchannel sets, ``struct`` ccw_dev_id has been
 introduced.
+
 
 
 .. _`ccw_dev_id_is_equal`:
@@ -593,14 +639,26 @@ ccw_dev_id_is_equal
 
     :param struct ccw_dev_id \*dev_id2:
         another ccw_dev_id
-        Returns::
 
-         ``1`` if the two structures are equal field-by-field,
-         ``0`` if not.
 
-        Context::
 
-         any
+.. _`ccw_dev_id_is_equal.returns`:
+
+Returns
+-------
+
+``1`` if the two structures are equal field-by-field,
+``0`` if not.
+
+
+
+.. _`ccw_dev_id_is_equal.context`:
+
+Context
+-------
+
+any
+
 
 
 .. _`pathmask_to_pos`:

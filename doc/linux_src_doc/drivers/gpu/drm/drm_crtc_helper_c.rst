@@ -4,6 +4,7 @@
 drm_crtc_helper.c
 =================
 
+
 .. _`overview`:
 
 overview
@@ -37,6 +38,7 @@ all other modesetting helpers. See the documentation for struct
 :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`.
 
 
+
 .. _`drm_helper_move_panel_connectors_to_head`:
 
 drm_helper_move_panel_connectors_to_head
@@ -50,6 +52,7 @@ drm_helper_move_panel_connectors_to_head
         drm device to operate on
 
 
+
 .. _`drm_helper_move_panel_connectors_to_head.description`:
 
 Description
@@ -60,6 +63,7 @@ display, where it's supposed to display e.g. the login screen. For
 laptops, this should be the main panel. Use this function to sort all
 (eDP/LVDS) panels to the front of the connector list, instead of
 painstakingly trying to initialize them in the right order.
+
 
 
 .. _`drm_helper_encoder_in_use`:
@@ -75,6 +79,7 @@ drm_helper_encoder_in_use
         encoder to check
 
 
+
 .. _`drm_helper_encoder_in_use.description`:
 
 Description
@@ -84,8 +89,15 @@ Checks whether ``encoder`` is with the current mode setting output configuration
 in use by any connector. This doesn't mean that it is actually enabled since
 the DPMS state is tracked separately.
 
-Returns:
+
+
+.. _`drm_helper_encoder_in_use.returns`:
+
+Returns
+-------
+
 True if ``encoder`` is used, false otherwise.
+
 
 
 .. _`drm_helper_crtc_in_use`:
@@ -101,6 +113,7 @@ drm_helper_crtc_in_use
         CRTC to check
 
 
+
 .. _`drm_helper_crtc_in_use.description`:
 
 Description
@@ -110,8 +123,15 @@ Checks whether ``crtc`` is with the current mode setting output configuration
 in use by any connector. This doesn't mean that it is actually enabled since
 the DPMS state is tracked separately.
 
-Returns:
+
+
+.. _`drm_helper_crtc_in_use.returns`:
+
+Returns
+-------
+
 True if ``crtc`` is used, false otherwise.
+
 
 
 .. _`drm_helper_disable_unused_functions`:
@@ -127,6 +147,7 @@ drm_helper_disable_unused_functions
         DRM device
 
 
+
 .. _`drm_helper_disable_unused_functions.description`:
 
 Description
@@ -138,7 +159,13 @@ disconnected connectors. Then it will disable all unused encoders and CRTCs
 either by calling their disable callback if available or by calling their
 dpms callback with DRM_MODE_DPMS_OFF.
 
-NOTE:
+
+
+.. _`drm_helper_disable_unused_functions.note`:
+
+NOTE
+----
+
 
 This function is part of the legacy modeset helper library and will cause
 major confusion with atomic drivers. This is because atomic helpers guarantee
@@ -146,6 +173,7 @@ to never call ->:c:func:`disable` hooks on a disabled function, or ->:c:func:`en
 on an enabled functions. :c:func:`drm_helper_disable_unused_functions` on the other
 hand throws such guarantees into the wind and calls disable hooks
 unconditionally on unused functions.
+
 
 
 .. _`drm_crtc_helper_set_mode`:
@@ -173,6 +201,7 @@ drm_crtc_helper_set_mode
         old framebuffer, for cleanup
 
 
+
 .. _`drm_crtc_helper_set_mode.description`:
 
 Description
@@ -187,8 +216,15 @@ panel fitter or dither attributes. It is also called by the
 :c:func:`drm_crtc_helper_set_config` helper function to drive the mode setting
 sequence.
 
-Returns:
+
+
+.. _`drm_crtc_helper_set_mode.returns`:
+
+Returns
+-------
+
 True if the mode was set successfully, false otherwise.
+
 
 
 .. _`drm_crtc_helper_set_config`:
@@ -202,6 +238,7 @@ drm_crtc_helper_set_config
 
     :param struct drm_mode_set \*set:
         mode set configuration
+
 
 
 .. _`drm_crtc_helper_set_config.description`:
@@ -240,8 +277,15 @@ This function is deprecated.  New drivers must implement atomic modeset
 support, for which this function is unsuitable. Instead drivers should use
 :c:func:`drm_atomic_helper_set_config`.
 
-Returns:
+
+
+.. _`drm_crtc_helper_set_config.returns`:
+
+Returns
+-------
+
 Returns 0 on success, negative errno numbers on failure.
+
 
 
 .. _`drm_helper_connector_dpms`:
@@ -258,6 +302,7 @@ drm_helper_connector_dpms
 
     :param int mode:
         DPMS mode
+
 
 
 .. _`drm_helper_connector_dpms.description`:
@@ -278,8 +323,15 @@ This function is deprecated.  New drivers must implement atomic modeset
 support, for which this function is unsuitable. Instead drivers should use
 :c:func:`drm_atomic_helper_connector_dpms`.
 
-Returns:
+
+
+.. _`drm_helper_connector_dpms.returns`:
+
+Returns
+-------
+
 Always returns 0.
+
 
 
 .. _`drm_helper_mode_fill_fb_struct`:
@@ -298,6 +350,7 @@ drm_helper_mode_fill_fb_struct
         metadata from the userspace fb creation request
 
 
+
 .. _`drm_helper_mode_fill_fb_struct.description`:
 
 Description
@@ -305,6 +358,7 @@ Description
 
 This helper can be used in a drivers fb_create callback to pre-fill the fb's
 metadata fields.
+
 
 
 .. _`drm_helper_resume_force_mode`:
@@ -318,6 +372,7 @@ drm_helper_resume_force_mode
 
     :param struct drm_device \*dev:
         drm_device which should be restored
+
 
 
 .. _`drm_helper_resume_force_mode.description`:
@@ -344,8 +399,15 @@ need to use their own restore logic.
 This function is deprecated. New drivers should implement atomic mode-
 setting and use the atomic suspend/resume helpers.
 
-See also:
+
+
+.. _`drm_helper_resume_force_mode.see-also`:
+
+See also
+--------
+
 :c:func:`drm_atomic_helper_suspend`, :c:func:`drm_atomic_helper_resume`
+
 
 
 .. _`drm_helper_crtc_mode_set`:
@@ -376,6 +438,7 @@ drm_helper_crtc_mode_set
         previous framebuffer
 
 
+
 .. _`drm_helper_crtc_mode_set.description`:
 
 Description
@@ -388,6 +451,7 @@ to set up the CRTC.
 
 This is a transitional helper useful for converting drivers to the atomic
 interfaces.
+
 
 
 .. _`drm_helper_crtc_mode_set_base`:
@@ -412,6 +476,7 @@ drm_helper_crtc_mode_set_base
         previous framebuffer
 
 
+
 .. _`drm_helper_crtc_mode_set_base.description`:
 
 Description
@@ -423,6 +488,7 @@ functions for the primary plane.
 
 This is a transitional helper useful for converting drivers to the atomic
 interfaces.
+
 
 
 .. _`drm_helper_crtc_enable_color_mgmt`:
@@ -442,6 +508,7 @@ drm_helper_crtc_enable_color_mgmt
 
     :param int gamma_lut_size:
         the size of the gamma lut (after CSC)
+
 
 
 .. _`drm_helper_crtc_enable_color_mgmt.description`:

@@ -8,6 +8,7 @@ sh
    :maxdepth: 1
 
    boards/index
+   drivers/index
    include/index
    kernel/index
    mm/index

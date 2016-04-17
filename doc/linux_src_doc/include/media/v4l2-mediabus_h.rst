@@ -4,16 +4,32 @@
 v4l2-mediabus.h
 ===============
 
+
 .. _`v4l2_mbus_type`:
 
 enum v4l2_mbus_type
 ===================
 
-.. c:type:: enum v4l2_mbus_type
+.. c:type:: v4l2_mbus_type
 
     media bus type
 
 
+.. _`v4l2_mbus_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_mbus_type {
+      V4L2_MBUS_PARALLEL,
+      V4L2_MBUS_BT656,
+      V4L2_MBUS_CSI2
+    };
+
+
+.. _`v4l2_mbus_type.constants`:
 
 Constants
 ---------
@@ -34,11 +50,12 @@ Constants
 struct v4l2_mbus_config
 =======================
 
-.. c:type:: struct v4l2_mbus_config
+.. c:type:: v4l2_mbus_config
 
     media bus configuration
 
 
+.. _`v4l2_mbus_config.definition`:
 
 Definition
 ----------
@@ -51,6 +68,7 @@ Definition
   };
 
 
+.. _`v4l2_mbus_config.members`:
 
 Members
 -------

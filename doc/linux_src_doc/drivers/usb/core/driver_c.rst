@@ -4,6 +4,7 @@
 driver.c
 ========
 
+
 .. _`usb_driver_claim_interface`:
 
 usb_driver_claim_interface
@@ -24,6 +25,7 @@ usb_driver_claim_interface
         driver data associated with that interface
 
 
+
 .. _`usb_driver_claim_interface.description`:
 
 Description
@@ -42,7 +44,15 @@ Callers must own the device lock, so driver :c:func:`probe` entries don't need
 extra locking, but other call contexts may need to explicitly claim that
 lock.
 
-Return: 0 on success.
+
+
+.. _`usb_driver_claim_interface.return`:
+
+Return
+------
+
+0 on success.
+
 
 
 .. _`usb_driver_release_interface`:
@@ -61,6 +71,7 @@ usb_driver_release_interface
         the interface from which it will be unbound
 
 
+
 .. _`usb_driver_release_interface.description`:
 
 Description
@@ -74,6 +85,7 @@ This call is synchronous, and may not be used in an interrupt context.
 Callers must own the device lock, so driver :c:func:`disconnect` entries don't
 need extra locking, but other call contexts may need to explicitly claim
 that lock.
+
 
 
 .. _`usb_match_id`:
@@ -92,6 +104,7 @@ usb_match_id
         array of usb_device_id structures, terminated by zero entry
 
 
+
 .. _`usb_match_id.description`:
 
 Description
@@ -105,9 +118,22 @@ but some layered driver frameworks use it directly.
 These device tables are exported with MODULE_DEVICE_TABLE, through
 modutils, to support the driver loading functionality of USB hotplugging.
 
-Return: The first matching usb_device_id, or ``NULL``\ .
 
-What Matches:
+
+.. _`usb_match_id.return`:
+
+Return
+------
+
+The first matching usb_device_id, or ``NULL``\ .
+
+
+
+.. _`usb_match_id.what-matches`:
+
+What Matches
+------------
+
 
 The "match_flags" element in a usb_device_id controls which
 members are used.  If the corresponding bit is set, the
@@ -122,7 +148,13 @@ only a nonzero "driver_info" field.  If you do this, the USB device
 driver's :c:func:`probe` routine should use additional intelligence to
 decide whether to bind to the specified interface.
 
-What Makes Good usb_device_id Tables:
+
+
+.. _`usb_match_id.what-makes-good-usb_device_id-tables`:
+
+What Makes Good usb_device_id Tables
+------------------------------------
+
 
 The match algorithm is very simple, so that intelligence in
 driver selection must come from smart driver id records.
@@ -166,6 +198,7 @@ without vendor and product IDs; or specify a protocol without
 its associated class and subclass.
 
 
+
 .. _`usb_register_device_driver`:
 
 usb_register_device_driver
@@ -182,6 +215,7 @@ usb_register_device_driver
         module owner of this driver.
 
 
+
 .. _`usb_register_device_driver.description`:
 
 Description
@@ -191,7 +225,15 @@ Registers a USB device driver with the USB core.  The list of
 unattached devices will be rescanned whenever a new driver is
 added, allowing the new driver to attach to any recognized devices.
 
-Return: A negative error code on failure and 0 on success.
+
+
+.. _`usb_register_device_driver.return`:
+
+Return
+------
+
+A negative error code on failure and 0 on success.
+
 
 
 .. _`usb_deregister_device_driver`:
@@ -205,7 +247,16 @@ usb_deregister_device_driver
 
     :param struct usb_device_driver \*udriver:
         USB operations of the device driver to unregister
-        Context: must be able to sleep
+
+
+
+.. _`usb_deregister_device_driver.context`:
+
+Context
+-------
+
+must be able to sleep
+
 
 
 .. _`usb_deregister_device_driver.description`:
@@ -214,6 +265,7 @@ Description
 -----------
 
 Unlinks the specified driver from the internal USB driver list.
+
 
 
 .. _`usb_register_driver`:
@@ -235,6 +287,7 @@ usb_register_driver
         module name string
 
 
+
 .. _`usb_register_driver.description`:
 
 Description
@@ -244,11 +297,26 @@ Registers a USB interface driver with the USB core.  The list of
 unattached interfaces will be rescanned whenever a new driver is
 added, allowing the new driver to attach to any recognized interfaces.
 
-Return: A negative error code on failure and 0 on success.
 
-NOTE: if you want your driver to use the USB major number, you must call
+
+.. _`usb_register_driver.return`:
+
+Return
+------
+
+A negative error code on failure and 0 on success.
+
+
+
+.. _`usb_register_driver.note`:
+
+NOTE
+----
+
+if you want your driver to use the USB major number, you must call
 :c:func:`usb_register_dev` to enable that functionality.  This function no longer
 takes care of that.
+
 
 
 .. _`usb_deregister`:
@@ -262,7 +330,16 @@ usb_deregister
 
     :param struct usb_driver \*driver:
         USB operations of the interface driver to unregister
-        Context: must be able to sleep
+
+
+
+.. _`usb_deregister.context`:
+
+Context
+-------
+
+must be able to sleep
+
 
 
 .. _`usb_deregister.description`:
@@ -272,9 +349,17 @@ Description
 
 Unlinks the specified driver from the internal USB driver list.
 
-NOTE: If you called :c:func:`usb_register_dev`, you still need to call
+
+
+.. _`usb_deregister.note`:
+
+NOTE
+----
+
+If you called :c:func:`usb_register_dev`, you still need to call
 :c:func:`usb_deregister_dev` to clean up your driver's allocated minor numbers,
 this * call will no longer do it for you.
+
 
 
 .. _`usb_suspend_both`:
@@ -291,6 +376,7 @@ usb_suspend_both
 
     :param pm_message_t msg:
         Power Management message describing this state transition
+
 
 
 .. _`usb_suspend_both.description`:
@@ -318,7 +404,15 @@ unpredictable times.
 
 This routine can run only in process context.
 
-Return: 0 if the suspend succeeded.
+
+
+.. _`usb_suspend_both.return`:
+
+Return
+------
+
+0 if the suspend succeeded.
+
 
 
 .. _`usb_resume_both`:
@@ -335,6 +429,7 @@ usb_resume_both
 
     :param pm_message_t msg:
         Power Management message describing this state transition
+
 
 
 .. _`usb_resume_both.description`:
@@ -355,7 +450,15 @@ unpredictable times.
 
 This routine can run only in process context.
 
-Return: 0 on success.
+
+
+.. _`usb_resume_both.return`:
+
+Return
+------
+
+0 on success.
+
 
 
 .. _`usb_enable_autosuspend`:
@@ -371,6 +474,7 @@ usb_enable_autosuspend
         the USB device which may be autosuspended
 
 
+
 .. _`usb_enable_autosuspend.description`:
 
 Description
@@ -381,6 +485,7 @@ take place until the autosuspend_delay has elapsed and all the other
 necessary conditions are satisfied.
 
 The caller must hold ``udev``\ 's device lock.
+
 
 
 .. _`usb_disable_autosuspend`:
@@ -396,6 +501,7 @@ usb_disable_autosuspend
         the USB device which may not be autosuspended
 
 
+
 .. _`usb_disable_autosuspend.description`:
 
 Description
@@ -405,6 +511,7 @@ This routine prevents ``udev`` from being autosuspended and wakes it up
 if it is already autosuspended.
 
 The caller must hold ``udev``\ 's device lock.
+
 
 
 .. _`usb_autosuspend_device`:
@@ -418,6 +525,7 @@ usb_autosuspend_device
 
     :param struct usb_device \*udev:
         the usb_device to autosuspend
+
 
 
 .. _`usb_autosuspend_device.description`:
@@ -438,6 +546,7 @@ The caller must hold ``udev``\ 's device lock.
 This routine can run only in process context.
 
 
+
 .. _`usb_autoresume_device`:
 
 usb_autoresume_device
@@ -449,6 +558,7 @@ usb_autoresume_device
 
     :param struct usb_device \*udev:
         the usb_device to autoresume
+
 
 
 .. _`usb_autoresume_device.description`:
@@ -470,7 +580,15 @@ The caller must hold ``udev``\ 's device lock.
 
 This routine can run only in process context.
 
-Return: 0 on success. A negative error code otherwise.
+
+
+.. _`usb_autoresume_device.return`:
+
+Return
+------
+
+0 on success. A negative error code otherwise.
+
 
 
 .. _`usb_autopm_put_interface`:
@@ -484,6 +602,7 @@ usb_autopm_put_interface
 
     :param struct usb_interface \*intf:
         the usb_interface whose counter should be decremented
+
 
 
 .. _`usb_autopm_put_interface.description`:
@@ -503,6 +622,7 @@ attempt may fail (see :c:func:`autosuspend_check`).
 This routine can run only in process context.
 
 
+
 .. _`usb_autopm_put_interface_async`:
 
 usb_autopm_put_interface_async
@@ -514,6 +634,7 @@ usb_autopm_put_interface_async
 
     :param struct usb_interface \*intf:
         the usb_interface whose counter should be decremented
+
 
 
 .. _`usb_autopm_put_interface_async.description`:
@@ -533,6 +654,7 @@ handler, if no more URBs were pending.
 This routine can run in atomic context.
 
 
+
 .. _`usb_autopm_put_interface_no_suspend`:
 
 usb_autopm_put_interface_no_suspend
@@ -546,6 +668,7 @@ usb_autopm_put_interface_no_suspend
         the usb_interface whose counter should be decremented
 
 
+
 .. _`usb_autopm_put_interface_no_suspend.description`:
 
 Description
@@ -555,6 +678,7 @@ This routine decrements ``intf``\ 's usage counter but does not carry out an
 autosuspend.
 
 This routine can run in atomic context.
+
 
 
 .. _`usb_autopm_get_interface`:
@@ -568,6 +692,7 @@ usb_autopm_get_interface
 
     :param struct usb_interface \*intf:
         the usb_interface whose counter should be incremented
+
 
 
 .. _`usb_autopm_get_interface.description`:
@@ -588,7 +713,15 @@ However if the autoresume fails then the counter is re-decremented.
 
 This routine can run only in process context.
 
-Return: 0 on success.
+
+
+.. _`usb_autopm_get_interface.return`:
+
+Return
+------
+
+0 on success.
+
 
 
 .. _`usb_autopm_get_interface_async`:
@@ -602,6 +735,7 @@ usb_autopm_get_interface_async
 
     :param struct usb_interface \*intf:
         the usb_interface whose counter should be incremented
+
 
 
 .. _`usb_autopm_get_interface_async.description`:
@@ -620,7 +754,15 @@ resumed.
 
 This routine can run in atomic context.
 
-Return: 0 on success. A negative error code otherwise.
+
+
+.. _`usb_autopm_get_interface_async.return`:
+
+Return
+------
+
+0 on success. A negative error code otherwise.
+
 
 
 .. _`usb_autopm_get_interface_no_resume`:
@@ -634,6 +776,7 @@ usb_autopm_get_interface_no_resume
 
     :param struct usb_interface \*intf:
         the usb_interface whose counter should be incremented
+
 
 
 .. _`usb_autopm_get_interface_no_resume.description`:

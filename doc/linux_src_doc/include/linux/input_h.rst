@@ -4,16 +4,18 @@
 input.h
 =======
 
+
 .. _`input_value`:
 
 struct input_value
 ==================
 
-.. c:type:: struct input_value
+.. c:type:: input_value
 
     input value representation
 
 
+.. _`input_value.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`input_value.members`:
 
 Members
 -------
@@ -42,16 +45,18 @@ Members
 
 
 
+
 .. _`input_dev`:
 
 struct input_dev
 ================
 
-.. c:type:: struct input_dev
+.. c:type:: input_dev
 
     represents an input device
 
 
+.. _`input_dev.definition`:
 
 Definition
 ----------
@@ -108,6 +113,7 @@ Definition
   };
 
 
+.. _`input_dev.members`:
 
 Members
 -------
@@ -285,16 +291,18 @@ Members
 
 
 
+
 .. _`input_handler`:
 
 struct input_handler
 ====================
 
-.. c:type:: struct input_handler
+.. c:type:: input_handler
 
     implements one of interfaces for input devices
 
 
+.. _`input_handler.definition`:
 
 Definition
 ----------
@@ -319,6 +327,7 @@ Definition
   };
 
 
+.. _`input_handler.members`:
 
 Members
 -------
@@ -377,6 +386,9 @@ Members
 
 
 
+
+.. _`input_handler.description`:
+
 Description
 -----------
 
@@ -394,16 +406,18 @@ Note that input core serializes calls to :c:func:`connect` and :c:func:`disconne
 methods.
 
 
+
 .. _`input_handle`:
 
 struct input_handle
 ===================
 
-.. c:type:: struct input_handle
+.. c:type:: input_handle
 
     links input device with an input handler
 
 
+.. _`input_handle.definition`:
 
 Definition
 ----------
@@ -421,6 +435,7 @@ Definition
   };
 
 
+.. _`input_handle.members`:
 
 Members
 -------
@@ -450,6 +465,7 @@ Members
 
 
 
+
 .. _`input_set_events_per_packet`:
 
 input_set_events_per_packet
@@ -466,6 +482,7 @@ input_set_events_per_packet
         the average number of events between calls to :c:func:`input_sync`
 
 
+
 .. _`input_set_events_per_packet.description`:
 
 Description
@@ -477,16 +494,18 @@ to set up an appropriate buffer size for the event stream, in order
 to minimize information loss.
 
 
+
 .. _`ff_device`:
 
 struct ff_device
 ================
 
-.. c:type:: struct ff_device
+.. c:type:: ff_device
 
     force-feedback part of an input device
 
 
+.. _`ff_device.definition`:
 
 Definition
 ----------
@@ -509,6 +528,7 @@ Definition
   };
 
 
+.. _`ff_device.members`:
 
 Members
 -------
@@ -553,6 +573,9 @@ Members
     an effect gets closed the effect is automatically erased
 
 
+
+
+.. _`ff_device.description`:
 
 Description
 -----------

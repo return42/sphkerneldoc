@@ -7,8 +7,5 @@ rapidio
 .. toctree::
    :maxdepth: 1
 
-   rio-access_c
-   rio_c
-   rio-driver_c
    rio-scan_c
    rio-sysfs_c

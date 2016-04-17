@@ -7,11 +7,12 @@ core
 .. toctree::
    :maxdepth: 1
 
-   datagram_c
-   dev_c
-   filter_c
-   gen_estimator_c
-   gen_stats_c
-   skbuff_c
-   sock_c
-   stream_c
+   dev_addr_lists_c
+   dev_ioctl_c
+   devlink_c
+   flow_dissector_c
+   netevent_c
+   net_namespace_c
+   rtnetlink_c
+   sock_reuseport_c
+   utils_c

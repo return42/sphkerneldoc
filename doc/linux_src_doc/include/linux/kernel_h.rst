@@ -4,6 +4,7 @@
 kernel.h
 ========
 
+
 .. _`upper_32_bits`:
 
 upper_32_bits
@@ -17,6 +18,7 @@ upper_32_bits
         the number we're accessing
 
 
+
 .. _`upper_32_bits.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 A basic shift-right of a 64- or 32-bit quantity.  Use this to suppress
 the "right shift count >= width of type" warning when that quantity is
 32-bits.
+
 
 
 .. _`lower_32_bits`:
@@ -40,6 +43,7 @@ lower_32_bits
         the number we're accessing
 
 
+
 .. _`might_sleep`:
 
 might_sleep
@@ -48,6 +52,7 @@ might_sleep
 .. c:function:: might_sleep ()
 
     annotation for functions that can sleep
+
 
 
 .. _`might_sleep.description`:
@@ -64,6 +69,7 @@ be bitten later when the calling function happens to sleep when it is not
 supposed to.
 
 
+
 .. _`abs`:
 
 abs
@@ -74,18 +80,19 @@ abs
     return absolute value of an argument
 
     :param x:
-        the value.  If it is unsigned type, it is converted to signed type first.::
+        the value.  If it is unsigned type, it is converted to signed type first.
+        char is treated as if it was signed (regardless of whether it really is)
+        but the macro's return type is preserved as char.
 
-            char is treated as if it was signed (regardless of whether it really is)
-            but the macro's return type is preserved as char.
 
 
-.. _`abs.description`:
+.. _`abs.return`:
 
-Description
------------
+Return
+------
 
-Return: an absolute value of x.
+an absolute value of x.
+
 
 
 .. _`reciprocal_scale`:
@@ -104,6 +111,7 @@ reciprocal_scale
         right open interval endpoint
 
 
+
 .. _`reciprocal_scale.description`:
 
 Description
@@ -116,7 +124,15 @@ ep_ro elements, for example. Think of it as sort of modulus, only that
 the result isn't that of modulo. ;) Note that if initial input is a
 small value, then result will return 0.
 
-Return: a result based on val in interval [0, ep_ro).
+
+
+.. _`reciprocal_scale.return`:
+
+Return
+------
+
+a result based on val in interval [0, ep_ro).
+
 
 
 .. _`kstrtoul`:
@@ -144,6 +160,7 @@ kstrtoul
         Where to write the result of the conversion on success.
 
 
+
 .. _`kstrtoul.description`:
 
 Description
@@ -152,6 +169,7 @@ Description
 Returns 0 on success, -ERANGE on overflow and -EINVAL on parsing error.
 Used as a replacement for the obsolete simple_strtoull. Return code must
 be checked.
+
 
 
 .. _`kstrtol`:
@@ -179,6 +197,7 @@ kstrtol
         Where to write the result of the conversion on success.
 
 
+
 .. _`kstrtol.description`:
 
 Description
@@ -187,6 +206,7 @@ Description
 Returns 0 on success, -ERANGE on overflow and -EINVAL on parsing error.
 Used as a replacement for the obsolete simple_strtoull. Return code must
 be checked.
+
 
 
 .. _`trace_printk`:
@@ -205,12 +225,13 @@ trace_printk
         variable arguments
 
 
-.. _`trace_printk.description`:
 
-Description
------------
+.. _`trace_printk.note`:
 
-Note: __trace_printk is an internal function for trace_printk and
+Note
+----
+
+__trace_printk is an internal function for trace_printk and
 the ``ip`` is passed in via the trace_printk macro.
 
 This function allows a kernel developer to debug fast path sections
@@ -236,6 +257,7 @@ and then take its size and compare to 3. If it's bigger, use
 let gcc optimize the rest.
 
 
+
 .. _`trace_puts`:
 
 trace_puts
@@ -249,12 +271,13 @@ trace_puts
         the string to record
 
 
-.. _`trace_puts.description`:
 
-Description
------------
+.. _`trace_puts.note`:
 
-Note: __trace_bputs is an internal function for trace_puts and
+Note
+----
+
+__trace_bputs is an internal function for trace_puts and
 the ``ip`` is passed in via the trace_puts macro.
 
 This is similar to :c:func:`trace_printk` but is made for those really fast
@@ -271,9 +294,17 @@ Please refrain from leaving trace_puts scattered around in
 your code. (Extra memory is used for special buffers that are
 allocated when :c:func:`trace_puts` is used)
 
-Returns: 0 if nothing was written, positive # if string was.::
+
+
+.. _`trace_puts.returns`:
+
+Returns
+-------
+
+0 if nothing was written, positive # if string was.
 
  (1 when __trace_bputs is used, strlen(str) when __trace_puts is used)
+
 
 
 .. _`min_not_zero`:
@@ -290,6 +321,7 @@ min_not_zero
 
     :param y:
         value2
+
 
 
 .. _`clamp`:
@@ -311,6 +343,7 @@ clamp
         highest allowable value
 
 
+
 .. _`clamp.description`:
 
 Description
@@ -318,6 +351,7 @@ Description
 
 This macro does strict typechecking of lo/hi to make sure they are of the
 same type as val.  See the unnecessary pointer comparisons.
+
 
 
 .. _`clamp_t`:
@@ -342,6 +376,7 @@ clamp_t
         maximum allowable value
 
 
+
 .. _`clamp_t.description`:
 
 Description
@@ -349,6 +384,7 @@ Description
 
 This macro does no typechecking and uses temporary variables of type
 'type' to make all the comparisons.
+
 
 
 .. _`clamp_val`:
@@ -370,6 +406,7 @@ clamp_val
         maximum allowable value
 
 
+
 .. _`clamp_val.description`:
 
 Description
@@ -379,6 +416,7 @@ This macro does no typechecking and uses temporary variables of whatever
 type the input argument 'val' is.  This is useful when val is an unsigned
 type and min and max are literals that will otherwise be assigned a signed
 integer type.
+
 
 
 .. _`container_of`:

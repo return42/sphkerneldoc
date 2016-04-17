@@ -4,6 +4,7 @@
 drm_rect.h
 ==========
 
+
 .. _`rect-utils`:
 
 rect utils
@@ -13,16 +14,18 @@ Utility functions to help manage rectangular areas for
 clipping, scaling, etc. calculations.
 
 
+
 .. _`drm_rect`:
 
 struct drm_rect
 ===============
 
-.. c:type:: struct drm_rect
+.. c:type:: drm_rect
 
     two dimensional rectangle
 
 
+.. _`drm_rect.definition`:
 
 Definition
 ----------
@@ -37,6 +40,7 @@ Definition
   };
 
 
+.. _`drm_rect.members`:
 
 Members
 -------
@@ -52,6 +56,7 @@ Members
 
 :``y2``:
     vertical ending coordinate (exclusive)
+
 
 
 
@@ -74,6 +79,7 @@ drm_rect_adjust_size
         vertical adjustment
 
 
+
 .. _`drm_rect_adjust_size.description`:
 
 Description
@@ -84,6 +90,7 @@ and by ``dh`` in the vertical direction, while keeping the center
 of ``r`` stationary.
 
 Positive ``dw`` and ``dh`` increase the size, negative values decrease it.
+
 
 
 .. _`drm_rect_translate`:
@@ -105,6 +112,7 @@ drm_rect_translate
         vertical translation
 
 
+
 .. _`drm_rect_translate.description`:
 
 Description
@@ -112,6 +120,7 @@ Description
 
 Move rectangle ``r`` by ``dx`` in the horizontal direction,
 and by ``dy`` in the vertical direction.
+
 
 
 .. _`drm_rect_downscale`:
@@ -133,12 +142,14 @@ drm_rect_downscale
         vertical downscale factor
 
 
+
 .. _`drm_rect_downscale.description`:
 
 Description
 -----------
 
 Divide the coordinates of rectangle ``r`` by ``horz`` and ``vert``\ .
+
 
 
 .. _`drm_rect_width`:
@@ -154,13 +165,14 @@ drm_rect_width
         rectangle whose width is returned
 
 
-.. _`drm_rect_width.description`:
 
-Description
------------
+.. _`drm_rect_width.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 The width of the rectangle.
+
 
 
 .. _`drm_rect_height`:
@@ -176,13 +188,14 @@ drm_rect_height
         rectangle whose height is returned
 
 
-.. _`drm_rect_height.description`:
 
-Description
------------
+.. _`drm_rect_height.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 The height of the rectangle.
+
 
 
 .. _`drm_rect_visible`:
@@ -198,13 +211,14 @@ drm_rect_visible
         rectangle whose visibility is returned
 
 
-.. _`drm_rect_visible.description`:
 
-Description
------------
+.. _`drm_rect_visible.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 ``true`` if the rectangle is visible, ``false`` otherwise.
+
 
 
 .. _`drm_rect_equals`:
@@ -223,11 +237,11 @@ drm_rect_equals
         second rectangle
 
 
-.. _`drm_rect_equals.description`:
 
-Description
------------
+.. _`drm_rect_equals.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 ``true`` if the rectangles are equal, ``false`` otherwise.
 

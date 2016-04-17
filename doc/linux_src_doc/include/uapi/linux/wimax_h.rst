@@ -4,16 +4,39 @@
 wimax.h
 =======
 
+
 .. _`wimax_st`:
 
 enum wimax_st
 =============
 
-.. c:type:: enum wimax_st
+.. c:type:: wimax_st
 
     The different states of a WiMAX device
 
 
+.. _`wimax_st.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wimax_st {
+      __WIMAX_ST_NULL,
+      WIMAX_ST_DOWN,
+      __WIMAX_ST_QUIESCING,
+      WIMAX_ST_UNINITIALIZED,
+      WIMAX_ST_RADIO_OFF,
+      WIMAX_ST_READY,
+      WIMAX_ST_SCANNING,
+      WIMAX_ST_CONNECTING,
+      WIMAX_ST_CONNECTED,
+      __WIMAX_ST_INVALID
+    };
+
+
+.. _`wimax_st.constants`:
 
 Constants
 ---------
@@ -78,10 +101,11 @@ Constants
     maximum numeric value of states.
 
 
+.. _`wimax_st.description`:
+
 Description
 -----------
 
-Description:
 
 Transitions from one state to another one are atomic and can only
 be caused in kernel space with :c:func:`wimax_state_change`. To read the

@@ -4,6 +4,7 @@
 pcm.h
 =====
 
+
 .. _`snd_pcm_stream_linked`:
 
 snd_pcm_stream_linked
@@ -17,12 +18,14 @@ snd_pcm_stream_linked
         substream to check
 
 
+
 .. _`snd_pcm_stream_linked.description`:
 
 Description
 -----------
 
 Returns true if the given substream is being linked with others.
+
 
 
 .. _`snd_pcm_stream_lock_irqsave`:
@@ -41,6 +44,7 @@ snd_pcm_stream_lock_irqsave
         irq flags
 
 
+
 .. _`snd_pcm_stream_lock_irqsave.description`:
 
 Description
@@ -49,6 +53,7 @@ Description
 This locks the PCM stream like :c:func:`snd_pcm_stream_lock` but with the local
 IRQ (only when nonatomic is false).  In nonatomic case, this is identical
 as :c:func:`snd_pcm_stream_lock`.
+
 
 
 .. _`snd_pcm_group_for_each_entry`:
@@ -67,6 +72,7 @@ snd_pcm_group_for_each_entry
         the substream
 
 
+
 .. _`snd_pcm_group_for_each_entry.description`:
 
 Description
@@ -75,6 +81,7 @@ Description
 Iterate over the all linked substreams to the given ``substream``\ .
 When ``substream`` isn't linked with any others, this gives returns ``substream``
 itself once.
+
 
 
 .. _`snd_pcm_running`:
@@ -90,6 +97,7 @@ snd_pcm_running
         substream to check
 
 
+
 .. _`snd_pcm_running.description`:
 
 Description
@@ -97,6 +105,7 @@ Description
 
 Returns true if the given substream is in the state RUNNING, or in the
 state DRAINING for playback.
+
 
 
 .. _`bytes_to_samples`:
@@ -115,6 +124,7 @@ bytes_to_samples
         size in bytes
 
 
+
 .. _`bytes_to_frames`:
 
 bytes_to_frames
@@ -129,6 +139,7 @@ bytes_to_frames
 
     :param ssize_t size:
         size in bytes
+
 
 
 .. _`samples_to_bytes`:
@@ -147,6 +158,7 @@ samples_to_bytes
         size in samples
 
 
+
 .. _`frames_to_bytes`:
 
 frames_to_bytes
@@ -161,6 +173,7 @@ frames_to_bytes
 
     :param snd_pcm_sframes_t size:
         size in frames
+
 
 
 .. _`frame_aligned`:
@@ -179,6 +192,7 @@ frame_aligned
         size in bytes
 
 
+
 .. _`snd_pcm_lib_buffer_bytes`:
 
 snd_pcm_lib_buffer_bytes
@@ -190,6 +204,7 @@ snd_pcm_lib_buffer_bytes
 
     :param struct snd_pcm_substream \*substream:
         PCM substream
+
 
 
 .. _`snd_pcm_lib_period_bytes`:
@@ -205,6 +220,7 @@ snd_pcm_lib_period_bytes
         PCM substream
 
 
+
 .. _`snd_pcm_playback_avail`:
 
 snd_pcm_playback_avail
@@ -218,12 +234,14 @@ snd_pcm_playback_avail
         PCM runtime instance
 
 
+
 .. _`snd_pcm_playback_avail.description`:
 
 Description
 -----------
 
 Result is between 0 ... (boundary - 1)
+
 
 
 .. _`snd_pcm_capture_avail`:
@@ -239,12 +257,14 @@ snd_pcm_capture_avail
         PCM runtime instance
 
 
+
 .. _`snd_pcm_capture_avail.description`:
 
 Description
 -----------
 
 Result is between 0 ... (boundary - 1)
+
 
 
 .. _`snd_pcm_playback_hw_avail`:
@@ -260,6 +280,7 @@ snd_pcm_playback_hw_avail
         PCM runtime instance
 
 
+
 .. _`snd_pcm_capture_hw_avail`:
 
 snd_pcm_capture_hw_avail
@@ -271,6 +292,7 @@ snd_pcm_capture_hw_avail
 
     :param struct snd_pcm_runtime \*runtime:
         PCM runtime instance
+
 
 
 .. _`snd_pcm_playback_ready`:
@@ -286,6 +308,7 @@ snd_pcm_playback_ready
         the pcm substream instance
 
 
+
 .. _`snd_pcm_playback_ready.description`:
 
 Description
@@ -293,7 +316,15 @@ Description
 
 Checks whether enough free space is available on the playback buffer.
 
-Return: Non-zero if available, or zero if not.
+
+
+.. _`snd_pcm_playback_ready.return`:
+
+Return
+------
+
+Non-zero if available, or zero if not.
+
 
 
 .. _`snd_pcm_capture_ready`:
@@ -309,6 +340,7 @@ snd_pcm_capture_ready
         the pcm substream instance
 
 
+
 .. _`snd_pcm_capture_ready.description`:
 
 Description
@@ -316,7 +348,15 @@ Description
 
 Checks whether enough capture data is available on the capture buffer.
 
-Return: Non-zero if available, or zero if not.
+
+
+.. _`snd_pcm_capture_ready.return`:
+
+Return
+------
+
+Non-zero if available, or zero if not.
+
 
 
 .. _`snd_pcm_playback_data`:
@@ -332,6 +372,7 @@ snd_pcm_playback_data
         the pcm substream instance
 
 
+
 .. _`snd_pcm_playback_data.description`:
 
 Description
@@ -339,8 +380,16 @@ Description
 
 Checks whether any data exists on the playback buffer.
 
-Return: Non-zero if any data exists, or zero if not. If stop_threshold
+
+
+.. _`snd_pcm_playback_data.return`:
+
+Return
+------
+
+Non-zero if any data exists, or zero if not. If stop_threshold
 is bigger or equal to boundary, then this function returns always non-zero.
+
 
 
 .. _`snd_pcm_playback_empty`:
@@ -356,6 +405,7 @@ snd_pcm_playback_empty
         the pcm substream instance
 
 
+
 .. _`snd_pcm_playback_empty.description`:
 
 Description
@@ -363,7 +413,15 @@ Description
 
 Checks whether the playback buffer is empty.
 
-Return: Non-zero if empty, or zero if not.
+
+
+.. _`snd_pcm_playback_empty.return`:
+
+Return
+------
+
+Non-zero if empty, or zero if not.
+
 
 
 .. _`snd_pcm_capture_empty`:
@@ -379,6 +437,7 @@ snd_pcm_capture_empty
         the pcm substream instance
 
 
+
 .. _`snd_pcm_capture_empty.description`:
 
 Description
@@ -386,7 +445,15 @@ Description
 
 Checks whether the capture buffer is empty.
 
-Return: Non-zero if empty, or zero if not.
+
+
+.. _`snd_pcm_capture_empty.return`:
+
+Return
+------
+
+Non-zero if empty, or zero if not.
+
 
 
 .. _`snd_pcm_trigger_done`:
@@ -405,6 +472,7 @@ snd_pcm_trigger_done
         the linked master substream
 
 
+
 .. _`snd_pcm_trigger_done.description`:
 
 Description
@@ -420,6 +488,7 @@ The trigger_master mark is cleared at timestamp updates at the end
 of trigger operations.
 
 
+
 .. _`params_channels`:
 
 params_channels
@@ -431,6 +500,7 @@ params_channels
 
     :param const struct snd_pcm_hw_params \*p:
         hw params
+
 
 
 .. _`params_rate`:
@@ -446,6 +516,7 @@ params_rate
         hw params
 
 
+
 .. _`params_period_size`:
 
 params_period_size
@@ -457,6 +528,7 @@ params_period_size
 
     :param const struct snd_pcm_hw_params \*p:
         hw params
+
 
 
 .. _`params_periods`:
@@ -472,6 +544,7 @@ params_periods
         hw params
 
 
+
 .. _`params_buffer_size`:
 
 params_buffer_size
@@ -485,6 +558,7 @@ params_buffer_size
         hw params
 
 
+
 .. _`params_buffer_bytes`:
 
 params_buffer_bytes
@@ -496,6 +570,7 @@ params_buffer_bytes
 
     :param const struct snd_pcm_hw_params \*p:
         hw params
+
 
 
 .. _`snd_pcm_hw_constraint_single`:
@@ -517,13 +592,15 @@ snd_pcm_hw_constraint_single
         The value to constrain to
 
 
-.. _`snd_pcm_hw_constraint_single.description`:
 
-Description
------------
+.. _`snd_pcm_hw_constraint_single.return`:
 
-Return: Positive if the value is changed, zero if it's not changed, or a
+Return
+------
+
+Positive if the value is changed, zero if it's not changed, or a
 negative error code.
+
 
 
 .. _`snd_pcm_format_cpu_endian`:
@@ -539,13 +616,15 @@ snd_pcm_format_cpu_endian
         the format to check
 
 
-.. _`snd_pcm_format_cpu_endian.description`:
 
-Description
------------
+.. _`snd_pcm_format_cpu_endian.return`:
 
-Return: 1 if the given PCM format is CPU-endian, 0 if
+Return
+------
+
+1 if the given PCM format is CPU-endian, 0 if
 opposite, or a negative error code if endian not specified.
+
 
 
 .. _`snd_pcm_set_runtime_buffer`:
@@ -564,6 +643,7 @@ snd_pcm_set_runtime_buffer
         the buffer information, NULL to clear
 
 
+
 .. _`snd_pcm_set_runtime_buffer.description`:
 
 Description
@@ -571,6 +651,7 @@ Description
 
 Copy the buffer information to runtime->dma_buffer when ``bufp`` is non-NULL.
 Otherwise it clears the current buffer information.
+
 
 
 .. _`snd_pcm_gettime`:
@@ -589,6 +670,7 @@ snd_pcm_gettime
         timespec to fill
 
 
+
 .. _`snd_pcm_lib_alloc_vmalloc_buffer`:
 
 snd_pcm_lib_alloc_vmalloc_buffer
@@ -605,6 +687,7 @@ snd_pcm_lib_alloc_vmalloc_buffer
         the requested buffer size, in bytes
 
 
+
 .. _`snd_pcm_lib_alloc_vmalloc_buffer.description`:
 
 Description
@@ -614,8 +697,16 @@ Allocates the PCM substream buffer using :c:func:`vmalloc`, i.e., the memory is
 contiguous in kernel virtual space, but not in physical memory.  Use this
 if the buffer is accessed by kernel code but not by device DMA.
 
-Return: 1 if the buffer was changed, 0 if not changed, or a negative error
+
+
+.. _`snd_pcm_lib_alloc_vmalloc_buffer.return`:
+
+Return
+------
+
+1 if the buffer was changed, 0 if not changed, or a negative error
 code.
+
 
 
 .. _`snd_pcm_lib_alloc_vmalloc_32_buffer`:
@@ -634,6 +725,7 @@ snd_pcm_lib_alloc_vmalloc_32_buffer
         the requested buffer size, in bytes
 
 
+
 .. _`snd_pcm_lib_alloc_vmalloc_32_buffer.description`:
 
 Description
@@ -642,8 +734,16 @@ Description
 This function works like :c:func:`snd_pcm_lib_alloc_vmalloc_buffer`, but uses
 :c:func:`vmalloc_32`, i.e., the pages are allocated from 32-bit-addressable memory.
 
-Return: 1 if the buffer was changed, 0 if not changed, or a negative error
+
+
+.. _`snd_pcm_lib_alloc_vmalloc_32_buffer.return`:
+
+Return
+------
+
+1 if the buffer was changed, 0 if not changed, or a negative error
 code.
+
 
 
 .. _`snd_pcm_sgbuf_get_addr`:
@@ -662,6 +762,7 @@ snd_pcm_sgbuf_get_addr
         byte offset
 
 
+
 .. _`snd_pcm_sgbuf_get_ptr`:
 
 snd_pcm_sgbuf_get_ptr
@@ -676,6 +777,7 @@ snd_pcm_sgbuf_get_ptr
 
     :param unsigned int ofs:
         byte offset
+
 
 
 .. _`snd_pcm_sgbuf_get_chunk_size`:
@@ -697,6 +799,7 @@ snd_pcm_sgbuf_get_chunk_size
         byte size to examine
 
 
+
 .. _`snd_pcm_mmap_data_open`:
 
 snd_pcm_mmap_data_open
@@ -710,12 +813,14 @@ snd_pcm_mmap_data_open
         VMA
 
 
+
 .. _`snd_pcm_mmap_data_open.description`:
 
 Description
 -----------
 
 PCM mmap callback should handle this counter properly
+
 
 
 .. _`snd_pcm_mmap_data_close`:
@@ -731,12 +836,14 @@ snd_pcm_mmap_data_close
         VMA
 
 
+
 .. _`snd_pcm_mmap_data_close.description`:
 
 Description
 -----------
 
 PCM mmap callback should handle this counter properly
+
 
 
 .. _`snd_pcm_limit_isa_dma_size`:
@@ -755,6 +862,7 @@ snd_pcm_limit_isa_dma_size
         pointer to store the max size
 
 
+
 .. _`snd_pcm_stream_str`:
 
 snd_pcm_stream_str
@@ -768,12 +876,14 @@ snd_pcm_stream_str
         the pcm substream instance
 
 
-.. _`snd_pcm_stream_str.description`:
 
-Description
------------
+.. _`snd_pcm_stream_str.return`:
 
-Return: A string naming the direction of the stream.
+Return
+------
+
+A string naming the direction of the stream.
+
 
 
 .. _`snd_pcm_chmap_substream`:
@@ -790,6 +900,7 @@ snd_pcm_chmap_substream
 
     :param unsigned int idx:
         the substream number index
+
 
 
 .. _`pcm_format_to_bits`:

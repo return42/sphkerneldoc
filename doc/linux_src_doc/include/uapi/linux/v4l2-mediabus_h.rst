@@ -4,16 +4,18 @@
 v4l2-mediabus.h
 ===============
 
+
 .. _`v4l2_mbus_framefmt`:
 
 struct v4l2_mbus_framefmt
 =========================
 
-.. c:type:: struct v4l2_mbus_framefmt
+.. c:type:: v4l2_mbus_framefmt
 
     frame format on the media bus
 
 
+.. _`v4l2_mbus_framefmt.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`v4l2_mbus_framefmt.members`:
 
 Members
 -------

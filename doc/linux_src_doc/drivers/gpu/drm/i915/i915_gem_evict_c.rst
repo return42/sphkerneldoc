@@ -4,6 +4,7 @@
 i915_gem_evict.c
 ================
 
+
 .. _`i915_gem_evict_something`:
 
 i915_gem_evict_something
@@ -38,6 +39,7 @@ i915_gem_evict_something
         additional flags to control the eviction algorithm
 
 
+
 .. _`i915_gem_evict_something.description`:
 
 Description
@@ -53,8 +55,16 @@ Since this function is only used to free up virtual address space it only
 ignores pinned vmas, and not object where the backing storage itself is
 pinned. Hence obj->pages_pin_count does not protect against eviction.
 
-To clarify: This is for freeing up virtual address space, not for freeing
+
+
+.. _`i915_gem_evict_something.to-clarify`:
+
+To clarify
+----------
+
+This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
+
 
 
 .. _`i915_gem_evict_vm`:
@@ -73,6 +83,7 @@ i915_gem_evict_vm
         Boolean directing whether to idle first.
 
 
+
 .. _`i915_gem_evict_vm.description`:
 
 Description
@@ -84,6 +95,13 @@ evicted the ``do_idle`` needs to be set to true.
 This is used by the execbuf code as a last-ditch effort to defragment the
 address space.
 
-To clarify: This is for freeing up virtual address space, not for freeing
+
+
+.. _`i915_gem_evict_vm.to-clarify`:
+
+To clarify
+----------
+
+This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
 

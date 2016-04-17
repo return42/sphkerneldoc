@@ -4,6 +4,7 @@
 parport.h
 =========
 
+
 .. _`parport_yield`:
 
 parport_yield
@@ -15,6 +16,7 @@ parport_yield
 
     :param struct pardevice \*dev:
         a device on the parallel port
+
 
 
 .. _`parport_yield.description`:
@@ -39,6 +41,7 @@ timeslice is half a second, but it can be adjusted via the /proc
 interface.
 
 
+
 .. _`parport_yield_blocking`:
 
 parport_yield_blocking
@@ -50,6 +53,7 @@ parport_yield_blocking
 
     :param struct pardevice \*dev:
         a device on the parallel port
+
 
 
 .. _`parport_yield_blocking.description`:

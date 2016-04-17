@@ -4,16 +4,18 @@
 trigger.h
 =========
 
+
 .. _`iio_trigger_ops`:
 
 struct iio_trigger_ops
 ======================
 
-.. c:type:: struct iio_trigger_ops
+.. c:type:: iio_trigger_ops
 
     operations structure for an iio_trigger.
 
 
+.. _`iio_trigger_ops.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`iio_trigger_ops.members`:
 
 Members
 -------
@@ -48,6 +51,9 @@ Members
 
 
 
+
+.. _`iio_trigger_ops.description`:
+
 Description
 -----------
 
@@ -55,16 +61,18 @@ This is typically static const within a driver and shared by
 instances of a given device.
 
 
+
 .. _`iio_trigger`:
 
 struct iio_trigger
 ==================
 
-.. c:type:: struct iio_trigger
+.. c:type:: iio_trigger
 
     industrial I/O trigger device
 
 
+.. _`iio_trigger.definition`:
 
 Definition
 ----------
@@ -87,6 +95,7 @@ Definition
   };
 
 
+.. _`iio_trigger.members`:
 
 Members
 -------
@@ -129,6 +138,7 @@ Members
 
 
 
+
 .. _`iio_trigger_set_drvdata`:
 
 iio_trigger_set_drvdata
@@ -145,6 +155,7 @@ iio_trigger_set_drvdata
         Driver specific data
 
 
+
 .. _`iio_trigger_set_drvdata.description`:
 
 Description
@@ -152,6 +163,7 @@ Description
 
 Allows to attach an arbitrary pointer to an IIO trigger, which can later be
 retrieved by :c:func:`iio_trigger_get_drvdata`.
+
 
 
 .. _`iio_trigger_get_drvdata`:
@@ -167,12 +179,14 @@ iio_trigger_get_drvdata
         IIO trigger structure
 
 
+
 .. _`iio_trigger_get_drvdata.description`:
 
 Description
 -----------
 
 Returns the data previously set with :c:func:`iio_trigger_set_drvdata`
+
 
 
 .. _`iio_trigger_register`:
@@ -188,6 +202,7 @@ iio_trigger_register
         trigger to be registered
 
 
+
 .. _`iio_trigger_unregister`:
 
 iio_trigger_unregister
@@ -201,6 +216,7 @@ iio_trigger_unregister
         trigger to be unregistered
 
 
+
 .. _`iio_trigger_poll`:
 
 iio_trigger_poll
@@ -212,6 +228,7 @@ iio_trigger_poll
 
     :param struct iio_trigger \*trig:
         trigger which occurred
+
 
 
 .. _`iio_trigger_poll.description`:

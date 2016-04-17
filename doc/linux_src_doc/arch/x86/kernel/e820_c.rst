@@ -1,0 +1,80 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+e820.c
+======
+
+
+.. _`parse_e820_ext`:
+
+parse_e820_ext
+==============
+
+.. c:function:: void parse_e820_ext (u64 phys_addr, u32 data_len)
+
+    :param u64 phys_addr:
+
+        *undescribed*
+
+    :param u32 data_len:
+
+        *undescribed*
+
+
+
+.. _`parse_e820_ext.description`:
+
+Description
+-----------
+
+128 E820 memory entries are passed to kernel via
+boot_params.e820_map, others are passed via SETUP_E820_EXT node of
+linked list of struct setup_data, which is parsed here.
+
+
+
+.. _`e820_mark_nosave_regions`:
+
+e820_mark_nosave_regions
+========================
+
+.. c:function:: void e820_mark_nosave_regions (unsigned long limit_pfn)
+
+    :param unsigned long limit_pfn:
+
+        *undescribed*
+
+
+
+.. _`e820_mark_nosave_regions.description`:
+
+Description
+-----------
+
+e820 RAM areas and mark the corresponding pages as nosave for
+hibernation (32 bit) or software suspend and suspend to RAM (64 bit).
+
+This function requires the e820 map to be sorted and without any
+overlapping entries.
+
+
+
+.. _`e820_mark_nvs_memory`:
+
+e820_mark_nvs_memory
+====================
+
+.. c:function:: int e820_mark_nvs_memory ( void)
+
+    :param void:
+        no arguments
+
+
+
+.. _`e820_mark_nvs_memory.description`:
+
+Description
+-----------
+
+hibernation and the subsequent resume.
+

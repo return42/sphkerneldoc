@@ -4,6 +4,7 @@
 drm_fb_helper.c
 ===============
 
+
 .. _`fbdev-helpers`:
 
 fbdev helpers
@@ -44,6 +45,7 @@ should call :c:func:`drm_fb_helper_single_add_all_connectors` followed by
 :c:func:`drm_fb_helper_initial_config`.
 
 
+
 .. _`drm_fb_helper_single_add_all_connectors`:
 
 drm_fb_helper_single_add_all_connectors
@@ -55,6 +57,7 @@ drm_fb_helper_single_add_all_connectors
 
     :param struct drm_fb_helper \*fb_helper:
         fbdev initialized with drm_fb_helper_init
+
 
 
 .. _`drm_fb_helper_single_add_all_connectors.description`:
@@ -72,6 +75,7 @@ using :c:func:`drm_fb_helper_add_one_connector` and
 :c:func:`drm_fb_helper_remove_one_connector`.
 
 
+
 .. _`drm_fb_helper_debug_enter`:
 
 drm_fb_helper_debug_enter
@@ -83,6 +87,7 @@ drm_fb_helper_debug_enter
 
     :param struct fb_info \*info:
         fbdev registered by the helper
+
 
 
 .. _`drm_fb_helper_debug_leave`:
@@ -98,6 +103,7 @@ drm_fb_helper_debug_leave
         fbdev registered by the helper
 
 
+
 .. _`drm_fb_helper_restore_fbdev_mode_unlocked`:
 
 drm_fb_helper_restore_fbdev_mode_unlocked
@@ -111,6 +117,7 @@ drm_fb_helper_restore_fbdev_mode_unlocked
         fbcon to restore
 
 
+
 .. _`drm_fb_helper_restore_fbdev_mode_unlocked.description`:
 
 Description
@@ -120,8 +127,15 @@ This should be called from driver's drm ->lastclose callback
 when implementing an fbcon on top of kms using this helper. This ensures that
 the user isn't greeted with a black screen when e.g. X dies.
 
-RETURNS:
+
+
+.. _`drm_fb_helper_restore_fbdev_mode_unlocked.returns`:
+
+RETURNS
+-------
+
 Zero if everything went ok, negative error code otherwise.
+
 
 
 .. _`drm_fb_helper_blank`:
@@ -138,6 +152,7 @@ drm_fb_helper_blank
 
     :param struct fb_info \*info:
         fbdev registered by the helper
+
 
 
 .. _`drm_fb_helper_prepare`:
@@ -159,6 +174,7 @@ drm_fb_helper_prepare
         pointer to structure of functions associate with this helper
 
 
+
 .. _`drm_fb_helper_prepare.description`:
 
 Description
@@ -166,6 +182,7 @@ Description
 
 Sets up the bare minimum to make the framebuffer helper usable. This is
 useful to implement race-free initialization of the polling helpers.
+
 
 
 .. _`drm_fb_helper_init`:
@@ -190,6 +207,7 @@ drm_fb_helper_init
         max connector count
 
 
+
 .. _`drm_fb_helper_init.description`:
 
 Description
@@ -202,8 +220,15 @@ to allow driver writes more control over the exact init sequence.
 
 Drivers must call :c:func:`drm_fb_helper_prepare` before calling this function.
 
-RETURNS:
+
+
+.. _`drm_fb_helper_init.returns`:
+
+RETURNS
+-------
+
 Zero if everything went ok, nonzero otherwise.
+
 
 
 .. _`drm_fb_helper_alloc_fbi`:
@@ -219,6 +244,7 @@ drm_fb_helper_alloc_fbi
         driver-allocated fbdev helper
 
 
+
 .. _`drm_fb_helper_alloc_fbi.description`:
 
 Description
@@ -227,9 +253,16 @@ Description
 A helper to alloc fb_info and the members cmap and apertures. Called
 by the driver within the fb_probe fb_helper callback function.
 
-RETURNS:
+
+
+.. _`drm_fb_helper_alloc_fbi.returns`:
+
+RETURNS
+-------
+
 fb_info pointer if things went okay, pointer containing error code
 otherwise
+
 
 
 .. _`drm_fb_helper_unregister_fbi`:
@@ -245,6 +278,7 @@ drm_fb_helper_unregister_fbi
         driver-allocated fbdev helper
 
 
+
 .. _`drm_fb_helper_unregister_fbi.description`:
 
 Description
@@ -252,6 +286,7 @@ Description
 
 A wrapper around unregister_framebuffer, to release the fb_info
 framebuffer device
+
 
 
 .. _`drm_fb_helper_release_fbi`:
@@ -267,6 +302,7 @@ drm_fb_helper_release_fbi
         driver-allocated fbdev helper
 
 
+
 .. _`drm_fb_helper_release_fbi.description`:
 
 Description
@@ -274,6 +310,7 @@ Description
 
 A helper to free memory taken by fb_info and the members cmap and
 apertures
+
 
 
 .. _`drm_fb_helper_unlink_fbi`:
@@ -289,12 +326,14 @@ drm_fb_helper_unlink_fbi
         driver-allocated fbdev helper
 
 
+
 .. _`drm_fb_helper_unlink_fbi.description`:
 
 Description
 -----------
 
 A wrapper around unlink_framebuffer implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_sys_read`:
@@ -319,12 +358,14 @@ drm_fb_helper_sys_read
         read offset within framebuffer memory
 
 
+
 .. _`drm_fb_helper_sys_read.description`:
 
 Description
 -----------
 
 A wrapper around fb_sys_read implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_sys_write`:
@@ -349,12 +390,14 @@ drm_fb_helper_sys_write
         write offset within framebuffer memory
 
 
+
 .. _`drm_fb_helper_sys_write.description`:
 
 Description
 -----------
 
 A wrapper around fb_sys_write implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_sys_fillrect`:
@@ -373,12 +416,14 @@ drm_fb_helper_sys_fillrect
         info about rectangle to fill
 
 
+
 .. _`drm_fb_helper_sys_fillrect.description`:
 
 Description
 -----------
 
 A wrapper around sys_fillrect implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_sys_copyarea`:
@@ -397,12 +442,14 @@ drm_fb_helper_sys_copyarea
         info about area to copy
 
 
+
 .. _`drm_fb_helper_sys_copyarea.description`:
 
 Description
 -----------
 
 A wrapper around sys_copyarea implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_sys_imageblit`:
@@ -421,12 +468,14 @@ drm_fb_helper_sys_imageblit
         info about image to blit
 
 
+
 .. _`drm_fb_helper_sys_imageblit.description`:
 
 Description
 -----------
 
 A wrapper around sys_imageblit implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_cfb_fillrect`:
@@ -445,12 +494,14 @@ drm_fb_helper_cfb_fillrect
         info about rectangle to fill
 
 
+
 .. _`drm_fb_helper_cfb_fillrect.description`:
 
 Description
 -----------
 
 A wrapper around cfb_imageblit implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_cfb_copyarea`:
@@ -469,12 +520,14 @@ drm_fb_helper_cfb_copyarea
         info about area to copy
 
 
+
 .. _`drm_fb_helper_cfb_copyarea.description`:
 
 Description
 -----------
 
 A wrapper around cfb_copyarea implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_cfb_imageblit`:
@@ -493,12 +546,14 @@ drm_fb_helper_cfb_imageblit
         info about image to blit
 
 
+
 .. _`drm_fb_helper_cfb_imageblit.description`:
 
 Description
 -----------
 
 A wrapper around cfb_imageblit implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_set_suspend`:
@@ -517,12 +572,14 @@ drm_fb_helper_set_suspend
         desired state, zero to resume, non-zero to suspend
 
 
+
 .. _`drm_fb_helper_set_suspend.description`:
 
 Description
 -----------
 
 A wrapper around fb_set_suspend implemented by fbdev core
+
 
 
 .. _`drm_fb_helper_setcmap`:
@@ -541,6 +598,7 @@ drm_fb_helper_setcmap
         fbdev registered by the helper
 
 
+
 .. _`drm_fb_helper_check_var`:
 
 drm_fb_helper_check_var
@@ -557,6 +615,7 @@ drm_fb_helper_check_var
         fbdev registered by the helper
 
 
+
 .. _`drm_fb_helper_set_par`:
 
 drm_fb_helper_set_par
@@ -570,6 +629,7 @@ drm_fb_helper_set_par
         fbdev registered by the helper
 
 
+
 .. _`drm_fb_helper_set_par.description`:
 
 Description
@@ -578,6 +638,7 @@ Description
 This will let fbcon do the mode init and is called at initialization time by
 the fbdev core when registering the driver, and later on through the hotplug
 callback.
+
 
 
 .. _`drm_fb_helper_pan_display`:
@@ -594,6 +655,7 @@ drm_fb_helper_pan_display
 
     :param struct fb_info \*info:
         fbdev registered by the helper
+
 
 
 .. _`drm_fb_helper_fill_fix`:
@@ -615,6 +677,7 @@ drm_fb_helper_fill_fix
         desired depth
 
 
+
 .. _`drm_fb_helper_fill_fix.description`:
 
 Description
@@ -626,6 +689,7 @@ additional constraints need to set up their own limits.
 
 Drivers should call this (or their equivalent setup code) from their
 ->fb_probe callback.
+
 
 
 .. _`drm_fb_helper_fill_var`:
@@ -650,6 +714,7 @@ drm_fb_helper_fill_var
         desired fb height
 
 
+
 .. _`drm_fb_helper_fill_var.description`:
 
 Description
@@ -661,6 +726,7 @@ and the drm framebuffer allocated in fb_helper->fb.
 Drivers should call this (or their equivalent setup code) from their
 ->fb_probe callback after having allocated the fbdev backing
 storage framebuffer.
+
 
 
 .. _`drm_fb_helper_initial_config`:
@@ -677,6 +743,7 @@ drm_fb_helper_initial_config
 
     :param int bpp_sel:
         bpp value to use for the framebuffer configuration
+
 
 
 .. _`drm_fb_helper_initial_config.description`:
@@ -697,7 +764,13 @@ framebuffer used to back the fbdev. :c:func:`drm_fb_helper_fill_var` and
 :c:func:`drm_fb_helper_fill_fix` are provided as helpers to setup simple default
 values for the fbdev info structure.
 
-HANG DEBUGGING:
+
+
+.. _`drm_fb_helper_initial_config.hang-debugging`:
+
+HANG DEBUGGING
+--------------
+
 
 When you have fbcon support built-in or already loaded, this function will do
 a full modeset to setup the fbdev console. Due to locking misdesign in the
@@ -718,8 +791,15 @@ first modest from userspace will crash in the same way, and is even easier to
 debug. This can be done by setting the drm_kms_helper.fbdev_emulation=0
 kernel cmdline option.
 
-RETURNS:
+
+
+.. _`drm_fb_helper_initial_config.returns`:
+
+RETURNS
+-------
+
 Zero if everything went ok, nonzero otherwise.
+
 
 
 .. _`drm_fb_helper_hotplug_event`:
@@ -733,6 +813,7 @@ drm_fb_helper_hotplug_event
 
     :param struct drm_fb_helper \*fb_helper:
         the drm_fb_helper
+
 
 
 .. _`drm_fb_helper_hotplug_event.description`:
@@ -753,6 +834,12 @@ drm_fb_helper_initial_config but only aftert drm_fb_helper_init. This allows
 for a race-free fbcon setup and will make sure that the fbdev emulation will
 not miss any hotplug events.
 
-RETURNS:
+
+
+.. _`drm_fb_helper_hotplug_event.returns`:
+
+RETURNS
+-------
+
 0 on success and a non-zero error code otherwise.
 

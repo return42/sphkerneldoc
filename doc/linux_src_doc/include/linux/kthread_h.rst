@@ -4,6 +4,7 @@
 kthread.h
 =========
 
+
 .. _`kthread_run`:
 
 kthread_run
@@ -26,11 +27,12 @@ kthread_run
         variable arguments
 
 
+
 .. _`kthread_run.description`:
 
 Description
 -----------
 
-Description: Convenient wrapper for :c:func:`kthread_create` followed by
+Convenient wrapper for :c:func:`kthread_create` followed by
 :c:func:`wake_up_process`.  Returns the kthread or ERR_PTR(-ENOMEM).
 

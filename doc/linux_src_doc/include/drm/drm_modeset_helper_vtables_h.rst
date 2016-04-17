@@ -4,6 +4,7 @@
 drm_modeset_helper_vtables.h
 ============================
 
+
 .. _`overview`:
 
 overview
@@ -22,16 +23,18 @@ helpers.
 To make this clear all the helper vtables are pulled together in this location here.
 
 
+
 .. _`drm_crtc_helper_funcs`:
 
 struct drm_crtc_helper_funcs
 ============================
 
-.. c:type:: struct drm_crtc_helper_funcs
+.. c:type:: drm_crtc_helper_funcs
 
     helper operations for CRTCs
 
 
+.. _`drm_crtc_helper_funcs.definition`:
 
 Definition
 ----------
@@ -56,6 +59,7 @@ Definition
   };
 
 
+.. _`drm_crtc_helper_funcs.members`:
 
 Members
 -------
@@ -347,12 +351,16 @@ Members
 
 
 
+
+.. _`drm_crtc_helper_funcs.overview`:
+
 overview
 --------
 
 
 These hooks are used by the legacy CRTC helpers, the transitional plane
 helpers and the new atomic modesetting helpers.
+
 
 
 .. _`drm_crtc_helper_add`:
@@ -371,16 +379,18 @@ drm_crtc_helper_add
         helper vtable to set for ``crtc``
 
 
+
 .. _`drm_encoder_helper_funcs`:
 
 struct drm_encoder_helper_funcs
 ===============================
 
-.. c:type:: struct drm_encoder_helper_funcs
+.. c:type:: drm_encoder_helper_funcs
 
     helper operations for encoders
 
 
+.. _`drm_encoder_helper_funcs.definition`:
 
 Definition
 ----------
@@ -401,6 +411,7 @@ Definition
   };
 
 
+.. _`drm_encoder_helper_funcs.members`:
 
 Members
 -------
@@ -598,12 +609,16 @@ Members
 
 
 
+
+.. _`drm_encoder_helper_funcs.description`:
+
 Description
 -----------
 
 
 These hooks are used by the legacy CRTC helpers, the transitional plane
 helpers and the new atomic modesetting helpers.
+
 
 
 .. _`drm_encoder_helper_add`:
@@ -622,16 +637,18 @@ drm_encoder_helper_add
         helper vtable to set for ``encoder``
 
 
+
 .. _`drm_connector_helper_funcs`:
 
 struct drm_connector_helper_funcs
 =================================
 
-.. c:type:: struct drm_connector_helper_funcs
+.. c:type:: drm_connector_helper_funcs
 
     helper operations for connectors
 
 
+.. _`drm_connector_helper_funcs.definition`:
 
 Definition
 ----------
@@ -646,6 +663,7 @@ Definition
   };
 
 
+.. _`drm_connector_helper_funcs.members`:
 
 Members
 -------
@@ -753,12 +771,16 @@ Members
 
 
 
+
+.. _`drm_connector_helper_funcs.description`:
+
 Description
 -----------
 
 
 These functions are used by the atomic and legacy modeset helpers and by the
 probe helpers.
+
 
 
 .. _`drm_connector_helper_add`:
@@ -777,16 +799,18 @@ drm_connector_helper_add
         helper vtable to set for ``connector``
 
 
+
 .. _`drm_plane_helper_funcs`:
 
 struct drm_plane_helper_funcs
 =============================
 
-.. c:type:: struct drm_plane_helper_funcs
+.. c:type:: drm_plane_helper_funcs
 
     helper operations for planes
 
 
+.. _`drm_plane_helper_funcs.definition`:
 
 Definition
 ----------
@@ -802,6 +826,7 @@ Definition
   };
 
 
+.. _`drm_plane_helper_funcs.members`:
 
 Members
 -------
@@ -912,12 +937,16 @@ Members
 
 
 
+
+.. _`drm_plane_helper_funcs.description`:
+
 Description
 -----------
 
 
 These functions are used by the atomic helpers and by the transitional plane
 helpers.
+
 
 
 .. _`drm_plane_helper_add`:

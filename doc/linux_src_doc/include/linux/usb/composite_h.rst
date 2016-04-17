@@ -4,16 +4,18 @@
 composite.h
 ===========
 
+
 .. _`usb_os_desc_ext_prop`:
 
 struct usb_os_desc_ext_prop
 ===========================
 
-.. c:type:: struct usb_os_desc_ext_prop
+.. c:type:: usb_os_desc_ext_prop
 
     describes one "Extended Property"
 
 
+.. _`usb_os_desc_ext_prop.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`usb_os_desc_ext_prop.members`:
 
 Members
 -------
@@ -58,16 +61,18 @@ Members
 
 
 
+
 .. _`usb_os_desc`:
 
 struct usb_os_desc
 ==================
 
-.. c:type:: struct usb_os_desc
+.. c:type:: usb_os_desc
 
     describes OS descriptors associated with one interface
 
 
+.. _`usb_os_desc.definition`:
 
 Definition
 ----------
@@ -85,6 +90,7 @@ Definition
   };
 
 
+.. _`usb_os_desc.members`:
 
 Members
 -------
@@ -112,16 +118,18 @@ Members
 
 
 
+
 .. _`usb_os_desc_table`:
 
 struct usb_os_desc_table
 ========================
 
-.. c:type:: struct usb_os_desc_table
+.. c:type:: usb_os_desc_table
 
     describes OS descriptors associated with one interface of a usb_function
 
 
+.. _`usb_os_desc_table.definition`:
 
 Definition
 ----------
@@ -134,6 +142,7 @@ Definition
   };
 
 
+.. _`usb_os_desc_table.members`:
 
 Members
 -------
@@ -147,6 +156,9 @@ Members
 
 
 
+
+.. _`usb_os_desc_table.description`:
+
 Description
 -----------
 
@@ -154,16 +166,18 @@ Each interface can have at most one "Extended Compatibility ID" and a
 number of "Extended Properties".
 
 
+
 .. _`usb_function`:
 
 struct usb_function
 ===================
 
-.. c:type:: struct usb_function
+.. c:type:: usb_function
 
     describes one function of a configuration
 
 
+.. _`usb_function.definition`:
 
 Definition
 ----------
@@ -196,6 +210,7 @@ Definition
   };
 
 
+.. _`usb_function.members`:
 
 Members
 -------
@@ -292,6 +307,9 @@ Members
 
 
 
+
+.. _`usb_function.description`:
+
 Description
 -----------
 
@@ -319,16 +337,18 @@ two or more distinct instances within the same configuration, providing
 several independent logical data links to a USB host.
 
 
+
 .. _`usb_configuration`:
 
 struct usb_configuration
 ========================
 
-.. c:type:: struct usb_configuration
+.. c:type:: usb_configuration
 
     represents one gadget configuration
 
 
+.. _`usb_configuration.definition`:
 
 Definition
 ----------
@@ -349,6 +369,7 @@ Definition
   };
 
 
+.. _`usb_configuration.members`:
 
 Members
 -------
@@ -361,9 +382,8 @@ Members
     and by language IDs provided in control requests.
 
 :``descriptors``:
-    Table of descriptors preceding all function descriptors.::
-
-            Examples include OTG and vendor-specific descriptors.
+    Table of descriptors preceding all function descriptors.
+    Examples include OTG and vendor-specific descriptors.
 
 :``unbind``:
     Reverses ``bind``\ ; called as a side effect of unregistering the
@@ -392,6 +412,9 @@ Members
 
 
 
+
+.. _`usb_configuration.description`:
+
 Description
 -----------
 
@@ -419,16 +442,18 @@ descriptors complete by the time the composite driver returns from
 its :c:func:`bind` routine.
 
 
+
 .. _`usb_composite_driver`:
 
 struct usb_composite_driver
 ===========================
 
-.. c:type:: struct usb_composite_driver
+.. c:type:: usb_composite_driver
 
     groups configurations into a gadget
 
 
+.. _`usb_composite_driver.definition`:
 
 Definition
 ----------
@@ -450,6 +475,7 @@ Definition
   };
 
 
+.. _`usb_composite_driver.members`:
 
 Members
 -------
@@ -500,6 +526,9 @@ Members
 
 
 
+
+.. _`usb_composite_driver.description`:
+
 Description
 -----------
 
@@ -515,6 +544,7 @@ they are defined in ``dev`` and ``strings``\ .)  The correct ep0 maxpacket size
 is also reported, as defined by the underlying controller driver.
 
 
+
 .. _`module_usb_composite_driver`:
 
 module_usb_composite_driver
@@ -528,6 +558,7 @@ module_usb_composite_driver
         usb_composite_driver struct
 
 
+
 .. _`module_usb_composite_driver.description`:
 
 Description
@@ -539,16 +570,18 @@ module may only use this macro once, and calling it replaces :c:func:`module_ini
 and :c:func:`module_exit`
 
 
+
 .. _`usb_composite_dev`:
 
 struct usb_composite_dev
 ========================
 
-.. c:type:: struct usb_composite_dev
+.. c:type:: usb_composite_dev
 
     represents one composite usb gadget
 
 
+.. _`usb_composite_dev.definition`:
 
 Definition
 ----------
@@ -567,6 +600,7 @@ Definition
   };
 
 
+.. _`usb_composite_dev.members`:
 
 Members
 -------
@@ -597,18 +631,34 @@ Members
 
 
 
+
+.. _`usb_composite_dev.description`:
+
 Description
 -----------
 
 One of these devices is allocated and initialized before the
 associated device driver's :c:func:`bind` is called.
 
-OPEN ISSUE:  it appears that some WUSB devices will need to be
+
+
+.. _`usb_composite_dev.open-issue`:
+
+OPEN ISSUE
+----------
+
+it appears that some WUSB devices will need to be
 built by combining a normal (wired) gadget with a wireless one.
 This revision of the gadget framework should probably try to make
 sure doing that won't hurt too much.
 
-One notion for how to handle Wireless USB devices involves:
+
+
+.. _`usb_composite_dev.one-notion-for-how-to-handle-wireless-usb-devices-involves`:
+
+One notion for how to handle Wireless USB devices involves
+----------------------------------------------------------
+
 (a) a second gadget here, discovery mechanism TBD, but likely
 needing separate "register/unregister WUSB gadget" calls;
 

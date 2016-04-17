@@ -4,6 +4,7 @@
 z85230.c
 ========
 
+
 .. _`z8530_read_port`:
 
 z8530_read_port
@@ -15,6 +16,7 @@ z8530_read_port
 
     :param unsigned long p:
         port to read
+
 
 
 .. _`z8530_read_port.description`:
@@ -34,6 +36,7 @@ The caller must hold sufficient locks to avoid violating the horrible
 5uS delay rule.
 
 
+
 .. _`z8530_write_port`:
 
 z8530_write_port
@@ -48,6 +51,7 @@ z8530_write_port
 
     :param u8 d:
         value to write
+
 
 
 .. _`z8530_write_port.description`:
@@ -65,6 +69,7 @@ platforms. For now we only handle PC I/O ports with or without the
 dread 5uS sanity delay.
 
 
+
 .. _`read_zsreg`:
 
 read_zsreg
@@ -79,12 +84,20 @@ read_zsreg
 
     :param u8 reg:
         Register to read
-        FIXME: Use a spinlock.
 
-                
-        Most of the Z8530 registers are indexed off the control registers.
-        A read is done by writing to the control register and reading the
-        register back.  The caller must hold the lock
+
+
+.. _`read_zsreg.fixme`:
+
+FIXME
+-----
+
+Use a spinlock.
+        
+Most of the Z8530 registers are indexed off the control registers.
+A read is done by writing to the control register and reading the
+register back.  The caller must hold the lock
+
 
 
 .. _`read_zsdata`:
@@ -100,6 +113,7 @@ read_zsdata
         The Z8530 channel to read the data port from
 
 
+
 .. _`read_zsdata.description`:
 
 Description
@@ -107,6 +121,7 @@ Description
 
 The data port provides fast access to some things. We still
 have all the 5uS delays to worry about.
+
 
 
 .. _`write_zsreg`:
@@ -128,6 +143,7 @@ write_zsreg
         Value to write
 
 
+
 .. _`write_zsreg.description`:
 
 Description
@@ -138,6 +154,7 @@ to honour the irritating delay rules. We know about register 0
 being fast to access.::
 
      Assumes c->lock is held.
+
 
 
 .. _`write_zsctrl`:
@@ -156,12 +173,14 @@ write_zsctrl
         Value to write
 
 
+
 .. _`write_zsctrl.description`:
 
 Description
 -----------
 
 Write directly to the control register on the Z8530
+
 
 
 .. _`write_zsdata`:
@@ -180,12 +199,14 @@ write_zsdata
         Value to write
 
 
+
 .. _`write_zsdata.description`:
 
 Description
 -----------
 
 Write directly to the data register on the Z8530
+
 
 
 .. _`z8530_flush_fifo`:
@@ -201,6 +222,7 @@ z8530_flush_fifo
         Channel to flush
 
 
+
 .. _`z8530_flush_fifo.description`:
 
 Description
@@ -212,6 +234,7 @@ is harmless. The 8530 has a 4 byte FIFO, the 85230 has 8 bytes.
 
 All locking is handled for the caller. On return data may still be
 present if it arrived during the flush.
+
 
 
 .. _`z8530_rtsdtr`:
@@ -230,6 +253,7 @@ z8530_rtsdtr
         1 to set, 0 to clear
 
 
+
 .. _`z8530_rtsdtr.description`:
 
 Description
@@ -239,6 +263,7 @@ Sets or clears DTR/RTS on the requested line. All locking is handled
 by the caller. For now we assume all boards use the actual RTS/DTR
 on the chip. Apparently one or two don't. We'll scream about them
 later.
+
 
 
 .. _`z8530_rx`:
@@ -254,6 +279,7 @@ z8530_rx
         Z8530 channel to process
 
 
+
 .. _`z8530_rx.description`:
 
 Description
@@ -262,7 +288,14 @@ Description
 Receive handler for receiving in PIO mode. This is much like the 
 async one but not quite the same or as complex
 
-Note: Its intended that this handler can easily be separated from
+
+
+.. _`z8530_rx.note`:
+
+Note
+----
+
+Its intended that this handler can easily be separated from
 the main code to run realtime. That'll be needed for some machines
 (eg to ever clock 64kbits on a sparc ;)).
 
@@ -279,6 +312,7 @@ ISA DMA
 Called with the device lock held
 
 
+
 .. _`z8530_tx`:
 
 z8530_tx
@@ -292,6 +326,7 @@ z8530_tx
         Z8530 channel to process
 
 
+
 .. _`z8530_tx.description`:
 
 Description
@@ -301,6 +336,7 @@ Z8530 transmit interrupt handler for the PIO mode. The basic
 idea is to attempt to keep the FIFO fed. We fill as many bytes
 in as possible, its quite possible that we won't keep up with the
 data rate otherwise.
+
 
 
 .. _`z8530_status`:
@@ -316,6 +352,7 @@ z8530_status
         Z8530 channel to process
 
 
+
 .. _`z8530_status.description`:
 
 Description
@@ -325,6 +362,7 @@ A status event occurred in PIO synchronous mode. There are several
 reasons the chip will bother us here. A transmit underrun means we
 failed to feed the chip fast enough and just broke a packet. A DCD
 change is a line up or down.
+
 
 
 .. _`z8530_dma_rx`:
@@ -340,6 +378,7 @@ z8530_dma_rx
         Channel to handle
 
 
+
 .. _`z8530_dma_rx.description`:
 
 Description
@@ -349,6 +388,7 @@ Non bus mastering DMA interfaces for the Z8x30 devices. This
 is really pretty PC specific. The DMA mode means that most receive
 events are handled by the DMA hardware. We get a kick here only if
 a frame ended.
+
 
 
 .. _`z8530_dma_tx`:
@@ -364,6 +404,7 @@ z8530_dma_tx
         The Z8530 channel to handle
 
 
+
 .. _`z8530_dma_tx.description`:
 
 Description
@@ -371,6 +412,7 @@ Description
 
 We have received an interrupt while doing DMA transmissions. It
 shouldn't happen. Scream loudly if it does.
+
 
 
 .. _`z8530_dma_status`:
@@ -390,6 +432,7 @@ z8530_dma_status
         and kick the next packet out. Secondly we may see a DCD change.
 
 
+
 .. _`z8530_rx_clear`:
 
 z8530_rx_clear
@@ -403,6 +446,7 @@ z8530_rx_clear
         Z8530 channel to shut up
 
 
+
 .. _`z8530_rx_clear.description`:
 
 Description
@@ -411,6 +455,7 @@ Description
 Receive interrupt vectors for a Z8530 that is in 'parked' mode.
 For machines with PCI Z85x30 cards, or level triggered interrupts
 (eg the MacII) we must clear the interrupt cause or die.
+
 
 
 .. _`z8530_tx_clear`:
@@ -426,6 +471,7 @@ z8530_tx_clear
         Z8530 channel to shut up
 
 
+
 .. _`z8530_tx_clear.description`:
 
 Description
@@ -434,6 +480,7 @@ Description
 Transmit interrupt vectors for a Z8530 that is in 'parked' mode.
 For machines with PCI Z85x30 cards, or level triggered interrupts
 (eg the MacII) we must clear the interrupt cause or die.
+
 
 
 .. _`z8530_status_clear`:
@@ -449,6 +496,7 @@ z8530_status_clear
         Z8530 channel to shut up
 
 
+
 .. _`z8530_status_clear.description`:
 
 Description
@@ -457,6 +505,7 @@ Description
 Status interrupt vectors for a Z8530 that is in 'parked' mode.
 For machines with PCI Z85x30 cards, or level triggered interrupts
 (eg the MacII) we must clear the interrupt cause or die.
+
 
 
 .. _`z8530_interrupt`:
@@ -475,6 +524,7 @@ z8530_interrupt
         The Z8530 device that is interrupting.
 
 
+
 .. _`z8530_interrupt.description`:
 
 Description
@@ -489,6 +539,7 @@ in different modes.
 Locking is done for the handlers. Note that locking is done
 at the chip level (the 5uS delay issue is per chip not per
 channel). c->lock for both channels points to dev->lock
+
 
 
 .. _`z8530_sync_open`:
@@ -507,6 +558,7 @@ z8530_sync_open
         The Z8530 channel to open in synchronous PIO mode
 
 
+
 .. _`z8530_sync_open.description`:
 
 Description
@@ -514,6 +566,7 @@ Description
 
 Switch a Z8530 into synchronous mode without DMA assist. We
 raise the RTS/DTR and commence network operation.
+
 
 
 .. _`z8530_sync_close`:
@@ -532,6 +585,7 @@ z8530_sync_close
         Z8530 channel to disassociate and move to idle
 
 
+
 .. _`z8530_sync_close.description`:
 
 Description
@@ -539,6 +593,7 @@ Description
 
 Close down a Z8530 interface and switch its interrupt handlers
 to discard future events.
+
 
 
 .. _`z8530_sync_dma_open`:
@@ -557,6 +612,7 @@ z8530_sync_dma_open
         The Z8530 channel to configure in sync DMA mode.
 
 
+
 .. _`z8530_sync_dma_open.description`:
 
 Description
@@ -565,6 +621,7 @@ Description
 Set up a Z85x30 device for synchronous DMA in both directions. Two
 ISA DMA channels must be available for this to work. We assume ISA
 DMA driven I/O and PC limits on access.
+
 
 
 .. _`z8530_sync_dma_close`:
@@ -583,6 +640,7 @@ z8530_sync_dma_close
         Z8530 channel to move into discard mode
 
 
+
 .. _`z8530_sync_dma_close.description`:
 
 Description
@@ -590,6 +648,7 @@ Description
 
 Shut down a DMA mode synchronous interface. Halt the DMA, and
 free the buffers.
+
 
 
 .. _`z8530_sync_txdma_open`:
@@ -608,6 +667,7 @@ z8530_sync_txdma_open
         The Z8530 channel to configure in sync DMA mode.
 
 
+
 .. _`z8530_sync_txdma_open.description`:
 
 Description
@@ -616,6 +676,7 @@ Description
 Set up a Z85x30 device for synchronous DMA transmission. One
 ISA DMA channel must be available for this to work. The receive
 side is run in PIO mode, but then it has the bigger FIFO.
+
 
 
 .. _`z8530_sync_txdma_close`:
@@ -634,6 +695,7 @@ z8530_sync_txdma_close
         Z8530 channel to move into discard mode
 
 
+
 .. _`z8530_sync_txdma_close.description`:
 
 Description
@@ -641,6 +703,7 @@ Description
 
 Shut down a DMA/PIO split mode synchronous interface. Halt the DMA, 
 and  free the buffers.
+
 
 
 .. _`z8530_describe`:
@@ -662,6 +725,7 @@ z8530_describe
         the port value in question
 
 
+
 .. _`z8530_describe.description`:
 
 Description
@@ -670,6 +734,7 @@ Description
 Describe a Z8530 in a standard format. We must pass the I/O as
 the port offset isn't predictable. The main reason for this function
 is to try and get a common format of report.
+
 
 
 .. _`z8530_init`:
@@ -683,6 +748,7 @@ z8530_init
 
     :param struct z8530_dev \*dev:
         Z8530 device to initialise.
+
 
 
 .. _`z8530_init.description`:
@@ -703,6 +769,7 @@ Return 0 for success, or a negative value indicating the problem
 in errno form.
 
 
+
 .. _`z8530_shutdown`:
 
 z8530_shutdown
@@ -716,6 +783,7 @@ z8530_shutdown
         The Z8530 chip to shutdown
 
 
+
 .. _`z8530_shutdown.description`:
 
 Description
@@ -726,6 +794,7 @@ reset the chip and wait 100uS to be sure the reset completed. Just
 in case the caller then tries to do stuff.
 
 This is called without the lock held
+
 
 
 .. _`z8530_channel_load`:
@@ -742,17 +811,20 @@ z8530_channel_load
 
     :param u8 \*rtable:
         table of register, value pairs
-        FIXME: ioctl to allow user uploaded tables
 
 
-.. _`z8530_channel_load.description`:
 
-Description
------------
+.. _`z8530_channel_load.fixme`:
+
+FIXME
+-----
+
+ioctl to allow user uploaded tables
 
 Load a Z8530 channel up from the system data. We use +16 to 
 indicate the "prime" registers. The value 255 terminates the
 table.
+
 
 
 .. _`z8530_tx_begin`:
@@ -768,6 +840,7 @@ z8530_tx_begin
         The Z8530 channel to kick
 
 
+
 .. _`z8530_tx_begin.description`:
 
 Description
@@ -777,10 +850,18 @@ This is the speed sensitive side of transmission. If we are called
 and no buffer is being transmitted we commence the next buffer. If
 nothing is queued we idle the sync. 
 
-Note: We are handling this code path in the interrupt path, keep it
+
+
+.. _`z8530_tx_begin.note`:
+
+Note
+----
+
+We are handling this code path in the interrupt path, keep it
 fast or bad things will happen.
 
 Called with the lock held.
+
 
 
 .. _`z8530_tx_done`:
@@ -796,6 +877,7 @@ z8530_tx_done
         The channel that completed a transmit.
 
 
+
 .. _`z8530_tx_done.description`:
 
 Description
@@ -806,6 +888,7 @@ start the next packet going and then free the buffer of the existing
 packet. This code is fairly timing sensitive.
 
 Called with the register lock held.
+
 
 
 .. _`z8530_null_rx`:
@@ -824,6 +907,7 @@ z8530_null_rx
         The buffer
 
 
+
 .. _`z8530_null_rx.description`:
 
 Description
@@ -831,6 +915,7 @@ Description
 
 We point the receive handler at this function when idle. Instead
 of processing the frames we get to throw them away.
+
 
 
 .. _`z8530_rx_done`:
@@ -844,6 +929,7 @@ z8530_rx_done
 
     :param struct z8530_channel \*c:
         The channel that completed a receive
+
 
 
 .. _`z8530_rx_done.description`:
@@ -860,6 +946,7 @@ frame can occur while we are copying the previous buffer to an sk_buff
 Called with the lock held
 
 
+
 .. _`spans_boundary`:
 
 spans_boundary
@@ -873,6 +960,7 @@ spans_boundary
         The buffer to check
 
 
+
 .. _`spans_boundary.description`:
 
 Description
@@ -880,6 +968,7 @@ Description
 
 Returns true if the buffer cross a DMA boundary on a PC. The poor
 thing can only DMA within a 64K block not across the edges of it.
+
 
 
 .. _`z8530_queue_xmit`:
@@ -896,6 +985,7 @@ z8530_queue_xmit
 
     :param struct sk_buff \*skb:
         The packet to kick down the channel
+
 
 
 .. _`z8530_queue_xmit.description`:

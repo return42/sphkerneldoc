@@ -4,6 +4,7 @@
 drm_flip_work.h
 ===============
 
+
 .. _`flip-utils`:
 
 flip utils
@@ -16,16 +17,18 @@ Moreover, drm_flip_work_queue_task and drm_flip_work_queue can be called
 in atomic context.
 
 
+
 .. _`drm_flip_task`:
 
 struct drm_flip_task
 ====================
 
-.. c:type:: struct drm_flip_task
+.. c:type:: drm_flip_task
 
     flip work task
 
 
+.. _`drm_flip_task.definition`:
 
 Definition
 ----------
@@ -38,6 +41,7 @@ Definition
   };
 
 
+.. _`drm_flip_task.members`:
 
 Members
 -------
@@ -50,16 +54,18 @@ Members
 
 
 
+
 .. _`drm_flip_work`:
 
 struct drm_flip_work
 ====================
 
-.. c:type:: struct drm_flip_work
+.. c:type:: drm_flip_work
 
     flip work queue
 
 
+.. _`drm_flip_work.definition`:
 
 Definition
 ----------
@@ -76,6 +82,7 @@ Definition
   };
 
 
+.. _`drm_flip_work.members`:
 
 Members
 -------

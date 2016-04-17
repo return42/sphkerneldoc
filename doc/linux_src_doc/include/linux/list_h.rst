@@ -4,6 +4,7 @@
 list.h
 ======
 
+
 .. _`list_add`:
 
 list_add
@@ -20,6 +21,7 @@ list_add
         list head to add it after
 
 
+
 .. _`list_add.description`:
 
 Description
@@ -27,6 +29,7 @@ Description
 
 Insert a new entry after the specified head.
 This is good for implementing stacks.
+
 
 
 .. _`list_add_tail`:
@@ -45,6 +48,7 @@ list_add_tail
         list head to add it before
 
 
+
 .. _`list_add_tail.description`:
 
 Description
@@ -52,6 +56,7 @@ Description
 
 Insert a new entry before the specified head.
 This is useful for implementing queues.
+
 
 
 .. _`__list_del_entry`:
@@ -65,8 +70,17 @@ __list_del_entry
 
     :param struct list_head \*entry:
         the element to delete from the list.
-        Note: :c:func:`list_empty` on entry does not return true after this, the entry is
-        in an undefined state.
+
+
+
+.. _`__list_del_entry.note`:
+
+Note
+----
+
+:c:func:`list_empty` on entry does not return true after this, the entry is
+in an undefined state.
+
 
 
 .. _`list_replace`:
@@ -85,12 +99,14 @@ list_replace
         the new element to insert
 
 
+
 .. _`list_replace.description`:
 
 Description
 -----------
 
 If ``old`` was empty, it will be overwritten.
+
 
 
 .. _`list_del_init`:
@@ -104,6 +120,7 @@ list_del_init
 
     :param struct list_head \*entry:
         the element to delete from the list.
+
 
 
 .. _`list_move`:
@@ -122,6 +139,7 @@ list_move
         the head that will precede our entry
 
 
+
 .. _`list_move_tail`:
 
 list_move_tail
@@ -136,6 +154,7 @@ list_move_tail
 
     :param struct list_head \*head:
         the head that will follow our entry
+
 
 
 .. _`list_is_last`:
@@ -154,6 +173,7 @@ list_is_last
         the head of the list
 
 
+
 .. _`list_empty`:
 
 list_empty
@@ -165,6 +185,7 @@ list_empty
 
     :param const struct list_head \*head:
         the list to test.
+
 
 
 .. _`list_empty_careful`:
@@ -180,19 +201,27 @@ list_empty_careful
         the list to test
 
 
+
 .. _`list_empty_careful.description`:
 
 Description
 -----------
 
-Description:
 tests whether a list is empty _and_ checks that no other CPU might be
 in the process of modifying either member (next or prev)
 
-NOTE: using :c:func:`list_empty_careful` without synchronization
+
+
+.. _`list_empty_careful.note`:
+
+NOTE
+----
+
+using :c:func:`list_empty_careful` without synchronization
 can only be safe if the only activity that can happen
 to the list entry is :c:func:`list_del_init`. Eg. it cannot be used
 if another CPU could re-:c:func:`list_add` it.
+
 
 
 .. _`list_rotate_left`:
@@ -208,6 +237,7 @@ list_rotate_left
         the head of the list
 
 
+
 .. _`list_is_singular`:
 
 list_is_singular
@@ -219,6 +249,7 @@ list_is_singular
 
     :param const struct list_head \*head:
         the list to test.
+
 
 
 .. _`list_cut_position`:
@@ -241,6 +272,7 @@ list_cut_position
         and if so we won't cut the list
 
 
+
 .. _`list_cut_position.description`:
 
 Description
@@ -251,6 +283,7 @@ including ``entry``\ , from ``head`` to ``list``\ . You should
 pass on ``entry`` an element you know is on ``head``\ . ``list``
 should be an empty list or a list you do not care about
 losing its data.
+
 
 
 .. _`list_splice`:
@@ -269,6 +302,7 @@ list_splice
         the place to add it in the first list.
 
 
+
 .. _`list_splice_tail`:
 
 list_splice_tail
@@ -283,6 +317,7 @@ list_splice_tail
 
     :param struct list_head \*head:
         the place to add it in the first list.
+
 
 
 .. _`list_splice_init`:
@@ -301,12 +336,14 @@ list_splice_init
         the place to add it in the first list.
 
 
+
 .. _`list_splice_init.description`:
 
 Description
 -----------
 
 The list at ``list`` is reinitialised
+
 
 
 .. _`list_splice_tail_init`:
@@ -325,6 +362,7 @@ list_splice_tail_init
         the place to add it in the first list.
 
 
+
 .. _`list_splice_tail_init.description`:
 
 Description
@@ -332,6 +370,7 @@ Description
 
 Each of the lists is a queue.
 The list at ``list`` is reinitialised
+
 
 
 .. _`list_entry`:
@@ -353,6 +392,7 @@ list_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_first_entry`:
 
 list_first_entry
@@ -372,12 +412,14 @@ list_first_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_first_entry.description`:
 
 Description
 -----------
 
 Note, that list is expected to be not empty.
+
 
 
 .. _`list_last_entry`:
@@ -399,12 +441,14 @@ list_last_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_last_entry.description`:
 
 Description
 -----------
 
 Note, that list is expected to be not empty.
+
 
 
 .. _`list_first_entry_or_null`:
@@ -426,12 +470,14 @@ list_first_entry_or_null
         the name of the list_head within the struct.
 
 
+
 .. _`list_first_entry_or_null.description`:
 
 Description
 -----------
 
 Note that if the list is empty, it returns NULL.
+
 
 
 .. _`list_next_entry`:
@@ -450,6 +496,7 @@ list_next_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_prev_entry`:
 
 list_prev_entry
@@ -464,6 +511,7 @@ list_prev_entry
 
     :param member:
         the name of the list_head within the struct.
+
 
 
 .. _`list_for_each`:
@@ -482,6 +530,7 @@ list_for_each
         the head for your list.
 
 
+
 .. _`list_for_each_prev`:
 
 list_for_each_prev
@@ -496,6 +545,7 @@ list_for_each_prev
 
     :param head:
         the head for your list.
+
 
 
 .. _`list_for_each_safe`:
@@ -517,6 +567,7 @@ list_for_each_safe
         the head for your list.
 
 
+
 .. _`list_for_each_prev_safe`:
 
 list_for_each_prev_safe
@@ -534,6 +585,7 @@ list_for_each_prev_safe
 
     :param head:
         the head for your list.
+
 
 
 .. _`list_for_each_entry`:
@@ -555,6 +607,7 @@ list_for_each_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_reverse`:
 
 list_for_each_entry_reverse
@@ -572,6 +625,7 @@ list_for_each_entry_reverse
 
     :param member:
         the name of the list_head within the struct.
+
 
 
 .. _`list_prepare_entry`:
@@ -593,12 +647,14 @@ list_prepare_entry
         the name of the list_head within the struct.
 
 
+
 .. _`list_prepare_entry.description`:
 
 Description
 -----------
 
 Prepares a pos entry for use as a start point in :c:func:`list_for_each_entry_continue`.
+
 
 
 .. _`list_for_each_entry_continue`:
@@ -620,6 +676,7 @@ list_for_each_entry_continue
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_continue.description`:
 
 Description
@@ -627,6 +684,7 @@ Description
 
 Continue to iterate over list of given type, continuing after
 the current position.
+
 
 
 .. _`list_for_each_entry_continue_reverse`:
@@ -648,6 +706,7 @@ list_for_each_entry_continue_reverse
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_continue_reverse.description`:
 
 Description
@@ -655,6 +714,7 @@ Description
 
 Start to iterate over list of given type backwards, continuing after
 the current position.
+
 
 
 .. _`list_for_each_entry_from`:
@@ -676,12 +736,14 @@ list_for_each_entry_from
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_from.description`:
 
 Description
 -----------
 
 Iterate over list of given type, continuing from current position.
+
 
 
 .. _`list_for_each_entry_safe`:
@@ -706,6 +768,7 @@ list_for_each_entry_safe
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_safe_continue`:
 
 list_for_each_entry_safe_continue
@@ -728,6 +791,7 @@ list_for_each_entry_safe_continue
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_safe_continue.description`:
 
 Description
@@ -735,6 +799,7 @@ Description
 
 Iterate over list of given type, continuing after current point,
 safe against removal of list entry.
+
 
 
 .. _`list_for_each_entry_safe_from`:
@@ -759,6 +824,7 @@ list_for_each_entry_safe_from
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_safe_from.description`:
 
 Description
@@ -766,6 +832,7 @@ Description
 
 Iterate over list of given type from current point, safe against
 removal of list entry.
+
 
 
 .. _`list_for_each_entry_safe_reverse`:
@@ -790,6 +857,7 @@ list_for_each_entry_safe_reverse
         the name of the list_head within the struct.
 
 
+
 .. _`list_for_each_entry_safe_reverse.description`:
 
 Description
@@ -797,6 +865,7 @@ Description
 
 Iterate backwards over list of given type, safe against removal
 of list entry.
+
 
 
 .. _`list_safe_reset_next`:
@@ -818,6 +887,7 @@ list_safe_reset_next
         the name of the list_head within the struct.
 
 
+
 .. _`list_safe_reset_next.description`:
 
 Description
@@ -828,6 +898,7 @@ modified concurrently (eg. the lock is dropped in the loop body). An
 exception to this is if the cursor element (pos) is pinned in the list,
 and list_safe_reset_next is called after re-taking the lock and before
 completing the current iteration of the loop body.
+
 
 
 .. _`hlist_for_each_entry`:
@@ -849,6 +920,7 @@ hlist_for_each_entry
         the name of the hlist_node within the struct.
 
 
+
 .. _`hlist_for_each_entry_continue`:
 
 hlist_for_each_entry_continue
@@ -865,6 +937,7 @@ hlist_for_each_entry_continue
         the name of the hlist_node within the struct.
 
 
+
 .. _`hlist_for_each_entry_from`:
 
 hlist_for_each_entry_from
@@ -879,6 +952,7 @@ hlist_for_each_entry_from
 
     :param member:
         the name of the hlist_node within the struct.
+
 
 
 .. _`hlist_for_each_entry_safe`:

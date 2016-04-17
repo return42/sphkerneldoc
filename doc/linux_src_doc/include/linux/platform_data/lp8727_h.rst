@@ -1,0 +1,99 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+lp8727.h
+========
+
+
+.. _`lp8727_chg_param`:
+
+struct lp8727_chg_param
+=======================
+
+.. c:type:: lp8727_chg_param
+
+    
+
+
+.. _`lp8727_chg_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lp8727_chg_param {
+    enum lp8727_eoc_level eoc_level;
+    enum lp8727_ichg ichg;
+  };
+
+
+.. _`lp8727_chg_param.members`:
+
+Members
+-------
+
+:``eoc_level``:
+    end of charge level setting
+
+:``ichg``:
+    charging current
+
+
+
+
+.. _`lp8727_platform_data`:
+
+struct lp8727_platform_data
+===========================
+
+.. c:type:: lp8727_platform_data
+
+    
+
+
+.. _`lp8727_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lp8727_platform_data {
+    u8 (* get_batt_present) (void);
+    u16 (* get_batt_level) (void);
+    u8 (* get_batt_capacity) (void);
+    u8 (* get_batt_temp) (void);
+    struct lp8727_chg_param * ac;
+    struct lp8727_chg_param * usb;
+    unsigned int debounce_msec;
+  };
+
+
+.. _`lp8727_platform_data.members`:
+
+Members
+-------
+
+:``get_batt_present``:
+    check battery status - exists or not
+
+:``get_batt_level``:
+    get battery voltage (mV)
+
+:``get_batt_capacity``:
+    get battery capacity (%)
+
+:``get_batt_temp``:
+    get battery temperature
+
+:``ac``:
+    charging parameters for AC type charger
+
+:``usb``:
+    charging parameters for USB type charger
+
+:``debounce_msec``:
+    interrupt debounce time
+
+

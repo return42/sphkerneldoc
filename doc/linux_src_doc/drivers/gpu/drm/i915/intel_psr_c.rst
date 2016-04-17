@@ -4,6 +4,7 @@
 intel_psr.c
 ===========
 
+
 .. _`panel-self-refresh--psr-srd-`:
 
 Panel Self Refresh (PSR/SRD)
@@ -36,6 +37,7 @@ issues the self-refresh re-enable code is done from a work queue, which
 must be correctly synchronized/cancelled when shutting down the pipe."
 
 
+
 .. _`intel_psr_enable`:
 
 intel_psr_enable
@@ -49,12 +51,14 @@ intel_psr_enable
         Intel DP
 
 
+
 .. _`intel_psr_enable.description`:
 
 Description
 -----------
 
 This function can only be called after the pipe is fully trained and enabled.
+
 
 
 .. _`intel_psr_disable`:
@@ -70,12 +74,14 @@ intel_psr_disable
         Intel DP
 
 
+
 .. _`intel_psr_disable.description`:
 
 Description
 -----------
 
 This function needs to be called before disabling pipe.
+
 
 
 .. _`intel_psr_single_frame_update`:
@@ -94,6 +100,7 @@ intel_psr_single_frame_update
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_psr_single_frame_update.description`:
 
 Description
@@ -103,6 +110,7 @@ Some platforms support a single frame update feature that is used to
 send and update only one frame on Remote Frame Buffer.
 So far it is only implemented for Valleyview and Cherryview because
 hardware requires this to be done before a page flip.
+
 
 
 .. _`intel_psr_invalidate`:
@@ -121,6 +129,7 @@ intel_psr_invalidate
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_psr_invalidate.description`:
 
 Description
@@ -132,6 +141,7 @@ time frontbuffer rendering starts and a buffer gets dirtied. PSR must be
 disabled if the frontbuffer mask contains a buffer relevant to PSR.
 
 Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits."
+
 
 
 .. _`intel_psr_flush`:
@@ -153,6 +163,7 @@ intel_psr_flush
         which operation caused the flush
 
 
+
 .. _`intel_psr_flush.description`:
 
 Description
@@ -166,6 +177,7 @@ can be enabled again if no other frontbuffer relevant to PSR is dirty.
 Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits.
 
 
+
 .. _`intel_psr_init`:
 
 intel_psr_init
@@ -177,6 +189,7 @@ intel_psr_init
 
     :param struct drm_device \*dev:
         DRM device
+
 
 
 .. _`intel_psr_init.description`:

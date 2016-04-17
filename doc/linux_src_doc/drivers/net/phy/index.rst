@@ -8,5 +8,6 @@ phy
    :maxdepth: 1
 
    mdio_bus_c
+   mdio_device_c
    phy_c
    phy_device_c

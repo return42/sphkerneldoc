@@ -4,6 +4,7 @@
 drm_drv.c
 =========
 
+
 .. _`drm_minor_acquire`:
 
 drm_minor_acquire
@@ -15,6 +16,7 @@ drm_minor_acquire
 
     :param unsigned int minor_id:
         Minor ID of the DRM-minor
+
 
 
 .. _`drm_minor_acquire.description`:
@@ -30,9 +32,16 @@ As long as you hold this minor, it is guaranteed that the object and the
 minor->dev pointer will stay valid! However, the device may get unplugged and
 unregistered while you hold the minor.
 
-Returns:
+
+
+.. _`drm_minor_acquire.returns`:
+
+Returns
+-------
+
 Pointer to minor-object with increased device-refcount, or PTR_ERR on
 failure.
+
 
 
 .. _`drm_minor_release`:
@@ -48,12 +57,14 @@ drm_minor_release
         Pointer to DRM minor object
 
 
+
 .. _`drm_minor_release.description`:
 
 Description
 -----------
 
 Release a minor that was previously acquired via :c:func:`drm_minor_acquire`.
+
 
 
 .. _`driver-instance-overview`:
@@ -91,6 +102,7 @@ it would be easy to add). Drivers can store driver-private data in the
 dev_priv field of :c:type:`struct drm_device <drm_device>`.
 
 
+
 .. _`drm_put_dev`:
 
 drm_put_dev
@@ -104,6 +116,7 @@ drm_put_dev
         DRM device
 
 
+
 .. _`drm_put_dev.description`:
 
 Description
@@ -113,11 +126,19 @@ Called at module unload time or when a PCI device is unplugged.
 
 Cleans up all DRM device, calling :c:func:`drm_lastclose`.
 
-Note: Use of this function is deprecated. It will eventually go away
+
+
+.. _`drm_put_dev.note`:
+
+Note
+----
+
+Use of this function is deprecated. It will eventually go away
 completely.  Please use :c:func:`drm_dev_unregister` and :c:func:`drm_dev_unref` explicitly
 instead to make sure that the device isn't userspace accessible any more
 while teardown is in progress, ensuring that userspace can't access an
 inconsistent state.
+
 
 
 .. _`drm_dev_alloc`:
@@ -136,6 +157,7 @@ drm_dev_alloc
         Parent device object
 
 
+
 .. _`drm_dev_alloc.description`:
 
 Description
@@ -152,8 +174,15 @@ The initial ref-count of the object is 1. Use :c:func:`drm_dev_ref` and
 
 Note that for purely virtual devices ``parent`` can be NULL.
 
-RETURNS:
+
+
+.. _`drm_dev_alloc.returns`:
+
+RETURNS
+-------
+
 Pointer to new DRM device, or NULL if out of memory.
+
 
 
 .. _`drm_dev_ref`:
@@ -167,6 +196,7 @@ drm_dev_ref
 
     :param struct drm_device \*dev:
         device to take reference of or NULL
+
 
 
 .. _`drm_dev_ref.description`:
@@ -183,6 +213,7 @@ guarantee whether the device is alive or running. It only provides a
 reference to the object and the memory associated with it.
 
 
+
 .. _`drm_dev_unref`:
 
 drm_dev_unref
@@ -196,6 +227,7 @@ drm_dev_unref
         device to drop reference of or NULL
 
 
+
 .. _`drm_dev_unref.description`:
 
 Description
@@ -203,6 +235,7 @@ Description
 
 This decreases the ref-count of ``dev`` by one. The device is destroyed if the
 ref-count drops to zero.
+
 
 
 .. _`drm_dev_register`:
@@ -221,6 +254,7 @@ drm_dev_register
         Flags passed to the driver's .:c:func:`load` function
 
 
+
 .. _`drm_dev_register.description`:
 
 Description
@@ -232,14 +266,28 @@ previously.
 
 Never call this twice on any device!
 
-NOTE: To ensure backward compatibility with existing drivers method this
+
+
+.. _`drm_dev_register.note`:
+
+NOTE
+----
+
+To ensure backward compatibility with existing drivers method this
 function calls the ->:c:func:`load` method after registering the device nodes,
 creating race conditions. Usage of the ->:c:func:`load` methods is therefore
 deprecated, drivers must perform all initialization before calling
 :c:func:`drm_dev_register`.
 
-RETURNS:
+
+
+.. _`drm_dev_register.returns`:
+
+RETURNS
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_dev_unregister`:
@@ -255,6 +303,7 @@ drm_dev_unregister
         Device to unregister
 
 
+
 .. _`drm_dev_unregister.description`:
 
 Description
@@ -266,6 +315,7 @@ Unregister the DRM device from the system. This does the reverse of
 
 This should be called first in the device teardown code to make sure
 userspace can't access the device instance any more.
+
 
 
 .. _`drm_dev_set_unique`:
@@ -284,6 +334,7 @@ drm_dev_set_unique
         unique name
 
 
+
 .. _`drm_dev_set_unique.description`:
 
 Description
@@ -293,5 +344,12 @@ Sets the unique name of a DRM device using the specified string. Drivers
 can use this at driver probe time if the unique name of the devices they
 drive is static.
 
-Return: 0 on success or a negative error code on failure.
+
+
+.. _`drm_dev_set_unique.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
 

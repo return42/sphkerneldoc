@@ -9,4 +9,7 @@ regulator
 
    consumer_h
    driver_h
+   fixed_h
+   gpio-regulator_h
    machine_h
+   userspace-consumer_h

@@ -4,6 +4,7 @@
 i2c-boardinfo.c
 ===============
 
+
 .. _`i2c_register_board_info`:
 
 i2c_register_board_info
@@ -22,6 +23,7 @@ i2c_register_board_info
     :param unsigned len:
         how many descriptors in the vector; may be zero to reserve
         the specified bus number.
+
 
 
 .. _`i2c_register_board_info.description`:

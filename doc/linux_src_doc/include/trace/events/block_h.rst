@@ -4,6 +4,7 @@
 block.h
 =======
 
+
 .. _`trace_block_touch_buffer`:
 
 trace_block_touch_buffer
@@ -17,12 +18,14 @@ trace_block_touch_buffer
         buffer_head being touched
 
 
+
 .. _`trace_block_touch_buffer.description`:
 
 Description
 -----------
 
 Called from :c:func:`touch_buffer`.
+
 
 
 .. _`trace_block_dirty_buffer`:
@@ -38,12 +41,14 @@ trace_block_dirty_buffer
         buffer_head being dirtied
 
 
+
 .. _`trace_block_dirty_buffer.description`:
 
 Description
 -----------
 
 Called from :c:func:`mark_buffer_dirty`.
+
 
 
 .. _`trace_block_rq_abort`:
@@ -62,6 +67,7 @@ trace_block_rq_abort
         block IO operation request
 
 
+
 .. _`trace_block_rq_abort.description`:
 
 Description
@@ -71,6 +77,7 @@ Called immediately after pending block IO operation request ``rq`` in
 queue ``q`` is aborted. The fields in the operation request ``rq``
 can be examined to determine which device and sectors the pending
 operation would access.
+
 
 
 .. _`trace_block_rq_requeue`:
@@ -89,6 +96,7 @@ trace_block_rq_requeue
         block IO operation request
 
 
+
 .. _`trace_block_rq_requeue.description`:
 
 Description
@@ -97,6 +105,7 @@ Description
 The block operation request ``rq`` is being placed back into queue
 ``q``\ .  For some reason the request was not completed and needs to be
 put back in the queue.
+
 
 
 .. _`trace_block_rq_complete`:
@@ -118,6 +127,7 @@ trace_block_rq_complete
         number of completed bytes
 
 
+
 .. _`trace_block_rq_complete.description`:
 
 Description
@@ -128,6 +138,7 @@ of operation request has been completed by the device driver.  If
 the ``rq``\ ->bio is ``NULL``\ , then there is absolutely no additional work to
 do for the request. If ``rq``\ ->bio is non-NULL then there is
 additional work required to complete the request.
+
 
 
 .. _`trace_block_rq_insert`:
@@ -146,6 +157,7 @@ trace_block_rq_insert
         block IO operation request
 
 
+
 .. _`trace_block_rq_insert.description`:
 
 Description
@@ -155,6 +167,7 @@ Called immediately before block operation request ``rq`` is inserted
 into queue ``q``\ .  The fields in the operation request ``rq`` struct can
 be examined to determine which device and sectors the pending
 operation would access.
+
 
 
 .. _`trace_block_rq_issue`:
@@ -173,6 +186,7 @@ trace_block_rq_issue
         block IO operation operation request
 
 
+
 .. _`trace_block_rq_issue.description`:
 
 Description
@@ -180,6 +194,7 @@ Description
 
 Called when block operation request ``rq`` from queue ``q`` is sent to a
 device driver for processing.
+
 
 
 .. _`trace_block_bio_bounce`:
@@ -198,6 +213,7 @@ trace_block_bio_bounce
         block operation
 
 
+
 .. _`trace_block_bio_bounce.description`:
 
 Description
@@ -208,6 +224,7 @@ This occurs when hardware limitations prevent a direct transfer of
 data between the ``bio`` data memory area and the IO device.  Use of a
 bounce buffer requires extra copying of data and decreases
 performance.
+
 
 
 .. _`trace_block_bio_complete`:
@@ -229,6 +246,7 @@ trace_block_bio_complete
         io error value
 
 
+
 .. _`trace_block_bio_complete.description`:
 
 Description
@@ -236,6 +254,7 @@ Description
 
 This tracepoint indicates there is no further work to do on this
 block IO operation ``bio``\ .
+
 
 
 .. _`trace_block_bio_backmerge`:
@@ -257,6 +276,7 @@ trace_block_bio_backmerge
         new block operation to merge
 
 
+
 .. _`trace_block_bio_backmerge.description`:
 
 Description
@@ -264,6 +284,7 @@ Description
 
 Merging block request ``bio`` to the end of an existing block request
 in queue ``q``\ .
+
 
 
 .. _`trace_block_bio_frontmerge`:
@@ -285,6 +306,7 @@ trace_block_bio_frontmerge
         new block operation to merge
 
 
+
 .. _`trace_block_bio_frontmerge.description`:
 
 Description
@@ -292,6 +314,7 @@ Description
 
 Merging block IO operation ``bio`` to the beginning of an existing block
 operation in queue ``q``\ .
+
 
 
 .. _`trace_block_bio_queue`:
@@ -310,12 +333,14 @@ trace_block_bio_queue
         new block operation
 
 
+
 .. _`trace_block_bio_queue.description`:
 
 Description
 -----------
 
 About to place the block IO operation ``bio`` into queue ``q``\ .
+
 
 
 .. _`trace_block_getrq`:
@@ -337,6 +362,7 @@ trace_block_getrq
         low bit indicates a read (\ ``0``\ ) or a write (\ ``1``\ )
 
 
+
 .. _`trace_block_getrq.description`:
 
 Description
@@ -344,6 +370,7 @@ Description
 
 A request struct for queue ``q`` has been allocated to handle the
 block IO operation ``bio``\ .
+
 
 
 .. _`trace_block_sleeprq`:
@@ -365,6 +392,7 @@ trace_block_sleeprq
         low bit indicates a read (\ ``0``\ ) or a write (\ ``1``\ )
 
 
+
 .. _`trace_block_sleeprq.description`:
 
 Description
@@ -374,6 +402,7 @@ In the case where a request struct cannot be provided for queue ``q``
 the process needs to wait for an request struct to become
 available.  This tracepoint event is generated each time the
 process goes to sleep waiting for request struct become available.
+
 
 
 .. _`trace_block_plug`:
@@ -389,6 +418,7 @@ trace_block_plug
         request queue to plug
 
 
+
 .. _`trace_block_plug.description`:
 
 Description
@@ -397,6 +427,7 @@ Description
 Plug the request queue ``q``\ .  Do not allow block operation requests
 to be sent to the device driver. Instead, accumulate requests in
 the queue to improve throughput performance of the block device.
+
 
 
 .. _`trace_block_unplug`:
@@ -418,6 +449,7 @@ trace_block_unplug
         whether this was an explicit unplug, or one from :c:func:`schedule`
 
 
+
 .. _`trace_block_unplug.description`:
 
 Description
@@ -425,6 +457,7 @@ Description
 
 Unplug request queue ``q`` because device driver is scheduled to work
 on elements in the request queue.
+
 
 
 .. _`trace_block_split`:
@@ -446,6 +479,7 @@ trace_block_split
         The starting sector for the new bio
 
 
+
 .. _`trace_block_split.description`:
 
 Description
@@ -455,6 +489,7 @@ The bio request ``bio`` in request queue ``q`` needs to be split into two
 bio requests. The newly created ``bio`` request starts at
 ``new_sector``\ . This split may be required due to hardware limitation
 such as operation crossing device boundaries in a RAID system.
+
 
 
 .. _`trace_block_bio_remap`:
@@ -479,6 +514,7 @@ trace_block_bio_remap
         original sector for the operation
 
 
+
 .. _`trace_block_bio_remap.description`:
 
 Description
@@ -486,6 +522,7 @@ Description
 
 An operation for a logical device has been mapped to the
 raw block device.
+
 
 
 .. _`trace_block_rq_remap`:
@@ -508,6 +545,7 @@ trace_block_rq_remap
 
     :param sector_t from:
         original sector for the operation
+
 
 
 .. _`trace_block_rq_remap.description`:

@@ -4,6 +4,7 @@
 dvb_net.c
 =========
 
+
 .. _`dvb_net_eth_type_trans`:
 
 dvb_net_eth_type_trans
@@ -20,6 +21,7 @@ dvb_net_eth_type_trans
         *undescribed*
 
 
+
 .. _`dvb_net_eth_type_trans.description`:
 
 Description
@@ -30,6 +32,7 @@ This is normal practice and works for any 'now in use' protocol.::
 
  stolen from eth.c out of the linux kernel, hacked for dvb-device
  by Michael Holzt <kju\ ``debian``\ .org>
+
 
 
 .. _`dvb_net_ule`:

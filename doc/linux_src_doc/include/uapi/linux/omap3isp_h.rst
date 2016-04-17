@@ -4,16 +4,18 @@
 omap3isp.h
 ==========
 
+
 .. _`omap3isp_h3a_aewb_config`:
 
 struct omap3isp_h3a_aewb_config
 ===============================
 
-.. c:type:: struct omap3isp_h3a_aewb_config
+.. c:type:: omap3isp_h3a_aewb_config
 
-    AE AWB configuration reset values saturation_limit: Saturation limit.
+    AE AWB configuration reset values
 
 
+.. _`omap3isp_h3a_aewb_config.definition`:
 
 Definition
 ----------
@@ -35,6 +37,7 @@ Definition
   };
 
 
+.. _`omap3isp_h3a_aewb_config.members`:
 
 Members
 -------
@@ -76,16 +79,27 @@ Members
 
 
 
+
+.. _`omap3isp_h3a_aewb_config.saturation_limit`:
+
+saturation_limit
+----------------
+
+Saturation limit.
+
+
+
 .. _`omap3isp_stat_data`:
 
 struct omap3isp_stat_data
 =========================
 
-.. c:type:: struct omap3isp_stat_data
+.. c:type:: omap3isp_stat_data
 
     Statistic data sent to or received from user
 
 
+.. _`omap3isp_stat_data.definition`:
 
 Definition
 ----------
@@ -101,6 +115,7 @@ Definition
   };
 
 
+.. _`omap3isp_stat_data.members`:
 
 Members
 -------
@@ -122,16 +137,18 @@ Members
 
 
 
+
 .. _`omap3isp_ccdc_lsc_config`:
 
 struct omap3isp_ccdc_lsc_config
 ===============================
 
-.. c:type:: struct omap3isp_ccdc_lsc_config
+.. c:type:: omap3isp_ccdc_lsc_config
 
     LSC configuration
 
 
+.. _`omap3isp_ccdc_lsc_config.definition`:
 
 Definition
 ----------
@@ -153,6 +170,7 @@ Definition
   };
 
 
+.. _`omap3isp_ccdc_lsc_config.members`:
 
 Members
 -------
@@ -195,16 +213,18 @@ Members
 
 
 
+
 .. _`omap3isp_ccdc_bclamp`:
 
 struct omap3isp_ccdc_bclamp
 ===========================
 
-.. c:type:: struct omap3isp_ccdc_bclamp
+.. c:type:: omap3isp_ccdc_bclamp
 
     Optical \\\amp; Digital black clamp subtract
 
 
+.. _`omap3isp_ccdc_bclamp.definition`:
 
 Definition
 ----------
@@ -220,6 +240,7 @@ Definition
   };
 
 
+.. _`omap3isp_ccdc_bclamp.members`:
 
 Members
 -------
@@ -241,16 +262,18 @@ Members
 
 
 
+
 .. _`omap3isp_ccdc_fpc`:
 
 struct omap3isp_ccdc_fpc
 ========================
 
-.. c:type:: struct omap3isp_ccdc_fpc
+.. c:type:: omap3isp_ccdc_fpc
 
     Faulty Pixels Correction
 
 
+.. _`omap3isp_ccdc_fpc.definition`:
 
 Definition
 ----------
@@ -263,6 +286,7 @@ Definition
   };
 
 
+.. _`omap3isp_ccdc_fpc.members`:
 
 Members
 -------
@@ -275,16 +299,18 @@ Members
 
 
 
+
 .. _`omap3isp_ccdc_blcomp`:
 
 struct omap3isp_ccdc_blcomp
 ===========================
 
-.. c:type:: struct omap3isp_ccdc_blcomp
+.. c:type:: omap3isp_ccdc_blcomp
 
     Black Level Compensation parameters
 
 
+.. _`omap3isp_ccdc_blcomp.definition`:
 
 Definition
 ----------
@@ -299,6 +325,7 @@ Definition
   };
 
 
+.. _`omap3isp_ccdc_blcomp.members`:
 
 Members
 -------
@@ -317,16 +344,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_hmed`:
 
 struct omap3isp_prev_hmed
 =========================
 
-.. c:type:: struct omap3isp_prev_hmed
+.. c:type:: omap3isp_prev_hmed
 
     Horizontal Median Filter
 
 
+.. _`omap3isp_prev_hmed.definition`:
 
 Definition
 ----------
@@ -340,6 +369,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_hmed.members`:
 
 Members
 -------
@@ -356,16 +386,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_cfa`:
 
 struct omap3isp_prev_cfa
 ========================
 
-.. c:type:: struct omap3isp_prev_cfa
+.. c:type:: omap3isp_prev_cfa
 
     CFA Interpolation
 
 
+.. _`omap3isp_prev_cfa.definition`:
 
 Definition
 ----------
@@ -380,6 +412,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_cfa.members`:
 
 Members
 -------
@@ -398,16 +431,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_csup`:
 
 struct omap3isp_prev_csup
 =========================
 
-.. c:type:: struct omap3isp_prev_csup
+.. c:type:: omap3isp_prev_csup
 
     Chrominance Suppression
 
 
+.. _`omap3isp_prev_csup.definition`:
 
 Definition
 ----------
@@ -421,6 +456,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_csup.members`:
 
 Members
 -------
@@ -436,16 +472,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_wbal`:
 
 struct omap3isp_prev_wbal
 =========================
 
-.. c:type:: struct omap3isp_prev_wbal
+.. c:type:: omap3isp_prev_wbal
 
     White Balance
 
 
+.. _`omap3isp_prev_wbal.definition`:
 
 Definition
 ----------
@@ -461,6 +499,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_wbal.members`:
 
 Members
 -------
@@ -482,16 +521,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_blkadj`:
 
 struct omap3isp_prev_blkadj
 ===========================
 
-.. c:type:: struct omap3isp_prev_blkadj
+.. c:type:: omap3isp_prev_blkadj
 
     Black Level Adjustment
 
 
+.. _`omap3isp_prev_blkadj.definition`:
 
 Definition
 ----------
@@ -505,6 +546,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_blkadj.members`:
 
 Members
 -------
@@ -520,16 +562,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_rgbtorgb`:
 
 struct omap3isp_prev_rgbtorgb
 =============================
 
-.. c:type:: struct omap3isp_prev_rgbtorgb
+.. c:type:: omap3isp_prev_rgbtorgb
 
     RGB to RGB Blending
 
 
+.. _`omap3isp_prev_rgbtorgb.definition`:
 
 Definition
 ----------
@@ -542,6 +586,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_rgbtorgb.members`:
 
 Members
 -------
@@ -557,16 +602,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_csc`:
 
 struct omap3isp_prev_csc
 ========================
 
-.. c:type:: struct omap3isp_prev_csc
+.. c:type:: omap3isp_prev_csc
 
     Color Space Conversion from RGB-YCbYCr
 
 
+.. _`omap3isp_prev_csc.definition`:
 
 Definition
 ----------
@@ -579,6 +626,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_csc.members`:
 
 Members
 -------
@@ -594,16 +642,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_yclimit`:
 
 struct omap3isp_prev_yclimit
 ============================
 
-.. c:type:: struct omap3isp_prev_yclimit
+.. c:type:: omap3isp_prev_yclimit
 
     Y, C Value Limit
 
 
+.. _`omap3isp_prev_yclimit.definition`:
 
 Definition
 ----------
@@ -618,6 +668,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_yclimit.members`:
 
 Members
 -------
@@ -636,16 +687,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_dcor`:
 
 struct omap3isp_prev_dcor
 =========================
 
-.. c:type:: struct omap3isp_prev_dcor
+.. c:type:: omap3isp_prev_dcor
 
     Defect correction
 
 
+.. _`omap3isp_prev_dcor.definition`:
 
 Definition
 ----------
@@ -658,6 +711,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_dcor.members`:
 
 Members
 -------
@@ -670,16 +724,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_nf`:
 
 struct omap3isp_prev_nf
 =======================
 
-.. c:type:: struct omap3isp_prev_nf
+.. c:type:: omap3isp_prev_nf
 
     Noise Filter
 
 
+.. _`omap3isp_prev_nf.definition`:
 
 Definition
 ----------
@@ -692,6 +748,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_nf.members`:
 
 Members
 -------
@@ -704,16 +761,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_gtables`:
 
 struct omap3isp_prev_gtables
 ============================
 
-.. c:type:: struct omap3isp_prev_gtables
+.. c:type:: omap3isp_prev_gtables
 
     Gamma correction tables
 
 
+.. _`omap3isp_prev_gtables.definition`:
 
 Definition
 ----------
@@ -727,6 +786,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_gtables.members`:
 
 Members
 -------
@@ -742,16 +802,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_luma`:
 
 struct omap3isp_prev_luma
 =========================
 
-.. c:type:: struct omap3isp_prev_luma
+.. c:type:: omap3isp_prev_luma
 
     Luma enhancement
 
 
+.. _`omap3isp_prev_luma.definition`:
 
 Definition
 ----------
@@ -763,6 +825,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_luma.members`:
 
 Members
 -------
@@ -772,16 +835,18 @@ Members
 
 
 
+
 .. _`omap3isp_prev_update_config`:
 
 struct omap3isp_prev_update_config
 ==================================
 
-.. c:type:: struct omap3isp_prev_update_config
+.. c:type:: omap3isp_prev_update_config
 
     Preview engine configuration (user)
 
 
+.. _`omap3isp_prev_update_config.definition`:
 
 Definition
 ----------
@@ -807,6 +872,7 @@ Definition
   };
 
 
+.. _`omap3isp_prev_update_config.members`:
 
 Members
 -------
@@ -824,14 +890,12 @@ Members
     Pointer to luma enhancement structure.
 
 :``hmed``:
-    Pointer to structure containing the odd and even distance.::
-
-           between the pixels in the image along with the filter threshold.
+    Pointer to structure containing the odd and even distance.
+    between the pixels in the image along with the filter threshold.
 
 :``cfa``:
-    Pointer to structure containing the CFA interpolation table, CFA.::
-
-          format in the image, vertical and horizontal gradient threshold.
+    Pointer to structure containing the CFA interpolation table, CFA.
+    format in the image, vertical and horizontal gradient threshold.
 
 :``csup``:
     Pointer to Structure for Chrominance Suppression coefficients.

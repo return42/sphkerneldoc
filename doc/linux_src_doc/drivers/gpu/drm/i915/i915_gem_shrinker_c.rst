@@ -4,6 +4,7 @@
 i915_gem_shrinker.c
 ===================
 
+
 .. _`i915_gem_shrink`:
 
 i915_gem_shrink
@@ -21,6 +22,7 @@ i915_gem_shrink
 
     :param unsigned flags:
         control flags for selecting cache types
+
 
 
 .. _`i915_gem_shrink.description`:
@@ -43,8 +45,15 @@ Also note that any kind of pinning (both per-vma address space pins and
 backing storage pins at the buffer object level) result in the shrinker code
 having to skip the object.
 
-Returns:
+
+
+.. _`i915_gem_shrink.returns`:
+
+Returns
+-------
+
 The number of pages of backing storage actually released.
+
 
 
 .. _`i915_gem_shrink_all`:
@@ -60,6 +69,7 @@ i915_gem_shrink_all
         i915 device
 
 
+
 .. _`i915_gem_shrink_all.description`:
 
 Description
@@ -72,8 +82,15 @@ requests to also be able to release backing storage for active objects.
 This should only be used in code to intentionally quiescent the gpu or as a
 last-ditch effort when memory seems to have run out.
 
-Returns:
+
+
+.. _`i915_gem_shrink_all.returns`:
+
+Returns
+-------
+
 The number of pages of backing storage actually released.
+
 
 
 .. _`i915_gem_shrinker_init`:
@@ -89,12 +106,14 @@ i915_gem_shrinker_init
         i915 device
 
 
+
 .. _`i915_gem_shrinker_init.description`:
 
 Description
 -----------
 
 This function registers and sets up the i915 shrinker and OOM handler.
+
 
 
 .. _`i915_gem_shrinker_cleanup`:
@@ -108,6 +127,7 @@ i915_gem_shrinker_cleanup
 
     :param struct drm_i915_private \*dev_priv:
         i915 device
+
 
 
 .. _`i915_gem_shrinker_cleanup.description`:

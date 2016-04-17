@@ -4,6 +4,7 @@
 capability.h
 ============
 
+
 .. _`cap_chown`:
 
 CAP_CHOWN
@@ -12,6 +13,7 @@ CAP_CHOWN
 .. c:function:: CAP_CHOWN ()
 
     draft defined capabilities.
+
 
 
 .. _`cap_setpcap`:

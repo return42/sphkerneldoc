@@ -4,12 +4,14 @@
 phonet.h
 ========
 
+
 .. _`_uapilinux_phonet_h`:
 
 _UAPILINUX_PHONET_H
 ===================
 
 .. c:function:: _UAPILINUX_PHONET_H ()
+
 
 
 .. _`_uapilinux_phonet_h.description`:

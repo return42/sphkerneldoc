@@ -4,16 +4,18 @@
 v4l2-subdev.h
 =============
 
+
 .. _`v4l2_subdev_core_ops`:
 
 struct v4l2_subdev_core_ops
 ===========================
 
-.. c:type:: struct v4l2_subdev_core_ops
+.. c:type:: v4l2_subdev_core_ops
 
     Define core ops callbacks for subdevs
 
 
+.. _`v4l2_subdev_core_ops.definition`:
 
 Definition
 ----------
@@ -50,6 +52,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_core_ops.members`:
 
 Members
 -------
@@ -104,9 +107,8 @@ Members
     callback for VIDIOC_QUERYMENU ioctl handler code.
 
 :``ioctl``:
-    called at the end of :c:func:`ioctl` syscall handler at the V4L2 core.::
-
-               used to provide support for private ioctls used on the driver.
+    called at the end of :c:func:`ioctl` syscall handler at the V4L2 core.
+    used to provide support for private ioctls used on the driver.
 
 :``compat_ioctl32``:
     called when a 32 bits application uses a 64 bits Kernel,
@@ -140,16 +142,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_tuner_ops`:
 
 struct v4l2_subdev_tuner_ops
 ============================
 
-.. c:type:: struct v4l2_subdev_tuner_ops
+.. c:type:: v4l2_subdev_tuner_ops
 
     Callbacks used when v4l device was opened in radio mode.
 
 
+.. _`v4l2_subdev_tuner_ops.definition`:
 
 Definition
 ----------
@@ -170,6 +174,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_tuner_ops.members`:
 
 Members
 -------
@@ -181,10 +186,9 @@ Members
     callback for VIDIOC_S_FREQUENCY ioctl handler code.
 
 :``g_frequency``:
-    callback for VIDIOC_G_FREQUENCY ioctl handler code.::
-
-                     freq->type must be filled in. Normally done by video_ioctl2
-                    or the bridge driver.
+    callback for VIDIOC_G_FREQUENCY ioctl handler code.
+    freq->type must be filled in. Normally done by video_ioctl2
+    or the bridge driver.
 
 :``enum_freq_bands``:
     callback for VIDIOC_ENUM_FREQ_BANDS ioctl handler code.
@@ -211,16 +215,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_audio_ops`:
 
 struct v4l2_subdev_audio_ops
 ============================
 
-.. c:type:: struct v4l2_subdev_audio_ops
+.. c:type:: v4l2_subdev_audio_ops
 
     Callbacks used for audio-related settings
 
 
+.. _`v4l2_subdev_audio_ops.definition`:
 
 Definition
 ----------
@@ -235,17 +241,17 @@ Definition
   };
 
 
+.. _`v4l2_subdev_audio_ops.members`:
 
 Members
 -------
 
 :``s_clock_freq``:
-    set the frequency (in Hz) of the audio clock output.::
-
-            Used to slave an audio processor to the video decoder, ensuring that
-            audio and video remain synchronized. Usual values for the frequency
-            are 48000, 44100 or 32000 Hz. If the frequency is not supported, then
-            -EINVAL is returned.
+    set the frequency (in Hz) of the audio clock output.
+    Used to slave an audio processor to the video decoder, ensuring that
+    audio and video remain synchronized. Usual values for the frequency
+    are 48000, 44100 or 32000 Hz. If the frequency is not supported, then
+    -EINVAL is returned.
 
 :``s_i2s_clock_freq``:
     sets I2S speed in bps. This is used to provide a standard
@@ -269,16 +275,18 @@ Members
 
 
 
+
 .. _`v4l2_mbus_frame_desc_entry`:
 
 struct v4l2_mbus_frame_desc_entry
 =================================
 
-.. c:type:: struct v4l2_mbus_frame_desc_entry
+.. c:type:: v4l2_mbus_frame_desc_entry
 
     media bus frame description structure
 
 
+.. _`v4l2_mbus_frame_desc_entry.definition`:
 
 Definition
 ----------
@@ -292,12 +300,13 @@ Definition
   };
 
 
+.. _`v4l2_mbus_frame_desc_entry.members`:
 
 Members
 -------
 
 :``flags``:
-    V4L2_MBUS_FRAME_DESC_FL_\* flags
+    V4L2_MBUS_FRAME_DESC_FL\_\* flags
 
 :``pixelcode``:
     media bus pixel code, valid if FRAME_DESC_FL_BLOB is not set
@@ -308,16 +317,18 @@ Members
 
 
 
+
 .. _`v4l2_mbus_frame_desc`:
 
 struct v4l2_mbus_frame_desc
 ===========================
 
-.. c:type:: struct v4l2_mbus_frame_desc
+.. c:type:: v4l2_mbus_frame_desc
 
     media bus data frame description
 
 
+.. _`v4l2_mbus_frame_desc.definition`:
 
 Definition
 ----------
@@ -330,6 +341,7 @@ Definition
   };
 
 
+.. _`v4l2_mbus_frame_desc.members`:
 
 Members
 -------
@@ -342,16 +354,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_video_ops`:
 
 struct v4l2_subdev_video_ops
 ============================
 
-.. c:type:: struct v4l2_subdev_video_ops
+.. c:type:: v4l2_subdev_video_ops
 
     Callbacks used when v4l device was opened in video mode.
 
 
+.. _`v4l2_subdev_video_ops.definition`:
 
 Definition
 ----------
@@ -386,6 +400,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_video_ops.members`:
 
 Members
 -------
@@ -480,16 +495,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_vbi_ops`:
 
 struct v4l2_subdev_vbi_ops
 ==========================
 
-.. c:type:: struct v4l2_subdev_vbi_ops
+.. c:type:: v4l2_subdev_vbi_ops
 
     Callbacks used when v4l device was opened in video mode via the vbi device node.
 
 
+.. _`v4l2_subdev_vbi_ops.definition`:
 
 Definition
 ----------
@@ -507,6 +524,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_vbi_ops.members`:
 
 Members
 -------
@@ -522,21 +540,19 @@ Members
     type field is set to 0 on return.
 
 :``s_vbi_data``:
-    used to generate VBI signals on a video signal.::
-
-            v4l2_sliced_vbi_data is filled with the data packets that should be
-            output. Note that if you set the line field to 0, then that VBI signal
-            is disabled. If no valid VBI data was found, then the type field is
-            set to 0 on return.
+    used to generate VBI signals on a video signal.
+    v4l2_sliced_vbi_data is filled with the data packets that should be
+    output. Note that if you set the line field to 0, then that VBI signal
+    is disabled. If no valid VBI data was found, then the type field is
+    set to 0 on return.
 
 :``g_vbi_data``:
-    used to obtain the sliced VBI packet from a readback register.::
-
-            Not all video decoders support this. If no data is available because
-            the readback register contains invalid or erroneous data -EIO is
-            returned. Note that you must fill in the 'id' member and the 'field'
-            member (to determine whether CC data from the first or second field
-            should be obtained).
+    used to obtain the sliced VBI packet from a readback register.
+    Not all video decoders support this. If no data is available because
+    the readback register contains invalid or erroneous data -EIO is
+    returned. Note that you must fill in the 'id' member and the 'field'
+    member (to determine whether CC data from the first or second field
+    should be obtained).
 
 :``g_sliced_vbi_cap``:
     callback for VIDIOC_SLICED_VBI_CAP ioctl handler code.
@@ -552,16 +568,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_sensor_ops`:
 
 struct v4l2_subdev_sensor_ops
 =============================
 
-.. c:type:: struct v4l2_subdev_sensor_ops
+.. c:type:: v4l2_subdev_sensor_ops
 
     v4l2-subdev sensor operations
 
 
+.. _`v4l2_subdev_sensor_ops.definition`:
 
 Definition
 ----------
@@ -574,16 +592,16 @@ Definition
   };
 
 
+.. _`v4l2_subdev_sensor_ops.members`:
 
 Members
 -------
 
 :``g_skip_top_lines``:
-    number of lines at the top of the image to be skipped.::
-
-                          This is needed for some sensors, which always corrupt
-                          several top lines of the output image, or which send their
-                          metadata in them.
+    number of lines at the top of the image to be skipped.
+    This is needed for some sensors, which always corrupt
+    several top lines of the output image, or which send their
+    metadata in them.
 
 :``g_skip_frames``:
     number of frames to skip at stream start. This is needed for
@@ -592,16 +610,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_pad_ops`:
 
 struct v4l2_subdev_pad_ops
 ==========================
 
-.. c:type:: struct v4l2_subdev_pad_ops
+.. c:type:: v4l2_subdev_pad_ops
 
     v4l2-subdev pad level operations
 
 
+.. _`v4l2_subdev_pad_ops.definition`:
 
 Definition
 ----------
@@ -628,6 +648,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_pad_ops.members`:
 
 Members
 -------

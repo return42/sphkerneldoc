@@ -4,16 +4,18 @@
 matrix_keypad.h
 ===============
 
+
 .. _`matrix_keymap_data`:
 
 struct matrix_keymap_data
 =========================
 
-.. c:type:: struct matrix_keymap_data
+.. c:type:: matrix_keymap_data
 
     keymap for matrix keyboards
 
 
+.. _`matrix_keymap_data.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`matrix_keymap_data.members`:
 
 Members
 -------
@@ -39,6 +42,9 @@ Members
 
 
 
+
+.. _`matrix_keymap_data.description`:
+
 Description
 -----------
 
@@ -46,16 +52,18 @@ This structure is supposed to be used by platform code to supply
 keymaps to drivers that implement matrix-like keypads/keyboards.
 
 
+
 .. _`matrix_keypad_platform_data`:
 
 struct matrix_keypad_platform_data
 ==================================
 
-.. c:type:: struct matrix_keypad_platform_data
+.. c:type:: matrix_keypad_platform_data
 
     platform-dependent keypad data
 
 
+.. _`matrix_keypad_platform_data.definition`:
 
 Definition
 ----------
@@ -78,6 +86,7 @@ Definition
   };
 
 
+.. _`matrix_keypad_platform_data.members`:
 
 Members
 -------
@@ -123,11 +132,15 @@ Members
 
 
 
+
+.. _`matrix_keypad_platform_data.description`:
+
 Description
 -----------
 
 This structure represents platform-specific data that use used by
 matrix_keypad driver to perform proper initialization.
+
 
 
 .. _`matrix_keypad_parse_of_params`:

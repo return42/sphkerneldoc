@@ -7,4 +7,6 @@ hotplug
 .. toctree::
    :maxdepth: 1
 
-   pci_hotplug_core_c
+   acpi_pcihp_c
+   acpiphp_core_c
+   rpaphp_core_c

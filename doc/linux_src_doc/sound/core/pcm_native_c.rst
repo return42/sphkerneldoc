@@ -4,6 +4,7 @@
 pcm_native.c
 ============
 
+
 .. _`snd_pcm_stream_lock`:
 
 snd_pcm_stream_lock
@@ -17,6 +18,7 @@ snd_pcm_stream_lock
         PCM substream
 
 
+
 .. _`snd_pcm_stream_lock.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 This locks the PCM stream's spinlock or mutex depending on the nonatomic
 flag of the given substream.  This also takes the global link rw lock
 (or rw sem), too, for avoiding the race with linked streams.
+
 
 
 .. _`snd_pcm_stream_unlock`:
@@ -40,12 +43,14 @@ snd_pcm_stream_unlock
         PCM substream
 
 
+
 .. _`snd_pcm_stream_unlock.description`:
 
 Description
 -----------
 
 This unlocks the PCM stream that has been locked via :c:func:`snd_pcm_stream_lock`.
+
 
 
 .. _`snd_pcm_stream_lock_irq`:
@@ -61,6 +66,7 @@ snd_pcm_stream_lock_irq
         PCM substream
 
 
+
 .. _`snd_pcm_stream_lock_irq.description`:
 
 Description
@@ -69,6 +75,7 @@ Description
 This locks the PCM stream like :c:func:`snd_pcm_stream_lock` and disables the local
 IRQ (only when nonatomic is false).  In nonatomic case, this is identical
 as :c:func:`snd_pcm_stream_lock`.
+
 
 
 .. _`snd_pcm_stream_unlock_irq`:
@@ -84,12 +91,14 @@ snd_pcm_stream_unlock_irq
         PCM substream
 
 
+
 .. _`snd_pcm_stream_unlock_irq.description`:
 
 Description
 -----------
 
 This is a counter-part of :c:func:`snd_pcm_stream_lock_irq`.
+
 
 
 .. _`snd_pcm_stream_unlock_irqrestore`:
@@ -108,12 +117,14 @@ snd_pcm_stream_unlock_irqrestore
         irq flags
 
 
+
 .. _`snd_pcm_stream_unlock_irqrestore.description`:
 
 Description
 -----------
 
 This is a counter-part of :c:func:`snd_pcm_stream_lock_irqsave`.
+
 
 
 .. _`snd_pcm_start`:
@@ -129,12 +140,14 @@ snd_pcm_start
         the PCM substream instance
 
 
-.. _`snd_pcm_start.description`:
 
-Description
------------
+.. _`snd_pcm_start.return`:
 
-Return: Zero if successful, or a negative error code.
+Return
+------
+
+Zero if successful, or a negative error code.
+
 
 
 .. _`snd_pcm_stop`:
@@ -153,6 +166,7 @@ snd_pcm_stop
         PCM state after stopping the stream
 
 
+
 .. _`snd_pcm_stop.description`:
 
 Description
@@ -160,7 +174,15 @@ Description
 
 The state of each stream is then changed to the given state unconditionally.
 
-Return: Zero if successful, or a negative error code.
+
+
+.. _`snd_pcm_stop.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code.
+
 
 
 .. _`snd_pcm_drain_done`:
@@ -176,6 +198,7 @@ snd_pcm_drain_done
         the PCM substream
 
 
+
 .. _`snd_pcm_drain_done.description`:
 
 Description
@@ -184,7 +207,15 @@ Description
 After stopping, the state is changed to SETUP.
 Unlike :c:func:`snd_pcm_stop`, this affects only the given stream.
 
-Return: Zero if succesful, or a negative error code.
+
+
+.. _`snd_pcm_drain_done.return`:
+
+Return
+------
+
+Zero if succesful, or a negative error code.
+
 
 
 .. _`snd_pcm_stop_xrun`:
@@ -200,6 +231,7 @@ snd_pcm_stop_xrun
         the PCM substream instance
 
 
+
 .. _`snd_pcm_stop_xrun.description`:
 
 Description
@@ -208,7 +240,15 @@ Description
 This stops the given running substream (and all linked substreams) as XRUN.
 Unlike :c:func:`snd_pcm_stop`, this function takes the substream lock by itself.
 
-Return: Zero if successful, or a negative error code.
+
+
+.. _`snd_pcm_stop_xrun.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code.
+
 
 
 .. _`snd_pcm_suspend`:
@@ -224,6 +264,7 @@ snd_pcm_suspend
         the PCM substream
 
 
+
 .. _`snd_pcm_suspend.description`:
 
 Description
@@ -231,8 +272,16 @@ Description
 
 After this call, all streams are changed to SUSPENDED state.
 
-Return: Zero if successful (or ``substream`` is ``NULL``\ ), or a negative error
+
+
+.. _`snd_pcm_suspend.return`:
+
+Return
+------
+
+Zero if successful (or ``substream`` is ``NULL``\ ), or a negative error
 code.
+
 
 
 .. _`snd_pcm_suspend_all`:
@@ -248,6 +297,7 @@ snd_pcm_suspend_all
         the PCM instance
 
 
+
 .. _`snd_pcm_suspend_all.description`:
 
 Description
@@ -255,7 +305,15 @@ Description
 
 After this call, all streams are changed to SUSPENDED state.
 
-Return: Zero if successful (or ``pcm`` is ``NULL``\ ), or a negative error code.
+
+
+.. _`snd_pcm_suspend_all.return`:
+
+Return
+------
+
+Zero if successful (or ``pcm`` is ``NULL``\ ), or a negative error code.
+
 
 
 .. _`snd_pcm_prepare`:
@@ -274,12 +332,14 @@ snd_pcm_prepare
         file to refer f_flags
 
 
-.. _`snd_pcm_prepare.description`:
 
-Description
------------
+.. _`snd_pcm_prepare.return`:
 
-Return: Zero if successful, or a negative error code.
+Return
+------
+
+Zero if successful, or a negative error code.
+
 
 
 .. _`snd_pcm_lib_default_mmap`:
@@ -298,6 +358,7 @@ snd_pcm_lib_default_mmap
         VMA
 
 
+
 .. _`snd_pcm_lib_default_mmap.description`:
 
 Description
@@ -305,6 +366,7 @@ Description
 
 This is the default mmap handler for PCM data.  When mmap pcm_ops is NULL,
 this function is invoked implicitly.
+
 
 
 .. _`snd_pcm_lib_mmap_iomem`:
@@ -321,6 +383,7 @@ snd_pcm_lib_mmap_iomem
 
     :param struct vm_area_struct \*area:
         VMA
+
 
 
 .. _`snd_pcm_lib_mmap_iomem.description`:

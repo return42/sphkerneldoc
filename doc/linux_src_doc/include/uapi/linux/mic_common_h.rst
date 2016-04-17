@@ -4,16 +4,18 @@
 mic_common.h
 ============
 
+
 .. _`mic_device_desc`:
 
 struct mic_device_desc
 ======================
 
-.. c:type:: struct mic_device_desc
+.. c:type:: mic_device_desc
 
     
 
 
+.. _`mic_device_desc.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`mic_device_desc.members`:
 
 Members
 -------
@@ -54,10 +57,14 @@ Members
 
 
 
+
+.. _`mic_device_desc.description`:
+
 Description
 -----------
 
 virtio driver and userspace backend
+
 
 
 .. _`mic_device_ctrl`:
@@ -65,11 +72,12 @@ virtio driver and userspace backend
 struct mic_device_ctrl
 ======================
 
-.. c:type:: struct mic_device_ctrl
+.. c:type:: mic_device_ctrl
 
     
 
 
+.. _`mic_device_ctrl.definition`:
 
 Definition
 ----------
@@ -88,6 +96,7 @@ Definition
   };
 
 
+.. _`mic_device_ctrl.members`:
 
 Members
 -------
@@ -119,10 +128,14 @@ Members
 
 
 
+
+.. _`mic_device_ctrl.description`:
+
 Description
 -----------
 
 used internally by the host and card side drivers.
+
 
 
 .. _`mic_bootparam`:
@@ -130,11 +143,12 @@ used internally by the host and card side drivers.
 struct mic_bootparam
 ====================
 
-.. c:type:: struct mic_bootparam
+.. c:type:: mic_bootparam
 
     
 
 
+.. _`mic_bootparam.definition`:
 
 Definition
 ----------
@@ -148,6 +162,7 @@ Definition
   };
 
 
+.. _`mic_bootparam.members`:
 
 Members
 -------
@@ -167,16 +182,18 @@ Members
 
 
 
+
 .. _`mic_device_page`:
 
 struct mic_device_page
 ======================
 
-.. c:type:: struct mic_device_page
+.. c:type:: mic_device_page
 
     
 
 
+.. _`mic_device_page.definition`:
 
 Definition
 ----------
@@ -189,6 +206,7 @@ Definition
   };
 
 
+.. _`mic_device_page.members`:
 
 Members
 -------
@@ -202,16 +220,18 @@ Members
 
 
 
+
 .. _`mic_vqconfig`:
 
 struct mic_vqconfig
 ===================
 
-.. c:type:: struct mic_vqconfig
+.. c:type:: mic_vqconfig
 
     
 
 
+.. _`mic_vqconfig.definition`:
 
 Definition
 ----------
@@ -225,6 +245,7 @@ Definition
   };
 
 
+.. _`mic_vqconfig.members`:
 
 Members
 -------
@@ -241,10 +262,14 @@ Members
 
 
 
+
+.. _`mic_vqconfig.description`:
+
 Description
 -----------
 
 for a virtqueue to be laid out in config space.
+
 
 
 .. _`mic_max_desc_blk_size`:
@@ -253,6 +278,7 @@ MIC_MAX_DESC_BLK_SIZE
 =====================
 
 .. c:function:: MIC_MAX_DESC_BLK_SIZE ()
+
 
 
 .. _`mic_max_desc_blk_size.description`:
@@ -266,16 +292,18 @@ Description
 - virtio device config space
 
 
+
 .. _`_mic_vring_info`:
 
 struct _mic_vring_info
 ======================
 
-.. c:type:: struct _mic_vring_info
+.. c:type:: _mic_vring_info
 
     Host vring info exposed to userspace backend for the avail index and magic for the card.
 
 
+.. _`_mic_vring_info.definition`:
 
 Definition
 ----------
@@ -288,6 +316,7 @@ Definition
   };
 
 
+.. _`_mic_vring_info.members`:
 
 Members
 -------
@@ -300,16 +329,18 @@ Members
 
 
 
+
 .. _`mic_vring`:
 
 struct mic_vring
 ================
 
-.. c:type:: struct mic_vring
+.. c:type:: mic_vring
 
     Vring information.
 
 
+.. _`mic_vring.definition`:
 
 Definition
 ----------
@@ -324,6 +355,7 @@ Definition
   };
 
 
+.. _`mic_vring.members`:
 
 Members
 -------
@@ -343,40 +375,60 @@ Members
 
 
 
+
 .. _`mic_states`:
 
 enum mic_states
 ===============
 
-.. c:type:: enum mic_states
+.. c:type:: mic_states
 
     MIC states.
 
 
+.. _`mic_states.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mic_states {
+      MIC_READY,
+      MIC_BOOTING,
+      MIC_ONLINE,
+      MIC_SHUTTING_DOWN,
+      MIC_RESETTING,
+      MIC_RESET_FAILED,
+      MIC_LAST
+    };
+
+
+.. _`mic_states.constants`:
 
 Constants
 ---------
 
 :``MIC_READY``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_BOOTING``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_ONLINE``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_SHUTTING_DOWN``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_RESETTING``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_RESET_FAILED``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_LAST``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`mic_status`:
@@ -384,30 +436,47 @@ Constants
 enum mic_status
 ===============
 
-.. c:type:: enum mic_status
+.. c:type:: mic_status
 
     MIC status reported by card after a host or card initiated shutdown or a card crash.
 
 
+.. _`mic_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mic_status {
+      MIC_NOP,
+      MIC_CRASHED,
+      MIC_HALTED,
+      MIC_POWER_OFF,
+      MIC_RESTART,
+      MIC_STATUS_LAST
+    };
+
+
+.. _`mic_status.constants`:
 
 Constants
 ---------
 
 :``MIC_NOP``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_CRASHED``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_HALTED``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_POWER_OFF``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_RESTART``:
-    -- undescribed --
+-- undescribed --
 
 :``MIC_STATUS_LAST``:
-    -- undescribed --
-
+-- undescribed --

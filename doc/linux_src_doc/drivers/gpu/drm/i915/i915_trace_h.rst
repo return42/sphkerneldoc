@@ -4,6 +4,7 @@
 i915_trace.h
 ============
 
+
 .. _`i915_ppgtt_create-and-i915_ppgtt_release-tracepoints`:
 
 i915_ppgtt_create and i915_ppgtt_release tracepoints
@@ -17,6 +18,7 @@ These traces identify the ppgtt through the vm pointer, which is also printed
 by the i915_vma_bind and i915_vma_unbind tracepoints.
 
 
+
 .. _`i915_context_create-and-i915_context_free-tracepoints`:
 
 i915_context_create and i915_context_free tracepoints
@@ -25,6 +27,7 @@ i915_context_create and i915_context_free tracepoints
 These tracepoints are used to track creation and deletion of contexts.
 If full ppgtt is enabled, they also print the address of the vm assigned to
 the context.
+
 
 
 .. _`switch_mm-tracepoint`:

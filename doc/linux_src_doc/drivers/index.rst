@@ -8,33 +8,95 @@ drivers
    :maxdepth: 1
 
    acpi/index
+   amba/index
    ata/index
    base/index
+   block/index
+   bluetooth/index
+   bus/index
    char/index
-   dma-buf/index
+   clk/index
+   cpufreq/index
+   cpuidle/index
+   crypto/index
+   dca/index
+   devfreq/index
+   dio/index
+   dma/index
+   edac/index
+   extcon/index
+   firewire/index
    firmware/index
+   fpga/index
+   gpio/index
    gpu/index
+   hid/index
    hsi/index
+   hv/index
+   hwmon/index
+   hwspinlock/index
+   hwtracing/index
    i2c/index
+   ide/index
    iio/index
+   infiniband/index
    input/index
+   iommu/index
+   irqchip/index
+   isdn/index
+   leds/index
+   macintosh/index
+   mailbox/index
+   mcb/index
+   md/index
    media/index
+   memory/index
+   memstick/index
    message/index
+   mfd/index
+   misc/index
+   mmc/index
    mtd/index
    net/index
+   nfc/index
+   ntb/index
+   nvdimm/index
+   nvme/index
+   nvmem/index
+   of/index
+   parisc/index
    parport/index
    pci/index
+   pcmcia/index
+   phy/index
+   pinctrl/index
    platform/index
-   pnp/index
-   pwm/index
+   power/index
+   ps3/index
+   ptp/index
    rapidio/index
    regulator/index
+   remoteproc/index
+   reset/index
+   rpmsg/index
+   rtc/index
    s390/index
    scsi/index
    sh/index
+   soc/index
    spi/index
+   spmi/index
+   staging/index
+   target/index
+   tc/index
+   thermal/index
    tty/index
-   uio/index
    usb/index
+   uwb/index
+   vfio/index
+   vhost/index
    video/index
+   virtio/index
    w1/index
+   watchdog/index
+   xen/index

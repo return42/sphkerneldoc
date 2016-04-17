@@ -4,6 +4,7 @@
 drm_pci.c
 =========
 
+
 .. _`drm_pci_alloc`:
 
 drm_pci_alloc
@@ -23,13 +24,15 @@ drm_pci_alloc
         alignment of block
 
 
-.. _`drm_pci_alloc.description`:
 
-Description
------------
+.. _`drm_pci_alloc.return`:
 
-Return: A handle to the allocated memory block on success or NULL on
+Return
+------
+
+A handle to the allocated memory block on success or NULL on
 failure.
+
 
 
 .. _`drm_pci_free`:
@@ -46,6 +49,7 @@ drm_pci_free
 
     :param drm_dma_handle_t \*dmah:
         handle to memory block
+
 
 
 .. _`drm_irq_by_busid`:
@@ -67,6 +71,7 @@ drm_irq_by_busid
         DRM file private.
 
 
+
 .. _`drm_irq_by_busid.description`:
 
 Description
@@ -76,7 +81,15 @@ Finds the PCI device with the specified bus id and gets its IRQ number.
 This IOCTL is deprecated, and will now return EINVAL for any busid not equal
 to that of the device that this DRM instance attached to.
 
-Return: 0 on success or a negative error code on failure.
+
+
+.. _`drm_irq_by_busid.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`drm_get_pci_dev`:
@@ -98,6 +111,7 @@ drm_get_pci_dev
         DRM device driver
 
 
+
 .. _`drm_get_pci_dev.description`:
 
 Description
@@ -107,10 +121,25 @@ Attempt to gets inter module "drm" information. If we are first
 then register the character device and inter module information.
 Try and register, if we fail to register, backout previous work.
 
-NOTE: This function is deprecated, please use :c:func:`drm_dev_alloc` and
+
+
+.. _`drm_get_pci_dev.note`:
+
+NOTE
+----
+
+This function is deprecated, please use :c:func:`drm_dev_alloc` and
 :c:func:`drm_dev_register` instead and remove your ->:c:func:`load` callback.
 
-Return: 0 on success or a negative error code on failure.
+
+
+.. _`drm_get_pci_dev.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`drm_pci_init`:
@@ -129,6 +158,7 @@ drm_pci_init
         PCI device driver
 
 
+
 .. _`drm_pci_init.description`:
 
 Description
@@ -137,11 +167,26 @@ Description
 Initializes a drm_device structures, registering the stubs and initializing
 the AGP device.
 
-NOTE: This function is deprecated. Modern modesetting drm drivers should use
+
+
+.. _`drm_pci_init.note`:
+
+NOTE
+----
+
+This function is deprecated. Modern modesetting drm drivers should use
 :c:func:`pci_register_driver` directly, this function only provides shadow-binding
 support for old legacy drivers on top of that core pci function.
 
-Return: 0 on success or a negative error code on failure.
+
+
+.. _`drm_pci_init.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`drm_pci_exit`:
@@ -160,6 +205,7 @@ drm_pci_exit
         PCI device driver
 
 
+
 .. _`drm_pci_exit.description`:
 
 Description
@@ -168,7 +214,14 @@ Description
 Unregisters one or more devices matched by a PCI driver from the DRM
 subsystem.
 
-NOTE: This function is deprecated. Modern modesetting drm drivers should use
+
+
+.. _`drm_pci_exit.note`:
+
+NOTE
+----
+
+This function is deprecated. Modern modesetting drm drivers should use
 :c:func:`pci_unregister_driver` directly, this function only provides shadow-binding
 support for old legacy drivers on top of that core pci function.
 

@@ -4,6 +4,7 @@
 pcm.c
 =====
 
+
 .. _`snd_pcm_format_name`:
 
 snd_pcm_format_name
@@ -15,6 +16,7 @@ snd_pcm_format_name
 
     :param snd_pcm_format_t format:
         PCM format
+
 
 
 .. _`snd_pcm_new_stream`:
@@ -36,6 +38,7 @@ snd_pcm_new_stream
         the number of substreams
 
 
+
 .. _`snd_pcm_new_stream.description`:
 
 Description
@@ -46,7 +49,15 @@ The corresponding stream on the pcm must have been empty before
 calling this, i.e. zero must be given to the argument of
 :c:func:`snd_pcm_new`.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_new_stream.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_new`:
@@ -77,6 +88,7 @@ snd_pcm_new
         the pointer to store the new pcm instance
 
 
+
 .. _`snd_pcm_new.description`:
 
 Description
@@ -87,7 +99,15 @@ Creates a new PCM instance.
 The pcm operators have to be set afterwards to the new instance
 via :c:func:`snd_pcm_set_ops`.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_new.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_new_internal`:
@@ -118,6 +138,7 @@ snd_pcm_new_internal
         the pointer to store the new pcm instance
 
 
+
 .. _`snd_pcm_new_internal.description`:
 
 Description
@@ -132,7 +153,15 @@ and access to any private data.
 The pcm operators have to be set afterwards to the new instance
 via :c:func:`snd_pcm_set_ops`.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_new_internal.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_notify`:
@@ -149,6 +178,7 @@ snd_pcm_notify
 
     :param int nfree:
         0 = register, 1 = unregister
+
 
 
 .. _`snd_pcm_notify.description`:

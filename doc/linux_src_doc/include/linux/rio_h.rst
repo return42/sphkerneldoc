@@ -4,16 +4,18 @@
 rio.h
 =====
 
+
 .. _`rio_switch`:
 
 struct rio_switch
 =================
 
-.. c:type:: struct rio_switch
+.. c:type:: rio_switch
 
     RIO switch info
 
 
+.. _`rio_switch.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`rio_switch.members`:
 
 Members
 -------
@@ -54,16 +57,18 @@ Members
 
 
 
+
 .. _`rio_switch_ops`:
 
 struct rio_switch_ops
 =====================
 
-.. c:type:: struct rio_switch_ops
+.. c:type:: rio_switch_ops
 
     Per-switch operations
 
 
+.. _`rio_switch_ops.definition`:
 
 Definition
 ----------
@@ -82,6 +87,7 @@ Definition
   };
 
 
+.. _`rio_switch_ops.members`:
 
 Members
 -------
@@ -112,6 +118,9 @@ Members
 
 
 
+
+.. _`rio_switch_ops.description`:
+
 Description
 -----------
 
@@ -119,16 +128,18 @@ Defines the operations that are necessary to initialize/control
 a particular RIO switch device.
 
 
+
 .. _`rio_dev`:
 
 struct rio_dev
 ==============
 
-.. c:type:: struct rio_dev
+.. c:type:: rio_dev
 
     RIO device info
 
 
+.. _`rio_dev.definition`:
 
 Definition
 ----------
@@ -167,6 +178,7 @@ Definition
   };
 
 
+.. _`rio_dev.members`:
 
 Members
 -------
@@ -257,16 +269,18 @@ Members
 
 
 
+
 .. _`rio_msg`:
 
 struct rio_msg
 ==============
 
-.. c:type:: struct rio_msg
+.. c:type:: rio_msg
 
     RIO message event
 
 
+.. _`rio_msg.definition`:
 
 Definition
 ----------
@@ -279,6 +293,7 @@ Definition
   };
 
 
+.. _`rio_msg.members`:
 
 Members
 -------
@@ -291,16 +306,18 @@ Members
 
 
 
+
 .. _`rio_dbell`:
 
 struct rio_dbell
 ================
 
-.. c:type:: struct rio_dbell
+.. c:type:: rio_dbell
 
     RIO doorbell event
 
 
+.. _`rio_dbell.definition`:
 
 Definition
 ----------
@@ -315,6 +332,7 @@ Definition
   };
 
 
+.. _`rio_dbell.members`:
 
 Members
 -------
@@ -333,16 +351,18 @@ Members
 
 
 
+
 .. _`rio_mport`:
 
 struct rio_mport
 ================
 
-.. c:type:: struct rio_mport
+.. c:type:: rio_mport
 
     RIO master port info
 
 
+.. _`rio_mport.definition`:
 
 Definition
 ----------
@@ -379,6 +399,7 @@ Definition
   };
 
 
+.. _`rio_mport.members`:
 
 Members
 -------
@@ -457,16 +478,18 @@ Members
 
 
 
+
 .. _`rio_net`:
 
 struct rio_net
 ==============
 
-.. c:type:: struct rio_net
+.. c:type:: rio_net
 
     RIO network info
 
 
+.. _`rio_net.definition`:
 
 Definition
 ----------
@@ -486,6 +509,7 @@ Definition
   };
 
 
+.. _`rio_net.members`:
 
 Members
 -------
@@ -519,16 +543,18 @@ Members
 
 
 
+
 .. _`rio_mport_attr`:
 
 struct rio_mport_attr
 =====================
 
-.. c:type:: struct rio_mport_attr
+.. c:type:: rio_mport_attr
 
     RIO mport device attributes
 
 
+.. _`rio_mport_attr.definition`:
 
 Definition
 ----------
@@ -545,6 +571,7 @@ Definition
   };
 
 
+.. _`rio_mport_attr.members`:
 
 Members
 -------
@@ -569,16 +596,18 @@ Members
 
 
 
+
 .. _`rio_ops`:
 
 struct rio_ops
 ==============
 
-.. c:type:: struct rio_ops
+.. c:type:: rio_ops
 
     Low-level RIO configuration space operations
 
 
+.. _`rio_ops.definition`:
 
 Definition
 ----------
@@ -607,6 +636,7 @@ Definition
   };
 
 
+.. _`rio_ops.members`:
 
 Members
 -------
@@ -667,16 +697,18 @@ Members
 
 
 
+
 .. _`rio_driver`:
 
 struct rio_driver
 =================
 
-.. c:type:: struct rio_driver
+.. c:type:: rio_driver
 
     RIO driver info
 
 
+.. _`rio_driver.definition`:
 
 Definition
 ----------
@@ -697,6 +729,7 @@ Definition
   };
 
 
+.. _`rio_driver.members`:
 
 Members
 -------
@@ -733,6 +766,9 @@ Members
 
 
 
+
+.. _`rio_driver.description`:
+
 Description
 -----------
 
@@ -740,16 +776,18 @@ Provides info on a RIO device driver for insertion/removal and
 power management purposes.
 
 
+
 .. _`rio_scan`:
 
 struct rio_scan
 ===============
 
-.. c:type:: struct rio_scan
+.. c:type:: rio_scan
 
     RIO enumeration and discovery operations
 
 
+.. _`rio_scan.definition`:
 
 Definition
 ----------
@@ -763,6 +801,7 @@ Definition
   };
 
 
+.. _`rio_scan.members`:
 
 Members
 -------
@@ -778,16 +817,18 @@ Members
 
 
 
+
 .. _`rio_scan_node`:
 
 struct rio_scan_node
 ====================
 
-.. c:type:: struct rio_scan_node
+.. c:type:: rio_scan_node
 
     list node to register RapidIO enumeration and discovery methods with RapidIO core.
 
 
+.. _`rio_scan_node.definition`:
 
 Definition
 ----------
@@ -801,6 +842,7 @@ Definition
   };
 
 
+.. _`rio_scan_node.members`:
 
 Members
 -------

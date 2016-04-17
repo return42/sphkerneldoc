@@ -1,0 +1,404 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+r100.c
+======
+
+
+.. _`r100_wait_for_vblank`:
+
+r100_wait_for_vblank
+====================
+
+.. c:function:: void r100_wait_for_vblank (struct radeon_device *rdev, int crtc)
+
+    vblank wait asic callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param int crtc:
+        crtc to wait for vblank on
+
+
+
+.. _`r100_wait_for_vblank.description`:
+
+Description
+-----------
+
+Wait for vblank on the requested crtc (r1xx-r4xx).
+
+
+
+.. _`r100_page_flip`:
+
+r100_page_flip
+==============
+
+.. c:function:: void r100_page_flip (struct radeon_device *rdev, int crtc_id, u64 crtc_base)
+
+    pageflip callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param int crtc_id:
+        crtc to cleanup pageflip on
+
+    :param u64 crtc_base:
+        new address of the crtc (GPU MC address)
+
+
+
+.. _`r100_page_flip.description`:
+
+Description
+-----------
+
+Does the actual pageflip (r1xx-r4xx).
+During vblank we take the crtc lock and wait for the update_pending
+bit to go high, when it does, we release the lock, and allow the
+double buffered update to take place.
+
+
+
+.. _`r100_page_flip_pending`:
+
+r100_page_flip_pending
+======================
+
+.. c:function:: bool r100_page_flip_pending (struct radeon_device *rdev, int crtc_id)
+
+    check if page flip is still pending
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param int crtc_id:
+        crtc to check
+
+
+
+.. _`r100_page_flip_pending.description`:
+
+Description
+-----------
+
+Check if the last pagefilp is still pending (r1xx-r4xx).
+Returns the current update pending status.
+
+
+
+.. _`r100_pm_get_dynpm_state`:
+
+r100_pm_get_dynpm_state
+=======================
+
+.. c:function:: void r100_pm_get_dynpm_state (struct radeon_device *rdev)
+
+    look up dynpm power state callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_pm_get_dynpm_state.description`:
+
+Description
+-----------
+
+Look up the optimal power state based on the
+current state of the GPU (r1xx-r5xx).
+Used for dynpm only.
+
+
+
+.. _`r100_pm_init_profile`:
+
+r100_pm_init_profile
+====================
+
+.. c:function:: void r100_pm_init_profile (struct radeon_device *rdev)
+
+    Initialize power profiles callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_pm_init_profile.description`:
+
+Description
+-----------
+
+Initialize the power states used in profile mode
+(r1xx-r3xx).
+Used for profile mode only.
+
+
+
+.. _`r100_pm_misc`:
+
+r100_pm_misc
+============
+
+.. c:function:: void r100_pm_misc (struct radeon_device *rdev)
+
+    set additional pm hw parameters callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_pm_misc.description`:
+
+Description
+-----------
+
+Set non-clock parameters associated with a power state
+(voltage, pcie lanes, etc.) (r1xx-r4xx).
+
+
+
+.. _`r100_pm_prepare`:
+
+r100_pm_prepare
+===============
+
+.. c:function:: void r100_pm_prepare (struct radeon_device *rdev)
+
+    pre-power state change callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_pm_prepare.description`:
+
+Description
+-----------
+
+Prepare for a power state change (r1xx-r4xx).
+
+
+
+.. _`r100_pm_finish`:
+
+r100_pm_finish
+==============
+
+.. c:function:: void r100_pm_finish (struct radeon_device *rdev)
+
+    post-power state change callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_pm_finish.description`:
+
+Description
+-----------
+
+Clean up after a power state change (r1xx-r4xx).
+
+
+
+.. _`r100_gui_idle`:
+
+r100_gui_idle
+=============
+
+.. c:function:: bool r100_gui_idle (struct radeon_device *rdev)
+
+    gui idle callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_gui_idle.description`:
+
+Description
+-----------
+
+Check of the GUI (2D/3D engines) are idle (r1xx-r5xx).
+Returns true if idle, false if not.
+
+
+
+.. _`r100_hpd_sense`:
+
+r100_hpd_sense
+==============
+
+.. c:function:: bool r100_hpd_sense (struct radeon_device *rdev, enum radeon_hpd_id hpd)
+
+    hpd sense callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param enum radeon_hpd_id hpd:
+        hpd (hotplug detect) pin
+
+
+
+.. _`r100_hpd_sense.description`:
+
+Description
+-----------
+
+Checks if a digital monitor is connected (r1xx-r4xx).
+Returns true if connected, false if not connected.
+
+
+
+.. _`r100_hpd_set_polarity`:
+
+r100_hpd_set_polarity
+=====================
+
+.. c:function:: void r100_hpd_set_polarity (struct radeon_device *rdev, enum radeon_hpd_id hpd)
+
+    hpd set polarity callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param enum radeon_hpd_id hpd:
+        hpd (hotplug detect) pin
+
+
+
+.. _`r100_hpd_set_polarity.description`:
+
+Description
+-----------
+
+Set the polarity of the hpd pin (r1xx-r4xx).
+
+
+
+.. _`r100_hpd_init`:
+
+r100_hpd_init
+=============
+
+.. c:function:: void r100_hpd_init (struct radeon_device *rdev)
+
+    hpd setup callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_hpd_init.description`:
+
+Description
+-----------
+
+Setup the hpd pins used by the card (r1xx-r4xx).
+Set the polarity, and enable the hpd interrupts.
+
+
+
+.. _`r100_hpd_fini`:
+
+r100_hpd_fini
+=============
+
+.. c:function:: void r100_hpd_fini (struct radeon_device *rdev)
+
+    hpd tear down callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+
+
+.. _`r100_hpd_fini.description`:
+
+Description
+-----------
+
+Tear down the hpd pins used by the card (r1xx-r4xx).
+Disable the hpd interrupts.
+
+
+
+.. _`r100_ring_hdp_flush`:
+
+r100_ring_hdp_flush
+===================
+
+.. c:function:: void r100_ring_hdp_flush (struct radeon_device *rdev, struct radeon_ring *ring)
+
+    flush Host Data Path via the ring buffer
+
+    :param struct radeon_device \*rdev:
+
+        *undescribed*
+
+    :param struct radeon_ring \*ring:
+
+        *undescribed*
+
+
+
+.. _`r100_ring_hdp_flush.rdev`:
+
+rdev
+----
+
+radeon device structure
+
+
+
+.. _`r100_ring_hdp_flush.ring`:
+
+ring
+----
+
+ring buffer struct for emitting packets
+
+
+
+.. _`r100_cs_packet_parse_vline`:
+
+r100_cs_packet_parse_vline
+==========================
+
+.. c:function:: int r100_cs_packet_parse_vline (struct radeon_cs_parser *p)
+
+    parse userspace VLINE packet
+
+    :param struct radeon_cs_parser \*p:
+
+        *undescribed*
+
+
+
+.. _`r100_cs_packet_parse_vline.description`:
+
+Description
+-----------
+
+Userspace sends a special sequence for VLINE waits.
+PACKET0 - VLINE_START_END + value
+PACKET0 - WAIT_UNTIL +_value
+RELOC (P3) - crtc_id in reloc.
+
+This function parses this and relocates the VLINE START END
+and WAIT UNTIL packets to the correct crtc.
+It also detects a switched off crtc and nulls out the
+wait in that case.
+

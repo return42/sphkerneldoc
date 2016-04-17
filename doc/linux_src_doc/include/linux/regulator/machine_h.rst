@@ -4,16 +4,18 @@
 machine.h
 =========
 
+
 .. _`regulator_state`:
 
 struct regulator_state
 ======================
 
-.. c:type:: struct regulator_state
+.. c:type:: regulator_state
 
     regulator state during low power system states
 
 
+.. _`regulator_state.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`regulator_state.members`:
 
 Members
 -------
@@ -46,6 +49,9 @@ Members
 
 
 
+
+.. _`regulator_state.description`:
+
 Description
 -----------
 
@@ -55,16 +61,18 @@ state.  One of enabled or disabled must be set for the
 configuration to be applied.
 
 
+
 .. _`regulation_constraints`:
 
 struct regulation_constraints
 =============================
 
-.. c:type:: struct regulation_constraints
+.. c:type:: regulation_constraints
 
     regulator operating constraints.
 
 
+.. _`regulation_constraints.definition`:
 
 Definition
 ----------
@@ -100,6 +108,7 @@ Definition
   };
 
 
+.. _`regulation_constraints.members`:
 
 Members
 -------
@@ -188,6 +197,9 @@ Members
 
 
 
+
+.. _`regulation_constraints.description`:
+
 Description
 -----------
 
@@ -195,16 +207,18 @@ Description
 This struct describes regulator and board/machine specific constraints.
 
 
+
 .. _`regulator_consumer_supply`:
 
 struct regulator_consumer_supply
 ================================
 
-.. c:type:: struct regulator_consumer_supply
+.. c:type:: regulator_consumer_supply
 
     supply -\\\gt; device mapping
 
 
+.. _`regulator_consumer_supply.definition`:
 
 Definition
 ----------
@@ -217,6 +231,7 @@ Definition
   };
 
 
+.. _`regulator_consumer_supply.members`:
 
 Members
 -------
@@ -229,6 +244,9 @@ Members
 
 
 
+
+.. _`regulator_consumer_supply.description`:
+
 Description
 -----------
 
@@ -237,16 +255,18 @@ This maps a supply name to a device. Use of dev_name allows support for
 buses which make struct device available late such as I2C.
 
 
+
 .. _`regulator_init_data`:
 
 struct regulator_init_data
 ==========================
 
-.. c:type:: struct regulator_init_data
+.. c:type:: regulator_init_data
 
     regulator platform initialisation data.
 
 
+.. _`regulator_init_data.definition`:
 
 Definition
 ----------
@@ -263,6 +283,7 @@ Definition
   };
 
 
+.. _`regulator_init_data.members`:
 
 Members
 -------
@@ -289,6 +310,9 @@ Members
     Data passed to regulator_init.
 
 
+
+
+.. _`regulator_init_data.description`:
 
 Description
 -----------

@@ -4,6 +4,7 @@
 seqno-fence.h
 =============
 
+
 .. _`to_seqno_fence`:
 
 to_seqno_fence
@@ -17,6 +18,7 @@ to_seqno_fence
         fence to cast to a seqno_fence
 
 
+
 .. _`to_seqno_fence.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 Returns NULL if the fence is not a seqno_fence,
 or the seqno_fence otherwise.
+
 
 
 .. _`seqno_fence_init`:
@@ -58,6 +61,7 @@ seqno_fence_init
 
     :param const struct fence_ops \*ops:
         the fence_ops for operations on this seqno fence
+
 
 
 .. _`seqno_fence_init.description`:

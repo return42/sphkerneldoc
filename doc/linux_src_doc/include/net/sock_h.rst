@@ -4,16 +4,18 @@
 sock.h
 ======
 
+
 .. _`sock_common`:
 
 struct sock_common
 ==================
 
-.. c:type:: struct sock_common
+.. c:type:: sock_common
 
     minimal network layer representation of sockets
 
 
+.. _`sock_common.definition`:
 
 Definition
 ----------
@@ -25,6 +27,7 @@ Definition
   };
 
 
+.. _`sock_common.members`:
 
 Members
 -------
@@ -34,6 +37,9 @@ Members
 
 
 
+
+.. _`sock_common.description`:
+
 Description
 -----------
 
@@ -41,16 +47,18 @@ This is the minimal network layer representation of sockets, the header
 for struct sock and struct inet_timewait_sock.
 
 
+
 .. _`sock`:
 
 struct sock
 ===========
 
-.. c:type:: struct sock
+.. c:type:: sock
 
     network layer representation of sockets
 
 
+.. _`sock.definition`:
 
 Definition
 ----------
@@ -156,6 +164,7 @@ Definition
   };
 
 
+.. _`sock.members`:
 
 Members
 -------
@@ -347,6 +356,7 @@ Members
 
 
 
+
 .. _`sk_nulls_for_each_entry_offset`:
 
 sk_nulls_for_each_entry_offset
@@ -369,6 +379,7 @@ sk_nulls_for_each_entry_offset
         offset of hlist_node within the struct.
 
 
+
 .. _`unlock_sock_fast`:
 
 unlock_sock_fast
@@ -385,6 +396,7 @@ unlock_sock_fast
         slow mode
 
 
+
 .. _`unlock_sock_fast.description`:
 
 Description
@@ -392,6 +404,7 @@ Description
 
 fast unlock socket for user context.
 If slow mode is on, we call regular :c:func:`release_sock`
+
 
 
 .. _`sk_wmem_alloc_get`:
@@ -407,12 +420,14 @@ sk_wmem_alloc_get
         socket
 
 
+
 .. _`sk_wmem_alloc_get.description`:
 
 Description
 -----------
 
 Returns sk_wmem_alloc minus initial offset of one
+
 
 
 .. _`sk_rmem_alloc_get`:
@@ -428,12 +443,14 @@ sk_rmem_alloc_get
         socket
 
 
+
 .. _`sk_rmem_alloc_get.description`:
 
 Description
 -----------
 
 Returns sk_rmem_alloc
+
 
 
 .. _`sk_has_allocations`:
@@ -449,12 +466,14 @@ sk_has_allocations
         socket
 
 
+
 .. _`sk_has_allocations.description`:
 
 Description
 -----------
 
 Returns true if socket has write or read allocations
+
 
 
 .. _`skwq_has_sleeper`:
@@ -470,6 +489,7 @@ skwq_has_sleeper
         struct socket_wq
 
 
+
 .. _`skwq_has_sleeper.description`:
 
 Description
@@ -480,7 +500,13 @@ Returns true if socket_wq has waiting processes
 The purpose of the skwq_has_sleeper and sock_poll_wait is to wrap the memory
 barrier call. They were added due to the race found within the tcp code.
 
-Consider following tcp code paths:
+
+
+.. _`skwq_has_sleeper.consider-following-tcp-code-paths`:
+
+Consider following tcp code paths
+---------------------------------
+
 
 CPU1                  CPU2
 
@@ -503,6 +529,7 @@ could then endup calling schedule and sleep forever if there are no more
 data on the socket.
 
 
+
 .. _`sock_poll_wait`:
 
 sock_poll_wait
@@ -522,12 +549,14 @@ sock_poll_wait
         poll_table
 
 
+
 .. _`sock_poll_wait.description`:
 
 Description
 -----------
 
 See the comments in the wq_has_sleeper function.
+
 
 
 .. _`sk_page_frag`:
@@ -543,6 +572,7 @@ sk_page_frag
         socket
 
 
+
 .. _`sk_page_frag.description`:
 
 Description
@@ -550,6 +580,7 @@ Description
 
 If socket allocation mode allows current thread to sleep, it means its
 safe to use the per task page_frag instead of the per socket one.
+
 
 
 .. _`sock_tx_timestamp`:
@@ -568,12 +599,14 @@ sock_tx_timestamp
         completed with instructions for time stamping
 
 
-.. _`sock_tx_timestamp.description`:
 
-Description
------------
+.. _`sock_tx_timestamp.note`:
 
-Note : callers should take care of initial \*tx_flags value (usually 0)
+Note 
+-----
+
+callers should take care of initial \*tx_flags value (usually 0)
+
 
 
 .. _`sk_eat_skb`:
@@ -592,6 +625,7 @@ sk_eat_skb
         socket buffer to eat
 
 
+
 .. _`sk_eat_skb.description`:
 
 Description
@@ -599,6 +633,7 @@ Description
 
 This routine must be called with interrupts disabled or with the socket
 locked so that the sk_buff queue operation is ok.
+
 
 
 .. _`sk_state_load`:
@@ -614,6 +649,7 @@ sk_state_load
         socket pointer
 
 
+
 .. _`sk_state_load.description`:
 
 Description
@@ -621,6 +657,7 @@ Description
 
 Paired with :c:func:`sk_state_store`. Used in places we do not hold socket lock :
 :c:func:`tcp_diag_get_info`, :c:func:`tcp_get_info`, :c:func:`tcp_poll`, :c:func:`get_tcp4_sock` ...
+
 
 
 .. _`sk_state_store`:
@@ -637,6 +674,7 @@ sk_state_store
 
     :param int newstate:
         new state
+
 
 
 .. _`sk_state_store.description`:

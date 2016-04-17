@@ -1,0 +1,45 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+page.c
+======
+
+
+.. _`rds_page_remainder_alloc`:
+
+rds_page_remainder_alloc
+========================
+
+.. c:function:: int rds_page_remainder_alloc (struct scatterlist *scat, unsigned long bytes, gfp_t gfp)
+
+    build up regions of a message.
+
+    :param struct scatterlist \*scat:
+        Scatter list for message
+
+    :param unsigned long bytes:
+        the number of bytes needed.
+
+    :param gfp_t gfp:
+        the waiting behaviour of the allocation
+
+
+
+.. _`rds_page_remainder_alloc.description`:
+
+Description
+-----------
+
+``gfp`` is always ored with __GFP_HIGHMEM.  Callers must be prepared to
+kmap the pages, etc.
+
+If ``bytes`` is at least a full page then this just returns a page from
+:c:func:`alloc_page`.
+
+If ``bytes`` is a partial page then this stores the unused region of the
+page in a per-cpu structure.  Future partial-page allocations may be
+satisfied from that cached region.  This lets us waste less memory on
+small allocations with minimal complexity.  It works because the transmit
+path passes read-only page regions down to devices.  They hold a page
+reference until they are done with the region.
+

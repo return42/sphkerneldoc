@@ -4,6 +4,7 @@
 intel_audio.c
 =============
 
+
 .. _`high-definition-audio-over-hdmi-and-display-port`:
 
 High Definition Audio over HDMI and Display Port
@@ -33,6 +34,7 @@ defined in graphics driver and called in audio driver. The
 struct i915_audio_component_audio_ops \*audio_ops is called from i915 driver.
 
 
+
 .. _`intel_audio_codec_enable`:
 
 intel_audio_codec_enable
@@ -46,6 +48,7 @@ intel_audio_codec_enable
         encoder on which to enable audio
 
 
+
 .. _`intel_audio_codec_enable.description`:
 
 Description
@@ -53,6 +56,7 @@ Description
 
 The enable sequences may only be performed after enabling the transcoder and
 port, and after completed link training.
+
 
 
 .. _`intel_audio_codec_disable`:
@@ -68,6 +72,7 @@ intel_audio_codec_disable
         encoder on which to disable audio
 
 
+
 .. _`intel_audio_codec_disable.description`:
 
 Description
@@ -75,6 +80,7 @@ Description
 
 The disable sequences must be performed before disabling the transcoder or
 port.
+
 
 
 .. _`intel_init_audio`:
@@ -90,6 +96,7 @@ intel_init_audio
         drm device
 
 
+
 .. _`i915_audio_component_init`:
 
 i915_audio_component_init
@@ -101,6 +108,7 @@ i915_audio_component_init
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`i915_audio_component_init.description`:
@@ -121,6 +129,7 @@ We ignore any error during registration and continue with reduced
 functionality (i.e. without HDMI audio).
 
 
+
 .. _`i915_audio_component_cleanup`:
 
 i915_audio_component_cleanup
@@ -132,6 +141,7 @@ i915_audio_component_cleanup
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`i915_audio_component_cleanup.description`:

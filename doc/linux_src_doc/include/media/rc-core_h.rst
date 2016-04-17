@@ -4,16 +4,18 @@
 rc-core.h
 =========
 
+
 .. _`rc_scancode_filter`:
 
 struct rc_scancode_filter
 =========================
 
-.. c:type:: struct rc_scancode_filter
+.. c:type:: rc_scancode_filter
 
     Filter scan codes.
 
 
+.. _`rc_scancode_filter.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`rc_scancode_filter.members`:
 
 Members
 -------
@@ -38,16 +41,32 @@ Members
 
 
 
+
 .. _`rc_filter_type`:
 
 enum rc_filter_type
 ===================
 
-.. c:type:: enum rc_filter_type
+.. c:type:: rc_filter_type
 
     Filter type constants.
 
 
+.. _`rc_filter_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rc_filter_type {
+      RC_FILTER_NORMAL,
+      RC_FILTER_WAKEUP,
+      RC_FILTER_MAX
+    };
+
+
+.. _`rc_filter_type.constants`:
 
 Constants
 ---------
@@ -67,11 +86,12 @@ Constants
 struct rc_dev
 =============
 
-.. c:type:: struct rc_dev
+.. c:type:: rc_dev
 
     represents a remote control device
 
 
+.. _`rc_dev.definition`:
 
 Definition
 ----------
@@ -133,6 +153,7 @@ Definition
   };
 
 
+.. _`rc_dev.members`:
 
 Members
 -------
@@ -184,16 +205,16 @@ Members
     used to keep track of RX state
 
 :``allowed_protocols``:
-    bitmask with the supported RC_BIT_\* protocols
+    bitmask with the supported RC_BIT\_\* protocols
 
 :``enabled_protocols``:
-    bitmask with the enabled RC_BIT_\* protocols
+    bitmask with the enabled RC_BIT\_\* protocols
 
 :``allowed_wakeup_protocols``:
-    bitmask with the supported RC_BIT_\* wakeup protocols
+    bitmask with the supported RC_BIT\_\* wakeup protocols
 
 :``enabled_wakeup_protocols``:
-    bitmask with the enabled RC_BIT_\* wakeup protocols
+    bitmask with the enabled RC_BIT\_\* wakeup protocols
 
 :``scancode_filter``:
     scancode filter

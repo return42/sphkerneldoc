@@ -4,16 +4,18 @@
 skcipher.h
 ==========
 
+
 .. _`skcipher_request`:
 
 struct skcipher_request
 =======================
 
-.. c:type:: struct skcipher_request
+.. c:type:: skcipher_request
 
     Symmetric key cipher request
 
 
+.. _`skcipher_request.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`skcipher_request.members`:
 
 Members
 -------
@@ -54,16 +57,18 @@ Members
 
 
 
+
 .. _`skcipher_givcrypt_request`:
 
 struct skcipher_givcrypt_request
 ================================
 
-.. c:type:: struct skcipher_givcrypt_request
+.. c:type:: skcipher_givcrypt_request
 
     Crypto request with IV generation
 
 
+.. _`skcipher_givcrypt_request.definition`:
 
 Definition
 ----------
@@ -77,6 +82,7 @@ Definition
   };
 
 
+.. _`skcipher_givcrypt_request.members`:
 
 Members
 -------
@@ -89,6 +95,7 @@ Members
 
 :``creq``:
     The crypto request itself
+
 
 
 
@@ -124,6 +131,7 @@ which operation just finished if it invoked multiple in parallel. This
 state information is unused by the kernel crypto API.
 
 
+
 .. _`crypto_alloc_skcipher`:
 
 crypto_alloc_skcipher
@@ -144,6 +152,7 @@ crypto_alloc_skcipher
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_skcipher.description`:
 
 Description
@@ -153,8 +162,16 @@ Allocate a cipher handle for an skcipher. The returned struct
 crypto_skcipher is the cipher handle that is required for any subsequent
 API invocation for that skcipher.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_skcipher.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_skcipher`:
@@ -168,6 +185,7 @@ crypto_free_skcipher
 
     :param struct crypto_skcipher \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_has_skcipher`:
@@ -190,13 +208,15 @@ crypto_has_skcipher
         specifies the mask for the cipher
 
 
-.. _`crypto_has_skcipher.description`:
 
-Description
------------
+.. _`crypto_has_skcipher.return`:
 
-Return: true when the skcipher is known to the kernel crypto API; false
+Return
+------
+
+true when the skcipher is known to the kernel crypto API; false
 otherwise
+
 
 
 .. _`crypto_skcipher_ivsize`:
@@ -212,6 +232,7 @@ crypto_skcipher_ivsize
         cipher handle
 
 
+
 .. _`crypto_skcipher_ivsize.description`:
 
 Description
@@ -220,7 +241,15 @@ Description
 The size of the IV for the skcipher referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-Return: IV size in bytes
+
+
+.. _`crypto_skcipher_ivsize.return`:
+
+Return
+------
+
+IV size in bytes
+
 
 
 .. _`crypto_skcipher_blocksize`:
@@ -236,6 +265,7 @@ crypto_skcipher_blocksize
         cipher handle
 
 
+
 .. _`crypto_skcipher_blocksize.description`:
 
 Description
@@ -245,7 +275,15 @@ The block size for the skcipher referenced with the cipher handle is
 returned. The caller may use that information to allocate appropriate
 memory for the data returned by the encryption or decryption operation
 
-Return: block size of cipher
+
+
+.. _`crypto_skcipher_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_skcipher_setkey`:
@@ -267,6 +305,7 @@ crypto_skcipher_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_skcipher_setkey.description`:
 
 Description
@@ -280,7 +319,15 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_skcipher_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_skcipher_reqtfm`:
@@ -296,6 +343,7 @@ crypto_skcipher_reqtfm
         skcipher_request out of which the cipher handle is to be obtained
 
 
+
 .. _`crypto_skcipher_reqtfm.description`:
 
 Description
@@ -304,7 +352,15 @@ Description
 Return the crypto_skcipher handle when furnishing an skcipher_request
 data structure.
 
-Return: crypto_skcipher handle
+
+
+.. _`crypto_skcipher_reqtfm.return`:
+
+Return
+------
+
+crypto_skcipher handle
+
 
 
 .. _`crypto_skcipher_encrypt`:
@@ -321,6 +377,7 @@ crypto_skcipher_encrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_skcipher_encrypt.description`:
 
 Description
@@ -328,9 +385,17 @@ Description
 
 Encrypt plaintext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-skcipher_request_\* functions.
+skcipher_request\_\* functions.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_skcipher_encrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_skcipher_decrypt`:
@@ -347,6 +412,7 @@ crypto_skcipher_decrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_skcipher_decrypt.description`:
 
 Description
@@ -354,9 +420,17 @@ Description
 
 Decrypt ciphertext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-skcipher_request_\* functions.
+skcipher_request\_\* functions.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_skcipher_decrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`symmetric-key-cipher-request-handle`:
@@ -368,8 +442,9 @@ The skcipher_request data structure contains all pointers to data
 required for the symmetric key cipher operation. This includes the cipher
 handle (which can be used by multiple skcipher_request instances), pointer
 to plaintext and ciphertext, asynchronous callback function, etc. It acts
-as a handle to the skcipher_request_\* API calls in a similar way as
-skcipher handle to the crypto_skcipher_\* API calls.
+as a handle to the skcipher_request\_\* API calls in a similar way as
+skcipher handle to the crypto_skcipher\_\* API calls.
+
 
 
 .. _`crypto_skcipher_reqsize`:
@@ -385,12 +460,14 @@ crypto_skcipher_reqsize
         cipher handle
 
 
-.. _`crypto_skcipher_reqsize.description`:
 
-Description
------------
+.. _`crypto_skcipher_reqsize.return`:
 
-Return: number of bytes
+Return
+------
+
+number of bytes
+
 
 
 .. _`skcipher_request_set_tfm`:
@@ -409,6 +486,7 @@ skcipher_request_set_tfm
         cipher handle that shall be added to the request handle
 
 
+
 .. _`skcipher_request_set_tfm.description`:
 
 Description
@@ -416,6 +494,7 @@ Description
 
 Allow the caller to replace the existing skcipher handle in the request
 data structure with a different one.
+
 
 
 .. _`skcipher_request_alloc`:
@@ -434,6 +513,7 @@ skcipher_request_alloc
         memory allocation flag that is handed to kmalloc by the API call.
 
 
+
 .. _`skcipher_request_alloc.description`:
 
 Description
@@ -443,8 +523,16 @@ Allocate the request data structure that must be used with the skcipher
 encrypt and decrypt API calls. During the allocation, the provided skcipher
 handle is registered in the request data structure.
 
-Return: allocated request handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`skcipher_request_alloc.return`:
+
+Return
+------
+
+allocated request handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`skcipher_request_free`:
@@ -458,6 +546,7 @@ skcipher_request_free
 
     :param struct skcipher_request \*req:
         request data structure cipher handle to be freed
+
 
 
 .. _`skcipher_request_set_callback`:
@@ -492,6 +581,7 @@ skcipher_request_set_callback
         crypto_async_request data structure provided to the callback function.
 
 
+
 .. _`skcipher_request_set_callback.description`:
 
 Description
@@ -504,6 +594,7 @@ The callback function is registered with the skcipher_request handle and
 must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
+
 
 
 .. _`skcipher_request_set_crypt`:
@@ -530,6 +621,7 @@ skcipher_request_set_crypt
     :param void \*iv:
         IV for the cipher operation which must comply with the IV size defined
         by crypto_skcipher_ivsize
+
 
 
 .. _`skcipher_request_set_crypt.description`:

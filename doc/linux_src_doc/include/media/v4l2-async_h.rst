@@ -4,16 +4,18 @@
 v4l2-async.h
 ============
 
+
 .. _`v4l2_async_subdev`:
 
 struct v4l2_async_subdev
 ========================
 
-.. c:type:: struct v4l2_async_subdev
+.. c:type:: v4l2_async_subdev
 
     sub-device descriptor, as known to a bridge
 
 
+.. _`v4l2_async_subdev.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`v4l2_async_subdev.members`:
 
 Members
 -------
@@ -43,16 +46,18 @@ Members
 
 
 
+
 .. _`v4l2_async_notifier`:
 
 struct v4l2_async_notifier
 ==========================
 
-.. c:type:: struct v4l2_async_notifier
+.. c:type:: v4l2_async_notifier
 
     v4l2_device notifier data
 
 
+.. _`v4l2_async_notifier.definition`:
 
 Definition
 ----------
@@ -72,6 +77,7 @@ Definition
   };
 
 
+.. _`v4l2_async_notifier.members`:
 
 Members
 -------

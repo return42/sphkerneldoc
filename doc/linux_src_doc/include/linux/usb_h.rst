@@ -4,16 +4,18 @@
 usb.h
 =====
 
+
 .. _`usb_host_endpoint`:
 
 struct usb_host_endpoint
 ========================
 
-.. c:type:: struct usb_host_endpoint
+.. c:type:: usb_host_endpoint
 
     host-side endpoint descriptor and queue
 
 
+.. _`usb_host_endpoint.definition`:
 
 Definition
 ----------
@@ -34,6 +36,7 @@ Definition
   };
 
 
+.. _`usb_host_endpoint.members`:
 
 Members
 -------
@@ -71,6 +74,9 @@ Members
 
 
 
+
+.. _`usb_host_endpoint.description`:
+
 Description
 -----------
 
@@ -78,16 +84,18 @@ USB requests are always queued to a given endpoint, identified by a
 descriptor within an active interface in a given USB configuration.
 
 
+
 .. _`usb_interface`:
 
 struct usb_interface
 ====================
 
-.. c:type:: struct usb_interface
+.. c:type:: usb_interface
 
     what usb device drivers talk to
 
 
+.. _`usb_interface.definition`:
 
 Definition
 ----------
@@ -116,6 +124,7 @@ Definition
   };
 
 
+.. _`usb_interface.members`:
 
 Members
 -------
@@ -190,6 +199,9 @@ Members
 
 
 
+
+.. _`usb_interface.description`:
+
 Description
 -----------
 
@@ -219,16 +231,18 @@ stored in numerical order anyhow.  Use :c:func:`usb_altnum_to_altsetting` to
 look up an alternate setting in the altsetting array based on its number.
 
 
+
 .. _`usb_interface_cache`:
 
 struct usb_interface_cache
 ==========================
 
-.. c:type:: struct usb_interface_cache
+.. c:type:: usb_interface_cache
 
     long-term representation of a device interface
 
 
+.. _`usb_interface_cache.definition`:
 
 Definition
 ----------
@@ -242,6 +256,7 @@ Definition
   };
 
 
+.. _`usb_interface_cache.members`:
 
 Members
 -------
@@ -259,6 +274,9 @@ Members
 
 
 
+
+.. _`usb_interface_cache.description`:
+
 Description
 -----------
 
@@ -269,16 +287,18 @@ structures at any time, permitting comparison of configurations and
 providing support for the /proc/bus/usb/devices pseudo-file.
 
 
+
 .. _`usb_host_config`:
 
 struct usb_host_config
 ======================
 
-.. c:type:: struct usb_host_config
+.. c:type:: usb_host_config
 
     representation of a device's configuration
 
 
+.. _`usb_host_config.definition`:
 
 Definition
 ----------
@@ -296,6 +316,7 @@ Definition
   };
 
 
+.. _`usb_host_config.members`:
 
 Members
 -------
@@ -331,6 +352,9 @@ Members
 
 
 
+
+.. _`usb_host_config.description`:
+
 Description
 -----------
 
@@ -356,16 +380,18 @@ desires (expressed through userspace tools).  However, drivers can call
 all its interfaces.
 
 
+
 .. _`usb_device`:
 
 struct usb_device
 =================
 
-.. c:type:: struct usb_device
+.. c:type:: usb_device
 
     kernel's representation of a USB device
 
 
+.. _`usb_device.definition`:
 
 Definition
 ----------
@@ -433,6 +459,7 @@ Definition
   };
 
 
+.. _`usb_device.members`:
 
 Members
 -------
@@ -612,12 +639,15 @@ Members
 
 
 
-Description
------------
 
-Notes:
+.. _`usb_device.notes`:
+
+Notes
+-----
+
 Usbcore drivers should not set usbdev->state directly.  Instead use
 :c:func:`usb_set_device_state`.
+
 
 
 .. _`usb_hub_for_each_child`:
@@ -639,6 +669,7 @@ usb_hub_for_each_child
         child device pointer
 
 
+
 .. _`usb_interface_claimed`:
 
 usb_interface_claimed
@@ -652,18 +683,26 @@ usb_interface_claimed
         the interface being checked
 
 
-.. _`usb_interface_claimed.description`:
 
-Description
------------
+.. _`usb_interface_claimed.return`:
 
-Return: ``true`` (nonzero) iff the interface is claimed, else ``false``
+Return
+------
+
+``true`` (nonzero) iff the interface is claimed, else ``false``
 (zero).
 
-Note:
+
+
+.. _`usb_interface_claimed.note`:
+
+Note
+----
+
 Callers must own the driver model's usb bus readlock.  So driver
 :c:func:`probe` entries don't need extra locking, but other call contexts
 may need to explicitly claim that lock.
+
 
 
 .. _`usb_make_path`:
@@ -685,14 +724,21 @@ usb_make_path
         how big is "buf"?
 
 
-.. _`usb_make_path.description`:
 
-Description
------------
+.. _`usb_make_path.return`:
 
-Return: Length of the string (> 0) or negative if size was too small.
+Return
+------
 
-Note:
+Length of the string (> 0) or negative if size was too small.
+
+
+
+.. _`usb_make_path.note`:
+
+Note
+----
+
 This identifier is intended to be "stable", reflecting physical paths in
 hardware such as physical bus addresses for host controllers or ports on
 USB hubs.  That makes it stay the same until systems are physically
@@ -708,6 +754,7 @@ plugging any USB device into a given hub port always gives it the same path.
 Because of the use of "companion" controllers, devices connected to ports on
 USB 2.0 root hubs (EHCI host controllers) will get one path ID if they are
 high speed, and a different one if they are full or low speed.
+
 
 
 .. _`usb_device`:
@@ -726,6 +773,7 @@ USB_DEVICE
         the 16 bit USB Product ID
 
 
+
 .. _`usb_device.description`:
 
 Description
@@ -733,6 +781,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific device.
+
 
 
 .. _`usb_device_ver`:
@@ -757,6 +806,7 @@ USB_DEVICE_VER
         the bcdDevice_hi value
 
 
+
 .. _`usb_device_ver.description`:
 
 Description
@@ -764,6 +814,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific device, with a version range.
+
 
 
 .. _`usb_device_interface_class`:
@@ -785,6 +836,7 @@ USB_DEVICE_INTERFACE_CLASS
         bInterfaceClass value
 
 
+
 .. _`usb_device_interface_class.description`:
 
 Description
@@ -792,6 +844,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific interface class of devices.
+
 
 
 .. _`usb_device_interface_protocol`:
@@ -813,6 +866,7 @@ USB_DEVICE_INTERFACE_PROTOCOL
         bInterfaceProtocol value
 
 
+
 .. _`usb_device_interface_protocol.description`:
 
 Description
@@ -820,6 +874,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific interface protocol of devices.
+
 
 
 .. _`usb_device_interface_number`:
@@ -841,6 +896,7 @@ USB_DEVICE_INTERFACE_NUMBER
         bInterfaceNumber value
 
 
+
 .. _`usb_device_interface_number.description`:
 
 Description
@@ -848,6 +904,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific interface number of devices.
+
 
 
 .. _`usb_device_info`:
@@ -869,6 +926,7 @@ USB_DEVICE_INFO
         bDeviceProtocol value
 
 
+
 .. _`usb_device_info.description`:
 
 Description
@@ -876,6 +934,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific class of devices.
+
 
 
 .. _`usb_interface_info`:
@@ -897,6 +956,7 @@ USB_INTERFACE_INFO
         bInterfaceProtocol value
 
 
+
 .. _`usb_interface_info.description`:
 
 Description
@@ -904,6 +964,7 @@ Description
 
 This macro is used to create a struct usb_device_id that matches a
 specific class of interfaces.
+
 
 
 .. _`usb_device_and_interface_info`:
@@ -931,6 +992,7 @@ USB_DEVICE_AND_INTERFACE_INFO
         bInterfaceProtocol value
 
 
+
 .. _`usb_device_and_interface_info.description`:
 
 Description
@@ -941,6 +1003,7 @@ specific device with a specific class of interfaces.
 
 This is especially useful when explicitly matching devices that have
 vendor specific bDeviceClass values, but standards-compliant interfaces.
+
 
 
 .. _`usb_vendor_and_interface_info`:
@@ -965,6 +1028,7 @@ USB_VENDOR_AND_INTERFACE_INFO
         bInterfaceProtocol value
 
 
+
 .. _`usb_vendor_and_interface_info.description`:
 
 Description
@@ -977,16 +1041,18 @@ This is especially useful when explicitly matching devices that have
 vendor specific bDeviceClass values, but standards-compliant interfaces.
 
 
+
 .. _`usbdrv_wrap`:
 
 struct usbdrv_wrap
 ==================
 
-.. c:type:: struct usbdrv_wrap
+.. c:type:: usbdrv_wrap
 
     wrapper for driver-model structure
 
 
+.. _`usbdrv_wrap.definition`:
 
 Definition
 ----------
@@ -999,6 +1065,7 @@ Definition
   };
 
 
+.. _`usbdrv_wrap.members`:
 
 Members
 -------
@@ -1011,16 +1078,18 @@ Members
 
 
 
+
 .. _`usb_driver`:
 
 struct usb_driver
 =================
 
-.. c:type:: struct usb_driver
+.. c:type:: usb_driver
 
     identifies USB interface driver to usbcore
 
 
+.. _`usb_driver.definition`:
 
 Definition
 ----------
@@ -1047,6 +1116,7 @@ Definition
   };
 
 
+.. _`usb_driver.members`:
 
 Members
 -------
@@ -1101,10 +1171,9 @@ Members
     has been reset
 
 :``id_table``:
-    USB drivers use ID table to support hotplugging.::
-
-            Export this with MODULE_DEVICE_TABLE(usb,...).  This must be set
-            or your driver's probe function will never get called.
+    USB drivers use ID table to support hotplugging.
+    Export this with MODULE_DEVICE_TABLE(usb,...).  This must be set
+    or your driver's probe function will never get called.
 
 :``dynids``:
     used internally to hold the list of dynamically added device
@@ -1132,6 +1201,9 @@ Members
 
 
 
+
+.. _`usb_driver.description`:
+
 Description
 -----------
 
@@ -1151,16 +1223,18 @@ well as forcing all pending I/O requests to complete (by unlinking
 them as necessary, and blocking until the unlinks complete).
 
 
+
 .. _`usb_device_driver`:
 
 struct usb_device_driver
 ========================
 
-.. c:type:: struct usb_device_driver
+.. c:type:: usb_device_driver
 
     identifies USB device driver to usbcore
 
 
+.. _`usb_device_driver.definition`:
 
 Definition
 ----------
@@ -1178,6 +1252,7 @@ Definition
   };
 
 
+.. _`usb_device_driver.members`:
 
 Members
 -------
@@ -1212,10 +1287,14 @@ Members
 
 
 
+
+.. _`usb_device_driver.description`:
+
 Description
 -----------
 
 USB drivers must provide all the fields listed above except drvwrap.
+
 
 
 .. _`usb_class_driver`:
@@ -1223,11 +1302,12 @@ USB drivers must provide all the fields listed above except drvwrap.
 struct usb_class_driver
 =======================
 
-.. c:type:: struct usb_class_driver
+.. c:type:: usb_class_driver
 
     identifies a USB driver that wants to use the USB major number
 
 
+.. _`usb_class_driver.definition`:
 
 Definition
 ----------
@@ -1242,6 +1322,7 @@ Definition
   };
 
 
+.. _`usb_class_driver.members`:
 
 Members
 -------
@@ -1261,12 +1342,16 @@ Members
 
 
 
+
+.. _`usb_class_driver.description`:
+
 Description
 -----------
 
 This structure is used for the :c:func:`usb_register_dev` and
 :c:func:`usb_unregister_dev` functions, to consolidate a number of the
 parameters used for them.
+
 
 
 .. _`module_usb_driver`:
@@ -1282,6 +1367,7 @@ module_usb_driver
         usb_driver struct
 
 
+
 .. _`module_usb_driver.description`:
 
 Description
@@ -1292,16 +1378,18 @@ init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces :c:func:`module_init` and :c:func:`module_exit`
 
 
+
 .. _`urb`:
 
 struct urb
 ==========
 
-.. c:type:: struct urb
+.. c:type:: urb
 
     USB Request Block
 
 
+.. _`urb.definition`:
 
 Definition
 ----------
@@ -1337,6 +1425,7 @@ Definition
   };
 
 
+.. _`urb.members`:
 
 Members
 -------
@@ -1358,16 +1447,15 @@ Members
     replace ``pipe``\ .
 
 :``pipe``:
-    Holds endpoint number, direction, type, and more.::
-
-            Create these values with the eight macros available;
-            usb_{snd,rcv}TYPEpipe(dev,endpoint), where the TYPE is "ctrl"
-            (control), "bulk", "int" (interrupt), or "iso" (isochronous).
-            For example :c:func:`usb_sndbulkpipe` or :c:func:`usb_rcvintpipe`.  Endpoint
-            numbers range from zero to fifteen.  Note that "in" endpoint two
-            is a different endpoint (and pipe) from "out" endpoint two.
-            The current configuration controls the existence, type, and
-            maximum packet size of any given endpoint.
+    Holds endpoint number, direction, type, and more.
+    Create these values with the eight macros available;
+    usb_{snd,rcv}TYPEpipe(dev,endpoint), where the TYPE is "ctrl"
+    (control), "bulk", "int" (interrupt), or "iso" (isochronous).
+    For example :c:func:`usb_sndbulkpipe` or :c:func:`usb_rcvintpipe`.  Endpoint
+    numbers range from zero to fifteen.  Note that "in" endpoint two
+    is a different endpoint (and pipe) from "out" endpoint two.
+    The current configuration controls the existence, type, and
+    maximum packet size of any given endpoint.
 
 :``stream_id``:
     the endpoint's stream ID for bulk streams
@@ -1463,16 +1551,25 @@ Members
 
 
 
+
+.. _`urb.description`:
+
 Description
 -----------
 
 This structure identifies USB transfer requests.  URBs must be allocated by
 calling :c:func:`usb_alloc_urb` and freed with a call to :c:func:`usb_free_urb`.
-Initialization may be done using various usb_fill_\*:c:func:`_urb` functions.  URBs
+Initialization may be done using various usb_fill\_\*:c:func:`_urb` functions.  URBs
 are submitted using :c:func:`usb_submit_urb`, and pending requests may be canceled
 using :c:func:`usb_unlink_urb` or :c:func:`usb_kill_urb`.
 
-Data Transfer Buffers:
+
+
+.. _`urb.data-transfer-buffers`:
+
+Data Transfer Buffers
+---------------------
+
 
 Normally drivers provide I/O buffers allocated with :c:func:`kmalloc` or otherwise
 taken from the general page pool.  That is provided by transfer_buffer
@@ -1499,7 +1596,13 @@ If transfer_buffer cannot be set (is in highmem) and the controller is DMA
 capable, assign NULL to it, so that usbmon knows not to use the value.
 The setup_packet must always be set, so it cannot be located in highmem.
 
-Initialization:
+
+
+.. _`urb.initialization`:
+
+Initialization
+--------------
+
 
 All URBs submitted must initialize the dev, pipe, transfer_flags (may be
 zero), and complete fields.  All URBs must also initialize
@@ -1553,7 +1656,13 @@ in completion handlers, so
 that data (such as audio or video) streams at as constant a rate as the
 host controller scheduler can support.
 
-Completion Callbacks:
+
+
+.. _`urb.completion-callbacks`:
+
+Completion Callbacks
+--------------------
+
 
 The completion callback is made :c:func:`in_interrupt`, and one of the first
 things that a completion handler should do is check the status field.
@@ -1576,6 +1685,7 @@ error_count.  Completion callbacks for ISO transfers will normally
 Note that even fields marked "public" should not be touched by the driver
 when the urb is owned by the hcd, that is, since the call to
 :c:func:`usb_submit_urb` till the entry into the completion routine.
+
 
 
 .. _`usb_fill_control_urb`:
@@ -1612,6 +1722,7 @@ usb_fill_control_urb
         what to set the urb context to.
 
 
+
 .. _`usb_fill_control_urb.description`:
 
 Description
@@ -1619,6 +1730,7 @@ Description
 
 Initializes a control urb with the proper information needed to submit
 it to a device.
+
 
 
 .. _`usb_fill_bulk_urb`:
@@ -1652,6 +1764,7 @@ usb_fill_bulk_urb
         what to set the urb context to.
 
 
+
 .. _`usb_fill_bulk_urb.description`:
 
 Description
@@ -1659,6 +1772,7 @@ Description
 
 Initializes a bulk urb with the proper information needed to submit it
 to a device.
+
 
 
 .. _`usb_fill_int_urb`:
@@ -1696,6 +1810,7 @@ usb_fill_int_urb
         the endpoint descriptor's bInterval value.
 
 
+
 .. _`usb_fill_int_urb.description`:
 
 Description
@@ -1715,6 +1830,7 @@ through to the host controller, rather than being translated into microframe
 units.
 
 
+
 .. _`usb_urb_dir_in`:
 
 usb_urb_dir_in
@@ -1728,13 +1844,15 @@ usb_urb_dir_in
         URB to be checked
 
 
-.. _`usb_urb_dir_in.description`:
 
-Description
------------
+.. _`usb_urb_dir_in.return`:
 
-Return: 1 if ``urb`` describes an IN transfer (device-to-host),
+Return
+------
+
+1 if ``urb`` describes an IN transfer (device-to-host),
 otherwise 0.
+
 
 
 .. _`usb_urb_dir_out`:
@@ -1750,13 +1868,15 @@ usb_urb_dir_out
         URB to be checked
 
 
-.. _`usb_urb_dir_out.description`:
 
-Description
------------
+.. _`usb_urb_dir_out.return`:
 
-Return: 1 if ``urb`` describes an OUT transfer (host-to-device),
+Return
+------
+
+1 if ``urb`` describes an OUT transfer (host-to-device),
 otherwise 0.
+
 
 
 .. _`usb_sg_request`:
@@ -1764,11 +1884,12 @@ otherwise 0.
 struct usb_sg_request
 =====================
 
-.. c:type:: struct usb_sg_request
+.. c:type:: usb_sg_request
 
     support for scatter/gather I/O
 
 
+.. _`usb_sg_request.definition`:
 
 Definition
 ----------
@@ -1781,6 +1902,7 @@ Definition
   };
 
 
+.. _`usb_sg_request.members`:
 
 Members
 -------
@@ -1792,6 +1914,9 @@ Members
     counts bytes transferred.
 
 
+
+
+.. _`usb_sg_request.description`:
 
 Description
 -----------

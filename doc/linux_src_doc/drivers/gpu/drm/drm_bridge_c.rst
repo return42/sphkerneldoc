@@ -4,6 +4,7 @@
 drm_bridge.c
 ============
 
+
 .. _`overview`:
 
 overview
@@ -36,6 +37,7 @@ Bridges can also be chained up using the next pointer in struct :c:type:`struct 
 Both legacy CRTC helpers and the new atomic modeset helpers support bridges.
 
 
+
 .. _`drm_bridge_add`:
 
 drm_bridge_add
@@ -49,13 +51,14 @@ drm_bridge_add
         bridge control structure
 
 
-.. _`drm_bridge_add.description`:
 
-Description
------------
+.. _`drm_bridge_add.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 Unconditionally returns Zero.
+
 
 
 .. _`drm_bridge_remove`:
@@ -69,6 +72,7 @@ drm_bridge_remove
 
     :param struct drm_bridge \*bridge:
         bridge control structure
+
 
 
 .. _`drm_bridge_attach`:
@@ -87,6 +91,7 @@ drm_bridge_attach
         bridge control structure
 
 
+
 .. _`drm_bridge_attach.description`:
 
 Description
@@ -98,8 +103,15 @@ bridge.
 Note that setting up links between the bridge and our encoder/bridge
 objects needs to be handled by the kms driver itself
 
-RETURNS:
+
+
+.. _`drm_bridge_attach.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`bridge-callbacks`:
@@ -113,6 +125,7 @@ These helpers call a specific :c:type:`struct drm_bridge_funcs <drm_bridge_funcs
 during encoder configuration.
 
 For detailed specification of the bridge callbacks see :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`.
+
 
 
 .. _`drm_bridge_mode_fixup`:
@@ -134,6 +147,7 @@ drm_bridge_mode_fixup
         updated mode that works for this bridge
 
 
+
 .. _`drm_bridge_mode_fixup.description`:
 
 Description
@@ -142,10 +156,24 @@ Description
 Calls ->:c:func:`mode_fixup` :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the
 encoder chain, starting from the first bridge to the last.
 
-Note: the bridge passed should be the one closest to the encoder
 
-RETURNS:
+
+.. _`drm_bridge_mode_fixup.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder
+
+
+
+.. _`drm_bridge_mode_fixup.returns`:
+
+RETURNS
+-------
+
 true on success, false on failure
+
 
 
 .. _`drm_bridge_disable`:
@@ -161,6 +189,7 @@ drm_bridge_disable
         bridge control structure
 
 
+
 .. _`drm_bridge_disable.description`:
 
 Description
@@ -170,7 +199,15 @@ Calls ->:c:func:`disable` :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` o
 chain, starting from the last bridge to the first. These are called before
 calling the encoder's prepare op.
 
-Note: the bridge passed should be the one closest to the encoder
+
+
+.. _`drm_bridge_disable.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder
+
 
 
 .. _`drm_bridge_post_disable`:
@@ -186,6 +223,7 @@ drm_bridge_post_disable
         bridge control structure
 
 
+
 .. _`drm_bridge_post_disable.description`:
 
 Description
@@ -195,7 +233,15 @@ Calls ->:c:func:`post_disable` :c:type:`struct drm_bridge_funcs <drm_bridge_func
 encoder chain, starting from the first bridge to the last. These are called
 after completing the encoder's prepare op.
 
-Note: the bridge passed should be the one closest to the encoder
+
+
+.. _`drm_bridge_post_disable.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder
+
 
 
 .. _`drm_bridge_mode_set`:
@@ -217,6 +263,7 @@ drm_bridge_mode_set
         updated mode that works for this bridge
 
 
+
 .. _`drm_bridge_mode_set.description`:
 
 Description
@@ -225,7 +272,15 @@ Description
 Calls ->:c:func:`mode_set` :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the
 encoder chain, starting from the first bridge to the last.
 
-Note: the bridge passed should be the one closest to the encoder
+
+
+.. _`drm_bridge_mode_set.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder
+
 
 
 .. _`drm_bridge_pre_enable`:
@@ -241,6 +296,7 @@ drm_bridge_pre_enable
         bridge control structure
 
 
+
 .. _`drm_bridge_pre_enable.description`:
 
 Description
@@ -250,7 +306,15 @@ Calls ->:c:func:`pre_enable` :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>
 chain, starting from the last bridge to the first. These are called
 before calling the encoder's commit op.
 
-Note: the bridge passed should be the one closest to the encoder
+
+
+.. _`drm_bridge_pre_enable.note`:
+
+Note
+----
+
+the bridge passed should be the one closest to the encoder
+
 
 
 .. _`drm_bridge_enable`:
@@ -266,6 +330,7 @@ drm_bridge_enable
         bridge control structure
 
 
+
 .. _`drm_bridge_enable.description`:
 
 Description
@@ -276,6 +341,7 @@ chain, starting from the first bridge to the last. These are called
 after completing the encoder's commit op.
 
 Note that the bridge passed should be the one closest to the encoder
+
 
 
 .. _`of_drm_find_bridge`:
@@ -291,11 +357,11 @@ of_drm_find_bridge
         device node
 
 
-.. _`of_drm_find_bridge.description`:
 
-Description
------------
+.. _`of_drm_find_bridge.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 drm_bridge control struct on success, NULL on failure
 

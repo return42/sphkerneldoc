@@ -13,6 +13,10 @@ core
    hcd_c
    hcd-pci_c
    hub_c
+   hub_h
    message_c
+   notify_c
+   of_c
    urb_c
+   usb-acpi_c
    usb_c

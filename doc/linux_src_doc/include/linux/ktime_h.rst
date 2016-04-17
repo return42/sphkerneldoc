@@ -4,6 +4,7 @@
 ktime.h
 =======
 
+
 .. _`ktime_set`:
 
 ktime_set
@@ -20,12 +21,14 @@ ktime_set
         nanoseconds to set
 
 
-.. _`ktime_set.description`:
 
-Description
------------
+.. _`ktime_set.return`:
 
-Return: The ktime_t representation of the value.
+Return
+------
+
+The ktime_t representation of the value.
+
 
 
 .. _`ktime_equal`:
@@ -44,6 +47,7 @@ ktime_equal
         comparable2
 
 
+
 .. _`ktime_equal.description`:
 
 Description
@@ -51,7 +55,15 @@ Description
 
 Compare two ktime_t variables.
 
-Return: 1 if equal.
+
+
+.. _`ktime_equal.return`:
+
+Return
+------
+
+1 if equal.
+
 
 
 .. _`ktime_compare`:
@@ -70,16 +82,17 @@ ktime_compare
         comparable2
 
 
-.. _`ktime_compare.description`:
 
-Description
------------
+.. _`ktime_compare.return`:
 
-Return: ...::
+Return
+------
 
-  cmp1  < cmp2: return <0
-  cmp1 == cmp2: return 0
-  cmp1  > cmp2: return >0
+...
+cmp1  < cmp2: return <0
+cmp1 == cmp2: return 0
+cmp1  > cmp2: return >0
+
 
 
 .. _`ktime_after`:
@@ -98,12 +111,14 @@ ktime_after
         comparable2
 
 
-.. _`ktime_after.description`:
 
-Description
------------
+.. _`ktime_after.return`:
 
-Return: true if cmp1 happened after cmp2.
+Return
+------
+
+true if cmp1 happened after cmp2.
+
 
 
 .. _`ktime_before`:
@@ -122,12 +137,14 @@ ktime_before
         comparable2
 
 
-.. _`ktime_before.description`:
 
-Description
------------
+.. _`ktime_before.return`:
 
-Return: true if cmp1 happened before cmp2.
+Return
+------
+
+true if cmp1 happened before cmp2.
+
 
 
 .. _`ktime_to_timespec_cond`:
@@ -146,12 +163,14 @@ ktime_to_timespec_cond
         the timespec variable to store the result in
 
 
-.. _`ktime_to_timespec_cond.description`:
 
-Description
------------
+.. _`ktime_to_timespec_cond.return`:
 
-Return: ``true`` if there was a successful conversion, ``false`` if kt was 0.
+Return
+------
+
+``true`` if there was a successful conversion, ``false`` if kt was 0.
+
 
 
 .. _`ktime_to_timespec64_cond`:
@@ -170,10 +189,11 @@ ktime_to_timespec64_cond
         the timespec variable to store the result in
 
 
-.. _`ktime_to_timespec64_cond.description`:
 
-Description
------------
+.. _`ktime_to_timespec64_cond.return`:
 
-Return: ``true`` if there was a successful conversion, ``false`` if kt was 0.
+Return
+------
+
+``true`` if there was a successful conversion, ``false`` if kt was 0.
 

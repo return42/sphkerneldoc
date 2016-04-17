@@ -7,4 +7,6 @@ char
 .. toctree::
    :maxdepth: 1
 
-   misc_c
+   apm-emulation_c
+   agp/index
+   tpm/index

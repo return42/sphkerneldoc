@@ -4,6 +4,7 @@
 spi.c
 =====
 
+
 .. _`__spi_register_driver`:
 
 __spi_register_driver
@@ -18,15 +19,25 @@ __spi_register_driver
 
     :param struct spi_driver \*sdrv:
         the driver to register
-        Context: can sleep
 
 
-.. _`__spi_register_driver.description`:
 
-Description
------------
+.. _`__spi_register_driver.context`:
 
-Return: zero on success, else a negative error code.
+Context
+-------
+
+can sleep
+
+
+
+.. _`__spi_register_driver.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_alloc_device`:
@@ -40,7 +51,16 @@ spi_alloc_device
 
     :param struct spi_master \*master:
         Controller to which device is connected
-        Context: can sleep
+
+
+
+.. _`spi_alloc_device.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_alloc_device.description`:
@@ -58,7 +78,15 @@ spi_device structure to add it to the SPI master.  If the caller
 needs to discard the spi_device without adding it, then it should
 call :c:func:`spi_dev_put` on it.
 
-Return: a pointer to the new device, or NULL.
+
+
+.. _`spi_alloc_device.return`:
+
+Return
+------
+
+a pointer to the new device, or NULL.
+
 
 
 .. _`spi_add_device`:
@@ -74,6 +102,7 @@ spi_add_device
         spi_device to register
 
 
+
 .. _`spi_add_device.description`:
 
 Description
@@ -82,7 +111,15 @@ Description
 Companion function to spi_alloc_device.  Devices allocated with
 spi_alloc_device can be added onto the spi bus with this function.
 
-Return: 0 on success; negative errno on failure
+
+
+.. _`spi_add_device.return`:
+
+Return
+------
+
+0 on success; negative errno on failure
+
 
 
 .. _`spi_new_device`:
@@ -99,7 +136,16 @@ spi_new_device
 
     :param struct spi_board_info \*chip:
         Describes the SPI device
-        Context: can sleep
+
+
+
+.. _`spi_new_device.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_new_device.description`:
@@ -113,7 +159,15 @@ platforms may not be able to use spi_register_board_info though, and
 this is exported so that for example a USB or parport based adapter
 driver could add devices (which it would learn about out-of-band).
 
-Return: the new device, or NULL.
+
+
+.. _`spi_new_device.return`:
+
+Return
+------
+
+the new device, or NULL.
+
 
 
 .. _`spi_unregister_device`:
@@ -129,6 +183,7 @@ spi_unregister_device
         spi_device to unregister
 
 
+
 .. _`spi_unregister_device.description`:
 
 Description
@@ -136,6 +191,7 @@ Description
 
 Start making the passed SPI device vanish. Normally this would be handled
 by :c:func:`spi_unregister_master`.
+
 
 
 .. _`spi_register_board_info`:
@@ -152,7 +208,16 @@ spi_register_board_info
 
     :param unsigned n:
         how many descriptors are provided
-        Context: can sleep
+
+
+
+.. _`spi_register_board_info.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_register_board_info.description`:
@@ -173,7 +238,15 @@ would naturally declare its SPI devices.
 The board info passed can safely be __initdata ... but be careful of
 any embedded pointers (platform_data, etc), they're copied as-is.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_register_board_info.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_finalize_current_transfer`:
@@ -189,6 +262,7 @@ spi_finalize_current_transfer
         the master reporting completion
 
 
+
 .. _`spi_finalize_current_transfer.description`:
 
 Description
@@ -197,6 +271,7 @@ Description
 Called by SPI drivers using the core :c:func:`transfer_one_message`
 implementation to notify it that the current interrupt driven
 transfer has finished and the next one may be scheduled.
+
 
 
 .. _`__spi_pump_messages`:
@@ -218,6 +293,7 @@ __spi_pump_messages
         true if the bus mutex is held when calling this function
 
 
+
 .. _`__spi_pump_messages.description`:
 
 Description
@@ -230,6 +306,7 @@ and transfer each message.
 Note that it is called both from the kthread itself and also from
 inside :c:func:`spi_sync`; the queue extraction handling at the top of the
 function should deal with this safely.
+
 
 
 .. _`spi_pump_messages`:
@@ -245,6 +322,7 @@ spi_pump_messages
         pointer to kthread work struct contained in the master struct
 
 
+
 .. _`spi_get_next_queued_message`:
 
 spi_get_next_queued_message
@@ -258,6 +336,7 @@ spi_get_next_queued_message
         the master to check for queued messages
 
 
+
 .. _`spi_get_next_queued_message.description`:
 
 Description
@@ -266,7 +345,15 @@ Description
 If there are more messages in the queue, the next message is returned from
 this call.
 
-Return: the next message in the queue, else NULL if the queue is empty.
+
+
+.. _`spi_get_next_queued_message.return`:
+
+Return
+------
+
+the next message in the queue, else NULL if the queue is empty.
+
 
 
 .. _`spi_finalize_current_message`:
@@ -282,6 +369,7 @@ spi_finalize_current_message
         the master to return the message to
 
 
+
 .. _`spi_finalize_current_message.description`:
 
 Description
@@ -289,6 +377,7 @@ Description
 
 Called by the driver to notify the core that the message in the front of the
 queue is complete and can be removed from the queue.
+
 
 
 .. _`spi_queued_transfer`:
@@ -307,12 +396,14 @@ spi_queued_transfer
         spi message which is to handled is queued to driver queue
 
 
-.. _`spi_queued_transfer.description`:
 
-Description
------------
+.. _`spi_queued_transfer.return`:
 
-Return: zero on success, else a negative error code.
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`of_register_spi_devices`:
@@ -328,6 +419,7 @@ of_register_spi_devices
         Pointer to spi_master device
 
 
+
 .. _`of_register_spi_devices.description`:
 
 Description
@@ -335,6 +427,7 @@ Description
 
 Registers an spi_device for each child node of master node which has a 'reg'
 property.
+
 
 
 .. _`spi_alloc_master`:
@@ -354,7 +447,15 @@ spi_alloc_master
         memory is in the driver_data field of the returned device,
         accessible with :c:func:`spi_master_get_devdata`.
 
-        Context: can sleep
+
+
+.. _`spi_alloc_master.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_alloc_master.description`:
@@ -372,7 +473,15 @@ The caller is responsible for assigning the bus number and initializing
 the master's methods before calling :c:func:`spi_register_master`; and (after errors
 adding the device) calling :c:func:`spi_master_put` to prevent a memory leak.
 
-Return: the SPI master structure on success, else NULL.
+
+
+.. _`spi_alloc_master.return`:
+
+Return
+------
+
+the SPI master structure on success, else NULL.
+
 
 
 .. _`spi_register_master`:
@@ -386,7 +495,16 @@ spi_register_master
 
     :param struct spi_master \*master:
         initialized master, originally from :c:func:`spi_alloc_master`
-        Context: can sleep
+
+
+
+.. _`spi_register_master.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_register_master.description`:
@@ -409,7 +527,15 @@ success, else a negative error code (dropping the master's refcount).
 After a successful return, the caller is responsible for calling
 :c:func:`spi_unregister_master`.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_register_master.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`devm_spi_register_master`:
@@ -426,7 +552,16 @@ devm_spi_register_master
 
     :param struct spi_master \*master:
         initialized master, originally from :c:func:`spi_alloc_master`
-        Context: can sleep
+
+
+
+.. _`devm_spi_register_master.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`devm_spi_register_master.description`:
@@ -437,7 +572,15 @@ Description
 Register a SPI device as with :c:func:`spi_register_master` which will
 automatically be unregister
 
-Return: zero on success, else a negative error code.
+
+
+.. _`devm_spi_register_master.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_unregister_master`:
@@ -451,7 +594,16 @@ spi_unregister_master
 
     :param struct spi_master \*master:
         the master being unregistered
-        Context: can sleep
+
+
+
+.. _`spi_unregister_master.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_unregister_master.description`:
@@ -465,6 +617,7 @@ only ones directly touching chip registers.
 This must be called from context that can sleep.
 
 
+
 .. _`spi_busnum_to_master`:
 
 spi_busnum_to_master
@@ -476,7 +629,16 @@ spi_busnum_to_master
 
     :param u16 bus_num:
         the master's bus number
-        Context: can sleep
+
+
+
+.. _`spi_busnum_to_master.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_busnum_to_master.description`:
@@ -489,7 +651,15 @@ arch init time.  It returns a refcounted pointer to the relevant
 spi_master (which the caller must release), or NULL if there is
 no such master registered.
 
-Return: the SPI master structure on success, else NULL.
+
+
+.. _`spi_busnum_to_master.return`:
+
+Return
+------
+
+the SPI master structure on success, else NULL.
+
 
 
 .. _`spi_res_alloc`:
@@ -514,15 +684,17 @@ spi_res_alloc
         GFP allocation flags
 
 
-.. _`spi_res_alloc.description`:
 
-Description
------------
+.. _`spi_res_alloc.return`:
 
-Return: the pointer to the allocated data
+Return
+------
+
+the pointer to the allocated data
 
 This may get enhanced in the future to allocate from a memory pool
 of the ``spi_device`` or ``spi_master`` to avoid repeated allocations.
+
 
 
 .. _`spi_res_free`:
@@ -536,6 +708,7 @@ spi_res_free
 
     :param void \*res:
         pointer to the custom data of a resource
+
 
 
 .. _`spi_res_add`:
@@ -554,6 +727,7 @@ spi_res_add
         the spi_resource
 
 
+
 .. _`spi_res_release`:
 
 spi_res_release
@@ -568,6 +742,7 @@ spi_res_release
 
     :param struct spi_message \*message:
         the ``spi_message``
+
 
 
 .. _`spi_replace_transfers`:
@@ -602,13 +777,15 @@ spi_replace_transfers
         gfp flags
 
 
-.. _`spi_replace_transfers.description`:
 
-Description
------------
+.. _`spi_replace_transfers.returns`:
 
-Returns: pointer to ``spi_replaced_transfers``\ ,
+Returns
+-------
+
+pointer to ``spi_replaced_transfers``\ ,
 PTR_ERR(...) in case of errors.
+
 
 
 .. _`spi_split_transfers_maxsize`:
@@ -633,12 +810,14 @@ spi_split_transfers_maxsize
         GFP allocation flags
 
 
-.. _`spi_split_transfers_maxsize.description`:
 
-Description
------------
+.. _`spi_split_transfers_maxsize.return`:
 
-Return: status of transformation
+Return
+------
+
+status of transformation
+
 
 
 .. _`spi_setup`:
@@ -652,7 +831,16 @@ spi_setup
 
     :param struct spi_device \*spi:
         the device whose settings are being modified
-        Context: can sleep, and no requests are queued to the device
+
+
+
+.. _`spi_setup.context`:
+
+Context
+-------
+
+can sleep, and no requests are queued to the device
+
 
 
 .. _`spi_setup.description`:
@@ -673,7 +861,15 @@ that the underlying controller or its driver does not support.  For
 example, not all hardware supports wire transfers using nine bit words,
 LSB-first wire encoding, or active-high chipselects.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_setup.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_async`:
@@ -690,7 +886,16 @@ spi_async
 
     :param struct spi_message \*message:
         describes the data transfers, including completion callback
-        Context: any (irqs may be blocked, etc)
+
+
+
+.. _`spi_async.context`:
+
+Context
+-------
+
+any (irqs may be blocked, etc)
+
 
 
 .. _`spi_async.description`:
@@ -721,7 +926,15 @@ no other spi_message queued to that device will be processed.
 (This rule applies equally to all the synchronous transfer calls,
 which are wrappers around this core asynchronous primitive.)
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_async.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_async_locked`:
@@ -738,7 +951,16 @@ spi_async_locked
 
     :param struct spi_message \*message:
         describes the data transfers, including completion callback
-        Context: any (irqs may be blocked, etc)
+
+
+
+.. _`spi_async_locked.context`:
+
+Context
+-------
+
+any (irqs may be blocked, etc)
+
 
 
 .. _`spi_async_locked.description`:
@@ -769,7 +991,15 @@ no other spi_message queued to that device will be processed.
 (This rule applies equally to all the synchronous transfer calls,
 which are wrappers around this core asynchronous primitive.)
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_async_locked.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_sync`:
@@ -786,7 +1016,16 @@ spi_sync
 
     :param struct spi_message \*message:
         describes the data transfers
-        Context: can sleep
+
+
+
+.. _`spi_sync.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_sync.description`:
@@ -807,7 +1046,15 @@ to the same chip.  (That may increase power usage.)
 Also, the caller is guaranteeing that the memory associated with the
 message will not be freed before this call returns.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_sync.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_sync_locked`:
@@ -824,7 +1071,16 @@ spi_sync_locked
 
     :param struct spi_message \*message:
         describes the data transfers
-        Context: can sleep
+
+
+
+.. _`spi_sync_locked.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_sync_locked.description`:
@@ -840,7 +1096,15 @@ This call should be used by drivers that require exclusive access to the
 SPI bus. It has to be preceded by a spi_bus_lock call. The SPI bus must
 be released by a spi_bus_unlock call when the exclusive access is over.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_sync_locked.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_bus_lock`:
@@ -854,7 +1118,16 @@ spi_bus_lock
 
     :param struct spi_master \*master:
         SPI bus master that should be locked for exclusive bus access
-        Context: can sleep
+
+
+
+.. _`spi_bus_lock.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_bus_lock.description`:
@@ -870,7 +1143,15 @@ SPI bus. The SPI bus must be released by a spi_bus_unlock call when the
 exclusive access is over. Data transfer must be done by spi_sync_locked
 and spi_async_locked calls when the SPI bus lock is held.
 
-Return: always zero.
+
+
+.. _`spi_bus_lock.return`:
+
+Return
+------
+
+always zero.
+
 
 
 .. _`spi_bus_unlock`:
@@ -884,7 +1165,16 @@ spi_bus_unlock
 
     :param struct spi_master \*master:
         SPI bus master that was locked for exclusive bus access
-        Context: can sleep
+
+
+
+.. _`spi_bus_unlock.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_bus_unlock.description`:
@@ -898,7 +1188,15 @@ is non-interruptible, and has no timeout.
 This call releases an SPI bus lock previously obtained by an spi_bus_lock
 call.
 
-Return: always zero.
+
+
+.. _`spi_bus_unlock.return`:
+
+Return
+------
+
+always zero.
+
 
 
 .. _`spi_write_then_read`:
@@ -924,7 +1222,16 @@ spi_write_then_read
 
     :param unsigned n_rx:
         size of rxbuf, in bytes
-        Context: can sleep
+
+
+
+.. _`spi_write_then_read.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_write_then_read.description`:
@@ -942,5 +1249,12 @@ portable code should never use this for more than 32 bytes.
 Performance-sensitive or bulk transfer code should instead use
 spi_{async,sync}() calls with dma-safe buffers.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_write_then_read.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
 

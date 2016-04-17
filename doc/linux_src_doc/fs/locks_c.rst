@@ -4,6 +4,7 @@
 locks.c
 =======
 
+
 .. _`posix_lock_file`:
 
 posix_lock_file
@@ -23,6 +24,7 @@ posix_lock_file
         Place to return a copy of the conflicting lock, if found.
 
 
+
 .. _`posix_lock_file.description`:
 
 Description
@@ -35,6 +37,7 @@ POSIX locks are sorted by owner task, then by starting address
 Note that if called with an FL_EXISTS argument, the caller may determine
 whether or not a lock was successfully freed by testing the return
 value for -ENOENT.
+
 
 
 .. _`posix_lock_inode_wait`:
@@ -53,12 +56,14 @@ posix_lock_inode_wait
         The lock to be applied
 
 
+
 .. _`posix_lock_inode_wait.description`:
 
 Description
 -----------
 
 Apply a POSIX style lock request to an inode.
+
 
 
 .. _`locks_mandatory_locked`:
@@ -74,6 +79,7 @@ locks_mandatory_locked
         the file to check
 
 
+
 .. _`locks_mandatory_locked.description`:
 
 Description
@@ -81,6 +87,7 @@ Description
 
 Searches the inode's list of locks to find any POSIX locks which conflict.
 This function is called from :c:func:`locks_verify_locked` only.
+
 
 
 .. _`locks_mandatory_area`:
@@ -108,12 +115,14 @@ locks_mandatory_area
         ``F_WRLCK`` for a write lock, else ``F_RDLCK``
 
 
+
 .. _`locks_mandatory_area.description`:
 
 Description
 -----------
 
 Searches the inode's list of locks to find any POSIX locks which conflict.
+
 
 
 .. _`__break_lease`:
@@ -138,6 +147,7 @@ __break_lease
         only delegations
 
 
+
 .. _`__break_lease.description`:
 
 Description
@@ -147,6 +157,7 @@ break_lease (inlined for speed) has checked there already is at least
 some kind of lock (maybe a lease) on this file.  Leases are broken on
 a call to :c:func:`open` or :c:func:`truncate`.  This function can sleep unless you
 specified ``O_NONBLOCK`` to your :c:func:`open`.
+
 
 
 .. _`lease_get_mtime`:
@@ -165,6 +176,7 @@ lease_get_mtime
         pointer to a timespec which will contain the last modified time
 
 
+
 .. _`lease_get_mtime.description`:
 
 Description
@@ -173,6 +185,7 @@ Description
 This is to force NFS clients to flush their caches for files with
 exclusive leases.  The justification is that if someone has an
 exclusive lease, then they could be modifying it.
+
 
 
 .. _`fcntl_getlease`:
@@ -186,6 +199,7 @@ fcntl_getlease
 
     :param struct file \*filp:
         the file
+
 
 
 .. _`fcntl_getlease.description`:
@@ -209,8 +223,16 @@ changed to a shared lease (or removed).
 
 ``F_UNLCK`` to indicate the lease needs to be removed.
 
-XXX: sfr & willy disagree over whether F_INPROGRESS
+
+
+.. _`fcntl_getlease.xxx`:
+
+XXX
+---
+
+sfr & willy disagree over whether F_INPROGRESS
 should be returned to userspace.
+
 
 
 .. _`check_conflicting_open`:
@@ -232,6 +254,7 @@ check_conflicting_open
         current lock flags
 
 
+
 .. _`check_conflicting_open.description`:
 
 Description
@@ -239,6 +262,7 @@ Description
 
 Check to see if there's an existing open fd on this file that would
 conflict with the lease we're trying to set.
+
 
 
 .. _`generic_setlease`:
@@ -264,6 +288,7 @@ generic_setlease
         doesn't require it)
 
 
+
 .. _`generic_setlease.description`:
 
 Description
@@ -271,6 +296,7 @@ Description
 
 The (input) flp->fl_lmops->lm_break function is required
 by :c:func:`break_lease`.
+
 
 
 .. _`vfs_setlease`:
@@ -296,6 +322,7 @@ vfs_setlease
         NULL if lm_setup doesn't require it)
 
 
+
 .. _`vfs_setlease.description`:
 
 Description
@@ -309,6 +336,7 @@ stack trace).
 
 The "priv" pointer is passed directly to the lm_setup function as-is. It
 may be NULL if the lm_setup operation doesn't require it.
+
 
 
 .. _`fcntl_setlease`:
@@ -330,6 +358,7 @@ fcntl_setlease
         type of lease to obtain
 
 
+
 .. _`fcntl_setlease.description`:
 
 Description
@@ -338,6 +367,7 @@ Description
 Call this fcntl to establish a lease on the file.
 Note that you also need to call ``F_SETSIG`` to
 receive a signal when the lease is broken.
+
 
 
 .. _`flock_lock_inode_wait`:
@@ -356,12 +386,14 @@ flock_lock_inode_wait
         The lock to be applied
 
 
+
 .. _`flock_lock_inode_wait.description`:
 
 Description
 -----------
 
 Apply a FLOCK style lock request to an inode.
+
 
 
 .. _`locks_lock_inode_wait`:
@@ -380,12 +412,14 @@ locks_lock_inode_wait
         The lock to be applied
 
 
+
 .. _`locks_lock_inode_wait.description`:
 
 Description
 -----------
 
 Apply a POSIX or FLOCK style lock request to an inode.
+
 
 
 .. _`sys_flock`:
@@ -402,6 +436,7 @@ sys_flock
 
     :param unsigned int cmd:
         the type of lock to apply.
+
 
 
 .. _`sys_flock.description`:
@@ -424,6 +459,7 @@ The ``cmd`` can be one of
 processes read and write access respectively.
 
 
+
 .. _`vfs_test_lock`:
 
 vfs_test_lock
@@ -440,6 +476,7 @@ vfs_test_lock
         The lock to test; also used to hold result
 
 
+
 .. _`vfs_test_lock.description`:
 
 Description
@@ -447,6 +484,7 @@ Description
 
 Returns -ERRNO on failure.  Indicates presence of conflicting lock by
 setting conf->fl_type to something other than F_UNLCK.
+
 
 
 .. _`vfs_lock_file`:
@@ -469,6 +507,7 @@ vfs_lock_file
 
     :param struct file_lock \*conf:
         Place to return a copy of the conflicting lock, if found.
+
 
 
 .. _`vfs_lock_file.description`:
@@ -503,6 +542,7 @@ The underlying filesystem must not drop the kernel lock or call
 return code.
 
 
+
 .. _`posix_unblock_lock`:
 
 posix_unblock_lock
@@ -516,12 +556,14 @@ posix_unblock_lock
         the lock which was waiting
 
 
+
 .. _`posix_unblock_lock.description`:
 
 Description
 -----------
 
 lockd needs to block waiting for locks.
+
 
 
 .. _`vfs_cancel_lock`:
@@ -538,6 +580,7 @@ vfs_cancel_lock
 
     :param struct file_lock \*fl:
         The lock to be unblocked
+
 
 
 .. _`vfs_cancel_lock.description`:

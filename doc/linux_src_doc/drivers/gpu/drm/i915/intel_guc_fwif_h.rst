@@ -4,6 +4,7 @@
 intel_guc_fwif.h
 ================
 
+
 .. _`guc-firmware-layout`:
 
 GuC Firmware Layout

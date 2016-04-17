@@ -4,6 +4,7 @@
 dmaengine_pcm.h
 ===============
 
+
 .. _`snd_pcm_substream_to_dma_direction`:
 
 snd_pcm_substream_to_dma_direction
@@ -17,16 +18,18 @@ snd_pcm_substream_to_dma_direction
         PCM substream
 
 
+
 .. _`snd_dmaengine_dai_dma_data`:
 
 struct snd_dmaengine_dai_dma_data
 =================================
 
-.. c:type:: struct snd_dmaengine_dai_dma_data
+.. c:type:: snd_dmaengine_dai_dma_data
 
     DAI DMA configuration data
 
 
+.. _`snd_dmaengine_dai_dma_data.definition`:
 
 Definition
 ----------
@@ -44,6 +47,7 @@ Definition
   };
 
 
+.. _`snd_dmaengine_dai_dma_data.members`:
 
 Members
 -------
@@ -74,16 +78,18 @@ Members
 
 
 
+
 .. _`snd_dmaengine_pcm_config`:
 
 struct snd_dmaengine_pcm_config
 ===============================
 
-.. c:type:: struct snd_dmaengine_pcm_config
+.. c:type:: snd_dmaengine_pcm_config
 
     Configuration data for dmaengine based PCM
 
 
+.. _`snd_dmaengine_pcm_config.definition`:
 
 Definition
 ----------
@@ -101,6 +107,7 @@ Definition
   };
 
 
+.. _`snd_dmaengine_pcm_config.members`:
 
 Members
 -------
@@ -134,10 +141,13 @@ Members
 
 
 
-Description
------------
 
-Note: If both compat_request_channel and compat_filter_fn are set
+.. _`snd_dmaengine_pcm_config.note`:
+
+Note
+----
+
+If both compat_request_channel and compat_filter_fn are set
 compat_request_channel will be used to request the channel and
 compat_filter_fn will be ignored. Otherwise the channel will be requested
 using dma_request_channel with compat_filter_fn as the filter function.

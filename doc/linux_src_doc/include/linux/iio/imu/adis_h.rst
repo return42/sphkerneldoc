@@ -1,0 +1,161 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+adis.h
+======
+
+
+.. _`adis_data`:
+
+struct adis_data
+================
+
+.. c:type:: adis_data
+
+    ADIS chip variant specific data
+
+
+.. _`adis_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct adis_data {
+    unsigned int read_delay;
+    unsigned int write_delay;
+    unsigned int glob_cmd_reg;
+    unsigned int msc_ctrl_reg;
+    unsigned int diag_stat_reg;
+    const char *const * status_error_msgs;
+  };
+
+
+.. _`adis_data.members`:
+
+Members
+-------
+
+:``read_delay``:
+    SPI delay for read operations in us
+
+:``write_delay``:
+    SPI delay for write operations in us
+
+:``glob_cmd_reg``:
+    Register address of the GLOB_CMD register
+
+:``msc_ctrl_reg``:
+    Register address of the MSC_CTRL register
+
+:``diag_stat_reg``:
+    Register address of the DIAG_STAT register
+
+:``status_error_msgs``:
+    Array of error messgaes
+
+
+
+
+.. _`adis_write_reg_8`:
+
+adis_write_reg_8
+================
+
+.. c:function:: int adis_write_reg_8 (struct adis *adis, unsigned int reg, uint8_t val)
+
+    Write single byte to a register
+
+    :param struct adis \*adis:
+        The adis device
+
+    :param unsigned int reg:
+        The address of the register to be written
+
+    :param uint8_t val:
+
+        *undescribed*
+
+
+
+.. _`adis_write_reg_16`:
+
+adis_write_reg_16
+=================
+
+.. c:function:: int adis_write_reg_16 (struct adis *adis, unsigned int reg, uint16_t val)
+
+    Write 2 bytes to a pair of registers
+
+    :param struct adis \*adis:
+        The adis device
+
+    :param unsigned int reg:
+        The address of the lower of the two registers
+
+    :param uint16_t val:
+
+        *undescribed*
+
+
+
+.. _`adis_write_reg_32`:
+
+adis_write_reg_32
+=================
+
+.. c:function:: int adis_write_reg_32 (struct adis *adis, unsigned int reg, uint32_t val)
+
+    write 4 bytes to four registers
+
+    :param struct adis \*adis:
+        The adis device
+
+    :param unsigned int reg:
+        The address of the lower of the four register
+
+    :param uint32_t val:
+
+        *undescribed*
+
+
+
+.. _`adis_read_reg_16`:
+
+adis_read_reg_16
+================
+
+.. c:function:: int adis_read_reg_16 (struct adis *adis, unsigned int reg, uint16_t *val)
+
+    read 2 bytes from a 16-bit register
+
+    :param struct adis \*adis:
+        The adis device
+
+    :param unsigned int reg:
+        The address of the lower of the two registers
+
+    :param uint16_t \*val:
+        The value read back from the device
+
+
+
+.. _`adis_read_reg_32`:
+
+adis_read_reg_32
+================
+
+.. c:function:: int adis_read_reg_32 (struct adis *adis, unsigned int reg, uint32_t *val)
+
+    read 4 bytes from a 32-bit register
+
+    :param struct adis \*adis:
+        The adis device
+
+    :param unsigned int reg:
+        The address of the lower of the two registers
+
+    :param uint32_t \*val:
+        The value read back from the device
+

@@ -4,6 +4,7 @@
 intel_bios.c
 ============
 
+
 .. _`video-bios-table--vbt-`:
 
 Video BIOS Table (VBT)
@@ -28,6 +29,7 @@ driver private data for ease of use, and the actual VBT is not read after
 that.
 
 
+
 .. _`intel_bios_is_valid_vbt`:
 
 intel_bios_is_valid_vbt
@@ -44,12 +46,14 @@ intel_bios_is_valid_vbt
         size of the buffer
 
 
+
 .. _`intel_bios_is_valid_vbt.description`:
 
 Description
 -----------
 
 Returns true on valid VBT.
+
 
 
 .. _`intel_bios_init`:
@@ -63,6 +67,7 @@ intel_bios_init
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`intel_bios_init.description`:

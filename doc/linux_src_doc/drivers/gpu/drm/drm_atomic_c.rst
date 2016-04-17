@@ -4,6 +4,7 @@
 drm_atomic.c
 ============
 
+
 .. _`drm_atomic_state_default_release`:
 
 drm_atomic_state_default_release
@@ -17,6 +18,7 @@ drm_atomic_state_default_release
         atomic state
 
 
+
 .. _`drm_atomic_state_default_release.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 Free all the memory allocated by drm_atomic_state_init.
 This is useful for drivers that subclass the atomic state.
+
 
 
 .. _`drm_atomic_state_init`:
@@ -42,6 +45,7 @@ drm_atomic_state_init
         atomic state
 
 
+
 .. _`drm_atomic_state_init.description`:
 
 Description
@@ -49,6 +53,7 @@ Description
 
 Default implementation for filling in a new atomic state.
 This is useful for drivers that subclass the atomic state.
+
 
 
 .. _`drm_atomic_state_alloc`:
@@ -64,12 +69,14 @@ drm_atomic_state_alloc
         DRM device
 
 
+
 .. _`drm_atomic_state_alloc.description`:
 
 Description
 -----------
 
 This allocates an empty atomic state to track updates.
+
 
 
 .. _`drm_atomic_state_default_clear`:
@@ -85,6 +92,7 @@ drm_atomic_state_default_clear
         atomic state
 
 
+
 .. _`drm_atomic_state_default_clear.description`:
 
 Description
@@ -92,6 +100,7 @@ Description
 
 Default implementation for clearing atomic state.
 This is useful for drivers that subclass the atomic state.
+
 
 
 .. _`drm_atomic_state_clear`:
@@ -105,6 +114,7 @@ drm_atomic_state_clear
 
     :param struct drm_atomic_state \*state:
         atomic state
+
 
 
 .. _`drm_atomic_state_clear.description`:
@@ -123,6 +133,7 @@ Hence we must clear all cached state and completely start over, using this
 function.
 
 
+
 .. _`drm_atomic_state_free`:
 
 drm_atomic_state_free
@@ -136,6 +147,7 @@ drm_atomic_state_free
         atomic state to deallocate
 
 
+
 .. _`drm_atomic_state_free.description`:
 
 Description
@@ -143,6 +155,7 @@ Description
 
 This frees all memory associated with an atomic state, including all the
 per-object state for planes, crtcs and connectors.
+
 
 
 .. _`drm_atomic_get_crtc_state`:
@@ -161,6 +174,7 @@ drm_atomic_get_crtc_state
         crtc to get state object for
 
 
+
 .. _`drm_atomic_get_crtc_state.description`:
 
 Description
@@ -170,11 +184,18 @@ This function returns the crtc state for the given crtc, allocating it if
 needed. It will also grab the relevant crtc lock to make sure that the state
 is consistent.
 
-Returns:
+
+
+.. _`drm_atomic_get_crtc_state.returns`:
+
+Returns
+-------
+
 
 Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_set_mode_for_crtc`:
@@ -193,6 +214,7 @@ drm_atomic_set_mode_for_crtc
         kernel-internal mode to use for the CRTC, or NULL to disable
 
 
+
 .. _`drm_atomic_set_mode_for_crtc.description`:
 
 Description
@@ -202,8 +224,15 @@ Set a mode (originating from the kernel) on the desired CRTC state. Does
 not change any other state properties, including enable, active, or
 mode_changed.
 
-RETURNS:
+
+
+.. _`drm_atomic_set_mode_for_crtc.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure. Cannot return -EDEADLK.
+
 
 
 .. _`drm_atomic_set_mode_prop_for_crtc`:
@@ -222,6 +251,7 @@ drm_atomic_set_mode_prop_for_crtc
         pointer to blob property to use for mode
 
 
+
 .. _`drm_atomic_set_mode_prop_for_crtc.description`:
 
 Description
@@ -232,8 +262,15 @@ This function will take a reference on the blob property for the CRTC state,
 and release the reference held on the state's existing mode property, if any
 was set.
 
-RETURNS:
+
+
+.. _`drm_atomic_set_mode_prop_for_crtc.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure. Cannot return -EDEADLK.
+
 
 
 .. _`drm_atomic_replace_property_blob`:
@@ -255,13 +292,14 @@ drm_atomic_replace_property_blob
         whether the blob has been replaced
 
 
-.. _`drm_atomic_replace_property_blob.description`:
 
-Description
------------
+.. _`drm_atomic_replace_property_blob.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_crtc_set_property`:
@@ -286,6 +324,7 @@ drm_atomic_crtc_set_property
         the new property value
 
 
+
 .. _`drm_atomic_crtc_set_property.description`:
 
 Description
@@ -297,8 +336,15 @@ driver's ->:c:func:`atomic_set_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_crtc_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_crtc_get_property`:
@@ -323,6 +369,7 @@ drm_atomic_crtc_get_property
         return location for the property value
 
 
+
 .. _`drm_atomic_crtc_get_property.description`:
 
 Description
@@ -333,8 +380,15 @@ driver's ->:c:func:`atomic_get_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_crtc_get_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_crtc_check`:
@@ -353,6 +407,7 @@ drm_atomic_crtc_check
         crtc state to check
 
 
+
 .. _`drm_atomic_crtc_check.description`:
 
 Description
@@ -360,8 +415,15 @@ Description
 
 Provides core sanity checks for crtc state.
 
-RETURNS:
+
+
+.. _`drm_atomic_crtc_check.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_get_plane_state`:
@@ -380,6 +442,7 @@ drm_atomic_get_plane_state
         plane to get state object for
 
 
+
 .. _`drm_atomic_get_plane_state.description`:
 
 Description
@@ -389,11 +452,18 @@ This function returns the plane state for the given plane, allocating it if
 needed. It will also grab the relevant plane lock to make sure that the state
 is consistent.
 
-Returns:
+
+
+.. _`drm_atomic_get_plane_state.returns`:
+
+Returns
+-------
+
 
 Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_plane_set_property`:
@@ -418,6 +488,7 @@ drm_atomic_plane_set_property
         the new property value
 
 
+
 .. _`drm_atomic_plane_set_property.description`:
 
 Description
@@ -429,8 +500,15 @@ driver's ->:c:func:`atomic_set_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_plane_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_plane_get_property`:
@@ -455,6 +533,7 @@ drm_atomic_plane_get_property
         return location for the property value
 
 
+
 .. _`drm_atomic_plane_get_property.description`:
 
 Description
@@ -465,8 +544,15 @@ driver's ->:c:func:`atomic_get_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_plane_get_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_plane_check`:
@@ -485,6 +571,7 @@ drm_atomic_plane_check
         plane state to check
 
 
+
 .. _`drm_atomic_plane_check.description`:
 
 Description
@@ -492,8 +579,15 @@ Description
 
 Provides core sanity checks for plane state.
 
-RETURNS:
+
+
+.. _`drm_atomic_plane_check.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_get_connector_state`:
@@ -512,6 +606,7 @@ drm_atomic_get_connector_state
         connector to get state object for
 
 
+
 .. _`drm_atomic_get_connector_state.description`:
 
 Description
@@ -521,11 +616,18 @@ This function returns the connector state for the given connector,
 allocating it if needed. It will also grab the relevant connector lock to
 make sure that the state is consistent.
 
-Returns:
+
+
+.. _`drm_atomic_get_connector_state.returns`:
+
+Returns
+-------
+
 
 Either the allocated state or the error code encoded into the pointer. When
 the error is EDEADLK then the w/w mutex code has detected a deadlock and the
 entire atomic sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_connector_set_property`:
@@ -550,6 +652,7 @@ drm_atomic_connector_set_property
         the new property value
 
 
+
 .. _`drm_atomic_connector_set_property.description`:
 
 Description
@@ -561,8 +664,15 @@ driver's ->:c:func:`atomic_set_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_connector_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_connector_get_property`:
@@ -587,6 +697,7 @@ drm_atomic_connector_get_property
         return location for the property value
 
 
+
 .. _`drm_atomic_connector_get_property.description`:
 
 Description
@@ -597,8 +708,15 @@ driver's ->:c:func:`atomic_get_property` for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
-RETURNS:
+
+
+.. _`drm_atomic_connector_get_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_set_crtc_for_plane`:
@@ -617,6 +735,7 @@ drm_atomic_set_crtc_for_plane
         crtc to use for the plane
 
 
+
 .. _`drm_atomic_set_crtc_for_plane.description`:
 
 Description
@@ -626,10 +745,17 @@ Changing the assigned crtc for a plane requires us to grab the lock and state
 for the new crtc, as needed. This function takes care of all these details
 besides updating the pointer in the state object itself.
 
-Returns:
+
+
+.. _`drm_atomic_set_crtc_for_plane.returns`:
+
+Returns
+-------
+
 0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
 then the w/w mutex code has detected a deadlock and the entire atomic
 sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_set_fb_for_plane`:
@@ -648,6 +774,7 @@ drm_atomic_set_fb_for_plane
         fb to use for the plane
 
 
+
 .. _`drm_atomic_set_fb_for_plane.description`:
 
 Description
@@ -657,6 +784,7 @@ Changing the assigned framebuffer for a plane requires us to grab a reference
 to the new fb and drop the reference to the old fb, if there is one. This
 function takes care of all these details besides updating the pointer in the
 state object itself.
+
 
 
 .. _`drm_atomic_set_crtc_for_connector`:
@@ -675,6 +803,7 @@ drm_atomic_set_crtc_for_connector
         crtc to use for the connector
 
 
+
 .. _`drm_atomic_set_crtc_for_connector.description`:
 
 Description
@@ -684,10 +813,17 @@ Changing the assigned crtc for a connector requires us to grab the lock and
 state for the new crtc, as needed. This function takes care of all these
 details besides updating the pointer in the state object itself.
 
-Returns:
+
+
+.. _`drm_atomic_set_crtc_for_connector.returns`:
+
+Returns
+-------
+
 0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
 then the w/w mutex code has detected a deadlock and the entire atomic
 sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_add_affected_connectors`:
@@ -706,6 +842,7 @@ drm_atomic_add_affected_connectors
         DRM crtc
 
 
+
 .. _`drm_atomic_add_affected_connectors.description`:
 
 Description
@@ -718,10 +855,17 @@ unneeded seralization if the update is just for the planes on one crtc. Hence
 drivers and helpers should only call this when really needed (e.g. when a
 full modeset needs to happen due to some change).
 
-Returns:
+
+
+.. _`drm_atomic_add_affected_connectors.returns`:
+
+Returns
+-------
+
 0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
 then the w/w mutex code has detected a deadlock and the entire atomic
 sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_add_affected_planes`:
@@ -740,6 +884,7 @@ drm_atomic_add_affected_planes
         DRM crtc
 
 
+
 .. _`drm_atomic_add_affected_planes.description`:
 
 Description
@@ -755,10 +900,17 @@ Since acquiring a plane state will always also acquire the w/w mutex of the
 current CRTC for that plane (if there is any) adding all the plane states for
 a CRTC will not reduce parallism of atomic updates.
 
-Returns:
+
+
+.. _`drm_atomic_add_affected_planes.returns`:
+
+Returns
+-------
+
 0 on success or can fail with -EDEADLK or -ENOMEM. When the error is EDEADLK
 then the w/w mutex code has detected a deadlock and the entire atomic
 sequence must be restarted. All other errors are fatal.
+
 
 
 .. _`drm_atomic_legacy_backoff`:
@@ -774,6 +926,7 @@ drm_atomic_legacy_backoff
         atomic state
 
 
+
 .. _`drm_atomic_legacy_backoff.description`:
 
 Description
@@ -782,6 +935,7 @@ Description
 This function should be used by legacy entry points which don't understand
 -EDEADLK semantics. For simplicity this one will grab all modeset locks after
 the slowpath completed.
+
 
 
 .. _`drm_atomic_check_only`:
@@ -797,6 +951,7 @@ drm_atomic_check_only
         atomic configuration to check
 
 
+
 .. _`drm_atomic_check_only.description`:
 
 Description
@@ -806,8 +961,15 @@ Note that this function can return -EDEADLK if the driver needed to acquire
 more locks but encountered a deadlock. The caller must then do the usual w/w
 backoff dance and restart. All other errors are fatal.
 
-Returns:
+
+
+.. _`drm_atomic_check_only.returns`:
+
+Returns
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_atomic_commit`:
@@ -821,6 +983,7 @@ drm_atomic_commit
 
     :param struct drm_atomic_state \*state:
         atomic configuration to check
+
 
 
 .. _`drm_atomic_commit.description`:
@@ -837,8 +1000,15 @@ from the caller of this function to the function itself. The caller must not
 free or in any other way access ``state``\ . If the function fails then the caller
 must clean up ``state`` itself.
 
-Returns:
+
+
+.. _`drm_atomic_commit.returns`:
+
+Returns
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_atomic_async_commit`:
@@ -852,6 +1022,7 @@ drm_atomic_async_commit
 
     :param struct drm_atomic_state \*state:
         atomic configuration to check
+
 
 
 .. _`drm_atomic_async_commit.description`:
@@ -868,8 +1039,15 @@ from the caller of this function to the function itself. The caller must not
 free or in any other way access ``state``\ . If the function fails then the caller
 must clean up ``state`` itself.
 
-Returns:
+
+
+.. _`drm_atomic_async_commit.returns`:
+
+Returns
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_atomic_clean_old_fb`:
@@ -889,6 +1067,7 @@ drm_atomic_clean_old_fb
 
     :param int ret:
         return value, can be -EDEADLK for a retry.
+
 
 
 .. _`drm_atomic_clean_old_fb.description`:

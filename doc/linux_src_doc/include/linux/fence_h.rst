@@ -4,16 +4,18 @@
 fence.h
 =======
 
+
 .. _`fence`:
 
 struct fence
 ============
 
-.. c:type:: struct fence
+.. c:type:: fence
 
     software synchronization primitive
 
 
+.. _`fence.definition`:
 
 Definition
 ----------
@@ -34,6 +36,7 @@ Definition
   };
 
 
+.. _`fence.members`:
 
 Members
 -------
@@ -62,7 +65,7 @@ Members
     can be compared to decide which fence would be signaled later.
 
 :``flags``:
-    A mask of FENCE_FLAG_\* defined below
+    A mask of FENCE_FLAG\_\* defined below
 
 :``timestamp``:
     Timestamp when the fence was signaled.
@@ -73,11 +76,14 @@ Members
 
 
 
+
+.. _`fence.description`:
+
 Description
 -----------
 
 the flags member must be manipulated and read using the appropriate
-atomic ops (bit_\*), so taking the spinlock will not be needed most
+atomic ops (bit\_\*), so taking the spinlock will not be needed most
 of the time.
 
 FENCE_FLAG_SIGNALED_BIT - fence is already signaled
@@ -96,16 +102,18 @@ after fence_signal was called, any enable_signaling call will have either
 been completed, or never called at all.
 
 
+
 .. _`fence_cb`:
 
 struct fence_cb
 ===============
 
-.. c:type:: struct fence_cb
+.. c:type:: fence_cb
 
     callback for fence_add_callback
 
 
+.. _`fence_cb.definition`:
 
 Definition
 ----------
@@ -118,6 +126,7 @@ Definition
   };
 
 
+.. _`fence_cb.members`:
 
 Members
 -------
@@ -130,6 +139,9 @@ Members
 
 
 
+
+.. _`fence_cb.description`:
+
 Description
 -----------
 
@@ -137,16 +149,18 @@ This struct will be initialized by fence_add_callback, additional
 data can be passed along by embedding fence_cb in another struct.
 
 
+
 .. _`fence_ops`:
 
 struct fence_ops
 ================
 
-.. c:type:: struct fence_ops
+.. c:type:: fence_ops
 
     operations implemented for fence
 
 
+.. _`fence_ops.definition`:
 
 Definition
 ----------
@@ -166,6 +180,7 @@ Definition
   };
 
 
+.. _`fence_ops.members`:
 
 Members
 -------
@@ -201,10 +216,12 @@ Members
 
 
 
-Description
------------
 
-Notes on enable_signaling:
+.. _`fence_ops.notes-on-enable_signaling`:
+
+Notes on enable_signaling
+-------------------------
+
 For fence implementations that have the capability for hw->hw
 signaling, they can implement this op to enable the necessary
 irqs, or insert commands into cmdstream, etc.  This is called
@@ -230,10 +247,22 @@ taken on the fence, to be released when the fence is signaled.
 This will mean fence_signal will still be called twice, but
 the second time will be a noop since it was already signaled.
 
-Notes on signaled:
+
+
+.. _`fence_ops.notes-on-signaled`:
+
+Notes on signaled
+-----------------
+
 May set fence->status if returning true.
 
-Notes on wait:
+
+
+.. _`fence_ops.notes-on-wait`:
+
+Notes on wait
+-------------
+
 Must not be NULL, set to fence_default_wait for default implementation.
 the fence_default_wait implementation should work for any fence, as long
 as enable_signaling works correctly.
@@ -244,10 +273,17 @@ timed out. Can also return other error values on custom implementations,
 which should be treated as if the fence is signaled. For example a hardware
 lockup could be reported like that.
 
-Notes on release:
+
+
+.. _`fence_ops.notes-on-release`:
+
+Notes on release
+----------------
+
 Can be NULL, this function allows additional commands to run on
 destruction of the fence. Can be called from irq context.
 If pointer is set to NULL, kfree will get called instead.
+
 
 
 .. _`fence_get`:
@@ -263,12 +299,14 @@ fence_get
         [in]        fence to increase refcount of
 
 
+
 .. _`fence_get.description`:
 
 Description
 -----------
 
 Returns the same fence, with refcount increased by 1.
+
 
 
 .. _`fence_get_rcu`:
@@ -284,12 +322,14 @@ fence_get_rcu
         [in]        fence to increase refcount of
 
 
+
 .. _`fence_get_rcu.description`:
 
 Description
 -----------
 
 Function returns NULL if no refcount could be obtained, or the fence.
+
 
 
 .. _`fence_put`:
@@ -305,6 +345,7 @@ fence_put
         [in]        fence to reduce refcount of
 
 
+
 .. _`fence_is_signaled_locked`:
 
 fence_is_signaled_locked
@@ -316,6 +357,7 @@ fence_is_signaled_locked
 
     :param struct fence \*fence:
         [in]        the fence to check
+
 
 
 .. _`fence_is_signaled_locked.description`:
@@ -331,6 +373,7 @@ haven't been called before.
 This function requires fence->lock to be held.
 
 
+
 .. _`fence_is_signaled`:
 
 fence_is_signaled
@@ -342,6 +385,7 @@ fence_is_signaled
 
     :param struct fence \*fence:
         [in]        the fence to check
+
 
 
 .. _`fence_is_signaled.description`:
@@ -360,6 +404,7 @@ wraparound between time of issue and time of use by checking the return
 value of this function before calling hardware-specific wait instructions.
 
 
+
 .. _`fence_is_later`:
 
 fence_is_later
@@ -376,6 +421,7 @@ fence_is_later
         [in]        the second fence from the same context
 
 
+
 .. _`fence_is_later.description`:
 
 Description
@@ -383,6 +429,7 @@ Description
 
 Returns true if f1 is chronologically later than f2. Both fences must be
 from the same context, since a seqno is not re-used across contexts.
+
 
 
 .. _`fence_later`:
@@ -401,6 +448,7 @@ fence_later
         [in]        the second fence from the same context
 
 
+
 .. _`fence_later.description`:
 
 Description
@@ -409,6 +457,7 @@ Description
 Returns NULL if both fences are signaled, otherwise the fence that would be
 signaled last. Both fences must be from the same context, since a seqno is
 not re-used across contexts.
+
 
 
 .. _`fence_wait`:
@@ -425,6 +474,7 @@ fence_wait
 
     :param bool intr:
         [in]        if true, do an interruptible wait
+
 
 
 .. _`fence_wait.description`:

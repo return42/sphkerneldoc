@@ -4,6 +4,7 @@
 dcache.h
 ========
 
+
 .. _`dget_dlock`:
 
 dget_dlock
@@ -17,6 +18,7 @@ dget_dlock
         dentry to get a reference to
 
 
+
 .. _`dget_dlock.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 Given a dentry or ``NULL`` pointer increment the reference count
 if appropriate and return the dentry. A dentry will not be 
 destroyed when it has references.
+
 
 
 .. _`d_unhashed`:
@@ -40,12 +43,14 @@ d_unhashed
         entry to check
 
 
+
 .. _`d_unhashed.description`:
 
 Description
 -----------
 
 Returns true if the dentry passed is not currently hashed.
+
 
 
 .. _`d_really_is_negative`:
@@ -59,6 +64,7 @@ d_really_is_negative
 
     :param const struct dentry \*dentry:
         The dentry in question
+
 
 
 .. _`d_really_is_negative.description`:
@@ -78,6 +84,7 @@ the inode.  (3) The dentry may have something attached to ->d_lower and the
 type field of the flags may be set to something other than miss or whiteout.
 
 
+
 .. _`d_really_is_positive`:
 
 d_really_is_positive
@@ -89,6 +96,7 @@ d_really_is_positive
 
     :param const struct dentry \*dentry:
         The dentry in question
+
 
 
 .. _`d_really_is_positive.description`:
@@ -106,6 +114,7 @@ dentries.  (2) It should also be used in combination with :c:func:`d_inode` to g
 the inode.
 
 
+
 .. _`d_inode`:
 
 d_inode
@@ -119,6 +128,7 @@ d_inode
         The dentry to query
 
 
+
 .. _`d_inode.description`:
 
 Description
@@ -126,6 +136,7 @@ Description
 
 This is the helper normal filesystems should use to get at their own inodes
 in their own dentries and ignore the layering superimposed upon them.
+
 
 
 .. _`d_inode_rcu`:
@@ -141,6 +152,7 @@ d_inode_rcu
         The dentry to query
 
 
+
 .. _`d_inode_rcu.description`:
 
 Description
@@ -148,6 +160,7 @@ Description
 
 This is the helper normal filesystems should use to get at their own inodes
 in their own dentries and ignore the layering superimposed upon them.
+
 
 
 .. _`d_backing_inode`:
@@ -163,6 +176,7 @@ d_backing_inode
         The upper layer
 
 
+
 .. _`d_backing_inode.description`:
 
 Description
@@ -173,6 +187,7 @@ if this dentry were to be opened as a file.  The inode may be on the upper
 dentry or it may be on a lower dentry pinned by the upper.
 
 Normal filesystems should not use this to access their own inodes.
+
 
 
 .. _`d_backing_dentry`:
@@ -186,6 +201,7 @@ d_backing_dentry
 
     :param struct dentry \*upper:
         The upper layer
+
 
 
 .. _`d_backing_dentry.description`:

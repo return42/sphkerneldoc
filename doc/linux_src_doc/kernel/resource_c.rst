@@ -4,6 +4,7 @@
 resource.c
 ==========
 
+
 .. _`request_resource_conflict`:
 
 request_resource_conflict
@@ -20,12 +21,14 @@ request_resource_conflict
         resource descriptor desired by caller
 
 
+
 .. _`request_resource_conflict.description`:
 
 Description
 -----------
 
 Returns 0 for success, conflict resource on error.
+
 
 
 .. _`request_resource`:
@@ -44,12 +47,14 @@ request_resource
         resource descriptor desired by caller
 
 
+
 .. _`request_resource.description`:
 
 Description
 -----------
 
 Returns 0 for success, negative error code on error.
+
 
 
 .. _`release_resource`:
@@ -63,6 +68,7 @@ release_resource
 
     :param struct resource \*old:
         resource pointer
+
 
 
 .. _`region_intersects`:
@@ -87,6 +93,7 @@ region_intersects
         descriptor of resource (in iomem_resource) or IORES_DESC_NONE
 
 
+
 .. _`region_intersects.description`:
 
 Description
@@ -104,6 +111,7 @@ memory holes.
 :c:func:`region_intersect` is used by memory remapping functions to ensure
 the user is not remapping RAM and is a vast speed up over walking
 through the resource table page by page.
+
 
 
 .. _`reallocate_resource`:
@@ -126,6 +134,7 @@ reallocate_resource
 
     :param struct resource_constraint \*constraint:
         the size and alignment constraints to be met.
+
 
 
 .. _`allocate_resource`:
@@ -162,6 +171,7 @@ allocate_resource
         arbitrary data to pass to the ``alignf`` function
 
 
+
 .. _`lookup_resource`:
 
 lookup_resource
@@ -178,12 +188,14 @@ lookup_resource
         resource start address
 
 
+
 .. _`lookup_resource.description`:
 
 Description
 -----------
 
 Returns a pointer to the resource if found, NULL otherwise
+
 
 
 .. _`insert_resource_conflict`:
@@ -200,6 +212,7 @@ insert_resource_conflict
 
     :param struct resource \*new:
         new resource to insert
+
 
 
 .. _`insert_resource_conflict.description`:
@@ -219,6 +232,7 @@ This function is intended for producers of resources, such as FW modules
 and bus drivers.
 
 
+
 .. _`insert_resource`:
 
 insert_resource
@@ -235,6 +249,7 @@ insert_resource
         new resource to insert
 
 
+
 .. _`insert_resource.description`:
 
 Description
@@ -244,6 +259,7 @@ Returns 0 on success, -EBUSY if the resource can't be inserted.
 
 This function is intended for producers of resources, such as FW modules
 and bus drivers.
+
 
 
 .. _`insert_resource_expand_to_fit`:
@@ -262,6 +278,7 @@ insert_resource_expand_to_fit
         new resource to insert
 
 
+
 .. _`insert_resource_expand_to_fit.description`:
 
 Description
@@ -269,6 +286,7 @@ Description
 
 Insert a resource into the resource tree, possibly expanding it in order
 to make it encompass any conflicting resources.
+
 
 
 .. _`remove_resource`:
@@ -282,6 +300,7 @@ remove_resource
 
     :param struct resource \*old:
         resource to remove
+
 
 
 .. _`remove_resource.description`:
@@ -299,6 +318,7 @@ children of the new resource.
 
 :c:func:`insert_resource`, :c:func:`insert_resource_conflict` and :c:func:`remove_resource` are
 intended for producers of resources, such as FW modules and bus drivers.
+
 
 
 .. _`adjust_resource`:
@@ -320,6 +340,7 @@ adjust_resource
         new size
 
 
+
 .. _`adjust_resource.description`:
 
 Description
@@ -328,6 +349,7 @@ Description
 Given an existing resource, change its start and size to match the
 arguments.  Returns 0 on success, -EBUSY if it can't fit.
 Existing children of the resource are assumed to be immutable.
+
 
 
 .. _`resource_alignment`:
@@ -343,12 +365,14 @@ resource_alignment
         resource pointer
 
 
+
 .. _`resource_alignment.description`:
 
 Description
 -----------
 
 Returns alignment on success, 0 (invalid alignment) on failure.
+
 
 
 .. _`__request_region`:
@@ -376,6 +400,7 @@ __request_region
         IO resource flags
 
 
+
 .. _`__release_region`:
 
 __release_region
@@ -395,12 +420,14 @@ __release_region
         resource region size
 
 
+
 .. _`__release_region.description`:
 
 Description
 -----------
 
 The described resource region must match a currently busy region.
+
 
 
 .. _`release_mem_region_adjustable`:
@@ -422,6 +449,7 @@ release_mem_region_adjustable
         resource region size
 
 
+
 .. _`release_mem_region_adjustable.description`:
 
 Description
@@ -434,13 +462,22 @@ the latter case, the remaining resource is adjusted accordingly.
 Existing children of the busy memory resource must be immutable in the
 request.
 
-Note:
+
+
+.. _`release_mem_region_adjustable.note`:
+
+Note
+----
+
 - Additional release conditions, such as overlapping region, can be
+
   supported after they are confirmed as valid cases.
 
 - When a busy memory resource gets split into two entries, the code
+
   assumes that all children remain in the lower address entry for
   simplicity.  Enhance this logic when necessary.
+
 
 
 .. _`devm_request_resource`:
@@ -462,6 +499,7 @@ devm_request_resource
         descriptor of the resource to request
 
 
+
 .. _`devm_request_resource.description`:
 
 Description
@@ -480,6 +518,7 @@ requested resource, an error message will be printed.
 Returns 0 on success or a negative error code on failure.
 
 
+
 .. _`devm_release_resource`:
 
 devm_release_resource
@@ -494,6 +533,7 @@ devm_release_resource
 
     :param struct resource \*new:
         descriptor of the resource to release
+
 
 
 .. _`devm_release_resource.description`:

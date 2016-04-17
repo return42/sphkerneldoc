@@ -4,16 +4,18 @@
 hrtimer.h
 =========
 
+
 .. _`hrtimer`:
 
 struct hrtimer
 ==============
 
-.. c:type:: struct hrtimer
+.. c:type:: hrtimer
 
     the basic hrtimer structure
 
 
+.. _`hrtimer.definition`:
 
 Definition
 ----------
@@ -35,6 +37,7 @@ Definition
   };
 
 
+.. _`hrtimer.members`:
 
 Members
 -------
@@ -48,10 +51,9 @@ Members
     identical to _softexpires.
 
 :``_softexpires``:
-    the absolute earliest expiry time of the hrtimer.::
-
-                    The time which was given as expiry time when the timer
-                    was armed.
+    the absolute earliest expiry time of the hrtimer.
+    The time which was given as expiry time when the timer
+    was armed.
 
 :``function``:
     timer expiry callback function
@@ -79,10 +81,14 @@ Members
 
 
 
+
+.. _`hrtimer.description`:
+
 Description
 -----------
 
 The hrtimer structure must be initialized by :c:func:`hrtimer_init`
+
 
 
 .. _`hrtimer_sleeper`:
@@ -90,11 +96,12 @@ The hrtimer structure must be initialized by :c:func:`hrtimer_init`
 struct hrtimer_sleeper
 ======================
 
-.. c:type:: struct hrtimer_sleeper
+.. c:type:: hrtimer_sleeper
 
     simple sleeper structure
 
 
+.. _`hrtimer_sleeper.definition`:
 
 Definition
 ----------
@@ -107,6 +114,7 @@ Definition
   };
 
 
+.. _`hrtimer_sleeper.members`:
 
 Members
 -------
@@ -119,10 +127,14 @@ Members
 
 
 
+
+.. _`hrtimer_sleeper.description`:
+
 Description
 -----------
 
 task is set to NULL, when the timer expires.
+
 
 
 .. _`hrtimer_clock_base`:
@@ -130,11 +142,12 @@ task is set to NULL, when the timer expires.
 struct hrtimer_clock_base
 =========================
 
-.. c:type:: struct hrtimer_clock_base
+.. c:type:: hrtimer_clock_base
 
     the timer base for a specific clock
 
 
+.. _`hrtimer_clock_base.definition`:
 
 Definition
 ----------
@@ -151,6 +164,7 @@ Definition
   };
 
 
+.. _`hrtimer_clock_base.members`:
 
 Members
 -------
@@ -176,6 +190,7 @@ Members
 
 
 
+
 .. _`hrtimer_start`:
 
 hrtimer_start
@@ -196,6 +211,7 @@ hrtimer_start
         relative (HRTIMER_MODE_REL)
 
 
+
 .. _`hrtimer_forward_now`:
 
 hrtimer_forward_now
@@ -212,6 +228,7 @@ hrtimer_forward_now
         the interval to forward
 
 
+
 .. _`hrtimer_forward_now.description`:
 
 Description
@@ -225,6 +242,13 @@ called from other contexts ``timer`` must neither be enqueued nor
 running the callback and the caller needs to take care of
 serialization.
 
-Note: This only updates the timer expiry value and does not requeue
+
+
+.. _`hrtimer_forward_now.note`:
+
+Note
+----
+
+This only updates the timer expiry value and does not requeue
 the timer.
 

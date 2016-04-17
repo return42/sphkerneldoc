@@ -7,4 +7,5 @@ lib
 .. toctree::
    :maxdepth: 1
 
-   usercopy_32_c
+   csum-wrappers_64_c
+   msr_c

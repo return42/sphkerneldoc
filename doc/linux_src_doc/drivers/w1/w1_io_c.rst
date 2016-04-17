@@ -4,6 +4,7 @@
 w1_io.c
 =======
 
+
 .. _`w1_touch_bit`:
 
 w1_touch_bit
@@ -18,6 +19,7 @@ w1_touch_bit
 
     :param int bit:
         0 - write a 0, 1 - write a 0 read the level
+
 
 
 .. _`w1_write_bit`:
@@ -36,12 +38,14 @@ w1_write_bit
         bit to write
 
 
+
 .. _`w1_write_bit.description`:
 
 Description
 -----------
 
 Only call if dev->bus_master->touch_bit is NULL
+
 
 
 .. _`w1_pre_write`:
@@ -57,6 +61,7 @@ w1_pre_write
         the master device
 
 
+
 .. _`w1_pre_write.description`:
 
 Description
@@ -65,6 +70,7 @@ Description
 Pre-write operation, currently only supporting strong pullups.
 Program the hardware for a strong pullup, if one has been requested and
 the hardware supports it.
+
 
 
 .. _`w1_post_write`:
@@ -80,6 +86,7 @@ w1_post_write
         the master device
 
 
+
 .. _`w1_post_write.description`:
 
 Description
@@ -88,6 +95,7 @@ Description
 Post-write operation, currently only supporting strong pullups.
 If a strong pullup was requested, clear it if the hardware supports
 them, or execute the delay otherwise, in either case clear the request.
+
 
 
 .. _`w1_write_8`:
@@ -106,6 +114,7 @@ w1_write_8
         the byte to write
 
 
+
 .. _`w1_read_bit`:
 
 w1_read_bit
@@ -119,12 +128,14 @@ w1_read_bit
         the master device
 
 
+
 .. _`w1_read_bit.description`:
 
 Description
 -----------
 
 Only call if dev->bus_master->touch_bit is NULL
+
 
 
 .. _`w1_triplet`:
@@ -143,20 +154,26 @@ w1_triplet
         the bit to write if both id_bit and comp_bit are 0
 
 
-.. _`w1_triplet.description`:
 
-Description
+.. _`w1_triplet.return-bits`:
+
+Return bits
 -----------
 
-Return bits::
-
- bit 0 = id_bit
- bit 1 = comp_bit
- bit 2 = dir_taken
-
+bit 0 = id_bit
+bit 1 = comp_bit
+bit 2 = dir_taken
 If both bits 0 & 1 are set, the search should be restarted.
 
-Return:        bit fields - see above
+
+
+.. _`w1_triplet.return`:
+
+Return
+------
+
+bit fields - see above
+
 
 
 .. _`w1_read_8`:
@@ -172,12 +189,14 @@ w1_read_8
         the master device
 
 
-.. _`w1_read_8.description`:
 
-Description
------------
+.. _`w1_read_8.return`:
 
-Return:        the byte read
+Return
+------
+
+the byte read
+
 
 
 .. _`w1_write_block`:
@@ -199,6 +218,7 @@ w1_write_block
         the number of bytes to write
 
 
+
 .. _`w1_touch_block`:
 
 w1_touch_block
@@ -218,6 +238,7 @@ w1_touch_block
         the number of bytes to write
 
 
+
 .. _`w1_read_block`:
 
 w1_read_block
@@ -235,7 +256,16 @@ w1_read_block
 
     :param int len:
         the number of bytes to read
-        Return:        the number of bytes read
+
+
+
+.. _`w1_read_block.return`:
+
+Return
+------
+
+the number of bytes read
+
 
 
 .. _`w1_reset_bus`:
@@ -249,7 +279,16 @@ w1_reset_bus
 
     :param struct w1_master \*dev:
         the master device
-        Return:        0=Device present, 1=No device present or error
+
+
+
+.. _`w1_reset_bus.return`:
+
+Return
+------
+
+0=Device present, 1=No device present or error
+
 
 
 .. _`w1_reset_select_slave`:
@@ -265,6 +304,7 @@ w1_reset_select_slave
         the slave to select
 
 
+
 .. _`w1_reset_select_slave.description`:
 
 Description
@@ -275,7 +315,15 @@ or a rom match.  A skip rom is issued if there is only one device
 registered on the bus.
 The w1 master lock must be held.
 
-Return:        0=success, anything else=error
+
+
+.. _`w1_reset_select_slave.return`:
+
+Return
+------
+
+0=success, anything else=error
+
 
 
 .. _`w1_reset_resume_command`:
@@ -289,6 +337,7 @@ w1_reset_resume_command
 
     :param struct w1_master \*dev:
         the master device
+
 
 
 .. _`w1_reset_resume_command.description`:
@@ -309,6 +358,7 @@ doesn't work of course, but the resume command is the next best thing.
 The w1 master lock must be held.
 
 
+
 .. _`w1_next_pullup`:
 
 w1_next_pullup
@@ -325,6 +375,7 @@ w1_next_pullup
         time in milliseconds
 
 
+
 .. _`w1_next_pullup.description`:
 
 Description
@@ -337,5 +388,12 @@ write operation without a strong pullup.  This is a one shot request for
 the next write, specifying zero will clear a previous request.
 The w1 master lock must be held.
 
-Return:        0=success, anything else=error
+
+
+.. _`w1_next_pullup.return`:
+
+Return
+------
+
+0=success, anything else=error
 

@@ -4,16 +4,18 @@
 dvb_ca_en50221.h
 ================
 
+
 .. _`dvb_ca_en50221`:
 
 struct dvb_ca_en50221
 =====================
 
-.. c:type:: struct dvb_ca_en50221
+.. c:type:: dvb_ca_en50221
 
     Structure describing a CA interface
 
 
+.. _`dvb_ca_en50221.definition`:
 
 Definition
 ----------
@@ -35,6 +37,7 @@ Definition
   };
 
 
+.. _`dvb_ca_en50221.members`:
 
 Members
 -------
@@ -75,12 +78,16 @@ Members
 
 
 
-Description
------------
 
-NOTE: the read_\*, write_\* and poll_slot_status functions will be
+.. _`dvb_ca_en50221.note`:
+
+NOTE
+----
+
+the read\_\*, write\_\* and poll_slot_status functions will be
 called for different slots concurrently and need to use locks where
 and if appropriate. There will be no concurrent access to one slot.
+
 
 
 .. _`dvb_ca_en50221_camchange_irq`:
@@ -99,7 +106,8 @@ dvb_ca_en50221_camchange_irq
         Slot concerned.
 
     :param int change_type:
-        One of the DVB_CA_CAMCHANGE_\* values
+        One of the DVB_CA_CAMCHANGE\_\* values
+
 
 
 .. _`dvb_ca_en50221_camready_irq`:
@@ -118,6 +126,7 @@ dvb_ca_en50221_camready_irq
         Slot concerned.
 
 
+
 .. _`dvb_ca_en50221_frda_irq`:
 
 dvb_ca_en50221_frda_irq
@@ -132,6 +141,7 @@ dvb_ca_en50221_frda_irq
 
     :param int slot:
         Slot concerned.
+
 
 
 .. _`dvb_ca_en50221_init`:
@@ -150,10 +160,11 @@ dvb_ca_en50221_init
         The dvb_ca instance.
 
     :param int flags:
-        Flags describing the CA device (DVB_CA_EN50221_FLAG_\*).
+        Flags describing the CA device (DVB_CA_EN50221_FLAG\_\*).
 
     :param int slot_count:
         Number of slots supported.
+
 
 
 .. _`dvb_ca_en50221_init.description`:
@@ -162,6 +173,7 @@ Description
 -----------
 
 ``return`` 0 on success, nonzero on failure
+
 
 
 .. _`dvb_ca_en50221_release`:

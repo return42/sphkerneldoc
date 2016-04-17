@@ -4,16 +4,31 @@
 fs.h
 ====
 
+
 .. _`positive_aop_returns`:
 
 enum positive_aop_returns
 =========================
 
-.. c:type:: enum positive_aop_returns
+.. c:type:: positive_aop_returns
 
     aop return codes with specific semantics
 
 
+.. _`positive_aop_returns.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum positive_aop_returns {
+      AOP_WRITEPAGE_ACTIVATE,
+      AOP_TRUNCATED_PAGE
+    };
+
+
+.. _`positive_aop_returns.constants`:
 
 Constants
 ---------
@@ -38,6 +53,8 @@ Constants
     by :c:func:`readpage`.
 
 
+.. _`positive_aop_returns.description`:
+
 Description
 -----------
 
@@ -45,6 +62,7 @@ address_space_operation functions return these large constants to indicate
 special semantics to the caller.  These are much larger than the bytes in a
 page to allow for functions that return the number of bytes operated on in a
 given page.
+
 
 
 .. _`sb_end_write`:
@@ -60,6 +78,7 @@ sb_end_write
         the super we wrote to
 
 
+
 .. _`sb_end_write.description`:
 
 Description
@@ -67,6 +86,7 @@ Description
 
 Decrement number of writers to the filesystem. Wake up possible waiters
 wanting to freeze the filesystem.
+
 
 
 .. _`sb_end_pagefault`:
@@ -82,6 +102,7 @@ sb_end_pagefault
         the super we wrote to
 
 
+
 .. _`sb_end_pagefault.description`:
 
 Description
@@ -89,6 +110,7 @@ Description
 
 Decrement number of processes handling write page fault to the filesystem.
 Wake up possible waiters wanting to freeze the filesystem.
+
 
 
 .. _`sb_end_intwrite`:
@@ -104,6 +126,7 @@ sb_end_intwrite
         the super we wrote to
 
 
+
 .. _`sb_end_intwrite.description`:
 
 Description
@@ -111,6 +134,7 @@ Description
 
 Decrement fs-internal number of writers to the filesystem.  Wake up possible
 waiters wanting to freeze the filesystem.
+
 
 
 .. _`sb_start_write`:
@@ -124,6 +148,7 @@ sb_start_write
 
     :param struct super_block \*sb:
         the super we write to
+
 
 
 .. _`sb_start_write.description`:
@@ -147,6 +172,7 @@ sb_start_write
 -> s_umount                (freeze_super, thaw_super)
 
 
+
 .. _`sb_start_pagefault`:
 
 sb_start_pagefault
@@ -158,6 +184,7 @@ sb_start_pagefault
 
     :param struct super_block \*sb:
         the super we write to
+
 
 
 .. _`sb_start_pagefault.description`:
@@ -175,10 +202,18 @@ function waits until the file system is thawed.
 Since page fault freeze protection behaves as a lock, users have to preserve
 ordering of freeze protection and other filesystem locks. It is advised to
 put :c:func:`sb_start_pagefault` close to mmap_sem in lock ordering. Page fault
-handling code implies lock dependency:
+
+
+
+.. _`sb_start_pagefault.handling-code-implies-lock-dependency`:
+
+handling code implies lock dependency
+-------------------------------------
+
 
 mmap_sem
 -> sb_start_pagefault
+
 
 
 .. _`inode_inc_iversion`:
@@ -192,6 +227,7 @@ inode_inc_iversion
 
     :param struct inode \*inode:
         inode that need to be updated
+
 
 
 .. _`inode_inc_iversion.description`:

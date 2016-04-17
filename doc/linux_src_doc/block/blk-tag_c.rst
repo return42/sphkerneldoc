@@ -4,6 +4,7 @@
 blk-tag.c
 =========
 
+
 .. _`blk_queue_find_tag`:
 
 blk_queue_find_tag
@@ -20,17 +21,17 @@ blk_queue_find_tag
         The tag of the request
 
 
-.. _`blk_queue_find_tag.description`:
 
-Description
------------
+.. _`blk_queue_find_tag.notes`:
 
-Notes::
+Notes
+-----
 
-   Should be used when a device returns a tag and you want to match
-   it with a request.
+Should be used when a device returns a tag and you want to match
+it with a request.
 
-   no locks need be held.
+no locks need be held.
+
 
 
 .. _`blk_free_tags`:
@@ -46,6 +47,7 @@ blk_free_tags
         the tag map to free
 
 
+
 .. _`blk_free_tags.description`:
 
 Description
@@ -53,6 +55,7 @@ Description
 
 Drop the reference count on ``bqt`` and frees it when the last reference
 is dropped.
+
 
 
 .. _`__blk_queue_free_tags`:
@@ -68,15 +71,15 @@ __blk_queue_free_tags
         the request queue for the device
 
 
-.. _`__blk_queue_free_tags.description`:
 
-Description
------------
+.. _`__blk_queue_free_tags.notes`:
 
-Notes::
+Notes
+-----
 
-  :c:func:`blk_cleanup_queue` will take care of calling this function, if tagging
-  has been used. So there's no need to call this directly.
+:c:func:`blk_cleanup_queue` will take care of calling this function, if tagging
+has been used. So there's no need to call this directly.
+
 
 
 .. _`blk_queue_free_tags`:
@@ -92,15 +95,15 @@ blk_queue_free_tags
         the request queue for the device
 
 
-.. _`blk_queue_free_tags.description`:
 
-Description
------------
+.. _`blk_queue_free_tags.notes`:
 
-Notes::
+Notes
+-----
 
-       This is used to disable tagged queuing to a device, yet leave
-       queue in function.
+This is used to disable tagged queuing to a device, yet leave
+queue in function.
+
 
 
 .. _`blk_init_tags`:
@@ -117,6 +120,7 @@ blk_init_tags
 
     :param int alloc_policy:
         tag allocation policy
+
 
 
 .. _`blk_queue_init_tags`:
@@ -141,6 +145,7 @@ blk_queue_init_tags
         tag allocation policy
 
 
+
 .. _`blk_queue_init_tags.description`:
 
 Description
@@ -148,6 +153,7 @@ Description
 
 Queue lock must be held here if the function is called to resize an
 existing map.
+
 
 
 .. _`blk_queue_resize_tags`:
@@ -166,14 +172,14 @@ blk_queue_resize_tags
         the new max command queueing depth
 
 
-.. _`blk_queue_resize_tags.description`:
 
-Description
------------
+.. _`blk_queue_resize_tags.notes`:
 
-Notes::
+Notes
+-----
 
-  Must be called with the queue lock held.
+Must be called with the queue lock held.
+
 
 
 .. _`blk_queue_end_tag`:
@@ -192,21 +198,26 @@ blk_queue_end_tag
         the request that has completed
 
 
+
 .. _`blk_queue_end_tag.description`:
 
 Description
 -----------
 
-Description::
+Typically called when :c:func:`end_that_request_first` returns ``0``\ , meaning
+all transfers have been done for a request. It's important to call
+this function before :c:func:`end_that_request_last`, as that will put the
+request back on the free list thus corrupting the internal tag list.
 
-  Typically called when :c:func:`end_that_request_first` returns ``0``\ , meaning
-  all transfers have been done for a request. It's important to call
-  this function before :c:func:`end_that_request_last`, as that will put the
-  request back on the free list thus corrupting the internal tag list.
 
-Notes::
 
- queue lock must be held.
+.. _`blk_queue_end_tag.notes`:
+
+Notes
+-----
+
+queue lock must be held.
+
 
 
 .. _`blk_queue_start_tag`:
@@ -225,25 +236,30 @@ blk_queue_start_tag
         the block request that needs tagging
 
 
+
 .. _`blk_queue_start_tag.description`:
 
 Description
 -----------
 
-Description::
+This can either be used as a stand-alone helper, or possibly be
+assigned as the queue :c:type:`struct prep_rq_fn <prep_rq_fn>` (in which case :c:type:`struct request <request>`
+automagically gets a tag assigned). Note that this function
+assumes that any type of request can be queued! if this is not
+true for your device, you must check the request type before
+calling this function.  The request will also be removed from
+the request queue, so it's the drivers responsibility to readd
+it if it should need to be restarted for some reason.
 
-  This can either be used as a stand-alone helper, or possibly be
-  assigned as the queue :c:type:`struct prep_rq_fn <prep_rq_fn>` (in which case :c:type:`struct request <request>`
-  automagically gets a tag assigned). Note that this function
-  assumes that any type of request can be queued! if this is not
-  true for your device, you must check the request type before
-  calling this function.  The request will also be removed from
-  the request queue, so it's the drivers responsibility to readd
-  it if it should need to be restarted for some reason.
 
-Notes::
 
- queue lock must be held.
+.. _`blk_queue_start_tag.notes`:
+
+Notes
+-----
+
+queue lock must be held.
+
 
 
 .. _`blk_queue_invalidate_tags`:
@@ -259,18 +275,22 @@ blk_queue_invalidate_tags
         the request queue for the device
 
 
+
 .. _`blk_queue_invalidate_tags.description`:
 
 Description
 -----------
 
-Description::
+Hardware conditions may dictate a need to stop all pending requests.
+In this case, we will safely clear the block side of the tag queue and
+readd all requests to the request queue in the right order.
 
- Hardware conditions may dictate a need to stop all pending requests.
- In this case, we will safely clear the block side of the tag queue and
- readd all requests to the request queue in the right order.
 
-Notes::
 
- queue lock must be held.
+.. _`blk_queue_invalidate_tags.notes`:
+
+Notes
+-----
+
+queue lock must be held.
 

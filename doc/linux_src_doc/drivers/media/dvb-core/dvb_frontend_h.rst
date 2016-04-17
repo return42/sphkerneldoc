@@ -4,6 +4,7 @@
 dvb_frontend.h
 ==============
 
+
 .. _`digital-tv-frontend`:
 
 Digital TV Frontend
@@ -29,16 +30,18 @@ part of their handler for :c:type:`struct device_driver <device_driver>`.:c:func
 A few other optional functions are provided to handle some special cases.
 
 
+
 .. _`dvb_frontend_tune_settings`:
 
 struct dvb_frontend_tune_settings
 =================================
 
-.. c:type:: struct dvb_frontend_tune_settings
+.. c:type:: dvb_frontend_tune_settings
 
     parameters to adjust frontend tuning
 
 
+.. _`dvb_frontend_tune_settings.definition`:
 
 Definition
 ----------
@@ -52,6 +55,7 @@ Definition
   };
 
 
+.. _`dvb_frontend_tune_settings.members`:
 
 Members
 -------
@@ -67,10 +71,14 @@ Members
 
 
 
-Description
------------
 
-NOTE: step_size is in Hz, for terrestrial/cable or kHz for satellite
+.. _`dvb_frontend_tune_settings.note`:
+
+NOTE
+----
+
+step_size is in Hz, for terrestrial/cable or kHz for satellite
+
 
 
 .. _`dvb_tuner_info`:
@@ -78,11 +86,12 @@ NOTE: step_size is in Hz, for terrestrial/cable or kHz for satellite
 struct dvb_tuner_info
 =====================
 
-.. c:type:: struct dvb_tuner_info
+.. c:type:: dvb_tuner_info
 
     Frontend name and min/max ranges/bandwidths
 
 
+.. _`dvb_tuner_info.definition`:
 
 Definition
 ----------
@@ -100,6 +109,7 @@ Definition
   };
 
 
+.. _`dvb_tuner_info.members`:
 
 Members
 -------
@@ -127,11 +137,15 @@ Members
 
 
 
-Description
------------
 
-NOTE: frequency parameters are in Hz, for terrestrial/cable or kHz for
+.. _`dvb_tuner_info.note`:
+
+NOTE
+----
+
+frequency parameters are in Hz, for terrestrial/cable or kHz for
 satellite.
+
 
 
 .. _`analog_parameters`:
@@ -139,11 +153,12 @@ satellite.
 struct analog_parameters
 ========================
 
-.. c:type:: struct analog_parameters
+.. c:type:: analog_parameters
 
     Parameters to tune into an analog/radio channel
 
 
+.. _`analog_parameters.definition`:
 
 Definition
 ----------
@@ -158,6 +173,7 @@ Definition
   };
 
 
+.. _`analog_parameters.members`:
 
 Members
 -------
@@ -171,12 +187,15 @@ Members
 
 :``audmode``:
     Audio mode as defined for the rxsubchans field at videodev2.h,
-    e. g. V4L2_TUNER_MODE_*
+    e. g. V4L2_TUNER_MODE\_\*
 
 :``std``:
-    TV standard bitmap as defined at videodev2.h, e. g. V4L2_STD_*
+    TV standard bitmap as defined at videodev2.h, e. g. V4L2_STD\_\*
 
 
+
+
+.. _`analog_parameters.description`:
 
 Description
 -----------
@@ -186,16 +205,33 @@ struct contains the data that are used by the V4L2 side. To avoid
 dependencies from V4L2 headers, all enums here are declared as integers.
 
 
+
 .. _`dvbfe_algo`:
 
 enum dvbfe_algo
 ===============
 
-.. c:type:: enum dvbfe_algo
+.. c:type:: dvbfe_algo
 
     defines the algorithm used to tune into a channel
 
 
+.. _`dvbfe_algo.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dvbfe_algo {
+      DVBFE_ALGO_HW,
+      DVBFE_ALGO_SW,
+      DVBFE_ALGO_CUSTOM,
+      DVBFE_ALGO_RECOVERY
+    };
+
+
+.. _`dvbfe_algo.constants`:
 
 Constants
 ---------
@@ -230,11 +266,29 @@ Constants
 enum dvbfe_search
 =================
 
-.. c:type:: enum dvbfe_search
+.. c:type:: dvbfe_search
 
     search callback possible return status
 
 
+.. _`dvbfe_search.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dvbfe_search {
+      DVBFE_ALGO_SEARCH_SUCCESS,
+      DVBFE_ALGO_SEARCH_ASLEEP,
+      DVBFE_ALGO_SEARCH_FAILED,
+      DVBFE_ALGO_SEARCH_INVALID,
+      DVBFE_ALGO_SEARCH_AGAIN,
+      DVBFE_ALGO_SEARCH_ERROR
+    };
+
+
+.. _`dvbfe_search.constants`:
 
 Constants
 ---------
@@ -264,11 +318,12 @@ Constants
 struct dvb_tuner_ops
 ====================
 
-.. c:type:: struct dvb_tuner_ops
+.. c:type:: dvb_tuner_ops
 
     Tuner information and callbacks
 
 
+.. _`dvb_tuner_ops.definition`:
 
 Definition
 ----------
@@ -299,6 +354,7 @@ Definition
   };
 
 
+.. _`dvb_tuner_ops.members`:
 
 Members
 -------
@@ -307,9 +363,8 @@ Members
     embedded struct dvb_tuner_info with tuner properties
 
 :``release``:
-    callback function called when frontend is dettached.::
-
-                            drivers should free any allocated memory.
+    callback function called when frontend is dettached.
+    drivers should free any allocated memory.
 
 :``init``:
     callback function used to initialize the tuner device.
@@ -378,11 +433,15 @@ Members
 
 
 
-Description
------------
 
-NOTE: frequencies used on get_frequency and set_frequency are in Hz for
+.. _`dvb_tuner_ops.note`:
+
+NOTE
+----
+
+frequencies used on get_frequency and set_frequency are in Hz for
 terrestrial/cable or kHz for satellite.
+
 
 
 .. _`analog_demod_info`:
@@ -390,11 +449,12 @@ terrestrial/cable or kHz for satellite.
 struct analog_demod_info
 ========================
 
-.. c:type:: struct analog_demod_info
+.. c:type:: analog_demod_info
 
     Information struct for analog TV part of the demod
 
 
+.. _`analog_demod_info.definition`:
 
 Definition
 ----------
@@ -406,6 +466,7 @@ Definition
   };
 
 
+.. _`analog_demod_info.members`:
 
 Members
 -------
@@ -415,16 +476,18 @@ Members
 
 
 
+
 .. _`analog_demod_ops`:
 
 struct analog_demod_ops
 =======================
 
-.. c:type:: struct analog_demod_ops
+.. c:type:: analog_demod_ops
 
     Demodulation information and callbacks for analog TV and radio
 
 
+.. _`analog_demod_ops.definition`:
 
 Definition
 ----------
@@ -444,6 +507,7 @@ Definition
   };
 
 
+.. _`analog_demod_ops.members`:
 
 Members
 -------
@@ -465,17 +529,15 @@ Members
     drift due to AFC.
 
 :``tuner_status``:
-    callback function that returns tuner status bits, e. g.::
-
-                            TUNER_STATUS_LOCKED and TUNER_STATUS_STEREO.
+    callback function that returns tuner status bits, e. g.
+    TUNER_STATUS_LOCKED and TUNER_STATUS_STEREO.
 
 :``standby``:
     set the tuner to standby mode.
 
 :``release``:
-    callback function called when frontend is dettached.::
-
-                            drivers should free any allocated memory.
+    callback function called when frontend is dettached.
+    drivers should free any allocated memory.
 
 :``i2c_gate_ctrl``:
     controls the I2C gate. Newer drivers should use I2C
@@ -487,16 +549,18 @@ Members
 
 
 
+
 .. _`dvb_frontend_ops`:
 
 struct dvb_frontend_ops
 =======================
 
-.. c:type:: struct dvb_frontend_ops
+.. c:type:: dvb_frontend_ops
 
     Demodulation information and callbacks for ditialt TV
 
 
+.. _`dvb_frontend_ops.definition`:
 
 Definition
 ----------
@@ -540,6 +604,7 @@ Definition
   };
 
 
+.. _`dvb_frontend_ops.members`:
 
 Members
 -------
@@ -551,9 +616,8 @@ Members
     Delivery systems supported by the frontend
 
 :``release``:
-    callback function called when frontend is dettached.::
-
-                            drivers should free any allocated memory.
+    callback function called when frontend is dettached.
+    drivers should free any allocated memory.
 
 :``release_sec``:
     callback function requesting that the Satelite Equipment
@@ -601,11 +665,10 @@ Members
     returns the locking status of the frontend.
 
 :``read_ber``:
-    legacy callback function to return the bit error rate.::
-
-                            Newer drivers should provide such info via DVBv5 API,
-                            e. g. ``set_frontend``\ ;/\ ``get_frontend``\ ;, implementing this
-                            callback only if DVBv3 API compatibility is wanted.
+    legacy callback function to return the bit error rate.
+    Newer drivers should provide such info via DVBv5 API,
+    e. g. ``set_frontend``\ ;/\ ``get_frontend``\ ;, implementing this
+    callback only if DVBv3 API compatibility is wanted.
 
 :``read_signal_strength``:
     legacy callback function to return the signal
@@ -694,16 +757,18 @@ Members
 
 
 
+
 .. _`dtv_frontend_properties`:
 
 struct dtv_frontend_properties
 ==============================
 
-.. c:type:: struct dtv_frontend_properties
+.. c:type:: dtv_frontend_properties
 
     contains a list of properties that are specific to a digital TV standard.
 
 
+.. _`dtv_frontend_properties.definition`:
 
 Definition
 ----------
@@ -763,6 +828,7 @@ Definition
   };
 
 
+.. _`dtv_frontend_properties.members`:
 
 Members
 -------
@@ -929,10 +995,13 @@ Members
 
 
 
-Description
------------
 
-NOTE: derivated statistics like Uncorrected Error blocks (UCE) are
+.. _`dtv_frontend_properties.note`:
+
+NOTE
+----
+
+derivated statistics like Uncorrected Error blocks (UCE) are
 calculated on userspace.
 
 Only a subset of the properties are needed for a given delivery system.
@@ -940,16 +1009,18 @@ For more info, consult the media_api.html with the documentation of the
 Userspace API.
 
 
+
 .. _`dvb_frontend`:
 
 struct dvb_frontend
 ===================
 
-.. c:type:: struct dvb_frontend
+.. c:type:: dvb_frontend
 
     Frontend structure to be used on drivers.
 
 
+.. _`dvb_frontend.definition`:
 
 Definition
 ----------
@@ -973,6 +1044,7 @@ Definition
   };
 
 
+.. _`dvb_frontend.members`:
 
 Members
 -------
@@ -1015,6 +1087,7 @@ Members
 
 
 
+
 .. _`dvb_register_frontend`:
 
 dvb_register_frontend
@@ -1031,6 +1104,7 @@ dvb_register_frontend
         pointer to the frontend struct
 
 
+
 .. _`dvb_register_frontend.description`:
 
 Description
@@ -1040,6 +1114,7 @@ Allocate and initialize the private data needed by the frontend core to
 manage the frontend and calls :c:func:`dvb_register_device` to register a new
 frontend. It also cleans the property cache that stores the frontend
 parameters and selects the first available delivery system.
+
 
 
 .. _`dvb_unregister_frontend`:
@@ -1055,6 +1130,7 @@ dvb_unregister_frontend
         pointer to the frontend struct
 
 
+
 .. _`dvb_unregister_frontend.description`:
 
 Description
@@ -1063,9 +1139,17 @@ Description
 Stops the frontend kthread, calls :c:func:`dvb_unregister_device` and frees the
 private frontend data allocated by :c:func:`dvb_register_frontend`.
 
-NOTE: This function doesn't frees the memory allocated by the demod,
+
+
+.. _`dvb_unregister_frontend.note`:
+
+NOTE
+----
+
+This function doesn't frees the memory allocated by the demod,
 by the SEC driver and by the tuner. In order to free it, an explicit call to
 :c:func:`dvb_frontend_detach` is needed, after calling this function.
+
 
 
 .. _`dvb_frontend_detach`:
@@ -1079,6 +1163,7 @@ dvb_frontend_detach
 
     :param struct dvb_frontend \*fe:
         pointer to the frontend struct
+
 
 
 .. _`dvb_frontend_detach.description`:
@@ -1096,6 +1181,7 @@ the module reference count, needed to allow userspace to remove the
 previously used DVB frontend modules.
 
 
+
 .. _`dvb_frontend_suspend`:
 
 dvb_frontend_suspend
@@ -1107,6 +1193,7 @@ dvb_frontend_suspend
 
     :param struct dvb_frontend \*fe:
         pointer to the frontend struct
+
 
 
 .. _`dvb_frontend_suspend.description`:
@@ -1126,6 +1213,7 @@ The drivers should also call :c:func:`dvb_frontend_suspend` as part of their
 handler for the :c:type:`struct device_driver <device_driver>`.:c:func:`suspend`.
 
 
+
 .. _`dvb_frontend_resume`:
 
 dvb_frontend_resume
@@ -1137,6 +1225,7 @@ dvb_frontend_resume
 
     :param struct dvb_frontend \*fe:
         pointer to the frontend struct
+
 
 
 .. _`dvb_frontend_resume.description`:
@@ -1159,6 +1248,7 @@ The drivers should also call :c:func:`dvb_frontend_resume` as part of their
 handler for the :c:type:`struct device_driver <device_driver>`.:c:func:`resume`.
 
 
+
 .. _`dvb_frontend_reinitialise`:
 
 dvb_frontend_reinitialise
@@ -1172,6 +1262,7 @@ dvb_frontend_reinitialise
         pointer to the frontend struct
 
 
+
 .. _`dvb_frontend_reinitialise.description`:
 
 Description
@@ -1180,9 +1271,17 @@ Description
 Calls :c:type:`struct dvb_frontend_ops <dvb_frontend_ops>`.:c:func:`init` and :c:type:`struct dvb_frontend_ops <dvb_frontend_ops>`.tuner_ops.:c:func:`init`,
 and resets SEC tone and voltage (for Satellite systems).
 
-NOTE: Currently, this function is used only by one driver (budget-av).
+
+
+.. _`dvb_frontend_reinitialise.note`:
+
+NOTE
+----
+
+Currently, this function is used only by one driver (budget-av).
 It seems to be due to address some special issue with that specific
 frontend.
+
 
 
 .. _`dvb_frontend_sleep_until`:
@@ -1201,6 +1300,7 @@ dvb_frontend_sleep_until
         time to sleep, in microseconds
 
 
+
 .. _`dvb_frontend_sleep_until.description`:
 
 Description
@@ -1215,7 +1315,14 @@ Its used internally by the DVB frontend core, in order to emulate
 ``FE_DISHNETWORK_SEND_LEGACY_CMD`` using the :c:type:`struct dvb_frontend_ops <dvb_frontend_ops>`.:c:func:`set_voltage`
 callback.
 
-NOTE: it should not be used at the drivers, as the emulation for the
+
+
+.. _`dvb_frontend_sleep_until.note`:
+
+NOTE
+----
+
+it should not be used at the drivers, as the emulation for the
 legacy callback is provided by the Kernel. The only situation where this
 should be at the drivers is when there are some bugs at the hardware that
 would prevent the core emulation to work. On such cases, the driver would

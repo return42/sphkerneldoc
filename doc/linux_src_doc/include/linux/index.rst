@@ -7,54 +7,338 @@ linux
 .. toctree::
    :maxdepth: 1
 
+   acpi_dma_h
+   acpi_h
+   alarmtimer_h
+   amd-iommu_h
    apple-gmux_h
+   arm-smccc_h
+   async_tx_h
+   ata_h
+   atalk_h
+   atmdev_h
+   atmel-mci_h
+   atmel_tc_h
+   atomic_h
+   backing-dev-defs_h
+   backing-dev_h
+   bch_h
+   bio_h
+   bitmap_h
+   bitops_h
+   blk-cgroup_h
+   blkdev_h
+   blktrace_api_h
+   btree_h
+   buffer_head_h
+   bug_h
+   cacheinfo_h
+   cb710_h
+   ccp_h
+   cgroup-defs_h
+   cgroup_h
    clk_h
+   clk-provider_h
+   clockchips_h
+   clock_cooling_h
+   clocksource_h
+   cnt32_to_63_h
+   compiler_h
    completion_h
+   context_tracking_h
+   cordic_h
+   coresight_h
+   count_zeros_h
+   cpu_cooling_h
+   cpufreq_h
+   cpuhotplug_h
+   cpuidle_h
+   cpumask_h
+   cpu_rmap_h
+   crc32_h
+   crc8_h
+   cred_h
    crypto_h
    dcache_h
+   dccp_h
+   dcookies_h
    debugobjects_h
+   devfreq_cooling_h
+   devfreq-event_h
+   devfreq_h
    device_h
+   dma-attrs_h
+   dma-buf_h
+   dma-contiguous_h
+   dmaengine_h
+   dma-mapping_h
+   drbd_genl_api_h
+   edac_h
+   eeprom_93cx6_h
+   efi_h
+   err_h
    etherdevice_h
+   ethtool_h
+   extcon_h
+   f2fs_fs_h
    fence_h
+   fixp-arith_h
+   freezer_h
+   fscache-cache_h
+   fscache_h
+   fscrypto_h
    fs_h
+   fsl_hypervisor_h
+   ftrace_h
+   gameport_h
+   genalloc_h
+   genetlink_h
+   gpio_h
+   gpio_keys_h
+   gpio_mouse_h
+   hashtable_h
    hdmi_h
+   hid_h
+   hid-sensor-hub_h
+   highmem_h
    hrtimer_h
+   hw_random_h
+   hwspinlock_h
+   i2c-gpio_h
    i2c_h
+   i2c-mux-gpio_h
+   i2c-mux-pinctrl_h
+   i2c-xiic_h
+   ide_h
    idr_h
+   ieee80211_h
+   ieee802154_h
+   if_vlan_h
    input_h
    input-polldev_h
+   intel-svm_h
    interrupt_h
+   iocontext_h
+   iommu_h
+   iopoll_h
+   ipack_h
+   ipv6_h
+   irqbypass_h
+   irqdesc_h
+   irqdomain_h
    irq_h
+   irqreturn_h
    jbd2_h
+   jiffies_h
+   jz4780-nemc_h
    kernel_h
+   kernfs_h
+   key_h
    kfifo_h
    kgdb_h
+   kmsg_dump_h
+   kobject_h
+   kref_h
+   ks8842_h
+   ks8851_mll_h
    kthread_h
    ktime_h
+   led-class-flash_h
+   led-lm3530_h
+   leds_h
+   libata_h
+   lis3lv02d_h
+   list_bl_h
    list_h
+   list_lru_h
+   list_nulls_h
+   livepatch_h
+   llist_h
+   log2_h
+   lru_cache_h
+   mailbox_client_h
+   mailbox_controller_h
+   math64_h
+   mcb_h
+   mdio_h
+   mei_cl_bus_h
+   memblock_h
+   memcontrol_h
+   memremap_h
+   mii_h
+   mm_inline_h
+   mmzone_h
+   mod_devicetable_h
+   module_h
+   moduleparam_h
+   mpi_h
+   msi_h
    mutex_h
+   namei_h
+   nd_h
    netdevice_h
+   netfilter_h
    net_h
+   nfs_fs_h
+   nfs_page_h
+   nilfs2_fs_h
+   nmi_h
+   nodemask_h
+   ntb_h
+   of_device_h
+   of_gpio_h
+   of_graph_h
+   of_h
+   of_platform_h
+   oprofile_h
+   padata_h
+   page-flags_h
+   pagemap_h
    parport_h
+   pci_h
+   pci_hotplug_h
+   percpu-refcount_h
+   perf_event_h
+   phonet_h
+   phy_h
    pipe_fs_i_h
    platform_device_h
+   plist_h
+   pm2301_charger_h
+   pmem_h
+   pm_h
+   pm_wakeup_h
+   pnp_h
+   posix-clock_h
+   powercap_h
+   property_h
+   ptp_classify_h
+   ptp_clock_kernel_h
+   ptrace_h
    pwm_h
+   pxa2xx_ssp_h
+   quota_h
+   radix-tree_h
+   random_h
+   rbtree_h
+   rbtree_latch_h
+   rculist_bl_h
+   rculist_h
+   rculist_nulls_h
+   rcupdate_h
+   rcu_sync_h
+   rcutree_h
+   regmap_h
+   regset_h
+   relay_h
+   remoteproc_h
+   reset-controller_h
+   rfkill_h
+   rhashtable_h
+   ring_buffer_h
    rio_drv_h
    rio_h
+   rmi_h
+   rpmsg_h
    rslib_h
+   rtc_h
+   rtmutex_h
+   rtnetlink_h
+   scatterlist_h
    sched_h
+   scif_h
+   scpi_protocol_h
+   seccomp_h
+   selinux_h
+   seq_buf_h
+   seq_file_h
+   seqlock_h
    seqno-fence_h
+   serial_core_h
+   serial_max3100_h
+   serio_h
+   shdma-base_h
+   sh_dma_h
    skbuff_h
    slab_h
+   slub_def_h
+   smpboot_h
+   spinlock_h
+   spmi_h
+   srcu_h
+   stddef_h
+   ste_modem_shm_h
+   stm_h
+   stop_machine_h
+   string_h
+   sunxi-rsb_h
+   suspend_h
+   sysfs_h
+   sys_soc_h
+   textsearch_fsm_h
+   textsearch_h
+   thermal_h
+   thread_info_h
+   timb_dma_h
+   timb_gpio_h
+   time64_h
+   timecounter_h
+   time_h
+   timekeeper_internal_h
+   timekeeping_h
+   timer_h
+   timerqueue_h
+   ti_wilink_st_h
+   trace_events_h
+   tracehook_h
+   tracepoint_h
+   trace_seq_h
+   tty_h
+   types_h
+   uaccess_h
    uio_driver_h
    usb_h
+   util_macros_h
+   uwb_h
+   vfio_h
+   vgaarb_h
    vga_switcheroo_h
+   virtio_config_h
+   vringh_h
+   w1-gpio_h
    wait_h
    workqueue_h
+   writeback_h
+   ww_mutex_h
+   xz_h
+   zpool_h
+   amba/index
+   can/index
+   clk/index
+   dma/index
+   extcon/index
+   fpga/index
+   fsl/index
+   gpio/index
    hsi/index
+   i2c/index
    iio/index
    input/index
+   irqchip/index
+   mfd/index
+   mmc/index
    mtd/index
+   netfilter/index
+   phy/index
+   pinctrl/index
+   platform_data/index
+   power/index
    regulator/index
+   rtc/index
+   soc/index
    spi/index
+   sunrpc/index
+   ulpi/index
    usb/index
+   uwb/index
+   wimax/index

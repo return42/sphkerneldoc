@@ -1,0 +1,42 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+itg3200.h
+=========
+
+
+.. _`itg3200`:
+
+struct itg3200
+==============
+
+.. c:type:: itg3200
+
+    device instance specific data
+
+
+.. _`itg3200.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct itg3200 {
+    struct i2c_client * i2c;
+    struct iio_trigger * trig;
+  };
+
+
+.. _`itg3200.members`:
+
+Members
+-------
+
+:``i2c``:
+    actual i2c_client
+
+:``trig``:
+    data ready trigger from itg3200 pin
+
+

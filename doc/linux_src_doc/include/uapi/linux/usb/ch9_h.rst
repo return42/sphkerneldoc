@@ -4,16 +4,18 @@
 ch9.h
 =====
 
+
 .. _`usb_ctrlrequest`:
 
 struct usb_ctrlrequest
 ======================
 
-.. c:type:: struct usb_ctrlrequest
+.. c:type:: usb_ctrlrequest
 
     SETUP data for a USB device control request
 
 
+.. _`usb_ctrlrequest.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`usb_ctrlrequest.members`:
 
 Members
 -------
@@ -50,6 +53,9 @@ Members
 
 
 
+
+.. _`usb_ctrlrequest.description`:
+
 Description
 -----------
 
@@ -61,6 +67,7 @@ used for.
 Note that the driver for any interface can issue control requests.
 For most devices, interfaces don't coordinate with each other, so
 such requests may be made at any time.
+
 
 
 .. _`usb_endpoint_num`:
@@ -76,12 +83,14 @@ usb_endpoint_num
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_num.description`:
 
 Description
 -----------
 
 Returns ``epd``\ 's number: 0 to 15.
+
 
 
 .. _`usb_endpoint_type`:
@@ -97,6 +106,7 @@ usb_endpoint_type
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_type.description`:
 
 Description
@@ -104,6 +114,7 @@ Description
 
 Returns one of USB_ENDPOINT_XFER_{CONTROL, ISOC, BULK, INT} according
 to ``epd``\ 's transfer type.
+
 
 
 .. _`usb_endpoint_dir_in`:
@@ -119,12 +130,14 @@ usb_endpoint_dir_in
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_dir_in.description`:
 
 Description
 -----------
 
 Returns true if the endpoint is of type IN, otherwise it returns false.
+
 
 
 .. _`usb_endpoint_dir_out`:
@@ -140,12 +153,14 @@ usb_endpoint_dir_out
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_dir_out.description`:
 
 Description
 -----------
 
 Returns true if the endpoint is of type OUT, otherwise it returns false.
+
 
 
 .. _`usb_endpoint_xfer_bulk`:
@@ -161,12 +176,14 @@ usb_endpoint_xfer_bulk
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_xfer_bulk.description`:
 
 Description
 -----------
 
 Returns true if the endpoint is of type bulk, otherwise it returns false.
+
 
 
 .. _`usb_endpoint_xfer_control`:
@@ -182,12 +199,14 @@ usb_endpoint_xfer_control
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_xfer_control.description`:
 
 Description
 -----------
 
 Returns true if the endpoint is of type control, otherwise it returns false.
+
 
 
 .. _`usb_endpoint_xfer_int`:
@@ -203,6 +222,7 @@ usb_endpoint_xfer_int
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_xfer_int.description`:
 
 Description
@@ -210,6 +230,7 @@ Description
 
 Returns true if the endpoint is of type interrupt, otherwise it returns
 false.
+
 
 
 .. _`usb_endpoint_xfer_isoc`:
@@ -225,6 +246,7 @@ usb_endpoint_xfer_isoc
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_xfer_isoc.description`:
 
 Description
@@ -232,6 +254,7 @@ Description
 
 Returns true if the endpoint is of type isochronous, otherwise it returns
 false.
+
 
 
 .. _`usb_endpoint_is_bulk_in`:
@@ -247,6 +270,7 @@ usb_endpoint_is_bulk_in
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_bulk_in.description`:
 
 Description
@@ -254,6 +278,7 @@ Description
 
 Returns true if the endpoint has bulk transfer type and IN direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_is_bulk_out`:
@@ -269,6 +294,7 @@ usb_endpoint_is_bulk_out
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_bulk_out.description`:
 
 Description
@@ -276,6 +302,7 @@ Description
 
 Returns true if the endpoint has bulk transfer type and OUT direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_is_int_in`:
@@ -291,6 +318,7 @@ usb_endpoint_is_int_in
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_int_in.description`:
 
 Description
@@ -298,6 +326,7 @@ Description
 
 Returns true if the endpoint has interrupt transfer type and IN direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_is_int_out`:
@@ -313,6 +342,7 @@ usb_endpoint_is_int_out
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_int_out.description`:
 
 Description
@@ -320,6 +350,7 @@ Description
 
 Returns true if the endpoint has interrupt transfer type and OUT direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_is_isoc_in`:
@@ -335,6 +366,7 @@ usb_endpoint_is_isoc_in
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_isoc_in.description`:
 
 Description
@@ -342,6 +374,7 @@ Description
 
 Returns true if the endpoint has isochronous transfer type and IN direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_is_isoc_out`:
@@ -357,6 +390,7 @@ usb_endpoint_is_isoc_out
         endpoint to be checked
 
 
+
 .. _`usb_endpoint_is_isoc_out.description`:
 
 Description
@@ -364,6 +398,7 @@ Description
 
 Returns true if the endpoint has isochronous transfer type and OUT direction,
 otherwise it returns false.
+
 
 
 .. _`usb_endpoint_maxp`:
@@ -377,6 +412,7 @@ usb_endpoint_maxp
 
     :param const struct usb_endpoint_descriptor \*epd:
         endpoint to be checked
+
 
 
 .. _`usb_endpoint_maxp.description`:

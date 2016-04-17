@@ -4,16 +4,18 @@
 gadget.h
 ========
 
+
 .. _`usb_request`:
 
 struct usb_request
 ==================
 
-.. c:type:: struct usb_request
+.. c:type:: usb_request
 
     describes one i/o request
 
 
+.. _`usb_request.definition`:
 
 Definition
 ----------
@@ -39,6 +41,7 @@ Definition
   };
 
 
+.. _`usb_request.members`:
 
 Members
 -------
@@ -68,10 +71,9 @@ Members
     The stream id, when USB3.0 bulk streams are being used
 
 :``no_interrupt``:
-    If true, hints that no completion irq is needed.::
-
-            Helpful sometimes with deep request queues that are handled
-            directly by DMA controllers.
+    If true, hints that no completion irq is needed.
+    Helpful sometimes with deep request queues that are handled
+    directly by DMA controllers.
 
 :``zero``:
     If true, when writing data, makes the last packet be "short"
@@ -99,12 +101,11 @@ Members
     For use by the gadget driver.
 
 :``status``:
-    Reports completion code, zero or a negative errno.::
-
-            Normally, faults block the transfer queue from advancing until
-            the completion callback returns.
-            Code "-ESHUTDOWN" indicates completion caused by device disconnect,
-            or when the driver disabled the endpoint.
+    Reports completion code, zero or a negative errno.
+    Normally, faults block the transfer queue from advancing until
+    the completion callback returns.
+    Code "-ESHUTDOWN" indicates completion caused by device disconnect,
+    or when the driver disabled the endpoint.
 
 :``actual``:
     Reports bytes transferred to/from the buffer.  For reads (OUT
@@ -116,6 +117,9 @@ Members
     complete.
 
 
+
+
+.. _`usb_request.description`:
 
 Description
 -----------
@@ -134,8 +138,16 @@ flag, for use with deep request queues).
 Bulk endpoints can use any size buffers, and can also be used for interrupt
 transfers. interrupt-only endpoints can be much less functional.
 
-NOTE:  this is analogous to 'struct urb' on the host side, except that
+
+
+.. _`usb_request.note`:
+
+NOTE
+----
+
+this is analogous to 'struct urb' on the host side, except that
 it's thinner and promotes more pre-allocation.
+
 
 
 .. _`usb_ep_caps`:
@@ -143,11 +155,12 @@ it's thinner and promotes more pre-allocation.
 struct usb_ep_caps
 ==================
 
-.. c:type:: struct usb_ep_caps
+.. c:type:: usb_ep_caps
 
     endpoint capabilities description
 
 
+.. _`usb_ep_caps.definition`:
 
 Definition
 ----------
@@ -164,6 +177,7 @@ Definition
   };
 
 
+.. _`usb_ep_caps.members`:
 
 Members
 -------
@@ -188,16 +202,18 @@ Members
 
 
 
+
 .. _`usb_ep`:
 
 struct usb_ep
 =============
 
-.. c:type:: struct usb_ep
+.. c:type:: usb_ep
 
     device side representation of USB endpoint
 
 
+.. _`usb_ep.definition`:
 
 Definition
 ----------
@@ -221,6 +237,7 @@ Definition
   };
 
 
+.. _`usb_ep.members`:
 
 Members
 -------
@@ -274,12 +291,16 @@ Members
 
 
 
+
+.. _`usb_ep.description`:
+
 Description
 -----------
 
 the bus controller driver lists all the general purpose endpoints in
 gadget->ep_list.  the control endpoint (gadget->ep0) is not in that list,
 and is accessed only in response to a driver :c:func:`setup` callback.
+
 
 
 .. _`usb_ep_set_maxpacket_limit`:
@@ -298,6 +319,7 @@ usb_ep_set_maxpacket_limit
         value of maximum packet size limit
 
 
+
 .. _`usb_ep_set_maxpacket_limit.description`:
 
 Description
@@ -305,6 +327,7 @@ Description
 
 This function should be used only in UDC drivers to initialize endpoint
 (usually in probe function).
+
 
 
 .. _`usb_ep_enable`:
@@ -317,9 +340,9 @@ usb_ep_enable
     configure endpoint, making it usable
 
     :param struct usb_ep \*ep:
-        the endpoint being configured.  may not be the endpoint named "ep0".::
+        the endpoint being configured.  may not be the endpoint named "ep0".
+        drivers discover endpoints through the ep_list of a usb_gadget.
 
-                drivers discover endpoints through the ep_list of a usb_gadget.
 
 
 .. _`usb_ep_enable.description`:
@@ -343,6 +366,7 @@ USB, "in" means "towards the USB master".)
 returns zero, or a negative error code.
 
 
+
 .. _`usb_ep_disable`:
 
 usb_ep_disable
@@ -354,6 +378,7 @@ usb_ep_disable
 
     :param struct usb_ep \*ep:
         the endpoint being unconfigured.  may not be the endpoint named "ep0".
+
 
 
 .. _`usb_ep_disable.description`:
@@ -370,6 +395,7 @@ requests to the endpoint.
 returns zero, or a negative error code.
 
 
+
 .. _`usb_ep_alloc_request`:
 
 usb_ep_alloc_request
@@ -383,7 +409,8 @@ usb_ep_alloc_request
         the endpoint to be used with with the request
 
     :param gfp_t gfp_flags:
-        GFP_\* flags to use
+        GFP\_\* flags to use
+
 
 
 .. _`usb_ep_alloc_request.description`:
@@ -399,6 +426,7 @@ completion callback.  Free requests with :c:func:`usb_ep_free_request`, when
 they are no longer needed.
 
 Returns the request, or null if one could not be allocated.
+
 
 
 .. _`usb_ep_free_request`:
@@ -417,6 +445,7 @@ usb_ep_free_request
         the request being freed
 
 
+
 .. _`usb_ep_free_request.description`:
 
 Description
@@ -425,6 +454,7 @@ Description
 Reverses the effect of :c:func:`usb_ep_alloc_request`.
 Caller guarantees the request is not queued, and that it will
 no longer be requeued (or otherwise used).
+
 
 
 .. _`usb_ep_queue`:
@@ -443,8 +473,9 @@ usb_ep_queue
         the request being submitted
 
     :param gfp_t gfp_flags:
-        GFP_\* flags to use in case the lower level driver couldn't
+        GFP\_\* flags to use in case the lower level driver couldn't
         pre-allocate all necessary memory with the request.
+
 
 
 .. _`usb_ep_queue.description`:
@@ -503,6 +534,7 @@ report errors; errors will also be
 reported when the usb peripheral is disconnected.
 
 
+
 .. _`usb_ep_dequeue`:
 
 usb_ep_dequeue
@@ -517,6 +549,7 @@ usb_ep_dequeue
 
     :param struct usb_request \*req:
         the request being canceled
+
 
 
 .. _`usb_ep_dequeue.description`:
@@ -535,6 +568,7 @@ restrictions prevent drivers from supporting configuration changes,
 even to configuration zero (a "chapter 9" requirement).
 
 
+
 .. _`usb_ep_set_halt`:
 
 usb_ep_set_halt
@@ -546,6 +580,7 @@ usb_ep_set_halt
 
     :param struct usb_ep \*ep:
         the non-isochronous endpoint being stalled
+
 
 
 .. _`usb_ep_set_halt.description`:
@@ -571,6 +606,7 @@ transfer requests are still queued, or if the controller hardware
 (usually a FIFO) still holds bytes that the host hasn't collected.
 
 
+
 .. _`usb_ep_clear_halt`:
 
 usb_ep_clear_halt
@@ -582,6 +618,7 @@ usb_ep_clear_halt
 
     :param struct usb_ep \*ep:
         the bulk or interrupt endpoint being reset
+
 
 
 .. _`usb_ep_clear_halt.description`:
@@ -599,6 +636,7 @@ Note that some hardware can't support this request (like pxa2xx_udc),
 and accordingly can't correctly implement interface altsettings.
 
 
+
 .. _`usb_ep_set_wedge`:
 
 usb_ep_set_wedge
@@ -610,6 +648,7 @@ usb_ep_set_wedge
 
     :param struct usb_ep \*ep:
         the endpoint being wedged
+
 
 
 .. _`usb_ep_set_wedge.description`:
@@ -624,6 +663,7 @@ automatically unwedge the endpoint.
 Returns zero on success, else negative errno.
 
 
+
 .. _`usb_ep_fifo_status`:
 
 usb_ep_fifo_status
@@ -635,6 +675,7 @@ usb_ep_fifo_status
 
     :param struct usb_ep \*ep:
         the endpoint whose fifo status is being checked.
+
 
 
 .. _`usb_ep_fifo_status.description`:
@@ -654,6 +695,7 @@ errno if the endpoint doesn't use a FIFO or doesn't support such
 precise handling.
 
 
+
 .. _`usb_ep_fifo_flush`:
 
 usb_ep_fifo_flush
@@ -667,6 +709,7 @@ usb_ep_fifo_flush
         the endpoint whose fifo is being flushed.
 
 
+
 .. _`usb_ep_fifo_flush.description`:
 
 Description
@@ -678,16 +721,18 @@ must never be used except when endpoint is not being used for any
 protocol translation.
 
 
+
 .. _`usb_gadget`:
 
 struct usb_gadget
 =================
 
-.. c:type:: struct usb_gadget
+.. c:type:: usb_gadget
 
     represents a usb slave device
 
 
+.. _`usb_gadget.definition`:
 
 Definition
 ----------
@@ -723,6 +768,7 @@ Definition
   };
 
 
+.. _`usb_gadget.members`:
 
 Members
 -------
@@ -817,6 +863,9 @@ Members
 
 
 
+
+.. _`usb_gadget.description`:
+
 Description
 -----------
 
@@ -839,6 +888,7 @@ driver :c:func:`suspend` calls.  They are valid only when is_otg, and when the
 device is acting as a B-Peripheral (so is_a_peripheral is false).
 
 
+
 .. _`usb_ep_align_maybe`:
 
 usb_ep_align_maybe
@@ -858,6 +908,7 @@ usb_ep_align_maybe
         buffer size's length to align to ``ep``\ 's maxpacketsize
 
 
+
 .. _`usb_ep_align_maybe.description`:
 
 Description
@@ -865,6 +916,7 @@ Description
 
 This helper is used in case it's required for any reason to check and maybe
 align buffer's size to an ep's maxpacketsize.
+
 
 
 .. _`gadget_is_altset_supported`:
@@ -880,6 +932,7 @@ gadget_is_altset_supported
         controller to check for quirk
 
 
+
 .. _`gadget_is_stall_supported`:
 
 gadget_is_stall_supported
@@ -891,6 +944,7 @@ gadget_is_stall_supported
 
     :param struct usb_gadget \*g:
         controller to check for quirk
+
 
 
 .. _`gadget_is_zlp_supported`:
@@ -906,6 +960,7 @@ gadget_is_zlp_supported
         controller to check for quirk
 
 
+
 .. _`gadget_is_dualspeed`:
 
 gadget_is_dualspeed
@@ -917,6 +972,7 @@ gadget_is_dualspeed
 
     :param struct usb_gadget \*g:
         controller that might support both high and full speeds
+
 
 
 .. _`gadget_is_superspeed`:
@@ -932,6 +988,7 @@ gadget_is_superspeed
         controller that might support superspeed
 
 
+
 .. _`gadget_is_superspeed_plus`:
 
 gadget_is_superspeed_plus
@@ -943,6 +1000,7 @@ gadget_is_superspeed_plus
 
     :param struct usb_gadget \*g:
         controller that might support superspeed plus
+
 
 
 .. _`gadget_is_otg`:
@@ -958,6 +1016,7 @@ gadget_is_otg
         controller that might have a Mini-AB connector
 
 
+
 .. _`gadget_is_otg.description`:
 
 Description
@@ -965,6 +1024,7 @@ Description
 
 This is a runtime test, since kernels with a USB-OTG stack sometimes
 run on boards which only have a Mini-B (or Mini-A) connector.
+
 
 
 .. _`usb_gadget_frame_number`:
@@ -980,6 +1040,7 @@ usb_gadget_frame_number
         controller that reports the frame number
 
 
+
 .. _`usb_gadget_frame_number.description`:
 
 Description
@@ -987,6 +1048,7 @@ Description
 
 Returns the usb frame number, normally eleven bits from a SOF packet,
 or negative errno if this device doesn't support this capability.
+
 
 
 .. _`usb_gadget_wakeup`:
@@ -1000,6 +1062,7 @@ usb_gadget_wakeup
 
     :param struct usb_gadget \*gadget:
         controller used to wake up the host
+
 
 
 .. _`usb_gadget_wakeup.description`:
@@ -1017,6 +1080,7 @@ even if OTG isn't otherwise in use.  OTG devices may also start
 remote wakeup even when hosts don't explicitly enable it.
 
 
+
 .. _`usb_gadget_set_selfpowered`:
 
 usb_gadget_set_selfpowered
@@ -1030,6 +1094,7 @@ usb_gadget_set_selfpowered
         the device being declared as self-powered
 
 
+
 .. _`usb_gadget_set_selfpowered.description`:
 
 Description
@@ -1039,6 +1104,7 @@ this affects the device status reported by the hardware driver
 to reflect that it now has a local power supply.
 
 returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_clear_selfpowered`:
@@ -1054,6 +1120,7 @@ usb_gadget_clear_selfpowered
         the device being declared as bus-powered
 
 
+
 .. _`usb_gadget_clear_selfpowered.description`:
 
 Description
@@ -1064,6 +1131,7 @@ some hardware may not support bus-powered operation, in which
 case this feature's value can never change.
 
 returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_vbus_connect`:
@@ -1077,7 +1145,16 @@ usb_gadget_vbus_connect
 
     :param struct usb_gadget \*gadget:
         The device which now has VBUS power.
-        Context: can sleep
+
+
+
+.. _`usb_gadget_vbus_connect.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`usb_gadget_vbus_connect.description`:
@@ -1092,6 +1169,7 @@ host detect that a USB device is attached, and starting to draw power
 (8mA or possibly more, especially after SET_CONFIGURATION).
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_vbus_draw`:
@@ -1111,6 +1189,7 @@ usb_gadget_vbus_draw
         the value listed in the configuration descriptor bMaxPower field.
 
 
+
 .. _`usb_gadget_vbus_draw.description`:
 
 Description
@@ -1121,6 +1200,7 @@ reporting how much power the device may consume.  For example, this
 could affect how quickly batteries are recharged.
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_vbus_disconnect`:
@@ -1134,7 +1214,16 @@ usb_gadget_vbus_disconnect
 
     :param struct usb_gadget \*gadget:
         the device whose VBUS supply is being described
-        Context: can sleep
+
+
+
+.. _`usb_gadget_vbus_disconnect.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`usb_gadget_vbus_disconnect.description`:
@@ -1147,6 +1236,7 @@ that detects a VBUS power session ending.  Common responses include
 reversing everything done in :c:func:`usb_gadget_vbus_connect`.
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_connect`:
@@ -1162,6 +1252,7 @@ usb_gadget_connect
         the peripheral being connected
 
 
+
 .. _`usb_gadget_connect.description`:
 
 Description
@@ -1173,6 +1264,7 @@ is active (the link is powered).  This pullup is always enabled unless
 :c:func:`usb_gadget_disconnect` has been used to disable it.
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_disconnect`:
@@ -1188,6 +1280,7 @@ usb_gadget_disconnect
         the peripheral being disconnected
 
 
+
 .. _`usb_gadget_disconnect.description`:
 
 Description
@@ -1198,6 +1291,7 @@ as a disconnect (when a VBUS session is active).  Not all systems
 support software pullup controls.
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_deactivate`:
@@ -1213,6 +1307,7 @@ usb_gadget_deactivate
         the peripheral being deactivated
 
 
+
 .. _`usb_gadget_deactivate.description`:
 
 Description
@@ -1224,6 +1319,7 @@ the peripheral from ever being visible to the USB host, unless later
 need to be activated before the system can talk to hosts.
 
 Returns zero on success, else negative errno.
+
 
 
 .. _`usb_gadget_activate`:
@@ -1239,6 +1335,7 @@ usb_gadget_activate
         the peripheral being activated
 
 
+
 .. _`usb_gadget_activate.description`:
 
 Description
@@ -1250,16 +1347,18 @@ This routine activates gadget which was previously deactivated with
 Returns zero on success, else negative errno.
 
 
+
 .. _`usb_gadget_driver`:
 
 struct usb_gadget_driver
 ========================
 
-.. c:type:: struct usb_gadget_driver
+.. c:type:: usb_gadget_driver
 
     driver for usb 'slave' devices
 
 
+.. _`usb_gadget_driver.definition`:
 
 Definition
 ----------
@@ -1282,6 +1381,7 @@ Definition
   };
 
 
+.. _`usb_gadget_driver.members`:
 
 Members
 -------
@@ -1336,6 +1436,9 @@ Members
 
 
 
+
+.. _`usb_gadget_driver.description`:
+
 Description
 -----------
 
@@ -1384,6 +1487,7 @@ be cleared, to make the device behave identically whether or not
 power is maintained.
 
 
+
 .. _`usb_gadget_probe_driver`:
 
 usb_gadget_probe_driver
@@ -1395,7 +1499,16 @@ usb_gadget_probe_driver
 
     :param struct usb_gadget_driver \*driver:
         the driver being registered
-        Context: can sleep
+
+
+
+.. _`usb_gadget_probe_driver.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`usb_gadget_probe_driver.description`:
@@ -1410,6 +1523,7 @@ registration call returns.  It's expected that the @:c:func:`bind` function will
 be in init sections.
 
 
+
 .. _`usb_gadget_unregister_driver`:
 
 usb_gadget_unregister_driver
@@ -1421,7 +1535,16 @@ usb_gadget_unregister_driver
 
     :param struct usb_gadget_driver \*driver:
         the driver being unregistered
-        Context: can sleep
+
+
+
+.. _`usb_gadget_unregister_driver.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`usb_gadget_unregister_driver.description`:
@@ -1438,16 +1561,18 @@ finally returns.  It's expected that the :c:func:`unbind` functions
 will in in exit sections, so may not be linked in some kernels.
 
 
+
 .. _`usb_string`:
 
 struct usb_string
 =================
 
-.. c:type:: struct usb_string
+.. c:type:: usb_string
 
     wraps a C string and its USB id
 
 
+.. _`usb_string.definition`:
 
 Definition
 ----------
@@ -1460,6 +1585,7 @@ Definition
   };
 
 
+.. _`usb_string.members`:
 
 Members
 -------
@@ -1472,6 +1598,9 @@ Members
 
 
 
+
+.. _`usb_string.description`:
+
 Description
 -----------
 
@@ -1479,16 +1608,18 @@ If you're using :c:func:`usb_gadget_get_string`, use this to wrap a string
 together with its ID.
 
 
+
 .. _`usb_gadget_strings`:
 
 struct usb_gadget_strings
 =========================
 
-.. c:type:: struct usb_gadget_strings
+.. c:type:: usb_gadget_strings
 
     a set of USB strings in a given language
 
 
+.. _`usb_gadget_strings.definition`:
 
 Definition
 ----------
@@ -1501,6 +1632,7 @@ Definition
   };
 
 
+.. _`usb_gadget_strings.members`:
 
 Members
 -------
@@ -1513,11 +1645,15 @@ Members
 
 
 
+
+.. _`usb_gadget_strings.description`:
+
 Description
 -----------
 
 If you're using :c:func:`usb_gadget_get_string`, use this to wrap all the
 strings for a given language.
+
 
 
 .. _`usb_free_descriptors`:

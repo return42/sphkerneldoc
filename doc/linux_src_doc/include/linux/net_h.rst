@@ -4,16 +4,36 @@
 net.h
 =====
 
+
 .. _`sock_type`:
 
 enum sock_type
 ==============
 
-.. c:type:: enum sock_type
+.. c:type:: sock_type
 
     Socket types
 
 
+.. _`sock_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum sock_type {
+      SOCK_STREAM,
+      SOCK_DGRAM,
+      SOCK_RAW,
+      SOCK_RDM,
+      SOCK_SEQPACKET,
+      SOCK_DCCP,
+      SOCK_PACKET
+    };
+
+
+.. _`sock_type.constants`:
 
 Constants
 ---------
@@ -37,10 +57,11 @@ Constants
     Datagram Congestion Control Protocol socket
 
 :``SOCK_PACKET``:
-    linux specific way of getting packets at the dev level.::
+    linux specific way of getting packets at the dev level.
+    For writing rarp and other similar things on the user level.
 
-                      For writing rarp and other similar things on the user level.
 
+.. _`sock_type.description`:
 
 Description
 -----------
@@ -50,16 +71,18 @@ grep ARCH_HAS_SOCKET_TYPE include/asm-\* /socket.h, at least MIPS
 overrides this enum for binary compat reasons.
 
 
+
 .. _`socket`:
 
 struct socket
 =============
 
-.. c:type:: struct socket
+.. c:type:: socket
 
     general BSD socket
 
 
+.. _`socket.definition`:
 
 Definition
 ----------
@@ -77,6 +100,7 @@ Definition
   };
 
 
+.. _`socket.members`:
 
 Members
 -------

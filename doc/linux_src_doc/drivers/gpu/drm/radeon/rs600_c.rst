@@ -1,0 +1,31 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+rs600.c
+=======
+
+
+.. _`avivo_wait_for_vblank`:
+
+avivo_wait_for_vblank
+=====================
+
+.. c:function:: void avivo_wait_for_vblank (struct radeon_device *rdev, int crtc)
+
+    vblank wait asic callback.
+
+    :param struct radeon_device \*rdev:
+        radeon_device pointer
+
+    :param int crtc:
+        crtc to wait for vblank on
+
+
+
+.. _`avivo_wait_for_vblank.description`:
+
+Description
+-----------
+
+Wait for vblank on the requested crtc (r5xx-r7xx).
+

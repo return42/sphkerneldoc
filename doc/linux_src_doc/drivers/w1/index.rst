@@ -8,9 +8,7 @@ w1
    :maxdepth: 1
 
    w1_c
-   w1_family_c
    w1_family_h
    w1_h
-   w1_int_c
    w1_io_c
    w1_netlink_h

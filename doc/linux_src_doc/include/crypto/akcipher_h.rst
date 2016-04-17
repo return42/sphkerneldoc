@@ -4,16 +4,18 @@
 akcipher.h
 ==========
 
+
 .. _`akcipher_request`:
 
 struct akcipher_request
 =======================
 
-.. c:type:: struct akcipher_request
+.. c:type:: akcipher_request
 
     public key request
 
 
+.. _`akcipher_request.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`akcipher_request.members`:
 
 Members
 -------
@@ -59,16 +62,18 @@ Members
 
 
 
+
 .. _`crypto_akcipher`:
 
 struct crypto_akcipher
 ======================
 
-.. c:type:: struct crypto_akcipher
+.. c:type:: crypto_akcipher
 
     user-instantiated objects which encapsulate algorithms and core processing logic
 
 
+.. _`crypto_akcipher.definition`:
 
 Definition
 ----------
@@ -80,6 +85,7 @@ Definition
   };
 
 
+.. _`crypto_akcipher.members`:
 
 Members
 -------
@@ -89,16 +95,18 @@ Members
 
 
 
+
 .. _`akcipher_alg`:
 
 struct akcipher_alg
 ===================
 
-.. c:type:: struct akcipher_alg
+.. c:type:: akcipher_alg
 
     generic public key algorithm
 
 
+.. _`akcipher_alg.definition`:
 
 Definition
 ----------
@@ -120,6 +128,7 @@ Definition
   };
 
 
+.. _`akcipher_alg.members`:
 
 Members
 -------
@@ -162,15 +171,14 @@ Members
     Function returns dest buffer size required for a given key.
 
 :``init``:
-    Initialize the cryptographic transformation object.::
-
-                    This function is used to initialize the cryptographic
-                    transformation object. This function is called only once at
-                    the instantiation time, right after the transformation context
-                    was allocated. In case the cryptographic hardware has some
-                    special requirements which need to be handled by software, this
-                    function shall check for the precise requirement of the
-                    transformation and put any software fallbacks in place.
+    Initialize the cryptographic transformation object.
+    This function is used to initialize the cryptographic
+    transformation object. This function is called only once at
+    the instantiation time, right after the transformation context
+    was allocated. In case the cryptographic hardware has some
+    special requirements which need to be handled by software, this
+    function shall check for the precise requirement of the
+    transformation and put any software fallbacks in place.
 
 :``exit``:
     Deinitialize the cryptographic transformation object. This is a
@@ -185,6 +193,7 @@ Members
 
 
 
+
 .. _`generic-public-key-api`:
 
 Generic Public Key API
@@ -192,6 +201,7 @@ Generic Public Key API
 
 The Public Key API is used with the algorithms of type
 CRYPTO_ALG_TYPE_AKCIPHER (listed as type "akcipher" in /proc/crypto)
+
 
 
 .. _`crypto_alloc_akcipher`:
@@ -214,6 +224,7 @@ crypto_alloc_akcipher
         specifies the mask for the algorithm
 
 
+
 .. _`crypto_alloc_akcipher.description`:
 
 Description
@@ -223,8 +234,16 @@ Allocate a handle for public key algorithm. The returned struct
 crypto_akcipher is the handle that is required for any subsequent
 API invocation for the public key operations.
 
-Return: allocated handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_akcipher.return`:
+
+Return
+------
+
+allocated handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_akcipher`:
@@ -238,6 +257,7 @@ crypto_free_akcipher
 
     :param struct crypto_akcipher \*tfm:
         AKCIPHER tfm handle allocated with :c:func:`crypto_alloc_akcipher`
+
 
 
 .. _`akcipher_request_alloc`:
@@ -256,12 +276,14 @@ akcipher_request_alloc
         allocation flags
 
 
-.. _`akcipher_request_alloc.description`:
 
-Description
------------
+.. _`akcipher_request_alloc.return`:
 
-Return: allocated handle in case of success or NULL in case of an error.
+Return
+------
+
+allocated handle in case of success or NULL in case of an error.
+
 
 
 .. _`akcipher_request_free`:
@@ -275,6 +297,7 @@ akcipher_request_free
 
     :param struct akcipher_request \*req:
         request to free
+
 
 
 .. _`akcipher_request_set_callback`:
@@ -299,6 +322,7 @@ akcipher_request_set_callback
         private data used by the caller
 
 
+
 .. _`akcipher_request_set_callback.description`:
 
 Description
@@ -307,6 +331,7 @@ Description
 
 Callback will be called when an asynchronous operation on a given
 request is finished.
+
 
 
 .. _`akcipher_request_set_crypt`:
@@ -334,6 +359,7 @@ akcipher_request_set_crypt
         size of the dst output scatter list
 
 
+
 .. _`akcipher_request_set_crypt.description`:
 
 Description
@@ -341,6 +367,7 @@ Description
 
 
 Sets parameters required by crypto operation
+
 
 
 .. _`crypto_akcipher_maxsize`:
@@ -356,20 +383,24 @@ crypto_akcipher_maxsize
         AKCIPHER tfm handle allocated with :c:func:`crypto_alloc_akcipher`
 
 
-.. _`crypto_akcipher_maxsize.description`:
-
-Description
------------
-
-Return: minimum len for output buffer or error code in key hasn't been set
-
 
 .. _`crypto_akcipher_maxsize.description`:
 
 Description
 -----------
 
-Return: minimum len for output buffer or error code in key hasn't been set
+
+Function returns the dest buffer size required for a given key
+
+
+
+.. _`crypto_akcipher_maxsize.return`:
+
+Return
+------
+
+minimum len for output buffer or error code in key hasn't been set
+
 
 
 .. _`crypto_akcipher_encrypt`:
@@ -385,20 +416,25 @@ crypto_akcipher_encrypt
         asymmetric key request
 
 
-.. _`crypto_akcipher_encrypt.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_encrypt.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the specific public key encrypt operation for a given
+public key algorithm
+
+
+
+.. _`crypto_akcipher_encrypt.return`:
+
+Return
+------
+
+zero on success; error code in case of error
+
 
 
 .. _`crypto_akcipher_decrypt`:
@@ -414,20 +450,25 @@ crypto_akcipher_decrypt
         asymmetric key request
 
 
-.. _`crypto_akcipher_decrypt.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_decrypt.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the specific public key decrypt operation for a given
+public key algorithm
+
+
+
+.. _`crypto_akcipher_decrypt.return`:
+
+Return
+------
+
+zero on success; error code in case of error
+
 
 
 .. _`crypto_akcipher_sign`:
@@ -443,20 +484,25 @@ crypto_akcipher_sign
         asymmetric key request
 
 
-.. _`crypto_akcipher_sign.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_sign.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the specific public key sign operation for a given
+public key algorithm
+
+
+
+.. _`crypto_akcipher_sign.return`:
+
+Return
+------
+
+zero on success; error code in case of error
+
 
 
 .. _`crypto_akcipher_verify`:
@@ -472,20 +518,25 @@ crypto_akcipher_verify
         asymmetric key request
 
 
-.. _`crypto_akcipher_verify.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_verify.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the specific public key verify operation for a given
+public key algorithm
+
+
+
+.. _`crypto_akcipher_verify.return`:
+
+Return
+------
+
+zero on success; error code in case of error
+
 
 
 .. _`crypto_akcipher_set_pub_key`:
@@ -507,20 +558,25 @@ crypto_akcipher_set_pub_key
         length of the key
 
 
-.. _`crypto_akcipher_set_pub_key.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_set_pub_key.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the algorithm specific set key function, which knows
+how to decode and interpret the encoded key
+
+
+
+.. _`crypto_akcipher_set_pub_key.return`:
+
+Return
+------
+
+zero on success; error code in case of error
+
 
 
 .. _`crypto_akcipher_set_priv_key`:
@@ -542,18 +598,22 @@ crypto_akcipher_set_priv_key
         length of the key
 
 
-.. _`crypto_akcipher_set_priv_key.description`:
-
-Description
------------
-
-Return: zero on success; error code in case of error
-
 
 .. _`crypto_akcipher_set_priv_key.description`:
 
 Description
 -----------
 
-Return: zero on success; error code in case of error
+
+Function invokes the algorithm specific set key function, which knows
+how to decode and interpret the encoded key
+
+
+
+.. _`crypto_akcipher_set_priv_key.return`:
+
+Return
+------
+
+zero on success; error code in case of error
 

@@ -4,6 +4,7 @@
 slab.h
 ======
 
+
 .. _`kmalloc`:
 
 kmalloc
@@ -20,6 +21,7 @@ kmalloc
         the type of memory to allocate.
 
 
+
 .. _`kmalloc.description`:
 
 Description
@@ -34,9 +36,8 @@ The ``flags`` argument may be one of:
 
 ``GFP_KERNEL`` - Allocate normal kernel ram.  May sleep.
 
-``GFP_ATOMIC`` - Allocation will not sleep.  May use emergency pools.::
-
-  For example, use this inside interrupt handlers.
+``GFP_ATOMIC`` - Allocation will not sleep.  May use emergency pools.
+For example, use this inside interrupt handlers.
 
 ``GFP_HIGHUSER`` - Allocate pages from high memory.
 
@@ -48,10 +49,9 @@ The ``flags`` argument may be one of:
 
 ``__GFP_THISNODE`` - Allocate node-local memory only.
 
-``GFP_DMA`` - Allocation suitable for DMA.::
-
-  Should only be used for :c:func:`kmalloc` caches. Otherwise, use a
-  slab created with SLAB_DMA.
+``GFP_DMA`` - Allocation suitable for DMA.
+Should only be used for :c:func:`kmalloc` caches. Otherwise, use a
+slab created with SLAB_DMA.
 
 Also it is possible to set different flags by OR'ing
 in one or more of the following additional ``flags``\ :
@@ -76,6 +76,7 @@ for general use, and so are not documented here. For a full list of
 potential flags, always refer to linux/gfp.h.
 
 
+
 .. _`kmalloc_array`:
 
 kmalloc_array
@@ -93,6 +94,7 @@ kmalloc_array
 
     :param gfp_t flags:
         the type of memory to allocate (see kmalloc).
+
 
 
 .. _`kcalloc`:
@@ -114,6 +116,7 @@ kcalloc
         the type of memory to allocate (see kmalloc).
 
 
+
 .. _`kzalloc`:
 
 kzalloc
@@ -128,6 +131,7 @@ kzalloc
 
     :param gfp_t flags:
         the type of memory to allocate (see kmalloc).
+
 
 
 .. _`kzalloc_node`:

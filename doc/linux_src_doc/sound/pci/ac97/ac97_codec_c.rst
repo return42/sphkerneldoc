@@ -4,6 +4,7 @@
 ac97_codec.c
 ============
 
+
 .. _`snd_ac97_write`:
 
 snd_ac97_write
@@ -23,6 +24,7 @@ snd_ac97_write
         the value to set
 
 
+
 .. _`snd_ac97_write.description`:
 
 Description
@@ -33,6 +35,7 @@ callback directly after the register check.
 This function doesn't change the register cache unlike
 #:c:func:`snd_ca97_write_cache`, so use this only when you don't want to
 reflect the change to the suspend/resume state.
+
 
 
 .. _`snd_ac97_read`:
@@ -51,6 +54,7 @@ snd_ac97_read
         the register to read
 
 
+
 .. _`snd_ac97_read.description`:
 
 Description
@@ -59,7 +63,15 @@ Description
 Reads a value from the given register.  This will invoke the read
 callback directly after the register check.
 
-Return: The read value.
+
+
+.. _`snd_ac97_read.return`:
+
+Return
+------
+
+The read value.
+
 
 
 .. _`snd_ac97_write_cache`:
@@ -81,6 +93,7 @@ snd_ac97_write_cache
         the value to set
 
 
+
 .. _`snd_ac97_write_cache.description`:
 
 Description
@@ -89,6 +102,7 @@ Description
 Writes a value on the given register and updates the register
 cache.  The cached values are used for the cached-read and the
 suspend/resume.
+
 
 
 .. _`snd_ac97_update`:
@@ -110,6 +124,7 @@ snd_ac97_update
         the value to set
 
 
+
 .. _`snd_ac97_update.description`:
 
 Description
@@ -118,8 +133,16 @@ Description
 Compares the value with the register cache and updates the value
 only when the value is changed.
 
-Return: 1 if the value is changed, 0 if no change, or a negative
+
+
+.. _`snd_ac97_update.return`:
+
+Return
+------
+
+1 if the value is changed, 0 if no change, or a negative
 code on failure.
+
 
 
 .. _`snd_ac97_update_bits`:
@@ -144,6 +167,7 @@ snd_ac97_update_bits
         the value to set
 
 
+
 .. _`snd_ac97_update_bits.description`:
 
 Description
@@ -152,8 +176,16 @@ Description
 Updates the masked-bits on the given register only when the value
 is changed.
 
-Return: 1 if the bits are changed, 0 if no change, or a negative
+
+
+.. _`snd_ac97_update_bits.return`:
+
+Return
+------
+
+1 if the bits are changed, 0 if no change, or a negative
 code on failure.
+
 
 
 .. _`snd_ac97_get_short_name`:
@@ -169,12 +201,14 @@ snd_ac97_get_short_name
         the codec instance
 
 
-.. _`snd_ac97_get_short_name.description`:
 
-Description
------------
+.. _`snd_ac97_get_short_name.return`:
 
-Return: The short identifying name of the codec.
+Return
+------
+
+The short identifying name of the codec.
+
 
 
 .. _`snd_ac97_bus`:
@@ -202,6 +236,7 @@ snd_ac97_bus
         the pointer to store the new AC97 bus instance.
 
 
+
 .. _`snd_ac97_bus.description`:
 
 Description
@@ -219,7 +254,15 @@ The clock is set to 48000.  If another clock is needed, set
 The AC97 bus instance is registered as a low-level device, so you don't
 have to release it manually.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_bus.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_ac97_mixer`:
@@ -242,6 +285,7 @@ snd_ac97_mixer
         the pointer to store the new ac97 instance.
 
 
+
 .. _`snd_ac97_mixer.description`:
 
 Description
@@ -257,7 +301,15 @@ and the private data (private_data).
 The ac97 instance is registered as a low-level device, so you don't
 have to release it manually.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_mixer.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_ac97_update_power`:
@@ -279,6 +331,7 @@ snd_ac97_update_power
         non-zero when power up the part
 
 
+
 .. _`snd_ac97_update_power.description`:
 
 Description
@@ -286,7 +339,15 @@ Description
 
 Update the AC97 powerdown register bits of the given part.
 
-Return: Zero.
+
+
+.. _`snd_ac97_update_power.return`:
+
+Return
+------
+
+Zero.
+
 
 
 .. _`snd_ac97_suspend`:
@@ -302,12 +363,14 @@ snd_ac97_suspend
         the ac97 instance
 
 
+
 .. _`snd_ac97_suspend.description`:
 
 Description
 -----------
 
 Suspends the codec, power down the chip.
+
 
 
 .. _`snd_ac97_resume`:
@@ -323,6 +386,7 @@ snd_ac97_resume
         the ac97 instance
 
 
+
 .. _`snd_ac97_resume.description`:
 
 Description
@@ -330,6 +394,7 @@ Description
 
 Do the standard resume procedure, power up and restoring the
 old register values.
+
 
 
 .. _`snd_ac97_tune_hardware`:
@@ -351,6 +416,7 @@ snd_ac97_tune_hardware
         explicit quirk value (overrides the list if non-NULL)
 
 
+
 .. _`snd_ac97_tune_hardware.description`:
 
 Description
@@ -360,5 +426,12 @@ Do some workaround for each pci device, such as renaming of the
 headphone (true line-out) control as "Master".
 The quirk-list must be terminated with a zero-filled entry.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_ac97_tune_hardware.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
 

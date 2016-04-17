@@ -4,16 +4,18 @@
 can.h
 =====
 
+
 .. _`can_frame`:
 
 struct can_frame
 ================
 
-.. c:type:: struct can_frame
+.. c:type:: can_frame
 
     basic CAN frame structure
 
 
+.. _`can_frame.definition`:
 
 Definition
 ----------
@@ -30,12 +32,13 @@ Definition
   };
 
 
+.. _`can_frame.members`:
 
 Members
 -------
 
 :``can_id``:
-    CAN ID of the frame and CAN_\\*_FLAG flags, see canid_t definition
+    CAN ID of the frame and CAN\_\\*_FLAG flags, see canid_t definition
 
 :``can_dlc``:
     frame payload length in byte (0 .. 8) aka data length code
@@ -56,16 +59,18 @@ Members
 
 
 
+
 .. _`canfd_frame`:
 
 struct canfd_frame
 ==================
 
-.. c:type:: struct canfd_frame
+.. c:type:: canfd_frame
 
     CAN flexible data rate frame structure
 
 
+.. _`canfd_frame.definition`:
 
 Definition
 ----------
@@ -82,12 +87,13 @@ Definition
   };
 
 
+.. _`canfd_frame.members`:
 
 Members
 -------
 
 :``can_id``:
-    CAN ID of the frame and CAN_\\*_FLAG flags, see canid_t definition
+    CAN ID of the frame and CAN\_\\*_FLAG flags, see canid_t definition
 
 :``len``:
     frame payload length in byte (0 .. CANFD_MAX_DLEN)
@@ -106,16 +112,18 @@ Members
 
 
 
+
 .. _`sockaddr_can`:
 
 struct sockaddr_can
 ===================
 
-.. c:type:: struct sockaddr_can
+.. c:type:: sockaddr_can
 
     the sockaddr structure for CAN sockets
 
 
+.. _`sockaddr_can.definition`:
 
 Definition
 ----------
@@ -129,6 +137,7 @@ Definition
   };
 
 
+.. _`sockaddr_can.members`:
 
 Members
 -------
@@ -144,16 +153,18 @@ Members
 
 
 
+
 .. _`can_filter`:
 
 struct can_filter
 =================
 
-.. c:type:: struct can_filter
+.. c:type:: can_filter
 
     CAN ID based filter in can_register().
 
 
+.. _`can_filter.definition`:
 
 Definition
 ----------
@@ -166,6 +177,7 @@ Definition
   };
 
 
+.. _`can_filter.members`:
 
 Members
 -------
@@ -178,10 +190,12 @@ Members
 
 
 
+
+.. _`can_filter.description`:
+
 Description
 -----------
 
-Description:
 A filter matches, when
 
 <received_can_id> & mask == can_id & mask

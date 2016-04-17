@@ -4,16 +4,49 @@
 if.h
 ====
 
+
 .. _`net_device_flags`:
 
 enum net_device_flags
 =====================
 
-.. c:type:: enum net_device_flags
+.. c:type:: net_device_flags
 
     \\\amp;struct net_device flags
 
 
+.. _`net_device_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum net_device_flags {
+      IFF_UP,
+      IFF_BROADCAST,
+      IFF_DEBUG,
+      IFF_LOOPBACK,
+      IFF_POINTOPOINT,
+      IFF_NOTRAILERS,
+      IFF_RUNNING,
+      IFF_NOARP,
+      IFF_PROMISC,
+      IFF_ALLMULTI,
+      IFF_MASTER,
+      IFF_SLAVE,
+      IFF_MULTICAST,
+      IFF_PORTSEL,
+      IFF_AUTOMEDIA,
+      IFF_DYNAMIC,
+      IFF_LOWER_UP,
+      IFF_DORMANT,
+      IFF_ECHO,
+       
+    };
+
+
+.. _`net_device_flags.constants`:
 
 Constants
 ---------
@@ -34,9 +67,8 @@ Constants
     interface is has p-p link. Volatile.
 
 :``IFF_NOTRAILERS``:
-    avoid use of trailers. Can be toggled through sysfs.::
-
-            Volatile.
+    avoid use of trailers. Can be toggled through sysfs.
+    Volatile.
 
 :``IFF_RUNNING``:
     interface RFC2863 OPER_UP. Volatile.
@@ -80,8 +112,10 @@ Constants
     echo sent packets. Volatile.
 
 :`` ``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`net_device_flags.description`:
 
 Description
 -----------

@@ -4,6 +4,7 @@
 drm_modes.c
 ===========
 
+
 .. _`drm_mode_debug_printmodeline`:
 
 drm_mode_debug_printmodeline
@@ -17,12 +18,14 @@ drm_mode_debug_printmodeline
         mode to print
 
 
+
 .. _`drm_mode_debug_printmodeline.description`:
 
 Description
 -----------
 
 Describe ``mode`` using DRM_DEBUG.
+
 
 
 .. _`drm_mode_create`:
@@ -38,6 +41,7 @@ drm_mode_create
         DRM device
 
 
+
 .. _`drm_mode_create.description`:
 
 Description
@@ -46,8 +50,15 @@ Description
 Create a new, cleared drm_display_mode with kzalloc, allocate an ID for it
 and return it.
 
-Returns:
+
+
+.. _`drm_mode_create.returns`:
+
+Returns
+-------
+
 Pointer to new mode on success, NULL on error.
+
 
 
 .. _`drm_mode_destroy`:
@@ -66,12 +77,14 @@ drm_mode_destroy
         mode to remove
 
 
+
 .. _`drm_mode_destroy.description`:
 
 Description
 -----------
 
 Release ``mode``\ 's unique ID, then free it ``mode`` structure itself using kfree.
+
 
 
 .. _`drm_mode_probed_add`:
@@ -90,6 +103,7 @@ drm_mode_probed_add
         mode data
 
 
+
 .. _`drm_mode_probed_add.description`:
 
 Description
@@ -98,6 +112,7 @@ Description
 Add ``mode`` to ``connector``\ 's probed_mode list for later use. This list should
 then in a second step get filtered and all the modes actually supported by
 the hardware moved to the ``connector``\ 's modes list.
+
 
 
 .. _`drm_cvt_mode`:
@@ -131,6 +146,7 @@ drm_cvt_mode
         whether to add margins (borders)
 
 
+
 .. _`drm_cvt_mode.description`:
 
 Description
@@ -140,15 +156,30 @@ This function is called to generate the modeline based on CVT algorithm
 according to the hdisplay, vdisplay, vrefresh.
 It is based from the VESA(TM) Coordinated Video Timing Generator by
 Graham Loveridge April 9, 2003 available at
-http://www.elo.utfsm.cl/~elo212/docs/CVTd6r1.xls 
+
+
+
+.. _`drm_cvt_mode.http`:
+
+http
+----
+
+//www.elo.utfsm.cl/~elo212/docs/CVTd6r1.xls 
 
 And it is copied from xf86CVTmode in xserver/hw/xfree86/modes/xf86cvt.c.
 What I have done is to translate it by using integer calculation.
 
-Returns:
+
+
+.. _`drm_cvt_mode.returns`:
+
+Returns
+-------
+
 The modeline based on the CVT algorithm stored in a drm_display_mode object.
 The display mode object is allocated with :c:func:`drm_mode_create`. Returns NULL
 when no mode could be allocated.
+
 
 
 .. _`drm_gtf_mode_complex`:
@@ -191,6 +222,7 @@ drm_gtf_mode_complex
         extended GTF formula parameters
 
 
+
 .. _`drm_gtf_mode_complex.description`:
 
 Description
@@ -199,10 +231,17 @@ Description
 GTF feature blocks specify C and J in multiples of 0.5, so we pass them
 in here multiplied by two.  For a C of 40, pass in 80.
 
-Returns:
+
+
+.. _`drm_gtf_mode_complex.returns`:
+
+Returns
+-------
+
 The modeline based on the full GTF algorithm stored in a drm_display_mode object.
 The display mode object is allocated with :c:func:`drm_mode_create`. Returns NULL
 when no mode could be allocated.
+
 
 
 .. _`drm_gtf_mode`:
@@ -233,6 +272,7 @@ drm_gtf_mode
         desired margin (borders) size
 
 
+
 .. _`drm_gtf_mode.description`:
 
 Description
@@ -241,27 +281,53 @@ Description
 return the modeline based on GTF algorithm
 
 This function is to create the modeline based on the GTF algorithm.
-Generalized Timing Formula is derived from::
 
-        GTF Spreadsheet by Andy Morrish (1/5/97)
-        available at http://www.vesa.org
+
+
+.. _`drm_gtf_mode.generalized-timing-formula-is-derived-from`:
+
+Generalized Timing Formula is derived from
+------------------------------------------
+
+GTF Spreadsheet by Andy Morrish (1/5/97)
+
+
+
+.. _`drm_gtf_mode.available-at-http`:
+
+available at http
+-----------------
+
+//www.vesa.org
 
 And it is copied from the file of xserver/hw/xfree86/modes/xf86gtf.c.
 What I have done is to translate it by using integer calculation.
 I also refer to the function of fb_get_mode in the file of
 drivers/video/fbmon.c
 
-Standard GTF parameters::
 
-    M = 600
-    C = 40
-    K = 128
-    J = 20
 
-Returns:
+.. _`drm_gtf_mode.standard-gtf-parameters`:
+
+Standard GTF parameters
+-----------------------
+
+M = 600
+C = 40
+K = 128
+J = 20
+
+
+
+.. _`drm_gtf_mode.returns`:
+
+Returns
+-------
+
 The modeline based on the GTF algorithm stored in a drm_display_mode object.
 The display mode object is allocated with :c:func:`drm_mode_create`. Returns NULL
 when no mode could be allocated.
+
 
 
 .. _`drm_display_mode_from_videomode`:
@@ -280,12 +346,14 @@ drm_display_mode_from_videomode
         drm_display_mode structure to use as destination
 
 
+
 .. _`drm_display_mode_from_videomode.description`:
 
 Description
 -----------
 
 Fills out ``dmode`` using the display mode specified in ``vm``\ .
+
 
 
 .. _`drm_display_mode_to_videomode`:
@@ -304,12 +372,14 @@ drm_display_mode_to_videomode
         videomode structure to use as destination
 
 
+
 .. _`drm_display_mode_to_videomode.description`:
 
 Description
 -----------
 
 Fills out ``vm`` using the display mode specified in ``dmode``\ .
+
 
 
 .. _`of_get_drm_display_mode`:
@@ -331,6 +401,7 @@ of_get_drm_display_mode
         index into the list of display timings in devicetree
 
 
+
 .. _`of_get_drm_display_mode.description`:
 
 Description
@@ -340,8 +411,15 @@ This function is expensive and should only be used, if only one mode is to be
 read from DT. To get multiple modes start with of_get_display_timings and
 work with that instead.
 
-Returns:
+
+
+.. _`of_get_drm_display_mode.returns`:
+
+Returns
+-------
+
 0 on success, a negative errno code when no of videomode node was found.
+
 
 
 .. _`drm_mode_set_name`:
@@ -357,6 +435,7 @@ drm_mode_set_name
         name will be set in this mode
 
 
+
 .. _`drm_mode_set_name.description`:
 
 Description
@@ -364,6 +443,7 @@ Description
 
 Set the name of ``mode`` to a standard format which is <hdisplay>x<vdisplay>
 with an optional 'i' suffix for interlaced modes.
+
 
 
 .. _`drm_mode_hsync`:
@@ -379,14 +459,15 @@ drm_mode_hsync
         mode
 
 
-.. _`drm_mode_hsync.description`:
 
-Description
------------
+.. _`drm_mode_hsync.returns`:
 
-Returns:
+Returns
+-------
+
 ``modes``\ 's hsync rate in kHz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
+
 
 
 .. _`drm_mode_vrefresh`:
@@ -402,14 +483,15 @@ drm_mode_vrefresh
         mode
 
 
-.. _`drm_mode_vrefresh.description`:
 
-Description
------------
+.. _`drm_mode_vrefresh.returns`:
 
-Returns:
+Returns
+-------
+
 ``modes``\ 's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
+
 
 
 .. _`drm_mode_set_crtcinfo`:
@@ -428,6 +510,7 @@ drm_mode_set_crtcinfo
         a combination of adjustment flags
 
 
+
 .. _`drm_mode_set_crtcinfo.description`:
 
 Description
@@ -436,14 +519,18 @@ Description
 Setup the CRTC modesetting timing parameters for ``p``\ , adjusting if necessary.
 
 - The CRTC_INTERLACE_HALVE_V flag can be used to halve vertical timings of
+
   interlaced modes.
 
 - The CRTC_STEREO_DOUBLE flag can be used to compute the timings for
+
   buffers containing two eyes (only adjust the timings when needed, eg. for
   "frame packing" or "side by side full").
 
 - The CRTC_NO_DBLSCAN and CRTC_NO_VSCAN flags request that adjustment \*not*
+
   be performed for doublescan and vscan > 1 modes respectively.
+
 
 
 .. _`drm_mode_copy`:
@@ -462,6 +549,7 @@ drm_mode_copy
         mode to copy
 
 
+
 .. _`drm_mode_copy.description`:
 
 Description
@@ -469,6 +557,7 @@ Description
 
 Copy an existing mode into another mode, preserving the object id and
 list head of the destination mode.
+
 
 
 .. _`drm_mode_duplicate`:
@@ -487,6 +576,7 @@ drm_mode_duplicate
         mode to duplicate
 
 
+
 .. _`drm_mode_duplicate.description`:
 
 Description
@@ -495,8 +585,15 @@ Description
 Just allocate a new mode, copy the existing mode into it, and return
 a pointer to it.  Used to create new instances of established modes.
 
-Returns:
+
+
+.. _`drm_mode_duplicate.returns`:
+
+Returns
+-------
+
 Pointer to duplicated mode on success, NULL on error.
+
 
 
 .. _`drm_mode_equal`:
@@ -515,6 +612,7 @@ drm_mode_equal
         second mode
 
 
+
 .. _`drm_mode_equal.description`:
 
 Description
@@ -522,8 +620,15 @@ Description
 
 Check to see if ``mode1`` and ``mode2`` are equivalent.
 
-Returns:
+
+
+.. _`drm_mode_equal.returns`:
+
+Returns
+-------
+
 True if the modes are equal, false otherwise.
+
 
 
 .. _`drm_mode_equal_no_clocks`:
@@ -542,6 +647,7 @@ drm_mode_equal_no_clocks
         second mode
 
 
+
 .. _`drm_mode_equal_no_clocks.description`:
 
 Description
@@ -550,8 +656,15 @@ Description
 Check to see if ``mode1`` and ``mode2`` are equivalent, but
 don't check the pixel clocks.
 
-Returns:
+
+
+.. _`drm_mode_equal_no_clocks.returns`:
+
+Returns
+-------
+
 True if the modes are equal, false otherwise.
+
 
 
 .. _`drm_mode_equal_no_clocks_no_stereo`:
@@ -570,6 +683,7 @@ drm_mode_equal_no_clocks_no_stereo
         second mode
 
 
+
 .. _`drm_mode_equal_no_clocks_no_stereo.description`:
 
 Description
@@ -578,8 +692,15 @@ Description
 Check to see if ``mode1`` and ``mode2`` are equivalent, but
 don't check the pixel clocks nor the stereo layout.
 
-Returns:
+
+
+.. _`drm_mode_equal_no_clocks_no_stereo.returns`:
+
+Returns
+-------
+
 True if the modes are equal, false otherwise.
+
 
 
 .. _`drm_mode_validate_basic`:
@@ -595,6 +716,7 @@ drm_mode_validate_basic
         mode to check
 
 
+
 .. _`drm_mode_validate_basic.description`:
 
 Description
@@ -603,8 +725,15 @@ Description
 Check that the mode timings are at least somewhat reasonable.
 Any hardware specific limits are left up for each driver to check.
 
-Returns:
+
+
+.. _`drm_mode_validate_basic.returns`:
+
+Returns
+-------
+
 The mode status
+
 
 
 .. _`drm_mode_validate_size`:
@@ -626,6 +755,7 @@ drm_mode_validate_size
         maximum height
 
 
+
 .. _`drm_mode_validate_size.description`:
 
 Description
@@ -636,8 +766,15 @@ limitations of the DRM device/connector. If a mode is too big its status
 member is updated with the appropriate validation failure code. The list
 itself is not changed.
 
-Returns:
+
+
+.. _`drm_mode_validate_size.returns`:
+
+Returns
+-------
+
 The mode status
+
 
 
 .. _`drm_mode_prune_invalid`:
@@ -659,6 +796,7 @@ drm_mode_prune_invalid
         be verbose about it
 
 
+
 .. _`drm_mode_prune_invalid.description`:
 
 Description
@@ -668,6 +806,7 @@ This helper function can be used to prune a display mode list after
 validation has been completed. All modes who's status is not MODE_OK will be
 removed from the list, and if ``verbose`` the status code and mode name is also
 printed to dmesg.
+
 
 
 .. _`drm_mode_compare`:
@@ -689,6 +828,7 @@ drm_mode_compare
         list_head for second mode
 
 
+
 .. _`drm_mode_compare.description`:
 
 Description
@@ -697,9 +837,16 @@ Description
 Compare two modes, given by ``lh_a`` and ``lh_b``\ , returning a value indicating
 which is better.
 
-Returns:
+
+
+.. _`drm_mode_compare.returns`:
+
+Returns
+-------
+
 Negative if ``lh_a`` is better than ``lh_b``\ , zero if they're equivalent, or
 positive if ``lh_b`` is better than ``lh_a``\ .
+
 
 
 .. _`drm_mode_sort`:
@@ -715,12 +862,14 @@ drm_mode_sort
         list of drm_display_mode structures to sort
 
 
+
 .. _`drm_mode_sort.description`:
 
 Description
 -----------
 
 Sort ``mode_list`` by favorability, moving good modes to the head of the list.
+
 
 
 .. _`drm_mode_connector_list_update`:
@@ -736,6 +885,7 @@ drm_mode_connector_list_update
         the connector to update
 
 
+
 .. _`drm_mode_connector_list_update.description`:
 
 Description
@@ -747,6 +897,7 @@ list and only adds different/new modes.
 
 This is just a helper functions doesn't validate any modes itself and also
 doesn't prune any invalid modes. Callers need to do that themselves.
+
 
 
 .. _`drm_mode_parse_command_line_for_connector`:
@@ -768,6 +919,7 @@ drm_mode_parse_command_line_for_connector
         preallocated drm_cmdline_mode structure to fill out
 
 
+
 .. _`drm_mode_parse_command_line_for_connector.description`:
 
 Description
@@ -785,8 +937,15 @@ force-enable, force-enable-digital and force-disable bit at the end:
 The intermediate drm_cmdline_mode structure is required to store additional
 options from the command line modline like the force-enable/disable flag.
 
-Returns:
+
+
+.. _`drm_mode_parse_command_line_for_connector.returns`:
+
+Returns
+-------
+
 True if a valid modeline has been parsed, false otherwise.
+
 
 
 .. _`drm_mode_create_from_cmdline_mode`:
@@ -805,13 +964,14 @@ drm_mode_create_from_cmdline_mode
         input command line modeline
 
 
-.. _`drm_mode_create_from_cmdline_mode.description`:
 
-Description
------------
+.. _`drm_mode_create_from_cmdline_mode.returns`:
 
-Returns:
+Returns
+-------
+
 Pointer to converted mode on success, NULL on error.
+
 
 
 .. _`drm_mode_convert_to_umode`:
@@ -830,6 +990,7 @@ drm_mode_convert_to_umode
         drm_display_mode to use
 
 
+
 .. _`drm_mode_convert_to_umode.description`:
 
 Description
@@ -837,6 +998,7 @@ Description
 
 Convert a drm_display_mode into a drm_mode_modeinfo structure to return to
 the user.
+
 
 
 .. _`drm_mode_convert_umode`:
@@ -855,6 +1017,7 @@ drm_mode_convert_umode
         drm_mode_modeinfo to use
 
 
+
 .. _`drm_mode_convert_umode.description`:
 
 Description
@@ -863,6 +1026,12 @@ Description
 Convert a drm_mode_modeinfo into a drm_display_mode structure to return to
 the caller.
 
-Returns:
+
+
+.. _`drm_mode_convert_umode.returns`:
+
+Returns
+-------
+
 Zero on success, negative errno on failure.
 

@@ -4,16 +4,18 @@
 drm_mipi_dsi.h
 ==============
 
+
 .. _`mipi_dsi_msg`:
 
 struct mipi_dsi_msg
 ===================
 
-.. c:type:: struct mipi_dsi_msg
+.. c:type:: mipi_dsi_msg
 
     read/write DSI buffer
 
 
+.. _`mipi_dsi_msg.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_msg.members`:
 
 Members
 -------
@@ -58,16 +61,18 @@ Members
 
 
 
+
 .. _`mipi_dsi_packet`:
 
 struct mipi_dsi_packet
 ======================
 
-.. c:type:: struct mipi_dsi_packet
+.. c:type:: mipi_dsi_packet
 
     represents a MIPI DSI packet in protocol format
 
 
+.. _`mipi_dsi_packet.definition`:
 
 Definition
 ----------
@@ -82,6 +87,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_packet.members`:
 
 Members
 -------
@@ -101,16 +107,18 @@ Members
 
 
 
+
 .. _`mipi_dsi_host_ops`:
 
 struct mipi_dsi_host_ops
 ========================
 
-.. c:type:: struct mipi_dsi_host_ops
+.. c:type:: mipi_dsi_host_ops
 
     DSI bus operations
 
 
+.. _`mipi_dsi_host_ops.definition`:
 
 Definition
 ----------
@@ -124,6 +132,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_host_ops.members`:
 
 Members
 -------
@@ -138,6 +147,9 @@ Members
     transmit a DSI packet
 
 
+
+
+.. _`mipi_dsi_host_ops.description`:
 
 Description
 -----------
@@ -155,16 +167,18 @@ function will seldomly return anything other than the number of bytes
 contained in the transmit buffer on success.
 
 
+
 .. _`mipi_dsi_host`:
 
 struct mipi_dsi_host
 ====================
 
-.. c:type:: struct mipi_dsi_host
+.. c:type:: mipi_dsi_host
 
     DSI host device
 
 
+.. _`mipi_dsi_host.definition`:
 
 Definition
 ----------
@@ -178,6 +192,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_host.members`:
 
 Members
 -------
@@ -193,16 +208,18 @@ Members
 
 
 
+
 .. _`mipi_dsi_device_info`:
 
 struct mipi_dsi_device_info
 ===========================
 
-.. c:type:: struct mipi_dsi_device_info
+.. c:type:: mipi_dsi_device_info
 
     template for creating a mipi_dsi_device
 
 
+.. _`mipi_dsi_device_info.definition`:
 
 Definition
 ----------
@@ -216,6 +233,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_device_info.members`:
 
 Members
 -------
@@ -231,6 +249,9 @@ Members
 
 
 
+
+.. _`mipi_dsi_device_info.description`:
+
 Description
 -----------
 
@@ -238,16 +259,18 @@ This is populated and passed to mipi_dsi_device_new to create a new
 DSI device
 
 
+
 .. _`mipi_dsi_device`:
 
 struct mipi_dsi_device
 ======================
 
-.. c:type:: struct mipi_dsi_device
+.. c:type:: mipi_dsi_device
 
     DSI peripheral device
 
 
+.. _`mipi_dsi_device.definition`:
 
 Definition
 ----------
@@ -265,6 +288,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_device.members`:
 
 Members
 -------
@@ -292,6 +316,7 @@ Members
 
 
 
+
 .. _`mipi_dsi_pixel_format_to_bpp`:
 
 mipi_dsi_pixel_format_to_bpp
@@ -305,12 +330,14 @@ mipi_dsi_pixel_format_to_bpp
         MIPI DSI pixel format
 
 
-.. _`mipi_dsi_pixel_format_to_bpp.description`:
 
-Description
------------
+.. _`mipi_dsi_pixel_format_to_bpp.returns`:
 
-Returns: The number of bits per pixel of the given pixel format.
+Returns
+-------
+
+The number of bits per pixel of the given pixel format.
+
 
 
 .. _`mipi_dsi_dcs_tear_mode`:
@@ -318,11 +345,25 @@ Returns: The number of bits per pixel of the given pixel format.
 enum mipi_dsi_dcs_tear_mode
 ===========================
 
-.. c:type:: enum mipi_dsi_dcs_tear_mode
+.. c:type:: mipi_dsi_dcs_tear_mode
 
     Tearing Effect Output Line mode
 
 
+.. _`mipi_dsi_dcs_tear_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mipi_dsi_dcs_tear_mode {
+      MIPI_DSI_DCS_TEAR_MODE_VBLANK,
+      MIPI_DSI_DCS_TEAR_MODE_VHBLANK
+    };
+
+
+.. _`mipi_dsi_dcs_tear_mode.constants`:
 
 Constants
 ---------
@@ -341,11 +382,12 @@ Constants
 struct mipi_dsi_driver
 ======================
 
-.. c:type:: struct mipi_dsi_driver
+.. c:type:: mipi_dsi_driver
 
     DSI driver
 
 
+.. _`mipi_dsi_driver.definition`:
 
 Definition
 ----------
@@ -360,6 +402,7 @@ Definition
   };
 
 
+.. _`mipi_dsi_driver.members`:
 
 Members
 -------

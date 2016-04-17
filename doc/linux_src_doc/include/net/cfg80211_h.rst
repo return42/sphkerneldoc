@@ -4,6 +4,7 @@
 cfg80211.h
 ==========
 
+
 .. _`introduction`:
 
 Introduction
@@ -18,6 +19,7 @@ wireless extensions to userspace, but hides them from drivers completely.
 
 Additionally, cfg80211 contains code to help enforce regulatory spectrum
 use restrictions.
+
 
 
 .. _`device-registration`:
@@ -44,16 +46,33 @@ a pointer to the various operations the driver offers. The definitions and
 structures here describe these capabilities in detail.
 
 
+
 .. _`ieee80211_band`:
 
 enum ieee80211_band
 ===================
 
-.. c:type:: enum ieee80211_band
+.. c:type:: ieee80211_band
 
     supported frequency bands
 
 
+.. _`ieee80211_band.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_band {
+      IEEE80211_BAND_2GHZ,
+      IEEE80211_BAND_5GHZ,
+      IEEE80211_BAND_60GHZ,
+      IEEE80211_NUM_BANDS
+    };
+
+
+.. _`ieee80211_band.constants`:
 
 Constants
 ---------
@@ -71,6 +90,8 @@ Constants
     number of defined bands
 
 
+.. _`ieee80211_band.device-registration`:
+
 Device registration
 -------------------
 
@@ -79,16 +100,41 @@ The bands are assigned this way because the supported
 bitrates differ in these bands.
 
 
+
 .. _`ieee80211_channel_flags`:
 
 enum ieee80211_channel_flags
 ============================
 
-.. c:type:: enum ieee80211_channel_flags
+.. c:type:: ieee80211_channel_flags
 
     channel flags
 
 
+.. _`ieee80211_channel_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_channel_flags {
+      IEEE80211_CHAN_DISABLED,
+      IEEE80211_CHAN_NO_IR,
+      IEEE80211_CHAN_RADAR,
+      IEEE80211_CHAN_NO_HT40PLUS,
+      IEEE80211_CHAN_NO_HT40MINUS,
+      IEEE80211_CHAN_NO_OFDM,
+      IEEE80211_CHAN_NO_80MHZ,
+      IEEE80211_CHAN_NO_160MHZ,
+      IEEE80211_CHAN_INDOOR_ONLY,
+      IEEE80211_CHAN_IR_CONCURRENT,
+      IEEE80211_CHAN_NO_20MHZ,
+      IEEE80211_CHAN_NO_10MHZ
+    };
+
+
+.. _`ieee80211_channel_flags.constants`:
 
 Constants
 ---------
@@ -136,12 +182,16 @@ Constants
 
 :``IEEE80211_CHAN_NO_20MHZ``:
     20 MHz bandwidth is not permitted
+
             on this channel.
 
 :``IEEE80211_CHAN_NO_10MHZ``:
     10 MHz bandwidth is not permitted
+
             on this channel.
 
+
+.. _`ieee80211_channel_flags.description`:
 
 Description
 -----------
@@ -150,16 +200,18 @@ Description
 Channel flags set by the regulatory control code.
 
 
+
 .. _`ieee80211_channel`:
 
 struct ieee80211_channel
 ========================
 
-.. c:type:: struct ieee80211_channel
+.. c:type:: ieee80211_channel
 
     channel definition
 
 
+.. _`ieee80211_channel.definition`:
 
 Definition
 ----------
@@ -184,6 +236,7 @@ Definition
   };
 
 
+.. _`ieee80211_channel.members`:
 
 Members
 -------
@@ -236,6 +289,9 @@ Members
 
 
 
+
+.. _`ieee80211_channel.description`:
+
 Description
 -----------
 
@@ -244,16 +300,36 @@ This structure describes a single channel for use
 with cfg80211.
 
 
+
 .. _`ieee80211_rate_flags`:
 
 enum ieee80211_rate_flags
 =========================
 
-.. c:type:: enum ieee80211_rate_flags
+.. c:type:: ieee80211_rate_flags
 
     rate flags
 
 
+.. _`ieee80211_rate_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_rate_flags {
+      IEEE80211_RATE_SHORT_PREAMBLE,
+      IEEE80211_RATE_MANDATORY_A,
+      IEEE80211_RATE_MANDATORY_B,
+      IEEE80211_RATE_MANDATORY_G,
+      IEEE80211_RATE_ERP_G,
+      IEEE80211_RATE_SUPPORTS_5MHZ,
+      IEEE80211_RATE_SUPPORTS_10MHZ
+    };
+
+
+.. _`ieee80211_rate_flags.constants`:
 
 Constants
 ---------
@@ -288,6 +364,8 @@ Constants
     Rate can be used in 10 MHz mode
 
 
+.. _`ieee80211_rate_flags.description`:
+
 Description
 -----------
 
@@ -297,16 +375,34 @@ in a way that allows using the same bitrate structure for
 different bands/PHY modes.
 
 
+
 .. _`ieee80211_bss_type`:
 
 enum ieee80211_bss_type
 =======================
 
-.. c:type:: enum ieee80211_bss_type
+.. c:type:: ieee80211_bss_type
 
     BSS type filter
 
 
+.. _`ieee80211_bss_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_bss_type {
+      IEEE80211_BSS_TYPE_ESS,
+      IEEE80211_BSS_TYPE_PBSS,
+      IEEE80211_BSS_TYPE_IBSS,
+      IEEE80211_BSS_TYPE_MBSS,
+      IEEE80211_BSS_TYPE_ANY
+    };
+
+
+.. _`ieee80211_bss_type.constants`:
 
 Constants
 ---------
@@ -332,11 +428,26 @@ Constants
 enum ieee80211_privacy
 ======================
 
-.. c:type:: enum ieee80211_privacy
+.. c:type:: ieee80211_privacy
 
     BSS privacy filter
 
 
+.. _`ieee80211_privacy.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee80211_privacy {
+      IEEE80211_PRIVACY_ON,
+      IEEE80211_PRIVACY_OFF,
+      IEEE80211_PRIVACY_ANY
+    };
+
+
+.. _`ieee80211_privacy.constants`:
 
 Constants
 ---------
@@ -356,11 +467,12 @@ Constants
 struct ieee80211_rate
 =====================
 
-.. c:type:: struct ieee80211_rate
+.. c:type:: ieee80211_rate
 
     bitrate definition
 
 
+.. _`ieee80211_rate.definition`:
 
 Definition
 ----------
@@ -375,6 +487,7 @@ Definition
   };
 
 
+.. _`ieee80211_rate.members`:
 
 Members
 -------
@@ -394,6 +507,9 @@ Members
 
 
 
+
+.. _`ieee80211_rate.description`:
+
 Description
 -----------
 
@@ -404,16 +520,18 @@ are only for driver use when pointers to this structure are
 passed around.
 
 
+
 .. _`ieee80211_sta_ht_cap`:
 
 struct ieee80211_sta_ht_cap
 ===========================
 
-.. c:type:: struct ieee80211_sta_ht_cap
+.. c:type:: ieee80211_sta_ht_cap
 
     STA's HT capabilities
 
 
+.. _`ieee80211_sta_ht_cap.definition`:
 
 Definition
 ----------
@@ -429,6 +547,7 @@ Definition
   };
 
 
+.. _`ieee80211_sta_ht_cap.members`:
 
 Members
 -------
@@ -450,6 +569,9 @@ Members
 
 
 
+
+.. _`ieee80211_sta_ht_cap.description`:
+
 Description
 -----------
 
@@ -458,16 +580,18 @@ This structure describes most essential parameters needed
 to describe 802.11n HT capabilities for an STA.
 
 
+
 .. _`ieee80211_sta_vht_cap`:
 
 struct ieee80211_sta_vht_cap
 ============================
 
-.. c:type:: struct ieee80211_sta_vht_cap
+.. c:type:: ieee80211_sta_vht_cap
 
     STA's VHT capabilities
 
 
+.. _`ieee80211_sta_vht_cap.definition`:
 
 Definition
 ----------
@@ -481,6 +605,7 @@ Definition
   };
 
 
+.. _`ieee80211_sta_vht_cap.members`:
 
 Members
 -------
@@ -496,6 +621,9 @@ Members
 
 
 
+
+.. _`ieee80211_sta_vht_cap.description`:
+
 Description
 -----------
 
@@ -504,16 +632,18 @@ This structure describes most essential parameters needed
 to describe 802.11ac VHT capabilities for an STA.
 
 
+
 .. _`ieee80211_supported_band`:
 
 struct ieee80211_supported_band
 ===============================
 
-.. c:type:: struct ieee80211_supported_band
+.. c:type:: ieee80211_supported_band
 
     frequency band definition
 
 
+.. _`ieee80211_supported_band.definition`:
 
 Definition
 ----------
@@ -531,6 +661,7 @@ Definition
   };
 
 
+.. _`ieee80211_supported_band.members`:
 
 Members
 -------
@@ -561,12 +692,16 @@ Members
 
 
 
+
+.. _`ieee80211_supported_band.description`:
+
 Description
 -----------
 
 
 This structure describes a frequency band a wiphy
 is able to operate in.
+
 
 
 .. _`actions-and-configuration`:
@@ -586,16 +721,18 @@ Scanning and BSS list handling with its associated functionality is described
 in a separate chapter.
 
 
+
 .. _`vif_params`:
 
 struct vif_params
 =================
 
-.. c:type:: struct vif_params
+.. c:type:: vif_params
 
     describes virtual interface parameters
 
 
+.. _`vif_params.definition`:
 
 Definition
 ----------
@@ -608,6 +745,7 @@ Definition
   };
 
 
+.. _`vif_params.members`:
 
 Members
 -------
@@ -616,14 +754,14 @@ Members
     use 4-address frames
 
 :``macaddr[ETH_ALEN]``:
-    address to use for this virtual interface.::
-
-            If this parameter is set to zero address the driver may
-            determine the address as needed.
-            This feature is only fully supported by drivers that enable the
-            ``NL80211_FEATURE_MAC_ON_CREATE`` flag.  Others may support creating
+    address to use for this virtual interface.
+    If this parameter is set to zero address the driver may
+    determine the address as needed.
+    This feature is only fully supported by drivers that enable the
+    ``NL80211_FEATURE_MAC_ON_CREATE`` flag.  Others may support creating
 
     *        only p2p devices with specified MAC.
+
 
 
 
@@ -632,11 +770,12 @@ Members
 struct key_params
 =================
 
-.. c:type:: struct key_params
+.. c:type:: key_params
 
     key information
 
 
+.. _`key_params.definition`:
 
 Definition
 ----------
@@ -652,6 +791,7 @@ Definition
   };
 
 
+.. _`key_params.members`:
 
 Members
 -------
@@ -675,6 +815,9 @@ Members
 
 
 
+
+.. _`key_params.description`:
+
 Description
 -----------
 
@@ -682,16 +825,18 @@ Description
 Information about a key
 
 
+
 .. _`cfg80211_chan_def`:
 
 struct cfg80211_chan_def
 ========================
 
-.. c:type:: struct cfg80211_chan_def
+.. c:type:: cfg80211_chan_def
 
     channel definition
 
 
+.. _`cfg80211_chan_def.definition`:
 
 Definition
 ----------
@@ -706,6 +851,7 @@ Definition
   };
 
 
+.. _`cfg80211_chan_def.members`:
 
 Members
 -------
@@ -725,6 +871,7 @@ Members
 
 
 
+
 .. _`cfg80211_get_chandef_type`:
 
 cfg80211_get_chandef_type
@@ -738,13 +885,15 @@ cfg80211_get_chandef_type
         the channel definition
 
 
-.. _`cfg80211_get_chandef_type.description`:
 
-Description
------------
+.. _`cfg80211_get_chandef_type.return`:
 
-Return: The old channel type (NOHT, HT20, HT40+/-) from a given
+Return
+------
+
+The old channel type (NOHT, HT20, HT40+/-) from a given
 chandef, which must have a bandwidth allowing this conversion.
+
 
 
 .. _`cfg80211_chandef_create`:
@@ -766,12 +915,14 @@ cfg80211_chandef_create
         the channel type
 
 
+
 .. _`cfg80211_chandef_create.description`:
 
 Description
 -----------
 
 Given a channel type, create a channel definition.
+
 
 
 .. _`cfg80211_chandef_identical`:
@@ -790,13 +941,15 @@ cfg80211_chandef_identical
         second channel definition
 
 
-.. _`cfg80211_chandef_identical.description`:
 
-Description
------------
+.. _`cfg80211_chandef_identical.return`:
 
-Return: ``true`` if the channels defined by the channel definitions are
+Return
+------
+
+``true`` if the channels defined by the channel definitions are
 identical, ``false`` otherwise.
+
 
 
 .. _`cfg80211_chandef_compatible`:
@@ -815,13 +968,15 @@ cfg80211_chandef_compatible
         second channel definition
 
 
-.. _`cfg80211_chandef_compatible.description`:
 
-Description
------------
+.. _`cfg80211_chandef_compatible.return`:
 
-Return: ``NULL`` if the given channel definitions are incompatible,
+Return
+------
+
+``NULL`` if the given channel definitions are incompatible,
 chandef1 or chandef2 otherwise.
+
 
 
 .. _`cfg80211_chandef_valid`:
@@ -835,7 +990,16 @@ cfg80211_chandef_valid
 
     :param const struct cfg80211_chan_def \*chandef:
         the channel definition to check
-        Return: ``true`` if the channel definition is valid. ``false`` otherwise.
+
+
+
+.. _`cfg80211_chandef_valid.return`:
+
+Return
+------
+
+``true`` if the channel definition is valid. ``false`` otherwise.
+
 
 
 .. _`cfg80211_chandef_usable`:
@@ -855,7 +1019,16 @@ cfg80211_chandef_usable
 
     :param u32 prohibited_flags:
         the regulatory channel flags that must not be set
-        Return: ``true`` if secondary channels are usable. ``false`` otherwise.
+
+
+
+.. _`cfg80211_chandef_usable.return`:
+
+Return
+------
+
+``true`` if secondary channels are usable. ``false`` otherwise.
+
 
 
 .. _`cfg80211_chandef_dfs_required`:
@@ -875,9 +1048,16 @@ cfg80211_chandef_dfs_required
 
     :param enum nl80211_iftype iftype:
         the interface type as specified in :c:type:`enum nl80211_iftype <nl80211_iftype>`
-        Returns::
 
-                1 if radar detection is required, 0 if it is not, < 0 on error
+
+
+.. _`cfg80211_chandef_dfs_required.returns`:
+
+Returns
+-------
+
+1 if radar detection is required, 0 if it is not, < 0 on error
+
 
 
 .. _`ieee80211_chandef_rate_flags`:
@@ -893,20 +1073,25 @@ ieee80211_chandef_rate_flags
         channel definition for the channel
 
 
-.. _`ieee80211_chandef_rate_flags.description`:
-
-Description
------------
-
-Returns: rate flags which apply for this channel
-
 
 .. _`ieee80211_chandef_rate_flags.description`:
 
 Description
 -----------
 
-Returns: rate flags which apply for this channel
+
+In some channel types, not all rates may be used - for example CCK
+rates may not be used in 5/10 MHz channels.
+
+
+
+.. _`ieee80211_chandef_rate_flags.returns`:
+
+Returns
+-------
+
+rate flags which apply for this channel
+
 
 
 .. _`ieee80211_chandef_max_power`:
@@ -922,20 +1107,26 @@ ieee80211_chandef_max_power
         channel definition for the channel
 
 
-.. _`ieee80211_chandef_max_power.description`:
-
-Description
------------
-
-Returns: maximum allowed transmission power in dBm for the chandef
-
 
 .. _`ieee80211_chandef_max_power.description`:
 
 Description
 -----------
 
-Returns: maximum allowed transmission power in dBm for the chandef
+
+In some regulations, the transmit power may depend on the configured channel
+bandwidth which may be defined as dBm/MHz. This function returns the actual
+max_power for non-standard (20 MHz) channels.
+
+
+
+.. _`ieee80211_chandef_max_power.returns`:
+
+Returns
+-------
+
+maximum allowed transmission power in dBm for the chandef
+
 
 
 .. _`survey_info_flags`:
@@ -943,11 +1134,31 @@ Returns: maximum allowed transmission power in dBm for the chandef
 enum survey_info_flags
 ======================
 
-.. c:type:: enum survey_info_flags
+.. c:type:: survey_info_flags
 
     survey information flags
 
 
+.. _`survey_info_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum survey_info_flags {
+      SURVEY_INFO_NOISE_DBM,
+      SURVEY_INFO_IN_USE,
+      SURVEY_INFO_TIME,
+      SURVEY_INFO_TIME_BUSY,
+      SURVEY_INFO_TIME_EXT_BUSY,
+      SURVEY_INFO_TIME_RX,
+      SURVEY_INFO_TIME_TX,
+      SURVEY_INFO_TIME_SCAN
+    };
+
+
+.. _`survey_info_flags.constants`:
 
 Constants
 ---------
@@ -977,6 +1188,8 @@ Constants
     scan time was filled in
 
 
+.. _`survey_info_flags.description`:
+
 Description
 -----------
 
@@ -984,16 +1197,18 @@ Used by the driver to indicate which info in :c:type:`struct survey_info <survey
 it has filled in during the :c:func:`get_survey`.
 
 
+
 .. _`survey_info`:
 
 struct survey_info
 ==================
 
-.. c:type:: struct survey_info
+.. c:type:: survey_info
 
     channel survey response
 
 
+.. _`survey_info.definition`:
 
 Definition
 ----------
@@ -1013,6 +1228,7 @@ Definition
   };
 
 
+.. _`survey_info.members`:
 
 Members
 -------
@@ -1048,6 +1264,9 @@ Members
 
 
 
+
+.. _`survey_info.description`:
+
 Description
 -----------
 
@@ -1057,16 +1276,18 @@ This structure can later be expanded with things like
 channel duty cycle etc.
 
 
+
 .. _`cfg80211_crypto_settings`:
 
 struct cfg80211_crypto_settings
 ===============================
 
-.. c:type:: struct cfg80211_crypto_settings
+.. c:type:: cfg80211_crypto_settings
 
     Crypto settings
 
 
+.. _`cfg80211_crypto_settings.definition`:
 
 Definition
 ----------
@@ -1086,6 +1307,7 @@ Definition
   };
 
 
+.. _`cfg80211_crypto_settings.members`:
 
 Members
 -------
@@ -1125,16 +1347,18 @@ Members
 
 
 
+
 .. _`cfg80211_beacon_data`:
 
 struct cfg80211_beacon_data
 ===========================
 
-.. c:type:: struct cfg80211_beacon_data
+.. c:type:: cfg80211_beacon_data
 
     beacon data
 
 
+.. _`cfg80211_beacon_data.definition`:
 
 Definition
 ----------
@@ -1157,6 +1381,7 @@ Definition
   };
 
 
+.. _`cfg80211_beacon_data.members`:
 
 Members
 -------
@@ -1203,16 +1428,18 @@ Members
 
 
 
+
 .. _`cfg80211_acl_data`:
 
 struct cfg80211_acl_data
 ========================
 
-.. c:type:: struct cfg80211_acl_data
+.. c:type:: cfg80211_acl_data
 
     Access control list data
 
 
+.. _`cfg80211_acl_data.definition`:
 
 Definition
 ----------
@@ -1226,6 +1453,7 @@ Definition
   };
 
 
+.. _`cfg80211_acl_data.members`:
 
 Members
 -------
@@ -1242,16 +1470,18 @@ Members
 
 
 
+
 .. _`cfg80211_ap_settings`:
 
 struct cfg80211_ap_settings
 ===========================
 
-.. c:type:: struct cfg80211_ap_settings
+.. c:type:: cfg80211_ap_settings
 
     AP configuration
 
 
+.. _`cfg80211_ap_settings.definition`:
 
 Definition
 ----------
@@ -1278,6 +1508,7 @@ Definition
   };
 
 
+.. _`cfg80211_ap_settings.members`:
 
 Members
 -------
@@ -1335,6 +1566,9 @@ Members
 
 
 
+
+.. _`cfg80211_ap_settings.description`:
+
 Description
 -----------
 
@@ -1342,16 +1576,18 @@ Description
 Used to configure an AP interface.
 
 
+
 .. _`cfg80211_csa_settings`:
 
 struct cfg80211_csa_settings
 ============================
 
-.. c:type:: struct cfg80211_csa_settings
+.. c:type:: cfg80211_csa_settings
 
     channel switch settings
 
 
+.. _`cfg80211_csa_settings.definition`:
 
 Definition
 ----------
@@ -1372,6 +1608,7 @@ Definition
   };
 
 
+.. _`cfg80211_csa_settings.members`:
 
 Members
 -------
@@ -1408,6 +1645,9 @@ Members
 
 
 
+
+.. _`cfg80211_csa_settings.description`:
+
 Description
 -----------
 
@@ -1415,16 +1655,32 @@ Description
 Used for channel switch
 
 
+
 .. _`station_parameters_apply_mask`:
 
 enum station_parameters_apply_mask
 ==================================
 
-.. c:type:: enum station_parameters_apply_mask
+.. c:type:: station_parameters_apply_mask
 
     station parameter values to apply
 
 
+.. _`station_parameters_apply_mask.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum station_parameters_apply_mask {
+      STATION_PARAM_APPLY_UAPSD,
+      STATION_PARAM_APPLY_CAPABILITY,
+      STATION_PARAM_APPLY_PLINK_STATE
+    };
+
+
+.. _`station_parameters_apply_mask.constants`:
 
 Constants
 ---------
@@ -1439,6 +1695,8 @@ Constants
     apply new plink state
 
 
+.. _`station_parameters_apply_mask.description`:
+
 Description
 -----------
 
@@ -1446,16 +1704,18 @@ Not all station parameters have in-band "no change" signalling,
 for those that don't these flags will are used.
 
 
+
 .. _`station_parameters`:
 
 struct station_parameters
 =========================
 
-.. c:type:: struct station_parameters
+.. c:type:: station_parameters
 
     station parameters
 
 
+.. _`station_parameters.definition`:
 
 Definition
 ----------
@@ -1490,6 +1750,7 @@ Definition
   };
 
 
+.. _`station_parameters.members`:
 
 Members
 -------
@@ -1576,6 +1837,9 @@ Members
 
 
 
+
+.. _`station_parameters.description`:
+
 Description
 -----------
 
@@ -1583,16 +1847,18 @@ Description
 Used to change and create a new station.
 
 
+
 .. _`station_del_parameters`:
 
 struct station_del_parameters
 =============================
 
-.. c:type:: struct station_del_parameters
+.. c:type:: station_del_parameters
 
     station deletion parameters
 
 
+.. _`station_del_parameters.definition`:
 
 Definition
 ----------
@@ -1606,6 +1872,7 @@ Definition
   };
 
 
+.. _`station_del_parameters.members`:
 
 Members
 -------
@@ -1622,6 +1889,9 @@ Members
 
 
 
+
+.. _`station_del_parameters.description`:
+
 Description
 -----------
 
@@ -1629,16 +1899,38 @@ Description
 Used to delete a station entry (or all stations).
 
 
+
 .. _`cfg80211_station_type`:
 
 enum cfg80211_station_type
 ==========================
 
-.. c:type:: enum cfg80211_station_type
+.. c:type:: cfg80211_station_type
 
     the type of station being modified
 
 
+.. _`cfg80211_station_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_station_type {
+      CFG80211_STA_AP_CLIENT,
+      CFG80211_STA_AP_CLIENT_UNASSOC,
+      CFG80211_STA_AP_MLME_CLIENT,
+      CFG80211_STA_AP_STA,
+      CFG80211_STA_IBSS,
+      CFG80211_STA_TDLS_PEER_SETUP,
+      CFG80211_STA_TDLS_PEER_ACTIVE,
+      CFG80211_STA_MESH_PEER_KERNEL,
+      CFG80211_STA_MESH_PEER_USER
+    };
+
+
+.. _`cfg80211_station_type.constants`:
 
 Constants
 ---------
@@ -1696,6 +1988,7 @@ cfg80211_check_station_change
         the type of station being modified
 
 
+
 .. _`cfg80211_check_station_change.description`:
 
 Description
@@ -1708,16 +2001,33 @@ not will return an error code. Note that it may modify the parameters for
 backward compatibility reasons, so don't use them before calling this.
 
 
+
 .. _`rate_info_flags`:
 
 enum rate_info_flags
 ====================
 
-.. c:type:: enum rate_info_flags
+.. c:type:: rate_info_flags
 
     bitrate info flags
 
 
+.. _`rate_info_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rate_info_flags {
+      RATE_INFO_FLAGS_MCS,
+      RATE_INFO_FLAGS_VHT_MCS,
+      RATE_INFO_FLAGS_SHORT_GI,
+      RATE_INFO_FLAGS_60G
+    };
+
+
+.. _`rate_info_flags.constants`:
 
 Constants
 ---------
@@ -1735,6 +2045,8 @@ Constants
     60GHz MCS
 
 
+.. _`rate_info_flags.description`:
+
 Description
 -----------
 
@@ -1743,16 +2055,35 @@ Used by the driver to indicate the specific rate transmission
 type for 802.11n transmissions.
 
 
+
 .. _`rate_info_bw`:
 
 enum rate_info_bw
 =================
 
-.. c:type:: enum rate_info_bw
+.. c:type:: rate_info_bw
 
     rate bandwidth information
 
 
+.. _`rate_info_bw.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rate_info_bw {
+      RATE_INFO_BW_5,
+      RATE_INFO_BW_10,
+      RATE_INFO_BW_20,
+      RATE_INFO_BW_40,
+      RATE_INFO_BW_80,
+      RATE_INFO_BW_160
+    };
+
+
+.. _`rate_info_bw.constants`:
 
 Constants
 ---------
@@ -1776,6 +2107,8 @@ Constants
     160 MHz bandwidth
 
 
+.. _`rate_info_bw.description`:
+
 Description
 -----------
 
@@ -1783,16 +2116,18 @@ Description
 Used by the driver to indicate the rate bandwidth.
 
 
+
 .. _`rate_info`:
 
 struct rate_info
 ================
 
-.. c:type:: struct rate_info
+.. c:type:: rate_info
 
     bitrate information
 
 
+.. _`rate_info.definition`:
 
 Definition
 ----------
@@ -1808,6 +2143,7 @@ Definition
   };
 
 
+.. _`rate_info.members`:
 
 Members
 -------
@@ -1829,6 +2165,9 @@ Members
 
 
 
+
+.. _`rate_info.description`:
+
 Description
 -----------
 
@@ -1836,16 +2175,32 @@ Description
 Information about a receiving or transmitting bitrate
 
 
+
 .. _`bss_param_flags`:
 
 enum bss_param_flags
 ====================
 
-.. c:type:: enum bss_param_flags
+.. c:type:: bss_param_flags
 
     bitrate info flags
 
 
+.. _`bss_param_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum bss_param_flags {
+      BSS_PARAM_FLAGS_CTS_PROT,
+      BSS_PARAM_FLAGS_SHORT_PREAMBLE,
+      BSS_PARAM_FLAGS_SHORT_SLOT_TIME
+    };
+
+
+.. _`bss_param_flags.constants`:
 
 Constants
 ---------
@@ -1860,6 +2215,8 @@ Constants
     whether short slot time is enabled
 
 
+.. _`bss_param_flags.description`:
+
 Description
 -----------
 
@@ -1868,16 +2225,18 @@ Used by the driver to indicate the specific rate transmission
 type for 802.11n transmissions.
 
 
+
 .. _`sta_bss_parameters`:
 
 struct sta_bss_parameters
 =========================
 
-.. c:type:: struct sta_bss_parameters
+.. c:type:: sta_bss_parameters
 
     BSS parameters for the attached station
 
 
+.. _`sta_bss_parameters.definition`:
 
 Definition
 ----------
@@ -1891,6 +2250,7 @@ Definition
   };
 
 
+.. _`sta_bss_parameters.members`:
 
 Members
 -------
@@ -1906,6 +2266,9 @@ Members
 
 
 
+
+.. _`sta_bss_parameters.description`:
+
 Description
 -----------
 
@@ -1913,16 +2276,18 @@ Description
 Information about the currently associated BSS
 
 
+
 .. _`cfg80211_tid_stats`:
 
 struct cfg80211_tid_stats
 =========================
 
-.. c:type:: struct cfg80211_tid_stats
+.. c:type:: cfg80211_tid_stats
 
     per-TID statistics
 
 
+.. _`cfg80211_tid_stats.definition`:
 
 Definition
 ----------
@@ -1938,6 +2303,7 @@ Definition
   };
 
 
+.. _`cfg80211_tid_stats.members`:
 
 Members
 -------
@@ -1961,16 +2327,18 @@ Members
 
 
 
+
 .. _`station_info`:
 
 struct station_info
 ===================
 
-.. c:type:: struct station_info
+.. c:type:: station_info
 
     station information
 
 
+.. _`station_info.definition`:
 
 Definition
 ----------
@@ -2015,6 +2383,7 @@ Definition
   };
 
 
+.. _`station_info.members`:
 
 Members
 -------
@@ -2045,14 +2414,12 @@ Members
     mesh peer link state
 
 :``signal``:
-    The signal strength, type depends on the wiphy's signal_type.::
-
-            For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
+    The signal strength, type depends on the wiphy's signal_type.
+    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 :``signal_avg``:
-    Average signal strength, type depends on the wiphy's signal_type.::
-
-            For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
+    Average signal strength, type depends on the wiphy's signal_type.
+    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 :``chains``:
     bitmask for filled values in ``chain_signal``\ , ``chain_signal_avg``
@@ -2091,18 +2458,16 @@ Members
     station flags mask & values
 
 :``generation``:
-    generation number for nl80211 dumps.::
-
-            This number should increase every time the list of stations
-            changes, i.e. when a station is added or removed, so that
-            userspace can tell whether it got a consistent snapshot.
+    generation number for nl80211 dumps.
+    This number should increase every time the list of stations
+    changes, i.e. when a station is added or removed, so that
+    userspace can tell whether it got a consistent snapshot.
 
 :``assoc_req_ies``:
-    IEs from (Re)Association Request.::
-
-            This is used only when in AP mode with drivers that do not use
-            user space MLME/SME implementation. The information is provided for
-            the :c:func:`cfg80211_new_sta` calls to notify user space of the IEs.
+    IEs from (Re)Association Request.
+    This is used only when in AP mode with drivers that do not use
+    user space MLME/SME implementation. The information is provided for
+    the :c:func:`cfg80211_new_sta` calls to notify user space of the IEs.
 
 :``assoc_req_ies_len``:
     Length of assoc_req_ies buffer in octets.
@@ -2139,11 +2504,15 @@ Members
 
 
 
+
+.. _`station_info.description`:
+
 Description
 -----------
 
 
 Station information filled by driver for :c:func:`get_station` and dump_station.
+
 
 
 .. _`cfg80211_get_station`:
@@ -2165,6 +2534,7 @@ cfg80211_get_station
         pointer to the structure to fill with the information
 
 
+
 .. _`cfg80211_get_station.description`:
 
 Description
@@ -2175,16 +2545,35 @@ otherwise returns a negative error code and the content of sinfo has to be
 considered undefined.
 
 
+
 .. _`monitor_flags`:
 
 enum monitor_flags
 ==================
 
-.. c:type:: enum monitor_flags
+.. c:type:: monitor_flags
 
     monitor flags
 
 
+.. _`monitor_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum monitor_flags {
+      MONITOR_FLAG_FCSFAIL,
+      MONITOR_FLAG_PLCPFAIL,
+      MONITOR_FLAG_CONTROL,
+      MONITOR_FLAG_OTHER_BSS,
+      MONITOR_FLAG_COOK_FRAMES,
+      MONITOR_FLAG_ACTIVE
+    };
+
+
+.. _`monitor_flags.constants`:
 
 Constants
 ---------
@@ -2208,6 +2597,8 @@ Constants
     active monitor, ACKs frames on its MAC address
 
 
+.. _`monitor_flags.description`:
+
 Description
 -----------
 
@@ -2216,16 +2607,36 @@ Monitor interface configuration flags. Note that these must be the bits
 according to the nl80211 flags.
 
 
+
 .. _`mpath_info_flags`:
 
 enum mpath_info_flags
 =====================
 
-.. c:type:: enum mpath_info_flags
+.. c:type:: mpath_info_flags
 
     mesh path information flags
 
 
+.. _`mpath_info_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum mpath_info_flags {
+      MPATH_INFO_FRAME_QLEN,
+      MPATH_INFO_SN,
+      MPATH_INFO_METRIC,
+      MPATH_INFO_EXPTIME,
+      MPATH_INFO_DISCOVERY_TIMEOUT,
+      MPATH_INFO_DISCOVERY_RETRIES,
+      MPATH_INFO_FLAGS
+    };
+
+
+.. _`mpath_info_flags.constants`:
 
 Constants
 ---------
@@ -2252,6 +2663,8 @@ Constants
     ``flags`` filled
 
 
+.. _`mpath_info_flags.description`:
+
 Description
 -----------
 
@@ -2260,16 +2673,18 @@ Used by the driver to indicate which info in :c:type:`struct mpath_info <mpath_i
 in during :c:func:`get_station` or :c:func:`dump_station`.
 
 
+
 .. _`mpath_info`:
 
 struct mpath_info
 =================
 
-.. c:type:: struct mpath_info
+.. c:type:: mpath_info
 
     mesh path information
 
 
+.. _`mpath_info.definition`:
 
 Definition
 ----------
@@ -2289,6 +2704,7 @@ Definition
   };
 
 
+.. _`mpath_info.members`:
 
 Members
 -------
@@ -2318,13 +2734,15 @@ Members
     mesh path flags
 
 :``generation``:
-    generation number for nl80211 dumps.::
+    generation number for nl80211 dumps.
+    This number should increase every time the list of mesh paths
+    changes, i.e. when a station is added or removed, so that
+    userspace can tell whether it got a consistent snapshot.
 
-            This number should increase every time the list of mesh paths
-            changes, i.e. when a station is added or removed, so that
-            userspace can tell whether it got a consistent snapshot.
 
 
+
+.. _`mpath_info.description`:
 
 Description
 -----------
@@ -2333,16 +2751,18 @@ Description
 Mesh path information filled by driver for :c:func:`get_mpath` and :c:func:`dump_mpath`.
 
 
+
 .. _`bss_parameters`:
 
 struct bss_parameters
 =====================
 
-.. c:type:: struct bss_parameters
+.. c:type:: bss_parameters
 
     BSS parameters
 
 
+.. _`bss_parameters.definition`:
 
 Definition
 ----------
@@ -2362,6 +2782,7 @@ Definition
   };
 
 
+.. _`bss_parameters.members`:
 
 Members
 -------
@@ -2400,6 +2821,9 @@ Members
 
 
 
+
+.. _`bss_parameters.description`:
+
 Description
 -----------
 
@@ -2407,16 +2831,18 @@ Description
 Used to change BSS parameters (mainly for AP mode).
 
 
+
 .. _`mesh_config`:
 
 struct mesh_config
 ==================
 
-.. c:type:: struct mesh_config
+.. c:type:: mesh_config
 
     802.11s mesh configuration
 
 
+.. _`mesh_config.definition`:
 
 Definition
 ----------
@@ -2455,6 +2881,7 @@ Definition
   };
 
 
+.. _`mesh_config.members`:
 
 Members
 -------
@@ -2579,6 +3006,9 @@ Members
 
 
 
+
+.. _`mesh_config.description`:
+
 Description
 -----------
 
@@ -2586,16 +3016,18 @@ Description
 These parameters can be changed while the mesh is active.
 
 
+
 .. _`mesh_setup`:
 
 struct mesh_setup
 =================
 
-.. c:type:: struct mesh_setup
+.. c:type:: mesh_setup
 
     802.11s mesh setup configuration
 
 
+.. _`mesh_setup.definition`:
 
 Definition
 ----------
@@ -2622,6 +3054,7 @@ Definition
   };
 
 
+.. _`mesh_setup.members`:
 
 Members
 -------
@@ -2676,10 +3109,14 @@ Members
 
 
 
+
+.. _`mesh_setup.description`:
+
 Description
 -----------
 
 These parameters are fixed when the mesh is created.
+
 
 
 .. _`ocb_setup`:
@@ -2687,11 +3124,12 @@ These parameters are fixed when the mesh is created.
 struct ocb_setup
 ================
 
-.. c:type:: struct ocb_setup
+.. c:type:: ocb_setup
 
     802.11p OCB mode setup configuration
 
 
+.. _`ocb_setup.definition`:
 
 Definition
 ----------
@@ -2703,6 +3141,7 @@ Definition
   };
 
 
+.. _`ocb_setup.members`:
 
 Members
 -------
@@ -2712,10 +3151,14 @@ Members
 
 
 
+
+.. _`ocb_setup.description`:
+
 Description
 -----------
 
 These parameters are fixed when connecting to the network
+
 
 
 .. _`ieee80211_txq_params`:
@@ -2723,11 +3166,12 @@ These parameters are fixed when connecting to the network
 struct ieee80211_txq_params
 ===========================
 
-.. c:type:: struct ieee80211_txq_params
+.. c:type:: ieee80211_txq_params
 
     TX queue parameters
 
 
+.. _`ieee80211_txq_params.definition`:
 
 Definition
 ----------
@@ -2743,6 +3187,7 @@ Definition
   };
 
 
+.. _`ieee80211_txq_params.members`:
 
 Members
 -------
@@ -2763,6 +3208,7 @@ Members
 
 :``aifs``:
     Arbitration interframe space [0..255]
+
 
 
 
@@ -2791,16 +3237,18 @@ BSS structure cfg80211 maintains. The BSS list is also made available
 to userspace.
 
 
+
 .. _`cfg80211_ssid`:
 
 struct cfg80211_ssid
 ====================
 
-.. c:type:: struct cfg80211_ssid
+.. c:type:: cfg80211_ssid
 
     SSID description
 
 
+.. _`cfg80211_ssid.definition`:
 
 Definition
 ----------
@@ -2813,6 +3261,7 @@ Definition
   };
 
 
+.. _`cfg80211_ssid.members`:
 
 Members
 -------
@@ -2825,16 +3274,18 @@ Members
 
 
 
+
 .. _`cfg80211_scan_request`:
 
 struct cfg80211_scan_request
 ============================
 
-.. c:type:: struct cfg80211_scan_request
+.. c:type:: cfg80211_scan_request
 
     scan request description
 
 
+.. _`cfg80211_scan_request.definition`:
 
 Definition
 ----------
@@ -2862,6 +3313,7 @@ Definition
   };
 
 
+.. _`cfg80211_scan_request.members`:
 
 Members
 -------
@@ -2921,16 +3373,18 @@ Members
 
 
 
+
 .. _`cfg80211_match_set`:
 
 struct cfg80211_match_set
 =========================
 
-.. c:type:: struct cfg80211_match_set
+.. c:type:: cfg80211_match_set
 
     sets of attributes to match
 
 
+.. _`cfg80211_match_set.definition`:
 
 Definition
 ----------
@@ -2943,6 +3397,7 @@ Definition
   };
 
 
+.. _`cfg80211_match_set.members`:
 
 Members
 -------
@@ -2955,16 +3410,18 @@ Members
 
 
 
+
 .. _`cfg80211_sched_scan_plan`:
 
 struct cfg80211_sched_scan_plan
 ===============================
 
-.. c:type:: struct cfg80211_sched_scan_plan
+.. c:type:: cfg80211_sched_scan_plan
 
     scan plan for scheduled scan
 
 
+.. _`cfg80211_sched_scan_plan.definition`:
 
 Definition
 ----------
@@ -2977,6 +3434,7 @@ Definition
   };
 
 
+.. _`cfg80211_sched_scan_plan.members`:
 
 Members
 -------
@@ -2992,16 +3450,18 @@ Members
 
 
 
+
 .. _`cfg80211_sched_scan_request`:
 
 struct cfg80211_sched_scan_request
 ==================================
 
-.. c:type:: struct cfg80211_sched_scan_request
+.. c:type:: cfg80211_sched_scan_request
 
     scheduled scan request description
 
 
+.. _`cfg80211_sched_scan_request.definition`:
 
 Definition
 ----------
@@ -3033,6 +3493,7 @@ Definition
   };
 
 
+.. _`cfg80211_sched_scan_request.members`:
 
 Members
 -------
@@ -3113,16 +3574,32 @@ Members
 
 
 
+
 .. _`cfg80211_signal_type`:
 
 enum cfg80211_signal_type
 =========================
 
-.. c:type:: enum cfg80211_signal_type
+.. c:type:: cfg80211_signal_type
 
     signal type
 
 
+.. _`cfg80211_signal_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_signal_type {
+      CFG80211_SIGNAL_TYPE_NONE,
+      CFG80211_SIGNAL_TYPE_MBM,
+      CFG80211_SIGNAL_TYPE_UNSPEC
+    };
+
+
+.. _`cfg80211_signal_type.constants`:
 
 Constants
 ---------
@@ -3142,11 +3619,12 @@ Constants
 struct cfg80211_inform_bss
 ==========================
 
-.. c:type:: struct cfg80211_inform_bss
+.. c:type:: cfg80211_inform_bss
 
     BSS inform data
 
 
+.. _`cfg80211_inform_bss.definition`:
 
 Definition
 ----------
@@ -3161,6 +3639,7 @@ Definition
   };
 
 
+.. _`cfg80211_inform_bss.members`:
 
 Members
 -------
@@ -3185,16 +3664,18 @@ Members
 
 
 
+
 .. _`cfg80211_bss_ies`:
 
 struct cfg80211_bss_ies
 =======================
 
-.. c:type:: struct cfg80211_bss_ies
+.. c:type:: cfg80211_bss_ies
 
     BSS entry IE data
 
 
+.. _`cfg80211_bss_ies.definition`:
 
 Definition
 ----------
@@ -3210,6 +3691,7 @@ Definition
   };
 
 
+.. _`cfg80211_bss_ies.members`:
 
 Members
 -------
@@ -3231,16 +3713,18 @@ Members
 
 
 
+
 .. _`cfg80211_bss`:
 
 struct cfg80211_bss
 ===================
 
-.. c:type:: struct cfg80211_bss
+.. c:type:: cfg80211_bss
 
     BSS description
 
 
+.. _`cfg80211_bss.definition`:
 
 Definition
 ----------
@@ -3262,6 +3746,7 @@ Definition
   };
 
 
+.. _`cfg80211_bss.members`:
 
 Members
 -------
@@ -3310,12 +3795,16 @@ Members
 
 
 
+
+.. _`cfg80211_bss.description`:
+
 Description
 -----------
 
 
 This structure describes a BSS (which may also be a mesh network)
 for use in scan results and similar.
+
 
 
 .. _`ieee80211_bss_get_ie`:
@@ -3334,6 +3823,7 @@ ieee80211_bss_get_ie
         the IE ID
 
 
+
 .. _`ieee80211_bss_get_ie.description`:
 
 Description
@@ -3341,7 +3831,16 @@ Description
 
 Note that the return value is an RCU-protected pointer, so
 :c:func:`rcu_read_lock` must be held when calling this function.
-Return: ``NULL`` if not found.
+
+
+
+.. _`ieee80211_bss_get_ie.return`:
+
+Return
+------
+
+``NULL`` if not found.
+
 
 
 .. _`cfg80211_auth_request`:
@@ -3349,11 +3848,12 @@ Return: ``NULL`` if not found.
 struct cfg80211_auth_request
 ============================
 
-.. c:type:: struct cfg80211_auth_request
+.. c:type:: cfg80211_auth_request
 
     Authentication request data
 
 
+.. _`cfg80211_auth_request.definition`:
 
 Definition
 ----------
@@ -3373,6 +3873,7 @@ Definition
   };
 
 
+.. _`cfg80211_auth_request.members`:
 
 Members
 -------
@@ -3408,6 +3909,9 @@ Members
 
 
 
+
+.. _`cfg80211_auth_request.description`:
+
 Description
 -----------
 
@@ -3416,16 +3920,32 @@ This structure provides information needed to complete IEEE 802.11
 authentication.
 
 
+
 .. _`cfg80211_assoc_req_flags`:
 
 enum cfg80211_assoc_req_flags
 =============================
 
-.. c:type:: enum cfg80211_assoc_req_flags
+.. c:type:: cfg80211_assoc_req_flags
 
     Over-ride default behaviour in association.
 
 
+.. _`cfg80211_assoc_req_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_assoc_req_flags {
+      ASSOC_REQ_DISABLE_HT,
+      ASSOC_REQ_DISABLE_VHT,
+      ASSOC_REQ_USE_RRM
+    };
+
+
+.. _`cfg80211_assoc_req_flags.constants`:
 
 Constants
 ---------
@@ -3445,11 +3965,12 @@ Constants
 struct cfg80211_assoc_request
 =============================
 
-.. c:type:: struct cfg80211_assoc_request
+.. c:type:: cfg80211_assoc_request
 
     (Re)Association request data
 
 
+.. _`cfg80211_assoc_request.definition`:
 
 Definition
 ----------
@@ -3471,6 +3992,7 @@ Definition
   };
 
 
+.. _`cfg80211_assoc_request.members`:
 
 Members
 -------
@@ -3514,6 +4036,9 @@ Members
 
 
 
+
+.. _`cfg80211_assoc_request.description`:
+
 Description
 -----------
 
@@ -3522,16 +4047,18 @@ This structure provides information needed to complete IEEE 802.11
 (re)association.
 
 
+
 .. _`cfg80211_deauth_request`:
 
 struct cfg80211_deauth_request
 ==============================
 
-.. c:type:: struct cfg80211_deauth_request
+.. c:type:: cfg80211_deauth_request
 
     Deauthentication request data
 
 
+.. _`cfg80211_deauth_request.definition`:
 
 Definition
 ----------
@@ -3547,6 +4074,7 @@ Definition
   };
 
 
+.. _`cfg80211_deauth_request.members`:
 
 Members
 -------
@@ -3569,6 +4097,9 @@ Members
 
 
 
+
+.. _`cfg80211_deauth_request.description`:
+
 Description
 -----------
 
@@ -3577,16 +4108,18 @@ This structure provides information needed to complete IEEE 802.11
 deauthentication.
 
 
+
 .. _`cfg80211_disassoc_request`:
 
 struct cfg80211_disassoc_request
 ================================
 
-.. c:type:: struct cfg80211_disassoc_request
+.. c:type:: cfg80211_disassoc_request
 
     Disassociation request data
 
 
+.. _`cfg80211_disassoc_request.definition`:
 
 Definition
 ----------
@@ -3602,6 +4135,7 @@ Definition
   };
 
 
+.. _`cfg80211_disassoc_request.members`:
 
 Members
 -------
@@ -3624,6 +4158,9 @@ Members
 
 
 
+
+.. _`cfg80211_disassoc_request.description`:
+
 Description
 -----------
 
@@ -3632,16 +4169,18 @@ This structure provides information needed to complete IEEE 802.11
 disassocation.
 
 
+
 .. _`cfg80211_ibss_params`:
 
 struct cfg80211_ibss_params
 ===========================
 
-.. c:type:: struct cfg80211_ibss_params
+.. c:type:: cfg80211_ibss_params
 
     IBSS parameters
 
 
+.. _`cfg80211_ibss_params.definition`:
 
 Definition
 ----------
@@ -3667,6 +4206,7 @@ Definition
   };
 
 
+.. _`cfg80211_ibss_params.members`:
 
 Members
 -------
@@ -3711,10 +4251,9 @@ Members
     user space. Otherwise, port is marked authorized by default.
 
 :``userspace_handles_dfs``:
-    whether user space controls DFS operation, i.e.::
-
-            changes the channel when a radar is detected. This is required
-            to operate on DFS channels.
+    whether user space controls DFS operation, i.e.
+    changes the channel when a radar is detected. This is required
+    to operate on DFS channels.
 
 :``mcast_rate[IEEE80211_NUM_BANDS]``:
     per-band multicast rate index + 1 (0: disabled)
@@ -3728,6 +4267,9 @@ Members
 
 
 
+
+.. _`cfg80211_ibss_params.description`:
+
 Description
 -----------
 
@@ -3736,16 +4278,18 @@ This structure defines the IBSS parameters for the :c:func:`join_ibss`
 method.
 
 
+
 .. _`cfg80211_connect_params`:
 
 struct cfg80211_connect_params
 ==============================
 
-.. c:type:: struct cfg80211_connect_params
+.. c:type:: cfg80211_connect_params
 
     Connection parameters
 
 
+.. _`cfg80211_connect_params.definition`:
 
 Definition
 ----------
@@ -3778,6 +4322,7 @@ Definition
   };
 
 
+.. _`cfg80211_connect_params.members`:
 
 Members
 -------
@@ -3859,6 +4404,9 @@ Members
 
 
 
+
+.. _`cfg80211_connect_params.description`:
+
 Description
 -----------
 
@@ -3867,16 +4415,35 @@ This structure provides information needed to complete IEEE 802.11
 authentication and association.
 
 
+
 .. _`wiphy_params_flags`:
 
 enum wiphy_params_flags
 =======================
 
-.. c:type:: enum wiphy_params_flags
+.. c:type:: wiphy_params_flags
 
     set_wiphy_params bitfield values
 
 
+.. _`wiphy_params_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wiphy_params_flags {
+      WIPHY_PARAM_RETRY_SHORT,
+      WIPHY_PARAM_RETRY_LONG,
+      WIPHY_PARAM_FRAG_THRESHOLD,
+      WIPHY_PARAM_RTS_THRESHOLD,
+      WIPHY_PARAM_COVERAGE_CLASS,
+      WIPHY_PARAM_DYN_ACK
+    };
+
+
+.. _`wiphy_params_flags.constants`:
 
 Constants
 ---------
@@ -3905,11 +4472,12 @@ Constants
 struct cfg80211_pmksa
 =====================
 
-.. c:type:: struct cfg80211_pmksa
+.. c:type:: cfg80211_pmksa
 
     PMK Security Association
 
 
+.. _`cfg80211_pmksa.definition`:
 
 Definition
 ----------
@@ -3922,6 +4490,7 @@ Definition
   };
 
 
+.. _`cfg80211_pmksa.members`:
 
 Members
 -------
@@ -3934,6 +4503,9 @@ Members
 
 
 
+
+.. _`cfg80211_pmksa.description`:
+
 Description
 -----------
 
@@ -3942,16 +4514,18 @@ This structure is passed to the set/:c:func:`del_pmksa` method for PMKSA
 caching.
 
 
+
 .. _`cfg80211_pkt_pattern`:
 
 struct cfg80211_pkt_pattern
 ===========================
 
-.. c:type:: struct cfg80211_pkt_pattern
+.. c:type:: cfg80211_pkt_pattern
 
     packet pattern
 
 
+.. _`cfg80211_pkt_pattern.definition`:
 
 Definition
 ----------
@@ -3966,6 +4540,7 @@ Definition
   };
 
 
+.. _`cfg80211_pkt_pattern.members`:
 
 Members
 -------
@@ -3985,11 +4560,15 @@ Members
 
 
 
-Description
------------
 
-Internal note: ``mask`` and ``pattern`` are allocated in one chunk of
+.. _`cfg80211_pkt_pattern.internal-note`:
+
+Internal note
+-------------
+
+``mask`` and ``pattern`` are allocated in one chunk of
 memory, free ``mask`` only!
+
 
 
 .. _`cfg80211_wowlan_tcp`:
@@ -3997,11 +4576,12 @@ memory, free ``mask`` only!
 struct cfg80211_wowlan_tcp
 ==========================
 
-.. c:type:: struct cfg80211_wowlan_tcp
+.. c:type:: cfg80211_wowlan_tcp
 
     TCP connection parameters
 
 
+.. _`cfg80211_wowlan_tcp.definition`:
 
 Definition
 ----------
@@ -4027,6 +4607,7 @@ Definition
   };
 
 
+.. _`cfg80211_wowlan_tcp.members`:
 
 Members
 -------
@@ -4078,16 +4659,18 @@ Members
 
 
 
+
 .. _`cfg80211_wowlan`:
 
 struct cfg80211_wowlan
 ======================
 
-.. c:type:: struct cfg80211_wowlan
+.. c:type:: cfg80211_wowlan
 
     Wake on Wireless-LAN support info
 
 
+.. _`cfg80211_wowlan.definition`:
 
 Definition
 ----------
@@ -4109,6 +4692,7 @@ Definition
   };
 
 
+.. _`cfg80211_wowlan.members`:
 
 Members
 -------
@@ -4139,9 +4723,8 @@ Members
     wake up on receiving packet matching a pattern
 
 :``tcp``:
-    TCP connection establishment/wakeup parameters, see nl80211.h.::
-
-            NULL if not configured.
+    TCP connection establishment/wakeup parameters, see nl80211.h.
+    NULL if not configured.
 
 :``n_patterns``:
     number of patterns
@@ -4151,6 +4734,9 @@ Members
 
 
 
+
+.. _`cfg80211_wowlan.description`:
+
 Description
 -----------
 
@@ -4158,16 +4744,18 @@ Description
 This structure defines the enabled WoWLAN triggers for the device.
 
 
+
 .. _`cfg80211_coalesce_rules`:
 
 struct cfg80211_coalesce_rules
 ==============================
 
-.. c:type:: struct cfg80211_coalesce_rules
+.. c:type:: cfg80211_coalesce_rules
 
     Coalesce rule parameters
 
 
+.. _`cfg80211_coalesce_rules.definition`:
 
 Definition
 ----------
@@ -4182,6 +4770,7 @@ Definition
   };
 
 
+.. _`cfg80211_coalesce_rules.members`:
 
 Members
 -------
@@ -4190,9 +4779,8 @@ Members
     maximum coalescing delay in msecs.
 
 :``condition``:
-    condition for packet coalescence.::
-
-            see :c:type:`enum nl80211_coalesce_condition <nl80211_coalesce_condition>`.
+    condition for packet coalescence.
+    see :c:type:`enum nl80211_coalesce_condition <nl80211_coalesce_condition>`.
 
 :``patterns``:
     array of packet patterns
@@ -4202,6 +4790,9 @@ Members
 
 
 
+
+.. _`cfg80211_coalesce_rules.description`:
+
 Description
 -----------
 
@@ -4209,16 +4800,18 @@ Description
 This structure defines coalesce rule for the device.
 
 
+
 .. _`cfg80211_coalesce`:
 
 struct cfg80211_coalesce
 ========================
 
-.. c:type:: struct cfg80211_coalesce
+.. c:type:: cfg80211_coalesce
 
     Packet coalescing settings
 
 
+.. _`cfg80211_coalesce.definition`:
 
 Definition
 ----------
@@ -4231,6 +4824,7 @@ Definition
   };
 
 
+.. _`cfg80211_coalesce.members`:
 
 Members
 -------
@@ -4243,6 +4837,9 @@ Members
 
 
 
+
+.. _`cfg80211_coalesce.description`:
+
 Description
 -----------
 
@@ -4250,16 +4847,18 @@ Description
 This structure defines coalescing settings.
 
 
+
 .. _`cfg80211_wowlan_nd_match`:
 
 struct cfg80211_wowlan_nd_match
 ===============================
 
-.. c:type:: struct cfg80211_wowlan_nd_match
+.. c:type:: cfg80211_wowlan_nd_match
 
     information about the match
 
 
+.. _`cfg80211_wowlan_nd_match.definition`:
 
 Definition
 ----------
@@ -4273,6 +4872,7 @@ Definition
   };
 
 
+.. _`cfg80211_wowlan_nd_match.members`:
 
 Members
 -------
@@ -4290,16 +4890,18 @@ Members
 
 
 
+
 .. _`cfg80211_wowlan_nd_info`:
 
 struct cfg80211_wowlan_nd_info
 ==============================
 
-.. c:type:: struct cfg80211_wowlan_nd_info
+.. c:type:: cfg80211_wowlan_nd_info
 
     net detect wake up information
 
 
+.. _`cfg80211_wowlan_nd_info.definition`:
 
 Definition
 ----------
@@ -4312,6 +4914,7 @@ Definition
   };
 
 
+.. _`cfg80211_wowlan_nd_info.members`:
 
 Members
 -------
@@ -4327,16 +4930,18 @@ Members
 
 
 
+
 .. _`cfg80211_wowlan_wakeup`:
 
 struct cfg80211_wowlan_wakeup
 =============================
 
-.. c:type:: struct cfg80211_wowlan_wakeup
+.. c:type:: cfg80211_wowlan_wakeup
 
     wakeup report
 
 
+.. _`cfg80211_wowlan_wakeup.definition`:
 
 Definition
 ----------
@@ -4362,6 +4967,7 @@ Definition
   };
 
 
+.. _`cfg80211_wowlan_wakeup.members`:
 
 Members
 -------
@@ -4416,16 +5022,18 @@ Members
 
 
 
+
 .. _`cfg80211_gtk_rekey_data`:
 
 struct cfg80211_gtk_rekey_data
 ==============================
 
-.. c:type:: struct cfg80211_gtk_rekey_data
+.. c:type:: cfg80211_gtk_rekey_data
 
     rekey data
 
 
+.. _`cfg80211_gtk_rekey_data.definition`:
 
 Definition
 ----------
@@ -4439,6 +5047,7 @@ Definition
   };
 
 
+.. _`cfg80211_gtk_rekey_data.members`:
 
 Members
 -------
@@ -4454,16 +5063,18 @@ Members
 
 
 
+
 .. _`cfg80211_update_ft_ies_params`:
 
 struct cfg80211_update_ft_ies_params
 ====================================
 
-.. c:type:: struct cfg80211_update_ft_ies_params
+.. c:type:: cfg80211_update_ft_ies_params
 
     FT IE Information
 
 
+.. _`cfg80211_update_ft_ies_params.definition`:
 
 Definition
 ----------
@@ -4477,6 +5088,7 @@ Definition
   };
 
 
+.. _`cfg80211_update_ft_ies_params.members`:
 
 Members
 -------
@@ -4492,6 +5104,9 @@ Members
 
 
 
+
+.. _`cfg80211_update_ft_ies_params.description`:
+
 Description
 -----------
 
@@ -4499,16 +5114,18 @@ Description
 This structure provides information needed to update the fast transition IE
 
 
+
 .. _`cfg80211_mgmt_tx_params`:
 
 struct cfg80211_mgmt_tx_params
 ==============================
 
-.. c:type:: struct cfg80211_mgmt_tx_params
+.. c:type:: cfg80211_mgmt_tx_params
 
     mgmt tx parameters
 
 
+.. _`cfg80211_mgmt_tx_params.definition`:
 
 Definition
 ----------
@@ -4528,6 +5145,7 @@ Definition
   };
 
 
+.. _`cfg80211_mgmt_tx_params.members`:
 
 Members
 -------
@@ -4561,6 +5179,9 @@ Members
 
 
 
+
+.. _`cfg80211_mgmt_tx_params.description`:
+
 Description
 -----------
 
@@ -4568,16 +5189,18 @@ Description
 This structure provides information needed to transmit a mgmt frame
 
 
+
 .. _`cfg80211_dscp_exception`:
 
 struct cfg80211_dscp_exception
 ==============================
 
-.. c:type:: struct cfg80211_dscp_exception
+.. c:type:: cfg80211_dscp_exception
 
     DSCP exception
 
 
+.. _`cfg80211_dscp_exception.definition`:
 
 Definition
 ----------
@@ -4590,6 +5213,7 @@ Definition
   };
 
 
+.. _`cfg80211_dscp_exception.members`:
 
 Members
 -------
@@ -4602,16 +5226,18 @@ Members
 
 
 
+
 .. _`cfg80211_dscp_range`:
 
 struct cfg80211_dscp_range
 ==========================
 
-.. c:type:: struct cfg80211_dscp_range
+.. c:type:: cfg80211_dscp_range
 
     DSCP range definition for user priority
 
 
+.. _`cfg80211_dscp_range.definition`:
 
 Definition
 ----------
@@ -4624,6 +5250,7 @@ Definition
   };
 
 
+.. _`cfg80211_dscp_range.members`:
 
 Members
 -------
@@ -4636,16 +5263,18 @@ Members
 
 
 
+
 .. _`cfg80211_qos_map`:
 
 struct cfg80211_qos_map
 =======================
 
-.. c:type:: struct cfg80211_qos_map
+.. c:type:: cfg80211_qos_map
 
     QoS Map Information
 
 
+.. _`cfg80211_qos_map.definition`:
 
 Definition
 ----------
@@ -4659,6 +5288,7 @@ Definition
   };
 
 
+.. _`cfg80211_qos_map.members`:
 
 Members
 -------
@@ -4675,6 +5305,9 @@ Members
 
 
 
+
+.. _`cfg80211_qos_map.description`:
+
 Description
 -----------
 
@@ -4682,16 +5315,18 @@ Description
 This struct defines the Interworking QoS map setting for DSCP values
 
 
+
 .. _`cfg80211_ops`:
 
 struct cfg80211_ops
 ===================
 
-.. c:type:: struct cfg80211_ops
+.. c:type:: cfg80211_ops
 
     backend description for wireless configuration
 
 
+.. _`cfg80211_ops.definition`:
 
 Definition
 ----------
@@ -4796,6 +5431,7 @@ Definition
   };
 
 
+.. _`cfg80211_ops.members`:
 
 Members
 -------
@@ -4832,12 +5468,11 @@ Members
     when adding a group key.
 
 :``get_key``:
-    get information about the key with the given parameters.::
-
-            ``mac_addr`` will be ``NULL`` when requesting information for a group
-            key. All pointers given to the ``callback`` function need not be valid
-            after it returns. This function should return an error if it is
-            not possible to retrieve the key, -ENOENT if it doesn't exist.
+    get information about the key with the given parameters.
+    ``mac_addr`` will be ``NULL`` when requesting information for a group
+    key. All pointers given to the ``callback`` function need not be valid
+    after it returns. This function should return an error if it is
+    not possible to retrieve the key, -ENOENT if it doesn't exist.
 
 :``del_key``:
     remove a key given the ``mac_addr`` (\ ``NULL`` for a group key)
@@ -4903,10 +5538,9 @@ Members
     Get the current mesh configuration
 
 :``update_mesh_config``:
-    Update mesh parameters on a running mesh.::
-
-            The mask is a bitfield which tells us which parameters to
-            set, and which to leave alone.
+    Update mesh parameters on a running mesh.
+    The mask is a bitfield which tells us which parameters to
+    set, and which to leave alone.
 
 :``join_mesh``:
     join the mesh network with the specified parameters
@@ -4975,9 +5609,8 @@ Members
     (invoked with the wireless_dev mutex held)
 
 :``disconnect``:
-    Disconnect from the BSS/ESS.::
-
-            (invoked with the wireless_dev mutex held)
+    Disconnect from the BSS/ESS.
+    (invoked with the wireless_dev mutex held)
 
 :``join_ibss``:
     Join the specified IBSS (or create if necessary). Once done, call
@@ -4986,9 +5619,8 @@ Members
     (invoked with the wireless_dev mutex held)
 
 :``leave_ibss``:
-    Leave the IBSS.::
-
-            (invoked with the wireless_dev mutex held)
+    Leave the IBSS.
+    (invoked with the wireless_dev mutex held)
 
 :``set_mcast_rate``:
     Set the specified multicast rate (only if vif is in ADHOC or
@@ -5054,10 +5686,9 @@ Members
     notification by calling :c:func:`cfg80211_ready_on_channel`.
 
 :``cancel_remain_on_channel``:
-    Cancel an on-going remain-on-channel operation.::
-
-            This allows the operation to be terminated prior to timeout based on
-            the duration value.
+    Cancel an on-going remain-on-channel operation.
+    This allows the operation to be terminated prior to timeout based on
+    the duration value.
 
 :``mgmt_tx``:
     Transmit a management frame.
@@ -5071,12 +5702,11 @@ Members
     allows the driver to adjust the dynamic ps timeout value.
 
 :``set_cqm_rssi_config``:
-    Configure connection quality monitor RSSI threshold.::
-
-            After configuration, the driver should (soon) send an event indicating
-            the current level is above/below the configured threshold; this may
-            need some care when the configuration is changed (without first being
-            disabled.)
+    Configure connection quality monitor RSSI threshold.
+    After configuration, the driver should (soon) send an event indicating
+    the current level is above/below the configured threshold; this may
+    need some care when the configuration is changed (without first being
+    disabled.)
 
 :``set_cqm_txe_config``:
     Configure connection quality monitor TX error
@@ -5087,11 +5717,10 @@ Members
     registered. The callback is allowed to sleep.
 
 :``set_antenna``:
-    Set antenna configuration (tx_ant, rx_ant) on the device.::
-
-            Parameters are bitmaps of allowed antennas to use for TX/RX. Drivers may
-            reject TX/RX mask combinations they cannot support by returning -EINVAL
-            (also see nl80211.h ``NL80211_ATTR_WIPHY_ANTENNA_TX``\ ).
+    Set antenna configuration (tx_ant, rx_ant) on the device.
+    Parameters are bitmaps of allowed antennas to use for TX/RX. Drivers may
+    reject TX/RX mask combinations they cannot support by returning -EINVAL
+    (also see nl80211.h ``NL80211_ATTR_WIPHY_ANTENNA_TX``\ ).
 
 :``get_antenna``:
     Get current antenna configuration from device (tx_ant, rx_ant).
@@ -5124,10 +5753,9 @@ Members
     Set the NoAck Map for the TIDs.
 
 :``get_channel``:
-    Get the current operating channel for the virtual interface.::
-
-            For monitor interfaces, it should return ``NULL`` unless there's a single
-            current monitoring channel.
+    Get the current operating channel for the virtual interface.
+    For monitor interfaces, it should return ``NULL`` unless there's a single
+    current monitoring channel.
 
 :``start_p2p_device``:
     Start the given P2P device.
@@ -5136,13 +5764,12 @@ Members
     Stop the given P2P device.
 
 :``set_mac_acl``:
-    Sets MAC address control list in AP and P2P GO mode.::
-
-            Parameters include ACL policy, an array of MAC address of stations
-            and the number of MAC addresses. If there is already a list in driver
-            this new list replaces the existing one. Driver has to clear its ACL
-            when number of MAC addresses entries is passed as 0. Drivers which
-            advertise the support for MAC based ACL have to implement this callback.
+    Sets MAC address control list in AP and P2P GO mode.
+    Parameters include ACL policy, an array of MAC address of stations
+    and the number of MAC addresses. If there is already a list in driver
+    this new list replaces the existing one. Driver has to clear its ACL
+    when number of MAC addresses entries is passed as 0. Drivers which
+    advertise the support for MAC based ACL have to implement this callback.
 
 :``start_radar_detection``:
     Start radar detection in the driver.
@@ -5205,6 +5832,9 @@ Members
 
 
 
+
+.. _`cfg80211_ops.description`:
+
 Description
 -----------
 
@@ -5220,16 +5850,48 @@ wireless extensions but this is subject to reevaluation as soon as this
 code is used more widely and we have a first user without wext.
 
 
+
 .. _`wiphy_flags`:
 
 enum wiphy_flags
 ================
 
-.. c:type:: enum wiphy_flags
+.. c:type:: wiphy_flags
 
     wiphy capability flags
 
 
+.. _`wiphy_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wiphy_flags {
+      WIPHY_FLAG_NETNS_OK,
+      WIPHY_FLAG_PS_ON_BY_DEFAULT,
+      WIPHY_FLAG_4ADDR_AP,
+      WIPHY_FLAG_4ADDR_STATION,
+      WIPHY_FLAG_CONTROL_PORT_PROTOCOL,
+      WIPHY_FLAG_IBSS_RSN,
+      WIPHY_FLAG_MESH_AUTH,
+      WIPHY_FLAG_SUPPORTS_SCHED_SCAN,
+      WIPHY_FLAG_SUPPORTS_FW_ROAM,
+      WIPHY_FLAG_AP_UAPSD,
+      WIPHY_FLAG_SUPPORTS_TDLS,
+      WIPHY_FLAG_TDLS_EXTERNAL_SETUP,
+      WIPHY_FLAG_HAVE_AP_SME,
+      WIPHY_FLAG_REPORTS_OBSS,
+      WIPHY_FLAG_AP_PROBE_RESP_OFFLOAD,
+      WIPHY_FLAG_OFFCHAN_TX,
+      WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL,
+      WIPHY_FLAG_SUPPORTS_5_10_MHZ,
+      WIPHY_FLAG_HAS_CHANNEL_SWITCH
+    };
+
+
+.. _`wiphy_flags.constants`:
 
 Constants
 ---------
@@ -5314,11 +5976,12 @@ Constants
 struct ieee80211_iface_limit
 ============================
 
-.. c:type:: struct ieee80211_iface_limit
+.. c:type:: ieee80211_iface_limit
 
     limit on certain interface types
 
 
+.. _`ieee80211_iface_limit.definition`:
 
 Definition
 ----------
@@ -5331,6 +5994,7 @@ Definition
   };
 
 
+.. _`ieee80211_iface_limit.members`:
 
 Members
 -------
@@ -5343,16 +6007,18 @@ Members
 
 
 
+
 .. _`ieee80211_iface_combination`:
 
 struct ieee80211_iface_combination
 ==================================
 
-.. c:type:: struct ieee80211_iface_combination
+.. c:type:: ieee80211_iface_combination
 
     possible interface combination
 
 
+.. _`ieee80211_iface_combination.definition`:
 
 Definition
 ----------
@@ -5370,6 +6036,7 @@ Definition
   };
 
 
+.. _`ieee80211_iface_combination.members`:
 
 Members
 -------
@@ -5400,57 +6067,69 @@ Members
 
 
 
+
+.. _`ieee80211_iface_combination.description`:
+
 Description
 -----------
 
 With this structure the driver can describe which interface
 combinations it supports concurrently.
 
-Examples:
+
+
+.. _`ieee80211_iface_combination.examples`:
+
+Examples
+--------
+
+.. code-block:: c
+
 
 1. Allow #STA <= 1, #AP <= 1, matching BI, channels = 1, 2 total:
 
  struct ieee80211_iface_limit limits1[] = {
-        { .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
-        { .max = 1, .types = BIT(NL80211_IFTYPE_AP}, },
+	{ .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
+	{ .max = 1, .types = BIT(NL80211_IFTYPE_AP}, },
  };
  struct ieee80211_iface_combination combination1 = {
-        .limits = limits1,
-        .n_limits = ARRAY_SIZE(limits1),
-        .max_interfaces = 2,
-        .beacon_int_infra_match = true,
+	.limits = limits1,
+	.n_limits = ARRAY_SIZE(limits1),
+	.max_interfaces = 2,
+	.beacon_int_infra_match = true,
  };
 
 
 2. Allow #{AP, P2P-GO} <= 8, channels = 1, 8 total:
 
  struct ieee80211_iface_limit limits2[] = {
-        { .max = 8, .types = BIT(NL80211_IFTYPE_AP) |
-                             BIT(NL80211_IFTYPE_P2P_GO), },
+	{ .max = 8, .types = BIT(NL80211_IFTYPE_AP) |
+			     BIT(NL80211_IFTYPE_P2P_GO), },
  };
  struct ieee80211_iface_combination combination2 = {
-        .limits = limits2,
-        .n_limits = ARRAY_SIZE(limits2),
-        .max_interfaces = 8,
-        .num_different_channels = 1,
+	.limits = limits2,
+	.n_limits = ARRAY_SIZE(limits2),
+	.max_interfaces = 8,
+	.num_different_channels = 1,
  };
 
 
 3. Allow #STA <= 1, #{P2P-client,P2P-GO} <= 3 on two channels, 4 total.
 
-This allows for an infrastructure connection and three P2P connections.::
+This allows for an infrastructure connection and three P2P connections.
 
  struct ieee80211_iface_limit limits3[] = {
-        { .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
-        { .max = 3, .types = BIT(NL80211_IFTYPE_P2P_GO) |
-                             BIT(NL80211_IFTYPE_P2P_CLIENT), },
+	{ .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
+	{ .max = 3, .types = BIT(NL80211_IFTYPE_P2P_GO) |
+			     BIT(NL80211_IFTYPE_P2P_CLIENT), },
  };
  struct ieee80211_iface_combination combination3 = {
-        .limits = limits3,
-        .n_limits = ARRAY_SIZE(limits3),
-        .max_interfaces = 4,
-        .num_different_channels = 2,
+	.limits = limits3,
+	.n_limits = ARRAY_SIZE(limits3),
+	.max_interfaces = 4,
+	.num_different_channels = 2,
  };
+
 
 
 .. _`wiphy_wowlan_support_flags`:
@@ -5458,11 +6137,32 @@ This allows for an infrastructure connection and three P2P connections.::
 enum wiphy_wowlan_support_flags
 ===============================
 
-.. c:type:: enum wiphy_wowlan_support_flags
+.. c:type:: wiphy_wowlan_support_flags
 
     WoWLAN support flags
 
 
+.. _`wiphy_wowlan_support_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wiphy_wowlan_support_flags {
+      WIPHY_WOWLAN_ANY,
+      WIPHY_WOWLAN_MAGIC_PKT,
+      WIPHY_WOWLAN_DISCONNECT,
+      WIPHY_WOWLAN_SUPPORTS_GTK_REKEY,
+      WIPHY_WOWLAN_GTK_REKEY_FAILURE,
+      WIPHY_WOWLAN_EAP_IDENTITY_REQ,
+      WIPHY_WOWLAN_4WAY_HANDSHAKE,
+      WIPHY_WOWLAN_RFKILL_RELEASE,
+      WIPHY_WOWLAN_NET_DETECT
+    };
+
+
+.. _`wiphy_wowlan_support_flags.constants`:
 
 Constants
 ---------
@@ -5505,11 +6205,12 @@ Constants
 struct wiphy_wowlan_support
 ===========================
 
-.. c:type:: struct wiphy_wowlan_support
+.. c:type:: wiphy_wowlan_support
 
     WoWLAN support data
 
 
+.. _`wiphy_wowlan_support.definition`:
 
 Definition
 ----------
@@ -5527,6 +6228,7 @@ Definition
   };
 
 
+.. _`wiphy_wowlan_support.members`:
 
 Members
 -------
@@ -5559,16 +6261,18 @@ Members
 
 
 
+
 .. _`wiphy_coalesce_support`:
 
 struct wiphy_coalesce_support
 =============================
 
-.. c:type:: struct wiphy_coalesce_support
+.. c:type:: wiphy_coalesce_support
 
     coalesce support data
 
 
+.. _`wiphy_coalesce_support.definition`:
 
 Definition
 ----------
@@ -5585,6 +6289,7 @@ Definition
   };
 
 
+.. _`wiphy_coalesce_support.members`:
 
 Members
 -------
@@ -5610,16 +6315,32 @@ Members
 
 
 
+
 .. _`wiphy_vendor_command_flags`:
 
 enum wiphy_vendor_command_flags
 ===============================
 
-.. c:type:: enum wiphy_vendor_command_flags
+.. c:type:: wiphy_vendor_command_flags
 
     validation flags for vendor commands
 
 
+.. _`wiphy_vendor_command_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum wiphy_vendor_command_flags {
+      WIPHY_VENDOR_CMD_NEED_WDEV,
+      WIPHY_VENDOR_CMD_NEED_NETDEV,
+      WIPHY_VENDOR_CMD_NEED_RUNNING
+    };
+
+
+.. _`wiphy_vendor_command_flags.constants`:
 
 Constants
 ---------
@@ -5640,11 +6361,12 @@ Constants
 struct wiphy_vendor_command
 ===========================
 
-.. c:type:: struct wiphy_vendor_command
+.. c:type:: wiphy_vendor_command
 
     vendor command definition
 
 
+.. _`wiphy_vendor_command.definition`:
 
 Definition
 ----------
@@ -5659,6 +6381,7 @@ Definition
   };
 
 
+.. _`wiphy_vendor_command.members`:
 
 Members
 -------
@@ -5685,16 +6408,18 @@ Members
 
 
 
+
 .. _`wiphy`:
 
 struct wiphy
 ============
 
-.. c:type:: struct wiphy
+.. c:type:: wiphy
 
     wireless hardware description
 
 
+.. _`wiphy.definition`:
 
 Definition
 ----------
@@ -5773,6 +6498,7 @@ Definition
   };
 
 
+.. _`wiphy.members`:
 
 Members
 -------
@@ -5893,7 +6619,8 @@ Members
 
 :``frag_threshold``:
     Fragmentation threshold (dot11FragmentationThreshold);
-    -1 = fragmentation disabled, only odd values >= 256 used
+
+            -1 = fragmentation disabled, only odd values >= 256 used
 
 :``rts_threshold``:
     RTS threshold (dot11RTSThreshold); -1 = RTS/CTS disabled
@@ -5979,14 +6706,12 @@ Members
     automatically on wiphy renames
 
 :``ht_capa_mod_mask``:
-    Specify what ht_cap values can be over-ridden.::
-
-            If null, then none can be over-ridden.
+    Specify what ht_cap values can be over-ridden.
+    If null, then none can be over-ridden.
 
 :``vht_capa_mod_mask``:
-    Specify what VHT capabilities can be over-ridden.::
-
-            If null, then none can be over-ridden.
+    Specify what VHT capabilities can be over-ridden.
+    If null, then none can be over-ridden.
 
 :``_net``:
     the network namespace this wiphy currently lives in
@@ -6034,6 +6759,7 @@ Members
 
 
 
+
 .. _`wiphy_priv`:
 
 wiphy_priv
@@ -6045,7 +6771,16 @@ wiphy_priv
 
     :param struct wiphy \*wiphy:
         the wiphy whose priv pointer to return
-        Return: The priv of ``wiphy``\ .
+
+
+
+.. _`wiphy_priv.return`:
+
+Return
+------
+
+The priv of ``wiphy``\ .
+
 
 
 .. _`priv_to_wiphy`:
@@ -6059,7 +6794,16 @@ priv_to_wiphy
 
     :param void \*priv:
         a pointer previously returned by wiphy_priv
-        Return: The wiphy of ``priv``\ .
+
+
+
+.. _`priv_to_wiphy.return`:
+
+Return
+------
+
+The wiphy of ``priv``\ .
+
 
 
 .. _`set_wiphy_dev`:
@@ -6078,6 +6822,7 @@ set_wiphy_dev
         The device to parent it to
 
 
+
 .. _`wiphy_dev`:
 
 wiphy_dev
@@ -6089,7 +6834,16 @@ wiphy_dev
 
     :param struct wiphy \*wiphy:
         The wiphy whose device struct to look up
-        Return: The dev of ``wiphy``\ .
+
+
+
+.. _`wiphy_dev.return`:
+
+Return
+------
+
+The dev of ``wiphy``\ .
+
 
 
 .. _`wiphy_name`:
@@ -6103,7 +6857,16 @@ wiphy_name
 
     :param const struct wiphy \*wiphy:
         The wiphy whose name to return
-        Return: The name of ``wiphy``\ .
+
+
+
+.. _`wiphy_name.return`:
+
+Return
+------
+
+The name of ``wiphy``\ .
+
 
 
 .. _`wiphy_new_nm`:
@@ -6122,9 +6885,9 @@ wiphy_new_nm
         The size of the private area to allocate
 
     :param const char \*requested_name:
-        Request a particular name.::
+        Request a particular name.
+        NULL is valid value, and means use the default phy\ ``d`` naming.
 
-                NULL is valid value, and means use the default phy\ ``d`` naming.
 
 
 .. _`wiphy_new_nm.description`:
@@ -6135,8 +6898,16 @@ Description
 Create a new wiphy and associate the given operations with it.
 ``sizeof_priv`` bytes are allocated for private use.
 
-Return: A pointer to the new wiphy. This pointer must be
+
+
+.. _`wiphy_new_nm.return`:
+
+Return
+------
+
+A pointer to the new wiphy. This pointer must be
 assigned to each netdev's ieee80211_ptr for proper operation.
+
 
 
 .. _`wiphy_new`:
@@ -6155,6 +6926,7 @@ wiphy_new
         The size of the private area to allocate
 
 
+
 .. _`wiphy_new.description`:
 
 Description
@@ -6163,8 +6935,16 @@ Description
 Create a new wiphy and associate the given operations with it.
 ``sizeof_priv`` bytes are allocated for private use.
 
-Return: A pointer to the new wiphy. This pointer must be
+
+
+.. _`wiphy_new.return`:
+
+Return
+------
+
+A pointer to the new wiphy. This pointer must be
 assigned to each netdev's ieee80211_ptr for proper operation.
+
 
 
 .. _`wiphy_register`:
@@ -6180,12 +6960,14 @@ wiphy_register
         The wiphy to register.
 
 
-.. _`wiphy_register.description`:
 
-Description
------------
+.. _`wiphy_register.return`:
 
-Return: A non-negative wiphy index or a negative error code.
+Return
+------
+
+A non-negative wiphy index or a negative error code.
+
 
 
 .. _`wiphy_unregister`:
@@ -6201,6 +6983,7 @@ wiphy_unregister
         The wiphy to unregister.
 
 
+
 .. _`wiphy_unregister.description`:
 
 Description
@@ -6209,6 +6992,7 @@ Description
 After this call, no more requests can be made with this priv
 pointer, but the call may sleep to wait for an outstanding
 request that is being handled.
+
 
 
 .. _`wiphy_free`:
@@ -6224,16 +7008,18 @@ wiphy_free
         The wiphy to free
 
 
+
 .. _`wireless_dev`:
 
 struct wireless_dev
 ===================
 
-.. c:type:: struct wireless_dev
+.. c:type:: wireless_dev
 
     wireless device state
 
 
+.. _`wireless_dev.definition`:
 
 Definition
 ----------
@@ -6280,6 +7066,7 @@ Definition
   };
 
 
+.. _`wireless_dev.members`:
 
 Members
 -------
@@ -6397,6 +7184,9 @@ Members
 
 
 
+
+.. _`wireless_dev.description`:
+
 Description
 -----------
 
@@ -6413,6 +7203,7 @@ there's no netdev registration in that case it may not be
 allocated outside of callback operations that return it.
 
 
+
 .. _`wdev_priv`:
 
 wdev_priv
@@ -6424,7 +7215,16 @@ wdev_priv
 
     :param struct wireless_dev \*wdev:
         The wireless device whose wiphy's priv pointer to return
-        Return: The wiphy priv of ``wdev``\ .
+
+
+
+.. _`wdev_priv.return`:
+
+Return
+------
+
+The wiphy priv of ``wdev``\ .
+
 
 
 .. _`utility-functions`:
@@ -6433,6 +7233,7 @@ Utility functions
 =================
 
 cfg80211 offers a number of utility functions that can be useful.
+
 
 
 .. _`ieee80211_channel_to_frequency`:
@@ -6449,7 +7250,16 @@ ieee80211_channel_to_frequency
 
     :param enum ieee80211_band band:
         band, necessary due to channel number overlap
-        Return: The corresponding frequency (in MHz), or 0 if the conversion failed.
+
+
+
+.. _`ieee80211_channel_to_frequency.return`:
+
+Return
+------
+
+The corresponding frequency (in MHz), or 0 if the conversion failed.
+
 
 
 .. _`ieee80211_frequency_to_channel`:
@@ -6463,7 +7273,16 @@ ieee80211_frequency_to_channel
 
     :param int freq:
         center frequency
-        Return: The corresponding channel, or 0 if the conversion failed.
+
+
+
+.. _`ieee80211_frequency_to_channel.return`:
+
+Return
+------
+
+The corresponding channel, or 0 if the conversion failed.
+
 
 
 .. _`ieee80211_get_channel`:
@@ -6480,7 +7299,16 @@ ieee80211_get_channel
 
     :param int freq:
         the center frequency of the channel
-        Return: The channel struct from ``wiphy`` at ``freq``\ .
+
+
+
+.. _`ieee80211_get_channel.return`:
+
+Return
+------
+
+The channel struct from ``wiphy`` at ``freq``\ .
+
 
 
 .. _`ieee80211_get_response_rate`:
@@ -6502,15 +7330,17 @@ ieee80211_get_response_rate
         the bitrate for which to find the basic rate
 
 
-.. _`ieee80211_get_response_rate.description`:
 
-Description
------------
+.. _`ieee80211_get_response_rate.return`:
 
-Return: The basic rate corresponding to a given bitrate, that
+Return
+------
+
+The basic rate corresponding to a given bitrate, that
 is the next lower bitrate contained in the basic rate map,
 which is, for this function, given as a bitmap of indices of
 rates in the band's bitrate table.
+
 
 
 .. _`ieee80211_mandatory_rates`:
@@ -6529,6 +7359,7 @@ ieee80211_mandatory_rates
         width of the control channel
 
 
+
 .. _`ieee80211_mandatory_rates.description`:
 
 Description
@@ -6538,16 +7369,18 @@ This function returns a bitmap of the mandatory rates for the given
 band, bits are set according to the rate position in the bitrates array.
 
 
+
 .. _`ieee80211_radiotap_iterator`:
 
 struct ieee80211_radiotap_iterator
 ==================================
 
-.. c:type:: struct ieee80211_radiotap_iterator
+.. c:type:: ieee80211_radiotap_iterator
 
     tracks walk thru present radiotap args
 
 
+.. _`ieee80211_radiotap_iterator.definition`:
 
 Definition
 ----------
@@ -6572,6 +7405,7 @@ Definition
   };
 
 
+.. _`ieee80211_radiotap_iterator.members`:
 
 Members
 -------
@@ -6627,11 +7461,15 @@ Members
 
 
 
+
+.. _`ieee80211_radiotap_iterator.description`:
+
 Description
 -----------
 
 Describes the radiotap parser state. Fields prefixed with an underscore
 must not be used by users of the parser, only by the parser internally.
+
 
 
 .. _`ieee80211_get_hdrlen_from_skb`:
@@ -6647,6 +7485,7 @@ ieee80211_get_hdrlen_from_skb
         the frame
 
 
+
 .. _`ieee80211_get_hdrlen_from_skb.description`:
 
 Description
@@ -6655,9 +7494,17 @@ Description
 Given an skb with a raw 802.11 header at the data pointer this function
 returns the 802.11 header length.
 
-Return: The 802.11 header length in bytes (not including encryption
+
+
+.. _`ieee80211_get_hdrlen_from_skb.return`:
+
+Return
+------
+
+The 802.11 header length in bytes (not including encryption
 headers). Or 0 if the data in the sk_buff is too short to contain a valid
 802.11 header.
+
 
 
 .. _`ieee80211_hdrlen`:
@@ -6671,7 +7518,16 @@ ieee80211_hdrlen
 
     :param __le16 fc:
         frame control field in little-endian format
-        Return: The header length in bytes.
+
+
+
+.. _`ieee80211_hdrlen.return`:
+
+Return
+------
+
+The header length in bytes.
+
 
 
 .. _`ieee80211_get_mesh_hdrlen`:
@@ -6687,8 +7543,16 @@ ieee80211_get_mesh_hdrlen
         the mesh extension header, only the flags field
         (first byte) will be accessed
 
-        Return: The length of the extension header, which is always at
-        least 6 bytes and at most 18 if address 5 and 6 are present.
+
+
+.. _`ieee80211_get_mesh_hdrlen.return`:
+
+Return
+------
+
+The length of the extension header, which is always at
+least 6 bytes and at most 18 if address 5 and 6 are present.
+
 
 
 .. _`data-path-helpers`:
@@ -6699,6 +7563,7 @@ Data path helpers
 In addition to generic utilities, cfg80211 also offers
 functions that help implement the data path for devices
 that do not do the 802.11/802.3 conversion on the device.
+
 
 
 .. _`ieee80211_data_to_8023`:
@@ -6718,7 +7583,16 @@ ieee80211_data_to_8023
 
     :param enum nl80211_iftype iftype:
         the virtual interface type
-        Return: 0 on success. Non-zero on error.
+
+
+
+.. _`ieee80211_data_to_8023.return`:
+
+Return
+------
+
+0 on success. Non-zero on error.
+
 
 
 .. _`ieee80211_data_from_8023`:
@@ -6744,7 +7618,16 @@ ieee80211_data_from_8023
 
     :param bool qos:
         build 802.11 QoS data frame
-        Return: 0 on success, or a negative error code.
+
+
+
+.. _`ieee80211_data_from_8023.return`:
+
+Return
+------
+
+0 on success, or a negative error code.
+
 
 
 .. _`ieee80211_amsdu_to_8023s`:
@@ -6776,6 +7659,7 @@ ieee80211_amsdu_to_8023s
         Set it true if SKB is with IEEE 802.11 header.
 
 
+
 .. _`ieee80211_amsdu_to_8023s.description`:
 
 Description
@@ -6785,6 +7669,7 @@ Description
 Decode an IEEE 802.11n A-MSDU frame and convert it to a list of
 802.3 frames. The ``list`` will be empty if the decode fails. The
 ``skb`` is consumed after the function returns.
+
 
 
 .. _`cfg80211_classify8021d`:
@@ -6801,7 +7686,16 @@ cfg80211_classify8021d
 
     :param struct cfg80211_qos_map \*qos_map:
         Interworking QoS mapping or ``NULL`` if not in use
-        Return: The 802.1p/1d tag.
+
+
+
+.. _`cfg80211_classify8021d.return`:
+
+Return
+------
+
+The 802.1p/1d tag.
+
 
 
 .. _`cfg80211_find_ie`:
@@ -6823,18 +7717,27 @@ cfg80211_find_ie
         length of data
 
 
-.. _`cfg80211_find_ie.description`:
 
-Description
------------
+.. _`cfg80211_find_ie.return`:
 
-Return: ``NULL`` if the element ID could not be found or if
+Return
+------
+
+``NULL`` if the element ID could not be found or if
 the element is invalid (claims to be longer than the given
 data), or a pointer to the first byte of the requested
 element, that is the byte containing the element ID.
 
-Note: There are no checks on the element length other than
+
+
+.. _`cfg80211_find_ie.note`:
+
+Note
+----
+
+There are no checks on the element length other than
 having to fit into the given data.
+
 
 
 .. _`cfg80211_find_vendor_ie`:
@@ -6859,18 +7762,27 @@ cfg80211_find_vendor_ie
         length of data
 
 
-.. _`cfg80211_find_vendor_ie.description`:
 
-Description
------------
+.. _`cfg80211_find_vendor_ie.return`:
 
-Return: ``NULL`` if the vendor specific element ID could not be found or if the
+Return
+------
+
+``NULL`` if the vendor specific element ID could not be found or if the
 element is invalid (claims to be longer than the given data), or a pointer to
 the first byte of the requested element, that is the byte containing the
 element ID.
 
-Note: There are no checks on the element length other than having to fit into
+
+
+.. _`cfg80211_find_vendor_ie.note`:
+
+Note
+----
+
+There are no checks on the element length other than having to fit into
 the given data.
+
 
 
 .. _`regulatory-enforcement-infrastructure`:
@@ -6879,6 +7791,7 @@ Regulatory enforcement infrastructure
 =====================================
 
 TODO
+
 
 
 .. _`regulatory_hint`:
@@ -6901,6 +7814,7 @@ regulatory_hint
         alpha2.
 
 
+
 .. _`regulatory_hint.description`:
 
 Description
@@ -6920,7 +7834,15 @@ for mac80211 drivers you must first use :c:func:`ieee80211_register_hw`.
 Drivers should check the return value, its possible you can get
 an -ENOMEM.
 
-Return: 0 on success. -ENOMEM.
+
+
+.. _`regulatory_hint.return`:
+
+Return
+------
+
+0 on success. -ENOMEM.
+
 
 
 .. _`regulatory_set_wiphy_regd`:
@@ -6939,6 +7861,7 @@ regulatory_set_wiphy_regd
         the regulatory domain informatoin to use for this wiphy
 
 
+
 .. _`regulatory_set_wiphy_regd.description`:
 
 Description
@@ -6948,7 +7871,15 @@ Set the regulatory domain information for self-managed wiphys, only they
 may use this function. See ``REGULATORY_WIPHY_SELF_MANAGED`` for more
 information.
 
-Return: 0 on success. -EINVAL, -EPERM
+
+
+.. _`regulatory_set_wiphy_regd.return`:
+
+Return
+------
+
+0 on success. -EINVAL, -EPERM
+
 
 
 .. _`regulatory_set_wiphy_regd_sync_rtnl`:
@@ -6967,6 +7898,7 @@ regulatory_set_wiphy_regd_sync_rtnl
         the regulatory domain information to use for this wiphy
 
 
+
 .. _`regulatory_set_wiphy_regd_sync_rtnl.description`:
 
 Description
@@ -6976,7 +7908,15 @@ This functions requires the RTNL to be held and applies the new regdomain
 synchronously to this wiphy. For more details see
 :c:func:`regulatory_set_wiphy_regd`.
 
-Return: 0 on success. -EINVAL, -EPERM
+
+
+.. _`regulatory_set_wiphy_regd_sync_rtnl.return`:
+
+Return
+------
+
+0 on success. -EINVAL, -EPERM
+
 
 
 .. _`wiphy_apply_custom_regulatory`:
@@ -6995,6 +7935,7 @@ wiphy_apply_custom_regulatory
         the custom regulatory domain to use for this wiphy
 
 
+
 .. _`wiphy_apply_custom_regulatory.description`:
 
 Description
@@ -7009,6 +7950,7 @@ channel on the regulatory domain the channel will be disabled.
 Drivers using this for a wiphy should also set the wiphy flag
 REGULATORY_CUSTOM_REG or cfg80211 will set it for the wiphy
 that called this helper.
+
 
 
 .. _`freq_reg_info`:
@@ -7027,6 +7969,7 @@ freq_reg_info
         Frequency in KHz for which we want regulatory information for
 
 
+
 .. _`freq_reg_info.description`:
 
 Description
@@ -7037,13 +7980,21 @@ a given wireless device. If the device has a specific regulatory domain
 it wants to follow we respect that unless a country IE has been received
 and processed already.
 
-Return: A valid pointer, or, when an error occurs, for example if no rule
+
+
+.. _`freq_reg_info.return`:
+
+Return
+------
+
+A valid pointer, or, when an error occurs, for example if no rule
 can be found, the return value is encoded using :c:func:`ERR_PTR`. Use :c:func:`IS_ERR` to
 check and :c:func:`PTR_ERR` to obtain the numeric return value. The numeric return
 value will be -ERANGE if we determine the given center_freq does not even
 have a regulatory rule for a frequency range in the center_freq's band.
 See :c:func:`freq_in_rule_band` for our current definition of a band -- this is
 purely subjective and right now it's 802.11 specific.
+
 
 
 .. _`reg_initiator_name`:
@@ -7059,6 +8010,7 @@ reg_initiator_name
         the regulatory request initiator
 
 
+
 .. _`reg_initiator_name.description`:
 
 Description
@@ -7066,6 +8018,7 @@ Description
 
 You can use this to map the regulatory request initiator enum to a
 proper string representation.
+
 
 
 .. _`cfg80211_scan_done`:
@@ -7085,6 +8038,7 @@ cfg80211_scan_done
         userspace will be notified of that
 
 
+
 .. _`cfg80211_sched_scan_results`:
 
 cfg80211_sched_scan_results
@@ -7096,6 +8050,7 @@ cfg80211_sched_scan_results
 
     :param struct wiphy \*wiphy:
         the wiphy which got scheduled scan results
+
 
 
 .. _`cfg80211_sched_scan_stopped`:
@@ -7111,6 +8066,7 @@ cfg80211_sched_scan_stopped
         the wiphy on which the scheduled scan stopped
 
 
+
 .. _`cfg80211_sched_scan_stopped.description`:
 
 Description
@@ -7119,6 +8075,7 @@ Description
 The driver can call this function to inform cfg80211 that the
 scheduled scan had to be stopped, for whatever reason.  The driver
 is then called back via the sched_scan_stop operation when done.
+
 
 
 .. _`cfg80211_sched_scan_stopped_rtnl`:
@@ -7134,6 +8091,7 @@ cfg80211_sched_scan_stopped_rtnl
         the wiphy on which the scheduled scan stopped
 
 
+
 .. _`cfg80211_sched_scan_stopped_rtnl.description`:
 
 Description
@@ -7143,6 +8101,7 @@ The driver can call this function to inform cfg80211 that the
 scheduled scan had to be stopped, for whatever reason.  The driver
 is then called back via the sched_scan_stop operation when done.
 This function should be called with rtnl locked.
+
 
 
 .. _`cfg80211_inform_bss_frame_data`:
@@ -7170,6 +8129,7 @@ cfg80211_inform_bss_frame_data
         context flags
 
 
+
 .. _`cfg80211_inform_bss_frame_data.description`:
 
 Description
@@ -7178,8 +8138,16 @@ Description
 This informs cfg80211 that BSS information was found and
 the BSS should be updated/added.
 
-Return: A referenced struct, must be released with :c:func:`cfg80211_put_bss`!
+
+
+.. _`cfg80211_inform_bss_frame_data.return`:
+
+Return
+------
+
+A referenced struct, must be released with :c:func:`cfg80211_put_bss`!
 Or ``NULL`` on error.
+
 
 
 .. _`cfg80211_bss_frame_type`:
@@ -7187,11 +8155,26 @@ Or ``NULL`` on error.
 enum cfg80211_bss_frame_type
 ============================
 
-.. c:type:: enum cfg80211_bss_frame_type
+.. c:type:: cfg80211_bss_frame_type
 
     frame type that the BSS data came from
 
 
+.. _`cfg80211_bss_frame_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_bss_frame_type {
+      CFG80211_BSS_FTYPE_UNKNOWN,
+      CFG80211_BSS_FTYPE_BEACON,
+      CFG80211_BSS_FTYPE_PRESP
+    };
+
+
+.. _`cfg80211_bss_frame_type.constants`:
 
 Constants
 ---------
@@ -7247,6 +8230,7 @@ cfg80211_inform_bss_data
         context flags
 
 
+
 .. _`cfg80211_inform_bss_data.description`:
 
 Description
@@ -7255,8 +8239,16 @@ Description
 This informs cfg80211 that BSS information was found and
 the BSS should be updated/added.
 
-Return: A referenced struct, must be released with :c:func:`cfg80211_put_bss`!
+
+
+.. _`cfg80211_inform_bss_data.return`:
+
+Return
+------
+
+A referenced struct, must be released with :c:func:`cfg80211_put_bss`!
 Or ``NULL`` on error.
+
 
 
 .. _`cfg80211_ref_bss`:
@@ -7275,12 +8267,14 @@ cfg80211_ref_bss
         the BSS struct to reference
 
 
+
 .. _`cfg80211_ref_bss.description`:
 
 Description
 -----------
 
 Increments the refcount of the given BSS struct.
+
 
 
 .. _`cfg80211_put_bss`:
@@ -7299,12 +8293,14 @@ cfg80211_put_bss
         the BSS struct
 
 
+
 .. _`cfg80211_put_bss.description`:
 
 Description
 -----------
 
 Decrements the refcount of the given BSS struct.
+
 
 
 .. _`cfg80211_unlink_bss`:
@@ -7323,6 +8319,7 @@ cfg80211_unlink_bss
         the bss to remove
 
 
+
 .. _`cfg80211_unlink_bss.description`:
 
 Description
@@ -7332,6 +8329,7 @@ This function removes the given BSS from the internal data structures
 thereby making it no longer show up in scan results etc. Use this
 function when you detect a BSS is gone. Normally BSSes will also time
 out, so it is not necessary to use this function at all.
+
 
 
 .. _`cfg80211_rx_mlme_mgmt`:
@@ -7353,6 +8351,7 @@ cfg80211_rx_mlme_mgmt
         length of the frame data
 
 
+
 .. _`cfg80211_rx_mlme_mgmt.description`:
 
 Description
@@ -7360,9 +8359,25 @@ Description
 
 This function is called whenever an authentication, disassociation or
 deauthentication frame has been received and processed in station mode.
-After being asked to authenticate via cfg80211_ops:::c:func:`auth` the driver must
+
+
+
+.. _`cfg80211_rx_mlme_mgmt.after-being-asked-to-authenticate-via-cfg80211_ops`:
+
+After being asked to authenticate via cfg80211_ops
+--------------------------------------------------
+
+::c:func:`auth` the driver must
 call either this function or :c:func:`cfg80211_auth_timeout`.
-After being asked to associate via cfg80211_ops:::c:func:`assoc` the driver must
+
+
+
+.. _`cfg80211_rx_mlme_mgmt.after-being-asked-to-associate-via-cfg80211_ops`:
+
+After being asked to associate via cfg80211_ops
+-----------------------------------------------
+
+::c:func:`assoc` the driver must
 call either this function or :c:func:`cfg80211_auth_timeout`.
 While connected, the driver must calls this for received and processed
 disassociation and deauthentication frames. If the frame couldn't be used
@@ -7370,6 +8385,7 @@ because it was unprotected, the driver must call the function
 :c:func:`cfg80211_rx_unprot_mlme_mgmt` instead.
 
 This function may sleep. The caller must hold the corresponding wdev's mutex.
+
 
 
 .. _`cfg80211_auth_timeout`:
@@ -7388,6 +8404,7 @@ cfg80211_auth_timeout
         The MAC address of the device with which the authentication timed out
 
 
+
 .. _`cfg80211_auth_timeout.description`:
 
 Description
@@ -7395,6 +8412,7 @@ Description
 
 This function may sleep. The caller must hold the corresponding wdev's
 mutex.
+
 
 
 .. _`cfg80211_rx_assoc_resp`:
@@ -7423,15 +8441,17 @@ cfg80211_rx_assoc_resp
         bitmap of ACs configured to uapsd. -1 if n/a.
 
 
-.. _`cfg80211_rx_assoc_resp.description`:
 
-Description
------------
+.. _`cfg80211_rx_assoc_resp.after-being-asked-to-associate-via-cfg80211_ops`:
 
-After being asked to associate via cfg80211_ops:::c:func:`assoc` the driver must
+After being asked to associate via cfg80211_ops
+-----------------------------------------------
+
+::c:func:`assoc` the driver must
 call either this function or :c:func:`cfg80211_auth_timeout`.
 
 This function may sleep. The caller must hold the corresponding wdev's mutex.
+
 
 
 .. _`cfg80211_assoc_timeout`:
@@ -7450,12 +8470,14 @@ cfg80211_assoc_timeout
         The BSS entry with which association timed out.
 
 
+
 .. _`cfg80211_assoc_timeout.description`:
 
 Description
 -----------
 
 This function may sleep. The caller must hold the corresponding wdev's mutex.
+
 
 
 .. _`cfg80211_tx_mlme_mgmt`:
@@ -7477,6 +8499,7 @@ cfg80211_tx_mlme_mgmt
         length of the frame data
 
 
+
 .. _`cfg80211_tx_mlme_mgmt.description`:
 
 Description
@@ -7486,6 +8509,7 @@ This function is called whenever deauthentication has been processed in
 station mode. This includes both received deauthentication frames and
 locally generated ones. This function may sleep. The caller must hold the
 corresponding wdev's mutex.
+
 
 
 .. _`cfg80211_rx_unprot_mlme_mgmt`:
@@ -7507,6 +8531,7 @@ cfg80211_rx_unprot_mlme_mgmt
         length of the frame data
 
 
+
 .. _`cfg80211_rx_unprot_mlme_mgmt.description`:
 
 Description
@@ -7515,6 +8540,7 @@ Description
 This function is called whenever a received deauthentication or dissassoc
 frame has been dropped in station mode because of MFP being used but the
 frame was not protected. This function may sleep.
+
 
 
 .. _`cfg80211_michael_mic_failure`:
@@ -7545,6 +8571,7 @@ cfg80211_michael_mic_failure
         allocation flags
 
 
+
 .. _`cfg80211_michael_mic_failure.description`:
 
 Description
@@ -7553,6 +8580,7 @@ Description
 This function is called whenever the local MAC detects a MIC failure in a
 received frame. This matches with MLME-MICHAELMICFAILURE.:c:func:`indication`
 primitive.
+
 
 
 .. _`cfg80211_ibss_joined`:
@@ -7577,6 +8605,7 @@ cfg80211_ibss_joined
         allocation flags
 
 
+
 .. _`cfg80211_ibss_joined.description`:
 
 Description
@@ -7588,6 +8617,7 @@ either a beacon has to have been received from the IBSS, or one of
 the cfg80211_inform_bss{,_frame} functions must have been called
 with the locally generated beacon -- this guarantees that there is
 always a scan result for this IBSS. cfg80211 will handle the rest.
+
 
 
 .. _`cfg80211_notify_new_peer_candidate`:
@@ -7615,6 +8645,7 @@ cfg80211_notify_new_peer_candidate
         allocation flags
 
 
+
 .. _`cfg80211_notify_new_peer_candidate.description`:
 
 Description
@@ -7623,6 +8654,7 @@ Description
 This function notifies cfg80211 that the mesh peer candidate has been
 detected, most likely via a beacon or, less likely, via a probe response.
 cfg80211 then sends a notification to userspace.
+
 
 
 .. _`rfkill-integration`:
@@ -7641,6 +8673,7 @@ also need to interact with the rfkill subsystem, via cfg80211.
 They can do this with a few helper functions documented here.
 
 
+
 .. _`wiphy_rfkill_set_hw_state`:
 
 wiphy_rfkill_set_hw_state
@@ -7657,6 +8690,7 @@ wiphy_rfkill_set_hw_state
         block status
 
 
+
 .. _`wiphy_rfkill_start_polling`:
 
 wiphy_rfkill_start_polling
@@ -7670,6 +8704,7 @@ wiphy_rfkill_start_polling
         the wiphy
 
 
+
 .. _`wiphy_rfkill_stop_polling`:
 
 wiphy_rfkill_stop_polling
@@ -7681,6 +8716,7 @@ wiphy_rfkill_stop_polling
 
     :param struct wiphy \*wiphy:
         the wiphy
+
 
 
 .. _`vendor-commands`:
@@ -7705,6 +8741,7 @@ it must never be required to use vendor commands to implement any
 managers etc. need.
 
 
+
 .. _`cfg80211_vendor_cmd_alloc_reply_skb`:
 
 cfg80211_vendor_cmd_alloc_reply_skb
@@ -7720,6 +8757,7 @@ cfg80211_vendor_cmd_alloc_reply_skb
     :param int approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+
 
 
 .. _`cfg80211_vendor_cmd_alloc_reply_skb.description`:
@@ -7742,7 +8780,15 @@ You must not modify the skb in any other way.
 When done, call :c:func:`cfg80211_vendor_cmd_reply` with the skb and return
 its error code as the result of the :c:func:`doit` operation.
 
-Return: An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
+
+.. _`cfg80211_vendor_cmd_alloc_reply_skb.return`:
+
+Return
+------
+
+An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
 
 
 .. _`cfg80211_vendor_cmd_reply`:
@@ -7759,6 +8805,7 @@ cfg80211_vendor_cmd_reply
         :c:func:`cfg80211_vendor_cmd_alloc_reply_skb`
 
 
+
 .. _`cfg80211_vendor_cmd_reply.description`:
 
 Description
@@ -7769,7 +8816,15 @@ before returning from the vendor command :c:func:`doit` you should
 return the error code.  Note that this function consumes the
 skb regardless of the return value.
 
-Return: An error code or 0 on success.
+
+
+.. _`cfg80211_vendor_cmd_reply.return`:
+
+Return
+------
+
+An error code or 0 on success.
+
 
 
 .. _`cfg80211_vendor_event_alloc`:
@@ -7798,6 +8853,7 @@ cfg80211_vendor_event_alloc
         allocation flags
 
 
+
 .. _`cfg80211_vendor_event_alloc.description`:
 
 Description
@@ -7813,7 +8869,15 @@ attribute.
 When done filling the skb, call :c:func:`cfg80211_vendor_event` with the
 skb to send the event.
 
-Return: An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
+
+.. _`cfg80211_vendor_event_alloc.return`:
+
+Return
+------
+
+An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
 
 
 .. _`cfg80211_vendor_event`:
@@ -7832,6 +8896,7 @@ cfg80211_vendor_event
         allocation flags
 
 
+
 .. _`cfg80211_vendor_event.description`:
 
 Description
@@ -7839,6 +8904,7 @@ Description
 
 This function sends the given ``skb``\ , which must have been allocated
 by :c:func:`cfg80211_vendor_event_alloc`, as an event. It always consumes it.
+
 
 
 .. _`test-mode`:
@@ -7852,6 +8918,7 @@ factory programming.
 
 This chapter describes how drivers interact with it, for more
 information see the nl80211 book's chapter on it.
+
 
 
 .. _`cfg80211_testmode_alloc_reply_skb`:
@@ -7869,6 +8936,7 @@ cfg80211_testmode_alloc_reply_skb
     :param int approxlen:
         an upper bound of the length of the data that will
         be put into the skb
+
 
 
 .. _`cfg80211_testmode_alloc_reply_skb.description`:
@@ -7891,7 +8959,15 @@ must not modify the skb in any other way.
 When done, call :c:func:`cfg80211_testmode_reply` with the skb and return
 its error code as the result of the ``testmode_cmd`` operation.
 
-Return: An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
+
+.. _`cfg80211_testmode_alloc_reply_skb.return`:
+
+Return
+------
+
+An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
 
 
 .. _`cfg80211_testmode_reply`:
@@ -7908,6 +8984,7 @@ cfg80211_testmode_reply
         :c:func:`cfg80211_testmode_alloc_reply_skb`
 
 
+
 .. _`cfg80211_testmode_reply.description`:
 
 Description
@@ -7918,7 +8995,15 @@ before returning from the ``testmode_cmd`` you should return
 the error code.  Note that this function consumes the skb
 regardless of the return value.
 
-Return: An error code or 0 on success.
+
+
+.. _`cfg80211_testmode_reply.return`:
+
+Return
+------
+
+An error code or 0 on success.
+
 
 
 .. _`cfg80211_testmode_alloc_event_skb`:
@@ -7941,6 +9026,7 @@ cfg80211_testmode_alloc_event_skb
         allocation flags
 
 
+
 .. _`cfg80211_testmode_alloc_event_skb.description`:
 
 Description
@@ -7958,7 +9044,15 @@ in any other way.
 When done filling the skb, call :c:func:`cfg80211_testmode_event` with the
 skb to send the event.
 
-Return: An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
+
+.. _`cfg80211_testmode_alloc_event_skb.return`:
+
+Return
+------
+
+An allocated and pre-filled skb. ``NULL`` if any errors happen.
+
 
 
 .. _`cfg80211_testmode_event`:
@@ -7978,6 +9072,7 @@ cfg80211_testmode_event
         allocation flags
 
 
+
 .. _`cfg80211_testmode_event.description`:
 
 Description
@@ -7986,6 +9081,7 @@ Description
 This function sends the given ``skb``\ , which must have been allocated
 by :c:func:`cfg80211_testmode_alloc_event_skb`, as an event. It always
 consumes it.
+
 
 
 .. _`cfg80211_connect_result`:
@@ -8024,6 +9120,7 @@ cfg80211_connect_result
         allocation flags
 
 
+
 .. _`cfg80211_connect_result.description`:
 
 Description
@@ -8031,6 +9128,7 @@ Description
 
 It should be called by the underlying driver whenever :c:func:`connect` has
 succeeded.
+
 
 
 .. _`cfg80211_roamed`:
@@ -8067,6 +9165,7 @@ cfg80211_roamed
         allocation flags
 
 
+
 .. _`cfg80211_roamed.description`:
 
 Description
@@ -8074,6 +9173,7 @@ Description
 
 It should be called by the underlying driver whenever it roamed
 from one AP to another while connected.
+
 
 
 .. _`cfg80211_roamed_bss`:
@@ -8107,6 +9207,7 @@ cfg80211_roamed_bss
         allocation flags
 
 
+
 .. _`cfg80211_roamed_bss.description`:
 
 Description
@@ -8122,6 +9223,7 @@ it is accessed in :c:func:`__cfg80211_roamed` due to delay in scheduling
 rdev->event_work. In case of any failures, the reference is released
 either in :c:func:`cfg80211_roamed_bss` or in :c:func:`__cfg80211_romed`, Otherwise,
 it will be released while diconneting from the current bss.
+
 
 
 .. _`cfg80211_disconnected`:
@@ -8152,6 +9254,7 @@ cfg80211_disconnected
         allocation flags
 
 
+
 .. _`cfg80211_disconnected.description`:
 
 Description
@@ -8159,6 +9262,7 @@ Description
 
 After it calls this function, the driver should enter an idle state
 and not try to connect to any AP any more.
+
 
 
 .. _`cfg80211_ready_on_channel`:
@@ -8187,6 +9291,7 @@ cfg80211_ready_on_channel
         allocation flags
 
 
+
 .. _`cfg80211_remain_on_channel_expired`:
 
 cfg80211_remain_on_channel_expired
@@ -8207,6 +9312,7 @@ cfg80211_remain_on_channel_expired
 
     :param gfp_t gfp:
         allocation flags
+
 
 
 .. _`cfg80211_new_sta`:
@@ -8231,6 +9337,7 @@ cfg80211_new_sta
         allocation flags
 
 
+
 .. _`cfg80211_del_sta_sinfo`:
 
 cfg80211_del_sta_sinfo
@@ -8253,6 +9360,7 @@ cfg80211_del_sta_sinfo
         allocation flags
 
 
+
 .. _`cfg80211_del_sta`:
 
 cfg80211_del_sta
@@ -8270,6 +9378,7 @@ cfg80211_del_sta
 
     :param gfp_t gfp:
         allocation flags
+
 
 
 .. _`cfg80211_conn_failed`:
@@ -8294,6 +9403,7 @@ cfg80211_conn_failed
         allocation flags
 
 
+
 .. _`cfg80211_conn_failed.description`:
 
 Description
@@ -8305,6 +9415,7 @@ for some reasons, this function is called.
 
 The reason for connection failure can be any of the value from
 nl80211_connect_failed_reason enum
+
 
 
 .. _`cfg80211_rx_mgmt`:
@@ -8335,6 +9446,7 @@ cfg80211_rx_mgmt
         flags, as defined in enum nl80211_rxmgmt_flags
 
 
+
 .. _`cfg80211_rx_mgmt.description`:
 
 Description
@@ -8343,10 +9455,18 @@ Description
 This function is called whenever an Action frame is received for a station
 mode interface, but is not processed in kernel.
 
-Return: ``true`` if a user space application has registered for this frame.
+
+
+.. _`cfg80211_rx_mgmt.return`:
+
+Return
+------
+
+``true`` if a user space application has registered for this frame.
 For action frames, that makes it responsible for rejecting unrecognized
 action frames; ``false`` otherwise, in which case for action frames the
 driver is responsible for rejecting the frame.
+
 
 
 .. _`cfg80211_mgmt_tx_status`:
@@ -8377,14 +9497,24 @@ cfg80211_mgmt_tx_status
         context flags
 
 
+
 .. _`cfg80211_mgmt_tx_status.description`:
 
 Description
 -----------
 
 This function is called whenever a management frame was requested to be
-transmitted with cfg80211_ops:::c:func:`mgmt_tx` to report the TX status of the
+
+
+
+.. _`cfg80211_mgmt_tx_status.transmitted-with-cfg80211_ops`:
+
+transmitted with cfg80211_ops
+-----------------------------
+
+::c:func:`mgmt_tx` to report the TX status of the
 transmission attempt.
+
 
 
 .. _`cfg80211_cqm_rssi_notify`:
@@ -8406,6 +9536,7 @@ cfg80211_cqm_rssi_notify
         context flags
 
 
+
 .. _`cfg80211_cqm_rssi_notify.description`:
 
 Description
@@ -8413,6 +9544,7 @@ Description
 
 This function is called when a configured connection quality monitoring
 rssi threshold reached event occurs.
+
 
 
 .. _`cfg80211_cqm_pktloss_notify`:
@@ -8437,6 +9569,7 @@ cfg80211_cqm_pktloss_notify
 
     :param gfp_t gfp:
         context flags
+
 
 
 .. _`cfg80211_cqm_txe_notify`:
@@ -8467,6 +9600,7 @@ cfg80211_cqm_txe_notify
         context flags
 
 
+
 .. _`cfg80211_cqm_txe_notify.description`:
 
 Description
@@ -8474,6 +9608,7 @@ Description
 
 Notify userspace when configured % TX failures over number of packets in a
 given interval is exceeded.
+
 
 
 .. _`cfg80211_cqm_beacon_loss_notify`:
@@ -8492,12 +9627,14 @@ cfg80211_cqm_beacon_loss_notify
         context flags
 
 
+
 .. _`cfg80211_cqm_beacon_loss_notify.description`:
 
 Description
 -----------
 
 Notify userspace about beacon loss from the connected AP.
+
 
 
 .. _`cfg80211_radar_event`:
@@ -8519,12 +9656,14 @@ cfg80211_radar_event
         context flags
 
 
+
 .. _`cfg80211_radar_event.description`:
 
 Description
 -----------
 
 This function is called when a radar is detected on the current chanenl.
+
 
 
 .. _`cfg80211_cac_event`:
@@ -8549,6 +9688,7 @@ cfg80211_cac_event
         context flags
 
 
+
 .. _`cfg80211_cac_event.description`:
 
 Description
@@ -8557,6 +9697,7 @@ Description
 This function is called when a Channel availability check (CAC) is finished
 or aborted. This must be called to notify the completion of a CAC process,
 also by full-MAC drivers.
+
 
 
 .. _`cfg80211_gtk_rekey_notify`:
@@ -8579,6 +9720,7 @@ cfg80211_gtk_rekey_notify
 
     :param gfp_t gfp:
         allocation flags
+
 
 
 .. _`cfg80211_pmksa_candidate_notify`:
@@ -8606,6 +9748,7 @@ cfg80211_pmksa_candidate_notify
         allocation flags
 
 
+
 .. _`cfg80211_rx_spurious_frame`:
 
 cfg80211_rx_spurious_frame
@@ -8625,6 +9768,7 @@ cfg80211_rx_spurious_frame
         context flags
 
 
+
 .. _`cfg80211_rx_spurious_frame.description`:
 
 Description
@@ -8633,8 +9777,17 @@ Description
 This function is used in AP mode (only!) to inform userspace that
 a spurious class 3 frame was received, to be able to deauth the
 sender.
-Return: ``true`` if the frame was passed to userspace (or this failed
+
+
+
+.. _`cfg80211_rx_spurious_frame.return`:
+
+Return
+------
+
+``true`` if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
+
 
 
 .. _`cfg80211_rx_unexpected_4addr_frame`:
@@ -8656,6 +9809,7 @@ cfg80211_rx_unexpected_4addr_frame
         context flags
 
 
+
 .. _`cfg80211_rx_unexpected_4addr_frame.description`:
 
 Description
@@ -8665,8 +9819,17 @@ This function is used in AP mode (only!) to inform userspace that
 an associated station sent a 4addr frame but that wasn't expected.
 It is allowed and desirable to send this event only once for each
 station to avoid event flooding.
-Return: ``true`` if the frame was passed to userspace (or this failed
+
+
+
+.. _`cfg80211_rx_unexpected_4addr_frame.return`:
+
+Return
+------
+
+``true`` if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
+
 
 
 .. _`cfg80211_probe_status`:
@@ -8694,6 +9857,7 @@ cfg80211_probe_status
         allocation flags
 
 
+
 .. _`cfg80211_report_obss_beacon`:
 
 cfg80211_report_obss_beacon
@@ -8719,6 +9883,7 @@ cfg80211_report_obss_beacon
         signal strength in mBm, or 0 if unknown
 
 
+
 .. _`cfg80211_report_obss_beacon.description`:
 
 Description
@@ -8727,6 +9892,7 @@ Description
 Use this function to report to userspace when a beacon was
 received. It is not useful to call this when there is no
 netdev that is in AP/GO mode.
+
 
 
 .. _`cfg80211_reg_can_beacon`:
@@ -8748,13 +9914,15 @@ cfg80211_reg_can_beacon
         interface type
 
 
-.. _`cfg80211_reg_can_beacon.description`:
 
-Description
------------
+.. _`cfg80211_reg_can_beacon.return`:
 
-Return: ``true`` if there is no secondary channel or the secondary channel(s)
+Return
+------
+
+``true`` if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.)
+
 
 
 .. _`cfg80211_reg_can_beacon_relax`:
@@ -8776,17 +9944,19 @@ cfg80211_reg_can_beacon_relax
         interface type
 
 
-.. _`cfg80211_reg_can_beacon_relax.description`:
 
-Description
------------
+.. _`cfg80211_reg_can_beacon_relax.return`:
 
-Return: ``true`` if there is no secondary channel or the secondary channel(s)
+Return
+------
+
+``true`` if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.). This version
 also checks if IR-relaxation conditions apply, to allow beaconing under
 more permissive conditions.
 
 Requires the RTNL to be held.
+
 
 
 .. _`ieee80211_operating_class_to_band`:
@@ -8805,12 +9975,14 @@ ieee80211_operating_class_to_band
         band pointer to fill
 
 
+
 .. _`ieee80211_operating_class_to_band.description`:
 
 Description
 -----------
 
 Returns ``true`` if the conversion was successful, ``false`` otherwise.
+
 
 
 .. _`ieee80211_chandef_to_operating_class`:
@@ -8829,12 +10001,14 @@ ieee80211_chandef_to_operating_class
         a pointer to the resulting operating class
 
 
+
 .. _`ieee80211_chandef_to_operating_class.description`:
 
 Description
 -----------
 
 Returns ``true`` if the conversion was successful, ``false`` otherwise.
+
 
 
 .. _`cfg80211_unregister_wdev`:
@@ -8848,6 +10022,7 @@ cfg80211_unregister_wdev
 
     :param struct wireless_dev \*wdev:
         struct wireless_dev to remove
+
 
 
 .. _`cfg80211_unregister_wdev.description`:
@@ -8866,16 +10041,18 @@ when the device is unbound from the driver.
 Requires the RTNL to be held.
 
 
+
 .. _`cfg80211_ft_event_params`:
 
 struct cfg80211_ft_event_params
 ===============================
 
-.. c:type:: struct cfg80211_ft_event_params
+.. c:type:: cfg80211_ft_event_params
 
     FT Information Elements
 
 
+.. _`cfg80211_ft_event_params.definition`:
 
 Definition
 ----------
@@ -8891,6 +10068,7 @@ Definition
   };
 
 
+.. _`cfg80211_ft_event_params.members`:
 
 Members
 -------
@@ -8912,6 +10090,7 @@ Members
 
 
 
+
 .. _`cfg80211_ft_event`:
 
 cfg80211_ft_event
@@ -8926,6 +10105,7 @@ cfg80211_ft_event
 
     :param struct cfg80211_ft_event_params \*ft_event:
         IE information
+
 
 
 .. _`cfg80211_get_p2p_attr`:
@@ -8947,12 +10127,12 @@ cfg80211_get_p2p_attr
         the attribute ID to find
 
     :param u8 \*buf:
-        output buffer, can be ``NULL`` if the data isn't needed, e.g.::
-
-                if the function is only called to get the needed buffer size
+        output buffer, can be ``NULL`` if the data isn't needed, e.g.
+        if the function is only called to get the needed buffer size
 
     :param unsigned int bufsize:
         size of the output buffer
+
 
 
 .. _`cfg80211_get_p2p_attr.description`:
@@ -8963,9 +10143,17 @@ Description
 The function finds a given P2P attribute in the (vendor) IEs and
 copies its contents to the given buffer.
 
-Return: A negative error code (-\ ``EILSEQ`` or -\ ``ENOENT``\ ) if the data is
+
+
+.. _`cfg80211_get_p2p_attr.return`:
+
+Return
+------
+
+A negative error code (-\ ``EILSEQ`` or -\ ``ENOENT``\ ) if the data is
 malformed or the attribute can't be found (respectively), or the
 length of the found attribute (which can be zero).
+
 
 
 .. _`ieee80211_ie_split_ric`:
@@ -9000,6 +10188,7 @@ ieee80211_ie_split_ric
         offset where to start splitting in the buffer
 
 
+
 .. _`ieee80211_ie_split_ric.description`:
 
 Description
@@ -9019,6 +10208,7 @@ be ordered correctly either, i.e. it does no reordering.
 The function returns the offset where the next part of the
 buffer starts, which may be ``ielen`` if the entire (remainder)
 of the buffer should be used.
+
 
 
 .. _`ieee80211_ie_split`:
@@ -9047,6 +10237,7 @@ ieee80211_ie_split
         offset where to start splitting in the buffer
 
 
+
 .. _`ieee80211_ie_split.description`:
 
 Description
@@ -9068,6 +10259,7 @@ buffer starts, which may be ``ielen`` if the entire (remainder)
 of the buffer should be used.
 
 
+
 .. _`cfg80211_report_wowlan_wakeup`:
 
 cfg80211_report_wowlan_wakeup
@@ -9087,6 +10279,7 @@ cfg80211_report_wowlan_wakeup
         allocation flags
 
 
+
 .. _`cfg80211_report_wowlan_wakeup.description`:
 
 Description
@@ -9096,6 +10289,7 @@ This function reports that the given device woke up. If it
 caused the wakeup, report the reason(s), otherwise you may
 pass ``NULL`` as the ``wakeup`` parameter to advertise that something
 else caused the wakeup.
+
 
 
 .. _`cfg80211_crit_proto_stopped`:
@@ -9114,6 +10308,7 @@ cfg80211_crit_proto_stopped
         allocation flags
 
 
+
 .. _`cfg80211_crit_proto_stopped.description`:
 
 Description
@@ -9122,6 +10317,7 @@ Description
 This function can be called by the driver to indicate it has reverted
 operation back to normal. One reason could be that the duration given
 by .:c:func:`crit_proto_start` has expired.
+
 
 
 .. _`ieee80211_get_num_supported_channels`:
@@ -9137,12 +10333,14 @@ ieee80211_get_num_supported_channels
         the wiphy
 
 
-.. _`ieee80211_get_num_supported_channels.description`:
 
-Description
------------
+.. _`ieee80211_get_num_supported_channels.return`:
 
-Return: the number of channels supported by the device.
+Return
+------
+
+the number of channels supported by the device.
+
 
 
 .. _`cfg80211_check_combinations`:
@@ -9171,6 +10369,7 @@ cfg80211_check_combinations
         type.  The index is the interface type as specified in :c:type:`enum nl80211_iftype <nl80211_iftype>`.
 
 
+
 .. _`cfg80211_check_combinations.description`:
 
 Description
@@ -9179,6 +10378,7 @@ Description
 This function can be called by the driver to check whether a
 combination of interfaces and their types are allowed according to
 the interface combinations.
+
 
 
 .. _`cfg80211_iter_combinations`:
@@ -9213,6 +10413,7 @@ cfg80211_iter_combinations
         pointer to pass to iter function
 
 
+
 .. _`cfg80211_iter_combinations.description`:
 
 Description
@@ -9221,6 +10422,7 @@ Description
 This function can be called by the driver to check what possible
 combinations it fits in at a given moment, e.g. for channel switching
 purposes.
+
 
 
 .. _`cfg80211_shutdown_all_interfaces`:
@@ -9236,6 +10438,7 @@ cfg80211_shutdown_all_interfaces
         the wiphy to shut down
 
 
+
 .. _`cfg80211_shutdown_all_interfaces.description`:
 
 Description
@@ -9248,6 +10451,7 @@ that really can't be recovered in any other way.
 
 Callers must hold the RTNL and be able to deal with callbacks into
 the driver while the function is running.
+
 
 
 .. _`wiphy_ext_feature_set`:
@@ -9266,6 +10470,7 @@ wiphy_ext_feature_set
         extended feature bit index.
 
 
+
 .. _`wiphy_ext_feature_set.description`:
 
 Description
@@ -9273,6 +10478,7 @@ Description
 
 The extended features are flagged in multiple bytes (see
 :c:type:`struct wiphy <wiphy>`.\ ``ext_features``\ )
+
 
 
 .. _`wiphy_ext_feature_isset`:
@@ -9289,6 +10495,7 @@ wiphy_ext_feature_isset
 
     :param enum nl80211_ext_feature_index ftidx:
         extended feature bit index.
+
 
 
 .. _`wiphy_ext_feature_isset.description`:

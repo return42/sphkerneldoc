@@ -1,0 +1,74 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+saa7115.h
+=========
+
+
+.. _`saa7115_platform_data`:
+
+struct saa7115_platform_data
+============================
+
+.. c:type:: saa7115_platform_data
+
+    Allow overriding default initialization
+
+
+.. _`saa7115_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct saa7115_platform_data {
+    bool saa7113_force_gm7113c_init;
+    enum saa7113_r08_htc * saa7113_r08_htc;
+    bool * saa7113_r10_vrln;
+    enum saa7113_r10_ofts * saa7113_r10_ofts;
+    enum saa7113_r12_rts * saa7113_r12_rts0;
+    enum saa7113_r12_rts * saa7113_r12_rts1;
+    bool * saa7113_r13_adlsb;
+  };
+
+
+.. _`saa7115_platform_data.members`:
+
+Members
+-------
+
+:``saa7113_force_gm7113c_init``:
+    Force the use of the gm7113c_init table
+    instead of saa7113_init table
+    (saa7113 only)
+
+:``saa7113_r08_htc``:
+    [R_08 - Bit 3..4]
+
+:``saa7113_r10_vrln``:
+    [R_10 - Bit 3]
+
+:``saa7113_r10_ofts``:
+    [R_10 - Bit 6..7]
+
+:``saa7113_r12_rts0``:
+    [R_12 - Bit 0..3]
+
+:``saa7113_r12_rts1``:
+    [R_12 - Bit 4..7]
+
+:``saa7113_r13_adlsb``:
+    [R_13 - Bit 7] - default: disabled
+
+
+
+
+.. _`saa7115_platform_data.default`:
+
+default
+-------
+
+Disabled for gm7113c_init
+Enabled for saa7113c_init
+

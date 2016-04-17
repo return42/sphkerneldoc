@@ -4,6 +4,7 @@
 bitmap.c
 ========
 
+
 .. _`__bitmap_shift_right`:
 
 __bitmap_shift_right
@@ -26,6 +27,7 @@ __bitmap_shift_right
         bitmap size, in bits
 
 
+
 .. _`__bitmap_shift_right.description`:
 
 Description
@@ -34,6 +36,7 @@ Description
 Shifting right (dividing) means moving bits in the MS -> LS bit
 direction.  Zeros are fed into the vacated MS positions and the
 LS bits shifted off the bottom are lost.
+
 
 
 .. _`__bitmap_shift_left`:
@@ -58,6 +61,7 @@ __bitmap_shift_left
         bitmap size, in bits
 
 
+
 .. _`__bitmap_shift_left.description`:
 
 Description
@@ -66,6 +70,7 @@ Description
 Shifting left (multiplying) means moving bits in the LS -> MS
 direction.  Zeros are fed into the vacated LS bit positions
 and those MS bits shifted off the top are lost.
+
 
 
 .. _`bitmap_find_next_zero_area_off`:
@@ -96,6 +101,7 @@ bitmap_find_next_zero_area_off
         Alignment offset for zero area.
 
 
+
 .. _`bitmap_find_next_zero_area_off.description`:
 
 Description
@@ -104,6 +110,7 @@ Description
 The ``align_mask`` should be one less than a power of 2; the effect is that
 the bit offset of all zero areas this function finds plus ``align_offset``
 is multiple of that power of 2.
+
 
 
 .. _`__bitmap_parse`:
@@ -132,6 +139,7 @@ __bitmap_parse
         size of bitmap, in bits.
 
 
+
 .. _`__bitmap_parse.description`:
 
 Description
@@ -143,6 +151,7 @@ than 32 bits (\ ``-EOVERFLOW``\ ), and if a chunk specifies a smaller value
 then leading 0-bits are prepended.  ``-EINVAL`` is returned for illegal
 characters and for grouping errors such as "1,,5", ",44", "," and "".
 Leading and trailing whitespace accepted, but not embedded whitespace.
+
 
 
 .. _`bitmap_parse_user`:
@@ -168,6 +177,7 @@ bitmap_parse_user
         size of bitmap, in bits.
 
 
+
 .. _`bitmap_parse_user.description`:
 
 Description
@@ -178,6 +188,7 @@ Wrapper for :c:func:`__bitmap_parse`, providing it with user buffer.
 We cannot have this as an inline function in bitmap.h because it needs
 linux/uaccess.h to get the :c:func:`access_ok` declaration and this causes
 cyclic dependencies.
+
 
 
 .. _`bitmap_print_to_pagebuf`:
@@ -202,6 +213,7 @@ bitmap_print_to_pagebuf
         size of bitmap, in bits
 
 
+
 .. _`bitmap_print_to_pagebuf.description`:
 
 Description
@@ -214,6 +226,7 @@ sets of 8 digits/set. Returns the number of characters written to buf.
 It is assumed that ``buf`` is a pointer into a PAGE_SIZE area and that
 sufficient storage remains at ``buf`` to accommodate the
 :c:func:`bitmap_print_to_pagebuf` output.
+
 
 
 .. _`__bitmap_parselist`:
@@ -242,6 +255,7 @@ __bitmap_parselist
         number of bits in mask to be written
 
 
+
 .. _`__bitmap_parselist.description`:
 
 Description
@@ -253,11 +267,18 @@ decimal numbers, the smallest and largest bit numbers set in
 the range.
 
 Returns 0 on success, -errno on invalid input strings.
-Error values::
 
-   ``-EINVAL``\ : second number in range smaller than first
-   ``-EINVAL``\ : invalid character in string
-   ``-ERANGE``\ : bit number specified too large for mask
+
+
+.. _`__bitmap_parselist.error-values`:
+
+Error values
+------------
+
+``-EINVAL``\ : second number in range smaller than first
+``-EINVAL``\ : invalid character in string
+``-ERANGE``\ : bit number specified too large for mask
+
 
 
 .. _`bitmap_parselist_user`:
@@ -281,6 +302,7 @@ bitmap_parselist_user
         size of bitmap, in bits.
 
 
+
 .. _`bitmap_parselist_user.description`:
 
 Description
@@ -291,6 +313,7 @@ Wrapper for :c:func:`bitmap_parselist`, providing it with user buffer.
 We cannot have this as an inline function in bitmap.h because it needs
 linux/uaccess.h to get the :c:func:`access_ok` declaration and this causes
 cyclic dependencies.
+
 
 
 .. _`bitmap_pos_to_ord`:
@@ -312,6 +335,7 @@ bitmap_pos_to_ord
         number of valid bit positions in ``buf``
 
 
+
 .. _`bitmap_pos_to_ord.description`:
 
 Description
@@ -328,6 +352,7 @@ gets mapped to (returns) ``ord`` value 3 in this example, that means
 that bit 7 is the 3rd (starting with 0th) set bit in ``buf``\ .
 
 The bit positions 0 through ``bits`` are valid positions in ``buf``\ .
+
 
 
 .. _`bitmap_ord_to_pos`:
@@ -349,6 +374,7 @@ bitmap_ord_to_pos
         number of valid bit positions in ``buf``
 
 
+
 .. _`bitmap_ord_to_pos.description`:
 
 Description
@@ -365,6 +391,7 @@ gets mapped to (returns) ``pos`` value 7 in this example, that means
 that the 3rd set bit (starting with 0th) is at position 7 in ``buf``\ .
 
 The bit positions 0 through ``nbits``\ -1 are valid positions in ``buf``\ .
+
 
 
 .. _`bitmap_remap`:
@@ -390,6 +417,7 @@ bitmap_remap
 
     :param unsigned int nbits:
         number of bits in each of these bitmaps
+
 
 
 .. _`bitmap_remap.description`:
@@ -422,6 +450,7 @@ with bits 1, 5 and 7 set, then ``dst`` should leave with bits 1,
 13 and 15 set.
 
 
+
 .. _`bitmap_bitremap`:
 
 bitmap_bitremap
@@ -442,6 +471,7 @@ bitmap_bitremap
 
     :param int bits:
         number of bits in each of these bitmaps
+
 
 
 .. _`bitmap_bitremap.description`:
@@ -469,6 +499,7 @@ bit positions unchanged.  So if say ``oldbit`` is 5, then this routine
 returns 13.
 
 
+
 .. _`bitmap_onto`:
 
 bitmap_onto
@@ -489,6 +520,7 @@ bitmap_onto
 
     :param unsigned int bits:
         number of bits in each of these bitmaps
+
 
 
 .. _`bitmap_onto.description`:
@@ -592,6 +624,7 @@ once again be returned empty.
 All bits in ``dst`` not set by the above rule are cleared.
 
 
+
 .. _`bitmap_fold`:
 
 bitmap_fold
@@ -614,6 +647,7 @@ bitmap_fold
         number of bits in each of these bitmaps
 
 
+
 .. _`bitmap_fold.description`:
 
 Description
@@ -622,6 +656,7 @@ Description
 For each bit oldbit in ``orig``\ , set bit oldbit mod ``sz`` in ``dst``\ .
 Clear all other bits in ``dst``\ .  See further the comment and
 Example [2] for :c:func:`bitmap_onto` for why and how to use this.
+
 
 
 .. _`bitmap_find_free_region`:
@@ -643,6 +678,7 @@ bitmap_find_free_region
         region size (log base 2 of number of bits) to find
 
 
+
 .. _`bitmap_find_free_region.description`:
 
 Description
@@ -655,6 +691,7 @@ makes the search algorithm much faster.
 
 Return the bit offset in bitmap of the allocated region,
 or -errno on failure.
+
 
 
 .. _`bitmap_release_region`:
@@ -676,6 +713,7 @@ bitmap_release_region
         region size (log base 2 of number of bits) to release
 
 
+
 .. _`bitmap_release_region.description`:
 
 Description
@@ -685,6 +723,7 @@ This is the complement to :c:func:`__bitmap_find_free_region` and releases
 the found region (by clearing it in the bitmap).
 
 No return value.
+
 
 
 .. _`bitmap_allocate_region`:
@@ -706,6 +745,7 @@ bitmap_allocate_region
         region size (log base 2 of number of bits) to allocate
 
 
+
 .. _`bitmap_allocate_region.description`:
 
 Description
@@ -715,6 +755,7 @@ Allocate (set bits in) a specified region of a bitmap.
 
 Return 0 on success, or ``-EBUSY`` if specified region wasn't
 free (not all bits were zero).
+
 
 
 .. _`bitmap_from_u32array`:
@@ -739,6 +780,7 @@ bitmap_from_u32array
         number of u32 words in ``buf``
 
 
+
 .. _`bitmap_from_u32array.description`:
 
 Description
@@ -750,6 +792,7 @@ last word of ``bitmap``\ , the bits beyond nbits (if any) are kept
 unchanged.
 
 Return the number of bits effectively copied.
+
 
 
 .. _`bitmap_to_u32array`:
@@ -774,6 +817,7 @@ bitmap_to_u32array
         number of bits in ``bitmap``
 
 
+
 .. _`bitmap_to_u32array.description`:
 
 Description
@@ -783,6 +827,7 @@ copy min(nbits, 32\\*nwords) bits from ``bitmap`` to ``buf``\ . Remaining
 bits after nbits in ``buf`` (if any) are cleared.
 
 Return the number of bits effectively copied.
+
 
 
 .. _`bitmap_copy_le`:
@@ -802,6 +847,7 @@ bitmap_copy_le
 
     :param unsigned int nbits:
         number of bits in the bitmap
+
 
 
 .. _`bitmap_copy_le.description`:

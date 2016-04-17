@@ -4,6 +4,7 @@
 drm_mm.h
 ========
 
+
 .. _`drm_mm_node_allocated`:
 
 drm_mm_node_allocated
@@ -17,6 +18,7 @@ drm_mm_node_allocated
         drm_mm_node to check
 
 
+
 .. _`drm_mm_node_allocated.description`:
 
 Description
@@ -25,8 +27,15 @@ Description
 Drivers should use this helpers for proper encapusulation of drm_mm
 internals.
 
-Returns:
+
+
+.. _`drm_mm_node_allocated.returns`:
+
+Returns
+-------
+
 True if the ``node`` is allocated.
+
 
 
 .. _`drm_mm_initialized`:
@@ -42,6 +51,7 @@ drm_mm_initialized
         drm_mm to check
 
 
+
 .. _`drm_mm_initialized.description`:
 
 Description
@@ -50,8 +60,15 @@ Description
 Drivers should use this helpers for proper encapusulation of drm_mm
 internals.
 
-Returns:
+
+
+.. _`drm_mm_initialized.returns`:
+
+Returns
+-------
+
 True if the ``mm`` is initialized.
+
 
 
 .. _`drm_mm_hole_node_start`:
@@ -67,6 +84,7 @@ drm_mm_hole_node_start
         drm_mm_node which implicitly tracks the following hole
 
 
+
 .. _`drm_mm_hole_node_start.description`:
 
 Description
@@ -76,8 +94,15 @@ This is useful for driver-sepific debug dumpers. Otherwise drivers should not
 inspect holes themselves. Drivers must check first whether a hole indeed
 follows by looking at node->hole_follows.
 
-Returns:
+
+
+.. _`drm_mm_hole_node_start.returns`:
+
+Returns
+-------
+
 Start of the subsequent hole.
+
 
 
 .. _`drm_mm_hole_node_end`:
@@ -93,6 +118,7 @@ drm_mm_hole_node_end
         drm_mm_node which implicitly tracks the following hole
 
 
+
 .. _`drm_mm_hole_node_end.description`:
 
 Description
@@ -102,8 +128,15 @@ This is useful for driver-sepific debug dumpers. Otherwise drivers should not
 inspect holes themselves. Drivers must check first whether a hole indeed
 follows by looking at node->hole_follows.
 
-Returns:
+
+
+.. _`drm_mm_hole_node_end.returns`:
+
+Returns
+-------
+
 End of the subsequent hole.
+
 
 
 .. _`drm_mm_for_each_node`:
@@ -122,6 +155,7 @@ drm_mm_for_each_node
         drm_mm allocator to walk
 
 
+
 .. _`drm_mm_for_each_node.description`:
 
 Description
@@ -129,6 +163,7 @@ Description
 
 This iterator walks over all nodes in the range allocator. It is implemented
 with list_for_each, so not save against removal of elements.
+
 
 
 .. _`drm_mm_for_each_hole`:
@@ -153,6 +188,7 @@ drm_mm_for_each_hole
         ulong variable to assign the hole end to on each iteration
 
 
+
 .. _`drm_mm_for_each_hole.description`:
 
 Description
@@ -163,12 +199,19 @@ with list_for_each, so not save against removal of elements. ``entry`` is used
 internally and will not reflect a real drm_mm_node for the very first hole.
 Hence users of this iterator may not access it.
 
-Implementation Note:
+
+
+.. _`drm_mm_for_each_hole.implementation-note`:
+
+Implementation Note
+-------------------
+
 We need to inline list_for_each_entry in order to be able to set hole_start
 and hole_end on each iteration while keeping the macro sane.
 
 The __drm_mm_for_each_hole version is similar, but with added support for
 going backwards.
+
 
 
 .. _`drm_mm_insert_node`:
@@ -196,6 +239,7 @@ drm_mm_insert_node
         flags to fine-tune the allocation
 
 
+
 .. _`drm_mm_insert_node.description`:
 
 Description
@@ -206,8 +250,15 @@ to 0.
 
 The preallocated node must be cleared to 0.
 
-Returns:
+
+
+.. _`drm_mm_insert_node.returns`:
+
+Returns
+-------
+
 0 on success, -ENOSPC if there's no suitable hole.
+
 
 
 .. _`drm_mm_insert_node_in_range`:
@@ -241,6 +292,7 @@ drm_mm_insert_node_in_range
         flags to fine-tune the allocation
 
 
+
 .. _`drm_mm_insert_node_in_range.description`:
 
 Description
@@ -251,6 +303,12 @@ This is a simplified version of :c:func:`drm_mm_insert_node_in_range_generic` wi
 
 The preallocated node must be cleared to 0.
 
-Returns:
+
+
+.. _`drm_mm_insert_node_in_range.returns`:
+
+Returns
+-------
+
 0 on success, -ENOSPC if there's no suitable hole.
 

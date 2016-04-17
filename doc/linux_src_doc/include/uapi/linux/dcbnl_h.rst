@@ -4,16 +4,18 @@
 dcbnl.h
 =======
 
+
 .. _`cee_pg`:
 
 struct cee_pg
 =============
 
-.. c:type:: struct cee_pg
+.. c:type:: cee_pg
 
     CEE Priority-Group managed object
 
 
+.. _`cee_pg.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`cee_pg.members`:
 
 Members
 -------
@@ -54,16 +57,18 @@ Members
 
 
 
+
 .. _`cee_pfc`:
 
 struct cee_pfc
 ==============
 
-.. c:type:: struct cee_pfc
+.. c:type:: cee_pfc
 
     CEE PFC managed object
 
 
+.. _`cee_pfc.definition`:
 
 Definition
 ----------
@@ -78,6 +83,7 @@ Definition
   };
 
 
+.. _`cee_pfc.members`:
 
 Members
 -------
@@ -96,16 +102,18 @@ Members
 
 
 
+
 .. _`dcb_peer_app_info`:
 
 struct dcb_peer_app_info
 ========================
 
-.. c:type:: struct dcb_peer_app_info
+.. c:type:: dcb_peer_app_info
 
     APP feature information sent by the peer
 
 
+.. _`dcb_peer_app_info.definition`:
 
 Definition
 ----------
@@ -118,6 +126,7 @@ Definition
   };
 
 
+.. _`dcb_peer_app_info.members`:
 
 Members
 -------
@@ -130,6 +139,9 @@ Members
 
 
 
+
+.. _`dcb_peer_app_info.description`:
+
 Description
 -----------
 
@@ -137,16 +149,59 @@ In addition to this information the full peer APP tlv also contains
 a table of 'app_count' APP objects defined above.
 
 
+
 .. _`dcbnl_commands`:
 
 enum dcbnl_commands
 ===================
 
-.. c:type:: enum dcbnl_commands
+.. c:type:: dcbnl_commands
 
     supported DCB commands
 
 
+.. _`dcbnl_commands.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_commands {
+      DCB_CMD_UNDEFINED,
+      DCB_CMD_GSTATE,
+      DCB_CMD_SSTATE,
+      DCB_CMD_PGTX_GCFG,
+      DCB_CMD_PGTX_SCFG,
+      DCB_CMD_PGRX_GCFG,
+      DCB_CMD_PGRX_SCFG,
+      DCB_CMD_PFC_GCFG,
+      DCB_CMD_PFC_SCFG,
+      DCB_CMD_SET_ALL,
+      DCB_CMD_GPERM_HWADDR,
+      DCB_CMD_GCAP,
+      DCB_CMD_GNUMTCS,
+      DCB_CMD_SNUMTCS,
+      DCB_CMD_PFC_GSTATE,
+      DCB_CMD_PFC_SSTATE,
+      DCB_CMD_BCN_GCFG,
+      DCB_CMD_BCN_SCFG,
+      DCB_CMD_GAPP,
+      DCB_CMD_SAPP,
+      DCB_CMD_IEEE_SET,
+      DCB_CMD_IEEE_GET,
+      DCB_CMD_GDCBX,
+      DCB_CMD_SDCBX,
+      DCB_CMD_GFEATCFG,
+      DCB_CMD_SFEATCFG,
+      DCB_CMD_CEE_GET,
+      DCB_CMD_IEEE_DEL,
+      __DCB_CMD_ENUM_MAX,
+      DCB_CMD_MAX
+    };
+
+
+.. _`dcbnl_commands.constants`:
 
 Constants
 ---------
@@ -195,16 +250,16 @@ Constants
     set the number of traffic classes
 
 :``DCB_CMD_PFC_GSTATE``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CMD_PFC_SSTATE``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CMD_BCN_GCFG``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CMD_BCN_SCFG``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CMD_GAPP``:
     get application protocol configuration
@@ -237,10 +292,10 @@ Constants
     delete IEEE 802.1Qaz configuration
 
 :``__DCB_CMD_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CMD_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`dcbnl_attrs`:
@@ -248,11 +303,42 @@ Constants
 enum dcbnl_attrs
 ================
 
-.. c:type:: enum dcbnl_attrs
+.. c:type:: dcbnl_attrs
 
     DCB top-level netlink attributes
 
 
+.. _`dcbnl_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_attrs {
+      DCB_ATTR_UNDEFINED,
+      DCB_ATTR_IFNAME,
+      DCB_ATTR_STATE,
+      DCB_ATTR_PFC_STATE,
+      DCB_ATTR_PFC_CFG,
+      DCB_ATTR_NUM_TC,
+      DCB_ATTR_PG_CFG,
+      DCB_ATTR_SET_ALL,
+      DCB_ATTR_PERM_HWADDR,
+      DCB_ATTR_CAP,
+      DCB_ATTR_NUMTCS,
+      DCB_ATTR_BCN,
+      DCB_ATTR_APP,
+      DCB_ATTR_IEEE,
+      DCB_ATTR_DCBX,
+      DCB_ATTR_FEATCFG,
+      DCB_ATTR_CEE,
+      __DCB_ATTR_ENUM_MAX,
+      DCB_ATTR_MAX
+    };
+
+
+.. _`dcbnl_attrs.constants`:
 
 Constants
 ---------
@@ -294,7 +380,7 @@ Constants
     backward congestion notification configuration (NLA_NESTED)
 
 :``DCB_ATTR_APP``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_ATTR_IEEE``:
     IEEE 802.1Qaz supported attributes (NLA_NESTED)
@@ -309,10 +395,10 @@ Constants
     CEE std supported attributes (NLA_NESTED)
 
 :``__DCB_ATTR_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`ieee_attrs`:
@@ -320,11 +406,34 @@ Constants
 enum ieee_attrs
 ===============
 
-.. c:type:: enum ieee_attrs
+.. c:type:: ieee_attrs
 
     IEEE 802.1Qaz get/set attributes
 
 
+.. _`ieee_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ieee_attrs {
+      DCB_ATTR_IEEE_UNSPEC,
+      DCB_ATTR_IEEE_ETS,
+      DCB_ATTR_IEEE_PFC,
+      DCB_ATTR_IEEE_APP_TABLE,
+      DCB_ATTR_IEEE_PEER_ETS,
+      DCB_ATTR_IEEE_PEER_PFC,
+      DCB_ATTR_IEEE_PEER_APP,
+      DCB_ATTR_IEEE_MAXRATE,
+      DCB_ATTR_IEEE_QCN,
+      DCB_ATTR_IEEE_QCN_STATS,
+      __DCB_ATTR_IEEE_MAX
+    };
+
+
+.. _`ieee_attrs.constants`:
 
 Constants
 ---------
@@ -351,16 +460,16 @@ Constants
     peer APP tlv - get only
 
 :``DCB_ATTR_IEEE_MAXRATE``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_ATTR_IEEE_QCN``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_ATTR_IEEE_QCN_STATS``:
-    -- undescribed --
+-- undescribed --
 
 :``__DCB_ATTR_IEEE_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`cee_attrs`:
@@ -368,11 +477,33 @@ Constants
 enum cee_attrs
 ==============
 
-.. c:type:: enum cee_attrs
+.. c:type:: cee_attrs
 
     CEE DCBX get attributes.
 
 
+.. _`cee_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cee_attrs {
+      DCB_ATTR_CEE_UNSPEC,
+      DCB_ATTR_CEE_PEER_PG,
+      DCB_ATTR_CEE_PEER_PFC,
+      DCB_ATTR_CEE_PEER_APP_TABLE,
+      DCB_ATTR_CEE_TX_PG,
+      DCB_ATTR_CEE_RX_PG,
+      DCB_ATTR_CEE_PFC,
+      DCB_ATTR_CEE_APP_TABLE,
+      DCB_ATTR_CEE_FEAT,
+      __DCB_ATTR_CEE_MAX
+    };
+
+
+.. _`cee_attrs.constants`:
 
 Constants
 ---------
@@ -405,8 +536,10 @@ Constants
     DCBX features flags (DCB_CMD_GFEATCFG)
 
 :``__DCB_ATTR_CEE_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`cee_attrs.description`:
 
 Description
 -----------
@@ -414,16 +547,41 @@ Description
 An aggregated collection of the cee std negotiated parameters.
 
 
+
 .. _`dcbnl_pfc_up_attrs`:
 
 enum dcbnl_pfc_up_attrs
 =======================
 
-.. c:type:: enum dcbnl_pfc_up_attrs
+.. c:type:: dcbnl_pfc_up_attrs
 
     DCB Priority Flow Control user priority nested attrs
 
 
+.. _`dcbnl_pfc_up_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_pfc_up_attrs {
+      DCB_PFC_UP_ATTR_UNDEFINED,
+      DCB_PFC_UP_ATTR_0,
+      DCB_PFC_UP_ATTR_1,
+      DCB_PFC_UP_ATTR_2,
+      DCB_PFC_UP_ATTR_3,
+      DCB_PFC_UP_ATTR_4,
+      DCB_PFC_UP_ATTR_5,
+      DCB_PFC_UP_ATTR_6,
+      DCB_PFC_UP_ATTR_7,
+      DCB_PFC_UP_ATTR_ALL,
+      __DCB_PFC_UP_ATTR_ENUM_MAX,
+      DCB_PFC_UP_ATTR_MAX
+    };
+
+
+.. _`dcbnl_pfc_up_attrs.constants`:
 
 Constants
 ---------
@@ -459,7 +617,7 @@ Constants
     apply to all priority flow control attrs (NLA_FLAG)
 
 :``__DCB_PFC_UP_ATTR_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_PFC_UP_ATTR_MAX``:
     highest attribute number currently defined
@@ -470,11 +628,46 @@ Constants
 enum dcbnl_pg_attrs
 ===================
 
-.. c:type:: enum dcbnl_pg_attrs
+.. c:type:: dcbnl_pg_attrs
 
     DCB Priority Group attributes
 
 
+.. _`dcbnl_pg_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_pg_attrs {
+      DCB_PG_ATTR_UNDEFINED,
+      DCB_PG_ATTR_TC_0,
+      DCB_PG_ATTR_TC_1,
+      DCB_PG_ATTR_TC_2,
+      DCB_PG_ATTR_TC_3,
+      DCB_PG_ATTR_TC_4,
+      DCB_PG_ATTR_TC_5,
+      DCB_PG_ATTR_TC_6,
+      DCB_PG_ATTR_TC_7,
+      DCB_PG_ATTR_TC_MAX,
+      DCB_PG_ATTR_TC_ALL,
+      DCB_PG_ATTR_BW_ID_0,
+      DCB_PG_ATTR_BW_ID_1,
+      DCB_PG_ATTR_BW_ID_2,
+      DCB_PG_ATTR_BW_ID_3,
+      DCB_PG_ATTR_BW_ID_4,
+      DCB_PG_ATTR_BW_ID_5,
+      DCB_PG_ATTR_BW_ID_6,
+      DCB_PG_ATTR_BW_ID_7,
+      DCB_PG_ATTR_BW_ID_MAX,
+      DCB_PG_ATTR_BW_ID_ALL,
+      __DCB_PG_ATTR_ENUM_MAX,
+      DCB_PG_ATTR_MAX
+    };
+
+
+.. _`dcbnl_pg_attrs.constants`:
 
 Constants
 ---------
@@ -543,10 +736,10 @@ Constants
     apply to all priority groups (NLA_FLAG)
 
 :``__DCB_PG_ATTR_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_PG_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`dcbnl_tc_attrs`:
@@ -554,11 +747,31 @@ Constants
 enum dcbnl_tc_attrs
 ===================
 
-.. c:type:: enum dcbnl_tc_attrs
+.. c:type:: dcbnl_tc_attrs
 
     DCB Traffic Class attributes
 
 
+.. _`dcbnl_tc_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_tc_attrs {
+      DCB_TC_ATTR_PARAM_UNDEFINED,
+      DCB_TC_ATTR_PARAM_PGID,
+      DCB_TC_ATTR_PARAM_UP_MAPPING,
+      DCB_TC_ATTR_PARAM_STRICT_PRIO,
+      DCB_TC_ATTR_PARAM_BW_PCT,
+      DCB_TC_ATTR_PARAM_ALL,
+      __DCB_TC_ATTR_PARAM_ENUM_MAX,
+      DCB_TC_ATTR_PARAM_MAX
+    };
+
+
+.. _`dcbnl_tc_attrs.constants`:
 
 Constants
 ---------
@@ -568,7 +781,6 @@ Constants
 
 :``DCB_TC_ATTR_PARAM_PGID``:
     (NLA_U8) Priority group the traffic class belongs to
-    Valid values are:  0-7
 
 :``DCB_TC_ATTR_PARAM_UP_MAPPING``:
     (NLA_U8) Traffic class to user priority map
@@ -577,9 +789,10 @@ Constants
 
 :``DCB_TC_ATTR_PARAM_STRICT_PRIO``:
     (NLA_U8) Strict priority setting
-    0 - none
-    1 - group strict
-    2 - link strict
+
+                                    0 - none
+                                    1 - group strict
+                                    2 - link strict
 
 :``DCB_TC_ATTR_PARAM_BW_PCT``:
     optional - (NLA_U8) If supported by the device and
@@ -591,10 +804,19 @@ Constants
     (NLA_FLAG) all traffic class parameters
 
 :``__DCB_TC_ATTR_PARAM_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_TC_ATTR_PARAM_MAX``:
-    -- undescribed --
+-- undescribed --
+
+
+.. _`dcbnl_tc_attrs.valid-values-are`:
+
+Valid values are
+----------------
+
+0-7
+
 
 
 .. _`dcbnl_cap_attrs`:
@@ -602,11 +824,35 @@ Constants
 enum dcbnl_cap_attrs
 ====================
 
-.. c:type:: enum dcbnl_cap_attrs
+.. c:type:: dcbnl_cap_attrs
 
     DCB Capability attributes
 
 
+.. _`dcbnl_cap_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_cap_attrs {
+      DCB_CAP_ATTR_UNDEFINED,
+      DCB_CAP_ATTR_ALL,
+      DCB_CAP_ATTR_PG,
+      DCB_CAP_ATTR_PFC,
+      DCB_CAP_ATTR_UP2TC,
+      DCB_CAP_ATTR_PG_TCS,
+      DCB_CAP_ATTR_PFC_TCS,
+      DCB_CAP_ATTR_GSP,
+      DCB_CAP_ATTR_BCN,
+      DCB_CAP_ATTR_DCBX,
+      __DCB_CAP_ATTR_ENUM_MAX,
+      DCB_CAP_ATTR_MAX
+    };
+
+
+.. _`dcbnl_cap_attrs.constants`:
 
 Constants
 ---------
@@ -648,10 +894,10 @@ Constants
     (NLA_U8) device supports DCBX engine
 
 :``__DCB_CAP_ATTR_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_CAP_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`dcb_cap_dcbx_host`:
@@ -662,16 +908,35 @@ DCB_CAP_DCBX_HOST
 .. c:function:: DCB_CAP_DCBX_HOST ()
 
 
+
 .. _`dcbnl_numtcs_attrs`:
 
 enum dcbnl_numtcs_attrs
 =======================
 
-.. c:type:: enum dcbnl_numtcs_attrs
+.. c:type:: dcbnl_numtcs_attrs
 
     number of traffic classes
 
 
+.. _`dcbnl_numtcs_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcbnl_numtcs_attrs {
+      DCB_NUMTCS_ATTR_UNDEFINED,
+      DCB_NUMTCS_ATTR_ALL,
+      DCB_NUMTCS_ATTR_PG,
+      DCB_NUMTCS_ATTR_PFC,
+      __DCB_NUMTCS_ATTR_ENUM_MAX,
+      DCB_NUMTCS_ATTR_MAX
+    };
+
+
+.. _`dcbnl_numtcs_attrs.constants`:
 
 Constants
 ---------
@@ -691,10 +956,10 @@ Constants
     support priority flow control
 
 :``__DCB_NUMTCS_ATTR_ENUM_MAX``:
-    -- undescribed --
+-- undescribed --
 
 :``DCB_NUMTCS_ATTR_MAX``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`dcb_general_attr_values`:
@@ -702,15 +967,27 @@ Constants
 enum dcb_general_attr_values
 ============================
 
-.. c:type:: enum dcb_general_attr_values
+.. c:type:: dcb_general_attr_values
 
     general DCB attribute values
 
 
+.. _`dcb_general_attr_values.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dcb_general_attr_values {
+      DCB_ATTR_VALUE_UNDEFINED
+    };
+
+
+.. _`dcb_general_attr_values.constants`:
 
 Constants
 ---------
 
 :``DCB_ATTR_VALUE_UNDEFINED``:
-    -- undescribed --
-
+-- undescribed --

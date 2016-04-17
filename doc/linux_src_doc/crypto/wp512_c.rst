@@ -1,0 +1,18 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+wp512.c
+=======
+
+
+.. _`wp512_process_buffer`:
+
+wp512_process_buffer
+====================
+
+.. c:function:: void wp512_process_buffer (struct wp512_ctx *wctx)
+
+    :param struct wp512_ctx \*wctx:
+
+        *undescribed*
+

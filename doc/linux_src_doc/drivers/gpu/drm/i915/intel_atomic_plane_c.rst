@@ -4,6 +4,7 @@
 intel_atomic_plane.c
 ====================
 
+
 .. _`atomic-plane-helpers`:
 
 atomic plane helpers
@@ -14,6 +15,7 @@ implement legacy plane updates (i.e., drm_plane->:c:func:`update_plane` and
 drm_plane->:c:func:`disable_plane`).  This allows plane updates to use the
 atomic state infrastructure and perform plane updates as separate
 prepare/check/commit/cleanup steps.
+
 
 
 .. _`intel_create_plane_state`:
@@ -29,6 +31,7 @@ intel_create_plane_state
         drm plane
 
 
+
 .. _`intel_create_plane_state.description`:
 
 Description
@@ -37,7 +40,15 @@ Description
 Allocates a fresh plane state for the given plane and sets some of
 the state values to sensible initial values.
 
-Returns: A newly allocated plane state, or NULL on failure
+
+
+.. _`intel_create_plane_state.returns`:
+
+Returns
+-------
+
+A newly allocated plane state, or NULL on failure
+
 
 
 .. _`intel_plane_duplicate_state`:
@@ -53,6 +64,7 @@ intel_plane_duplicate_state
         drm plane
 
 
+
 .. _`intel_plane_duplicate_state.description`:
 
 Description
@@ -61,7 +73,15 @@ Description
 Allocates and returns a copy of the plane state (both common and
 Intel-specific) for the specified plane.
 
-Returns: The newly allocated plane state, or NULL on failure.
+
+
+.. _`intel_plane_duplicate_state.returns`:
+
+Returns
+-------
+
+The newly allocated plane state, or NULL on failure.
+
 
 
 .. _`intel_plane_destroy_state`:
@@ -80,6 +100,7 @@ intel_plane_destroy_state
         state object to destroy
 
 
+
 .. _`intel_plane_destroy_state.description`:
 
 Description
@@ -87,6 +108,7 @@ Description
 
 Destroys the plane state (both common and Intel-specific) for the
 specified plane.
+
 
 
 .. _`intel_plane_atomic_get_property`:
@@ -111,6 +133,7 @@ intel_plane_atomic_get_property
         pointer to write property value into
 
 
+
 .. _`intel_plane_atomic_get_property.description`:
 
 Description
@@ -119,6 +142,7 @@ Description
 The DRM core does not store shadow copies of properties for
 atomic-capable drivers.  This entrypoint is used to fetch
 the current value of a driver-specific plane property.
+
 
 
 .. _`intel_plane_atomic_set_property`:
@@ -141,6 +165,7 @@ intel_plane_atomic_set_property
 
     :param uint64_t val:
         value to set property to
+
 
 
 .. _`intel_plane_atomic_set_property.description`:

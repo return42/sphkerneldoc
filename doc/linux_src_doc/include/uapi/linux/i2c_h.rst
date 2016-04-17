@@ -4,16 +4,18 @@
 i2c.h
 =====
 
+
 .. _`i2c_msg`:
 
 struct i2c_msg
 ==============
 
-.. c:type:: struct i2c_msg
+.. c:type:: i2c_msg
 
     an I2C transaction segment beginning with START
 
 
+.. _`i2c_msg.definition`:
 
 Definition
 ----------
@@ -36,6 +38,7 @@ Definition
   };
 
 
+.. _`i2c_msg.members`:
 
 Members
 -------
@@ -47,7 +50,7 @@ Members
 
 :``flags``:
     I2C_M_RD is handled by all adapters.  No other flags may be
-    provided unless the adapter exported the relevant I2C_FUNC_*
+    provided unless the adapter exported the relevant I2C_FUNC\_\*
     flags through :c:func:`i2c_check_functionality`.
 
 :``len``:
@@ -62,6 +65,9 @@ Members
     The buffer into which data is read, or from which it's written.
 
 
+
+
+.. _`i2c_msg.description`:
 
 Description
 -----------

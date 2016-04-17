@@ -4,16 +4,18 @@
 spidev.h
 ========
 
+
 .. _`spi_ioc_transfer`:
 
 struct spi_ioc_transfer
 =======================
 
-.. c:type:: struct spi_ioc_transfer
+.. c:type:: spi_ioc_transfer
 
     describes a single SPI transfer
 
 
+.. _`spi_ioc_transfer.definition`:
 
 Definition
 ----------
@@ -31,14 +33,14 @@ Definition
   };
 
 
+.. _`spi_ioc_transfer.members`:
 
 Members
 -------
 
 :``tx_buf``:
-    Holds pointer to userspace buffer with transmit data, or null.::
-
-            If no data is provided, zeroes are shifted out.
+    Holds pointer to userspace buffer with transmit data, or null.
+    If no data is provided, zeroes are shifted out.
 
 :``rx_buf``:
     Holds pointer to userspace buffer for receive data, or null.
@@ -60,6 +62,9 @@ Members
     True to deselect device before starting the next transfer.
 
 
+
+
+.. _`spi_ioc_transfer.description`:
 
 Description
 -----------

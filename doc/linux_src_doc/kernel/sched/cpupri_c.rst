@@ -4,6 +4,7 @@
 cpupri.c
 ========
 
+
 .. _`cpupri_find`:
 
 cpupri_find
@@ -23,19 +24,28 @@ cpupri_find
         A mask to fill in with selected CPUs (or NULL)
 
 
-.. _`cpupri_find.description`:
 
-Description
------------
+.. _`cpupri_find.note`:
 
-Note: This function returns the recommended CPUs as calculated during the
+Note
+----
+
+This function returns the recommended CPUs as calculated during the
 current invocation.  By the time the call returns, the CPUs may have in
 fact changed priorities any number of times.  While not ideal, it is not
 an issue of correctness since the normal rebalancer logic will correct
 any discrepancies created by racing against the uncertainty of the current
 priority configuration.
 
-Return: (int)bool - CPUs were found
+
+
+.. _`cpupri_find.return`:
+
+Return
+------
+
+(int)bool - CPUs were found
+
 
 
 .. _`cpupri_set`:
@@ -57,14 +67,23 @@ cpupri_set
         The priority (INVALID-RT99) to assign to this CPU
 
 
-.. _`cpupri_set.description`:
 
-Description
------------
+.. _`cpupri_set.note`:
 
-Note: Assumes cpu_rq(cpu)->lock is locked
+Note
+----
 
-Returns: (void)
+Assumes cpu_rq(cpu)->lock is locked
+
+
+
+.. _`cpupri_set.returns`:
+
+Returns
+-------
+
+(void)
+
 
 
 .. _`cpupri_init`:
@@ -80,12 +99,14 @@ cpupri_init
         The cpupri context
 
 
-.. _`cpupri_init.description`:
 
-Description
------------
+.. _`cpupri_init.return`:
 
-Return: -ENOMEM on memory allocation failure.
+Return
+------
+
+-ENOMEM on memory allocation failure.
+
 
 
 .. _`cpupri_cleanup`:

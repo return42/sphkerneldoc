@@ -1,0 +1,246 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+rt5677.c
+========
+
+
+.. _`rt5677_dsp_mode_i2c_write_addr`:
+
+rt5677_dsp_mode_i2c_write_addr
+==============================
+
+.. c:function:: int rt5677_dsp_mode_i2c_write_addr (struct rt5677_priv *rt5677, unsigned int addr, unsigned int value, unsigned int opcode)
+
+    Write value to address on DSP mode.
+
+    :param struct rt5677_priv \*rt5677:
+        Private Data.
+
+    :param unsigned int addr:
+        Address index.
+
+    :param unsigned int value:
+        Address data.
+
+    :param unsigned int opcode:
+
+        *undescribed*
+
+
+
+.. _`rt5677_dsp_mode_i2c_write_addr.description`:
+
+Description
+-----------
+
+
+Returns 0 for success or negative error code.
+
+
+
+.. _`rt5677_dsp_mode_i2c_read_addr`:
+
+rt5677_dsp_mode_i2c_read_addr
+=============================
+
+.. c:function:: int rt5677_dsp_mode_i2c_read_addr (struct rt5677_priv *rt5677, unsigned int addr, unsigned int *value)
+
+    Read value from address on DSP mode.
+
+    :param struct rt5677_priv \*rt5677:
+
+        *undescribed*
+
+    :param unsigned int addr:
+        Address index.
+
+    :param unsigned int \*value:
+        Address data.
+
+
+
+.. _`rt5677_dsp_mode_i2c_read_addr.rt5677`:
+
+rt5677
+------
+
+Private Data.
+
+
+
+.. _`rt5677_dsp_mode_i2c_read_addr.description`:
+
+Description
+-----------
+
+
+Returns 0 for success or negative error code.
+
+
+
+.. _`rt5677_dsp_mode_i2c_write`:
+
+rt5677_dsp_mode_i2c_write
+=========================
+
+.. c:function:: int rt5677_dsp_mode_i2c_write (struct rt5677_priv *rt5677, unsigned int reg, unsigned int value)
+
+    Write register on DSP mode.
+
+    :param struct rt5677_priv \*rt5677:
+
+        *undescribed*
+
+    :param unsigned int reg:
+        Register index.
+
+    :param unsigned int value:
+        Register data.
+
+
+
+.. _`rt5677_dsp_mode_i2c_write.rt5677`:
+
+rt5677
+------
+
+Private Data.
+
+
+
+.. _`rt5677_dsp_mode_i2c_write.description`:
+
+Description
+-----------
+
+
+Returns 0 for success or negative error code.
+
+
+
+.. _`rt5677_dsp_mode_i2c_read`:
+
+rt5677_dsp_mode_i2c_read
+========================
+
+.. c:function:: int rt5677_dsp_mode_i2c_read (struct rt5677_priv *rt5677, unsigned int reg, unsigned int *value)
+
+    Read register on DSP mode.
+
+    :param struct rt5677_priv \*rt5677:
+
+        *undescribed*
+
+    :param unsigned int reg:
+        Register index.
+
+    :param unsigned int \*value:
+        Register data.
+
+
+
+.. _`rt5677_dsp_mode_i2c_read.description`:
+
+Description
+-----------
+
+
+Returns 0 for success or negative error code.
+
+
+
+.. _`set_dmic_clk`:
+
+set_dmic_clk
+============
+
+.. c:function:: int set_dmic_clk (struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
+
+    Set parameter of dmic.
+
+    :param struct snd_soc_dapm_widget \*w:
+        DAPM widget.
+
+    :param struct snd_kcontrol \*kcontrol:
+        The kcontrol of this widget.
+
+    :param int event:
+        Event id.
+
+
+
+.. _`set_dmic_clk.description`:
+
+Description
+-----------
+
+Choose dmic clock between 1MHz and 3MHz.
+It is better for clock to approximate 3MHz.
+
+
+
+.. _`rt5677_sel_asrc_clk_src`:
+
+rt5677_sel_asrc_clk_src
+=======================
+
+.. c:function:: int rt5677_sel_asrc_clk_src (struct snd_soc_codec *codec, unsigned int filter_mask, unsigned int clk_src)
+
+    select ASRC clock source for a set of filters
+
+    :param struct snd_soc_codec \*codec:
+        SoC audio codec device.
+
+    :param unsigned int filter_mask:
+        mask of filters.
+
+    :param unsigned int clk_src:
+        clock source
+
+
+
+.. _`rt5677_sel_asrc_clk_src.description`:
+
+Description
+-----------
+
+The ASRC function is for asynchronous MCLK and LRCK. Also, since RT5677 can
+only support standard 32fs or 64fs i2s format, ASRC should be enabled to
+support special i2s clock format such as Intel's 100fs(100 * sampling rate).
+ASRC function will track i2s clock and generate a corresponding system clock
+for codec. This function provides an API to select the clock source for a
+set of filters specified by the mask. And the codec driver will turn on ASRC
+for these filters if ASRC is selected as their clock source.
+
+
+
+.. _`rt5677_pll_calc`:
+
+rt5677_pll_calc
+===============
+
+.. c:function:: int rt5677_pll_calc (const unsigned int freq_in, const unsigned int freq_out, struct rl6231_pll_code *pll_code)
+
+    Calcualte PLL M/N/K code.
+
+    :param const unsigned int freq_in:
+        external clock provided to codec.
+
+    :param const unsigned int freq_out:
+        target clock which codec works on.
+
+    :param struct rl6231_pll_code \*pll_code:
+        Pointer to structure with M, N, K, bypass K and bypass M flag.
+
+
+
+.. _`rt5677_pll_calc.description`:
+
+Description
+-----------
+
+Calcualte M/N/K code and bypass K/M flag to configure PLL for codec.
+
+Returns 0 for success or negative error code.
+

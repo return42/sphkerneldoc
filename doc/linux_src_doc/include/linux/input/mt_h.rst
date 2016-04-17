@@ -4,16 +4,18 @@
 mt.h
 ====
 
+
 .. _`input_mt_slot`:
 
 struct input_mt_slot
 ====================
 
-.. c:type:: struct input_mt_slot
+.. c:type:: input_mt_slot
 
     represents the state of an input MT slot
 
 
+.. _`input_mt_slot.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`input_mt_slot.members`:
 
 Members
 -------
@@ -42,16 +45,18 @@ Members
 
 
 
+
 .. _`input_mt`:
 
 struct input_mt
 ===============
 
-.. c:type:: struct input_mt
+.. c:type:: input_mt
 
     state of tracked contacts
 
 
+.. _`input_mt.definition`:
 
 Definition
 ----------
@@ -69,6 +74,7 @@ Definition
   };
 
 
+.. _`input_mt.members`:
 
 Members
 -------
@@ -96,16 +102,18 @@ Members
 
 
 
+
 .. _`input_mt_pos`:
 
 struct input_mt_pos
 ===================
 
-.. c:type:: struct input_mt_pos
+.. c:type:: input_mt_pos
 
     contact position
 
 
+.. _`input_mt_pos.definition`:
 
 Definition
 ----------
@@ -118,6 +126,7 @@ Definition
   };
 
 
+.. _`input_mt_pos.members`:
 
 Members
 -------

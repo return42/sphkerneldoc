@@ -4,16 +4,18 @@
 wimax.h
 =======
 
+
 .. _`wimax_dev`:
 
 struct wimax_dev
 ================
 
-.. c:type:: struct wimax_dev
+.. c:type:: wimax_dev
 
     Generic WiMAX device
 
 
+.. _`wimax_dev.definition`:
 
 Definition
 ----------
@@ -37,6 +39,7 @@ Definition
   };
 
 
+.. _`wimax_dev.members`:
 
 Members
 -------
@@ -91,10 +94,6 @@ Members
     reset is complete. In case of having had to resort to bus/cold
     reset implying a device disconnection, the call is allowed to
     return immediately.
-    NOTE: wimax_dev->mutex is NOT locked when this op is being
-    called; however, wimax_dev->mutex_reset IS locked to ensure
-    serialization of calls to :c:func:`wimax_reset`.
-    See :c:func:`wimax_reset`'s documentation.
 
 :``rfkill``:
     [private] integration into the RF-Kill infrastructure.
@@ -121,36 +120,60 @@ Members
 
 
 
+
+.. _`wimax_dev.note`:
+
+NOTE
+----
+
+wimax_dev->mutex is NOT locked when this op is being
+called; however, wimax_dev->mutex_reset IS locked to ensure
+serialization of calls to :c:func:`wimax_reset`.
+See :c:func:`wimax_reset`'s documentation.
+
+
+
+.. _`wimax_dev.description`:
+
 Description
 -----------
 
-Description:
 This structure defines a common interface to access all WiMAX
 devices from different vendors and provides a common API as well as
 a free-form device-specific messaging channel.
 
-Usage::
 
- 1. Embed a :c:type:`struct wimax_dev <wimax_dev>` at \*the beginning\* the network
-    device structure so that :c:func:`netdev_priv` points to it.
 
- 2. :c:func:`memset` it to zero
+.. _`wimax_dev.usage`:
 
- 3. Initialize with :c:func:`wimax_dev_init`. This will leave the WiMAX
-    device in the ``__WIMAX_ST_NULL`` state.
+Usage
+-----
 
- 4. Fill all the fields marked with [fill]; once called
-    :c:func:`wimax_dev_add`, those fields CANNOT be modified.
+1. Embed a :c:type:`struct wimax_dev <wimax_dev>` at \*the beginning\* the network
 
- 5. Call :c:func:`wimax_dev_add` \*after\* registering the network
-    device. This will leave the WiMAX device in the ``WIMAX_ST_DOWN``
-    state.
-    Protect the driver's net_device->:c:func:`open` against succeeding if
-    the wimax device state is lower than ``WIMAX_ST_DOWN``\ .
+   device structure so that :c:func:`netdev_priv` points to it.
 
- 6. Select when the device is going to be turned on/initialized;
-    for example, it could be initialized on 'ifconfig up' (when the
-    netdev op ':c:func:`open`' is called on the driver).
+2. :c:func:`memset` it to zero
+
+3. Initialize with :c:func:`wimax_dev_init`. This will leave the WiMAX
+
+   device in the ``__WIMAX_ST_NULL`` state.
+
+4. Fill all the fields marked with [fill]; once called
+
+   :c:func:`wimax_dev_add`, those fields CANNOT be modified.
+
+5. Call :c:func:`wimax_dev_add` \*after\* registering the network
+
+   device. This will leave the WiMAX device in the ``WIMAX_ST_DOWN``
+   state.
+   Protect the driver's net_device->:c:func:`open` against succeeding if
+   the wimax device state is lower than ``WIMAX_ST_DOWN``\ .
+
+6. Select when the device is going to be turned on/initialized;
+
+   for example, it could be initialized on 'ifconfig up' (when the
+   netdev op ':c:func:`open`' is called on the driver).
 
 When the device is initialized (at `ifconfig up` time, or right
 after calling :c:func:`wimax_dev_add` from :c:func:`_probe`, make sure the
@@ -171,9 +194,15 @@ as needed. See below.
 
 :c:func:`wimax_dev_rm` undoes before unregistering the network device. Once
 :c:func:`wimax_dev_add` is called, the driver can get called on the
-wimax_dev->op_\* function pointers
+wimax_dev->op\_\* function pointers
 
-CONCURRENCY:
+
+
+.. _`wimax_dev.concurrency`:
+
+CONCURRENCY
+-----------
+
 
 The stack provides a mutex for each device that will disallow API
 calls happening concurrently; thus, op calls into the driver
@@ -184,14 +213,26 @@ For locking, take wimax_dev->mutex is taken; (most) operations in
 the API have to check for :c:func:`wimax_dev_is_ready` to return 0 before
 continuing (this is done internally).
 
-REFERENCE COUNTING:
+
+
+.. _`wimax_dev.reference-counting`:
+
+REFERENCE COUNTING
+------------------
+
 
 The WiMAX device is reference counted by the associated network
 device. The only operation that can be used to reference the device
 is :c:func:`wimax_dev_get_by_genl_info`, and the reference it acquires has
 to be released with dev_put(wimax_dev->net_dev).
 
-RFKILL:
+
+
+.. _`wimax_dev.rfkill`:
+
+RFKILL
+------
+
 
 At startup, both HW and SW radio switchess are assumed to be off.
 

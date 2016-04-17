@@ -4,16 +4,33 @@
 tveeprom.h
 ==========
 
+
 .. _`tveeprom_audio_processor`:
 
 enum tveeprom_audio_processor
 =============================
 
-.. c:type:: enum tveeprom_audio_processor
+.. c:type:: tveeprom_audio_processor
 
     Specifies the type of audio processor used on a Hauppauge device.
 
 
+.. _`tveeprom_audio_processor.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum tveeprom_audio_processor {
+      TVEEPROM_AUDPROC_NONE,
+      TVEEPROM_AUDPROC_INTERNAL,
+      TVEEPROM_AUDPROC_MSP,
+      TVEEPROM_AUDPROC_OTHER
+    };
+
+
+.. _`tveeprom_audio_processor.constants`:
 
 Constants
 ---------
@@ -37,11 +54,12 @@ Constants
 struct tveeprom
 ===============
 
-.. c:type:: struct tveeprom
+.. c:type:: tveeprom
 
     Contains the fields parsed from Hauppauge eeproms
 
 
+.. _`tveeprom.definition`:
 
 Definition
 ----------
@@ -68,6 +86,7 @@ Definition
   };
 
 
+.. _`tveeprom.members`:
 
 Members
 -------
@@ -86,22 +105,22 @@ Members
     0: no MAC, 1: MAC present, 2: unknown.
 
 :``tuner_type``:
-    type of the tuner (TUNER_\*, as defined at
+    type of the tuner (TUNER\_\*, as defined at
     include/media/tuner.h).
 
 :``tuner_formats``:
-    Supported analog TV standards (V4L2_STD_\*).
+    Supported analog TV standards (V4L2_STD\_\*).
 
 :``tuner_hauppauge_model``:
     Hauppauge's code for the device model number.
 
 :``tuner2_type``:
-    type of the second tuner (TUNER_\*, as defined
+    type of the second tuner (TUNER\_\*, as defined
     at include/media/tuner.h).
 
 :``tuner2_formats``:
     Tuner 2 supported analog TV standards
-    (V4L2_STD_\*).
+    (V4L2_STD\_\*).
 
 :``tuner2_hauppauge_model``:
     tuner 2 Hauppauge's code for the device model
@@ -112,10 +131,9 @@ Members
     tveeprom_audio_processor.
 
 :``decoder_processor``:
-    Hauppauge's code for the decoder chipset.::
-
-                                    Unused by the drivers, as they probe the
-                                    decoder based on the PCI or USB ID.
+    Hauppauge's code for the decoder chipset.
+    Unused by the drivers, as they probe the
+    decoder based on the PCI or USB ID.
 
 :``model``:
     Hauppauge's model number
@@ -131,6 +149,7 @@ Members
 
 :``MAC_address[ETH_ALEN]``:
     MAC address for the network interface
+
 
 
 
@@ -153,6 +172,7 @@ tveeprom_hauppauge_analog
         Array with the contents of the eeprom_data. It should
         contain 256 bytes filled with the contents of the
         eeprom read from the Hauppauge device.
+
 
 
 .. _`tveeprom_read`:

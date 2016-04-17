@@ -9,4 +9,9 @@ x86
 
    include/index
    kernel/index
+   kvm/index
    lib/index
+   mm/index
+   pci/index
+   platform/index
+   power/index

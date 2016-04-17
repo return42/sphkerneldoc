@@ -4,16 +4,18 @@
 drm_crtc.h
 ==========
 
+
 .. _`drm_framebuffer_funcs`:
 
 struct drm_framebuffer_funcs
 ============================
 
-.. c:type:: struct drm_framebuffer_funcs
+.. c:type:: drm_framebuffer_funcs
 
     framebuffer hooks
 
 
+.. _`drm_framebuffer_funcs.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`drm_framebuffer_funcs.members`:
 
 Members
 -------
@@ -76,16 +79,18 @@ Members
 
 
 
+
 .. _`drm_crtc_state`:
 
 struct drm_crtc_state
 =====================
 
-.. c:type:: struct drm_crtc_state
+.. c:type:: drm_crtc_state
 
     mutable CRTC state
 
 
+.. _`drm_crtc_state.definition`:
 
 Definition
 ----------
@@ -115,6 +120,7 @@ Definition
   };
 
 
+.. _`drm_crtc_state.members`:
 
 Members
 -------
@@ -183,6 +189,9 @@ Members
 
 
 
+
+.. _`drm_crtc_state.description`:
+
 Description
 -----------
 
@@ -193,16 +202,18 @@ that a DPMS On will always succeed. In other words: ``enable`` controls resource
 assignment, ``active`` controls the actual hardware state.
 
 
+
 .. _`drm_crtc_funcs`:
 
 struct drm_crtc_funcs
 =====================
 
-.. c:type:: struct drm_crtc_funcs
+.. c:type:: drm_crtc_funcs
 
     control CRTCs for a given device
 
 
+.. _`drm_crtc_funcs.definition`:
 
 Definition
 ----------
@@ -226,6 +237,7 @@ Definition
   };
 
 
+.. _`drm_crtc_funcs.members`:
 
 Members
 -------
@@ -495,6 +507,9 @@ Members
 
 
 
+
+.. _`drm_crtc_funcs.description`:
+
 Description
 -----------
 
@@ -509,16 +524,18 @@ in addition to providing other modesetting features, like i2c and DDC
 bus accessors.
 
 
+
 .. _`drm_crtc`:
 
 struct drm_crtc
 ===============
 
-.. c:type:: struct drm_crtc
+.. c:type:: drm_crtc
 
     central CRTC control structure
 
 
+.. _`drm_crtc.definition`:
 
 Definition
 ----------
@@ -550,6 +567,7 @@ Definition
   };
 
 
+.. _`drm_crtc.members`:
 
 Members
 -------
@@ -620,6 +638,9 @@ Members
 
 
 
+
+.. _`drm_crtc.description`:
+
 Description
 -----------
 
@@ -627,16 +648,18 @@ Each CRTC may have one or more connectors associated with it.  This structure
 allows the CRTC to be controlled.
 
 
+
 .. _`drm_connector_state`:
 
 struct drm_connector_state
 ==========================
 
-.. c:type:: struct drm_connector_state
+.. c:type:: drm_connector_state
 
     mutable connector state
 
 
+.. _`drm_connector_state.definition`:
 
 Definition
 ----------
@@ -651,6 +674,7 @@ Definition
   };
 
 
+.. _`drm_connector_state.members`:
 
 Members
 -------
@@ -669,16 +693,18 @@ Members
 
 
 
+
 .. _`drm_connector_funcs`:
 
 struct drm_connector_funcs
 ==========================
 
-.. c:type:: struct drm_connector_funcs
+.. c:type:: drm_connector_funcs
 
     control connectors on a given device
 
 
+.. _`drm_connector_funcs.definition`:
 
 Definition
 ----------
@@ -700,6 +726,7 @@ Definition
   };
 
 
+.. _`drm_connector_funcs.members`:
 
 Members
 -------
@@ -896,6 +923,9 @@ Members
 
 
 
+
+.. _`drm_connector_funcs.description`:
+
 Description
 -----------
 
@@ -905,16 +935,18 @@ below allow the core DRM code to control connectors, enumerate available modes,
 etc.
 
 
+
 .. _`drm_encoder_funcs`:
 
 struct drm_encoder_funcs
 ========================
 
-.. c:type:: struct drm_encoder_funcs
+.. c:type:: drm_encoder_funcs
 
     encoder controls
 
 
+.. _`drm_encoder_funcs.definition`:
 
 Definition
 ----------
@@ -927,6 +959,7 @@ Definition
   };
 
 
+.. _`drm_encoder_funcs.members`:
 
 Members
 -------
@@ -945,6 +978,9 @@ Members
 
 
 
+
+.. _`drm_encoder_funcs.description`:
+
 Description
 -----------
 
@@ -952,16 +988,18 @@ Description
 Encoders sit between CRTCs and connectors.
 
 
+
 .. _`drm_encoder`:
 
 struct drm_encoder
 ==================
 
-.. c:type:: struct drm_encoder
+.. c:type:: drm_encoder
 
     central DRM encoder structure
 
 
+.. _`drm_encoder.definition`:
 
 Definition
 ----------
@@ -983,6 +1021,7 @@ Definition
   };
 
 
+.. _`drm_encoder.members`:
 
 Members
 -------
@@ -1022,6 +1061,9 @@ Members
 
 
 
+
+.. _`drm_encoder.description`:
+
 Description
 -----------
 
@@ -1029,16 +1071,18 @@ CRTCs drive pixels to encoders, which convert them into signals
 appropriate for a given connector or set of connectors.
 
 
+
 .. _`drm_connector`:
 
 struct drm_connector
 ====================
 
-.. c:type:: struct drm_connector
+.. c:type:: drm_connector
 
     central DRM connector control structure
 
 
+.. _`drm_connector.definition`:
 
 Definition
 ----------
@@ -1096,6 +1140,7 @@ Definition
   };
 
 
+.. _`drm_connector.members`:
 
 Members
 -------
@@ -1243,6 +1288,9 @@ Members
 
 
 
+
+.. _`drm_connector.description`:
+
 Description
 -----------
 
@@ -1252,16 +1300,18 @@ position in the broader display (referred to as a 'screen' though it could
 span multiple monitors).
 
 
+
 .. _`drm_plane_state`:
 
 struct drm_plane_state
 ======================
 
-.. c:type:: struct drm_plane_state
+.. c:type:: drm_plane_state
 
     mutable plane state
 
 
+.. _`drm_plane_state.definition`:
 
 Definition
 ----------
@@ -1285,6 +1335,7 @@ Definition
   };
 
 
+.. _`drm_plane_state.members`:
 
 Members
 -------
@@ -1332,16 +1383,18 @@ Members
 
 
 
+
 .. _`drm_plane_funcs`:
 
 struct drm_plane_funcs
 ======================
 
-.. c:type:: struct drm_plane_funcs
+.. c:type:: drm_plane_funcs
 
     driver plane control functions
 
 
+.. _`drm_plane_funcs.definition`:
 
 Definition
 ----------
@@ -1361,6 +1414,7 @@ Definition
   };
 
 
+.. _`drm_plane_funcs.members`:
 
 Members
 -------
@@ -1527,16 +1581,18 @@ Members
 
 
 
+
 .. _`drm_plane`:
 
 struct drm_plane
 ================
 
-.. c:type:: struct drm_plane
+.. c:type:: drm_plane
 
     central DRM plane control structure
 
 
+.. _`drm_plane.definition`:
 
 Definition
 ----------
@@ -1561,6 +1617,7 @@ Definition
   };
 
 
+.. _`drm_plane.members`:
 
 Members
 -------
@@ -1610,16 +1667,18 @@ Members
 
 
 
+
 .. _`drm_bridge_funcs`:
 
 struct drm_bridge_funcs
 =======================
 
-.. c:type:: struct drm_bridge_funcs
+.. c:type:: drm_bridge_funcs
 
     drm_bridge control functions
 
 
+.. _`drm_bridge_funcs.definition`:
 
 Definition
 ----------
@@ -1637,6 +1696,7 @@ Definition
   };
 
 
+.. _`drm_bridge_funcs.members`:
 
 Members
 -------
@@ -1740,16 +1800,18 @@ Members
 
 
 
+
 .. _`drm_bridge`:
 
 struct drm_bridge
 =================
 
-.. c:type:: struct drm_bridge
+.. c:type:: drm_bridge
 
     central DRM bridge control structure
 
 
+.. _`drm_bridge.definition`:
 
 Definition
 ----------
@@ -1769,6 +1831,7 @@ Definition
   };
 
 
+.. _`drm_bridge.members`:
 
 Members
 -------
@@ -1796,16 +1859,18 @@ Members
 
 
 
+
 .. _`drm_atomic_state`:
 
 struct drm_atomic_state
 =======================
 
-.. c:type:: struct drm_atomic_state
+.. c:type:: drm_atomic_state
 
     the global state object for atomic updates
 
 
+.. _`drm_atomic_state.definition`:
 
 Definition
 ----------
@@ -1828,6 +1893,7 @@ Definition
   };
 
 
+.. _`drm_atomic_state.members`:
 
 Members
 -------
@@ -1870,16 +1936,18 @@ Members
 
 
 
+
 .. _`drm_mode_set`:
 
 struct drm_mode_set
 ===================
 
-.. c:type:: struct drm_mode_set
+.. c:type:: drm_mode_set
 
     new values for a CRTC config change
 
 
+.. _`drm_mode_set.definition`:
 
 Definition
 ----------
@@ -1897,6 +1965,7 @@ Definition
   };
 
 
+.. _`drm_mode_set.members`:
 
 Members
 -------
@@ -1924,6 +1993,9 @@ Members
 
 
 
+
+.. _`drm_mode_set.description`:
+
 Description
 -----------
 
@@ -1933,16 +2005,18 @@ and from which framebuffer it scans out from.
 This is used to set modes.
 
 
+
 .. _`drm_mode_config_funcs`:
 
 struct drm_mode_config_funcs
 ============================
 
-.. c:type:: struct drm_mode_config_funcs
+.. c:type:: drm_mode_config_funcs
 
     basic driver provided mode setting functions
 
 
+.. _`drm_mode_config_funcs.definition`:
 
 Definition
 ----------
@@ -1960,6 +2034,7 @@ Definition
   };
 
 
+.. _`drm_mode_config_funcs.members`:
 
 Members
 -------
@@ -2005,7 +2080,7 @@ Members
     This is the only hook to validate an atomic modeset update. This
     function must reject any modeset and state changes which the hardware
     or driver doesn't support. This includes but is of course not limited
-    to::
+    to:
 
      - Checking that the modes, framebuffers, scaling and placement
        requirements and so on are within the limits of the hardware.
@@ -2196,6 +2271,9 @@ Members
 
 
 
+
+.. _`drm_mode_config_funcs.description`:
+
 Description
 -----------
 
@@ -2204,16 +2282,18 @@ Some global (i.e. not per-CRTC, connector, etc) mode setting functions that
 involve drivers.
 
 
+
 .. _`drm_mode_config`:
 
 struct drm_mode_config
 ======================
 
-.. c:type:: struct drm_mode_config
+.. c:type:: drm_mode_config
 
     Mode configuration control structure
 
 
+.. _`drm_mode_config.definition`:
 
 Definition
 ----------
@@ -2263,6 +2343,7 @@ Definition
   };
 
 
+.. _`drm_mode_config.members`:
 
 Members
 -------
@@ -2351,7 +2432,6 @@ Members
 
 :``blob_lock``:
     mutex for blob property allocation and management
-    @\*_property: core property tracking
 
 :``property_blob_list``:
     list of all the blob property objects
@@ -2392,12 +2472,25 @@ Members
 
 
 
+
+.. _`drm_mode_config._property`:
+
+_property
+---------
+
+core property tracking
+
+
+
+.. _`drm_mode_config.description`:
+
 Description
 -----------
 
 Core mode resource tracking structure.  All CRTC, encoders, and connectors
 enumerated by the driver are added here, as are global properties.  Some
 global restrictions are also here, e.g. dimension restrictions.
+
 
 
 .. _`drm_for_each_plane_mask`:
@@ -2419,12 +2512,14 @@ drm_for_each_plane_mask
         bitmask of plane indices
 
 
+
 .. _`drm_for_each_plane_mask.description`:
 
 Description
 -----------
 
 Iterate over all planes specified by bitmask.
+
 
 
 .. _`drm_for_each_encoder_mask`:
@@ -2446,12 +2541,14 @@ drm_for_each_encoder_mask
         bitmask of encoder indices
 
 
+
 .. _`drm_for_each_encoder_mask.description`:
 
 Description
 -----------
 
 Iterate over all encoders specified by bitmask.
+
 
 
 .. _`drm_crtc_mask`:
@@ -2467,6 +2564,7 @@ drm_crtc_mask
         CRTC to find mask for
 
 
+
 .. _`drm_crtc_mask.description`:
 
 Description
@@ -2474,6 +2572,7 @@ Description
 
 Given a registered CRTC, return the mask bit of that CRTC for an
 encoder's possible_crtcs field.
+
 
 
 .. _`drm_encoder_crtc_ok`:
@@ -2490,6 +2589,7 @@ drm_encoder_crtc_ok
 
     :param struct drm_crtc \*crtc:
         crtc to test
+
 
 
 .. _`drm_encoder_crtc_ok.description`:

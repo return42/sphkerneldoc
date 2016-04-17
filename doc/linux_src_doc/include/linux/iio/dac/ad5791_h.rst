@@ -1,0 +1,46 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ad5791.h
+========
+
+
+.. _`ad5791_platform_data`:
+
+struct ad5791_platform_data
+===========================
+
+.. c:type:: ad5791_platform_data
+
+    platform specific information
+
+
+.. _`ad5791_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ad5791_platform_data {
+    u16 vref_pos_mv;
+    u16 vref_neg_mv;
+    bool use_rbuf_gain2;
+  };
+
+
+.. _`ad5791_platform_data.members`:
+
+Members
+-------
+
+:``vref_pos_mv``:
+    Vdd Positive Analog Supply Volatge (mV)
+
+:``vref_neg_mv``:
+    Vdd Negative Analog Supply Volatge (mV)
+
+:``use_rbuf_gain2``:
+    ext. amplifier connected in gain of two configuration
+
+

@@ -4,6 +4,7 @@
 fair.c
 ======
 
+
 .. _`__update_cpu_load`:
 
 __update_cpu_load
@@ -26,6 +27,7 @@ __update_cpu_load
         !0 for NOHZ_FULL
 
 
+
 .. _`__update_cpu_load.description`:
 
 Description
@@ -34,31 +36,38 @@ Description
 Update rq->cpu_load[] statistics. This function is usually called every
 scheduler tick (TICK_NSEC).
 
-This function computes a decaying average::
 
-  load[i]' = (1 - 1/2^i) * load[i] + (1/2^i) * load
+
+.. _`__update_cpu_load.this-function-computes-a-decaying-average`:
+
+This function computes a decaying average
+-----------------------------------------
+
+
+load[i]' = (1 - 1/2^i) * load[i] + (1/2^i) * load
 
 Because of NOHZ it might not get called on every tick which gives need for
-the ``pending_updates`` argument.::
+the ``pending_updates`` argument.
 
-  load[i]_n = (1 - 1/2^i) * load[i]_n-1 + (1/2^i) * load_n-1
-            = A * load[i]_n-1 + B ; A := (1 - 1/2^i), B := (1/2^i) * load
-            = A * (A * load[i]_n-2 + B) + B
-            = A * (A * (A * load[i]_n-3 + B) + B) + B
-            = A^3 * load[i]_n-3 + (A^2 + A + 1) * B
-            = A^n * load[i]_0 + (A^(n-1) + A^(n-2) + ... + 1) * B
-            = A^n * load[i]_0 + ((1 - A^n) / (1 - A)) * B
-            = (1 - 1/2^i)^n * (load[i]_0 - load) + load
+load[i]_n = (1 - 1/2^i) * load[i]_n-1 + (1/2^i) * load_n-1
+= A * load[i]_n-1 + B ; A := (1 - 1/2^i), B := (1/2^i) * load
+= A * (A * load[i]_n-2 + B) + B
+= A * (A * (A * load[i]_n-3 + B) + B) + B
+= A^3 * load[i]_n-3 + (A^2 + A + 1) * B
+= A^n * load[i]_0 + (A^(n-1) + A^(n-2) + ... + 1) * B
+= A^n * load[i]_0 + ((1 - A^n) / (1 - A)) * B
+= (1 - 1/2^i)^n * (load[i]_0 - load) + load
 
 In the above we've assumed load_n := load, which is true for NOHZ_FULL as
 any change in load would have resulted in the tick being turned back on.
 
-For regular NOHZ, this reduces to::
+For regular NOHZ, this reduces to:
 
-  load[i]_n = (1 - 1/2^i)^n * load[i]_0
+load[i]_n = (1 - 1/2^i)^n * load[i]_0
 
 see :c:func:`decay_load_misses`. For NOHZ_FULL we get to subtract and add the extra
 term. See the ``active`` paramter.
+
 
 
 .. _`get_sd_load_idx`:
@@ -77,12 +86,14 @@ get_sd_load_idx
         The idle status of the CPU for whose sd load_idx is obtained.
 
 
-.. _`get_sd_load_idx.description`:
 
-Description
------------
+.. _`get_sd_load_idx.return`:
 
-Return: The load index.
+Return
+------
+
+The load index.
+
 
 
 .. _`update_sg_lb_stats`:
@@ -113,6 +124,7 @@ update_sg_lb_stats
         Indicate more than one runnable task for any CPU.
 
 
+
 .. _`update_sd_pick_busiest`:
 
 update_sd_pick_busiest
@@ -135,6 +147,7 @@ update_sd_pick_busiest
         sched_group statistics
 
 
+
 .. _`update_sd_pick_busiest.description`:
 
 Description
@@ -143,8 +156,16 @@ Description
 Determine if ``sg`` is a busier group than the previously selected
 busiest group.
 
-Return: ``true`` if ``sg`` is a busier group than the previously selected
+
+
+.. _`update_sd_pick_busiest.return`:
+
+Return
+------
+
+``true`` if ``sg`` is a busier group than the previously selected
 busiest group. ``false`` otherwise.
+
 
 
 .. _`update_sd_lb_stats`:
@@ -163,6 +184,7 @@ update_sd_lb_stats
         variable to hold the statistics for this sched_domain.
 
 
+
 .. _`check_asym_packing`:
 
 check_asym_packing
@@ -177,6 +199,7 @@ check_asym_packing
 
     :param struct sd_lb_stats \*sds:
         Statistics of the sched_domain which is to be packed
+
 
 
 .. _`check_asym_packing.description`:
@@ -198,8 +221,16 @@ CPU number than the packing function is being run on.  Here we are
 assuming lower CPU number will be equivalent to lower a SMT thread
 number.
 
-Return: 1 when packing is required and a task should be moved to
+
+
+.. _`check_asym_packing.return`:
+
+Return
+------
+
+1 when packing is required and a task should be moved to
 this CPU.  The amount of the imbalance is returned in \*imbalance.
+
 
 
 .. _`fix_small_imbalance`:
@@ -218,6 +249,7 @@ fix_small_imbalance
         Statistics of the sched_domain whose imbalance is to be calculated.
 
 
+
 .. _`calculate_imbalance`:
 
 calculate_imbalance
@@ -234,6 +266,7 @@ calculate_imbalance
         statistics of the sched_domain whose imbalance is to be calculated.
 
 
+
 .. _`find_busiest_group`:
 
 find_busiest_group
@@ -247,24 +280,24 @@ find_busiest_group
         The load balancing environment.
 
 
-.. _`find_busiest_group.description`:
-
-Description
------------
-
-Return:        - The busiest group if imbalance exists.::
-
-                - If no imbalance and user has opted for power-savings balance,
-                   return the least loaded group whose CPUs can be
-                   put to idle by rebalancing its tasks onto our group.
-
 
 .. _`find_busiest_group.description`:
 
 Description
 -----------
 
-Return:        - The busiest group if imbalance exists.::
+
+Also calculates the amount of weighted load which should be moved
+to restore balance.
+
+
+
+.. _`find_busiest_group.return`:
+
+Return
+------
+
+- The busiest group if imbalance exists.
 
                 - If no imbalance and user has opted for power-savings balance,
                    return the least loaded group whose CPUs can be

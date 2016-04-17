@@ -7,6 +7,4 @@ jbd2
 .. toctree::
    :maxdepth: 1
 
-   journal_c
    recovery_c
-   transaction_c

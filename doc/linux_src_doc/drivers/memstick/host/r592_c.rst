@@ -1,0 +1,20 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+======
+r592.c
+======
+
+
+.. _`memstick_debug_get_tpc_name`:
+
+memstick_debug_get_tpc_name
+===========================
+
+.. c:function:: const char *memstick_debug_get_tpc_name (int tpc)
+
+    debug helper that returns string for a TPC number
+
+    :param int tpc:
+
+        *undescribed*
+

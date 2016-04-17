@@ -4,6 +4,7 @@
 soc-devres.c
 ============
 
+
 .. _`devm_snd_soc_register_component`:
 
 devm_snd_soc_register_component
@@ -26,6 +27,7 @@ devm_snd_soc_register_component
         Number of DAIs to register
 
 
+
 .. _`devm_snd_soc_register_component.description`:
 
 Description
@@ -33,6 +35,7 @@ Description
 
 Register a component with automatic unregistration when the device is
 unregistered.
+
 
 
 .. _`devm_snd_soc_register_platform`:
@@ -51,6 +54,7 @@ devm_snd_soc_register_platform
         platform to register
 
 
+
 .. _`devm_snd_soc_register_platform.description`:
 
 Description
@@ -58,6 +62,7 @@ Description
 
 Register a platform driver with automatic unregistration when the device is
 unregistered.
+
 
 
 .. _`devm_snd_soc_register_card`:
@@ -76,6 +81,7 @@ devm_snd_soc_register_card
         Card to register
 
 
+
 .. _`devm_snd_soc_register_card.description`:
 
 Description
@@ -83,6 +89,7 @@ Description
 
 Register a card with automatic unregistration when the device is
 unregistered.
+
 
 
 .. _`devm_snd_dmaengine_pcm_register`:
@@ -102,6 +109,7 @@ devm_snd_dmaengine_pcm_register
 
     :param unsigned int flags:
         Platform specific quirks
+
 
 
 .. _`devm_snd_dmaengine_pcm_register.description`:

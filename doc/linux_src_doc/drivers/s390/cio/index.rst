@@ -7,8 +7,15 @@ cio
 .. toctree::
    :maxdepth: 1
 
-   airq_c
-   ccwgroup_c
-   cmf_c
-   device_c
-   device_ops_c
+   chp_c
+   chsc_c
+   cio_c
+   css_c
+   device_fsm_c
+   eadm_sch_c
+   fcx_c
+   isc_c
+   itcw_c
+   qdio_main_c
+   qdio_setup_c
+   scm_c

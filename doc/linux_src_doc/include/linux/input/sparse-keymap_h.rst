@@ -4,16 +4,18 @@
 sparse-keymap.h
 ===============
 
+
 .. _`key_entry`:
 
 struct key_entry
 ================
 
-.. c:type:: struct key_entry
+.. c:type:: key_entry
 
     keymap entry for use in sparse keymap
 
 
+.. _`key_entry.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`key_entry.members`:
 
 Members
 -------
@@ -43,6 +46,9 @@ Members
     anonymous
 
 
+
+
+.. _`key_entry.description`:
 
 Description
 -----------

@@ -4,16 +4,18 @@
 driver.h
 ========
 
+
 .. _`regulator_linear_range`:
 
 struct regulator_linear_range
 =============================
 
-.. c:type:: struct regulator_linear_range
+.. c:type:: regulator_linear_range
 
     specify linear voltage ranges
 
 
+.. _`regulator_linear_range.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`regulator_linear_range.members`:
 
 Members
 -------
@@ -46,6 +49,9 @@ Members
 
 
 
+
+.. _`regulator_linear_range.description`:
+
 Description
 -----------
 
@@ -54,16 +60,18 @@ Specify a range of voltages for :c:func:`regulator_map_linar_range` and
 :c:func:`regulator_list_linear_range`.
 
 
+
 .. _`regulator_ops`:
 
 struct regulator_ops
 ====================
 
-.. c:type:: struct regulator_ops
+.. c:type:: regulator_ops
 
     regulator operations.
 
 
+.. _`regulator_ops.definition`:
 
 Definition
 ----------
@@ -103,6 +111,7 @@ Definition
   };
 
 
+.. _`regulator_ops.members`:
 
 Members
 -------
@@ -114,9 +123,8 @@ Members
     regulator_desc.n_voltages.  Voltages may be reported in any order.
 
 :``set_voltage``:
-    Set the voltage for the regulator within the range specified.::
-
-                  The driver should select the voltage closest to min_uV.
+    Set the voltage for the regulator within the range specified.
+    The driver should select the voltage closest to min_uV.
 
 :``map_voltage``:
     Convert a voltage into a selector
@@ -133,9 +141,8 @@ Members
     regulator.
 
 :``set_current_limit``:
-    Configure a limit for a current-limited regulator.::
-
-                        The driver should select the current closest to max_uA.
+    Configure a limit for a current-limited regulator.
+    The driver should select the current closest to max_uA.
 
 :``get_current_limit``:
     Get the configured limit for a current-limited regulator.
@@ -153,9 +160,8 @@ Members
     Configure the regulator as disabled.
 
 :``is_enabled``:
-    Return 1 if the regulator is enabled, 0 if not.::
-
-                    May also return negative errno.
+    Return 1 if the regulator is enabled, 0 if not.
+    May also return negative errno.
 
 :``set_mode``:
     Set the configured operating mode for the regulator.
@@ -219,6 +225,9 @@ Members
 
 
 
+
+.. _`regulator_ops.description`:
+
 Description
 -----------
 
@@ -226,16 +235,18 @@ This struct describes regulator operations which can be implemented by
 regulator chip drivers.
 
 
+
 .. _`regulator_desc`:
 
 struct regulator_desc
 =====================
 
-.. c:type:: struct regulator_desc
+.. c:type:: regulator_desc
 
     Static regulator descriptor
 
 
+.. _`regulator_desc.definition`:
 
 Definition
 ----------
@@ -287,6 +298,7 @@ Definition
   };
 
 
+.. _`regulator_desc.members`:
 
 Members
 -------
@@ -304,16 +316,15 @@ Members
     Name of node containing regulator definitions in DT.
 
 :``of_parse_cb``:
-    Optional callback called only if of_match is present.::
-
-                  Will be called for each regulator parsed from DT, during
-                  init_data parsing.
-                  The regulator_config passed as argument to the callback will
-                  be a copy of config passed to regulator_register, valid only
-                  for this particular call. Callback may freely change the
-                  config but it cannot store it for later usage.
-                  Callback should return 0 on success or negative ERRNO
-                  indicating failure.
+    Optional callback called only if of_match is present.
+    Will be called for each regulator parsed from DT, during
+    init_data parsing.
+    The regulator_config passed as argument to the callback will
+    be a copy of config passed to regulator_register, valid only
+    for this particular call. Callback may freely change the
+    config but it cannot store it for later usage.
+    Callback should return 0 on success or negative ERRNO
+    indicating failure.
 
 :``id``:
     Numerical identifier for the regulator.
@@ -433,6 +444,9 @@ Members
 
 
 
+
+.. _`regulator_desc.description`:
+
 Description
 -----------
 
@@ -443,16 +457,18 @@ structure contains the non-varying parts of the regulator
 description.
 
 
+
 .. _`regulator_config`:
 
 struct regulator_config
 =======================
 
-.. c:type:: struct regulator_config
+.. c:type:: regulator_config
 
     Dynamic regulator descriptor
 
 
+.. _`regulator_config.definition`:
 
 Definition
 ----------
@@ -472,6 +488,7 @@ Definition
   };
 
 
+.. _`regulator_config.members`:
 
 Members
 -------
@@ -508,6 +525,9 @@ Members
     Flags to use when calling :c:func:`gpio_request_one`
 
 
+
+
+.. _`regulator_config.description`:
 
 Description
 -----------

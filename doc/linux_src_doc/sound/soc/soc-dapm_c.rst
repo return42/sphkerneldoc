@@ -4,6 +4,7 @@
 soc-dapm.c
 ==========
 
+
 .. _`snd_soc_dapm_kcontrol_widget`:
 
 snd_soc_dapm_kcontrol_widget
@@ -15,6 +16,7 @@ snd_soc_dapm_kcontrol_widget
 
     :param struct snd_kcontrol \*kcontrol:
         The kcontrol
+
 
 
 .. _`snd_soc_dapm_kcontrol_dapm`:
@@ -30,13 +32,15 @@ snd_soc_dapm_kcontrol_dapm
         The kcontrol
 
 
-.. _`snd_soc_dapm_kcontrol_dapm.description`:
 
-Description
------------
+.. _`snd_soc_dapm_kcontrol_dapm.note`:
 
-Note: This function must only be used on kcontrols that are known to have
+Note
+----
+
+This function must only be used on kcontrols that are known to have
 been registered for a CODEC. Otherwise the behaviour is undefined.
+
 
 
 .. _`snd_soc_dapm_force_bias_level`:
@@ -53,6 +57,7 @@ snd_soc_dapm_force_bias_level
 
     :param enum snd_soc_bias_level level:
         The level to set
+
 
 
 .. _`snd_soc_dapm_force_bias_level.description`:
@@ -73,6 +78,7 @@ used during probe or resume from suspend to power up the device so
 initialization can be done, before the DAPM core takes over.
 
 
+
 .. _`snd_soc_dapm_set_bias_level`:
 
 snd_soc_dapm_set_bias_level
@@ -89,6 +95,7 @@ snd_soc_dapm_set_bias_level
         level to configure
 
 
+
 .. _`snd_soc_dapm_set_bias_level.description`:
 
 Description
@@ -97,6 +104,7 @@ Description
 Configure the bias (power) levels for the SoC audio device.
 
 Returns 0 for success else error.
+
 
 
 .. _`snd_soc_dapm_dai_get_connected_widgets`:
@@ -118,6 +126,7 @@ snd_soc_dapm_dai_get_connected_widgets
         list of active widgets for this stream.
 
 
+
 .. _`snd_soc_dapm_dai_get_connected_widgets.description`:
 
 Description
@@ -128,6 +137,7 @@ the initial stream specified by name. This takes into account
 current mixer and mux kcontrol settings. Creates list of valid widgets.
 
 Returns the number of valid paths or negative error.
+
 
 
 .. _`snd_soc_dapm_sync_unlocked`:
@@ -143,6 +153,7 @@ snd_soc_dapm_sync_unlocked
         DAPM context
 
 
+
 .. _`snd_soc_dapm_sync_unlocked.description`:
 
 Description
@@ -154,6 +165,7 @@ stream or path usage.
 Requires external locking.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_sync`:
@@ -169,6 +181,7 @@ snd_soc_dapm_sync
         DAPM context
 
 
+
 .. _`snd_soc_dapm_sync.description`:
 
 Description
@@ -178,6 +191,7 @@ Walks all dapm audio paths and powers widgets according to their
 stream or path usage.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_add_routes`:
@@ -199,6 +213,7 @@ snd_soc_dapm_add_routes
         number of routes
 
 
+
 .. _`snd_soc_dapm_add_routes.description`:
 
 Description
@@ -210,6 +225,7 @@ of the audio signal.
 
 Returns 0 for success else error. On error all resources can be freed
 with a call to :c:func:`snd_soc_card_free`.
+
 
 
 .. _`snd_soc_dapm_del_routes`:
@@ -231,12 +247,14 @@ snd_soc_dapm_del_routes
         number of routes
 
 
+
 .. _`snd_soc_dapm_del_routes.description`:
 
 Description
 -----------
 
 Removes routes from the DAPM context.
+
 
 
 .. _`snd_soc_dapm_weak_routes`:
@@ -258,6 +276,7 @@ snd_soc_dapm_weak_routes
         number of routes
 
 
+
 .. _`snd_soc_dapm_weak_routes.description`:
 
 Description
@@ -274,6 +293,7 @@ Note that CODEC drivers should not use this as sidetone type paths
 can frequently also be used as bypass paths.
 
 
+
 .. _`snd_soc_dapm_new_widgets`:
 
 snd_soc_dapm_new_widgets
@@ -287,6 +307,7 @@ snd_soc_dapm_new_widgets
         card to be checked for new dapm widgets
 
 
+
 .. _`snd_soc_dapm_new_widgets.description`:
 
 Description
@@ -295,6 +316,7 @@ Description
 Checks the codec for any new dapm widgets and creates them if found.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_get_volsw`:
@@ -313,6 +335,7 @@ snd_soc_dapm_get_volsw
         control element information
 
 
+
 .. _`snd_soc_dapm_get_volsw.description`:
 
 Description
@@ -321,6 +344,7 @@ Description
 Callback to get the value of a dapm mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_put_volsw`:
@@ -339,6 +363,7 @@ snd_soc_dapm_put_volsw
         control element information
 
 
+
 .. _`snd_soc_dapm_put_volsw.description`:
 
 Description
@@ -347,6 +372,7 @@ Description
 Callback to set the value of a dapm mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_get_enum_double`:
@@ -365,6 +391,7 @@ snd_soc_dapm_get_enum_double
         control element information
 
 
+
 .. _`snd_soc_dapm_get_enum_double.description`:
 
 Description
@@ -373,6 +400,7 @@ Description
 Callback to get the value of a dapm enumerated double mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_put_enum_double`:
@@ -391,6 +419,7 @@ snd_soc_dapm_put_enum_double
         control element information
 
 
+
 .. _`snd_soc_dapm_put_enum_double.description`:
 
 Description
@@ -399,6 +428,7 @@ Description
 Callback to set the value of a dapm enumerated double mixer control.
 
 Returns 0 for success.
+
 
 
 .. _`snd_soc_dapm_info_pin_switch`:
@@ -417,12 +447,14 @@ snd_soc_dapm_info_pin_switch
         control element information
 
 
+
 .. _`snd_soc_dapm_info_pin_switch.description`:
 
 Description
 -----------
 
 Callback to provide information about a pin switch control.
+
 
 
 .. _`snd_soc_dapm_get_pin_switch`:
@@ -441,6 +473,7 @@ snd_soc_dapm_get_pin_switch
         Value
 
 
+
 .. _`snd_soc_dapm_put_pin_switch`:
 
 snd_soc_dapm_put_pin_switch
@@ -455,6 +488,7 @@ snd_soc_dapm_put_pin_switch
 
     :param struct snd_ctl_elem_value \*ucontrol:
         Value
+
 
 
 .. _`snd_soc_dapm_new_controls`:
@@ -476,6 +510,7 @@ snd_soc_dapm_new_controls
         number of widgets
 
 
+
 .. _`snd_soc_dapm_new_controls.description`:
 
 Description
@@ -484,6 +519,7 @@ Description
 Creates new DAPM controls based upon the templates.
 
 Returns 0 for success else error.
+
 
 
 .. _`snd_soc_dapm_stream_event`:
@@ -505,6 +541,7 @@ snd_soc_dapm_stream_event
         stream event
 
 
+
 .. _`snd_soc_dapm_stream_event.description`:
 
 Description
@@ -514,6 +551,7 @@ Sends a stream event to the dapm core. The core then makes any
 necessary widget power changes.
 
 Returns 0 for success else error.
+
 
 
 .. _`snd_soc_dapm_enable_pin_unlocked`:
@@ -532,6 +570,7 @@ snd_soc_dapm_enable_pin_unlocked
         pin name
 
 
+
 .. _`snd_soc_dapm_enable_pin_unlocked.description`:
 
 Description
@@ -542,8 +581,16 @@ a valid audio route and active audio stream.
 
 Requires external locking.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_enable_pin_unlocked.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_enable_pin`:
@@ -562,6 +609,7 @@ snd_soc_dapm_enable_pin
         pin name
 
 
+
 .. _`snd_soc_dapm_enable_pin.description`:
 
 Description
@@ -570,8 +618,16 @@ Description
 Enables input/output pin and its parents or children widgets iff there is
 a valid audio route and active audio stream.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_enable_pin.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_force_enable_pin_unlocked`:
@@ -590,6 +646,7 @@ snd_soc_dapm_force_enable_pin_unlocked
         pin name
 
 
+
 .. _`snd_soc_dapm_force_enable_pin_unlocked.description`:
 
 Description
@@ -601,8 +658,16 @@ jack detection.
 
 Requires external locking.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_force_enable_pin_unlocked.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_force_enable_pin`:
@@ -621,6 +686,7 @@ snd_soc_dapm_force_enable_pin
         pin name
 
 
+
 .. _`snd_soc_dapm_force_enable_pin.description`:
 
 Description
@@ -630,8 +696,16 @@ Enables input/output pin regardless of any other state.  This is
 intended for use with microphone bias supplies used in microphone
 jack detection.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_force_enable_pin.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_disable_pin_unlocked`:
@@ -650,6 +724,7 @@ snd_soc_dapm_disable_pin_unlocked
         pin name
 
 
+
 .. _`snd_soc_dapm_disable_pin_unlocked.description`:
 
 Description
@@ -659,8 +734,16 @@ Disables input/output pin and its parents or children widgets.
 
 Requires external locking.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_disable_pin_unlocked.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_disable_pin`:
@@ -679,6 +762,7 @@ snd_soc_dapm_disable_pin
         pin name
 
 
+
 .. _`snd_soc_dapm_disable_pin.description`:
 
 Description
@@ -686,8 +770,16 @@ Description
 
 Disables input/output pin and its parents or children widgets.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_disable_pin.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_nc_pin_unlocked`:
@@ -706,6 +798,7 @@ snd_soc_dapm_nc_pin_unlocked
         pin name
 
 
+
 .. _`snd_soc_dapm_nc_pin_unlocked.description`:
 
 Description
@@ -719,8 +812,16 @@ paths through the pin.
 
 Requires external locking.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_nc_pin_unlocked.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_nc_pin`:
@@ -739,6 +840,7 @@ snd_soc_dapm_nc_pin
         pin name
 
 
+
 .. _`snd_soc_dapm_nc_pin.description`:
 
 Description
@@ -750,8 +852,16 @@ any parent or child widgets.  At present this is identical to
 additional things such as disabling controls which only affect
 paths through the pin.
 
-NOTE: :c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
+
+
+.. _`snd_soc_dapm_nc_pin.note`:
+
+NOTE
+----
+
+:c:func:`snd_soc_dapm_sync` needs to be called after this for DAPM to
 do any widget power switching.
+
 
 
 .. _`snd_soc_dapm_get_pin_status`:
@@ -770,6 +880,7 @@ snd_soc_dapm_get_pin_status
         audio signal pin endpoint (or start point)
 
 
+
 .. _`snd_soc_dapm_get_pin_status.description`:
 
 Description
@@ -778,6 +889,7 @@ Description
 Get audio pin status - connected or disconnected.
 
 Returns 1 for connected otherwise 0.
+
 
 
 .. _`snd_soc_dapm_ignore_suspend`:
@@ -796,6 +908,7 @@ snd_soc_dapm_ignore_suspend
         audio signal pin endpoint (or start point)
 
 
+
 .. _`snd_soc_dapm_ignore_suspend.description`:
 
 Description
@@ -806,6 +919,7 @@ system is disabled a path between two endpoints flagged as ignoring
 suspend will not be disabled.  The path must already be enabled via
 normal means at suspend time, it will not be turned on if it was not
 already enabled.
+
 
 
 .. _`snd_soc_dapm_free`:
@@ -819,6 +933,7 @@ snd_soc_dapm_free
 
     :param struct snd_soc_dapm_context \*dapm:
         DAPM context
+
 
 
 .. _`snd_soc_dapm_free.description`:

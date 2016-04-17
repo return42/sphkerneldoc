@@ -4,16 +4,18 @@
 pipe_fs_i.h
 ===========
 
+
 .. _`pipe_buffer`:
 
 struct pipe_buffer
 ==================
 
-.. c:type:: struct pipe_buffer
+.. c:type:: pipe_buffer
 
     a linux kernel pipe buffer
 
 
+.. _`pipe_buffer.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`pipe_buffer.members`:
 
 Members
 -------
@@ -54,16 +57,18 @@ Members
 
 
 
+
 .. _`pipe_inode_info`:
 
 struct pipe_inode_info
 ======================
 
-.. c:type:: struct pipe_inode_info
+.. c:type:: pipe_inode_info
 
     a linux kernel pipe
 
 
+.. _`pipe_inode_info.definition`:
 
 Definition
 ----------
@@ -90,6 +95,7 @@ Definition
   };
 
 
+.. _`pipe_inode_info.members`:
 
 Members
 -------

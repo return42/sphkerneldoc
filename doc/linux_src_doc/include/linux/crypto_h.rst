@@ -4,6 +4,7 @@
 crypto.h
 ========
 
+
 .. _`block-cipher-context-data-structures`:
 
 Block Cipher Context Data Structures
@@ -11,6 +12,7 @@ Block Cipher Context Data Structures
 
 These data structures define the operating context for each block cipher
 type.
+
 
 
 .. _`block-cipher-algorithm-definitions`:
@@ -22,16 +24,18 @@ These data structures define modular crypto algorithm implementations,
 managed via :c:func:`crypto_register_alg` and :c:func:`crypto_unregister_alg`.
 
 
+
 .. _`ablkcipher_alg`:
 
 struct ablkcipher_alg
 =====================
 
-.. c:type:: struct ablkcipher_alg
+.. c:type:: ablkcipher_alg
 
     asynchronous block cipher definition
 
 
+.. _`ablkcipher_alg.definition`:
 
 Definition
 ----------
@@ -51,6 +55,7 @@ Definition
   };
 
 
+.. _`ablkcipher_alg.members`:
 
 Members
 -------
@@ -120,6 +125,9 @@ Members
 
 
 
+
+.. _`ablkcipher_alg.description`:
+
 Description
 -----------
 
@@ -127,16 +135,18 @@ All fields except ``givencrypt`` , ``givdecrypt`` , ``geniv`` and ``ivsize`` are
 mandatory and must be filled.
 
 
+
 .. _`blkcipher_alg`:
 
 struct blkcipher_alg
 ====================
 
-.. c:type:: struct blkcipher_alg
+.. c:type:: blkcipher_alg
 
     synchronous block cipher definition
 
 
+.. _`blkcipher_alg.definition`:
 
 Definition
 ----------
@@ -154,6 +164,7 @@ Definition
   };
 
 
+.. _`blkcipher_alg.members`:
 
 Members
 -------
@@ -181,10 +192,14 @@ Members
 
 
 
+
+.. _`blkcipher_alg.description`:
+
 Description
 -----------
 
 All fields except ``geniv`` and ``ivsize`` are mandatory and must be filled.
+
 
 
 .. _`cipher_alg`:
@@ -192,11 +207,12 @@ All fields except ``geniv`` and ``ivsize`` are mandatory and must be filled.
 struct cipher_alg
 =================
 
-.. c:type:: struct cipher_alg
+.. c:type:: cipher_alg
 
     single-block symmetric ciphers definition
 
 
+.. _`cipher_alg.definition`:
 
 Definition
 ----------
@@ -212,6 +228,7 @@ Definition
   };
 
 
+.. _`cipher_alg.members`:
 
 Members
 -------
@@ -270,10 +287,14 @@ Members
 
 
 
+
+.. _`cipher_alg.description`:
+
 Description
 -----------
 
 All fields are mandatory and must be filled.
+
 
 
 .. _`crypto_alg`:
@@ -281,11 +302,12 @@ All fields are mandatory and must be filled.
 struct crypto_alg
 =================
 
-.. c:type:: struct crypto_alg
+.. c:type:: crypto_alg
 
     definition of a cryptograpic cipher algorithm
 
 
+.. _`crypto_alg.definition`:
 
 Definition
 ----------
@@ -312,6 +334,7 @@ Definition
   };
 
 
+.. _`crypto_alg.members`:
 
 Members
 -------
@@ -324,7 +347,7 @@ Members
 
 :``cra_flags``:
     Flags describing this transformation. See include/linux/crypto.h
-    CRYPTO_ALG_\* flags for the flags which go in here. Those are
+    CRYPTO_ALG\_\* flags for the flags which go in here. Those are
     used for fine-tuning the description of the transformation
     algorithm.
 
@@ -413,12 +436,16 @@ Members
 
 
 
+
+.. _`crypto_alg.description`:
+
 Description
 -----------
 
 The struct crypto_alg describes a generic Crypto API algorithm and is common
 for all of the transformations. Any variable not documented here shall not
 be used by a cipher implementation as it is internal to the Crypto API.
+
 
 
 .. _`asynchronous-block-cipher-api`:
@@ -453,6 +480,7 @@ which operation just finished if it invoked multiple in parallel. This
 state information is unused by the kernel crypto API.
 
 
+
 .. _`crypto_alloc_ablkcipher`:
 
 crypto_alloc_ablkcipher
@@ -473,6 +501,7 @@ crypto_alloc_ablkcipher
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_ablkcipher.description`:
 
 Description
@@ -482,8 +511,16 @@ Allocate a cipher handle for an ablkcipher. The returned struct
 crypto_ablkcipher is the cipher handle that is required for any subsequent
 API invocation for that ablkcipher.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_ablkcipher.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_ablkcipher`:
@@ -497,6 +534,7 @@ crypto_free_ablkcipher
 
     :param struct crypto_ablkcipher \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_has_ablkcipher`:
@@ -519,13 +557,15 @@ crypto_has_ablkcipher
         specifies the mask for the cipher
 
 
-.. _`crypto_has_ablkcipher.description`:
 
-Description
------------
+.. _`crypto_has_ablkcipher.return`:
 
-Return: true when the ablkcipher is known to the kernel crypto API; false
+Return
+------
+
+true when the ablkcipher is known to the kernel crypto API; false
 otherwise
+
 
 
 .. _`crypto_ablkcipher_ivsize`:
@@ -541,6 +581,7 @@ crypto_ablkcipher_ivsize
         cipher handle
 
 
+
 .. _`crypto_ablkcipher_ivsize.description`:
 
 Description
@@ -549,7 +590,15 @@ Description
 The size of the IV for the ablkcipher referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-Return: IV size in bytes
+
+
+.. _`crypto_ablkcipher_ivsize.return`:
+
+Return
+------
+
+IV size in bytes
+
 
 
 .. _`crypto_ablkcipher_blocksize`:
@@ -565,6 +614,7 @@ crypto_ablkcipher_blocksize
         cipher handle
 
 
+
 .. _`crypto_ablkcipher_blocksize.description`:
 
 Description
@@ -574,7 +624,15 @@ The block size for the ablkcipher referenced with the cipher handle is
 returned. The caller may use that information to allocate appropriate
 memory for the data returned by the encryption or decryption operation
 
-Return: block size of cipher
+
+
+.. _`crypto_ablkcipher_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_ablkcipher_setkey`:
@@ -596,6 +654,7 @@ crypto_ablkcipher_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_ablkcipher_setkey.description`:
 
 Description
@@ -609,7 +668,15 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_ablkcipher_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_ablkcipher_reqtfm`:
@@ -625,6 +692,7 @@ crypto_ablkcipher_reqtfm
         ablkcipher_request out of which the cipher handle is to be obtained
 
 
+
 .. _`crypto_ablkcipher_reqtfm.description`:
 
 Description
@@ -633,7 +701,15 @@ Description
 Return the crypto_ablkcipher handle when furnishing an ablkcipher_request
 data structure.
 
-Return: crypto_ablkcipher handle
+
+
+.. _`crypto_ablkcipher_reqtfm.return`:
+
+Return
+------
+
+crypto_ablkcipher handle
+
 
 
 .. _`crypto_ablkcipher_encrypt`:
@@ -650,6 +726,7 @@ crypto_ablkcipher_encrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_ablkcipher_encrypt.description`:
 
 Description
@@ -657,9 +734,17 @@ Description
 
 Encrypt plaintext data using the ablkcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-ablkcipher_request_\* functions.
+ablkcipher_request\_\* functions.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_ablkcipher_encrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_ablkcipher_decrypt`:
@@ -676,6 +761,7 @@ crypto_ablkcipher_decrypt
         needed to perform the cipher operation
 
 
+
 .. _`crypto_ablkcipher_decrypt.description`:
 
 Description
@@ -683,9 +769,17 @@ Description
 
 Decrypt ciphertext data using the ablkcipher_request handle. That data
 structure and how it is filled with data is discussed with the
-ablkcipher_request_\* functions.
+ablkcipher_request\_\* functions.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_ablkcipher_decrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`asynchronous-cipher-request-handle`:
@@ -697,8 +791,9 @@ The ablkcipher_request data structure contains all pointers to data
 required for the asynchronous cipher operation. This includes the cipher
 handle (which can be used by multiple ablkcipher_request instances), pointer
 to plaintext and ciphertext, asynchronous callback function, etc. It acts
-as a handle to the ablkcipher_request_\* API calls in a similar way as
-ablkcipher handle to the crypto_ablkcipher_\* API calls.
+as a handle to the ablkcipher_request\_\* API calls in a similar way as
+ablkcipher handle to the crypto_ablkcipher\_\* API calls.
+
 
 
 .. _`crypto_ablkcipher_reqsize`:
@@ -714,12 +809,14 @@ crypto_ablkcipher_reqsize
         cipher handle
 
 
-.. _`crypto_ablkcipher_reqsize.description`:
 
-Description
------------
+.. _`crypto_ablkcipher_reqsize.return`:
 
-Return: number of bytes
+Return
+------
+
+number of bytes
+
 
 
 .. _`ablkcipher_request_set_tfm`:
@@ -738,6 +835,7 @@ ablkcipher_request_set_tfm
         cipher handle that shall be added to the request handle
 
 
+
 .. _`ablkcipher_request_set_tfm.description`:
 
 Description
@@ -745,6 +843,7 @@ Description
 
 Allow the caller to replace the existing ablkcipher handle in the request
 data structure with a different one.
+
 
 
 .. _`ablkcipher_request_alloc`:
@@ -763,6 +862,7 @@ ablkcipher_request_alloc
         memory allocation flag that is handed to kmalloc by the API call.
 
 
+
 .. _`ablkcipher_request_alloc.description`:
 
 Description
@@ -772,8 +872,16 @@ Allocate the request data structure that must be used with the ablkcipher
 encrypt and decrypt API calls. During the allocation, the provided ablkcipher
 handle is registered in the request data structure.
 
-Return: allocated request handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`ablkcipher_request_alloc.return`:
+
+Return
+------
+
+allocated request handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`ablkcipher_request_free`:
@@ -787,6 +895,7 @@ ablkcipher_request_free
 
     :param struct ablkcipher_request \*req:
         request data structure cipher handle to be freed
+
 
 
 .. _`ablkcipher_request_set_callback`:
@@ -821,6 +930,7 @@ ablkcipher_request_set_callback
         crypto_async_request data structure provided to the callback function.
 
 
+
 .. _`ablkcipher_request_set_callback.description`:
 
 Description
@@ -833,6 +943,7 @@ The callback function is registered with the ablkcipher_request handle and
 must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
+
 
 
 .. _`ablkcipher_request_set_crypt`:
@@ -861,6 +972,7 @@ ablkcipher_request_set_crypt
         by crypto_ablkcipher_ivsize
 
 
+
 .. _`ablkcipher_request_set_crypt.description`:
 
 Description
@@ -872,6 +984,7 @@ scatter / gather lists.
 For encryption, the source is treated as the plaintext and the
 destination is the ciphertext. For a decryption operation, the use is
 reversed - the source is the ciphertext and the destination is the plaintext.
+
 
 
 .. _`synchronous-block-cipher-api`:
@@ -906,6 +1019,7 @@ for the output data point to sufficiently large buffers, i.e. multiples of
 the block size of the cipher.
 
 
+
 .. _`crypto_alloc_blkcipher`:
 
 crypto_alloc_blkcipher
@@ -926,6 +1040,7 @@ crypto_alloc_blkcipher
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_blkcipher.description`:
 
 Description
@@ -935,8 +1050,16 @@ Allocate a cipher handle for a block cipher. The returned struct
 crypto_blkcipher is the cipher handle that is required for any subsequent
 API invocation for that block cipher.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_blkcipher.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_blkcipher`:
@@ -950,6 +1073,7 @@ crypto_free_blkcipher
 
     :param struct crypto_blkcipher \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_has_blkcipher`:
@@ -972,13 +1096,15 @@ crypto_has_blkcipher
         specifies the mask for the cipher
 
 
-.. _`crypto_has_blkcipher.description`:
 
-Description
------------
+.. _`crypto_has_blkcipher.return`:
 
-Return: true when the block cipher is known to the kernel crypto API; false
+Return
+------
+
+true when the block cipher is known to the kernel crypto API; false
 otherwise
+
 
 
 .. _`crypto_blkcipher_name`:
@@ -994,12 +1120,14 @@ crypto_blkcipher_name
         cipher handle
 
 
-.. _`crypto_blkcipher_name.description`:
 
-Description
------------
+.. _`crypto_blkcipher_name.return`:
 
-Return: The character string holding the name of the cipher
+Return
+------
+
+The character string holding the name of the cipher
+
 
 
 .. _`crypto_blkcipher_ivsize`:
@@ -1015,6 +1143,7 @@ crypto_blkcipher_ivsize
         cipher handle
 
 
+
 .. _`crypto_blkcipher_ivsize.description`:
 
 Description
@@ -1023,7 +1152,15 @@ Description
 The size of the IV for the block cipher referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-Return: IV size in bytes
+
+
+.. _`crypto_blkcipher_ivsize.return`:
+
+Return
+------
+
+IV size in bytes
+
 
 
 .. _`crypto_blkcipher_blocksize`:
@@ -1039,6 +1176,7 @@ crypto_blkcipher_blocksize
         cipher handle
 
 
+
 .. _`crypto_blkcipher_blocksize.description`:
 
 Description
@@ -1048,7 +1186,15 @@ The block size for the block cipher referenced with the cipher handle is
 returned. The caller may use that information to allocate appropriate
 memory for the data returned by the encryption or decryption operation.
 
-Return: block size of cipher
+
+
+.. _`crypto_blkcipher_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_blkcipher_setkey`:
@@ -1070,6 +1216,7 @@ crypto_blkcipher_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_blkcipher_setkey.description`:
 
 Description
@@ -1083,7 +1230,15 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_blkcipher_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_blkcipher_encrypt`:
@@ -1109,6 +1264,7 @@ crypto_blkcipher_encrypt
         number of bytes of the plaintext to encrypt.
 
 
+
 .. _`crypto_blkcipher_encrypt.description`:
 
 Description
@@ -1122,7 +1278,15 @@ reside on the stack. The caller must fill desc as follows: desc.tfm is filled
 with the block cipher handle; desc.flags is filled with either
 CRYPTO_TFM_REQ_MAY_SLEEP or 0.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_blkcipher_encrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_blkcipher_encrypt_iv`:
@@ -1148,6 +1312,7 @@ crypto_blkcipher_encrypt_iv
         number of bytes of the plaintext to encrypt.
 
 
+
 .. _`crypto_blkcipher_encrypt_iv.description`:
 
 Description
@@ -1162,7 +1327,15 @@ with the block cipher handle; desc.info is filled with the IV to be used for
 the current operation; desc.flags is filled with either
 CRYPTO_TFM_REQ_MAY_SLEEP or 0.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_blkcipher_encrypt_iv.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_blkcipher_decrypt`:
@@ -1188,6 +1361,7 @@ crypto_blkcipher_decrypt
         number of bytes of the ciphertext to decrypt.
 
 
+
 .. _`crypto_blkcipher_decrypt.description`:
 
 Description
@@ -1199,7 +1373,15 @@ call of crypto_blkcipher_set_iv.
 The blkcipher_desc data structure must be filled by the caller as documented
 for the crypto_blkcipher_encrypt call above.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_blkcipher_decrypt.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_blkcipher_decrypt_iv`:
@@ -1225,6 +1407,7 @@ crypto_blkcipher_decrypt_iv
         number of bytes of the ciphertext to decrypt.
 
 
+
 .. _`crypto_blkcipher_decrypt_iv.description`:
 
 Description
@@ -1236,7 +1419,15 @@ cipher operation. Any previously set IV is not used.
 The blkcipher_desc data structure must be filled by the caller as documented
 for the crypto_blkcipher_encrypt_iv call above.
 
-Return: 0 if the cipher operation was successful; < 0 if an error occurred
+
+
+.. _`crypto_blkcipher_decrypt_iv.return`:
+
+Return
+------
+
+0 if the cipher operation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_blkcipher_set_iv`:
@@ -1258,6 +1449,7 @@ crypto_blkcipher_set_iv
         length of the IV in bytes
 
 
+
 .. _`crypto_blkcipher_set_iv.description`:
 
 Description
@@ -1265,6 +1457,7 @@ Description
 
 The caller provided IV is set for the block cipher referenced by the cipher
 handle.
+
 
 
 .. _`crypto_blkcipher_get_iv`:
@@ -1286,6 +1479,7 @@ crypto_blkcipher_get_iv
         length of the buffer dst
 
 
+
 .. _`crypto_blkcipher_get_iv.description`:
 
 Description
@@ -1294,6 +1488,7 @@ Description
 The caller can obtain the IV set for the block cipher referenced by the
 cipher handle and store it into the user-provided buffer. If the buffer
 has an insufficient space, the IV is truncated to fit the buffer.
+
 
 
 .. _`single-block-cipher-api`:
@@ -1313,6 +1508,7 @@ of templates or other concepts that only need to perform the cipher operation
 on one block at a time. Templates invoke the underlying cipher primitive
 block-wise and process either the input or the output data of these cipher
 operations.
+
 
 
 .. _`crypto_alloc_cipher`:
@@ -1335,6 +1531,7 @@ crypto_alloc_cipher
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_cipher.description`:
 
 Description
@@ -1344,8 +1541,16 @@ Allocate a cipher handle for a single block cipher. The returned struct
 crypto_cipher is the cipher handle that is required for any subsequent API
 invocation for that single block cipher.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_cipher.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_cipher`:
@@ -1359,6 +1564,7 @@ crypto_free_cipher
 
     :param struct crypto_cipher \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_has_cipher`:
@@ -1381,13 +1587,15 @@ crypto_has_cipher
         specifies the mask for the cipher
 
 
-.. _`crypto_has_cipher.description`:
 
-Description
------------
+.. _`crypto_has_cipher.return`:
 
-Return: true when the single block cipher is known to the kernel crypto API;
+Return
+------
+
+true when the single block cipher is known to the kernel crypto API;
 false otherwise
+
 
 
 .. _`crypto_cipher_blocksize`:
@@ -1403,6 +1611,7 @@ crypto_cipher_blocksize
         cipher handle
 
 
+
 .. _`crypto_cipher_blocksize.description`:
 
 Description
@@ -1412,7 +1621,15 @@ The block size for the single block cipher referenced with the cipher handle
 tfm is returned. The caller may use that information to allocate appropriate
 memory for the data returned by the encryption or decryption operation
 
-Return: block size of cipher
+
+
+.. _`crypto_cipher_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_cipher_setkey`:
@@ -1434,6 +1651,7 @@ crypto_cipher_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_cipher_setkey.description`:
 
 Description
@@ -1447,7 +1665,15 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_cipher_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_cipher_encrypt_one`:
@@ -1469,6 +1695,7 @@ crypto_cipher_encrypt_one
         buffer holding the plaintext to be encrypted
 
 
+
 .. _`crypto_cipher_encrypt_one.description`:
 
 Description
@@ -1476,6 +1703,7 @@ Description
 
 Invoke the encryption operation of one block. The caller must ensure that
 the plaintext and ciphertext buffers are at least one block in size.
+
 
 
 .. _`crypto_cipher_decrypt_one`:
@@ -1495,6 +1723,7 @@ crypto_cipher_decrypt_one
 
     :param const u8 \*src:
         buffer holding the ciphertext to be decrypted
+
 
 
 .. _`crypto_cipher_decrypt_one.description`:

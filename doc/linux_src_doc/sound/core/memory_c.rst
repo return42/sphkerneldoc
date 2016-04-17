@@ -4,6 +4,7 @@
 memory.c
 ========
 
+
 .. _`copy_to_user_fromio`:
 
 copy_to_user_fromio
@@ -23,6 +24,7 @@ copy_to_user_fromio
         the data size to copy in bytes
 
 
+
 .. _`copy_to_user_fromio.description`:
 
 Description
@@ -30,7 +32,15 @@ Description
 
 Copies the data from mmio-space to user-space.
 
-Return: Zero if successful, or non-zero on failure.
+
+
+.. _`copy_to_user_fromio.return`:
+
+Return
+------
+
+Zero if successful, or non-zero on failure.
+
 
 
 .. _`copy_from_user_toio`:
@@ -52,6 +62,7 @@ copy_from_user_toio
         the data size to copy in bytes
 
 
+
 .. _`copy_from_user_toio.description`:
 
 Description
@@ -59,5 +70,12 @@ Description
 
 Copies the data from user-space to mmio-space.
 
-Return: Zero if successful, or non-zero on failure.
+
+
+.. _`copy_from_user_toio.return`:
+
+Return
+------
+
+Zero if successful, or non-zero on failure.
 

@@ -4,6 +4,7 @@
 pcm_dmaengine.c
 ===============
 
+
 .. _`snd_hwparams_to_dma_slave_config`:
 
 snd_hwparams_to_dma_slave_config
@@ -23,6 +24,7 @@ snd_hwparams_to_dma_slave_config
         DMA slave config
 
 
+
 .. _`snd_hwparams_to_dma_slave_config.description`:
 
 Description
@@ -30,6 +32,7 @@ Description
 
 This function can be used to initialize a dma_slave_config from a substream
 and hw_params in a dmaengine based PCM driver implementation.
+
 
 
 .. _`snd_dmaengine_pcm_set_config_from_dai_data`:
@@ -51,6 +54,7 @@ snd_dmaengine_pcm_set_config_from_dai_data
         DMA slave configuration
 
 
+
 .. _`snd_dmaengine_pcm_set_config_from_dai_data.description`:
 
 Description
@@ -64,6 +68,7 @@ fields will be initialized, if it is a capture stream the src fields will be
 initialized. The {dst,src}_addr_width field will only be initialized if the
 addr_width field of the DAI DMA data struct is not equal to
 DMA_SLAVE_BUSWIDTH_UNDEFINED.
+
 
 
 .. _`snd_dmaengine_pcm_trigger`:
@@ -82,6 +87,7 @@ snd_dmaengine_pcm_trigger
         Trigger command
 
 
+
 .. _`snd_dmaengine_pcm_trigger.description`:
 
 Description
@@ -91,6 +97,7 @@ Returns 0 on success, a negative error code otherwise.
 
 This function can be used as the PCM trigger callback for dmaengine based PCM
 driver implementations.
+
 
 
 .. _`snd_dmaengine_pcm_pointer_no_residue`:
@@ -106,6 +113,7 @@ snd_dmaengine_pcm_pointer_no_residue
         PCM substream
 
 
+
 .. _`snd_dmaengine_pcm_pointer_no_residue.description`:
 
 Description
@@ -113,6 +121,7 @@ Description
 
 This function is deprecated and should not be used by new drivers, as its
 results may be unreliable.
+
 
 
 .. _`snd_dmaengine_pcm_pointer`:
@@ -128,6 +137,7 @@ snd_dmaengine_pcm_pointer
         PCM substream
 
 
+
 .. _`snd_dmaengine_pcm_pointer.description`:
 
 Description
@@ -135,6 +145,7 @@ Description
 
 This function can be used as the PCM pointer callback for dmaengine based PCM
 driver implementations.
+
 
 
 .. _`snd_dmaengine_pcm_request_channel`:
@@ -153,6 +164,7 @@ snd_dmaengine_pcm_request_channel
         Data passed to the DMA filter function
 
 
+
 .. _`snd_dmaengine_pcm_request_channel.description`:
 
 Description
@@ -161,6 +173,7 @@ Description
 Returns NULL or the requested DMA channel.
 
 This function request a DMA channel for usage with dmaengine PCM.
+
 
 
 .. _`snd_dmaengine_pcm_open`:
@@ -179,6 +192,7 @@ snd_dmaengine_pcm_open
         DMA channel to use for data transfers
 
 
+
 .. _`snd_dmaengine_pcm_open.description`:
 
 Description
@@ -189,6 +203,7 @@ Returns 0 on success, a negative error code otherwise.
 The function should usually be called from the pcm open callback. Note that
 this function will use private_data field of the substream's runtime. So it
 is not available to your pcm driver implementation.
+
 
 
 .. _`snd_dmaengine_pcm_open_request_chan`:
@@ -210,6 +225,7 @@ snd_dmaengine_pcm_open_request_chan
         Data passed to the DMA filter function
 
 
+
 .. _`snd_dmaengine_pcm_open_request_chan.description`:
 
 Description
@@ -221,6 +237,7 @@ This function will request a DMA channel using the passed filter function and
 data. The function should usually be called from the pcm open callback. Note
 that this function will use private_data field of the substream's runtime. So
 it is not available to your pcm driver implementation.
+
 
 
 .. _`snd_dmaengine_pcm_close`:
@@ -236,6 +253,7 @@ snd_dmaengine_pcm_close
         PCM substream
 
 
+
 .. _`snd_dmaengine_pcm_close_release_chan`:
 
 snd_dmaengine_pcm_close_release_chan
@@ -247,6 +265,7 @@ snd_dmaengine_pcm_close_release_chan
 
     :param struct snd_pcm_substream \*substream:
         PCM substream
+
 
 
 .. _`snd_dmaengine_pcm_close_release_chan.description`:

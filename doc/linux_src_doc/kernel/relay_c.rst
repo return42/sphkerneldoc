@@ -4,6 +4,7 @@
 relay.c
 =======
 
+
 .. _`relay_mmap_buf`:
 
 relay_mmap_buf
@@ -20,6 +21,7 @@ relay_mmap_buf
         vm_area_struct describing memory to be mapped
 
 
+
 .. _`relay_mmap_buf.description`:
 
 Description
@@ -28,6 +30,7 @@ Description
 Returns 0 if ok, negative on error
 
 Caller should already have grabbed mmap_sem.
+
 
 
 .. _`relay_alloc_buf`:
@@ -46,6 +49,7 @@ relay_alloc_buf
         total size of the buffer
 
 
+
 .. _`relay_alloc_buf.description`:
 
 Description
@@ -53,6 +57,7 @@ Description
 
 Returns a pointer to the resulting buffer, ``NULL`` if unsuccessful. The
 passed in size will get page aligned, if it isn't already.
+
 
 
 .. _`relay_create_buf`:
@@ -68,12 +73,14 @@ relay_create_buf
         the relay channel
 
 
+
 .. _`relay_create_buf.description`:
 
 Description
 -----------
 
 Returns channel buffer if successful, ``NULL`` otherwise.
+
 
 
 .. _`relay_destroy_channel`:
@@ -89,12 +96,14 @@ relay_destroy_channel
         target kernel reference that contains the relay channel
 
 
+
 .. _`relay_destroy_channel.description`:
 
 Description
 -----------
 
 Should only be called from :c:func:`kref_put`.
+
 
 
 .. _`relay_destroy_buf`:
@@ -110,6 +119,7 @@ relay_destroy_buf
         the buffer struct
 
 
+
 .. _`relay_remove_buf`:
 
 relay_remove_buf
@@ -123,6 +133,7 @@ relay_remove_buf
         target kernel reference that contains the relay buffer
 
 
+
 .. _`relay_remove_buf.description`:
 
 Description
@@ -131,6 +142,7 @@ Description
 Removes the file from the filesystem, which also frees the
 rchan_buf_struct and the channel buffer.  Should only be called from
 :c:func:`kref_put`.
+
 
 
 .. _`relay_buf_empty`:
@@ -146,12 +158,14 @@ relay_buf_empty
         channel buffer
 
 
+
 .. _`relay_buf_empty.description`:
 
 Description
 -----------
 
 Returns 1 if the buffer is empty, 0 otherwise.
+
 
 
 .. _`relay_buf_full`:
@@ -167,12 +181,14 @@ relay_buf_full
         channel buffer
 
 
+
 .. _`relay_buf_full.description`:
 
 Description
 -----------
 
 Returns 1 if the buffer is full, 0 otherwise.
+
 
 
 .. _`wakeup_readers`:
@@ -188,12 +204,14 @@ wakeup_readers
         contains the channel buffer
 
 
+
 .. _`wakeup_readers.description`:
 
 Description
 -----------
 
 This is the timer function used to defer reader waking.
+
 
 
 .. _`__relay_reset`:
@@ -212,12 +230,14 @@ __relay_reset
         1 if this is a first-time initialization
 
 
+
 .. _`__relay_reset.description`:
 
 Description
 -----------
 
 See :c:func:`relay_reset` for description of effect.
+
 
 
 .. _`relay_reset`:
@@ -233,6 +253,7 @@ relay_reset
         the channel
 
 
+
 .. _`relay_reset.description`:
 
 Description
@@ -244,6 +265,7 @@ are not freed, so any mappings are still in effect.
 
 NOTE. Care should be taken that the channel isn't actually
 being used by anything when this call is made.
+
 
 
 .. _`relay_close_buf`:
@@ -259,6 +281,7 @@ relay_close_buf
         channel buffer
 
 
+
 .. _`relay_close_buf.description`:
 
 Description
@@ -267,6 +290,7 @@ Description
 Marks the buffer finalized and restores the default callbacks.
 The channel buffer and channel buffer data structure are then freed
 automatically when the last reference is given up.
+
 
 
 .. _`relay_hotcpu_callback`:
@@ -288,12 +312,14 @@ relay_hotcpu_callback
         CPU number
 
 
+
 .. _`relay_hotcpu_callback.description`:
 
 Description
 -----------
 
 Returns the success/failure of the operation. (\ ``NOTIFY_OK``\ , ``NOTIFY_BAD``\ )
+
 
 
 .. _`relay_open`:
@@ -324,6 +350,7 @@ relay_open
         user-defined data
 
 
+
 .. _`relay_open.description`:
 
 Description
@@ -335,6 +362,7 @@ Creates a channel buffer for each cpu using the sizes and
 attributes specified.  The created channel buffer files
 will be named base_filename0...base_filenameN-1.  File
 permissions will be ``S_IRUSR``\ .
+
 
 
 .. _`relay_late_setup_files`:
@@ -356,6 +384,7 @@ relay_late_setup_files
         dentry of parent directory, ``NULL`` for root directory
 
 
+
 .. _`relay_late_setup_files.description`:
 
 Description
@@ -365,6 +394,7 @@ Returns 0 if successful, non-zero otherwise.
 
 Use to setup files for a previously buffer-only channel.
 Useful to do early tracing in kernel, before VFS is up, for example.
+
 
 
 .. _`relay_switch_subbuf`:
@@ -383,6 +413,7 @@ relay_switch_subbuf
         size of current event
 
 
+
 .. _`relay_switch_subbuf.description`:
 
 Description
@@ -392,6 +423,7 @@ Returns either the length passed in or 0 if full.
 
 Performs sub-buffer-switch tasks such as invoking callbacks,
 updating padding counts, waking up readers, etc.
+
 
 
 .. _`relay_subbufs_consumed`:
@@ -413,6 +445,7 @@ relay_subbufs_consumed
         number of sub-buffers to add to current buf's count
 
 
+
 .. _`relay_subbufs_consumed.description`:
 
 Description
@@ -424,6 +457,7 @@ not the total consumed.
 
 NOTE. Kernel clients don't need to call this function if the channel
 mode is 'overwrite'.
+
 
 
 .. _`relay_close`:
@@ -439,12 +473,14 @@ relay_close
         the channel
 
 
+
 .. _`relay_close.description`:
 
 Description
 -----------
 
 Closes all channel buffers and frees the channel.
+
 
 
 .. _`relay_flush`:
@@ -460,12 +496,14 @@ relay_flush
         the channel
 
 
+
 .. _`relay_flush.description`:
 
 Description
 -----------
 
 Flushes all channel buffers, i.e. forces buffer switch.
+
 
 
 .. _`relay_file_open`:
@@ -484,12 +522,14 @@ relay_file_open
         the file
 
 
+
 .. _`relay_file_open.description`:
 
 Description
 -----------
 
 Increments the channel buffer refcount.
+
 
 
 .. _`relay_file_mmap`:
@@ -508,12 +548,14 @@ relay_file_mmap
         the vma describing what to map
 
 
+
 .. _`relay_file_mmap.description`:
 
 Description
 -----------
 
 Calls upon :c:func:`relay_mmap_buf` to map the file into user space.
+
 
 
 .. _`relay_file_poll`:
@@ -532,12 +574,14 @@ relay_file_poll
         poll table
 
 
+
 .. _`relay_file_poll.description`:
 
 Description
 -----------
 
 Poll implemention.
+
 
 
 .. _`relay_file_release`:
@@ -556,6 +600,7 @@ relay_file_release
         the file
 
 
+
 .. _`relay_file_release.description`:
 
 Description
@@ -563,6 +608,7 @@ Description
 
 Decrements the channel refcount, as the filesystem is
 no longer using it.
+
 
 
 .. _`relay_file_read_subbuf_avail`:
@@ -581,6 +627,7 @@ relay_file_read_subbuf_avail
         relay channel buffer
 
 
+
 .. _`relay_file_read_start_pos`:
 
 relay_file_read_start_pos
@@ -597,6 +644,7 @@ relay_file_read_start_pos
         relay channel buffer
 
 
+
 .. _`relay_file_read_start_pos.description`:
 
 Description
@@ -605,6 +653,7 @@ Description
 If the ``read_pos`` is in the middle of padding, return the
 position of the first actually available byte, otherwise
 return the original value.
+
 
 
 .. _`relay_file_read_end_pos`:

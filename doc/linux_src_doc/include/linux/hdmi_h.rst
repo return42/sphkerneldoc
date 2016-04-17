@@ -4,16 +4,18 @@
 hdmi.h
 ======
 
+
 .. _`hdmi_infoframe`:
 
 union hdmi_infoframe
 ====================
 
-.. c:type:: union hdmi_infoframe
+.. c:type:: hdmi_infoframe
 
     overall union of all abstract infoframe representations
 
 
+.. _`hdmi_infoframe.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`hdmi_infoframe.members`:
 
 Members
 -------
@@ -49,6 +52,9 @@ Members
     audio infoframe
 
 
+
+
+.. _`hdmi_infoframe.description`:
 
 Description
 -----------

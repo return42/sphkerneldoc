@@ -4,6 +4,7 @@
 isadma.c
 ========
 
+
 .. _`snd_dma_program`:
 
 snd_dma_program
@@ -26,12 +27,14 @@ snd_dma_program
         the DMA transfer mode, DMA_MODE_XXX
 
 
+
 .. _`snd_dma_program.description`:
 
 Description
 -----------
 
 Programs an ISA DMA transfer for the given buffer.
+
 
 
 .. _`snd_dma_disable`:
@@ -47,12 +50,14 @@ snd_dma_disable
         the dma number
 
 
+
 .. _`snd_dma_disable.description`:
 
 Description
 -----------
 
 Stops the ISA DMA transfer.
+
 
 
 .. _`snd_dma_pointer`:
@@ -71,10 +76,11 @@ snd_dma_pointer
         the dma transfer size
 
 
-.. _`snd_dma_pointer.description`:
 
-Description
------------
+.. _`snd_dma_pointer.return`:
 
-Return: The current pointer in DMA transfer buffer in bytes.
+Return
+------
+
+The current pointer in DMA transfer buffer in bytes.
 

@@ -4,6 +4,7 @@
 mptfc.c
 =======
 
+
 .. _`mptfc_init`:
 
 mptfc_init
@@ -17,6 +18,7 @@ mptfc_init
         no arguments
 
 
+
 .. _`mptfc_init.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 
 Returns 0 for success, non-zero for failure.
+
 
 
 .. _`mptfc_remove`:
@@ -37,6 +40,7 @@ mptfc_remove
 
     :param struct pci_dev \*pdev:
         Pointer to pci_dev structure
+
 
 
 .. _`mptfc_exit`:

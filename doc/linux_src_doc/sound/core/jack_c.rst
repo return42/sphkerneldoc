@@ -4,6 +4,7 @@
 jack.c
 ======
 
+
 .. _`snd_jack_add_new_kctl`:
 
 snd_jack_add_new_kctl
@@ -24,6 +25,7 @@ snd_jack_add_new_kctl
         by this snd_jack_kctl object.
 
 
+
 .. _`snd_jack_add_new_kctl.description`:
 
 Description
@@ -31,7 +33,15 @@ Description
 
 Creates a new snd_kcontrol object and adds it to the jack kctl_list.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_jack_add_new_kctl.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_jack_new`:
@@ -63,6 +73,7 @@ snd_jack_new
         Don't create a input device for phantom jacks.
 
 
+
 .. _`snd_jack_new.description`:
 
 Description
@@ -70,8 +81,16 @@ Description
 
 Creates a new jack object.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_jack_new.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
 On success ``jjack`` will be initialised.
+
 
 
 .. _`snd_jack_set_parent`:
@@ -90,6 +109,7 @@ snd_jack_set_parent
         The device to set as parent for the jack.
 
 
+
 .. _`snd_jack_set_parent.description`:
 
 Description
@@ -98,6 +118,7 @@ Description
 Set the parent for the jack devices in the device tree.  This
 function is only valid prior to registration of the jack.  If no
 parent is configured then the parent device will be the sound card.
+
 
 
 .. _`snd_jack_set_key`:
@@ -117,6 +138,7 @@ snd_jack_set_key
 
     :param int keytype:
         Input layer key type to be reported
+
 
 
 .. _`snd_jack_set_key.description`:
@@ -140,7 +162,15 @@ using this abstraction.
 
 This function may only be called prior to registration of the jack.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_jack_set_key.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_jack_report`:

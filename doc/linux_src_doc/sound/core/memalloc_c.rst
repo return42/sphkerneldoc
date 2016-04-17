@@ -4,6 +4,7 @@
 memalloc.c
 ==========
 
+
 .. _`snd_malloc_pages`:
 
 snd_malloc_pages
@@ -20,6 +21,7 @@ snd_malloc_pages
         the allocation conditions, GFP_XXX
 
 
+
 .. _`snd_malloc_pages.description`:
 
 Description
@@ -27,7 +29,15 @@ Description
 
 Allocates the physically contiguous pages with the given size.
 
-Return: The pointer of the buffer, or ``NULL`` if no enough memory.
+
+
+.. _`snd_malloc_pages.return`:
+
+Return
+------
+
+The pointer of the buffer, or ``NULL`` if no enough memory.
+
 
 
 .. _`snd_free_pages`:
@@ -46,12 +56,14 @@ snd_free_pages
         the allocated buffer size
 
 
+
 .. _`snd_free_pages.description`:
 
 Description
 -----------
 
 Releases the buffer allocated via :c:func:`snd_malloc_pages`.
+
 
 
 .. _`snd_malloc_dev_iram`:
@@ -70,12 +82,14 @@ snd_malloc_dev_iram
         number of bytes to allocate from the iram
 
 
+
 .. _`snd_malloc_dev_iram.description`:
 
 Description
 -----------
 
 This function requires iram phandle provided via of_node
+
 
 
 .. _`snd_free_dev_iram`:
@@ -89,6 +103,7 @@ snd_free_dev_iram
 
     :param struct snd_dma_buffer \*dmab:
         buffer allocation record to store the allocated data
+
 
 
 .. _`snd_dma_alloc_pages`:
@@ -113,6 +128,7 @@ snd_dma_alloc_pages
         buffer allocation record to store the allocated data
 
 
+
 .. _`snd_dma_alloc_pages.description`:
 
 Description
@@ -121,8 +137,16 @@ Description
 Calls the memory-allocator function for the corresponding
 buffer type.
 
-Return: Zero if the buffer with the given size is allocated successfully,
+
+
+.. _`snd_dma_alloc_pages.return`:
+
+Return
+------
+
+Zero if the buffer with the given size is allocated successfully,
 otherwise a negative value on error.
+
 
 
 .. _`snd_dma_alloc_pages_fallback`:
@@ -147,6 +171,7 @@ snd_dma_alloc_pages_fallback
         buffer allocation record to store the allocated data
 
 
+
 .. _`snd_dma_alloc_pages_fallback.description`:
 
 Description
@@ -157,8 +182,16 @@ buffer type.  When no space is left, this function reduces the size and
 tries to allocate again.  The size actually allocated is stored in
 res_size argument.
 
-Return: Zero if the buffer with the given size is allocated successfully,
+
+
+.. _`snd_dma_alloc_pages_fallback.return`:
+
+Return
+------
+
+Zero if the buffer with the given size is allocated successfully,
 otherwise a negative value on error.
+
 
 
 .. _`snd_dma_free_pages`:
@@ -172,6 +205,7 @@ snd_dma_free_pages
 
     :param struct snd_dma_buffer \*dmab:
         the buffer allocation record to release
+
 
 
 .. _`snd_dma_free_pages.description`:

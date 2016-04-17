@@ -4,6 +4,7 @@
 intel_fifo_underrun.c
 =====================
 
+
 .. _`fifo-underrun-handling`:
 
 fifo underrun handling
@@ -26,6 +27,7 @@ reporting on all pipes.
 The code also supports underrun detection on the PCH transcoder.
 
 
+
 .. _`intel_set_cpu_fifo_underrun_reporting`:
 
 intel_set_cpu_fifo_underrun_reporting
@@ -45,6 +47,7 @@ intel_set_cpu_fifo_underrun_reporting
         whether underruns should be reported or not
 
 
+
 .. _`intel_set_cpu_fifo_underrun_reporting.description`:
 
 Description
@@ -59,6 +62,7 @@ disables for all due to shared interrupts. Actual reporting is still per-pipe
 though.
 
 Returns the previous state of underrun reporting.
+
 
 
 .. _`intel_set_pch_fifo_underrun_reporting`:
@@ -80,6 +84,7 @@ intel_set_pch_fifo_underrun_reporting
         whether underruns should be reported or not
 
 
+
 .. _`intel_set_pch_fifo_underrun_reporting.description`:
 
 Description
@@ -92,6 +97,7 @@ error interruts for the other transcoders, due to the fact that there's just
 one interrupt mask/enable bit for all the transcoders.
 
 Returns the previous state of underrun reporting.
+
 
 
 .. _`intel_cpu_fifo_underrun_irq_handler`:
@@ -110,6 +116,7 @@ intel_cpu_fifo_underrun_irq_handler
         (CPU) pipe to set state for
 
 
+
 .. _`intel_cpu_fifo_underrun_irq_handler.description`:
 
 Description
@@ -118,6 +125,7 @@ Description
 This handles a CPU fifo underrun interrupt, generating an underrun warning
 into dmesg if underrun reporting is enabled and then disables the underrun
 interrupt to avoid an irq storm.
+
 
 
 .. _`intel_pch_fifo_underrun_irq_handler`:
@@ -136,6 +144,7 @@ intel_pch_fifo_underrun_irq_handler
         the PCH transcoder (same as pipe on IVB and older)
 
 
+
 .. _`intel_pch_fifo_underrun_irq_handler.description`:
 
 Description
@@ -144,6 +153,7 @@ Description
 This handles a PCH fifo underrun interrupt, generating an underrun warning
 into dmesg if underrun reporting is enabled and then disables the underrun
 interrupt to avoid an irq storm.
+
 
 
 .. _`intel_check_cpu_fifo_underruns`:
@@ -159,6 +169,7 @@ intel_check_cpu_fifo_underruns
         i915 device instance
 
 
+
 .. _`intel_check_cpu_fifo_underruns.description`:
 
 Description
@@ -168,6 +179,7 @@ Check for CPU fifo underruns immediately. Useful on IVB/HSW where the shared
 error interrupt may have been disabled, and so CPU fifo underruns won't
 necessarily raise an interrupt, and on GMCH platforms where underruns never
 raise an interrupt.
+
 
 
 .. _`intel_check_pch_fifo_underruns`:
@@ -181,6 +193,7 @@ intel_check_pch_fifo_underruns
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`intel_check_pch_fifo_underruns.description`:

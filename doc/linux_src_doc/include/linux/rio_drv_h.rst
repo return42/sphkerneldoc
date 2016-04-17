@@ -4,6 +4,7 @@
 rio_drv.h
 =========
 
+
 .. _`rio_local_read_config_32`:
 
 rio_local_read_config_32
@@ -23,6 +24,7 @@ rio_local_read_config_32
         Pointer to read data into
 
 
+
 .. _`rio_local_read_config_32.description`:
 
 Description
@@ -30,6 +32,7 @@ Description
 
 Reads 32 bits of data from the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_local_write_config_32`:
@@ -51,6 +54,7 @@ rio_local_write_config_32
         Data to be written
 
 
+
 .. _`rio_local_write_config_32.description`:
 
 Description
@@ -58,6 +62,7 @@ Description
 
 Writes 32 bits of data to the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_local_read_config_16`:
@@ -79,6 +84,7 @@ rio_local_read_config_16
         Pointer to read data into
 
 
+
 .. _`rio_local_read_config_16.description`:
 
 Description
@@ -86,6 +92,7 @@ Description
 
 Reads 16 bits of data from the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_local_write_config_16`:
@@ -107,6 +114,7 @@ rio_local_write_config_16
         Data to be written
 
 
+
 .. _`rio_local_write_config_16.description`:
 
 Description
@@ -114,6 +122,7 @@ Description
 
 Writes 16 bits of data to the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_local_read_config_8`:
@@ -135,6 +144,7 @@ rio_local_read_config_8
         Pointer to read data into
 
 
+
 .. _`rio_local_read_config_8.description`:
 
 Description
@@ -142,6 +152,7 @@ Description
 
 Reads 8 bits of data from the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_local_write_config_8`:
@@ -163,6 +174,7 @@ rio_local_write_config_8
         Data to be written
 
 
+
 .. _`rio_local_write_config_8.description`:
 
 Description
@@ -170,6 +182,7 @@ Description
 
 Writes 8 bits of data to the specified offset within the local
 device's configuration space.
+
 
 
 .. _`rio_read_config_32`:
@@ -191,6 +204,7 @@ rio_read_config_32
         Pointer to read data into
 
 
+
 .. _`rio_read_config_32.description`:
 
 Description
@@ -198,6 +212,7 @@ Description
 
 Reads 32 bits of data from the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_write_config_32`:
@@ -219,6 +234,7 @@ rio_write_config_32
         Data to be written
 
 
+
 .. _`rio_write_config_32.description`:
 
 Description
@@ -226,6 +242,7 @@ Description
 
 Writes 32 bits of data to the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_read_config_16`:
@@ -247,6 +264,7 @@ rio_read_config_16
         Pointer to read data into
 
 
+
 .. _`rio_read_config_16.description`:
 
 Description
@@ -254,6 +272,7 @@ Description
 
 Reads 16 bits of data from the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_write_config_16`:
@@ -275,6 +294,7 @@ rio_write_config_16
         Data to be written
 
 
+
 .. _`rio_write_config_16.description`:
 
 Description
@@ -282,6 +302,7 @@ Description
 
 Writes 16 bits of data to the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_read_config_8`:
@@ -303,6 +324,7 @@ rio_read_config_8
         Pointer to read data into
 
 
+
 .. _`rio_read_config_8.description`:
 
 Description
@@ -310,6 +332,7 @@ Description
 
 Reads 8 bits of data from the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_write_config_8`:
@@ -331,6 +354,7 @@ rio_write_config_8
         Data to be written
 
 
+
 .. _`rio_write_config_8.description`:
 
 Description
@@ -338,6 +362,7 @@ Description
 
 Writes 8 bits of data to the specified offset within the
 RIO device's configuration space.
+
 
 
 .. _`rio_send_doorbell`:
@@ -356,6 +381,7 @@ rio_send_doorbell
         Doorbell message data
 
 
+
 .. _`rio_send_doorbell.description`:
 
 Description
@@ -363,6 +389,7 @@ Description
 
 Send a doorbell message to a RIO device. The doorbell message
 has a 16-bit info field provided by the ``data`` argument.
+
 
 
 .. _`rio_init_mbox_res`:
@@ -384,6 +411,7 @@ rio_init_mbox_res
         end of mailbox range
 
 
+
 .. _`rio_init_mbox_res.description`:
 
 Description
@@ -392,6 +420,7 @@ Description
 This function is used to initialize the fields of a resource
 for use as a mailbox resource.  It initializes a range of
 mailboxes using the start and end arguments.
+
 
 
 .. _`rio_init_dbell_res`:
@@ -413,6 +442,7 @@ rio_init_dbell_res
         end of doorbell range
 
 
+
 .. _`rio_init_dbell_res.description`:
 
 Description
@@ -421,6 +451,7 @@ Description
 This function is used to initialize the fields of a resource
 for use as a doorbell resource.  It initializes a range of
 doorbell messages using the start and end arguments.
+
 
 
 .. _`rio_device`:
@@ -439,6 +470,7 @@ RIO_DEVICE
         the 16 bit RIO vendor ID
 
 
+
 .. _`rio_device.description`:
 
 Description
@@ -447,6 +479,7 @@ Description
 This macro is used to create a struct rio_device_id that matches a
 specific device.  The assembly vendor and assembly device fields
 will be set to ``RIO_ANY_ID``\ .
+
 
 
 .. _`rio_add_outb_message`:
@@ -474,6 +507,7 @@ rio_add_outb_message
         Length of the message buffer
 
 
+
 .. _`rio_add_outb_message.description`:
 
 Description
@@ -481,6 +515,7 @@ Description
 
 Adds a RIO message buffer to an outbound mailbox queue for
 transmission. Returns 0 on success.
+
 
 
 .. _`rio_add_inb_buffer`:
@@ -502,6 +537,7 @@ rio_add_inb_buffer
         Pointer to the message buffer
 
 
+
 .. _`rio_add_inb_buffer.description`:
 
 Description
@@ -509,6 +545,7 @@ Description
 
 Adds a buffer to an inbound mailbox queue for reception. Returns
 0 on success.
+
 
 
 .. _`rio_get_inb_message`:
@@ -527,12 +564,14 @@ rio_get_inb_message
         The inbound mailbox number
 
 
+
 .. _`rio_get_inb_message.description`:
 
 Description
 -----------
 
 Get a RIO message from an inbound mailbox queue. Returns 0 on success.
+
 
 
 .. _`rio_name`:
@@ -548,6 +587,7 @@ rio_name
         RIO device
 
 
+
 .. _`rio_name.description`:
 
 Description
@@ -555,6 +595,7 @@ Description
 
 Get the unique RIO device identifier. Returns the device
 identifier string.
+
 
 
 .. _`rio_get_drvdata`:
@@ -570,6 +611,7 @@ rio_get_drvdata
         RIO device
 
 
+
 .. _`rio_get_drvdata.description`:
 
 Description
@@ -577,6 +619,7 @@ Description
 
 Get RIO driver specific data. Returns a pointer to the
 driver specific data.
+
 
 
 .. _`rio_set_drvdata`:
@@ -593,6 +636,7 @@ rio_set_drvdata
 
     :param void \*data:
         Pointer to driver specific data
+
 
 
 .. _`rio_set_drvdata.description`:

@@ -4,16 +4,18 @@
 gen_stats.h
 ===========
 
+
 .. _`gnet_stats_basic`:
 
 struct gnet_stats_basic
 =======================
 
-.. c:type:: struct gnet_stats_basic
+.. c:type:: gnet_stats_basic
 
     byte/packet throughput statistics
 
 
+.. _`gnet_stats_basic.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`gnet_stats_basic.members`:
 
 Members
 -------
@@ -38,16 +41,18 @@ Members
 
 
 
+
 .. _`gnet_stats_rate_est`:
 
 struct gnet_stats_rate_est
 ==========================
 
-.. c:type:: struct gnet_stats_rate_est
+.. c:type:: gnet_stats_rate_est
 
     rate estimator
 
 
+.. _`gnet_stats_rate_est.definition`:
 
 Definition
 ----------
@@ -60,6 +65,7 @@ Definition
   };
 
 
+.. _`gnet_stats_rate_est.members`:
 
 Members
 -------
@@ -72,16 +78,18 @@ Members
 
 
 
+
 .. _`gnet_stats_rate_est64`:
 
 struct gnet_stats_rate_est64
 ============================
 
-.. c:type:: struct gnet_stats_rate_est64
+.. c:type:: gnet_stats_rate_est64
 
     rate estimator
 
 
+.. _`gnet_stats_rate_est64.definition`:
 
 Definition
 ----------
@@ -94,6 +102,7 @@ Definition
   };
 
 
+.. _`gnet_stats_rate_est64.members`:
 
 Members
 -------
@@ -106,16 +115,18 @@ Members
 
 
 
+
 .. _`gnet_stats_queue`:
 
 struct gnet_stats_queue
 =======================
 
-.. c:type:: struct gnet_stats_queue
+.. c:type:: gnet_stats_queue
 
     queuing statistics
 
 
+.. _`gnet_stats_queue.definition`:
 
 Definition
 ----------
@@ -131,6 +142,7 @@ Definition
   };
 
 
+.. _`gnet_stats_queue.members`:
 
 Members
 -------
@@ -152,16 +164,18 @@ Members
 
 
 
+
 .. _`gnet_estimator`:
 
 struct gnet_estimator
 =====================
 
-.. c:type:: struct gnet_estimator
+.. c:type:: gnet_estimator
 
     rate estimator configuration
 
 
+.. _`gnet_estimator.definition`:
 
 Definition
 ----------
@@ -174,6 +188,7 @@ Definition
   };
 
 
+.. _`gnet_estimator.members`:
 
 Members
 -------

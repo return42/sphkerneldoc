@@ -4,6 +4,7 @@
 completion.h
 ============
 
+
 .. _`declare_completion`:
 
 DECLARE_COMPLETION
@@ -17,6 +18,7 @@ DECLARE_COMPLETION
         identifier for the completion structure
 
 
+
 .. _`declare_completion.description`:
 
 Description
@@ -25,6 +27,7 @@ Description
 This macro declares and initializes a completion structure. Generally used
 for static declarations. You should use the _ONSTACK variant for automatic
 variables.
+
 
 
 .. _`declare_completion_onstack`:
@@ -40,6 +43,7 @@ DECLARE_COMPLETION_ONSTACK
         identifier for the completion structure
 
 
+
 .. _`declare_completion_onstack.description`:
 
 Description
@@ -47,6 +51,7 @@ Description
 
 This macro declares and initializes a completion structure on the kernel
 stack.
+
 
 
 .. _`init_completion`:
@@ -62,6 +67,7 @@ init_completion
         pointer to completion structure that is to be initialized
 
 
+
 .. _`init_completion.description`:
 
 Description
@@ -69,6 +75,7 @@ Description
 
 This inline function will initialize a dynamically created completion
 structure.
+
 
 
 .. _`reinit_completion`:
@@ -82,6 +89,7 @@ reinit_completion
 
     :param struct completion \*x:
         pointer to completion structure that is to be reinitialized
+
 
 
 .. _`reinit_completion.description`:

@@ -7,4 +7,6 @@ spi
 .. toctree::
    :maxdepth: 1
 
+   spi-bitbang_c
    spi_c
+   spi-loopback-test_c

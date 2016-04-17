@@ -4,6 +4,7 @@
 hub.c
 =====
 
+
 .. _`usb_hub_set_port_power`:
 
 usb_hub_set_port_power
@@ -26,6 +27,7 @@ usb_hub_set_port_power
         expected status
 
 
+
 .. _`usb_hub_set_port_power.description`:
 
 Description
@@ -34,7 +36,15 @@ Description
 call this function to control port's power via setting or
 clearing the port's PORT_POWER feature.
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_hub_set_port_power.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_hub_clear_tt_buffer`:
@@ -50,6 +60,7 @@ usb_hub_clear_tt_buffer
         an URB associated with the failed or incomplete split transaction
 
 
+
 .. _`usb_hub_clear_tt_buffer.description`:
 
 Description
@@ -63,7 +74,15 @@ interrupt context.
 It may not be possible for that hub to handle additional full (or low)
 speed transactions until that state is fully cleared out.
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_hub_clear_tt_buffer.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_remove_device`:
@@ -77,7 +96,16 @@ usb_remove_device
 
     :param struct usb_device \*udev:
         device to be disabled and removed
-        Context: ``udev`` locked, must be able to sleep.
+
+
+
+.. _`usb_remove_device.context`:
+
+Context
+-------
+
+``udev`` locked, must be able to sleep.
+
 
 
 .. _`usb_remove_device.description`:
@@ -90,7 +118,15 @@ see that the device has been disconnected.  When the device is
 physically unplugged and something is plugged in, the events will
 be received and processed normally.
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_remove_device.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_set_device_state`:
@@ -107,6 +143,7 @@ usb_set_device_state
 
     :param enum usb_device_state new_state:
         new state value to be stored
+
 
 
 .. _`usb_set_device_state.description`:
@@ -131,6 +168,7 @@ USB_STATE_NOTATTACHED then all of udev's descendants' states are also set
 to USB_STATE_NOTATTACHED.
 
 
+
 .. _`usb_disconnect`:
 
 usb_disconnect
@@ -142,7 +180,16 @@ usb_disconnect
 
     :param struct usb_device \*\*pdev:
         pointer to device being disconnected
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_disconnect.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_disconnect.description`:
@@ -162,6 +209,7 @@ controllers) should ever call this.
 This call is synchronous, and may not be used in an interrupt context.
 
 
+
 .. _`usb_enumerate_device_otg`:
 
 usb_enumerate_device_otg
@@ -175,6 +223,7 @@ usb_enumerate_device_otg
         newly addressed device (in ADDRESS state)
 
 
+
 .. _`usb_enumerate_device_otg.description`:
 
 Description
@@ -182,7 +231,15 @@ Description
 
 Finish enumeration for On-The-Go devices
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_enumerate_device_otg.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_enumerate_device`:
@@ -198,6 +255,7 @@ usb_enumerate_device
         newly addressed device (in ADDRESS state)
 
 
+
 .. _`usb_enumerate_device.description`:
 
 Description
@@ -211,7 +269,15 @@ If the device is WUSB and not authorized, we don't attempt to read
 the string descriptors, as they will be errored out by the device
 until it has been authorized.
 
-Return: 0 if successful. A negative error code otherwise.
+
+
+.. _`usb_enumerate_device.return`:
+
+Return
+------
+
+0 if successful. A negative error code otherwise.
+
 
 
 .. _`usb_new_device`:
@@ -225,6 +291,7 @@ usb_new_device
 
     :param struct usb_device \*udev:
         newly addressed device (in ADDRESS state)
+
 
 
 .. _`usb_new_device.description`:
@@ -244,9 +311,17 @@ This call is synchronous, and may not be used in an interrupt context.
 
 Only the hub driver or root-hub registrar should ever call this.
 
-Return: Whether the device is configured properly or not. Zero if the
+
+
+.. _`usb_new_device.return`:
+
+Return
+------
+
+Whether the device is configured properly or not. Zero if the
 interface was registered with the driver core; else a negative errno
 value.
+
 
 
 .. _`usb_deauthorize_device`:
@@ -262,6 +337,7 @@ usb_deauthorize_device
         USB device
 
 
+
 .. _`usb_deauthorize_device.description`:
 
 Description
@@ -273,7 +349,15 @@ and the device is in fact unconfigured and unusable.
 We share a lock (that we have) with :c:func:`device_del`, so we need to
 defer its call.
 
-Return: 0.
+
+
+.. _`usb_deauthorize_device.return`:
+
+Return
+------
+
+0.
+
 
 
 .. _`usb_root_hub_lost_power`:
@@ -289,6 +373,7 @@ usb_root_hub_lost_power
         struct usb_device for the root hub
 
 
+
 .. _`usb_root_hub_lost_power.description`:
 
 Description
@@ -302,6 +387,7 @@ power-session recovery for all the "USB-PERSIST"-enabled child devices;
 the others will be disconnected.
 
 
+
 .. _`usb_reset_and_verify_device`:
 
 usb_reset_and_verify_device
@@ -313,6 +399,7 @@ usb_reset_and_verify_device
 
     :param struct usb_device \*udev:
         device to reset (not in SUSPENDED or NOTATTACHED state)
+
 
 
 .. _`usb_reset_and_verify_device.description`:
@@ -332,23 +419,44 @@ telling hub_wq to pretend the device has been disconnected and then
 re-connected.  All drivers will be unbound, and the device will be
 re-enumerated and probed all over again.
 
-Return: 0 if the reset succeeded, -ENODEV if the device has been
+
+
+.. _`usb_reset_and_verify_device.return`:
+
+Return
+------
+
+0 if the reset succeeded, -ENODEV if the device has been
 flagged for logical disconnection, or some other negative error code
 if the reset wasn't even attempted.
 
-Note:
+
+
+.. _`usb_reset_and_verify_device.note`:
+
+Note
+----
+
 The caller must own the device lock and the port lock, the latter is
 taken by :c:func:`usb_reset_device`.  For example, it's safe to use
 :c:func:`usb_reset_device` from a driver :c:func:`probe` routine after downloading
 new firmware.  For calls that might not occur during :c:func:`probe`, drivers
 should lock the device using :c:func:`usb_lock_device_for_reset`.
 
-Locking exception: This routine may also be called from within an
+
+
+.. _`usb_reset_and_verify_device.locking-exception`:
+
+Locking exception
+-----------------
+
+This routine may also be called from within an
 autoresume handler.  Such usage won't conflict with other tasks
 holding the device lock because these tasks should always call
 :c:func:`usb_autopm_resume_device`, thereby preventing any unwanted
 autoresume.  The autoresume handler is expected to have already
 acquired the port lock before calling this routine.
+
 
 
 .. _`usb_reset_device`:
@@ -364,6 +472,7 @@ usb_reset_device
         device to reset (not in SUSPENDED or NOTATTACHED state)
 
 
+
 .. _`usb_reset_device.description`:
 
 Description
@@ -373,9 +482,22 @@ Warns all drivers bound to registered interfaces (using their pre_reset
 method), performs the port reset, and then lets the drivers know that
 the reset is over (using their post_reset method).
 
-Return: The same as for :c:func:`usb_reset_and_verify_device`.
 
-Note:
+
+.. _`usb_reset_device.return`:
+
+Return
+------
+
+The same as for :c:func:`usb_reset_and_verify_device`.
+
+
+
+.. _`usb_reset_device.note`:
+
+Note
+----
+
 The caller must own the device lock.  For example, it's safe to use
 this from a driver :c:func:`probe` routine after downloading new firmware.
 For calls that might not occur during :c:func:`probe`, drivers should lock
@@ -385,6 +507,7 @@ If an interface is currently being probed or disconnected, we assume
 its driver knows how to handle resets.  For all other interfaces,
 if the driver doesn't have pre_reset and post_reset methods then
 we attempt to unbind it and rebind afterward.
+
 
 
 .. _`usb_queue_reset_device`:
@@ -400,6 +523,7 @@ usb_queue_reset_device
         USB interface belonging to the device to reset
 
 
+
 .. _`usb_queue_reset_device.description`:
 
 Description
@@ -413,21 +537,31 @@ Doing a reset via this method is functionally equivalent to calling
 workqueue. This means that any drivers bound to other interfaces
 might be unbound, as well as users from usbfs in user space.
 
-Corner cases:
+
+
+.. _`usb_queue_reset_device.corner-cases`:
+
+Corner cases
+------------
+
 
 - Scheduling two resets at the same time from two different drivers
+
   attached to two different interfaces of the same device is
   possible; depending on how the driver attached to each interface
   handles ->:c:func:`pre_reset`, the second reset might happen or not.
 
 - If the reset is delayed so long that the interface is unbound from
+
   its driver, the reset will be skipped.
 
 - This function can be called during .:c:func:`probe`.  It can also be called
+
   during .:c:func:`disconnect`, but doing so is pointless because the reset
   will not occur.  If you really want to reset the device during
   .:c:func:`disconnect`, call :c:func:`usb_reset_device` directly -- but watch out
   for nested unbinding issues!
+
 
 
 .. _`usb_hub_find_child`:
@@ -447,6 +581,7 @@ usb_hub_find_child
         is attached to.
 
 
+
 .. _`usb_hub_find_child.description`:
 
 Description
@@ -455,8 +590,16 @@ Description
 USB drivers call this function to get hub's child device
 pointer.
 
-Return: ``NULL`` if input param is invalid and
+
+
+.. _`usb_hub_find_child.return`:
+
+Return
+------
+
+``NULL`` if input param is invalid and
 child's usb_device pointer if non-NULL.
+
 
 
 .. _`usb_get_hub_port_acpi_handle`:
@@ -475,11 +618,12 @@ usb_get_hub_port_acpi_handle
         port num of the port
 
 
-.. _`usb_get_hub_port_acpi_handle.description`:
 
-Description
------------
+.. _`usb_get_hub_port_acpi_handle.return`:
 
-Return: Port's acpi handle if successful, ``NULL`` if params are
+Return
+------
+
+Port's acpi handle if successful, ``NULL`` if params are
 invalid.
 

@@ -4,16 +4,18 @@
 drm_gem_cma_helper.h
 ====================
 
+
 .. _`drm_gem_cma_object`:
 
 struct drm_gem_cma_object
 =========================
 
-.. c:type:: struct drm_gem_cma_object
+.. c:type:: drm_gem_cma_object
 
     GEM object backed by CMA memory allocations
 
 
+.. _`drm_gem_cma_object.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`drm_gem_cma_object.members`:
 
 Members
 -------

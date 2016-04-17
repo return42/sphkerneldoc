@@ -1,0 +1,47 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ad7887.h
+========
+
+
+.. _`ad7887_platform_data`:
+
+struct ad7887_platform_data
+===========================
+
+.. c:type:: ad7887_platform_data
+
+    AD7887 ADC driver platform data
+
+
+.. _`ad7887_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ad7887_platform_data {
+    bool en_dual;
+    bool use_onchip_ref;
+  };
+
+
+.. _`ad7887_platform_data.members`:
+
+Members
+-------
+
+:``en_dual``:
+    Whether to use dual channel mode. If set to true AIN1 becomes the
+    second input channel, and Vref is internally connected to Vdd. If set to
+    false the device is used in single channel mode and AIN1/Vref is used as
+    VREF input.
+
+:``use_onchip_ref``:
+    Whether to use the onchip reference. If set to true the
+    internal 2.5V reference is used. If set to false a external reference is
+    used.
+
+

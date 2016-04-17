@@ -4,6 +4,7 @@
 asequencer.h
 ============
 
+
 .. _`sndrv_seq_event_system`:
 
 SNDRV_SEQ_EVENT_SYSTEM

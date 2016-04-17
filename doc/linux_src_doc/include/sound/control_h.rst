@@ -4,6 +4,7 @@
 control.h
 =========
 
+
 .. _`snd_ctl_add_slave`:
 
 snd_ctl_add_slave
@@ -18,6 +19,7 @@ snd_ctl_add_slave
 
     :param struct snd_kcontrol \*slave:
         slave element to add
+
 
 
 .. _`snd_ctl_add_slave.description`:
@@ -37,7 +39,15 @@ at most two channels,
 logarithmic volume control (dB level) thus no linear volume,
 master can only attenuate the volume without gain
 
-Return: Zero if successful or a negative error code.
+
+
+.. _`snd_ctl_add_slave.return`:
+
+Return
+------
+
+Zero if successful or a negative error code.
+
 
 
 .. _`snd_ctl_add_slave_uncached`:
@@ -56,6 +66,7 @@ snd_ctl_add_slave_uncached
         slave element to add
 
 
+
 .. _`snd_ctl_add_slave_uncached.description`:
 
 Description
@@ -70,5 +81,12 @@ When the control peeks the hardware values directly and the value
 can be changed by other means than the put callback of the element,
 this function should be used to keep the value always up-to-date.
 
-Return: Zero if successful or a negative error code.
+
+
+.. _`snd_ctl_add_slave_uncached.return`:
+
+Return
+------
+
+Zero if successful or a negative error code.
 

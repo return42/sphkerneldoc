@@ -4,6 +4,7 @@
 media-device.h
 ==============
 
+
 .. _`media-controller`:
 
 Media Controller
@@ -243,16 +244,18 @@ helper functions to provide easy access for commonly needed information, and
 in the end provide a way to use driver-specific callbacks.
 
 
+
 .. _`media_entity_notify`:
 
 struct media_entity_notify
 ==========================
 
-.. c:type:: struct media_entity_notify
+.. c:type:: media_entity_notify
 
     Media Entity Notify
 
 
+.. _`media_entity_notify.definition`:
 
 Definition
 ----------
@@ -266,6 +269,7 @@ Definition
   };
 
 
+.. _`media_entity_notify.members`:
 
 Members
 -------
@@ -281,6 +285,9 @@ Members
 
 
 
+
+.. _`media_entity_notify.description`:
+
 Description
 -----------
 
@@ -288,16 +295,18 @@ Drivers may register a callback to take action when
 new entities get registered with the media device.
 
 
+
 .. _`media_device`:
 
 struct media_device
 ===================
 
-.. c:type:: struct media_device
+.. c:type:: media_device
 
     Media device
 
 
+.. _`media_device.definition`:
 
 Definition
 ----------
@@ -332,6 +341,7 @@ Definition
   };
 
 
+.. _`media_device.members`:
 
 Members
 -------
@@ -416,6 +426,9 @@ Members
 
 
 
+
+.. _`media_device.description`:
+
 Description
 -----------
 
@@ -438,7 +451,14 @@ accessing the source.
 sink entity  and deactivate the link between them. Drivers
 should call this handler to release the source.
 
-Note: Bridge driver is expected to implement and set the
+
+
+.. _`media_device.note`:
+
+Note
+----
+
+Bridge driver is expected to implement and set the
 handler when media_device is registered or when
 bridge driver finds the media_device during probe.
 Bridge driver sets source_priv with information
@@ -448,6 +468,7 @@ Use-case: find tuner entity connected to the decoder
 entity and check if it is available, and activate the
 the link between them from enable_source and deactivate
 from disable_source.
+
 
 
 .. _`media_entity_enum_init`:
@@ -466,12 +487,14 @@ media_entity_enum_init
         The related media device
 
 
+
 .. _`media_entity_enum_init.description`:
 
 Description
 -----------
 
 Returns zero on success or a negative error code.
+
 
 
 .. _`media_device_init`:
@@ -485,6 +508,7 @@ media_device_init
 
     :param struct media_device \*mdev:
         pointer to struct :c:type:`struct media_device <media_device>`
+
 
 
 .. _`media_device_init.description`:
@@ -502,6 +526,7 @@ within the media device, create pad to pad links and then finally register
 the media device by calling :c:func:`media_device_register` as a final step.
 
 
+
 .. _`media_device_cleanup`:
 
 media_device_cleanup
@@ -515,6 +540,7 @@ media_device_cleanup
         pointer to struct :c:type:`struct media_device <media_device>`
 
 
+
 .. _`media_device_cleanup.description`:
 
 Description
@@ -522,6 +548,7 @@ Description
 
 This function that will destroy the graph_mutex that is
 initialized in :c:func:`media_device_init`.
+
 
 
 .. _`__media_device_register`:
@@ -540,6 +567,7 @@ __media_device_register
         should be filled with ``THIS_MODULE``
 
 
+
 .. _`__media_device_register.description`:
 
 Description
@@ -548,7 +576,7 @@ Description
 Users, should, instead, call the :c:func:`media_device_register` macro.
 
 The caller is responsible for initializing the media_device structure before
-registration. The following fields must be set::
+registration. The following fields must be set:
 
  - dev must point to the parent device (usually a :c:type:`struct pci_dev <pci_dev>`, :c:type:`struct usb_interface <usb_interface>` or
    :c:type:`struct platform_device <platform_device>` instance).
@@ -556,29 +584,45 @@ registration. The following fields must be set::
  - model must be filled with the device model name as a NUL-terminated UTF-8
    string. The device/model revision must not be stored in this field.
 
-The following fields are optional::
 
- - serial is a unique serial number stored as a NUL-terminated ASCII string.
-   The field is big enough to store a GUID in text form. If the hardware
-   doesn't provide a unique serial number this field must be left empty.
 
- - bus_info represents the location of the device in the system as a
-   NUL-terminated ASCII string. For PCI/PCIe devices bus_info must be set to
-   "PCI:" (or "PCIe:") followed by the value of :c:func:`pci_name`. For USB devices,
-   the :c:func:`usb_make_path` function must be used. This field is used by
-   applications to distinguish between otherwise identical devices that don't
-   provide a serial number.
+.. _`__media_device_register.the-following-fields-are-optional`:
 
- - hw_revision is the hardware device revision in a driver-specific format.
-   When possible the revision should be formatted with the KERNEL_VERSION
-   macro.
+The following fields are optional
+---------------------------------
 
- - driver_version is formatted with the KERNEL_VERSION macro. The version
-   minor must be incremented when new features are added to the userspace API
-   without breaking binary compatibility. The version major must be
-   incremented when binary compatibility is broken.
 
-Notes:
+- serial is a unique serial number stored as a NUL-terminated ASCII string.
+
+  The field is big enough to store a GUID in text form. If the hardware
+  doesn't provide a unique serial number this field must be left empty.
+
+- bus_info represents the location of the device in the system as a
+
+  NUL-terminated ASCII string. For PCI/PCIe devices bus_info must be set to
+  "PCI:" (or "PCIe:") followed by the value of :c:func:`pci_name`. For USB devices,
+  the :c:func:`usb_make_path` function must be used. This field is used by
+  applications to distinguish between otherwise identical devices that don't
+  provide a serial number.
+
+- hw_revision is the hardware device revision in a driver-specific format.
+
+  When possible the revision should be formatted with the KERNEL_VERSION
+  macro.
+
+- driver_version is formatted with the KERNEL_VERSION macro. The version
+
+  minor must be incremented when new features are added to the userspace API
+  without breaking binary compatibility. The version major must be
+  incremented when binary compatibility is broken.
+
+
+
+.. _`__media_device_register.notes`:
+
+Notes
+-----
+
 
 Upon successful registration a character device named media[0-9]+ is created.
 The device major and minor numbers are dynamic. The model name is exported as
@@ -586,7 +630,15 @@ a sysfs attribute.
 
 Unregistering a media device that hasn't been registered is \*NOT\* safe.
 
-Return: returns zero on success or a negative error code.
+
+
+.. _`__media_device_register.return`:
+
+Return
+------
+
+returns zero on success or a negative error code.
+
 
 
 .. _`media_device_unregister`:
@@ -602,6 +654,7 @@ media_device_unregister
         pointer to struct :c:type:`struct media_device <media_device>`
 
 
+
 .. _`media_device_unregister.description`:
 
 Description
@@ -610,6 +663,7 @@ Description
 
 It is safe to call this function on an unregistered (but initialised)
 media device.
+
 
 
 .. _`media_device_register_entity`:
@@ -626,6 +680,7 @@ media_device_register_entity
 
     :param struct media_entity \*entity:
         pointer to struct :c:type:`struct media_entity <media_entity>` to be registered
+
 
 
 .. _`media_device_register_entity.description`:
@@ -649,16 +704,29 @@ If the device has pads, :c:func:`media_entity_pads_init` should be called before
 this function. Otherwise, the :c:type:`struct media_entity <media_entity>`.\ ``pad`` and :c:type:`struct media_entity <media_entity>`.\ ``num_pads``
 should be zeroed before calling this function.
 
-Entities have flags that describe the entity capabilities and state:
 
-``MEDIA_ENT_FL_DEFAULT`` indicates the default entity for a given type.::
 
-        This can be used to report the default audio and video devices or the
-        default camera sensor.
+.. _`media_device_register_entity.entities-have-flags-that-describe-the-entity-capabilities-and-state`:
 
-NOTE: Drivers should set the entity function before calling this function.
+Entities have flags that describe the entity capabilities and state
+-------------------------------------------------------------------
+
+
+``MEDIA_ENT_FL_DEFAULT`` indicates the default entity for a given type.
+This can be used to report the default audio and video devices or the
+default camera sensor.
+
+
+
+.. _`media_device_register_entity.note`:
+
+NOTE
+----
+
+Drivers should set the entity function before calling this function.
 Please notice that the values ``MEDIA_ENT_F_V4L2_SUBDEV_UNKNOWN`` and
 ``MEDIA_ENT_F_UNKNOWN`` should not be used by the drivers.
+
 
 
 .. _`media_device_register_entity_notify`:
@@ -677,13 +745,15 @@ media_device_register_entity_notify
         The media_entity_notify
 
 
-.. _`media_device_register_entity_notify.description`:
 
-Description
------------
+.. _`media_device_register_entity_notify.note`:
 
-Note: When a new entity is registered, all the registered
+Note
+----
+
+When a new entity is registered, all the registered
 media_entity_notify callbacks are invoked.
+
 
 
 .. _`media_device_unregister_entity_notify`:
@@ -702,6 +772,7 @@ media_device_unregister_entity_notify
         The media_entity_notify
 
 
+
 .. _`media_device_get_devres`:
 
 media_device_get_devres
@@ -713,6 +784,7 @@ media_device_get_devres
 
     :param struct device \*dev:
         pointer to struct :c:type:`struct device <device>`.
+
 
 
 .. _`media_device_get_devres.description`:
@@ -730,6 +802,7 @@ drivers. While each interface have its own :c:type:`struct device <device>`, the
 common :c:type:`struct device <device>` associated with the hole USB device.
 
 
+
 .. _`media_device_find_devres`:
 
 media_device_find_devres
@@ -741,6 +814,7 @@ media_device_find_devres
 
     :param struct device \*dev:
         pointer to struct :c:type:`struct device <device>`.
+
 
 
 .. _`media_device_pci_init`:
@@ -761,6 +835,7 @@ media_device_pci_init
     :param const char \*name:
         media device name. If ``NULL``\ , the routine will use the default
         name for the pci device, given by :c:func:`pci_name` macro.
+
 
 
 .. _`__media_device_usb_init`:
@@ -788,11 +863,12 @@ __media_device_usb_init
         thing to do.
 
 
-.. _`__media_device_usb_init.description`:
 
-Description
------------
+.. _`__media_device_usb_init.note`:
 
-NOTE: It is better to call :c:func:`media_device_usb_init` instead, as
+NOTE
+----
+
+It is better to call :c:func:`media_device_usb_init` instead, as
 such macro fills driver_name with ``KBUILD_MODNAME``\ .
 

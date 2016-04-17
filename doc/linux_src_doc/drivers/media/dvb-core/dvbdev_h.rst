@@ -4,16 +4,18 @@
 dvbdev.h
 ========
 
+
 .. _`dvb_adapter`:
 
 struct dvb_adapter
 ==================
 
-.. c:type:: struct dvb_adapter
+.. c:type:: dvb_adapter
 
     represents a Digital TV adapter using Linux DVB API
 
 
+.. _`dvb_adapter.definition`:
 
 Definition
 ----------
@@ -40,6 +42,7 @@ Definition
   };
 
 
+.. _`dvb_adapter.members`:
 
 Members
 -------
@@ -92,16 +95,18 @@ Members
 
 
 
+
 .. _`dvb_device`:
 
 struct dvb_device
 =================
 
-.. c:type:: struct dvb_device
+.. c:type:: dvb_device
 
     represents a DVB device node
 
 
+.. _`dvb_device.definition`:
 
 Definition
 ----------
@@ -133,6 +138,7 @@ Definition
   };
 
 
+.. _`dvb_device.members`:
 
 Members
 -------
@@ -202,12 +208,16 @@ Members
 
 
 
+
+.. _`dvb_device.description`:
+
 Description
 -----------
 
 This structure is used by the DVB core (frontend, CA, net, demux) in
 order to create the device nodes. Usually, driver should not initialize
 this struct diretly.
+
 
 
 .. _`dvb_register_adapter`:
@@ -237,6 +247,7 @@ dvb_register_adapter
         DVB_DEFINE_MOD_OPT_ADAPTER_NR(adapter_nums)
 
 
+
 .. _`dvb_unregister_adapter`:
 
 dvb_unregister_adapter
@@ -248,6 +259,7 @@ dvb_unregister_adapter
 
     :param struct dvb_adapter \*adap:
         pointer to struct dvb_adapter
+
 
 
 .. _`dvb_register_device`:
@@ -282,6 +294,7 @@ dvb_register_device
         outputs via the Media Controller.
 
 
+
 .. _`dvb_unregister_device`:
 
 dvb_unregister_device
@@ -293,6 +306,7 @@ dvb_unregister_device
 
     :param struct dvb_device \*dvbdev:
         pointer to struct dvb_device
+
 
 
 .. _`dvb_create_media_graph`:
@@ -309,6 +323,7 @@ dvb_create_media_graph
 
     :param bool create_rf_connector:
         if true, it creates the RF connector too
+
 
 
 .. _`dvb_create_media_graph.description`:

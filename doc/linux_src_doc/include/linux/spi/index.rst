@@ -7,4 +7,7 @@ spi
 .. toctree::
    :maxdepth: 1
 
+   spi_gpio_h
    spi_h
+   spi_oc_tiny_h
+   xilinx_spi_h

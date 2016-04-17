@@ -4,6 +4,7 @@
 industrialio-core.c
 ===================
 
+
 .. _`iio_find_channel_from_si`:
 
 iio_find_channel_from_si
@@ -18,6 +19,7 @@ iio_find_channel_from_si
 
     :param int si:
         scan index to match
+
 
 
 .. _`iio_format_value`:
@@ -44,14 +46,17 @@ iio_format_value
         type parameter.
 
 
-.. _`iio_format_value.description`:
 
-Description
------------
+.. _`iio_format_value.return`:
 
-Return: 0 by default, a negative number on failure or the
-total number of characters written for a type that belongs
-to the IIO_VAL_... constant.
+Return
+------
+
+0 by default, a negative number on failure or the
+
+           total number of characters written for a type that belongs
+           to the IIO_VAL_... constant.
+
 
 
 .. _`iio_str_to_fixpoint`:
@@ -76,6 +81,7 @@ iio_str_to_fixpoint
         The fractional part of the number
 
 
+
 .. _`iio_str_to_fixpoint.description`:
 
 Description
@@ -83,6 +89,7 @@ Description
 
 Returns 0 on success, or a negative error code if the string could not be
 parsed.
+
 
 
 .. _`iio_free_chan_devattr_list`:
@@ -98,6 +105,7 @@ iio_free_chan_devattr_list
         List of IIO device attributes
 
 
+
 .. _`iio_free_chan_devattr_list.description`:
 
 Description
@@ -105,6 +113,7 @@ Description
 
 This function frees the memory allocated for each of the IIO device
 attributes in the list.
+
 
 
 .. _`iio_device_alloc`:
@@ -120,6 +129,7 @@ iio_device_alloc
         Space to allocate for private structure.
 
 
+
 .. _`iio_device_free`:
 
 iio_device_free
@@ -131,6 +141,7 @@ iio_device_free
 
     :param struct iio_dev \*dev:
         the iio_dev associated with the device
+
 
 
 .. _`devm_iio_device_alloc`:
@@ -149,6 +160,7 @@ devm_iio_device_alloc
         Space to allocate for private structure.
 
 
+
 .. _`devm_iio_device_alloc.description`:
 
 Description
@@ -160,8 +172,15 @@ automatically freed on driver detach.
 If an iio_dev allocated with this function needs to be freed separately,
 :c:func:`devm_iio_device_free` must be used.
 
-RETURNS:
+
+
+.. _`devm_iio_device_alloc.returns`:
+
+RETURNS
+-------
+
 Pointer to allocated iio_dev on success, NULL on failure.
+
 
 
 .. _`devm_iio_device_free`:
@@ -180,12 +199,14 @@ devm_iio_device_free
         the iio_dev associated with the device
 
 
+
 .. _`devm_iio_device_free.description`:
 
 Description
 -----------
 
 Free iio_dev allocated with :c:func:`devm_iio_device_alloc`.
+
 
 
 .. _`iio_chrdev_open`:
@@ -205,12 +226,14 @@ iio_chrdev_open
         private data
 
 
-.. _`iio_chrdev_open.description`:
 
-Description
------------
+.. _`iio_chrdev_open.return`:
 
-Return: 0 on success or -EBUSY if the device is already opened
+Return
+------
+
+0 on success or -EBUSY if the device is already opened
+
 
 
 .. _`iio_chrdev_release`:
@@ -229,12 +252,14 @@ iio_chrdev_release
         File structure pointer for the char device
 
 
-.. _`iio_chrdev_release.description`:
 
-Description
------------
+.. _`iio_chrdev_release.return`:
 
-Return: 0 for successful release
+Return
+------
+
+0 for successful release
+
 
 
 .. _`iio_device_register`:
@@ -250,6 +275,7 @@ iio_device_register
         Device structure filled by the device driver
 
 
+
 .. _`iio_device_unregister`:
 
 iio_device_unregister
@@ -261,6 +287,7 @@ iio_device_unregister
 
     :param struct iio_dev \*indio_dev:
         Device structure representing the device.
+
 
 
 .. _`devm_iio_device_register`:
@@ -279,6 +306,7 @@ devm_iio_device_register
         Device structure filled by the device driver
 
 
+
 .. _`devm_iio_device_register.description`:
 
 Description
@@ -292,8 +320,15 @@ information.
 If an iio_dev registered with this function needs to be unregistered
 separately, :c:func:`devm_iio_device_unregister` must be used.
 
-RETURNS:
+
+
+.. _`devm_iio_device_register.returns`:
+
+RETURNS
+-------
+
 0 on success, negative error number on failure.
+
 
 
 .. _`devm_iio_device_unregister`:
@@ -310,6 +345,7 @@ devm_iio_device_unregister
 
     :param struct iio_dev \*indio_dev:
         the iio_dev associated with the device
+
 
 
 .. _`devm_iio_device_unregister.description`:

@@ -1,0 +1,162 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+sa1111.c
+========
+
+
+.. _`__sa1111_probe`:
+
+__sa1111_probe
+==============
+
+.. c:function:: int __sa1111_probe (struct device *me, struct resource *mem, int irq)
+
+    probe for a single SA1111 chip.
+
+    :param struct device \*me:
+
+        *undescribed*
+
+    :param struct resource \*mem:
+
+        *undescribed*
+
+    :param int irq:
+
+        *undescribed*
+
+
+
+.. _`__sa1111_probe.description`:
+
+Description
+-----------
+
+Probe for a SA1111 chip.  This must be called
+before any other SA1111-specific code.
+
+
+
+.. _`__sa1111_probe.returns`:
+
+Returns
+-------
+
+``-ENODEV``        device not found.
+``-EBUSY``                physical address already marked in-use.
+``-EINVAL``        no platform data passed
+``0``                successful.
+
+
+
+.. _`sa1111_pll_clock`:
+
+sa1111_pll_clock
+================
+
+.. c:function:: unsigned int sa1111_pll_clock (struct sa1111_dev *sadev)
+
+    return the current PLL clock frequency.
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 function block
+
+
+
+.. _`sa1111_pll_clock.bug`:
+
+BUG
+---
+
+we should look at SKCR.  We also blindly believe that
+the chip is being fed with the 3.6864MHz clock.
+
+Returns the PLL clock in Hz.
+
+
+
+.. _`sa1111_select_audio_mode`:
+
+sa1111_select_audio_mode
+========================
+
+.. c:function:: void sa1111_select_audio_mode (struct sa1111_dev *sadev, int mode)
+
+    select I2S or AC link mode
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 function block
+
+    :param int mode:
+        One of ``SA1111_AUDIO_ACLINK`` or ``SA1111_AUDIO_I2S``
+
+
+
+.. _`sa1111_select_audio_mode.description`:
+
+Description
+-----------
+
+Frob the SKCR to select AC Link mode or I2S mode for
+the audio block.
+
+
+
+.. _`sa1111_set_audio_rate`:
+
+sa1111_set_audio_rate
+=====================
+
+.. c:function:: int sa1111_set_audio_rate (struct sa1111_dev *sadev, int rate)
+
+    set the audio sample rate
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 SAC function block
+
+    :param int rate:
+        sample rate to select
+
+
+
+.. _`sa1111_get_audio_rate`:
+
+sa1111_get_audio_rate
+=====================
+
+.. c:function:: int sa1111_get_audio_rate (struct sa1111_dev *sadev)
+
+    get the audio sample rate
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 SAC function block device
+
+
+
+.. _`sa1111_enable_device`:
+
+sa1111_enable_device
+====================
+
+.. c:function:: int sa1111_enable_device (struct sa1111_dev *sadev)
+
+    enable an on-chip SA1111 function block
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 function block device to enable
+
+
+
+.. _`sa1111_disable_device`:
+
+sa1111_disable_device
+=====================
+
+.. c:function:: void sa1111_disable_device (struct sa1111_dev *sadev)
+
+    disable an on-chip SA1111 function block
+
+    :param struct sa1111_dev \*sadev:
+        SA1111 function block device to disable
+

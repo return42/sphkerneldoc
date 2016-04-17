@@ -4,16 +4,18 @@
 v4l2-of.h
 =========
 
+
 .. _`v4l2_of_bus_mipi_csi2`:
 
 struct v4l2_of_bus_mipi_csi2
 ============================
 
-.. c:type:: struct v4l2_of_bus_mipi_csi2
+.. c:type:: v4l2_of_bus_mipi_csi2
 
     MIPI CSI-2 bus data structure
 
 
+.. _`v4l2_of_bus_mipi_csi2.definition`:
 
 Definition
 ----------
@@ -29,12 +31,13 @@ Definition
   };
 
 
+.. _`v4l2_of_bus_mipi_csi2.members`:
 
 Members
 -------
 
 :``flags``:
-    media bus (V4L2_MBUS_\*) flags
+    media bus (V4L2_MBUS\_\*) flags
 
 :``data_lanes[4]``:
     an array of physical data lane indexes
@@ -51,16 +54,18 @@ Members
 
 
 
+
 .. _`v4l2_of_bus_parallel`:
 
 struct v4l2_of_bus_parallel
 ===========================
 
-.. c:type:: struct v4l2_of_bus_parallel
+.. c:type:: v4l2_of_bus_parallel
 
     parallel data bus data structure
 
 
+.. _`v4l2_of_bus_parallel.definition`:
 
 Definition
 ----------
@@ -74,12 +79,13 @@ Definition
   };
 
 
+.. _`v4l2_of_bus_parallel.members`:
 
 Members
 -------
 
 :``flags``:
-    media bus (V4L2_MBUS_\*) flags
+    media bus (V4L2_MBUS\_\*) flags
 
 :``bus_width``:
     bus width in bits
@@ -89,16 +95,18 @@ Members
 
 
 
+
 .. _`v4l2_of_endpoint`:
 
 struct v4l2_of_endpoint
 =======================
 
-.. c:type:: struct v4l2_of_endpoint
+.. c:type:: v4l2_of_endpoint
 
     the endpoint data structure
 
 
+.. _`v4l2_of_endpoint.definition`:
 
 Definition
 ----------
@@ -114,6 +122,7 @@ Definition
   };
 
 
+.. _`v4l2_of_endpoint.members`:
 
 Members
 -------
@@ -135,16 +144,18 @@ Members
 
 
 
+
 .. _`v4l2_of_link`:
 
 struct v4l2_of_link
 ===================
 
-.. c:type:: struct v4l2_of_link
+.. c:type:: v4l2_of_link
 
     a link between two endpoints
 
 
+.. _`v4l2_of_link.definition`:
 
 Definition
 ----------
@@ -159,6 +170,7 @@ Definition
   };
 
 
+.. _`v4l2_of_link.members`:
 
 Members
 -------

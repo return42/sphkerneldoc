@@ -4,6 +4,7 @@
 drm_vma_manager.h
 =================
 
+
 .. _`drm_vma_offset_exact_lookup_locked`:
 
 drm_vma_offset_exact_lookup_locked
@@ -23,6 +24,7 @@ drm_vma_offset_exact_lookup_locked
         Size of object (page-based)
 
 
+
 .. _`drm_vma_offset_exact_lookup_locked.description`:
 
 Description
@@ -31,8 +33,15 @@ Description
 Same as :c:func:`drm_vma_offset_lookup_locked` but does not allow any offset into the node.
 It only returns the exact object with the given start address.
 
-RETURNS:
+
+
+.. _`drm_vma_offset_exact_lookup_locked.returns`:
+
+RETURNS
+-------
+
 Node at exact start address ``start``\ .
+
 
 
 .. _`drm_vma_offset_lock_lookup`:
@@ -46,6 +55,7 @@ drm_vma_offset_lock_lookup
 
     :param struct drm_vma_offset_manager \*mgr:
         Manager object
+
 
 
 .. _`drm_vma_offset_lock_lookup.description`:
@@ -63,7 +73,15 @@ Use this if you need to take a reference to the objects returned by
 This lock must not be used for anything else than extended lookups. You must
 not call any other VMA helpers while holding this lock.
 
-Note: You're in atomic-context while holding this lock!
+
+
+.. _`drm_vma_offset_lock_lookup.note`:
+
+Note
+----
+
+You're in atomic-context while holding this lock!
+
 
 
 .. _`drm_vma_offset_unlock_lookup`:
@@ -79,12 +97,14 @@ drm_vma_offset_unlock_lookup
         Manager object
 
 
+
 .. _`drm_vma_offset_unlock_lookup.description`:
 
 Description
 -----------
 
 Release lookup-lock. See :c:func:`drm_vma_offset_lock_lookup` for more information.
+
 
 
 .. _`drm_vma_node_reset`:
@@ -100,6 +120,7 @@ drm_vma_node_reset
         Node to initialize or reset
 
 
+
 .. _`drm_vma_node_reset.description`:
 
 Description
@@ -110,6 +131,7 @@ any VMA offset manager.
 
 This must not be called on an already allocated node, or you will leak
 memory.
+
 
 
 .. _`drm_vma_node_start`:
@@ -125,6 +147,7 @@ drm_vma_node_start
         Node to inspect
 
 
+
 .. _`drm_vma_node_start.description`:
 
 Description
@@ -136,9 +159,16 @@ this can only be used for page-based addressing. If you need a proper offset
 for user-space mappings, you must apply "<< PAGE_SHIFT" or use the
 :c:func:`drm_vma_node_offset_addr` helper instead.
 
-RETURNS:
+
+
+.. _`drm_vma_node_start.returns`:
+
+RETURNS
+-------
+
 Start address of ``node`` for page-based addressing. 0 if the node does not
 have an offset allocated.
+
 
 
 .. _`drm_vma_node_size`:
@@ -154,6 +184,7 @@ drm_vma_node_size
         Node to inspect
 
 
+
 .. _`drm_vma_node_size.description`:
 
 Description
@@ -163,9 +194,16 @@ Return the size as number of pages for the given node. This is the same size
 that was passed to :c:func:`drm_vma_offset_add`. If no offset is allocated for the
 node, this is 0.
 
-RETURNS:
+
+
+.. _`drm_vma_node_size.returns`:
+
+RETURNS
+-------
+
 Size of ``node`` as number of pages. 0 if the node does not have an offset
 allocated.
+
 
 
 .. _`drm_vma_node_has_offset`:
@@ -181,14 +219,15 @@ drm_vma_node_has_offset
         Node to be checked
 
 
-.. _`drm_vma_node_has_offset.description`:
 
-Description
------------
+.. _`drm_vma_node_has_offset.returns`:
 
-RETURNS:
+RETURNS
+-------
+
 true iff the node was previously allocated an offset and added to
 an vma offset manager.
+
 
 
 .. _`drm_vma_node_offset_addr`:
@@ -204,6 +243,7 @@ drm_vma_node_offset_addr
         Linked offset node
 
 
+
 .. _`drm_vma_node_offset_addr.description`:
 
 Description
@@ -213,9 +253,16 @@ Same as :c:func:`drm_vma_node_start` but returns the address as a valid offset t
 can be used for user-space mappings during :c:func:`mmap`.
 This must not be called on unlinked nodes.
 
-RETURNS:
+
+
+.. _`drm_vma_node_offset_addr.returns`:
+
+RETURNS
+-------
+
 Offset of ``node`` for byte-based addressing. 0 if the node does not have an
 object allocated.
+
 
 
 .. _`drm_vma_node_unmap`:
@@ -234,6 +281,7 @@ drm_vma_node_unmap
         Address space to unmap ``node`` from
 
 
+
 .. _`drm_vma_node_unmap.description`:
 
 Description
@@ -245,6 +293,7 @@ nothing is done.
 
 This call is unlocked. The caller must guarantee that :c:func:`drm_vma_offset_remove`
 is not called on this node concurrently.
+
 
 
 .. _`drm_vma_node_verify_access`:
@@ -263,6 +312,7 @@ drm_vma_node_verify_access
         Open-file
 
 
+
 .. _`drm_vma_node_verify_access.description`:
 
 Description
@@ -272,6 +322,12 @@ This checks whether ``filp`` is granted access to ``node``\ . It is the same as
 :c:func:`drm_vma_node_is_allowed` but suitable as drop-in helper for TTM
 :c:func:`verify_access` callbacks.
 
-RETURNS:
+
+
+.. _`drm_vma_node_verify_access.returns`:
+
+RETURNS
+-------
+
 0 if access is granted, -EACCES otherwise.
 

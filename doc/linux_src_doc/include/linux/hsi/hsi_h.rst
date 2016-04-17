@@ -4,16 +4,18 @@
 hsi.h
 =====
 
+
 .. _`hsi_channel`:
 
 struct hsi_channel
 ==================
 
-.. c:type:: struct hsi_channel
+.. c:type:: hsi_channel
 
     channel resource used by the hsi clients
 
 
+.. _`hsi_channel.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`hsi_channel.members`:
 
 Members
 -------
@@ -38,16 +41,18 @@ Members
 
 
 
+
 .. _`hsi_config`:
 
 struct hsi_config
 =================
 
-.. c:type:: struct hsi_config
+.. c:type:: hsi_config
 
     Configuration for RX/TX HSI modules
 
 
+.. _`hsi_config.definition`:
 
 Definition
 ----------
@@ -64,6 +69,7 @@ Definition
   };
 
 
+.. _`hsi_config.members`:
 
 Members
 -------
@@ -88,16 +94,18 @@ Members
 
 
 
+
 .. _`hsi_board_info`:
 
 struct hsi_board_info
 =====================
 
-.. c:type:: struct hsi_board_info
+.. c:type:: hsi_board_info
 
     HSI client board info
 
 
+.. _`hsi_board_info.definition`:
 
 Definition
 ----------
@@ -115,6 +123,7 @@ Definition
   };
 
 
+.. _`hsi_board_info.members`:
 
 Members
 -------
@@ -142,16 +151,18 @@ Members
 
 
 
+
 .. _`hsi_client`:
 
 struct hsi_client
 =================
 
-.. c:type:: struct hsi_client
+.. c:type:: hsi_client
 
     HSI client attached to an HSI port
 
 
+.. _`hsi_client.definition`:
 
 Definition
 ----------
@@ -165,6 +176,7 @@ Definition
   };
 
 
+.. _`hsi_client.members`:
 
 Members
 -------
@@ -180,16 +192,18 @@ Members
 
 
 
+
 .. _`hsi_client_driver`:
 
 struct hsi_client_driver
 ========================
 
-.. c:type:: struct hsi_client_driver
+.. c:type:: hsi_client_driver
 
     Driver associated to an HSI client
 
 
+.. _`hsi_client_driver.definition`:
 
 Definition
 ----------
@@ -201,6 +215,7 @@ Definition
   };
 
 
+.. _`hsi_client_driver.members`:
 
 Members
 -------
@@ -210,16 +225,18 @@ Members
 
 
 
+
 .. _`hsi_msg`:
 
 struct hsi_msg
 ==============
 
-.. c:type:: struct hsi_msg
+.. c:type:: hsi_msg
 
     HSI message descriptor
 
 
+.. _`hsi_msg.definition`:
 
 Definition
 ----------
@@ -241,6 +258,7 @@ Definition
   };
 
 
+.. _`hsi_msg.members`:
 
 Members
 -------
@@ -281,16 +299,18 @@ Members
 
 
 
+
 .. _`hsi_port`:
 
 struct hsi_port
 ===============
 
-.. c:type:: struct hsi_port
+.. c:type:: hsi_port
 
     HSI port device
 
 
+.. _`hsi_port.definition`:
 
 Definition
 ----------
@@ -315,6 +335,7 @@ Definition
   };
 
 
+.. _`hsi_port.members`:
 
 Members
 -------
@@ -363,16 +384,18 @@ Members
 
 
 
+
 .. _`hsi_controller`:
 
 struct hsi_controller
 =====================
 
-.. c:type:: struct hsi_controller
+.. c:type:: hsi_controller
 
     HSI controller device
 
 
+.. _`hsi_controller.definition`:
 
 Definition
 ----------
@@ -388,6 +411,7 @@ Definition
   };
 
 
+.. _`hsi_controller.members`:
 
 Members
 -------
@@ -409,6 +433,7 @@ Members
 
 
 
+
 .. _`hsi_id`:
 
 hsi_id
@@ -422,12 +447,14 @@ hsi_id
         Pointer to a HSI client
 
 
+
 .. _`hsi_id.description`:
 
 Description
 -----------
 
 Return the controller id where the client is attached to
+
 
 
 .. _`hsi_port_id`:
@@ -443,12 +470,14 @@ hsi_port_id
         Pointer to HSI client
 
 
+
 .. _`hsi_port_id.description`:
 
 Description
 -----------
 
 Return the port number associated to the client
+
 
 
 .. _`hsi_setup`:
@@ -464,6 +493,7 @@ hsi_setup
         Pointer to the HSI client
 
 
+
 .. _`hsi_setup.description`:
 
 Description
@@ -473,6 +503,7 @@ When sharing ports, clients should either relay on a single
 client setup or have the same setup for all of them.
 
 Return -errno on failure, 0 on success
+
 
 
 .. _`hsi_flush`:
@@ -488,6 +519,7 @@ hsi_flush
         Pointer to the HSI client
 
 
+
 .. _`hsi_flush.description`:
 
 Description
@@ -497,6 +529,7 @@ This function will destroy all pending hsi_msg in the port and reset
 the HW port so it is ready to receive and transmit from a clean state.
 
 Return -errno on failure, 0 on success
+
 
 
 .. _`hsi_async_read`:
@@ -515,12 +548,14 @@ hsi_async_read
         HSI message descriptor of the transfer
 
 
+
 .. _`hsi_async_read.description`:
 
 Description
 -----------
 
 Return -errno on failure, 0 on success
+
 
 
 .. _`hsi_async_write`:
@@ -539,12 +574,14 @@ hsi_async_write
         HSI message descriptor of the transfer
 
 
+
 .. _`hsi_async_write.description`:
 
 Description
 -----------
 
 Return -errno on failure, 0 on success
+
 
 
 .. _`hsi_start_tx`:
@@ -560,12 +597,14 @@ hsi_start_tx
         Pointer to the HSI client
 
 
+
 .. _`hsi_start_tx.description`:
 
 Description
 -----------
 
 Return -errno on failure, 0 on success
+
 
 
 .. _`hsi_stop_tx`:
@@ -579,6 +618,7 @@ hsi_stop_tx
 
     :param struct hsi_client \*cl:
         Pointer to the HSI client
+
 
 
 .. _`hsi_stop_tx.description`:

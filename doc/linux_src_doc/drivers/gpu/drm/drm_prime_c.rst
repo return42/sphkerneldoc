@@ -4,6 +4,7 @@
 drm_prime.c
 ===========
 
+
 .. _`drm_gem_dmabuf_release`:
 
 drm_gem_dmabuf_release
@@ -17,6 +18,7 @@ drm_gem_dmabuf_release
         buffer to be released
 
 
+
 .. _`drm_gem_dmabuf_release.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 Generic release function for dma_bufs exported as PRIME buffers. GEM drivers
 must use this in their dma_buf ops structure as the release callback.
+
 
 
 .. _`prime-helpers`:
@@ -36,7 +39,7 @@ simpler APIs by using the helper functions ``drm_gem_prime_export`` and
 ``drm_gem_prime_import``\ .  These functions implement dma-buf support in terms of
 six lower-level driver callbacks:
 
-Export callbacks::
+Export callbacks:
 
  * ``gem_prime_pin`` (optional): prepare a GEM object for exporting
  * ``gem_prime_get_sg_table``\ : provide a scatter/gather table of pinned pages
@@ -44,10 +47,11 @@ Export callbacks::
  * ``gem_prime_vunmap``\ : vunmap a buffer exported by your driver
  * ``gem_prime_mmap`` (optional): mmap a buffer exported by your driver
 
-Import callback::
+Import callback:
 
  * ``gem_prime_import_sg_table`` (import): produce a GEM object from another
    driver's scatter/gather table
+
 
 
 .. _`drm_gem_prime_export`:
@@ -69,6 +73,7 @@ drm_gem_prime_export
         flags like DRM_CLOEXEC and DRM_RDWR
 
 
+
 .. _`drm_gem_prime_export.description`:
 
 Description
@@ -76,6 +81,7 @@ Description
 
 This is the implementation of the gem_prime_export functions for GEM drivers
 using the PRIME helpers.
+
 
 
 .. _`drm_gem_prime_handle_to_fd`:
@@ -103,6 +109,7 @@ drm_gem_prime_handle_to_fd
         pointer to storage for the fd id of the create dma-buf
 
 
+
 .. _`drm_gem_prime_handle_to_fd.description`:
 
 Description
@@ -112,6 +119,7 @@ This is the PRIME export function which must be used mandatorily by GEM
 drivers to ensure correct lifetime management of the underlying GEM object.
 The actual exporting from GEM object to a dma-buf is done through the
 gem_prime_export driver callback.
+
 
 
 .. _`drm_gem_prime_import`:
@@ -130,6 +138,7 @@ drm_gem_prime_import
         dma-buf object to import
 
 
+
 .. _`drm_gem_prime_import.description`:
 
 Description
@@ -137,6 +146,7 @@ Description
 
 This is the implementation of the gem_prime_import functions for GEM drivers
 using the PRIME helpers.
+
 
 
 .. _`drm_gem_prime_fd_to_handle`:
@@ -161,6 +171,7 @@ drm_gem_prime_fd_to_handle
         pointer to storage for the handle of the imported buffer object
 
 
+
 .. _`drm_gem_prime_fd_to_handle.description`:
 
 Description
@@ -170,6 +181,7 @@ This is the PRIME import function which must be used mandatorily by GEM
 drivers to ensure correct lifetime management of the underlying GEM object.
 The actual importing of GEM object from the dma-buf is done through the
 gem_import_export driver callback.
+
 
 
 .. _`drm_prime_pages_to_sg`:
@@ -188,6 +200,7 @@ drm_prime_pages_to_sg
         length of the page vector
 
 
+
 .. _`drm_prime_pages_to_sg.description`:
 
 Description
@@ -196,6 +209,7 @@ Description
 This helper creates an sg table object from a set of pages
 the driver is responsible for mapping the pages into the
 importers address space for use with dma_buf itself.
+
 
 
 .. _`drm_prime_sg_to_page_addr_arrays`:
@@ -220,6 +234,7 @@ drm_prime_sg_to_page_addr_arrays
         size of both the passed-in arrays
 
 
+
 .. _`drm_prime_sg_to_page_addr_arrays.description`:
 
 Description
@@ -227,6 +242,7 @@ Description
 
 Exports an sg table into an array of pages and addresses. This is currently
 required by the TTM driver in order to do correct fault handling.
+
 
 
 .. _`drm_prime_gem_destroy`:
@@ -243,6 +259,7 @@ drm_prime_gem_destroy
 
     :param struct sg_table \*sg:
         the sg-table which was pinned at import time
+
 
 
 .. _`drm_prime_gem_destroy.description`:

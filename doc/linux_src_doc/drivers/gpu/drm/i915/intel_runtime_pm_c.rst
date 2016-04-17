@@ -4,6 +4,7 @@
 intel_runtime_pm.c
 ==================
 
+
 .. _`runtime-pm`:
 
 runtime pm
@@ -23,6 +24,7 @@ abstract power domains. It then maps those to the actual power wells
 present for a given platform.
 
 
+
 .. _`__intel_display_power_is_enabled`:
 
 __intel_display_power_is_enabled
@@ -39,6 +41,7 @@ __intel_display_power_is_enabled
         power domain to check
 
 
+
 .. _`__intel_display_power_is_enabled.description`:
 
 Description
@@ -48,8 +51,15 @@ This is the unlocked version of :c:func:`intel_display_power_is_enabled` and sho
 only be used from error capture and recovery code where deadlocks are
 possible.
 
-Returns:
+
+
+.. _`__intel_display_power_is_enabled.returns`:
+
+Returns
+-------
+
 True when the power domain is enabled, false otherwise.
+
 
 
 .. _`intel_display_power_is_enabled`:
@@ -68,6 +78,7 @@ intel_display_power_is_enabled
         power domain to check
 
 
+
 .. _`intel_display_power_is_enabled.description`:
 
 Description
@@ -82,8 +93,15 @@ Callers must hold the relevant modesetting locks to ensure that concurrent
 threads can't disable the power well while the caller tries to read a few
 registers.
 
-Returns:
+
+
+.. _`intel_display_power_is_enabled.returns`:
+
+Returns
+-------
+
 True when the power domain is enabled, false otherwise.
+
 
 
 .. _`intel_display_set_init_power`:
@@ -102,6 +120,7 @@ intel_display_set_init_power
         whether to enable or disable the initial power domain state
 
 
+
 .. _`intel_display_set_init_power.description`:
 
 Description
@@ -111,6 +130,7 @@ For simplicity our driver load/unload and system suspend/resume code assumes
 that all power domains are always enabled. This functions controls the state
 of this little hack. While the initial power domain state is enabled runtime
 pm is effectively disabled.
+
 
 
 .. _`intel_display_power_get`:
@@ -129,6 +149,7 @@ intel_display_power_get
         power domain to reference
 
 
+
 .. _`intel_display_power_get.description`:
 
 Description
@@ -140,6 +161,7 @@ grab a reference to the innermost power domain they need.
 
 Any power domain reference obtained by this function must have a symmetric
 call to :c:func:`intel_display_power_put` to release the reference again.
+
 
 
 .. _`intel_display_power_get_if_enabled`:
@@ -158,6 +180,7 @@ intel_display_power_get_if_enabled
         power domain to reference
 
 
+
 .. _`intel_display_power_get_if_enabled.description`:
 
 Description
@@ -169,6 +192,7 @@ grab a reference to the innermost power domain they need.
 
 Any power domain reference obtained by this function must have a symmetric
 call to :c:func:`intel_display_power_put` to release the reference again.
+
 
 
 .. _`intel_display_power_put`:
@@ -187,6 +211,7 @@ intel_display_power_put
         power domain to reference
 
 
+
 .. _`intel_display_power_put.description`:
 
 Description
@@ -195,6 +220,7 @@ Description
 This function drops the power domain reference obtained by
 :c:func:`intel_display_power_get` and might power down the corresponding hardware
 block right away if this is the last reference.
+
 
 
 .. _`intel_power_domains_init`:
@@ -210,6 +236,7 @@ intel_power_domains_init
         i915 device instance
 
 
+
 .. _`intel_power_domains_init.description`:
 
 Description
@@ -217,6 +244,7 @@ Description
 
 Initializes the power domain structures for ``dev_priv`` depending upon the
 supported platform.
+
 
 
 .. _`intel_power_domains_fini`:
@@ -232,6 +260,7 @@ intel_power_domains_fini
         i915 device instance
 
 
+
 .. _`intel_power_domains_fini.description`:
 
 Description
@@ -240,6 +269,7 @@ Description
 Finalizes the power domain structures for ``dev_priv`` depending upon the
 supported platform. This function also disables runtime pm and ensures that
 the device stays powered up so that the driver can be reloaded.
+
 
 
 .. _`intel_power_domains_init_hw`:
@@ -259,6 +289,7 @@ intel_power_domains_init_hw
         *undescribed*
 
 
+
 .. _`intel_power_domains_init_hw.description`:
 
 Description
@@ -266,6 +297,7 @@ Description
 
 This function initializes the hardware power domain state and enables all
 power domains using :c:func:`intel_display_set_init_power`.
+
 
 
 .. _`intel_power_domains_suspend`:
@@ -281,6 +313,7 @@ intel_power_domains_suspend
         i915 device instance
 
 
+
 .. _`intel_power_domains_suspend.description`:
 
 Description
@@ -288,6 +321,7 @@ Description
 
 This function prepares the hardware power domain state before entering
 system suspend. It must be paired with :c:func:`intel_power_domains_init_hw`.
+
 
 
 .. _`intel_runtime_pm_get`:
@@ -303,6 +337,7 @@ intel_runtime_pm_get
         i915 device instance
 
 
+
 .. _`intel_runtime_pm_get.description`:
 
 Description
@@ -313,6 +348,7 @@ code to ensure the GTT or GT is on) and ensures that it is powered up.
 
 Any runtime pm reference obtained by this function must have a symmetric
 call to :c:func:`intel_runtime_pm_put` to release the reference again.
+
 
 
 .. _`intel_runtime_pm_get_if_in_use`:
@@ -328,6 +364,7 @@ intel_runtime_pm_get_if_in_use
         i915 device instance
 
 
+
 .. _`intel_runtime_pm_get_if_in_use.description`:
 
 Description
@@ -338,6 +375,7 @@ already in use and ensures that it is powered up.
 
 Any runtime pm reference obtained by this function must have a symmetric
 call to :c:func:`intel_runtime_pm_put` to release the reference again.
+
 
 
 .. _`intel_runtime_pm_get_noresume`:
@@ -351,6 +389,7 @@ intel_runtime_pm_get_noresume
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`intel_runtime_pm_get_noresume.description`:
@@ -372,6 +411,7 @@ Any runtime pm reference obtained by this function must have a symmetric
 call to :c:func:`intel_runtime_pm_put` to release the reference again.
 
 
+
 .. _`intel_runtime_pm_put`:
 
 intel_runtime_pm_put
@@ -385,6 +425,7 @@ intel_runtime_pm_put
         i915 device instance
 
 
+
 .. _`intel_runtime_pm_put.description`:
 
 Description
@@ -393,6 +434,7 @@ Description
 This function drops the device-level runtime pm reference obtained by
 :c:func:`intel_runtime_pm_get` and might power down the corresponding
 hardware block right away if this is the last reference.
+
 
 
 .. _`intel_runtime_pm_enable`:
@@ -406,6 +448,7 @@ intel_runtime_pm_enable
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
+
 
 
 .. _`intel_runtime_pm_enable.description`:

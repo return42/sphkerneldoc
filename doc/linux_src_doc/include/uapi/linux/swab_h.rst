@@ -4,6 +4,7 @@
 swab.h
 ======
 
+
 .. _`__swab16`:
 
 __swab16
@@ -15,6 +16,7 @@ __swab16
 
     :param x:
         value to byteswap
+
 
 
 .. _`__swab32`:
@@ -30,6 +32,7 @@ __swab32
         value to byteswap
 
 
+
 .. _`__swab64`:
 
 __swab64
@@ -41,6 +44,7 @@ __swab64
 
     :param x:
         value to byteswap
+
 
 
 .. _`__swahw32`:
@@ -56,12 +60,14 @@ __swahw32
         value to wordswap
 
 
+
 .. _`__swahw32.description`:
 
 Description
 -----------
 
 __swahw32(0x12340000) is 0x00001234
+
 
 
 .. _`__swahb32`:
@@ -77,12 +83,14 @@ __swahb32
         value to byteswap
 
 
+
 .. _`__swahb32.description`:
 
 Description
 -----------
 
 __swahb32(0x12345678) is 0x34127856
+
 
 
 .. _`__swab16p`:
@@ -98,6 +106,7 @@ __swab16p
         pointer to a naturally-aligned 16-bit value
 
 
+
 .. _`__swab32p`:
 
 __swab32p
@@ -109,6 +118,7 @@ __swab32p
 
     :param const __u32 \*p:
         pointer to a naturally-aligned 32-bit value
+
 
 
 .. _`__swab64p`:
@@ -124,6 +134,7 @@ __swab64p
         pointer to a naturally-aligned 64-bit value
 
 
+
 .. _`__swahw32p`:
 
 __swahw32p
@@ -137,12 +148,14 @@ __swahw32p
         pointer to a naturally-aligned 32-bit value
 
 
+
 .. _`__swahw32p.description`:
 
 Description
 -----------
 
 See :c:func:`__swahw32` for details of wordswapping.
+
 
 
 .. _`__swahb32p`:
@@ -158,12 +171,14 @@ __swahb32p
         pointer to a naturally-aligned 32-bit value
 
 
+
 .. _`__swahb32p.description`:
 
 Description
 -----------
 
 See :c:func:`__swahb32` for details of high/low byteswapping.
+
 
 
 .. _`__swab16s`:
@@ -179,6 +194,7 @@ __swab16s
         pointer to a naturally-aligned 16-bit value
 
 
+
 .. _`__swab32s`:
 
 __swab32s
@@ -190,6 +206,7 @@ __swab32s
 
     :param __u32 \*p:
         pointer to a naturally-aligned 32-bit value
+
 
 
 .. _`__swab64s`:
@@ -205,6 +222,7 @@ __swab64s
         pointer to a naturally-aligned 64-bit value
 
 
+
 .. _`__swahw32s`:
 
 __swahw32s
@@ -218,12 +236,14 @@ __swahw32s
         pointer to a naturally-aligned 32-bit value
 
 
+
 .. _`__swahw32s.description`:
 
 Description
 -----------
 
 See :c:func:`__swahw32` for details of wordswapping
+
 
 
 .. _`__swahb32s`:
@@ -237,6 +257,7 @@ __swahb32s
 
     :param __u32 \*p:
         pointer to a naturally-aligned 32-bit value
+
 
 
 .. _`__swahb32s.description`:

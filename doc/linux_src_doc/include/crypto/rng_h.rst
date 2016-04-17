@@ -4,16 +4,18 @@
 rng.h
 =====
 
+
 .. _`rng_alg`:
 
 struct rng_alg
 ==============
 
-.. c:type:: struct rng_alg
+.. c:type:: rng_alg
 
     random number generator definition
 
 
+.. _`rng_alg.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`rng_alg.members`:
 
 Members
 -------
@@ -66,6 +69,7 @@ Members
 
 
 
+
 .. _`random-number-generator-api`:
 
 Random number generator API
@@ -73,6 +77,7 @@ Random number generator API
 
 The random number generator API is used with the ciphers of type
 CRYPTO_ALG_TYPE_RNG (listed as type "rng" in /proc/crypto)
+
 
 
 .. _`crypto_alloc_rng`:
@@ -95,6 +100,7 @@ crypto_alloc_rng
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_rng.description`:
 
 Description
@@ -110,8 +116,16 @@ instances. The only exception is the "krng" random number generator which
 is a kernel crypto API use case for the :c:func:`get_random_bytes` function of the
 /dev/random driver.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_rng.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_rng_alg`:
@@ -127,6 +141,7 @@ crypto_rng_alg
         cipher handle
 
 
+
 .. _`crypto_rng_alg.description`:
 
 Description
@@ -134,7 +149,15 @@ Description
 
 Return the generic name (cra_name) of the initialized random number generator
 
-Return: generic name string
+
+
+.. _`crypto_rng_alg.return`:
+
+Return
+------
+
+generic name string
+
 
 
 .. _`crypto_free_rng`:
@@ -148,6 +171,7 @@ crypto_free_rng
 
     :param struct crypto_rng \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_rng_generate`:
@@ -175,6 +199,7 @@ crypto_rng_generate
         length of the output buffer
 
 
+
 .. _`crypto_rng_generate.description`:
 
 Description
@@ -184,7 +209,15 @@ This function fills the caller-allocated buffer with random
 numbers using the random number generator referenced by the
 cipher handle.
 
-Return: 0 function was successful; < 0 if an error occurred
+
+
+.. _`crypto_rng_generate.return`:
+
+Return
+------
+
+0 function was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_rng_get_bytes`:
@@ -206,6 +239,7 @@ crypto_rng_get_bytes
         length of the output buffer
 
 
+
 .. _`crypto_rng_get_bytes.description`:
 
 Description
@@ -214,7 +248,15 @@ Description
 This function fills the caller-allocated buffer with random numbers using the
 random number generator referenced by the cipher handle.
 
-Return: 0 function was successful; < 0 if an error occurred
+
+
+.. _`crypto_rng_get_bytes.return`:
+
+Return
+------
+
+0 function was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_rng_reset`:
@@ -236,6 +278,7 @@ crypto_rng_reset
         length of the seed input data
 
 
+
 .. _`crypto_rng_reset.description`:
 
 Description
@@ -250,7 +293,15 @@ The seed is provided as a parameter to this function call. The provided seed
 should have the length of the seed size defined for the random number
 generator as defined by crypto_rng_seedsize.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_rng_reset.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_rng_seedsize`:
@@ -266,6 +317,7 @@ crypto_rng_seedsize
         cipher handle
 
 
+
 .. _`crypto_rng_seedsize.description`:
 
 Description
@@ -277,5 +329,12 @@ number generator does not implement or require a reseeding. For example,
 the SP800-90A DRBGs implement an automated reseeding after reaching a
 pre-defined threshold.
 
-Return: seed size for the random number generator
+
+
+.. _`crypto_rng_seedsize.return`:
+
+Return
+------
+
+seed size for the random number generator
 

@@ -4,16 +4,18 @@
 intel_bios.h
 ============
 
+
 .. _`vbt_header`:
 
 struct vbt_header
 =================
 
-.. c:type:: struct vbt_header
+.. c:type:: vbt_header
 
     VBT Header structure
 
 
+.. _`vbt_header.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`vbt_header.members`:
 
 Members
 -------
@@ -62,16 +65,18 @@ Members
 
 
 
+
 .. _`bdb_header`:
 
 struct bdb_header
 =================
 
-.. c:type:: struct bdb_header
+.. c:type:: bdb_header
 
     BDB Header structure
 
 
+.. _`bdb_header.definition`:
 
 Definition
 ----------
@@ -86,6 +91,7 @@ Definition
   };
 
 
+.. _`bdb_header.members`:
 
 Members
 -------

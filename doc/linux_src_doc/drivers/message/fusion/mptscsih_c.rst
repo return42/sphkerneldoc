@@ -4,6 +4,7 @@
 mptscsih.c
 ==========
 
+
 .. _`mptscsih_info_scsiio`:
 
 mptscsih_info_scsiio
@@ -23,6 +24,7 @@ mptscsih_info_scsiio
         Pointer to MPT reply frame
 
 
+
 .. _`mptscsih_info_scsiio.description`:
 
 Description
@@ -31,6 +33,7 @@ Description
 MPT_DEBUG_REPLY needs to be enabled to obtain this info
 
 Refer to lsi/mpi.h.
+
 
 
 .. _`mptscsih_info`:
@@ -46,6 +49,7 @@ mptscsih_info
         Pointer to Scsi_Host structure
 
 
+
 .. _`mptscsih_info.description`:
 
 Description
@@ -54,6 +58,7 @@ Description
 (linux scsi_host_template.info routine)
 
 Returns pointer to buffer where information was written.
+
 
 
 .. _`mptscsih_qcmd`:
@@ -69,6 +74,7 @@ mptscsih_qcmd
         Pointer to scsi_cmnd structure
 
 
+
 .. _`mptscsih_qcmd.description`:
 
 Description
@@ -79,6 +85,7 @@ This is the primary SCSI IO start routine.  Create a MPI SCSIIORequest
 from a linux scsi_cmnd request and send it to the IOC.
 
 Returns 0. (rtn value discarded by linux scsi mid-layer)
+
 
 
 .. _`mptscsih_issuetaskmgmt`:
@@ -112,17 +119,19 @@ mptscsih_IssueTaskMgmt
         timeout for task management control
 
 
-.. _`mptscsih_issuetaskmgmt.description`:
 
-Description
------------
+.. _`mptscsih_issuetaskmgmt.remark`:
 
-Remark: _HardResetHandler can be invoked from an interrupt thread (timer)
+Remark
+------
+
+_HardResetHandler can be invoked from an interrupt thread (timer)
 or a non-interrupt thread.  In the former, must not call :c:func:`schedule`.
 
 Not all fields are meaningfull for all task types.
 
 Returns 0 for SUCCESS, or FAILED.
+
 
 
 .. _`mptscsih_abort`:
@@ -138,6 +147,7 @@ mptscsih_abort
         Pointer to scsi_cmnd structure, IO to be aborted
 
 
+
 .. _`mptscsih_abort.description`:
 
 Description
@@ -146,6 +156,7 @@ Description
 (linux scsi_host_template.eh_abort_handler routine)
 
 Returns SUCCESS or FAILED.
+
 
 
 .. _`mptscsih_dev_reset`:
@@ -161,6 +172,7 @@ mptscsih_dev_reset
         Pointer to scsi_cmnd structure, IO which reset is due to
 
 
+
 .. _`mptscsih_dev_reset.description`:
 
 Description
@@ -169,6 +181,7 @@ Description
 (linux scsi_host_template.eh_dev_reset_handler routine)
 
 Returns SUCCESS or FAILED.
+
 
 
 .. _`mptscsih_bus_reset`:
@@ -184,6 +197,7 @@ mptscsih_bus_reset
         Pointer to scsi_cmnd structure, IO which reset is due to
 
 
+
 .. _`mptscsih_bus_reset.description`:
 
 Description
@@ -192,6 +206,7 @@ Description
 (linux scsi_host_template.eh_bus_reset_handler routine)
 
 Returns SUCCESS or FAILED.
+
 
 
 .. _`mptscsih_host_reset`:
@@ -207,6 +222,7 @@ mptscsih_host_reset
         Pointer to scsi_cmnd structure, IO which reset is due to
 
 
+
 .. _`mptscsih_host_reset.description`:
 
 Description
@@ -215,6 +231,7 @@ Description
 (linux scsi_host_template.eh_host_reset_handler routine)
 
 Returns SUCCESS or FAILED.
+
 
 
 .. _`mptscsih_taskmgmt_complete`:
@@ -236,6 +253,7 @@ mptscsih_taskmgmt_complete
         Pointer to SCSI task mgmt reply frame
 
 
+
 .. _`mptscsih_taskmgmt_complete.description`:
 
 Description
@@ -247,6 +265,7 @@ This routine is registered with the MPT (base) driver at driver
 load/init time via the :c:func:`mpt_register` API call.
 
 Returns 1 indicating alloc'd request frame ptr should be freed.
+
 
 
 .. _`mptscsih_get_scsi_lookup`:
@@ -265,12 +284,14 @@ mptscsih_get_scsi_lookup
         index into the array
 
 
+
 .. _`mptscsih_get_scsi_lookup.description`:
 
 Description
 -----------
 
 Returns the scsi_cmd pointer
+
 
 
 .. _`mptscsih_getclear_scsi_lookup`:
@@ -289,12 +310,14 @@ mptscsih_getclear_scsi_lookup
         index into the array
 
 
+
 .. _`mptscsih_getclear_scsi_lookup.description`:
 
 Description
 -----------
 
 Returns the scsi_cmd pointer
+
 
 
 .. _`mptscsih_set_scsi_lookup`:
@@ -316,6 +339,7 @@ mptscsih_set_scsi_lookup
         scsi_cmnd pointer
 
 
+
 .. _`scpnt_to_lookup_idx`:
 
 SCPNT_TO_LOOKUP_IDX
@@ -330,6 +354,7 @@ SCPNT_TO_LOOKUP_IDX
 
     :param struct scsi_cmnd \*sc:
         scsi_cmnd pointer
+
 
 
 .. _`mptscsih_get_completion_code`:
@@ -351,6 +376,7 @@ mptscsih_get_completion_code
         Pointer to MPT reply frame (NULL if TurboReply)
 
 
+
 .. _`mptscsih_do_cmd`:
 
 mptscsih_do_cmd
@@ -367,6 +393,7 @@ mptscsih_do_cmd
         INTERNAL_CMD pointer.
 
 
+
 .. _`mptscsih_do_cmd.description`:
 
 Description
@@ -374,18 +401,39 @@ Description
 
 Issue the specified internally generated command and do command
 specific cleanup. For bus scan / DV only.
-NOTES: If command is Inquiry and status is good,
+
+
+
+.. _`mptscsih_do_cmd.notes`:
+
+NOTES
+-----
+
+If command is Inquiry and status is good,
 initialize a target structure, save the data
 
-Remark: Single threaded access only.
 
-Return::
 
-        < 0 if an illegal command or no resources
+.. _`mptscsih_do_cmd.remark`:
 
-           0 if good
+Remark
+------
 
-         > 0 if command complete but some type of completion error.
+Single threaded access only.
+
+
+
+.. _`mptscsih_do_cmd.return`:
+
+Return
+------
+
+< 0 if an illegal command or no resources
+
+   0 if good
+
+ > 0 if command complete but some type of completion error.
+
 
 
 .. _`mptscsih_synchronize_cache`:
@@ -402,6 +450,7 @@ mptscsih_synchronize_cache
 
     :param VirtDevice \*vdevice:
         virtual target device
+
 
 
 .. _`mptscsih_synchronize_cache.description`:

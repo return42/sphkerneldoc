@@ -4,6 +4,7 @@
 init.c
 ======
 
+
 .. _`snd_device_initialize`:
 
 snd_device_initialize
@@ -18,6 +19,7 @@ snd_device_initialize
 
     :param struct snd_card \*card:
         card to assign, optional
+
 
 
 .. _`snd_card_new`:
@@ -48,6 +50,7 @@ snd_card_new
         the pointer to store the created card instance
 
 
+
 .. _`snd_card_new.description`:
 
 Description
@@ -59,7 +62,15 @@ The function allocates snd_card instance via kzalloc with the given
 space for the driver to use freely.  The allocated struct is stored
 in the given card_ret pointer.
 
-Return: Zero if successful or a negative error code.
+
+
+.. _`snd_card_new.return`:
+
+Return
+------
+
+Zero if successful or a negative error code.
+
 
 
 .. _`snd_card_disconnect`:
@@ -75,6 +86,7 @@ snd_card_disconnect
         soundcard structure
 
 
+
 .. _`snd_card_disconnect.description`:
 
 Description
@@ -82,10 +94,25 @@ Description
 
 Disconnects all APIs from the file-operations (user space).
 
-Return: Zero, otherwise a negative error code.
 
-Note: The current implementation replaces all active file->f_op with special
+
+.. _`snd_card_disconnect.return`:
+
+Return
+------
+
+Zero, otherwise a negative error code.
+
+
+
+.. _`snd_card_disconnect.note`:
+
+Note
+----
+
+The current implementation replaces all active file->f_op with special
 dummy file operations (they do nothing except release).
+
 
 
 .. _`snd_card_free_when_closed`:
@@ -101,6 +128,7 @@ snd_card_free_when_closed
         soundcard structure
 
 
+
 .. _`snd_card_free_when_closed.description`:
 
 Description
@@ -110,6 +138,7 @@ Unlike :c:func:`snd_card_free`, this function doesn't try to release the card
 resource immediately, but tries to disconnect at first.  When the card
 is still in use, the function returns before freeing the resources.
 The card resources will be freed when the refcount gets to zero.
+
 
 
 .. _`snd_card_free`:
@@ -125,6 +154,7 @@ snd_card_free
         soundcard structure
 
 
+
 .. _`snd_card_free.description`:
 
 Description
@@ -136,8 +166,16 @@ by yourself.
 
 This function waits until the all resources are properly released.
 
-Return: Zero. Frees all associated devices and frees the control
+
+
+.. _`snd_card_free.return`:
+
+Return
+------
+
+Zero. Frees all associated devices and frees the control
 interface associated to given soundcard.
+
 
 
 .. _`snd_card_set_id`:
@@ -156,6 +194,7 @@ snd_card_set_id
         new identification string
 
 
+
 .. _`snd_card_set_id.description`:
 
 Description
@@ -163,6 +202,7 @@ Description
 
 This function sets the card identification and checks for name
 collisions.
+
 
 
 .. _`snd_card_add_dev_attr`:
@@ -181,6 +221,7 @@ snd_card_add_dev_attr
         attribute group to append
 
 
+
 .. _`snd_card_register`:
 
 snd_card_register
@@ -194,6 +235,7 @@ snd_card_register
         soundcard structure
 
 
+
 .. _`snd_card_register.description`:
 
 Description
@@ -204,7 +246,15 @@ Until calling this, the ALSA control interface is blocked from the
 external accesses.  Thus, you should call this function at the end
 of the initialization of the card.
 
-Return: Zero otherwise a negative error code if the registration failed.
+
+
+.. _`snd_card_register.return`:
+
+Return
+------
+
+Zero otherwise a negative error code if the registration failed.
+
 
 
 .. _`snd_component_add`:
@@ -223,6 +273,7 @@ snd_component_add
         the component id string
 
 
+
 .. _`snd_component_add.description`:
 
 Description
@@ -231,7 +282,15 @@ Description
 This function adds the component id string to the supported list.
 The component can be referred from the alsa-lib.
 
-Return: Zero otherwise a negative error code.
+
+
+.. _`snd_component_add.return`:
+
+Return
+------
+
+Zero otherwise a negative error code.
+
 
 
 .. _`snd_card_file_add`:
@@ -250,6 +309,7 @@ snd_card_file_add
         file pointer
 
 
+
 .. _`snd_card_file_add.description`:
 
 Description
@@ -259,7 +319,15 @@ This function adds the file to the file linked-list of the card.
 This linked-list is used to keep tracking the connection state,
 and to avoid the release of busy resources by hotplug.
 
-Return: zero or a negative error code.
+
+
+.. _`snd_card_file_add.return`:
+
+Return
+------
+
+zero or a negative error code.
+
 
 
 .. _`snd_card_file_remove`:
@@ -278,6 +346,7 @@ snd_card_file_remove
         file pointer
 
 
+
 .. _`snd_card_file_remove.description`:
 
 Description
@@ -289,7 +358,15 @@ If all files are removed and :c:func:`snd_card_free_when_closed` was
 called beforehand, it processes the pending release of
 resources.
 
-Return: Zero or a negative error code.
+
+
+.. _`snd_card_file_remove.return`:
+
+Return
+------
+
+Zero or a negative error code.
+
 
 
 .. _`snd_power_wait`:
@@ -308,6 +385,7 @@ snd_power_wait
         expected power state
 
 
+
 .. _`snd_power_wait.description`:
 
 Description
@@ -315,7 +393,21 @@ Description
 
 Waits until the power-state is changed.
 
-Return: Zero if successful, or a negative error code.
 
-Note: the power lock must be active before call.
+
+.. _`snd_power_wait.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code.
+
+
+
+.. _`snd_power_wait.note`:
+
+Note
+----
+
+the power lock must be active before call.
 

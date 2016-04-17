@@ -1,0 +1,88 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=====
+cpu.c
+=====
+
+
+.. _`dev_pm_opp_init_cpufreq_table`:
+
+dev_pm_opp_init_cpufreq_table
+=============================
+
+.. c:function:: int dev_pm_opp_init_cpufreq_table (struct device *dev, struct cpufreq_frequency_table **table)
+
+    create a cpufreq table for a device
+
+    :param struct device \*dev:
+        device for which we do this operation
+
+    :param struct cpufreq_frequency_table \*\*table:
+        Cpufreq table returned back to caller
+
+
+
+.. _`dev_pm_opp_init_cpufreq_table.description`:
+
+Description
+-----------
+
+Generate a cpufreq table for a provided device- this assumes that the
+opp table is already initialized and ready for usage.
+
+This function allocates required memory for the cpufreq table. It is
+expected that the caller does the required maintenance such as freeing
+the table as required.
+
+Returns -EINVAL for bad pointers, -ENODEV if the device is not found, -ENOMEM
+if no memory available for the operation (table is not populated), returns 0
+if successful and table is populated.
+
+
+
+.. _`dev_pm_opp_init_cpufreq_table.warning`:
+
+WARNING
+-------
+
+It is  important for the callers to ensure refreshing their copy of
+the table if any of the mentioned functions have been invoked in the interim.
+
+
+
+.. _`dev_pm_opp_init_cpufreq_table.locking`:
+
+Locking
+-------
+
+The internal opp_table and opp structures are RCU protected.
+Since we just use the regular accessor functions to access the internal data
+structures, we use RCU read lock inside this function. As a result, users of
+this function DONOT need to use explicit locks for invoking.
+
+
+
+.. _`dev_pm_opp_free_cpufreq_table`:
+
+dev_pm_opp_free_cpufreq_table
+=============================
+
+.. c:function:: void dev_pm_opp_free_cpufreq_table (struct device *dev, struct cpufreq_frequency_table **table)
+
+    free the cpufreq table
+
+    :param struct device \*dev:
+        device for which we do this operation
+
+    :param struct cpufreq_frequency_table \*\*table:
+        table to free
+
+
+
+.. _`dev_pm_opp_free_cpufreq_table.description`:
+
+Description
+-----------
+
+Free up the table allocated by dev_pm_opp_init_cpufreq_table
+

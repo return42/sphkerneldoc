@@ -4,6 +4,7 @@
 message.c
 =========
 
+
 .. _`usb_control_msg`:
 
 usb_control_msg
@@ -42,12 +43,20 @@ usb_control_msg
         out (if 0 the wait is forever)
 
 
+
+.. _`usb_control_msg.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
+
+
 .. _`usb_control_msg.description`:
 
 Description
 -----------
-
-Context: !in_interrupt ()
 
 This function sends a simple control message to a specified endpoint and
 waits for the message to complete, or timeout.
@@ -59,8 +68,16 @@ If a thread in your driver uses this call, make sure your :c:func:`disconnect`
 method can wait for it to complete.  Since you don't have a handle on the
 URB used, you can't cancel the request.
 
-Return: If successful, the number of bytes transferred. Otherwise, a negative
+
+
+.. _`usb_control_msg.return`:
+
+Return
+------
+
+If successful, the number of bytes transferred. Otherwise, a negative
 error number.
+
 
 
 .. _`usb_interrupt_msg`:
@@ -93,12 +110,20 @@ usb_interrupt_msg
         timing out (if 0 the wait is forever)
 
 
+
+.. _`usb_interrupt_msg.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
+
+
 .. _`usb_interrupt_msg.description`:
 
 Description
 -----------
-
-Context: !in_interrupt ()
 
 This function sends a simple interrupt message to a specified endpoint and
 waits for the message to complete, or timeout.
@@ -110,9 +135,16 @@ driver uses this call, make sure your :c:func:`disconnect` method can wait for i
 complete.  Since you don't have a handle on the URB used, you can't cancel
 the request.
 
-Return:
+
+
+.. _`usb_interrupt_msg.return`:
+
+Return
+------
+
 If successful, 0. Otherwise a negative error number. The number of actual
 bytes transferred will be stored in the ``actual_length`` parameter.
+
 
 
 .. _`usb_bulk_msg`:
@@ -145,12 +177,20 @@ usb_bulk_msg
         timing out (if 0 the wait is forever)
 
 
+
+.. _`usb_bulk_msg.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
+
+
 .. _`usb_bulk_msg.description`:
 
 Description
 -----------
-
-Context: !in_interrupt ()
 
 This function sends a simple bulk message to a specified endpoint
 and waits for the message to complete, or timeout.
@@ -167,9 +207,16 @@ users are forced to abuse this routine by using it to submit URBs for
 interrupt endpoints.  We will take the liberty of creating an interrupt URB
 (with the default interval) if the target is an interrupt endpoint.
 
-Return:
+
+
+.. _`usb_bulk_msg.return`:
+
+Return
+------
+
 If successful, 0. Otherwise a negative error number. The number of actual
 bytes transferred will be stored in the ``actual_length`` parameter.
+
 
 
 .. _`usb_sg_init`:
@@ -206,7 +253,8 @@ usb_sg_init
         send every byte identified in the list.
 
     :param gfp_t mem_flags:
-        SLAB_\* flags affecting memory allocations in this call
+        SLAB\_\* flags affecting memory allocations in this call
+
 
 
 .. _`usb_sg_init.description`:
@@ -225,7 +273,15 @@ complete (or to be canceled) and then cleans up all resources allocated by
 The request may be canceled with :c:func:`usb_sg_cancel`, either before or after
 :c:func:`usb_sg_wait` is called.
 
-Return: Zero for success, else a negative errno value.
+
+
+.. _`usb_sg_init.return`:
+
+Return
+------
+
+Zero for success, else a negative errno value.
+
 
 
 .. _`usb_sg_wait`:
@@ -238,11 +294,18 @@ usb_sg_wait
     synchronously execute scatter/gather request
 
     :param struct usb_sg_request \*io:
-        request block handle, as initialized with :c:func:`usb_sg_init`.::
+        request block handle, as initialized with :c:func:`usb_sg_init`.
+        some fields become accessible when this call returns.
 
-                some fields become accessible when this call returns.
 
-        Context: !in_interrupt ()
+
+.. _`usb_sg_wait.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_sg_wait.description`:
@@ -271,7 +334,13 @@ this call will have been freed.  The request block parameter may still be
 passed to :c:func:`usb_sg_cancel`, or it may be freed.  It could also be
 reinitialized and then reused.
 
-Data Transfer Rates:
+
+
+.. _`usb_sg_wait.data-transfer-rates`:
+
+Data Transfer Rates
+-------------------
+
 
 Bulk transfers are valid for full or high speed endpoints.
 The best full speed data rate is 19 packets of 64 bytes each
@@ -290,6 +359,7 @@ under an xHCI host controller, as the bandwidth is reserved when the
 configuration or interface alt setting is selected.
 
 
+
 .. _`usb_sg_cancel`:
 
 usb_sg_cancel
@@ -303,6 +373,7 @@ usb_sg_cancel
         request block, initialized with :c:func:`usb_sg_init`
 
 
+
 .. _`usb_sg_cancel.description`:
 
 Description
@@ -311,6 +382,7 @@ Description
 This stops a request after it has been started by :c:func:`usb_sg_wait`.
 It can also prevents one initialized by :c:func:`usb_sg_init` from starting,
 so that call just frees resources allocated to the request.
+
 
 
 .. _`usb_get_descriptor`:
@@ -326,7 +398,7 @@ usb_get_descriptor
         the device whose descriptor is being retrieved
 
     :param unsigned char type:
-        the descriptor type (USB_DT_\*)
+        the descriptor type (USB_DT\_\*)
 
     :param unsigned char index:
         the number of the descriptor
@@ -336,7 +408,16 @@ usb_get_descriptor
 
     :param int size:
         how big is "buf"?
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_get_descriptor.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_get_descriptor.description`:
@@ -354,8 +435,16 @@ devices also use class-specific or vendor-specific descriptors.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Return: The number of bytes received on success, or else the status code
+
+
+.. _`usb_get_descriptor.return`:
+
+Return
+------
+
+The number of bytes received on success, or else the status code
 returned by the underlying :c:func:`usb_control_msg` call.
+
 
 
 .. _`usb_get_string`:
@@ -381,7 +470,16 @@ usb_get_string
 
     :param int size:
         how big is "buf"?
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_get_string.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_get_string.description`:
@@ -399,8 +497,16 @@ descriptors, and could also be used in vendor-specific ways.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Return: The number of bytes received on success, or else the status code
+
+
+.. _`usb_get_string.return`:
+
+Return
+------
+
+The number of bytes received on success, or else the status code
 returned by the underlying :c:func:`usb_control_msg` call.
+
 
 
 .. _`usb_string`:
@@ -423,7 +529,16 @@ usb_string
 
     :param size_t size:
         how big is "buf"?
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_string.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_string.description`:
@@ -438,7 +553,15 @@ chooses strings in the first language supported by the device.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Return: length of the string (>= 0) or usb_control_msg status (< 0).
+
+
+.. _`usb_string.return`:
+
+Return
+------
+
+length of the string (>= 0) or usb_control_msg status (< 0).
+
 
 
 .. _`usb_cache_string`:
@@ -457,13 +580,15 @@ usb_cache_string
         the descriptor index
 
 
-.. _`usb_cache_string.description`:
 
-Description
------------
+.. _`usb_cache_string.return`:
 
-Return: A pointer to a kmalloc'ed buffer containing the descriptor string,
+Return
+------
+
+A pointer to a kmalloc'ed buffer containing the descriptor string,
 or ``NULL`` if the index is 0 or the string could not be read.
+
 
 
 .. _`usb_get_status`:
@@ -479,14 +604,23 @@ usb_get_status
         the device whose status is being checked
 
     :param int type:
-        USB_RECIP_\*; for device, interface, or endpoint
+        USB_RECIP\_\*; for device, interface, or endpoint
 
     :param int target:
         zero (for device), else interface or endpoint number
 
     :param void \*data:
         pointer to two bytes of bitmap data
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_get_status.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_get_status.description`:
@@ -509,6 +643,7 @@ Returns 0 and the status value in \*\ ``data`` (in host byte order) on success,
 or else the status code from the underlying :c:func:`usb_control_msg` call.
 
 
+
 .. _`usb_clear_halt`:
 
 usb_clear_halt
@@ -523,7 +658,16 @@ usb_clear_halt
 
     :param int pipe:
         endpoint "pipe" being cleared
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_clear_halt.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_clear_halt.description`:
@@ -545,8 +689,16 @@ same status code used to report a true stall.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Return: Zero on success, or else the status code returned by the
+
+
+.. _`usb_clear_halt.return`:
+
+Return
+------
+
+Zero on success, or else the status code returned by the
 underlying :c:func:`usb_control_msg` call.
+
 
 
 .. _`usb_disable_endpoint`:
@@ -570,6 +722,7 @@ usb_disable_endpoint
         controller hardware
 
 
+
 .. _`usb_disable_endpoint.description`:
 
 Description
@@ -578,6 +731,7 @@ Description
 Disables the endpoint for URB submission and nukes all pending URBs.
 If ``reset_hardware`` is set then also deallocates hcd/hardware state
 for the endpoint.
+
 
 
 .. _`usb_reset_endpoint`:
@@ -597,6 +751,7 @@ usb_reset_endpoint
         endpoint number + USB_DIR_IN for input
 
 
+
 .. _`usb_reset_endpoint.description`:
 
 Description
@@ -604,6 +759,7 @@ Description
 
 Resets any host-side endpoint state such as the toggle bit,
 sequence number or current window.
+
 
 
 .. _`usb_disable_interface`:
@@ -626,12 +782,14 @@ usb_disable_interface
         controller hardware
 
 
+
 .. _`usb_disable_interface.description`:
 
 Description
 -----------
 
 Disables all the endpoints for the interface's current altsetting.
+
 
 
 .. _`usb_disable_device`:
@@ -650,6 +808,7 @@ usb_disable_device
         0 to disable endpoint 0, 1 to skip it.
 
 
+
 .. _`usb_disable_device.description`:
 
 Description
@@ -659,6 +818,7 @@ Disables all the device's endpoints, potentially including endpoint 0.
 Deallocates hcd/hardware state for the endpoints (nuking all or most
 pending urbs) and usbcore state for the interfaces, so that usbcore
 must :c:func:`usb_set_configuration` before any interfaces could be used.
+
 
 
 .. _`usb_enable_endpoint`:
@@ -680,6 +840,7 @@ usb_enable_endpoint
         flag to reset the endpoint state
 
 
+
 .. _`usb_enable_endpoint.description`:
 
 Description
@@ -687,6 +848,7 @@ Description
 
 Resets the endpoint state if asked, and sets dev->ep_{in,out} pointers.
 For control endpoints, both the input and output sides are handled.
+
 
 
 .. _`usb_enable_interface`:
@@ -708,12 +870,14 @@ usb_enable_interface
         flag to reset the endpoints' state
 
 
+
 .. _`usb_enable_interface.description`:
 
 Description
 -----------
 
 Enables all the endpoints for the interface's current altsetting.
+
 
 
 .. _`usb_set_interface`:
@@ -733,7 +897,16 @@ usb_set_interface
 
     :param int alternate:
         the setting being chosen.
-        Context: !in_interrupt ()
+
+
+
+.. _`usb_set_interface.context`:
+
+Context
+-------
+
+!in_interrupt ()
+
 
 
 .. _`usb_set_interface.description`:
@@ -764,8 +937,16 @@ Also, drivers must not change altsettings while urbs are scheduled for
 endpoints in that interface; all such urbs must first be completed
 (perhaps forced by unlinking).
 
-Return: Zero on success, or else the status code returned by the
+
+
+.. _`usb_set_interface.return`:
+
+Return
+------
+
+Zero on success, or else the status code returned by the
 underlying :c:func:`usb_control_msg` call.
+
 
 
 .. _`usb_reset_configuration`:
@@ -779,6 +960,7 @@ usb_reset_configuration
 
     :param struct usb_device \*dev:
         the device whose configuration is being reset
+
 
 
 .. _`usb_reset_configuration.description`:
@@ -802,7 +984,15 @@ configuration would affect other drivers' interfaces.
 
 The caller must own the device lock.
 
-Return: Zero on success, else a negative error code.
+
+
+.. _`usb_reset_configuration.return`:
+
+Return
+------
+
+Zero on success, else a negative error code.
+
 
 
 .. _`usb_driver_set_configuration`:
@@ -819,7 +1009,16 @@ usb_driver_set_configuration
 
     :param int config:
         the configuration being chosen.
-        Context: In process context, must be able to sleep
+
+
+
+.. _`usb_driver_set_configuration.context`:
+
+Context
+-------
+
+In process context, must be able to sleep
+
 
 
 .. _`usb_driver_set_configuration.description`:
@@ -837,7 +1036,14 @@ Still, in certain specialized circumstances the need may arise.  This
 routine gets around the normal restrictions by using a work thread to
 submit the change-config request.
 
-Return: 0 if the request was successfully queued, error code otherwise.
+
+
+.. _`usb_driver_set_configuration.return`:
+
+Return
+------
+
+0 if the request was successfully queued, error code otherwise.
 The caller has no way to know whether the queued request will eventually
 succeed.
 

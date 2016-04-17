@@ -1,0 +1,58 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ad5755.h
+========
+
+
+.. _`ad5755_platform_data`:
+
+struct ad5755_platform_data
+===========================
+
+.. c:type:: ad5755_platform_data
+
+    AD5755 DAC driver platform data
+
+
+.. _`ad5755_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ad5755_platform_data {
+    bool ext_dc_dc_compenstation_resistor;
+    enum ad5755_dc_dc_phase dc_dc_phase;
+    enum ad5755_dc_dc_freq dc_dc_freq;
+    enum ad5755_dc_dc_maxv dc_dc_maxv;
+  };
+
+
+.. _`ad5755_platform_data.members`:
+
+Members
+-------
+
+:``ext_dc_dc_compenstation_resistor``:
+    Whether an external DC-DC converter
+    compensation register is used.
+
+:``dc_dc_phase``:
+    DC-DC converter phase.
+
+:``dc_dc_freq``:
+    DC-DC converter frequency.
+
+:``dc_dc_maxv``:
+    DC-DC maximum allowed boost voltage.
+    ``dac``\ .mode: The mode to be used for the DAC output.
+    ``dac``\ .ext_current_sense_resistor: Whether an external current sense resistor
+    is used.
+    ``dac``\ .enable_voltage_overrange: Whether to enable 20% voltage output overrange.
+    ``dac``\ .slew.enable: Whether to enable digital slew.
+    ``dac``\ .slew.rate: Slew rate of the digital slew.
+    ``dac``\ .slew.step_size: Slew step size of the digital slew.
+
+

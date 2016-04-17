@@ -4,16 +4,18 @@
 spi.h
 =====
 
+
 .. _`spi_statistics`:
 
 struct spi_statistics
 =====================
 
-.. c:type:: struct spi_statistics
+.. c:type:: spi_statistics
 
     statistics for spi transfers
 
 
+.. _`spi_statistics.definition`:
 
 Definition
 ----------
@@ -38,6 +40,7 @@ Definition
   };
 
 
+.. _`spi_statistics.members`:
 
 Members
 -------
@@ -85,16 +88,18 @@ Members
 
 
 
+
 .. _`spi_device`:
 
 struct spi_device
 =================
 
-.. c:type:: struct spi_device
+.. c:type:: spi_device
 
     Master side proxy for an SPI slave device
 
 
+.. _`spi_device.definition`:
 
 Definition
 ----------
@@ -133,6 +138,7 @@ Definition
   };
 
 
+.. _`spi_device.members`:
 
 Members
 -------
@@ -160,12 +166,11 @@ Members
     The spi_transfer.bits_per_word can override this for each transfer.
 
 :``mode``:
-    The spi mode defines how data is clocked out and in.::
-
-            This may be changed by the device's driver.
-            The "active low" default for chipselect mode can be overridden
-            (by specifying SPI_CS_HIGH) as can the "MSB first" default for
-            each word in a transfer (by specifying SPI_LSB_FIRST).
+    The spi mode defines how data is clocked out and in.
+    This may be changed by the device's driver.
+    The "active low" default for chipselect mode can be overridden
+    (by specifying SPI_CS_HIGH) as can the "MSB first" default for
+    each word in a transfer (by specifying SPI_LSB_FIRST).
 
 :``irq``:
     Negative, or the number passed to :c:func:`request_irq` to receive
@@ -192,6 +197,9 @@ Members
 
 
 
+
+.. _`spi_device.description`:
+
 Description
 -----------
 
@@ -205,16 +213,18 @@ variant with slightly different functionality; another might be
 information about how this particular board wires the chip's pins.
 
 
+
 .. _`spi_driver`:
 
 struct spi_driver
 =================
 
-.. c:type:: struct spi_driver
+.. c:type:: spi_driver
 
     Host side "protocol" driver
 
 
+.. _`spi_driver.definition`:
 
 Definition
 ----------
@@ -230,6 +240,7 @@ Definition
   };
 
 
+.. _`spi_driver.members`:
 
 Members
 -------
@@ -256,6 +267,9 @@ Members
 
 
 
+
+.. _`spi_driver.description`:
+
 Description
 -----------
 
@@ -272,6 +286,7 @@ Examples of such upper levels include frameworks like MTD, networking,
 MMC, RTC, filesystem character device nodes, and hardware monitoring.
 
 
+
 .. _`spi_unregister_driver`:
 
 spi_unregister_driver
@@ -283,7 +298,16 @@ spi_unregister_driver
 
     :param struct spi_driver \*sdrv:
         the driver to unregister
-        Context: can sleep
+
+
+
+.. _`spi_unregister_driver.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`module_spi_driver`:
@@ -299,6 +323,7 @@ module_spi_driver
         spi_driver struct
 
 
+
 .. _`module_spi_driver.description`:
 
 Description
@@ -309,16 +334,18 @@ init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces :c:func:`module_init` and :c:func:`module_exit`
 
 
+
 .. _`spi_master`:
 
 struct spi_master
 =================
 
-.. c:type:: struct spi_master
+.. c:type:: spi_master
 
     interface to SPI master controller
 
 
+.. _`spi_master.definition`:
 
 Definition
 ----------
@@ -387,6 +414,7 @@ Definition
   };
 
 
+.. _`spi_master.members`:
 
 Members
 -------
@@ -543,7 +571,7 @@ Members
     from interrupt context.
 
 :``transfer_one``:
-    transfer a single spi_transfer.::
+    transfer a single spi_transfer.
 
                      - return 0 if the transfer is finished,
                      - return 1 if the transfer is still in progress. When
@@ -585,6 +613,9 @@ Members
 
 
 
+
+.. _`spi_master.description`:
+
 Description
 -----------
 
@@ -600,16 +631,18 @@ an SPI slave device.  For each such message it queues, it calls the
 message's completion function when the transaction completes.
 
 
+
 .. _`spi_res`:
 
 struct spi_res
 ==============
 
-.. c:type:: struct spi_res
+.. c:type:: spi_res
 
     spi resource management structure
 
 
+.. _`spi_res.definition`:
 
 Definition
 ----------
@@ -623,6 +656,7 @@ Definition
   };
 
 
+.. _`spi_res.members`:
 
 Members
 -------
@@ -638,6 +672,9 @@ Members
 
 
 
+
+.. _`spi_res.description`:
+
 Description
 -----------
 
@@ -645,16 +682,18 @@ this is based on ideas from devres, but focused on life-cycle
 management during spi_message processing
 
 
+
 .. _`spi_transfer`:
 
 struct spi_transfer
 ===================
 
-.. c:type:: struct spi_transfer
+.. c:type:: spi_transfer
 
     a read/write buffer pair
 
 
+.. _`spi_transfer.definition`:
 
 Definition
 ----------
@@ -682,6 +721,7 @@ Definition
   };
 
 
+.. _`spi_transfer.members`:
 
 Members
 -------
@@ -735,6 +775,9 @@ Members
     transfers are sequenced through ``spi_message``\ .transfers
 
 
+
+
+.. _`spi_transfer.description`:
 
 Description
 -----------
@@ -794,16 +837,18 @@ insulate against future API updates.  After you submit a message
 and its transfers, ignore them until its completion callback.
 
 
+
 .. _`spi_message`:
 
 struct spi_message
 ==================
 
-.. c:type:: struct spi_message
+.. c:type:: spi_message
 
     one multi-segment SPI transaction
 
 
+.. _`spi_message.definition`:
 
 Definition
 ----------
@@ -825,6 +870,7 @@ Definition
   };
 
 
+.. _`spi_message.members`:
 
 Members
 -------
@@ -866,6 +912,9 @@ Members
 
 
 
+
+.. _`spi_message.description`:
+
 Description
 -----------
 
@@ -882,6 +931,7 @@ to the lower layers is responsible for managing its memory.
 Zero-initialize every field you don't set up explicitly, to
 insulate against future API updates.  After you submit a message
 and its transfers, ignore them until its completion callback.
+
 
 
 .. _`spi_message_init_with_transfers`:
@@ -903,6 +953,7 @@ spi_message_init_with_transfers
         Number of items in the xfer array
 
 
+
 .. _`spi_message_init_with_transfers.description`:
 
 Description
@@ -912,16 +963,18 @@ This function initializes the given spi_message and adds each spi_transfer in
 the given array to the message.
 
 
+
 .. _`spi_replaced_transfers`:
 
 struct spi_replaced_transfers
 =============================
 
-.. c:type:: struct spi_replaced_transfers
+.. c:type:: spi_replaced_transfers
 
     structure describing the spi_transfer replacements that have occurred so that they can get reverted
 
 
+.. _`spi_replaced_transfers.definition`:
 
 Definition
 ----------
@@ -938,6 +991,7 @@ Definition
   };
 
 
+.. _`spi_replaced_transfers.members`:
 
 Members
 -------
@@ -966,12 +1020,16 @@ Members
 
 
 
-Description
------------
 
-note: that ``extradata`` will point to ``inserted_transfers``\ [\ ``inserted``\ ]
+.. _`spi_replaced_transfers.note`:
+
+note
+----
+
+that ``extradata`` will point to ``inserted_transfers``\ [\ ``inserted``\ ]
 if some extra allocation is requested, so alignment will be the same
 as for spi_transfers
+
 
 
 .. _`spi_write`:
@@ -991,7 +1049,16 @@ spi_write
 
     :param size_t len:
         data buffer size
-        Context: can sleep
+
+
+
+.. _`spi_write.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_write.description`:
@@ -1002,7 +1069,15 @@ Description
 This function writes the buffer ``buf``\ .
 Callable only from contexts that can sleep.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_write.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_read`:
@@ -1022,7 +1097,16 @@ spi_read
 
     :param size_t len:
         data buffer size
-        Context: can sleep
+
+
+
+.. _`spi_read.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_read.description`:
@@ -1033,7 +1117,15 @@ Description
 This function reads the buffer ``buf``\ .
 Callable only from contexts that can sleep.
 
-Return: zero on success, else a negative error code.
+
+
+.. _`spi_read.return`:
+
+Return
+------
+
+zero on success, else a negative error code.
+
 
 
 .. _`spi_sync_transfer`:
@@ -1053,7 +1145,16 @@ spi_sync_transfer
 
     :param unsigned int num_xfers:
         Number of items in the xfer array
-        Context: can sleep
+
+
+
+.. _`spi_sync_transfer.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_sync_transfer.description`:
@@ -1065,7 +1166,15 @@ Does a synchronous SPI data transfer of the given spi_transfer array.
 
 For more specific semantics see :c:func:`spi_sync`.
 
-Return: Return: zero on success, else a negative error code.
+
+
+.. _`spi_sync_transfer.return`:
+
+Return
+------
+
+Return: zero on success, else a negative error code.
+
 
 
 .. _`spi_w8r8`:
@@ -1082,7 +1191,16 @@ spi_w8r8
 
     :param u8 cmd:
         command to be written before data is read back
-        Context: can sleep
+
+
+
+.. _`spi_w8r8.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_w8r8.description`:
@@ -1092,8 +1210,16 @@ Description
 
 Callable only from contexts that can sleep.
 
-Return: the (unsigned) eight bit number returned by the
+
+
+.. _`spi_w8r8.return`:
+
+Return
+------
+
+the (unsigned) eight bit number returned by the
 device, or else a negative error code.
+
 
 
 .. _`spi_w8r16`:
@@ -1110,7 +1236,16 @@ spi_w8r16
 
     :param u8 cmd:
         command to be written before data is read back
-        Context: can sleep
+
+
+
+.. _`spi_w8r16.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_w8r16.description`:
@@ -1123,8 +1258,16 @@ big-endian.
 
 Callable only from contexts that can sleep.
 
-Return: the (unsigned) sixteen bit number returned by the
+
+
+.. _`spi_w8r16.return`:
+
+Return
+------
+
+the (unsigned) sixteen bit number returned by the
 device, or else a negative error code.
+
 
 
 .. _`spi_w8r16be`:
@@ -1141,7 +1284,16 @@ spi_w8r16be
 
     :param u8 cmd:
         command to be written before data is read back
-        Context: can sleep
+
+
+
+.. _`spi_w8r16be.context`:
+
+Context
+-------
+
+can sleep
+
 
 
 .. _`spi_w8r16be.description`:
@@ -1154,8 +1306,16 @@ convert the read 16 bit data word from big-endian to native endianness.
 
 Callable only from contexts that can sleep.
 
-Return: the (unsigned) sixteen bit number returned by the device in cpu
+
+
+.. _`spi_w8r16be.return`:
+
+Return
+------
+
+the (unsigned) sixteen bit number returned by the device in cpu
 endianness, or else a negative error code.
+
 
 
 .. _`spi_flash_read_message`:
@@ -1163,11 +1323,12 @@ endianness, or else a negative error code.
 struct spi_flash_read_message
 =============================
 
-.. c:type:: struct spi_flash_read_message
+.. c:type:: spi_flash_read_message
 
     flash specific information for spi-masters that provide accelerated flash read interfaces
 
 
+.. _`spi_flash_read_message.definition`:
 
 Definition
 ----------
@@ -1188,6 +1349,7 @@ Definition
   };
 
 
+.. _`spi_flash_read_message.members`:
 
 Members
 -------
@@ -1224,16 +1386,18 @@ Members
 
 
 
+
 .. _`spi_board_info`:
 
 struct spi_board_info
 =====================
 
-.. c:type:: struct spi_board_info
+.. c:type:: spi_board_info
 
     board-specific template for a SPI device
 
 
+.. _`spi_board_info.definition`:
 
 Definition
 ----------
@@ -1252,6 +1416,7 @@ Definition
   };
 
 
+.. _`spi_board_info.members`:
 
 Members
 -------
@@ -1288,6 +1453,9 @@ Members
     possibly presence of an inverter in the chipselect path.
 
 
+
+
+.. _`spi_board_info.description`:
 
 Description
 -----------

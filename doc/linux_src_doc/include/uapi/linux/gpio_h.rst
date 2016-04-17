@@ -4,16 +4,18 @@
 gpio.h
 ======
 
+
 .. _`gpiochip_info`:
 
 struct gpiochip_info
 ====================
 
-.. c:type:: struct gpiochip_info
+.. c:type:: gpiochip_info
 
     Information about a certain GPIO chip
 
 
+.. _`gpiochip_info.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`gpiochip_info.members`:
 
 Members
 -------
@@ -43,16 +46,18 @@ Members
 
 
 
+
 .. _`gpioline_info`:
 
 struct gpioline_info
 ====================
 
-.. c:type:: struct gpioline_info
+.. c:type:: gpioline_info
 
     Information about a certain GPIO line
 
 
+.. _`gpioline_info.definition`:
 
 Definition
 ----------
@@ -67,6 +72,7 @@ Definition
   };
 
 
+.. _`gpioline_info.members`:
 
 Members
 -------

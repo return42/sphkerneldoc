@@ -4,16 +4,18 @@
 v4l2-event.h
 ============
 
+
 .. _`v4l2_kevent`:
 
 struct v4l2_kevent
 ==================
 
-.. c:type:: struct v4l2_kevent
+.. c:type:: v4l2_kevent
 
     Internal kernel event struct.
 
 
+.. _`v4l2_kevent.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`v4l2_kevent.members`:
 
 Members
 -------
@@ -42,16 +45,18 @@ Members
 
 
 
+
 .. _`v4l2_subscribed_event`:
 
 struct v4l2_subscribed_event
 ============================
 
-.. c:type:: struct v4l2_subscribed_event
+.. c:type:: v4l2_subscribed_event
 
     Internal struct representing a subscribed event.
 
 
+.. _`v4l2_subscribed_event.definition`:
 
 Definition
 ----------
@@ -73,6 +78,7 @@ Definition
   };
 
 
+.. _`v4l2_subscribed_event.members`:
 
 Members
 -------

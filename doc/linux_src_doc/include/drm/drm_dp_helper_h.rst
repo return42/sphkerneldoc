@@ -4,16 +4,18 @@
 drm_dp_helper.h
 ===============
 
+
 .. _`drm_dp_aux_msg`:
 
 struct drm_dp_aux_msg
 =====================
 
-.. c:type:: struct drm_dp_aux_msg
+.. c:type:: drm_dp_aux_msg
 
     DisplayPort AUX channel transaction
 
 
+.. _`drm_dp_aux_msg.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`drm_dp_aux_msg.members`:
 
 Members
 -------
@@ -37,7 +40,7 @@ Members
     address of the (first) register to access
 
 :``request``:
-    contains the type of transaction (see DP_AUX_\* macros)
+    contains the type of transaction (see DP_AUX\_\* macros)
 
 :``reply``:
     upon completion, contains the reply type of the transaction
@@ -50,16 +53,18 @@ Members
 
 
 
+
 .. _`drm_dp_aux`:
 
 struct drm_dp_aux
 =================
 
-.. c:type:: struct drm_dp_aux
+.. c:type:: drm_dp_aux
 
     DisplayPort AUX channel
 
 
+.. _`drm_dp_aux.definition`:
 
 Definition
 ----------
@@ -75,6 +80,7 @@ Definition
   };
 
 
+.. _`drm_dp_aux.members`:
 
 Members
 -------
@@ -95,6 +101,9 @@ Members
     transfers a message representing a single AUX transaction
 
 
+
+
+.. _`drm_dp_aux.description`:
 
 Description
 -----------
@@ -129,6 +138,7 @@ only modifies the reply field of the drm_dp_aux_msg structure.  The
 retry logic and i2c helpers assume this is the case.
 
 
+
 .. _`drm_dp_dpcd_readb`:
 
 drm_dp_dpcd_readb
@@ -148,6 +158,7 @@ drm_dp_dpcd_readb
         location where the value of the register will be stored
 
 
+
 .. _`drm_dp_dpcd_readb.description`:
 
 Description
@@ -155,6 +166,7 @@ Description
 
 Returns the number of bytes transferred (1) on success, or a negative
 error code on failure.
+
 
 
 .. _`drm_dp_dpcd_writeb`:
@@ -174,6 +186,7 @@ drm_dp_dpcd_writeb
 
     :param u8 value:
         value to write to the register
+
 
 
 .. _`drm_dp_dpcd_writeb.description`:

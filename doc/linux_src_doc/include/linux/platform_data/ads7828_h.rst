@@ -1,0 +1,46 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+ads7828.h
+=========
+
+
+.. _`ads7828_platform_data`:
+
+struct ads7828_platform_data
+============================
+
+.. c:type:: ads7828_platform_data
+
+    optional ADS7828 connectivity info
+
+
+.. _`ads7828_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ads7828_platform_data {
+    bool diff_input;
+    bool ext_vref;
+    unsigned int vref_mv;
+  };
+
+
+.. _`ads7828_platform_data.members`:
+
+Members
+-------
+
+:``diff_input``:
+    Differential input mode.
+
+:``ext_vref``:
+    Use an external voltage reference.
+
+:``vref_mv``:
+    Voltage reference value, if external.
+
+

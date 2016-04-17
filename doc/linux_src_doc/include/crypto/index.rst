@@ -9,6 +9,8 @@ crypto
 
    aead_h
    akcipher_h
+   algapi_h
    hash_h
    rng_h
    skcipher_h
+   internal/index

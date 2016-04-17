@@ -9,5 +9,7 @@ gadget
 
    composite_c
    config_c
+   epautoconf_c
    usbstring_c
    function/index
+   udc/index

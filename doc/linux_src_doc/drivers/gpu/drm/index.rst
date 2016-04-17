@@ -7,31 +7,64 @@ drm
 .. toctree::
    :maxdepth: 1
 
+   drm_agpsupport_c
    drm_atomic_c
    drm_atomic_helper_c
+   drm_auth_c
    drm_bridge_c
+   drm_bufs_c
+   drm_context_c
    drm_crtc_c
    drm_crtc_helper_c
+   drm_debugfs_c
+   drm_dma_c
+   drm_dp_aux_dev_c
    drm_dp_helper_c
    drm_dp_mst_topology_c
    drm_drv_c
    drm_edid_c
+   drm_encoder_slave_c
+   drm_fb_cma_helper_c
    drm_fb_helper_c
    drm_flip_work_c
    drm_fops_c
    drm_gem_c
    drm_gem_cma_helper_c
+   drm_info_c
+   drm_ioc32_c
    drm_ioctl_c
    drm_irq_c
+   drm_lock_c
    drm_mipi_dsi_c
    drm_mm_c
    drm_modes_c
    drm_modeset_lock_c
+   drm_of_c
    drm_pci_c
    drm_plane_helper_c
    drm_platform_c
    drm_prime_c
    drm_probe_helper_c
    drm_rect_c
+   drm_sysfs_c
    drm_vma_manager_c
+   drm_vm_c
+   amd/index
+   exynos/index
+   gma500/index
+   i2c/index
+   i810/index
    i915/index
+   mga/index
+   msm/index
+   nouveau/index
+   omapdrm/index
+   r128/index
+   radeon/index
+   rcar-du/index
+   sti/index
+   tegra/index
+   ttm/index
+   vc4/index
+   vgem/index
+   vmwgfx/index

@@ -4,6 +4,7 @@
 rio-sysfs.c
 ===========
 
+
 .. _`rio_create_sysfs_dev_files`:
 
 rio_create_sysfs_dev_files
@@ -17,12 +18,14 @@ rio_create_sysfs_dev_files
         device whose entries should be created
 
 
+
 .. _`rio_create_sysfs_dev_files.description`:
 
 Description
 -----------
 
 Create files when ``rdev`` is added to sysfs.
+
 
 
 .. _`rio_remove_sysfs_dev_files`:
@@ -36,6 +39,7 @@ rio_remove_sysfs_dev_files
 
     :param struct rio_dev \*rdev:
         device whose entries we should free
+
 
 
 .. _`rio_remove_sysfs_dev_files.description`:

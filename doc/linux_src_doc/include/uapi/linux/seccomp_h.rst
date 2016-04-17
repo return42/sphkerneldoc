@@ -4,16 +4,18 @@
 seccomp.h
 =========
 
+
 .. _`seccomp_data`:
 
 struct seccomp_data
 ===================
 
-.. c:type:: struct seccomp_data
+.. c:type:: seccomp_data
 
     the format the BPF program executes over.
 
 
+.. _`seccomp_data.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`seccomp_data.members`:
 
 Members
 -------
@@ -36,7 +39,7 @@ Members
     the system call number
 
 :``arch``:
-    indicates system call convention as an AUDIT_ARCH_\* value
+    indicates system call convention as an AUDIT_ARCH\_\* value
     as defined in <linux/audit.h>.
 
 :``instruction_pointer``:

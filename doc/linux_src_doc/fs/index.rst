@@ -7,23 +7,33 @@ fs
 .. toctree::
    :maxdepth: 1
 
-   bad_inode_c
-   block_dev_c
-   buffer_c
-   char_dev_c
-   dcache_c
-   eventfd_c
-   filesystems_c
-   fs-writeback_c
-   inode_c
+   anon_inodes_c
+   attr_c
+   dax_c
+   direct-io_c
+   file_table_c
+   ioctl_c
+   libfs_c
    locks_c
-   mpage_c
-   namei_c
-   pipe_c
-   seq_file_c
-   splice_c
-   super_c
-   debugfs/index
+   namespace_c
+   open_c
+   read_write_c
+   select_c
+   stat_c
+   sync_c
+   xattr_c
+   configfs/index
+   crypto/index
+   exportfs/index
+   fat/index
+   fscache/index
+   fuse/index
    jbd2/index
+   kernfs/index
+   lockd/index
+   nfs_common/index
+   nfs/index
+   notify/index
    proc/index
+   quota/index
    sysfs/index

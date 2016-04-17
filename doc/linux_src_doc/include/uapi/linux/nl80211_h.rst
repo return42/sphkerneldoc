@@ -4,6 +4,7 @@
 nl80211.h
 =========
 
+
 .. _`station-handling`:
 
 Station handling
@@ -19,7 +20,7 @@ Station handling varies per interface type and depending on the driver's
 capabilities.
 
 For drivers supporting TDLS with external setup (WIPHY_FLAG_SUPPORTS_TDLS
-and WIPHY_FLAG_TDLS_EXTERNAL_SETUP), the station lifetime is as follows::
+and WIPHY_FLAG_TDLS_EXTERNAL_SETUP), the station lifetime is as follows:
 
  - a setup station entry is added, not yet authorized, without any rate
    or capability information, this just exists to avoid race conditions
@@ -31,6 +32,7 @@ and WIPHY_FLAG_TDLS_EXTERNAL_SETUP), the station lifetime is as follows::
    the TDLS link (\ ``NL80211_TDLS_DISABLE_LINK``\ )
 
 TODO: need more info for other interface types
+
 
 
 .. _`frame-transmission-registration-support`:
@@ -72,6 +74,7 @@ For more technical details, see the corresponding command descriptions
 below.
 
 
+
 .. _`virtual-interface---concurrency-capabilities`:
 
 Virtual interface / concurrency capabilities
@@ -107,6 +110,7 @@ All together, these attributes define the concurrency of virtual
 interfaces that a given device supports.
 
 
+
 .. _`packet-coalesce-support`:
 
 packet coalesce support
@@ -134,16 +138,151 @@ c) Condition for coalescence. pattern 'match' or 'no match'
 Multiple such rules can be created.
 
 
+
 .. _`nl80211_commands`:
 
 enum nl80211_commands
 =====================
 
-.. c:type:: enum nl80211_commands
+.. c:type:: nl80211_commands
 
     supported nl80211 commands
 
 
+.. _`nl80211_commands.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_commands {
+      NL80211_CMD_UNSPEC,
+      NL80211_CMD_GET_WIPHY,
+      NL80211_CMD_SET_WIPHY,
+      NL80211_CMD_NEW_WIPHY,
+      NL80211_CMD_DEL_WIPHY,
+      NL80211_CMD_GET_INTERFACE,
+      NL80211_CMD_SET_INTERFACE,
+      NL80211_CMD_NEW_INTERFACE,
+      NL80211_CMD_DEL_INTERFACE,
+      NL80211_CMD_GET_KEY,
+      NL80211_CMD_SET_KEY,
+      NL80211_CMD_NEW_KEY,
+      NL80211_CMD_DEL_KEY,
+      NL80211_CMD_GET_BEACON,
+      NL80211_CMD_SET_BEACON,
+      NL80211_CMD_START_AP,
+      NL80211_CMD_NEW_BEACON,
+      NL80211_CMD_STOP_AP,
+      NL80211_CMD_DEL_BEACON,
+      NL80211_CMD_GET_STATION,
+      NL80211_CMD_SET_STATION,
+      NL80211_CMD_NEW_STATION,
+      NL80211_CMD_DEL_STATION,
+      NL80211_CMD_GET_MPATH,
+      NL80211_CMD_SET_MPATH,
+      NL80211_CMD_NEW_MPATH,
+      NL80211_CMD_DEL_MPATH,
+      NL80211_CMD_SET_BSS,
+      NL80211_CMD_SET_REG,
+      NL80211_CMD_REQ_SET_REG,
+      NL80211_CMD_GET_MESH_CONFIG,
+      NL80211_CMD_SET_MESH_CONFIG,
+      NL80211_CMD_SET_MGMT_EXTRA_IE,
+      NL80211_CMD_GET_REG,
+      NL80211_CMD_GET_SCAN,
+      NL80211_CMD_TRIGGER_SCAN,
+      NL80211_CMD_NEW_SCAN_RESULTS,
+      NL80211_CMD_SCAN_ABORTED,
+      NL80211_CMD_REG_CHANGE,
+      NL80211_CMD_AUTHENTICATE,
+      NL80211_CMD_ASSOCIATE,
+      NL80211_CMD_DEAUTHENTICATE,
+      NL80211_CMD_DISASSOCIATE,
+      NL80211_CMD_MICHAEL_MIC_FAILURE,
+      NL80211_CMD_REG_BEACON_HINT,
+      NL80211_CMD_JOIN_IBSS,
+      NL80211_CMD_LEAVE_IBSS,
+      NL80211_CMD_TESTMODE,
+      NL80211_CMD_CONNECT,
+      NL80211_CMD_ROAM,
+      NL80211_CMD_DISCONNECT,
+      NL80211_CMD_SET_WIPHY_NETNS,
+      NL80211_CMD_GET_SURVEY,
+      NL80211_CMD_NEW_SURVEY_RESULTS,
+      NL80211_CMD_SET_PMKSA,
+      NL80211_CMD_DEL_PMKSA,
+      NL80211_CMD_FLUSH_PMKSA,
+      NL80211_CMD_REMAIN_ON_CHANNEL,
+      NL80211_CMD_CANCEL_REMAIN_ON_CHANNEL,
+      NL80211_CMD_SET_TX_BITRATE_MASK,
+      NL80211_CMD_REGISTER_FRAME,
+      NL80211_CMD_REGISTER_ACTION,
+      NL80211_CMD_FRAME,
+      NL80211_CMD_ACTION,
+      NL80211_CMD_FRAME_TX_STATUS,
+      NL80211_CMD_ACTION_TX_STATUS,
+      NL80211_CMD_SET_POWER_SAVE,
+      NL80211_CMD_GET_POWER_SAVE,
+      NL80211_CMD_SET_CQM,
+      NL80211_CMD_NOTIFY_CQM,
+      NL80211_CMD_SET_CHANNEL,
+      NL80211_CMD_SET_WDS_PEER,
+      NL80211_CMD_FRAME_WAIT_CANCEL,
+      NL80211_CMD_JOIN_MESH,
+      NL80211_CMD_LEAVE_MESH,
+      NL80211_CMD_UNPROT_DEAUTHENTICATE,
+      NL80211_CMD_UNPROT_DISASSOCIATE,
+      NL80211_CMD_NEW_PEER_CANDIDATE,
+      NL80211_CMD_GET_WOWLAN,
+      NL80211_CMD_SET_WOWLAN,
+      NL80211_CMD_START_SCHED_SCAN,
+      NL80211_CMD_STOP_SCHED_SCAN,
+      NL80211_CMD_SCHED_SCAN_RESULTS,
+      NL80211_CMD_SCHED_SCAN_STOPPED,
+      NL80211_CMD_SET_REKEY_OFFLOAD,
+      NL80211_CMD_PMKSA_CANDIDATE,
+      NL80211_CMD_TDLS_OPER,
+      NL80211_CMD_TDLS_MGMT,
+      NL80211_CMD_UNEXPECTED_FRAME,
+      NL80211_CMD_PROBE_CLIENT,
+      NL80211_CMD_REGISTER_BEACONS,
+      NL80211_CMD_UNEXPECTED_4ADDR_FRAME,
+      NL80211_CMD_SET_NOACK_MAP,
+      NL80211_CMD_CH_SWITCH_NOTIFY,
+      NL80211_CMD_START_P2P_DEVICE,
+      NL80211_CMD_STOP_P2P_DEVICE,
+      NL80211_CMD_CONN_FAILED,
+      NL80211_CMD_SET_MCAST_RATE,
+      NL80211_CMD_SET_MAC_ACL,
+      NL80211_CMD_RADAR_DETECT,
+      NL80211_CMD_GET_PROTOCOL_FEATURES,
+      NL80211_CMD_UPDATE_FT_IES,
+      NL80211_CMD_FT_EVENT,
+      NL80211_CMD_CRIT_PROTOCOL_START,
+      NL80211_CMD_CRIT_PROTOCOL_STOP,
+      NL80211_CMD_GET_COALESCE,
+      NL80211_CMD_SET_COALESCE,
+      NL80211_CMD_CHANNEL_SWITCH,
+      NL80211_CMD_VENDOR,
+      NL80211_CMD_SET_QOS_MAP,
+      NL80211_CMD_ADD_TX_TS,
+      NL80211_CMD_DEL_TX_TS,
+      NL80211_CMD_GET_MPP,
+      NL80211_CMD_JOIN_OCB,
+      NL80211_CMD_LEAVE_OCB,
+      NL80211_CMD_CH_SWITCH_STARTED_NOTIFY,
+      NL80211_CMD_TDLS_CHANNEL_SWITCH,
+      NL80211_CMD_TDLS_CANCEL_CHANNEL_SWITCH,
+      NL80211_CMD_WIPHY_REG_CHANGE,
+      NL80211_CMD_ABORT_SCAN,
+      __NL80211_CMD_AFTER_LAST,
+      NL80211_CMD_MAX
+    };
+
+
+.. _`nl80211_commands.constants`:
 
 Constants
 ---------
@@ -323,12 +462,6 @@ Constants
     ``NL80211_ATTR_IE``\ . If the command succeeds, the requested data will be
     added to all specified management frames generated by
     kernel/firmware/driver.
-    Note: This command has been removed and it is only reserved at this
-    point to avoid re-using existing command number. The functionality this
-    command was planned for has been provided with cleaner design with the
-    option to specify additional IEs in NL80211_CMD_TRIGGER_SCAN,
-    NL80211_CMD_AUTHENTICATE, NL80211_CMD_ASSOCIATE,
-    NL80211_CMD_DEAUTHENTICATE, and NL80211_CMD_DISASSOCIATE.
 
 :``NL80211_CMD_GET_REG``:
     ask the wireless core to send us its currently set
@@ -374,31 +507,30 @@ Constants
     to (\ ``NL80211_ATTR_REG_ALPHA2``\ ).
 
 :``NL80211_CMD_AUTHENTICATE``:
-    authentication request and notification.::
-
-            This command is used both as a command (request to authenticate) and
-            as an event on the "mlme" multicast group indicating completion of the
-            authentication process.
-            When used as a command, ``NL80211_ATTR_IFINDEX`` is used to identify the
-            interface. ``NL80211_ATTR_MAC`` is used to specify PeerSTAAddress (and
-            BSSID in case of station mode). ``NL80211_ATTR_SSID`` is used to specify
-            the SSID (mainly for association, but is included in authentication
-            request, too, to help BSS selection. ``NL80211_ATTR_WIPHY_FREQ`` is used
-            to specify the frequence of the channel in MHz. ``NL80211_ATTR_AUTH_TYPE``
-            is used to specify the authentication type. ``NL80211_ATTR_IE`` is used to
-            define IEs (VendorSpecificInfo, but also including RSN IE and FT IEs)
-            to be added to the frame.
-            When used as an event, this reports reception of an Authentication
-            frame in station and IBSS modes when the local MLME processed the
-            frame, i.e., it was for the local STA and was received in correct
-            state. This is similar to MLME-AUTHENTICATE.confirm primitive in the
-            MLME SAP interface (kernel providing MLME, userspace SME). The
-            included ``NL80211_ATTR_FRAME`` attribute contains the management frame
-            (including both the header and frame body, but not FCS). This event is
-            also used to indicate if the authentication attempt timed out. In that
-            case the ``NL80211_ATTR_FRAME`` attribute is replaced with a
-            ``NL80211_ATTR_TIMED_OUT`` flag (and ``NL80211_ATTR_MAC`` to indicate which
-            pending authentication timed out).
+    authentication request and notification.
+    This command is used both as a command (request to authenticate) and
+    as an event on the "mlme" multicast group indicating completion of the
+    authentication process.
+    When used as a command, ``NL80211_ATTR_IFINDEX`` is used to identify the
+    interface. ``NL80211_ATTR_MAC`` is used to specify PeerSTAAddress (and
+    BSSID in case of station mode). ``NL80211_ATTR_SSID`` is used to specify
+    the SSID (mainly for association, but is included in authentication
+    request, too, to help BSS selection. ``NL80211_ATTR_WIPHY_FREQ`` is used
+    to specify the frequence of the channel in MHz. ``NL80211_ATTR_AUTH_TYPE``
+    is used to specify the authentication type. ``NL80211_ATTR_IE`` is used to
+    define IEs (VendorSpecificInfo, but also including RSN IE and FT IEs)
+    to be added to the frame.
+    When used as an event, this reports reception of an Authentication
+    frame in station and IBSS modes when the local MLME processed the
+    frame, i.e., it was for the local STA and was received in correct
+    state. This is similar to MLME-AUTHENTICATE.confirm primitive in the
+    MLME SAP interface (kernel providing MLME, userspace SME). The
+    included ``NL80211_ATTR_FRAME`` attribute contains the management frame
+    (including both the header and frame body, but not FCS). This event is
+    also used to indicate if the authentication attempt timed out. In that
+    case the ``NL80211_ATTR_FRAME`` attribute is replaced with a
+    ``NL80211_ATTR_TIMED_OUT`` flag (and ``NL80211_ATTR_MAC`` to indicate which
+    pending authentication timed out).
 
 :``NL80211_CMD_ASSOCIATE``:
     association request and notification; like
@@ -675,19 +807,11 @@ Constants
     get Wake-on-Wireless-LAN (WoWLAN) settings.
 
 :``NL80211_CMD_SET_WOWLAN``:
-    set Wake-on-Wireless-LAN (WoWLAN) settings.::
-
-            Since wireless is more complex than wired ethernet, it supports
-            various triggers. These triggers can be configured through this
-            command with the ``NL80211_ATTR_WOWLAN_TRIGGERS`` attribute. For
-            more background information, see
-            http://wireless.kernel.org/en/users/Documentation/WoWLAN.
-            The ``NL80211_CMD_SET_WOWLAN`` command can also be used as a notification
-            from the driver reporting the wakeup reason. In this case, the
-            ``NL80211_ATTR_WOWLAN_TRIGGERS`` attribute will contain the reason
-            for the wakeup, if it was caused by wireless. If it is not present
-            in the wakeup notification, the wireless device didn't cause the
-            wakeup but reports that it was woken up.
+    set Wake-on-Wireless-LAN (WoWLAN) settings.
+    Since wireless is more complex than wired ethernet, it supports
+    various triggers. These triggers can be configured through this
+    command with the ``NL80211_ATTR_WOWLAN_TRIGGERS`` attribute. For
+    more background information, see
 
 :``NL80211_CMD_START_SCHED_SCAN``:
     start a scheduled scan at certain
@@ -744,14 +868,13 @@ Constants
     of PMKSA caching dandidates.
 
 :``NL80211_CMD_TDLS_OPER``:
-    Perform a high-level TDLS command (e.g. link setup).::
-
-            In addition, this can be used as an event to request userspace to take
-            actions on TDLS links (set up a new link or tear down an existing one).
-            In such events, ``NL80211_ATTR_TDLS_OPERATION`` indicates the requested
-            operation, ``NL80211_ATTR_MAC`` contains the peer MAC address, and
-            ``NL80211_ATTR_REASON_CODE`` the reason code to be used (only with
-            ``NL80211_TDLS_TEARDOWN``\ ).
+    Perform a high-level TDLS command (e.g. link setup).
+    In addition, this can be used as an event to request userspace to take
+    actions on TDLS links (set up a new link or tear down an existing one).
+    In such events, ``NL80211_ATTR_TDLS_OPERATION`` indicates the requested
+    operation, ``NL80211_ATTR_MAC`` contains the peer MAC address, and
+    ``NL80211_ATTR_REASON_CODE`` the reason code to be used (only with
+    ``NL80211_TDLS_TEARDOWN``\ ).
 
 :``NL80211_CMD_TDLS_MGMT``:
     Send a TDLS management frame. The
@@ -830,16 +953,15 @@ Constants
     for IBSS or MESH vif.
 
 :``NL80211_CMD_SET_MAC_ACL``:
-    sets ACL for MAC address based access control.::
-
-            This is to be used with the drivers advertising the support of MAC
-            address based access control. List of MAC addresses is passed in
-            ``NL80211_ATTR_MAC_ADDRS`` and ACL policy is passed in
-            ``NL80211_ATTR_ACL_POLICY``\ . Driver will enable ACL with this list, if it
-            is not already done. The new list will replace any existing list. Driver
-            will clear its ACL when the list of MAC addresses passed is empty. This
-            command is used in AP/P2P GO mode. Driver has to make sure to clear its
-            ACL list during ``NL80211_CMD_STOP_AP``\ .
+    sets ACL for MAC address based access control.
+    This is to be used with the drivers advertising the support of MAC
+    address based access control. List of MAC addresses is passed in
+    ``NL80211_ATTR_MAC_ADDRS`` and ACL policy is passed in
+    ``NL80211_ATTR_ACL_POLICY``\ . Driver will enable ACL with this list, if it
+    is not already done. The new list will replace any existing list. Driver
+    will clear its ACL when the list of MAC addresses passed is empty. This
+    command is used in AP/P2P GO mode. Driver has to make sure to clear its
+    ACL list during ``NL80211_CMD_STOP_AP``\ .
 
 :``NL80211_CMD_RADAR_DETECT``:
     Start a Channel availability check (CAC). Once
@@ -902,12 +1024,11 @@ Constants
     This may also be sent as an event with the same attributes.
 
 :``NL80211_CMD_SET_QOS_MAP``:
-    Set Interworking QoS mapping for IP DSCP values.::
-
-            The QoS mapping information is included in ``NL80211_ATTR_QOS_MAP``\ . If
-            that attribute is not included, QoS mapping is disabled. Since this
-            QoS mapping is relevant for IP packets, it is only valid during an
-            association. This is cleared on disassociation and AP restart.
+    Set Interworking QoS mapping for IP DSCP values.
+    The QoS mapping information is included in ``NL80211_ATTR_QOS_MAP``\ . If
+    that attribute is not included, QoS mapping is disabled. Since this
+    QoS mapping is relevant for IP packets, it is only valid during an
+    association. This is cleared on disassociation and AP restart.
 
 :``NL80211_CMD_ADD_TX_TS``:
     Ask the kernel to add a traffic stream for the given
@@ -983,16 +1104,287 @@ Constants
     highest used command number
 
 
+.. _`nl80211_commands.note`:
+
+Note
+----
+
+This command has been removed and it is only reserved at this
+point to avoid re-using existing command number. The functionality this
+command was planned for has been provided with cleaner design with the
+option to specify additional IEs in NL80211_CMD_TRIGGER_SCAN,
+NL80211_CMD_AUTHENTICATE, NL80211_CMD_ASSOCIATE,
+NL80211_CMD_DEAUTHENTICATE, and NL80211_CMD_DISASSOCIATE.
+
+
+
+.. _`nl80211_commands.http`:
+
+http
+----
+
+//wireless.kernel.org/en/users/Documentation/WoWLAN.
+The ``NL80211_CMD_SET_WOWLAN`` command can also be used as a notification
+from the driver reporting the wakeup reason. In this case, the
+``NL80211_ATTR_WOWLAN_TRIGGERS`` attribute will contain the reason
+for the wakeup, if it was caused by wireless. If it is not present
+in the wakeup notification, the wireless device didn't cause the
+wakeup but reports that it was woken up.
+
+
+
 .. _`nl80211_attrs`:
 
 enum nl80211_attrs
 ==================
 
-.. c:type:: enum nl80211_attrs
+.. c:type:: nl80211_attrs
 
     nl80211 netlink attributes
 
 
+.. _`nl80211_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_attrs {
+      NL80211_ATTR_UNSPEC,
+      NL80211_ATTR_WIPHY,
+      NL80211_ATTR_WIPHY_NAME,
+      NL80211_ATTR_IFINDEX,
+      NL80211_ATTR_IFNAME,
+      NL80211_ATTR_IFTYPE,
+      NL80211_ATTR_MAC,
+      NL80211_ATTR_KEY_DATA,
+      NL80211_ATTR_KEY_IDX,
+      NL80211_ATTR_KEY_CIPHER,
+      NL80211_ATTR_KEY_SEQ,
+      NL80211_ATTR_KEY_DEFAULT,
+      NL80211_ATTR_BEACON_INTERVAL,
+      NL80211_ATTR_DTIM_PERIOD,
+      NL80211_ATTR_BEACON_HEAD,
+      NL80211_ATTR_BEACON_TAIL,
+      NL80211_ATTR_STA_AID,
+      NL80211_ATTR_STA_FLAGS,
+      NL80211_ATTR_STA_LISTEN_INTERVAL,
+      NL80211_ATTR_STA_SUPPORTED_RATES,
+      NL80211_ATTR_STA_VLAN,
+      NL80211_ATTR_STA_INFO,
+      NL80211_ATTR_WIPHY_BANDS,
+      NL80211_ATTR_MNTR_FLAGS,
+      NL80211_ATTR_MESH_ID,
+      NL80211_ATTR_STA_PLINK_ACTION,
+      NL80211_ATTR_MPATH_NEXT_HOP,
+      NL80211_ATTR_MPATH_INFO,
+      NL80211_ATTR_BSS_CTS_PROT,
+      NL80211_ATTR_BSS_SHORT_PREAMBLE,
+      NL80211_ATTR_BSS_SHORT_SLOT_TIME,
+      NL80211_ATTR_HT_CAPABILITY,
+      NL80211_ATTR_SUPPORTED_IFTYPES,
+      NL80211_ATTR_REG_ALPHA2,
+      NL80211_ATTR_REG_RULES,
+      NL80211_ATTR_MESH_CONFIG,
+      NL80211_ATTR_BSS_BASIC_RATES,
+      NL80211_ATTR_WIPHY_TXQ_PARAMS,
+      NL80211_ATTR_WIPHY_FREQ,
+      NL80211_ATTR_WIPHY_CHANNEL_TYPE,
+      NL80211_ATTR_KEY_DEFAULT_MGMT,
+      NL80211_ATTR_MGMT_SUBTYPE,
+      NL80211_ATTR_IE,
+      NL80211_ATTR_MAX_NUM_SCAN_SSIDS,
+      NL80211_ATTR_SCAN_FREQUENCIES,
+      NL80211_ATTR_SCAN_SSIDS,
+      NL80211_ATTR_GENERATION,
+      NL80211_ATTR_BSS,
+      NL80211_ATTR_REG_INITIATOR,
+      NL80211_ATTR_REG_TYPE,
+      NL80211_ATTR_SUPPORTED_COMMANDS,
+      NL80211_ATTR_FRAME,
+      NL80211_ATTR_SSID,
+      NL80211_ATTR_AUTH_TYPE,
+      NL80211_ATTR_REASON_CODE,
+      NL80211_ATTR_KEY_TYPE,
+      NL80211_ATTR_MAX_SCAN_IE_LEN,
+      NL80211_ATTR_CIPHER_SUITES,
+      NL80211_ATTR_FREQ_BEFORE,
+      NL80211_ATTR_FREQ_AFTER,
+      NL80211_ATTR_FREQ_FIXED,
+      NL80211_ATTR_WIPHY_RETRY_SHORT,
+      NL80211_ATTR_WIPHY_RETRY_LONG,
+      NL80211_ATTR_WIPHY_FRAG_THRESHOLD,
+      NL80211_ATTR_WIPHY_RTS_THRESHOLD,
+      NL80211_ATTR_TIMED_OUT,
+      NL80211_ATTR_USE_MFP,
+      NL80211_ATTR_STA_FLAGS2,
+      NL80211_ATTR_CONTROL_PORT,
+      NL80211_ATTR_TESTDATA,
+      NL80211_ATTR_PRIVACY,
+      NL80211_ATTR_DISCONNECTED_BY_AP,
+      NL80211_ATTR_STATUS_CODE,
+      NL80211_ATTR_CIPHER_SUITES_PAIRWISE,
+      NL80211_ATTR_CIPHER_SUITE_GROUP,
+      NL80211_ATTR_WPA_VERSIONS,
+      NL80211_ATTR_AKM_SUITES,
+      NL80211_ATTR_REQ_IE,
+      NL80211_ATTR_RESP_IE,
+      NL80211_ATTR_PREV_BSSID,
+      NL80211_ATTR_KEY,
+      NL80211_ATTR_KEYS,
+      NL80211_ATTR_PID,
+      NL80211_ATTR_4ADDR,
+      NL80211_ATTR_SURVEY_INFO,
+      NL80211_ATTR_PMKID,
+      NL80211_ATTR_MAX_NUM_PMKIDS,
+      NL80211_ATTR_DURATION,
+      NL80211_ATTR_COOKIE,
+      NL80211_ATTR_WIPHY_COVERAGE_CLASS,
+      NL80211_ATTR_TX_RATES,
+      NL80211_ATTR_FRAME_MATCH,
+      NL80211_ATTR_ACK,
+      NL80211_ATTR_PS_STATE,
+      NL80211_ATTR_CQM,
+      NL80211_ATTR_LOCAL_STATE_CHANGE,
+      NL80211_ATTR_AP_ISOLATE,
+      NL80211_ATTR_WIPHY_TX_POWER_SETTING,
+      NL80211_ATTR_WIPHY_TX_POWER_LEVEL,
+      NL80211_ATTR_TX_FRAME_TYPES,
+      NL80211_ATTR_RX_FRAME_TYPES,
+      NL80211_ATTR_FRAME_TYPE,
+      NL80211_ATTR_CONTROL_PORT_ETHERTYPE,
+      NL80211_ATTR_CONTROL_PORT_NO_ENCRYPT,
+      NL80211_ATTR_SUPPORT_IBSS_RSN,
+      NL80211_ATTR_WIPHY_ANTENNA_TX,
+      NL80211_ATTR_WIPHY_ANTENNA_RX,
+      NL80211_ATTR_MCAST_RATE,
+      NL80211_ATTR_OFFCHANNEL_TX_OK,
+      NL80211_ATTR_BSS_HT_OPMODE,
+      NL80211_ATTR_KEY_DEFAULT_TYPES,
+      NL80211_ATTR_MAX_REMAIN_ON_CHANNEL_DURATION,
+      NL80211_ATTR_MESH_SETUP,
+      NL80211_ATTR_WIPHY_ANTENNA_AVAIL_TX,
+      NL80211_ATTR_WIPHY_ANTENNA_AVAIL_RX,
+      NL80211_ATTR_SUPPORT_MESH_AUTH,
+      NL80211_ATTR_STA_PLINK_STATE,
+      NL80211_ATTR_WOWLAN_TRIGGERS,
+      NL80211_ATTR_WOWLAN_TRIGGERS_SUPPORTED,
+      NL80211_ATTR_SCHED_SCAN_INTERVAL,
+      NL80211_ATTR_INTERFACE_COMBINATIONS,
+      NL80211_ATTR_SOFTWARE_IFTYPES,
+      NL80211_ATTR_REKEY_DATA,
+      NL80211_ATTR_MAX_NUM_SCHED_SCAN_SSIDS,
+      NL80211_ATTR_MAX_SCHED_SCAN_IE_LEN,
+      NL80211_ATTR_SCAN_SUPP_RATES,
+      NL80211_ATTR_HIDDEN_SSID,
+      NL80211_ATTR_IE_PROBE_RESP,
+      NL80211_ATTR_IE_ASSOC_RESP,
+      NL80211_ATTR_STA_WME,
+      NL80211_ATTR_SUPPORT_AP_UAPSD,
+      NL80211_ATTR_ROAM_SUPPORT,
+      NL80211_ATTR_SCHED_SCAN_MATCH,
+      NL80211_ATTR_MAX_MATCH_SETS,
+      NL80211_ATTR_PMKSA_CANDIDATE,
+      NL80211_ATTR_TX_NO_CCK_RATE,
+      NL80211_ATTR_TDLS_ACTION,
+      NL80211_ATTR_TDLS_DIALOG_TOKEN,
+      NL80211_ATTR_TDLS_OPERATION,
+      NL80211_ATTR_TDLS_SUPPORT,
+      NL80211_ATTR_TDLS_EXTERNAL_SETUP,
+      NL80211_ATTR_DEVICE_AP_SME,
+      NL80211_ATTR_DONT_WAIT_FOR_ACK,
+      NL80211_ATTR_FEATURE_FLAGS,
+      NL80211_ATTR_PROBE_RESP_OFFLOAD,
+      NL80211_ATTR_PROBE_RESP,
+      NL80211_ATTR_DFS_REGION,
+      NL80211_ATTR_DISABLE_HT,
+      NL80211_ATTR_HT_CAPABILITY_MASK,
+      NL80211_ATTR_NOACK_MAP,
+      NL80211_ATTR_INACTIVITY_TIMEOUT,
+      NL80211_ATTR_RX_SIGNAL_DBM,
+      NL80211_ATTR_BG_SCAN_PERIOD,
+      NL80211_ATTR_WDEV,
+      NL80211_ATTR_USER_REG_HINT_TYPE,
+      NL80211_ATTR_CONN_FAILED_REASON,
+      NL80211_ATTR_SAE_DATA,
+      NL80211_ATTR_VHT_CAPABILITY,
+      NL80211_ATTR_SCAN_FLAGS,
+      NL80211_ATTR_CHANNEL_WIDTH,
+      NL80211_ATTR_CENTER_FREQ1,
+      NL80211_ATTR_CENTER_FREQ2,
+      NL80211_ATTR_P2P_CTWINDOW,
+      NL80211_ATTR_P2P_OPPPS,
+      NL80211_ATTR_LOCAL_MESH_POWER_MODE,
+      NL80211_ATTR_ACL_POLICY,
+      NL80211_ATTR_MAC_ADDRS,
+      NL80211_ATTR_MAC_ACL_MAX,
+      NL80211_ATTR_RADAR_EVENT,
+      NL80211_ATTR_EXT_CAPA,
+      NL80211_ATTR_EXT_CAPA_MASK,
+      NL80211_ATTR_STA_CAPABILITY,
+      NL80211_ATTR_STA_EXT_CAPABILITY,
+      NL80211_ATTR_PROTOCOL_FEATURES,
+      NL80211_ATTR_SPLIT_WIPHY_DUMP,
+      NL80211_ATTR_DISABLE_VHT,
+      NL80211_ATTR_VHT_CAPABILITY_MASK,
+      NL80211_ATTR_MDID,
+      NL80211_ATTR_IE_RIC,
+      NL80211_ATTR_CRIT_PROT_ID,
+      NL80211_ATTR_MAX_CRIT_PROT_DURATION,
+      NL80211_ATTR_PEER_AID,
+      NL80211_ATTR_COALESCE_RULE,
+      NL80211_ATTR_CH_SWITCH_COUNT,
+      NL80211_ATTR_CH_SWITCH_BLOCK_TX,
+      NL80211_ATTR_CSA_IES,
+      NL80211_ATTR_CSA_C_OFF_BEACON,
+      NL80211_ATTR_CSA_C_OFF_PRESP,
+      NL80211_ATTR_RXMGMT_FLAGS,
+      NL80211_ATTR_STA_SUPPORTED_CHANNELS,
+      NL80211_ATTR_STA_SUPPORTED_OPER_CLASSES,
+      NL80211_ATTR_HANDLE_DFS,
+      NL80211_ATTR_SUPPORT_5_MHZ,
+      NL80211_ATTR_SUPPORT_10_MHZ,
+      NL80211_ATTR_OPMODE_NOTIF,
+      NL80211_ATTR_VENDOR_ID,
+      NL80211_ATTR_VENDOR_SUBCMD,
+      NL80211_ATTR_VENDOR_DATA,
+      NL80211_ATTR_VENDOR_EVENTS,
+      NL80211_ATTR_QOS_MAP,
+      NL80211_ATTR_MAC_HINT,
+      NL80211_ATTR_WIPHY_FREQ_HINT,
+      NL80211_ATTR_MAX_AP_ASSOC_STA,
+      NL80211_ATTR_TDLS_PEER_CAPABILITY,
+      NL80211_ATTR_SOCKET_OWNER,
+      NL80211_ATTR_CSA_C_OFFSETS_TX,
+      NL80211_ATTR_MAX_CSA_COUNTERS,
+      NL80211_ATTR_TDLS_INITIATOR,
+      NL80211_ATTR_USE_RRM,
+      NL80211_ATTR_WIPHY_DYN_ACK,
+      NL80211_ATTR_TSID,
+      NL80211_ATTR_USER_PRIO,
+      NL80211_ATTR_ADMITTED_TIME,
+      NL80211_ATTR_SMPS_MODE,
+      NL80211_ATTR_OPER_CLASS,
+      NL80211_ATTR_MAC_MASK,
+      NL80211_ATTR_WIPHY_SELF_MANAGED_REG,
+      NL80211_ATTR_EXT_FEATURES,
+      NL80211_ATTR_SURVEY_RADIO_STATS,
+      NL80211_ATTR_NETNS_FD,
+      NL80211_ATTR_SCHED_SCAN_DELAY,
+      NL80211_ATTR_REG_INDOOR,
+      NL80211_ATTR_MAX_NUM_SCHED_SCAN_PLANS,
+      NL80211_ATTR_MAX_SCAN_PLAN_INTERVAL,
+      NL80211_ATTR_MAX_SCAN_PLAN_ITERATIONS,
+      NL80211_ATTR_SCHED_SCAN_PLANS,
+      NL80211_ATTR_PBSS,
+      __NL80211_ATTR_AFTER_LAST,
+      NUM_NL80211_ATTR,
+      NL80211_ATTR_MAX
+    };
+
+
+.. _`nl80211_attrs.constants`:
 
 Constants
 ---------
@@ -1001,9 +1393,8 @@ Constants
     unspecified attribute to catch errors
 
 :``NL80211_ATTR_WIPHY``:
-    index of wiphy to operate on, cf.::
-
-            /sys/class/ieee80211/<phyname>/index
+    index of wiphy to operate on, cf.
+    /sys/class/ieee80211/<phyname>/index
 
 :``NL80211_ATTR_WIPHY_NAME``:
     wiphy name (used for renaming)
@@ -1022,8 +1413,9 @@ Constants
 
 :``NL80211_ATTR_KEY_DATA``:
     (temporal) key data; for TKIP this consists of
-    16 bytes encryption key followed by 8 bytes each for TX and RX MIC
-    keys
+
+            16 bytes encryption key followed by 8 bytes each for TX and RX MIC
+            keys
 
 :``NL80211_ATTR_KEY_IDX``:
     key ID (u8, 0-3)
@@ -1244,14 +1636,14 @@ Constants
     due to considerations from a beacon hint. This attribute reflects
     the state of the channel _before_ the beacon hint processing. This
     attributes consists of a nested attribute containing
-    NL80211_FREQUENCY_ATTR_*
+    NL80211_FREQUENCY_ATTR\_\*
 
 :``NL80211_ATTR_FREQ_AFTER``:
     A channel which has suffered a regulatory change
     due to considerations from a beacon hint. This attribute reflects
     the state of the channel _after_ the beacon hint processing. This
     attributes consists of a nested attribute containing
-    NL80211_FREQUENCY_ATTR_*
+    NL80211_FREQUENCY_ATTR\_\*
 
 :``NL80211_ATTR_FREQ_FIXED``:
     a flag indicating the IBSS should not try to look
@@ -1300,9 +1692,8 @@ Constants
     default in station mode.
 
 :``NL80211_ATTR_TESTDATA``:
-    Testmode data blob, passed through to the driver.::
-
-            We recommend using nested, driver-specific attributes within this.
+    Testmode data blob, passed through to the driver.
+    We recommend using nested, driver-specific attributes within this.
 
 :``NL80211_ATTR_PRIVACY``:
     Flag attribute, used with :c:func:`connect`, indicating
@@ -1423,10 +1814,9 @@ Constants
     :c:type:`enum nl80211_tx_power_setting <nl80211_tx_power_setting>` for possible values.
 
 :``NL80211_ATTR_WIPHY_TX_POWER_LEVEL``:
-    Transmit power level in signed mBm units.::
-
-         This is used in association with ``NL80211_ATTR_WIPHY_TX_POWER_SETTING``
-         for non-automatic settings.
+    Transmit power level in signed mBm units.
+    This is used in association with ``NL80211_ATTR_WIPHY_TX_POWER_SETTING``
+    for non-automatic settings.
 
 :``NL80211_ATTR_TX_FRAME_TYPES``:
     wiphy capability attribute, which is a
@@ -1461,19 +1851,17 @@ Constants
     means support for per-station GTKs.
 
 :``NL80211_ATTR_WIPHY_ANTENNA_TX``:
-    Bitmap of allowed antennas for transmitting.::
-
-            This can be used to mask out antennas which are not attached or should
-            not be used for transmitting. If an antenna is not selected in this
-            bitmap the hardware is not allowed to transmit on this antenna.
+    Bitmap of allowed antennas for transmitting.
+    This can be used to mask out antennas which are not attached or should
+    not be used for transmitting. If an antenna is not selected in this
+    bitmap the hardware is not allowed to transmit on this antenna.
 
 :``NL80211_ATTR_WIPHY_ANTENNA_RX``:
-    Bitmap of allowed antennas for receiving.::
-
-            This can be used to mask out antennas which are not attached or should
-            not be used for receiving. If an antenna is not selected in this bitmap
-            the hardware should not be configured to receive on this antenna.
-            For a more detailed description see ``NL80211_ATTR_WIPHY_ANTENNA_TX``\ .
+    Bitmap of allowed antennas for receiving.
+    This can be used to mask out antennas which are not attached or should
+    not be used for receiving. If an antenna is not selected in this bitmap
+    the hardware should not be configured to receive on this antenna.
+    For a more detailed description see ``NL80211_ATTR_WIPHY_ANTENNA_TX``\ .
 
 :``NL80211_ATTR_MCAST_RATE``:
     Multicast tx rate (in 100 kbps) for IBSS
@@ -1543,8 +1931,6 @@ Constants
 :``NL80211_ATTR_SOFTWARE_IFTYPES``:
     Nested attribute (just like
     ``NL80211_ATTR_SUPPORTED_IFTYPES``\ ) containing the interface types that
-    are managed in software: interfaces of these types aren't subject to
-    any restrictions in their number or combinations.
 
 :``NL80211_ATTR_REKEY_DATA``:
     nested attribute containing the information
@@ -1570,11 +1956,10 @@ Constants
     :c:type:`enum nl80211_hidden_ssid <nl80211_hidden_ssid>`, represented as a u32
 
 :``NL80211_ATTR_IE_PROBE_RESP``:
-    Information element(s) for Probe Response frame.::
-
-            This is used with ``NL80211_CMD_NEW_BEACON`` and ``NL80211_CMD_SET_BEACON`` to
-            provide extra IEs (e.g., WPS/P2P IE) into Probe Response frames when the
-            driver (or firmware) replies to Probe Request frames.
+    Information element(s) for Probe Response frame.
+    This is used with ``NL80211_CMD_NEW_BEACON`` and ``NL80211_CMD_SET_BEACON`` to
+    provide extra IEs (e.g., WPS/P2P IE) into Probe Response frames when the
+    driver (or firmware) replies to Probe Request frames.
 
 :``NL80211_ATTR_IE_ASSOC_RESP``:
     Information element(s) for (Re)Association
@@ -1693,12 +2078,6 @@ Constants
     Specify which bits of the
     ATTR_HT_CAPABILITY to which attention should be paid.
     Currently, only mac80211 NICs support this feature.
-    The values that may be configured are:
-    MCS rates, MAX-AMSDU, HT-20-40 and HT_CAP_SGI_40
-    AMPDU density and AMPDU factor.
-    All values are treated as suggestions and may be ignored
-    by the driver as required.  The actual values may be seen in
-    the station debugfs ht_caps file.
 
 :``NL80211_ATTR_NOACK_MAP``:
     This u16 bitmap contains the No Ack Policy of
@@ -1819,10 +2198,10 @@ Constants
     messages, given with wiphy dump message
 
 :``NL80211_ATTR_DISABLE_VHT``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_ATTR_VHT_CAPABILITY_MASK``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_ATTR_MDID``:
     Mobility Domain Identifier
@@ -1840,11 +2219,10 @@ Constants
     the connection should have increased reliability (u16).
 
 :``NL80211_ATTR_PEER_AID``:
-    Association ID for the peer TDLS station (u16).::
-
-            This is similar to ``NL80211_ATTR_STA_AID`` but with a difference of being
-            allowed to be used with the first ``NL80211_CMD_SET_STATION`` command to
-            update a TDLS peer STA entry.
+    Association ID for the peer TDLS station (u16).
+    This is similar to ``NL80211_ATTR_STA_AID`` but with a difference of being
+    allowed to be used with the first ``NL80211_CMD_SET_STATION`` command to
+    update a TDLS peer STA entry.
 
 :``NL80211_ATTR_COALESCE_RULE``:
     Coalesce rule information.
@@ -1871,9 +2249,8 @@ Constants
     switch counters in the probe response (\ ``NL80211_ATTR_PROBE_RESP``\ ).
 
 :``NL80211_ATTR_RXMGMT_FLAGS``:
-    flags for :c:func:`nl80211_send_mgmt`, u32.::
-
-            As specified in the :c:type:`enum nl80211_rxmgmt_flags <nl80211_rxmgmt_flags>`.
+    flags for :c:func:`nl80211_send_mgmt`, u32.
+    As specified in the :c:type:`enum nl80211_rxmgmt_flags <nl80211_rxmgmt_flags>`.
 
 :``NL80211_ATTR_STA_SUPPORTED_CHANNELS``:
     array of supported channels.
@@ -1892,11 +2269,13 @@ Constants
 
 :``NL80211_ATTR_SUPPORT_5_MHZ``:
     A flag indicating that the device supports
-    5 MHz channel bandwidth.
+
+            5 MHz channel bandwidth.
 
 :``NL80211_ATTR_SUPPORT_10_MHZ``:
     A flag indicating that the device supports
-    10 MHz channel bandwidth.
+
+            10 MHz channel bandwidth.
 
 :``NL80211_ATTR_OPMODE_NOTIF``:
     Operating mode field from Operating Mode
@@ -1938,9 +2317,8 @@ Constants
     to add a new station entry with ``NL80211_CMD_NEW_STATION`` may fail.
 
 :``NL80211_ATTR_TDLS_PEER_CAPABILITY``:
-    flags for TDLS peer capabilities, u32.::
-
-            As specified in the :c:type:`enum nl80211_tdls_peer_capability <nl80211_tdls_peer_capability>`.
+    flags for TDLS peer capabilities, u32.
+    As specified in the :c:type:`enum nl80211_tdls_peer_capability <nl80211_tdls_peer_capability>`.
 
 :``NL80211_ATTR_SOCKET_OWNER``:
     Flag attribute, if set during interface
@@ -1971,14 +2349,6 @@ Constants
     shall support Radio Resource Measurements (11k). This attribute can be
     used with ``NL80211_CMD_ASSOCIATE`` and ``NL80211_CMD_CONNECT`` requests.
     User space applications are expected to use this flag only if the
-    underlying device supports these minimal RRM features:
-    ``NL80211_FEATURE_DS_PARAM_SET_IE_IN_PROBES``\ ,
-    ``NL80211_FEATURE_QUIET``\ ,
-    Or, if global RRM is supported, see:
-    ``NL80211_EXT_FEATURE_RRM``
-    If this flag is used, driver must add the Power Capabilities IE to the
-    association request. In addition, it must also set the RRM capability
-    flag in the association request's Capability Info field.
 
 :``NL80211_ATTR_WIPHY_DYN_ACK``:
     flag attribute used to enable ACK timeout
@@ -2030,7 +2400,7 @@ Constants
     over all channels.
 
 :``NL80211_ATTR_NETNS_FD``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_ATTR_SCHED_SCAN_DELAY``:
     delay before the first cycle of a
@@ -2055,13 +2425,12 @@ Constants
     a scan plan (u32), a wiphy attribute.
 
 :``NL80211_ATTR_SCHED_SCAN_PLANS``:
-    a list of scan plans for scheduled scan.::
-
-            Each scan plan defines the number of scan iterations and the interval
-            between scans. The last scan plan will always run infinitely,
-            thus it must not specify the number of iterations, only the interval
-            between scans. The scan plans are executed sequentially.
-            Each scan plan is a nested attribute of :c:type:`enum nl80211_sched_scan_plan <nl80211_sched_scan_plan>`.
+    a list of scan plans for scheduled scan.
+    Each scan plan defines the number of scan iterations and the interval
+    between scans. The last scan plan will always run infinitely,
+    thus it must not specify the number of iterations, only the interval
+    between scans. The scan plans are executed sequentially.
+    Each scan plan is a nested attribute of :c:type:`enum nl80211_sched_scan_plan <nl80211_sched_scan_plan>`.
 
 :``NL80211_ATTR_PBSS``:
     flag attribute. If set it means operate
@@ -2079,6 +2448,8 @@ Constants
     highest attribute number currently defined
 
 
+.. _`nl80211_attrs.description`:
+
 Description
 -----------
 
@@ -2094,16 +2465,82 @@ Drivers may reject configurations or RX/TX mask combinations they cannot
 support by returning -EINVAL.
 
 
+
+.. _`nl80211_attrs.are-managed-in-software`:
+
+are managed in software
+-----------------------
+
+interfaces of these types aren't subject to
+any restrictions in their number or combinations.
+
+
+
+.. _`nl80211_attrs.the-values-that-may-be-configured-are`:
+
+The values that may be configured are
+-------------------------------------
+
+MCS rates, MAX-AMSDU, HT-20-40 and HT_CAP_SGI_40
+AMPDU density and AMPDU factor.
+All values are treated as suggestions and may be ignored
+by the driver as required.  The actual values may be seen in
+the station debugfs ht_caps file.
+
+
+
+.. _`nl80211_attrs.underlying-device-supports-these-minimal-rrm-features`:
+
+underlying device supports these minimal RRM features
+-----------------------------------------------------
+
+``NL80211_FEATURE_DS_PARAM_SET_IE_IN_PROBES``\ ,
+``NL80211_FEATURE_QUIET``\ ,
+Or, if global RRM is supported, see:
+
+``NL80211_EXT_FEATURE_RRM``
+If this flag is used, driver must add the Power Capabilities IE to the
+association request. In addition, it must also set the RRM capability
+flag in the association request's Capability Info field.
+
+
+
 .. _`nl80211_iftype`:
 
 enum nl80211_iftype
 ===================
 
-.. c:type:: enum nl80211_iftype
+.. c:type:: nl80211_iftype
 
     (virtual) interface types
 
 
+.. _`nl80211_iftype.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_iftype {
+      NL80211_IFTYPE_UNSPECIFIED,
+      NL80211_IFTYPE_ADHOC,
+      NL80211_IFTYPE_STATION,
+      NL80211_IFTYPE_AP,
+      NL80211_IFTYPE_AP_VLAN,
+      NL80211_IFTYPE_WDS,
+      NL80211_IFTYPE_MONITOR,
+      NL80211_IFTYPE_MESH_POINT,
+      NL80211_IFTYPE_P2P_CLIENT,
+      NL80211_IFTYPE_P2P_GO,
+      NL80211_IFTYPE_P2P_DEVICE,
+      NL80211_IFTYPE_OCB,
+      NUM_NL80211_IFTYPES,
+      NL80211_IFTYPE_MAX
+    };
+
+
+.. _`nl80211_iftype.constants`:
 
 Constants
 ---------
@@ -2147,7 +2584,7 @@ Constants
     commands to create and destroy one
 
 :``NL80211_IFTYPE_OCB``:
-    -- undescribed --
+-- undescribed --
 
 :``NUM_NL80211_IFTYPES``:
     number of defined interface types
@@ -2156,6 +2593,8 @@ Constants
     highest interface type number currently defined
 
 
+.. _`nl80211_iftype.description`:
+
 Description
 -----------
 
@@ -2163,16 +2602,39 @@ These values are used with the ``NL80211_ATTR_IFTYPE``
 to set the type of an interface.
 
 
+
 .. _`nl80211_sta_flags`:
 
 enum nl80211_sta_flags
 ======================
 
-.. c:type:: enum nl80211_sta_flags
+.. c:type:: nl80211_sta_flags
 
     station flags
 
 
+.. _`nl80211_sta_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sta_flags {
+      __NL80211_STA_FLAG_INVALID,
+      NL80211_STA_FLAG_AUTHORIZED,
+      NL80211_STA_FLAG_SHORT_PREAMBLE,
+      NL80211_STA_FLAG_WME,
+      NL80211_STA_FLAG_MFP,
+      NL80211_STA_FLAG_AUTHENTICATED,
+      NL80211_STA_FLAG_TDLS_PEER,
+      NL80211_STA_FLAG_ASSOCIATED,
+      __NL80211_STA_FLAG_AFTER_LAST,
+      NL80211_STA_FLAG_MAX
+    };
+
+
+.. _`nl80211_sta_flags.constants`:
 
 Constants
 ---------
@@ -2215,6 +2677,8 @@ Constants
     highest station flag number currently defined
 
 
+.. _`nl80211_sta_flags.description`:
+
 Description
 -----------
 
@@ -2223,16 +2687,18 @@ Station flags. When a station is added to an AP interface, it is
 assumed to be already associated (and hence authenticated.)
 
 
+
 .. _`nl80211_sta_flag_update`:
 
 struct nl80211_sta_flag_update
 ==============================
 
-.. c:type:: struct nl80211_sta_flag_update
+.. c:type:: nl80211_sta_flag_update
 
     station flags mask/set
 
 
+.. _`nl80211_sta_flag_update.definition`:
 
 Definition
 ----------
@@ -2245,6 +2711,7 @@ Definition
   };
 
 
+.. _`nl80211_sta_flag_update.members`:
 
 Members
 -------
@@ -2257,10 +2724,14 @@ Members
 
 
 
+
+.. _`nl80211_sta_flag_update.description`:
+
 Description
 -----------
 
 Both mask and set contain bits as per :c:type:`enum nl80211_sta_flags <nl80211_sta_flags>`.
+
 
 
 .. _`nl80211_rate_info`:
@@ -2268,11 +2739,38 @@ Both mask and set contain bits as per :c:type:`enum nl80211_sta_flags <nl80211_s
 enum nl80211_rate_info
 ======================
 
-.. c:type:: enum nl80211_rate_info
+.. c:type:: nl80211_rate_info
 
     bitrate information
 
 
+.. _`nl80211_rate_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_rate_info {
+      __NL80211_RATE_INFO_INVALID,
+      NL80211_RATE_INFO_BITRATE,
+      NL80211_RATE_INFO_MCS,
+      NL80211_RATE_INFO_40_MHZ_WIDTH,
+      NL80211_RATE_INFO_SHORT_GI,
+      NL80211_RATE_INFO_BITRATE32,
+      NL80211_RATE_INFO_VHT_MCS,
+      NL80211_RATE_INFO_VHT_NSS,
+      NL80211_RATE_INFO_80_MHZ_WIDTH,
+      NL80211_RATE_INFO_80P80_MHZ_WIDTH,
+      NL80211_RATE_INFO_160_MHZ_WIDTH,
+      NL80211_RATE_INFO_10_MHZ_WIDTH,
+      NL80211_RATE_INFO_5_MHZ_WIDTH,
+      __NL80211_RATE_INFO_AFTER_LAST,
+      NL80211_RATE_INFO_MAX
+    };
+
+
+.. _`nl80211_rate_info.constants`:
 
 Constants
 ---------
@@ -2313,11 +2811,13 @@ Constants
 
 :``NL80211_RATE_INFO_10_MHZ_WIDTH``:
     10 MHz width - note that this is
+
             a legacy rate and will be reported as the actual bitrate, i.e.
             half the base (20 MHz) rate
 
 :``NL80211_RATE_INFO_5_MHZ_WIDTH``:
     5 MHz width - note that this is
+
             a legacy rate and will be reported as the actual bitrate, i.e.
             a quarter of the base (20 MHz) rate
 
@@ -2327,6 +2827,8 @@ Constants
 :``NL80211_RATE_INFO_MAX``:
     highest rate_info number currently defined
 
+
+.. _`nl80211_rate_info.description`:
 
 Description
 -----------
@@ -2343,16 +2845,37 @@ User space tools encouraged to use the 32-bit attribute and fall
 back to the 16-bit one for compatibility with older kernels.
 
 
+
 .. _`nl80211_sta_bss_param`:
 
 enum nl80211_sta_bss_param
 ==========================
 
-.. c:type:: enum nl80211_sta_bss_param
+.. c:type:: nl80211_sta_bss_param
 
     BSS information collected by STA
 
 
+.. _`nl80211_sta_bss_param.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sta_bss_param {
+      __NL80211_STA_BSS_PARAM_INVALID,
+      NL80211_STA_BSS_PARAM_CTS_PROT,
+      NL80211_STA_BSS_PARAM_SHORT_PREAMBLE,
+      NL80211_STA_BSS_PARAM_SHORT_SLOT_TIME,
+      NL80211_STA_BSS_PARAM_DTIM_PERIOD,
+      NL80211_STA_BSS_PARAM_BEACON_INTERVAL,
+      __NL80211_STA_BSS_PARAM_AFTER_LAST,
+      NL80211_STA_BSS_PARAM_MAX
+    };
+
+
+.. _`nl80211_sta_bss_param.constants`:
 
 Constants
 ---------
@@ -2384,6 +2907,8 @@ Constants
     highest sta_bss_param number currently defined
 
 
+.. _`nl80211_sta_bss_param.description`:
+
 Description
 -----------
 
@@ -2392,16 +2917,63 @@ These attribute types are used with ``NL80211_STA_INFO_BSS_PARAM``
 when getting information about the bitrate of a station.
 
 
+
 .. _`nl80211_sta_info`:
 
 enum nl80211_sta_info
 =====================
 
-.. c:type:: enum nl80211_sta_info
+.. c:type:: nl80211_sta_info
 
     station information
 
 
+.. _`nl80211_sta_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sta_info {
+      __NL80211_STA_INFO_INVALID,
+      NL80211_STA_INFO_INACTIVE_TIME,
+      NL80211_STA_INFO_RX_BYTES,
+      NL80211_STA_INFO_TX_BYTES,
+      NL80211_STA_INFO_LLID,
+      NL80211_STA_INFO_PLID,
+      NL80211_STA_INFO_PLINK_STATE,
+      NL80211_STA_INFO_SIGNAL,
+      NL80211_STA_INFO_TX_BITRATE,
+      NL80211_STA_INFO_RX_PACKETS,
+      NL80211_STA_INFO_TX_PACKETS,
+      NL80211_STA_INFO_TX_RETRIES,
+      NL80211_STA_INFO_TX_FAILED,
+      NL80211_STA_INFO_SIGNAL_AVG,
+      NL80211_STA_INFO_RX_BITRATE,
+      NL80211_STA_INFO_BSS_PARAM,
+      NL80211_STA_INFO_CONNECTED_TIME,
+      NL80211_STA_INFO_STA_FLAGS,
+      NL80211_STA_INFO_BEACON_LOSS,
+      NL80211_STA_INFO_T_OFFSET,
+      NL80211_STA_INFO_LOCAL_PM,
+      NL80211_STA_INFO_PEER_PM,
+      NL80211_STA_INFO_NONPEER_PM,
+      NL80211_STA_INFO_RX_BYTES64,
+      NL80211_STA_INFO_TX_BYTES64,
+      NL80211_STA_INFO_CHAIN_SIGNAL,
+      NL80211_STA_INFO_CHAIN_SIGNAL_AVG,
+      NL80211_STA_INFO_EXPECTED_THROUGHPUT,
+      NL80211_STA_INFO_RX_DROP_MISC,
+      NL80211_STA_INFO_BEACON_RX,
+      NL80211_STA_INFO_BEACON_SIGNAL_AVG,
+      NL80211_STA_INFO_TID_STATS,
+      __NL80211_STA_INFO_AFTER_LAST,
+      NL80211_STA_INFO_MAX
+    };
+
+
+.. _`nl80211_sta_info.constants`:
 
 Constants
 ---------
@@ -2502,7 +3074,7 @@ Constants
     Same format as NL80211_STA_INFO_CHAIN_SIGNAL.
 
 :``NL80211_STA_INFO_EXPECTED_THROUGHPUT``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_STA_INFO_RX_DROP_MISC``:
     RX packets dropped for unspecified reasons
@@ -2529,6 +3101,8 @@ Constants
     highest possible station info attribute
 
 
+.. _`nl80211_sta_info.description`:
+
 Description
 -----------
 
@@ -2537,16 +3111,36 @@ These attribute types are used with ``NL80211_ATTR_STA_INFO``
 when getting information about a station.
 
 
+
 .. _`nl80211_tid_stats`:
 
 enum nl80211_tid_stats
 ======================
 
-.. c:type:: enum nl80211_tid_stats
+.. c:type:: nl80211_tid_stats
 
     per TID statistics attributes
 
 
+.. _`nl80211_tid_stats.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_tid_stats {
+      __NL80211_TID_STATS_INVALID,
+      NL80211_TID_STATS_RX_MSDU,
+      NL80211_TID_STATS_TX_MSDU,
+      NL80211_TID_STATS_TX_MSDU_RETRIES,
+      NL80211_TID_STATS_TX_MSDU_FAILED,
+      NUM_NL80211_TID_STATS,
+      NL80211_TID_STATS_MAX
+    };
+
+
+.. _`nl80211_tid_stats.constants`:
 
 Constants
 ---------
@@ -2581,11 +3175,28 @@ Constants
 enum nl80211_mpath_flags
 ========================
 
-.. c:type:: enum nl80211_mpath_flags
+.. c:type:: nl80211_mpath_flags
 
     nl80211 mesh path flags
 
 
+.. _`nl80211_mpath_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mpath_flags {
+      NL80211_MPATH_FLAG_ACTIVE,
+      NL80211_MPATH_FLAG_RESOLVING,
+      NL80211_MPATH_FLAG_SN_VALID,
+      NL80211_MPATH_FLAG_FIXED,
+      NL80211_MPATH_FLAG_RESOLVED
+    };
+
+
+.. _`nl80211_mpath_flags.constants`:
 
 Constants
 ---------
@@ -2611,11 +3222,33 @@ Constants
 enum nl80211_mpath_info
 =======================
 
-.. c:type:: enum nl80211_mpath_info
+.. c:type:: nl80211_mpath_info
 
     mesh path information
 
 
+.. _`nl80211_mpath_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mpath_info {
+      __NL80211_MPATH_INFO_INVALID,
+      NL80211_MPATH_INFO_FRAME_QLEN,
+      NL80211_MPATH_INFO_SN,
+      NL80211_MPATH_INFO_METRIC,
+      NL80211_MPATH_INFO_EXPTIME,
+      NL80211_MPATH_INFO_FLAGS,
+      NL80211_MPATH_INFO_DISCOVERY_TIMEOUT,
+      NL80211_MPATH_INFO_DISCOVERY_RETRIES,
+      __NL80211_MPATH_INFO_AFTER_LAST,
+      NL80211_MPATH_INFO_MAX
+    };
+
+
+.. _`nl80211_mpath_info.constants`:
 
 Constants
 ---------
@@ -2653,6 +3286,8 @@ Constants
     currently defind
 
 
+.. _`nl80211_mpath_info.description`:
+
 Description
 -----------
 
@@ -2661,16 +3296,40 @@ These attribute types are used with ``NL80211_ATTR_MPATH_INFO`` when getting
 information about a mesh path.
 
 
+
 .. _`nl80211_band_attr`:
 
 enum nl80211_band_attr
 ======================
 
-.. c:type:: enum nl80211_band_attr
+.. c:type:: nl80211_band_attr
 
     band attributes
 
 
+.. _`nl80211_band_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_band_attr {
+      __NL80211_BAND_ATTR_INVALID,
+      NL80211_BAND_ATTR_FREQS,
+      NL80211_BAND_ATTR_RATES,
+      NL80211_BAND_ATTR_HT_MCS_SET,
+      NL80211_BAND_ATTR_HT_CAPA,
+      NL80211_BAND_ATTR_HT_AMPDU_FACTOR,
+      NL80211_BAND_ATTR_HT_AMPDU_DENSITY,
+      NL80211_BAND_ATTR_VHT_MCS_SET,
+      NL80211_BAND_ATTR_VHT_CAPA,
+      __NL80211_BAND_ATTR_AFTER_LAST,
+      NL80211_BAND_ATTR_MAX
+    };
+
+
+.. _`nl80211_band_attr.constants`:
 
 Constants
 ---------
@@ -2718,11 +3377,43 @@ Constants
 enum nl80211_frequency_attr
 ===========================
 
-.. c:type:: enum nl80211_frequency_attr
+.. c:type:: nl80211_frequency_attr
 
     frequency attributes
 
 
+.. _`nl80211_frequency_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_frequency_attr {
+      __NL80211_FREQUENCY_ATTR_INVALID,
+      NL80211_FREQUENCY_ATTR_FREQ,
+      NL80211_FREQUENCY_ATTR_DISABLED,
+      NL80211_FREQUENCY_ATTR_NO_IR,
+      __NL80211_FREQUENCY_ATTR_NO_IBSS,
+      NL80211_FREQUENCY_ATTR_RADAR,
+      NL80211_FREQUENCY_ATTR_MAX_TX_POWER,
+      NL80211_FREQUENCY_ATTR_DFS_STATE,
+      NL80211_FREQUENCY_ATTR_DFS_TIME,
+      NL80211_FREQUENCY_ATTR_NO_HT40_MINUS,
+      NL80211_FREQUENCY_ATTR_NO_HT40_PLUS,
+      NL80211_FREQUENCY_ATTR_NO_80MHZ,
+      NL80211_FREQUENCY_ATTR_NO_160MHZ,
+      NL80211_FREQUENCY_ATTR_DFS_CAC_TIME,
+      NL80211_FREQUENCY_ATTR_INDOOR_ONLY,
+      NL80211_FREQUENCY_ATTR_IR_CONCURRENT,
+      NL80211_FREQUENCY_ATTR_NO_20MHZ,
+      NL80211_FREQUENCY_ATTR_NO_10MHZ,
+      __NL80211_FREQUENCY_ATTR_AFTER_LAST,
+      NL80211_FREQUENCY_ATTR_MAX
+    };
+
+
+.. _`nl80211_frequency_attr.constants`:
 
 Constants
 ---------
@@ -2743,7 +3434,7 @@ Constants
     requests, or modes of operation that require beaconing.
 
 :``__NL80211_FREQUENCY_ATTR_NO_IBSS``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_FREQUENCY_ATTR_RADAR``:
     Radar detection is mandatory
@@ -2805,10 +3496,12 @@ Constants
 
 :``NL80211_FREQUENCY_ATTR_NO_20MHZ``:
     20 MHz operation is not allowed
+
             on this channel in current regulatory domain.
 
 :``NL80211_FREQUENCY_ATTR_NO_10MHZ``:
     10 MHz operation is not allowed
+
             on this channel in current regulatory domain.
 
 :``__NL80211_FREQUENCY_ATTR_AFTER_LAST``:
@@ -2819,13 +3512,16 @@ Constants
     currently defined
 
 
-Description
------------
+.. _`nl80211_frequency_attr.see-https`:
 
-See https://apps.fcc.gov/eas/comments/GetPublishedDocument.html?id=327:c:type:`struct tn <tn>`=528122
+See https
+---------
+
+//apps.fcc.gov/eas/comments/GetPublishedDocument.html?id=327:c:type:`struct tn <tn>`=528122
 for more information on the FCC description of the relaxations allowed
 by NL80211_FREQUENCY_ATTR_INDOOR_ONLY and
 NL80211_FREQUENCY_ATTR_IR_CONCURRENT.
+
 
 
 .. _`nl80211_bitrate_attr`:
@@ -2833,11 +3529,28 @@ NL80211_FREQUENCY_ATTR_IR_CONCURRENT.
 enum nl80211_bitrate_attr
 =========================
 
-.. c:type:: enum nl80211_bitrate_attr
+.. c:type:: nl80211_bitrate_attr
 
     bitrate attributes
 
 
+.. _`nl80211_bitrate_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_bitrate_attr {
+      __NL80211_BITRATE_ATTR_INVALID,
+      NL80211_BITRATE_ATTR_RATE,
+      NL80211_BITRATE_ATTR_2GHZ_SHORTPREAMBLE,
+      __NL80211_BITRATE_ATTR_AFTER_LAST,
+      NL80211_BITRATE_ATTR_MAX
+    };
+
+
+.. _`nl80211_bitrate_attr.constants`:
 
 Constants
 ---------
@@ -2865,11 +3578,27 @@ Constants
 enum nl80211_reg_initiator
 ==========================
 
-.. c:type:: enum nl80211_reg_initiator
+.. c:type:: nl80211_reg_initiator
 
     Indicates the initiator of a reg domain request
 
 
+.. _`nl80211_reg_initiator.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_reg_initiator {
+      NL80211_REGDOM_SET_BY_CORE,
+      NL80211_REGDOM_SET_BY_USER,
+      NL80211_REGDOM_SET_BY_DRIVER,
+      NL80211_REGDOM_SET_BY_COUNTRY_IE
+    };
+
+
+.. _`nl80211_reg_initiator.constants`:
 
 Constants
 ---------
@@ -2901,11 +3630,27 @@ Constants
 enum nl80211_reg_type
 =====================
 
-.. c:type:: enum nl80211_reg_type
+.. c:type:: nl80211_reg_type
 
     specifies the type of regulatory domain
 
 
+.. _`nl80211_reg_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_reg_type {
+      NL80211_REGDOM_TYPE_COUNTRY,
+      NL80211_REGDOM_TYPE_WORLD,
+      NL80211_REGDOM_TYPE_CUSTOM_WORLD,
+      NL80211_REGDOM_TYPE_INTERSECTION
+    };
+
+
+.. _`nl80211_reg_type.constants`:
 
 Constants
 ---------
@@ -2937,11 +3682,33 @@ Constants
 enum nl80211_reg_rule_attr
 ==========================
 
-.. c:type:: enum nl80211_reg_rule_attr
+.. c:type:: nl80211_reg_rule_attr
 
     regulatory rule attributes
 
 
+.. _`nl80211_reg_rule_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_reg_rule_attr {
+      __NL80211_REG_RULE_ATTR_INVALID,
+      NL80211_ATTR_REG_RULE_FLAGS,
+      NL80211_ATTR_FREQ_RANGE_START,
+      NL80211_ATTR_FREQ_RANGE_END,
+      NL80211_ATTR_FREQ_RANGE_MAX_BW,
+      NL80211_ATTR_POWER_RULE_MAX_ANT_GAIN,
+      NL80211_ATTR_POWER_RULE_MAX_EIRP,
+      NL80211_ATTR_DFS_CAC_TIME,
+      __NL80211_REG_RULE_ATTR_AFTER_LAST,
+      NL80211_REG_RULE_ATTR_MAX
+    };
+
+
+.. _`nl80211_reg_rule_attr.constants`:
 
 Constants
 ---------
@@ -2978,9 +3745,8 @@ Constants
     a given frequency range. The value is in mBm (100 * dBm).
 
 :``NL80211_ATTR_DFS_CAC_TIME``:
-    DFS CAC time in milliseconds.::
-
-            If not present or 0 default CAC time will be used.
+    DFS CAC time in milliseconds.
+    If not present or 0 default CAC time will be used.
 
 :``__NL80211_REG_RULE_ATTR_AFTER_LAST``:
     internal use
@@ -2995,11 +3761,28 @@ Constants
 enum nl80211_sched_scan_match_attr
 ==================================
 
-.. c:type:: enum nl80211_sched_scan_match_attr
+.. c:type:: nl80211_sched_scan_match_attr
 
     scheduled scan match attributes
 
 
+.. _`nl80211_sched_scan_match_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sched_scan_match_attr {
+      __NL80211_SCHED_SCAN_MATCH_ATTR_INVALID,
+      NL80211_SCHED_SCAN_MATCH_ATTR_SSID,
+      NL80211_SCHED_SCAN_MATCH_ATTR_RSSI,
+      __NL80211_SCHED_SCAN_MATCH_ATTR_AFTER_LAST,
+      NL80211_SCHED_SCAN_MATCH_ATTR_MAX
+    };
+
+
+.. _`nl80211_sched_scan_match_attr.constants`:
 
 Constants
 ---------
@@ -3034,11 +3817,38 @@ Constants
 enum nl80211_reg_rule_flags
 ===========================
 
-.. c:type:: enum nl80211_reg_rule_flags
+.. c:type:: nl80211_reg_rule_flags
 
     regulatory rule flags
 
 
+.. _`nl80211_reg_rule_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_reg_rule_flags {
+      NL80211_RRF_NO_OFDM,
+      NL80211_RRF_NO_CCK,
+      NL80211_RRF_NO_INDOOR,
+      NL80211_RRF_NO_OUTDOOR,
+      NL80211_RRF_DFS,
+      NL80211_RRF_PTP_ONLY,
+      NL80211_RRF_PTMP_ONLY,
+      NL80211_RRF_NO_IR,
+      __NL80211_RRF_NO_IBSS,
+      NL80211_RRF_AUTO_BW,
+      NL80211_RRF_IR_CONCURRENT,
+      NL80211_RRF_NO_HT40MINUS,
+      NL80211_RRF_NO_HT40PLUS,
+      NL80211_RRF_NO_80MHZ,
+      NL80211_RRF_NO_160MHZ
+    };
+
+
+.. _`nl80211_reg_rule_flags.constants`:
 
 Constants
 ---------
@@ -3070,7 +3880,7 @@ Constants
     beaconing.
 
 :``__NL80211_RRF_NO_IBSS``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_RRF_AUTO_BW``:
     maximum available bandwidth should be calculated
@@ -3098,11 +3908,27 @@ Constants
 enum nl80211_dfs_regions
 ========================
 
-.. c:type:: enum nl80211_dfs_regions
+.. c:type:: nl80211_dfs_regions
 
     regulatory DFS regions
 
 
+.. _`nl80211_dfs_regions.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_dfs_regions {
+      NL80211_DFS_UNSET,
+      NL80211_DFS_FCC,
+      NL80211_DFS_ETSI,
+      NL80211_DFS_JP
+    };
+
+
+.. _`nl80211_dfs_regions.constants`:
 
 Constants
 ---------
@@ -3125,11 +3951,26 @@ Constants
 enum nl80211_user_reg_hint_type
 ===============================
 
-.. c:type:: enum nl80211_user_reg_hint_type
+.. c:type:: nl80211_user_reg_hint_type
 
     type of user regulatory hint
 
 
+.. _`nl80211_user_reg_hint_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_user_reg_hint_type {
+      NL80211_USER_REG_HINT_USER,
+      NL80211_USER_REG_HINT_CELL_BASE,
+      NL80211_USER_REG_HINT_INDOOR
+    };
+
+
+.. _`nl80211_user_reg_hint_type.constants`:
 
 Constants
 ---------
@@ -3159,11 +4000,35 @@ Constants
 enum nl80211_survey_info
 ========================
 
-.. c:type:: enum nl80211_survey_info
+.. c:type:: nl80211_survey_info
 
     survey information
 
 
+.. _`nl80211_survey_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_survey_info {
+      __NL80211_SURVEY_INFO_INVALID,
+      NL80211_SURVEY_INFO_FREQUENCY,
+      NL80211_SURVEY_INFO_NOISE,
+      NL80211_SURVEY_INFO_IN_USE,
+      NL80211_SURVEY_INFO_TIME,
+      NL80211_SURVEY_INFO_TIME_BUSY,
+      NL80211_SURVEY_INFO_TIME_EXT_BUSY,
+      NL80211_SURVEY_INFO_TIME_RX,
+      NL80211_SURVEY_INFO_TIME_TX,
+      NL80211_SURVEY_INFO_TIME_SCAN,
+      __NL80211_SURVEY_INFO_AFTER_LAST,
+      NL80211_SURVEY_INFO_MAX
+    };
+
+
+.. _`nl80211_survey_info.constants`:
 
 Constants
 ---------
@@ -3212,6 +4077,8 @@ Constants
     currently defined
 
 
+.. _`nl80211_survey_info.description`:
+
 Description
 -----------
 
@@ -3220,16 +4087,38 @@ These attribute types are used with ``NL80211_ATTR_SURVEY_INFO``
 when getting information about a survey.
 
 
+
 .. _`nl80211_mntr_flags`:
 
 enum nl80211_mntr_flags
 =======================
 
-.. c:type:: enum nl80211_mntr_flags
+.. c:type:: nl80211_mntr_flags
 
     monitor configuration flags
 
 
+.. _`nl80211_mntr_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mntr_flags {
+      __NL80211_MNTR_FLAG_INVALID,
+      NL80211_MNTR_FLAG_FCSFAIL,
+      NL80211_MNTR_FLAG_PLCPFAIL,
+      NL80211_MNTR_FLAG_CONTROL,
+      NL80211_MNTR_FLAG_OTHER_BSS,
+      NL80211_MNTR_FLAG_COOK_FRAMES,
+      NL80211_MNTR_FLAG_ACTIVE,
+      __NL80211_MNTR_FLAG_AFTER_LAST,
+      NL80211_MNTR_FLAG_MAX
+    };
+
+
+.. _`nl80211_mntr_flags.constants`:
 
 Constants
 ---------
@@ -3250,9 +4139,8 @@ Constants
     disable BSSID filtering
 
 :``NL80211_MNTR_FLAG_COOK_FRAMES``:
-    report frames after processing.::
-
-            overrides all other flags.
+    report frames after processing.
+    overrides all other flags.
 
 :``NL80211_MNTR_FLAG_ACTIVE``:
     use the configured MAC address
@@ -3265,6 +4153,8 @@ Constants
     highest possible monitor flag
 
 
+.. _`nl80211_mntr_flags.description`:
+
 Description
 -----------
 
@@ -3272,16 +4162,35 @@ Description
 Monitor configuration flags.
 
 
+
 .. _`nl80211_mesh_power_mode`:
 
 enum nl80211_mesh_power_mode
 ============================
 
-.. c:type:: enum nl80211_mesh_power_mode
+.. c:type:: nl80211_mesh_power_mode
 
     mesh power save modes
 
 
+.. _`nl80211_mesh_power_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mesh_power_mode {
+      NL80211_MESH_POWER_UNKNOWN,
+      NL80211_MESH_POWER_ACTIVE,
+      NL80211_MESH_POWER_LIGHT_SLEEP,
+      NL80211_MESH_POWER_DEEP_SLEEP,
+      __NL80211_MESH_POWER_AFTER_LAST,
+      NL80211_MESH_POWER_MAX
+    };
+
+
+.. _`nl80211_mesh_power_mode.constants`:
 
 Constants
 ---------
@@ -3305,11 +4214,13 @@ Constants
     for neighbor's beacons.
 
 :``__NL80211_MESH_POWER_AFTER_LAST``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_MESH_POWER_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`nl80211_mesh_power_mode.description`:
 
 Description
 -----------
@@ -3318,16 +4229,60 @@ Description
 ``NL80211_MESH_POWER_MAX`` - highest possible power save level
 
 
+
 .. _`nl80211_meshconf_params`:
 
 enum nl80211_meshconf_params
 ============================
 
-.. c:type:: enum nl80211_meshconf_params
+.. c:type:: nl80211_meshconf_params
 
     mesh configuration parameters
 
 
+.. _`nl80211_meshconf_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_meshconf_params {
+      __NL80211_MESHCONF_INVALID,
+      NL80211_MESHCONF_RETRY_TIMEOUT,
+      NL80211_MESHCONF_CONFIRM_TIMEOUT,
+      NL80211_MESHCONF_HOLDING_TIMEOUT,
+      NL80211_MESHCONF_MAX_PEER_LINKS,
+      NL80211_MESHCONF_MAX_RETRIES,
+      NL80211_MESHCONF_TTL,
+      NL80211_MESHCONF_AUTO_OPEN_PLINKS,
+      NL80211_MESHCONF_HWMP_MAX_PREQ_RETRIES,
+      NL80211_MESHCONF_PATH_REFRESH_TIME,
+      NL80211_MESHCONF_MIN_DISCOVERY_TIMEOUT,
+      NL80211_MESHCONF_HWMP_ACTIVE_PATH_TIMEOUT,
+      NL80211_MESHCONF_HWMP_PREQ_MIN_INTERVAL,
+      NL80211_MESHCONF_HWMP_NET_DIAM_TRVS_TIME,
+      NL80211_MESHCONF_HWMP_ROOTMODE,
+      NL80211_MESHCONF_ELEMENT_TTL,
+      NL80211_MESHCONF_HWMP_RANN_INTERVAL,
+      NL80211_MESHCONF_GATE_ANNOUNCEMENTS,
+      NL80211_MESHCONF_HWMP_PERR_MIN_INTERVAL,
+      NL80211_MESHCONF_FORWARDING,
+      NL80211_MESHCONF_RSSI_THRESHOLD,
+      NL80211_MESHCONF_SYNC_OFFSET_MAX_NEIGHBOR,
+      NL80211_MESHCONF_HT_OPMODE,
+      NL80211_MESHCONF_HWMP_PATH_TO_ROOT_TIMEOUT,
+      NL80211_MESHCONF_HWMP_ROOT_INTERVAL,
+      NL80211_MESHCONF_HWMP_CONFIRMATION_INTERVAL,
+      NL80211_MESHCONF_POWER_MODE,
+      NL80211_MESHCONF_AWAKE_WINDOW,
+      NL80211_MESHCONF_PLINK_TIMEOUT,
+      __NL80211_MESHCONF_ATTR_AFTER_LAST,
+      NL80211_MESHCONF_ATTR_MAX
+    };
+
+
+.. _`nl80211_meshconf_params.constants`:
 
 Constants
 ---------
@@ -3447,9 +4402,8 @@ Constants
     containing a PREQ element for root path confirmation.
 
 :``NL80211_MESHCONF_POWER_MODE``:
-    Default mesh power mode for new peer links.::
-
-            type :c:type:`enum nl80211_mesh_power_mode <nl80211_mesh_power_mode>` (u32)
+    Default mesh power mode for new peer links.
+    type :c:type:`enum nl80211_mesh_power_mode <nl80211_mesh_power_mode>` (u32)
 
 :``NL80211_MESHCONF_AWAKE_WINDOW``:
     awake window duration (in TUs)
@@ -3467,6 +4421,8 @@ Constants
     highest possible mesh configuration attribute
 
 
+.. _`nl80211_meshconf_params.description`:
+
 Description
 -----------
 
@@ -3475,16 +4431,40 @@ Mesh configuration parameters. These can be changed while the mesh is
 active.
 
 
+
 .. _`nl80211_mesh_setup_params`:
 
 enum nl80211_mesh_setup_params
 ==============================
 
-.. c:type:: enum nl80211_mesh_setup_params
+.. c:type:: nl80211_mesh_setup_params
 
     mesh setup parameters
 
 
+.. _`nl80211_mesh_setup_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mesh_setup_params {
+      __NL80211_MESH_SETUP_INVALID,
+      NL80211_MESH_SETUP_ENABLE_VENDOR_PATH_SEL,
+      NL80211_MESH_SETUP_ENABLE_VENDOR_METRIC,
+      NL80211_MESH_SETUP_IE,
+      NL80211_MESH_SETUP_USERSPACE_AUTH,
+      NL80211_MESH_SETUP_USERSPACE_AMPE,
+      NL80211_MESH_SETUP_ENABLE_VENDOR_SYNC,
+      NL80211_MESH_SETUP_USERSPACE_MPM,
+      NL80211_MESH_SETUP_AUTH_PROTOCOL,
+      __NL80211_MESH_SETUP_ATTR_AFTER_LAST,
+      NL80211_MESH_SETUP_ATTR_MAX
+    };
+
+
+.. _`nl80211_mesh_setup_params.constants`:
 
 Constants
 ---------
@@ -3544,6 +4524,8 @@ Constants
     highest possible mesh setup attribute number
 
 
+.. _`nl80211_mesh_setup_params.description`:
+
 Description
 -----------
 
@@ -3552,16 +4534,37 @@ Mesh setup parameters.  These are used to start/join a mesh and cannot be
 changed while the mesh is active.
 
 
+
 .. _`nl80211_txq_attr`:
 
 enum nl80211_txq_attr
 =====================
 
-.. c:type:: enum nl80211_txq_attr
+.. c:type:: nl80211_txq_attr
 
     TX queue parameter attributes
 
 
+.. _`nl80211_txq_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_txq_attr {
+      __NL80211_TXQ_ATTR_INVALID,
+      NL80211_TXQ_ATTR_AC,
+      NL80211_TXQ_ATTR_TXOP,
+      NL80211_TXQ_ATTR_CWMIN,
+      NL80211_TXQ_ATTR_CWMAX,
+      NL80211_TXQ_ATTR_AIFS,
+      __NL80211_TXQ_ATTR_AFTER_LAST,
+      NL80211_TXQ_ATTR_MAX
+    };
+
+
+.. _`nl80211_txq_attr.constants`:
 
 Constants
 ---------
@@ -3570,7 +4573,7 @@ Constants
     Attribute number 0 is reserved
 
 :``NL80211_TXQ_ATTR_AC``:
-    AC identifier (NL80211_AC_\*)
+    AC identifier (NL80211_AC\_\*)
 
 :``NL80211_TXQ_ATTR_TXOP``:
     Maximum burst time in units of 32 usecs, 0 meaning
@@ -3599,11 +4602,27 @@ Constants
 enum nl80211_channel_type
 =========================
 
-.. c:type:: enum nl80211_channel_type
+.. c:type:: nl80211_channel_type
 
     channel type
 
 
+.. _`nl80211_channel_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_channel_type {
+      NL80211_CHAN_NO_HT,
+      NL80211_CHAN_HT20,
+      NL80211_CHAN_HT40MINUS,
+      NL80211_CHAN_HT40PLUS
+    };
+
+
+.. _`nl80211_channel_type.constants`:
 
 Constants
 ---------
@@ -3628,11 +4647,31 @@ Constants
 enum nl80211_chan_width
 =======================
 
-.. c:type:: enum nl80211_chan_width
+.. c:type:: nl80211_chan_width
 
     channel width definitions
 
 
+.. _`nl80211_chan_width.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_chan_width {
+      NL80211_CHAN_WIDTH_20_NOHT,
+      NL80211_CHAN_WIDTH_20,
+      NL80211_CHAN_WIDTH_40,
+      NL80211_CHAN_WIDTH_80,
+      NL80211_CHAN_WIDTH_80P80,
+      NL80211_CHAN_WIDTH_160,
+      NL80211_CHAN_WIDTH_5,
+      NL80211_CHAN_WIDTH_10
+    };
+
+
+.. _`nl80211_chan_width.constants`:
 
 Constants
 ---------
@@ -3645,18 +4684,22 @@ Constants
 
 :``NL80211_CHAN_WIDTH_40``:
     40 MHz channel, the ``NL80211_ATTR_CENTER_FREQ1``
+
             attribute must be provided as well
 
 :``NL80211_CHAN_WIDTH_80``:
     80 MHz channel, the ``NL80211_ATTR_CENTER_FREQ1``
+
             attribute must be provided as well
 
 :``NL80211_CHAN_WIDTH_80P80``:
     80+80 MHz channel, the ``NL80211_ATTR_CENTER_FREQ1``
+
             and ``NL80211_ATTR_CENTER_FREQ2`` attributes must be provided as well
 
 :``NL80211_CHAN_WIDTH_160``:
     160 MHz channel, the ``NL80211_ATTR_CENTER_FREQ1``
+
             attribute must be provided as well
 
 :``NL80211_CHAN_WIDTH_5``:
@@ -3666,6 +4709,8 @@ Constants
     10 MHz OFDM channel
 
 
+.. _`nl80211_chan_width.description`:
+
 Description
 -----------
 
@@ -3674,16 +4719,32 @@ These values are used with the ``NL80211_ATTR_CHANNEL_WIDTH``
 attribute.
 
 
+
 .. _`nl80211_bss_scan_width`:
 
 enum nl80211_bss_scan_width
 ===========================
 
-.. c:type:: enum nl80211_bss_scan_width
+.. c:type:: nl80211_bss_scan_width
 
     control channel width for a BSS
 
 
+.. _`nl80211_bss_scan_width.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_bss_scan_width {
+      NL80211_BSS_CHAN_WIDTH_20,
+      NL80211_BSS_CHAN_WIDTH_10,
+      NL80211_BSS_CHAN_WIDTH_5
+    };
+
+
+.. _`nl80211_bss_scan_width.constants`:
 
 Constants
 ---------
@@ -3698,6 +4759,8 @@ Constants
     control channel is 5 MHz wide
 
 
+.. _`nl80211_bss_scan_width.description`:
+
 Description
 -----------
 
@@ -3705,16 +4768,47 @@ Description
 These values are used with the ``NL80211_BSS_CHAN_WIDTH`` attribute.
 
 
+
 .. _`nl80211_bss`:
 
 enum nl80211_bss
 ================
 
-.. c:type:: enum nl80211_bss
+.. c:type:: nl80211_bss
 
     netlink attributes for a BSS
 
 
+.. _`nl80211_bss.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_bss {
+      __NL80211_BSS_INVALID,
+      NL80211_BSS_BSSID,
+      NL80211_BSS_FREQUENCY,
+      NL80211_BSS_TSF,
+      NL80211_BSS_BEACON_INTERVAL,
+      NL80211_BSS_CAPABILITY,
+      NL80211_BSS_INFORMATION_ELEMENTS,
+      NL80211_BSS_SIGNAL_MBM,
+      NL80211_BSS_SIGNAL_UNSPEC,
+      NL80211_BSS_STATUS,
+      NL80211_BSS_SEEN_MS_AGO,
+      NL80211_BSS_BEACON_IES,
+      NL80211_BSS_CHAN_WIDTH,
+      NL80211_BSS_BEACON_TSF,
+      NL80211_BSS_PRESP_DATA,
+      NL80211_BSS_LAST_SEEN_BOOTTIME,
+      __NL80211_BSS_AFTER_LAST,
+      NL80211_BSS_MAX
+    };
+
+
+.. _`nl80211_bss.constants`:
 
 Constants
 ---------
@@ -3799,21 +4893,35 @@ Constants
 enum nl80211_bss_status
 =======================
 
-.. c:type:: enum nl80211_bss_status
+.. c:type:: nl80211_bss_status
 
     BSS "status"
 
 
+.. _`nl80211_bss_status.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_bss_status {
+      NL80211_BSS_STATUS_AUTHENTICATED,
+      NL80211_BSS_STATUS_ASSOCIATED,
+      NL80211_BSS_STATUS_IBSS_JOINED
+    };
+
+
+.. _`nl80211_bss_status.constants`:
 
 Constants
 ---------
 
 :``NL80211_BSS_STATUS_AUTHENTICATED``:
-    Authenticated with this BSS.::
-
-            Note that this is no longer used since cfg80211 no longer
-            keeps track of whether or not authentication was done with
-            a given BSS.
+    Authenticated with this BSS.
+    Note that this is no longer used since cfg80211 no longer
+    keeps track of whether or not authentication was done with
+    a given BSS.
 
 :``NL80211_BSS_STATUS_ASSOCIATED``:
     Associated with this BSS.
@@ -3822,6 +4930,8 @@ Constants
     Joined to this IBSS.
 
 
+.. _`nl80211_bss_status.description`:
+
 Description
 -----------
 
@@ -3829,16 +4939,37 @@ The BSS status is a BSS attribute in scan dumps, which
 indicates the status the interface has wrt. this BSS.
 
 
+
 .. _`nl80211_auth_type`:
 
 enum nl80211_auth_type
 ======================
 
-.. c:type:: enum nl80211_auth_type
+.. c:type:: nl80211_auth_type
 
     AuthenticationType
 
 
+.. _`nl80211_auth_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_auth_type {
+      NL80211_AUTHTYPE_OPEN_SYSTEM,
+      NL80211_AUTHTYPE_SHARED_KEY,
+      NL80211_AUTHTYPE_FT,
+      NL80211_AUTHTYPE_NETWORK_EAP,
+      NL80211_AUTHTYPE_SAE,
+      __NL80211_AUTHTYPE_NUM,
+      NL80211_AUTHTYPE_MAX,
+      NL80211_AUTHTYPE_AUTOMATIC
+    };
+
+
+.. _`nl80211_auth_type.constants`:
 
 Constants
 ---------
@@ -3875,11 +5006,27 @@ Constants
 enum nl80211_key_type
 =====================
 
-.. c:type:: enum nl80211_key_type
+.. c:type:: nl80211_key_type
 
     Key Type
 
 
+.. _`nl80211_key_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_key_type {
+      NL80211_KEYTYPE_GROUP,
+      NL80211_KEYTYPE_PAIRWISE,
+      NL80211_KEYTYPE_PEERKEY,
+      NUM_NL80211_KEYTYPES
+    };
+
+
+.. _`nl80211_key_type.constants`:
 
 Constants
 ---------
@@ -3902,11 +5049,25 @@ Constants
 enum nl80211_mfp
 ================
 
-.. c:type:: enum nl80211_mfp
+.. c:type:: nl80211_mfp
 
     Management frame protection state
 
 
+.. _`nl80211_mfp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_mfp {
+      NL80211_MFP_NO,
+      NL80211_MFP_REQUIRED
+    };
+
+
+.. _`nl80211_mfp.constants`:
 
 Constants
 ---------
@@ -3923,11 +5084,27 @@ Constants
 enum nl80211_key_default_types
 ==============================
 
-.. c:type:: enum nl80211_key_default_types
+.. c:type:: nl80211_key_default_types
 
     key default types
 
 
+.. _`nl80211_key_default_types.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_key_default_types {
+      __NL80211_KEY_DEFAULT_TYPE_INVALID,
+      NL80211_KEY_DEFAULT_TYPE_UNICAST,
+      NL80211_KEY_DEFAULT_TYPE_MULTICAST,
+      NUM_NL80211_KEY_DEFAULT_TYPES
+    };
+
+
+.. _`nl80211_key_default_types.constants`:
 
 Constants
 ---------
@@ -3952,11 +5129,34 @@ Constants
 enum nl80211_key_attributes
 ===========================
 
-.. c:type:: enum nl80211_key_attributes
+.. c:type:: nl80211_key_attributes
 
     key attributes
 
 
+.. _`nl80211_key_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_key_attributes {
+      __NL80211_KEY_INVALID,
+      NL80211_KEY_DATA,
+      NL80211_KEY_IDX,
+      NL80211_KEY_CIPHER,
+      NL80211_KEY_SEQ,
+      NL80211_KEY_DEFAULT,
+      NL80211_KEY_DEFAULT_MGMT,
+      NL80211_KEY_TYPE,
+      NL80211_KEY_DEFAULT_TYPES,
+      __NL80211_KEY_AFTER_LAST,
+      NL80211_KEY_MAX
+    };
+
+
+.. _`nl80211_key_attributes.constants`:
 
 Constants
 ---------
@@ -3966,8 +5166,9 @@ Constants
 
 :``NL80211_KEY_DATA``:
     (temporal) key data; for TKIP this consists of
-    16 bytes encryption key followed by 8 bytes each for TX and RX MIC
-    keys
+
+            16 bytes encryption key followed by 8 bytes each for TX and RX MIC
+            keys
 
 :``NL80211_KEY_IDX``:
     key ID (u8, 0-3)
@@ -4008,11 +5209,30 @@ Constants
 enum nl80211_tx_rate_attributes
 ===============================
 
-.. c:type:: enum nl80211_tx_rate_attributes
+.. c:type:: nl80211_tx_rate_attributes
 
     TX rate set attributes
 
 
+.. _`nl80211_tx_rate_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_tx_rate_attributes {
+      __NL80211_TXRATE_INVALID,
+      NL80211_TXRATE_LEGACY,
+      NL80211_TXRATE_HT,
+      NL80211_TXRATE_VHT,
+      NL80211_TXRATE_GI,
+      __NL80211_TXRATE_AFTER_LAST,
+      NL80211_TXRATE_MAX
+    };
+
+
+.. _`nl80211_tx_rate_attributes.constants`:
 
 Constants
 ---------
@@ -4049,11 +5269,12 @@ Constants
 struct nl80211_txrate_vht
 =========================
 
-.. c:type:: struct nl80211_txrate_vht
+.. c:type:: nl80211_txrate_vht
 
     VHT MCS/NSS txrate bitmap
 
 
+.. _`nl80211_txrate_vht.definition`:
 
 Definition
 ----------
@@ -4065,6 +5286,7 @@ Definition
   };
 
 
+.. _`nl80211_txrate_vht.members`:
 
 Members
 -------
@@ -4074,16 +5296,32 @@ Members
 
 
 
+
 .. _`nl80211_band`:
 
 enum nl80211_band
 =================
 
-.. c:type:: enum nl80211_band
+.. c:type:: nl80211_band
 
     Frequency band
 
 
+.. _`nl80211_band.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_band {
+      NL80211_BAND_2GHZ,
+      NL80211_BAND_5GHZ,
+      NL80211_BAND_60GHZ
+    };
+
+
+.. _`nl80211_band.constants`:
 
 Constants
 ---------
@@ -4103,11 +5341,25 @@ Constants
 enum nl80211_ps_state
 =====================
 
-.. c:type:: enum nl80211_ps_state
+.. c:type:: nl80211_ps_state
 
     powersave state
 
 
+.. _`nl80211_ps_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_ps_state {
+      NL80211_PS_DISABLED,
+      NL80211_PS_ENABLED
+    };
+
+
+.. _`nl80211_ps_state.constants`:
 
 Constants
 ---------
@@ -4124,11 +5376,34 @@ Constants
 enum nl80211_attr_cqm
 =====================
 
-.. c:type:: enum nl80211_attr_cqm
+.. c:type:: nl80211_attr_cqm
 
     connection quality monitor attributes
 
 
+.. _`nl80211_attr_cqm.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_attr_cqm {
+      __NL80211_ATTR_CQM_INVALID,
+      NL80211_ATTR_CQM_RSSI_THOLD,
+      NL80211_ATTR_CQM_RSSI_HYST,
+      NL80211_ATTR_CQM_RSSI_THRESHOLD_EVENT,
+      NL80211_ATTR_CQM_PKT_LOSS_EVENT,
+      NL80211_ATTR_CQM_TXE_RATE,
+      NL80211_ATTR_CQM_TXE_PKTS,
+      NL80211_ATTR_CQM_TXE_INTVL,
+      NL80211_ATTR_CQM_BEACON_LOSS_EVENT,
+      __NL80211_ATTR_CQM_AFTER_LAST,
+      NL80211_ATTR_CQM_MAX
+    };
+
+
+.. _`nl80211_attr_cqm.constants`:
 
 Constants
 ---------
@@ -4186,11 +5461,26 @@ Constants
 enum nl80211_cqm_rssi_threshold_event
 =====================================
 
-.. c:type:: enum nl80211_cqm_rssi_threshold_event
+.. c:type:: nl80211_cqm_rssi_threshold_event
 
     RSSI threshold event
 
 
+.. _`nl80211_cqm_rssi_threshold_event.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_cqm_rssi_threshold_event {
+      NL80211_CQM_RSSI_THRESHOLD_EVENT_LOW,
+      NL80211_CQM_RSSI_THRESHOLD_EVENT_HIGH,
+      NL80211_CQM_RSSI_BEACON_LOSS_EVENT
+    };
+
+
+.. _`nl80211_cqm_rssi_threshold_event.constants`:
 
 Constants
 ---------
@@ -4212,11 +5502,26 @@ Constants
 enum nl80211_tx_power_setting
 =============================
 
-.. c:type:: enum nl80211_tx_power_setting
+.. c:type:: nl80211_tx_power_setting
 
     TX power adjustment
 
 
+.. _`nl80211_tx_power_setting.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_tx_power_setting {
+      NL80211_TX_POWER_AUTOMATIC,
+      NL80211_TX_POWER_LIMITED,
+      NL80211_TX_POWER_FIXED
+    };
+
+
+.. _`nl80211_tx_power_setting.constants`:
 
 Constants
 ---------
@@ -4236,11 +5541,29 @@ Constants
 enum nl80211_packet_pattern_attr
 ================================
 
-.. c:type:: enum nl80211_packet_pattern_attr
+.. c:type:: nl80211_packet_pattern_attr
 
     packet pattern attribute
 
 
+.. _`nl80211_packet_pattern_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_packet_pattern_attr {
+      __NL80211_PKTPAT_INVALID,
+      NL80211_PKTPAT_MASK,
+      NL80211_PKTPAT_PATTERN,
+      NL80211_PKTPAT_OFFSET,
+      NUM_NL80211_PKTPAT,
+      MAX_NL80211_PKTPAT
+    };
+
+
+.. _`nl80211_packet_pattern_attr.constants`:
 
 Constants
 ---------
@@ -4254,12 +5577,6 @@ Constants
     to the first byte of the pattern, but the bytes of the pattern are
     in a little-endian-like format, i.e. the 9th byte of the pattern
     corresponds to the lowest-order bit in the second byte of the mask.
-    For example: The match 00:xx:00:00:xx:00:00:00:00:xx:xx:xx (where
-    xx indicates "don't care") would be represented by a pattern of
-    twelve zero bytes, and a mask of "0xed,0x01".
-    Note that the pattern matching is done as though frames were not
-    802.11 frames but 802.3 frames, i.e. the frame is fully unpacked
-    first (including SNAP header unpacking) and then matched.
 
 :``NL80211_PKTPAT_PATTERN``:
     the pattern, values where the mask has
@@ -4276,16 +5593,33 @@ Constants
     max attribute number
 
 
+.. _`nl80211_packet_pattern_attr.for-example`:
+
+For example
+-----------
+
+.. code-block:: c
+
+The match 00:xx:00:00:xx:00:00:00:00:xx:xx:xx (where
+	xx indicates "don't care") would be represented by a pattern of
+	twelve zero bytes, and a mask of "0xed,0x01".
+	Note that the pattern matching is done as though frames were not
+	802.11 frames but 802.3 frames, i.e. the frame is fully unpacked
+	first (including SNAP header unpacking) and then matched.
+
+
+
 .. _`nl80211_pattern_support`:
 
 struct nl80211_pattern_support
 ==============================
 
-.. c:type:: struct nl80211_pattern_support
+.. c:type:: nl80211_pattern_support
 
     packet pattern support information
 
 
+.. _`nl80211_pattern_support.definition`:
 
 Definition
 ----------
@@ -4300,6 +5634,7 @@ Definition
   };
 
 
+.. _`nl80211_pattern_support.members`:
 
 Members
 -------
@@ -4318,6 +5653,9 @@ Members
 
 
 
+
+.. _`nl80211_pattern_support.description`:
+
 Description
 -----------
 
@@ -4328,16 +5666,51 @@ that is part of ``NL80211_ATTR_WOWLAN_TRIGGERS_SUPPORTED`` or in
 by the kernel to userspace.
 
 
+
 .. _`nl80211_wowlan_triggers`:
 
 enum nl80211_wowlan_triggers
 ============================
 
-.. c:type:: enum nl80211_wowlan_triggers
+.. c:type:: nl80211_wowlan_triggers
 
     WoWLAN trigger definitions
 
 
+.. _`nl80211_wowlan_triggers.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_wowlan_triggers {
+      __NL80211_WOWLAN_TRIG_INVALID,
+      NL80211_WOWLAN_TRIG_ANY,
+      NL80211_WOWLAN_TRIG_DISCONNECT,
+      NL80211_WOWLAN_TRIG_MAGIC_PKT,
+      NL80211_WOWLAN_TRIG_PKT_PATTERN,
+      NL80211_WOWLAN_TRIG_GTK_REKEY_SUPPORTED,
+      NL80211_WOWLAN_TRIG_GTK_REKEY_FAILURE,
+      NL80211_WOWLAN_TRIG_EAP_IDENT_REQUEST,
+      NL80211_WOWLAN_TRIG_4WAY_HANDSHAKE,
+      NL80211_WOWLAN_TRIG_RFKILL_RELEASE,
+      NL80211_WOWLAN_TRIG_WAKEUP_PKT_80211,
+      NL80211_WOWLAN_TRIG_WAKEUP_PKT_80211_LEN,
+      NL80211_WOWLAN_TRIG_WAKEUP_PKT_8023,
+      NL80211_WOWLAN_TRIG_WAKEUP_PKT_8023_LEN,
+      NL80211_WOWLAN_TRIG_TCP_CONNECTION,
+      NL80211_WOWLAN_TRIG_WAKEUP_TCP_MATCH,
+      NL80211_WOWLAN_TRIG_WAKEUP_TCP_CONNLOST,
+      NL80211_WOWLAN_TRIG_WAKEUP_TCP_NOMORETOKENS,
+      NL80211_WOWLAN_TRIG_NET_DETECT,
+      NL80211_WOWLAN_TRIG_NET_DETECT_RESULTS,
+      NUM_NL80211_WOWLAN_TRIG,
+      MAX_NL80211_WOWLAN_TRIG
+    };
+
+
+.. _`nl80211_wowlan_triggers.constants`:
 
 Constants
 ---------
@@ -4418,7 +5791,7 @@ Constants
     the TCP connection.
 
 :``NL80211_WOWLAN_TRIG_WAKEUP_TCP_MATCH``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_WOWLAN_TRIG_WAKEUP_TCP_CONNLOST``:
     For wakeup reporting only, the
@@ -4462,18 +5835,24 @@ Constants
     highest wowlan trigger attribute number
 
 
-Description
------------
-
-These nested attributes are used to configure the wakeup triggers and
-to report the wakeup reason(s).
-
+.. _`nl80211_wowlan_triggers.description`:
 
 Description
 -----------
 
 These nested attributes are used to configure the wakeup triggers and
 to report the wakeup reason(s).
+
+
+
+.. _`nl80211_wowlan_triggers.description`:
+
+Description
+-----------
+
+These nested attributes are used to configure the wakeup triggers and
+to report the wakeup reason(s).
+
 
 
 .. _`tcp-connection-wakeup`:
@@ -4501,16 +5880,18 @@ Developer's note: ARP offload is required for this, otherwise TCP
 response packets might not go through correctly.
 
 
+
 .. _`nl80211_wowlan_tcp_data_seq`:
 
 struct nl80211_wowlan_tcp_data_seq
 ==================================
 
-.. c:type:: struct nl80211_wowlan_tcp_data_seq
+.. c:type:: nl80211_wowlan_tcp_data_seq
 
     WoWLAN TCP data sequence
 
 
+.. _`nl80211_wowlan_tcp_data_seq.definition`:
 
 Definition
 ----------
@@ -4524,6 +5905,7 @@ Definition
   };
 
 
+.. _`nl80211_wowlan_tcp_data_seq.members`:
 
 Members
 -------
@@ -4539,12 +5921,16 @@ Members
 
 
 
-Description
------------
 
-Note: don't confuse with the TCP sequence number(s), this is for the
+.. _`nl80211_wowlan_tcp_data_seq.note`:
+
+Note
+----
+
+don't confuse with the TCP sequence number(s), this is for the
 keepalive packet payload. The actual value is written into the packet
 in little endian.
+
 
 
 .. _`nl80211_wowlan_tcp_data_token`:
@@ -4552,11 +5938,12 @@ in little endian.
 struct nl80211_wowlan_tcp_data_token
 ====================================
 
-.. c:type:: struct nl80211_wowlan_tcp_data_token
+.. c:type:: nl80211_wowlan_tcp_data_token
 
     WoWLAN TCP data token config
 
 
+.. _`nl80211_wowlan_tcp_data_token.definition`:
 
 Definition
 ----------
@@ -4570,6 +5957,7 @@ Definition
   };
 
 
+.. _`nl80211_wowlan_tcp_data_token.members`:
 
 Members
 -------
@@ -4586,16 +5974,18 @@ Members
 
 
 
+
 .. _`nl80211_wowlan_tcp_data_token_feature`:
 
 struct nl80211_wowlan_tcp_data_token_feature
 ============================================
 
-.. c:type:: struct nl80211_wowlan_tcp_data_token_feature
+.. c:type:: nl80211_wowlan_tcp_data_token_feature
 
     data token features
 
 
+.. _`nl80211_wowlan_tcp_data_token_feature.definition`:
 
 Definition
 ----------
@@ -4609,6 +5999,7 @@ Definition
   };
 
 
+.. _`nl80211_wowlan_tcp_data_token_feature.members`:
 
 Members
 -------
@@ -4624,16 +6015,43 @@ Members
 
 
 
+
 .. _`nl80211_wowlan_tcp_attrs`:
 
 enum nl80211_wowlan_tcp_attrs
 =============================
 
-.. c:type:: enum nl80211_wowlan_tcp_attrs
+.. c:type:: nl80211_wowlan_tcp_attrs
 
     WoWLAN TCP connection parameters
 
 
+.. _`nl80211_wowlan_tcp_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_wowlan_tcp_attrs {
+      __NL80211_WOWLAN_TCP_INVALID,
+      NL80211_WOWLAN_TCP_SRC_IPV4,
+      NL80211_WOWLAN_TCP_DST_IPV4,
+      NL80211_WOWLAN_TCP_DST_MAC,
+      NL80211_WOWLAN_TCP_SRC_PORT,
+      NL80211_WOWLAN_TCP_DST_PORT,
+      NL80211_WOWLAN_TCP_DATA_PAYLOAD,
+      NL80211_WOWLAN_TCP_DATA_PAYLOAD_SEQ,
+      NL80211_WOWLAN_TCP_DATA_PAYLOAD_TOKEN,
+      NL80211_WOWLAN_TCP_DATA_INTERVAL,
+      NL80211_WOWLAN_TCP_WAKE_PAYLOAD,
+      NL80211_WOWLAN_TCP_WAKE_MASK,
+      NUM_NL80211_WOWLAN_TCP,
+      MAX_NL80211_WOWLAN_TCP
+    };
+
+
+.. _`nl80211_wowlan_tcp_attrs.constants`:
 
 Constants
 ---------
@@ -4662,10 +6080,9 @@ Constants
     destination port (u16)
 
 :``NL80211_WOWLAN_TCP_DATA_PAYLOAD``:
-    data packet payload, at least one byte.::
-
-            For feature advertising, a u32 attribute holding the maximum length
-            of the data payload.
+    data packet payload, at least one byte.
+    For feature advertising, a u32 attribute holding the maximum length
+    of the data payload.
 
 :``NL80211_WOWLAN_TCP_DATA_PAYLOAD_SEQ``:
     data packet sequence configuration
@@ -4702,11 +6119,12 @@ Constants
 struct nl80211_coalesce_rule_support
 ====================================
 
-.. c:type:: struct nl80211_coalesce_rule_support
+.. c:type:: nl80211_coalesce_rule_support
 
     coalesce rule support information
 
 
+.. _`nl80211_coalesce_rule_support.definition`:
 
 Definition
 ----------
@@ -4720,6 +6138,7 @@ Definition
   };
 
 
+.. _`nl80211_coalesce_rule_support.members`:
 
 Members
 -------
@@ -4735,6 +6154,9 @@ Members
 
 
 
+
+.. _`nl80211_coalesce_rule_support.description`:
+
 Description
 -----------
 
@@ -4742,16 +6164,35 @@ This struct is carried in ``NL80211_ATTR_COALESCE_RULE`` in the
 capability information given by the kernel to userspace.
 
 
+
 .. _`nl80211_attr_coalesce_rule`:
 
 enum nl80211_attr_coalesce_rule
 ===============================
 
-.. c:type:: enum nl80211_attr_coalesce_rule
+.. c:type:: nl80211_attr_coalesce_rule
 
     coalesce rule attribute
 
 
+.. _`nl80211_attr_coalesce_rule.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_attr_coalesce_rule {
+      __NL80211_COALESCE_RULE_INVALID,
+      NL80211_ATTR_COALESCE_RULE_DELAY,
+      NL80211_ATTR_COALESCE_RULE_CONDITION,
+      NL80211_ATTR_COALESCE_RULE_PKT_PATTERN,
+      NUM_NL80211_ATTR_COALESCE_RULE,
+      NL80211_ATTR_COALESCE_RULE_MAX
+    };
+
+
+.. _`nl80211_attr_coalesce_rule.constants`:
 
 Constants
 ---------
@@ -4782,11 +6223,25 @@ Constants
 enum nl80211_coalesce_condition
 ===============================
 
-.. c:type:: enum nl80211_coalesce_condition
+.. c:type:: nl80211_coalesce_condition
 
     coalesce rule conditions
 
 
+.. _`nl80211_coalesce_condition.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_coalesce_condition {
+      NL80211_COALESCE_CONDITION_MATCH,
+      NL80211_COALESCE_CONDITION_NO_MATCH
+    };
+
+
+.. _`nl80211_coalesce_condition.constants`:
 
 Constants
 ---------
@@ -4805,11 +6260,28 @@ Constants
 enum nl80211_iface_limit_attrs
 ==============================
 
-.. c:type:: enum nl80211_iface_limit_attrs
+.. c:type:: nl80211_iface_limit_attrs
 
     limit attributes
 
 
+.. _`nl80211_iface_limit_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_iface_limit_attrs {
+      NL80211_IFACE_LIMIT_UNSPEC,
+      NL80211_IFACE_LIMIT_MAX,
+      NL80211_IFACE_LIMIT_TYPES,
+      NUM_NL80211_IFACE_LIMIT,
+      MAX_NL80211_IFACE_LIMIT
+    };
+
+
+.. _`nl80211_iface_limit_attrs.constants`:
 
 Constants
 ---------
@@ -4837,11 +6309,32 @@ Constants
 enum nl80211_if_combination_attrs
 =================================
 
-.. c:type:: enum nl80211_if_combination_attrs
+.. c:type:: nl80211_if_combination_attrs
 
     - interface combination attributes
 
 
+.. _`nl80211_if_combination_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_if_combination_attrs {
+      NL80211_IFACE_COMB_UNSPEC,
+      NL80211_IFACE_COMB_LIMITS,
+      NL80211_IFACE_COMB_MAXNUM,
+      NL80211_IFACE_COMB_STA_AP_BI_MATCH,
+      NL80211_IFACE_COMB_NUM_CHANNELS,
+      NL80211_IFACE_COMB_RADAR_DETECT_WIDTHS,
+      NL80211_IFACE_COMB_RADAR_DETECT_REGIONS,
+      NUM_NL80211_IFACE_COMB,
+      MAX_NL80211_IFACE_COMB
+    };
+
+
+.. _`nl80211_if_combination_attrs.constants`:
 
 Constants
 ---------
@@ -4884,22 +6377,24 @@ Constants
     highest attribute number
 
 
-Description
------------
+.. _`nl80211_if_combination_attrs.examples`:
 
-Examples::
+Examples
+--------
 
-        limits = [ #{STA} <= 1, #{AP} <= 1 ], matching BI, channels = 1, max = 2
-        => allows an AP and a STA that must match BIs
+.. code-block:: c
 
-        numbers = [ #{AP, P2P-GO} <= 8 ], channels = 1, max = 8
-        => allows 8 of AP/GO
+	limits = [ #{STA} <= 1, #{AP} <= 1 ], matching BI, channels = 1, max = 2
+	=> allows an AP and a STA that must match BIs
 
-        numbers = [ #{STA} <= 2 ], channels = 2, max = 2
-        => allows two STAs on different channels
+	numbers = [ #{AP, P2P-GO} <= 8 ], channels = 1, max = 8
+	=> allows 8 of AP/GO
 
-        numbers = [ #{STA} <= 1, #{P2P-client,P2P-GO} <= 3 ], max = 4
-        => allows a STA plus three P2P interfaces
+	numbers = [ #{STA} <= 2 ], channels = 2, max = 2
+	=> allows two STAs on different channels
+
+	numbers = [ #{STA} <= 1, #{P2P-client,P2P-GO} <= 3 ], max = 4
+	=> allows a STA plus three P2P interfaces
 
 The list of these four possiblities could completely be contained
 within the ``NL80211_ATTR_INTERFACE_COMBINATIONS`` attribute to indicate
@@ -4908,9 +6403,9 @@ that any of these groups must match.
 "Combinations" of just a single interface will not be listed here,
 a single interface of any valid interface type is assumed to always
 be possible by itself. This means that implicitly, for each valid
-interface type, the following group always exists::
+interface type, the following group always exists:
+	numbers = [ #{<type>} <= 1 ], channels = 1, max = 1
 
-        numbers = [ #{<type>} <= 1 ], channels = 1, max = 1
 
 
 .. _`nl80211_plink_state`:
@@ -4918,11 +6413,32 @@ interface type, the following group always exists::
 enum nl80211_plink_state
 ========================
 
-.. c:type:: enum nl80211_plink_state
+.. c:type:: nl80211_plink_state
 
     state of a mesh peer link finite state machine
 
 
+.. _`nl80211_plink_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_plink_state {
+      NL80211_PLINK_LISTEN,
+      NL80211_PLINK_OPN_SNT,
+      NL80211_PLINK_OPN_RCVD,
+      NL80211_PLINK_CNF_RCVD,
+      NL80211_PLINK_ESTAB,
+      NL80211_PLINK_HOLDING,
+      NL80211_PLINK_BLOCKED,
+      NUM_NL80211_PLINK_STATES,
+      MAX_NL80211_PLINK_STATES
+    };
+
+
+.. _`nl80211_plink_state.constants`:
 
 Constants
 ---------
@@ -4965,11 +6481,27 @@ Constants
 enum plink_actions
 ==================
 
-.. c:type:: enum plink_actions
+.. c:type:: plink_actions
 
     actions to perform in mesh peers
 
 
+.. _`plink_actions.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum plink_actions {
+      NL80211_PLINK_ACTION_NO_ACTION,
+      NL80211_PLINK_ACTION_OPEN,
+      NL80211_PLINK_ACTION_BLOCK,
+      NUM_NL80211_PLINK_ACTIONS
+    };
+
+
+.. _`plink_actions.constants`:
 
 Constants
 ---------
@@ -4992,11 +6524,29 @@ Constants
 enum nl80211_rekey_data
 =======================
 
-.. c:type:: enum nl80211_rekey_data
+.. c:type:: nl80211_rekey_data
 
     attributes for GTK rekey offload
 
 
+.. _`nl80211_rekey_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_rekey_data {
+      __NL80211_REKEY_DATA_INVALID,
+      NL80211_REKEY_DATA_KEK,
+      NL80211_REKEY_DATA_KCK,
+      NL80211_REKEY_DATA_REPLAY_CTR,
+      NUM_NL80211_REKEY_DATA,
+      MAX_NL80211_REKEY_DATA
+    };
+
+
+.. _`nl80211_rekey_data.constants`:
 
 Constants
 ---------
@@ -5025,11 +6575,26 @@ Constants
 enum nl80211_hidden_ssid
 ========================
 
-.. c:type:: enum nl80211_hidden_ssid
+.. c:type:: nl80211_hidden_ssid
 
     values for %NL80211_ATTR_HIDDEN_SSID
 
 
+.. _`nl80211_hidden_ssid.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_hidden_ssid {
+      NL80211_HIDDEN_SSID_NOT_IN_USE,
+      NL80211_HIDDEN_SSID_ZERO_LEN,
+      NL80211_HIDDEN_SSID_ZERO_CONTENTS
+    };
+
+
+.. _`nl80211_hidden_ssid.constants`:
 
 Constants
 ---------
@@ -5052,11 +6617,28 @@ Constants
 enum nl80211_sta_wme_attr
 =========================
 
-.. c:type:: enum nl80211_sta_wme_attr
+.. c:type:: nl80211_sta_wme_attr
 
     station WME attributes
 
 
+.. _`nl80211_sta_wme_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sta_wme_attr {
+      __NL80211_STA_WME_INVALID,
+      NL80211_STA_WME_UAPSD_QUEUES,
+      NL80211_STA_WME_MAX_SP,
+      __NL80211_STA_WME_AFTER_LAST,
+      NL80211_STA_WME_MAX
+    };
+
+
+.. _`nl80211_sta_wme_attr.constants`:
 
 Constants
 ---------
@@ -5084,11 +6666,29 @@ Constants
 enum nl80211_pmksa_candidate_attr
 =================================
 
-.. c:type:: enum nl80211_pmksa_candidate_attr
+.. c:type:: nl80211_pmksa_candidate_attr
 
     attributes for PMKSA caching candidates
 
 
+.. _`nl80211_pmksa_candidate_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_pmksa_candidate_attr {
+      __NL80211_PMKSA_CANDIDATE_INVALID,
+      NL80211_PMKSA_CANDIDATE_INDEX,
+      NL80211_PMKSA_CANDIDATE_BSSID,
+      NL80211_PMKSA_CANDIDATE_PREAUTH,
+      NUM_NL80211_PMKSA_CANDIDATE,
+      MAX_NL80211_PMKSA_CANDIDATE
+    };
+
+
+.. _`nl80211_pmksa_candidate_attr.constants`:
 
 Constants
 ---------
@@ -5120,11 +6720,28 @@ Constants
 enum nl80211_tdls_operation
 ===========================
 
-.. c:type:: enum nl80211_tdls_operation
+.. c:type:: nl80211_tdls_operation
 
     values for %NL80211_ATTR_TDLS_OPERATION
 
 
+.. _`nl80211_tdls_operation.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_tdls_operation {
+      NL80211_TDLS_DISCOVERY_REQ,
+      NL80211_TDLS_SETUP,
+      NL80211_TDLS_TEARDOWN,
+      NL80211_TDLS_ENABLE_LINK,
+      NL80211_TDLS_DISABLE_LINK
+    };
+
+
+.. _`nl80211_tdls_operation.constants`:
 
 Constants
 ---------
@@ -5150,11 +6767,54 @@ Constants
 enum nl80211_feature_flags
 ==========================
 
-.. c:type:: enum nl80211_feature_flags
+.. c:type:: nl80211_feature_flags
 
     device/driver features
 
 
+.. _`nl80211_feature_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_feature_flags {
+      NL80211_FEATURE_SK_TX_STATUS,
+      NL80211_FEATURE_HT_IBSS,
+      NL80211_FEATURE_INACTIVITY_TIMER,
+      NL80211_FEATURE_CELL_BASE_REG_HINTS,
+      NL80211_FEATURE_P2P_DEVICE_NEEDS_CHANNEL,
+      NL80211_FEATURE_SAE,
+      NL80211_FEATURE_LOW_PRIORITY_SCAN,
+      NL80211_FEATURE_SCAN_FLUSH,
+      NL80211_FEATURE_AP_SCAN,
+      NL80211_FEATURE_VIF_TXPOWER,
+      NL80211_FEATURE_NEED_OBSS_SCAN,
+      NL80211_FEATURE_P2P_GO_CTWIN,
+      NL80211_FEATURE_P2P_GO_OPPPS,
+      NL80211_FEATURE_ADVERTISE_CHAN_LIMITS,
+      NL80211_FEATURE_FULL_AP_CLIENT_STATE,
+      NL80211_FEATURE_USERSPACE_MPM,
+      NL80211_FEATURE_ACTIVE_MONITOR,
+      NL80211_FEATURE_AP_MODE_CHAN_WIDTH_CHANGE,
+      NL80211_FEATURE_DS_PARAM_SET_IE_IN_PROBES,
+      NL80211_FEATURE_WFA_TPC_IE_IN_PROBES,
+      NL80211_FEATURE_QUIET,
+      NL80211_FEATURE_TX_POWER_INSERTION,
+      NL80211_FEATURE_ACKTO_ESTIMATION,
+      NL80211_FEATURE_STATIC_SMPS,
+      NL80211_FEATURE_DYNAMIC_SMPS,
+      NL80211_FEATURE_SUPPORTS_WMM_ADMISSION,
+      NL80211_FEATURE_MAC_ON_CREATE,
+      NL80211_FEATURE_TDLS_CHANNEL_SWITCH,
+      NL80211_FEATURE_SCAN_RANDOM_MAC_ADDR,
+      NL80211_FEATURE_SCHED_SCAN_RANDOM_MAC_ADDR,
+      NL80211_FEATURE_ND_RANDOM_MAC_ADDR
+    };
+
+
+.. _`nl80211_feature_flags.constants`:
 
 Constants
 ---------
@@ -5317,11 +6977,27 @@ Constants
 enum nl80211_ext_feature_index
 ==============================
 
-.. c:type:: enum nl80211_ext_feature_index
+.. c:type:: nl80211_ext_feature_index
 
     bit index of extended features.
 
 
+.. _`nl80211_ext_feature_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_ext_feature_index {
+      NL80211_EXT_FEATURE_VHT_IBSS,
+      NL80211_EXT_FEATURE_RRM,
+      NUM_NL80211_EXT_FEATURES,
+      MAX_NL80211_EXT_FEATURES
+    };
+
+
+.. _`nl80211_ext_feature_index.constants`:
 
 Constants
 ---------
@@ -5348,11 +7024,27 @@ Constants
 enum nl80211_probe_resp_offload_support_attr
 ============================================
 
-.. c:type:: enum nl80211_probe_resp_offload_support_attr
+.. c:type:: nl80211_probe_resp_offload_support_attr
 
     optional supported protocols for probe-response offloading by the driver/FW. To be used with the %NL80211_ATTR_PROBE_RESP_OFFLOAD attribute. Each enum value represents a bit in the bitmap of supported protocols. Typically a subset of probe-requests belonging to a supported protocol will be excluded from offload and uploaded to the host.
 
 
+.. _`nl80211_probe_resp_offload_support_attr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_probe_resp_offload_support_attr {
+      NL80211_PROBE_RESP_OFFLOAD_SUPPORT_WPS,
+      NL80211_PROBE_RESP_OFFLOAD_SUPPORT_WPS2,
+      NL80211_PROBE_RESP_OFFLOAD_SUPPORT_P2P,
+      NL80211_PROBE_RESP_OFFLOAD_SUPPORT_80211U
+    };
+
+
+.. _`nl80211_probe_resp_offload_support_attr.constants`:
 
 Constants
 ---------
@@ -5375,11 +7067,25 @@ Constants
 enum nl80211_connect_failed_reason
 ==================================
 
-.. c:type:: enum nl80211_connect_failed_reason
+.. c:type:: nl80211_connect_failed_reason
 
     connection request failed reasons
 
 
+.. _`nl80211_connect_failed_reason.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_connect_failed_reason {
+      NL80211_CONN_FAIL_MAX_CLIENTS,
+      NL80211_CONN_FAIL_BLOCKED_CLIENT
+    };
+
+
+.. _`nl80211_connect_failed_reason.constants`:
 
 Constants
 ---------
@@ -5397,11 +7103,27 @@ Constants
 enum nl80211_scan_flags
 =======================
 
-.. c:type:: enum nl80211_scan_flags
+.. c:type:: nl80211_scan_flags
 
     scan request control flags
 
 
+.. _`nl80211_scan_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_scan_flags {
+      NL80211_SCAN_FLAG_LOW_PRIORITY,
+      NL80211_SCAN_FLAG_FLUSH,
+      NL80211_SCAN_FLAG_AP,
+      NL80211_SCAN_FLAG_RANDOM_ADDR
+    };
+
+
+.. _`nl80211_scan_flags.constants`:
 
 Constants
 ---------
@@ -5421,15 +7143,9 @@ Constants
 
 :``NL80211_SCAN_FLAG_RANDOM_ADDR``:
     use a random MAC address for this scan (or
-    for scheduled scan: a different one for every scan iteration). When the
-    flag is set, depending on device capabilities the ``NL80211_ATTR_MAC`` and
-    ``NL80211_ATTR_MAC_MASK`` attributes may also be given in which case only
-    the masked bits will be preserved from the MAC address and the remainder
-    randomised. If the attributes are not given full randomisation (46 bits,
-    locally administered 1, multicast 0) is assumed.
-    This flag must not be requested when the feature isn't supported, check
-    the nl80211 feature flags for the device.
 
+
+.. _`nl80211_scan_flags.description`:
 
 Description
 -----------
@@ -5440,16 +7156,47 @@ of NL80211_CMD_TRIGGER_SCAN and NL80211_CMD_START_SCHED_SCAN
 requests.
 
 
+
+.. _`nl80211_scan_flags.for-scheduled-scan`:
+
+for scheduled scan
+------------------
+
+a different one for every scan iteration). When the
+flag is set, depending on device capabilities the ``NL80211_ATTR_MAC`` and
+``NL80211_ATTR_MAC_MASK`` attributes may also be given in which case only
+the masked bits will be preserved from the MAC address and the remainder
+randomised. If the attributes are not given full randomisation (46 bits,
+locally administered 1, multicast 0) is assumed.
+This flag must not be requested when the feature isn't supported, check
+the nl80211 feature flags for the device.
+
+
+
 .. _`nl80211_acl_policy`:
 
 enum nl80211_acl_policy
 =======================
 
-.. c:type:: enum nl80211_acl_policy
+.. c:type:: nl80211_acl_policy
 
     access control policy
 
 
+.. _`nl80211_acl_policy.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_acl_policy {
+      NL80211_ACL_POLICY_ACCEPT_UNLESS_LISTED,
+      NL80211_ACL_POLICY_DENY_UNLESS_LISTED
+    };
+
+
+.. _`nl80211_acl_policy.constants`:
 
 Constants
 ---------
@@ -5464,6 +7211,8 @@ Constants
     in ACL, i.e. deny all the stations which are not listed in ACL.
 
 
+.. _`nl80211_acl_policy.description`:
+
 Description
 -----------
 
@@ -5473,16 +7222,34 @@ Access control policy is applied on a MAC list set by
 be used with ``NL80211_ATTR_ACL_POLICY``\ .
 
 
+
 .. _`nl80211_smps_mode`:
 
 enum nl80211_smps_mode
 ======================
 
-.. c:type:: enum nl80211_smps_mode
+.. c:type:: nl80211_smps_mode
 
     SMPS mode
 
 
+.. _`nl80211_smps_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_smps_mode {
+      NL80211_SMPS_OFF,
+      NL80211_SMPS_STATIC,
+      NL80211_SMPS_DYNAMIC,
+      __NL80211_SMPS_AFTER_LAST,
+      NL80211_SMPS_MAX
+    };
+
+
+.. _`nl80211_smps_mode.constants`:
 
 Constants
 ---------
@@ -5498,11 +7265,13 @@ Constants
     turn on other antennas after CTS/RTS).
 
 :``__NL80211_SMPS_AFTER_LAST``:
-    -- undescribed --
+-- undescribed --
 
 :``NL80211_SMPS_MAX``:
-    -- undescribed --
+-- undescribed --
 
+
+.. _`nl80211_smps_mode.description`:
 
 Description
 -----------
@@ -5511,16 +7280,33 @@ Description
 Requested SMPS mode (for AP mode)
 
 
+
 .. _`nl80211_radar_event`:
 
 enum nl80211_radar_event
 ========================
 
-.. c:type:: enum nl80211_radar_event
+.. c:type:: nl80211_radar_event
 
     type of radar event for DFS operation
 
 
+.. _`nl80211_radar_event.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_radar_event {
+      NL80211_RADAR_DETECTED,
+      NL80211_RADAR_CAC_FINISHED,
+      NL80211_RADAR_CAC_ABORTED,
+      NL80211_RADAR_NOP_FINISHED
+    };
+
+
+.. _`nl80211_radar_event.constants`:
 
 Constants
 ---------
@@ -5542,6 +7328,8 @@ Constants
     over, channel becomes usable.
 
 
+.. _`nl80211_radar_event.description`:
+
 Description
 -----------
 
@@ -5550,16 +7338,32 @@ Type of event to be used with NL80211_ATTR_RADAR_EVENT to inform userspace
 about detected radars or success of the channel available check (CAC)
 
 
+
 .. _`nl80211_dfs_state`:
 
 enum nl80211_dfs_state
 ======================
 
-.. c:type:: enum nl80211_dfs_state
+.. c:type:: nl80211_dfs_state
 
     DFS states for channels
 
 
+.. _`nl80211_dfs_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_dfs_state {
+      NL80211_DFS_USABLE,
+      NL80211_DFS_UNAVAILABLE,
+      NL80211_DFS_AVAILABLE
+    };
+
+
+.. _`nl80211_dfs_state.constants`:
 
 Constants
 ---------
@@ -5576,6 +7380,8 @@ Constants
     The channel has been CAC checked and is available.
 
 
+.. _`nl80211_dfs_state.description`:
+
 Description
 -----------
 
@@ -5583,16 +7389,30 @@ Description
 Channel states used by the DFS code.
 
 
+
 .. _`nl80211_protocol_features`:
 
 enum nl80211_protocol_features
 ==============================
 
-.. c:type:: enum nl80211_protocol_features
+.. c:type:: nl80211_protocol_features
 
     nl80211 protocol features
 
 
+.. _`nl80211_protocol_features.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_protocol_features {
+      NL80211_PROTOCOL_FEATURE_SPLIT_WIPHY_DUMP
+    };
+
+
+.. _`nl80211_protocol_features.constants`:
 
 Constants
 ---------
@@ -5610,11 +7430,28 @@ Constants
 enum nl80211_crit_proto_id
 ==========================
 
-.. c:type:: enum nl80211_crit_proto_id
+.. c:type:: nl80211_crit_proto_id
 
     nl80211 critical protocol identifiers
 
 
+.. _`nl80211_crit_proto_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_crit_proto_id {
+      NL80211_CRIT_PROTO_UNSPEC,
+      NL80211_CRIT_PROTO_DHCP,
+      NL80211_CRIT_PROTO_EAPOL,
+      NL80211_CRIT_PROTO_APIPA,
+      NUM_NL80211_CRIT_PROTO
+    };
+
+
+.. _`nl80211_crit_proto_id.constants`:
 
 Constants
 ---------
@@ -5640,11 +7477,24 @@ Constants
 enum nl80211_rxmgmt_flags
 =========================
 
-.. c:type:: enum nl80211_rxmgmt_flags
+.. c:type:: nl80211_rxmgmt_flags
 
     flags for received management frame.
 
 
+.. _`nl80211_rxmgmt_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_rxmgmt_flags {
+      NL80211_RXMGMT_FLAG_ANSWERED
+    };
+
+
+.. _`nl80211_rxmgmt_flags.constants`:
 
 Constants
 ---------
@@ -5653,6 +7503,8 @@ Constants
     frame was answered by device/driver.
 
 
+.. _`nl80211_rxmgmt_flags.description`:
+
 Description
 -----------
 
@@ -5660,16 +7512,18 @@ Description
 Used by :c:func:`cfg80211_rx_mgmt`
 
 
+
 .. _`nl80211_vendor_cmd_info`:
 
 struct nl80211_vendor_cmd_info
 ==============================
 
-.. c:type:: struct nl80211_vendor_cmd_info
+.. c:type:: nl80211_vendor_cmd_info
 
     vendor command data
 
 
+.. _`nl80211_vendor_cmd_info.definition`:
 
 Definition
 ----------
@@ -5682,6 +7536,7 @@ Definition
   };
 
 
+.. _`nl80211_vendor_cmd_info.members`:
 
 Members
 -------
@@ -5697,16 +7552,32 @@ Members
 
 
 
+
 .. _`nl80211_tdls_peer_capability`:
 
 enum nl80211_tdls_peer_capability
 =================================
 
-.. c:type:: enum nl80211_tdls_peer_capability
+.. c:type:: nl80211_tdls_peer_capability
 
     TDLS peer flags.
 
 
+.. _`nl80211_tdls_peer_capability.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_tdls_peer_capability {
+      NL80211_TDLS_PEER_HT,
+      NL80211_TDLS_PEER_VHT,
+      NL80211_TDLS_PEER_WMM
+    };
+
+
+.. _`nl80211_tdls_peer_capability.constants`:
 
 Constants
 ---------
@@ -5721,6 +7592,8 @@ Constants
     TDLS peer is WMM capable.
 
 
+.. _`nl80211_tdls_peer_capability.description`:
+
 Description
 -----------
 
@@ -5729,16 +7602,34 @@ Used by :c:func:`tdls_mgmt` to determine which conditional elements need
 to be added to TDLS Setup frames.
 
 
+
 .. _`nl80211_sched_scan_plan`:
 
 enum nl80211_sched_scan_plan
 ============================
 
-.. c:type:: enum nl80211_sched_scan_plan
+.. c:type:: nl80211_sched_scan_plan
 
     scanning plan for scheduled scan
 
 
+.. _`nl80211_sched_scan_plan.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nl80211_sched_scan_plan {
+      __NL80211_SCHED_SCAN_PLAN_INVALID,
+      NL80211_SCHED_SCAN_PLAN_INTERVAL,
+      NL80211_SCHED_SCAN_PLAN_ITERATIONS,
+      __NL80211_SCHED_SCAN_PLAN_AFTER_LAST,
+      NL80211_SCHED_SCAN_PLAN_MAX
+    };
+
+
+.. _`nl80211_sched_scan_plan.constants`:
 
 Constants
 ---------
@@ -5762,4 +7653,3 @@ Constants
 :``NL80211_SCHED_SCAN_PLAN_MAX``:
     highest scheduled scan plan attribute number
     currently defined
-

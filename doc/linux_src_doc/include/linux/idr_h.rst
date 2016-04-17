@@ -4,6 +4,7 @@
 idr.h
 =====
 
+
 .. _`idr-sync`:
 
 idr sync
@@ -23,6 +24,7 @@ having been deleted from the idr tree \*and\* a :c:func:`synchronize_rcu` grace
 period).
 
 
+
 .. _`idr_preload_end`:
 
 idr_preload_end
@@ -36,6 +38,7 @@ idr_preload_end
         no arguments
 
 
+
 .. _`idr_preload_end.idr-sync`:
 
 idr sync
@@ -44,6 +47,7 @@ idr sync
 
 Each :c:func:`idr_preload` should be matched with an invocation of this
 function.  See :c:func:`idr_preload` for details.
+
 
 
 .. _`idr_find`:
@@ -62,6 +66,7 @@ idr_find
         lookup key
 
 
+
 .. _`idr_find.description`:
 
 Description
@@ -73,6 +78,7 @@ return indicates that ``id`` is not valid or you passed ``NULL`` in
 
 This function can be called under :c:func:`rcu_read_lock`, given that the leaf
 pointers lifetimes are correctly managed.
+
 
 
 .. _`idr_for_each_entry`:
@@ -94,6 +100,7 @@ idr_for_each_entry
         id entry's key
 
 
+
 .. _`idr_for_each_entry.description`:
 
 Description
@@ -102,6 +109,7 @@ Description
 ``entry`` and ``id`` do not need to be initialized before the loop, and
 after normal terminatinon ``entry`` is left with the value NULL.  This
 is convenient for a "not found" value.
+
 
 
 .. _`idr_for_each_entry_continue`:
@@ -123,6 +131,7 @@ idr_for_each_entry_continue
         id entry's key
 
 
+
 .. _`idr_for_each_entry_continue.description`:
 
 Description
@@ -130,6 +139,7 @@ Description
 
 Continue to iterate over list of given type, continuing after
 the current position.
+
 
 
 .. _`ida_get_new`:
@@ -146,6 +156,7 @@ ida_get_new
 
     :param int \*p_id:
         pointer to the allocated handle
+
 
 
 .. _`ida_get_new.description`:

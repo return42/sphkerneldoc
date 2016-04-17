@@ -1,0 +1,75 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=========
+bu21013.h
+=========
+
+
+.. _`bu21013_platform_device`:
+
+struct bu21013_platform_device
+==============================
+
+.. c:type:: bu21013_platform_device
+
+    Handle the platform data
+
+
+.. _`bu21013_platform_device.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct bu21013_platform_device {
+    int touch_x_max;
+    int touch_y_max;
+    unsigned int cs_pin;
+    unsigned int touch_pin;
+    bool ext_clk;
+    bool x_flip;
+    bool y_flip;
+    bool wakeup;
+  };
+
+
+.. _`bu21013_platform_device.members`:
+
+Members
+-------
+
+:``touch_x_max``:
+    touch x max
+
+:``touch_y_max``:
+    touch y max
+
+:``cs_pin``:
+    chip select pin
+
+:``touch_pin``:
+    touch gpio pin
+
+:``ext_clk``:
+    external clock flag
+
+:``x_flip``:
+    x flip flag
+
+:``y_flip``:
+    y flip flag
+
+:``wakeup``:
+    wakeup flag
+
+
+
+
+.. _`bu21013_platform_device.description`:
+
+Description
+-----------
+
+This is used to handle the platform data
+

@@ -4,6 +4,7 @@
 scsi_proc.c
 ===========
 
+
 .. _`scsi_proc_hostdir_add`:
 
 scsi_proc_hostdir_add
@@ -17,12 +18,14 @@ scsi_proc_hostdir_add
         owner of this directory
 
 
+
 .. _`scsi_proc_hostdir_add.description`:
 
 Description
 -----------
 
 Sets sht->proc_dir to the new directory.
+
 
 
 .. _`scsi_proc_hostdir_rm`:
@@ -38,6 +41,7 @@ scsi_proc_hostdir_rm
         owner of directory
 
 
+
 .. _`scsi_proc_host_add`:
 
 scsi_proc_host_add
@@ -51,6 +55,7 @@ scsi_proc_host_add
         host to add
 
 
+
 .. _`scsi_proc_host_rm`:
 
 scsi_proc_host_rm
@@ -62,6 +67,7 @@ scsi_proc_host_rm
 
     :param struct Scsi_Host \*shost:
         which host
+
 
 
 .. _`proc_print_scsidevice`:
@@ -80,13 +86,15 @@ proc_print_scsidevice
         :c:type:`struct seq_file <seq_file>` to output to.
 
 
+
 .. _`proc_print_scsidevice.description`:
 
 Description
 -----------
 
-Description: prints Host, Channel, Id, Lun, Vendor, Model, Rev, Type,
+prints Host, Channel, Id, Lun, Vendor, Model, Rev, Type,
 and revision.
+
 
 
 .. _`scsi_add_single_device`:
@@ -111,17 +119,26 @@ scsi_add_single_device
         user-supplied decimal integer
 
 
+
 .. _`scsi_add_single_device.description`:
 
 Description
 -----------
 
-Description: called by writing "scsi add-single-device" to /proc/scsi/scsi.
+called by writing "scsi add-single-device" to /proc/scsi/scsi.
 
 does :c:func:`scsi_host_lookup` and either :c:func:`user_scan` if that transport
 type supports it, or else :c:func:`scsi_scan_host_selected`
 
-Note: this seems to be aimed exclusively at SCSI parallel busses.
+
+
+.. _`scsi_add_single_device.note`:
+
+Note
+----
+
+this seems to be aimed exclusively at SCSI parallel busses.
+
 
 
 .. _`scsi_remove_single_device`:
@@ -146,13 +163,15 @@ scsi_remove_single_device
         user-supplied decimal integer
 
 
+
 .. _`scsi_remove_single_device.description`:
 
 Description
 -----------
 
-Description: called by writing "scsi remove-single-device" to
+called by writing "scsi remove-single-device" to
 /proc/scsi/scsi.  Does a :c:func:`scsi_device_lookup` and :c:func:`scsi_remove_device`
+
 
 
 .. _`proc_scsi_write`:
@@ -177,20 +196,29 @@ proc_scsi_write
         not used
 
 
+
 .. _`proc_scsi_write.description`:
 
 Description
 -----------
 
-Description: this provides a legacy mechanism to add or remove devices by
+this provides a legacy mechanism to add or remove devices by
 Host, Channel, ID, and Lun.  To use,
 "echo 'scsi add-single-device 0 1 2 3' > /proc/scsi/scsi" or
 "echo 'scsi remove-single-device 0 1 2 3' > /proc/scsi/scsi" with
 "0 1 2 3" replaced by the Host, Channel, Id, and Lun.
 
-Note: this seems to be aimed at parallel SCSI. Most modern busses (USB,
+
+
+.. _`proc_scsi_write.note`:
+
+Note
+----
+
+this seems to be aimed at parallel SCSI. Most modern busses (USB,
 SATA, Firewire, Fibre Channel, etc) dynamically assign these values to
 provide a unique identifier and nothing more.
+
 
 
 .. _`proc_scsi_open`:
@@ -209,12 +237,14 @@ proc_scsi_open
         passed to :c:func:`single_open`
 
 
+
 .. _`proc_scsi_open.description`:
 
 Description
 -----------
 
 Associates proc_scsi_show with this file
+
 
 
 .. _`scsi_init_procfs`:
@@ -228,6 +258,7 @@ scsi_init_procfs
 
     :param void:
         no arguments
+
 
 
 .. _`scsi_exit_procfs`:

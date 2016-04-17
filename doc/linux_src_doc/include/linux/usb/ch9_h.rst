@@ -4,6 +4,7 @@
 ch9.h
 =====
 
+
 .. _`usb_speed_string`:
 
 usb_speed_string
@@ -19,6 +20,7 @@ usb_speed_string
         USB_SPEED_UNKNOWN will be returned.
 
 
+
 .. _`usb_get_maximum_speed`:
 
 usb_get_maximum_speed
@@ -32,6 +34,7 @@ usb_get_maximum_speed
         Pointer to the given USB controller device
 
 
+
 .. _`usb_get_maximum_speed.description`:
 
 Description
@@ -39,6 +42,7 @@ Description
 
 The function gets the maximum speed string from property "maximum-speed",
 and returns the corresponding enum usb_device_speed.
+
 
 
 .. _`usb_state_string`:

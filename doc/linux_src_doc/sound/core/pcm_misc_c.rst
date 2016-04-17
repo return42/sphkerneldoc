@@ -4,6 +4,7 @@
 pcm_misc.c
 ==========
 
+
 .. _`snd_pcm_format_signed`:
 
 snd_pcm_format_signed
@@ -17,13 +18,15 @@ snd_pcm_format_signed
         the format to check
 
 
-.. _`snd_pcm_format_signed.description`:
 
-Description
------------
+.. _`snd_pcm_format_signed.return`:
 
-Return: 1 if the given PCM format is signed linear, 0 if unsigned
+Return
+------
+
+1 if the given PCM format is signed linear, 0 if unsigned
 linear, and a negative error code for non-linear formats.
+
 
 
 .. _`snd_pcm_format_unsigned`:
@@ -39,13 +42,15 @@ snd_pcm_format_unsigned
         the format to check
 
 
-.. _`snd_pcm_format_unsigned.description`:
 
-Description
------------
+.. _`snd_pcm_format_unsigned.return`:
 
-Return: 1 if the given PCM format is unsigned linear, 0 if signed
+Return
+------
+
+1 if the given PCM format is unsigned linear, 0 if signed
 linear, and a negative error code for non-linear formats.
+
 
 
 .. _`snd_pcm_format_linear`:
@@ -61,12 +66,14 @@ snd_pcm_format_linear
         the format to check
 
 
-.. _`snd_pcm_format_linear.description`:
 
-Description
------------
+.. _`snd_pcm_format_linear.return`:
 
-Return: 1 if the given PCM format is linear, 0 if not.
+Return
+------
+
+1 if the given PCM format is linear, 0 if not.
+
 
 
 .. _`snd_pcm_format_little_endian`:
@@ -82,13 +89,15 @@ snd_pcm_format_little_endian
         the format to check
 
 
-.. _`snd_pcm_format_little_endian.description`:
 
-Description
------------
+.. _`snd_pcm_format_little_endian.return`:
 
-Return: 1 if the given PCM format is little-endian, 0 if
+Return
+------
+
+1 if the given PCM format is little-endian, 0 if
 big-endian, or a negative error code if endian not specified.
+
 
 
 .. _`snd_pcm_format_big_endian`:
@@ -104,13 +113,15 @@ snd_pcm_format_big_endian
         the format to check
 
 
-.. _`snd_pcm_format_big_endian.description`:
 
-Description
------------
+.. _`snd_pcm_format_big_endian.return`:
 
-Return: 1 if the given PCM format is big-endian, 0 if
+Return
+------
+
+1 if the given PCM format is big-endian, 0 if
 little-endian, or a negative error code if endian not specified.
+
 
 
 .. _`snd_pcm_format_width`:
@@ -126,13 +137,15 @@ snd_pcm_format_width
         the format to check
 
 
-.. _`snd_pcm_format_width.description`:
 
-Description
------------
+.. _`snd_pcm_format_width.return`:
 
-Return: The bit-width of the format, or a negative error code
+Return
+------
+
+The bit-width of the format, or a negative error code
 if unknown format.
+
 
 
 .. _`snd_pcm_format_physical_width`:
@@ -148,13 +161,15 @@ snd_pcm_format_physical_width
         the format to check
 
 
-.. _`snd_pcm_format_physical_width.description`:
 
-Description
------------
+.. _`snd_pcm_format_physical_width.return`:
 
-Return: The physical bit-width of the format, or a negative error code
+Return
+------
+
+The physical bit-width of the format, or a negative error code
 if unknown format.
+
 
 
 .. _`snd_pcm_format_size`:
@@ -173,13 +188,15 @@ snd_pcm_format_size
         sampling rate
 
 
-.. _`snd_pcm_format_size.description`:
 
-Description
------------
+.. _`snd_pcm_format_size.return`:
 
-Return: The byte size of the given samples for the format, or a
+Return
+------
+
+The byte size of the given samples for the format, or a
 negative error code if unknown format.
+
 
 
 .. _`snd_pcm_format_silence_64`:
@@ -195,12 +212,14 @@ snd_pcm_format_silence_64
         the format to check
 
 
-.. _`snd_pcm_format_silence_64.description`:
 
-Description
------------
+.. _`snd_pcm_format_silence_64.return`:
 
-Return: The format pattern to fill or ``NULL`` if error.
+Return
+------
+
+The format pattern to fill or ``NULL`` if error.
+
 
 
 .. _`snd_pcm_format_set_silence`:
@@ -222,6 +241,7 @@ snd_pcm_format_set_silence
         the number of samples to set silence
 
 
+
 .. _`snd_pcm_format_set_silence.description`:
 
 Description
@@ -229,7 +249,15 @@ Description
 
 Sets the silence data on the buffer for the given samples.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_pcm_format_set_silence.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_pcm_limit_hw_rates`:
@@ -245,6 +273,7 @@ snd_pcm_limit_hw_rates
         the runtime instance
 
 
+
 .. _`snd_pcm_limit_hw_rates.description`:
 
 Description
@@ -253,7 +282,15 @@ Description
 Determines the rate_min and rate_max fields from the rates bits of
 the given runtime->hw.
 
-Return: Zero if successful.
+
+
+.. _`snd_pcm_limit_hw_rates.return`:
+
+Return
+------
+
+Zero if successful.
+
 
 
 .. _`snd_pcm_rate_to_rate_bit`:
@@ -269,13 +306,15 @@ snd_pcm_rate_to_rate_bit
         the sample rate to convert
 
 
-.. _`snd_pcm_rate_to_rate_bit.description`:
 
-Description
------------
+.. _`snd_pcm_rate_to_rate_bit.return`:
 
-Return: The SNDRV_PCM_RATE_xxx flag that corresponds to the given rate, or
+Return
+------
+
+The SNDRV_PCM_RATE_xxx flag that corresponds to the given rate, or
 SNDRV_PCM_RATE_KNOT for an unknown rate.
+
 
 
 .. _`snd_pcm_rate_bit_to_rate`:
@@ -291,13 +330,15 @@ snd_pcm_rate_bit_to_rate
         the rate bit to convert
 
 
-.. _`snd_pcm_rate_bit_to_rate.description`:
 
-Description
------------
+.. _`snd_pcm_rate_bit_to_rate.return`:
 
-Return: The sample rate that corresponds to the given SNDRV_PCM_RATE_xxx flag
+Return
+------
+
+The sample rate that corresponds to the given SNDRV_PCM_RATE_xxx flag
 or 0 for an unknown rate bit.
+
 
 
 .. _`snd_pcm_rate_mask_intersect`:
@@ -316,6 +357,7 @@ snd_pcm_rate_mask_intersect
         The second rate mask
 
 
+
 .. _`snd_pcm_rate_mask_intersect.description`:
 
 Description
@@ -325,8 +367,16 @@ This function computes the rates that are supported by both rate masks passed
 to the function. It will take care of the special handling of
 SNDRV_PCM_RATE_CONTINUOUS and SNDRV_PCM_RATE_KNOT.
 
-Return: A rate mask containing the rates that are supported by both rates_a
+
+
+.. _`snd_pcm_rate_mask_intersect.return`:
+
+Return
+------
+
+A rate mask containing the rates that are supported by both rates_a
 and rates_b.
+
 
 
 .. _`snd_pcm_rate_range_to_bits`:
@@ -345,14 +395,22 @@ snd_pcm_rate_range_to_bits
         the maximum sample rate
 
 
-.. _`snd_pcm_rate_range_to_bits.description`:
 
-Description
------------
+.. _`snd_pcm_rate_range_to_bits.this-function-has-an-implicit-assumption`:
 
-This function has an implicit assumption: the rates in the given range have
+This function has an implicit assumption
+----------------------------------------
+
+the rates in the given range have
 only the pre-defined rates like 44100 or 16000.
 
-Return: The SNDRV_PCM_RATE_xxx flag that corresponds to the given rate range,
+
+
+.. _`snd_pcm_rate_range_to_bits.return`:
+
+Return
+------
+
+The SNDRV_PCM_RATE_xxx flag that corresponds to the given rate range,
 or SNDRV_PCM_RATE_KNOT for an unknown range.
 

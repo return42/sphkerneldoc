@@ -7,8 +7,9 @@ irq
 .. toctree::
    :maxdepth: 1
 
-   chip_c
-   generic-chip_c
-   handle_c
-   irqdesc_c
-   manage_c
+   autoprobe_c
+   devres_c
+   ipi_c
+   irqdomain_c
+   msi_c
+   pm_c

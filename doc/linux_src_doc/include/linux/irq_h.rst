@@ -4,16 +4,18 @@
 irq.h
 =====
 
+
 .. _`irq_common_data`:
 
 struct irq_common_data
 ======================
 
-.. c:type:: struct irq_common_data
+.. c:type:: irq_common_data
 
     per irq data shared by all irqchips
 
 
+.. _`irq_common_data.definition`:
 
 Definition
 ----------
@@ -34,14 +36,14 @@ Definition
   };
 
 
+.. _`irq_common_data.members`:
 
 Members
 -------
 
 :``state_use_accessors``:
-    status information for irq chip functions.::
-
-                            Use accessor functions to deal with it
+    status information for irq chip functions.
+    Use accessor functions to deal with it
 
 :``node``:
     node index useful for balancing
@@ -62,16 +64,18 @@ Members
 
 
 
+
 .. _`irq_data`:
 
 struct irq_data
 ===============
 
-.. c:type:: struct irq_data
+.. c:type:: irq_data
 
     per irq chip data passed down to chip functions
 
 
+.. _`irq_data.definition`:
 
 Definition
 ----------
@@ -92,6 +96,7 @@ Definition
   };
 
 
+.. _`irq_data.members`:
 
 Members
 -------
@@ -125,16 +130,18 @@ Members
 
 
 
+
 .. _`irq_chip`:
 
 struct irq_chip
 ===============
 
-.. c:type:: struct irq_chip
+.. c:type:: irq_chip
 
     hardware interrupt chip descriptor
 
 
+.. _`irq_chip.definition`:
 
 Definition
 ----------
@@ -178,6 +185,7 @@ Definition
   };
 
 
+.. _`irq_chip.members`:
 
 Members
 -------
@@ -287,16 +295,18 @@ Members
 
 
 
+
 .. _`irq_chip_regs`:
 
 struct irq_chip_regs
 ====================
 
-.. c:type:: struct irq_chip_regs
+.. c:type:: irq_chip_regs
 
     register offsets for struct irq_gci
 
 
+.. _`irq_chip_regs.definition`:
 
 Definition
 ----------
@@ -314,6 +324,7 @@ Definition
   };
 
 
+.. _`irq_chip_regs.members`:
 
 Members
 -------
@@ -341,16 +352,18 @@ Members
 
 
 
+
 .. _`irq_chip_type`:
 
 struct irq_chip_type
 ====================
 
-.. c:type:: struct irq_chip_type
+.. c:type:: irq_chip_type
 
     Generic interrupt chip instance for a flow type
 
 
+.. _`irq_chip_type.definition`:
 
 Definition
 ----------
@@ -367,6 +380,7 @@ Definition
   };
 
 
+.. _`irq_chip_type.members`:
 
 Members
 -------
@@ -391,6 +405,9 @@ Members
 
 
 
+
+.. _`irq_chip_type.description`:
+
 Description
 -----------
 
@@ -399,16 +416,18 @@ it requires different functions and register offsets for different
 flow types.
 
 
+
 .. _`irq_chip_generic`:
 
 struct irq_chip_generic
 =======================
 
-.. c:type:: struct irq_chip_generic
+.. c:type:: irq_chip_generic
 
     Generic irq chip data structure
 
 
+.. _`irq_chip_generic.definition`:
 
 Definition
 ----------
@@ -439,6 +458,7 @@ Definition
   };
 
 
+.. _`irq_chip_generic.members`:
 
 Members
 -------
@@ -462,8 +482,6 @@ Members
 
 :``resume``:
     Function called from core code on resume once per chip;
-    can be useful instead of irq_chip::suspend to handle
-    chip details even when no interrupts are in use
 
 :``irq_base``:
     Interrupt base nr for this chip
@@ -509,6 +527,19 @@ Members
 
 
 
+
+.. _`irq_chip_generic.can-be-useful-instead-of-irq_chip`:
+
+can be useful instead of irq_chip
+---------------------------------
+
+:suspend to handle
+chip details even when no interrupts are in use
+
+
+
+.. _`irq_chip_generic.description`:
+
 Description
 -----------
 
@@ -519,16 +550,34 @@ state in an irq_chip_generic instance when we need to implement
 different flow mechanisms (level/edge) for it.
 
 
+
 .. _`irq_gc_flags`:
 
 enum irq_gc_flags
 =================
 
-.. c:type:: enum irq_gc_flags
+.. c:type:: irq_gc_flags
 
     Initialization flags for generic irq chips
 
 
+.. _`irq_gc_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum irq_gc_flags {
+      IRQ_GC_INIT_MASK_CACHE,
+      IRQ_GC_INIT_NESTED_LOCK,
+      IRQ_GC_MASK_CACHE_PER_TYPE,
+      IRQ_GC_NO_MASK,
+      IRQ_GC_BE_IO
+    };
+
+
+.. _`irq_gc_flags.constants`:
 
 Constants
 ---------
@@ -549,4 +598,3 @@ Constants
 
 :``IRQ_GC_BE_IO``:
     Use big-endian register accesses (default: LE)
-

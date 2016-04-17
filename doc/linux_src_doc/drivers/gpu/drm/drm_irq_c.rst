@@ -4,6 +4,7 @@
 drm_irq.c
 =========
 
+
 .. _`drm_reset_vblank_timestamp`:
 
 drm_reset_vblank_timestamp
@@ -20,6 +21,7 @@ drm_reset_vblank_timestamp
         index of CRTC for which to reset the timestamp
 
 
+
 .. _`drm_reset_vblank_timestamp.description`:
 
 Description
@@ -30,8 +32,16 @@ to the last vblank occurred.
 
 Only to be called from :c:func:`drm_vblank_on`.
 
-Note: caller must hold dev->vbl_lock since this reads & writes
+
+
+.. _`drm_reset_vblank_timestamp.note`:
+
+Note
+----
+
+caller must hold dev->vbl_lock since this reads & writes
 device vblank fields.
+
 
 
 .. _`drm_update_vblank_count`:
@@ -54,6 +64,7 @@ drm_update_vblank_count
         *undescribed*
 
 
+
 .. _`drm_update_vblank_count.description`:
 
 Description
@@ -67,8 +78,16 @@ call if necessary.
 Only necessary when going from off->on, to account for frames we
 didn't get an interrupt for.
 
-Note: caller must hold dev->vbl_lock since this reads & writes
+
+
+.. _`drm_update_vblank_count.note`:
+
+Note
+----
+
+caller must hold dev->vbl_lock since this reads & writes
 device vblank fields.
+
 
 
 .. _`drm_vblank_cleanup`:
@@ -84,12 +103,14 @@ drm_vblank_cleanup
         DRM device
 
 
+
 .. _`drm_vblank_cleanup.description`:
 
 Description
 -----------
 
 This function cleans up any resources allocated in drm_vblank_init.
+
 
 
 .. _`drm_vblank_init`:
@@ -108,6 +129,7 @@ drm_vblank_init
         number of CRTCs supported by ``dev``
 
 
+
 .. _`drm_vblank_init.description`:
 
 Description
@@ -115,8 +137,15 @@ Description
 
 This function initializes vblank support for ``num_crtcs`` display pipelines.
 
-Returns:
+
+
+.. _`drm_vblank_init.returns`:
+
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_irq_install`:
@@ -135,6 +164,7 @@ drm_irq_install
         IRQ number to install the handler for
 
 
+
 .. _`drm_irq_install.description`:
 
 Description
@@ -149,8 +179,15 @@ needs. Drivers which need to install interrupt handlers for multiple
 interrupts must instead set drm_device->irq_enabled to signal the DRM core
 that vblank interrupts are available.
 
-Returns:
+
+
+.. _`drm_irq_install.returns`:
+
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_irq_uninstall`:
@@ -164,6 +201,7 @@ drm_irq_uninstall
 
     :param struct drm_device \*dev:
         DRM device
+
 
 
 .. _`drm_irq_uninstall.description`:
@@ -180,8 +218,15 @@ Note that for kernel modesetting drivers it is a bug if this function fails.
 The sanity checks are only to catch buggy user modesetting drivers which call
 the same function through an ioctl.
 
-Returns:
+
+
+.. _`drm_irq_uninstall.returns`:
+
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_calc_timestamping_constants`:
@@ -200,6 +245,7 @@ drm_calc_timestamping_constants
         display mode containing the scanout timings
 
 
+
 .. _`drm_calc_timestamping_constants.description`:
 
 Description
@@ -210,6 +256,7 @@ needed by vblank and swap-completion timestamping, e.g,
 by :c:func:`drm_calc_vbltimestamp_from_scanoutpos`. They are
 derived from CRTC's true scanout timing, so they take
 things like panel scaling or other adjustments into account.
+
 
 
 .. _`drm_calc_vbltimestamp_from_scanoutpos`:
@@ -235,13 +282,14 @@ drm_calc_vbltimestamp_from_scanoutpos
         Pointer to struct timeval which should receive the timestamp
 
     :param unsigned flags:
-        Flags to pass to driver::
+        Flags to pass to driver:
 
                 0 = Default,
                 DRM_CALLED_FROM_VBLIRQ = If function is called from vbl IRQ handler
 
     :param const struct drm_display_mode \*mode:
         mode which defines the scanout timings
+
 
 
 .. _`drm_calc_vbltimestamp_from_scanoutpos.description`:
@@ -267,9 +315,22 @@ The current implementation only handles standard video modes. It
 returns as no operation if a doublescan or interlaced video mode is
 active. Higher level code is expected to handle this.
 
-Returns:
+
+
+.. _`drm_calc_vbltimestamp_from_scanoutpos.returns`:
+
+Returns
+-------
+
 Negative value on error, failure or if not supported in current
-video mode:
+
+
+
+.. _`drm_calc_vbltimestamp_from_scanoutpos.video-mode`:
+
+video mode
+----------
+
 
 -EINVAL   - Invalid CRTC.
 -EAGAIN   - Temporary unavailable, e.g., called before initial modeset.
@@ -280,6 +341,7 @@ Returns or'ed positive status flags on success:
 
 DRM_VBLANKTIME_SCANOUTPOS_METHOD - Signal this method used for timestamping.
 DRM_VBLANKTIME_INVBL - Timestamp taken while scanout was in vblank interval.
+
 
 
 .. _`drm_get_last_vbltimestamp`:
@@ -301,10 +363,11 @@ drm_get_last_vbltimestamp
         Pointer to target struct timeval which should receive the timestamp
 
     :param unsigned flags:
-        Flags to pass to driver::
+        Flags to pass to driver:
 
                 0 = Default,
                 DRM_CALLED_FROM_VBLIRQ = If function is called from vbl IRQ handler
+
 
 
 .. _`drm_get_last_vbltimestamp.description`:
@@ -319,8 +382,15 @@ compute the timestamp with a high-precision GPU specific method.
 Returns zero if timestamp originates from uncorrected :c:func:`do_gettimeofday`
 call, i.e., it isn't very precisely locked to the true vblank.
 
-Returns:
+
+
+.. _`drm_get_last_vbltimestamp.returns`:
+
+Returns
+-------
+
 True if timestamp is considered to be very precise, false otherwise.
+
 
 
 .. _`drm_vblank_count`:
@@ -339,6 +409,7 @@ drm_vblank_count
         index of CRTC for which to retrieve the counter
 
 
+
 .. _`drm_vblank_count.description`:
 
 Description
@@ -350,8 +421,15 @@ modesetting activity.
 
 This is the legacy version of :c:func:`drm_crtc_vblank_count`.
 
-Returns:
+
+
+.. _`drm_vblank_count.returns`:
+
+Returns
+-------
+
 The software vblank counter.
+
 
 
 .. _`drm_crtc_vblank_count`:
@@ -367,6 +445,7 @@ drm_crtc_vblank_count
         which counter to retrieve
 
 
+
 .. _`drm_crtc_vblank_count.description`:
 
 Description
@@ -378,8 +457,15 @@ modesetting activity.
 
 This is the native KMS version of :c:func:`drm_vblank_count`.
 
-Returns:
+
+
+.. _`drm_crtc_vblank_count.returns`:
+
+Returns
+-------
+
 The software vblank counter.
+
 
 
 .. _`drm_vblank_count_and_time`:
@@ -401,6 +487,7 @@ drm_vblank_count_and_time
         Pointer to struct timeval to receive the vblank timestamp.
 
 
+
 .. _`drm_vblank_count_and_time.description`:
 
 Description
@@ -412,6 +499,7 @@ modesetting activity. Returns corresponding system timestamp of the time
 of the vblank interval that corresponds to the current vblank counter value.
 
 This is the legacy version of :c:func:`drm_crtc_vblank_count_and_time`.
+
 
 
 .. _`drm_crtc_vblank_count_and_time`:
@@ -430,6 +518,7 @@ drm_crtc_vblank_count_and_time
         Pointer to struct timeval to receive the vblank timestamp.
 
 
+
 .. _`drm_crtc_vblank_count_and_time.description`:
 
 Description
@@ -441,6 +530,7 @@ modesetting activity. Returns corresponding system timestamp of the time
 of the vblank interval that corresponds to the current vblank counter value.
 
 This is the native KMS version of :c:func:`drm_vblank_count_and_time`.
+
 
 
 .. _`drm_arm_vblank_event`:
@@ -462,6 +552,7 @@ drm_arm_vblank_event
         the event to prepare to send
 
 
+
 .. _`drm_arm_vblank_event.description`:
 
 Description
@@ -477,6 +568,7 @@ Caller must hold event lock. Caller must also hold a vblank reference for
 the event ``e``\ , which will be dropped when the next vblank arrives.
 
 This is the legacy version of :c:func:`drm_crtc_arm_vblank_event`.
+
 
 
 .. _`drm_crtc_arm_vblank_event`:
@@ -495,6 +587,7 @@ drm_crtc_arm_vblank_event
         the event to send
 
 
+
 .. _`drm_crtc_arm_vblank_event.description`:
 
 Description
@@ -510,6 +603,7 @@ Caller must hold event lock. Caller must also hold a vblank reference for
 the event ``e``\ , which will be dropped when the next vblank arrives.
 
 This is the native KMS version of :c:func:`drm_arm_vblank_event`.
+
 
 
 .. _`drm_send_vblank_event`:
@@ -531,6 +625,7 @@ drm_send_vblank_event
         the event to send
 
 
+
 .. _`drm_send_vblank_event.description`:
 
 Description
@@ -540,6 +635,7 @@ Updates sequence # and timestamp on event, and sends it to userspace.
 Caller must hold event lock.
 
 This is the legacy version of :c:func:`drm_crtc_send_vblank_event`.
+
 
 
 .. _`drm_crtc_send_vblank_event`:
@@ -558,6 +654,7 @@ drm_crtc_send_vblank_event
         the event to send
 
 
+
 .. _`drm_crtc_send_vblank_event.description`:
 
 Description
@@ -567,6 +664,7 @@ Updates sequence # and timestamp on event, and sends it to userspace.
 Caller must hold event lock.
 
 This is the native KMS version of :c:func:`drm_send_vblank_event`.
+
 
 
 .. _`drm_vblank_enable`:
@@ -585,13 +683,14 @@ drm_vblank_enable
         CRTC index
 
 
-.. _`drm_vblank_enable.description`:
 
-Description
------------
+.. _`drm_vblank_enable.returns`:
 
-Returns:
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_vblank_get`:
@@ -610,6 +709,7 @@ drm_vblank_get
         index of CRTC to own
 
 
+
 .. _`drm_vblank_get.description`:
 
 Description
@@ -620,8 +720,15 @@ while in use.
 
 This is the legacy version of :c:func:`drm_crtc_vblank_get`.
 
-Returns:
+
+
+.. _`drm_vblank_get.returns`:
+
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_crtc_vblank_get`:
@@ -637,6 +744,7 @@ drm_crtc_vblank_get
         which CRTC to own
 
 
+
 .. _`drm_crtc_vblank_get.description`:
 
 Description
@@ -647,8 +755,15 @@ while in use.
 
 This is the native kms version of :c:func:`drm_vblank_get`.
 
-Returns:
+
+
+.. _`drm_crtc_vblank_get.returns`:
+
+Returns
+-------
+
 Zero on success or a negative error code on failure.
+
 
 
 .. _`drm_vblank_put`:
@@ -667,6 +782,7 @@ drm_vblank_put
         index of CRTC to release
 
 
+
 .. _`drm_vblank_put.description`:
 
 Description
@@ -676,6 +792,7 @@ Release ownership of a given vblank counter, turning off interrupts
 if possible. Disable interrupts after drm_vblank_offdelay milliseconds.
 
 This is the legacy version of :c:func:`drm_crtc_vblank_put`.
+
 
 
 .. _`drm_crtc_vblank_put`:
@@ -691,6 +808,7 @@ drm_crtc_vblank_put
         which counter to give up
 
 
+
 .. _`drm_crtc_vblank_put.description`:
 
 Description
@@ -700,6 +818,7 @@ Release ownership of a given vblank counter, turning off interrupts
 if possible. Disable interrupts after drm_vblank_offdelay milliseconds.
 
 This is the native kms version of :c:func:`drm_vblank_put`.
+
 
 
 .. _`drm_wait_one_vblank`:
@@ -718,6 +837,7 @@ drm_wait_one_vblank
         CRTC index
 
 
+
 .. _`drm_wait_one_vblank.description`:
 
 Description
@@ -726,6 +846,7 @@ Description
 This waits for one vblank to pass on ``pipe``\ , using the irq driver interfaces.
 It is a failure to call this when the vblank irq for ``pipe`` is disabled, e.g.
 due to lack of driver support or because the crtc is off.
+
 
 
 .. _`drm_crtc_wait_one_vblank`:
@@ -741,6 +862,7 @@ drm_crtc_wait_one_vblank
         DRM crtc
 
 
+
 .. _`drm_crtc_wait_one_vblank.description`:
 
 Description
@@ -749,6 +871,7 @@ Description
 This waits for one vblank to pass on ``crtc``\ , using the irq driver interfaces.
 It is a failure to call this when the vblank irq for ``crtc`` is disabled, e.g.
 due to lack of driver support or because the crtc is off.
+
 
 
 .. _`drm_vblank_off`:
@@ -767,6 +890,7 @@ drm_vblank_off
         CRTC index
 
 
+
 .. _`drm_vblank_off.description`:
 
 Description
@@ -782,6 +906,7 @@ reset, e.g. when suspending.
 This is the legacy version of :c:func:`drm_crtc_vblank_off`.
 
 
+
 .. _`drm_crtc_vblank_off`:
 
 drm_crtc_vblank_off
@@ -793,6 +918,7 @@ drm_crtc_vblank_off
 
     :param struct drm_crtc \*crtc:
         CRTC in question
+
 
 
 .. _`drm_crtc_vblank_off.description`:
@@ -810,6 +936,7 @@ reset, e.g. when suspending.
 This is the native kms version of :c:func:`drm_vblank_off`.
 
 
+
 .. _`drm_crtc_vblank_reset`:
 
 drm_crtc_vblank_reset
@@ -823,6 +950,7 @@ drm_crtc_vblank_reset
         CRTC in question
 
 
+
 .. _`drm_crtc_vblank_reset.description`:
 
 Description
@@ -833,6 +961,7 @@ Drivers should use this together with the :c:func:`drm_crtc_vblank_off` and
 :c:func:`drm_crtc_vblank_on` functions. The difference compared to
 :c:func:`drm_crtc_vblank_off` is that this function doesn't save the vblank counter
 and hence doesn't need to call any driver hooks.
+
 
 
 .. _`drm_vblank_on`:
@@ -851,6 +980,7 @@ drm_vblank_on
         CRTC index
 
 
+
 .. _`drm_vblank_on.description`:
 
 Description
@@ -862,6 +992,7 @@ This functions restores the vblank interrupt state captured with
 in driver load code to reflect the current hardware state of the crtc.
 
 This is the legacy version of :c:func:`drm_crtc_vblank_on`.
+
 
 
 .. _`drm_crtc_vblank_on`:
@@ -877,6 +1008,7 @@ drm_crtc_vblank_on
         CRTC in question
 
 
+
 .. _`drm_crtc_vblank_on.description`:
 
 Description
@@ -888,6 +1020,7 @@ This functions restores the vblank interrupt state captured with
 in driver load code to reflect the current hardware state of the crtc.
 
 This is the native kms version of :c:func:`drm_vblank_on`.
+
 
 
 .. _`drm_vblank_pre_modeset`:
@@ -904,6 +1037,7 @@ drm_vblank_pre_modeset
 
     :param unsigned int pipe:
         CRTC index
+
 
 
 .. _`drm_vblank_pre_modeset.description`:
@@ -930,6 +1064,7 @@ Drivers must call :c:func:`drm_vblank_post_modeset` when re-enabling the same cr
 again.
 
 
+
 .. _`drm_vblank_post_modeset`:
 
 drm_vblank_post_modeset
@@ -946,6 +1081,7 @@ drm_vblank_post_modeset
         CRTC index
 
 
+
 .. _`drm_vblank_post_modeset.description`:
 
 Description
@@ -953,6 +1089,7 @@ Description
 
 This function again drops the temporary vblank reference acquired in
 drm_vblank_pre_modeset.
+
 
 
 .. _`drm_handle_vblank`:
@@ -971,6 +1108,7 @@ drm_handle_vblank
         index of CRTC where this event occurred
 
 
+
 .. _`drm_handle_vblank.description`:
 
 Description
@@ -980,6 +1118,7 @@ Drivers should call this routine in their vblank interrupt handlers to
 update the vblank counter and send any signals that may be pending.
 
 This is the legacy version of :c:func:`drm_crtc_handle_vblank`.
+
 
 
 .. _`drm_crtc_handle_vblank`:
@@ -995,6 +1134,7 @@ drm_crtc_handle_vblank
         where this event occurred
 
 
+
 .. _`drm_crtc_handle_vblank.description`:
 
 Description
@@ -1005,8 +1145,15 @@ update the vblank counter and send any signals that may be pending.
 
 This is the native KMS version of :c:func:`drm_handle_vblank`.
 
-Returns:
+
+
+.. _`drm_crtc_handle_vblank.returns`:
+
+Returns
+-------
+
 True if the event was successfully handled, false on failure.
+
 
 
 .. _`drm_vblank_no_hw_counter`:
@@ -1025,6 +1172,7 @@ drm_vblank_no_hw_counter
         CRTC for which to read the counter
 
 
+
 .. _`drm_vblank_no_hw_counter.description`:
 
 Description
@@ -1033,6 +1181,12 @@ Description
 Drivers can plug this into the .:c:func:`get_vblank_counter` function if
 there is no useable hardware frame counter available.
 
-Returns:
+
+
+.. _`drm_vblank_no_hw_counter.returns`:
+
+Returns
+-------
+
 
 

@@ -4,16 +4,30 @@
 w1_netlink.h
 ============
 
+
 .. _`w1_cn_msg_flags`:
 
 enum w1_cn_msg_flags
 ====================
 
-.. c:type:: enum w1_cn_msg_flags
+.. c:type:: w1_cn_msg_flags
 
     bitfield flags for struct cn_msg.flags
 
 
+.. _`w1_cn_msg_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum w1_cn_msg_flags {
+      W1_CN_BUNDLE
+    };
+
+
+.. _`w1_cn_msg_flags.constants`:
 
 Constants
 ---------
@@ -29,11 +43,30 @@ Constants
 enum w1_netlink_message_types
 =============================
 
-.. c:type:: enum w1_netlink_message_types
+.. c:type:: w1_netlink_message_types
 
     message type
 
 
+.. _`w1_netlink_message_types.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum w1_netlink_message_types {
+      W1_SLAVE_ADD,
+      W1_SLAVE_REMOVE,
+      W1_MASTER_ADD,
+      W1_MASTER_REMOVE,
+      W1_MASTER_CMD,
+      W1_SLAVE_CMD,
+      W1_LIST_MASTERS
+    };
+
+
+.. _`w1_netlink_message_types.constants`:
 
 Constants
 ---------
@@ -66,11 +99,12 @@ Constants
 struct w1_netlink_msg
 =====================
 
-.. c:type:: struct w1_netlink_msg
+.. c:type:: w1_netlink_msg
 
     holds w1 message type, id, and result
 
 
+.. _`w1_netlink_msg.definition`:
 
 Definition
 ----------
@@ -86,6 +120,7 @@ Definition
   };
 
 
+.. _`w1_netlink_msg.members`:
 
 Members
 -------
@@ -107,6 +142,9 @@ Members
 
 
 
+
+.. _`w1_netlink_msg.description`:
+
 Description
 -----------
 
@@ -115,16 +153,39 @@ The netlink connector data sequence is, struct nlmsghdr, struct cn_msg,
 then one or more struct w1_netlink_msg (each with optional data).
 
 
+
 .. _`w1_commands`:
 
 enum w1_commands
 ================
 
-.. c:type:: enum w1_commands
+.. c:type:: w1_commands
 
     commands available for master or slave operations
 
 
+.. _`w1_commands.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum w1_commands {
+      W1_CMD_READ,
+      W1_CMD_WRITE,
+      W1_CMD_SEARCH,
+      W1_CMD_ALARM_SEARCH,
+      W1_CMD_TOUCH,
+      W1_CMD_RESET,
+      W1_CMD_SLAVE_ADD,
+      W1_CMD_SLAVE_REMOVE,
+      W1_CMD_LIST_SLAVES,
+      W1_CMD_MAX
+    };
+
+
+.. _`w1_commands.constants`:
 
 Constants
 ---------
@@ -168,11 +229,12 @@ Constants
 struct w1_netlink_cmd
 =====================
 
-.. c:type:: struct w1_netlink_cmd
+.. c:type:: w1_netlink_cmd
 
     holds the command and data
 
 
+.. _`w1_netlink_cmd.definition`:
 
 Definition
 ----------
@@ -187,6 +249,7 @@ Definition
   };
 
 
+.. _`w1_netlink_cmd.members`:
 
 Members
 -------
@@ -204,6 +267,9 @@ Members
     start address of any following data
 
 
+
+
+.. _`w1_netlink_cmd.description`:
 
 Description
 -----------

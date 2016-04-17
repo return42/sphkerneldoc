@@ -4,6 +4,7 @@
 daisy.c
 =======
 
+
 .. _`parport_open`:
 
 parport_open
@@ -20,6 +21,7 @@ parport_open
         name to associate with the device
 
 
+
 .. _`parport_open.description`:
 
 Description
@@ -34,6 +36,7 @@ All parameters except for ``devnum`` are the same as for
 for :c:func:`parport_register_device`.
 
 
+
 .. _`parport_close`:
 
 parport_close
@@ -45,6 +48,7 @@ parport_close
 
     :param struct pardevice \*dev:
         device to close
+
 
 
 .. _`parport_close.description`:

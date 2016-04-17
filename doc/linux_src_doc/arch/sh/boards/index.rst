@@ -8,4 +8,3 @@ boards
    :maxdepth: 1
 
    mach-dreamcast/index
-   mach-x3proto/index

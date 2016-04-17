@@ -7,5 +7,5 @@ security
 .. toctree::
    :maxdepth: 1
 
-   inode_c
-   security_c
+   integrity/index
+   keys/index

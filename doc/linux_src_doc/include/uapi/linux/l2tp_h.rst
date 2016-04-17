@@ -4,16 +4,18 @@
 l2tp.h
 ======
 
+
 .. _`sockaddr_l2tpip6`:
 
 struct sockaddr_l2tpip6
 =======================
 
-.. c:type:: struct sockaddr_l2tpip6
+.. c:type:: sockaddr_l2tpip6
 
     the sockaddr structure for L2TP-over-IPv6 sockets
 
 
+.. _`sockaddr_l2tpip6.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`sockaddr_l2tpip6.members`:
 
 Members
 -------

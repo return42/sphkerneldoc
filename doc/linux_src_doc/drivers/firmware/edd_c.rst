@@ -4,6 +4,7 @@
 edd.c
 =====
 
+
 .. _`edd_show_raw_data`:
 
 edd_show_raw_data
@@ -20,12 +21,14 @@ edd_show_raw_data
         output buffer
 
 
-.. _`edd_show_raw_data.description`:
 
-Description
------------
+.. _`edd_show_raw_data.returns`:
 
-Returns: number of bytes written, or -EINVAL on failure
+Returns
+-------
+
+number of bytes written, or -EINVAL on failure
+
 
 
 .. _`edd_release`:
@@ -41,6 +44,7 @@ edd_release
         kobject of edd structure
 
 
+
 .. _`edd_release.description`:
 
 Description
@@ -49,6 +53,7 @@ Description
 This is called when the refcount of the edd structure
 reaches 0. This should happen right after we unregister,
 but just in case, we use the release callback anyway.
+
 
 
 .. _`edd_dev_is_type`:
@@ -67,12 +72,14 @@ edd_dev_is_type
         a host bus or interface identifier string per the EDD spec
 
 
+
 .. _`edd_dev_is_type.description`:
 
 Description
 -----------
 
 Returns 1 (TRUE) if it is a 'type' device, 0 otherwise.
+
 
 
 .. _`edd_get_pci_dev`:
@@ -88,12 +95,14 @@ edd_get_pci_dev
         edd_device
 
 
+
 .. _`edd_get_pci_dev.description`:
 
 Description
 -----------
 
 Returns pci_dev if found, or NULL
+
 
 
 .. _`edd_init`:

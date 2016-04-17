@@ -4,6 +4,7 @@
 dvb_frontend.c
 ==============
 
+
 .. _`dvb_frontend_swzigzag_autotune`:
 
 dvb_frontend_swzigzag_autotune
@@ -20,6 +21,7 @@ dvb_frontend_swzigzag_autotune
         *undescribed*
 
 
+
 .. _`dvb_frontend_swzigzag_autotune.description`:
 
 Description
@@ -29,6 +31,7 @@ Description
 ``param`` fe The frontend concerned.
 ``param`` check_wrapped Checks if an iteration has completed. DO NOT SET ON THE FIRST ATTEMPT
 ``returns`` Number of complete iterations that have been performed.
+
 
 
 .. _`dtv_get_frontend`:
@@ -52,6 +55,7 @@ dtv_get_frontend
         *undescribed*
 
 
+
 .. _`dtv_get_frontend.description`:
 
 Description
@@ -60,6 +64,7 @@ Description
 This routine calls either the DVBv3 or DVBv5 get_frontend call.
 If c is not null, it will update the DVBv5 cache struct pointed by it.
 If p_out is not null, it will update the DVBv3 params pointed by it.
+
 
 
 .. _`emulate_delivery_system`:
@@ -78,6 +83,7 @@ emulate_delivery_system
         DVBv5 type that will be used for emulation
 
 
+
 .. _`emulate_delivery_system.description`:
 
 Description
@@ -87,6 +93,7 @@ Provides emulation for delivery systems that are compatible with the old
 DVBv3 call. Among its usages, it provices support for ISDB-T, and allows
 using a DVB-S2 only frontend just like it were a DVB-S, if the frontent
 parameters are compatible with DVB-S spec.
+
 
 
 .. _`dvbv5_set_delivery_system`:
@@ -105,6 +112,7 @@ dvbv5_set_delivery_system
         delivery system requested by the user
 
 
+
 .. _`dvbv5_set_delivery_system.description`:
 
 Description
@@ -113,15 +121,25 @@ Description
 A DVBv5 call know what's the desired system it wants. So, set it.
 
 There are, however, a few known issues with early DVBv5 applications that
-are also handled by this logic:
+
+
+
+.. _`dvbv5_set_delivery_system.are-also-handled-by-this-logic`:
+
+are also handled by this logic
+------------------------------
+
 
 1) Some early apps use SYS_UNDEFINED as the desired delivery system.
+
    This is an API violation, but, as we don't want to break userspace,
    convert it to the first supported delivery system.
 
 2) Some apps might be using a DVBv5 call in a wrong way, passing, for
+
    example, SYS_DVBT instead of SYS_ISDBT. This is because early usage of
    ISDB-T provided backward compat with DVB-T.
+
 
 
 .. _`dvbv3_set_delivery_system`:
@@ -135,6 +153,7 @@ dvbv3_set_delivery_system
 
     :param struct dvb_frontend \*fe:
         frontend struct
+
 
 
 .. _`dvbv3_set_delivery_system.description`:
@@ -153,14 +172,29 @@ There are some delivery systems that are incompatible with DVBv3 calls.
 This routine should work fine for frontends that support just one delivery
 system.
 
-For frontends that support multiple frontends:
+
+
+.. _`dvbv3_set_delivery_system.for-frontends-that-support-multiple-frontends`:
+
+For frontends that support multiple frontends
+---------------------------------------------
+
 1) It defaults to use the first supported delivery system. There's an
+
    userspace application that allows changing it at runtime;
 
 2) If the current delivery system is not compatible with DVBv3, it gets
+
    the first one that it is compatible.
 
-NOTE: in order for this to work with applications like Kaffeine that
+
+
+.. _`dvbv3_set_delivery_system.note`:
+
+NOTE
+----
+
+in order for this to work with applications like Kaffeine that
 uses a DVBv5 call for DVB-S2 and a DVBv3 call to go back to
 DVB-S, drivers that support both DVB-S and DVB-S2 should have the
 SYS_DVBS entry before the SYS_DVBS2, otherwise it won't switch back

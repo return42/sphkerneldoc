@@ -4,16 +4,31 @@
 pwm.h
 =====
 
+
 .. _`pwm_polarity`:
 
 enum pwm_polarity
 =================
 
-.. c:type:: enum pwm_polarity
+.. c:type:: pwm_polarity
 
     polarity of a PWM signal
 
 
+.. _`pwm_polarity.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum pwm_polarity {
+      PWM_POLARITY_NORMAL,
+      PWM_POLARITY_INVERSED
+    };
+
+
+.. _`pwm_polarity.constants`:
 
 Constants
 ---------
@@ -34,11 +49,12 @@ Constants
 struct pwm_device
 =================
 
-.. c:type:: struct pwm_device
+.. c:type:: pwm_device
 
     PWM channel object
 
 
+.. _`pwm_device.definition`:
 
 Definition
 ----------
@@ -59,6 +75,7 @@ Definition
   };
 
 
+.. _`pwm_device.members`:
 
 Members
 -------
@@ -95,16 +112,18 @@ Members
 
 
 
+
 .. _`pwm_ops`:
 
 struct pwm_ops
 ==============
 
-.. c:type:: struct pwm_ops
+.. c:type:: pwm_ops
 
     PWM controller operations
 
 
+.. _`pwm_ops.definition`:
 
 Definition
 ----------
@@ -125,6 +144,7 @@ Definition
   };
 
 
+.. _`pwm_ops.members`:
 
 Members
 -------
@@ -155,16 +175,18 @@ Members
 
 
 
+
 .. _`pwm_chip`:
 
 struct pwm_chip
 ===============
 
-.. c:type:: struct pwm_chip
+.. c:type:: pwm_chip
 
     abstract a PWM controller
 
 
+.. _`pwm_chip.definition`:
 
 Definition
 ----------
@@ -184,6 +206,7 @@ Definition
   };
 
 
+.. _`pwm_chip.members`:
 
 Members
 -------

@@ -4,6 +4,7 @@
 sound.c
 =======
 
+
 .. _`snd_request_card`:
 
 snd_request_card
@@ -17,6 +18,7 @@ snd_request_card
         the card number
 
 
+
 .. _`snd_request_card.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 Tries to load the module "snd-card-X" for the given card number
 via request_module.  Returns immediately if already loaded.
+
 
 
 .. _`snd_lookup_minor_data`:
@@ -42,6 +45,7 @@ snd_lookup_minor_data
         device type (SNDRV_DEVICE_TYPE_XXX)
 
 
+
 .. _`snd_lookup_minor_data.description`:
 
 Description
@@ -54,8 +58,16 @@ This function increments the reference counter of the card instance
 if an associated instance with the given minor number and type is found.
 The caller must call :c:func:`snd_card_unref` appropriately later.
 
-Return: The user data pointer if the specified device is found. ``NULL``
+
+
+.. _`snd_lookup_minor_data.return`:
+
+Return
+------
+
+The user data pointer if the specified device is found. ``NULL``
 otherwise.
+
 
 
 .. _`snd_register_device`:
@@ -86,6 +98,7 @@ snd_register_device
         the device to register
 
 
+
 .. _`snd_register_device.description`:
 
 Description
@@ -94,7 +107,15 @@ Description
 Registers an ALSA device file for the given card.
 The operators have to be set in reg parameter.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_register_device.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_unregister_device`:
@@ -110,6 +131,7 @@ snd_unregister_device
         the device instance
 
 
+
 .. _`snd_unregister_device.description`:
 
 Description
@@ -118,5 +140,12 @@ Description
 Unregisters the device file already registered via
 :c:func:`snd_register_device`.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_unregister_device.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
 

@@ -1,0 +1,1107 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+=======
+gm200.c
+=======
+
+
+.. _`fw_bin_header`:
+
+struct fw_bin_header
+====================
+
+.. c:type:: fw_bin_header
+
+    header of firmware files
+
+
+.. _`fw_bin_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct fw_bin_header {
+    u32 bin_magic;
+    u32 bin_ver;
+    u32 bin_size;
+    u32 header_offset;
+    u32 data_offset;
+    u32 data_size;
+  };
+
+
+.. _`fw_bin_header.members`:
+
+Members
+-------
+
+:``bin_magic``:
+    always 0x3b1d14f0
+
+:``bin_ver``:
+    version of the bin format
+
+:``bin_size``:
+    entire image size including this header
+
+:``header_offset``:
+    offset of the firmware/bootloader header in the file
+
+:``data_offset``:
+    offset of the firmware/bootloader payload in the file
+
+:``data_size``:
+    size of the payload
+
+
+
+
+.. _`fw_bin_header.description`:
+
+Description
+-----------
+
+This header is located at the beginning of the HS firmware and HS bootloader
+files, to describe where the headers and data can be found.
+
+
+
+.. _`fw_bl_desc`:
+
+struct fw_bl_desc
+=================
+
+.. c:type:: fw_bl_desc
+
+    firmware bootloader descriptor
+
+
+.. _`fw_bl_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct fw_bl_desc {
+    u32 start_tag;
+    u32 code_off;
+    u32 code_size;
+    u32 data_off;
+    u32 data_size;
+  };
+
+
+.. _`fw_bl_desc.members`:
+
+Members
+-------
+
+:``start_tag``:
+    starting tag of bootloader
+
+:``code_off``:
+    offset of code section
+
+:``code_size``:
+    size of code section
+
+:``data_off``:
+    offset of data section
+
+:``data_size``:
+    size of data section
+
+
+
+
+.. _`fw_bl_desc.description`:
+
+Description
+-----------
+
+This structure is embedded in bootloader firmware files at to describe the
+IMEM and DMEM layout expected by the bootloader.
+
+
+
+.. _`lsf_ucode_desc`:
+
+struct lsf_ucode_desc
+=====================
+
+.. c:type:: lsf_ucode_desc
+
+    LS falcon signatures
+
+
+.. _`lsf_ucode_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lsf_ucode_desc {
+    u8 prd_keys[2][16];
+    u32 b_prd_present;
+    u32 falcon_id;
+  };
+
+
+.. _`lsf_ucode_desc.members`:
+
+Members
+-------
+
+:``prd_keys[2][16]``:
+    signature to use when the GPU is in production mode
+
+:``b_prd_present``:
+    whether the production key is present
+
+:``falcon_id``:
+    ID of the falcon the ucode applies to
+
+
+
+
+.. _`lsf_ucode_desc.description`:
+
+Description
+-----------
+
+Directly loaded from a signature file.
+
+
+
+.. _`lsf_lsb_header`:
+
+struct lsf_lsb_header
+=====================
+
+.. c:type:: lsf_lsb_header
+
+    LS firmware header
+
+
+.. _`lsf_lsb_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lsf_lsb_header {
+    struct lsf_ucode_desc signature;
+    u32 ucode_off;
+    u32 ucode_size;
+    u32 data_size;
+    u32 bl_code_size;
+    u32 bl_imem_off;
+    u32 bl_data_off;
+    u32 bl_data_size;
+    u32 app_code_off;
+    u32 app_code_size;
+    u32 app_data_off;
+    u32 app_data_size;
+    u32 flags;
+    #define LSF_FLAG_LOAD_CODE_AT_0		1
+    #define LSF_FLAG_DMACTL_REQ_CTX		4
+    #define LSF_FLAG_FORCE_PRIV_LOAD	8
+  };
+
+
+.. _`lsf_lsb_header.members`:
+
+Members
+-------
+
+:``signature``:
+    signature to verify the firmware against
+
+:``ucode_off``:
+    offset of the ucode blob in the WPR region. The ucode
+    blob contains the bootloader, code and data of the
+    LS falcon
+
+:``ucode_size``:
+    size of the ucode blob, including bootloader
+
+:``data_size``:
+    size of the ucode blob data
+
+:``bl_code_size``:
+    size of the bootloader code
+
+:``bl_imem_off``:
+    offset in imem of the bootloader
+
+:``bl_data_off``:
+    offset of the bootloader data in WPR region
+
+:``bl_data_size``:
+    size of the bootloader data
+
+:``app_code_off``:
+    offset of the app code relative to ucode_off
+
+:``app_code_size``:
+    size of the app code
+
+:``app_data_off``:
+    offset of the app data relative to ucode_off
+
+:``app_data_size``:
+    size of the app data
+
+:``flags``:
+    flags for the secure bootloader
+
+
+
+
+.. _`lsf_lsb_header.description`:
+
+Description
+-----------
+
+This structure is written into the WPR region for each managed falcon. Each
+instance is referenced by the lsb_offset member of the corresponding
+lsf_wpr_header.
+
+
+
+.. _`lsf_wpr_header`:
+
+struct lsf_wpr_header
+=====================
+
+.. c:type:: lsf_wpr_header
+
+    LS blob WPR Header
+
+
+.. _`lsf_wpr_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct lsf_wpr_header {
+    u32 falcon_id;
+    u32 lsb_offset;
+    u32 bootstrap_owner;
+    u32 lazy_bootstrap;
+    u32 status;
+    #define LSF_IMAGE_STATUS_NONE				0
+    #define LSF_IMAGE_STATUS_COPY				1
+    #define LSF_IMAGE_STATUS_VALIDATION_CODE_FAILED		2
+    #define LSF_IMAGE_STATUS_VALIDATION_DATA_FAILED		3
+    #define LSF_IMAGE_STATUS_VALIDATION_DONE		4
+    #define LSF_IMAGE_STATUS_VALIDATION_SKIPPED		5
+    #define LSF_IMAGE_STATUS_BOOTSTRAP_READY		6
+  };
+
+
+.. _`lsf_wpr_header.members`:
+
+Members
+-------
+
+:``falcon_id``:
+    LS falcon ID
+
+:``lsb_offset``:
+    offset of the lsb_lsf_header in the WPR region
+
+:``bootstrap_owner``:
+    secure falcon reponsible for bootstrapping the LS falcon
+
+:``lazy_bootstrap``:
+    skip bootstrapping by ACR
+
+:``status``:
+    bootstrapping status
+
+
+
+
+.. _`lsf_wpr_header.description`:
+
+Description
+-----------
+
+An array of these is written at the beginning of the WPR region, one for
+each managed falcon. The array is terminated by an instance which falcon_id
+is LSF_FALCON_ID_INVALID.
+
+
+
+.. _`ls_ucode_img_desc`:
+
+struct ls_ucode_img_desc
+========================
+
+.. c:type:: ls_ucode_img_desc
+
+    descriptor of firmware image
+
+
+.. _`ls_ucode_img_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ls_ucode_img_desc {
+    u32 descriptor_size;
+    u32 image_size;
+    u32 bootloader_start_offset;
+    u32 bootloader_size;
+    u32 bootloader_imem_offset;
+    u32 bootloader_entry_point;
+    u32 app_start_offset;
+    u32 app_size;
+    u32 app_imem_offset;
+    u32 app_imem_entry;
+    u32 app_dmem_offset;
+    u32 app_resident_code_offset;
+    u32 app_resident_code_size;
+    u32 app_resident_data_offset;
+    u32 app_resident_data_size;
+  };
+
+
+.. _`ls_ucode_img_desc.members`:
+
+Members
+-------
+
+:``descriptor_size``:
+    size of this descriptor
+
+:``image_size``:
+    size of the whole image
+
+:``bootloader_start_offset``:
+    start offset of the bootloader in ucode image
+
+:``bootloader_size``:
+    size of the bootloader
+
+:``bootloader_imem_offset``:
+    start off set of the bootloader in IMEM
+
+:``bootloader_entry_point``:
+    entry point of the bootloader in IMEM
+
+:``app_start_offset``:
+    start offset of the LS firmware
+
+:``app_size``:
+    size of the LS firmware's code and data
+
+:``app_imem_offset``:
+    offset of the app in IMEM
+
+:``app_imem_entry``:
+    entry point of the app in IMEM
+
+:``app_dmem_offset``:
+    offset of the data in DMEM
+
+:``app_resident_code_offset``:
+    offset of app code from app_start_offset
+
+:``app_resident_code_size``:
+    size of the code
+
+:``app_resident_data_offset``:
+    offset of data from app_start_offset
+
+:``app_resident_data_size``:
+    size of data
+
+
+
+
+.. _`ls_ucode_img_desc.description`:
+
+Description
+-----------
+
+A firmware image contains the code, data, and bootloader of a given LS
+falcon in a single blob. This structure describes where everything is.
+
+This can be generated from a (bootloader, code, data) set if they have
+been loaded separately, or come directly from a file.
+
+
+
+.. _`ls_ucode_img`:
+
+struct ls_ucode_img
+===================
+
+.. c:type:: ls_ucode_img
+
+    temporary storage for loaded LS firmwares
+
+
+.. _`ls_ucode_img.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ls_ucode_img {
+    struct list_head node;
+    enum nvkm_secboot_falcon falcon_id;
+    struct ls_ucode_img_desc ucode_desc;
+    u32 * ucode_header;
+    u8 * ucode_data;
+    u32 ucode_size;
+    struct lsf_wpr_header wpr_header;
+    struct lsf_lsb_header lsb_header;
+  };
+
+
+.. _`ls_ucode_img.members`:
+
+Members
+-------
+
+:``node``:
+    to link within lsf_ucode_mgr
+
+:``falcon_id``:
+    ID of the falcon this LS firmware is for
+
+:``ucode_desc``:
+    loaded or generated map of ucode_data
+
+:``ucode_header``:
+    header of the firmware
+
+:``ucode_data``:
+    firmware payload (code and data)
+
+:``ucode_size``:
+    size in bytes of data in ucode_data
+
+:``wpr_header``:
+    WPR header to be written to the LS blob
+
+:``lsb_header``:
+    LSB header to be written to the LS blob
+
+
+
+
+.. _`ls_ucode_img.description`:
+
+Description
+-----------
+
+Preparing the WPR LS blob requires information about all the LS firmwares
+(size, etc) to be known. This structure contains all the data of one LS
+firmware.
+
+
+
+.. _`ls_ucode_mgr`:
+
+struct ls_ucode_mgr
+===================
+
+.. c:type:: ls_ucode_mgr
+
+    manager for all LS falcon firmwares
+
+
+.. _`ls_ucode_mgr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ls_ucode_mgr {
+    u16 count;
+    u32 wpr_size;
+    struct list_head img_list;
+  };
+
+
+.. _`ls_ucode_mgr.members`:
+
+Members
+-------
+
+:``count``:
+    number of managed LS falcons
+
+:``wpr_size``:
+    size of the required WPR region in bytes
+
+:``img_list``:
+    linked list of lsf_ucode_img
+
+
+
+
+.. _`hsf_fw_header`:
+
+struct hsf_fw_header
+====================
+
+.. c:type:: hsf_fw_header
+
+    HS firmware descriptor
+
+
+.. _`hsf_fw_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct hsf_fw_header {
+    u32 sig_dbg_offset;
+    u32 sig_dbg_size;
+    u32 sig_prod_offset;
+    u32 sig_prod_size;
+    u32 patch_loc;
+    u32 patch_sig;
+    u32 hdr_offset;
+    u32 hdr_size;
+  };
+
+
+.. _`hsf_fw_header.members`:
+
+Members
+-------
+
+:``sig_dbg_offset``:
+    offset of the debug signature
+
+:``sig_dbg_size``:
+    size of the debug signature
+
+:``sig_prod_offset``:
+    offset of the production signature
+
+:``sig_prod_size``:
+    size of the production signature
+
+:``patch_loc``:
+    offset of the offset (sic) of where the signature is
+
+:``patch_sig``:
+    offset of the offset (sic) to add to sig\_\\*_offset
+
+:``hdr_offset``:
+    offset of the load header (see struct hs_load_header)
+
+:``hdr_size``:
+    size of above header
+
+
+
+
+.. _`hsf_fw_header.description`:
+
+Description
+-----------
+
+This structure is embedded in the HS firmware image at
+hs_bin_hdr.header_offset.
+
+
+
+.. _`hsf_load_header`:
+
+struct hsf_load_header
+======================
+
+.. c:type:: hsf_load_header
+
+    HS firmware load header
+
+
+.. _`hsf_load_header.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct hsf_load_header {
+  };
+
+
+.. _`hsf_load_header.members`:
+
+Members
+-------
+
+
+
+
+.. _`gm200_secboot_load_firmware`:
+
+gm200_secboot_load_firmware
+===========================
+
+.. c:function:: void *gm200_secboot_load_firmware (struct nvkm_subdev *subdev, const char *name, size_t min_size)
+
+     it has the required minimum size.
+
+    :param struct nvkm_subdev \*subdev:
+
+        *undescribed*
+
+    :param const char \*name:
+
+        *undescribed*
+
+    :param size_t min_size:
+
+        *undescribed*
+
+
+
+.. _`ls_ucode_img_build`:
+
+ls_ucode_img_build
+==================
+
+.. c:function:: void *ls_ucode_img_build (const struct firmware *bl, const struct firmware *code, const struct firmware *data, struct ls_ucode_img_desc *desc)
+
+    :param const struct firmware \*bl:
+        bootloader image, including 16-bytes descriptor
+
+    :param const struct firmware \*code:
+        LS firmware code segment
+
+    :param const struct firmware \*data:
+        LS firmware data segment
+
+    :param struct ls_ucode_img_desc \*desc:
+        ucode descriptor to be written
+
+
+
+.. _`ls_ucode_img_build.return`:
+
+Return
+------
+
+allocated ucode image with corresponding descriptor information. desc
+is also updated to contain the right offsets within returned image.
+
+
+
+.. _`ls_ucode_img_load_generic`:
+
+ls_ucode_img_load_generic
+=========================
+
+.. c:function:: int ls_ucode_img_load_generic (struct nvkm_subdev *subdev, struct ls_ucode_img *img, const char *falcon_name, const u32 falcon_id)
+
+    load and prepare a LS ucode image
+
+    :param struct nvkm_subdev \*subdev:
+
+        *undescribed*
+
+    :param struct ls_ucode_img \*img:
+
+        *undescribed*
+
+    :param const char \*falcon_name:
+
+        *undescribed*
+
+    :param const u32 falcon_id:
+
+        *undescribed*
+
+
+
+.. _`ls_ucode_img_load_generic.description`:
+
+Description
+-----------
+
+
+Load the LS microcode, bootloader and signature and pack them into a single
+blob. Also generate the corresponding ucode descriptor.
+
+
+
+.. _`ls_ucode_img_load`:
+
+ls_ucode_img_load
+=================
+
+.. c:function:: struct ls_ucode_img *ls_ucode_img_load (struct nvkm_subdev *subdev, lsf_load_func load_func)
+
+    create a lsf_ucode_img and load it
+
+    :param struct nvkm_subdev \*subdev:
+
+        *undescribed*
+
+    :param lsf_load_func load_func:
+
+        *undescribed*
+
+
+
+.. _`ls_ucode_img_populate_bl_desc`:
+
+ls_ucode_img_populate_bl_desc
+=============================
+
+.. c:function:: void ls_ucode_img_populate_bl_desc (struct ls_ucode_img *img, u64 wpr_addr, struct gm200_flcn_bl_desc *desc)
+
+    populate a DMEM BL descriptor for LS image
+
+    :param struct ls_ucode_img \*img:
+        ucode image to generate against
+
+    :param u64 wpr_addr:
+
+        *undescribed*
+
+    :param struct gm200_flcn_bl_desc \*desc:
+        descriptor to populate
+
+
+
+.. _`ls_ucode_img_populate_bl_desc.description`:
+
+Description
+-----------
+
+Populate the DMEM BL descriptor with the information contained in a
+ls_ucode_desc.
+
+
+
+.. _`ls_ucode_img_fill_headers`:
+
+ls_ucode_img_fill_headers
+=========================
+
+.. c:function:: u32 ls_ucode_img_fill_headers (struct gm200_secboot *gsb, struct ls_ucode_img *img, u32 offset)
+
+    fill the WPR and LSB headers of an image
+
+    :param struct gm200_secboot \*gsb:
+        secure boot device used
+
+    :param struct ls_ucode_img \*img:
+        image to generate for
+
+    :param u32 offset:
+        offset in the WPR region where this image starts
+
+
+
+.. _`ls_ucode_img_fill_headers.description`:
+
+Description
+-----------
+
+Allocate space in the WPR area from offset and write the WPR and LSB headers
+accordingly.
+
+
+
+.. _`ls_ucode_img_fill_headers.return`:
+
+Return
+------
+
+offset at the end of this image.
+
+
+
+.. _`ls_ucode_mgr_fill_headers`:
+
+ls_ucode_mgr_fill_headers
+=========================
+
+.. c:function:: void ls_ucode_mgr_fill_headers (struct gm200_secboot *gsb, struct ls_ucode_mgr *mgr)
+
+    fill WPR and LSB headers of all managed images
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param struct ls_ucode_mgr \*mgr:
+
+        *undescribed*
+
+
+
+.. _`ls_ucode_mgr_write_wpr`:
+
+ls_ucode_mgr_write_wpr
+======================
+
+.. c:function:: int ls_ucode_mgr_write_wpr (struct gm200_secboot *gsb, struct ls_ucode_mgr *mgr, struct nvkm_gpuobj *wpr_blob)
+
+    write the WPR blob contents
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param struct ls_ucode_mgr \*mgr:
+
+        *undescribed*
+
+    :param struct nvkm_gpuobj \*wpr_blob:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_prepare_ls_blob`:
+
+gm200_secboot_prepare_ls_blob
+=============================
+
+.. c:function:: int gm200_secboot_prepare_ls_blob (struct gm200_secboot *gsb)
+
+    prepare the LS blob
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_prepare_ls_blob.description`:
+
+Description
+-----------
+
+
+For each securely managed falcon, load the FW, signatures and bootloaders and
+prepare a ucode blob. Then, compute the offsets in the WPR region for each
+blob, and finally write the headers and ucode blobs into a GPU object that
+will be copied into the WPR region by the HS firmware.
+
+
+
+.. _`gm200_secboot_hsf_patch_signature`:
+
+gm200_secboot_hsf_patch_signature
+=================================
+
+.. c:function:: void gm200_secboot_hsf_patch_signature (struct gm200_secboot *gsb, void *acr_image)
+
+    patch HS blob with correct signature
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param void \*acr_image:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_populate_hsf_bl_desc`:
+
+gm200_secboot_populate_hsf_bl_desc
+==================================
+
+.. c:function:: void gm200_secboot_populate_hsf_bl_desc (void *acr_image, struct gm200_flcn_bl_desc *bl_desc)
+
+    populate BL descriptor for HS image
+
+    :param void \*acr_image:
+
+        *undescribed*
+
+    :param struct gm200_flcn_bl_desc \*bl_desc:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_prepare_hs_blob`:
+
+gm200_secboot_prepare_hs_blob
+=============================
+
+.. c:function:: int gm200_secboot_prepare_hs_blob (struct gm200_secboot *gsb, const char *fw, struct nvkm_gpuobj **blob, struct gm200_flcn_bl_desc *bl_desc, bool patch)
+
+    load and prepare a HS blob and BL descriptor
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param const char \*fw:
+
+        *undescribed*
+
+    :param struct nvkm_gpuobj \*\*blob:
+
+        *undescribed*
+
+    :param struct gm200_flcn_bl_desc \*bl_desc:
+
+        *undescribed*
+
+    :param bool patch:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_prepare_hs_blob.description`:
+
+Description
+-----------
+
+
+``gsb`` secure boot instance to prepare for
+``fw`` name of the HS firmware to load
+``blob`` pointer to gpuobj that will be allocated to receive the HS FW payload
+``bl_desc`` pointer to the BL descriptor to write for this firmware
+``patch`` whether we should patch the HS descriptor (only for HS loaders)
+
+
+
+.. _`gm20x_secboot_prepare_blobs`:
+
+gm20x_secboot_prepare_blobs
+===========================
+
+.. c:function:: int gm20x_secboot_prepare_blobs (struct gm200_secboot *gsb)
+
+    load blobs common to all GM20X GPUs.
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+
+
+.. _`gm20x_secboot_prepare_blobs.description`:
+
+Description
+-----------
+
+
+This includes the LS blob, HS ucode loading blob, and HS bootloader.
+
+The HS ucode unload blob is only used on dGPU.
+
+
+
+.. _`gm200_secboot_load_hs_bl`:
+
+gm200_secboot_load_hs_bl
+========================
+
+.. c:function:: void gm200_secboot_load_hs_bl (struct gm200_secboot *gsb, void *data, u32 data_size)
+
+    load HS bootloader into DMEM and IMEM
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param void \*data:
+
+        *undescribed*
+
+    :param u32 data_size:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_setup_falcon`:
+
+gm200_secboot_setup_falcon
+==========================
+
+.. c:function:: int gm200_secboot_setup_falcon (struct gm200_secboot *gsb)
+
+    set up the secure falcon for secure boot
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_run_hs_blob`:
+
+gm200_secboot_run_hs_blob
+=========================
+
+.. c:function:: int gm200_secboot_run_hs_blob (struct gm200_secboot *gsb, struct nvkm_gpuobj *blob, struct gm200_flcn_bl_desc *desc)
+
+    run the given high-secure blob
+
+    :param struct gm200_secboot \*gsb:
+
+        *undescribed*
+
+    :param struct nvkm_gpuobj \*blob:
+
+        *undescribed*
+
+    :param struct gm200_flcn_bl_desc \*desc:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_fixup_bl_desc`:
+
+gm200_secboot_fixup_bl_desc
+===========================
+
+.. c:function:: void gm200_secboot_fixup_bl_desc (const struct gm200_flcn_bl_desc *desc, void *ret)
+
+    just copy the BL descriptor
+
+    :param const struct gm200_flcn_bl_desc \*desc:
+
+        *undescribed*
+
+    :param void \*ret:
+
+        *undescribed*
+
+
+
+.. _`gm200_secboot_fixup_bl_desc.description`:
+
+Description
+-----------
+
+
+Use the GM200 descriptor format by default.
+

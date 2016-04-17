@@ -4,16 +4,18 @@
 i2c.h
 =====
 
+
 .. _`i2c_driver`:
 
 struct i2c_driver
 =================
 
-.. c:type:: struct i2c_driver
+.. c:type:: i2c_driver
 
     represent an I2C device driver
 
 
+.. _`i2c_driver.definition`:
 
 Definition
 ----------
@@ -36,6 +38,7 @@ Definition
   };
 
 
+.. _`i2c_driver.members`:
 
 Members
 -------
@@ -78,6 +81,9 @@ Members
 
 
 
+
+.. _`i2c_driver.description`:
+
 Description
 -----------
 
@@ -102,16 +108,18 @@ else with it. In particular, calling dev_dbg and friends on it is
 not allowed.
 
 
+
 .. _`i2c_client`:
 
 struct i2c_client
 =================
 
-.. c:type:: struct i2c_client
+.. c:type:: i2c_client
 
     represent an I2C slave device
 
 
+.. _`i2c_client.definition`:
 
 Definition
 ----------
@@ -132,6 +140,7 @@ Definition
   };
 
 
+.. _`i2c_client.members`:
 
 Members
 -------
@@ -166,6 +175,9 @@ Members
 
 
 
+
+.. _`i2c_client.description`:
+
 Description
 -----------
 
@@ -174,16 +186,18 @@ i2c bus. The behaviour exposed to Linux is defined by the driver
 managing the device.
 
 
+
 .. _`i2c_board_info`:
 
 struct i2c_board_info
 =====================
 
-.. c:type:: struct i2c_board_info
+.. c:type:: i2c_board_info
 
     template for device creation
 
 
+.. _`i2c_board_info.definition`:
 
 Definition
 ----------
@@ -202,6 +216,7 @@ Definition
   };
 
 
+.. _`i2c_board_info.members`:
 
 Members
 -------
@@ -232,6 +247,9 @@ Members
 
 
 
+
+.. _`i2c_board_info.description`:
+
 Description
 -----------
 
@@ -245,6 +263,7 @@ that are present.  This information is used to grow the driver model tree.
 For mainboards this is done statically using :c:func:`i2c_register_board_info`;
 bus numbers identify adapters that aren't yet available.  For add-on boards,
 :c:func:`i2c_new_device` does this dynamically with the adapter already known.
+
 
 
 .. _`i2c_board_info`:
@@ -263,6 +282,7 @@ I2C_BOARD_INFO
         the device's address on the bus.
 
 
+
 .. _`i2c_board_info.description`:
 
 Description
@@ -274,16 +294,18 @@ fields (such as associated irq, or device-specific platform_data)
 are provided using conventional syntax.
 
 
+
 .. _`i2c_algorithm`:
 
 struct i2c_algorithm
 ====================
 
-.. c:type:: struct i2c_algorithm
+.. c:type:: i2c_algorithm
 
     represent I2C transfer method
 
 
+.. _`i2c_algorithm.definition`:
 
 Definition
 ----------
@@ -301,6 +323,7 @@ Definition
   };
 
 
+.. _`i2c_algorithm.members`:
 
 Members
 -------
@@ -317,7 +340,7 @@ Members
 
 :``functionality``:
     Return the flags that this algorithm/adapter pair supports
-    from the I2C_FUNC_\* flags.
+    from the I2C_FUNC\_\* flags.
 
 :``reg_slave``:
     Register given client to I2C slave mode of this adapter
@@ -327,10 +350,12 @@ Members
 
 
 
-Description
------------
 
-The following structs are for those who like to implement new bus drivers:
+.. _`i2c_algorithm.the-following-structs-are-for-those-who-like-to-implement-new-bus-drivers`:
+
+The following structs are for those who like to implement new bus drivers
+-------------------------------------------------------------------------
+
 i2c_algorithm is the interface to a class of hardware solutions which can
 be addressed using the same bus algorithms - i.e. bit-banging or the PCF8584
 to name two of the most common.
@@ -340,16 +365,18 @@ error code that occurred during the transfer, as documented in the kernel
 Documentation file Documentation/i2c/fault-codes.
 
 
+
 .. _`i2c_timings`:
 
 struct i2c_timings
 ==================
 
-.. c:type:: struct i2c_timings
+.. c:type:: i2c_timings
 
     I2C timing information
 
 
+.. _`i2c_timings.definition`:
 
 Definition
 ----------
@@ -365,6 +392,7 @@ Definition
   };
 
 
+.. _`i2c_timings.members`:
 
 Members
 -------
@@ -386,16 +414,18 @@ Members
 
 
 
+
 .. _`i2c_bus_recovery_info`:
 
 struct i2c_bus_recovery_info
 ============================
 
-.. c:type:: struct i2c_bus_recovery_info
+.. c:type:: i2c_bus_recovery_info
 
     I2C bus recovery information
 
 
+.. _`i2c_bus_recovery_info.definition`:
 
 Definition
 ----------
@@ -414,6 +444,7 @@ Definition
   };
 
 
+.. _`i2c_bus_recovery_info.members`:
 
 Members
 -------
@@ -451,16 +482,18 @@ Members
 
 
 
+
 .. _`i2c_adapter_quirks`:
 
 struct i2c_adapter_quirks
 =========================
 
-.. c:type:: struct i2c_adapter_quirks
+.. c:type:: i2c_adapter_quirks
 
     describe flaws of an i2c adapter
 
 
+.. _`i2c_adapter_quirks.definition`:
 
 Definition
 ----------
@@ -477,12 +510,13 @@ Definition
   };
 
 
+.. _`i2c_adapter_quirks.members`:
 
 Members
 -------
 
 :``flags``:
-    see I2C_AQ_\* for possible flags and read below
+    see I2C_AQ\_\* for possible flags and read below
 
 :``max_num_msgs``:
     maximum number of messages per transfer
@@ -501,19 +535,23 @@ Members
 
 
 
-Description
------------
 
-Note about combined messages: Some I2C controllers can only send one message
+.. _`i2c_adapter_quirks.note-about-combined-messages`:
+
+Note about combined messages
+----------------------------
+
+Some I2C controllers can only send one message
 per transfer, plus something called combined message or write-then-read.
 This is (usually) a small write message followed by a read message and
 barely enough to access register based devices like EEPROMs. There is a flag
 to support this mode. It implies max_num_msg = 2 and does the length checks
-with max_comb_\\*_len because combined message mode usually has its own
+with max_comb\_\\*_len because combined message mode usually has its own
 limitations. Because of HW implementations, some controllers can actually do
 write-then-anything or other variants. To support that, write-then-read has
 been broken out into smaller bits like write-first and read-second which can
 be combined as needed.
+
 
 
 .. _`i2c_check_quirks`:
@@ -532,12 +570,14 @@ i2c_check_quirks
         quirk flags
 
 
-.. _`i2c_check_quirks.description`:
 
-Description
------------
+.. _`i2c_check_quirks.return`:
 
-Return: true if the adapter has all the specified quirk flags, false if not
+Return
+------
+
+true if the adapter has all the specified quirk flags, false if not
+
 
 
 .. _`module_i2c_driver`:
@@ -553,6 +593,7 @@ module_i2c_driver
         i2c_driver struct
 
 
+
 .. _`module_i2c_driver.description`:
 
 Description
@@ -561,6 +602,7 @@ Description
 Helper macro for I2C drivers which do not do anything special in module
 init/exit. This eliminates a lot of boilerplate. Each module may only
 use this macro once, and calling it replaces :c:func:`module_init` and :c:func:`module_exit`
+
 
 
 .. _`builtin_i2c_driver`:
@@ -574,6 +616,7 @@ builtin_i2c_driver
 
     :param __i2c_driver:
         i2c_driver struct
+
 
 
 .. _`builtin_i2c_driver.description`:

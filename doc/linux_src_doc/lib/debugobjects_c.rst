@@ -4,6 +4,7 @@
 debugobjects.c
 ==============
 
+
 .. _`debug_object_init`:
 
 debug_object_init
@@ -20,6 +21,7 @@ debug_object_init
         pointer to an object specific debug description structure
 
 
+
 .. _`debug_object_init_on_stack`:
 
 debug_object_init_on_stack
@@ -34,6 +36,7 @@ debug_object_init_on_stack
 
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
+
 
 
 .. _`debug_object_activate`:
@@ -53,6 +56,7 @@ debug_object_activate
         Returns 0 for success, -EINVAL for check failed.
 
 
+
 .. _`debug_object_deactivate`:
 
 debug_object_deactivate
@@ -67,6 +71,7 @@ debug_object_deactivate
 
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
+
 
 
 .. _`debug_object_destroy`:
@@ -85,6 +90,7 @@ debug_object_destroy
         pointer to an object specific debug description structure
 
 
+
 .. _`debug_object_free`:
 
 debug_object_free
@@ -101,6 +107,7 @@ debug_object_free
         pointer to an object specific debug description structure
 
 
+
 .. _`debug_object_assert_init`:
 
 debug_object_assert_init
@@ -115,6 +122,7 @@ debug_object_assert_init
 
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
+
 
 
 .. _`debug_object_active_state`:

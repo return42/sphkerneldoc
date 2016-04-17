@@ -4,16 +4,18 @@
 consumer.h
 ==========
 
+
 .. _`pre_voltage_change_data`:
 
 struct pre_voltage_change_data
 ==============================
 
-.. c:type:: struct pre_voltage_change_data
+.. c:type:: pre_voltage_change_data
 
     Data sent with PRE_VOLTAGE_CHANGE event
 
 
+.. _`pre_voltage_change_data.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`pre_voltage_change_data.members`:
 
 Members
 -------
@@ -42,16 +45,18 @@ Members
 
 
 
+
 .. _`regulator_bulk_data`:
 
 struct regulator_bulk_data
 ==========================
 
-.. c:type:: struct regulator_bulk_data
+.. c:type:: regulator_bulk_data
 
     Data used for bulk regulator operations.
 
 
+.. _`regulator_bulk_data.definition`:
 
 Definition
 ----------
@@ -65,6 +70,7 @@ Definition
   };
 
 
+.. _`regulator_bulk_data.members`:
 
 Members
 -------
@@ -82,6 +88,9 @@ Members
     by the bulk API.
 
 
+
+
+.. _`regulator_bulk_data.description`:
 
 Description
 -----------

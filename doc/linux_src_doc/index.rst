@@ -9,9 +9,12 @@ linux_src_doc
 
    arch/index
    block/index
+   certs/index
+   crypto/index
    drivers/index
    fs/index
    include/index
+   init/index
    ipc/index
    kernel/index
    lib/index
@@ -19,3 +22,4 @@ linux_src_doc
    net/index
    security/index
    sound/index
+   virt/index

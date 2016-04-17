@@ -4,6 +4,7 @@
 vga_switcheroo.c
 ================
 
+
 .. _`overview`:
 
 Overview
@@ -14,6 +15,7 @@ These come in two flavors:
 
 * muxed: Dual GPUs with a multiplexer chip to switch outputs between GPUs.
 * muxless: Dual GPUs but only one of them is connected to outputs.
+
         The other one is merely used to offload rendering, its results
         are copied over PCIe into the framebuffer. On Linux this is
         supported with DRI PRIME.
@@ -50,16 +52,18 @@ only the DDC lines and not the entire output avoids unnecessary
 flickering.
 
 
+
 .. _`vga_switcheroo_client`:
 
 struct vga_switcheroo_client
 ============================
 
-.. c:type:: struct vga_switcheroo_client
+.. c:type:: vga_switcheroo_client
 
     registered client
 
 
+.. _`vga_switcheroo_client.definition`:
 
 Definition
 ----------
@@ -78,6 +82,7 @@ Definition
   };
 
 
+.. _`vga_switcheroo_client.members`:
 
 Members
 -------
@@ -112,6 +117,9 @@ Members
 
 
 
+
+.. _`vga_switcheroo_client.description`:
+
 Description
 -----------
 
@@ -120,16 +128,18 @@ For audio clients, the ``fb_info``\ , ``active`` and ``driver_power_control`` me
 are bogus.
 
 
+
 .. _`vgasr_priv`:
 
 struct vgasr_priv
 =================
 
-.. c:type:: struct vgasr_priv
+.. c:type:: vgasr_priv
 
     vga_switcheroo private data
 
 
+.. _`vgasr_priv.definition`:
 
 Definition
 ----------
@@ -151,14 +161,14 @@ Definition
   };
 
 
+.. _`vgasr_priv.members`:
 
 Members
 -------
 
 :``active``:
-    whether vga_switcheroo is enabled.::
-
-            Prerequisite is the registration of two GPUs and a handler
+    whether vga_switcheroo is enabled.
+    Prerequisite is the registration of two GPUs and a handler
 
 :``delayed_switch_active``:
     whether a delayed switch is pending
@@ -194,11 +204,15 @@ Members
 
 
 
+
+.. _`vgasr_priv.description`:
+
 Description
 -----------
 
 vga_switcheroo private data. Currently only one vga_switcheroo instance
 per system is supported.
+
 
 
 .. _`vga_switcheroo_register_handler`:
@@ -217,6 +231,7 @@ vga_switcheroo_register_handler
         handler flags
 
 
+
 .. _`vga_switcheroo_register_handler.description`:
 
 Description
@@ -225,7 +240,15 @@ Description
 Register handler. Enable vga_switcheroo if two vga clients have already
 registered.
 
-Return: 0 on success, -EINVAL if a handler was already registered.
+
+
+.. _`vga_switcheroo_register_handler.return`:
+
+Return
+------
+
+0 on success, -EINVAL if a handler was already registered.
+
 
 
 .. _`vga_switcheroo_unregister_handler`:
@@ -241,6 +264,7 @@ vga_switcheroo_unregister_handler
         no arguments
 
 
+
 .. _`vga_switcheroo_unregister_handler.description`:
 
 Description
@@ -248,6 +272,7 @@ Description
 
 
 Unregister handler. Disable vga_switcheroo.
+
 
 
 .. _`vga_switcheroo_handler_flags`:
@@ -263,6 +288,7 @@ vga_switcheroo_handler_flags
         no arguments
 
 
+
 .. _`vga_switcheroo_handler_flags.description`:
 
 Description
@@ -271,8 +297,16 @@ Description
 
 Helper for clients to obtain the handler flags bitmask.
 
-Return: Handler flags. A value of 0 means that no handler is registered
+
+
+.. _`vga_switcheroo_handler_flags.return`:
+
+Return
+------
+
+Handler flags. A value of 0 means that no handler is registered
 or that the handler has no special capabilities.
+
 
 
 .. _`vga_switcheroo_register_client`:
@@ -295,6 +329,7 @@ vga_switcheroo_register_client
         runtime pm
 
 
+
 .. _`vga_switcheroo_register_client.description`:
 
 Description
@@ -304,7 +339,15 @@ Register vga client (GPU). Enable vga_switcheroo if another GPU and a
 handler have already registered. The power state of the client is assumed
 to be ON.
 
-Return: 0 on success, -ENOMEM on memory allocation error.
+
+
+.. _`vga_switcheroo_register_client.return`:
+
+Return
+------
+
+0 on success, -ENOMEM on memory allocation error.
+
 
 
 .. _`vga_switcheroo_register_audio_client`:
@@ -326,6 +369,7 @@ vga_switcheroo_register_audio_client
         client identifier
 
 
+
 .. _`vga_switcheroo_register_audio_client.description`:
 
 Description
@@ -334,7 +378,15 @@ Description
 Register audio client (audio device on a GPU). The power state of the
 client is assumed to be ON.
 
-Return: 0 on success, -ENOMEM on memory allocation error.
+
+
+.. _`vga_switcheroo_register_audio_client.return`:
+
+Return
+------
+
+0 on success, -ENOMEM on memory allocation error.
+
 
 
 .. _`vga_switcheroo_get_client_state`:
@@ -350,6 +402,7 @@ vga_switcheroo_get_client_state
         client pci device
 
 
+
 .. _`vga_switcheroo_get_client_state.description`:
 
 Description
@@ -358,7 +411,15 @@ Description
 Obtain power state of a given client as seen from vga_switcheroo.
 The function is only called from hda_intel.c.
 
-Return: Power state.
+
+
+.. _`vga_switcheroo_get_client_state.return`:
+
+Return
+------
+
+Power state.
+
 
 
 .. _`vga_switcheroo_unregister_client`:
@@ -374,12 +435,14 @@ vga_switcheroo_unregister_client
         client pci device
 
 
+
 .. _`vga_switcheroo_unregister_client.description`:
 
 Description
 -----------
 
 Unregister client. Disable vga_switcheroo if this is a vga client (GPU).
+
 
 
 .. _`vga_switcheroo_client_fb_set`:
@@ -398,6 +461,7 @@ vga_switcheroo_client_fb_set
         framebuffer
 
 
+
 .. _`vga_switcheroo_client_fb_set.description`:
 
 Description
@@ -405,6 +469,7 @@ Description
 
 Set framebuffer of a given client. The console will be remapped to this
 on switching.
+
 
 
 .. _`vga_switcheroo_lock_ddc`:
@@ -420,6 +485,7 @@ vga_switcheroo_lock_ddc
         client pci device
 
 
+
 .. _`vga_switcheroo_lock_ddc.description`:
 
 Description
@@ -431,7 +497,14 @@ This allows the inactive client to probe EDID. The DDC lines must
 afterwards be switched back by calling :c:func:`vga_switcheroo_unlock_ddc`,
 even if this function returns an error.
 
-Return: Previous DDC owner on success or a negative int on error.
+
+
+.. _`vga_switcheroo_lock_ddc.return`:
+
+Return
+------
+
+Previous DDC owner on success or a negative int on error.
 Specifically, ``-ENODEV`` if no handler has registered or if the handler
 does not support switching the DDC lines. Also, a negative value
 returned by the handler is propagated back to the caller.
@@ -439,6 +512,7 @@ The return value has merely an informational purpose for any caller
 which might be interested in it. It is acceptable to ignore the return
 value and simply rely on the result of the subsequent EDID probe,
 which will be ``NULL`` if DDC switching failed.
+
 
 
 .. _`vga_switcheroo_unlock_ddc`:
@@ -454,6 +528,7 @@ vga_switcheroo_unlock_ddc
         client pci device
 
 
+
 .. _`vga_switcheroo_unlock_ddc.description`:
 
 Description
@@ -463,13 +538,21 @@ Switch DDC lines back to the previous owner after calling
 :c:func:`vga_switcheroo_lock_ddc`. This must be called even if
 :c:func:`vga_switcheroo_lock_ddc` returned an error.
 
-Return: Previous DDC owner on success (i.e. the client identifier of ``pdev``\ )
+
+
+.. _`vga_switcheroo_unlock_ddc.return`:
+
+Return
+------
+
+Previous DDC owner on success (i.e. the client identifier of ``pdev``\ )
 or a negative int on error.
 Specifically, ``-ENODEV`` if no handler has registered or if the handler
 does not support switching the DDC lines. Also, a negative value
 returned by the handler is propagated back to the caller.
 Finally, invoking this function without calling :c:func:`vga_switcheroo_lock_ddc`
 first is not allowed and will result in ``-EINVAL``\ .
+
 
 
 .. _`manual-switching-and-manual-power-control`:
@@ -486,6 +569,7 @@ The following commands are understood:
 * OFF: Power off the device not in use.
 * ON: Power on the device not in use.
 * IGD: Switch to the integrated graphics device.
+
         Power on the integrated GPU if necessary, power off the discrete GPU.
         Prerequisite is that no user space processes (e.g. Xorg, alsactl)
         have opened device files of the GPUs or the audio client. If the
@@ -494,11 +578,13 @@ The following commands are understood:
 
 * DIS: Switch to the discrete graphics device.
 * DIGD: Delayed switch to the integrated graphics device.
+
         This will perform the switch once the last user space process has
         closed the device files of the GPUs and the audio client.
 
 * DDIS: Delayed switch to the discrete graphics device.
 * MIGD: Mux-only switch to the integrated graphics device.
+
         Does not remap console or change the power state of either gpu.
         If the integrated GPU is currently off, the screen will turn black.
         If it is on, the screen will show whatever happens to be in VRAM.
@@ -511,6 +597,7 @@ the ON and OFF commands are a no-op (see next section).
 
 For muxless machines, the IGD/DIS, DIGD/DDIS and MIGD/MDIS commands
 should not be used.
+
 
 
 .. _`vga_switcheroo_process_delayed_switch`:
@@ -526,6 +613,7 @@ vga_switcheroo_process_delayed_switch
         no arguments
 
 
+
 .. _`vga_switcheroo_process_delayed_switch.manual-switching-and-manual-power-control`:
 
 Manual switching and manual power control
@@ -535,9 +623,17 @@ Manual switching and manual power control
 Process a delayed switch if one is pending. DRM drivers should call this
 from their ->lastclose callback.
 
-Return: 0 on success. -EINVAL if no delayed switch is pending, if the client
+
+
+.. _`vga_switcheroo_process_delayed_switch.return`:
+
+Return
+------
+
+0 on success. -EINVAL if no delayed switch is pending, if the client
 has unregistered in the meantime or if there are other clients blocking the
 switch. If the actual switch fails, an error is reported and 0 is returned.
+
 
 
 .. _`driver-power-control`:
@@ -575,6 +671,7 @@ As a workaround, the mux is forced to the integrated GPU on runtime suspend,
 cf. https://bugs.freedesktop.org/show_bug.cgi?id=75917
 
 
+
 .. _`vga_switcheroo_set_dynamic_switch`:
 
 vga_switcheroo_set_dynamic_switch
@@ -591,6 +688,7 @@ vga_switcheroo_set_dynamic_switch
         new power state
 
 
+
 .. _`vga_switcheroo_set_dynamic_switch.description`:
 
 Description
@@ -601,6 +699,7 @@ When the driver decides to power up or down, it notifies vga_switcheroo
 thereof using this helper so that it can (a) power the audio device on
 the GPU up or down, and (b) update its internal power state representation
 for the device.
+
 
 
 .. _`vga_switcheroo_init_domain_pm_ops`:
@@ -619,6 +718,7 @@ vga_switcheroo_init_domain_pm_ops
         power domain
 
 
+
 .. _`vga_switcheroo_init_domain_pm_ops.description`:
 
 Description
@@ -630,6 +730,7 @@ power to the GPU. Likewise it needs to reinstate power before the GPU
 can resume. To this end, this helper augments the suspend/resume functions
 by the requisite calls to the handler. It needs only be called on platforms
 where the power switch is separate to the device being powered down.
+
 
 
 .. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio`:
@@ -648,6 +749,7 @@ vga_switcheroo_init_domain_pm_optimus_hdmi_audio
         power domain
 
 
+
 .. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio.description`:
 
 Description
@@ -657,6 +759,13 @@ Helper for GPUs whose power state is controlled by the driver's runtime pm.
 When the audio device resumes, the GPU needs to be woken. This helper
 augments the audio device's resume function to do that.
 
-Return: 0 on success, -EINVAL if no power management operations are
+
+
+.. _`vga_switcheroo_init_domain_pm_optimus_hdmi_audio.return`:
+
+Return
+------
+
+0 on success, -EINVAL if no power management operations are
 defined for this device.
 

@@ -1,0 +1,36 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+==========
+max98090.c
+==========
+
+
+.. _`max98090_mic_detect`:
+
+max98090_mic_detect
+===================
+
+.. c:function:: int max98090_mic_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+
+    Enable microphone detection via the MAX98090 IRQ
+
+    :param struct snd_soc_codec \*codec:
+        MAX98090 codec
+
+    :param struct snd_soc_jack \*jack:
+        jack to report detection events on
+
+
+
+.. _`max98090_mic_detect.description`:
+
+Description
+-----------
+
+Enable microphone detection via IRQ on the MAX98090.  If GPIOs are
+being used to bring out signals to the processor then only platform
+data configuration is needed for MAX98090 and processor GPIOs should
+be configured using :c:func:`snd_soc_jack_add_gpios` instead.
+
+If no jack is supplied detection will be disabled.
+

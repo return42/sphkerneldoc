@@ -7,4 +7,8 @@ regulator
 .. toctree::
    :maxdepth: 1
 
-   core_c
+   devres_c
+   helpers_c
+   of_regulator_c
+   wm8350-regulator_c
+   wm8400-regulator_c

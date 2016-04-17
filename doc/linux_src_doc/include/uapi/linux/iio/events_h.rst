@@ -4,16 +4,18 @@
 events.h
 ========
 
+
 .. _`iio_event_data`:
 
 struct iio_event_data
 =====================
 
-.. c:type:: struct iio_event_data
+.. c:type:: iio_event_data
 
     The actual event being pushed to userspace
 
 
+.. _`iio_event_data.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`iio_event_data.members`:
 
 Members
 -------

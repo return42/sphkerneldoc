@@ -4,6 +4,7 @@
 mptspi.c
 ========
 
+
 .. _`mptspi_settargetnegoparms`:
 
 mptspi_setTargetNegoParms
@@ -23,6 +24,7 @@ mptspi_setTargetNegoParms
         SCSI device
 
 
+
 .. _`mptspi_settargetnegoparms.description`:
 
 Description
@@ -30,6 +32,7 @@ Description
 
 Update the target negotiation parameters based on the the Inquiry
 data, adapter capabilities, and NVRAM settings.
+
 
 
 .. _`mptspi_writeiocpage4`:
@@ -51,15 +54,24 @@ mptspi_writeIOCPage4
         write IOC Page4 for this ID & Bus
 
 
-.. _`mptspi_writeiocpage4.description`:
 
-Description
------------
+.. _`mptspi_writeiocpage4.return`:
 
-Return: -EAGAIN if unable to obtain a Message Frame
+Return
+------
+
+-EAGAIN if unable to obtain a Message Frame
 or 0 if success.
 
-Remark: We do not wait for a return, write pages sequentially.
+
+
+.. _`mptspi_writeiocpage4.remark`:
+
+Remark
+------
+
+We do not wait for a return, write pages sequentially.
+
 
 
 .. _`mptspi_inittarget`:
@@ -81,16 +93,18 @@ mptspi_initTarget
         SCSI device
 
 
-.. _`mptspi_inittarget.description`:
 
-Description
------------
+.. _`mptspi_inittarget.note`:
 
-NOTE: It's only SAFE to call this routine if data points to
+NOTE
+----
+
+It's only SAFE to call this routine if data points to
 sane & valid STANDARD INQUIRY data!
 
 Allocate and initialize memory for this target.
 Save inquiry data.
+
 
 
 .. _`mptspi_is_raid`:
@@ -109,15 +123,15 @@ mptspi_is_raid
         target device id
 
 
-.. _`mptspi_is_raid.description`:
 
-Description
------------
+.. _`mptspi_is_raid.return`:
 
-Return::
+Return
+------
 
-        non-zero = true
-        zero = false
+non-zero = true
+zero = false
+
 
 
 .. _`mptspi_print_write_nego`:
@@ -139,6 +153,7 @@ mptspi_print_write_nego
         negotiation parameters
 
 
+
 .. _`mptspi_print_read_nego`:
 
 mptspi_print_read_nego
@@ -158,6 +173,7 @@ mptspi_print_read_nego
         negotiation parameters
 
 
+
 .. _`mptspi_init`:
 
 mptspi_init
@@ -171,6 +187,7 @@ mptspi_init
         no arguments
 
 
+
 .. _`mptspi_init.description`:
 
 Description
@@ -178,6 +195,7 @@ Description
 
 
 Returns 0 for success, non-zero for failure.
+
 
 
 .. _`mptspi_exit`:

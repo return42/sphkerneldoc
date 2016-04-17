@@ -4,16 +4,18 @@
 v4l2-flash-led-class.h
 ======================
 
+
 .. _`v4l2_flash_config`:
 
 struct v4l2_flash_config
 ========================
 
-.. c:type:: struct v4l2_flash_config
+.. c:type:: v4l2_flash_config
 
     V4L2 Flash sub-device initialization data
 
 
+.. _`v4l2_flash_config.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`v4l2_flash_config.members`:
 
 Members
 -------
@@ -54,16 +57,18 @@ Members
 
 
 
+
 .. _`v4l2_flash`:
 
 struct v4l2_flash
 =================
 
-.. c:type:: struct v4l2_flash
+.. c:type:: v4l2_flash
 
     Flash sub-device context
 
 
+.. _`v4l2_flash.definition`:
 
 Definition
 ----------
@@ -80,6 +85,7 @@ Definition
   };
 
 
+.. _`v4l2_flash.members`:
 
 Members
 -------
@@ -103,6 +109,7 @@ Members
 :``ctrls``:
     array of pointers to controls, whose values define
     the sub-device state
+
 
 
 
@@ -135,6 +142,7 @@ v4l2_flash_init
         initialization data for V4L2 Flash sub-device
 
 
+
 .. _`v4l2_flash_init.description`:
 
 Description
@@ -142,9 +150,17 @@ Description
 
 Create V4L2 Flash sub-device wrapping given LED subsystem device.
 
-Returns: A valid pointer, or, when an error occurs, the return
+
+
+.. _`v4l2_flash_init.returns`:
+
+Returns
+-------
+
+A valid pointer, or, when an error occurs, the return
 value is encoded using :c:func:`ERR_PTR`. Use :c:func:`IS_ERR` to check and
 :c:func:`PTR_ERR` to obtain the numeric return value.
+
 
 
 .. _`v4l2_flash_release`:
@@ -158,6 +174,7 @@ v4l2_flash_release
 
     :param struct v4l2_flash \*v4l2_flash:
         the V4L2 Flash sub-device to release
+
 
 
 .. _`v4l2_flash_release.description`:

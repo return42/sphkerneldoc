@@ -4,16 +4,18 @@
 device.h
 ========
 
+
 .. _`bus_type`:
 
 struct bus_type
 ===============
 
-.. c:type:: struct bus_type
+.. c:type:: bus_type
 
     The bus type of the device
 
 
+.. _`bus_type.definition`:
 
 Definition
 ----------
@@ -44,6 +46,7 @@ Definition
   };
 
 
+.. _`bus_type.members`:
 
 Members
 -------
@@ -121,6 +124,9 @@ Members
 
 
 
+
+.. _`bus_type.description`:
+
 Description
 -----------
 
@@ -134,16 +140,32 @@ default attributes, the bus' methods, PM operations, and the driver core's
 private data.
 
 
+
 .. _`probe_type`:
 
 enum probe_type
 ===============
 
-.. c:type:: enum probe_type
+.. c:type:: probe_type
 
     device driver probe type to try Device drivers may opt in for special handling of their respective probe routines. This tells the core what to expect and prefer.
 
 
+.. _`probe_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum probe_type {
+      PROBE_DEFAULT_STRATEGY,
+      PROBE_PREFER_ASYNCHRONOUS,
+      PROBE_FORCE_SYNCHRONOUS
+    };
+
+
+.. _`probe_type.constants`:
 
 Constants
 ---------
@@ -164,6 +186,8 @@ Constants
     handling - re-probing always ends up being done asynchronously).
 
 
+.. _`probe_type.description`:
+
 Description
 -----------
 
@@ -174,16 +198,18 @@ to speed up boot process while we are validating the rest of the
 drivers.
 
 
+
 .. _`device_driver`:
 
 struct device_driver
 ====================
 
-.. c:type:: struct device_driver
+.. c:type:: device_driver
 
     The basic device driver structure
 
 
+.. _`device_driver.definition`:
 
 Definition
 ----------
@@ -210,6 +236,7 @@ Definition
   };
 
 
+.. _`device_driver.members`:
 
 Members
 -------
@@ -271,6 +298,9 @@ Members
 
 
 
+
+.. _`device_driver.description`:
+
 Description
 -----------
 
@@ -282,16 +312,18 @@ can export information and configuration variables that are independent
 of any specific device.
 
 
+
 .. _`subsys_interface`:
 
 struct subsys_interface
 =======================
 
-.. c:type:: struct subsys_interface
+.. c:type:: subsys_interface
 
     interfaces to device functions
 
 
+.. _`subsys_interface.definition`:
 
 Definition
 ----------
@@ -307,6 +339,7 @@ Definition
   };
 
 
+.. _`subsys_interface.members`:
 
 Members
 -------
@@ -328,6 +361,9 @@ Members
 
 
 
+
+.. _`subsys_interface.description`:
+
 Description
 -----------
 
@@ -337,16 +373,18 @@ exclusively claim or control devices. Interfaces usually represent
 a specific functionality of a subsystem/class of devices.
 
 
+
 .. _`class`:
 
 struct class
 ============
 
-.. c:type:: struct class
+.. c:type:: class
 
     device classes
 
 
+.. _`class.definition`:
 
 Definition
 ----------
@@ -372,6 +410,7 @@ Definition
   };
 
 
+.. _`class.members`:
 
 Members
 -------
@@ -427,6 +466,9 @@ Members
 
 
 
+
+.. _`class.description`:
+
 Description
 -----------
 
@@ -437,16 +479,18 @@ to work with devices based on what they do, rather than how they are
 connected or how they work.
 
 
+
 .. _`device`:
 
 struct device
 =============
 
-.. c:type:: struct device
+.. c:type:: device
 
     The basic device structure
 
 
+.. _`device.definition`:
 
 Definition
 ----------
@@ -504,21 +548,20 @@ Definition
   };
 
 
+.. _`device.members`:
 
 Members
 -------
 
 :``parent``:
-    The device's "parent" device, the device to which it is attached.::
-
-                    In most cases, a parent device is some sort of bus or host
-                    controller. If parent is NULL, the device, is a top-level device,
-                    which is not usually what you want.
+    The device's "parent" device, the device to which it is attached.
+    In most cases, a parent device is some sort of bus or host
+    controller. If parent is NULL, the device, is a top-level device,
+    which is not usually what you want.
 
 :``p``:
-    Holds the private data of the driver core portions of the device.::
-
-                    See the comment of the struct device_private for detail.
+    Holds the private data of the driver core portions of the device.
+    See the comment of the struct device_private for detail.
 
 :``kobj``:
     A top-level, abstract class from which other classes are derived.
@@ -527,10 +570,9 @@ Members
     Initial name of the device.
 
 :``type``:
-    The type of device.::
-
-                    This identifies the device type and carries type-specific
-                    information.
+    The type of device.
+    This identifies the device type and carries type-specific
+    information.
 
 :``mutex``:
     Mutex to synchronize calls to its driver.
@@ -542,23 +584,14 @@ Members
     Which driver has allocated this
 
 :``platform_data``:
-    Platform data specific to the device.::
-
-                    Example: For devices on custom boards, as typical of embedded
-                    and SOC based hardware, Linux often uses platform_data to point
-                    to board-specific structures describing devices and how they
-                    are wired.  That can include what ports are available, chip
-                    variants, which GPIO pins act in what additional roles, and so
-                    on.  This shrinks the "Board Support Packages" (BSPs) and
-                    minimizes board-specific #ifdefs in drivers.
+    Platform data specific to the device.
 
 :``driver_data``:
     Private pointer for driver specific info.
 
 :``power``:
-    For device power management.::
-
-                    See Documentation/power/devices.txt for details.
+    For device power management.
+    See Documentation/power/devices.txt for details.
 
 :``pm_domain``:
     Provide callbacks that are executed during system suspend,
@@ -569,9 +602,8 @@ Members
     The generic MSI domain this device is using.
 
 :``pins``:
-    For device pin management.::
-
-                    See Documentation/pinctrl.txt for details.
+    For device pin management.
+    See Documentation/pinctrl.txt for details.
 
 :``msi_list``:
     Hosts MSI descriptors
@@ -649,6 +681,26 @@ Members
 
 
 
+
+.. _`device.example`:
+
+Example
+-------
+
+.. code-block:: c
+
+For devices on custom boards, as typical of embedded
+		and SOC based hardware, Linux often uses platform_data to point
+		to board-specific structures describing devices and how they
+		are wired.  That can include what ports are available, chip
+		variants, which GPIO pins act in what additional roles, and so
+		on.  This shrinks the "Board Support Packages" (BSPs) and
+		minimizes board-specific #ifdefs in drivers.
+
+
+
+.. _`device.description`:
+
 Description
 -----------
 
@@ -659,6 +711,7 @@ however, track additional information about the devices they host. As a
 result, it is rare for devices to be represented by bare device structures;
 instead, that structure, like kobject structures, is usually embedded within
 a higher-level representation of the device.
+
 
 
 .. _`module_driver`:
@@ -684,6 +737,7 @@ module_driver
         variable arguments
 
 
+
 .. _`module_driver.description`:
 
 Description
@@ -691,6 +745,7 @@ Description
 
 Use this macro to construct bus specific macros for registering
 drivers, and do not use it on its own.
+
 
 
 .. _`builtin_driver`:
@@ -711,6 +766,7 @@ builtin_driver
 
     :param ...:
         variable arguments
+
 
 
 .. _`builtin_driver.description`:

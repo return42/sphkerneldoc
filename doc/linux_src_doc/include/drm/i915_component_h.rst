@@ -4,16 +4,18 @@
 i915_component.h
 ================
 
+
 .. _`i915_audio_component_ops`:
 
 struct i915_audio_component_ops
 ===============================
 
-.. c:type:: struct i915_audio_component_ops
+.. c:type:: i915_audio_component_ops
 
     Ops implemented by i915 driver, called by hda driver
 
 
+.. _`i915_audio_component_ops.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`i915_audio_component_ops.members`:
 
 Members
 -------
@@ -74,16 +77,18 @@ Members
 
 
 
+
 .. _`i915_audio_component_audio_ops`:
 
 struct i915_audio_component_audio_ops
 =====================================
 
-.. c:type:: struct i915_audio_component_audio_ops
+.. c:type:: i915_audio_component_audio_ops
 
     Ops implemented by hda driver, called by i915 driver
 
 
+.. _`i915_audio_component_audio_ops.definition`:
 
 Definition
 ----------
@@ -96,6 +101,7 @@ Definition
   };
 
 
+.. _`i915_audio_component_audio_ops.members`:
 
 Members
 -------
@@ -113,16 +119,18 @@ Members
 
 
 
+
 .. _`i915_audio_component`:
 
 struct i915_audio_component
 ===========================
 
-.. c:type:: struct i915_audio_component
+.. c:type:: i915_audio_component
 
     Used for direct communication between i915 and hda drivers
 
 
+.. _`i915_audio_component.definition`:
 
 Definition
 ----------
@@ -137,6 +145,7 @@ Definition
   };
 
 
+.. _`i915_audio_component.members`:
 
 Members
 -------

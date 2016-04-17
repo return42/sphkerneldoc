@@ -4,6 +4,7 @@
 auditfilter.c
 =============
 
+
 .. _`audit_rule_change`:
 
 audit_rule_change
@@ -29,6 +30,7 @@ audit_rule_change
         size of payload data
 
 
+
 .. _`audit_list_rules_send`:
 
 audit_list_rules_send
@@ -45,6 +47,7 @@ audit_list_rules_send
         netlink audit message sequence (serial) number
 
 
+
 .. _`parent_len`:
 
 parent_len
@@ -56,6 +59,7 @@ parent_len
 
     :param const char \*path:
         pathname of which to determine length
+
 
 
 .. _`audit_compare_dname_path`:

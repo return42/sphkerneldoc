@@ -4,16 +4,18 @@
 scif_ioctl.h
 ============
 
+
 .. _`scif_port_id`:
 
 struct scif_port_id
 ===================
 
-.. c:type:: struct scif_port_id
+.. c:type:: scif_port_id
 
     SCIF port information
 
 
+.. _`scif_port_id.definition`:
 
 Definition
 ----------
@@ -26,6 +28,7 @@ Definition
   };
 
 
+.. _`scif_port_id.members`:
 
 Members
 -------
@@ -38,16 +41,18 @@ Members
 
 
 
+
 .. _`scifioctl_connect`:
 
 struct scifioctl_connect
 ========================
 
-.. c:type:: struct scifioctl_connect
+.. c:type:: scifioctl_connect
 
     used for SCIF_CONNECT IOCTL
 
 
+.. _`scifioctl_connect.definition`:
 
 Definition
 ----------
@@ -60,6 +65,7 @@ Definition
   };
 
 
+.. _`scifioctl_connect.members`:
 
 Members
 -------
@@ -72,16 +78,18 @@ Members
 
 
 
+
 .. _`scifioctl_accept`:
 
 struct scifioctl_accept
 =======================
 
-.. c:type:: struct scifioctl_accept
+.. c:type:: scifioctl_accept
 
     used for SCIF_ACCEPTREQ IOCTL
 
 
+.. _`scifioctl_accept.definition`:
 
 Definition
 ----------
@@ -95,6 +103,7 @@ Definition
   };
 
 
+.. _`scifioctl_accept.members`:
 
 Members
 -------
@@ -110,16 +119,18 @@ Members
 
 
 
+
 .. _`scifioctl_msg`:
 
 struct scifioctl_msg
 ====================
 
-.. c:type:: struct scifioctl_msg
+.. c:type:: scifioctl_msg
 
     used for SCIF_SEND/SCIF_RECV IOCTL
 
 
+.. _`scifioctl_msg.definition`:
 
 Definition
 ----------
@@ -134,6 +145,7 @@ Definition
   };
 
 
+.. _`scifioctl_msg.members`:
 
 Members
 -------
@@ -152,16 +164,18 @@ Members
 
 
 
+
 .. _`scifioctl_reg`:
 
 struct scifioctl_reg
 ====================
 
-.. c:type:: struct scifioctl_reg
+.. c:type:: scifioctl_reg
 
     used for SCIF_REG IOCTL
 
 
+.. _`scifioctl_reg.definition`:
 
 Definition
 ----------
@@ -178,6 +192,7 @@ Definition
   };
 
 
+.. _`scifioctl_reg.members`:
 
 Members
 -------
@@ -202,16 +217,18 @@ Members
 
 
 
+
 .. _`scifioctl_unreg`:
 
 struct scifioctl_unreg
 ======================
 
-.. c:type:: struct scifioctl_unreg
+.. c:type:: scifioctl_unreg
 
     used for SCIF_UNREG IOCTL
 
 
+.. _`scifioctl_unreg.definition`:
 
 Definition
 ----------
@@ -224,6 +241,7 @@ Definition
   };
 
 
+.. _`scifioctl_unreg.members`:
 
 Members
 -------
@@ -236,16 +254,18 @@ Members
 
 
 
+
 .. _`scifioctl_copy`:
 
 struct scifioctl_copy
 =====================
 
-.. c:type:: struct scifioctl_copy
+.. c:type:: scifioctl_copy
 
     used for SCIF DMA copy IOCTLs
 
 
+.. _`scifioctl_copy.definition`:
 
 Definition
 ----------
@@ -261,6 +281,7 @@ Definition
   };
 
 
+.. _`scifioctl_copy.members`:
 
 Members
 -------
@@ -284,6 +305,9 @@ Members
 
 
 
+
+.. _`scifioctl_copy.description`:
+
 Description
 -----------
 
@@ -291,16 +315,18 @@ This structure is used for SCIF_READFROM, SCIF_WRITETO, SCIF_VREADFROM
 and SCIF_VREADFROM IOCTL's.
 
 
+
 .. _`scifioctl_fence_mark`:
 
 struct scifioctl_fence_mark
 ===========================
 
-.. c:type:: struct scifioctl_fence_mark
+.. c:type:: scifioctl_fence_mark
 
     used for SCIF_FENCE_MARK IOCTL
 
 
+.. _`scifioctl_fence_mark.definition`:
 
 Definition
 ----------
@@ -313,6 +339,7 @@ Definition
   };
 
 
+.. _`scifioctl_fence_mark.members`:
 
 Members
 -------
@@ -325,16 +352,18 @@ Members
 
 
 
+
 .. _`scifioctl_fence_signal`:
 
 struct scifioctl_fence_signal
 =============================
 
-.. c:type:: struct scifioctl_fence_signal
+.. c:type:: scifioctl_fence_signal
 
     used for SCIF_FENCE_SIGNAL IOCTL
 
 
+.. _`scifioctl_fence_signal.definition`:
 
 Definition
 ----------
@@ -350,6 +379,7 @@ Definition
   };
 
 
+.. _`scifioctl_fence_signal.members`:
 
 Members
 -------
@@ -371,16 +401,18 @@ Members
 
 
 
+
 .. _`scifioctl_node_ids`:
 
 struct scifioctl_node_ids
 =========================
 
-.. c:type:: struct scifioctl_node_ids
+.. c:type:: scifioctl_node_ids
 
     used for SCIF_GET_NODEIDS IOCTL
 
 
+.. _`scifioctl_node_ids.definition`:
 
 Definition
 ----------
@@ -394,6 +426,7 @@ Definition
   };
 
 
+.. _`scifioctl_node_ids.members`:
 
 Members
 -------

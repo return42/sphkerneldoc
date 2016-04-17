@@ -4,16 +4,18 @@
 drm_modeset_lock.h
 ==================
 
+
 .. _`drm_modeset_acquire_ctx`:
 
 struct drm_modeset_acquire_ctx
 ==============================
 
-.. c:type:: struct drm_modeset_acquire_ctx
+.. c:type:: drm_modeset_acquire_ctx
 
     locking context (see ww_acquire_ctx)
 
 
+.. _`drm_modeset_acquire_ctx.definition`:
 
 Definition
 ----------
@@ -28,6 +30,7 @@ Definition
   };
 
 
+.. _`drm_modeset_acquire_ctx.members`:
 
 Members
 -------
@@ -46,6 +49,9 @@ Members
 
 
 
+
+.. _`drm_modeset_acquire_ctx.description`:
+
 Description
 -----------
 
@@ -54,16 +60,18 @@ ctx.  And if any lock fxn returns -EDEADLK, it must backoff and
 retry.
 
 
+
 .. _`drm_modeset_lock`:
 
 struct drm_modeset_lock
 =======================
 
-.. c:type:: struct drm_modeset_lock
+.. c:type:: drm_modeset_lock
 
     used for locking modeset resources.
 
 
+.. _`drm_modeset_lock.definition`:
 
 Definition
 ----------
@@ -76,6 +84,7 @@ Definition
   };
 
 
+.. _`drm_modeset_lock.members`:
 
 Members
 -------
@@ -89,10 +98,14 @@ Members
 
 
 
+
+.. _`drm_modeset_lock.description`:
+
 Description
 -----------
 
 Used for locking CRTCs and other modeset resources.
+
 
 
 .. _`drm_modeset_lock_init`:
@@ -108,6 +121,7 @@ drm_modeset_lock_init
         lock to init
 
 
+
 .. _`drm_modeset_lock_fini`:
 
 drm_modeset_lock_fini
@@ -119,6 +133,7 @@ drm_modeset_lock_fini
 
     :param struct drm_modeset_lock \*lock:
         lock to cleanup
+
 
 
 .. _`drm_modeset_is_locked`:

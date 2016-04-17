@@ -4,16 +4,31 @@
 tuner.h
 =======
 
+
 .. _`tuner_mode`:
 
 enum tuner_mode
 ===============
 
-.. c:type:: enum tuner_mode
+.. c:type:: tuner_mode
 
     Mode of the tuner
 
 
+.. _`tuner_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum tuner_mode {
+      T_RADIO,
+      T_ANALOG_TV
+    };
+
+
+.. _`tuner_mode.constants`:
 
 Constants
 ---------
@@ -24,6 +39,8 @@ Constants
 :``T_ANALOG_TV``:
     Tuner core will work in analog TV mode
 
+
+.. _`tuner_mode.description`:
 
 Description
 -----------
@@ -37,16 +54,18 @@ proper tuner range and eventually use a different tuner chip while in
 radio mode.
 
 
+
 .. _`tuner_setup`:
 
 struct tuner_setup
 ==================
 
-.. c:type:: struct tuner_setup
+.. c:type:: tuner_setup
 
     setup the tuner chipsets
 
 
+.. _`tuner_setup.definition`:
 
 Definition
 ----------
@@ -62,6 +81,7 @@ Definition
   };
 
 
+.. _`tuner_setup.members`:
 
 Members
 -------
@@ -70,10 +90,9 @@ Members
     I2C address used to control the tuner device/chipset
 
 :``type``:
-    Type of the tuner, as defined at the TUNER_\* macros.::
-
-                            Each different tuner model should have an unique
-                            identifier.
+    Type of the tuner, as defined at the TUNER\_\* macros.
+    Each different tuner model should have an unique
+    identifier.
 
 :``mode_mask``:
     Mask with the allowed tuner modes: V4L2_TUNER_RADIO,
@@ -94,6 +113,9 @@ Members
     the device.
 
 
+
+
+.. _`tuner_setup.description`:
 
 Description
 -----------

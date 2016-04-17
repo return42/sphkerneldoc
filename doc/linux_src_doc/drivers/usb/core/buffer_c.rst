@@ -4,6 +4,7 @@
 buffer.c
 ========
 
+
 .. _`hcd_buffer_create`:
 
 hcd_buffer_create
@@ -15,7 +16,16 @@ hcd_buffer_create
 
     :param struct usb_hcd \*hcd:
         the bus whose buffer pools are to be initialized
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`hcd_buffer_create.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`hcd_buffer_create.description`:
@@ -29,7 +39,15 @@ will be shared by all drivers using that controller.
 
 Call :c:func:`hcd_buffer_destroy` to clean up after using those pools.
 
-Return: 0 if successful. A negative errno value otherwise.
+
+
+.. _`hcd_buffer_create.return`:
+
+Return
+------
+
+0 if successful. A negative errno value otherwise.
+
 
 
 .. _`hcd_buffer_destroy`:
@@ -43,7 +61,16 @@ hcd_buffer_destroy
 
     :param struct usb_hcd \*hcd:
         the bus whose buffer pools are to be destroyed
-        Context: !:c:func:`in_interrupt`
+
+
+
+.. _`hcd_buffer_destroy.context`:
+
+Context
+-------
+
+!:c:func:`in_interrupt`
+
 
 
 .. _`hcd_buffer_destroy.description`:

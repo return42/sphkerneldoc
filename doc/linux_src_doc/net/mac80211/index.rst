@@ -9,6 +9,5 @@ mac80211
 
    agg-rx_c
    agg-tx_c
-   key_c
-   rx_c
-   sta_info_c
+   tx_c
+   util_c

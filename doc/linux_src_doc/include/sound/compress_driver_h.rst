@@ -4,16 +4,18 @@
 compress_driver.h
 =================
 
+
 .. _`snd_compr_runtime`:
 
 struct snd_compr_runtime
 ========================
 
-.. c:type:: struct snd_compr_runtime
+.. c:type:: snd_compr_runtime
 
     
 
 
+.. _`snd_compr_runtime.definition`:
 
 Definition
 ----------
@@ -34,6 +36,7 @@ Definition
   };
 
 
+.. _`snd_compr_runtime.members`:
 
 Members
 -------
@@ -72,16 +75,18 @@ Members
 
 
 
+
 .. _`snd_compr_stream`:
 
 struct snd_compr_stream
 =======================
 
-.. c:type:: struct snd_compr_stream
+.. c:type:: snd_compr_stream
 
     
 
 
+.. _`snd_compr_stream.definition`:
 
 Definition
 ----------
@@ -100,6 +105,7 @@ Definition
   };
 
 
+.. _`snd_compr_stream.members`:
 
 Members
 -------
@@ -130,16 +136,18 @@ Members
 
 
 
+
 .. _`snd_compr_ops`:
 
 struct snd_compr_ops
 ====================
 
-.. c:type:: struct snd_compr_ops
+.. c:type:: snd_compr_ops
 
     
 
 
+.. _`snd_compr_ops.definition`:
 
 Definition
 ----------
@@ -163,6 +171,7 @@ Definition
   };
 
 
+.. _`snd_compr_ops.members`:
 
 Members
 -------
@@ -215,16 +224,18 @@ Members
 
 
 
+
 .. _`snd_compr`:
 
 struct snd_compr
 ================
 
-.. c:type:: struct snd_compr
+.. c:type:: snd_compr
 
     
 
 
+.. _`snd_compr.definition`:
 
 Definition
 ----------
@@ -245,6 +256,7 @@ Definition
   };
 
 
+.. _`snd_compr.members`:
 
 Members
 -------

@@ -4,6 +4,7 @@
 demux.h
 =======
 
+
 .. _`digital-tv-demux`:
 
 Digital TV Demux
@@ -49,16 +50,33 @@ bottom half context. Thus, if a demux kABI function is called from network
 device code, the function must not sleep.
 
 
+
 .. _`ts_filter_type`:
 
 enum ts_filter_type
 ===================
 
-.. c:type:: enum ts_filter_type
+.. c:type:: ts_filter_type
 
     filter type bitmap for dmx_ts_feed.set()
 
 
+.. _`ts_filter_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ts_filter_type {
+      TS_PACKET,
+      TS_PAYLOAD_ONLY,
+      TS_DECODER,
+      TS_DEMUX
+    };
+
+
+.. _`ts_filter_type.constants`:
 
 Constants
 ---------
@@ -83,11 +101,12 @@ Constants
 struct dmx_ts_feed
 ==================
 
-.. c:type:: struct dmx_ts_feed
+.. c:type:: dmx_ts_feed
 
     Structure that contains a TS feed filter
 
 
+.. _`dmx_ts_feed.definition`:
 
 Definition
 ----------
@@ -104,6 +123,7 @@ Definition
   };
 
 
+.. _`dmx_ts_feed.members`:
 
 Members
 -------
@@ -128,6 +148,9 @@ Members
 
 
 
+
+.. _`dmx_ts_feed.description`:
+
 Description
 -----------
 
@@ -136,16 +159,18 @@ Using this API, the client can set the filtering properties to start/stop
 filtering TS packets on a particular TS feed.
 
 
+
 .. _`dmx_section_filter`:
 
 struct dmx_section_filter
 =========================
 
-.. c:type:: struct dmx_section_filter
+.. c:type:: dmx_section_filter
 
     Structure that describes a section filter
 
 
+.. _`dmx_section_filter.definition`:
 
 Definition
 ----------
@@ -161,6 +186,7 @@ Definition
   };
 
 
+.. _`dmx_section_filter.members`:
 
 Members
 -------
@@ -185,6 +211,9 @@ Members
 
 
 
+
+.. _`dmx_section_filter.description`:
+
 Description
 -----------
 
@@ -195,16 +224,18 @@ corresponding bits are compared. The filter only accepts sections that are
 equal to filter_value in all the tested bit positions.
 
 
+
 .. _`dmx_section_feed`:
 
 struct dmx_section_feed
 =======================
 
-.. c:type:: struct dmx_section_feed
+.. c:type:: dmx_section_feed
 
     Structure that contains a section feed filter
 
 
+.. _`dmx_section_feed.definition`:
 
 Definition
 ----------
@@ -224,6 +255,7 @@ Definition
   };
 
 
+.. _`dmx_section_feed.members`:
 
 Members
 -------
@@ -265,12 +297,16 @@ Members
 
 
 
+
+.. _`dmx_section_feed.description`:
+
 Description
 -----------
 
 A TS feed is typically mapped to a hardware PID filter on the demux chip.
 Using this API, the client can set the filtering properties to start/stop
 filtering TS packets on a particular TS feed.
+
 
 
 .. _`demux-callback`:
@@ -299,6 +335,7 @@ This mechanism is implemented by :c:func:`dmx_ts_cb` and :c:func:`dmx_section_cb
 callbacks.
 
 
+
 .. _`dmx_ts_cb`:
 
 dmx_ts_cb
@@ -322,6 +359,7 @@ dmx_ts_cb
 
     :param struct dmx_ts_feed \*source:
         Indicates which TS feed is the source of the callback.
+
 
 
 .. _`dmx_ts_cb.description`:
@@ -371,10 +409,16 @@ TS packet (TS_PACKET) or just the payload (TS_PACKET|TS_PAYLOAD_ONLY)
 should be returned. If additionally the TS_DECODER bit is set the stream
 will also be sent to the hardware MPEG decoder.
 
-Return::
 
-        0, on success;
-        -EOVERFLOW, on buffer overflow.
+
+.. _`dmx_ts_cb.return`:
+
+Return
+------
+
+0, on success;
+-EOVERFLOW, on buffer overflow.
+
 
 
 .. _`dmx_section_cb`:
@@ -387,9 +431,8 @@ dmx_section_cb
     DVB demux TS filter callback function prototype
 
     :param const u8 \*buffer1:
-        Pointer to the start of the filtered section, e.g.::
-
-                                within the circular buffer of the demux driver.
+        Pointer to the start of the filtered section, e.g.
+        within the circular buffer of the demux driver.
 
     :param size_t buffer1_len:
         Length of the filtered section data in ``buffer1``\ ,
@@ -407,6 +450,7 @@ dmx_section_cb
     :param struct dmx_section_filter \*source:
         Indicates which section feed is the source of the
         callback.
+
 
 
 .. _`dmx_section_cb.description`:
@@ -435,16 +479,31 @@ the section must be discarded. If this happens, the value of the success
 parameter should be DMX_OVERRUN_ERROR on the next callback.
 
 
+
 .. _`dmx_frontend_source`:
 
 enum dmx_frontend_source
 ========================
 
-.. c:type:: enum dmx_frontend_source
+.. c:type:: dmx_frontend_source
 
     Used to identify the type of frontend
 
 
+.. _`dmx_frontend_source.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dmx_frontend_source {
+      DMX_MEMORY_FE,
+      DMX_FRONTEND_0
+    };
+
+
+.. _`dmx_frontend_source.constants`:
 
 Constants
 ---------
@@ -464,11 +523,12 @@ Constants
 struct dmx_frontend
 ===================
 
-.. c:type:: struct dmx_frontend
+.. c:type:: dmx_frontend
 
     Structure that lists the frontends associated with a demux
 
 
+.. _`dmx_frontend.definition`:
 
 Definition
 ----------
@@ -481,6 +541,7 @@ Definition
   };
 
 
+.. _`dmx_frontend.members`:
 
 Members
 -------
@@ -494,11 +555,15 @@ Members
 
 
 
-Description
------------
 
-FIXME: this structure should likely be replaced soon by some
+.. _`dmx_frontend.fixme`:
+
+FIXME
+-----
+
+this structure should likely be replaced soon by some
 media-controller based logic.
+
 
 
 .. _`dmx_demux_caps`:
@@ -506,11 +571,26 @@ media-controller based logic.
 enum dmx_demux_caps
 ===================
 
-.. c:type:: enum dmx_demux_caps
+.. c:type:: dmx_demux_caps
 
     MPEG-2 TS Demux capabilities bitmap
 
 
+.. _`dmx_demux_caps.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum dmx_demux_caps {
+      DMX_TS_FILTERING,
+      DMX_SECTION_FILTERING,
+      DMX_MEMORY_BASED_FILTERING
+    };
+
+
+.. _`dmx_demux_caps.constants`:
 
 Constants
 ---------
@@ -525,10 +605,13 @@ Constants
     set if :c:func:`write` available.
 
 
+.. _`dmx_demux_caps.description`:
+
 Description
 -----------
 
 Those flags are OR'ed in the :c:type:`struct dmx_demux <dmx_demux>`.:c:type:`struct capabilities <capabilities>` field
+
 
 
 .. _`dmx_demux`:
@@ -536,11 +619,12 @@ Those flags are OR'ed in the :c:type:`struct dmx_demux <dmx_demux>`.:c:type:`str
 struct dmx_demux
 ================
 
-.. c:type:: struct dmx_demux
+.. c:type:: dmx_demux
 
     Structure that contains the demux capabilities and callbacks.
 
 
+.. _`dmx_demux.definition`:
 
 Definition
 ----------
@@ -567,6 +651,7 @@ Definition
   };
 
 
+.. _`dmx_demux.members`:
 
 Members
 -------
@@ -646,17 +731,16 @@ Members
     -EINVAL, on bad parameter.
 
 :``release_ts_feed``:
-    Releases the resources allocated with ``allocate_ts_feed``\ .::
-
-            Any filtering in progress on the TS feed should be stopped before
-            calling this function.
-            The ``demux`` function parameter contains a pointer to the demux API and
-            instance data.
-            The ``feed`` function parameter contains a pointer to the TS feed API and
-            instance data.
-            It returns
-                    0 on success;
-                    -EINVAL on bad parameter.
+    Releases the resources allocated with ``allocate_ts_feed``\ .
+    Any filtering in progress on the TS feed should be stopped before
+    calling this function.
+    The ``demux`` function parameter contains a pointer to the demux API and
+    instance data.
+    The ``feed`` function parameter contains a pointer to the TS feed API and
+    instance data.
+    It returns
+    0 on success;
+    -EINVAL on bad parameter.
 
 :``allocate_section_feed``:
     Allocates a new section feed, i.e. a demux resource

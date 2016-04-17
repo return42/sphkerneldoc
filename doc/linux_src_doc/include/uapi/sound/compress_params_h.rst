@@ -4,16 +4,18 @@
 compress_params.h
 =================
 
+
 .. _`snd_enc_vorbis`:
 
 struct snd_enc_vorbis
 =====================
 
-.. c:type:: struct snd_enc_vorbis
+.. c:type:: snd_enc_vorbis
 
     
 
 
+.. _`snd_enc_vorbis.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`snd_enc_vorbis.members`:
 
 Members
 -------
@@ -56,6 +59,9 @@ Members
 
 
 
+
+.. _`snd_enc_vorbis.description`:
+
 Description
 -----------
 
@@ -65,16 +71,18 @@ properties
 For best quality users should specify VBR mode and set quality levels.
 
 
+
 .. _`snd_enc_real`:
 
 struct snd_enc_real
 ===================
 
-.. c:type:: struct snd_enc_real
+.. c:type:: snd_enc_real
 
     
 
 
+.. _`snd_enc_real.definition`:
 
 Definition
 ----------
@@ -88,6 +96,7 @@ Definition
   };
 
 
+.. _`snd_enc_real.members`:
 
 Members
 -------
@@ -103,10 +112,14 @@ Members
 
 
 
+
+.. _`snd_enc_real.description`:
+
 Description
 -----------
 
 These options were extracted from the OpenMAX IL spec
+
 
 
 .. _`snd_enc_flac`:
@@ -114,11 +127,12 @@ These options were extracted from the OpenMAX IL spec
 struct snd_enc_flac
 ===================
 
-.. c:type:: struct snd_enc_flac
+.. c:type:: snd_enc_flac
 
     
 
 
+.. _`snd_enc_flac.definition`:
 
 Definition
 ----------
@@ -131,6 +145,7 @@ Definition
   };
 
 
+.. _`snd_enc_flac.members`:
 
 Members
 -------
@@ -144,11 +159,22 @@ Members
 
 
 
+
+.. _`snd_enc_flac.description`:
+
 Description
 -----------
 
 These options were extracted from the FLAC online documentation
-at http://flac.sourceforge.net/documentation_tools_flac.html
+
+
+
+.. _`snd_enc_flac.at-http`:
+
+at http
+-------
+
+//flac.sourceforge.net/documentation_tools_flac.html
 
 To make the API simpler, it is assumed that the user will select quality
 profiles. Additional options that affect encoding quality and speed can

@@ -7,4 +7,4 @@ mtrr
 .. toctree::
    :maxdepth: 1
 
-   main_c
+   generic_c

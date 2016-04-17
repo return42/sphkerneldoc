@@ -12,6 +12,7 @@ media
    media-devnode_h
    media-entity_h
    rc-core_h
+   soc_camera_h
    tuner_h
    tuner-types_h
    tveeprom_h
@@ -28,3 +29,6 @@ media
    videobuf2-core_h
    videobuf2-memops_h
    videobuf2-v4l2_h
+   davinci/index
+   drv-intf/index
+   i2c/index

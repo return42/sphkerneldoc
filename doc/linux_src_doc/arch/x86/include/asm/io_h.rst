@@ -4,6 +4,7 @@
 io.h
 ====
 
+
 .. _`virt_to_phys`:
 
 virt_to_phys
@@ -15,6 +16,7 @@ virt_to_phys
 
     :param volatile void \*address:
         address to remap
+
 
 
 .. _`virt_to_phys.description`:
@@ -31,6 +33,7 @@ almost all conceivable cases a device driver should not be using
 this function
 
 
+
 .. _`phys_to_virt`:
 
 phys_to_virt
@@ -42,6 +45,7 @@ phys_to_virt
 
     :param phys_addr_t address:
         address to remap
+
 
 
 .. _`phys_to_virt.description`:
@@ -58,6 +62,7 @@ almost all conceivable cases a device driver should not be using
 this function
 
 
+
 .. _`ioremap_nocache`:
 
 ioremap_nocache
@@ -72,6 +77,7 @@ ioremap_nocache
 
     :param unsigned long size:
         size of the resource to map
+
 
 
 .. _`ioremap_nocache.description`:

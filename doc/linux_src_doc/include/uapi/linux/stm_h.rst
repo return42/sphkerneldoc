@@ -4,16 +4,18 @@
 stm.h
 =====
 
+
 .. _`stp_policy_id`:
 
 struct stp_policy_id
 ====================
 
-.. c:type:: struct stp_policy_id
+.. c:type:: stp_policy_id
 
     identification for the STP policy
 
 
+.. _`stp_policy_id.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`stp_policy_id.members`:
 
 Members
 -------
@@ -49,6 +52,9 @@ Members
     identification string
 
 
+
+
+.. _`stp_policy_id.description`:
 
 Description
 -----------

@@ -4,6 +4,7 @@
 i915_gem.c
 ==========
 
+
 .. _`i915_gem_create_ioctl`:
 
 i915_gem_create_ioctl
@@ -22,6 +23,7 @@ i915_gem_create_ioctl
     :param struct drm_file \*file:
 
         *undescribed*
+
 
 
 .. _`i915_gem_pread_ioctl`:
@@ -44,6 +46,7 @@ i915_gem_pread_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_pread_ioctl.description`:
 
 Description
@@ -51,6 +54,7 @@ Description
 
 
 On error, the contents of \*data are undefined.
+
 
 
 .. _`i915_gem_gtt_pwrite_fast`:
@@ -77,12 +81,14 @@ i915_gem_gtt_pwrite_fast
         *undescribed*
 
 
+
 .. _`i915_gem_gtt_pwrite_fast.description`:
 
 Description
 -----------
 
 user into the GTT, uncached.
+
 
 
 .. _`i915_gem_pwrite_ioctl`:
@@ -105,6 +111,7 @@ i915_gem_pwrite_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_pwrite_ioctl.description`:
 
 Description
@@ -112,6 +119,7 @@ Description
 
 
 On error, the contents of the buffer that were to be modified are undefined.
+
 
 
 .. _`__i915_wait_request`:
@@ -140,12 +148,13 @@ __i915_wait_request
         *undescribed*
 
 
-.. _`__i915_wait_request.description`:
 
-Description
------------
+.. _`__i915_wait_request.note`:
 
-Note: It is of utmost importance that the passed in seqno and reset_counter
+Note
+----
+
+It is of utmost importance that the passed in seqno and reset_counter
 values have been read by the caller in an smp safe manner. Where read-side
 locks are involved, it is sufficient to read the reset_counter before
 unlocking the lock that protects the seqno. For lockless tricks, the
@@ -154,6 +163,7 @@ inserted.
 
 Returns 0 if the request was found within the alloted time. Else returns the
 errno with remaining time filled in timeout argument.
+
 
 
 .. _`i915_wait_request`:
@@ -168,12 +178,14 @@ i915_wait_request
         *undescribed*
 
 
+
 .. _`i915_wait_request.description`:
 
 Description
 -----------
 
 request and object lists appropriately for that event.
+
 
 
 .. _`i915_gem_object_wait_rendering`:
@@ -192,12 +204,14 @@ i915_gem_object_wait_rendering
         *undescribed*
 
 
+
 .. _`i915_gem_object_wait_rendering.description`:
 
 Description
 -----------
 
 safe to unbind from the GTT or access from the CPU.
+
 
 
 .. _`i915_gem_set_domain_ioctl`:
@@ -220,12 +234,14 @@ i915_gem_set_domain_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_set_domain_ioctl.description`:
 
 Description
 -----------
 
 through the mmap ioctl's mapping or a GTT mapping.
+
 
 
 .. _`i915_gem_sw_finish_ioctl`:
@@ -248,6 +264,7 @@ i915_gem_sw_finish_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_mmap_ioctl`:
 
 i915_gem_mmap_ioctl
@@ -268,6 +285,7 @@ i915_gem_mmap_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_mmap_ioctl.description`:
 
 Description
@@ -278,7 +296,13 @@ into.
 While the mapping holds a reference on the contents of the object, it doesn't
 imply a ref on the object itself.
 
-IMPORTANT:
+
+
+.. _`i915_gem_mmap_ioctl.important`:
+
+IMPORTANT
+---------
+
 
 DRM driver writers who look a this function as an example for how to do GEM
 mmap support, please don't implement mmap support like here. The modern way
@@ -287,6 +311,7 @@ i915_gem_mmap_gtt) and then using the mmap syscall on the DRM fd directly.
 That way debug tooling like valgrind will understand what's going on, hiding
 the mmap call in a driver private ioctl will break that. The i915 driver only
 does cpu mmaps this way because we didn't know better.
+
 
 
 .. _`i915_gem_fault`:
@@ -303,6 +328,7 @@ i915_gem_fault
 
     :param struct vm_fault \*vmf:
         fault info
+
 
 
 .. _`i915_gem_fault.description`:
@@ -322,6 +348,7 @@ suffer if the GTT working set is large or there are few fence registers
 left.
 
 
+
 .. _`i915_gem_release_mmap`:
 
 i915_gem_release_mmap
@@ -333,6 +360,7 @@ i915_gem_release_mmap
 
     :param struct drm_i915_gem_object \*obj:
         obj in question
+
 
 
 .. _`i915_gem_release_mmap.description`:
@@ -349,6 +377,7 @@ resource pressure. Similarly if the object has been moved out of the
 aperture, than pages mapped into userspace must be revoked. Removing the
 mapping will then trigger a page fault on the next user access, allowing
 fixup by :c:func:`i915_gem_fault`.
+
 
 
 .. _`i915_gem_get_gtt_alignment`:
@@ -377,6 +406,7 @@ i915_gem_get_gtt_alignment
         *undescribed*
 
 
+
 .. _`i915_gem_get_gtt_alignment.description`:
 
 Description
@@ -384,6 +414,7 @@ Description
 
 Return the required GTT alignment for an object, taking into account
 potential fence register mapping.
+
 
 
 .. _`i915_gem_mmap_gtt_ioctl`:
@@ -405,6 +436,7 @@ i915_gem_mmap_gtt_ioctl
         GEM object info
 
 
+
 .. _`i915_gem_mmap_gtt_ioctl.description`:
 
 Description
@@ -420,6 +452,7 @@ a fence register, and mapping the appropriate aperture address into
 userspace.
 
 
+
 .. _`i915_gem_request_alloc`:
 
 i915_gem_request_alloc
@@ -433,11 +466,11 @@ i915_gem_request_alloc
         engine that we wish to issue the request on.
 
     :param struct intel_context \*ctx:
-        context that the request will be associated with.::
+        context that the request will be associated with.
+        This can be NULL if the request is not directly related to
+        any specific user context, in which case this function will
+        choose an appropriate context to use.
 
-              This can be NULL if the request is not directly related to
-              any specific user context, in which case this function will
-              choose an appropriate context to use.
 
 
 .. _`i915_gem_request_alloc.description`:
@@ -447,6 +480,7 @@ Description
 
 Returns a pointer to the allocated request if successful,
 or an error code if not.
+
 
 
 .. _`i915_gem_retire_requests_ring`:
@@ -461,6 +495,7 @@ i915_gem_retire_requests_ring
         *undescribed*
 
 
+
 .. _`i915_gem_object_flush_active`:
 
 i915_gem_object_flush_active
@@ -473,6 +508,7 @@ i915_gem_object_flush_active
     :param struct drm_i915_gem_object \*obj:
 
         *undescribed*
+
 
 
 .. _`i915_gem_wait_ioctl`:
@@ -497,17 +533,17 @@ i915_gem_wait_ioctl
         *undescribed*
 
 
+
 .. _`i915_gem_wait_ioctl.description`:
 
 Description
 -----------
 
 Returns 0 if successful, else an error is returned with the remaining time in
-the timeout parameter.::
-
- -ETIME: object is still busy after timeout
- -ERESTARTSYS: signal interrupted the wait
- -ENONENT: object doesn't exist
+the timeout parameter.
+-ETIME: object is still busy after timeout
+-ERESTARTSYS: signal interrupted the wait
+-ENONENT: object doesn't exist
 
 Also possible, but rare::
 
@@ -522,6 +558,7 @@ nanoseconds on an object becoming unbusy. Since the wait itself does so
 without holding struct_mutex the object may become re-busied before this
 function completes. A similar but shorter * race condition exists in the busy
 ioctl
+
 
 
 .. _`i915_gem_object_sync`:
@@ -540,10 +577,10 @@ i915_gem_object_sync
         ring we wish to use the object on. May be NULL.
 
     :param struct drm_i915_gem_request \*\*to_req:
-        request we wish to use the object for. See below.::
+        request we wish to use the object for. See below.
+        This will be allocated and returned if a request is
+        required but not passed in.
 
-                 This will be allocated and returned if a request is
-                 required but not passed in.
 
 
 .. _`i915_gem_object_sync.description`:
@@ -559,10 +596,12 @@ into a buffer at any time, but multiple readers. To ensure each has
 a coherent view of memory, we must:
 
 - If there is an outstanding write request to the object, the new
+
   request must wait for it to complete (either CPU or in hw, requests
   on the same ring will be naturally ordered).
 
 - If we are a write request (pending_write_domain is set), the new
+
   request must wait for outstanding read requests to complete.
 
 For CPU synchronisation (NULL to) no request is required. For syncing with
@@ -576,6 +615,7 @@ returned in \*to_req, it is the responsibility of the caller to submit
 that request (after potentially adding more work to it).
 
 Returns 0 if successful, else propagates up the lower layer error.
+
 
 
 .. _`i915_gem_object_bind_to_vm`:
@@ -606,12 +646,14 @@ i915_gem_object_bind_to_vm
         *undescribed*
 
 
+
 .. _`i915_gem_object_bind_to_vm.description`:
 
 Description
 -----------
 
 there.
+
 
 
 .. _`i915_gem_object_set_to_gtt_domain`:
@@ -630,6 +672,7 @@ i915_gem_object_set_to_gtt_domain
         *undescribed*
 
 
+
 .. _`i915_gem_object_set_to_gtt_domain.description`:
 
 Description
@@ -638,6 +681,7 @@ Description
 
 This function returns when the move is complete, including waiting on
 flushes to occur.
+
 
 
 .. _`i915_gem_object_set_cache_level`:
@@ -658,6 +702,7 @@ i915_gem_object_set_cache_level
         *undescribed*
 
 
+
 .. _`i915_gem_object_set_cache_level.description`:
 
 Description
@@ -673,6 +718,7 @@ hardware is reading from the object. That is if the object is currently
 on the scanout it will be set to uncached (or equivalent display
 cache coherency) and all non-MOCS GPU access will also be uncached so
 that all direct access to the scanout remains coherent.
+
 
 
 .. _`i915_gem_object_set_to_cpu_domain`:
@@ -691,6 +737,7 @@ i915_gem_object_set_to_cpu_domain
         *undescribed*
 
 
+
 .. _`i915_gem_object_set_to_cpu_domain.description`:
 
 Description
@@ -699,6 +746,7 @@ Description
 
 This function returns when the move is complete, including waiting on
 flushes to occur.
+
 
 
 .. _`i915_gem_track_fb`:
@@ -718,6 +766,7 @@ i915_gem_track_fb
 
     :param unsigned frontbuffer_bits:
         bitmask of frontbuffer slots
+
 
 
 .. _`i915_gem_track_fb.description`:

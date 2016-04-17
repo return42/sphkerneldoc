@@ -4,6 +4,7 @@
 intel_frontbuffer.c
 ===================
 
+
 .. _`frontbuffer-tracking`:
 
 frontbuffer tracking
@@ -42,6 +43,7 @@ mark_idle functions. For display power management features using these
 functions is deprecated and should be avoided.
 
 
+
 .. _`intel_fb_obj_invalidate`:
 
 intel_fb_obj_invalidate
@@ -58,6 +60,7 @@ intel_fb_obj_invalidate
         which operation caused the invalidation
 
 
+
 .. _`intel_fb_obj_invalidate.description`:
 
 Description
@@ -68,6 +71,7 @@ frontbuffer caching (fbc, low refresh rate for DRRS, panel self refresh) must
 be invalidated. For ORIGIN_CS any subsequent invalidation will be delayed
 until the rendering completes or a flip on this frontbuffer plane is
 scheduled.
+
 
 
 .. _`intel_frontbuffer_flush`:
@@ -89,6 +93,7 @@ intel_frontbuffer_flush
         which operation caused the flush
 
 
+
 .. _`intel_frontbuffer_flush.description`:
 
 Description
@@ -99,6 +104,7 @@ completed and frontbuffer caching can be started again. Flushes will get
 delayed if they're blocked by some outstanding asynchronous rendering.
 
 Can be called without any locks held.
+
 
 
 .. _`intel_fb_obj_flush`:
@@ -120,6 +126,7 @@ intel_fb_obj_flush
         which operation caused the flush
 
 
+
 .. _`intel_fb_obj_flush.description`:
 
 Description
@@ -128,6 +135,7 @@ Description
 This function gets called every time rendering on the given object has
 completed and frontbuffer caching can be started again. If ``retire`` is true
 then any delayed flushes will be unblocked.
+
 
 
 .. _`intel_frontbuffer_flip_prepare`:
@@ -146,6 +154,7 @@ intel_frontbuffer_flip_prepare
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_frontbuffer_flip_prepare.description`:
 
 Description
@@ -157,6 +166,7 @@ intel_frontbuffer_flip_complete. If an invalidate happens in between this
 flush will be cancelled.
 
 Can be called without any locks held.
+
 
 
 .. _`intel_frontbuffer_flip_complete`:
@@ -175,6 +185,7 @@ intel_frontbuffer_flip_complete
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_frontbuffer_flip_complete.description`:
 
 Description
@@ -184,6 +195,7 @@ This function gets called after the flip has been latched and will complete
 on the next vblank. It will execute the flush if it hasn't been cancelled yet.
 
 Can be called without any locks held.
+
 
 
 .. _`intel_frontbuffer_flip`:
@@ -200,6 +212,7 @@ intel_frontbuffer_flip
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
+
 
 
 .. _`intel_frontbuffer_flip.description`:

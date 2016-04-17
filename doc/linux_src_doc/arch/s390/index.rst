@@ -8,3 +8,6 @@ s390
    :maxdepth: 1
 
    include/index
+   kernel/index
+   lib/index
+   mm/index

@@ -4,16 +4,34 @@
 tuner-types.h
 =============
 
+
 .. _`param_type`:
 
 enum param_type
 ===============
 
-.. c:type:: enum param_type
+.. c:type:: param_type
 
     type of the tuner pameters
 
 
+.. _`param_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum param_type {
+      TUNER_PARAM_TYPE_RADIO,
+      TUNER_PARAM_TYPE_PAL,
+      TUNER_PARAM_TYPE_SECAM,
+      TUNER_PARAM_TYPE_NTSC,
+      TUNER_PARAM_TYPE_DIGITAL
+    };
+
+
+.. _`param_type.constants`:
 
 Constants
 ---------
@@ -39,11 +57,12 @@ Constants
 struct tuner_range
 ==================
 
-.. c:type:: struct tuner_range
+.. c:type:: tuner_range
 
     define the frequencies supported by the tuner
 
 
+.. _`tuner_range.definition`:
 
 Definition
 ----------
@@ -57,6 +76,7 @@ Definition
   };
 
 
+.. _`tuner_range.members`:
 
 Members
 -------
@@ -74,6 +94,9 @@ Members
 
 
 
+
+.. _`tuner_range.description`:
+
 Description
 -----------
 
@@ -88,16 +111,18 @@ tuners. On those devices, the tuner set is done via 4 bytes::
 Some tuners also have an additional optional Auxiliary byte (AB).
 
 
+
 .. _`tuner_params`:
 
 struct tuner_params
 ===================
 
-.. c:type:: struct tuner_params
+.. c:type:: tuner_params
 
     Parameters to be used to setup the tuner. Those are used by drivers/media/tuners/tuner-types.c in order to specify the tuner properties. Most of the parameters are for tuners based on tda9887 IF-PLL multi-standard analog TV/Radio demodulator, with is very common on legacy analog tuners.
 
 
+.. _`tuner_params.definition`:
 
 Definition
 ----------
@@ -131,6 +156,7 @@ Definition
   };
 
 
+.. _`tuner_params.members`:
 
 Members
 -------
@@ -180,21 +206,20 @@ Members
     instead of cGainLow.
 
 :``intercarrier_mode``:
-    Most tuners with a tda9887 use QSS mode.::
-
-                                    Some (cheaper) tuners use Intercarrier mode.
-                                    If this setting is 1, then the tuner needs to
-                                    be set to intercarrier mode.
+    Most tuners with a tda9887 use QSS mode.
+    Some (cheaper) tuners use Intercarrier mode.
+    If this setting is 1, then the tuner needs to
+    be set to intercarrier mode.
 
 :``port1_active``:
-    This setting sets the default value for PORT1.::
+    This setting sets the default value for PORT1.
 
                                     0 means inactive, 1 means active. Note: the
                                     actual bit value written to the tda9887 is
                                     inverted. So a 0 here means a 1 in the B6 bit.
 
 :``port2_active``:
-    This setting sets the default value for PORT2.::
+    This setting sets the default value for PORT2.
 
                                     0 means inactive, 1 means active. Note: the
                                     actual bit value written to the tda9887 is

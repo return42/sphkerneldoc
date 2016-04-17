@@ -4,6 +4,7 @@
 usbstring.c
 ===========
 
+
 .. _`usb_gadget_get_string`:
 
 usb_gadget_get_string
@@ -21,6 +22,7 @@ usb_gadget_get_string
 
     :param u8 \*buf:
         at least 256 bytes, must be 16-bit aligned
+
 
 
 .. _`usb_gadget_get_string.description`:

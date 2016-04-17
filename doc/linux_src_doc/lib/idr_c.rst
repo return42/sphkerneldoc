@@ -4,6 +4,7 @@
 idr.c
 =====
 
+
 .. _`idr_layer_alloc`:
 
 idr_layer_alloc
@@ -20,6 +21,7 @@ idr_layer_alloc
         optional idr to allocate from
 
 
+
 .. _`idr_layer_alloc.description`:
 
 Description
@@ -32,6 +34,7 @@ an idr_layer from ``idr``\ ->id_free.
 ``layer_idr`` is to maintain backward compatibility with the old alloc
 interface - :c:func:`idr_pre_get` and idr_get_new\*() - and will be removed
 together with per-pool preload buffer.
+
 
 
 .. _`sub_alloc`:
@@ -59,6 +62,7 @@ sub_alloc
         optional idr passed to :c:func:`idr_layer_alloc`
 
 
+
 .. _`sub_alloc.description`:
 
 Description
@@ -73,6 +77,7 @@ the allocated id >= 0 if successful,
 -ENOMEM if more idr_layers need to be allocated.
 
 
+
 .. _`idr_preload`:
 
 idr_preload
@@ -84,6 +89,7 @@ idr_preload
 
     :param gfp_t gfp_mask:
         allocation mask to use for preloading
+
 
 
 .. _`idr_preload.description`:
@@ -113,6 +119,7 @@ if :c:func:`idr_alloc` were called with GFP_KERNEL rather than GFP_NOWAIT.::
                 error;
 
 
+
 .. _`idr_alloc`:
 
 idr_alloc
@@ -138,6 +145,7 @@ idr_alloc
         memory allocation flags
 
 
+
 .. _`idr_alloc.description`:
 
 Description
@@ -154,6 +162,7 @@ The user is responsible for exclusively synchronizing all operations
 which may modify ``idr``\ .  However, read-only accesses such as :c:func:`idr_find`
 or iteration can be performed under RCU read lock provided the user
 destroys ``ptr`` in RCU-safe way after removal from idr.
+
 
 
 .. _`idr_alloc_cyclic`:
@@ -181,6 +190,7 @@ idr_alloc_cyclic
         memory allocation flags
 
 
+
 .. _`idr_alloc_cyclic.description`:
 
 Description
@@ -189,6 +199,7 @@ Description
 Essentially the same as idr_alloc, but prefers to allocate progressively
 higher ids if it can. If the "cur" counter wraps, then it will start again
 at the "start" end of the range and allocate one that has already been used.
+
 
 
 .. _`idr_remove`:
@@ -207,6 +218,7 @@ idr_remove
         unique key
 
 
+
 .. _`idr_destroy`:
 
 idr_destroy
@@ -218,6 +230,7 @@ idr_destroy
 
     :param struct idr \*idp:
         idr handle
+
 
 
 .. _`idr_destroy.description`:
@@ -233,6 +246,7 @@ responsible for ensuring that no one else accesses ``idp`` during or after
 A typical clean-up sequence for objects stored in an idr tree will use
 :c:func:`idr_for_each` to free all objects, if necessary, then :c:func:`idr_destroy` to
 free up the id mappings and cached idr_layers.
+
 
 
 .. _`idr_for_each`:
@@ -254,6 +268,7 @@ idr_for_each
         data passed back to callback function
 
 
+
 .. _`idr_for_each.description`:
 
 Description
@@ -272,6 +287,7 @@ than ``0``\ , we break out and return that value.
 The caller must serialize :c:func:`idr_for_each` vs :c:func:`idr_get_new` and :c:func:`idr_remove`.
 
 
+
 .. _`idr_get_next`:
 
 idr_get_next
@@ -288,6 +304,7 @@ idr_get_next
         pointer to lookup key
 
 
+
 .. _`idr_get_next.description`:
 
 Description
@@ -299,6 +316,7 @@ iteration.
 
 This function can be called under :c:func:`rcu_read_lock`, given that the leaf
 pointers lifetimes are correctly managed.
+
 
 
 .. _`idr_replace`:
@@ -320,6 +338,7 @@ idr_replace
         lookup key
 
 
+
 .. _`idr_replace.description`:
 
 Description
@@ -330,6 +349,7 @@ A ``-ENOENT`` return indicates that ``id`` was not found.
 A ``-EINVAL`` return indicates that ``id`` was not within valid constraints.
 
 The caller must serialize with writers.
+
 
 
 .. _`idr_init`:
@@ -345,6 +365,7 @@ idr_init
         idr handle
 
 
+
 .. _`idr_init.description`:
 
 Description
@@ -352,6 +373,7 @@ Description
 
 This function is use to set up the handle (\ ``idp``\ ) that you will pass
 to the rest of the functions.
+
 
 
 .. _`ida-description`:
@@ -366,6 +388,7 @@ occupies a bit.  ida uses a custom leaf node which contains
 IDA_BITMAP_BITS slots.
 
 2007-04-25  written by Tejun Heo <htejun\ ``gmail``\ .com>
+
 
 
 .. _`ida_pre_get`:
@@ -384,6 +407,7 @@ ida_pre_get
         memory allocation flag
 
 
+
 .. _`ida_pre_get.description`:
 
 Description
@@ -395,6 +419,7 @@ worst possible allocation.
 
 If the system is REALLY out of memory this function returns ``0``\ ,
 otherwise ``1``\ .
+
 
 
 .. _`ida_get_new_above`:
@@ -416,6 +441,7 @@ ida_get_new_above
         pointer to the allocated handle
 
 
+
 .. _`ida_get_new_above.description`:
 
 Description
@@ -429,6 +455,7 @@ and go back to the :c:func:`ida_pre_get` call.  If the ida is full, it will
 return ``-ENOSPC``\ .
 
 ``p_id`` returns a value in the range ``starting_id`` ... ``0x7fffffff``\ .
+
 
 
 .. _`ida_remove`:
@@ -447,6 +474,7 @@ ida_remove
         ID to free
 
 
+
 .. _`ida_destroy`:
 
 ida_destroy
@@ -458,6 +486,7 @@ ida_destroy
 
     :param struct ida \*ida:
         ida handle
+
 
 
 .. _`ida_simple_get`:
@@ -482,6 +511,7 @@ ida_simple_get
         memory allocation flags
 
 
+
 .. _`ida_simple_get.description`:
 
 Description
@@ -491,6 +521,7 @@ Allocates an id in the range start <= id < end, or returns -ENOSPC.
 On memory allocation failure, returns -ENOMEM.
 
 Use :c:func:`ida_simple_remove` to get rid of an id.
+
 
 
 .. _`ida_simple_remove`:
@@ -509,6 +540,7 @@ ida_simple_remove
         the id returned by ida_simple_get.
 
 
+
 .. _`ida_init`:
 
 ida_init
@@ -520,6 +552,7 @@ ida_init
 
     :param struct ida \*ida:
         ida handle
+
 
 
 .. _`ida_init.description`:

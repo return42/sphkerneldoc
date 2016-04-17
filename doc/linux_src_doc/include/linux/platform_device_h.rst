@@ -4,6 +4,7 @@
 platform_device.h
 =================
 
+
 .. _`platform_device_register_resndata`:
 
 platform_device_register_resndata
@@ -35,12 +36,14 @@ platform_device_register_resndata
         size of platform specific data
 
 
+
 .. _`platform_device_register_resndata.description`:
 
 Description
 -----------
 
 Returns :c:type:`struct platform_device <platform_device>` pointer on success, or :c:func:`ERR_PTR` on error.
+
 
 
 .. _`platform_device_register_simple`:
@@ -65,6 +68,7 @@ platform_device_register_simple
         number of resources
 
 
+
 .. _`platform_device_register_simple.description`:
 
 Description
@@ -84,6 +88,7 @@ In particular, when such drivers are built as modules, they can't be
 "hotplugged".
 
 Returns :c:type:`struct platform_device <platform_device>` pointer on success, or :c:func:`ERR_PTR` on error.
+
 
 
 .. _`platform_device_register_data`:
@@ -109,6 +114,7 @@ platform_device_register_data
 
     :param size_t size:
         size of platform specific data
+
 
 
 .. _`platform_device_register_data.description`:

@@ -4,6 +4,7 @@
 acct.c
 ======
 
+
 .. _`sys_acct`:
 
 sys_acct
@@ -17,6 +18,7 @@ sys_acct
         file name for accounting records or NULL to shutdown accounting
 
 
+
 .. _`sys_acct.description`:
 
 Description
@@ -28,6 +30,7 @@ Returns 0 for success or negative errno values for failure.
 accounting. It takes the name of the file where accounting records
 should be written. If the filename is NULL, accounting will be
 shutdown.
+
 
 
 .. _`acct_collect`:
@@ -46,6 +49,7 @@ acct_collect
         not 0, if this thread is the last one in the process.
 
 
+
 .. _`acct_process`:
 
 acct_process
@@ -55,6 +59,7 @@ acct_process
 
     :param void:
         no arguments
+
 
 
 .. _`acct_process.description`:

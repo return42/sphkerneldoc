@@ -4,16 +4,18 @@
 skbuff.h
 ========
 
+
 .. _`skb_shared_hwtstamps`:
 
 struct skb_shared_hwtstamps
 ===========================
 
-.. c:type:: struct skb_shared_hwtstamps
+.. c:type:: skb_shared_hwtstamps
 
     hardware time stamps
 
 
+.. _`skb_shared_hwtstamps.definition`:
 
 Definition
 ----------
@@ -25,6 +27,7 @@ Definition
   };
 
 
+.. _`skb_shared_hwtstamps.members`:
 
 Members
 -------
@@ -34,6 +37,9 @@ Members
     since arbitrary point in time
 
 
+
+
+.. _`skb_shared_hwtstamps.description`:
 
 Description
 -----------
@@ -48,16 +54,18 @@ This structure is attached to packets as part of the
 :c:type:`struct skb_shared_info <skb_shared_info>`. Use :c:func:`skb_hwtstamps` to get a pointer.
 
 
+
 .. _`skb_mstamp`:
 
 struct skb_mstamp
 =================
 
-.. c:type:: struct skb_mstamp
+.. c:type:: skb_mstamp
 
     multi resolution time stamps
 
 
+.. _`skb_mstamp.definition`:
 
 Definition
 ----------
@@ -69,12 +77,14 @@ Definition
   };
 
 
+.. _`skb_mstamp.members`:
 
 Members
 -------
 
 :``{unnamed_union}``:
     anonymous
+
 
 
 
@@ -89,6 +99,7 @@ skb_mstamp_get
 
     :param struct skb_mstamp \*cl:
         place to store timestamps
+
 
 
 .. _`skb_mstamp_us_delta`:
@@ -107,16 +118,18 @@ skb_mstamp_us_delta
         pointer to oldest sample
 
 
+
 .. _`sk_buff`:
 
 struct sk_buff
 ==============
 
-.. c:type:: struct sk_buff
+.. c:type:: sk_buff
 
     socket buffer
 
 
+.. _`sk_buff.definition`:
 
 Definition
 ----------
@@ -141,6 +154,7 @@ Definition
   };
 
 
+.. _`sk_buff.members`:
 
 Members
 -------
@@ -189,6 +203,7 @@ Members
 
 
 
+
 .. _`skb_dst`:
 
 skb_dst
@@ -202,12 +217,14 @@ skb_dst
         buffer
 
 
+
 .. _`skb_dst.description`:
 
 Description
 -----------
 
 Returns skb dst_entry, regardless of reference taken or not.
+
 
 
 .. _`skb_dst_set`:
@@ -226,6 +243,7 @@ skb_dst_set
         dst entry
 
 
+
 .. _`skb_dst_set.description`:
 
 Description
@@ -233,6 +251,7 @@ Description
 
 Sets skb dst, assuming a reference was taken on dst and should
 be released by :c:func:`skb_dst_drop`
+
 
 
 .. _`skb_dst_set_noref`:
@@ -251,6 +270,7 @@ skb_dst_set_noref
         dst entry
 
 
+
 .. _`skb_dst_set_noref.description`:
 
 Description
@@ -260,6 +280,7 @@ Sets skb dst, assuming a reference was not taken on dst.
 If dst entry is cached, we do not take reference and dst_release
 will be avoided by refdst_drop. If dst entry is not cached, we take
 reference, so that last dst_release can destroy the dst immediately.
+
 
 
 .. _`skb_dst_is_noref`:
@@ -273,6 +294,7 @@ skb_dst_is_noref
 
     :param const struct sk_buff \*skb:
         buffer
+
 
 
 .. _`skb_fclone_busy`:
@@ -292,6 +314,7 @@ skb_fclone_busy
         buffer
 
 
+
 .. _`skb_fclone_busy.description`:
 
 Description
@@ -300,6 +323,7 @@ Description
 Returns true if skb is a fast clone, and its clone is not freed.
 Some drivers call :c:func:`skb_orphan` in their :c:func:`ndo_start_xmit`,
 so we also check that this didnt happen.
+
 
 
 .. _`skb_queue_empty`:
@@ -315,12 +339,14 @@ skb_queue_empty
         queue head
 
 
+
 .. _`skb_queue_empty.description`:
 
 Description
 -----------
 
 Returns true if the queue is empty, false otherwise.
+
 
 
 .. _`skb_queue_is_last`:
@@ -339,12 +365,14 @@ skb_queue_is_last
         buffer
 
 
+
 .. _`skb_queue_is_last.description`:
 
 Description
 -----------
 
 Returns true if ``skb`` is the last buffer on the list.
+
 
 
 .. _`skb_queue_is_first`:
@@ -363,12 +391,14 @@ skb_queue_is_first
         buffer
 
 
+
 .. _`skb_queue_is_first.description`:
 
 Description
 -----------
 
 Returns true if ``skb`` is the first buffer on the list.
+
 
 
 .. _`skb_queue_next`:
@@ -387,6 +417,7 @@ skb_queue_next
         current buffer
 
 
+
 .. _`skb_queue_next.description`:
 
 Description
@@ -394,6 +425,7 @@ Description
 
 Return the next packet in ``list`` after ``skb``\ .  It is only valid to
 call this if :c:func:`skb_queue_is_last` evaluates to false.
+
 
 
 .. _`skb_queue_prev`:
@@ -412,6 +444,7 @@ skb_queue_prev
         current buffer
 
 
+
 .. _`skb_queue_prev.description`:
 
 Description
@@ -419,6 +452,7 @@ Description
 
 Return the prev packet in ``list`` before ``skb``\ .  It is only valid to
 call this if :c:func:`skb_queue_is_first` evaluates to false.
+
 
 
 .. _`skb_get`:
@@ -434,6 +468,7 @@ skb_get
         buffer to reference
 
 
+
 .. _`skb_get.description`:
 
 Description
@@ -441,6 +476,7 @@ Description
 
 Makes another reference to a socket buffer and returns a pointer
 to the buffer.
+
 
 
 .. _`skb_cloned`:
@@ -456,6 +492,7 @@ skb_cloned
         buffer to check
 
 
+
 .. _`skb_cloned.description`:
 
 Description
@@ -464,6 +501,7 @@ Description
 Returns true if the buffer was generated with :c:func:`skb_clone` and is
 one of multiple shared copies of the buffer. Cloned buffers are
 shared data so must not be written to under normal circumstances.
+
 
 
 .. _`skb_header_cloned`:
@@ -479,6 +517,7 @@ skb_header_cloned
         buffer to check
 
 
+
 .. _`skb_header_cloned.description`:
 
 Description
@@ -486,6 +525,7 @@ Description
 
 Returns true if modifying the header part of the buffer requires
 the data to be copied.
+
 
 
 .. _`skb_header_release`:
@@ -501,6 +541,7 @@ skb_header_release
         buffer to operate on
 
 
+
 .. _`skb_header_release.description`:
 
 Description
@@ -509,7 +550,16 @@ Description
 Drop a reference to the header part of the buffer.  This is done
 by acquiring a payload reference.  You must not read from the header
 part of skb->data after this.
-Note : Check if you can use :c:func:`__skb_header_release` instead.
+
+
+
+.. _`skb_header_release.note`:
+
+Note 
+-----
+
+Check if you can use :c:func:`__skb_header_release` instead.
+
 
 
 .. _`__skb_header_release`:
@@ -525,6 +575,7 @@ __skb_header_release
         buffer to operate on
 
 
+
 .. _`__skb_header_release.description`:
 
 Description
@@ -532,6 +583,7 @@ Description
 
 Variant of :c:func:`skb_header_release` assuming skb is private to caller.
 We can avoid one atomic operation.
+
 
 
 .. _`skb_shared`:
@@ -547,6 +599,7 @@ skb_shared
         buffer to check
 
 
+
 .. _`skb_shared.description`:
 
 Description
@@ -554,6 +607,7 @@ Description
 
 Returns true if more than one person has a reference to this
 buffer.
+
 
 
 .. _`skb_share_check`:
@@ -572,6 +626,7 @@ skb_share_check
         priority for memory allocation
 
 
+
 .. _`skb_share_check.description`:
 
 Description
@@ -584,6 +639,7 @@ being called from interrupt status or with spinlocks held pri must
 be GFP_ATOMIC.
 
 NULL is returned on a memory allocation failure.
+
 
 
 .. _`skb_unshare`:
@@ -602,6 +658,7 @@ skb_unshare
         priority for memory allocation
 
 
+
 .. _`skb_unshare.description`:
 
 Description
@@ -614,6 +671,7 @@ the original buffer is returned. When called with a spinlock held or
 from interrupt state ``pri`` must be ``GFP_ATOMIC``
 
 ``NULL`` is returned on a memory allocation failure.
+
 
 
 .. _`skb_peek`:
@@ -629,6 +687,7 @@ skb_peek
         list to peek at
 
 
+
 .. _`skb_peek.description`:
 
 Description
@@ -642,6 +701,7 @@ the appropriate locks or have a private queue to do this.
 Returns ``NULL`` for an empty list or a pointer to the head element.
 The reference count is not incremented and the reference is therefore
 volatile. Use with caution.
+
 
 
 .. _`skb_peek_next`:
@@ -660,6 +720,7 @@ skb_peek_next
         list to peek at
 
 
+
 .. _`skb_peek_next.description`:
 
 Description
@@ -668,6 +729,7 @@ Description
 Returns ``NULL`` when the end of the list is met or a pointer to the
 next element. The reference count is not incremented and the
 reference is therefore volatile. Use with caution.
+
 
 
 .. _`skb_peek_tail`:
@@ -681,6 +743,7 @@ skb_peek_tail
 
     :param const struct sk_buff_head \*list_:
         list to peek at
+
 
 
 .. _`skb_peek_tail.description`:
@@ -698,6 +761,7 @@ The reference count is not incremented and the reference is therefore
 volatile. Use with caution.
 
 
+
 .. _`skb_queue_len`:
 
 skb_queue_len
@@ -711,12 +775,14 @@ skb_queue_len
         list to measure
 
 
+
 .. _`skb_queue_len.description`:
 
 Description
 -----------
 
 Return the length of an :c:type:`struct sk_buff <sk_buff>` queue.
+
 
 
 .. _`__skb_queue_head_init`:
@@ -732,6 +798,7 @@ __skb_queue_head_init
         queue to initialize
 
 
+
 .. _`__skb_queue_head_init.description`:
 
 Description
@@ -742,6 +809,7 @@ an sk_buff_head object.  This allows to initialize the list
 aspects of an sk_buff_head without reinitializing things like
 the spinlock.  It can also be used for on-stack sk_buff_head
 objects where the spinlock is known to not be used.
+
 
 
 .. _`skb_queue_splice`:
@@ -760,6 +828,7 @@ skb_queue_splice
         the place to add it in the first list
 
 
+
 .. _`skb_queue_splice_init`:
 
 skb_queue_splice_init
@@ -776,12 +845,14 @@ skb_queue_splice_init
         the place to add it in the first list
 
 
+
 .. _`skb_queue_splice_init.description`:
 
 Description
 -----------
 
 The list at ``list`` is reinitialised
+
 
 
 .. _`skb_queue_splice_tail`:
@@ -800,6 +871,7 @@ skb_queue_splice_tail
         the place to add it in the first list
 
 
+
 .. _`skb_queue_splice_tail_init`:
 
 skb_queue_splice_tail_init
@@ -816,6 +888,7 @@ skb_queue_splice_tail_init
         the place to add it in the first list
 
 
+
 .. _`skb_queue_splice_tail_init.description`:
 
 Description
@@ -823,6 +896,7 @@ Description
 
 Each of the lists is a queue.
 The list at ``list`` is reinitialised
+
 
 
 .. _`__skb_queue_after`:
@@ -844,6 +918,7 @@ __skb_queue_after
         buffer to queue
 
 
+
 .. _`__skb_queue_after.description`:
 
 Description
@@ -853,6 +928,7 @@ Queue a buffer int the middle of a list. This function takes no locks
 and you must therefore hold required locks before calling it.
 
 A buffer cannot be placed on two lists at the same time.
+
 
 
 .. _`skb_queue_head`:
@@ -871,6 +947,7 @@ skb_queue_head
         buffer to queue
 
 
+
 .. _`skb_queue_head.description`:
 
 Description
@@ -880,6 +957,7 @@ Queue a buffer at the start of a list. This function takes no locks
 and you must therefore hold required locks before calling it.
 
 A buffer cannot be placed on two lists at the same time.
+
 
 
 .. _`skb_queue_tail`:
@@ -898,6 +976,7 @@ skb_queue_tail
         buffer to queue
 
 
+
 .. _`skb_queue_tail.description`:
 
 Description
@@ -907,6 +986,7 @@ Queue a buffer at the end of a list. This function takes no locks
 and you must therefore hold required locks before calling it.
 
 A buffer cannot be placed on two lists at the same time.
+
 
 
 .. _`skb_dequeue`:
@@ -922,6 +1002,7 @@ skb_dequeue
         list to dequeue from
 
 
+
 .. _`skb_dequeue.description`:
 
 Description
@@ -930,6 +1011,7 @@ Description
 Remove the head of the list. This function does not take any locks
 so must be used with appropriate locks held only. The head item is
 returned or ``NULL`` if the list is empty.
+
 
 
 .. _`skb_dequeue_tail`:
@@ -945,6 +1027,7 @@ skb_dequeue_tail
         list to dequeue from
 
 
+
 .. _`skb_dequeue_tail.description`:
 
 Description
@@ -953,6 +1036,7 @@ Description
 Remove the tail of the list. This function does not take any locks
 so must be used with appropriate locks held only. The tail item is
 returned or ``NULL`` if the list is empty.
+
 
 
 .. _`__skb_fill_page_desc`:
@@ -980,6 +1064,7 @@ __skb_fill_page_desc
         the length of the data
 
 
+
 .. _`__skb_fill_page_desc.description`:
 
 Description
@@ -989,6 +1074,7 @@ Initialises the ``i``\ 'th fragment of ``skb`` to point to :c:type:`struct size 
 offset ``off`` within ``page``\ .
 
 Does not take any additional reference on the fragment.
+
 
 
 .. _`skb_fill_page_desc`:
@@ -1016,6 +1102,7 @@ skb_fill_page_desc
         the length of the data
 
 
+
 .. _`skb_fill_page_desc.description`:
 
 Description
@@ -1026,6 +1113,7 @@ As per :c:func:`__skb_fill_page_desc` -- initialises the ``i``\ 'th fragment of
 addition updates ``skb`` such that ``i`` is the last fragment.
 
 Does not take any additional reference on the fragment.
+
 
 
 .. _`skb_headroom`:
@@ -1041,12 +1129,14 @@ skb_headroom
         buffer to check
 
 
+
 .. _`skb_headroom.description`:
 
 Description
 -----------
 
 Return the number of bytes of free space at the head of an :c:type:`struct sk_buff <sk_buff>`.
+
 
 
 .. _`skb_tailroom`:
@@ -1062,12 +1152,14 @@ skb_tailroom
         buffer to check
 
 
+
 .. _`skb_tailroom.description`:
 
 Description
 -----------
 
 Return the number of bytes of free space at the tail of an sk_buff
+
 
 
 .. _`skb_availroom`:
@@ -1083,6 +1175,7 @@ skb_availroom
         buffer to check
 
 
+
 .. _`skb_availroom.description`:
 
 Description
@@ -1090,6 +1183,7 @@ Description
 
 Return the number of bytes of free space at the tail of an sk_buff
 allocated by :c:func:`sk_stream_alloc`
+
 
 
 .. _`skb_reserve`:
@@ -1108,6 +1202,7 @@ skb_reserve
         bytes to move
 
 
+
 .. _`skb_reserve.description`:
 
 Description
@@ -1115,6 +1210,7 @@ Description
 
 Increase the headroom of an empty :c:type:`struct sk_buff <sk_buff>` by reducing the tail
 room. This is only allowed for an empty buffer.
+
 
 
 .. _`skb_tailroom_reserve`:
@@ -1136,6 +1232,7 @@ skb_tailroom_reserve
         minimum amount of reserved_tailroom
 
 
+
 .. _`skb_tailroom_reserve.description`:
 
 Description
@@ -1146,6 +1243,7 @@ not larger than mtu and tailroom cannot be smaller than
 needed_tailroom.
 The required headroom should already have been reserved before using
 this function.
+
 
 
 .. _`pskb_trim_unique`:
@@ -1164,6 +1262,7 @@ pskb_trim_unique
         new length
 
 
+
 .. _`pskb_trim_unique.description`:
 
 Description
@@ -1172,6 +1271,7 @@ Description
 This is identical to pskb_trim except that the caller knows that
 the skb is not cloned so we should never get an error due to out-
 of-memory.
+
 
 
 .. _`skb_orphan`:
@@ -1187,6 +1287,7 @@ skb_orphan
         buffer to orphan
 
 
+
 .. _`skb_orphan.description`:
 
 Description
@@ -1195,6 +1296,7 @@ Description
 If a buffer currently has an owner then we call the owner's
 destructor function and make the ``skb`` unowned. The buffer continues
 to exist but is no longer charged to its former owner.
+
 
 
 .. _`skb_orphan_frags`:
@@ -1213,6 +1315,7 @@ skb_orphan_frags
         allocation mask for replacement pages
 
 
+
 .. _`skb_orphan_frags.description`:
 
 Description
@@ -1221,6 +1324,7 @@ Description
 For each frag in the SKB which needs a destructor (i.e. has an
 owner) create a copy of that frag and release the original
 page by calling the destructor.
+
 
 
 .. _`skb_queue_purge`:
@@ -1236,6 +1340,7 @@ skb_queue_purge
         list to empty
 
 
+
 .. _`skb_queue_purge.description`:
 
 Description
@@ -1244,6 +1349,7 @@ Description
 Delete all buffers on an :c:type:`struct sk_buff <sk_buff>` list. Each buffer is removed from
 the list and one reference dropped. This function does not take the
 list lock and the caller must hold the relevant locks to use it.
+
 
 
 .. _`netdev_alloc_skb`:
@@ -1262,6 +1368,7 @@ netdev_alloc_skb
         length to allocate
 
 
+
 .. _`netdev_alloc_skb.description`:
 
 Description
@@ -1274,6 +1381,7 @@ built in space. The built in space is used for optimisations.
 
 ``NULL`` is returned if there is no free memory. Although this function
 allocates memory it can be called from an interrupt.
+
 
 
 .. _`__dev_alloc_pages`:
@@ -1292,6 +1400,7 @@ __dev_alloc_pages
         size of the allocation
 
 
+
 .. _`__dev_alloc_pages.description`:
 
 Description
@@ -1300,6 +1409,7 @@ Description
 Allocate a new page.
 
 ``NULL`` is returned if there is no free memory.
+
 
 
 .. _`__dev_alloc_page`:
@@ -1315,6 +1425,7 @@ __dev_alloc_page
         allocation priority. Set __GFP_NOMEMALLOC if not for network Rx
 
 
+
 .. _`__dev_alloc_page.description`:
 
 Description
@@ -1323,6 +1434,7 @@ Description
 Allocate a new page.
 
 ``NULL`` is returned if there is no free memory.
+
 
 
 .. _`skb_propagate_pfmemalloc`:
@@ -1341,6 +1453,7 @@ skb_propagate_pfmemalloc
         The skb that may need pfmemalloc set
 
 
+
 .. _`skb_frag_page`:
 
 skb_frag_page
@@ -1354,12 +1467,14 @@ skb_frag_page
         the paged fragment
 
 
+
 .. _`skb_frag_page.description`:
 
 Description
 -----------
 
 Returns the :c:type:`struct page <page>` associated with ``frag``\ .
+
 
 
 .. _`__skb_frag_ref`:
@@ -1375,12 +1490,14 @@ __skb_frag_ref
         the paged fragment
 
 
+
 .. _`__skb_frag_ref.description`:
 
 Description
 -----------
 
 Takes an additional reference on the paged fragment ``frag``\ .
+
 
 
 .. _`skb_frag_ref`:
@@ -1399,12 +1516,14 @@ skb_frag_ref
         the fragment offset.
 
 
+
 .. _`skb_frag_ref.description`:
 
 Description
 -----------
 
 Takes an additional reference on the ``f``\ 'th paged fragment of ``skb``\ .
+
 
 
 .. _`__skb_frag_unref`:
@@ -1420,12 +1539,14 @@ __skb_frag_unref
         the paged fragment
 
 
+
 .. _`__skb_frag_unref.description`:
 
 Description
 -----------
 
 Releases a reference on the paged fragment ``frag``\ .
+
 
 
 .. _`skb_frag_unref`:
@@ -1444,12 +1565,14 @@ skb_frag_unref
         the fragment offset
 
 
+
 .. _`skb_frag_unref.description`:
 
 Description
 -----------
 
 Releases a reference on the ``f``\ 'th paged fragment of ``skb``\ .
+
 
 
 .. _`skb_frag_address`:
@@ -1465,6 +1588,7 @@ skb_frag_address
         the paged fragment buffer
 
 
+
 .. _`skb_frag_address.description`:
 
 Description
@@ -1472,6 +1596,7 @@ Description
 
 Returns the address of the data within ``frag``\ . The page must already
 be mapped.
+
 
 
 .. _`skb_frag_address_safe`:
@@ -1487,6 +1612,7 @@ skb_frag_address_safe
         the paged fragment buffer
 
 
+
 .. _`skb_frag_address_safe.description`:
 
 Description
@@ -1494,6 +1620,7 @@ Description
 
 Returns the address of the data within ``frag``\ . Checks that the page
 is mapped and returns ``NULL`` otherwise.
+
 
 
 .. _`__skb_frag_set_page`:
@@ -1512,12 +1639,14 @@ __skb_frag_set_page
         the page to set
 
 
+
 .. _`__skb_frag_set_page.description`:
 
 Description
 -----------
 
 Sets the fragment ``frag`` to contain ``page``\ .
+
 
 
 .. _`skb_frag_set_page`:
@@ -1539,12 +1668,14 @@ skb_frag_set_page
         the page to set
 
 
+
 .. _`skb_frag_set_page.description`:
 
 Description
 -----------
 
 Sets the ``f``\ 'th fragment of ``skb`` to contain ``page``\ .
+
 
 
 .. _`skb_frag_dma_map`:
@@ -1573,12 +1704,14 @@ skb_frag_dma_map
         the direction of the mapping (\ ``PCI_DMA_``\ \*)
 
 
+
 .. _`skb_frag_dma_map.description`:
 
 Description
 -----------
 
 Maps the page associated with ``frag`` to ``device``\ .
+
 
 
 .. _`skb_clone_writable`:
@@ -1597,6 +1730,7 @@ skb_clone_writable
         length up to which to write
 
 
+
 .. _`skb_clone_writable.description`:
 
 Description
@@ -1604,6 +1738,7 @@ Description
 
 Returns true if modifying the header part of the cloned buffer
 does not requires the data to be copied.
+
 
 
 .. _`skb_cow`:
@@ -1622,6 +1757,7 @@ skb_cow
         needed headroom
 
 
+
 .. _`skb_cow.description`:
 
 Description
@@ -1633,6 +1769,7 @@ is returned and original skb is not changed.
 
 The result is skb with writable area skb->head...skb->tail
 and at least ``headroom`` of space at head.
+
 
 
 .. _`skb_cow_head`:
@@ -1651,6 +1788,7 @@ skb_cow_head
         needed headroom
 
 
+
 .. _`skb_cow_head.description`:
 
 Description
@@ -1660,6 +1798,7 @@ This function is identical to skb_cow except that we replace the
 skb_cloned check by skb_header_cloned.  It should be used when
 you only need to push on some header and do not need to modify
 the data.
+
 
 
 .. _`skb_padto`:
@@ -1678,6 +1817,7 @@ skb_padto
         minimal length
 
 
+
 .. _`skb_padto.description`:
 
 Description
@@ -1687,6 +1827,7 @@ Pads up a buffer to ensure the trailing bytes exist and are
 blanked. If the buffer already contains sufficient data it
 is untouched. Otherwise it is extended. Returns zero on
 success. The skb is freed on error.
+
 
 
 .. _`skb_put_padto`:
@@ -1705,6 +1846,7 @@ skb_put_padto
         minimal length
 
 
+
 .. _`skb_put_padto.description`:
 
 Description
@@ -1714,6 +1856,7 @@ Pads up a buffer to ensure the trailing bytes exist and are
 blanked. If the buffer already contains sufficient data it
 is untouched. Otherwise it is extended. Returns zero on
 success. The skb is freed on error.
+
 
 
 .. _`skb_linearize`:
@@ -1729,6 +1872,7 @@ skb_linearize
         buffer to linarize
 
 
+
 .. _`skb_linearize.description`:
 
 Description
@@ -1736,6 +1880,7 @@ Description
 
 If there is no free memory -ENOMEM is returned, otherwise zero
 is returned and the old skb data released.
+
 
 
 .. _`skb_has_shared_frag`:
@@ -1751,6 +1896,7 @@ skb_has_shared_frag
         buffer to test
 
 
+
 .. _`skb_has_shared_frag.description`:
 
 Description
@@ -1758,6 +1904,7 @@ Description
 
 Return true if the skb has at least one frag that might be modified
 by an external entity (as in :c:func:`vmsplice`/:c:func:`sendfile`)
+
 
 
 .. _`skb_linearize_cow`:
@@ -1773,6 +1920,7 @@ skb_linearize_cow
         buffer to process
 
 
+
 .. _`skb_linearize_cow.description`:
 
 Description
@@ -1780,6 +1928,7 @@ Description
 
 If there is no free memory -ENOMEM is returned, otherwise zero
 is returned and the old skb data released.
+
 
 
 .. _`skb_postpull_rcsum`:
@@ -1801,6 +1950,7 @@ skb_postpull_rcsum
         length of data pulled
 
 
+
 .. _`skb_postpull_rcsum.description`:
 
 Description
@@ -1809,6 +1959,7 @@ Description
 After doing a pull on a received packet, you need to call this to
 update the CHECKSUM_COMPLETE checksum, or set ip_summed to
 CHECKSUM_NONE so that it can be recomputed from scratch.
+
 
 
 .. _`pskb_trim_rcsum`:
@@ -1827,6 +1978,7 @@ pskb_trim_rcsum
         new length
 
 
+
 .. _`pskb_trim_rcsum.description`:
 
 Description
@@ -1834,6 +1986,7 @@ Description
 
 This is exactly the same as pskb_trim except that it ensures the
 checksum of received packets are still valid after the operation.
+
 
 
 .. _`skb_needs_linearize`:
@@ -1852,14 +2005,15 @@ skb_needs_linearize
         net device features
 
 
-.. _`skb_needs_linearize.description`:
 
-Description
------------
+.. _`skb_needs_linearize.returns-true-if-either`:
 
-Returns true if either:
+Returns true if either
+----------------------
+
 1. skb has frag_list and the device doesn't support FRAGLIST, or
 2. skb is fragmented and the device does not support SG.
+
 
 
 .. _`skb_get_timestamp`:
@@ -1878,6 +2032,7 @@ skb_get_timestamp
         pointer to struct timeval to store stamp in
 
 
+
 .. _`skb_get_timestamp.description`:
 
 Description
@@ -1886,6 +2041,7 @@ Description
 Timestamps are stored in the skb as offsets to a base timestamp.
 This function converts the offset back to a struct timeval and stores
 it in stamp.
+
 
 
 .. _`skb_complete_tx_timestamp`:
@@ -1904,6 +2060,7 @@ skb_complete_tx_timestamp
         hardware time stamps
 
 
+
 .. _`skb_complete_tx_timestamp.description`:
 
 Description
@@ -1914,6 +2071,7 @@ PHY drivers may accept clones of transmitted packets for
 timestamping via their phy_driver.txtstamp method. These drivers
 must call this function to return the skb back to the stack with a
 timestamp.
+
 
 
 .. _`skb_tstamp_tx`:
@@ -1932,6 +2090,7 @@ skb_tstamp_tx
         hardware time stamps, may be NULL if not available
 
 
+
 .. _`skb_tstamp_tx.description`:
 
 Description
@@ -1942,6 +2101,7 @@ skb (thus sharing the actual data and optional structures), stores
 the optional hardware time stamping information (if non NULL) or
 generates a software time stamp (otherwise), then queues the clone
 to the error queue of the socket.  Errors are silently ignored.
+
 
 
 .. _`skb_tx_timestamp`:
@@ -1957,6 +2117,7 @@ skb_tx_timestamp
         A socket buffer.
 
 
+
 .. _`skb_tx_timestamp.description`:
 
 Description
@@ -1969,6 +2130,7 @@ function immediately before giving the sk_buff to the MAC hardware.
 Specifically, one should make absolutely sure that this function is
 called before TX completion of this packet can trigger.  Otherwise
 the packet could potentially already be freed.
+
 
 
 .. _`skb_complete_wifi_ack`:
@@ -1987,6 +2149,7 @@ skb_complete_wifi_ack
         ack status
 
 
+
 .. _`skb_checksum_complete`:
 
 skb_checksum_complete
@@ -1998,6 +2161,7 @@ skb_checksum_complete
 
     :param struct sk_buff \*skb:
         packet to process
+
 
 
 .. _`skb_checksum_complete.description`:
@@ -2018,6 +2182,7 @@ if skb->ip_summed is CHECKSUM_UNNECESSARY which indicates that the
 hardware has already verified the correctness of the checksum.
 
 
+
 .. _`skb_checksum_none_assert`:
 
 skb_checksum_none_assert
@@ -2031,6 +2196,7 @@ skb_checksum_none_assert
         skb to check
 
 
+
 .. _`skb_checksum_none_assert.description`:
 
 Description
@@ -2039,6 +2205,7 @@ Description
 fresh skbs have their ip_summed set to CHECKSUM_NONE.
 Instead of forcing ip_summed to CHECKSUM_NONE, we can
 use this helper, to document places where we make this assertion.
+
 
 
 .. _`skb_head_is_locked`:
@@ -2054,6 +2221,7 @@ skb_head_is_locked
         skb to check
 
 
+
 .. _`skb_head_is_locked.description`:
 
 Description
@@ -2063,6 +2231,7 @@ The head on skbs build around a head frag can be removed if they are
 not cloned.  This function returns true if the skb head is locked down
 due to either being allocated via kmalloc, or by being a clone with
 multiple references to the head.
+
 
 
 .. _`skb_gso_network_seglen`:
@@ -2076,6 +2245,7 @@ skb_gso_network_seglen
 
     :param const struct sk_buff \*skb:
         GSO skb
+
 
 
 .. _`skb_gso_network_seglen.description`:

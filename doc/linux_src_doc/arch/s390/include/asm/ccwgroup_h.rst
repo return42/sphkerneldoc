@@ -4,16 +4,18 @@
 ccwgroup.h
 ==========
 
+
 .. _`ccwgroup_device`:
 
 struct ccwgroup_device
 ======================
 
-.. c:type:: struct ccwgroup_device
+.. c:type:: ccwgroup_device
 
     ccw group device
 
 
+.. _`ccwgroup_device.definition`:
 
 Definition
 ----------
@@ -29,6 +31,7 @@ Definition
   };
 
 
+.. _`ccwgroup_device.members`:
 
 Members
 -------
@@ -51,16 +54,18 @@ Members
 
 
 
+
 .. _`ccwgroup_driver`:
 
 struct ccwgroup_driver
 ======================
 
-.. c:type:: struct ccwgroup_driver
+.. c:type:: ccwgroup_driver
 
     driver for ccw group devices
 
 
+.. _`ccwgroup_driver.definition`:
 
 Definition
 ----------
@@ -82,6 +87,7 @@ Definition
   };
 
 
+.. _`ccwgroup_driver.members`:
 
 Members
 -------

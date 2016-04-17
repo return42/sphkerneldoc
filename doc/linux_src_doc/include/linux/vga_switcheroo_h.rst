@@ -4,16 +4,31 @@
 vga_switcheroo.h
 ================
 
+
 .. _`vga_switcheroo_handler_flags_t`:
 
 enum vga_switcheroo_handler_flags_t
 ===================================
 
-.. c:type:: enum vga_switcheroo_handler_flags_t
+.. c:type:: vga_switcheroo_handler_flags_t
 
     handler flags bitmask
 
 
+.. _`vga_switcheroo_handler_flags_t.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vga_switcheroo_handler_flags_t {
+      VGA_SWITCHEROO_CAN_SWITCH_DDC,
+      VGA_SWITCHEROO_NEEDS_EDP_CONFIG
+    };
+
+
+.. _`vga_switcheroo_handler_flags_t.constants`:
 
 Constants
 ---------
@@ -32,6 +47,8 @@ Constants
     values (DisplayPort specification v1.1a, section 2.5.3.3)
 
 
+.. _`vga_switcheroo_handler_flags_t.description`:
+
 Description
 -----------
 
@@ -39,16 +56,32 @@ Handler flags bitmask. Used by handlers to declare their capabilities upon
 registering with vga_switcheroo.
 
 
+
 .. _`vga_switcheroo_state`:
 
 enum vga_switcheroo_state
 =========================
 
-.. c:type:: enum vga_switcheroo_state
+.. c:type:: vga_switcheroo_state
 
     client power state
 
 
+.. _`vga_switcheroo_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vga_switcheroo_state {
+      VGA_SWITCHEROO_OFF,
+      VGA_SWITCHEROO_ON,
+      VGA_SWITCHEROO_NOT_FOUND
+    };
+
+
+.. _`vga_switcheroo_state.constants`:
 
 Constants
 ---------
@@ -60,11 +93,12 @@ Constants
     on
 
 :``VGA_SWITCHEROO_NOT_FOUND``:
-    client has not registered with vga_switcheroo.::
+    client has not registered with vga_switcheroo.
+    Only used in :c:func:`vga_switcheroo_get_client_state` which in turn is only
+    called from hda_intel.c
 
-            Only used in :c:func:`vga_switcheroo_get_client_state` which in turn is only
-            called from hda_intel.c
 
+.. _`vga_switcheroo_state.description`:
 
 Description
 -----------
@@ -72,25 +106,41 @@ Description
 Client power state.
 
 
+
 .. _`vga_switcheroo_client_id`:
 
 enum vga_switcheroo_client_id
 =============================
 
-.. c:type:: enum vga_switcheroo_client_id
+.. c:type:: vga_switcheroo_client_id
 
     client identifier
 
 
+.. _`vga_switcheroo_client_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vga_switcheroo_client_id {
+      VGA_SWITCHEROO_UNKNOWN_ID,
+      VGA_SWITCHEROO_IGD,
+      VGA_SWITCHEROO_DIS,
+      VGA_SWITCHEROO_MAX_CLIENTS
+    };
+
+
+.. _`vga_switcheroo_client_id.constants`:
 
 Constants
 ---------
 
 :``VGA_SWITCHEROO_UNKNOWN_ID``:
-    initial identifier assigned to vga clients.::
-
-            Determining the id requires the handler, so GPUs are given their
-            true id in a delayed fashion in :c:func:`vga_switcheroo_enable`
+    initial identifier assigned to vga clients.
+    Determining the id requires the handler, so GPUs are given their
+    true id in a delayed fashion in :c:func:`vga_switcheroo_enable`
 
 :``VGA_SWITCHEROO_IGD``:
     integrated graphics device
@@ -102,10 +152,13 @@ Constants
     currently no more than two GPUs are supported
 
 
+.. _`vga_switcheroo_client_id.description`:
+
 Description
 -----------
 
 Client identifier. Audio clients use the same identifier & 0x100.
+
 
 
 .. _`vga_switcheroo_handler`:
@@ -113,11 +166,12 @@ Client identifier. Audio clients use the same identifier & 0x100.
 struct vga_switcheroo_handler
 =============================
 
-.. c:type:: struct vga_switcheroo_handler
+.. c:type:: vga_switcheroo_handler
 
     handler callbacks
 
 
+.. _`vga_switcheroo_handler.definition`:
 
 Definition
 ----------
@@ -133,43 +187,42 @@ Definition
   };
 
 
+.. _`vga_switcheroo_handler.members`:
 
 Members
 -------
 
 :``init``:
-    initialize handler.::
-
-            Optional. This gets called when vga_switcheroo is enabled, i.e. when
-            two vga clients have registered. It allows the handler to perform
-            some delayed initialization that depends on the existence of the
-            vga clients. Currently only the radeon and amdgpu drivers use this.
-            The return value is ignored
+    initialize handler.
+    Optional. This gets called when vga_switcheroo is enabled, i.e. when
+    two vga clients have registered. It allows the handler to perform
+    some delayed initialization that depends on the existence of the
+    vga clients. Currently only the radeon and amdgpu drivers use this.
+    The return value is ignored
 
 :``switchto``:
-    switch outputs to given client.::
-
-            Mandatory. For muxless machines this should be a no-op. Returning 0
-            denotes success, anything else failure (in which case the switch is
-            aborted)
+    switch outputs to given client.
+    Mandatory. For muxless machines this should be a no-op. Returning 0
+    denotes success, anything else failure (in which case the switch is
+    aborted)
 
 :``switch_ddc``:
-    switch DDC lines to given client.::
-
-            Optional. Should return the previous DDC owner on success or a
-            negative int on failure
+    switch DDC lines to given client.
+    Optional. Should return the previous DDC owner on success or a
+    negative int on failure
 
 :``power_state``:
-    cut or reinstate power of given client.::
-
-            Optional. The return value is ignored
+    cut or reinstate power of given client.
+    Optional. The return value is ignored
 
 :``get_client_id``:
-    determine if given pci device is integrated or discrete GPU.::
+    determine if given pci device is integrated or discrete GPU.
+    Mandatory
 
-            Mandatory
 
 
+
+.. _`vga_switcheroo_handler.description`:
 
 Description
 -----------
@@ -178,16 +231,18 @@ Handler callbacks. The multiplexer itself. The ``switchto`` and ``get_client_id`
 methods are mandatory, all others may be set to NULL.
 
 
+
 .. _`vga_switcheroo_client_ops`:
 
 struct vga_switcheroo_client_ops
 ================================
 
-.. c:type:: struct vga_switcheroo_client_ops
+.. c:type:: vga_switcheroo_client_ops
 
     client callbacks
 
 
+.. _`vga_switcheroo_client_ops.definition`:
 
 Definition
 ----------
@@ -201,29 +256,30 @@ Definition
   };
 
 
+.. _`vga_switcheroo_client_ops.members`:
 
 Members
 -------
 
 :``set_gpu_state``:
-    do the equivalent of suspend/resume for the card.::
-
-            Mandatory. This should not cut power to the discrete GPU,
-            which is the job of the handler
+    do the equivalent of suspend/resume for the card.
+    Mandatory. This should not cut power to the discrete GPU,
+    which is the job of the handler
 
 :``reprobe``:
-    poll outputs.::
-
-            Optional. This gets called after waking the GPU and switching
-            the outputs to it
+    poll outputs.
+    Optional. This gets called after waking the GPU and switching
+    the outputs to it
 
 :``can_switch``:
-    check if the device is in a position to switch now.::
+    check if the device is in a position to switch now.
+    Mandatory. The client should return false if a user space process
+    has one of its device files open
 
-            Mandatory. The client should return false if a user space process
-            has one of its device files open
 
 
+
+.. _`vga_switcheroo_client_ops.description`:
 
 Description
 -----------

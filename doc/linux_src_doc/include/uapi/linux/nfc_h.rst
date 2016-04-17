@@ -4,16 +4,60 @@
 nfc.h
 =====
 
+
 .. _`nfc_commands`:
 
 enum nfc_commands
 =================
 
-.. c:type:: enum nfc_commands
+.. c:type:: nfc_commands
 
     supported nfc commands
 
 
+.. _`nfc_commands.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nfc_commands {
+      NFC_CMD_UNSPEC,
+      NFC_CMD_GET_DEVICE,
+      NFC_CMD_DEV_UP,
+      NFC_CMD_DEV_DOWN,
+      NFC_CMD_DEP_LINK_UP,
+      NFC_CMD_DEP_LINK_DOWN,
+      NFC_CMD_START_POLL,
+      NFC_CMD_STOP_POLL,
+      NFC_CMD_GET_TARGET,
+      NFC_EVENT_TARGETS_FOUND,
+      NFC_EVENT_DEVICE_ADDED,
+      NFC_EVENT_DEVICE_REMOVED,
+      NFC_EVENT_TARGET_LOST,
+      NFC_EVENT_TM_ACTIVATED,
+      NFC_EVENT_TM_DEACTIVATED,
+      NFC_CMD_LLC_GET_PARAMS,
+      NFC_CMD_LLC_SET_PARAMS,
+      NFC_CMD_ENABLE_SE,
+      NFC_CMD_DISABLE_SE,
+      NFC_CMD_LLC_SDREQ,
+      NFC_EVENT_LLC_SDRES,
+      NFC_CMD_FW_DOWNLOAD,
+      NFC_EVENT_SE_ADDED,
+      NFC_EVENT_SE_REMOVED,
+      NFC_EVENT_SE_CONNECTIVITY,
+      NFC_EVENT_SE_TRANSACTION,
+      NFC_CMD_GET_SE,
+      NFC_CMD_SE_IO,
+      NFC_CMD_ACTIVATE_TARGET,
+      NFC_CMD_VENDOR,
+      __NFC_CMD_AFTER_LAST
+    };
+
+
+.. _`nfc_commands.constants`:
 
 Constants
 ---------
@@ -34,10 +78,10 @@ Constants
     (requires ``NFC_ATTR_DEVICE_INDEX``\ )
 
 :``NFC_CMD_DEP_LINK_UP``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_CMD_DEP_LINK_DOWN``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_CMD_START_POLL``:
     start polling for targets using the given protocols
@@ -65,14 +109,14 @@ Constants
     (it sends ``NFC_ATTR_DEVICE_INDEX``\ )
 
 :``NFC_EVENT_TARGET_LOST``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_EVENT_TM_ACTIVATED``:
     event emitted when the adapter is activated in
     target mode.
 
 :``NFC_EVENT_TM_DEACTIVATED``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_CMD_LLC_GET_PARAMS``:
     request LTO, RW, and MIUX parameters for a device
@@ -86,30 +130,28 @@ Constants
     returned.
 
 :``NFC_CMD_ENABLE_SE``:
-    Enable the physical link to a specific secure element.::
-
-            Once enabled a secure element will handle card emulation mode, i.e.
-            starting a poll from a device which has a secure element enabled means
-            we want to do SE based card emulation.
+    Enable the physical link to a specific secure element.
+    Once enabled a secure element will handle card emulation mode, i.e.
+    starting a poll from a device which has a secure element enabled means
+    we want to do SE based card emulation.
 
 :``NFC_CMD_DISABLE_SE``:
     Disable the physical link to a specific secure element.
 
 :``NFC_CMD_LLC_SDREQ``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_EVENT_LLC_SDRES``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_CMD_FW_DOWNLOAD``:
     Request to Load/flash firmware, or event to inform
     that some firmware was loaded
 
 :``NFC_EVENT_SE_ADDED``:
-    Event emitted when a new secure element is discovered.::
-
-            This typically will be sent whenever a new NFC controller with either
-            an embedded SE or an UICC one connected to it through SWP.
+    Event emitted when a new secure element is discovered.
+    This typically will be sent whenever a new NFC controller with either
+    an embedded SE or an UICC one connected to it through SWP.
 
 :``NFC_EVENT_SE_REMOVED``:
     Event emitted when a secure element is removed from
@@ -141,7 +183,7 @@ Constants
     from the driver in order to support hardware specific operations.
 
 :``__NFC_CMD_AFTER_LAST``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`nfc_attrs`:
@@ -149,11 +191,56 @@ Constants
 enum nfc_attrs
 ==============
 
-.. c:type:: enum nfc_attrs
+.. c:type:: nfc_attrs
 
     supported nfc attributes
 
 
+.. _`nfc_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nfc_attrs {
+      NFC_ATTR_UNSPEC,
+      NFC_ATTR_DEVICE_INDEX,
+      NFC_ATTR_DEVICE_NAME,
+      NFC_ATTR_PROTOCOLS,
+      NFC_ATTR_TARGET_INDEX,
+      NFC_ATTR_TARGET_SENS_RES,
+      NFC_ATTR_TARGET_SEL_RES,
+      NFC_ATTR_TARGET_NFCID1,
+      NFC_ATTR_TARGET_SENSB_RES,
+      NFC_ATTR_TARGET_SENSF_RES,
+      NFC_ATTR_COMM_MODE,
+      NFC_ATTR_RF_MODE,
+      NFC_ATTR_DEVICE_POWERED,
+      NFC_ATTR_IM_PROTOCOLS,
+      NFC_ATTR_TM_PROTOCOLS,
+      NFC_ATTR_LLC_PARAM_LTO,
+      NFC_ATTR_LLC_PARAM_RW,
+      NFC_ATTR_LLC_PARAM_MIUX,
+      NFC_ATTR_SE,
+      NFC_ATTR_LLC_SDP,
+      NFC_ATTR_FIRMWARE_NAME,
+      NFC_ATTR_SE_INDEX,
+      NFC_ATTR_SE_TYPE,
+      NFC_ATTR_SE_AID,
+      NFC_ATTR_FIRMWARE_DOWNLOAD_STATUS,
+      NFC_ATTR_SE_APDU,
+      NFC_ATTR_TARGET_ISO15693_DSFID,
+      NFC_ATTR_TARGET_ISO15693_UID,
+      NFC_ATTR_SE_PARAMS,
+      NFC_ATTR_VENDOR_ID,
+      NFC_ATTR_VENDOR_SUBCMD,
+      NFC_ATTR_VENDOR_DATA,
+      __NFC_ATTR_AFTER_LAST
+    };
+
+
+.. _`nfc_attrs.constants`:
 
 Constants
 ---------
@@ -169,7 +256,7 @@ Constants
 
 :``NFC_ATTR_PROTOCOLS``:
     nfc protocols - bitwise or-ed combination from
-    NFC_PROTO_\\*_MASK constants
+    NFC_PROTO\_\\*_MASK constants
 
 :``NFC_ATTR_TARGET_INDEX``:
     index of the nfc target
@@ -197,7 +284,7 @@ Constants
     Initiator or target
 
 :``NFC_ATTR_DEVICE_POWERED``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_ATTR_IM_PROTOCOLS``:
     Initiator mode protocols to poll for
@@ -218,7 +305,7 @@ Constants
     Available Secure Elements
 
 :``NFC_ATTR_LLC_SDP``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_ATTR_FIRMWARE_NAME``:
     Free format firmware version
@@ -230,13 +317,13 @@ Constants
     Secure element type (UICC or EMBEDDED)
 
 :``NFC_ATTR_SE_AID``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_ATTR_FIRMWARE_DOWNLOAD_STATUS``:
     Firmware download operation status
 
 :``NFC_ATTR_SE_APDU``:
-    -- undescribed --
+-- undescribed --
 
 :``NFC_ATTR_TARGET_ISO15693_DSFID``:
     ISO 15693 Data Storage Format Identifier
@@ -258,7 +345,7 @@ Constants
     to a vendor specific command implementation
 
 :``__NFC_ATTR_AFTER_LAST``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`nfc_raw_header_size`:

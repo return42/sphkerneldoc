@@ -9,3 +9,6 @@ i2c
 
    i2c-boardinfo_c
    i2c-core_c
+   i2c-smbus_c
+   busses/index
+   muxes/index

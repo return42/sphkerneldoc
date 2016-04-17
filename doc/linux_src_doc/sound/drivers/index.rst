@@ -8,3 +8,4 @@ drivers
    :maxdepth: 1
 
    mpu401/index
+   vx/index

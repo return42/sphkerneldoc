@@ -4,16 +4,18 @@
 futex.c
 =======
 
+
 .. _`futex_q`:
 
 struct futex_q
 ==============
 
-.. c:type:: struct futex_q
+.. c:type:: futex_q
 
     The hashed futex queue entry, one per waiting task
 
 
+.. _`futex_q.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`futex_q.members`:
 
 Members
 -------
@@ -62,6 +65,9 @@ Members
 
 
 
+
+.. _`futex_q.description`:
+
 Description
 -----------
 
@@ -75,6 +81,7 @@ the second.
 
 PI futexes are typically woken before they are removed from the hash list via
 the rt_mutex code. See :c:func:`unqueue_me_pi`.
+
 
 
 .. _`get_futex_key`:
@@ -100,12 +107,13 @@ get_futex_key
         VERIFY_WRITE)
 
 
-.. _`get_futex_key.description`:
 
-Description
------------
+.. _`get_futex_key.return`:
 
-Return: a negative error code or 0
+Return
+------
+
+a negative error code or 0
 
 The key words are stored in \*key on success.
 
@@ -114,6 +122,7 @@ offset_within_page).  For private mappings, it's (uaddr, current->mm).
 We can usually work out the index without swapping in the page.
 
 :c:func:`lock_page` might sleep, the caller should not hold a spinlock.
+
 
 
 .. _`fault_in_user_writeable`:
@@ -129,6 +138,7 @@ fault_in_user_writeable
         pointer to faulting user space address
 
 
+
 .. _`fault_in_user_writeable.description`:
 
 Description
@@ -141,6 +151,7 @@ We have no generic implementation of a non-destructive write to the
 user address. We know that we faulted in the atomic pagefault
 disabled section so we can as well avoid the #PF overhead by
 calling :c:func:`get_user_pages` right away.
+
 
 
 .. _`futex_top_waiter`:
@@ -159,12 +170,14 @@ futex_top_waiter
         the futex key (to distinguish it from other futex futex_q's)
 
 
+
 .. _`futex_top_waiter.description`:
 
 Description
 -----------
 
 Must be called with the hb lock held.
+
 
 
 .. _`futex_lock_pi_atomic`:
@@ -197,19 +210,18 @@ futex_lock_pi_atomic
         force setting the FUTEX_WAITERS bit (1) or not (0)
 
 
-.. _`futex_lock_pi_atomic.description`:
 
-Description
------------
+.. _`futex_lock_pi_atomic.return`:
 
-Return::
+Return
+------
 
- 0 - ready to wait;
- 1 - acquired the lock;
-
+0 - ready to wait;
+1 - acquired the lock;
 <0 - error
 
 The hb->lock and futex_key refs shall be held by the caller.
+
 
 
 .. _`__unqueue_futex`:
@@ -225,12 +237,14 @@ __unqueue_futex
         The futex_q to unqueue
 
 
+
 .. _`__unqueue_futex.description`:
 
 Description
 -----------
 
 The q->lock_ptr must not be NULL and must be held by the caller.
+
 
 
 .. _`requeue_futex`:
@@ -255,6 +269,7 @@ requeue_futex
         the new key for the requeued futex_q
 
 
+
 .. _`requeue_pi_wake_futex`:
 
 requeue_pi_wake_futex
@@ -274,6 +289,7 @@ requeue_pi_wake_futex
         the hash_bucket of the requeue target futex
 
 
+
 .. _`requeue_pi_wake_futex.description`:
 
 Description
@@ -286,6 +302,7 @@ futex, but remove it from the hb and NULL the rt_waiter so it can detect
 atomic lock acquisition.  Set the q->lock_ptr to the requeue target hb->lock
 to protect access to the pi_state to fixup the owner later.  Must be called
 with both q->lock_ptr and hb->lock held.
+
 
 
 .. _`futex_proxy_trylock_atomic`:
@@ -319,6 +336,7 @@ futex_proxy_trylock_atomic
         force setting the FUTEX_WAITERS bit (1) or not (0)
 
 
+
 .. _`futex_proxy_trylock_atomic.description`:
 
 Description
@@ -329,12 +347,17 @@ Wake the top waiter if we succeed.  If the caller specified set_waiters,
 then direct :c:func:`futex_lock_pi_atomic` to force setting the FUTEX_WAITERS bit.
 hb1 and hb2 must be held by the caller.
 
-Return::
 
- 0 - failed to acquire the lock atomically;
 
+.. _`futex_proxy_trylock_atomic.return`:
+
+Return
+------
+
+0 - failed to acquire the lock atomically;
 >0 - acquired the lock, return value is vpid of the top_waiter
 <0 - error
+
 
 
 .. _`futex_requeue`:
@@ -369,6 +392,7 @@ futex_requeue
         pi futex (pi to pi requeue is not supported)
 
 
+
 .. _`futex_requeue.description`:
 
 Description
@@ -377,9 +401,16 @@ Description
 Requeue waiters on uaddr1 to uaddr2. In the requeue_pi case, try to acquire
 uaddr2 atomically on behalf of the top waiter.
 
-Return:
+
+
+.. _`futex_requeue.return`:
+
+Return
+------
+
 >=0 - on success, the number of tasks requeued or woken;
 <0 - on error
+
 
 
 .. _`queue_me`:
@@ -398,6 +429,7 @@ queue_me
         The destination hash bucket
 
 
+
 .. _`queue_me.description`:
 
 Description
@@ -409,6 +441,7 @@ exceptions involve the PI related operations, which may use :c:func:`unqueue_me_
 or nothing if the unqueue is done as part of the wake process and the unqueue
 state is implicit in the state of woken task (see :c:func:`futex_wait_requeue_pi` for
 an example).
+
 
 
 .. _`unqueue_me`:
@@ -424,6 +457,7 @@ unqueue_me
         The futex_q to unqueue
 
 
+
 .. _`unqueue_me.description`:
 
 Description
@@ -432,10 +466,16 @@ Description
 The q->lock_ptr must not be held by the caller. A call to :c:func:`unqueue_me` must
 be paired with exactly one earlier call to :c:func:`queue_me`.
 
-Return::
 
-  1 - if the futex_q was still queued (and we removed unqueued it);
-  0 - if the futex_q was already removed by the waking thread
+
+.. _`unqueue_me.return`:
+
+Return
+------
+
+1 - if the futex_q was still queued (and we removed unqueued it);
+0 - if the futex_q was already removed by the waking thread
+
 
 
 .. _`fixup_owner`:
@@ -457,6 +497,7 @@ fixup_owner
         if the attempt to take the rt_mutex succeeded (1) or not (0)
 
 
+
 .. _`fixup_owner.description`:
 
 Description
@@ -466,12 +507,17 @@ After attempting to lock an rt_mutex, this function is called to cleanup
 the pi_state owner as well as handle race conditions that may allow us to
 acquire the lock. Must be called with the hb lock held.
 
-Return::
 
- 1 - success, lock taken;
- 0 - success, lock not taken;
 
+.. _`fixup_owner.return`:
+
+Return
+------
+
+1 - success, lock taken;
+0 - success, lock not taken;
 <0 - on error (-EFAULT)
+
 
 
 .. _`futex_wait_queue_me`:
@@ -491,6 +537,7 @@ futex_wait_queue_me
 
     :param struct hrtimer_sleeper \*timeout:
         the prepared hrtimer_sleeper, or null for no timeout
+
 
 
 .. _`futex_wait_setup`:
@@ -518,6 +565,7 @@ futex_wait_setup
         storage for hash_bucket pointer to be returned to caller
 
 
+
 .. _`futex_wait_setup.description`:
 
 Description
@@ -528,11 +576,16 @@ compare it with the expected value.  Handle atomic faults internally.
 Return with the hb lock held and a q.key reference on success, and unlocked
 with no q.key reference on failure.
 
-Return::
 
- 0 - uaddr contains val and hb has been locked;
 
+.. _`futex_wait_setup.return`:
+
+Return
+------
+
+0 - uaddr contains val and hb has been locked;
 <1 - -EFAULT or -EWOULDBLOCK (uaddr does not contain val) and hb is unlocked
+
 
 
 .. _`handle_early_requeue_pi_wakeup`:
@@ -557,6 +610,7 @@ handle_early_requeue_pi_wakeup
         the timeout associated with the wait (NULL if none)
 
 
+
 .. _`handle_early_requeue_pi_wakeup.description`:
 
 Description
@@ -567,11 +621,16 @@ target futex.  If so, determine if it was a timeout or a signal that caused
 the wakeup and return the appropriate error code to the caller.  Must be
 called with the hb lock held.
 
-Return::
 
- 0 = no early wakeup detected;
 
+.. _`handle_early_requeue_pi_wakeup.return`:
+
+Return
+------
+
+0 = no early wakeup detected;
 <0 = -ETIMEDOUT or -ERESTARTNOINTR
+
 
 
 .. _`futex_wait_requeue_pi`:
@@ -601,6 +660,7 @@ futex_wait_requeue_pi
 
     :param u32 __user \*uaddr2:
         the pi futex we will take prior to returning to user-space
+
 
 
 .. _`futex_wait_requeue_pi.description`:
@@ -634,11 +694,16 @@ If 6, return -EWOULDBLOCK (restarting the syscall would do the same).
 
 If 4 or 7, we cleanup and return with -ETIMEDOUT.
 
-Return::
 
- 0 - On success;
 
+.. _`futex_wait_requeue_pi.return`:
+
+Return
+------
+
+0 - On success;
 <0 - On error
+
 
 
 .. _`sys_set_robust_list`:
@@ -655,6 +720,7 @@ sys_set_robust_list
 
     :param size_t len:
         length of the list-head, as userspace expects
+
 
 
 .. _`sys_get_robust_list`:

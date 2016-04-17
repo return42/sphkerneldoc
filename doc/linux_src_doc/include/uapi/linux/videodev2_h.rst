@@ -4,16 +4,18 @@
 videodev2.h
 ===========
 
+
 .. _`v4l2_capability`:
 
 struct v4l2_capability
 ======================
 
-.. c:type:: struct v4l2_capability
+.. c:type:: v4l2_capability
 
     Describes V4L2 device caps returned by VIDIOC_QUERYCAP
 
 
+.. _`v4l2_capability.definition`:
 
 Definition
 ----------
@@ -31,6 +33,7 @@ Definition
   };
 
 
+.. _`v4l2_capability.members`:
 
 Members
 -------
@@ -58,16 +61,18 @@ Members
 
 
 
+
 .. _`v4l2_plane`:
 
 struct v4l2_plane
 =================
 
-.. c:type:: struct v4l2_plane
+.. c:type:: v4l2_plane
 
     plane info for multi-planar buffers
 
 
+.. _`v4l2_plane.definition`:
 
 Definition
 ----------
@@ -81,6 +86,7 @@ Definition
   };
 
 
+.. _`v4l2_plane.members`:
 
 Members
 -------
@@ -97,6 +103,9 @@ Members
 
 
 
+
+.. _`v4l2_plane.description`:
+
 Description
 -----------
 
@@ -106,16 +115,18 @@ components. Each plane can reside in a separate memory buffer, or even in
 a completely separate memory node (e.g. in embedded devices).
 
 
+
 .. _`v4l2_buffer`:
 
 struct v4l2_buffer
 ==================
 
-.. c:type:: struct v4l2_buffer
+.. c:type:: v4l2_buffer
 
     video buffer info
 
 
+.. _`v4l2_buffer.definition`:
 
 Definition
 ----------
@@ -136,6 +147,7 @@ Definition
   };
 
 
+.. _`v4l2_buffer.members`:
 
 Members
 -------
@@ -177,6 +189,9 @@ Members
 
 
 
+
+.. _`v4l2_buffer.description`:
+
 Description
 -----------
 
@@ -184,16 +199,18 @@ Contains data exchanged by application and driver using one of the Streaming
 I/O methods.
 
 
+
 .. _`v4l2_exportbuffer`:
 
 struct v4l2_exportbuffer
 ========================
 
-.. c:type:: struct v4l2_exportbuffer
+.. c:type:: v4l2_exportbuffer
 
     export of video buffer as DMABUF file descriptor
 
 
+.. _`v4l2_exportbuffer.definition`:
 
 Definition
 ----------
@@ -209,6 +226,7 @@ Definition
   };
 
 
+.. _`v4l2_exportbuffer.members`:
 
 Members
 -------
@@ -232,6 +250,9 @@ Members
 
 
 
+
+.. _`v4l2_exportbuffer.description`:
+
 Description
 -----------
 
@@ -243,16 +264,18 @@ become a structure 'type' allowing an alternative layout of the structure
 content. Therefore this field should not be used for any other extensions.
 
 
+
 .. _`v4l2_selection`:
 
 struct v4l2_selection
 =====================
 
-.. c:type:: struct v4l2_selection
+.. c:type:: v4l2_selection
 
     selection info
 
 
+.. _`v4l2_selection.definition`:
 
 Definition
 ----------
@@ -268,6 +291,7 @@ Definition
   };
 
 
+.. _`v4l2_selection.members`:
 
 Members
 -------
@@ -277,10 +301,10 @@ Members
 
 :``target``:
     Selection target, used to choose one of possible rectangles;
-    defined in v4l2-common.h; V4L2_SEL_TGT_\* .
+    defined in v4l2-common.h; V4L2_SEL_TGT\_\* .
 
 :``flags``:
-    constraints flags, defined in v4l2-common.h; V4L2_SEL_FLAG_\*.
+    constraints flags, defined in v4l2-common.h; V4L2_SEL_FLAG\_\*.
 
 :``r``:
     coordinates of selection window
@@ -290,6 +314,9 @@ Members
 
 
 
+
+.. _`v4l2_selection.description`:
+
 Description
 -----------
 
@@ -298,16 +325,18 @@ The structure is used to exchange this selection areas between
 an application and a driver.
 
 
+
 .. _`v4l2_plane_pix_format`:
 
 struct v4l2_plane_pix_format
 ============================
 
-.. c:type:: struct v4l2_plane_pix_format
+.. c:type:: v4l2_plane_pix_format
 
     additional, per-plane format definition
 
 
+.. _`v4l2_plane_pix_format.definition`:
 
 Definition
 ----------
@@ -320,6 +349,7 @@ Definition
   };
 
 
+.. _`v4l2_plane_pix_format.members`:
 
 Members
 -------
@@ -334,16 +364,18 @@ Members
 
 
 
+
 .. _`v4l2_pix_format_mplane`:
 
 struct v4l2_pix_format_mplane
 =============================
 
-.. c:type:: struct v4l2_pix_format_mplane
+.. c:type:: v4l2_pix_format_mplane
 
     multiplanar format definition
 
 
+.. _`v4l2_pix_format_mplane.definition`:
 
 Definition
 ----------
@@ -365,6 +397,7 @@ Definition
   };
 
 
+.. _`v4l2_pix_format_mplane.members`:
 
 Members
 -------
@@ -391,7 +424,7 @@ Members
     number of planes for this format
 
 :``flags``:
-    format flags (V4L2_PIX_FMT_FLAG_\*)
+    format flags (V4L2_PIX_FMT_FLAG\_\*)
 
 :``ycbcr_enc``:
     enum v4l2_ycbcr_encoding, Y'CbCr encoding
@@ -404,16 +437,18 @@ Members
 
 
 
+
 .. _`v4l2_sdr_format`:
 
 struct v4l2_sdr_format
 ======================
 
-.. c:type:: struct v4l2_sdr_format
+.. c:type:: v4l2_sdr_format
 
     SDR format definition
 
 
+.. _`v4l2_sdr_format.definition`:
 
 Definition
 ----------
@@ -426,6 +461,7 @@ Definition
   };
 
 
+.. _`v4l2_sdr_format.members`:
 
 Members
 -------
@@ -438,16 +474,18 @@ Members
 
 
 
+
 .. _`v4l2_format`:
 
 struct v4l2_format
 ==================
 
-.. c:type:: struct v4l2_format
+.. c:type:: v4l2_format
 
     stream data format
 
 
+.. _`v4l2_format.definition`:
 
 Definition
 ----------
@@ -459,6 +497,7 @@ Definition
   };
 
 
+.. _`v4l2_format.members`:
 
 Members
 -------
@@ -468,16 +507,18 @@ Members
 
 
 
+
 .. _`v4l2_event_motion_det`:
 
 struct v4l2_event_motion_det
 ============================
 
-.. c:type:: struct v4l2_event_motion_det
+.. c:type:: v4l2_event_motion_det
 
     motion detection event
 
 
+.. _`v4l2_event_motion_det.definition`:
 
 Definition
 ----------
@@ -491,6 +532,7 @@ Definition
   };
 
 
+.. _`v4l2_event_motion_det.members`:
 
 Members
 -------
@@ -507,16 +549,18 @@ Members
 
 
 
+
 .. _`v4l2_create_buffers`:
 
 struct v4l2_create_buffers
 ==========================
 
-.. c:type:: struct v4l2_create_buffers
+.. c:type:: v4l2_create_buffers
 
     VIDIOC_CREATE_BUFS argument
 
 
+.. _`v4l2_create_buffers.definition`:
 
 Definition
 ----------
@@ -532,6 +576,7 @@ Definition
   };
 
 
+.. _`v4l2_create_buffers.members`:
 
 Members
 -------
@@ -541,7 +586,6 @@ Members
 
 :``count``:
     entry: number of requested buffers,
-    return: number of created buffers
 
 :``memory``:
     enum v4l2_memory; buffer memory type
@@ -552,4 +596,13 @@ Members
 :``reserved[8]``:
     future extensions
 
+
+
+
+.. _`v4l2_create_buffers.return`:
+
+return
+------
+
+number of created buffers
 

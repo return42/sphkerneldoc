@@ -4,6 +4,7 @@
 drm_mipi_dsi.c
 ==============
 
+
 .. _`dsi-helpers`:
 
 dsi helpers
@@ -14,6 +15,7 @@ peripherals.
 
 Helpers are provided for a number of standard MIPI DSI command as well as a
 subset of the MIPI DCS command set.
+
 
 
 .. _`of_find_mipi_dsi_device_by_node`:
@@ -29,13 +31,15 @@ of_find_mipi_dsi_device_by_node
         device tree node
 
 
-.. _`of_find_mipi_dsi_device_by_node.description`:
 
-Description
------------
+.. _`of_find_mipi_dsi_device_by_node.return`:
 
-Return: A pointer to the MIPI DSI device corresponding to ``np`` or NULL if no
+Return
+------
+
+A pointer to the MIPI DSI device corresponding to ``np`` or NULL if no
 such device exists (or has not been registered yet).
+
 
 
 .. _`mipi_dsi_device_register_full`:
@@ -54,6 +58,7 @@ mipi_dsi_device_register_full
         pointer to template containing DSI device information
 
 
+
 .. _`mipi_dsi_device_register_full.description`:
 
 Description
@@ -62,9 +67,16 @@ Description
 Create a MIPI DSI device by using the device information provided by
 mipi_dsi_device_info template
 
-Returns:
+
+
+.. _`mipi_dsi_device_register_full.returns`:
+
+Returns
+-------
+
 A pointer to the newly created MIPI DSI device, or, a pointer encoded
 with an error
+
 
 
 .. _`mipi_dsi_device_unregister`:
@@ -80,6 +92,7 @@ mipi_dsi_device_unregister
         DSI peripheral device
 
 
+
 .. _`of_find_mipi_dsi_host_by_node`:
 
 of_find_mipi_dsi_host_by_node
@@ -93,14 +106,15 @@ of_find_mipi_dsi_host_by_node
         device tree node
 
 
-.. _`of_find_mipi_dsi_host_by_node.description`:
 
-Description
------------
+.. _`of_find_mipi_dsi_host_by_node.returns`:
 
-Returns:
+Returns
+-------
+
 A pointer to the MIPI DSI host corresponding to ``node`` or NULL if no
 such device exists (or has not been registered yet).
+
 
 
 .. _`mipi_dsi_attach`:
@@ -116,6 +130,7 @@ mipi_dsi_attach
         DSI peripheral
 
 
+
 .. _`mipi_dsi_detach`:
 
 mipi_dsi_detach
@@ -127,6 +142,7 @@ mipi_dsi_detach
 
     :param struct mipi_dsi_device \*dsi:
         DSI peripheral
+
 
 
 .. _`mipi_dsi_packet_format_is_short`:
@@ -142,13 +158,15 @@ mipi_dsi_packet_format_is_short
         MIPI DSI data type of the packet
 
 
-.. _`mipi_dsi_packet_format_is_short.description`:
 
-Description
------------
+.. _`mipi_dsi_packet_format_is_short.return`:
 
-Return: true if the packet for the given data type is a short packet, false
+Return
+------
+
+true if the packet for the given data type is a short packet, false
 otherwise.
+
 
 
 .. _`mipi_dsi_packet_format_is_long`:
@@ -164,13 +182,15 @@ mipi_dsi_packet_format_is_long
         MIPI DSI data type of the packet
 
 
-.. _`mipi_dsi_packet_format_is_long.description`:
 
-Description
------------
+.. _`mipi_dsi_packet_format_is_long.return`:
 
-Return: true if the packet for the given data type is a long packet, false
+Return
+------
+
+true if the packet for the given data type is a long packet, false
 otherwise.
+
 
 
 .. _`mipi_dsi_create_packet`:
@@ -189,12 +209,14 @@ mipi_dsi_create_packet
         message to translate into a packet
 
 
-.. _`mipi_dsi_create_packet.description`:
 
-Description
------------
+.. _`mipi_dsi_create_packet.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_shutdown_peripheral`:
@@ -210,12 +232,14 @@ mipi_dsi_shutdown_peripheral
         DSI peripheral device
 
 
-.. _`mipi_dsi_shutdown_peripheral.description`:
 
-Description
------------
+.. _`mipi_dsi_shutdown_peripheral.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_turn_on_peripheral`:
@@ -231,12 +255,14 @@ mipi_dsi_turn_on_peripheral
         DSI peripheral device
 
 
-.. _`mipi_dsi_turn_on_peripheral.description`:
 
-Description
------------
+.. _`mipi_dsi_turn_on_peripheral.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_generic_write`:
@@ -258,6 +284,7 @@ mipi_dsi_generic_write
         size of payload buffer
 
 
+
 .. _`mipi_dsi_generic_write.description`:
 
 Description
@@ -266,8 +293,16 @@ Description
 This function will automatically choose the right data type depending on
 the payload length.
 
-Return: The number of bytes transmitted on success or a negative error code
+
+
+.. _`mipi_dsi_generic_write.return`:
+
+Return
+------
+
+The number of bytes transmitted on success or a negative error code
 on failure.
+
 
 
 .. _`mipi_dsi_generic_read`:
@@ -295,6 +330,7 @@ mipi_dsi_generic_read
         size of receive buffer
 
 
+
 .. _`mipi_dsi_generic_read.description`:
 
 Description
@@ -303,8 +339,16 @@ Description
 This function will automatically choose the right data type depending on
 the number of parameters passed in.
 
-Return: The number of bytes successfully read or a negative error code on
+
+
+.. _`mipi_dsi_generic_read.return`:
+
+Return
+------
+
+The number of bytes successfully read or a negative error code on
 failure.
+
 
 
 .. _`mipi_dsi_dcs_write_buffer`:
@@ -326,6 +370,7 @@ mipi_dsi_dcs_write_buffer
         size of transmission buffer
 
 
+
 .. _`mipi_dsi_dcs_write_buffer.description`:
 
 Description
@@ -334,8 +379,16 @@ Description
 This function will automatically choose the right data type depending on
 the command payload length.
 
-Return: The number of bytes successfully transmitted or a negative error
+
+
+.. _`mipi_dsi_dcs_write_buffer.return`:
+
+Return
+------
+
+The number of bytes successfully transmitted or a negative error
 code on failure.
+
 
 
 .. _`mipi_dsi_dcs_write`:
@@ -360,6 +413,7 @@ mipi_dsi_dcs_write
         command payload length
 
 
+
 .. _`mipi_dsi_dcs_write.description`:
 
 Description
@@ -368,8 +422,16 @@ Description
 This function will automatically choose the right data type depending on
 the command payload length.
 
-Return: The number of bytes successfully transmitted or a negative error
+
+
+.. _`mipi_dsi_dcs_write.return`:
+
+Return
+------
+
+The number of bytes successfully transmitted or a negative error
 code on failure.
+
 
 
 .. _`mipi_dsi_dcs_read`:
@@ -394,12 +456,14 @@ mipi_dsi_dcs_read
         size of receive buffer
 
 
-.. _`mipi_dsi_dcs_read.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_read.return`:
 
-Return: The number of bytes read or a negative error code on failure.
+Return
+------
+
+The number of bytes read or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_nop`:
@@ -415,12 +479,14 @@ mipi_dsi_dcs_nop
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_nop.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_nop.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_soft_reset`:
@@ -436,12 +502,14 @@ mipi_dsi_dcs_soft_reset
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_soft_reset.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_soft_reset.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_get_power_mode`:
@@ -460,12 +528,14 @@ mipi_dsi_dcs_get_power_mode
         return location for the current power mode
 
 
-.. _`mipi_dsi_dcs_get_power_mode.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_get_power_mode.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_get_pixel_format`:
@@ -484,12 +554,14 @@ mipi_dsi_dcs_get_pixel_format
         return location for the pixel format
 
 
-.. _`mipi_dsi_dcs_get_pixel_format.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_get_pixel_format.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_enter_sleep_mode`:
@@ -505,12 +577,14 @@ mipi_dsi_dcs_enter_sleep_mode
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_enter_sleep_mode.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_enter_sleep_mode.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_exit_sleep_mode`:
@@ -526,12 +600,14 @@ mipi_dsi_dcs_exit_sleep_mode
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_exit_sleep_mode.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_exit_sleep_mode.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_set_display_off`:
@@ -547,12 +623,14 @@ mipi_dsi_dcs_set_display_off
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_set_display_off.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_display_off.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_set_display_on`:
@@ -568,12 +646,14 @@ mipi_dsi_dcs_set_display_on
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_set_display_on.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_display_on.return`:
 
-Return: 0 on success or a negative error code on failure
+Return
+------
+
+0 on success or a negative error code on failure
+
 
 
 .. _`mipi_dsi_dcs_set_column_address`:
@@ -595,12 +675,14 @@ mipi_dsi_dcs_set_column_address
         last column of frame memory
 
 
-.. _`mipi_dsi_dcs_set_column_address.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_column_address.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_set_page_address`:
@@ -622,12 +704,14 @@ mipi_dsi_dcs_set_page_address
         last page of frame memory
 
 
-.. _`mipi_dsi_dcs_set_page_address.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_page_address.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_dcs_set_tear_off`:
@@ -643,12 +727,14 @@ mipi_dsi_dcs_set_tear_off
         DSI peripheral device
 
 
-.. _`mipi_dsi_dcs_set_tear_off.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_tear_off.return`:
 
-Return: 0 on success or a negative error code on failure
+Return
+------
+
+0 on success or a negative error code on failure
+
 
 
 .. _`mipi_dsi_dcs_set_tear_on`:
@@ -667,12 +753,14 @@ mipi_dsi_dcs_set_tear_on
         the Tearing Effect Output Line mode
 
 
-.. _`mipi_dsi_dcs_set_tear_on.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_tear_on.return`:
 
-Return: 0 on success or a negative error code on failure
+Return
+------
+
+0 on success or a negative error code on failure
+
 
 
 .. _`mipi_dsi_dcs_set_pixel_format`:
@@ -691,12 +779,14 @@ mipi_dsi_dcs_set_pixel_format
         pixel format
 
 
-.. _`mipi_dsi_dcs_set_pixel_format.description`:
 
-Description
------------
+.. _`mipi_dsi_dcs_set_pixel_format.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_driver_register_full`:
@@ -715,12 +805,14 @@ mipi_dsi_driver_register_full
         owner module
 
 
-.. _`mipi_dsi_driver_register_full.description`:
 
-Description
------------
+.. _`mipi_dsi_driver_register_full.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
+
 
 
 .. _`mipi_dsi_driver_unregister`:
@@ -736,10 +828,11 @@ mipi_dsi_driver_unregister
         DSI driver structure
 
 
-.. _`mipi_dsi_driver_unregister.description`:
 
-Description
------------
+.. _`mipi_dsi_driver_unregister.return`:
 
-Return: 0 on success or a negative error code on failure.
+Return
+------
+
+0 on success or a negative error code on failure.
 

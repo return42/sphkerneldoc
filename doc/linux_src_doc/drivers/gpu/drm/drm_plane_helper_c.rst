@@ -4,6 +4,7 @@
 drm_plane_helper.c
 ==================
 
+
 .. _`overview`:
 
 overview
@@ -34,6 +35,7 @@ Again drivers are strongly urged to switch to the new interfaces.
 The plane helpers share the function table structures with other helpers,
 specifically also the atomic helpers. See struct :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_funcs>` for
 the details.
+
 
 
 .. _`drm_plane_helper_check_update`:
@@ -83,6 +85,7 @@ drm_plane_helper_check_update
         clipping
 
 
+
 .. _`drm_plane_helper_check_update.description`:
 
 Description
@@ -93,8 +96,15 @@ their own plane handling rather than helper-provided implementations may
 still wish to call this function to avoid duplication of error checking
 code.
 
-RETURNS:
+
+
+.. _`drm_plane_helper_check_update.returns`:
+
+RETURNS
+-------
+
 Zero if update appears valid, error code on failure
+
 
 
 .. _`drm_primary_helper_update`:
@@ -140,6 +150,7 @@ drm_primary_helper_update
         height of source rectangle in ``fb``
 
 
+
 .. _`drm_primary_helper_update.description`:
 
 Description
@@ -155,16 +166,24 @@ return an error.
 
 Note that we make some assumptions about hardware limitations that may not be
 true for all hardware --
-1) Primary plane cannot be repositioned.
-2) Primary plane cannot be scaled.
-3) Primary plane must cover the entire CRTC.
-4) Subpixel positioning is not supported.
+
+  1) Primary plane cannot be repositioned.
+  2) Primary plane cannot be scaled.
+  3) Primary plane must cover the entire CRTC.
+  4) Subpixel positioning is not supported.
 
 Drivers for hardware that don't have these restrictions can provide their
 own implementation rather than using this helper.
 
-RETURNS:
+
+
+.. _`drm_primary_helper_update.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_primary_helper_disable`:
@@ -178,6 +197,7 @@ drm_primary_helper_disable
 
     :param struct drm_plane \*plane:
         plane to disable
+
 
 
 .. _`drm_primary_helper_disable.description`:
@@ -197,8 +217,15 @@ own disable handler that disables just the primary plane (and they'll likely
 need to provide their own update handler as well to properly re-enable a
 disabled primary plane).
 
-RETURNS:
+
+
+.. _`drm_primary_helper_disable.returns`:
+
+RETURNS
+-------
+
 Unconditionally returns -EINVAL.
+
 
 
 .. _`drm_primary_helper_destroy`:
@@ -214,6 +241,7 @@ drm_primary_helper_destroy
         plane to destroy
 
 
+
 .. _`drm_primary_helper_destroy.description`:
 
 Description
@@ -222,6 +250,7 @@ Description
 Provides a default plane destroy handler for primary planes.  This handler
 is called during CRTC destruction.  We disable the primary plane, remove
 it from the DRM plane list, and deallocate the plane structure.
+
 
 
 .. _`drm_crtc_init`:
@@ -243,6 +272,7 @@ drm_crtc_init
         callbacks for the new CRTC
 
 
+
 .. _`drm_crtc_init.description`:
 
 Description
@@ -251,8 +281,15 @@ Description
 Initialize a CRTC object with a default helper-provided primary plane and no
 cursor plane.
 
-Returns:
+
+
+.. _`drm_crtc_init.returns`:
+
+Returns
+-------
+
 Zero on success, error code on failure.
+
 
 
 .. _`drm_plane_helper_update`:
@@ -298,6 +335,7 @@ drm_plane_helper_update
         height of source rectangle in ``fb``
 
 
+
 .. _`drm_plane_helper_update.description`:
 
 Description
@@ -309,8 +347,15 @@ handle corner-cases like a fully occluded or otherwise invisible plane.
 
 This is useful for piecewise transitioning of a driver to the atomic helpers.
 
-RETURNS:
+
+
+.. _`drm_plane_helper_update.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_plane_helper_disable`:
@@ -326,6 +371,7 @@ drm_plane_helper_disable
         plane to disable
 
 
+
 .. _`drm_plane_helper_disable.description`:
 
 Description
@@ -337,6 +383,12 @@ handle corner-cases like a fully occluded or otherwise invisible plane.
 
 This is useful for piecewise transitioning of a driver to the atomic helpers.
 
-RETURNS:
+
+
+.. _`drm_plane_helper_disable.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
 

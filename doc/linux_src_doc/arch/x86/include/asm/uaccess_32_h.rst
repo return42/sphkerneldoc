@@ -4,6 +4,7 @@
 uaccess_32.h
 ============
 
+
 .. _`__copy_to_user_inatomic`:
 
 __copy_to_user_inatomic
@@ -23,22 +24,31 @@ __copy_to_user_inatomic
         Number of bytes to copy.
 
 
+
+.. _`__copy_to_user_inatomic.context`:
+
+Context
+-------
+
+User context only.
+
+
+
 .. _`__copy_to_user_inatomic.description`:
 
 Description
 -----------
-
-Context: User context only.
 
 Copy data from kernel space to user space.  Caller must check
 the specified block with :c:func:`access_ok` before calling this function.
 The caller should also make sure he pins the user space address
 so that we don't result in page fault and sleep.
 
-Here we special-case 1, 2 and 4-byte copy_\\*_user invocations.  On a fault
-we return the initial request size (1, 2 or 4), as copy_\\*_user should do.
+Here we special-case 1, 2 and 4-byte copy\_\\*_user invocations.  On a fault
+we return the initial request size (1, 2 or 4), as copy\_\\*_user should do.
 If a store crosses a page boundary and gets a fault, the x86 will not write
 anything, so this is accurate.
+
 
 
 .. _`__copy_to_user`:
@@ -60,19 +70,28 @@ __copy_to_user
         Number of bytes to copy.
 
 
+
+.. _`__copy_to_user.context`:
+
+Context
+-------
+
+User context only. This function may sleep if pagefaults are
+enabled.
+
+
+
 .. _`__copy_to_user.description`:
 
 Description
 -----------
-
-Context: User context only. This function may sleep if pagefaults are
-enabled.
 
 Copy data from kernel space to user space.  Caller must check
 the specified block with :c:func:`access_ok` before calling this function.
 
 Returns number of bytes that could not be copied.
 On success, this will be zero.
+
 
 
 .. _`__copy_from_user`:
@@ -94,13 +113,21 @@ __copy_from_user
         Number of bytes to copy.
 
 
+
+.. _`__copy_from_user.context`:
+
+Context
+-------
+
+User context only. This function may sleep if pagefaults are
+enabled.
+
+
+
 .. _`__copy_from_user.description`:
 
 Description
 -----------
-
-Context: User context only. This function may sleep if pagefaults are
-enabled.
 
 Copy data from user space to kernel space.  Caller must check
 the specified block with :c:func:`access_ok` before calling this function.

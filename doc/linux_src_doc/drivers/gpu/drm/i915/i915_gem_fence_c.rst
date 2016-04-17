@@ -4,6 +4,7 @@
 i915_gem_fence.c
 ================
 
+
 .. _`fence-register-handling`:
 
 fence register handling
@@ -36,6 +37,7 @@ Internally these functions will synchronize with userspace access by removing
 CPU ptes into GTT mmaps (not the GTT ptes themselves) as needed.
 
 
+
 .. _`i915_gem_object_put_fence`:
 
 i915_gem_object_put_fence
@@ -49,6 +51,7 @@ i915_gem_object_put_fence
         object to map through a fence reg
 
 
+
 .. _`i915_gem_object_put_fence.description`:
 
 Description
@@ -57,9 +60,16 @@ Description
 This function force-removes any fence from the given object, which is useful
 if the kernel wants to do untiled GTT access.
 
-Returns:
+
+
+.. _`i915_gem_object_put_fence.returns`:
+
+Returns
+-------
+
 
 0 on success, negative error code on failure.
+
 
 
 .. _`i915_gem_object_get_fence`:
@@ -73,6 +83,7 @@ i915_gem_object_get_fence
 
     :param struct drm_i915_gem_object \*obj:
         object to map through a fence reg
+
 
 
 .. _`i915_gem_object_get_fence.description`:
@@ -90,9 +101,16 @@ and tiling format.
 
 For an untiled surface, this removes any existing fence.
 
-Returns:
+
+
+.. _`i915_gem_object_get_fence.returns`:
+
+Returns
+-------
+
 
 0 on success, negative error code on failure.
+
 
 
 .. _`i915_gem_object_pin_fence`:
@@ -108,6 +126,7 @@ i915_gem_object_pin_fence
         object to pin fencing for
 
 
+
 .. _`i915_gem_object_pin_fence.description`:
 
 Description
@@ -120,9 +139,16 @@ synchronize first by calling :c:func:`i915_gem_object_get_fence`:
 The resulting fence pin reference must be released again with
 :c:func:`i915_gem_object_unpin_fence`.
 
-Returns:
+
+
+.. _`i915_gem_object_pin_fence.returns`:
+
+Returns
+-------
+
 
 True if the object has a fence, false otherwise.
+
 
 
 .. _`i915_gem_object_unpin_fence`:
@@ -138,6 +164,7 @@ i915_gem_object_unpin_fence
         object to unpin fencing for
 
 
+
 .. _`i915_gem_object_unpin_fence.description`:
 
 Description
@@ -146,6 +173,7 @@ Description
 This releases the fence pin reference acquired through
 i915_gem_object_pin_fence. It will handle both objects with and without an
 attached fence correctly, callers do not need to distinguish this.
+
 
 
 .. _`i915_gem_restore_fences`:
@@ -161,6 +189,7 @@ i915_gem_restore_fences
         DRM device
 
 
+
 .. _`i915_gem_restore_fences.description`:
 
 Description
@@ -168,6 +197,7 @@ Description
 
 Restore the hw fence state to match the software tracking again, to be called
 after a gpu reset and on resume.
+
 
 
 .. _`tiling-swizzling-details`:
@@ -220,6 +250,7 @@ required by the CPU of XORing in bit 6, 9, 10, and potentially 11, in order
 to match what the GPU expects.
 
 
+
 .. _`i915_gem_detect_bit_6_swizzle`:
 
 i915_gem_detect_bit_6_swizzle
@@ -233,6 +264,7 @@ i915_gem_detect_bit_6_swizzle
         DRM device
 
 
+
 .. _`i915_gem_detect_bit_6_swizzle.description`:
 
 Description
@@ -240,6 +272,7 @@ Description
 
 Detects bit 6 swizzling of address lookup between IGD access and CPU
 access through main memory.
+
 
 
 .. _`i915_gem_object_do_bit_17_swizzle`:
@@ -253,6 +286,7 @@ i915_gem_object_do_bit_17_swizzle
 
     :param struct drm_i915_gem_object \*obj:
         i915 GEM buffer object
+
 
 
 .. _`i915_gem_object_do_bit_17_swizzle.description`:
@@ -269,6 +303,7 @@ to move unpinned backing storage around (either by directly moving pages or
 by swapping them out and back in again).
 
 
+
 .. _`i915_gem_object_save_bit_17_swizzle`:
 
 i915_gem_object_save_bit_17_swizzle
@@ -280,6 +315,7 @@ i915_gem_object_save_bit_17_swizzle
 
     :param struct drm_i915_gem_object \*obj:
         i915 GEM buffer object
+
 
 
 .. _`i915_gem_object_save_bit_17_swizzle.description`:

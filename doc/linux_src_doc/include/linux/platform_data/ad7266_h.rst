@@ -1,0 +1,130 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+ad7266.h
+========
+
+
+.. _`ad7266_range`:
+
+enum ad7266_range
+=================
+
+.. c:type:: ad7266_range
+
+    AD7266 reference voltage range
+
+
+.. _`ad7266_range.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ad7266_range {
+      AD7266_RANGE_VREF,
+      AD7266_RANGE_2VREF
+    };
+
+
+.. _`ad7266_range.constants`:
+
+Constants
+---------
+
+:``AD7266_RANGE_VREF``:
+    Device is configured for input range 0V - VREF
+    (RANGE pin set to low)
+
+:``AD7266_RANGE_2VREF``:
+    Device is configured for input range 0V - 2VREF
+    (RANGE pin set to high)
+
+
+.. _`ad7266_mode`:
+
+enum ad7266_mode
+================
+
+.. c:type:: ad7266_mode
+
+    AD7266 sample mode
+
+
+.. _`ad7266_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ad7266_mode {
+      AD7266_MODE_DIFF,
+      AD7266_MODE_PSEUDO_DIFF,
+      AD7266_MODE_SINGLE_ENDED
+    };
+
+
+.. _`ad7266_mode.constants`:
+
+Constants
+---------
+
+:``AD7266_MODE_DIFF``:
+    Device is configured for full differential mode
+    (SGL/DIFF pin set to low, AD0 pin set to low)
+
+:``AD7266_MODE_PSEUDO_DIFF``:
+    Device is configured for pseudo differential mode
+    (SGL/DIFF pin set to low, AD0 pin set to high)
+
+:``AD7266_MODE_SINGLE_ENDED``:
+    Device is configured for single-ended mode
+    (SGL/DIFF pin set to high)
+
+
+.. _`ad7266_platform_data`:
+
+struct ad7266_platform_data
+===========================
+
+.. c:type:: ad7266_platform_data
+
+    Platform data for the AD7266 driver
+
+
+.. _`ad7266_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct ad7266_platform_data {
+    enum ad7266_range range;
+    enum ad7266_mode mode;
+    bool fixed_addr;
+    unsigned int addr_gpios[3];
+  };
+
+
+.. _`ad7266_platform_data.members`:
+
+Members
+-------
+
+:``range``:
+    Reference voltage range the device is configured for
+
+:``mode``:
+    Sample mode the device is configured for
+
+:``fixed_addr``:
+    Whether the address pins are hard-wired
+
+:``addr_gpios[3]``:
+    GPIOs used for controlling the address pins, only used if
+    fixed_addr is set to false.
+
+

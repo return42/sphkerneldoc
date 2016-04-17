@@ -4,16 +4,18 @@
 net_tstamp.h
 ============
 
+
 .. _`hwtstamp_config`:
 
 struct hwtstamp_config
 ======================
 
-.. c:type:: struct hwtstamp_config
+.. c:type:: hwtstamp_config
 
     %SIOCGHWTSTAMP and %SIOCSHWTSTAMP parameter
 
 
+.. _`hwtstamp_config.definition`:
 
 Definition
 ----------
@@ -27,6 +29,7 @@ Definition
   };
 
 
+.. _`hwtstamp_config.members`:
 
 Members
 -------
@@ -35,12 +38,15 @@ Members
     no flags defined right now, must be zero for ``SIOCSHWTSTAMP``
 
 :``tx_type``:
-    one of HWTSTAMP_TX_*
+    one of HWTSTAMP_TX\_\*
 
 :``rx_filter``:
-    one of HWTSTAMP_FILTER_*
+    one of HWTSTAMP_FILTER\_\*
 
 
+
+
+.. _`hwtstamp_config.description`:
 
 Description
 -----------

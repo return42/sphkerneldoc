@@ -4,6 +4,7 @@
 i915_gem_gtt.c
 ==============
 
+
 .. _`global-gtt-views`:
 
 Global GTT views
@@ -66,6 +67,7 @@ struct i915_ggtt_view does not need to be persistent (left around after
 calling the core API functions).
 
 
+
 .. _`gen8_ppgtt_alloc_pagetabs`:
 
 gen8_ppgtt_alloc_pagetabs
@@ -92,6 +94,7 @@ gen8_ppgtt_alloc_pagetabs
         caller to free on error.
 
 
+
 .. _`gen8_ppgtt_alloc_pagetabs.description`:
 
 Description
@@ -104,7 +107,15 @@ boundary is 1GB virtual. Therefore, unlike :c:func:`gen8_ppgtt_alloc_page_direct
 possible, and likely that the caller will need to use multiple calls of this
 function to achieve the appropriate allocation.
 
-Return: 0 if success; negative error code otherwise.
+
+
+.. _`gen8_ppgtt_alloc_pagetabs.return`:
+
+Return
+------
+
+0 if success; negative error code otherwise.
+
 
 
 .. _`gen8_ppgtt_alloc_page_directories`:
@@ -133,6 +144,7 @@ gen8_ppgtt_alloc_page_directories
         caller to free on error.
 
 
+
 .. _`gen8_ppgtt_alloc_page_directories.description`:
 
 Description
@@ -150,7 +162,15 @@ addressed PDP boundary (512GB for 4k pages), there will be more allocations
 required by the caller, This is not currently possible, and the BUG in the
 code will prevent it.
 
-Return: 0 if success; negative error code otherwise.
+
+
+.. _`gen8_ppgtt_alloc_page_directories.return`:
+
+Return
+------
+
+0 if success; negative error code otherwise.
+
 
 
 .. _`gen8_ppgtt_alloc_page_dirpointers`:
@@ -179,6 +199,7 @@ gen8_ppgtt_alloc_page_dirpointers
         caller to free on error.
 
 
+
 .. _`gen8_ppgtt_alloc_page_dirpointers.description`:
 
 Description
@@ -189,7 +210,15 @@ Allocate the required number of page directory pointers. Extremely similar to
 The main difference is here we are limited by the pml4 boundary (instead of
 the page directory pointer).
 
-Return: 0 if success; negative error code otherwise.
+
+
+.. _`gen8_ppgtt_alloc_page_dirpointers.return`:
+
+Return
+------
+
+0 if success; negative error code otherwise.
+
 
 
 .. _`i915_vma_bind`:
@@ -211,6 +240,7 @@ i915_vma_bind
         flags like global or local mapping
 
 
+
 .. _`i915_vma_bind.description`:
 
 Description
@@ -219,6 +249,7 @@ Description
 DMA addresses are taken from the scatter-gather table of this object (or of
 this VMA in case of non-default GGTT views) and PTE entries set up.
 Note that DMA addresses are also the only part of the SG table we care about.
+
 
 
 .. _`i915_ggtt_view_size`:
@@ -235,6 +266,7 @@ i915_ggtt_view_size
 
     :param const struct i915_ggtt_view \*view:
         The view in question.
+
 
 
 .. _`i915_ggtt_view_size.description`:

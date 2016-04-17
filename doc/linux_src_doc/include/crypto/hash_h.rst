@@ -4,6 +4,7 @@
 hash.h
 ======
 
+
 .. _`message-digest-algorithm-definitions`:
 
 Message Digest Algorithm Definitions
@@ -15,16 +16,18 @@ implementations, managed via :c:func:`crypto_register_ahash`,
 :c:func:`crypto_unregister_shash`.
 
 
+
 .. _`hash_alg_common`:
 
 struct hash_alg_common
 ======================
 
-.. c:type:: struct hash_alg_common
+.. c:type:: hash_alg_common
 
     define properties of message digest
 
 
+.. _`hash_alg_common.definition`:
 
 Definition
 ----------
@@ -38,6 +41,7 @@ Definition
   };
 
 
+.. _`hash_alg_common.members`:
 
 Members
 -------
@@ -64,16 +68,18 @@ Members
 
 
 
+
 .. _`ahash_alg`:
 
 struct ahash_alg
 ================
 
-.. c:type:: struct ahash_alg
+.. c:type:: ahash_alg
 
     asynchronous message digest definition
 
 
+.. _`ahash_alg.definition`:
 
 Definition
 ----------
@@ -93,6 +99,7 @@ Definition
   };
 
 
+.. _`ahash_alg.members`:
 
 Members
 -------
@@ -171,16 +178,18 @@ Members
 
 
 
+
 .. _`shash_alg`:
 
 struct shash_alg
 ================
 
-.. c:type:: struct shash_alg
+.. c:type:: shash_alg
 
     synchronous message digest definition
 
 
+.. _`shash_alg.definition`:
 
 Definition
 ----------
@@ -203,6 +212,7 @@ Definition
   };
 
 
+.. _`shash_alg.members`:
 
 Members
 -------
@@ -247,6 +257,7 @@ Members
 
 
 
+
 .. _`asynchronous-message-digest-api`:
 
 Asynchronous Message Digest API
@@ -257,6 +268,7 @@ CRYPTO_ALG_TYPE_AHASH (listed as type "ahash" in /proc/crypto)
 
 The asynchronous cipher operation discussion provided for the
 CRYPTO_ALG_TYPE_ABLKCIPHER API applies here as well.
+
 
 
 .. _`crypto_alloc_ahash`:
@@ -279,6 +291,7 @@ crypto_alloc_ahash
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_ahash.description`:
 
 Description
@@ -288,8 +301,16 @@ Allocate a cipher handle for an ahash. The returned struct
 crypto_ahash is the cipher handle that is required for any subsequent
 API invocation for that ahash.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_ahash.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_ahash`:
@@ -303,6 +324,7 @@ crypto_free_ahash
 
     :param struct crypto_ahash \*tfm:
         cipher handle to be freed
+
 
 
 .. _`crypto_has_ahash`:
@@ -325,13 +347,15 @@ crypto_has_ahash
         specifies the mask for the ahash
 
 
-.. _`crypto_has_ahash.description`:
 
-Description
------------
+.. _`crypto_has_ahash.return`:
 
-Return: true when the ahash is known to the kernel crypto API; false
+Return
+------
+
+true when the ahash is known to the kernel crypto API; false
 otherwise
+
 
 
 .. _`crypto_ahash_blocksize`:
@@ -347,6 +371,7 @@ crypto_ahash_blocksize
         cipher handle
 
 
+
 .. _`crypto_ahash_blocksize.description`:
 
 Description
@@ -355,7 +380,15 @@ Description
 The block size for the message digest cipher referenced with the cipher
 handle is returned.
 
-Return: block size of cipher
+
+
+.. _`crypto_ahash_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_ahash_digestsize`:
@@ -371,6 +404,7 @@ crypto_ahash_digestsize
         cipher handle
 
 
+
 .. _`crypto_ahash_digestsize.description`:
 
 Description
@@ -380,7 +414,14 @@ The size for the message digest created by the message digest cipher
 referenced with the cipher handle is returned.
 
 
-Return: message digest size of cipher
+
+.. _`crypto_ahash_digestsize.return`:
+
+Return
+------
+
+message digest size of cipher
+
 
 
 .. _`crypto_ahash_reqtfm`:
@@ -397,6 +438,7 @@ crypto_ahash_reqtfm
         cipher handle
 
 
+
 .. _`crypto_ahash_reqtfm.description`:
 
 Description
@@ -405,7 +447,15 @@ Description
 Return the ahash cipher handle that is registered with the asynchronous
 request handle ahash_request.
 
-Return: ahash cipher handle
+
+
+.. _`crypto_ahash_reqtfm.return`:
+
+Return
+------
+
+ahash cipher handle
+
 
 
 .. _`crypto_ahash_reqsize`:
@@ -421,6 +471,7 @@ crypto_ahash_reqsize
         cipher handle
 
 
+
 .. _`crypto_ahash_reqsize.description`:
 
 Description
@@ -430,7 +481,15 @@ Return the size of the ahash state size. With the crypto_ahash_export
 function, the caller can export the state into a buffer whose size is
 defined with this function.
 
-Return: size of the ahash state
+
+
+.. _`crypto_ahash_reqsize.return`:
+
+Return
+------
+
+size of the ahash state
+
 
 
 .. _`crypto_ahash_setkey`:
@@ -452,6 +511,7 @@ crypto_ahash_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_ahash_setkey.description`:
 
 Description
@@ -460,7 +520,15 @@ Description
 The caller provided key is set for the ahash cipher. The cipher
 handle must point to a keyed hash in order for this function to succeed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_ahash_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_ahash_finup`:
@@ -477,6 +545,7 @@ crypto_ahash_finup
         needed to perform the cipher operation
 
 
+
 .. _`crypto_ahash_finup.description`:
 
 Description
@@ -486,8 +555,17 @@ This function is a "short-hand" for the function calls of
 crypto_ahash_update and crypto_shash_final. The parameters have the same
 meaning as discussed for those separate functions.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_ahash_finup.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_ahash_final`:
@@ -504,6 +582,7 @@ crypto_ahash_final
         needed to perform the cipher operation
 
 
+
 .. _`crypto_ahash_final.description`:
 
 Description
@@ -513,8 +592,17 @@ Finalize the message digest operation and create the message digest
 based on all data added to the cipher handle. The message digest is placed
 into the output buffer registered with the ahash_request handle.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_ahash_final.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_ahash_digest`:
@@ -531,6 +619,7 @@ crypto_ahash_digest
         needed to perform the cipher operation
 
 
+
 .. _`crypto_ahash_digest.description`:
 
 Description
@@ -540,8 +629,17 @@ This function is a "short-hand" for the function calls of crypto_ahash_init,
 crypto_ahash_update and crypto_ahash_final. The parameters have the same
 meaning as discussed for those separate three functions.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_ahash_digest.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_ahash_export`:
@@ -560,6 +658,7 @@ crypto_ahash_export
         output buffer of sufficient size that can hold the hash state
 
 
+
 .. _`crypto_ahash_export.description`:
 
 Description
@@ -569,7 +668,15 @@ This function exports the hash state of the ahash_request handle into the
 caller-allocated output buffer out which must have sufficient size (e.g. by
 calling crypto_ahash_reqsize).
 
-Return: 0 if the export was successful; < 0 if an error occurred
+
+
+.. _`crypto_ahash_export.return`:
+
+Return
+------
+
+0 if the export was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_ahash_import`:
@@ -588,6 +695,7 @@ crypto_ahash_import
         buffer holding the state
 
 
+
 .. _`crypto_ahash_import.description`:
 
 Description
@@ -597,7 +705,15 @@ This function imports the hash state into the ahash_request handle from the
 input buffer. That buffer should have been generated with the
 crypto_ahash_export function.
 
-Return: 0 if the import was successful; < 0 if an error occurred
+
+
+.. _`crypto_ahash_import.return`:
+
+Return
+------
+
+0 if the import was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_ahash_init`:
@@ -611,7 +727,8 @@ crypto_ahash_init
 
     :param struct ahash_request \*req:
         ahash_request handle that already is initialized with all necessary
-        data using the ahash_request_\* API functions
+        data using the ahash_request\_\* API functions
+
 
 
 .. _`crypto_ahash_init.description`:
@@ -623,8 +740,17 @@ The call (re-)initializes the message digest referenced by the ahash_request
 handle. Any potentially existing state created by previous operations is
 discarded.
 
-Return: 0 if the message digest initialization was successful; < 0 if an
-error occurred
+
+
+.. _`crypto_ahash_init.return`:
+
+Return
+------
+
+0 if the message digest initialization was successful; < 0 if an
+
+           error occurred
+
 
 
 .. _`crypto_ahash_update`:
@@ -641,6 +767,7 @@ crypto_ahash_update
         crypto_ahash_init call.
 
 
+
 .. _`crypto_ahash_update.description`:
 
 Description
@@ -650,8 +777,17 @@ Updates the message digest state of the :c:type:`struct ahash_request <ahash_req
 is pointed to by the scatter/gather list registered in the :c:type:`struct ahash_request <ahash_request>`
 handle
 
-Return: 0 if the message digest update was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_ahash_update.return`:
+
+Return
+------
+
+0 if the message digest update was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`asynchronous-hash-request-handle`:
@@ -663,8 +799,9 @@ The :c:type:`struct ahash_request <ahash_request>` data structure contains all p
 required for the asynchronous cipher operation. This includes the cipher
 handle (which can be used by multiple :c:type:`struct ahash_request <ahash_request>` instances), pointer
 to plaintext and the message digest output buffer, asynchronous callback
-function, etc. It acts as a handle to the ahash_request_\* API calls in a
-similar way as ahash handle to the crypto_ahash_\* API calls.
+function, etc. It acts as a handle to the ahash_request\_\* API calls in a
+similar way as ahash handle to the crypto_ahash\_\* API calls.
+
 
 
 .. _`ahash_request_set_tfm`:
@@ -683,6 +820,7 @@ ahash_request_set_tfm
         cipher handle that shall be added to the request handle
 
 
+
 .. _`ahash_request_set_tfm.description`:
 
 Description
@@ -690,6 +828,7 @@ Description
 
 Allow the caller to replace the existing ahash handle in the request
 data structure with a different one.
+
 
 
 .. _`ahash_request_alloc`:
@@ -708,6 +847,7 @@ ahash_request_alloc
         memory allocation flag that is handed to kmalloc by the API call.
 
 
+
 .. _`ahash_request_alloc.description`:
 
 Description
@@ -718,8 +858,16 @@ message digest API calls. During
 the allocation, the provided ahash handle
 is registered in the request data structure.
 
-Return: allocated request handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`ahash_request_alloc.return`:
+
+Return
+------
+
+allocated request handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`ahash_request_free`:
@@ -733,6 +881,7 @@ ahash_request_free
 
     :param struct ahash_request \*req:
         request data structure cipher handle to be freed
+
 
 
 .. _`ahash_request_set_callback`:
@@ -767,6 +916,7 @@ ahash_request_set_callback
         :c:type:`struct crypto_async_request <crypto_async_request>` data structure provided to the callback function.
 
 
+
 .. _`ahash_request_set_callback.description`:
 
 Description
@@ -779,6 +929,7 @@ The callback function is registered with the :c:type:`struct ahash_request <ahas
 must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
+
 
 
 .. _`ahash_request_set_crypt`:
@@ -805,6 +956,7 @@ ahash_request_set_crypt
         number of bytes to process from the source scatter/gather list
 
 
+
 .. _`ahash_request_set_crypt.description`:
 
 Description
@@ -813,6 +965,7 @@ Description
 By using this call, the caller references the source scatter/gather list.
 The source scatter/gather list points to the data the message digest is to
 be calculated for.
+
 
 
 .. _`synchronous-message-digest-api`:
@@ -828,6 +981,7 @@ caller.
 
 The synchronous message digest API can store user-related context in in its
 shash_desc request data structure.
+
 
 
 .. _`crypto_alloc_shash`:
@@ -850,6 +1004,7 @@ crypto_alloc_shash
         specifies the mask for the cipher
 
 
+
 .. _`crypto_alloc_shash.description`:
 
 Description
@@ -858,8 +1013,16 @@ Description
 Allocate a cipher handle for a message digest. The returned :c:type:`struct crypto_shash <crypto_shash>` is the cipher handle that is required for any subsequent
 API invocation for that message digest.
 
-Return: allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
+
+
+.. _`crypto_alloc_shash.return`:
+
+Return
+------
+
+allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
 of an error, :c:func:`PTR_ERR` returns the error code.
+
 
 
 .. _`crypto_free_shash`:
@@ -875,6 +1038,7 @@ crypto_free_shash
         cipher handle to be freed
 
 
+
 .. _`crypto_shash_blocksize`:
 
 crypto_shash_blocksize
@@ -888,6 +1052,7 @@ crypto_shash_blocksize
         cipher handle
 
 
+
 .. _`crypto_shash_blocksize.description`:
 
 Description
@@ -896,7 +1061,15 @@ Description
 The block size for the message digest cipher referenced with the cipher
 handle is returned.
 
-Return: block size of cipher
+
+
+.. _`crypto_shash_blocksize.return`:
+
+Return
+------
+
+block size of cipher
+
 
 
 .. _`crypto_shash_digestsize`:
@@ -912,6 +1085,7 @@ crypto_shash_digestsize
         cipher handle
 
 
+
 .. _`crypto_shash_digestsize.description`:
 
 Description
@@ -920,7 +1094,15 @@ Description
 The size for the message digest created by the message digest cipher
 referenced with the cipher handle is returned.
 
-Return: digest size of cipher
+
+
+.. _`crypto_shash_digestsize.return`:
+
+Return
+------
+
+digest size of cipher
+
 
 
 .. _`crypto_shash_descsize`:
@@ -934,6 +1116,7 @@ crypto_shash_descsize
 
     :param struct crypto_shash \*tfm:
         cipher handle
+
 
 
 .. _`crypto_shash_descsize.description`:
@@ -950,7 +1133,15 @@ The operational state is defined with struct shash_desc where the size of
 that data structure is to be calculated as
 sizeof(struct shash_desc) + crypto_shash_descsize(alg)
 
-Return: size of the operational state
+
+
+.. _`crypto_shash_descsize.return`:
+
+Return
+------
+
+size of the operational state
+
 
 
 .. _`crypto_shash_setkey`:
@@ -972,6 +1163,7 @@ crypto_shash_setkey
         length of the key in bytes
 
 
+
 .. _`crypto_shash_setkey.description`:
 
 Description
@@ -981,7 +1173,15 @@ The caller provided key is set for the keyed message digest cipher. The
 cipher handle must point to a keyed message digest cipher in order for this
 function to succeed.
 
-Return: 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. _`crypto_shash_setkey.return`:
+
+Return
+------
+
+0 if the setting of the key was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_shash_digest`:
@@ -1006,6 +1206,7 @@ crypto_shash_digest
         see :c:func:`crypto_shash_final`
 
 
+
 .. _`crypto_shash_digest.description`:
 
 Description
@@ -1015,8 +1216,17 @@ This function is a "short-hand" for the function calls of crypto_shash_init,
 crypto_shash_update and crypto_shash_final. The parameters have the same
 meaning as discussed for those separate three functions.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_shash_digest.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_shash_export`:
@@ -1035,6 +1245,7 @@ crypto_shash_export
         output buffer of sufficient size that can hold the hash state
 
 
+
 .. _`crypto_shash_export.description`:
 
 Description
@@ -1044,7 +1255,15 @@ This function exports the hash state of the operational state handle into the
 caller-allocated output buffer out which must have sufficient size (e.g. by
 calling crypto_shash_descsize).
 
-Return: 0 if the export creation was successful; < 0 if an error occurred
+
+
+.. _`crypto_shash_export.return`:
+
+Return
+------
+
+0 if the export creation was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_shash_import`:
@@ -1063,6 +1282,7 @@ crypto_shash_import
         buffer holding the state
 
 
+
 .. _`crypto_shash_import.description`:
 
 Description
@@ -1072,7 +1292,15 @@ This function imports the hash state into the operational state handle from
 the input buffer. That buffer should have been generated with the
 crypto_ahash_export function.
 
-Return: 0 if the import was successful; < 0 if an error occurred
+
+
+.. _`crypto_shash_import.return`:
+
+Return
+------
+
+0 if the import was successful; < 0 if an error occurred
+
 
 
 .. _`crypto_shash_init`:
@@ -1088,6 +1316,7 @@ crypto_shash_init
         operational state handle that is already filled
 
 
+
 .. _`crypto_shash_init.description`:
 
 Description
@@ -1097,8 +1326,17 @@ The call (re-)initializes the message digest referenced by the
 operational state handle. Any potentially existing state created by
 previous operations is discarded.
 
-Return: 0 if the message digest initialization was successful; < 0 if an
-error occurred
+
+
+.. _`crypto_shash_init.return`:
+
+Return
+------
+
+0 if the message digest initialization was successful; < 0 if an
+
+           error occurred
+
 
 
 .. _`crypto_shash_update`:
@@ -1120,6 +1358,7 @@ crypto_shash_update
         length of the input data
 
 
+
 .. _`crypto_shash_update.description`:
 
 Description
@@ -1127,8 +1366,17 @@ Description
 
 Updates the message digest state of the operational state handle.
 
-Return: 0 if the message digest update was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_shash_update.return`:
+
+Return
+------
+
+0 if the message digest update was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_shash_final`:
@@ -1147,6 +1395,7 @@ crypto_shash_final
         output buffer filled with the message digest
 
 
+
 .. _`crypto_shash_final.description`:
 
 Description
@@ -1157,8 +1406,17 @@ based on all data added to the cipher handle. The message digest is placed
 into the output buffer. The caller must ensure that the output buffer is
 large enough by using crypto_shash_digestsize.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_shash_final.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
+
 
 
 .. _`crypto_shash_finup`:
@@ -1183,6 +1441,7 @@ crypto_shash_finup
         see :c:func:`crypto_shash_final`
 
 
+
 .. _`crypto_shash_finup.description`:
 
 Description
@@ -1192,6 +1451,14 @@ This function is a "short-hand" for the function calls of
 crypto_shash_update and crypto_shash_final. The parameters have the same
 meaning as discussed for those separate functions.
 
-Return: 0 if the message digest creation was successful; < 0 if an error
-occurred
+
+
+.. _`crypto_shash_finup.return`:
+
+Return
+------
+
+0 if the message digest creation was successful; < 0 if an error
+
+           occurred
 

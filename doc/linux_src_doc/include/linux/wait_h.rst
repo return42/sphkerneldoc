@@ -4,6 +4,7 @@
 wait.h
 ======
 
+
 .. _`waitqueue_active`:
 
 waitqueue_active
@@ -17,6 +18,7 @@ waitqueue_active
         the waitqueue to test for waiters
 
 
+
 .. _`waitqueue_active.description`:
 
 Description
@@ -24,10 +26,24 @@ Description
 
 returns true if the wait list is not empty
 
-NOTE: this function is lockless and requires care, incorrect usage _will_
+
+
+.. _`waitqueue_active.note`:
+
+NOTE
+----
+
+this function is lockless and requires care, incorrect usage _will_
 lead to sporadic and non-obvious failure.
 
-Use either while holding wait_queue_head_t::lock or when used for wakeups
+
+
+.. _`waitqueue_active.use-either-while-holding-wait_queue_head_t`:
+
+Use either while holding wait_queue_head_t
+------------------------------------------
+
+:lock or when used for wakeups
 with an extra :c:func:`smp_mb` like::
 
      CPU0 - waker                    CPU1 - waiter
@@ -49,6 +65,7 @@ Also note that this 'optimization' trades a :c:func:`spin_lock` for an :c:func:`
 which (when the lock is uncontended) are of roughly equal cost.
 
 
+
 .. _`wq_has_sleeper`:
 
 wq_has_sleeper
@@ -62,6 +79,7 @@ wq_has_sleeper
         wait queue head
 
 
+
 .. _`wq_has_sleeper.description`:
 
 Description
@@ -70,6 +88,7 @@ Description
 Returns true if wq has waiting processes
 
 Please refer to the comment for waitqueue_active.
+
 
 
 .. _`wait_event`:
@@ -88,6 +107,7 @@ wait_event
         a C expression for the event to wait for
 
 
+
 .. _`wait_event.description`:
 
 Description
@@ -99,6 +119,7 @@ the waitqueue ``wq`` is woken up.
 
 :c:func:`wake_up` has to be called after changing any variable that could
 change the result of the wait condition.
+
 
 
 .. _`wait_event_freezable`:
@@ -117,6 +138,7 @@ wait_event_freezable
         a C expression for the event to wait for
 
 
+
 .. _`wait_event_freezable.description`:
 
 Description
@@ -128,6 +150,7 @@ to system load) until the ``condition`` evaluates to true. The
 
 :c:func:`wake_up` has to be called after changing any variable that could
 change the result of the wait condition.
+
 
 
 .. _`wait_event_timeout`:
@@ -149,6 +172,7 @@ wait_event_timeout
         timeout, in jiffies
 
 
+
 .. _`wait_event_timeout.description`:
 
 Description
@@ -161,11 +185,18 @@ the waitqueue ``wq`` is woken up.
 :c:func:`wake_up` has to be called after changing any variable that could
 change the result of the wait condition.
 
-Returns:
+
+
+.. _`wait_event_timeout.returns`:
+
+Returns
+-------
+
 0 if the ``condition`` evaluated to ``false`` after the ``timeout`` elapsed,
 1 if the ``condition`` evaluated to ``true`` after the ``timeout`` elapsed,
 or the remaining jiffies (at least 1) if the ``condition`` evaluated
 to ``true`` before the ``timeout`` elapsed.
+
 
 
 .. _`wait_event_cmd`:
@@ -190,6 +221,7 @@ wait_event_cmd
         the command will be executed after sleep
 
 
+
 .. _`wait_event_cmd.description`:
 
 Description
@@ -201,6 +233,7 @@ the waitqueue ``wq`` is woken up.
 
 :c:func:`wake_up` has to be called after changing any variable that could
 change the result of the wait condition.
+
 
 
 .. _`wait_event_interruptible`:
@@ -219,6 +252,7 @@ wait_event_interruptible
         a C expression for the event to wait for
 
 
+
 .. _`wait_event_interruptible.description`:
 
 Description
@@ -233,6 +267,7 @@ change the result of the wait condition.
 
 The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
+
 
 
 .. _`wait_event_interruptible_timeout`:
@@ -254,6 +289,7 @@ wait_event_interruptible_timeout
         timeout, in jiffies
 
 
+
 .. _`wait_event_interruptible_timeout.description`:
 
 Description
@@ -266,12 +302,19 @@ The ``condition`` is checked each time the waitqueue ``wq`` is woken up.
 :c:func:`wake_up` has to be called after changing any variable that could
 change the result of the wait condition.
 
-Returns:
+
+
+.. _`wait_event_interruptible_timeout.returns`:
+
+Returns
+-------
+
 0 if the ``condition`` evaluated to ``false`` after the ``timeout`` elapsed,
 1 if the ``condition`` evaluated to ``true`` after the ``timeout`` elapsed,
 the remaining jiffies (at least 1) if the ``condition`` evaluated
 to ``true`` before the ``timeout`` elapsed, or -\ ``ERESTARTSYS`` if it was
 interrupted by a signal.
+
 
 
 .. _`wait_event_hrtimeout`:
@@ -293,6 +336,7 @@ wait_event_hrtimeout
         timeout, as a ktime_t
 
 
+
 .. _`wait_event_hrtimeout.description`:
 
 Description
@@ -307,6 +351,7 @@ change the result of the wait condition.
 
 The function returns 0 if ``condition`` became true, or -ETIME if the timeout
 elapsed.
+
 
 
 .. _`wait_event_interruptible_hrtimeout`:
@@ -328,6 +373,7 @@ wait_event_interruptible_hrtimeout
         timeout, as a ktime_t
 
 
+
 .. _`wait_event_interruptible_hrtimeout.description`:
 
 Description
@@ -344,6 +390,7 @@ The function returns 0 if ``condition`` became true, -ERESTARTSYS if it was
 interrupted by a signal, or -ETIME if the timeout elapsed.
 
 
+
 .. _`wait_event_interruptible_locked`:
 
 wait_event_interruptible_locked
@@ -358,6 +405,7 @@ wait_event_interruptible_locked
 
     :param condition:
         a C expression for the event to wait for
+
 
 
 .. _`wait_event_interruptible_locked.description`:
@@ -384,6 +432,7 @@ The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
 
 
+
 .. _`wait_event_interruptible_locked_irq`:
 
 wait_event_interruptible_locked_irq
@@ -398,6 +447,7 @@ wait_event_interruptible_locked_irq
 
     :param condition:
         a C expression for the event to wait for
+
 
 
 .. _`wait_event_interruptible_locked_irq.description`:
@@ -424,6 +474,7 @@ The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
 
 
+
 .. _`wait_event_interruptible_exclusive_locked`:
 
 wait_event_interruptible_exclusive_locked
@@ -438,6 +489,7 @@ wait_event_interruptible_exclusive_locked
 
     :param condition:
         a C expression for the event to wait for
+
 
 
 .. _`wait_event_interruptible_exclusive_locked.description`:
@@ -468,6 +520,7 @@ The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
 
 
+
 .. _`wait_event_interruptible_exclusive_locked_irq`:
 
 wait_event_interruptible_exclusive_locked_irq
@@ -482,6 +535,7 @@ wait_event_interruptible_exclusive_locked_irq
 
     :param condition:
         a C expression for the event to wait for
+
 
 
 .. _`wait_event_interruptible_exclusive_locked_irq.description`:
@@ -512,6 +566,7 @@ The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
 
 
+
 .. _`wait_event_killable`:
 
 wait_event_killable
@@ -528,6 +583,7 @@ wait_event_killable
         a C expression for the event to wait for
 
 
+
 .. _`wait_event_killable.description`:
 
 Description
@@ -542,6 +598,7 @@ change the result of the wait condition.
 
 The function will return -ERESTARTSYS if it was interrupted by a
 signal and 0 if ``condition`` evaluated to true.
+
 
 
 .. _`wait_event_lock_irq_cmd`:
@@ -568,6 +625,7 @@ wait_event_lock_irq_cmd
         sleep
 
 
+
 .. _`wait_event_lock_irq_cmd.description`:
 
 Description
@@ -583,6 +641,7 @@ change the result of the wait condition.
 This is supposed to be called while holding the lock. The lock is
 dropped before invoking the cmd and going to sleep and is reacquired
 afterwards.
+
 
 
 .. _`wait_event_lock_irq`:
@@ -605,6 +664,7 @@ wait_event_lock_irq
         and reacquired afterwards.
 
 
+
 .. _`wait_event_lock_irq.description`:
 
 Description
@@ -619,6 +679,7 @@ change the result of the wait condition.
 
 This is supposed to be called while holding the lock. The lock is
 dropped before going to sleep and is reacquired afterwards.
+
 
 
 .. _`wait_event_interruptible_lock_irq_cmd`:
@@ -645,6 +706,7 @@ wait_event_interruptible_lock_irq_cmd
         sleep
 
 
+
 .. _`wait_event_interruptible_lock_irq_cmd.description`:
 
 Description
@@ -663,6 +725,7 @@ afterwards.
 
 The macro will return -ERESTARTSYS if it was interrupted by a signal
 and 0 if ``condition`` evaluated to true.
+
 
 
 .. _`wait_event_interruptible_lock_irq`:
@@ -685,6 +748,7 @@ wait_event_interruptible_lock_irq
         and reacquired afterwards.
 
 
+
 .. _`wait_event_interruptible_lock_irq.description`:
 
 Description
@@ -702,6 +766,7 @@ dropped before going to sleep and is reacquired afterwards.
 
 The macro will return -ERESTARTSYS if it was interrupted by a signal
 and 0 if ``condition`` evaluated to true.
+
 
 
 .. _`wait_event_interruptible_lock_irq_timeout`:
@@ -727,6 +792,7 @@ wait_event_interruptible_lock_irq_timeout
         timeout, in jiffies
 
 
+
 .. _`wait_event_interruptible_lock_irq_timeout.description`:
 
 Description
@@ -745,6 +811,7 @@ dropped before going to sleep and is reacquired afterwards.
 The function returns 0 if the ``timeout`` elapsed, -ERESTARTSYS if it
 was interrupted by a signal, and the remaining jiffies otherwise
 if the condition evaluated to true before the timeout elapsed.
+
 
 
 .. _`wait_on_bit`:
@@ -766,6 +833,7 @@ wait_on_bit
         the task state to sleep in
 
 
+
 .. _`wait_on_bit.description`:
 
 Description
@@ -780,6 +848,7 @@ but has no intention of setting it.
 Returned value will be zero if the bit was cleared, or non-zero
 if the process received a signal and the mode permitted wakeup
 on that signal.
+
 
 
 .. _`wait_on_bit_io`:
@@ -801,6 +870,7 @@ wait_on_bit_io
         the task state to sleep in
 
 
+
 .. _`wait_on_bit_io.description`:
 
 Description
@@ -813,6 +883,7 @@ to be cleared.  This is similar to :c:func:`wait_on_bit`, but calls
 Returned value will be zero if the bit was cleared, or non-zero
 if the process received a signal and the mode permitted wakeup
 on that signal.
+
 
 
 .. _`wait_on_bit_timeout`:
@@ -837,6 +908,7 @@ wait_on_bit_timeout
         timeout, in jiffies
 
 
+
 .. _`wait_on_bit_timeout.description`:
 
 Description
@@ -849,6 +921,7 @@ timeout parameter.
 Returned value will be zero if the bit was cleared before the
 ``timeout`` elapsed, or non-zero if the ``timeout`` elapsed or process
 received a signal and the mode permitted wakeup on that signal.
+
 
 
 .. _`wait_on_bit_action`:
@@ -873,6 +946,7 @@ wait_on_bit_action
         the task state to sleep in
 
 
+
 .. _`wait_on_bit_action.description`:
 
 Description
@@ -886,6 +960,7 @@ is done.
 Returned value will be zero if the bit was cleared, or non-zero
 if the process received a signal and the mode permitted wakeup
 on that signal.
+
 
 
 .. _`wait_on_bit_lock`:
@@ -907,6 +982,7 @@ wait_on_bit_lock
         the task state to sleep in
 
 
+
 .. _`wait_on_bit_lock.description`:
 
 Description
@@ -924,6 +1000,7 @@ clear with the intention of setting it, and when done, clearing it.
 Returns zero if the bit was (eventually) found to be clear and was
 set.  Returns non-zero if a signal was delivered to the process and
 the ``mode`` allows that signal to wake the process.
+
 
 
 .. _`wait_on_bit_lock_io`:
@@ -945,6 +1022,7 @@ wait_on_bit_lock_io
         the task state to sleep in
 
 
+
 .. _`wait_on_bit_lock_io.description`:
 
 Description
@@ -958,6 +1036,7 @@ for the actual waiting.
 Returns zero if the bit was (eventually) found to be clear and was
 set.  Returns non-zero if a signal was delivered to the process and
 the ``mode`` allows that signal to wake the process.
+
 
 
 .. _`wait_on_bit_lock_action`:
@@ -982,6 +1061,7 @@ wait_on_bit_lock_action
         the task state to sleep in
 
 
+
 .. _`wait_on_bit_lock_action.description`:
 
 Description
@@ -996,6 +1076,7 @@ is done.
 Returns zero if the bit was (eventually) found to be clear and was
 set.  Returns non-zero if a signal was delivered to the process and
 the ``mode`` allows that signal to wake the process.
+
 
 
 .. _`wait_on_atomic_t`:
@@ -1015,6 +1096,7 @@ wait_on_atomic_t
 
     :param unsigned mode:
         the task state to sleep in
+
 
 
 .. _`wait_on_atomic_t.description`:

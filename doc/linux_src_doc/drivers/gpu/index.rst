@@ -8,4 +8,5 @@ gpu
    :maxdepth: 1
 
    drm/index
+   host1x/index
    vga/index

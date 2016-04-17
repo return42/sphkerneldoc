@@ -4,6 +4,7 @@
 sound_core.c
 ============
 
+
 .. _`register_sound_special_device`:
 
 register_sound_special_device
@@ -23,6 +24,7 @@ register_sound_special_device
         device pointer
 
 
+
 .. _`register_sound_special_device.description`:
 
 Description
@@ -31,8 +33,16 @@ Description
 Allocate a special sound device by minor number from the sound
 subsystem.
 
-Return: The allocated number is returned on success. On failure,
+
+
+.. _`register_sound_special_device.return`:
+
+Return
+------
+
+The allocated number is returned on success. On failure,
 a negative error code is returned.
+
 
 
 .. _`register_sound_mixer`:
@@ -51,6 +61,7 @@ register_sound_mixer
         Unit number to allocate
 
 
+
 .. _`register_sound_mixer.description`:
 
 Description
@@ -59,8 +70,16 @@ Description
 Allocate a mixer device. Unit is the number of the mixer requested.
 Pass -1 to request the next free mixer unit.
 
-Return: On success, the allocated number is returned. On failure,
+
+
+.. _`register_sound_mixer.return`:
+
+Return
+------
+
+On success, the allocated number is returned. On failure,
 a negative error code is returned.
+
 
 
 .. _`register_sound_midi`:
@@ -79,6 +98,7 @@ register_sound_midi
         Unit number to allocate
 
 
+
 .. _`register_sound_midi.description`:
 
 Description
@@ -87,8 +107,16 @@ Description
 Allocate a midi device. Unit is the number of the midi device requested.
 Pass -1 to request the next free midi unit.
 
-Return: On success, the allocated number is returned. On failure,
+
+
+.. _`register_sound_midi.return`:
+
+Return
+------
+
+On success, the allocated number is returned. On failure,
 a negative error code is returned.
+
 
 
 .. _`register_sound_dsp`:
@@ -107,6 +135,7 @@ register_sound_dsp
         Unit number to allocate
 
 
+
 .. _`register_sound_dsp.description`:
 
 Description
@@ -118,8 +147,16 @@ Pass -1 to request the next free DSP unit.
 This function allocates both the audio and dsp device entries together
 and will always allocate them as a matching pair - eg dsp3/audio3
 
-Return: On success, the allocated number is returned. On failure,
+
+
+.. _`register_sound_dsp.return`:
+
+Return
+------
+
+On success, the allocated number is returned. On failure,
 a negative error code is returned.
+
 
 
 .. _`unregister_sound_special`:
@@ -135,6 +172,7 @@ unregister_sound_special
         unit number to allocate
 
 
+
 .. _`unregister_sound_special.description`:
 
 Description
@@ -143,6 +181,7 @@ Description
 Release a sound device that was allocated with
 :c:func:`register_sound_special`. The unit passed is the return value from
 the register function.
+
 
 
 .. _`unregister_sound_mixer`:
@@ -158,6 +197,7 @@ unregister_sound_mixer
         unit number to allocate
 
 
+
 .. _`unregister_sound_mixer.description`:
 
 Description
@@ -165,6 +205,7 @@ Description
 
 Release a sound device that was allocated with :c:func:`register_sound_mixer`.
 The unit passed is the return value from the register function.
+
 
 
 .. _`unregister_sound_midi`:
@@ -180,6 +221,7 @@ unregister_sound_midi
         unit number to allocate
 
 
+
 .. _`unregister_sound_midi.description`:
 
 Description
@@ -187,6 +229,7 @@ Description
 
 Release a sound device that was allocated with :c:func:`register_sound_midi`.
 The unit passed is the return value from the register function.
+
 
 
 .. _`unregister_sound_dsp`:
@@ -200,6 +243,7 @@ unregister_sound_dsp
 
     :param int unit:
         unit number to allocate
+
 
 
 .. _`unregister_sound_dsp.description`:

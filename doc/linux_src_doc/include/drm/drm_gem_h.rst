@@ -4,16 +4,18 @@
 drm_gem.h
 =========
 
+
 .. _`drm_gem_object`:
 
 struct drm_gem_object
 =====================
 
-.. c:type:: struct drm_gem_object
+.. c:type:: drm_gem_object
 
     GEM buffer object
 
 
+.. _`drm_gem_object.definition`:
 
 Definition
 ----------
@@ -37,6 +39,7 @@ Definition
   };
 
 
+.. _`drm_gem_object.members`:
 
 Members
 -------
@@ -137,6 +140,9 @@ Members
 
 
 
+
+.. _`drm_gem_object.description`:
+
 Description
 -----------
 
@@ -145,6 +151,7 @@ This structure defines the generic parts for GEM buffer objects, which are
 mostly around handling mmap and userspace handles.
 
 Buffer objects are often abbreviated to BO.
+
 
 
 .. _`drm_gem_object_reference`:
@@ -160,6 +167,7 @@ drm_gem_object_reference
         GEM buffer object
 
 
+
 .. _`drm_gem_object_reference.description`:
 
 Description
@@ -167,6 +175,7 @@ Description
 
 This acquires additional reference to ``obj``\ . It is illegal to call this
 without already holding a reference. No locks required.
+
 
 
 .. _`drm_gem_object_unreference`:
@@ -182,6 +191,7 @@ drm_gem_object_unreference
         GEM buffer object
 
 
+
 .. _`drm_gem_object_unreference.description`:
 
 Description
@@ -195,6 +205,7 @@ For drivers not encumbered with legacy locking use
 :c:func:`drm_gem_object_unreference_unlocked` instead.
 
 
+
 .. _`drm_gem_object_unreference_unlocked`:
 
 drm_gem_object_unreference_unlocked
@@ -206,6 +217,7 @@ drm_gem_object_unreference_unlocked
 
     :param struct drm_gem_object \*obj:
         GEM buffer object
+
 
 
 .. _`drm_gem_object_unreference_unlocked.description`:

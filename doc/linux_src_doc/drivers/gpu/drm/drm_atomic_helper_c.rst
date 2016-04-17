@@ -4,6 +4,7 @@
 drm_atomic_helper.c
 ===================
 
+
 .. _`overview`:
 
 overview
@@ -34,6 +35,7 @@ also shares the struct :c:type:`struct drm_plane_helper_funcs <drm_plane_helper_
 helpers.
 
 
+
 .. _`drm_atomic_helper_check_modeset`:
 
 drm_atomic_helper_check_modeset
@@ -48,6 +50,7 @@ drm_atomic_helper_check_modeset
 
     :param struct drm_atomic_state \*state:
         the driver state object
+
 
 
 .. _`drm_atomic_helper_check_modeset.description`:
@@ -66,7 +69,13 @@ removed from the crtc.
 crtc_state->active_changed is set when crtc_state->active changes,
 which is used for dpms.
 
-IMPORTANT:
+
+
+.. _`drm_atomic_helper_check_modeset.important`:
+
+IMPORTANT
+---------
+
 
 Drivers which update ->mode_changed (e.g. in their ->atomic_check hooks if a
 plane update can't be done without a full modeset) _must_ call this function
@@ -76,6 +85,7 @@ the adjusted dotclock for fifo space allocation and watermark computation.
 
 RETURNS
 Zero for success or -errno
+
 
 
 .. _`drm_atomic_helper_check_planes`:
@@ -94,6 +104,7 @@ drm_atomic_helper_check_planes
         the driver state object
 
 
+
 .. _`drm_atomic_helper_check_planes.description`:
 
 Description
@@ -108,6 +119,7 @@ updated planes.
 
 RETURNS
 Zero for success or -errno
+
 
 
 .. _`drm_atomic_helper_check`:
@@ -126,6 +138,7 @@ drm_atomic_helper_check
         the driver state object
 
 
+
 .. _`drm_atomic_helper_check.description`:
 
 Description
@@ -138,13 +151,22 @@ Drivers without such needs can directly use this as their ->:c:func:`atomic_chec
 callback.
 
 This just wraps the two parts of the state checking for planes and modeset
-state in the default order: First it calls :c:func:`drm_atomic_helper_check_modeset`
+
+
+
+.. _`drm_atomic_helper_check.state-in-the-default-order`:
+
+state in the default order
+--------------------------
+
+First it calls :c:func:`drm_atomic_helper_check_modeset`
 and then :c:func:`drm_atomic_helper_check_planes`. The assumption is that the
 ->atomic_check functions depend upon an updated adjusted_mode.clock to
 e.g. properly compute watermarks.
 
 RETURNS
 Zero for success or -errno
+
 
 
 .. _`drm_atomic_helper_update_legacy_modeset_state`:
@@ -163,6 +185,7 @@ drm_atomic_helper_update_legacy_modeset_state
         atomic state object with old state structures
 
 
+
 .. _`drm_atomic_helper_update_legacy_modeset_state.description`:
 
 Description
@@ -175,6 +198,7 @@ used for precise vblank timestamps by calling
 
 Drivers can use this for building their own atomic commit if they don't have
 a pure helper-based modeset implementation.
+
 
 
 .. _`drm_atomic_helper_commit_modeset_disables`:
@@ -193,6 +217,7 @@ drm_atomic_helper_commit_modeset_disables
         atomic state object with old state structures
 
 
+
 .. _`drm_atomic_helper_commit_modeset_disables.description`:
 
 Description
@@ -206,6 +231,7 @@ For compatibility with legacy crtc helpers this should be called before
 does. But drivers with different needs can group the modeset commits together
 and do the plane commits at the end. This is useful for drivers doing runtime
 PM since planes updates then only happen when the CRTC is actually enabled.
+
 
 
 .. _`drm_atomic_helper_commit_modeset_enables`:
@@ -224,6 +250,7 @@ drm_atomic_helper_commit_modeset_enables
         atomic state object with old state structures
 
 
+
 .. _`drm_atomic_helper_commit_modeset_enables.description`:
 
 Description
@@ -237,6 +264,7 @@ For compatibility with legacy crtc helpers this should be called after
 does. But drivers with different needs can group the modeset commits together
 and do the plane commits at the end. This is useful for drivers doing runtime
 PM since planes updates then only happen when the CRTC is actually enabled.
+
 
 
 .. _`drm_atomic_helper_framebuffer_changed`:
@@ -258,6 +286,7 @@ drm_atomic_helper_framebuffer_changed
         DRM crtc
 
 
+
 .. _`drm_atomic_helper_framebuffer_changed.description`:
 
 Description
@@ -268,8 +297,15 @@ the atomic update.  This is useful for drivers which cannot use
 :c:func:`drm_atomic_helper_wait_for_vblanks` and need to reimplement its
 functionality.
 
-Returns:
+
+
+.. _`drm_atomic_helper_framebuffer_changed.returns`:
+
+Returns
+-------
+
 true if the framebuffer changed.
+
 
 
 .. _`drm_atomic_helper_wait_for_vblanks`:
@@ -288,6 +324,7 @@ drm_atomic_helper_wait_for_vblanks
         atomic state object with old state structures
 
 
+
 .. _`drm_atomic_helper_wait_for_vblanks.description`:
 
 Description
@@ -298,6 +335,7 @@ crtcs (ie. before cleaning up old framebuffers using
 :c:func:`drm_atomic_helper_cleanup_planes`). It will only wait on crtcs where the
 framebuffers have actually changed to optimize for the legacy cursor and
 plane update use-case.
+
 
 
 .. _`drm_atomic_helper_commit`:
@@ -317,6 +355,7 @@ drm_atomic_helper_commit
 
     :param bool async:
         asynchronous commit
+
 
 
 .. _`drm_atomic_helper_commit.description`:
@@ -346,6 +385,7 @@ See the kerneldoc entries for these three functions for more details.
 
 RETURNS
 Zero for success or -errno.
+
 
 
 .. _`implementing-async-commit`:
@@ -388,6 +428,7 @@ then cleaning up the framebuffers after the old framebuffer is no longer
 being displayed.
 
 
+
 .. _`drm_atomic_helper_prepare_planes`:
 
 drm_atomic_helper_prepare_planes
@@ -404,6 +445,7 @@ drm_atomic_helper_prepare_planes
         atomic state object with new state structures
 
 
+
 .. _`drm_atomic_helper_prepare_planes.description`:
 
 Description
@@ -413,8 +455,15 @@ This function prepares plane state, specifically framebuffers, for the new
 configuration. If any failure is encountered this function will call
 ->cleanup_fb on any already successfully prepared framebuffer.
 
-Returns:
+
+
+.. _`drm_atomic_helper_prepare_planes.returns`:
+
+Returns
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_atomic_helper_commit_planes`:
@@ -434,6 +483,7 @@ drm_atomic_helper_commit_planes
 
     :param bool active_only:
         Only commit on active CRTC if set
+
 
 
 .. _`drm_atomic_helper_commit_planes.description`:
@@ -470,6 +520,7 @@ to false to most closely match the behaviour of the legacy helpers. This should
 not be copied blindly by drivers.
 
 
+
 .. _`drm_atomic_helper_commit_planes_on_crtc`:
 
 drm_atomic_helper_commit_planes_on_crtc
@@ -481,6 +532,7 @@ drm_atomic_helper_commit_planes_on_crtc
 
     :param struct drm_crtc_state \*old_crtc_state:
         atomic state object with the old crtc state
+
 
 
 .. _`drm_atomic_helper_commit_planes_on_crtc.description`:
@@ -502,6 +554,7 @@ depencies. Callers need to ensure that either no such depencies exist,
 resolve them through ordering of commit calls or through some other means.
 
 
+
 .. _`drm_atomic_helper_disable_planes_on_crtc`:
 
 drm_atomic_helper_disable_planes_on_crtc
@@ -516,6 +569,7 @@ drm_atomic_helper_disable_planes_on_crtc
 
     :param bool atomic:
         if set, synchronize with CRTC's atomic_begin/flush hooks
+
 
 
 .. _`drm_atomic_helper_disable_planes_on_crtc.description`:
@@ -535,6 +589,7 @@ It is a bug to call this function without having implemented the
 ->:c:func:`atomic_disable` plane hook.
 
 
+
 .. _`drm_atomic_helper_cleanup_planes`:
 
 drm_atomic_helper_cleanup_planes
@@ -551,6 +606,7 @@ drm_atomic_helper_cleanup_planes
         atomic state object with old state structures
 
 
+
 .. _`drm_atomic_helper_cleanup_planes.description`:
 
 Description
@@ -562,6 +618,7 @@ be able to call this function.
 
 This function must also be called on the new state when the atomic update
 fails at any point after calling :c:func:`drm_atomic_helper_prepare_planes`.
+
 
 
 .. _`drm_atomic_helper_swap_state`:
@@ -578,6 +635,7 @@ drm_atomic_helper_swap_state
 
     :param struct drm_atomic_state \*state:
         atomic state
+
 
 
 .. _`drm_atomic_helper_swap_state.description`:
@@ -604,6 +662,7 @@ With that sequence it fits perfectly into the plane prepare/cleanup sequence:
 
 5. Call :c:func:`drm_atomic_helper_cleanup_planes` with ``state``\ , which since step 3
 contains the old state. Also do any other cleanup required with that state.
+
 
 
 .. _`drm_atomic_helper_update_plane`:
@@ -649,6 +708,7 @@ drm_atomic_helper_update_plane
         height of source rectangle in ``fb``
 
 
+
 .. _`drm_atomic_helper_update_plane.description`:
 
 Description
@@ -656,8 +716,15 @@ Description
 
 Provides a default plane update handler using the atomic driver interface.
 
-RETURNS:
+
+
+.. _`drm_atomic_helper_update_plane.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_helper_disable_plane`:
@@ -673,6 +740,7 @@ drm_atomic_helper_disable_plane
         plane to disable
 
 
+
 .. _`drm_atomic_helper_disable_plane.description`:
 
 Description
@@ -680,8 +748,15 @@ Description
 
 Provides a default plane disable handler using the atomic driver interface.
 
-RETURNS:
+
+
+.. _`drm_atomic_helper_disable_plane.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_helper_set_config`:
@@ -697,6 +772,7 @@ drm_atomic_helper_set_config
         mode set configuration
 
 
+
 .. _`drm_atomic_helper_set_config.description`:
 
 Description
@@ -704,8 +780,15 @@ Description
 
 Provides a default crtc set_config handler using the atomic driver interface.
 
-Returns:
+
+
+.. _`drm_atomic_helper_set_config.returns`:
+
+Returns
+-------
+
 Returns 0 on success, negative errno numbers on failure.
+
 
 
 .. _`drm_atomic_helper_disable_all`:
@@ -724,6 +807,7 @@ drm_atomic_helper_disable_all
         lock acquisition context
 
 
+
 .. _`drm_atomic_helper_disable_all.description`:
 
 Description
@@ -739,11 +823,24 @@ functions when suspending.
 Note that if callers haven't already acquired all modeset locks this might
 return -EDEADLK, which must be handled by calling :c:func:`drm_modeset_backoff`.
 
-Returns:
+
+
+.. _`drm_atomic_helper_disable_all.returns`:
+
+Returns
+-------
+
 0 on success or a negative error code on failure.
 
-See also:
+
+
+.. _`drm_atomic_helper_disable_all.see-also`:
+
+See also
+--------
+
 :c:func:`drm_atomic_helper_suspend`, :c:func:`drm_atomic_helper_resume`
+
 
 
 .. _`drm_atomic_helper_suspend`:
@@ -757,6 +854,7 @@ drm_atomic_helper_suspend
 
     :param struct drm_device \*dev:
         DRM device
+
 
 
 .. _`drm_atomic_helper_suspend.description`:
@@ -775,15 +873,28 @@ returned by this function is assumed to be persistent. Drivers must ensure
 that this holds true. Before calling this function, drivers must make sure
 to suspend fbdev emulation so that nothing can be using the device.
 
-Returns:
+
+
+.. _`drm_atomic_helper_suspend.returns`:
+
+Returns
+-------
+
 A pointer to a copy of the state before suspend on success or an :c:func:`ERR_PTR`-
 encoded error code on failure. Drivers should store the returned atomic
 state object and pass it to the :c:func:`drm_atomic_helper_resume` helper upon
 resume.
 
-See also:
+
+
+.. _`drm_atomic_helper_suspend.see-also`:
+
+See also
+--------
+
 :c:func:`drm_atomic_helper_duplicate_state`, :c:func:`drm_atomic_helper_disable_all`,
 :c:func:`drm_atomic_helper_resume`
+
 
 
 .. _`drm_atomic_helper_resume`:
@@ -802,6 +913,7 @@ drm_atomic_helper_resume
         atomic state to resume to
 
 
+
 .. _`drm_atomic_helper_resume.description`:
 
 Description
@@ -812,11 +924,24 @@ grabs all modeset locks and commits the atomic state object. This can be
 used in conjunction with the :c:func:`drm_atomic_helper_suspend` helper to
 implement suspend/resume for drivers that support atomic mode-setting.
 
-Returns:
+
+
+.. _`drm_atomic_helper_resume.returns`:
+
+Returns
+-------
+
 0 on success or a negative error code on failure.
 
-See also:
+
+
+.. _`drm_atomic_helper_resume.see-also`:
+
+See also
+--------
+
 :c:func:`drm_atomic_helper_suspend`
+
 
 
 .. _`drm_atomic_helper_crtc_set_property`:
@@ -838,6 +963,7 @@ drm_atomic_helper_crtc_set_property
         value of property
 
 
+
 .. _`drm_atomic_helper_crtc_set_property.description`:
 
 Description
@@ -846,8 +972,15 @@ Description
 Provides a default crtc set_property handler using the atomic driver
 interface.
 
-RETURNS:
+
+
+.. _`drm_atomic_helper_crtc_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_helper_plane_set_property`:
@@ -869,6 +1002,7 @@ drm_atomic_helper_plane_set_property
         value of property
 
 
+
 .. _`drm_atomic_helper_plane_set_property.description`:
 
 Description
@@ -877,8 +1011,15 @@ Description
 Provides a default plane set_property handler using the atomic driver
 interface.
 
-RETURNS:
+
+
+.. _`drm_atomic_helper_plane_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_helper_connector_set_property`:
@@ -900,6 +1041,7 @@ drm_atomic_helper_connector_set_property
         value of property
 
 
+
 .. _`drm_atomic_helper_connector_set_property.description`:
 
 Description
@@ -908,8 +1050,15 @@ Description
 Provides a default connector set_property handler using the atomic driver
 interface.
 
-RETURNS:
+
+
+.. _`drm_atomic_helper_connector_set_property.returns`:
+
+RETURNS
+-------
+
 Zero on success, error code on failure
+
 
 
 .. _`drm_atomic_helper_page_flip`:
@@ -934,6 +1083,7 @@ drm_atomic_helper_page_flip
         flip flags for non-vblank sync'ed updates
 
 
+
 .. _`drm_atomic_helper_page_flip.description`:
 
 Description
@@ -945,8 +1095,15 @@ Note that for now so called async page flips (i.e. updates which are not
 synchronized to vblank) are not supported, since the atomic interfaces have
 no provisions for this yet.
 
-Returns:
+
+
+.. _`drm_atomic_helper_page_flip.returns`:
+
+Returns
+-------
+
 Returns 0 on success, negative errno numbers on failure.
+
 
 
 .. _`drm_atomic_helper_connector_dpms`:
@@ -965,6 +1122,7 @@ drm_atomic_helper_connector_dpms
         DPMS mode
 
 
+
 .. _`drm_atomic_helper_connector_dpms.description`:
 
 Description
@@ -975,8 +1133,15 @@ implementing the legacy DPMS connector interface. It computes the new desired
 ->active state for the corresponding CRTC (if the connector is enabled) and
 updates it.
 
-Returns:
+
+
+.. _`drm_atomic_helper_connector_dpms.returns`:
+
+Returns
+-------
+
 Returns 0 on success, negative errno numbers on failure.
+
 
 
 .. _`atomic-state-reset-and-initialization`:
@@ -1002,6 +1167,7 @@ For other drivers the building blocks are split out, see the documentation
 for these functions.
 
 
+
 .. _`drm_atomic_helper_crtc_reset`:
 
 drm_atomic_helper_crtc_reset
@@ -1015,6 +1181,7 @@ drm_atomic_helper_crtc_reset
         drm CRTC
 
 
+
 .. _`drm_atomic_helper_crtc_reset.description`:
 
 Description
@@ -1022,6 +1189,7 @@ Description
 
 Resets the atomic state for ``crtc`` by freeing the state pointer (which might
 be NULL, e.g. at driver load time) and allocating a new empty state object.
+
 
 
 .. _`__drm_atomic_helper_crtc_duplicate_state`:
@@ -1040,6 +1208,7 @@ __drm_atomic_helper_crtc_duplicate_state
         atomic CRTC state
 
 
+
 .. _`__drm_atomic_helper_crtc_duplicate_state.description`:
 
 Description
@@ -1047,6 +1216,7 @@ Description
 
 Copies atomic state from a CRTC's current state and resets inferred values.
 This is useful for drivers that subclass the CRTC state.
+
 
 
 .. _`drm_atomic_helper_crtc_duplicate_state`:
@@ -1062,6 +1232,7 @@ drm_atomic_helper_crtc_duplicate_state
         drm CRTC
 
 
+
 .. _`drm_atomic_helper_crtc_duplicate_state.description`:
 
 Description
@@ -1069,6 +1240,7 @@ Description
 
 Default CRTC state duplicate hook for drivers which don't have their own
 subclassed CRTC state structure.
+
 
 
 .. _`__drm_atomic_helper_crtc_destroy_state`:
@@ -1087,6 +1259,7 @@ __drm_atomic_helper_crtc_destroy_state
         CRTC state object to release
 
 
+
 .. _`__drm_atomic_helper_crtc_destroy_state.description`:
 
 Description
@@ -1095,6 +1268,7 @@ Description
 Releases all resources stored in the CRTC state without actually freeing
 the memory of the CRTC state. This is useful for drivers that subclass the
 CRTC state.
+
 
 
 .. _`drm_atomic_helper_crtc_destroy_state`:
@@ -1113,6 +1287,7 @@ drm_atomic_helper_crtc_destroy_state
         CRTC state object to release
 
 
+
 .. _`drm_atomic_helper_crtc_destroy_state.description`:
 
 Description
@@ -1120,6 +1295,7 @@ Description
 
 Default CRTC state destroy hook for drivers which don't have their own
 subclassed CRTC state structure.
+
 
 
 .. _`drm_atomic_helper_plane_reset`:
@@ -1135,6 +1311,7 @@ drm_atomic_helper_plane_reset
         drm plane
 
 
+
 .. _`drm_atomic_helper_plane_reset.description`:
 
 Description
@@ -1142,6 +1319,7 @@ Description
 
 Resets the atomic state for ``plane`` by freeing the state pointer (which might
 be NULL, e.g. at driver load time) and allocating a new empty state object.
+
 
 
 .. _`__drm_atomic_helper_plane_duplicate_state`:
@@ -1160,6 +1338,7 @@ __drm_atomic_helper_plane_duplicate_state
         atomic plane state
 
 
+
 .. _`__drm_atomic_helper_plane_duplicate_state.description`:
 
 Description
@@ -1167,6 +1346,7 @@ Description
 
 Copies atomic state from a plane's current state. This is useful for
 drivers that subclass the plane state.
+
 
 
 .. _`drm_atomic_helper_plane_duplicate_state`:
@@ -1182,6 +1362,7 @@ drm_atomic_helper_plane_duplicate_state
         drm plane
 
 
+
 .. _`drm_atomic_helper_plane_duplicate_state.description`:
 
 Description
@@ -1189,6 +1370,7 @@ Description
 
 Default plane state duplicate hook for drivers which don't have their own
 subclassed plane state structure.
+
 
 
 .. _`__drm_atomic_helper_plane_destroy_state`:
@@ -1207,6 +1389,7 @@ __drm_atomic_helper_plane_destroy_state
         plane state object to release
 
 
+
 .. _`__drm_atomic_helper_plane_destroy_state.description`:
 
 Description
@@ -1215,6 +1398,7 @@ Description
 Releases all resources stored in the plane state without actually freeing
 the memory of the plane state. This is useful for drivers that subclass the
 plane state.
+
 
 
 .. _`drm_atomic_helper_plane_destroy_state`:
@@ -1233,6 +1417,7 @@ drm_atomic_helper_plane_destroy_state
         plane state object to release
 
 
+
 .. _`drm_atomic_helper_plane_destroy_state.description`:
 
 Description
@@ -1240,6 +1425,7 @@ Description
 
 Default plane state destroy hook for drivers which don't have their own
 subclassed plane state structure.
+
 
 
 .. _`__drm_atomic_helper_connector_reset`:
@@ -1258,6 +1444,7 @@ __drm_atomic_helper_connector_reset
         connector state to assign
 
 
+
 .. _`__drm_atomic_helper_connector_reset.description`:
 
 Description
@@ -1268,6 +1455,7 @@ Initializes the newly allocated ``conn_state`` and assigns it to
 or when called from the ->reset hook.
 
 This is useful for drivers that subclass the connector state.
+
 
 
 .. _`drm_atomic_helper_connector_reset`:
@@ -1283,6 +1471,7 @@ drm_atomic_helper_connector_reset
         drm connector
 
 
+
 .. _`drm_atomic_helper_connector_reset.description`:
 
 Description
@@ -1291,6 +1480,7 @@ Description
 Resets the atomic state for ``connector`` by freeing the state pointer (which
 might be NULL, e.g. at driver load time) and allocating a new empty state
 object.
+
 
 
 .. _`__drm_atomic_helper_connector_duplicate_state`:
@@ -1309,6 +1499,7 @@ __drm_atomic_helper_connector_duplicate_state
         atomic connector state
 
 
+
 .. _`__drm_atomic_helper_connector_duplicate_state.description`:
 
 Description
@@ -1316,6 +1507,7 @@ Description
 
 Copies atomic state from a connector's current state. This is useful for
 drivers that subclass the connector state.
+
 
 
 .. _`drm_atomic_helper_connector_duplicate_state`:
@@ -1331,6 +1523,7 @@ drm_atomic_helper_connector_duplicate_state
         drm connector
 
 
+
 .. _`drm_atomic_helper_connector_duplicate_state.description`:
 
 Description
@@ -1338,6 +1531,7 @@ Description
 
 Default connector state duplicate hook for drivers which don't have their own
 subclassed connector state structure.
+
 
 
 .. _`drm_atomic_helper_duplicate_state`:
@@ -1354,6 +1548,7 @@ drm_atomic_helper_duplicate_state
 
     :param struct drm_modeset_acquire_ctx \*ctx:
         lock acquisition context
+
 
 
 .. _`drm_atomic_helper_duplicate_state.description`:
@@ -1373,12 +1568,25 @@ or erroneous behaviour.
 Note that if callers haven't already acquired all modeset locks this might
 return -EDEADLK, which must be handled by calling :c:func:`drm_modeset_backoff`.
 
-Returns:
+
+
+.. _`drm_atomic_helper_duplicate_state.returns`:
+
+Returns
+-------
+
 A pointer to the copy of the atomic state object on success or an
 :c:func:`ERR_PTR`-encoded error code on failure.
 
-See also:
+
+
+.. _`drm_atomic_helper_duplicate_state.see-also`:
+
+See also
+--------
+
 :c:func:`drm_atomic_helper_suspend`, :c:func:`drm_atomic_helper_resume`
+
 
 
 .. _`__drm_atomic_helper_connector_destroy_state`:
@@ -1397,6 +1605,7 @@ __drm_atomic_helper_connector_destroy_state
         connector state object to release
 
 
+
 .. _`__drm_atomic_helper_connector_destroy_state.description`:
 
 Description
@@ -1405,6 +1614,7 @@ Description
 Releases all resources stored in the connector state without actually
 freeing the memory of the connector state. This is useful for drivers that
 subclass the connector state.
+
 
 
 .. _`drm_atomic_helper_connector_destroy_state`:
@@ -1423,6 +1633,7 @@ drm_atomic_helper_connector_destroy_state
         connector state object to release
 
 
+
 .. _`drm_atomic_helper_connector_destroy_state.description`:
 
 Description
@@ -1430,6 +1641,7 @@ Description
 
 Default connector state destroy hook for drivers which don't have their own
 subclassed connector state structure.
+
 
 
 .. _`drm_atomic_helper_legacy_gamma_set`:
@@ -1459,6 +1671,7 @@ drm_atomic_helper_legacy_gamma_set
 
     :param uint32_t size:
         size of the tables
+
 
 
 .. _`drm_atomic_helper_legacy_gamma_set.description`:

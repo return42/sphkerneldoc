@@ -4,16 +4,31 @@
 v4l2-subdev.h
 =============
 
+
 .. _`v4l2_subdev_format_whence`:
 
 enum v4l2_subdev_format_whence
 ==============================
 
-.. c:type:: enum v4l2_subdev_format_whence
+.. c:type:: v4l2_subdev_format_whence
 
     Media bus format type
 
 
+.. _`v4l2_subdev_format_whence.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum v4l2_subdev_format_whence {
+      V4L2_SUBDEV_FORMAT_TRY,
+      V4L2_SUBDEV_FORMAT_ACTIVE
+    };
+
+
+.. _`v4l2_subdev_format_whence.constants`:
 
 Constants
 ---------
@@ -30,11 +45,12 @@ Constants
 struct v4l2_subdev_format
 =========================
 
-.. c:type:: struct v4l2_subdev_format
+.. c:type:: v4l2_subdev_format
 
     Pad-level media bus format
 
 
+.. _`v4l2_subdev_format.definition`:
 
 Definition
 ----------
@@ -48,6 +64,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_format.members`:
 
 Members
 -------
@@ -63,16 +80,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_crop`:
 
 struct v4l2_subdev_crop
 =======================
 
-.. c:type:: struct v4l2_subdev_crop
+.. c:type:: v4l2_subdev_crop
 
     Pad-level crop settings
 
 
+.. _`v4l2_subdev_crop.definition`:
 
 Definition
 ----------
@@ -86,6 +105,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_crop.members`:
 
 Members
 -------
@@ -101,16 +121,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_mbus_code_enum`:
 
 struct v4l2_subdev_mbus_code_enum
 =================================
 
-.. c:type:: struct v4l2_subdev_mbus_code_enum
+.. c:type:: v4l2_subdev_mbus_code_enum
 
     Media bus format enumeration
 
 
+.. _`v4l2_subdev_mbus_code_enum.definition`:
 
 Definition
 ----------
@@ -125,6 +147,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_mbus_code_enum.members`:
 
 Members
 -------
@@ -143,16 +166,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_frame_size_enum`:
 
 struct v4l2_subdev_frame_size_enum
 ==================================
 
-.. c:type:: struct v4l2_subdev_frame_size_enum
+.. c:type:: v4l2_subdev_frame_size_enum
 
     Media bus format enumeration
 
 
+.. _`v4l2_subdev_frame_size_enum.definition`:
 
 Definition
 ----------
@@ -167,6 +192,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_frame_size_enum.members`:
 
 Members
 -------
@@ -185,16 +211,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_frame_interval`:
 
 struct v4l2_subdev_frame_interval
 =================================
 
-.. c:type:: struct v4l2_subdev_frame_interval
+.. c:type:: v4l2_subdev_frame_interval
 
     Pad-level frame rate
 
 
+.. _`v4l2_subdev_frame_interval.definition`:
 
 Definition
 ----------
@@ -207,6 +235,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_frame_interval.members`:
 
 Members
 -------
@@ -219,16 +248,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_frame_interval_enum`:
 
 struct v4l2_subdev_frame_interval_enum
 ======================================
 
-.. c:type:: struct v4l2_subdev_frame_interval_enum
+.. c:type:: v4l2_subdev_frame_interval_enum
 
     Frame interval enumeration
 
 
+.. _`v4l2_subdev_frame_interval_enum.definition`:
 
 Definition
 ----------
@@ -246,6 +277,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_frame_interval_enum.members`:
 
 Members
 -------
@@ -273,16 +305,18 @@ Members
 
 
 
+
 .. _`v4l2_subdev_selection`:
 
 struct v4l2_subdev_selection
 ============================
 
-.. c:type:: struct v4l2_subdev_selection
+.. c:type:: v4l2_subdev_selection
 
     selection info
 
 
+.. _`v4l2_subdev_selection.definition`:
 
 Definition
 ----------
@@ -299,6 +333,7 @@ Definition
   };
 
 
+.. _`v4l2_subdev_selection.members`:
 
 Members
 -------
@@ -311,10 +346,10 @@ Members
 
 :``target``:
     Selection target, used to choose one of possible rectangles,
-    defined in v4l2-common.h; V4L2_SEL_TGT_\* .
+    defined in v4l2-common.h; V4L2_SEL_TGT\_\* .
 
 :``flags``:
-    constraint flags, defined in v4l2-common.h; V4L2_SEL_FLAG_\*.
+    constraint flags, defined in v4l2-common.h; V4L2_SEL_FLAG\_\*.
 
 :``r``:
     coordinates of the selection window
@@ -323,6 +358,9 @@ Members
     for future use, set to zero for now
 
 
+
+
+.. _`v4l2_subdev_selection.description`:
 
 Description
 -----------

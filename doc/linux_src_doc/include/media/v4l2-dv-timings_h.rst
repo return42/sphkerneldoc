@@ -4,6 +4,7 @@
 v4l2-dv-timings.h
 =================
 
+
 .. _`v4l2_check_dv_timings_fnc`:
 
 v4l2_check_dv_timings_fnc
@@ -20,12 +21,14 @@ v4l2_check_dv_timings_fnc
         a handle from the driver.
 
 
+
 .. _`v4l2_check_dv_timings_fnc.description`:
 
 Description
 -----------
 
 Returns true if the given timings are valid.
+
 
 
 .. _`v4l2_valid_dv_timings`:
@@ -50,6 +53,7 @@ v4l2_valid_dv_timings
         a handle that is passed on to ``fnc``\ .
 
 
+
 .. _`v4l2_valid_dv_timings.description`:
 
 Description
@@ -58,6 +62,7 @@ Description
 Returns true if the given dv_timings struct is supported by the
 hardware capabilities and the callback function (if non-NULL), returns
 false otherwise.
+
 
 
 .. _`v4l2_enum_dv_timings_cap`:
@@ -82,6 +87,7 @@ v4l2_enum_dv_timings_cap
         a handle that is passed on to ``fnc``\ .
 
 
+
 .. _`v4l2_enum_dv_timings_cap.description`:
 
 Description
@@ -93,6 +99,7 @@ hardware capabilities and the callback function (if non-NULL).
 
 If a valid timing for the given index is found, it will fill in ``t`` and
 return 0, otherwise it returns -EINVAL.
+
 
 
 .. _`v4l2_find_dv_timings_cap`:
@@ -121,6 +128,7 @@ v4l2_find_dv_timings_cap
         a handle that is passed on to ``fnc``\ .
 
 
+
 .. _`v4l2_find_dv_timings_cap.description`:
 
 Description
@@ -133,6 +141,7 @@ function (if non-NULL).
 
 On success it will fill in ``t`` with the found timings and it returns true.
 On failure it will return false.
+
 
 
 .. _`v4l2_match_dv_timings`:
@@ -159,12 +168,14 @@ v4l2_match_dv_timings
         match.
 
 
+
 .. _`v4l2_match_dv_timings.description`:
 
 Description
 -----------
 
 Returns true if the two timings match, returns false otherwise.
+
 
 
 .. _`v4l2_print_dv_timings`:
@@ -187,6 +198,7 @@ v4l2_print_dv_timings
 
     :param bool detailed:
         if true, give a detailed log.
+
 
 
 .. _`v4l2_detect_cvt`:
@@ -223,6 +235,7 @@ v4l2_detect_cvt
         the resulting timings.
 
 
+
 .. _`v4l2_detect_cvt.description`:
 
 Description
@@ -231,6 +244,7 @@ Description
 This function will attempt to detect if the given values correspond to a
 valid CVT format. If so, then it will return true, and fmt will be filled
 in with the found CVT timings.
+
 
 
 .. _`v4l2_detect_gtf`:
@@ -269,6 +283,7 @@ v4l2_detect_gtf
         the resulting timings.
 
 
+
 .. _`v4l2_detect_gtf.description`:
 
 Description
@@ -277,6 +292,7 @@ Description
 This function will attempt to detect if the given values correspond to a
 valid GTF format. If so, then it will return true, and fmt will be filled
 in with the found GTF timings.
+
 
 
 .. _`v4l2_calc_aspect_ratio`:
@@ -293,6 +309,7 @@ v4l2_calc_aspect_ratio
 
     :param u8 vert_portrait:
         byte 0x16 from the EDID.
+
 
 
 .. _`v4l2_calc_aspect_ratio.description`:

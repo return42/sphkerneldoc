@@ -7,5 +7,5 @@ fbdev
 .. toctree::
    :maxdepth: 1
 
-   macmodes_c
+   auo_k190x_c
    core/index

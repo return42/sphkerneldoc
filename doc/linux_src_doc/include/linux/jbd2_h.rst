@@ -4,15 +4,19 @@
 jbd2.h
 ======
 
+
 .. _`handle_t`:
 
+typedef handle_t
+================
 
-
-
-.. c:type:: typedef handle_t
+.. c:type:: handle_t
 
     The handle_t type represents a single atomic update being performed by some process.
 
+
+
+.. _`handle_t.description`:
 
 Description
 -----------
@@ -33,15 +37,19 @@ outstanding updates on a transaction might possibly touch.
 This is an opaque datatype.
 
 
+
 .. _`journal_t`:
 
+typedef journal_t
+=================
 
-
-
-.. c:type:: typedef journal_t
+.. c:type:: journal_t
 
     The journal_t maintains all of the journaling state information for a single filesystem.
 
+
+
+.. _`journal_t.description`:
 
 Description
 -----------
@@ -56,16 +64,18 @@ writing process.
 This is an opaque datatype.
 
 
+
 .. _`jbd2_inode`:
 
 struct jbd2_inode
 =================
 
-.. c:type:: struct jbd2_inode
+.. c:type:: jbd2_inode
 
     
 
 
+.. _`jbd2_inode.definition`:
 
 Definition
 ----------
@@ -76,11 +86,15 @@ Definition
   };
 
 
+.. _`jbd2_inode.members`:
 
 Members
 -------
 
 
+
+
+.. _`jbd2_inode.description`:
 
 Description
 -----------
@@ -88,16 +102,18 @@ Description
 present in a transaction so that we can sync them during commit.
 
 
+
 .. _`jbd2_journal_handle`:
 
 struct jbd2_journal_handle
 ==========================
 
-.. c:type:: struct jbd2_journal_handle
+.. c:type:: jbd2_journal_handle
 
     The handle_s type is the concrete type associated with handle_t.
 
 
+.. _`jbd2_journal_handle.definition`:
 
 Definition
 ----------
@@ -117,6 +133,7 @@ Definition
   };
 
 
+.. _`jbd2_journal_handle.members`:
 
 Members
 -------
@@ -144,16 +161,18 @@ Members
 
 
 
+
 .. _`journal_s`:
 
 struct journal_s
 ================
 
-.. c:type:: struct journal_s
+.. c:type:: journal_s
 
     The journal_s type is the concrete type associated with journal_t.
 
 
+.. _`journal_s.definition`:
 
 Definition
 ----------
@@ -213,6 +232,7 @@ Definition
   };
 
 
+.. _`journal_s.members`:
 
 Members
 -------

@@ -4,16 +4,18 @@
 input.h
 =======
 
+
 .. _`input_absinfo`:
 
 struct input_absinfo
 ====================
 
-.. c:type:: struct input_absinfo
+.. c:type:: input_absinfo
 
     used by EVIOCGABS/EVIOCSABS ioctls
 
 
+.. _`input_absinfo.definition`:
 
 Definition
 ----------
@@ -30,6 +32,7 @@ Definition
   };
 
 
+.. _`input_absinfo.members`:
 
 Members
 -------
@@ -57,6 +60,9 @@ Members
 
 
 
+
+.. _`input_absinfo.description`:
+
 Description
 -----------
 
@@ -68,16 +74,18 @@ units per millimeter (units/mm), resolution for rotational axes
 (ABS_RX, ABS_RY, ABS_RZ) is reported in units per radian.
 
 
+
 .. _`input_keymap_entry`:
 
 struct input_keymap_entry
 =========================
 
-.. c:type:: struct input_keymap_entry
+.. c:type:: input_keymap_entry
 
     used by EVIOCGKEYCODE/EVIOCSKEYCODE ioctls
 
 
+.. _`input_keymap_entry.definition`:
 
 Definition
 ----------
@@ -94,6 +102,7 @@ Definition
   };
 
 
+.. _`input_keymap_entry.members`:
 
 Members
 -------
@@ -117,6 +126,9 @@ Members
 
 
 
+
+.. _`input_keymap_entry.description`:
+
 Description
 -----------
 
@@ -124,6 +136,7 @@ The structure is used to retrieve and modify keymap data. Users have
 option of performing lookup either by ``scancode`` itself or by ``index``
 in keymap entry. EVIOCGKEYCODE will also return scancode or index
 (depending on which element was used to perform lookup).
+
 
 
 .. _`eviocgmtslots`:
@@ -137,6 +150,7 @@ EVIOCGMTSLOTS
 
     :param len:
         size of the data buffer in bytes
+
 
 
 .. _`eviocgmtslots.description`:
@@ -166,6 +180,7 @@ ABS_MT code.
 If the request code is not an ABS_MT value, -EINVAL is returned.
 
 
+
 .. _`eviocgmask`:
 
 EVIOCGMASK
@@ -174,6 +189,7 @@ EVIOCGMASK
 .. c:function:: EVIOCGMASK ()
 
     Retrieve current event mask
+
 
 
 .. _`eviocgmask.description`:
@@ -209,6 +225,7 @@ if the receive-buffer points to invalid memory, or EINVAL if the kernel
 does not implement the ioctl.
 
 
+
 .. _`eviocsmask`:
 
 EVIOCSMASK
@@ -217,6 +234,7 @@ EVIOCSMASK
 .. c:function:: EVIOCSMASK ()
 
     Set event mask
+
 
 
 .. _`eviocsmask.description`:
@@ -244,16 +262,18 @@ returned if the receive-buffer points to invalid memory. EINVAL is returned
 if the kernel does not implement the ioctl.
 
 
+
 .. _`ff_replay`:
 
 struct ff_replay
 ================
 
-.. c:type:: struct ff_replay
+.. c:type:: ff_replay
 
     defines scheduling of the force-feedback effect
 
 
+.. _`ff_replay.definition`:
 
 Definition
 ----------
@@ -266,6 +286,7 @@ Definition
   };
 
 
+.. _`ff_replay.members`:
 
 Members
 -------
@@ -278,16 +299,18 @@ Members
 
 
 
+
 .. _`ff_trigger`:
 
 struct ff_trigger
 =================
 
-.. c:type:: struct ff_trigger
+.. c:type:: ff_trigger
 
     defines what triggers the force-feedback effect
 
 
+.. _`ff_trigger.definition`:
 
 Definition
 ----------
@@ -300,6 +323,7 @@ Definition
   };
 
 
+.. _`ff_trigger.members`:
 
 Members
 -------
@@ -312,16 +336,18 @@ Members
 
 
 
+
 .. _`ff_envelope`:
 
 struct ff_envelope
 ==================
 
-.. c:type:: struct ff_envelope
+.. c:type:: ff_envelope
 
     generic force-feedback effect envelope
 
 
+.. _`ff_envelope.definition`:
 
 Definition
 ----------
@@ -336,6 +362,7 @@ Definition
   };
 
 
+.. _`ff_envelope.members`:
 
 Members
 -------
@@ -354,6 +381,9 @@ Members
 
 
 
+
+.. _`ff_envelope.description`:
+
 Description
 -----------
 
@@ -363,16 +393,18 @@ value based on polarity of the default level of the effect.
 Valid range for the attack and fade levels is 0x0000 - 0x7fff
 
 
+
 .. _`ff_constant_effect`:
 
 struct ff_constant_effect
 =========================
 
-.. c:type:: struct ff_constant_effect
+.. c:type:: ff_constant_effect
 
     defines parameters of a constant force-feedback effect
 
 
+.. _`ff_constant_effect.definition`:
 
 Definition
 ----------
@@ -385,6 +417,7 @@ Definition
   };
 
 
+.. _`ff_constant_effect.members`:
 
 Members
 -------
@@ -397,16 +430,18 @@ Members
 
 
 
+
 .. _`ff_ramp_effect`:
 
 struct ff_ramp_effect
 =====================
 
-.. c:type:: struct ff_ramp_effect
+.. c:type:: ff_ramp_effect
 
     defines parameters of a ramp force-feedback effect
 
 
+.. _`ff_ramp_effect.definition`:
 
 Definition
 ----------
@@ -420,6 +455,7 @@ Definition
   };
 
 
+.. _`ff_ramp_effect.members`:
 
 Members
 -------
@@ -435,16 +471,18 @@ Members
 
 
 
+
 .. _`ff_condition_effect`:
 
 struct ff_condition_effect
 ==========================
 
-.. c:type:: struct ff_condition_effect
+.. c:type:: ff_condition_effect
 
     defines a spring or friction force-feedback effect
 
 
+.. _`ff_condition_effect.definition`:
 
 Definition
 ----------
@@ -461,6 +499,7 @@ Definition
   };
 
 
+.. _`ff_condition_effect.members`:
 
 Members
 -------
@@ -486,16 +525,18 @@ Members
 
 
 
+
 .. _`ff_periodic_effect`:
 
 struct ff_periodic_effect
 =========================
 
-.. c:type:: struct ff_periodic_effect
+.. c:type:: ff_periodic_effect
 
     defines parameters of a periodic force-feedback effect
 
 
+.. _`ff_periodic_effect.definition`:
 
 Definition
 ----------
@@ -514,6 +555,7 @@ Definition
   };
 
 
+.. _`ff_periodic_effect.members`:
 
 Members
 -------
@@ -544,6 +586,9 @@ Members
 
 
 
+
+.. _`ff_periodic_effect.description`:
+
 Description
 -----------
 
@@ -551,8 +596,16 @@ Known waveforms - FF_SQUARE, FF_TRIANGLE, FF_SINE, FF_SAW_UP,
 FF_SAW_DOWN, FF_CUSTOM. The exact syntax FF_CUSTOM is undefined
 for the time being as no driver supports it yet.
 
-Note: the data pointed by custom_data is copied by the driver.
+
+
+.. _`ff_periodic_effect.note`:
+
+Note
+----
+
+the data pointed by custom_data is copied by the driver.
 You can therefore dispose of the memory after the upload/update.
+
 
 
 .. _`ff_rumble_effect`:
@@ -560,11 +613,12 @@ You can therefore dispose of the memory after the upload/update.
 struct ff_rumble_effect
 =======================
 
-.. c:type:: struct ff_rumble_effect
+.. c:type:: ff_rumble_effect
 
     defines parameters of a periodic force-feedback effect
 
 
+.. _`ff_rumble_effect.definition`:
 
 Definition
 ----------
@@ -577,6 +631,7 @@ Definition
   };
 
 
+.. _`ff_rumble_effect.members`:
 
 Members
 -------
@@ -589,6 +644,9 @@ Members
 
 
 
+
+.. _`ff_rumble_effect.description`:
+
 Description
 -----------
 
@@ -596,16 +654,18 @@ Some rumble pads have two motors of different weight. Strong_magnitude
 represents the magnitude of the vibration generated by the heavy one.
 
 
+
 .. _`ff_effect`:
 
 struct ff_effect
 ================
 
-.. c:type:: struct ff_effect
+.. c:type:: ff_effect
 
     defines force feedback effect
 
 
+.. _`ff_effect.definition`:
 
 Definition
 ----------
@@ -622,6 +682,7 @@ Definition
   };
 
 
+.. _`ff_effect.members`:
 
 Members
 -------
@@ -649,6 +710,9 @@ Members
 
 
 
+
+.. _`ff_effect.description`:
+
 Description
 -----------
 
@@ -657,10 +721,15 @@ To create a new effect application should set its ``id`` to -1; the kernel
 will return assigned ``id`` which can later be used to update or delete
 this effect.
 
-Direction of the effect is encoded as follows::
 
-        0 deg -> 0x0000 (down)
-        90 deg -> 0x4000 (left)
-        180 deg -> 0x8000 (up)
-        270 deg -> 0xC000 (right)
+
+.. _`ff_effect.direction-of-the-effect-is-encoded-as-follows`:
+
+Direction of the effect is encoded as follows
+---------------------------------------------
+
+0 deg -> 0x0000 (down)
+90 deg -> 0x4000 (left)
+180 deg -> 0x8000 (up)
+270 deg -> 0xC000 (right)
 

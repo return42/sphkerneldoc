@@ -4,6 +4,7 @@
 vmwgfx_drm.h
 ============
 
+
 .. _`drm_vmw_param_num_streams`:
 
 DRM_VMW_PARAM_NUM_STREAMS
@@ -14,18 +15,24 @@ DRM_VMW_PARAM_NUM_STREAMS
     get device information.
 
 
-.. _`drm_vmw_param_num_streams.description`:
 
-Description
------------
+.. _`drm_vmw_param_num_streams.drm_vmw_param_fifo_offset`:
 
+DRM_VMW_PARAM_FIFO_OFFSET
+-------------------------
 
-DRM_VMW_PARAM_FIFO_OFFSET:
 Offset to use to map the first page of the FIFO read-only.
 The fifo is mapped using the :c:func:`mmap` system call on the drm device.
 
-DRM_VMW_PARAM_OVERLAY_IOCTL:
+
+
+.. _`drm_vmw_param_num_streams.drm_vmw_param_overlay_ioctl`:
+
+DRM_VMW_PARAM_OVERLAY_IOCTL
+---------------------------
+
 Does the driver support the overlay ioctl.
+
 
 
 .. _`drm_vmw_handle_type`:
@@ -33,20 +40,34 @@ Does the driver support the overlay ioctl.
 enum drm_vmw_handle_type
 ========================
 
-.. c:type:: enum drm_vmw_handle_type
+.. c:type:: drm_vmw_handle_type
 
     handle type for ref ioctls
 
 
+.. _`drm_vmw_handle_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_vmw_handle_type {
+      DRM_VMW_HANDLE_LEGACY,
+      DRM_VMW_HANDLE_PRIME
+    };
+
+
+.. _`drm_vmw_handle_type.constants`:
 
 Constants
 ---------
 
 :``DRM_VMW_HANDLE_LEGACY``:
-    -- undescribed --
+-- undescribed --
 
 :``DRM_VMW_HANDLE_PRIME``:
-    -- undescribed --
+-- undescribed --
 
 
 .. _`drm_vmw_getparam_arg`:
@@ -54,11 +75,12 @@ Constants
 struct drm_vmw_getparam_arg
 ===========================
 
-.. c:type:: struct drm_vmw_getparam_arg
+.. c:type:: drm_vmw_getparam_arg
 
     
 
 
+.. _`drm_vmw_getparam_arg.definition`:
 
 Definition
 ----------
@@ -71,6 +93,7 @@ Definition
   };
 
 
+.. _`drm_vmw_getparam_arg.members`:
 
 Members
 -------
@@ -83,16 +106,23 @@ Members
 
 
 
-Description
------------
 
-Argument to the DRM_VMW_GET_PARAM Ioctl.
-
+.. _`drm_vmw_getparam_arg.description`:
 
 Description
 -----------
 
 Argument to the DRM_VMW_GET_PARAM Ioctl.
+
+
+
+.. _`drm_vmw_getparam_arg.description`:
+
+Description
+-----------
+
+Argument to the DRM_VMW_GET_PARAM Ioctl.
+
 
 
 .. _`drm_vmw_surface_arg`:
@@ -100,11 +130,12 @@ Argument to the DRM_VMW_GET_PARAM Ioctl.
 struct drm_vmw_surface_arg
 ==========================
 
-.. c:type:: struct drm_vmw_surface_arg
+.. c:type:: drm_vmw_surface_arg
 
     
 
 
+.. _`drm_vmw_surface_arg.definition`:
 
 Definition
 ----------
@@ -117,6 +148,7 @@ Definition
   };
 
 
+.. _`drm_vmw_surface_arg.members`:
 
 Members
 -------
@@ -129,6 +161,9 @@ Members
 
 
 
+
+.. _`drm_vmw_surface_arg.description`:
+
 Description
 -----------
 
@@ -137,16 +172,18 @@ Input argument to the DRM_VMW_UNREF_SURFACE Ioctl.
 Input argument to the DRM_VMW_REF_SURFACE Ioctl.
 
 
+
 .. _`drm_vmw_size`:
 
 struct drm_vmw_size
 ===================
 
-.. c:type:: struct drm_vmw_size
+.. c:type:: drm_vmw_size
 
     
 
 
+.. _`drm_vmw_size.definition`:
 
 Definition
 ----------
@@ -157,11 +194,15 @@ Definition
   };
 
 
+.. _`drm_vmw_size.members`:
 
 Members
 -------
 
 
+
+
+.. _`drm_vmw_size.description`:
 
 Description
 -----------
@@ -175,16 +216,18 @@ Description of a mip level.
 Input data to the DRM_WMW_CREATE_SURFACE Ioctl.
 
 
+
 .. _`drm_vmw_surface_create_arg`:
 
 union drm_vmw_surface_create_arg
 ================================
 
-.. c:type:: union drm_vmw_surface_create_arg
+.. c:type:: drm_vmw_surface_create_arg
 
     
 
 
+.. _`drm_vmw_surface_create_arg.definition`:
 
 Definition
 ----------
@@ -197,6 +240,7 @@ Definition
   };
 
 
+.. _`drm_vmw_surface_create_arg.members`:
 
 Members
 -------
@@ -209,10 +253,14 @@ Members
 
 
 
+
+.. _`drm_vmw_surface_create_arg.description`:
+
 Description
 -----------
 
 Argument to the DRM_VMW_CREATE_SURFACE Ioctl.
+
 
 
 .. _`drm_vmw_execbuf_version`:
@@ -223,6 +271,7 @@ DRM_VMW_EXECBUF_VERSION
 .. c:function:: DRM_VMW_EXECBUF_VERSION ()
 
     Unreference a host surface.
+
 
 
 .. _`drm_vmw_execbuf_version.description`:
@@ -238,16 +287,18 @@ a destroy surface command will be queued for the host.
 Does not wait for completion.
 
 
+
 .. _`drm_vmw_fence_rep`:
 
 struct drm_vmw_fence_rep
 ========================
 
-.. c:type:: struct drm_vmw_fence_rep
+.. c:type:: drm_vmw_fence_rep
 
     
 
 
+.. _`drm_vmw_fence_rep.definition`:
 
 Definition
 ----------
@@ -263,6 +314,7 @@ Definition
   };
 
 
+.. _`drm_vmw_fence_rep.members`:
 
 Members
 -------
@@ -287,20 +339,24 @@ Members
 
 :``error``:
     This member should've been set to -EFAULT on submission.
-    The following actions should be take on completion:
-    error == -EFAULT: Fence communication failed. The host is synchronized.
-    Use the last fence id read from the FIFO fence register.
-    error != 0 && error != -EFAULT:
-    Fence submission failed. The host is synchronized. Use the fence_seq member.
-    error == 0: All is OK, The host may not be synchronized.
-    Use the fence_seq member.
 
 
 
-Description
------------
+
+.. _`drm_vmw_fence_rep.the-following-actions-should-be-take-on-completion`:
+
+The following actions should be take on completion
+--------------------------------------------------
+
+error == -EFAULT: Fence communication failed. The host is synchronized.
+Use the last fence id read from the FIFO fence register.
+error != 0 && error != -EFAULT:
+Fence submission failed. The host is synchronized. Use the fence_seq member.
+error == 0: All is OK, The host may not be synchronized.
+Use the fence_seq member.
 
 Input / Output data to the DRM_VMW_EXECBUF Ioctl.
+
 
 
 .. _`drm_vmw_dmabuf_rep`:
@@ -308,11 +364,12 @@ Input / Output data to the DRM_VMW_EXECBUF Ioctl.
 struct drm_vmw_dmabuf_rep
 =========================
 
-.. c:type:: struct drm_vmw_dmabuf_rep
+.. c:type:: drm_vmw_dmabuf_rep
 
     
 
 
+.. _`drm_vmw_dmabuf_rep.definition`:
 
 Definition
 ----------
@@ -327,6 +384,7 @@ Definition
   };
 
 
+.. _`drm_vmw_dmabuf_rep.members`:
 
 Members
 -------
@@ -347,10 +405,14 @@ Members
 
 
 
+
+.. _`drm_vmw_dmabuf_rep.description`:
+
 Description
 -----------
 
 Output data from the DRM_VMW_ALLOC_DMABUF Ioctl.
+
 
 
 .. _`drm_vmw_alloc_dmabuf_arg`:
@@ -358,11 +420,12 @@ Output data from the DRM_VMW_ALLOC_DMABUF Ioctl.
 union drm_vmw_alloc_dmabuf_arg
 ==============================
 
-.. c:type:: union drm_vmw_alloc_dmabuf_arg
+.. c:type:: drm_vmw_alloc_dmabuf_arg
 
     
 
 
+.. _`drm_vmw_alloc_dmabuf_arg.definition`:
 
 Definition
 ----------
@@ -375,6 +438,7 @@ Definition
   };
 
 
+.. _`drm_vmw_alloc_dmabuf_arg.members`:
 
 Members
 -------
@@ -387,10 +451,14 @@ Members
 
 
 
+
+.. _`drm_vmw_alloc_dmabuf_arg.description`:
+
 Description
 -----------
 
 Argument to the DRM_VMW_ALLOC_DMABUF Ioctl.
+
 
 
 .. _`drm_vmw_control_stream_arg`:
@@ -398,11 +466,12 @@ Argument to the DRM_VMW_ALLOC_DMABUF Ioctl.
 struct drm_vmw_control_stream_arg
 =================================
 
-.. c:type:: struct drm_vmw_control_stream_arg
+.. c:type:: drm_vmw_control_stream_arg
 
     
 
 
+.. _`drm_vmw_control_stream_arg.definition`:
 
 Definition
 ----------
@@ -424,6 +493,7 @@ Definition
   };
 
 
+.. _`drm_vmw_control_stream_arg.members`:
 
 Members
 -------
@@ -463,10 +533,14 @@ Members
 
 
 
+
+.. _`drm_vmw_control_stream_arg.description`:
+
 Description
 -----------
 
 Argument to the DRM_VMW_CONTROL_STREAM Ioctl.
+
 
 
 .. _`drm_vmw_cursor_bypass_all`:
@@ -479,16 +553,18 @@ DRM_VMW_CURSOR_BYPASS_ALL
     Give extra information about cursor bypass.
 
 
+
 .. _`drm_vmw_cursor_bypass_arg`:
 
 struct drm_vmw_cursor_bypass_arg
 ================================
 
-.. c:type:: struct drm_vmw_cursor_bypass_arg
+.. c:type:: drm_vmw_cursor_bypass_arg
 
     
 
 
+.. _`drm_vmw_cursor_bypass_arg.definition`:
 
 Definition
 ----------
@@ -505,6 +581,7 @@ Definition
   };
 
 
+.. _`drm_vmw_cursor_bypass_arg.members`:
 
 Members
 -------
@@ -529,16 +606,23 @@ Members
 
 
 
-Description
------------
 
-Argument to the DRM_VMW_CURSOR_BYPASS Ioctl.
-
+.. _`drm_vmw_cursor_bypass_arg.description`:
 
 Description
 -----------
 
 Argument to the DRM_VMW_CURSOR_BYPASS Ioctl.
+
+
+
+.. _`drm_vmw_cursor_bypass_arg.description`:
+
+Description
+-----------
+
+Argument to the DRM_VMW_CURSOR_BYPASS Ioctl.
+
 
 
 .. _`drm_vmw_fence_flag_exec`:
@@ -547,6 +631,7 @@ DRM_VMW_FENCE_FLAG_EXEC
 =======================
 
 .. c:function:: DRM_VMW_FENCE_FLAG_EXEC ()
+
 
 
 .. _`drm_vmw_fence_flag_exec.description`:
@@ -562,18 +647,41 @@ that is restarting without resetting ``cookie_valid`` to zero,
 the timeout is computed from the first call.
 
 The flags argument to the DRM_VMW_FENCE_WAIT ioctl indicates what to wait
-on:
-DRM_VMW_FENCE_FLAG_EXEC: All commands ahead of the fence in the command
+
+
+
+.. _`drm_vmw_fence_flag_exec.drm_vmw_fence_flag_exec`:
+
+DRM_VMW_FENCE_FLAG_EXEC
+-----------------------
+
+All commands ahead of the fence in the command
 stream
 have executed.
-DRM_VMW_FENCE_FLAG_QUERY: All query results resulting from query finish
+
+
+
+.. _`drm_vmw_fence_flag_exec.drm_vmw_fence_flag_query`:
+
+DRM_VMW_FENCE_FLAG_QUERY
+------------------------
+
+All query results resulting from query finish
 commands
 in the buffer given to the EXECBUF ioctl returning the fence object handle
 are available to user-space.
 
-DRM_VMW_WAIT_OPTION_UNREF: If this wait option is given, and the
+
+
+.. _`drm_vmw_fence_flag_exec.drm_vmw_wait_option_unref`:
+
+DRM_VMW_WAIT_OPTION_UNREF
+-------------------------
+
+If this wait option is given, and the
 fenc wait ioctl returns 0, the fence object has been unreferenced after
 the wait.
+
 
 
 .. _`drm_vmw_fence_wait_arg`:
@@ -581,11 +689,12 @@ the wait.
 struct drm_vmw_fence_wait_arg
 =============================
 
-.. c:type:: struct drm_vmw_fence_wait_arg
+.. c:type:: drm_vmw_fence_wait_arg
 
     
 
 
+.. _`drm_vmw_fence_wait_arg.definition`:
 
 Definition
 ----------
@@ -603,6 +712,7 @@ Definition
   };
 
 
+.. _`drm_vmw_fence_wait_arg.members`:
 
 Members
 -------
@@ -631,10 +741,14 @@ Members
 
 
 
+
+.. _`drm_vmw_fence_wait_arg.description`:
+
 Description
 -----------
 
 Input argument to the DRM_VMW_FENCE_WAIT ioctl.
+
 
 
 .. _`drm_vmw_event_fence_signaled`:
@@ -643,6 +757,7 @@ DRM_VMW_EVENT_FENCE_SIGNALED
 ============================
 
 .. c:function:: DRM_VMW_EVENT_FENCE_SIGNALED ()
+
 
 
 .. _`drm_vmw_event_fence_signaled.description`:
@@ -657,16 +772,18 @@ Optionally the approximate time when the fence signaled is
 given by the event.
 
 
+
 .. _`drm_vmw_fence_event_arg`:
 
 struct drm_vmw_fence_event_arg
 ==============================
 
-.. c:type:: struct drm_vmw_fence_event_arg
+.. c:type:: drm_vmw_fence_event_arg
 
     
 
 
+.. _`drm_vmw_fence_event_arg.definition`:
 
 Definition
 ----------
@@ -680,6 +797,7 @@ Definition
   };
 
 
+.. _`drm_vmw_fence_event_arg.members`:
 
 Members
 -------
@@ -696,16 +814,18 @@ Members
 
 
 
+
 .. _`drm_vmw_shader_create_arg`:
 
 struct drm_vmw_shader_create_arg
 ================================
 
-.. c:type:: struct drm_vmw_shader_create_arg
+.. c:type:: drm_vmw_shader_create_arg
 
     
 
 
+.. _`drm_vmw_shader_create_arg.definition`:
 
 Definition
 ----------
@@ -721,6 +841,7 @@ Definition
   };
 
 
+.. _`drm_vmw_shader_create_arg.members`:
 
 Members
 -------
@@ -745,10 +866,14 @@ Members
 
 
 
+
+.. _`drm_vmw_shader_create_arg.description`:
+
 Description
 -----------
 
 Input / Output argument to the DRM_VMW_CREATE_SHADER Ioctl.
+
 
 
 .. _`drm_vmw_gb_surface_create_req`:
@@ -756,11 +881,12 @@ Input / Output argument to the DRM_VMW_CREATE_SHADER Ioctl.
 struct drm_vmw_gb_surface_create_req
 ====================================
 
-.. c:type:: struct drm_vmw_gb_surface_create_req
+.. c:type:: drm_vmw_gb_surface_create_req
 
     
 
 
+.. _`drm_vmw_gb_surface_create_req.definition`:
 
 Definition
 ----------
@@ -773,6 +899,7 @@ Definition
   };
 
 
+.. _`drm_vmw_gb_surface_create_req.members`:
 
 Members
 -------
@@ -785,6 +912,9 @@ Members
 
 
 
+
+.. _`drm_vmw_gb_surface_create_req.description`:
+
 Description
 -----------
 
@@ -792,16 +922,18 @@ Input argument to the  DRM_VMW_GB_SURFACE_CREATE Ioctl.
 Part of output argument for the DRM_VMW_GB_SURFACE_REF Ioctl.
 
 
+
 .. _`drm_vmw_gb_surface_create_rep`:
 
 struct drm_vmw_gb_surface_create_rep
 ====================================
 
-.. c:type:: struct drm_vmw_gb_surface_create_rep
+.. c:type:: drm_vmw_gb_surface_create_rep
 
     
 
 
+.. _`drm_vmw_gb_surface_create_rep.definition`:
 
 Definition
 ----------
@@ -817,6 +949,7 @@ Definition
   };
 
 
+.. _`drm_vmw_gb_surface_create_rep.members`:
 
 Members
 -------
@@ -840,6 +973,9 @@ Members
 
 
 
+
+.. _`drm_vmw_gb_surface_create_rep.description`:
+
 Description
 -----------
 
@@ -847,16 +983,18 @@ Part of output argument for the DRM_VMW_GB_SURFACE_REF ioctl.
 Output argument for the DRM_VMW_GB_SURFACE_CREATE ioctl.
 
 
+
 .. _`drm_vmw_gb_surface_create_arg`:
 
 union drm_vmw_gb_surface_create_arg
 ===================================
 
-.. c:type:: union drm_vmw_gb_surface_create_arg
+.. c:type:: drm_vmw_gb_surface_create_arg
 
     
 
 
+.. _`drm_vmw_gb_surface_create_arg.definition`:
 
 Definition
 ----------
@@ -869,6 +1007,7 @@ Definition
   };
 
 
+.. _`drm_vmw_gb_surface_create_arg.members`:
 
 Members
 -------
@@ -881,10 +1020,14 @@ Members
 
 
 
+
+.. _`drm_vmw_gb_surface_create_arg.description`:
+
 Description
 -----------
 
 Argument to the DRM_VMW_GB_SURFACE_CREATE ioctl.
+
 
 
 .. _`drm_vmw_gb_surface_reference_arg`:
@@ -892,11 +1035,12 @@ Argument to the DRM_VMW_GB_SURFACE_CREATE ioctl.
 union drm_vmw_gb_surface_reference_arg
 ======================================
 
-.. c:type:: union drm_vmw_gb_surface_reference_arg
+.. c:type:: drm_vmw_gb_surface_reference_arg
 
     
 
 
+.. _`drm_vmw_gb_surface_reference_arg.definition`:
 
 Definition
 ----------
@@ -909,6 +1053,7 @@ Definition
   };
 
 
+.. _`drm_vmw_gb_surface_reference_arg.members`:
 
 Members
 -------
@@ -921,10 +1066,14 @@ Members
 
 
 
+
+.. _`drm_vmw_gb_surface_reference_arg.description`:
+
 Description
 -----------
 
 Argument to the DRM_VMW_GB_SURFACE_REF Ioctl.
+
 
 
 .. _`drm_vmw_synccpu_op`:
@@ -932,11 +1081,25 @@ Argument to the DRM_VMW_GB_SURFACE_REF Ioctl.
 enum drm_vmw_synccpu_op
 =======================
 
-.. c:type:: enum drm_vmw_synccpu_op
+.. c:type:: drm_vmw_synccpu_op
 
     Synccpu operations:
 
 
+.. _`drm_vmw_synccpu_op.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum drm_vmw_synccpu_op {
+      drm_vmw_synccpu_grab,
+      drm_vmw_synccpu_release
+    };
+
+
+.. _`drm_vmw_synccpu_op.constants`:
 
 Constants
 ---------
@@ -953,11 +1116,12 @@ Constants
 struct drm_vmw_synccpu_arg
 ==========================
 
-.. c:type:: struct drm_vmw_synccpu_arg
+.. c:type:: drm_vmw_synccpu_arg
 
     
 
 
+.. _`drm_vmw_synccpu_arg.definition`:
 
 Definition
 ----------
@@ -971,6 +1135,7 @@ Definition
   };
 
 
+.. _`drm_vmw_synccpu_arg.members`:
 
 Members
 -------
@@ -986,16 +1151,18 @@ Members
 
 
 
+
 .. _`drm_vmw_extended_context_arg`:
 
 union drm_vmw_extended_context_arg
 ==================================
 
-.. c:type:: union drm_vmw_extended_context_arg
+.. c:type:: drm_vmw_extended_context_arg
 
     
 
 
+.. _`drm_vmw_extended_context_arg.definition`:
 
 Definition
 ----------
@@ -1008,6 +1175,7 @@ Definition
   };
 
 
+.. _`drm_vmw_extended_context_arg.members`:
 
 Members
 -------
@@ -1019,6 +1187,9 @@ Members
     Context identifier.
 
 
+
+
+.. _`drm_vmw_extended_context_arg.description`:
 
 Description
 -----------

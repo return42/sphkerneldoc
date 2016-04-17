@@ -4,6 +4,7 @@
 drm_probe_helper.c
 ==================
 
+
 .. _`output-probing-helper-overview`:
 
 output probing helper overview
@@ -25,6 +26,7 @@ The probe helpers share the function table structures with other display
 helper libraries. See struct :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>` for the details.
 
 
+
 .. _`drm_kms_helper_poll_enable_locked`:
 
 drm_kms_helper_poll_enable_locked
@@ -38,6 +40,7 @@ drm_kms_helper_poll_enable_locked
         drm_device
 
 
+
 .. _`drm_kms_helper_poll_enable_locked.description`:
 
 Description
@@ -49,6 +52,7 @@ locking the mode_config mutex.
 This is like :c:func:`drm_kms_helper_poll_enable` however it is to be
 called from a context where the mode_config mutex is locked
 already.
+
 
 
 .. _`drm_helper_probe_single_connector_modes`:
@@ -70,6 +74,7 @@ drm_helper_probe_single_connector_modes
         max height for modes
 
 
+
 .. _`drm_helper_probe_single_connector_modes.description`:
 
 Description
@@ -89,6 +94,7 @@ The basic procedure is as follows
 1. All modes currently on the connector's modes list are marked as stale
 
 2. New modes are added to the connector's probed_modes list with
+
    :c:func:`drm_mode_probed_add`. New modes start their life with status as OK.
    Modes are added from a single source using the following priority order.
 
@@ -105,6 +111,7 @@ The basic procedure is as follows
    using the VESA GTF/CVT formulas.
 
 3. Modes are moved from the probed_modes list to the modes list. Potential
+
    duplicates are merged together (see :c:func:`drm_mode_connector_list_update`).
    After this step the probed_modes list will be empty again.
 
@@ -119,11 +126,19 @@ The basic procedure is as follows
      hardware specific checks
 
 5. Any mode whose status is not OK is pruned from the connector's modes list,
+
    accompanied by a debug message indicating the reason for the mode's
    rejection (see :c:func:`drm_mode_prune_invalid`).
 
-Returns:
+
+
+.. _`drm_helper_probe_single_connector_modes.returns`:
+
+Returns
+-------
+
 The number of modes found on ``connector``\ .
+
 
 
 .. _`drm_kms_helper_hotplug_event`:
@@ -137,6 +152,7 @@ drm_kms_helper_hotplug_event
 
     :param struct drm_device \*dev:
         drm_device whose connector state changed
+
 
 
 .. _`drm_kms_helper_hotplug_event.description`:
@@ -157,6 +173,7 @@ This function must be called from process context with no mode
 setting locks held.
 
 
+
 .. _`drm_kms_helper_poll_disable`:
 
 drm_kms_helper_poll_disable
@@ -170,6 +187,7 @@ drm_kms_helper_poll_disable
         drm_device
 
 
+
 .. _`drm_kms_helper_poll_disable.description`:
 
 Description
@@ -180,6 +198,7 @@ This function disables the output polling work.
 Drivers can call this helper from their device suspend implementation. It is
 not an error to call this even when output polling isn't enabled or arlready
 disabled.
+
 
 
 .. _`drm_kms_helper_poll_enable`:
@@ -195,6 +214,7 @@ drm_kms_helper_poll_enable
         drm_device
 
 
+
 .. _`drm_kms_helper_poll_enable.description`:
 
 Description
@@ -205,6 +225,7 @@ This function re-enables the output polling work.
 Drivers can call this helper from their device resume implementation. It is
 an error to call this when the output polling support has not yet been set
 up.
+
 
 
 .. _`drm_kms_helper_poll_init`:
@@ -218,6 +239,7 @@ drm_kms_helper_poll_init
 
     :param struct drm_device \*dev:
         drm_device
+
 
 
 .. _`drm_kms_helper_poll_init.description`:
@@ -241,6 +263,7 @@ Note that a connector can be both polled and probed from the hotplug handler,
 in case the hotplug interrupt is known to be unreliable.
 
 
+
 .. _`drm_kms_helper_poll_fini`:
 
 drm_kms_helper_poll_fini
@@ -254,6 +277,7 @@ drm_kms_helper_poll_fini
         drm_device
 
 
+
 .. _`drm_helper_hpd_irq_event`:
 
 drm_helper_hpd_irq_event
@@ -265,6 +289,7 @@ drm_helper_hpd_irq_event
 
     :param struct drm_device \*dev:
         drm_device
+
 
 
 .. _`drm_helper_hpd_irq_event.description`:

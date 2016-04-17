@@ -4,6 +4,7 @@
 core.h
 ======
 
+
 .. _`snd_printk`:
 
 snd_printk
@@ -20,6 +21,7 @@ snd_printk
         variable arguments
 
 
+
 .. _`snd_printk.description`:
 
 Description
@@ -27,6 +29,7 @@ Description
 
 Works like :c:func:`printk` but prints the file and the line of the caller
 when configured with CONFIG_SND_VERBOSE_PRINTK.
+
 
 
 .. _`snd_printd`:
@@ -45,6 +48,7 @@ snd_printd
         variable arguments
 
 
+
 .. _`snd_printd.description`:
 
 Description
@@ -52,6 +56,7 @@ Description
 
 Works like :c:func:`snd_printk` for debugging purposes.
 Ignored when CONFIG_SND_DEBUG is not set.
+
 
 
 .. _`snd_bug`:
@@ -64,6 +69,7 @@ snd_BUG
     give a BUG warning message and stack trace
 
 
+
 .. _`snd_bug.description`:
 
 Description
@@ -74,12 +80,14 @@ Calls :c:func:`WARN` if CONFIG_SND_DEBUG is set.
 Ignored when CONFIG_SND_DEBUG is not set.
 
 
+
 .. _`snd_printd_ratelimit`:
 
 snd_printd_ratelimit
 ====================
 
 .. c:function:: snd_printd_ratelimit ()
+
 
 
 .. _`snd_bug_on`:
@@ -95,6 +103,7 @@ snd_BUG_ON
         condition to evaluate
 
 
+
 .. _`snd_bug_on.description`:
 
 Description
@@ -102,6 +111,7 @@ Description
 
 Has the same behavior as WARN_ON when CONFIG_SND_DEBUG is set,
 otherwise just evaluates the conditional and returns the value.
+
 
 
 .. _`snd_printdd`:
@@ -118,6 +128,7 @@ snd_printdd
 
     :param args...:
         variable arguments
+
 
 
 .. _`snd_printdd.description`:

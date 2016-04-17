@@ -4,6 +4,7 @@
 intel_dp.c
 ==========
 
+
 .. _`is_edp`:
 
 is_edp
@@ -17,6 +18,7 @@ is_edp
         DP struct
 
 
+
 .. _`is_edp.description`:
 
 Description
@@ -24,6 +26,7 @@ Description
 
 If a CPU or PCH DP output is attached to an eDP panel, this function
 will return true, and false otherwise.
+
 
 
 .. _`intel_dp_set_drrs_state`:
@@ -42,6 +45,7 @@ intel_dp_set_drrs_state
         RR to be programmed
 
 
+
 .. _`intel_dp_set_drrs_state.description`:
 
 Description
@@ -53,6 +57,7 @@ supported by the panel or to any other RR based on media playback (in
 this case, RR value needs to be passed from user space).
 
 The caller of this function needs to take a lock on dev_priv->drrs.
+
 
 
 .. _`intel_edp_drrs_enable`:
@@ -68,12 +73,14 @@ intel_edp_drrs_enable
         DP struct
 
 
+
 .. _`intel_edp_drrs_enable.description`:
 
 Description
 -----------
 
 Initializes frontbuffer_bits and drrs.dp
+
 
 
 .. _`intel_edp_drrs_disable`:
@@ -87,6 +94,7 @@ intel_edp_drrs_disable
 
     :param struct intel_dp \*intel_dp:
         DP struct
+
 
 
 .. _`intel_edp_drrs_invalidate`:
@@ -105,6 +113,7 @@ intel_edp_drrs_invalidate
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_edp_drrs_invalidate.description`:
 
 Description
@@ -114,6 +123,7 @@ This function gets called everytime rendering on the given planes start.
 Hence DRRS needs to be Upclocked, i.e. (LOW_RR -> HIGH_RR).
 
 Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
+
 
 
 .. _`intel_edp_drrs_flush`:
@@ -132,6 +142,7 @@ intel_edp_drrs_flush
         frontbuffer plane tracking bits
 
 
+
 .. _`intel_edp_drrs_flush.description`:
 
 Description
@@ -143,6 +154,7 @@ completed or flip on a crtc is completed. So DRRS should be upclocked
 if no other planes are dirty.
 
 Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
+
 
 
 .. _`display-refresh-rate-switching--drrs-`:
@@ -176,15 +188,15 @@ The implementation is based on frontbuffer tracking implementation.
 When there is a disturbance on the screen triggered by user activity or a
 periodic system activity, DRRS is disabled (RR is changed to high RR).
 When there is no movement on screen, after a timeout of 1 second, a switch
-to low RR is made.::
-
-       For integration with frontbuffer tracking code,
+to low RR is made.
+For integration with frontbuffer tracking code,
 
 :c:func:`intel_edp_drrs_invalidate` and :c:func:`intel_edp_drrs_flush` are called.
 
 DRRS can be further extended to support other internal panels and also
 the scenario of video playback wherein RR is set based on the rate
 requested by userspace.
+
 
 
 .. _`intel_dp_drrs_init`:
@@ -203,6 +215,7 @@ intel_dp_drrs_init
         preferred mode of panel
 
 
+
 .. _`intel_dp_drrs_init.description`:
 
 Description
@@ -211,7 +224,13 @@ Description
 This function is  called only once at driver load to initialize basic
 DRRS stuff.
 
-Returns:
+
+
+.. _`intel_dp_drrs_init.returns`:
+
+Returns
+-------
+
 Downclock mode if panel supports it, else return NULL.
 DRRS support is determined by the presence of downclock mode (apart
 from VBT setting).

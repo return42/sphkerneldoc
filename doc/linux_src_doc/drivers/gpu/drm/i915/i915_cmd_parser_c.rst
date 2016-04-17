@@ -4,6 +4,7 @@
 i915_cmd_parser.c
 =================
 
+
 .. _`batch-buffer-command-parser`:
 
 batch buffer command parser
@@ -40,7 +41,7 @@ normal and drm master processes).
 Third, commands which access privileged memory (i.e. GGTT, HWS page, etc).
 The parser always rejects such commands.
 
-The majority of the problematic commands fall in the MI_\* range, with only a
+The majority of the problematic commands fall in the MI\_\* range, with only a
 few specific commands on each ring (e.g. PIPE_CONTROL and MI_FLUSH_DW).
 
 Implementation:
@@ -55,7 +56,7 @@ the parser does not need to check, it can easily skip them. This is
 implemented via a per-ring length decoding vfunc.
 
 Unfortunately, there are a number of commands that do not follow the standard
-length encoding for their opcode range, primarily amongst the MI_\* commands.
+length encoding for their opcode range, primarily amongst the MI\_\* commands.
 To handle this, the parser provides a way to define explicit "skip" entries
 in the per-ring command tables.
 
@@ -63,6 +64,7 @@ Other command table entries map fairly directly to high level categories
 mentioned above: rejected, master-only, register whitelist. The parser
 implements a number of checks, including the privileged memory checks, via a
 general bitmasking mechanism.
+
 
 
 .. _`i915_cmd_parser_init_ring`:
@@ -78,6 +80,7 @@ i915_cmd_parser_init_ring
         the ringbuffer to initialize
 
 
+
 .. _`i915_cmd_parser_init_ring.description`:
 
 Description
@@ -87,7 +90,15 @@ Optionally initializes fields related to batch buffer command parsing in the
 struct intel_engine_cs based on whether the platform requires software
 command parsing.
 
-Return: non-zero if initialization fails
+
+
+.. _`i915_cmd_parser_init_ring.return`:
+
+Return
+------
+
+non-zero if initialization fails
+
 
 
 .. _`i915_cmd_parser_fini_ring`:
@@ -103,6 +114,7 @@ i915_cmd_parser_fini_ring
         the ringbuffer to clean up
 
 
+
 .. _`i915_cmd_parser_fini_ring.description`:
 
 Description
@@ -110,6 +122,7 @@ Description
 
 Releases any resources related to command parsing that may have been
 initialized for the specified ring.
+
 
 
 .. _`i915_needs_cmd_parser`:
@@ -125,6 +138,7 @@ i915_needs_cmd_parser
         the ring in question
 
 
+
 .. _`i915_needs_cmd_parser.description`:
 
 Description
@@ -133,7 +147,15 @@ Description
 Only certain platforms require software batch buffer command parsing, and
 only when enabled via module parameter.
 
-Return: true if the ring requires software command parsing
+
+
+.. _`i915_needs_cmd_parser.return`:
+
+Return
+------
+
+true if the ring requires software command parsing
+
 
 
 .. _`i915_parse_cmds`:
@@ -164,6 +186,7 @@ i915_parse_cmds
         is the submitting process the drm master?
 
 
+
 .. _`i915_parse_cmds.description`:
 
 Description
@@ -172,8 +195,16 @@ Description
 Parses the specified batch buffer looking for privilege violations as
 described in the overview.
 
-Return: non-zero if the parser finds violations or otherwise fails; -EACCES
+
+
+.. _`i915_parse_cmds.return`:
+
+Return
+------
+
+non-zero if the parser finds violations or otherwise fails; -EACCES
 if the batch appears legal but should use hardware parsing
+
 
 
 .. _`i915_cmd_parser_get_version`:
@@ -189,6 +220,7 @@ i915_cmd_parser_get_version
         no arguments
 
 
+
 .. _`i915_cmd_parser_get_version.description`:
 
 Description
@@ -198,5 +230,12 @@ Description
 The cmd parser maintains a simple increasing integer version number suitable
 for passing to userspace clients to determine what operations are permitted.
 
-Return: the current version number of the cmd parser
+
+
+.. _`i915_cmd_parser_get_version.return`:
+
+Return
+------
+
+the current version number of the cmd parser
 

@@ -1,0 +1,363 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+========
+cs4270.c
+========
+
+
+.. _`cs4270_mode_ratios`:
+
+struct cs4270_mode_ratios
+=========================
+
+.. c:type:: cs4270_mode_ratios
+
+    clock ratio tables
+
+
+.. _`cs4270_mode_ratios.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+  struct cs4270_mode_ratios {
+    unsigned int ratio;
+    u8 speed_mode;
+    u8 mclk;
+  };
+
+
+.. _`cs4270_mode_ratios.members`:
+
+Members
+-------
+
+:``ratio``:
+    the ratio of MCLK to the sample rate
+
+:``speed_mode``:
+    the Speed Mode bits to set in the Mode Control register for
+    this ratio
+
+:``mclk``:
+    the Ratio Select bits to set in the Mode Control register for this
+    ratio
+
+
+
+
+.. _`cs4270_mode_ratios.description`:
+
+Description
+-----------
+
+The data for this chart is taken from Table 5 of the CS4270 reference
+manual.
+
+This table is used to determine how to program the Mode Control register.
+It is also used by :c:func:`cs4270_set_dai_sysclk` to tell ALSA which sampling
+rates the CS4270 currently supports.
+
+``speed_mode`` is the corresponding bit pattern to be written to the
+MODE bits of the Mode Control Register
+
+``mclk`` is the corresponding bit pattern to be wirten to the MCLK bits of
+the Mode Control Register.
+
+In situations where a single ratio is represented by multiple speed
+modes, we favor the slowest speed.  E.g, for a ratio of 128, we pick
+double-speed instead of quad-speed.  However, the CS4270 errata states
+that divide-By-1.5 can cause failures, so we avoid that mode where
+possible.
+
+
+
+.. _`cs4270_mode_ratios.errata`:
+
+Errata
+------
+
+There is an errata for the CS4270 where divide-by-1.5 does not
+work if Vd is 3.3V.  If this effects you, select the
+CONFIG_SND_SOC_CS4270_VD33_ERRATA Kconfig option, and the driver will
+never select any sample rates that require divide-by-1.5.
+
+
+
+.. _`cs4270_set_dai_sysclk`:
+
+cs4270_set_dai_sysclk
+=====================
+
+.. c:function:: int cs4270_set_dai_sysclk (struct snd_soc_dai *codec_dai, int clk_id, unsigned int freq, int dir)
+
+    determine the CS4270 samples rates.
+
+    :param struct snd_soc_dai \*codec_dai:
+        the codec DAI
+
+    :param int clk_id:
+        the clock ID (ignored)
+
+    :param unsigned int freq:
+        the MCLK input frequency
+
+    :param int dir:
+        the clock direction (ignored)
+
+
+
+.. _`cs4270_set_dai_sysclk.description`:
+
+Description
+-----------
+
+This function is used to tell the codec driver what the input MCLK
+frequency is.
+
+The value of MCLK is used to determine which sample rates are supported
+by the CS4270.  The ratio of MCLK / Fs must be equal to one of nine
+supported values - 64, 96, 128, 192, 256, 384, 512, 768, and 1024.
+
+This function calculates the nine ratios and determines which ones match
+a standard sample rate.  If there's a match, then it is added to the list
+of supported sample rates.
+
+This function must be called by the machine driver's 'startup' function,
+otherwise the list of supported sample rates will not be available in
+time for ALSA.
+
+For setups with variable MCLKs, pass 0 as 'freq' argument. This will cause
+theoretically possible sample rates to be enabled. Call it again with a
+proper value set one the external clock is set (most probably you would do
+that from a machine's driver 'hw_param' hook.
+
+
+
+.. _`cs4270_set_dai_fmt`:
+
+cs4270_set_dai_fmt
+==================
+
+.. c:function:: int cs4270_set_dai_fmt (struct snd_soc_dai *codec_dai, unsigned int format)
+
+    configure the codec for the selected audio format
+
+    :param struct snd_soc_dai \*codec_dai:
+        the codec DAI
+
+    :param unsigned int format:
+        a SND_SOC_DAIFMT_x value indicating the data format
+
+
+
+.. _`cs4270_set_dai_fmt.description`:
+
+Description
+-----------
+
+This function takes a bitmask of SND_SOC_DAIFMT_x bits and programs the
+codec accordingly.
+
+Currently, this function only supports SND_SOC_DAIFMT_I2S and
+SND_SOC_DAIFMT_LEFT_J.  The CS4270 codec also supports right-justified
+data for playback only, but ASoC currently does not support different
+formats for playback vs. record.
+
+
+
+.. _`cs4270_hw_params`:
+
+cs4270_hw_params
+================
+
+.. c:function:: int cs4270_hw_params (struct snd_pcm_substream *substream, struct snd_pcm_hw_params *params, struct snd_soc_dai *dai)
+
+    program the CS4270 with the given hardware parameters.
+
+    :param struct snd_pcm_substream \*substream:
+        the audio stream
+
+    :param struct snd_pcm_hw_params \*params:
+        the hardware parameters to set
+
+    :param struct snd_soc_dai \*dai:
+        the SOC DAI (ignored)
+
+
+
+.. _`cs4270_hw_params.description`:
+
+Description
+-----------
+
+This function programs the hardware with the values provided.
+Specifically, the sample rate and the data format.
+
+The .ops functions are used to provide board-specific data, like input
+frequencies, to this driver.  This function takes that information,
+combines it with the hardware parameters provided, and programs the
+hardware accordingly.
+
+
+
+.. _`cs4270_dai_mute`:
+
+cs4270_dai_mute
+===============
+
+.. c:function:: int cs4270_dai_mute (struct snd_soc_dai *dai, int mute)
+
+    enable/disable the CS4270 external mute
+
+    :param struct snd_soc_dai \*dai:
+        the SOC DAI
+
+    :param int mute:
+        0 = disable mute, 1 = enable mute
+
+
+
+.. _`cs4270_dai_mute.description`:
+
+Description
+-----------
+
+This function toggles the mute bits in the MUTE register.  The CS4270's
+mute capability is intended for external muting circuitry, so if the
+board does not have the MUTEA or MUTEB pins connected to such circuitry,
+then this function will do nothing.
+
+
+
+.. _`cs4270_soc_put_mute`:
+
+cs4270_soc_put_mute
+===================
+
+.. c:function:: int cs4270_soc_put_mute (struct snd_kcontrol *kcontrol, struct snd_ctl_elem_value *ucontrol)
+
+    put callback for the 'Master Playback switch' alsa control.
+
+    :param struct snd_kcontrol \*kcontrol:
+        mixer control
+
+    :param struct snd_ctl_elem_value \*ucontrol:
+        control element information
+
+
+
+.. _`cs4270_soc_put_mute.description`:
+
+Description
+-----------
+
+This function basically passes the arguments on to the generic
+:c:func:`snd_soc_put_volsw` function and saves the mute information in
+our private data structure. This is because we want to prevent
+:c:func:`cs4270_dai_mute` neglecting the user's decision to manually
+mute the codec's output.
+
+Returns 0 for success.
+
+
+
+.. _`cs4270_probe`:
+
+cs4270_probe
+============
+
+.. c:function:: int cs4270_probe (struct snd_soc_codec *codec)
+
+    ASoC probe function
+
+    :param struct snd_soc_codec \*codec:
+
+        *undescribed*
+
+
+
+.. _`cs4270_probe.description`:
+
+Description
+-----------
+
+This function is called when ASoC has all the pieces it needs to
+instantiate a sound driver.
+
+
+
+.. _`cs4270_remove`:
+
+cs4270_remove
+=============
+
+.. c:function:: int cs4270_remove (struct snd_soc_codec *codec)
+
+    ASoC remove function
+
+    :param struct snd_soc_codec \*codec:
+
+        *undescribed*
+
+
+
+.. _`cs4270_remove.description`:
+
+Description
+-----------
+
+This function is the counterpart to :c:func:`cs4270_probe`.
+
+
+
+.. _`cs4270_i2c_probe`:
+
+cs4270_i2c_probe
+================
+
+.. c:function:: int cs4270_i2c_probe (struct i2c_client *i2c_client, const struct i2c_device_id *id)
+
+    initialize the I2C interface of the CS4270
+
+    :param struct i2c_client \*i2c_client:
+        the I2C client object
+
+    :param const struct i2c_device_id \*id:
+        the I2C device ID (ignored)
+
+
+
+.. _`cs4270_i2c_probe.description`:
+
+Description
+-----------
+
+This function is called whenever the I2C subsystem finds a device that
+matches the device ID given via a prior call to :c:func:`i2c_add_driver`.
+
+
+
+.. _`cs4270_i2c_remove`:
+
+cs4270_i2c_remove
+=================
+
+.. c:function:: int cs4270_i2c_remove (struct i2c_client *i2c_client)
+
+    remove an I2C device
+
+    :param struct i2c_client \*i2c_client:
+        the I2C client object
+
+
+
+.. _`cs4270_i2c_remove.description`:
+
+Description
+-----------
+
+This function is the counterpart to :c:func:`cs4270_i2c_probe`.
+

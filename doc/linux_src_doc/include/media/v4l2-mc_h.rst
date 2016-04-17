@@ -4,16 +4,33 @@
 v4l2-mc.h
 =========
 
+
 .. _`tuner_pad_index`:
 
 enum tuner_pad_index
 ====================
 
-.. c:type:: enum tuner_pad_index
+.. c:type:: tuner_pad_index
 
     tuner pad index for MEDIA_ENT_F_TUNER
 
 
+.. _`tuner_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum tuner_pad_index {
+      TUNER_PAD_RF_INPUT,
+      TUNER_PAD_OUTPUT,
+      TUNER_PAD_AUD_OUT,
+      TUNER_NUM_PADS
+    };
+
+
+.. _`tuner_pad_index.constants`:
 
 Constants
 ---------
@@ -50,11 +67,26 @@ Constants
 enum if_vid_dec_pad_index
 =========================
 
-.. c:type:: enum if_vid_dec_pad_index
+.. c:type:: if_vid_dec_pad_index
 
     video IF-PLL pad index for MEDIA_ENT_F_IF_VID_DECODER
 
 
+.. _`if_vid_dec_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum if_vid_dec_pad_index {
+      IF_VID_DEC_PAD_IF_INPUT,
+      IF_VID_DEC_PAD_OUT,
+      IF_VID_DEC_PAD_NUM_PADS
+    };
+
+
+.. _`if_vid_dec_pad_index.constants`:
 
 Constants
 ---------
@@ -75,11 +107,26 @@ Constants
 enum if_aud_dec_pad_index
 =========================
 
-.. c:type:: enum if_aud_dec_pad_index
+.. c:type:: if_aud_dec_pad_index
 
     audio/sound IF-PLL pad index for MEDIA_ENT_F_IF_AUD_DECODER
 
 
+.. _`if_aud_dec_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum if_aud_dec_pad_index {
+      IF_AUD_DEC_PAD_IF_INPUT,
+      IF_AUD_DEC_PAD_OUT,
+      IF_AUD_DEC_PAD_NUM_PADS
+    };
+
+
+.. _`if_aud_dec_pad_index.constants`:
 
 Constants
 ---------
@@ -102,11 +149,28 @@ Constants
 enum demod_pad_index
 ====================
 
-.. c:type:: enum demod_pad_index
+.. c:type:: demod_pad_index
 
     analog TV pad index for MEDIA_ENT_F_ATV_DECODER
 
 
+.. _`demod_pad_index.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum demod_pad_index {
+      DEMOD_PAD_IF_INPUT,
+      DEMOD_PAD_VID_OUT,
+      DEMOD_PAD_VBI_OUT,
+      DEMOD_PAD_AUDIO_OUT,
+      DEMOD_NUM_PADS
+    };
+
+
+.. _`demod_pad_index.constants`:
 
 Constants
 ---------
@@ -140,19 +204,37 @@ v4l2_mc_create_media_graph
         pointer to the :c:type:`struct media_device <media_device>` struct.
 
 
+
 .. _`v4l2_mc_create_media_graph.description`:
 
 Description
 -----------
 
 Add links between the entities commonly found on PC customer's hardware at
-the V4L2 side: camera sensors, audio and video PLL-IF decoders, tuners,
+
+
+
+.. _`v4l2_mc_create_media_graph.the-v4l2-side`:
+
+the V4L2 side
+-------------
+
+camera sensors, audio and video PLL-IF decoders, tuners,
 analog TV decoder and I/O entities (video, VBI and Software Defined Radio).
-NOTE: webcams are modelled on a very simple way: the sensor is
+
+
+
+.. _`v4l2_mc_create_media_graph.note`:
+
+NOTE
+----
+
+webcams are modelled on a very simple way: the sensor is
 connected directly to the I/O entity. All dirty details, like
 scaler and crop HW are hidden. While such mapping is enough for v4l2
 interface centric PC-consumer's hardware, V4L2 subdev centric camera
 hardware should not use this routine, as it will not build the right graph.
+
 
 
 .. _`v4l_enable_media_source`:
@@ -168,6 +250,7 @@ v4l_enable_media_source
         pointer to struct video_device
 
 
+
 .. _`v4l_enable_media_source.description`:
 
 Description
@@ -181,7 +264,15 @@ entity associated with the video device. This interface
 should be called from v4l2-core and dvb-core interfaces
 that change the source configuration.
 
-Return: returns zero on success or a negative error code.
+
+
+.. _`v4l_enable_media_source.return`:
+
+Return
+------
+
+returns zero on success or a negative error code.
+
 
 
 .. _`v4l_disable_media_source`:
@@ -197,6 +288,7 @@ v4l_disable_media_source
         pointer to struct video_device
 
 
+
 .. _`v4l_disable_media_source.description`:
 
 Description
@@ -207,7 +299,15 @@ the media source. The disable_source handler stops the
 active media pipeline between the media source and the
 media entity associated with the video device.
 
-Return: returns zero on success or a negative error code.
+
+
+.. _`v4l_disable_media_source.return`:
+
+Return
+------
+
+returns zero on success or a negative error code.
+
 
 
 .. _`v4l2_pipeline_pm_use`:
@@ -224,6 +324,7 @@ v4l2_pipeline_pm_use
 
     :param int use:
         Use (1) or stop using (0) the entity
+
 
 
 .. _`v4l2_pipeline_pm_use.description`:
@@ -244,6 +345,7 @@ off is assumed to never fail. No failure can occur when the use parameter is
 set to 0.
 
 
+
 .. _`v4l2_pipeline_link_notify`:
 
 v4l2_pipeline_link_notify
@@ -260,7 +362,8 @@ v4l2_pipeline_link_notify
         New link flags that will be applied
 
     :param unsigned int notification:
-        The link's state change notification type (MEDIA_DEV_NOTIFY_\*)
+        The link's state change notification type (MEDIA_DEV_NOTIFY\_\*)
+
 
 
 .. _`v4l2_pipeline_link_notify.description`:

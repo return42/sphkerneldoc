@@ -4,6 +4,7 @@
 rawmidi.c
 =========
 
+
 .. _`snd_rawmidi_receive`:
 
 snd_rawmidi_receive
@@ -23,6 +24,7 @@ snd_rawmidi_receive
         the data size to read
 
 
+
 .. _`snd_rawmidi_receive.description`:
 
 Description
@@ -30,7 +32,15 @@ Description
 
 Reads the data from the internal buffer.
 
-Return: The size of read data, or a negative error code on failure.
+
+
+.. _`snd_rawmidi_receive.return`:
+
+Return
+------
+
+The size of read data, or a negative error code on failure.
+
 
 
 .. _`snd_rawmidi_transmit_empty`:
@@ -46,12 +56,14 @@ snd_rawmidi_transmit_empty
         the rawmidi substream
 
 
-.. _`snd_rawmidi_transmit_empty.description`:
 
-Description
------------
+.. _`snd_rawmidi_transmit_empty.return`:
 
-Return: 1 if the internal output buffer is empty, 0 if not.
+Return
+------
+
+1 if the internal output buffer is empty, 0 if not.
+
 
 
 .. _`__snd_rawmidi_transmit_peek`:
@@ -73,12 +85,14 @@ __snd_rawmidi_transmit_peek
         data size to transfer
 
 
+
 .. _`__snd_rawmidi_transmit_peek.description`:
 
 Description
 -----------
 
 This is a variant of :c:func:`snd_rawmidi_transmit_peek` without spinlock.
+
 
 
 .. _`snd_rawmidi_transmit_peek`:
@@ -100,6 +114,7 @@ snd_rawmidi_transmit_peek
         data size to transfer
 
 
+
 .. _`snd_rawmidi_transmit_peek.description`:
 
 Description
@@ -111,7 +126,15 @@ Call this in the interrupt handler when the midi output is ready,
 and call :c:func:`snd_rawmidi_transmit_ack` after the transmission is
 finished.
 
-Return: The size of copied data, or a negative error code on failure.
+
+
+.. _`snd_rawmidi_transmit_peek.return`:
+
+Return
+------
+
+The size of copied data, or a negative error code on failure.
+
 
 
 .. _`__snd_rawmidi_transmit_ack`:
@@ -130,12 +153,14 @@ __snd_rawmidi_transmit_ack
         the transferred count
 
 
+
 .. _`__snd_rawmidi_transmit_ack.description`:
 
 Description
 -----------
 
 This is a variant of :c:func:`__snd_rawmidi_transmit_ack` without spinlock.
+
 
 
 .. _`snd_rawmidi_transmit_ack`:
@@ -154,6 +179,7 @@ snd_rawmidi_transmit_ack
         the transferred count
 
 
+
 .. _`snd_rawmidi_transmit_ack.description`:
 
 Description
@@ -163,7 +189,15 @@ Advances the hardware pointer for the internal output buffer with
 the given size and updates the condition.
 Call after the transmission is finished.
 
-Return: The advanced size if successful, or a negative error code on failure.
+
+
+.. _`snd_rawmidi_transmit_ack.return`:
+
+Return
+------
+
+The advanced size if successful, or a negative error code on failure.
+
 
 
 .. _`snd_rawmidi_transmit`:
@@ -185,6 +219,7 @@ snd_rawmidi_transmit
         the data size to transfer
 
 
+
 .. _`snd_rawmidi_transmit.description`:
 
 Description
@@ -192,7 +227,15 @@ Description
 
 Copies data from the buffer to the device and advances the pointer.
 
-Return: The copied size if successful, or a negative error code on failure.
+
+
+.. _`snd_rawmidi_transmit.return`:
+
+Return
+------
+
+The copied size if successful, or a negative error code on failure.
+
 
 
 .. _`snd_rawmidi_new`:
@@ -223,6 +266,7 @@ snd_rawmidi_new
         the pointer to store the new rawmidi instance
 
 
+
 .. _`snd_rawmidi_new.description`:
 
 Description
@@ -231,7 +275,15 @@ Description
 Creates a new rawmidi instance.
 Use :c:func:`snd_rawmidi_set_ops` to set the operators to the new instance.
 
-Return: Zero if successful, or a negative error code on failure.
+
+
+.. _`snd_rawmidi_new.return`:
+
+Return
+------
+
+Zero if successful, or a negative error code on failure.
+
 
 
 .. _`snd_rawmidi_set_ops`:
@@ -251,6 +303,7 @@ snd_rawmidi_set_ops
 
     :param struct snd_rawmidi_ops \*ops:
         the operator table
+
 
 
 .. _`snd_rawmidi_set_ops.description`:

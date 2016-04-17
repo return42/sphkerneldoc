@@ -4,16 +4,18 @@
 input-polldev.h
 ===============
 
+
 .. _`input_polled_dev`:
 
 struct input_polled_dev
 =======================
 
-.. c:type:: struct input_polled_dev
+.. c:type:: input_polled_dev
 
     simple polled input device
 
 
+.. _`input_polled_dev.definition`:
 
 Definition
 ----------
@@ -32,6 +34,7 @@ Definition
   };
 
 
+.. _`input_polled_dev.members`:
 
 Members
 -------
@@ -52,26 +55,25 @@ Members
     input events (mandatory).
 
 :``poll_interval``:
-    specifies how often the :c:func:`poll` method should be called.::
-
-            Defaults to 500 msec unless overridden when registering the device.
+    specifies how often the :c:func:`poll` method should be called.
+    Defaults to 500 msec unless overridden when registering the device.
 
 :``poll_interval_max``:
-    specifies upper bound for the poll interval.::
-
-            Defaults to the initial value of ``poll_interval``\ .
+    specifies upper bound for the poll interval.
+    Defaults to the initial value of ``poll_interval``\ .
 
 :``poll_interval_min``:
-    specifies lower bound for the poll interval.::
-
-            Defaults to 0.
+    specifies lower bound for the poll interval.
+    Defaults to 0.
 
 :``input``:
-    input device structure associated with the polled device.::
+    input device structure associated with the polled device.
+    Must be properly initialized by the driver (id, name, phys, bits).
 
-            Must be properly initialized by the driver (id, name, phys, bits).
 
 
+
+.. _`input_polled_dev.description`:
 
 Description
 -----------

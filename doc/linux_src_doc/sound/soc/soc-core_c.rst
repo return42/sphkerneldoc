@@ -4,6 +4,7 @@
 soc-core.c
 ==========
 
+
 .. _`snd_soc_add_dai_link`:
 
 snd_soc_add_dai_link
@@ -20,6 +21,7 @@ snd_soc_add_dai_link
         The new DAI link to add
 
 
+
 .. _`snd_soc_add_dai_link.description`:
 
 Description
@@ -27,9 +29,17 @@ Description
 
 This function adds a DAI link to the ASoC card's link list.
 
-Note: Topology can use this API to add DAI links when probing the
+
+
+.. _`snd_soc_add_dai_link.note`:
+
+Note
+----
+
+Topology can use this API to add DAI links when probing the
 topology component. And machine drivers can still define static
 DAI links in dai_link array.
+
 
 
 .. _`snd_soc_remove_dai_link`:
@@ -48,6 +58,7 @@ snd_soc_remove_dai_link
         The DAI link to remove
 
 
+
 .. _`snd_soc_remove_dai_link.description`:
 
 Description
@@ -57,6 +68,7 @@ This function removes a DAI link from the ASoC card's link list.
 
 For DAI links previously added by topology, topology should
 remove them by using the dobj embedded in the link.
+
 
 
 .. _`snd_soc_runtime_set_dai_fmt`:
@@ -75,6 +87,7 @@ snd_soc_runtime_set_dai_fmt
         The new DAI link format
 
 
+
 .. _`snd_soc_runtime_set_dai_fmt.description`:
 
 Description
@@ -83,10 +96,18 @@ Description
 This function updates the DAI link format for all DAIs connected to the DAI
 link for the specified runtime.
 
-Note: For setups with a static format set the dai_fmt field in the
+
+
+.. _`snd_soc_runtime_set_dai_fmt.note`:
+
+Note
+----
+
+For setups with a static format set the dai_fmt field in the
 corresponding snd_dai_link struct instead of using this function.
 
 Returns 0 on success, otherwise a negative error code.
+
 
 
 .. _`snd_soc_cnew`:
@@ -111,6 +132,7 @@ snd_soc_cnew
         control name prefix
 
 
+
 .. _`snd_soc_cnew.description`:
 
 Description
@@ -119,6 +141,7 @@ Description
 Create a new mixer control from a template control.
 
 Returns 0 for success, else error.
+
 
 
 .. _`snd_soc_add_component_controls`:
@@ -140,12 +163,14 @@ snd_soc_add_component_controls
         Number of elements in the array
 
 
-.. _`snd_soc_add_component_controls.description`:
 
-Description
------------
+.. _`snd_soc_add_component_controls.return`:
 
-Return: 0 for success, else error.
+Return
+------
+
+0 for success, else error.
+
 
 
 .. _`snd_soc_add_codec_controls`:
@@ -167,12 +192,14 @@ snd_soc_add_codec_controls
         number of elements in the array
 
 
+
 .. _`snd_soc_add_codec_controls.description`:
 
 Description
 -----------
 
 Return 0 for success, else error.
+
 
 
 .. _`snd_soc_add_platform_controls`:
@@ -194,12 +221,14 @@ snd_soc_add_platform_controls
         number of elements in the array
 
 
+
 .. _`snd_soc_add_platform_controls.description`:
 
 Description
 -----------
 
 Return 0 for success, else error.
+
 
 
 .. _`snd_soc_add_card_controls`:
@@ -221,12 +250,14 @@ snd_soc_add_card_controls
         number of elements in the array
 
 
+
 .. _`snd_soc_add_card_controls.description`:
 
 Description
 -----------
 
 Return 0 for success, else error.
+
 
 
 .. _`snd_soc_add_dai_controls`:
@@ -248,12 +279,14 @@ snd_soc_add_dai_controls
         number of elements in the array
 
 
+
 .. _`snd_soc_add_dai_controls.description`:
 
 Description
 -----------
 
 Return 0 for success, else error.
+
 
 
 .. _`snd_soc_dai_set_sysclk`:
@@ -278,12 +311,14 @@ snd_soc_dai_set_sysclk
         new clock direction - input/output.
 
 
+
 .. _`snd_soc_dai_set_sysclk.description`:
 
 Description
 -----------
 
 Configures the DAI master (MCLK) or system (SYSCLK) clocking.
+
 
 
 .. _`snd_soc_codec_set_sysclk`:
@@ -311,12 +346,14 @@ snd_soc_codec_set_sysclk
         new clock direction - input/output.
 
 
+
 .. _`snd_soc_codec_set_sysclk.description`:
 
 Description
 -----------
 
 Configures the CODEC master (MCLK) or system (SYSCLK) clocking.
+
 
 
 .. _`snd_soc_dai_set_clkdiv`:
@@ -338,6 +375,7 @@ snd_soc_dai_set_clkdiv
         new clock divisor.
 
 
+
 .. _`snd_soc_dai_set_clkdiv.description`:
 
 Description
@@ -346,6 +384,7 @@ Description
 Configures the clock dividers. This is used to derive the best DAI bit and
 frame clocks from the system or master clock. It's best to set the DAI bit
 and frame clocks as low as possible to save system power.
+
 
 
 .. _`snd_soc_dai_set_pll`:
@@ -373,12 +412,14 @@ snd_soc_dai_set_pll
         requested PLL output clock frequency in Hz
 
 
+
 .. _`snd_soc_dai_set_pll.description`:
 
 Description
 -----------
 
 Configures and enables PLL to generate output clock based on input clock.
+
 
 
 .. _`snd_soc_dai_set_bclk_ratio`:
@@ -397,12 +438,14 @@ snd_soc_dai_set_bclk_ratio
         Ratio of BCLK to Sample rate.
 
 
+
 .. _`snd_soc_dai_set_bclk_ratio.description`:
 
 Description
 -----------
 
 Configures the DAI for a preset BCLK to sample rate ratio.
+
 
 
 .. _`snd_soc_dai_set_fmt`:
@@ -421,12 +464,14 @@ snd_soc_dai_set_fmt
         SND_SOC_DAIFMT_ format value.
 
 
+
 .. _`snd_soc_dai_set_fmt.description`:
 
 Description
 -----------
 
 Configures the DAI hardware format and clocking.
+
 
 
 .. _`snd_soc_xlate_tdm_slot_mask`:
@@ -448,12 +493,14 @@ snd_soc_xlate_tdm_slot_mask
         bitmask representing active RX slots.
 
 
+
 .. _`snd_soc_xlate_tdm_slot_mask.description`:
 
 Description
 -----------
 
 Generates the TDM tx and rx slot default masks for DAI.
+
 
 
 .. _`snd_soc_dai_set_tdm_slot`:
@@ -481,6 +528,7 @@ snd_soc_dai_set_tdm_slot
         Width in bits for each slot.
 
 
+
 .. _`snd_soc_dai_set_tdm_slot.description`:
 
 Description
@@ -500,6 +548,7 @@ TDM mode can be disabled by passing 0 for ``slots``\ . In this case ``tx_mask``\
 ``rx_mask`` and ``slot_width`` will be ignored.
 
 Returns 0 on success, a negative error code otherwise.
+
 
 
 .. _`snd_soc_dai_set_channel_map`:
@@ -529,12 +578,14 @@ snd_soc_dai_set_channel_map
         0~num-1 uses
 
 
+
 .. _`snd_soc_dai_set_channel_map.description`:
 
 Description
 -----------
 
 configure the relationship between channel number and TDM slot number.
+
 
 
 .. _`snd_soc_dai_set_tristate`:
@@ -553,12 +604,14 @@ snd_soc_dai_set_tristate
         tristate enable
 
 
+
 .. _`snd_soc_dai_set_tristate.description`:
 
 Description
 -----------
 
 Tristates the DAI so that others can use it.
+
 
 
 .. _`snd_soc_dai_digital_mute`:
@@ -580,12 +633,14 @@ snd_soc_dai_digital_mute
         stream to mute
 
 
+
 .. _`snd_soc_dai_digital_mute.description`:
 
 Description
 -----------
 
 Mutes the DAI DAC.
+
 
 
 .. _`snd_soc_register_card`:
@@ -601,6 +656,7 @@ snd_soc_register_card
         Card to register
 
 
+
 .. _`snd_soc_unregister_card`:
 
 snd_soc_unregister_card
@@ -614,6 +670,7 @@ snd_soc_unregister_card
         Card to unregister
 
 
+
 .. _`snd_soc_unregister_dais`:
 
 snd_soc_unregister_dais
@@ -625,6 +682,7 @@ snd_soc_unregister_dais
 
     :param struct snd_soc_component \*component:
         The component for which the DAIs should be unregistered
+
 
 
 .. _`snd_soc_register_dais`:
@@ -650,6 +708,7 @@ snd_soc_register_dais
         parent's name.
 
 
+
 .. _`snd_soc_register_dai`:
 
 snd_soc_register_dai
@@ -666,6 +725,7 @@ snd_soc_register_dai
         DAI driver to use for the DAI
 
 
+
 .. _`snd_soc_register_dai.description`:
 
 Description
@@ -674,6 +734,7 @@ Description
 Topology can use this API to register DAIs when probing a component.
 These DAIs's widgets will be freed in the card cleanup and the DAIs
 will be freed in the component cleanup.
+
 
 
 .. _`snd_soc_component_init_regmap`:
@@ -692,6 +753,7 @@ snd_soc_component_init_regmap
         The regmap instance that should be used by the component
 
 
+
 .. _`snd_soc_component_init_regmap.description`:
 
 Description
@@ -701,6 +763,7 @@ This function allows deferred assignment of the regmap instance that is
 associated with the component. Only use this if the regmap instance is not
 yet ready when the component is registered. The function must also be called
 before the first IO attempt of the component.
+
 
 
 .. _`snd_soc_component_exit_regmap`:
@@ -716,6 +779,7 @@ snd_soc_component_exit_regmap
         The component for which to de-initialize the regmap instance
 
 
+
 .. _`snd_soc_component_exit_regmap.description`:
 
 Description
@@ -726,6 +790,7 @@ removes the regmap instance from the component.
 
 This function should only be used if :c:func:`snd_soc_component_init_regmap` was used
 to initialize the regmap instance.
+
 
 
 .. _`snd_soc_unregister_component`:
@@ -739,6 +804,7 @@ snd_soc_unregister_component
 
     :param struct device \*dev:
         The device to unregister
+
 
 
 .. _`snd_soc_add_platform`:
@@ -760,6 +826,7 @@ snd_soc_add_platform
         The driver for the platform
 
 
+
 .. _`snd_soc_register_platform`:
 
 snd_soc_register_platform
@@ -776,6 +843,7 @@ snd_soc_register_platform
         The driver for the platform
 
 
+
 .. _`snd_soc_remove_platform`:
 
 snd_soc_remove_platform
@@ -789,6 +857,7 @@ snd_soc_remove_platform
         the platform to remove
 
 
+
 .. _`snd_soc_unregister_platform`:
 
 snd_soc_unregister_platform
@@ -800,6 +869,7 @@ snd_soc_unregister_platform
 
     :param struct device \*dev:
         platform to unregister
+
 
 
 .. _`snd_soc_register_codec`:
@@ -822,6 +892,7 @@ snd_soc_register_codec
 
     :param int num_dai:
         Number of DAIs
+
 
 
 .. _`snd_soc_unregister_codec`:

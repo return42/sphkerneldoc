@@ -8,5 +8,3 @@ parport
    :maxdepth: 1
 
    daisy_c
-   ieee1284_c
-   share_c

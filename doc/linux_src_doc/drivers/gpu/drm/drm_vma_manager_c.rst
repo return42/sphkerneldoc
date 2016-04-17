@@ -4,6 +4,7 @@
 drm_vma_manager.c
 =================
 
+
 .. _`vma-offset-manager`:
 
 vma offset manager
@@ -40,6 +41,7 @@ access again, use :c:func:`drm_vma_node_revoke`. However, the caller is responsi
 for destroying already existing mappings, if required.
 
 
+
 .. _`drm_vma_offset_manager_init`:
 
 drm_vma_offset_manager_init
@@ -59,6 +61,7 @@ drm_vma_offset_manager_init
         Size of available address space range (page-based)
 
 
+
 .. _`drm_vma_offset_manager_init.description`:
 
 Description
@@ -74,6 +77,7 @@ for the caller. While calling into the vma-manager, a given node must
 always be guaranteed to be referenced.
 
 
+
 .. _`drm_vma_offset_manager_destroy`:
 
 drm_vma_offset_manager_destroy
@@ -87,6 +91,7 @@ drm_vma_offset_manager_destroy
         Manager object
 
 
+
 .. _`drm_vma_offset_manager_destroy.description`:
 
 Description
@@ -98,6 +103,7 @@ before destroying the manager. Otherwise, drm_mm will refuse to free the
 requested resources.
 
 The manager must not be accessed after this function is called.
+
 
 
 .. _`drm_vma_offset_lookup_locked`:
@@ -119,6 +125,7 @@ drm_vma_offset_lookup_locked
         Size of object (page-based)
 
 
+
 .. _`drm_vma_offset_lookup_locked.description`:
 
 Description
@@ -133,7 +140,14 @@ Note that before lookup the vma offset manager lookup lock must be acquired
 with :c:func:`drm_vma_offset_lock_lookup`. See there for an example. This can then be
 used to implement weakly referenced lookups using :c:func:`kref_get_unless_zero`.
 
-Example::
+
+
+.. _`drm_vma_offset_lookup_locked.example`:
+
+Example
+-------
+
+.. code-block:: c
 
     drm_vma_offset_lock_lookup(mgr);
     node = drm_vma_offset_lookup_locked(mgr);
@@ -141,10 +155,17 @@ Example::
         kref_get_unless_zero(container_of(node, sth, entr));
     drm_vma_offset_unlock_lookup(mgr);
 
-RETURNS:
+
+
+.. _`drm_vma_offset_lookup_locked.returns`:
+
+RETURNS
+-------
+
 Returns NULL if no suitable node can be found. Otherwise, the best match
 is returned. It's the caller's responsibility to make sure the node doesn't
 get destroyed before the caller can access it.
+
 
 
 .. _`drm_vma_offset_add`:
@@ -166,6 +187,7 @@ drm_vma_offset_add
         Allocation size visible to user-space (in number of pages)
 
 
+
 .. _`drm_vma_offset_add.description`:
 
 Description
@@ -185,8 +207,15 @@ case.
 that you want to map. It only limits the size that user-space can map into
 their address space.
 
-RETURNS:
+
+
+.. _`drm_vma_offset_add.returns`:
+
+RETURNS
+-------
+
 0 on success, negative error code on failure.
+
 
 
 .. _`drm_vma_offset_remove`:
@@ -205,6 +234,7 @@ drm_vma_offset_remove
         Node to be removed
 
 
+
 .. _`drm_vma_offset_remove.description`:
 
 Description
@@ -215,6 +245,7 @@ does nothing. After this call returns, the offset and size will be 0 until a
 new offset is allocated via :c:func:`drm_vma_offset_add` again. Helper functions like
 :c:func:`drm_vma_node_start` and :c:func:`drm_vma_node_offset_addr` will return 0 if no
 offset is allocated.
+
 
 
 .. _`drm_vma_node_allow`:
@@ -231,6 +262,7 @@ drm_vma_node_allow
 
     :param struct file \*filp:
         Open file to add
+
 
 
 .. _`drm_vma_node_allow.description`:
@@ -250,8 +282,15 @@ before destroying the node. Otherwise, you will leak memory.
 
 This is locked against concurrent access internally.
 
-RETURNS:
+
+
+.. _`drm_vma_node_allow.returns`:
+
+RETURNS
+-------
+
 0 on success, negative error code on internal failure (out-of-mem)
+
 
 
 .. _`drm_vma_node_revoke`:
@@ -270,6 +309,7 @@ drm_vma_node_revoke
         Open file to remove
 
 
+
 .. _`drm_vma_node_revoke.description`:
 
 Description
@@ -282,6 +322,7 @@ this once for every :c:func:`drm_vma_node_allow` on ``filp``\ .
 This is locked against concurrent access internally.
 
 If ``filp`` is not on the list, nothing is done.
+
 
 
 .. _`drm_vma_node_is_allowed`:
@@ -300,6 +341,7 @@ drm_vma_node_is_allowed
         Open-file to check for
 
 
+
 .. _`drm_vma_node_is_allowed.description`:
 
 Description
@@ -310,6 +352,12 @@ open-files (see :c:func:`drm_vma_node_allow`).
 
 This is locked against concurrent access internally.
 
-RETURNS:
+
+
+.. _`drm_vma_node_is_allowed.returns`:
+
+RETURNS
+-------
+
 true iff ``filp`` is on the list
 

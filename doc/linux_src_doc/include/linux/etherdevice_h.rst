@@ -4,6 +4,7 @@
 etherdevice.h
 =============
 
+
 .. _`is_link_local_ether_addr`:
 
 is_link_local_ether_addr
@@ -17,6 +18,7 @@ is_link_local_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_link_local_ether_addr.description`:
 
 Description
@@ -25,7 +27,15 @@ Description
 Return true if address is link local reserved addr (01:80:c2:00:00:0X) per
 IEEE 802.1Q 8.6.3 Frame filtering.
 
-Please note: addr must be aligned to u16.
+
+
+.. _`is_link_local_ether_addr.please-note`:
+
+Please note
+-----------
+
+addr must be aligned to u16.
+
 
 
 .. _`is_zero_ether_addr`:
@@ -41,6 +51,7 @@ is_zero_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_zero_ether_addr.description`:
 
 Description
@@ -48,7 +59,15 @@ Description
 
 Return true if the address is all zeroes.
 
-Please note: addr must be aligned to u16.
+
+
+.. _`is_zero_ether_addr.please-note`:
+
+Please note
+-----------
+
+addr must be aligned to u16.
+
 
 
 .. _`is_multicast_ether_addr`:
@@ -64,6 +83,7 @@ is_multicast_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_multicast_ether_addr.description`:
 
 Description
@@ -71,6 +91,7 @@ Description
 
 Return true if the address is a multicast address.
 By definition the broadcast address is also a multicast address.
+
 
 
 .. _`is_local_ether_addr`:
@@ -86,12 +107,14 @@ is_local_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_local_ether_addr.description`:
 
 Description
 -----------
 
 Return true if the address is a local address.
+
 
 
 .. _`is_broadcast_ether_addr`:
@@ -107,6 +130,7 @@ is_broadcast_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_broadcast_ether_addr.description`:
 
 Description
@@ -114,7 +138,15 @@ Description
 
 Return true if the address is the broadcast address.
 
-Please note: addr must be aligned to u16.
+
+
+.. _`is_broadcast_ether_addr.please-note`:
+
+Please note
+-----------
+
+addr must be aligned to u16.
+
 
 
 .. _`is_unicast_ether_addr`:
@@ -130,12 +162,14 @@ is_unicast_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_unicast_ether_addr.description`:
 
 Description
 -----------
 
 Return true if the address is a unicast address.
+
 
 
 .. _`is_valid_ether_addr`:
@@ -151,6 +185,7 @@ is_valid_ether_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_valid_ether_addr.description`:
 
 Description
@@ -161,7 +196,15 @@ a multicast address, and is not FF:FF:FF:FF:FF:FF.
 
 Return true if the address is valid.
 
-Please note: addr must be aligned to u16.
+
+
+.. _`is_valid_ether_addr.please-note`:
+
+Please note
+-----------
+
+addr must be aligned to u16.
+
 
 
 .. _`eth_proto_is_802_3`:
@@ -177,6 +220,7 @@ eth_proto_is_802_3
         Ethertype/length value to be tested
 
 
+
 .. _`eth_proto_is_802_3.description`:
 
 Description
@@ -185,6 +229,7 @@ Description
 Check that the value from the Ethertype/length field is a valid Ethertype.
 
 Return true if the valid is an 802.3 supported Ethertype.
+
 
 
 .. _`eth_random_addr`:
@@ -200,6 +245,7 @@ eth_random_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`eth_random_addr.description`:
 
 Description
@@ -207,6 +253,7 @@ Description
 
 Generate a random Ethernet address (MAC) that is not multicast
 and has the local assigned bit set.
+
 
 
 .. _`eth_broadcast_addr`:
@@ -222,12 +269,14 @@ eth_broadcast_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`eth_broadcast_addr.description`:
 
 Description
 -----------
 
 Assign the broadcast address to the given address array.
+
 
 
 .. _`eth_zero_addr`:
@@ -243,12 +292,14 @@ eth_zero_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`eth_zero_addr.description`:
 
 Description
 -----------
 
 Assign the zero address to the given address array.
+
 
 
 .. _`eth_hw_addr_random`:
@@ -264,6 +315,7 @@ eth_hw_addr_random
         pointer to net_device structure
 
 
+
 .. _`eth_hw_addr_random.description`:
 
 Description
@@ -272,6 +324,7 @@ Description
 Generate a random Ethernet address (MAC) to be used by a net device
 and set addr_assign_type so the state can be read by sysfs and be
 used by userspace.
+
 
 
 .. _`ether_addr_copy`:
@@ -290,12 +343,14 @@ ether_addr_copy
         Pointer to a six-byte array Ethernet address source
 
 
-.. _`ether_addr_copy.description`:
 
-Description
+.. _`ether_addr_copy.please-note`:
+
+Please note
 -----------
 
-Please note: dst & src must both be aligned to u16.
+dst & src must both be aligned to u16.
+
 
 
 .. _`eth_hw_addr_inherit`:
@@ -314,6 +369,7 @@ eth_hw_addr_inherit
         pointer to net_device to copy dev_addr from
 
 
+
 .. _`eth_hw_addr_inherit.description`:
 
 Description
@@ -321,6 +377,7 @@ Description
 
 Copy the Ethernet address from one net_device to another along with
 the address attributes (addr_assign_type).
+
 
 
 .. _`ether_addr_equal`:
@@ -339,6 +396,7 @@ ether_addr_equal
         Pointer other six-byte array containing the Ethernet address
 
 
+
 .. _`ether_addr_equal.description`:
 
 Description
@@ -346,7 +404,15 @@ Description
 
 Compare two Ethernet addresses, returns true if equal
 
-Please note: addr1 & addr2 must both be aligned to u16.
+
+
+.. _`ether_addr_equal.please-note`:
+
+Please note
+-----------
+
+addr1 & addr2 must both be aligned to u16.
+
 
 
 .. _`ether_addr_equal_64bits`:
@@ -365,6 +431,7 @@ ether_addr_equal_64bits
         Pointer to an other array of 8 bytes
 
 
+
 .. _`ether_addr_equal_64bits.description`:
 
 Description
@@ -377,6 +444,7 @@ word memory accesses on CPU allowing cheap unaligned memory reads.
 arrays = { byte1, byte2, byte3, byte4, byte5, byte6, pad1, pad2 }
 
 Please note that alignment of addr1 & addr2 are only guaranteed to be 16 bits.
+
 
 
 .. _`ether_addr_equal_unaligned`:
@@ -395,6 +463,7 @@ ether_addr_equal_unaligned
         Pointer other six-byte array containing the Ethernet address
 
 
+
 .. _`ether_addr_equal_unaligned.description`:
 
 Description
@@ -402,7 +471,15 @@ Description
 
 Compare two Ethernet addresses, returns true if equal
 
-Please note: Use only when any Ethernet address may not be u16 aligned.
+
+
+.. _`ether_addr_equal_unaligned.please-note`:
+
+Please note
+-----------
+
+Use only when any Ethernet address may not be u16 aligned.
+
 
 
 .. _`is_etherdev_addr`:
@@ -421,6 +498,7 @@ is_etherdev_addr
         Pointer to a six-byte array containing the Ethernet address
 
 
+
 .. _`is_etherdev_addr.description`:
 
 Description
@@ -431,6 +509,7 @@ address if one of the device addresses.
 
 Note that this function calls :c:func:`ether_addr_equal_64bits` so take care of
 the right padding.
+
 
 
 .. _`compare_ether_header`:
@@ -449,6 +528,7 @@ compare_ether_header
         Pointer to Ethernet header
 
 
+
 .. _`compare_ether_header.description`:
 
 Description
@@ -459,6 +539,7 @@ This assumes that the network header (i.e., IP header) is 4-byte
 aligned OR the platform can handle unaligned access.  This is the
 case for all packets coming into netif_receive_skb or similar
 entry points.
+
 
 
 .. _`eth_skb_pad`:
@@ -472,6 +553,7 @@ eth_skb_pad
 
     :param struct sk_buff \*skb:
         Buffer to pad
+
 
 
 .. _`eth_skb_pad.description`:

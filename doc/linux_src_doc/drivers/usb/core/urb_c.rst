@@ -4,6 +4,7 @@
 urb.c
 =====
 
+
 .. _`usb_init_urb`:
 
 usb_init_urb
@@ -15,6 +16,7 @@ usb_init_urb
 
     :param struct urb \*urb:
         pointer to the urb to initialize
+
 
 
 .. _`usb_init_urb.description`:
@@ -31,6 +33,7 @@ careful when freeing the memory for your urb that it is no longer in
 use by the USB core.
 
 Only use this function if you _really_ understand what you are doing.
+
 
 
 .. _`usb_alloc_urb`:
@@ -50,6 +53,7 @@ usb_alloc_urb
         valid options for this.
 
 
+
 .. _`usb_alloc_urb.description`:
 
 Description
@@ -63,7 +67,15 @@ endpoints, pass '0' as the number of iso packets.
 
 The driver must call :c:func:`usb_free_urb` when it is finished with the urb.
 
-Return: A pointer to the new urb, or ``NULL`` if no memory is available.
+
+
+.. _`usb_alloc_urb.return`:
+
+Return
+------
+
+A pointer to the new urb, or ``NULL`` if no memory is available.
+
 
 
 .. _`usb_free_urb`:
@@ -79,6 +91,7 @@ usb_free_urb
         pointer to the urb to free, may be NULL
 
 
+
 .. _`usb_free_urb.description`:
 
 Description
@@ -87,8 +100,16 @@ Description
 Must be called when a user of a urb is finished with it.  When the last user
 of the urb calls this function, the memory of the urb is freed.
 
-Note: The transfer buffer associated with the urb is not freed unless the
+
+
+.. _`usb_free_urb.note`:
+
+Note
+----
+
+The transfer buffer associated with the urb is not freed unless the
 URB_FREE_BUFFER transfer flag is set.
+
 
 
 .. _`usb_get_urb`:
@@ -104,6 +125,7 @@ usb_get_urb
         pointer to the urb to modify, may be NULL
 
 
+
 .. _`usb_get_urb.description`:
 
 Description
@@ -113,7 +135,15 @@ This must be  called whenever a urb is transferred from a device driver to a
 host controller driver.  This allows proper reference counting to happen
 for urbs.
 
-Return: A pointer to the urb with the incremented reference counter.
+
+
+.. _`usb_get_urb.return`:
+
+Return
+------
+
+A pointer to the urb with the incremented reference counter.
+
 
 
 .. _`usb_anchor_urb`:
@@ -132,6 +162,7 @@ usb_anchor_urb
         pointer to the anchor
 
 
+
 .. _`usb_anchor_urb.description`:
 
 Description
@@ -139,6 +170,7 @@ Description
 
 This can be called to have access to URBs which are to be executed
 without bothering to track them
+
 
 
 .. _`usb_unanchor_urb`:
@@ -154,12 +186,14 @@ usb_unanchor_urb
         pointer to the urb to anchor
 
 
+
 .. _`usb_unanchor_urb.description`:
 
 Description
 -----------
 
 Call this to stop the system keeping track of this URB
+
 
 
 .. _`usb_submit_urb`:
@@ -177,6 +211,7 @@ usb_submit_urb
     :param gfp_t mem_flags:
         the type of memory to allocate, see :c:func:`kmalloc` for a list
         of valid options for this.
+
 
 
 .. _`usb_submit_urb.description`:
@@ -238,10 +273,22 @@ That is often used through convenience wrappers, for the requests
 that are standardized in the USB 2.0 specification.  For bulk
 endpoints, a synchronous :c:func:`usb_bulk_msg` call is available.
 
-Return:
+
+
+.. _`usb_submit_urb.return`:
+
+Return
+------
+
 0 on successful submissions. A negative error number otherwise.
 
-Request Queuing:
+
+
+.. _`usb_submit_urb.request-queuing`:
+
+Request Queuing
+---------------
+
 
 URBs may be submitted to endpoints before previous ones complete, to
 minimize the impact of interrupt latencies and system overhead on data
@@ -257,7 +304,13 @@ than one.  This was previously a HCD-specific behavior, except for ISO
 transfers.  Non-isochronous endpoint queues are inactive during cleanup
 after faults (transfer errors or cancellation).
 
-Reserved Bandwidth Transfers:
+
+
+.. _`usb_submit_urb.reserved-bandwidth-transfers`:
+
+Reserved Bandwidth Transfers
+----------------------------
+
 
 Periodic transfers (interrupt or isochronous) are performed repeatedly,
 using the interval specified in the urb.  Submitting the first urb to
@@ -279,7 +332,13 @@ drivers can use their completion handlers to ensure they keep bandwidth
 they need, by reinitializing and resubmitting the just-completed urb
 until the driver longer needs that periodic bandwidth.
 
-Memory Flags:
+
+
+.. _`usb_submit_urb.memory-flags`:
+
+Memory Flags
+------------
+
 
 The general rules for how to decide which mem_flags to use
 are the same as for kmalloc.  There are four
@@ -315,6 +374,7 @@ apply or your are in a storage driver's block io path;
 GFP_NOIO, unless b) or c) apply
 
 
+
 .. _`usb_unlink_urb`:
 
 usb_unlink_urb
@@ -327,6 +387,7 @@ usb_unlink_urb
     :param struct urb \*urb:
         pointer to urb describing a previously submitted request,
         may be NULL
+
 
 
 .. _`usb_unlink_urb.description`:
@@ -363,10 +424,23 @@ The URB must not be deallocated while this routine is running.  In
 particular, when a driver calls this routine, it must insure that the
 completion handler cannot deallocate the URB.
 
-Return: -EINPROGRESS on success. See description for other values on
+
+
+.. _`usb_unlink_urb.return`:
+
+Return
+------
+
+-EINPROGRESS on success. See description for other values on
 failure.
 
-Unlinking and Endpoint Queues:
+
+
+.. _`usb_unlink_urb.unlinking-and-endpoint-queues`:
+
+Unlinking and Endpoint Queues
+-----------------------------
+
 
 [The behaviors and guarantees described below do not apply to virtual
 root hubs but only to endpoint queues for physical USB devices.]
@@ -403,6 +477,7 @@ is quite likely that the status stage of the transfer will not take
 place.
 
 
+
 .. _`usb_kill_urb`:
 
 usb_kill_urb
@@ -415,6 +490,7 @@ usb_kill_urb
     :param struct urb \*urb:
         pointer to URB describing a previously submitted request,
         may be NULL
+
 
 
 .. _`usb_kill_urb.description`:
@@ -445,6 +521,7 @@ This routine should not be called by a driver after its disconnect
 method has returned.
 
 
+
 .. _`usb_poison_urb`:
 
 usb_poison_urb
@@ -457,6 +534,7 @@ usb_poison_urb
     :param struct urb \*urb:
         pointer to URB describing a previously submitted request,
         may be NULL
+
 
 
 .. _`usb_poison_urb.description`:
@@ -487,6 +565,7 @@ This routine should not be called by a driver after its disconnect
 method has returned.
 
 
+
 .. _`usb_block_urb`:
 
 usb_block_urb
@@ -498,6 +577,7 @@ usb_block_urb
 
     :param struct urb \*urb:
         pointer to URB to be blocked, may be NULL
+
 
 
 .. _`usb_block_urb.description`:
@@ -514,6 +594,7 @@ particular, when a driver calls this routine, it must insure that the
 completion handler cannot deallocate the URB.
 
 
+
 .. _`usb_kill_anchored_urbs`:
 
 usb_kill_anchored_urbs
@@ -527,6 +608,7 @@ usb_kill_anchored_urbs
         anchor the requests are bound to
 
 
+
 .. _`usb_kill_anchored_urbs.description`:
 
 Description
@@ -537,6 +619,7 @@ from the back of the queue
 
 This routine should not be called by a driver after its disconnect
 method has returned.
+
 
 
 .. _`usb_poison_anchored_urbs`:
@@ -552,6 +635,7 @@ usb_poison_anchored_urbs
         anchor the requests are bound to
 
 
+
 .. _`usb_poison_anchored_urbs.description`:
 
 Description
@@ -563,6 +647,7 @@ poisoned
 
 This routine should not be called by a driver after its disconnect
 method has returned.
+
 
 
 .. _`usb_unpoison_anchored_urbs`:
@@ -578,6 +663,7 @@ usb_unpoison_anchored_urbs
         anchor the requests are bound to
 
 
+
 .. _`usb_unpoison_anchored_urbs.description`:
 
 Description
@@ -585,6 +671,7 @@ Description
 
 Reverses the effect of usb_poison_anchored_urbs
 the anchor can be used normally after it returns
+
 
 
 .. _`usb_unlink_anchored_urbs`:
@@ -598,6 +685,7 @@ usb_unlink_anchored_urbs
 
     :param struct usb_anchor \*anchor:
         anchor the requests are bound to
+
 
 
 .. _`usb_unlink_anchored_urbs.description`:
@@ -614,6 +702,7 @@ This routine should not be called by a driver after its disconnect
 method has returned.
 
 
+
 .. _`usb_anchor_suspend_wakeups`:
 
 usb_anchor_suspend_wakeups
@@ -625,6 +714,7 @@ usb_anchor_suspend_wakeups
         the anchor you want to suspend wakeups on
 
 
+
 .. _`usb_anchor_suspend_wakeups.description`:
 
 Description
@@ -633,6 +723,7 @@ Description
 Call this to stop the last urb being unanchored from waking up any
 usb_wait_anchor_empty_timeout waiters. This is used in the hcd urb give-
 back path to delay waking up until after the completion handler has run.
+
 
 
 .. _`usb_anchor_resume_wakeups`:
@@ -646,6 +737,7 @@ usb_anchor_resume_wakeups
         the anchor you want to resume wakeups on
 
 
+
 .. _`usb_anchor_resume_wakeups.description`:
 
 Description
@@ -653,6 +745,7 @@ Description
 
 Allow usb_wait_anchor_empty_timeout waiters to be woken up again, and
 wake up any current waiters if the anchor is empty.
+
 
 
 .. _`usb_wait_anchor_empty_timeout`:
@@ -671,6 +764,7 @@ usb_wait_anchor_empty_timeout
         how long you are willing to wait in milliseconds
 
 
+
 .. _`usb_wait_anchor_empty_timeout.description`:
 
 Description
@@ -679,7 +773,15 @@ Description
 Call this is you want to be sure all an anchor's
 URBs have finished
 
-Return: Non-zero if the anchor became unused. Zero on timeout.
+
+
+.. _`usb_wait_anchor_empty_timeout.return`:
+
+Return
+------
+
+Non-zero if the anchor became unused. Zero on timeout.
+
 
 
 .. _`usb_get_from_anchor`:
@@ -695,6 +797,7 @@ usb_get_from_anchor
         the anchor whose urb you want
 
 
+
 .. _`usb_get_from_anchor.description`:
 
 Description
@@ -703,8 +806,16 @@ Description
 This will take the oldest urb from an anchor,
 unanchor and return it
 
-Return: The oldest urb from ``anchor``\ , or ``NULL`` if ``anchor`` has no
+
+
+.. _`usb_get_from_anchor.return`:
+
+Return
+------
+
+The oldest urb from ``anchor``\ , or ``NULL`` if ``anchor`` has no
 urbs associated with it.
+
 
 
 .. _`usb_scuttle_anchored_urbs`:
@@ -720,12 +831,14 @@ usb_scuttle_anchored_urbs
         the anchor whose urbs you want to unanchor
 
 
+
 .. _`usb_scuttle_anchored_urbs.description`:
 
 Description
 -----------
 
 use this to get rid of all an anchor's urbs
+
 
 
 .. _`usb_anchor_empty`:
@@ -741,10 +854,11 @@ usb_anchor_empty
         the anchor you want to query
 
 
-.. _`usb_anchor_empty.description`:
 
-Description
------------
+.. _`usb_anchor_empty.return`:
 
-Return: 1 if the anchor has no urbs associated with it.
+Return
+------
+
+1 if the anchor has no urbs associated with it.
 
