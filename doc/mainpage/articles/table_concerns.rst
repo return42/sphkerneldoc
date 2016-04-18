@@ -195,6 +195,65 @@ If HTML is the only format you want to render, you could use a raw-import of a
 HTML table markup. But be aware, this breaks the separation of *presentation from
 content*. HTML-Tables are only rendered within a HTML output.
 
+.. code-block:: html
+
+   <div class="wy-table-responsive">
+   <table class="docutils">
+     <thead>
+       <tr style="font-weight: bold;">
+	 <td>Owner Module/Drivers</td>
+	 <td>Group</td>
+	 <td>Property Name</td>
+	 <td>Type</td>
+	 <td>Property Values</td>
+	 <td>Object attached</td>
+	 <td>Description/Restrictions</td>
+       </tr>
+     </thead>
+     <tbody>
+       <tr>
+	 <td rowspan="4">DRM</td>
+	 <td>Generic</td>
+	 <td>"rotation"</td>
+	 <td>BITMASK</td>
+	 <td>{ 0, "rotate-0" }, { 1, "rotate-90" }, { 2, "rotate-180" }, { 3,
+	   "rotate-270" }, { 4, "reflect-x" }, { 5, "reflect-y" }</td>
+	 <td>CRTC, Plane</td>
+	 <td>rotate-(degrees) rotates the image by the specified amount in
+	  degrees in counter clockwise direction. reflect-x and reflect-y
+	  reflects the image along the specified axis prior to rotation</td>
+       </tr>
+
+       <tr>
+	 <td rowspan="3">Connector</td>
+	 <td>"EDID"</td>
+	 <td>BLOB | IMMUTABLE</td>
+	 <td>0</td>
+	 <td>Connector</td>
+	 <td>Contains id of edid blob ptr object.</td>
+       </tr>
+
+       <tr>
+	 <td>"DPMS"</td>
+	 <td>ENUM</td>
+	 <td>{ "On", "Standby", "Suspend", "Off" }</td>
+	 <td>Connector</td>
+	 <td>Contains DPMS operation mode value.</td>
+       </tr>
+
+       <tr>
+	 <td>"PATH"</td>
+	 <td>BLOB | IMMUTABLE</td>
+	 <td>0</td>
+	 <td>Connector</td>
+	 <td>Contains topology path to a connector.</td>
+       </tr>
+     </tbody>
+   </table>
+   </div>
+
+
+
 .. raw:: html
 
    <div class="wy-table-responsive">
