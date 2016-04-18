@@ -52,6 +52,7 @@ For discussing improvements, reporting troubles, sending new drivers, etc, pleas
 
 .. toctree::
     :maxdepth: 1
+    :numbered:
 
     media/v4l/v4l2
     media/dvb/dvbapi
