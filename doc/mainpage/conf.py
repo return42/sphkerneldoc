@@ -15,10 +15,23 @@
 import sys
 import os
 
+# -- serve extensions  ----------------------------------------------------
+
+from os.path import join as pathjoin
+from os.path import abspath
+
+ROOT_FOLDER = pathjoin('..', '..')
+
+# only for debugging:
+# sys.path.append(os.path.abspath(os.path.join(ROOT_FOLDER, 'scripts')))
+# import common  # to get the SDK debugger/console
+
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
-#sys.path.insert(0, os.path.abspath('.'))
+
+sys.path.insert(0, abspath(pathjoin(ROOT_FOLDER, 'doc', 'extensions')))
+import rstFlatTable
 
 # -- General configuration ------------------------------------------------
 

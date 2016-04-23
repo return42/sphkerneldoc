@@ -10,38 +10,45 @@ Creating tables
 Simple tables
 =============
 
-.. code-block:: rst
+simple tables allow *colspan* but not *rowspan*:
 
-  =====  =====  ======
-     Inputs     Output
-  ------------  ------
-    A      B    A or B
-  =====  =====  ======
-         False
-         True
+..  code-block:: none
+
+  ====== ====== ======
+      Inputs    Output
+  ------------- ------
+  A      B      A or B
+  ====== ====== ======
+  False
+  --------------------
+  True
   --------------------
   True   False  True
-  False  True   True
-  =====  =====  ======
+  ------ ------ ------
+  False  True
+  ====== =============
 
 Rendered as:
 
-=====  =====  ======
-   Inputs     Output
-------------  ------
-  A      B    A or B
-=====  =====  ======
+====== ====== ======
+    Inputs    Output
+------------- ------
+A      B      A or B
+====== ====== ======
 False
 --------------------
 True
 --------------------
 True   False  True
-False  True   True
-=====  =====  ======
+------ ------ ------
+False  True
+====== =============
 
 
 Grid tables
 ===========
+
+grid tables allow colspan *colspan* and *rowspan*:
 
 .. code-block:: rst
 
@@ -71,52 +78,10 @@ Rendered as:
 | body row 4 |            | - blocks. |
 +------------+------------+-----------+
 
-
-Nested Tables
-=============
-
-Nested tables are ugly, don't use them. This is only for test, how it would be
-rendered.
-
-.. code-block:: rst
-
-   +-----------+----------------------------------------------------+
-   | W/NW cell | N/NE cell                                          |
-   |           +-------------+--------------------------+-----------+
-   |           | W/NW center | N/NE center              | E/SE cell |
-   |           |             +------------+-------------+           |
-   |           |             | +--------+ | E/SE center |           |
-   |           |             | | nested | |             |           |
-   |           |             | +--------+ |             |           |
-   |           |             | | table  | |             |           |
-   |           |             | +--------+ |             |           |
-   |           +-------------+------------+             |           |
-   |           | S/SE center              |             |           |
-   +-----------+--------------------------+-------------+           |
-   | S/SW cell                                          |           |
-   +----------------------------------------------------+-----------+
-
-Rendered as:
-
-+-----------+----------------------------------------------------+
-| W/NW cell | N/NE cell                                          |
-|           +-------------+--------------------------+-----------+
-|           | W/NW center | N/NE center              | E/SE cell |
-|           |             +------------+-------------+           |
-|           |             | +--------+ | E/SE center |           |
-|           |             | | nested | |             |           |
-|           |             | +--------+ |             |           |
-|           |             | | table  | |             |           |
-|           |             | +--------+ |             |           |
-|           +-------------+------------+             |           |
-|           | S/SE center              |             |           |
-+-----------+--------------------------+-------------+           |
-| S/SW cell                                          |           |
-+----------------------------------------------------+-----------+
-
-
 List tables
 ===========
+
+list tables has no ability to *colspan* nor *rowspan*:
 
 .. code-block:: rst
 
@@ -130,7 +95,7 @@ List tables
 
       * - stub col row 1
         - column
-          - column
+        - column
 
       * - stub col row 2
         - column
@@ -139,6 +104,7 @@ List tables
       * - stub col row 3
         - column
         - column
+
 
 Rendered as:
 
@@ -161,6 +127,104 @@ Rendered as:
    * - stub col row 3
      - column
      - column
+
+
+flat-table
+==========
+
+The ``flat-table`` is like a ``list-table``, a double-stage list, but it has
+some additional features like *row-span* and *column-span*.
+
+.. code-block:: rst
+
+   .. flat-table::
+      :header-rows: 2
+      :stub-columns: 1
+      :widths: 1 1 1 1 2
+
+      * - :rspan:`1` head / stub
+        - :cspan:`3` head 1.1-4
+
+      * - head 2.1
+        - head 2.2
+        - head 2.3
+        - head 2.4
+
+      * - row 1
+        - :rspan:`2` cell 1-3.1
+        - cell 1.2
+        - cell 1.3
+        - cell 1.4
+
+      * - row 2
+        - cell 2.2
+        - :rspan:`1` :cspan:`1`
+          cell 2.3 with a span over
+
+          * col 3-4 &
+          * row 2-3
+
+      * - row 3
+        - cell 3.2
+
+      * - row 4
+        - cell 4.1
+        - cell 4.2
+        - cell 4.3
+        - cell 4.4
+
+      * - row 5
+        - cell 5.1 with automatic span to rigth end
+
+      * - row 6
+        - cell 6.1
+        - ..
+
+
+Rendered as:
+
+.. flat-table::
+   :header-rows: 2
+   :stub-columns: 1
+   :widths: 1 1 1 1 2
+
+   * - :rspan:`1` head / stub
+     - :cspan:`3` head 1.1-4
+
+   * - head 2.1
+     - head 2.2
+     - head 2.3
+     - head 2.4
+
+   * - row 1
+     - :rspan:`2` cell 1-3.1
+     - cell 1.2
+     - cell 1.3
+     - cell 1.4
+
+   * - row 2
+     - cell 2.2
+     - :rspan:`1` :cspan:`1`
+       cell 2.3 with a span over
+
+       * col 3-4 &
+       * row 2-3
+
+   * - row 3
+     - cell 3.2
+
+   * - row 4
+     - cell 4.1
+     - cell 4.2
+     - cell 4.3
+     - cell 4.4
+
+   * - row 5
+     - cell 5.1 with automatic span to rigth end
+
+   * - row 6
+     - cell 6.1
+     - ..
 
 
 CSV table
@@ -186,6 +250,32 @@ Rendered as:
    :stub-columns: 1
    :file: csv_table.txt
 
+
+Nested Tables
+=============
+
+Nested tables are ugly, don't use them. This is only for testing, how it would
+be rendered.
+
+.. code-block:: rst
+
+   +-----------+----------------------------------------------------+
+   | W/NW cell | N/NE cell                                          |
+   |           +-------------+--------------------------+-----------+
+   |           | W/NW center | N/NE center              | E/SE cell |
+   |           |             +------------+-------------+           |
+   |           |             | +--------+ | E/SE center |           |
+   |           |             | | nested | |             |           |
+   |           |             | +--------+ |             |           |
+   |           |             | | table  | |             |           |
+   |           |             | +--------+ |             |           |
+   |           +-------------+------------+             |           |
+   |           | S/SE center              |             |           |
+   +-----------+--------------------------+-------------+           |
+   | S/SW cell                                          |           |
+   +----------------------------------------------------+-----------+
+
+Rendered as: Not supported by all sphinx-builders, don't use nested tables!!!
 
 
 raw HTML tables
