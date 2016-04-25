@@ -25,7 +25,7 @@
      *   - hide the permalink symbol as long as link is not hovered
      */
 
-    caption, .wy-table caption,.rst-content table.docutils caption,.rst-content table.field-list caption {
+    caption, .wy-table caption, .rst-content table.field-list caption {
         font-size: 100%;
     }
 
@@ -35,10 +35,11 @@
     /* table:
      *
      *   - Sequences of whitespace should collapse into a single whitespace.
-     *   - make the overflow visible
+     *   - make the overflow auto (scrollbar if needed)
+     *   - align caption "left" ("center" is unsuitable on vast tables)
      */
 
     .wy-table-responsive table td { white-space: normal; }
-    .wy-table-responsive { overflow: visible; }
-
+    .wy-table-responsive { overflow: auto; }
+    .rst-content table.docutils caption { text-align: left; font-size: 100%; }
 }

@@ -11,7 +11,7 @@ u"""
     :license:    GPL V3.0, see LICENSE for details.
 """
 
-# pylint: disable=W0603, C0103, C0325, C0321
+# pylint: disable=W0603, C0103, C0325, C0321, C0330, R0912
 
 # ==============================================================================
 # imports
@@ -88,6 +88,8 @@ def subEntities(inFile, outFile, ext_entities, int_entities):
                         line = line.replace("&%s;" % name, sub)
                 if ext_entities:
                     sub  = ext_entities.get(name, None)
+                    if sub is None:
+                        sub  = ext_entities.get("chunk_" + name, None)
                     if sub:
                         line = line.replace(
                             "&%s;" % name
@@ -131,7 +133,7 @@ def hook_copy_file_resource(srcFolder):
 
     srcFolder = FSPath(srcFolder)
 
-    def hookFunc(node, rstPrefix, parseData):
+    def hookFunc(node, rstPrefix, parseData):  # pylint: disable=W0613
 
         # run this hook only on the root node
         if node.getparent() is not None:
@@ -174,7 +176,7 @@ def hook_chunk_by_tag(*chunkPathes):
     """
     chunkPathes = chunkPathes
 
-    def hookFunc(node, rstPrefix, parseData):
+    def hookFunc(node, rstPrefix, parseData): # pylint: disable=W0613
 
         # run this hook only on the root node
         if node.getparent() is not None:
@@ -221,7 +223,7 @@ def hook_fix_broken_tables(fname_list=None, id_list=None):
     fname_list = fname_list or []
     id_list    = id_list    or []
 
-    def hookFunc(node, rstPrefix, parseData):
+    def hookFunc(node, rstPrefix, parseData): # pylint: disable=W0613
 
         if node.tag != "table":
             return node
@@ -256,7 +258,7 @@ def hook_fix_broken_tables(fname_list=None, id_list=None):
             for row in thead.findall("row"):
                 entries = row.findall("entry")
                 if len(entries) < cols:
-                    for x in range(cols - len(entries)):
+                    for _x in range(cols - len(entries)):
                         row.append(node.makeelement("entry"))
 
         # add missing entries to body rows
@@ -264,7 +266,7 @@ def hook_fix_broken_tables(fname_list=None, id_list=None):
             entries = row.findall("entry")
 
             if len(entries) < cols:
-                for x in range(cols - len(entries)):
+                for _x in range(cols - len(entries)):
                     row.append(node.makeelement("entry"))
         return node
     return hookFunc
@@ -275,7 +277,7 @@ def hook_replaceTag(id2TagMap):
 
     id2TagMap = id2TagMap
 
-    def hookFunc(node, rstPrefix, parseData):
+    def hookFunc(node, rstPrefix, parseData):  # pylint: disable=W0613
         # run this hook only on the root node
         if node.getparent() is not None:
             return node
@@ -286,6 +288,177 @@ def hook_replaceTag(id2TagMap):
                 XMLTag.replaceNode(elem, newNode)
         return node
     return hookFunc
+
+# ==============================================================================
+def hook_flatten_tables(table_id_list="all"):
+# ==============================================================================
+
+    u"""Hook to convert tables into a double-stage list.
+
+    This hook converts a tables (by id or "all") into the ``flat-table``
+    directive"""
+
+    table_id_list = table_id_list
+
+    def hookFunc(node, rstPrefix, parseData):   # pylint: disable=W0613
+        # run this hook only on the root node
+
+        if node.getparent() is not None:
+            return node
+
+        for table in node.findall(".//table") + node.findall(".//informaltable"):
+            if (table_id_list == "all" or table.get("id") in table_id_list):
+
+                # seek column widths and col-spans from DocBook is the hell,
+                # particularly there are <entrytbl> which left up to the outer
+                # table and broken colspec definitions which has not been
+                # rejected by the docbook toolchains. These colspecs must be
+                # *repaired* in any matter.
+
+                colspec = {}
+                colspecByNumber = {}
+
+                for colspec_count, c in enumerate(table.findall(".//colspec")):
+                    colnum = c.get("colnum")
+                    if colnum is not None:
+                        try:
+                            colnum = int(colnum)
+                        except:
+                            pass
+                    if colnum is None:
+                        colnum = colspec_count
+                    colname = c.get("colname")
+                    if colname is None:
+                        colname = ""
+                    align = c.get("align")
+                    colwidth = c.get("colwidth")
+                    if colwidth is not None:
+                        colwidth = colwidth.replace("*","")
+                        # some colspec definition use the "&#x22C6;" entity
+                        colwidth = colwidth.replace(u"⋆", "")
+                        try:
+                            colwidth = int(colwidth)
+                        except:
+                            colwidth = None
+                    colspec[colname] = (colnum, align, colwidth )
+                    colspecByNumber[colnum] = (colname, align, colwidth)
+
+                spanspec = {}
+                for item in table.findall(".//spanspec"):
+                    spanname = item.get("spanname")
+                    namest   = item.get("namest")
+                    nameend  = item.get("nameend")
+                    if spanname is None or namest is None or nameend is None:
+                        continue
+                    start = colspec.get(namest, [None, None,None])[0]
+                    end   = colspec.get(nameend, [None, None,None])[0]
+                    if start is None or end is None:
+                        continue
+                    spanspec[spanname] = end - start
+
+
+                # convert table to double-stage list
+
+                max_cols = 0
+                row_count = 0
+                flatTable = node.makeelement("itemizedlist")
+
+                # eat all rows, include the rows from entrytbl
+
+                for row in table.findall(".//row"):
+                    row_count += 1
+                    flatRow = node.makeelement("listitem")
+                    row_id = row.get("id")
+                    if row_id:
+                        flatRow.text = ".. _`%s`:" % row_id
+                    else:
+                        flatRow.text = ".. row %s" % row_count
+                    flatTable.append(flatRow)
+                    colList = node.makeelement("itemizedlist")
+                    flatRow.append(colList)
+                    col_count = 0
+                    for entry in row.findall(".//entry"):
+                        col_count += 1
+                        cspan = spanspec.get(entry.get("spanname"), 0)
+                        newCol = node.makeelement("listitem")
+
+                        # a ID in a cell needs some extras
+                        cell_id = entry.get("id")
+                        if cell_id is not None:
+                            del entry.attrib["id"]
+                            para_id= node.makeelement("para")
+                            para_id.text = (".. _`%s`:\n\n" % cell_id)
+                            newCol.append(para_id)
+
+                        # move content of entry to a para and insert
+                        # rat-spanning markup
+                        para   = XMLTag.copyNode(entry, "para", moveID=False)
+                        if cspan:
+                            para.text = (":cspan:`%s` " % cspan) + (para.text or "")
+                            col_count += cspan
+                        morerows = entry.get("morerows", 0)
+                        if morerows:
+                            para.text = (":hspan:`%s` " % morerows) + (para.text or "")
+                        newCol.append(para)
+                        colList.append(newCol)
+                    if col_count > max_cols:
+                        max_cols = col_count
+
+                # estimate colwidths
+
+                widths = []
+                for i in range(max_cols):
+                    colname, align, colwidth = colspecByNumber.get(i, (None, None, None))
+                    if colwidth is None:
+                        colwidth = 1
+                    widths.append(str(colwidth))
+
+                # use widths only when they are meaningful
+                useWidth = False
+                for w in widths:
+                    if w != widths[0]:
+                        useWidth = True
+                        break
+                if len(colspec) > max_cols:
+                    # The colspec definition has more entries than columns
+                    # existing in the table definition. This indicates, that the
+                    # colspec definition is buggy. I don't use width definitions
+                    # from buggy colspecs
+                    useWidth = False
+
+                # insert prefix
+
+                ctx = Table().getContext(table)
+                ctx.header_rows  = len(table.findall(".//thead/row") or [])
+                ctx.stub_columns = 1 if table.get("rowheader") == "firstcol" else 0
+                ctx.widths = " ".join(widths)
+
+                preText = "\n" if not ctx.ID else Table.rstAnchor
+                preText +=  "\n.. flat-table::%(title)s"
+                preText += "\n    :header-rows:  %(header_rows)s"
+                preText += "\n    :stub-columns: %(stub_columns)s"
+                if useWidth:
+                    preText += "\n    :widths:       %(widths)s"
+                preText += "\n    "
+                preText += "\n%(tableStartMark)s"
+                new = XMLTag.getInjBlockTag()
+                new.text += preText % ctx
+                table.addprevious(new)
+
+                # insert postfix
+
+                rstPostText = "\n%(tableEndMark)s\n"
+                new = XMLTag.getInjBlockTag()
+                new.text += rstPostText % ctx
+                table.addnext(new)
+
+                # replace table
+
+                XMLTag.replaceNode(table, flatTable)
+        return node
+    return hookFunc
+
+
 
 # ==============================================================================
 class XMLTagType(type):
@@ -336,7 +509,7 @@ class XMLTag(metaclass=XMLTagType):
         # some metadata about the parsing process
         self.parseData = Container(
             # customers hooks to call first on every node
-            hooks           = set()
+            hooks           = []
             # folder where the xml-file is located
             , folder        = None
             # relativ pathname of the xml-file (relative to self.folder)
@@ -979,7 +1152,7 @@ class LiteralBlock(XMLTag):
     breakFlag  = True
     rstBlock   = "    "
     injBlock   = True
-    language   = "c"
+    language   = "guess"
     rstMarkup  = "\n::\n\n%(literal)s\n\n"
 
     def getContext(self, node):
@@ -1009,7 +1182,9 @@ class Programlisting(LiteralBlock):
     # FIXME: einige <programlisting>'s sind ganze Dateien, sprich das
     # root-Element, das kann aber nicht so einfach ausgetauscht werden.
 
-    rstMarkup = """.. code-block:: %(language)s
+    rstMarkup = """\
+.. code-block:: %(language)s
+    :linenos:
 
 %(literal)s\n\n\n""" # pandocs eats some trailing newlines
 
@@ -1375,7 +1550,7 @@ class Biblioentry(XMLTag):
     #     <biblioentry id="cea608">
     #       <abbrev>CEA 608-E</abbrev>
     #       <authorgroup>
-    # 	<corpauthor>Consumer Electronics Association (<ulink url="http://www.ce.org">http://www.ce.org</ulink>)</corpauthor>
+    # 	<corpauthor>Consumer Electronics Association ...</corpauthor>
     #       </authorgroup>
     #       <title>CEA-608-E R-2014 "Line 21 Data Services"</title>
     #     </biblioentry>

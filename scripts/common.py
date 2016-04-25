@@ -116,7 +116,7 @@ def json2rst(src, dst, **kwargs):
         , "--to", "rst"
         , "--output" , dst
         # FIXME: this is a hotfix for the large tables of the linux_tv tables
-        , "--columns" , "180"
+        #, "--columns" , "180"
         , src
         , **kwargs )
     proc.communicate()

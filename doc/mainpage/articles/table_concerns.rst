@@ -85,7 +85,7 @@ list tables has no ability to *colspan* nor *rowspan*:
 
 .. code-block:: rst
 
-   .. list-table::
+   .. list-table:: table title
       :header-rows: 1
       :stub-columns: 1
 
@@ -108,7 +108,7 @@ list tables has no ability to *colspan* nor *rowspan*:
 
 Rendered as:
 
-.. list-table::
+.. list-table:: table title
    :header-rows: 1
    :stub-columns: 1
 
@@ -133,11 +133,16 @@ flat-table
 ==========
 
 The ``flat-table`` is like a ``list-table``, a double-stage list, but it has
-some additional features like *row-span* and *column-span*.
+some additional features like *row-span* and *column-span*. The example below
+shows how to use this markup.
+
+The first level of the staged list is the *table-row*. In the *table-row* there
+is only one markup allowed, the list of the cells in this *table-row*. Exception
+are *comments* and *targets* (e.g. a ref to  :ref:`row 2 of table's body <row body 2>`).
 
 .. code-block:: rst
 
-   .. flat-table::
+   .. flat-table:: table title
       :header-rows: 2
       :stub-columns: 1
       :widths: 1 1 1 1 2
@@ -150,13 +155,18 @@ some additional features like *row-span* and *column-span*.
         - head 2.3
         - head 2.4
 
-      * - row 1
+      * .. row body 1 / this is a comment
+
+        - row 1
         - :rspan:`2` cell 1-3.1
         - cell 1.2
         - cell 1.3
         - cell 1.4
 
-      * - row 2
+      * .. Comments and targets are allowed on *table-row* stage.
+        .. _`row body 2`:
+
+        - row 2
         - cell 2.2
         - :rspan:`1` :cspan:`1`
           cell 2.3 with a span over
@@ -183,48 +193,53 @@ some additional features like *row-span* and *column-span*.
 
 Rendered as:
 
-.. flat-table::
-   :header-rows: 2
-   :stub-columns: 1
-   :widths: 1 1 1 1 2
+ .. flat-table:: table title
+    :header-rows: 2
+    :stub-columns: 1
+    :widths: 1 1 1 1 2
 
-   * - :rspan:`1` head / stub
-     - :cspan:`3` head 1.1-4
+    * - :rspan:`1` head / stub
+      - :cspan:`3` head 1.1-4
 
-   * - head 2.1
-     - head 2.2
-     - head 2.3
-     - head 2.4
+    * - head 2.1
+      - head 2.2
+      - head 2.3
+      - head 2.4
 
-   * - row 1
-     - :rspan:`2` cell 1-3.1
-     - cell 1.2
-     - cell 1.3
-     - cell 1.4
+    * .. row body 1 / this is a comment
 
-   * - row 2
-     - cell 2.2
-     - :rspan:`1` :cspan:`1`
-       cell 2.3 with a span over
+      - row 1
+      - :rspan:`2` cell 1-3.1
+      - cell 1.2
+      - cell 1.3
+      - cell 1.4
 
-       * col 3-4 &
-       * row 2-3
+    * .. Comments and targets are allowed on *table-row* stage.
+      .. _`row body 2`:
 
-   * - row 3
-     - cell 3.2
+      - row 2
+      - cell 2.2
+      - :rspan:`1` :cspan:`1`
+        cell 2.3 with a span over
 
-   * - row 4
-     - cell 4.1
-     - cell 4.2
-     - cell 4.3
-     - cell 4.4
+        * col 3-4 &
+        * row 2-3
 
-   * - row 5
-     - cell 5.1 with automatic span to rigth end
+    * - row 3
+      - cell 3.2
 
-   * - row 6
-     - cell 6.1
-     - ..
+    * - row 4
+      - cell 4.1
+      - cell 4.2
+      - cell 4.3
+      - cell 4.4
+
+    * - row 5
+      - cell 5.1 with automatic span to rigth end
+
+    * - row 6
+      - cell 6.1
+      - ..
 
 
 CSV table
@@ -232,7 +247,7 @@ CSV table
 
 .. code-block:: rst
 
-   .. csv-table::
+   .. csv-table:: table title
       :header: , Header1, Header2
       :widths: 15, 10, 30
       :stub-columns: 1
@@ -244,7 +259,7 @@ Content of file ``csv_table.txt``:
 
 Rendered as:
 
-.. csv-table::
+.. csv-table:: table title
    :header: , Header1, Header2
    :widths: 15, 10, 30
    :stub-columns: 1

@@ -87,11 +87,6 @@ class FlatTable(Table):
 
     u"""FlatTable (``flat-table``) directive"""
 
-    has_content = True
-    required_arguments = 0
-    optional_arguments = 1   # the title of the table
-    final_argument_whitespace = False
-
     option_spec = {
         'name': directives.unchanged
         , 'class': directives.class_option
@@ -117,7 +112,9 @@ class FlatTable(Table):
         tableBuilder.parseFlatTableNode(node)
         tableNode = tableBuilder.buildTableNode()
         # SDK.CONSOLE()  # print --> tableNode.asdom().toprettyxml()
-        return [tableNode]
+        if title:
+            tableNode.insert(0, title)
+        return [tableNode] + messages
 
 
 # ==============================================================================
@@ -290,14 +287,35 @@ class ListTableBuilder(object):
 
     def parseRowItem(self, rowItem, rowNum):
         row = []
-        if len(rowItem) != 1 or not isinstance(rowItem[0], nodes.bullet_list):
+        childNo = 0
+        error   = False
+        cell    = None
+        target  = None
+
+        for child in rowItem:
+            if (isinstance(child , nodes.comment)
+                or isinstance(child, nodes.system_message)):
+                pass
+            elif isinstance(child , nodes.target):
+                target = child
+            elif isinstance(child, nodes.bullet_list):
+                childNo += 1
+                cell = child
+            else:
+                error = True
+                break
+
+        if childNo != 1 or error:
             self.raiseError(
                 'Error parsing content block for the "%s" directive: '
                 'two-level bullet list expected, but row %s does not '
                 'contain a second-level bullet list.'
                 % (self.directive.name, rowNum + 1))
-        for cellItem in rowItem[0]:
+
+        for cellItem in cell:
             cspan, rspan, cellElements = self.parseCellItem(cellItem)
+            if target is not None:
+                cellElements.insert(0, target)
             row.append( (cspan, rspan, cellElements) )
         return row
 
@@ -305,6 +323,8 @@ class ListTableBuilder(object):
         # search and remove cspan, rspan colspec from the first element in
         # this listItem (field).
         cspan = rspan = 0
+        if not len(cellItem):
+            return cspan, rspan, []
         for elem in cellItem[0]:
             if isinstance(elem, colSpan):
                 cspan = elem.get("span")

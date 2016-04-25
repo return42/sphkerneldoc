@@ -44,7 +44,7 @@ import media
 # setup
 # ==============================================================================
 
-from dbenv import CACHE, BOOKS_FOLDER, LINUX_DOCBOOK_ROOT, DOC_FOLDER
+from dbenv import CACHE, BOOKS_FOLDER, LINUX_DOCBOOK_ROOT
 
 MSG = CLI.msg
 ERR = CLI.err
@@ -179,10 +179,10 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
     for hook in [
             hook_chunk_by_tag(*chunkPathes)
             , hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
-        xmlFilter.parseData.hooks.add(hook)
+        xmlFilter.parseData.hooks.append(hook)
 
     # buggy DocBook files ...
-    xmlFilter.parseData.hooks.add(
+    xmlFilter.parseData.hooks.append(
         hook_fix_broken_tables(
             fname_list=files_with_broken_tables))
 
@@ -201,7 +201,7 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
             MSG("::convert file:: %s" % inFile)
             convert_xml2rst(folder, inFile)
 
-    if not cliArgs.noconvert:
+    if not cliArgs.noinstall:
 
         bookFolder = BOOKS_FOLDER / origFile.BASENAME.SKIPSUFFIX
         if bookFolder.EXISTS:
@@ -230,7 +230,7 @@ def fiddle(cliArgs):                                     # pylint: disable=W0613
 
     u"""Implement some stuff and yust fiddle a bit with it."""
 
-    raise NotImplementedError("You have not yet implemented any stuff to fiddle with.")
+    # raise NotImplementedError("You have not yet implemented any stuff to fiddle with.")
 
     # Example: fiddle with media files / you have to run::
     #

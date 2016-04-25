@@ -21,7 +21,7 @@ u"""
 import re
 from common import FSPath, PContainer, CLI, xml_unescape
 from dbxml import XMLTag, filterXML, subEntities, EntityContainer
-from dbxml import hook_copy_file_resource, RESOUCE_FORMAT, hook_replaceTag
+from dbxml import hook_copy_file_resource, RESOUCE_FORMAT, hook_replaceTag, hook_flatten_tables
 from lxml import etree
 
 # ==============================================================================
@@ -152,17 +152,16 @@ def getMediaFilter():
 
     xmlFilter = XMLTag()
     for hook in [hook_replaceTag(id2TagMap)
+                 , hook_media_table2variablelist
+                 , hook_media_table2variablelist_2
+                 , hook_media_fix_misc
                  , hook_media_handle_subsec
                  , hook_media_create_chunks
                  , hook_media_rstInclude
                  , hook_media_insert_src_headers
-                 , hook_media_mark_as_todo
-                 , hook_media_table2variablelist
-                 , hook_media_table2variablelist_2
-                 , hook_media_fix_broken_pixfmt
-                 , hook_media_fix_broken_tables
+                 , hook_flatten_tables()
                  , hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
-        xmlFilter.parseData.hooks.add(hook)
+        xmlFilter.parseData.hooks.append(hook)
     return xmlFilter
 
 
@@ -210,6 +209,22 @@ def media_init_ENTITIES():
     MEDIA_INT.writeToFile()
 
 
+# ==============================================================================
+def hook_media_fix_misc(node, rstPrefix, parseData):
+# ==============================================================================
+
+    # run this hook only on the root node
+    if node.getparent() is not None:
+        return node
+
+    if node.find(".//*[@id='%s']" % "packed-yuv") is not None:
+        # insert missing cells in the table in this section
+        table = node.find(".//table")
+        headrow = table.find(".//thead/row")
+        headrow.insert(4,node.makeelement("entry"))
+        headrow.insert(6,node.makeelement("entry"))
+        headrow.insert(8,node.makeelement("entry"))
+    return node
 
 # ==============================================================================
 def hook_media_rstInclude(node, rstPrefix, parseData):
@@ -250,204 +265,42 @@ def hook_media_rstInclude(node, rstPrefix, parseData):
             MSG("moved %s to %s" % (preTag, outFile))
         else:
             MSG("allready moved %s to %s" % (preTag, outFile))
-        try:
-            parent.addprevious(incl)
-        except:
-            SDK.CONSOLE()
+
+        parent.addprevious(incl)
         XMLTag.dropNode(parent)
 
-    return node
-
-
-
-# ==============================================================================
-def hook_media_mark_as_todo(node, rstPrefix, parseData):
-# ==============================================================================
-
-    # handle some inappropriate and buggy tables
-
-    if node.get("id") not in [
-            # media/v4l/dev-sliced-vbi.xml
-            "v4l2-sliced-vbi-format", "vbi-services2"
-            , "v4l2-mpeg-vbi-fmt-ivtv-magic" , "v4l2-mpeg-vbi-itv0-line"
-            , "v4l2-mpeg-vbi-fmt-ivtv", "v4l2-mpeg-vbi-itv0"
-            # media/v4l/io.xml
-            , "v4l2-buffer"
-            # media-ioc-enum-entities.xml
-            , "media-entity-desc"
-            # media/v4l/media-ioc-g-topology.xml
-            , "media-v2-entity"
-            # media/v4l/pixfmt.xml
-            , "v4l2-pix-format", "pixfmt-indexed"
-            # media/v4l/pixfmt-packed-rgb.xml
-            , "rgb-formats", "rgb-formats-deprecated"
-            # media/v4l/pixfmt-packed-yuv.xml
-            , "packed-yuv"
-            # media/v4l/vidioc-querycap.xml
-            , "v4l2-capability"
-            # media/v4l/subdev-formats.xml
-            , "v4l2-mbus-pixelcode-bayer"
-            , "v4l2-mbus-pixelcode-rgb"
-            , "v4l2-mbus-pixelcode-hsv"
-            , "v4l2-mbus-pixelcode-yuv8"
-            # /media/v4l/vidioc-enum-fmt.xml
-            , "v4l2-fmtdesc"
-            #
-            , "v4l2-bt-timings"
-            , "v4l2-ext-control"
-            , "vbi-services"
-            , "v4l2-dbg-match"
-    ]:
-
-        return node
-
-    oldNode = None
-    if node.get("id") == "packed-yuv":
-        # find table and mark it as TODO
-        oldNode = node
-        node = node.find(".//table")
-
-    intro = ""
-    if node.get("id"):
-        intro +=  "\n.. _%s:\n" % node.get("id")
-    title = XMLTag.getFormatedTitle(node)
-    if title:
-        intro += ("\n" + title
-                  + "\n" + ("=" * len(title)))
-
-    intro += "\n\n::\n\n"
-    intro += "    TODO ... \n\n"
-    #literal = etree.tostring(node).decode("utf-8") + "\n\n"
-    literal = etree.tostring(node, encoding='unicode') + "\n\n"
-    literal = XMLTag.blockText("    ", literal)
-    replaceText = intro + literal
-    new      = XMLTag.getInjBlockTag()
-    new.text += replaceText
-    new.tail = node.tail
-    XMLTag.replaceNode(node, new)
-    if oldNode is not None:
-        return oldNode
-    else:
-        dummy = node.makeelement("dummy")
-        return dummy
-
-
-
-
-# ==============================================================================
-def hook_media_fix_broken_tables(node, rstPrefix, parseData):
-# ==============================================================================
-
-    if node.get("id") not in [
-            "rc_standard_keymap"
-            # ignore colspan in headers
-            , "v4l2-mbus-pixelcode-rgb-lvds"
-            , "v4l2-mbus-pixelcode-yuv8"
-            , "input-status"
-            , "v4l2-ext-controls"
-            , "v4l2-framebuffer"
-            , "v4l2-sliced-vbi-cap"
-            , "v4l2-vbi-format"
-            , "framebuffer-flags"
-            , "v4l2-format"
-            , "v4l2-outputparm"
-            , "tuner-matrix"
-            , "v4l2-tuner"
-            , "v4l2-dv-timings" # missing entries
-            , "name-v4l2-dbg-match" # missing entries
-    ]:
-        return node
-
-    table = node
-    tgroup = table.find("tgroup")
-    cols = int(tgroup.get("cols"))
-    thead = tgroup.find("thead")
-    tbody = tgroup.find("tbody")
-
-    if thead is not None:
-        for row in thead.findall("row"):
-            entries = row.findall("entry")
-            if len(entries) > cols:
-                cols = len(entries)
-                tgroup.set("cols", str(cols))
-
-    for row in tbody.findall("row"):
-        entries = row.findall("entry")
-        if len(entries) > cols:
-            cols = len(entries)
-            tgroup.set("cols", str(cols))
-
-    if thead is not None:
-        for row in thead.findall("row"):
-            entries = row.findall("entry")
-            if len(entries) < cols:
-                for x in range(cols - len(entries)):
-                    row.append(node.makeelement("entry"))
-
-    for row in tbody.findall("row"):
-        entries = row.findall("entry")
-
-        if len(entries) < cols:
-            for x in range(cols - len(entries)):
-                row.append(node.makeelement("entry"))
-    return node
-
-
-
-# ==============================================================================
-def hook_media_fix_broken_pixfmt(node, rstPrefix, parseData):
-# ==============================================================================
-
-    if not parseData.fname.BASENAME.startswith("pixfmt-"):
-        return node
-
-    # run this hook only on the root node
-    if node.getparent() is not None:
-        return node
-
-    # These tables are complete broken, it is horrible
-    for table in node.findall(".//informaltable"):
-        tgroup = table.find("tgroup")
-        cols = int(tgroup.get("cols"))
-        tbody = tgroup.find("tbody")
-        for row in tbody.findall("row"):
-            entries = row.findall("entry")
-            if len(entries) > cols:
-                #print("correct from cols='%s' cols to cols='%s'" % (cols, len(entries))) 
-                cols = len(entries)
-                tgroup.set("cols", str(cols))
-
-    for table in node.findall(".//informaltable"):
-        tgroup = table.find("tgroup")
-        cols = int(tgroup.get("cols"))
-        tbody = tgroup.find("tbody")
-        for row in tbody.findall("row"):
-            entries = row.findall("entry")
-            if len(entries) < cols:
-                for x in range(cols - len(entries)):
-                    row.append(node.makeelement("entry"))
     return node
 
 # ==============================================================================
 def hook_media_table2variablelist(node, rstPrefix, parseData):
 # ==============================================================================
 
-    # handle some inappropriate and buggy tables
+    # This hooks transforms some tables to definition lists.
 
-    if node.get("id") not in [
+    # run this hook only on the root node
+    if node.getparent() is not None:
+        return node
+
+    for ID in [
             "mpeg-control-id" , "mfc51-control-id","cx2341x-control-id",
             "vpx-control-id", "camera-control-id", "fm-tx-control-id", "flash-control-id",
             "jpeg-control-id", "image-source-control-id", "image-process-control-id", "dv-control-id",
-            "fm-rx-control-id", "detect-control-id", "rf-tuner-control-id"
-    ]:
-        return node
+            "fm-rx-control-id", "detect-control-id", "rf-tuner-control-id" ]:
+        elem = node.find(".//*[@id='%s']" % ID)
+        if (elem is not None
+            and elem.tag == "table" ):
+            table2variablelist(elem, rstPrefix, parseData)
+    return node
 
+def table2variablelist(node, rstPrefix, parseData):
+
+    ID = node.get("id")
     section = node.makeelement("section")
     section.append(XMLTag.copyNode(node.find("title")))
-    node.addprevious(section)
 
     tgroup = node.find("tgroup")
     tbody = tgroup.find("tbody")
+
     tableRows = tbody.findall("row")
 
     varentry = None
@@ -488,20 +341,31 @@ def hook_media_table2variablelist(node, rstPrefix, parseData):
         else:
             #SDK.CONSOLE()
             raise Exception("should never happen / markup seems inconsistent")
+
     parent = node.getparent()
-    parent.remove(node)
-    return section
+    parent.replace(node, section)
+    section.set("id", ID)
 
 # ==============================================================================
 def hook_media_table2variablelist_2(node, rstPrefix, parseData):
 # ==============================================================================
 
-    # handle some inappropriate and buggy tables
+    # This hooks transforms some tables to definition lists.
+
+    # run this hook only on the root node
+    if node.getparent() is not None:
+        return node
+
+    for ID in ["v4l2-window", "v4l2-clip", "v4l2-rect" ]:
+        elem = node.find(".//*[@id='%s']" % ID)
+        if (elem is not None and elem.tag == "table" ):
+            table2variablelist_2(elem, rstPrefix, parseData)
+
+    return node
+
+def table2variablelist_2(node, rstPrefix, parseData):
 
     ID = node.get("id")
-    if ID not in [
-            "v4l2-window", "v4l2-clip", "v4l2-rect" ]:
-        return node
 
     section = node.makeelement("section")
     del node.attrib["id"]
@@ -510,7 +374,6 @@ def hook_media_table2variablelist_2(node, rstPrefix, parseData):
     footnote = node.find("title/footnote")
 
     if footnote is not None:
-        #SDK.CONSOLE()
         section.append(footnote)
     section.append(XMLTag.copyNode(node.find("title")))
     node.addprevious(section)
@@ -558,7 +421,6 @@ def hook_media_table2variablelist_2(node, rstPrefix, parseData):
 
     parent = node.getparent()
     parent.remove(node)
-    return section
 
 # ==============================================================================
 def hook_media_insert_src_headers(node, rstPrefix, parseData):
@@ -634,10 +496,11 @@ def hook_media_handle_subsec(node, rstPrefix, parseData):
 
     # Some IDs cause a name collision, because, there are also entities with
     # simmular names e.g."func-open.xml", which is refered by "open".
-    mapID = {"mmap"       : "streaming-io"
-             , "open"     : "open-close-device"
-             , "querycap" : "v4l2-querycap"
-             , "control"  : "user-controls"
+    mapID = {
+        #"mmap"       : "streaming-io"
+        #, "open"     : "open-close-device"
+        #, "querycap" : "v4l2-querycap"
+        #, "control"  : "user-controls"
     }
 
     xpath = "*/section"
@@ -661,7 +524,7 @@ def hook_media_handle_subsec(node, rstPrefix, parseData):
             newNode
             , parseData.folder
             , ext_entity.suffix(parseData.fname.SUFFIX))
-        MEDIA_EXT.addNew(ID, ext_entity)
+        MEDIA_EXT.addNew("chunk_" + ID, ext_entity)
         MEDIA_EXT.writeToFile()
 
     return node
