@@ -220,6 +220,10 @@ def hook_chunk_by_tag(*chunkPathes):
 def hook_fix_broken_tables(fname_list=None, id_list=None):
 # ==============================================================================
 
+    u"""This hooks add missing colspecs to the *broken* table.
+
+    A complete colspec definition is needed by pandoc, otherwise the build of
+    the ASCII-art table fails within pandoc."""
     fname_list = fname_list or []
     id_list    = id_list    or []
 
@@ -289,6 +293,31 @@ def hook_replaceTag(id2TagMap):
         return node
     return hookFunc
 
+
+# ==============================================================================
+def hook_drop_usless_informaltables(node, rstPrefix, parseData):
+# ==============================================================================
+
+    u"""Hook to convert useless informatables to (e.g) paragraphs"""
+    # run this hook only on the root node
+    if node.getparent() is not None:
+        return node
+
+    for table in node.findall(".//informaltable"):
+        tbody = table.find(".//tbody")
+        max_cols = 0
+        for row in tbody.findall(".//row"):
+            c = len(row.findall(".//entry"))
+            if c > max_cols:
+                max_cols = c
+        section = node.makeelement("section")
+        if max_cols < 2:
+            for entry in tbody.find(".//entry"):
+                para = XMLTag.copyNode(entry, "para", moveID=True)
+                section.append(para)
+            XMLTag.replaceNode(table, section)
+    return node
+
 # ==============================================================================
 def hook_flatten_tables(table_id_list="all"):
 # ==============================================================================
@@ -302,7 +331,6 @@ def hook_flatten_tables(table_id_list="all"):
 
     def hookFunc(node, rstPrefix, parseData):   # pylint: disable=W0613
         # run this hook only on the root node
-
         if node.getparent() is not None:
             return node
 
@@ -1182,9 +1210,9 @@ class Programlisting(LiteralBlock):
     # FIXME: einige <programlisting>'s sind ganze Dateien, sprich das
     # root-Element, das kann aber nicht so einfach ausgetauscht werden.
 
+    language   = "c"
     rstMarkup = """\
 .. code-block:: %(language)s
-    :linenos:
 
 %(literal)s\n\n\n""" # pandocs eats some trailing newlines
 

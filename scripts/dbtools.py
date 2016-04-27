@@ -35,6 +35,7 @@ from common import CLI, FSPath
 from common import PANDOC_EXE, xml2json, jsonFilter, json2rst
 from dbxml import XMLTag, filterXML, subEntities, Table, RESOUCE_FORMAT, INT_ENTITES
 from dbxml import hook_copy_file_resource, hook_chunk_by_tag, hook_fix_broken_tables
+from dbxml import hook_flatten_tables, hook_drop_usless_informaltables
 
 #from pprint import pformat, pprint
 
@@ -48,6 +49,31 @@ from dbenv import CACHE, BOOKS_FOLDER, LINUX_DOCBOOK_ROOT
 
 MSG = CLI.msg
 ERR = CLI.err
+
+mainFOOTER="""
+
+Retrieval
+=========
+
+* :ref:`genindex`
+* :ref:`search`
+
+"""
+
+rstHEADER=""".. -*- coding: utf-8; mode: rst -*-
+"""
+rstFOOTER="""
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------
+"""
+
+
 
 # ==============================================================================
 def main():
@@ -99,7 +125,6 @@ def main():
     #     "jsonfile", nargs = "?", default = LINUX_TV_CACHE / "media_api.json"
     #     , help = "Pandoc json file (default: %(default)s)" )
 
-
     cli()
 
 
@@ -129,6 +154,11 @@ def media2rst(cliArgs):                                  # pylint: disable=W0613
             MSG("\n::convert file:: %s" % inFile)
             convert_xml2rst(media.LINUX_TV_CACHE, inFile)
 
+    # add footer to main reST file
+    reSTRoot = media.LINUX_TV_CACHE/"media_api.rst"
+    with reSTRoot.openTextFile(mode="a") as f:
+        f.write(mainFOOTER)
+
     if not cliArgs.noinstall:
         media.installMedia()
 
@@ -146,13 +176,17 @@ def db2rst(cliArgs):                                    # pylint: disable=W0613
 def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 # ==============================================================================
 
-    files_with_broken_tables = ["kernel-locking/cheatsheet", ]
+    hook_list = [
+        hook_chunk_by_tag("book", "part", "chapter", ".//refentry")
+        , hook_copy_file_resource(LINUX_DOCBOOK_ROOT)
+        , hook_drop_usless_informaltables
+        #, hook_fix_broken_tables(fname_list=["kernel-locking/cheatsheet", ])
+        , hook_flatten_tables()
+    ]
 
-    chunkPathes = ["book", "part", "chapter", ".//refentry"]
     folder = CACHE / origFile.SKIPSUFFIX
 
-    MSG("==== convert DocBook %s to reST / chunking: %s ===="
-        % (origFile, chunkPathes or "none"))
+    MSG("==== convert DocBook %s to reST ====" % (origFile))
 
     if folder.EXISTS:
         folder.rmtree()
@@ -176,15 +210,8 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 
     # XML-filter
     xmlFilter = XMLTag()
-    for hook in [
-            hook_chunk_by_tag(*chunkPathes)
-            , hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
+    for hook in hook_list:
         xmlFilter.parseData.hooks.append(hook)
-
-    # buggy DocBook files ...
-    xmlFilter.parseData.hooks.append(
-        hook_fix_broken_tables(
-            fname_list=files_with_broken_tables))
 
     filterXML(folder, inFile, outFile
               , xmlFilter     = xmlFilter
@@ -200,6 +227,11 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
         for inFile in fileList:
             MSG("::convert file:: %s" % inFile)
             convert_xml2rst(folder, inFile)
+
+    # add footer to main reST file
+    reSTRoot = folder/mainFile.suffix(".rst")
+    with reSTRoot.openTextFile(mode="a") as f:
+        f.write(mainFOOTER)
 
     if not cliArgs.noinstall:
 
@@ -222,7 +254,6 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
                 dstFolder = dst.DIRNAME / folder.BASENAME
                 MSG("install file-folder %s" % dstFolder)
                 resource.copytree(dstFolder)
-
 
 # ==============================================================================
 def fiddle(cliArgs):                                     # pylint: disable=W0613
@@ -301,7 +332,11 @@ def fixPandocRST(src, dst):
 
     indent = ""
     with src.openTextFile() as src, dst.openTextFile("w") as dst:
+
+        dst.write(rstHEADER)
+
         for line in src:
+            line = line.replace(u"⋆", "*")
             striped = line.strip()
             if not striped:
                 dst.write("\n")
@@ -333,6 +368,7 @@ def fixPandocRST(src, dst):
                     line = line.replace("\\", "")
             dst.write(line)
 
+        dst.write(rstFOOTER)
 
 # # ==============================================================================
 # def inspectJSON(cliArgs):

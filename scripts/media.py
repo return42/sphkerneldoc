@@ -21,7 +21,8 @@ u"""
 import re
 from common import FSPath, PContainer, CLI, xml_unescape
 from dbxml import XMLTag, filterXML, subEntities, EntityContainer
-from dbxml import hook_copy_file_resource, RESOUCE_FORMAT, hook_replaceTag, hook_flatten_tables
+from dbxml import hook_copy_file_resource, RESOUCE_FORMAT, hook_replaceTag
+from dbxml import hook_flatten_tables, hook_drop_usless_informaltables
 from lxml import etree
 
 # ==============================================================================
@@ -114,6 +115,14 @@ def installMedia():
             dstFolder = dst.DIRNAME / folder.BASENAME
             MSG("install file-folder %s" % dstFolder)
             folder.copytree(dstFolder)
+            for svgFile in dstFolder.reMatchFind(".*\.svg$"):
+                if not svgFile.suffix(".pdf").EXISTS:
+                    try:
+                        import cairosvg
+                        MSG("convert %s to PDF" % svgFile)
+                        cairosvg.svg2pdf(url=svgFile, write_to=svgFile.suffix(".pdf"))
+                    except ImportError:
+                        ERR("missing cairosvg, can't convert %s to PDF" % svgFile)
 
 # ==============================================================================
 def getFileList():
@@ -159,6 +168,7 @@ def getMediaFilter():
                  , hook_media_create_chunks
                  , hook_media_rstInclude
                  , hook_media_insert_src_headers
+                 , hook_drop_usless_informaltables
                  , hook_flatten_tables()
                  , hook_copy_file_resource(LINUX_DOCBOOK_ROOT) ]:
         xmlFilter.parseData.hooks.append(hook)
