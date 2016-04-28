@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sq-flush-range:
 
@@ -7,7 +8,7 @@ sq_flush_range
 
 *man sq_flush_range(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Flush (prefetch) a specific SQ range
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Flushes the store queue cache from ``start`` to ``start`` + ``len`` in a linear fashion.
+Flushes the store queue cache from ``start`` to ``start`` + ``len`` in a
+linear fashion.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

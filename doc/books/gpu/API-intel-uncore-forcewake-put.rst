@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-uncore-forcewake-put:
 
@@ -7,7 +8,7 @@ intel_uncore_forcewake_put
 
 *man intel_uncore_forcewake_put(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 release a forcewake domain reference
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-This function drops the device-level forcewakes for specified domains obtained by ``intel_uncore_forcewake_get``.
+This function drops the device-level forcewakes for specified domains
+obtained by ``intel_uncore_forcewake_get``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

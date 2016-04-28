@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bus-for-each-drv:
 
@@ -7,7 +8,7 @@ bus_for_each_drv
 
 *man bus_for_each_drv(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 driver iterator
 
@@ -36,12 +37,26 @@ Arguments
 Description
 ===========
 
-This is nearly identical to the device iterator above. We iterate over each driver that belongs to ``bus``, and call ``fn`` for each. If ``fn`` returns anything but 0, we break out
-and return it. If ``start`` is not NULL, we use it as the head of the list.
+This is nearly identical to the device iterator above. We iterate over
+each driver that belongs to ``bus``, and call ``fn`` for each. If ``fn``
+returns anything but 0, we break out and return it. If ``start`` is not
+NULL, we use it as the head of the list.
 
 
 NOTE
 ====
 
-we don't return the driver that returns a non-zero value, nor do we leave the reference count incremented for that driver. If the caller needs to know that info, it must set it in
-the callback. It must also be sure to increment the refcount so it doesn't disappear before returning to the caller.
+we don't return the driver that returns a non-zero value, nor do we
+leave the reference count incremented for that driver. If the caller
+needs to know that info, it must set it in the callback. It must also be
+sure to increment the refcount so it doesn't disappear before returning
+to the caller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

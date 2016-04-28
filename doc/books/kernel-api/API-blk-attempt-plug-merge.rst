@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-attempt-plug-merge:
 
@@ -7,7 +8,7 @@ blk_attempt_plug_merge
 
 *man blk_attempt_plug_merge(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 try to merge with ``current``'s plugged list
 
@@ -30,16 +31,32 @@ Arguments
     out parameter for number of traversed plugged requests
 
 ``same_queue_rq``
-    pointer to ``struct request`` that gets filled in when another request associated with ``q`` is found on the plug list (optional, may be ``NULL``)
+    pointer to ``struct request`` that gets filled in when another
+    request associated with ``q`` is found on the plug list (optional,
+    may be ``NULL``)
 
 
 Description
 ===========
 
-Determine whether ``bio`` being queued on ``q`` can be merged with a request on ``current``'s plugged list. Returns ``true`` if merge was successful, otherwise ``false``.
+Determine whether ``bio`` being queued on ``q`` can be merged with a
+request on ``current``'s plugged list. Returns ``true`` if merge was
+successful, otherwise ``false``.
 
-Plugging coalesces IOs from the same issuer for the same purpose without going through ``q``->queue_lock. As such it's more of an issuing mechanism than scheduling, and the
-request, while may have elvpriv data, is not added on the elevator at this point. In addition, we don't have reliable access to the elevator outside queue lock. Only check basic
+Plugging coalesces IOs from the same issuer for the same purpose without
+going through ``q``->queue_lock. As such it's more of an issuing
+mechanism than scheduling, and the request, while may have elvpriv data,
+is not added on the elevator at this point. In addition, we don't have
+reliable access to the elevator outside queue lock. Only check basic
 merging parameters without querying the elevator.
 
 Caller must ensure !blk_queue_nomerges(q) beforehand.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

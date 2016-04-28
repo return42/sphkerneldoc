@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _api:
 
@@ -5,7 +6,9 @@
 API reference
 =============
 
-Due to limitations of the kernel documentation framework and the existing layout of the source code the entire regulator API is documented here.
+Due to limitations of the kernel documentation framework and the
+existing layout of the source code the entire regulator API is
+documented here.
 
 
 .. toctree::
@@ -70,3 +73,14 @@ Due to limitations of the kernel documentation framework and the existing layout
     API-regulator-get-drvdata
     API-regulator-set-drvdata
     API-rdev-get-id
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

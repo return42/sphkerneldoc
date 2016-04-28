@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-crc7-be:
 
@@ -7,7 +8,7 @@ crc7_be
 
 *man crc7_be(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 update the CRC7 for the data buffer
 
@@ -39,4 +40,15 @@ any
 Description
 ===========
 
-Returns the updated CRC7 value. The CRC7 is left-aligned in the byte (the lsbit is always 0), as that makes the computation easier, and all callers want it in that form.
+Returns the updated CRC7 value. The CRC7 is left-aligned in the byte
+(the lsbit is always 0), as that makes the computation easier, and all
+callers want it in that form.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

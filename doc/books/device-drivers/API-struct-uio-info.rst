@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-uio-info:
 
@@ -7,7 +8,7 @@ struct uio_info
 
 *man struct uio_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 UIO device capabilities
 
@@ -75,3 +76,12 @@ release
 
 irqcontrol
     disable/enable irqs when 0/1 is written to /dev/uioX
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sas-port-delete-phy:
 
@@ -7,7 +8,7 @@ sas_port_delete_phy
 
 *man sas_port_delete_phy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove a phy from a port or wide port
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-This operation is used for tearing down ports again. It must be done to every port or wide port before calling sas_port_delete.
+This operation is used for tearing down ports again. It must be done to
+every port or wide port before calling sas_port_delete.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

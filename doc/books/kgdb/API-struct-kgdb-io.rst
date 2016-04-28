@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-kgdb-io:
 
@@ -7,7 +8,7 @@ struct kgdb_io
 
 *man struct kgdb_io(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Describe the interface for an I/O driver to talk with KGDB.
 
@@ -51,7 +52,18 @@ pre_exception
     Pointer to a function that will do any prep work for the I/O driver.
 
 post_exception
-    Pointer to a function that will do any cleanup work for the I/O driver.
+    Pointer to a function that will do any cleanup work for the I/O
+    driver.
 
 is_console
-    1 if the end device is a console 0 if the I/O device is not a console
+    1 if the end device is a console 0 if the I/O device is not a
+    console
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

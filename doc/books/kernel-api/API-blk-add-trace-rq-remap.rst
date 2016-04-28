@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-add-trace-rq-remap:
 
@@ -7,7 +8,7 @@ blk_add_trace_rq_remap
 
 *man blk_add_trace_rq_remap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Add a trace for a request-remap operation
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Device mapper remaps request to other devices. Add a trace for that action.
+Device mapper remaps request to other devices. Add a trace for that
+action.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

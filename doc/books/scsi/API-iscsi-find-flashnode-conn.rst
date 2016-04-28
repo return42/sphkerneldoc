@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-iscsi-find-flashnode-conn:
 
@@ -7,7 +8,7 @@ iscsi_find_flashnode_conn
 
 *man iscsi_find_flashnode_conn(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 finds flashnode connection entry
 
@@ -15,7 +16,7 @@ finds flashnode connection entry
 Synopsis
 ========
 
-.. c:function:: struct device ⋆ iscsi_find_flashnode_conn( struct iscsi_bus_flash_session * fnode_sess )
+.. c:function:: struct device * iscsi_find_flashnode_conn( struct iscsi_bus_flash_session * fnode_sess )
 
 Arguments
 =========
@@ -27,10 +28,21 @@ Arguments
 Description
 ===========
 
-Finds the flashnode connection object comparing the data passed using logic defined in passed function pointer
+Finds the flashnode connection object comparing the data passed using
+logic defined in passed function pointer
 
 
 Returns
 =======
 
-pointer to found flashnode connection device object on success ``NULL`` on failure
+pointer to found flashnode connection device object on success ``NULL``
+on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

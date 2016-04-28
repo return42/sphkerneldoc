@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fence-init:
 
@@ -7,7 +8,7 @@ fence_init
 
 *man fence_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize a custom fence.
 
@@ -39,7 +40,19 @@ Arguments
 Description
 ===========
 
-Initializes an allocated fence, the caller doesn't have to keep its refcount after committing with this fence, but it will need to hold a refcount again if
-fence_ops.enable_signaling gets called. This can be used for other implementing other types of fence.
+Initializes an allocated fence, the caller doesn't have to keep its
+refcount after committing with this fence, but it will need to hold a
+refcount again if fence_ops.enable_signaling gets called. This can be
+used for other implementing other types of fence.
 
-context and seqno are used for easy comparison between fences, allowing to check which fence is later by simply using fence_later.
+context and seqno are used for easy comparison between fences, allowing
+to check which fence is later by simply using fence_later.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

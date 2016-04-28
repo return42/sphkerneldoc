@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-post-runtime-resume:
 
@@ -7,7 +8,7 @@ blk_post_runtime_resume
 
 *man blk_post_runtime_resume(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Post runtime resume processing
 
@@ -30,7 +31,19 @@ Arguments
 Description
 ===========
 
-Update the queue's runtime status according to the return value of the device's runtime_resume function. If it is successfully resumed, process the requests that are queued into
-the device's queue when it is resuming and then mark last busy and initiate autosuspend for it.
+Update the queue's runtime status according to the return value of the
+device's runtime_resume function. If it is successfully resumed,
+process the requests that are queued into the device's queue when it is
+resuming and then mark last busy and initiate autosuspend for it.
 
-This function should be called near the end of the device's runtime_resume callback.
+This function should be called near the end of the device's
+runtime_resume callback.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

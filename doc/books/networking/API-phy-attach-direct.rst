@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-phy-attach-direct:
 
@@ -7,7 +8,7 @@ phy_attach_direct
 
 *man phy_attach_direct(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 attach a network device to a given PHY device pointer
 
@@ -36,6 +37,18 @@ Arguments
 Description
 ===========
 
-Called by drivers to attach to a particular PHY device. The phy_device is found, and properly hooked up to the phy_driver. If no driver is attached, then a generic driver is
-used. The phy_device is given a ptr to the attaching device, and given a callback for link status change. The phy_device is returned to the attaching driver. This function takes
+Called by drivers to attach to a particular PHY device. The phy_device
+is found, and properly hooked up to the phy_driver. If no driver is
+attached, then a generic driver is used. The phy_device is given a ptr
+to the attaching device, and given a callback for link status change.
+The phy_device is returned to the attaching driver. This function takes
 a reference on the phy device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

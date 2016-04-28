@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-hsi-alloc-controller:
 
@@ -7,7 +8,7 @@ hsi_alloc_controller
 
 *man hsi_alloc_controller(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Allocate an HSI controller and its ports
 
@@ -15,7 +16,7 @@ Allocate an HSI controller and its ports
 Synopsis
 ========
 
-.. c:function:: struct hsi_controller ⋆ hsi_alloc_controller( unsigned int n_ports, gfp_t flags )
+.. c:function:: struct hsi_controller * hsi_alloc_controller( unsigned int n_ports, gfp_t flags )
 
 Arguments
 =========
@@ -31,3 +32,12 @@ Description
 ===========
 
 Return NULL on failure or a pointer to an hsi_controller on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

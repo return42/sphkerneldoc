@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mipi-dsi-dcs-write:
 
@@ -7,7 +8,7 @@ mipi_dsi_dcs_write
 
 *man mipi_dsi_dcs_write(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send DCS write command
 
@@ -36,10 +37,21 @@ Arguments
 Description
 ===========
 
-This function will automatically choose the right data type depending on the command payload length.
+This function will automatically choose the right data type depending on
+the command payload length.
 
 
 Return
 ======
 
-The number of bytes successfully transmitted or a negative error code on failure.
+The number of bytes successfully transmitted or a negative error code on
+failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

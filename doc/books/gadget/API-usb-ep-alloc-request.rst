@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-ep-alloc-request:
 
@@ -7,7 +8,7 @@ usb_ep_alloc_request
 
 *man usb_ep_alloc_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate a request object to use with this endpoint
 
@@ -15,7 +16,7 @@ allocate a request object to use with this endpoint
 Synopsis
 ========
 
-.. c:function:: struct usb_request ⋆ usb_ep_alloc_request( struct usb_ep * ep, gfp_t gfp_flags )
+.. c:function:: struct usb_request * usb_ep_alloc_request( struct usb_ep * ep, gfp_t gfp_flags )
 
 Arguments
 =========
@@ -24,13 +25,26 @@ Arguments
     the endpoint to be used with with the request
 
 ``gfp_flags``
-    GFP_⋆ flags to use
+    GFP_* flags to use
 
 
 Description
 ===========
 
-Request objects must be allocated with this call, since they normally need controller-specific setup and may even need endpoint-specific resources such as allocation of DMA
-descriptors. Requests may be submitted with ``usb_ep_queue``, and receive a single completion callback. Free requests with ``usb_ep_free_request``, when they are no longer needed.
+Request objects must be allocated with this call, since they normally
+need controller-specific setup and may even need endpoint-specific
+resources such as allocation of DMA descriptors. Requests may be
+submitted with ``usb_ep_queue``, and receive a single completion
+callback. Free requests with ``usb_ep_free_request``, when they are no
+longer needed.
 
 Returns the request, or null if one could not be allocated.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

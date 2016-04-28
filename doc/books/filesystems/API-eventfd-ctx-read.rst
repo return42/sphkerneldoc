@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-eventfd-ctx-read:
 
@@ -7,7 +8,7 @@ eventfd_ctx_read
 
 *man eventfd_ctx_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Reads the eventfd counter or wait if it is zero.
 
@@ -35,6 +36,17 @@ Description
 
 Returns ``0`` if successful, or the following error codes:
 
--EAGAIN : The operation would have blocked but ``no_wait`` was non-zero. -ERESTARTSYS : A signal interrupted the wait operation.
+-EAGAIN : The operation would have blocked but ``no_wait`` was non-zero.
+-ERESTARTSYS : A signal interrupted the wait operation.
 
-If ``no_wait`` is zero, the function might sleep until the eventfd internal counter becomes greater than zero.
+If ``no_wait`` is zero, the function might sleep until the eventfd
+internal counter becomes greater than zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

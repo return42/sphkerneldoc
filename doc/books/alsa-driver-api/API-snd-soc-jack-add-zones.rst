@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-jack-add-zones:
 
@@ -7,7 +8,7 @@ snd_soc_jack_add_zones
 
 *man snd_soc_jack_add_zones(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Associate voltage zones with jack
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-After this function has been called the zones specified in the array will be associated with the jack.
+After this function has been called the zones specified in the array
+will be associated with the jack.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

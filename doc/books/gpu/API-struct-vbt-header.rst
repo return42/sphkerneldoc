@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vbt-header:
 
@@ -7,7 +8,7 @@ struct vbt_header
 
 *man struct vbt_header(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 VBT Header structure
 
@@ -55,3 +56,12 @@ bdb_offset
 
 aim_offset[4]
     Offsets of add-in data blocks from beginning of VBT
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

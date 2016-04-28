@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rio-dev:
 
@@ -7,7 +8,7 @@ struct rio_dev
 
 *man struct rio_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 RIO device info
 
@@ -135,3 +136,12 @@ state
 
 rswitch[0]
     struct rio_switch (if valid for this device)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

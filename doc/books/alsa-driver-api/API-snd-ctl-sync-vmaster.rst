@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-ctl-sync-vmaster:
 
@@ -7,7 +8,7 @@ snd_ctl_sync_vmaster
 
 *man snd_ctl_sync_vmaster(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Sync the vmaster slaves and hook
 
@@ -30,4 +31,15 @@ Arguments
 Description
 ===========
 
-Forcibly call the put callback of each slave and call the hook function to synchronize with the current value of the given vmaster element. NOP when NULL is passed to ``kcontrol``.
+Forcibly call the put callback of each slave and call the hook function
+to synchronize with the current value of the given vmaster element. NOP
+when NULL is passed to ``kcontrol``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

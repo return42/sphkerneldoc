@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-frag-dma-map:
 
@@ -7,7 +8,7 @@ skb_frag_dma_map
 
 *man skb_frag_dma_map(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 maps a paged fragment via the DMA API
 
@@ -27,16 +28,26 @@ Arguments
     the paged fragment to map
 
 ``offset``
-    the offset within the fragment (starting at the fragment's own offset)
+    the offset within the fragment (starting at the fragment's own
+    offset)
 
 ``size``
     the number of bytes to map
 
 ``dir``
-    the direction of the mapping (``PCI_DMA_``\ ⋆)
+    the direction of the mapping (``PCI_DMA_``\ *)
 
 
 Description
 ===========
 
 Maps the page associated with ``frag`` to ``device``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

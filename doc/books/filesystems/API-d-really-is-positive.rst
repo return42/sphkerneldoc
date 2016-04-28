@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-really-is-positive:
 
@@ -7,7 +8,7 @@ d_really_is_positive
 
 *man d_really_is_positive(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Determine if a dentry is really positive (ignoring fallthroughs)
 
@@ -27,8 +28,20 @@ Arguments
 Description
 ===========
 
-Returns true if the dentry represents a name that maps to an inode (ie. ->d_inode is not NULL). The dentry might still represent a whiteout if that is represented on medium as a
-0,0 chardev.
+Returns true if the dentry represents a name that maps to an inode (ie.
+->d_inode is not NULL). The dentry might still represent a whiteout if
+that is represented on medium as a 0,0 chardev.
 
-Note! (1) This should be used ⋆only⋆ by a filesystem to examine its own dentries. It should not be used to look at some other filesystem's dentries. (2) It should also be used in
-combination with ``d_inode`` to get the inode.
+Note! (1) This should be used *only* by a filesystem to examine its own
+dentries. It should not be used to look at some other filesystem's
+dentries. (2) It should also be used in combination with ``d_inode`` to
+get the inode.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

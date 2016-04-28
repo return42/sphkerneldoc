@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-rect:
 
@@ -7,7 +8,7 @@ struct drm_rect
 
 *man struct drm_rect(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 two dimensional rectangle
 
@@ -39,3 +40,12 @@ x2
 
 y2
     vertical ending coordinate (exclusive)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

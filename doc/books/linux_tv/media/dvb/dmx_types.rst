@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _dmx_types:
 
@@ -14,22 +15,54 @@ Output for the demux
 
 .. _dmx-output:
 
-.. table:: enum dmx_output
+.. flat-table:: enum dmx_output
+    :header-rows:  1
+    :stub-columns: 0
 
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | ID                                                                                         | Description                                                                                |
-    +============================================================================================+============================================================================================+
-    | DMX_OUT_DECODER                                                                            | Streaming directly to decoder.                                                             |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | DMX_OUT_TAP                                                                                | Output going to a memory buffer (to be retrieved via the read command). Delivers the       |
-    |                                                                                            | stream output to the demux device on which the ioctl is called.                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | DMX_OUT_TS_TAP                                                                             | Output multiplexed into a new TS (to be retrieved by reading from the logical DVR device). |
-    |                                                                                            | Routes output to the logical DVR device ``/dev/dvb/adapter?/dvr?``, which delivers a TS    |
-    |                                                                                            | multiplexed from all filters for which ``DMX_OUT_TS_TAP`` was specified.                   |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | DMX_OUT_TSDEMUX_TAP                                                                        | Like :ref:`DMX_OUT_TS_TAP     <DMX-OUT-TS-TAP>`  but retrieved from the DMX device.        |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+
+    -  .. row 1
+
+       -  ID
+
+       -  Description
+
+    -  .. row 2
+
+       -  .. _`DMX-OUT-DECODER`:
+
+          DMX_OUT_DECODER
+
+       -  Streaming directly to decoder.
+
+    -  .. row 3
+
+       -  .. _`DMX-OUT-TAP`:
+
+          DMX_OUT_TAP
+
+       -  Output going to a memory buffer (to be retrieved via the read
+          command). Delivers the stream output to the demux device on which
+          the ioctl is called.
+
+    -  .. row 4
+
+       -  .. _`DMX-OUT-TS-TAP`:
+
+          DMX_OUT_TS_TAP
+
+       -  Output multiplexed into a new TS (to be retrieved by reading from
+          the logical DVR device). Routes output to the logical DVR device
+          ``/dev/dvb/adapter?/dvr?``, which delivers a TS multiplexed from
+          all filters for which ``DMX_OUT_TS_TAP`` was specified.
+
+    -  .. row 5
+
+       -  .. _`DMX-OUT-TSDEMUX-TAP`:
+
+          DMX_OUT_TSDEMUX_TAP
+
+       -  Like :ref:`DMX_OUT_TS_TAP <DMX-OUT-TS-TAP>` but retrieved
+          from the DMX device.
 
 
 
@@ -209,3 +242,12 @@ enum dmx_source_t
     } dmx_source_t;
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

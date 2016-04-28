@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-user-scan:
 
@@ -7,7 +8,7 @@ ata_scsi_user_scan
 
 *man ata_scsi_user_scan(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 indication for user-initiated bus scan
 
@@ -36,7 +37,8 @@ Arguments
 Description
 ===========
 
-This function is called when user explicitly requests bus scan. Set probe pending flag and invoke EH.
+This function is called when user explicitly requests bus scan. Set
+probe pending flag and invoke EH.
 
 
 LOCKING
@@ -49,3 +51,12 @@ RETURNS
 =======
 
 Zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

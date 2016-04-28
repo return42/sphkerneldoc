@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _device-quirks:
 
@@ -5,10 +6,15 @@
 Device Quirks
 =============
 
-Completing the platform data specific to your device, you may also need to write some code in the glue layer to work around some device specific limitations. These quirks may be
-due to some hardware bugs, or simply be the result of an incomplete implementation of the USB On-the-Go specification.
+Completing the platform data specific to your device, you may also need
+to write some code in the glue layer to work around some device specific
+limitations. These quirks may be due to some hardware bugs, or simply be
+the result of an incomplete implementation of the USB On-the-Go
+specification.
 
-The JZ4740 UDC exhibits such quirks, some of which we will discuss here for the sake of insight even though these might not be found in the controller hardware you are working on.
+The JZ4740 UDC exhibits such quirks, some of which we will discuss here
+for the sake of insight even though these might not be found in the
+controller hardware you are working on.
 
 Let's get back to the init function first:
 
@@ -33,10 +39,14 @@ Let's get back to the init function first:
         return 0;
     }
 
-Instruction on line 12 helps the MUSB controller driver to work around the fact that the controller hardware is missing registers that are used for USB endpoints configuration.
+Instruction on line 12 helps the MUSB controller driver to work around
+the fact that the controller hardware is missing registers that are used
+for USB endpoints configuration.
 
-Without these registers, the controller driver is unable to read the endpoints configuration from the hardware, so we use line 12 instruction to bypass reading the configuration
-from silicon, and rely on a hard-coded table that describes the endpoints configuration instead:
+Without these registers, the controller driver is unable to read the
+endpoints configuration from the hardware, so we use line 12 instruction
+to bypass reading the configuration from silicon, and rely on a
+hard-coded table that describes the endpoints configuration instead:
 
 
 .. code-block:: c
@@ -47,13 +57,21 @@ from silicon, and rely on a hard-coded table that describes the endpoints config
     { .hw_ep_num = 2, .style = FIFO_TX, .maxpacket = 64, },
     };
 
-Looking at the configuration table above, we see that each endpoints is described by three fields: hw_ep_num is the endpoint number, style is its direction (either FIFO_TX for
-the controller driver to send packets in the controller hardware, or FIFO_RX to receive packets from hardware), and maxpacket defines the maximum size of each data packet that can
-be transmitted over that endpoint. Reading from the table, the controller driver knows that endpoint 1 can be used to send and receive USB data packets of 512 bytes at once (this
-is in fact a bulk in/out endpoint), and endpoint 2 can be used to send data packets of 64 bytes at once (this is in fact an interrupt endpoint).
+Looking at the configuration table above, we see that each endpoints is
+described by three fields: hw_ep_num is the endpoint number, style is
+its direction (either FIFO_TX for the controller driver to send packets
+in the controller hardware, or FIFO_RX to receive packets from
+hardware), and maxpacket defines the maximum size of each data packet
+that can be transmitted over that endpoint. Reading from the table, the
+controller driver knows that endpoint 1 can be used to send and receive
+USB data packets of 512 bytes at once (this is in fact a bulk in/out
+endpoint), and endpoint 2 can be used to send data packets of 64 bytes
+at once (this is in fact an interrupt endpoint).
 
-Note that there is no information about endpoint 0 here: that one is implemented by default in every silicon design, with a predefined configuration according to the USB
-specification. For more examples of endpoint configuration tables, see musb_core.c.
+Note that there is no information about endpoint 0 here: that one is
+implemented by default in every silicon design, with a predefined
+configuration according to the USB specification. For more examples of
+endpoint configuration tables, see musb_core.c.
 
 Let's now get back to the interrupt handler function:
 
@@ -88,9 +106,25 @@ Let's now get back to the interrupt handler function:
         return retval;
     }
 
-Instruction on line 18 above is a way for the controller driver to work around the fact that some interrupt bits used for USB host mode operation are missing in the MUSB_INTRUSB
-register, thus left in an undefined hardware state, since this MUSB controller hardware is used in peripheral mode only. As a consequence, the glue layer masks these missing bits
-out to avoid parasite interrupts by doing a logical AND operation between the value read from MUSB_INTRUSB and the bits that are actually implemented in the register.
+Instruction on line 18 above is a way for the controller driver to work
+around the fact that some interrupt bits used for USB host mode
+operation are missing in the MUSB_INTRUSB register, thus left in an
+undefined hardware state, since this MUSB controller hardware is used in
+peripheral mode only. As a consequence, the glue layer masks these
+missing bits out to avoid parasite interrupts by doing a logical AND
+operation between the value read from MUSB_INTRUSB and the bits that
+are actually implemented in the register.
 
-These are only a couple of the quirks found in the JZ4740 USB device controller. Some others were directly addressed in the MUSB core since the fixes were generic enough to provide
-a better handling of the issues for others controller hardware eventually.
+These are only a couple of the quirks found in the JZ4740 USB device
+controller. Some others were directly addressed in the MUSB core since
+the fixes were generic enough to provide a better handling of the issues
+for others controller hardware eventually.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

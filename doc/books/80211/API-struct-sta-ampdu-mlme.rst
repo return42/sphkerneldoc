@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-sta-ampdu-mlme:
 
@@ -7,7 +8,7 @@ struct sta_ampdu_mlme
 
 *man struct sta_ampdu_mlme(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 STA aggregation information.
 
@@ -36,16 +37,20 @@ Members
 =======
 
 mtx
-    mutex to protect all TX data (except non-NULL assignments to tid_tx[idx], which are protected by the sta spinlock) tid_start_tx is also protected by sta->lock.
+    mutex to protect all TX data (except non-NULL assignments to
+    tid_tx[idx], which are protected by the sta spinlock)
+    tid_start_tx is also protected by sta->lock.
 
 tid_rx[IEEE80211_NUM_TIDS]
     aggregation info for Rx per TID -- RCU protected
 
 tid_rx_timer_expired[BITS_TO_LONGS(IEEE80211_NUM_TIDS)]
-    bitmap indicating on which TIDs the RX timer expired until the work for it runs
+    bitmap indicating on which TIDs the RX timer expired until the work
+    for it runs
 
 tid_rx_stop_requested[BITS_TO_LONGS(IEEE80211_NUM_TIDS)]
-    bitmap indicating which BA sessions per TID the driver requested to close until the work for it runs
+    bitmap indicating which BA sessions per TID the driver requested to
+    close until the work for it runs
 
 agg_session_valid[BITS_TO_LONGS(IEEE80211_NUM_TIDS)]
     bitmap indicating which TID has a rx BA session open on
@@ -67,3 +72,12 @@ addba_req_num[IEEE80211_NUM_TIDS]
 
 dialog_token_allocator
     dialog token enumerator for each new session;
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

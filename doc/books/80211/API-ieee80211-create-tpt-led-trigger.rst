@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-create-tpt-led-trigger:
 
@@ -7,7 +8,7 @@ ieee80211_create_tpt_led_trigger
 
 *man ieee80211_create_tpt_led_trigger(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create throughput LED trigger
 
@@ -15,7 +16,7 @@ create throughput LED trigger
 Synopsis
 ========
 
-.. c:function:: const char ⋆ ieee80211_create_tpt_led_trigger( struct ieee80211_hw * hw, unsigned int flags, const struct ieee80211_tpt_blink * blink_table, unsigned int blink_table_len )
+.. c:function:: const char * ieee80211_create_tpt_led_trigger( struct ieee80211_hw * hw, unsigned int flags, const struct ieee80211_tpt_blink * blink_table, unsigned int blink_table_len )
 
 Arguments
 =========
@@ -36,10 +37,20 @@ Arguments
 Return
 ======
 
-``NULL`` (in case of error, or if no LED triggers are configured) or the name of the new trigger.
+``NULL`` (in case of error, or if no LED triggers are configured) or the
+name of the new trigger.
 
 
 Note
 ====
 
 This function must be called before ``ieee80211_register_hw``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

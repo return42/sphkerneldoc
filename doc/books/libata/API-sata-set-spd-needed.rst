@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-set-spd-needed:
 
@@ -7,7 +8,7 @@ sata_set_spd_needed
 
 *man sata_set_spd_needed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 is SATA spd configuration needed
 
@@ -27,7 +28,9 @@ Arguments
 Description
 ===========
 
-Test whether the spd limit in SControl matches ``link``->sata_spd_limit. This function is used to determine whether hardreset is necessary to apply SATA spd configuration.
+Test whether the spd limit in SControl matches
+``link``->sata_spd_limit. This function is used to determine whether
+hardreset is necessary to apply SATA spd configuration.
 
 
 LOCKING
@@ -40,3 +43,12 @@ RETURNS
 =======
 
 1 if SATA spd configuration is needed, 0 otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

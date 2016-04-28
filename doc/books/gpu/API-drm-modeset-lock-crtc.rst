@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-modeset-lock-crtc:
 
@@ -7,7 +8,7 @@ drm_modeset_lock_crtc
 
 *man drm_modeset_lock_crtc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 lock crtc with hidden acquire ctx for a plane update
 
@@ -30,7 +31,19 @@ Arguments
 Description
 ===========
 
-This function locks the given crtc and plane (which should be either the primary or cursor plane) using a hidden acquire context. This is necessary so that drivers internally using
-the atomic interfaces can grab further locks with the lock acquire context.
+This function locks the given crtc and plane (which should be either the
+primary or cursor plane) using a hidden acquire context. This is
+necessary so that drivers internally using the atomic interfaces can
+grab further locks with the lock acquire context.
 
-Note that ``plane`` can be NULL, e.g. when the cursor support hasn't yet been converted to universal planes yet.
+Note that ``plane`` can be NULL, e.g. when the cursor support hasn't yet
+been converted to universal planes yet.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

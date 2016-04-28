@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _mm:
 
@@ -32,6 +33,7 @@ The Slab Cache
     API-memdup-user-nul
     API-get-user-pages-fast
 
+
 User Space Memory Access
 ========================
 
@@ -46,6 +48,7 @@ User Space Memory Access
     API---clear-user
     API--copy-to-user
     API--copy-from-user
+
 
 More Memory Management Functions
 ================================
@@ -152,3 +155,14 @@ More Memory Management Functions
     API-truncate-setsize
     API-pagecache-isize-extended
     API-truncate-pagecache-range
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

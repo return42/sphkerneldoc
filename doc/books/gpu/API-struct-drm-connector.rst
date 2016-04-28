@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-connector:
 
@@ -7,7 +8,7 @@ struct drm_connector
 
 *man struct drm_connector(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 central DRM connector control structure
 
@@ -216,5 +217,16 @@ tile_v_size
 Description
 ===========
 
-Each connector may be connected to one or more CRTCs, or may be clonable by another connector if they can share a CRTC. Each connector also has a specific position in the broader
-display (referred to as a 'screen' though it could span multiple monitors).
+Each connector may be connected to one or more CRTCs, or may be clonable
+by another connector if they can share a CRTC. Each connector also has a
+specific position in the broader display (referred to as a 'screen'
+though it could span multiple monitors).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

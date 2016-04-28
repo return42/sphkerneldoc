@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-transport-class-register:
 
@@ -7,7 +8,7 @@ transport_class_register
 
 *man transport_class_register(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register an initial transport class
 
@@ -27,7 +28,19 @@ Arguments
 Description
 ===========
 
-The transport class contains an embedded class which is used to identify it. The caller should initialise this structure with zeros and then generic class must have been
-initialised with the actual transport class unique name. There's a macro ``DECLARE_TRANSPORT_CLASS`` to do this (declared classes still must be registered).
+The transport class contains an embedded class which is used to identify
+it. The caller should initialise this structure with zeros and then
+generic class must have been initialised with the actual transport class
+unique name. There's a macro ``DECLARE_TRANSPORT_CLASS`` to do this
+(declared classes still must be registered).
 
 Returns 0 on success or error on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rps-may-expire-flow:
 
@@ -7,7 +8,7 @@ rps_may_expire_flow
 
 *man rps_may_expire_flow(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 check whether an RFS hardware filter may be removed
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Drivers that implement ``ndo_rx_flow_steer`` should periodically call this function for each installed filter and remove the filters for which it returns ``true``.
+Drivers that implement ``ndo_rx_flow_steer`` should periodically call
+this function for each installed filter and remove the filters for which
+it returns ``true``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

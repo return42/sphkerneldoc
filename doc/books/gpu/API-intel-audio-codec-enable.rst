@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-audio-codec-enable:
 
@@ -7,7 +8,7 @@ intel_audio_codec_enable
 
 *man intel_audio_codec_enable(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Enable the audio codec for HD audio
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-The enable sequences may only be performed after enabling the transcoder and port, and after completed link training.
+The enable sequences may only be performed after enabling the transcoder
+and port, and after completed link training.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

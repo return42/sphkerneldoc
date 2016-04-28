@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-alloc-pseudo:
 
@@ -7,7 +8,7 @@ d_alloc_pseudo
 
 *man d_alloc_pseudo(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate a dentry (for lookup-less filesystems)
 
@@ -15,7 +16,7 @@ allocate a dentry (for lookup-less filesystems)
 Synopsis
 ========
 
-.. c:function:: struct dentry ⋆ d_alloc_pseudo( struct super_block * sb, const struct qstr * name )
+.. c:function:: struct dentry * d_alloc_pseudo( struct super_block * sb, const struct qstr * name )
 
 Arguments
 =========
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-For a filesystem that just pins its dentries in memory and never performs lookups at all, return an unhashed IS_ROOT dentry.
+For a filesystem that just pins its dentries in memory and never
+performs lookups at all, return an unhashed IS_ROOT dentry.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

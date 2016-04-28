@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-devres-for-each-res:
 
@@ -7,7 +8,7 @@ devres_for_each_res
 
 *man devres_for_each_res(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Resource iterator
 
@@ -42,10 +43,20 @@ Arguments
 Description
 ===========
 
-Call ``fn`` for each devres of ``dev`` which is associated with ``release`` and for which ``match`` returns 1.
+Call ``fn`` for each devres of ``dev`` which is associated with
+``release`` and for which ``match`` returns 1.
 
 
 RETURNS
 =======
 
 void
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

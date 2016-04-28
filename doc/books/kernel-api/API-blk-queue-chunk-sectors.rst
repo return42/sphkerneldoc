@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-queue-chunk-sectors:
 
@@ -7,7 +8,7 @@ blk_queue_chunk_sectors
 
 *man blk_queue_chunk_sectors(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set size of the chunk for this queue
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-If a driver doesn't want IOs to cross a given chunk size, it can set this limit and prevent merging across chunks. Note that the chunk size must currently be a power-of-2 in
-sectors. Also note that the block layer must accept a page worth of data at any offset. So if the crossing of chunks is a hard limitation in the driver, it must still be prepared
+If a driver doesn't want IOs to cross a given chunk size, it can set
+this limit and prevent merging across chunks. Note that the chunk size
+must currently be a power-of-2 in sectors. Also note that the block
+layer must accept a page worth of data at any offset. So if the crossing
+of chunks is a hard limitation in the driver, it must still be prepared
 to split single page bios.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

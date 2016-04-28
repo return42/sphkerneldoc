@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _Examples:
 
@@ -5,8 +6,9 @@
 Common Examples
 ===============
 
-Let's step through a simple example: a cache of number to name mappings. The cache keeps a count of how often each of the objects is used, and when it gets full, throws out the
-least used one.
+Let's step through a simple example: a cache of number to name mappings.
+The cache keeps a count of how often each of the objects is used, and
+when it gets full, throws out the least used one.
 
 
 .. _examples-usercontext:
@@ -14,8 +16,9 @@ least used one.
 All In User Context
 ===================
 
-For our first example, we assume that all operations are in user context (ie. from system calls), so we can sleep. This means we can use a mutex to protect the cache and all the
-objects within it. Here's the code:
+For our first example, we assume that all operations are in user context
+(ie. from system calls), so we can sleep. This means we can use a mutex
+to protect the cache and all the objects within it. Here's the code:
 
 
 .. code-block:: c
@@ -115,11 +118,15 @@ objects within it. Here's the code:
             return ret;
     }
 
-Note that we always make sure we have the cache_lock when we add, delete, or look up the cache: both the cache infrastructure itself and the contents of the objects are protected
-by the lock. In this case it's easy, since we copy the data for the user, and never let them access the objects directly.
+Note that we always make sure we have the cache_lock when we add,
+delete, or look up the cache: both the cache infrastructure itself and
+the contents of the objects are protected by the lock. In this case it's
+easy, since we copy the data for the user, and never let them access the
+objects directly.
 
-There is a slight (and common) optimization here: in ``cache_add`` we set up the fields of the object before grabbing the lock. This is safe, as no-one else can access it until we
-put it in cache.
+There is a slight (and common) optimization here: in ``cache_add`` we
+set up the fields of the object before grabbing the lock. This is safe,
+as no-one else can access it until we put it in cache.
 
 
 .. _examples-interrupt:
@@ -127,10 +134,12 @@ put it in cache.
 Accessing From Interrupt Context
 ================================
 
-Now consider the case where ``cache_find`` can be called from interrupt context: either a hardware interrupt or a softirq. An example would be a timer which deletes object from the
-cache.
+Now consider the case where ``cache_find`` can be called from interrupt
+context: either a hardware interrupt or a softirq. An example would be a
+timer which deletes object from the cache.
 
-The change is shown below, in standard patch format: the ``-`` are lines which are taken away, and the ``+`` are lines which are added.
+The change is shown below, in standard patch format: the ``-`` are lines
+which are taken away, and the ``+`` are lines which are added.
 
 
 .. code-block:: c
@@ -195,11 +204,14 @@ The change is shown below, in standard patch format: the ``-`` are lines which a
              return ret;
      }
 
-Note that the ``spin_lock_irqsave`` will turn off interrupts if they are on, otherwise does nothing (if we are already in an interrupt handler), hence these functions are safe to
-call from any context.
+Note that the ``spin_lock_irqsave`` will turn off interrupts if they are
+on, otherwise does nothing (if we are already in an interrupt handler),
+hence these functions are safe to call from any context.
 
-Unfortunately, ``cache_add`` calls ``kmalloc`` with the ``GFP_KERNEL`` flag, which is only legal in user context. I have assumed that ``cache_add`` is still only called in user
-context, otherwise this should become a parameter to ``cache_add``.
+Unfortunately, ``cache_add`` calls ``kmalloc`` with the ``GFP_KERNEL``
+flag, which is only legal in user context. I have assumed that
+``cache_add`` is still only called in user context, otherwise this
+should become a parameter to ``cache_add``.
 
 
 .. _examples-refcnt:
@@ -207,19 +219,28 @@ context, otherwise this should become a parameter to ``cache_add``.
 Exposing Objects Outside This File
 ==================================
 
-If our objects contained more information, it might not be sufficient to copy the information in and out: other parts of the code might want to keep pointers to these objects, for
-example, rather than looking up the id every time. This produces two problems.
+If our objects contained more information, it might not be sufficient to
+copy the information in and out: other parts of the code might want to
+keep pointers to these objects, for example, rather than looking up the
+id every time. This produces two problems.
 
-The first problem is that we use the ``cache_lock`` to protect objects: we'd need to make this non-static so the rest of the code can use it. This makes locking trickier, as it is
-no longer all in one place.
+The first problem is that we use the ``cache_lock`` to protect objects:
+we'd need to make this non-static so the rest of the code can use it.
+This makes locking trickier, as it is no longer all in one place.
 
-The second problem is the lifetime problem: if another structure keeps a pointer to an object, it presumably expects that pointer to remain valid. Unfortunately, this is only
-guaranteed while you hold the lock, otherwise someone might call ``cache_delete`` and even worse, add another object, re-using the same address.
+The second problem is the lifetime problem: if another structure keeps a
+pointer to an object, it presumably expects that pointer to remain
+valid. Unfortunately, this is only guaranteed while you hold the lock,
+otherwise someone might call ``cache_delete`` and even worse, add
+another object, re-using the same address.
 
-As there is only one lock, you can't hold it forever: no-one else would get any work done.
+As there is only one lock, you can't hold it forever: no-one else would
+get any work done.
 
-The solution to this problem is to use a reference count: everyone who has a pointer to the object increases it when they first get the object, and drops the reference count when
-they're finished with it. Whoever drops it to zero knows it is unused, and can actually delete it.
+The solution to this problem is to use a reference count: everyone who
+has a pointer to the object increases it when they first get the object,
+and drops the reference count when they're finished with it. Whoever
+drops it to zero knows it is unused, and can actually delete it.
 
 Here is the code:
 
@@ -312,11 +333,15 @@ Here is the code:
     +        return obj;
      }
 
-We encapsulate the reference counting in the standard 'get' and 'put' functions. Now we can return the object itself from ``cache_find`` which has the advantage that the user can
-now sleep holding the object (eg. to ``copy_to_user`` to name to userspace).
+We encapsulate the reference counting in the standard 'get' and 'put'
+functions. Now we can return the object itself from ``cache_find`` which
+has the advantage that the user can now sleep holding the object (eg. to
+``copy_to_user`` to name to userspace).
 
-The other point to note is that I said a reference should be held for every pointer to the object: thus the reference count is 1 when first inserted into the cache. In some
-versions the framework does not hold a reference count, but they are more complicated.
+The other point to note is that I said a reference should be held for
+every pointer to the object: thus the reference count is 1 when first
+inserted into the cache. In some versions the framework does not hold a
+reference count, but they are more complicated.
 
 
 .. _examples-refcnt-atomic:
@@ -324,9 +349,14 @@ versions the framework does not hold a reference count, but they are more compli
 Using Atomic Operations For The Reference Count
 -----------------------------------------------
 
-In practice, ``atomic_t`` would usually be used for ``refcnt``. There are a number of atomic operations defined in ``include/asm/atomic.h``: these are guaranteed to be seen
-atomically from all CPUs in the system, so no lock is required. In this case, it is simpler than using spinlocks, although for anything non-trivial using spinlocks is clearer. The
-``atomic_inc`` and ``atomic_dec_and_test`` are used instead of the standard increment and decrement operators, and the lock is no longer used to protect the reference count itself.
+In practice, ``atomic_t`` would usually be used for ``refcnt``. There
+are a number of atomic operations defined in ``include/asm/atomic.h``:
+these are guaranteed to be seen atomically from all CPUs in the system,
+so no lock is required. In this case, it is simpler than using
+spinlocks, although for anything non-trivial using spinlocks is clearer.
+The ``atomic_inc`` and ``atomic_dec_and_test`` are used instead of the
+standard increment and decrement operators, and the lock is no longer
+used to protect the reference count itself.
 
 
 .. code-block:: c
@@ -413,22 +443,33 @@ atomically from all CPUs in the system, so no lock is required. In this case, it
 Protecting The Objects Themselves
 =================================
 
-In these examples, we assumed that the objects (except the reference counts) never changed once they are created. If we wanted to allow the name to change, there are three
-possibilities:
+In these examples, we assumed that the objects (except the reference
+counts) never changed once they are created. If we wanted to allow the
+name to change, there are three possibilities:
 
--  You can make ``cache_lock`` non-static, and tell people to grab that lock before changing the name in any object.
+-  You can make ``cache_lock`` non-static, and tell people to grab that
+   lock before changing the name in any object.
 
--  You can provide a ``cache_obj_rename`` which grabs this lock and changes the name for the caller, and tell everyone to use that function.
+-  You can provide a ``cache_obj_rename`` which grabs this lock and
+   changes the name for the caller, and tell everyone to use that
+   function.
 
--  You can make the ``cache_lock`` protect only the cache itself, and use another lock to protect the name.
+-  You can make the ``cache_lock`` protect only the cache itself, and
+   use another lock to protect the name.
 
-Theoretically, you can make the locks as fine-grained as one lock for every field, for every object. In practice, the most common variants are:
+Theoretically, you can make the locks as fine-grained as one lock for
+every field, for every object. In practice, the most common variants
+are:
 
--  One lock which protects the infrastructure (the ``cache`` list in this example) and all the objects. This is what we have done so far.
+-  One lock which protects the infrastructure (the ``cache`` list in
+   this example) and all the objects. This is what we have done so far.
 
--  One lock which protects the infrastructure (including the list pointers inside the objects), and one lock inside the object which protects the rest of that object.
+-  One lock which protects the infrastructure (including the list
+   pointers inside the objects), and one lock inside the object which
+   protects the rest of that object.
 
--  Multiple locks to protect the infrastructure (eg. one lock per hash chain), possibly with a separate per-object lock.
+-  Multiple locks to protect the infrastructure (eg. one lock per hash
+   chain), possibly with a separate per-object lock.
 
 Here is the "lock-per-object" implementation:
 
@@ -465,11 +506,27 @@ Here is the "lock-per-object" implementation:
              spin_lock_irqsave(&cache_lock, flags);
              __cache_add(obj);
 
-Note that I decide that the ``popularity`` count should be protected by the ``cache_lock`` rather than the per-object lock: this is because it (like the ``struct list_head`` inside
-the object) is logically part of the infrastructure. This way, I don't need to grab the lock of every object in ``__cache_add`` when seeking the least popular.
+Note that I decide that the ``popularity`` count should be protected by
+the ``cache_lock`` rather than the per-object lock: this is because it
+(like the ``struct list_head`` inside the object) is logically part of
+the infrastructure. This way, I don't need to grab the lock of every
+object in ``__cache_add`` when seeking the least popular.
 
-I also decided that the ``id`` member is unchangeable, so I don't need to grab each object lock in ``__cache_find()`` to examine the ``id``: the object lock is only used by a
-caller who wants to read or write the ``name`` field.
+I also decided that the ``id`` member is unchangeable, so I don't need
+to grab each object lock in ``__cache_find()`` to examine the ``id``:
+the object lock is only used by a caller who wants to read or write the
+``name`` field.
 
-Note also that I added a comment describing what data was protected by which locks. This is extremely important, as it describes the runtime behavior of the code, and can be hard
-to gain from just reading. And as Alan Cox says, “Lock data, not code”.
+Note also that I added a comment describing what data was protected by
+which locks. This is extremely important, as it describes the runtime
+behavior of the code, and can be hard to gain from just reading. And as
+Alan Cox says, “Lock data, not code”.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

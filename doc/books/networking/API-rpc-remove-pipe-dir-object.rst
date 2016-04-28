@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rpc-remove-pipe-dir-object:
 
@@ -7,7 +8,7 @@ rpc_remove_pipe_dir_object
 
 *man rpc_remove_pipe_dir_object(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove a rpc_pipe_dir_object from a directory
 
@@ -28,3 +29,12 @@ Arguments
 
 ``pdo``
     pointer to struct rpc_pipe_dir_object
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

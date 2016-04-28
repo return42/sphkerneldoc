@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 ====
 ASoC
@@ -95,6 +96,7 @@ ASoC Core API
     API-snd-soc-put-strobe
     API-snd-soc-new-compress
 
+
 ASoC DAPM API
 =============
 
@@ -131,6 +133,7 @@ ASoC DAPM API
     API-snd-soc-dapm-ignore-suspend
     API-snd-soc-dapm-free
 
+
 ASoC DMA Engine API
 ===================
 
@@ -141,3 +144,14 @@ ASoC DMA Engine API
     API-snd-dmaengine-pcm-prepare-slave-config
     API-snd-dmaengine-pcm-register
     API-snd-dmaengine-pcm-unregister
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

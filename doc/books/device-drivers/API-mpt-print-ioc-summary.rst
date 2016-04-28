@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-print-ioc-summary:
 
@@ -7,7 +8,7 @@ mpt_print_ioc_summary
 
 *man mpt_print_ioc_summary(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Write ASCII summary of IOC to a buffer.
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-This routine writes (english readable) ASCII text, which represents a summary of IOC information, to a buffer.
+This routine writes (english readable) ASCII text, which represents a
+summary of IOC information, to a buffer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

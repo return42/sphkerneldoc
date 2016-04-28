@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-downloadboot:
 
@@ -7,7 +8,7 @@ mpt_downloadboot
 
 *man mpt_downloadboot(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 DownloadBoot code
 
@@ -35,4 +36,14 @@ Description
 
 FwDownloadBoot requires Programmed IO access.
 
-Returns 0 for success -1 FW Image size is 0 -2 No valid cached_fw Pointer <0 for fw upload failure.
+Returns 0 for success -1 FW Image size is 0 -2 No valid cached_fw
+Pointer <0 for fw upload failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

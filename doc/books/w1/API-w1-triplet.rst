@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-w1-triplet:
 
@@ -7,9 +8,9 @@ w1_triplet
 
 *man w1_triplet(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-⋆ Does a triplet - used for searching ROM addresses.
+* Does a triplet - used for searching ROM addresses.
 
 
 Synopsis
@@ -30,10 +31,20 @@ Arguments
 Return bits
 ===========
 
-bit 0 = id_bit bit 1 = comp_bit bit 2 = dir_taken If both bits 0 & 1 are set, the search should be restarted.
+bit 0 = id_bit bit 1 = comp_bit bit 2 = dir_taken If both bits 0 & 1
+are set, the search should be restarted.
 
 
 Return
 ======
 
 bit fields - see above
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

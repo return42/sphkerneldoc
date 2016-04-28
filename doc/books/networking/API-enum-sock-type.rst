@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-sock-type:
 
@@ -7,7 +8,7 @@ enum sock_type
 
 *man enum sock_type(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Socket types
 
@@ -50,10 +51,22 @@ SOCK_DCCP
     Datagram Congestion Control Protocol socket
 
 SOCK_PACKET
-    linux specific way of getting packets at the dev level. For writing rarp and other similar things on the user level.
+    linux specific way of getting packets at the dev level. For writing
+    rarp and other similar things on the user level.
 
 
 Description
 ===========
 
-When adding some new socket type please grep ARCH_HAS_SOCKET_TYPE include/asm-⋆ /socket.h, at least MIPS overrides this enum for binary compat reasons.
+When adding some new socket type please grep ARCH_HAS_SOCKET_TYPE
+include/asm-* /socket.h, at least MIPS overrides this enum for binary
+compat reasons.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

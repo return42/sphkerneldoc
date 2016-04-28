@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-SNDRV-COMPRESS-IOCTL-VERSION:
 
@@ -7,7 +8,7 @@ SNDRV_COMPRESS_IOCTL_VERSION
 
 *man SNDRV_COMPRESS_IOCTL_VERSION(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -60,7 +61,8 @@ get the current timestamp value
 SNDRV_COMPRESS_AVAIL
 ====================
 
-get the current buffer avail value. This also queries the tstamp properties
+get the current buffer avail value. This also queries the tstamp
+properties
 
 
 SNDRV_COMPRESS_PAUSE
@@ -84,7 +86,8 @@ Start a stream
 SNDRV_COMPRESS_STOP
 ===================
 
-stop a running stream, discarding ring buffer content and the buffers currently with DSP
+stop a running stream, discarding ring buffer content and the buffers
+currently with DSP
 
 
 SNDRV_COMPRESS_DRAIN
@@ -97,3 +100,12 @@ SNDRV_COMPRESS_IOCTL_VERSION
 ============================
 
 Query the API version
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

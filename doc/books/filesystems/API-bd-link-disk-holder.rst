@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bd-link-disk-holder:
 
@@ -7,7 +8,7 @@ bd_link_disk_holder
 
 *man bd_link_disk_holder(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create symlinks between holding disk and slave bdev
 
@@ -34,13 +35,18 @@ DON'T USE THIS UNLESS YOU'RE ALREADY USING IT.
 
 This functions creates the following sysfs symlinks.
 
-- from “slaves” directory of the holder ``disk`` to the claimed ``bdev`` - from “holders” directory of the ``bdev`` to the holder ``disk``
+- from “slaves” directory of the holder ``disk`` to the claimed ``bdev``
+- from “holders” directory of the ``bdev`` to the holder ``disk``
 
-For example, if /dev/dm-0 maps to /dev/sda and disk for dm-0 is passed to ``bd_link_disk_holder``, then:
+For example, if /dev/dm-0 maps to /dev/sda and disk for dm-0 is passed
+to ``bd_link_disk_holder``, then:
 
-/sys/block/dm-0/slaves/sda --> /sys/block/sda /sys/block/sda/holders/dm-0 --> /sys/block/dm-0
+/sys/block/dm-0/slaves/sda --> /sys/block/sda
+/sys/block/sda/holders/dm-0 --> /sys/block/dm-0
 
-The caller must have claimed ``bdev`` before calling this function and ensure that both ``bdev`` and ``disk`` are valid during the creation and lifetime of these symlinks.
+The caller must have claimed ``bdev`` before calling this function and
+ensure that both ``bdev`` and ``disk`` are valid during the creation and
+lifetime of these symlinks.
 
 
 CONTEXT
@@ -53,3 +59,12 @@ RETURNS
 =======
 
 0 on success, -errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

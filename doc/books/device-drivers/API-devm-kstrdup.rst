@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-devm-kstrdup:
 
@@ -7,7 +8,7 @@ devm_kstrdup
 
 *man devm_kstrdup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Allocate resource managed space and copy an existing string into that.
 
@@ -15,7 +16,7 @@ Allocate resource managed space and copy an existing string into that.
 Synopsis
 ========
 
-.. c:function:: char ⋆ devm_kstrdup( struct device * dev, const char * s, gfp_t gfp )
+.. c:function:: char * devm_kstrdup( struct device * dev, const char * s, gfp_t gfp )
 
 Arguments
 =========
@@ -27,10 +28,20 @@ Arguments
     the string to duplicate
 
 ``gfp``
-    the GFP mask used in the ``devm_kmalloc`` call when allocating memory
+    the GFP mask used in the ``devm_kmalloc`` call when allocating
+    memory
 
 
 RETURNS
 =======
 
 Pointer to allocated string on success, NULL on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

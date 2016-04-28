@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-ctrl:
 
@@ -7,7 +8,7 @@ struct v4l2_ctrl
 
 *man struct v4l2_ctrl(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The control structure.
 
@@ -75,40 +76,53 @@ done
     Internal flag: set for each processed control.
 
 is_new
-    Set when the user specified a new value for this control. It is also set when called from v4l2_ctrl_handler_setup. Drivers should never set this flag.
+    Set when the user specified a new value for this control. It is also
+    set when called from v4l2_ctrl_handler_setup. Drivers should
+    never set this flag.
 
 has_changed
-    Set when the current value differs from the new value. Drivers should never use this flag.
+    Set when the current value differs from the new value. Drivers
+    should never use this flag.
 
 is_private
-    If set, then this control is private to its handler and it will not be added to any other handlers. Drivers can set this flag.
+    If set, then this control is private to its handler and it will not
+    be added to any other handlers. Drivers can set this flag.
 
 is_auto
-    If set, then this control selects whether the other cluster members are in 'automatic' mode or 'manual' mode. This is used for autogain/gain type clusters. Drivers should never
-    set this flag directly.
+    If set, then this control selects whether the other cluster members
+    are in 'automatic' mode or 'manual' mode. This is used for
+    autogain/gain type clusters. Drivers should never set this flag
+    directly.
 
 is_int
-    If set, then this control has a simple integer value (i.e. it uses ctrl->val).
+    If set, then this control has a simple integer value (i.e. it uses
+    ctrl->val).
 
 is_string
     If set, then this control has type V4L2_CTRL_TYPE_STRING.
 
 is_ptr
-    If set, then this control is an array and/or has type >= V4L2_CTRL_COMPOUND_TYPES and/or has type V4L2_CTRL_TYPE_STRING. In other words, struct v4l2_ext_control uses
-    field p to point to the data.
+    If set, then this control is an array and/or has type >=
+    V4L2_CTRL_COMPOUND_TYPES and/or has type
+    V4L2_CTRL_TYPE_STRING. In other words, struct v4l2_ext_control
+    uses field p to point to the data.
 
 is_array
     If set, then this control contains an N-dimensional array.
 
 has_volatiles
-    If set, then one or more members of the cluster are volatile. Drivers should never touch this flag.
+    If set, then one or more members of the cluster are volatile.
+    Drivers should never touch this flag.
 
 call_notify
-    If set, then call the handler's notify function whenever the control's value changes.
+    If set, then call the handler's notify function whenever the
+    control's value changes.
 
 manual_mode_value
-    If the is_auto flag is set, then this is the value of the auto control that determines if that control is in manual mode. So if the value of the auto control equals this
-    value, then the whole cluster is in manual mode. Drivers should never set this flag directly.
+    If the is_auto flag is set, then this is the value of the auto
+    control that determines if that control is in manual mode. So if the
+    value of the auto control equals this value, then the whole cluster
+    is in manual mode. Drivers should never set this flag directly.
 
 ops
     The control ops.
@@ -150,7 +164,18 @@ cur
     The control's current value.
 
 p_new
-    The control's new value represented via an union with provides a standard way of accessing control types through a pointer.
+    The control's new value represented via an union with provides a
+    standard way of accessing control types through a pointer.
 
 p_cur
-    The control's current value represented via an union with provides a standard way of accessing control types through a pointer.
+    The control's current value represented via an union with provides a
+    standard way of accessing control types through a pointer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

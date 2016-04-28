@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fixup-owner:
 
@@ -7,7 +8,7 @@ fixup_owner
 
 *man fixup_owner(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Post lock pi_state and corner case management
 
@@ -33,11 +34,22 @@ Arguments
 Description
 ===========
 
-After attempting to lock an rt_mutex, this function is called to cleanup the pi_state owner as well as handle race conditions that may allow us to acquire the lock. Must be
-called with the hb lock held.
+After attempting to lock an rt_mutex, this function is called to
+cleanup the pi_state owner as well as handle race conditions that may
+allow us to acquire the lock. Must be called with the hb lock held.
 
 
 Return
 ======
 
-1 - success, lock taken; 0 - success, lock not taken; <0 - on error (-EFAULT)
+1 - success, lock taken; 0 - success, lock not taken; <0 - on error
+(-EFAULT)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

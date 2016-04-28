@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-regulator-bulk-register-supply-alias:
 
@@ -7,7 +8,7 @@ regulator_bulk_register_supply_alias
 
 *man regulator_bulk_register_supply_alias(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register multiple aliases
 
@@ -30,7 +31,8 @@ Arguments
     device that should be used to lookup the supply
 
 ``alias_id``
-    List of supply names or regulator IDs that should be used to lookup the supply
+    List of supply names or regulator IDs that should be used to lookup
+    the supply
 
 ``num_id``
     Number of aliases to register
@@ -41,5 +43,15 @@ Description
 
 ``return`` 0 on success, an errno on failure.
 
-This helper function allows drivers to register several supply aliases in one operation. If any of the aliases cannot be registered any aliases that were registered will be removed
-before returning to the caller.
+This helper function allows drivers to register several supply aliases
+in one operation. If any of the aliases cannot be registered any aliases
+that were registered will be removed before returning to the caller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

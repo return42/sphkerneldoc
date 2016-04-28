@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-netdev-increment-features:
 
@@ -7,7 +8,7 @@ netdev_increment_features
 
 *man netdev_increment_features(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 increment feature set by one
 
@@ -33,5 +34,15 @@ Arguments
 Description
 ===========
 
-Computes a new feature set after adding a device with feature set ``one`` to the master device with current feature set ``all``. Will not enable anything that is off in ``mask``.
-Returns the new feature set.
+Computes a new feature set after adding a device with feature set
+``one`` to the master device with current feature set ``all``. Will not
+enable anything that is off in ``mask``. Returns the new feature set.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

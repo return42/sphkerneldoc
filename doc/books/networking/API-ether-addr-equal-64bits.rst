@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ether-addr-equal-64bits:
 
@@ -7,7 +8,7 @@ ether_addr_equal_64bits
 
 *man ether_addr_equal_64bits(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Compare two Ethernet addresses
 
@@ -32,7 +33,18 @@ Description
 
 Compare two Ethernet addresses, returns true if equal, false otherwise.
 
-The function doesn't need any conditional branches and possibly uses word memory accesses on CPU allowing cheap unaligned memory reads. arrays = { byte1, byte2, byte3, byte4,
-byte5, byte6, pad1, pad2 }
+The function doesn't need any conditional branches and possibly uses
+word memory accesses on CPU allowing cheap unaligned memory reads.
+arrays = { byte1, byte2, byte3, byte4, byte5, byte6, pad1, pad2 }
 
-Please note that alignment of addr1 & addr2 are only guaranteed to be 16 bits.
+Please note that alignment of addr1 & addr2 are only guaranteed to be 16
+bits.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

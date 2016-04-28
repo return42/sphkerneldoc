@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-iocstatus-info-config:
 
@@ -7,7 +8,7 @@ mpt_iocstatus_info_config
 
 *man mpt_iocstatus_info_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 IOCSTATUS information for config pages
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 Refer to lsi/mpi.h.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-del-mport-pw-handler:
 
@@ -7,9 +8,10 @@ rio_del_mport_pw_handler
 
 *man rio_del_mport_pw_handler(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-remove port-write message handler from the list of mport specific pw handlers
+remove port-write message handler from the list of mport specific pw
+handlers
 
 
 Synopsis
@@ -34,3 +36,12 @@ Description
 ===========
 
 Returns 0 if the request has been satisfied.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

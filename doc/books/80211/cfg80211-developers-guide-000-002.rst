@@ -1,14 +1,20 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 =========================
 Actions and configuration
 =========================
 
-Each wireless device and each virtual interface offer a set of configuration operations and other actions that are invoked by userspace. Each of these actions is described in the
-operations structure, and the parameters these operations use are described separately.
+Each wireless device and each virtual interface offer a set of
+configuration operations and other actions that are invoked by
+userspace. Each of these actions is described in the operations
+structure, and the parameters these operations use are described
+separately.
 
-Additionally, some operations are asynchronous and expect to get status information via some functions that drivers need to call.
+Additionally, some operations are asynchronous and expect to get status
+information via some functions that drivers need to call.
 
-Scanning and BSS list handling with its associated functionality is described in a separate chapter.
+Scanning and BSS list handling with its associated functionality is
+described in a separate chapter.
 
 
 .. toctree::
@@ -55,3 +61,14 @@ Scanning and BSS list handling with its associated functionality is described in
     API-cfg80211-cqm-rssi-notify
     API-cfg80211-cqm-pktloss-notify
     API-cfg80211-michael-mic-failure
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

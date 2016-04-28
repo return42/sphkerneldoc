@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dmx-section-feed:
 
@@ -7,7 +8,7 @@ struct dmx_section_feed
 
 *man struct dmx_section_feed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Structure that contains a section feed filter
 
@@ -49,12 +50,16 @@ set
     sets the section filter
 
 allocate_filter
-    This function is used to allocate a section filter on the demux. It should only be called when no filtering is in progress on this section feed. If a filter cannot be
-    allocated, the function fails with -ENOSPC.
+    This function is used to allocate a section filter on the demux. It
+    should only be called when no filtering is in progress on this
+    section feed. If a filter cannot be allocated, the function fails
+    with -ENOSPC.
 
 release_filter
-    This function releases all the resources of a previously allocated section filter. The function should not be called while filtering is in progress on this section feed. After
-    calling this function, the caller should not try to dereference the filter pointer.
+    This function releases all the resources of a previously allocated
+    section filter. The function should not be called while filtering is
+    in progress on this section feed. After calling this function, the
+    caller should not try to dereference the filter pointer.
 
 start_filtering
     starts section filtering
@@ -66,5 +71,15 @@ stop_filtering
 Description
 ===========
 
-A TS feed is typically mapped to a hardware PID filter on the demux chip. Using this API, the client can set the filtering properties to start/stop filtering TS packets on a
-particular TS feed.
+A TS feed is typically mapped to a hardware PID filter on the demux
+chip. Using this API, the client can set the filtering properties to
+start/stop filtering TS packets on a particular TS feed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

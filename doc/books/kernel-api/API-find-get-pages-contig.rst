@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-find-get-pages-contig:
 
@@ -7,7 +8,7 @@ find_get_pages_contig
 
 *man find_get_pages_contig(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 gang contiguous pagecache lookup
 
@@ -36,6 +37,16 @@ Arguments
 Description
 ===========
 
-``find_get_pages_contig`` works exactly like ``find_get_pages``, except that the returned number of pages are guaranteed to be contiguous.
+``find_get_pages_contig`` works exactly like ``find_get_pages``, except
+that the returned number of pages are guaranteed to be contiguous.
 
 ``find_get_pages_contig`` returns the number of pages which were found.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

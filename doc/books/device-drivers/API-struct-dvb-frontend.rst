@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dvb-frontend:
 
@@ -7,7 +8,7 @@ struct dvb_frontend
 
 *man struct dvb_frontend(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Frontend structure to be used on drivers.
 
@@ -62,10 +63,21 @@ dtv_property_cache
     embedded struct dtv_frontend_properties
 
 callback
-    callback function used on some drivers to call either the tuner or the demodulator.
+    callback function used on some drivers to call either the tuner or
+    the demodulator.
 
 id
     Frontend ID
 
 exit
-    Used to inform the DVB core that the frontend thread should exit (usually, means that the hardware got disconnected.
+    Used to inform the DVB core that the frontend thread should exit
+    (usually, means that the hardware got disconnected.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

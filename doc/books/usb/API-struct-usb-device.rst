@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-device:
 
@@ -7,7 +8,7 @@ struct usb_device
 
 *man struct usb_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 kernel's representation of a USB device
 
@@ -97,7 +98,8 @@ speed
     device speed: high/full/low (or error)
 
 tt
-    Transaction Translator info; used with low/full speed dev, highspeed hub
+    Transaction Translator info; used with low/full speed dev, highspeed
+    hub
 
 ttport
     device port on that tt hub
@@ -157,8 +159,10 @@ have_langid
     whether string_langid is valid
 
 authorized
-    policy has said we can use it; (user space) policy determines if we authorize this device to be used or not. By default, wired USB devices are authorized. WUSB devices are not,
-    until we authorize them from user space. FIXME -- complete doc
+    policy has said we can use it; (user space) policy determines if we
+    authorize this device to be used or not. By default, wired USB
+    devices are authorized. WUSB devices are not, until we authorize
+    them from user space. FIXME -- complete doc
 
 authenticated
     Crypto authentication passed
@@ -227,7 +231,8 @@ port_is_suspended
     the upstream port is suspended (L2 or U3)
 
 wusb_dev
-    if this is a Wireless USB device, link to the WUSB specific data for the device.
+    if this is a Wireless USB device, link to the WUSB specific data for
+    the device.
 
 slot_id
     Slot ID assigned by xHCI
@@ -245,11 +250,24 @@ u2_params
     exit latencies for USB3 U2 LPM state, and hub-initiated timeout.
 
 lpm_disable_count
-    Ref count used by ``usb_disable_lpm`` and ``usb_enable_lpm`` to keep track of the number of functions that require USB 3.0 Link Power Management to be disabled for this
-    usb_device. This count should only be manipulated by those functions, with the bandwidth_mutex is held.
+    Ref count used by ``usb_disable_lpm`` and ``usb_enable_lpm`` to keep
+    track of the number of functions that require USB 3.0 Link Power
+    Management to be disabled for this usb_device. This count should
+    only be manipulated by those functions, with the bandwidth_mutex is
+    held.
 
 
 Notes
 =====
 
-Usbcore drivers should not set usbdev->state directly. Instead use ``usb_set_device_state``.
+Usbcore drivers should not set usbdev->state directly. Instead use
+``usb_set_device_state``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

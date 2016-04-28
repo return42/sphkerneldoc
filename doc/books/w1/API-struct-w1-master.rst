@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-w1-master:
 
@@ -7,7 +8,7 @@ struct w1_master
 
 *man struct w1_master(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 one per bus master
 
@@ -127,3 +128,12 @@ bus_master
 
 seq
     sequence number used for netlink broadcasts
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

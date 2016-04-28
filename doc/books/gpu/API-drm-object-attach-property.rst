@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-object-attach-property:
 
@@ -7,7 +8,7 @@ drm_object_attach_property
 
 *man drm_object_attach_property(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 attach a property to a modeset object
 
@@ -33,5 +34,15 @@ Arguments
 Description
 ===========
 
-This attaches the given property to the modeset object with the given initial value. Currently this function cannot fail since the properties are stored in a statically sized
-array.
+This attaches the given property to the modeset object with the given
+initial value. Currently this function cannot fail since the properties
+are stored in a statically sized array.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

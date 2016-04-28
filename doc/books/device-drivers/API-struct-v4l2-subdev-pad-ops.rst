@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subdev-pad-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_subdev_pad_ops
 
 *man struct v4l2_subdev_pad_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 v4l2-subdev pad level operations
 
@@ -47,7 +48,8 @@ enum_frame_size
     callback for VIDIOC_SUBDEV_ENUM_FRAME_SIZE ioctl handler code.
 
 enum_frame_interval
-    callback for VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL ioctl handler code.
+    callback for VIDIOC_SUBDEV_ENUM_FRAME_INTERVAL ioctl handler
+    code.
 
 get_fmt
     callback for VIDIOC_SUBDEV_G_FMT ioctl handler code.
@@ -74,10 +76,21 @@ enum_dv_timings
     callback for VIDIOC_SUBDEV_ENUM_DV_TIMINGS ioctl handler code.
 
 link_validate
-    used by the media controller code to check if the links that belongs to a pipeline can be used for stream.
+    used by the media controller code to check if the links that belongs
+    to a pipeline can be used for stream.
 
 get_frame_desc
     get the current low level media bus frame parameters.
 
 set_frame_desc
-    set the low level media bus frame parameters, ``fd`` array may be adjusted by the subdev driver to device capabilities.
+    set the low level media bus frame parameters, ``fd`` array may be
+    adjusted by the subdev driver to device capabilities.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

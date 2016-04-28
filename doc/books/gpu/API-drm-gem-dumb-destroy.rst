@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-gem-dumb-destroy:
 
@@ -7,7 +8,7 @@ drm_gem_dumb_destroy
 
 *man drm_gem_dumb_destroy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 dumb fb callback helper for gem based drivers
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-This implements the ->dumb_destroy kms driver callback for drivers which use gem to manage their backing storage.
+This implements the ->dumb_destroy kms driver callback for drivers
+which use gem to manage their backing storage.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

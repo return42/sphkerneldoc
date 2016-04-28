@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-amsdu-to-8023s:
 
@@ -7,7 +8,7 @@ ieee80211_amsdu_to_8023s
 
 *man ieee80211_amsdu_to_8023s(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 decode an IEEE 802.11n A-MSDU frame
 
@@ -24,7 +25,8 @@ Arguments
     The input IEEE 802.11n A-MSDU frame.
 
 ``list``
-    The output list of 802.3 frames. It must be allocated and initialized by by the caller.
+    The output list of 802.3 frames. It must be allocated and
+    initialized by by the caller.
 
 ``addr``
     The device MAC address.
@@ -42,4 +44,15 @@ Arguments
 Description
 ===========
 
-Decode an IEEE 802.11n A-MSDU frame and convert it to a list of 802.3 frames. The ``list`` will be empty if the decode fails. The ``skb`` is consumed after the function returns.
+Decode an IEEE 802.11n A-MSDU frame and convert it to a list of 802.3
+frames. The ``list`` will be empty if the decode fails. The ``skb`` is
+consumed after the function returns.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-entity-remote-pad:
 
@@ -7,7 +8,7 @@ media_entity_remote_pad
 
 *man media_entity_remote_pad(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Find the pad at the remote end of a link
 
@@ -15,7 +16,7 @@ Find the pad at the remote end of a link
 Synopsis
 ========
 
-.. c:function:: struct media_pad ⋆ media_entity_remote_pad( struct media_pad * pad )
+.. c:function:: struct media_pad * media_entity_remote_pad( struct media_pad * pad )
 
 Arguments
 =========
@@ -27,6 +28,18 @@ Arguments
 Description
 ===========
 
-Search for a remote pad connected to the given pad by iterating over all links originating or terminating at that pad until an enabled link is found.
+Search for a remote pad connected to the given pad by iterating over all
+links originating or terminating at that pad until an enabled link is
+found.
 
-Return a pointer to the pad at the remote end of the first found enabled link, or NULL if no enabled link has been found.
+Return a pointer to the pad at the remote end of the first found enabled
+link, or NULL if no enabled link has been found.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

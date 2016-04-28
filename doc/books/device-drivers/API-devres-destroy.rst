@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-devres-destroy:
 
@@ -7,7 +8,7 @@ devres_destroy
 
 *man devres_destroy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Find a device resource and destroy it
 
@@ -36,13 +37,25 @@ Arguments
 Description
 ===========
 
-Find the latest devres of ``dev`` associated with ``release`` and for which ``match`` returns 1. If ``match`` is NULL, it's considered to match all. If found, the resource is
-removed atomically and freed.
+Find the latest devres of ``dev`` associated with ``release`` and for
+which ``match`` returns 1. If ``match`` is NULL, it's considered to
+match all. If found, the resource is removed atomically and freed.
 
-Note that the release function for the resource will not be called, only the devres-allocated data will be freed. The caller becomes responsible for freeing any other data.
+Note that the release function for the resource will not be called, only
+the devres-allocated data will be freed. The caller becomes responsible
+for freeing any other data.
 
 
 RETURNS
 =======
 
 0 if devres is found and freed, -ENOENT if not found.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

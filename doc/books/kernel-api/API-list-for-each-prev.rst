@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-list-for-each-prev:
 
@@ -7,7 +8,7 @@ list_for_each_prev
 
 *man list_for_each_prev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 iterate over a list backwards
 
@@ -25,3 +26,12 @@ Arguments
 
 ``head``
     the head for your list.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-schedule-hrtimeout:
 
@@ -7,7 +8,7 @@ schedule_hrtimeout
 
 *man schedule_hrtimeout(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 sleep until timeout
 
@@ -30,14 +31,28 @@ Arguments
 Description
 ===========
 
-Make the current task sleep until the given expiry time has elapsed. The routine will return immediately unless the current task state has been set (see ``set_current_state``).
+Make the current task sleep until the given expiry time has elapsed. The
+routine will return immediately unless the current task state has been
+set (see ``set_current_state``).
 
 You can set the task state as follows -
 
-``TASK_UNINTERRUPTIBLE`` - at least ``timeout`` time is guaranteed to pass before the routine returns.
+``TASK_UNINTERRUPTIBLE`` - at least ``timeout`` time is guaranteed to
+pass before the routine returns.
 
-``TASK_INTERRUPTIBLE`` - the routine may return early if a signal is delivered to the current task.
+``TASK_INTERRUPTIBLE`` - the routine may return early if a signal is
+delivered to the current task.
 
-The current task state is guaranteed to be TASK_RUNNING when this routine returns.
+The current task state is guaranteed to be TASK_RUNNING when this
+routine returns.
 
 Returns 0 when the timer has expired otherwise -EINTR
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

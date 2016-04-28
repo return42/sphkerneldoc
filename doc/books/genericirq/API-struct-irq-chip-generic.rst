@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-irq-chip-generic:
 
@@ -7,7 +8,7 @@ struct irq_chip_generic
 
 *man struct irq_chip_generic(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Generic irq chip data structure
 
@@ -57,7 +58,9 @@ reg_writel
     Alternate I/O accessor (defaults to writel if NULL)
 
 suspend
-    Function called from core code on suspend once per chip; can be useful instead of irq_chip::suspend to handle chip details even when no interrupts are in use
+    Function called from core code on suspend once per chip; can be
+    useful instead of irq_chip::suspend to handle chip details even
+    when no interrupts are in use
 
 resume
     Function called from core code on resume once per chip;
@@ -114,5 +117,17 @@ can be useful instead of irq_chip
 Description
 ===========
 
-Note, that irq_chip_generic can have multiple irq_chip_type implementations which can be associated to a particular irq line of an irq_chip_generic instance. That allows to
-share and protect state in an irq_chip_generic instance when we need to implement different flow mechanisms (level/edge) for it.
+Note, that irq_chip_generic can have multiple irq_chip_type
+implementations which can be associated to a particular irq line of an
+irq_chip_generic instance. That allows to share and protect state in
+an irq_chip_generic instance when we need to implement different flow
+mechanisms (level/edge) for it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

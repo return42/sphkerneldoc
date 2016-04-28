@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-compr-runtime:
 
@@ -7,7 +8,7 @@ struct snd_compr_runtime
 
 *man struct snd_compr_runtime(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -39,7 +40,8 @@ ops
     pointer to DSP callbacks
 
 buffer
-    pointer to kernel buffer, valid only when not in mmap mode or DSP doesn't implement copy
+    pointer to kernel buffer, valid only when not in mmap mode or DSP
+    doesn't implement copy
 
 buffer_size
     size of the above buffer
@@ -61,3 +63,12 @@ sleep
 
 private_data
     driver private data pointer
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

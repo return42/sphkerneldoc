@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-add-chmap-ctls:
 
@@ -7,7 +8,7 @@ snd_pcm_add_chmap_ctls
 
 *man snd_pcm_add_chmap_ctls(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create channel-mapping control elements
 
@@ -42,10 +43,20 @@ Arguments
 Description
 ===========
 
-Create channel-mapping control elements assigned to the given PCM stream(s).
+Create channel-mapping control elements assigned to the given PCM
+stream(s).
 
 
 Return
 ======
 
 Zero if successful, or a negative error value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

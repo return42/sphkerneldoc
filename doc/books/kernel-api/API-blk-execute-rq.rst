@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-execute-rq:
 
@@ -7,7 +8,7 @@ blk_execute_rq
 
 *man blk_execute_rq(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 insert a request into queue for execution
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Insert a fully prepared request at the back of the I/O scheduler queue for execution and wait for completion.
+Insert a fully prepared request at the back of the I/O scheduler queue
+for execution and wait for completion.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

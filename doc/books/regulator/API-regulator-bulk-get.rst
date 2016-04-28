@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-regulator-bulk-get:
 
@@ -7,7 +8,7 @@ regulator_bulk_get
 
 *man regulator_bulk_get(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get multiple regulator consumers
 
@@ -35,5 +36,16 @@ Description
 
 ``return`` 0 on success, an errno on failure.
 
-This helper function allows drivers to get several regulator consumers in one operation. If any of the regulators cannot be acquired then any regulators that were allocated will be
-freed before returning to the caller.
+This helper function allows drivers to get several regulator consumers
+in one operation. If any of the regulators cannot be acquired then any
+regulators that were allocated will be freed before returning to the
+caller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

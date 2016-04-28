@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-crypto-skcipher-setkey:
 
@@ -7,7 +8,7 @@ crypto_skcipher_setkey
 
 *man crypto_skcipher_setkey(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set key for cipher
 
@@ -33,13 +34,25 @@ Arguments
 Description
 ===========
 
-The caller provided key is set for the skcipher referenced by the cipher handle.
+The caller provided key is set for the skcipher referenced by the cipher
+handle.
 
-Note, the key length determines the cipher type. Many block ciphers implement different cipher modes depending on the key size, such as AES-128 vs AES-192 vs. AES-256. When
-providing a 16 byte key for an AES cipher handle, AES-128 is performed.
+Note, the key length determines the cipher type. Many block ciphers
+implement different cipher modes depending on the key size, such as
+AES-128 vs AES-192 vs. AES-256. When providing a 16 byte key for an AES
+cipher handle, AES-128 is performed.
 
 
 Return
 ======
 
 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

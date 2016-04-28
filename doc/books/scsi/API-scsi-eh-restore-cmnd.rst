@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-eh-restore-cmnd:
 
@@ -7,7 +8,7 @@ scsi_eh_restore_cmnd
 
 *man scsi_eh_restore_cmnd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Restore a scsi command info as part of error recovery
 
@@ -31,3 +32,12 @@ Description
 ===========
 
 Undo any damage done by above ``scsi_eh_prep_cmnd``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

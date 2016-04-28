@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-shrink-dcache-sb:
 
@@ -7,7 +8,7 @@ shrink_dcache_sb
 
 *man shrink_dcache_sb(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 shrink dcache for a superblock
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-Shrink the dcache for the specified super block. This is used to free the dcache before unmounting a file system.
+Shrink the dcache for the specified super block. This is used to free
+the dcache before unmounting a file system.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

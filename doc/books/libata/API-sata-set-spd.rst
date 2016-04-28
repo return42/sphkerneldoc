@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-set-spd:
 
@@ -7,7 +8,7 @@ sata_set_spd
 
 *man sata_set_spd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set SATA spd according to spd limit
 
@@ -39,4 +40,14 @@ Inherited from caller.
 RETURNS
 =======
 
-0 if spd doesn't need to be changed, 1 if spd has been changed. Negative errno if SCR registers are inaccessible.
+0 if spd doesn't need to be changed, 1 if spd has been changed. Negative
+errno if SCR registers are inaccessible.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

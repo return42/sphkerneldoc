@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vb2-plane:
 
@@ -7,7 +8,7 @@ struct vb2_plane
 
 *man struct vb2_plane(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 plane information
 
@@ -48,11 +49,23 @@ length
     size of this plane (NOT the payload) in bytes
 
 min_length
-    minimum required size of this plane (NOT the payload) in bytes. ``length`` is always greater or equal to ``min_length``.
+    minimum required size of this plane (NOT the payload) in bytes.
+    ``length`` is always greater or equal to ``min_length``.
 
 m
-    Union with memtype-specific data (``offset``, ``userptr`` or ``fd``).
+    Union with memtype-specific data (``offset``, ``userptr`` or
+    ``fd``).
 
 data_offset
-    offset in the plane to the start of data; usually 0, unless there is a header in front of the data Should contain enough information to be able to cover all the fields of
-    struct v4l2_plane at videodev2.h
+    offset in the plane to the start of data; usually 0, unless there is
+    a header in front of the data Should contain enough information to
+    be able to cover all the fields of struct v4l2_plane at videodev2.h
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

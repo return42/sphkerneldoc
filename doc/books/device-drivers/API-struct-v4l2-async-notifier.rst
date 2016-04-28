@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-async-notifier:
 
@@ -7,7 +8,7 @@ struct v4l2_async_notifier
 
 *man struct v4l2_async_notifier(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 v4l2_device notifier data
 
@@ -59,3 +60,12 @@ complete
 
 unbind
     a subdevice is leaving
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-inode:
 
@@ -7,7 +8,7 @@ d_inode
 
 *man d_inode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Get the actual inode of this dentry
 
@@ -15,7 +16,7 @@ Get the actual inode of this dentry
 Synopsis
 ========
 
-.. c:function:: struct inode ⋆ d_inode( const struct dentry * dentry )
+.. c:function:: struct inode * d_inode( const struct dentry * dentry )
 
 Arguments
 =========
@@ -27,4 +28,15 @@ Arguments
 Description
 ===========
 
-This is the helper normal filesystems should use to get at their own inodes in their own dentries and ignore the layering superimposed upon them.
+This is the helper normal filesystems should use to get at their own
+inodes in their own dentries and ignore the layering superimposed upon
+them.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

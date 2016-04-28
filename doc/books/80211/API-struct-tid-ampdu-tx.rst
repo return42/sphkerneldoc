@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-tid-ampdu-tx:
 
@@ -7,7 +8,7 @@ struct tid_ampdu_tx
 
 *man struct tid_ampdu_tx(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 TID aggregation information (Tx).
 
@@ -84,7 +85,19 @@ amsdu
 Description
 ===========
 
-This structure's lifetime is managed by RCU, assignments to the array holding it must hold the aggregation mutex.
+This structure's lifetime is managed by RCU, assignments to the array
+holding it must hold the aggregation mutex.
 
-The TX path can access it under RCU lock-free if, and only if, the state has the flag ``HT_AGG_STATE_OPERATIONAL`` set. Otherwise, the TX path must also acquire the spinlock and
-re-check the state, see comments in the tx code touching it.
+The TX path can access it under RCU lock-free if, and only if, the state
+has the flag ``HT_AGG_STATE_OPERATIONAL`` set. Otherwise, the TX path
+must also acquire the spinlock and re-check the state, see comments in
+the tx code touching it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

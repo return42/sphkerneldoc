@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-host-alloc:
 
@@ -7,7 +8,7 @@ ata_host_alloc
 
 *man ata_host_alloc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate and init basic ATA host resources
 
@@ -15,7 +16,7 @@ allocate and init basic ATA host resources
 Synopsis
 ========
 
-.. c:function:: struct ata_host ⋆ ata_host_alloc( struct device * dev, int max_ports )
+.. c:function:: struct ata_host * ata_host_alloc( struct device * dev, int max_ports )
 
 Arguments
 =========
@@ -30,10 +31,14 @@ Arguments
 Description
 ===========
 
-Allocate and initialize basic ATA host resources. LLD calls this function to allocate a host, initializes it fully and attaches it using ``ata_host_register``.
+Allocate and initialize basic ATA host resources. LLD calls this
+function to allocate a host, initializes it fully and attaches it using
+``ata_host_register``.
 
-``max_ports`` ports are allocated and host->n_ports is initialized to ``max_ports``. The caller is allowed to decrease host->n_ports before calling ``ata_host_register``. The
-unused ports will be automatically freed on registration.
+``max_ports`` ports are allocated and host->n_ports is initialized to
+``max_ports``. The caller is allowed to decrease host->n_ports before
+calling ``ata_host_register``. The unused ports will be automatically
+freed on registration.
 
 
 RETURNS
@@ -46,3 +51,12 @@ LOCKING
 =======
 
 Inherited from calling layer (may sleep).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

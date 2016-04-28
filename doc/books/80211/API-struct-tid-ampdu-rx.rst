@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-tid-ampdu-rx:
 
@@ -7,7 +8,7 @@ struct tid_ampdu_rx
 
 *man struct tid_ampdu_rx(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 TID aggregation information (Rx).
 
@@ -47,10 +48,12 @@ reorder_lock
     serializes access to reorder buffer, see below.
 
 reorder_buf_filtered
-    bitmap indicating where there are filtered frames in the reorder buffer that should be ignored when releasing frames
+    bitmap indicating where there are filtered frames in the reorder
+    buffer that should be ignored when releasing frames
 
 reorder_buf
-    buffer to reorder incoming aggregated MPDUs. An MPDU may be an A-MSDU with individually reported subframes.
+    buffer to reorder incoming aggregated MPDUs. An MPDU may be an
+    A-MSDU with individually reported subframes.
 
 reorder_time
     jiffies when skb was added
@@ -83,7 +86,8 @@ dialog_token
     dialog token for aggregation session
 
 auto_seq
-    used for offloaded BA sessions to automatically pick head_seq_and and ssn.
+    used for offloaded BA sessions to automatically pick head_seq_and
+    and ssn.
 
 removed
     this session is removed (but might have been found due to RCU)
@@ -92,7 +96,19 @@ removed
 Description
 ===========
 
-This structure's lifetime is managed by RCU, assignments to the array holding it must hold the aggregation mutex.
+This structure's lifetime is managed by RCU, assignments to the array
+holding it must hold the aggregation mutex.
 
-The ``reorder_lock`` is used to protect the members of this struct, except for ``timeout``, ``buf_size`` and ``dialog_token``, which are constant across the lifetime of the struct
-(the dialog token being used only for debugging).
+The ``reorder_lock`` is used to protect the members of this struct,
+except for ``timeout``, ``buf_size`` and ``dialog_token``, which are
+constant across the lifetime of the struct (the dialog token being used
+only for debugging).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

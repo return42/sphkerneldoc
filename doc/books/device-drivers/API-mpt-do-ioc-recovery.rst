@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-do-ioc-recovery:
 
@@ -7,7 +8,7 @@ mpt_do_ioc_recovery
 
 *man mpt_do_ioc_recovery(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize or recover MPT adapter.
 
@@ -33,13 +34,26 @@ Arguments
 Description
 ===========
 
-This routine performs all the steps necessary to bring the IOC to a OPERATIONAL state.
+This routine performs all the steps necessary to bring the IOC to a
+OPERATIONAL state.
 
-This routine also pre-fetches the LAN MAC address of a Fibre Channel MPT adapter.
+This routine also pre-fetches the LAN MAC address of a Fibre Channel MPT
+adapter.
 
 
 Returns
 =======
 
-0 for success -1 if failed to get board READY -2 if READY but IOCFacts Failed -3 if READY but PrimeIOCFifos Failed -4 if READY but IOCInit Failed -5 if failed to enable_device
-and/or request_selected_regions -6 if failed to upload firmware
+0 for success -1 if failed to get board READY -2 if READY but IOCFacts
+Failed -3 if READY but PrimeIOCFifos Failed -4 if READY but IOCInit
+Failed -5 if failed to enable_device and/or request_selected_regions
+-6 if failed to upload firmware
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

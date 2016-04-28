@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-vif:
 
@@ -7,7 +8,7 @@ struct ieee80211_vif
 
 *man struct ieee80211_vif(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 per-interface data
 
@@ -44,16 +45,20 @@ type
     type of this virtual interface
 
 bss_conf
-    BSS configuration for this interface, either our own or the BSS we're associated to
+    BSS configuration for this interface, either our own or the BSS
+    we're associated to
 
 addr[ETH_ALEN]
     address of this interface
 
 p2p
-    indicates whether this AP or STA interface is a p2p interface, i.e. a GO or p2p-sta respectively
+    indicates whether this AP or STA interface is a p2p interface, i.e.
+    a GO or p2p-sta respectively
 
 csa_active
-    marks whether a channel switch is going on. Internally it is write-protected by sdata_lock and local->mtx so holding either is fine for read access.
+    marks whether a channel switch is going on. Internally it is
+    write-protected by sdata_lock and local->mtx so holding either is
+    fine for read access.
 
 mu_mimo_owner
     indicates interface owns MU-MIMO capability
@@ -68,24 +73,41 @@ txq
     the multicast data TX queue (if driver uses the TXQ abstraction)
 
 chanctx_conf
-    The channel context this interface is assigned to, or ``NULL`` when it is not assigned. This pointer is RCU-protected due to the TX path needing to access it; even though the
-    netdev carrier will always be off when it is ``NULL`` there can still be races and packets could be processed after it switches back to ``NULL``.
+    The channel context this interface is assigned to, or ``NULL`` when
+    it is not assigned. This pointer is RCU-protected due to the TX path
+    needing to access it; even though the netdev carrier will always be
+    off when it is ``NULL`` there can still be races and packets could
+    be processed after it switches back to ``NULL``.
 
 driver_flags
-    flags/capabilities the driver has for this interface, these need to be set (or cleared) when the interface is added or, if supported by the driver, the interface type is
-    changed at runtime, mac80211 will never touch this field
+    flags/capabilities the driver has for this interface, these need to
+    be set (or cleared) when the interface is added or, if supported by
+    the driver, the interface type is changed at runtime, mac80211 will
+    never touch this field
 
 debugfs_dir
-    debugfs dentry, can be used by drivers to create own per interface debug files. Note that it will be NULL for the virtual monitor interface (if that is requested.)
+    debugfs dentry, can be used by drivers to create own per interface
+    debug files. Note that it will be NULL for the virtual monitor
+    interface (if that is requested.)
 
 probe_req_reg
     probe requests should be reported to mac80211 for this interface.
 
 drv_priv[0]
-    data area for driver use, will always be aligned to sizeof(void ⋆).
+    data area for driver use, will always be aligned to sizeof(void *).
 
 
 Description
 ===========
 
-Data in this structure is continually present for driver use during the life of a virtual interface.
+Data in this structure is continually present for driver use during the
+life of a virtual interface.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

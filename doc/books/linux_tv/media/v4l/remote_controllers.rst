@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _remotes:
 
@@ -21,6 +22,7 @@ Remote Controllers
     Remote_controllers_table_change
     lirc_device_interface
 
+
 ======================
 Revision and Copyright
 ======================
@@ -40,3 +42,12 @@ Added the interface description and the RC sysfs class description.
 :revision: 1.0 / 2009-09-06 (*mcc*)
 
 Initial revision
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

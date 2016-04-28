@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _upper_layer:
 
@@ -5,7 +6,8 @@
 SCSI upper layer
 ================
 
-The upper layer supports the user-kernel interface by providing device nodes.
+The upper layer supports the user-kernel interface by providing device
+nodes.
 
 
 .. _sd:
@@ -46,3 +48,12 @@ ch (SCSI Media Changer)
 =======================
 
 ch (ch.c)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

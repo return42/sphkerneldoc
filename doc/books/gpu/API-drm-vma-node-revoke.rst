@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-vma-node-revoke:
 
@@ -7,7 +8,7 @@ drm_vma_node_revoke
 
 *man drm_vma_node_revoke(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Remove open-file from list of allowed users
 
@@ -30,9 +31,19 @@ Arguments
 Description
 ===========
 
-Decrement the ref-count of ``filp`` in the list of allowed open-files on ``node``. If the ref-count drops to zero, remove ``filp`` from the list. You must call this once for every
-``drm_vma_node_allow`` on ``filp``.
+Decrement the ref-count of ``filp`` in the list of allowed open-files on
+``node``. If the ref-count drops to zero, remove ``filp`` from the list.
+You must call this once for every ``drm_vma_node_allow`` on ``filp``.
 
 This is locked against concurrent access internally.
 
 If ``filp`` is not on the list, nothing is done.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

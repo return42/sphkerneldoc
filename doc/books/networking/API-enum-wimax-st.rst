@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-wimax-st:
 
@@ -7,7 +8,7 @@ enum wimax_st
 
 *man enum wimax_st(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The different states of a WiMAX device
 
@@ -35,49 +36,87 @@ Constants
 =========
 
 __WIMAX_ST_NULL
-    The device structure has been allocated and zeroed, but still ``wimax_dev_add`` hasn't been called. There is no state.
+    The device structure has been allocated and zeroed, but still
+    ``wimax_dev_add`` hasn't been called. There is no state.
 
 WIMAX_ST_DOWN
-    The device has been registered with the WiMAX and networking stacks, but it is not initialized (normally that is done with 'ifconfig DEV up' [or equivalent], which can upload
-    firmware and enable communications with the device). In this state, the device is powered down and using as less power as possible. This state is the default after a call to
-    ``wimax_dev_add``. It is ok to have drivers move directly to ``WIMAX_ST_UNINITIALIZED`` or ``WIMAX_ST_RADIO_OFF`` in ``_probe`` after the call to ``wimax_dev_add``. It is
-    recommended that the driver leaves this state when calling 'ifconfig DEV up' and enters it back on 'ifconfig DEV down'.
+    The device has been registered with the WiMAX and networking stacks,
+    but it is not initialized (normally that is done with 'ifconfig DEV
+    up' [or equivalent], which can upload firmware and enable
+    communications with the device). In this state, the device is
+    powered down and using as less power as possible. This state is the
+    default after a call to ``wimax_dev_add``. It is ok to have drivers
+    move directly to ``WIMAX_ST_UNINITIALIZED`` or
+    ``WIMAX_ST_RADIO_OFF`` in ``_probe`` after the call to
+    ``wimax_dev_add``. It is recommended that the driver leaves this
+    state when calling 'ifconfig DEV up' and enters it back on 'ifconfig
+    DEV down'.
 
 __WIMAX_ST_QUIESCING
-    The device is being torn down, so no API operations are allowed to proceed except the ones needed to complete the device clean up process.
+    The device is being torn down, so no API operations are allowed to
+    proceed except the ones needed to complete the device clean up
+    process.
 
 WIMAX_ST_UNINITIALIZED
-    [optional] Communication with the device is setup, but the device still requires some configuration before being operational. Some WiMAX API calls might work.
+    [optional] Communication with the device is setup, but the device
+    still requires some configuration before being operational. Some
+    WiMAX API calls might work.
 
 WIMAX_ST_RADIO_OFF
-    The device is fully up; radio is off (wether by hardware or software switches). It is recommended to always leave the device in this state after initialization.
+    The device is fully up; radio is off (wether by hardware or software
+    switches). It is recommended to always leave the device in this
+    state after initialization.
 
 WIMAX_ST_READY
     The device is fully up and radio is on.
 
 WIMAX_ST_SCANNING
-    [optional] The device has been instructed to scan. In this state, the device cannot be actively connected to a network.
+    [optional] The device has been instructed to scan. In this state,
+    the device cannot be actively connected to a network.
 
 WIMAX_ST_CONNECTING
-    The device is connecting to a network. This state exists because in some devices, the connect process can include a number of negotiations between user space, kernel space and
-    the device. User space needs to know what the device is doing. If the connect sequence in a device is atomic and fast, the device can transition directly to CONNECTED
+    The device is connecting to a network. This state exists because in
+    some devices, the connect process can include a number of
+    negotiations between user space, kernel space and the device. User
+    space needs to know what the device is doing. If the connect
+    sequence in a device is atomic and fast, the device can transition
+    directly to CONNECTED
 
 WIMAX_ST_CONNECTED
     The device is connected to a network.
 
 __WIMAX_ST_INVALID
-    This is an invalid state used to mark the maximum numeric value of states.
+    This is an invalid state used to mark the maximum numeric value of
+    states.
 
 
 Description
 ===========
 
-Transitions from one state to another one are atomic and can only be caused in kernel space with ``wimax_state_change``. To read the state, use ``wimax_state_get``.
+Transitions from one state to another one are atomic and can only be
+caused in kernel space with ``wimax_state_change``. To read the state,
+use ``wimax_state_get``.
 
-States starting with __ are internal and shall not be used or referred to by drivers or userspace. They look ugly, but that's the point -- if any use is made non-internal to the
-stack, it is easier to catch on review.
+States starting with __ are internal and shall not be used or referred
+to by drivers or userspace. They look ugly, but that's the point -- if
+any use is made non-internal to the stack, it is easier to catch on
+review.
 
-All API operations [with well defined exceptions] will take the device mutex before starting and then check the state. If the state is ``__WIMAX_ST_NULL``, ``WIMAX_ST_DOWN``,
-``WIMAX_ST_UNINITIALIZED`` or ``__WIMAX_ST_QUIESCING``, it will drop the lock and quit with -``EINVAL``, -``ENOMEDIUM``, -``ENOTCONN`` or -``ESHUTDOWN``.
+All API operations [with well defined exceptions] will take the device
+mutex before starting and then check the state. If the state is
+``__WIMAX_ST_NULL``, ``WIMAX_ST_DOWN``, ``WIMAX_ST_UNINITIALIZED`` or
+``__WIMAX_ST_QUIESCING``, it will drop the lock and quit with
+-``EINVAL``, -``ENOMEDIUM``, -``ENOTCONN`` or -``ESHUTDOWN``.
 
-The order of the definitions is important, so we can do numerical comparisons (eg: < ``WIMAX_ST_RADIO_OFF`` means the device is not ready to operate).
+The order of the definitions is important, so we can do numerical
+comparisons (eg: < ``WIMAX_ST_RADIO_OFF`` means the device is not ready
+to operate).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

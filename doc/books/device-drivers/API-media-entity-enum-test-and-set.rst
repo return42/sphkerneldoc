@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-entity-enum-test-and-set:
 
@@ -7,7 +8,7 @@ media_entity_enum_test_and_set
 
 *man media_entity_enum_test_and_set(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Test whether the entity is marked, and mark it
 
@@ -31,3 +32,12 @@ Description
 ===========
 
 Returns true if the entity was marked, and mark it before doing so.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

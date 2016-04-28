@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-insert-node:
 
@@ -7,7 +8,7 @@ drm_mm_insert_node
 
 *man drm_mm_insert_node(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 search for space and insert ``node``
 
@@ -39,7 +40,8 @@ Arguments
 Description
 ===========
 
-This is a simplified version of ``drm_mm_insert_node_generic`` with ``color`` set to 0.
+This is a simplified version of ``drm_mm_insert_node_generic`` with
+``color`` set to 0.
 
 The preallocated node must be cleared to 0.
 
@@ -48,3 +50,12 @@ Returns
 =======
 
 0 on success, -ENOSPC if there's no suitable hole.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

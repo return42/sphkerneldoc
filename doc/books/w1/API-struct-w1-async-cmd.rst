@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-w1-async-cmd:
 
@@ -7,7 +8,7 @@ struct w1_async_cmd
 
 *man struct w1_async_cmd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 execute callback from the w1_process kthread
 
@@ -30,10 +31,21 @@ async_entry
     link entry
 
 cb
-    callback function, must list_del and destroy this list before returning
+    callback function, must list_del and destroy this list before
+    returning
 
 
 Description
 ===========
 
-When inserted into the w1_master async_list, w1_process will execute the callback. Embed this into the structure with the command details.
+When inserted into the w1_master async_list, w1_process will execute
+the callback. Embed this into the structure with the command details.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

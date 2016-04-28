@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-task-cputime:
 
@@ -7,7 +8,7 @@ struct task_cputime
 
 *man struct task_cputime(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 collected CPU time counts
 
@@ -40,5 +41,15 @@ sum_exec_runtime
 Description
 ===========
 
-This structure groups together three kinds of CPU time that are tracked for threads and thread groups. Most things considering CPU time want to group these counts together and
-treat all three of them in parallel.
+This structure groups together three kinds of CPU time that are tracked
+for threads and thread groups. Most things considering CPU time want to
+group these counts together and treat all three of them in parallel.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

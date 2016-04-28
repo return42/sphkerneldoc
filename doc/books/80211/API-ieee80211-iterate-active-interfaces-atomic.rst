@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-iterate-active-interfaces-atomic:
 
@@ -7,7 +8,7 @@ ieee80211_iterate_active_interfaces_atomic
 
 *man ieee80211_iterate_active_interfaces_atomic(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 iterate active interfaces
 
@@ -36,5 +37,17 @@ Arguments
 Description
 ===========
 
-This function iterates over the interfaces associated with a given hardware that are currently active and calls the callback for them. This function requires the iterator callback
-function to be atomic, if that is not desired, use ``ieee80211_iterate_active_interfaces`` instead. Does not iterate over a new interface during ``add_interface``.
+This function iterates over the interfaces associated with a given
+hardware that are currently active and calls the callback for them. This
+function requires the iterator callback function to be atomic, if that
+is not desired, use ``ieee80211_iterate_active_interfaces`` instead.
+Does not iterate over a new interface during ``add_interface``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

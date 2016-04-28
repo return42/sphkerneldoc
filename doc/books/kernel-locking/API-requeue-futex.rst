@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-requeue-futex:
 
@@ -7,7 +8,7 @@ requeue_futex
 
 *man requeue_futex(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Requeue a futex_q from one hb to another
 
@@ -31,3 +32,12 @@ Arguments
 
 ``key2``
     the new key for the requeued futex_q
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

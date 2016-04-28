@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-v4l-enable-media-source:
 
@@ -7,7 +8,7 @@ v4l_enable_media_source
 
 *man v4l_enable_media_source(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Hold media source for exclusive use if free
 
@@ -27,12 +28,24 @@ Arguments
 Description
 ===========
 
-This interface calls enable_source handler to determine if media source is free for use. The enable_source handler is responsible for checking is the media source is free and
-start a pipeline between the media source and the media entity associated with the video device. This interface should be called from v4l2-core and dvb-core interfaces that change
-the source configuration.
+This interface calls enable_source handler to determine if media source
+is free for use. The enable_source handler is responsible for checking
+is the media source is free and start a pipeline between the media
+source and the media entity associated with the video device. This
+interface should be called from v4l2-core and dvb-core interfaces that
+change the source configuration.
 
 
 Return
 ======
 
 returns zero on success or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

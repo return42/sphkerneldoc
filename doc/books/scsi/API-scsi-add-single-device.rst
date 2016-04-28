@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-add-single-device:
 
@@ -7,7 +8,7 @@ scsi_add_single_device
 
 *man scsi_add_single_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Respond to user request to probe for/add device
 
@@ -38,10 +39,20 @@ Description
 
 called by writing “scsi add-single-device” to /proc/scsi/scsi.
 
-does ``scsi_host_lookup`` and either ``user_scan`` if that transport type supports it, or else ``scsi_scan_host_selected``
+does ``scsi_host_lookup`` and either ``user_scan`` if that transport
+type supports it, or else ``scsi_scan_host_selected``
 
 
 Note
 ====
 
 this seems to be aimed exclusively at SCSI parallel busses.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

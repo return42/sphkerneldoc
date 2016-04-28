@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i2c-bus-recovery-info:
 
@@ -7,7 +8,7 @@ struct i2c_bus_recovery_info
 
 *man struct i2c_bus_recovery_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 I2C bus recovery information
 
@@ -33,25 +34,41 @@ Members
 =======
 
 recover_bus
-    Recover routine. Either pass driver's ``recover_bus`` routine, or ``i2c_generic_scl_recovery`` or ``i2c_generic_gpio_recovery``.
+    Recover routine. Either pass driver's ``recover_bus`` routine, or
+    ``i2c_generic_scl_recovery`` or ``i2c_generic_gpio_recovery``.
 
 get_scl
-    This gets current value of SCL line. Mandatory for generic SCL recovery. Used internally for generic GPIO recovery.
+    This gets current value of SCL line. Mandatory for generic SCL
+    recovery. Used internally for generic GPIO recovery.
 
 set_scl
-    This sets/clears SCL line. Mandatory for generic SCL recovery. Used internally for generic GPIO recovery.
+    This sets/clears SCL line. Mandatory for generic SCL recovery. Used
+    internally for generic GPIO recovery.
 
 get_sda
-    This gets current value of SDA line. Optional for generic SCL recovery. Used internally, if sda_gpio is a valid GPIO, for generic GPIO recovery.
+    This gets current value of SDA line. Optional for generic SCL
+    recovery. Used internally, if sda_gpio is a valid GPIO, for generic
+    GPIO recovery.
 
 prepare_recovery
-    This will be called before starting recovery. Platform may configure padmux here for SDA/SCL line or something else they want.
+    This will be called before starting recovery. Platform may configure
+    padmux here for SDA/SCL line or something else they want.
 
 unprepare_recovery
-    This will be called after completing recovery. Platform may configure padmux here for SDA/SCL line or something else they want.
+    This will be called after completing recovery. Platform may
+    configure padmux here for SDA/SCL line or something else they want.
 
 scl_gpio
     gpio number of the SCL line. Only required for GPIO recovery.
 
 sda_gpio
     gpio number of the SDA line. Only required for GPIO recovery.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

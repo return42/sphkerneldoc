@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-compr-stream:
 
@@ -7,7 +8,7 @@ struct snd_compr_stream
 
 *man struct snd_compr_stream(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -53,3 +54,12 @@ next_track
 
 private_data
     pointer to DSP private data
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

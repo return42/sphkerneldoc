@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-nand-chip:
 
@@ -7,7 +8,7 @@ struct nand_chip
 
 *man struct nand_chip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 NAND Private Flash Chip Data
 
@@ -87,7 +88,8 @@ IO_ADDR_R
     [BOARDSPECIFIC] address to read the 8 I/O lines of the flash device
 
 IO_ADDR_W
-    [BOARDSPECIFIC] address to write the 8 I/O lines of the flash device.
+    [BOARDSPECIFIC] address to write the 8 I/O lines of the flash
+    device.
 
 read_byte
     [REPLACEABLE] read one byte from the chip
@@ -114,14 +116,18 @@ block_markbad
     [REPLACEABLE] mark a block bad
 
 cmd_ctrl
-    [BOARDSPECIFIC] hardwarespecific function for controlling ALE/CLE/nCE. Also used to write command and address
+    [BOARDSPECIFIC] hardwarespecific function for controlling
+    ALE/CLE/nCE. Also used to write command and address
 
 dev_ready
-    [BOARDSPECIFIC] hardwarespecific function for accessing device ready/busy line. If set to NULL no access to ready/busy is available and the ready/busy information is read from
-    the chip status register.
+    [BOARDSPECIFIC] hardwarespecific function for accessing device
+    ready/busy line. If set to NULL no access to ready/busy is available
+    and the ready/busy information is read from the chip status
+    register.
 
 cmdfunc
-    [REPLACEABLE] hardwarespecific function for writing commands to the chip.
+    [REPLACEABLE] hardwarespecific function for writing commands to the
+    chip.
 
 waitfunc
     [REPLACEABLE] hardwarespecific function for wait on ready.
@@ -133,7 +139,8 @@ scan_bbt
     [REPLACEABLE] function to scan bad block table
 
 errstat
-    [OPTIONAL] hardware specific function to perform additional error status checks (determine if errors are correctable).
+    [OPTIONAL] hardware specific function to perform additional error
+    status checks (determine if errors are correctable).
 
 write_page
     [REPLACEABLE] High-level page write function
@@ -145,16 +152,22 @@ onfi_get_features
     [REPLACEABLE] get the features for ONFI nand
 
 setup_read_retry
-    [FLASHSPECIFIC] flash (vendor) specific function for setting the read-retry mode. Mostly needed for MLC NAND.
+    [FLASHSPECIFIC] flash (vendor) specific function for setting the
+    read-retry mode. Mostly needed for MLC NAND.
 
 chip_delay
-    [BOARDSPECIFIC] chip dependent delay for transferring data from array to read regs (tR).
+    [BOARDSPECIFIC] chip dependent delay for transferring data from
+    array to read regs (tR).
 
 options
-    [BOARDSPECIFIC] various chip options. They can partly be set to inform nand_scan about special functionality. See the defines for further explanation.
+    [BOARDSPECIFIC] various chip options. They can partly be set to
+    inform nand_scan about special functionality. See the defines for
+    further explanation.
 
 bbt_options
-    [INTERN] bad block specific options. All options used here must come from bbm.h. By default, these options will be copied to the appropriate nand_bbt_descr's.
+    [INTERN] bad block specific options. All options used here must come
+    from bbm.h. By default, these options will be copied to the
+    appropriate nand_bbt_descr's.
 
 page_shift
     [INTERN] number of address bits in a page (column address bits).
@@ -181,7 +194,8 @@ pagebuf
     [INTERN] holds the pagenumber which is currently in data_buf.
 
 pagebuf_bitflips
-    [INTERN] holds the bitflip count for the page which is currently in data_buf.
+    [INTERN] holds the bitflip count for the page which is currently in
+    data_buf.
 
 subpagesize
     [INTERN] holds the subpagesize
@@ -190,26 +204,36 @@ bits_per_cell
     [INTERN] number of bits per cell. i.e., 1 means SLC.
 
 ecc_strength_ds
-    [INTERN] ECC correctability from the datasheet. Minimum amount of bit errors per ``ecc_step_ds`` guaranteed to be correctable. If unknown, set to zero.
+    [INTERN] ECC correctability from the datasheet. Minimum amount of
+    bit errors per ``ecc_step_ds`` guaranteed to be correctable. If
+    unknown, set to zero.
 
 ecc_step_ds
-    [INTERN] ECC step required by the ``ecc_strength_ds``, also from the datasheet. It is the recommended ECC step size, if known; if unknown, set to zero.
+    [INTERN] ECC step required by the ``ecc_strength_ds``, also from the
+    datasheet. It is the recommended ECC step size, if known; if
+    unknown, set to zero.
 
 onfi_timing_mode_default
-    [INTERN] default ONFI timing mode. This field is either deduced from the datasheet if the NAND chip is not ONFI compliant or set to 0 if it is (an ONFI chip is always
-    configured in mode 0 after a NAND reset)
+    [INTERN] default ONFI timing mode. This field is either deduced from
+    the datasheet if the NAND chip is not ONFI compliant or set to 0 if
+    it is (an ONFI chip is always configured in mode 0 after a NAND
+    reset)
 
 badblockpos
     [INTERN] position of the bad block marker in the oob area.
 
 badblockbits
-    [INTERN] minimum number of set bits in a good block's bad block marker position; i.e., BBM == 11110111b is not bad when badblockbits == 7
+    [INTERN] minimum number of set bits in a good block's bad block
+    marker position; i.e., BBM == 11110111b is not bad when badblockbits
+    == 7
 
 onfi_version
-    [INTERN] holds the chip ONFI version (BCD encoded), non 0 if ONFI supported.
+    [INTERN] holds the chip ONFI version (BCD encoded), non 0 if ONFI
+    supported.
 
 jedec_version
-    [INTERN] holds the chip JEDEC version (BCD encoded), non 0 if JEDEC supported.
+    [INTERN] holds the chip JEDEC version (BCD encoded), non 0 if JEDEC
+    supported.
 
 {unnamed_union}
     anonymous
@@ -224,7 +248,8 @@ oob_poi
     "poison value buffer," used for laying out OOB data before writing
 
 controller
-    [REPLACEABLE] a pointer to a hardware controller structure which is shared among multiple independent devices.
+    [REPLACEABLE] a pointer to a hardware controller structure which is
+    shared among multiple independent devices.
 
 ecc
     [BOARDSPECIFIC] ECC control structure
@@ -245,7 +270,17 @@ bbt_md
     [REPLACEABLE] bad block table mirror descriptor
 
 badblock_pattern
-    [REPLACEABLE] bad block scan pattern used for initial bad block scan.
+    [REPLACEABLE] bad block scan pattern used for initial bad block
+    scan.
 
 priv
     [OPTIONAL] pointer to private chip data
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

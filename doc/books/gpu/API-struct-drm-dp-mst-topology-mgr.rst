@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-dp-mst-topology-mgr:
 
@@ -7,7 +8,7 @@ struct drm_dp_mst_topology_mgr
 
 *man struct drm_dp_mst_topology_mgr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 DisplayPort MST manager
 
@@ -40,7 +41,9 @@ dev
     device pointer for adding i2c devices etc.
 
 cbs
-    callbacks for connector addition and destruction. ``max_dpcd_transaction_bytes`` - maximum number of bytes to read/write in one go.
+    callbacks for connector addition and destruction.
+    ``max_dpcd_transaction_bytes`` - maximum number of bytes to
+    read/write in one go.
 
 aux
     aux channel for the DP connector.
@@ -76,4 +79,15 @@ pbn_div
 Description
 ===========
 
-This struct represents the toplevel displayport MST topology manager. There should be one instance of this for every MST capable DP connector on the GPU.
+This struct represents the toplevel displayport MST topology manager.
+There should be one instance of this for every MST capable DP connector
+on the GPU.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

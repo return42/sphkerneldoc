@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-ep-align-maybe:
 
@@ -7,9 +8,10 @@ usb_ep_align_maybe
 
 *man usb_ep_align_maybe(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-returns ``len`` aligned to ep's maxpacketsize if gadget requires quirk_ep_out_aligned_size, otherwise reguens len.
+returns ``len`` aligned to ep's maxpacketsize if gadget requires
+quirk_ep_out_aligned_size, otherwise reguens len.
 
 
 Synopsis
@@ -33,4 +35,14 @@ Arguments
 Description
 ===========
 
-This helper is used in case it's required for any reason to check and maybe align buffer's size to an ep's maxpacketsize.
+This helper is used in case it's required for any reason to check and
+maybe align buffer's size to an ep's maxpacketsize.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

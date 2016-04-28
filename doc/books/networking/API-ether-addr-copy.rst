@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ether-addr-copy:
 
@@ -7,7 +8,7 @@ ether_addr_copy
 
 *man ether_addr_copy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Copy an Ethernet address
 
@@ -31,3 +32,12 @@ Please note
 ===========
 
 dst & src must both be aligned to u16.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

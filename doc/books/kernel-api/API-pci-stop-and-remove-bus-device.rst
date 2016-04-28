@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-stop-and-remove-bus-device:
 
@@ -7,7 +8,7 @@ pci_stop_and_remove_bus_device
 
 *man pci_stop_and_remove_bus_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove a PCI device and any children
 
@@ -27,6 +28,18 @@ Arguments
 Description
 ===========
 
-Remove a PCI device from the device lists, informing the drivers that the device has been removed. We also remove any subordinate buses and children in a depth-first manner.
+Remove a PCI device from the device lists, informing the drivers that
+the device has been removed. We also remove any subordinate buses and
+children in a depth-first manner.
 
-For each device we remove, delete the device structure from the device lists, remove the /proc entry, and notify userspace (/sbin/hotplug).
+For each device we remove, delete the device structure from the device
+lists, remove the /proc entry, and notify userspace (/sbin/hotplug).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-rx:
 
@@ -7,7 +8,7 @@ z8530_rx
 
 *man z8530_rx(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Handle a PIO receive event
 
@@ -27,18 +28,33 @@ Arguments
 Description
 ===========
 
-Receive handler for receiving in PIO mode. This is much like the async one but not quite the same or as complex
+Receive handler for receiving in PIO mode. This is much like the async
+one but not quite the same or as complex
 
 
 Note
 ====
 
-Its intended that this handler can easily be separated from the main code to run realtime. That'll be needed for some machines (eg to ever clock 64kbits on a sparc ;)).
+Its intended that this handler can easily be separated from the main
+code to run realtime. That'll be needed for some machines (eg to ever
+clock 64kbits on a sparc ;)).
 
-The RT_LOCK macros don't do anything now. Keep the code covered by them as short as possible in all circumstances - clocks cost baud. The interrupt handler is assumed to be atomic
-w.r.t. to other code - this is true in the RT case too.
+The RT_LOCK macros don't do anything now. Keep the code covered by them
+as short as possible in all circumstances - clocks cost baud. The
+interrupt handler is assumed to be atomic w.r.t. to other code - this is
+true in the RT case too.
 
-We only cover the sync cases for this. If you want 2Mbit async do it yourself but consider medical assistance first. This non DMA synchronous mode is portable code. The DMA mode
-assumes PCI like ISA DMA
+We only cover the sync cases for this. If you want 2Mbit async do it
+yourself but consider medical assistance first. This non DMA synchronous
+mode is portable code. The DMA mode assumes PCI like ISA DMA
 
 Called with the device lock held
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

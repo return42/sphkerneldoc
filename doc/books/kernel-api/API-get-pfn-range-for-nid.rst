@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-get-pfn-range-for-nid:
 
@@ -7,7 +8,7 @@ get_pfn_range_for_nid
 
 *man get_pfn_range_for_nid(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Return the start and end page frames for a node
 
@@ -21,7 +22,8 @@ Arguments
 =========
 
 ``nid``
-    The nid to return the range for. If MAX_NUMNODES, the min and max PFN are returned.
+    The nid to return the range for. If MAX_NUMNODES, the min and max
+    PFN are returned.
 
 ``start_pfn``
     Passed by reference. On return, it will have the node start_pfn.
@@ -33,5 +35,16 @@ Arguments
 Description
 ===========
 
-It returns the start and end page frame of a node based on information provided by ``memblock_set_node``. If called for a node with no available memory, a warning is printed and
-the start and end PFNs will be 0.
+It returns the start and end page frame of a node based on information
+provided by ``memblock_set_node``. If called for a node with no
+available memory, a warning is printed and the start and end PFNs will
+be 0.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

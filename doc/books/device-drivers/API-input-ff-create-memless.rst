@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-input-ff-create-memless:
 
@@ -7,7 +8,7 @@ input_ff_create_memless
 
 *man input_ff_create_memless(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create memoryless force-feedback device
 
@@ -28,3 +29,12 @@ Arguments
 
 ``play_effect``
     driver-specific method for playing FF effect
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

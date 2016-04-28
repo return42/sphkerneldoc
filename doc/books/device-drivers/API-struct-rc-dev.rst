@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rc-dev:
 
@@ -7,7 +8,7 @@ struct rc_dev
 
 *man struct rc_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represents a remote control device
 
@@ -103,7 +104,8 @@ rc_map
     current scan/key table
 
 lock
-    used to ensure we've filled in all protocol details before anyone can call show_protocols or store_protocols
+    used to ensure we've filled in all protocol details before anyone
+    can call show_protocols or store_protocols
 
 minor
     unique minor remote control device number
@@ -121,16 +123,16 @@ idle
     used to keep track of RX state
 
 allowed_protocols
-    bitmask with the supported RC_BIT_⋆ protocols
+    bitmask with the supported RC_BIT_* protocols
 
 enabled_protocols
-    bitmask with the enabled RC_BIT_⋆ protocols
+    bitmask with the enabled RC_BIT_* protocols
 
 allowed_wakeup_protocols
-    bitmask with the supported RC_BIT_⋆ wakeup protocols
+    bitmask with the supported RC_BIT_* wakeup protocols
 
 enabled_wakeup_protocols
-    bitmask with the enabled RC_BIT_⋆ wakeup protocols
+    bitmask with the enabled RC_BIT_* wakeup protocols
 
 scancode_filter
     scancode filter
@@ -139,8 +141,11 @@ scancode_wakeup_filter
     scancode wakeup filters
 
 scancode_mask
-    some hardware decoders are not capable of providing the full scancode to the application. As this is a hardware limit, we can't do anything with it. Yet, as the same keycode
-    table can be used with other devices, a mask is provided to allow its usage. Drivers should generally leave this field in blank
+    some hardware decoders are not capable of providing the full
+    scancode to the application. As this is a hardware limit, we can't
+    do anything with it. Yet, as the same keycode table can be used with
+    other devices, a mask is provided to allow its usage. Drivers should
+    generally leave this field in blank
 
 users
     number of current users of the device
@@ -194,10 +199,12 @@ change_wakeup_protocol
     allow changing the protocol used for wakeup filtering
 
 open
-    callback to allow drivers to enable polling/irq when IR input device is opened.
+    callback to allow drivers to enable polling/irq when IR input device
+    is opened.
 
 close
-    callback to allow drivers to disable polling/irq when IR input device is opened.
+    callback to allow drivers to disable polling/irq when IR input
+    device is opened.
 
 s_tx_mask
     set transmitter mask (for devices with multiple tx outputs)
@@ -215,7 +222,8 @@ tx_ir
     transmit IR
 
 s_idle
-    enable/disable hardware idle mode, upon which, device doesn't interrupt host until it sees IR pulses
+    enable/disable hardware idle mode, upon which, device doesn't
+    interrupt host until it sees IR pulses
 
 s_learning_mode
     enable wide band receiver used for learning
@@ -228,3 +236,12 @@ s_filter
 
 s_wakeup_filter
     set the wakeup scancode filter
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

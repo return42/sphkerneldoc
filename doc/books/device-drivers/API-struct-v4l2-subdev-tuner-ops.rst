@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subdev-tuner-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_subdev_tuner_ops
 
 *man struct v4l2_subdev_tuner_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Callbacks used when v4l device was opened in radio mode.
 
@@ -41,7 +42,9 @@ s_frequency
     callback for VIDIOC_S_FREQUENCY ioctl handler code.
 
 g_frequency
-    callback for VIDIOC_G_FREQUENCY ioctl handler code. freq->type must be filled in. Normally done by video_ioctl2 or the bridge driver.
+    callback for VIDIOC_G_FREQUENCY ioctl handler code. freq->type
+    must be filled in. Normally done by video_ioctl2 or the bridge
+    driver.
 
 enum_freq_bands
     callback for VIDIOC_ENUM_FREQ_BANDS ioctl handler code.
@@ -50,7 +53,8 @@ g_tuner
     callback for VIDIOC_G_TUNER ioctl handler code.
 
 s_tuner
-    callback for VIDIOC_S_TUNER ioctl handler code. vt->type must be filled in. Normally done by video_ioctl2 or the bridge driver.
+    callback for VIDIOC_S_TUNER ioctl handler code. vt->type must be
+    filled in. Normally done by video_ioctl2 or the bridge driver.
 
 g_modulator
     callback for VIDIOC_G_MODULATOR ioctl handler code.
@@ -63,3 +67,12 @@ s_type_addr
 
 s_config
     sets tda9887 specific stuff, like port1, port2 and qss
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

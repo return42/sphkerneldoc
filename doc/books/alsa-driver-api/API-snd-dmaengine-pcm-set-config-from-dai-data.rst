@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-dmaengine-pcm-set-config-from-dai-data:
 
@@ -7,7 +8,7 @@ snd_dmaengine_pcm_set_config_from_dai_data
 
 *man snd_dmaengine_pcm_set_config_from_dai_data(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initializes a dma slave config using DAI DMA data.
 
@@ -33,7 +34,21 @@ Arguments
 Description
 ===========
 
-Initializes the {dst,src}_addr, {dst,src}_maxburst, {dst,src}_addr_width and slave_id fields of the DMA slave config from the same fields of the DAI DMA data struct. The src
-and dst fields will be initialized depending on the direction of the substream. If the substream is a playback stream the dst fields will be initialized, if it is a capture stream
-the src fields will be initialized. The {dst,src}_addr_width field will only be initialized if the addr_width field of the DAI DMA data struct is not equal to
+Initializes the {dst,src}_addr, {dst,src}_maxburst,
+{dst,src}_addr_width and slave_id fields of the DMA slave config from
+the same fields of the DAI DMA data struct. The src and dst fields will
+be initialized depending on the direction of the substream. If the
+substream is a playback stream the dst fields will be initialized, if it
+is a capture stream the src fields will be initialized. The
+{dst,src}_addr_width field will only be initialized if the addr_width
+field of the DAI DMA data struct is not equal to
 DMA_SLAVE_BUSWIDTH_UNDEFINED.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fence-remove-callback:
 
@@ -7,7 +8,7 @@ fence_remove_callback
 
 *man fence_remove_callback(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove a callback from the signaling list
 
@@ -30,7 +31,20 @@ Arguments
 Description
 ===========
 
-Remove a previously queued callback from the fence. This function returns true if the callback is successfully removed, or false if the fence has already been signaled.
+Remove a previously queued callback from the fence. This function
+returns true if the callback is successfully removed, or false if the
+fence has already been signaled.
 
-⋆WARNING⋆: Cancelling a callback should only be done if you really know what you're doing, since deadlocks and race conditions could occur all too easily. For this reason, it
-should only ever be done on hardware lockup recovery, with a reference held to the fence.
+*WARNING*: Cancelling a callback should only be done if you really know
+what you're doing, since deadlocks and race conditions could occur all
+too easily. For this reason, it should only ever be done on hardware
+lockup recovery, with a reference held to the fence.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

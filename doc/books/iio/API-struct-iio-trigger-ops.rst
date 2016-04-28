@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-iio-trigger-ops:
 
@@ -7,7 +8,7 @@ struct iio_trigger_ops
 
 *man struct iio_trigger_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 operations structure for an iio_trigger.
 
@@ -35,13 +36,25 @@ set_trigger_state
     switch on/off the trigger on demand
 
 try_reenable
-    function to reenable the trigger when the use count is zero (may be NULL)
+    function to reenable the trigger when the use count is zero (may be
+    NULL)
 
 validate_device
-    function to validate the device when the current trigger gets changed.
+    function to validate the device when the current trigger gets
+    changed.
 
 
 Description
 ===========
 
-This is typically static const within a driver and shared by instances of a given device.
+This is typically static const within a driver and shared by instances
+of a given device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

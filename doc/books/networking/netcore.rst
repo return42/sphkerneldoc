@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _netcore:
 
@@ -15,6 +16,7 @@ Networking Base Types
 
     API-enum-sock-type
     API-struct-socket
+
 
 Socket Buffer Functions
 =======================
@@ -189,6 +191,7 @@ Socket Buffer Functions
     API-sk-stream-wait-connect
     API-sk-stream-wait-memory
 
+
 Socket Filter
 =============
 
@@ -199,7 +202,8 @@ Socket Filter
     API-sk-filter
     API-bpf-prog-create
     API-bpf-prog-create-from-user
-    API-sk-attach-filter
+    API---sk-attach-filter
+
 
 Generic Network Statistics
 ==========================
@@ -224,6 +228,7 @@ Generic Network Statistics
     API-gen-kill-estimator
     API-gen-replace-estimator
     API-gen-estimator-active
+
 
 SUN RPC subsystem
 =================
@@ -313,6 +318,7 @@ SUN RPC subsystem
     API-rpc-clnt-test-and-add-xprt
     API-rpc-clnt-add-xprt
 
+
 WiMAX
 =====
 
@@ -337,3 +343,14 @@ WiMAX
     API-wimax-dev-rm
     API-struct-wimax-dev
     API-enum-wimax-st
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

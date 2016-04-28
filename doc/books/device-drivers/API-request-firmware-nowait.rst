@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-request-firmware-nowait:
 
@@ -7,7 +8,7 @@ request_firmware_nowait
 
 *man request_firmware_nowait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 asynchronous version of request_firmware
 
@@ -24,7 +25,8 @@ Arguments
     module requesting the firmware
 
 ``uevent``
-    sends uevent to copy the firmware image if this flag is non-zero else the firmware copy must be done manually.
+    sends uevent to copy the firmware image if this flag is non-zero
+    else the firmware copy must be done manually.
 
 ``name``
     name of firmware file
@@ -36,10 +38,12 @@ Arguments
     allocation flags
 
 ``context``
-    will be passed over to ``cont``, and ``fw`` may be ``NULL`` if firmware request fails.
+    will be passed over to ``cont``, and ``fw`` may be ``NULL`` if
+    firmware request fails.
 
 ``cont``
-    function will be called asynchronously when the firmware request is over.
+    function will be called asynchronously when the firmware request is
+    over.
 
 
 Description
@@ -47,7 +51,18 @@ Description
 
 Caller must hold the reference count of ``device``.
 
-Asynchronous variant of ``request_firmware`` for user contexts: - sleep for as small periods as possible since it may increase kernel boot time of built-in device drivers
-requesting firmware in their ->``probe`` methods, if ``gfp`` is GFP_KERNEL.
+Asynchronous variant of ``request_firmware`` for user contexts: - sleep
+for as small periods as possible since it may increase kernel boot time
+of built-in device drivers requesting firmware in their ->``probe``
+methods, if ``gfp`` is GFP_KERNEL.
 
 - can't sleep at all if ``gfp`` is GFP_ATOMIC.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

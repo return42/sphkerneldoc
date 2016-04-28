@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-irq-affinity-notify:
 
@@ -7,7 +8,7 @@ struct irq_affinity_notify
 
 *man struct irq_affinity_notify(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 context for notification of IRQ affinity changes
 
@@ -39,7 +40,19 @@ work
     Work item, for internal use
 
 notify
-    Function to be called on change. This will be called in process context.
+    Function to be called on change. This will be called in process
+    context.
 
 release
-    Function to be called on release. This will be called in process context. Once registered, the structure must only be freed when this function is called or later.
+    Function to be called on release. This will be called in process
+    context. Once registered, the structure must only be freed when this
+    function is called or later.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

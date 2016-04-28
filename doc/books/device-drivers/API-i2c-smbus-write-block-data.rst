@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i2c-smbus-write-block-data:
 
@@ -7,7 +8,7 @@ i2c_smbus_write_block_data
 
 *man i2c_smbus_write_block_data(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 SMBus “block write” protocol
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-This executes the SMBus “block write” protocol, returning negative errno else zero on success.
+This executes the SMBus “block write” protocol, returning negative errno
+else zero on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-framebuffer-funcs:
 
@@ -7,7 +8,7 @@ struct drm_framebuffer_funcs
 
 *man struct drm_framebuffer_funcs(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 framebuffer hooks
 
@@ -28,15 +29,24 @@ Members
 =======
 
 destroy
-    Clean up framebuffer resources, specifically also unreference the backing storage. The core guarantees to call this function for every framebuffer successfully created by
-    ->``fb_create`` in ``drm_mode_config_funcs``. Drivers must also call ``drm_framebuffer_cleanup`` to release DRM core resources for this framebuffer.
+    Clean up framebuffer resources, specifically also unreference the
+    backing storage. The core guarantees to call this function for every
+    framebuffer successfully created by ->``fb_create`` in
+    ``drm_mode_config_funcs``. Drivers must also call
+    ``drm_framebuffer_cleanup`` to release DRM core resources for this
+    framebuffer.
 
 create_handle
-    Create a buffer handle in the driver-specific buffer manager (either GEM or TTM) valid for the passed-in struct ``drm_file``. This is used by the core to implement the GETFB
-    IOCTL, which returns (for sufficiently priviledged user) also a native buffer handle. This can be used for seamless transitions between modesetting clients by copying the
-    current screen contents to a private buffer and blending between that and the new contents.
+    Create a buffer handle in the driver-specific buffer manager (either
+    GEM or TTM) valid for the passed-in struct ``drm_file``. This is
+    used by the core to implement the GETFB IOCTL, which returns (for
+    sufficiently priviledged user) also a native buffer handle. This can
+    be used for seamless transitions between modesetting clients by
+    copying the current screen contents to a private buffer and blending
+    between that and the new contents.
 
-    GEM based drivers should call ``drm_gem_handle_create`` to create the handle.
+    GEM based drivers should call ``drm_gem_handle_create`` to create
+    the handle.
 
     RETURNS:
 
@@ -45,11 +55,24 @@ create_handle
 dirty
     Optional callback for the dirty fb IOCTL.
 
-    Userspace can notify the driver via this callback that an area of the framebuffer has changed and should be flushed to the display hardware. This can also be used internally,
-    e.g. by the fbdev emulation, though that's not the case currently.
+    Userspace can notify the driver via this callback that an area of
+    the framebuffer has changed and should be flushed to the display
+    hardware. This can also be used internally, e.g. by the fbdev
+    emulation, though that's not the case currently.
 
-    See documentation in drm_mode.h for the struct drm_mode_fb_dirty_cmd for more information as all the semantics and arguments have a one to one mapping on this function.
+    See documentation in drm_mode.h for the struct
+    drm_mode_fb_dirty_cmd for more information as all the semantics
+    and arguments have a one to one mapping on this function.
 
     RETURNS:
 
     0 on success or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

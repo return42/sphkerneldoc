@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-splice-direct-to-actor:
 
@@ -7,7 +8,7 @@ splice_direct_to_actor
 
 *man splice_direct_to_actor(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 splices data directly between two non-pipes
 
@@ -33,5 +34,15 @@ Arguments
 Description
 ===========
 
-This is a special case helper to splice directly between two points, without requiring an explicit pipe. Internally an allocated pipe is cached in the process, and reused during
-the lifetime of that process.
+This is a special case helper to splice directly between two points,
+without requiring an explicit pipe. Internally an allocated pipe is
+cached in the process, and reused during the lifetime of that process.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

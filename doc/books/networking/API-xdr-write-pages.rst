@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-xdr-write-pages:
 
@@ -7,7 +8,7 @@ xdr_write_pages
 
 *man xdr_write_pages(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Insert a list of pages into an XDR buffer for sending
 
@@ -31,3 +32,12 @@ Arguments
 
 ``len``
     length of data in bytes
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

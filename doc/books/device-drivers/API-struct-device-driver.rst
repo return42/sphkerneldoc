@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-device-driver:
 
@@ -7,7 +8,7 @@ struct device_driver
 
 *man struct device_driver(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The basic device driver structure
 
@@ -65,33 +66,50 @@ acpi_match_table
     The ACPI match table.
 
 probe
-    Called to query the existence of a specific device, whether this driver can work with it, and bind the driver to a specific device.
+    Called to query the existence of a specific device, whether this
+    driver can work with it, and bind the driver to a specific device.
 
 remove
-    Called when the device is removed from the system to unbind a device from this driver.
+    Called when the device is removed from the system to unbind a device
+    from this driver.
 
 shutdown
     Called at shut-down time to quiesce the device.
 
 suspend
-    Called to put the device to sleep mode. Usually to a low power state.
+    Called to put the device to sleep mode. Usually to a low power
+    state.
 
 resume
     Called to bring a device from sleep mode.
 
 groups
-    Default attributes that get created by the driver core automatically.
+    Default attributes that get created by the driver core
+    automatically.
 
 pm
     Power management operations of the device which matched this driver.
 
 p
-    Driver core's private data, no one other than the driver core can touch this.
+    Driver core's private data, no one other than the driver core can
+    touch this.
 
 
 Description
 ===========
 
-The device driver-model tracks all of the drivers known to the system. The main reason for this tracking is to enable the driver core to match up drivers with new devices. Once
-drivers are known objects within the system, however, a number of other things become possible. Device drivers can export information and configuration variables that are
+The device driver-model tracks all of the drivers known to the system.
+The main reason for this tracking is to enable the driver core to match
+up drivers with new devices. Once drivers are known objects within the
+system, however, a number of other things become possible. Device
+drivers can export information and configuration variables that are
 independent of any specific device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

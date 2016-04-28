@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-deauth-request:
 
@@ -7,7 +8,7 @@ struct cfg80211_deauth_request
 
 *man struct cfg80211_deauth_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Deauthentication request data
 
@@ -48,4 +49,14 @@ local_state_change
 Description
 ===========
 
-This structure provides information needed to complete IEEE 802.11 deauthentication.
+This structure provides information needed to complete IEEE 802.11
+deauthentication.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

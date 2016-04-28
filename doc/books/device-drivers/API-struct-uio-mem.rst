@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-uio-mem:
 
@@ -7,7 +8,7 @@ struct uio_mem
 
 *man struct uio_mem(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 description of a UIO memory region
 
@@ -34,8 +35,9 @@ name
     name of the memory region for identification
 
 addr
-    address of the device's memory (phys_addr is used since addr can be logical, virtual, or physical & phys_addr_t should always be large enough to handle any of the address
-    types)
+    address of the device's memory (phys_addr is used since addr can be
+    logical, virtual, or physical & phys_addr_t should always be large
+    enough to handle any of the address types)
 
 size
     size of IO
@@ -48,3 +50,12 @@ internal_addr
 
 map
     for use by the UIO core only.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

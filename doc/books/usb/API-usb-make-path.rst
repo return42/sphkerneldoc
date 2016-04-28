@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-make-path:
 
@@ -7,7 +8,7 @@ usb_make_path
 
 *man usb_make_path(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 returns stable device path in the usb tree
 
@@ -39,11 +40,29 @@ Length of the string (> 0) or negative if size was too small.
 Note
 ====
 
-This identifier is intended to be “stable”, reflecting physical paths in hardware such as physical bus addresses for host controllers or ports on USB hubs. That makes it stay the
-same until systems are physically reconfigured, by re-cabling a tree of USB devices or by moving USB host controllers. Adding and removing devices, including virtual root hubs in
-host controller driver modules, does not change these path identifiers; neither does rebooting or re-enumerating. These are more useful identifiers than changeable (“unstable”)
-ones like bus numbers or device addresses.
+This identifier is intended to be “stable”, reflecting physical paths in
+hardware such as physical bus addresses for host controllers or ports on
+USB hubs. That makes it stay the same until systems are physically
+reconfigured, by re-cabling a tree of USB devices or by moving USB host
+controllers. Adding and removing devices, including virtual root hubs in
+host controller driver modules, does not change these path identifiers;
+neither does rebooting or re-enumerating. These are more useful
+identifiers than changeable (“unstable”) ones like bus numbers or device
+addresses.
 
-With a partial exception for devices connected to USB 2.0 root hubs, these identifiers are also predictable. So long as the device tree isn't changed, plugging any USB device into
-a given hub port always gives it the same path. Because of the use of “companion” controllers, devices connected to ports on USB 2.0 root hubs (EHCI host controllers) will get one
-path ID if they are high speed, and a different one if they are full or low speed.
+With a partial exception for devices connected to USB 2.0 root hubs,
+these identifiers are also predictable. So long as the device tree isn't
+changed, plugging any USB device into a given hub port always gives it
+the same path. Because of the use of “companion” controllers, devices
+connected to ports on USB 2.0 root hubs (EHCI host controllers) will get
+one path ID if they are high speed, and a different one if they are full
+or low speed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-ctrl-config:
 
@@ -7,7 +8,7 @@ struct v4l2_ctrl_config
 
 *man struct v4l2_ctrl_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Control configuration structure.
 
@@ -77,15 +78,32 @@ flags
     The control's flags.
 
 menu_skip_mask
-    The control's skip mask for menu controls. This makes it easy to skip menu items that are not valid. If bit X is set, then menu item X is skipped. Of course, this only works
-    for menus with <= 64 menu items. There are no menus that come close to that number, so this is OK. Should we ever need more, then this will have to be extended to a bit array.
+    The control's skip mask for menu controls. This makes it easy to
+    skip menu items that are not valid. If bit X is set, then menu item
+    X is skipped. Of course, this only works for menus with <= 64 menu
+    items. There are no menus that come close to that number, so this is
+    OK. Should we ever need more, then this will have to be extended to
+    a bit array.
 
 qmenu
-    A const char ⋆ array for all menu items. Array entries that are empty strings ("") correspond to non-existing menu items (this is in addition to the menu_skip_mask above).
-    The last entry must be NULL.
+    A const char * array for all menu items. Array entries that are
+    empty strings ("") correspond to non-existing menu items (this is in
+    addition to the menu_skip_mask above). The last entry must be
+    NULL.
 
 qmenu_int
-    A const s64 integer array for all menu items of the type V4L2_CTRL_TYPE_INTEGER_MENU.
+    A const s64 integer array for all menu items of the type
+    V4L2_CTRL_TYPE_INTEGER_MENU.
 
 is_private
-    If set, then this control is private to its handler and it will not be added to any other handlers.
+    If set, then this control is private to its handler and it will not
+    be added to any other handlers.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

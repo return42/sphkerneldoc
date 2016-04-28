@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-fb-helper-fill-fix:
 
@@ -7,7 +8,7 @@ drm_fb_helper_fill_fix
 
 *man drm_fb_helper_fill_fix(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initializes fixed fbdev information
 
@@ -33,7 +34,19 @@ Arguments
 Description
 ===========
 
-Helper to fill in the fixed fbdev information useful for a non-accelerated fbdev emulations. Drivers which support acceleration methods which impose additional constraints need to
-set up their own limits.
+Helper to fill in the fixed fbdev information useful for a
+non-accelerated fbdev emulations. Drivers which support acceleration
+methods which impose additional constraints need to set up their own
+limits.
 
-Drivers should call this (or their equivalent setup code) from their ->fb_probe callback.
+Drivers should call this (or their equivalent setup code) from their
+->fb_probe callback.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

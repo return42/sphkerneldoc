@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vga-switcheroo-client:
 
@@ -7,7 +8,7 @@ struct vga_switcheroo_client
 
 *man struct vga_switcheroo_client(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 registered client
 
@@ -45,15 +46,17 @@ ops
     client callbacks
 
 id
-    client identifier. Determining the id requires the handler, so gpus are initially assigned VGA_SWITCHEROO_UNKNOWN_ID and later given their true id in
-    ``vga_switcheroo_enable``
+    client identifier. Determining the id requires the handler, so gpus
+    are initially assigned VGA_SWITCHEROO_UNKNOWN_ID and later given
+    their true id in ``vga_switcheroo_enable``
 
 active
     whether the outputs are currently switched to this client
 
 driver_power_control
-    whether power state is controlled by the driver's runtime pm. If true, writing ON and OFF to the vga_switcheroo debugfs interface is a no-op so as not to interfere with
-    runtime pm
+    whether power state is controlled by the driver's runtime pm. If
+    true, writing ON and OFF to the vga_switcheroo debugfs interface is
+    a no-op so as not to interfere with runtime pm
 
 list
     client list
@@ -62,4 +65,15 @@ list
 Description
 ===========
 
-Registered client. A client can be either a GPU or an audio device on a GPU. For audio clients, the ``fb_info``, ``active`` and ``driver_power_control`` members are bogus.
+Registered client. A client can be either a GPU or an audio device on a
+GPU. For audio clients, the ``fb_info``, ``active`` and
+``driver_power_control`` members are bogus.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

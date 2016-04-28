@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-audit-log-start:
 
@@ -7,7 +8,7 @@ audit_log_start
 
 *man audit_log_start(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 obtain an audit buffer
 
@@ -15,7 +16,7 @@ obtain an audit buffer
 Synopsis
 ========
 
-.. c:function:: struct audit_buffer ⋆ audit_log_start( struct audit_context * ctx, gfp_t gfp_mask, int type )
+.. c:function:: struct audit_buffer * audit_log_start( struct audit_context * ctx, gfp_t gfp_mask, int type )
 
 Arguments
 =========
@@ -35,6 +36,18 @@ Description
 
 Returns audit_buffer pointer on success or NULL on error.
 
-Obtain an audit buffer. This routine does locking to obtain the audit buffer, but then no locking is required for calls to audit_log_⋆format. If the task (ctx) is a task that is
-currently in a syscall, then the syscall is marked as auditable and an audit record will be written at syscall exit. If there is no associated task, then task context (ctx) should
-be NULL.
+Obtain an audit buffer. This routine does locking to obtain the audit
+buffer, but then no locking is required for calls to
+audit_log_*format. If the task (ctx) is a task that is currently in a
+syscall, then the syscall is marked as auditable and an audit record
+will be written at syscall exit. If there is no associated task, then
+task context (ctx) should be NULL.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

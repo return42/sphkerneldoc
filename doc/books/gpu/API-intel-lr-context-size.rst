@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-lr-context-size:
 
@@ -7,7 +8,7 @@ intel_lr_context_size
 
 *man intel_lr_context_size(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return the size of the context for an engine
 
@@ -27,8 +28,9 @@ Arguments
 Description
 ===========
 
-Each engine may require a different amount of space for a context image, so when allocating (or copying) an image, this function can be used to find the right size for the specific
-engine.
+Each engine may require a different amount of space for a context image,
+so when allocating (or copying) an image, this function can be used to
+find the right size for the specific engine.
 
 
 Return
@@ -40,5 +42,15 @@ size (in bytes) of an engine-specific context image
 Note
 ====
 
-this size includes the HWSP, which is part of the context image in LRC mode, but does not include the “shared data page” used with GuC submission. The caller should account for
-this if using the GuC.
+this size includes the HWSP, which is part of the context image in LRC
+mode, but does not include the “shared data page” used with GuC
+submission. The caller should account for this if using the GuC.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

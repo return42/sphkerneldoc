@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-dapm-force-bias-level:
 
@@ -7,7 +8,7 @@ snd_soc_dapm_force_bias_level
 
 *man snd_soc_dapm_force_bias_level(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Sets the DAPM bias level
 
@@ -30,8 +31,24 @@ Arguments
 Description
 ===========
 
-Forces the DAPM bias level to a specific state. It will call the bias level callback of DAPM context with the specified level. This will even happen if the context is already at
-the same level. Furthermore it will not go through the normal bias level sequencing, meaning any intermediate states between the current and the target state will not be entered.
+Forces the DAPM bias level to a specific state. It will call the bias
+level callback of DAPM context with the specified level. This will even
+happen if the context is already at the same level. Furthermore it will
+not go through the normal bias level sequencing, meaning any
+intermediate states between the current and the target state will not be
+entered.
 
-Note that the change in bias level is only temporary and the next time ``snd_soc_dapm_sync`` is called the state will be set to the level as determined by the DAPM core. The
-function is mainly intended to be used to used during probe or resume from suspend to power up the device so initialization can be done, before the DAPM core takes over.
+Note that the change in bias level is only temporary and the next time
+``snd_soc_dapm_sync`` is called the state will be set to the level as
+determined by the DAPM core. The function is mainly intended to be used
+to used during probe or resume from suspend to power up the device so
+initialization can be done, before the DAPM core takes over.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

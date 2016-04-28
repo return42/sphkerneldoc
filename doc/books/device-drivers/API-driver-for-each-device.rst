@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-driver-for-each-device:
 
@@ -7,7 +8,7 @@ driver_for_each_device
 
 *man driver_for_each_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Iterator for devices bound to a driver.
 
@@ -37,3 +38,12 @@ Description
 ===========
 
 Iterate over the ``drv``'s list of devices calling ``fn`` for each one.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

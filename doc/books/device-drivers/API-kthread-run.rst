@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kthread-run:
 
@@ -7,7 +8,7 @@ kthread_run
 
 *man kthread_run(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create and wake a thread.
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Convenient wrapper for ``kthread_create`` followed by ``wake_up_process``. Returns the kthread or ERR_PTR(-ENOMEM).
+Convenient wrapper for ``kthread_create`` followed by
+``wake_up_process``. Returns the kthread or ERR_PTR(-ENOMEM).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

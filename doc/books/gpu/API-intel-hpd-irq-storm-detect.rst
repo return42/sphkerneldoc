@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-hpd-irq-storm-detect:
 
@@ -7,7 +8,7 @@ intel_hpd_irq_storm_detect
 
 *man intel_hpd_irq_storm_detect(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 gather stats and detect HPD irq storm on a pin
 
@@ -30,8 +31,21 @@ Arguments
 Description
 ===========
 
-Gather stats about HPD irqs from the specified ``pin``, and detect irq storms. Only the pin specific stats and state are changed, the caller is responsible for further action.
+Gather stats about HPD irqs from the specified ``pin``, and detect irq
+storms. Only the pin specific stats and state are changed, the caller is
+responsible for further action.
 
-``HPD_STORM_THRESHOLD`` irqs are allowed within ``HPD_STORM_DETECT_PERIOD`` ms, otherwise it's considered an irq storm, and the irq state is set to ``HPD_MARK_DISABLED``.
+``HPD_STORM_THRESHOLD`` irqs are allowed within
+``HPD_STORM_DETECT_PERIOD`` ms, otherwise it's considered an irq storm,
+and the irq state is set to ``HPD_MARK_DISABLED``.
 
 Return true if an irq storm was detected on ``pin``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

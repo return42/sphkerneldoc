@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-w1-netlink-msg:
 
@@ -7,7 +8,7 @@ struct w1_netlink_msg
 
 *man struct w1_netlink_msg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 holds w1 message type, id, and result
 
@@ -48,5 +49,15 @@ data[0]
 Description
 ===========
 
-The base message structure for w1 messages over netlink. The netlink connector data sequence is, struct nlmsghdr, struct cn_msg, then one or more struct w1_netlink_msg (each
-with optional data).
+The base message structure for w1 messages over netlink. The netlink
+connector data sequence is, struct nlmsghdr, struct cn_msg, then one or
+more struct w1_netlink_msg (each with optional data).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

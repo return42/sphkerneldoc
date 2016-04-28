@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-init:
 
@@ -7,7 +8,7 @@ drm_mm_init
 
 *man drm_mm_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize a drm-mm allocator
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 Note that ``mm`` must be cleared to 0 before calling this function.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

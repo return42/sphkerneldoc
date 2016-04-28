@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-wiphy-params-flags:
 
@@ -7,7 +8,7 @@ enum wiphy_params_flags
 
 *man enum wiphy_params_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set_wiphy_params bitfield values
 
@@ -47,3 +48,12 @@ WIPHY_PARAM_COVERAGE_CLASS
 
 WIPHY_PARAM_DYN_ACK
     dynack has been enabled
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

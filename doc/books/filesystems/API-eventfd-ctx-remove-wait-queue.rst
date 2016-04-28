@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-eventfd-ctx-remove-wait-queue:
 
@@ -7,7 +8,7 @@ eventfd_ctx_remove_wait_queue
 
 *man eventfd_ctx_remove_wait_queue(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Read the current counter and removes wait queue.
 
@@ -37,4 +38,14 @@ Returns ``0`` if successful, or the following error codes:
 
 -EAGAIN : The operation would have blocked.
 
-This is used to atomically remove a wait queue entry from the eventfd wait queue head, and read/reset the counter value.
+This is used to atomically remove a wait queue entry from the eventfd
+wait queue head, and read/reset the counter value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

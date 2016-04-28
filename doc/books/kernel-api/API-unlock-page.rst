@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-unlock-page:
 
@@ -7,7 +8,7 @@ unlock_page
 
 *man unlock_page(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 unlock a locked page
 
@@ -27,7 +28,21 @@ Arguments
 Description
 ===========
 
-Unlocks the page and wakes up sleepers in ``___wait_on_page_locked``. Also wakes sleepers in ``wait_on_page_writeback`` because the wakeup mechanism between PageLocked pages and
-PageWriteback pages is shared. But that's OK - sleepers in ``wait_on_page_writeback`` just go back to sleep.
+Unlocks the page and wakes up sleepers in ``___wait_on_page_locked``.
+Also wakes sleepers in ``wait_on_page_writeback`` because the wakeup
+mechanism between PageLocked pages and PageWriteback pages is shared.
+But that's OK - sleepers in ``wait_on_page_writeback`` just go back to
+sleep.
 
-The mb is necessary to enforce ordering between the clear_bit and the read of the waitqueue (to avoid SMP races with a parallel ``wait_on_page_locked``).
+The mb is necessary to enforce ordering between the clear_bit and the
+read of the waitqueue (to avoid SMP races with a parallel
+``wait_on_page_locked``).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

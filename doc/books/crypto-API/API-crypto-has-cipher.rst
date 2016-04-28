@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-crypto-has-cipher:
 
@@ -7,7 +8,7 @@ crypto_has_cipher
 
 *man crypto_has_cipher(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Search for the availability of a single block cipher
 
@@ -21,7 +22,8 @@ Arguments
 =========
 
 ``alg_name``
-    is the cra_name / name or cra_driver_name / driver name of the single block cipher
+    is the cra_name / name or cra_driver_name / driver name of the
+    single block cipher
 
 ``type``
     specifies the type of the cipher
@@ -33,4 +35,14 @@ Arguments
 Return
 ======
 
-true when the single block cipher is known to the kernel crypto API; false otherwise
+true when the single block cipher is known to the kernel crypto API;
+false otherwise
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

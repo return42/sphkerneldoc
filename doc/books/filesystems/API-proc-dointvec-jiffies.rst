@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-proc-dointvec-jiffies:
 
@@ -7,7 +8,7 @@ proc_dointvec_jiffies
 
 *man proc_dointvec_jiffies(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 read a vector of integers as seconds
 
@@ -39,7 +40,17 @@ Arguments
 Description
 ===========
 
-Reads/writes up to table->maxlen/sizeof(unsigned int) integer values from/to the user buffer, treated as an ASCII string. The values read are assumed to be in seconds, and are
-converted into jiffies.
+Reads/writes up to table->maxlen/sizeof(unsigned int) integer values
+from/to the user buffer, treated as an ASCII string. The values read are
+assumed to be in seconds, and are converted into jiffies.
 
 Returns 0 on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

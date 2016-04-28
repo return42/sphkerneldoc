@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-phy-poll-reset:
 
@@ -7,7 +8,7 @@ phy_poll_reset
 
 *man phy_poll_reset(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Safely wait until a PHY reset has properly completed
 
@@ -27,11 +28,25 @@ Arguments
 Description
 ===========
 
-According to IEEE 802.3, Section 2, Subsection 22.2.4.1.1, as published in 2008, a PHY reset may take up to 0.5 seconds. The MII BMCR register must be polled until the BMCR_RESET
-bit clears.
+According to IEEE 802.3, Section 2, Subsection 22.2.4.1.1, as published
+in 2008, a PHY reset may take up to 0.5 seconds. The MII BMCR register
+must be polled until the BMCR_RESET bit clears.
 
-Furthermore, any attempts to write to PHY registers may have no effect or even generate MDIO bus errors until this is complete.
+Furthermore, any attempts to write to PHY registers may have no effect
+or even generate MDIO bus errors until this is complete.
 
-Some PHYs (such as the Marvell 88E1111) don't entirely conform to the standard and do not fully reset after the BMCR_RESET bit is set, and may even ⋆REQUIRE⋆ a soft-reset to
-properly restart autonegotiation. In an effort to support such broken PHYs, this function is separate from the standard ``phy_init_hw`` which will zero all the other bits in the
+Some PHYs (such as the Marvell 88E1111) don't entirely conform to the
+standard and do not fully reset after the BMCR_RESET bit is set, and
+may even *REQUIRE* a soft-reset to properly restart autonegotiation. In
+an effort to support such broken PHYs, this function is separate from
+the standard ``phy_init_hw`` which will zero all the other bits in the
 BMCR and reapply all driver-specific and board-specific fixups.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

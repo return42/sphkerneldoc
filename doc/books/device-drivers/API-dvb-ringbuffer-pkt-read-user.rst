@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dvb-ringbuffer-pkt-read-user:
 
@@ -7,7 +8,7 @@ dvb_ringbuffer_pkt_read_user
 
 *man dvb_ringbuffer_pkt_read_user(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Read from a packet in the ringbuffer.
 
@@ -39,10 +40,21 @@ Arguments
 Note
 ====
 
-unlike ``dvb_ringbuffer_read``, this does NOT update the read pointer in the ringbuffer. You must use ``dvb_ringbuffer_pkt_dispose`` to mark a packet as no longer required.
+unlike ``dvb_ringbuffer_read``, this does NOT update the read pointer in
+the ringbuffer. You must use ``dvb_ringbuffer_pkt_dispose`` to mark a
+packet as no longer required.
 
 
 Description
 ===========
 
 returns Number of bytes read, or -EFAULT.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

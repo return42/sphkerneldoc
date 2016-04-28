@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-SendIocReset:
 
@@ -7,7 +8,7 @@ SendIocReset
 
 *man SendIocReset(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Send IOCReset request to MPT adapter.
 
@@ -24,7 +25,9 @@ Arguments
     Pointer to MPT_ADAPTER structure
 
 ``reset_type``
-    reset type, expected values are ``MPI_FUNCTION_IOC_MESSAGE_UNIT_RESET`` or ``MPI_FUNCTION_IO_UNIT_RESET``
+    reset type, expected values are
+    ``MPI_FUNCTION_IOC_MESSAGE_UNIT_RESET`` or
+    ``MPI_FUNCTION_IO_UNIT_RESET``
 
 ``sleepFlag``
     Specifies whether the process can sleep
@@ -36,3 +39,12 @@ Description
 Send IOCReset request to the MPT adapter.
 
 Returns 0 for success, non-zero for failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

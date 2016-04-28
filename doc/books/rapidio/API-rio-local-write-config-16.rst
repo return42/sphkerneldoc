@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-local-write-config-16:
 
@@ -7,7 +8,7 @@ rio_local_write_config_16
 
 *man rio_local_write_config_16(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Write 16 bits to local configuration space
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Writes 16 bits of data to the specified offset within the local device's configuration space.
+Writes 16 bits of data to the specified offset within the local device's
+configuration space.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

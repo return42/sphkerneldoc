@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mptscsih-do-cmd:
 
@@ -7,7 +8,7 @@ mptscsih_do_cmd
 
 *man mptscsih_do_cmd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Do internal command.
 
@@ -30,13 +31,15 @@ Arguments
 Description
 ===========
 
-Issue the specified internally generated command and do command specific cleanup. For bus scan / DV only.
+Issue the specified internally generated command and do command specific
+cleanup. For bus scan / DV only.
 
 
 NOTES
 =====
 
-If command is Inquiry and status is good, initialize a target structure, save the data
+If command is Inquiry and status is good, initialize a target structure,
+save the data
 
 
 Remark
@@ -53,3 +56,12 @@ Return
 0 if good
 
 > 0 if command complete but some type of completion error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

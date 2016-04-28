@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-akcipher-alg:
 
@@ -7,7 +8,7 @@ struct akcipher_alg
 
 *man struct akcipher_alg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 generic public key algorithm
 
@@ -36,40 +37,65 @@ Members
 =======
 
 sign
-    Function performs a sign operation as defined by public key algorithm. In case of error, where the dst_len was insufficient, the req->dst_len will be updated to the size
-    required for the operation
+    Function performs a sign operation as defined by public key
+    algorithm. In case of error, where the dst_len was insufficient,
+    the req->dst_len will be updated to the size required for the
+    operation
 
 verify
-    Function performs a sign operation as defined by public key algorithm. In case of error, where the dst_len was insufficient, the req->dst_len will be updated to the size
-    required for the operation
+    Function performs a sign operation as defined by public key
+    algorithm. In case of error, where the dst_len was insufficient,
+    the req->dst_len will be updated to the size required for the
+    operation
 
 encrypt
-    Function performs an encrypt operation as defined by public key algorithm. In case of error, where the dst_len was insufficient, the req->dst_len will be updated to the size
-    required for the operation
+    Function performs an encrypt operation as defined by public key
+    algorithm. In case of error, where the dst_len was insufficient,
+    the req->dst_len will be updated to the size required for the
+    operation
 
 decrypt
-    Function performs a decrypt operation as defined by public key algorithm. In case of error, where the dst_len was insufficient, the req->dst_len will be updated to the size
-    required for the operation
+    Function performs a decrypt operation as defined by public key
+    algorithm. In case of error, where the dst_len was insufficient,
+    the req->dst_len will be updated to the size required for the
+    operation
 
 set_pub_key
-    Function invokes the algorithm specific set public key function, which knows how to decode and interpret the BER encoded public key
+    Function invokes the algorithm specific set public key function,
+    which knows how to decode and interpret the BER encoded public key
 
 set_priv_key
-    Function invokes the algorithm specific set private key function, which knows how to decode and interpret the BER encoded private key
+    Function invokes the algorithm specific set private key function,
+    which knows how to decode and interpret the BER encoded private key
 
 max_size
     Function returns dest buffer size required for a given key.
 
 init
-    Initialize the cryptographic transformation object. This function is used to initialize the cryptographic transformation object. This function is called only once at the
-    instantiation time, right after the transformation context was allocated. In case the cryptographic hardware has some special requirements which need to be handled by software,
-    this function shall check for the precise requirement of the transformation and put any software fallbacks in place.
+    Initialize the cryptographic transformation object. This function is
+    used to initialize the cryptographic transformation object. This
+    function is called only once at the instantiation time, right after
+    the transformation context was allocated. In case the cryptographic
+    hardware has some special requirements which need to be handled by
+    software, this function shall check for the precise requirement of
+    the transformation and put any software fallbacks in place.
 
 exit
-    Deinitialize the cryptographic transformation object. This is a counterpart to ``init``, used to remove various changes set in ``init``.
+    Deinitialize the cryptographic transformation object. This is a
+    counterpart to ``init``, used to remove various changes set in
+    ``init``.
 
 reqsize
     Request context size required by algorithm implementation
 
 base
     Common crypto API algorithm data structure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

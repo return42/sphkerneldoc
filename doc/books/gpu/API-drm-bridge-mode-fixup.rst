@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-bridge-mode-fixup:
 
@@ -7,7 +8,7 @@ drm_bridge_mode_fixup
 
 *man drm_bridge_mode_fixup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 fixup proposed mode for all bridges in the encoder chain
 
@@ -33,7 +34,8 @@ Arguments
 Description
 ===========
 
-Calls ->``mode_fixup`` ``drm_bridge_funcs`` op for all the bridges in the encoder chain, starting from the first bridge to the last.
+Calls ->``mode_fixup`` ``drm_bridge_funcs`` op for all the bridges in
+the encoder chain, starting from the first bridge to the last.
 
 
 Note
@@ -46,3 +48,12 @@ RETURNS
 =======
 
 true on success, false on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

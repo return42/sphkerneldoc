@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-do-jobctl-trap:
 
@@ -7,7 +8,7 @@ do_jobctl_trap
 
 *man do_jobctl_trap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 take care of ptrace jobctl traps
 
@@ -27,13 +28,26 @@ Arguments
 Description
 ===========
 
-When PT_SEIZED, it's used for both group stop and explicit SEIZE/INTERRUPT traps. Both generate PTRACE_EVENT_STOP trap with accompanying siginfo. If stopped, lower eight bits of
-exit_code contain the stop signal; otherwise, ``SIGTRAP``.
+When PT_SEIZED, it's used for both group stop and explicit
+SEIZE/INTERRUPT traps. Both generate PTRACE_EVENT_STOP trap with
+accompanying siginfo. If stopped, lower eight bits of exit_code contain
+the stop signal; otherwise, ``SIGTRAP``.
 
-When !PT_SEIZED, it's used only for group stop trap with stop signal number as exit_code and no siginfo.
+When !PT_SEIZED, it's used only for group stop trap with stop signal
+number as exit_code and no siginfo.
 
 
 CONTEXT
 =======
 
-Must be called with ``current``->sighand->siglock held, which may be released and re-acquired before returning with intervening sleep.
+Must be called with ``current``->sighand->siglock held, which may be
+released and re-acquired before returning with intervening sleep.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

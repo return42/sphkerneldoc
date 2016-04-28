@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-scan-ident:
 
@@ -7,7 +8,7 @@ nand_scan_ident
 
 *man nand_scan_ident(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [NAND Interface] Scan for the NAND device
 
@@ -33,6 +34,14 @@ Arguments
 Description
 ===========
 
-This is the first phase of the normal ``nand_scan`` function. It reads the flash ID and sets up MTD fields accordingly.
+This is the first phase of the normal ``nand_scan`` function. It reads
+the flash ID and sets up MTD fields accordingly.
 
-The mtd->owner field must be set to the module of the caller.
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

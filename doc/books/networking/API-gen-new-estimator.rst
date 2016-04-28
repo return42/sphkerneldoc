@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-gen-new-estimator:
 
@@ -7,7 +8,7 @@ gen_new_estimator
 
 *man gen_new_estimator(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create a new rate estimator
 
@@ -39,7 +40,19 @@ Arguments
 Description
 ===========
 
-Creates a new rate estimator with ``bstats`` as source and ``rate_est`` as destination. A new timer with the interval specified in the configuration TLV is created. Upon each
-interval, the latest statistics will be read from ``bstats`` and the estimated rate will be stored in ``rate_est`` with the statistics lock grabbed during this period.
+Creates a new rate estimator with ``bstats`` as source and ``rate_est``
+as destination. A new timer with the interval specified in the
+configuration TLV is created. Upon each interval, the latest statistics
+will be read from ``bstats`` and the estimated rate will be stored in
+``rate_est`` with the statistics lock grabbed during this period.
 
 Returns 0 on success or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dtv-frontend-properties:
 
@@ -7,9 +8,10 @@ struct dtv_frontend_properties
 
 *man struct dtv_frontend_properties(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-contains a list of properties that are specific to a digital TV standard.
+contains a list of properties that are specific to a digital TV
+standard.
 
 
 Synopsis
@@ -95,7 +97,8 @@ transmission_mode
     Transmission Mode
 
 bandwidth_hz
-    Bandwidth, in Hz. A zero value means that userspace wants to autodetect.
+    Bandwidth, in Hz. A zero value means that userspace wants to
+    autodetect.
 
 guard_interval
     Guard Interval
@@ -143,23 +146,29 @@ isdbt_layer_enabled
     ISDB Layer enabled (only ISDB standard)
 
 layer[3]
-    ISDB per-layer data (only ISDB standard) ``layer``.segment_count: Segment Count; ``layer``.fec: per layer code rate; ``layer``.modulation: per layer modulation;
-    ``layer``.interleaving: per layer interleaving.
+    ISDB per-layer data (only ISDB standard) ``layer``.segment_count:
+    Segment Count; ``layer``.fec: per layer code rate;
+    ``layer``.modulation: per layer modulation; ``layer``.interleaving:
+    per layer interleaving.
 
 stream_id
-    If different than zero, enable substream filtering, if hardware supports (DVB-S2 and DVB-T2).
+    If different than zero, enable substream filtering, if hardware
+    supports (DVB-S2 and DVB-T2).
 
 atscmh_fic_ver
-    Version number of the FIC (Fast Information Channel) signaling data (only ATSC-M/H)
+    Version number of the FIC (Fast Information Channel) signaling data
+    (only ATSC-M/H)
 
 atscmh_parade_id
     Parade identification number (only ATSC-M/H)
 
 atscmh_nog
-    Number of MH groups per MH subframe for a designated parade (only ATSC-M/H)
+    Number of MH groups per MH subframe for a designated parade (only
+    ATSC-M/H)
 
 atscmh_tnog
-    Total number of MH groups including all MH groups belonging to all MH parades in one MH subframe (only ATSC-M/H)
+    Total number of MH groups including all MH groups belonging to all
+    MH parades in one MH subframe (only ATSC-M/H)
 
 atscmh_sgn
     Start group number (only ATSC-M/H)
@@ -180,7 +189,8 @@ atscmh_rs_code_mode_sec
     RS code mode sec (only ATSC-M/H)
 
 atscmh_sccc_block_mode
-    Series Concatenated Convolutional Code (SCCC) Block Mode (only ATSC-M/H)
+    Series Concatenated Convolutional Code (SCCC) Block Mode (only
+    ATSC-M/H)
 
 atscmh_sccc_code_mode_a
     SCCC code mode A (only ATSC-M/H)
@@ -225,6 +235,18 @@ block_count
 NOTE
 ====
 
-derivated statistics like Uncorrected Error blocks (UCE) are calculated on userspace.
+derivated statistics like Uncorrected Error blocks (UCE) are calculated
+on userspace.
 
-Only a subset of the properties are needed for a given delivery system. For more info, consult the media_api.html with the documentation of the Userspace API.
+Only a subset of the properties are needed for a given delivery system.
+For more info, consult the media_api.html with the documentation of the
+Userspace API.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

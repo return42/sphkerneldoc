@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-fill-int-urb:
 
@@ -7,7 +8,7 @@ usb_fill_int_urb
 
 *man usb_fill_int_urb(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 macro to help initialize a interrupt urb
 
@@ -42,16 +43,31 @@ Arguments
     what to set the urb context to.
 
 ``interval``
-    what to set the urb interval to, encoded like the endpoint descriptor's bInterval value.
+    what to set the urb interval to, encoded like the endpoint
+    descriptor's bInterval value.
 
 
 Description
 ===========
 
-Initializes a interrupt urb with the proper information needed to submit it to a device.
+Initializes a interrupt urb with the proper information needed to submit
+it to a device.
 
-Note that High Speed and SuperSpeed interrupt endpoints use a logarithmic encoding of the endpoint interval, and express polling intervals in microframes (eight per millisecond)
-rather than in frames (one per millisecond).
+Note that High Speed and SuperSpeed interrupt endpoints use a
+logarithmic encoding of the endpoint interval, and express polling
+intervals in microframes (eight per millisecond) rather than in frames
+(one per millisecond).
 
-Wireless USB also uses the logarithmic encoding, but specifies it in units of 128us instead of 125us. For Wireless USB devices, the interval is passed through to the host
-controller, rather than being translated into microframe units.
+Wireless USB also uses the logarithmic encoding, but specifies it in
+units of 128us instead of 125us. For Wireless USB devices, the interval
+is passed through to the host controller, rather than being translated
+into microframe units.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

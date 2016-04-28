@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-prime-sg-to-page-addr-arrays:
 
@@ -7,7 +8,7 @@ drm_prime_sg_to_page_addr_arrays
 
 *man drm_prime_sg_to_page_addr_arrays(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert an sg table into a page array
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Exports an sg table into an array of pages and addresses. This is currently required by the TTM driver in order to do correct fault handling.
+Exports an sg table into an array of pages and addresses. This is
+currently required by the TTM driver in order to do correct fault
+handling.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

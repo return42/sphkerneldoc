@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-survey-info-flags:
 
@@ -7,7 +8,7 @@ enum survey_info_flags
 
 *man enum survey_info_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 survey information flags
 
@@ -60,4 +61,14 @@ SURVEY_INFO_TIME_SCAN
 Description
 ===========
 
-Used by the driver to indicate which info in ``struct survey_info`` it has filled in during the ``get_survey``.
+Used by the driver to indicate which info in ``struct survey_info`` it
+has filled in during the ``get_survey``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

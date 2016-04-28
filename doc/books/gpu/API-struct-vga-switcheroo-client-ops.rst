@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vga-switcheroo-client-ops:
 
@@ -7,7 +8,7 @@ struct vga_switcheroo_client_ops
 
 *man struct vga_switcheroo_client_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 client callbacks
 
@@ -28,17 +29,33 @@ Members
 =======
 
 set_gpu_state
-    do the equivalent of suspend/resume for the card. Mandatory. This should not cut power to the discrete GPU, which is the job of the handler
+    do the equivalent of suspend/resume for the card. Mandatory. This
+    should not cut power to the discrete GPU, which is the job of the
+    handler
 
 reprobe
-    poll outputs. Optional. This gets called after waking the GPU and switching the outputs to it
+    poll outputs. Optional. This gets called after waking the GPU and
+    switching the outputs to it
 
 can_switch
-    check if the device is in a position to switch now. Mandatory. The client should return false if a user space process has one of its device files open
+    check if the device is in a position to switch now. Mandatory. The
+    client should return false if a user space process has one of its
+    device files open
 
 
 Description
 ===========
 
-Client callbacks. A client can be either a GPU or an audio device on a GPU. The ``set_gpu_state`` and ``can_switch`` methods are mandatory, ``reprobe`` may be set to NULL. For
-audio clients, the ``reprobe`` member is bogus.
+Client callbacks. A client can be either a GPU or an audio device on a
+GPU. The ``set_gpu_state`` and ``can_switch`` methods are mandatory,
+``reprobe`` may be set to NULL. For audio clients, the ``reprobe``
+member is bogus.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

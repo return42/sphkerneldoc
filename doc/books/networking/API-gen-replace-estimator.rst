@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-gen-replace-estimator:
 
@@ -7,7 +8,7 @@ gen_replace_estimator
 
 *man gen_replace_estimator(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 replace rate estimator configuration
 
@@ -39,6 +40,16 @@ Arguments
 Description
 ===========
 
-Replaces the configuration of a rate estimator by calling ``gen_kill_estimator`` and ``gen_new_estimator``.
+Replaces the configuration of a rate estimator by calling
+``gen_kill_estimator`` and ``gen_new_estimator``.
 
 Returns 0 on success or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

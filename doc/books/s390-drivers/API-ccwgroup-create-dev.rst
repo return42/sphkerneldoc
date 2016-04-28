@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ccwgroup-create-dev:
 
@@ -7,7 +8,7 @@ ccwgroup_create_dev
 
 *man ccwgroup_create_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create and register a ccw group device
 
@@ -36,7 +37,8 @@ Arguments
 Description
 ===========
 
-Create and register a new ccw group device as a child of ``parent``. Slave devices are obtained from the list of bus ids given in ``buf``.
+Create and register a new ccw group device as a child of ``parent``.
+Slave devices are obtained from the list of bus ids given in ``buf``.
 
 
 Returns
@@ -49,3 +51,12 @@ Context
 =======
 
 non-atomic
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

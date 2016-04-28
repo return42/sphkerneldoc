@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-bss:
 
@@ -7,7 +8,7 @@ struct cfg80211_bss
 
 *man struct cfg80211_bss(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 BSS description
 
@@ -42,19 +43,26 @@ scan_width
     width of the control channel
 
 ies
-    the information elements (Note that there is no guarantee that these are well-formed!); this is a pointer to either the beacon_ies or proberesp_ies depending on whether Probe
-    Response frame has been received. It is always non-\ ``NULL``.
+    the information elements (Note that there is no guarantee that these
+    are well-formed!); this is a pointer to either the beacon_ies or
+    proberesp_ies depending on whether Probe Response frame has been
+    received. It is always non-\ ``NULL``.
 
 beacon_ies
-    the information elements from the last Beacon frame (implementation note: if ``hidden_beacon_bss`` is set this struct doesn't own the beacon_ies, but they're just pointers to
-    the ones from the ``hidden_beacon_bss`` struct)
+    the information elements from the last Beacon frame (implementation
+    note: if ``hidden_beacon_bss`` is set this struct doesn't own the
+    beacon_ies, but they're just pointers to the ones from the
+    ``hidden_beacon_bss`` struct)
 
 proberesp_ies
     the information elements from the last Probe Response frame
 
 hidden_beacon_bss
-    in case this BSS struct represents a probe response from a BSS that hides the SSID in its beacon, this points to the BSS struct that holds the beacon data. ``beacon_ies`` is
-    still valid, of course, and points to the same data as hidden_beacon_bss->beacon_ies in that case.
+    in case this BSS struct represents a probe response from a BSS that
+    hides the SSID in its beacon, this points to the BSS struct that
+    holds the beacon data. ``beacon_ies`` is still valid, of course, and
+    points to the same data as hidden_beacon_bss->beacon_ies in that
+    case.
 
 signal
     signal strength value (type depends on the wiphy's signal_type)
@@ -69,10 +77,21 @@ bssid[ETH_ALEN]
     BSSID of the BSS
 
 priv[0]
-    private area for driver use, has at least wiphy->bss_priv_size bytes
+    private area for driver use, has at least wiphy->bss_priv_size
+    bytes
 
 
 Description
 ===========
 
-This structure describes a BSS (which may also be a mesh network) for use in scan results and similar.
+This structure describes a BSS (which may also be a mesh network) for
+use in scan results and similar.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

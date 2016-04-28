@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-list-for-each-entry-continue:
 
@@ -7,7 +8,7 @@ list_for_each_entry_continue
 
 *man list_for_each_entry_continue(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 continue iteration over list of given type
 
@@ -21,7 +22,7 @@ Arguments
 =========
 
 ``pos``
-    the type ⋆ to use as a loop cursor.
+    the type * to use as a loop cursor.
 
 ``head``
     the head for your list.
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Continue to iterate over list of given type, continuing after the current position.
+Continue to iterate over list of given type, continuing after the
+current position.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-abort-exclusive-wait:
 
@@ -7,7 +8,7 @@ abort_exclusive_wait
 
 *man abort_exclusive_wait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 abort exclusive waiting in a queue
 
@@ -36,8 +37,20 @@ Arguments
 Description
 ===========
 
-Sets current thread back to running state and removes the wait descriptor from the given waitqueue if still queued.
+Sets current thread back to running state and removes the wait
+descriptor from the given waitqueue if still queued.
 
-Wakes up the next waiter if the caller is concurrently woken up through the queue.
+Wakes up the next waiter if the caller is concurrently woken up through
+the queue.
 
-This prevents waiter starvation where an exclusive waiter aborts and is woken up concurrently and no one wakes up the next waiter.
+This prevents waiter starvation where an exclusive waiter aborts and is
+woken up concurrently and no one wakes up the next waiter.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

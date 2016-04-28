@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-dma-rx:
 
@@ -7,7 +8,7 @@ z8530_dma_rx
 
 *man z8530_dma_rx(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Handle a DMA RX event
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Non bus mastering DMA interfaces for the Z8x30 devices. This is really pretty PC specific. The DMA mode means that most receive events are handled by the DMA hardware. We get a
-kick here only if a frame ended.
+Non bus mastering DMA interfaces for the Z8x30 devices. This is really
+pretty PC specific. The DMA mode means that most receive events are
+handled by the DMA hardware. We get a kick here only if a frame ended.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

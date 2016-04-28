@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ff-device:
 
@@ -7,7 +8,7 @@ struct ff_device
 
 *man struct ff_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 force-feedback part of an input device
 
@@ -58,7 +59,8 @@ private
     driver-specific data, will be freed automatically
 
 ffbit[BITS_TO_LONGS(FF_CNT)]
-    bitmap of force feedback capabilities truly supported by device (not emulated like ones in input_dev->ffbit)
+    bitmap of force feedback capabilities truly supported by device (not
+    emulated like ones in input_dev->ffbit)
 
 mutex
     mutex for serializing access to the device
@@ -70,13 +72,26 @@ effects
     pointer to an array of effects currently loaded into device
 
 effect_owners[]
-    array of effect owners; when file handle owning an effect gets closed the effect is automatically erased
+    array of effect owners; when file handle owning an effect gets
+    closed the effect is automatically erased
 
 
 Description
 ===========
 
-Every force-feedback device must implement ``upload`` and ``playback`` methods; ``erase`` is optional. ``set_gain`` and ``set_autocenter`` need only be implemented if driver sets
-up FF_GAIN and FF_AUTOCENTER bits.
+Every force-feedback device must implement ``upload`` and ``playback``
+methods; ``erase`` is optional. ``set_gain`` and ``set_autocenter`` need
+only be implemented if driver sets up FF_GAIN and FF_AUTOCENTER bits.
 
-Note that ``playback``, ``set_gain`` and ``set_autocenter`` are called with dev->event_lock spinlock held and interrupts off and thus may not sleep.
+Note that ``playback``, ``set_gain`` and ``set_autocenter`` are called
+with dev->event_lock spinlock held and interrupts off and thus may not
+sleep.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

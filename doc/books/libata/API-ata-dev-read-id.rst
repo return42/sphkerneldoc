@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-dev-read-id:
 
@@ -7,7 +8,7 @@ ata_dev_read_id
 
 *man ata_dev_read_id(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Read ID data from the specified device
 
@@ -27,7 +28,7 @@ Arguments
     pointer to class of the target device (may be changed)
 
 ``flags``
-    ATA_READID_⋆ flags
+    ATA_READID_* flags
 
 ``id``
     buffer to read IDENTIFY data into
@@ -36,14 +37,16 @@ Arguments
 Description
 ===========
 
-Read ID data from the specified device. ATA_CMD_ID_ATA is performed on ATA devices and ATA_CMD_ID_ATAPI on ATAPI devices. This function also issues
-ATA_CMD_INIT_DEV_PARAMS for pre-ATA4 drives.
+Read ID data from the specified device. ATA_CMD_ID_ATA is performed
+on ATA devices and ATA_CMD_ID_ATAPI on ATAPI devices. This function
+also issues ATA_CMD_INIT_DEV_PARAMS for pre-ATA4 drives.
 
 
 FIXME
 =====
 
-ATA_CMD_ID_ATA is optional for early drives and right now we abort if we hit that case.
+ATA_CMD_ID_ATA is optional for early drives and right now we abort if
+we hit that case.
 
 
 LOCKING
@@ -56,3 +59,12 @@ RETURNS
 =======
 
 0 on success, -errno otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

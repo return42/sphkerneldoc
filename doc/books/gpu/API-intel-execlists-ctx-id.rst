@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-execlists-ctx-id:
 
@@ -7,7 +8,7 @@ intel_execlists_ctx_id
 
 *man intel_execlists_ctx_id(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get the Execlists Context ID
 
@@ -36,13 +37,24 @@ Do not confuse with ctx->id! Unfortunately we have a name overload
 here
 ====
 
-the old context ID we pass to userspace as a handler so that they can refer to a context, and the new context ID we pass to the ELSP so that the GPU can inform us of the context
-status via interrupts.
+the old context ID we pass to userspace as a handler so that they can
+refer to a context, and the new context ID we pass to the ELSP so that
+the GPU can inform us of the context status via interrupts.
 
-The context ID is a portion of the context descriptor, so we can just extract the required part from the cached descriptor.
+The context ID is a portion of the context descriptor, so we can just
+extract the required part from the cached descriptor.
 
 
 Return
 ======
 
 20-bits globally unique context ID.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vsprintf:
 
@@ -7,7 +8,7 @@ vsprintf
 
 *man vsprintf(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Format a string and place it in a buffer
 
@@ -33,8 +34,20 @@ Arguments
 Description
 ===========
 
-The function returns the number of characters written into ``buf``. Use ``vsnprintf`` or ``vscnprintf`` in order to avoid buffer overflows.
+The function returns the number of characters written into ``buf``. Use
+``vsnprintf`` or ``vscnprintf`` in order to avoid buffer overflows.
 
-If you're not already dealing with a va_list consider using ``sprintf``.
+If you're not already dealing with a va_list consider using
+``sprintf``.
 
-See the ``vsnprintf`` documentation for format string extensions over C99.
+See the ``vsnprintf`` documentation for format string extensions over
+C99.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

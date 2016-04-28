@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-futex-q:
 
@@ -7,7 +8,7 @@ struct futex_q
 
 *man struct futex_q(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The hashed futex queue entry, one per waiting task
 
@@ -60,9 +61,22 @@ bitset
 Description
 ===========
 
-We use this hashed waitqueue, instead of a normal wait_queue_t, so we can wake only the relevant ones (hashed queues may be shared).
+We use this hashed waitqueue, instead of a normal wait_queue_t, so we
+can wake only the relevant ones (hashed queues may be shared).
 
-A futex_q has a woken state, just like tasks have TASK_RUNNING. It is considered woken when plist_node_empty( ``q``->list) || q->lock_ptr == 0. The order of wakeup is
-always to make the first condition true, then the second.
+A futex_q has a woken state, just like tasks have TASK_RUNNING. It is
+considered woken when plist_node_empty( ``q``->list) ||
+q->lock_ptr == 0. The order of wakeup is always to make the first
+condition true, then the second.
 
-PI futexes are typically woken before they are removed from the hash list via the rt_mutex code. See ``unqueue_me_pi``.
+PI futexes are typically woken before they are removed from the hash
+list via the rt_mutex code. See ``unqueue_me_pi``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

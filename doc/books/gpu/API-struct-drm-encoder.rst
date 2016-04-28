@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-encoder:
 
@@ -7,7 +8,7 @@ struct drm_encoder
 
 *man struct drm_encoder(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 central DRM encoder structure
 
@@ -72,4 +73,14 @@ helper_private
 Description
 ===========
 
-CRTCs drive pixels to encoders, which convert them into signals appropriate for a given connector or set of connectors.
+CRTCs drive pixels to encoders, which convert them into signals
+appropriate for a given connector or set of connectors.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-ac97-pcm-open:
 
@@ -7,7 +8,7 @@ snd_ac97_pcm_open
 
 *man snd_ac97_pcm_open(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 opens the given AC97 pcm
 
@@ -24,7 +25,8 @@ Arguments
     the ac97 pcm instance
 
 ``rate``
-    rate in Hz, if codec does not support VRA, this value must be 48000Hz
+    rate in Hz, if codec does not support VRA, this value must be
+    48000Hz
 
 ``cfg``
     output stream characteristics
@@ -43,3 +45,12 @@ Return
 ======
 
 Zero if successful, or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

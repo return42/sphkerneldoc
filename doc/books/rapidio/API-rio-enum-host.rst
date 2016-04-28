@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-enum-host:
 
@@ -7,7 +8,7 @@ rio_enum_host
 
 *man rio_enum_host(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Set host lock and initialize host destination ID
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Sets the local host master port lock and destination ID register with the host device ID value. The host device ID value is provided by the platform. Returns ``0`` on success or
-``-1`` on failure.
+Sets the local host master port lock and destination ID register with
+the host device ID value. The host device ID value is provided by the
+platform. Returns ``0`` on success or ``-1`` on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

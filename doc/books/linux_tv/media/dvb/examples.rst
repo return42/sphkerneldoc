@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _dvb_examples:
 
@@ -5,9 +6,12 @@
 Examples
 ========
 
-In this section we would like to present some examples for using the DVB API.
+In this section we would like to present some examples for using the DVB
+API.
 
-NOTE: This section is out of date, and the code below won't even compile. Please refer to the `libdvbv5 <https://linuxtv.org/docs/libdvbv5/index.html>`__ for
+NOTE: This section is out of date, and the code below won't even
+compile. Please refer to the
+`libdvbv5 <https://linuxtv.org/docs/libdvbv5/index.html>`__ for
 updated/recommended examples.
 
 
@@ -16,8 +20,9 @@ updated/recommended examples.
 Tuning
 ======
 
-We will start with a generic tuning subroutine that uses the frontend and SEC, as well as the demux devices. The example is given for QPSK tuners, but can easily be adjusted for
-QAM.
+We will start with a generic tuning subroutine that uses the frontend
+and SEC, as well as the demux devices. The example is given for QPSK
+tuners, but can easily be adjusted for QAM.
 
 
 .. code-block:: c
@@ -224,8 +229,11 @@ QAM.
          return has_signal(fds);
      }
 
-The program assumes that you are using a universal LNB and a standard DiSEqC switch with up to 4 addresses. Of course, you could build in some more checking if tuning was
-successful and maybe try to repeat the tuning process. Depending on the external hardware, i.e. LNB and DiSEqC switch, and weather conditions this may be necessary.
+The program assumes that you are using a universal LNB and a standard
+DiSEqC switch with up to 4 addresses. Of course, you could build in some
+more checking if tuning was successful and maybe try to repeat the
+tuning process. Depending on the external hardware, i.e. LNB and DiSEqC
+switch, and weather conditions this may be necessary.
 
 
 .. _the_dvr_device:
@@ -233,7 +241,8 @@ successful and maybe try to repeat the tuning process. Depending on the external
 The DVR device
 ==============
 
-The following program code shows how to use the DVR device for recording.
+The following program code shows how to use the DVR device for
+recording.
 
 
 .. code-block:: c
@@ -371,3 +380,12 @@ The following program code shows how to use the DVR device for recording.
      }
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

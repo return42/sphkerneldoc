@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-ctl-notify:
 
@@ -7,7 +8,7 @@ snd_ctl_notify
 
 *man snd_ctl_notify(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Send notification to user-space for a control change
 
@@ -24,7 +25,7 @@ Arguments
     the card to send notification
 
 ``mask``
-    the event mask, SNDRV_CTL_EVENT_⋆
+    the event mask, SNDRV_CTL_EVENT_*
 
 ``id``
     the ctl element id to send notification
@@ -33,4 +34,15 @@ Arguments
 Description
 ===========
 
-This function adds an event record with the given id and mask, appends to the list and wakes up the user-space for notification. This can be called in the atomic context.
+This function adds an event record with the given id and mask, appends
+to the list and wakes up the user-space for notification. This can be
+called in the atomic context.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

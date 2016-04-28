@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _func-open:
 
@@ -27,11 +28,16 @@ Arguments
     Device to be opened.
 
 ``flags``
-    Open flags. Access mode must be ``O_RDWR``. This is just a technicality, input devices still support only reading and output devices only writing.
+    Open flags. Access mode must be ``O_RDWR``. This is just a
+    technicality, input devices still support only reading and output
+    devices only writing.
 
-    When the ``O_NONBLOCK`` flag is given, the read() function and the :ref:`VIDIOC_DQBUF <vidioc-qbuf>` ioctl will return the EAGAIN error code when no data is available or no
-    buffer is in the driver outgoing queue, otherwise these functions block until data becomes available. All V4L2 drivers exchanging data with applications must support the
-    ``O_NONBLOCK`` flag.
+    When the ``O_NONBLOCK`` flag is given, the read() function and the
+    :ref:`VIDIOC_DQBUF <vidioc-qbuf>` ioctl will return the EAGAIN
+    error code when no data is available or no buffer is in the driver
+    outgoing queue, otherwise these functions block until data becomes
+    available. All V4L2 drivers exchanging data with applications must
+    support the ``O_NONBLOCK`` flag.
 
     Other flags have no effect.
 
@@ -39,20 +45,27 @@ Arguments
 Description
 ===========
 
-To open a V4L2 device applications call ``open()`` with the desired device name. This function has no side effects; all data format parameters, current input or output, control
-values or other properties remain unchanged. At the first ``open()`` call after loading the driver they will be reset to default values, drivers are never in an undefined state.
+To open a V4L2 device applications call ``open()`` with the desired
+device name. This function has no side effects; all data format
+parameters, current input or output, control values or other properties
+remain unchanged. At the first ``open()`` call after loading the driver
+they will be reset to default values, drivers are never in an undefined
+state.
 
 
 Return Value
 ============
 
-On success ``open`` returns the new file descriptor. On error -1 is returned, and the ``errno`` variable is set appropriately. Possible error codes are:
+On success ``open`` returns the new file descriptor. On error -1 is
+returned, and the ``errno`` variable is set appropriately. Possible
+error codes are:
 
 EACCES
     The caller has no permission to access the device.
 
 EBUSY
-    The driver does not support multiple opens and the device is already in use.
+    The driver does not support multiple opens and the device is already
+    in use.
 
 ENXIO
     No device corresponding to this device special file exists.
@@ -64,4 +77,14 @@ EMFILE
     The process already has the maximum number of files open.
 
 ENFILE
-    The limit on the total number of files open on the system has been reached.
+    The limit on the total number of files open on the system has been
+    reached.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

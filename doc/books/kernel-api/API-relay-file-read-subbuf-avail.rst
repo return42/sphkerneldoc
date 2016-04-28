@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-relay-file-read-subbuf-avail:
 
@@ -7,7 +8,7 @@ relay_file_read_subbuf_avail
 
 *man relay_file_read_subbuf_avail(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return bytes available in sub-buffer
 
@@ -25,3 +26,12 @@ Arguments
 
 ``buf``
     relay channel buffer
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

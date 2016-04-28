@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dvb-tuner-info:
 
@@ -7,7 +8,7 @@ struct dvb_tuner_info
 
 *man struct dvb_tuner_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Frontend name and min/max ranges/bandwidths
 
@@ -56,4 +57,14 @@ bandwidth_step
 NOTE
 ====
 
-frequency parameters are in Hz, for terrestrial/cable or kHz for satellite.
+frequency parameters are in Hz, for terrestrial/cable or kHz for
+satellite.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

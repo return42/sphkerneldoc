@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-regulator-set-voltage-time-sel:
 
@@ -7,7 +8,7 @@ regulator_set_voltage_time_sel
 
 *man regulator_set_voltage_time_sel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get raise/fall time
 
@@ -33,6 +34,18 @@ Arguments
 Description
 ===========
 
-Provided with the starting and target voltage selectors, this function returns time in microseconds required to rise or fall to this new voltage
+Provided with the starting and target voltage selectors, this function
+returns time in microseconds required to rise or fall to this new
+voltage
 
-Drivers providing ramp_delay in regulation_constraints can use this as their ``set_voltage_time_sel`` operation.
+Drivers providing ramp_delay in regulation_constraints can use this as
+their ``set_voltage_time_sel`` operation.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

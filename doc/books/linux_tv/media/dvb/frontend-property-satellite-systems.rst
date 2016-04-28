@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _frontend-property-satellite-systems:
 
@@ -33,7 +34,8 @@ The following parameters are valid for DVB-S:
 
 -  :ref:`DTV_TONE <DTV-TONE>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 Future implementations might add those two missing parameters:
 
@@ -47,7 +49,8 @@ Future implementations might add those two missing parameters:
 DVB-S2 delivery system
 ======================
 
-In addition to all parameters valid for DVB-S, DVB-S2 supports the following parameters:
+In addition to all parameters valid for DVB-S, DVB-S2 supports the
+following parameters:
 
 -  :ref:`DTV_MODULATION <DTV-MODULATION>`
 
@@ -57,7 +60,8 @@ In addition to all parameters valid for DVB-S, DVB-S2 supports the following par
 
 -  :ref:`DTV_STREAM_ID <DTV-STREAM-ID>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _turbo-params:
@@ -65,7 +69,8 @@ In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also v
 Turbo code delivery system
 ==========================
 
-In addition to all parameters valid for DVB-S, turbo code supports the following parameters:
+In addition to all parameters valid for DVB-S, turbo code supports the
+following parameters:
 
 -  :ref:`DTV_MODULATION <DTV-MODULATION>`
 
@@ -96,3 +101,12 @@ The following parameters are valid for ISDB-S:
 -  :ref:`DTV_VOLTAGE <DTV-VOLTAGE>`
 
 -  :ref:`DTV_STREAM_ID <DTV-STREAM-ID>`
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

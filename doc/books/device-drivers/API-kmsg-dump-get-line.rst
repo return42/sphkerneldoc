@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kmsg-dump-get-line:
 
@@ -7,7 +8,7 @@ kmsg_dump_get_line
 
 *man kmsg_dump_get_line(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 retrieve one kmsg log line
 
@@ -39,8 +40,20 @@ Arguments
 Description
 ===========
 
-Start at the beginning of the kmsg buffer, with the oldest kmsg record, and copy one record into the provided buffer.
+Start at the beginning of the kmsg buffer, with the oldest kmsg record,
+and copy one record into the provided buffer.
 
-Consecutive calls will return the next available record moving towards the end of the buffer with the youngest messages.
+Consecutive calls will return the next available record moving towards
+the end of the buffer with the youngest messages.
 
-A return value of FALSE indicates that there are no more records to read.
+A return value of FALSE indicates that there are no more records to
+read.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

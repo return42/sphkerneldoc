@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---pci-reset-function:
 
@@ -7,7 +8,7 @@ __pci_reset_function
 
 *man __pci_reset_function(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 reset a PCI device function
 
@@ -27,10 +28,24 @@ Arguments
 Description
 ===========
 
-Some devices allow an individual function to be reset without affecting other functions in the same device. The PCI device must be responsive to PCI config space in order to use
-this function.
+Some devices allow an individual function to be reset without affecting
+other functions in the same device. The PCI device must be responsive to
+PCI config space in order to use this function.
 
-The device function is presumed to be unused when this function is called. Resetting the device will make the contents of PCI configuration space random, so any caller of this must
-be prepared to reinitialise the device including MSI, bus mastering, BARs, decoding IO and memory spaces, etc.
+The device function is presumed to be unused when this function is
+called. Resetting the device will make the contents of PCI configuration
+space random, so any caller of this must be prepared to reinitialise the
+device including MSI, bus mastering, BARs, decoding IO and memory
+spaces, etc.
 
-Returns 0 if the device function was successfully reset or negative if the device doesn't support resetting a single function.
+Returns 0 if the device function was successfully reset or negative if
+the device doesn't support resetting a single function.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

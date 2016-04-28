@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-print-to-pagebuf:
 
@@ -7,7 +8,7 @@ bitmap_print_to_pagebuf
 
 *man bitmap_print_to_pagebuf(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert bitmap to list or hex format ASCII string
 
@@ -36,7 +37,19 @@ Arguments
 Description
 ===========
 
-Output format is a comma-separated list of decimal numbers and ranges if list is specified or hex digits grouped into comma-separated sets of 8 digits/set. Returns the number of
-characters written to buf.
+Output format is a comma-separated list of decimal numbers and ranges if
+list is specified or hex digits grouped into comma-separated sets of 8
+digits/set. Returns the number of characters written to buf.
 
-It is assumed that ``buf`` is a pointer into a PAGE_SIZE area and that sufficient storage remains at ``buf`` to accommodate the ``bitmap_print_to_pagebuf`` output.
+It is assumed that ``buf`` is a pointer into a PAGE_SIZE area and that
+sufficient storage remains at ``buf`` to accommodate the
+``bitmap_print_to_pagebuf`` output.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

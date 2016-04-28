@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-write-legacy-io:
 
@@ -7,7 +8,7 @@ pci_write_legacy_io
 
 *man pci_write_legacy_io(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 write byte(s) to legacy I/O port space
 
@@ -42,4 +43,14 @@ Arguments
 Description
 ===========
 
-Writes 1, 2, or 4 bytes from legacy I/O port space using an arch specific callback routine (pci_legacy_write).
+Writes 1, 2, or 4 bytes from legacy I/O port space using an arch
+specific callback routine (pci_legacy_write).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

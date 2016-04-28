@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-clear-halt:
 
@@ -7,7 +8,7 @@ usb_clear_halt
 
 *man usb_clear_halt(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 tells device to clear endpoint halt/stall condition
 
@@ -36,12 +37,17 @@ Context
 Description
 ===========
 
-This is used to clear halt conditions for bulk and interrupt endpoints, as reported by URB completion status. Endpoints that are halted are sometimes referred to as being
-“stalled”. Such endpoints are unable to transmit or receive data until the halt status is cleared. Any URBs queued for such an endpoint should normally be unlinked by the driver
-before clearing the halt condition, as described in sections 5.7.5 and 5.8.5 of the USB 2.0 spec.
+This is used to clear halt conditions for bulk and interrupt endpoints,
+as reported by URB completion status. Endpoints that are halted are
+sometimes referred to as being “stalled”. Such endpoints are unable to
+transmit or receive data until the halt status is cleared. Any URBs
+queued for such an endpoint should normally be unlinked by the driver
+before clearing the halt condition, as described in sections 5.7.5 and
+5.8.5 of the USB 2.0 spec.
 
-Note that control and isochronous endpoints don't halt, although control endpoints report “protocol stall” (for unsupported requests) using the same status code used to report a
-true stall.
+Note that control and isochronous endpoints don't halt, although control
+endpoints report “protocol stall” (for unsupported requests) using the
+same status code used to report a true stall.
 
 This call is synchronous, and may not be used in an interrupt context.
 
@@ -49,4 +55,14 @@ This call is synchronous, and may not be used in an interrupt context.
 Return
 ======
 
-Zero on success, or else the status code returned by the underlying ``usb_control_msg`` call.
+Zero on success, or else the status code returned by the underlying
+``usb_control_msg`` call.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

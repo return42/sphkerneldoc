@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-write-rom:
 
@@ -7,7 +8,7 @@ pci_write_rom
 
 *man pci_write_rom(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 used to enable access to the PCI ROM display
 
@@ -43,3 +44,12 @@ Description
 ===========
 
 writing anything except 0 enables it
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

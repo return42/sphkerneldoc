@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-ac97-update:
 
@@ -7,7 +8,7 @@ snd_ac97_update
 
 *man snd_ac97_update(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 update the value on the given register
 
@@ -33,10 +34,21 @@ Arguments
 Description
 ===========
 
-Compares the value with the register cache and updates the value only when the value is changed.
+Compares the value with the register cache and updates the value only
+when the value is changed.
 
 
 Return
 ======
 
-1 if the value is changed, 0 if no change, or a negative code on failure.
+1 if the value is changed, 0 if no change, or a negative code on
+failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

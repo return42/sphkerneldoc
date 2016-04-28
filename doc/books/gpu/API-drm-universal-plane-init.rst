@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-universal-plane-init:
 
@@ -7,7 +8,7 @@ drm_universal_plane_init
 
 *man drm_universal_plane_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize a new universal plane object
 
@@ -33,7 +34,7 @@ Arguments
     callbacks for the new plane
 
 ``formats``
-    array of supported formats (``DRM_FORMAT_``\ ⋆)
+    array of supported formats (``DRM_FORMAT_``\ *)
 
 ``format_count``
     number of elements in ``formats``
@@ -42,7 +43,8 @@ Arguments
     type of plane (overlay, primary, cursor)
 
 ``name``
-    printf style format string for the plane name, or NULL for default name
+    printf style format string for the plane name, or NULL for default
+    name
 
 ``...``
     variable arguments
@@ -58,3 +60,12 @@ Returns
 =======
 
 Zero on success, error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

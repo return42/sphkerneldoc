@@ -1,12 +1,15 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _dvb_frontend:
 
 ++++++++++++++++
 DVB Frontend API
 ++++++++++++++++
-The DVB frontend API was designed to support three types of delivery systems:
+The DVB frontend API was designed to support three types of delivery
+systems:
 
--  Terrestrial systems: DVB-T, DVB-T2, ATSC, ATSC M/H, ISDB-T, DVB-H, DTMB, CMMB
+-  Terrestrial systems: DVB-T, DVB-T2, ATSC, ATSC M/H, ISDB-T, DVB-H,
+   DTMB, CMMB
 
 -  Cable systems: DVB-C Annex A/C, ClearQAM (DVB-C Annex B), ISDB-C
 
@@ -22,13 +25,20 @@ The DVB frontend controls several sub-devices including:
 
 -  Satellite Equipment Control (SEC) hardware (only for Satellite).
 
-The frontend can be accessed through ``/dev/dvb/adapter?/frontend?``. Data types and ioctl definitions can be accessed by including ``linux/dvb/frontend.h`` in your application.
+The frontend can be accessed through ``/dev/dvb/adapter?/frontend?``.
+Data types and ioctl definitions can be accessed by including
+``linux/dvb/frontend.h`` in your application.
 
-NOTE: Transmission via the internet (DVB-IP) is not yet handled by this API but a future extension is possible.
+NOTE: Transmission via the internet (DVB-IP) is not yet handled by this
+API but a future extension is possible.
 
-On Satellite systems, the API support for the Satellite Equipment Control (SEC) allows to power control and to send/receive signals to control the antenna subsystem, selecting the
-polarization and choosing the Intermediate Frequency IF) of the Low Noise Block Converter Feed Horn (LNBf). It supports the DiSEqC and V-SEC protocols. The DiSEqC (digital SEC)
-specification is available at `Eutelsat <http://www.eutelsat.com/satellites/4_5_5.html>`__.
+On Satellite systems, the API support for the Satellite Equipment
+Control (SEC) allows to power control and to send/receive signals to
+control the antenna subsystem, selecting the polarization and choosing
+the Intermediate Frequency IF) of the Low Noise Block Converter Feed
+Horn (LNBf). It supports the DiSEqC and V-SEC protocols. The DiSEqC
+(digital SEC) specification is available at
+`Eutelsat <http://www.eutelsat.com/satellites/4_5_5.html>`__.
 
 
 .. toctree::
@@ -39,3 +49,14 @@ specification is available at `Eutelsat <http://www.eutelsat.com/satellites/4_5_
     dvbproperty
     frontend_fcalls
     frontend_legacy_dvbv3_api
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

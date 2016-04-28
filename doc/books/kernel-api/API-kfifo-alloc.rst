@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kfifo-alloc:
 
@@ -7,7 +8,7 @@ kfifo_alloc
 
 *man kfifo_alloc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 dynamically allocates a new fifo buffer
 
@@ -35,4 +36,15 @@ Description
 
 This macro dynamically allocates a new fifo buffer.
 
-The numer of elements will be rounded-up to a power of 2. The fifo will be release with ``kfifo_free``. Return 0 if no error, otherwise an error code.
+The numer of elements will be rounded-up to a power of 2. The fifo will
+be release with ``kfifo_free``. Return 0 if no error, otherwise an error
+code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

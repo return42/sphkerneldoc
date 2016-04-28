@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-host-start:
 
@@ -7,7 +8,7 @@ ata_host_start
 
 *man ata_host_start(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 start and freeze ports of an ATA host
 
@@ -27,8 +28,10 @@ Arguments
 Description
 ===========
 
-Start and then freeze ports of ``host``. Started status is recorded in host->flags, so this function can be called multiple times. Ports are guaranteed to get started only once. If
-host->ops isn't initialized yet, its set to the first non-dummy port ops.
+Start and then freeze ports of ``host``. Started status is recorded in
+host->flags, so this function can be called multiple times. Ports are
+guaranteed to get started only once. If host->ops isn't initialized yet,
+its set to the first non-dummy port ops.
 
 
 LOCKING
@@ -41,3 +44,12 @@ RETURNS
 =======
 
 0 if all ports are started successfully, -errno otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

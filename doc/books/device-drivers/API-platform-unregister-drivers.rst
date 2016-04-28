@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-platform-unregister-drivers:
 
@@ -7,7 +8,7 @@ platform_unregister_drivers
 
 *man platform_unregister_drivers(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 unregister an array of platform drivers
 
@@ -30,5 +31,16 @@ Arguments
 Description
 ===========
 
-Unegisters platform drivers specified by an array. This is typically used to complement an earlier call to ``platform_register_drivers``. Drivers are unregistered in the reverse
-order in which they were registered.
+Unegisters platform drivers specified by an array. This is typically
+used to complement an earlier call to ``platform_register_drivers``.
+Drivers are unregistered in the reverse order in which they were
+registered.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

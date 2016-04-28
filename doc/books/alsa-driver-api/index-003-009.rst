@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 =======================
 Miscellaneous Functions
@@ -12,6 +13,7 @@ Hardware-Dependent Devices API
     :maxdepth: 1
 
     API-snd-hwdep-new
+
 
 Jack Abstraction Layer API
 ==========================
@@ -37,6 +39,7 @@ Jack Abstraction Layer API
     API-snd-soc-jack-add-gpiods
     API-snd-soc-jack-free-gpios
 
+
 ISA DMA Helpers
 ===============
 
@@ -47,6 +50,7 @@ ISA DMA Helpers
     API-snd-dma-program
     API-snd-dma-disable
     API-snd-dma-pointer
+
 
 Other Helper Macros
 ===================
@@ -61,3 +65,14 @@ Other Helper Macros
     API-snd-printd-ratelimit
     API-snd-BUG-ON
     API-snd-printdd
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

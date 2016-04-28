@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _defines:
 
@@ -5,7 +6,8 @@
 Constants
 =========
 
-This chapter describes the constants which might be relevant for a driver developer.
+This chapter describes the constants which might be relevant for a
+driver developer.
 
 
 .. _Chip_option_constants:
@@ -19,7 +21,8 @@ Chip option constants
 Constants for chip id table
 ---------------------------
 
-These constants are defined in nand.h. They are ored together to describe the chip functionality.
+These constants are defined in nand.h. They are ored together to
+describe the chip functionality.
 
 
 .. code-block:: c
@@ -45,7 +48,8 @@ These constants are defined in nand.h. They are ored together to describe the ch
 Constants for runtime options
 -----------------------------
 
-These constants are defined in nand.h. They are ored together to describe the functionality.
+These constants are defined in nand.h. They are ored together to
+describe the functionality.
 
 
 .. code-block:: c
@@ -85,7 +89,8 @@ Use these constants to select the ECC algorithm.
 Hardware control related constants
 ==================================
 
-These constants describe the requested hardware access function when the boardspecific hardware control function is called
+These constants describe the requested hardware access function when the
+boardspecific hardware control function is called
 
 
 .. code-block:: c
@@ -113,7 +118,8 @@ These constants describe the requested hardware access function when the boardsp
 Bad block table related constants
 =================================
 
-These constants describe the options used for bad block table descriptors.
+These constants describe the options used for bad block table
+descriptors.
 
 
 .. code-block:: c
@@ -142,3 +148,12 @@ These constants describe the options used for bad block table descriptors.
     #define NAND_BBT_SAVECONTENT    0x00002000
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

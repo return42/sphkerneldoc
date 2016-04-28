@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _video_types:
 
@@ -22,8 +23,11 @@ The ``video_format_t`` data type defined by
         VIDEO_FORMAT_221_1    /* 2.21:1 */
     } video_format_t;
 
-is used in the VIDEO_SET_FORMAT function (??) to tell the driver which aspect ratio the output hardware (e.g. TV) has. It is also used in the data structures video_status (??)
-returned by VIDEO_GET_STATUS (??) and video_event (??) returned by VIDEO_GET_EVENT (??) which report about the display format of the current video stream.
+is used in the VIDEO_SET_FORMAT function (??) to tell the driver which
+aspect ratio the output hardware (e.g. TV) has. It is also used in the
+data structures video_status (??) returned by VIDEO_GET_STATUS (??)
+and video_event (??) returned by VIDEO_GET_EVENT (??) which report
+about the display format of the current video stream.
 
 
 .. _video-displayformat-t:
@@ -31,8 +35,10 @@ returned by VIDEO_GET_STATUS (??) and video_event (??) returned by VIDEO_GET_EVE
 video_displayformat_t
 =====================
 
-In case the display format of the video stream and of the display hardware differ the application has to specify how to handle the cropping of the picture. This can be done using
-the VIDEO_SET_DISPLAY_FORMAT call (??) which accepts
+In case the display format of the video stream and of the display
+hardware differ the application has to specify how to handle the
+cropping of the picture. This can be done using the
+VIDEO_SET_DISPLAY_FORMAT call (??) which accepts
 
 
 .. code-block:: c
@@ -51,8 +57,9 @@ as argument.
 video_stream_source_t
 =====================
 
-The video stream source is set through the VIDEO_SELECT_SOURCE call and can take the following values, depending on whether we are replaying from an internal (demuxer) or
-external (user write) source.
+The video stream source is set through the VIDEO_SELECT_SOURCE call
+and can take the following values, depending on whether we are replaying
+from an internal (demuxer) or external (user write) source.
 
 
 .. code-block:: c
@@ -64,8 +71,10 @@ external (user write) source.
                        system call */
     } video_stream_source_t;
 
-VIDEO_SOURCE_DEMUX selects the demultiplexer (fed either by the frontend or the DVR device) as the source of the video stream. If VIDEO_SOURCE_MEMORY is selected the stream
-comes from the application through the **write()** system call.
+VIDEO_SOURCE_DEMUX selects the demultiplexer (fed either by the
+frontend or the DVR device) as the source of the video stream. If
+VIDEO_SOURCE_MEMORY is selected the stream comes from the application
+through the **write()** system call.
 
 
 .. _video-play-state-t:
@@ -73,7 +82,8 @@ comes from the application through the **write()** system call.
 video_play_state_t
 ==================
 
-The following values can be returned by the VIDEO_GET_STATUS call representing the state of video playback.
+The following values can be returned by the VIDEO_GET_STATUS call
+representing the state of video playback.
 
 
 .. code-block:: c
@@ -90,7 +100,8 @@ The following values can be returned by the VIDEO_GET_STATUS call representing t
 struct video_command
 ====================
 
-The structure must be zeroed before use by the application This ensures it can be extended safely in the future.
+The structure must be zeroed before use by the application This ensures
+it can be extended safely in the future.
 
 
 .. code-block:: c
@@ -140,7 +151,8 @@ video_size_t
 struct video_event
 ==================
 
-The following is the structure of a video event as it is returned by the VIDEO_GET_EVENT call.
+The following is the structure of a video event as it is returned by the
+VIDEO_GET_EVENT call.
 
 
 .. code-block:: c
@@ -165,7 +177,8 @@ The following is the structure of a video event as it is returned by the VIDEO_G
 struct video_status
 ===================
 
-The VIDEO_GET_STATUS call returns the following structure informing about various states of the playback operation.
+The VIDEO_GET_STATUS call returns the following structure informing
+about various states of the playback operation.
 
 
 .. code-block:: c
@@ -178,10 +191,16 @@ The VIDEO_GET_STATUS call returns the following structure informing about variou
         video_displayformat_t display_format;/* selected cropping mode */
     };
 
-If video_blank is set video will be blanked out if the channel is changed or if playback is stopped. Otherwise, the last picture will be displayed. play_state indicates if the
-video is currently frozen, stopped, or being played back. The stream_source corresponds to the seleted source for the video stream. It can come either from the demultiplexer or
-from memory. The video_format indicates the aspect ratio (one of 4:3 or 16:9) of the currently played video stream. Finally, display_format corresponds to the selected cropping
-mode in case the source video format is not the same as the format of the output device.
+If video_blank is set video will be blanked out if the channel is
+changed or if playback is stopped. Otherwise, the last picture will be
+displayed. play_state indicates if the video is currently frozen,
+stopped, or being played back. The stream_source corresponds to the
+seleted source for the video stream. It can come either from the
+demultiplexer or from memory. The video_format indicates the aspect
+ratio (one of 4:3 or 16:9) of the currently played video stream.
+Finally, display_format corresponds to the selected cropping mode in
+case the source video format is not the same as the format of the output
+device.
 
 
 .. _video-still-picture:
@@ -189,7 +208,8 @@ mode in case the source video format is not the same as the format of the output
 struct video_still_picture
 ==========================
 
-An I-frame displayed via the VIDEO_STILLPICTURE call is passed on within the following structure.
+An I-frame displayed via the VIDEO_STILLPICTURE call is passed on
+within the following structure.
 
 
 .. code-block:: c
@@ -206,7 +226,8 @@ An I-frame displayed via the VIDEO_STILLPICTURE call is passed on within the fol
 video capabilities
 ==================
 
-A call to VIDEO_GET_CAPABILITIES returns an unsigned integer with the following bits set according to the hardwares capabilities.
+A call to VIDEO_GET_CAPABILITIES returns an unsigned integer with the
+following bits set according to the hardwares capabilities.
 
 
 .. code-block:: c
@@ -232,7 +253,8 @@ A call to VIDEO_GET_CAPABILITIES returns an unsigned integer with the following 
 video_system_t
 ==============
 
-A call to VIDEO_SET_SYSTEM sets the desired video system for TV output. The following system types can be set:
+A call to VIDEO_SET_SYSTEM sets the desired video system for TV
+output. The following system types can be set:
 
 
 .. code-block:: c
@@ -254,7 +276,8 @@ A call to VIDEO_SET_SYSTEM sets the desired video system for TV output. The foll
 struct video_highlight
 ======================
 
-Calling the ioctl VIDEO_SET_HIGHLIGHTS posts the SPU highlight information. The call expects the following format for that information:
+Calling the ioctl VIDEO_SET_HIGHLIGHTS posts the SPU highlight
+information. The call expects the following format for that information:
 
 
 .. code-block:: c
@@ -284,7 +307,8 @@ Calling the ioctl VIDEO_SET_HIGHLIGHTS posts the SPU highlight information. The 
 struct video_spu
 ================
 
-Calling VIDEO_SET_SPU deactivates or activates SPU decoding, according to the following format:
+Calling VIDEO_SET_SPU deactivates or activates SPU decoding, according
+to the following format:
 
 
 .. code-block:: c
@@ -301,7 +325,8 @@ Calling VIDEO_SET_SPU deactivates or activates SPU decoding, according to the fo
 struct video_spu_palette
 ========================
 
-The following structure is used to set the SPU palette by calling VIDEO_SPU_PALETTE:
+The following structure is used to set the SPU palette by calling
+VIDEO_SPU_PALETTE:
 
 
 .. code-block:: c
@@ -318,7 +343,8 @@ The following structure is used to set the SPU palette by calling VIDEO_SPU_PALE
 struct video_navi_pack
 ======================
 
-In order to get the navigational data the following structure has to be passed to the ioctl VIDEO_GET_NAVI:
+In order to get the navigational data the following structure has to be
+passed to the ioctl VIDEO_GET_NAVI:
 
 
 .. code-block:: c
@@ -353,3 +379,12 @@ The following attributes can be set by a call to VIDEO_SET_ATTRIBUTES:
      /*    0    film/camera mode (0=camera, 1=film (625/50 only)) */
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

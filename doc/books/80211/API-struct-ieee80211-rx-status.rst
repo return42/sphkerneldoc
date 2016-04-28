@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-rx-status:
 
@@ -7,7 +8,7 @@ struct ieee80211_rx_status
 
 *man struct ieee80211_rx_status(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 receive status
 
@@ -40,26 +41,33 @@ Members
 =======
 
 mactime
-    value in microseconds of the 64-bit Time Synchronization Function (TSF) timer when the first data symbol (MPDU) arrived at the hardware.
+    value in microseconds of the 64-bit Time Synchronization Function
+    (TSF) timer when the first data symbol (MPDU) arrived at the
+    hardware.
 
 device_timestamp
-    arbitrary timestamp for the device, mac80211 doesn't use it but can store it and pass it back to the driver for synchronisation
+    arbitrary timestamp for the device, mac80211 doesn't use it but can
+    store it and pass it back to the driver for synchronisation
 
 ampdu_reference
-    A-MPDU reference number, must be a different value for each A-MPDU but the same for each subframe within one A-MPDU
+    A-MPDU reference number, must be a different value for each A-MPDU
+    but the same for each subframe within one A-MPDU
 
 flag
-    ``RX_FLAG_``\ ⋆
+    ``RX_FLAG_``\ *
 
 freq
-    frequency the radio was tuned to when receiving this frame, in MHz This field must be set for management frames, but isn't strictly needed for data (other) frames - for those
-    it only affects radiotap reporting.
+    frequency the radio was tuned to when receiving this frame, in MHz
+    This field must be set for management frames, but isn't strictly
+    needed for data (other) frames - for those it only affects radiotap
+    reporting.
 
 vht_flag
-    ``RX_VHT_FLAG_``\ ⋆
+    ``RX_VHT_FLAG_``\ *
 
 rate_idx
-    index of data rate into band's supported rates or MCS index if HT or VHT is used (``RX_FLAG_HT``/``RX_FLAG_VHT``)
+    index of data rate into band's supported rates or MCS index if HT or
+    VHT is used (``RX_FLAG_HT``/``RX_FLAG_VHT``)
 
 vht_nss
     number of streams (VHT only)
@@ -74,13 +82,17 @@ antenna
     antenna used
 
 signal
-    signal strength when receiving this frame, either in dBm, in dB or unspecified depending on the hardware capabilities flags ``IEEE80211_HW_SIGNAL_``\ ⋆
+    signal strength when receiving this frame, either in dBm, in dB or
+    unspecified depending on the hardware capabilities flags
+    ``IEEE80211_HW_SIGNAL_``\ *
 
 chains
-    bitmask of receive chains for which separate signal strength values were filled.
+    bitmask of receive chains for which separate signal strength values
+    were filled.
 
 chain_signal[IEEE80211_MAX_CHAINS]
-    per-chain signal strength, in dBm (unlike ``signal``, doesn't support dB or unspecified units)
+    per-chain signal strength, in dBm (unlike ``signal``, doesn't
+    support dB or unspecified units)
 
 ampdu_delimiter_crc
     A-MPDU delimiter CRC
@@ -89,4 +101,15 @@ ampdu_delimiter_crc
 Description
 ===========
 
-The low-level driver should provide this information (the subset supported by hardware) to the 802.11 code with each received frame, in the skb's control buffer (cb).
+The low-level driver should provide this information (the subset
+supported by hardware) to the 802.11 code with each received frame, in
+the skb's control buffer (cb).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

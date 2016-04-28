@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-atomic-commit:
 
@@ -7,7 +8,7 @@ drm_atomic_commit
 
 *man drm_atomic_commit(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 commit configuration atomically
 
@@ -27,14 +28,26 @@ Arguments
 Description
 ===========
 
-Note that this function can return -EDEADLK if the driver needed to acquire more locks but encountered a deadlock. The caller must then do the usual w/w backoff dance and restart.
-All other errors are fatal.
+Note that this function can return -EDEADLK if the driver needed to
+acquire more locks but encountered a deadlock. The caller must then do
+the usual w/w backoff dance and restart. All other errors are fatal.
 
-Also note that on successful execution ownership of ``state`` is transferred from the caller of this function to the function itself. The caller must not free or in any other way
-access ``state``. If the function fails then the caller must clean up ``state`` itself.
+Also note that on successful execution ownership of ``state`` is
+transferred from the caller of this function to the function itself. The
+caller must not free or in any other way access ``state``. If the
+function fails then the caller must clean up ``state`` itself.
 
 
 Returns
 =======
 
 0 on success, negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

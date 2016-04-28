@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-regulator-init-data:
 
@@ -7,7 +8,7 @@ struct regulator_init_data
 
 *man struct regulator_init_data(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 regulator platform initialisation data.
 
@@ -31,7 +32,9 @@ Members
 =======
 
 supply_regulator
-    Parent regulator. Specified using the regulator name as it appears in the name field in sysfs, which can be explicitly set using the constraints field 'name'.
+    Parent regulator. Specified using the regulator name as it appears
+    in the name field in sysfs, which can be explicitly set using the
+    constraints field 'name'.
 
 constraints
     Constraints. These must be specified for the regulator to be usable.
@@ -53,3 +56,12 @@ Description
 ===========
 
 Initialisation constraints, our supply and consumers supplies.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

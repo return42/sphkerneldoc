@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-wait-register:
 
@@ -7,7 +8,7 @@ ata_wait_register
 
 *man ata_wait_register(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wait until register value changes
 
@@ -42,12 +43,14 @@ Arguments
 Description
 ===========
 
-Waiting for some bits of register to change is a common operation for ATA controllers. This function reads 32bit LE IO-mapped register ``reg`` and tests for the following
-condition.
+Waiting for some bits of register to change is a common operation for
+ATA controllers. This function reads 32bit LE IO-mapped register ``reg``
+and tests for the following condition.
 
-(⋆``reg`` & mask) != val
+(*``reg`` & mask) != val
 
-If the condition is met, it returns; otherwise, the process is repeated after ``interval_msec`` until timeout.
+If the condition is met, it returns; otherwise, the process is repeated
+after ``interval_msec`` until timeout.
 
 
 LOCKING
@@ -60,3 +63,12 @@ RETURNS
 =======
 
 The final register value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

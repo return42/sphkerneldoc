@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _power-management:
 
@@ -5,23 +6,36 @@
 Power Management
 ================
 
-If the chip is supposed to work with suspend/resume functions, you need to add power-management code to the driver. The additional code for power-management should be ``ifdef``'ed
-with ``CONFIG_PM``.
+If the chip is supposed to work with suspend/resume functions, you need
+to add power-management code to the driver. The additional code for
+power-management should be ``ifdef``'ed with ``CONFIG_PM``.
 
-If the driver *fully* supports suspend/resume that is, the device can be properly resumed to its state when suspend was called, you can set the ``SNDRV_PCM_INFO_RESUME`` flag in
-the pcm info field. Usually, this is possible when the registers of the chip can be safely saved and restored to RAM. If this is set, the trigger callback is called with
+If the driver *fully* supports suspend/resume that is, the device can be
+properly resumed to its state when suspend was called, you can set the
+``SNDRV_PCM_INFO_RESUME`` flag in the pcm info field. Usually, this is
+possible when the registers of the chip can be safely saved and restored
+to RAM. If this is set, the trigger callback is called with
 ``SNDRV_PCM_TRIGGER_RESUME`` after the resume callback completes.
 
-Even if the driver doesn't support PM fully but partial suspend/resume is still possible, it's still worthy to implement suspend/resume callbacks. In such a case, applications
-would reset the status by calling ``snd_pcm_prepare()`` and restart the stream appropriately. Hence, you can define suspend/resume callbacks below but don't set
+Even if the driver doesn't support PM fully but partial suspend/resume
+is still possible, it's still worthy to implement suspend/resume
+callbacks. In such a case, applications would reset the status by
+calling ``snd_pcm_prepare()`` and restart the stream appropriately.
+Hence, you can define suspend/resume callbacks below but don't set
 ``SNDRV_PCM_INFO_RESUME`` info flag to the PCM.
 
-Note that the trigger with SUSPEND can always be called when ``snd_pcm_suspend_all`` is called, regardless of the ``SNDRV_PCM_INFO_RESUME`` flag. The ``RESUME`` flag affects only
-the behavior of ``snd_pcm_resume()``. (Thus, in theory, ``SNDRV_PCM_TRIGGER_RESUME`` isn't needed to be handled in the trigger callback when no ``SNDRV_PCM_INFO_RESUME`` flag is
-set. But, it's better to keep it for compatibility reasons.)
+Note that the trigger with SUSPEND can always be called when
+``snd_pcm_suspend_all`` is called, regardless of the
+``SNDRV_PCM_INFO_RESUME`` flag. The ``RESUME`` flag affects only the
+behavior of ``snd_pcm_resume()``. (Thus, in theory,
+``SNDRV_PCM_TRIGGER_RESUME`` isn't needed to be handled in the trigger
+callback when no ``SNDRV_PCM_INFO_RESUME`` flag is set. But, it's better
+to keep it for compatibility reasons.)
 
-In the earlier version of ALSA drivers, a common power-management layer was provided, but it has been removed. The driver needs to define the suspend/resume hooks according to the
-bus the device is connected to. In the case of PCI drivers, the callbacks look like below:
+In the earlier version of ALSA drivers, a common power-management layer
+was provided, but it has been removed. The driver needs to define the
+suspend/resume hooks according to the bus the device is connected to. In
+the case of PCI drivers, the callbacks look like below:
 
 
 .. code-block:: c
@@ -43,7 +57,8 @@ The scheme of the real suspend job is as follows.
 
 1. Retrieve the card and the chip data.
 
-2. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D3hot`` to change the power status.
+2. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D3hot`` to
+   change the power status.
 
 3. Call ``snd_pcm_suspend_all()`` to suspend the running PCM streams.
 
@@ -53,7 +68,8 @@ The scheme of the real suspend job is as follows.
 
 6. Stop the hardware if necessary.
 
-7. Disable the PCI device by calling ``pci_disable_device()``. Then, call ``pci_save_state()`` at last.
+7. Disable the PCI device by calling ``pci_disable_device()``. Then,
+   call ``pci_save_state()`` at last.
 
 A typical code would be like:
 
@@ -85,7 +101,9 @@ The scheme of the real resume job is as follows.
 
 1. Retrieve the card and the chip data.
 
-2. Set up PCI. First, call ``pci_restore_state()``. Then enable the pci device again by calling ``pci_enable_device()``. Call ``pci_set_master()`` if necessary, too.
+2. Set up PCI. First, call ``pci_restore_state()``. Then enable the pci
+   device again by calling ``pci_enable_device()``. Call
+   ``pci_set_master()`` if necessary, too.
 
 3. Re-initialize the chip.
 
@@ -95,7 +113,8 @@ The scheme of the real resume job is as follows.
 
 6. Restart the hardware (if any).
 
-7. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D0`` to notify the processes.
+7. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D0`` to
+   notify the processes.
 
 A typical code would be like:
 
@@ -124,12 +143,17 @@ A typical code would be like:
               return 0;
       }
 
-As shown in the above, it's better to save registers after suspending the PCM operations via ``snd_pcm_suspend_all()`` or ``snd_pcm_suspend()``. It means that the PCM streams are
-already stopped when the register snapshot is taken. But, remember that you don't have to restart the PCM stream in the resume callback. It'll be restarted via trigger call with
-``SNDRV_PCM_TRIGGER_RESUME`` when necessary.
+As shown in the above, it's better to save registers after suspending
+the PCM operations via ``snd_pcm_suspend_all()`` or
+``snd_pcm_suspend()``. It means that the PCM streams are already stopped
+when the register snapshot is taken. But, remember that you don't have
+to restart the PCM stream in the resume callback. It'll be restarted via
+trigger call with ``SNDRV_PCM_TRIGGER_RESUME`` when necessary.
 
-OK, we have all callbacks now. Let's set them up. In the initialization of the card, make sure that you can get the chip data from the card instance, typically via ``private_data``
-field, in case you created the chip data individually.
+OK, we have all callbacks now. Let's set them up. In the initialization
+of the card, make sure that you can get the chip data from the card
+instance, typically via ``private_data`` field, in case you created the
+chip data individually.
 
 
 .. code-block:: c
@@ -151,7 +175,8 @@ field, in case you created the chip data individually.
               ....
       }
 
-When you created the chip data with ``snd_card_new()``, it's anyway accessible via ``private_data`` field.
+When you created the chip data with ``snd_card_new()``, it's anyway
+accessible via ``private_data`` field.
 
 
 .. code-block:: c
@@ -171,8 +196,10 @@ When you created the chip data with ``snd_card_new()``, it's anyway accessible v
               ....
       }
 
-If you need a space to save the registers, allocate the buffer for it here, too, since it would be fatal if you cannot allocate a memory in the suspend phase. The allocated buffer
-should be released in the corresponding destructor.
+If you need a space to save the registers, allocate the buffer for it
+here, too, since it would be fatal if you cannot allocate a memory in
+the suspend phase. The allocated buffer should be released in the
+corresponding destructor.
 
 And next, set suspend/resume callbacks to the pci_driver.
 
@@ -191,3 +218,12 @@ And next, set suspend/resume callbacks to the pci_driver.
       };
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-regulator-suspend-prepare:
 
@@ -7,7 +8,7 @@ regulator_suspend_prepare
 
 *man regulator_suspend_prepare(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 prepare regulators for system wide suspend
 
@@ -27,4 +28,15 @@ Arguments
 Description
 ===========
 
-Configure each regulator with it's suspend operating parameters for state. This will usually be called by machine suspend code prior to supending.
+Configure each regulator with it's suspend operating parameters for
+state. This will usually be called by machine suspend code prior to
+supending.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

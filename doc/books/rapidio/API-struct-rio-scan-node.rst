@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rio-scan-node:
 
@@ -7,9 +8,10 @@ struct rio_scan_node
 
 *man struct rio_scan_node(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-list node to register RapidIO enumeration and discovery methods with RapidIO core.
+list node to register RapidIO enumeration and discovery methods with
+RapidIO core.
 
 
 Synopsis
@@ -35,3 +37,12 @@ node
 
 ops
     RIO enumeration and discovery operations
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

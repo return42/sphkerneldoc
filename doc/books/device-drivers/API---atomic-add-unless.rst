@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---atomic-add-unless:
 
@@ -7,7 +8,7 @@ __atomic_add_unless
 
 *man __atomic_add_unless(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add unless the number is already a given value
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Atomically adds ``a`` to ``v``, so long as ``v`` was not already ``u``. Returns the old value of ``v``.
+Atomically adds ``a`` to ``v``, so long as ``v`` was not already ``u``.
+Returns the old value of ``v``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

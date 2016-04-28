@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-sta-ht-cap:
 
@@ -7,7 +8,7 @@ struct ieee80211_sta_ht_cap
 
 *man struct ieee80211_sta_ht_cap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 STA's HT capabilities
 
@@ -48,4 +49,14 @@ mcs
 Description
 ===========
 
-This structure describes most essential parameters needed to describe 802.11n HT capabilities for an STA.
+This structure describes most essential parameters needed to describe
+802.11n HT capabilities for an STA.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

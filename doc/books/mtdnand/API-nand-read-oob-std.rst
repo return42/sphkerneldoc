@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-read-oob-std:
 
@@ -7,7 +8,7 @@ nand_read_oob_std
 
 *man nand_read_oob_std(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [REPLACEABLE] the most common OOB data read function
 
@@ -28,3 +29,12 @@ Arguments
 
 ``page``
     page number to read
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

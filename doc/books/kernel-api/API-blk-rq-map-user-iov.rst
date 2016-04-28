@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-rq-map-user-iov:
 
@@ -7,7 +8,7 @@ blk_rq_map_user_iov
 
 *man blk_rq_map_user_iov(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 map user data to a request, for REQ_TYPE_BLOCK_PC usage
 
@@ -39,13 +40,27 @@ Arguments
 Description
 ===========
 
-Data will be mapped directly for zero copy I/O, if possible. Otherwise a kernel bounce buffer is used.
+Data will be mapped directly for zero copy I/O, if possible. Otherwise a
+kernel bounce buffer is used.
 
-A matching ``blk_rq_unmap_user`` must be issued at the end of I/O, while still in process context.
+A matching ``blk_rq_unmap_user`` must be issued at the end of I/O, while
+still in process context.
 
 
 Note
 ====
 
-The mapped bio may need to be bounced through ``blk_queue_bounce`` before being submitted to the device, as pages mapped may be out of reach. It's the callers responsibility to
-make sure this happens. The original bio must be passed back in to ``blk_rq_unmap_user`` for proper unmapping.
+The mapped bio may need to be bounced through ``blk_queue_bounce``
+before being submitted to the device, as pages mapped may be out of
+reach. It's the callers responsibility to make sure this happens. The
+original bio must be passed back in to ``blk_rq_unmap_user`` for proper
+unmapping.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

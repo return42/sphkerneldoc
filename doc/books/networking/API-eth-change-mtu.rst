@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-eth-change-mtu:
 
@@ -7,7 +8,7 @@ eth_change_mtu
 
 *man eth_change_mtu(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set new MTU size
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Allow changing MTU size. Needs to be overridden for devices supporting jumbo frames.
+Allow changing MTU size. Needs to be overridden for devices supporting
+jumbo frames.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

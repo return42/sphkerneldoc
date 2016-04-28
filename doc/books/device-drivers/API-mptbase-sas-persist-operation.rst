@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mptbase-sas-persist-operation:
 
@@ -7,7 +8,7 @@ mptbase_sas_persist_operation
 
 *man mptbase_sas_persist_operation(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Perform operation on SAS Persistent Table
 
@@ -30,7 +31,9 @@ Arguments
 Description
 ===========
 
-MPI_SAS_OP_CLEAR_NOT_PRESENT - Free all persist TargetID mappings for devices not currently present. MPI_SAS_OP_CLEAR_ALL_PERSISTENT - Clear al persist TargetID mappings
+MPI_SAS_OP_CLEAR_NOT_PRESENT - Free all persist TargetID mappings
+for devices not currently present. MPI_SAS_OP_CLEAR_ALL_PERSISTENT
+- Clear al persist TargetID mappings
 
 
 NOTE
@@ -39,3 +42,12 @@ NOTE
 Don't use not this function during interrupt time.
 
 Returns 0 for success, non-zero error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

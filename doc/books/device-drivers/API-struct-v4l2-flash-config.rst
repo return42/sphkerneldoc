@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-flash-config:
 
@@ -7,7 +8,7 @@ struct v4l2_flash_config
 
 *man struct v4l2_flash_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 V4L2 Flash sub-device initialization data
 
@@ -39,7 +40,18 @@ indicator_intensity
     constraints for the indicator LED
 
 flash_faults
-    bitmask of flash faults that the LED flash class device can report; corresponding LED_FAULT⋆ bit definitions are available in the header file <linux/led-class-flash.h>
+    bitmask of flash faults that the LED flash class device can report;
+    corresponding LED_FAULT* bit definitions are available in the
+    header file <linux/led-class-flash.h>
 
 has_external_strobe
     external strobe capability
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

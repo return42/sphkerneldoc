@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---v4l2-ctrl-modify-range:
 
@@ -7,7 +8,7 @@ __v4l2_ctrl_modify_range
 
 *man __v4l2_ctrl_modify_range(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Unlocked variant of ``v4l2_ctrl_modify_range``
 
@@ -39,9 +40,21 @@ Arguments
 Description
 ===========
 
-Update the range of a control on the fly. This works for control types INTEGER, BOOLEAN, MENU, INTEGER MENU and BITMASK. For menu controls the ``step`` value is interpreted as a
-menu_skip_mask.
+Update the range of a control on the fly. This works for control types
+INTEGER, BOOLEAN, MENU, INTEGER MENU and BITMASK. For menu controls the
+``step`` value is interpreted as a menu_skip_mask.
 
-An error is returned if one of the range arguments is invalid for this control type.
+An error is returned if one of the range arguments is invalid for this
+control type.
 
-This function assumes that the control handler is not locked and will take the lock itself.
+This function assumes that the control handler is not locked and will
+take the lock itself.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

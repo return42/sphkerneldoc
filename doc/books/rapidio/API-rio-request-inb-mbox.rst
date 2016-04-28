@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-request-inb-mbox:
 
@@ -7,7 +8,7 @@ rio_request_inb_mbox
 
 *man rio_request_inb_mbox(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 request inbound mailbox service
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Requests ownership of an inbound mailbox resource and binds a callback function to the resource. Returns ``0`` on success.
+Requests ownership of an inbound mailbox resource and binds a callback
+function to the resource. Returns ``0`` on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-trace-block-getrq:
 
@@ -7,7 +8,7 @@ trace_block_getrq
 
 *man trace_block_getrq(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get a free request entry in queue for block IO operations
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-A request struct for queue ``q`` has been allocated to handle the block IO operation ``bio``.
+A request struct for queue ``q`` has been allocated to handle the block
+IO operation ``bio``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

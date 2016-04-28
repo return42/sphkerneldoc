@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _basicboarddriver:
 
@@ -5,7 +6,9 @@
 Basic board driver
 ==================
 
-For most boards it will be sufficient to provide just the basic functions and fill out some really board dependent members in the nand chip description structure.
+For most boards it will be sufficient to provide just the basic
+functions and fill out some really board dependent members in the nand
+chip description structure.
 
 
 .. _Basic_defines:
@@ -13,8 +16,11 @@ For most boards it will be sufficient to provide just the basic functions and fi
 Basic defines
 =============
 
-At least you have to provide a nand_chip structure and a storage for the ioremap'ed chip address. You can allocate the nand_chip structure using kmalloc or you can allocate it
-statically. The NAND chip structure embeds an mtd structure which will be registered to the MTD subsystem. You can extract a pointer to the mtd structure from a nand_chip pointer
+At least you have to provide a nand_chip structure and a storage for
+the ioremap'ed chip address. You can allocate the nand_chip structure
+using kmalloc or you can allocate it statically. The NAND chip structure
+embeds an mtd structure which will be registered to the MTD subsystem.
+You can extract a pointer to the mtd structure from a nand_chip pointer
 using the nand_to_mtd() helper.
 
 Kmalloc based example
@@ -39,7 +45,8 @@ Static example
 Partition defines
 =================
 
-If you want to divide your device into partitions, then define a partitioning scheme suitable to your board.
+If you want to divide your device into partitions, then define a
+partitioning scheme suitable to your board.
 
 
 .. code-block:: c
@@ -60,8 +67,10 @@ If you want to divide your device into partitions, then define a partitioning sc
 Hardware control function
 =========================
 
-The hardware control function provides access to the control pins of the NAND chip(s). The access can be done by GPIO pins or by address lines. If you use address lines, make sure
-that the timing requirements are met.
+The hardware control function provides access to the control pins of the
+NAND chip(s). The access can be done by GPIO pins or by address lines.
+If you use address lines, make sure that the timing requirements are
+met.
 
 *GPIO based example*
 
@@ -80,7 +89,8 @@ that the timing requirements are met.
         }
     }
 
-*Address lines based example.* It's assumed that the nCE pin is driven by a chip select decoder.
+*Address lines based example.* It's assumed that the nCE pin is driven
+by a chip select decoder.
 
 
 .. code-block:: c
@@ -102,9 +112,13 @@ that the timing requirements are met.
 Device ready function
 =====================
 
-If the hardware interface has the ready busy pin of the NAND chip connected to a GPIO or other accessible I/O pin, this function is used to read back the state of the pin. The
-function has no arguments and should return 0, if the device is busy (R/B pin is low) and 1, if the device is ready (R/B pin is high). If the hardware interface does not give
-access to the ready busy pin, then the function must not be defined and the function pointer this->dev_ready is set to NULL.
+If the hardware interface has the ready busy pin of the NAND chip
+connected to a GPIO or other accessible I/O pin, this function is used
+to read back the state of the pin. The function has no arguments and
+should return 0, if the device is busy (R/B pin is low) and 1, if the
+device is ready (R/B pin is high). If the hardware interface does not
+give access to the ready busy pin, then the function must not be defined
+and the function pointer this->dev_ready is set to NULL.
 
 
 .. _Init_function:
@@ -112,8 +126,11 @@ access to the ready busy pin, then the function must not be defined and the func
 Init function
 =============
 
-The init function allocates memory and sets up all the board specific parameters and function pointers. When everything is set up nand_scan() is called. This function tries to
-detect and identify then chip. If a chip is found all the internal data fields are initialized accordingly. The structure(s) have to be zeroed out first and then filled with the
+The init function allocates memory and sets up all the board specific
+parameters and function pointers. When everything is set up nand_scan()
+is called. This function tries to detect and identify then chip. If a
+chip is found all the internal data fields are initialized accordingly.
+The structure(s) have to be zeroed out first and then filled with the
 necessary information about the device.
 
 
@@ -177,8 +194,9 @@ necessary information about the device.
 Exit function
 =============
 
-The exit function is only necessary if the driver is compiled as a module. It releases all resources which are held by the chip driver and unregisters the partitions in the MTD
-layer.
+The exit function is only necessary if the driver is compiled as a
+module. It releases all resources which are held by the chip driver and
+unregisters the partitions in the MTD layer.
 
 
 .. code-block:: c
@@ -199,3 +217,12 @@ layer.
     #endif
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

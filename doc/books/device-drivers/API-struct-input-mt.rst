@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-input-mt:
 
@@ -7,7 +8,7 @@ struct input_mt
 
 *man struct input_mt(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 state of tracked contacts
 
@@ -51,3 +52,12 @@ red
 
 slots[]
     array of slots holding current values of tracked contacts
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

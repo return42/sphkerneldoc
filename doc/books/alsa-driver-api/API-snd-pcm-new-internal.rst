@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-new-internal:
 
@@ -7,7 +8,7 @@ snd_pcm_new_internal
 
 *man snd_pcm_new_internal(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create a new internal PCM instance
 
@@ -42,13 +43,26 @@ Arguments
 Description
 ===========
 
-Creates a new internal PCM instance with no userspace device or procfs entries. This is used by ASoC Back End PCMs in order to create a PCM that will only be used internally by
-kernel drivers. i.e. it cannot be opened by userspace. It provides existing ASoC components drivers with a substream and access to any private data.
+Creates a new internal PCM instance with no userspace device or procfs
+entries. This is used by ASoC Back End PCMs in order to create a PCM
+that will only be used internally by kernel drivers. i.e. it cannot be
+opened by userspace. It provides existing ASoC components drivers with a
+substream and access to any private data.
 
-The pcm operators have to be set afterwards to the new instance via ``snd_pcm_set_ops``.
+The pcm operators have to be set afterwards to the new instance via
+``snd_pcm_set_ops``.
 
 
 Return
 ======
 
 Zero if successful, or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

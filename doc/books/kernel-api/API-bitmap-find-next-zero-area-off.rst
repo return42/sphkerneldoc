@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-find-next-zero-area-off:
 
@@ -7,7 +8,7 @@ bitmap_find_next_zero_area_off
 
 *man bitmap_find_next_zero_area_off(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find a contiguous aligned zero area
 
@@ -42,5 +43,15 @@ Arguments
 Description
 ===========
 
-The ``align_mask`` should be one less than a power of 2; the effect is that the bit offset of all zero areas this function finds plus ``align_offset`` is multiple of that power of
-2.
+The ``align_mask`` should be one less than a power of 2; the effect is
+that the bit offset of all zero areas this function finds plus
+``align_offset`` is multiple of that power of 2.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

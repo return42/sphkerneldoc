@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-primary-helper-destroy:
 
@@ -7,7 +8,7 @@ drm_primary_helper_destroy
 
 *man drm_primary_helper_destroy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Helper for primary plane destruction
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Provides a default plane destroy handler for primary planes. This handler is called during CRTC destruction. We disable the primary plane, remove it from the DRM plane list, and
-deallocate the plane structure.
+Provides a default plane destroy handler for primary planes. This
+handler is called during CRTC destruction. We disable the primary plane,
+remove it from the DRM plane list, and deallocate the plane structure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

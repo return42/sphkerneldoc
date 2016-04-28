@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-gobj-create:
 
@@ -7,7 +8,7 @@ media_gobj_create
 
 *man media_gobj_create(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize a graph object
 
@@ -33,5 +34,17 @@ Arguments
 Description
 ===========
 
-This routine initializes the embedded struct media_gobj inside a media graph object. It is called automatically if media_⋆ ``_create`` calls are used. However, if the object
-(entity, link, pad, interface) is embedded on some other object, this function should be called before registering the object at the media controller.
+This routine initializes the embedded struct media_gobj inside a media
+graph object. It is called automatically if media_* ``_create`` calls
+are used. However, if the object (entity, link, pad, interface) is
+embedded on some other object, this function should be called before
+registering the object at the media controller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

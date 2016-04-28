@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-reinit-completion:
 
@@ -7,7 +8,7 @@ reinit_completion
 
 *man reinit_completion(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 reinitialize a completion structure
 
@@ -27,4 +28,15 @@ Arguments
 Description
 ===========
 
-This inline function should be used to reinitialize a completion structure so it can be reused. This is especially important after ``complete_all`` is used.
+This inline function should be used to reinitialize a completion
+structure so it can be reused. This is especially important after
+``complete_all`` is used.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

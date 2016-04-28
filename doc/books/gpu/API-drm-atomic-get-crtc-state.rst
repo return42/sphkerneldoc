@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-atomic-get-crtc-state:
 
@@ -7,7 +8,7 @@ drm_atomic_get_crtc_state
 
 *man drm_atomic_get_crtc_state(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get crtc state
 
@@ -15,7 +16,7 @@ get crtc state
 Synopsis
 ========
 
-.. c:function:: struct drm_crtc_state ⋆ drm_atomic_get_crtc_state( struct drm_atomic_state * state, struct drm_crtc * crtc )
+.. c:function:: struct drm_crtc_state * drm_atomic_get_crtc_state( struct drm_atomic_state * state, struct drm_crtc * crtc )
 
 Arguments
 =========
@@ -30,11 +31,24 @@ Arguments
 Description
 ===========
 
-This function returns the crtc state for the given crtc, allocating it if needed. It will also grab the relevant crtc lock to make sure that the state is consistent.
+This function returns the crtc state for the given crtc, allocating it
+if needed. It will also grab the relevant crtc lock to make sure that
+the state is consistent.
 
 
 Returns
 =======
 
-Either the allocated state or the error code encoded into the pointer. When the error is EDEADLK then the w/w mutex code has detected a deadlock and the entire atomic sequence must
-be restarted. All other errors are fatal.
+Either the allocated state or the error code encoded into the pointer.
+When the error is EDEADLK then the w/w mutex code has detected a
+deadlock and the entire atomic sequence must be restarted. All other
+errors are fatal.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

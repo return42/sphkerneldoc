@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-ready-on-channel:
 
@@ -7,7 +8,7 @@ cfg80211_ready_on_channel
 
 *man cfg80211_ready_on_channel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notification of remain_on_channel start
 
@@ -30,7 +31,17 @@ Arguments
     The current channel (from remain_on_channel request)
 
 ``duration``
-    Duration in milliseconds that the driver intents to remain on the channel
+    Duration in milliseconds that the driver intents to remain on the
+    channel
 
 ``gfp``
     allocation flags
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

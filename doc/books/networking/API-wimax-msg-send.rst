@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wimax-msg-send:
 
@@ -7,7 +8,7 @@ wimax_msg_send
 
 *man wimax_msg_send(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Send a pre-allocated message to user space
 
@@ -24,7 +25,8 @@ Arguments
     WiMAX device descriptor
 
 ``skb``
-    ``struct sk_buff`` returned by ``wimax_msg_alloc``. Note the ownership of ``skb`` is transferred to this function.
+    ``struct sk_buff`` returned by ``wimax_msg_alloc``. Note the
+    ownership of ``skb`` is transferred to this function.
 
 
 Returns
@@ -36,15 +38,31 @@ Returns
 Description
 ===========
 
-Sends a free-form message that was preallocated with ``wimax_msg_alloc`` and filled up.
+Sends a free-form message that was preallocated with ``wimax_msg_alloc``
+and filled up.
 
-Assumes that once you pass an skb to this function for sending, it owns it and will release it when done (on success).
+Assumes that once you pass an skb to this function for sending, it owns
+it and will release it when done (on success).
 
 
 IMPORTANT
 =========
 
-Don't use ``skb_push``/``skb_pull``/``skb_reserve`` on the skb, as ``wimax_msg_send`` depends on skb->data being placed at the beginning of the user message.
+Don't use ``skb_push``/``skb_pull``/``skb_reserve`` on the skb, as
+``wimax_msg_send`` depends on skb->data being placed at the beginning of
+the user message.
 
-Unlike other WiMAX stack calls, this call can be used way early, even before ``wimax_dev_add`` is called, as long as the wimax_dev->net_dev pointer is set to point to a proper
-net_dev. This is so that drivers can use it early in case they need to send stuff around or communicate with user space.
+Unlike other WiMAX stack calls, this call can be used way early, even
+before ``wimax_dev_add`` is called, as long as the wimax_dev->net_dev
+pointer is set to point to a proper net_dev. This is so that drivers
+can use it early in case they need to send stuff around or communicate
+with user space.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

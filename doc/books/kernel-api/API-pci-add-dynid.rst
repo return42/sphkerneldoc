@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-add-dynid:
 
@@ -7,7 +8,7 @@ pci_add_dynid
 
 *man pci_add_dynid(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a new PCI device ID to this driver and re-probe devices
 
@@ -48,7 +49,9 @@ Arguments
 Description
 ===========
 
-Adds a new dynamic pci device ID to this driver and causes the driver to probe for all devices again. ``drv`` must have been registered prior to calling this function.
+Adds a new dynamic pci device ID to this driver and causes the driver to
+probe for all devices again. ``drv`` must have been registered prior to
+calling this function.
 
 
 CONTEXT
@@ -61,3 +64,12 @@ RETURNS
 =======
 
 0 on success, -errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

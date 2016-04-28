@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-clone-sk:
 
@@ -7,7 +8,7 @@ skb_clone_sk
 
 *man skb_clone_sk(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create clone of skb, and take reference to socket
 
@@ -15,7 +16,7 @@ create clone of skb, and take reference to socket
 Synopsis
 ========
 
-.. c:function:: struct sk_buff ⋆ skb_clone_sk( struct sk_buff * skb )
+.. c:function:: struct sk_buff * skb_clone_sk( struct sk_buff * skb )
 
 Arguments
 =========
@@ -27,8 +28,20 @@ Arguments
 Description
 ===========
 
-This function creates a clone of a buffer that holds a reference on sk_refcnt. Buffers created via this function are meant to be returned using sock_queue_err_skb, or free via
-kfree_skb.
+This function creates a clone of a buffer that holds a reference on
+sk_refcnt. Buffers created via this function are meant to be returned
+using sock_queue_err_skb, or free via kfree_skb.
 
-When passing buffers allocated with this function to sock_queue_err_skb it is necessary to wrap the call with sock_hold/sock_put in order to prevent the socket from being
-released prior to being enqueued on the sk_error_queue.
+When passing buffers allocated with this function to
+sock_queue_err_skb it is necessary to wrap the call with
+sock_hold/sock_put in order to prevent the socket from being released
+prior to being enqueued on the sk_error_queue.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

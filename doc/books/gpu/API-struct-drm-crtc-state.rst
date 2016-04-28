@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-crtc-state:
 
@@ -7,7 +8,7 @@ struct drm_crtc_state
 
 *man struct drm_crtc_state(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mutable CRTC state
 
@@ -65,19 +66,22 @@ connectors_changed
     connectors to this crtc have been updated
 
 color_mgmt_changed
-    color management properties have changed (degamma or gamma LUT or CSC matrix)
+    color management properties have changed (degamma or gamma LUT or
+    CSC matrix)
 
 plane_mask
     bitmask of (1 << drm_plane_index(plane)) of attached planes
 
 connector_mask
-    bitmask of (1 << drm_connector_index(connector)) of attached connectors
+    bitmask of (1 << drm_connector_index(connector)) of attached
+    connectors
 
 encoder_mask
     bitmask of (1 << drm_encoder_index(encoder)) of attached encoders
 
 last_vblank_count
-    for helpers and drivers to capture the vblank of the update to ensure framebuffer cleanup isn't done too early
+    for helpers and drivers to capture the vblank of the update to
+    ensure framebuffer cleanup isn't done too early
 
 adjusted_mode
     for use by helpers and drivers to compute adjusted mode timings
@@ -86,7 +90,8 @@ mode
     current mode timings
 
 degamma_lut
-    Lookup table for converting framebuffer pixel data before apply the conversion matrix
+    Lookup table for converting framebuffer pixel data before apply the
+    conversion matrix
 
 ctm
     Transformation matrix
@@ -95,7 +100,8 @@ gamma_lut
     Lookup table for converting pixel data after the conversion matrix
 
 event
-    optional pointer to a DRM event to signal upon completion of the state update
+    optional pointer to a DRM event to signal upon completion of the
+    state update
 
 state
     backpointer to global drm_atomic_state
@@ -104,6 +110,18 @@ state
 Description
 ===========
 
-Note that the distinction between ``enable`` and ``active`` is rather subtile: Flipping ``active`` while ``enable`` is set without changing anything else may never return in a
-failure from the ->atomic_check callback. Userspace assumes that a DPMS On will always succeed. In other words: ``enable`` controls resource assignment, ``active`` controls the
+Note that the distinction between ``enable`` and ``active`` is rather
+subtile: Flipping ``active`` while ``enable`` is set without changing
+anything else may never return in a failure from the ->atomic_check
+callback. Userspace assumes that a DPMS On will always succeed. In other
+words: ``enable`` controls resource assignment, ``active`` controls the
 actual hardware state.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

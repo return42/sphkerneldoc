@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-obtain-root:
 
@@ -7,7 +8,7 @@ d_obtain_root
 
 *man d_obtain_root(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find or allocate a dentry for a given inode
 
@@ -15,7 +16,7 @@ find or allocate a dentry for a given inode
 Synopsis
 ========
 
-.. c:function:: struct dentry ⋆ d_obtain_root( struct inode * inode )
+.. c:function:: struct dentry * d_obtain_root( struct inode * inode )
 
 Arguments
 =========
@@ -29,7 +30,20 @@ Description
 
 Obtain an IS_ROOT dentry for the root of a filesystem.
 
-We must ensure that directory inodes only ever have one dentry. If a dentry is found, that is returned instead of allocating a new one.
+We must ensure that directory inodes only ever have one dentry. If a
+dentry is found, that is returned instead of allocating a new one.
 
-On successful return, the reference to the inode has been transferred to the dentry. In case of an error the reference on the inode is released. A ``NULL`` or IS_ERR inode may be
-passed in and will be the error will be propagate to the return value, with a ``NULL`` ``inode`` replaced by ERR_PTR(-ESTALE).
+On successful return, the reference to the inode has been transferred to
+the dentry. In case of an error the reference on the inode is released.
+A ``NULL`` or IS_ERR inode may be passed in and will be the error will
+be propagate to the return value, with a ``NULL`` ``inode`` replaced by
+ERR_PTR(-ESTALE).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _standard:
 
@@ -5,37 +6,63 @@
 Video Standards
 ===============
 
-Video devices typically support one or more different video standards or variations of standards. Each video input and output may support another set of standards. This set is
-reported by the ``std`` field of struct :ref:`v4l2_input <v4l2-input>` and struct :ref:`v4l2_output <v4l2-output>` returned by the
-:ref:`VIDIOC_ENUMINPUT <vidioc-enuminput>` and :ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctls, respectively.
+Video devices typically support one or more different video standards or
+variations of standards. Each video input and output may support another
+set of standards. This set is reported by the ``std`` field of struct
+:ref:`v4l2_input <v4l2-input>` and struct
+:ref:`v4l2_output <v4l2-output>` returned by the
+:ref:`VIDIOC_ENUMINPUT <vidioc-enuminput>` and
+:ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctls, respectively.
 
-V4L2 defines one bit for each analog video standard currently in use worldwide, and sets aside bits for driver defined standards, e. g. hybrid standards to watch NTSC video tapes
-on PAL TVs and vice versa. Applications can use the predefined bits to select a particular standard, although presenting the user a menu of supported standards is preferred. To
-enumerate and query the attributes of the supported standards applications use the :ref:`VIDIOC_ENUMSTD <vidioc-enumstd>` ioctl.
+V4L2 defines one bit for each analog video standard currently in use
+worldwide, and sets aside bits for driver defined standards, e. g.
+hybrid standards to watch NTSC video tapes on PAL TVs and vice versa.
+Applications can use the predefined bits to select a particular
+standard, although presenting the user a menu of supported standards is
+preferred. To enumerate and query the attributes of the supported
+standards applications use the :ref:`VIDIOC_ENUMSTD <vidioc-enumstd>`
+ioctl.
 
-Many of the defined standards are actually just variations of a few major standards. The hardware may in fact not distinguish between them, or do so internal and switch
-automatically. Therefore enumerated standards also contain sets of one or more standard bits.
+Many of the defined standards are actually just variations of a few
+major standards. The hardware may in fact not distinguish between them,
+or do so internal and switch automatically. Therefore enumerated
+standards also contain sets of one or more standard bits.
 
-Assume a hypothetic tuner capable of demodulating B/PAL, G/PAL and I/PAL signals. The first enumerated standard is a set of B and G/PAL, switched automatically depending on the
-selected radio frequency in UHF or VHF band. Enumeration gives a "PAL-B/G" or "PAL-I" choice. Similar a Composite input may collapse standards, enumerating "PAL-B/G/H/I", "NTSC-M"
-and "SECAM-D/K". [1]_
+Assume a hypothetic tuner capable of demodulating B/PAL, G/PAL and I/PAL
+signals. The first enumerated standard is a set of B and G/PAL, switched
+automatically depending on the selected radio frequency in UHF or VHF
+band. Enumeration gives a "PAL-B/G" or "PAL-I" choice. Similar a
+Composite input may collapse standards, enumerating "PAL-B/G/H/I",
+"NTSC-M" and "SECAM-D/K". [1]_
 
-To query and select the standard used by the current video input or output applications call the :ref:`VIDIOC_G_STD <vidioc-g-std>` and :ref:`VIDIOC_S_STD <vidioc-g-std>`
-ioctl, respectively. The *received* standard can be sensed with the :ref:`VIDIOC_QUERYSTD <vidioc-querystd>` ioctl. Note that the parameter of all these ioctls is a pointer to a
-:ref:`v4l2_std_id <v4l2-std-id>` type (a standard set), *not* an index into the standard enumeration. Drivers must implement all video standard ioctls when the device has one
-or more video inputs or outputs.
+To query and select the standard used by the current video input or
+output applications call the :ref:`VIDIOC_G_STD <vidioc-g-std>` and
+:ref:`VIDIOC_S_STD <vidioc-g-std>` ioctl, respectively. The
+*received* standard can be sensed with the
+:ref:`VIDIOC_QUERYSTD <vidioc-querystd>` ioctl. Note that the
+parameter of all these ioctls is a pointer to a
+:ref:`v4l2_std_id <v4l2-std-id>` type (a standard set), *not* an
+index into the standard enumeration. Drivers must implement all video
+standard ioctls when the device has one or more video inputs or outputs.
 
-Special rules apply to devices such as USB cameras where the notion of video standards makes little sense. More generally for any capture or output device which is:
+Special rules apply to devices such as USB cameras where the notion of
+video standards makes little sense. More generally for any capture or
+output device which is:
 
--  incapable of capturing fields or frames at the nominal rate of the video standard, or
+-  incapable of capturing fields or frames at the nominal rate of the
+   video standard, or
 
 -  that does not support the video standard formats at all.
 
-Here the driver shall set the ``std`` field of struct :ref:`v4l2_input <v4l2-input>` and struct :ref:`v4l2_output <v4l2-output>` to zero and the ``VIDIOC_G_STD``,
-``VIDIOC_S_STD``, ``VIDIOC_QUERYSTD`` and ``VIDIOC_ENUMSTD`` ioctls shall return the ENOTTY error code or the EINVAL error code.
+Here the driver shall set the ``std`` field of struct
+:ref:`v4l2_input <v4l2-input>` and struct
+:ref:`v4l2_output <v4l2-output>` to zero and the ``VIDIOC_G_STD``,
+``VIDIOC_S_STD``, ``VIDIOC_QUERYSTD`` and ``VIDIOC_ENUMSTD`` ioctls
+shall return the ENOTTY error code or the EINVAL error code.
 
-Applications can make use of the :ref:`input-capabilities` and :ref:`output-capabilities` flags to determine whether the video standard ioctls can be used with the given input
-or output.
+Applications can make use of the :ref:`input-capabilities` and
+:ref:`output-capabilities` flags to determine whether the video
+standard ioctls can be used with the given input or output.
 
 
 .. code-block:: c
@@ -144,5 +171,15 @@ or output.
     }
 
 .. [1]
-   Some users are already confused by technical terms PAL, NTSC and SECAM. There is no point asking them to distinguish between B, G, D, or K when the software or hardware can do
-   that automatically.
+   Some users are already confused by technical terms PAL, NTSC and
+   SECAM. There is no point asking them to distinguish between B, G, D,
+   or K when the software or hardware can do that automatically.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

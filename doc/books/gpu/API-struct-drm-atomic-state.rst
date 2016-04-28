@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-atomic-state:
 
@@ -7,7 +8,7 @@ struct drm_atomic_state
 
 *man struct drm_atomic_state(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 the global state object for atomic updates
 
@@ -71,3 +72,12 @@ connector_states
 
 acquire_ctx
     acquire context for this atomic modeset state update
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

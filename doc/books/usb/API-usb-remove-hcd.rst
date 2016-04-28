@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-remove-hcd:
 
@@ -7,7 +8,7 @@ usb_remove_hcd
 
 *man usb_remove_hcd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 shutdown processing for generic HCDs
 
@@ -33,4 +34,14 @@ Context
 Description
 ===========
 
-Disconnects the root hub, then reverses the effects of ``usb_add_hcd``, invoking the HCD's ``stop`` method.
+Disconnects the root hub, then reverses the effects of ``usb_add_hcd``,
+invoking the HCD's ``stop`` method.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

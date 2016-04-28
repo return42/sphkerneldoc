@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-composite-driver:
 
@@ -7,7 +8,7 @@ struct usb_composite_driver
 
 *man struct usb_composite_driver(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 groups configurations into a gadget
 
@@ -39,33 +40,42 @@ name
     For diagnostics, identifies the driver.
 
 dev
-    Template descriptor for the device, including default device identifiers.
+    Template descriptor for the device, including default device
+    identifiers.
 
 strings
-    tables of strings, keyed by identifiers assigned during ``bind`` and language IDs provided in control requests. Note: The first entries are predefined. The first entry that may
-    be used is USB_GADGET_FIRST_AVAIL_IDX
+    tables of strings, keyed by identifiers assigned during ``bind`` and
+    language IDs provided in control requests. Note: The first entries
+    are predefined. The first entry that may be used is
+    USB_GADGET_FIRST_AVAIL_IDX
 
 max_speed
     Highest speed the driver supports.
 
 needs_serial
-    set to 1 if the gadget needs userspace to provide a serial number. If one is not provided, warning will be printed.
+    set to 1 if the gadget needs userspace to provide a serial number.
+    If one is not provided, warning will be printed.
 
 bind
-    (REQUIRED) Used to allocate resources that are shared across the whole device, such as string IDs, and add its configurations using ``usb_add_config``\ (). This may fail by
-    returning a negative errno value; it should return zero on successful initialization.
+    (REQUIRED) Used to allocate resources that are shared across the
+    whole device, such as string IDs, and add its configurations using
+    ``usb_add_config``\ (). This may fail by returning a negative errno
+    value; it should return zero on successful initialization.
 
 unbind
-    Reverses ``bind``; called as a side effect of unregistering this driver.
+    Reverses ``bind``; called as a side effect of unregistering this
+    driver.
 
 disconnect
     optional driver disconnect method
 
 suspend
-    Notifies when the host stops sending USB traffic, after function notifications
+    Notifies when the host stops sending USB traffic, after function
+    notifications
 
 resume
-    Notifies configuration when the host restarts USB traffic, before function notifications
+    Notifies configuration when the host restarts USB traffic, before
+    function notifications
 
 gadget_driver
     Gadget driver controlling this driver
@@ -74,8 +84,23 @@ gadget_driver
 Description
 ===========
 
-Devices default to reporting self powered operation. Devices which rely on bus powered operation should report this in their ``bind`` method.
+Devices default to reporting self powered operation. Devices which rely
+on bus powered operation should report this in their ``bind`` method.
 
-Before returning from ``bind``, various fields in the template descriptor may be overridden. These include the idVendor/idProduct/bcdDevice values normally to bind the appropriate
-host side driver, and the three strings (iManufacturer, iProduct, iSerialNumber) normally used to provide user meaningful device identifiers. (The strings will not be defined
-unless they are defined in ``dev`` and ``strings``.) The correct ep0 maxpacket size is also reported, as defined by the underlying controller driver.
+Before returning from ``bind``, various fields in the template
+descriptor may be overridden. These include the
+idVendor/idProduct/bcdDevice values normally to bind the appropriate
+host side driver, and the three strings (iManufacturer, iProduct,
+iSerialNumber) normally used to provide user meaningful device
+identifiers. (The strings will not be defined unless they are defined in
+``dev`` and ``strings``.) The correct ep0 maxpacket size is also
+reported, as defined by the underlying controller driver.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

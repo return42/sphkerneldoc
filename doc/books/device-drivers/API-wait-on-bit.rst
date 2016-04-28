@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wait-on-bit:
 
@@ -7,7 +8,7 @@ wait_on_bit
 
 *man wait_on_bit(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wait for a bit to be cleared
 
@@ -33,6 +34,19 @@ Arguments
 Description
 ===========
 
-There is a standard hashed waitqueue table for generic use. This is the part of the hashtable's accessor API that waits on a bit. For instance, if one were to have waiters on a
-bitflag, one would call ``wait_on_bit`` in threads waiting for the bit to clear. One uses ``wait_on_bit`` where one is waiting for the bit to clear, but has no intention of setting
-it. Returned value will be zero if the bit was cleared, or non-zero if the process received a signal and the mode permitted wakeup on that signal.
+There is a standard hashed waitqueue table for generic use. This is the
+part of the hashtable's accessor API that waits on a bit. For instance,
+if one were to have waiters on a bitflag, one would call ``wait_on_bit``
+in threads waiting for the bit to clear. One uses ``wait_on_bit`` where
+one is waiting for the bit to clear, but has no intention of setting it.
+Returned value will be zero if the bit was cleared, or non-zero if the
+process received a signal and the mode permitted wakeup on that signal.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

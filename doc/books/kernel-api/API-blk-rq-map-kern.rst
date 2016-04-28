@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-rq-map-kern:
 
@@ -7,7 +8,7 @@ blk_rq_map_kern
 
 *man blk_rq_map_kern(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 map kernel data to a request, for REQ_TYPE_BLOCK_PC usage
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Data will be mapped directly if possible. Otherwise a bounce buffer is used. Can be called multiple times to append multiple buffers.
+Data will be mapped directly if possible. Otherwise a bounce buffer is
+used. Can be called multiple times to append multiple buffers.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

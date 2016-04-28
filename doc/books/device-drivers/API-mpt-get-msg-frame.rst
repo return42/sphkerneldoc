@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-get-msg-frame:
 
@@ -7,7 +8,7 @@ mpt_get_msg_frame
 
 *man mpt_get_msg_frame(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Obtain an MPT request frame from the pool
 
@@ -15,7 +16,7 @@ Obtain an MPT request frame from the pool
 Synopsis
 ========
 
-.. c:function:: MPT_FRAME_HDR⋆ mpt_get_msg_frame( u8 cb_idx, MPT_ADAPTER * ioc )
+.. c:function:: MPT_FRAME_HDR* mpt_get_msg_frame( u8 cb_idx, MPT_ADAPTER * ioc )
 
 Arguments
 =========
@@ -30,6 +31,17 @@ Arguments
 Description
 ===========
 
-Obtain an MPT request frame from the pool (of 1024) that are allocated per MPT adapter.
+Obtain an MPT request frame from the pool (of 1024) that are allocated
+per MPT adapter.
 
-Returns pointer to a MPT request frame or ``NULL`` if none are available or IOC is not active.
+Returns pointer to a MPT request frame or ``NULL`` if none are available
+or IOC is not active.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

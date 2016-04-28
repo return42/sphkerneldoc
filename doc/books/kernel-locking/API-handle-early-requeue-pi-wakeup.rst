@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-handle-early-requeue-pi-wakeup:
 
@@ -7,7 +8,7 @@ handle_early_requeue_pi_wakeup
 
 *man handle_early_requeue_pi_wakeup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Detect early wakeup on the initial futex
 
@@ -36,11 +37,22 @@ Arguments
 Description
 ===========
 
-Detect if the task was woken on the initial futex as opposed to the requeue target futex. If so, determine if it was a timeout or a signal that caused the wakeup and return the
-appropriate error code to the caller. Must be called with the hb lock held.
+Detect if the task was woken on the initial futex as opposed to the
+requeue target futex. If so, determine if it was a timeout or a signal
+that caused the wakeup and return the appropriate error code to the
+caller. Must be called with the hb lock held.
 
 
 Return
 ======
 
 0 = no early wakeup detected; <0 = -ETIMEDOUT or -ERESTARTNOINTR
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

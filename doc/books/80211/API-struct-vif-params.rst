@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vif-params:
 
@@ -7,7 +8,7 @@ struct vif_params
 
 *man struct vif_params(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 describes virtual interface parameters
 
@@ -30,5 +31,17 @@ use_4addr
     use 4-address frames
 
 macaddr[ETH_ALEN]
-    address to use for this virtual interface. If this parameter is set to zero address the driver may determine the address as needed. This feature is only fully supported by
-    drivers that enable the ``NL80211_FEATURE_MAC_ON_CREATE`` flag. Others may support creating ⋆ only p2p devices with specified MAC.
+    address to use for this virtual interface. If this parameter is set
+    to zero address the driver may determine the address as needed. This
+    feature is only fully supported by drivers that enable the
+    ``NL80211_FEATURE_MAC_ON_CREATE`` flag. Others may support creating
+    * only p2p devices with specified MAC.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

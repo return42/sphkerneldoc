@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 =============
 Proc Info API
@@ -17,3 +18,14 @@ Proc Info Interface
     API-snd-info-create-card-entry
     API-snd-info-free-entry
     API-snd-info-register
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

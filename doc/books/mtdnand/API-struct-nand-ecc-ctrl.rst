@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-nand-ecc-ctrl:
 
@@ -7,7 +8,7 @@ struct nand_ecc_ctrl
 
 *man struct nand_ecc_ctrl(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Control structure for ECC
 
@@ -82,36 +83,50 @@ priv
     pointer to private ECC control data
 
 hwctl
-    function to control hardware ECC generator. Must only be provided if an hardware ECC is available
+    function to control hardware ECC generator. Must only be provided if
+    an hardware ECC is available
 
 calculate
     function for ECC calculation or readback from ECC hardware
 
 correct
-    function for ECC correction, matching to ECC generator (sw/hw). Should return a positive number representing the number of corrected bitflips, -EBADMSG if the number of
-    bitflips exceed ECC strength, or any other error code if the error is not directly related to correction. If -EBADMSG is returned the input buffers should be left untouched.
+    function for ECC correction, matching to ECC generator (sw/hw).
+    Should return a positive number representing the number of corrected
+    bitflips, -EBADMSG if the number of bitflips exceed ECC strength, or
+    any other error code if the error is not directly related to
+    correction. If -EBADMSG is returned the input buffers should be left
+    untouched.
 
 read_page_raw
-    function to read a raw page without ECC. This function should hide the specific layout used by the ECC controller and always return contiguous in-band and out-of-band data even
-    if they're not stored contiguously on the NAND chip (e.g. NAND_ECC_HW_SYNDROME interleaves in-band and out-of-band data).
+    function to read a raw page without ECC. This function should hide
+    the specific layout used by the ECC controller and always return
+    contiguous in-band and out-of-band data even if they're not stored
+    contiguously on the NAND chip (e.g. NAND_ECC_HW_SYNDROME
+    interleaves in-band and out-of-band data).
 
 write_page_raw
-    function to write a raw page without ECC. This function should hide the specific layout used by the ECC controller and consider the passed data as contiguous in-band and
-    out-of-band data. ECC controller is responsible for doing the appropriate transformations to adapt to its specific layout (e.g. NAND_ECC_HW_SYNDROME interleaves in-band and
-    out-of-band data).
+    function to write a raw page without ECC. This function should hide
+    the specific layout used by the ECC controller and consider the
+    passed data as contiguous in-band and out-of-band data. ECC
+    controller is responsible for doing the appropriate transformations
+    to adapt to its specific layout (e.g. NAND_ECC_HW_SYNDROME
+    interleaves in-band and out-of-band data).
 
 read_page
-    function to read a page according to the ECC generator requirements; returns maximum number of bitflips corrected in any single ECC step, 0 if bitflips uncorrectable, -EIO hw
-    error
+    function to read a page according to the ECC generator requirements;
+    returns maximum number of bitflips corrected in any single ECC step,
+    0 if bitflips uncorrectable, -EIO hw error
 
 read_subpage
-    function to read parts of the page covered by ECC; returns same as ``read_page``
+    function to read parts of the page covered by ECC; returns same as
+    ``read_page``
 
 write_subpage
     function to write parts of the page covered by ECC.
 
 write_page
-    function to write a page according to the ECC generator requirements.
+    function to write a page according to the ECC generator
+    requirements.
 
 write_oob_raw
     function to write chip OOB data without ECC
@@ -124,3 +139,12 @@ read_oob
 
 write_oob
     function to write chip OOB data
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-sriov-set-totalvfs:
 
@@ -7,7 +8,7 @@ pci_sriov_set_totalvfs
 
 *man pci_sriov_set_totalvfs(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 - reduce the TotalVFs available
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-Should be called from PF driver's probe routine with device's mutex held.
+Should be called from PF driver's probe routine with device's mutex
+held.
 
-Returns 0 if PF is an SRIOV-capable device and value of numvfs valid. If not a PF return -ENOSYS; if numvfs is invalid return -EINVAL; if VFs already enabled, return -EBUSY.
+Returns 0 if PF is an SRIOV-capable device and value of numvfs valid. If
+not a PF return -ENOSYS; if numvfs is invalid return -EINVAL; if VFs
+already enabled, return -EBUSY.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

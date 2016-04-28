@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vm-unmap-aliases:
 
@@ -7,7 +8,7 @@ vm_unmap_aliases
 
 *man vm_unmap_aliases(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 unmap outstanding lazy aliases in the vmap layer
 
@@ -27,8 +28,22 @@ Arguments
 Description
 ===========
 
-The vmap/vmalloc layer lazily flushes kernel virtual mappings primarily to amortize TLB flushing overheads. What this means is that any page you have now, may, in a former life,
-have been mapped into kernel virtual address by the vmap layer and so there might be some CPUs with TLB entries still referencing that page (additional to the regular 1:1 kernel
-mapping).
+The vmap/vmalloc layer lazily flushes kernel virtual mappings primarily
+to amortize TLB flushing overheads. What this means is that any page you
+have now, may, in a former life, have been mapped into kernel virtual
+address by the vmap layer and so there might be some CPUs with TLB
+entries still referencing that page (additional to the regular 1:1
+kernel mapping).
 
-vm_unmap_aliases flushes all such lazy mappings. After it returns, we can be sure that none of the pages we have control over will have any aliases from the vmap layer.
+vm_unmap_aliases flushes all such lazy mappings. After it returns, we
+can be sure that none of the pages we have control over will have any
+aliases from the vmap layer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mipi-dsi-dcs-read:
 
@@ -7,7 +8,7 @@ mipi_dsi_dcs_read
 
 *man mipi_dsi_dcs_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send DCS read request command
 
@@ -37,3 +38,12 @@ Return
 ======
 
 The number of bytes read or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

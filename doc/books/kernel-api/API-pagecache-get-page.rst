@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pagecache-get-page:
 
@@ -7,7 +8,7 @@ pagecache_get_page
 
 *man pagecache_get_page(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find and get a page reference
 
@@ -15,7 +16,7 @@ find and get a page reference
 Synopsis
 ========
 
-.. c:function:: struct page ⋆ pagecache_get_page( struct address_space * mapping, pgoff_t offset, int fgp_flags, gfp_t gfp_mask )
+.. c:function:: struct page * pagecache_get_page( struct address_space * mapping, pgoff_t offset, int fgp_flags, gfp_t gfp_mask )
 
 Arguments
 =========
@@ -56,9 +57,21 @@ Page is return locked
 FGP_CREAT
 =========
 
-If page is not present then a new page is allocated using ``gfp_mask`` and added to the page cache and the VM's LRU list. The page is returned locked and with an increased
-refcount. Otherwise, ``NULL`` is returned.
+If page is not present then a new page is allocated using ``gfp_mask``
+and added to the page cache and the VM's LRU list. The page is returned
+locked and with an increased refcount. Otherwise, ``NULL`` is returned.
 
-If FGP_LOCK or FGP_CREAT are specified then the function may sleep even if the GFP flags specified for FGP_CREAT are atomic.
+If FGP_LOCK or FGP_CREAT are specified then the function may sleep
+even if the GFP flags specified for FGP_CREAT are atomic.
 
-If there is a page cache page, it is returned with an increased refcount.
+If there is a page cache page, it is returned with an increased
+refcount.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

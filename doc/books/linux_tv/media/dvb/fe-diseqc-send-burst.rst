@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _FE_DISEQC_SEND_BURST:
 
@@ -31,15 +32,18 @@ Arguments
 Description
 ===========
 
-This ioctl is used to set the generation of a 22kHz tone burst for mini DiSEqC satellite selection for 2x1 switches. This call requires read/write permissions.
+This ioctl is used to set the generation of a 22kHz tone burst for mini
+DiSEqC satellite selection for 2x1 switches. This call requires
+read/write permissions.
 
 It provides support for what's specified at
 `Digital Satellite Equipment Control (DiSEqC) - Simple "ToneBurst" Detection Circuit specification. <http://www.eutelsat.com/files/contributed/satellites/pdf/Diseqc/associated%20docs/simple_tone_burst_detec.pdf>`__
 
 RETURN VALUE
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 
 .. _fe-sec-mini-cmd-t:
@@ -50,14 +54,40 @@ enum fe_sec_mini_cmd
 
 .. _fe-sec-mini-cmd:
 
-.. table:: enum fe_sec_mini_cmd
-
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | ID                                                                                         | Description                                                                                |
-    +============================================================================================+============================================================================================+
-    | ``SEC_MINI_A``                                                                             | Sends a mini-DiSEqC 22kHz '0' Tone Burst to select satellite-A                             |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | ``SEC_MINI_B``                                                                             | Sends a mini-DiSEqC 22kHz '1' Data Burst to select satellite-B                             |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+.. flat-table:: enum fe_sec_mini_cmd
+    :header-rows:  1
+    :stub-columns: 0
 
 
+    -  .. row 1
+
+       -  ID
+
+       -  Description
+
+    -  .. row 2
+
+       -  .. _`SEC-MINI-A`:
+
+          ``SEC_MINI_A``
+
+       -  Sends a mini-DiSEqC 22kHz '0' Tone Burst to select satellite-A
+
+    -  .. row 3
+
+       -  .. _`SEC-MINI-B`:
+
+          ``SEC_MINI_B``
+
+       -  Sends a mini-DiSEqC 22kHz '1' Data Burst to select satellite-B
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _Abstraction:
 
@@ -19,12 +20,17 @@ There are three main levels of abstraction in the interrupt code:
 Interrupt control flow
 ======================
 
-Each interrupt is described by an interrupt descriptor structure irq_desc. The interrupt is referenced by an 'unsigned int' numeric value which selects the corresponding interrupt
-description structure in the descriptor structures array. The descriptor structure contains status information and pointers to the interrupt flow method and the interrupt chip
-structure which are assigned to this interrupt.
+Each interrupt is described by an interrupt descriptor structure
+irq_desc. The interrupt is referenced by an 'unsigned int' numeric
+value which selects the corresponding interrupt description structure in
+the descriptor structures array. The descriptor structure contains
+status information and pointers to the interrupt flow method and the
+interrupt chip structure which are assigned to this interrupt.
 
-Whenever an interrupt triggers, the low-level architecture code calls into the generic interrupt code by calling desc->handle_irq(). This high-level IRQ handling function only
-uses desc->irq_data.chip primitives referenced by the assigned chip descriptor structure.
+Whenever an interrupt triggers, the low-level architecture code calls
+into the generic interrupt code by calling desc->handle_irq(). This
+high-level IRQ handling function only uses desc->irq_data.chip
+primitives referenced by the assigned chip descriptor structure.
 
 
 .. _Highlevel_Driver_API:
@@ -80,8 +86,9 @@ The generic layer provides a set of pre-defined irq-flow methods:
 
 -  handle_bad_irq
 
-The interrupt flow handlers (either pre-defined or architecture specific) are assigned to specific interrupts by the architecture either during bootup or during device
-initialization.
+The interrupt flow handlers (either pre-defined or architecture
+specific) are assigned to specific interrupts by the architecture either
+during bootup or during device initialization.
 
 
 .. _Default_flow_implementations:
@@ -95,7 +102,9 @@ Default flow implementations
 Helper functions
 ++++++++++++++++
 
-The helper functions call the chip primitives and are used by the default flow implementations. The following helper functions are implemented (simplified excerpt):
+The helper functions call the chip primitives and are used by the
+default flow implementations. The following helper functions are
+implemented (simplified excerpt):
 
 
 .. code-block:: c
@@ -142,7 +151,8 @@ Default flow handler implementations
 Default Level IRQ flow handler
 ++++++++++++++++++++++++++++++
 
-handle_level_irq provides a generic implementation for level-triggered interrupts.
+handle_level_irq provides a generic implementation for level-triggered
+interrupts.
 
 The following control flow is implemented (simplified excerpt):
 
@@ -159,7 +169,8 @@ The following control flow is implemented (simplified excerpt):
 Default Fast EOI IRQ flow handler
 +++++++++++++++++++++++++++++++++
 
-handle_fasteoi_irq provides a generic implementation for interrupts, which only need an EOI at the end of the handler.
+handle_fasteoi_irq provides a generic implementation for interrupts,
+which only need an EOI at the end of the handler.
 
 The following control flow is implemented (simplified excerpt):
 
@@ -175,7 +186,8 @@ The following control flow is implemented (simplified excerpt):
 Default Edge IRQ flow handler
 +++++++++++++++++++++++++++++
 
-handle_edge_irq provides a generic implementation for edge-triggered interrupts.
+handle_edge_irq provides a generic implementation for edge-triggered
+interrupts.
 
 The following control flow is implemented (simplified excerpt):
 
@@ -203,7 +215,8 @@ The following control flow is implemented (simplified excerpt):
 Default simple IRQ flow handler
 +++++++++++++++++++++++++++++++
 
-handle_simple_irq provides a generic implementation for simple interrupts.
+handle_simple_irq provides a generic implementation for simple
+interrupts.
 
 Note: The simple flow handler does not call any handler/chip primitives.
 
@@ -220,9 +233,11 @@ The following control flow is implemented (simplified excerpt):
 Default per CPU flow handler
 ++++++++++++++++++++++++++++
 
-handle_percpu_irq provides a generic implementation for per CPU interrupts.
+handle_percpu_irq provides a generic implementation for per CPU
+interrupts.
 
-Per CPU interrupts are only available on SMP and the handler provides a simplified version without locking.
+Per CPU interrupts are only available on SMP and the handler provides a
+simplified version without locking.
 
 The following control flow is implemented (simplified excerpt):
 
@@ -241,7 +256,9 @@ The following control flow is implemented (simplified excerpt):
 EOI Edge IRQ flow handler
 +++++++++++++++++++++++++
 
-handle_edge_eoi_irq provides an abnomination of the edge handler which is solely used to tame a badly wreckaged irq controller on powerpc/cell.
+handle_edge_eoi_irq provides an abnomination of the edge handler
+which is solely used to tame a badly wreckaged irq controller on
+powerpc/cell.
 
 
 .. _BAD_IRQ_flow_handler:
@@ -249,7 +266,8 @@ handle_edge_eoi_irq provides an abnomination of the edge handler which is solely
 Bad IRQ flow handler
 ++++++++++++++++++++
 
-handle_bad_irq is used for spurious interrupts which have no real handler assigned..
+handle_bad_irq is used for spurious interrupts which have no real
+handler assigned..
 
 
 .. _Quirks_and_optimizations:
@@ -257,8 +275,10 @@ handle_bad_irq is used for spurious interrupts which have no real handler assign
 Quirks and optimizations
 ------------------------
 
-The generic functions are intended for 'clean' architectures and chips, which have no platform-specific IRQ handling quirks. If an architecture needs to implement quirks on the
-'flow' level then it can do so by overriding the high-level irq-flow handler.
+The generic functions are intended for 'clean' architectures and chips,
+which have no platform-specific IRQ handling quirks. If an architecture
+needs to implement quirks on the 'flow' level then it can do so by
+overriding the high-level irq-flow handler.
 
 
 .. _Delayed_interrupt_disable:
@@ -266,12 +286,21 @@ The generic functions are intended for 'clean' architectures and chips, which ha
 Delayed interrupt disable
 -------------------------
 
-This per interrupt selectable feature, which was introduced by Russell King in the ARM interrupt implementation, does not mask an interrupt at the hardware level when
-disable_irq() is called. The interrupt is kept enabled and is masked in the flow handler when an interrupt event happens. This prevents losing edge interrupts on hardware which
-does not store an edge interrupt event while the interrupt is disabled at the hardware level. When an interrupt arrives while the IRQ_DISABLED flag is set, then the interrupt is
-masked at the hardware level and the IRQ_PENDING bit is set. When the interrupt is re-enabled by enable_irq() the pending bit is checked and if it is set, the interrupt is resent
-either via hardware or by a software resend mechanism. (It's necessary to enable CONFIG_HARDIRQS_SW_RESEND when you want to use the delayed interrupt disable feature and your
-hardware is not capable of retriggering an interrupt.) The delayed interrupt disable is not configurable.
+This per interrupt selectable feature, which was introduced by Russell
+King in the ARM interrupt implementation, does not mask an interrupt at
+the hardware level when disable_irq() is called. The interrupt is kept
+enabled and is masked in the flow handler when an interrupt event
+happens. This prevents losing edge interrupts on hardware which does not
+store an edge interrupt event while the interrupt is disabled at the
+hardware level. When an interrupt arrives while the IRQ_DISABLED flag
+is set, then the interrupt is masked at the hardware level and the
+IRQ_PENDING bit is set. When the interrupt is re-enabled by
+enable_irq() the pending bit is checked and if it is set, the interrupt
+is resent either via hardware or by a software resend mechanism. (It's
+necessary to enable CONFIG_HARDIRQS_SW_RESEND when you want to use
+the delayed interrupt disable feature and your hardware is not capable
+of retriggering an interrupt.) The delayed interrupt disable is not
+configurable.
 
 
 .. _Chiplevel_hardware_encapsulation:
@@ -279,7 +308,9 @@ hardware is not capable of retriggering an interrupt.) The delayed interrupt dis
 Chip-level hardware encapsulation
 =================================
 
-The chip-level hardware descriptor structure irq_chip contains all the direct chip relevant functions, which can be utilized by the irq flow implementations.
+The chip-level hardware descriptor structure irq_chip contains all the
+direct chip relevant functions, which can be utilized by the irq flow
+implementations.
 
 -  irq_ack()
 
@@ -297,5 +328,15 @@ The chip-level hardware descriptor structure irq_chip contains all the direct ch
 
 -  irq_set_wake() - Optional
 
-These primitives are strictly intended to mean what they say: ack means ACK, masking means masking of an IRQ line, etc. It is up to the flow handler(s) to use these basic units of
-low-level functionality.
+These primitives are strictly intended to mean what they say: ack means
+ACK, masking means masking of an IRQ line, etc. It is up to the flow
+handler(s) to use these basic units of low-level functionality.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

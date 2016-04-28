@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kthread-park:
 
@@ -7,7 +8,7 @@ kthread_park
 
 *man kthread_park(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 park a thread created by ``kthread_create``.
 
@@ -27,7 +28,19 @@ Arguments
 Description
 ===========
 
-Sets ``kthread_should_park`` for ``k`` to return true, wakes it, and waits for it to return. This can also be called after ``kthread_create`` instead of calling
-``wake_up_process``: the thread will park without calling ``threadfn``.
+Sets ``kthread_should_park`` for ``k`` to return true, wakes it, and
+waits for it to return. This can also be called after ``kthread_create``
+instead of calling ``wake_up_process``: the thread will park without
+calling ``threadfn``.
 
-Returns 0 if the thread is parked, -ENOSYS if the thread exited. If called by the kthread itself just the park bit is set.
+Returns 0 if the thread is parked, -ENOSYS if the thread exited. If
+called by the kthread itself just the park bit is set.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-srp-tmo-valid:
 
@@ -7,7 +8,7 @@ srp_tmo_valid
 
 *man srp_tmo_valid(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 check timeout combination validity
 
@@ -33,6 +34,19 @@ Arguments
 Description
 ===========
 
-The combination of the timeout parameters must be such that SCSI commands are finished in a reasonable time. Hence do not allow the fast I/O fail timeout to exceed
-SCSI_DEVICE_BLOCK_MAX_TIMEOUT nor allow dev_loss_tmo to exceed that limit if failing I/O fast has been disabled. Furthermore, these parameters must be such that multipath can
-detect failed paths timely. Hence do not allow all three parameters to be disabled simultaneously.
+The combination of the timeout parameters must be such that SCSI
+commands are finished in a reasonable time. Hence do not allow the fast
+I/O fail timeout to exceed SCSI_DEVICE_BLOCK_MAX_TIMEOUT nor allow
+dev_loss_tmo to exceed that limit if failing I/O fast has been
+disabled. Furthermore, these parameters must be such that multipath can
+detect failed paths timely. Hence do not allow all three parameters to
+be disabled simultaneously.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

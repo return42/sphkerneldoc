@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-connector-init:
 
@@ -7,7 +8,7 @@ drm_connector_init
 
 *man drm_connector_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Init a preallocated connector
 
@@ -36,10 +37,20 @@ Arguments
 Description
 ===========
 
-Initialises a preallocated connector. Connectors should be subclassed as part of driver connector objects.
+Initialises a preallocated connector. Connectors should be subclassed as
+part of driver connector objects.
 
 
 Returns
 =======
 
 Zero on success, error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

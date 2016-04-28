@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-link-hardreset:
 
@@ -7,7 +8,7 @@ sata_link_hardreset
 
 *man sata_link_hardreset(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 reset link via SATA phy reset
 
@@ -39,10 +40,14 @@ Arguments
 Description
 ===========
 
-SATA phy-reset ``link`` using DET bits of SControl register. After hardreset, link readiness is waited upon using ``ata_wait_ready`` if ``check_ready`` is specified. LLDs are
-allowed to not specify ``check_ready`` and wait itself after this function returns. Device classification is LLD's responsibility.
+SATA phy-reset ``link`` using DET bits of SControl register. After
+hardreset, link readiness is waited upon using ``ata_wait_ready`` if
+``check_ready`` is specified. LLDs are allowed to not specify
+``check_ready`` and wait itself after this function returns. Device
+classification is LLD's responsibility.
 
-⋆\ ``online`` is set to one iff reset succeeded and ``link`` is online after reset.
+*\ ``online`` is set to one iff reset succeeded and ``link`` is online
+after reset.
 
 
 LOCKING
@@ -55,3 +60,12 @@ RETURNS
 =======
 
 0 on success, -errno otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

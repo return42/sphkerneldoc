@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-split:
 
@@ -7,7 +8,7 @@ skb_split
 
 *man skb_split(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Split fragmented skb to two parts at length len.
 
@@ -28,3 +29,12 @@ Arguments
 
 ``len``
     new length for skb
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

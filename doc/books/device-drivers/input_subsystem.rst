@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _input_subsystem:
 
@@ -51,6 +52,7 @@ Input core
     API-input-ff-destroy
     API-input-ff-create-memless
 
+
 Multitouch Library
 ==================
 
@@ -71,6 +73,7 @@ Multitouch Library
     API-input-mt-assign-slots
     API-input-mt-get-slot-by-key
 
+
 Polled input devices
 ====================
 
@@ -85,6 +88,7 @@ Polled input devices
     API-input-register-polled-device
     API-input-unregister-polled-device
 
+
 Matrix keyboards/keypads
 ========================
 
@@ -95,6 +99,7 @@ Matrix keyboards/keypads
     API-struct-matrix-keymap-data
     API-struct-matrix-keypad-platform-data
     API-matrix-keypad-parse-of-params
+
 
 Sparse keymap support
 =====================
@@ -110,3 +115,14 @@ Sparse keymap support
     API-sparse-keymap-free
     API-sparse-keymap-report-entry
     API-sparse-keymap-report-event
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

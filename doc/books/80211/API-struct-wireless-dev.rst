@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-wireless-dev:
 
@@ -7,7 +8,7 @@ struct wireless_dev
 
 *man struct wireless_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wireless device state
 
@@ -73,7 +74,8 @@ netdev
     (private) Used to reference back to the netdev, may be ``NULL``
 
 identifier
-    (private) Identifier used in nl80211 to identify this wireless device if it has no netdev
+    (private) Identifier used in nl80211 to identify this wireless
+    device if it has no netdev
 
 mgmt_registrations
     list of registrations for management frames
@@ -82,11 +84,14 @@ mgmt_registrations_lock
     lock for the list
 
 mtx
-    mutex used to lock data in this struct, may be used by drivers and some API functions require it held
+    mutex used to lock data in this struct, may be used by drivers and
+    some API functions require it held
 
 use_4addr
-    indicates 4addr mode is used on this interface, must be set by driver (if supported) on add_interface BEFORE registering the netdev and may otherwise be used by driver
-    read-only, will be update by cfg80211 on change_interface
+    indicates 4addr mode is used on this interface, must be set by
+    driver (if supported) on add_interface BEFORE registering the
+    netdev and may otherwise be used by driver read-only, will be update
+    by cfg80211 on change_interface
 
 p2p_started
     true if this is a P2P Device that has been started
@@ -125,10 +130,12 @@ current_bss
     (private) Used by the internal configuration code
 
 preset_chandef
-    (private) Used by the internal configuration code to track the channel to be used for AP later
+    (private) Used by the internal configuration code to track the
+    channel to be used for AP later
 
 chandef
-    (private) Used by the internal configuration code to track the user-set channel definition.
+    (private) Used by the internal configuration code to track the
+    user-set channel definition.
 
 ibss_fixed
     (private) IBSS is using fixed BSSID
@@ -143,10 +150,12 @@ ps_timeout
     dynamic powersave timeout
 
 beacon_interval
-    beacon interval used on this device for transmitting beacons, 0 when not valid
+    beacon interval used on this device for transmitting beacons, 0 when
+    not valid
 
 ap_unexpected_nlportid
-    (private) netlink port ID of application registered for unexpected class 3 frames (AP mode)
+    (private) netlink port ID of application registered for unexpected
+    class 3 frames (AP mode)
 
 cac_started
     true if DFS channel availability check has been started
@@ -167,8 +176,22 @@ wext
 Description
 ===========
 
-For netdevs, this structure must be allocated by the driver that uses the ieee80211_ptr field in struct net_device (this is intentional so it can be allocated along with the
-netdev.) It need not be registered then as netdev registration will be intercepted by cfg80211 to see the new wireless device.
+For netdevs, this structure must be allocated by the driver that uses
+the ieee80211_ptr field in struct net_device (this is intentional so
+it can be allocated along with the netdev.) It need not be registered
+then as netdev registration will be intercepted by cfg80211 to see the
+new wireless device.
 
-For non-netdev uses, it must also be allocated by the driver in response to the cfg80211 callbacks that require it, as there's no netdev registration in that case it may not be
-allocated outside of callback operations that return it.
+For non-netdev uses, it must also be allocated by the driver in response
+to the cfg80211 callbacks that require it, as there's no netdev
+registration in that case it may not be allocated outside of callback
+operations that return it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

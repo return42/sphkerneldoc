@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-sta:
 
@@ -7,7 +8,7 @@ struct ieee80211_sta
 
 *man struct ieee80211_sta(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 station table entry
 
@@ -59,17 +60,21 @@ vht_cap
     VHT capabilities of this STA; restricted to our own capabilities
 
 wme
-    indicates whether the STA supports QoS/WME (if local devices does, otherwise always false)
+    indicates whether the STA supports QoS/WME (if local devices does,
+    otherwise always false)
 
 uapsd_queues
-    bitmap of queues configured for uapsd. Only valid if wme is supported.
+    bitmap of queues configured for uapsd. Only valid if wme is
+    supported.
 
 max_sp
     max Service Period. Only valid if wme is supported.
 
 rx_nss
-    in HT/VHT, the maximum number of spatial streams the station can receive at the moment, changed by operating mode notifications and capabilities. The value is only valid after
-    the station moves to associated state.
+    in HT/VHT, the maximum number of spatial streams the station can
+    receive at the moment, changed by operating mode notifications and
+    capabilities. The value is only valid after the station moves to
+    associated state.
 
 bandwidth
     current bandwidth the station can receive with
@@ -84,29 +89,49 @@ tdls
     indicates whether the STA is a TDLS peer
 
 tdls_initiator
-    indicates the STA is an initiator of the TDLS link. Only valid if the STA is a TDLS peer in the first place.
+    indicates the STA is an initiator of the TDLS link. Only valid if
+    the STA is a TDLS peer in the first place.
 
 mfp
     indicates whether the STA uses management frame protection or not.
 
 max_amsdu_subframes
-    indicates the maximal number of MSDUs in a single A-MSDU. Taken from the Extended Capabilities element. 0 means unlimited.
+    indicates the maximal number of MSDUs in a single A-MSDU. Taken from
+    the Extended Capabilities element. 0 means unlimited.
 
 max_amsdu_len
-    indicates the maximal length of an A-MSDU in bytes. This field is always valid for packets with a VHT preamble. For packets with a HT preamble, additional limits apply: + If
-    the skb is transmitted as part of a BA agreement, the A-MSDU maximal size is min(max_amsdu_len, 4065) bytes. + If the skb is not part of a BA aggreement, the A-MSDU maximal
-    size is min(max_amsdu_len, 7935) bytes. Both additional HT limits must be enforced by the low level driver. This is defined by the spec (IEEE 802.11-2012 section 8.3.2.2 NOTE
-    2).
+    indicates the maximal length of an A-MSDU in bytes. This field is
+    always valid for packets with a VHT preamble. For packets with a HT
+    preamble, additional limits apply: + If the skb is transmitted as
+    part of a BA agreement, the A-MSDU maximal size is
+    min(max_amsdu_len, 4065) bytes. + If the skb is not part of a BA
+    aggreement, the A-MSDU maximal size is min(max_amsdu_len, 7935)
+    bytes. Both additional HT limits must be enforced by the low level
+    driver. This is defined by the spec (IEEE 802.11-2012 section
+    8.3.2.2 NOTE 2).
 
 txq[IEEE80211_NUM_TIDS]
     per-TID data TX queues (if driver uses the TXQ abstraction)
 
 drv_priv[0]
-    data area for driver use, will always be aligned to sizeof(void ⋆), size is determined in hw information.
+    data area for driver use, will always be aligned to sizeof(void *),
+    size is determined in hw information.
 
 
 Description
 ===========
 
-A station table entry represents a station we are possibly communicating with. Since stations are RCU-managed in mac80211, any ieee80211_sta pointer you get access to must either
-be protected by ``rcu_read_lock`` explicitly or implicitly, or you must take good care to not use such a pointer after a call to your sta_remove callback that removed it.
+A station table entry represents a station we are possibly communicating
+with. Since stations are RCU-managed in mac80211, any ieee80211_sta
+pointer you get access to must either be protected by ``rcu_read_lock``
+explicitly or implicitly, or you must take good care to not use such a
+pointer after a call to your sta_remove callback that removed it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

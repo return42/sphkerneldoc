@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vb2-get-plane-payload:
 
@@ -7,7 +8,7 @@ vb2_get_plane_payload
 
 *man vb2_get_plane_payload(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get bytesused for the plane plane_no
 
@@ -25,3 +26,12 @@ Arguments
 
 ``plane_no``
     plane number for which payload should be set
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

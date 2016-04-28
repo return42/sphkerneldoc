@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-init-scan-with-range:
 
@@ -7,7 +8,7 @@ drm_mm_init_scan_with_range
 
 *man drm_mm_init_scan_with_range(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize range-restricted lru scanning
 
@@ -42,11 +43,23 @@ Arguments
 Description
 ===========
 
-This simply sets up the scanning routines with the parameters for the desired hole. Note that there's no need to specify allocation flags, since they only change the place a node
-is allocated from within a suitable hole.
+This simply sets up the scanning routines with the parameters for the
+desired hole. Note that there's no need to specify allocation flags,
+since they only change the place a node is allocated from within a
+suitable hole.
 
 
 Warning
 =======
 
-As long as the scan list is non-empty, no other operations than adding/removing nodes to/from the scan list are allowed.
+As long as the scan list is non-empty, no other operations than
+adding/removing nodes to/from the scan list are allowed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

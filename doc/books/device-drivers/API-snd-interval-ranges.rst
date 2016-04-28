@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-interval-ranges:
 
@@ -7,7 +8,7 @@ snd_interval_ranges
 
 *man snd_interval_ranges(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 refine the interval value from the list of ranges
 
@@ -36,10 +37,21 @@ Arguments
 Description
 ===========
 
-Refines the interval value from the list of ranges. When mask is non-zero, only the elements corresponding to bit 1 are evaluated.
+Refines the interval value from the list of ranges. When mask is
+non-zero, only the elements corresponding to bit 1 are evaluated.
 
 
 Return
 ======
 
-Positive if the value is changed, zero if it's not changed, or a negative error code.
+Positive if the value is changed, zero if it's not changed, or a
+negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

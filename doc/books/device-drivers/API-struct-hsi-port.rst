@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-hsi-port:
 
@@ -7,7 +8,7 @@ struct hsi_port
 
 *man struct hsi_port(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 HSI port device
 
@@ -79,3 +80,12 @@ release
 
 n_head
     Notifier chain for signaling port events to the clients.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dvb-adapter:
 
@@ -7,7 +8,7 @@ struct dvb_adapter
 
 *man struct dvb_adapter(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represents a Digital TV adapter using Linux DVB API
 
@@ -65,7 +66,8 @@ module
     pointer to struct module
 
 mfe_shared
-    mfe shared: indicates mutually exclusive frontends Thie usage of this flag is currently deprecated
+    mfe shared: indicates mutually exclusive frontends Thie usage of
+    this flag is currently deprecated
 
 mfe_dvbdev
     Frontend device in use, in the case of MFE
@@ -74,10 +76,20 @@ mfe_lock
     Lock to prevent using the other frontends when MFE is used.
 
 mdev
-    pointer to struct media_device, used when the media controller is used.
+    pointer to struct media_device, used when the media controller is
+    used.
 
 conn
     RF connector. Used only if the device has no separate tuner.
 
 conn_pads
     pointer to struct media_pad associated with ``conn``;
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

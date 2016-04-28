@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ipcget:
 
@@ -7,9 +8,9 @@ ipcget
 
 *man ipcget(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-Common sys_⋆ ``get`` code
+Common sys_* ``get`` code
 
 
 Synopsis
@@ -27,7 +28,8 @@ Arguments
     ipc identifier set
 
 ``ops``
-    operations to be called on ipc object creation, permission checks and further checks
+    operations to be called on ipc object creation, permission checks
+    and further checks
 
 ``params``
     the parameters needed by the previous operations.
@@ -36,4 +38,14 @@ Arguments
 Description
 ===========
 
-Common routine called by ``sys_msgget``, ``sys_semget`` and ``sys_shmget``.
+Common routine called by ``sys_msgget``, ``sys_semget`` and
+``sys_shmget``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _video:
 
@@ -5,16 +6,27 @@
 Video Inputs and Outputs
 ========================
 
-Video inputs and outputs are physical connectors of a device. These can be for example RF connectors (antenna/cable), CVBS a.k.a. Composite Video, S-Video or RGB connectors. Video
-and VBI capture devices have inputs. Video and VBI output devices have outputs, at least one each. Radio devices have no video inputs or outputs.
+Video inputs and outputs are physical connectors of a device. These can
+be for example RF connectors (antenna/cable), CVBS a.k.a. Composite
+Video, S-Video or RGB connectors. Video and VBI capture devices have
+inputs. Video and VBI output devices have outputs, at least one each.
+Radio devices have no video inputs or outputs.
 
-To learn about the number and attributes of the available inputs and outputs applications can enumerate them with the :ref:`VIDIOC_ENUMINPUT <vidioc-enuminput>` and
-:ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctl, respectively. The struct :ref:`v4l2_input <v4l2-input>` returned by the ``VIDIOC_ENUMINPUT`` ioctl also contains signal
-status information applicable when the current video input is queried.
+To learn about the number and attributes of the available inputs and
+outputs applications can enumerate them with the
+:ref:`VIDIOC_ENUMINPUT <vidioc-enuminput>` and
+:ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctl, respectively. The
+struct :ref:`v4l2_input <v4l2-input>` returned by the
+``VIDIOC_ENUMINPUT`` ioctl also contains signal status information
+applicable when the current video input is queried.
 
-The :ref:`VIDIOC_G_INPUT <vidioc-g-input>` and :ref:`VIDIOC_G_OUTPUT <vidioc-g-output>` ioctls return the index of the current video input or output. To select a different
-input or output applications call the :ref:`VIDIOC_S_INPUT <vidioc-g-input>` and :ref:`VIDIOC_S_OUTPUT <vidioc-g-output>` ioctls. Drivers must implement all the input
-ioctls when the device has one or more inputs, all the output ioctls when the device has one or more outputs.
+The :ref:`VIDIOC_G_INPUT <vidioc-g-input>` and
+:ref:`VIDIOC_G_OUTPUT <vidioc-g-output>` ioctls return the index of
+the current video input or output. To select a different input or output
+applications call the :ref:`VIDIOC_S_INPUT <vidioc-g-input>` and
+:ref:`VIDIOC_S_OUTPUT <vidioc-g-output>` ioctls. Drivers must
+implement all the input ioctls when the device has one or more inputs,
+all the output ioctls when the device has one or more outputs.
 
 
 .. code-block:: c
@@ -50,3 +62,12 @@ ioctls when the device has one or more inputs, all the output ioctls when the de
     }
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

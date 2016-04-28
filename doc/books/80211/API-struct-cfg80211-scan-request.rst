@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-scan-request:
 
@@ -7,7 +8,7 @@ struct cfg80211_scan_request
 
 *man struct cfg80211_scan_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 scan request description
 
@@ -54,7 +55,8 @@ scan_width
     channel width for scanning
 
 ie
-    optional information element(s) to add into Probe Request or ``NULL``
+    optional information element(s) to add into Probe Request or
+    ``NULL``
 
 ie_len
     length of ie in octets
@@ -72,7 +74,9 @@ mac_addr[ETH_ALEN]
     MAC address used with randomisation
 
 mac_addr_mask[ETH_ALEN]
-    MAC address mask used with randomisation, bits that are 0 in the mask should be randomised, bits that are 1 should be taken from the ``mac_addr``
+    MAC address mask used with randomisation, bits that are 0 in the
+    mask should be randomised, bits that are 1 should be taken from the
+    ``mac_addr``
 
 wiphy
     the wiphy this was for
@@ -91,3 +95,12 @@ no_cck
 
 channels[0]
     channels to scan on.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

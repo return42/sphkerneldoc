@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rio-mport:
 
@@ -7,7 +8,7 @@ struct rio_mport
 
 *man struct rio_mport(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 RIO master port info
 
@@ -121,3 +122,12 @@ state
 
 pwe_refcnt
     port-write enable ref counter to track enable/disable requests
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

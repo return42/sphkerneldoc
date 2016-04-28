@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-generic-file-splice-read:
 
@@ -7,7 +8,7 @@ generic_file_splice_read
 
 *man generic_file_splice_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 splice data from file to a pipe
 
@@ -39,4 +40,15 @@ Arguments
 Description
 ===========
 
-Will read pages from given file and fill them into a pipe. Can be used as long as the address_space operations for the source implements a ``readpage`` hook.
+Will read pages from given file and fill them into a pipe. Can be used
+as long as the address_space operations for the source implements a
+``readpage`` hook.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

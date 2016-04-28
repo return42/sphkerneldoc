@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-ac97-update-bits:
 
@@ -7,7 +8,7 @@ snd_ac97_update_bits
 
 *man snd_ac97_update_bits(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 update the bits on the given register
 
@@ -36,10 +37,21 @@ Arguments
 Description
 ===========
 
-Updates the masked-bits on the given register only when the value is changed.
+Updates the masked-bits on the given register only when the value is
+changed.
 
 
 Return
 ======
 
-1 if the bits are changed, 0 if no change, or a negative code on failure.
+1 if the bits are changed, 0 if no change, or a negative code on
+failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

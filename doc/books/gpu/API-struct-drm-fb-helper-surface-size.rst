@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-fb-helper-surface-size:
 
@@ -7,7 +8,7 @@ struct drm_fb_helper_surface_size
 
 *man struct drm_fb_helper_surface_size(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 describes fbdev size and scanout surface size
 
@@ -52,8 +53,21 @@ surface_depth
 Description
 ===========
 
-Note that the scanout surface width/height may be larger than the fbdev width/height. In case of multiple displays, the scanout surface is sized according to the largest
-width/height (so it is large enough for all CRTCs to scanout). But the fbdev width/height is sized to the minimum width/ height of all the displays. This ensures that fbcon fits on
-the smallest of the attached displays.
+Note that the scanout surface width/height may be larger than the fbdev
+width/height. In case of multiple displays, the scanout surface is sized
+according to the largest width/height (so it is large enough for all
+CRTCs to scanout). But the fbdev width/height is sized to the minimum
+width/ height of all the displays. This ensures that fbcon fits on the
+smallest of the attached displays.
 
-So what is passed to ``drm_fb_helper_fill_var`` should be fb_width/fb_height, rather than the surface size.
+So what is passed to ``drm_fb_helper_fill_var`` should be
+fb_width/fb_height, rather than the surface size.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

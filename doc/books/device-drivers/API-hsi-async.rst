@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-hsi-async:
 
@@ -7,7 +8,7 @@ hsi_async
 
 *man hsi_async(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Submit an HSI transfer to the controller
 
@@ -30,12 +31,25 @@ Arguments
 Description
 ===========
 
-The HSI message must have the channel, ttype, complete and destructor fields set beforehand. If nents > 0 then the client has to initialize also the scatterlists to point to the
-buffers to write to or read from.
+The HSI message must have the channel, ttype, complete and destructor
+fields set beforehand. If nents > 0 then the client has to initialize
+also the scatterlists to point to the buffers to write to or read from.
 
-HSI controllers relay on pre-allocated buffers from their clients and they do not allocate buffers on their own.
+HSI controllers relay on pre-allocated buffers from their clients and
+they do not allocate buffers on their own.
 
-Once the HSI message transfer finishes, the HSI controller calls the complete callback with the status and actual_len fields of the HSI message updated. The complete callback can
-be called before returning from hsi_async.
+Once the HSI message transfer finishes, the HSI controller calls the
+complete callback with the status and actual_len fields of the HSI
+message updated. The complete callback can be called before returning
+from hsi_async.
 
 Returns -errno on failure or 0 on success
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

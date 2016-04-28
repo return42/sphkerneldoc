@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-connect-result:
 
@@ -7,7 +8,7 @@ cfg80211_connect_result
 
 *man cfg80211_connect_result(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notify cfg80211 of connection result
 
@@ -39,7 +40,9 @@ Arguments
     assoc response IEs length
 
 ``status``
-    status code, 0 for successful connection, use ``WLAN_STATUS_UNSPECIFIED_FAILURE`` if your device cannot give you the real status code for failures.
+    status code, 0 for successful connection, use
+    ``WLAN_STATUS_UNSPECIFIED_FAILURE`` if your device cannot give you
+    the real status code for failures.
 
 ``gfp``
     allocation flags
@@ -48,4 +51,14 @@ Arguments
 Description
 ===========
 
-It should be called by the underlying driver whenever ``connect`` has succeeded.
+It should be called by the underlying driver whenever ``connect`` has
+succeeded.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

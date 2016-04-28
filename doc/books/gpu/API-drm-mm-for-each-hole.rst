@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-for-each-hole:
 
@@ -7,7 +8,7 @@ drm_mm_for_each_hole
 
 *man drm_mm_for_each_hole(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 iterator to walk over all holes
 
@@ -36,13 +37,28 @@ Arguments
 Description
 ===========
 
-This iterator walks over all holes in the range allocator. It is implemented with list_for_each, so not save against removal of elements. ``entry`` is used internally and will
-not reflect a real drm_mm_node for the very first hole. Hence users of this iterator may not access it.
+This iterator walks over all holes in the range allocator. It is
+implemented with list_for_each, so not save against removal of
+elements. ``entry`` is used internally and will not reflect a real
+drm_mm_node for the very first hole. Hence users of this iterator may
+not access it.
 
 
 Implementation Note
 ===================
 
-We need to inline list_for_each_entry in order to be able to set hole_start and hole_end on each iteration while keeping the macro sane.
+We need to inline list_for_each_entry in order to be able to set
+hole_start and hole_end on each iteration while keeping the macro
+sane.
 
-The __drm_mm_for_each_hole version is similar, but with added support for going backwards.
+The __drm_mm_for_each_hole version is similar, but with added
+support for going backwards.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

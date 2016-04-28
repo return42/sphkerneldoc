@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-do-signal-stop:
 
@@ -7,7 +8,7 @@ do_signal_stop
 
 *man do_signal_stop(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 handle group stop for SIGSTOP and other stop signals
 
@@ -27,20 +28,35 @@ Arguments
 Description
 ===========
 
-If ``JOBCTL_STOP_PENDING`` is not set yet, initiate group stop with ``signr`` and participate in it. If already set, participate in the existing group stop. If participated in a
-group stop (and thus slept), ``true`` is returned with siglock released.
+If ``JOBCTL_STOP_PENDING`` is not set yet, initiate group stop with
+``signr`` and participate in it. If already set, participate in the
+existing group stop. If participated in a group stop (and thus slept),
+``true`` is returned with siglock released.
 
-If ptraced, this function doesn't handle stop itself. Instead, ``JOBCTL_TRAP_STOP`` is scheduled and ``false`` is returned with siglock untouched. The caller must ensure that
-INTERRUPT trap handling takes places afterwards.
+If ptraced, this function doesn't handle stop itself. Instead,
+``JOBCTL_TRAP_STOP`` is scheduled and ``false`` is returned with siglock
+untouched. The caller must ensure that INTERRUPT trap handling takes
+places afterwards.
 
 
 CONTEXT
 =======
 
-Must be called with ``current``->sighand->siglock held, which is released on ``true`` return.
+Must be called with ``current``->sighand->siglock held, which is
+released on ``true`` return.
 
 
 RETURNS
 =======
 
-``false`` if group stop is already cancelled or ptrace trap is scheduled. ``true`` if participated in group stop.
+``false`` if group stop is already cancelled or ptrace trap is
+scheduled. ``true`` if participated in group stop.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

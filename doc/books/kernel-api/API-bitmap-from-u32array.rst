@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-from-u32array:
 
@@ -7,7 +8,7 @@ bitmap_from_u32array
 
 *man bitmap_from_u32array(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 copy the contents of a u32 array of bits to bitmap
 
@@ -36,7 +37,17 @@ Arguments
 Description
 ===========
 
-copy min(nbits, 32⋆nwords) bits from ``buf`` to ``bitmap``, remaining bits between nword and nbits in ``bitmap`` (if any) are cleared. In last word of ``bitmap``, the bits beyond
-nbits (if any) are kept unchanged.
+copy min(nbits, 32*nwords) bits from ``buf`` to ``bitmap``, remaining
+bits between nword and nbits in ``bitmap`` (if any) are cleared. In last
+word of ``bitmap``, the bits beyond nbits (if any) are kept unchanged.
 
 Return the number of bits effectively copied.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _vidioc-prepare-buf:
 
@@ -32,11 +33,17 @@ Description
 
     **Note**
 
-    This is an :ref:`experimental <experimental>` interface and may change in the future.
+    This is an :ref:`experimental <experimental>` interface and may
+    change in the future.
 
-Applications can optionally call the ``VIDIOC_PREPARE_BUF`` ioctl to pass ownership of the buffer to the driver before actually enqueuing it, using the ``VIDIOC_QBUF`` ioctl, and
-to prepare it for future I/O. Such preparations may include cache invalidation or cleaning. Performing them in advance saves time during the actual I/O. In case such cache
-operations are not required, the application can use one of ``V4L2_BUF_FLAG_NO_CACHE_INVALIDATE`` and ``V4L2_BUF_FLAG_NO_CACHE_CLEAN`` flags to skip the respective step.
+Applications can optionally call the ``VIDIOC_PREPARE_BUF`` ioctl to
+pass ownership of the buffer to the driver before actually enqueuing it,
+using the ``VIDIOC_QBUF`` ioctl, and to prepare it for future I/O. Such
+preparations may include cache invalidation or cleaning. Performing them
+in advance saves time during the actual I/O. In case such cache
+operations are not required, the application can use one of
+``V4L2_BUF_FLAG_NO_CACHE_INVALIDATE`` and
+``V4L2_BUF_FLAG_NO_CACHE_CLEAN`` flags to skip the respective step.
 
 The ``v4l2_buffer`` structure is specified in :ref:`buffer`.
 
@@ -44,11 +51,23 @@ The ``v4l2_buffer`` structure is specified in :ref:`buffer`.
 Return Value
 ============
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 EBUSY
     File I/O is in progress.
 
 EINVAL
-    The buffer ``type`` is not supported, or the ``index`` is out of bounds, or no buffers have been allocated yet, or the ``userptr`` or ``length`` are invalid.
+    The buffer ``type`` is not supported, or the ``index`` is out of
+    bounds, or no buffers have been allocated yet, or the ``userptr`` or
+    ``length`` are invalid.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

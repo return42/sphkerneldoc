@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-end-request:
 
@@ -7,7 +8,7 @@ blk_end_request
 
 *man blk_end_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Helper function for drivers to complete the request.
 
@@ -33,10 +34,21 @@ Arguments
 Description
 ===========
 
-Ends I/O on a number of bytes attached to ``rq``. If ``rq`` has leftover, sets it up for the next range of segments.
+Ends I/O on a number of bytes attached to ``rq``. If ``rq`` has
+leftover, sets it up for the next range of segments.
 
 
 Return
 ======
 
-``false`` - we are done with this request ``true`` - still buffers pending for this request
+``false`` - we are done with this request ``true`` - still buffers
+pending for this request
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-property-create-blob:
 
@@ -7,7 +8,7 @@ drm_property_create_blob
 
 *man drm_property_create_blob(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Create new blob property
 
@@ -15,7 +16,7 @@ Create new blob property
 Synopsis
 ========
 
-.. c:function:: struct drm_property_blob ⋆ drm_property_create_blob( struct drm_device * dev, size_t length, const void * data )
+.. c:function:: struct drm_property_blob * drm_property_create_blob( struct drm_device * dev, size_t length, const void * data )
 
 Arguments
 =========
@@ -33,10 +34,21 @@ Arguments
 Description
 ===========
 
-Creates a new blob property for a specified DRM device, optionally copying data.
+Creates a new blob property for a specified DRM device, optionally
+copying data.
 
 
 Returns
 =======
 
-New blob property with a single reference on success, or an ERR_PTR value on failure.
+New blob property with a single reference on success, or an ERR_PTR
+value on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-zap-vma-ptes:
 
@@ -7,7 +8,7 @@ zap_vma_ptes
 
 *man zap_vma_ptes(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove ptes mapping the vma
 
@@ -38,3 +39,12 @@ This function only unmaps ptes assigned to VM_PFNMAP vmas.
 The entire address range must be fully contained within the vma.
 
 Returns 0 if successful.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

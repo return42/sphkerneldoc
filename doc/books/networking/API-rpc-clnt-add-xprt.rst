@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rpc-clnt-add-xprt:
 
@@ -7,7 +8,7 @@ rpc_clnt_add_xprt
 
 *man rpc_clnt_add_xprt(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Add a new transport to a rpc_clnt
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Creates a new transport using the parameters set in args and adds it to clnt. If ping is set, then test that connectivity succeeds before adding the new transport.
+Creates a new transport using the parameters set in args and adds it to
+clnt. If ping is set, then test that connectivity succeeds before adding
+the new transport.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

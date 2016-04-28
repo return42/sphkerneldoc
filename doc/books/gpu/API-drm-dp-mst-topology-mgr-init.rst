@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-dp-mst-topology-mgr-init:
 
@@ -7,7 +8,7 @@ drm_dp_mst_topology_mgr_init
 
 *man drm_dp_mst_topology_mgr_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialise a topology manager
 
@@ -43,3 +44,12 @@ Description
 ===========
 
 Return 0 for success, or negative error code on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-sanitize-enable-execlists:
 
@@ -7,7 +8,7 @@ intel_sanitize_enable_execlists
 
 *man intel_sanitize_enable_execlists(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 sanitize i915.enable_execlists
 
@@ -30,10 +31,20 @@ Arguments
 Description
 ===========
 
-Only certain platforms support Execlists (the prerequisites being support for Logical Ring Contexts and Aliasing PPGTT or better).
+Only certain platforms support Execlists (the prerequisites being
+support for Logical Ring Contexts and Aliasing PPGTT or better).
 
 
 Return
 ======
 
 1 if Execlists is supported and has to be enabled.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

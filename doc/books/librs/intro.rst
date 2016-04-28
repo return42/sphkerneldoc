@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _intro:
 
@@ -5,8 +6,20 @@
 Introduction
 ============
 
-The generic Reed-Solomon Library provides encoding, decoding and error correction functions.
+The generic Reed-Solomon Library provides encoding, decoding and error
+correction functions.
 
-Reed-Solomon codes are used in communication and storage applications to ensure data integrity.
+Reed-Solomon codes are used in communication and storage applications to
+ensure data integrity.
 
-This documentation is provided for developers who want to utilize the functions provided by the library.
+This documentation is provided for developers who want to utilize the
+functions provided by the library.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

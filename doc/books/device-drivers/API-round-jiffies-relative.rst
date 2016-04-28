@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-round-jiffies-relative:
 
@@ -7,7 +8,7 @@ round_jiffies_relative
 
 *man round_jiffies_relative(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 function to round jiffies to a full second
 
@@ -27,10 +28,22 @@ Arguments
 Description
 ===========
 
-``round_jiffies_relative`` rounds a time delta in the future (in jiffies) up or down to (approximately) full seconds. This is useful for timers for which the exact time they fire
-does not matter too much, as long as they fire approximately every X seconds.
+``round_jiffies_relative`` rounds a time delta in the future (in
+jiffies) up or down to (approximately) full seconds. This is useful for
+timers for which the exact time they fire does not matter too much, as
+long as they fire approximately every X seconds.
 
-By rounding these timers to whole seconds, all such timers will fire at the same time, rather than at various times spread out. The goal of this is to have the CPU wake up less,
-which saves power.
+By rounding these timers to whole seconds, all such timers will fire at
+the same time, rather than at various times spread out. The goal of this
+is to have the CPU wake up less, which saves power.
 
 The return value is the rounded version of the ``j`` parameter.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

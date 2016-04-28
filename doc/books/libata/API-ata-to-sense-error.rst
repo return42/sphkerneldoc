@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-to-sense-error:
 
@@ -7,7 +8,7 @@ ata_to_sense_error
 
 *man ata_to_sense_error(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert ATA error to SCSI error
 
@@ -45,10 +46,20 @@ Arguments
 Description
 ===========
 
-Converts an ATA error into a SCSI error. Fill out pointers to SK, ASC, and ASCQ bytes for later use in fixed or descriptor format sense blocks.
+Converts an ATA error into a SCSI error. Fill out pointers to SK, ASC,
+and ASCQ bytes for later use in fixed or descriptor format sense blocks.
 
 
 LOCKING
 =======
 
 spin_lock_irqsave(host lock)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

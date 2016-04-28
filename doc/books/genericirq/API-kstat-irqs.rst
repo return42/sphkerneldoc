@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kstat-irqs:
 
@@ -7,7 +8,7 @@ kstat_irqs
 
 *man kstat_irqs(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Get the statistics for an interrupt
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-Returns the sum of interrupt counts on all cpus since boot for ``irq``. The caller must ensure that the interrupt is not removed concurrently.
+Returns the sum of interrupt counts on all cpus since boot for ``irq``.
+The caller must ensure that the interrupt is not removed concurrently.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

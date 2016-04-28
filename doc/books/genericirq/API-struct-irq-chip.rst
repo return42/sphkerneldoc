@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-irq-chip:
 
@@ -7,7 +8,7 @@ struct irq_chip
 
 *man struct irq_chip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 hardware interrupt chip descriptor
 
@@ -112,10 +113,12 @@ irq_cpu_offline
     un-configure an interrupt source for a secondary CPU
 
 irq_suspend
-    function called from core code on suspend once per chip, when one or more interrupts are installed
+    function called from core code on suspend once per chip, when one or
+    more interrupts are installed
 
 irq_resume
-    function called from core code on resume once per chip, when one ore more interrupts are installed
+    function called from core code on resume once per chip, when one ore
+    more interrupts are installed
 
 irq_pm_shutdown
     function called from core code on shutdown once per chip
@@ -127,7 +130,8 @@ irq_print_chip
     optional to print special chip info in show_interrupts
 
 irq_request_resources
-    optional to request resources before calling any other callback related to this irq
+    optional to request resources before calling any other callback
+    related to this irq
 
 irq_release_resources
     optional to release resources acquired with irq_request_resources
@@ -155,3 +159,12 @@ ipi_send_mask
 
 flags
     chip specific flags
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

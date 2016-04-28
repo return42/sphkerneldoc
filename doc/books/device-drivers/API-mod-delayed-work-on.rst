@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mod-delayed-work-on:
 
@@ -7,7 +8,7 @@ mod_delayed_work_on
 
 *man mod_delayed_work_on(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 modify delay of or queue a delayed work on specific CPU
 
@@ -36,13 +37,26 @@ Arguments
 Description
 ===========
 
-If ``dwork`` is idle, equivalent to ``queue_delayed_work_on``; otherwise, modify ``dwork``'s timer so that it expires after ``delay``. If ``delay`` is zero, ``work`` is guaranteed
-to be scheduled immediately regardless of its current state.
+If ``dwork`` is idle, equivalent to ``queue_delayed_work_on``;
+otherwise, modify ``dwork``'s timer so that it expires after ``delay``.
+If ``delay`` is zero, ``work`` is guaranteed to be scheduled immediately
+regardless of its current state.
 
 
 Return
 ======
 
-``false`` if ``dwork`` was idle and queued, ``true`` if ``dwork`` was pending and its timer was modified.
+``false`` if ``dwork`` was idle and queued, ``true`` if ``dwork`` was
+pending and its timer was modified.
 
-This function is safe to call from any context including IRQ handler. See ``try_to_grab_pending`` for details.
+This function is safe to call from any context including IRQ handler.
+See ``try_to_grab_pending`` for details.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-irq-remove-generic-chip:
 
@@ -7,7 +8,7 @@ irq_remove_generic_chip
 
 *man irq_remove_generic_chip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Remove a chip
 
@@ -27,13 +28,22 @@ Arguments
     Bitmask holding the irqs to initialize relative to gc->irq_base
 
 ``clr``
-    IRQ_⋆ bits to clear
+    IRQ_* bits to clear
 
 ``set``
-    IRQ_⋆ bits to set
+    IRQ_* bits to set
 
 
 Description
 ===========
 
 Remove up to 32 interrupts starting from gc->irq_base.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

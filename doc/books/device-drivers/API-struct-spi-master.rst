@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-spi-master:
 
@@ -7,7 +8,7 @@ struct spi_master
 
 *man struct spi_master(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 interface to SPI master controller
 
@@ -89,11 +90,14 @@ list
     link with the global spi_master list
 
 bus_num
-    board-specific (and often SOC-specific) identifier for a given SPI controller.
+    board-specific (and often SOC-specific) identifier for a given SPI
+    controller.
 
 num_chipselect
-    chipselects are used to distinguish individual SPI slaves, and are numbered from zero to num_chipselects. each slave has a chipselect signal, but it's common that not every
-    chipselect is connected to a slave.
+    chipselects are used to distinguish individual SPI slaves, and are
+    numbered from zero to num_chipselects. each slave has a chipselect
+    signal, but it's common that not every chipselect is connected to a
+    slave.
 
 dma_alignment
     SPI controller constraint on DMA buffers alignment.
@@ -102,8 +106,11 @@ mode_bits
     flags understood by this controller driver
 
 bits_per_word_mask
-    A mask indicating which values of bits_per_word are supported by the driver. Bit n indicates that a bits_per_word n+1 is supported. If set, the SPI core will reject any
-    transfer with an unsupported bits_per_word. If not set, this value is simply ignored, and it's up to the individual driver to perform any validation.
+    A mask indicating which values of bits_per_word are supported by
+    the driver. Bit n indicates that a bits_per_word n+1 is supported.
+    If set, the SPI core will reject any transfer with an unsupported
+    bits_per_word. If not set, this value is simply ignored, and it's
+    up to the individual driver to perform any validation.
 
 min_speed_hz
     Lowest supported transfer speed
@@ -115,7 +122,8 @@ flags
     other constraints relevant to this driver
 
 max_transfer_size
-    function that returns the max transfer size for a ``spi_device``; may be ``NULL``, so the default ``SIZE_MAX`` will be used.
+    function that returns the max transfer size for a ``spi_device``;
+    may be ``NULL``, so the default ``SIZE_MAX`` will be used.
 
 bus_lock_spinlock
     spinlock for SPI bus locking
@@ -127,8 +135,11 @@ bus_lock_flag
     indicates that the SPI bus is locked for exclusive use
 
 setup
-    updates the device mode and clocking records used by a device's SPI controller; protocol code may call this. This must fail if an unrecognized or unsupported mode is requested.
-    It's always safe to call this unless transfers are pending on the device whose settings are being modified.
+    updates the device mode and clocking records used by a device's SPI
+    controller; protocol code may call this. This must fail if an
+    unrecognized or unsupported mode is requested. It's always safe to
+    call this unless transfers are pending on the device whose settings
+    are being modified.
 
 transfer
     adds a message to the controller's transfer queue.
@@ -173,7 +184,8 @@ rt
     whether this queue is set to run as a realtime task
 
 auto_runtime_pm
-    the core should ensure a runtime PM reference is held while the hardware is prepared, using the parent device for the spidev
+    the core should ensure a runtime PM reference is held while the
+    hardware is prepared, using the parent device for the spidev
 
 cur_msg_prepared
     spi_prepare_message was called for the currently in-flight message
@@ -188,37 +200,53 @@ max_dma_len
     Maximum length of a DMA transfer for the device.
 
 prepare_transfer_hardware
-    a message will soon arrive from the queue so the subsystem requests the driver to prepare the transfer hardware by issuing this call
+    a message will soon arrive from the queue so the subsystem requests
+    the driver to prepare the transfer hardware by issuing this call
 
 transfer_one_message
-    the subsystem calls the driver to transfer a single message while queuing transfers that arrive in the meantime. When the driver is finished with this message, it must call
-    ``spi_finalize_current_message`` so the subsystem can issue the next message
+    the subsystem calls the driver to transfer a single message while
+    queuing transfers that arrive in the meantime. When the driver is
+    finished with this message, it must call
+    ``spi_finalize_current_message`` so the subsystem can issue the next
+    message
 
 unprepare_transfer_hardware
-    there are currently no more messages on the queue so the subsystem notifies the driver that it may relax the hardware by issuing this call
+    there are currently no more messages on the queue so the subsystem
+    notifies the driver that it may relax the hardware by issuing this
+    call
 
 prepare_message
-    set up the controller to transfer a single message, for example doing DMA mapping. Called from threaded context.
+    set up the controller to transfer a single message, for example
+    doing DMA mapping. Called from threaded context.
 
 unprepare_message
     undo any work done by ``prepare_message``.
 
 spi_flash_read
-    to support spi-controller hardwares that provide accelerated interface to read from flash devices.
+    to support spi-controller hardwares that provide accelerated
+    interface to read from flash devices.
 
 set_cs
-    set the logic level of the chip select line. May be called from interrupt context.
+    set the logic level of the chip select line. May be called from
+    interrupt context.
 
 transfer_one
-    transfer a single spi_transfer. - return 0 if the transfer is finished, - return 1 if the transfer is still in progress. When the driver is finished with this transfer it must
-    call ``spi_finalize_current_transfer`` so the subsystem can issue the next transfer. Note: transfer_one and transfer_one_message are mutually exclusive; when both are set,
-    the generic subsystem does not call your transfer_one callback.
+    transfer a single spi_transfer. - return 0 if the transfer is
+    finished, - return 1 if the transfer is still in progress. When the
+    driver is finished with this transfer it must call
+    ``spi_finalize_current_transfer`` so the subsystem can issue the
+    next transfer. Note: transfer_one and transfer_one_message are
+    mutually exclusive; when both are set, the generic subsystem does
+    not call your transfer_one callback.
 
 handle_err
-    the subsystem calls the driver to handle an error that occurs in the generic implementation of ``transfer_one_message``.
+    the subsystem calls the driver to handle an error that occurs in the
+    generic implementation of ``transfer_one_message``.
 
 cs_gpios
-    Array of GPIOs to use as chip select lines; one per CS number. Any individual value may be -ENOENT for CS lines that are not GPIOs (driven by the SPI controller itself).
+    Array of GPIOs to use as chip select lines; one per CS number. Any
+    individual value may be -ENOENT for CS lines that are not GPIOs
+    (driven by the SPI controller itself).
 
 statistics
     statistics for the spi_master
@@ -236,14 +264,30 @@ dummy_tx
     dummy transmit buffer for full-duplex devices
 
 fw_translate_cs
-    If the boot firmware uses different numbering scheme what Linux expects, this optional hook can be used to translate between the two.
+    If the boot firmware uses different numbering scheme what Linux
+    expects, this optional hook can be used to translate between the
+    two.
 
 
 Description
 ===========
 
-Each SPI master controller can communicate with one or more ``spi_device`` children. These make a small bus, sharing MOSI, MISO and SCK signals but not chip select signals. Each
-device may be configured to use a different clock rate, since those shared signals are ignored unless the chip is selected.
+Each SPI master controller can communicate with one or more
+``spi_device`` children. These make a small bus, sharing MOSI, MISO and
+SCK signals but not chip select signals. Each device may be configured
+to use a different clock rate, since those shared signals are ignored
+unless the chip is selected.
 
-The driver for an SPI controller manages access to those devices through a queue of spi_message transactions, copying data between CPU memory and an SPI slave device. For each
-such message it queues, it calls the message's completion function when the transaction completes.
+The driver for an SPI controller manages access to those devices through
+a queue of spi_message transactions, copying data between CPU memory
+and an SPI slave device. For each such message it queues, it calls the
+message's completion function when the transaction completes.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-link-debounce:
 
@@ -7,7 +8,7 @@ sata_link_debounce
 
 *man sata_link_debounce(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 debounce SATA phy status
 
@@ -33,11 +34,15 @@ Arguments
 Description
 ===========
 
-Make sure SStatus of ``link`` reaches stable state, determined by holding the same value where DET is not 1 for ``duration`` polled every ``interval``, before ``timeout``. Timeout
-constraints the beginning of the stable state. Because DET gets stuck at 1 on some controllers after hot unplugging, this functions waits until timeout then returns 0 if DET is
-stable at 1.
+Make sure SStatus of ``link`` reaches stable state, determined by
+holding the same value where DET is not 1 for ``duration`` polled every
+``interval``, before ``timeout``. Timeout constraints the beginning of
+the stable state. Because DET gets stuck at 1 on some controllers after
+hot unplugging, this functions waits until timeout then returns 0 if DET
+is stable at 1.
 
-``timeout`` is further limited by ``deadline``. The sooner of the two is used.
+``timeout`` is further limited by ``deadline``. The sooner of the two is
+used.
 
 
 LOCKING
@@ -50,3 +55,12 @@ RETURNS
 =======
 
 0 on success, -errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

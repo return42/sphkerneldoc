@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ilsel-enable:
 
@@ -7,7 +8,7 @@ ilsel_enable
 
 *man ilsel_enable(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Enable an ILSEL set.
 
@@ -27,7 +28,19 @@ Arguments
 Description
 ===========
 
-Enables a given non-aliased ILSEL source (<= ILSEL_KEY) at the highest available interrupt level. Callers should take care to order callsites noting descending interrupt levels.
-Aliasing FPGA and external board IRQs need to use ``ilsel_enable_fixed``.
+Enables a given non-aliased ILSEL source (<= ILSEL_KEY) at the highest
+available interrupt level. Callers should take care to order callsites
+noting descending interrupt levels. Aliasing FPGA and external board
+IRQs need to use ``ilsel_enable_fixed``.
 
-The return value is an IRQ number that can later be taken down with ``ilsel_disable``.
+The return value is an IRQ number that can later be taken down with
+``ilsel_disable``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

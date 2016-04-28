@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wimax-msg:
 
@@ -7,7 +8,7 @@ wimax_msg
 
 *man wimax_msg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Send a message to user space
 
@@ -51,4 +52,14 @@ Sends a free-form message to user space on the device ``wimax_dev``.
 NOTES
 =====
 
-Once the ``skb`` is given to this function, who will own it and will release it when done (unless it returns error).
+Once the ``skb`` is given to this function, who will own it and will
+release it when done (unless it returns error).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _usage:
 
@@ -11,9 +12,12 @@ This chapter provides examples of how to use the library.
 Initializing
 ============
 
-The init function init_rs returns a pointer to an rs decoder structure, which holds the necessary information for encoding, decoding and error correction with the given
-polynomial. It either uses an existing matching decoder or creates a new one. On creation all the lookup tables for fast en/decoding are created. The function may take a while, so
-make sure not to call it in critical code paths.
+The init function init_rs returns a pointer to an rs decoder structure,
+which holds the necessary information for encoding, decoding and error
+correction with the given polynomial. It either uses an existing
+matching decoder or creates a new one. On creation all the lookup tables
+for fast en/decoding are created. The function may take a while, so make
+sure not to call it in critical code paths.
 
 
 .. code-block:: c
@@ -33,15 +37,21 @@ make sure not to call it in critical code paths.
 Encoding
 ========
 
-The encoder calculates the Reed-Solomon code over the given data length and stores the result in the parity buffer. Note that the parity buffer must be initialized before calling
-the encoder.
+The encoder calculates the Reed-Solomon code over the given data length
+and stores the result in the parity buffer. Note that the parity buffer
+must be initialized before calling the encoder.
 
-The expanded data can be inverted on the fly by providing a non-zero inversion mask. The expanded data is XOR'ed with the mask. This is used e.g. for FLASH ECC, where the all 0xFF
-is inverted to an all 0x00. The Reed-Solomon code for all 0x00 is all 0x00. The code is inverted before storing to FLASH so it is 0xFF too. This prevents that reading from an
+The expanded data can be inverted on the fly by providing a non-zero
+inversion mask. The expanded data is XOR'ed with the mask. This is used
+e.g. for FLASH ECC, where the all 0xFF is inverted to an all 0x00. The
+Reed-Solomon code for all 0x00 is all 0x00. The code is inverted before
+storing to FLASH so it is 0xFF too. This prevents that reading from an
 erased FLASH results in ECC errors.
 
-The databytes are expanded to the given symbol size on the fly. There is no support for encoding continuous bitstreams with a symbol size != 8 at the moment. If it is necessary it
-should be not a big deal to implement such functionality.
+The databytes are expanded to the given symbol size on the fly. There is
+no support for encoding continuous bitstreams with a symbol size != 8 at
+the moment. If it is necessary it should be not a big deal to implement
+such functionality.
 
 
 .. code-block:: c
@@ -57,15 +67,22 @@ should be not a big deal to implement such functionality.
 Decoding
 ========
 
-The decoder calculates the syndrome over the given data length and the received parity symbols and corrects errors in the data.
+The decoder calculates the syndrome over the given data length and the
+received parity symbols and corrects errors in the data.
 
-If a syndrome is available from a hardware decoder then the syndrome calculation is skipped.
+If a syndrome is available from a hardware decoder then the syndrome
+calculation is skipped.
 
-The correction of the data buffer can be suppressed by providing a correction pattern buffer and an error location buffer to the decoder. The decoder stores the calculated error
-location and the correction bitmask in the given buffers. This is useful for hardware decoders which use a weird bit ordering scheme.
+The correction of the data buffer can be suppressed by providing a
+correction pattern buffer and an error location buffer to the decoder.
+The decoder stores the calculated error location and the correction
+bitmask in the given buffers. This is useful for hardware decoders which
+use a weird bit ordering scheme.
 
-The databytes are expanded to the given symbol size on the fly. There is no support for decoding continuous bitstreams with a symbolsize != 8 at the moment. If it is necessary it
-should be not a big deal to implement such functionality.
+The databytes are expanded to the given symbol size on the fly. There is
+no support for decoding continuous bitstreams with a symbolsize != 8 at
+the moment. If it is necessary it should be not a big deal to implement
+such functionality.
 
 
 Decoding with syndrome calculation, direct data correction
@@ -109,7 +126,8 @@ Decoding with syndrome given by hardware decoder, direct data correction
 Decoding with syndrome given by hardware decoder, no direct data correction.
 ----------------------------------------------------------------------------
 
-Note: It's not necessary to give data and received parity to the decoder.
+Note: It's not necessary to give data and received parity to the
+decoder.
 
 
 .. code-block:: c
@@ -134,7 +152,8 @@ Note: It's not necessary to give data and received parity to the decoder.
 Cleanup
 =======
 
-The function free_rs frees the allocated resources, if the caller is the last user of the decoder.
+The function free_rs frees the allocated resources, if the caller is
+the last user of the decoder.
 
 
 .. code-block:: c
@@ -143,3 +162,12 @@ The function free_rs frees the allocated resources, if the caller is the last us
     free_rs(rs_decoder);
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-crtc:
 
@@ -7,7 +8,7 @@ struct drm_crtc
 
 *man struct drm_crtc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 central CRTC control structure
 
@@ -106,10 +107,21 @@ state
     current atomic state for this CRTC
 
 acquire_ctx
-    per-CRTC implicit acquire context used by atomic drivers for legacy IOCTLs
+    per-CRTC implicit acquire context used by atomic drivers for legacy
+    IOCTLs
 
 
 Description
 ===========
 
-Each CRTC may have one or more connectors associated with it. This structure allows the CRTC to be controlled.
+Each CRTC may have one or more connectors associated with it. This
+structure allows the CRTC to be controlled.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

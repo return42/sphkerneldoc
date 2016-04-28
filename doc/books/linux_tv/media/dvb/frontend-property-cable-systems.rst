@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _frontend-property-cable-systems:
 
@@ -11,9 +12,12 @@ Properties used on cable delivery systems
 DVB-C delivery system
 =====================
 
-The DVB-C Annex-A is the widely used cable standard. Transmission uses QAM modulation.
+The DVB-C Annex-A is the widely used cable standard. Transmission uses
+QAM modulation.
 
-The DVB-C Annex-C is optimized for 6MHz, and is used in Japan. It supports a subset of the Annex A modulation types, and a roll-off of 0.13, instead of 0.15
+The DVB-C Annex-C is optimized for 6MHz, and is used in Japan. It
+supports a subset of the Annex A modulation types, and a roll-off of
+0.13, instead of 0.15
 
 The following parameters are valid for DVB-C Annex A/C:
 
@@ -37,7 +41,8 @@ The following parameters are valid for DVB-C Annex A/C:
 
 -  :ref:`DTV_LNA <DTV-LNA>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _dvbc-annex-b-params:
@@ -45,7 +50,8 @@ In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also v
 DVB-C Annex B delivery system
 =============================
 
-The DVB-C Annex-B is only used on a few Countries like the United States.
+The DVB-C Annex-B is only used on a few Countries like the United
+States.
 
 The following parameters are valid for DVB-C Annex B:
 
@@ -65,4 +71,14 @@ The following parameters are valid for DVB-C Annex B:
 
 -  :ref:`DTV_LNA <DTV-LNA>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

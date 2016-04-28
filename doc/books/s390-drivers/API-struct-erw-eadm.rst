@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-erw-eadm:
 
@@ -7,7 +8,7 @@ struct erw_eadm
 
 *man struct erw_eadm(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 EADM Subchannel extended report word
 
@@ -31,3 +32,12 @@ b
 
 r
     arsb error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

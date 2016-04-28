@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-kgdb-arch:
 
@@ -7,7 +8,7 @@ struct kgdb_arch
 
 *man struct kgdb_arch(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Describe architecture specific values.
 
@@ -44,22 +45,36 @@ set_breakpoint
     Allow an architecture to specify how to set a software breakpoint.
 
 remove_breakpoint
-    Allow an architecture to specify how to remove a software breakpoint.
+    Allow an architecture to specify how to remove a software
+    breakpoint.
 
 set_hw_breakpoint
     Allow an architecture to specify how to set a hardware breakpoint.
 
 remove_hw_breakpoint
-    Allow an architecture to specify how to remove a hardware breakpoint.
+    Allow an architecture to specify how to remove a hardware
+    breakpoint.
 
 disable_hw_break
-    Allow an architecture to specify how to disable hardware breakpoints for a single cpu.
+    Allow an architecture to specify how to disable hardware breakpoints
+    for a single cpu.
 
 remove_all_hw_break
-    Allow an architecture to specify how to remove all hardware breakpoints.
+    Allow an architecture to specify how to remove all hardware
+    breakpoints.
 
 correct_hw_break
-    Allow an architecture to specify how to correct the hardware debug registers.
+    Allow an architecture to specify how to correct the hardware debug
+    registers.
 
 enable_nmi
     Manage NMI-triggered entry to KGDB
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

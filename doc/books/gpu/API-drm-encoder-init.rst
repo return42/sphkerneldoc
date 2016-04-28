@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-encoder-init:
 
@@ -7,7 +8,7 @@ drm_encoder_init
 
 *man drm_encoder_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Init a preallocated encoder
 
@@ -33,7 +34,8 @@ Arguments
     user visible type of the encoder
 
 ``name``
-    printf style format string for the encoder name, or NULL for default name
+    printf style format string for the encoder name, or NULL for default
+    name
 
 ``...``
     variable arguments
@@ -42,10 +44,20 @@ Arguments
 Description
 ===========
 
-Initialises a preallocated encoder. Encoder should be subclassed as part of driver encoder objects.
+Initialises a preallocated encoder. Encoder should be subclassed as part
+of driver encoder objects.
 
 
 Returns
 =======
 
 Zero on success, error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

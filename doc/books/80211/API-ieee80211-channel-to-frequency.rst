@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-channel-to-frequency:
 
@@ -7,7 +8,7 @@ ieee80211_channel_to_frequency
 
 *man ieee80211_channel_to_frequency(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert channel number to frequency
 
@@ -31,3 +32,12 @@ Return
 ======
 
 The corresponding frequency (in MHz), or 0 if the conversion failed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

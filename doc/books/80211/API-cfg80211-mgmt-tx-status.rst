@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-mgmt-tx-status:
 
@@ -7,7 +8,7 @@ cfg80211_mgmt_tx_status
 
 *man cfg80211_mgmt_tx_status(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notification of TX status for management frame
 
@@ -49,3 +50,12 @@ transmitted with cfg80211_ops
 =============================
 
 :``mgmt_tx`` to report the TX status of the transmission attempt.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

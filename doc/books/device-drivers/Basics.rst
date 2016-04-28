@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _Basics:
 
@@ -14,6 +15,7 @@ Driver Entry and Exit points
     :maxdepth: 1
 
     Basics-000-001-002
+
 
 Atomic and pointer manipulation
 ===============================
@@ -36,6 +38,7 @@ Atomic and pointer manipulation
     API-atomic-sub-return
     API---atomic-add-unless
     API-atomic-inc-short
+
 
 Delaying, scheduling, and timer routines
 ========================================
@@ -101,6 +104,7 @@ Delaying, scheduling, and timer routines
     API-msleep-interruptible
     API-usleep-range
 
+
 Wait queues and Wake events
 ===========================
 
@@ -143,6 +147,7 @@ Wait queues and Wake events
     API-wake-up-bit
     API-wake-up-atomic-t
 
+
 High-resolution timers
 ======================
 
@@ -170,6 +175,7 @@ High-resolution timers
     API-hrtimer-init
     API-schedule-hrtimeout-range
     API-schedule-hrtimeout
+
 
 Workqueues and Kevents
 ======================
@@ -207,6 +213,7 @@ Workqueues and Kevents
     API-workqueue-congested
     API-work-busy
     API-work-on-cpu
+
 
 Internal Functions
 ==================
@@ -253,6 +260,7 @@ Internal Functions
     API-flush-kthread-work
     API-flush-kthread-worker
 
+
 Kernel objects manipulation
 ===========================
 
@@ -275,6 +283,7 @@ Kernel objects manipulation
     API-kset-unregister
     API-kset-find-obj
     API-kset-create-and-add
+
 
 Kernel utility functions
 ========================
@@ -343,6 +352,7 @@ Kernel utility functions
     API-synchronize-rcu-tasks
     API-rcu-barrier-tasks
 
+
 Device Resource Management
 ==========================
 
@@ -373,3 +383,14 @@ Device Resource Management
     API-devm-kmemdup
     API-devm-get-free-pages
     API-devm-free-pages
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

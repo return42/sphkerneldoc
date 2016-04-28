@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-wiphy:
 
@@ -7,7 +8,7 @@ struct wiphy
 
 *man struct wiphy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wireless hardware description
 
@@ -96,30 +97,40 @@ perm_addr[ETH_ALEN]
     permanent MAC address of this device
 
 addr_mask[ETH_ALEN]
-    If the device supports multiple MAC addresses by masking, set this to a mask with variable bits set to 1, e.g. if the last four bits are variable then set it to
-    00-00-00-00-00-0f. The actual variable bits shall be determined by the interfaces added, with interfaces not matching the mask being rejected to be brought up.
+    If the device supports multiple MAC addresses by masking, set this
+    to a mask with variable bits set to 1, e.g. if the last four bits
+    are variable then set it to 00-00-00-00-00-0f. The actual variable
+    bits shall be determined by the interfaces added, with interfaces
+    not matching the mask being rejected to be brought up.
 
 addresses
-    If the device has more than one address, set this pointer to a list of addresses (6 bytes each). The first one will be used by default for perm_addr. In this case, the mask
-    should be set to all-zeroes. In this case it is assumed that the device can handle the same number of arbitrary MAC addresses.
+    If the device has more than one address, set this pointer to a list
+    of addresses (6 bytes each). The first one will be used by default
+    for perm_addr. In this case, the mask should be set to all-zeroes.
+    In this case it is assumed that the device can handle the same
+    number of arbitrary MAC addresses.
 
 mgmt_stypes
-    bitmasks of frame subtypes that can be subscribed to or transmitted through nl80211, points to an array indexed by interface type
+    bitmasks of frame subtypes that can be subscribed to or transmitted
+    through nl80211, points to an array indexed by interface type
 
 iface_combinations
-    Valid interface combinations array, should not list single interface types.
+    Valid interface combinations array, should not list single interface
+    types.
 
 n_iface_combinations
     number of entries in ``iface_combinations`` array.
 
 software_iftypes
-    bitmask of software interface types, these are not subject to any restrictions since they are purely managed in SW.
+    bitmask of software interface types, these are not subject to any
+    restrictions since they are purely managed in SW.
 
 n_addresses
     number of addresses in ``addresses``.
 
 interface_modes
-    bitmask of interfaces types valid for this wiphy, must be set by driver
+    bitmask of interfaces types valid for this wiphy, must be set by
+    driver
 
 max_acl_mac_addrs
     Maximum number of MAC addresses that the device supports for ACL.
@@ -131,10 +142,12 @@ regulatory_flags
     wiphy regulatory flags, see ``enum`` ieee80211_regulatory_flags
 
 features
-    features advertised to nl80211, see ``enum`` nl80211_feature_flags.
+    features advertised to nl80211, see ``enum``
+    nl80211_feature_flags.
 
 ext_features[DIV_ROUND_UP(NUM_NL80211_EXT_FEATURES# 8)]
-    extended features advertised to nl80211, see ``enum`` nl80211_ext_feature_index.
+    extended features advertised to nl80211, see ``enum``
+    nl80211_ext_feature_index.
 
 ap_sme_capa
     AP SME capabilities, flags from ``enum`` nl80211_ap_sme_features.
@@ -143,31 +156,39 @@ signal_type
     signal type reported in ``struct cfg80211_bss``.
 
 bss_priv_size
-    each BSS struct has private data allocated with it, this variable determines its size
+    each BSS struct has private data allocated with it, this variable
+    determines its size
 
 max_scan_ssids
     maximum number of SSIDs the device can scan for in any given scan
 
 max_sched_scan_ssids
-    maximum number of SSIDs the device can scan for in any given scheduled scan
+    maximum number of SSIDs the device can scan for in any given
+    scheduled scan
 
 max_match_sets
-    maximum number of match sets the device can handle when performing a scheduled scan, 0 if filtering is not supported.
+    maximum number of match sets the device can handle when performing a
+    scheduled scan, 0 if filtering is not supported.
 
 max_scan_ie_len
-    maximum length of user-controlled IEs device can add to probe request frames transmitted during a scan, must not include fixed IEs like supported rates
+    maximum length of user-controlled IEs device can add to probe
+    request frames transmitted during a scan, must not include fixed IEs
+    like supported rates
 
 max_sched_scan_ie_len
     same as max_scan_ie_len, but for scheduled scans
 
 max_sched_scan_plans
-    maximum number of scan plans (scan interval and number of iterations) for scheduled scan supported by the device.
+    maximum number of scan plans (scan interval and number of
+    iterations) for scheduled scan supported by the device.
 
 max_sched_scan_plan_interval
-    maximum interval (in seconds) for a single scan plan supported by the device.
+    maximum interval (in seconds) for a single scan plan supported by
+    the device.
 
 max_sched_scan_plan_iterations
-    maximum number of iterations for a single scan plan supported by the device.
+    maximum number of iterations for a single scan plan supported by the
+    device.
 
 n_cipher_suites
     number of supported cipher suites
@@ -182,7 +203,8 @@ retry_long
     Retry limit for long frames (dot11LongRetryLimit)
 
 frag_threshold
-    Fragmentation threshold (dot11FragmentationThreshold); -1 = fragmentation disabled, only odd values >= 256 used
+    Fragmentation threshold (dot11FragmentationThreshold); -1 =
+    fragmentation disabled, only odd values >= 256 used
 
 rts_threshold
     RTS threshold (dot11RTSThreshold); -1 = RTS/CTS disabled
@@ -200,27 +222,38 @@ wowlan
     WoWLAN support information
 
 wowlan_config
-    current WoWLAN configuration; this should usually not be used since access to it is necessarily racy, use the parameter passed to the ``suspend`` operation instead.
+    current WoWLAN configuration; this should usually not be used since
+    access to it is necessarily racy, use the parameter passed to the
+    ``suspend`` operation instead.
 
 max_remain_on_channel_duration
-    Maximum time a remain-on-channel operation may request, if implemented.
+    Maximum time a remain-on-channel operation may request, if
+    implemented.
 
 max_num_pmkids
     maximum number of PMKIDs supported by device
 
 available_antennas_tx
-    bitmap of antennas which are available to be configured as TX antennas. Antenna configuration commands will be rejected unless this or ``available_antennas_rx`` is set.
+    bitmap of antennas which are available to be configured as TX
+    antennas. Antenna configuration commands will be rejected unless
+    this or ``available_antennas_rx`` is set.
 
 available_antennas_rx
-    bitmap of antennas which are available to be configured as RX antennas. Antenna configuration commands will be rejected unless this or ``available_antennas_tx`` is set.
+    bitmap of antennas which are available to be configured as RX
+    antennas. Antenna configuration commands will be rejected unless
+    this or ``available_antennas_tx`` is set.
 
 probe_resp_offload
-    Bitmap of supported protocols for probe response offloading. See ``enum`` nl80211_probe_resp_offload_support_attr. Only valid when the wiphy flag
-    ``WIPHY_FLAG_AP_PROBE_RESP_OFFLOAD`` is set.
+    Bitmap of supported protocols for probe response offloading. See
+    ``enum`` nl80211_probe_resp_offload_support_attr. Only valid
+    when the wiphy flag ``WIPHY_FLAG_AP_PROBE_RESP_OFFLOAD`` is set.
 
 extended_capabilities
-    extended capabilities supported by the driver, additional capabilities might be supported by userspace; these are the 802.11 extended capabilities (“Extended Capabilities
-    element”) and are in the same format as in the information element. See 802.11-2012 8.4.2.29 for the defined fields.
+    extended capabilities supported by the driver, additional
+    capabilities might be supported by userspace; these are the 802.11
+    extended capabilities (“Extended Capabilities element”) and are in
+    the same format as in the information element. See 802.11-2012
+    8.4.2.29 for the defined fields.
 
 extended_capabilities_mask
     mask of the valid values
@@ -229,17 +262,22 @@ extended_capabilities_len
     length of the extended capabilities
 
 privid
-    a pointer that drivers can use to identify if an arbitrary wiphy is theirs, e.g. in global notifiers
+    a pointer that drivers can use to identify if an arbitrary wiphy is
+    theirs, e.g. in global notifiers
 
 bands[IEEE80211_NUM_BANDS]
     information about bands/channels supported by this device
 
 reg_notifier
-    the driver's regulatory notification callback, note that if your driver uses ``wiphy_apply_custom_regulatory`` the reg_notifier's request can be passed as NULL
+    the driver's regulatory notification callback, note that if your
+    driver uses ``wiphy_apply_custom_regulatory`` the reg_notifier's
+    request can be passed as NULL
 
 regd
-    the driver's regulatory domain, if one was requested via the ``regulatory_hint`` API. This can be used by the driver on the ``reg_notifier`` if it chooses to ignore future
-    regulatory domain changes caused by other drivers.
+    the driver's regulatory domain, if one was requested via the
+    ``regulatory_hint`` API. This can be used by the driver on the
+    ``reg_notifier`` if it chooses to ignore future regulatory domain
+    changes caused by other drivers.
 
 dev
     (virtual) struct device for this wiphy
@@ -248,13 +286,16 @@ registered
     helps synchronize suspend/resume with wiphy unregister
 
 debugfsdir
-    debugfs directory used for this wiphy, will be renamed automatically on wiphy renames
+    debugfs directory used for this wiphy, will be renamed automatically
+    on wiphy renames
 
 ht_capa_mod_mask
-    Specify what ht_cap values can be over-ridden. If null, then none can be over-ridden.
+    Specify what ht_cap values can be over-ridden. If null, then none
+    can be over-ridden.
 
 vht_capa_mod_mask
-    Specify what VHT capabilities can be over-ridden. If null, then none can be over-ridden.
+    Specify what VHT capabilities can be over-ridden. If null, then none
+    can be over-ridden.
 
 _net
     the network namespace this wiphy currently lives in
@@ -278,16 +319,32 @@ n_vendor_events
     number of vendor events
 
 max_ap_assoc_sta
-    maximum number of associated stations supported in AP mode (including P2P GO) or 0 to indicate no such limit is advertised. The driver is allowed to advertise a theoretical
-    limit that it can reach in some cases, but may not always reach.
+    maximum number of associated stations supported in AP mode
+    (including P2P GO) or 0 to indicate no such limit is advertised. The
+    driver is allowed to advertise a theoretical limit that it can reach
+    in some cases, but may not always reach.
 
 max_num_csa_counters
-    Number of supported csa_counters in beacons and probe responses. This value should be set if the driver wishes to limit the number of csa counters. Default (0) means infinite.
+    Number of supported csa_counters in beacons and probe responses.
+    This value should be set if the driver wishes to limit the number of
+    csa counters. Default (0) means infinite.
 
 max_adj_channel_rssi_comp
-    max offset of between the channel on which the frame was sent and the channel on which the frame was heard for which the reported rssi is still valid. If a driver is able to
-    compensate the low rssi when a frame is heard on different channel, then it should set this variable to the maximal offset for which it can compensate. This value should be set
-    in MHz.
+    max offset of between the channel on which the frame was sent and
+    the channel on which the frame was heard for which the reported rssi
+    is still valid. If a driver is able to compensate the low rssi when
+    a frame is heard on different channel, then it should set this
+    variable to the maximal offset for which it can compensate. This
+    value should be set in MHz.
 
 priv[0]
     driver private data (sized according to ``wiphy_new`` parameter)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

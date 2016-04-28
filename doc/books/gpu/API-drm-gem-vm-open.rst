@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-gem-vm-open:
 
@@ -7,7 +8,7 @@ drm_gem_vm_open
 
 *man drm_gem_vm_open(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 vma->ops->open implementation for GEM
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-This function implements the #vm_operations_struct ``open`` callback for GEM drivers. This must be used together with ``drm_gem_vm_close``.
+This function implements the #vm_operations_struct ``open`` callback
+for GEM drivers. This must be used together with ``drm_gem_vm_close``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

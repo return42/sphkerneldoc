@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-reserve-node:
 
@@ -7,7 +8,7 @@ drm_mm_reserve_node
 
 *man drm_mm_reserve_node(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 insert an pre-initialized node
 
@@ -30,11 +31,23 @@ Arguments
 Description
 ===========
 
-This functions inserts an already set-up drm_mm_node into the allocator, meaning that start, size and color must be set by the caller. This is useful to initialize the allocator
-with preallocated objects which must be set-up before the range allocator can be set-up, e.g. when taking over a firmware framebuffer.
+This functions inserts an already set-up drm_mm_node into the
+allocator, meaning that start, size and color must be set by the caller.
+This is useful to initialize the allocator with preallocated objects
+which must be set-up before the range allocator can be set-up, e.g. when
+taking over a firmware framebuffer.
 
 
 Returns
 =======
 
 0 on success, -ENOSPC if there's no hole where ``node`` is.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

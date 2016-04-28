@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-request-firmware-direct:
 
@@ -7,7 +8,7 @@ request_firmware_direct
 
 *man request_firmware_direct(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 load firmware directly without usermode helper
 
@@ -33,5 +34,17 @@ Arguments
 Description
 ===========
 
-This function works pretty much like ``request_firmware``, but this doesn't fall back to usermode helper even if the firmware couldn't be loaded directly from fs. Hence it's useful
-for loading optional firmwares, which aren't always present, without extra long timeouts of udev.
+This function works pretty much like ``request_firmware``, but this
+doesn't fall back to usermode helper even if the firmware couldn't be
+loaded directly from fs. Hence it's useful for loading optional
+firmwares, which aren't always present, without extra long timeouts of
+udev.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

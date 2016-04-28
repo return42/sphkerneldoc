@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-queue-io-min:
 
@@ -7,7 +8,7 @@ blk_queue_io_min
 
 *man blk_queue_io_min(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set minimum request size for the queue
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-Storage devices may report a granularity or preferred minimum I/O size which is the smallest request the device can perform without incurring a performance penalty. For disk drives
-this is often the physical block size. For RAID arrays it is often the stripe chunk size. A properly aligned multiple of minimum_io_size is the preferred request size for
+Storage devices may report a granularity or preferred minimum I/O size
+which is the smallest request the device can perform without incurring a
+performance penalty. For disk drives this is often the physical block
+size. For RAID arrays it is often the stripe chunk size. A properly
+aligned multiple of minimum_io_size is the preferred request size for
 workloads where a high number of I/O operations is desired.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

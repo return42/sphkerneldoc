@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-gem-prime-handle-to-fd:
 
@@ -7,7 +8,7 @@ drm_gem_prime_handle_to_fd
 
 *man drm_gem_prime_handle_to_fd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 PRIME export function for GEM drivers
 
@@ -39,5 +40,16 @@ Arguments
 Description
 ===========
 
-This is the PRIME export function which must be used mandatorily by GEM drivers to ensure correct lifetime management of the underlying GEM object. The actual exporting from GEM
-object to a dma-buf is done through the gem_prime_export driver callback.
+This is the PRIME export function which must be used mandatorily by GEM
+drivers to ensure correct lifetime management of the underlying GEM
+object. The actual exporting from GEM object to a dma-buf is done
+through the gem_prime_export driver callback.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

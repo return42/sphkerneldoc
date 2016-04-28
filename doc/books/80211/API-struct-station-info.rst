@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-station-info:
 
@@ -7,7 +8,7 @@ struct station_info
 
 *man struct station_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 station information
 
@@ -59,7 +60,8 @@ Members
 =======
 
 filled
-    bitflag of flags using the bits of ``enum`` nl80211_sta_info to indicate the relevant values in this struct for them
+    bitflag of flags using the bits of ``enum`` nl80211_sta_info to
+    indicate the relevant values in this struct for them
 
 connected_time
     time(in secs) since a station is last connected
@@ -83,10 +85,12 @@ plink_state
     mesh peer link state
 
 signal
-    The signal strength, type depends on the wiphy's signal_type. For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
+    The signal strength, type depends on the wiphy's signal_type. For
+    CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 signal_avg
-    Average signal strength, type depends on the wiphy's signal_type. For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
+    Average signal strength, type depends on the wiphy's signal_type.
+    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 chains
     bitmask for filled values in ``chain_signal``, ``chain_signal_avg``
@@ -125,12 +129,16 @@ sta_flags
     station flags mask & values
 
 generation
-    generation number for nl80211 dumps. This number should increase every time the list of stations changes, i.e. when a station is added or removed, so that userspace can tell
-    whether it got a consistent snapshot.
+    generation number for nl80211 dumps. This number should increase
+    every time the list of stations changes, i.e. when a station is
+    added or removed, so that userspace can tell whether it got a
+    consistent snapshot.
 
 assoc_req_ies
-    IEs from (Re)Association Request. This is used only when in AP mode with drivers that do not use user space MLME/SME implementation. The information is provided for the
-    ``cfg80211_new_sta`` calls to notify user space of the IEs.
+    IEs from (Re)Association Request. This is used only when in AP mode
+    with drivers that do not use user space MLME/SME implementation. The
+    information is provided for the ``cfg80211_new_sta`` calls to notify
+    user space of the IEs.
 
 assoc_req_ies_len
     Length of assoc_req_ies buffer in octets.
@@ -151,7 +159,8 @@ nonpeer_pm
     non-peer mesh STA power save mode
 
 expected_throughput
-    expected throughput in kbps (including 802.11 headers) towards this station.
+    expected throughput in kbps (including 802.11 headers) towards this
+    station.
 
 rx_beacon
     number of beacons received from this peer
@@ -160,10 +169,22 @@ rx_beacon_signal_avg
     signal strength average (in dBm) for beacons received from this peer
 
 pertid[IEEE80211_NUM_TIDS + 1]
-    per-TID statistics, see ``struct cfg80211_tid_stats``, using the last (IEEE80211_NUM_TIDS) index for MSDUs not encapsulated in QoS-MPDUs.
+    per-TID statistics, see ``struct cfg80211_tid_stats``, using the
+    last (IEEE80211_NUM_TIDS) index for MSDUs not encapsulated in
+    QoS-MPDUs.
 
 
 Description
 ===========
 
-Station information filled by driver for ``get_station`` and dump_station.
+Station information filled by driver for ``get_station`` and
+dump_station.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

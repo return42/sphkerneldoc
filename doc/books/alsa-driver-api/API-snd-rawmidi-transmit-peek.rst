@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-rawmidi-transmit-peek:
 
@@ -7,7 +8,7 @@ snd_rawmidi_transmit_peek
 
 *man snd_rawmidi_transmit_peek(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 copy data from the internal buffer
 
@@ -35,10 +36,20 @@ Description
 
 Copies data from the internal output buffer to the given buffer.
 
-Call this in the interrupt handler when the midi output is ready, and call ``snd_rawmidi_transmit_ack`` after the transmission is finished.
+Call this in the interrupt handler when the midi output is ready, and
+call ``snd_rawmidi_transmit_ack`` after the transmission is finished.
 
 
 Return
 ======
 
 The size of copied data, or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

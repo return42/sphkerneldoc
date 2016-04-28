@@ -1,13 +1,19 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _pixfmt:
 
 +++++++++++++
 Image Formats
 +++++++++++++
-The V4L2 API was primarily designed for devices exchanging image data with applications. The ``v4l2_pix_format`` and ``v4l2_pix_format_mplane`` structures define the format and
-layout of an image in memory. The former is used with the single-planar API, while the latter is used with the multi-planar version (see :ref:`planar-apis`). Image formats are
-negotiated with the :ref:`VIDIOC_S_FMT <vidioc-g-fmt>` ioctl. (The explanations here focus on video capturing and output, for overlay frame buffer formats see also
-:ref:`VIDIOC_G_FBUF <vidioc-g-fbuf>`.)
+The V4L2 API was primarily designed for devices exchanging image data
+with applications. The ``v4l2_pix_format`` and
+``v4l2_pix_format_mplane`` structures define the format and layout of an
+image in memory. The former is used with the single-planar API, while
+the latter is used with the multi-planar version (see
+:ref:`planar-apis`). Image formats are negotiated with the
+:ref:`VIDIOC_S_FMT <vidioc-g-fmt>` ioctl. (The explanations here
+focus on video capturing and output, for overlay frame buffer formats
+see also :ref:`VIDIOC_G_FBUF <vidioc-g-fbuf>`.)
 
 
 .. toctree::
@@ -27,3 +33,14 @@ negotiated with the :ref:`VIDIOC_S_FMT <vidioc-g-fmt>` ioctl. (The explanations 
     pixfmt-013
     sdr-formats
     pixfmt-reserved
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

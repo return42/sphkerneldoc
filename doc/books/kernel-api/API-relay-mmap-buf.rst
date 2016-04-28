@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-relay-mmap-buf:
 
@@ -7,7 +8,7 @@ relay_mmap_buf
 
 *man relay_mmap_buf(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mmap channel buffer to process address space
 
@@ -33,3 +34,12 @@ Description
 Returns 0 if ok, negative on error
 
 Caller should already have grabbed mmap_sem.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 ===============================
 Management of Cards and Devices
@@ -24,6 +25,7 @@ Card Management
     API-snd-card-file-remove
     API-snd-power-wait
 
+
 Device Components
 =================
 
@@ -36,6 +38,7 @@ Device Components
     API-snd-device-free
     API-snd-device-register
 
+
 Module requests and Device File Entries
 =======================================
 
@@ -47,6 +50,7 @@ Module requests and Device File Entries
     API-snd-lookup-minor-data
     API-snd-register-device
     API-snd-unregister-device
+
 
 Memory Management Helpers
 =========================
@@ -62,3 +66,14 @@ Memory Management Helpers
     API-snd-dma-alloc-pages
     API-snd-dma-alloc-pages-fallback
     API-snd-dma-free-pages
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-request-percpu-irq:
 
@@ -7,7 +8,7 @@ request_percpu_irq
 
 *man request_percpu_irq(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate a percpu interrupt line
 
@@ -36,7 +37,19 @@ Arguments
 Description
 ===========
 
-This call allocates interrupt resources and enables the interrupt on the local CPU. If the interrupt is supposed to be enabled on other CPUs, it has to be done on each CPU using
-``enable_percpu_irq``.
+This call allocates interrupt resources and enables the interrupt on the
+local CPU. If the interrupt is supposed to be enabled on other CPUs, it
+has to be done on each CPU using ``enable_percpu_irq``.
 
-Dev_id must be globally unique. It is a per-cpu variable, and the handler gets called with the interrupted CPU's instance of that variable.
+Dev_id must be globally unique. It is a per-cpu variable, and the
+handler gets called with the interrupted CPU's instance of that
+variable.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

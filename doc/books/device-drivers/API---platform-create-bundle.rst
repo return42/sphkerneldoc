@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---platform-create-bundle:
 
@@ -7,7 +8,7 @@ __platform_create_bundle
 
 *man __platform_create_bundle(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register driver and create corresponding device
 
@@ -15,7 +16,7 @@ register driver and create corresponding device
 Synopsis
 ========
 
-.. c:function:: struct platform_device ⋆ __platform_create_bundle( struct platform_driver * driver, int (*probe) struct platform_device *, struct resource * res, unsigned int n_res, const void * data, size_t size, struct module * module )
+.. c:function:: struct platform_device * __platform_create_bundle( struct platform_driver * driver, int (*probe) struct platform_device *, struct resource * res, unsigned int n_res, const void * data, size_t size, struct module * module )
 
 Arguments
 =========
@@ -45,6 +46,17 @@ Arguments
 Description
 ===========
 
-Use this in legacy-style modules that probe hardware directly and register a single platform device and corresponding platform driver.
+Use this in legacy-style modules that probe hardware directly and
+register a single platform device and corresponding platform driver.
 
-Returns ``struct platform_device`` pointer on success, or ``ERR_PTR`` on error.
+Returns ``struct platform_device`` pointer on success, or ``ERR_PTR`` on
+error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-default-block-markbad:
 
@@ -7,7 +8,7 @@ nand_default_block_markbad
 
 *man nand_default_block_markbad(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [DEFAULT] mark a block bad via bad block marker
 
@@ -30,4 +31,15 @@ Arguments
 Description
 ===========
 
-This is the default implementation, which can be overridden by a hardware specific driver. It provides the details for writing a bad block marker to a block.
+This is the default implementation, which can be overridden by a
+hardware specific driver. It provides the details for writing a bad
+block marker to a block.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

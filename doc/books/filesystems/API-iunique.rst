@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-iunique:
 
@@ -7,7 +8,7 @@ iunique
 
 *man iunique(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get a unique inode number
 
@@ -30,11 +31,23 @@ Arguments
 Description
 ===========
 
-Obtain an inode number that is unique on the system for a given superblock. This is used by file systems that have no natural permanent inode numbering system. An inode number is
-returned that is higher than the reserved limit but unique.
+Obtain an inode number that is unique on the system for a given
+superblock. This is used by file systems that have no natural permanent
+inode numbering system. An inode number is returned that is higher than
+the reserved limit but unique.
 
 
 BUGS
 ====
 
-With a large number of inodes live on the file system this function currently becomes quite slow.
+With a large number of inodes live on the file system this function
+currently becomes quite slow.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

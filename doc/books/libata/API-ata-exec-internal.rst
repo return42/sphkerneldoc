@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-exec-internal:
 
@@ -7,7 +8,7 @@ ata_exec_internal
 
 *man ata_exec_internal(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 execute libata internal command
 
@@ -45,7 +46,8 @@ Arguments
 Description
 ===========
 
-Wrapper around ``ata_exec_internal_sg`` which takes simple buffer instead of sg list.
+Wrapper around ``ata_exec_internal_sg`` which takes simple buffer
+instead of sg list.
 
 
 LOCKING
@@ -57,4 +59,13 @@ None. Should be called with kernel context, might sleep.
 RETURNS
 =======
 
-Zero on success, AC_ERR_⋆ mask on failure
+Zero on success, AC_ERR_* mask on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

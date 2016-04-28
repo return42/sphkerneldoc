@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-mipi-dsi-msg:
 
@@ -7,7 +8,7 @@ struct mipi_dsi_msg
 
 *man struct mipi_dsi_msg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 read/write DSI buffer
 
@@ -51,3 +52,12 @@ rx_len
 
 rx_buf
     data to be read, or NULL
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

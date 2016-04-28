@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-pci-exit:
 
@@ -7,7 +8,7 @@ drm_pci_exit
 
 *man drm_pci_exit(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Unregister matching PCI devices from the DRM subsystem
 
@@ -30,11 +31,23 @@ Arguments
 Description
 ===========
 
-Unregisters one or more devices matched by a PCI driver from the DRM subsystem.
+Unregisters one or more devices matched by a PCI driver from the DRM
+subsystem.
 
 
 NOTE
 ====
 
-This function is deprecated. Modern modesetting drm drivers should use ``pci_unregister_driver`` directly, this function only provides shadow-binding support for old legacy drivers
-on top of that core pci function.
+This function is deprecated. Modern modesetting drm drivers should use
+``pci_unregister_driver`` directly, this function only provides
+shadow-binding support for old legacy drivers on top of that core pci
+function.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

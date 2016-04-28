@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-platform-remove-one:
 
@@ -7,7 +8,7 @@ ata_platform_remove_one
 
 *man ata_platform_remove_one(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Platform layer callback for device removal
 
@@ -27,10 +28,21 @@ Arguments
 Description
 ===========
 
-Platform layer indicates to libata via this hook that hot-unplug or module unload event has occurred. Detach all ports. Resource release is handled via devres.
+Platform layer indicates to libata via this hook that hot-unplug or
+module unload event has occurred. Detach all ports. Resource release is
+handled via devres.
 
 
 LOCKING
 =======
 
 Inherited from platform layer (may sleep).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

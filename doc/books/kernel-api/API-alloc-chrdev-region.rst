@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-alloc-chrdev-region:
 
@@ -7,7 +8,7 @@ alloc_chrdev_region
 
 *man alloc_chrdev_region(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register a range of char device numbers
 
@@ -36,5 +37,15 @@ Arguments
 Description
 ===========
 
-Allocates a range of char device numbers. The major number will be chosen dynamically, and returned (along with the first minor number) in ``dev``. Returns zero or a negative error
-code.
+Allocates a range of char device numbers. The major number will be
+chosen dynamically, and returned (along with the first minor number) in
+``dev``. Returns zero or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

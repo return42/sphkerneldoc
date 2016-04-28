@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-proxy-trylock-atomic:
 
@@ -7,7 +8,7 @@ futex_proxy_trylock_atomic
 
 *man futex_proxy_trylock_atomic(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Attempt an atomic lock for the top waiter
 
@@ -45,11 +46,23 @@ Arguments
 Description
 ===========
 
-Try and get the lock on behalf of the top waiter if we can do it atomically. Wake the top waiter if we succeed. If the caller specified set_waiters, then direct
-``futex_lock_pi_atomic`` to force setting the FUTEX_WAITERS bit. hb1 and hb2 must be held by the caller.
+Try and get the lock on behalf of the top waiter if we can do it
+atomically. Wake the top waiter if we succeed. If the caller specified
+set_waiters, then direct ``futex_lock_pi_atomic`` to force setting the
+FUTEX_WAITERS bit. hb1 and hb2 must be held by the caller.
 
 
 Return
 ======
 
-0 - failed to acquire the lock atomically; >0 - acquired the lock, return value is vpid of the top_waiter <0 - error
+0 - failed to acquire the lock atomically; >0 - acquired the lock,
+return value is vpid of the top_waiter <0 - error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

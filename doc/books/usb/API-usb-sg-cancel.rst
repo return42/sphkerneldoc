@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-sg-cancel:
 
@@ -7,7 +8,7 @@ usb_sg_cancel
 
 *man usb_sg_cancel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 stop scatter/gather i/o issued by ``usb_sg_wait``
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-This stops a request after it has been started by ``usb_sg_wait``. It can also prevents one initialized by ``usb_sg_init`` from starting, so that call just frees resources
-allocated to the request.
+This stops a request after it has been started by ``usb_sg_wait``. It
+can also prevents one initialized by ``usb_sg_init`` from starting, so
+that call just frees resources allocated to the request.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

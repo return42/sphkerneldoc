@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _hardware:
 
@@ -34,6 +35,7 @@ Interrupt Handling
     API-irq-get-irqchip-state
     API-irq-set-irqchip-state
 
+
 DMA Channels
 ============
 
@@ -43,6 +45,7 @@ DMA Channels
 
     API-request-dma
     API-free-dma
+
 
 Resources Management
 ====================
@@ -70,6 +73,7 @@ Resources Management
     API-devm-request-resource
     API-devm-release-resource
 
+
 MTRR Handling
 =============
 
@@ -78,6 +82,7 @@ MTRR Handling
     :maxdepth: 1
 
     API-arch-phys-wc-add
+
 
 PCI Support Library
 ===================
@@ -189,6 +194,7 @@ PCI Support Library
     API-pci-bus-set-ops
     API-pci-read-vpd
     API-pci-write-vpd
+    API-pci-set-vpd-size
     API-pci-cfg-access-lock
     API-pci-cfg-access-trylock
     API-pci-cfg-access-unlock
@@ -226,6 +232,7 @@ PCI Support Library
     API-pci-read-rom
     API-pci-remove-sysfs-dev-files
 
+
 PCI Hotplug Support Library
 ===========================
 
@@ -236,3 +243,14 @@ PCI Hotplug Support Library
     API---pci-hp-register
     API-pci-hp-deregister
     API-pci-hp-change-slot-info
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-trace-block-bio-frontmerge:
 
@@ -7,7 +8,7 @@ trace_block_bio_frontmerge
 
 *man trace_block_bio_frontmerge(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 merging block operation to the beginning of an existing operation
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Merging block IO operation ``bio`` to the beginning of an existing block operation in queue ``q``.
+Merging block IO operation ``bio`` to the beginning of an existing block
+operation in queue ``q``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-sync-close:
 
@@ -7,7 +8,7 @@ z8530_sync_close
 
 *man z8530_sync_close(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Close a PIO Z8530 channel
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Close down a Z8530 interface and switch its interrupt handlers to discard future events.
+Close down a Z8530 interface and switch its interrupt handlers to
+discard future events.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

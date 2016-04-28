@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-netdev-upper-dev-unlink:
 
@@ -7,7 +8,7 @@ netdev_upper_dev_unlink
 
 *man netdev_upper_dev_unlink(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Removes a link to upper device
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Removes a link to device which is upper to this one. The caller must hold the RTNL lock.
+Removes a link to device which is upper to this one. The caller must
+hold the RTNL lock.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

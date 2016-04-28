@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-format-signed:
 
@@ -7,7 +8,7 @@ snd_pcm_format_signed
 
 *man snd_pcm_format_signed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Check the PCM format is signed linear
 
@@ -27,4 +28,14 @@ Arguments
 Return
 ======
 
-1 if the given PCM format is signed linear, 0 if unsigned linear, and a negative error code for non-linear formats.
+1 if the given PCM format is signed linear, 0 if unsigned linear, and a
+negative error code for non-linear formats.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

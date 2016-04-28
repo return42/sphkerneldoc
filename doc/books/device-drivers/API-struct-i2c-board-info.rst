@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i2c-board-info:
 
@@ -7,7 +8,7 @@ struct i2c_board_info
 
 *man struct i2c_board_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 template for device creation
 
@@ -60,9 +61,24 @@ irq
 Description
 ===========
 
-I2C doesn't actually support hardware probing, although controllers and devices may be able to use I2C_SMBUS_QUICK to tell whether or not there's a device at a given address.
-Drivers commonly need more information than that, such as chip type, configuration, associated IRQ, and so on.
+I2C doesn't actually support hardware probing, although controllers and
+devices may be able to use I2C_SMBUS_QUICK to tell whether or not
+there's a device at a given address. Drivers commonly need more
+information than that, such as chip type, configuration, associated IRQ,
+and so on.
 
-i2c_board_info is used to build tables of information listing I2C devices that are present. This information is used to grow the driver model tree. For mainboards this is done
-statically using ``i2c_register_board_info``; bus numbers identify adapters that aren't yet available. For add-on boards, ``i2c_new_device`` does this dynamically with the adapter
-already known.
+i2c_board_info is used to build tables of information listing I2C
+devices that are present. This information is used to grow the driver
+model tree. For mainboards this is done statically using
+``i2c_register_board_info``; bus numbers identify adapters that aren't
+yet available. For add-on boards, ``i2c_new_device`` does this
+dynamically with the adapter already known.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

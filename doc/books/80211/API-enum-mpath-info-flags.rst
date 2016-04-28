@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-mpath-info-flags:
 
@@ -7,7 +8,7 @@ enum mpath_info_flags
 
 *man enum mpath_info_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mesh path information flags
 
@@ -56,4 +57,14 @@ MPATH_INFO_FLAGS
 Description
 ===========
 
-Used by the driver to indicate which info in ``struct mpath_info`` it has filled in during ``get_station`` or ``dump_station``.
+Used by the driver to indicate which info in ``struct mpath_info`` it
+has filled in during ``get_station`` or ``dump_station``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

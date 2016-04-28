@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sys-tgkill:
 
@@ -7,7 +8,7 @@ sys_tgkill
 
 *man sys_tgkill(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send signal to one specific thread
 
@@ -33,5 +34,15 @@ Arguments
 Description
 ===========
 
-This syscall also checks the ``tgid`` and returns -ESRCH even if the PID exists but it's not belonging to the target process anymore. This method solves the problem of threads
-exiting and PIDs getting reused.
+This syscall also checks the ``tgid`` and returns -ESRCH even if the PID
+exists but it's not belonging to the target process anymore. This method
+solves the problem of threads exiting and PIDs getting reused.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

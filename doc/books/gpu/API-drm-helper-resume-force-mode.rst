@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-helper-resume-force-mode:
 
@@ -7,7 +8,7 @@ drm_helper_resume_force_mode
 
 *man drm_helper_resume_force_mode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 force-restore mode setting configuration
 
@@ -27,19 +28,36 @@ Arguments
 Description
 ===========
 
-Drivers which use the mode setting helpers can use this function to force-restore the mode setting configuration e.g. on resume or when something else might have trampled over the
-hw state (like some overzealous old BIOSen tended to do).
+Drivers which use the mode setting helpers can use this function to
+force-restore the mode setting configuration e.g. on resume or when
+something else might have trampled over the hw state (like some
+overzealous old BIOSen tended to do).
 
-This helper doesn't provide a error return value since restoring the old config should never fail due to resource allocation issues since the driver has successfully set the
-restored configuration already. Hence this should boil down to the equivalent of a few dpms on calls, which also don't provide an error code.
+This helper doesn't provide a error return value since restoring the old
+config should never fail due to resource allocation issues since the
+driver has successfully set the restored configuration already. Hence
+this should boil down to the equivalent of a few dpms on calls, which
+also don't provide an error code.
 
-Drivers where simply restoring an old configuration again might fail (e.g. due to slight differences in allocating shared resources when the configuration is restored in a
-different order than when userspace set it up) need to use their own restore logic.
+Drivers where simply restoring an old configuration again might fail
+(e.g. due to slight differences in allocating shared resources when the
+configuration is restored in a different order than when userspace set
+it up) need to use their own restore logic.
 
-This function is deprecated. New drivers should implement atomic mode- setting and use the atomic suspend/resume helpers.
+This function is deprecated. New drivers should implement atomic mode-
+setting and use the atomic suspend/resume helpers.
 
 
 See also
 ========
 
 ``drm_atomic_helper_suspend``, ``drm_atomic_helper_resume``
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

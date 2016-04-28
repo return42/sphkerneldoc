@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---dev-mc-sync:
 
@@ -7,7 +8,7 @@ __dev_mc_sync
 
 *man __dev_mc_sync(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Synchonize device's multicast list
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Add newly added addresses to the interface, and release addresses that have been deleted.
+Add newly added addresses to the interface, and release addresses that
+have been deleted.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

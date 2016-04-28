@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-blkcipher-alg:
 
@@ -7,7 +8,7 @@ struct blkcipher_alg
 
 *man struct blkcipher_alg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 synchronous block cipher definition
 
@@ -56,4 +57,14 @@ ivsize
 Description
 ===========
 
-All fields except ``geniv`` and ``ivsize`` are mandatory and must be filled.
+All fields except ``geniv`` and ``ivsize`` are mandatory and must be
+filled.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

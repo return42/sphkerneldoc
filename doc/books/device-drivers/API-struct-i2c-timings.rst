@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i2c-timings:
 
@@ -7,7 +8,7 @@ struct i2c_timings
 
 *man struct i2c_timings(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 I2C timing information
 
@@ -43,3 +44,12 @@ scl_int_delay_ns
 
 sda_fall_ns
     time SDA signal takes to fall in ns; t(f) in the I2C specification
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

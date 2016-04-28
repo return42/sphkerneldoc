@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _basic-flow:
 
@@ -13,17 +14,22 @@ Outline
 
 The minimum flow for PCI soundcards is as follows:
 
--  define the PCI ID table (see the section :ref:`PCI Entries <pci-resource-entries>`).
+-  define the PCI ID table (see the section
+   :ref:`PCI Entries <pci-resource-entries>`).
 
 -  create ``probe()`` callback.
 
 -  create ``remove()`` callback.
 
--  create a ``pci_driver`` structure containing the three pointers above.
+-  create a ``pci_driver`` structure containing the three pointers
+   above.
 
--  create an ``init()`` function just calling the ``pci_register_driver()`` to register the pci_driver table defined above.
+-  create an ``init()`` function just calling the
+   ``pci_register_driver()`` to register the pci_driver table defined
+   above.
 
--  create an ``exit()`` function to call the ``pci_unregister_driver()`` function.
+-  create an ``exit()`` function to call the ``pci_unregister_driver()``
+   function.
 
 
 .. _basic-flow-example:
@@ -31,8 +37,10 @@ The minimum flow for PCI soundcards is as follows:
 Full Code Example
 =================
 
-The code example is shown below. Some parts are kept unimplemented at this moment but will be filled in the next sections. The numbers in the comment lines of the
-``snd_mychip_probe()`` function refer to details explained in the following section.
+The code example is shown below. Some parts are kept unimplemented at
+this moment but will be filled in the next sections. The numbers in the
+comment lines of the ``snd_mychip_probe()`` function refer to details
+explained in the following section.
 
 
 .. code-block:: c
@@ -180,8 +188,10 @@ The code example is shown below. Some parts are kept unimplemented at this momen
 Constructor
 ===========
 
-The real constructor of PCI drivers is the ``probe`` callback. The ``probe`` callback and other component-constructors which are called from the ``probe`` callback cannot be used
-with the ``__init`` prefix because any PCI device could be a hotplug device.
+The real constructor of PCI drivers is the ``probe`` callback. The
+``probe`` callback and other component-constructors which are called
+from the ``probe`` callback cannot be used with the ``__init`` prefix
+because any PCI device could be a hotplug device.
 
 In the ``probe`` callback, the following scheme is often used.
 
@@ -205,8 +215,10 @@ In the ``probe`` callback, the following scheme is often used.
 
 where enable[dev] is the module option.
 
-Each time the ``probe`` callback is called, check the availability of the device. If not available, simply increment the device index and returns. dev will be incremented also
-later (:ref:`step 7 <basic-flow-constructor-set-pci>`).
+Each time the ``probe`` callback is called, check the availability of
+the device. If not available, simply increment the device index and
+returns. dev will be incremented also later
+(:ref:`step 7 <basic-flow-constructor-set-pci>`).
 
 
 .. _basic-flow-constructor-create-card:
@@ -223,7 +235,8 @@ later (:ref:`step 7 <basic-flow-constructor-set-pci>`).
       err = snd_card_new(&pci->dev, index[dev], id[dev], THIS_MODULE,
                          0, &card);
 
-The details will be explained in the section :ref:`Management of Cards and Components <card-management-card-instance>`.
+The details will be explained in the section
+:ref:`Management of Cards and Components <card-management-card-instance>`.
 
 
 .. _basic-flow-constructor-create-main:
@@ -244,7 +257,8 @@ In this part, the PCI resources are allocated.
               return err;
       }
 
-The details will be explained in the section :ref:`PCI Resource Management <pci-resource>`.
+The details will be explained in the section
+:ref:`PCI Resource Management <pci-resource>`.
 
 
 .. _basic-flow-constructor-main-component:
@@ -260,10 +274,13 @@ The details will be explained in the section :ref:`PCI Resource Management <pci-
       sprintf(card->longname, "%s at 0x%lx irq %i",
               card->shortname, chip->ioport, chip->irq);
 
-The driver field holds the minimal ID string of the chip. This is used by alsa-lib's configurator, so keep it simple but unique. Even the same driver can have different driver IDs
-to distinguish the functionality of each chip type.
+The driver field holds the minimal ID string of the chip. This is used
+by alsa-lib's configurator, so keep it simple but unique. Even the same
+driver can have different driver IDs to distinguish the functionality of
+each chip type.
 
-The shortname field is a string shown as more verbose name. The longname field contains the information shown in ``/proc/asound/cards``.
+The shortname field is a string shown as more verbose name. The longname
+field contains the information shown in ``/proc/asound/cards``.
 
 
 .. _basic-flow-constructor-create-other:
@@ -271,8 +288,11 @@ The shortname field is a string shown as more verbose name. The longname field c
 5) Create other components, such as mixer, MIDI, etc.
 -----------------------------------------------------
 
-Here you define the basic components such as :ref:`PCM <pcm-interface>`, mixer (e.g. :ref:`AC97 <api-ac97>`), MIDI (e.g. :ref:`MPU-401 <midi-interface>`), and other
-interfaces. Also, if you want a :ref:`proc file <proc-interface>`, define it here, too.
+Here you define the basic components such as
+:ref:`PCM <pcm-interface>`, mixer (e.g. :ref:`AC97 <api-ac97>`),
+MIDI (e.g. :ref:`MPU-401 <midi-interface>`), and other interfaces.
+Also, if you want a :ref:`proc file <proc-interface>`, define it here,
+too.
 
 
 .. _basic-flow-constructor-register-card:
@@ -289,7 +309,9 @@ interfaces. Also, if you want a :ref:`proc file <proc-interface>`, define it her
               return err;
       }
 
-Will be explained in the section :ref:`Management of Cards and Components <card-management-registration>`, too.
+Will be explained in the section
+:ref:`Management of Cards and Components <card-management-registration>`,
+too.
 
 
 .. _basic-flow-constructor-set-pci:
@@ -304,7 +326,8 @@ Will be explained in the section :ref:`Management of Cards and Components <card-
             dev++;
             return 0;
 
-In the above, the card record is stored. This pointer is used in the remove callback and power-management callbacks, too.
+In the above, the card record is stored. This pointer is used in the
+remove callback and power-management callbacks, too.
 
 
 .. _basic-flow-destructor:
@@ -312,7 +335,9 @@ In the above, the card record is stored. This pointer is used in the remove call
 Destructor
 ==========
 
-The destructor, remove callback, simply releases the card instance. Then the ALSA middle layer will release all the attached components automatically.
+The destructor, remove callback, simply releases the card instance. Then
+the ALSA middle layer will release all the attached components
+automatically.
 
 It would be typically like the following:
 
@@ -325,7 +350,8 @@ It would be typically like the following:
               pci_set_drvdata(pci, NULL);
       }
 
-The above code assumes that the card pointer is set to the PCI driver data.
+The above code assumes that the card pointer is set to the PCI driver
+data.
 
 
 .. _basic-flow-header-files:
@@ -333,7 +359,8 @@ The above code assumes that the card pointer is set to the PCI driver data.
 Header Files
 ============
 
-For the above example, at least the following include files are necessary.
+For the above example, at least the following include files are
+necessary.
 
 
 .. code-block:: c
@@ -344,9 +371,24 @@ For the above example, at least the following include files are necessary.
       #include <sound/core.h>
       #include <sound/initval.h>
 
-where the last one is necessary only when module options are defined in the source file. If the code is split into several files, the files without module options don't need them.
+where the last one is necessary only when module options are defined in
+the source file. If the code is split into several files, the files
+without module options don't need them.
 
-In addition to these headers, you'll need ``<linux/interrupt.h>`` for interrupt handling, and ``<asm/io.h>`` for I/O access. If you use the ``mdelay()`` or ``udelay()`` functions,
-you'll need to include ``<linux/delay.h>`` too.
+In addition to these headers, you'll need ``<linux/interrupt.h>`` for
+interrupt handling, and ``<asm/io.h>`` for I/O access. If you use the
+``mdelay()`` or ``udelay()`` functions, you'll need to include
+``<linux/delay.h>`` too.
 
-The ALSA interfaces like the PCM and control APIs are defined in other ``<sound/xxx.h>`` header files. They have to be included after ``<sound/core.h>``.
+The ALSA interfaces like the PCM and control APIs are defined in other
+``<sound/xxx.h>`` header files. They have to be included after
+``<sound/core.h>``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

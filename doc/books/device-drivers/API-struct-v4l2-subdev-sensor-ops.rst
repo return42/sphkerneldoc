@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subdev-sensor-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_subdev_sensor_ops
 
 *man struct v4l2_subdev_sensor_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 v4l2-subdev sensor operations
 
@@ -27,8 +28,19 @@ Members
 =======
 
 g_skip_top_lines
-    number of lines at the top of the image to be skipped. This is needed for some sensors, which always corrupt several top lines of the output image, or which send their metadata
-    in them.
+    number of lines at the top of the image to be skipped. This is
+    needed for some sensors, which always corrupt several top lines of
+    the output image, or which send their metadata in them.
 
 g_skip_frames
-    number of frames to skip at stream start. This is needed for buggy sensors that generate faulty frames when they are turned on.
+    number of frames to skip at stream start. This is needed for buggy
+    sensors that generate faulty frames when they are turned on.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

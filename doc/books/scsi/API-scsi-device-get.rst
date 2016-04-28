@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-device-get:
 
@@ -7,7 +8,7 @@ scsi_device_get
 
 *man scsi_device_get(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get an additional reference to a scsi_device
 
@@ -27,7 +28,18 @@ Arguments
 Description
 ===========
 
-Gets a reference to the scsi_device and increments the use count of the underlying LLDD module. You must hold host_lock of the parent Scsi_Host or already have a reference when
-calling this.
+Gets a reference to the scsi_device and increments the use count of the
+underlying LLDD module. You must hold host_lock of the parent
+Scsi_Host or already have a reference when calling this.
 
-This will fail if a device is deleted or cancelled, or when the LLD module is in the process of being unloaded.
+This will fail if a device is deleted or cancelled, or when the LLD
+module is in the process of being unloaded.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

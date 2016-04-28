@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-auth-request:
 
@@ -7,7 +8,7 @@ struct cfg80211_auth_request
 
 *man struct cfg80211_auth_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Authentication request data
 
@@ -34,7 +35,8 @@ Members
 =======
 
 bss
-    The BSS to authenticate with, the callee must obtain a reference to it if it needs to keep it.
+    The BSS to authenticate with, the callee must obtain a reference to
+    it if it needs to keep it.
 
 ie
     Extra IEs to add to Authentication frame or ``NULL``
@@ -55,7 +57,8 @@ key_idx
     index of WEP key for shared key authentication
 
 sae_data
-    Non-IE data to use with SAE or ``NULL``. This starts with Authentication transaction sequence number field.
+    Non-IE data to use with SAE or ``NULL``. This starts with
+    Authentication transaction sequence number field.
 
 sae_data_len
     Length of sae_data buffer in octets
@@ -64,4 +67,14 @@ sae_data_len
 Description
 ===========
 
-This structure provides information needed to complete IEEE 802.11 authentication.
+This structure provides information needed to complete IEEE 802.11
+authentication.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

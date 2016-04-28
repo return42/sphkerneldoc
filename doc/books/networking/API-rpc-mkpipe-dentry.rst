@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rpc-mkpipe-dentry:
 
@@ -7,7 +8,7 @@ rpc_mkpipe_dentry
 
 *man rpc_mkpipe_dentry(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 make an rpc_pipefs file for kernel<->userspace communication
 
@@ -15,7 +16,7 @@ make an rpc_pipefs file for kernel<->userspace communication
 Synopsis
 ========
 
-.. c:function:: struct dentry ⋆ rpc_mkpipe_dentry( struct dentry * parent, const char * name, void * private, struct rpc_pipe * pipe )
+.. c:function:: struct dentry * rpc_mkpipe_dentry( struct dentry * parent, const char * name, void * private, struct rpc_pipe * pipe )
 
 Arguments
 =========
@@ -36,9 +37,22 @@ Arguments
 Description
 ===========
 
-Data is made available for userspace to read by calls to ``rpc_queue_upcall``. The actual reads will result in calls to ``ops``->upcall, which will be called with the file pointer,
-message, and userspace buffer to copy to.
+Data is made available for userspace to read by calls to
+``rpc_queue_upcall``. The actual reads will result in calls to
+``ops``->upcall, which will be called with the file pointer, message,
+and userspace buffer to copy to.
 
-Writes can come at any time, and do not necessarily have to be responses to upcalls. They will result in calls to ``msg``->downcall.
+Writes can come at any time, and do not necessarily have to be responses
+to upcalls. They will result in calls to ``msg``->downcall.
 
-The ``private`` argument passed here will be available to all these methods from the file pointer, via RPC_I(file_inode(file))->private.
+The ``private`` argument passed here will be available to all these
+methods from the file pointer, via RPC_I(file_inode(file))->private.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

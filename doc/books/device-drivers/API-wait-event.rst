@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wait-event:
 
@@ -7,7 +8,7 @@ wait_event
 
 *man wait_event(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 sleep until a condition gets true
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-The process is put to sleep (TASK_UNINTERRUPTIBLE) until the ``condition`` evaluates to true. The ``condition`` is checked each time the waitqueue ``wq`` is woken up.
+The process is put to sleep (TASK_UNINTERRUPTIBLE) until the
+``condition`` evaluates to true. The ``condition`` is checked each time
+the waitqueue ``wq`` is woken up.
 
-``wake_up`` has to be called after changing any variable that could change the result of the wait condition.
+``wake_up`` has to be called after changing any variable that could
+change the result of the wait condition.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

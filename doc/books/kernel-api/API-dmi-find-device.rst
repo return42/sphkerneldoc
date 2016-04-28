@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dmi-find-device:
 
@@ -7,7 +8,7 @@ dmi_find_device
 
 *man dmi_find_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find onboard device by type/name
 
@@ -15,7 +16,7 @@ find onboard device by type/name
 Synopsis
 ========
 
-.. c:function:: const struct dmi_device ⋆ dmi_find_device( int type, const char * name, const struct dmi_device * from )
+.. c:function:: const struct dmi_device * dmi_find_device( int type, const char * name, const struct dmi_device * from )
 
 Arguments
 =========
@@ -33,5 +34,17 @@ Arguments
 Description
 ===========
 
-Iterates through the list of known onboard devices. If a device is found with a matching ``type`` and ``name``, a pointer to its device structure is returned. Otherwise, ``NULL``
-is returned. A new search is initiated by passing ``NULL`` as the ``from`` argument. If ``from`` is not ``NULL``, searches continue from next device.
+Iterates through the list of known onboard devices. If a device is found
+with a matching ``type`` and ``name``, a pointer to its device structure
+is returned. Otherwise, ``NULL`` is returned. A new search is initiated
+by passing ``NULL`` as the ``from`` argument. If ``from`` is not
+``NULL``, searches continue from next device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

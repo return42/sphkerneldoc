@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-netdev-master-upper-dev-link:
 
@@ -7,7 +8,7 @@ netdev_master_upper_dev_link
 
 *man netdev_master_upper_dev_link(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Add a master link to the upper device
 
@@ -36,5 +37,17 @@ Arguments
 Description
 ===========
 
-Adds a link to device which is upper to this one. In this case, only one master upper device can be linked, although other non-master devices might be linked as well. The caller
-must hold the RTNL lock. On a failure a negative errno code is returned. On success the reference counts are adjusted and the function returns zero.
+Adds a link to device which is upper to this one. In this case, only one
+master upper device can be linked, although other non-master devices
+might be linked as well. The caller must hold the RTNL lock. On a
+failure a negative errno code is returned. On success the reference
+counts are adjusted and the function returns zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

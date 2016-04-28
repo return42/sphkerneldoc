@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-add-trace-bio-remap:
 
@@ -7,7 +8,7 @@ blk_add_trace_bio_remap
 
 *man blk_add_trace_bio_remap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Add a trace for a bio-remap operation
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Device mapper or raid target sometimes need to split a bio because it spans a stripe (or similar). Add a trace for that action.
+Device mapper or raid target sometimes need to split a bio because it
+spans a stripe (or similar). Add a trace for that action.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-input-register-handle:
 
@@ -7,7 +8,7 @@ input_register_handle
 
 *man input_register_handle(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register a new input handle
 
@@ -27,6 +28,18 @@ Arguments
 Description
 ===========
 
-This function puts a new input handle onto device's and handler's lists so that events can flow through it once it is opened using ``input_open_device``.
+This function puts a new input handle onto device's and handler's lists
+so that events can flow through it once it is opened using
+``input_open_device``.
 
-This function is supposed to be called from handler's ``connect`` method.
+This function is supposed to be called from handler's ``connect``
+method.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

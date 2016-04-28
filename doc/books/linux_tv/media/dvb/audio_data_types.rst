@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _audio_data_types:
 
@@ -5,7 +6,8 @@
 Audio Data Types
 ================
 
-This section describes the structures, data types and defines used when talking to the audio device.
+This section describes the structures, data types and defines used when
+talking to the audio device.
 
 
 .. _audio-stream-source-t:
@@ -13,8 +15,9 @@ This section describes the structures, data types and defines used when talking 
 audio_stream_source_t
 =====================
 
-The audio stream source is set through the AUDIO_SELECT_SOURCE call and can take the following values, depending on whether we are replaying from an internal (demux) or external
-(user write) source.
+The audio stream source is set through the AUDIO_SELECT_SOURCE call
+and can take the following values, depending on whether we are replaying
+from an internal (demux) or external (user write) source.
 
 
 .. code-block:: c
@@ -24,8 +27,10 @@ The audio stream source is set through the AUDIO_SELECT_SOURCE call and can take
         AUDIO_SOURCE_MEMORY
     } audio_stream_source_t;
 
-AUDIO_SOURCE_DEMUX selects the demultiplexer (fed either by the frontend or the DVR device) as the source of the video stream. If AUDIO_SOURCE_MEMORY is selected the stream
-comes from the application through the ``write()`` system call.
+AUDIO_SOURCE_DEMUX selects the demultiplexer (fed either by the
+frontend or the DVR device) as the source of the video stream. If
+AUDIO_SOURCE_MEMORY is selected the stream comes from the application
+through the ``write()`` system call.
 
 
 .. _audio-play-state-t:
@@ -33,7 +38,8 @@ comes from the application through the ``write()`` system call.
 audio_play_state_t
 ==================
 
-The following values can be returned by the AUDIO_GET_STATUS call representing the state of audio playback.
+The following values can be returned by the AUDIO_GET_STATUS call
+representing the state of audio playback.
 
 
 .. code-block:: c
@@ -50,7 +56,8 @@ The following values can be returned by the AUDIO_GET_STATUS call representing t
 audio_channel_select_t
 ======================
 
-The audio channel selected via AUDIO_CHANNEL_SELECT is determined by the following values.
+The audio channel selected via AUDIO_CHANNEL_SELECT is determined by
+the following values.
 
 
 .. code-block:: c
@@ -69,7 +76,8 @@ The audio channel selected via AUDIO_CHANNEL_SELECT is determined by the followi
 struct audio_status
 ===================
 
-The AUDIO_GET_STATUS call returns the following structure informing about various states of the playback operation.
+The AUDIO_GET_STATUS call returns the following structure informing
+about various states of the playback operation.
 
 
 .. code-block:: c
@@ -90,7 +98,8 @@ The AUDIO_GET_STATUS call returns the following structure informing about variou
 struct audio_mixer
 ==================
 
-The following structure is used by the AUDIO_SET_MIXER call to set the audio volume.
+The following structure is used by the AUDIO_SET_MIXER call to set the
+audio volume.
 
 
 .. code-block:: c
@@ -106,7 +115,8 @@ The following structure is used by the AUDIO_SET_MIXER call to set the audio vol
 audio encodings
 ===============
 
-A call to AUDIO_GET_CAPABILITIES returns an unsigned integer with the following bits set according to the hardwares capabilities.
+A call to AUDIO_GET_CAPABILITIES returns an unsigned integer with the
+following bits set according to the hardwares capabilities.
 
 
 .. code-block:: c
@@ -139,8 +149,10 @@ The ioctl AUDIO_SET_KARAOKE uses the following format:
         int melody;
     } audio_karaoke_t;
 
-If Vocal1 or Vocal2 are non-zero, they get mixed into left and right t at 70% each. If both, Vocal1 and Vocal2 are non-zero, Vocal1 gets mixed into the left channel and Vocal2 into
-the right channel at 100% each. Ff Melody is non-zero, the melody channel gets mixed into left and right.
+If Vocal1 or Vocal2 are non-zero, they get mixed into left and right t
+at 70% each. If both, Vocal1 and Vocal2 are non-zero, Vocal1 gets mixed
+into the left channel and Vocal2 into the right channel at 100% each. Ff
+Melody is non-zero, the melody channel gets mixed into left and right.
 
 
 .. _audio-attributes-t:
@@ -164,3 +176,12 @@ The following attributes can be set by a call to AUDIO_SET_ATTRIBUTES:
      /*    2- 0 number of audio channels (n+1 channels) */
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

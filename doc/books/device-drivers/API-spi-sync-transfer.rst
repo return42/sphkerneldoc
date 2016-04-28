@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-sync-transfer:
 
@@ -7,7 +8,7 @@ spi_sync_transfer
 
 *man spi_sync_transfer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 synchronous SPI data transfer
 
@@ -48,3 +49,12 @@ Return
 ======
 
 Return: zero on success, else a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

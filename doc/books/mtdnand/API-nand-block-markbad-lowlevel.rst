@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-block-markbad-lowlevel:
 
@@ -7,7 +8,7 @@ nand_block_markbad_lowlevel
 
 *man nand_block_markbad_lowlevel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mark a block bad
 
@@ -30,12 +31,25 @@ Arguments
 Description
 ===========
 
-This function performs the generic NAND bad block marking steps (i.e., bad block table(s) and/or marker(s)). We only allow the hardware driver to specify how to write bad block
-markers to OOB (chip->block_markbad).
+This function performs the generic NAND bad block marking steps (i.e.,
+bad block table(s) and/or marker(s)). We only allow the hardware driver
+to specify how to write bad block markers to OOB (chip->block_markbad).
 
 
 We try operations in the following order
 ========================================
 
-(1) erase the affected block, to allow OOB marker to be written cleanly (2) write bad block marker to OOB area of affected block (unless flag NAND_BBT_NO_OOB_BBM is present)
-(3) update the BBT Note that we retain the first error encountered in (2) or (3), finish the procedures, and dump the error in the end.
+(1) erase the affected block, to allow OOB marker to be written cleanly
+(2) write bad block marker to OOB area of affected block (unless flag
+NAND_BBT_NO_OOB_BBM is present) (3) update the BBT Note that we
+retain the first error encountered in (2) or (3), finish the procedures,
+and dump the error in the end.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

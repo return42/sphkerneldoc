@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-unregister-framebuffer:
 
@@ -7,7 +8,7 @@ unregister_framebuffer
 
 *man unregister_framebuffer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 releases a frame buffer device
 
@@ -31,7 +32,19 @@ Unregisters a frame buffer device ``fb_info``.
 
 Returns negative errno on error, or zero for success.
 
-This function will also notify the framebuffer console to release the driver.
+This function will also notify the framebuffer console to release the
+driver.
 
-This is meant to be called within a driver's ``module_exit`` function. If this is called outside ``module_exit``, ensure that the driver implements ``fb_open`` and ``fb_release``
-to check that no processes are using the device.
+This is meant to be called within a driver's ``module_exit`` function.
+If this is called outside ``module_exit``, ensure that the driver
+implements ``fb_open`` and ``fb_release`` to check that no processes are
+using the device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

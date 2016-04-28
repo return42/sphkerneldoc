@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rio-mport-attr:
 
@@ -7,7 +8,7 @@ struct rio_mport_attr
 
 *man struct rio_mport_attr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 RIO mport device attributes
 
@@ -47,3 +48,12 @@ dma_max_size
 
 dma_align
     alignment shift for DMA operations (as for other DMA operations)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

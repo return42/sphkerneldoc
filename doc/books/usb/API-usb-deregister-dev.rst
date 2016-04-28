@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-deregister-dev:
 
@@ -7,7 +8,7 @@ usb_deregister_dev
 
 *man usb_deregister_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 deregister a USB device's dynamic minor.
 
@@ -30,9 +31,20 @@ Arguments
 Description
 ===========
 
-Used in conjunction with ``usb_register_dev``. This function is called when the USB driver is finished with the minor numbers gotten from a call to ``usb_register_dev`` (usually
-when the device is disconnected from the system.)
+Used in conjunction with ``usb_register_dev``. This function is called
+when the USB driver is finished with the minor numbers gotten from a
+call to ``usb_register_dev`` (usually when the device is disconnected
+from the system.)
 
 This function also removes the usb class device from the sysfs tree.
 
 This should be called by all drivers that use the USB major number.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

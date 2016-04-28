@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-fb-helper-init:
 
@@ -7,7 +8,7 @@ drm_fb_helper_init
 
 *man drm_fb_helper_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize a drm_fb_helper structure
 
@@ -36,13 +37,26 @@ Arguments
 Description
 ===========
 
-This allocates the structures for the fbdev helper with the given limits. Note that this won't yet touch the hardware (through the driver interfaces) nor register the fbdev. This
-is only done in ``drm_fb_helper_initial_config`` to allow driver writes more control over the exact init sequence.
+This allocates the structures for the fbdev helper with the given
+limits. Note that this won't yet touch the hardware (through the driver
+interfaces) nor register the fbdev. This is only done in
+``drm_fb_helper_initial_config`` to allow driver writes more control
+over the exact init sequence.
 
-Drivers must call ``drm_fb_helper_prepare`` before calling this function.
+Drivers must call ``drm_fb_helper_prepare`` before calling this
+function.
 
 
 RETURNS
 =======
 
 Zero if everything went ok, nonzero otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

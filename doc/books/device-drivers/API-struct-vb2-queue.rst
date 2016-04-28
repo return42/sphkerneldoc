@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vb2-queue:
 
@@ -7,7 +8,7 @@ struct vb2_queue
 
 *man struct vb2_queue(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 a videobuf queue
 
@@ -40,7 +41,9 @@ Members
 =======
 
 type
-    private buffer type whose content is defined by the vb2-core caller. For example, for V4L2, it should match the V4L2_BUF_TYPE_⋆ in include/uapi/linux/videodev2.h
+    private buffer type whose content is defined by the vb2-core caller.
+    For example, for V4L2, it should match the V4L2_BUF_TYPE_* in
+    include/uapi/linux/videodev2.h
 
 io_modes
     supported io methods (see vb2_io_modes enum)
@@ -55,12 +58,17 @@ allow_zero_bytesused
     allow bytesused == 0 to be passed to the driver
 
 lock
-    pointer to a mutex that protects the vb2_queue struct. The driver can set this to a mutex to let the v4l2 core serialize the queuing ioctls. If the driver wants to handle
-    locking itself, then this should be set to NULL. This lock is not used by the videobuf2 core API.
+    pointer to a mutex that protects the vb2_queue struct. The driver
+    can set this to a mutex to let the v4l2 core serialize the queuing
+    ioctls. If the driver wants to handle locking itself, then this
+    should be set to NULL. This lock is not used by the videobuf2 core
+    API.
 
 owner
-    The filehandle that 'owns' the buffers, i.e. the filehandle that called reqbufs, create_buffers or started fileio. This field is not used by the videobuf2 core API, but it
-    allows drivers to easily associate an owner filehandle with the queue.
+    The filehandle that 'owns' the buffers, i.e. the filehandle that
+    called reqbufs, create_buffers or started fileio. This field is not
+    used by the videobuf2 core API, but it allows drivers to easily
+    associate an owner filehandle with the queue.
 
 ops
     driver-specific callbacks
@@ -69,22 +77,36 @@ mem_ops
     memory allocator specific callbacks
 
 buf_ops
-    callbacks to deliver buffer information between user-space and kernel-space
+    callbacks to deliver buffer information between user-space and
+    kernel-space
 
 drv_priv
     driver private data
 
 buf_struct_size
-    size of the driver-specific buffer structure; “0” indicates the driver doesn't want to use a custom buffer structure type. for example, sizeof(struct vb2_v4l2_buffer) will be
-    used for v4l2.
+    size of the driver-specific buffer structure; “0” indicates the
+    driver doesn't want to use a custom buffer structure type. for
+    example, sizeof(struct vb2_v4l2_buffer) will be used for v4l2.
 
 timestamp_flags
-    Timestamp flags; V4L2_BUF_FLAG_TIMESTAMP_⋆ and V4L2_BUF_FLAG_TSTAMP_SRC_⋆
+    Timestamp flags; V4L2_BUF_FLAG_TIMESTAMP_* and
+    V4L2_BUF_FLAG_TSTAMP_SRC_*
 
 gfp_flags
-    additional gfp flags used when allocating the buffers. Typically this is 0, but it may be e.g. GFP_DMA or __GFP_DMA32 to force the buffer allocation to a specific memory
-    zone.
+    additional gfp flags used when allocating the buffers. Typically
+    this is 0, but it may be e.g. GFP_DMA or __GFP_DMA32 to force
+    the buffer allocation to a specific memory zone.
 
 min_buffers_needed
-    the minimum number of buffers needed before ``start_streaming`` can be called. Used when a DMA engine cannot be started unless at least this number of buffers have been queued
-    into the driver.
+    the minimum number of buffers needed before ``start_streaming`` can
+    be called. Used when a DMA engine cannot be started unless at least
+    this number of buffers have been queued into the driver.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

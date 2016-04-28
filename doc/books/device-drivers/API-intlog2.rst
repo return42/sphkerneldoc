@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intlog2:
 
@@ -7,7 +8,7 @@ intlog2
 
 *man intlog2(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 computes log2 of a value; the result is shifted left by 24 bits
 
@@ -27,7 +28,7 @@ Arguments
 to use rational values you can use the following method
 =======================================================
 
-intlog2(value) = intlog2(value ⋆ 2^x) - x ⋆ 2^24
+intlog2(value) = intlog2(value * 2^x) - x * 2^24
 
 
 Some usecase examples
@@ -44,4 +45,13 @@ Some usecase examples
 return
 ======
 
-log2(value) ⋆ 2^24
+log2(value) * 2^24
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

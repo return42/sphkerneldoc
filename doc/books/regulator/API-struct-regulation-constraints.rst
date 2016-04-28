@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-regulation-constraints:
 
@@ -7,7 +8,7 @@ struct regulation_constraints
 
 *man struct regulation_constraints(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 regulator operating constraints.
 
@@ -59,7 +60,8 @@ max_uV
     Largest voltage consumers may set.
 
 uV_offset
-    Offset applied to voltages from consumer to compensate for voltage drops.
+    Offset applied to voltages from consumer to compensate for voltage
+    drops.
 
 min_uA
     Smallest current consumers may set.
@@ -104,14 +106,16 @@ enable_time
     Turn-on time of the rails (unit: microseconds)
 
 active_discharge
-    Enable/disable active discharge. The enum regulator_active_discharge values are used for initialisation.
+    Enable/disable active discharge. The enum
+    regulator_active_discharge values are used for initialisation.
 
 always_on
     Set if the regulator should never be disabled.
 
 boot_on
-    Set if the regulator is enabled when the system is initially started. If the regulator is not enabled by the hardware or bootloader then it will be enabled when the constraints
-    are applied.
+    Set if the regulator is enabled when the system is initially
+    started. If the regulator is not enabled by the hardware or
+    bootloader then it will be enabled when the constraints are applied.
 
 apply_uV
     Apply the voltage constraint when initialising.
@@ -130,3 +134,12 @@ Description
 ===========
 
 This struct describes regulator and board/machine specific constraints.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

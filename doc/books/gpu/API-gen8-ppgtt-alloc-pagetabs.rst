@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-gen8-ppgtt-alloc-pagetabs:
 
@@ -7,7 +8,7 @@ gen8_ppgtt_alloc_pagetabs
 
 *man gen8_ppgtt_alloc_pagetabs(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Allocate page tables for VA range.
 
@@ -33,18 +34,32 @@ Arguments
     Size of the allocations.
 
 ``new_pts``
-    Bitmap set by function with new allocations. Likely used by the caller to free on error.
+    Bitmap set by function with new allocations. Likely used by the
+    caller to free on error.
 
 
 Description
 ===========
 
-Allocate the required number of page tables. Extremely similar to ``gen8_ppgtt_alloc_page_directories``. The main difference is here we are limited by the page directory boundary
-(instead of the page directory pointer). That boundary is 1GB virtual. Therefore, unlike ``gen8_ppgtt_alloc_page_directories``, it is possible, and likely that the caller will need
-to use multiple calls of this function to achieve the appropriate allocation.
+Allocate the required number of page tables. Extremely similar to
+``gen8_ppgtt_alloc_page_directories``. The main difference is here we
+are limited by the page directory boundary (instead of the page
+directory pointer). That boundary is 1GB virtual. Therefore, unlike
+``gen8_ppgtt_alloc_page_directories``, it is possible, and likely that
+the caller will need to use multiple calls of this function to achieve
+the appropriate allocation.
 
 
 Return
 ======
 
 0 if success; negative error code otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-hrtimer:
 
@@ -7,7 +8,7 @@ struct hrtimer
 
 *man struct hrtimer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 the basic hrtimer structure
 
@@ -36,11 +37,15 @@ Members
 =======
 
 node
-    timerqueue node, which also manages node.expires, the absolute expiry time in the hrtimers internal representation. The time is related to the clock on which the timer is
-    based. Is setup by adding slack to the _softexpires value. For non range timers identical to _softexpires.
+    timerqueue node, which also manages node.expires, the absolute
+    expiry time in the hrtimers internal representation. The time is
+    related to the clock on which the timer is based. Is setup by adding
+    slack to the _softexpires value. For non range timers identical to
+    _softexpires.
 
 _softexpires
-    the absolute earliest expiry time of the hrtimer. The time which was given as expiry time when the timer was armed.
+    the absolute earliest expiry time of the hrtimer. The time which was
+    given as expiry time when the timer was armed.
 
 function
     timer expiry callback function
@@ -55,16 +60,27 @@ is_rel
     Set if the timer was armed relative
 
 start_pid
-    timer statistics field to store the pid of the task which started the timer
+    timer statistics field to store the pid of the task which started
+    the timer
 
 start_site
     timer statistics field to store the site where the timer was started
 
 start_comm[16]
-    timer statistics field to store the name of the process which started the timer
+    timer statistics field to store the name of the process which
+    started the timer
 
 
 Description
 ===========
 
 The hrtimer structure must be initialized by ``hrtimer_init``
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

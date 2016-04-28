@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 
 ====================================
@@ -14,5 +15,16 @@ Oops
 
     **Warning**
 
-    The template for this document tried to insert the structured comment from the file ``drivers/usb/gadget/function/f_obex.c`` at this point, but none was found. This dummy
-    section is inserted to allow generation to continue.
+    The template for this document tried to insert the structured
+    comment from the file ``drivers/usb/gadget/function/f_obex.c`` at
+    this point, but none was found. This dummy section is inserted to
+    allow generation to continue.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

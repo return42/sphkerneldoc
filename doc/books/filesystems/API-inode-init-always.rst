@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-inode-init-always:
 
@@ -7,7 +8,7 @@ inode_init_always
 
 *man inode_init_always(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 perform inode structure intialisation
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-These are initializations that need to be done on every inode allocation as the fields are not initialised by slab allocation.
+These are initializations that need to be done on every inode allocation
+as the fields are not initialised by slab allocation.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

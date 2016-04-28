@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-host-page-access-control:
 
@@ -7,7 +8,7 @@ mpt_host_page_access_control
 
 *man mpt_host_page_access_control(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 control the IOC's Host Page Buffer access
 
@@ -33,9 +34,21 @@ Arguments
 Description
 ===========
 
-Provides mechanism for the host driver to control the IOC's Host Page Buffer access.
+Provides mechanism for the host driver to control the IOC's Host Page
+Buffer access.
 
-Access Control Value - bits[15:12] 0h Reserved 1h Enable Access { MPI_DB_HPBAC_ENABLE_ACCESS } 2h Disable Access { MPI_DB_HPBAC_DISABLE_ACCESS } 3h Free Buffer {
+Access Control Value - bits[15:12] 0h Reserved 1h Enable Access {
+MPI_DB_HPBAC_ENABLE_ACCESS } 2h Disable Access {
+MPI_DB_HPBAC_DISABLE_ACCESS } 3h Free Buffer {
 MPI_DB_HPBAC_FREE_BUFFER }
 
 Returns 0 for success, non-zero for failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

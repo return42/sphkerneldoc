@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-split-transfers-maxsize:
 
@@ -7,9 +8,10 @@ spi_split_transfers_maxsize
 
 *man spi_split_transfers_maxsize(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-split spi transfers into multiple transfers when an individual transfer exceeds a certain size
+split spi transfers into multiple transfers when an individual transfer
+exceeds a certain size
 
 
 Synopsis
@@ -37,3 +39,12 @@ Return
 ======
 
 status of transformation
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

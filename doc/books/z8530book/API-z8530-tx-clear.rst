@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-tx-clear:
 
@@ -7,7 +8,7 @@ z8530_tx_clear
 
 *man z8530_tx_clear(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Handle TX events from a stopped chip
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Transmit interrupt vectors for a Z8530 that is in 'parked' mode. For machines with PCI Z85x30 cards, or level triggered interrupts (eg the MacII) we must clear the interrupt cause
-or die.
+Transmit interrupt vectors for a Z8530 that is in 'parked' mode. For
+machines with PCI Z85x30 cards, or level triggered interrupts (eg the
+MacII) we must clear the interrupt cause or die.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

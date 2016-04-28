@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-dmx-demux-caps:
 
@@ -7,7 +8,7 @@ enum dmx_demux_caps
 
 *man enum dmx_demux_caps(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 MPEG-2 TS Demux capabilities bitmap
 
@@ -41,3 +42,12 @@ Description
 ===========
 
 Those flags are OR'ed in the ``dmx_demux``.\ ``capabilities`` field
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

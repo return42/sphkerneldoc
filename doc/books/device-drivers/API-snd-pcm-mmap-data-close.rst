@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-mmap-data-close:
 
@@ -7,7 +8,7 @@ snd_pcm_mmap_data_close
 
 *man snd_pcm_mmap_data_close(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 decrease the mmap counter
 
@@ -28,3 +29,12 @@ Description
 ===========
 
 PCM mmap callback should handle this counter properly
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

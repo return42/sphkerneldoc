@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-top-waiter:
 
@@ -7,7 +8,7 @@ futex_top_waiter
 
 *man futex_top_waiter(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Return the highest priority waiter on a futex
 
@@ -15,7 +16,7 @@ Return the highest priority waiter on a futex
 Synopsis
 ========
 
-.. c:function:: struct futex_q ⋆ futex_top_waiter( struct futex_hash_bucket * hb, union futex_key * key )
+.. c:function:: struct futex_q * futex_top_waiter( struct futex_hash_bucket * hb, union futex_key * key )
 
 Arguments
 =========
@@ -31,3 +32,12 @@ Description
 ===========
 
 Must be called with the hb lock held.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

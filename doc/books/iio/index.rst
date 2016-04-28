@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 +++++++++++++++++++++++++++++++++++++++
 Industrial I/O driver developer's guide
@@ -8,7 +9,8 @@ Industrial I/O driver developer's guide
 
 **Copyright** 2015 : Intel Corporation
 
-This documentation is free software; you can redistribute it and/or modify it under the terms of the GNU General Public License version 2.
+This documentation is free software; you can redistribute it and/or
+modify it under the terms of the GNU General Public License version 2.
 
 
 .. toctree::
@@ -17,3 +19,23 @@ This documentation is free software; you can redistribute it and/or modify it un
     intro
     iiosubsys
     iioresources
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------
+
+.. only:: html
+
+  Retrieval
+  =========
+
+  * :ref:`genindex`
+  * :ref:`search`
+

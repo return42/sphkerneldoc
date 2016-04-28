@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-tx-info:
 
@@ -7,7 +8,7 @@ struct ieee80211_tx_info
 
 *man struct ieee80211_tx_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 skb transmit information
 
@@ -48,5 +49,16 @@ ack_frame_id
 Description
 ===========
 
-This structure is placed in skb->cb for three uses: (1) mac80211 TX control - mac80211 tells the driver what to do (2) driver internal use (if applicable) (3) TX status information
-- driver tells mac80211 what happened
+This structure is placed in skb->cb for three uses: (1) mac80211 TX
+control - mac80211 tells the driver what to do (2) driver internal use
+(if applicable) (3) TX status information - driver tells mac80211 what
+happened
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

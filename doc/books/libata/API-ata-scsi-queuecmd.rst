@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-queuecmd:
 
@@ -7,7 +8,7 @@ ata_scsi_queuecmd
 
 *man ata_scsi_queuecmd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Issue SCSI cdb to libata-managed device
 
@@ -30,8 +31,11 @@ Arguments
 Description
 ===========
 
-In some cases, this function translates SCSI commands into ATA taskfiles, and queues the taskfiles to be sent to hardware. In other cases, this function simulates a SCSI device by
-evaluating and responding to certain SCSI commands. This creates the overall effect of ATA and ATAPI devices appearing as SCSI devices.
+In some cases, this function translates SCSI commands into ATA
+taskfiles, and queues the taskfiles to be sent to hardware. In other
+cases, this function simulates a SCSI device by evaluating and
+responding to certain SCSI commands. This creates the overall effect of
+ATA and ATAPI devices appearing as SCSI devices.
 
 
 LOCKING
@@ -43,4 +47,14 @@ ATA host lock
 RETURNS
 =======
 
-Return value from ``__ata_scsi_queuecmd`` if ``cmd`` can be queued, 0 otherwise.
+Return value from ``__ata_scsi_queuecmd`` if ``cmd`` can be queued, 0
+otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

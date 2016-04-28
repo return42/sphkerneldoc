@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-find-dev:
 
@@ -7,7 +8,7 @@ ata_scsi_find_dev
 
 *man ata_scsi_find_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 lookup ata_device from scsi_cmnd
 
@@ -15,7 +16,7 @@ lookup ata_device from scsi_cmnd
 Synopsis
 ========
 
-.. c:function:: struct ata_device ⋆ ata_scsi_find_dev( struct ata_port * ap, const struct scsi_device * scsidev )
+.. c:function:: struct ata_device * ata_scsi_find_dev( struct ata_port * ap, const struct scsi_device * scsidev )
 
 Arguments
 =========
@@ -30,8 +31,9 @@ Arguments
 Description
 ===========
 
-Given various information provided in struct scsi_cmnd, map that onto an ATA bus, and using that mapping determine which ata_device is associated with the SCSI command to be
-sent.
+Given various information provided in struct scsi_cmnd, map that onto
+an ATA bus, and using that mapping determine which ata_device is
+associated with the SCSI command to be sent.
 
 
 LOCKING
@@ -44,3 +46,12 @@ RETURNS
 =======
 
 Associated ATA device, or ``NULL`` if not found.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

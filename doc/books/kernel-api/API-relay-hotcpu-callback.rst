@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-relay-hotcpu-callback:
 
@@ -7,7 +8,7 @@ relay_hotcpu_callback
 
 *man relay_hotcpu_callback(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 CPU hotplug callback
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Returns the success/failure of the operation. (``NOTIFY_OK``, ``NOTIFY_BAD``)
+Returns the success/failure of the operation. (``NOTIFY_OK``,
+``NOTIFY_BAD``)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

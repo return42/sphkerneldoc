@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i915-cmd-parser-get-version:
 
@@ -7,7 +8,7 @@ i915_cmd_parser_get_version
 
 *man i915_cmd_parser_get_version(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get the cmd parser version number
 
@@ -27,10 +28,21 @@ Arguments
 Description
 ===========
 
-The cmd parser maintains a simple increasing integer version number suitable for passing to userspace clients to determine what operations are permitted.
+The cmd parser maintains a simple increasing integer version number
+suitable for passing to userspace clients to determine what operations
+are permitted.
 
 
 Return
 ======
 
 the current version number of the cmd parser
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

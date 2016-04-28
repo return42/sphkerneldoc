@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _frontend-property-terrestrial-systems:
 
@@ -41,7 +42,8 @@ The following parameters are valid for DVB-T:
 
 -  :ref:`DTV_LNA <DTV-LNA>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _dvbt2-params:
@@ -49,7 +51,8 @@ In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also v
 DVB-T2 delivery system
 ======================
 
-DVB-T2 support is currently in the early stages of development, so expect that this section maygrow and become more detailed with time.
+DVB-T2 support is currently in the early stages of development, so
+expect that this section maygrow and become more detailed with time.
 
 The following parameters are valid for DVB-T2:
 
@@ -83,7 +86,8 @@ The following parameters are valid for DVB-T2:
 
 -  :ref:`DTV_LNA <DTV-LNA>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _isdbt:
@@ -91,20 +95,29 @@ In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also v
 ISDB-T delivery system
 ======================
 
-This ISDB-T/ISDB-Tsb API extension should reflect all information needed to tune any ISDB-T/ISDB-Tsb hardware. Of course it is possible that some very sophisticated devices won't
-need certain parameters to tune.
+This ISDB-T/ISDB-Tsb API extension should reflect all information needed
+to tune any ISDB-T/ISDB-Tsb hardware. Of course it is possible that some
+very sophisticated devices won't need certain parameters to tune.
 
-The information given here should help application writers to know how to handle ISDB-T and ISDB-Tsb hardware using the Linux DVB-API.
+The information given here should help application writers to know how
+to handle ISDB-T and ISDB-Tsb hardware using the Linux DVB-API.
 
-The details given here about ISDB-T and ISDB-Tsb are just enough to basically show the dependencies between the needed parameter values, but surely some information is left out.
-For more detailed information see the following documents:
+The details given here about ISDB-T and ISDB-Tsb are just enough to
+basically show the dependencies between the needed parameter values, but
+surely some information is left out. For more detailed information see
+the following documents:
 
-ARIB STD-B31 - "Transmission System for Digital Terrestrial Television Broadcasting" and
+ARIB STD-B31 - "Transmission System for Digital Terrestrial Television
+Broadcasting" and
 
-ARIB TR-B14 - "Operational Guidelines for Digital Terrestrial Television Broadcasting".
+ARIB TR-B14 - "Operational Guidelines for Digital Terrestrial Television
+Broadcasting".
 
-In order to understand the ISDB specific parameters, one has to have some knowledge the channel structure in ISDB-T and ISDB-Tsb. I.e. it has to be known to the reader that an
-ISDB-T channel consists of 13 segments, that it can have up to 3 layer sharing those segments, and things like that.
+In order to understand the ISDB specific parameters, one has to have
+some knowledge the channel structure in ISDB-T and ISDB-Tsb. I.e. it has
+to be known to the reader that an ISDB-T channel consists of 13
+segments, that it can have up to 3 layer sharing those segments, and
+things like that.
 
 The following parameters are valid for ISDB-T:
 
@@ -162,7 +175,8 @@ The following parameters are valid for ISDB-T:
 
 -  :ref:`DTV_ISDBT_LAYERC_TIME_INTERLEAVING <DTV-ISDBT-LAYER-TIME-INTERLEAVING>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _atsc-params:
@@ -186,7 +200,8 @@ The following parameters are valid for ATSC:
 
 -  :ref:`DTV_BANDWIDTH_HZ <DTV-BANDWIDTH-HZ>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _atscmh-params:
@@ -238,7 +253,8 @@ The following parameters are valid for ATSC-MH:
 
 -  :ref:`DTV_ATSCMH_SCCC_CODE_MODE_D <DTV-ATSCMH-SCCC-CODE-MODE-D>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
 
 
 .. _dtmb-params:
@@ -274,4 +290,14 @@ The following parameters are valid for DTMB:
 
 -  :ref:`DTV_LNA <DTV-LNA>`
 
-In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>` are also valid.
+In addition, the :ref:`DTV QoS statistics <frontend-stat-properties>`
+are also valid.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

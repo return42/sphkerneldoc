@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-dp-link-probe:
 
@@ -7,7 +8,7 @@ drm_dp_link_probe
 
 *man drm_dp_link_probe(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 probe a DisplayPort link for capabilities
 
@@ -30,7 +31,17 @@ Arguments
 Description
 ===========
 
-The structure filled in by this function can usually be passed directly into ``drm_dp_link_power_up`` and ``drm_dp_link_configure`` to power up and configure the link based on the
-link's capabilities.
+The structure filled in by this function can usually be passed directly
+into ``drm_dp_link_power_up`` and ``drm_dp_link_configure`` to power up
+and configure the link based on the link's capabilities.
 
 Returns 0 on success or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

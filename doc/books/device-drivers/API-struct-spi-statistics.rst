@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-spi-statistics:
 
@@ -7,7 +8,7 @@ struct spi_statistics
 
 *man struct spi_statistics(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 statistics for spi transfers
 
@@ -57,7 +58,8 @@ spi_sync
     number of times spi_sync is used
 
 spi_sync_immediate
-    number of times spi_sync is executed immediately in calling context without queuing and scheduling
+    number of times spi_sync is executed immediately in calling context
+    without queuing and scheduling
 
 spi_async
     number of times spi_async is used
@@ -76,3 +78,12 @@ transfer_bytes_histo[SPI_STATISTICS_HISTO_SIZE]
 
 transfers_split_maxsize
     number of transfers that have been split because of maxsize limit
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

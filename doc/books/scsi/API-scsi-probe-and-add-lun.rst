@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-probe-and-add-lun:
 
@@ -7,7 +8,7 @@ scsi_probe_and_add_lun
 
 *man scsi_probe_and_add_lun(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 probe a LUN, if a LUN is found add it
 
@@ -42,7 +43,8 @@ Arguments
 Description
 ===========
 
-Call scsi_probe_lun, if a LUN with an attached device is found, allocate and set it up by calling scsi_add_lun.
+Call scsi_probe_lun, if a LUN with an attached device is found,
+allocate and set it up by calling scsi_add_lun.
 
 
 SCSI_SCAN_NO_RESPONSE
@@ -61,3 +63,12 @@ SCSI_SCAN_LUN_PRESENT
 =====================
 
 a new scsi_device was allocated and initialized
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

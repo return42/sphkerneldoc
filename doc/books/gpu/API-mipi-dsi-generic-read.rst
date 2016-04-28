@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mipi-dsi-generic-read:
 
@@ -7,7 +8,7 @@ mipi_dsi_generic_read
 
 *man mipi_dsi_generic_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 receive data using a generic read packet
 
@@ -39,10 +40,21 @@ Arguments
 Description
 ===========
 
-This function will automatically choose the right data type depending on the number of parameters passed in.
+This function will automatically choose the right data type depending on
+the number of parameters passed in.
 
 
 Return
 ======
 
-The number of bytes successfully read or a negative error code on failure.
+The number of bytes successfully read or a negative error code on
+failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

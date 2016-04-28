@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-host-activate:
 
@@ -7,7 +8,7 @@ ata_host_activate
 
 *man ata_host_activate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 start host, request IRQ and register it
 
@@ -39,10 +40,14 @@ Arguments
 Description
 ===========
 
-After allocating an ATA host and initializing it, most libata LLDs perform three steps to activate the host - start host, request IRQ and register it. This helper takes necessasry
-arguments and performs the three steps in one go.
+After allocating an ATA host and initializing it, most libata LLDs
+perform three steps to activate the host - start host, request IRQ and
+register it. This helper takes necessasry arguments and performs the
+three steps in one go.
 
-An invalid IRQ skips the IRQ registration and expects the host to have set polling mode on the port. In this case, ``irq_handler`` should be NULL.
+An invalid IRQ skips the IRQ registration and expects the host to have
+set polling mode on the port. In this case, ``irq_handler`` should be
+NULL.
 
 
 LOCKING
@@ -55,3 +60,12 @@ RETURNS
 =======
 
 0 on success, -errno otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

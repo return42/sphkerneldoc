@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-input-mt-get-slot-by-key:
 
@@ -7,7 +8,7 @@ input_mt_get_slot_by_key
 
 *man input_mt_get_slot_by_key(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return slot matching key
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-Returns the slot of the given key, if it exists, otherwise set the key on the first unused slot and return.
+Returns the slot of the given key, if it exists, otherwise set the key
+on the first unused slot and return.
 
-If no available slot can be found, -1 is returned. Note that for this function to work properly, ``input_mt_sync_frame`` has to be called at each frame.
+If no available slot can be found, -1 is returned. Note that for this
+function to work properly, ``input_mt_sync_frame`` has to be called at
+each frame.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

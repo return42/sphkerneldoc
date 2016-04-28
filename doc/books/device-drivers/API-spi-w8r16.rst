@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-w8r16:
 
@@ -7,7 +8,7 @@ spi_w8r16
 
 *man spi_w8r16(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 SPI synchronous 8 bit write followed by 16 bit read
 
@@ -36,7 +37,8 @@ can sleep
 Description
 ===========
 
-The number is returned in wire-order, which is at least sometimes big-endian.
+The number is returned in wire-order, which is at least sometimes
+big-endian.
 
 Callable only from contexts that can sleep.
 
@@ -44,4 +46,14 @@ Callable only from contexts that can sleep.
 Return
 ======
 
-the (unsigned) sixteen bit number returned by the device, or else a negative error code.
+the (unsigned) sixteen bit number returned by the device, or else a
+negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

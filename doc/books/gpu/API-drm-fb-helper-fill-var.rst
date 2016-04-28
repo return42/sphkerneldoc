@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-fb-helper-fill-var:
 
@@ -7,7 +8,7 @@ drm_fb_helper_fill_var
 
 *man drm_fb_helper_fill_var(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initalizes variable fbdev information
 
@@ -36,6 +37,18 @@ Arguments
 Description
 ===========
 
-Sets up the variable fbdev metainformation from the given fb helper instance and the drm framebuffer allocated in fb_helper->fb.
+Sets up the variable fbdev metainformation from the given fb helper
+instance and the drm framebuffer allocated in fb_helper->fb.
 
-Drivers should call this (or their equivalent setup code) from their ->fb_probe callback after having allocated the fbdev backing storage framebuffer.
+Drivers should call this (or their equivalent setup code) from their
+->fb_probe callback after having allocated the fbdev backing storage
+framebuffer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

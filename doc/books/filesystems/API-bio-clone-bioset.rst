@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bio-clone-bioset:
 
@@ -7,7 +8,7 @@ bio_clone_bioset
 
 *man bio_clone_bioset(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 clone a bio
 
@@ -15,7 +16,7 @@ clone a bio
 Synopsis
 ========
 
-.. c:function:: struct bio ⋆ bio_clone_bioset( struct bio * bio_src, gfp_t gfp_mask, struct bio_set * bs )
+.. c:function:: struct bio * bio_clone_bioset( struct bio * bio_src, gfp_t gfp_mask, struct bio_set * bs )
 
 Arguments
 =========
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Clone bio. Caller will own the returned bio, but not the actual data it points to. Reference count of returned bio will be one.
+Clone bio. Caller will own the returned bio, but not the actual data it
+points to. Reference count of returned bio will be one.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

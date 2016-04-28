@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-ap-settings:
 
@@ -7,7 +8,7 @@ struct cfg80211_ap_settings
 
 *man struct cfg80211_ap_settings(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 AP configuration
 
@@ -53,7 +54,8 @@ dtim_period
     DTIM period
 
 ssid
-    SSID to be used in the BSS (note: may be ``NULL`` if not provided from user space)
+    SSID to be used in the BSS (note: may be ``NULL`` if not provided
+    from user space)
 
 ssid_len
     length of ``ssid``
@@ -83,7 +85,8 @@ p2p_opp_ps
     P2P opportunistic PS
 
 acl
-    ACL configuration used by the drivers which has support for MAC address based access control
+    ACL configuration used by the drivers which has support for MAC
+    address based access control
 
 pbss
     If set, start as a PCP instead of AP. Relevant for DMG networks.
@@ -93,3 +96,12 @@ Description
 ===========
 
 Used to configure an AP interface.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

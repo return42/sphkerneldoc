@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-w1-reset-select-slave:
 
@@ -7,7 +8,7 @@ w1_reset_select_slave
 
 *man w1_reset_select_slave(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 reset and select a slave
 
@@ -27,11 +28,21 @@ Arguments
 Description
 ===========
 
-Resets the bus and then selects the slave by sending either a skip rom or a rom match. A skip rom is issued if there is only one device registered on the bus. The w1 master lock
-must be held.
+Resets the bus and then selects the slave by sending either a skip rom
+or a rom match. A skip rom is issued if there is only one device
+registered on the bus. The w1 master lock must be held.
 
 
 Return
 ======
 
 0=success, anything else=error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

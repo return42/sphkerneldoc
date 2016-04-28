@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dma-buf-unmap-attachment:
 
@@ -7,9 +8,11 @@ dma_buf_unmap_attachment
 
 *man dma_buf_unmap_attachment(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-unmaps and decreases usecount of the buffer;might deallocate the scatterlist associated. Is a wrapper for ``unmap_dma_buf`` of dma_buf_ops.
+unmaps and decreases usecount of the buffer;might deallocate the
+scatterlist associated. Is a wrapper for ``unmap_dma_buf`` of
+dma_buf_ops.
 
 
 Synopsis
@@ -28,3 +31,12 @@ Arguments
 
 ``direction``
     [in] direction of DMA transfer
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

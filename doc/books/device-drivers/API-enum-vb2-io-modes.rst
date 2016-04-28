@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-vb2-io-modes:
 
@@ -7,7 +8,7 @@ enum vb2_io_modes
 
 *man enum vb2_io_modes(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 queue access methods
 
@@ -43,3 +44,12 @@ VB2_WRITE
 
 VB2_DMABUF
     driver supports DMABUF with streaming API
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

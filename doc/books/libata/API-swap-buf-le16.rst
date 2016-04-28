@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-swap-buf-le16:
 
@@ -7,7 +8,7 @@ swap_buf_le16
 
 *man swap_buf_le16(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 swap halves of 16-bit words in place
 
@@ -30,10 +31,20 @@ Arguments
 Description
 ===========
 
-Swap halves of 16-bit words if needed to convert from little-endian byte order to native cpu byte order, or vice-versa.
+Swap halves of 16-bit words if needed to convert from little-endian byte
+order to native cpu byte order, or vice-versa.
 
 
 LOCKING
 =======
 
 Inherited from caller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

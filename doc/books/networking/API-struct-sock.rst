@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-sock:
 
@@ -7,7 +8,7 @@ struct sock
 
 *man struct sock(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 network layer representation of sockets
 
@@ -207,7 +208,8 @@ sk_error_queue
     rarely used
 
 sk_prot_creator
-    sk_prot of original sock creator (see ipv6_setsockopt, IPV6_ADDRFORM for instance)
+    sk_prot of original sock creator (see ipv6_setsockopt,
+    IPV6_ADDRFORM for instance)
 
 sk_callback_lock
     used with the callbacks in the end of this struct
@@ -216,7 +218,8 @@ sk_err
     last error
 
 sk_err_soft
-    errors that don't cause failure but are the cause of a persistent failure not just 'timed out'
+    errors that don't cause failure but are the cause of a persistent
+    failure not just 'timed out'
 
 sk_ack_backlog
     current listen backlog
@@ -301,3 +304,12 @@ sk_destruct
 
 sk_reuseport_cb
     reuseport group container
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

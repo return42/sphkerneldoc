@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-rts-duration:
 
@@ -7,7 +8,7 @@ ieee80211_rts_duration
 
 *man ieee80211_rts_duration(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Get the duration field for an RTS frame
 
@@ -36,11 +37,21 @@ Arguments
 Description
 ===========
 
-If the RTS is generated in firmware, but the host system must provide the duration field, the low-level driver uses this function to receive the duration field value in
-little-endian byteorder.
+If the RTS is generated in firmware, but the host system must provide
+the duration field, the low-level driver uses this function to receive
+the duration field value in little-endian byteorder.
 
 
 Return
 ======
 
 The duration.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

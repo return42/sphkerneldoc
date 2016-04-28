@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-add-ci:
 
@@ -7,7 +8,7 @@ d_add_ci
 
 *man d_add_ci(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 lookup or allocate new dentry with case-exact name
 
@@ -15,7 +16,7 @@ lookup or allocate new dentry with case-exact name
 Synopsis
 ========
 
-.. c:function:: struct dentry ⋆ d_add_ci( struct dentry * dentry, struct inode * inode, struct qstr * name )
+.. c:function:: struct dentry * d_add_ci( struct dentry * dentry, struct inode * inode, struct qstr * name )
 
 Arguments
 =========
@@ -33,8 +34,21 @@ Arguments
 Description
 ===========
 
-This is to avoid filling the dcache with case-insensitive names to the same inode, only the actual correct case is stored in the dcache for case-insensitive filesystems.
+This is to avoid filling the dcache with case-insensitive names to the
+same inode, only the actual correct case is stored in the dcache for
+case-insensitive filesystems.
 
-For a case-insensitive lookup match and if the the case-exact dentry already exists in in the dcache, use it and return it.
+For a case-insensitive lookup match and if the the case-exact dentry
+already exists in in the dcache, use it and return it.
 
-If no entry exists with the exact case name, allocate new dentry with the exact case, and return the spliced entry.
+If no entry exists with the exact case name, allocate new dentry with
+the exact case, and return the spliced entry.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fb-find-mode:
 
@@ -7,7 +8,7 @@ fb_find_mode
 
 *man fb_find_mode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 finds a valid video mode
 
@@ -45,18 +46,25 @@ Arguments
 Description
 ===========
 
-Finds a suitable video mode, starting with the specified mode in ``mode_option`` with fallback to ``default_mode``. If ``default_mode`` fails, all modes in the video mode database
-will be tried.
+Finds a suitable video mode, starting with the specified mode in
+``mode_option`` with fallback to ``default_mode``. If ``default_mode``
+fails, all modes in the video mode database will be tried.
 
 Valid mode specifiers for ``mode_option``:
 
-<xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m] or <name>[-<bpp>][@<refresh>]
+<xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m] or
+<name>[-<bpp>][@<refresh>]
 
-with <xres>, <yres>, <bpp> and <refresh> decimal numbers and <name> a string.
+with <xres>, <yres>, <bpp> and <refresh> decimal numbers and <name> a
+string.
 
-If 'M' is present after yres (and before refresh/bpp if present), the function will compute the timings using VESA(tm) Coordinated Video Timings (CVT). If 'R' is present after 'M',
-will compute with reduced blanking (for flatpanels). If 'i' is present, compute interlaced mode. If 'm' is present, add margins equal to 1.8% of xres rounded down to 8 pixels, and
-1.8% of yres. The char 'i' and 'm' must be after 'M' and 'R'. Example:
+If 'M' is present after yres (and before refresh/bpp if present), the
+function will compute the timings using VESA(tm) Coordinated Video
+Timings (CVT). If 'R' is present after 'M', will compute with reduced
+blanking (for flatpanels). If 'i' is present, compute interlaced mode.
+If 'm' is present, add margins equal to 1.8% of xres rounded down to 8
+pixels, and 1.8% of yres. The char 'i' and 'm' must be after 'M' and
+'R'. Example:
 
 1024x768MR-8\ ``60m`` - Reduced blank with margins at 60Hz.
 
@@ -64,7 +72,18 @@ will compute with reduced blanking (for flatpanels). If 'i' is present, compute 
 NOTE
 ====
 
-The passed struct ``var`` is _not_ cleared! This allows you to supply values for e.g. the grayscale and accel_flags fields.
+The passed struct ``var`` is _not_ cleared! This allows you to supply
+values for e.g. the grayscale and accel_flags fields.
 
-Returns zero for failure, 1 if using specified ``mode_option``, 2 if using specified ``mode_option`` with an ignored refresh rate, 3 if default mode is used, 4 if fall back to any
-valid mode.
+Returns zero for failure, 1 if using specified ``mode_option``, 2 if
+using specified ``mode_option`` with an ignored refresh rate, 3 if
+default mode is used, 4 if fall back to any valid mode.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

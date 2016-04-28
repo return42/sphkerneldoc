@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ccw-device-get-ciw:
 
@@ -7,7 +8,7 @@ ccw_device_get_ciw
 
 *man ccw_device_get_ciw(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Search for CIW command in extended sense data.
 
@@ -15,7 +16,7 @@ Search for CIW command in extended sense data.
 Synopsis
 ========
 
-.. c:function:: struct ciw ⋆ ccw_device_get_ciw( struct ccw_device * cdev, __u32 ct )
+.. c:function:: struct ciw * ccw_device_get_ciw( struct ccw_device * cdev, __u32 ct )
 
 Arguments
 =========
@@ -30,11 +31,24 @@ Arguments
 Description
 ===========
 
-During SenseID, command information words (CIWs) describing special commands available to the device may have been stored in the extended sense data. This function searches for
-CIWs of a specified command type in the extended sense data.
+During SenseID, command information words (CIWs) describing special
+commands available to the device may have been stored in the extended
+sense data. This function searches for CIWs of a specified command type
+in the extended sense data.
 
 
 Returns
 =======
 
-``NULL`` if no extended sense data has been stored or if no CIW of the specified command type could be found, else a pointer to the CIW of the specified command type.
+``NULL`` if no extended sense data has been stored or if no CIW of the
+specified command type could be found, else a pointer to the CIW of the
+specified command type.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

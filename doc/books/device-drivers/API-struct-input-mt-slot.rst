@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-input-mt-slot:
 
@@ -7,7 +8,7 @@ struct input_mt_slot
 
 *man struct input_mt_slot(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represents the state of an input MT slot
 
@@ -35,3 +36,12 @@ frame
 
 key
     optional driver designation of this slot
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

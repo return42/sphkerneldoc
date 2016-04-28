@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-decode-rs8:
 
@@ -7,7 +8,7 @@ decode_rs8
 
 *man decode_rs8(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Decode codeword (8bit data width)
 
@@ -51,5 +52,16 @@ Arguments
 Description
 ===========
 
-The syndrome and parity uses a uint16_t data type to enable symbol size > 8. The calling code must take care of decoding of the syndrome result and the received parity before
-calling this code. Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
+The syndrome and parity uses a uint16_t data type to enable symbol size
+> 8. The calling code must take care of decoding of the syndrome result
+and the received parity before calling this code. Returns the number of
+corrected bits or -EBADMSG for uncorrectable errors.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

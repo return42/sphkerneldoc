@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-append-datato-frags:
 
@@ -7,7 +8,7 @@ skb_append_datato_frags
 
 *man skb_append_datato_frags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 append the user data to a skb
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-This procedure append the user data in the fragment part of the skb if any page alloc fails user this procedure returns -ENOMEM
+This procedure append the user data in the fragment part of the skb if
+any page alloc fails user this procedure returns -ENOMEM
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

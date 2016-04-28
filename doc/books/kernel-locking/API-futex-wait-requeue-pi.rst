@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-wait-requeue-pi:
 
@@ -7,7 +8,7 @@ futex_wait_requeue_pi
 
 *man futex_wait_requeue_pi(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Wait on uaddr and take uaddr2
 
@@ -24,7 +25,8 @@ Arguments
     the futex we initially wait on (non-pi)
 
 ``flags``
-    futex flags (FLAGS_SHARED, FLAGS_CLOCKRT, etc.), they must be the same type, no requeueing from private to shared, etc.
+    futex flags (FLAGS_SHARED, FLAGS_CLOCKRT, etc.), they must be the
+    same type, no requeueing from private to shared, etc.
 
 ``val``
     the expected value of uaddr
@@ -42,16 +44,23 @@ Arguments
 Description
 ===========
 
-The caller will wait on uaddr and will be requeued by ``futex_requeue`` to uaddr2 which must be PI aware and unique from uaddr. Normal wakeup will wake on uaddr2 and complete the
-acquisition of the rt_mutex prior to returning to userspace. This ensures the rt_mutex maintains an owner when it has waiters; without one, the pi logic would not know which task
+The caller will wait on uaddr and will be requeued by ``futex_requeue``
+to uaddr2 which must be PI aware and unique from uaddr. Normal wakeup
+will wake on uaddr2 and complete the acquisition of the rt_mutex prior
+to returning to userspace. This ensures the rt_mutex maintains an owner
+when it has waiters; without one, the pi logic would not know which task
 to boost/deboost, if there was a need to.
 
-We call schedule in ``futex_wait_queue_me`` when we enqueue and return there via the following-- 1) wakeup on uaddr2 after an atomic lock acquisition by ``futex_requeue`` 2) wakeup
-on uaddr2 after a requeue 3) signal 4) timeout
+We call schedule in ``futex_wait_queue_me`` when we enqueue and return
+there via the following-- 1) wakeup on uaddr2 after an atomic lock
+acquisition by ``futex_requeue`` 2) wakeup on uaddr2 after a requeue 3)
+signal 4) timeout
 
 If 3, cleanup and return -ERESTARTNOINTR.
 
-If 2, we may then block on trying to take the rt_mutex and return via: 5) successful lock 6) signal 7) timeout 8) other lock acquisition failure
+If 2, we may then block on trying to take the rt_mutex and return via:
+5) successful lock 6) signal 7) timeout 8) other lock acquisition
+failure
 
 If 6, return -EWOULDBLOCK (restarting the syscall would do the same).
 
@@ -62,3 +71,12 @@ Return
 ======
 
 0 - On success; <0 - On error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scan-read-oob:
 
@@ -7,7 +8,7 @@ scan_read_oob
 
 *man scan_read_oob(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [GENERIC] Scan data+OOB region to buffer
 
@@ -36,5 +37,16 @@ Arguments
 Description
 ===========
 
-Scan read data from data+OOB. May traverse multiple pages, interleaving page,OOB,page,OOB,... in buf. Completes transfer and returns the “strongest” ECC condition (error or
-bitflip). May quit on the first (non-ECC) error.
+Scan read data from data+OOB. May traverse multiple pages, interleaving
+page,OOB,page,OOB,... in buf. Completes transfer and returns the
+“strongest” ECC condition (error or bitflip). May quit on the first
+(non-ECC) error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

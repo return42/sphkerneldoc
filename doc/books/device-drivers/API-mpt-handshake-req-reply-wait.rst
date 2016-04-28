@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-handshake-req-reply-wait:
 
@@ -7,9 +8,10 @@ mpt_handshake_req_reply_wait
 
 *man mpt_handshake_req_reply_wait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-Send MPT request to and receive reply from IOC via doorbell handshake method.
+Send MPT request to and receive reply from IOC via doorbell handshake
+method.
 
 
 Synopsis
@@ -45,7 +47,18 @@ Arguments
 NOTES
 =====
 
-It is the callers responsibility to byte-swap fields in the request which are greater than 1 byte in size. It is also the callers responsibility to byte-swap response fields which
-are greater than 1 byte in size.
+It is the callers responsibility to byte-swap fields in the request
+which are greater than 1 byte in size. It is also the callers
+responsibility to byte-swap response fields which are greater than 1
+byte in size.
 
 Returns 0 for success, non-zero for failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

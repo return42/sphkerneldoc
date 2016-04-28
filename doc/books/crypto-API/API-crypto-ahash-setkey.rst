@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-crypto-ahash-setkey:
 
@@ -7,7 +8,7 @@ crypto_ahash_setkey
 
 *man crypto_ahash_setkey(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set key for cipher handle
 
@@ -33,10 +34,20 @@ Arguments
 Description
 ===========
 
-The caller provided key is set for the ahash cipher. The cipher handle must point to a keyed hash in order for this function to succeed.
+The caller provided key is set for the ahash cipher. The cipher handle
+must point to a keyed hash in order for this function to succeed.
 
 
 Return
 ======
 
 0 if the setting of the key was successful; < 0 if an error occurred
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

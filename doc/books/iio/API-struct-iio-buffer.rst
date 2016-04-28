@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-iio-buffer:
 
@@ -7,7 +8,7 @@ struct iio_buffer
 
 *man struct iio_buffer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 general buffer structure
 
@@ -46,7 +47,8 @@ bytes_per_datum
     [DEVICE] size of individual datum including timestamp
 
 scan_el_attrs
-    [DRIVER] control of scan elements if that scan mode control method is used
+    [DRIVER] control of scan elements if that scan mode control method
+    is used
 
 scan_mask
     [INTERN] bitmask used in masking scan mode elements
@@ -61,7 +63,8 @@ scan_el_dev_attr_list
     [INTERN] list of scan element related attributes.
 
 scan_el_group
-    [DRIVER] attribute group for those attributes not created from the iio_chan_info array.
+    [DRIVER] attribute group for those attributes not created from the
+    iio_chan_info array.
 
 pollq
     [INTERN] wait queue to allow for polling on the buffer.
@@ -83,3 +86,12 @@ ref
 
 watermark
     [INTERN] number of datums to wait for poll/read.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

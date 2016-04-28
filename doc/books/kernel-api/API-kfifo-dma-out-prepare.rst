@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kfifo-dma-out-prepare:
 
@@ -7,7 +8,7 @@ kfifo_dma_out_prepare
 
 *man kfifo_dma_out_prepare(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 setup a scatterlist for DMA output
 
@@ -36,7 +37,19 @@ Arguments
 Description
 ===========
 
-This macro fills a scatterlist for DMA output which at most ``len`` bytes to transfer. It returns the number entries in the scatterlist array. A zero means there is no space
-available and the scatterlist is not filled.
+This macro fills a scatterlist for DMA output which at most ``len``
+bytes to transfer. It returns the number entries in the scatterlist
+array. A zero means there is no space available and the scatterlist is
+not filled.
 
-Note that with only one concurrent reader and one concurrent writer, you don't need extra locking to use these macros.
+Note that with only one concurrent reader and one concurrent writer, you
+don't need extra locking to use these macros.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

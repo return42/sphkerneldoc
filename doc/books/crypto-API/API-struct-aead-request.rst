@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-aead-request:
 
@@ -7,7 +8,7 @@ struct aead_request
 
 *man struct aead_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 AEAD request
 
@@ -51,3 +52,12 @@ dst
 
 __ctx[]
     Start of private context data
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

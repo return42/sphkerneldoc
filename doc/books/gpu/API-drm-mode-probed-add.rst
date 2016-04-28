@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mode-probed-add:
 
@@ -7,7 +8,7 @@ drm_mode_probed_add
 
 *man drm_mode_probed_add(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a mode to a connector's probed_mode list
 
@@ -30,5 +31,16 @@ Arguments
 Description
 ===========
 
-Add ``mode`` to ``connector``'s probed_mode list for later use. This list should then in a second step get filtered and all the modes actually supported by the hardware moved to
-the ``connector``'s modes list.
+Add ``mode`` to ``connector``'s probed_mode list for later use. This
+list should then in a second step get filtered and all the modes
+actually supported by the hardware moved to the ``connector``'s modes
+list.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

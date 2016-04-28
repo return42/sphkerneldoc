@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-find-free-region:
 
@@ -7,7 +8,7 @@ bitmap_find_free_region
 
 *man bitmap_find_free_region(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find a contiguous aligned mem region
 
@@ -33,7 +34,19 @@ Arguments
 Description
 ===========
 
-Find a region of free (zero) bits in a ``bitmap`` of ``bits`` bits and allocate them (set them to one). Only consider regions of length a power (``order``) of two, aligned to that
-power of two, which makes the search algorithm much faster.
+Find a region of free (zero) bits in a ``bitmap`` of ``bits`` bits and
+allocate them (set them to one). Only consider regions of length a power
+(``order``) of two, aligned to that power of two, which makes the search
+algorithm much faster.
 
-Return the bit offset in bitmap of the allocated region, or -errno on failure.
+Return the bit offset in bitmap of the allocated region, or -errno on
+failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

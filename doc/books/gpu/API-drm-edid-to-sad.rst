@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-edid-to-sad:
 
@@ -7,7 +8,7 @@ drm_edid_to_sad
 
 *man drm_edid_to_sad(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 extracts SADs from EDID
 
@@ -30,7 +31,8 @@ Arguments
 Description
 ===========
 
-Looks for CEA EDID block and extracts SADs (Short Audio Descriptors) from it.
+Looks for CEA EDID block and extracts SADs (Short Audio Descriptors)
+from it.
 
 
 Note
@@ -43,3 +45,12 @@ Return
 ======
 
 The number of found SADs or negative number on error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

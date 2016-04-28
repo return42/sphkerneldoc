@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-card-new:
 
@@ -7,7 +8,7 @@ snd_card_new
 
 *man snd_card_new(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create and initialize a soundcard structure
 
@@ -44,10 +45,21 @@ Description
 
 Creates and initializes a soundcard structure.
 
-The function allocates snd_card instance via kzalloc with the given space for the driver to use freely. The allocated struct is stored in the given card_ret pointer.
+The function allocates snd_card instance via kzalloc with the given
+space for the driver to use freely. The allocated struct is stored in
+the given card_ret pointer.
 
 
 Return
 ======
 
 Zero if successful or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

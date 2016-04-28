@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-jack-notifier-register:
 
@@ -7,7 +8,7 @@ snd_soc_jack_notifier_register
 
 *man snd_soc_jack_notifier_register(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Register a notifier for jack status
 
@@ -30,5 +31,17 @@ Arguments
 Description
 ===========
 
-Register for notification of the current status of the jack. Note that it is not possible to report additional jack events in the callback from the notifier, this is intended to
-support applications such as enabling electrical detection only when a mechanical detection event has occurred.
+Register for notification of the current status of the jack. Note that
+it is not possible to report additional jack events in the callback from
+the notifier, this is intended to support applications such as enabling
+electrical detection only when a mechanical detection event has
+occurred.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

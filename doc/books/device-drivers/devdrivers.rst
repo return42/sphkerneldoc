@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _devdrivers:
 
@@ -21,6 +22,7 @@ The Basic Device Driver-Model Structures
     API-struct-device
     API-module-driver
     API-builtin-driver
+
 
 Device Drivers Base
 ===================
@@ -137,6 +139,7 @@ Device Drivers Base
     API-subsys-system-register
     API-subsys-virtual-register
 
+
 Device Drivers DMA Management
 =============================
 
@@ -197,6 +200,7 @@ Device Drivers DMA Management
     API-dmam-declare-coherent-memory
     API-dmam-release-declared-memory
 
+
 Device Drivers Power Management
 ===============================
 
@@ -211,6 +215,7 @@ Device Drivers Power Management
     API-device-pm-wait-for-dev
     API-dpm-for-each-dev
 
+
 Device Drivers ACPI Support
 ===========================
 
@@ -223,6 +228,7 @@ Device Drivers ACPI Support
     API-acpi-scan-drop-device
     API-acpi-dma-supported
     API-acpi-get-dma-attr
+
 
 Device drivers PnP support
 ==========================
@@ -244,6 +250,7 @@ Device drivers PnP support
     API-pnp-disable-dev
     API-pnp-is-active
 
+
 Userspace IO devices
 ====================
 
@@ -257,3 +264,14 @@ Userspace IO devices
     API-struct-uio-mem
     API-struct-uio-port
     API-struct-uio-info
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

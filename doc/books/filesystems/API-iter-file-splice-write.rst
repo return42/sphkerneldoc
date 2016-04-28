@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-iter-file-splice-write:
 
@@ -7,7 +8,7 @@ iter_file_splice_write
 
 *man iter_file_splice_write(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 splice data from a pipe to a file
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Will either move or copy pages (determined by ``flags`` options) from the given pipe inode to the given file. This one is ->write_iter-based.
+Will either move or copy pages (determined by ``flags`` options) from
+the given pipe inode to the given file. This one is ->write_iter-based.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

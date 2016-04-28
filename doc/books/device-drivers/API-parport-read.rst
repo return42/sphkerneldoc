@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-parport-read:
 
@@ -7,7 +8,7 @@ parport_read
 
 *man parport_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 read a block of data from a parallel port
 
@@ -33,9 +34,22 @@ Arguments
 Description
 ===========
 
-This will read up to ``len`` bytes of ``buffer`` to the port specified, using the IEEE 1284 transfer mode most recently negotiated to (using ``parport_negotiate``), as long as that
-mode supports reverse transfers (peripheral to host).
+This will read up to ``len`` bytes of ``buffer`` to the port specified,
+using the IEEE 1284 transfer mode most recently negotiated to (using
+``parport_negotiate``), as long as that mode supports reverse transfers
+(peripheral to host).
 
-It is the caller's responsibility to ensure that the first ``len`` bytes of ``buffer`` are available to write to.
+It is the caller's responsibility to ensure that the first ``len`` bytes
+of ``buffer`` are available to write to.
 
-This function returns the number of bytes transferred (if zero or positive), or else an error code.
+This function returns the number of bytes transferred (if zero or
+positive), or else an error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-find-next-best-node:
 
@@ -7,7 +8,7 @@ find_next_best_node
 
 *man find_next_best_node(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find the next node that should appear in a given node's fallback list
 
@@ -30,6 +31,20 @@ Arguments
 Description
 ===========
 
-We use a number of factors to determine which is the next node that should appear on a given node's fallback list. The node should not have appeared already in ``node``'s fallback
-list, and it should be the next closest node according to the distance array (which contains arbitrary distance values from each node to each node in the system), and should also
-prefer nodes with no CPUs, since presumably they'll have very little allocation pressure on them otherwise. It returns -1 if no node is found.
+We use a number of factors to determine which is the next node that
+should appear on a given node's fallback list. The node should not have
+appeared already in ``node``'s fallback list, and it should be the next
+closest node according to the distance array (which contains arbitrary
+distance values from each node to each node in the system), and should
+also prefer nodes with no CPUs, since presumably they'll have very
+little allocation pressure on them otherwise. It returns -1 if no node
+is found.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

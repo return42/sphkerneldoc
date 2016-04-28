@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---audit-log-bprm-fcaps:
 
@@ -7,7 +8,7 @@ __audit_log_bprm_fcaps
 
 *man __audit_log_bprm_fcaps(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 store information about a loading bprm and relevant fcaps
 
@@ -33,6 +34,17 @@ Arguments
 Description
 ===========
 
-Simply check if the proc already has the caps given by the file and if not store the priv escalation info for later auditing at the end of the syscall
+Simply check if the proc already has the caps given by the file and if
+not store the priv escalation info for later auditing at the end of the
+syscall
 
 -Eric
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

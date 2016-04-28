@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-gadget-wakeup:
 
@@ -7,7 +8,7 @@ usb_gadget_wakeup
 
 *man usb_gadget_wakeup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 tries to wake up the host connected to this gadget
 
@@ -27,8 +28,20 @@ Arguments
 Description
 ===========
 
-Returns zero on success, else negative error code if the hardware doesn't support such attempts, or its support has not been enabled by the usb host. Drivers must return device
-descriptors that report their ability to support this, or hosts won't enable it.
+Returns zero on success, else negative error code if the hardware
+doesn't support such attempts, or its support has not been enabled by
+the usb host. Drivers must return device descriptors that report their
+ability to support this, or hosts won't enable it.
 
-This may also try to use SRP to wake the host and start enumeration, even if OTG isn't otherwise in use. OTG devices may also start remote wakeup even when hosts don't explicitly
-enable it.
+This may also try to use SRP to wake the host and start enumeration,
+even if OTG isn't otherwise in use. OTG devices may also start remote
+wakeup even when hosts don't explicitly enable it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

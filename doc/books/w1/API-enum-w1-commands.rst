@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-w1-commands:
 
@@ -7,7 +8,7 @@ enum w1_commands
 
 *man enum w1_commands(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 commands available for master or slave operations
 
@@ -41,7 +42,8 @@ W1_CMD_WRITE
     write len bytes
 
 W1_CMD_SEARCH
-    initiate a standard search, returns only the slave devices found during that search
+    initiate a standard search, returns only the slave devices found
+    during that search
 
 W1_CMD_ALARM_SEARCH
     search for devices that are currently alarming
@@ -63,3 +65,12 @@ W1_CMD_LIST_SLAVES
 
 W1_CMD_MAX
     number of available commands
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

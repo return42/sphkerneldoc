@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-requeue-pi-wake-futex:
 
@@ -7,7 +8,7 @@ requeue_pi_wake_futex
 
 *man requeue_pi_wake_futex(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Wake a task that acquired the lock during requeue
 
@@ -33,6 +34,19 @@ Arguments
 Description
 ===========
 
-During futex_requeue, with requeue_pi=1, it is possible to acquire the target futex if it is uncontended or via a lock steal. Set the futex_q key to the requeue target futex so
-the waiter can detect the wakeup on the right futex, but remove it from the hb and NULL the rt_waiter so it can detect atomic lock acquisition. Set the q->lock_ptr to the requeue
-target hb->lock to protect access to the pi_state to fixup the owner later. Must be called with both q->lock_ptr and hb->lock held.
+During futex_requeue, with requeue_pi=1, it is possible to acquire the
+target futex if it is uncontended or via a lock steal. Set the futex_q
+key to the requeue target futex so the waiter can detect the wakeup on
+the right futex, but remove it from the hb and NULL the rt_waiter so it
+can detect atomic lock acquisition. Set the q->lock_ptr to the requeue
+target hb->lock to protect access to the pi_state to fixup the owner
+later. Must be called with both q->lock_ptr and hb->lock held.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

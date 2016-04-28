@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-host-endpoint:
 
@@ -7,7 +8,7 @@ struct usb_host_endpoint
 
 *man struct usb_host_endpoint(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 host-side endpoint descriptor and queue
 
@@ -47,7 +48,8 @@ urb_list
     urbs queued to this endpoint; maintained by usbcore
 
 hcpriv
-    for use by HCD; typically holds hardware dma queue head (QH) with one or more transfer descriptors (TDs) per urb
+    for use by HCD; typically holds hardware dma queue head (QH) with
+    one or more transfer descriptors (TDs) per urb
 
 ep_dev
     ep_device for sysfs info
@@ -68,4 +70,14 @@ streams
 Description
 ===========
 
-USB requests are always queued to a given endpoint, identified by a descriptor within an active interface in a given USB configuration.
+USB requests are always queued to a given endpoint, identified by a
+descriptor within an active interface in a given USB configuration.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

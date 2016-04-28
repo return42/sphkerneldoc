@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mptspi-setTargetNegoParms:
 
@@ -7,7 +8,7 @@ mptspi_setTargetNegoParms
 
 *man mptspi_setTargetNegoParms(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Update the target negotiation parameters
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Update the target negotiation parameters based on the the Inquiry data, adapter capabilities, and NVRAM settings.
+Update the target negotiation parameters based on the the Inquiry data,
+adapter capabilities, and NVRAM settings.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 =================
 Control/Mixer API
@@ -30,6 +31,7 @@ General Control Interface
     API-snd-ctl-boolean-stereo-info
     API-snd-ctl-enum-info
 
+
 AC97 Codec API
 ==============
 
@@ -55,6 +57,7 @@ AC97 Codec API
     API-snd-ac97-pcm-close
     API-snd-ac97-pcm-double-rate-rules
 
+
 Virtual Master Control API
 ==========================
 
@@ -67,3 +70,14 @@ Virtual Master Control API
     API-snd-ctl-sync-vmaster
     API-snd-ctl-add-slave
     API-snd-ctl-add-slave-uncached
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-journal-s:
 
@@ -7,7 +8,7 @@ struct journal_s
 
 *man struct journal_s(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The journal_s type is the concrete type associated with journal_t.
 
@@ -77,7 +78,8 @@ j_flags
     General journaling state flags
 
 j_errno
-    Is there an outstanding uncleared error on the journal (from a prior abort)?
+    Is there an outstanding uncleared error on the journal (from a prior
+    abort)?
 
 j_sb_buffer
     First part of superblock buffer
@@ -107,7 +109,8 @@ j_checkpoint_transactions
     a linked circular list of all transactions waiting for checkpointing
 
 j_wait_transaction_locked
-    Wait queue for waiting for a locked transaction to start committing, or for a barrier lock to be released
+    Wait queue for waiting for a locked transaction to start committing,
+    or for a barrier lock to be released
 
 j_wait_done_commit
     Wait queue for waiting for commit to complete
@@ -128,7 +131,8 @@ j_head
     Journal head - identifies the first unused block in the journal
 
 j_tail
-    Journal tail - identifies the oldest still-used block in the journal.
+    Journal tail - identifies the oldest still-used block in the
+    journal.
 
 j_free
     Journal free - how many free blocks are there in the journal?
@@ -149,7 +153,8 @@ j_blk_offset
     starting block offset for into the device where we store the journal
 
 j_fs_dev
-    Device which holds the client fs. For internal journal this will be equal to j_dev
+    Device which holds the client fs. For internal journal this will be
+    equal to j_dev
 
 j_maxlen
     Total maximum capacity of the journal region on disk.
@@ -161,7 +166,8 @@ j_list_lock
     Protects the buffer lists and internal buffer state.
 
 j_inode
-    Optional inode where we store the journal. If present, all journal block numbers are mapped into this inode via ``bmap``.
+    Optional inode where we store the journal. If present, all journal
+    block numbers are mapped into this inode via ``bmap``.
 
 j_tail_sequence
     Sequence number of the oldest transaction in the log
@@ -182,7 +188,8 @@ j_task
     Pointer to the current commit thread for this journal
 
 j_max_transaction_buffers
-    Maximum number of metadata buffers to allow in a single compound commit transaction
+    Maximum number of metadata buffers to allow in a single compound
+    commit transaction
 
 j_commit_interval
     What is the maximum transaction lifetime before we begin a commit?
@@ -194,7 +201,8 @@ j_revoke_lock
     Protect the revoke table
 
 j_revoke
-    The revoke table - maintains the list of revoked blocks in the current transaction.
+    The revoke table - maintains the list of revoked blocks in the
+    current transaction.
 
 j_revoke_table[2]
     alternate revoke tables for j_revoke
@@ -203,7 +211,8 @@ j_wbuf
     array of buffer_heads for jbd2_journal_commit_transaction
 
 j_wbufsize
-    maximum number of buffer_heads allowed in j_wbuf, the number that will fit in j_blocksize
+    maximum number of buffer_heads allowed in j_wbuf, the number that
+    will fit in j_blocksize
 
 j_last_sync_writer
     most recent pid which did a synchronous write
@@ -219,3 +228,12 @@ j_stats
 
 j_private
     An opaque pointer to fs-private information.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

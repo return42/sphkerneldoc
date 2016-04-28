@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-sync-open:
 
@@ -7,7 +8,7 @@ z8530_sync_open
 
 *man z8530_sync_open(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Open a Z8530 channel for PIO
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Switch a Z8530 into synchronous mode without DMA assist. We raise the RTS/DTR and commence network operation.
+Switch a Z8530 into synchronous mode without DMA assist. We raise the
+RTS/DTR and commence network operation.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

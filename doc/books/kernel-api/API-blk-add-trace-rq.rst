@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-add-trace-rq:
 
@@ -7,7 +8,7 @@ blk_add_trace_rq
 
 *man blk_add_trace_rq(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Add a trace for a request oriented action
 
@@ -37,3 +38,12 @@ Description
 ===========
 
 Records an action against a request. Will log the bio offset + size.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

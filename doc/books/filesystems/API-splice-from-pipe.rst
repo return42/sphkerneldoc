@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-splice-from-pipe:
 
@@ -7,7 +8,7 @@ splice_from_pipe
 
 *man splice_from_pipe(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 splice data from a pipe to a file
 
@@ -42,4 +43,14 @@ Arguments
 Description
 ===========
 
-See __splice_from_pipe. This function locks the pipe inode, otherwise it's identical to ``__splice_from_pipe``.
+See __splice_from_pipe. This function locks the pipe inode,
+otherwise it's identical to ``__splice_from_pipe``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

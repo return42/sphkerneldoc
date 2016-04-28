@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-queue-init-tags:
 
@@ -7,7 +8,7 @@ blk_queue_init_tags
 
 *man blk_queue_init_tags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize the queue tag info
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Queue lock must be held here if the function is called to resize an existing map.
+Queue lock must be held here if the function is called to resize an
+existing map.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

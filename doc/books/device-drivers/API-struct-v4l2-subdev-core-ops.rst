@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subdev-core-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_subdev_core_ops
 
 *man struct v4l2_subdev_core_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Define core ops callbacks for subdevs
 
@@ -54,21 +55,29 @@ log_status
     callback for VIDIOC_LOG_STATUS ioctl handler code.
 
 s_io_pin_config
-    configure one or more chip I/O pins for chips that multiplex different internal signal pads out to IO pins. This function takes a pointer to an array of 'n' pin configuration
-    entries, one for each pin being configured. This function could be called at times other than just subdevice initialization.
+    configure one or more chip I/O pins for chips that multiplex
+    different internal signal pads out to IO pins. This function takes a
+    pointer to an array of 'n' pin configuration entries, one for each
+    pin being configured. This function could be called at times other
+    than just subdevice initialization.
 
 init
-    initialize the sensor registers to some sort of reasonable default values. Do not use for new drivers and should be removed in existing drivers.
+    initialize the sensor registers to some sort of reasonable default
+    values. Do not use for new drivers and should be removed in existing
+    drivers.
 
 load_fw
     load firmware.
 
 reset
-    generic reset command. The argument selects which subsystems to reset. Passing 0 will always reset the whole chip. Do not use for new drivers without discussing this first on
-    the linux-media mailinglist. There should be no reason normally to reset a device.
+    generic reset command. The argument selects which subsystems to
+    reset. Passing 0 will always reset the whole chip. Do not use for
+    new drivers without discussing this first on the linux-media
+    mailinglist. There should be no reason normally to reset a device.
 
 s_gpio
-    set GPIO pins. Very simple right now, might need to be extended with a direction argument if needed.
+    set GPIO pins. Very simple right now, might need to be extended with
+    a direction argument if needed.
 
 queryctrl
     callback for VIDIOC_QUERYCTL ioctl handler code.
@@ -92,10 +101,12 @@ querymenu
     callback for VIDIOC_QUERYMENU ioctl handler code.
 
 ioctl
-    called at the end of ``ioctl`` syscall handler at the V4L2 core. used to provide support for private ioctls used on the driver.
+    called at the end of ``ioctl`` syscall handler at the V4L2 core.
+    used to provide support for private ioctls used on the driver.
 
 compat_ioctl32
-    called when a 32 bits application uses a 64 bits Kernel, in order to fix data passed from/to userspace.
+    called when a 32 bits application uses a 64 bits Kernel, in order to
+    fix data passed from/to userspace.
 
 g_register
     callback for VIDIOC_G_REGISTER ioctl handler code.
@@ -104,17 +115,30 @@ s_register
     callback for VIDIOC_G_REGISTER ioctl handler code.
 
 s_power
-    puts subdevice in power saving mode (on == 0) or normal operation mode (on == 1).
+    puts subdevice in power saving mode (on == 0) or normal operation
+    mode (on == 1).
 
 interrupt_service_routine
-    Called by the bridge chip's interrupt service handler, when an interrupt status has be raised due to this subdev, so that this subdev can handle the details. It may schedule
-    work to be performed later. It must not sleep. ⋆Called from an IRQ context⋆.
+    Called by the bridge chip's interrupt service handler, when an
+    interrupt status has be raised due to this subdev, so that this
+    subdev can handle the details. It may schedule work to be performed
+    later. It must not sleep. *Called from an IRQ context*.
 
 subscribe_event
-    used by the drivers to request the control framework that for it to be warned when the value of a control changes.
+    used by the drivers to request the control framework that for it to
+    be warned when the value of a control changes.
 
 unsubscribe_event
     remove event subscription from the control framework.
 
 registered_async
     the subdevice has been registered async.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

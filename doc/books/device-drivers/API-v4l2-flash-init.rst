@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-v4l2-flash-init:
 
@@ -7,7 +8,7 @@ v4l2_flash_init
 
 *man v4l2_flash_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize V4L2 flash led sub-device
 
@@ -15,7 +16,7 @@ initialize V4L2 flash led sub-device
 Synopsis
 ========
 
-.. c:function:: struct v4l2_flash ⋆ v4l2_flash_init( struct device * dev, struct device_node * of_node, struct led_classdev_flash * fled_cdev, struct led_classdev_flash * iled_cdev, const struct v4l2_flash_ops * ops, struct v4l2_flash_config * config )
+.. c:function:: struct v4l2_flash * v4l2_flash_init( struct device * dev, struct device_node * of_node, struct led_classdev_flash * fled_cdev, struct led_classdev_flash * iled_cdev, const struct v4l2_flash_ops * ops, struct v4l2_flash_config * config )
 
 Arguments
 =========
@@ -30,7 +31,8 @@ Arguments
     LED flash class device to wrap
 
 ``iled_cdev``
-    LED flash class device representing indicator LED associated with fled_cdev, may be NULL
+    LED flash class device representing indicator LED associated with
+    fled_cdev, may be NULL
 
 ``ops``
     V4L2 Flash device ops
@@ -48,4 +50,15 @@ Create V4L2 Flash sub-device wrapping given LED subsystem device.
 Returns
 =======
 
-A valid pointer, or, when an error occurs, the return value is encoded using ``ERR_PTR``. Use ``IS_ERR`` to check and ``PTR_ERR`` to obtain the numeric return value.
+A valid pointer, or, when an error occurs, the return value is encoded
+using ``ERR_PTR``. Use ``IS_ERR`` to check and ``PTR_ERR`` to obtain the
+numeric return value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

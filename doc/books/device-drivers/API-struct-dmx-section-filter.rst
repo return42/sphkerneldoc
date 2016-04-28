@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dmx-section-filter:
 
@@ -7,7 +8,7 @@ struct dmx_section_filter
 
 *man struct dmx_section_filter(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Structure that describes a section filter
 
@@ -30,10 +31,12 @@ Members
 =======
 
 filter_value[DMX_MAX_FILTER_SIZE]
-    Contains up to 16 bytes (128 bits) of the TS section header that will be matched by the section filter
+    Contains up to 16 bytes (128 bits) of the TS section header that
+    will be matched by the section filter
 
 filter_mask[DMX_MAX_FILTER_SIZE]
-    Contains a 16 bytes (128 bits) filter mask with the bits specified by ``filter_value`` that will be used on the filter match logic.
+    Contains a 16 bytes (128 bits) filter mask with the bits specified
+    by ``filter_value`` that will be used on the filter match logic.
 
 filter_mode[DMX_MAX_FILTER_SIZE]
     Contains a 16 bytes (128 bits) filter mode.
@@ -48,5 +51,17 @@ priv
 Description
 ===========
 
-The ``filter_mask`` controls which bits of ``filter_value`` are compared with the section headers/payload. On a binary value of 1 in filter_mask, the corresponding bits are
-compared. The filter only accepts sections that are equal to filter_value in all the tested bit positions.
+The ``filter_mask`` controls which bits of ``filter_value`` are compared
+with the section headers/payload. On a binary value of 1 in
+filter_mask, the corresponding bits are compared. The filter only
+accepts sections that are equal to filter_value in all the tested bit
+positions.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

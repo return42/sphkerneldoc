@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dev-open:
 
@@ -7,7 +8,7 @@ dev_open
 
 *man dev_open(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 prepare an interface for use.
 
@@ -27,7 +28,19 @@ Arguments
 Description
 ===========
 
-Takes a device from down to up state. The device's private open function is invoked and then the multicast lists are loaded. Finally the device is moved into the up state and a
-``NETDEV_UP`` message is sent to the netdev notifier chain.
+Takes a device from down to up state. The device's private open function
+is invoked and then the multicast lists are loaded. Finally the device
+is moved into the up state and a ``NETDEV_UP`` message is sent to the
+netdev notifier chain.
 
-Calling this function on an active interface is a nop. On a failure a negative errno code is returned.
+Calling this function on an active interface is a nop. On a failure a
+negative errno code is returned.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wimax-report-rfkill-hw:
 
@@ -7,7 +8,7 @@ wimax_report_rfkill_hw
 
 *man wimax_report_rfkill_hw(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Reports changes in the hardware RF switch
 
@@ -24,16 +25,29 @@ Arguments
     WiMAX device descriptor
 
 ``state``
-    New state of the RF Kill switch. ``WIMAX_RF_ON`` radio on, ``WIMAX_RF_OFF`` radio off.
+    New state of the RF Kill switch. ``WIMAX_RF_ON`` radio on,
+    ``WIMAX_RF_OFF`` radio off.
 
 
 Description
 ===========
 
-When the device detects a change in the state of thehardware RF switch, it must call this function to let the WiMAX kernel stack know that the state has changed so it can be
-properly propagated.
+When the device detects a change in the state of thehardware RF switch,
+it must call this function to let the WiMAX kernel stack know that the
+state has changed so it can be properly propagated.
 
-The WiMAX stack caches the state (the driver doesn't need to). As well, as the change is propagated it will come back as a request to change the software state to mirror the
-hardware state.
+The WiMAX stack caches the state (the driver doesn't need to). As well,
+as the change is propagated it will come back as a request to change the
+software state to mirror the hardware state.
 
-If the device doesn't have a hardware kill switch, just report it on initialization as always on (``WIMAX_RF_ON``, radio on).
+If the device doesn't have a hardware kill switch, just report it on
+initialization as always on (``WIMAX_RF_ON``, radio on).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

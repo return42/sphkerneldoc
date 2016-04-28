@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-os-desc-table:
 
@@ -7,9 +8,10 @@ struct usb_os_desc_table
 
 *man struct usb_os_desc_table(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-describes OS descriptors associated with one interface of a usb_function
+describes OS descriptors associated with one interface of a
+usb_function
 
 
 Synopsis
@@ -36,4 +38,14 @@ os_desc
 Description
 ===========
 
-Each interface can have at most one “Extended Compatibility ID” and a number of “Extended Properties”.
+Each interface can have at most one “Extended Compatibility ID” and a
+number of “Extended Properties”.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

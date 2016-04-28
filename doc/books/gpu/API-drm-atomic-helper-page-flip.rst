@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-atomic-helper-page-flip:
 
@@ -7,7 +8,7 @@ drm_atomic_helper_page_flip
 
 *man drm_atomic_helper_page_flip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 execute a legacy page flip
 
@@ -36,12 +37,24 @@ Arguments
 Description
 ===========
 
-Provides a default page flip implementation using the atomic driver interface.
+Provides a default page flip implementation using the atomic driver
+interface.
 
-Note that for now so called async page flips (i.e. updates which are not synchronized to vblank) are not supported, since the atomic interfaces have no provisions for this yet.
+Note that for now so called async page flips (i.e. updates which are not
+synchronized to vblank) are not supported, since the atomic interfaces
+have no provisions for this yet.
 
 
 Returns
 =======
 
 Returns 0 on success, negative errno numbers on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

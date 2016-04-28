@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-media-gobj-type:
 
@@ -7,7 +8,7 @@ enum media_gobj_type
 
 *man enum media_gobj_type(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 type of a graph object
 
@@ -39,3 +40,12 @@ MEDIA_GRAPH_LINK
 
 MEDIA_GRAPH_INTF_DEVNODE
     Identify a media Kernel API interface via a device node
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

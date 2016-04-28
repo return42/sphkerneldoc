@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ipc-free:
 
@@ -7,7 +8,7 @@ ipc_free
 
 *man ipc_free(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 free ipc space
 
@@ -28,3 +29,12 @@ Description
 ===========
 
 Free a block created with ``ipc_alloc``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

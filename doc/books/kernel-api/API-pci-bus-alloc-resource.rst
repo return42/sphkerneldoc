@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-bus-alloc-resource:
 
@@ -7,7 +8,7 @@ pci_bus_alloc_resource
 
 *man pci_bus_alloc_resource(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate a resource from a parent bus
 
@@ -36,7 +37,7 @@ Arguments
     minimum /proc/iomem address to allocate
 
 ``type_mask``
-    IORESOURCE_⋆ type flags
+    IORESOURCE_* type flags
 
 ``alignf``
     resource alignment function
@@ -48,4 +49,15 @@ Arguments
 Description
 ===========
 
-Given the PCI bus a device resides on, the size, minimum address, alignment and type, try to find an acceptable resource allocation for a specific device resource.
+Given the PCI bus a device resides on, the size, minimum address,
+alignment and type, try to find an acceptable resource allocation for a
+specific device resource.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

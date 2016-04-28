@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-ord-to-pos:
 
@@ -7,7 +8,7 @@ bitmap_ord_to_pos
 
 *man bitmap_ord_to_pos(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find position of n-th set bit in bitmap
 
@@ -33,10 +34,23 @@ Arguments
 Description
 ===========
 
-Map the ordinal offset of bit ``ord`` in ``buf`` to its position in ``buf``. Value of ``ord`` should be in range 0 <= ``ord`` < weight(buf). If ``ord`` >= weight(buf), returns
-``nbits``.
+Map the ordinal offset of bit ``ord`` in ``buf`` to its position in
+``buf``. Value of ``ord`` should be in range 0 <= ``ord`` < weight(buf).
+If ``ord`` >= weight(buf), returns ``nbits``.
 
-If for example, just bits 4 through 7 are set in ``buf``, then ``ord`` values 0 through 3 will get mapped to 4 through 7, respectively, and all other ``ord`` values returns
-``nbits``. When ``ord`` value 3 gets mapped to (returns) ``pos`` value 7 in this example, that means that the 3rd set bit (starting with 0th) is at position 7 in ``buf``.
+If for example, just bits 4 through 7 are set in ``buf``, then ``ord``
+values 0 through 3 will get mapped to 4 through 7, respectively, and all
+other ``ord`` values returns ``nbits``. When ``ord`` value 3 gets mapped
+to (returns) ``pos`` value 7 in this example, that means that the 3rd
+set bit (starting with 0th) is at position 7 in ``buf``.
 
 The bit positions 0 through ``nbits``-1 are valid positions in ``buf``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

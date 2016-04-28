@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-fb-helper:
 
@@ -7,7 +8,7 @@ struct drm_fb_helper
 
 *man struct drm_fb_helper(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 main structure to emulate fbdev on top of KMS
 
@@ -68,19 +69,35 @@ pseudo_palette[17]
     fake palette of 16 colors
 
 kernel_fb_list
-    Entry on the global kernel_fb_helper_list, used for kgdb entry/exit.
+    Entry on the global kernel_fb_helper_list, used for kgdb
+    entry/exit.
 
 delayed_hotplug
-    A hotplug was received while fbdev wasn't in control of the DRM device, i.e. another KMS master was active. The output configuration needs to be reprobe when fbdev is in
-    control again.
+    A hotplug was received while fbdev wasn't in control of the DRM
+    device, i.e. another KMS master was active. The output configuration
+    needs to be reprobe when fbdev is in control again.
 
 atomic
-    Use atomic updates for ``restore_fbdev_mode``, etc. This defaults to true if driver has DRIVER_ATOMIC feature flag, but drivers can override it to true after
-    ``drm_fb_helper_init`` if they support atomic modeset but do not yet advertise DRIVER_ATOMIC (note that fb-helper does not require ASYNC commits).
+    Use atomic updates for ``restore_fbdev_mode``, etc. This defaults to
+    true if driver has DRIVER_ATOMIC feature flag, but drivers can
+    override it to true after ``drm_fb_helper_init`` if they support
+    atomic modeset but do not yet advertise DRIVER_ATOMIC (note that
+    fb-helper does not require ASYNC commits).
 
 
 Description
 ===========
 
-This is the main structure used by the fbdev helpers. Drivers supporting fbdev emulation should embedded this into their overall driver structure. Drivers must also fill out a
-struct ``drm_fb_helper_funcs`` with a few operations.
+This is the main structure used by the fbdev helpers. Drivers supporting
+fbdev emulation should embedded this into their overall driver
+structure. Drivers must also fill out a struct ``drm_fb_helper_funcs``
+with a few operations.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-idr-alloc:
 
@@ -7,7 +8,7 @@ idr_alloc
 
 *man idr_alloc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate new idr entry
 
@@ -39,9 +40,23 @@ Arguments
 Description
 ===========
 
-Allocate an id in [start, end) and associate it with ``ptr``. If no ID is available in the specified range, returns -ENOSPC. On memory allocation failure, returns -ENOMEM.
+Allocate an id in [start, end) and associate it with ``ptr``. If no ID
+is available in the specified range, returns -ENOSPC. On memory
+allocation failure, returns -ENOMEM.
 
-Note that ``end`` is treated as max when <= 0. This is to always allow using ``start`` + N as ``end`` as long as N is inside integer range.
+Note that ``end`` is treated as max when <= 0. This is to always allow
+using ``start`` + N as ``end`` as long as N is inside integer range.
 
-The user is responsible for exclusively synchronizing all operations which may modify ``idr``. However, read-only accesses such as ``idr_find`` or iteration can be performed under
-RCU read lock provided the user destroys ``ptr`` in RCU-safe way after removal from idr.
+The user is responsible for exclusively synchronizing all operations
+which may modify ``idr``. However, read-only accesses such as
+``idr_find`` or iteration can be performed under RCU read lock provided
+the user destroys ``ptr`` in RCU-safe way after removal from idr.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

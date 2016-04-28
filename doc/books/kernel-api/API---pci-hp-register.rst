@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---pci-hp-register:
 
@@ -7,7 +8,7 @@ __pci_hp_register
 
 *man __pci_hp_register(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register a hotplug_slot with the PCI hotplug subsystem
 
@@ -42,6 +43,16 @@ Arguments
 Description
 ===========
 
-Registers a hotplug slot with the pci hotplug subsystem, which will allow userspace interaction to the slot.
+Registers a hotplug slot with the pci hotplug subsystem, which will
+allow userspace interaction to the slot.
 
 Returns 0 if successful, anything else for an error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

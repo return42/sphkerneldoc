@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-pos-to-ord:
 
@@ -7,7 +8,7 @@ bitmap_pos_to_ord
 
 *man bitmap_pos_to_ord(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find ordinal of set bit at given position in bitmap
 
@@ -33,9 +34,23 @@ Arguments
 Description
 ===========
 
-Map the bit at position ``pos`` in ``buf`` (of length ``nbits``) to the ordinal of which set bit it is. If it is not set or if ``pos`` is not a valid bit position, map to -1.
+Map the bit at position ``pos`` in ``buf`` (of length ``nbits``) to the
+ordinal of which set bit it is. If it is not set or if ``pos`` is not a
+valid bit position, map to -1.
 
-If for example, just bits 4 through 7 are set in ``buf``, then ``pos`` values 4 through 7 will get mapped to 0 through 3, respectively, and other ``pos`` values will get mapped to
--1. When ``pos`` value 7 gets mapped to (returns) ``ord`` value 3 in this example, that means that bit 7 is the 3rd (starting with 0th) set bit in ``buf``.
+If for example, just bits 4 through 7 are set in ``buf``, then ``pos``
+values 4 through 7 will get mapped to 0 through 3, respectively, and
+other ``pos`` values will get mapped to -1. When ``pos`` value 7 gets
+mapped to (returns) ``ord`` value 3 in this example, that means that bit
+7 is the 3rd (starting with 0th) set bit in ``buf``.
 
 The bit positions 0 through ``bits`` are valid positions in ``buf``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

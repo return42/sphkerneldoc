@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-v4l2-find-dv-timings-cap:
 
@@ -7,7 +8,7 @@ v4l2_find_dv_timings_cap
 
 *man v4l2_find_dv_timings_cap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Find the closest timings struct
 
@@ -27,7 +28,8 @@ Arguments
     the v4l2_dv_timings_cap capabilities.
 
 ``pclock_delta``
-    maximum delta between t->pixelclock and the timing struct under consideration.
+    maximum delta between t->pixelclock and the timing struct under
+    consideration.
 
 ``fnc``
     callback to check if a given timings struct is OK. May be NULL.
@@ -39,7 +41,19 @@ Arguments
 Description
 ===========
 
-This function tries to map the given timings to an entry in the full list of possible CEA-861 and DMT timings, filtering out any timings that are not supported based on the
-hardware capabilities and the callback function (if non-NULL).
+This function tries to map the given timings to an entry in the full
+list of possible CEA-861 and DMT timings, filtering out any timings that
+are not supported based on the hardware capabilities and the callback
+function (if non-NULL).
 
-On success it will fill in ``t`` with the found timings and it returns true. On failure it will return false.
+On success it will fill in ``t`` with the found timings and it returns
+true. On failure it will return false.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

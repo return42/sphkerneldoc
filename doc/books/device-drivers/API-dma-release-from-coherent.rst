@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dma-release-from-coherent:
 
@@ -7,7 +8,7 @@ dma_release_from_coherent
 
 *man dma_release_from_coherent(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 try to free the memory allocated from per-device coherent memory pool
 
@@ -33,6 +34,18 @@ Arguments
 Description
 ===========
 
-This checks whether the memory was allocated from the per-device coherent memory pool and if so, releases that memory.
+This checks whether the memory was allocated from the per-device
+coherent memory pool and if so, releases that memory.
 
-Returns 1 if we correctly released the memory, or 0 if ``dma_release_coherent`` should proceed with releasing memory from generic pools.
+Returns 1 if we correctly released the memory, or 0 if
+``dma_release_coherent`` should proceed with releasing memory from
+generic pools.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-clone:
 
@@ -7,7 +8,7 @@ skb_clone
 
 *man skb_clone(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 duplicate an sk_buff
 
@@ -15,7 +16,7 @@ duplicate an sk_buff
 Synopsis
 ========
 
-.. c:function:: struct sk_buff ⋆ skb_clone( struct sk_buff * skb, gfp_t gfp_mask )
+.. c:function:: struct sk_buff * skb_clone( struct sk_buff * skb, gfp_t gfp_mask )
 
 Arguments
 =========
@@ -30,7 +31,19 @@ Arguments
 Description
 ===========
 
-Duplicate an ``sk_buff``. The new one is not owned by a socket. Both copies share the same packet data but not structure. The new buffer has a reference count of 1. If the
-allocation fails the function returns ``NULL`` otherwise the new buffer is returned.
+Duplicate an ``sk_buff``. The new one is not owned by a socket. Both
+copies share the same packet data but not structure. The new buffer has
+a reference count of 1. If the allocation fails the function returns
+``NULL`` otherwise the new buffer is returned.
 
-If this function is called from an interrupt ``gfp_mask`` must be ``GFP_ATOMIC``.
+If this function is called from an interrupt ``gfp_mask`` must be
+``GFP_ATOMIC``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

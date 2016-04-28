@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-sas-slave-configure:
 
@@ -7,7 +8,7 @@ ata_sas_slave_configure
 
 *man ata_sas_slave_configure(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Default slave_config routine for libata devices
 
@@ -31,3 +32,12 @@ RETURNS
 =======
 
 Zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

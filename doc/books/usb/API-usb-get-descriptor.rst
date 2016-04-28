@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-get-descriptor:
 
@@ -7,7 +8,7 @@ usb_get_descriptor
 
 *man usb_get_descriptor(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 issues a generic GET_DESCRIPTOR request
 
@@ -24,7 +25,7 @@ Arguments
     the device whose descriptor is being retrieved
 
 ``type``
-    the descriptor type (USB_DT_⋆)
+    the descriptor type (USB_DT_*)
 
 ``index``
     the number of the descriptor
@@ -45,9 +46,12 @@ Context
 Description
 ===========
 
-Gets a USB descriptor. Convenience functions exist to simplify getting some types of descriptors. Use ``usb_get_string`` or ``usb_string`` for USB_DT_STRING. Device
-(USB_DT_DEVICE) and configuration descriptors (USB_DT_CONFIG) are part of the device structure. In addition to a number of USB-standard descriptors, some devices also use
-class-specific or vendor-specific descriptors.
+Gets a USB descriptor. Convenience functions exist to simplify getting
+some types of descriptors. Use ``usb_get_string`` or ``usb_string`` for
+USB_DT_STRING. Device (USB_DT_DEVICE) and configuration descriptors
+(USB_DT_CONFIG) are part of the device structure. In addition to a
+number of USB-standard descriptors, some devices also use class-specific
+or vendor-specific descriptors.
 
 This call is synchronous, and may not be used in an interrupt context.
 
@@ -55,4 +59,14 @@ This call is synchronous, and may not be used in an interrupt context.
 Return
 ======
 
-The number of bytes received on success, or else the status code returned by the underlying ``usb_control_msg`` call.
+The number of bytes received on success, or else the status code
+returned by the underlying ``usb_control_msg`` call.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

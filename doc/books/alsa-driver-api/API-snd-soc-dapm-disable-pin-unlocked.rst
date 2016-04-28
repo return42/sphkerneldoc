@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-dapm-disable-pin-unlocked:
 
@@ -7,7 +8,7 @@ snd_soc_dapm_disable_pin_unlocked
 
 *man snd_soc_dapm_disable_pin_unlocked(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 disable pin.
 
@@ -38,4 +39,14 @@ Requires external locking.
 NOTE
 ====
 
-``snd_soc_dapm_sync`` needs to be called after this for DAPM to do any widget power switching.
+``snd_soc_dapm_sync`` needs to be called after this for DAPM to do any
+widget power switching.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

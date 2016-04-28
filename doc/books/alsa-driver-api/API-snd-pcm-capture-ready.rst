@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-capture-ready:
 
@@ -7,7 +8,7 @@ snd_pcm_capture_ready
 
 *man snd_pcm_capture_ready(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 check whether the capture buffer is available
 
@@ -34,3 +35,12 @@ Return
 ======
 
 Non-zero if available, or zero if not.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

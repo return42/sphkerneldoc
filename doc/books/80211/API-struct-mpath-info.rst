@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-mpath-info:
 
@@ -7,7 +8,7 @@ struct mpath_info
 
 *man struct mpath_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mesh path information
 
@@ -58,11 +59,23 @@ flags
     mesh path flags
 
 generation
-    generation number for nl80211 dumps. This number should increase every time the list of mesh paths changes, i.e. when a station is added or removed, so that userspace can tell
-    whether it got a consistent snapshot.
+    generation number for nl80211 dumps. This number should increase
+    every time the list of mesh paths changes, i.e. when a station is
+    added or removed, so that userspace can tell whether it got a
+    consistent snapshot.
 
 
 Description
 ===========
 
-Mesh path information filled by driver for ``get_mpath`` and ``dump_mpath``.
+Mesh path information filled by driver for ``get_mpath`` and
+``dump_mpath``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

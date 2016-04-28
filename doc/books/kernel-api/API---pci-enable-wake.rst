@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---pci-enable-wake:
 
@@ -7,7 +8,7 @@ __pci_enable_wake
 
 *man __pci_enable_wake(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 enable PCI device as wakeup event source
 
@@ -36,13 +37,27 @@ Arguments
 Description
 ===========
 
-This enables the device as a wakeup event source, or disables it. When such events involves platform-specific hooks, those hooks are called automatically by this routine.
+This enables the device as a wakeup event source, or disables it. When
+such events involves platform-specific hooks, those hooks are called
+automatically by this routine.
 
-Devices with legacy power management (no standard PCI PM capabilities) always require such platform hooks.
+Devices with legacy power management (no standard PCI PM capabilities)
+always require such platform hooks.
 
 
 RETURN VALUE
 ============
 
-0 is returned on success -EINVAL is returned if device is not supposed to wake up the system Error code depending on the platform is returned if both the platform and the native
-mechanism fail to enable the generation of wake-up events
+0 is returned on success -EINVAL is returned if device is not supposed
+to wake up the system Error code depending on the platform is returned
+if both the platform and the native mechanism fail to enable the
+generation of wake-up events
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

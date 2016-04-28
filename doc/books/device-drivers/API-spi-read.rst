@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-read:
 
@@ -7,7 +8,7 @@ spi_read
 
 *man spi_read(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 SPI synchronous read
 
@@ -39,10 +40,20 @@ can sleep
 Description
 ===========
 
-This function reads the buffer ``buf``. Callable only from contexts that can sleep.
+This function reads the buffer ``buf``. Callable only from contexts that
+can sleep.
 
 
 Return
 ======
 
 zero on success, else a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

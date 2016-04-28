@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-rescan-bus:
 
@@ -7,7 +8,7 @@ pci_rescan_bus
 
 *man pci_rescan_bus(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 scan a PCI bus for devices.
 
@@ -27,6 +28,16 @@ Arguments
 Description
 ===========
 
-Scan a PCI bus and child buses for new devices, adds them, and enables them.
+Scan a PCI bus and child buses for new devices, adds them, and enables
+them.
 
 Returns the max number of subordinate bus discovered.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

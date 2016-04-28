@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-esw0:
 
@@ -7,7 +8,7 @@ struct esw0
 
 *man struct esw0(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Format 0 Extended Status Word (ESW)
 
@@ -39,3 +40,12 @@ faddr[2]
 
 saddr
     secondary ccw address
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

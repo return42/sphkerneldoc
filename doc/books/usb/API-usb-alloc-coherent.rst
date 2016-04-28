@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-alloc-coherent:
 
@@ -7,7 +8,7 @@ usb_alloc_coherent
 
 *man usb_alloc_coherent(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP
 
@@ -15,7 +16,7 @@ allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP
 Synopsis
 ========
 
-.. c:function:: void ⋆ usb_alloc_coherent( struct usb_device * dev, size_t size, gfp_t mem_flags, dma_addr_t * dma )
+.. c:function:: void * usb_alloc_coherent( struct usb_device * dev, size_t size, gfp_t mem_flags, dma_addr_t * dma )
 
 Arguments
 =========
@@ -36,15 +37,30 @@ Arguments
 Return
 ======
 
-Either null (indicating no buffer could be allocated), or the cpu-space pointer to a buffer that may be used to perform DMA to the specified device. Such cpu-space buffers are
-returned along with the DMA address (through the pointer provided).
+Either null (indicating no buffer could be allocated), or the cpu-space
+pointer to a buffer that may be used to perform DMA to the specified
+device. Such cpu-space buffers are returned along with the DMA address
+(through the pointer provided).
 
 
 Note
 ====
 
-These buffers are used with URB_NO_xxx_DMA_MAP set in urb->transfer_flags to avoid behaviors like using “DMA bounce buffers”, or thrashing IOMMU hardware during URB
-completion/resubmit. The implementation varies between platforms, depending on details of how DMA will work to this device. Using these buffers also eliminates cacheline sharing
-problems on architectures where CPU caches are not DMA-coherent. On systems without bus-snooping caches, these buffers are uncached.
+These buffers are used with URB_NO_xxx_DMA_MAP set in
+urb->transfer_flags to avoid behaviors like using “DMA bounce buffers”,
+or thrashing IOMMU hardware during URB completion/resubmit. The
+implementation varies between platforms, depending on details of how DMA
+will work to this device. Using these buffers also eliminates cacheline
+sharing problems on architectures where CPU caches are not DMA-coherent.
+On systems without bus-snooping caches, these buffers are uncached.
 
 When the buffer is no longer used, free it with ``usb_free_coherent``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-akcipher-request-set-callback:
 
@@ -7,7 +8,7 @@ akcipher_request_set_callback
 
 *man akcipher_request_set_callback(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Sets an asynchronous callback.
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Callback will be called when an asynchronous operation on a given request is finished.
+Callback will be called when an asynchronous operation on a given
+request is finished.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-irq-chip-type:
 
@@ -7,7 +8,7 @@ struct irq_chip_type
 
 *man struct irq_chip_type(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Generic interrupt chip instance for a flow type
 
@@ -52,4 +53,15 @@ mask_cache
 Description
 ===========
 
-A irq_generic_chip can have several instances of irq_chip_type when it requires different functions and register offsets for different flow types.
+A irq_generic_chip can have several instances of irq_chip_type when
+it requires different functions and register offsets for different flow
+types.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

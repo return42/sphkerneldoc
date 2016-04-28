@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _vidioc-query-dv-timings:
 
@@ -33,27 +34,44 @@ Description
 
     **Note**
 
-    This is an :ref:`experimental <experimental>` interface and may change in the future.
+    This is an :ref:`experimental <experimental>` interface and may
+    change in the future.
 
-The hardware may be able to detect the current DV timings automatically, similar to sensing the video standard. To do so, applications call ``VIDIOC_QUERY_DV_TIMINGS`` with a
-pointer to a struct :ref:`v4l2_dv_timings <v4l2-dv-timings>`. Once the hardware detects the timings, it will fill in the timings structure.
+The hardware may be able to detect the current DV timings automatically,
+similar to sensing the video standard. To do so, applications call
+``VIDIOC_QUERY_DV_TIMINGS`` with a pointer to a struct
+:ref:`v4l2_dv_timings <v4l2-dv-timings>`. Once the hardware detects
+the timings, it will fill in the timings structure.
 
-Please note that drivers shall *not* switch timings automatically if new timings are detected. Instead, drivers should send the ``V4L2_EVENT_SOURCE_CHANGE`` event (if they support
-this) and expect that userspace will take action by calling ``VIDIOC_QUERY_DV_TIMINGS``. The reason is that new timings usually mean different buffer sizes as well, and you cannot
-change buffer sizes on the fly. In general, applications that receive the Source Change event will have to call ``VIDIOC_QUERY_DV_TIMINGS``, and if the detected timings are valid
-they will have to stop streaming, set the new timings, allocate new buffers and start streaming again.
+Please note that drivers shall *not* switch timings automatically if new
+timings are detected. Instead, drivers should send the
+``V4L2_EVENT_SOURCE_CHANGE`` event (if they support this) and expect
+that userspace will take action by calling ``VIDIOC_QUERY_DV_TIMINGS``.
+The reason is that new timings usually mean different buffer sizes as
+well, and you cannot change buffer sizes on the fly. In general,
+applications that receive the Source Change event will have to call
+``VIDIOC_QUERY_DV_TIMINGS``, and if the detected timings are valid they
+will have to stop streaming, set the new timings, allocate new buffers
+and start streaming again.
 
-If the timings could not be detected because there was no signal, then ENOLINK is returned. If a signal was detected, but it was unstable and the receiver could not lock to the
-signal, then ENOLCK is returned. If the receiver could lock to the signal, but the format is unsupported (e.g. because the pixelclock is out of range of the hardware capabilities),
-then the driver fills in whatever timings it could find and returns ERANGE. In that case the application can call :ref:`VIDIOC_DV_TIMINGS_CAP <vidioc-dv-timings-cap>` to
-compare the found timings with the hardware's capabilities in order to give more precise feedback to the user.
+If the timings could not be detected because there was no signal, then
+ENOLINK is returned. If a signal was detected, but it was unstable and
+the receiver could not lock to the signal, then ENOLCK is returned. If
+the receiver could lock to the signal, but the format is unsupported
+(e.g. because the pixelclock is out of range of the hardware
+capabilities), then the driver fills in whatever timings it could find
+and returns ERANGE. In that case the application can call
+:ref:`VIDIOC_DV_TIMINGS_CAP <vidioc-dv-timings-cap>` to compare the
+found timings with the hardware's capabilities in order to give more
+precise feedback to the user.
 
 
 Return Value
 ============
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 ENODATA
     Digital video timings are not supported for this input or output.
@@ -65,4 +83,14 @@ ENOLCK
     The signal was unstable and the hardware could not lock on to it.
 
 ERANGE
-    Timings were found, but they are out of range of the hardware capabilities.
+    Timings were found, but they are out of range of the hardware
+    capabilities.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

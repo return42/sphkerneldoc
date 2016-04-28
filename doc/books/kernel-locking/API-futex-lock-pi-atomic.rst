@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-lock-pi-atomic:
 
@@ -7,7 +8,7 @@ futex_lock_pi_atomic
 
 *man futex_lock_pi_atomic(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Atomic work required to acquire a pi aware futex
 
@@ -33,7 +34,8 @@ Arguments
     the pi_state pointer where we store the result of the lookup
 
 ``task``
-    the task to perform the atomic lock work for. This will be “current” except in the case of requeue pi.
+    the task to perform the atomic lock work for. This will be “current”
+    except in the case of requeue pi.
 
 ``set_waiters``
     force setting the FUTEX_WAITERS bit (1) or not (0)
@@ -45,3 +47,12 @@ Return
 0 - ready to wait; 1 - acquired the lock; <0 - error
 
 The hb->lock and futex_key refs shall be held by the caller.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

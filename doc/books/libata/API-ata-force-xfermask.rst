@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-force-xfermask:
 
@@ -7,7 +8,7 @@ ata_force_xfermask
 
 *man ata_force_xfermask(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 force xfermask according to libata.force
 
@@ -27,10 +28,21 @@ Arguments
 Description
 ===========
 
-Force xfer_mask according to libata.force and whine about it. For consistency with link selection, device number 15 selects the first device connected to the host link.
+Force xfer_mask according to libata.force and whine about it. For
+consistency with link selection, device number 15 selects the first
+device connected to the host link.
 
 
 LOCKING
 =======
 
 EH context.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

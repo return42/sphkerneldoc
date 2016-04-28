@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-init-timer-key:
 
@@ -7,7 +8,7 @@ init_timer_key
 
 *man init_timer_key(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize a timer
 
@@ -30,10 +31,21 @@ Arguments
     name of the timer
 
 ``key``
-    lockdep class key of the fake lock used for tracking timer sync lock dependencies
+    lockdep class key of the fake lock used for tracking timer sync lock
+    dependencies
 
 
 Description
 ===========
 
-``init_timer_key`` must be done to a timer prior calling ⋆any⋆ of the other timer functions.
+``init_timer_key`` must be done to a timer prior calling *any* of the
+other timer functions.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

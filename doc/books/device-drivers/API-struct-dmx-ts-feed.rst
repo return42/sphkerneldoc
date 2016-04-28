@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dmx-ts-feed:
 
@@ -7,7 +8,7 @@ struct dmx_ts_feed
 
 *man struct dmx_ts_feed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Structure that contains a TS feed filter
 
@@ -52,5 +53,15 @@ stop_filtering
 Description
 ===========
 
-A TS feed is typically mapped to a hardware PID filter on the demux chip. Using this API, the client can set the filtering properties to start/stop filtering TS packets on a
-particular TS feed.
+A TS feed is typically mapped to a hardware PID filter on the demux
+chip. Using this API, the client can set the filtering properties to
+start/stop filtering TS packets on a particular TS feed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

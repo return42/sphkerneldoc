@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mode-set-crtcinfo:
 
@@ -7,7 +8,7 @@ drm_mode_set_crtcinfo
 
 *man drm_mode_set_crtcinfo(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set CRTC modesetting timing parameters
 
@@ -30,8 +31,21 @@ Arguments
 Description
 ===========
 
-Setup the CRTC modesetting timing parameters for ``p``, adjusting if necessary.
+Setup the CRTC modesetting timing parameters for ``p``, adjusting if
+necessary.
 
-- The CRTC_INTERLACE_HALVE_V flag can be used to halve vertical timings of interlaced modes. - The CRTC_STEREO_DOUBLE flag can be used to compute the timings for buffers
-containing two eyes (only adjust the timings when needed, eg. for “frame packing” or “side by side full”). - The CRTC_NO_DBLSCAN and CRTC_NO_VSCAN flags request that adjustment
-⋆not⋆ be performed for doublescan and vscan > 1 modes respectively.
+- The CRTC_INTERLACE_HALVE_V flag can be used to halve vertical
+timings of interlaced modes. - The CRTC_STEREO_DOUBLE flag can be used
+to compute the timings for buffers containing two eyes (only adjust the
+timings when needed, eg. for “frame packing” or “side by side full”). -
+The CRTC_NO_DBLSCAN and CRTC_NO_VSCAN flags request that adjustment
+*not* be performed for doublescan and vscan > 1 modes respectively.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

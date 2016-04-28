@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _firmware:
 
@@ -22,6 +23,7 @@ DMI Interfaces
     API-dmi-walk
     API-dmi-match
 
+
 EDD Interfaces
 ==============
 
@@ -34,3 +36,14 @@ EDD Interfaces
     API-edd-dev-is-type
     API-edd-get-pci-dev
     API-edd-init
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

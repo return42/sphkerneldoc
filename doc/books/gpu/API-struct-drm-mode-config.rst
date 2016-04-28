@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-mode-config:
 
@@ -7,7 +8,7 @@ struct drm_mode_config
 
 *man struct drm_mode_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Mode configuration control structure
 
@@ -70,7 +71,8 @@ connection_mutex
     ww mutex protecting connector state and routing
 
 acquire_ctx
-    global implicit acquire context used by atomic drivers for legacy IOCTLs
+    global implicit acquire context used by atomic drivers for legacy
+    IOCTLs
 
 idr_mutex
     mutex for KMS ID allocation and management
@@ -160,7 +162,8 @@ ctm_property
     Matrix used to convert colors after the lookup in the degamma LUT
 
 gamma_lut_property
-    LUT used to convert the colors, after the CSC matrix, to the gamma space of the connected screen (read-only)
+    LUT used to convert the colors, after the CSC matrix, to the gamma
+    space of the connected screen (read-only)
 
 gamma_lut_size_property
     size of the gamma LUT as supported by the driver
@@ -190,5 +193,16 @@ core property tracking
 Description
 ===========
 
-Core mode resource tracking structure. All CRTC, encoders, and connectors enumerated by the driver are added here, as are global properties. Some global restrictions are also here,
-e.g. dimension restrictions.
+Core mode resource tracking structure. All CRTC, encoders, and
+connectors enumerated by the driver are added here, as are global
+properties. Some global restrictions are also here, e.g. dimension
+restrictions.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

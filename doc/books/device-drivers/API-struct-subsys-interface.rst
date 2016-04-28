@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-subsys-interface:
 
@@ -7,7 +8,7 @@ struct subsys_interface
 
 *man struct subsys_interface(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 interfaces to device functions
 
@@ -48,5 +49,16 @@ remove_dev
 Description
 ===========
 
-Simple interfaces attached to a subsystem. Multiple interfaces can attach to a subsystem and its devices. Unlike drivers, they do not exclusively claim or control devices.
-Interfaces usually represent a specific functionality of a subsystem/class of devices.
+Simple interfaces attached to a subsystem. Multiple interfaces can
+attach to a subsystem and its devices. Unlike drivers, they do not
+exclusively claim or control devices. Interfaces usually represent a
+specific functionality of a subsystem/class of devices.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

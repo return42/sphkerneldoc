@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-gem-cma-object:
 
@@ -7,7 +8,7 @@ struct drm_gem_cma_object
 
 *man struct drm_gem_cma_object(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 GEM object backed by CMA memory allocations
 
@@ -39,3 +40,12 @@ sgt
 
 vaddr
     kernel virtual address of the backing memory
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

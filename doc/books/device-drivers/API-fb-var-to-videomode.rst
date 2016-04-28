@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fb-var-to-videomode:
 
@@ -7,7 +8,7 @@ fb_var_to_videomode
 
 *man fb_var_to_videomode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert fb_var_screeninfo to fb_videomode
 
@@ -25,3 +26,12 @@ Arguments
 
 ``var``
     pointer to struct fb_var_screeninfo
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

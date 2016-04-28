@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-find-get-pages-tag:
 
@@ -7,7 +8,7 @@ find_get_pages_tag
 
 *man find_get_pages_tag(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find and return pages that match ``tag``
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Like find_get_pages, except we only return pages which are tagged with ``tag``. We update ``index`` to index the next page for the traversal.
+Like find_get_pages, except we only return pages which are tagged with
+``tag``. We update ``index`` to index the next page for the traversal.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

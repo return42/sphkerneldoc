@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vb2-buffer:
 
@@ -7,7 +8,7 @@ struct vb2_buffer
 
 *man struct vb2_buffer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represents a video buffer
 
@@ -51,3 +52,12 @@ planes[VB2_MAX_PLANES]
 
 timestamp
     frame timestamp in ns
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

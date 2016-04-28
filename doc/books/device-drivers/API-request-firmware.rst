@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-request-firmware:
 
@@ -7,7 +8,7 @@ request_firmware
 
 *man request_firmware(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send firmware request and wait for it
 
@@ -33,12 +34,25 @@ Arguments
 Description
 ===========
 
-``firmware_p`` will be used to return a firmware image by the name of ``name`` for device ``device``.
+``firmware_p`` will be used to return a firmware image by the name of
+``name`` for device ``device``.
 
 Should be called from user context where sleeping is allowed.
 
-``name`` will be used as $FIRMWARE in the uevent environment and should be distinctive enough not to be confused with any other firmware image for this or any other device.
+``name`` will be used as $FIRMWARE in the uevent environment and should
+be distinctive enough not to be confused with any other firmware image
+for this or any other device.
 
 Caller must hold the reference count of ``device``.
 
-The function can be called safely inside device's suspend and resume callback.
+The function can be called safely inside device's suspend and resume
+callback.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

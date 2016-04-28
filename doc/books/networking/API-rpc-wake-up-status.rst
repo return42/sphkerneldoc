@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rpc-wake-up-status:
 
@@ -7,7 +8,7 @@ rpc_wake_up_status
 
 *man rpc_wake_up_status(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wake up all rpc_tasks and set their status value.
 
@@ -31,3 +32,12 @@ Description
 ===========
 
 Grabs queue->lock
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

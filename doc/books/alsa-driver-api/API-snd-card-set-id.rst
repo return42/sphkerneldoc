@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-card-set-id:
 
@@ -7,7 +8,7 @@ snd_card_set_id
 
 *man snd_card_set_id(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set card identification name
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-This function sets the card identification and checks for name collisions.
+This function sets the card identification and checks for name
+collisions.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

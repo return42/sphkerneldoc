@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-devm-snd-soc-register-component:
 
@@ -7,7 +8,7 @@ devm_snd_soc_register_component
 
 *man devm_snd_soc_register_component(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 resource managed component registration
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Register a component with automatic unregistration when the device is unregistered.
+Register a component with automatic unregistration when the device is
+unregistered.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

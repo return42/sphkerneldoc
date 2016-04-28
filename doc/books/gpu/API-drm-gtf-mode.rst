@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-gtf-mode:
 
@@ -7,7 +8,7 @@ drm_gtf_mode
 
 *man drm_gtf_mode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create the modeline based on the GTF algorithm
 
@@ -15,7 +16,7 @@ create the modeline based on the GTF algorithm
 Synopsis
 ========
 
-.. c:function:: struct drm_display_mode ⋆ drm_gtf_mode( struct drm_device * dev, int hdisplay, int vdisplay, int vrefresh, bool interlaced, int margins )
+.. c:function:: struct drm_display_mode * drm_gtf_mode( struct drm_device * dev, int hdisplay, int vdisplay, int vrefresh, bool interlaced, int margins )
 
 Arguments
 =========
@@ -58,8 +59,10 @@ available at http
 
 //www.vesa.org
 
-And it is copied from the file of xserver/hw/xfree86/modes/xf86gtf.c. What I have done is to translate it by using integer calculation. I also refer to the function of
-fb_get_mode in the file of drivers/video/fbmon.c
+And it is copied from the file of xserver/hw/xfree86/modes/xf86gtf.c.
+What I have done is to translate it by using integer calculation. I also
+refer to the function of fb_get_mode in the file of
+drivers/video/fbmon.c
 
 
 Standard GTF parameters
@@ -71,5 +74,15 @@ M = 600 C = 40 K = 128 J = 20
 Returns
 =======
 
-The modeline based on the GTF algorithm stored in a drm_display_mode object. The display mode object is allocated with ``drm_mode_create``. Returns NULL when no mode could be
-allocated.
+The modeline based on the GTF algorithm stored in a drm_display_mode
+object. The display mode object is allocated with ``drm_mode_create``.
+Returns NULL when no mode could be allocated.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

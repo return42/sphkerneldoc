@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mode-connector-set-path-property:
 
@@ -7,7 +8,7 @@ drm_mode_connector_set_path_property
 
 *man drm_mode_connector_set_path_property(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 set tile property on connector
 
@@ -30,11 +31,22 @@ Arguments
 Description
 ===========
 
-This creates a property to expose to userspace to specify a connector path. This is mainly used for DisplayPort MST where connectors have a topology and we want to allow userspace
-to give them more meaningful names.
+This creates a property to expose to userspace to specify a connector
+path. This is mainly used for DisplayPort MST where connectors have a
+topology and we want to allow userspace to give them more meaningful
+names.
 
 
 Returns
 =======
 
 Zero on success, negative errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-rate:
 
@@ -7,7 +8,7 @@ struct ieee80211_rate
 
 *man struct ieee80211_rate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 bitrate definition
 
@@ -44,5 +45,15 @@ hw_value_short
 Description
 ===========
 
-This structure describes a bitrate that an 802.11 PHY can operate with. The two values ``hw_value`` and ``hw_value_short`` are only for driver use when pointers to this structure
-are passed around.
+This structure describes a bitrate that an 802.11 PHY can operate with.
+The two values ``hw_value`` and ``hw_value_short`` are only for driver
+use when pointers to this structure are passed around.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

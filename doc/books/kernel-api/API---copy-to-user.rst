@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---copy-to-user:
 
@@ -7,7 +8,7 @@ __copy_to_user
 
 *man __copy_to_user(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Copy a block of data into user space, with less checking.
 
@@ -39,6 +40,17 @@ User context only. This function may sleep if pagefaults are enabled.
 Description
 ===========
 
-Copy data from kernel space to user space. Caller must check the specified block with ``access_ok`` before calling this function.
+Copy data from kernel space to user space. Caller must check the
+specified block with ``access_ok`` before calling this function.
 
-Returns number of bytes that could not be copied. On success, this will be zero.
+Returns number of bytes that could not be copied. On success, this will
+be zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

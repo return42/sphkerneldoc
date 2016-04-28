@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _packed-yuv:
 
@@ -13,230 +14,312 @@ Packed YUV formats
 Description
 ===========
 
-Similar to the packed RGB formats these formats store the Y, Cb and Cr component of each pixel in one 16 or 32 bit word.
-
-
-Packed YUV Image Formats
-========================
-
-::
-
-    TODO ... 
-
-
-    <table pgwide="1" frame="none">
-          <title>Packed YUV Image Formats</title>
-          <tgroup cols="37" align="center">
-        <colspec colname="id" align="left"/>
-        <colspec colname="fourcc"/>
-        <colspec colname="bit"/>
-
-        <colspec colnum="4" colname="b07" align="center"/>
-        <colspec colnum="5" colname="b06" align="center"/>
-        <colspec colnum="6" colname="b05" align="center"/>
-        <colspec colnum="7" colname="b04" align="center"/>
-        <colspec colnum="8" colname="b03" align="center"/>
-        <colspec colnum="9" colname="b02" align="center"/>
-        <colspec colnum="10" colname="b01" align="center"/>
-        <colspec colnum="11" colname="b00" align="center"/>
-
-        <colspec colnum="13" colname="b17" align="center"/>
-        <colspec colnum="14" colname="b16" align="center"/>
-        <colspec colnum="15" colname="b15" align="center"/>
-        <colspec colnum="16" colname="b14" align="center"/>
-        <colspec colnum="17" colname="b13" align="center"/>
-        <colspec colnum="18" colname="b12" align="center"/>
-        <colspec colnum="19" colname="b11" align="center"/>
-        <colspec colnum="20" colname="b10" align="center"/>
-
-        <colspec colnum="22" colname="b27" align="center"/>
-        <colspec colnum="23" colname="b26" align="center"/>
-        <colspec colnum="24" colname="b25" align="center"/>
-        <colspec colnum="25" colname="b24" align="center"/>
-        <colspec colnum="26" colname="b23" align="center"/>
-        <colspec colnum="27" colname="b22" align="center"/>
-        <colspec colnum="28" colname="b21" align="center"/>
-        <colspec colnum="29" colname="b20" align="center"/>
-
-        <colspec colnum="31" colname="b37" align="center"/>
-        <colspec colnum="32" colname="b36" align="center"/>
-        <colspec colnum="33" colname="b35" align="center"/>
-        <colspec colnum="34" colname="b34" align="center"/>
-        <colspec colnum="35" colname="b33" align="center"/>
-        <colspec colnum="36" colname="b32" align="center"/>
-        <colspec colnum="37" colname="b31" align="center"/>
-        <colspec colnum="38" colname="b30" align="center"/>
-
-        <spanspec namest="b07" nameend="b00" spanname="b0"/>
-        <spanspec namest="b17" nameend="b10" spanname="b1"/>
-        <spanspec namest="b27" nameend="b20" spanname="b2"/>
-        <spanspec namest="b37" nameend="b30" spanname="b3"/>
-        <thead>
-          <row>
-            <entry>Identifier</entry>
-            <entry>Code</entry>
-            <entry> </entry>
-            <entry spanname="b0">Byte 0 in memory</entry>
-            <entry spanname="b1">Byte 1</entry>
-            <entry spanname="b2">Byte 2</entry>
-            <entry spanname="b3">Byte 3</entry>
-          </row>
-          <row>
-            <entry> </entry>
-            <entry> </entry>
-            <entry>Bit</entry>
-            <entry>7</entry>
-            <entry>6</entry>
-            <entry>5</entry>
-            <entry>4</entry>
-            <entry>3</entry>
-            <entry>2</entry>
-            <entry>1</entry>
-            <entry>0</entry>
-            <entry> </entry>
-            <entry>7</entry>
-            <entry>6</entry>
-            <entry>5</entry>
-            <entry>4</entry>
-            <entry>3</entry>
-            <entry>2</entry>
-            <entry>1</entry>
-            <entry>0</entry>
-            <entry> </entry>
-            <entry>7</entry>
-            <entry>6</entry>
-            <entry>5</entry>
-            <entry>4</entry>
-            <entry>3</entry>
-            <entry>2</entry>
-            <entry>1</entry>
-            <entry>0</entry>
-            <entry> </entry>
-            <entry>7</entry>
-            <entry>6</entry>
-            <entry>5</entry>
-            <entry>4</entry>
-            <entry>3</entry>
-            <entry>2</entry>
-            <entry>1</entry>
-            <entry>0</entry>
-          </row>
-        </thead>
-        <tbody valign="top">
-          <row id="V4L2-PIX-FMT-YUV444">
-            <entry><constant>V4L2_PIX_FMT_YUV444</constant></entry>
-            <entry>'Y444'</entry>
-            <entry/>
-            <entry>Cb<subscript>3</subscript></entry>
-            <entry>Cb<subscript>2</subscript></entry>
-            <entry>Cb<subscript>1</subscript></entry>
-            <entry>Cb<subscript>0</subscript></entry>
-            <entry>Cr<subscript>3</subscript></entry>
-            <entry>Cr<subscript>2</subscript></entry>
-            <entry>Cr<subscript>1</subscript></entry>
-            <entry>Cr<subscript>0</subscript></entry>
-            <entry/>
-            <entry>a<subscript>3</subscript></entry>
-            <entry>a<subscript>2</subscript></entry>
-            <entry>a<subscript>1</subscript></entry>
-            <entry>a<subscript>0</subscript></entry>
-            <entry>Y'<subscript>3</subscript></entry>
-            <entry>Y'<subscript>2</subscript></entry>
-            <entry>Y'<subscript>1</subscript></entry>
-            <entry>Y'<subscript>0</subscript></entry>
-          </row>
-
-          <row id="V4L2-PIX-FMT-YUV555">
-            <entry><constant>V4L2_PIX_FMT_YUV555</constant></entry>
-            <entry>'YUVO'</entry>
-            <entry/>
-            <entry>Cb<subscript>2</subscript></entry>
-            <entry>Cb<subscript>1</subscript></entry>
-            <entry>Cb<subscript>0</subscript></entry>
-            <entry>Cr<subscript>4</subscript></entry>
-            <entry>Cr<subscript>3</subscript></entry>
-            <entry>Cr<subscript>2</subscript></entry>
-            <entry>Cr<subscript>1</subscript></entry>
-            <entry>Cr<subscript>0</subscript></entry>
-            <entry/>
-            <entry>a</entry>
-            <entry>Y'<subscript>4</subscript></entry>
-            <entry>Y'<subscript>3</subscript></entry>
-            <entry>Y'<subscript>2</subscript></entry>
-            <entry>Y'<subscript>1</subscript></entry>
-            <entry>Y'<subscript>0</subscript></entry>
-            <entry>Cb<subscript>4</subscript></entry>
-            <entry>Cb<subscript>3</subscript></entry>
-          </row>
-
-          <row id="V4L2-PIX-FMT-YUV565">
-            <entry><constant>V4L2_PIX_FMT_YUV565</constant></entry>
-            <entry>'YUVP'</entry>
-            <entry/>
-            <entry>Cb<subscript>2</subscript></entry>
-            <entry>Cb<subscript>1</subscript></entry>
-            <entry>Cb<subscript>0</subscript></entry>
-            <entry>Cr<subscript>4</subscript></entry>
-            <entry>Cr<subscript>3</subscript></entry>
-            <entry>Cr<subscript>2</subscript></entry>
-            <entry>Cr<subscript>1</subscript></entry>
-            <entry>Cr<subscript>0</subscript></entry>
-            <entry/>
-            <entry>Y'<subscript>4</subscript></entry>
-            <entry>Y'<subscript>3</subscript></entry>
-            <entry>Y'<subscript>2</subscript></entry>
-            <entry>Y'<subscript>1</subscript></entry>
-            <entry>Y'<subscript>0</subscript></entry>
-            <entry>Cb<subscript>5</subscript></entry>
-            <entry>Cb<subscript>4</subscript></entry>
-            <entry>Cb<subscript>3</subscript></entry>
-          </row>
-
-          <row id="V4L2-PIX-FMT-YUV32">
-            <entry><constant>V4L2_PIX_FMT_YUV32</constant></entry>
-            <entry>'YUV4'</entry>
-            <entry/>
-            <entry>a<subscript>7</subscript></entry>
-            <entry>a<subscript>6</subscript></entry>
-            <entry>a<subscript>5</subscript></entry>
-            <entry>a<subscript>4</subscript></entry>
-            <entry>a<subscript>3</subscript></entry>
-            <entry>a<subscript>2</subscript></entry>
-            <entry>a<subscript>1</subscript></entry>
-            <entry>a<subscript>0</subscript></entry>
-            <entry/>
-            <entry>Y'<subscript>7</subscript></entry>
-            <entry>Y'<subscript>6</subscript></entry>
-            <entry>Y'<subscript>5</subscript></entry>
-            <entry>Y'<subscript>4</subscript></entry>
-            <entry>Y'<subscript>3</subscript></entry>
-            <entry>Y'<subscript>2</subscript></entry>
-            <entry>Y'<subscript>1</subscript></entry>
-            <entry>Y'<subscript>0</subscript></entry>
-            <entry/>
-            <entry>Cb<subscript>7</subscript></entry>
-            <entry>Cb<subscript>6</subscript></entry>
-            <entry>Cb<subscript>5</subscript></entry>
-            <entry>Cb<subscript>4</subscript></entry>
-            <entry>Cb<subscript>3</subscript></entry>
-            <entry>Cb<subscript>2</subscript></entry>
-            <entry>Cb<subscript>1</subscript></entry>
-            <entry>Cb<subscript>0</subscript></entry>
-            <entry/>
-            <entry>Cr<subscript>7</subscript></entry>
-            <entry>Cr<subscript>6</subscript></entry>
-            <entry>Cr<subscript>5</subscript></entry>
-            <entry>Cr<subscript>4</subscript></entry>
-            <entry>Cr<subscript>3</subscript></entry>
-            <entry>Cr<subscript>2</subscript></entry>
-            <entry>Cr<subscript>1</subscript></entry>
-            <entry>Cr<subscript>0</subscript></entry>
-          </row>
-        </tbody>
-          </tgroup>
-        </table>
+Similar to the packed RGB formats these formats store the Y, Cb and Cr
+component of each pixel in one 16 or 32 bit word.
 
 
 
-Bit 7 is the most significant bit. The value of a = alpha bits is undefined when reading from the driver, ignored when writing to the driver, except when alpha blending has been
-negotiated for a :ref:`Video Overlay <overlay>` or :ref:`Video Output Overlay <osd>`.
+.. flat-table:: Packed YUV Image Formats
+    :header-rows:  2
+    :stub-columns: 0
+
+
+    -  .. row 1
+
+       -  Identifier
+
+       -  Code
+
+       -  
+       -  :cspan:`7` Byte 0 in memory
+
+       -  
+       -  :cspan:`7` Byte 1
+
+       -  
+       -  :cspan:`7` Byte 2
+
+       -  
+       -  :cspan:`7` Byte 3
+
+    -  .. row 2
+
+       -  
+       -  
+       -  Bit
+
+       -  7
+
+       -  6
+
+       -  5
+
+       -  4
+
+       -  3
+
+       -  2
+
+       -  1
+
+       -  0
+
+       -  
+       -  7
+
+       -  6
+
+       -  5
+
+       -  4
+
+       -  3
+
+       -  2
+
+       -  1
+
+       -  0
+
+       -  
+       -  7
+
+       -  6
+
+       -  5
+
+       -  4
+
+       -  3
+
+       -  2
+
+       -  1
+
+       -  0
+
+       -  
+       -  7
+
+       -  6
+
+       -  5
+
+       -  4
+
+       -  3
+
+       -  2
+
+       -  1
+
+       -  0
+
+    -  .. _`V4L2-PIX-FMT-YUV444`:
+
+       -  ``V4L2_PIX_FMT_YUV444``
+
+       -  'Y444'
+
+       -  
+       -  Cb\ :sub:`3`
+
+       -  Cb\ :sub:`2`
+
+       -  Cb\ :sub:`1`
+
+       -  Cb\ :sub:`0`
+
+       -  Cr\ :sub:`3`
+
+       -  Cr\ :sub:`2`
+
+       -  Cr\ :sub:`1`
+
+       -  Cr\ :sub:`0`
+
+       -  
+       -  a\ :sub:`3`
+
+       -  a\ :sub:`2`
+
+       -  a\ :sub:`1`
+
+       -  a\ :sub:`0`
+
+       -  Y'\ :sub:`3`
+
+       -  Y'\ :sub:`2`
+
+       -  Y'\ :sub:`1`
+
+       -  Y'\ :sub:`0`
+
+    -  .. _`V4L2-PIX-FMT-YUV555`:
+
+       -  ``V4L2_PIX_FMT_YUV555``
+
+       -  'YUVO'
+
+       -  
+       -  Cb\ :sub:`2`
+
+       -  Cb\ :sub:`1`
+
+       -  Cb\ :sub:`0`
+
+       -  Cr\ :sub:`4`
+
+       -  Cr\ :sub:`3`
+
+       -  Cr\ :sub:`2`
+
+       -  Cr\ :sub:`1`
+
+       -  Cr\ :sub:`0`
+
+       -  
+       -  a
+
+       -  Y'\ :sub:`4`
+
+       -  Y'\ :sub:`3`
+
+       -  Y'\ :sub:`2`
+
+       -  Y'\ :sub:`1`
+
+       -  Y'\ :sub:`0`
+
+       -  Cb\ :sub:`4`
+
+       -  Cb\ :sub:`3`
+
+    -  .. _`V4L2-PIX-FMT-YUV565`:
+
+       -  ``V4L2_PIX_FMT_YUV565``
+
+       -  'YUVP'
+
+       -  
+       -  Cb\ :sub:`2`
+
+       -  Cb\ :sub:`1`
+
+       -  Cb\ :sub:`0`
+
+       -  Cr\ :sub:`4`
+
+       -  Cr\ :sub:`3`
+
+       -  Cr\ :sub:`2`
+
+       -  Cr\ :sub:`1`
+
+       -  Cr\ :sub:`0`
+
+       -  
+       -  Y'\ :sub:`4`
+
+       -  Y'\ :sub:`3`
+
+       -  Y'\ :sub:`2`
+
+       -  Y'\ :sub:`1`
+
+       -  Y'\ :sub:`0`
+
+       -  Cb\ :sub:`5`
+
+       -  Cb\ :sub:`4`
+
+       -  Cb\ :sub:`3`
+
+    -  .. _`V4L2-PIX-FMT-YUV32`:
+
+       -  ``V4L2_PIX_FMT_YUV32``
+
+       -  'YUV4'
+
+       -  
+       -  a\ :sub:`7`
+
+       -  a\ :sub:`6`
+
+       -  a\ :sub:`5`
+
+       -  a\ :sub:`4`
+
+       -  a\ :sub:`3`
+
+       -  a\ :sub:`2`
+
+       -  a\ :sub:`1`
+
+       -  a\ :sub:`0`
+
+       -  
+       -  Y'\ :sub:`7`
+
+       -  Y'\ :sub:`6`
+
+       -  Y'\ :sub:`5`
+
+       -  Y'\ :sub:`4`
+
+       -  Y'\ :sub:`3`
+
+       -  Y'\ :sub:`2`
+
+       -  Y'\ :sub:`1`
+
+       -  Y'\ :sub:`0`
+
+       -  
+       -  Cb\ :sub:`7`
+
+       -  Cb\ :sub:`6`
+
+       -  Cb\ :sub:`5`
+
+       -  Cb\ :sub:`4`
+
+       -  Cb\ :sub:`3`
+
+       -  Cb\ :sub:`2`
+
+       -  Cb\ :sub:`1`
+
+       -  Cb\ :sub:`0`
+
+       -  
+       -  Cr\ :sub:`7`
+
+       -  Cr\ :sub:`6`
+
+       -  Cr\ :sub:`5`
+
+       -  Cr\ :sub:`4`
+
+       -  Cr\ :sub:`3`
+
+       -  Cr\ :sub:`2`
+
+       -  Cr\ :sub:`1`
+
+       -  Cr\ :sub:`0`
+
+
+Bit 7 is the most significant bit. The value of a = alpha bits is
+undefined when reading from the driver, ignored when writing to the
+driver, except when alpha blending has been negotiated for a
+:ref:`Video Overlay <overlay>` or :ref:`Video Output Overlay <osd>`.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

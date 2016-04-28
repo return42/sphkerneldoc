@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kmalloc-array:
 
@@ -7,7 +8,7 @@ kmalloc_array
 
 *man kmalloc_array(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate memory for an array.
 
@@ -15,7 +16,7 @@ allocate memory for an array.
 Synopsis
 ========
 
-.. c:function:: void ⋆ kmalloc_array( size_t n, size_t size, gfp_t flags )
+.. c:function:: void * kmalloc_array( size_t n, size_t size, gfp_t flags )
 
 Arguments
 =========
@@ -28,3 +29,12 @@ Arguments
 
 ``flags``
     the type of memory to allocate (see kmalloc).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

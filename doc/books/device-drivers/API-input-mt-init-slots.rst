@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-input-mt-init-slots:
 
@@ -7,7 +8,7 @@ input_mt_init_slots
 
 *man input_mt_init_slots(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize MT input slots
 
@@ -33,7 +34,19 @@ Arguments
 Description
 ===========
 
-This function allocates all necessary memory for MT slot handling in the input device, prepares the ABS_MT_SLOT and ABS_MT_TRACKING_ID events for use and sets up appropriate
-buffers. Depending on the flags set, it also performs pointer emulation and frame synchronization.
+This function allocates all necessary memory for MT slot handling in the
+input device, prepares the ABS_MT_SLOT and ABS_MT_TRACKING_ID
+events for use and sets up appropriate buffers. Depending on the flags
+set, it also performs pointer emulation and frame synchronization.
 
-May be called repeatedly. Returns -EINVAL if attempting to reinitialize with a different number of slots.
+May be called repeatedly. Returns -EINVAL if attempting to reinitialize
+with a different number of slots.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

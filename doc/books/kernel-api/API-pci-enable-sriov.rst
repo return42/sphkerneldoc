@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-enable-sriov:
 
@@ -7,7 +8,7 @@ pci_enable_sriov
 
 *man pci_enable_sriov(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 enable the SR-IOV capability
 
@@ -31,3 +32,12 @@ Description
 ===========
 
 Returns 0 on success, or negative on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

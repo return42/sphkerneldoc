@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fb-try-mode:
 
@@ -7,7 +8,7 @@ fb_try_mode
 
 *man fb_try_mode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 test a video mode
 
@@ -39,3 +40,12 @@ Description
 Tries a video mode to test it's validity for device ``info``.
 
 Returns 1 on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

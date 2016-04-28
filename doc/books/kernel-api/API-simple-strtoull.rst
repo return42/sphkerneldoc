@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-simple-strtoull:
 
@@ -7,7 +8,7 @@ simple_strtoull
 
 *man simple_strtoull(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert a string to an unsigned long long
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 This function is obsolete. Please use kstrtoull instead.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

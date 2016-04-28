@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _media_common:
 
@@ -19,6 +20,7 @@ Media Controller
     media-controller-model
     media-types
 
+
 .. _media-user-func:
 
 ==================
@@ -38,6 +40,7 @@ Function Reference
     media-ioc-enum-links
     media-ioc-setup-link
 
+
 ======================
 Revision and Copyright
 ======================
@@ -52,3 +55,12 @@ Revision and Copyright
 :revision: 1.0.0 / 2010-11-10 (*lp*)
 
 Initial revision
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

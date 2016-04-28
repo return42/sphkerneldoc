@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-rtsdtr:
 
@@ -7,7 +8,7 @@ z8530_rtsdtr
 
 *man z8530_rtsdtr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Control the outgoing DTS/RTS line
 
@@ -30,5 +31,15 @@ Arguments
 Description
 ===========
 
-Sets or clears DTR/RTS on the requested line. All locking is handled by the caller. For now we assume all boards use the actual RTS/DTR on the chip. Apparently one or two don't.
-We'll scream about them later.
+Sets or clears DTR/RTS on the requested line. All locking is handled by
+the caller. For now we assume all boards use the actual RTS/DTR on the
+chip. Apparently one or two don't. We'll scream about them later.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

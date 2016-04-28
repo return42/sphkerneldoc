@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-debug-obj-descr:
 
@@ -7,7 +8,7 @@ struct debug_obj_descr
 
 *man struct debug_obj_descr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 object type specific debug description structure
 
@@ -35,7 +36,8 @@ name
     name of the object typee
 
 debug_hint
-    function returning address, which have associated kernel symbol, to allow identify the object
+    function returning address, which have associated kernel symbol, to
+    allow identify the object
 
 fixup_init
     fixup function, which is called when the init check fails
@@ -51,3 +53,12 @@ fixup_free
 
 fixup_assert_init
     fixup function, which is called when the assert_init check fails
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dev-set-allmulti:
 
@@ -7,7 +8,7 @@ dev_set_allmulti
 
 *man dev_set_allmulti(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 update allmulti count on a device
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-Add or remove reception of all multicast frames to a device. While the count in the device remains above zero the interface remains listening to all interfaces. Once it hits zero
-the device reverts back to normal filtering operation. A negative ``inc`` value is used to drop the counter when releasing a resource needing all multicasts. Return 0 if successful
-or a negative errno code on error.
+Add or remove reception of all multicast frames to a device. While the
+count in the device remains above zero the interface remains listening
+to all interfaces. Once it hits zero the device reverts back to normal
+filtering operation. A negative ``inc`` value is used to drop the
+counter when releasing a resource needing all multicasts. Return 0 if
+successful or a negative errno code on error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

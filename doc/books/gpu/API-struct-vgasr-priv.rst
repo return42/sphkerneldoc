@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-vgasr-priv:
 
@@ -7,7 +8,7 @@ struct vgasr_priv
 
 *man struct vgasr_priv(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 vga_switcheroo private data
 
@@ -36,7 +37,8 @@ Members
 =======
 
 active
-    whether vga_switcheroo is enabled. Prerequisite is the registration of two GPUs and a handler
+    whether vga_switcheroo is enabled. Prerequisite is the registration
+    of two GPUs and a handler
 
 delayed_switch_active
     whether a delayed switch is pending
@@ -51,7 +53,8 @@ switch_file
     file for vga_switcheroo debugfs interface
 
 registered_clients
-    number of registered GPUs (counting only vga clients, not audio clients)
+    number of registered GPUs (counting only vga clients, not audio
+    clients)
 
 clients
     list of registered clients
@@ -63,7 +66,8 @@ handler_flags
     flags of registered handler
 
 mux_hw_lock
-    protects mux state (in particular while DDC lines are temporarily switched)
+    protects mux state (in particular while DDC lines are temporarily
+    switched)
 
 old_ddc_owner
     client to which DDC lines will be switched back on unlock
@@ -72,4 +76,14 @@ old_ddc_owner
 Description
 ===========
 
-vga_switcheroo private data. Currently only one vga_switcheroo instance per system is supported.
+vga_switcheroo private data. Currently only one vga_switcheroo
+instance per system is supported.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

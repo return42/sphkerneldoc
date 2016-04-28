@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-clear-locks:
 
@@ -7,7 +8,7 @@ rio_clear_locks
 
 *man rio_clear_locks(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Release all host locks and signal enumeration complete
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Marks the component tag CSR on each device with the enumeration complete flag. When complete, it then release the host locks on each device. Returns 0 on success or ``-EINVAL`` on
-failure.
+Marks the component tag CSR on each device with the enumeration complete
+flag. When complete, it then release the host locks on each device.
+Returns 0 on success or ``-EINVAL`` on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

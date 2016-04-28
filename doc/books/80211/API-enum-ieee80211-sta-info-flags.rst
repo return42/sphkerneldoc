@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-ieee80211-sta-info-flags:
 
@@ -7,7 +8,7 @@ enum ieee80211_sta_info_flags
 
 *man enum ieee80211_sta_info_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Stations flags
 
@@ -60,7 +61,9 @@ WLAN_STA_PS_STA
     Station is in power-save mode
 
 WLAN_STA_AUTHORIZED
-    Station is authorized to send/receive traffic. This bit is always checked so needs to be enabled for all stations when virtual port control is not in use.
+    Station is authorized to send/receive traffic. This bit is always
+    checked so needs to be enabled for all stations when virtual port
+    control is not in use.
 
 WLAN_STA_SHORT_PREAMBLE
     Station is capable of receiving short-preamble frames.
@@ -69,25 +72,31 @@ WLAN_STA_WDS
     Station is one of our WDS peers.
 
 WLAN_STA_CLEAR_PS_FILT
-    Clear PS filter in hardware (using the IEEE80211_TX_CTL_CLEAR_PS_FILT control flag) when the next frame to this station is transmitted.
+    Clear PS filter in hardware (using the
+    IEEE80211_TX_CTL_CLEAR_PS_FILT control flag) when the next
+    frame to this station is transmitted.
 
 WLAN_STA_MFP
     Management frame protection is used with this STA.
 
 WLAN_STA_BLOCK_BA
-    Used to deny ADDBA requests (both TX and RX) during suspend/resume and station removal.
+    Used to deny ADDBA requests (both TX and RX) during suspend/resume
+    and station removal.
 
 WLAN_STA_PS_DRIVER
-    driver requires keeping this station in power-save mode logically to flush frames that might still be in the queues
+    driver requires keeping this station in power-save mode logically to
+    flush frames that might still be in the queues
 
 WLAN_STA_PSPOLL
-    Station sent PS-poll while driver was keeping station in power-save mode, reply when the driver unblocks.
+    Station sent PS-poll while driver was keeping station in power-save
+    mode, reply when the driver unblocks.
 
 WLAN_STA_TDLS_PEER
     Station is a TDLS peer.
 
 WLAN_STA_TDLS_PEER_AUTH
-    This TDLS peer is authorized to send direct packets. This means the link is enabled.
+    This TDLS peer is authorized to send direct packets. This means the
+    link is enabled.
 
 WLAN_STA_TDLS_INITIATOR
     We are the initiator of the TDLS link with this station.
@@ -99,13 +108,16 @@ WLAN_STA_TDLS_OFF_CHANNEL
     The local STA is currently off-channel with this TDLS peer
 
 WLAN_STA_TDLS_WIDER_BW
-    This TDLS peer supports working on a wider bw on the BSS base channel.
+    This TDLS peer supports working on a wider bw on the BSS base
+    channel.
 
 WLAN_STA_UAPSD
-    Station requested unscheduled SP while driver was keeping station in power-save mode, reply when the driver unblocks the station.
+    Station requested unscheduled SP while driver was keeping station in
+    power-save mode, reply when the driver unblocks the station.
 
 WLAN_STA_SP
-    Station is in a service period, so don't try to reply to other uAPSD trigger frames or PS-Poll.
+    Station is in a service period, so don't try to reply to other uAPSD
+    trigger frames or PS-Poll.
 
 WLAN_STA_4ADDR_EVENT
     4-addr event was already sent for this frame.
@@ -126,10 +138,21 @@ WLAN_STA_MPSP_RECIPIENT
     local STA is recipient of a MPSP.
 
 WLAN_STA_PS_DELIVER
-    station woke up, but we're still blocking TX until pending frames are delivered
+    station woke up, but we're still blocking TX until pending frames
+    are delivered
 
 
 Description
 ===========
 
-These flags are used with ``struct sta_info``'s ``flags`` member, but only indirectly with ``set_sta_flag`` and friends.
+These flags are used with ``struct sta_info``'s ``flags`` member, but
+only indirectly with ``set_sta_flag`` and friends.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

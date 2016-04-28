@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-hrtimer-clock-base:
 
@@ -7,7 +8,7 @@ struct hrtimer_clock_base
 
 *man struct hrtimer_clock_base(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 the timer base for a specific clock
 
@@ -34,7 +35,8 @@ cpu_base
     per cpu clock base
 
 index
-    clock type index for per_cpu support when moving a timer to a base on another cpu.
+    clock type index for per_cpu support when moving a timer to a base
+    on another cpu.
 
 clockid
     clock id for per_cpu support
@@ -47,3 +49,12 @@ get_time
 
 offset
     offset of this clock to the monotonic base
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

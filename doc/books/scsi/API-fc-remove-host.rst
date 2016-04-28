@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fc-remove-host:
 
@@ -7,7 +8,7 @@ fc_remove_host
 
 *man fc_remove_host(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 called to terminate any fc_transport-related elements for a scsi host.
 
@@ -27,17 +28,29 @@ Arguments
 Description
 ===========
 
-This routine is expected to be called immediately preceding the a driver's call to ``scsi_remove_host``.
+This routine is expected to be called immediately preceding the a
+driver's call to ``scsi_remove_host``.
 
 
 WARNING
 =======
 
-A driver utilizing the fc_transport, which fails to call this routine prior to ``scsi_remove_host``, will leave dangling objects in /sys/class/fc_remote_ports. Access to any of
-these objects can result in a system crash !!!
+A driver utilizing the fc_transport, which fails to call this routine
+prior to ``scsi_remove_host``, will leave dangling objects in
+/sys/class/fc_remote_ports. Access to any of these objects can result
+in a system crash !!!
 
 
 Notes
 =====
 
 This routine assumes no locks are held on entry.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

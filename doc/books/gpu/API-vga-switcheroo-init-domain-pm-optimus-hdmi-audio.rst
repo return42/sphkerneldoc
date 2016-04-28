@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vga-switcheroo-init-domain-pm-optimus-hdmi-audio:
 
@@ -7,7 +8,7 @@ vga_switcheroo_init_domain_pm_optimus_hdmi_audio
 
 *man vga_switcheroo_init_domain_pm_optimus_hdmi_audio(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 helper for driver power control
 
@@ -30,11 +31,22 @@ Arguments
 Description
 ===========
 
-Helper for GPUs whose power state is controlled by the driver's runtime pm. When the audio device resumes, the GPU needs to be woken. This helper augments the audio device's resume
-function to do that.
+Helper for GPUs whose power state is controlled by the driver's runtime
+pm. When the audio device resumes, the GPU needs to be woken. This
+helper augments the audio device's resume function to do that.
 
 
 Return
 ======
 
-0 on success, -EINVAL if no power management operations are defined for this device.
+0 on success, -EINVAL if no power management operations are defined for
+this device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-onfi-set-features:
 
@@ -7,7 +8,7 @@ nand_onfi_set_features
 
 *man nand_onfi_set_features(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [REPLACEABLE] set features for ONFI nand
 
@@ -31,3 +32,12 @@ Arguments
 
 ``subfeature_param``
     the subfeature parameters, a four bytes array.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

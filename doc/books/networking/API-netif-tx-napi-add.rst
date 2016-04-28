@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-netif-tx-napi-add:
 
@@ -7,7 +8,7 @@ netif_tx_napi_add
 
 *man netif_tx_napi_add(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize a NAPI context
 
@@ -36,5 +37,15 @@ Arguments
 Description
 ===========
 
-This variant of ``netif_napi_add`` should be used from drivers using NAPI to exclusively poll a TX queue. This will avoid we add it into napi_hash[], thus polluting this hash
-table.
+This variant of ``netif_napi_add`` should be used from drivers using
+NAPI to exclusively poll a TX queue. This will avoid we add it into
+napi_hash[], thus polluting this hash table.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

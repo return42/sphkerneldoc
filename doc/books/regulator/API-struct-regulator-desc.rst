@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-regulator-desc:
 
@@ -7,7 +8,7 @@ struct regulator_desc
 
 *man struct regulator_desc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Static regulator descriptor
 
@@ -78,15 +79,20 @@ regulators_node
     Name of node containing regulator definitions in DT.
 
 of_parse_cb
-    Optional callback called only if of_match is present. Will be called for each regulator parsed from DT, during init_data parsing. The regulator_config passed as argument to
-    the callback will be a copy of config passed to regulator_register, valid only for this particular call. Callback may freely change the config but it cannot store it for later
-    usage. Callback should return 0 on success or negative ERRNO indicating failure.
+    Optional callback called only if of_match is present. Will be
+    called for each regulator parsed from DT, during init_data parsing.
+    The regulator_config passed as argument to the callback will be a
+    copy of config passed to regulator_register, valid only for this
+    particular call. Callback may freely change the config but it cannot
+    store it for later usage. Callback should return 0 on success or
+    negative ERRNO indicating failure.
 
 id
     Numerical identifier for the regulator.
 
 continuous_voltage_range
-    Indicates if the regulator can set any voltage within constrains range.
+    Indicates if the regulator can set any voltage within constrains
+    range.
 
 n_voltages
     Number of selectors available for ops.\ ``list_voltage``.
@@ -137,10 +143,12 @@ vsel_mask
     Mask for register bitfield used for selector
 
 apply_reg
-    Register for initiate voltage change on the output when using regulator_set_voltage_sel_regmap
+    Register for initiate voltage change on the output when using
+    regulator_set_voltage_sel_regmap
 
 apply_bit
-    Register bitfield used for initiate voltage change on the output when using regulator_set_voltage_sel_regmap
+    Register bitfield used for initiate voltage change on the output
+    when using regulator_set_voltage_sel_regmap
 
 enable_reg
     Register for control when using regmap enable/disable ops
@@ -155,7 +163,8 @@ disable_val
     Disabling value for control when using regmap enable/disable ops
 
 enable_is_inverted
-    A flag to indicate set enable_mask bits to disable when using regulator_enable_regmap and friends APIs.
+    A flag to indicate set enable_mask bits to disable when using
+    regulator_enable_regmap and friends APIs.
 
 bypass_reg
     Register for control when using regmap set_bypass
@@ -194,5 +203,15 @@ of_map_mode
 Description
 ===========
 
-Each regulator registered with the core is described with a structure of this type and a struct regulator_config. This structure contains the non-varying parts of the regulator
-description.
+Each regulator registered with the core is described with a structure of
+this type and a struct regulator_config. This structure contains the
+non-varying parts of the regulator description.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---bitmap-shift-left:
 
@@ -7,7 +8,7 @@ __bitmap_shift_left
 
 *man __bitmap_shift_left(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 logical left shift of the bits in a bitmap
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Shifting left (multiplying) means moving bits in the LS -> MS direction. Zeros are fed into the vacated LS bit positions and those MS bits shifted off the top are lost.
+Shifting left (multiplying) means moving bits in the LS -> MS direction.
+Zeros are fed into the vacated LS bit positions and those MS bits
+shifted off the top are lost.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

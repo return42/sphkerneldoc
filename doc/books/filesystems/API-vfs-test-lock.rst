@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vfs-test-lock:
 
@@ -7,7 +8,7 @@ vfs_test_lock
 
 *man vfs_test_lock(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 test file byte range lock
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Returns -ERRNO on failure. Indicates presence of conflicting lock by setting conf->fl_type to something other than F_UNLCK.
+Returns -ERRNO on failure. Indicates presence of conflicting lock by
+setting conf->fl_type to something other than F_UNLCK.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

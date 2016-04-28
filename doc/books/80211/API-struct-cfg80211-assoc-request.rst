@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-cfg80211-assoc-request:
 
@@ -7,7 +8,7 @@ struct cfg80211_assoc_request
 
 *man struct cfg80211_assoc_request(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 (Re)Association request data
 
@@ -36,8 +37,11 @@ Members
 =======
 
 bss
-    The BSS to associate with. If the call is successful the driver is given a reference that it must give back to ``cfg80211_send_rx_assoc`` or to ``cfg80211_assoc_timeout``. To
-    ensure proper refcounting, new association requests while already associating must be rejected.
+    The BSS to associate with. If the call is successful the driver is
+    given a reference that it must give back to
+    ``cfg80211_send_rx_assoc`` or to ``cfg80211_assoc_timeout``. To
+    ensure proper refcounting, new association requests while already
+    associating must be rejected.
 
 ie
     Extra IEs to add to (Re)Association Request frame or ``NULL``
@@ -58,7 +62,8 @@ flags
     See ``enum`` cfg80211_assoc_req_flags
 
 ht_capa
-    HT Capabilities over-rides. Values set in ht_capa_mask will be used in ht_capa. Un-supported values will be ignored.
+    HT Capabilities over-rides. Values set in ht_capa_mask will be
+    used in ht_capa. Un-supported values will be ignored.
 
 ht_capa_mask
     The bits of ht_capa which are to be used.
@@ -73,4 +78,14 @@ vht_capa_mask
 Description
 ===========
 
-This structure provides information needed to complete IEEE 802.11 (re)association.
+This structure provides information needed to complete IEEE 802.11
+(re)association.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

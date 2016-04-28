@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i2c-master-send:
 
@@ -7,7 +8,7 @@ i2c_master_send
 
 *man i2c_master_send(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 issue a single I2C message in master transmit mode
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 Returns negative errno, or else the number of bytes written.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i2c-new-dummy:
 
@@ -7,7 +8,7 @@ i2c_new_dummy
 
 *man i2c_new_dummy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return a new i2c device bound to a dummy driver
 
@@ -15,7 +16,7 @@ return a new i2c device bound to a dummy driver
 Synopsis
 ========
 
-.. c:function:: struct i2c_client ⋆ i2c_new_dummy( struct i2c_adapter * adapter, u16 address )
+.. c:function:: struct i2c_client * i2c_new_dummy( struct i2c_adapter * adapter, u16 address )
 
 Arguments
 =========
@@ -36,10 +37,23 @@ can sleep
 Description
 ===========
 
-This returns an I2C client bound to the “dummy” driver, intended for use with devices that consume multiple addresses. Examples of such chips include various EEPROMS (like 24c04
-and 24c08 models).
+This returns an I2C client bound to the “dummy” driver, intended for use
+with devices that consume multiple addresses. Examples of such chips
+include various EEPROMS (like 24c04 and 24c08 models).
 
-These dummy devices have two main uses. First, most I2C and SMBus calls except ``i2c_transfer`` need a client handle; the dummy will be that handle. And second, this prevents the
-specified address from being bound to a different driver.
+These dummy devices have two main uses. First, most I2C and SMBus calls
+except ``i2c_transfer`` need a client handle; the dummy will be that
+handle. And second, this prevents the specified address from being bound
+to a different driver.
 
-This returns the new i2c client, which should be saved for later use with ``i2c_unregister_device``; or NULL to indicate an error.
+This returns the new i2c client, which should be saved for later use
+with ``i2c_unregister_device``; or NULL to indicate an error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

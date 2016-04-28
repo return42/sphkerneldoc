@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-ctstoself-duration:
 
@@ -7,7 +8,7 @@ ieee80211_ctstoself_duration
 
 *man ieee80211_ctstoself_duration(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Get the duration field for a CTS-to-self frame
 
@@ -27,7 +28,8 @@ Arguments
     ``struct ieee80211_vif`` pointer from the add_interface callback.
 
 ``frame_len``
-    the length of the frame that is going to be protected by the CTS-to-self.
+    the length of the frame that is going to be protected by the
+    CTS-to-self.
 
 ``frame_txctl``
     ``struct ieee80211_tx_info`` of the frame.
@@ -36,11 +38,21 @@ Arguments
 Description
 ===========
 
-If the CTS-to-self is generated in firmware, but the host system must provide the duration field, the low-level driver uses this function to receive the duration field value in
-little-endian byteorder.
+If the CTS-to-self is generated in firmware, but the host system must
+provide the duration field, the low-level driver uses this function to
+receive the duration field value in little-endian byteorder.
 
 
 Return
 ======
 
 The duration.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

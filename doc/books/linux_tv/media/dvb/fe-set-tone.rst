@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _FE_SET_TONE:
 
@@ -31,18 +32,24 @@ Arguments
 Description
 ===========
 
-This ioctl is used to set the generation of the continuous 22kHz tone. This call requires read/write permissions.
+This ioctl is used to set the generation of the continuous 22kHz tone.
+This call requires read/write permissions.
 
-Usually, satellite antenna subsystems require that the digital TV device to send a 22kHz tone in order to select between high/low band on some dual-band LNBf. It is also used to
-send signals to DiSEqC equipment, but this is done using the DiSEqC ioctls.
+Usually, satellite antenna subsystems require that the digital TV device
+to send a 22kHz tone in order to select between high/low band on some
+dual-band LNBf. It is also used to send signals to DiSEqC equipment, but
+this is done using the DiSEqC ioctls.
 
-NOTE: if more than one device is connected to the same antenna, setting a tone may interfere on other devices, as they may lose the capability of selecting the band. So, it is
-recommended that applications would change to SEC_TONE_OFF when the device is not used.
+NOTE: if more than one device is connected to the same antenna, setting
+a tone may interfere on other devices, as they may lose the capability
+of selecting the band. So, it is recommended that applications would
+change to SEC_TONE_OFF when the device is not used.
 
 RETURN VALUE
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 
 .. _fe-sec-tone-mode-t:
@@ -53,14 +60,41 @@ enum fe_sec_tone_mode
 
 .. _fe-sec-tone-mode:
 
-.. table:: enum fe_sec_tone_mode
-
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | ID                                                                                         | Description                                                                                |
-    +============================================================================================+============================================================================================+
-    | ``SEC_TONE_ON``                                                                            | Sends a 22kHz tone burst to the antenna                                                    |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | ``SEC_TONE_OFF``                                                                           | Don't send a 22kHz tone to the antenna (except if the FE_DISEQC_⋆   ioctls are called)     |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+.. flat-table:: enum fe_sec_tone_mode
+    :header-rows:  1
+    :stub-columns: 0
 
 
+    -  .. row 1
+
+       -  ID
+
+       -  Description
+
+    -  .. row 2
+
+       -  .. _`SEC-TONE-ON`:
+
+          ``SEC_TONE_ON``
+
+       -  Sends a 22kHz tone burst to the antenna
+
+    -  .. row 3
+
+       -  .. _`SEC-TONE-OFF`:
+
+          ``SEC_TONE_OFF``
+
+       -  Don't send a 22kHz tone to the antenna (except if the
+          FE_DISEQC_* ioctls are called)
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

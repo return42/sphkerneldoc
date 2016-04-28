@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-rect-calc-hscale-relaxed:
 
@@ -7,7 +8,7 @@ drm_rect_calc_hscale_relaxed
 
 *man drm_rect_calc_hscale_relaxed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 calculate the horizontal scaling factor
 
@@ -36,14 +37,26 @@ Arguments
 Description
 ===========
 
-Calculate the horizontal scaling factor as (``src`` width) / (``dst`` width).
+Calculate the horizontal scaling factor as (``src`` width) / (``dst``
+width).
 
-If the calculated scaling factor is below ``min_vscale``, decrease the height of rectangle ``dst`` to compensate.
+If the calculated scaling factor is below ``min_vscale``, decrease the
+height of rectangle ``dst`` to compensate.
 
-If the calculated scaling factor is above ``max_vscale``, decrease the height of rectangle ``src`` to compensate.
+If the calculated scaling factor is above ``max_vscale``, decrease the
+height of rectangle ``src`` to compensate.
 
 
 RETURNS
 =======
 
 The horizontal scaling factor.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

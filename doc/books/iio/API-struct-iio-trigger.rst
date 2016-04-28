@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-iio-trigger:
 
@@ -7,7 +8,7 @@ struct iio_trigger
 
 *man struct iio_trigger(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 industrial I/O trigger device
 
@@ -71,3 +72,12 @@ pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)]
 
 pool_lock
     [INTERN] protection of the irq pool.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

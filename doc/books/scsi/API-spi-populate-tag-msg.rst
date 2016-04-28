@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-populate-tag-msg:
 
@@ -7,7 +8,7 @@ spi_populate_tag_msg
 
 *man spi_populate_tag_msg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 place a tag message in a buffer
 
@@ -30,4 +31,15 @@ Arguments
 Notes
 =====
 
-designed to create the correct type of tag message for the particular request. Returns the size of the tag message. May return 0 if TCQ is disabled for this device.
+designed to create the correct type of tag message for the particular
+request. Returns the size of the tag message. May return 0 if TCQ is
+disabled for this device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

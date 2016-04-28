@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-ep-caps:
 
@@ -7,7 +8,7 @@ struct usb_ep_caps
 
 *man struct usb_ep_caps(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 endpoint capabilities description
 
@@ -47,3 +48,12 @@ dir_in
 
 dir_out
     Endpoint supports OUT direction.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

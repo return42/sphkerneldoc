@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 ++++++++++++++++++++++++++++++++++
 Linux GPU Driver Developer's Guide
@@ -25,7 +26,9 @@ Linux GPU Driver Developer's Guide
 
 **Copyright** 2015 : Lukas Wunner
 
-The contents of this file may be used under the terms of the GNU General Public License version 2 (the "GPL") as distributed in the kernel source COPYING file.
+The contents of this file may be used under the terms of the GNU General
+Public License version 2 (the "GPL") as distributed in the kernel source
+COPYING file.
 
 
 :revision: 1.0 / 2012-07-13 (*LP*)
@@ -44,3 +47,23 @@ Added vga_switcheroo documentation.
     drmCore
     drmDrivers
     vga_switcheroo
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------
+
+.. only:: html
+
+  Retrieval
+  =========
+
+  * :ref:`genindex`
+  * :ref:`search`
+

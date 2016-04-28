@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-nand-read-page-hwecc-oob-first:
 
@@ -7,7 +8,7 @@ nand_read_page_hwecc_oob_first
 
 *man nand_read_page_hwecc_oob_first(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [REPLACEABLE] hw ecc, read oob first
 
@@ -39,6 +40,18 @@ Arguments
 Description
 ===========
 
-Hardware ECC for large page chips, require OOB to be read first. For this ECC mode, the write_page method is re-used from ECC_HW. These methods read/write ECC from the OOB area,
-unlike the ECC_HW_SYNDROME support with multiple ECC steps, follows the “infix ECC” scheme and reads/writes ECC from the data area, by overwriting the NAND manufacturer bad block
-markings.
+Hardware ECC for large page chips, require OOB to be read first. For
+this ECC mode, the write_page method is re-used from ECC_HW. These
+methods read/write ECC from the OOB area, unlike the ECC_HW_SYNDROME
+support with multiple ECC steps, follows the “infix ECC” scheme and
+reads/writes ECC from the data area, by overwriting the NAND
+manufacturer bad block markings.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

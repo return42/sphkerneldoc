@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-helper-crtc-mode-set-base:
 
@@ -7,7 +8,7 @@ drm_helper_crtc_mode_set_base
 
 *man drm_helper_crtc_mode_set_base(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mode_set_base implementation for atomic plane helpers
 
@@ -36,7 +37,18 @@ Arguments
 Description
 ===========
 
-This function implements a callback useable as the ->mode_set_base used required by the CRTC helpers. The driver must provide the atomic plane helper functions for the primary
-plane.
+This function implements a callback useable as the ->mode_set_base
+used required by the CRTC helpers. The driver must provide the atomic
+plane helper functions for the primary plane.
 
-This is a transitional helper useful for converting drivers to the atomic interfaces.
+This is a transitional helper useful for converting drivers to the
+atomic interfaces.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

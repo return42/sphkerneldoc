@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-wait-on-bit-lock-action:
 
@@ -7,7 +8,7 @@ wait_on_bit_lock_action
 
 *man wait_on_bit_lock_action(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 wait for a bit to be cleared, when wanting to set it
 
@@ -36,8 +37,20 @@ Arguments
 Description
 ===========
 
-Use the standard hashed waitqueue table to wait for a bit to be cleared and then to set it, and allow the waiting action to be specified. This is like ``wait_on_bit`` but allows
-fine control of how the waiting is done.
+Use the standard hashed waitqueue table to wait for a bit to be cleared
+and then to set it, and allow the waiting action to be specified. This
+is like ``wait_on_bit`` but allows fine control of how the waiting is
+done.
 
-Returns zero if the bit was (eventually) found to be clear and was set. Returns non-zero if a signal was delivered to the process and the ``mode`` allows that signal to wake the
-process.
+Returns zero if the bit was (eventually) found to be clear and was set.
+Returns non-zero if a signal was delivered to the process and the
+``mode`` allows that signal to wake the process.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

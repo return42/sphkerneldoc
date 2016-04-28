@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-media-device:
 
@@ -7,7 +8,7 @@ struct media_device
 
 *man struct media_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Media device
 
@@ -58,8 +59,10 @@ model[32]
     Device model name
 
 driver_name[32]
-    Optional device driver name. If not set, calls to ``MEDIA_IOC_DEVICE_INFO`` will return dev->driver->name. This is needed for USB drivers for example, as otherwise they'll all
-    appear as if the driver name was “usb”.
+    Optional device driver name. If not set, calls to
+    ``MEDIA_IOC_DEVICE_INFO`` will return dev->driver->name. This is
+    needed for USB drivers for example, as otherwise they'll all appear
+    as if the driver name was “usb”.
 
 serial[40]
     Device serial number (optional)
@@ -74,7 +77,8 @@ driver_version
     Device driver version
 
 topology_version
-    Monotonic counter for storing the version of the graph topology. Should be incremented each time the topology changes.
+    Monotonic counter for storing the version of the graph topology.
+    Should be incremented each time the topology changes.
 
 id
     Unique ID used on the last registered graph object
@@ -107,7 +111,8 @@ graph_mutex
     Entities graph operation lock
 
 pm_count_walk
-    Graph walk for power state walk. Access serialised using graph_mutex.
+    Graph walk for power state walk. Access serialised using
+    graph_mutex.
 
 source_priv
     Driver Private data for enable/disable source handlers
@@ -125,24 +130,43 @@ link_notify
 Description
 ===========
 
-This structure represents an abstract high-level media device. It allows easy access to entities and provides basic media device-level support. The structure can be allocated
-directly or embedded in a larger structure.
+This structure represents an abstract high-level media device. It allows
+easy access to entities and provides basic media device-level support.
+The structure can be allocated directly or embedded in a larger
+structure.
 
-The parent ``dev`` is a physical device. It must be set before registering the media device.
+The parent ``dev`` is a physical device. It must be set before
+registering the media device.
 
-``model`` is a descriptive model name exported through sysfs. It doesn't have to be unique.
+``model`` is a descriptive model name exported through sysfs. It doesn't
+have to be unique.
 
-``enable_source`` is a handler to find source entity for the sink entity and activate the link between them if source entity is free. Drivers should call this handler before
-accessing the source.
+``enable_source`` is a handler to find source entity for the sink entity
+and activate the link between them if source entity is free. Drivers
+should call this handler before accessing the source.
 
-``disable_source`` is a handler to find source entity for the sink entity and deactivate the link between them. Drivers should call this handler to release the source.
+``disable_source`` is a handler to find source entity for the sink
+entity and deactivate the link between them. Drivers should call this
+handler to release the source.
 
 
 Note
 ====
 
-Bridge driver is expected to implement and set the handler when media_device is registered or when bridge driver finds the media_device during probe. Bridge driver sets
-source_priv with information necessary to run enable/disable source handlers.
+Bridge driver is expected to implement and set the handler when
+media_device is registered or when bridge driver finds the
+media_device during probe. Bridge driver sets source_priv with
+information necessary to run enable/disable source handlers.
 
-Use-case: find tuner entity connected to the decoder entity and check if it is available, and activate the the link between them from enable_source and deactivate from
-disable_source.
+Use-case: find tuner entity connected to the decoder entity and check if
+it is available, and activate the the link between them from
+enable_source and deactivate from disable_source.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

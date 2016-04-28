@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fc-host-post-event:
 
@@ -7,7 +8,7 @@ fc_host_post_event
 
 *man fc_host_post_event(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 called to post an even on an fc_host.
 
@@ -37,3 +38,12 @@ Notes
 =====
 
 This routine assumes no locks are held on entry.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

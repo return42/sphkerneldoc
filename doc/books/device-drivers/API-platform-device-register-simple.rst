@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-platform-device-register-simple:
 
@@ -7,7 +8,7 @@ platform_device_register_simple
 
 *man platform_device_register_simple(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a platform-level device and its resources
 
@@ -15,7 +16,7 @@ add a platform-level device and its resources
 Synopsis
 ========
 
-.. c:function:: struct platform_device ⋆ platform_device_register_simple( const char * name, int id, const struct resource * res, unsigned int num )
+.. c:function:: struct platform_device * platform_device_register_simple( const char * name, int id, const struct resource * res, unsigned int num )
 
 Arguments
 =========
@@ -36,11 +37,27 @@ Arguments
 Description
 ===========
 
-This function creates a simple platform device that requires minimal resource and memory management. Canned release function freeing memory allocated for the device allows drivers
-using such devices to be unloaded without waiting for the last reference to the device to be dropped.
+This function creates a simple platform device that requires minimal
+resource and memory management. Canned release function freeing memory
+allocated for the device allows drivers using such devices to be
+unloaded without waiting for the last reference to the device to be
+dropped.
 
-This interface is primarily intended for use with legacy drivers which probe hardware directly. Because such drivers create sysfs device nodes themselves, rather than letting
-system infrastructure handle such device enumeration tasks, they don't fully conform to the Linux driver model. In particular, when such drivers are built as modules, they can't be
+This interface is primarily intended for use with legacy drivers which
+probe hardware directly. Because such drivers create sysfs device nodes
+themselves, rather than letting system infrastructure handle such device
+enumeration tasks, they don't fully conform to the Linux driver model.
+In particular, when such drivers are built as modules, they can't be
 “hotplugged”.
 
-Returns ``struct platform_device`` pointer on success, or ``ERR_PTR`` on error.
+Returns ``struct platform_device`` pointer on success, or ``ERR_PTR`` on
+error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

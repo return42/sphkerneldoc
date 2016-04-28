@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ccw1:
 
@@ -7,7 +8,7 @@ struct ccw1
 
 *man struct ccw1(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 channel command word
 
@@ -44,4 +45,15 @@ cda
 Description
 ===========
 
-The ccw is the basic structure to build channel programs that perform operations with the device or the control unit. Only Format-1 channel command words are supported.
+The ccw is the basic structure to build channel programs that perform
+operations with the device or the control unit. Only Format-1 channel
+command words are supported.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

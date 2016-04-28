@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsiop-mode-sense:
 
@@ -7,7 +8,7 @@ ata_scsiop_mode_sense
 
 *man ata_scsiop_mode_sense(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Simulate MODE SENSE 6, 10 commands
 
@@ -30,10 +31,21 @@ Arguments
 Description
 ===========
 
-Simulate MODE SENSE commands. Assume this is invoked for direct access devices (e.g. disks) only. There should be no block descriptor for other device types.
+Simulate MODE SENSE commands. Assume this is invoked for direct access
+devices (e.g. disks) only. There should be no block descriptor for other
+device types.
 
 
 LOCKING
 =======
 
 spin_lock_irqsave(host lock)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

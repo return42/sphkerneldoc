@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-pcm-hw-param-first:
 
@@ -7,7 +8,7 @@ snd_pcm_hw_param_first
 
 *man snd_pcm_hw_param_first(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 refine config space and return minimum value
 
@@ -36,10 +37,20 @@ Arguments
 Description
 ===========
 
-Inside configuration space defined by ``params`` remove from ``var`` all values > minimum. Reduce configuration space accordingly.
+Inside configuration space defined by ``params`` remove from ``var`` all
+values > minimum. Reduce configuration space accordingly.
 
 
 Return
 ======
 
 The minimum, or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---bitmap-parse:
 
@@ -7,7 +8,7 @@ __bitmap_parse
 
 *man __bitmap_parse(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 convert an ASCII hex string into a bitmap.
 
@@ -24,7 +25,8 @@ Arguments
     pointer to buffer containing string.
 
 ``buflen``
-    buffer size in bytes. If string is smaller than this then it must be terminated with a \\0.
+    buffer size in bytes. If string is smaller than this then it must be
+    terminated with a \\0.
 
 ``is_user``
     location of buffer, 0 indicates kernel space
@@ -39,6 +41,18 @@ Arguments
 Description
 ===========
 
-Commas group hex digits into chunks. Each chunk defines exactly 32 bits of the resultant bitmask. No chunk may specify a value larger than 32 bits (``-EOVERFLOW``), and if a chunk
-specifies a smaller value then leading 0-bits are prepended. ``-EINVAL`` is returned for illegal characters and for grouping errors such as “1,,5”, “,44”, “,” and "". Leading and
-trailing whitespace accepted, but not embedded whitespace.
+Commas group hex digits into chunks. Each chunk defines exactly 32 bits
+of the resultant bitmask. No chunk may specify a value larger than 32
+bits (``-EOVERFLOW``), and if a chunk specifies a smaller value then
+leading 0-bits are prepended. ``-EINVAL`` is returned for illegal
+characters and for grouping errors such as “1,,5”, “,44”, “,” and "".
+Leading and trailing whitespace accepted, but not embedded whitespace.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

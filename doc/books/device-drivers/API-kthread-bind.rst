@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kthread-bind:
 
@@ -7,7 +8,7 @@ kthread_bind
 
 *man kthread_bind(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 bind a just-created kthread to a cpu.
 
@@ -30,4 +31,15 @@ Arguments
 Description
 ===========
 
-This function is equivalent to ``set_cpus_allowed``, except that ``cpu`` doesn't need to be online, and the thread must be stopped (i.e., just returned from ``kthread_create``).
+This function is equivalent to ``set_cpus_allowed``, except that ``cpu``
+doesn't need to be online, and the thread must be stopped (i.e., just
+returned from ``kthread_create``).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

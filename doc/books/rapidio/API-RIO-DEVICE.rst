@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-RIO-DEVICE:
 
@@ -7,7 +8,7 @@ RIO_DEVICE
 
 *man RIO_DEVICE(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 macro used to describe a specific RIO device
 
@@ -30,4 +31,15 @@ Arguments
 Description
 ===========
 
-This macro is used to create a struct rio_device_id that matches a specific device. The assembly vendor and assembly device fields will be set to ``RIO_ANY_ID``.
+This macro is used to create a struct rio_device_id that matches a
+specific device. The assembly vendor and assembly device fields will be
+set to ``RIO_ANY_ID``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

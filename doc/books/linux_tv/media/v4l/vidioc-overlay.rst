@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _vidioc-overlay:
 
@@ -30,17 +31,32 @@ Arguments
 Description
 ===========
 
-This ioctl is part of the :ref:`video overlay <overlay>` I/O method. Applications call ``VIDIOC_OVERLAY`` to start or stop the overlay. It takes a pointer to an integer which
-must be set to zero by the application to stop overlay, to one to start.
+This ioctl is part of the :ref:`video overlay <overlay>` I/O method.
+Applications call ``VIDIOC_OVERLAY`` to start or stop the overlay. It
+takes a pointer to an integer which must be set to zero by the
+application to stop overlay, to one to start.
 
-Drivers do not support :ref:`VIDIOC_STREAMON <vidioc-streamon>` or :ref:`VIDIOC_STREAMOFF <vidioc-streamon>` with ``V4L2_BUF_TYPE_VIDEO_OVERLAY``.
+Drivers do not support :ref:`VIDIOC_STREAMON <vidioc-streamon>` or
+:ref:`VIDIOC_STREAMOFF <vidioc-streamon>` with
+``V4L2_BUF_TYPE_VIDEO_OVERLAY``.
 
 
 Return Value
 ============
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 EINVAL
-    The overlay parameters have not been set up. See :ref:`overlay` for the necessary steps.
+    The overlay parameters have not been set up. See :ref:`overlay`
+    for the necessary steps.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

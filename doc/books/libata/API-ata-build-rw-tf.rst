@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-build-rw-tf:
 
@@ -7,7 +8,7 @@ ata_build_rw_tf
 
 *man ata_build_rw_tf(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Build ATA taskfile for given read/write request
 
@@ -44,10 +45,21 @@ LOCKING
 
 None.
 
-Build ATA taskfile ``tf`` for read/write request described by ``block``, ``n_block``, ``tf_flags`` and ``tag`` on ``dev``.
+Build ATA taskfile ``tf`` for read/write request described by ``block``,
+``n_block``, ``tf_flags`` and ``tag`` on ``dev``.
 
 
 RETURNS
 =======
 
-0 on success, -ERANGE if the request is too large for ``dev``, -EINVAL if the request is invalid.
+0 on success, -ERANGE if the request is too large for ``dev``, -EINVAL
+if the request is invalid.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

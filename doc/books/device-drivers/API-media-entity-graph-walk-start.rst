@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-entity-graph-walk-start:
 
@@ -7,7 +8,7 @@ media_entity_graph_walk_start
 
 *man media_entity_graph_walk_start(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Start walking the media graph at a given entity
 
@@ -30,6 +31,18 @@ Arguments
 Description
 ===========
 
-Before using this function, ``media_entity_graph_walk_init`` must be used to allocate resources used for walking the graph. This function initializes the graph traversal structure
-to walk the entities graph starting at the given entity. The traversal structure must not be modified by the caller during graph traversal. After the graph walk, the resources must
-be released using ``media_entity_graph_walk_cleanup``.
+Before using this function, ``media_entity_graph_walk_init`` must be
+used to allocate resources used for walking the graph. This function
+initializes the graph traversal structure to walk the entities graph
+starting at the given entity. The traversal structure must not be
+modified by the caller during graph traversal. After the graph walk, the
+resources must be released using ``media_entity_graph_walk_cleanup``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

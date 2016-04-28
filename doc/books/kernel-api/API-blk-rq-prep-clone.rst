@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-rq-prep-clone:
 
@@ -7,7 +8,7 @@ blk_rq_prep_clone
 
 *man blk_rq_prep_clone(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Helper function to setup clone request
 
@@ -33,7 +34,8 @@ Arguments
     memory allocation mask for bio
 
 ``bio_ctr``
-    setup function to be called for each clone bio. Returns ``0`` for success, non ``0`` for failure.
+    setup function to be called for each clone bio. Returns ``0`` for
+    success, non ``0`` for failure.
 
 ``data``
     private data to be passed to ``bio_ctr``
@@ -42,6 +44,19 @@ Arguments
 Description
 ===========
 
-Clones bios in ``rq_src`` to ``rq``, and copies attributes of ``rq_src`` to ``rq``. The actual data parts of ``rq_src`` (e.g. ->cmd, ->sense) are not copied, and copying such parts
-is the caller's responsibility. Also, pages which the original bios are pointing to are not copied and the cloned bios just point same pages. So cloned bios must be completed
-before original bios, which means the caller must complete ``rq`` before ``rq_src``.
+Clones bios in ``rq_src`` to ``rq``, and copies attributes of ``rq_src``
+to ``rq``. The actual data parts of ``rq_src`` (e.g. ->cmd, ->sense) are
+not copied, and copying such parts is the caller's responsibility. Also,
+pages which the original bios are pointing to are not copied and the
+cloned bios just point same pages. So cloned bios must be completed
+before original bios, which means the caller must complete ``rq`` before
+``rq_src``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

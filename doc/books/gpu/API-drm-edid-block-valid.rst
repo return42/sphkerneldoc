@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-edid-block-valid:
 
@@ -7,7 +8,7 @@ drm_edid_block_valid
 
 *man drm_edid_block_valid(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Sanity check the EDID block (base or extension)
 
@@ -36,10 +37,20 @@ Arguments
 Description
 ===========
 
-Validate a base or extension EDID block and optionally dump bad blocks to the console.
+Validate a base or extension EDID block and optionally dump bad blocks
+to the console.
 
 
 Return
 ======
 
 True if the block is valid, false otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

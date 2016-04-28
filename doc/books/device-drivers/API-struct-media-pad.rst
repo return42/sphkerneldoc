@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-media-pad:
 
@@ -7,7 +8,7 @@ struct media_pad
 
 *man struct media_pad(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 A media pad graph object.
 
@@ -38,4 +39,13 @@ index
     Pad index in the entity pads array, numbered from 0 to n
 
 flags
-    Pad flags, as defined in uapi/media.h (MEDIA_PAD_FL_⋆)
+    Pad flags, as defined in uapi/media.h (MEDIA_PAD_FL_*)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-codec-init-bias-level:
 
@@ -7,7 +8,7 @@ snd_soc_codec_init_bias_level
 
 *man snd_soc_codec_init_bias_level(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize CODEC DAPM bias level
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Initializes the CODEC DAPM bias level. See ``snd_soc_dapm_init_bias_level``.
+Initializes the CODEC DAPM bias level. See
+``snd_soc_dapm_init_bias_level``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

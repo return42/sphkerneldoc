@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _proc:
 
@@ -24,6 +25,7 @@ sysctl interface
     API-proc-dointvec-userhz-jiffies
     API-proc-dointvec-ms-jiffies
 
+
 .. _proc_filesystem_interface:
 
 proc filesystem interface
@@ -34,3 +36,14 @@ proc filesystem interface
     :maxdepth: 1
 
     API-proc-flush-task
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

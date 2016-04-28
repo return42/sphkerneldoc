@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-buffer-dmasync-sg:
 
@@ -7,7 +8,7 @@ usb_buffer_dmasync_sg
 
 *man usb_buffer_dmasync_sg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 synchronize DMA and CPU view of scatterlist buffer(s)
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Use this when you are re-using a scatterlist's data buffers for another USB request.
+Use this when you are re-using a scatterlist's data buffers for another
+USB request.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

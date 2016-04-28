@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i915-audio-component-ops:
 
@@ -7,7 +8,7 @@ struct i915_audio_component_ops
 
 *man struct i915_audio_component_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Ops implemented by i915 driver, called by hda driver
 
@@ -53,13 +54,26 @@ get_cdclk_freq
 sync_audio_rate
     set n/cts based on the sample rate
 
-    Called from audio driver. After audio driver sets the sample rate, it will call this function to set n/cts
+    Called from audio driver. After audio driver sets the sample rate,
+    it will call this function to set n/cts
 
 get_eld
     fill the audio state and ELD bytes for the given port
 
-    Called from audio driver to get the HDMI/DP audio state of the given digital port, and also fetch ELD bytes to the given pointer.
+    Called from audio driver to get the HDMI/DP audio state of the given
+    digital port, and also fetch ELD bytes to the given pointer.
 
-    It returns the byte size of the original ELD (not the actually copied size), zero for an invalid ELD, or a negative error code.
+    It returns the byte size of the original ELD (not the actually
+    copied size), zero for an invalid ELD, or a negative error code.
 
-    Note that the returned size may be over ``max_bytes``. Then it implies that only a part of ELD has been copied to the buffer.
+    Note that the returned size may be over ``max_bytes``. Then it
+    implies that only a part of ELD has been copied to the buffer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

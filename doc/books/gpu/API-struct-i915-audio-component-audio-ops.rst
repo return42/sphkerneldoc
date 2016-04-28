@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i915-audio-component-audio-ops:
 
@@ -7,7 +8,7 @@ struct i915_audio_component_audio_ops
 
 *man struct i915_audio_component_audio_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Ops implemented by hda driver, called by i915 driver
 
@@ -30,7 +31,19 @@ audio_ptr
     Pointer to be used in call to pin_eld_notify
 
 pin_eld_notify
-    Notify the HDA driver that pin sense and/or ELD information has changed
+    Notify the HDA driver that pin sense and/or ELD information has
+    changed
 
-    Called when the i915 driver has set up audio pipeline or has just begun to tear it down. This allows the HDA driver to update its status accordingly (even when the HDA
-    controller is in power save mode).
+    Called when the i915 driver has set up audio pipeline or has just
+    begun to tear it down. This allows the HDA driver to update its
+    status accordingly (even when the HDA controller is in power save
+    mode).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

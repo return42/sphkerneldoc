@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-common-swizzle:
 
@@ -7,7 +8,7 @@ pci_common_swizzle
 
 *man pci_common_swizzle(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 swizzle INTx all the way to root bridge
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Perform INTx swizzling for a device. This traverses through all PCI-to-PCI bridges all the way up to a PCI root bus.
+Perform INTx swizzling for a device. This traverses through all
+PCI-to-PCI bridges all the way up to a PCI root bus.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

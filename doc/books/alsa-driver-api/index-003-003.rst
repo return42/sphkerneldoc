@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 =======
 PCM API
@@ -94,6 +95,7 @@ PCM Core
     API-snd-pcm-chmap-substream
     API-pcm-format-to-bits
 
+
 PCM Format Helpers
 ==================
 
@@ -117,6 +119,7 @@ PCM Format Helpers
     API-snd-pcm-rate-mask-intersect
     API-snd-pcm-rate-range-to-bits
 
+
 PCM Memory Management
 =====================
 
@@ -132,6 +135,7 @@ PCM Memory Management
     API-snd-pcm-lib-free-pages
     API-snd-pcm-lib-free-vmalloc-buffer
     API-snd-pcm-lib-get-vmalloc-page
+
 
 PCM DMA Engine API
 ==================
@@ -153,3 +157,14 @@ PCM DMA Engine API
     API-snd-pcm-substream-to-dma-direction
     API-struct-snd-dmaengine-dai-dma-data
     API-struct-snd-dmaengine-pcm-config
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

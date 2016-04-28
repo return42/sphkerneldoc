@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mptscsih-IssueTaskMgmt:
 
@@ -7,7 +8,7 @@ mptscsih_IssueTaskMgmt
 
 *man mptscsih_IssueTaskMgmt(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Generic send Task Management function.
 
@@ -45,8 +46,18 @@ Arguments
 Remark
 ======
 
-_HardResetHandler can be invoked from an interrupt thread (timer) or a non-interrupt thread. In the former, must not call ``schedule``.
+_HardResetHandler can be invoked from an interrupt thread (timer) or a
+non-interrupt thread. In the former, must not call ``schedule``.
 
 Not all fields are meaningfull for all task types.
 
 Returns 0 for SUCCESS, or FAILED.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

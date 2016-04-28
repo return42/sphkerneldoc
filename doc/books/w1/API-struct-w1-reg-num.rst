@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-w1-reg-num:
 
@@ -7,7 +8,7 @@ struct w1_reg_num
 
 *man struct w1_reg_num(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 broken out slave device id
 
@@ -52,3 +53,12 @@ id
 
 family
     identifies the type of device
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

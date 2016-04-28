@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-remap-vmalloc-range:
 
@@ -7,7 +8,7 @@ remap_vmalloc_range
 
 *man remap_vmalloc_range(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 map vmalloc pages to userspace
 
@@ -35,6 +36,17 @@ Returns
 
 0 for success, -Exxx on failure
 
-This function checks that addr is a valid vmalloc'ed area, and that it is big enough to cover the vma. Will return failure if that criteria isn't met.
+This function checks that addr is a valid vmalloc'ed area, and that it
+is big enough to cover the vma. Will return failure if that criteria
+isn't met.
 
 Similar to ``remap_pfn_range`` (see mm/memory.c)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

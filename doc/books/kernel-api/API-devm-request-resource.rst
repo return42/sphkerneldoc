@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-devm-request-resource:
 
@@ -7,7 +8,7 @@ devm_request_resource
 
 *man devm_request_resource(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 request and reserve an I/O or memory resource
 
@@ -33,10 +34,23 @@ Arguments
 Description
 ===========
 
-This is a device-managed version of ``request_resource``. There is usually no need to release resources requested by this function explicitly since that will be taken care of when
-the device is unbound from its driver. If for some reason the resource needs to be released explicitly, because of ordering issues for example, drivers must call
+This is a device-managed version of ``request_resource``. There is
+usually no need to release resources requested by this function
+explicitly since that will be taken care of when the device is unbound
+from its driver. If for some reason the resource needs to be released
+explicitly, because of ordering issues for example, drivers must call
 ``devm_release_resource`` rather than the regular ``release_resource``.
 
-When a conflict is detected between any existing resources and the newly requested resource, an error message will be printed.
+When a conflict is detected between any existing resources and the newly
+requested resource, an error message will be printed.
 
 Returns 0 on success or a negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

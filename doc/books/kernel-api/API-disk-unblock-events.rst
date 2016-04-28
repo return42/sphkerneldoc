@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-disk-unblock-events:
 
@@ -7,7 +8,7 @@ disk_unblock_events
 
 *man disk_unblock_events(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 unblock disk event checking
 
@@ -27,10 +28,20 @@ Arguments
 Description
 ===========
 
-Undo ``disk_block_events``. When the block count reaches zero, it starts events polling if configured.
+Undo ``disk_block_events``. When the block count reaches zero, it starts
+events polling if configured.
 
 
 CONTEXT
 =======
 
 Don't care. Safe to call from irq context.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-unregister-netdev:
 
@@ -7,7 +8,7 @@ unregister_netdev
 
 *man unregister_netdev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 remove device from the kernel
 
@@ -27,6 +28,18 @@ Arguments
 Description
 ===========
 
-This function shuts down a device interface and removes it from the kernel tables.
+This function shuts down a device interface and removes it from the
+kernel tables.
 
-This is just a wrapper for unregister_netdevice that takes the rtnl semaphore. In general you want to use this and not unregister_netdevice.
+This is just a wrapper for unregister_netdevice that takes the rtnl
+semaphore. In general you want to use this and not
+unregister_netdevice.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

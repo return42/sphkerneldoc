@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-scr-write:
 
@@ -7,7 +8,7 @@ sata_scr_write
 
 *man sata_scr_write(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 write SCR register of the specified port
 
@@ -33,8 +34,9 @@ Arguments
 Description
 ===========
 
-Write ``val`` to SCR register ``reg`` of ``link``. This function is guaranteed to succeed if ``link`` is ap->link, the cable type of the port is SATA and the port implements
-->scr_read.
+Write ``val`` to SCR register ``reg`` of ``link``. This function is
+guaranteed to succeed if ``link`` is ap->link, the cable type of the
+port is SATA and the port implements ->scr_read.
 
 
 LOCKING
@@ -47,3 +49,12 @@ RETURNS
 =======
 
 0 on success, negative errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

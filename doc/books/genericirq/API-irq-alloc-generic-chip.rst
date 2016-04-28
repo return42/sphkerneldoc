@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-irq-alloc-generic-chip:
 
@@ -7,7 +8,7 @@ irq_alloc_generic_chip
 
 *man irq_alloc_generic_chip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Allocate a generic chip and initialize it
 
@@ -15,7 +16,7 @@ Allocate a generic chip and initialize it
 Synopsis
 ========
 
-.. c:function:: struct irq_chip_generic ⋆ irq_alloc_generic_chip( const char * name, int num_ct, unsigned int irq_base, void __iomem * reg_base, irq_flow_handler_t handler )
+.. c:function:: struct irq_chip_generic * irq_alloc_generic_chip( const char * name, int num_ct, unsigned int irq_base, void __iomem * reg_base, irq_flow_handler_t handler )
 
 Arguments
 =========
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Returns an initialized irq_chip_generic structure. The chip defaults to the primary (index 0) irq_chip_type and ``handler``
+Returns an initialized irq_chip_generic structure. The chip defaults
+to the primary (index 0) irq_chip_type and ``handler``
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

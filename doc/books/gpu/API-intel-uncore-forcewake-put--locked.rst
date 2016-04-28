@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-uncore-forcewake-put--locked:
 
@@ -7,7 +8,7 @@ intel_uncore_forcewake_put__locked
 
 *man intel_uncore_forcewake_put__locked(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 grab forcewake domain references
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-See ``intel_uncore_forcewake_put``. This variant places the onus on the caller to explicitly handle the dev_priv->uncore.lock spinlock.
+See ``intel_uncore_forcewake_put``. This variant places the onus on the
+caller to explicitly handle the dev_priv->uncore.lock spinlock.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

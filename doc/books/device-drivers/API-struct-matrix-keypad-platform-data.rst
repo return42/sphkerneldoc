@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-matrix-keypad-platform-data:
 
@@ -7,7 +8,7 @@ struct matrix_keypad_platform_data
 
 *man struct matrix_keypad_platform_data(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 platform-dependent keypad data
 
@@ -52,13 +53,15 @@ num_col_gpios
     actual number of col gpios used by device
 
 col_scan_delay_us
-    delay, measured in microseconds, that is needed before we can keypad after activating column gpio
+    delay, measured in microseconds, that is needed before we can keypad
+    after activating column gpio
 
 debounce_ms
     debounce interval in milliseconds
 
 clustered_irq
-    may be specified if interrupts of all row/column GPIOs are bundled to one single irq
+    may be specified if interrupts of all row/column GPIOs are bundled
+    to one single irq
 
 clustered_irq_flags
     flags that are needed for the clustered irq
@@ -76,4 +79,14 @@ no_autorepeat
 Description
 ===========
 
-This structure represents platform-specific data that use used by matrix_keypad driver to perform proper initialization.
+This structure represents platform-specific data that use used by
+matrix_keypad driver to perform proper initialization.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

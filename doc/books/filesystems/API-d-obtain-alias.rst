@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-d-obtain-alias:
 
@@ -7,7 +8,7 @@ d_obtain_alias
 
 *man d_obtain_alias(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 find or allocate a DISCONNECTED dentry for a given inode
 
@@ -15,7 +16,7 @@ find or allocate a DISCONNECTED dentry for a given inode
 Synopsis
 ========
 
-.. c:function:: struct dentry ⋆ d_obtain_alias( struct inode * inode )
+.. c:function:: struct dentry * d_obtain_alias( struct inode * inode )
 
 Arguments
 =========
@@ -27,10 +28,25 @@ Arguments
 Description
 ===========
 
-Obtain a dentry for an inode resulting from NFS filehandle conversion or similar open by handle operations. The returned dentry may be anonymous, or may have a full name (if the
-inode was already in the cache).
+Obtain a dentry for an inode resulting from NFS filehandle conversion or
+similar open by handle operations. The returned dentry may be anonymous,
+or may have a full name (if the inode was already in the cache).
 
-When called on a directory inode, we must ensure that the inode only ever has one dentry. If a dentry is found, that is returned instead of allocating a new one.
+When called on a directory inode, we must ensure that the inode only
+ever has one dentry. If a dentry is found, that is returned instead of
+allocating a new one.
 
-On successful return, the reference to the inode has been transferred to the dentry. In case of an error the reference on the inode is released. To make it easier to use in export
-operations a ``NULL`` or IS_ERR inode may be passed in and the error will be propagated to the return value, with a ``NULL`` ``inode`` replaced by ERR_PTR(-ESTALE).
+On successful return, the reference to the inode has been transferred to
+the dentry. In case of an error the reference on the inode is released.
+To make it easier to use in export operations a ``NULL`` or IS_ERR
+inode may be passed in and the error will be propagated to the return
+value, with a ``NULL`` ``inode`` replaced by ERR_PTR(-ESTALE).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

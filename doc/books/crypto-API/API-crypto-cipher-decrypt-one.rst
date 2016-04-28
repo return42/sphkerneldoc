@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-crypto-cipher-decrypt-one:
 
@@ -7,7 +8,7 @@ crypto_cipher_decrypt_one
 
 *man crypto_cipher_decrypt_one(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 decrypt one block of ciphertext
 
@@ -33,4 +34,15 @@ Arguments
 Description
 ===========
 
-Invoke the decryption operation of one block. The caller must ensure that the plaintext and ciphertext buffers are at least one block in size.
+Invoke the decryption operation of one block. The caller must ensure
+that the plaintext and ciphertext buffers are at least one block in
+size.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

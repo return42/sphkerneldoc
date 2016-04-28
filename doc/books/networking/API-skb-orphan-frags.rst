@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-orphan-frags:
 
@@ -7,7 +8,7 @@ skb_orphan_frags
 
 *man skb_orphan_frags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 orphan the frags contained in a buffer
 
@@ -30,4 +31,15 @@ Arguments
 Description
 ===========
 
-For each frag in the SKB which needs a destructor (i.e. has an owner) create a copy of that frag and release the original page by calling the destructor.
+For each frag in the SKB which needs a destructor (i.e. has an owner)
+create a copy of that frag and release the original page by calling the
+destructor.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

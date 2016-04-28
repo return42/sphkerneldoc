@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-add-lun:
 
@@ -7,7 +8,7 @@ scsi_add_lun
 
 *man scsi_add_lun(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate and fully initialze a scsi_device
 
@@ -36,7 +37,8 @@ Arguments
 Description
 ===========
 
-Initialize the scsi_device ``sdev``. Optionally set fields based on values in ⋆ ``bflags``.
+Initialize the scsi_device ``sdev``. Optionally set fields based on
+values in *\ ``bflags``.
 
 
 SCSI_SCAN_NO_RESPONSE
@@ -49,3 +51,12 @@ SCSI_SCAN_LUN_PRESENT
 =====================
 
 a new scsi_device was allocated and initialized
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

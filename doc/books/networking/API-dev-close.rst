@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-dev-close:
 
@@ -7,7 +8,7 @@ dev_close
 
 *man dev_close(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 shutdown an interface.
 
@@ -27,5 +28,16 @@ Arguments
 Description
 ===========
 
-This function moves an active device into down state. A ``NETDEV_GOING_DOWN`` is sent to the netdev notifier chain. The device is then deactivated and finally a ``NETDEV_DOWN`` is
-sent to the notifier chain.
+This function moves an active device into down state. A
+``NETDEV_GOING_DOWN`` is sent to the netdev notifier chain. The device
+is then deactivated and finally a ``NETDEV_DOWN`` is sent to the
+notifier chain.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

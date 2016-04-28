@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-parport-negotiate:
 
@@ -7,7 +8,7 @@ parport_negotiate
 
 *man parport_negotiate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 negotiate an IEEE 1284 mode
 
@@ -30,7 +31,19 @@ Arguments
 Description
 ===========
 
-Use this to negotiate to a particular IEEE 1284 transfer mode. The ``mode`` parameter should be one of the constants in parport.h starting ``IEEE1284_MODE_xxx``.
+Use this to negotiate to a particular IEEE 1284 transfer mode. The
+``mode`` parameter should be one of the constants in parport.h starting
+``IEEE1284_MODE_xxx``.
 
-The return value is 0 if the peripheral has accepted the negotiation to the mode specified, -1 if the peripheral is not IEEE 1284 compliant (or not present), or 1 if the peripheral
-has rejected the negotiation.
+The return value is 0 if the peripheral has accepted the negotiation to
+the mode specified, -1 if the peripheral is not IEEE 1284 compliant (or
+not present), or 1 if the peripheral has rejected the negotiation.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

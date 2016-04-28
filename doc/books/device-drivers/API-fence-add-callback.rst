@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fence-add-callback:
 
@@ -7,7 +8,7 @@ fence_add_callback
 
 *man fence_add_callback(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a callback to be called when the fence is signaled
 
@@ -33,16 +34,30 @@ Arguments
 Description
 ===========
 
-cb will be initialized by fence_add_callback, no initialization by the caller is required. Any number of callbacks can be registered to a fence, but a callback can only be
-registered to one fence at a time.
+cb will be initialized by fence_add_callback, no initialization by the
+caller is required. Any number of callbacks can be registered to a
+fence, but a callback can only be registered to one fence at a time.
 
-Note that the callback can be called from an atomic context. If fence is already signaled, this function will return -ENOENT (and ⋆not⋆ call the callback)
+Note that the callback can be called from an atomic context. If fence is
+already signaled, this function will return -ENOENT (and *not* call the
+callback)
 
-Add a software callback to the fence. Same restrictions apply to refcount as it does to fence_wait, however the caller doesn't need to
+Add a software callback to the fence. Same restrictions apply to
+refcount as it does to fence_wait, however the caller doesn't need to
 
 
 keep a refcount to fence afterwards
 ===================================
 
-when software access is enabled, the creator of the fence is required to keep the fence alive until after it signals with fence_signal. The callback itself can be called from irq
-context.
+when software access is enabled, the creator of the fence is required to
+keep the fence alive until after it signals with fence_signal. The
+callback itself can be called from irq context.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

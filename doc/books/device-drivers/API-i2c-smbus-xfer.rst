@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i2c-smbus-xfer:
 
@@ -7,7 +8,7 @@ i2c_smbus_xfer
 
 *man i2c_smbus_xfer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 execute SMBus protocol operations
 
@@ -27,7 +28,7 @@ Arguments
     Address of SMBus slave on that bus
 
 ``flags``
-    I2C_CLIENT_⋆ flags (usually zero or I2C_CLIENT_PEC)
+    I2C_CLIENT_* flags (usually zero or I2C_CLIENT_PEC)
 
 ``read_write``
     I2C_SMBUS_READ or I2C_SMBUS_WRITE
@@ -45,4 +46,14 @@ Arguments
 Description
 ===========
 
-This executes an SMBus protocol operation, and returns a negative errno code else zero on success.
+This executes an SMBus protocol operation, and returns a negative errno
+code else zero on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

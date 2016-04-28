@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-generic-splice-sendpage:
 
@@ -7,7 +8,7 @@ generic_splice_sendpage
 
 *man generic_splice_sendpage(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 splice data from a pipe to a socket
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Will send ``len`` bytes from the pipe to a network socket. No data copying is involved.
+Will send ``len`` bytes from the pipe to a network socket. No data
+copying is involved.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i2c-driver:
 
@@ -7,7 +8,7 @@ struct i2c_driver
 
 *man struct i2c_driver(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represent an I2C device driver
 
@@ -76,13 +77,31 @@ clients
 Description
 ===========
 
-The driver.owner field should be set to the module owner of this driver. The driver.name field should be set to the name of this driver.
+The driver.owner field should be set to the module owner of this driver.
+The driver.name field should be set to the name of this driver.
 
-For automatic device detection, both ``detect`` and ``address_list`` must be defined. ``class`` should also be set, otherwise only devices forced with module parameters will be
-created. The detect function must fill at least the name field of the i2c_board_info structure it is handed upon successful detection, and possibly also the flags field.
+For automatic device detection, both ``detect`` and ``address_list``
+must be defined. ``class`` should also be set, otherwise only devices
+forced with module parameters will be created. The detect function must
+fill at least the name field of the i2c_board_info structure it is
+handed upon successful detection, and possibly also the flags field.
 
-If ``detect`` is missing, the driver will still work fine for enumerated devices. Detected devices simply won't be supported. This is expected for the many I2C/SMBus devices which
-can't be detected reliably, and the ones which can always be enumerated in practice.
+If ``detect`` is missing, the driver will still work fine for enumerated
+devices. Detected devices simply won't be supported. This is expected
+for the many I2C/SMBus devices which can't be detected reliably, and the
+ones which can always be enumerated in practice.
 
-The i2c_client structure which is handed to the ``detect`` callback is not a real i2c_client. It is initialized just enough so that you can call i2c_smbus_read_byte_data and
-friends on it. Don't do anything else with it. In particular, calling dev_dbg and friends on it is not allowed.
+The i2c_client structure which is handed to the ``detect`` callback is
+not a real i2c_client. It is initialized just enough so that you can
+call i2c_smbus_read_byte_data and friends on it. Don't do anything
+else with it. In particular, calling dev_dbg and friends on it is not
+allowed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

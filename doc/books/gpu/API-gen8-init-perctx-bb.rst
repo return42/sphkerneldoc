@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-gen8-init-perctx-bb:
 
@@ -7,7 +8,7 @@ gen8_init_perctx_bb
 
 *man gen8_init_perctx_bb(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initialize per ctx batch with WA
 
@@ -30,8 +31,10 @@ Arguments
     page in which WA are loaded
 
 ``offset``
-    This field specifies the start of this batch. This batch is started immediately after indirect_ctx batch. Since we ensure that indirect_ctx ends on a cacheline this batch is
-    aligned automatically.
+    This field specifies the start of this batch. This batch is started
+    immediately after indirect_ctx batch. Since we ensure that
+    indirect_ctx ends on a cacheline this batch is aligned
+    automatically.
 
 
 offset
@@ -51,4 +54,15 @@ Description
 
 The number of DWORDS written are returned using this field.
 
-This batch is terminated with MI_BATCH_BUFFER_END and so we need not add padding to align it with cacheline as padding after MI_BATCH_BUFFER_END is redundant.
+This batch is terminated with MI_BATCH_BUFFER_END and so we need not
+add padding to align it with cacheline as padding after
+MI_BATCH_BUFFER_END is redundant.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

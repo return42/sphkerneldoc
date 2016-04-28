@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-dmaengine-pcm-config:
 
@@ -7,7 +8,7 @@ struct snd_dmaengine_pcm_config
 
 *man struct snd_dmaengine_pcm_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Configuration data for dmaengine based PCM
 
@@ -32,19 +33,25 @@ Members
 =======
 
 prepare_slave_config
-    Callback used to fill in the DMA slave_config for a PCM substream. Will be called from the PCM drivers hwparams callback.
+    Callback used to fill in the DMA slave_config for a PCM substream.
+    Will be called from the PCM drivers hwparams callback.
 
 compat_request_channel
-    Callback to request a DMA channel for platforms which do not use devicetree.
+    Callback to request a DMA channel for platforms which do not use
+    devicetree.
 
 compat_filter_fn
-    Will be used as the filter function when requesting a channel for platforms which do not use devicetree. The filter parameter will be the DAI's DMA data.
+    Will be used as the filter function when requesting a channel for
+    platforms which do not use devicetree. The filter parameter will be
+    the DAI's DMA data.
 
 dma_dev
-    If set, request DMA channel on this device rather than the DAI device.
+    If set, request DMA channel on this device rather than the DAI
+    device.
 
 chan_names[SNDRV_PCM_STREAM_LAST + 1]
-    If set, these custom DMA channel names will be requested at registration time.
+    If set, these custom DMA channel names will be requested at
+    registration time.
 
 pcm_hardware
     snd_pcm_hardware struct to be used for the PCM.
@@ -56,5 +63,17 @@ prealloc_buffer_size
 Note
 ====
 
-If both compat_request_channel and compat_filter_fn are set compat_request_channel will be used to request the channel and compat_filter_fn will be ignored. Otherwise the
-channel will be requested using dma_request_channel with compat_filter_fn as the filter function.
+If both compat_request_channel and compat_filter_fn are set
+compat_request_channel will be used to request the channel and
+compat_filter_fn will be ignored. Otherwise the channel will be
+requested using dma_request_channel with compat_filter_fn as the
+filter function.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

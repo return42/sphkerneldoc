@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-add-function:
 
@@ -7,7 +8,7 @@ usb_add_function
 
 *man usb_add_function(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a function to a configuration
 
@@ -36,7 +37,19 @@ single threaded during gadget setup
 Description
 ===========
 
-After initialization, each configuration must have one or more functions added to it. Adding a function involves calling its ``bind``\ () method to allocate resources such as
-interface and string identifiers and endpoints.
+After initialization, each configuration must have one or more functions
+added to it. Adding a function involves calling its ``bind``\ () method
+to allocate resources such as interface and string identifiers and
+endpoints.
 
-This function returns the value of the function's ``bind``, which is zero for success else a negative errno value.
+This function returns the value of the function's ``bind``, which is
+zero for success else a negative errno value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

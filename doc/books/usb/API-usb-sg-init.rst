@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-sg-init:
 
@@ -7,7 +8,7 @@ usb_sg_init
 
 *man usb_sg_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 initializes scatterlist-based bulk/interrupt I/O request
 
@@ -21,7 +22,8 @@ Arguments
 =========
 
 ``io``
-    request block being initialized. until ``usb_sg_wait`` returns, treat this as a pointer to an opaque block of memory,
+    request block being initialized. until ``usb_sg_wait`` returns,
+    treat this as a pointer to an opaque block of memory,
 
 ``dev``
     the usb device that will send or receive the data
@@ -30,7 +32,8 @@ Arguments
     endpoint “pipe” used to transfer the data
 
 ``period``
-    polling rate for interrupt endpoints, in frames or (for high speed endpoints) microframes; ignored for bulk
+    polling rate for interrupt endpoints, in frames or (for high speed
+    endpoints) microframes; ignored for bulk
 
 ``sg``
     scatterlist entries
@@ -39,23 +42,38 @@ Arguments
     how many entries in the scatterlist
 
 ``length``
-    how many bytes to send from the scatterlist, or zero to send every byte identified in the list.
+    how many bytes to send from the scatterlist, or zero to send every
+    byte identified in the list.
 
 ``mem_flags``
-    SLAB_⋆ flags affecting memory allocations in this call
+    SLAB_* flags affecting memory allocations in this call
 
 
 Description
 ===========
 
-This initializes a scatter/gather request, allocating resources such as I/O mappings and urb memory (except maybe memory used by USB controller drivers).
+This initializes a scatter/gather request, allocating resources such as
+I/O mappings and urb memory (except maybe memory used by USB controller
+drivers).
 
-The request must be issued using ``usb_sg_wait``, which waits for the I/O to complete (or to be canceled) and then cleans up all resources allocated by ``usb_sg_init``.
+The request must be issued using ``usb_sg_wait``, which waits for the
+I/O to complete (or to be canceled) and then cleans up all resources
+allocated by ``usb_sg_init``.
 
-The request may be canceled with ``usb_sg_cancel``, either before or after ``usb_sg_wait`` is called.
+The request may be canceled with ``usb_sg_cancel``, either before or
+after ``usb_sg_wait`` is called.
 
 
 Return
 ======
 
 Zero for success, else a negative errno value.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

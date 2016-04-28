@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mptspi-writeIOCPage4:
 
@@ -7,7 +8,7 @@ mptspi_writeIOCPage4
 
 *man mptspi_writeIOCPage4(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 write IOC Page 4
 
@@ -40,3 +41,12 @@ Remark
 ======
 
 We do not wait for a return, write pages sequentially.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

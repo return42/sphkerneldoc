@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-shash-alg:
 
@@ -7,7 +8,7 @@ struct shash_alg
 
 *man struct shash_alg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 synchronous message digest definition
 
@@ -61,7 +62,9 @@ setkey
     see struct ahash_alg
 
 descsize
-    Size of the operational state for the message digest. This state size is the memory size that needs to be allocated for shash_desc.__ctx
+    Size of the operational state for the message digest. This state
+    size is the memory size that needs to be allocated for
+    shash_desc.__ctx
 
 digestsize
     see struct ahash_alg
@@ -71,3 +74,12 @@ statesize
 
 base
     internally used
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

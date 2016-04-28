@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-disc-peer:
 
@@ -7,7 +8,7 @@ rio_disc_peer
 
 *man rio_disc_peer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Recursively discovers a RIO network through a master port
 
@@ -42,4 +43,14 @@ Arguments
 Description
 ===========
 
-Recursively discovers a RIO network. Transactions are sent via the master port passed in ``port``.
+Recursively discovers a RIO network. Transactions are sent via the
+master port passed in ``port``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

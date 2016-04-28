@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API--copy-from-pages:
 
@@ -7,7 +8,7 @@ _copy_from_pages
 
 *man _copy_from_pages(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -34,4 +35,14 @@ Arguments
 Description
 ===========
 
-Copies data into an arbitrary memory location from an array of pages The copy is assumed to be non-overlapping.
+Copies data into an arbitrary memory location from an array of pages The
+copy is assumed to be non-overlapping.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

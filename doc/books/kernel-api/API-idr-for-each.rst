@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-idr-for-each:
 
@@ -7,7 +8,7 @@ idr_for_each
 
 *man idr_for_each(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 iterate through all stored pointers
 
@@ -33,9 +34,23 @@ Arguments
 Description
 ===========
 
-Iterate over the pointers registered with the given idr. The callback function will be called for each pointer currently registered, passing the id, the pointer and the data
-pointer passed to this function. It is not safe to modify the idr tree while in the callback, so functions such as idr_get_new and idr_remove are not allowed.
+Iterate over the pointers registered with the given idr. The callback
+function will be called for each pointer currently registered, passing
+the id, the pointer and the data pointer passed to this function. It is
+not safe to modify the idr tree while in the callback, so functions such
+as idr_get_new and idr_remove are not allowed.
 
-We check the return of ``fn`` each time. If it returns anything other than ``0``, we break out and return that value.
+We check the return of ``fn`` each time. If it returns anything other
+than ``0``, we break out and return that value.
 
-The caller must serialize ``idr_for_each`` vs ``idr_get_new`` and ``idr_remove``.
+The caller must serialize ``idr_for_each`` vs ``idr_get_new`` and
+``idr_remove``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

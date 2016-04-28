@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-enc-vorbis:
 
@@ -7,7 +8,7 @@ struct snd_enc_vorbis
 
 *man struct snd_enc_vorbis(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -28,11 +29,15 @@ Members
 =======
 
 quality
-    Sets encoding quality to n, between -1 (low) and 10 (high). In the default mode of operation, the quality level is 3. Normal quality range is 0 - 10.
+    Sets encoding quality to n, between -1 (low) and 10 (high). In the
+    default mode of operation, the quality level is 3. Normal quality
+    range is 0 - 10.
 
 managed
-    Boolean. Set bitrate management mode. This turns off the normal VBR encoding, but allows hard or soft bitrate constraints to be enforced by the encoder. This mode can be
-    slower, and may also be lower quality. It is primarily useful for streaming.
+    Boolean. Set bitrate management mode. This turns off the normal VBR
+    encoding, but allows hard or soft bitrate constraints to be enforced
+    by the encoder. This mode can be slower, and may also be lower
+    quality. It is primarily useful for streaming.
 
 max_bit_rate
     Enabled only if managed is TRUE
@@ -41,12 +46,23 @@ min_bit_rate
     Enabled only if managed is TRUE
 
 downmix
-    Boolean. Downmix input from stereo to mono (has no effect on non-stereo streams). Useful for lower-bitrate encoding.
+    Boolean. Downmix input from stereo to mono (has no effect on
+    non-stereo streams). Useful for lower-bitrate encoding.
 
 
 Description
 ===========
 
-These options were extracted from the OpenMAX IL spec and Gstreamer vorbisenc properties
+These options were extracted from the OpenMAX IL spec and Gstreamer
+vorbisenc properties
 
 For best quality users should specify VBR mode and set quality levels.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

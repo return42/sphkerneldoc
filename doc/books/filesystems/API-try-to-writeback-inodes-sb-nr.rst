@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-try-to-writeback-inodes-sb-nr:
 
@@ -7,7 +8,7 @@ try_to_writeback_inodes_sb_nr
 
 *man try_to_writeback_inodes_sb_nr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 try to start writeback if none underway
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Invoke writeback_inodes_sb_nr if no writeback is currently underway. Returns 1 if writeback was started, 0 if not.
+Invoke writeback_inodes_sb_nr if no writeback is currently underway.
+Returns 1 if writeback was started, 0 if not.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

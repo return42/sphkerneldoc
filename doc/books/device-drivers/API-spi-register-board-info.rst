@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-register-board-info:
 
@@ -7,7 +8,7 @@ spi_register_board_info
 
 *man spi_register_board_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 register SPI devices for a given board
 
@@ -36,16 +37,31 @@ can sleep
 Description
 ===========
 
-Board-specific early init code calls this (probably during arch_initcall) with segments of the SPI device table. Any device nodes are created later, after the relevant parent SPI
-controller (bus_num) is defined. We keep this table of devices forever, so that reloading a controller driver will not make Linux forget about these hard-wired devices.
+Board-specific early init code calls this (probably during
+arch_initcall) with segments of the SPI device table. Any device nodes
+are created later, after the relevant parent SPI controller (bus_num)
+is defined. We keep this table of devices forever, so that reloading a
+controller driver will not make Linux forget about these hard-wired
+devices.
 
-Other code can also call this, e.g. a particular add-on board might provide SPI devices through its expansion connector, so code initializing that board would naturally declare its
-SPI devices.
+Other code can also call this, e.g. a particular add-on board might
+provide SPI devices through its expansion connector, so code
+initializing that board would naturally declare its SPI devices.
 
-The board info passed can safely be __initdata ... but be careful of any embedded pointers (platform_data, etc), they're copied as-is.
+The board info passed can safely be __initdata ... but be careful of
+any embedded pointers (platform_data, etc), they're copied as-is.
 
 
 Return
 ======
 
 zero on success, else a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

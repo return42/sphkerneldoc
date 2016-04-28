@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-rbuf-get:
 
@@ -7,7 +8,7 @@ ata_scsi_rbuf_get
 
 *man ata_scsi_rbuf_get(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Map response buffer.
 
@@ -15,7 +16,7 @@ Map response buffer.
 Synopsis
 ========
 
-.. c:function:: void ⋆ ata_scsi_rbuf_get( struct scsi_cmnd * cmd, bool copy_in, unsigned long * flags )
+.. c:function:: void * ata_scsi_rbuf_get( struct scsi_cmnd * cmd, bool copy_in, unsigned long * flags )
 
 Arguments
 =========
@@ -46,3 +47,12 @@ RETURNS
 =======
 
 Pointer to response buffer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

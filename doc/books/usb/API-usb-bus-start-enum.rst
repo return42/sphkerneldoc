@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-bus-start-enum:
 
@@ -7,7 +8,7 @@ usb_bus_start_enum
 
 *man usb_bus_start_enum(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 start immediate enumeration (for OTG)
 
@@ -36,11 +37,22 @@ Context
 Description
 ===========
 
-Starts enumeration, with an immediate reset followed later by hub_wq identifying and possibly configuring the device. This is needed by OTG controller drivers, where it helps meet
-HNP protocol timing requirements for starting a port reset.
+Starts enumeration, with an immediate reset followed later by hub_wq
+identifying and possibly configuring the device. This is needed by OTG
+controller drivers, where it helps meet HNP protocol timing requirements
+for starting a port reset.
 
 
 Return
 ======
 
 0 if successful.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

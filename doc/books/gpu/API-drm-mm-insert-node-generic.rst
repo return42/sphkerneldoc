@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-mm-insert-node-generic:
 
@@ -7,7 +8,7 @@ drm_mm_insert_node_generic
 
 *man drm_mm_insert_node_generic(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 search for space and insert ``node``
 
@@ -52,3 +53,12 @@ Returns
 =======
 
 0 on success, -ENOSPC if there's no suitable hole.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

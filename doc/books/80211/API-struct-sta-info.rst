@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-sta-info:
 
@@ -7,7 +8,7 @@ struct sta_info
 
 *man struct sta_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 STA information
 
@@ -76,7 +77,8 @@ hash_node
     hash node for rhashtable
 
 addr[ETH_ALEN]
-    station's MAC address - duplicated from public part to let the hash table work with just a single cacheline
+    station's MAC address - duplicated from public part to let the hash
+    table work with just a single cacheline
 
 local
     pointer to the global information
@@ -100,10 +102,12 @@ rate_ctrl_priv
     rate control private per-STA pointer
 
 rate_ctrl_lock
-    spinlock used to protect rate control data (data inside the algorithm, so serializes calls there)
+    spinlock used to protect rate control data (data inside the
+    algorithm, so serializes calls there)
 
 lock
-    used for locking all fields that require locking, see comments in the header file.
+    used for locking all fields that require locking, see comments in
+    the header file.
 
 fast_tx
     TX fastpath information
@@ -130,17 +134,21 @@ sta_state
     duplicates information about station state (for debug)
 
 _flags
-    STA flags, see ``enum`` ieee80211_sta_info_flags, do not use directly
+    STA flags, see ``enum`` ieee80211_sta_info_flags, do not use
+    directly
 
 ps_lock
     used for powersave (when mac80211 is the AP) related locking
 
 ps_tx_buf[IEEE80211_NUM_ACS]
-    buffers (per AC) of frames to transmit to this station when it leaves power saving state or polls
+    buffers (per AC) of frames to transmit to this station when it
+    leaves power saving state or polls
 
 tx_filtered[IEEE80211_NUM_ACS]
-    buffers (per AC) of frames we already tried to transmit but were filtered by hardware due to STA having entered power saving state, these are also delivered to the station when
-    it leaves powersave or polls for frames
+    buffers (per AC) of frames we already tried to transmit but were
+    filtered by hardware due to STA having entered power saving state,
+    these are also delivered to the station when it leaves powersave or
+    polls for frames
 
 driver_buffered_tids
     bitmap of TIDs the driver has data buffered on
@@ -155,7 +163,8 @@ debugfs
     debug filesystem info
 
 cur_max_bandwidth
-    maximum bandwidth to use for TX to the station, taken from HT/VHT capabilities or VHT operating mode notification
+    maximum bandwidth to use for TX to the station, taken from HT/VHT
+    capabilities or VHT operating mode notification
 
 known_smps_mode
     the smps_mode the client thinks we are in. Relevant for AP only.
@@ -167,7 +176,8 @@ reserved_tid
     reserved TID (if any, otherwise IEEE80211_TID_UNRESERVED)
 
 tdls_chandef
-    a TDLS peer can have a wider chandef that is compatible to the BSS one.
+    a TDLS peer can have a wider chandef that is compatible to the BSS
+    one.
 
 sta
     station information we share with the driver
@@ -176,4 +186,14 @@ sta
 Description
 ===========
 
-This structure collects information about a station that mac80211 is communicating with.
+This structure collects information about a station that mac80211 is
+communicating with.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

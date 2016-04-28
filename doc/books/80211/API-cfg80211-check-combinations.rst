@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-check-combinations:
 
@@ -7,7 +8,7 @@ cfg80211_check_combinations
 
 *man cfg80211_check_combinations(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 check interface combinations
 
@@ -27,13 +28,28 @@ Arguments
     the number of different channels we want to use for verification
 
 ``radar_detect``
-    a bitmap where each bit corresponds to a channel width where radar detection is needed, as in the definition of ``struct ieee80211_iface_combination``.\ ``radar_detect_widths``
+    a bitmap where each bit corresponds to a channel width where radar
+    detection is needed, as in the definition of
+    ``struct ieee80211_iface_combination``.\ ``radar_detect_widths``
 
 ``iftype_num[NUM_NL80211_IFTYPES]``
-    array with the numbers of interfaces of each interface type. The index is the interface type as specified in ``enum`` nl80211_iftype.
+    array with the numbers of interfaces of each interface type. The
+    index is the interface type as specified in ``enum``
+    nl80211_iftype.
 
 
 Description
 ===========
 
-This function can be called by the driver to check whether a combination of interfaces and their types are allowed according to the interface combinations.
+This function can be called by the driver to check whether a combination
+of interfaces and their types are allowed according to the interface
+combinations.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

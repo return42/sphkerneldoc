@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-input-inject-event:
 
@@ -7,7 +8,7 @@ input_inject_event
 
 *man input_inject_event(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send input event from input handler
 
@@ -36,4 +37,14 @@ Arguments
 Description
 ===========
 
-Similar to ``input_event`` but will ignore event if device is “grabbed” and handle injecting event is not the one that owns the device.
+Similar to ``input_event`` but will ignore event if device is “grabbed”
+and handle injecting event is not the one that owns the device.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

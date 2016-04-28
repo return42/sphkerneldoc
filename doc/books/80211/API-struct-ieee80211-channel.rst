@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-channel:
 
@@ -7,7 +8,7 @@ struct ieee80211_channel
 
 *man struct ieee80211_channel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 channel definition
 
@@ -60,10 +61,13 @@ max_reg_power
     maximum regulatory transmission power (in dBm)
 
 beacon_found
-    helper to regulatory code to indicate when a beacon has been found on this channel. Use ``regulatory_hint_found_beacon`` to enable this, this is useful only on 5 GHz band.
+    helper to regulatory code to indicate when a beacon has been found
+    on this channel. Use ``regulatory_hint_found_beacon`` to enable
+    this, this is useful only on 5 GHz band.
 
 orig_flags
-    channel flags at registration time, used by regulatory code to support devices with additional restrictions
+    channel flags at registration time, used by regulatory code to
+    support devices with additional restrictions
 
 orig_mag
     internal use
@@ -72,7 +76,8 @@ orig_mpwr
     internal use
 
 dfs_state
-    current state of this channel. Only relevant if radar is required on this channel.
+    current state of this channel. Only relevant if radar is required on
+    this channel.
 
 dfs_state_entered
     timestamp (jiffies) when the dfs state was entered.
@@ -85,3 +90,12 @@ Description
 ===========
 
 This structure describes a single channel for use with cfg80211.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

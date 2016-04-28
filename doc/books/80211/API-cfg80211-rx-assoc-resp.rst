@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-rx-assoc-resp:
 
@@ -7,7 +8,7 @@ cfg80211_rx_assoc_resp
 
 *man cfg80211_rx_assoc_resp(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notification of processed association response
 
@@ -24,7 +25,8 @@ Arguments
     network device
 
 ``bss``
-    the BSS that association was requested with, ownership of the pointer moves to cfg80211 in this call
+    the BSS that association was requested with, ownership of the
+    pointer moves to cfg80211 in this call
 
 ``buf``
     authentication frame (header + body)
@@ -39,6 +41,17 @@ Arguments
 After being asked to associate via cfg80211_ops
 ===============================================
 
-:``assoc`` the driver must call either this function or ``cfg80211_auth_timeout``.
+:``assoc`` the driver must call either this function or
+``cfg80211_auth_timeout``.
 
-This function may sleep. The caller must hold the corresponding wdev's mutex.
+This function may sleep. The caller must hold the corresponding wdev's
+mutex.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

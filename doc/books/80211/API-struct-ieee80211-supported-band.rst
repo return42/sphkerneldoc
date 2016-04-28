@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-supported-band:
 
@@ -7,7 +8,7 @@ struct ieee80211_supported_band
 
 *man struct ieee80211_supported_band(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 frequency band definition
 
@@ -35,7 +36,9 @@ channels
     Array of channels the hardware can operate in in this band.
 
 bitrates
-    Array of bitrates the hardware can operate with in this band. Must be sorted to give a valid “supported rates” IE, i.e. CCK rates first, then OFDM.
+    Array of bitrates the hardware can operate with in this band. Must
+    be sorted to give a valid “supported rates” IE, i.e. CCK rates
+    first, then OFDM.
 
 band
     the band this structure represents
@@ -57,3 +60,12 @@ Description
 ===========
 
 This structure describes a frequency band a wiphy is able to operate in.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

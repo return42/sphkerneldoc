@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-gem-object-free:
 
@@ -7,7 +8,7 @@ drm_gem_object_free
 
 *man drm_gem_object_free(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 free a GEM object
 
@@ -27,6 +28,16 @@ Arguments
 Description
 ===========
 
-Called after the last reference to the object has been lost. Must be called holding struct_ mutex
+Called after the last reference to the object has been lost. Must be
+called holding struct_ mutex
 
 Frees the object
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

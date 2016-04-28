@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _handling-irqs:
 
@@ -5,7 +6,8 @@
 Handling IRQs
 =============
 
-Additionally to the MUSB controller hardware basic setup and registration, the glue layer is also responsible for handling the IRQs:
+Additionally to the MUSB controller hardware basic setup and
+registration, the glue layer is also responsible for handling the IRQs:
 
 
 .. code-block:: c
@@ -38,25 +40,36 @@ Additionally to the MUSB controller hardware basic setup and registration, the g
         return retval;
     }
 
-Here the glue layer mostly has to read the relevant hardware registers and pass their values on to the controller driver which will handle the actual event that triggered the IRQ.
+Here the glue layer mostly has to read the relevant hardware registers
+and pass their values on to the controller driver which will handle the
+actual event that triggered the IRQ.
 
-The interrupt handler critical section is protected by the spin_lock_irqsave() and counterpart spin_unlock_irqrestore() functions (line 7 and 24 respectively), which prevent
-the interrupt handler code to be run by two different threads at the same time.
+The interrupt handler critical section is protected by the
+spin_lock_irqsave() and counterpart spin_unlock_irqrestore()
+functions (line 7 and 24 respectively), which prevent the interrupt
+handler code to be run by two different threads at the same time.
 
 Then the relevant interrupt registers are read (line 9 to 11):
 
 -  MUSB_INTRUSB: indicates which USB interrupts are currently active,
 
--  MUSB_INTRTX: indicates which of the interrupts for TX endpoints are currently active,
+-  MUSB_INTRTX: indicates which of the interrupts for TX endpoints are
+   currently active,
 
--  MUSB_INTRRX: indicates which of the interrupts for TX endpoints are currently active.
+-  MUSB_INTRRX: indicates which of the interrupts for TX endpoints are
+   currently active.
 
-Note that musb_readb() is used to read 8-bit registers at most, while musb_readw() allows us to read at most 16-bit registers. There are other functions that can be used
-depending on the size of your device registers. See musb_io.h for more information.
+Note that musb_readb() is used to read 8-bit registers at most, while
+musb_readw() allows us to read at most 16-bit registers. There are
+other functions that can be used depending on the size of your device
+registers. See musb_io.h for more information.
 
-Instruction on line 18 is another quirk specific to the JZ4740 USB device controller, which will be discussed later in :ref:`Chapter 5 <device-quirks>`.
+Instruction on line 18 is another quirk specific to the JZ4740 USB
+device controller, which will be discussed later in
+:ref:`Chapter 5 <device-quirks>`.
 
-The glue layer still needs to register the IRQ handler though. Remember the instruction on line 14 of the init function:
+The glue layer still needs to register the IRQ handler though. Remember
+the instruction on line 14 of the init function:
 
 
 .. code-block:: c
@@ -68,5 +81,16 @@ The glue layer still needs to register the IRQ handler though. Remember the inst
         return 0;
     }
 
-This instruction sets a pointer to the glue layer IRQ handler function, in order for the controller hardware to call the handler back when an IRQ comes from the controller
-hardware. The interrupt handler is now implemented and registered.
+This instruction sets a pointer to the glue layer IRQ handler function,
+in order for the controller hardware to call the handler back when an
+IRQ comes from the controller hardware. The interrupt handler is now
+implemented and registered.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

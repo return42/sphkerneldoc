@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subscribed-event:
 
@@ -7,7 +8,7 @@ struct v4l2_subscribed_event
 
 *man struct v4l2_subscribed_event(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Internal struct representing a subscribed event.
 
@@ -67,3 +68,12 @@ in_use
 
 events[]
     An array of ``elems`` events.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

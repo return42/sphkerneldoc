@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-mode-sense:
 
@@ -7,7 +8,7 @@ scsi_mode_sense
 
 *man scsi_mode_sense(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 issue a mode sense, falling back from 10 to six bytes if necessary.
 
@@ -45,10 +46,22 @@ Arguments
     returns a structure abstracting the mode header data
 
 ``sshdr``
-    place to put sense data (or NULL if no sense to be collected). must be SCSI_SENSE_BUFFERSIZE big.
+    place to put sense data (or NULL if no sense to be collected). must
+    be SCSI_SENSE_BUFFERSIZE big.
 
 
 Description
 ===========
 
-Returns zero if unsuccessful, or the header offset (either 4 or 8 depending on whether a six or ten byte command was issued) if successful.
+Returns zero if unsuccessful, or the header offset (either 4 or 8
+depending on whether a six or ten byte command was issued) if
+successful.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

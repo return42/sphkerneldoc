@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _vidioc-g-output:
 
@@ -31,21 +32,41 @@ Arguments
 Description
 ===========
 
-To query the current video output applications call the ``VIDIOC_G_OUTPUT`` ioctl with a pointer to an integer where the driver stores the number of the output, as in the struct
-:ref:`v4l2_output <v4l2-output>` ``index`` field. This ioctl will fail only when there are no video outputs, returning the EINVAL error code.
+To query the current video output applications call the
+``VIDIOC_G_OUTPUT`` ioctl with a pointer to an integer where the driver
+stores the number of the output, as in the struct
+:ref:`v4l2_output <v4l2-output>` ``index`` field. This ioctl will
+fail only when there are no video outputs, returning the EINVAL error
+code.
 
-To select a video output applications store the number of the desired output in an integer and call the ``VIDIOC_S_OUTPUT`` ioctl with a pointer to this integer. Side effects are
-possible. For example outputs may support different video standards, so the driver may implicitly switch the current standard. standard. Because of these possible side effects
-applications must select an output before querying or negotiating any other parameters.
+To select a video output applications store the number of the desired
+output in an integer and call the ``VIDIOC_S_OUTPUT`` ioctl with a
+pointer to this integer. Side effects are possible. For example outputs
+may support different video standards, so the driver may implicitly
+switch the current standard. standard. Because of these possible side
+effects applications must select an output before querying or
+negotiating any other parameters.
 
-Information about video outputs is available using the :ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctl.
+Information about video outputs is available using the
+:ref:`VIDIOC_ENUMOUTPUT <vidioc-enumoutput>` ioctl.
 
 
 Return Value
 ============
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 EINVAL
-    The number of the video output is out of bounds, or there are no video outputs at all.
+    The number of the video output is out of bounds, or there are no
+    video outputs at all.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

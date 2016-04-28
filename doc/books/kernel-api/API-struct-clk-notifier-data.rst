@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-clk-notifier-data:
 
@@ -7,7 +8,7 @@ struct clk_notifier_data
 
 *man struct clk_notifier_data(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 rate data to pass to the notifier callback
 
@@ -28,7 +29,7 @@ Members
 =======
 
 clk
-    struct clk ⋆ being changed
+    struct clk * being changed
 
 old_rate
     previous rate of this clk
@@ -40,5 +41,16 @@ new_rate
 Description
 ===========
 
-For a pre-notifier, old_rate is the clk's rate before this rate change, and new_rate is what the rate will be in the future. For a post-notifier, old_rate and new_rate are both
-set to the clk's current rate (this was done to optimize the implementation).
+For a pre-notifier, old_rate is the clk's rate before this rate change,
+and new_rate is what the rate will be in the future. For a
+post-notifier, old_rate and new_rate are both set to the clk's current
+rate (this was done to optimize the implementation).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

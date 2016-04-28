@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-panic-nand-wait:
 
@@ -7,7 +8,7 @@ panic_nand_wait
 
 *man panic_nand_wait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [GENERIC] wait until the command is done
 
@@ -33,4 +34,15 @@ Arguments
 Description
 ===========
 
-Wait for command done. This is a helper function for nand_wait used when we are in interrupt context. May happen when in panic and trying to write an oops through mtdoops.
+Wait for command done. This is a helper function for nand_wait used
+when we are in interrupt context. May happen when in panic and trying to
+write an oops through mtdoops.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---clear-user:
 
@@ -7,7 +8,7 @@ __clear_user
 
 *man __clear_user(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Zero a block of memory in user space, with less checking.
 
@@ -30,6 +31,17 @@ Arguments
 Description
 ===========
 
-Zero a block of memory in user space. Caller must check the specified block with ``access_ok`` before calling this function.
+Zero a block of memory in user space. Caller must check the specified
+block with ``access_ok`` before calling this function.
 
-Returns number of bytes that could not be cleared. On success, this will be zero.
+Returns number of bytes that could not be cleared. On success, this will
+be zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

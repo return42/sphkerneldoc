@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _media-func-close:
 
@@ -30,13 +31,24 @@ Arguments
 Description
 ===========
 
-Closes the media device. Resources associated with the file descriptor are freed. The device configuration remain unchanged.
+Closes the media device. Resources associated with the file descriptor
+are freed. The device configuration remain unchanged.
 
 
 Return Value
 ============
 
-``close`` returns 0 on success. On error, -1 is returned, and ``errno`` is set appropriately. Possible error codes are:
+``close`` returns 0 on success. On error, -1 is returned, and ``errno``
+is set appropriately. Possible error codes are:
 
 EBADF
     ``fd`` is not a valid open file descriptor.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

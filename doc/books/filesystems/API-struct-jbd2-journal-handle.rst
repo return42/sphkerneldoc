@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-jbd2-journal-handle:
 
@@ -7,7 +8,7 @@ struct jbd2_journal_handle
 
 *man struct jbd2_journal_handle(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The handle_s type is the concrete type associated with handle_t.
 
@@ -53,3 +54,12 @@ h_jdata
 
 h_aborted
     flag indicating fatal error on handle
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blk-execute-rq-nowait:
 
@@ -7,7 +8,7 @@ blk_execute_rq_nowait
 
 *man blk_execute_rq_nowait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 insert a request into queue for execution
 
@@ -39,10 +40,20 @@ Arguments
 Description
 ===========
 
-Insert a fully prepared request at the back of the I/O scheduler queue for execution. Don't wait for completion.
+Insert a fully prepared request at the back of the I/O scheduler queue
+for execution. Don't wait for completion.
 
 
 Note
 ====
 
 This function will invoke ``done`` directly if the queue is dead.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

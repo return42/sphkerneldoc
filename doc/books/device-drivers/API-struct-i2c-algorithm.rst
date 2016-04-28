@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-i2c-algorithm:
 
@@ -7,7 +8,7 @@ struct i2c_algorithm
 
 *man struct i2c_algorithm(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 represent I2C transfer method
 
@@ -32,13 +33,18 @@ Members
 =======
 
 master_xfer
-    Issue a set of i2c transactions to the given I2C adapter defined by the msgs array, with num messages available to transfer via the adapter specified by adap.
+    Issue a set of i2c transactions to the given I2C adapter defined by
+    the msgs array, with num messages available to transfer via the
+    adapter specified by adap.
 
 smbus_xfer
-    Issue smbus transactions to the given I2C adapter. If this is not present, then the bus layer will try and convert the SMBus calls into I2C transfers instead.
+    Issue smbus transactions to the given I2C adapter. If this is not
+    present, then the bus layer will try and convert the SMBus calls
+    into I2C transfers instead.
 
 functionality
-    Return the flags that this algorithm/adapter pair supports from the I2C_FUNC_⋆ flags.
+    Return the flags that this algorithm/adapter pair supports from the
+    I2C_FUNC_* flags.
 
 reg_slave
     Register given client to I2C slave mode of this adapter
@@ -50,8 +56,19 @@ unreg_slave
 The following structs are for those who like to implement new bus drivers
 =========================================================================
 
-i2c_algorithm is the interface to a class of hardware solutions which can be addressed using the same bus algorithms - i.e. bit-banging or the PCF8584 to name two of the most
-common.
+i2c_algorithm is the interface to a class of hardware solutions which
+can be addressed using the same bus algorithms - i.e. bit-banging or the
+PCF8584 to name two of the most common.
 
-The return codes from the ``master_xfer`` field should indicate the type of error code that occurred during the transfer, as documented in the kernel Documentation file
-Documentation/i2c/fault-codes.
+The return codes from the ``master_xfer`` field should indicate the type
+of error code that occurred during the transfer, as documented in the
+kernel Documentation file Documentation/i2c/fault-codes.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-dvb-ca-en50221:
 
@@ -7,7 +8,7 @@ struct dvb_ca_en50221
 
 *man struct dvb_ca_en50221(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Structure describing a CA interface
 
@@ -60,7 +61,8 @@ slot_ts_enable
     function to enable the Transport Stream on a CAM slot
 
 poll_slot_status
-    function to poll slot status. Only necessary if DVB_CA_FLAG_EN50221_IRQ_CAMCHANGE is not set.
+    function to poll slot status. Only necessary if
+    DVB_CA_FLAG_EN50221_IRQ_CAMCHANGE is not set.
 
 data
     private data, used by caller.
@@ -72,5 +74,15 @@ private
 NOTE
 ====
 
-the read_⋆, write_⋆ and poll_slot_status functions will be called for different slots concurrently and need to use locks where and if appropriate. There will be no concurrent
-access to one slot.
+the read_*, write_* and poll_slot_status functions will be called
+for different slots concurrently and need to use locks where and if
+appropriate. There will be no concurrent access to one slot.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

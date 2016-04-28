@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ilsel-enable-fixed:
 
@@ -7,7 +8,7 @@ ilsel_enable_fixed
 
 *man ilsel_enable_fixed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Enable an ILSEL set at a fixed interrupt level
 
@@ -30,6 +31,17 @@ Arguments
 Description
 ===========
 
-Enables a given ILSEL source at a fixed interrupt level. Necessary both for level reservation as well as for aliased sources that only exist on special ILSEL#s.
+Enables a given ILSEL source at a fixed interrupt level. Necessary both
+for level reservation as well as for aliased sources that only exist on
+special ILSEL#s.
 
 Returns an IRQ number (as ``ilsel_enable``).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

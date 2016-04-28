@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _remote_controllers_sysfs_nodes:
 
@@ -5,7 +6,8 @@
 Remote Controller's sysfs nodes
 ===============================
 
-As defined at ``Documentation/ABI/testing/sysfs-class-rc``, those are the sysfs nodes that control the Remote Controllers:
+As defined at ``Documentation/ABI/testing/sysfs-class-rc``, those are
+the sysfs nodes that control the Remote Controllers:
 
 
 .. _sys_class_rc:
@@ -13,7 +15,9 @@ As defined at ``Documentation/ABI/testing/sysfs-class-rc``, those are the sysfs 
 /sys/class/rc/
 ==============
 
-The ``/sys/class/rc/`` class sub-directory belongs to the Remote Controller core and provides a sysfs interface for configuring infrared remote controller receivers.
+The ``/sys/class/rc/`` class sub-directory belongs to the Remote
+Controller core and provides a sysfs interface for configuring infrared
+remote controller receivers.
 
 
 .. _sys_class_rc_rcN:
@@ -21,7 +25,8 @@ The ``/sys/class/rc/`` class sub-directory belongs to the Remote Controller core
 /sys/class/rc/rcN/
 ==================
 
-A ``/sys/class/rc/rcN`` directory is created for each remote control receiver device where N is the number of the receiver.
+A ``/sys/class/rc/rcN`` directory is created for each remote control
+receiver device where N is the number of the receiver.
 
 
 .. _sys_class_rc_rcN_protocols:
@@ -37,13 +42,15 @@ Enabled protocols are shown in [] brackets.
 
 Writing "+proto" will add a protocol to the list of enabled protocols.
 
-Writing "-proto" will remove a protocol from the list of enabled protocols.
+Writing "-proto" will remove a protocol from the list of enabled
+protocols.
 
 Writing "proto" will enable only "proto".
 
 Writing "none" will disable all protocols.
 
-Write fails with EINVAL if an invalid protocol combination or unknown protocol name is used.
+Write fails with EINVAL if an invalid protocol combination or unknown
+protocol name is used.
 
 
 .. _sys_class_rc_rcN_filter:
@@ -53,8 +60,10 @@ Write fails with EINVAL if an invalid protocol combination or unknown protocol n
 
 Sets the scancode filter expected value.
 
-Use in combination with ``/sys/class/rc/rcN/filter_mask`` to set the expected value of the bits set in the filter mask. If the hardware supports it then scancodes which do not
-match the filter will be ignored. Otherwise the write will fail with an error.
+Use in combination with ``/sys/class/rc/rcN/filter_mask`` to set the
+expected value of the bits set in the filter mask. If the hardware
+supports it then scancodes which do not match the filter will be
+ignored. Otherwise the write will fail with an error.
 
 This value may be reset to 0 if the current protocol is altered.
 
@@ -64,10 +73,13 @@ This value may be reset to 0 if the current protocol is altered.
 /sys/class/rc/rcN/filter_mask
 =============================
 
-Sets the scancode filter mask of bits to compare. Use in combination with ``/sys/class/rc/rcN/filter`` to set the bits of the scancode which should be compared against the expected
-value. A value of 0 disables the filter to allow all valid scancodes to be processed.
+Sets the scancode filter mask of bits to compare. Use in combination
+with ``/sys/class/rc/rcN/filter`` to set the bits of the scancode which
+should be compared against the expected value. A value of 0 disables the
+filter to allow all valid scancodes to be processed.
 
-If the hardware supports it then scancodes which do not match the filter will be ignored. Otherwise the write will fail with an error.
+If the hardware supports it then scancodes which do not match the filter
+will be ignored. Otherwise the write will fail with an error.
 
 This value may be reset to 0 if the current protocol is altered.
 
@@ -77,21 +89,25 @@ This value may be reset to 0 if the current protocol is altered.
 /sys/class/rc/rcN/wakeup_protocols
 ==================================
 
-Reading this file returns a list of available protocols to use for the wakeup filter, something like:
+Reading this file returns a list of available protocols to use for the
+wakeup filter, something like:
 
 ``rc5 rc6 nec jvc [sony]``
 
 The enabled wakeup protocol is shown in [] brackets.
 
-Writing "+proto" will add a protocol to the list of enabled wakeup protocols.
+Writing "+proto" will add a protocol to the list of enabled wakeup
+protocols.
 
-Writing "-proto" will remove a protocol from the list of enabled wakeup protocols.
+Writing "-proto" will remove a protocol from the list of enabled wakeup
+protocols.
 
 Writing "proto" will use "proto" for wakeup events.
 
 Writing "none" will disable wakeup.
 
-Write fails with EINVAL if an invalid protocol combination or unknown protocol name is used, or if wakeup is not supported by the hardware.
+Write fails with EINVAL if an invalid protocol combination or unknown
+protocol name is used, or if wakeup is not supported by the hardware.
 
 
 .. _sys_class_rc_rcN_wakeup_filter:
@@ -99,11 +115,13 @@ Write fails with EINVAL if an invalid protocol combination or unknown protocol n
 /sys/class/rc/rcN/wakeup_filter
 ===============================
 
-Sets the scancode wakeup filter expected value. Use in combination with ``/sys/class/rc/rcN/wakeup_filter_mask`` to set the expected value of the bits set in the wakeup filter mask
-to trigger a system wake event.
+Sets the scancode wakeup filter expected value. Use in combination with
+``/sys/class/rc/rcN/wakeup_filter_mask`` to set the expected value of
+the bits set in the wakeup filter mask to trigger a system wake event.
 
-If the hardware supports it and wakeup_filter_mask is not 0 then scancodes which match the filter will wake the system from e.g. suspend to RAM or power off. Otherwise the write
-will fail with an error.
+If the hardware supports it and wakeup_filter_mask is not 0 then
+scancodes which match the filter will wake the system from e.g. suspend
+to RAM or power off. Otherwise the write will fail with an error.
 
 This value may be reset to 0 if the wakeup protocol is altered.
 
@@ -113,10 +131,22 @@ This value may be reset to 0 if the wakeup protocol is altered.
 /sys/class/rc/rcN/wakeup_filter_mask
 ====================================
 
-Sets the scancode wakeup filter mask of bits to compare. Use in combination with ``/sys/class/rc/rcN/wakeup_filter`` to set the bits of the scancode which should be compared
-against the expected value to trigger a system wake event.
+Sets the scancode wakeup filter mask of bits to compare. Use in
+combination with ``/sys/class/rc/rcN/wakeup_filter`` to set the bits of
+the scancode which should be compared against the expected value to
+trigger a system wake event.
 
-If the hardware supports it and wakeup_filter_mask is not 0 then scancodes which match the filter will wake the system from e.g. suspend to RAM or power off. Otherwise the write
-will fail with an error.
+If the hardware supports it and wakeup_filter_mask is not 0 then
+scancodes which match the filter will wake the system from e.g. suspend
+to RAM or power off. Otherwise the write will fail with an error.
 
 This value may be reset to 0 if the wakeup protocol is altered.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

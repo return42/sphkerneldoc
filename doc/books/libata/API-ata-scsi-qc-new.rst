@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-qc-new:
 
@@ -7,7 +8,7 @@ ata_scsi_qc_new
 
 *man ata_scsi_qc_new(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 acquire new ata_queued_cmd reference
 
@@ -15,7 +16,7 @@ acquire new ata_queued_cmd reference
 Synopsis
 ========
 
-.. c:function:: struct ata_queued_cmd ⋆ ata_scsi_qc_new( struct ata_device * dev, struct scsi_cmnd * cmd )
+.. c:function:: struct ata_queued_cmd * ata_scsi_qc_new( struct ata_device * dev, struct scsi_cmnd * cmd )
 
 Arguments
 =========
@@ -30,9 +31,12 @@ Arguments
 Description
 ===========
 
-Obtain a reference to an unused ata_queued_cmd structure, which is the basic libata structure representing a single ATA command sent to the hardware.
+Obtain a reference to an unused ata_queued_cmd structure, which is the
+basic libata structure representing a single ATA command sent to the
+hardware.
 
-If a command was available, fill in the SCSI-specific portions of the structure with information on the current command.
+If a command was available, fill in the SCSI-specific portions of the
+structure with information on the current command.
 
 
 LOCKING
@@ -45,3 +49,12 @@ RETURNS
 =======
 
 Command allocated, or ``NULL`` if none available.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

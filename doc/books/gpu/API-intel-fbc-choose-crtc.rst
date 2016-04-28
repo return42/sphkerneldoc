@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-fbc-choose-crtc:
 
@@ -7,7 +8,7 @@ intel_fbc_choose_crtc
 
 *man intel_fbc_choose_crtc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 select a CRTC to enable FBC on
 
@@ -30,6 +31,19 @@ Arguments
 Description
 ===========
 
-This function looks at the proposed state for CRTCs and planes, then chooses which pipe is going to have FBC by setting intel_crtc_state->enable_fbc to true.
+This function looks at the proposed state for CRTCs and planes, then
+chooses which pipe is going to have FBC by setting
+intel_crtc_state->enable_fbc to true.
 
-Later, intel_fbc_enable is going to look for state->enable_fbc and then maybe enable FBC for the chosen CRTC. If it does, it will set dev_priv->fbc.crtc.
+Later, intel_fbc_enable is going to look for state->enable_fbc and
+then maybe enable FBC for the chosen CRTC. If it does, it will set
+dev_priv->fbc.crtc.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

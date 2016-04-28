@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-dev-ref:
 
@@ -7,7 +8,7 @@ drm_dev_ref
 
 *man drm_dev_ref(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Take reference of a DRM device
 
@@ -27,7 +28,19 @@ Arguments
 Description
 ===========
 
-This increases the ref-count of ``dev`` by one. You ⋆must⋆ already own a reference when calling this. Use ``drm_dev_unref`` to drop this reference again.
+This increases the ref-count of ``dev`` by one. You *must* already own a
+reference when calling this. Use ``drm_dev_unref`` to drop this
+reference again.
 
-This function never fails. However, this function does not provide ⋆any⋆ guarantee whether the device is alive or running. It only provides a reference to the object and the memory
-associated with it.
+This function never fails. However, this function does not provide *any*
+guarantee whether the device is alive or running. It only provides a
+reference to the object and the memory associated with it.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

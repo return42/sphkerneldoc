@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-ieee80211-channel-flags:
 
@@ -7,7 +8,7 @@ enum ieee80211_channel_flags
 
 *man enum ieee80211_channel_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 channel flags
 
@@ -40,7 +41,8 @@ IEEE80211_CHAN_DISABLED
     This channel is disabled.
 
 IEEE80211_CHAN_NO_IR
-    do not initiate radiation, this includes sending probe requests or beaconing.
+    do not initiate radiation, this includes sending probe requests or
+    beaconing.
 
 IEEE80211_CHAN_RADAR
     Radar detection is required on this channel.
@@ -55,12 +57,16 @@ IEEE80211_CHAN_NO_OFDM
     OFDM is not allowed on this channel.
 
 IEEE80211_CHAN_NO_80MHZ
-    If the driver supports 80 MHz on the band, this flag indicates that an 80 MHz channel cannot use this channel as the control or any of the secondary channels. This may be due
-    to the driver or due to regulatory bandwidth restrictions.
+    If the driver supports 80 MHz on the band, this flag indicates that
+    an 80 MHz channel cannot use this channel as the control or any of
+    the secondary channels. This may be due to the driver or due to
+    regulatory bandwidth restrictions.
 
 IEEE80211_CHAN_NO_160MHZ
-    If the driver supports 160 MHz on the band, this flag indicates that an 160 MHz channel cannot use this channel as the control or any of the secondary channels. This may be due
-    to the driver or due to regulatory bandwidth restrictions.
+    If the driver supports 160 MHz on the band, this flag indicates that
+    an 160 MHz channel cannot use this channel as the control or any of
+    the secondary channels. This may be due to the driver or due to
+    regulatory bandwidth restrictions.
 
 IEEE80211_CHAN_INDOOR_ONLY
     see ``NL80211_FREQUENCY_ATTR_INDOOR_ONLY``
@@ -79,3 +85,12 @@ Description
 ===========
 
 Channel flags set by the regulatory control code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

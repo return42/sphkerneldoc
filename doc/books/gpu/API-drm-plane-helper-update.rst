@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-plane-helper-update:
 
@@ -7,7 +8,7 @@ drm_plane_helper_update
 
 *man drm_plane_helper_update(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Transitional helper for plane update
 
@@ -57,13 +58,24 @@ Arguments
 Description
 ===========
 
-Provides a default plane update handler using the atomic plane update functions. It is fully left to the driver to check plane constraints and handle corner-cases like a fully
-occluded or otherwise invisible plane.
+Provides a default plane update handler using the atomic plane update
+functions. It is fully left to the driver to check plane constraints and
+handle corner-cases like a fully occluded or otherwise invisible plane.
 
-This is useful for piecewise transitioning of a driver to the atomic helpers.
+This is useful for piecewise transitioning of a driver to the atomic
+helpers.
 
 
 RETURNS
 =======
 
 Zero on success, error code on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

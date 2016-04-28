@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-lr-context-deferred-alloc:
 
@@ -7,7 +8,7 @@ intel_lr_context_deferred_alloc
 
 *man intel_lr_context_deferred_alloc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create the LRC specific bits of a context
 
@@ -30,17 +31,29 @@ Arguments
 Description
 ===========
 
-This function can be called more than once, with different engines, if we plan to use the context with them. The context backing objects and the ringbuffers (specially the
-ringbuffer backing objects) suck a lot of memory up, and that's why
+This function can be called more than once, with different engines, if
+we plan to use the context with them. The context backing objects and
+the ringbuffers (specially the ringbuffer backing objects) suck a lot of
+memory up, and that's why
 
 
 the creation is a deferred call
 ===============================
 
-it's better to make sure first that we need to use a given ring with the context.
+it's better to make sure first that we need to use a given ring with the
+context.
 
 
 Return
 ======
 
 non-zero on error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

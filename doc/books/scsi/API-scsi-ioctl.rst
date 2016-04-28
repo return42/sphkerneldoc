@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-ioctl:
 
@@ -7,7 +8,7 @@ scsi_ioctl
 
 *man scsi_ioctl(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Dispatch ioctl to scsi device
 
@@ -33,4 +34,15 @@ Arguments
 Description
 ===========
 
-The ``scsi_ioctl`` function differs from most ioctls in that it does not take a major/minor number as the dev field. Rather, it takes a pointer to a ``struct scsi_device``.
+The ``scsi_ioctl`` function differs from most ioctls in that it does not
+take a major/minor number as the dev field. Rather, it takes a pointer
+to a ``struct scsi_device``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

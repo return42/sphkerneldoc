@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mdiobus-release:
 
@@ -7,7 +8,7 @@ mdiobus_release
 
 *man mdiobus_release(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 mii_bus device release callback
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-called when the last reference to an mii_bus is dropped, to free the underlying memory.
+called when the last reference to an mii_bus is dropped, to free the
+underlying memory.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

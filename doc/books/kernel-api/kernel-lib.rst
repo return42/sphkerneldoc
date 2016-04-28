@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _kernel-lib:
 
@@ -36,6 +37,7 @@ Bitmap Operations
     API-bitmap-pos-to-ord
     API-bitmap-ord-to-pos
 
+
 Command-line Parsing
 ====================
 
@@ -46,6 +48,7 @@ Command-line Parsing
     API-get-option
     API-get-options
     API-memparse
+
 
 .. _crc:
 
@@ -62,6 +65,7 @@ CRC Functions
     kernel-lib-000-004-008
     API-crc-ccitt
 
+
 .. _idr:
 
 idr/ida Functions
@@ -69,17 +73,23 @@ idr/ida Functions
 
 idr synchronization (stolen from radix-tree.h)
 
-``idr_find`` is able to be called locklessly, using RCU. The caller must ensure calls to this function are made within ``rcu_read_lock`` regions. Other readers (lock-free or
-otherwise) and modifications may be running concurrently.
+``idr_find`` is able to be called locklessly, using RCU. The caller must
+ensure calls to this function are made within ``rcu_read_lock`` regions.
+Other readers (lock-free or otherwise) and modifications may be running
+concurrently.
 
-It is still required that the caller manage the synchronization and lifetimes of the items. So if RCU lock-free lookups are used, typically this would mean that the items have
-their own locks, or are amenable to lock-free access; and that the items are freed by RCU (or only freed after having been deleted from the idr tree ⋆and⋆ a ``synchronize_rcu``
+It is still required that the caller manage the synchronization and
+lifetimes of the items. So if RCU lock-free lookups are used, typically
+this would mean that the items have their own locks, or are amenable to
+lock-free access; and that the items are freed by RCU (or only freed
+after having been deleted from the idr tree *and* a ``synchronize_rcu``
 grace period).
 
 IDA - IDR based ID allocator
 
-This is id allocator without id -> pointer translation. Memory usage is much lower than full blown idr because each id only occupies a bit. ida uses a custom leaf node which
-contains IDA_BITMAP_BITS slots.
+This is id allocator without id -> pointer translation. Memory usage is
+much lower than full blown idr because each id only occupies a bit. ida
+uses a custom leaf node which contains IDA_BITMAP_BITS slots.
 
 2007-04-25 written by Tejun Heo <htejun``gmail``.com>
 
@@ -103,3 +113,14 @@ contains IDA_BITMAP_BITS slots.
     API-ida-simple-get
     API-ida-simple-remove
     API-ida-init
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

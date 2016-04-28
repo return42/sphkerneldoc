@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-panic-nand-write:
 
@@ -7,7 +8,7 @@ panic_nand_write
 
 *man panic_nand_write(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 [MTD Interface] NAND write with ECC
 
@@ -39,4 +40,15 @@ Arguments
 Description
 ===========
 
-NAND write with ECC. Used when performing writes in interrupt context, this may for example be called by mtdoops when writing an oops while in panic.
+NAND write with ECC. Used when performing writes in interrupt context,
+this may for example be called by mtdoops when writing an oops while in
+panic.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

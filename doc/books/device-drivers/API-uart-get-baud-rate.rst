@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-uart-get-baud-rate:
 
@@ -7,7 +8,7 @@ uart_get_baud_rate
 
 *man uart_get_baud_rate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return baud rate for a particular port
 
@@ -39,8 +40,22 @@ Arguments
 Description
 ===========
 
-Decode the termios structure into a numeric baud rate, taking account of the magic 38400 baud rate (with spd_⋆ flags), and mapping the ``B0`` rate to 9600 baud.
+Decode the termios structure into a numeric baud rate, taking account of
+the magic 38400 baud rate (with spd_* flags), and mapping the ``B0``
+rate to 9600 baud.
 
-If the new baud rate is invalid, try the old termios setting. If it's still invalid, we try 9600 baud.
+If the new baud rate is invalid, try the old termios setting. If it's
+still invalid, we try 9600 baud.
 
-Update the ``termios`` structure to reflect the baud rate we're actually going to be using. Don't do this for the case where B0 is requested (“hang up”).
+Update the ``termios`` structure to reflect the baud rate we're actually
+going to be using. Don't do this for the case where B0 is requested
+(“hang up”).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

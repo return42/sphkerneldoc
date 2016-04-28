@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-spi-device:
 
@@ -7,7 +8,7 @@ struct spi_device
 
 *man struct spi_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Master side proxy for an SPI slave device
 
@@ -59,35 +60,47 @@ master
     SPI controller used with the device.
 
 max_speed_hz
-    Maximum clock rate to be used with this chip (on this board); may be changed by the device's driver. The spi_transfer.speed_hz can override this for each transfer.
+    Maximum clock rate to be used with this chip (on this board); may be
+    changed by the device's driver. The spi_transfer.speed_hz can
+    override this for each transfer.
 
 chip_select
     Chipselect, distinguishing chips handled by ``master``.
 
 bits_per_word
-    Data transfers involve one or more words; word sizes like eight or 12 bits are common. In-memory wordsizes are powers of two bytes (e.g. 20 bit samples use 32 bits). This may
-    be changed by the device's driver, or left at the default (0) indicating protocol words are eight bit bytes. The spi_transfer.bits_per_word can override this for each
-    transfer.
+    Data transfers involve one or more words; word sizes like eight or
+    12 bits are common. In-memory wordsizes are powers of two bytes
+    (e.g. 20 bit samples use 32 bits). This may be changed by the
+    device's driver, or left at the default (0) indicating protocol
+    words are eight bit bytes. The spi_transfer.bits_per_word can
+    override this for each transfer.
 
 mode
-    The spi mode defines how data is clocked out and in. This may be changed by the device's driver. The “active low” default for chipselect mode can be overridden (by specifying
-    SPI_CS_HIGH) as can the “MSB first” default for each word in a transfer (by specifying SPI_LSB_FIRST).
+    The spi mode defines how data is clocked out and in. This may be
+    changed by the device's driver. The “active low” default for
+    chipselect mode can be overridden (by specifying SPI_CS_HIGH) as
+    can the “MSB first” default for each word in a transfer (by
+    specifying SPI_LSB_FIRST).
 
 irq
-    Negative, or the number passed to ``request_irq`` to receive interrupts from this device.
+    Negative, or the number passed to ``request_irq`` to receive
+    interrupts from this device.
 
 controller_state
     Controller's runtime state
 
 controller_data
-    Board-specific definitions for controller, such as FIFO initialization parameters; from board_info.controller_data
+    Board-specific definitions for controller, such as FIFO
+    initialization parameters; from board_info.controller_data
 
 modalias[SPI_NAME_SIZE]
-    Name of the driver to use with this device, or an alias for that name. This appears in the sysfs “modalias” attribute for driver coldplugging, and in uevents used for
-    hotplugging
+    Name of the driver to use with this device, or an alias for that
+    name. This appears in the sysfs “modalias” attribute for driver
+    coldplugging, and in uevents used for hotplugging
 
 cs_gpio
-    gpio number of the chipselect line (optional, -ENOENT when when not using a GPIO line)
+    gpio number of the chipselect line (optional, -ENOENT when when not
+    using a GPIO line)
 
 statistics
     statistics for the spi_device
@@ -96,7 +109,20 @@ statistics
 Description
 ===========
 
-A ``spi_device`` is used to interchange data between an SPI slave (usually a discrete chip) and CPU memory.
+A ``spi_device`` is used to interchange data between an SPI slave
+(usually a discrete chip) and CPU memory.
 
-In ``dev``, the platform_data is used to hold information about this device that's meaningful to the device's protocol driver, but not to its controller. One example might be an
-identifier for a chip variant with slightly different functionality; another might be information about how this particular board wires the chip's pins.
+In ``dev``, the platform_data is used to hold information about this
+device that's meaningful to the device's protocol driver, but not to its
+controller. One example might be an identifier for a chip variant with
+slightly different functionality; another might be information about how
+this particular board wires the chip's pins.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

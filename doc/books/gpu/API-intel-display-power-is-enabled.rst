@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-display-power-is-enabled:
 
@@ -7,7 +8,7 @@ intel_display_power_is_enabled
 
 *man intel_display_power_is_enabled(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 check for a power domain
 
@@ -30,13 +31,26 @@ Arguments
 Description
 ===========
 
-This function can be used to check the hw power domain state. It is mostly used in hardware state readout functions. Everywhere else code should rely upon explicit power domain
-reference counting to ensure that the hardware block is powered up before accessing it.
+This function can be used to check the hw power domain state. It is
+mostly used in hardware state readout functions. Everywhere else code
+should rely upon explicit power domain reference counting to ensure that
+the hardware block is powered up before accessing it.
 
-Callers must hold the relevant modesetting locks to ensure that concurrent threads can't disable the power well while the caller tries to read a few registers.
+Callers must hold the relevant modesetting locks to ensure that
+concurrent threads can't disable the power well while the caller tries
+to read a few registers.
 
 
 Returns
 =======
 
 True when the power domain is enabled, false otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

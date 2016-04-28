@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-simulate:
 
@@ -7,7 +8,7 @@ ata_scsi_simulate
 
 *man ata_scsi_simulate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 simulate SCSI command on ATA device
 
@@ -30,10 +31,20 @@ Arguments
 Description
 ===========
 
-Interprets and directly executes a select list of SCSI commands that can be handled internally.
+Interprets and directly executes a select list of SCSI commands that can
+be handled internally.
 
 
 LOCKING
 =======
 
 spin_lock_irqsave(host lock)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

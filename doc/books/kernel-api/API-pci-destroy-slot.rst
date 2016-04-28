@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-destroy-slot:
 
@@ -7,7 +8,7 @@ pci_destroy_slot
 
 *man pci_destroy_slot(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 decrement refcount for physical PCI slot
 
@@ -27,4 +28,15 @@ Arguments
 Description
 ===========
 
-``struct`` pci_slot is refcounted, so destroying them is really easy; we just call kobject_put on its kobj and let our release methods do the rest.
+``struct`` pci_slot is refcounted, so destroying them is really easy;
+we just call kobject_put on its kobj and let our release methods do the
+rest.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

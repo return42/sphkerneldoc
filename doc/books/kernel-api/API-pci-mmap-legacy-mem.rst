@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-mmap-legacy-mem:
 
@@ -7,7 +8,7 @@ pci_mmap_legacy_mem
 
 *man pci_mmap_legacy_mem(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 map legacy PCI memory into user memory space
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Uses an arch specific callback, pci_mmap_legacy_mem_page_range, to mmap legacy memory space (first meg of bus space) into application virtual memory space.
+Uses an arch specific callback, pci_mmap_legacy_mem_page_range, to
+mmap legacy memory space (first meg of bus space) into application
+virtual memory space.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-spi-message-init-with-transfers:
 
@@ -7,7 +8,7 @@ spi_message_init_with_transfers
 
 *man spi_message_init_with_transfers(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialize spi_message and append transfers
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-This function initializes the given spi_message and adds each spi_transfer in the given array to the message.
+This function initializes the given spi_message and adds each
+spi_transfer in the given array to the message.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

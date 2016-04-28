@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _FE_SET_FRONTEND_TUNE_MODE:
 
@@ -29,16 +30,31 @@ Arguments
 
     -  0 - normal tune mode
 
-    -  FE_TUNE_MODE_ONESHOT - When set, this flag will disable any zigzagging or other "normal" tuning behaviour. Additionally, there will be no automatic monitoring of the lock
-       status, and hence no frontend events will be generated. If a frontend device is closed, this flag will be automatically turned off when the device is reopened read-write.
+    -  FE_TUNE_MODE_ONESHOT - When set, this flag will disable any
+       zigzagging or other "normal" tuning behaviour. Additionally,
+       there will be no automatic monitoring of the lock status, and
+       hence no frontend events will be generated. If a frontend device
+       is closed, this flag will be automatically turned off when the
+       device is reopened read-write.
 
 
 Description
 ===========
 
-Allow setting tuner mode flags to the frontend, between 0 (normal) or FE_TUNE_MODE_ONESHOT mode
+Allow setting tuner mode flags to the frontend, between 0 (normal) or
+FE_TUNE_MODE_ONESHOT mode
 
 RETURN VALUE
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

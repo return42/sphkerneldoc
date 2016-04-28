@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _V4L2-PIX-FMT-SBGGR10DPCM8:
 
@@ -16,5 +17,17 @@ V4L2_PIX_FMT_SRGGB10DPCM8
 Description
 ===========
 
-These four pixel formats are raw sRGB / Bayer formats with 10 bits per colour compressed to 8 bits each, using DPCM compression. DPCM, differential pulse-code modulation, is lossy.
-Each colour component consumes 8 bits of memory. In other respects this format is similar to :ref:`pixfmt-srggb10`.
+These four pixel formats are raw sRGB / Bayer formats with 10 bits per
+colour compressed to 8 bits each, using DPCM compression. DPCM,
+differential pulse-code modulation, is lossy. Each colour component
+consumes 8 bits of memory. In other respects this format is similar to
+:ref:`pixfmt-srggb10`.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---audit-syscall-entry:
 
@@ -7,7 +8,7 @@ __audit_syscall_entry
 
 *man __audit_syscall_entry(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 fill in an audit record at syscall entry
 
@@ -39,6 +40,18 @@ Arguments
 Description
 ===========
 
-Fill in audit context at syscall entry. This only happens if the audit context was created when the task was created and the state or filters demand the audit context be built. If
-the state from the per-task filter or from the per-syscall filter is AUDIT_RECORD_CONTEXT, then the record will be written at syscall exit time (otherwise, it will only be
+Fill in audit context at syscall entry. This only happens if the audit
+context was created when the task was created and the state or filters
+demand the audit context be built. If the state from the per-task filter
+or from the per-syscall filter is AUDIT_RECORD_CONTEXT, then the
+record will be written at syscall exit time (otherwise, it will only be
 written if another part of the kernel requests that it be written).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

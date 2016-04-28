@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bpf-prog-create-from-user:
 
@@ -7,7 +8,7 @@ bpf_prog_create_from_user
 
 *man bpf_prog_create_from_user(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create an unattached filter from user buffer
 
@@ -36,5 +37,15 @@ Arguments
 Description
 ===========
 
-This function effectively does the same as ``bpf_prog_create``, only that it builds up its insns buffer from user space provided buffer. It also allows for passing a
-bpf_aux_classic_check_t handler.
+This function effectively does the same as ``bpf_prog_create``, only
+that it builds up its insns buffer from user space provided buffer. It
+also allows for passing a bpf_aux_classic_check_t handler.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

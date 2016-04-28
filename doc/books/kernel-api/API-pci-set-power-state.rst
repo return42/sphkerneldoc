@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-set-power-state:
 
@@ -7,7 +8,7 @@ pci_set_power_state
 
 *man pci_set_power_state(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Set the power state of a PCI device
 
@@ -30,11 +31,24 @@ Arguments
 Description
 ===========
 
-Transition a device to a new power state, using the platform firmware and/or the device's PCI PM registers.
+Transition a device to a new power state, using the platform firmware
+and/or the device's PCI PM registers.
 
 
 RETURN VALUE
 ============
 
--EINVAL if the requested state is invalid. -EIO if device does not support PCI PM or its PM capabilities register has a wrong version, or device doesn't support the requested
-state. 0 if device already is in the requested state. 0 if device's power state has been successfully changed.
+-EINVAL if the requested state is invalid. -EIO if device does not
+support PCI PM or its PM capabilities register has a wrong version, or
+device doesn't support the requested state. 0 if device already is in
+the requested state. 0 if device's power state has been successfully
+changed.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

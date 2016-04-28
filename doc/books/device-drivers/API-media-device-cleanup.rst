@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-device-cleanup:
 
@@ -7,7 +8,7 @@ media_device_cleanup
 
 *man media_device_cleanup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Cleanups a media device element
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-This function that will destroy the graph_mutex that is initialized in ``media_device_init``.
+This function that will destroy the graph_mutex that is initialized in
+``media_device_init``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-subdev-video-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_subdev_video_ops
 
 *man struct v4l2_subdev_video_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Callbacks used when v4l device was opened in video mode.
 
@@ -49,11 +50,14 @@ Members
 =======
 
 s_routing
-    see s_routing in audio_ops, except this version is for video devices.
+    see s_routing in audio_ops, except this version is for video
+    devices.
 
 s_crystal_freq
-    sets the frequency of the crystal used to generate the clocks in Hz. An extra flags field allows device specific configuration regarding clock frequency dividers, etc. If not
-    used, then set flags to 0. If the frequency is not supported, then -EINVAL is returned.
+    sets the frequency of the crystal used to generate the clocks in Hz.
+    An extra flags field allows device specific configuration regarding
+    clock frequency dividers, etc. If not used, then set flags to 0. If
+    the frequency is not supported, then -EINVAL is returned.
 
 g_std
     callback for VIDIOC_G_STD ioctl handler code.
@@ -62,25 +66,31 @@ s_std
     callback for VIDIOC_S_STD ioctl handler code.
 
 s_std_output
-    set v4l2_std_id for video OUTPUT devices. This is ignored by video input devices.
+    set v4l2_std_id for video OUTPUT devices. This is ignored by video
+    input devices.
 
 g_std_output
-    get current standard for video OUTPUT devices. This is ignored by video input devices.
+    get current standard for video OUTPUT devices. This is ignored by
+    video input devices.
 
 querystd
     callback for VIDIOC_QUERYSTD ioctl handler code.
 
 g_tvnorms
-    get v4l2_std_id with all standards supported by the video CAPTURE device. This is ignored by video output devices.
+    get v4l2_std_id with all standards supported by the video CAPTURE
+    device. This is ignored by video output devices.
 
 g_tvnorms_output
-    get v4l2_std_id with all standards supported by the video OUTPUT device. This is ignored by video capture devices.
+    get v4l2_std_id with all standards supported by the video OUTPUT
+    device. This is ignored by video capture devices.
 
 g_input_status
-    get input status. Same as the status field in the v4l2_input struct.
+    get input status. Same as the status field in the v4l2_input
+    struct.
 
 s_stream
-    used to notify the driver that a video stream will start or has stopped.
+    used to notify the driver that a video stream will start or has
+    stopped.
 
 cropcap
     callback for VIDIOC_CROPCAP ioctl handler code.
@@ -104,7 +114,9 @@ s_frame_interval
     callback for VIDIOC_S_FRAMEINTERVAL ioctl handler code.
 
 s_dv_timings
-    Set custom dv timings in the sub device. This is used when sub device is capable of setting detailed timing information in the hardware to generate/detect the video signal.
+    Set custom dv timings in the sub device. This is used when sub
+    device is capable of setting detailed timing information in the
+    hardware to generate/detect the video signal.
 
 g_dv_timings
     Get custom dv timings in the sub device.
@@ -116,8 +128,20 @@ g_mbus_config
     get supported mediabus configurations
 
 s_mbus_config
-    set a certain mediabus configuration. This operation is added for compatibility with soc-camera drivers and should not be used by new software.
+    set a certain mediabus configuration. This operation is added for
+    compatibility with soc-camera drivers and should not be used by new
+    software.
 
 s_rx_buffer
-    set a host allocated memory buffer for the subdev. The subdev can adjust ``size`` to a lower value and must not write more data to the buffer starting at ``data`` than the
-    original value of ``size``.
+    set a host allocated memory buffer for the subdev. The subdev can
+    adjust ``size`` to a lower value and must not write more data to the
+    buffer starting at ``data`` than the original value of ``size``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

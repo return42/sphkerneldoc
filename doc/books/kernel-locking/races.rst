@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _races:
 
@@ -18,46 +19,98 @@ This is what they would expect to happen:
 
 
 
-.. table:: Expected Results
+.. flat-table:: Expected Results
+    :header-rows:  1
+    :stub-columns: 0
 
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | Instance 1                                                                                 | Instance 2                                                                                 |
-    +============================================================================================+============================================================================================+
-    | read very_important_count   (5)                                                            |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | add 1 (6)                                                                                  |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | write very_important_count   (6)                                                           |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | read very_important_count   (6)                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | add 1 (7)                                                                                  |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | write very_important_count   (7)                                                           |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+
+    -  .. row 1
+
+       -  Instance 1
+
+       -  Instance 2
+
+    -  .. row 2
+
+       -  read very_important_count (5)
+
+       -  
+
+    -  .. row 3
+
+       -  add 1 (6)
+
+       -  
+
+    -  .. row 4
+
+       -  write very_important_count (6)
+
+       -  
+
+    -  .. row 5
+
+       -  
+       -  read very_important_count (6)
+
+    -  .. row 6
+
+       -  
+       -  add 1 (7)
+
+    -  .. row 7
+
+       -  
+       -  write very_important_count (7)
 
 
 This is what might happen:
 
 
 
-.. table:: Possible Results
+.. flat-table:: Possible Results
+    :header-rows:  1
+    :stub-columns: 0
 
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | Instance 1                                                                                 | Instance 2                                                                                 |
-    +============================================================================================+============================================================================================+
-    | read very_important_count   (5)                                                            |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | read very_important_count   (5)                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | add 1 (6)                                                                                  |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | add 1 (6)                                                                                  |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    | write very_important_count   (6)                                                           |                                                                                            |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
-    |                                                                                            | write very_important_count   (6)                                                           |
-    +--------------------------------------------------------------------------------------------+--------------------------------------------------------------------------------------------+
+
+    -  .. row 1
+
+       -  Instance 1
+
+       -  Instance 2
+
+    -  .. row 2
+
+       -  read very_important_count (5)
+
+       -  
+
+    -  .. row 3
+
+       -  
+       -  read very_important_count (5)
+
+    -  .. row 4
+
+       -  add 1 (6)
+
+       -  
+
+    -  .. row 5
+
+       -  
+       -  add 1 (6)
+
+    -  .. row 6
+
+       -  write very_important_count (6)
+
+       -  
+
+    -  .. row 7
+
+       -  
+       -  write very_important_count (6)
 
 
 
@@ -66,11 +119,28 @@ This is what might happen:
 Race Conditions and Critical Regions
 ====================================
 
-This overlap, where the result depends on the relative timing of multiple tasks, is called a race condition. The piece of code containing the concurrency issue is called a critical
-region. And especially since Linux starting running on SMP machines, they became one of the major issues in kernel design and implementation.
+This overlap, where the result depends on the relative timing of
+multiple tasks, is called a race condition. The piece of code containing
+the concurrency issue is called a critical region. And especially since
+Linux starting running on SMP machines, they became one of the major
+issues in kernel design and implementation.
 
-Preemption can have the same effect, even if there is only one CPU: by preempting one task during the critical region, we have exactly the same race condition. In this case the
-thread which preempts might run the critical region itself.
+Preemption can have the same effect, even if there is only one CPU: by
+preempting one task during the critical region, we have exactly the same
+race condition. In this case the thread which preempts might run the
+critical region itself.
 
-The solution is to recognize when these simultaneous accesses occur, and use locks to make sure that only one instance can enter the critical region at any time. There are many
-friendly primitives in the Linux kernel to help you do this. And then there are the unfriendly primitives, but I'll pretend they don't exist.
+The solution is to recognize when these simultaneous accesses occur, and
+use locks to make sure that only one instance can enter the critical
+region at any time. There are many friendly primitives in the Linux
+kernel to help you do this. And then there are the unfriendly
+primitives, but I'll pretend they don't exist.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

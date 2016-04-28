@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-get-pfnblock-flags-mask:
 
@@ -7,9 +8,10 @@ get_pfnblock_flags_mask
 
 *man get_pfnblock_flags_mask(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-Return the requested group of flags for the pageblock_nr_pages block of pages
+Return the requested group of flags for the pageblock_nr_pages block
+of pages
 
 
 Synopsis
@@ -37,3 +39,12 @@ Return
 ======
 
 pageblock_bits flags
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

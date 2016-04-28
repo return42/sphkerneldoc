@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _usingKDB:
 
@@ -19,12 +20,15 @@ This is a quick example of how to use kdb.
 
    OR
 
-   Configure kgdboc after the kernel has booted; assuming you are using a serial port console:
+   Configure kgdboc after the kernel has booted; assuming you are using
+   a serial port console:
 
    -  ``echo ttyS0 > /sys/module/kgdboc/parameters/kgdboc``
 
-2. Enter the kernel debugger manually or by waiting for an oops or fault. There are several ways you can enter the kernel debugger manually; all involve using the sysrq-g, which
-   means you must have enabled CONFIG_MAGIC_SYSRQ=y in your kernel config.
+2. Enter the kernel debugger manually or by waiting for an oops or
+   fault. There are several ways you can enter the kernel debugger
+   manually; all involve using the sysrq-g, which means you must have
+   enabled CONFIG_MAGIC_SYSRQ=y in your kernel config.
 
    -  When logged in as root or with a super user session you can run:
 
@@ -38,7 +42,8 @@ This is a quick example of how to use kdb.
 
       Press: ``g``
 
-   -  When you have telneted to a terminal server that supports sending a remote break
+   -  When you have telneted to a terminal server that supports sending
+      a remote break
 
       Press: ``Control-]``
 
@@ -48,7 +53,8 @@ This is a quick example of how to use kdb.
 
       Press: ``g``
 
-3. From the kdb prompt you can run the "help" command to see a complete list of the commands that are available.
+3. From the kdb prompt you can run the "help" command to see a complete
+   list of the commands that are available.
 
    Some useful commands in kdb include:
 
@@ -66,9 +72,12 @@ This is a quick example of how to use kdb.
 
    -  go -- Continue the system
 
-4. When you are done using kdb you need to consider rebooting the system or using the "go" command to resuming normal kernel execution. If you have paused the kernel for a lengthy
-   period of time, applications that rely on timely networking or anything to do with real wall clock time could be adversely affected, so you should take this into consideration
-   when using the kernel debugger.
+4. When you are done using kdb you need to consider rebooting the system
+   or using the "go" command to resuming normal kernel execution. If you
+   have paused the kernel for a lengthy period of time, applications
+   that rely on timely networking or anything to do with real wall clock
+   time could be adversely affected, so you should take this into
+   consideration when using the kernel debugger.
 
 
 .. _quickKDBkeyboard:
@@ -88,8 +97,10 @@ This is a quick example of how to use kdb with a keyboard.
 
    -  ``echo kbd > /sys/module/kgdboc/parameters/kgdboc``
 
-2. Enter the kernel debugger manually or by waiting for an oops or fault. There are several ways you can enter the kernel debugger manually; all involve using the sysrq-g, which
-   means you must have enabled CONFIG_MAGIC_SYSRQ=y in your kernel config.
+2. Enter the kernel debugger manually or by waiting for an oops or
+   fault. There are several ways you can enter the kernel debugger
+   manually; all involve using the sysrq-g, which means you must have
+   enabled CONFIG_MAGIC_SYSRQ=y in your kernel config.
 
    -  When logged in as root or with a super user session you can run:
 
@@ -119,4 +130,14 @@ This is a quick example of how to use kdb with a keyboard.
 
       Release: ``Alt``
 
-3. Now type in a kdb command such as "help", "dmesg", "bt" or "go" to continue kernel execution.
+3. Now type in a kdb command such as "help", "dmesg", "bt" or "go" to
+   continue kernel execution.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

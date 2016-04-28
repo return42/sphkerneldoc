@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-regulator-list-hardware-vsel:
 
@@ -7,7 +8,7 @@ regulator_list_hardware_vsel
 
 *man regulator_list_hardware_vsel(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get the HW-specific register value for a selector
 
@@ -30,7 +31,18 @@ Arguments
 Description
 ===========
 
-Converts the selector to a hardware-specific voltage selector that can be directly written to the regulator registers. The address of the voltage register can be determined by
-calling ``regulator_get_hardware_vsel_register``.
+Converts the selector to a hardware-specific voltage selector that can
+be directly written to the regulator registers. The address of the
+voltage register can be determined by calling
+``regulator_get_hardware_vsel_register``.
 
 On error a negative errno is returned.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

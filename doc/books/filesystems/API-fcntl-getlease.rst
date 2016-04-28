@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fcntl-getlease:
 
@@ -7,7 +8,7 @@ fcntl_getlease
 
 *man fcntl_getlease(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Enquire what lease is currently active
 
@@ -27,7 +28,8 @@ Arguments
 Description
 ===========
 
-The value returned by this function will be one of (if no lease break is pending):
+The value returned by this function will be one of (if no lease break is
+pending):
 
 ``F_RDLCK`` to indicate a shared lease is held.
 
@@ -37,7 +39,8 @@ The value returned by this function will be one of (if no lease break is pending
 
 (if a lease break is pending):
 
-``F_RDLCK`` to indicate an exclusive lease needs to be changed to a shared lease (or removed).
+``F_RDLCK`` to indicate an exclusive lease needs to be changed to a
+shared lease (or removed).
 
 ``F_UNLCK`` to indicate the lease needs to be removed.
 
@@ -45,4 +48,14 @@ The value returned by this function will be one of (if no lease break is pending
 XXX
 ===
 
-sfr & willy disagree over whether F_INPROGRESS should be returned to userspace.
+sfr & willy disagree over whether F_INPROGRESS should be returned to
+userspace.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

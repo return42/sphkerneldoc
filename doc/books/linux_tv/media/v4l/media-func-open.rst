@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _media-func-open:
 
@@ -27,21 +28,27 @@ Arguments
     Device to be opened.
 
 ``flags``
-    Open flags. Access mode must be either ``O_RDONLY`` or ``O_RDWR``. Other flags have no effect.
+    Open flags. Access mode must be either ``O_RDONLY`` or ``O_RDWR``.
+    Other flags have no effect.
 
 
 Description
 ===========
 
-To open a media device applications call ``open()`` with the desired device name. The function has no side effects; the device configuration remain unchanged.
+To open a media device applications call ``open()`` with the desired
+device name. The function has no side effects; the device configuration
+remain unchanged.
 
-When the device is opened in read-only mode, attempts to modify its configuration will result in an error, and ``errno`` will be set to EBADF.
+When the device is opened in read-only mode, attempts to modify its
+configuration will result in an error, and ``errno`` will be set to
+EBADF.
 
 
 Return Value
 ============
 
-``open`` returns the new file descriptor on success. On error, -1 is returned, and ``errno`` is set appropriately. Possible error codes are:
+``open`` returns the new file descriptor on success. On error, -1 is
+returned, and ``errno`` is set appropriately. Possible error codes are:
 
 EACCES
     The requested access to the file is not allowed.
@@ -57,3 +64,12 @@ ENOMEM
 
 ENXIO
     No device corresponding to this device special file exists.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sdev-evt-send-simple:
 
@@ -7,7 +8,7 @@ sdev_evt_send_simple
 
 *man sdev_evt_send_simple(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 send asserted event to uevent thread
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 Assert scsi device event asynchronously, given an event type.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

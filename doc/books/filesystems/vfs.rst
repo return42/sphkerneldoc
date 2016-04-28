@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _vfs:
 
@@ -22,6 +23,7 @@ The Filesystem types
     API-sb-start-write
     API-sb-start-pagefault
     API-inode-inc-iversion
+
 
 .. _the_directory_cache:
 
@@ -63,6 +65,7 @@ The Directory Cache
     API-d-backing-inode
     API-d-backing-dentry
 
+
 .. _inode_handling:
 
 Inode Handling
@@ -101,6 +104,7 @@ Inode Handling
     API-is-bad-inode
     API-iget-failed
 
+
 .. _registration_and_superblocks:
 
 Registration and Superblocks
@@ -119,6 +123,7 @@ Registration and Superblocks
     API-get-super-thawed
     API-freeze-super
     API-thaw-super
+
 
 .. _file_locks:
 
@@ -147,6 +152,7 @@ File Locks
     API-fcntl-setlease
     API-flock-lock-inode-wait
     API-sys-flock
+
 
 .. _other_functions:
 
@@ -246,3 +252,14 @@ Other Functions
     API-blkdev-get-by-path
     API-blkdev-get-by-dev
     API-lookup-bdev
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

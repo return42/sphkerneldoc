@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-raid-phys-disk-get-num-paths:
 
@@ -7,7 +8,7 @@ mpt_raid_phys_disk_get_num_paths
 
 *man mpt_raid_phys_disk_get_num_paths(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 returns number paths associated to this phys_num
 
@@ -31,3 +32,12 @@ Return
 ======
 
 returns number paths
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

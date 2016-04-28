@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kmsg-dump-get-buffer:
 
@@ -7,7 +8,7 @@ kmsg_dump_get_buffer
 
 *man kmsg_dump_get_buffer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 copy kmsg log lines
 
@@ -39,9 +40,22 @@ Arguments
 Description
 ===========
 
-Start at the end of the kmsg buffer and fill the provided buffer with as many of the the ⋆youngest⋆ kmsg records that fit into it. If the buffer is large enough, all available kmsg
-records will be copied with a single call.
+Start at the end of the kmsg buffer and fill the provided buffer with as
+many of the the *youngest* kmsg records that fit into it. If the buffer
+is large enough, all available kmsg records will be copied with a single
+call.
 
-Consecutive calls will fill the buffer with the next block of available older records, not including the earlier retrieved ones.
+Consecutive calls will fill the buffer with the next block of available
+older records, not including the earlier retrieved ones.
 
-A return value of FALSE indicates that there are no more records to read.
+A return value of FALSE indicates that there are no more records to
+read.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

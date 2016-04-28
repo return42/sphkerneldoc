@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-mpu401-uart-new:
 
@@ -7,7 +8,7 @@ snd_mpu401_uart_new
 
 *man snd_mpu401_uart_new(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create an MPU401-UART instance
 
@@ -47,11 +48,21 @@ Description
 
 Creates a new MPU-401 instance.
 
-Note that the rawmidi instance is returned on the rrawmidi argument, not the mpu401 instance itself. To access to the mpu401 instance, cast from rawmidi->private_data (with struct
-snd_mpu401 magic-cast).
+Note that the rawmidi instance is returned on the rrawmidi argument, not
+the mpu401 instance itself. To access to the mpu401 instance, cast from
+rawmidi->private_data (with struct snd_mpu401 magic-cast).
 
 
 Return
 ======
 
 Zero if successful, or a negative error code.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

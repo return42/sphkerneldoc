@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _FE_ENABLE_HIGH_LNB_VOLTAGE:
 
@@ -7,7 +8,8 @@ ioctl FE_ENABLE_HIGH_LNB_VOLTAGE
 
 *man FE_ENABLE_HIGH_LNB_VOLTAGE(2)*
 
-Select output DC level between normal LNBf voltages or higher LNBf voltages.
+Select output DC level between normal LNBf voltages or higher LNBf
+voltages.
 
 
 Synopsis
@@ -29,15 +31,28 @@ Arguments
 
     -  0 - normal 13V and 18V.
 
-    -  >0 - enables slightly higher voltages instead of 13/18V, in order to compensate for long antenna cables.
+    -  >0 - enables slightly higher voltages instead of 13/18V, in order
+       to compensate for long antenna cables.
 
 
 Description
 ===========
 
-Select output DC level between normal LNBf voltages or higher LNBf voltages between 0 (normal) or a value grater than 0 for higher voltages.
+Select output DC level between normal LNBf voltages or higher LNBf
+voltages between 0 (normal) or a value grater than 0 for higher
+voltages.
 
 RETURN VALUE
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

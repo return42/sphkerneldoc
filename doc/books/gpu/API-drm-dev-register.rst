@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-dev-register:
 
@@ -7,7 +8,7 @@ drm_dev_register
 
 *man drm_dev_register(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Register DRM device
 
@@ -30,7 +31,9 @@ Arguments
 Description
 ===========
 
-Register the DRM device ``dev`` with the system, advertise device to user-space and start normal device operation. ``dev`` must be allocated via ``drm_dev_alloc`` previously.
+Register the DRM device ``dev`` with the system, advertise device to
+user-space and start normal device operation. ``dev`` must be allocated
+via ``drm_dev_alloc`` previously.
 
 Never call this twice on any device!
 
@@ -38,11 +41,23 @@ Never call this twice on any device!
 NOTE
 ====
 
-To ensure backward compatibility with existing drivers method this function calls the ->``load`` method after registering the device nodes, creating race conditions. Usage of the
-->``load`` methods is therefore deprecated, drivers must perform all initialization before calling ``drm_dev_register``.
+To ensure backward compatibility with existing drivers method this
+function calls the ->``load`` method after registering the device nodes,
+creating race conditions. Usage of the ->``load`` methods is therefore
+deprecated, drivers must perform all initialization before calling
+``drm_dev_register``.
 
 
 RETURNS
 =======
 
 0 on success, negative error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

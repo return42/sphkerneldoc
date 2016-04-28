@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-entity-pipeline-stop:
 
@@ -7,7 +8,7 @@ media_entity_pipeline_stop
 
 *man media_entity_pipeline_stop(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Mark a pipeline as not streaming
 
@@ -27,6 +28,19 @@ Arguments
 Description
 ===========
 
-Mark all entities connected to a given entity through enabled links, either directly or indirectly, as not streaming. The media_entity pipe field is reset to NULL.
+Mark all entities connected to a given entity through enabled links,
+either directly or indirectly, as not streaming. The media_entity pipe
+field is reset to NULL.
 
-If multiple calls to ``media_entity_pipeline_start`` have been made, the same number of calls to this function are required to mark the pipeline as not streaming.
+If multiple calls to ``media_entity_pipeline_start`` have been made, the
+same number of calls to this function are required to mark the pipeline
+as not streaming.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

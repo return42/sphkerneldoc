@@ -1,9 +1,12 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 ========
 Examples
 ========
 
-(A video capture device is assumed; change ``V4L2_BUF_TYPE_VIDEO_CAPTURE`` for other devices; change target to ``V4L2_SEL_TGT_COMPOSE_⋆`` family to configure composing area)
+(A video capture device is assumed; change
+``V4L2_BUF_TYPE_VIDEO_CAPTURE`` for other devices; change target to
+``V4L2_SEL_TGT_COMPOSE_*`` family to configure composing area)
 
 
 .. code-block:: c
@@ -20,7 +23,8 @@ Examples
         if (ret)
             exit(-1);
 
-Setting a composing area on output of size of *at most* half of limit placed at a center of a display.
+Setting a composing area on output of size of *at most* half of limit
+placed at a center of a display.
 
 
 .. code-block:: c
@@ -46,7 +50,8 @@ Setting a composing area on output of size of *at most* half of limit placed at 
         if (ret)
             exit(-1);
 
-A video output device is assumed; change ``V4L2_BUF_TYPE_VIDEO_OUTPUT`` for other devices
+A video output device is assumed; change ``V4L2_BUF_TYPE_VIDEO_OUTPUT``
+for other devices
 
 
 .. code-block:: c
@@ -73,3 +78,12 @@ A video output device is assumed; change ``V4L2_BUF_TYPE_VIDEO_OUTPUT`` for othe
         vscale = (double)compose.r.height / crop.r.height;
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

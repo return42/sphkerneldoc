@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-iio-triggered-buffer-setup:
 
@@ -7,7 +8,7 @@ iio_triggered_buffer_setup
 
 *man iio_triggered_buffer_setup(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Setup triggered buffer and pollfunc
 
@@ -30,15 +31,30 @@ Arguments
     Function which will be used as pollfunc bottom half
 
 ``setup_ops``
-    Buffer setup functions to use for this device. If NULL the default setup functions for triggered buffers will be used.
+    Buffer setup functions to use for this device. If NULL the default
+    setup functions for triggered buffers will be used.
 
 
 Description
 ===========
 
-This function combines some common tasks which will normally be performed when setting up a triggered buffer. It will allocate the buffer and the pollfunc.
+This function combines some common tasks which will normally be
+performed when setting up a triggered buffer. It will allocate the
+buffer and the pollfunc.
 
-Before calling this function the indio_dev structure should already be completely initialized, but not yet registered. In practice this means that this function should be called
-right before ``iio_device_register``.
+Before calling this function the indio_dev structure should already be
+completely initialized, but not yet registered. In practice this means
+that this function should be called right before
+``iio_device_register``.
 
-To free the resources allocated by this function call ``iio_triggered_buffer_cleanup``.
+To free the resources allocated by this function call
+``iio_triggered_buffer_cleanup``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

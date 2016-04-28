@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-offline-dev:
 
@@ -7,7 +8,7 @@ ata_scsi_offline_dev
 
 *man ata_scsi_offline_dev(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 offline attached SCSI device
 
@@ -27,8 +28,9 @@ Arguments
 Description
 ===========
 
-This function is called from ``ata_eh_hotplug`` and responsible for taking the SCSI device attached to ``dev`` offline. This function is called with host lock which protects
-dev->sdev against clearing.
+This function is called from ``ata_eh_hotplug`` and responsible for
+taking the SCSI device attached to ``dev`` offline. This function is
+called with host lock which protects dev->sdev against clearing.
 
 
 LOCKING
@@ -41,3 +43,12 @@ RETURNS
 =======
 
 1 if attached SCSI device exists, 0 otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

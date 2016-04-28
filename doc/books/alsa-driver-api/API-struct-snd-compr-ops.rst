@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-compr-ops:
 
@@ -7,7 +8,7 @@ struct snd_compr_ops
 
 *man struct snd_compr_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -36,13 +37,16 @@ Members
 =======
 
 open
-    Open the compressed stream This callback is mandatory and shall keep dsp ready to receive the stream parameter
+    Open the compressed stream This callback is mandatory and shall keep
+    dsp ready to receive the stream parameter
 
 free
     Close the compressed stream, mandatory
 
 set_params
-    Sets the compressed stream parameters, mandatory This can be called in during stream creation only to set codec params and the stream properties
+    Sets the compressed stream parameters, mandatory This can be called
+    in during stream creation only to set codec params and the stream
+    properties
 
 get_params
     retrieve the codec parameters, mandatory
@@ -54,22 +58,34 @@ get_metadata
     retrieves the requested metadata values from stream
 
 trigger
-    Trigger operations like start, pause, resume, drain, stop. This callback is mandatory
+    Trigger operations like start, pause, resume, drain, stop. This
+    callback is mandatory
 
 pointer
     Retrieve current h/w pointer information. Mandatory
 
 copy
-    Copy the compressed data to/from userspace, Optional Can't be implemented if DSP supports mmap
+    Copy the compressed data to/from userspace, Optional Can't be
+    implemented if DSP supports mmap
 
 mmap
     DSP mmap method to mmap DSP memory
 
 ack
-    Ack for DSP when data is written to audio buffer, Optional Not valid if copy is implemented
+    Ack for DSP when data is written to audio buffer, Optional Not valid
+    if copy is implemented
 
 get_caps
     Retrieve DSP capabilities, mandatory
 
 get_codec_caps
     Retrieve capabilities for a specific codec, mandatory
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

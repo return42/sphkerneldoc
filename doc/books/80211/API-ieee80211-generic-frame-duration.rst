@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-generic-frame-duration:
 
@@ -7,7 +8,7 @@ ieee80211_generic_frame_duration
 
 *man ieee80211_generic_frame_duration(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Calculate the duration field for a frame
 
@@ -39,10 +40,20 @@ Arguments
 Description
 ===========
 
-Calculate the duration field of some generic frame, given its length and transmission rate (in 100kbps).
+Calculate the duration field of some generic frame, given its length and
+transmission rate (in 100kbps).
 
 
 Return
 ======
 
 The duration.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

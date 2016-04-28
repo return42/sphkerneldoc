@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-lrc-irq-handler:
 
@@ -7,7 +8,7 @@ intel_lrc_irq_handler
 
 *man intel_lrc_irq_handler(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 handle Context Switch interrupts
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-Check the unread Context Status Buffers and manage the submission of new contexts to the ELSP accordingly.
+Check the unread Context Status Buffers and manage the submission of new
+contexts to the ELSP accordingly.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

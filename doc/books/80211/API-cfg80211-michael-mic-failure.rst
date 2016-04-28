@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-michael-mic-failure:
 
@@ -7,7 +8,7 @@ cfg80211_michael_mic_failure
 
 *man cfg80211_michael_mic_failure(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notification of Michael MIC failure (TKIP)
 
@@ -42,4 +43,15 @@ Arguments
 Description
 ===========
 
-This function is called whenever the local MAC detects a MIC failure in a received frame. This matches with MLME-MICHAELMICFAILURE.\ ``indication`` primitive.
+This function is called whenever the local MAC detects a MIC failure in
+a received frame. This matches with
+MLME-MICHAELMICFAILURE.\ ``indication`` primitive.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

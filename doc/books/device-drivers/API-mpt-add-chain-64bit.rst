@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-add-chain-64bit:
 
@@ -7,7 +8,7 @@ mpt_add_chain_64bit
 
 *man mpt_add_chain_64bit(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Place a 64 bit chain SGE at address pAddr.
 
@@ -31,3 +32,12 @@ Arguments
 
 ``dma_addr``
     Physical address
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-qc-complete-multiple:
 
@@ -7,7 +8,7 @@ ata_qc_complete_multiple
 
 *man ata_qc_complete_multiple(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Complete multiple qcs successfully
 
@@ -30,10 +31,14 @@ Arguments
 Description
 ===========
 
-Complete in-flight commands. This functions is meant to be called from low-level driver's interrupt routine to complete requests normally. ap->qc_active and ``qc_active`` is
-compared and commands are completed accordingly.
+Complete in-flight commands. This functions is meant to be called from
+low-level driver's interrupt routine to complete requests normally.
+ap->qc_active and ``qc_active`` is compared and commands are completed
+accordingly.
 
-Always use this function when completing multiple NCQ commands from IRQ handlers instead of calling ``ata_qc_complete`` multiple times to keep IRQ expect status properly in sync.
+Always use this function when completing multiple NCQ commands from IRQ
+handlers instead of calling ``ata_qc_complete`` multiple times to keep
+IRQ expect status properly in sync.
 
 
 LOCKING
@@ -46,3 +51,12 @@ RETURNS
 =======
 
 Number of completed commands on success, -errno otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

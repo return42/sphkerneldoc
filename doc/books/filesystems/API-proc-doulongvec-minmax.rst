@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-proc-doulongvec-minmax:
 
@@ -7,7 +8,7 @@ proc_doulongvec_minmax
 
 *man proc_doulongvec_minmax(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 read a vector of long integers with min/max values
 
@@ -39,8 +40,19 @@ Arguments
 Description
 ===========
 
-Reads/writes up to table->maxlen/sizeof(unsigned long) unsigned long values from/to the user buffer, treated as an ASCII string.
+Reads/writes up to table->maxlen/sizeof(unsigned long) unsigned long
+values from/to the user buffer, treated as an ASCII string.
 
-This routine will ensure the values are within the range specified by table->extra1 (min) and table->extra2 (max).
+This routine will ensure the values are within the range specified by
+table->extra1 (min) and table->extra2 (max).
 
 Returns 0 on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

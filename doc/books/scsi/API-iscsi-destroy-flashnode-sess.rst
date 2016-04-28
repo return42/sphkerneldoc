@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-iscsi-destroy-flashnode-sess:
 
@@ -7,7 +8,7 @@ iscsi_destroy_flashnode_sess
 
 *man iscsi_destroy_flashnode_sess(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 destroy flashnode session entry
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-Deletes the flashnode session entry and all children flashnode connection entries from sysfs
+Deletes the flashnode session entry and all children flashnode
+connection entries from sysfs
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

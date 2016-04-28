@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rpc-switch-client-transport:
 
@@ -7,7 +8,7 @@ rpc_switch_client_transport
 
 *man rpc_switch_client_transport(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 
 Synopsis
@@ -31,7 +32,19 @@ Arguments
 Description
 ===========
 
-This function allows the caller to switch the RPC transport for the rpc_clnt structure 'clnt' to allow it to connect to a mirrored NFS server, for instance. It assumes that the
-caller has ensured that there are no active RPC tasks by using some form of locking.
+This function allows the caller to switch the RPC transport for the
+rpc_clnt structure 'clnt' to allow it to connect to a mirrored NFS
+server, for instance. It assumes that the caller has ensured that there
+are no active RPC tasks by using some form of locking.
 
-Returns zero if “clnt” is now using the new xprt. Otherwise a negative errno is returned, and “clnt” continues to use the old xprt.
+Returns zero if “clnt” is now using the new xprt. Otherwise a negative
+errno is returned, and “clnt” continues to use the old xprt.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-is-link-local-ether-addr:
 
@@ -7,7 +8,7 @@ is_link_local_ether_addr
 
 *man is_link_local_ether_addr(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Determine if given Ethernet address is link-local
 
@@ -27,10 +28,20 @@ Arguments
 Description
 ===========
 
-Return true if address is link local reserved addr (01:80:c2:00:00:0X) per IEEE 802.1Q 8.6.3 Frame filtering.
+Return true if address is link local reserved addr (01:80:c2:00:00:0X)
+per IEEE 802.1Q 8.6.3 Frame filtering.
 
 
 Please note
 ===========
 
 addr must be aligned to u16.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

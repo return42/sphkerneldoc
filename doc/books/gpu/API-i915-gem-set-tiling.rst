@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-i915-gem-set-tiling:
 
@@ -7,7 +8,7 @@ i915_gem_set_tiling
 
 *man i915_gem_set_tiling(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 IOCTL handler to set tiling mode
 
@@ -33,7 +34,8 @@ Arguments
 Description
 ===========
 
-Sets the tiling mode of an object, returning the required swizzling of bit 6 of addresses in the object.
+Sets the tiling mode of an object, returning the required swizzling of
+bit 6 of addresses in the object.
 
 Called by the user via ioctl.
 
@@ -42,3 +44,12 @@ Returns
 =======
 
 Zero on success, negative errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

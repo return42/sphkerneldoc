@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-trace-block-rq-insert:
 
@@ -7,7 +8,7 @@ trace_block_rq_insert
 
 *man trace_block_rq_insert(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 insert block operation request into queue
 
@@ -30,5 +31,16 @@ Arguments
 Description
 ===========
 
-Called immediately before block operation request ``rq`` is inserted into queue ``q``. The fields in the operation request ``rq`` struct can be examined to determine which device
-and sectors the pending operation would access.
+Called immediately before block operation request ``rq`` is inserted
+into queue ``q``. The fields in the operation request ``rq`` struct can
+be examined to determine which device and sectors the pending operation
+would access.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-function:
 
@@ -7,7 +8,7 @@ struct usb_function
 
 *man struct usb_function(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 describes one function of a configuration
 
@@ -50,39 +51,51 @@ name
     For diagnostics, identifies the function.
 
 strings
-    tables of strings, keyed by identifiers assigned during ``bind`` and by language IDs provided in control requests
+    tables of strings, keyed by identifiers assigned during ``bind`` and
+    by language IDs provided in control requests
 
 fs_descriptors
-    Table of full (or low) speed descriptors, using interface and string identifiers assigned during ``bind``\ (). If this pointer is null, the function will not be available at
-    full speed (or at low speed).
+    Table of full (or low) speed descriptors, using interface and string
+    identifiers assigned during ``bind``\ (). If this pointer is null,
+    the function will not be available at full speed (or at low speed).
 
 hs_descriptors
-    Table of high speed descriptors, using interface and string identifiers assigned during ``bind``\ (). If this pointer is null, the function will not be available at high speed.
+    Table of high speed descriptors, using interface and string
+    identifiers assigned during ``bind``\ (). If this pointer is null,
+    the function will not be available at high speed.
 
 ss_descriptors
-    Table of super speed descriptors, using interface and string identifiers assigned during ``bind``\ (). If this pointer is null after initiation, the function will not be
-    available at super speed.
+    Table of super speed descriptors, using interface and string
+    identifiers assigned during ``bind``\ (). If this pointer is null
+    after initiation, the function will not be available at super speed.
 
 ssp_descriptors
-    Table of super speed plus descriptors, using interface and string identifiers assigned during ``bind``\ (). If this pointer is null after initiation, the function will not be
-    available at super speed plus.
+    Table of super speed plus descriptors, using interface and string
+    identifiers assigned during ``bind``\ (). If this pointer is null
+    after initiation, the function will not be available at super speed
+    plus.
 
 config
-    assigned when ``usb_add_function``\ () is called; this is the configuration with which this function is associated.
+    assigned when ``usb_add_function``\ () is called; this is the
+    configuration with which this function is associated.
 
 os_desc_table
-    Table of (interface id, os descriptors) pairs. The function can expose more than one interface. If an interface is a member of an IAD, only the first interface of IAD has its
-    entry in the table.
+    Table of (interface id, os descriptors) pairs. The function can
+    expose more than one interface. If an interface is a member of an
+    IAD, only the first interface of IAD has its entry in the table.
 
 os_desc_n
     Number of entries in os_desc_table
 
 bind
-    Before the gadget can register, all of its functions ``bind`` to the available resources including string and interface identifiers used in interface or class descriptors;
-    endpoints; I/O buffers; and so on.
+    Before the gadget can register, all of its functions ``bind`` to the
+    available resources including string and interface identifiers used
+    in interface or class descriptors; endpoints; I/O buffers; and so
+    on.
 
 unbind
-    Reverses ``bind``; called as a side effect of unregistering the driver which added this function.
+    Reverses ``bind``; called as a side effect of unregistering the
+    driver which added this function.
 
 free_func
     free the struct usb_function.
@@ -91,14 +104,19 @@ mod
     (internal) points to the module that created this structure.
 
 set_alt
-    (REQUIRED) Reconfigures altsettings; function drivers may initialize usb_ep.driver data at this time (when it is used). Note that setting an interface to its current
-    altsetting resets interface state, and that all interfaces have a disabled state.
+    (REQUIRED) Reconfigures altsettings; function drivers may initialize
+    usb_ep.driver data at this time (when it is used). Note that
+    setting an interface to its current altsetting resets interface
+    state, and that all interfaces have a disabled state.
 
 get_alt
-    Returns the active altsetting. If this is not provided, then only altsetting zero is supported.
+    Returns the active altsetting. If this is not provided, then only
+    altsetting zero is supported.
 
 disable
-    (REQUIRED) Indicates the function should be disabled. Reasons include host resetting or reconfiguring the gadget, and disconnection.
+    (REQUIRED) Indicates the function should be disabled. Reasons
+    include host resetting or reconfiguring the gadget, and
+    disconnection.
 
 setup
     Used for interface-specific control requests.
@@ -113,7 +131,8 @@ resume
     Notifies functions when the host restarts USB traffic.
 
 get_status
-    Returns function status as a reply to ``GetStatus`` request when the recipient is Interface.
+    Returns function status as a reply to ``GetStatus`` request when the
+    recipient is Interface.
 
 func_suspend
     callback to be called when SetFeature(FUNCTION_SUSPEND) is reseived
@@ -122,15 +141,35 @@ func_suspend
 Description
 ===========
 
-A single USB function uses one or more interfaces, and should in most cases support operation at both full and high speeds. Each function is associated by ``usb_add_function``\ ()
-with a one configuration; that function causes ``bind``\ () to be called so resources can be allocated as part of setting up a gadget driver. Those resources include endpoints,
-which should be allocated using ``usb_ep_autoconfig``\ ().
+A single USB function uses one or more interfaces, and should in most
+cases support operation at both full and high speeds. Each function is
+associated by ``usb_add_function``\ () with a one configuration; that
+function causes ``bind``\ () to be called so resources can be allocated
+as part of setting up a gadget driver. Those resources include
+endpoints, which should be allocated using ``usb_ep_autoconfig``\ ().
 
-To support dual speed operation, a function driver provides descriptors for both high and full speed operation. Except in rare cases that don't involve bulk endpoints, each speed
-needs different endpoint descriptors.
+To support dual speed operation, a function driver provides descriptors
+for both high and full speed operation. Except in rare cases that don't
+involve bulk endpoints, each speed needs different endpoint descriptors.
 
-Function drivers choose their own strategies for managing instance data. The simplest strategy just declares it "static', which means the function can only be activated once. If
-the function needs to be exposed in more than one configuration at a given speed, it needs to support multiple usb_function structures (one for each configuration).
+Function drivers choose their own strategies for managing instance data.
+The simplest strategy just declares it "static', which means the
+function can only be activated once. If the function needs to be exposed
+in more than one configuration at a given speed, it needs to support
+multiple usb_function structures (one for each configuration).
 
-A more complex strategy might encapsulate a ``usb_function`` structure inside a driver-specific instance structure to allows multiple activations. An example of multiple
-activations might be a CDC ACM function that supports two or more distinct instances within the same configuration, providing several independent logical data links to a USB host.
+A more complex strategy might encapsulate a ``usb_function`` structure
+inside a driver-specific instance structure to allows multiple
+activations. An example of multiple activations might be a CDC ACM
+function that supports two or more distinct instances within the same
+configuration, providing several independent logical data links to a USB
+host.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

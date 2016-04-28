@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-ieee80211-iface-combination:
 
@@ -7,7 +8,7 @@ struct ieee80211_iface_combination
 
 *man struct ieee80211_iface_combination(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 possible interface combination
 
@@ -44,7 +45,8 @@ n_limits
     number of limitations
 
 beacon_int_infra_match
-    In this combination, the beacon intervals between infrastructure and AP types must match. This is required only in special cases.
+    In this combination, the beacon intervals between infrastructure and
+    AP types must match. This is required only in special cases.
 
 radar_detect_widths
     bitmap of channel widths supported for radar detection
@@ -56,7 +58,8 @@ radar_detect_regions
 Description
 ===========
 
-With this structure the driver can describe which interface combinations it supports concurrently.
+With this structure the driver can describe which interface combinations
+it supports concurrently.
 
 
 Examples
@@ -110,3 +113,12 @@ Examples
         };
 
 
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

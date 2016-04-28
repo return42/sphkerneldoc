@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-get-phy-c45-ids:
 
@@ -7,7 +8,7 @@ get_phy_c45_ids
 
 *man get_phy_c45_ids(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 reads the specified addr for its 802.3-c45 IDs.
 
@@ -36,5 +37,16 @@ Arguments
 Description
 ===========
 
-If the PHY devices-in-package appears to be valid, it and the corresponding identifiers are stored in ``c45_ids``, zero is stored in ``phy_id``. Otherwise 0xffffffff is stored in
-``phy_id``. Returns zero on success.
+If the PHY devices-in-package appears to be valid, it and the
+corresponding identifiers are stored in ``c45_ids``, zero is stored in
+``phy_id``. Otherwise 0xffffffff is stored in ``phy_id``. Returns zero
+on success.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

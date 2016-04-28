@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-runtime-pm-get:
 
@@ -7,7 +8,7 @@ intel_runtime_pm_get
 
 *man intel_runtime_pm_get(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 grab a runtime pm reference
 
@@ -27,6 +28,18 @@ Arguments
 Description
 ===========
 
-This function grabs a device-level runtime pm reference (mostly used for GEM code to ensure the GTT or GT is on) and ensures that it is powered up.
+This function grabs a device-level runtime pm reference (mostly used for
+GEM code to ensure the GTT or GT is on) and ensures that it is powered
+up.
 
-Any runtime pm reference obtained by this function must have a symmetric call to ``intel_runtime_pm_put`` to release the reference again.
+Any runtime pm reference obtained by this function must have a symmetric
+call to ``intel_runtime_pm_put`` to release the reference again.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kthread-create-on-node:
 
@@ -7,7 +8,7 @@ kthread_create_on_node
 
 *man kthread_create_on_node(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create a kthread.
 
@@ -15,7 +16,7 @@ create a kthread.
 Synopsis
 ========
 
-.. c:function:: struct task_struct ⋆ kthread_create_on_node( int (*threadfn) void *data, void * data, int node, const char namefmt[], ... )
+.. c:function:: struct task_struct * kthread_create_on_node( int (*threadfn) void *data, void * data, int node, const char namefmt[], ... )
 
 Arguments
 =========
@@ -39,12 +40,28 @@ Arguments
 Description
 ===========
 
-This helper function creates and names a kernel thread. The thread will be stopped: use ``wake_up_process`` to start it. See also ``kthread_run``. The new thread has SCHED_NORMAL
-policy and is affine to all CPUs.
+This helper function creates and names a kernel thread. The thread will
+be stopped: use ``wake_up_process`` to start it. See also
+``kthread_run``. The new thread has SCHED_NORMAL policy and is affine
+to all CPUs.
 
-If thread is going to be bound on a particular cpu, give its node in ``node``, to get NUMA affinity for kthread stack, or else give NUMA_NO_NODE. When woken, the thread will run
-``threadfn``\ () with ``data`` as its argument. ``threadfn``\ () can either call ``do_exit`` directly if it is a standalone thread for which no one will call ``kthread_stop``, or
-return when '``kthread_should_stop``' is true (which means ``kthread_stop`` has been called). The return value should be zero or a negative error number; it will be passed to
+If thread is going to be bound on a particular cpu, give its node in
+``node``, to get NUMA affinity for kthread stack, or else give
+NUMA_NO_NODE. When woken, the thread will run ``threadfn`` () with
+``data`` as its argument. ``threadfn``\ () can either call ``do_exit``
+directly if it is a standalone thread for which no one will call
+``kthread_stop``, or return when '``kthread_should_stop``' is true
+(which means ``kthread_stop`` has been called). The return value should
+be zero or a negative error number; it will be passed to
 ``kthread_stop``.
 
 Returns a task_struct or ERR_PTR(-ENOMEM) or ERR_PTR(-EINTR).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

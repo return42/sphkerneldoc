@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-cfg80211-roamed:
 
@@ -7,7 +8,7 @@ cfg80211_roamed
 
 *man cfg80211_roamed(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 notify cfg80211 of roaming
 
@@ -48,4 +49,14 @@ Arguments
 Description
 ===========
 
-It should be called by the underlying driver whenever it roamed from one AP to another while connected.
+It should be called by the underlying driver whenever it roamed from one
+AP to another while connected.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

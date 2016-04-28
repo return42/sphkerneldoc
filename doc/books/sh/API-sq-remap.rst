@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sq-remap:
 
@@ -7,7 +8,7 @@ sq_remap
 
 *man sq_remap(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Map a physical address through the Store Queues
 
@@ -36,4 +37,15 @@ Arguments
 Description
 ===========
 
-Remaps the physical address ``phys`` through the next available store queue address of ``size`` length. ``name`` is logged at boot time as well as through the sysfs interface.
+Remaps the physical address ``phys`` through the next available store
+queue address of ``size`` length. ``name`` is logged at boot time as
+well as through the sysfs interface.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

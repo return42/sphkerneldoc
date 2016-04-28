@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-blkdev-issue-write-same:
 
@@ -7,7 +8,7 @@ blkdev_issue_write_same
 
 *man blkdev_issue_write_same(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 queue a write same operation
 
@@ -40,3 +41,12 @@ Description
 ===========
 
 Issue a write same request for the sectors in question.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

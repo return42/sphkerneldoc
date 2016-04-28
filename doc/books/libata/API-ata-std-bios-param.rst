@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-std-bios-param:
 
@@ -7,7 +8,7 @@ ata_std_bios_param
 
 *man ata_std_bios_param(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 generic bios head/sector/cylinder calculator used by sd.
 
@@ -36,8 +37,9 @@ Arguments
 Description
 ===========
 
-Generic bios head/sector/cylinder calculator used by sd. Most BIOSes nowadays expect a XXX/255/16 (CHS) mapping. Some situations may arise where the disk is not bootable if this is
-not used.
+Generic bios head/sector/cylinder calculator used by sd. Most BIOSes
+nowadays expect a XXX/255/16 (CHS) mapping. Some situations may arise
+where the disk is not bootable if this is not used.
 
 
 LOCKING
@@ -50,3 +52,12 @@ RETURNS
 =======
 
 Zero.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

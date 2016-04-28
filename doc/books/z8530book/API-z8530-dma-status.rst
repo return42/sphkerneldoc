@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-dma-status:
 
@@ -7,7 +8,7 @@ z8530_dma_status
 
 *man z8530_dma_status(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Handle a DMA status exception
 
@@ -23,5 +24,16 @@ Arguments
 ``chan``
     Z8530 channel to process
 
-    A status event occurred on the Z8530. We receive these for two reasons when in DMA mode. Firstly if we finished a packet transfer we get one and kick the next packet out.
-    Secondly we may see a DCD change.
+    A status event occurred on the Z8530. We receive these for two
+    reasons when in DMA mode. Firstly if we finished a packet transfer
+    we get one and kick the next packet out. Secondly we may see a DCD
+    change.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

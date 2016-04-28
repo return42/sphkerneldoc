@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-irqaction:
 
@@ -7,7 +8,7 @@ struct irqaction
 
 *man struct irqaction(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 per interrupt action descriptor
 
@@ -62,7 +63,7 @@ irq
     interrupt number
 
 flags
-    flags (see IRQF_⋆ above)
+    flags (see IRQF_* above)
 
 thread_flags
     flags related to ``thread``
@@ -75,3 +76,12 @@ name
 
 dir
     pointer to the proc/irq/NN/name entry
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

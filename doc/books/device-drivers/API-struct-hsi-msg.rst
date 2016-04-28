@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-hsi-msg:
 
@@ -7,7 +8,7 @@ struct hsi_msg
 
 *man struct hsi_msg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 HSI message descriptor
 
@@ -66,4 +67,14 @@ ttype
     Transfer type (TX if set, RX otherwise)
 
 break_frame
-    if true HSI will send/receive a break frame. Data buffers are ignored in the request.
+    if true HSI will send/receive a break frame. Data buffers are
+    ignored in the request.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

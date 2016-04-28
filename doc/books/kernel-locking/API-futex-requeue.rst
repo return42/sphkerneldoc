@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-requeue:
 
@@ -7,7 +8,7 @@ futex_requeue
 
 *man futex_requeue(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Requeue waiters from uaddr1 to uaddr2
 
@@ -39,16 +40,27 @@ Arguments
     ``uaddr1`` expected value (or ``NULL``)
 
 ``requeue_pi``
-    if we are attempting to requeue from a non-pi futex to a pi futex (pi to pi requeue is not supported)
+    if we are attempting to requeue from a non-pi futex to a pi futex
+    (pi to pi requeue is not supported)
 
 
 Description
 ===========
 
-Requeue waiters on uaddr1 to uaddr2. In the requeue_pi case, try to acquire uaddr2 atomically on behalf of the top waiter.
+Requeue waiters on uaddr1 to uaddr2. In the requeue_pi case, try to
+acquire uaddr2 atomically on behalf of the top waiter.
 
 
 Return
 ======
 
 >=0 - on success, the number of tasks requeued or woken; <0 - on error
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

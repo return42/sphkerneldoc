@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-pwm-ops:
 
@@ -7,7 +8,7 @@ struct pwm_ops
 
 *man struct pwm_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 PWM controller operations
 
@@ -57,3 +58,12 @@ dbg_show
 
 owner
     helps prevent removal of modules exporting active PWMs
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

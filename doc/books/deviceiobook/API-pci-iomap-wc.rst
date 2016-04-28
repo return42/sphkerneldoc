@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-iomap-wc:
 
@@ -7,7 +8,7 @@ pci_iomap_wc
 
 *man pci_iomap_wc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create a virtual WC mapping cookie for a PCI BAR
 
@@ -15,7 +16,7 @@ create a virtual WC mapping cookie for a PCI BAR
 Synopsis
 ========
 
-.. c:function:: void __iomem ⋆ pci_iomap_wc( struct pci_dev * dev, int bar, unsigned long maxlen )
+.. c:function:: void __iomem * pci_iomap_wc( struct pci_dev * dev, int bar, unsigned long maxlen )
 
 Arguments
 =========
@@ -33,7 +34,21 @@ Arguments
 Description
 ===========
 
-Using this function you will get a __iomem address to your device BAR. You can access it using ioread⋆() and iowrite⋆(). These functions hide the details if this is a MMIO or PIO
-address space and will just do what you expect from them in the correct way. When possible write combining is used.
+Using this function you will get a __iomem address to your device BAR.
+You can access it using ioread*() and iowrite*(). These functions hide
+the details if this is a MMIO or PIO address space and will just do what
+you expect from them in the correct way. When possible write combining
+is used.
 
-``maxlen`` specifies the maximum length to map. If you want to get access to the complete BAR without checking for its length first, pass ``0`` here.
+``maxlen`` specifies the maximum length to map. If you want to get
+access to the complete BAR without checking for its length first, pass
+``0`` here.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

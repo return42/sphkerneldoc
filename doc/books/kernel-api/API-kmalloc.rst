@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kmalloc:
 
@@ -7,7 +8,7 @@ kmalloc
 
 *man kmalloc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate memory
 
@@ -15,7 +16,7 @@ allocate memory
 Synopsis
 ========
 
-.. c:function:: void ⋆ kmalloc( size_t size, gfp_t flags )
+.. c:function:: void * kmalloc( size_t size, gfp_t flags )
 
 Arguments
 =========
@@ -30,7 +31,8 @@ Arguments
 Description
 ===========
 
-kmalloc is the normal method of allocating memory for objects smaller than page size in the kernel.
+kmalloc is the normal method of allocating memory for objects smaller
+than page size in the kernel.
 
 The ``flags`` argument may be one of:
 
@@ -38,7 +40,8 @@ The ``flags`` argument may be one of:
 
 ``GFP_KERNEL`` - Allocate normal kernel ram. May sleep.
 
-``GFP_ATOMIC`` - Allocation will not sleep. May use emergency pools. For example, use this inside interrupt handlers.
+``GFP_ATOMIC`` - Allocation will not sleep. May use emergency pools. For
+example, use this inside interrupt handlers.
 
 ``GFP_HIGHUSER`` - Allocate pages from high memory.
 
@@ -50,21 +53,38 @@ The ``flags`` argument may be one of:
 
 ``__GFP_THISNODE`` - Allocate node-local memory only.
 
-``GFP_DMA`` - Allocation suitable for DMA. Should only be used for ``kmalloc`` caches. Otherwise, use a slab created with SLAB_DMA.
+``GFP_DMA`` - Allocation suitable for DMA. Should only be used for
+``kmalloc`` caches. Otherwise, use a slab created with SLAB_DMA.
 
-Also it is possible to set different flags by OR'ing in one or more of the following additional ``flags``:
+Also it is possible to set different flags by OR'ing in one or more of
+the following additional ``flags``:
 
-``__GFP_COLD`` - Request cache-cold pages instead of trying to return cache-warm pages.
+``__GFP_COLD`` - Request cache-cold pages instead of trying to return
+cache-warm pages.
 
-``__GFP_HIGH`` - This allocation has high priority and may use emergency pools.
+``__GFP_HIGH`` - This allocation has high priority and may use emergency
+pools.
 
-``__GFP_NOFAIL`` - Indicate that this allocation is in no way allowed to fail (think twice before using).
+``__GFP_NOFAIL`` - Indicate that this allocation is in no way allowed to
+fail (think twice before using).
 
-``__GFP_NORETRY`` - If memory is not immediately available, then give up at once.
+``__GFP_NORETRY`` - If memory is not immediately available, then give up
+at once.
 
 ``__GFP_NOWARN`` - If allocation fails, don't issue any warnings.
 
-``__GFP_REPEAT`` - If allocation fails initially, try once more before failing.
+``__GFP_REPEAT`` - If allocation fails initially, try once more before
+failing.
 
-There are other flags available as well, but these are not intended for general use, and so are not documented here. For a full list of potential flags, always refer to
-linux/gfp.h.
+There are other flags available as well, but these are not intended for
+general use, and so are not documented here. For a full list of
+potential flags, always refer to linux/gfp.h.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

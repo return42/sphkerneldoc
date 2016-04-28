@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _linux-musb-basics:
 
@@ -5,13 +6,18 @@
 Linux MUSB Basics
 =================
 
-To get started on the topic, please read USB On-the-Go Basics (see Resources) which provides an introduction of USB OTG operation at the hardware level. A couple of wiki pages by
-Texas Instruments and Analog Devices also provide an overview of the Linux kernel MUSB configuration, albeit focused on some specific devices provided by these companies. Finally,
-getting acquainted with the USB specification at USB home page may come in handy, with practical instance provided through the Writing USB Device Drivers documentation (again, see
-Resources).
+To get started on the topic, please read USB On-the-Go Basics (see
+Resources) which provides an introduction of USB OTG operation at the
+hardware level. A couple of wiki pages by Texas Instruments and Analog
+Devices also provide an overview of the Linux kernel MUSB configuration,
+albeit focused on some specific devices provided by these companies.
+Finally, getting acquainted with the USB specification at USB home page
+may come in handy, with practical instance provided through the Writing
+USB Device Drivers documentation (again, see Resources).
 
-Linux USB stack is a layered architecture in which the MUSB controller hardware sits at the lowest. The MUSB controller driver abstract the MUSB controller hardware to the Linux
-USB stack.
+Linux USB stack is a layered architecture in which the MUSB controller
+hardware sits at the lowest. The MUSB controller driver abstract the
+MUSB controller hardware to the Linux USB stack.
 
 
 .. code-block:: c
@@ -38,13 +44,19 @@ USB stack.
       |   MUSB Controller Hardware    |
       ---------------------------------
 
-As outlined above, the glue layer is actually the platform specific code sitting in between the controller driver and the controller hardware.
+As outlined above, the glue layer is actually the platform specific code
+sitting in between the controller driver and the controller hardware.
 
-Just like a Linux USB driver needs to register itself with the Linux USB subsystem, the MUSB glue layer needs first to register itself with the MUSB controller driver. This will
-allow the controller driver to know about which device the glue layer supports and which functions to call when a supported device is detected or released; remember we are talking
-about an embedded controller chip here, so no insertion or removal at run-time.
+Just like a Linux USB driver needs to register itself with the Linux USB
+subsystem, the MUSB glue layer needs first to register itself with the
+MUSB controller driver. This will allow the controller driver to know
+about which device the glue layer supports and which functions to call
+when a supported device is detected or released; remember we are talking
+about an embedded controller chip here, so no insertion or removal at
+run-time.
 
-All of this information is passed to the MUSB controller driver through a platform_driver structure defined in the glue layer as:
+All of this information is passed to the MUSB controller driver through
+a platform_driver structure defined in the glue layer as:
 
 
 .. code-block:: c
@@ -57,11 +69,17 @@ All of this information is passed to the MUSB controller driver through a platfo
         },
     };
 
-The probe and remove function pointers are called when a matching device is detected and, respectively, released. The name string describes the device supported by this glue layer.
-In the current case it matches a platform_device structure declared in arch/mips/jz4740/platform.c. Note that we are not using device tree bindings here.
+The probe and remove function pointers are called when a matching device
+is detected and, respectively, released. The name string describes the
+device supported by this glue layer. In the current case it matches a
+platform_device structure declared in arch/mips/jz4740/platform.c. Note
+that we are not using device tree bindings here.
 
-In order to register itself to the controller driver, the glue layer goes through a few steps, basically allocating the controller hardware resources and initialising a couple of
-circuits. To do so, it needs to keep track of the information used throughout these steps. This is done by defining a private jz4740_glue structure:
+In order to register itself to the controller driver, the glue layer
+goes through a few steps, basically allocating the controller hardware
+resources and initialising a couple of circuits. To do so, it needs to
+keep track of the information used throughout these steps. This is done
+by defining a private jz4740_glue structure:
 
 
 .. code-block:: c
@@ -72,12 +90,17 @@ circuits. To do so, it needs to keep track of the information used throughout th
         struct clk      *clk;
     };
 
-The dev and musb members are both device structure variables. The first one holds generic information about the device, since it's the basic device structure, and the latter holds
-information more closely related to the subsystem the device is registered to. The clk variable keeps information related to the device clock operation.
+The dev and musb members are both device structure variables. The first
+one holds generic information about the device, since it's the basic
+device structure, and the latter holds information more closely related
+to the subsystem the device is registered to. The clk variable keeps
+information related to the device clock operation.
 
-Let's go through the steps of the probe function that leads the glue layer to register itself to the controller driver.
+Let's go through the steps of the probe function that leads the glue
+layer to register itself to the controller driver.
 
-N.B.: For the sake of readability each function will be split in logical parts, each part being shown as if it was independent from the others.
+N.B.: For the sake of readability each function will be split in logical
+parts, each part being shown as if it was independent from the others.
 
 
 .. code-block:: c
@@ -125,10 +148,16 @@ N.B.: For the sake of readability each function will be split in logical parts, 
         return ret;
     }
 
-The first few lines of the probe function allocate and assign the glue, musb and clk variables. The GFP_KERNEL flag (line 8) allows the allocation process to sleep and wait for
-memory, thus being usable in a blocking situation. The PLATFORM_DEVID_AUTO flag (line 12) allows automatic allocation and management of device IDs in order to avoid device
-namespace collisions with explicit IDs. With devm_clk_get() (line 18) the glue layer allocates the clock -- the ``devm_`` prefix indicates that clk_get() is managed: it
-automatically frees the allocated clock resource data when the device is released -- and enable it.
+The first few lines of the probe function allocate and assign the glue,
+musb and clk variables. The GFP_KERNEL flag (line 8) allows the
+allocation process to sleep and wait for memory, thus being usable in a
+blocking situation. The PLATFORM_DEVID_AUTO flag (line 12) allows
+automatic allocation and management of device IDs in order to avoid
+device namespace collisions with explicit IDs. With devm_clk_get()
+(line 18) the glue layer allocates the clock -- the ``devm_`` prefix
+indicates that clk_get() is managed: it automatically frees the
+allocated clock resource data when the device is released -- and enable
+it.
 
 Then comes the registration steps:
 
@@ -165,12 +194,18 @@ Then comes the registration steps:
         return ret;
     }
 
-The first step is to pass the device data privately held by the glue layer on to the controller driver through platform_set_drvdata() (line 7). Next is passing on the device
-resources information, also privately held at that point, through platform_device_add_resources() (line 9).
+The first step is to pass the device data privately held by the glue
+layer on to the controller driver through platform_set_drvdata() (line
+7). Next is passing on the device resources information, also privately
+held at that point, through platform_device_add_resources() (line 9).
 
-Finally comes passing on the platform specific data to the controller driver (line 16). Platform data will be discussed in :ref:`Chapter 4 <device-platform-data>`, but here we
-are looking at the platform_ops function pointer (line 5) in musb_hdrc_platform_data structure (line 3). This function pointer allows the MUSB controller driver to know which
-function to call for device operation:
+Finally comes passing on the platform specific data to the controller
+driver (line 16). Platform data will be discussed in
+:ref:`Chapter 4 <device-platform-data>`, but here we are looking at
+the platform_ops function pointer (line 5) in
+musb_hdrc_platform_data structure (line 3). This function pointer
+allows the MUSB controller driver to know which function to call for
+device operation:
 
 
 .. code-block:: c
@@ -180,11 +215,15 @@ function to call for device operation:
         .exit       = jz4740_musb_exit,
     };
 
-Here we have the minimal case where only init and exit functions are called by the controller driver when needed. Fact is the JZ4740 MUSB controller is a basic controller, lacking
-some features found in other controllers, otherwise we may also have pointers to a few other functions like a power management function or a function to switch between OTG and
-non-OTG modes, for instance.
+Here we have the minimal case where only init and exit functions are
+called by the controller driver when needed. Fact is the JZ4740 MUSB
+controller is a basic controller, lacking some features found in other
+controllers, otherwise we may also have pointers to a few other
+functions like a power management function or a function to switch
+between OTG and non-OTG modes, for instance.
 
-At that point of the registration process, the controller driver actually calls the init function:
+At that point of the registration process, the controller driver
+actually calls the init function:
 
 
 .. code-block:: c
@@ -207,12 +246,18 @@ At that point of the registration process, the controller driver actually calls 
         return 0;
     }
 
-The goal of jz4740_musb_init() is to get hold of the transceiver driver data of the MUSB controller hardware and pass it on to the MUSB controller driver, as usual. The
-transceiver is the circuitry inside the controller hardware responsible for sending/receiving the USB data. Since it is an implementation of the physical layer of the OSI model,
+The goal of jz4740_musb_init() is to get hold of the transceiver
+driver data of the MUSB controller hardware and pass it on to the MUSB
+controller driver, as usual. The transceiver is the circuitry inside the
+controller hardware responsible for sending/receiving the USB data.
+Since it is an implementation of the physical layer of the OSI model,
 the transceiver is also referred to as PHY.
 
-Getting hold of the MUSB PHY driver data is done with usb_get_phy() which returns a pointer to the structure containing the driver instance data. The next couple of instructions
-(line 12 and 14) are used as a quirk and to setup IRQ handling respectively. Quirks and IRQ handling will be discussed later in :ref:`Chapter 5 <device-quirks>` and
+Getting hold of the MUSB PHY driver data is done with usb_get_phy()
+which returns a pointer to the structure containing the driver instance
+data. The next couple of instructions (line 12 and 14) are used as a
+quirk and to setup IRQ handling respectively. Quirks and IRQ handling
+will be discussed later in :ref:`Chapter 5 <device-quirks>` and
 :ref:`Chapter 3 <handling-irqs>`.
 
 
@@ -225,12 +270,16 @@ Getting hold of the MUSB PHY driver data is done with usb_get_phy() which return
         return 0;
     }
 
-Acting as the counterpart of init, the exit function releases the MUSB PHY driver when the controller hardware itself is about to be released.
+Acting as the counterpart of init, the exit function releases the MUSB
+PHY driver when the controller hardware itself is about to be released.
 
-Again, note that init and exit are fairly simple in this case due to the basic set of features of the JZ4740 controller hardware. When writing an musb glue layer for a more complex
-controller hardware, you might need to take care of more processing in those two functions.
+Again, note that init and exit are fairly simple in this case due to the
+basic set of features of the JZ4740 controller hardware. When writing an
+musb glue layer for a more complex controller hardware, you might need
+to take care of more processing in those two functions.
 
-Returning from the init function, the MUSB controller driver jumps back into the probe function:
+Returning from the init function, the MUSB controller driver jumps back
+into the probe function:
 
 
 .. code-block:: c
@@ -252,8 +301,10 @@ Returning from the init function, the MUSB controller driver jumps back into the
         return ret;
     }
 
-This is the last part of the device registration process where the glue layer adds the controller hardware device to Linux kernel device hierarchy: at this stage, all known
-information about the device is passed on to the Linux USB core stack.
+This is the last part of the device registration process where the glue
+layer adds the controller hardware device to Linux kernel device
+hierarchy: at this stage, all known information about the device is
+passed on to the Linux USB core stack.
 
 
 .. code-block:: c
@@ -268,4 +319,15 @@ information about the device is passed on to the Linux USB core stack.
         return 0;
     }
 
-Acting as the counterpart of probe, the remove function unregister the MUSB controller hardware (line 5) and disable the clock (line 6), allowing it to be gated.
+Acting as the counterpart of probe, the remove function unregister the
+MUSB controller hardware (line 5) and disable the clock (line 6),
+allowing it to be gated.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

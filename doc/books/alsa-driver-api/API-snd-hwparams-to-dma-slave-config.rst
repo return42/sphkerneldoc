@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-hwparams-to-dma-slave-config:
 
@@ -7,7 +8,7 @@ snd_hwparams_to_dma_slave_config
 
 *man snd_hwparams_to_dma_slave_config(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Convert hw_params to dma_slave_config
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-This function can be used to initialize a dma_slave_config from a substream and hw_params in a dmaengine based PCM driver implementation.
+This function can be used to initialize a dma_slave_config from a
+substream and hw_params in a dmaengine based PCM driver implementation.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

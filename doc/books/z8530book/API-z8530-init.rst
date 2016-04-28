@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-init:
 
@@ -7,7 +8,7 @@ z8530_init
 
 *man z8530_init(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialise a Z8530 device
 
@@ -27,9 +28,23 @@ Arguments
 Description
 ===========
 
-Configure up a Z8530/Z85C30 or Z85230 chip. We check the device is present, identify the type and then program it to hopefully keep quite and behave. This matters a lot, a Z8530 in
-the wrong state will sometimes get into stupid modes generating 10Khz interrupt streams and the like.
+Configure up a Z8530/Z85C30 or Z85230 chip. We check the device is
+present, identify the type and then program it to hopefully keep quite
+and behave. This matters a lot, a Z8530 in the wrong state will
+sometimes get into stupid modes generating 10Khz interrupt streams and
+the like.
 
-We set the interrupt handler up to discard any events, in case we get them during reset or setp.
+We set the interrupt handler up to discard any events, in case we get
+them during reset or setp.
 
-Return 0 for success, or a negative value indicating the problem in errno form.
+Return 0 for success, or a negative value indicating the problem in
+errno form.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

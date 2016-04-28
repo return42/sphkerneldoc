@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-usb-string-ids-tab:
 
@@ -7,7 +8,7 @@ usb_string_ids_tab
 
 *man usb_string_ids_tab(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate unused string IDs in batch
 
@@ -36,8 +37,21 @@ single threaded during gadget setup
 Description
 ===========
 
-``usb_string_ids``\ () is called from ``bind`` callbacks to allocate string IDs. Drivers for functions, configurations, or gadgets will then copy IDs from the string table to the
-appropriate descriptors and string table for other languages.
+``usb_string_ids``\ () is called from ``bind`` callbacks to allocate
+string IDs. Drivers for functions, configurations, or gadgets will then
+copy IDs from the string table to the appropriate descriptors and string
+table for other languages.
 
-All string identifier should be allocated using this, ``usb_string_id``\ () or ``usb_string_ids_n``\ () routine, to ensure that for example different functions don't wrongly assign
-different meanings to the same identifier.
+All string identifier should be allocated using this,
+``usb_string_id``\ () or ``usb_string_ids_n``\ () routine, to ensure
+that for example different functions don't wrongly assign different
+meanings to the same identifier.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

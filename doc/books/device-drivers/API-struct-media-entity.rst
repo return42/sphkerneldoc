@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-media-entity:
 
@@ -7,7 +8,7 @@ struct media_entity
 
 *man struct media_entity(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 A media entity graph object.
 
@@ -46,10 +47,10 @@ name
     Entity name.
 
 function
-    Entity main function, as defined in uapi/media.h (MEDIA_ENT_F_⋆)
+    Entity main function, as defined in uapi/media.h (MEDIA_ENT_F_*)
 
 flags
-    Entity flags, as defined in uapi/media.h (MEDIA_ENT_FL_⋆)
+    Entity flags, as defined in uapi/media.h (MEDIA_ENT_FL_*)
 
 num_pads
     Number of sink and source pads.
@@ -61,7 +62,8 @@ num_backlinks
     Number of backlinks
 
 internal_idx
-    An unique internal entity specific number. The numbers are re-used if entities are unregistered or registered again.
+    An unique internal entity specific number. The numbers are re-used
+    if entities are unregistered or registered again.
 
 pads
     Pads array with the size defined by ``num_pads``.
@@ -82,11 +84,23 @@ pipe
     Pipeline this entity belongs to.
 
 info
-    Union with devnode information. Kept just for backward compatibility.
+    Union with devnode information. Kept just for backward
+    compatibility.
 
 
 NOTE
 ====
 
-``stream_count`` and ``use_count`` reference counts must never be negative, but are signed integers on purpose: a simple WARN_ON(<0) check can be used to detect reference count
-bugs that would make them negative.
+``stream_count`` and ``use_count`` reference counts must never be
+negative, but are signed integers on purpose: a simple WARN_ON(<0)
+check can be used to detect reference count bugs that would make them
+negative.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

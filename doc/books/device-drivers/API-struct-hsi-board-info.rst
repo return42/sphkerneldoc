@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-hsi-board-info:
 
@@ -7,7 +8,7 @@ struct hsi_board_info
 
 *man struct hsi_board_info(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 HSI client board info
 
@@ -51,3 +52,12 @@ platform_data
 
 archdata
     Architecture-dependent device data
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

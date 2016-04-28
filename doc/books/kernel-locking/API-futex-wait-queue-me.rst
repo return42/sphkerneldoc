@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-futex-wait-queue-me:
 
@@ -7,7 +8,7 @@ futex_wait_queue_me
 
 *man futex_wait_queue_me(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 ``queue_me`` and wait for wakeup, timeout, or signal
 
@@ -28,3 +29,12 @@ Arguments
 
 ``timeout``
     the prepared hrtimer_sleeper, or null for no timeout
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

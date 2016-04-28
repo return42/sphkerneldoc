@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-w1-touch-block:
 
@@ -7,7 +8,7 @@ w1_touch_block
 
 *man w1_touch_block(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Touches a series of bytes.
 
@@ -28,3 +29,12 @@ Arguments
 
 ``len``
     the number of bytes to write
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-drm-mode-status:
 
@@ -7,7 +8,7 @@ enum drm_mode_status
 
 *man enum drm_mode_status(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 hardware support status of a mode
 
@@ -184,4 +185,14 @@ MODE_ERROR
 Description
 ===========
 
-This enum is used to filter out modes not supported by the driver/hardware combination.
+This enum is used to filter out modes not supported by the
+driver/hardware combination.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

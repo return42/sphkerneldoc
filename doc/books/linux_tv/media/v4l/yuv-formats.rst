@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _yuv-formats:
 
@@ -5,11 +6,19 @@
 YUV Formats
 ===========
 
-YUV is the format native to TV broadcast and composite video signals. It separates the brightness information (Y) from the color information (U and V or Cb and Cr). The color
-information consists of red and blue *color difference* signals, this way the green component can be reconstructed by subtracting from the brightness component. See
-:ref:`colorspaces` for conversion examples. YUV was chosen because early television would only transmit brightness information. To add color in a way compatible with existing
-receivers a new signal carrier was added to transmit the color difference signals. Secondary in the YUV format the U and V components usually have lower resolution than the Y
-component. This is an analog video compression technique taking advantage of a property of the human visual system, being more sensitive to brightness information.
+YUV is the format native to TV broadcast and composite video signals. It
+separates the brightness information (Y) from the color information (U
+and V or Cb and Cr). The color information consists of red and blue
+*color difference* signals, this way the green component can be
+reconstructed by subtracting from the brightness component. See
+:ref:`colorspaces` for conversion examples. YUV was chosen because
+early television would only transmit brightness information. To add
+color in a way compatible with existing receivers a new signal carrier
+was added to transmit the color difference signals. Secondary in the YUV
+format the U and V components usually have lower resolution than the Y
+component. This is an analog video compression technique taking
+advantage of a property of the human visual system, being more sensitive
+to brightness information.
 
 
 .. toctree::
@@ -44,3 +53,14 @@ component. This is an analog video compression technique taking advantage of a p
     pixfmt-nv16m
     pixfmt-nv24
     pixfmt-m420
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

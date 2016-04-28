@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-add-codec-controls:
 
@@ -7,9 +8,10 @@ snd_soc_add_codec_controls
 
 *man snd_soc_add_codec_controls(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-add an array of controls to a codec. Convenience function to add a list of controls. Many codecs were duplicating this code.
+add an array of controls to a codec. Convenience function to add a list
+of controls. Many codecs were duplicating this code.
 
 
 Synopsis
@@ -34,3 +36,12 @@ Description
 ===========
 
 Return 0 for success, else error.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

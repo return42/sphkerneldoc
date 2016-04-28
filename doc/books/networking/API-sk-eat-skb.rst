@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sk-eat-skb:
 
@@ -7,7 +8,7 @@ sk_eat_skb
 
 *man sk_eat_skb(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Release a skb if it is no longer needed
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-This routine must be called with interrupts disabled or with the socket locked so that the sk_buff queue operation is ok.
+This routine must be called with interrupts disabled or with the socket
+locked so that the sk_buff queue operation is ok.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

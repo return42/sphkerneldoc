@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-vma-offset-manager-destroy:
 
@@ -7,7 +8,7 @@ drm_vma_offset_manager_destroy
 
 *man drm_vma_offset_manager_destroy(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Destroy offset manager
 
@@ -27,7 +28,18 @@ Arguments
 Description
 ===========
 
-Destroy an object manager which was previously created via ``drm_vma_offset_manager_init``. The caller must remove all allocated nodes before destroying the manager. Otherwise,
-drm_mm will refuse to free the requested resources.
+Destroy an object manager which was previously created via
+``drm_vma_offset_manager_init``. The caller must remove all allocated
+nodes before destroying the manager. Otherwise, drm_mm will refuse to
+free the requested resources.
 
 The manager must not be accessed after this function is called.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

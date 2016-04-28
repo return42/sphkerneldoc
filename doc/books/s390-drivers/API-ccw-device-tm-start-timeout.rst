@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ccw-device-tm-start-timeout:
 
@@ -7,7 +8,7 @@ ccw_device_tm_start_timeout
 
 *man ccw_device_tm_start_timeout(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 perform start function
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Start the tcw on the given ccw device. Return zero on success, non-zero otherwise.
+Start the tcw on the given ccw device. Return zero on success, non-zero
+otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

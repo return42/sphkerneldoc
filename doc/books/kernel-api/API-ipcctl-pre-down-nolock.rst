@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ipcctl-pre-down-nolock:
 
@@ -7,7 +8,7 @@ ipcctl_pre_down_nolock
 
 *man ipcctl_pre_down_nolock(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 retrieve an ipc and check permissions for some IPC_XXX cmd
 
@@ -15,7 +16,7 @@ retrieve an ipc and check permissions for some IPC_XXX cmd
 Synopsis
 ========
 
-.. c:function:: struct kern_ipc_perm ⋆ ipcctl_pre_down_nolock( struct ipc_namespace * ns, struct ipc_ids * ids, int id, int cmd, struct ipc64_perm * perm, int extra_perm )
+.. c:function:: struct kern_ipc_perm * ipcctl_pre_down_nolock( struct ipc_namespace * ns, struct ipc_ids * ids, int id, int cmd, struct ipc64_perm * perm, int extra_perm )
 
 Arguments
 =========
@@ -42,8 +43,20 @@ Arguments
 Description
 ===========
 
-This function does some common audit and permissions check for some IPC_XXX cmd and is called from semctl_down, shmctl_down and msgctl_down. It must be called without any lock
-held and - retrieves the ipc with the given id in the given table. - performs some audit and permission check, depending on the given cmd - returns a pointer to the ipc object or
-otherwise, the corresponding error.
+This function does some common audit and permissions check for some
+IPC_XXX cmd and is called from semctl_down, shmctl_down and
+msgctl_down. It must be called without any lock held and - retrieves
+the ipc with the given id in the given table. - performs some audit and
+permission check, depending on the given cmd - returns a pointer to the
+ipc object or otherwise, the corresponding error.
 
 Call holding the both the rwsem and the rcu read lock.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

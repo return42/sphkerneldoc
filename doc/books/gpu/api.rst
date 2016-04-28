@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _api:
 
@@ -28,6 +29,7 @@ Public functions
     API-vga-switcheroo-init-domain-pm-ops
     API-vga-switcheroo-init-domain-pm-optimus-hdmi-audio
 
+
 Public structures
 =================
 
@@ -37,6 +39,7 @@ Public structures
 
     API-struct-vga-switcheroo-handler
     API-struct-vga-switcheroo-client-ops
+
 
 Public constants
 ================
@@ -49,6 +52,7 @@ Public constants
     API-enum-vga-switcheroo-client-id
     API-enum-vga-switcheroo-state
 
+
 Private structures
 ==================
 
@@ -58,3 +62,14 @@ Private structures
 
     API-struct-vgasr-priv
     API-struct-vga-switcheroo-client
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

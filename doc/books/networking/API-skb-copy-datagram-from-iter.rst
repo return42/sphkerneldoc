@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-skb-copy-datagram-from-iter:
 
@@ -7,7 +8,7 @@ skb_copy_datagram_from_iter
 
 *man skb_copy_datagram_from_iter(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Copy a datagram from an iov_iter.
 
@@ -37,3 +38,12 @@ Description
 ===========
 
 Returns 0 or -EFAULT.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

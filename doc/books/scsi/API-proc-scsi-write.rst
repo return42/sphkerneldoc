@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-proc-scsi-write:
 
@@ -7,7 +8,7 @@ proc_scsi_write
 
 *man proc_scsi_write(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 handle writes to /proc/scsi/scsi
 
@@ -36,12 +37,25 @@ Arguments
 Description
 ===========
 
-this provides a legacy mechanism to add or remove devices by Host, Channel, ID, and Lun. To use, “echo 'scsi add-single-device 0 1 2 3' > /proc/scsi/scsi” or “echo 'scsi
-remove-single-device 0 1 2 3' > /proc/scsi/scsi” with “0 1 2 3” replaced by the Host, Channel, Id, and Lun.
+this provides a legacy mechanism to add or remove devices by Host,
+Channel, ID, and Lun. To use, “echo 'scsi add-single-device 0 1 2 3' >
+/proc/scsi/scsi” or “echo 'scsi remove-single-device 0 1 2 3' >
+/proc/scsi/scsi” with “0 1 2 3” replaced by the Host, Channel, Id, and
+Lun.
 
 
 Note
 ====
 
-this seems to be aimed at parallel SCSI. Most modern busses (USB, SATA, Firewire, Fibre Channel, etc) dynamically assign these values to provide a unique identifier and nothing
-more.
+this seems to be aimed at parallel SCSI. Most modern busses (USB, SATA,
+Firewire, Fibre Channel, etc) dynamically assign these values to provide
+a unique identifier and nothing more.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

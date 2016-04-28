@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-dp-vcpi:
 
@@ -7,7 +8,7 @@ struct drm_dp_vcpi
 
 *man struct drm_dp_vcpi(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Virtual Channel Payload Identifier
 
@@ -39,3 +40,12 @@ aligned_pbn
 
 num_slots
     number of slots for this PBN
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-local-read-config-32:
 
@@ -7,7 +8,7 @@ rio_local_read_config_32
 
 *man rio_local_read_config_32(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Read 32 bits from local configuration space
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Reads 32 bits of data from the specified offset within the local device's configuration space.
+Reads 32 bits of data from the specified offset within the local
+device's configuration space.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

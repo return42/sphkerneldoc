@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _common:
 
@@ -8,7 +9,8 @@ Programming a V4L2 device consists of these steps:
 
 -  Opening the device
 
--  Changing device properties, selecting a video and audio input, video standard, picture brightness a. o.
+-  Changing device properties, selecting a video and audio input, video
+   standard, picture brightness a. o.
 
 -  Negotiating a data format
 
@@ -18,15 +20,17 @@ Programming a V4L2 device consists of these steps:
 
 -  Closing the device
 
-In practice most steps are optional and can be executed out of order. It depends on the V4L2 device type, you can read about the details in :ref:`devices`. In this chapter we
-will discuss the basic concepts applicable to all devices.
+In practice most steps are optional and can be executed out of order. It
+depends on the V4L2 device type, you can read about the details in
+:ref:`devices`. In this chapter we will discuss the basic concepts
+applicable to all devices.
 
 
 .. toctree::
     :maxdepth: 1
 
-    open-close-device
-    v4l2-querycap
+    open
+    querycap
     app-pri
     video
     audio
@@ -39,3 +43,14 @@ will discuss the basic concepts applicable to all devices.
     crop
     selection-api
     streaming-par
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

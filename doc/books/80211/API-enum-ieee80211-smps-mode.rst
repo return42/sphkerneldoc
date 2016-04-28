@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-ieee80211-smps-mode:
 
@@ -7,7 +8,7 @@ enum ieee80211_smps_mode
 
 *man enum ieee80211_smps_mode(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 spatial multiplexing power save mode
 
@@ -43,3 +44,12 @@ IEEE80211_SMPS_DYNAMIC
 
 IEEE80211_SMPS_NUM_MODES
     internal, don't use
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

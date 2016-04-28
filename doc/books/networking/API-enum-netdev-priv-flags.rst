@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-enum-netdev-priv-flags:
 
@@ -7,7 +8,7 @@ enum netdev_priv_flags
 
 *man enum netdev_priv_flags(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 ``struct net_device`` priv_flags
 
@@ -104,7 +105,8 @@ IFF_MACVLAN
     Macvlan device
 
 IFF_XMIT_DST_RELEASE_PERM
-    IFF_XMIT_DST_RELEASE not taking into account underlying stacked devices
+    IFF_XMIT_DST_RELEASE not taking into account underlying stacked
+    devices
 
 IFF_IPVLAN_MASTER
     IPvlan master device
@@ -131,7 +133,8 @@ IFF_RXFH_CONFIGURED
     device has had Rx Flow indirection table configured
 
 IFF_PHONY_HEADROOM
-    the headroom value is controlled by an external entity (i.e. the master device for bridged veth)
+    the headroom value is controlled by an external entity (i.e. the
+    master device for bridged veth)
 
 IFF_MACSEC
     device is a MACsec device
@@ -140,7 +143,18 @@ IFF_MACSEC
 Description
 ===========
 
-These are the ``struct net_device``, they are only set internally by drivers and used in the kernel. These flags are invisible to userspace; this means that the order of these
-flags can change during any kernel release.
+These are the ``struct net_device``, they are only set internally by
+drivers and used in the kernel. These flags are invisible to userspace;
+this means that the order of these flags can change during any kernel
+release.
 
 You should have a pretty good reason to be extending these flags.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

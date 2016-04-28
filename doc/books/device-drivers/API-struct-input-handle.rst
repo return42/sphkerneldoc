@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-input-handle:
 
@@ -7,7 +8,7 @@ struct input_handle
 
 *man struct input_handle(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 links input device with an input handler
 
@@ -35,7 +36,8 @@ private
     handler-specific data
 
 open
-    counter showing whether the handle is 'open', i.e. should deliver events from its device
+    counter showing whether the handle is 'open', i.e. should deliver
+    events from its device
 
 name
     name given to the handle by handler that created it
@@ -50,4 +52,14 @@ d_node
     used to put the handle on device's list of attached handles
 
 h_node
-    used to put the handle on handler's list of handles from which it gets events
+    used to put the handle on handler's list of handles from which it
+    gets events
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _FE_DISEQC_SEND_MASTER_CMD:
 
@@ -25,7 +26,8 @@ Arguments
     FE_DISEQC_SEND_MASTER_CMD
 
 ``argp``
-    pointer to struct :ref:`dvb_diseqc_master_cmd <dvb-diseqc-master-cmd>`
+    pointer to struct
+    :ref:`dvb_diseqc_master_cmd <dvb-diseqc-master-cmd>`
 
 
 Description
@@ -35,18 +37,42 @@ Sends a DiSEqC command to the antenna subsystem.
 
 RETURN VALUE
 
-On success 0 is returned, on error -1 and the ``errno`` variable is set appropriately. The generic error codes are described at the :ref:`Generic Error Codes <gen-errors>`
-chapter.
+On success 0 is returned, on error -1 and the ``errno`` variable is set
+appropriately. The generic error codes are described at the
+:ref:`Generic Error Codes <gen-errors>` chapter.
 
 
 .. _dvb-diseqc-master-cmd:
 
-.. table:: struct dvb_diseqc_master_cmd
-
-    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
-    | uint8_t                                       | msg[6]                                        | DiSEqC message (framing, address, command, data[3])                                        |
-    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
-    | uint8_t                                       | msg_len                                       | Length of the DiSEqC message. Valid values are 3 to 6                                      |
-    +-----------------------------------------------+-----------------------------------------------+--------------------------------------------------------------------------------------------+
+.. flat-table:: struct dvb_diseqc_master_cmd
+    :header-rows:  0
+    :stub-columns: 0
+    :widths:       1 1 2
 
 
+    -  .. row 1
+
+       -  uint8_t
+
+       -  msg[6]
+
+       -  DiSEqC message (framing, address, command, data[3])
+
+    -  .. row 2
+
+       -  uint8_t
+
+       -  msg_len
+
+       -  Length of the DiSEqC message. Valid values are 3 to 6
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

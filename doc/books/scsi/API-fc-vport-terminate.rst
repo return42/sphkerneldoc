@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-fc-vport-terminate:
 
@@ -7,7 +8,7 @@ fc_vport_terminate
 
 *man fc_vport_terminate(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Admin App or LLDD requests termination of a vport
 
@@ -27,10 +28,20 @@ Arguments
 Description
 ===========
 
-Calls the LLDD ``vport_delete`` function, then deallocates and removes the vport from the shost and object tree.
+Calls the LLDD ``vport_delete`` function, then deallocates and removes
+the vport from the shost and object tree.
 
 
 Notes
 =====
 
 This routine assumes no locks are held on entry.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

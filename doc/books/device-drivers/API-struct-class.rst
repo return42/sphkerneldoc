@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-class:
 
@@ -7,7 +8,7 @@ struct class
 
 *man struct class(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 device classes
 
@@ -52,10 +53,12 @@ dev_groups
     Default attributes of the devices that belong to the class.
 
 dev_kobj
-    The kobject that represents this class and links it into the hierarchy.
+    The kobject that represents this class and links it into the
+    hierarchy.
 
 dev_uevent
-    Called when a device is added, removed from this class, or a few other things that generate uevents to add the environment variables.
+    Called when a device is added, removed from this class, or a few
+    other things that generate uevents to add the environment variables.
 
 devnode
     Callback to provide the devtmpfs.
@@ -82,11 +85,24 @@ pm
     The default device power management operations of this class.
 
 p
-    The private data of the driver core, no one other than the driver core can touch this.
+    The private data of the driver core, no one other than the driver
+    core can touch this.
 
 
 Description
 ===========
 
-A class is a higher-level view of a device that abstracts out low-level implementation details. Drivers may see a SCSI disk or an ATA disk, but, at the class level, they are all
-simply disks. Classes allow user space to work with devices based on what they do, rather than how they are connected or how they work.
+A class is a higher-level view of a device that abstracts out low-level
+implementation details. Drivers may see a SCSI disk or an ATA disk, but,
+at the class level, they are all simply disks. Classes allow user space
+to work with devices based on what they do, rather than how they are
+connected or how they work.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

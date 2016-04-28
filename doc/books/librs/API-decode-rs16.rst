@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-decode-rs16:
 
@@ -7,7 +8,7 @@ decode_rs16
 
 *man decode_rs16(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Decode codeword (16bit data width)
 
@@ -51,4 +52,15 @@ Arguments
 Description
 ===========
 
-Each field in the data array contains up to symbol size bits of valid data. Returns the number of corrected bits or -EBADMSG for uncorrectable errors.
+Each field in the data array contains up to symbol size bits of valid
+data. Returns the number of corrected bits or -EBADMSG for uncorrectable
+errors.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

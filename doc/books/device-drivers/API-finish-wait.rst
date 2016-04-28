@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-finish-wait:
 
@@ -7,7 +8,7 @@ finish_wait
 
 *man finish_wait(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 clean up after waiting in a queue
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Sets current thread back to running state and removes the wait descriptor from the given waitqueue if still queued.
+Sets current thread back to running state and removes the wait
+descriptor from the given waitqueue if still queued.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

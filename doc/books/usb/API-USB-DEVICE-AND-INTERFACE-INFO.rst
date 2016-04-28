@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-USB-DEVICE-AND-INTERFACE-INFO:
 
@@ -7,7 +8,7 @@ USB_DEVICE_AND_INTERFACE_INFO
 
 *man USB_DEVICE_AND_INTERFACE_INFO(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 describe a specific usb device with a class of usb interfaces
 
@@ -39,6 +40,17 @@ Arguments
 Description
 ===========
 
-This macro is used to create a struct usb_device_id that matches a specific device with a specific class of interfaces.
+This macro is used to create a struct usb_device_id that matches a
+specific device with a specific class of interfaces.
 
-This is especially useful when explicitly matching devices that have vendor specific bDeviceClass values, but standards-compliant interfaces.
+This is especially useful when explicitly matching devices that have
+vendor specific bDeviceClass values, but standards-compliant interfaces.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-net-device:
 
@@ -7,10 +8,11 @@ struct net_device
 
 *man struct net_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-The DEVICE structure. Actually, this whole structure is a big mistake. It mixes I/O data with strictly “high-level” data, and it has to know about almost every data structure used
-in the INET module.
+The DEVICE structure. Actually, this whole structure is a big mistake.
+It mixes I/O data with strictly “high-level” data, and it has to know
+about almost every data structure used in the INET module.
 
 
 Synopsis
@@ -68,7 +70,9 @@ Members
 =======
 
 name[IFNAMSIZ]
-    This is the first field of the “visible” part of this structure (i.e. as seen by users in the “Space.c” file). It is the name of the interface.
+    This is the first field of the “visible” part of this structure
+    (i.e. as seen by users in the “Space.c” file). It is the name of the
+    interface.
 
 name_hlist
     Device name hash chain, please keep it close to name[]
@@ -101,7 +105,8 @@ napi_list
     List entry used for polling NAPI devices
 
 unreg_list
-    List entry when we are unregistering the device; see the function unregister_netdev
+    List entry when we are unregistering the device; see the function
+    unregister_netdev
 
 close_list
     List entry used when we are closing the device
@@ -167,10 +172,20 @@ qdisc_tx_busylock
     XXX: need comments on this one
 
 proto_down
-    protocol port state information can be sent to the switch driver and used to set the phys state of the switch port.
+    protocol port state information can be sent to the switch driver and
+    used to set the phys state of the switch port.
 
 
 FIXME
 =====
 
 cleanup struct net_device such that network protocol info moves out.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

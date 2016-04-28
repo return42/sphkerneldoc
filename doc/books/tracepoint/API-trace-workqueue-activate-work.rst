@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-trace-workqueue-activate-work:
 
@@ -7,7 +8,7 @@ trace_workqueue_activate_work
 
 *man trace_workqueue_activate_work(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 called when a work gets activated
 
@@ -27,4 +28,15 @@ Arguments
 Description
 ===========
 
-This event occurs when a queued work is put on the active queue, which happens immediately after queueing unless ``max_active`` limit is reached.
+This event occurs when a queued work is put on the active queue, which
+happens immediately after queueing unless ``max_active`` limit is
+reached.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

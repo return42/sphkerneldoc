@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-request-regions-exclusive:
 
@@ -7,7 +8,7 @@ pci_request_regions_exclusive
 
 *man pci_request_regions_exclusive(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Reserved PCI I/O and memory resources
 
@@ -30,9 +31,21 @@ Arguments
 Description
 ===========
 
-Mark all PCI regions associated with PCI device ``pdev`` as being reserved by owner ``res_name``. Do not access any address inside the PCI regions unless this call returns
-successfully.
+Mark all PCI regions associated with PCI device ``pdev`` as being
+reserved by owner ``res_name``. Do not access any address inside the PCI
+regions unless this call returns successfully.
 
-``pci_request_regions_exclusive`` will mark the region so that /dev/mem and the sysfs MMIO access will not be allowed.
+``pci_request_regions_exclusive`` will mark the region so that /dev/mem
+and the sysfs MMIO access will not be allowed.
 
-Returns 0 on success, or ``EBUSY`` on error. A warning message is also printed on failure.
+Returns 0 on success, or ``EBUSY`` on error. A warning message is also
+printed on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

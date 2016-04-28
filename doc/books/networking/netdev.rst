@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _netdev:
 
@@ -169,6 +170,7 @@ Driver Support
     API---dev-mc-sync
     API---dev-mc-unsync
 
+
 PHY Support
 ===========
 
@@ -243,3 +245,14 @@ PHY Support
     API-mdiobus-write
     API-mdiobus-release
     API-mdio-bus-match
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

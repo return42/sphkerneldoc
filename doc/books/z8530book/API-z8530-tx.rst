@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-tx:
 
@@ -7,7 +8,7 @@ z8530_tx
 
 *man z8530_tx(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Handle a PIO transmit event
 
@@ -27,5 +28,15 @@ Arguments
 Description
 ===========
 
-Z8530 transmit interrupt handler for the PIO mode. The basic idea is to attempt to keep the FIFO fed. We fill as many bytes in as possible, its quite possible that we won't keep up
-with the data rate otherwise.
+Z8530 transmit interrupt handler for the PIO mode. The basic idea is to
+attempt to keep the FIFO fed. We fill as many bytes in as possible, its
+quite possible that we won't keep up with the data rate otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

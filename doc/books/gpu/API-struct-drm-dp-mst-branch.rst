@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-dp-mst-branch:
 
@@ -7,7 +8,7 @@ struct drm_dp_mst_branch
 
 *man struct drm_dp_mst_branch(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 MST branch device.
 
@@ -70,10 +71,22 @@ link_address_sent
     if a link address message has been sent to this device yet.
 
 guid[16]
-    guid for DP 1.2 branch device. port under this branch can be identified by port #.
+    guid for DP 1.2 branch device. port under this branch can be
+    identified by port #.
 
 
 Description
 ===========
 
-This structure represents an MST branch device, there is one primary branch device at the root, along with any other branches connected to downstream port of parent branches.
+This structure represents an MST branch device, there is one primary
+branch device at the root, along with any other branches connected to
+downstream port of parent branches.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

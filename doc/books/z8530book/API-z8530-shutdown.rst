@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-shutdown:
 
@@ -7,7 +8,7 @@ z8530_shutdown
 
 *man z8530_shutdown(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Shutdown a Z8530 device
 
@@ -27,6 +28,17 @@ Arguments
 Description
 ===========
 
-We set the interrupt handlers to silence any interrupts. We then reset the chip and wait 100uS to be sure the reset completed. Just in case the caller then tries to do stuff.
+We set the interrupt handlers to silence any interrupts. We then reset
+the chip and wait 100uS to be sure the reset completed. Just in case the
+caller then tries to do stuff.
 
 This is called without the lock held
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

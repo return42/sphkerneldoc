@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-class-driver:
 
@@ -7,7 +8,7 @@ struct usb_class_driver
 
 *man struct usb_class_driver(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 identifies a USB driver that wants to use the USB major number
 
@@ -32,7 +33,8 @@ name
     the usb class device name for this driver. Will show up in sysfs.
 
 devnode
-    Callback to provide a naming hint for a possible device node to create.
+    Callback to provide a naming hint for a possible device node to
+    create.
 
 fops
     pointer to the struct file_operations of this driver.
@@ -44,4 +46,15 @@ minor_base
 Description
 ===========
 
-This structure is used for the ``usb_register_dev`` and ``usb_unregister_dev`` functions, to consolidate a number of the parameters used for them.
+This structure is used for the ``usb_register_dev`` and
+``usb_unregister_dev`` functions, to consolidate a number of the
+parameters used for them.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

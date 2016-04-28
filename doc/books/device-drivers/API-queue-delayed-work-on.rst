@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-queue-delayed-work-on:
 
@@ -7,7 +8,7 @@ queue_delayed_work_on
 
 *man queue_delayed_work_on(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 queue work on specific CPU after delay
 
@@ -36,4 +37,15 @@ Arguments
 Return
 ======
 
-``false`` if ``work`` was already on a queue, ``true`` otherwise. If ``delay`` is zero and ``dwork`` is idle, it will be scheduled for immediate execution.
+``false`` if ``work`` was already on a queue, ``true`` otherwise. If
+``delay`` is zero and ``dwork`` is idle, it will be scheduled for
+immediate execution.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

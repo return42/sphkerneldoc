@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-usb-os-desc:
 
@@ -7,7 +8,7 @@ struct usb_os_desc
 
 *man struct usb_os_desc(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 describes OS descriptors associated with one interface
 
@@ -51,3 +52,12 @@ group
 
 owner
     Module associated with this OS descriptor
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

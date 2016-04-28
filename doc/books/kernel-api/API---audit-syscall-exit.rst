@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---audit-syscall-exit:
 
@@ -7,7 +8,7 @@ __audit_syscall_exit
 
 *man __audit_syscall_exit(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 deallocate audit context after a system call
 
@@ -30,5 +31,17 @@ Arguments
 Description
 ===========
 
-Tear down after system call. If the audit context has been marked as auditable (either because of the AUDIT_RECORD_CONTEXT state from filtering, or because some other part of the
-kernel wrote an audit message), then write out the syscall information. In call cases, free the names stored from ``getname``.
+Tear down after system call. If the audit context has been marked as
+auditable (either because of the AUDIT_RECORD_CONTEXT state from
+filtering, or because some other part of the kernel wrote an audit
+message), then write out the syscall information. In call cases, free
+the names stored from ``getname``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

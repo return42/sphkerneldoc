@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-eh-prep-cmnd:
 
@@ -7,7 +8,7 @@ scsi_eh_prep_cmnd
 
 *man scsi_eh_prep_cmnd(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Save a scsi command info as part of error recovery
 
@@ -39,6 +40,18 @@ Arguments
 Description
 ===========
 
-This function is used to save a scsi command information before re-execution as part of the error recovery process. If ``sense_bytes`` is 0 the command sent must be one that does
-not transfer any data. If ``sense_bytes`` != 0 ``cmnd`` is ignored and this functions sets up a REQUEST_SENSE command and cmnd buffers to read ``sense_bytes`` into
+This function is used to save a scsi command information before
+re-execution as part of the error recovery process. If ``sense_bytes``
+is 0 the command sent must be one that does not transfer any data. If
+``sense_bytes`` != 0 ``cmnd`` is ignored and this functions sets up a
+REQUEST_SENSE command and cmnd buffers to read ``sense_bytes`` into
 ``scmd``->sense_buffer.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

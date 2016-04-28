@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _w1_internal:
 
@@ -30,6 +31,7 @@ W1 core functions.
     API-struct-w1-master
     API-struct-w1-async-cmd
 
+
 .. _w1.c:
 
 drivers/w1/w1.c
@@ -43,6 +45,7 @@ W1 core functions.
 
     API-w1-search
     API-w1-process-callbacks
+
 
 .. _w1_family.h:
 
@@ -58,6 +61,7 @@ Allows registering device family operations.
     API-struct-w1-family-ops
     API-struct-w1-family
 
+
 .. _w1_family.c:
 
 drivers/w1/w1_family.c
@@ -72,6 +76,7 @@ Allows registering device family operations.
     API-w1-register-family
     API-w1-unregister-family
 
+
 .. _w1_int.c:
 
 drivers/w1/w1_int.c
@@ -85,6 +90,7 @@ W1 internal initialization for master devices.
 
     API-w1-add-master-device
     API-w1-remove-master-device
+
 
 .. _w1_netlink.h:
 
@@ -102,6 +108,7 @@ W1 external netlink API structures and commands.
     API-struct-w1-netlink-msg
     API-enum-w1-commands
     API-struct-w1-netlink-cmd
+
 
 .. _w1_io.c:
 
@@ -129,3 +136,14 @@ W1 input/output.
     API-w1-post-write
     API-w1-read-bit
     API-w1-triplet
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

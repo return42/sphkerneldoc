@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-z8530-describe:
 
@@ -7,7 +8,7 @@ z8530_describe
 
 *man z8530_describe(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Uniformly describe a Z8530 port
 
@@ -33,4 +34,15 @@ Arguments
 Description
 ===========
 
-Describe a Z8530 in a standard format. We must pass the I/O as the port offset isn't predictable. The main reason for this function is to try and get a common format of report.
+Describe a Z8530 in a standard format. We must pass the I/O as the port
+offset isn't predictable. The main reason for this function is to try
+and get a common format of report.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

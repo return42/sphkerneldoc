@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-scsi-device-quiesce:
 
@@ -7,7 +8,7 @@ scsi_device_quiesce
 
 *man scsi_device_quiesce(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Block user issued commands.
 
@@ -27,9 +28,21 @@ Arguments
 Description
 ===========
 
-This works by trying to transition to the SDEV_QUIESCE state (which must be a legal transition). When the device is in this state, only special requests will be accepted, all
-others will be deferred. Since special requests may also be requeued requests, a successful return doesn't guarantee the device will be totally quiescent.
+This works by trying to transition to the SDEV_QUIESCE state (which
+must be a legal transition). When the device is in this state, only
+special requests will be accepted, all others will be deferred. Since
+special requests may also be requeued requests, a successful return
+doesn't guarantee the device will be totally quiescent.
 
 Must be called with user context, may sleep.
 
 Returns zero if unsuccessful or an error if not.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-exec-internal-sg:
 
@@ -7,7 +8,7 @@ ata_exec_internal_sg
 
 *man ata_exec_internal_sg(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 execute libata internal command
 
@@ -45,8 +46,10 @@ Arguments
 Description
 ===========
 
-Executes libata internal command with timeout. ``tf`` contains command on entry and result on return. Timeout and error conditions are reported via return value. No recovery action
-is taken after a command times out. It's caller's duty to clean up after timeout.
+Executes libata internal command with timeout. ``tf`` contains command
+on entry and result on return. Timeout and error conditions are reported
+via return value. No recovery action is taken after a command times out.
+It's caller's duty to clean up after timeout.
 
 
 LOCKING
@@ -58,4 +61,13 @@ None. Should be called with kernel context, might sleep.
 RETURNS
 =======
 
-Zero on success, AC_ERR_⋆ mask on failure
+Zero on success, AC_ERR_* mask on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

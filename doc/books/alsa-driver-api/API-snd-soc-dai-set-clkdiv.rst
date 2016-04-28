@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-soc-dai-set-clkdiv:
 
@@ -7,7 +8,7 @@ snd_soc_dai_set_clkdiv
 
 *man snd_soc_dai_set_clkdiv(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 configure DAI clock dividers.
 
@@ -33,5 +34,15 @@ Arguments
 Description
 ===========
 
-Configures the clock dividers. This is used to derive the best DAI bit and frame clocks from the system or master clock. It's best to set the DAI bit and frame clocks as low as
-possible to save system power.
+Configures the clock dividers. This is used to derive the best DAI bit
+and frame clocks from the system or master clock. It's best to set the
+DAI bit and frame clocks as low as possible to save system power.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

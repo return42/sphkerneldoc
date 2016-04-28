@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsi-change-queue-depth:
 
@@ -7,7 +8,7 @@ ata_scsi_change_queue_depth
 
 *man ata_scsi_change_queue_depth(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 SCSI callback for queue depth config
 
@@ -30,7 +31,8 @@ Arguments
 Description
 ===========
 
-This is libata standard hostt->change_queue_depth callback. SCSI will call into this callback when user tries to set queue depth via sysfs.
+This is libata standard hostt->change_queue_depth callback. SCSI will
+call into this callback when user tries to set queue depth via sysfs.
 
 
 LOCKING
@@ -43,3 +45,12 @@ RETURNS
 =======
 
 Newly configured queue depth.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-station-parameters:
 
@@ -7,7 +8,7 @@ struct station_parameters
 
 *man struct station_parameters(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 station parameters
 
@@ -61,7 +62,9 @@ sta_flags_set
     station flags values (bitmask of BIT(NL80211_STA_FLAG_...))
 
 sta_modify_mask
-    bitmap indicating which parameters changed (for those that don't have a natural “no change” value), see ``enum`` station_parameters_apply_mask
+    bitmap indicating which parameters changed (for those that don't
+    have a natural “no change” value), see ``enum``
+    station_parameters_apply_mask
 
 listen_interval
     listen interval or -1 for no change
@@ -85,13 +88,16 @@ vht_capa
     VHT capabilities of station
 
 uapsd_queues
-    bitmap of queues configured for uapsd. same format as the AC bitmap in the QoS info field
+    bitmap of queues configured for uapsd. same format as the AC bitmap
+    in the QoS info field
 
 max_sp
-    max Service Period. same format as the MAX_SP in the QoS info field (but already shifted down)
+    max Service Period. same format as the MAX_SP in the QoS info field
+    (but already shifted down)
 
 local_pm
-    local link-specific mesh power save mode (no change when set to unknown)
+    local link-specific mesh power save mode (no change when set to
+    unknown)
 
 capability
     station capability
@@ -125,3 +131,12 @@ Description
 ===========
 
 Used to change and create a new station.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

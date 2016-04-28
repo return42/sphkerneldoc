@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-crtc-init-with-planes:
 
@@ -7,7 +8,7 @@ drm_crtc_init_with_planes
 
 *man drm_crtc_init_with_planes(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Initialise a new CRTC object with specified primary and cursor planes.
 
@@ -36,7 +37,8 @@ Arguments
     callbacks for the new CRTC
 
 ``name``
-    printf style format string for the CRTC name, or NULL for default name
+    printf style format string for the CRTC name, or NULL for default
+    name
 
 ``...``
     variable arguments
@@ -52,3 +54,12 @@ Returns
 =======
 
 Zero on success, error code on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

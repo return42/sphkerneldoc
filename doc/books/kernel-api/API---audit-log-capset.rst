@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---audit-log-capset:
 
@@ -7,7 +8,7 @@ __audit_log_capset
 
 *man __audit_log_capset(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 store information about the arguments to the capset syscall
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Record the arguments userspace sent to sys_capset for later printing by the audit system if applicable
+Record the arguments userspace sent to sys_capset for later printing by
+the audit system if applicable
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-rs-control:
 
@@ -7,7 +8,7 @@ struct rs_control
 
 *man struct rs_control(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 rs control structure
 
@@ -75,3 +76,12 @@ users
 
 list
     List entry for the rs control list
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

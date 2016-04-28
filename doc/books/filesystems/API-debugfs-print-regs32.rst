@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-debugfs-print-regs32:
 
@@ -7,7 +8,7 @@ debugfs_print_regs32
 
 *man debugfs_print_regs32(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 use seq_print to describe a set of registers
 
@@ -39,6 +40,18 @@ Arguments
 Description
 ===========
 
-This function outputs a text block describing the current values of some 32-bit hardware registers. It is meant to be used within debugfs files based on seq_file that need to show
-registers, intermixed with other information. The prefix argument may be used to specify a leading string, because some peripherals have several blocks of identical registers, for
-example configuration of dma channels
+This function outputs a text block describing the current values of some
+32-bit hardware registers. It is meant to be used within debugfs files
+based on seq_file that need to show registers, intermixed with other
+information. The prefix argument may be used to specify a leading
+string, because some peripherals have several blocks of identical
+registers, for example configuration of dma channels
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

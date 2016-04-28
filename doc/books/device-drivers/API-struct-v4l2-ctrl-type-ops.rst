@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-v4l2-ctrl-type-ops:
 
@@ -7,7 +8,7 @@ struct v4l2_ctrl_type_ops
 
 *man struct v4l2_ctrl_type_ops(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 The control type operations that the driver has to provide.
 
@@ -38,4 +39,14 @@ log
     log the value.
 
 validate
-    validate the value. Return 0 on success and a negative value otherwise.
+    validate the value. Return 0 on success and a negative value
+    otherwise.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

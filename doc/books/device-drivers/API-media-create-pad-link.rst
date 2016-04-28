@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-media-create-pad-link:
 
@@ -7,7 +8,7 @@ media_create_pad_link
 
 *man media_create_pad_link(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 creates a link between two entities.
 
@@ -39,14 +40,28 @@ Arguments
 Valid values for flags
 ======================
 
-A ``MEDIA_LNK_FL_ENABLED`` flag indicates that the link is enabled and can be used to transfer media data. When two or more links target a sink pad, only one of them can be enabled
-at a time.
+A ``MEDIA_LNK_FL_ENABLED`` flag indicates that the link is enabled and
+can be used to transfer media data. When two or more links target a sink
+pad, only one of them can be enabled at a time.
 
-A ``MEDIA_LNK_FL_IMMUTABLE`` flag indicates that the link enabled state can't be modified at runtime. If ``MEDIA_LNK_FL_IMMUTABLE`` is set, then ``MEDIA_LNK_FL_ENABLED`` must also
-be set since an immutable link is always enabled.
+A ``MEDIA_LNK_FL_IMMUTABLE`` flag indicates that the link enabled state
+can't be modified at runtime. If ``MEDIA_LNK_FL_IMMUTABLE`` is set, then
+``MEDIA_LNK_FL_ENABLED`` must also be set since an immutable link is
+always enabled.
 
 
 NOTE
 ====
 
-Before calling this function, ``media_entity_pads_init`` and ``media_device_register_entity`` should be called previously for both ends.
+Before calling this function, ``media_entity_pads_init`` and
+``media_device_register_entity`` should be called previously for both
+ends.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

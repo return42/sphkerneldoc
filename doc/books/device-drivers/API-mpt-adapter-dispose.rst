@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-mpt-adapter-dispose:
 
@@ -7,7 +8,7 @@ mpt_adapter_dispose
 
 *man mpt_adapter_dispose(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Free all resources associated with an MPT adapter
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-This routine unregisters h/w resources and frees all alloc'd memory associated with a MPT adapter structure.
+This routine unregisters h/w resources and frees all alloc'd memory
+associated with a MPT adapter structure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

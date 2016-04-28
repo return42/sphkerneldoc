@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-pwm-chip:
 
@@ -7,7 +8,7 @@ struct pwm_chip
 
 *man struct pwm_chip(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 abstract a PWM controller
 
@@ -58,4 +59,14 @@ of_pwm_n_cells
     number of cells expected in the device tree PWM specifier
 
 can_sleep
-    must be true if the .\ ``config``, .\ ``enable`` or .\ ``disable`` operations may sleep
+    must be true if the .\ ``config``, .\ ``enable`` or .\ ``disable``
+    operations may sleep
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

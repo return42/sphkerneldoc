@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-check-conflicting-open:
 
@@ -7,9 +8,10 @@ check_conflicting_open
 
 *man check_conflicting_open(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-see if the given dentry points to a file that has an existing open that would conflict with the desired lease.
+see if the given dentry points to a file that has an existing open that
+would conflict with the desired lease.
 
 
 Synopsis
@@ -33,4 +35,14 @@ Arguments
 Description
 ===========
 
-Check to see if there's an existing open fd on this file that would conflict with the lease we're trying to set.
+Check to see if there's an existing open fd on this file that would
+conflict with the lease we're trying to set.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

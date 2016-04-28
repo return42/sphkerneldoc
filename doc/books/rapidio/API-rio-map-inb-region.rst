@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-map-inb-region:
 
@@ -7,7 +8,7 @@ rio_map_inb_region
 
 *man rio_map_inb_region(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 - Map inbound memory region.
 
@@ -42,3 +43,12 @@ Return
 0 -- Success.
 
 This function will create the mapping from RIO space to local memory.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

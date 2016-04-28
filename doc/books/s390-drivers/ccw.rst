@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _ccw:
 
@@ -5,9 +6,14 @@
 The ccw bus
 ===========
 
-The ccw bus typically contains the majority of devices available to a s390 system. Named after the channel command word (ccw), the basic command structure used to address its
-devices, the ccw bus contains so-called channel attached devices. They are addressed via I/O subchannels, visible on the css bus. A device driver for channel-attached devices,
-however, will never interact with the subchannel directly, but only via the I/O device on the ccw bus, the ccw device.
+The ccw bus typically contains the majority of devices available to a
+s390 system. Named after the channel command word (ccw), the basic
+command structure used to address its devices, the ccw bus contains
+so-called channel attached devices. They are addressed via I/O
+subchannels, visible on the css bus. A device driver for
+channel-attached devices, however, will never interact with the
+subchannel directly, but only via the I/O device on the ccw bus, the ccw
+device.
 
 
 .. _channelIO:
@@ -15,8 +21,10 @@ however, will never interact with the subchannel directly, but only via the I/O 
 I/O functions for channel-attached devices
 ==========================================
 
-Some hardware structures have been translated into C structures for use by the common I/O layer and device drivers. For more information on the hardware structures represented
-here, please consult the Principles of Operation.
+Some hardware structures have been translated into C structures for use
+by the common I/O layer and device drivers. For more information on the
+hardware structures represented here, please consult the Principles of
+Operation.
 
 
 .. toctree::
@@ -37,15 +45,19 @@ here, please consult the Principles of Operation.
     API-ccw-dev-id-is-equal
     API-pathmask-to-pos
 
+
 .. _ccwdev:
 
 ccw devices
 ===========
 
-Devices that want to initiate channel I/O need to attach to the ccw bus. Interaction with the driver core is done via the common I/O layer, which provides the abstractions of ccw
-devices and ccw device drivers.
+Devices that want to initiate channel I/O need to attach to the ccw bus.
+Interaction with the driver core is done via the common I/O layer, which
+provides the abstractions of ccw devices and ccw device drivers.
 
-The functions that initiate or terminate channel I/O all act upon a ccw device structure. Device drivers must not bypass those functions or strange side effects may happen.
+The functions that initiate or terminate channel I/O all act upon a ccw
+device structure. Device drivers must not bypass those functions or
+strange side effects may happen.
 
 
 .. toctree::
@@ -84,12 +96,15 @@ The functions that initiate or terminate channel I/O all act upon a ccw device s
     API-ccw-device-tm-intrg
     API-ccw-device-get-schid
 
+
 .. _cmf:
 
 The channel-measurement facility
 ================================
 
-The channel-measurement facility provides a means to collect measurement data which is made available by the channel subsystem for each channel attached device.
+The channel-measurement facility provides a means to collect measurement
+data which is made available by the channel subsystem for each channel
+attached device.
 
 
 .. toctree::
@@ -100,3 +115,14 @@ The channel-measurement facility provides a means to collect measurement data wh
     API-disable-cmf
     API-cmf-read
     API-cmf-readall
+
+
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

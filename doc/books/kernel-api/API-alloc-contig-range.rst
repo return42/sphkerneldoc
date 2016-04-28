@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-alloc-contig-range:
 
@@ -7,7 +8,7 @@ alloc_contig_range
 
 *man alloc_contig_range(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 - tries to allocate given range of pages
 
@@ -27,15 +28,30 @@ Arguments
     one-past-the-last PFN to allocate
 
 ``migratetype``
-    migratetype of the underlaying pageblocks (either #MIGRATE_MOVABLE or #MIGRATE_CMA). All pageblocks in range must have the same migratetype and it must be either of the two.
+    migratetype of the underlaying pageblocks (either #MIGRATE_MOVABLE
+    or #MIGRATE_CMA). All pageblocks in range must have the same
+    migratetype and it must be either of the two.
 
 
 Description
 ===========
 
-The PFN range does not have to be pageblock or MAX_ORDER_NR_PAGES aligned, however it's the caller's responsibility to guarantee that we are the only thread that changes migrate
-type of pageblocks the pages fall in.
+The PFN range does not have to be pageblock or MAX_ORDER_NR_PAGES
+aligned, however it's the caller's responsibility to guarantee that we
+are the only thread that changes migrate type of pageblocks the pages
+fall in.
 
 The PFN range must belong to a single zone.
 
-Returns zero on success or negative error code. On success all pages which PFN is in [start, end) are allocated for the caller and need to be freed with ``free_contig_range``.
+Returns zero on success or negative error code. On success all pages
+which PFN is in [start, end) are allocated for the caller and need to be
+freed with ``free_contig_range``.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

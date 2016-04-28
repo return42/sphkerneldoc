@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API---napi-alloc-skb:
 
@@ -7,7 +8,7 @@ __napi_alloc_skb
 
 *man __napi_alloc_skb(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 allocate skbuff for rx in a specific NAPI instance
 
@@ -15,7 +16,7 @@ allocate skbuff for rx in a specific NAPI instance
 Synopsis
 ========
 
-.. c:function:: struct sk_buff ⋆ __napi_alloc_skb( struct napi_struct * napi, unsigned int len, gfp_t gfp_mask )
+.. c:function:: struct sk_buff * __napi_alloc_skb( struct napi_struct * napi, unsigned int len, gfp_t gfp_mask )
 
 Arguments
 =========
@@ -33,7 +34,18 @@ Arguments
 Description
 ===========
 
-Allocate a new sk_buff for use in NAPI receive. This buffer will attempt to allocate the head from a special reserved region used only for NAPI Rx allocation. By doing this we can
-save several CPU cycles by avoiding having to disable and re-enable IRQs.
+Allocate a new sk_buff for use in NAPI receive. This buffer will
+attempt to allocate the head from a special reserved region used only
+for NAPI Rx allocation. By doing this we can save several CPU cycles by
+avoiding having to disable and re-enable IRQs.
 
 ``NULL`` is returned if there is no free memory.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

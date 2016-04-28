@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _iiosubsys:
 
@@ -7,11 +8,12 @@ Industrial I/O core
 
 The Industrial I/O core offers:
 
--  a unified framework for writing drivers for many different types of embedded sensors.
+-  a unified framework for writing drivers for many different types of
+   embedded sensors.
 -  a standard interface to user space applications manipulating sensors.
 
 The implementation can be found under ``
-      drivers/iio/industrialio-⋆``
+      drivers/iio/industrialio-*``
 
 
 .. _iiodevice:
@@ -28,17 +30,24 @@ Industrial I/O devices
     API-iio-device-free
     API-iio-device-register
     API-iio-device-unregister
-An IIO device usually corresponds to a single hardware sensor and it provides all the information needed by a driver handling a device. Let's first have a look at the functionality
-embedded in an IIO device then we will show how a device driver makes use of an IIO device.
 
-There are two ways for a user space application to interact with an IIO driver.
+An IIO device usually corresponds to a single hardware sensor and it
+provides all the information needed by a driver handling a device. Let's
+first have a look at the functionality embedded in an IIO device then we
+will show how a device driver makes use of an IIO device.
+
+There are two ways for a user space application to interact with an IIO
+driver.
 
 -  /sys/bus/iio/iio:deviceX/
-   , this represents a hardware sensor and groups together the data channels of the same chip.
+   , this represents a hardware sensor and groups together the data
+   channels of the same chip.
 -  /dev/iio:deviceX
-   , character device node interface used for buffered data transfer and for events information retrieval.
+   , character device node interface used for buffered data transfer and
+   for events information retrieval.
 
-A typical IIO driver will register itself as an I2C or SPI driver and will create two routines,
+A typical IIO driver will register itself as an I2C or SPI driver and
+will create two routines,
 probe
 and
 remove
@@ -49,10 +58,12 @@ probe
 -  call
    iio_device_alloc
    , which allocates memory for an IIO device.
--  initialize IIO device fields with driver specific information (e.g. device name, device channels).
+-  initialize IIO device fields with driver specific information (e.g.
+   device name, device channels).
 -  call
    iio_device_register
-   , this registers the device with the IIO core. After this call the device is ready to accept requests from user space applications.
+   , this registers the device with the IIO core. After this call the
+   device is ready to accept requests from user space applications.
 
 At
 remove
@@ -71,8 +82,10 @@ in reverse order:
 IIO device sysfs interface
 --------------------------
 
-Attributes are sysfs files used to expose chip info and also allowing applications to set various configuration parameters. For device with index X, attributes can be found under
-``/sys/bus/iio/iio:deviceX/ `` directory. Common attributes are:
+Attributes are sysfs files used to expose chip info and also allowing
+applications to set various configuration parameters. For device with
+index X, attributes can be found under ``/sys/bus/iio/iio:deviceX/ ``
+directory. Common attributes are:
 
 -  name
    , description of the physical chip.
@@ -83,7 +96,9 @@ Attributes are sysfs files used to expose chip info and also allowing applicatio
 -  sampling_frequency_available
    , available discrete set of sampling frequency values for device.
 
-Available standard attributes for IIO devices are described in the ``Documentation/ABI/testing/sysfs-bus-iio `` file in the Linux kernel sources.
+Available standard attributes for IIO devices are described in the
+``Documentation/ABI/testing/sysfs-bus-iio `` file in the Linux kernel
+sources.
 
 
 .. _iiochannel:
@@ -96,14 +111,20 @@ IIO device channels
     :maxdepth: 1
 
     API-struct-iio-chan-spec
-An IIO device channel is a representation of a data channel. An IIO device can have one or multiple channels. For example:
 
--  a thermometer sensor has one channel representing the temperature measurement.
--  a light sensor with two channels indicating the measurements in the visible and infrared spectrum.
--  an accelerometer can have up to 3 channels representing acceleration on X, Y and Z axes.
+An IIO device channel is a representation of a data channel. An IIO
+device can have one or multiple channels. For example:
+
+-  a thermometer sensor has one channel representing the temperature
+   measurement.
+-  a light sensor with two channels indicating the measurements in the
+   visible and infrared spectrum.
+-  an accelerometer can have up to 3 channels representing acceleration
+   on X, Y and Z axes.
 
 An IIO channel is described by the `` struct iio_chan_spec
-      ``. A thermometer driver for the temperature sensor in the example above would have to describe its channel as follows:
+      ``. A thermometer driver for the temperature sensor in the example
+above would have to describe its channel as follows:
 
 
 .. code-block:: c
@@ -115,7 +136,9 @@ An IIO channel is described by the `` struct iio_chan_spec
               },
           };
 
-Channel sysfs attributes exposed to userspace are specified in the form of *bitmasks*. Depending on their shared info, attributes can be set in one of the following masks:
+Channel sysfs attributes exposed to userspace are specified in the form
+of *bitmasks*. Depending on their shared info, attributes can be set in
+one of the following masks:
 
 -  info_mask_separate
    , attributes will be specific to this channel
@@ -126,7 +149,8 @@ Channel sysfs attributes exposed to userspace are specified in the form of *bitm
 -  info_mask_shared_by_all
    , attributes are shared by all channels
 
-When there are multiple data channels per channel type we have two ways to distinguish between them:
+When there are multiple data channels per channel type we have two ways
+to distinguish between them:
 
 -  set
    .modified
@@ -136,13 +160,16 @@ When there are multiple data channels per channel type we have two ways to disti
    .channel2
    field of the same
    iio_chan_spec
-   structure and are used to indicate a physically unique characteristic of the channel such as its direction or spectral response. For example, a light sensor can have two
-   channels, one for infrared light and one for both infrared and visible light.
+   structure and are used to indicate a physically unique characteristic
+   of the channel such as its direction or spectral response. For
+   example, a light sensor can have two channels, one for infrared light
+   and one for both infrared and visible light.
 -  set
    .indexed
    field of
    iio_chan_spec
-   to 1. In this case the channel is simply another instance with an index specified by the
+   to 1. In this case the channel is simply another instance with an
+   index specified by the
    .channel
    field.
 
@@ -174,7 +201,8 @@ Here is how we can make use of the channel's modifiers:
 
           }
 
-This channel's definition will generate two separate sysfs files for raw data retrieval:
+This channel's definition will generate two separate sysfs files for raw
+data retrieval:
 
 -  /sys/bus/iio/iio:deviceX/in_intensity_ir_raw
 -  /sys/bus/iio/iio:deviceX/in_intensity_both_raw
@@ -228,8 +256,10 @@ Industrial I/O buffers
     API-iio-validate-scan-mask-onehot
     API-iio-buffer-get
     API-iio-buffer-put
-The Industrial I/O core offers a way for continuous data capture based on a trigger source. Multiple data channels can be read at once from ``/dev/iio:deviceX`` character device
-node, thus reducing the CPU load.
+
+The Industrial I/O core offers a way for continuous data capture based
+on a trigger source. Multiple data channels can be read at once from
+``/dev/iio:deviceX`` character device node, thus reducing the CPU load.
 
 
 .. _iiobuffersysfs:
@@ -238,10 +268,12 @@ IIO buffer sysfs interface
 --------------------------
 
 An IIO buffer has an associated attributes directory under ``
-      /sys/bus/iio/iio:deviceX/buffer/``. Here are the existing attributes:
+      /sys/bus/iio/iio:deviceX/buffer/``. Here are the existing
+attributes:
 
 -  length
-   , the total number of data samples (capacity) that can be stored by the buffer.
+   , the total number of data samples (capacity) that can be stored by
+   the buffer.
 -  enable
    , activate buffer capture.
 
@@ -251,14 +283,19 @@ An IIO buffer has an associated attributes directory under ``
 IIO buffer setup
 ----------------
 
-The meta information associated with a channel reading placed in a buffer is called a *scan element*. The important bits configuring scan elements are exposed to userspace
-applications via the ``
-        /sys/bus/iio/iio:deviceX/scan_elements/`` directory. This file contains attributes of the following form:
+The meta information associated with a channel reading placed in a
+buffer is called a *scan element*. The important bits configuring scan
+elements are exposed to userspace applications via the ``
+        /sys/bus/iio/iio:deviceX/scan_elements/`` directory. This file
+contains attributes of the following form:
 
 -  enable
-   , used for enabling a channel. If and only if its attribute is non zero, then a triggered capture will contain data samples for this channel.
+   , used for enabling a channel. If and only if its attribute is non
+   zero, then a triggered capture will contain data samples for this
+   channel.
 -  type
-   , description of the scan element data storage within the buffer and hence the form in which it is read from user space. Format is
+   , description of the scan element data storage within the buffer and
+   hence the form in which it is read from user space. Format is
    [be|le]:[s|u]bits/storagebitsXrepeat[>>shift]
    .
 
@@ -273,13 +310,17 @@ applications via the ``
    -  bits
       , is the number of valid data bits.
    -  storagebits
-      , is the number of bits (after padding) that it occupies in the buffer.
+      , is the number of bits (after padding) that it occupies in the
+      buffer.
    -  shift
-      , if specified, is the shift that needs to be applied prior to masking out unused bits.
+      , if specified, is the shift that needs to be applied prior to
+      masking out unused bits.
    -  repeat
-      , specifies the number of bits/storagebits repetitions. When the repeat element is 0 or 1, then the repeat value is omitted.
+      , specifies the number of bits/storagebits repetitions. When the
+      repeat element is 0 or 1, then the repeat value is omitted.
 
-For example, a driver for a 3-axis accelerometer with 12 bit resolution where data is stored in two 8-bits registers as follows:
+For example, a driver for a 3-axis accelerometer with 12 bit resolution
+where data is stored in two 8-bits registers as follows:
 
 
 .. code-block:: c
@@ -302,10 +343,12 @@ will have the following scan element type for each axis:
           $ cat /sys/bus/iio/devices/iio:device0/scan_elements/in_accel_y_type
           le:s12/16>>4
 
-A user space application will interpret data samples read from the buffer as two byte little endian signed data, that needs a 4 bits right shift before masking out the 12 valid
-bits of data.
+A user space application will interpret data samples read from the
+buffer as two byte little endian signed data, that needs a 4 bits right
+shift before masking out the 12 valid bits of data.
 
-For implementing buffer support a driver should initialize the following fields in ``iio_chan_spec`` definition:
+For implementing buffer support a driver should initialize the following
+fields in ``iio_chan_spec`` definition:
 
 
 .. code-block:: c
@@ -323,7 +366,8 @@ For implementing buffer support a driver should initialize the following fields 
                   } scan_type;
               };
 
-The driver implementing the accelerometer described above will have the following channel definition:
+The driver implementing the accelerometer described above will have the
+following channel definition:
 
 
 .. code-block:: c
@@ -348,11 +392,14 @@ The driver implementing the accelerometer described above will have the followin
              */
         }
 
-Here *scan_index* defines the order in which the enabled channels are placed inside the buffer. Channels with a lower scan_index will be placed before channels with a higher
-index. Each channel needs to have a unique scan_index.
+Here *scan_index* defines the order in which the enabled channels are
+placed inside the buffer. Channels with a lower scan_index will be
+placed before channels with a higher index. Each channel needs to have a
+unique scan_index.
 
-Setting scan_index to -1 can be used to indicate that the specific channel does not support buffered capture. In this case no entries will be created for the channel in the
-scan_elements directory.
+Setting scan_index to -1 can be used to indicate that the specific
+channel does not support buffered capture. In this case no entries will
+be created for the channel in the scan_elements directory.
 
 
 .. _iiotrigger:
@@ -367,10 +414,16 @@ Industrial I/O triggers
     API-struct-iio-trigger
     API-devm-iio-trigger-alloc
     API-devm-iio-trigger-free
-In many situations it is useful for a driver to be able to capture data based on some external event (trigger) as opposed to periodically polling for data. An IIO trigger can be
-provided by a device driver that also has an IIO device based on hardware generated events (e.g. data ready or threshold exceeded) or provided by a separate driver from an
-independent interrupt source (e.g. GPIO line connected to some external system, timer interrupt or user space writing a specific file in sysfs). A trigger may initiate data capture
-for a number of sensors and also it may be completely unrelated to the sensor itself.
+
+In many situations it is useful for a driver to be able to capture data
+based on some external event (trigger) as opposed to periodically
+polling for data. An IIO trigger can be provided by a device driver that
+also has an IIO device based on hardware generated events (e.g. data
+ready or threshold exceeded) or provided by a separate driver from an
+independent interrupt source (e.g. GPIO line connected to some external
+system, timer interrupt or user space writing a specific file in sysfs).
+A trigger may initiate data capture for a number of sensors and also it
+may be completely unrelated to the sensor itself.
 
 
 .. _iiotrigsysfs:
@@ -379,16 +432,22 @@ IIO trigger sysfs interface
 ---------------------------
 
 -  /sys/bus/iio/devices/triggerY
-   , this file is created once an IIO trigger is registered with the IIO core and corresponds to trigger with index Y. Because triggers can be very different depending on type
-   there are few standard attributes that we can describe here:
+   , this file is created once an IIO trigger is registered with the IIO
+   core and corresponds to trigger with index Y. Because triggers can be
+   very different depending on type there are few standard attributes
+   that we can describe here:
 
    -  name
-      , trigger name that can be later used for association with a device.
+      , trigger name that can be later used for association with a
+      device.
    -  sampling_frequency
-      , some timer based triggers use this attribute to specify the frequency for trigger calls.
+      , some timer based triggers use this attribute to specify the
+      frequency for trigger calls.
 
 -  /sys/bus/iio/devices/iio:deviceX/trigger/
-   , this directory is created once the device supports a triggered buffer. We can associate a trigger with our device by writing the trigger's name in the
+   , this directory is created once the device supports a triggered
+   buffer. We can associate a trigger with our device by writing the
+   trigger's name in the
    current_trigger
    file.
 
@@ -398,7 +457,8 @@ IIO trigger sysfs interface
 IIO trigger setup
 -----------------
 
-Let's see a simple example of how to setup a trigger to be used by a driver.
+Let's see a simple example of how to setup a trigger to be used by a
+driver.
 
 
 .. code-block:: c
@@ -430,12 +490,14 @@ IIO trigger ops
     :maxdepth: 1
 
     API-struct-iio-trigger-ops
+
 Notice that a trigger has a set of operations attached:
 
 -  set_trigger_state
    , switch the trigger on/off on demand.
 -  validate_device
-   , function to validate the device when the current trigger gets changed.
+   , function to validate the device when the current trigger gets
+   changed.
 
 
 .. _iiotriggered_buffer:
@@ -443,7 +505,8 @@ Notice that a trigger has a set of operations attached:
 Industrial I/O triggered buffers
 ================================
 
-Now that we know what buffers and triggers are let's see how they work together.
+Now that we know what buffers and triggers are let's see how they work
+together.
 
 
 .. _iiotrigbufsetup:
@@ -458,6 +521,7 @@ IIO triggered buffer setup
     API-iio-triggered-buffer-setup
     API-iio-triggered-buffer-cleanup
     API-struct-iio-buffer-setup-ops
+
 A typical triggered buffer setup looks like this:
 
 
@@ -499,15 +563,31 @@ A typical triggered buffer setup looks like this:
 The important things to notice here are:
 
 -  iio_buffer_setup_ops
-   , the buffer setup functions to be called at predefined points in the buffer configuration sequence (e.g. before enable, after disable). If not specified, the IIO core uses the
-   default
+   , the buffer setup functions to be called at predefined points in the
+   buffer configuration sequence (e.g. before enable, after disable). If
+   not specified, the IIO core uses the default
    iio_triggered_buffer_setup_ops
    .
 -  sensor_iio_pollfunc
-   , the function that will be used as top half of poll function. It should do as little processing as possible, because it runs in interrupt context. The most common operation is
-   recording of the current timestamp and for this reason one can use the IIO core defined
+   , the function that will be used as top half of poll function. It
+   should do as little processing as possible, because it runs in
+   interrupt context. The most common operation is recording of the
+   current timestamp and for this reason one can use the IIO core
+   defined
    iio_pollfunc_store_time
    function.
 -  sensor_trigger_handler
-   , the function that will be used as bottom half of the poll function. This runs in the context of a kernel thread and all the processing takes place here. It usually reads data
-   from the device and stores it in the internal buffer together with the timestamp recorded in the top half.
+   , the function that will be used as bottom half of the poll function.
+   This runs in the context of a kernel thread and all the processing
+   takes place here. It usually reads data from the device and stores it
+   in the internal buffer together with the timestamp recorded in the
+   top half.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

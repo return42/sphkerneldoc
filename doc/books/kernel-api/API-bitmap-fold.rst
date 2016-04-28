@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-bitmap-fold:
 
@@ -7,7 +8,7 @@ bitmap_fold
 
 *man bitmap_fold(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 fold larger bitmap into smaller, modulo specified size
 
@@ -36,5 +37,15 @@ Arguments
 Description
 ===========
 
-For each bit oldbit in ``orig``, set bit oldbit mod ``sz`` in ``dst``. Clear all other bits in ``dst``. See further the comment and Example [2] for ``bitmap_onto`` for why and how
-to use this.
+For each bit oldbit in ``orig``, set bit oldbit mod ``sz`` in ``dst``.
+Clear all other bits in ``dst``. See further the comment and Example [2]
+for ``bitmap_onto`` for why and how to use this.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

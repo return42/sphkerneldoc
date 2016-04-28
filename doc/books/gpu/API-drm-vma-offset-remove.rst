@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-vma-offset-remove:
 
@@ -7,7 +8,7 @@ drm_vma_offset_remove
 
 *man drm_vma_offset_remove(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Remove offset node from manager
 
@@ -30,5 +31,17 @@ Arguments
 Description
 ===========
 
-Remove a node from the offset manager. If the node wasn't added before, this does nothing. After this call returns, the offset and size will be 0 until a new offset is allocated
-via ``drm_vma_offset_add`` again. Helper functions like ``drm_vma_node_start`` and ``drm_vma_node_offset_addr`` will return 0 if no offset is allocated.
+Remove a node from the offset manager. If the node wasn't added before,
+this does nothing. After this call returns, the offset and size will be
+0 until a new offset is allocated via ``drm_vma_offset_add`` again.
+Helper functions like ``drm_vma_node_start`` and
+``drm_vma_node_offset_addr`` will return 0 if no offset is allocated.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

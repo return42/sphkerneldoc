@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-drm-plane:
 
@@ -7,7 +8,7 @@ struct drm_plane
 
 *man struct drm_plane(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 central DRM plane control structure
 
@@ -66,7 +67,8 @@ fb
     currently bound fb
 
 old_fb
-    Temporary tracking of the old fb while a modeset is ongoing. Used by ``drm_mode_set_config_internal`` to implement correct refcounting.
+    Temporary tracking of the old fb while a modeset is ongoing. Used by
+    ``drm_mode_set_config_internal`` to implement correct refcounting.
 
 funcs
     helper functions
@@ -79,3 +81,12 @@ type
 
 state
     current atomic state for this plane
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

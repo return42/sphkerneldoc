@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-kfifo-peek-len:
 
@@ -7,7 +8,7 @@ kfifo_peek_len
 
 *man kfifo_peek_len(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 gets the size of the next fifo record
 
@@ -27,4 +28,14 @@ Arguments
 Description
 ===========
 
-This function returns the size of the next fifo record in number of bytes.
+This function returns the size of the next fifo record in number of
+bytes.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

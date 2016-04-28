@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sys-sigprocmask:
 
@@ -7,7 +8,7 @@ sys_sigprocmask
 
 *man sys_sigprocmask(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 examine and change blocked signals
 
@@ -33,4 +34,14 @@ Arguments
 Description
 ===========
 
-Some platforms have their own version with special arguments; others support only sys_rt_sigprocmask.
+Some platforms have their own version with special arguments; others
+support only sys_rt_sigprocmask.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

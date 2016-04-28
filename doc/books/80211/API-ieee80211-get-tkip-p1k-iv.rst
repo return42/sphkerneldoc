@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ieee80211-get-tkip-p1k-iv:
 
@@ -7,7 +8,7 @@ ieee80211_get_tkip_p1k_iv
 
 *man ieee80211_get_tkip_p1k_iv(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 get a TKIP phase 1 key for IV32
 
@@ -34,3 +35,12 @@ Description
 ===========
 
 This function returns the TKIP phase 1 key for the given IV32.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

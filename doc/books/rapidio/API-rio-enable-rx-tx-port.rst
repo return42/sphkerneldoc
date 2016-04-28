@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-rio-enable-rx-tx-port:
 
@@ -7,7 +8,7 @@ rio_enable_rx_tx_port
 
 *man rio_enable_rx_tx_port(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 enable input receiver and output transmitter of given port
 
@@ -39,4 +40,14 @@ Arguments
 Description
 ===========
 
-Returns 0 or 1 from on General Control Command and Status Register (EXT_PTR+0x3C)
+Returns 0 or 1 from on General Control Command and Status Register
+(EXT_PTR+0x3C)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

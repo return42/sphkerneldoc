@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-intel-plane-destroy-state:
 
@@ -7,7 +8,7 @@ intel_plane_destroy_state
 
 *man intel_plane_destroy_state(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 destroy plane state
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Destroys the plane state (both common and Intel-specific) for the specified plane.
+Destroys the plane state (both common and Intel-specific) for the
+specified plane.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-struct-snd-compr-tstamp:
 
@@ -7,7 +8,7 @@ struct snd_compr_tstamp
 
 *man struct snd_compr_tstamp(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 timestamp descriptor
 
@@ -36,11 +37,23 @@ copied_total
     Total number of bytes copied from/to ring buffer to/by DSP
 
 pcm_frames
-    Frames decoded or encoded by DSP. This field will evolve by large steps and should only be used to monitor encoding/decoding progress. It shall not be used for timing
-    estimates.
+    Frames decoded or encoded by DSP. This field will evolve by large
+    steps and should only be used to monitor encoding/decoding progress.
+    It shall not be used for timing estimates.
 
 pcm_io_frames
-    Frames rendered or received by DSP into a mixer or an audio output/input. This field should be used for A/V sync or time estimates.
+    Frames rendered or received by DSP into a mixer or an audio
+    output/input. This field should be used for A/V sync or time
+    estimates.
 
 sampling_rate
     sampling rate of audio
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

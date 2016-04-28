@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-shost-for-each-device:
 
@@ -7,7 +8,7 @@ shost_for_each_device
 
 *man shost_for_each_device(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 iterate over all devices of a host
 
@@ -30,5 +31,15 @@ Arguments
 Description
 ===========
 
-Iterator that returns each device attached to ``shost``. This loop takes a reference on each device and releases it at the end. If you break out of the loop, you must call
-scsi_device_put(sdev).
+Iterator that returns each device attached to ``shost``. This loop takes
+a reference on each device and releases it at the end. If you break out
+of the loop, you must call scsi_device_put(sdev).
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

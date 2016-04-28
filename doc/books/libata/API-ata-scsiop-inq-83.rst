@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-ata-scsiop-inq-83:
 
@@ -7,7 +8,7 @@ ata_scsiop_inq_83
 
 *man ata_scsiop_inq_83(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Simulate INQUIRY VPD page 83, device identity
 
@@ -30,10 +31,21 @@ Arguments
 Yields two logical unit device identification designators
 =========================================================
 
-- vendor specific ASCII containing the ATA serial number - SAT defined “t10 vendor id based” containing ASCII vendor name (“ATA”), model and serial numbers.
+- vendor specific ASCII containing the ATA serial number - SAT defined
+“t10 vendor id based” containing ASCII vendor name (“ATA”), model and
+serial numbers.
 
 
 LOCKING
 =======
 
 spin_lock_irqsave(host lock)
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

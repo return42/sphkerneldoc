@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-trace-signal-deliver:
 
@@ -7,7 +8,7 @@ trace_signal_deliver
 
 *man trace_signal_deliver(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 called when a signal is delivered
 
@@ -33,6 +34,19 @@ Arguments
 Description
 ===========
 
-A 'sig' signal is delivered to current process with 'info' siginfo, and it will be handled by 'ka'. ka->sa.sa_handler can be SIG_IGN or SIG_DFL. Note that some signals reported
-by signal_generate tracepoint can be lost, ignored or modified (by debugger) before hitting this tracepoint. This means, this can show which signals are actually delivered, but
-matching generated signals and delivered signals may not be correct.
+A 'sig' signal is delivered to current process with 'info' siginfo, and
+it will be handled by 'ka'. ka->sa.sa_handler can be SIG_IGN or
+SIG_DFL. Note that some signals reported by signal_generate tracepoint
+can be lost, ignored or modified (by debugger) before hitting this
+tracepoint. This means, this can show which signals are actually
+delivered, but matching generated signals and delivered signals may not
+be correct.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

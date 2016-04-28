@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-vfs-link:
 
@@ -7,7 +8,7 @@ vfs_link
 
 *man vfs_link(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 create a new link
 
@@ -38,7 +39,21 @@ Description
 
 The caller must hold dir->i_mutex
 
-If vfs_link discovers a delegation on the to-be-linked file in need of breaking, it will return -EWOULDBLOCK and return a reference to the inode in delegated_inode. The caller
-should then break the delegation and retry. Because breaking a delegation may take a long time, the caller should drop the i_mutex before doing so.
+If vfs_link discovers a delegation on the to-be-linked file in need of
+breaking, it will return -EWOULDBLOCK and return a reference to the
+inode in delegated_inode. The caller should then break the delegation
+and retry. Because breaking a delegation may take a long time, the
+caller should drop the i_mutex before doing so.
 
-Alternatively, a caller may pass NULL for delegated_inode. This may be appropriate for callers that expect the underlying filesystem not to be NFS exported.
+Alternatively, a caller may pass NULL for delegated_inode. This may be
+appropriate for callers that expect the underlying filesystem not to be
+NFS exported.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

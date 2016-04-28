@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-list-add-tail:
 
@@ -7,7 +8,7 @@ list_add_tail
 
 *man list_add_tail(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 add a new entry
 
@@ -30,4 +31,14 @@ Arguments
 Description
 ===========
 
-Insert a new entry before the specified head. This is useful for implementing queues.
+Insert a new entry before the specified head. This is useful for
+implementing queues.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

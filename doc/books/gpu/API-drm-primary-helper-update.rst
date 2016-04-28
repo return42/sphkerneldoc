@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-primary-helper-update:
 
@@ -7,7 +8,7 @@ drm_primary_helper_update
 
 *man drm_primary_helper_update(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 Helper for primary plane update
 
@@ -57,17 +58,32 @@ Arguments
 Description
 ===========
 
-Provides a default plane update handler for primary planes. This is handler is called in response to a userspace SetPlane operation on the plane with a non-NULL framebuffer. We
-call the driver's modeset handler to update the framebuffer.
+Provides a default plane update handler for primary planes. This is
+handler is called in response to a userspace SetPlane operation on the
+plane with a non-NULL framebuffer. We call the driver's modeset handler
+to update the framebuffer.
 
-``SetPlane`` on a primary plane of a disabled CRTC is not supported, and will return an error.
+``SetPlane`` on a primary plane of a disabled CRTC is not supported, and
+will return an error.
 
-Note that we make some assumptions about hardware limitations that may not be true for all hardware -- 1) Primary plane cannot be repositioned. 2) Primary plane cannot be scaled.
-3) Primary plane must cover the entire CRTC. 4) Subpixel positioning is not supported. Drivers for hardware that don't have these restrictions can provide their own implementation
-rather than using this helper.
+Note that we make some assumptions about hardware limitations that may
+not be true for all hardware -- 1) Primary plane cannot be repositioned.
+2) Primary plane cannot be scaled. 3) Primary plane must cover the
+entire CRTC. 4) Subpixel positioning is not supported. Drivers for
+hardware that don't have these restrictions can provide their own
+implementation rather than using this helper.
 
 
 RETURNS
 =======
 
 Zero on success, error code on failure
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

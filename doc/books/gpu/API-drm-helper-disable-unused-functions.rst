@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-drm-helper-disable-unused-functions:
 
@@ -7,7 +8,7 @@ drm_helper_disable_unused_functions
 
 *man drm_helper_disable_unused_functions(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 disable unused objects
 
@@ -27,13 +28,29 @@ Arguments
 Description
 ===========
 
-This function walks through the entire mode setting configuration of ``dev``. It will remove any CRTC links of unused encoders and encoder links of disconnected connectors. Then it
-will disable all unused encoders and CRTCs either by calling their disable callback if available or by calling their dpms callback with DRM_MODE_DPMS_OFF.
+This function walks through the entire mode setting configuration of
+``dev``. It will remove any CRTC links of unused encoders and encoder
+links of disconnected connectors. Then it will disable all unused
+encoders and CRTCs either by calling their disable callback if available
+or by calling their dpms callback with DRM_MODE_DPMS_OFF.
 
 
 NOTE
 ====
 
-This function is part of the legacy modeset helper library and will cause major confusion with atomic drivers. This is because atomic helpers guarantee to never call ->``disable``
-hooks on a disabled function, or ->``enable`` hooks on an enabled functions. ``drm_helper_disable_unused_functions`` on the other hand throws such guarantees into the wind and
-calls disable hooks unconditionally on unused functions.
+This function is part of the legacy modeset helper library and will
+cause major confusion with atomic drivers. This is because atomic
+helpers guarantee to never call ->``disable`` hooks on a disabled
+function, or ->``enable`` hooks on an enabled functions.
+``drm_helper_disable_unused_functions`` on the other hand throws such
+guarantees into the wind and calls disable hooks unconditionally on
+unused functions.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

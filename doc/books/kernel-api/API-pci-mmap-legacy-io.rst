@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-pci-mmap-legacy-io:
 
@@ -7,7 +8,7 @@ pci_mmap_legacy_io
 
 *man pci_mmap_legacy_io(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 map legacy PCI IO into user memory space
 
@@ -36,5 +37,15 @@ Arguments
 Description
 ===========
 
-Uses an arch specific callback, pci_mmap_legacy_io_page_range, to mmap legacy IO space (first meg of bus space) into application virtual memory space. Returns -ENOSYS if the
-operation isn't supported
+Uses an arch specific callback, pci_mmap_legacy_io_page_range, to
+mmap legacy IO space (first meg of bus space) into application virtual
+memory space. Returns -ENOSYS if the operation isn't supported
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-v4l2-detect-cvt:
 
@@ -7,7 +8,7 @@ v4l2_detect_cvt
 
 *man v4l2_detect_cvt(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 detect if the given timings follow the CVT standard
 
@@ -30,11 +31,13 @@ Arguments
     the height of the vertical sync in lines.
 
 ``active_width``
-    active width of image (does not include blanking). This information is needed only in case of version 2 of reduced blanking. In other cases, this parameter does not have any
-    effect on timings.
+    active width of image (does not include blanking). This information
+    is needed only in case of version 2 of reduced blanking. In other
+    cases, this parameter does not have any effect on timings.
 
 ``polarities``
-    the horizontal and vertical polarities (same as struct v4l2_bt_timings polarities).
+    the horizontal and vertical polarities (same as struct
+    v4l2_bt_timings polarities).
 
 ``interlaced``
     if this flag is true, it indicates interlaced format
@@ -46,4 +49,15 @@ Arguments
 Description
 ===========
 
-This function will attempt to detect if the given values correspond to a valid CVT format. If so, then it will return true, and fmt will be filled in with the found CVT timings.
+This function will attempt to detect if the given values correspond to a
+valid CVT format. If so, then it will return true, and fmt will be
+filled in with the found CVT timings.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-snd-dma-pointer:
 
@@ -7,7 +8,7 @@ snd_dma_pointer
 
 *man snd_dma_pointer(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 return the current pointer to DMA transfer buffer in bytes
 
@@ -31,3 +32,12 @@ Return
 ======
 
 The current pointer in DMA transfer buffer in bytes.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-sata-scr-write-flush:
 
@@ -7,7 +8,7 @@ sata_scr_write_flush
 
 *man sata_scr_write_flush(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
 write SCR register of the specified port and flush
 
@@ -33,7 +34,8 @@ Arguments
 Description
 ===========
 
-This function is identical to ``sata_scr_write`` except that this function performs flush after writing to the register.
+This function is identical to ``sata_scr_write`` except that this
+function performs flush after writing to the register.
 
 
 LOCKING
@@ -46,3 +48,12 @@ RETURNS
 =======
 
 0 on success, negative errno on failure.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------

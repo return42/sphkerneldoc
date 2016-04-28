@@ -1,3 +1,4 @@
+.. -*- coding: utf-8; mode: rst -*-
 
 .. _API-reallocate-resource:
 
@@ -7,9 +8,11 @@ reallocate_resource
 
 *man reallocate_resource(9)*
 
-*4.6.0-rc1*
+*4.6.0-rc5*
 
-allocate a slot in the resource tree given range & alignment. The resource will be relocated if the new size cannot be reallocated in the current location.
+allocate a slot in the resource tree given range & alignment. The
+resource will be relocated if the new size cannot be reallocated in the
+current location.
 
 
 Synopsis
@@ -31,3 +34,12 @@ Arguments
 
 ``constraint``
     the size and alignment constraints to be met.
+
+
+.. ------------------------------------------------------------------------------
+.. This file was automatically converted from DocBook-XML with the dbxml
+.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
+.. from the linux kernel, refer to:
+..
+.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+.. ------------------------------------------------------------------------------
