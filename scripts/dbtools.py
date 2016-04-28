@@ -35,7 +35,7 @@ from common import CLI, FSPath
 from common import PANDOC_EXE, xml2json, jsonFilter, json2rst
 from dbxml import XMLTag, filterXML, subEntities, Table, RESOUCE_FORMAT, INT_ENTITES
 from dbxml import hook_copy_file_resource, hook_chunk_by_tag, hook_fix_broken_tables
-from dbxml import hook_flatten_tables, hook_drop_usless_informaltables
+from dbxml import hook_flatten_tables, hook_drop_usless_informaltables, hook_html2db_table
 
 #from pprint import pformat, pprint
 
@@ -179,6 +179,7 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
     hook_list = [
         hook_chunk_by_tag("book", "part", "chapter", ".//refentry")
         , hook_copy_file_resource(LINUX_DOCBOOK_ROOT)
+        , hook_html2db_table
         , hook_drop_usless_informaltables
         #, hook_fix_broken_tables(fname_list=["kernel-locking/cheatsheet", ])
         , hook_flatten_tables()

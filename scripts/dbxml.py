@@ -217,6 +217,28 @@ def hook_chunk_by_tag(*chunkPathes):
     return hookFunc
 
 # ==============================================================================
+def hook_html2db_table(node, rstPrefix, parseData): # pylint: disable=W0613
+# ==============================================================================
+    u"""This hook converts a HTML table to a DocBook table
+
+    This is done by simply change ``<tr>`` and ``<td>`` (``<th>``) tags to
+    ``<row>`` and ``<entry>`` tags
+    """
+    # run this hook only on the root node
+    if node.getparent() is not None:
+        return node
+
+    for elem in node.findall(".//tr"):
+        newNode = XMLTag.copyNode(elem, "row", moveID=True)
+        XMLTag.replaceNode(elem, newNode)
+
+    for elem in node.findall(".//th") + node.findall(".//td"):
+        newNode = XMLTag.copyNode(elem, "entry", moveID=True)
+        XMLTag.replaceNode(elem, newNode)
+
+    return node
+
+# ==============================================================================
 def hook_fix_broken_tables(fname_list=None, id_list=None):
 # ==============================================================================
 
@@ -408,6 +430,10 @@ def hook_flatten_tables(table_id_list="all"):
                     for entry in row.findall(".//entry"):
                         col_count += 1
                         cspan = spanspec.get(entry.get("spanname"), 0)
+                        if cspan == 0:
+                            # the colspan attribut comes from tables which has
+                            # been converted from html (see hook_html2db_table)
+                            cspan = int(entry.get("colspan", 1)) - 1
                         newCol = node.makeelement("listitem")
 
                         # a ID in a cell needs some extras
@@ -425,8 +451,12 @@ def hook_flatten_tables(table_id_list="all"):
                             para.text = (":cspan:`%s` " % cspan) + (para.text or "")
                             col_count += cspan
                         morerows = entry.get("morerows", 0)
+                        if morerows == 0:
+                            # the rowspan attribut comes from tables which has
+                            # been converted from html (see hook_html2db_table)
+                            morerows = int(entry.get("rowspan", 1)) -1
                         if morerows:
-                            para.text = (":hspan:`%s` " % morerows) + (para.text or "")
+                            para.text = (":rspan:`%s` " % morerows) + (para.text or "")
                         newCol.append(para)
                         colList.append(newCol)
                     if col_count > max_cols:
@@ -1223,6 +1253,7 @@ class Programlisting(LiteralBlock):
 
 # ------------------------------------------------------------------------------
 class Funcsynopsisinfo(Programlisting): pass
+class Synopsis(Programlisting): pass
 # ------------------------------------------------------------------------------
 
 # ==============================================================================
@@ -1634,6 +1665,8 @@ class ReSTInclude(XMLTag):
     :maxdepth: 1
 
 %(entries)s
+
+
 """
     def applyFilter(self, node, rstPrefix):
 
