@@ -51,12 +51,13 @@ MSG = CLI.msg
 ERR = CLI.err
 
 mainFOOTER="""
+.. only:: html
 
-Retrieval
-=========
+  Retrieval
+  =========
 
-* :ref:`genindex`
-* :ref:`search`
+  * :ref:`genindex`
+  * :ref:`search`
 
 """
 
