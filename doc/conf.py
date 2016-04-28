@@ -19,18 +19,19 @@ import os
 
 from os.path import join as pathjoin
 from os.path import abspath
+from os.path import dirname
 
-ROOT_FOLDER = pathjoin('..')
+BASE_FOLDER = abspath(pathjoin(dirname(__file__)))
 
 # only for debugging:
-# sys.path.append(os.path.abspath(os.path.join(ROOT_FOLDER, 'scripts')))
-# import common  # to get the SDK debugger/console
+sys.path.append(abspath(pathjoin(BASE_FOLDER, "..", 'scripts')))
+import common  # to get the SDK debugger/console
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-sys.path.insert(0, abspath(pathjoin(ROOT_FOLDER, 'doc', 'extensions')))
+sys.path.insert(0, pathjoin(BASE_FOLDER, 'extensions'))
 import rstFlatTable
 
 # -- General configuration ------------------------------------------------
@@ -51,12 +52,10 @@ language = None
 # usage:  :man:`dvbv5-scan`
 
 extlinks = {
-    'man' : ('http://manpages.ubuntu.com/cgi-bin/search.py?q=%s', ' ')
-    , 'deb' : ('http://packages.ubuntu.com/xenial/%s', ' ')
-    , 'rfc' : ('https://tools.ietf.org/html/rfc%s', 'RFC ')
-    , 'launchpad' : ('https://launchpad.net/%s/trunk', 'launchpad')
+    'man'         : ('http://manpages.ubuntu.com/cgi-bin/search.py?q=%s', ' ')
+    , 'deb'       : ('http://packages.ubuntu.com/xenial/%s', ' ')
+    , 'rfc'       : ('https://tools.ietf.org/html/rfc%s', 'RFC ')
     }
-
 
 # Intersphinx
 # -----------
@@ -64,7 +63,7 @@ extlinks = {
 # usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
 
 intersphinx_mapping = {}
-intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
+#intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
 intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
@@ -120,14 +119,14 @@ author = u'Linux'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build']
+exclude_patterns = ['_build', '_tex', '_static']
 
 # The reST default role (used for this markup: `text`) to use for all
 # documents.
 #default_role = None
 
 # If true, '()' will be appended to :func: etc. cross-reference text.
-#add_function_parentheses = True
+add_function_parentheses = True
 
 # If true, the current module name will be prepended to all description
 # unit titles (such as .. function::).
@@ -148,7 +147,6 @@ pygments_style = 'sphinx'
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
-
 
 # -- Options for HTML output ----------------------------------------------
 
@@ -173,7 +171,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-#html_logo = None
+html_logo = pathjoin(BASE_FOLDER, "tex", "logo.png")
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
@@ -252,42 +250,104 @@ html_search_language = 'en'
 #html_search_scorer = 'scorer.js'
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'Kernel-Docdoc'
+htmlhelp_basename = 'Kernel-Doc'
 
-# -- Options for LaTeX output ---------------------------------------------
-
-latex_elements = {
-# The paper size ('letterpaper' or 'a4paper').
-#'papersize': 'letterpaper',
-
-# The font size ('10pt', '11pt' or '12pt').
-#'pointsize': '10pt',
+# -- Options for LaTeX output --------------------------------------------------
 
 # Additional stuff for the LaTeX preamble.
-#'preamble': '',
 
-# Latex figure (float) alignment
-#'figure_align': 'htbp',
-}
+latex_preamble = r"""
+
+\usepackage{darmarITCI}
+
+%%\setmainfont{DejaVu Serif}
+%%\setsansfont{DejaVu Sans}
+\setmonofont[Scale=0.7]{DejaVu Sans Mono}
+
+"""
+
+# see HEADER in https://github.com/sphinx-doc/sphinx/blob/master/sphinx/writers/latex.py#L34
+latex_elements = dict()
+latex_elements.update({
+
+    'preamble' : latex_preamble
+
+    , 'papersize'  : 'a4paper'  # The paper size ('letter' or 'a4').
+    , 'pointsize'  : '12pt'     # The font size ('10pt', '11pt' or '12pt').
+
+    , 'extraclassoptions'    : ''
+    , 'passoptionstopackages': ''
+
+
+    # some packages are obsolete other changed with xelatex
+    , 'inputenc'   : r''
+    , 'utf8extra'  : r''
+    , 'cmappkg'    : r''
+    , 'fontenc'    : r'\usepackage{fontspec}'     # http://ctan.org/pkg/fontspec
+    , 'babel'      : r'\usepackage{polyglossia}'  # http://ctan.org/pkg/polyglossia
+
+    , 'amsmath'        : r'\usepackage{amsmath,amssymb}'
+    , 'fontpkg'        : r'\usepackage{times}'
+    , 'fncychap'       : r'' # r'\usepackage[Sunny]{fncychap}'
+    , 'longtable'      : r'\usepackage{longtable}'
+    , 'usepackages'    : r''
+    , 'numfig_format'  : r''
+    , 'contentsname'   : r''
+    , 'title'          : r''
+    , 'date'           : r''
+    , 'release'        : r''
+    , 'author'         : r''
+    , 'logo'           : r''
+    , 'releasename'    : r'Release'
+    , 'makeindex'      : r'\makeindex'
+    , 'shorthandoff'   : r''
+    , 'maketitle'      : r'\maketitle'
+    , 'tableofcontents': r'\tableofcontents'
+    , 'footer'         : r''
+    , 'printindex'     : r'\printindex'
+    , 'transition'     : '\n\n\\bigskip\\hrule{}\\bigskip\n\n'
+    , 'figure_align'   : r'htbp'
+    , 'tocdepth'       : r''
+    , 'pageautorefname': r''
+
+    })
+
+
 
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'Kernel-Doc.tex', u'Kernel-Doc',
-     u'Linux', 'manual'),
+    (master_doc, 'book.tex'  # start file, target name
+     , u'book'               # title
+     , u'Linux'              # author
+     , 'darmarITArticle'     # documentclass
+    ),
 ]
 
 # The name of an image file (relative to this directory) to place at the top of
 # the title page.
 #latex_logo = None
 
-# For "manual" documents, if this is true, then toplevel headings are parts,
-# not chapters.
-#latex_use_parts = False
+latex_logo = pathjoin(BASE_FOLDER, "_tex", "logo.png")
+
+latex_additional_files = [
+    pathjoin(BASE_FOLDER,   "_tex", "Makefile")
+    , pathjoin(BASE_FOLDER, "_tex", "darmarITCI.sty")
+    , pathjoin(BASE_FOLDER, "_tex", "darmarITArticle.cls")
+    , pathjoin(BASE_FOLDER, "_tex", "icon_left.png")
+    , pathjoin(BASE_FOLDER, "_tex", "icon_right.png")
+]
+
+# This value determines the topmost sectioning unit. It should be chosen from
+# ``part``, ``chapter`` or ``section``. The default is ``None``; the topmost
+# sectioning unit is switched by documentclass. ``section`` is used if
+# documentclass will be ``howto``, otherwise ``chapter`` will be used.
+
+latex_toplevel_sectioning = 'part'
 
 # If true, show page references after internal links.
-#latex_show_pagerefs = False
+latex_show_pagerefs = False
 
 # If true, show URL addresses after external links.
 #latex_show_urls = False
@@ -310,7 +370,6 @@ man_pages = [
 
 # If true, show URL addresses after external links.
 #man_show_urls = False
-
 
 # -- Options for Texinfo output -------------------------------------------
 

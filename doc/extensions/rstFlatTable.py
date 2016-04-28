@@ -231,11 +231,19 @@ class ListTableBuilder(object):
                 cspan, rspan = cell[:2]
                 # handle colspan in current row
                 for c in range(cspan):
-                    self.rows[y].insert(x+c+1, None)
-                # handle colspan in spnned rows
+                    try:
+                        self.rows[y].insert(x+c+1, None)
+                    except:
+                        # the user sets ambiguous rowspans
+                        pass # SDK.CONSOLE()
+                # handle colspan in spanned rows
                 for r in range(rspan):
                     for c in range(cspan + 1):
-                        self.rows[y+r+1].insert(x+c, None)
+                        try:
+                            self.rows[y+r+1].insert(x+c, None)
+                        except:
+                            # the user sets ambiguous rowspans
+                            pass # SDK.CONSOLE()
                 x += 1
             y += 1
 

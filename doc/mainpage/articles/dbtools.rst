@@ -27,13 +27,19 @@ toolbox, by doing this, please take notice of the dbtools :ref:`xref_LICENSE`.
 dbtools requirements
 ====================
 
-The ``scripts/dbtools`` script requires python3, `lxml`_ and pandoc(-filters)::
+The ``scripts/dbtools`` script requires python3, cairosvg, `lxml`_ and
+pandoc(-filters)::
 
    $ sudo apt-get install python3 python3-pip python3-lxml
 
-The pandocfilters can be installed localy (no sudo required)::
+The pandocfilters and the cairosvg are installed localy (no sudo required)::
 
-   $ pip3 install pandocfilters
+   $ pip3 install pandocfilters cairosvg
+
+The cairosvg is needed by the linux_tv book which contains miscellaneous .svg
+files without a pdf representation. There is a LaTeX support for .svg files but
+this is (IMO) nappy. It is better to preserve pdf versions manually (or with
+this cairosvg converter).
 
 
 remarks on pandoc

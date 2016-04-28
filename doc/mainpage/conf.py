@@ -23,8 +23,8 @@ from os.path import abspath
 ROOT_FOLDER = pathjoin('..', '..')
 
 # only for debugging:
-# sys.path.append(os.path.abspath(os.path.join(ROOT_FOLDER, 'scripts')))
-# import common  # to get the SDK debugger/console
+sys.path.append(os.path.abspath(os.path.join(ROOT_FOLDER, 'scripts')))
+import common  # to get the SDK debugger/console
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here. If the directory is relative to the

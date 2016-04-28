@@ -20,6 +20,9 @@ DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
 AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
 
+LATEX          := latex
+PDFLATEX       := xelatex
+MAKEINDEX      := makeindex
 
 GH_PAGES := $(CACHE)/gh-pages
 BOOKS   := $(wildcard $(BOOKS_FOLDER)/*)
@@ -37,18 +40,55 @@ I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # TODO: include linux/Documentation/DocBook/Makefile and run "make xmldocs" as
 # prerequisite
 
-# User-friendly check for sphinx-build
-ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
-$(error The '$(SPHINXBUILD)' command was not found. Make sure you have Sphinx installed, grab it from http://sphinx-doc.org/)
-endif
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
 endif
 
-# !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
-# !!! own treatment
+# ------------------------------------------------------------------------------
+# requirements
+# ------------------------------------------------------------------------------
 
+ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
+sphinx-doc: msg-SphinxDoc
+	$(error The '$(SPHINXBUILD)' command was not found)
+else
+sphinx-doc:
+endif
+
+ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
+texlive: msg-TeXLive
+	$(error The '$(PDFLATEX)' command was not found)
+else
+texlive:
+endif
+
+msg-SphinxDoc:
+	@echo "\
+Make sure you have a updated Sphinx installed, grab it from \
+http://sphinx-doc.org or install it from the python package \
+manager	(pip). \n\n\
+On debian based OS these requirements are installed by::\n\n\
+  sudo apt-get install pip \n\n\
+  pip install Sphinx\n" | $(FMT)
+
+msg-TeXLive:
+	@echo "\
+Make sure you have a updated TexLive installed, grab it from \
+https://www.tug.org/texlive or install it from your package manager. \n\n\
+Sphinx-doc produce LaTeX files which uses additional TeX-packages and \
+fonts. To process these LaTeX files, a TexLive installation with the \
+additional packages and fonts is required. On debian based OS these \
+requirements are installed by::\n\n\
+  sudo apt-get install \\ \n\
+        texlive-latex-recommended texlive-fonts-recommended \
+texlive-latex-extra texlive-xetex\n" | $(FMT)
+
+
+# ------------------------------------------------------------------------------
+# !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
+# !!! own treatment see below target media2rst
+#
 DOCBOOKS := z8530book.xml device-drivers.xml \
 	    kernel-hacking.xml kernel-locking.xml deviceiobook.xml \
 	    writing_usb_driver.xml networking.xml \
@@ -80,7 +120,7 @@ help:
 	@echo
 	@echo "  all-reST : builds all reST targets:"
 	@echo
-	@echo "    dbxml2rst : convert kernel's DocBook-XML books to reST"
+	@echo "    dbxml2rst : convert kernel's DocBook-XML books to reST (incl. media2rst)"
 	@echo "    media2rst : convert linux_tv (media book) DocBook-XML to reST"
 	@echo "    src2rst   : generate reST documentation from source code"
 	@echo "    txt2rst   : build reST from misc. linux/Documentaion text files"
@@ -90,7 +130,7 @@ help:
 	@echo "    The reST files are versioned within *this* reposetory."
 	@echo
 	@echo "  make {fname} : converts only {fname}.xml to reST, valid"
-	@echo "                 values for {fname} are: \n\n   $(RST)" | $(FMT)
+	@echo "                 values for {fname} are: \n\n   $(DB2RST)" | $(FMT)
 	@echo
 
 # ------------------------------------------------------------------------------
@@ -103,7 +143,7 @@ all-reST: dbxml2rst media2rst src2rst txt2rst
 
 # update github-pages
 .PHONY: all-HTML
-all-HTML: mainpage htmlbooks htmlsrc miscdoc
+all-HTML: sphinx-doc mainpage htmlbooks htmlsrc miscdoc
 
 .PHONY: clean-HTML
 clean-HTML: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
@@ -111,13 +151,12 @@ clean-HTML: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
 $(GH_PAGES):
 	mkdir $(GH_PAGES)
 
-
 # ------------------------------------------------------------------------------
 # mainpage
 # ------------------------------------------------------------------------------
 
 .PHONY: mainpage
-mainpage: | $(GH_PAGES)
+mainpage: sphinx-doc | $(GH_PAGES)
 	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)
 
 .PHONY: clean-mainpage
@@ -132,26 +171,26 @@ clean-mainpage:
 # DocBook-XML --> reST
 # --------------------
 
-RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
-dbxml2rst: $(RST)
+DB2RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
+dbxml2rst: media2rst $(DB2RST)
 
-.PHONY:	$(RST)
-$(RST):
+.PHONY:	$(DB2RST)
+$(DB2RST):
 	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.xml, ${@})
 
 # the linux_tv book has it's own treatment
-g.PHONY: media2rst
+.PHONY: media2rst
 media2rst:
 	$(DBTOOLS_SCRIPT) media2rst
 
-# reST --> HTML (sphinx-doc projects)
-# -----------------------------------
+# reST-book --> HTML (sphinx-doc projects)
+# ----------------------------------------
 
 .PHONY: htmlbooks
-htmlbooks: $(BOOKS)
+htmlbooks: sphinx-doc $(BOOKS)
 
 .PHONY: $(BOOKS)
-$(BOOKS): | $(GH_PAGES)
+$(BOOKS): sphinx-doc | $(GH_PAGES)
 	@echo "building $@ ..."
 	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)/$@
 
@@ -161,6 +200,29 @@ book-doctrees := $(addprefix $(CACHE)/doctrees/, $(BOOKS))
 .PHONY: clean-htmlbooks
 clean-htmlbooks:
 	rm -rf $(book-dirs) $(book-doctrees)
+
+# reST-book --> LaTeX --> PDF
+# -----------------------------------
+
+RST2TEX := $(patsubst %, %.tex, $(BOOKS))
+TEX2PDF := $(patsubst %, %.pdf, $(BOOKS))
+
+.PHONY: pdfbooks
+pdfbooks: texlive sphinx-doc $(TEX2PDF)
+
+.PHONY: $(RST2TEX)
+$(RST2TEX): texlive sphinx-doc
+	@echo "building $@ ..."
+	$(SPHINXBUILD) -c . -b latex \
+		$(PAPEROPT_$(PAPER)) \
+		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
+		$(patsubst %.tex,%,$@) \
+		$(CACHE)/$(patsubst books/%,%,$@)
+
+$(TEX2PDF): %.pdf : %.tex texlive
+	@echo "building $@ ..."
+	$(MAKE) -C $(CACHE)/$(patsubst books/%.pdf,%.tex,$@) all-pdf
+
 
 # ------------------------------------------------------------------------------
 # source-code
@@ -178,7 +240,7 @@ src2rst:
 # -------------
 
 .PHONY: htmlsrc
-htmlsrc:
+htmlsrc: sphinx-doc
 	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(GH_PAGES)/$(AUTODOC_FOLDER)
 
 .PHONY:
@@ -201,7 +263,7 @@ txt2rst:
 # -------------
 
 .PHONY: miscdoc
-miscdoc:
+miscdoc: sphinx-doc
 	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(GH_PAGES)/$(LINUX_MISC_DOC)
 
 .PHONY:

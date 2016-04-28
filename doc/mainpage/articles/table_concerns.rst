@@ -6,9 +6,42 @@
 Creating tables
 ===============
 
+Internaly, the docutils uses a representation according to the `OASIS XML
+Exchange Table Model`_ (same as DocBook). The *OASIS Table Model* gives a huge
+bandwith of possibilities to form tables. This often seduce authors to force a
+specific layout. Misuse of tables in this manner is not recommended, because it
+breaks the separation of *presentation from content* which most often ends in
+problems in range of output formats. Tables (and preformated text like source
+code listings) should be used advisedly. In a HTML output, the horizontal and
+vertical expansion is handled by a scrollbar. On print medias (paper / pdf)
+there is no scrollbar, automaticaly (page-) breaking a table (or line-breaking a
+preformated text) in the layout process ends mostly in a unwanted results.
+
+.. hint::
+
+  Tables and preformated text in itself violate the separation of *presentation
+  from content*, but we will never be able to entirely renounce them. Use them
+  with care, if your content should be rendered well, in wide variation of
+  output formats.
+
+
+ASCII-art tables
+================
+
+ASCII-art tables might be comfortable for readers of the text-files, but they
+have huge disadvantages in the creation and modifying. First, they are hard to
+edit. Think about adding a row or a column to a ASCII-art table or adding a
+paraggraph in a cell, it is a nightmare on big tables. Second the diff of
+modifing ASCII-art tables is not meaningfull, e.g. widening a cell generates a
+diff in which also changes are included, which are only ascribable to the
+ASCII-art (see also :ref:`list-table-directives`).
+
+* `Emacs Table Mode`_
+* `Online Tables Generator`_
+
 
 Simple tables
-=============
+-------------
 
 simple tables allow *colspan* but not *rowspan*:
 
@@ -46,7 +79,7 @@ False  True
 
 
 Grid tables
-===========
+-----------
 
 grid tables allow colspan *colspan* and *rowspan*:
 
@@ -78,10 +111,21 @@ Rendered as:
 | body row 4 |            | - blocks. |
 +------------+------------+-----------+
 
-List tables
-===========
+.. _list-table-directives:
 
-list tables has no ability to *colspan* nor *rowspan*:
+List table directives
+=====================
+
+The *list table* formats are double stage list, compared to the ASCII-art they
+migth not be as comfortable for readers of the text-files. Their advantage is,
+that they easy to create/modify and that the diff of modifications is much more
+meaningfull, because it is limited to the modified content.
+
+
+list-table
+----------
+
+The ``list-tables`` has no ability to *colspan* nor *rowspan*:
 
 .. code-block:: rst
 
@@ -130,7 +174,7 @@ Rendered as:
 
 
 flat-table
-==========
+----------
 
 The ``flat-table`` is like a ``list-table``, a double-stage list, but it has
 some additional features like *row-span* and *column-span*. The example below
@@ -245,6 +289,9 @@ Rendered as:
 CSV table
 =========
 
+CSV table might be the choice if you want to include CSV-data from a outstanding
+(build) process into your documentation.
+
 .. code-block:: rst
 
    .. csv-table:: table title
@@ -269,8 +316,9 @@ Rendered as:
 Nested Tables
 =============
 
-Nested tables are ugly, don't use them. This is only for testing, how it would
-be rendered.
+Nested tables are ugly, don't use them! This part here is only to show what you
+should never do. They are ugly because they cause huge problems in many output
+formats and there is always no need for nested tables.
 
 .. code-block:: rst
 
@@ -415,21 +463,5 @@ content*. HTML-Tables are only rendered within a HTML output.
      </tbody>
    </table>
    </div>
-
-Miscellaneous & thougth
-=======================
-
-* `Emacs Table Mode`_
-* `Online Tables Generator`_
-
-Internal the docutils uses a representation according to the `OASIS XML Exchange
-Table Model`_ (same as DocBook).  It would be nice to have a `directive
-<http://www.sphinx-doc.org/en/stable/extdev/tutorial.html#the-directive-classes>`_
-``xml-table`` (like ``csv-table``) wich reads *OASIS XML Exchange Table*
-data. This directive might be a big step forward to migrate the massive table
-based DocBook documentation from Kernel-docs.  `rusty
-<https://pypi.python.org/pypi/rusty/>`_ brings some directives (I haven't tested
-yet).
-
 
 .. include:: refs.txt
