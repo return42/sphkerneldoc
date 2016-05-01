@@ -22,6 +22,10 @@ all: $(ALLPDF)
 
 all-pdf: $(ALLPDF)
 
+dist-pdf:
+	mkdir -p $(DIST_BOOKS)
+	cp $(ALLPDF) $(DIST_BOOKS)
+
 all-dvi: $(ALLDVI)
 
 all-ps: all-dvi

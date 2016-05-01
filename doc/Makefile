@@ -3,7 +3,7 @@
 # This makefile is used to convert the kernel documentation to reStructuredText
 # and build all books (aka DocBooks) with sphinx.
 
-REPO_ROOT      := ..
+REPO_ROOT      := $(abspath ..)
 SCRIPT_FOLDER  := $(REPO_ROOT)/scripts
 TEMPLATES      := $(REPO_ROOT)/templates
 CACHE          := $(REPO_ROOT)/cache
@@ -11,6 +11,9 @@ DOC_FOLDER     := .
 BOOKS_FOLDER   := books
 AUTODOC_FOLDER := linux_src_doc
 LINUX_MISC_DOC := linux_misc_doc
+DIST           := $(REPO_ROOT)/dist
+DIST_BOOKS     := $(DIST)/books-pdf
+export DIST_BOOKS
 
 # External programs used
 
@@ -20,11 +23,9 @@ DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
 AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
 
-LATEX          := latex
 PDFLATEX       := xelatex
 MAKEINDEX      := makeindex
 
-GH_PAGES := $(CACHE)/gh-pages
 BOOKS   := $(wildcard $(BOOKS_FOLDER)/*)
 
 # sphinx-doc setup
@@ -37,13 +38,20 @@ ALLSPHINXOPTS   = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 # the i18n builder cannot share the environment and doctrees with the others
 I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
-# TODO: include linux/Documentation/DocBook/Makefile and run "make xmldocs" as
-# prerequisite
-
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
 endif
+
+# TODO: as long as the ".tmpl"-workflow is not implemented into the reST
+# workflow, we have to biuild the XML files for DocBook
+
+LINUX_SRC_TREE="/share/linux"
+
+$(LINUX_SRC_TREE)/Documentation/DocBook/media_api.xml:
+	$(MAKE) -C $(LINUX_SRC_TREE) xmldocs
+
+xmldocs: $(LINUX_SRC_TREE)/Documentation/DocBook/media_api.xml
 
 # ------------------------------------------------------------------------------
 # requirements
@@ -64,25 +72,24 @@ texlive:
 endif
 
 msg-SphinxDoc:
-	@echo "\
-Make sure you have a updated Sphinx installed, grab it from \
-http://sphinx-doc.org or install it from the python package \
-manager	(pip). \n\n\
-On debian based OS these requirements are installed by::\n\n\
-  sudo apt-get install pip \n\n\
-  pip install Sphinx\n" | $(FMT)
+	@echo "\nsphinx-doc:\n\n\
+ Make sure you have a updated Sphinx installed, grab it from\
+ http://sphinx-doc.org or install it from the python package\
+ manager (pip). \n\n\
+ On debian based OS these requirements are installed by::\n\n\
+   sudo apt-get install pip \n\n\
+   pip install Sphinx\n" | $(FMT)
 
 msg-TeXLive:
-	@echo "\
-Make sure you have a updated TexLive installed, grab it from \
-https://www.tug.org/texlive or install it from your package manager. \n\n\
-Sphinx-doc produce LaTeX files which uses additional TeX-packages and \
-fonts. To process these LaTeX files, a TexLive installation with the \
-additional packages and fonts is required. On debian based OS these \
-requirements are installed by::\n\n\
-  sudo apt-get install \\ \n\
-        texlive-latex-recommended texlive-fonts-recommended \
-texlive-latex-extra texlive-xetex\n" | $(FMT)
+	@echo "\nXeLaTeX:\n\n\
+ Make sure you have a updated TexLive with XeTex engine installed, grab it\
+ it from https://www.tug.org/texlive or install it from your package manager.\n\n\
+ Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\
+ and fonts. To process these LaTeX files, a TexLive installation with the\
+ additional packages is required. On debian based OS these requirements\
+ are installed by::\n\n\
+   sudo apt-get install \\n\
+         texlive-xetex texlive-latex-recommended\n" | $(FMT)
 
 
 # ------------------------------------------------------------------------------
@@ -104,16 +111,16 @@ DOCBOOKS := z8530book.xml device-drivers.xml \
 # usage
 # ------------------------------------------------------------------------------
 
-.PHONY: help
+.PHONY: help help-requirements
 help:
 	@echo "Please use \`make <target>' where <target> is one of ..."
 	@echo
 	@echo "  all-HTML : builds all HTML targets:"
 	@echo
-	@echo "    mainpage  : build HTML main-page"
-	@echo "    htmlbooks : build HTML books from the reST files (see dbxml2rst)"
-	@echo "    htmlsrc   : build HTML of source-code reST files (see src2rst)"
-	@echo "    miscdoc   : build HTML from misc reST files (see txt2rst)"
+	@echo "    mainpage   : build HTML main-page"
+	@echo "    books.html : build HTML books from the reST files (see dbxml2rst)"
+	@echo "    src.html   : build HTML of source-code reST files (see src2rst)"
+	@echo "    txt.html   : build HTML from misc reST files (see txt2rst)"
 	@echo
 	@echo "  make {book} : builds only the HTML of {book}, valid"
 	@echo "                values for {book} are: \n\n    $(BOOKS)" | $(FMT)
@@ -133,6 +140,9 @@ help:
 	@echo "                 values for {fname} are: \n\n   $(DB2RST)" | $(FMT)
 	@echo
 
+help-requirements: msg-SphinxDoc msg-TeXLive
+
+
 # ------------------------------------------------------------------------------
 # main targets
 # ------------------------------------------------------------------------------
@@ -143,26 +153,26 @@ all-reST: dbxml2rst media2rst src2rst txt2rst
 
 # update github-pages
 .PHONY: all-HTML
-all-HTML: sphinx-doc mainpage htmlbooks htmlsrc miscdoc
+all-HTML: sphinx-doc mainpage books.html src.html txt.html
 
 .PHONY: clean-HTML
-clean-HTML: clean-mainpage clean-htmlbooks clean-htmlsrc clean-miscdoc
+clean-HTML: clean-mainpage clean-books.html clean-src.html clean-txt.html
 
-$(GH_PAGES):
-	mkdir $(GH_PAGES)
+$(DIST):
+	mkdir -p $(DIST)
 
 # ------------------------------------------------------------------------------
 # mainpage
 # ------------------------------------------------------------------------------
 
 .PHONY: mainpage
-mainpage: sphinx-doc | $(GH_PAGES)
-	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)
+mainpage: sphinx-doc | $(DIST)
+	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)
 
 .PHONY: clean-mainpage
 clean-mainpage:
-	rm -rf $(addprefix $(GH_PAGES)/, articles _sources _static) $(CACHE)/doctrees/mainpage
-	rm -f $(addprefix $(GH_PAGES)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
+	rm -rf $(addprefix $(DIST)/, articles _sources _static) $(CACHE)/doctrees/mainpage
+	rm -f $(addprefix $(DIST)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
 
 # ------------------------------------------------------------------------------
 # BOOKs
@@ -175,33 +185,33 @@ DB2RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
 dbxml2rst: media2rst $(DB2RST)
 
 .PHONY:	$(DB2RST)
-$(DB2RST):
+$(DB2RST): xmldocs
 	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.xml, ${@})
 
 # the linux_tv book has it's own treatment
 .PHONY: media2rst
-media2rst:
+media2rst: xmldocs
 	$(DBTOOLS_SCRIPT) media2rst
 
 # reST-book --> HTML (sphinx-doc projects)
 # ----------------------------------------
 
-.PHONY: htmlbooks
-htmlbooks: sphinx-doc $(BOOKS)
+.PHONY: books.html
+books.html: sphinx-doc $(BOOKS)
 
 .PHONY: $(BOOKS)
-$(BOOKS): sphinx-doc | $(GH_PAGES)
+$(BOOKS): sphinx-doc | $(DIST)
 	@echo "building $@ ..."
-	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(GH_PAGES)/$@
+	SPHPROJ_CONF=$@.conf $(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)/$@
 
-book-dirs := $(addprefix $(GH_PAGES)/, $(BOOKS))
+book-dirs := $(addprefix $(DIST)/, $(BOOKS))
 book-doctrees := $(addprefix $(CACHE)/doctrees/, $(BOOKS))
 
-.PHONY: clean-htmlbooks
-clean-htmlbooks:
+.PHONY: clean-books.html
+clean-books.html:
 	rm -rf $(book-dirs) $(book-doctrees)
 
-# reST-book --> LaTeX --> PDF
+# reST-book --> (Xe)LaTeX --> PDF
 # -----------------------------------
 
 RST2TEX := $(patsubst %, %.tex, $(BOOKS))
@@ -213,16 +223,18 @@ pdfbooks: texlive sphinx-doc $(TEX2PDF)
 .PHONY: $(RST2TEX)
 $(RST2TEX): texlive sphinx-doc
 	@echo "building $@ ..."
-	$(SPHINXBUILD) -c . -b latex \
+	rm -rf $(CACHE)/$(patsubst books/%,%,$@)
+	SPHPROJ_CONF=$(patsubst %.tex,%.conf,$@) $(SPHINXBUILD) -c . -b xelatex \
 		$(PAPEROPT_$(PAPER)) \
 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
 		$(patsubst %.tex,%,$@) \
 		$(CACHE)/$(patsubst books/%,%,$@)
 
+
 $(TEX2PDF): %.pdf : %.tex texlive
 	@echo "building $@ ..."
 	$(MAKE) -C $(CACHE)/$(patsubst books/%.pdf,%.tex,$@) all-pdf
-
+	$(MAKE) -C $(CACHE)/$(patsubst books/%.pdf,%.tex,$@) dist-pdf
 
 # ------------------------------------------------------------------------------
 # source-code
@@ -239,13 +251,13 @@ src2rst:
 # reST --> HTML
 # -------------
 
-.PHONY: htmlsrc
-htmlsrc: sphinx-doc
-	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(GH_PAGES)/$(AUTODOC_FOLDER)
+.PHONY: src.html
+src.html: sphinx-doc
+	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(DIST)/$(AUTODOC_FOLDER)
 
 .PHONY:
-clean-htmlsrc:
-	rm -rf $(GH_PAGES)/$(AUTODOC_FOLDER) $(CACHE)/doctrees/$(AUTODOC_FOLDER)
+clean-src.html:
+	rm -rf $(DIST)/$(AUTODOC_FOLDER) $(CACHE)/doctrees/$(AUTODOC_FOLDER)
 
 # ------------------------------------------------------------------------------
 # misc text docs
@@ -262,11 +274,11 @@ txt2rst:
 # reST --> HTML
 # -------------
 
-.PHONY: miscdoc
-miscdoc: sphinx-doc
-	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(GH_PAGES)/$(LINUX_MISC_DOC)
+.PHONY: txt.html
+txt.html: sphinx-doc
+	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(DIST)/$(LINUX_MISC_DOC)
 
 .PHONY:
-clean-miscdoc:
-	rm -rf $(GH_PAGES)/$(LINUX_MISC_DOC)
+clean-txt.html:
+	rm -rf $(DIST)/$(LINUX_MISC_DOC)
 
