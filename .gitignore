@@ -6,5 +6,6 @@
 *.elc
 _build
 /cache
+/dist
 tool_config.sh
 *.autodoc.log
