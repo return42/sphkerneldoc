@@ -57,7 +57,7 @@ if [[ ! -e "${REPO_ROOT}/tool_config.sh" ]]; then
     echo "ERROR: missing config file ${REPO_ROOT}/tool_config.sh"
     echo "       copy ${REPO_ROOT}/tool_config.sh.template to"
     echo "       tool_config.sh and set your environment within."
-    exit
+    exit 42
 else
     source "${REPO_ROOT}/tool_config.sh"
 fi
@@ -65,12 +65,12 @@ fi
 if [[ ! -r "${LINUX_SRC_TREE}" ]]; then
     echo "ERROR: can't find linux source at: ${LINUX_SRC_TREE}"
     echo "ERROR: check your ${REPO_ROOT}/tool_config.sh"
-    exit
+    exit 42
 fi
 
 if [[ ! -e "${SCRIPT_FOLDER}/common.sh" ]]; then
     echo "ERROR: can't source file common.sh"
-    exit
+    exit 42
 else
    source ${SCRIPT_FOLDER}/common.sh
    checkEnviroment

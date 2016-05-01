@@ -13,14 +13,14 @@
 % ========================================
 
 % Pass remaining document options to the parent class.
-\DeclareOption*{\PassOptionsToClass{\CurrentOption}{report}}
+\DeclareOption*{\PassOptionsToClass{\CurrentOption}{article}}
 \ProcessOptions\relax
 
 
 % Using classes and packages
 % ========================================
 
-\LoadClass{report}
+\LoadClass{article}
 \RequirePackage{fancyhdr}
 \RequirePackage{eso-pic}
 

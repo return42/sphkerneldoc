@@ -35,13 +35,12 @@ import pdb, inspect, linecache
 from code   import InteractiveConsole
 from codeop import CommandCompiler
 
-import pandocfilters
-
 from os import path
 from glob import iglob
 
 PY3 = sys.version_info[0] == 3
 PY2 = sys.version_info[0] == 2
+PIP = "pip3"
 
 if PY3:
     # pylint: disable=C0103
@@ -52,6 +51,7 @@ if PY3:
 
 if PY2:
     from HTMLParser import HTMLParser  # pylint: disable=F0401
+    PIP = "pip2"
 
 xml_unescape = HTMLParser().unescape   # pylint: disable=C0103
 
@@ -71,6 +71,12 @@ def toJSONFilters(input_stream, output_stream, *actions):
     This version of pandoc filter is able to read from any input stream (not only
     from stdin) and writes to any output stream (not only stdout).
     """
+    try:
+        import pandocfilters
+    except ImportError:
+        ERROR("ERROR: can't import pandocfilters / to install use: "
+              "%s install pandocfilters" % PIP)
+        sys.exit(42)
     doc = json.loads(input_stream.read())
     fmt = "json"
     altered = functools.reduce(
@@ -83,6 +89,10 @@ def xml2json(src, dst, **kwargs):
 # ==============================================================================
 
     u"""convert xml file to json file with pandoc"""
+
+    if not PANDOC_EXE:
+        ERROR("ERROR: pandoc is not installed")
+        sys.exit(42)
 
     proc = PANDOC_EXE.Popen(
         "--smart"
@@ -223,6 +233,8 @@ class CLI(object):
         cmd_args = self.parser.parse_args()
         cmd_args.CLI = self
 
+        if OS_ENV.get("DEBUG", None):
+            cmd_args.debug = True
         if cmd_args.debug:
             sys.stderr.write(u"DEBUG: argparse --> %s\n" % cmd_args)
         try:
