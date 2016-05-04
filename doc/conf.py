@@ -11,7 +11,7 @@
 import sys
 import os
 from os.path import join as pathjoin
-from os.path import abspath, dirname, splitext, basename
+from os.path import abspath, dirname, splitext, basename, exists
 
 BASE_FOLDER = abspath(pathjoin(dirname(__file__)))
 
@@ -23,7 +23,7 @@ def loadPrjConfig():
     from sphinx.util.osutil import cd
 
     config_file = os.environ.get("SPHPROJ_CONF", None)
-    if config_file is not None:
+    if config_file is not None and exists(config_file):
         config_file = abspath(config_file)
         main_name   = splitext(basename(config_file))[0]
         config = globals().copy()
