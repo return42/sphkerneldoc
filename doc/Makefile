@@ -26,7 +26,8 @@ SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
 PDFLATEX       := xelatex
 MAKEINDEX      := makeindex
 
-BOOKS   := $(wildcard $(BOOKS_FOLDER)/*)
+BOOKS := $(filter %/, $(wildcard $(BOOKS_FOLDER)/*/))
+BOOKS := $(BOOKS:%/=%)
 
 # sphinx-doc setup
 SPHINXOPTS  :=

@@ -85,8 +85,8 @@ intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "xelatex"
-    , 'sphinx.ext.autodoc'
+    # "xelatex"
+    'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
     #, 'sphinx.ext.autosummary'
     #, 'sphinx.ext.doctest'
@@ -153,7 +153,7 @@ html_theme = 'sphinx_rtd_theme'
 
 # The name of an image file (relative to this directory) to place at the top
 # of the sidebar.
-html_logo = pathjoin(BASE_FOLDER, "_tex", "logo.png")
+#html_logo = pathjoin(BASE_FOLDER, "_tex", "logo.png")
 
 # The name of an image file (within the static path) to use as favicon of the
 # docs.  This file should be a Windows icon file (.ico) being 16x16 or 32x32
