@@ -291,8 +291,14 @@ def hook_media_table2variablelist(node, rstPrefix, parseData):
     if node.getparent() is not None:
         return node
 
+    for ID in [ "control-id" ]:
+        elem = node.find(".//*[@id='%s']" % ID)
+        if (elem is not None
+            and elem.tag == "table" ):
+            table2variablelist_3cols(elem, rstPrefix, parseData)
+
     for ID in [
-            "mpeg-control-id" , "mfc51-control-id","cx2341x-control-id",
+            "control-id", "mpeg-control-id" , "mfc51-control-id", "cx2341x-control-id",
             "vpx-control-id", "camera-control-id", "fm-tx-control-id", "flash-control-id",
             "jpeg-control-id", "image-source-control-id", "image-process-control-id", "dv-control-id",
             "fm-rx-control-id", "detect-control-id", "rf-tuner-control-id" ]:
@@ -349,12 +355,70 @@ def table2variablelist(node, rstPrefix, parseData):
             varentry = None
             continue
         else:
-            #SDK.CONSOLE()
+            SDK.CONSOLE()
             raise Exception("should never happen / markup seems inconsistent")
 
     parent = node.getparent()
     parent.replace(node, section)
     section.set("id", ID)
+
+
+def table2variablelist_3cols(node, rstPrefix, parseData):
+
+    ID = node.get("id")
+    section = node.makeelement("section")
+    section.append(XMLTag.copyNode(node.find("title")))
+
+    tgroup = node.find("tgroup")
+    tbody = tgroup.find("tbody")
+
+    tableRows = tbody.findall("row")
+
+    varentry = None
+    varlist  = node.makeelement("variablelist")
+    section.append(varlist)
+
+    while tableRows:
+        row = tableRows.pop(0)
+        entry1, entry2, entry3 = (row.findall("entry") + [None, None, None])[:3]
+
+        if entry3 is None:
+            entrytbl = row.find("entrytbl")
+            table    = XMLTag.copyNode(entrytbl, "table")
+            table.attrib.clear()
+            section.append(table)
+            varlist  = node.makeelement("variablelist")
+            section.append(varlist)
+
+        elif entry1 is not None and entry2 is not None:
+            varentry = node.makeelement("varlistentry")
+            varlist.append(varentry)
+            term = node.makeelement("term")
+            varentry.append(term)
+
+            constant = node.makeelement("constant")
+            term.append(constant)
+            constant.text = XMLTag.getStripedText(entry1)
+
+            if XMLTag.getStripedText(entry2):
+                constant.tail = " "
+                _type = node.makeelement("constant")
+                term.append(_type)
+                _type.text = "(" + XMLTag.getStripedText(entry2) +")"
+
+            listitem = node.makeelement("listitem")
+            varentry.append(listitem)
+            _descr = XMLTag.copyNode(entry3, "para")
+            listitem.append(_descr)
+
+        else:
+            SDK.CONSOLE()
+            raise Exception("should never happen / markup seems inconsistent")
+
+    parent = node.getparent()
+    parent.replace(node, section)
+    section.set("id", ID)
+
 
 # ==============================================================================
 def hook_media_table2variablelist_2(node, rstPrefix, parseData):
