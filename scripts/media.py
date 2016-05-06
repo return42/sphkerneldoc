@@ -325,16 +325,26 @@ def table2variablelist(node, rstPrefix, parseData):
 
     while tableRows:
         row = tableRows.pop(0)
+        row_id = row.get("id")
         entry1, entry2 = (row.findall("entry") + [None, None])[:2]
+
         if entry1 is None:
             entrytbl = row.find("entrytbl")
             table    = XMLTag.copyNode(entrytbl, "table")
             table.attrib.clear()
+            if row_id is not None:
+                table.set("id", row_id)
             section.append(table)
             varlist  = node.makeelement("variablelist")
             section.append(varlist)
 
         elif entry1.get("spanname") == "id":
+            if row_id is not None:
+                new      = XMLTag.getInjInlineTag()
+                new.text = "\n\n.. _`%s`:\n\n" % row_id
+                section.append(new)
+                varlist  = node.makeelement("variablelist")
+                section.append(varlist)
             varentry = node.makeelement("varlistentry")
             varlist.append(varentry)
             term = node.makeelement("term")
@@ -355,7 +365,7 @@ def table2variablelist(node, rstPrefix, parseData):
             varentry = None
             continue
         else:
-            SDK.CONSOLE()
+            #SDK.CONSOLE()
             raise Exception("should never happen / markup seems inconsistent")
 
     parent = node.getparent()
@@ -380,17 +390,27 @@ def table2variablelist_3cols(node, rstPrefix, parseData):
 
     while tableRows:
         row = tableRows.pop(0)
+        row_id = row.get("id")
         entry1, entry2, entry3 = (row.findall("entry") + [None, None, None])[:3]
 
         if entry3 is None:
             entrytbl = row.find("entrytbl")
             table    = XMLTag.copyNode(entrytbl, "table")
+            if row_id is not None:
+                table.set("id", row_id)
             table.attrib.clear()
             section.append(table)
             varlist  = node.makeelement("variablelist")
             section.append(varlist)
 
         elif entry1 is not None and entry2 is not None:
+            if row_id is not None:
+                new      = XMLTag.getInjInlineTag()
+                new.text = "\n\n.. _`%s`:\n\n" % row_id
+                section.append(new)
+                varlist  = node.makeelement("variablelist")
+                section.append(varlist)
+
             varentry = node.makeelement("varlistentry")
             varlist.append(varentry)
             term = node.makeelement("term")
@@ -412,7 +432,7 @@ def table2variablelist_3cols(node, rstPrefix, parseData):
             listitem.append(_descr)
 
         else:
-            SDK.CONSOLE()
+            #SDK.CONSOLE()
             raise Exception("should never happen / markup seems inconsistent")
 
     parent = node.getparent()
@@ -490,7 +510,7 @@ def table2variablelist_2(node, rstPrefix, parseData):
             varlist  = node.makeelement("variablelist")
             section.append(varlist)
         else:
-            SDK.CONSOLE()
+            #SDK.CONSOLE()
             raise Exception("should never happen / markup seems inconsistent")
 
     parent = node.getparent()

@@ -143,6 +143,8 @@ Control IDs
 ``V4L2_CID_VFLIP`` ``(boolean)``
     Mirror the picture vertically.
 
+.. _`v4l2-power-line-frequency`:
+
 ``V4L2_CID_POWER_LINE_FREQUENCY`` ``(enum)``
     Enables a power line frequency filter to avoid flicker. Possible
     values for ``enum v4l2_power_line_frequency`` are:
@@ -181,6 +183,8 @@ Control IDs
 ``V4L2_CID_COLOR_KILLER`` ``(boolean)``
     Enable the color killer (i. e. force a black & white image in case
     of a weak video signal).
+
+.. _`v4l2-colorfx`:
 
 ``V4L2_CID_COLORFX`` ``(enum)``
     Selects a color effect. The following values are defined:
@@ -332,6 +336,8 @@ Control IDs
     used as a hint to determine the number of OUTPUT buffers to pass to
     REQBUFS. The value is the minimum number of OUTPUT buffers that is
     necessary for hardware to work.
+
+.. _`v4l2-alpha-component`:
 
 ``V4L2_CID_ALPHA_COMPONENT`` ``(integer)``
     Sets the alpha color component. When a capture device (or capture
