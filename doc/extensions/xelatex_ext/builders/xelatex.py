@@ -102,7 +102,6 @@ class XeLaTeXBuilder(Builder):
 
         self.info("processing " + docCfg.targetname + "... ", nonl=1)
         tree = self.assemble_doctree(docCfg)
-        tree.docCfg = docCfg
         self.post_process_images(tree)
 
         self.info("writing... ", nonl=1)

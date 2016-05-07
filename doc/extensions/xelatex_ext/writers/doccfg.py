@@ -66,7 +66,7 @@ class DocData(dict):
             try:
                 # if it is a setting from the *document-set*
                 return getattr(self.__master_cfg, attr)
-            except KeyError:
+            except AttributeError:
                 # if it is a setting in the global conf.py
                 return getattr(self.__master_cfg.app, attr)
 
@@ -345,7 +345,6 @@ class XeLatexDocSet(DocSet):
             # TODO: in which use-cases is a title required and not taken
             # from the startdoc?
             , title = None
-
             # TODO: I'am not happy with the latex_elements, it is very specific
             # and does not fit well to the xelatex workflow, so I ignore it. May
             # be aktivated later, but preamble should be enough.
