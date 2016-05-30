@@ -2201,7 +2201,7 @@ sub output_struct_rst(%) {
 
 	($args{'parameterdescs'}{$parameter_name} ne $undescribed) || next;
 
-        print ":``$parameter``:" . "\n";
+        print "$parameter" . "\n";
         $lineprefix="    ";
         output_highlight_rst($args{'parameterdescs'}{$parameter_name});
         $lineprefix="";
