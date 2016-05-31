@@ -471,39 +471,6 @@ def main():
 
     global VERBOSE, DEBUG # pylint: disable=W0603
 
-    def getDefaultOptions(fname, cliArgs):
-        opts = ParseOptions(
-            fname           = fname
-            , id_prefix     = cliArgs.id_prefix
-            , skip_preamble = cliArgs.skip_preamble
-            , skip_epilog   = cliArgs.skip_epilog
-            , out           = STREAM.appl_out
-            , translator    = ReSTTranslator()
-            ,)
-        opts.set_defaults()
-
-    def cmd_doc(cliArgs):
-        u"""print documentation of 'DOC' sections"""
-        for fname in CMD.files:
-            opts = getDefaultOptions(fname, cliArgs)
-
-
-    def cmd_exported(cliArgs):
-        u"""print documentation of all symbols exported using EXPORT_SYMBOL macros"""
-        for fname in CMD.files:
-            opts = getDefaultOptions(fname, cliArgs)
-
-
-    def cmd_internal(cliArgs):
-        u"""print documentation of all symbols that are documented, but not exported"""
-        for fname in CMD.files:
-            opts = getDefaultOptions(fname, cliArgs)
-
-    def cmd_list(cliArgs):
-        u"""list symbols / names"""
-        for fname in CMD.files:
-            opts = getDefaultOptions(fname, cliArgs)
-
     CLI = argparse.ArgumentParser(
         description = (
             "Parse *kernel-doc* comments from source code"
