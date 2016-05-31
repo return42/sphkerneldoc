@@ -845,7 +845,7 @@ class ReSTTranslator(TranslatorAPI):
     def write_anchor(self, refname):
         ID = refname
         if self.options.id_prefix:
-            ID += "-" + self.options.id_prefix
+            ID = self.options.id_prefix + "." + ID
         ID = normalize_id(ID)
         self.write("\n.. _`%s`:\n" % ID)
 
