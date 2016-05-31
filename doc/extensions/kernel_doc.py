@@ -1104,7 +1104,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write("\n.. code-block:: c\n\n")
         self.write(self.INDENT, "enum ", enum, " {")
 
-        e_list = parameterlist.copy()
+        e_list = parameterlist[:]
         while e_list:
             e = e_list.pop(0)
             self.write("\n", self.INDENT *2, e)
