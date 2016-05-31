@@ -3,6 +3,9 @@
 # This makefile is used to convert the kernel documentation to reStructuredText
 # and build all books (aka DocBooks) with sphinx.
 
+srctree=/share/linux
+export srctree
+
 REPO_ROOT      := $(abspath ..)
 SCRIPT_FOLDER  := $(REPO_ROOT)/scripts
 TEMPLATES      := $(REPO_ROOT)/templates
@@ -47,12 +50,10 @@ endif
 # TODO: as long as the ".tmpl"-workflow is not implemented into the reST
 # workflow, we have to biuild the XML files for DocBook
 
-LINUX_SRC_TREE="/share/linux"
+$(srctree)/Documentation/DocBook/media_api.xml:
+	$(MAKE) -C $(srctree) xmldocs
 
-$(LINUX_SRC_TREE)/Documentation/DocBook/media_api.xml:
-	$(MAKE) -C $(LINUX_SRC_TREE) xmldocs
-
-xmldocs: $(LINUX_SRC_TREE)/Documentation/DocBook/media_api.xml
+xmldocs: $(srctree)/Documentation/DocBook/media_api.xml
 
 # ------------------------------------------------------------------------------
 # requirements

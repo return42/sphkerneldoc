@@ -416,8 +416,7 @@ OS_ENV = OS_ENV()
 
 KBUILD_VERBOSE = int(OS_ENV.get("KBUILD_VERBOSE", "0"))
 KERNELVERSION  = OS_ENV.get("KERNELVERSION", "unknown kernel version")
-SRCTREE        = OS_ENV.get("SRCTREE", "")
-
+SRCTREE        = OS_ENV.get("srctree", "")
 
 # ==============================================================================
 # Logging stuff
