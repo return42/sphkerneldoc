@@ -47,6 +47,7 @@ import common  # to get the SDK debugger/console
 
 sys.path.insert(0, pathjoin(BASE_FOLDER, 'extensions'))
 import rstFlatTable
+import rstKernelDoc
 
 # ------------------------------------------------------------------------------
 # General configuration
