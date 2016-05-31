@@ -2664,7 +2664,7 @@ def CONSOLE(arround=5, frame=None):
     fName  = frame.f_code.co_filename
     lineNo = frame.f_lineno
 
-    ns = dict(**globals())
+    ns = dict(**frame.f_globals)
     ns.update(**frame.f_locals)
 
     histfile = os.path.join(os.path.expanduser("~"), ".kernel-doc-history")
