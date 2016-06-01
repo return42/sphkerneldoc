@@ -103,7 +103,9 @@ u"""
 # imports
 # ==============================================================================
 
-import os, io
+import os
+from io import StringIO
+from os import path
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 from docutils.utils import SystemMessagePropagation
@@ -195,23 +197,32 @@ class KernelDoc(Directive):
         document = self.state.document
         env      = document.settings.env
 
-        #if not document.settings.file_insertion_enabled:
-        #    return [document.reporter.warning(
-        #        'File insertion disabled', line=self.lineno)]
+        if not document.settings.file_insertion_enabled:
+            return [document.reporter.warning(
+                'File insertion disabled', line=self.lineno)]
 
-        fname  = os.path.join(kd.SRCTREE, self.arguments[0])
-        rstout = io.StringIO()
+        fname  = path.join(kd.SRCTREE, self.arguments[0])
+        if self.arguments[0].startswith("./"):
+            # only for testing
+            fname = path.join(
+                path.dirname(path.abspath(self.state.document.current_source))
+                , self.arguments[0])
+
+        env.note_dependency(fname)
+        rstout = StringIO()
 
         opts = kd.ParseOptions(
             fname           = fname
             , id_prefix     = self.options.get("module", "").strip()
-            , skip_preamble = True
-            , skip_epilog   = True
             , out           = rstout
             , encoding      = self.options.get("encoding", env.config.source_encoding)
             , translator    = kd.ReSTTranslator()
             ,)
         opts.set_defaults()
+
+        if self.options:
+            opts.skip_preamble = True
+            opts.skip_epilog   = True
 
         if "doc" in self.options:
             opts.use_names.append(self.options.get("doc"))
@@ -245,7 +256,7 @@ class KernelDoc(Directive):
         env.app.info("parse kernel-doc comments from: %s" % fname)
         parser.parse()
 
-        kd.CONSOLE()
+        #kd.CONSOLE()
 
         self.state_machine.insert_input(rstout.getvalue().split("\n"), fname)
         return []

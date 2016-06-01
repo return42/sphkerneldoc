@@ -2204,15 +2204,15 @@ class Parser(SimpleLog):
                 , sections         = self.ctx.sections
                 , purpose          = self.ctx.decl_purpose )
         else:
-            self.warn("skip translation of %(t)s: '%(n)s'"
-                      , t=self.ctx.decl_type, n=self.ctx.decl_name)
+            self.debug("skip translation of %(t)s: '%(n)s'"
+                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
 
     def dump_doc_section(self, name, cont):
         if self.mark_as_translated(name):
             self.dump_section(name, cont)
             self.translator.output_doc_section(sections=self.ctx.sections)
         else:
-            self.warn("skip translation of DOC: '%(n)s'", n=name)
+            self.debug("skip translation of DOC: '%(n)s'", n=name)
 
     def dump_union(self, proto):
         if not self.prepare_struct_union(proto):
@@ -2229,8 +2229,8 @@ class Parser(SimpleLog):
                 , sections         = self.ctx.sections
                 , purpose          = self.ctx.decl_purpose )
         else:
-            self.warn("skip translation of %(t)s: '%(n)s'"
-                      , t=self.ctx.decl_type, n=self.ctx.decl_name)
+            self.debug("skip translation of %(t)s: '%(n)s'"
+                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
 
     def dump_struct(self, proto):
         if not self.prepare_struct_union(proto):
@@ -2247,8 +2247,8 @@ class Parser(SimpleLog):
                 , sections         = self.ctx.sections
                 , purpose          = self.ctx.decl_purpose )
         else:
-            self.warn("skip translation of %(t)s: '%(n)s'"
-                      , t=self.ctx.decl_type, n=self.ctx.decl_name)
+            self.debug("skip translation of %(t)s: '%(n)s'"
+                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
 
     def prepare_struct_union(self, proto):
         self.debug("prepare_struct_union(): '%(proto)s'", proto=proto)
@@ -2345,8 +2345,8 @@ class Parser(SimpleLog):
                     , sections         = self.ctx.sections
                     , purpose          = self.ctx.decl_purpose )
             else:
-                self.warn("skip translation of %(t)s: '%(n)s'"
-                          , t=self.ctx.decl_type, n=self.ctx.decl_name)
+                self.debug("skip translation of %(t)s: '%(n)s'"
+                           , t=self.ctx.decl_type, n=self.ctx.decl_name)
         else:
             self.error("can't parse enum!")
 
@@ -2375,8 +2375,8 @@ class Parser(SimpleLog):
                     , sections         = self.ctx.sections
                     , purpose          = self.ctx.decl_purpose)
             else:
-                self.warn("skip translation of %(t)s: '%(n)s'"
-                          , t=self.ctx.decl_type, n=self.ctx.decl_name)
+                self.debug("skip translation of %(t)s: '%(n)s'"
+                           , t=self.ctx.decl_type, n=self.ctx.decl_name)
 
         else:
             self.debug("dump_typedef(): '%(proto)s'", proto=proto)
@@ -2398,8 +2398,8 @@ class Parser(SimpleLog):
                         , sections         = self.ctx.sections
                         , purpose          = self.ctx.decl_purpose )
                 else:
-                    self.warn("skip translation of %(t)s: '%(n)s'"
-                          , t=self.ctx.decl_type, n=self.ctx.decl_name)
+                    self.debug("skip translation of %(t)s: '%(n)s'"
+                               , t=self.ctx.decl_type, n=self.ctx.decl_name)
             else:
                 self.error("can't parse typedef!")
 
