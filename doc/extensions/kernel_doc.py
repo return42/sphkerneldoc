@@ -291,7 +291,7 @@ doc_sect         = RE(doc_com.pattern
 # except pattern like "http://", a whitespace is required after the colon
 doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
 
-doc_content      = RE(doc_com.pattern + r"(.*)")
+doc_content      = RE(doc_com_body.pattern + r"(.*)")
 doc_block        = RE(doc_com.pattern + r"DOC:\s*(.*)?")
 doc_split_start  = RE(r"^\s*/\*\*\s*$")
 doc_split_sect   = RE(r"\s*\*\s*(@[\w\s]+):(.*)")
@@ -417,6 +417,7 @@ OS_ENV = OS_ENV()
 KBUILD_VERBOSE = int(OS_ENV.get("KBUILD_VERBOSE", "0"))
 KERNELVERSION  = OS_ENV.get("KERNELVERSION", "unknown kernel version")
 SRCTREE        = OS_ENV.get("srctree", "")
+GIT_REF        = "Linux kernel source tree: `%(rel_fname)s <https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/%(rel_fname)s>`_"
 
 # ==============================================================================
 # Logging stuff
@@ -478,6 +479,11 @@ def main():
         , formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 
     CLI.add_argument(
+        "files"
+        , nargs   = "+"
+        , help    = "source file(s) to parse.")
+
+    CLI.add_argument(
         "--id-prefix"
         , default = ""
         , help    = (
@@ -496,11 +502,6 @@ def main():
         "--debug"
         , action  = "store_true"
         , help    = "debug messages to stderr" )
-
-    CLI.add_argument(
-        "--files"
-        , nargs   = "+"
-        , help    = "source file(s) to parse.")
 
     CLI.add_argument(
         "--skip-preamble"
@@ -859,7 +860,6 @@ class ReSTTranslator(TranslatorAPI):
         if ID:
             self.write_anchor(ID)
         self.write_header(header, sec_level=sec_level)
-
         if (header.lower() == "example"
             and self.options.markup == "kernel-doc"):
             self.write("\n.. code-block:: c\n\n")
@@ -871,6 +871,7 @@ class ReSTTranslator(TranslatorAPI):
         else:
             content = self.highlight(content)
             self.write("\n" + content)
+
         self.write("\n")
 
     def write_definition(self, term, definition, prefix=""):
@@ -879,6 +880,8 @@ class ReSTTranslator(TranslatorAPI):
         if definition != Parser.undescribed:
             definition = self.highlight(definition)
         self.write("\n", prefix, term)
+
+        CONSOLE()
         for l in textwrap.dedent(definition).split("\n"):
             self.write("\n", prefix)
             if l.strip():
@@ -901,7 +904,7 @@ class ReSTTranslator(TranslatorAPI):
         if self.options.mode_line:
             self.write_comment(
                 "-*- coding: %s; mode: rst -*-\n"
-                % getattr(self.options.out, "encoding", "utf-8").lower())
+                % (getattr(self.options.out, "encoding", "utf-8") or "utf-8").lower())
 
         if self.options.preamble:
             self.write(self.options.preamble, "\n")
@@ -1063,7 +1066,8 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(decl_name + "." + Parser.section_members)
         self.write_header(Parser.section_members, sec_level=2)
 
-        for p_name, p_desc in parameterdescs.items():
+        for p_name in parameterlist:
+            p_desc = parameterdescs[p_name]
             self.write_definition(p_name, p_desc)
 
         # sections
@@ -1253,7 +1257,7 @@ class ParseOptions(Container):
 
         if self.top_link == "":
             if self.rel_fname:
-                self.top_link  = "source at github: `%(rel_fname)s <https://github.com/torvalds/linux/%(rel_fname)s>`_"
+                self.top_link  = GIT_REF % self
             else:
                 LOG.warn("missing SRCTREE, can't set *top_link* option")
         if self.top_link:
