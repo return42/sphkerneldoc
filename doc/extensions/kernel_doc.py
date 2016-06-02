@@ -839,9 +839,17 @@ class ReSTTranslator(TranslatorAPI):
 
     def highlight(self, text):
         if self.options.markup == "kernel-doc":
-            text = map_text(text, self.MASK_REST_INLINES)
-        text = super(ReSTTranslator, self).highlight(text)
+            text = map_text(text, self.MASK_REST_INLINES + self.HIGHLIGHT_MAP )
         return text
+
+    def format_block(self, content):
+        u"""format the content (string)"""
+        lines = []
+        if self.options.markup == "kernel-doc":
+            lines = [ l.strip() for l in content.split("\n")]
+        elif self.options.markup == "reST":
+            lines = [ l.rstrip() for l in content.split("\n")]
+        return "\n".join(lines)
 
     def write_anchor(self, refname):
         ID = refname
@@ -869,6 +877,7 @@ class ReSTTranslator(TranslatorAPI):
                 else:
                     self.write(self.INDENT, l, "\n")
         else:
+            content = self.format_block(content)
             content = self.highlight(content)
             self.write("\n" + content)
 
@@ -878,10 +887,9 @@ class ReSTTranslator(TranslatorAPI):
         term  = normalize_ws(term) # term has to be a "one-liner"
         term  = self.highlight(term)
         if definition != Parser.undescribed:
+            definition = self.format_block(definition)
             definition = self.highlight(definition)
         self.write("\n", prefix, term)
-
-        CONSOLE()
         for l in textwrap.dedent(definition).split("\n"):
             self.write("\n", prefix)
             if l.strip():
@@ -893,6 +901,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write("\n", self.INDENT, param)
 
         if descr != Parser.undescribed:
+            descr = self.format_block(descr)
             descr = self.highlight(descr)
         for l in textwrap.dedent(descr).split("\n"):
             self.write("\n")
@@ -1067,6 +1076,8 @@ class ReSTTranslator(TranslatorAPI):
         self.write_header(Parser.section_members, sec_level=2)
 
         for p_name in parameterlist:
+            if MACRO.match(p_name):
+                continue
             p_desc = parameterdescs[p_name]
             self.write_definition(p_name, p_desc)
 
@@ -1302,7 +1313,7 @@ class ParseOptions(Container):
             if regexpr.match(line):
                 line  = None
                 value = regexpr[0]
-                if value not in val_list:
+                if val_list and value not in val_list:
                     parser.error("unknown parse-%(name)s value: '%(value)s'"
                                , name=name, value=value)
                 else:
@@ -1630,6 +1641,8 @@ class Parser(SimpleLog):
                 self.warn("total errors: %(errors)s / total warnings: %(warnings)s"
                           , errors=self.errors, warnings=self.warnings)
                 self.warnings -= 1
+            global INSPECT
+            INSPECT = False
 
     def state_0(self, line):
         u"""state: 0 - normal code"""
@@ -2429,8 +2442,6 @@ class Parser(SimpleLog):
             p_name = None
 
             if MACRO.match(p):
-
-                # FIXME: not yet tested
 
                 # Treat preprocessor directive as a typeless variable just to
                 # fill corresponding data structures "correctly". Catch it later
