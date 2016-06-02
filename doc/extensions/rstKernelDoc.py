@@ -203,10 +203,10 @@ class KernelDoc(Directive):
 
         fname  = path.join(kd.SRCTREE, self.arguments[0])
         if self.arguments[0].startswith("./"):
-            # only for testing
+            # the prefix "./" indactes a relative pathname
             fname = path.join(
-                path.dirname(path.abspath(self.state.document.current_source))
-                , self.arguments[0])
+                path.dirname(path.normpath(self.state.document.current_source))
+                , self.arguments[0][2:])
 
         env.note_dependency(fname)
         rstout = StringIO()

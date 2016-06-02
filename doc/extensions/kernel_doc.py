@@ -278,18 +278,32 @@ doc_decl         = RE(doc_com.pattern + r"(\w+)")
 doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*-")
 doc_decl_purpose = RE(r"-\s*([\w\s]+?)\s*$")
 
+# except pattern like "http://", a whitespace is required after the colon
+doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
+
 #doc_sect = RE(doc_com.pattern + r"([" + doc_special.pattern + r"]?[\w\s]+):(.*)")
 # "section header:" names must be unique per function (or struct,union, typedef,
 # enum). Additional condition: the header name should have 3 characters at least!
-doc_sect         = RE(doc_com.pattern
-                      + r"("
-                      + r"[" + doc_special.pattern + r"]\w[\w\s]*"  # "@foo: lorem" or
-                      + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
-                      + r"|" + r"\w[\w\s]{2,}"                      # e.g. "Return: lorem"
-                      + r")"
-                      + r":(.*?)\s*$")   # this matches also lines which contains strings like "http://..."
-# except pattern like "http://", a whitespace is required after the colon
-doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
+doc_sect  = RE(doc_com.pattern
+               + r"("
+               + r"[" + doc_special.pattern + r"]\w[\w\s]*"  # "@foo: lorem" or
+               + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
+               + r"|" + r"\w[\w\s]+\w"                       # e.g. "Return: lorem"
+               + r")"
+               + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
+
+doc_param = RE(doc_com.pattern
+               + r"("
+               + r"[" + doc_special.pattern + r"]\w[\w\s]*"  # "@foo: lorem" or
+               + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
+               + r")"
+               + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
+
+reST_sect = RE(doc_com.pattern
+               + r"("
+               r"\w[\w\s]+\w"
+               + r")"
+               + r":\s*$")
 
 doc_content      = RE(doc_com_body.pattern + r"(.*)")
 doc_block        = RE(doc_com.pattern + r"DOC:\s*(.*)?")
@@ -812,7 +826,6 @@ class ReSTTranslator(TranslatorAPI):
         has to be masked in reST.
 
     """
-    HEADER_TAGS  = "=-+~.^"
     INDENT       = "    "
     LINE_COMMENT = (".. ", "")
 
@@ -858,13 +871,23 @@ class ReSTTranslator(TranslatorAPI):
         ID = normalize_id(ID)
         self.write("\n.. _`%s`:\n" % ID)
 
-    def write_header(self, header, sec_level=1):
+    HEADER_TAGS = (
+        "#"   # level 0 / part with overline
+        "="   # level 1 / chapter with overline
+        "="   # level 2 / sec
+        "-"   # level 3 / subsec
+        "-"   # level 4 / subsubsec
+        '"' ) # level 5 / para
+
+    def write_header(self, header, sec_level=2):
         header = self.highlight(header)
-        sectag = self.HEADER_TAGS[sec_level-1]
+        sectag = self.HEADER_TAGS[sec_level]
+        if sec_level < 2:
+            self.write("\n", (sectag * len(header)))
         self.write("\n%s" % header)
         self.write("\n", (sectag * len(header)), "\n")
 
-    def write_section(self, header, content, sec_level=1, ID=None):
+    def write_section(self, header, content, sec_level=2, ID=None):
         if ID:
             self.write_anchor(ID)
         self.write_header(header, sec_level=sec_level)
@@ -920,12 +943,7 @@ class ReSTTranslator(TranslatorAPI):
 
         if self.options.top_title:
             self.write_anchor(self.options.top_title)
-            self.write(
-                "\n"   + "=" * len(self.options.top_title)
-                + "\n" + self.options.top_title
-                + "\n" + "=" * len(self.options.top_title)
-                + "\n"
-            )
+            self.write_header(self.options.top_title, 0)
             if self.options.top_link:
                 self.write("\n", self.options.top_link % self.options, "\n")
 
@@ -935,7 +953,7 @@ class ReSTTranslator(TranslatorAPI):
 
     def output_doc_section(self, sections = None):
         for header, content in sections.items():
-            self.write_section(header, content, sec_level = 1, ID = header)
+            self.write_section(header, content, sec_level=2, ID=header)
 
     def output_function_decl(
             self
@@ -948,7 +966,7 @@ class ReSTTranslator(TranslatorAPI):
             , purpose          = None # ctx.decl_purpose
             , ):
         self.write_anchor(function)
-        self.write_header(function, sec_level=1)
+        self.write_header(function, sec_level=2)
 
         # write function definition
 
@@ -1007,7 +1025,7 @@ class ReSTTranslator(TranslatorAPI):
             self.write_section(
                 header
                 , content
-                , sec_level = 2
+                , sec_level = 3
                 , ID = function + "." + header)
 
         INSPECT and CONSOLE() # pylint: disable=W0106
@@ -1023,7 +1041,7 @@ class ReSTTranslator(TranslatorAPI):
             , purpose          = None # ctx.decl_purpose
             , ):
         self.write_anchor(decl_name)
-        self.write_header("%s %s" % (decl_type, decl_name), sec_level=1)
+        self.write_header("%s %s" % (decl_type, decl_name), sec_level=2)
 
         # write struct definition
 
@@ -1037,7 +1055,7 @@ class ReSTTranslator(TranslatorAPI):
         # definition
 
         self.write_anchor(decl_name + "." + Parser.section_def)
-        self.write_header(Parser.section_def, sec_level=2)
+        self.write_header(Parser.section_def, sec_level=3)
         self.write("\n.. code-block:: c\n\n")
         self.write(self.INDENT, decl_type, " ", decl_name, " {\n")
 
@@ -1073,7 +1091,7 @@ class ReSTTranslator(TranslatorAPI):
         # member description
 
         self.write_anchor(decl_name + "." + Parser.section_members)
-        self.write_header(Parser.section_members, sec_level=2)
+        self.write_header(Parser.section_members, sec_level=3)
 
         for p_name in parameterlist:
             if MACRO.match(p_name):
@@ -1087,7 +1105,7 @@ class ReSTTranslator(TranslatorAPI):
             self.write_section(
                 header
                 , content
-                , sec_level = 2
+                , sec_level = 3
                 , ID = decl_name + "." + header)
 
         INSPECT and CONSOLE() # pylint: disable=W0106
@@ -1101,7 +1119,7 @@ class ReSTTranslator(TranslatorAPI):
             , purpose          = None # ctx.decl_purpose
             , ):
         self.write_anchor(enum)
-        self.write_header("enum %s" % enum, sec_level=1)
+        self.write_header("enum %s" % enum, sec_level=2)
 
         # write union definition
 
@@ -1115,7 +1133,7 @@ class ReSTTranslator(TranslatorAPI):
         # definition
 
         self.write_anchor(enum + "." + Parser.section_def)
-        self.write_header(Parser.section_def, sec_level=2)
+        self.write_header(Parser.section_def, sec_level=3)
         self.write("\n.. code-block:: c\n\n")
         self.write(self.INDENT, "enum ", enum, " {")
 
@@ -1130,7 +1148,7 @@ class ReSTTranslator(TranslatorAPI):
         # constants description
 
         self.write_anchor(enum + "." + Parser.section_constants)
-        self.write_header(Parser.section_constants, sec_level=2)
+        self.write_header(Parser.section_constants, sec_level=3)
 
         for p_name, p_desc in parameterdescs.items():
             self.write_definition(p_name, p_desc)
@@ -1141,7 +1159,7 @@ class ReSTTranslator(TranslatorAPI):
             self.write_section(
                 header
                 , content or "???"
-                , sec_level = 2
+                , sec_level = 3
                 , ID = enum + "." + header)
 
         INSPECT and CONSOLE() # pylint: disable=W0106
@@ -1153,7 +1171,7 @@ class ReSTTranslator(TranslatorAPI):
             , purpose          = None # ctx.decl_purpose
             , ):
         self.write_anchor(typedef)
-        self.write_header("typedef %s" % typedef, sec_level=1)
+        self.write_header("typedef %s" % typedef, sec_level=2)
 
         # write typdef definition
 
@@ -1165,7 +1183,7 @@ class ReSTTranslator(TranslatorAPI):
             self.write_section(
                 header
                 , content or "???"
-                , sec_level = 2
+                , sec_level = 3
                 , ID = typedef + "." + header)
 
         INSPECT and CONSOLE() # pylint: disable=W0106
@@ -1175,16 +1193,12 @@ class ReSTTranslator(TranslatorAPI):
 class ParseOptions(Container):
 # ------------------------------------------------------------------------------
 
-    PARSE_OPTIONS = [
+    PARSE_OPTION_RE = r"^/\*+\s*parse-%s:\s*(.*?)\s*\*/+\s*$"
+    PARSE_OPTIONS   = [
         ("highlight", ["on","off"], "setOnOff")
         , ("INSPECT", ["on","off"], "setINSPECT")
         , ("markup",  ["reST", "kernel-doc"], "setVal")
         , ]
-
-    PARSE_OPTION_RE    = r"^/\*+\s*parse-%s:\s*(\w*)\s*\*/+\s*$"
-
-    #PARSE_MARKUP    = RE(r"^/\*+\s*parse-markup:\s*(\w*)\s*\*/+\s*$")
-    #PARSE_HIGHLIGHT = RE(r"^/\*+\s*parse-highlight:\s*(\w*)\s*\*/+\s*$", flags=re.I)
 
     def __init__(self, *args, **kwargs):
 
@@ -1720,15 +1734,33 @@ class Parser(SimpleLog):
     def state_2(self, line):
         u"""state: 2 - scanning field start. """
 
-        if (not doc_sect_except.match(line)
-            and doc_sect.match(line)):
+        new_sect = ""
+        new_cont = ""
+
+        if not doc_sect_except.match(line):
+
+            # probe different sect start pattern ...
+
+            if self.options.markup == "reST":
+                if doc_param.match(line):
+                    # this is a line with a parameter definition
+                    new_sect = self.sect_title(doc_param[0].strip())
+                    new_cont = doc_param[1].strip()
+                elif reST_sect.match(line):
+                    # this is a line with a section definition
+                    new_sect = self.sect_title(reST_sect[0].strip())
+                    new_cont = ""
+            else:  # kernel-doc vintage mode
+                if doc_sect.match(line):
+                    # this is a line with a parameter or section definition
+                    new_sect = self.sect_title(doc_sect[0].strip())
+                    new_cont = doc_sect[1].strip()
+
+        if new_sect:
 
             # a new section starts *here*
 
-            newsection  = self.sect_title(doc_sect[0].strip())
-            newcontents = doc_sect[1].strip()
-
-            self.debug("found new section --> %(sect)s", sect=newsection)
+            self.debug("found new section --> %(sect)s", sect=new_sect)
 
             if self.ctx.contents.strip():
                 if not self.in_doc_sect:
@@ -1737,16 +1769,15 @@ class Parser(SimpleLog):
                 self.ctx.section  = self.section_default
                 self.ctx.contents = ""
 
-            self.debug("newsection: '%(newsection)s' / desc: '%(desc)s'"
-                       , newsection = newsection, desc = newcontents)
+            self.debug("new_sect: '%(sec)s' / desc: '%(desc)s'", sec = new_sect, desc = new_cont)
 
             self.in_doc_sect = True
             self.in_purpose  = False
             self.debug("FLAGs: in_doc_sect=%(s)s / in_purpose=%(p)s", s=self.in_doc_sect, p=self.in_purpose)
 
-            self.ctx.section  = newsection
-            if newcontents:
-                self.ctx.contents = newcontents + "\n"
+            self.ctx.section  = new_sect
+            if new_cont:
+                self.ctx.contents = new_cont + "\n"
             self.info("section: %(sec)s" , sec=self.ctx.section)
 
         elif doc_end.match(line):
@@ -2427,7 +2458,6 @@ class Parser(SimpleLog):
 
         while m.search(parameter):
             parameter = m.sub(r"\1#", parameter)
-
         # drop trailing splitchar, if extists
         if parameter.endswith(splitchar):
             parameter = parameter[:-1]

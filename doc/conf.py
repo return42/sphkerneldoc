@@ -53,6 +53,9 @@ import rstKernelDoc
 # General configuration
 # ------------------------------------------------------------------------------
 
+# The default language to highlight source code in.
+highlight_language = "none"
+
 # If your documentation needs a minimal Sphinx version, state it here.
 #needs_sphinx = '1.0'
 
