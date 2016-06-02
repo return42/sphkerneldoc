@@ -79,7 +79,8 @@ kernel-doc notation as::
 The return value, if any, should be described in a dedicated section named
 ``Return``.
 
-Example kernel-doc data structure comment.::
+Beside functions you can also write documentation for structs, unions, enums and
+typedefs. Example kernel-doc data structure comment.::
 
     /**
      * struct blah - the basic blah structure

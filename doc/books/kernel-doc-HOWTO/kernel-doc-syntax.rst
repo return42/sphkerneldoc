@@ -139,7 +139,7 @@ the struct.::
 This should be used only for struct and enum members.
 
 To facilitate having source code and comments close together, you can include
-kernel-doc documentation blocks that are free-form comments instead of being
+kernel-doc documentation blocks that are *free-form* comments instead of being
 kernel-doc for functions, structures, unions, enums, or typedefs.  This could be
 used for something like a theory of operation for a driver or library code, for
 example.
