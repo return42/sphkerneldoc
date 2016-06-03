@@ -103,14 +103,15 @@ u"""
 # imports
 # ==============================================================================
 
-import os
-from io import StringIO
 from os import path
+from io import StringIO
 from docutils import nodes
 from docutils.parsers.rst import Directive, directives
-from docutils.utils import SystemMessagePropagation
+from docutils.utils import SystemMessage
+from docutils.statemachine import ViewList
+from sphinx.util.nodes import nested_parse_with_titles
 
-import kernel_doc as kd
+import kernel_doc as kerneldoc
 
 # ==============================================================================
 def init():
@@ -120,7 +121,7 @@ def init():
 
 
 # ==============================================================================
-class KernelDocParser(kd.Parser):
+class KernelDocParser(kerneldoc.Parser):
 # ==============================================================================
 
     def __init__(self, app, *args, **kwargs):
@@ -135,25 +136,25 @@ class KernelDocParser(kd.Parser):
         self.errors += 1
         self.app.warn(
             message % replace
-            , location = "%s:%s" % (self.options.fname, self.ctx.line_no)
-            , prefix = "ERROR" )
+            , location = "%s:%s [kernel-doc ERROR]" % (self.options.fname, self.ctx.line_no)
+            , prefix = "" )
 
     def warn(self, message, **replace):
         self.app.warn(
             message % replace
-            , location = "%s:%s" % (self.options.fname, self.ctx.line_no)
-            , )
+            , location = "%s:%s [kernel-doc WARN]" % (self.options.fname, self.ctx.line_no)
+            , prefix = "")
 
     def info(self, message, **replace):
         self.app.verbose(
-            "%s:%s: INFO: " %(self.options.fname, self.ctx.line_no)
+            "%s:%s: [kernel-doc INFO]: " %(self.options.fname, self.ctx.line_no)
             + message % replace)
 
     def debug(self, message, **replace):
         if self.app.verbosity < 2:
             return
         replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no, logclass = "DEBUG"))
-        message = "%(fname)s:%(line_no)s :%(logclass)s: " + message
+        message = "%(fname)s:%(line_no)s [kernel-doc %(logclass)s] : " + message
         self.app.debug(message, **replace)
 
 
@@ -172,6 +173,12 @@ class KernelDoc(Directive):
         , "export"     : directives.flag               # aka lines containing !E
         , "internal"   : directives.flag               # aka lines containing !I
         , "functions"  : directives.unchanged_required # aka lines containing !F
+
+        , "debug"      : directives.flag               # insert generated reST as code-block
+
+        , "snippets"   : directives.unchanged_required
+        , "language"   : directives.unchanged_required
+        , "linenos"    : directives.flag
 
         # not yet supported:
         #
@@ -192,74 +199,154 @@ class KernelDoc(Directive):
 
     }
 
+    def errMsg(self, msg, lev=4):
+        err = self.state_machine.reporter.severe(
+            msg
+            , nodes.literal_block(self.block_text, self.block_text)
+            , line=self.lineno )
+        return SystemMessage(err, lev)
+
     def run(self):
+        self.reporter = self.state_machine.reporter
+
+        # I don't know why, but the sphinx-applicattion sets the halt_level from
+        # the docutil's default Level-4 ("SEVERE") to Level-5 (no halt at
+        # all). It also does not return any exit code (to make). Setting
+        # halt_level to 4 seems the only way to halt the build on fatal
+        # directive errors
+
+        old_halt_level = self.reporter.halt_level
+        self.reporter.halt_level = self.reporter.SEVERE_LEVEL
+        retVal = []
+        try:
+            retVal = self._run()
+        finally:
+            self.reporter.halt_level = old_halt_level
+        return retVal
+
+    def _run(self):
 
         document = self.state.document
-        env      = document.settings.env
+        env = document.settings.env
+
+        # do some checks
 
         if not document.settings.file_insertion_enabled:
-            return [document.reporter.warning(
-                'File insertion disabled', line=self.lineno)]
+            raise self.errMsg('File insertion disabled')
 
-        fname  = path.join(kd.SRCTREE, self.arguments[0])
+        fname    = self.arguments[0]
+        src_tree = kerneldoc.SRCTREE
+
         if self.arguments[0].startswith("./"):
-            # the prefix "./" indactes a relative pathname
-            fname = path.join(
-                path.dirname(path.normpath(self.state.document.current_source))
-                , self.arguments[0][2:])
+            # the prefix "./" indicates a relative pathname
+            fname = self.arguments[0][2:]
+            src_tree = path.dirname(path.normpath(document.current_source))
+
+        if "internal" in self.options:
+            if "export" in self.options:
+                raise self.errMsg(
+                    "Options 'export' and 'internal' are orthogonal,"
+                    " can't use them togehter")
+
+        if "snippets" in self.options:
+            rest = set(self.options.keys()) - set(["snippets", "linenos", "language", "debug"])
+            if rest:
+                raise self.errMsg(
+                    "kernel-doc 'snippets' has non of these options: %s"
+                    % ",".join(rest))
+
+        # set parse adjustments
 
         env.note_dependency(fname)
         rstout = StringIO()
-
-        opts = kd.ParseOptions(
+        ctx  = kerneldoc.ParserContext()
+        opts = kerneldoc.ParseOptions(
             fname           = fname
+            , src_tree      = src_tree
             , id_prefix     = self.options.get("module", "").strip()
             , out           = rstout
             , encoding      = self.options.get("encoding", env.config.source_encoding)
-            , translator    = kd.ReSTTranslator()
+            , translator    = kerneldoc.ReSTTranslator()
             ,)
+
         opts.set_defaults()
+        if not path.exists(opts.fname):
+            raise self.errMsg(
+                "kernel-doc refers to nonexisting document %s" % fname)
 
         if self.options:
             opts.skip_preamble = True
             opts.skip_epilog   = True
+
+        if "snippets" in self.options:
+            opts.translator = kerneldoc.ReSTTranslator()
 
         if "doc" in self.options:
             opts.use_names.append(self.options.get("doc"))
 
         if "export" in self.options:
             # gather exported symbols and add them to the list of names
-            ctx = kd.ParserContext()
-            kd.Parser.gather_context(kd.readFile(opts.fname), ctx)
+            kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
             opts.use_names.extend(ctx.exported_symbols)
             opts.error_missing = False
 
         if "internal" in self.options:
-            if "export" in self.options:
-                severe = self.state_machine.reporter.severe(
-                        "Options 'export' and 'internal' are orthogonal,"
-                        " can't use them togehter"
-                        , nodes.literal_block(self.block_text, self.block_text)
-                        , line=self.lineno )
-                raise SystemMessagePropagation(severe)
-
             # gather exported symbols and add them to the ignore-list of names
-            ctx = kd.ParserContext()
-            kd.Parser.gather_context(kd.readFile(opts.fname), ctx)
+            kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
             opts.skip_names.extend(ctx.exported_symbols)
 
         if "functions" in self.options:
             opts.error_missing = True
-            opts.use_names.extend(self.options.get("functions").split())
+            opts.use_names.extend(
+                self.options["functions"].replace(","," ").split())
 
         parser = KernelDocParser(env.app, opts)
         env.app.info("parse kernel-doc comments from: %s" % fname)
         parser.parse()
 
-        #kd.CONSOLE()
+        lines = rstout.getvalue().split("\n")
 
-        self.state_machine.insert_input(rstout.getvalue().split("\n"), fname)
-        return []
+        if "functions" in self.options:
+            selected  = self.options["functions"].replace(","," ").split()
+            names     = parser.ctx.translated_names
+            not_found = [ s for s in selected if s not in names]
+            if not_found:
+                raise self.errMsg(
+                    "selected section(s) not found: %s" % ", ".join(not_found))
+
+        if "snippets" in self.options:
+            selected  = self.options["snippets"].replace(","," ").split()
+            names     = parser.ctx.snippets.keys()
+            not_found = [ s for s in selected if s not in names]
+            if not_found:
+                raise self.errMsg(
+                    "selected snippets(s) not found: %s" % ", ".join(not_found))
+
+            lines = ["", ".. code-block:: %s"
+                     % self.options.get("language", "c"), ]
+            if "linenos" in self.options:
+                lines.append("    :linenos:")
+            lines.append("")
+
+            while selected:
+                snippet = parser.ctx.snippets[selected.pop(0)].split("\n")
+                lines.extend(["    " + l for l in snippet])
+                if selected:
+                    # delemit snippets with two newlines
+                    lines.extend(["",""])
+
+        if "debug" in self.options:
+            code_block = "\n.. code-block:: rst\n    :linenos:\n\n".split("\n")
+            for l in lines:
+                code_block.append("    " + l)
+            lines = code_block
+
+        content = ViewList(lines)
+        node = nodes.section()
+        node.document = self.state.document
+        nested_parse_with_titles(self.state, content, node)
+
+        return node.children
 
 
 

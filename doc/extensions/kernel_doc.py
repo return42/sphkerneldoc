@@ -742,6 +742,24 @@ class TranslatorAPI(object):
         raise NotImplementedError
 
 # ------------------------------------------------------------------------------
+class NullTranslator(object):
+# ------------------------------------------------------------------------------
+    u"""
+    Null translator, translates nothing, just parse.
+    """
+    HIGHLIGHT_MAP = []
+    LINE_COMMENT = ("", "")
+    # pylint: disable=C0321
+    def output_preamble(self, *args, **kwargs):      pass
+    def output_epilog(self, *args, **kwargs):        pass
+    def output_doc_section(self, *args, **kwargs):   pass
+    def output_function_decl(self, *args, **kwargs): pass
+    def output_struct_decl(self, *args, **kwargs):   pass
+    def output_union_decl(self, *args, **kwargs):    pass
+    def output_enum_decl(self, *args, **kwargs):     pass
+    def output_typedef_decl(self, *args, **kwargs):  pass
+
+# ------------------------------------------------------------------------------
 class ListTranslator(TranslatorAPI):
 # ------------------------------------------------------------------------------
 
@@ -1096,6 +1114,7 @@ class ReSTTranslator(TranslatorAPI):
         for p_name in parameterlist:
             if MACRO.match(p_name):
                 continue
+            p_name = re.sub(r"\[.*", "", p_name)
             p_desc = parameterdescs[p_name]
             self.write_definition(p_name, p_desc)
 
@@ -1193,11 +1212,13 @@ class ReSTTranslator(TranslatorAPI):
 class ParseOptions(Container):
 # ------------------------------------------------------------------------------
 
-    PARSE_OPTION_RE = r"^/\*+\s*parse-%s:\s*(.*?)\s*\*/+\s*$"
+    PARSE_OPTION_RE = r"^/\*+\s*parse-%s:\s*([a-zA-Z0-9_-]*?)\s*\*/+\s*$"
     PARSE_OPTIONS   = [
         ("highlight", ["on","off"], "setOnOff")
         , ("INSPECT", ["on","off"], "setINSPECT")
         , ("markup",  ["reST", "kernel-doc"], "setVal")
+        , ("SNIP",    [], "setVal")
+        , ("SNAP",    [], "snap")
         , ]
 
     def __init__(self, *args, **kwargs):
@@ -1248,6 +1269,9 @@ class ParseOptions(Container):
         self.markup         = "kernel-doc"
         self.highlight      = True  # switch highlighting on/off
         self.add_filters(self.PARSE_OPTIONS)
+
+        # SNIP / SNAP
+        self.SNIP = None
 
         super(ParseOptions, self).__init__(self, *args, **kwargs)
 
@@ -1312,8 +1336,9 @@ class ParseOptions(Container):
             INSPECT = bool(val == "on")
 
         _actions = dict(
-            setOnOff     = lambda name, val: bool(val == "on")
-            , setVal     = lambda name, val: val
+            setOnOff     = lambda name, val: ( name, bool(val == "on") )
+            , setVal     = lambda name, val: ( name, val )
+            , snap       = lambda name, val: ( "SNIP", "" )
             , setINSPECT = setINSPECT
             , )
 
@@ -1331,9 +1356,13 @@ class ParseOptions(Container):
                     parser.error("unknown parse-%(name)s value: '%(value)s'"
                                , name=name, value=value)
                 else:
-                    self[name] = action(name, value)
-                    parser.info("switch parse-option: %(name)s = '%(value)s'"
-                               , name=name, value=value)
+                    opt_val = action(name, value)
+                    if opt_val  is not None:
+                        name, value = opt_val
+                        self[name]  = value
+                    parser.info(
+                        "set parse-option: %(name)s = '%(value)s'"
+                        , name=name, value=value)
                 break
         return line
 
@@ -1391,13 +1420,17 @@ class ParserContext(Container):
         self.mod_descr         = ""
         self.mod_license       = ""
 
+        # SNIP / SNAP
+        self.snippets  = collections.OrderedDict()
+
         super(ParserContext, self).__init__(self, *args, **kwargs)
 
     def new(self):
         return self.__class__(
             line_no            = self.line_no
             , exported_symbols = self.exported_symbols
-            , translated_names = self.translated_names)
+            , translated_names = self.translated_names
+            , snippets         = self.snippets )
 
 
 class ParserBuggy(RuntimeError):
@@ -1627,6 +1660,12 @@ class Parser(SimpleLog):
             l = self.options.filter_opt(l, self)
             if l is None:
                 continue
+
+            if self.options.SNIP:
+                # record snippet
+                val = self.ctx.snippets.get(self.options.SNIP, "")
+                if val or l:
+                    self.ctx.snippets[self.options.SNIP] = val + l + "\n"
 
             state = getattr(self, "state_%s" % self.state)
             try:
@@ -1903,8 +1942,8 @@ class Parser(SimpleLog):
             and doc_split_sect.match(line)):
 
             # First line (split_doc_state 1) needs to be a @parameter
-            self.ctx.section  = self.sect_title(doc_split_sect[0])
-            self.ctx.contents = doc_split_sect[1]
+            self.ctx.section  = self.sect_title(doc_split_sect[0].strip())
+            self.ctx.contents = doc_split_sect[1].strip()
             self.split_doc_state = 2
             self.debug("SPLIT-DOC-START: '%(param)s' / split-state 1 --> 2"
                        , param = self.ctx.section)
