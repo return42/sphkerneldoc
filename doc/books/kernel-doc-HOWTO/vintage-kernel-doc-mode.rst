@@ -7,7 +7,8 @@
 vintage kernel-doc mode
 =======================
 
-All descriptive text is further processed, scanning for the following special
+All kernel-doc markup is processed as described in :ref:`kernel-doc-syntax`, all
+descriptive text is further processed, scanning for the following special
 patterns, which are highlighted appropriately.
 
 * ``funcname()``   - function
@@ -20,13 +21,13 @@ These highlighted patterns are not used when you are using the reST addition
 (:ref:`reST-kernel-doc-mode`).  This is, because reST brings it's own markup to
 refer and highlight function, structs or whatever definition.
 
-Within the *vintage kernel-doc mode* the kernel-doc parser higlights the pattern
-above, but he also dogged ignores any whitespace formating/markup.
+Within the *vintage* kernel-doc mode the kernel-doc parser highlights the pattern
+above, but he also dogged ignores any whitespace formatting/markup.
 
 .. hint::
 
-   Formating with whitespaces is substantiell for ASCII markups. By this, it's
-   recomended to use the :ref:`reST-kernel-doc-mode` on any new or changed
+   Formatting with whitespaces is substantial for ASCII markups. By this, it's
+   recommended to use the :ref:`reST-kernel-doc-mode` on any new or changed
    comment.
 
 
@@ -35,7 +36,7 @@ above, but he also dogged ignores any whitespace formating/markup.
 vintage mode quirks
 ===================
 
-In the following, you will find some quirks of the *vintage kernel-doc mode*.
+In the following, you will find some quirks of the *vintage* kernel-doc mode.
 
 * Since a colon introduce a new section, you can't use colons. E.g. a comment
   line like::
@@ -82,20 +83,18 @@ short example from a *vintage* comment::
     * const pointer and hence is threadsafe.
     <SNAP> -----
 
-Within reST markup, the wildcard in the string ``drm_get_*_name`` has to be
-masked: ``drm_get_\\*_name``. Some more examples from reST markup:
+Within reST markup (the new bas format), the wildcard in the string
+``drm_get_*_name`` has to be masked: ``drm_get_\\*_name``. Some more examples
+from reST markup:
 
 * Emphasis "*":  like ``*emphasis*`` or ``**emphasis strong**``
-
 * Leading "_" :  is a *anchor* in reST markup (``_foo``).
-
 * Trailing "_:  is a reference in reST markup (``foo_``).
-
 * interpreted text: "`"
-
 * inline literals: "``"
-
 * substitution references: "|"
 
-As long as you in the vintage kernel-doc mode, these special strings will be
+As long as you in the *vintage* kernel-doc mode, these special strings will be
 masked in the reST output and can't be used as *plain-text markup*.
+
+

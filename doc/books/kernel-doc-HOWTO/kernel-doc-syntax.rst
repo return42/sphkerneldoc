@@ -12,6 +12,11 @@ In the following examples,
 * ``(...)?`` signifies optional structure and
 * ``(...)*`` signifies 0 or more structure elements
 
+The definition (or DOC) name is the section header. The section header names
+must be unique per source file.
+
+.. _kernel-doc-syntax-functions:
+
 functions
 =========
 
@@ -25,26 +30,28 @@ The format of the block comment is like this::
      * (section header: (section description)? )*
      (*)?*/
 
-All *description* text can span multiple lines, although the ``function_name`` &
-its short description are traditionally on a single line.  Description text may
-also contain blank lines (i.e., lines that contain only a "*").
-
-*section header:* names must be unique per function (or struct, union, typedef,
-enum or DOC).
+All *description* text can span multiple lines, although the
+``function_name`` & its short description are traditionally on a single line.
+Description text may also contain blank lines (i.e., lines that contain only a
+"*").
 
 .. ????
 .. Avoid putting a spurious blank line after the function name, or else the
 .. description will be repeated!
 .. ????
 
-So, the trivial example would be::
+So, the trivial example would be:
+
+.. code-block:: c
 
     /**
      * my_function
      */
 
 If the Description: header tag is omitted, then there must be a blank line
-after the last parameter specification.::
+after the last parameter specification.:
+
+.. code-block:: c
 
     /**
      * my_function - does my stuff
@@ -53,7 +60,9 @@ after the last parameter specification.::
      * Does my stuff explained.
      */
 
-or, could also use::
+or, could also use:
+
+.. code-block:: c
 
     /**
      * my_function - does my stuff
@@ -68,19 +77,16 @@ line.
 
 A non-void function should have a ``Return:`` section describing the return
 value(s).  Example-sections should contain the string ``EXAMPLE`` so that
-they are marked appropriately in the output format.::
+they are marked appropriately in the output format.
 
-    /**
-     * user_function - function that can only be called in user context
-     * @a: some argument
-     * Context: !in_interrupt()
-     *
-     * Some description
-     *
-     * Example:
-     *    user_function(22);
-     */
+.. kernel-doc::  ./all-in-a-tumble.h
+    :snippets:  user_function
+    :language:  c
+    :linenos:
 
+Rendered example: :ref:`example.user_function`
+
+.. _kernel-doc-syntax-misc-types:
 
 structs, unions, enums and typedefs
 ===================================
@@ -91,52 +97,36 @@ declaration; the ``struct``, ``union``, ``enum`` or ``typedef`` must always
 precede the name. Nesting of declarations is not supported.  Use the
 ``@argument`` mechanism to document members or constants.
 
-Inside a struct description, you can use the ``private:`` and ``public:``
-comment tags.  Structure fields that are inside a ``private:`` area are not
-listed in the generated output documentation.  The ``private:`` and ``public:``
-tags must begin immediately following a ``/* `` comment marker.  They may
-optionally include comments between the ``:`` and the ending ``*/`` marker.
+Inside a struct description, you can use the 'private:' and 'public:' comment
+tags.  Structure fields that are inside a 'private:' area are not listed in the
+generated output documentation.  The 'private:' and 'public:' tags must begin
+immediately following a ``/*`` comment marker.  They may optionally include
+comments between the ``:`` and the ending ``*/`` marker.
 
-Example::
+.. kernel-doc::  ./all-in-a-tumble.h
+    :snippets:  my_struct
+    :language:  c
+    :linenos:
 
-    /**
-     * struct my_struct - short description
-     * @a: first member
-     * @b: second member
-     *
-     * Longer description
-     */
-    struct my_struct {
-        int a;
-        int b;
-    /* private: */
-        int c;
-    };
+Rendered example: :ref:`example.my_struct`
 
 All descriptions can be multiline, except the short function description.
 For really longs structs, you can also describe arguments inside the body of
-the struct.::
+the struct.
 
-    /**
-     * struct my_struct - short description
-     * @a: first member
-     * @b: second member
-     *
-     * Longer description
-     */
-    struct my_struct {
-        int a;
-        int b;
-        /**
-         * @c: This is longer description of C
-         *
-         * You can use paragraphs to describe arguments
-         * using this method.
-         */
-        int c;
-    };
+.. kernel-doc::  ./all-in-a-tumble.h
+    :snippets:  my_long_struct
+    :language:  c
+    :linenos:
+
+Rendered example: :ref:`example.my_long_struct`
 
 This should be used only for struct and enum members.
+
+.. _kernel-doc-syntax-doc:
+
+ducumentation blocks
+====================
 
 To facilitate having source code and comments close together, you can include
 kernel-doc documentation blocks that are *free-form* comments instead of being
@@ -144,17 +134,38 @@ kernel-doc for functions, structures, unions, enums, or typedefs.  This could be
 used for something like a theory of operation for a driver or library code, for
 example.
 
-This is done by using a ``DOC:`` section keyword with a section title.  E.g.::
+This is done by using a ``DOC:`` section keyword with a section title. A small
+example:
 
-    /**
-     * DOC: Theory of Operation
-     *
-     * The whizbang foobar is a dilly of a gizmo.  It can do whatever you
-     * want it to do, at any time.  It reads your mind.  Here's how it works.
-     *
-     * foo bar splat
-     *
-     * The only drawback to this gizmo is that is can sometimes damage
-     * hardware, software, or its subject(s).
-     */
+.. kernel-doc::  ./all-in-a-tumble.h
+    :snippets:  theory-of-operation
+    :language:  c
+    :linenos:
 
+Rendered example: :ref:`example.theory-of-operation`
+
+.. _kernel-doc-syntax-snippets:
+
+Snippets
+========
+
+The kernel-doc Parser supports a comment-markup for snippets out of the source
+code. To start a region to snip insert::
+
+  /* parse-SNIP: <snippet-name> */
+
+The snippet region stops with a new snippet region or at the next::
+
+  /* parse-SNAP: */
+
+A small example:
+
+.. code-block:: c
+
+    /* parse-SNIP: hello-world */
+    #include<stdio.h>
+    int main() {
+        printf("Hello World\n");
+    return 0;
+    }
+    /* parse-SNAP: */

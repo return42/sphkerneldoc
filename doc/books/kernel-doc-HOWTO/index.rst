@@ -12,31 +12,36 @@ extractable documentation of the functions and data structures in the Linux
 kernel, the Linux kernel has adopted a consistent style for documenting
 functions and their parameters, and structures and their members.
 
-The format for this documentation is called the *kernel-doc* format.
+The format for this documentation is called the *kernel-doc* format. With kernel
+version 4.x the restructuredText (reST_) markup was added to the *kernel-doc*
+format. The kernel-doc parser supports the markup modes:
+:ref:`vintage-kernel-doc-mode` / :ref:`reST-kernel-doc-mode`.  This document
+gives hints on how to use these markups and how to refer and extract
+documentation from source files.
 
-With kernel version 4.x the restructuredText (reST_) markup was added to the
-*kernel-doc* forma. This document gives hints on how to use the reST markup
-within the *kernel-doc* format and how to refer or extract documentation from
-source files.
-
-With the reST addition the, documentation building process changed also. The
-building process is now based on sphinx-doc_ and the DocBook documents will be
-migrated to reST gradually.
-
-.. toctree::
-   :maxdepth: 1
-
-   kernel-doc-intro
-   kernel-doc-syntax
-   vintage-kernel-doc-mode
-   reST-kernel-doc-mode
-   kernel-doc-components
-   extract-kernel-doc
-
-
-Some examples and *tests* (tests here might be droped later).
+The kernel-doc parser extracts the kernel-doc descriptions from the source files
+and produced reST markup as base format. With reST ase base format the
+documentation building process changed also. The building process is now based
+on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
-   all-in-a-tumble
+    kernel-doc-intro
+    kernel-doc-syntax
+    vintage-kernel-doc-mode
+    reST-kernel-doc-mode
+    kernel-doc-directive
+    kernel-doc-components
+    kernel-doc-examples
+
+The examples in this HOWTO using the kernel-doc comments from the example file
+:ref:`all-in-a-tumble-src`. They are rendered in the
+chapter :ref:`all-in-a-tumble`.
+
+.. only:: html
+
+  * :ref:`genindex`
+
+
+
