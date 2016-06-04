@@ -63,16 +63,14 @@ autodoc_file() {
     local tmp_file=$(mktemp)
     local tmp_file_log=$(mktemp)
 
-    "$KERNEL_DOC_SCRIPT" -rst "${src_file}" > "$tmp_file" 2> "$tmp_file_log"
+    "$KERNEL_DOC_SCRIPT" "${src_file}" > "$tmp_file" 2> "$tmp_file_log"
 
     if [[ -s "$tmp_file" ]]; then
 
         info_msg "autodoc file '${src_file}'"
         mkdir -p $(dirname "$rst_file")
 
-        {   echo ".. -*- coding: utf-8; mode: rst -*-"
-            rstHeading "$(basename $src_file)"  part-nc
-            cat "$tmp_file"
+        {  cat "$tmp_file"
         }  > "$rst_file"
 
 

@@ -22,7 +22,7 @@ DOC_FOLDER="${REPO_ROOT}/doc"
 AUTODOC_FOLDER="${DOC_FOLDER}/linux_src_doc"
 BOOKS_FOLDER="${DOC_FOLDER}/books"
 LINUX_MISC_DOC="${DOC_FOLDER}/linux_misc_doc"
-KERNEL_DOC_SCRIPT="${SCRIPT_FOLDER}/kernel-doc"
+KERNEL_DOC_SCRIPT="${DOC_FOLDER}/extensions/kernel_doc.py"
 TEMPLATES="${REPO_ROOT}/templates"
 CACHE=${REPO_ROOT}/cache
 
