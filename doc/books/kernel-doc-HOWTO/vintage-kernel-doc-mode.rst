@@ -45,7 +45,7 @@ In the following, you will find some quirks of the *vintage* kernel-doc mode.
 
   will result in a section with the title "prints out" and a paragraph with only
   "hello world" in, this is mostly not what you expect. To avoid sectioning,
-  place a space in front of the column.
+  place a space in front of the column::
 
       prints out : hello world
 
