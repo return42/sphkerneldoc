@@ -271,12 +271,12 @@ class RE(object):
 
 doc_special      = RE(r"\@\%\$\&")    # special: [@%$&]
 doc_start        = RE(r"^/\*\*\s*$")  # Allow whitespace at end of comment start.
-doc_end          = RE(r"\s*\*/")
+doc_end          = RE(r"\s*\*+/")
 doc_com          = RE(r"\s*\*\s*")
 doc_com_body     = RE(r"\s*\* ?")
 doc_decl         = RE(doc_com.pattern + r"(\w+)")
 doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*-")
-doc_decl_purpose = RE(r"-\s*([\w\s]+?)\s*$")
+doc_decl_purpose = RE(r"-(.*)$")
 
 # except pattern like "http://", a whitespace is required after the colon
 doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
@@ -1047,7 +1047,7 @@ class ReSTTranslator(TranslatorAPI):
                 , sec_level = 3
                 , ID = function + "." + header)
 
-        INSPECT and CONSOLE() # pylint: disable=W0106
+        # INSPECT and CONSOLE() # pylint: disable=W0106
 
     def output_struct_decl(
             self
@@ -1116,7 +1116,9 @@ class ReSTTranslator(TranslatorAPI):
             if MACRO.match(p_name):
                 continue
             p_name = re.sub(r"\[.*", "", p_name)
-            p_desc = parameterdescs[p_name]
+            p_desc = parameterdescs.get(p_name, None)
+            if p_desc is None:
+                continue
             self.write_definition(p_name, p_desc)
 
         # sections
@@ -1128,7 +1130,7 @@ class ReSTTranslator(TranslatorAPI):
                 , sec_level = 3
                 , ID = decl_name + "." + header)
 
-        INSPECT and CONSOLE() # pylint: disable=W0106
+        # INSPECT and CONSOLE() # pylint: disable=W0106
 
     def output_enum_decl(
             self
@@ -1182,7 +1184,7 @@ class ReSTTranslator(TranslatorAPI):
                 , sec_level = 3
                 , ID = enum + "." + header)
 
-        INSPECT and CONSOLE() # pylint: disable=W0106
+        # INSPECT and CONSOLE() # pylint: disable=W0106
 
     def output_typedef_decl(
             self
@@ -1206,7 +1208,7 @@ class ReSTTranslator(TranslatorAPI):
                 , sec_level = 3
                 , ID = typedef + "." + header)
 
-        INSPECT and CONSOLE() # pylint: disable=W0106
+        # INSPECT and CONSOLE() # pylint: disable=W0106
 
 
 # ------------------------------------------------------------------------------
@@ -1739,7 +1741,7 @@ class Parser(SimpleLog):
 
             self.ctx.decl_purpose = ""
             if doc_decl_purpose.search(line):
-                self.ctx.decl_purpose = doc_decl_purpose[0]
+                self.ctx.decl_purpose = doc_decl_purpose[0].strip()
 
             if not self.ctx.decl_purpose:
                 self.warn("missing initial short description of '%(i)s' on line -->|%(line)s|<--"
@@ -1891,7 +1893,6 @@ class Parser(SimpleLog):
         else:
             # i dont know - bad line?  ignore.
             self.warn("bad line: '%(line)s'", line = line.strip())
-            DEBUG and CONSOLE()
 
     def state_3(self, line):
         u"""state: 3 - scanning prototype."""
@@ -2022,7 +2023,7 @@ class Parser(SimpleLog):
             self.reset_state()
 
     def syscall_munge(self, prototype):
-        self.debug("syscall munge: %(prototype)s" , prototype=prototype)
+        self.debug("syscall munge: '%(prototype)s'" , prototype=prototype)
         void = False
 
         # strip needles whitespaces
@@ -2040,11 +2041,14 @@ class Parser(SimpleLog):
         # now delete all of the odd-number commas in $prototype
         # so that arg types & arg names don't have a comma between them
 
-        x = prototype.split(",")
-        y = []
-        while x:
-            y.append(x.pop(0) + x.pop(0))
-        retVal = ",".join(y)
+        retVal = prototype
+        if not void:
+            x = prototype.split(",")
+            y = []
+            while x:
+                y.append(x.pop(0) + x.pop(0))
+            retVal = ",".join(y)
+        self.debug("syscall munge: retVal '%(retVal)s'" , retVal=retVal)
         return retVal
 
     def tracepoint_munge(self, prototype):
@@ -2174,7 +2178,6 @@ class Parser(SimpleLog):
             if self.ctx.constants.get(name, None):
                 self.error("duplicate constant definition '%(name)s'"
                            , name = name)
-            CONSOLE() # FIXME: not yet tested
             self.ctx.constants[name] = cont
 
         elif type_param.match(name):   # '@parameter' - name of a parameter
