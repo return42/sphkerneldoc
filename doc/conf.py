@@ -46,8 +46,6 @@ import common  # to get the SDK debugger/console
 # add these directories to sys.path here.
 
 sys.path.insert(0, pathjoin(BASE_FOLDER, 'extensions'))
-import rstFlatTable
-import rstKernelDoc
 
 # ------------------------------------------------------------------------------
 # General configuration
@@ -89,8 +87,10 @@ intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    # "xelatex"
-    'sphinx.ext.autodoc'
+    "rstFlatTable"
+    , "rstKernelDoc"
+    # , "xelatex"
+    , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
     #, 'sphinx.ext.autosummary'
     #, 'sphinx.ext.doctest'
@@ -138,6 +138,10 @@ keep_warnings = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+# If true, fatal errors (like missing function descripions) raise an
+# error. Default: True
+kernel_doc_raise_error = False
 
 # ------------------------------------------------------------------------------
 # Options for HTML output

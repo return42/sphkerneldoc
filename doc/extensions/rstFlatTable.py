@@ -51,10 +51,10 @@ from docutils.parsers.rst.directives.tables import Table
 from docutils.utils import SystemMessagePropagation
 
 # ==============================================================================
-def init():
+def setup(app):
 # ==============================================================================
 
-    directives.register_directive("flat-table", FlatTable)
+    app.add_directive("flat-table", FlatTable)
     roles.register_local_role('cspan', cspan)
     roles.register_local_role('rspan', rspan)
 
@@ -346,9 +346,3 @@ class ListTableBuilder(object):
                 elem.parent.remove(elem)
                 continue
         return cspan, rspan, cellItem[:]
-
-# ==============================================================================
-# init
-# ==============================================================================
-
-init()

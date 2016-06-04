@@ -1020,8 +1020,9 @@ class ReSTTranslator(TranslatorAPI):
 
         for p_name in parameterlist:
 
-            p_desc = parameterdescs[p_name]
             p_type = parametertypes[p_name]
+            p_name = re.sub(r"\[.*", "", p_name)
+            p_desc = parameterdescs[p_name]
 
             param = ""
             if self.FUNC_PTR.search(p_type):

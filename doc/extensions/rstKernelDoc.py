@@ -114,11 +114,11 @@ from sphinx.util.nodes import nested_parse_with_titles
 import kernel_doc as kerneldoc
 
 # ==============================================================================
-def init():
+def setup(app):
 # ==============================================================================
 
-    directives.register_directive("kernel-doc", KernelDoc)
-
+    app.add_config_value('kernel_doc_raise_error', False, 'env')
+    app.add_directive("kernel-doc", KernelDoc)
 
 # ==============================================================================
 class KernelDocParser(kerneldoc.Parser):
@@ -199,6 +199,20 @@ class KernelDoc(Directive):
 
     }
 
+
+    def getOopsEntry(self, msg):
+        retVal = ("\n\n.. todo::"
+                  "\n\n    Oops: Document generation inconsistency."
+                  "\n\n    The template for this document tried to insert"
+                  " structured comment at this point, but an error occoured."
+                  " This dummy section is inserted to allow generation to continue.::"
+                  "\n\n")
+
+        for l in msg.split("\n"):
+            retVal +=  "        " + l + "\n"
+        retVal += "\n\n"
+        return retVal
+
     def errMsg(self, msg, lev=4):
         err = self.state_machine.reporter.severe(
             msg
@@ -207,27 +221,24 @@ class KernelDoc(Directive):
         return SystemMessage(err, lev)
 
     def run(self):
-        self.reporter = self.state_machine.reporter
+        doc = self.state.document
+        env = doc.settings.env
 
-        # I don't know why, but the sphinx-applicattion sets the halt_level from
-        # the docutil's default Level-4 ("SEVERE") to Level-5 (no halt at
-        # all). It also does not return any exit code (to make). Setting
-        # halt_level to 4 seems the only way to halt the build on fatal
-        # directive errors
-
-        old_halt_level = self.reporter.halt_level
-        self.reporter.halt_level = self.reporter.SEVERE_LEVEL
         retVal = []
         try:
-            retVal = self._run()
+            retVal = self._run(doc, env)
+        except SystemMessage, exc:
+            if env.config.kernel_doc_raise_error:
+                raise
+            self.state_machine.insert_input(
+                self.getOopsEntry(unicode(exc)).split("\n")
+                , self.arguments[0])
+
         finally:
-            self.reporter.halt_level = old_halt_level
+            pass
         return retVal
 
-    def _run(self):
-
-        document = self.state.document
-        env = document.settings.env
+    def _run(self, document, env):
 
         # do some checks
 
@@ -347,12 +358,4 @@ class KernelDoc(Directive):
         nested_parse_with_titles(self.state, content, node)
 
         return node.children
-
-
-
-# ==============================================================================
-# init
-# ==============================================================================
-
-init()
 
