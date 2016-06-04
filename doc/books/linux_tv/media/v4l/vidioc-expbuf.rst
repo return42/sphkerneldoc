@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 This ioctl is an extension to the :ref:`memory mapping <mmap>` I/O
 method, therefore it is available only for ``V4L2_MEMORY_MMAP`` buffers.
 It can be used to export a buffer as a DMABUF file at any time after

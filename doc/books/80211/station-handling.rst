@@ -9,14 +9,17 @@ Station handling
 TODO
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_sta
 
-    API-struct-ieee80211-sta
-    API-enum-sta-notify-cmd
-    API-ieee80211-find-sta
-    API-ieee80211-find-sta-by-ifaddr
+.. kernel-doc:: include/net/mac80211.h
+    :functions: sta_notify_cmd
 
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_find_sta
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_find_sta_by_ifaddr
 
 
 

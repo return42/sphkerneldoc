@@ -38,60 +38,32 @@ Frame Buffer Memory
 ===================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-register-framebuffer
-    API-unregister-framebuffer
-    API-fb-set-suspend
-
+.. kernel-doc:: drivers/video/fbdev/core/fbmem.c
+    :export:
 
 Frame Buffer Colormap
 =====================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-fb-dealloc-cmap
-    API-fb-copy-cmap
-    API-fb-set-cmap
-    API-fb-default-cmap
-    API-fb-invert-cmaps
-
+.. kernel-doc:: drivers/video/fbdev/core/fbcmap.c
+    :export:
 
 Frame Buffer Video Mode Database
 ================================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/video/fbdev/core/modedb.c
+    :internal:
 
-    API-fb-try-mode
-    API-fb-delete-videomode
-    API-fb-find-mode
-    API-fb-var-to-videomode
-    API-fb-videomode-to-var
-    API-fb-mode-is-equal
-    API-fb-find-best-mode
-    API-fb-find-nearest-mode
-    API-fb-match-mode
-    API-fb-add-videomode
-    API-fb-destroy-modelist
-    API-fb-videomode-to-modelist
-
+.. kernel-doc:: drivers/video/fbdev/core/modedb.c
+    :export:
 
 Frame Buffer Macintosh Video Mode Database
 ==========================================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-mac-vmode-to-var
-    API-mac-map-monitor-sense
-    API-mac-find-mode
-
+.. kernel-doc:: drivers/video/fbdev/macmodes.c
+    :export:
 
 Frame Buffer Fonts
 ==================

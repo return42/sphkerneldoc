@@ -12,12 +12,11 @@ This chapter should describe PHY handling including start/stop callbacks
 and the various structures used.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_conf
 
-    API-struct-ieee80211-conf
-    API-enum-ieee80211-conf-flags
-
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_conf_flags
 
 
 

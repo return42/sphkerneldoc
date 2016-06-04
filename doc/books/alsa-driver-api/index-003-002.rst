@@ -9,64 +9,32 @@ Card Management
 ===============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-device-initialize
-    API-snd-card-new
-    API-snd-card-disconnect
-    API-snd-card-free-when-closed
-    API-snd-card-free
-    API-snd-card-set-id
-    API-snd-card-add-dev-attr
-    API-snd-card-register
-    API-snd-component-add
-    API-snd-card-file-add
-    API-snd-card-file-remove
-    API-snd-power-wait
-
+.. kernel-doc:: sound/core/init.c
+    :export:
 
 Device Components
 =================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-device-new
-    API-snd-device-disconnect
-    API-snd-device-free
-    API-snd-device-register
-
+.. kernel-doc:: sound/core/device.c
+    :export:
 
 Module requests and Device File Entries
 =======================================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-request-card
-    API-snd-lookup-minor-data
-    API-snd-register-device
-    API-snd-unregister-device
-
+.. kernel-doc:: sound/core/sound.c
+    :export:
 
 Memory Management Helpers
 =========================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: sound/core/memory.c
+    :export:
 
-    API-copy-to-user-fromio
-    API-copy-from-user-toio
-    API-snd-malloc-pages
-    API-snd-free-pages
-    API-snd-dma-alloc-pages
-    API-snd-dma-alloc-pages-fallback
-    API-snd-dma-free-pages
-
+.. kernel-doc:: sound/core/memalloc.c
+    :export:
 
 
 

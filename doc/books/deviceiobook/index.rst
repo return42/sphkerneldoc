@@ -50,11 +50,10 @@ Linux.
 .. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
 .. ------------------------------------------------------------------------------
 
-.. only:: html
 
-  Retrieval
-  =========
+Retrieval
+=========
 
-  * :ref:`genindex`
-  * :ref:`search`
+* :ref:`genindex`
 
+.. todolist::

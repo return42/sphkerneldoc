@@ -27,24 +27,8 @@ hardware structures represented here, please consult the Principles of
 Operation.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-ccw1
-    API-struct-erw
-    API-struct-erw-eadm
-    API-struct-sublog
-    API-struct-esw0
-    API-struct-esw1
-    API-struct-esw2
-    API-struct-esw3
-    API-struct-esw-eadm
-    API-struct-irb
-    API-struct-ciw
-    API-struct-ccw-dev-id
-    API-ccw-dev-id-is-equal
-    API-pathmask-to-pos
-
+.. kernel-doc:: arch/s390/include/asm/cio.h
+    :internal:
 
 .. _ccwdev:
 
@@ -60,42 +44,14 @@ device structure. Device drivers must not bypass those functions or
 strange side effects may happen.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: arch/s390/include/asm/ccwdev.h
+    :internal:
 
-    API-struct-ccw-device
-    API-struct-ccw-driver
-    API-ccw-device-set-offline
-    API-ccw-device-set-online
-    API-get-ccwdev-by-dev-id
-    API-get-ccwdev-by-busid
-    API-ccw-driver-register
-    API-ccw-driver-unregister
-    API-ccw-device-siosl
-    API-ccw-device-set-options-mask
-    API-ccw-device-set-options
-    API-ccw-device-clear-options
-    API-ccw-device-is-pathgroup
-    API-ccw-device-is-multipath
-    API-ccw-device-clear
-    API-ccw-device-start-key
-    API-ccw-device-start-timeout-key
-    API-ccw-device-start
-    API-ccw-device-start-timeout
-    API-ccw-device-halt
-    API-ccw-device-resume
-    API-ccw-device-get-ciw
-    API-ccw-device-get-path-mask
-    API-ccw-device-get-chp-desc
-    API-ccw-device-get-id
-    API-ccw-device-tm-start-key
-    API-ccw-device-tm-start-timeout-key
-    API-ccw-device-tm-start
-    API-ccw-device-tm-start-timeout
-    API-ccw-device-get-mdc
-    API-ccw-device-tm-intrg
-    API-ccw-device-get-schid
+.. kernel-doc:: drivers/s390/cio/device.c
+    :export:
 
+.. kernel-doc:: drivers/s390/cio/device_ops.c
+    :export:
 
 .. _cmf:
 
@@ -107,15 +63,11 @@ data which is made available by the channel subsystem for each channel
 attached device.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: arch/s390/include/asm/cmb.h
+    :internal:
 
-    ccw-000-004-003
-    API-enable-cmf
-    API-disable-cmf
-    API-cmf-read
-    API-cmf-readall
-
+.. kernel-doc:: drivers/s390/cio/cmf.c
+    :export:
 
 
 

@@ -6,11 +6,6 @@
 Streaming I/O (DMA buffer importing)
 ====================================
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The DMABUF framework provides a generic method for sharing buffers
 between multiple devices. Device drivers that support DMABUF can export
 a DMA buffer to userspace as a file descriptor (known as the exporter

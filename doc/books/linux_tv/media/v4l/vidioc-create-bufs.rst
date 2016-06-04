@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 This ioctl is used to create buffers for :ref:`memory mapped <mmap>`
 or :ref:`user pointer <userp>` or :ref:`DMA buffer <dmabuf>` I/O. It
 can be used as an alternative or in addition to the

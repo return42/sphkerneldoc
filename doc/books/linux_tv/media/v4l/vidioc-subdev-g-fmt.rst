@@ -32,11 +32,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 These ioctls are used to negotiate the frame format at specific subdev
 pads in the image pipeline.
 

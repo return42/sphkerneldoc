@@ -13,18 +13,8 @@ Debug object function reference
 ===============================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-debug-object-init
-    API-debug-object-init-on-stack
-    API-debug-object-activate
-    API-debug-object-deactivate
-    API-debug-object-destroy
-    API-debug-object-free
-    API-debug-object-assert-init
-    API-debug-object-active-state
-
+.. kernel-doc:: lib/debugobjects.c
+    :export:
 
 .. _debug_object_init:
 

@@ -9,17 +9,26 @@ Rate Control API
 TBD
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_start_tx_ba_session
 
-    API-ieee80211-start-tx-ba-session
-    API-ieee80211-start-tx-ba-cb-irqsafe
-    API-ieee80211-stop-tx-ba-session
-    API-ieee80211-stop-tx-ba-cb-irqsafe
-    API-enum-ieee80211-rate-control-changed
-    API-struct-ieee80211-tx-rate-control
-    API-rate-control-send-low
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_start_tx_ba_cb_irqsafe
 
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_stop_tx_ba_session
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_stop_tx_ba_cb_irqsafe
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_rate_control_changed
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_tx_rate_control
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: rate_control_send_low
 
 
 

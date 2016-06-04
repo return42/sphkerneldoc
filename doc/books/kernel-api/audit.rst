@@ -7,41 +7,14 @@ Audit Interfaces
 ================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: kernel/audit.c
+    :export:
 
-    API-audit-log-start
-    API-audit-log-format
-    API-audit-log-end
-    API-audit-log
-    API-audit-log-secctx
-    API-audit-alloc
-    API---audit-free
-    API---audit-syscall-entry
-    API---audit-syscall-exit
-    API---audit-reusename
-    API---audit-getname
-    API---audit-inode
-    API-auditsc-get-stamp
-    API-audit-set-loginuid
-    API---audit-mq-open
-    API---audit-mq-sendrecv
-    API---audit-mq-notify
-    API---audit-mq-getsetattr
-    API---audit-ipc-obj
-    API---audit-ipc-set-perm
-    API---audit-socketcall
-    API---audit-fd-pair
-    API---audit-sockaddr
-    API---audit-signal-info
-    API---audit-log-bprm-fcaps
-    API---audit-log-capset
-    API-audit-core-dumps
-    API-audit-rule-change
-    API-audit-list-rules-send
-    API-parent-len
-    API-audit-compare-dname-path
+.. kernel-doc:: kernel/auditsc.c
+    :internal:
 
+.. kernel-doc:: kernel/auditfilter.c
+    :internal:
 
 
 

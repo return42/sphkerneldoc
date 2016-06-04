@@ -9,155 +9,41 @@ PCM Core
 ========
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: sound/core/pcm.c
+    :export:
 
-    API-snd-pcm-format-name
-    API-snd-pcm-new-stream
-    API-snd-pcm-new
-    API-snd-pcm-new-internal
-    API-snd-pcm-notify
-    API-snd-pcm-set-ops
-    API-snd-pcm-set-sync
-    API-snd-interval-refine
-    API-snd-interval-ratnum
-    API-snd-interval-list
-    API-snd-interval-ranges
-    API-snd-pcm-hw-rule-add
-    API-snd-pcm-hw-constraint-mask64
-    API-snd-pcm-hw-constraint-integer
-    API-snd-pcm-hw-constraint-minmax
-    API-snd-pcm-hw-constraint-list
-    API-snd-pcm-hw-constraint-ranges
-    API-snd-pcm-hw-constraint-ratnums
-    API-snd-pcm-hw-constraint-ratdens
-    API-snd-pcm-hw-constraint-msbits
-    API-snd-pcm-hw-constraint-step
-    API-snd-pcm-hw-constraint-pow2
-    API-snd-pcm-hw-rule-noresample
-    API-snd-pcm-hw-param-value
-    API-snd-pcm-hw-param-first
-    API-snd-pcm-hw-param-last
-    API-snd-pcm-lib-ioctl
-    API-snd-pcm-period-elapsed
-    API-snd-pcm-add-chmap-ctls
-    API-snd-pcm-stream-lock
-    API-snd-pcm-stream-unlock
-    API-snd-pcm-stream-lock-irq
-    API-snd-pcm-stream-unlock-irq
-    API-snd-pcm-stream-unlock-irqrestore
-    API-snd-pcm-stop
-    API-snd-pcm-stop-xrun
-    API-snd-pcm-suspend
-    API-snd-pcm-suspend-all
-    API-snd-pcm-lib-default-mmap
-    API-snd-pcm-lib-mmap-iomem
-    API-snd-pcm-stream-linked
-    API-snd-pcm-stream-lock-irqsave
-    API-snd-pcm-group-for-each-entry
-    API-snd-pcm-running
-    API-bytes-to-samples
-    API-bytes-to-frames
-    API-samples-to-bytes
-    API-frames-to-bytes
-    API-frame-aligned
-    API-snd-pcm-lib-buffer-bytes
-    API-snd-pcm-lib-period-bytes
-    API-snd-pcm-playback-avail
-    API-snd-pcm-capture-avail
-    API-snd-pcm-playback-hw-avail
-    API-snd-pcm-capture-hw-avail
-    API-snd-pcm-playback-ready
-    API-snd-pcm-capture-ready
-    API-snd-pcm-playback-data
-    API-snd-pcm-playback-empty
-    API-snd-pcm-capture-empty
-    API-snd-pcm-trigger-done
-    API-params-channels
-    API-params-rate
-    API-params-period-size
-    API-params-periods
-    API-params-buffer-size
-    API-params-buffer-bytes
-    API-snd-pcm-hw-constraint-single
-    API-snd-pcm-format-cpu-endian
-    API-snd-pcm-set-runtime-buffer
-    API-snd-pcm-gettime
-    API-snd-pcm-lib-alloc-vmalloc-buffer
-    API-snd-pcm-lib-alloc-vmalloc-32-buffer
-    API-snd-pcm-sgbuf-get-addr
-    API-snd-pcm-sgbuf-get-ptr
-    API-snd-pcm-sgbuf-get-chunk-size
-    API-snd-pcm-mmap-data-open
-    API-snd-pcm-mmap-data-close
-    API-snd-pcm-limit-isa-dma-size
-    API-snd-pcm-stream-str
-    API-snd-pcm-chmap-substream
-    API-pcm-format-to-bits
+.. kernel-doc:: sound/core/pcm_lib.c
+    :export:
 
+.. kernel-doc:: sound/core/pcm_native.c
+    :export:
+
+.. kernel-doc:: include/sound/pcm.h
+    :internal:
 
 PCM Format Helpers
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-pcm-format-signed
-    API-snd-pcm-format-unsigned
-    API-snd-pcm-format-linear
-    API-snd-pcm-format-little-endian
-    API-snd-pcm-format-big-endian
-    API-snd-pcm-format-width
-    API-snd-pcm-format-physical-width
-    API-snd-pcm-format-size
-    API-snd-pcm-format-silence-64
-    API-snd-pcm-format-set-silence
-    API-snd-pcm-limit-hw-rates
-    API-snd-pcm-rate-to-rate-bit
-    API-snd-pcm-rate-bit-to-rate
-    API-snd-pcm-rate-mask-intersect
-    API-snd-pcm-rate-range-to-bits
-
+.. kernel-doc:: sound/core/pcm_misc.c
+    :export:
 
 PCM Memory Management
 =====================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-pcm-lib-preallocate-free-for-all
-    API-snd-pcm-lib-preallocate-pages
-    API-snd-pcm-lib-preallocate-pages-for-all
-    API-snd-pcm-sgbuf-ops-page
-    API-snd-pcm-lib-malloc-pages
-    API-snd-pcm-lib-free-pages
-    API-snd-pcm-lib-free-vmalloc-buffer
-    API-snd-pcm-lib-get-vmalloc-page
-
+.. kernel-doc:: sound/core/pcm_memory.c
+    :export:
 
 PCM DMA Engine API
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: sound/core/pcm_dmaengine.c
+    :export:
 
-    API-snd-hwparams-to-dma-slave-config
-    API-snd-dmaengine-pcm-set-config-from-dai-data
-    API-snd-dmaengine-pcm-trigger
-    API-snd-dmaengine-pcm-pointer-no-residue
-    API-snd-dmaengine-pcm-pointer
-    API-snd-dmaengine-pcm-request-channel
-    API-snd-dmaengine-pcm-open
-    API-snd-dmaengine-pcm-open-request-chan
-    API-snd-dmaengine-pcm-close
-    API-snd-dmaengine-pcm-close-release-chan
-    API-snd-pcm-substream-to-dma-direction
-    API-struct-snd-dmaengine-dai-dma-data
-    API-struct-snd-dmaengine-pcm-config
-
+.. kernel-doc:: include/sound/dmaengine_pcm.h
+    :internal:
 
 
 

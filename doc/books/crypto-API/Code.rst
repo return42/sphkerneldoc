@@ -88,9 +88,9 @@ Code Example For Symmetric Key Cipher Operation
         }
 
         req = skcipher_request_alloc(skcipher, GFP_KERNEL);
-        if (IS_ERR(req)) {
-            pr_info("could not allocate request queuen");
-            ret = PTR_ERR(req);
+        if (!req) {
+            pr_info("could not allocate skcipher requestn");
+            ret = -ENOMEM;
             goto out;
         }
 

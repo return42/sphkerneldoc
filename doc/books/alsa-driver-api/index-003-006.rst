@@ -9,16 +9,8 @@ Proc Info Interface
 ===================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-info-get-line
-    API-snd-info-get-str
-    API-snd-info-create-module-entry
-    API-snd-info-create-card-entry
-    API-snd-info-free-entry
-    API-snd-info-register
-
+.. kernel-doc:: sound/core/info.c
+    :export:
 
 
 

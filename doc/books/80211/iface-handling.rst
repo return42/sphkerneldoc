@@ -21,11 +21,8 @@ the recommendation to allow only a single interface in STA mode at
 first!
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-ieee80211-vif
-
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_vif
 
 
 

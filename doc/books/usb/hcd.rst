@@ -28,30 +28,14 @@ kernels and in 2.5) that lets HCDs share common code, to shrink driver
 size and significantly reduce hcd-specific behaviors.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/usb/core/hcd.c
+    :export:
 
-    API-usb-calc-bus-time
-    API-usb-hcd-link-urb-to-ep
-    API-usb-hcd-check-unlink-urb
-    API-usb-hcd-unlink-urb-from-ep
-    API-usb-hcd-giveback-urb
-    API-usb-alloc-streams
-    API-usb-free-streams
-    API-usb-hcd-resume-root-hub
-    API-usb-bus-start-enum
-    API-usb-hcd-irq
-    API-usb-hc-died
-    API-usb-create-shared-hcd
-    API-usb-create-hcd
-    API-usb-add-hcd
-    API-usb-remove-hcd
-    API-usb-hcd-pci-probe
-    API-usb-hcd-pci-remove
-    API-usb-hcd-pci-shutdown
-    API-hcd-buffer-create
-    API-hcd-buffer-destroy
+.. kernel-doc:: drivers/usb/core/hcd-pci.c
+    :export:
 
+.. kernel-doc:: drivers/usb/core/buffer.c
+    :internal:
 
 
 

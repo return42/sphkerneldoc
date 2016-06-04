@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 This ioctl allows applications to enumerate all frame sizes supported by
 a sub-device on the given pad for the given media bus format. Supported
 formats can be retrieved with the

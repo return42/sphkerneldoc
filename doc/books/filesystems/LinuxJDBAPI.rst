@@ -167,15 +167,8 @@ Structures
 ----------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-typedef-handle-t
-    API-typedef-journal-t
-    API-struct-jbd2-inode
-    API-struct-jbd2-journal-handle
-    API-struct-journal-s
-
+.. kernel-doc:: include/linux/jbd2.h
+    :internal:
 
 .. _functions:
 
@@ -192,28 +185,11 @@ Journal Level
 -------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: fs/jbd2/journal.c
+    :export:
 
-    API-jbd2-journal-force-commit-nested
-    API-jbd2-journal-force-commit
-    API-jbd2-journal-init-dev
-    API-jbd2-journal-init-inode
-    API-jbd2-journal-update-sb-errno
-    API-jbd2-journal-load
-    API-jbd2-journal-destroy
-    API-jbd2-journal-check-used-features
-    API-jbd2-journal-check-available-features
-    API-jbd2-journal-set-features
-    API-jbd2-journal-flush
-    API-jbd2-journal-wipe
-    API-jbd2-journal-abort
-    API-jbd2-journal-errno
-    API-jbd2-journal-clear-err
-    API-jbd2-journal-ack-err
-    API-jbd2-journal-recover
-    API-jbd2-journal-skip-recovery
-
+.. kernel-doc:: fs/jbd2/recovery.c
+    :internal:
 
 .. _transaction_level:
 
@@ -221,25 +197,8 @@ Transasction Level
 ------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-jbd2--journal-start
-    API-jbd2-journal-start-reserved
-    API-jbd2-journal-extend
-    API-jbd2--journal-restart
-    API-jbd2-journal-lock-updates
-    API-jbd2-journal-unlock-updates
-    API-jbd2-journal-get-write-access
-    API-jbd2-journal-get-create-access
-    API-jbd2-journal-get-undo-access
-    API-jbd2-journal-set-triggers
-    API-jbd2-journal-dirty-metadata
-    API-jbd2-journal-forget
-    API-jbd2-journal-stop
-    API-jbd2-journal-try-to-free-buffers
-    API-jbd2-journal-invalidatepage
-
+.. kernel-doc:: fs/jbd2/transaction.c
+    :export:
 
 .. _see_also:
 

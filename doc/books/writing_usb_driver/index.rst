@@ -51,11 +51,10 @@ Magazine, October 2001, Issue 90.
 .. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
 .. ------------------------------------------------------------------------------
 
-.. only:: html
 
-  Retrieval
-  =========
+Retrieval
+=========
 
-  * :ref:`genindex`
-  * :ref:`search`
+* :ref:`genindex`
 
+.. todolist::

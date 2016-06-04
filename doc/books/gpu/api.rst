@@ -11,58 +11,41 @@ Public functions
 ================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-vga-switcheroo-register-handler
-    API-vga-switcheroo-unregister-handler
-    API-vga-switcheroo-handler-flags
-    API-vga-switcheroo-register-client
-    API-vga-switcheroo-register-audio-client
-    API-vga-switcheroo-get-client-state
-    API-vga-switcheroo-unregister-client
-    API-vga-switcheroo-client-fb-set
-    API-vga-switcheroo-lock-ddc
-    API-vga-switcheroo-unlock-ddc
-    API-vga-switcheroo-process-delayed-switch
-    API-vga-switcheroo-set-dynamic-switch
-    API-vga-switcheroo-init-domain-pm-ops
-    API-vga-switcheroo-init-domain-pm-optimus-hdmi-audio
-
+.. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :export:
 
 Public structures
 =================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :functions: vga_switcheroo_handler
 
-    API-struct-vga-switcheroo-handler
-    API-struct-vga-switcheroo-client-ops
-
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :functions: vga_switcheroo_client_ops
 
 Public constants
 ================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :functions: vga_switcheroo_handler_flags_t
 
-    API-enum-vga-switcheroo-handler-flags-t
-    API-enum-vga-switcheroo-client-id
-    API-enum-vga-switcheroo-state
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :functions: vga_switcheroo_client_id
 
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :functions: vga_switcheroo_state
 
 Private structures
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :functions: vgasr_priv
 
-    API-struct-vgasr-priv
-    API-struct-vga-switcheroo-client
-
+.. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :functions: vga_switcheroo_client
 
 
 

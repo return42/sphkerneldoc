@@ -156,51 +156,12 @@ DRM_IOCTL_VERSION ioctl.
 Device Instance and Driver Handling
 -----------------------------------
 
-A device instance for a drm driver is represented by struct
-``drm_device``. This is allocated with ``drm_dev_alloc``, usually from
-bus-specific ->``probe`` callbacks implemented by the driver. The driver
-then needs to initialize all the various subsystems for the drm device
-like memory management, vblank handling, modesetting support and intial
-output configuration plus obviously initialize all the corresponding
-hardware bits. An important part of this is also calling
-``drm_dev_set_unique`` to set the userspace-visible unique name of this
-device instance. Finally when everything is up and running and ready for
-userspace the device instance can be published using
-``drm_dev_register``.
 
-There is also deprecated support for initalizing device instances using
-bus-specific helpers and the ->``load`` callback. But due to
-backwards-compatibility needs the device instance have to be published
-too early, which requires unpretty global locking to make safe and is
-therefore only support for existing drivers not yet converted to the new
-scheme.
+.. kernel-doc:: drivers/gpu/drm/drm_drv.c
+    :doc: driver instance overview
 
-When cleaning up a device instance everything needs to be done in
-reverse: First unpublish the device instance with
-``drm_dev_unregister``. Then clean up any other resources allocated at
-device initialization and drop the driver's reference to ``drm_device``
-using ``drm_dev_unref``.
-
-Note that the lifetime rules for ``drm_device`` instance has still a lot
-of historical baggage. Hence use the reference counting provided by
-``drm_dev_ref`` and ``drm_dev_unref`` only carefully.
-
-Also note that embedding of ``drm_device`` is currently not (yet)
-supported (but it would be easy to add). Drivers can store
-driver-private data in the dev_priv field of ``drm_device``.
-
-
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-put-dev
-    API-drm-dev-alloc
-    API-drm-dev-ref
-    API-drm-dev-unref
-    API-drm-dev-register
-    API-drm-dev-unregister
-    API-drm-dev-set-unique
-
+.. kernel-doc:: drivers/gpu/drm/drm_drv.c
+    :export:
 
 Driver Load
 -----------
@@ -296,16 +257,11 @@ be used in new drivers. Besides that there's a few helpers for pci
 drivers.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_pci.c
+    :export:
 
-    API-drm-pci-alloc
-    API-drm-pci-free
-    API-drm-get-pci-dev
-    API-drm-pci-init
-    API-drm-pci-exit
-    API-drm-platform-init
-
+.. kernel-doc:: drivers/gpu/drm/drm_platform.c
+    :export:
 
 .. _drm-memory-management:
 
@@ -674,88 +630,24 @@ GEM Function Reference
 ----------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_gem.c
+    :export:
 
-    API-drm-gem-object-init
-    API-drm-gem-private-object-init
-    API-drm-gem-handle-delete
-    API-drm-gem-dumb-destroy
-    API-drm-gem-handle-create
-    API-drm-gem-free-mmap-offset
-    API-drm-gem-create-mmap-offset-size
-    API-drm-gem-create-mmap-offset
-    API-drm-gem-get-pages
-    API-drm-gem-put-pages
-    API-drm-gem-object-lookup
-    API-drm-gem-object-free
-    API-drm-gem-vm-open
-    API-drm-gem-vm-close
-    API-drm-gem-mmap-obj
-    API-drm-gem-mmap
-    API-struct-drm-gem-object
-    API-drm-gem-object-reference
-    API-drm-gem-object-unreference
-    API-drm-gem-object-unreference-unlocked
-
+.. kernel-doc:: include/drm/drm_gem.h
+    :internal:
 
 VMA Offset Manager
 ------------------
 
-The vma-manager is responsible to map arbitrary driver-dependent memory
-regions into the linear user address-space. It provides offsets to the
-caller which can then be used on the address_space of the drm-device.
-It takes care to not overlap regions, size them appropriately and to not
-confuse mm-core by inconsistent fake vm_pgoff fields. Drivers shouldn't
-use this for object placement in VMEM. This manager should only be used
-to manage mappings into linear user-space VMs.
 
-We use drm_mm as backend to manage object allocations. But it is highly
-optimized for alloc/free calls, not lookups. Hence, we use an rb-tree to
-speed up offset lookups.
+.. kernel-doc:: drivers/gpu/drm/drm_vma_manager.c
+    :doc: vma offset manager
 
-You must not use multiple offset managers on a single address_space.
-Otherwise, mm-core will be unable to tear down memory mappings as the VM
-will no longer be linear.
+.. kernel-doc:: drivers/gpu/drm/drm_vma_manager.c
+    :export:
 
-This offset manager works on page-based addresses. That is, every
-argument and return code (with the exception of
-``drm_vma_node_offset_addr``) is given in number of pages, not number of
-bytes. That means, object sizes and offsets must always be page-aligned
-(as usual). If you want to get a valid byte-based user-space address for
-a given offset, please see ``drm_vma_node_offset_addr``.
-
-Additionally to offset management, the vma offset manager also handles
-access management. For every open-file context that is allowed to access
-a given node, you must call ``drm_vma_node_allow``. Otherwise, an
-``mmap`` call on this open-file with the offset of the node will fail
-with -EACCES. To revoke access again, use ``drm_vma_node_revoke``.
-However, the caller is responsible for destroying already existing
-mappings, if required.
-
-
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-vma-offset-manager-init
-    API-drm-vma-offset-manager-destroy
-    API-drm-vma-offset-lookup-locked
-    API-drm-vma-offset-add
-    API-drm-vma-offset-remove
-    API-drm-vma-node-allow
-    API-drm-vma-node-revoke
-    API-drm-vma-node-is-allowed
-    API-drm-vma-offset-exact-lookup-locked
-    API-drm-vma-offset-lock-lookup
-    API-drm-vma-offset-unlock-lookup
-    API-drm-vma-node-reset
-    API-drm-vma-node-start
-    API-drm-vma-node-size
-    API-drm-vma-node-has-offset
-    API-drm-vma-node-offset-addr
-    API-drm-vma-node-unmap
-    API-drm-vma-node-verify-access
-
+.. kernel-doc:: include/drm/drm_vma_manager.h
+    :internal:
 
 .. _drm-prime-support:
 
@@ -818,41 +710,16 @@ These two operations are mandatory for GEM drivers that support PRIME.
 PRIME Helper Functions
 ++++++++++++++++++++++
 
-Drivers can implement ``gem_prime_export`` and ``gem_prime_import`` in
-terms of simpler APIs by using the helper functions
-``drm_gem_prime_export`` and ``drm_gem_prime_import``. These functions
-implement dma-buf support in terms of six lower-level driver callbacks:
 
-Export callbacks:
-
-* ``gem_prime_pin`` (optional): prepare a GEM object for exporting *
-``gem_prime_get_sg_table``: provide a scatter/gather table of pinned
-pages * ``gem_prime_vmap``: vmap a buffer exported by your driver *
-``gem_prime_vunmap``: vunmap a buffer exported by your driver *
-``gem_prime_mmap`` (optional): mmap a buffer exported by your driver
-
-Import callback:
-
-* ``gem_prime_import_sg_table`` (import): produce a GEM object from
-another driver's scatter/gather table
-
+.. kernel-doc:: drivers/gpu/drm/drm_prime.c
+    :doc: PRIME Helpers
 
 PRIME Function References
 -------------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-gem-dmabuf-release
-    API-drm-gem-prime-export
-    API-drm-gem-prime-handle-to-fd
-    API-drm-gem-prime-import
-    API-drm-gem-prime-fd-to-handle
-    API-drm-prime-pages-to-sg
-    API-drm-prime-sg-to-page-addr-arrays
-    API-drm-prime-gem-destroy
-
+.. kernel-doc:: drivers/gpu/drm/drm_prime.c
+    :export:
 
 DRM MM Range Allocator
 ----------------------
@@ -861,135 +728,39 @@ DRM MM Range Allocator
 Overview
 ++++++++
 
-drm_mm provides a simple range allocator. The drivers are free to use
-the resource allocator from the linux core if it suits them, the upside
-of drm_mm is that it's in the DRM core. Which means that it's easier to
-extend for some of the crazier special purpose needs of gpus.
 
-The main data struct is ``drm_mm``, allocations are tracked in
-``drm_mm_node``. Drivers are free to embed either of them into their own
-suitable datastructures. drm_mm itself will not do any allocations of
-its own, so if drivers choose not to embed nodes they need to still
-allocate them themselves.
-
-The range allocator also supports reservation of preallocated blocks.
-This is useful for taking over initial mode setting configurations from
-the firmware, where an object needs to be created which exactly matches
-the firmware's scanout target. As long as the range is still free it can
-be inserted anytime after the allocator is initialized, which helps with
-avoiding looped depencies in the driver load sequence.
-
-drm_mm maintains a stack of most recently freed holes, which of all
-simplistic datastructures seems to be a fairly decent approach to
-clustering allocations and avoiding too much fragmentation. This means
-free space searches are O(num_holes). Given that all the fancy features
-drm_mm supports something better would be fairly complex and since gfx
-thrashing is a fairly steep cliff not a real concern. Removing a node
-again is O(1).
-
-drm_mm supports a few features: Alignment and range restrictions can be
-supplied. Further more every ``drm_mm_node`` has a color value (which is
-just an opaqua unsigned long) which in conjunction with a driver
-callback can be used to implement sophisticated placement restrictions.
-The i915 DRM driver uses this to implement guard pages between
-incompatible caching domains in the graphics TT.
-
-Two behaviors are supported for searching and allocating: bottom-up and
-top-down. The default is bottom-up. Top-down allocation can be used if
-the memory area has different restrictions, or just to reduce
-fragmentation.
-
-Finally iteration helpers to walk all nodes and all holes are provided
-as are some basic allocator dumpers for debugging.
-
+.. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :doc: Overview
 
 LRU Scan/Eviction Support
 +++++++++++++++++++++++++
 
-Very often GPUs need to have continuous allocations for a given object.
-When evicting objects to make space for a new one it is therefore not
-most efficient when we simply start to select all objects from the tail
-of an LRU until there's a suitable hole: Especially for big objects or
-nodes that otherwise have special allocation constraints there's a good
-chance we evict lots of (smaller) objects unecessarily.
 
-The DRM range allocator supports this use-case through the scanning
-interfaces. First a scan operation needs to be initialized with
-``drm_mm_init_scan`` or ``drm_mm_init_scan_with_range``. The the driver
-adds objects to the roaster (probably by walking an LRU list, but this
-can be freely implemented) until a suitable hole is found or there's no
-further evitable object.
-
-The the driver must walk through all objects again in exactly the
-reverse order to restore the allocator state. Note that while the
-allocator is used in the scan mode no other operation is allowed.
-
-Finally the driver evicts all objects selected in the scan. Adding and
-removing an object is O(1), and since freeing a node is also O(1) the
-overall complexity is O(scanned_objects). So like the free stack which
-needs to be walked before a scan operation even begins this is linear in
-the number of objects. It doesn't seem to hurt badly.
-
+.. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :doc: lru scan roaster
 
 DRM MM Range Allocator Function References
 ------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :export:
 
-    API-drm-mm-reserve-node
-    API-drm-mm-insert-node-generic
-    API-drm-mm-insert-node-in-range-generic
-    API-drm-mm-remove-node
-    API-drm-mm-replace-node
-    API-drm-mm-init-scan
-    API-drm-mm-init-scan-with-range
-    API-drm-mm-scan-add-block
-    API-drm-mm-scan-remove-block
-    API-drm-mm-clean
-    API-drm-mm-init
-    API-drm-mm-takedown
-    API-drm-mm-debug-table
-    API-drm-mm-dump-table
-    API-drm-mm-node-allocated
-    API-drm-mm-initialized
-    API-drm-mm-hole-node-start
-    API-drm-mm-hole-node-end
-    API-drm-mm-for-each-node
-    API-drm-mm-for-each-hole
-    API-drm-mm-insert-node
-    API-drm-mm-insert-node-in-range
-
+.. kernel-doc:: include/drm/drm_mm.h
+    :internal:
 
 CMA Helper Functions Reference
 ------------------------------
 
-The Contiguous Memory Allocator reserves a pool of memory at early boot
-that is used to service requests for large blocks of contiguous memory.
 
-The DRM GEM/CMA helpers use this allocator as a means to provide buffer
-objects that are physically contiguous in memory. This is useful for
-display drivers that are unable to map scattered buffers via an IOMMU.
+.. kernel-doc:: drivers/gpu/drm/drm_gem_cma_helper.c
+    :doc: cma helpers
 
+.. kernel-doc:: drivers/gpu/drm/drm_gem_cma_helper.c
+    :export:
 
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-gem-cma-create
-    API-drm-gem-cma-free-object
-    API-drm-gem-cma-dumb-create-internal
-    API-drm-gem-cma-dumb-create
-    API-drm-gem-cma-dumb-map-offset
-    API-drm-gem-cma-mmap
-    API-drm-gem-cma-describe
-    API-drm-gem-cma-prime-get-sg-table
-    API-drm-gem-cma-prime-import-sg-table
-    API-drm-gem-cma-prime-mmap
-    API-drm-gem-cma-prime-vmap
-    API-drm-gem-cma-prime-vunmap
-    API-struct-drm-gem-cma-object
-
+.. kernel-doc:: include/drm/drm_gem_cma_helper.h
+    :internal:
 
 .. _drm-mode-setting:
 
@@ -1022,78 +793,21 @@ Display Modes Function Reference
 --------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_modes.h
+    :internal:
 
-    API-enum-drm-mode-status
-    API-struct-drm-display-mode
-    API-drm-mode-is-stereo
-    API-drm-mode-debug-printmodeline
-    API-drm-mode-create
-    API-drm-mode-destroy
-    API-drm-mode-probed-add
-    API-drm-cvt-mode
-    API-drm-gtf-mode-complex
-    API-drm-gtf-mode
-    API-drm-display-mode-from-videomode
-    API-drm-display-mode-to-videomode
-    API-of-get-drm-display-mode
-    API-drm-mode-set-name
-    API-drm-mode-hsync
-    API-drm-mode-vrefresh
-    API-drm-mode-set-crtcinfo
-    API-drm-mode-copy
-    API-drm-mode-duplicate
-    API-drm-mode-equal
-    API-drm-mode-equal-no-clocks
-    API-drm-mode-equal-no-clocks-no-stereo
-    API-drm-mode-validate-basic
-    API-drm-mode-validate-size
-    API-drm-mode-prune-invalid
-    API-drm-mode-sort
-    API-drm-mode-connector-list-update
-    API-drm-mode-parse-command-line-for-connector
-    API-drm-mode-create-from-cmdline-mode
-
+.. kernel-doc:: drivers/gpu/drm/drm_modes.c
+    :export:
 
 Atomic Mode Setting Function Reference
 --------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_atomic.c
+    :export:
 
-    API-drm-atomic-state-default-release
-    API-drm-atomic-state-init
-    API-drm-atomic-state-alloc
-    API-drm-atomic-state-default-clear
-    API-drm-atomic-state-clear
-    API-drm-atomic-state-free
-    API-drm-atomic-get-crtc-state
-    API-drm-atomic-set-mode-for-crtc
-    API-drm-atomic-set-mode-prop-for-crtc
-    API-drm-atomic-crtc-set-property
-    API-drm-atomic-get-plane-state
-    API-drm-atomic-plane-set-property
-    API-drm-atomic-get-connector-state
-    API-drm-atomic-connector-set-property
-    API-drm-atomic-set-crtc-for-plane
-    API-drm-atomic-set-fb-for-plane
-    API-drm-atomic-set-crtc-for-connector
-    API-drm-atomic-add-affected-connectors
-    API-drm-atomic-add-affected-planes
-    API-drm-atomic-legacy-backoff
-    API-drm-atomic-check-only
-    API-drm-atomic-commit
-    API-drm-atomic-async-commit
-    API-drm-atomic-clean-old-fb
-    API-drm-atomic-replace-property-blob
-    API-drm-atomic-crtc-get-property
-    API-drm-atomic-crtc-check
-    API-drm-atomic-plane-get-property
-    API-drm-atomic-plane-check
-    API-drm-atomic-connector-get-property
-
+.. kernel-doc:: drivers/gpu/drm/drm_atomic.c
+    :internal:
 
 Frame Buffer Abstraction
 ------------------------
@@ -1570,162 +1284,28 @@ KMS API Functions
 -----------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-get-connector-status-name
-    API-drm-get-subpixel-order-name
-    API-drm-get-format-name
-    API-drm-mode-object-find
-    API-drm-framebuffer-init
-    API-drm-framebuffer-lookup
-    API-drm-framebuffer-unreference
-    API-drm-framebuffer-reference
-    API-drm-framebuffer-unregister-private
-    API-drm-framebuffer-cleanup
-    API-drm-framebuffer-remove
-    API-drm-crtc-init-with-planes
-    API-drm-crtc-cleanup
-    API-drm-crtc-index
-    API-drm-display-info-set-bus-formats
-    API-drm-connector-init
-    API-drm-connector-cleanup
-    API-drm-connector-register
-    API-drm-connector-unregister
-    API-drm-connector-unplug-all
-    API-drm-encoder-init
-    API-drm-encoder-index
-    API-drm-encoder-cleanup
-    API-drm-universal-plane-init
-    API-drm-plane-init
-    API-drm-plane-cleanup
-    API-drm-plane-index
-    API-drm-plane-from-index
-    API-drm-plane-force-disable
-    API-drm-mode-create-dvi-i-properties
-    API-drm-mode-create-tv-properties
-    API-drm-mode-create-scaling-mode-property
-    API-drm-mode-create-aspect-ratio-property
-    API-drm-mode-create-dirty-info-property
-    API-drm-mode-create-suggested-offset-properties
-    API-drm-mode-set-config-internal
-    API-drm-crtc-get-hv-timing
-    API-drm-crtc-check-viewport
-    API-drm-mode-legacy-fb-format
-    API-drm-property-create
-    API-drm-property-create-enum
-    API-drm-property-create-bitmask
-    API-drm-property-create-range
-    API-drm-property-create-signed-range
-    API-drm-property-create-object
-    API-drm-property-create-bool
-    API-drm-property-add-enum
-    API-drm-property-destroy
-    API-drm-object-attach-property
-    API-drm-object-property-set-value
-    API-drm-object-property-get-value
-    API-drm-property-create-blob
-    API-drm-property-unreference-blob
-    API-drm-property-reference-blob
-    API-drm-property-lookup-blob
-    API-drm-mode-connector-set-path-property
-    API-drm-mode-connector-set-tile-property
-    API-drm-mode-connector-update-edid-property
-    API-drm-mode-plane-set-obj-prop
-    API-drm-mode-connector-attach-encoder
-    API-drm-mode-crtc-set-gamma-size
-    API-drm-mode-config-reset
-    API-drm-fb-get-bpp-depth
-    API-drm-format-num-planes
-    API-drm-format-plane-cpp
-    API-drm-format-horz-chroma-subsampling
-    API-drm-format-vert-chroma-subsampling
-    API-drm-format-plane-width
-    API-drm-format-plane-height
-    API-drm-rotation-simplify
-    API-drm-mode-config-init
-    API-drm-mode-config-cleanup
-    API-drm-mode-get-tile-group
-    API-drm-mode-create-tile-group
-
+.. kernel-doc:: drivers/gpu/drm/drm_crtc.c
+    :export:
 
 KMS Data Structures
 -------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-drm-framebuffer-funcs
-    API-struct-drm-crtc-state
-    API-struct-drm-crtc-funcs
-    API-struct-drm-crtc
-    API-struct-drm-connector-state
-    API-struct-drm-connector-funcs
-    API-struct-drm-encoder-funcs
-    API-struct-drm-encoder
-    API-struct-drm-connector
-    API-struct-drm-plane-state
-    API-struct-drm-plane-funcs
-    API-struct-drm-plane
-    API-struct-drm-bridge-funcs
-    API-struct-drm-bridge
-    API-struct-drm-atomic-state
-    API-struct-drm-mode-set
-    API-struct-drm-mode-config-funcs
-    API-struct-drm-mode-config
-    API-drm-for-each-plane-mask
-    API-drm-for-each-encoder-mask
-    API-drm-crtc-mask
-    API-drm-encoder-crtc-ok
-
+.. kernel-doc:: include/drm/drm_crtc.h
+    :internal:
 
 KMS Locking
 -----------
 
-As KMS moves toward more fine grained locking, and atomic ioctl where
-userspace can indirectly control locking order, it becomes necessary to
-use ww_mutex and acquire-contexts to avoid deadlocks. But because the
-locking is more distributed around the driver code, we want a bit of
-extra utility/tracking out of our acquire-ctx. This is provided by
-drm_modeset_lock / drm_modeset_acquire_ctx.
 
-For basic principles of ww_mutex, see:
-Documentation/locking/ww-mutex-design.txt
+.. kernel-doc:: drivers/gpu/drm/drm_modeset_lock.c
+    :doc: kms locking
 
-The basic usage pattern is to:
+.. kernel-doc:: include/drm/drm_modeset_lock.h
+    :internal:
 
-drm_modeset_acquire_init( ``ctx``) retry: foreach (lock in
-random_ordered_set_of_locks) { ret = drm_modeset_lock(lock,
-``ctx``) if (ret == -EDEADLK) { drm_modeset_backoff( ``ctx``); goto
-retry; } } ... do stuff ... drm_modeset_drop_locks( ``ctx``);
-drm_modeset_acquire_fini( ``ctx``);
-
-
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-drm-modeset-acquire-ctx
-    API-struct-drm-modeset-lock
-    API-drm-modeset-lock-init
-    API-drm-modeset-lock-fini
-    API-drm-modeset-is-locked
-    API-drm-modeset-lock-all
-    API-drm-modeset-unlock-all
-    API-drm-modeset-lock-crtc
-    API-drm-modeset-legacy-acquire-ctx
-    API-drm-modeset-unlock-crtc
-    API-drm-warn-on-modeset-not-all-locked
-    API-drm-modeset-acquire-init
-    API-drm-modeset-acquire-fini
-    API-drm-modeset-drop-locks
-    API-drm-modeset-backoff
-    API-drm-modeset-backoff-interruptible
-    API-drm-modeset-lock
-    API-drm-modeset-lock-interruptible
-    API-drm-modeset-unlock
-    API-drm-modeset-lock-all-ctx
-
+.. kernel-doc:: drivers/gpu/drm/drm_modeset_lock.c
+    :export:
 
 Mode Setting Helper Functions
 =============================
@@ -1767,542 +1347,167 @@ Atomic Modeset Helper Functions Reference
 Overview
 ++++++++
 
-This helper library provides implementations of check and commit
-functions on top of the CRTC modeset helper callbacks and the plane
-helper callbacks. It also provides convenience implementations for the
-atomic state handling callbacks for drivers which don't need to subclass
-the drm core structures to add their own additional internal state.
 
-This library also provides default implementations for the check
-callback in ``drm_atomic_helper_check`` and for the commit callback with
-``drm_atomic_helper_commit``. But the individual stages and callbacks
-are exposed to allow drivers to mix and match and e.g. use the plane
-helpers only together with a driver private modeset implementation.
-
-This library also provides implementations for all the legacy driver
-interfaces on top of the atomic interface. See
-``drm_atomic_helper_set_config``, ``drm_atomic_helper_disable_plane``,
-``drm_atomic_helper_disable_plane`` and the various functions to
-implement set_property callbacks. New drivers must not implement these
-functions themselves but must use the provided helpers.
-
-The atomic helper uses the same function table structures as all other
-modesetting helpers. See the documentation for struct
-``drm_crtc_helper_funcs``, struct ``drm_encoder_helper_funcs`` and
-struct ``drm_connector_helper_funcs``. It also shares the struct
-``drm_plane_helper_funcs`` function table with the plane helpers.
-
+.. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :doc: overview
 
 Implementing Asynchronous Atomic Commit
 +++++++++++++++++++++++++++++++++++++++
 
-For now the atomic helpers don't support async commit directly. If there
-is real need it could be added though, using the dma-buf fence
-infrastructure for generic synchronization with outstanding rendering.
 
-For now drivers have to implement async commit themselves, with the
-following sequence being the recommended one:
-
-1. Run ``drm_atomic_helper_prepare_planes`` first. This is the only
-function which commit needs to call which can fail, so we want to run it
-first and synchronously.
-
-2. Synchronize with any outstanding asynchronous commit worker threads
-which might be affected the new state update. This can be done by either
-cancelling or flushing the work items, depending upon whether the driver
-can deal with cancelled updates. Note that it is important to ensure
-that the framebuffer cleanup is still done when cancelling.
-
-For sufficient parallelism it is recommended to have a work item per
-crtc (for updates which don't touch global state) and a global one. Then
-we only need to synchronize with the crtc work items for changed crtcs
-and the global work item, which allows nice concurrent updates on
-disjoint sets of crtcs.
-
-3. The software state is updated synchronously with
-``drm_atomic_helper_swap_state``. Doing this under the protection of all
-modeset locks means concurrent callers never see inconsistent state. And
-doing this while it's guaranteed that no relevant async worker runs
-means that async workers do not need grab any locks. Actually they must
-not grab locks, for otherwise the work flushing will deadlock.
-
-4. Schedule a work item to do all subsequent steps, using the split-out
-commit helpers: a) pre-plane commit b) plane commit c) post-plane commit
-and then cleaning up the framebuffers after the old framebuffer is no
-longer being displayed.
-
+.. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :doc: implementing async commit
 
 Atomic State Reset and Initialization
 +++++++++++++++++++++++++++++++++++++
 
-Both the drm core and the atomic helpers assume that there is always the
-full and correct atomic software state for all connectors, CRTCs and
-planes available. Which is a bit a problem on driver load and also after
-system suspend. One way to solve this is to have a hardware state
-read-out infrastructure which reconstructs the full software state (e.g.
-the i915 driver).
 
-The simpler solution is to just reset the software state to everything
-off, which is easiest to do by calling ``drm_mode_config_reset``. To
-facilitate this the atomic helpers provide default reset implementations
-for all hooks.
+.. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :doc: atomic state reset and initialization
 
-On the upside the precise state tracking of atomic simplifies system
-suspend and resume a lot. For drivers using ``drm_mode_config_reset`` a
-complete recipe is implemented in ``drm_atomic_helper_suspend`` and
-``drm_atomic_helper_resume``. For other drivers the building blocks are
-split out, see the documentation for these functions.
+.. kernel-doc:: include/drm/drm_atomic_helper.h
+    :internal:
 
-
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-atomic-crtc-for-each-plane
-    API-drm-atomic-crtc-state-for-each-plane
-    API-drm-atomic-helper-check-modeset
-    API-drm-atomic-helper-check-planes
-    API-drm-atomic-helper-check
-    API-drm-atomic-helper-update-legacy-modeset-state
-    API-drm-atomic-helper-commit-modeset-disables
-    API-drm-atomic-helper-commit-modeset-enables
-    API-drm-atomic-helper-framebuffer-changed
-    API-drm-atomic-helper-wait-for-vblanks
-    API-drm-atomic-helper-commit
-    API-drm-atomic-helper-prepare-planes
-    API-drm-atomic-helper-commit-planes
-    API-drm-atomic-helper-commit-planes-on-crtc
-    API-drm-atomic-helper-disable-planes-on-crtc
-    API-drm-atomic-helper-cleanup-planes
-    API-drm-atomic-helper-swap-state
-    API-drm-atomic-helper-update-plane
-    API-drm-atomic-helper-disable-plane
-    API-drm-atomic-helper-set-config
-    API-drm-atomic-helper-disable-all
-    API-drm-atomic-helper-suspend
-    API-drm-atomic-helper-resume
-    API-drm-atomic-helper-crtc-set-property
-    API-drm-atomic-helper-plane-set-property
-    API-drm-atomic-helper-connector-set-property
-    API-drm-atomic-helper-page-flip
-    API-drm-atomic-helper-connector-dpms
-    API-drm-atomic-helper-crtc-reset
-    API---drm-atomic-helper-crtc-duplicate-state
-    API-drm-atomic-helper-crtc-duplicate-state
-    API---drm-atomic-helper-crtc-destroy-state
-    API-drm-atomic-helper-crtc-destroy-state
-    API-drm-atomic-helper-plane-reset
-    API---drm-atomic-helper-plane-duplicate-state
-    API-drm-atomic-helper-plane-duplicate-state
-    API---drm-atomic-helper-plane-destroy-state
-    API-drm-atomic-helper-plane-destroy-state
-    API---drm-atomic-helper-connector-reset
-    API-drm-atomic-helper-connector-reset
-    API---drm-atomic-helper-connector-duplicate-state
-    API-drm-atomic-helper-connector-duplicate-state
-    API-drm-atomic-helper-duplicate-state
-    API---drm-atomic-helper-connector-destroy-state
-    API-drm-atomic-helper-connector-destroy-state
-    API-drm-atomic-helper-legacy-gamma-set
-
+.. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :export:
 
 Modeset Helper Reference for Common Vtables
 -------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_modeset_helper_vtables.h
+    :internal:
 
-    API-struct-drm-crtc-helper-funcs
-    API-drm-crtc-helper-add
-    API-struct-drm-encoder-helper-funcs
-    API-drm-encoder-helper-add
-    API-struct-drm-connector-helper-funcs
-    API-drm-connector-helper-add
-    API-struct-drm-plane-helper-funcs
-    API-drm-plane-helper-add
-
-The DRM mode setting helper functions are common code for drivers to use
-if they wish. Drivers are not forced to use this code in their
-implementations but it would be useful if the code they do use at least
-provides a consistent interface and operation to userspace. Therefore it
-is highly recommended to use the provided helpers as much as possible.
-
-Because there is only one pointer per modeset object to hold a vfunc
-table for helper libraries they are by necessity shared among the
-different helpers.
-
-To make this clear all the helper vtables are pulled together in this
-location here.
-
+.. kernel-doc:: include/drm/drm_modeset_helper_vtables.h
+    :doc: overview
 
 Legacy CRTC/Modeset Helper Functions Reference
 ----------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_crtc_helper.c
+    :export:
 
-    API-drm-helper-move-panel-connectors-to-head
-    API-drm-helper-encoder-in-use
-    API-drm-helper-crtc-in-use
-    API-drm-helper-disable-unused-functions
-    API-drm-crtc-helper-set-mode
-    API-drm-crtc-helper-set-config
-    API-drm-helper-connector-dpms
-    API-drm-helper-mode-fill-fb-struct
-    API-drm-helper-resume-force-mode
-    API-drm-helper-crtc-mode-set
-    API-drm-helper-crtc-mode-set-base
-    API-drm-helper-crtc-enable-color-mgmt
-
-The CRTC modeset helper library provides a default set_config
-implementation in ``drm_crtc_helper_set_config``. Plus a few other
-convenience functions using the same callbacks which drivers can use to
-e.g. restore the modeset configuration on resume with
-``drm_helper_resume_force_mode``.
-
-Note that this helper library doesn't track the current power state of
-CRTCs and encoders. It can call callbacks like ->``dpms`` even though
-the hardware is already in the desired state. This deficiency has been
-fixed in the atomic helpers.
-
-The driver callbacks are mostly compatible with the atomic modeset
-helpers, except for the handling of the primary plane: Atomic helpers
-require that the primary plane is implemented as a real standalone plane
-and not directly tied to the CRTC state. For easier transition this
-library provides functions to implement the old semantics required by
-the CRTC helpers using the new plane and atomic helper callbacks.
-
-Drivers are strongly urged to convert to the atomic helpers (by way of
-first converting to the plane helpers). New drivers must not use these
-functions but need to implement the atomic interface instead,
-potentially using the atomic helpers for that.
-
-These legacy modeset helpers use the same function table structures as
-all other modesetting helpers. See the documentation for struct
-``drm_crtc_helper_funcs``, struct ``drm_encoder_helper_funcs`` and
-struct ``drm_connector_helper_funcs``.
-
+.. kernel-doc:: drivers/gpu/drm/drm_crtc_helper.c
+    :doc: overview
 
 Output Probing Helper Functions Reference
 -----------------------------------------
 
-This library provides some helper code for output probing. It provides
-an implementation of the core connector->fill_modes interface with
-drm_helper_probe_single_connector_modes.
 
-It also provides support for polling connectors with a work item and for
-generic hotplug interrupt handling where the driver doesn't or cannot
-keep track of a per-connector hpd interrupt.
+.. kernel-doc:: drivers/gpu/drm/drm_probe_helper.c
+    :doc: output probing helper overview
 
-This helper library can be used independently of the modeset helper
-library. Drivers can also overwrite different parts e.g. use their own
-hotplug handling code to avoid probing unrelated outputs.
-
-The probe helpers share the function table structures with other display
-helper libraries. See struct ``drm_connector_helper_funcs`` for the
-details.
-
-
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-kms-helper-poll-enable-locked
-    API-drm-helper-probe-single-connector-modes
-    API-drm-kms-helper-hotplug-event
-    API-drm-kms-helper-poll-disable
-    API-drm-kms-helper-poll-enable
-    API-drm-kms-helper-poll-init
-    API-drm-kms-helper-poll-fini
-    API-drm-helper-hpd-irq-event
-
+.. kernel-doc:: drivers/gpu/drm/drm_probe_helper.c
+    :export:
 
 fbdev Helper Functions Reference
 --------------------------------
 
-The fb helper functions are useful to provide an fbdev on top of a drm
-kernel mode setting driver. They can be used mostly independently from
-the crtc helper functions used by many drivers to implement the kernel
-mode setting interfaces.
 
-Initialization is done as a four-step process with
-``drm_fb_helper_prepare``, ``drm_fb_helper_init``,
-``drm_fb_helper_single_add_all_connectors`` and
-``drm_fb_helper_initial_config``. Drivers with fancier requirements than
-the default behaviour can override the third step with their own code.
-Teardown is done with ``drm_fb_helper_fini``.
+.. kernel-doc:: drivers/gpu/drm/drm_fb_helper.c
+    :doc: fbdev helpers
 
-At runtime drivers should restore the fbdev console by calling
-``drm_fb_helper_restore_fbdev_mode_unlocked`` from their ->lastclose
-callback. They should also notify the fb helper code from updates to the
-output configuration by calling ``drm_fb_helper_hotplug_event``. For
-easier integration with the output polling code in drm_crtc_helper.c
-the modeset code provides a ->output_poll_changed callback.
+.. kernel-doc:: drivers/gpu/drm/drm_fb_helper.c
+    :export:
 
-All other functions exported by the fb helper library can be used to
-implement the fbdev driver interface by the driver.
+.. kernel-doc:: include/drm/drm_fb_helper.h
+    :internal:
 
-It is possible, though perhaps somewhat tricky, to implement race-free
-hotplug detection using the fbdev helpers. The ``drm_fb_helper_prepare``
-helper must be called first to initialize the minimum required to make
-hotplug detection work. Drivers also need to make sure to properly set
-up the dev->mode_config.funcs member. After calling
-``drm_kms_helper_poll_init`` it is safe to enable interrupts and start
-processing hotplug events. At the same time, drivers should initialize
-all modeset objects such as CRTCs, encoders and connectors. To finish up
-the fbdev helper initialization, the ``drm_fb_helper_init`` function is
-called. To probe for all attached displays and set up an initial
-configuration using the detected hardware, drivers should call
-``drm_fb_helper_single_add_all_connectors`` followed by
-``drm_fb_helper_initial_config``.
+Framebuffer CMA Helper Functions Reference
+------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_fb_cma_helper.c
+    :doc: framebuffer cma helper functions
 
-    API-drm-fb-helper-single-add-all-connectors
-    API-drm-fb-helper-debug-enter
-    API-drm-fb-helper-debug-leave
-    API-drm-fb-helper-restore-fbdev-mode-unlocked
-    API-drm-fb-helper-blank
-    API-drm-fb-helper-prepare
-    API-drm-fb-helper-init
-    API-drm-fb-helper-alloc-fbi
-    API-drm-fb-helper-unregister-fbi
-    API-drm-fb-helper-release-fbi
-    API-drm-fb-helper-unlink-fbi
-    API-drm-fb-helper-sys-read
-    API-drm-fb-helper-sys-write
-    API-drm-fb-helper-sys-fillrect
-    API-drm-fb-helper-sys-copyarea
-    API-drm-fb-helper-sys-imageblit
-    API-drm-fb-helper-cfb-fillrect
-    API-drm-fb-helper-cfb-copyarea
-    API-drm-fb-helper-cfb-imageblit
-    API-drm-fb-helper-set-suspend
-    API-drm-fb-helper-setcmap
-    API-drm-fb-helper-check-var
-    API-drm-fb-helper-set-par
-    API-drm-fb-helper-pan-display
-    API-drm-fb-helper-fill-fix
-    API-drm-fb-helper-fill-var
-    API-drm-fb-helper-initial-config
-    API-drm-fb-helper-hotplug-event
-    API-struct-drm-fb-helper-surface-size
-    API-struct-drm-fb-helper-funcs
-    API-struct-drm-fb-helper
-
+.. kernel-doc:: drivers/gpu/drm/drm_fb_cma_helper.c
+    :export:
 
 Display Port Helper Functions Reference
 ---------------------------------------
 
-These functions contain some common logic and helpers at various
-abstraction levels to deal with Display Port sink devices and related
-things like DP aux channel transfers, EDID reading over DP aux channels,
-decoding certain DPCD blocks, ...
 
-The DisplayPort AUX channel is an abstraction to allow generic, driver-
-independent access to AUX functionality. Drivers can take advantage of
-this by filling in the fields of the drm_dp_aux structure.
+.. kernel-doc:: drivers/gpu/drm/drm_dp_helper.c
+    :doc: dp helpers
 
-Transactions are described using a hardware-independent
-drm_dp_aux_msg structure, which is passed into a driver's
-.\ ``transfer`` implementation. Both native and I2C-over-AUX
-transactions are supported.
+.. kernel-doc:: include/drm/drm_dp_helper.h
+    :internal:
+
+.. kernel-doc:: drivers/gpu/drm/drm_dp_helper.c
+    :export:
+
+Display Port Dual Mode Adaptor Helper Functions Reference
+---------------------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_dp_dual_mode_helper.c
+    :doc: dp dual mode helpers
 
-    API-struct-drm-dp-aux-msg
-    API-struct-drm-dp-aux
-    API-drm-dp-dpcd-readb
-    API-drm-dp-dpcd-writeb
-    API-drm-dp-dpcd-read
-    API-drm-dp-dpcd-write
-    API-drm-dp-dpcd-read-link-status
-    API-drm-dp-link-probe
-    API-drm-dp-link-power-up
-    API-drm-dp-link-power-down
-    API-drm-dp-link-configure
-    API-drm-dp-aux-register
-    API-drm-dp-aux-unregister
+.. kernel-doc:: include/drm/drm_dp_dual_mode_helper.h
+    :internal:
 
+.. kernel-doc:: drivers/gpu/drm/drm_dp_dual_mode_helper.c
+    :export:
 
 Display Port MST Helper Functions Reference
 -------------------------------------------
 
-These functions contain parts of the DisplayPort 1.2a MultiStream
-Transport protocol. The helpers contain a topology manager and bandwidth
-manager. The helpers encapsulate the sending and received of sideband
-msgs.
 
+.. kernel-doc:: drivers/gpu/drm/drm_dp_mst_topology.c
+    :doc: dp mst helper
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_dp_mst_helper.h
+    :internal:
 
-    API-struct-drm-dp-vcpi
-    API-struct-drm-dp-mst-port
-    API-struct-drm-dp-mst-branch
-    API-struct-drm-dp-mst-topology-mgr
-    API-drm-dp-update-payload-part1
-    API-drm-dp-update-payload-part2
-    API-drm-dp-mst-topology-mgr-set-mst
-    API-drm-dp-mst-topology-mgr-suspend
-    API-drm-dp-mst-topology-mgr-resume
-    API-drm-dp-mst-hpd-irq
-    API-drm-dp-mst-detect-port
-    API-drm-dp-mst-port-has-audio
-    API-drm-dp-mst-get-edid
-    API-drm-dp-find-vcpi-slots
-    API-drm-dp-mst-allocate-vcpi
-    API-drm-dp-mst-reset-vcpi-slots
-    API-drm-dp-mst-deallocate-vcpi
-    API-drm-dp-check-act-status
-    API-drm-dp-calc-pbn-mode
-    API-drm-dp-mst-dump-topology
-    API-drm-dp-mst-topology-mgr-init
-    API-drm-dp-mst-topology-mgr-destroy
-
+.. kernel-doc:: drivers/gpu/drm/drm_dp_mst_topology.c
+    :export:
 
 MIPI DSI Helper Functions Reference
 -----------------------------------
 
-These functions contain some common logic and helpers to deal with MIPI
-DSI peripherals.
 
-Helpers are provided for a number of standard MIPI DSI command as well
-as a subset of the MIPI DCS command set.
+.. kernel-doc:: drivers/gpu/drm/drm_mipi_dsi.c
+    :doc: dsi helpers
 
+.. kernel-doc:: include/drm/drm_mipi_dsi.h
+    :internal:
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-mipi-dsi-msg
-    API-struct-mipi-dsi-packet
-    API-struct-mipi-dsi-host-ops
-    API-struct-mipi-dsi-host
-    API-struct-mipi-dsi-device-info
-    API-struct-mipi-dsi-device
-    API-mipi-dsi-pixel-format-to-bpp
-    API-enum-mipi-dsi-dcs-tear-mode
-    API-struct-mipi-dsi-driver
-    API-of-find-mipi-dsi-device-by-node
-    API-mipi-dsi-device-register-full
-    API-mipi-dsi-device-unregister
-    API-of-find-mipi-dsi-host-by-node
-    API-mipi-dsi-attach
-    API-mipi-dsi-detach
-    API-mipi-dsi-packet-format-is-short
-    API-mipi-dsi-packet-format-is-long
-    API-mipi-dsi-create-packet
-    API-mipi-dsi-shutdown-peripheral
-    API-mipi-dsi-turn-on-peripheral
-    API-mipi-dsi-generic-write
-    API-mipi-dsi-generic-read
-    API-mipi-dsi-dcs-write-buffer
-    API-mipi-dsi-dcs-write
-    API-mipi-dsi-dcs-read
-    API-mipi-dsi-dcs-nop
-    API-mipi-dsi-dcs-soft-reset
-    API-mipi-dsi-dcs-get-power-mode
-    API-mipi-dsi-dcs-get-pixel-format
-    API-mipi-dsi-dcs-enter-sleep-mode
-    API-mipi-dsi-dcs-exit-sleep-mode
-    API-mipi-dsi-dcs-set-display-off
-    API-mipi-dsi-dcs-set-display-on
-    API-mipi-dsi-dcs-set-column-address
-    API-mipi-dsi-dcs-set-page-address
-    API-mipi-dsi-dcs-set-tear-off
-    API-mipi-dsi-dcs-set-tear-on
-    API-mipi-dsi-dcs-set-pixel-format
-    API-mipi-dsi-driver-register-full
-    API-mipi-dsi-driver-unregister
-
+.. kernel-doc:: drivers/gpu/drm/drm_mipi_dsi.c
+    :export:
 
 EDID Helper Functions Reference
 -------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-edid-header-is-valid
-    API-drm-edid-block-valid
-    API-drm-edid-is-valid
-    API-drm-do-get-edid
-    API-drm-probe-ddc
-    API-drm-get-edid
-    API-drm-get-edid-switcheroo
-    API-drm-edid-duplicate
-    API-drm-match-cea-mode
-    API-drm-get-cea-aspect-ratio
-    API-drm-edid-to-eld
-    API-drm-edid-to-sad
-    API-drm-edid-to-speaker-allocation
-    API-drm-av-sync-delay
-    API-drm-select-eld
-    API-drm-detect-hdmi-monitor
-    API-drm-detect-monitor-audio
-    API-drm-rgb-quant-range-selectable
-    API-drm-add-edid-modes
-    API-drm-add-modes-noedid
-    API-drm-set-preferred-mode
-    API-drm-hdmi-avi-infoframe-from-display-mode
-    API-drm-hdmi-vendor-infoframe-from-display-mode
-
+.. kernel-doc:: drivers/gpu/drm/drm_edid.c
+    :export:
 
 Rectangle Utilities Reference
 -----------------------------
 
-Utility functions to help manage rectangular areas for clipping,
-scaling, etc. calculations.
 
+.. kernel-doc:: include/drm/drm_rect.h
+    :doc: rect utils
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_rect.h
+    :internal:
 
-    API-struct-drm-rect
-    API-drm-rect-adjust-size
-    API-drm-rect-translate
-    API-drm-rect-downscale
-    API-drm-rect-width
-    API-drm-rect-height
-    API-drm-rect-visible
-    API-drm-rect-equals
-    API-drm-rect-intersect
-    API-drm-rect-clip-scaled
-    API-drm-rect-calc-hscale
-    API-drm-rect-calc-vscale
-    API-drm-rect-calc-hscale-relaxed
-    API-drm-rect-calc-vscale-relaxed
-    API-drm-rect-debug-print
-    API-drm-rect-rotate
-    API-drm-rect-rotate-inv
-
+.. kernel-doc:: drivers/gpu/drm/drm_rect.c
+    :export:
 
 Flip-work Helper Reference
 --------------------------
 
-Util to queue up work to run from work-queue context after flip/vblank.
-Typically this can be used to defer unref of framebuffer's, cursor bo's,
-etc until after vblank. The APIs are all thread-safe. Moreover,
-drm_flip_work_queue_task and drm_flip_work_queue can be called in
-atomic context.
 
+.. kernel-doc:: include/drm/drm_flip_work.h
+    :doc: flip utils
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_flip_work.h
+    :internal:
 
-    API-struct-drm-flip-task
-    API-struct-drm-flip-work
-    API-drm-flip-work-allocate-task
-    API-drm-flip-work-queue-task
-    API-drm-flip-work-queue
-    API-drm-flip-work-commit
-    API-drm-flip-work-init
-    API-drm-flip-work-cleanup
-
+.. kernel-doc:: drivers/gpu/drm/drm_flip_work.c
+    :export:
 
 HDMI Infoframes Helper Reference
 --------------------------------
@@ -2313,73 +1518,28 @@ But it nicely fits into the overall topic of mode setting helper
 libraries and hence is also included here.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/hdmi.h
+    :internal:
 
-    API-struct-hdmi-infoframe
-    API-hdmi-avi-infoframe-init
-    API-hdmi-avi-infoframe-pack
-    API-hdmi-spd-infoframe-init
-    API-hdmi-spd-infoframe-pack
-    API-hdmi-audio-infoframe-init
-    API-hdmi-audio-infoframe-pack
-    API-hdmi-vendor-infoframe-init
-    API-hdmi-vendor-infoframe-pack
-    API-hdmi-infoframe-pack
-    API-hdmi-infoframe-log
-    API-hdmi-infoframe-unpack
-
+.. kernel-doc:: drivers/video/hdmi.c
+    :export:
 
 Plane Helper Reference
 ----------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_plane_helper.c
+    :export:
 
-    API-drm-plane-helper-check-update
-    API-drm-primary-helper-update
-    API-drm-primary-helper-disable
-    API-drm-primary-helper-destroy
-    API-drm-crtc-init
-    API-drm-plane-helper-update
-    API-drm-plane-helper-disable
-
-This helper library has two parts. The first part has support to
-implement primary plane support on top of the normal CRTC configuration
-interface. Since the legacy ->set_config interface ties the primary
-plane together with the CRTC state this does not allow userspace to
-disable the primary plane itself. To avoid too much duplicated code use
-``drm_plane_helper_check_update`` which can be used to enforce the same
-restrictions as primary planes had thus. The default primary plane only
-expose XRBG8888 and ARGB8888 as valid pixel formats for the attached
-framebuffer.
-
-Drivers are highly recommended to implement proper support for primary
-planes, and newly merged drivers must not rely upon these transitional
-helpers.
-
-The second part also implements transitional helpers which allow drivers
-to gradually switch to the atomic helper infrastructure for plane
-updates. Once that switch is complete drivers shouldn't use these any
-longer, instead using the proper legacy implementations for update and
-disable plane hooks provided by the atomic helpers.
-
-Again drivers are strongly urged to switch to the new interfaces.
-
-The plane helpers share the function table structures with other
-helpers, specifically also the atomic helpers. See struct
-``drm_plane_helper_funcs`` for the details.
-
+.. kernel-doc:: drivers/gpu/drm/drm_plane_helper.c
+    :doc: overview
 
 Tile group
 ----------
 
-Tile groups are used to represent tiled monitors with a unique integer
-identifier. Tiled monitors using DisplayID v1.3 have a unique 8-byte
-handle, we store this in a tile group, so we have a common identifier
-for all tiles in a monitor group.
 
+.. kernel-doc:: drivers/gpu/drm/drm_crtc.c
+    :doc: Tile group
 
 Bridges
 -------
@@ -2388,63 +1548,32 @@ Bridges
 Overview
 ++++++++
 
-struct ``drm_bridge`` represents a device that hangs on to an encoder.
-These are handy when a regular ``drm_encoder`` entity isn't enough to
-represent the entire encoder chain.
 
-A bridge is always attached to a single ``drm_encoder`` at a time, but
-can be either connected to it directly, or through an intermediate
-bridge:
-
-encoder ---> bridge B ---> bridge A
-
-Here, the output of the encoder feeds to bridge B, and that furthers
-feeds to bridge A.
-
-The driver using the bridge is responsible to make the associations
-between the encoder and bridges. Once these links are made, the bridges
-will participate along with encoder functions to perform
-mode_set/enable/disable through the ops provided in
-``drm_bridge_funcs``.
-
-drm_bridge, like drm_panel, aren't drm_mode_object entities like
-planes, CRTCs, encoders or connectors and hence are not visible to
-userspace. They just provide additional hooks to get the desired output
-at the end of the encoder chain.
-
-Bridges can also be chained up using the next pointer in struct
-``drm_bridge``.
-
-Both legacy CRTC helpers and the new atomic modeset helpers support
-bridges.
-
+.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :doc: overview
 
 Default bridge callback sequence
 ++++++++++++++++++++++++++++++++
 
-The ``drm_bridge_funcs`` ops are populated by the bridge driver. The DRM
-internals (atomic and CRTC helpers) use the helpers defined in
-drm_bridge.c These helpers call a specific ``drm_bridge_funcs`` op for
-all the bridges during encoder configuration.
 
-For detailed specification of the bridge callbacks see
-``drm_bridge_funcs``.
+.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :doc: bridge callbacks
+
+.. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :export:
+
+Panel Helper Reference
+----------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/drm/drm_panel.h
+    :internal:
 
-    API-drm-bridge-add
-    API-drm-bridge-remove
-    API-drm-bridge-attach
-    API-drm-bridge-mode-fixup
-    API-drm-bridge-disable
-    API-drm-bridge-post-disable
-    API-drm-bridge-mode-set
-    API-drm-bridge-pre-enable
-    API-drm-bridge-enable
-    API-of-drm-find-bridge
+.. kernel-doc:: drivers/gpu/drm/drm_panel.c
+    :export:
 
+.. kernel-doc:: drivers/gpu/drm/drm_panel.c
+    :doc: drm panel
 
 .. _drm-kms-properties:
 
@@ -2584,7 +1713,7 @@ various modules/drivers.
 
        -  :rspan:`41` DRM
 
-       -  Generic
+       -  :rspan:`1` Generic
 
        -  “rotation”
 
@@ -2601,6 +1730,18 @@ various modules/drivers.
 
     -  .. row 3
 
+       -  “scaling mode”
+
+       -  ENUM
+
+       -  { "None", "Full", "Center", "Full aspect" }
+
+       -  Connector
+
+       -  Supported by: amdgpu, gma500, i915, nouveau and radeon.
+
+    -  .. row 4
+
        -  :rspan:`4` Connector
 
        -  “EDID”
@@ -2613,7 +1754,7 @@ various modules/drivers.
 
        -  Contains id of edid blob ptr object.
 
-    -  .. row 4
+    -  .. row 5
 
        -  “DPMS”
 
@@ -2625,7 +1766,7 @@ various modules/drivers.
 
        -  Contains DPMS operation mode value.
 
-    -  .. row 5
+    -  .. row 6
 
        -  “PATH”
 
@@ -2637,7 +1778,7 @@ various modules/drivers.
 
        -  Contains topology path to a connector.
 
-    -  .. row 6
+    -  .. row 7
 
        -  “TILE”
 
@@ -2649,7 +1790,7 @@ various modules/drivers.
 
        -  Contains tiling information for a connector.
 
-    -  .. row 7
+    -  .. row 8
 
        -  “CRTC_ID”
 
@@ -2661,7 +1802,7 @@ various modules/drivers.
 
        -  CRTC that connector is attached to (atomic)
 
-    -  .. row 8
+    -  .. row 9
 
        -  :rspan:`10` Plane
 
@@ -2675,7 +1816,7 @@ various modules/drivers.
 
        -  Plane type
 
-    -  .. row 9
+    -  .. row 10
 
        -  “SRC_X”
 
@@ -2687,7 +1828,7 @@ various modules/drivers.
 
        -  Scanout source x coordinate in 16.16 fixed point (atomic)
 
-    -  .. row 10
+    -  .. row 11
 
        -  “SRC_Y”
 
@@ -2699,7 +1840,7 @@ various modules/drivers.
 
        -  Scanout source y coordinate in 16.16 fixed point (atomic)
 
-    -  .. row 11
+    -  .. row 12
 
        -  “SRC_W”
 
@@ -2711,7 +1852,7 @@ various modules/drivers.
 
        -  Scanout source width in 16.16 fixed point (atomic)
 
-    -  .. row 12
+    -  .. row 13
 
        -  “SRC_H”
 
@@ -2723,7 +1864,7 @@ various modules/drivers.
 
        -  Scanout source height in 16.16 fixed point (atomic)
 
-    -  .. row 13
+    -  .. row 14
 
        -  “CRTC_X”
 
@@ -2735,7 +1876,7 @@ various modules/drivers.
 
        -  Scanout CRTC (destination) x coordinate (atomic)
 
-    -  .. row 14
+    -  .. row 15
 
        -  “CRTC_Y”
 
@@ -2747,7 +1888,7 @@ various modules/drivers.
 
        -  Scanout CRTC (destination) y coordinate (atomic)
 
-    -  .. row 15
+    -  .. row 16
 
        -  “CRTC_W”
 
@@ -2759,7 +1900,7 @@ various modules/drivers.
 
        -  Scanout CRTC (destination) width (atomic)
 
-    -  .. row 16
+    -  .. row 17
 
        -  “CRTC_H”
 
@@ -2771,7 +1912,7 @@ various modules/drivers.
 
        -  Scanout CRTC (destination) height (atomic)
 
-    -  .. row 17
+    -  .. row 18
 
        -  “FB_ID”
 
@@ -2783,7 +1924,7 @@ various modules/drivers.
 
        -  Scanout framebuffer (atomic)
 
-    -  .. row 18
+    -  .. row 19
 
        -  “CRTC_ID”
 
@@ -2795,7 +1936,7 @@ various modules/drivers.
 
        -  CRTC that plane is attached to (atomic)
 
-    -  .. row 19
+    -  .. row 20
 
        -  :rspan:`1` DVI-I
 
@@ -2809,7 +1950,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 20
+    -  .. row 21
 
        -  “select subconnector”
 
@@ -2821,7 +1962,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 21
+    -  .. row 22
 
        -  :rspan:`12` TV
 
@@ -2835,7 +1976,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 22
+    -  .. row 23
 
        -  “select subconnector”
 
@@ -2847,7 +1988,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 23
+    -  .. row 24
 
        -  “mode”
 
@@ -2859,7 +2000,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 24
+    -  .. row 25
 
        -  “left margin”
 
@@ -2871,7 +2012,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 25
+    -  .. row 26
 
        -  “right margin”
 
@@ -2883,7 +2024,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 26
+    -  .. row 27
 
        -  “top margin”
 
@@ -2895,7 +2036,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 27
+    -  .. row 28
 
        -  “bottom margin”
 
@@ -2907,7 +2048,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 28
+    -  .. row 29
 
        -  “brightness”
 
@@ -2919,7 +2060,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 29
+    -  .. row 30
 
        -  “contrast”
 
@@ -2931,7 +2072,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 30
+    -  .. row 31
 
        -  “flicker reduction”
 
@@ -2943,7 +2084,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 31
+    -  .. row 32
 
        -  “overscan”
 
@@ -2955,7 +2096,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 32
+    -  .. row 33
 
        -  “saturation”
 
@@ -2967,7 +2108,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 33
+    -  .. row 34
 
        -  “hue”
 
@@ -2979,7 +2120,7 @@ various modules/drivers.
 
        -  TBD
 
-    -  .. row 34
+    -  .. row 35
 
        -  :rspan:`1` Virtual GPU
 
@@ -2993,7 +2134,7 @@ various modules/drivers.
 
        -  property to suggest an X offset for a connector
 
-    -  .. row 35
+    -  .. row 36
 
        -  “suggested Y”
 
@@ -3005,21 +2146,9 @@ various modules/drivers.
 
        -  property to suggest an Y offset for a connector
 
-    -  .. row 36
-
-       -  :rspan:`7` Optional
-
-       -  “scaling mode”
-
-       -  ENUM
-
-       -  { "None", "Full", "Center", "Full aspect" }
-
-       -  Connector
-
-       -  TBD
-
     -  .. row 37
+
+       -  :rspan:`6` Optional
 
        -  "aspect ratio"
 
@@ -3029,8 +2158,7 @@ various modules/drivers.
 
        -  Connector
 
-       -  DRM property to set aspect ratio from user space app. This enum is
-          made generic to allow addition of custom aspect ratios.
+       -  TDB
 
     -  .. row 38
 
@@ -3137,7 +2265,10 @@ various modules/drivers.
 
        -  Connector
 
-       -  TBD
+       -  When this property is set to Limited 16:235 and CTM is set, the
+          hardware will be programmed with the result of the multiplication
+          of CTM by the limited range matrix to ensure the pixels normaly in
+          the range 0..1.0 are remapped to the range 16/255..235/255.
 
     -  .. row 45
 
@@ -4296,41 +3427,11 @@ Vertical Blanking and Interrupt Handling Functions Reference
 ------------------------------------------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/gpu/drm/drm_irq.c
+    :export:
 
-    API-drm-vblank-cleanup
-    API-drm-vblank-init
-    API-drm-irq-install
-    API-drm-irq-uninstall
-    API-drm-calc-timestamping-constants
-    API-drm-calc-vbltimestamp-from-scanoutpos
-    API-drm-vblank-count
-    API-drm-crtc-vblank-count
-    API-drm-vblank-count-and-time
-    API-drm-crtc-vblank-count-and-time
-    API-drm-arm-vblank-event
-    API-drm-crtc-arm-vblank-event
-    API-drm-send-vblank-event
-    API-drm-crtc-send-vblank-event
-    API-drm-vblank-get
-    API-drm-crtc-vblank-get
-    API-drm-vblank-put
-    API-drm-crtc-vblank-put
-    API-drm-wait-one-vblank
-    API-drm-crtc-wait-one-vblank
-    API-drm-vblank-off
-    API-drm-crtc-vblank-off
-    API-drm-crtc-vblank-reset
-    API-drm-vblank-on
-    API-drm-crtc-vblank-on
-    API-drm-vblank-pre-modeset
-    API-drm-vblank-post-modeset
-    API-drm-handle-vblank
-    API-drm-crtc-handle-vblank
-    API-drm-vblank-no-hw-counter
-    API-drm-crtc-vblank-waitqueue
-
+.. kernel-doc:: include/drm/drmP.h
+    :functions: drm_crtc_vblank_waitqueue
 
 Open/Close, File Operations and IOCTLs
 ======================================
@@ -4391,51 +3492,12 @@ driver could take over.
 File Operations
 ---------------
 
-Drivers must define the file operations structure that forms the DRM
-userspace API entry point, even though most of those operations are
-implemented in the DRM core. The mandatory functions are ``drm_open``,
-``drm_read``, ``drm_ioctl`` and drm_compat_ioctl if CONFIG_COMPAT is
-enabled. Drivers which implement private ioctls that require 32/64 bit
-compatibility support must provided their onw .\ ``compat_ioctl``
-handler that processes private ioctls and calls ``drm_compat_ioctl`` for
-core ioctls.
 
-In addition ``drm_read`` and ``drm_poll`` provide support for DRM
-events. DRM events are a generic and extensible means to send
-asynchronous events to userspace through the file descriptor. They are
-used to send vblank event and page flip completions by the KMS API. But
-drivers can also use it for their own needs, e.g. to signal completion
-of rendering.
+.. kernel-doc:: drivers/gpu/drm/drm_fops.c
+    :doc: file operations
 
-The memory mapping implementation will vary depending on how the driver
-manages memory. Legacy drivers will use the deprecated
-``drm_legacy_mmap`` function, modern drivers should use one of the
-provided memory-manager specific implementations. For GEM-based drivers
-this is ``drm_gem_mmap``.
-
-No other file operations are supported by the DRM userspace API. Overall
-the following is an example #file_operations structure:
-
-static const example_drm_fops = { .owner = THIS_MODULE, .open =
-drm_open, .release = drm_release, .unlocked_ioctl = drm_ioctl,
-#ifdef CONFIG_COMPAT .compat_ioctl = drm_compat_ioctl, #endif .poll
-= drm_poll, .read = drm_read, .llseek = no_llseek, .mmap =
-drm_gem_mmap, };
-
-
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-open
-    API-drm-release
-    API-drm-read
-    API-drm-poll
-    API-drm-event-reserve-init-locked
-    API-drm-event-reserve-init
-    API-drm-event-cancel-free
-    API-drm-send-event-locked
-    API-drm-send-event
-
+.. kernel-doc:: drivers/gpu/drm/drm_fops.c
+    :export:
 
 IOCTLs
 ------
@@ -4491,14 +3553,8 @@ how the ioctl is allowed to be called.
    for new drivers.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-drm-noop
-    API-drm-invalid-op
-    API-drm-ioctl
-    API-drm-ioctl-flags
-
+.. kernel-doc:: drivers/gpu/drm/drm_ioctl.c
+    :export:
 
 Legacy Support Code
 ===================

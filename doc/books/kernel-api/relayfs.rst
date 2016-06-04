@@ -15,36 +15,11 @@ relay interface
 ===============
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: kernel/relay.c
+    :export:
 
-    API-relay-buf-full
-    API-relay-reset
-    API-relay-open
-    API-relay-switch-subbuf
-    API-relay-subbufs-consumed
-    API-relay-close
-    API-relay-flush
-    API-relay-mmap-buf
-    API-relay-alloc-buf
-    API-relay-create-buf
-    API-relay-destroy-channel
-    API-relay-destroy-buf
-    API-relay-remove-buf
-    API-relay-buf-empty
-    API-wakeup-readers
-    API---relay-reset
-    API-relay-close-buf
-    API-relay-hotcpu-callback
-    API-relay-late-setup-files
-    API-relay-file-open
-    API-relay-file-mmap
-    API-relay-file-poll
-    API-relay-file-release
-    API-relay-file-read-subbuf-avail
-    API-relay-file-read-start-pos
-    API-relay-file-read-end-pos
-
+.. kernel-doc:: kernel/relay.c
+    :internal:
 
 
 

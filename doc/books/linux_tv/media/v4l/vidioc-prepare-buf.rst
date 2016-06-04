@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 Applications can optionally call the ``VIDIOC_PREPARE_BUF`` ioctl to
 pass ownership of the buffer to the driver before actually enqueuing it,
 using the ``VIDIOC_QBUF`` ioctl, and to prepare it for future I/O. Such

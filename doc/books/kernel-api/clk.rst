@@ -40,36 +40,8 @@ by external chips of various kinds, such as other CPUs, multimedia
 codecs, and devices with strict requirements for interface clocking.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-clk-notifier
-    API-struct-clk-notifier-data
-    API-clk-notifier-register
-    API-clk-notifier-unregister
-    API-clk-get-accuracy
-    API-clk-set-phase
-    API-clk-get-phase
-    API-clk-is-match
-    API-clk-prepare
-    API-clk-unprepare
-    API-clk-get
-    API-devm-clk-get
-    API-clk-enable
-    API-clk-disable
-    API-clk-get-rate
-    API-clk-put
-    API-devm-clk-put
-    API-clk-round-rate
-    API-clk-set-rate
-    API-clk-has-parent
-    API-clk-set-rate-range
-    API-clk-set-min-rate
-    API-clk-set-max-rate
-    API-clk-set-parent
-    API-clk-get-parent
-    API-clk-get-sys
-
+.. kernel-doc:: include/linux/clk.h
+    :internal:
 
 
 

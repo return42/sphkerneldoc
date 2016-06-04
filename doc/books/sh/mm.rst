@@ -19,13 +19,8 @@ Store Queue API
 ---------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-sq-flush-range
-    API-sq-remap
-    API-sq-unmap
-
+.. kernel-doc:: arch/sh/kernel/cpu/sh4/sq.c
+    :export:
 
 .. _sh5:
 
@@ -39,19 +34,11 @@ TLB Interfaces
 --------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: arch/sh/mm/tlb-sh5.c
+    :internal:
 
-    API-sh64-tlb-init
-    API-sh64-next-free-dtlb-entry
-    API-sh64-get-wired-dtlb-entry
-    API-sh64-put-wired-dtlb-entry
-    API-sh64-setup-tlb-slot
-    API-sh64-teardown-tlb-slot
-    API-for-each-dtlb-entry
-    API-for-each-itlb-entry
-    API---flush-tlb-slot
-
+.. kernel-doc:: arch/sh/include/asm/tlb_64.h
+    :internal:
 
 
 

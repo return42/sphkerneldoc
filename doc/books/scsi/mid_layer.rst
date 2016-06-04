@@ -19,13 +19,8 @@ include/scsi/scsi_device.h
 --------------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-shost-for-each-device
-    API---shost-for-each-device
-    API-scsi-device-supports-vpd
-
+.. kernel-doc:: include/scsi/scsi_device.h
+    :internal:
 
 .. _scsi.c:
 
@@ -35,23 +30,8 @@ drivers/scsi/scsi.c
 Main file for the SCSI midlayer.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-cmd-get-serial
-    API-scsi-change-queue-depth
-    API-scsi-track-queue-full
-    API-scsi-get-vpd-page
-    API-scsi-report-opcode
-    API-scsi-device-get
-    API-scsi-device-put
-    API-starget-for-each-device
-    API---starget-for-each-device
-    API---scsi-device-lookup-by-target
-    API-scsi-device-lookup-by-target
-    API---scsi-device-lookup
-    API-scsi-device-lookup
-
+.. kernel-doc:: drivers/scsi/scsi.c
+    :export:
 
 .. _scsicam.c:
 
@@ -62,13 +42,8 @@ drivers/scsi/scsicam.c
 support functions, for use with HDIO_GETGEO, etc.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-bios-ptable
-    API-scsicam-bios-param
-    API-scsi-partsize
-
+.. kernel-doc:: drivers/scsi/scsicam.c
+    :export:
 
 .. _scsi_error.c:
 
@@ -78,20 +53,8 @@ drivers/scsi/scsi_error.c
 Common SCSI error/timeout handling routines.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-schedule-eh
-    API-scsi-block-when-processing-errors
-    API-scsi-eh-prep-cmnd
-    API-scsi-eh-restore-cmnd
-    API-scsi-eh-finish-cmd
-    API-scsi-eh-get-sense
-    API-scsi-eh-ready-devs
-    API-scsi-eh-flush-done-q
-    API-scsi-ioctl-reset
-    API-scsi-get-sense-info-fld
-
+.. kernel-doc:: drivers/scsi/scsi_error.c
+    :export:
 
 .. _scsi_devinfo.c:
 
@@ -102,16 +65,8 @@ Manage scsi_dev_info_list, which tracks blacklisted and whitelisted
 devices.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-dev-info-list-add
-    API-scsi-dev-info-list-find
-    API-scsi-dev-info-list-add-str
-    API-scsi-get-device-flags
-    API-scsi-exit-devinfo
-    API-scsi-init-devinfo
-
+.. kernel-doc:: drivers/scsi/scsi_devinfo.c
+    :internal:
 
 .. _scsi_ioctl.c:
 
@@ -121,11 +76,8 @@ drivers/scsi/scsi_ioctl.c
 Handle ioctl() calls for SCSI devices.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-ioctl
-
+.. kernel-doc:: drivers/scsi/scsi_ioctl.c
+    :export:
 
 .. _scsi_lib.c:
 
@@ -135,25 +87,8 @@ drivers/scsi/scsi_lib.c
 SCSI queuing library.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-execute
-    API-scsi-mode-select
-    API-scsi-mode-sense
-    API-scsi-test-unit-ready
-    API-scsi-device-set-state
-    API-sdev-evt-send
-    API-sdev-evt-alloc
-    API-sdev-evt-send-simple
-    API-scsi-device-quiesce
-    API-scsi-device-resume
-    API-scsi-internal-device-block
-    API-scsi-internal-device-unblock
-    API-scsi-kmap-atomic-sg
-    API-scsi-kunmap-atomic-sg
-    API-scsi-vpd-lun-id
-
+.. kernel-doc:: drivers/scsi/scsi_lib.c
+    :export:
 
 .. _scsi_lib_dma.c:
 
@@ -164,12 +99,8 @@ SCSI library functions depending on DMA (map and unmap scatter-gather
 lists).
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-dma-map
-    API-scsi-dma-unmap
-
+.. kernel-doc:: drivers/scsi/scsi_lib_dma.c
+    :export:
 
 .. _scsi_module.c:
 
@@ -191,21 +122,8 @@ statistics and to pass information directly to the lowlevel driver. I.E.
 plumbing to manage /proc/scsi/*
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-proc-hostdir-add
-    API-scsi-proc-hostdir-rm
-    API-scsi-proc-host-add
-    API-scsi-proc-host-rm
-    API-proc-print-scsidevice
-    API-scsi-add-single-device
-    API-scsi-remove-single-device
-    API-proc-scsi-write
-    API-proc-scsi-open
-    API-scsi-init-procfs
-    API-scsi-exit-procfs
-
+.. kernel-doc:: drivers/scsi/scsi_proc.c
+    :internal:
 
 .. _scsi_netlink.c:
 
@@ -219,13 +137,8 @@ transports. See
 for more details.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-nl-rcv-msg
-    API-scsi-netlink-init
-    API-scsi-netlink-exit
-
+.. kernel-doc:: drivers/scsi/scsi_netlink.c
+    :internal:
 
 .. _scsi_scan.c:
 
@@ -246,24 +159,8 @@ else, sequentially scan LUNs up until some maximum is reached, or a LUN
 is seen that cannot have a device attached to it.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-complete-async-scans
-    API-scsi-unlock-floptical
-    API-scsi-alloc-sdev
-    API-scsi-target-reap-ref-release
-    API-scsi-alloc-target
-    API-scsi-target-reap
-    API-scsi-probe-lun
-    API-scsi-add-lun
-    API-scsi-inq-str
-    API-scsi-probe-and-add-lun
-    API-scsi-sequential-lun-scan
-    API-scsi-report-lun-scan
-    API-scsi-prep-async-scan
-    API-scsi-finish-async-scan
-
+.. kernel-doc:: drivers/scsi/scsi_scan.c
+    :internal:
 
 .. _scsi_sysctl.c:
 
@@ -282,12 +179,8 @@ drivers/scsi/scsi_sysfs.c
 SCSI sysfs interface routines.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-remove-device
-    API-scsi-remove-target
-
+.. kernel-doc:: drivers/scsi/scsi_sysfs.c
+    :export:
 
 .. _hosts.c:
 
@@ -297,19 +190,8 @@ drivers/scsi/hosts.c
 mid to lowlevel SCSI driver interface
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-scsi-host-set-state
-    API-scsi-remove-host
-    API-scsi-add-host-with-dma
-    API-scsi-host-alloc
-    API-scsi-host-lookup
-    API-scsi-host-get
-    API-scsi-host-put
-    API-scsi-queue-work
-    API-scsi-flush-work
-
+.. kernel-doc:: drivers/scsi/hosts.c
+    :export:
 
 .. _constants.c:
 
@@ -319,11 +201,8 @@ drivers/scsi/constants.c
 mid to lowlevel SCSI driver interface
 
 
-.. toctree::
-    :maxdepth: 1
-
-    mid_layer-000-001-016-003
-
+.. kernel-doc:: drivers/scsi/constants.c
+    :export:
 
 .. _Transport_classes:
 
@@ -343,20 +222,8 @@ The file drivers/scsi/scsi_transport_fc.c defines transport attributes
 for Fibre Channel.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-fc-get-event-number
-    API-fc-host-post-event
-    API-fc-host-post-vendor-event
-    API-fc-remove-host
-    API-fc-remote-port-add
-    API-fc-remote-port-delete
-    API-fc-remote-port-rolechg
-    API-fc-block-scsi-eh
-    API-fc-vport-create
-    API-fc-vport-terminate
-
+.. kernel-doc:: drivers/scsi/scsi_transport_fc.c
+    :export:
 
 .. _iSCSI_transport:
 
@@ -368,25 +235,8 @@ attributes for the iSCSI class, which sends SCSI packets over TCP/IP
 connections.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-iscsi-create-flashnode-sess
-    API-iscsi-create-flashnode-conn
-    API-iscsi-is-flashnode-conn-dev
-    API-iscsi-find-flashnode-sess
-    API-iscsi-find-flashnode-conn
-    API-iscsi-destroy-flashnode-sess
-    API-iscsi-destroy-all-flashnode
-    API-iscsi-scan-finished
-    API-iscsi-block-scsi-eh
-    API-iscsi-unblock-session
-    API-iscsi-create-session
-    API-iscsi-destroy-session
-    API-iscsi-create-conn
-    API-iscsi-destroy-conn
-    API-iscsi-session-event
-
+.. kernel-doc:: drivers/scsi/scsi_transport_iscsi.c
+    :export:
 
 .. _SAS_transport:
 
@@ -415,39 +265,8 @@ form a wide port based on the port_identifier attribute, which is the
 same for all PHYs in a port.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-is-sas-attached
-    API-sas-remove-children
-    API-sas-remove-host
-    API-sas-get-address
-    API-sas-tlr-supported
-    API-sas-disable-tlr
-    API-sas-enable-tlr
-    API-sas-phy-alloc
-    API-sas-phy-add
-    API-sas-phy-free
-    API-sas-phy-delete
-    API-scsi-is-sas-phy
-    API-sas-port-add
-    API-sas-port-free
-    API-sas-port-delete
-    API-scsi-is-sas-port
-    API-sas-port-get-phy
-    API-sas-port-add-phy
-    API-sas-port-delete-phy
-    API-sas-end-device-alloc
-    API-sas-expander-alloc
-    API-sas-rphy-add
-    API-sas-rphy-free
-    API-sas-rphy-delete
-    API-sas-rphy-unlink
-    API-sas-rphy-remove
-    API-scsi-is-sas-rphy
-    API-sas-attach-transport
-    API-sas-release-transport
-
+.. kernel-doc:: drivers/scsi/scsi_transport_sas.c
+    :export:
 
 .. _SATA_transport:
 
@@ -467,13 +286,8 @@ The file drivers/scsi/scsi_transport_spi.c defines transport
 attributes for traditional (fast/wide/ultra) SCSI busses.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-spi-schedule-dv-device
-    API-spi-display-xfer-agreement
-    API-spi-populate-tag-msg
-
+.. kernel-doc:: drivers/scsi/scsi_transport_spi.c
+    :export:
 
 .. _SRP_transport:
 
@@ -484,21 +298,8 @@ The file drivers/scsi/scsi_transport_srp.c defines transport
 attributes for SCSI over Remote Direct Memory Access.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-srp-tmo-valid
-    API-srp-start-tl-fail-timers
-    API-srp-reconnect-rport
-    API-srp-rport-get
-    API-srp-rport-put
-    API-srp-rport-add
-    API-srp-rport-del
-    API-srp-remove-host
-    API-srp-stop-rport-timers
-    API-srp-attach-transport
-    API-srp-release-transport
-
+.. kernel-doc:: drivers/scsi/scsi_transport_srp.c
+    :export:
 
 
 

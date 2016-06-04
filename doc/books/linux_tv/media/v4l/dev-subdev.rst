@@ -6,11 +6,6 @@
 Sub-device Interface
 ====================
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The complex nature of V4L2 devices, where hardware is often made of
 several integrated circuits that need to interact with each other in a
 controlled way, leads to complex V4L2 drivers. The drivers usually

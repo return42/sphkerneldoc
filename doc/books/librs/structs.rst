@@ -11,11 +11,8 @@ which are used in the Reed-Solomon Library and are relevant for a
 developer.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-rs-control
-
+.. kernel-doc:: include/linux/rslib.h
+    :internal:
 
 
 

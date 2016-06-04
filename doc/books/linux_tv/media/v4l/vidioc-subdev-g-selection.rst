@@ -32,11 +32,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The selections are used to configure various image processing
 functionality performed by the subdevs which affect the image size. This
 currently includes cropping, scaling and composition.

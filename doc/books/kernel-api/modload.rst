@@ -11,14 +11,8 @@ Module Loading
 ==============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API---request-module
-    API-call-usermodehelper-setup
-    API-call-usermodehelper-exec
-    API-call-usermodehelper
-
+.. kernel-doc:: kernel/kmod.c
+    :export:
 
 Inter Module support
 ====================

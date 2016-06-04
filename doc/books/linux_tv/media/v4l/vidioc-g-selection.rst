@@ -32,11 +32,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The ioctls are used to query and configure selection rectangles.
 
 To query the cropping (composing) rectangle set struct
@@ -206,7 +201,7 @@ EINVAL
 
 ERANGE
     It is not possible to adjust struct :ref:`v4l2_rect <v4l2-rect>`
-    ``r`` rectangle to satisfy all contraints given in the ``flags``
+    ``r`` rectangle to satisfy all constraints given in the ``flags``
     argument.
 
 EBUSY

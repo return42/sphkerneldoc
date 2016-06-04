@@ -83,7 +83,7 @@ fields of the struct :ref:`v4l2_vbi_format <v4l2-vbi-format>`
 of ``VIDIOC_G_FMT``, and call the :ref:`VIDIOC_S_FMT <vidioc-g-fmt>`
 ioctl with a pointer to this structure. Drivers return an EINVAL error
 code only when the given parameters are ambiguous, otherwise they modify
-the parameters according to the hardware capabilites and return the
+the parameters according to the hardware capabilities and return the
 actual parameters. When the driver allocates resources at this point, it
 may return an EBUSY error code to indicate the returned parameters are
 valid but the required resources are currently not available. That may

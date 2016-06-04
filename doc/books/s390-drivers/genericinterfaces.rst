@@ -12,17 +12,8 @@ indirectly using basic infrastructure in the common I/O layer. One
 example is the support for adapter interrupts.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-register-adapter-interrupt
-    API-unregister-adapter-interrupt
-    API-airq-iv-create
-    API-airq-iv-release
-    API-airq-iv-alloc
-    API-airq-iv-free
-    API-airq-iv-scan
-
+.. kernel-doc:: drivers/s390/cio/airq.c
+    :export:
 
 
 

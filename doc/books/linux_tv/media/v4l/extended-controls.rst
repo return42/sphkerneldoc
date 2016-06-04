@@ -2361,7 +2361,7 @@ MFC 5.1 Control IDs
     whole stream will be smaller then the set bitrate. This is caused
     because the average is calculated for smaller number of frames, on
     the other hand enabling this setting will ensure that the stream
-    will meet tight bandwidth contraints. Applicable to encoders.
+    will meet tight bandwidth constraints. Applicable to encoders.
 
 .. _`v4l2-mpeg-mfc51-video-force-frame-type`:
 
@@ -3617,11 +3617,6 @@ document, from CENELEC.
 Flash Control Reference
 =======================
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The V4L2 flash controls are intended to provide generic access to flash
 controller devices. Flash controller devices are typically used in
 digital cameras.
@@ -4011,11 +4006,6 @@ For more details about JPEG specification, refer to :ref:`itu-t81`,
 Image Source Control Reference
 ==============================
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The Image Source control class is intended for low-level control of
 image source devices such as image sensors. The devices feature an
 analogue to digital converter and a bus transmitter to transmit the
@@ -4065,11 +4055,6 @@ Image Source Control IDs
 Image Process Control Reference
 ===============================
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The Image Process control class is intended for low-level control of
 image processing functions. Unlike ``V4L2_CID_IMAGE_SOURCE_CLASS``, the
 controls in this class affect processing the image, and do not control
@@ -4113,11 +4098,6 @@ Image Process Control IDs
 
 Digital Video Control Reference
 ===============================
-
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
 
 The Digital Video control class is intended to control receivers and
 transmitters for `VGA <http://en.wikipedia.org/wiki/Vga>`__,

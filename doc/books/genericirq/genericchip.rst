@@ -13,19 +13,8 @@ needs before implementing the same functionality slightly differently
 themselves.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-irq-gc-mask-set-bit
-    API-irq-gc-mask-clr-bit
-    API-irq-gc-ack-set-bit
-    API-irq-alloc-generic-chip
-    API-irq-alloc-domain-generic-chips
-    API-irq-get-domain-generic-chip
-    API-irq-setup-generic-chip
-    API-irq-setup-alt-chip
-    API-irq-remove-generic-chip
-
+.. kernel-doc:: kernel/irq/generic-chip.c
+    :export:
 
 
 

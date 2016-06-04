@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 To enumerate media bus formats available at a given sub-device pad
 applications initialize the ``pad``, ``which`` and ``index`` fields of
 struct

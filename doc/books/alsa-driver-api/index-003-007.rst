@@ -9,27 +9,17 @@ Compress Offload API
 ====================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: sound/core/compress_offload.c
+    :export:
 
-    API-snd-compress-register
-    API-struct-snd-compressed-buffer
-    API-struct-snd-compr-params
-    API-struct-snd-compr-tstamp
-    API-struct-snd-compr-avail
-    API-struct-snd-compr-caps
-    API-struct-snd-compr-codec-caps
-    API-enum-sndrv-compress-encoder
-    API-struct-snd-compr-metadata
-    API-SNDRV-COMPRESS-IOCTL-VERSION
-    API-struct-snd-enc-vorbis
-    API-struct-snd-enc-real
-    API-struct-snd-enc-flac
-    API-struct-snd-compr-runtime
-    API-struct-snd-compr-stream
-    API-struct-snd-compr-ops
-    API-struct-snd-compr
+.. kernel-doc:: include/uapi/sound/compress_offload.h
+    :internal:
 
+.. kernel-doc:: include/uapi/sound/compress_params.h
+    :internal:
+
+.. kernel-doc:: include/sound/compress_driver.h
+    :internal:
 
 
 

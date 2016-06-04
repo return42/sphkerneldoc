@@ -31,11 +31,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 This ioctl lets applications enumerate available frame intervals on a
 given sub-device pad. Frame intervals only makes sense for sub-devices
 that can control the frame period on their own. This includes, for

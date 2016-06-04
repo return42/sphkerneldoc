@@ -13,100 +13,11 @@ for an explanation. The functions marked with [DEFAULT] might be
 relevant for a board driver developer.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/mtd/nand/nand_base.c
+    :internal:
 
-    API-nand-release-device
-    API-nand-read-byte
-    API-nand-read-byte16
-    API-nand-read-word
-    API-nand-select-chip
-    API-nand-write-byte
-    API-nand-write-byte16
-    API-nand-write-buf
-    API-nand-read-buf
-    API-nand-write-buf16
-    API-nand-read-buf16
-    API-nand-block-bad
-    API-nand-default-block-markbad
-    API-nand-block-markbad-lowlevel
-    API-nand-check-wp
-    API-nand-block-isreserved
-    API-nand-block-checkbad
-    API-panic-nand-wait-ready
-    API-nand-wait-status-ready
-    API-nand-command
-    API-nand-command-lp
-    API-panic-nand-get-device
-    API-nand-get-device
-    API-panic-nand-wait
-    API-nand-wait
-    API---nand-unlock
-    API-nand-check-erased-buf
-    API-nand-read-page-raw
-    API-nand-read-page-raw-syndrome
-    API-nand-read-page-swecc
-    API-nand-read-subpage
-    API-nand-read-page-hwecc
-    API-nand-read-page-hwecc-oob-first
-    API-nand-read-page-syndrome
-    API-nand-transfer-oob
-    API-nand-setup-read-retry
-    API-nand-do-read-ops
-    API-nand-read
-    API-nand-read-oob-std
-    API-nand-read-oob-syndrome
-    API-nand-write-oob-std
-    API-nand-write-oob-syndrome
-    API-nand-do-read-oob
-    API-nand-read-oob
-    API-nand-write-page-raw
-    API-nand-write-page-raw-syndrome
-    API-nand-write-page-swecc
-    API-nand-write-page-hwecc
-    API-nand-write-subpage-hwecc
-    API-nand-write-page-syndrome
-    API-nand-write-page
-    API-nand-fill-oob
-    API-nand-do-write-ops
-    API-panic-nand-write
-    API-nand-write
-    API-nand-do-write-oob
-    API-nand-write-oob
-    API-single-erase
-    API-nand-erase
-    API-nand-erase-nand
-    API-nand-sync
-    API-nand-block-isbad
-    API-nand-block-markbad
-    API-nand-onfi-set-features
-    API-nand-onfi-get-features
-    API-nand-suspend
-    API-nand-resume
-    API-nand-shutdown
-    API-check-pattern
-    API-check-short-pattern
-    API-add-marker-len
-    API-read-bbt
-    API-read-abs-bbt
-    API-scan-read-oob
-    API-read-abs-bbts
-    API-create-bbt
-    API-search-bbt
-    API-search-read-bbts
-    API-write-bbt
-    API-nand-memory-bbt
-    API-check-create
-    API-mark-bbt-region
-    API-verify-bbt-descr
-    API-nand-scan-bbt
-    API-nand-update-bbt
-    API-nand-create-badblock-pattern
-    API-nand-default-bbt
-    API-nand-isreserved-bbt
-    API-nand-isbad-bbt
-    API-nand-markbad-bbt
-
+.. kernel-doc:: drivers/mtd/nand/nand_bbt.c
+    :internal:
 
 
 

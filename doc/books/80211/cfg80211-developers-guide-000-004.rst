@@ -4,20 +4,30 @@
 Utility functions
 =================
 
-cfg80211 offers a number of utility functions that can be useful.
 
+.. kernel-doc:: include/net/cfg80211.h
+    :doc: Utility functions
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_channel_to_frequency
 
-    API-ieee80211-channel-to-frequency
-    API-ieee80211-frequency-to-channel
-    API-ieee80211-get-channel
-    API-ieee80211-get-response-rate
-    API-ieee80211-hdrlen
-    API-ieee80211-get-hdrlen-from-skb
-    API-struct-ieee80211-radiotap-iterator
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_frequency_to_channel
 
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_get_channel
+
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_get_response_rate
+
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_hdrlen
+
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_get_hdrlen_from_skb
+
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: ieee80211_radiotap_iterator
 
 
 

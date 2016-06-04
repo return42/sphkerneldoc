@@ -13,12 +13,8 @@ Debug object type description structure
 =======================================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-debug-obj
-    API-struct-debug-obj-descr
-
+.. kernel-doc:: include/linux/debugobjects.h
+    :internal:
 
 .. _fixup_init:
 
@@ -33,8 +29,8 @@ Called from debug_object_init when the object state is:
 
 -  ODEBUG_STATE_ACTIVE
 
-The function returns 1 when the fixup was successful, otherwise 0. The
-return value is used to update the statistics.
+The function returns true when the fixup was successful, otherwise
+false. The return value is used to update the statistics.
 
 Note, that the function needs to call the debug_object_init() function
 again, after the damage has been repaired in order to keep the state
@@ -55,8 +51,8 @@ Called from debug_object_activate when the object state is:
 
 -  ODEBUG_STATE_ACTIVE
 
-The function returns 1 when the fixup was successful, otherwise 0. The
-return value is used to update the statistics.
+The function returns true when the fixup was successful, otherwise
+false. The return value is used to update the statistics.
 
 Note that the function needs to call the debug_object_activate()
 function again after the damage has been repaired in order to keep the
@@ -69,7 +65,7 @@ ODEBUG_STATE_NOTAVAILABLE. The fixup function needs to check whether
 this is a legitimate case of a statically initialized object or not. In
 case it is it calls debug_object_init() and debug_object_activate()
 to make the object known to the tracker and marked active. In this case
-the function should return 0 because this is not a real fixup.
+the function should return false because this is not a real fixup.
 
 
 .. _fixup_destroy:
@@ -84,8 +80,8 @@ Called from debug_object_destroy when the object state is:
 
 -  ODEBUG_STATE_ACTIVE
 
-The function returns 1 when the fixup was successful, otherwise 0. The
-return value is used to update the statistics.
+The function returns true when the fixup was successful, otherwise
+false. The return value is used to update the statistics.
 
 
 .. _fixup_free:
@@ -103,8 +99,8 @@ the object state is:
 
 -  ODEBUG_STATE_ACTIVE
 
-The function returns 1 when the fixup was successful, otherwise 0. The
-return value is used to update the statistics.
+The function returns true when the fixup was successful, otherwise
+false. The return value is used to update the statistics.
 
 
 .. _fixup_assert_init:
@@ -119,8 +115,8 @@ Called from debug_object_assert_init() with a hardcoded state
 ODEBUG_STATE_NOTAVAILABLE when the object is not found in the debug
 bucket.
 
-The function returns 1 when the fixup was successful, otherwise 0. The
-return value is used to update the statistics.
+The function returns true when the fixup was successful, otherwise
+false. The return value is used to update the statistics.
 
 Note, this function should make sure debug_object_init() is called
 before returning.
@@ -129,7 +125,7 @@ The handling of statically initialized objects is a special case. The
 fixup function should check if this is a legitimate case of a statically
 initialized object or not. In this case only debug_object_init()
 should be called to make the object known to the tracker. Then the
-function should return 0 because this is not a real fixup.
+function should return false because this is not a real fixup.
 
 
 .. ------------------------------------------------------------------------------

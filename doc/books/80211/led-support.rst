@@ -12,17 +12,26 @@ appropriate trigger, which will then be triggered appropriately by
 mac80211.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_get_tx_led_name
 
-    API-ieee80211-get-tx-led-name
-    API-ieee80211-get-rx-led-name
-    API-ieee80211-get-assoc-led-name
-    API-ieee80211-get-radio-led-name
-    API-struct-ieee80211-tpt-blink
-    API-enum-ieee80211-tpt-led-trigger-flags
-    API-ieee80211-create-tpt-led-trigger
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_get_rx_led_name
 
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_get_assoc_led_name
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_get_radio_led_name
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_tpt_blink
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_tpt_led_trigger_flags
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_create_tpt_led_trigger
 
 
 

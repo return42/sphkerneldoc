@@ -2,9 +2,9 @@
 
 .. _vidioc-g-edid:
 
-==================================
-ioctl VIDIOC_G_EDID, VIDIOC_S_EDID
-==================================
+==============================================================================
+ioctl VIDIOC_G_EDID, VIDIOC_S_EDID, VIDIOC_SUBDEV_G_EDID, VIDIOC_SUBDEV_S_EDID
+==============================================================================
 
 *man VIDIOC_G_EDID(2)*
 
@@ -51,11 +51,11 @@ pad of the subdevice. If there is no EDID support for the given ``pad``
 value, then the EINVAL error code will be returned.
 
 To get the EDID data the application has to fill in the ``pad``,
-``start_block``, ``blocks`` and ``edid`` fields and call
-``VIDIOC_G_EDID``. The current EDID from block ``start_block`` and of
-size ``blocks`` will be placed in the memory ``edid`` points to. The
-``edid`` pointer must point to memory at least ``blocks`` * 128 bytes
-large (the size of one block is 128 bytes).
+``start_block``, ``blocks`` and ``edid`` fields, zero the ``reserved``
+array and call ``VIDIOC_G_EDID``. The current EDID from block
+``start_block`` and of size ``blocks`` will be placed in the memory
+``edid`` points to. The ``edid`` pointer must point to memory at least
+``blocks`` * 128 bytes large (the size of one block is 128 bytes).
 
 If there are fewer blocks than specified, then the driver will set
 ``blocks`` to the actual number of blocks. If there are no EDID blocks
@@ -72,10 +72,10 @@ there are. Note that if there are no EDID blocks available at all, then
 the driver will set ``blocks`` to 0 and it returns 0.
 
 To set the EDID blocks of a receiver the application has to fill in the
-``pad``, ``blocks`` and ``edid`` fields and set ``start_block`` to 0. It
-is not possible to set part of an EDID, it is always all or nothing.
-Setting the EDID data is only valid for receivers as it makes no sense
-for a transmitter.
+``pad``, ``blocks`` and ``edid`` fields, set ``start_block`` to 0 and
+zero the ``reserved`` array. It is not possible to set part of an EDID,
+it is always all or nothing. Setting the EDID data is only valid for
+receivers as it makes no sense for a transmitter.
 
 The driver assumes that the full EDID is passed in. If there are more
 EDID blocks than the hardware can handle then the EDID is not written,

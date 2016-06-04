@@ -23,19 +23,32 @@ Finally, a discussion of hardware capabilities should be done with
 references to other parts of the book.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_hw
 
-    API-struct-ieee80211-hw
-    API-enum-ieee80211-hw-flags
-    API-SET-IEEE80211-DEV
-    API-SET-IEEE80211-PERM-ADDR
-    API-struct-ieee80211-ops
-    API-ieee80211-alloc-hw
-    API-ieee80211-register-hw
-    API-ieee80211-unregister-hw
-    API-ieee80211-free-hw
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_hw_flags
 
+.. kernel-doc:: include/net/mac80211.h
+    :functions: SET_IEEE80211_DEV
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: SET_IEEE80211_PERM_ADDR
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_ops
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_alloc_hw
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_register_hw
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_unregister_hw
+
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_free_hw
 
 
 

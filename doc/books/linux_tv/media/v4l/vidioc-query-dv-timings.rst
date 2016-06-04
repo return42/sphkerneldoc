@@ -32,11 +32,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 The hardware may be able to detect the current DV timings automatically,
 similar to sensing the video standard. To do so, applications call
 ``VIDIOC_QUERY_DV_TIMINGS`` with a pointer to a struct

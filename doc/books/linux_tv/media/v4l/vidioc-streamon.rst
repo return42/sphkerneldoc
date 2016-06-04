@@ -97,6 +97,10 @@ EPIPE
     :ref:`pad-level format configuration <pad-level-formats>` and the
     pipeline configuration is invalid.
 
+ENOLINK
+    The driver implements Media Controller interface and the pipeline
+    link configuration is invalid.
+
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml

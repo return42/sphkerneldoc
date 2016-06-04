@@ -27,8 +27,34 @@ inserted direct under the chapter "My Media Book". The "DOC:" sections, the func
 and the type descriptions will be inserted in the order they appear in the source file.
 Mostly you want to select more fine grained, read on to see how.
 
-kernel-doc directive's options
-==============================
+kernel-doc config
+=================
+
+Within the sphinx-doc config file (``config.py``) you can set the following
+option.
+
+kernel_doc_raise_error: ``True``
+  If true, fatal errors (like missing function descriptions) raise an error. The
+  default is ``True``. Because this might break your build process, you can
+  change the value to ``False``.
+
+  In this example, the documentation of definition ``no_longer_exists`` is
+  required.
+
+  .. code-block:: rst
+
+      .. kernel-doc::  ./all-in-a-tumble.h
+          :functions:  no_longer_exist
+
+  Since this definition not exists (anymore), the following TODO entry is
+  inserted, when ``kernel_doc_raise_error`` is ``False``.
+
+  .. kernel-doc::  ./all-in-a-tumble.h
+      :functions:  no_longer_exist
+
+
+kernel-doc options
+==================
 
 Here is a short overview of the options:
 
@@ -118,9 +144,9 @@ The following example inserts the documentation of struct 'user_function'.
 
 .. code-block:: rst
 
-     .. kernel-doc::  ./all-in-a-tumble.h
-        :function:  user_function
-        :module: example
+     .. kernel-doc:: ./all-in-a-tumble.h
+        :functions:  user_function
+        :module:     example
 
 .. code-block:: rst
 
@@ -138,9 +164,9 @@ The following example inserts the documentation of struct 'my_long_struct'.
 
 .. code-block:: rst
 
-     .. kernel-doc::  ./all-in-a-tumble.h
-        :function:  my_long_struct
-        :module: example
+     .. kernel-doc:: ./all-in-a-tumble.h
+        :functions:  my_long_struct
+        :module:     example
 
 .. code-block:: rst
 

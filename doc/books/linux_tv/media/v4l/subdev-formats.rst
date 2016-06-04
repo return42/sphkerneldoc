@@ -11658,11 +11658,6 @@ The following table lists existing JPEG compressed formats.
 Vendor and Device Specific Formats
 ++++++++++++++++++++++++++++++++++
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 This section lists complex data formats that are either vendor or device
 specific.
 

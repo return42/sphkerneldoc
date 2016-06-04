@@ -151,13 +151,8 @@ kernels. These are the same types and constants used by host side
 drivers (and usbcore).
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-usb-speed-string
-    API-usb-get-maximum-speed
-    API-usb-state-string
-
+.. kernel-doc:: include/linux/usb/ch9.h
+    :internal:
 
 .. _core:
 
@@ -168,51 +163,8 @@ These are declared in ``<linux/usb/gadget.h>``, and are used by gadget
 drivers to interact with USB peripheral controller drivers.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-usb-request
-    API-struct-usb-ep-caps
-    API-struct-usb-ep
-    API-usb-ep-set-maxpacket-limit
-    API-usb-ep-enable
-    API-usb-ep-disable
-    API-usb-ep-alloc-request
-    API-usb-ep-free-request
-    API-usb-ep-queue
-    API-usb-ep-dequeue
-    API-usb-ep-set-halt
-    API-usb-ep-clear-halt
-    API-usb-ep-set-wedge
-    API-usb-ep-fifo-status
-    API-usb-ep-fifo-flush
-    API-struct-usb-gadget
-    API-usb-ep-align-maybe
-    API-gadget-is-altset-supported
-    API-gadget-is-stall-supported
-    API-gadget-is-zlp-supported
-    API-gadget-is-dualspeed
-    API-gadget-is-superspeed
-    API-gadget-is-superspeed-plus
-    API-gadget-is-otg
-    API-usb-gadget-frame-number
-    API-usb-gadget-wakeup
-    API-usb-gadget-set-selfpowered
-    API-usb-gadget-clear-selfpowered
-    API-usb-gadget-vbus-connect
-    API-usb-gadget-vbus-draw
-    API-usb-gadget-vbus-disconnect
-    API-usb-gadget-connect
-    API-usb-gadget-disconnect
-    API-usb-gadget-deactivate
-    API-usb-gadget-activate
-    API-struct-usb-gadget-driver
-    API-usb-gadget-probe-driver
-    API-usb-gadget-unregister-driver
-    API-struct-usb-string
-    API-struct-usb-gadget-strings
-    API-usb-free-descriptors
-
+.. kernel-doc:: include/linux/usb/gadget.h
+    :internal:
 
 .. _utils:
 
@@ -224,14 +176,11 @@ optional utilities are provided to simplify common tasks. These
 utilities include endpoint autoconfiguration.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/usb/gadget/usbstring.c
+    :export:
 
-    API-usb-gadget-get-string
-    API-usb-descriptor-fillbuf
-    API-usb-gadget-config-buf
-    API-usb-copy-descriptors
-
+.. kernel-doc:: drivers/usb/gadget/config.c
+    :export:
 
 .. _composite:
 
@@ -252,31 +201,11 @@ link" or "mass storage device". Management functions may also exist,
 such as "Device Firmware Upgrade".
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/usb/composite.h
+    :internal:
 
-    API-struct-usb-os-desc-ext-prop
-    API-struct-usb-os-desc
-    API-struct-usb-os-desc-table
-    API-struct-usb-function
-    API-struct-usb-configuration
-    API-struct-usb-composite-driver
-    API-module-usb-composite-driver
-    API-struct-usb-composite-dev
-    API-config-ep-by-speed
-    API-usb-add-function
-    API-usb-function-deactivate
-    API-usb-function-activate
-    API-usb-interface-id
-    API-usb-add-config
-    API-usb-string-id
-    API-usb-string-ids-tab
-    API-usb-gstrings-attach
-    API-usb-string-ids-n
-    API-usb-composite-probe
-    API-usb-composite-unregister
-    API-usb-composite-setup-continue
-
+.. kernel-doc:: drivers/usb/gadget/composite.c
+    :export:
 
 .. _functions:
 
@@ -288,15 +217,20 @@ to this framework. Near-term plans include converting all of them,
 except for "gadgetfs".
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/usb/gadget/function/f_acm.c
+    :export:
 
-    api-000-011-003
-    api-000-011-005
-    api-000-011-007
-    api-000-011-009
-    api-000-011-011
+.. kernel-doc:: drivers/usb/gadget/function/f_ecm.c
+    :export:
 
+.. kernel-doc:: drivers/usb/gadget/function/f_subset.c
+    :export:
+
+.. kernel-doc:: drivers/usb/gadget/function/f_obex.c
+    :export:
+
+.. kernel-doc:: drivers/usb/gadget/function/f_serial.c
+    :export:
 
 
 

@@ -43,5 +43,3 @@ chapter :ref:`all-in-a-tumble`.
 
   * :ref:`genindex`
 
-
-

@@ -32,11 +32,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 While some DV receivers or transmitters support a wide range of timings,
 others support only a limited number of timings. With this ioctl
 applications can enumerate a list of known supported timings. Call
@@ -45,7 +40,7 @@ also supports other standards or even custom timings that are not in
 this list.
 
 To query the available timings, applications initialize the ``index``
-field and zero the reserved array of struct
+field, set the ``pad`` field to 0, zero the reserved array of struct
 :ref:`v4l2_enum_dv_timings <v4l2-enum-dv-timings>` and call the
 ``VIDIOC_ENUM_DV_TIMINGS`` ioctl on a video node with a pointer to this
 structure. Drivers fill the rest of the structure or return an EINVAL

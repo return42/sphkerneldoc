@@ -12,23 +12,14 @@ which is marked with an [XXX] identifier. See the chapter "Documentation
 hints" for an explanation.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/mtd/nand/nand_base.c
+    :export:
 
-    API-nand-wait-ready
-    API-nand-unlock
-    API-nand-lock
-    API-nand-check-erased-ecc-chunk
-    API-nand-scan-ident
-    API-nand-scan-tail
-    API-nand-scan
-    API-nand-release
-    pubfunctions-000-012
-    API---nand-calculate-ecc
-    API-nand-calculate-ecc
-    API---nand-correct-data
-    API-nand-correct-data
+.. kernel-doc:: drivers/mtd/nand/nand_bbt.c
+    :export:
 
+.. kernel-doc:: drivers/mtd/nand/nand_ecc.c
+    :export:
 
 
 

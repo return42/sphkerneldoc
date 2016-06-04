@@ -33,11 +33,6 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 These ioctls are used to get and set the frame interval at specific
 subdev pads in the image pipeline. The frame interval only makes sense
 for sub-devices that can control the frame period on their own. This

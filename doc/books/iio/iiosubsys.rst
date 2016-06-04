@@ -22,15 +22,20 @@ Industrial I/O devices
 ======================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/iio/iio.h
+    :functions: iio_dev
 
-    API-struct-iio-dev
-    API-iio-device-alloc
-    API-iio-device-free
-    API-iio-device-register
-    API-iio-device-unregister
+.. kernel-doc:: drivers/iio/industrialio-core.c
+    :functions: iio_device_alloc
 
+.. kernel-doc:: drivers/iio/industrialio-core.c
+    :functions: iio_device_free
+
+.. kernel-doc:: drivers/iio/industrialio-core.c
+    :functions: iio_device_register
+
+.. kernel-doc:: drivers/iio/industrialio-core.c
+    :functions: iio_device_unregister
 An IIO device usually corresponds to a single hardware sensor and it
 provides all the information needed by a driver handling a device. Let's
 first have a look at the functionality embedded in an IIO device then we
@@ -107,11 +112,8 @@ IIO device channels
 -------------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-iio-chan-spec
-
+.. kernel-doc:: include/linux/iio/iio.h
+    :functions: iio_chan_spec structure.
 An IIO device channel is a representation of a data channel. An IIO
 device can have one or multiple channels. For example:
 
@@ -249,14 +251,11 @@ Industrial I/O buffers
 ======================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/iio/buffer.h
+    :functions: iio_buffer
 
-    API-struct-iio-buffer
-    API-iio-validate-scan-mask-onehot
-    API-iio-buffer-get
-    API-iio-buffer-put
-
+.. kernel-doc:: drivers/iio/industrialio-buffer.c
+    :export:
 The Industrial I/O core offers a way for continuous data capture based
 on a trigger source. Multiple data channels can be read at once from
 ``/dev/iio:deviceX`` character device node, thus reducing the CPU load.
@@ -408,13 +407,11 @@ Industrial I/O triggers
 =======================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/iio/trigger.h
+    :functions: iio_trigger
 
-    API-struct-iio-trigger
-    API-devm-iio-trigger-alloc
-    API-devm-iio-trigger-free
-
+.. kernel-doc:: drivers/iio/industrialio-trigger.c
+    :export:
 In many situations it is useful for a driver to be able to capture data
 based on some external event (trigger) as opposed to periodically
 polling for data. An IIO trigger can be provided by a device driver that
@@ -486,11 +483,8 @@ IIO trigger ops
 ---------------
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-iio-trigger-ops
-
+.. kernel-doc:: include/linux/iio/trigger.h
+    :functions: iio_trigger_ops
 Notice that a trigger has a set of operations attached:
 
 -  set_trigger_state
@@ -515,13 +509,11 @@ IIO triggered buffer setup
 --------------------------
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: drivers/iio/buffer/industrialio-triggered-buffer.c
+    :export:
 
-    API-iio-triggered-buffer-setup
-    API-iio-triggered-buffer-cleanup
-    API-struct-iio-buffer-setup-ops
-
+.. kernel-doc:: include/linux/iio/iio.h
+    :functions: iio_buffer_setup_ops
 A typical triggered buffer setup looks like this:
 
 

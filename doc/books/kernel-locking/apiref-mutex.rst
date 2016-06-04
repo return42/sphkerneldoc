@@ -7,18 +7,11 @@ Mutex API reference
 ===================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/mutex.h
+    :internal:
 
-    API-mutex-init
-    API-mutex-is-locked
-    API-mutex-lock
-    API-mutex-unlock
-    API-ww-mutex-unlock
-    API-mutex-lock-interruptible
-    API-mutex-trylock
-    API-atomic-dec-and-mutex-lock
-
+.. kernel-doc:: kernel/locking/mutex.c
+    :export:
 
 
 

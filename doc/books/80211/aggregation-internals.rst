@@ -7,13 +7,14 @@ Aggregation
 ===========
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: net/mac80211/sta_info.h
+    :functions: sta_ampdu_mlme
 
-    API-struct-sta-ampdu-mlme
-    API-struct-tid-ampdu-tx
-    API-struct-tid-ampdu-rx
+.. kernel-doc:: net/mac80211/sta_info.h
+    :functions: tid_ampdu_tx
 
+.. kernel-doc:: net/mac80211/sta_info.h
+    :functions: tid_ampdu_rx
 
 
 

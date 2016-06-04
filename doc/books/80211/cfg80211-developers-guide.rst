@@ -3,16 +3,9 @@
 ++++++++++++++++++++++
 The cfg80211 subsystem
 ++++++++++++++++++++++
-    cfg80211 is the configuration API for 802.11 devices in Linux. It
-    bridges userspace and drivers, and offers some utility functionality
-    associated with 802.11. cfg80211 must, directly or indirectly via
-    mac80211, be used by all modern wireless drivers in Linux, so that
-    they offer a consistent API through nl80211. For backward
-    compatibility, cfg80211 also offers wireless extensions to
-    userspace, but hides them from drivers completely.
 
-    Additionally, cfg80211 contains code to help enforce regulatory
-    spectrum use restrictions.
+    .. kernel-doc:: include/net/cfg80211.h
+        :doc: Introduction
 
 
 .. toctree::

@@ -7,15 +7,11 @@ Security Framework
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: security/security.c
+    :internal:
 
-    API-security-init
-    API-security-module-enable
-    API-securityfs-create-file
-    API-securityfs-create-dir
-    API-securityfs-remove
-
+.. kernel-doc:: security/inode.c
+    :export:
 
 
 

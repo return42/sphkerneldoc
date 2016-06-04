@@ -9,31 +9,15 @@ Raw MIDI API
 ============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-rawmidi-receive
-    API-snd-rawmidi-transmit-empty
-    API---snd-rawmidi-transmit-peek
-    API-snd-rawmidi-transmit-peek
-    API---snd-rawmidi-transmit-ack
-    API-snd-rawmidi-transmit-ack
-    API-snd-rawmidi-transmit
-    API-snd-rawmidi-new
-    API-snd-rawmidi-set-ops
-
+.. kernel-doc:: sound/core/rawmidi.c
+    :export:
 
 MPU401-UART API
 ===============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-mpu401-uart-interrupt
-    API-snd-mpu401-uart-interrupt-tx
-    API-snd-mpu401-uart-new
-
+.. kernel-doc:: sound/drivers/mpu401/mpu401_uart.c
+    :export:
 
 
 

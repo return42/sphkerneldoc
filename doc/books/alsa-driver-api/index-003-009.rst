@@ -9,63 +9,35 @@ Hardware-Dependent Devices API
 ==============================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-hwdep-new
-
+.. kernel-doc:: sound/core/hwdep.c
+    :export:
 
 Jack Abstraction Layer API
 ==========================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/sound/jack.h
+    :internal:
 
-    API-enum-snd-jack-types
-    API-snd-jack-add-new-kctl
-    API-snd-jack-new
-    API-snd-jack-set-parent
-    API-snd-jack-set-key
-    API-snd-jack-report
-    API-snd-soc-card-jack-new
-    API-snd-soc-jack-report
-    API-snd-soc-jack-add-zones
-    API-snd-soc-jack-get-type
-    API-snd-soc-jack-add-pins
-    API-snd-soc-jack-notifier-register
-    API-snd-soc-jack-notifier-unregister
-    API-snd-soc-jack-add-gpios
-    API-snd-soc-jack-add-gpiods
-    API-snd-soc-jack-free-gpios
+.. kernel-doc:: sound/core/jack.c
+    :export:
 
+.. kernel-doc:: sound/soc/soc-jack.c
+    :export:
 
 ISA DMA Helpers
 ===============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-dma-program
-    API-snd-dma-disable
-    API-snd-dma-pointer
-
+.. kernel-doc:: sound/core/isadma.c
+    :export:
 
 Other Helper Macros
 ===================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-snd-printk
-    API-snd-printd
-    API-snd-BUG
-    API-snd-printd-ratelimit
-    API-snd-BUG-ON
-    API-snd-printdd
-
+.. kernel-doc:: include/sound/core.h
+    :internal:
 
 
 

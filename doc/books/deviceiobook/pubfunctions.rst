@@ -7,17 +7,11 @@ Public Functions Provided
 =========================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: arch/x86/include/asm/io.h
+    :internal:
 
-    API-virt-to-phys
-    API-phys-to-virt
-    API-ioremap-nocache
-    API-pci-iomap-range
-    API-pci-iomap-wc-range
-    API-pci-iomap
-    API-pci-iomap-wc
-
+.. kernel-doc:: lib/pci_iomap.c
+    :export:
 
 
 

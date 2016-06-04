@@ -114,11 +114,10 @@ A process executing its own code outside the kernel.
 .. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
 .. ------------------------------------------------------------------------------
 
-.. only:: html
 
-  Retrieval
-  =========
+Retrieval
+=========
 
-  * :ref:`genindex`
-  * :ref:`search`
+* :ref:`genindex`
 
+.. todolist::

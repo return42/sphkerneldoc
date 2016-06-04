@@ -20,6 +20,9 @@ chapter.
 
 
 
+.. NOT SUPPORTED: '!Cdrivers/gpu/drm/i915/i915_irq.c '
+
+
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml

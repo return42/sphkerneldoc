@@ -13,20 +13,8 @@ with an [XXX] identifier. See the chapter "Documentation hints" for an
 explanation.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-struct-nand-hw-control
-    API-struct-nand-ecc-ctrl
-    API-struct-nand-buffers
-    API-struct-nand-chip
-    API-struct-nand-flash-dev
-    API-struct-nand-manufacturers
-    API-struct-platform-nand-chip
-    API-struct-platform-nand-ctrl
-    API-struct-platform-nand-data
-    API-nand-opcode-8bits
-
+.. kernel-doc:: include/linux/mtd/nand.h
+    :internal:
 
 
 

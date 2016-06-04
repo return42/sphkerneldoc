@@ -13,13 +13,8 @@ SuperHyway
 ==========
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-superhyway-add-device
-    API-superhyway-register-driver
-    API-superhyway-unregister-driver
-
+.. kernel-doc:: drivers/sh/superhyway/superhyway.c
+    :export:
 
 .. _maple:
 
@@ -27,14 +22,8 @@ Maple
 =====
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-maple-driver-register
-    API-maple-driver-unregister
-    API-maple-getcond-callback
-    API-maple-add-packet
-
+.. kernel-doc:: drivers/sh/maple/maple.c
+    :export:
 
 
 

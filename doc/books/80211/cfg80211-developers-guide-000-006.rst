@@ -4,16 +4,18 @@
 Regulatory enforcement infrastructure
 =====================================
 
-TODO
 
+.. kernel-doc:: include/net/cfg80211.h
+    :doc: Regulatory enforcement infrastructure
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: regulatory_hint
 
-    API-regulatory-hint
-    API-wiphy-apply-custom-regulatory
-    API-freq-reg-info
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: wiphy_apply_custom_regulatory
 
+.. kernel-doc:: include/net/cfg80211.h
+    :functions: freq_reg_info
 
 
 

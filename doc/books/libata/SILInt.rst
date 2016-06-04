@@ -7,12 +7,8 @@ sata_sil Internals
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-sil-set-mode
-    API-sil-dev-config
-
+.. kernel-doc:: drivers/ata/sata_sil.c
+    :internal:
 
 
 

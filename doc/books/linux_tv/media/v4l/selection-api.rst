@@ -2,13 +2,8 @@
 
 .. _selection-api:
 
-Experimental API for cropping, composing and scaling
-====================================================
-
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
+API for cropping, composing and scaling
+=======================================
 
 
 .. toctree::

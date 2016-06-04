@@ -17,102 +17,31 @@ String Conversions
 ==================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: lib/vsprintf.c
+    :export:
 
-    API-simple-strtoull
-    API-simple-strtoul
-    API-simple-strtol
-    API-simple-strtoll
-    API-vsnprintf
-    API-vscnprintf
-    API-snprintf
-    API-scnprintf
-    API-vsprintf
-    API-sprintf
-    API-vbin-printf
-    API-bstr-printf
-    API-bprintf
-    API-vsscanf
-    API-sscanf
-    API-kstrtol
-    API-kstrtoul
-    API-kstrtoull
-    API-kstrtoll
-    API-kstrtouint
-    API-kstrtoint
-    API-kstrtobool
+.. kernel-doc:: include/linux/kernel.h
+    :functions: kstrtol
 
+.. kernel-doc:: include/linux/kernel.h
+    :functions: kstrtoul
+
+.. kernel-doc:: lib/kstrtox.c
+    :export:
 
 String Manipulation
 ===================
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-strncasecmp
-    API-strcpy
-    API-strncpy
-    API-strlcpy
-    API-strscpy
-    API-strcat
-    API-strncat
-    API-strlcat
-    API-strcmp
-    API-strncmp
-    API-strchr
-    API-strchrnul
-    API-strrchr
-    API-strnchr
-    API-skip-spaces
-    API-strim
-    API-strlen
-    API-strnlen
-    API-strspn
-    API-strcspn
-    API-strpbrk
-    API-strsep
-    API-sysfs-streq
-    API-match-string
-    API-memset
-    API-memzero-explicit
-    API-memcpy
-    API-memmove
-    API-memcmp
-    API-memscan
-    API-strstr
-    API-strnstr
-    API-memchr
-    API-memchr-inv
-    API-strreplace
-
+.. kernel-doc:: lib/string.c
+    :export:
 
 Bit Operations
 ==============
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-set-bit
-    API---set-bit
-    API-clear-bit
-    API---change-bit
-    API-change-bit
-    API-test-and-set-bit
-    API-test-and-set-bit-lock
-    API---test-and-set-bit
-    API-test-and-clear-bit
-    API---test-and-clear-bit
-    API-test-and-change-bit
-    API-test-bit
-    API---ffs
-    API-ffz
-    API-ffs
-    API-fls
-    API-fls64
-
+.. kernel-doc:: arch/x86/include/asm/bitops.h
+    :internal:
 
 
 

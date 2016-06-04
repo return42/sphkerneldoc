@@ -15,12 +15,11 @@ addresses here, note which configurations are supported by mac80211, add
 notes about supporting hw crypto with it.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_iterate_active_interfaces
 
-    API-ieee80211-iterate-active-interfaces
-    API-ieee80211-iterate-active-interfaces-atomic
-
+.. kernel-doc:: include/net/mac80211.h
+    :functions: ieee80211_iterate_active_interfaces_atomic
 
 
 

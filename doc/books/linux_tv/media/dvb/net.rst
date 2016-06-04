@@ -19,7 +19,7 @@ In order to create the Linux virtual network interfaces, an application
 needs to tell to the Kernel what are the PIDs and the encapsulation
 types that are present on the transport stream. This is done through
 ``/dev/dvb/adapter?/net?`` device node. The data will be available via
-virtual ``dvb?_?`` network interfaces, and will be controled/routed via
+virtual ``dvb?_?`` network interfaces, and will be controlled/routed via
 the standard ip tools (like ip, route, netstat, ifconfig, etc).
 
 Data types and and ioctl definitions are defined via ``linux/dvb/net.h``

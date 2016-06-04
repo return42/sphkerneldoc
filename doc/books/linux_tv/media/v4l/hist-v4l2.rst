@@ -1449,42 +1449,10 @@ Experimental API Elements
 The following V4L2 API elements are currently experimental and may
 change in the future.
 
--  Video Output Overlay (OSD) Interface, :ref:`osd`.
-
 -  :ref:`VIDIOC_DBG_G_REGISTER <vidioc-dbg-g-register>` and
    :ref:`VIDIOC_DBG_S_REGISTER <vidioc-dbg-g-register>` ioctls.
 
 -  :ref:`VIDIOC_DBG_G_CHIP_INFO <vidioc-dbg-g-chip-info>` ioctl.
-
--  :ref:`VIDIOC_ENUM_DV_TIMINGS <vidioc-enum-dv-timings>`,
-   :ref:`VIDIOC_QUERY_DV_TIMINGS <vidioc-query-dv-timings>` and
-   :ref:`VIDIOC_DV_TIMINGS_CAP <vidioc-dv-timings-cap>` ioctls.
-
--  Flash API. :ref:`flash-controls`
-
--  :ref:`VIDIOC_CREATE_BUFS <vidioc-create-bufs>` and
-   :ref:`VIDIOC_PREPARE_BUF <vidioc-prepare-buf>` ioctls.
-
--  Selection API. :ref:`selection-api`
-
--  Sub-device selection API:
-   :ref:`VIDIOC_SUBDEV_G_SELECTION <vidioc-subdev-g-selection>` and
-   :ref:`VIDIOC_SUBDEV_S_SELECTION <vidioc-subdev-g-selection>`
-   ioctls.
-
--  Support for frequency band enumeration:
-   :ref:`VIDIOC_ENUM_FREQ_BANDS <vidioc-enum-freq-bands>` ioctl.
-
--  Vendor and device specific media bus pixel formats.
-   :ref:`v4l2-mbus-vendor-spec-fmts`.
-
--  Importing DMABUF file descriptors as a new IO method described in
-   :ref:`dmabuf`.
-
--  Exporting DMABUF files using :ref:`VIDIOC_EXPBUF <vidioc-expbuf>`
-   ioctl.
-
--  Software Defined Radio (SDR) Interface, :ref:`sdr`.
 
 
 .. _obsolete:

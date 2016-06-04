@@ -32,24 +32,21 @@ Arguments
 Description
 ===========
 
-    **Note**
-
-    This is an :ref:`experimental <experimental>` interface and may
-    change in the future.
-
 To query the capabilities of the DV receiver/transmitter applications
-can call the ``VIDIOC_DV_TIMINGS_CAP`` ioctl on a video node and the
-driver will fill in the structure. Note that drivers may return
-different values after switching the video input or output.
+initialize the ``pad`` field to 0, zero the reserved array of struct
+:ref:`v4l2_dv_timings_cap <v4l2-dv-timings-cap>` and call the
+``VIDIOC_DV_TIMINGS_CAP`` ioctl on a video node and the driver will fill
+in the structure. Note that drivers may return different values after
+switching the video input or output.
 
 When implemented by the driver DV capabilities of subdevices can be
 queried by calling the ``VIDIOC_SUBDEV_DV_TIMINGS_CAP`` ioctl directly
 on a subdevice node. The capabilities are specific to inputs (for DV
 receivers) or outputs (for DV transmitters), applications must specify
 the desired pad number in the struct
-:ref:`v4l2_dv_timings_cap <v4l2-dv-timings-cap>` ``pad`` field.
-Attempts to query capabilities on a pad that doesn't support them will
-return an EINVAL error code.
+:ref:`v4l2_dv_timings_cap <v4l2-dv-timings-cap>` ``pad`` field and
+zero the ``reserved`` array. Attempts to query capabilities on a pad
+that doesn't support them will return an EINVAL error code.
 
 
 .. _v4l2-bt-timings-cap:
@@ -169,8 +166,8 @@ return an EINVAL error code.
 
        -  ``reserved``\ [2]
 
-       -  Reserved for future extensions. Drivers must set the array to
-          zero.
+       -  Reserved for future extensions. Drivers and applications must set
+          the array to zero.
 
     -  .. row 4
 

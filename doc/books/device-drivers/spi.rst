@@ -46,57 +46,14 @@ tweaking options are needed, because different chips adopt very
 different policies for how they use the bits transferred with SPI.
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: include/linux/spi/spi.h
+    :internal:
 
-    API-struct-spi-statistics
-    API-struct-spi-device
-    API-struct-spi-driver
-    API-spi-unregister-driver
-    API-module-spi-driver
-    API-struct-spi-master
-    API-struct-spi-res
-    API-struct-spi-transfer
-    API-struct-spi-message
-    API-spi-message-init-with-transfers
-    API-struct-spi-replaced-transfers
-    API-spi-write
-    API-spi-read
-    API-spi-sync-transfer
-    API-spi-w8r8
-    API-spi-w8r16
-    API-spi-w8r16be
-    API-struct-spi-flash-read-message
-    API-struct-spi-board-info
-    API-spi-register-board-info
-    API---spi-register-driver
-    API-spi-alloc-device
-    API-spi-add-device
-    API-spi-new-device
-    API-spi-unregister-device
-    API-spi-finalize-current-transfer
-    API-spi-get-next-queued-message
-    API-spi-finalize-current-message
-    API-spi-alloc-master
-    API-spi-register-master
-    API-devm-spi-register-master
-    API-spi-unregister-master
-    API-spi-busnum-to-master
-    API-spi-res-alloc
-    API-spi-res-free
-    API-spi-res-add
-    API-spi-res-release
-    API-spi-replace-transfers
-    API-spi-split-transfers-maxsize
-    API-spi-setup
-    API-spi-async
-    API-spi-async-locked
-    API-spi-sync
-    API-spi-sync-locked
-    API-spi-bus-lock
-    API-spi-bus-unlock
-    API-spi-write-then-read
+.. kernel-doc:: drivers/spi/spi.c
+    :functions: spi_register_board_info
 
+.. kernel-doc:: drivers/spi/spi.c
+    :export:
 
 
 

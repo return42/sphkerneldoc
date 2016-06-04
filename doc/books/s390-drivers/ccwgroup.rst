@@ -19,19 +19,11 @@ ccw group devices
 =================
 
 
-.. toctree::
-    :maxdepth: 1
+.. kernel-doc:: arch/s390/include/asm/ccwgroup.h
+    :internal:
 
-    API-struct-ccwgroup-device
-    API-struct-ccwgroup-driver
-    API-ccwgroup-set-online
-    API-ccwgroup-set-offline
-    API-ccwgroup-create-dev
-    API-ccwgroup-driver-register
-    API-ccwgroup-driver-unregister
-    API-ccwgroup-probe-ccwdev
-    API-ccwgroup-remove-ccwdev
-
+.. kernel-doc:: drivers/s390/cio/ccwgroup.c
+    :export:
 
 
 

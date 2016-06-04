@@ -149,23 +149,8 @@ maybe used if the architecture does not need to provide a specific
 implementation.
 
 
-.. toctree::
-    :maxdepth: 1
-
-    API-kgdb-skipexception
-    API-kgdb-breakpoint
-    API-kgdb-arch-init
-    API-kgdb-arch-exit
-    API-pt-regs-to-gdb-regs
-    API-sleeping-thread-to-gdb-regs
-    API-gdb-regs-to-pt-regs
-    API-kgdb-arch-handle-exception
-    API-kgdb-roundup-cpus
-    API-kgdb-arch-set-pc
-    API-kgdb-arch-late
-    API-struct-kgdb-arch
-    API-struct-kgdb-io
-
+.. kernel-doc:: include/linux/kgdb.h
+    :internal:
 
 .. _kgdbocDesign:
 
