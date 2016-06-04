@@ -56,6 +56,26 @@ def filterXML(
             etree.tostring(rootNode, encoding='unicode') )
 
 # ==============================================================================
+def subTemplate(inFile, outFile):
+# ==============================================================================
+
+    u"""Substitude kenerle-doc place holder in docbook.tmpl files."""
+
+    # detailed description see class ReSTTemplate
+    import re
+    tmpl_re = re.compile(r"^!([EIDFPC])([^\s]*)\s+(.*?)\s*$")
+    tag_format = """<rstTemplate op="%s" fname="%s" args="%s"/>"""
+
+    with inFile.openTextFile() as src, outFile.openTextFile("w") as dst:
+        for lineno, orig_line in enumerate(src):
+            line = orig_line
+            if tmpl_re.match(orig_line):
+                match = tmpl_re.match(orig_line)
+                op, fname, args = match.groups()
+                line = tag_format % (op, fname, args)
+            dst.write(line)
+
+# ==============================================================================
 def subEntities(inFile, outFile, ext_entities, int_entities):
 # ==============================================================================
 
@@ -778,7 +798,8 @@ class XMLTag(metaclass=XMLTagType):
     # reST
     # ---------------
 
-    rstInclude_tag = "rstInclude"
+    rstInclude_tag  = "rstInclude"
+    rstTemplate_tag = "rstTemplate"
 
     @classmethod
     def normalizeID(cls, ID):
@@ -1651,6 +1672,61 @@ class Biblioentry(XMLTag):
 
 class Informalexample(StructureTag):     replaceTag = "para"
 
+# ==============================================================================
+class ReSTTemplate(XMLTag):
+# ==============================================================================
+
+    # !E<filename> is replaced by the documentation, in <filename>, for
+    # functions that are exported using EXPORT_SYMBOL: the function list is
+    # collected from files listed in Documentation/DocBook/Makefile.
+
+    # !I<filename> is replaced by the documentation for functions that are
+    # _not_ exported using EXPORT_SYMBOL.
+
+    # !D<filename> is used to name additional files to search for functions
+    # exported using EXPORT_SYMBOL.   NOT USED ANYMORE!!!!!!!!!!!!!
+
+    # !F<filename> <function [functions...]> is replaced by the
+    # documentation, in <filename>, for the functions listed.
+
+    # !P<filename> <section title> is replaced by the contents of the DOC:
+    # section titled <section title> from <filename>.
+    # Spaces are allowed in <section title>; do not quote the <section title>.
+
+    # !C<filename> is replaced by nothing, but makes the tools check that
+    # all DOC: sections and documented functions, symbols, etc. are used.
+    # This makes sense to use when you use !F/!P only and want to verify
+
+    tag = XMLTag.rstTemplate_tag
+    injBlock = True
+    rstMarkup = """
+.. kernel-doc:: %(fname)s
+%(options)s
+"""
+
+    def getContext(self, node):
+        ctx = super().getContext(node)
+        ctx.op      = node.get("op")
+        ctx.fname   = node.get("fname")
+        ctx.args    = node.get("args")
+        ctx.options = ""
+        if ctx.op == "E":
+            ctx.options += "    :export:\n"
+        if ctx.op == "I":
+            ctx.options += "    :internal:\n"
+        if ctx.op == "F":
+            ctx.options += "    :functions: %s\n" % ctx.args
+        if ctx.op == "P":
+            ctx.options += "    :doc: %s\n" % ctx.args
+        return ctx
+
+    def replaceText(self, node, rstPrefix):
+        ctx = self.getContext(node)
+        rst = self.rstMarkup
+        if ctx.op in ["C", "D"]:
+            rst = "\n\n.. NOT SUPPORTED: '!%(op)s%(fname)s %(args)s'\n\n"
+        retVal = rst % ctx
+        return retVal
 
 # ==============================================================================
 class ReSTInclude(XMLTag):

@@ -98,16 +98,16 @@ msg-TeXLive:
 # !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
 # !!! own treatment see below target media2rst
 #
-DOCBOOKS := z8530book.xml device-drivers.xml \
-	    kernel-hacking.xml kernel-locking.xml deviceiobook.xml \
-	    writing_usb_driver.xml networking.xml \
-	    kernel-api.xml filesystems.xml lsm.xml usb.xml kgdb.xml \
-	    gadget.xml libata.xml mtdnand.xml librs.xml rapidio.xml \
-	    genericirq.xml s390-drivers.xml uio-howto.xml scsi.xml \
-	    80211.xml debugobjects.xml sh.xml regulator.xml \
-	    alsa-driver-api.xml writing-an-alsa-driver.xml \
-	    tracepoint.xml gpu.xml w1.xml \
-	    writing_musb_glue_layer.xml crypto-API.xml iio.xml
+DOCBOOKS := z8530book.tmpl device-drivers.tmpl \
+	    kernel-hacking.tmpl kernel-locking.tmpl deviceiobook.tmpl \
+	    writing_usb_driver.tmpl networking.tmpl \
+	    kernel-api.tmpl filesystems.tmpl lsm.tmpl usb.tmpl kgdb.tmpl \
+	    gadget.tmpl libata.tmpl mtdnand.tmpl librs.tmpl rapidio.tmpl \
+	    genericirq.tmpl s390-drivers.tmpl uio-howto.tmpl scsi.tmpl \
+	    80211.tmpl debugobjects.tmpl sh.tmpl regulator.tmpl \
+	    alsa-driver-api.tmpl writing-an-alsa-driver.tmpl \
+	    tracepoint.tmpl gpu.tmpl w1.tmpl \
+	    writing_musb_glue_layer.tmpl crypto-API.tmpl iio.tmpl
 
 # ------------------------------------------------------------------------------
 # usage
@@ -138,7 +138,7 @@ help:
 	@echo
 	@echo "    The reST files are versioned within *this* reposetory."
 	@echo
-	@echo "  make {fname} : converts only {fname}.xml to reST, valid"
+	@echo "  make {fname} : converts only {fname}.tmpl to reST, valid"
 	@echo "                 values for {fname} are: \n\n   $(DB2RST)" | $(FMT)
 	@echo
 
@@ -180,15 +180,15 @@ clean-mainpage:
 # BOOKs
 # ------------------------------------------------------------------------------
 
-# DocBook-XML --> reST
+# DocBook-XML (tmpl) --> reST
 # --------------------
 
-DB2RST := $(patsubst %.xml, %.rst, $(DOCBOOKS))
+DB2RST := $(patsubst %.tmpl, %.rst, $(DOCBOOKS))
 dbxml2rst: media2rst $(DB2RST)
 
 .PHONY:	$(DB2RST)
 $(DB2RST): xmldocs
-	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.xml, ${@})
+	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.tmpl, ${@})
 
 # the linux_tv book has it's own treatment
 .PHONY: media2rst

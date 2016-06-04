@@ -33,7 +33,7 @@ u"""
 import re
 from common import CLI, FSPath
 from common import PANDOC_EXE, xml2json, jsonFilter, json2rst
-from dbxml import XMLTag, filterXML, subEntities, Table, RESOUCE_FORMAT, INT_ENTITES
+from dbxml import XMLTag, filterXML, subTemplate, subEntities, Table, RESOUCE_FORMAT, INT_ENTITES
 from dbxml import hook_copy_file_resource, hook_chunk_by_tag, hook_fix_broken_tables
 from dbxml import hook_flatten_tables, hook_drop_usless_informaltables, hook_html2db_table
 
@@ -173,6 +173,7 @@ def db2rst(cliArgs):                                    # pylint: disable=W0613
         origFile = FSPath(fname)
         _db2rst(cliArgs, origFile)
 
+
 # ==============================================================================
 def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 # ==============================================================================
@@ -194,13 +195,18 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
         folder.rmtree()
     folder.makedirs()
 
-    # create a copy of the file
+    # create a copy of the tmpl file
+    tmplFile  = origFile.suffix(".tmpl_orig")
     mainFile = FSPath("index.xml_orig")
-    outFile  = mainFile.suffix(".xml_orig")
-    (LINUX_DOCBOOK_ROOT/origFile).copyfile(folder/outFile)
+    (LINUX_DOCBOOK_ROOT/origFile).copyfile(folder/tmplFile)
+    subTemplate(folder/tmplFile, folder/mainFile)
 
-    inFile  = outFile
-    outFile = outFile.suffix(".xml_entity")
+
+    #outFile  = mainFile.suffix(".xml_orig")
+    #(LINUX_DOCBOOK_ROOT/origFile).copyfile(folder/outFile)
+
+    inFile  = mainFile
+    outFile = mainFile.suffix(".xml_entity")
 
     MSG("substitude entities ...")
     subEntities(folder/inFile, folder/outFile, None, INT_ENTITES)
