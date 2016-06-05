@@ -37,14 +37,29 @@ source tree with ``:ref:`dtv_get_frontend <linux:dtv_get_frontend>```
 extensions, there are plenty extensions out in the web. Finally, `sphinx-doc`_
 is distributed by all known package managers.
 
-What does *autodoc* mean
-------------------------
+What is required?
+-----------------
+
+The kernel-doc-reST_ customization, a set of files extending sphinx-doc_ plus a
+kernel-doc parser, implemented in python:
+
+.. _kernel-doc-reST: https://github.com/return42/sphkerneldoc/tree/master/doc/extensions
+
+The know-how from the ``kernel-doc`` perl scripts was useful. With the python
+implementation of this parser a flexible integration into sphinx-doc_ is
+provided ... waiting for further extensions :-).
+
+
+What does *autodoc* mean?
+-------------------------
 
 The term *autodoc* adresses the automatic creation of reST files from the source
 code, it is simular to (based on) the ``kernel-doc`` script. In the section
 :ref:`xref_linux_src_doc` a modified version of ``kernel-doc`` is introduced,
 which creates reST files from kernel's sources.
 
+* :ref:`kernel-doc directive <kernel-doc:kernel-doc-directive>`
+* :ref:`flat-table directive <kernel-doc:rest-flat-table>`
 
 
 References

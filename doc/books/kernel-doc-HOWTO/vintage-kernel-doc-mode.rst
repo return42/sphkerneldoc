@@ -4,7 +4,7 @@
 .. _vintage-kernel-doc-mode:
 
 =======================
-vintage kernel-doc mode
+Vintage kernel-doc mode
 =======================
 
 All kernel-doc markup is processed as described in :ref:`kernel-doc-syntax`, all

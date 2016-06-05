@@ -32,6 +32,7 @@ on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
     vintage-kernel-doc-mode
     reST-kernel-doc-mode
     kernel-doc-directive
+    table-markup
     kernel-doc-components
     kernel-doc-examples
 

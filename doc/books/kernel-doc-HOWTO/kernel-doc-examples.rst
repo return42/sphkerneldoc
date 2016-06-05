@@ -4,7 +4,7 @@
 .. _kernel-doc-examples:
 
 =====================
-Examples & Test cases
+Examples & test cases
 =====================
 
 .. toctree::

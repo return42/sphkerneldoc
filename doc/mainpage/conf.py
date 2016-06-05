@@ -64,8 +64,9 @@ extlinks = {
 # usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
 
 intersphinx_mapping = {}
-intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
-intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
+intersphinx_mapping['python']     = ('https://docs.python.org/3/', None)
+intersphinx_mapping['linux']      = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
+intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

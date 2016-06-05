@@ -55,24 +55,3 @@ which will be rendered like this:
 
 .. _xref_kernel-doc:
 
-kernel-doc reST
-===============
-
-The `scripts/kernel_doc`_ is a modified version of the ``kernel-doc`` from the
-linux kernel sources. This modified version has the new commandline option
-``-rst`` to generate a reST representation of the kernel-doc comments. By
-example, to generate the reST representation of the ``dtv_get_frontend``
-function type:
-
-.. code-block:: bash
-
-    $ scripts/kernel-doc -rst \
-            -function dtv_get_frontend \
-            linux/drivers/media/dvb-core/dvb_frontend.c
-
-
-.. _src_filelist: https://github.com/return42/sphkerneldoc/blob/master/scripts/src_filelist
-.. _`reST linux_src_doc`: https://github.com/return42/sphkerneldoc/tree/master/doc/linux_src_doc
-.. _`scripts/kernel_doc`: https://github.com/return42/sphkerneldoc/blob/master/scripts/kernel-doc
-
-.. include:: refs.txt

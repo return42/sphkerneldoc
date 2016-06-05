@@ -1,4 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: articles/refs.txt
 
 .. _xref_linux_kernel_doc:
 
@@ -6,11 +7,9 @@
                           Linux Kernel's documentation
 ================================================================================
 
-Welcome to the Linux Kernel's documentation. This is a proof of concept, a
-toolchain to migrate the Kernel's documentation to the `Sphinx-Doc`_ generator.
-
-Migrated documentation
-======================
+Welcome to the Linux Kernel's documentation. This POC adds reST_ to the
+kernel-doc markup and replaces the DocBook toolchain with the sphinx-doc_
+generator.
 
 .. toctree::
    :maxdepth: 1
@@ -19,38 +18,37 @@ Migrated documentation
    articles/linux_misc_doc
    articles/linux_src_doc
 
-Miscellaneous
-=============
+The formated Linux source code documentation is based on the kernel-doc markup,
+read :ref:`kernel-doc:kernel-doc-howto`. The reST_ markup comes not as a
+replacement, it is an addition to the kernel-doc markup, so if you are familiar
+with the *vintage* kernel-doc markup, you may switch directly to the
+:ref:`kernel-doc:reST-kernel-doc-mode`.
+
+Beside the kernel-doc source code documentation there is (has been) a
+DocBook-XML toolchain to write books and convert them into various formats
+(e.g. HTML).  Since reST_ is the new base format for generating output formats,
+the DocBook-XML books has to migrate to reST. Within this POC, the migration is
+allready done automaticly by collection of tools and scripts (see
+:ref:`xref_dbtools`). The migration is based on the linux kernel mainline and
+will be updated frequently.
+
+If you are one of the Linux DocBook authors, you may want to see / download
+migrated books:
+
+* https://github.com/return42/sphkerneldoc/tree/master/doc/books
+
+and you may also be intrested in :ref:`how to use kernel-doc comments in reST
+documents <kernel-doc:kernel-doc-directive>`.
+
+
+Further Remarks
+===============
 
 .. toctree::
    :maxdepth: 1
 
+   articles/why_rest
    articles/dbtools
    articles/faq
-   articles/table_concerns
    LICENSE
 
-
-Resources
-=========
-
-* https://return42.github.io/sphkerneldoc
-* https://github.com/return42/sphkerneldoc.git
-* https://github.com/torvalds/linux
-
-
-Discussion & related efforts
-============================
-
-* http://marc.info/?t=145540043500001&r=1&w=2
-* http://static.lwn.net/kerneldoc/index.html
-* https://git.linuxtv.org/mchehab/v4l2-docs-poc.git/
-* https://mchehab.fedorapeople.org/media-kabi-docs-test/asciidoc_tests/media_api.html
-
-Indices
-=======
-
-* :ref:`genindex`
-* :ref:`search`
-
-.. _`Sphinx-Doc`: http://www.sphinx-doc.org/

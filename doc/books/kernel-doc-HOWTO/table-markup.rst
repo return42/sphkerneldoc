@@ -1,10 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 
+.. _`Emacs Table Mode`: https://www.emacswiki.org/emacs/TableMode
+.. _`Online Tables Generator`: http://www.tablesgenerator.com/text_tables
+.. _`OASIS XML Exchange Table Model`: https://www.oasis-open.org/specs/tm9901.html
+
+
 .. _xref_table_concerns:
 
-===============
-Creating tables
-===============
+============
+About tables
+============
+
+First: the rest-flat-table_ directive is preferred in the Linux kernel tree.
 
 Internaly, the docutils uses a representation according to the `OASIS XML
 Exchange Table Model`_ (same as DocBook). The *OASIS Table Model* gives a huge
@@ -118,9 +125,10 @@ List table directives
 
 The *list table* formats are double stage list, compared to the ASCII-art they
 migth not be as comfortable for readers of the text-files. Their advantage is,
-that they easy to create/modify and that the diff of modifications is much more
-meaningfull, because it is limited to the modified content.
+that they are easy to create/modify and that the diff of a modification is much
+more meaningfull, because it is limited to the modified content.
 
+.. _rest-list-table:
 
 list-table
 ----------
@@ -172,6 +180,7 @@ Rendered as:
      - column
      - column
 
+.. _rest-flat-table:
 
 flat-table
 ----------
