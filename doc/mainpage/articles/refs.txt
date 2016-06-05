@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-.. _`reST`: http://www.sphinx-doc.org/en/stable/rest.html
-.. _`sphinx-doc`: http://www.sphinx-doc.org/
+.. _`Markdown`: http://daringfireball.net/projects/markdown/
 
+.. _`reST`: http://www.sphinx-doc.org/en/stable/rest.html
 .. _`reST books`: https://github.com/return42/sphkerneldoc/tree/master/doc/books
 
 .. _`HTML DocBook books`: https://www.kernel.org/doc/htmldocs/
@@ -24,3 +24,5 @@
 .. _lxml: http://lxml.de/
 .. _`DocBook XML books`:  https://github.com/torvalds/linux/tree/master/Documentation/DocBook
 
+.. _kernel-doc-reST: https://github.com/return42/sphkerneldoc/tree/master/doc/extensions
+.. _`intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html

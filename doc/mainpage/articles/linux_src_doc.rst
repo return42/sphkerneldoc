@@ -1,4 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: refs.txt
 
 .. _xref_linux_src_doc:
 
@@ -18,8 +19,7 @@ To build the reST file from the linux kernel sources run:
    make src2rst
 
 The makefile target ``src2rst`` uses the script ``./scripts/autodoc.sh`` to
-build the `reST linux_src_doc`_ tree from the source-code comments
-(:ref:`xref_kernel-doc`).
+build the `reST linux_src_doc`_ tree from the source-code comments.
 
 The documentation is taken from all source files listet in the
 `src_filelist`_. The `reST linux_src_doc`_ files are versioned within this
@@ -53,5 +53,5 @@ which will be rendered like this:
 
     lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
 
-.. _xref_kernel-doc:
-
+.. _src_filelist: https://github.com/return42/sphkerneldoc/blob/master/scripts/src_filelist
+.. _`reST linux_src_doc`: https://github.com/return42/sphkerneldoc/tree/master/doc/linux_src_doc

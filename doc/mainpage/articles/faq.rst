@@ -1,4 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: refs.txt
 
 .. _xref_faq:
 
@@ -29,7 +30,7 @@ about a extension / superset of the reST markup and a extended docutils
 processer.  `sphinx-doc`_ is a project from the `pocoo`_ team, precisely Georg
 Brandl.  One of these reST extensions is the `sphinx domains`_ to document
 source code (e.g. ``C`` / ``C++``). An other extension to name is the concept of
-`sphinx cross refences`_ and the `sphinx.ext.intersphinx`_ extension. With this
+`sphinx cross refences`_ and the `intersphinx`_ extension. With this
 extension the `sphinx-doc`_ documentation generator genrates links to other
 projects documentation. E.g. refer a content in the documentation of the linux
 source tree with ``:ref:`dtv_get_frontend <linux:dtv_get_frontend>```
@@ -41,9 +42,7 @@ What is required?
 -----------------
 
 The kernel-doc-reST_ customization, a set of files extending sphinx-doc_ plus a
-kernel-doc parser, implemented in python:
-
-.. _kernel-doc-reST: https://github.com/return42/sphkerneldoc/tree/master/doc/extensions
+kernel-doc parser, implemented in python.
 
 The know-how from the ``kernel-doc`` perl scripts was useful. With the python
 implementation of this parser a flexible integration into sphinx-doc_ is
@@ -69,6 +68,5 @@ References
 * `docutils`_, `docutils FAQ`_
 * `sphinx-doc`_, `sphinx-doc FAQ`_, `pocoo`_
 * `sphinx domains`_
-* `sphinx cross refences`_, `sphinx.ext.intersphinx`_
+* `sphinx cross refences`_, `intersphinx`_
 
-.. include:: refs.txt

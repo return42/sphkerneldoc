@@ -4,7 +4,7 @@
 .. _kernel-doc-directive:
 
 ================================
-use kernel-doc in reST documents
+Use kernel-doc in reST documents
 ================================
 
 There exists a `reST-directive

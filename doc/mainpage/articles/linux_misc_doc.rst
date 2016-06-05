@@ -1,9 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: refs.txt
 
 .. _xref_misc_doc_from_tree:
 
-.. _`reST`: http://docutils.sourceforge.net/rst.html
-.. _`Markdown`: http://daringfireball.net/projects/markdown/
 
 ================================================================================
                               documentation (text)

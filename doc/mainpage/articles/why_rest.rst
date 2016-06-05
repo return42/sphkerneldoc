@@ -38,7 +38,7 @@ Reasons to migrate to reST + Sphinx-Doc
   existing markup ability while existing toolchains can be further used. The
   ``kernel-doc`` parser needs a reissue which takes the :ref:`modified
   kernel-doc parser <kernel-doc:kernel-doc-howto>` as specification (see
-  :ref:`xref_kernel-doc`).
+  kernel-doc-reST_ ).
 
 * ASCII markups are easy for authoring. reST has a clear syntax definition and
   is the most expressive and expandable ASCII markup.
