@@ -207,7 +207,7 @@ media2rst: xmldocs
 .PHONY: books.html
 books.html: sphinx-doc $(BOOKS_HTML)
 
-.PHONY: $(BOOKS)
+.PHONY: $(BOOKS_HTML)
 $(BOOKS_HTML): sphinx-doc | $(DIST)
 	@echo "building $@ ..."
 	SPHPROJ_CONF=$(patsubst %.html,%.conf,$@) $(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) $(patsubst %.html,%,$@) $(DIST)/$(patsubst %.html,%,$@)
