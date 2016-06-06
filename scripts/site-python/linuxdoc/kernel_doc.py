@@ -3,7 +3,7 @@
 # pylint: disable= C0330, C0103, C0410, R0903, R0913, R0912, R0914, R0915, C0302
 
 u"""
-    kernel-doc
+    kernel_doc
     ~~~~~~~~~~
 
     Implementation of the ``kernel-doc`` parser.
@@ -229,6 +229,10 @@ import re
 # ==============================================================================
 # common globals
 # ==============================================================================
+
+# The version numbering follows numbering of the specification
+# (Documentation/books/kernel-doc-HOWTO).
+__version__  = '1.0'
 
 PY3 = sys.version_info[0] == 3
 PY2 = sys.version_info[0] == 2
@@ -2754,3 +2758,7 @@ def CONSOLE(arround=5, frame=None):
 
 if __name__ == "__main__":
     sys.exit(main())
+else:
+    # FIXME: just for testing
+    __builtins__["CONSOLE"] = CONSOLE
+

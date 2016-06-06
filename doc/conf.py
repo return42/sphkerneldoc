@@ -45,7 +45,7 @@ import common  # to get the SDK debugger/console
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here.
 
-sys.path.insert(0, pathjoin(BASE_FOLDER, 'extensions'))
+#sys.path.insert(0, pathjoin(BASE_FOLDER, 'extensions'))
 
 # ------------------------------------------------------------------------------
 # General configuration
@@ -87,8 +87,8 @@ intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "rstFlatTable"
-    , "rstKernelDoc"
+    "linuxdoc.rstFlatTable"
+    , "linuxdoc.rstKernelDoc"
     # , "xelatex"
     , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'

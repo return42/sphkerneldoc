@@ -3,6 +3,8 @@
 # This makefile is used to convert the kernel documentation to reStructuredText
 # and build all books (aka DocBooks) with sphinx.
 
+export PYTHONPATH := $(abspath ../scripts/site-python/):$(PYTHONPATH)
+
 srctree=/share/linux
 export srctree
 
@@ -31,6 +33,8 @@ MAKEINDEX      := makeindex
 
 BOOKS := $(filter %/, $(wildcard $(BOOKS_FOLDER)/*/))
 BOOKS := $(BOOKS:%/=%)
+BOOKS_HTML := $(patsubst %, %.html, $(BOOKS))
+BOOKS_HTML_CLEAN := $(patsubst %, %.clean, $(BOOKS))
 
 # sphinx-doc setup
 SPHINXOPTS  :=
@@ -64,6 +68,7 @@ sphinx-doc: msg-SphinxDoc
 	$(error The '$(SPHINXBUILD)' command was not found)
 else
 sphinx-doc:
+	@:
 endif
 
 ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
@@ -71,6 +76,7 @@ texlive: msg-TeXLive
 	$(error The '$(PDFLATEX)' command was not found)
 else
 texlive:
+	@:
 endif
 
 msg-SphinxDoc:
@@ -125,7 +131,7 @@ help:
 	@echo "    txt.html   : build HTML from misc reST files (see txt2rst)"
 	@echo
 	@echo "  make {book} : builds only the HTML of {book}, valid"
-	@echo "                values for {book} are: \n\n    $(BOOKS)" | $(FMT)
+	@echo "                values for {book} are: \n\n    $(BOOKS_HTML)" | $(FMT)
 	@echo
 	@echo "  all-reST : builds all reST targets:"
 	@echo
@@ -154,7 +160,7 @@ help-requirements: msg-SphinxDoc msg-TeXLive
 all-reST: dbxml2rst media2rst src2rst txt2rst
 
 # update github-pages
-.PHONY: all-HTML
+.PHONY: all-HTML clean-HTML $(BOOKS_HTML)
 all-HTML: sphinx-doc mainpage books.html src.html txt.html
 
 .PHONY: clean-HTML
@@ -199,19 +205,18 @@ media2rst: xmldocs
 # ----------------------------------------
 
 .PHONY: books.html
-books.html: sphinx-doc $(BOOKS)
+books.html: sphinx-doc $(BOOKS_HTML)
 
 .PHONY: $(BOOKS)
-$(BOOKS): sphinx-doc | $(DIST)
+$(BOOKS_HTML): sphinx-doc | $(DIST)
 	@echo "building $@ ..."
-	SPHPROJ_CONF=$@.conf $(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)/$@
+	SPHPROJ_CONF=$(patsubst %.html,%.conf,$@) $(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) $(patsubst %.html,%,$@) $(DIST)/$(patsubst %.html,%,$@)
 
-book-dirs := $(addprefix $(DIST)/, $(BOOKS))
-book-doctrees := $(addprefix $(CACHE)/doctrees/, $(BOOKS))
+$(BOOKS_HTML_CLEAN):
+	rm -rf $(DIST)/$(patsubst %.clean,%,$@) $(CACHE)/doctrees/$(patsubst %.clean,%,$@)
 
 .PHONY: clean-books.html
-clean-books.html:
-	rm -rf $(book-dirs) $(book-doctrees)
+clean-books.html: $(BOOKS_HTML_CLEAN)
 
 # reST-book --> (Xe)LaTeX --> PDF
 # -----------------------------------
