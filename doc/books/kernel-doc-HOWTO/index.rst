@@ -20,7 +20,7 @@ gives hints on how to use these markups and how to refer and extract
 documentation from source files.
 
 The kernel-doc parser extracts the kernel-doc descriptions from the source files
-and produced reST markup as base format. With reST ase base format the
+and produced reST markup as base format. With reST as base format the
 documentation building process changed also. The building process is now based
 on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
 

@@ -7,47 +7,29 @@
 Components of the kernel-doc system
 ===================================
 
-.. todo::
+Many places in the source tree have extractable kernel-doc documentation.  The
+components of this system are:
 
-   description of the components is needed
+Documentation/Makefile.reST and Documentation/conf.py
+  Makefile and basic `sphinx config`_ file to build the various reST documents
+  and output formats. Provides the basic sphinx-doc_ build infrastructure
+  including the *sphinx-subprojects* feature. With this feature each book can be
+  build and distributed stand-alone. Cross reference between *subprojects* will
+  be ensured by `intersphinx`_.
 
-..
-   Many places in the source tree have extractable documentation in the
-   form of block comments above functions.  The components of this system
-   are:
+Documentation/sphinx-static and Documentation/sphinx-tex
+  Paths that contain sphinx-doc_ custom static files (such as style sheets).
 
-   - scripts/kernel-doc
+Documentation/books
+  In this folder, the books with reST markup are placed. To provide
+  *sphinx-subprojects*, each book has its one folder and a (optional)
+  ``Documentation/books/{book-name}.conf`` file which *overwrites* the basic
+  configuration from ``Documentation/conf.py`` (settings see `sphinx config`_)
 
-     This is a perl script that hunts for the block comments and can mark
-     them up directly into DocBook, man, text, and HTML. (No, not
-     texinfo.)
+scripts/site-python/linuxdoc
+  This folder includes python extensions related to the linux documentation
+  processes.
 
-   - Documentation/DocBook/*.tmpl
 
-     These are SGML template files, which are normal SGML files with
-     special place-holders for where the extracted documentation should
-     go.
 
-   - scripts/docproc.c
-
-     This is a program for converting SGML template files into SGML
-     files. When a file is referenced it is searched for symbols
-     exported (EXPORT_SYMBOL), to be able to distinguish between internal
-     and external functions.
-     It invokes kernel-doc, giving it the list of functions that
-     are to be documented.
-     Additionally it is used to scan the SGML template files to locate
-     all the files referenced herein. This is used to generate dependency
-     information as used by make.
-
-   - Makefile
-
-     The targets 'xmldocs', 'psdocs', 'pdfdocs', and 'htmldocs' are used
-     to build XML DocBook files, PostScript files, PDF files, and html files
-     in Documentation/DocBook. The older target 'sgmldocs' is equivalent
-     to 'xmldocs'.
-
-   - Documentation/DocBook/Makefile
-
-     This is where C files are associated with SGML templates.
 

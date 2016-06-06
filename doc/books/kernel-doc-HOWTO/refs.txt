@@ -9,6 +9,7 @@
 .. _`sphinx cross refences`: http://www.sphinx-doc.org/en/stable/markup/inline.html#cross-referencing-arbitrary-locations
 .. _`sphinx.ext.intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx
 .. _`intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
+.. _`sphinx config`: http://www.sphinx-doc.org/en/stable/config.html
 
 .. _`docutils`: http://docutils.sourceforge.net/docs/index.html
 .. _`docutils FAQ`: http://docutils.sourceforge.net/FAQ.html
