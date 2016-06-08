@@ -2,9 +2,9 @@
 
 .. _basics:
 
-================
+****************
 Linux USB Basics
-================
+****************
 
 If you are going to write a Linux USB driver, please become familiar
 with the USB protocol specification. It can be found, along with many

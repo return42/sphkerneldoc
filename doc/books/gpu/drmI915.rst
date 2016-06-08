@@ -2,9 +2,9 @@
 
 .. _drmI915:
 
-=========================
+*************************
 drm/i915 Intel GFX Driver
-=========================
+*************************
 
 The drm/i915 driver supports all (with the exception of some very early
 models) integrated GFX chipsets with both Intel display and rendering
@@ -280,14 +280,14 @@ GTT Fences and Swizzling
     :internal:
 
 Global GTT Fence Handling
-+++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_fence.c
     :doc: fence register handling
 
 Hardware Tiling and Swizzling Details
-+++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_fence.c

@@ -2,9 +2,9 @@
 
 .. _audit:
 
-================
+****************
 Audit Interfaces
-================
+****************
 
 
 .. kernel-doc:: kernel/audit.c

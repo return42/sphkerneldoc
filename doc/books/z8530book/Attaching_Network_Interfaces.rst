@@ -2,9 +2,9 @@
 
 .. _Attaching_Network_Interfaces:
 
-============================
+****************************
 Attaching Network Interfaces
-============================
+****************************
 
 If you wish to use the network interface facilities of the driver, then
 you need to attach a network device to each channel that is present and

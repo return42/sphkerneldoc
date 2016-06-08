@@ -2,9 +2,9 @@
 
 .. _vidioc-querybuf:
 
-=====================
+*********************
 ioctl VIDIOC_QUERYBUF
-=====================
+*********************
 
 *man VIDIOC_QUERYBUF(2)*
 

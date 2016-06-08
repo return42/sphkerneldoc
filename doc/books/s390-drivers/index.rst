@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++++
+###################################
 Writing s390 channel device drivers
-+++++++++++++++++++++++++++++++++++
+###################################
 
 :author:    Huck Cornelia
 :address:   cornelia.huck@de.ibm.com

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-============================
+****************************
 Defining Colorspaces in V4L2
-============================
+****************************
 
 In V4L2 colorspaces are defined by four values. The first is the
 colorspace identifier (enum :ref:`v4l2_colorspace <v4l2-colorspace>`)

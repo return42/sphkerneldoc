@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 This document presents a Linux-USB "Gadget" kernel mode API, for use
 within peripherals and other USB devices that embed Linux. It provides

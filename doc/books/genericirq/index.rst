@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++++
+##########################
 Linux generic IRQ handling
-++++++++++++++++++++++++++
+##########################
 
 :author:    Gleixner Thomas
 :address:   tglx@linutronix.de

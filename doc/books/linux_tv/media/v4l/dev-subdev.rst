@@ -2,9 +2,9 @@
 
 .. _subdev:
 
-====================
+********************
 Sub-device Interface
-====================
+********************
 
 The complex nature of V4L2 devices, where hardware is often made of
 several integrated circuits that need to interact with each other in a
@@ -375,7 +375,7 @@ Types of selection targets
 
 
 Actual targets
-++++++++++++++
+^^^^^^^^^^^^^^
 
 Actual targets (without a postfix) reflect the actual hardware
 configuration at any point of time. There is a BOUNDS target
@@ -383,7 +383,7 @@ corresponding to every actual target.
 
 
 BOUNDS targets
-++++++++++++++
+^^^^^^^^^^^^^^
 
 BOUNDS targets is the smallest rectangle that contains all valid actual
 rectangles. It may not be possible to set the actual rectangle as large

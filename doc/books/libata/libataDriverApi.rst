@@ -2,9 +2,9 @@
 
 .. _libataDriverApi:
 
-=================
+*****************
 libata Driver API
-=================
+*****************
 
 struct ata_port_operations is defined for every low-level libata
 hardware driver, and it controls how the low-level driver interfaces

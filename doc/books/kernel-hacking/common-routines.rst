@@ -2,9 +2,9 @@
 
 .. _common-routines:
 
-===============
+***************
 Common Routines
-===============
+***************
 
 
 .. _routines-printk:

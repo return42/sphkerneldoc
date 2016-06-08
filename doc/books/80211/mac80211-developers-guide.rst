@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++
+######################
 The mac80211 subsystem
-++++++++++++++++++++++
+######################
 
     .. kernel-doc:: include/net/mac80211.h
         :doc: Introduction

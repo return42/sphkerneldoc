@@ -2,9 +2,9 @@
 
 .. _chrdev:
 
-============
+************
 Char devices
-============
+************
 
 
 .. kernel-doc:: fs/char_dev.c

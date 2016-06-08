@@ -2,9 +2,9 @@
 
 .. _filesystems:
 
-==================
+******************
 Filesystem support
-==================
+******************
 
 The NAND driver provides all necessary functions for a filesystem via
 the MTD interface.

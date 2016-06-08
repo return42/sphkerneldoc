@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-=================
+*****************
 Selection targets
-=================
+*****************
 
 
 .. _sel-targets-capture:

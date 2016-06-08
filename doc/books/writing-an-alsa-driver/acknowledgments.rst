@@ -2,9 +2,9 @@
 
 .. _acknowledgments:
 
-===============
+***************
 Acknowledgments
-===============
+***************
 
 I would like to thank Phil Kerr for his help for improvement and
 corrections of this document.

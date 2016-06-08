@@ -2,9 +2,9 @@
 
 .. _crop:
 
-=====================================
+*************************************
 Image Cropping, Insertion and Scaling
-=====================================
+*************************************
 
 Some video capture devices can sample a subsection of the picture and
 shrink or enlarge it to an image of arbitrary size. We call these

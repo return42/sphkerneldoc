@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 SuperH Interfaces Guide
-+++++++++++++++++++++++
+#######################
 
 :author:    Mundt Paul
 :address:   lethal@linux-sh.org

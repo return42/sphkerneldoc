@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 The Userspace I/O HOWTO
-+++++++++++++++++++++++
+#######################
 
 **Copyright** 2006-2008 : Hans-Jürgen Koch.
 
@@ -73,9 +73,9 @@ First draft.
 
 .. _app1:
 
-===================
+*******************
 Further information
-===================
+*******************
 
 -  `OSADL homepage. <http://www.osadl.org>`__
 

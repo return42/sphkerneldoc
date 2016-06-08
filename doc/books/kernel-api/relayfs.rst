@@ -2,9 +2,9 @@
 
 .. _relayfs:
 
-=======================
+***********************
 relay interface support
-=======================
+***********************
 
 Relay interface support is designed to provide an efficient mechanism
 for tools and facilities to relay large amounts of data from kernel

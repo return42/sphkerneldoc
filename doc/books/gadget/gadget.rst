@@ -2,9 +2,9 @@
 
 .. _gadget:
 
-==============
+**************
 Gadget Drivers
-==============
+**************
 
 In addition to *Gadget Zero* (used primarily for testing and development
 with drivers for usb controller hardware), other gadget drivers exist.

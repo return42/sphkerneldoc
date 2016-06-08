@@ -2,9 +2,9 @@
 
 .. _usingKDB:
 
-=========
+*********
 Using kdb
-=========
+*********
 
 
 .. _quickKDBserial:

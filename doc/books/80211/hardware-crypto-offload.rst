@@ -2,9 +2,9 @@
 
 .. _hardware-crypto-offload:
 
-============================
+****************************
 Hardware crypto acceleration
-============================
+****************************
 
 
 .. kernel-doc:: include/net/mac80211.h

@@ -2,9 +2,9 @@
 
 .. _ataExceptions:
 
-=========================
+*************************
 ATA errors and exceptions
-=========================
+*************************
 
 This chapter tries to identify what error/exception conditions exist for
 ATA/ATAPI devices and describe how they should be handled in

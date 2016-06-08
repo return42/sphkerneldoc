@@ -2,9 +2,9 @@
 
 .. _apiref-mutex:
 
-===================
+*******************
 Mutex API reference
-===================
+*******************
 
 
 .. kernel-doc:: include/linux/mutex.h

@@ -2,9 +2,9 @@
 
 .. _Development:
 
-============================
+****************************
 Developing Cipher Algorithms
-============================
+****************************
 
 
 Registering And Unregistering Transformation

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++++++++++++++++++
+#################################################
 Using kgdb, kdb and the kernel debugger internals
-+++++++++++++++++++++++++++++++++++++++++++++++++
+#################################################
 
 :author:    Wessel Jason
 :address:   jason.wessel@windriver.com

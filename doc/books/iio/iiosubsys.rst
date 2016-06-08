@@ -2,9 +2,9 @@
 
 .. _iiosubsys:
 
-===================
+*******************
 Industrial I/O core
-===================
+*******************
 
 The Industrial I/O core offers:
 

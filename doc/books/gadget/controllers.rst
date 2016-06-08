@@ -2,9 +2,9 @@
 
 .. _controllers:
 
-=============================
+*****************************
 Peripheral Controller Drivers
-=============================
+*****************************
 
 The first hardware supporting this API was the NetChip 2280 controller,
 which supports USB 2.0 high speed and is based on PCI. This is the

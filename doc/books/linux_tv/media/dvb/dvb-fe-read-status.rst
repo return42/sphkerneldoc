@@ -2,9 +2,9 @@
 
 .. _dvb-fe-read-status:
 
-=======================================
+***************************************
 Querying frontend status and statistics
-=======================================
+***************************************
 
 Once :ref:`FE_SET_PROPERTY <FE_GET_PROPERTY>` is called, the
 frontend will run a kernel thread that will periodically check for the

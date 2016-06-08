@@ -2,9 +2,9 @@
 
 .. _Porting_The_Z8530_Driver:
 
-========================
+************************
 Porting The Z8530 Driver
-========================
+************************
 
 The Z8530 driver is written to be portable. In DMA mode it makes
 assumptions about the use of ISA DMA. These are probably warranted in

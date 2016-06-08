@@ -2,9 +2,9 @@
 
 .. _key-handling:
 
-============
+************
 Key handling
-============
+************
 
 
 Key handling basics

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++++++++
+#######################################
 Industrial I/O driver developer's guide
-+++++++++++++++++++++++++++++++++++++++
+#######################################
 
 :author:    Baluta Daniel
 :address:   daniel.baluta@intel.com

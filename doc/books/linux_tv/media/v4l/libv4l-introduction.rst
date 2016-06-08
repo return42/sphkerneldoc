@@ -2,9 +2,9 @@
 
 .. _libv4l-introduction:
 
-============
+************
 Introduction
-============
+************
 
 libv4l is a collection of libraries which adds a thin abstraction layer
 on top of video4linux2 devices. The purpose of this (thin) layer is to

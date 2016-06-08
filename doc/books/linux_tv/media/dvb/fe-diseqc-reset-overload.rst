@@ -2,9 +2,9 @@
 
 .. _FE_DISEQC_RESET_OVERLOAD:
 
-==============================
+******************************
 ioctl FE_DISEQC_RESET_OVERLOAD
-==============================
+******************************
 
 *man FE_DISEQC_RESET_OVERLOAD(2)*
 

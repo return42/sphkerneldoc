@@ -2,9 +2,9 @@
 
 .. _common:
 
-+++++++++++++++++++
+###################
 Common API Elements
-+++++++++++++++++++
+###################
 Programming a V4L2 device consists of these steps:
 
 -  Opening the device

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-==================
+******************
 Compressed Formats
-==================
+******************
 
 
 .. _compressed-formats:

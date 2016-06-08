@@ -2,9 +2,9 @@
 
 .. _CommonBackEndReq:
 
-=========================
+*************************
 Kernel Debugger Internals
-=========================
+*************************
 
 
 .. _kgdbArchitecture:

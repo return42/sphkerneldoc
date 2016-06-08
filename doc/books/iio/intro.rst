@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The main purpose of the Industrial I/O subsystem (IIO) is to provide
 support for devices that in some sense perform either analog-to-digital

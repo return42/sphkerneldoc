@@ -2,9 +2,9 @@
 
 .. _ccwgroup:
 
-================
+****************
 The ccwgroup bus
-================
+****************
 
 The ccwgroup bus only contains artificial devices, created by the user.
 Many networking devices (e.g. qeth) are in fact composed of several ccw

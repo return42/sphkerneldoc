@@ -2,9 +2,9 @@
 
 .. _races:
 
-============================
+****************************
 The Problem With Concurrency
-============================
+****************************
 
 (Skip this if you know what a Race Condition is).
 

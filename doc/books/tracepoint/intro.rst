@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 Tracepoints are static probe points that are located in strategic points
 throughout the kernel. 'Probes' register/unregister with tracepoints via

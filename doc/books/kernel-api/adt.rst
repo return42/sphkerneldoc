@@ -2,9 +2,9 @@
 
 .. _adt:
 
-==========
+**********
 Data Types
-==========
+**********
 
 
 Doubly Linked Lists

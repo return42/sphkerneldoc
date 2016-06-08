@@ -2,9 +2,9 @@
 
 .. _vidioc-querystd:
 
-=====================
+*********************
 ioctl VIDIOC_QUERYSTD
-=====================
+*********************
 
 *man VIDIOC_QUERYSTD(2)*
 

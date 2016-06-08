@@ -2,9 +2,9 @@
 
 .. _vidioc-enum-frameintervals:
 
-================================
+********************************
 ioctl VIDIOC_ENUM_FRAMEINTERVALS
-================================
+********************************
 
 *man VIDIOC_ENUM_FRAMEINTERVALS(2)*
 

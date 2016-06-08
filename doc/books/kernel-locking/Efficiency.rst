@@ -2,9 +2,9 @@
 
 .. _Efficiency:
 
-=============
+*************
 Locking Speed
-=============
+*************
 
 There are three main things to worry about when considering speed of
 some code which does locking. First is concurrency: how many things are

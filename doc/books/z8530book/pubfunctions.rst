@@ -2,9 +2,9 @@
 
 .. _pubfunctions:
 
-=========================
+*************************
 Public Functions Provided
-=========================
+*************************
 
 
 .. kernel-doc:: drivers/net/wan/z85230.c

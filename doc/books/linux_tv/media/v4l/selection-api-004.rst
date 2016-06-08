@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-=============
+*************
 Configuration
-=============
+*************
 
 Applications can use the :ref:`selection API <vidioc-g-selection>` to
 select an area in a video signal or a buffer, and to query for default

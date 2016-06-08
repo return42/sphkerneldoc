@@ -2,9 +2,9 @@
 
 .. _field-order:
 
-===========
+***********
 Field Order
-===========
+***********
 
 We have to distinguish between progressive and interlaced video.
 Progressive video transmits all lines of a video image sequentially.

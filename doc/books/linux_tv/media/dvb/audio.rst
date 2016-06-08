@@ -2,9 +2,9 @@
 
 .. _dvb_audio:
 
-++++++++++++++++
+################
 DVB Audio Device
-++++++++++++++++
+################
 The DVB audio device controls the MPEG2 audio decoder of the DVB
 hardware. It can be accessed through ``/dev/dvb/adapter?/audio?``. Data
 types and and ioctl definitions can be accessed by including

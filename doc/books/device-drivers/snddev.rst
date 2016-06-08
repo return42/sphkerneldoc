@@ -2,9 +2,9 @@
 
 .. _snddev:
 
-=============
+*************
 Sound Devices
-=============
+*************
 
 
 .. kernel-doc:: include/sound/core.h

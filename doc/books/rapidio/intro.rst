@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 RapidIO is a high speed switched fabric interconnect with features aimed
 at the embedded market. RapidIO provides support for memory-mapped I/O

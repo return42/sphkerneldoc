@@ -2,9 +2,9 @@
 
 .. _diff-v4l:
 
-================================
+********************************
 Differences between V4L and V4L2
-================================
+********************************
 
 The Video For Linux API was first introduced in Linux 2.1 to unify and
 replace various TV and radio device related interfaces, developed

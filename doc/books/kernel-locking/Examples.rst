@@ -2,9 +2,9 @@
 
 .. _Examples:
 
-===============
+***************
 Common Examples
-===============
+***************
 
 Let's step through a simple example: a cache of number to name mappings.
 The cache keeps a count of how often each of the objects is used, and

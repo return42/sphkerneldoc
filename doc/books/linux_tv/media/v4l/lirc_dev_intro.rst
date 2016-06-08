@@ -2,9 +2,9 @@
 
 .. _lirc_dev_intro:
 
-============
+************
 Introduction
-============
+************
 
 The LIRC device interface is a bi-directional interface for transporting
 raw IR data between userspace and kernelspace. Fundamentally, it is just

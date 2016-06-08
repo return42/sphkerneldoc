@@ -2,9 +2,9 @@
 
 .. _libataScsiInt:
 
-=================================
+*********************************
 libata SCSI translation/emulation
-=================================
+*********************************
 
 
 .. kernel-doc:: drivers/ata/libata-scsi.c

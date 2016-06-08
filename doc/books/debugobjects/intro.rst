@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 debugobjects is a generic infrastructure to track the life time of
 kernel objects and validate the operations on those.

@@ -2,9 +2,9 @@
 
 .. _kernel-lib:
 
-==============================
+******************************
 Basic Kernel Library Functions
-==============================
+******************************
 
 The Linux kernel provides more basic utility functions.
 

@@ -2,9 +2,9 @@
 
 .. _drmInternals:
 
-=============
+*************
 DRM Internals
-=============
+*************
 
 This chapter documents DRM internals relevant to driver authors and
 developers working to add support for the latest features to existing
@@ -44,7 +44,7 @@ Driver Information
 
 
 Driver Features
-+++++++++++++++
+^^^^^^^^^^^^^^^
 
 Drivers inform the DRM core about their requirements and supported
 features by setting appropriate flags in the ``driver_features`` field.
@@ -104,7 +104,7 @@ DRIVER_ATOMIC
 
 
 Major, Minor and Patchlevel
-+++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code-block:: c
@@ -129,7 +129,7 @@ called with the requested version.
 
 
 Name, Description and Date
-++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. code-block:: c
@@ -170,7 +170,7 @@ Driver Load
 .. _drm-irq-registration:
 
 IRQ Registration
-++++++++++++++++
+^^^^^^^^^^^^^^^^
 
 The DRM core tries to facilitate IRQ handler registration and
 unregistration by providing ``drm_irq_install`` and
@@ -222,7 +222,7 @@ to 0 after unregistering the IRQs.
 
 
 Memory Manager Initialization
-+++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Every DRM driver requires a memory manager which must be initialized at
 load time. DRM currently contains two memory managers, the Translation
@@ -232,7 +232,7 @@ document describes the use of the GEM memory manager only. See
 
 
 Miscellaneous Device Configuration
-++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Another task that may be necessary for PCI devices during configuration
 is mapping the video BIOS. On many devices, the VBIOS describes device
@@ -299,7 +299,7 @@ TTM design background and information belongs here.
 
 
 TTM initialization
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
     **Warning**
 
@@ -386,7 +386,7 @@ driver-specific ioctls.
 
 
 GEM Initialization
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 Drivers that use GEM must set the DRIVER_GEM bit in the struct
 ``drm_driver`` ``driver_features`` field. The DRM core will then
@@ -404,7 +404,7 @@ its own DRM MM object.
 
 
 GEM Objects Creation
-++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^
 
 GEM splits creation of GEM objects and allocation of the memory that
 backs them in two distinct operations.
@@ -443,7 +443,7 @@ by drivers.
 
 
 GEM Objects Lifetime
-++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^
 
 All GEM objects are reference-counted by the GEM core. References can be
 acquired and release by ``calling drm_gem_object_reference`` and
@@ -469,7 +469,7 @@ released with ``drm_gem_object_release``.
 
 
 GEM Objects Naming
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 Communication between userspace and the kernel refers to GEM objects
 using local handles, global names or, more recently, file descriptors.
@@ -520,7 +520,7 @@ cross-device buffer sharing since it is based on dma-bufs.
 .. _drm-gem-objects-mapping:
 
 GEM Objects Mapping
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 Because mapping operations are fairly heavyweight GEM favours
 read/write-like access to buffers, implemented through driver-specific
@@ -589,7 +589,7 @@ faults can implement their own mmap file operation handler.
 
 
 Memory Coherency
-++++++++++++++++
+^^^^^^^^^^^^^^^^
 
 When mapped to the device or used in a command buffer, backing pages for
 an object are flushed to memory and marked write combined so as to be
@@ -606,7 +606,7 @@ any necessary flushing operations).
 
 
 Command Execution
-+++++++++++++++++
+^^^^^^^^^^^^^^^^^
 
 Perhaps the most important GEM function for GPU devices is providing a
 command execution interface to clients. Client programs construct
@@ -660,7 +660,7 @@ buffers are dma-buf based file descriptors.
 
 
 Overview and Driver Interface
-+++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Similar to GEM global names, PRIME file descriptors are also used to
 share buffer objects across processes. They offer additional security:
@@ -708,7 +708,7 @@ These two operations are mandatory for GEM drivers that support PRIME.
 
 
 PRIME Helper Functions
-++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_prime.c
@@ -726,14 +726,14 @@ DRM MM Range Allocator
 
 
 Overview
-++++++++
+^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mm.c
     :doc: Overview
 
 LRU Scan/Eviction Support
-+++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mm.c
@@ -946,7 +946,7 @@ CRTCs.
 
 
 CRTC Initialization
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 A KMS device must create and register at least one struct ``drm_crtc``
 instance. The instance is allocated and zeroed by the driver, possibly
@@ -985,7 +985,7 @@ types.
 
 
 Plane Initialization
-++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^
 
 To create a plane, a KMS drivers allocates and zeroes an instances of
 struct ``drm_plane`` (possibly as part of a larger structure) and
@@ -1014,7 +1014,7 @@ attached to each encoder.
 
 
 Encoder Initialization
-++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^
 
 As for CRTCs, a KMS driver must create, initialize and register at least
 one struct ``drm_encoder`` instance. The instance is allocated and
@@ -1055,7 +1055,7 @@ the attached displays.
 
 
 Connector Initialization
-++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^
 
 Finally a KMS driver must create, initialize, register and attach at
 least one struct ``drm_connector`` instance. The instance is created as
@@ -1132,7 +1132,7 @@ check the state of all connectors, but no periodic polling will be done.
 
 
 Connector Operations
-++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^
 
     **Note**
 
@@ -1345,21 +1345,21 @@ Atomic Modeset Helper Functions Reference
 
 
 Overview
-++++++++
+^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
     :doc: overview
 
 Implementing Asynchronous Atomic Commit
-+++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
     :doc: implementing async commit
 
 Atomic State Reset and Initialization
-+++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
@@ -1546,14 +1546,14 @@ Bridges
 
 
 Overview
-++++++++
+^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
     :doc: overview
 
 Default bridge callback sequence
-++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_bridge.c

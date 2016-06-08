@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 This framework is designed to provide a standard kernel interface to
 control voltage and current regulators.

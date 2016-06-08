@@ -2,9 +2,9 @@
 
 .. _atomic-ops:
 
-=================
+*****************
 Atomic Operations
-=================
+*****************
 
 Certain operations are guaranteed atomic on all platforms. The first
 class of operations work on ``atomic_t`` ``include/asm/atomic.h``; this

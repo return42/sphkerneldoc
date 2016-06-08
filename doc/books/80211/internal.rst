@@ -2,9 +2,9 @@
 
 .. _internal:
 
-+++++++++
+#########
 Internals
-+++++++++
+#########
 TBD
 
 This part of the book describes mac80211 internals.

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++
+###################
 The ALSA Driver API
-+++++++++++++++++++
+###################
 
 This document is free; you can redistribute it and/or modify it under
 the terms of the GNU General Public License as published by the Free

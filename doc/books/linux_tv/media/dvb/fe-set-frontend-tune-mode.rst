@@ -2,9 +2,9 @@
 
 .. _FE_SET_FRONTEND_TUNE_MODE:
 
-===============================
+*******************************
 ioctl FE_SET_FRONTEND_TUNE_MODE
-===============================
+*******************************
 
 *man FE_SET_FRONTEND_TUNE_MODE(2)*
 

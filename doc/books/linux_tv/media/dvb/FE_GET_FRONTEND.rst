@@ -2,9 +2,9 @@
 
 .. _FE_GET_FRONTEND:
 
-===============
+***************
 FE_GET_FRONTEND
-===============
+***************
 
 DESCRIPTION
 

@@ -2,9 +2,9 @@
 
 .. _modes_of_use:
 
-============
+************
 Modes of Use
-============
+************
 
 
 Manual switching and manual power control

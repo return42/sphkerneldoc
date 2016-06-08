@@ -2,9 +2,9 @@
 
 .. _tools:
 
-=====
+*****
 Tools
-=====
+*****
 
 The MTD project provides a couple of helpful tools to handle NAND Flash.
 

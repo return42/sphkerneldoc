@@ -2,9 +2,9 @@
 
 .. _introduction:
 
-============
+************
 Introduction
-============
+************
 
 The Linux MUSB subsystem is part of the larger Linux USB subsystem. It
 provides support for embedded USB Device Controllers (UDC) that do not

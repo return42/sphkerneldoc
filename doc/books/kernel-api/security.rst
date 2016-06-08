@@ -2,9 +2,9 @@
 
 .. _security:
 
-==================
+******************
 Security Framework
-==================
+******************
 
 
 .. kernel-doc:: security/security.c

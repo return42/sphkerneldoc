@@ -2,9 +2,9 @@
 
 .. _packed-yuv:
 
-==================
+******************
 Packed YUV formats
-==================
+******************
 
 *man Packed YUV formats(2)*
 

@@ -2,15 +2,15 @@
 
 .. _remotes:
 
-+++++++++++++++++++++
+#####################
 Remote Controller API
-+++++++++++++++++++++
+#####################
 
 .. _remote_controllers:
 
-==================
+******************
 Remote Controllers
-==================
+******************
 
 
 .. toctree::
@@ -23,9 +23,9 @@ Remote Controllers
     lirc_device_interface
 
 
-======================
+**********************
 Revision and Copyright
-======================
+**********************
 
 
 :author:    Chehab Mauro (*Carvalho*)

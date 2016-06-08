@@ -2,9 +2,9 @@
 
 .. _dmabuf:
 
-====================================
+************************************
 Streaming I/O (DMA buffer importing)
-====================================
+************************************
 
 The DMABUF framework provides a generic method for sharing buffers
 between multiple devices. Device drivers that support DMABUF can export

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++
+###############################
 Bus-Independent Device Accesses
-+++++++++++++++++++++++++++++++
+###############################
 
 :author:    Wilcox Matthew
 :address:   matthew@wil.cx

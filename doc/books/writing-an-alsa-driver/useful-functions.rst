@@ -2,9 +2,9 @@
 
 .. _useful-functions:
 
-================
+****************
 Useful Functions
-================
+****************
 
 
 .. _useful-functions-snd-printk:

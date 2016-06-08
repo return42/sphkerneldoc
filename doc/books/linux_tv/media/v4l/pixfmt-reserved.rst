@@ -2,9 +2,9 @@
 
 .. _pixfmt-reserved:
 
-===========================
+***************************
 Reserved Format Identifiers
-===========================
+***************************
 
 These formats are not defined by this specification, they are just
 listed for reference and to avoid naming conflicts. If you want to

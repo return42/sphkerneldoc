@@ -2,9 +2,9 @@
 
 .. _event:
 
-===============
+***************
 Event Interface
-===============
+***************
 
 The V4L2 event interface provides a means for a user to get immediately
 notified on certain conditions taking place on a device. This might

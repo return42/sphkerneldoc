@@ -2,9 +2,9 @@
 
 .. _vidioc-enum-framesizes:
 
-============================
+****************************
 ioctl VIDIOC_ENUM_FRAMESIZES
-============================
+****************************
 
 *man VIDIOC_ENUM_FRAMESIZES(2)*
 

@@ -2,9 +2,9 @@
 
 .. _boarddriversadvanced:
 
-===============================
+*******************************
 Advanced board driver functions
-===============================
+*******************************
 
 This chapter describes the advanced functionality of the NAND driver.
 For a list of functions which can be overridden by the board driver see

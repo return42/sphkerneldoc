@@ -2,9 +2,9 @@
 
 .. _miscdev:
 
-=====================
+*********************
 Miscellaneous Devices
-=====================
+*********************
 
 
 .. kernel-doc:: drivers/char/misc.c

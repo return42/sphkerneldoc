@@ -2,9 +2,9 @@
 
 .. _custom_kernel_module:
 
-==============================
+******************************
 Writing your own kernel module
-==============================
+******************************
 
 Please have a look at ``uio_cif.c`` as an example. The following
 paragraphs explain the different sections of this file.

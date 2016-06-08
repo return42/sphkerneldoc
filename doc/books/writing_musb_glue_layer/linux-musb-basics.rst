@@ -2,9 +2,9 @@
 
 .. _linux-musb-basics:
 
-=================
+*****************
 Linux MUSB Basics
-=================
+*****************
 
 To get started on the topic, please read USB On-the-Go Basics (see
 Resources) which provides an introduction of USB OTG operation at the

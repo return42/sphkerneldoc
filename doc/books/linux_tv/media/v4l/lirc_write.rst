@@ -2,9 +2,9 @@
 
 .. _lirc_write:
 
-==============
+**************
 LIRC write fop
-==============
+**************
 
 The data written to the chardev is a pulse/space sequence of integer
 values. Pulses and spaces are only marked implicitly by their position.

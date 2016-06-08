@@ -2,9 +2,9 @@
 
 .. _colorspaces:
 
-===========
+***********
 Colorspaces
-===========
+***********
 
 'Color' is a very complex concept and depends on physics, chemistry and
 biology. Just because you have three numbers that describe the 'red',

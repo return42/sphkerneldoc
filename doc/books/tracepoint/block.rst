@@ -2,9 +2,9 @@
 
 .. _block:
 
-========
+********
 Block IO
-========
+********
 
 
 .. kernel-doc:: include/trace/events/block.h

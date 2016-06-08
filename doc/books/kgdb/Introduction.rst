@@ -2,9 +2,9 @@
 
 .. _Introduction:
 
-============
+************
 Introduction
-============
+************
 
 The kernel has two different debugger front ends (kdb and kgdb) which
 interface to the debug core. It is possible to use either of the

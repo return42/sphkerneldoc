@@ -2,9 +2,9 @@
 
 .. _pipes:
 
-=========
+*********
 pipes API
-=========
+*********
 
 Pipe interfaces are all for in-kernel (builtin image) use. They are not
 exported for use by modules.

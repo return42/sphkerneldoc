@@ -2,9 +2,9 @@
 
 .. _libc:
 
-=========================
+*************************
 Basic C Library Functions
-=========================
+*************************
 
 When writing drivers, you cannot in general use routines which are from
 the C Library. Some of the functions have been found generally useful

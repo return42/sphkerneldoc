@@ -2,9 +2,9 @@
 
 .. _cantrips:
 
-===============
+***************
 Kernel Cantrips
-===============
+***************
 
 Some favorites from browsing the source. Feel free to add to this list.
 

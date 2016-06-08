@@ -2,9 +2,9 @@
 
 .. _userspace_driver:
 
-=============================
+*****************************
 Writing a driver in userspace
-=============================
+*****************************
 
 Once you have a working kernel module for your hardware, you can write
 the userspace part of your driver. You don't need any special libraries,

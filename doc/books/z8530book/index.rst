@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 Z8530 Programming Guide
-+++++++++++++++++++++++
+#######################
 
 :author:    Cox Alan
 :address:   alan@lxorguk.ukuu.org.uk

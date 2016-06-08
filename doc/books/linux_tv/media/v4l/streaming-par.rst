@@ -2,9 +2,9 @@
 
 .. _streaming-par:
 
-====================
+********************
 Streaming Parameters
-====================
+********************
 
 Streaming parameters are intended to optimize the video capture process
 as well as I/O. Presently applications can request a high quality

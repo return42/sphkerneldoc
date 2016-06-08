@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-========
+********
 Examples
-========
+********
 
 (A video capture device is assumed; change
 ``V4L2_BUF_TYPE_VIDEO_CAPTURE`` for other devices; change target to

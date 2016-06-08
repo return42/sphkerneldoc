@@ -2,9 +2,9 @@
 
 .. _hsi:
 
-=============================================
+*********************************************
 High Speed Synchronous Serial Interface (HSI)
-=============================================
+*********************************************
 
 High Speed Synchronous Serial Interface (HSI) is a serial interface
 mainly used for connecting application engines (APE) with cellular modem

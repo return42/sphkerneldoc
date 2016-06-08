@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++
+###########################
 Unreliable Guide To Locking
-+++++++++++++++++++++++++++
+###########################
 
 :author:    Russell Rusty
 :address:   rusty@rustcorp.com.au

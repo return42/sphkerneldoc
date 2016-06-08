@@ -2,9 +2,9 @@
 
 .. _api:
 
-======================
+**********************
 Kernel Mode Gadget API
-======================
+**********************
 
 Gadget drivers declare themselves through a *struct
 usb_gadget_driver*, which is responsible for most parts of enumeration

@@ -2,9 +2,9 @@
 
 .. _api:
 
-=============
+*************
 API reference
-=============
+*************
 
 Due to limitations of the kernel documentation framework and the
 existing layout of the source code the entire regulator API is

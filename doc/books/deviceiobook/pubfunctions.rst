@@ -2,9 +2,9 @@
 
 .. _pubfunctions:
 
-=========================
+*************************
 Public Functions Provided
-=========================
+*************************
 
 
 .. kernel-doc:: arch/x86/include/asm/io.h

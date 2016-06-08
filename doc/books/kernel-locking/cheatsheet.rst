@@ -2,9 +2,9 @@
 
 .. _cheatsheet:
 
-=======================
+***********************
 Cheat Sheet For Locking
-=======================
+***********************
 
 Pete Zaitcev gives the following summary:
 

@@ -2,9 +2,9 @@
 
 .. _vidioc-dqevent:
 
-====================
+********************
 ioctl VIDIOC_DQEVENT
-====================
+********************
 
 *man VIDIOC_DQEVENT(2)*
 

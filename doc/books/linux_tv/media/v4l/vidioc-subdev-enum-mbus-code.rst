@@ -2,9 +2,9 @@
 
 .. _vidioc-subdev-enum-mbus-code:
 
-==================================
+**********************************
 ioctl VIDIOC_SUBDEV_ENUM_MBUS_CODE
-==================================
+**********************************
 
 *man VIDIOC_SUBDEV_ENUM_MBUS_CODE(2)*
 

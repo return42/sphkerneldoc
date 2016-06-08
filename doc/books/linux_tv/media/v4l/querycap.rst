@@ -2,9 +2,9 @@
 
 .. _querycap:
 
-=====================
+*********************
 Querying Capabilities
-=====================
+*********************
 
 Because V4L2 covers a wide variety of devices not all aspects of the API
 are equally applicable to all types of devices. Furthermore devices of

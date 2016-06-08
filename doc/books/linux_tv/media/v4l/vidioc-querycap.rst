@@ -2,9 +2,9 @@
 
 .. _vidioc-querycap:
 
-=====================
+*********************
 ioctl VIDIOC_QUERYCAP
-=====================
+*********************
 
 *man VIDIOC_QUERYCAP(2)*
 

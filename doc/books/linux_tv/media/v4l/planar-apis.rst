@@ -2,9 +2,9 @@
 
 .. _planar-apis:
 
-=============================
+*****************************
 Single- and multi-planar APIs
-=============================
+*****************************
 
 Some devices require data for each input or output video frame to be
 placed in discontiguous memory buffers. In such cases, one video frame

@@ -2,9 +2,9 @@
 
 .. _dvb_frontend:
 
-++++++++++++++++
+################
 DVB Frontend API
-++++++++++++++++
+################
 The DVB frontend API was designed to support three types of delivery
 systems:
 

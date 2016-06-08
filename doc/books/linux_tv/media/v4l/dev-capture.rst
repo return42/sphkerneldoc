@@ -2,9 +2,9 @@
 
 .. _capture:
 
-=======================
+***********************
 Video Capture Interface
-=======================
+***********************
 
 Video capture devices sample an analog video signal and store the
 digitized images in memory. Today nearly all devices can capture at full

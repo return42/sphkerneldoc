@@ -2,9 +2,9 @@
 
 .. _vidioc-overlay:
 
-====================
+********************
 ioctl VIDIOC_OVERLAY
-====================
+********************
 
 *man VIDIOC_OVERLAY(2)*
 

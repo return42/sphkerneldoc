@@ -2,9 +2,9 @@
 
 .. _output:
 
-======================
+**********************
 Video Output Interface
-======================
+**********************
 
 Video output devices encode stills or image sequences as analog video
 signal. With this interface applications can control the encoding

@@ -2,9 +2,9 @@
 
 .. _SILInt:
 
-==================
+******************
 sata_sil Internals
-==================
+******************
 
 
 .. kernel-doc:: drivers/ata/sata_sil.c

@@ -2,9 +2,9 @@
 
 .. _usbcore:
 
-=============
+*************
 USB Core APIs
-=============
+*************
 
 There are two basic I/O models in the USB API. The most elemental one is
 asynchronous: drivers submit requests in the form of an URB, and the

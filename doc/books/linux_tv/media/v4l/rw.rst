@@ -2,9 +2,9 @@
 
 .. _rw:
 
-==========
+**********
 Read/Write
-==========
+**********
 
 Input and output devices support the ``read()`` and ``write()``
 function, respectively, when the ``V4L2_CAP_READWRITE`` flag in the

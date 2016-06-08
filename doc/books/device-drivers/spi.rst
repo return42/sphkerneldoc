@@ -2,9 +2,9 @@
 
 .. _spi:
 
-=================================
+*********************************
 Serial Peripheral Interface (SPI)
-=================================
+*********************************
 
 SPI is the "Serial Peripheral Interface", widely used with embedded
 systems because it is a simple and efficient interface: basically a

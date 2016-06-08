@@ -2,9 +2,9 @@
 
 .. _resources:
 
-=========
+*********
 Resources
-=========
+*********
 
 The Linux USB Project:
 `http://www.linux-usb.org/ <http://www.linux-usb.org>`__

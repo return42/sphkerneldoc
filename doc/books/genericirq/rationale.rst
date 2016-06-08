@@ -2,9 +2,9 @@
 
 .. _rationale:
 
-=========
+*********
 Rationale
-=========
+*********
 
 The original implementation of interrupt handling in Linux uses the
 __do_IRQ() super-handler, which is able to deal with every type of

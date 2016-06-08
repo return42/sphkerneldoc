@@ -2,9 +2,9 @@
 
 .. _dvb-frontend-event:
 
-===============
+***************
 frontend events
-===============
+***************
 
 
 .. code-block:: c

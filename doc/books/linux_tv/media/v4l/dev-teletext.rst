@@ -2,9 +2,9 @@
 
 .. _ttx:
 
-==================
+******************
 Teletext Interface
-==================
+******************
 
 This interface was aimed at devices receiving and demodulating Teletext
 data [:ref:`ets300706`, :ref:`itu653`], evaluating the Teletext

@@ -2,9 +2,9 @@
 
 .. _hardware:
 
-===================
+*******************
 Hardware Interfaces
-===================
+*******************
 
 
 Interrupt Handling

@@ -2,9 +2,9 @@
 
 .. _submitting:
 
-================================
+********************************
 Putting Your Stuff in the Kernel
-================================
+********************************
 
 In order to get your stuff into shape for official inclusion, or even to
 make a neat patch, there's administrative work to be done:

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-============
+************
 Introduction
-============
+************
 
 Some video capture devices can sample a subsection of a picture and
 shrink or enlarge it to an image of arbitrary size. Next, the devices

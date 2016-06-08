@@ -2,9 +2,9 @@
 
 .. _drmIntroduction:
 
-============
+************
 Introduction
-============
+************
 
 The Linux DRM layer contains code intended to support the needs of
 complex graphics devices, usually containing programmable pipelines well

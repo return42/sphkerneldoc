@@ -2,9 +2,9 @@
 
 .. _filters:
 
-===============
+***************
 Frame filtering
-===============
+***************
 
 
 .. kernel-doc:: include/net/mac80211.h

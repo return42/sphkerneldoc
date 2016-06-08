@@ -2,9 +2,9 @@
 
 .. _v4l2grab-example:
 
-==================================
+**********************************
 Video Grabber example using libv4l
-==================================
+**********************************
 
 This program demonstrates how to grab V4L2 images in ppm format by using
 libv4l handlers. The advantage is that this grabber can potentially work

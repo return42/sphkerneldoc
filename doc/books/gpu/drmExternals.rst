@@ -2,9 +2,9 @@
 
 .. _drmExternals:
 
-===================
+*******************
 Userland interfaces
-===================
+*******************
 
 The DRM core exports several interfaces to applications, generally
 intended to be used through corresponding libdrm wrapper functions. In

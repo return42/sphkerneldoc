@@ -2,9 +2,9 @@
 
 .. _hardirq-context:
 
-================
+****************
 Hard IRQ Context
-================
+****************
 
 Hardware interrupts usually communicate with a tasklet or softirq.
 Frequently this involves putting work in a queue, which the softirq will

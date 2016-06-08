@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++
+#################################
 Voltage and current regulator API
-+++++++++++++++++++++++++++++++++
+#################################
 
 :author:    Girdwood Liam
 :address:   lrg@slimlogic.co.uk

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++
+########################
 USB Gadget API for Linux
-++++++++++++++++++++++++
+########################
 20 August 2004
 
 This documentation is free software; you can redistribute it and/or

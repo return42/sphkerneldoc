@@ -2,9 +2,9 @@
 
 .. _device-platform-data:
 
-====================
+********************
 Device Platform Data
-====================
+********************
 
 In order to write an MUSB glue layer, you need to have some data
 describing the hardware capabilities of your controller hardware, which

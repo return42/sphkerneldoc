@@ -2,9 +2,9 @@
 
 .. _sta-info:
 
-=====================
+*********************
 Station info handling
-=====================
+*********************
 
 
 Programming information

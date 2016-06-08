@@ -2,9 +2,9 @@
 
 .. _genericinterfaces:
 
-==================
+******************
 Generic interfaces
-==================
+******************
 
 Some interfaces are available to other drivers that do not necessarily
 have anything to do with the busses described above, but still are

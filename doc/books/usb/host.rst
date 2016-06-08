@@ -2,9 +2,9 @@
 
 .. _host:
 
-=======================
+***********************
 USB Host-Side API Model
-=======================
+***********************
 
 Host-side drivers for USB devices talk to the "usbcore" APIs. There are
 two. One is intended for *general-purpose* drivers (exposed through

@@ -2,9 +2,9 @@
 
 .. _vidioc-query-dv-timings:
 
-=============================
+*****************************
 ioctl VIDIOC_QUERY_DV_TIMINGS
-=============================
+*****************************
 
 *man VIDIOC_QUERY_DV_TIMINGS(2)*
 

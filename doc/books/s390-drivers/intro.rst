@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 This document describes the interfaces available for device drivers that
 drive s390 based channel attached I/O devices. This includes interfaces

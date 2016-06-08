@@ -2,9 +2,9 @@
 
 .. _PiixInt:
 
-==================
+******************
 ata_piix Internals
-==================
+******************
 
 
 .. kernel-doc:: drivers/ata/ata_piix.c

@@ -2,9 +2,9 @@
 
 .. _devdrivers:
 
-=============================
+*****************************
 Device drivers infrastructure
-=============================
+*****************************
 
 
 The Basic Device Driver-Model Structures

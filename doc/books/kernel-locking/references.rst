@@ -2,9 +2,9 @@
 
 .. _references:
 
-===============
+***************
 Further reading
-===============
+***************
 
 -  ``Documentation/locking/spinlocks.txt``: Linus Torvalds' spinlocking
    tutorial in the kernel sources.

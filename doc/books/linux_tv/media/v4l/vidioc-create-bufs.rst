@@ -2,9 +2,9 @@
 
 .. _vidioc-create-bufs:
 
-========================
+************************
 ioctl VIDIOC_CREATE_BUFS
-========================
+************************
 
 *man VIDIOC_CREATE_BUFS(2)*
 

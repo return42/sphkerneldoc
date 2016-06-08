@@ -2,9 +2,9 @@
 
 .. _device:
 
-================
+****************
 Device operation
-================
+****************
 
 When a device is plugged into the USB bus that matches the device ID
 pattern that your driver registered with the USB core, the probe

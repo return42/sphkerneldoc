@@ -2,9 +2,9 @@
 
 .. _Conclusion:
 
-==========
+**********
 Conclusion
-==========
+**********
 
 Writing Linux USB device drivers is not a difficult task as the
 usb-skeleton driver shows. This driver, combined with the other current

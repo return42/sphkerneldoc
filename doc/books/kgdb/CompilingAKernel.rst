@@ -2,9 +2,9 @@
 
 .. _CompilingAKernel:
 
-==================
+******************
 Compiling a kernel
-==================
+******************
 
 -  In order to enable compilation of kdb, you must first enable kgdb.
 

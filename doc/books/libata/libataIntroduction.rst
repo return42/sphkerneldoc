@@ -2,9 +2,9 @@
 
 .. _libataIntroduction:
 
-============
+************
 Introduction
-============
+************
 
 libATA is a library used inside the Linux kernel to support ATA host
 controllers and devices. libATA provides an ATA driver API, class

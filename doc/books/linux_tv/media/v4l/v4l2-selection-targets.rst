@@ -2,9 +2,9 @@
 
 .. _v4l2-selection-targets:
 
-=================
+*****************
 Selection targets
-=================
+*****************
 
 The precise meaning of the selection targets may be dependent on which
 of the two interfaces they are used.

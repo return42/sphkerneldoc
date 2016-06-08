@@ -2,9 +2,9 @@
 
 .. _howto:
 
-======================
+**********************
 Howto use debugobjects
-======================
+**********************
 
 A kernel subsystem needs to provide a data structure which describes the
 object type and add calls into the debug code at appropriate places. The

@@ -2,9 +2,9 @@
 
 .. _rds:
 
-=============
+*************
 RDS Interface
-=============
+*************
 
 The Radio Data System transmits supplementary information in binary
 format, for example the station name or travel information, on an

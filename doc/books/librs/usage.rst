@@ -2,9 +2,9 @@
 
 .. _usage:
 
-=====
+*****
 Usage
-=====
+*****
 
 This chapter provides examples of how to use the library.
 

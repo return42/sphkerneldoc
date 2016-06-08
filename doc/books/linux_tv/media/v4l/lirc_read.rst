@@ -2,9 +2,9 @@
 
 .. _lirc_read:
 
-=============
+*************
 LIRC read fop
-=============
+*************
 
 The lircd userspace daemon reads raw IR data from the LIRC chardev. The
 exact format of the data depends on what modes a driver supports, and

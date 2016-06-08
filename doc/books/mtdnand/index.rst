@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++++++
+#####################################
 MTD NAND Driver Programming Interface
-+++++++++++++++++++++++++++++++++++++
+#####################################
 
 :author:    Gleixner Thomas
 :address:   tglx@linutronix.de

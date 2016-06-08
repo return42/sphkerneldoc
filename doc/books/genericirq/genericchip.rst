@@ -2,9 +2,9 @@
 
 .. _genericchip:
 
-======================
+**********************
 Generic interrupt chip
-======================
+**********************
 
 To avoid copies of identical implementations of IRQ chips the core
 provides a configurable generic interrupt chip implementation.

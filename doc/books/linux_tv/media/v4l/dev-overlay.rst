@@ -2,9 +2,9 @@
 
 .. _overlay:
 
-=======================
+***********************
 Video Overlay Interface
-=======================
+***********************
 
 
 **Also known as Framebuffer Overlay or Previewing**

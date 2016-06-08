@@ -2,9 +2,9 @@
 
 .. _vidioc-subdev-enum-frame-size:
 
-===================================
+***********************************
 ioctl VIDIOC_SUBDEV_ENUM_FRAME_SIZE
-===================================
+***********************************
 
 *man VIDIOC_SUBDEV_ENUM_FRAME_SIZE(2)*
 

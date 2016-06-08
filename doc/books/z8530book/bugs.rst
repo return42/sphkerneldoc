@@ -2,9 +2,9 @@
 
 .. _bugs:
 
-==========================
+**************************
 Known Bugs And Assumptions
-==========================
+**************************
 
 Interrupt Locking
     The locking in the driver is done via the global cli/sti lock. This

@@ -2,9 +2,9 @@
 
 .. _userp:
 
-=============================
+*****************************
 Streaming I/O (User Pointers)
-=============================
+*****************************
 
 Input and output devices support this I/O method when the
 ``V4L2_CAP_STREAMING`` flag in the ``capabilities`` field of struct

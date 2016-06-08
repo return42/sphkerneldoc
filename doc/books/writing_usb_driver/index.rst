@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++++
+##########################
 Writing USB Device Drivers
-++++++++++++++++++++++++++
+##########################
 
 :author:    Kroah-Hartman Greg
 :address:   greg@kroah.com

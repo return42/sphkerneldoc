@@ -2,9 +2,9 @@
 
 .. _otg:
 
-===================
+*******************
 USB On-The-GO (OTG)
-===================
+*******************
 
 USB OTG support on Linux 2.6 was initially developed by Texas
 Instruments for `OMAP <http://www.omap.com>`__ 16xx and 17xx series

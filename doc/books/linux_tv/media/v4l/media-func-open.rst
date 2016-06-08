@@ -2,9 +2,9 @@
 
 .. _media-func-open:
 
-============
+************
 media open()
-============
+************
 
 *man media-open(2)*
 

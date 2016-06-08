@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The generic interrupt handling layer is designed to provide a complete
 abstraction of interrupt handling for device drivers. It is able to

@@ -2,9 +2,9 @@
 
 .. _vidioc-enum-freq-bands:
 
-============================
+****************************
 ioctl VIDIOC_ENUM_FREQ_BANDS
-============================
+****************************
 
 *man VIDIOC_ENUM_FREQ_BANDS(2)*
 

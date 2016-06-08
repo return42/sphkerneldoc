@@ -2,9 +2,9 @@
 
 .. _vidioc-enuminput:
 
-======================
+**********************
 ioctl VIDIOC_ENUMINPUT
-======================
+**********************
 
 *man VIDIOC_ENUMINPUT(2)*
 

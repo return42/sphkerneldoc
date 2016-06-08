@@ -2,9 +2,9 @@
 
 .. _fixupfunctions:
 
-===============
+***************
 Fixup functions
-===============
+***************
 
 
 .. _debug_obj_descr:

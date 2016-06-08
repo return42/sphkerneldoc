@@ -2,9 +2,9 @@
 
 .. _libataThanks:
 
-======
+******
 Thanks
-======
+******
 
 The bulk of the ATA knowledge comes thanks to long conversations with
 Andre Hedrick (www.linux-ide.org), and long hours pondering the ATA and

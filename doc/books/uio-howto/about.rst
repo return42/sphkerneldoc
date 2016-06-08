@@ -2,9 +2,9 @@
 
 .. _about:
 
-=========
+*********
 About UIO
-=========
+*********
 
 If you use UIO for your card's driver, here's what you get:
 

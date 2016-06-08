@@ -2,9 +2,9 @@
 
 .. _trylock-functions:
 
-=====================
+*********************
 The trylock Functions
-=====================
+*********************
 
 There are functions that try to acquire a lock only once and immediately
 return a value telling about success or failure to acquire the lock.

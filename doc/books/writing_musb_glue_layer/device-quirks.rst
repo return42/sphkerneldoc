@@ -2,9 +2,9 @@
 
 .. _device-quirks:
 
-=============
+*************
 Device Quirks
-=============
+*************
 
 Completing the platform data specific to your device, you may also need
 to write some code in the glue layer to work around some device specific

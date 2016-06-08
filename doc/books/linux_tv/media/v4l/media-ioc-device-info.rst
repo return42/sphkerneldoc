@@ -2,9 +2,9 @@
 
 .. _media-ioc-device-info:
 
-===========================
+***************************
 ioctl MEDIA_IOC_DEVICE_INFO
-===========================
+***************************
 
 *man MEDIA_IOC_DEVICE_INFO(2)*
 

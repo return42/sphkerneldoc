@@ -2,9 +2,9 @@
 
 .. _net:
 
-+++++++++++++++
+###############
 DVB Network API
-+++++++++++++++
+###############
 The DVB net device controls the mapping of data packages that are part
 of a transport stream to be mapped into a virtual network interface,
 visible through the standard Linux network protocol stack.
@@ -28,15 +28,15 @@ header.
 
 .. _net_fcalls:
 
-++++++++++++++++++++++
+######################
 DVB net Function Calls
-++++++++++++++++++++++
+######################
 
 .. _NET_ADD_IF:
 
-================
+****************
 ioctl NET_ADD_IF
-================
+****************
 
 *man NET_ADD_IF(2)*
 
@@ -123,9 +123,9 @@ struct dvb_net_if description
 
 .. _NET_REMOVE_IF:
 
-===================
+*******************
 ioctl NET_REMOVE_IF
-===================
+*******************
 
 *man NET_REMOVE_IF(2)*
 
@@ -165,9 +165,9 @@ appropriately. The generic error codes are described at the
 
 .. _NET_GET_IF:
 
-================
+****************
 ioctl NET_GET_IF
-================
+****************
 
 *man NET_GET_IF(2)*
 

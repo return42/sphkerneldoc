@@ -2,9 +2,9 @@
 
 .. _audio:
 
-========================
+************************
 Audio Inputs and Outputs
-========================
+************************
 
 Audio inputs and outputs are physical connectors of a device. Video
 capture devices have inputs, output devices have outputs, zero or more

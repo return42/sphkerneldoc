@@ -2,9 +2,9 @@
 
 .. _API:
 
-=====================
+*********************
 Programming Interface
-=====================
+*********************
 
 Please note that the kernel crypto API contains the AEAD givcrypt API
 (crypto_aead_giv* and aead_givcrypt_* function calls in

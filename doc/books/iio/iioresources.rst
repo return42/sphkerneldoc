@@ -2,9 +2,9 @@
 
 .. _iioresources:
 
-=========
+*********
 Resources
-=========
+*********
 
 -  drivers/iio/
    , contains the IIO core plus and directories for each sensor type

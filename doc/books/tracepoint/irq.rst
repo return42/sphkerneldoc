@@ -2,9 +2,9 @@
 
 .. _irq:
 
-===
+***
 IRQ
-===
+***
 
 
 .. kernel-doc:: include/trace/events/irq.h

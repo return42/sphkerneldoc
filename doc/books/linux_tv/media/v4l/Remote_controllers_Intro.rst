@@ -2,9 +2,9 @@
 
 .. _Remote_controllers_Intro:
 
-============
+************
 Introduction
-============
+************
 
 Currently, most analog and digital devices have a Infrared input for
 remote controllers. Each manufacturer has their own type of control. It

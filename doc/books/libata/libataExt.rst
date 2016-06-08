@@ -2,9 +2,9 @@
 
 .. _libataExt:
 
-==============
+**************
 libata Library
-==============
+**************
 
 
 .. kernel-doc:: drivers/ata/libata-core.c

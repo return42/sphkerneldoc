@@ -2,9 +2,9 @@
 
 .. _vidioc-enumaudioout:
 
-=======================
+***********************
 ioctl VIDIOC_ENUMAUDOUT
-=======================
+***********************
 
 *man VIDIOC_ENUMAUDOUT(2)*
 

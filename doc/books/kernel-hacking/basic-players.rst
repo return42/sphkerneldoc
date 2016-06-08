@@ -2,9 +2,9 @@
 
 .. _basic-players:
 
-===========
+***********
 The Players
-===========
+***********
 
 At any time each of the CPUs in a system can be:
 

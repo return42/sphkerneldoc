@@ -2,9 +2,9 @@
 
 .. _types:
 
-==================
+******************
 USB-Standard Types
-==================
+******************
 
 In ``<linux/usb/ch9.h>`` you will find the USB data types defined in
 chapter 9 of the USB specification. These data types are used throughout

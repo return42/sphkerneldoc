@@ -2,9 +2,9 @@
 
 .. _structure:
 
-===========================
+***************************
 Structure of Gadget Drivers
-===========================
+***************************
 
 A system running inside a USB peripheral normally has at least three
 layers inside the kernel to handle USB protocol processing, and may have

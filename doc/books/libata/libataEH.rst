@@ -2,9 +2,9 @@
 
 .. _libataEH:
 
-==============
+**************
 Error handling
-==============
+**************
 
 This chapter describes how errors are handled under libata. Readers are
 advised to read SCSI EH (Documentation/scsi/scsi_eh.txt) and ATA

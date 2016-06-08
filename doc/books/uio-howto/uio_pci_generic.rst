@@ -2,9 +2,9 @@
 
 .. _uio_pci_generic:
 
-======================
+**********************
 Generic PCI UIO driver
-======================
+**********************
 
 The generic driver is a kernel module named uio_pci_generic. It can
 work with any device compliant to PCI 2.3 (circa 2002) and any compliant

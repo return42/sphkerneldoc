@@ -2,9 +2,9 @@
 
 .. _libataInt:
 
-=====================
+*********************
 libata Core Internals
-=====================
+*********************
 
 
 .. kernel-doc:: drivers/ata/libata-core.c

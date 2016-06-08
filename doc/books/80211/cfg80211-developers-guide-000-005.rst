@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-=================
+*****************
 Data path helpers
-=================
+*****************
 
 
 .. kernel-doc:: include/net/cfg80211.h

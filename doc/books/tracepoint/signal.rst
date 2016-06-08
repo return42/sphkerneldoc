@@ -2,9 +2,9 @@
 
 .. _signal:
 
-======
+******
 SIGNAL
-======
+******
 
 
 .. kernel-doc:: include/trace/events/signal.h

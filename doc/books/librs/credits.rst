@@ -2,9 +2,9 @@
 
 .. _credits:
 
-=======
+*******
 Credits
-=======
+*******
 
 The library code for encoding and decoding was written by Phil Karn.
 

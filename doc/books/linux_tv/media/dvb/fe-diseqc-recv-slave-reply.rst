@@ -2,9 +2,9 @@
 
 .. _FE_DISEQC_RECV_SLAVE_REPLY:
 
-================================
+********************************
 ioctl FE_DISEQC_RECV_SLAVE_REPLY
-================================
+********************************
 
 *man FE_DISEQC_RECV_SLAVE_REPLY(2)*
 

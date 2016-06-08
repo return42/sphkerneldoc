@@ -2,9 +2,9 @@
 
 .. _module-parameters:
 
-=================
+*****************
 Module Parameters
-=================
+*****************
 
 There are standard module options for ALSA. At least, each module should
 have the ``index``, ``id`` and ``enable`` options.

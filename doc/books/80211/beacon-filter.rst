@@ -2,9 +2,9 @@
 
 .. _beacon-filter:
 
-=====================
+*********************
 Beacon filter support
-=====================
+*********************
 
 
 .. kernel-doc:: include/net/mac80211.h

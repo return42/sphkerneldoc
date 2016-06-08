@@ -2,9 +2,9 @@
 
 .. _accounting:
 
-====================
+********************
 Accounting Framework
-====================
+********************
 
 
 .. kernel-doc:: kernel/acct.c

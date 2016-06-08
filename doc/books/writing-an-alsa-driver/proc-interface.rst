@@ -2,9 +2,9 @@
 
 .. _proc-interface:
 
-==============
+**************
 Proc Interface
-==============
+**************
 
 ALSA provides an easy interface for procfs. The proc files are very
 useful for debugging. I recommend you set up proc files if you write a

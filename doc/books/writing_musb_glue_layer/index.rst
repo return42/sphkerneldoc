@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++++
+##########################
 Writing an MUSB Glue Layer
-++++++++++++++++++++++++++
+##########################
 
 :author:    Seketeli Apelete
 :address:   apelete at seketeli.net

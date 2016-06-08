@@ -2,9 +2,9 @@
 
 .. _clk:
 
-===============
+***************
 Clock Framework
-===============
+***************
 
 The clock framework defines programming interfaces to support software
 management of the system clock tree. This framework is widely used with

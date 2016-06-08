@@ -2,9 +2,9 @@
 
 .. _handlers:
 
-========
+********
 Handlers
-========
+********
 
 
 apple-gmux Handler

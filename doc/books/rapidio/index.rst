@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 RapidIO Subsystem Guide
-+++++++++++++++++++++++
+#######################
 
 :author:    Porter Matt
 :address:   mporter@kernel.crashing.org mporter@mvista.com

@@ -2,9 +2,9 @@
 
 .. _packed-rgb:
 
-==================
+******************
 Packed RGB formats
-==================
+******************
 
 *man Packed RGB formats(2)*
 

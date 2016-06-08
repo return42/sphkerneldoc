@@ -2,9 +2,9 @@
 
 .. _input_subsystem:
 
-===============
+***************
 Input Subsystem
-===============
+***************
 
 
 Input core

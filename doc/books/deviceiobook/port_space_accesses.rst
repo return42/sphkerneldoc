@@ -2,9 +2,9 @@
 
 .. _port_space_accesses:
 
-===================
+*******************
 Port Space Accesses
-===================
+*******************
 
 
 .. _port_space_explained:

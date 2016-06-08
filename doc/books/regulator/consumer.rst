@@ -2,9 +2,9 @@
 
 .. _consumer:
 
-=========================
+*************************
 Consumer driver interface
-=========================
+*************************
 
 This offers a similar API to the kernel clock framework. Consumer
 drivers use :ref:`get <API-regulator-get>` and

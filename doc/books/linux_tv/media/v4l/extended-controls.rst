@@ -2,9 +2,9 @@
 
 .. _extended-controls:
 
-=================
+*****************
 Extended Controls
-=================
+*****************
 
 
 Introduction
@@ -194,7 +194,7 @@ Generic Codec Controls
 .. _mpeg-control-id:
 
 Codec Control IDs
-+++++++++++++++++
+^^^^^^^^^^^^^^^^^
 
 ``V4L2_CID_MPEG_CLASS (class)``
     The Codec class descriptor. Calling
@@ -2216,7 +2216,7 @@ in the S5P family of SoCs by Samsung.
 .. _mfc51-control-id:
 
 MFC 5.1 Control IDs
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 ``V4L2_CID_MPEG_MFC51_VIDEO_DECODER_H264_DISPLAY_DELAY_ENABLE (boolean)``
     If the display delay is enabled then the decoder is forced to return
@@ -2407,7 +2407,7 @@ are specific to the Conexant CX23415 and CX23416 MPEG encoding chips.
 .. _cx2341x-control-id:
 
 CX2341x Control IDs
-+++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^
 
 .. _`v4l2-mpeg-cx2341x-video-spatial-filter-mode`:
 
@@ -2622,7 +2622,7 @@ codec.
 .. _vpx-control-id:
 
 VPX Control IDs
-+++++++++++++++
+^^^^^^^^^^^^^^^
 
 .. _`v4l2-vpx-num-partitions`:
 
@@ -3632,7 +3632,7 @@ Supported use cases
 
 
 Unsynchronised LED flash (software strobe)
-++++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Unsynchronised LED flash is controlled directly by the host as the
 sensor. The flash must be enabled by the host before the exposure of the
@@ -3643,7 +3643,7 @@ Example of such device: Nokia N900.
 
 
 Synchronised LED flash (hardware strobe)
-++++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 The synchronised LED flash is pre-programmed by the host (power and
 timeout) but controlled by the sensor through a strobe signal from the
@@ -3654,7 +3654,7 @@ typically must be made available to the sensor.
 
 
 LED flash as torch
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 LED flash may be used as torch in conjunction with another use case
 involving camera or individually.
@@ -3663,7 +3663,7 @@ involving camera or individually.
 .. _flash-control-id:
 
 Flash Control IDs
-~~~~~~~~~~~~~~~~~
+"""""""""""""""""
 
 ``V4L2_CID_FLASH_CLASS (class)``
     The FLASH class descriptor.

@@ -2,9 +2,9 @@
 
 .. _conclusion:
 
-==========
+**********
 Conclusion
-==========
+**********
 
 Writing a Linux MUSB glue layer should be a more accessible task, as
 this documentation tries to show the ins and outs of this exercise.

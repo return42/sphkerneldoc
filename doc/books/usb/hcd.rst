@@ -2,9 +2,9 @@
 
 .. _hcd:
 
-====================
+********************
 Host Controller APIs
-====================
+********************
 
 These APIs are only for use by host controller drivers, most of which
 implement standard register interfaces such as EHCI, OHCI, or UHCI. UHCI

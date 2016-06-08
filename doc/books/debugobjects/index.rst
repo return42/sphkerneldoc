@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 Debug objects life time
-+++++++++++++++++++++++
+#######################
 
 :author:    Gleixner Thomas
 :address:   tglx@linutronix.de

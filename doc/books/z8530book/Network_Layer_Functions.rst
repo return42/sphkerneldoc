@@ -2,9 +2,9 @@
 
 .. _Network_Layer_Functions:
 
-=======================
+***********************
 Network Layer Functions
-=======================
+***********************
 
 The Z8530 layer provides functions to queue packets for transmission.
 The driver internally buffers the frame currently being transmitted and

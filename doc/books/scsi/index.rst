@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++
+#####################
 SCSI Interfaces Guide
-+++++++++++++++++++++
+#####################
 
 :author:    Bottomley James
 :address:   James.Bottomley@hansenpartnership.com

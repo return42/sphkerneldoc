@@ -2,9 +2,9 @@
 
 .. _switchKdbKgdb:
 
-=============================
+*****************************
 kgdb and kdb interoperability
-=============================
+*****************************
 
 It is possible to transition between kdb and kgdb dynamically. The debug
 core will remember which you used the last time and automatically start

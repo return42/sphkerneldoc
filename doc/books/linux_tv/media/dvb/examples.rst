@@ -2,9 +2,9 @@
 
 .. _dvb_examples:
 
-========
+********
 Examples
-========
+********
 
 In this section we would like to present some examples for using the DVB
 API.

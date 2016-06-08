@@ -2,9 +2,9 @@
 
 .. _sliced:
 
-=========================
+*************************
 Sliced VBI Data Interface
-=========================
+*************************
 
 VBI stands for Vertical Blanking Interval, a gap in the sequence of
 lines of an analog video signal. During VBI no picture information is

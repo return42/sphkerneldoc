@@ -2,9 +2,9 @@
 
 .. _buffer:
 
-=======
+*******
 Buffers
-=======
+*******
 
 A buffer contains data exchanged by application and driver using one of
 the Streaming I/O methods. In the multi-planar API, the data is held in

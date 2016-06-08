@@ -2,9 +2,9 @@
 
 .. _video:
 
-========================
+************************
 Video Inputs and Outputs
-========================
+************************
 
 Video inputs and outputs are physical connectors of a device. These can
 be for example RF connectors (antenna/cable), CVBS a.k.a. Composite

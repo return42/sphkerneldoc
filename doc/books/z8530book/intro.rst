@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The Z85x30 family synchronous/asynchronous controller chips are used on
 a large number of cheap network interface cards. The kernel provides a

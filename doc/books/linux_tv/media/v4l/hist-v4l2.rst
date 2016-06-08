@@ -2,9 +2,9 @@
 
 .. _hist-v4l2:
 
-=======================
+***********************
 Changes of the V4L2 API
-=======================
+***********************
 
 Soon after the V4L API was added to the kernel it was criticised as too
 inflexible. In August 1998 Bill Dirks proposed a number of improvements

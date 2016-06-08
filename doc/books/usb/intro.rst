@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============================
+****************************
 Introduction to USB on Linux
-============================
+****************************
 
 A Universal Serial Bus (USB) is used to connect a host, such as a PC or
 workstation, to a number of peripheral devices. USB uses a tree

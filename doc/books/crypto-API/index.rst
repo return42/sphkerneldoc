@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++
+#######################
 Linux Kernel Crypto API
-+++++++++++++++++++++++
+#######################
 
 :author:    Mueller Stephan
 :address:   smueller@chronox.de

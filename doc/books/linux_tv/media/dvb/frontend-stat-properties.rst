@@ -2,9 +2,9 @@
 
 .. _frontend-stat-properties:
 
-==============================
+******************************
 Frontend statistics indicators
-==============================
+******************************
 
 The values are returned via ``dtv_property.stat``. If the property is
 supported, ``dtv_property.stat.len`` is bigger than zero.

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-======================
+**********************
 Standard Image Formats
-======================
+**********************
 
 In order to exchange images between drivers and applications, it is
 necessary to have standard image data formats which both sides will

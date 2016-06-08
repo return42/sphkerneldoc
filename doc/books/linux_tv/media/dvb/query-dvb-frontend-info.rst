@@ -2,9 +2,9 @@
 
 .. _query-dvb-frontend-info:
 
-=============================
+*****************************
 Querying frontend information
-=============================
+*****************************
 
 Usually, the first thing to do when the frontend is opened is to check
 the frontend capabilities. This is done using

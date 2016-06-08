@@ -2,9 +2,9 @@
 
 .. _led-support:
 
-===========
+***********
 LED support
-===========
+***********
 
 Mac80211 supports various ways of blinking LEDs. Wherever possible,
 device LEDs should be exposed as LED class devices and hooked up to the

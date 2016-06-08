@@ -2,9 +2,9 @@
 
 .. _vidioc-reqbufs:
 
-====================
+********************
 ioctl VIDIOC_REQBUFS
-====================
+********************
 
 *man VIDIOC_REQBUFS(2)*
 

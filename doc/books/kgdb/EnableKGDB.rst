@@ -2,9 +2,9 @@
 
 .. _EnableKGDB:
 
-================
+****************
 Using kgdb / gdb
-================
+****************
 
 In order to use kgdb you must activate it by passing configuration
 information to one of the kgdb I/O drivers. If you do not pass any

@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++
+######################
 The cfg80211 subsystem
-++++++++++++++++++++++
+######################
 
     .. kernel-doc:: include/net/cfg80211.h
         :doc: Introduction

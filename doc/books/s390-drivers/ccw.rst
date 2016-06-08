@@ -2,9 +2,9 @@
 
 .. _ccw:
 
-===========
+***********
 The ccw bus
-===========
+***********
 
 The ccw bus typically contains the majority of devices available to a
 s390 system. Named after the channel command word (ccw), the basic

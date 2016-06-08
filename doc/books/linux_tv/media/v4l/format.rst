@@ -2,9 +2,9 @@
 
 .. _format:
 
-============
+************
 Data Formats
-============
+************
 
 
 Data Format Negotiation

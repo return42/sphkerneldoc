@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++
+###############################
 The Linux Kernel Tracepoint API
-+++++++++++++++++++++++++++++++
+###############################
 
 :author:    Baron Jason
 :address:   jbaron@redhat.com

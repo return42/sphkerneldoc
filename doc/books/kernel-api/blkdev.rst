@@ -2,9 +2,9 @@
 
 .. _blkdev:
 
-=============
+*************
 Block Devices
-=============
+*************
 
 
 .. kernel-doc:: block/blk-core.c

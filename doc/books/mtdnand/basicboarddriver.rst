@@ -2,9 +2,9 @@
 
 .. _basicboarddriver:
 
-==================
+******************
 Basic board driver
-==================
+******************
 
 For most boards it will be sufficient to provide just the basic
 functions and fill out some really board dependent members in the nand

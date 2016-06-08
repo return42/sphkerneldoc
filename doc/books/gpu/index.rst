@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++++++++++++
+##################################
 Linux GPU Driver Developer's Guide
-++++++++++++++++++++++++++++++++++
+##################################
 
 :author:    Barnes Jesse
 :address:   Intel Corporation jesse.barnes@intel.com

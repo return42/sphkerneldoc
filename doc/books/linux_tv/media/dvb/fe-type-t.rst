@@ -2,9 +2,9 @@
 
 .. _fe-type-t:
 
-=============
+*************
 Frontend type
-=============
+*************
 
 For historical reasons, frontend types are named by the type of
 modulation used in transmission. The fontend types are given by

@@ -2,9 +2,9 @@
 
 .. _mediadev:
 
-=============
+*************
 Media Devices
-=============
+*************
 
 
 Video2Linux devices
@@ -97,7 +97,7 @@ Digital TV Demux kABI
     :doc: Digital TV Demux
 
 Demux Callback API
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/media/dvb-core/demux.h

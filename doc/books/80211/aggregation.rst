@@ -2,9 +2,9 @@
 
 .. _aggregation:
 
-===========
+***********
 Aggregation
-===========
+***********
 
 
 TX A-MPDU aggregation

@@ -2,9 +2,9 @@
 
 .. _control:
 
-=============
+*************
 User Controls
-=============
+*************
 
 Devices typically have a number of user-settable controls such as
 brightness, saturation and so on, which would be presented to the user

@@ -2,9 +2,9 @@
 
 .. _Remote_controllers_tables:
 
-========================
+************************
 Remote controller tables
-========================
+************************
 
 Unfortunately, for several years, there was no effort to create uniform
 IR keycodes for different devices. This caused the same IR keyname to be

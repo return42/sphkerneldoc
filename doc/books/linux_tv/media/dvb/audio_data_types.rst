@@ -2,9 +2,9 @@
 
 .. _audio_data_types:
 
-================
+****************
 Audio Data Types
-================
+****************
 
 This section describes the structures, data types and defines used when
 talking to the audio device.

@@ -2,9 +2,9 @@
 
 .. _workqueue:
 
-=========
+*********
 Workqueue
-=========
+*********
 
 
 .. kernel-doc:: include/trace/events/workqueue.h

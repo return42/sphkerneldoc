@@ -2,9 +2,9 @@
 
 .. _FE_READ_UNCORRECTED_BLOCKS:
 
-==========================
+**************************
 FE_READ_UNCORRECTED_BLOCKS
-==========================
+**************************
 
 DESCRIPTION
 

@@ -2,9 +2,9 @@
 
 .. _splice:
 
-==========
+**********
 splice API
-==========
+**********
 
 splice is a method for moving blocks of data around inside the kernel,
 without continually transferring them between the kernel and user space.

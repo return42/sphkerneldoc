@@ -2,9 +2,9 @@
 
 .. _power-management:
 
-================
+****************
 Power Management
-================
+****************
 
 If the chip is supposed to work with suspend/resume functions, you need
 to add power-management code to the driver. The additional code for

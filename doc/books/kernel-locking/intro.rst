@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 Welcome, to Rusty's Remarkably Unreliable Guide to Kernel Locking
 issues. This document describes the locking systems in the Linux Kernel

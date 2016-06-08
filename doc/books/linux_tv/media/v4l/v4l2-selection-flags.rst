@@ -2,9 +2,9 @@
 
 .. _v4l2-selection-flags:
 
-===============
+***************
 Selection flags
-===============
+***************
 
 
 .. _v4l2-selection-flags-table:

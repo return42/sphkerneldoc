@@ -2,15 +2,15 @@
 
 .. _media_common:
 
-++++++++++++++++++++
+####################
 Media Controller API
-++++++++++++++++++++
+####################
 
 .. _media_controller:
 
-================
+****************
 Media Controller
-================
+****************
 
 
 .. toctree::
@@ -23,9 +23,9 @@ Media Controller
 
 .. _media-user-func:
 
-==================
+******************
 Function Reference
-==================
+******************
 
 
 .. toctree::
@@ -41,9 +41,9 @@ Function Reference
     media-ioc-setup-link
 
 
-======================
+**********************
 Revision and Copyright
-======================
+**********************
 
 
 :author:    Pinchart Laurent

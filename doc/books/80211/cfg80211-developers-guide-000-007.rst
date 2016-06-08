@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-==================
+******************
 RFkill integration
-==================
+******************
 
 
 .. kernel-doc:: include/net/cfg80211.h

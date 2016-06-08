@@ -2,9 +2,9 @@
 
 .. _conventions:
 
-========================
+************************
 Routines and Conventions
-========================
+************************
 
 
 .. _conventions-doublelinkedlist:

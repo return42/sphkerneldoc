@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-================================
+********************************
 Comparison with old cropping API
-================================
+********************************
 
 The selection API was introduced to cope with deficiencies of previous
 :ref:`API <crop>`, that was designed to control simple capture

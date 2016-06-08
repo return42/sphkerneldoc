@@ -2,9 +2,9 @@
 
 .. _pwm:
 
-============================
+****************************
 Pulse-Width Modulation (PWM)
-============================
+****************************
 
 Pulse-width modulation is a modulation technique primarily used to
 control power supplied to electrical devices.

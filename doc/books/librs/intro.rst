@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The generic Reed-Solomon Library provides encoding, decoding and error
 correction functions.

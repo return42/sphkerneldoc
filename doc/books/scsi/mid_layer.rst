@@ -2,9 +2,9 @@
 
 .. _mid_layer:
 
-==============
+**************
 SCSI mid layer
-==============
+**************
 
 
 .. _midlayer_implementation:

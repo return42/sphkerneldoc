@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++++++++++++++++++++++
+##########################################
 Reed-Solomon Library Programming Interface
-++++++++++++++++++++++++++++++++++++++++++
+##########################################
 
 :author:    Gleixner Thomas
 :address:   tglx@linutronix.de

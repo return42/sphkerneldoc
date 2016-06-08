@@ -2,9 +2,9 @@
 
 .. _codec:
 
-===============
+***************
 Codec Interface
-===============
+***************
 
 A V4L2 codec can compress, decompress, transform, or otherwise convert
 video data from one format into another format, in memory. Typically

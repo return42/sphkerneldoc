@@ -2,9 +2,9 @@
 
 .. _dv-timings:
 
-==========================
+**************************
 Digital Video (DV) Timings
-==========================
+**************************
 
 The video standards discussed so far have been dealing with Analog TV
 and the corresponding video timings. Today there are many more different

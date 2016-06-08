@@ -2,9 +2,9 @@
 
 .. _acknowledgements:
 
-================
+****************
 Acknowledgements
-================
+****************
 
 Many thanks to Lars-Peter Clausen and Maarten ter Huurne for answering
 my questions while I was writing the JZ4740 glue layer and for helping

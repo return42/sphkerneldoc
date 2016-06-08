@@ -2,9 +2,9 @@
 
 .. _kfifo:
 
-===========
+***********
 FIFO Buffer
-===========
+***********
 
 
 kfifo interface

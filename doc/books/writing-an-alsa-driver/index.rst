@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++
+######################
 Writing an ALSA Driver
-++++++++++++++++++++++
+######################
 0.3.7
     This document describes how to write an ALSA (Advanced Linux Sound
     Architecture) driver.

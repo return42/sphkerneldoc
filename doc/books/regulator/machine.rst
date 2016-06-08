@@ -2,9 +2,9 @@
 
 .. _machine:
 
-=================
+*****************
 Machine interface
-=================
+*****************
 
 This interface provides a way to define how regulators are connected to
 consumers on a given system and what the valid operating parameters are

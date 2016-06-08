@@ -117,7 +117,7 @@ correspondance between them.
 
 
 Packed RGB Formats
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 Those formats transfer pixel data as red, green and blue components. The
 format code is made of the following information.
@@ -2717,7 +2717,7 @@ JEIDA defined bit mapping will be named
 
 
 Bayer Formats
-+++++++++++++
+^^^^^^^^^^^^^
 
 Those formats transfer pixel data as red, green and blue components. The
 format code is made of the following information.
@@ -3679,7 +3679,7 @@ organization is given as an example for the first pixel only.
 
 
 Packed YUV Formats
-++++++++++++++++++
+^^^^^^^^^^^^^^^^^^
 
 Those data formats transfer pixel data as (possibly downsampled) Y, U
 and V components. Some formats include dummy bits in some of their
@@ -11417,7 +11417,7 @@ the following codes.
 
 
 HSV/HSL Formats
-+++++++++++++++
+^^^^^^^^^^^^^^^
 
 Those formats transfer pixel data as RGB values in a
 cylindrical-coordinate system using Hue-Saturation-Value or
@@ -11610,7 +11610,7 @@ The following table lists existing HSV/HSL formats.
 
 
 JPEG Compressed Formats
-+++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^
 
 Those data formats consist of an ordered sequence of 8-bit bytes
 obtained from JPEG compression process. Additionally to the ``_JPEG``
@@ -11656,7 +11656,7 @@ The following table lists existing JPEG compressed formats.
 .. _v4l2-mbus-vendor-spec-fmts:
 
 Vendor and Device Specific Formats
-++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 This section lists complex data formats that are either vendor or device
 specific.

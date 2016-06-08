@@ -2,9 +2,9 @@
 
 .. _vidioc-cropcap:
 
-====================
+********************
 ioctl VIDIOC_CROPCAP
-====================
+********************
 
 *man VIDIOC_CROPCAP(2)*
 

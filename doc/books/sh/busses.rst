@@ -2,9 +2,9 @@
 
 .. _busses:
 
-======
+******
 Busses
-======
+******
 
 
 .. _superhyway:

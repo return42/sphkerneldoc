@@ -2,9 +2,9 @@
 
 .. _control-interface:
 
-=================
+*****************
 Control Interface
-=================
+*****************
 
 
 .. _control-interface-general:

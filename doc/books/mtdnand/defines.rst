@@ -2,9 +2,9 @@
 
 .. _defines:
 
-=========
+*********
 Constants
-=========
+*********
 
 This chapter describes the constants which might be relevant for a
 driver developer.

@@ -2,9 +2,9 @@
 
 .. _uart16x50:
 
-=================
+*****************
 16x50 UART Driver
-=================
+*****************
 
 
 .. kernel-doc:: drivers/tty/serial/serial_core.c

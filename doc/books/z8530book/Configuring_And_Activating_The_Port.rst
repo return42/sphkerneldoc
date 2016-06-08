@@ -2,9 +2,9 @@
 
 .. _Configuring_And_Activating_The_Port:
 
-===================================
+***********************************
 Configuring And Activating The Port
-===================================
+***********************************
 
 The Z85230 driver provides helper functions and tables to load the port
 registers on the Z8530 chips. When programming the register settings for

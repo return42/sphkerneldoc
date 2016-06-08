@@ -2,9 +2,9 @@
 
 .. _media-func-ioctl:
 
-=============
+*************
 media ioctl()
-=============
+*************
 
 *man media-ioctl(2)*
 

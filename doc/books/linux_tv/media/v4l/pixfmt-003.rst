@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-==============================
+******************************
 Multi-planar format structures
-==============================
+******************************
 
 The ``v4l2_plane_pix_format`` structures define size and layout for each
 of the planes in a multi-planar format. The ``v4l2_pix_format_mplane``

@@ -2,9 +2,9 @@
 
 .. _Driver_Modes:
 
-============
+************
 Driver Modes
-============
+************
 
 The Z85230 driver layer can drive Z8530, Z85C30 and Z85230 devices in
 three different modes. Each mode can be applied to an individual channel

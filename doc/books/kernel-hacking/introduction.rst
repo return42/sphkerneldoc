@@ -2,9 +2,9 @@
 
 .. _introduction:
 
-============
+************
 Introduction
-============
+************
 
 Welcome, gentle reader, to Rusty's Remarkably Unreliable Guide to Linux
 Kernel Hacking. This document describes the common routines and general

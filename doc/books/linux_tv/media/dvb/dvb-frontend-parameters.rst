@@ -2,9 +2,9 @@
 
 .. _dvb-frontend-parameters:
 
-===================
+*******************
 frontend parameters
-===================
+*******************
 
 The kind of parameters passed to the frontend device for tuning depend
 on the kind of hardware you are using.

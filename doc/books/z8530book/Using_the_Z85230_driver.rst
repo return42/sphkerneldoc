@@ -2,9 +2,9 @@
 
 .. _Using_the_Z85230_driver:
 
-=======================
+***********************
 Using the Z85230 driver
-=======================
+***********************
 
 The Z85230 driver provides the back end interface to your board. To
 configure a Z8530 interface you need to detect the board and to identify

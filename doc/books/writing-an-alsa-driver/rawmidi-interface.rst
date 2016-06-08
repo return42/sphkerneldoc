@@ -2,9 +2,9 @@
 
 .. _rawmidi-interface:
 
-=================
+*****************
 RawMIDI Interface
-=================
+*****************
 
 
 .. _rawmidi-interface-overview:

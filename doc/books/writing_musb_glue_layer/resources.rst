@@ -2,9 +2,9 @@
 
 .. _resources:
 
-=========
+*********
 Resources
-=========
+*********
 
 USB Home Page: `http://www.usb.org <http://www.usb.org>`__
 

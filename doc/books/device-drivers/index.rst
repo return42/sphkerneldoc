@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++
+####################
 Linux Device Drivers
-++++++++++++++++++++
+####################
 
 This documentation is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as published

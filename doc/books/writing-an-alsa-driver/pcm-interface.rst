@@ -2,9 +2,9 @@
 
 .. _pcm-interface:
 
-=============
+*************
 PCM Interface
-=============
+*************
 
 
 .. _pcm-interface-general:

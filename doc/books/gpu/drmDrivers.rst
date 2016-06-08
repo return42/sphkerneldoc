@@ -2,9 +2,9 @@
 
 .. _drmDrivers:
 
-+++++++++++
+###########
 DRM Drivers
-+++++++++++
+###########
 This second part of the GPU Driver Developer's Guide documents driver
 code, implementation details and also all the driver-specific userspace
 interfaces. Especially since all hardware-acceleration interfaces to

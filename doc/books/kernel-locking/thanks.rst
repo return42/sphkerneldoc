@@ -2,9 +2,9 @@
 
 .. _thanks:
 
-======
+******
 Thanks
-======
+******
 
 Thanks to Telsa Gwynne for DocBooking, neatening and adding style.
 

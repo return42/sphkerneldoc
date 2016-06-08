@@ -2,9 +2,9 @@
 
 .. _vga_switcheroo:
 
-++++++++++++++
+##############
 vga_switcheroo
-++++++++++++++
+##############
 
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
     :doc: Overview

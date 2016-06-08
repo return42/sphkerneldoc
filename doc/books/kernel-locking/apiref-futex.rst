@@ -2,9 +2,9 @@
 
 .. _apiref-futex:
 
-===================
+*******************
 Futex API reference
-===================
+*******************
 
 
 .. kernel-doc:: kernel/futex.c

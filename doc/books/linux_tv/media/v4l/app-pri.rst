@@ -2,9 +2,9 @@
 
 .. _app-pri:
 
-====================
+********************
 Application Priority
-====================
+********************
 
 When multiple applications share a device it may be desirable to assign
 them different priorities. Contrary to the traditional "rm -rf /" school

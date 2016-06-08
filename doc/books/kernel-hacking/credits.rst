@@ -2,9 +2,9 @@
 
 .. _credits:
 
-======
+******
 Thanks
-======
+******
 
 Thanks to Andi Kleen for the idea, answering my questions, fixing my
 mistakes, filling content, etc. Philipp Rumpf for more spelling and

@@ -2,9 +2,9 @@
 
 .. _i2c:
 
-=======================
+***********************
 I2C and SMBus Subsystem
-=======================
+***********************
 
 I\ :sup:`2`\ C (or without fancy typography, "I2C") is an acronym for
 the "Inter-IC" bus, a simple bus protocol which is widely used where low

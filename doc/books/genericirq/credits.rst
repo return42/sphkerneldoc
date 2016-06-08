@@ -2,9 +2,9 @@
 
 .. _credits:
 
-=======
+*******
 Credits
-=======
+*******
 
 The following people have contributed to this document:
 

@@ -2,9 +2,9 @@
 
 .. _kgdbKernelArgs:
 
-==============================
+******************************
 Kernel Debugger Boot Arguments
-==============================
+******************************
 
 This section describes the various runtime kernel parameters that affect
 the configuration of the kernel debugger. The following chapter covers
@@ -66,7 +66,7 @@ a useful combination.
 .. _kgdbocArgs1:
 
 Using loadable module or built-in
-+++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 1. As a kernel built-in:
 
@@ -88,7 +88,7 @@ Using loadable module or built-in
 .. _kgdbocArgs2:
 
 Configure kgdboc at runtime with sysfs
-++++++++++++++++++++++++++++++++++++++
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 At run time you can enable or disable kgdboc by echoing a parameters
 into the sysfs. Here are two examples:
@@ -108,7 +108,7 @@ console on tty which is already configured or open.
 .. _kgdbocArgs3:
 
 More examples
-+++++++++++++
+^^^^^^^^^^^^^
 
 You can configure kgdboc to use the keyboard, and/or a serial device
 depending on if you are using kdb and/or kgdb, in one of the following

@@ -2,9 +2,9 @@
 
 .. _parportdev:
 
-=====================
+*********************
 Parallel Port Devices
-=====================
+*********************
 
 
 .. kernel-doc:: include/linux/parport.h

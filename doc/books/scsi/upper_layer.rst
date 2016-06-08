@@ -2,9 +2,9 @@
 
 .. _upper_layer:
 
-================
+****************
 SCSI upper layer
-================
+****************
 
 The upper layer supports the user-kernel interface by providing device
 nodes.

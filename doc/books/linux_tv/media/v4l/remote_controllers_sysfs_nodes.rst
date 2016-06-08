@@ -2,9 +2,9 @@
 
 .. _remote_controllers_sysfs_nodes:
 
-===============================
+*******************************
 Remote Controller's sysfs nodes
-===============================
+*******************************
 
 As defined at ``Documentation/ABI/testing/sysfs-class-rc``, those are
 the sysfs nodes that control the Remote Controllers:

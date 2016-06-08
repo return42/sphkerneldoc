@@ -2,9 +2,9 @@
 
 .. _message_devices:
 
-=====================
+*********************
 Message-based devices
-=====================
+*********************
 
 
 Fusion message devices

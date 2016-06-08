@@ -1042,7 +1042,7 @@ class Section(StructureTag):
                 #SDK.CONSOLE()
                 sectLevel += 1
             parent = parent.getparent()
-        self.rstTitleMarkup = "=-+~.^"[sectLevel]
+        self.rstTitleMarkup = '=-^"+'[sectLevel]
         super().applyFilter(node, rstPrefix="")
 
     def rstTitle(self, title):
@@ -1063,7 +1063,7 @@ class Sect3(StructureTag):          replaceTag = "section"
 # ------------------------------------------------------------------------------
 class Part(StructureTag):
 # ------------------------------------------------------------------------------
-    rstTitleMarkup = "+"
+    rstTitleMarkup = "#"
 
     def applyFilter(self, node, rstPrefix):
         partinfo = node.find("partinfo")
@@ -1091,7 +1091,7 @@ class Setinfo(StructureTag): replaceTag = "part"
 # ------------------------------------------------------------------------------
 class Chapter(StructureTag):
 # ------------------------------------------------------------------------------
-    rstTitleMarkup = "="
+    rstTitleMarkup = "*"
 
     @classmethod
     def rstTitle(cls, title):

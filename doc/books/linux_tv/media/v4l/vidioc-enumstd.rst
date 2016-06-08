@@ -2,9 +2,9 @@
 
 .. _vidioc-enumstd:
 
-====================
+********************
 ioctl VIDIOC_ENUMSTD
-====================
+********************
 
 *man VIDIOC_ENUMSTD(2)*
 

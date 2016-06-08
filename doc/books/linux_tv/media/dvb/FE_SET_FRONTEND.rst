@@ -2,9 +2,9 @@
 
 .. _FE_SET_FRONTEND:
 
-===============
+***************
 FE_SET_FRONTEND
-===============
+***************
 
 DESCRIPTION
 

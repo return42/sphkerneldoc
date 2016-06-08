@@ -2,9 +2,9 @@
 
 .. _deadlock-recipes:
 
-====================
+********************
 Recipes for Deadlock
-====================
+********************
 
 You cannot call any routines which may sleep, unless:
 

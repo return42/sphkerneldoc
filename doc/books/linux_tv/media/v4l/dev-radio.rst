@@ -2,9 +2,9 @@
 
 .. _radio:
 
-===============
+***************
 Radio Interface
-===============
+***************
 
 This interface is intended for AM and FM (analog) radio receivers and
 transmitters.

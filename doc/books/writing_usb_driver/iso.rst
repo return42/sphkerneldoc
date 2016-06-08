@@ -2,9 +2,9 @@
 
 .. _iso:
 
-================
+****************
 Isochronous Data
-================
+****************
 
 This usb-skeleton driver does not have any examples of interrupt or
 isochronous data being sent to or from the device. Interrupt data is

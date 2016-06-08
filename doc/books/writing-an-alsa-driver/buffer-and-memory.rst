@@ -2,9 +2,9 @@
 
 .. _buffer-and-memory:
 
-============================
+****************************
 Buffer and Memory Management
-============================
+****************************
 
 
 .. _buffer-and-memory-buffer-types:

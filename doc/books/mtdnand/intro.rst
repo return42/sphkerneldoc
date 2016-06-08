@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The generic NAND driver supports almost all NAND and AG-AND based chips
 and connects them to the Memory Technology Devices (MTD) subsystem of

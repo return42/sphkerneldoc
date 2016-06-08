@@ -2,9 +2,9 @@
 
 .. _raw-vbi:
 
-======================
+**********************
 Raw VBI Data Interface
-======================
+**********************
 
 VBI is an abbreviation of Vertical Blanking Interval, a gap in the
 sequence of lines of an analog video signal. During VBI no picture

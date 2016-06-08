@@ -2,9 +2,9 @@
 
 .. _lirc_ioctl:
 
-==============
+**************
 LIRC ioctl fop
-==============
+**************
 
 The LIRC device's ioctl definition is bound by the ioctl function
 definition of struct file_operations, leaving us with an unsigned int

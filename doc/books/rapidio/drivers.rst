@@ -2,9 +2,9 @@
 
 .. _drivers:
 
-========================
+************************
 RapidIO driver interface
-========================
+************************
 
 Drivers are provided a set of calls in order to interface with the
 subsystem to gather info on devices, request/map memory region

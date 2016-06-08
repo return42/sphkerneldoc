@@ -2,9 +2,9 @@
 
 .. _symbols:
 
-=======
+*******
 Symbols
-=======
+*******
 
 Within the kernel proper, the normal linking rules apply (ie. unless a
 symbol is declared to be file scope with the ``static`` keyword, it can

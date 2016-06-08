@@ -2,9 +2,9 @@
 
 .. _doirq:
 
-====================
+********************
 __do_IRQ entry point
-====================
+********************
 
 The original implementation __do_IRQ() was an alternative entry point
 for all types of interrupts. It no longer exists.

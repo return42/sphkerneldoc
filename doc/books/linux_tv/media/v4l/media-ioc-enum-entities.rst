@@ -2,9 +2,9 @@
 
 .. _media-ioc-enum-entities:
 
-=============================
+*****************************
 ioctl MEDIA_IOC_ENUM_ENTITIES
-=============================
+*****************************
 
 *man MEDIA_IOC_ENUM_ENTITIES(2)*
 

@@ -2,9 +2,9 @@
 
 .. _FE_ENABLE_HIGH_LNB_VOLTAGE:
 
-================================
+********************************
 ioctl FE_ENABLE_HIGH_LNB_VOLTAGE
-================================
+********************************
 
 *man FE_ENABLE_HIGH_LNB_VOLTAGE(2)*
 

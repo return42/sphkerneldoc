@@ -2,9 +2,9 @@
 
 .. _handling-irqs:
 
-=============
+*************
 Handling IRQs
-=============
+*************
 
 Additionally to the MUSB controller hardware basic setup and
 registration, the glue layer is also responsible for handling the IRQs:

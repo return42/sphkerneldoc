@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-+++++++++++++++++++++++++++++++++++
+###################################
 The basic mac80211 driver interface
-+++++++++++++++++++++++++++++++++++
+###################################
 You should read and understand the information contained within this
 part of the book while implementing a driver. In some chapters, advanced
 usage is noted, that may be skipped at first.

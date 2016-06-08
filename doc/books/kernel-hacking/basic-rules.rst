@@ -2,9 +2,9 @@
 
 .. _basic-rules:
 
-================
+****************
 Some Basic Rules
-================
+****************
 
 No memory protection
     If you corrupt memory, whether in user context or interrupt context,

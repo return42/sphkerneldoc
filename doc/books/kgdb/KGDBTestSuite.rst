@@ -2,9 +2,9 @@
 
 .. _KGDBTestSuite:
 
-===============
+***************
 kgdb Test Suite
-===============
+***************
 
 When kgdb is enabled in the kernel config you can also elect to enable
 the config parameter KGDB_TESTS. Turning this on will enable a special

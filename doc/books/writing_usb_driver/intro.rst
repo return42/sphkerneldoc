@@ -2,9 +2,9 @@
 
 .. _intro:
 
-============
+************
 Introduction
-============
+************
 
 The Linux USB subsystem has grown from supporting only two different
 types of devices in the 2.2.7 kernel (mice and keyboards), to over 20

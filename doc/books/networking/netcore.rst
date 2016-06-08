@@ -2,9 +2,9 @@
 
 .. _netcore:
 
-================
+****************
 Linux Networking
-================
+****************
 
 
 Networking Base Types

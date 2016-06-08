@@ -2,9 +2,9 @@
 
 .. _aggregation-internals:
 
-===========
+***********
 Aggregation
-===========
+***********
 
 
 .. kernel-doc:: net/mac80211/sta_info.h

@@ -2,9 +2,9 @@
 
 .. _vidioc-prepare-buf:
 
-========================
+************************
 ioctl VIDIOC_PREPARE_BUF
-========================
+************************
 
 *man VIDIOC_PREPARE_BUF(2)*
 

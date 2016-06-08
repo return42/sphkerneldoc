@@ -2,9 +2,9 @@
 
 .. _driver:
 
-==========================
+**************************
 Regulator driver interface
-==========================
+**************************
 
 Drivers for regulator chips :ref:`register <API-regulator-register>`
 the regulators with the regulator core, providing operations structures

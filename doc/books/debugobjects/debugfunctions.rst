@@ -2,9 +2,9 @@
 
 .. _debugfunctions:
 
-===============
+***************
 Debug functions
-===============
+***************
 
 
 .. _prototypes:

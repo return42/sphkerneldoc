@@ -2,9 +2,9 @@
 
 .. _FE_DISEQC_SEND_MASTER_CMD:
 
-===============================
+*******************************
 ioctl FE_DISEQC_SEND_MASTER_CMD
-===============================
+*******************************
 
 *man FE_DISEQC_SEND_MASTER_CMD(2)*
 

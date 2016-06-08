@@ -2,9 +2,9 @@
 
 .. _mmio:
 
-================
+****************
 Memory Mapped IO
-================
+****************
 
 
 .. _getting_access_to_the_device:

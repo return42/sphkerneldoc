@@ -2,9 +2,9 @@
 
 .. _v4l2spec:
 
-+++++++++++++++++++++++++++++++++++++
+#####################################
 Video for Linux Two API Specification
-+++++++++++++++++++++++++++++++++++++
+#####################################
 
 **Revision 4.4**
 
@@ -26,9 +26,9 @@ Video for Linux Two API Specification
     biblio
 
 
-======================
+**********************
 Revision and Copyright
-======================
+**********************
 
 
 :author:    Schimek Michael (*H*)

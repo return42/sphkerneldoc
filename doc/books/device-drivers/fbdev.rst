@@ -2,9 +2,9 @@
 
 .. _fbdev:
 
-====================
+********************
 Frame Buffer Library
-====================
+********************
 
 The frame buffer drivers depend heavily on four data structures. These
 structures are declared in include/linux/fb.h. They are fb_info,

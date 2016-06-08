@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-++++++++++++++++++++++
+######################
 W1: Dallas' 1-wire bus
-++++++++++++++++++++++
+######################
 
 :author:    Fries David
 :address:   David@Fries.net

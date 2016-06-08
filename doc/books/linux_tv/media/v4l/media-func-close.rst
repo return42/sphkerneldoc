@@ -2,9 +2,9 @@
 
 .. _media-func-close:
 
-=============
+*************
 media close()
-=============
+*************
 
 *man media-close(2)*
 

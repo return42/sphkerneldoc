@@ -2,9 +2,9 @@
 
 .. _usbfs:
 
-==========================
+**************************
 The USB Filesystem (usbfs)
-==========================
+**************************
 
 This chapter presents the Linux *usbfs*. You may prefer to avoid writing
 new kernel code for your USB driver; that's the problem that usbfs set

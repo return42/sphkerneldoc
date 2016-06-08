@@ -2,9 +2,9 @@
 
 .. _hostside:
 
-===============================
+*******************************
 Host-Side Data Types and Macros
-===============================
+*******************************
 
 The host side API exposes several layers to drivers, some of which are
 more necessary than others. These support lifecycle models for host side

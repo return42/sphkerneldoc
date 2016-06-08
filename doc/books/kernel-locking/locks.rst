@@ -2,9 +2,9 @@
 
 .. _locks:
 
-===========================
+***************************
 Locking in the Linux Kernel
-===========================
+***************************
 
 If I could give you one piece of advice: never sleep with anyone crazier
 than yourself. But if I had to give you advice on locking: *keep it

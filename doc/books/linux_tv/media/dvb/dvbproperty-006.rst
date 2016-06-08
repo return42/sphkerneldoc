@@ -1,8 +1,8 @@
 .. -*- coding: utf-8; mode: rst -*-
 
-==============
+**************
 Property types
-==============
+**************
 
 On :ref:`FE_GET_PROPERTY and FE_SET_PROPERTY <FE_GET_PROPERTY>`,
 the actual action is determined by the dtv_property cmd/data pairs.

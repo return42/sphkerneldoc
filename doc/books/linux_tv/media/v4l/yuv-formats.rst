@@ -2,9 +2,9 @@
 
 .. _yuv-formats:
 
-===========
+***********
 YUV Formats
-===========
+***********
 
 YUV is the format native to TV broadcast and composite video signals. It
 separates the brightness information (Y) from the color information (U

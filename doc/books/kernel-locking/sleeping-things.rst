@@ -2,9 +2,9 @@
 
 .. _sleeping-things:
 
-================================================
+************************************************
 What Functions Are Safe To Call From Interrupts?
-================================================
+************************************************
 
 Many functions in the kernel sleep (ie. call schedule()) directly or
 indirectly: you can never call them while holding a spinlock, or with

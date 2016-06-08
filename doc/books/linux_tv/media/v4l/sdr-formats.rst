@@ -2,9 +2,9 @@
 
 .. _sdr-formats:
 
-===========
+***********
 SDR Formats
-===========
+***********
 
 These formats are used for :ref:`SDR <sdr>` interface only.
 

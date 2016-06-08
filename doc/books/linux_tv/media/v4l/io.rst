@@ -2,9 +2,9 @@
 
 .. _io:
 
-++++++++++++
+############
 Input/Output
-++++++++++++
+############
 The V4L2 API defines several different methods to read from or write to
 a device. All drivers exchanging data with applications must support at
 least one of them.
