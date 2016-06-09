@@ -10,6 +10,10 @@ Components of the kernel-doc system
 Many places in the source tree have extractable kernel-doc documentation.  The
 components of this system are:
 
+Documentation/template-book and Documentation/template-book.conf
+  Template book and build configuration. It includes additional hints and
+  practical recommendations: :ref:`template-book:get-started`.
+
 Documentation/Makefile.reST and Documentation/conf.py
   Makefile and basic `sphinx config`_ file to build the various reST documents
   and output formats. Provides the basic sphinx-doc_ build infrastructure
@@ -29,7 +33,3 @@ Documentation/books
 scripts/site-python/linuxdoc
   This folder includes python extensions related to the linux documentation
   processes.
-
-
-
-

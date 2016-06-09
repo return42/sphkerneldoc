@@ -16,6 +16,23 @@ from os.path import abspath, dirname, splitext, basename, exists
 BASE_FOLDER = abspath(pathjoin(dirname(__file__)))
 
 # ------------------------------------------------------------------------------
+# General information about the project.
+# ------------------------------------------------------------------------------
+
+project   = 'The Linux Kernel'
+copyright = '2016, The kernel development community'
+author    = 'The kernel development community'
+
+# The version info for the project you're documenting, acts as replacement for
+# |version| and |release|, also used in various other places throughout the
+# built documents.
+#
+# The short X.Y version.
+version   = 'v4.7'
+# The full version, including alpha/beta/rc tags.
+release   = 'v4.7-rc2'
+
+# ------------------------------------------------------------------------------
 def loadPrjConfig():
 # ------------------------------------------------------------------------------
 
@@ -67,7 +84,7 @@ language = None
 # external links
 # --------------
 #
-# usage:  :man:`dvbv5-scan`
+# usage:  lorem :man:`dvbv5-scan` ipsum
 
 extlinks = {
     'man'         : ('http://manpages.ubuntu.com/cgi-bin/search.py?q=%s', ' ')
@@ -80,8 +97,7 @@ extlinks = {
 # usage:  lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
 
 intersphinx_mapping = {}
-#intersphinx_mapping['python']  = ('https://docs.python.org/3/', None)
-intersphinx_mapping['linux']   = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
+intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -102,6 +118,13 @@ extensions = [
     , 'sphinx.ext.intersphinx'
     , 'sphinx.ext.ifconfig'
 ]
+
+# Gracefully handle missing rst2pdf.
+try:
+    import rst2pdf
+    extensions += ['rst2pdf.pdfbuilder']
+except ImportError:
+    pass
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']

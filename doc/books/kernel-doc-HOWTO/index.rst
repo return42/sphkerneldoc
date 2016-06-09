@@ -44,3 +44,8 @@ chapter :ref:`all-in-a-tumble`.
 
   * :ref:`genindex`
 
+
+.. hint::
+
+   If you are willing to write a book with reST markup, there is a template,
+   see: :ref:`template-book:get-started`.
