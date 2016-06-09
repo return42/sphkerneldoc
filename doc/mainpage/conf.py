@@ -30,8 +30,7 @@ import common  # to get the SDK debugger/console
 # add these directories to sys.path here. If the directory is relative to the
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 
-sys.path.insert(0, abspath(pathjoin(ROOT_FOLDER, 'doc', 'extensions')))
-import rstFlatTable
+# sys.path.insert(0, abspath(pathjoin(ROOT_FOLDER, 'doc', 'extensions')))
 
 # -- General configuration ------------------------------------------------
 
@@ -72,7 +71,9 @@ intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/bo
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    'sphinx.ext.autodoc'
+    "linuxdoc.rstFlatTable"
+    , "linuxdoc.rstKernelDoc"
+    , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
     #, 'sphinx.ext.autosummary'
     #, 'sphinx.ext.doctest'
@@ -84,6 +85,13 @@ extensions = [
     , 'sphinx.ext.intersphinx'
     , 'sphinx.ext.ifconfig'
 ]
+
+# Gracefully handle missing rst2pdf.
+try:
+    import rst2pdf
+    extensions += ['rst2pdf.pdfbuilder']
+except ImportError:
+    pass
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['../_templates']
