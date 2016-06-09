@@ -51,9 +51,12 @@ under either the OSL or the GPL.
 .. ------------------------------------------------------------------------------
 
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+

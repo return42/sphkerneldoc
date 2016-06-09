@@ -197,9 +197,12 @@ modification of capability-related fields:
 .. ------------------------------------------------------------------------------
 
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+

@@ -52,9 +52,12 @@ Magazine, October 2001, Issue 90.
 .. ------------------------------------------------------------------------------
 
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+

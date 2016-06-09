@@ -52,12 +52,15 @@ ERR = CLI.err
 
 mainFOOTER="""
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+
 """
 
 rstHEADER=""".. -*- coding: utf-8; mode: rst -*-

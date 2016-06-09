@@ -43,9 +43,12 @@ kind, whether express or implied.
 .. ------------------------------------------------------------------------------
 
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+

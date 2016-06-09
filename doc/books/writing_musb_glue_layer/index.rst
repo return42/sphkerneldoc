@@ -50,9 +50,12 @@ For more details see the file COPYING in the Linux kernel source tree.
 .. ------------------------------------------------------------------------------
 
 
-Retrieval
-=========
+.. only:: html
 
-* :ref:`genindex`
+  Retrieval
+  =========
+
+  * :ref:`genindex`
 
 .. todolist::
+

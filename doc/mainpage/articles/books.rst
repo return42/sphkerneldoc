@@ -15,6 +15,7 @@ stand-alone. Cross reference between these *projects* will be ensured by
 .. TODO: should be auto generated with the origin title ...
 
 * `kernel-doc HOWTO <../books/kernel-doc-HOWTO/index.html>`_
+* `template book <../books/template-book/index.html>`_
 * `80211 <../books/80211/index.html>`_
 * `alsa-driver-api <../books/alsa-driver-api/index.html>`_
 * `crypto-API <../books/crypto-API/index.html>`_
