@@ -28,17 +28,17 @@ Beside the kernel-doc source code documentation there is (has been) a
 DocBook-XML toolchain to write books and convert them into various formats
 (e.g. HTML).  Since reST_ is the new base format for generating output formats,
 the DocBook-XML books has to migrate to reST. Within this POC, the migration is
-allready done automaticly by collection of tools and scripts (see
+allready done automaticly by a collection of tools and scripts (see
 :ref:`xref_dbtools`). The migration is based on the linux kernel mainline and
 will be updated frequently.
 
-If you are one of the Linux DocBook authors, you may want to see / download
-migrated books:
+This site is a POC and my sandbox. All tested stuff from here is merged into
+the **linux-doc-reST** branch of the linux kernel. Pull it from::
 
-* https://github.com/return42/sphkerneldoc/tree/master/doc/books
+   git://github.com/return42/linux.git linux-doc-reST
 
-and you may also be intrested in :ref:`how to use kernel-doc comments in reST
-documents <kernel-doc:kernel-doc-directive>`.
+The :ref:`kernel-doc:kernel-doc-howto`, :ref:`template-book:template-book` and
+``make books-help`` are your friends.
 
 
 Further Remarks
