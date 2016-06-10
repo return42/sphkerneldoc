@@ -37,8 +37,8 @@ the **linux-doc-reST** branch of the linux kernel. Pull it from::
 
    git://github.com/return42/linux.git linux-doc-reST
 
-The :ref:`kernel-doc:kernel-doc-howto`, :ref:`template-book:template-book` and
-``make books-help`` are your friends.
+The :ref:`kernel-doc:kernel-doc-howto`, the :ref:`template-book:template-book`
+and ``make books-help`` are your friends.
 
 
 Further Remarks

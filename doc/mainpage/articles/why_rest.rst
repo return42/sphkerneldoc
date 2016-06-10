@@ -7,9 +7,9 @@
 Reason to change to reST
 ========================
 
-The basic idea of this (proof of) concept is to choose reST as **the** base
-authoring format, regardless if you are writing comments in source code or even
-writing entire books. With sphinx-doc_ and a :ref:`modified kernel-doc parser
+The basic idea of this concept is to choose reST as **the** base authoring
+format, regardless if you are writing comments in source code or even writing
+entire books. With sphinx-doc_ and a :ref:`modified kernel-doc parser
 <kernel-doc:kernel-doc-howto>` complex documentation could be composed while
 various output formats are available.  Including: HTML, LaTeX (for printable PDF
 versions), ePub, Texinfo, manual pages, plain text etc.
@@ -38,7 +38,7 @@ Reasons to migrate to reST + Sphinx-Doc
   existing markup ability while existing toolchains can be further used. The
   ``kernel-doc`` parser needs a reissue which takes the :ref:`modified
   kernel-doc parser <kernel-doc:kernel-doc-howto>` as specification (see
-  kernel-doc-reST_ ).
+  ``kernel_doc.py`` at `src linuxdoc`_ ).
 
 * ASCII markups are easy for authoring. reST has a clear syntax definition and
   is the most expressive and expandable ASCII markup.

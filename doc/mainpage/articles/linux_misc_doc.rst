@@ -8,6 +8,11 @@
                               documentation (text)
 ================================================================================
 
+.. hint::
+
+   All this is in a experimental state.
+
+
 Text files from the kernel source tarball's *Documentation* subdirectory.
 Syncing kernels' documentation would be done by:
 
@@ -27,3 +32,5 @@ syncdoc.sh
 :STATE: quick hack / search is a benfit, what more can be achieved?
 
 .. include:: refs.txt
+
+

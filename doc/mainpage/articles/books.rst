@@ -51,4 +51,12 @@ stand-alone. Cross reference between these *projects* will be ensured by
 * `writing_usb_driver <../books/writing_usb_driver/index.html>`_
 * `z8530book <../books/z8530book/index.html>`_
 
+.. hint::
+
+   The migrated books passed my tests and have been merged into the
+   **linux-doc-reST** branch of the linux kernel. Pull it from::
+
+     git://github.com/return42/linux.git linux-doc-reST
+
+
 

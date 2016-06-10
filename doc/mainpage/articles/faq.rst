@@ -8,14 +8,14 @@ FAQ
 ===
 
 What is reStructuredText?
--------------------------
+=========================
 
 reStructuredText is a extendable plaintext markup specification. The complete
 specification is described at `reST (spec)`_ and there is also a
 *Quick-Refence* `reST (quickref)`_.
 
 What is docutils?
------------------
+=================
 
 Docutils is a plaintext (reST) processor which consist of a reader to read
 plaintext markup and a writer, to write formats such as HTML, LaTeX,
@@ -23,7 +23,7 @@ man-pages, open-document or XML. Docutils and reST are projects of David
 Goodger. There is a project documentation `docutils`_ and a `docutils FAQ`_.
 
 What is sphinx-doc?
--------------------
+===================
 
 `sphinx-doc`_ is a documentation generator, based on the `docutils`_. Think
 about a extension / superset of the reST markup and a extended docutils
@@ -39,27 +39,17 @@ extensions, there are plenty extensions out in the web. Finally, `sphinx-doc`_
 is distributed by all known package managers.
 
 What is required?
------------------
+=================
 
-The kernel-doc-reST_ customization, a set of files extending sphinx-doc_ plus a
-kernel-doc parser, implemented in python.
-
-The know-how from the ``kernel-doc`` perl scripts was useful. With the python
-implementation of this parser a flexible integration into sphinx-doc_ is
-provided ... waiting for further extensions :-).
-
-
-What does *autodoc* mean?
--------------------------
-
-The term *autodoc* adresses the automatic creation of reST files from the source
-code, it is simular to (based on) the ``kernel-doc`` script. In the section
-:ref:`xref_linux_src_doc` a modified version of ``kernel-doc`` is introduced,
-which creates reST files from kernel's sources.
+Beside sphinx-doc_ a kernel-doc reST customization is required.  The
+customization includes a kernel-doc parser module and an integration into sphinx
+(`src linuxdoc`_). The know-how from the ``kernel-doc`` perl scripts was useful
+on developing the kernel-doc parser module. With the python implementation of this
+parser a flexible integration into sphinx-doc_ is provided ... waiting for
+further extensions :-).
 
 * :ref:`kernel-doc directive <kernel-doc:kernel-doc-directive>`
 * :ref:`flat-table directive <kernel-doc:rest-flat-table>`
-
 
 References
 ==========

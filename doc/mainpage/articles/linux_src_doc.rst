@@ -7,6 +7,11 @@
                              source code (autodoc)
 ================================================================================
 
+.. hint::
+
+   All this is in a experimental state.
+
+
 Source code documentation from *autodoc* (``make htmlsrc``).
 
 * `Linux kernel source <../linux_src_doc/index.html>`_
