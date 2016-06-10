@@ -8,7 +8,7 @@ u"""
     Implementation of the ``flat-table`` reST-directive.
 
     :copyright:  Copyright (C) 2016  Markus Heiser
-    :license:    GPL V3.0, see LICENSE for details.
+    :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
     The ``flat-table`` (:py:class:`FlatTable`) is a double-stage list similar
     to the ``list-table`` with some additional features:

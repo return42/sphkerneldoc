@@ -9,7 +9,7 @@ u"""
     Implementation of the ``kernel-doc`` parser.
 
     :copyright:  Copyright (C) 2016  Markus Heiser
-    :license:    GPL V3.0, see LICENSE for details.
+    :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
     The kernel-doc parser extracts documention from linux kernel's source code
     comments. This is a rewrite of the kernel-doc perl script.

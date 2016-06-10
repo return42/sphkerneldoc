@@ -9,7 +9,7 @@ u"""
     Implementation of the ``kernel-doc`` reST-directive.
 
     :copyright:  Copyright (C) 2016  Markus Heiser
-    :license:    GPL V3.0, see LICENSE for details.
+    :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
     The ``kernel-doc`` (:py:class:`KernelDoc`) directive includes contens from
     linux kernel source code comments.
