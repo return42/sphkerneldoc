@@ -53,6 +53,11 @@ kernel_doc_raise_error: ``True``
       :functions:  no_longer_exist
 
 
+kernel_doc_verbose_warn: ``True``
+  If true, more warnings will be logged. E.g. a missing description of a
+  function's return value will be logged.
+
+
 kernel-doc options
 ==================
 

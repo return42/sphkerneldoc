@@ -126,6 +126,7 @@ def setup(app):
 # ==============================================================================
 
     app.add_config_value('kernel_doc_raise_error', False, 'env')
+    app.add_config_value('kernel_doc_verbose_warn', True, 'env')
     app.add_directive("kernel-doc", KernelDoc)
 
 # ==============================================================================
@@ -286,6 +287,7 @@ class KernelDoc(Directive):
             , out           = rstout
             , encoding      = self.options.get("encoding", env.config.source_encoding)
             , translator    = kerneldoc.ReSTTranslator()
+            , verbose_warn  = env.config.kernel_doc_verbose_warn
             ,)
 
         opts.set_defaults()

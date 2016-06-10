@@ -166,6 +166,11 @@ todo_include_todos = True
 # error. Default: True
 kernel_doc_raise_error = False
 
+# If true, more warnings will be logged. E.g. a missing description of a
+# function's return value will be logged.
+# Default: True
+kernel_doc_verbose_warn = False
+
 # ------------------------------------------------------------------------------
 # Options for HTML output
 # ------------------------------------------------------------------------------

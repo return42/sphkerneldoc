@@ -290,7 +290,7 @@ doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
 # enum). Additional condition: the header name should have 3 characters at least!
 doc_sect  = RE(doc_com.pattern
                + r"("
-               + r"[" + doc_special.pattern + r"]\w[\w\s]*"  # "@foo: lorem" or
+               + r"[" + doc_special.pattern + r"]\w[^:]*"    # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
                + r"|" + r"\w[\w\s]+\w"                       # e.g. "Return: lorem"
                + r")"
@@ -298,7 +298,7 @@ doc_sect  = RE(doc_com.pattern
 
 doc_param = RE(doc_com.pattern
                + r"("
-               + r"[" + doc_special.pattern + r"]\w[\w\s]*"  # "@foo: lorem" or
+               + r"[" + doc_special.pattern + r"]\w[^:]*"  # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
                + r")"
                + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
@@ -1250,6 +1250,7 @@ class ParseOptions(Container):
         self.use_names     = []   # positiv list of names to print / empty list means "print all"
         self.skip_names    = []   # negativ list of names (not to print)
         self.error_missing = True # report missing names as errors / else warning
+        self.verbose_warn  = True # more warn messages
 
         # self.gather_context: [True/False] Scan additional context from the
         # parsed source. E.g.: The list of exported symbols is a part of the
@@ -2363,8 +2364,8 @@ class Parser(SimpleLog):
             # ignore embedded structs or unions
             embeded_re = RE(r"({.*})")
             if embeded_re.search(proto):
-                nested = embeded_re[0]
-                embeded_re.sub("", members)
+                nested  = embeded_re[0]
+                members = embeded_re.sub("", members)
 
             # ignore members marked private:
             members = re.sub(r"/\*\s*private:.*?/\*\s*public:.*?\*/", "", members, flags=re.I)
@@ -2683,7 +2684,7 @@ class Parser(SimpleLog):
                 if decl_type == "function":
                     self.warn("excess function parameter '%(sect)s' description in '%(decl_name)s'"
                               , sect = sect, decl_name = decl_name)
-                elif not re.search(r"\Q" + sect + r"\E", nested):
+                elif not re.search(r"\b(" + sect + ")[^a-zA-Z0-9]", nested):
                     self.warn("excess %(decl_type)s member '%(sect)s' description in '%(decl_name)s'"
                               , decl_type = decl_type, decl_name = decl_name, sect = sect)
             else:
@@ -2701,7 +2702,7 @@ class Parser(SimpleLog):
             self.debug("check_return_section(): ignore void")
             return
 
-        if not self.ctx.sections.get(self.section_return, None):
+        if self.options.verbose_warn and not self.ctx.sections.get(self.section_return, None):
             self.warn("no description found for return-value of function '%(func)s()'"
                       , func = decl_name)
         else:
