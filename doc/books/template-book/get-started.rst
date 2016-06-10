@@ -59,6 +59,12 @@ To get a PDF representation build the ".pdf" target:
 There is also a ".clean" target to get rid of all intermadiate and HTML files,
 except the PDF representations, they will be preserved
 
+To add your project's documentation to the index, edit
+``Documentation/books/index.rst`` and add a reference, e.g.::
+
+  * ...
+  * ...
+  * `My Project <my-project/index.html>`_
 
 .. _config_file:
 
