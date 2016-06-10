@@ -197,6 +197,7 @@ $(DIST):
 PHONY += mainpage mainpage.clean
 mainpage: sphinx-doc | $(DIST)
 	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)
+	$(Q)echo "HTML build OK / start file at:\n    file://$(abspath $(DIST)/index.html)"
 
 mainpage.clean:
 	rm -rf $(addprefix $(DIST)/, articles _sources _static) $(CACHE)/doctrees/mainpage
@@ -240,7 +241,7 @@ $(BOOKS_HTML): sphinx-doc | $(DIST)
 	  -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) \
 	  $(obj)/$(patsubst %.html,%,$@) \
 	  $(DIST)/$(patsubst %.html,%,$@)
-	$(Q)echo "HTML build OK / start file at:\n    $(DIST)/$(patsubst %.html,%,$@)/index.html"
+	$(Q)echo "HTML build OK / start file at:\n    file://$(abspath $(DIST)/$(patsubst %.html,%,$@)/index.html)"
 
 
 # reST-book --> PDF
@@ -254,7 +255,7 @@ $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 	  -d $(CACHE)/doctrees/$(patsubst %.pdf,%,$@) \
 	  $(obj)/$(patsubst %.pdf,%,$@) \
           $(DIST)/rst2pdf
-	$(Q)echo "PDF build OK / pdf files stored in:\n    $(DIST)/rst2pdf"
+	$(Q)echo "PDF build OK / pdf files stored in:\n    file://$(abspath $(DIST)/rst2pdf)"
 
 
 
