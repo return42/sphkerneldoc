@@ -44,7 +44,7 @@ the opl3 module will allocate the specified ports by itself.
 
 When the accessing the hardware requires special method instead of the
 standard I/O access, you can create opl3 instance separately with
-``snd_opl3_new()``.
+:c:func:`snd_opl3_new()`.
 
 
 .. code-block:: c
@@ -58,9 +58,10 @@ l_port and r_port are not necessarily set. Only the command must be
 set properly. You can retrieve the data from the opl3->private_data
 field.
 
-After creating the opl3 instance via ``snd_opl3_new()``, call
-``snd_opl3_init()`` to initialize the chip to the proper state. Note
-that ``snd_opl3_create()`` always calls it internally.
+After creating the opl3 instance via :c:func:`snd_opl3_new()`, call
+:c:func:`snd_opl3_init()` to initialize the chip to the proper
+state. Note that :c:func:`snd_opl3_create()` always calls it
+internally.
 
 If the opl3 instance is created successfully, then create a hwdep device
 for this opl3.
@@ -90,7 +91,8 @@ the micro code. In such a case, you can create a hwdep
 ``<sound/hwdep.h>``. You can find examples in opl3 driver or
 ``isa/sb/sb16_csp.c``.
 
-The creation of the ``hwdep`` instance is done via ``snd_hwdep_new()``.
+The creation of the ``hwdep`` instance is done via
+:c:func:`snd_hwdep_new()`.
 
 
 .. code-block:: c
@@ -143,7 +145,8 @@ IEC958 (S/PDIF)
 
 Usually the controls for IEC958 devices are implemented via the control
 interface. There is a macro to compose a name string for IEC958
-controls, ``SNDRV_CTL_NAME_IEC958()`` defined in ``<include/asound.h>``.
+controls, :c:func:`SNDRV_CTL_NAME_IEC958()` defined in
+``<include/asound.h>``.
 
 There are some standard controls for IEC958 status bits. These controls
 use the type ``SNDRV_CTL_ELEM_TYPE_IEC958``, and the size of element is
@@ -165,7 +168,7 @@ although in some places it's defined as a MIXER control.
 In addition, you can define the control switches to enable/disable or to
 set the raw bit mode. The implementation will depend on the chip, but
 the control should be named as “IEC958 xxx”, preferably using the
-``SNDRV_CTL_NAME_IEC958()`` macro.
+:c:func:`SNDRV_CTL_NAME_IEC958()` macro.
 
 You can find several cases, for example, ``pci/emu10k1``,
 ``pci/ice1712``, or ``pci/cmipci.c``.

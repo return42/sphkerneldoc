@@ -133,11 +133,11 @@ Single-planar format structure
        -  ``priv``
 
        -  This field indicates whether the remaining fields of the
-          ``v4l2_pix_format`` structure, also called the extended fields,
-          are valid. When set to ``V4L2_PIX_FMT_PRIV_MAGIC``, it indicates
-          that the extended fields have been correctly initialized. When set
-          to any other value it indicates that the extended fields contain
-          undefined values.
+          :c:type:`struct v4l2_pix_format` structure, also called the
+          extended fields, are valid. When set to
+          ``V4L2_PIX_FMT_PRIV_MAGIC``, it indicates that the extended fields
+          have been correctly initialized. When set to any other value it
+          indicates that the extended fields contain undefined values.
 
           Applications that wish to use the pixel format extended fields
           must first ensure that the feature is supported by querying the
@@ -148,8 +148,8 @@ Single-planar format structure
 
           To use the extended fields, applications must set the ``priv``
           field to ``V4L2_PIX_FMT_PRIV_MAGIC``, initialize all the extended
-          fields and zero the unused bytes of the ``v4l2_format``
-          ``raw_data`` field.
+          fields and zero the unused bytes of the
+          :c:type:`struct v4l2_format` ``raw_data`` field.
 
           When the ``priv`` field isn't set to ``V4L2_PIX_FMT_PRIV_MAGIC``
           drivers must act as if all the extended fields were set to zero.

@@ -25,9 +25,9 @@ the members are required, others are optional.
    ``/sys/class/uio/uioX/version``.
 
 -  ``struct uio_mem mem[ MAX_UIO_MAPS ]``: Required if you have memory
-   that can be mapped with ``mmap()``. For each mapping you need to fill
-   one of the ``uio_mem`` structures. See the description below for
-   details.
+   that can be mapped with :c:func:`mmap()`. For each mapping you need
+   to fill one of the ``uio_mem`` structures. See the description below
+   for details.
 
 -  ``struct uio_port port[ MAX_UIO_PORTS_REGIONS ]``: Required if you
    want to pass information about ioports to userspace. For each port
@@ -43,20 +43,20 @@ the members are required, others are optional.
 
 -  ``unsigned long irq_flags``: Required if you've set ``irq`` to a
    hardware interrupt number. The flags given here will be used in the
-   call to ``request_irq()``.
+   call to :c:func:`request_irq()`.
 
 -  ``int (*mmap)(struct uio_info *info, struct vm_area_struct
-   *vma)``: Optional. If you need a special ``mmap()`` function, you can
-   set it here. If this pointer is not NULL, your ``mmap()`` will be
-   called instead of the built-in one.
+   *vma)``: Optional. If you need a special :c:func:`mmap()` function,
+   you can set it here. If this pointer is not NULL, your
+   :c:func:`mmap()` will be called instead of the built-in one.
 
 -  ``int (*open)(struct uio_info *info, struct inode *inode)
-   ``: Optional. You might want to have your own ``open()``, e.g. to
-   enable interrupts only when your device is actually used.
+   ``: Optional. You might want to have your own :c:func:`open()`,
+   e.g. to enable interrupts only when your device is actually used.
 
 -  ``int (*release)(struct uio_info *info, struct inode *inode)
-   ``: Optional. If you define your own ``open()``, you will probably
-   also want a custom ``release()`` function.
+   ``: Optional. If you define your own :c:func:`open()`, you will
+   probably also want a custom :c:func:`release()` function.
 
 -  ``int (*irqcontrol)(struct uio_info *info, s32 irq_on)
    ``: Optional. If you need to be able to enable or disable interrupts
@@ -75,8 +75,8 @@ fields of ``struct uio_mem``:
 -  ``int memtype``: Required if the mapping is used. Set this to
    ``UIO_MEM_PHYS`` if you you have physical memory on your card to be
    mapped. Use ``UIO_MEM_LOGICAL`` for logical memory (e.g. allocated
-   with ``kmalloc()``). There's also ``UIO_MEM_VIRTUAL`` for virtual
-   memory.
+   with :c:func:`kmalloc()`). There's also ``UIO_MEM_VIRTUAL`` for
+   virtual memory.
 
 -  ``phys_addr_t addr``: Required if the mapping is used. Fill in the
    address of your memory block. This address is the one that appears in
@@ -89,9 +89,10 @@ fields of ``struct uio_mem``:
 
 -  ``void *internal_addr``: If you have to access this memory region
    from within your kernel module, you will want to map it internally by
-   using something like ``ioremap()``. Addresses returned by this
-   function cannot be mapped to user space, so you must not store it in
-   ``addr``. Use ``internal_addr`` instead to remember such an address.
+   using something like :c:func:`ioremap()`. Addresses returned by
+   this function cannot be mapped to user space, so you must not store
+   it in ``addr``. Use ``internal_addr`` instead to remember such an
+   address.
 
 Please do not touch the ``map`` element of ``struct uio_mem``! It is
 used by the UIO framework to set up sysfs files for this mapping. Simply
@@ -204,10 +205,11 @@ You will set the ``.name`` element of ``struct platform_device`` to
 ``"uio_pdrv_genirq"`` to use this driver.
 
 The generic interrupt handler of ``uio_pdrv_genirq`` will simply disable
-the interrupt line using ``disable_irq_nosync()``. After doing its work,
-userspace can reenable the interrupt by writing 0x00000001 to the UIO
-device file. The driver already implements an ``irq_control()`` to make
-this possible, you must not implement your own.
+the interrupt line using :c:func:`disable_irq_nosync()`. After doing
+its work, userspace can reenable the interrupt by writing 0x00000001 to
+the UIO device file. The driver already implements an
+:c:func:`irq_control()` to make this possible, you must not implement
+your own.
 
 Using ``uio_pdrv_genirq`` not only saves a few lines of interrupt
 handler code. You also do not need to know anything about the chip's

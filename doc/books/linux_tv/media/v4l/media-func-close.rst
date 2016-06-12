@@ -38,8 +38,8 @@ are freed. The device configuration remain unchanged.
 Return Value
 ============
 
-``close`` returns 0 on success. On error, -1 is returned, and ``errno``
-is set appropriately. Possible error codes are:
+:c:func:`close()` returns 0 on success. On error, -1 is returned, and
+``errno`` is set appropriately. Possible error codes are:
 
 EBADF
     ``fd`` is not a valid open file descriptor.

@@ -24,7 +24,7 @@ in every architecture's ``include/asm/unistd.h`` and
 Linus.
 
 If all your routine does is read or write some parameter, consider
-implementing a ``sysfs`` interface instead.
+implementing a :c:func:`sysfs()` interface instead.
 
 Inside the ioctl you're in user context to a process. When a error
 occurs you return a negated errno (see ``include/linux/errno.h``),

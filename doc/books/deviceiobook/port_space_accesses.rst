@@ -28,14 +28,16 @@ Accessing Port Space
 
 Accesses to this space are provided through a set of functions which
 allow 8-bit, 16-bit and 32-bit accesses; also known as byte, word and
-long. These functions are ``inb``, ``inw``, ``inl``, ``outb``, ``outw``
-and ``outl``.
+long. These functions are :c:func:`inb()`, :c:func:`inw()`,
+:c:func:`inl()`, :c:func:`outb()`, :c:func:`outw()` and
+:c:func:`outl()`.
 
 Some variants are provided for these functions. Some devices require
 that accesses to their ports are slowed down. This functionality is
-provided by appending a ``_p`` to the end of the function. There are
-also equivalents to memcpy. The ``ins`` and ``outs`` functions copy
-bytes, words or longs to the given port.
+provided by appending a :c:func:`_p()` to the end of the function.
+There are also equivalents to memcpy. The :c:func:`ins()` and
+:c:func:`outs()` functions copy bytes, words or longs to the given
+port.
 
 
 .. ------------------------------------------------------------------------------

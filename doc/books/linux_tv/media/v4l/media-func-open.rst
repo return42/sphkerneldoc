@@ -35,9 +35,9 @@ Arguments
 Description
 ===========
 
-To open a media device applications call ``open()`` with the desired
-device name. The function has no side effects; the device configuration
-remain unchanged.
+To open a media device applications call :c:func:`open()` with the
+desired device name. The function has no side effects; the device
+configuration remain unchanged.
 
 When the device is opened in read-only mode, attempts to modify its
 configuration will result in an error, and ``errno`` will be set to
@@ -47,8 +47,9 @@ EBADF.
 Return Value
 ============
 
-``open`` returns the new file descriptor on success. On error, -1 is
-returned, and ``errno`` is set appropriately. Possible error codes are:
+:c:func:`open()` returns the new file descriptor on success. On error,
+-1 is returned, and ``errno`` is set appropriately. Possible error codes
+are:
 
 EACCES
     The requested access to the file is not allowed.

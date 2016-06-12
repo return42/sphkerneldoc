@@ -10,13 +10,15 @@ Pete Zaitcev gives the following summary:
 
 -  If you are in a process context (any syscall) and want to lock other
    process out, use a mutex. You can take a mutex and sleep
-   (``copy_from_user*(`` or ``kmalloc(x,GFP_KERNEL)``).
+   (:c:func:`copy_from_user*(()` or
+   :c:func:`kmalloc(x,GFP_KERNEL)`).
 
 -  Otherwise (== data can be touched in an interrupt), use
-   ``spin_lock_irqsave()`` and ``spin_unlock_irqrestore()``.
+   :c:func:`spin_lock_irqsave()` and
+   :c:func:`spin_unlock_irqrestore()`.
 
 -  Avoid holding spinlock for more than 5 lines of code and across any
-   function call (except accessors like ``readb``).
+   function call (except accessors like :c:func:`readb()`).
 
 
 .. _minimum-lock-reqirements:
@@ -30,8 +32,9 @@ one CPU at a time, so no locking is required for that context (eg. a
 particular thread can only run on one CPU at a time, but if it needs
 shares data with another thread, locking is required).
 
-Remember the advice above: you can always use ``spin_lock_irqsave()``,
-which is a superset of all other spinlock primitives.
+Remember the advice above: you can always use
+:c:func:`spin_lock_irqsave()`, which is a superset of all other
+spinlock primitives.
 
 
 

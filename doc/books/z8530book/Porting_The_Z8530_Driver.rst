@@ -14,8 +14,9 @@ machines. The PIO mode makes no real assumptions.
 Should you need to retarget the Z8530 driver to another architecture the
 only code that should need changing are the port I/O functions. At the
 moment these assume PC I/O port accesses. This may not be appropriate
-for all platforms. Replacing ``z8530_read_port`` and ``z8530_write_port
-    `` is intended to be all that is required to port this driver layer.
+for all platforms. Replacing :c:func:`z8530_read_port()` and
+:c:func:`z8530_write_port()` is intended to be all that is required
+to port this driver layer.
 
 
 .. ------------------------------------------------------------------------------

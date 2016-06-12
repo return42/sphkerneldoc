@@ -40,17 +40,17 @@ location of the buffers in device memory can be determined with the
 :ref:`VIDIOC_QUERYBUF <vidioc-querybuf>` ioctl. In the single-planar
 API case, the ``m.offset`` and ``length`` returned in a struct
 :ref:`v4l2_buffer <v4l2-buffer>` are passed as sixth and second
-parameter to the ``mmap()`` function. When using the multi-planar API,
-struct :ref:`v4l2_buffer <v4l2-buffer>` contains an array of struct
-:ref:`v4l2_plane <v4l2-plane>` structures, each containing its own
-``m.offset`` and ``length``. When using the multi-planar API, every
-plane of every buffer has to be mapped separately, so the number of
-calls to :ref:`mmap() <func-mmap>` should be equal to number of
-buffers times number of planes in each buffer. The offset and length
-values must not be modified. Remember, the buffers are allocated in
-physical memory, as opposed to virtual memory, which can be swapped out
-to disk. Applications should free the buffers as soon as possible with
-the :ref:`munmap() <func-munmap>` function.
+parameter to the :c:func:`mmap()` function. When using the
+multi-planar API, struct :ref:`v4l2_buffer <v4l2-buffer>` contains an
+array of struct :ref:`v4l2_plane <v4l2-plane>` structures, each
+containing its own ``m.offset`` and ``length``. When using the
+multi-planar API, every plane of every buffer has to be mapped
+separately, so the number of calls to :ref:`mmap() <func-mmap>` should
+be equal to number of buffers times number of planes in each buffer. The
+offset and length values must not be modified. Remember, the buffers are
+allocated in physical memory, as opposed to virtual memory, which can be
+swapped out to disk. Applications should free the buffers as soon as
+possible with the :ref:`munmap() <func-munmap>` function.
 
 
 .. code-block:: c
@@ -251,17 +251,18 @@ event it should examine the struct :ref:`v4l2_buffer <v4l2-buffer>`
 Drivers implementing memory mapping I/O must support the
 ``VIDIOC_REQBUFS``, ``VIDIOC_QUERYBUF``, ``VIDIOC_QBUF``,
 ``VIDIOC_DQBUF``, ``VIDIOC_STREAMON`` and ``VIDIOC_STREAMOFF`` ioctl,
-the ``mmap()``, ``munmap()``, ``select()`` and ``poll()`` function. [3]_
+the :c:func:`mmap()`, :c:func:`munmap()`, :c:func:`select()` and
+:c:func:`poll()` function. [3]_
 
 [capture example]
 
 .. [1]
    One could use one file descriptor and set the buffer type field
    accordingly when calling :ref:`VIDIOC_QBUF <vidioc-qbuf>` etc.,
-   but it makes the ``select()`` function ambiguous. We also like the
-   clean approach of one file descriptor per logical stream. Video
-   overlay for example is also a logical stream, although the CPU is not
-   needed for continuous operation.
+   but it makes the :c:func:`select()` function ambiguous. We also
+   like the clean approach of one file descriptor per logical stream.
+   Video overlay for example is also a logical stream, although the CPU
+   is not needed for continuous operation.
 
 .. [2]
    Random enqueue order permits applications processing images out of
@@ -271,9 +272,9 @@ the ``mmap()``, ``munmap()``, ``select()`` and ``poll()`` function. [3]_
    scatter-gather lists and the like.
 
 .. [3]
-   At the driver level ``select()`` and ``poll()`` are the same, and
-   ``select()`` is too important to be optional. The rest should be
-   evident.
+   At the driver level :c:func:`select()` and :c:func:`poll()` are
+   the same, and :c:func:`select()` is too important to be optional.
+   The rest should be evident.
 
 
 .. ------------------------------------------------------------------------------

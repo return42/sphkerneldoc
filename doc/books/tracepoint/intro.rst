@@ -23,9 +23,9 @@ tracepoints are available but also to understand where future
 tracepoints might be added.
 
 The API presented has functions of the form:
-``trace_tracepointname(function parameters)``. These are the tracepoints
-callbacks that are found throughout the code. Registering and
-unregistering probes with these callback sites is covered in the
+:c:func:`trace_tracepointname(function parameters)`. These are the
+tracepoints callbacks that are found throughout the code. Registering
+and unregistering probes with these callback sites is covered in the
 ``Documentation/trace/*`` directory.
 
 

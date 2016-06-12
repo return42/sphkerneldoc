@@ -11,14 +11,14 @@ the Streaming I/O methods. In the multi-planar API, the data is held in
 planes, while the buffer structure acts as a container for the planes.
 Only pointers to buffers (planes) are exchanged, the data itself is not
 copied. These pointers, together with meta-information like timestamps
-or field parity, are stored in a struct ``v4l2_buffer``, argument to the
-:ref:`VIDIOC_QUERYBUF <vidioc-querybuf>`,
+or field parity, are stored in a struct :c:type:`struct v4l2_buffer`,
+argument to the :ref:`VIDIOC_QUERYBUF <vidioc-querybuf>`,
 :ref:`VIDIOC_QBUF <vidioc-qbuf>` and
 :ref:`VIDIOC_DQBUF <vidioc-qbuf>` ioctl. In the multi-planar API,
-some plane-specific members of struct ``v4l2_buffer``, such as pointers
-and sizes for each plane, are stored in struct ``v4l2_plane`` instead.
-In that case, struct ``v4l2_buffer`` contains an array of plane
-structures.
+some plane-specific members of struct :c:type:`struct v4l2_buffer`,
+such as pointers and sizes for each plane, are stored in struct
+:c:type:`struct v4l2_plane` instead. In that case, struct
+:c:type:`struct v4l2_buffer` contains an array of plane structures.
 
 Dequeued video buffers come with timestamps. The driver decides at which
 part of the frame and with which clock the timestamp is taken. Please
@@ -115,8 +115,8 @@ buffer.
 
        -  
        -  For capture streams this is time when the first data byte was
-          captured, as returned by the ``clock_gettime()`` function for the
-          relevant clock id; see ``V4L2_BUF_FLAG_TIMESTAMP_*`` in
+          captured, as returned by the :c:func:`clock_gettime()` function
+          for the relevant clock id; see ``V4L2_BUF_FLAG_TIMESTAMP_*`` in
           :ref:`buffer-flags`. For output streams the driver stores the
           time at which the last data byte was actually sent out in the
           ``timestamp`` field. This permits applications to monitor the
@@ -221,7 +221,7 @@ buffer.
        -  When using the multi-planar API, contains a userspace pointer to
           an array of struct :ref:`v4l2_plane <v4l2-plane>`. The size of
           the array should be put in the ``length`` field of this
-          ``v4l2_buffer`` structure.
+          :c:type:`struct v4l2_buffer` structure.
 
     -  .. row 15
 
@@ -673,9 +673,9 @@ buffer.
           3.9 and may be either monotonic (see below) or realtime (wall
           clock). Monotonic clock has been favoured in embedded systems
           whereas most of the drivers use the realtime clock. Either kinds
-          of timestamps are available in user space via ``clock_gettime(2)``
-          using clock IDs ``CLOCK_MONOTONIC`` and ``CLOCK_REALTIME``,
-          respectively.
+          of timestamps are available in user space via
+          :c:func:`clock_gettime(2)` using clock IDs ``CLOCK_MONOTONIC``
+          and ``CLOCK_REALTIME``, respectively.
 
     -  .. row 15
 
@@ -685,7 +685,7 @@ buffer.
 
        -  The buffer timestamp has been taken from the ``CLOCK_MONOTONIC``
           clock. To access the same clock outside V4L2, use
-          ``clock_gettime(2)``.
+          :c:func:`clock_gettime(2)`.
 
     -  .. row 16
 
@@ -780,8 +780,9 @@ buffer.
 Timecodes
 =========
 
-The ``v4l2_timecode`` structure is designed to hold a :ref:`smpte12m`
-or similar timecode. (struct ``timeval`` timestamps are stored in struct
+The :c:type:`struct v4l2_timecode` structure is designed to hold a
+:ref:`smpte12m` or similar timecode. (struct
+:c:type:`struct timeval` timestamps are stored in struct
 :ref:`v4l2_buffer <v4l2-buffer>` field ``timestamp``.)
 
 

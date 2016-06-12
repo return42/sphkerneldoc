@@ -148,7 +148,7 @@ call.
        -  
        -  Event timestamp. The timestamp has been taken from the
           ``CLOCK_MONOTONIC`` clock. To access the same clock outside V4L2,
-          use ``clock_gettime(2)``.
+          use :c:func:`clock_gettime(2)`.
 
     -  .. row 12
 

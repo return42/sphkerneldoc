@@ -194,9 +194,9 @@ Such a driver first needs to find a device file for a device it knows
 how to handle. Maybe it was told about it because a ``/sbin/hotplug``
 event handling agent chose that driver to handle the new device. Or
 maybe it's an application that scans all the /proc/bus/usb device files,
-and ignores most devices. In either case, it should ``read()`` all the
-descriptors from the device file, and check them against what it knows
-how to handle. It might just reject everything except a particular
+and ignores most devices. In either case, it should :c:func:`read()`
+all the descriptors from the device file, and check them against what it
+knows how to handle. It might just reject everything except a particular
 vendor and product ID, or need a more complex policy.
 
 Never assume there will only be one such device on the system at a time!
@@ -501,10 +501,10 @@ USBDEVFS_SETINTERFACE
     interface.)
 
 USBDEVFS_SETCONFIGURATION
-    Issues the ``usb_set_configuration`` call for the device. The
-    parameter is an integer holding the number of a configuration
-    (bConfigurationValue from descriptor). File modification time is not
-    updated by this request.
+    Issues the :c:func:`usb_set_configuration()` call for the
+    device. The parameter is an integer holding the number of a
+    configuration (bConfigurationValue from descriptor). File
+    modification time is not updated by this request.
 
         **Warning**
 

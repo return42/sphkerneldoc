@@ -33,7 +33,7 @@ User Context
 
 User context is when you are coming in from a system call or other trap:
 like userspace, you can be preempted by more important tasks and by
-interrupts. You can sleep, by calling ``schedule()``.
+interrupts. You can sleep, by calling :c:func:`schedule()`.
 
     **Note**
 
@@ -41,13 +41,13 @@ interrupts. You can sleep, by calling ``schedule()``.
     operations on the block device layer.
 
 In user context, the ``current`` pointer (indicating the task we are
-currently executing) is valid, and ``in_interrupt()``
+currently executing) is valid, and :c:func:`in_interrupt()`
 (``include/linux/interrupt.h``) is false.
 
     **Caution**
 
     Beware that if you have preemption or softirqs disabled (see below),
-    ``in_interrupt()`` will return a false positive.
+    :c:func:`in_interrupt()` will return a false positive.
 
 
 .. _basics-hardirqs:
@@ -63,8 +63,8 @@ handler is never re-entered: if the same interrupt arrives, it is queued
 fast: frequently it simply acknowledges the interrupt, marks a 'software
 interrupt' for execution and exits.
 
-You can tell you are in a hardware interrupt, because ``in_irq()``
-returns true.
+You can tell you are in a hardware interrupt, because
+:c:func:`in_irq()` returns true.
 
     **Caution**
 
@@ -106,7 +106,7 @@ time, although different tasklets can run simultaneously.
     Kuznetsov had at the time.
 
 You can tell you are in a softirq (or tasklet) using the
-``in_softirq()`` macro (``include/linux/interrupt.h``).
+:c:func:`in_softirq()` macro (``include/linux/interrupt.h``).
 
     **Caution**
 

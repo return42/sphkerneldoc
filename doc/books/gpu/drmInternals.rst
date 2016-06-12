@@ -26,17 +26,19 @@ DMA services.
 Driver Initialization
 =====================
 
-At the core of every DRM driver is a ``drm_driver`` structure. Drivers
-typically statically initialize a drm_driver structure, and then pass
-it to ``drm_dev_alloc()`` to allocate a device instance. After the
-device instance is fully initialized it can be registered (which makes
-it accessible from userspace) using ``drm_dev_register()``.
+At the core of every DRM driver is a :c:type:`struct drm_driver`
+structure. Drivers typically statically initialize a drm_driver
+structure, and then pass it to :c:func:`drm_dev_alloc()` to allocate
+a device instance. After the device instance is fully initialized it can
+be registered (which makes it accessible from userspace) using
+:c:func:`drm_dev_register()`.
 
-The ``drm_driver`` structure contains static information that describes
-the driver and features it supports, and pointers to methods that the
-DRM core will call to implement the DRM API. We will first go through
-the ``drm_driver`` static information fields, and will then describe
-individual operations in details as they get used in later sections.
+The :c:type:`struct drm_driver` structure contains static information
+that describes the driver and features it supports, and pointers to
+methods that the DRM core will call to implement the DRM API. We will
+first go through the :c:type:`struct drm_driver` static information
+fields, and will then describe individual operations in details as they
+get used in later sections.
 
 
 Driver Information
@@ -49,8 +51,8 @@ Driver Features
 Drivers inform the DRM core about their requirements and supported
 features by setting appropriate flags in the ``driver_features`` field.
 Since those flags influence the DRM core behaviour since registration
-time, most of them must be set to registering the ``drm_driver``
-instance.
+time, most of them must be set to registering the
+:c:type:`struct drm_driver` instance.
 
 
 .. code-block:: c
@@ -173,52 +175,55 @@ IRQ Registration
 ^^^^^^^^^^^^^^^^
 
 The DRM core tries to facilitate IRQ handler registration and
-unregistration by providing ``drm_irq_install`` and
-``drm_irq_uninstall`` functions. Those functions only support a single
-interrupt per device, devices that use more than one IRQs need to be
-handled manually.
+unregistration by providing :c:func:`drm_irq_install()` and
+:c:func:`drm_irq_uninstall()` functions. Those functions only
+support a single interrupt per device, devices that use more than one
+IRQs need to be handled manually.
 
 Managed IRQ Registration
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-``drm_irq_install`` starts by calling the irq_preinstall driver
-operation. The operation is optional and must make sure that the
+:c:func:`drm_irq_install()` starts by calling the irq_preinstall
+driver operation. The operation is optional and must make sure that the
 interrupt will not get fired by clearing all pending interrupt flags or
 disabling the interrupt.
 
-The passed-in IRQ will then be requested by a call to ``request_irq``.
-If the DRIVER_IRQ_SHARED driver feature flag is set, a shared
-(IRQF_SHARED) IRQ handler will be requested.
+The passed-in IRQ will then be requested by a call to
+:c:func:`request_irq()`. If the DRIVER_IRQ_SHARED driver feature
+flag is set, a shared (IRQF_SHARED) IRQ handler will be requested.
 
 The IRQ handler function must be provided as the mandatory irq_handler
-driver operation. It will get passed directly to ``request_irq`` and
-thus has the same prototype as all IRQ handlers. It will get called with
-a pointer to the DRM device as the second argument.
+driver operation. It will get passed directly to
+:c:func:`request_irq()` and thus has the same prototype as all IRQ
+handlers. It will get called with a pointer to the DRM device as the
+second argument.
 
 Finally the function calls the optional irq_postinstall driver
 operation. The operation usually enables interrupts (excluding the
 vblank interrupt, which is enabled separately), but drivers may choose
 to enable/disable interrupts at a different time.
 
-``drm_irq_uninstall`` is similarly used to uninstall an IRQ handler. It
-starts by waking up all processes waiting on a vblank interrupt to make
-sure they don't hang, and then calls the optional irq_uninstall driver
-operation. The operation must disable all hardware interrupts. Finally
-the function frees the IRQ by calling ``free_irq``.
+:c:func:`drm_irq_uninstall()` is similarly used to uninstall an IRQ
+handler. It starts by waking up all processes waiting on a vblank
+interrupt to make sure they don't hang, and then calls the optional
+irq_uninstall driver operation. The operation must disable all hardware
+interrupts. Finally the function frees the IRQ by calling
+:c:func:`free_irq()`.
 
 Manual IRQ Registration
 ^^^^^^^^^^^^^^^^^^^^^^^
 
 Drivers that require multiple interrupt handlers can't use the managed
 IRQ registration functions. In that case IRQs must be registered and
-unregistered manually (usually with the ``request_irq`` and ``free_irq``
-functions, or their devm_* equivalent).
+unregistered manually (usually with the :c:func:`request_irq()` and
+:c:func:`free_irq()` functions, or their devm_* equivalent).
 
 When manually registering IRQs, drivers must not set the
 DRIVER_HAVE_IRQ driver feature flag, and must not provide the
-irq_handler driver operation. They must set the ``drm_device``
-``irq_enabled`` field to 1 upon registration of the IRQs, and clear it
-to 0 after unregistering the IRQs.
+irq_handler driver operation. They must set the
+:c:type:`struct drm_device` ``irq_enabled`` field to 1 upon
+registration of the IRQs, and clear it to 0 after unregistering the
+IRQs.
 
 
 Memory Manager Initialization
@@ -389,10 +394,10 @@ GEM Initialization
 ^^^^^^^^^^^^^^^^^^
 
 Drivers that use GEM must set the DRIVER_GEM bit in the struct
-``drm_driver`` ``driver_features`` field. The DRM core will then
-automatically initialize the GEM core before calling the load operation.
-Behind the scene, this will create a DRM Memory Manager object which
-provides an address space pool for object allocation.
+:c:type:`struct drm_driver` ``driver_features`` field. The DRM core
+will then automatically initialize the GEM core before calling the load
+operation. Behind the scene, this will create a DRM Memory Manager
+object which provides an address space pool for object allocation.
 
 In a KMS configuration, drivers need to allocate and initialize a
 command ring buffer following core GEM initialization if required by the
@@ -409,54 +414,58 @@ GEM Objects Creation
 GEM splits creation of GEM objects and allocation of the memory that
 backs them in two distinct operations.
 
-GEM objects are represented by an instance of struct ``drm_gem_object``.
-Drivers usually need to extend GEM objects with private information and
-thus create a driver-specific GEM object structure type that embeds an
-instance of struct ``drm_gem_object``.
+GEM objects are represented by an instance of struct
+:c:type:`struct drm_gem_object`. Drivers usually need to extend GEM
+objects with private information and thus create a driver-specific GEM
+object structure type that embeds an instance of struct
+:c:type:`struct drm_gem_object`.
 
 To create a GEM object, a driver allocates memory for an instance of its
 specific GEM object type and initializes the embedded struct
-``drm_gem_object`` with a call to ``drm_gem_object_init``. The function
-takes a pointer to the DRM device, a pointer to the GEM object and the
-buffer object size in bytes.
+:c:type:`struct drm_gem_object` with a call to
+:c:func:`drm_gem_object_init()`. The function takes a pointer to
+the DRM device, a pointer to the GEM object and the buffer object size
+in bytes.
 
 GEM uses shmem to allocate anonymous pageable memory.
-``drm_gem_object_init`` will create an shmfs file of the requested size
-and store it into the struct ``drm_gem_object`` ``filp`` field. The
-memory is used as either main storage for the object when the graphics
-hardware uses system memory directly or as a backing store otherwise.
+:c:func:`drm_gem_object_init()` will create an shmfs file of the
+requested size and store it into the struct
+:c:type:`struct drm_gem_object` ``filp`` field. The memory is used
+as either main storage for the object when the graphics hardware uses
+system memory directly or as a backing store otherwise.
 
 Drivers are responsible for the actual physical pages allocation by
-calling ``shmem_read_mapping_page_gfp`` for each page. Note that they
-can decide to allocate pages when initializing the GEM object, or to
-delay allocation until the memory is needed (for instance when a page
-fault occurs as a result of a userspace memory access or when the driver
-needs to start a DMA transfer involving the memory).
+calling :c:func:`shmem_read_mapping_page_gfp()` for each page.
+Note that they can decide to allocate pages when initializing the GEM
+object, or to delay allocation until the memory is needed (for instance
+when a page fault occurs as a result of a userspace memory access or
+when the driver needs to start a DMA transfer involving the memory).
 
 Anonymous pageable memory allocation is not always desired, for instance
 when the hardware requires physically contiguous system memory as is
 often the case in embedded devices. Drivers can create GEM objects with
 no shmfs backing (called private GEM objects) by initializing them with
-a call to ``drm_gem_private_object_init`` instead of
-``drm_gem_object_init``. Storage for private GEM objects must be managed
-by drivers.
+a call to :c:func:`drm_gem_private_object_init()` instead of
+:c:func:`drm_gem_object_init()`. Storage for private GEM objects
+must be managed by drivers.
 
 
 GEM Objects Lifetime
 ^^^^^^^^^^^^^^^^^^^^
 
 All GEM objects are reference-counted by the GEM core. References can be
-acquired and release by ``calling drm_gem_object_reference`` and
-``drm_gem_object_unreference`` respectively. The caller must hold the
-``drm_device`` ``struct_mutex`` lock when calling
-``drm_gem_object_reference``. As a convenience, GEM provides
-``drm_gem_object_unreference_unlocked`` functions that can be called
-without holding the lock.
+acquired and release by
+:c:func:`calling drm_gem_object_reference()` and
+:c:func:`drm_gem_object_unreference()` respectively. The caller
+must hold the :c:type:`struct drm_device` ``struct_mutex`` lock when
+calling :c:func:`drm_gem_object_reference()`. As a convenience, GEM
+provides :c:func:`drm_gem_object_unreference_unlocked()` functions
+that can be called without holding the lock.
 
 When the last reference to a GEM object is released the GEM core calls
-the ``drm_driver`` gem_free_object operation. That operation is
-mandatory for GEM-enabled drivers and must free the GEM object and all
-associated resources.
+the :c:type:`struct drm_driver` gem_free_object operation. That
+operation is mandatory for GEM-enabled drivers and must free the GEM
+object and all associated resources.
 
 
 .. code-block:: c
@@ -465,7 +474,7 @@ associated resources.
 
 Drivers are responsible for freeing all GEM object resources. This
 includes the resources created by the GEM core, which need to be
-released with ``drm_gem_object_release``.
+released with :c:func:`drm_gem_object_release()`.
 
 
 GEM Objects Naming
@@ -483,11 +492,12 @@ DRM file handle frees all its GEM handles and dereferences the
 associated GEM objects.
 
 To create a handle for a GEM object drivers call
-``drm_gem_handle_create``. The function takes a pointer to the DRM file
-and the GEM object and returns a locally unique handle. When the handle
-is no longer needed drivers delete it with a call to
-``drm_gem_handle_delete``. Finally the GEM object associated with a
-handle can be retrieved by a call to ``drm_gem_object_lookup``.
+:c:func:`drm_gem_handle_create()`. The function takes a pointer to
+the DRM file and the GEM object and returns a locally unique handle.
+When the handle is no longer needed drivers delete it with a call to
+:c:func:`drm_gem_handle_delete()`. Finally the GEM object
+associated with a handle can be retrieved by a call to
+:c:func:`drm_gem_object_lookup()`.
 
 Handles don't take ownership of GEM objects, they only take a reference
 to the object that will be dropped when the handle is destroyed. To
@@ -532,9 +542,9 @@ The mmap system call can't be used directly to map GEM objects, as they
 don't have their own file handle. Two alternative methods currently
 co-exist to map GEM objects to userspace. The first method uses a
 driver-specific ioctl to perform the mapping operation, calling
-``do_mmap`` under the hood. This is often considered dubious, seems to
-be discouraged for new GEM-enabled drivers, and will thus not be
-described here.
+:c:func:`do_mmap()` under the hood. This is often considered dubious,
+seems to be discouraged for new GEM-enabled drivers, and will thus not
+be described here.
 
 The second method uses the mmap system call on the DRM file handle.
 
@@ -547,21 +557,23 @@ The second method uses the mmap system call on the DRM file handle.
 DRM identifies the GEM object to be mapped by a fake offset passed
 through the mmap offset argument. Prior to being mapped, a GEM object
 must thus be associated with a fake offset. To do so, drivers must call
-``drm_gem_create_mmap_offset`` on the object.
+:c:func:`drm_gem_create_mmap_offset()` on the object.
 
 Once allocated, the fake offset value must be passed to the application
 in a driver-specific way and can then be used as the mmap offset
 argument.
 
-The GEM core provides a helper method ``drm_gem_mmap`` to handle object
-mapping. The method can be set directly as the mmap file operation
-handler. It will look up the GEM object based on the offset value and
-set the VMA operations to the ``drm_driver`` ``gem_vm_ops`` field. Note
-that ``drm_gem_mmap`` doesn't map memory to userspace, but relies on the
-driver-provided fault handler to map pages individually.
+The GEM core provides a helper method :c:func:`drm_gem_mmap()` to
+handle object mapping. The method can be set directly as the mmap file
+operation handler. It will look up the GEM object based on the offset
+value and set the VMA operations to the :c:type:`struct drm_driver`
+``gem_vm_ops`` field. Note that :c:func:`drm_gem_mmap()` doesn't map
+memory to userspace, but relies on the driver-provided fault handler to
+map pages individually.
 
-To use ``drm_gem_mmap``, drivers must fill the struct ``drm_driver``
-``gem_vm_ops`` field with a pointer to VM operations.
+To use :c:func:`drm_gem_mmap()`, drivers must fill the struct
+:c:type:`struct drm_driver` ``gem_vm_ops`` field with a pointer to VM
+operations.
 
 
 .. code-block:: c
@@ -575,8 +587,9 @@ To use ``drm_gem_mmap``, drivers must fill the struct ``drm_driver``
       };
 
 The open and close operations must update the GEM object reference
-count. Drivers can use the ``drm_gem_vm_open`` and ``drm_gem_vm_close``
-helper functions directly as open and close handlers.
+count. Drivers can use the :c:func:`drm_gem_vm_open()` and
+:c:func:`drm_gem_vm_close()` helper functions directly as open and
+close handlers.
 
 The fault operation handler is responsible for mapping individual pages
 to userspace when a page fault occurs. Depending on the memory
@@ -669,8 +682,9 @@ be shared between applications, they can't be guessed like the globally
 unique GEM names.
 
 Drivers that support the PRIME API must set the DRIVER_PRIME bit in the
-struct ``drm_driver`` ``driver_features`` field, and implement the
-prime_handle_to_fd and prime_fd_to_handle operations.
+struct :c:type:`struct drm_driver` ``driver_features`` field, and
+implement the prime_handle_to_fd and prime_fd_to_handle
+operations.
 
 
 .. code-block:: c
@@ -689,11 +703,12 @@ PRIME is agnostic to the underlying buffer object manager, as long as
 handles are 32bit unsigned integers.
 
 While non-GEM drivers must implement the operations themselves, GEM
-drivers must use the ``drm_gem_prime_handle_to_fd`` and
-``drm_gem_prime_fd_to_handle`` helper functions. Those helpers rely on
-the driver gem_prime_export and gem_prime_import operations to
-create a dma-buf instance from a GEM object (dma-buf exporter role) and
-to create a GEM object from a dma-buf instance (dma-buf importer role).
+drivers must use the :c:func:`drm_gem_prime_handle_to_fd()` and
+:c:func:`drm_gem_prime_fd_to_handle()` helper functions. Those
+helpers rely on the driver gem_prime_export and gem_prime_import
+operations to create a dma-buf instance from a GEM object (dma-buf
+exporter role) and to create a GEM object from a dma-buf instance
+(dma-buf importer role).
 
 
 .. code-block:: c
@@ -768,9 +783,10 @@ Mode Setting
 ============
 
 Drivers must initialize the mode setting core by calling
-``drm_mode_config_init`` on the DRM device. The function initializes the
-``drm_device`` ``mode_config`` field and never fails. Once done, mode
-configuration must be setup by initializing the following fields.
+:c:func:`drm_mode_config_init()` on the DRM device. The function
+initializes the :c:type:`struct drm_device` ``mode_config`` field and
+never fails. Once done, mode configuration must be setup by initializing
+the following fields.
 
 -  
    .. code-block:: c
@@ -829,12 +845,13 @@ and so expects TTM handles in the create ioctl and not GEM handles.
 
 The lifetime of a drm framebuffer is controlled with a reference count,
 drivers can grab additional references with
-``drm_framebuffer_reference``\ and drop them again with
-``drm_framebuffer_unreference``. For driver-private framebuffers for
-which the last reference is never dropped (e.g. for the fbdev
-framebuffer when the struct ``drm_framebuffer`` is embedded into the
-fbdev helper struct) drivers can manually clean up a framebuffer at
-module unload time with ``drm_framebuffer_unregister_private``.
+:c:func:`drm_framebuffer_reference()`and drop them again with
+:c:func:`drm_framebuffer_unreference()`. For driver-private
+framebuffers for which the last reference is never dropped (e.g. for the
+fbdev framebuffer when the struct :c:type:`struct drm_framebuffer` is
+embedded into the fbdev helper struct) drivers can manually clean up a
+framebuffer at module unload time with
+:c:func:`drm_framebuffer_unregister_private()`.
 
 
 Dumb Buffer Objects
@@ -864,9 +881,10 @@ dumb_destroy and dumb_map_offset operations.
 
    The dumb_create operation creates a driver object (GEM or TTM
    handle) suitable for scanout based on the width, height and depth
-   from the struct ``drm_mode_create_dumb`` argument. It fills the
-   argument's ``handle``, ``pitch`` and ``size`` fields with a handle
-   for the newly created object and its line pitch and size in bytes.
+   from the struct :c:type:`struct drm_mode_create_dumb` argument.
+   It fills the argument's ``handle``, ``pitch`` and ``size`` fields
+   with a handle for the newly created object and its line pitch and
+   size in bytes.
 
 -  
    .. code-block:: c
@@ -885,8 +903,8 @@ dumb_destroy and dumb_map_offset operations.
 
    The dumb_map_offset operation associates an mmap fake offset with
    the object given by the handle and returns it. Drivers must use the
-   ``drm_gem_create_mmap_offset`` function to associate the fake offset
-   as described in :ref:`drm-gem-objects-mapping`.
+   :c:func:`drm_gem_create_mmap_offset()` function to associate
+   the fake offset as described in :ref:`drm-gem-objects-mapping`.
 
 Note that dumb objects may not be used for gpu acceleration, as has been
 attempted on some ARM embedded platforms. Such drivers really must have
@@ -903,7 +921,8 @@ Output Polling
 
 This operation notifies the driver that the status of one or more
 connectors has changed. Drivers that use the fb helper can just call the
-``drm_fb_helper_hotplug_event`` function to handle this operation.
+:c:func:`drm_fb_helper_hotplug_event()` function to handle this
+operation.
 
 
 Locking
@@ -948,10 +967,11 @@ CRTCs.
 CRTC Initialization
 ^^^^^^^^^^^^^^^^^^^
 
-A KMS device must create and register at least one struct ``drm_crtc``
-instance. The instance is allocated and zeroed by the driver, possibly
-as part of a larger structure, and registered with a call to
-``drm_crtc_init`` with a pointer to CRTC functions.
+A KMS device must create and register at least one struct
+:c:type:`struct drm_crtc` instance. The instance is allocated and
+zeroed by the driver, possibly as part of a larger structure, and
+registered with a call to :c:func:`drm_crtc_init()` with a pointer
+to CRTC functions.
 
 
 Planes (struct drm_plane)
@@ -968,7 +988,7 @@ The DRM core recognizes three types of planes:
 -  DRM_PLANE_TYPE_PRIMARY represents a "main" plane for a CRTC.
    Primary planes are the planes operated upon by CRTC modesetting and
    flipping operations described in the page_flip hook in
-   drm_crtc_funcs
+   !ri!:c:type:`struct drm_crtc_funcs`
    .
 -  DRM_PLANE_TYPE_CURSOR represents a "cursor" plane for a CRTC.
    Cursor planes are the planes operated upon by the
@@ -988,11 +1008,12 @@ Plane Initialization
 ^^^^^^^^^^^^^^^^^^^^
 
 To create a plane, a KMS drivers allocates and zeroes an instances of
-struct ``drm_plane`` (possibly as part of a larger structure) and
-registers it with a call to ``drm_universal_plane_init``. The function
-takes a bitmask of the CRTCs that can be associated with the plane, a
-pointer to the plane functions, a list of format supported formats, and
-the type of plane (primary, cursor, or overlay) being initialized.
+struct :c:type:`struct drm_plane` (possibly as part of a larger
+structure) and registers it with a call to
+:c:func:`drm_universal_plane_init()`. The function takes a bitmask
+of the CRTCs that can be associated with the plane, a pointer to the
+plane functions, a list of format supported formats, and the type of
+plane (primary, cursor, or overlay) being initialized.
 
 Cursor and overlay planes are optional. All drivers should provide one
 primary plane per CRTC (although this requirement may change in the
@@ -1017,17 +1038,18 @@ Encoder Initialization
 ^^^^^^^^^^^^^^^^^^^^^^
 
 As for CRTCs, a KMS driver must create, initialize and register at least
-one struct ``drm_encoder`` instance. The instance is allocated and
-zeroed by the driver, possibly as part of a larger structure.
+one struct :c:type:`struct drm_encoder` instance. The instance is
+allocated and zeroed by the driver, possibly as part of a larger
+structure.
 
-Drivers must initialize the struct ``drm_encoder`` ``possible_crtcs``
-and ``possible_clones`` fields before registering the encoder. Both
-fields are bitmasks of respectively the CRTCs that the encoder can be
-connected to, and sibling encoders candidate for cloning.
+Drivers must initialize the struct :c:type:`struct drm_encoder`
+``possible_crtcs`` and ``possible_clones`` fields before registering the
+encoder. Both fields are bitmasks of respectively the CRTCs that the
+encoder can be connected to, and sibling encoders candidate for cloning.
 
 After being initialized, the encoder must be registered with a call to
-``drm_encoder_init``. The function takes a pointer to the encoder
-functions and an encoder type. Supported types are
+:c:func:`drm_encoder_init()`. The function takes a pointer to the
+encoder functions and an encoder type. Supported types are
 
 -  DRM_MODE_ENCODER_DAC for VGA and analog on DVI-I/DVI-A
 -  DRM_MODE_ENCODER_TMDS for DVI, HDMI and (embedded) DisplayPort
@@ -1058,8 +1080,9 @@ Connector Initialization
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
 Finally a KMS driver must create, initialize, register and attach at
-least one struct ``drm_connector`` instance. The instance is created as
-other KMS objects and initialized by setting the following fields.
+least one struct :c:type:`struct drm_connector` instance. The
+instance is created as other KMS objects and initialized by setting the
+following fields.
 
 ``interlace_allowed``
     Whether the connector can handle interlaced modes.
@@ -1091,9 +1114,10 @@ other KMS objects and initialized by setting the following fields.
     Set to 0 for connectors that don't support connection status
     discovery.
 
-The connector is then registered with a call to ``drm_connector_init``
-with a pointer to the connector functions and a connector type, and
-exposed through sysfs with a call to ``drm_connector_register``.
+The connector is then registered with a call to
+:c:func:`drm_connector_init()` with a pointer to the connector
+functions and a connector type, and exposed through sysfs with a call to
+:c:func:`drm_connector_register()`.
 
 Supported connector types are
 
@@ -1116,19 +1140,21 @@ Supported connector types are
 Connectors must be attached to an encoder to be used. For devices that
 map connectors to encoders 1:1, the connector should be attached at
 initialization time with a call to
-``drm_mode_connector_attach_encoder``. The driver must also set the
-``drm_connector`` ``encoder`` field to point to the attached encoder.
+:c:func:`drm_mode_connector_attach_encoder()`. The driver must
+also set the :c:type:`struct drm_connector` ``encoder`` field to
+point to the attached encoder.
 
 Finally, drivers must initialize the connectors state change detection
-with a call to ``drm_kms_helper_poll_init``. If at least one connector
-is pollable but can't generate hotplug interrupts (indicated by the
-DRM_CONNECTOR_POLL_CONNECT and DRM_CONNECTOR_POLL_DISCONNECT
-connector flags), a delayed work will automatically be queued to
-periodically poll for changes. Connectors that can generate hotplug
-interrupts must be marked with the DRM_CONNECTOR_POLL_HPD flag
-instead, and their interrupt handler must call
-``drm_helper_hpd_irq_event``. The function will queue a delayed work to
-check the state of all connectors, but no periodic polling will be done.
+with a call to :c:func:`drm_kms_helper_poll_init()`. If at least
+one connector is pollable but can't generate hotplug interrupts
+(indicated by the DRM_CONNECTOR_POLL_CONNECT and
+DRM_CONNECTOR_POLL_DISCONNECT connector flags), a delayed work will
+automatically be queued to periodically poll for changes. Connectors
+that can generate hotplug interrupts must be marked with the
+DRM_CONNECTOR_POLL_HPD flag instead, and their interrupt handler must
+call :c:func:`drm_helper_hpd_irq_event()`. The function will queue
+a delayed work to check the state of all connectors, but no periodic
+polling will be done.
 
 
 Connector Operations
@@ -1190,7 +1216,7 @@ The connection status is updated through polling or hotplug events when
 supported (see :ref:`drm-kms-connector-polled`). The status value is
 reported to userspace through ioctls and must not be used inside the
 driver, as it only gets initialized by a call to
-``drm_mode_getconnector`` from userspace.
+:c:func:`drm_mode_getconnector()` from userspace.
 
 
 .. code-block:: c
@@ -1218,16 +1244,19 @@ Cleanup
 
 The DRM core manages its objects' lifetime. When an object is not needed
 anymore the core calls its destroy function, which must clean up and
-free every resource allocated for the object. Every ``drm_*_init`` call
-must be matched with a corresponding ``drm_*_cleanup`` call to cleanup
-CRTCs (``drm_crtc_cleanup``), planes (``drm_plane_cleanup``), encoders
-(``drm_encoder_cleanup``) and connectors (``drm_connector_cleanup``).
-Furthermore, connectors that have been added to sysfs must be removed by
-a call to ``drm_connector_unregister`` before calling
-``drm_connector_cleanup``.
+free every resource allocated for the object. Every
+:c:func:`drm_*_init()` call must be matched with a corresponding
+:c:func:`drm_*_cleanup()` call to cleanup CRTCs
+(:c:func:`drm_crtc_cleanup()`), planes
+(:c:func:`drm_plane_cleanup()`), encoders
+(:c:func:`drm_encoder_cleanup()`) and connectors
+(:c:func:`drm_connector_cleanup()`). Furthermore, connectors that
+have been added to sysfs must be removed by a call to
+:c:func:`drm_connector_unregister()` before calling
+:c:func:`drm_connector_cleanup()`.
 
 Connectors state change detection must be cleanup up with a call to
-``drm_kms_helper_poll_fini``.
+:c:func:`drm_kms_helper_poll_fini()`.
 
 
 Output discovery and initialization example
@@ -1322,18 +1351,21 @@ provides implementations of several plane, CRTC, encoder and connector
 functions (called from the top of the mid-layer) that pre-process
 requests and call lower-level functions provided by the driver (at the
 bottom of the mid-layer). For instance, the
-``drm_crtc_helper_set_config`` function can be used to fill the struct
-``drm_crtc_funcs`` ``set_config`` field. When called, it will split the
-set_config operation in smaller, simpler operations and call the driver
-to handle them.
+:c:func:`drm_crtc_helper_set_config()` function can be used to
+fill the struct :c:type:`struct drm_crtc_funcs` ``set_config``
+field. When called, it will split the set_config operation in smaller,
+simpler operations and call the driver to handle them.
 
-To use the mid-layer, drivers call ``drm_crtc_helper_add``,
-``drm_encoder_helper_add`` and ``drm_connector_helper_add`` functions to
-install their mid-layer bottom operations handlers, and fill the
-``drm_crtc_funcs``, ``drm_encoder_funcs`` and ``drm_connector_funcs``
-structures with pointers to the mid-layer top API functions. Installing
-the mid-layer bottom operation handlers is best done right after
-registering the corresponding KMS object.
+To use the mid-layer, drivers call :c:func:`drm_crtc_helper_add()`,
+:c:func:`drm_encoder_helper_add()` and
+:c:func:`drm_connector_helper_add()` functions to install their
+mid-layer bottom operations handlers, and fill the
+:c:type:`struct drm_crtc_funcs`,
+:c:type:`struct drm_encoder_funcs` and
+:c:type:`struct drm_connector_funcs` structures with pointers to the
+mid-layer top API functions. Installing the mid-layer bottom operation
+handlers is best done right after registering the corresponding KMS
+object.
 
 The mid-layer is not split between CRTC, encoder and connector
 operations. To use it, a driver must provide bottom functions for all of
@@ -1668,16 +1700,16 @@ DRM_MODE_PROP_IMMUTABLE flag at property creation time.
 
 When no array of value-name pairs is readily available at property
 creation time for enumerated or range properties, drivers can create the
-property using the ``drm_property_create`` function and manually add
-enumeration value-name pairs by calling the ``drm_property_add_enum``
-function. Care must be taken to properly specify the property type
-through the ``flags`` argument.
+property using the :c:func:`drm_property_create()` function and
+manually add enumeration value-name pairs by calling the
+:c:func:`drm_property_add_enum()` function. Care must be taken to
+properly specify the property type through the ``flags`` argument.
 
 After creating properties drivers can attach property instances to CRTC,
 connector and plane objects by calling the
-``drm_object_attach_property``. The function takes a pointer to the
-target object, a pointer to the previously created property and an
-initial instance value.
+:c:func:`drm_object_attach_property()`. The function takes a
+pointer to the target object, a pointer to the previously created
+property and an initial instance value.
 
 
 Existing KMS Properties
@@ -3386,41 +3418,44 @@ counter. Drivers must implement the following operations.
    Retrieve the value of the vertical blanking counter for the given
    CRTC. If the hardware maintains a vertical blanking counter its value
    should be returned. Otherwise drivers can use the
-   ``drm_vblank_count`` helper function to handle this operation.
+   :c:func:`drm_vblank_count()` helper function to handle this
+   operation.
 
 Drivers must initialize the vertical blanking handling core with a call
-to ``drm_vblank_init`` in their load operation. The function will set
-the struct ``drm_device`` ``vblank_disable_allowed`` field to 0. This
-will keep vertical blanking interrupts enabled permanently until the
-first mode set operation, where ``vblank_disable_allowed`` is set to 1.
-The reason behind this is not clear. Drivers can set the field to 1
-after ``calling drm_vblank_init`` to make vertical blanking interrupts
-dynamically managed from the beginning.
+to :c:func:`drm_vblank_init()` in their load operation. The function
+will set the struct :c:type:`struct drm_device`
+``vblank_disable_allowed`` field to 0. This will keep vertical blanking
+interrupts enabled permanently until the first mode set operation, where
+``vblank_disable_allowed`` is set to 1. The reason behind this is not
+clear. Drivers can set the field to 1 after
+:c:func:`calling drm_vblank_init()` to make vertical blanking
+interrupts dynamically managed from the beginning.
 
 Vertical blanking interrupts can be enabled by the DRM core or by
 drivers themselves (for instance to handle page flipping operations).
 The DRM core maintains a vertical blanking use count to ensure that the
 interrupts are not disabled while a user still needs them. To increment
-the use count, drivers call ``drm_vblank_get``. Upon return vertical
-blanking interrupts are guaranteed to be enabled.
+the use count, drivers call :c:func:`drm_vblank_get()`. Upon return
+vertical blanking interrupts are guaranteed to be enabled.
 
-To decrement the use count drivers call ``drm_vblank_put``. Only when
-the use count drops to zero will the DRM core disable the vertical
-blanking interrupts after a delay by scheduling a timer. The delay is
-accessible through the vblankoffdelay module parameter or the
+To decrement the use count drivers call :c:func:`drm_vblank_put()`.
+Only when the use count drops to zero will the DRM core disable the
+vertical blanking interrupts after a delay by scheduling a timer. The
+delay is accessible through the vblankoffdelay module parameter or the
 ``drm_vblank_offdelay`` global variable and expressed in milliseconds.
 Its default value is 5000 ms. Zero means never disable, and a negative
 value means disable immediately. Drivers may override the behaviour by
-setting the ``drm_device`` ``vblank_disable_immediate`` flag, which when
-set causes vblank interrupts to be disabled immediately regardless of
-the drm_vblank_offdelay value. The flag should only be set if there's
-a properly working hardware vblank counter present.
+setting the :c:type:`struct drm_device` ``vblank_disable_immediate``
+flag, which when set causes vblank interrupts to be disabled immediately
+regardless of the drm_vblank_offdelay value. The flag should only be
+set if there's a properly working hardware vblank counter present.
 
 When a vertical blanking interrupt occurs drivers only need to call the
-``drm_handle_vblank`` function to account for the interrupt.
+:c:func:`drm_handle_vblank()` function to account for the interrupt.
 
-Resources allocated by ``drm_vblank_init`` must be freed with a call to
-``drm_vblank_cleanup`` in the driver unload operation handler.
+Resources allocated by :c:func:`drm_vblank_init()` must be freed
+with a call to :c:func:`drm_vblank_cleanup()` in the driver unload
+operation handler.
 
 
 Vertical Blanking and Interrupt Handling Functions Reference
@@ -3465,8 +3500,9 @@ firstopen and lastclose calls can thus be unbalanced.
 
 The open method is called every time the device is opened by an
 application. Drivers can allocate per-file private data in this method
-and store them in the struct ``drm_file`` ``driver_priv`` field. Note
-that the open method is called before firstopen.
+and store them in the struct :c:type:`struct drm_file`
+``driver_priv`` field. Note that the open method is called before
+firstopen.
 
 The close operation is split into preclose and postclose methods.
 Drivers must stop and cleanup all per-file operations in the preclose
@@ -3585,8 +3621,8 @@ or hibernate states.
 Those are legacy suspend and resume methods which *only* work with the
 legacy shadow-attach driver registration functions. New driver should
 use the power management interface provided by their bus type (usually
-through the struct ``device_driver`` dev_pm_ops) and set these methods
-to NULL.
+through the struct :c:type:`struct device_driver` dev_pm_ops) and
+set these methods to NULL.
 
 
 Legacy DMA Services

@@ -11,10 +11,10 @@ management of the system clock tree. This framework is widely used with
 System-On-Chip (SOC) platforms to support power management and various
 devices which may need custom clock rates. Note that these "clocks"
 don't relate to timekeeping or real time clocks (RTCs), each of which
-have separate frameworks. These ``struct clk`` instances may be used to
-manage for example a 96 MHz signal that is used to shift bits into and
-out of peripherals or busses, or otherwise trigger synchronous state
-machine transitions in system hardware.
+have separate frameworks. These :c:type:`struct clk` instances may be
+used to manage for example a 96 MHz signal that is used to shift bits
+into and out of peripherals or busses, or otherwise trigger synchronous
+state machine transitions in system hardware.
 
 Power management is supported by explicit software clock gating: unused
 clocks are disabled, so the system doesn't waste power changing the

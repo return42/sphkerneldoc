@@ -43,17 +43,17 @@ configures the driver into DMABUF I/O mode without performing any direct
 allocation.
 
 To allocate device buffers applications initialize all fields of the
-``v4l2_requestbuffers`` structure. They set the ``type`` field to the
-respective stream or buffer type, the ``count`` field to the desired
-number of buffers, ``memory`` must be set to the requested I/O method
-and the ``reserved`` array must be zeroed. When the ioctl is called with
-a pointer to this structure the driver will attempt to allocate the
-requested number of buffers and it stores the actual number allocated in
-the ``count`` field. It can be smaller than the number requested, even
-zero, when the driver runs out of free memory. A larger number is also
-possible when the driver requires more buffers to function correctly.
-For example video output requires at least two buffers, one displayed
-and one filled by the application.
+:c:type:`struct v4l2_requestbuffers` structure. They set the ``type``
+field to the respective stream or buffer type, the ``count`` field to
+the desired number of buffers, ``memory`` must be set to the requested
+I/O method and the ``reserved`` array must be zeroed. When the ioctl is
+called with a pointer to this structure the driver will attempt to
+allocate the requested number of buffers and it stores the actual number
+allocated in the ``count`` field. It can be smaller than the number
+requested, even zero, when the driver runs out of free memory. A larger
+number is also possible when the driver requires more buffers to
+function correctly. For example video output requires at least two
+buffers, one displayed and one filled by the application.
 
 When the I/O method is not supported the ioctl returns an EINVAL error
 code.

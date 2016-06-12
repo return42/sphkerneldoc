@@ -254,8 +254,8 @@ shows only the skeleton, how to build up the PCM interfaces.
 Constructor
 ===========
 
-A pcm instance is allocated by the ``snd_pcm_new()`` function. It would
-be better to create a constructor for pcm, namely,
+A pcm instance is allocated by the :c:func:`snd_pcm_new()` function.
+It would be better to create a constructor for pcm, namely,
 
 
 .. code-block:: c
@@ -275,9 +275,9 @@ be better to create a constructor for pcm, namely,
               return 0;
       }
 
-The ``snd_pcm_new()`` function takes four arguments. The first argument
-is the card pointer to which this pcm is assigned, and the second is the
-ID string.
+The :c:func:`snd_pcm_new()` function takes four arguments. The first
+argument is the card pointer to which this pcm is assigned, and the
+second is the ID string.
 
 The third argument (``index``, 0 in the above) is the index of this new
 pcm. It begins from zero. If you create more than one pcm instances,
@@ -292,8 +292,9 @@ corresponding argument.
 If a chip supports multiple playbacks or captures, you can specify more
 numbers, but they must be handled properly in open/close, etc.
 callbacks. When you need to know which substream you are referring to,
-then it can be obtained from struct ``snd_pcm_substream`` data passed to
-each callback as follows:
+then it can be obtained from struct
+:c:type:`struct snd_pcm_substream` data passed to each callback as
+follows:
 
 
 .. code-block:: c
@@ -493,8 +494,9 @@ For the operators (callbacks) of each sound driver, most of these
 records are supposed to be read-only. Only the PCM middle-layer changes
 / updates them. The exceptions are the hardware description (hw) DMA
 buffer information and the private data. Besides, if you use the
-standard buffer allocation method via ``snd_pcm_lib_malloc_pages()``,
-you don't need to set the DMA buffer information by yourself.
+standard buffer allocation method via
+:c:func:`snd_pcm_lib_malloc_pages()`, you don't need to set the
+DMA buffer information by yourself.
 
 In the sections below, important records are explained.
 
@@ -504,9 +506,9 @@ In the sections below, important records are explained.
 Hardware Description
 --------------------
 
-The hardware descriptor (struct ``snd_pcm_hardware``) contains the
-definitions of the fundamental hardware configuration. Above all, you'll
-need to define this in
+The hardware descriptor (struct :c:type:`struct snd_pcm_hardware`)
+contains the definitions of the fundamental hardware configuration.
+Above all, you'll need to define this in
 :ref:`the open callback <pcm-interface-operators-open-callback>`. Note
 that the runtime instance holds the copy of the descriptor, not the
 pointer to the existing descriptor. That is, in the open callback, you
@@ -630,7 +632,8 @@ enum value ``SNDRV_PCM_FORMAT_XXX``.
 One thing to be noted is that the configured buffer and period sizes are
 stored in “frames” in the runtime. In the ALSA world, 1 frame = channels
 * samples-size. For conversion between frames and bytes, you can use the
-``frames_to_bytes()`` and ``bytes_to_frames()`` helper functions.
+:c:func:`frames_to_bytes()` and :c:func:`bytes_to_frames()`
+helper functions.
 
 
 .. code-block:: c
@@ -650,21 +653,21 @@ DMA Buffer Information
 
 The DMA buffer is defined by the following four fields, ``dma_area``,
 ``dma_addr``, ``dma_bytes`` and ``dma_private``. The ``dma_area`` holds
-the buffer pointer (the logical address). You can call ``memcpy``
-from/to this pointer. Meanwhile, ``dma_addr`` holds the physical address
-of the buffer. This field is specified only when the buffer is a linear
-buffer. ``dma_bytes`` holds the size of buffer in bytes. ``dma_private``
-is used for the ALSA DMA allocator.
+the buffer pointer (the logical address). You can call
+:c:func:`memcpy()` from/to this pointer. Meanwhile, ``dma_addr`` holds
+the physical address of the buffer. This field is specified only when
+the buffer is a linear buffer. ``dma_bytes`` holds the size of buffer in
+bytes. ``dma_private`` is used for the ALSA DMA allocator.
 
-If you use a standard ALSA function, ``snd_pcm_lib_malloc_pages()``, for
-allocating the buffer, these fields are set by the ALSA middle layer,
-and you should *not* change them by yourself. You can read them but not
-write them. On the other hand, if you want to allocate the buffer by
-yourself, you'll need to manage it in hw_params callback. At least,
-``dma_bytes`` is mandatory. ``dma_area`` is necessary when the buffer is
-mmapped. If your driver doesn't support mmap, this field is not
-necessary. ``dma_addr`` is also optional. You can use ``dma_private`` as
-you like, too.
+If you use a standard ALSA function,
+:c:func:`snd_pcm_lib_malloc_pages()`, for allocating the buffer,
+these fields are set by the ALSA middle layer, and you should *not*
+change them by yourself. You can read them but not write them. On the
+other hand, if you want to allocate the buffer by yourself, you'll need
+to manage it in hw_params callback. At least, ``dma_bytes`` is
+mandatory. ``dma_area`` is necessary when the buffer is mmapped. If your
+driver doesn't support mmap, this field is not necessary. ``dma_addr``
+is also optional. You can use ``dma_private`` as you like, too.
 
 
 .. _pcm-interface-runtime-status:
@@ -673,13 +676,13 @@ Running Status
 --------------
 
 The running status can be referred via ``runtime->status``. This is the
-pointer to the struct ``snd_pcm_mmap_status`` record. For example, you
-can get the current DMA hardware pointer via
+pointer to the struct :c:type:`struct snd_pcm_mmap_status` record.
+For example, you can get the current DMA hardware pointer via
 ``runtime->status->hw_ptr``.
 
 The DMA application pointer can be referred via ``runtime->control``,
-which points to the struct ``snd_pcm_mmap_control`` record. However,
-accessing directly to this value is not recommended.
+which points to the struct :c:type:`struct snd_pcm_mmap_control`
+record. However, accessing directly to this value is not recommended.
 
 
 .. _pcm-interface-runtime-private:
@@ -723,8 +726,9 @@ advised to check what value other parts of the kernel return when the
 same kind of request fails.
 
 The callback function takes at least the argument with
-``snd_pcm_substream`` pointer. To retrieve the chip record from the
-given substream instance, you can use the following macro.
+:c:type:`struct snd_pcm_substream` pointer. To retrieve the chip
+record from the given substream instance, you can use the following
+macro.
 
 
 .. code-block:: c
@@ -812,7 +816,7 @@ ioctl callback
 --------------
 
 This is used for any special call to pcm ioctls. But usually you can
-pass a generic ioctl callback, ``snd_pcm_lib_ioctl``.
+pass a generic ioctl callback, :c:func:`snd_pcm_lib_ioctl()`.
 
 
 .. _pcm-interface-operators-hw-params-callback:
@@ -833,16 +837,16 @@ the format, etc. are defined for the pcm substream.
 Many hardware setups should be done in this callback, including the
 allocation of buffers.
 
-Parameters to be initialized are retrieved by ``params_xxx()`` macros.
-To allocate buffer, you can call a helper function,
+Parameters to be initialized are retrieved by :c:func:`params_xxx()`
+macros. To allocate buffer, you can call a helper function,
 
 
 .. code-block:: c
 
       snd_pcm_lib_malloc_pages(substream, params_buffer_bytes(hw_params));
 
-``snd_pcm_lib_malloc_pages()`` is available only when the DMA buffers
-have been pre-allocated. See the section
+:c:func:`snd_pcm_lib_malloc_pages()` is available only when the
+DMA buffers have been pre-allocated. See the section
 :ref:`Buffer Types <buffer-and-memory-buffer-types>` for more details.
 
 Note that this and ``prepare`` callbacks may be called multiple times
@@ -873,8 +877,9 @@ hw_free callback
       static int snd_xxx_hw_free(struct snd_pcm_substream *substream);
 
 This is called to release the resources allocated via ``hw_params``. For
-example, releasing the buffer via ``snd_pcm_lib_malloc_pages()`` is done
-by calling the following:
+example, releasing the buffer via
+:c:func:`snd_pcm_lib_malloc_pages()` is done by calling the
+following:
 
 
 .. code-block:: c
@@ -899,8 +904,8 @@ prepare callback
 This callback is called when the pcm is “prepared”. You can set the
 format type, sample rate, etc. here. The difference from ``hw_params``
 is that the ``prepare`` callback will be called each time
-``snd_pcm_prepare()`` is called, i.e. when recovering after underruns,
-etc.
+:c:func:`snd_pcm_prepare()` is called, i.e. when recovering after
+underruns, etc.
 
 Note that this callback is now non-atomic. You can use schedule-related
 functions safely in this callback.
@@ -982,10 +987,10 @@ hardware position on the buffer. The position must be returned in
 frames, ranging from 0 to buffer_size - 1.
 
 This is called usually from the buffer-update routine in the pcm middle
-layer, which is invoked when ``snd_pcm_period_elapsed()`` is called in
-the interrupt routine. Then the pcm middle layer updates the position
-and calculates the available space, and wakes up the sleeping poll
-threads, etc.
+layer, which is invoked when :c:func:`snd_pcm_period_elapsed()` is
+called in the interrupt routine. Then the pcm middle layer updates the
+position and calculates the available space, and wakes up the sleeping
+poll threads, etc.
 
 This callback is also atomic as default.
 
@@ -1041,7 +1046,7 @@ The rest of pcm stuff is the PCM interrupt handler. The role of PCM
 interrupt handler in the sound driver is to update the buffer position
 and to tell the PCM middle layer when the buffer position goes across
 the prescribed period size. To inform this, call the
-``snd_pcm_period_elapsed()`` function.
+:c:func:`snd_pcm_period_elapsed()` function.
 
 There are several types of sound chips to generate the interrupts.
 
@@ -1053,18 +1058,19 @@ Interrupts at the period (fragment) boundary
 
 This is the most frequently found type: the hardware generates an
 interrupt at each period boundary. In this case, you can call
-``snd_pcm_period_elapsed()`` at each interrupt.
+:c:func:`snd_pcm_period_elapsed()` at each interrupt.
 
-``snd_pcm_period_elapsed()`` takes the substream pointer as its
-argument. Thus, you need to keep the substream pointer accessible from
-the chip instance. For example, define substream field in the chip
+:c:func:`snd_pcm_period_elapsed()` takes the substream pointer as
+its argument. Thus, you need to keep the substream pointer accessible
+from the chip instance. For example, define substream field in the chip
 record to hold the current running substream pointer, and set the
 pointer value at open callback (and reset at close callback).
 
 If you acquire a spinlock in the interrupt handler, and the lock is used
 in other pcm callbacks, too, then you have to release the lock before
-calling ``snd_pcm_period_elapsed()``, because
-``snd_pcm_period_elapsed()`` calls other pcm callbacks inside.
+calling :c:func:`snd_pcm_period_elapsed()`, because
+:c:func:`snd_pcm_period_elapsed()` calls other pcm callbacks
+inside.
 
 Typical code would be like:
 
@@ -1099,7 +1105,7 @@ boundary but issues timer interrupts at a fixed timer rate (e.g. es1968
 or ymfpci drivers). In this case, you need to check the current hardware
 position and accumulate the processed sample length at each interrupt.
 When the accumulated size exceeds the period size, call
-``snd_pcm_period_elapsed()`` and reset the accumulator.
+:c:func:`snd_pcm_period_elapsed()` and reset the accumulator.
 
 Typical code would be like the following.
 
@@ -1150,9 +1156,9 @@ On calling snd_pcm_period_elapsed()
 -----------------------------------
 
 In both cases, even if more than one period are elapsed, you don't have
-to call ``snd_pcm_period_elapsed()`` many times. Call only once. And the
-pcm layer will check the current hardware pointer and update to the
-latest status.
+to call :c:func:`snd_pcm_period_elapsed()` many times. Call only
+once. And the pcm layer will check the current hardware pointer and
+update to the latest status.
 
 
 .. _pcm-interface-atomicity:
@@ -1176,10 +1182,10 @@ spinlock held by the PCM middle layer. Please take this atomicity into
 account when you choose a locking scheme in the callbacks.
 
 In the atomic callbacks, you cannot use functions which may call
-``schedule`` or go to ``sleep``. Semaphores and mutexes can sleep, and
-hence they cannot be used inside the atomic callbacks (e.g. ``trigger``
-callback). To implement some delay in such a callback, please use
-``udelay()`` or ``mdelay()``.
+:c:func:`schedule()` or go to :c:func:`sleep()`. Semaphores and
+mutexes can sleep, and hence they cannot be used inside the atomic
+callbacks (e.g. ``trigger`` callback). To implement some delay in such a
+callback, please use :c:func:`udelay()` or :c:func:`mdelay()`.
 
 All three atomic callbacks (trigger, pointer, and ack) are called with
 local interrupts disabled.
@@ -1187,13 +1193,13 @@ local interrupts disabled.
 The recent changes in PCM core code, however, allow all PCM operations
 to be non-atomic. This assumes that the all caller sides are in
 non-atomic contexts. For example, the function
-``snd_pcm_period_elapsed()`` is called typically from the interrupt
-handler. But, if you set up the driver to use a threaded interrupt
-handler, this call can be in non-atomic context, too. In such a case,
-you can set ``nonatomic`` filed of ``snd_pcm`` object after creating it.
-When this flag is set, mutex and rwsem are used internally in the PCM
-core instead of spin and rwlocks, so that you can call all PCM functions
-safely in a non-atomic context.
+:c:func:`snd_pcm_period_elapsed()` is called typically from the
+interrupt handler. But, if you set up the driver to use a threaded
+interrupt handler, this call can be in non-atomic context, too. In such
+a case, you can set ``nonatomic`` filed of :c:type:`struct snd_pcm`
+object after creating it. When this flag is set, mutex and rwsem are
+used internally in the PCM core instead of spin and rwlocks, so that you
+can call all PCM functions safely in a non-atomic context.
 
 
 .. _pcm-interface-constraints:
@@ -1205,8 +1211,8 @@ If your chip supports unconventional sample rates, or only the limited
 samples, you need to set a constraint for the condition.
 
 For example, in order to restrict the sample rates in the some supported
-values, use ``snd_pcm_hw_constraint_list()``. You need to call this
-function in the open callback.
+values, use :c:func:`snd_pcm_hw_constraint_list()`. You need to
+call this function in the open callback.
 
 
 .. code-block:: c
@@ -1235,8 +1241,8 @@ There are many different constraints. Look at ``sound/pcm.h`` for a
 complete list. You can even define your own constraint rules. For
 example, let's suppose my_chip can manage a substream of 1 channel if
 and only if the format is S16_LE, otherwise it supports any format
-specified in the ``snd_pcm_hardware`` structure (or in any other
-constraint_list). You can build a rule like this:
+specified in the :c:type:`struct snd_pcm_hardware` structure (or in
+any other constraint_list). You can build a rule like this:
 
 
 .. code-block:: c

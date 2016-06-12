@@ -25,8 +25,8 @@ variables, instead. ``enable`` option is not always necessary in this
 case, but it would be better to have a dummy option for compatibility.
 
 The module parameters must be declared with the standard
-``module_param()()``, ``module_param_array()()`` and
-``MODULE_PARM_DESC()`` macros.
+:c:func:`module_param()()`, :c:func:`module_param_array()()` and
+:c:func:`MODULE_PARM_DESC()` macros.
 
 The typical coding would be like below:
 

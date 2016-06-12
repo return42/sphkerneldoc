@@ -29,14 +29,14 @@ first device, and ``/dev/uio1``, ``/dev/uio2`` and so on for subsequent
 devices.
 
 ``/dev/uioX`` is used to access the address space of the card. Just use
-``mmap()`` to access registers or RAM locations of your card.
+:c:func:`mmap()` to access registers or RAM locations of your card.
 
 Interrupts are handled by reading from ``/dev/uioX``. A blocking
-``read()`` from ``/dev/uioX`` will return as soon as an interrupt
-occurs. You can also use ``select()`` on ``/dev/uioX`` to wait for an
-interrupt. The integer value read from ``/dev/uioX`` represents the
-total interrupt count. You can use this number to figure out if you
-missed some interrupts.
+:c:func:`read()` from ``/dev/uioX`` will return as soon as an
+interrupt occurs. You can also use :c:func:`select()` on ``/dev/uioX``
+to wait for an interrupt. The integer value read from ``/dev/uioX``
+represents the total interrupt count. You can use this number to figure
+out if you missed some interrupts.
 
 For some hardware that has more than one interrupt source internally,
 but not separate IRQ mask and status registers, there might be
@@ -53,10 +53,10 @@ To address these problems, UIO also implements a write() function. It is
 normally not used and can be ignored for hardware that has only a single
 interrupt source or has separate IRQ mask and status registers. If you
 need it, however, a write to ``/dev/uioX`` will call the
-``irqcontrol()`` function implemented by the driver. You have to write a
-32-bit value that is usually either 0 or 1 to disable or enable
-interrupts. If a driver does not implement ``irqcontrol()``, ``write()``
-will return with ``-ENOSYS``.
+:c:func:`irqcontrol()` function implemented by the driver. You have to
+write a 32-bit value that is usually either 0 or 1 to disable or enable
+interrupts. If a driver does not implement :c:func:`irqcontrol()`,
+:c:func:`write()` will return with ``-ENOSYS``.
 
 To handle interrupts properly, your custom kernel module can provide its
 own interrupt handler. It will automatically be called by the built-in
@@ -65,7 +65,7 @@ handler.
 For cards that don't generate interrupts but need to be polled, there is
 the possibility to set up a timer that triggers the interrupt handler at
 configurable time intervals. This interrupt simulation is done by
-calling ``uio_event_notify()`` from the timer's event handler.
+calling :c:func:`uio_event_notify()` from the timer's event handler.
 
 Each driver provides attributes that are used to read or write
 variables. These attributes are accessible through sysfs files. A custom
@@ -111,14 +111,15 @@ attributes of the memory:
 -  ``size``: The size, in bytes, of the memory pointed to by addr.
 
 -  ``offset``: The offset, in bytes, that has to be added to the pointer
-   returned by ``mmap()`` to get to the actual device memory. This is
-   important if the device's memory is not page aligned. Remember that
-   pointers returned by ``mmap()`` are always page aligned, so it is
-   good style to always add this offset.
+   returned by :c:func:`mmap()` to get to the actual device memory.
+   This is important if the device's memory is not page aligned.
+   Remember that pointers returned by :c:func:`mmap()` are always page
+   aligned, so it is good style to always add this offset.
 
 From userspace, the different mappings are distinguished by adjusting
-the ``offset`` parameter of the ``mmap()`` call. To map the memory of
-mapping N, you have to use N times the page size as your offset:
+the ``offset`` parameter of the :c:func:`mmap()` call. To map the
+memory of mapping N, you have to use N times the page size as your
+offset:
 
 
 .. code-block:: c
@@ -128,8 +129,9 @@ mapping N, you have to use N times the page size as your offset:
 Sometimes there is hardware with memory-like regions that can not be
 mapped with the technique described here, but there are still ways to
 access them from userspace. The most common example are x86 ioports. On
-x86 systems, userspace can access these ioports using ``ioperm()``,
-``iopl()``, ``inb()``, ``outb()``, and similar functions.
+x86 systems, userspace can access these ioports using
+:c:func:`ioperm()`, :c:func:`iopl()`, :c:func:`inb()`,
+:c:func:`outb()`, and similar functions.
 
 Since these ioport regions can not be mapped, they will not appear under
 ``/sys/class/uio/uioX/maps/`` like the normal memory described above.

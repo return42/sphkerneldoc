@@ -44,10 +44,10 @@ Read/Write Lock Variants
 ========================
 
 Both spinlocks and mutexes have read/write variants: ``rwlock_t`` and
-``struct rw_semaphore``. These divide users into two classes: the
-readers and the writers. If you are only reading the data, you can get a
-read lock, but to write to the data you need the write lock. Many people
-can hold a read lock, but a writer must be sole holder.
+:c:type:`struct rw_semaphore`. These divide users into two classes:
+the readers and the writers. If you are only reading the data, you can
+get a read lock, but to write to the data you need the write lock. Many
+people can hold a read lock, but a writer must be sole holder.
 
 If your code divides neatly along reader/writer lines (as our cache code
 does), and the lock is held by readers for significant lengths of time,
@@ -78,17 +78,17 @@ adding ``new`` to a single linked list called ``list``:
             wmb();
             list->next = new;
 
-The ``wmb()`` is a write memory barrier. It ensures that the first
-operation (setting the new element's ``next`` pointer) is complete and
-will be seen by all CPUs, before the second operation is (putting the
-new element into the list). This is important, since modern compilers
-and modern CPUs can both reorder instructions unless told otherwise: we
-want a reader to either not see the new element at all, or see the new
-element with the ``next`` pointer correctly pointing at the rest of the
-list.
+The :c:func:`wmb()` is a write memory barrier. It ensures that the
+first operation (setting the new element's ``next`` pointer) is complete
+and will be seen by all CPUs, before the second operation is (putting
+the new element into the list). This is important, since modern
+compilers and modern CPUs can both reorder instructions unless told
+otherwise: we want a reader to either not see the new element at all, or
+see the new element with the ``next`` pointer correctly pointing at the
+rest of the list.
 
 Fortunately, there is a function to do this for standard
-``struct list_head`` lists: ``list_add_rcu()``
+:c:type:`struct list_head` lists: :c:func:`list_add_rcu()`
 (``include/linux/list.h``).
 
 Removing an element from the list is even simpler: we replace the
@@ -100,31 +100,35 @@ will either see it, or skip over it.
 
             list->next = old->next;
 
-There is ``list_del_rcu()`` (``include/linux/list.h``) which does this
-(the normal version poisons the old object, which we don't want).
+There is :c:func:`list_del_rcu()` (``include/linux/list.h``) which
+does this (the normal version poisons the old object, which we don't
+want).
 
 The reader must also be careful: some CPUs can look through the ``next``
 pointer to start reading the contents of the next element early, but
 don't realize that the pre-fetched contents is wrong when the ``next``
 pointer changes underneath them. Once again, there is a
-``list_for_each_entry_rcu()`` (``include/linux/list.h``) to help you. Of
-course, writers can just use ``list_for_each_entry()``, since there
-cannot be two simultaneous writers.
+:c:func:`list_for_each_entry_rcu()` (``include/linux/list.h``) to
+help you. Of course, writers can just use
+:c:func:`list_for_each_entry()`, since there cannot be two
+simultaneous writers.
 
 Our final dilemma is this: when can we actually destroy the removed
 element? Remember, a reader might be stepping through this element in
 the list right now: if we free this element and the ``next`` pointer
 changes, the reader will jump off into garbage and crash. We need to
 wait until we know that all the readers who were traversing the list
-when we deleted the element are finished. We use ``call_rcu()`` to
-register a callback which will actually destroy the object once all
-pre-existing readers are finished. Alternatively, ``synchronize_rcu()``
-may be used to block until all pre-existing are finished.
+when we deleted the element are finished. We use :c:func:`call_rcu()`
+to register a callback which will actually destroy the object once all
+pre-existing readers are finished. Alternatively,
+:c:func:`synchronize_rcu()` may be used to block until all
+pre-existing are finished.
 
 But how does Read Copy Update know when the readers are finished? The
 method is this: firstly, the readers always traverse the list inside
-``rcu_read_lock()``/``rcu_read_unlock()`` pairs: these simply disable
-preemption so the reader won't go to sleep while reading the list.
+:c:func:`rcu_read_lock()`/:c:func:`rcu_read_unlock()` pairs:
+these simply disable preemption so the reader won't go to sleep while
+reading the list.
 
 RCU then waits until every other CPU has slept at least once: since
 readers cannot sleep, we know that any readers which were traversing the
@@ -212,13 +216,14 @@ this is the fundamental idea.
      }
 
 Note that the reader will alter the ``popularity`` member in
-``__cache_find()``, and now it doesn't hold a lock. One solution would
-be to make it an ``atomic_t``, but for this usage, we don't really care
-about races: an approximate result is good enough, so I didn't change
-it.
+:c:func:`__cache_find()`, and now it doesn't hold a lock. One
+solution would be to make it an ``atomic_t``, but for this usage, we
+don't really care about races: an approximate result is good enough, so
+I didn't change it.
 
-The result is that ``cache_find()`` requires no synchronization with any
-other functions, so is almost as fast on SMP as it would be on UP.
+The result is that :c:func:`cache_find()` requires no synchronization
+with any other functions, so is almost as fast on SMP as it would be on
+UP.
 
 There is a further optimization possible here: remember our original
 cache code, where there were no reference counts and the caller simply
@@ -228,9 +233,10 @@ and put the reference count.
 
 Now, because the 'read lock' in RCU is simply disabling preemption, a
 caller which always has preemption disabled between calling
-``cache_find()`` and ``object_put()`` does not need to actually get and
-put the reference count: we could expose ``__cache_find()`` by making it
-non-static, and such callers could simply call that.
+:c:func:`cache_find()` and :c:func:`object_put()` does not need to
+actually get and put the reference count: we could expose
+:c:func:`__cache_find()` by making it non-static, and such callers
+could simply call that.
 
 The benefit here is that the reference count is not written to: the
 object is not altered in any way, which is much faster on SMP machines
@@ -250,12 +256,12 @@ counter. Nice and simple.
 If that was too slow (it's usually not, but if you've got a really big
 machine to test on and can show that it is), you could instead use a
 counter for each CPU, then none of them need an exclusive lock. See
-``DEFINE_PER_CPU()``, ``get_cpu_var()`` and ``put_cpu_var()``
-(``include/linux/percpu.h``).
+:c:func:`DEFINE_PER_CPU()`, :c:func:`get_cpu_var()` and
+:c:func:`put_cpu_var()` (``include/linux/percpu.h``).
 
 Of particular use for simple per-cpu counters is the ``local_t`` type,
-and the ``cpu_local_inc()`` and related functions, which are more
-efficient than simple code on some architectures
+and the :c:func:`cpu_local_inc()` and related functions, which are
+more efficient than simple code on some architectures
 (``include/asm/local.h``).
 
 Note that there is no simple, reliable way of getting an exact value of
@@ -285,11 +291,12 @@ irq handler doesn't use a lock, and all other accesses are done as so:
         enable_irq(irq);
         spin_unlock(&lock);
 
-The ``disable_irq()`` prevents the irq handler from running (and waits
-for it to finish if it's currently running on other CPUs). The spinlock
-prevents any other accesses happening at the same time. Naturally, this
-is slower than just a ``spin_lock_irq()`` call, so it only makes sense
-if this type of access happens extremely rarely.
+The :c:func:`disable_irq()` prevents the irq handler from running
+(and waits for it to finish if it's currently running on other CPUs).
+The spinlock prevents any other accesses happening at the same time.
+Naturally, this is slower than just a :c:func:`spin_lock_irq()`
+call, so it only makes sense if this type of access happens extremely
+rarely.
 
 
 .. ------------------------------------------------------------------------------

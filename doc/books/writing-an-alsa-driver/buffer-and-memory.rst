@@ -15,14 +15,16 @@ Buffer Types
 ALSA provides several different buffer allocation functions depending on
 the bus and the architecture. All these have a consistent API. The
 allocation of physically-contiguous pages is done via
-``snd_malloc_xxx_pages()`` function, where xxx is the bus type.
+:c:func:`snd_malloc_xxx_pages()` function, where xxx is the bus
+type.
 
 The allocation of pages with fallback is
-``snd_malloc_xxx_pages_fallback()``. This function tries to allocate the
-specified pages but if the pages are not available, it tries to reduce
-the page sizes until enough space is found.
+:c:func:`snd_malloc_xxx_pages_fallback()`. This function tries to
+allocate the specified pages but if the pages are not available, it
+tries to reduce the page sizes until enough space is found.
 
-The release the pages, call ``snd_free_xxx_pages()`` function.
+The release the pages, call :c:func:`snd_free_xxx_pages()`
+function.
 
 Usually, ALSA drivers try to allocate and reserve a large contiguous
 physical space at the time the module is loaded for the later use. This
@@ -43,13 +45,13 @@ size.
 
 The second argument (type) and the third argument (device pointer) are
 dependent on the bus. In the case of the ISA bus, pass
-``snd_dma_isa_data()`` as the third argument with ``SNDRV_DMA_TYPE_DEV``
-type. For the continuous buffer unrelated to the bus can be
-pre-allocated with ``SNDRV_DMA_TYPE_CONTINUOUS`` type and the
-``snd_dma_continuous_data(GFP_KERNEL)`` device pointer, where
-``GFP_KERNEL`` is the kernel allocation flag to use. For the PCI
+:c:func:`snd_dma_isa_data()` as the third argument with
+``SNDRV_DMA_TYPE_DEV`` type. For the continuous buffer unrelated to the
+bus can be pre-allocated with ``SNDRV_DMA_TYPE_CONTINUOUS`` type and the
+:c:func:`snd_dma_continuous_data(GFP_KERNEL)` device pointer,
+where ``GFP_KERNEL`` is the kernel allocation flag to use. For the PCI
 scatter-gather buffers, use ``SNDRV_DMA_TYPE_DEV_SG`` with
-``snd_dma_pci_data(pci)`` (see the
+:c:func:`snd_dma_pci_data(pci)` (see the
 :ref:`Non-Contiguous Buffers <buffer-and-memory-non-contiguous>`
 section).
 
@@ -187,34 +189,35 @@ provides an interface for handling SG-buffers. The API is provided in
 ``<sound/pcm.h>``.
 
 For creating the SG-buffer handler, call
-``snd_pcm_lib_preallocate_pages()`` or
-``snd_pcm_lib_preallocate_pages_for_all()`` with
+:c:func:`snd_pcm_lib_preallocate_pages()` or
+:c:func:`snd_pcm_lib_preallocate_pages_for_all()` with
 ``SNDRV_DMA_TYPE_DEV_SG`` in the PCM constructor like other PCI
-pre-allocator. You need to pass ``snd_dma_pci_data(pci)``, where pci is
-the struct ``pci_dev`` pointer of the chip as well. The
-``struct snd_sg_buf`` instance is created as substream->dma_private.
-You can cast the pointer like:
+pre-allocator. You need to pass :c:func:`snd_dma_pci_data(pci)`,
+where pci is the struct :c:type:`struct pci_dev` pointer of the chip
+as well. The ``struct snd_sg_buf`` instance is created as
+substream->dma_private. You can cast the pointer like:
 
 
 .. code-block:: c
 
       struct snd_sg_buf *sgbuf = (struct snd_sg_buf *)substream->dma_private;
 
-Then call ``snd_pcm_lib_malloc_pages()`` in the ``hw_params`` callback
-as well as in the case of normal PCI buffer. The SG-buffer handler will
-allocate the non-contiguous kernel pages of the given size and map them
-onto the virtually contiguous memory. The virtual pointer is addressed
-in runtime->dma_area. The physical address (runtime->dma_addr) is set
-to zero, because the buffer is physically non-contiguous. The physical
-address table is set up in sgbuf->table. You can get the physical
-address at a certain offset via ``snd_pcm_sgbuf_get_addr()``.
+Then call :c:func:`snd_pcm_lib_malloc_pages()` in the
+``hw_params`` callback as well as in the case of normal PCI buffer. The
+SG-buffer handler will allocate the non-contiguous kernel pages of the
+given size and map them onto the virtually contiguous memory. The
+virtual pointer is addressed in runtime->dma_area. The physical address
+(runtime->dma_addr) is set to zero, because the buffer is physically
+non-contiguous. The physical address table is set up in sgbuf->table.
+You can get the physical address at a certain offset via
+:c:func:`snd_pcm_sgbuf_get_addr()`.
 
-When a SG-handler is used, you need to set ``snd_pcm_sgbuf_ops_page`` as
-the ``page`` callback. (See
+When a SG-handler is used, you need to set
+:c:func:`snd_pcm_sgbuf_ops_page()` as the ``page`` callback. (See
 :ref:`page callback section <pcm-interface-operators-page-callback>`.)
 
-To release the data, call ``snd_pcm_lib_free_pages()`` in the
-``hw_free`` callback as usual.
+To release the data, call :c:func:`snd_pcm_lib_free_pages()` in
+the ``hw_free`` callback as usual.
 
 
 .. _buffer-and-memory-vmalloced:
@@ -222,8 +225,8 @@ To release the data, call ``snd_pcm_lib_free_pages()`` in the
 Vmalloc'ed Buffers
 ==================
 
-It's possible to use a buffer allocated via ``vmalloc``, for example,
-for an intermediate buffer. Since the allocated pages are not
+It's possible to use a buffer allocated via :c:func:`vmalloc()`, for
+example, for an intermediate buffer. Since the allocated pages are not
 contiguous, you need to set the ``page`` callback to obtain the physical
 address at every offset.
 

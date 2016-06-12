@@ -106,8 +106,8 @@ needs to handle some differences. Use the API like this:
    in that configuration, with all interfaces in their default settings.
    That involves using a list of the hardware's endpoints, enabling each
    endpoint according to its descriptor. It may also involve using
-   ``usb_gadget_vbus_draw`` to let more power be drawn from VBUS, as
-   allowed by that configuration. For OTG devices, setting a
+   :c:func:`usb_gadget_vbus_draw()` to let more power be drawn from
+   VBUS, as allowed by that configuration. For OTG devices, setting a
    configuration may also involve reporting HNP capabilities through a
    user interface.
 
@@ -137,7 +137,8 @@ Other than providing an additional OTG descriptor in each configuration,
 only the HNP-related differences are particularly visible to driver
 code. They involve reporting requirements during the SET_CONFIGURATION
 request, and the option to invoke HNP during some suspend callbacks.
-Also, SRP changes the semantics of ``usb_gadget_wakeup`` slightly.
+Also, SRP changes the semantics of :c:func:`usb_gadget_wakeup()`
+slightly.
 
 
 .. _ch9:

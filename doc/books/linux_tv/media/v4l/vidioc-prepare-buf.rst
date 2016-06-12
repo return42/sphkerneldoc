@@ -40,7 +40,8 @@ operations are not required, the application can use one of
 ``V4L2_BUF_FLAG_NO_CACHE_INVALIDATE`` and
 ``V4L2_BUF_FLAG_NO_CACHE_CLEAN`` flags to skip the respective step.
 
-The ``v4l2_buffer`` structure is specified in :ref:`buffer`.
+The :c:type:`struct v4l2_buffer` structure is specified in
+:ref:`buffer`.
 
 
 Return Value

@@ -122,8 +122,8 @@ To get the current parameters applications set the ``type`` field of a
 struct :ref:`v4l2_format <v4l2-format>` to
 ``V4L2_BUF_TYPE_VIDEO_OVERLAY`` and call the
 :ref:`VIDIOC_G_FMT <vidioc-g-fmt>` ioctl. The driver fills the
-``v4l2_window`` substructure named ``win``. It is not possible to
-retrieve a previously programmed clipping list or bitmap.
+:c:type:`struct v4l2_window` substructure named ``win``. It is not
+possible to retrieve a previously programmed clipping list or bitmap.
 
 To program the overlay window applications set the ``type`` field of a
 struct :ref:`v4l2_format <v4l2-format>` to

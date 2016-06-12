@@ -70,8 +70,8 @@ Full Code Example
 Constructor
 ===========
 
-To create an ac97 instance, first call ``snd_ac97_bus`` with an
-``ac97_bus_ops_t`` record with callback functions.
+To create an ac97 instance, first call :c:func:`snd_ac97_bus()` with
+an ``ac97_bus_ops_t`` record with callback functions.
 
 
 .. code-block:: c
@@ -86,8 +86,9 @@ To create an ac97 instance, first call ``snd_ac97_bus`` with an
 
 The bus record is shared among all belonging ac97 instances.
 
-And then call ``snd_ac97_mixer()`` with an struct ``snd_ac97_template``
-record together with the bus pointer created above.
+And then call :c:func:`snd_ac97_mixer()` with an struct
+:c:type:`struct snd_ac97_template` record together with the bus
+pointer created above.
 
 
 .. code-block:: c
@@ -162,14 +163,15 @@ Updating Registers in The Driver
 ================================
 
 If you need to access to the codec from the driver, you can call the
-following functions: ``snd_ac97_write()``, ``snd_ac97_read()``,
-``snd_ac97_update()`` and ``snd_ac97_update_bits()``.
+following functions: :c:func:`snd_ac97_write()`,
+:c:func:`snd_ac97_read()`, :c:func:`snd_ac97_update()` and
+:c:func:`snd_ac97_update_bits()`.
 
-Both ``snd_ac97_write()`` and ``snd_ac97_update()`` functions are used
-to set a value to the given register (``AC97_XXX``). The difference
-between them is that ``snd_ac97_update()`` doesn't write a value if the
-given value has been already set, while ``snd_ac97_write()`` always
-rewrites the value.
+Both :c:func:`snd_ac97_write()` and :c:func:`snd_ac97_update()`
+functions are used to set a value to the given register (``AC97_XXX``).
+The difference between them is that :c:func:`snd_ac97_update()`
+doesn't write a value if the given value has been already set, while
+:c:func:`snd_ac97_write()` always rewrites the value.
 
 
 .. code-block:: c
@@ -177,16 +179,16 @@ rewrites the value.
       snd_ac97_write(ac97, AC97_MASTER, 0x8080);
       snd_ac97_update(ac97, AC97_MASTER, 0x8080);
 
-``snd_ac97_read()`` is used to read the value of the given register. For
-example,
+:c:func:`snd_ac97_read()` is used to read the value of the given
+register. For example,
 
 
 .. code-block:: c
 
       value = snd_ac97_read(ac97, AC97_MASTER);
 
-``snd_ac97_update_bits()`` is used to update some bits in the given
-register.
+:c:func:`snd_ac97_update_bits()` is used to update some bits in the
+given register.
 
 
 .. code-block:: c
@@ -195,7 +197,7 @@ register.
 
 Also, there is a function to change the sample rate (of a given register
 such as ``AC97_PCM_FRONT_DAC_RATE``) when VRA or DRA is supported by the
-codec: ``snd_ac97_set_rate()``.
+codec: :c:func:`snd_ac97_set_rate()`.
 
 
 .. code-block:: c
@@ -237,8 +239,8 @@ Multiple Codecs
 ===============
 
 When there are several codecs on the same card, you need to call
-``snd_ac97_mixer()`` multiple times with ac97.num=1 or greater. The
-``num`` field specifies the codec number.
+:c:func:`snd_ac97_mixer()` multiple times with ac97.num=1 or
+greater. The ``num`` field specifies the codec number.
 
 If you set up multiple codecs, you either need to write different
 callbacks for each codec or check ac97->num in the callback routines.

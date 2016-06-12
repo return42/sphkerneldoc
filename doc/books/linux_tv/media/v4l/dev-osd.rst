@@ -40,9 +40,10 @@ the :ref:`VIDIOC_G_FBUF <vidioc-g-fbuf>` ioctl. It returns, amongst
 other information, the physical address of the framebuffer in the
 ``base`` field of struct :ref:`v4l2_framebuffer <v4l2-framebuffer>`.
 The framebuffer device ioctl ``FBIOGET_FSCREENINFO`` returns the same
-address in the ``smem_start`` field of struct ``fb_fix_screeninfo``. The
-``FBIOGET_FSCREENINFO`` ioctl and struct ``fb_fix_screeninfo`` are
-defined in the ``linux/fb.h`` header file.
+address in the ``smem_start`` field of struct
+:c:type:`struct fb_fix_screeninfo`. The ``FBIOGET_FSCREENINFO``
+ioctl and struct :c:type:`struct fb_fix_screeninfo` are defined in
+the ``linux/fb.h`` header file.
 
 The width and height of the framebuffer depends on the current video
 standard. A V4L2 driver may reject attempts to change the video standard
@@ -115,8 +116,8 @@ parameters applications set the ``type`` field of a struct
 :ref:`v4l2_format <v4l2-format>` to
 ``V4L2_BUF_TYPE_VIDEO_OUTPUT_OVERLAY`` and call the
 :ref:`VIDIOC_G_FMT <vidioc-g-fmt>` ioctl. The driver fills the
-``v4l2_window`` substructure named ``win``. It is not possible to
-retrieve a previously programmed clipping list or bitmap.
+:c:type:`struct v4l2_window` substructure named ``win``. It is not
+possible to retrieve a previously programmed clipping list or bitmap.
 
 To program the source rectangle applications set the ``type`` field of a
 struct :ref:`v4l2_format <v4l2-format>` to

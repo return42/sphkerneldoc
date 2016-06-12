@@ -12,8 +12,7 @@ The Industrial I/O core offers:
    embedded sensors.
 -  a standard interface to user space applications manipulating sensors.
 
-The implementation can be found under ``
-      drivers/iio/industrialio-*``
+The implementation can be found under ``drivers/iio/industrialio-*``
 
 
 .. _iiodevice:
@@ -25,17 +24,22 @@ Industrial I/O devices
 .. kernel-doc:: include/linux/iio/iio.h
     :functions: iio_dev
 
+
 .. kernel-doc:: drivers/iio/industrialio-core.c
     :functions: iio_device_alloc
+
 
 .. kernel-doc:: drivers/iio/industrialio-core.c
     :functions: iio_device_free
 
+
 .. kernel-doc:: drivers/iio/industrialio-core.c
     :functions: iio_device_register
 
+
 .. kernel-doc:: drivers/iio/industrialio-core.c
     :functions: iio_device_unregister
+
 An IIO device usually corresponds to a single hardware sensor and it
 provides all the information needed by a driver handling a device. Let's
 first have a look at the functionality embedded in an IIO device then we
@@ -53,32 +57,32 @@ driver.
 
 A typical IIO driver will register itself as an I2C or SPI driver and
 will create two routines,
-probe
+!ri!:c:func:`probe()`
 and
-remove
+!ri!:c:func:`remove()`
 . At
-probe
+!ri!:c:func:`probe()`
 :
 
 -  call
-   iio_device_alloc
+   !ri!:c:func:`iio_device_alloc()`
    , which allocates memory for an IIO device.
 -  initialize IIO device fields with driver specific information (e.g.
    device name, device channels).
 -  call
-   iio_device_register
+   !ri!:c:func:`iio_device_register()`
    , this registers the device with the IIO core. After this call the
    device is ready to accept requests from user space applications.
 
 At
-remove
+!ri!:c:func:`remove()`
 , we free the resources allocated in
-probe
+!ri!:c:func:`probe()`
 in reverse order:
 
--  iio_device_unregister
+-  !ri!:c:func:`iio_device_unregister()`
    , unregister the device from the IIO core.
--  iio_device_free
+-  !ri!:c:func:`iio_device_free()`
    , free the memory allocated for the IIO device.
 
 
@@ -89,7 +93,7 @@ IIO device sysfs interface
 
 Attributes are sysfs files used to expose chip info and also allowing
 applications to set various configuration parameters. For device with
-index X, attributes can be found under ``/sys/bus/iio/iio:deviceX/ ``
+index X, attributes can be found under ``/sys/bus/iio/iio:deviceX/``
 directory. Common attributes are:
 
 -  name
@@ -102,7 +106,7 @@ directory. Common attributes are:
    , available discrete set of sampling frequency values for device.
 
 Available standard attributes for IIO devices are described in the
-``Documentation/ABI/testing/sysfs-bus-iio `` file in the Linux kernel
+``Documentation/ABI/testing/sysfs-bus-iio`` file in the Linux kernel
 sources.
 
 
@@ -114,6 +118,7 @@ IIO device channels
 
 .. kernel-doc:: include/linux/iio/iio.h
     :functions: iio_chan_spec structure.
+
 An IIO device channel is a representation of a data channel. An IIO
 device can have one or multiple channels. For example:
 
@@ -254,8 +259,10 @@ Industrial I/O buffers
 .. kernel-doc:: include/linux/iio/buffer.h
     :functions: iio_buffer
 
+
 .. kernel-doc:: drivers/iio/industrialio-buffer.c
     :export:
+
 The Industrial I/O core offers a way for continuous data capture based
 on a trigger source. Multiple data channels can be read at once from
 ``/dev/iio:deviceX`` character device node, thus reducing the CPU load.
@@ -266,9 +273,8 @@ on a trigger source. Multiple data channels can be read at once from
 IIO buffer sysfs interface
 --------------------------
 
-An IIO buffer has an associated attributes directory under ``
-      /sys/bus/iio/iio:deviceX/buffer/``. Here are the existing
-attributes:
+An IIO buffer has an associated attributes directory under
+``/sys/bus/iio/iio:deviceX/buffer/``. Here are the existing attributes:
 
 -  length
    , the total number of data samples (capacity) that can be stored by
@@ -284,8 +290,8 @@ IIO buffer setup
 
 The meta information associated with a channel reading placed in a
 buffer is called a *scan element*. The important bits configuring scan
-elements are exposed to userspace applications via the ``
-        /sys/bus/iio/iio:deviceX/scan_elements/`` directory. This file
+elements are exposed to userspace applications via the
+``/sys/bus/iio/iio:deviceX/scan_elements/`` directory. This file
 contains attributes of the following form:
 
 -  enable
@@ -410,8 +416,10 @@ Industrial I/O triggers
 .. kernel-doc:: include/linux/iio/trigger.h
     :functions: iio_trigger
 
+
 .. kernel-doc:: drivers/iio/industrialio-trigger.c
     :export:
+
 In many situations it is useful for a driver to be able to capture data
 based on some external event (trigger) as opposed to periodically
 polling for data. An IIO trigger can be provided by a device driver that
@@ -485,11 +493,12 @@ IIO trigger ops
 
 .. kernel-doc:: include/linux/iio/trigger.h
     :functions: iio_trigger_ops
+
 Notice that a trigger has a set of operations attached:
 
--  set_trigger_state
+-  !ri!:c:func:`set_trigger_state()`
    , switch the trigger on/off on demand.
--  validate_device
+-  !ri!:c:func:`validate_device()`
    , function to validate the device when the current trigger gets
    changed.
 
@@ -512,8 +521,10 @@ IIO triggered buffer setup
 .. kernel-doc:: drivers/iio/buffer/industrialio-triggered-buffer.c
     :export:
 
+
 .. kernel-doc:: include/linux/iio/iio.h
     :functions: iio_buffer_setup_ops
+
 A typical triggered buffer setup looks like this:
 
 
@@ -554,21 +565,21 @@ A typical triggered buffer setup looks like this:
 
 The important things to notice here are:
 
--  iio_buffer_setup_ops
+-  !ri!:c:func:`iio_buffer_setup_ops()`
    , the buffer setup functions to be called at predefined points in the
    buffer configuration sequence (e.g. before enable, after disable). If
    not specified, the IIO core uses the default
    iio_triggered_buffer_setup_ops
    .
--  sensor_iio_pollfunc
+-  !ri!:c:func:`sensor_iio_pollfunc()`
    , the function that will be used as top half of poll function. It
    should do as little processing as possible, because it runs in
    interrupt context. The most common operation is recording of the
    current timestamp and for this reason one can use the IIO core
    defined
-   iio_pollfunc_store_time
+   !ri!:c:func:`iio_pollfunc_store_time()`
    function.
--  sensor_trigger_handler
+-  !ri!:c:func:`sensor_trigger_handler()`
    , the function that will be used as bottom half of the poll function.
    This runs in the context of a kernel thread and all the processing
    takes place here. It usually reads data from the device and stores it

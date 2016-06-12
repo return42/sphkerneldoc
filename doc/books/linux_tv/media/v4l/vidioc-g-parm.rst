@@ -35,9 +35,9 @@ Description
 The current video standard determines a nominal number of frames per
 second. If less than this number of frames is to be captured or output,
 applications can request frame skipping or duplicating on the driver
-side. This is especially useful when using the ``read()`` or
-``write()``, which are not augmented by timestamps or sequence counters,
-and to avoid unnecessary data copying.
+side. This is especially useful when using the :c:func:`read()` or
+:c:func:`write()`, which are not augmented by timestamps or sequence
+counters, and to avoid unnecessary data copying.
 
 Further these ioctls can be used to determine the number of buffers used
 internally by a driver in read/write mode. For implications see the
@@ -45,8 +45,8 @@ section discussing the :ref:`read() <func-read>` function.
 
 To get and set the streaming parameters applications call the
 ``VIDIOC_G_PARM`` and ``VIDIOC_S_PARM`` ioctl, respectively. They take a
-pointer to a struct ``v4l2_streamparm`` which contains a union holding
-separate parameters for input and output devices.
+pointer to a struct :c:type:`struct v4l2_streamparm` which contains a
+union holding separate parameters for input and output devices.
 
 
 .. _v4l2-streamparm:
@@ -260,10 +260,11 @@ separate parameters for input and output devices.
        -  ``writebuffers``
 
        -  Applications set this field to the desired number of buffers used
-          internally by the driver in ``write()`` mode. Drivers return the
-          actual number of buffers. When an application requests zero
-          buffers, drivers should just return the current setting rather
-          than the minimum or an error code. For details see :ref:`rw`.
+          internally by the driver in :c:func:`write()` mode. Drivers
+          return the actual number of buffers. When an application requests
+          zero buffers, drivers should just return the current setting
+          rather than the minimum or an error code. For details see
+          :ref:`rw`.
 
     -  .. row 7
 
@@ -336,7 +337,7 @@ separate parameters for input and output devices.
 
           -  Moving objects in the image might have excessive motion blur.
 
-          -  Capture might only work through the ``read()`` call.
+          -  Capture might only work through the :c:func:`read()` call.
 
 
 

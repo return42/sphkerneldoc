@@ -22,7 +22,8 @@ the power-management states and hotplug disconnections. The component
 list on the card record is used to manage the correct release of
 resources at destruction.
 
-As mentioned above, to create a card instance, call ``snd_card_new()``.
+As mentioned above, to create a card instance, call
+:c:func:`snd_card_new()`.
 
 
 .. code-block:: c
@@ -36,10 +37,11 @@ card-index number, the id string, the module pointer (usually
 ``THIS_MODULE``), the size of extra-data space, and the pointer to
 return the card instance. The extra_size argument is used to allocate
 card->private_data for the chip-specific data. Note that these data are
-allocated by ``snd_card_new()``.
+allocated by :c:func:`snd_card_new()`.
 
-The first argument, the pointer of struct ``device``, specifies the
-parent device. For PCI devices, typically &pci-> is passed there.
+The first argument, the pointer of struct :c:type:`struct device`,
+specifies the parent device. For PCI devices, typically &pci-> is passed
+there.
 
 
 .. _card-management-component:
@@ -49,11 +51,11 @@ Components
 
 After the card is created, you can attach the components (devices) to
 the card instance. In an ALSA driver, a component is represented as a
-struct ``snd_device`` object. A component can be a PCM instance, a
-control interface, a raw MIDI interface, etc. Each such instance has one
-component entry.
+struct :c:type:`struct snd_device` object. A component can be a PCM
+instance, a control interface, a raw MIDI interface, etc. Each such
+instance has one component entry.
 
-A component can be created via ``snd_device_new()`` function.
+A component can be created via :c:func:`snd_device_new()` function.
 
 
 .. code-block:: c
@@ -73,14 +75,14 @@ argument. This pointer (``chip`` in the above example) is used as the
 identifier for the instance.
 
 Each pre-defined ALSA component such as ac97 and pcm calls
-``snd_device_new()`` inside its constructor. The destructor for each
-component is defined in the callback pointers. Hence, you don't need to
-take care of calling a destructor for such a component.
+:c:func:`snd_device_new()` inside its constructor. The destructor
+for each component is defined in the callback pointers. Hence, you don't
+need to take care of calling a destructor for such a component.
 
 If you wish to create your own component, you need to set the destructor
 function to the dev_free callback in the ``ops``, so that it can be
-released automatically via ``snd_card_free()``. The next example will
-show an implementation of chip-specific data.
+released automatically via :c:func:`snd_card_free()`. The next
+example will show an implementation of chip-specific data.
 
 
 .. _card-management-chip-specific:
@@ -107,7 +109,7 @@ In general, there are two ways of allocating the chip record.
 ---------------------------------
 
 As mentioned above, you can pass the extra-data-length to the 5th
-argument of ``snd_card_new()``, i.e.
+argument of :c:func:`snd_card_new()`, i.e.
 
 
 .. code-block:: c
@@ -115,7 +117,7 @@ argument of ``snd_card_new()``, i.e.
       err = snd_card_new(&pci->dev, index[dev], id[dev], THIS_MODULE,
                          sizeof(struct mychip), &card);
 
-struct ``mychip`` is the type of the chip record.
+struct :c:type:`struct mychip` is the type of the chip record.
 
 In return, the allocated record can be accessed as
 
@@ -133,8 +135,8 @@ released together with the card instance.
 2. Allocating an extra device.
 ------------------------------
 
-After allocating a card instance via ``snd_card_new()`` (with ``0`` on
-the 4th arg), call ``kzalloc()``.
+After allocating a card instance via :c:func:`snd_card_new()` (with
+``0`` on the 4th arg), call :c:func:`kzalloc()`.
 
 
 .. code-block:: c
@@ -175,8 +177,8 @@ low-level device with a specified ``ops``,
       ....
       snd_device_new(card, SNDRV_DEV_LOWLEVEL, chip, &ops);
 
-``snd_mychip_dev_free()`` is the device-destructor function, which will
-call the real destructor.
+:c:func:`snd_mychip_dev_free()` is the device-destructor function,
+which will call the real destructor.
 
 
 .. code-block:: c
@@ -186,7 +188,7 @@ call the real destructor.
               return snd_mychip_free(device->device_data);
       }
 
-where ``snd_mychip_free()`` is the real destructor.
+where :c:func:`snd_mychip_free()` is the real destructor.
 
 
 .. _card-management-registration:
@@ -195,18 +197,19 @@ Registration and Release
 ========================
 
 After all components are assigned, register the card instance by calling
-``snd_card_register()``. Access to the device files is enabled at this
-point. That is, before ``snd_card_register()`` is called, the components
-are safely inaccessible from external side. If this call fails, exit the
-probe function after releasing the card via ``snd_card_free()``.
+:c:func:`snd_card_register()`. Access to the device files is enabled
+at this point. That is, before :c:func:`snd_card_register()` is
+called, the components are safely inaccessible from external side. If
+this call fails, exit the probe function after releasing the card via
+:c:func:`snd_card_free()`.
 
 For releasing the card instance, you can call simply
-``snd_card_free()``. As mentioned earlier, all components are released
-automatically by this call.
+:c:func:`snd_card_free()`. As mentioned earlier, all components are
+released automatically by this call.
 
 For a device which allows hotplugging, you can use
-``snd_card_free_when_closed``. This one will postpone the destruction
-until all devices are closed.
+:c:func:`snd_card_free_when_closed()`. This one will postpone the
+destruction until all devices are closed.
 
 
 .. ------------------------------------------------------------------------------

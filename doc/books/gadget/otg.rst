@@ -36,8 +36,8 @@ can also benefit non-OTG products.
    wakeup, probably by pressing the same button.
 
 -  On the host side, USB device drivers need to be taught to trigger HNP
-   at appropriate moments, using ``usb_suspend_device()``. That also
-   conserves battery power, which is useful even for non-OTG
+   at appropriate moments, using :c:func:`usb_suspend_device()`.
+   That also conserves battery power, which is useful even for non-OTG
    configurations.
 
 -  Also on the host side, a driver must support the OTG "Targeted

@@ -58,27 +58,27 @@ preemption, even on UP.
 
 bh
 Bottom Half: for historical reasons, functions with '_bh' in them often
-now refer to any software interrupt, e.g. ``spin_lock_bh()`` blocks any
-software interrupt on the current CPU. Bottom halves are deprecated, and
-will eventually be replaced by tasklets. Only one bottom half will be
-running at any time.
+now refer to any software interrupt, e.g. :c:func:`spin_lock_bh()`
+blocks any software interrupt on the current CPU. Bottom halves are
+deprecated, and will eventually be replaced by tasklets. Only one bottom
+half will be running at any time.
 
 Hardware Interrupt / Hardware IRQ
-Hardware interrupt request. ``in_irq()`` returns true in a hardware
-interrupt handler.
+Hardware interrupt request. :c:func:`in_irq()` returns true in a
+hardware interrupt handler.
 
 Interrupt Context
 Not user context: processing a hardware irq or software irq. Indicated
-by the ``in_interrupt()`` macro returning true.
+by the :c:func:`in_interrupt()` macro returning true.
 
 SMP
 Symmetric Multi-Processor: kernels compiled for multiple-CPU machines.
 (CONFIG_SMP=y).
 
 Software Interrupt / softirq
-Software interrupt handler. ``in_irq()`` returns false; ``in_softirq()``
-returns true. Tasklets and softirqs both fall into the category of
-'software interrupts'.
+Software interrupt handler. :c:func:`in_irq()` returns false;
+:c:func:`in_softirq()` returns true. Tasklets and softirqs both fall
+into the category of 'software interrupts'.
 
 Strictly speaking a softirq is one of up to 32 enumerated software
 interrupts which can run on multiple CPUs at once. Sometimes used to

@@ -49,17 +49,18 @@ VGA signal or graphics into a video signal. *Video Output Overlays* are
 always non-destructive.
 
 To get the current parameters applications call the ``VIDIOC_G_FBUF``
-ioctl with a pointer to a ``v4l2_framebuffer`` structure. The driver
-fills all fields of the structure or returns an EINVAL error code when
-overlays are not supported.
+ioctl with a pointer to a :c:type:`struct v4l2_framebuffer`
+structure. The driver fills all fields of the structure or returns an
+EINVAL error code when overlays are not supported.
 
 To set the parameters for a *Video Output Overlay*, applications must
-initialize the ``flags`` field of a struct ``v4l2_framebuffer``. Since
-the framebuffer is implemented on the TV card all other parameters are
-determined by the driver. When an application calls ``VIDIOC_S_FBUF``
-with a pointer to this structure, the driver prepares for the overlay
-and returns the framebuffer parameters as ``VIDIOC_G_FBUF`` does, or it
-returns an error code.
+initialize the ``flags`` field of a struct
+:c:type:`struct v4l2_framebuffer`. Since the framebuffer is
+implemented on the TV card all other parameters are determined by the
+driver. When an application calls ``VIDIOC_S_FBUF`` with a pointer to
+this structure, the driver prepares for the overlay and returns the
+framebuffer parameters as ``VIDIOC_G_FBUF`` does, or it returns an error
+code.
 
 To set the parameters for a *non-destructive Video Overlay*,
 applications must initialize the ``flags`` field, the ``fmt``

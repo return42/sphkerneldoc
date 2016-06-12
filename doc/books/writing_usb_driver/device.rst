@@ -143,8 +143,8 @@ handle smoothly is the fact that the USB device may be removed from the
 system at any point in time, even if a program is currently talking to
 it. It needs to be able to shut down any current reads and writes and
 notify the user-space programs that the device is no longer there. The
-following code (function ``skel_delete``) is an example of how to do
-this:
+following code (function :c:func:`skel_delete()`) is an example of
+how to do this:
 
 
 .. code-block:: c

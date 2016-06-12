@@ -148,13 +148,15 @@ destructor and PCI entries. Example code is shown first, below.
 Some Hafta's
 ============
 
-The allocation of PCI resources is done in the ``probe()`` function, and
-usually an extra ``xxx_create()`` function is written for this purpose.
+The allocation of PCI resources is done in the :c:func:`probe()`
+function, and usually an extra :c:func:`xxx_create()` function is
+written for this purpose.
 
 In the case of PCI devices, you first have to call the
-``pci_enable_device()`` function before allocating resources. Also, you
-need to set the proper PCI DMA mask to limit the accessed I/O range. In
-some cases, you might need to call ``pci_set_master()`` function, too.
+:c:func:`pci_enable_device()` function before allocating resources.
+Also, you need to set the proper PCI DMA mask to limit the accessed I/O
+range. In some cases, you might need to call
+:c:func:`pci_set_master()` function, too.
 
 Suppose the 28bit mask, and the code to be added would be like:
 
@@ -184,7 +186,8 @@ Also, on ALSA 0.9.x, you don't need to allocate (pseudo-)DMA for PCI
 like in ALSA 0.5.x.
 
 Now assume that the PCI device has an I/O port with 8 bytes and an
-interrupt. Then struct ``mychip`` will have the following fields:
+interrupt. Then struct :c:type:`struct mychip` will have the following
+fields:
 
 
 .. code-block:: c
@@ -201,8 +204,8 @@ resource pointer for the standard resource management. For an irq, you
 have to keep only the irq number (integer). But you need to initialize
 this number as -1 before actual allocation, since irq 0 is valid. The
 port address and its resource pointer can be initialized as null by
-``kzalloc()`` automatically, so you don't have to take care of resetting
-them.
+:c:func:`kzalloc()` automatically, so you don't have to take care of
+resetting them.
 
 The allocation of an I/O port is done like this:
 
@@ -218,9 +221,10 @@ The allocation of an I/O port is done like this:
       chip->port = pci_resource_start(pci, 0);
 
 It will reserve the I/O port region of 8 bytes of the given PCI device.
-The returned value, chip->res_port, is allocated via ``kmalloc()`` by
-``request_region()``. The pointer must be released via ``kfree()``, but
-there is a problem with this. This issue will be explained later.
+The returned value, chip->res_port, is allocated via
+:c:func:`kmalloc()` by :c:func:`request_region()`. The pointer must
+be released via :c:func:`kfree()`, but there is a problem with this.
+This issue will be explained later.
 
 The allocation of an interrupt source is done like this:
 
@@ -235,16 +239,17 @@ The allocation of an interrupt source is done like this:
       }
       chip->irq = pci->irq;
 
-where ``snd_mychip_interrupt()`` is the interrupt handler defined
-:ref:`later <pcm-interface-interrupt-handler>`. Note that chip->irq
-should be defined only when ``request_irq()`` succeeded.
+where :c:func:`snd_mychip_interrupt()` is the interrupt handler
+defined :ref:`later <pcm-interface-interrupt-handler>`. Note that
+chip->irq should be defined only when :c:func:`request_irq()`
+succeeded.
 
 On the PCI bus, interrupts can be shared. Thus, ``IRQF_SHARED`` is used
-as the interrupt flag of ``request_irq()``.
+as the interrupt flag of :c:func:`request_irq()`.
 
-The last argument of ``request_irq()`` is the data pointer passed to the
-interrupt handler. Usually, the chip-specific record is used for that,
-but you can use what you like, too.
+The last argument of :c:func:`request_irq()` is the data pointer
+passed to the interrupt handler. Usually, the chip-specific record is
+used for that, but you can use what you like, too.
 
 I won't give details about the interrupt handler at this point, but at
 least its appearance can be explained now. The interrupt handler looks
@@ -279,27 +284,29 @@ with a negative value (e.g. -1), so that you can check the validity of
 the irq number as above.
 
 When you requested I/O ports or memory regions via
-``pci_request_region()`` or ``pci_request_regions()`` like in this
-example, release the resource(s) using the corresponding function,
-``pci_release_region()`` or ``pci_release_regions()``.
+:c:func:`pci_request_region()` or
+:c:func:`pci_request_regions()` like in this example, release the
+resource(s) using the corresponding function,
+:c:func:`pci_release_region()` or
+:c:func:`pci_release_regions()`.
 
 
 .. code-block:: c
 
       pci_release_regions(chip->pci);
 
-When you requested manually via ``request_region()`` or
-``request_mem_region``, you can release it via ``release_resource()``.
-Suppose that you keep the resource pointer returned from
-``request_region()`` in chip->res_port, the release procedure looks
-like:
+When you requested manually via :c:func:`request_region()` or
+:c:func:`request_mem_region()`, you can release it via
+:c:func:`release_resource()`. Suppose that you keep the resource
+pointer returned from :c:func:`request_region()` in chip->res_port,
+the release procedure looks like:
 
 
 .. code-block:: c
 
       release_and_free_resource(chip->res_port);
 
-Don't forget to call ``pci_disable_device()`` before the end.
+Don't forget to call :c:func:`pci_disable_device()` before the end.
 
 And finally, release the chip-specific record.
 
@@ -314,11 +321,12 @@ before the initialization of the chip is completed. It would be better
 to have a flag to skip hardware disabling if the hardware was not
 initialized yet.
 
-When the chip-data is assigned to the card using ``snd_device_new()``
-with ``SNDRV_DEV_LOWLELVEL`` , its destructor is called at the last.
-That is, it is assured that all other components like PCMs and controls
-have already been released. You don't have to stop PCMs, etc.
-explicitly, but just call low-level hardware stopping.
+When the chip-data is assigned to the card using
+:c:func:`snd_device_new()` with ``SNDRV_DEV_LOWLELVEL`` , its
+destructor is called at the last. That is, it is assured that all other
+components like PCMs and controls have already been released. You don't
+have to stop PCMs, etc. explicitly, but just call low-level hardware
+stopping.
 
 The management of a memory-mapped region is almost as same as the
 management of an I/O port. You'll need three fields like the following:
@@ -367,8 +375,8 @@ PCI Entries
 ===========
 
 So far, so good. Let's finish the missing PCI stuff. At first, we need a
-``pci_device_id`` table for this chipset. It's a table of PCI
-vendor/device ID number, and some masks.
+:c:type:`struct pci_device_id` table for this chipset. It's a table
+of PCI vendor/device ID number, and some masks.
 
 For example,
 
@@ -383,18 +391,18 @@ For example,
       };
       MODULE_DEVICE_TABLE(pci, snd_mychip_ids);
 
-The first and second fields of the ``pci_device_id`` structure are the
-vendor and device IDs. If you have no reason to filter the matching
-devices, you can leave the remaining fields as above. The last field of
-the ``pci_device_id`` struct contains private data for this entry. You
-can specify any value here, for example, to define specific operations
-for supported device IDs. Such an example is found in the intel8x0
-driver.
+The first and second fields of the :c:type:`struct pci_device_id`
+structure are the vendor and device IDs. If you have no reason to filter
+the matching devices, you can leave the remaining fields as above. The
+last field of the :c:type:`struct pci_device_id` struct contains
+private data for this entry. You can specify any value here, for
+example, to define specific operations for supported device IDs. Such an
+example is found in the intel8x0 driver.
 
 The last entry of this list is the terminator. You must specify this
 all-zero entry.
 
-Then, prepare the ``pci_driver`` record:
+Then, prepare the :c:type:`struct pci_driver` record:
 
 
 .. code-block:: c

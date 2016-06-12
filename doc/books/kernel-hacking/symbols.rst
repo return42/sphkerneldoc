@@ -27,12 +27,13 @@ modules will be able to use the symbol as normal.
 EXPORT_SYMBOL_GPL() include/linux/export.h
 ==========================================
 
-Similar to ``EXPORT_SYMBOL()`` except that the symbols exported by
-``EXPORT_SYMBOL_GPL()`` can only be seen by modules with a
-``MODULE_LICENSE()`` that specifies a GPL compatible license. It implies
-that the function is considered an internal implementation issue, and
-not really an interface. Some maintainers and developers may however
-require EXPORT_SYMBOL_GPL() when adding any new APIs or functionality.
+Similar to :c:func:`EXPORT_SYMBOL()` except that the symbols exported
+by :c:func:`EXPORT_SYMBOL_GPL()` can only be seen by modules with a
+:c:func:`MODULE_LICENSE()` that specifies a GPL compatible license.
+It implies that the function is considered an internal implementation
+issue, and not really an interface. Some maintainers and developers may
+however require EXPORT_SYMBOL_GPL() when adding any new APIs or
+functionality.
 
 
 .. ------------------------------------------------------------------------------

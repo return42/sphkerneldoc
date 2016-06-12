@@ -124,9 +124,10 @@ the contents of the objects are protected by the lock. In this case it's
 easy, since we copy the data for the user, and never let them access the
 objects directly.
 
-There is a slight (and common) optimization here: in ``cache_add`` we
-set up the fields of the object before grabbing the lock. This is safe,
-as no-one else can access it until we put it in cache.
+There is a slight (and common) optimization here: in
+:c:func:`cache_add()` we set up the fields of the object before
+grabbing the lock. This is safe, as no-one else can access it until we
+put it in cache.
 
 
 .. _examples-interrupt:
@@ -134,9 +135,9 @@ as no-one else can access it until we put it in cache.
 Accessing From Interrupt Context
 ================================
 
-Now consider the case where ``cache_find`` can be called from interrupt
-context: either a hardware interrupt or a softirq. An example would be a
-timer which deletes object from the cache.
+Now consider the case where :c:func:`cache_find()` can be called from
+interrupt context: either a hardware interrupt or a softirq. An example
+would be a timer which deletes object from the cache.
 
 The change is shown below, in standard patch format: the ``-`` are lines
 which are taken away, and the ``+`` are lines which are added.
@@ -204,14 +205,16 @@ which are taken away, and the ``+`` are lines which are added.
              return ret;
      }
 
-Note that the ``spin_lock_irqsave`` will turn off interrupts if they are
-on, otherwise does nothing (if we are already in an interrupt handler),
-hence these functions are safe to call from any context.
+Note that the :c:func:`spin_lock_irqsave()` will turn off interrupts
+if they are on, otherwise does nothing (if we are already in an
+interrupt handler), hence these functions are safe to call from any
+context.
 
-Unfortunately, ``cache_add`` calls ``kmalloc`` with the ``GFP_KERNEL``
-flag, which is only legal in user context. I have assumed that
-``cache_add`` is still only called in user context, otherwise this
-should become a parameter to ``cache_add``.
+Unfortunately, :c:func:`cache_add()` calls :c:func:`kmalloc()` with
+the ``GFP_KERNEL`` flag, which is only legal in user context. I have
+assumed that :c:func:`cache_add()` is still only called in user
+context, otherwise this should become a parameter to
+:c:func:`cache_add()`.
 
 
 .. _examples-refcnt:
@@ -231,8 +234,8 @@ This makes locking trickier, as it is no longer all in one place.
 The second problem is the lifetime problem: if another structure keeps a
 pointer to an object, it presumably expects that pointer to remain
 valid. Unfortunately, this is only guaranteed while you hold the lock,
-otherwise someone might call ``cache_delete`` and even worse, add
-another object, re-using the same address.
+otherwise someone might call :c:func:`cache_delete()` and even worse,
+add another object, re-using the same address.
 
 As there is only one lock, you can't hold it forever: no-one else would
 get any work done.
@@ -334,9 +337,10 @@ Here is the code:
      }
 
 We encapsulate the reference counting in the standard 'get' and 'put'
-functions. Now we can return the object itself from ``cache_find`` which
-has the advantage that the user can now sleep holding the object (eg. to
-``copy_to_user`` to name to userspace).
+functions. Now we can return the object itself from
+:c:func:`cache_find()` which has the advantage that the user can now
+sleep holding the object (eg. to :c:func:`copy_to_user()` to name to
+userspace).
 
 The other point to note is that I said a reference should be held for
 every pointer to the object: thus the reference count is 1 when first
@@ -354,9 +358,9 @@ are a number of atomic operations defined in ``include/asm/atomic.h``:
 these are guaranteed to be seen atomically from all CPUs in the system,
 so no lock is required. In this case, it is simpler than using
 spinlocks, although for anything non-trivial using spinlocks is clearer.
-The ``atomic_inc`` and ``atomic_dec_and_test`` are used instead of the
-standard increment and decrement operators, and the lock is no longer
-used to protect the reference count itself.
+The :c:func:`atomic_inc()` and :c:func:`atomic_dec_and_test()`
+are used instead of the standard increment and decrement operators, and
+the lock is no longer used to protect the reference count itself.
 
 
 .. code-block:: c
@@ -450,9 +454,9 @@ name to change, there are three possibilities:
 -  You can make ``cache_lock`` non-static, and tell people to grab that
    lock before changing the name in any object.
 
--  You can provide a ``cache_obj_rename`` which grabs this lock and
-   changes the name for the caller, and tell everyone to use that
-   function.
+-  You can provide a :c:func:`cache_obj_rename()` which grabs this
+   lock and changes the name for the caller, and tell everyone to use
+   that function.
 
 -  You can make the ``cache_lock`` protect only the cache itself, and
    use another lock to protect the name.
@@ -508,14 +512,15 @@ Here is the "lock-per-object" implementation:
 
 Note that I decide that the ``popularity`` count should be protected by
 the ``cache_lock`` rather than the per-object lock: this is because it
-(like the ``struct list_head`` inside the object) is logically part of
-the infrastructure. This way, I don't need to grab the lock of every
-object in ``__cache_add`` when seeking the least popular.
+(like the :c:type:`struct list_head` inside the object) is logically
+part of the infrastructure. This way, I don't need to grab the lock of
+every object in :c:func:`__cache_add()` when seeking the least
+popular.
 
 I also decided that the ``id`` member is unchangeable, so I don't need
-to grab each object lock in ``__cache_find()`` to examine the ``id``:
-the object lock is only used by a caller who wants to read or write the
-``name`` field.
+to grab each object lock in :c:func:`__cache_find()` to examine the
+``id``: the object lock is only used by a caller who wants to read or
+write the ``name`` field.
 
 Note also that I added a comment describing what data was protected by
 which locks. This is extremely important, as it describes the runtime

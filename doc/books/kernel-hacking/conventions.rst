@@ -16,7 +16,7 @@ There used to be three sets of linked-list routines in the kernel
 headers, but this one is the winner. If you don't have some particular
 pressing need for a single list, it's a good choice.
 
-In particular, ``list_for_each_entry`` is useful.
+In particular, :c:func:`list_for_each_entry()` is useful.
 
 
 .. _convention-returns:
@@ -29,10 +29,10 @@ and return 0 for success, and a negative error number (eg. -EFAULT) for
 failure. This can be unintuitive at first, but it's fairly widespread in
 the kernel.
 
-Using ``ERR_PTR()`` ``include/linux/err.h``; to encode a negative error
-number into a pointer, and ``IS_ERR()`` and ``PTR_ERR()`` to get it back
-out again: avoids a separate pointer parameter for the error number.
-Icky, but in a good way.
+Using :c:func:`ERR_PTR()` ``include/linux/err.h``; to encode a
+negative error number into a pointer, and :c:func:`IS_ERR()` and
+:c:func:`PTR_ERR()` to get it back out again: avoids a separate
+pointer parameter for the error number. Icky, but in a good way.
 
 
 .. _conventions-borkedcompile:

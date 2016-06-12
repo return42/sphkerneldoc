@@ -72,9 +72,9 @@ that possible.
 Return Value
 ============
 
-On success ``open`` returns the new file descriptor. On error -1 is
-returned, and the ``errno`` variable is set appropriately. Possible
-error codes are:
+On success :c:func:`open()` returns the new file descriptor. On error
+-1 is returned, and the ``errno`` variable is set appropriately.
+Possible error codes are:
 
 EACCES
     The caller has no permission to access the device.

@@ -17,19 +17,19 @@ The minimum flow for PCI soundcards is as follows:
 -  define the PCI ID table (see the section
    :ref:`PCI Entries <pci-resource-entries>`).
 
--  create ``probe()`` callback.
+-  create :c:func:`probe()` callback.
 
--  create ``remove()`` callback.
+-  create :c:func:`remove()` callback.
 
--  create a ``pci_driver`` structure containing the three pointers
-   above.
+-  create a :c:type:`struct pci_driver` structure containing the
+   three pointers above.
 
--  create an ``init()`` function just calling the
-   ``pci_register_driver()`` to register the pci_driver table defined
-   above.
+-  create an :c:func:`init()` function just calling the
+   :c:func:`pci_register_driver()` to register the pci_driver table
+   defined above.
 
--  create an ``exit()`` function to call the ``pci_unregister_driver()``
-   function.
+-  create an :c:func:`exit()` function to call the
+   :c:func:`pci_unregister_driver()` function.
 
 
 .. _basic-flow-example:
@@ -39,8 +39,8 @@ Full Code Example
 
 The code example is shown below. Some parts are kept unimplemented at
 this moment but will be filled in the next sections. The numbers in the
-comment lines of the ``snd_mychip_probe()`` function refer to details
-explained in the following section.
+comment lines of the :c:func:`snd_mychip_probe()` function refer to
+details explained in the following section.
 
 
 .. code-block:: c
@@ -188,12 +188,12 @@ explained in the following section.
 Constructor
 ===========
 
-The real constructor of PCI drivers is the ``probe`` callback. The
-``probe`` callback and other component-constructors which are called
-from the ``probe`` callback cannot be used with the ``__init`` prefix
-because any PCI device could be a hotplug device.
+The real constructor of PCI drivers is the :c:func:`probe()` callback.
+The :c:func:`probe()` callback and other component-constructors which
+are called from the :c:func:`probe()` callback cannot be used with the
+``__init`` prefix because any PCI device could be a hotplug device.
 
-In the ``probe`` callback, the following scheme is often used.
+In the :c:func:`probe()` callback, the following scheme is often used.
 
 
 .. _basic-flow-constructor-device-index:
@@ -215,9 +215,9 @@ In the ``probe`` callback, the following scheme is often used.
 
 where enable[dev] is the module option.
 
-Each time the ``probe`` callback is called, check the availability of
-the device. If not available, simply increment the device index and
-returns. dev will be incremented also later
+Each time the :c:func:`probe()` callback is called, check the
+availability of the device. If not available, simply increment the
+device index and returns. dev will be incremented also later
 (:ref:`step 7 <basic-flow-constructor-set-pci>`).
 
 
@@ -377,8 +377,8 @@ without module options don't need them.
 
 In addition to these headers, you'll need ``<linux/interrupt.h>`` for
 interrupt handling, and ``<asm/io.h>`` for I/O access. If you use the
-``mdelay()`` or ``udelay()`` functions, you'll need to include
-``<linux/delay.h>`` too.
+:c:func:`mdelay()` or :c:func:`udelay()` functions, you'll need to
+include ``<linux/delay.h>`` too.
 
 The ALSA interfaces like the PCM and control APIs are defined in other
 ``<sound/xxx.h>`` header files. They have to be included after

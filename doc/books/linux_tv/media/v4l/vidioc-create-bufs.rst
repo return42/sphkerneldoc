@@ -39,10 +39,10 @@ over buffers is required. This ioctl can be called multiple times to
 create buffers of different sizes.
 
 To allocate the device buffers applications must initialize the relevant
-fields of the ``v4l2_create_buffers`` structure. The ``count`` field
-must be set to the number of requested buffers, the ``memory`` field
-specifies the requested I/O method and the ``reserved`` array must be
-zeroed.
+fields of the :c:type:`struct v4l2_create_buffers` structure. The
+``count`` field must be set to the number of requested buffers, the
+``memory`` field specifies the requested I/O method and the ``reserved``
+array must be zeroed.
 
 The ``format`` field specifies the image format that the buffers must be
 able to handle. The application has to fill in this struct

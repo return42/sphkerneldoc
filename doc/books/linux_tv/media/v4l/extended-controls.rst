@@ -66,9 +66,9 @@ whether the specified control class is supported.
 
 The control array is a struct
 :ref:`v4l2_ext_control <v4l2-ext-control>` array. The
-``v4l2_ext_control`` structure is very similar to struct
-:ref:`v4l2_control <v4l2-control>`, except for the fact that it also
-allows for 64-bit values and pointers to be passed.
+:c:type:`struct v4l2_ext_control` structure is very similar to
+struct :ref:`v4l2_control <v4l2-control>`, except for the fact that
+it also allows for 64-bit values and pointers to be passed.
 
 Since the struct :ref:`v4l2_ext_control <v4l2-ext-control>` supports
 pointers it is now also possible to have controls with compound types

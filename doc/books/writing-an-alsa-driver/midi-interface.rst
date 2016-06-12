@@ -26,7 +26,7 @@ mpu401 stuff. For example, emu10k1 has its own mpu401 routines.
 Constructor
 ===========
 
-To create a rawmidi object, call ``snd_mpu401_uart_new()``.
+To create a rawmidi object, call :c:func:`snd_mpu401_uart_new()`.
 
 
 .. code-block:: c
@@ -57,12 +57,12 @@ respectively. Then the rawmidi instance is created as a single stream.
 
 ``MPU401_INFO_MMIO`` bitflag is used to change the access method to MMIO
 (via readb and writeb) instead of iob and outb. In this case, you have
-to pass the iomapped address to ``snd_mpu401_uart_new()``.
+to pass the iomapped address to :c:func:`snd_mpu401_uart_new()`.
 
 When ``MPU401_INFO_TX_IRQ`` is set, the output stream isn't checked in
 the default interrupt handler. The driver needs to call
-``snd_mpu401_uart_interrupt_tx()`` by itself to start processing the
-output stream in the irq handler.
+:c:func:`snd_mpu401_uart_interrupt_tx()` by itself to start
+processing the output stream in the irq handler.
 
 If the MPU-401 interface shares its interrupt with the other logical
 devices on the card, set ``MPU401_INFO_IRQ_HOOK`` (see
@@ -70,9 +70,10 @@ devices on the card, set ``MPU401_INFO_IRQ_HOOK`` (see
 
 Usually, the port address corresponds to the command port and port + 1
 corresponds to the data port. If not, you may change the ``cport`` field
-of struct ``snd_mpu401`` manually afterward. However, ``snd_mpu401``
-pointer is not returned explicitly by ``snd_mpu401_uart_new()``. You
-need to cast rmidi->private_data to ``snd_mpu401`` explicitly,
+of struct :c:type:`struct snd_mpu401` manually afterward. However,
+:c:type:`struct snd_mpu401` pointer is not returned explicitly by
+:c:func:`snd_mpu401_uart_new()`. You need to cast
+rmidi->private_data to :c:type:`struct snd_mpu401` explicitly,
 
 
 .. code-block:: c
@@ -99,16 +100,17 @@ will be used instead.
 Interrupt Handler
 =================
 
-When the interrupt is allocated in ``snd_mpu401_uart_new()``, an
-exclusive ISA interrupt handler is automatically used, hence you don't
-have anything else to do than creating the mpu401 stuff. Otherwise, you
-have to set ``MPU401_INFO_IRQ_HOOK``, and call
-``snd_mpu401_uart_interrupt()`` explicitly from your own interrupt
-handler when it has determined that a UART interrupt has occurred.
+When the interrupt is allocated in :c:func:`snd_mpu401_uart_new()`,
+an exclusive ISA interrupt handler is automatically used, hence you
+don't have anything else to do than creating the mpu401 stuff.
+Otherwise, you have to set ``MPU401_INFO_IRQ_HOOK``, and call
+:c:func:`snd_mpu401_uart_interrupt()` explicitly from your own
+interrupt handler when it has determined that a UART interrupt has
+occurred.
 
 In this case, you need to pass the private_data of the returned rawmidi
-object from ``snd_mpu401_uart_new()`` as the second argument of
-``snd_mpu401_uart_interrupt()``.
+object from :c:func:`snd_mpu401_uart_new()` as the second argument
+of :c:func:`snd_mpu401_uart_interrupt()`.
 
 
 .. code-block:: c

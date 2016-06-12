@@ -43,13 +43,13 @@ this structure.
 The ``cmd`` field must contain the command code. Some commands use the
 ``flags`` field for additional information.
 
-A ``write`` () or :ref:`VIDIOC_STREAMON <vidioc-streamon>` call
-sends an implicit START command to the decoder if it has not been
+A :c:func:`write()`() or :ref:`VIDIOC_STREAMON <vidioc-streamon>`
+call sends an implicit START command to the decoder if it has not been
 started yet.
 
-A ``close`` () or :ref:`VIDIOC_STREAMOFF <vidioc-streamon>` call of
-a streaming file descriptor sends an implicit immediate STOP command to
-the decoder, and all buffered data is discarded.
+A :c:func:`close()`() or :ref:`VIDIOC_STREAMOFF <vidioc-streamon>`
+call of a streaming file descriptor sends an implicit immediate STOP
+command to the decoder, and all buffered data is discarded.
 
 These ioctls are optional, not all drivers may support them. They were
 introduced in Linux 3.3.

@@ -30,19 +30,20 @@ hardware, which may be as simple as a set of GPIO pins or as complex as
 a pair of FIFOs connected to dual DMA engines on the other side of the
 SPI shift register (maximizing throughput). Such drivers bridge between
 whatever bus they sit on (often the platform bus) and SPI, and expose
-the SPI side of their device as a ``struct spi_master``. SPI devices are
-children of that master, represented as a ``struct spi_device`` and
-manufactured from ``struct spi_board_info`` descriptors which are
-usually provided by board-specific initialization code. A
-``struct spi_driver`` is called a "Protocol Driver", and is bound to a
-spi_device using normal driver model calls.
+the SPI side of their device as a :c:type:`struct spi_master`. SPI
+devices are children of that master, represented as a
+:c:type:`struct spi_device` and manufactured from
+:c:type:`struct spi_board_info` descriptors which are usually
+provided by board-specific initialization code. A
+:c:type:`struct spi_driver` is called a "Protocol Driver", and is
+bound to a spi_device using normal driver model calls.
 
 The I/O model is a set of queued messages. Protocol drivers submit one
-or more ``struct spi_message`` objects, which are processed and
+or more :c:type:`struct spi_message` objects, which are processed and
 completed asynchronously. (There are synchronous wrappers, however.)
-Messages are built from one or more ``struct spi_transfer`` objects,
-each of which wraps a full duplex SPI transfer. A variety of protocol
-tweaking options are needed, because different chips adopt very
+Messages are built from one or more :c:type:`struct spi_transfer`
+objects, each of which wraps a full duplex SPI transfer. A variety of
+protocol tweaking options are needed, because different chips adopt very
 different policies for how they use the bits transferred with SPI.
 
 

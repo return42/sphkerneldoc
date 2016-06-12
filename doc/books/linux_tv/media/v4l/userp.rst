@@ -93,8 +93,8 @@ outputted buffers.
 
 Drivers implementing user pointer I/O must support the
 ``VIDIOC_REQBUFS``, ``VIDIOC_QBUF``, ``VIDIOC_DQBUF``,
-``VIDIOC_STREAMON`` and ``VIDIOC_STREAMOFF`` ioctl, the ``select()`` and
-``poll()`` function. [2]_
+``VIDIOC_STREAMON`` and ``VIDIOC_STREAMOFF`` ioctl, the
+:c:func:`select()` and :c:func:`poll()` function. [2]_
 
 .. [1]
    We expect that frequently used buffers are typically not swapped out.
@@ -109,9 +109,9 @@ Drivers implementing user pointer I/O must support the
    because an application may share them with other processes.
 
 .. [2]
-   At the driver level ``select()`` and ``poll()`` are the same, and
-   ``select()`` is too important to be optional. The rest should be
-   evident.
+   At the driver level :c:func:`select()` and :c:func:`poll()` are
+   the same, and :c:func:`select()` is too important to be optional.
+   The rest should be evident.
 
 
 .. ------------------------------------------------------------------------------

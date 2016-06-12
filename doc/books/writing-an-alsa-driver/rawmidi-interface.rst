@@ -27,7 +27,8 @@ The rawmidi API is defined in ``<sound/rawmidi.h>``.
 Constructor
 ===========
 
-To create a rawmidi device, call the ``snd_rawmidi_new`` function:
+To create a rawmidi device, call the :c:func:`snd_rawmidi_new()`
+function:
 
 
 .. code-block:: c
@@ -142,8 +143,8 @@ close callback
 
 Guess what.
 
-The ``open`` and ``close`` callbacks of a rawmidi device are serialized
-with a mutex, and can sleep.
+The :c:func:`open()` and :c:func:`close()` callbacks of a rawmidi
+device are serialized with a mutex, and can sleep.
 
 
 .. _rawmidi-interface-op-trigger-out:
@@ -159,12 +160,13 @@ trigger callback for output substreams
 This is called with a nonzero ``up`` parameter when there is some data
 in the substream buffer that must be transmitted.
 
-To read data from the buffer, call ``snd_rawmidi_transmit_peek``. It
-will return the number of bytes that have been read; this will be less
-than the number of bytes requested when there are no more data in the
-buffer. After the data have been transmitted successfully, call
-``snd_rawmidi_transmit_ack`` to remove the data from the substream
-buffer:
+To read data from the buffer, call
+:c:func:`snd_rawmidi_transmit_peek()`. It will return the number of
+bytes that have been read; this will be less than the number of bytes
+requested when there are no more data in the buffer. After the data have
+been transmitted successfully, call
+:c:func:`snd_rawmidi_transmit_ack()` to remove the data from the
+substream buffer:
 
 
 .. code-block:: c
@@ -178,8 +180,8 @@ buffer:
       }
 
 If you know beforehand that the hardware will accept data, you can use
-the ``snd_rawmidi_transmit`` function which reads some data and removes
-them from the buffer at once:
+the :c:func:`snd_rawmidi_transmit()` function which reads some data
+and removes them from the buffer at once:
 
 
 .. code-block:: c
@@ -192,16 +194,16 @@ them from the buffer at once:
       }
 
 If you know beforehand how many bytes you can accept, you can use a
-buffer size greater than one with the ``snd_rawmidi_transmit*``
-functions.
+buffer size greater than one with the
+:c:func:`snd_rawmidi_transmit*()` functions.
 
-The ``trigger`` callback must not sleep. If the hardware FIFO is full
-before the substream buffer has been emptied, you have to continue
-transmitting data later, either in an interrupt handler, or with a timer
-if the hardware doesn't have a MIDI transmit interrupt.
+The :c:func:`trigger()` callback must not sleep. If the hardware FIFO
+is full before the substream buffer has been emptied, you have to
+continue transmitting data later, either in an interrupt handler, or
+with a timer if the hardware doesn't have a MIDI transmit interrupt.
 
-The ``trigger`` callback is called with a zero ``up`` parameter when the
-transmission of data should be aborted.
+The :c:func:`trigger()` callback is called with a zero ``up``
+parameter when the transmission of data should be aborted.
 
 
 .. _rawmidi-interface-op-trigger-in:
@@ -217,11 +219,11 @@ trigger callback for input substreams
 This is called with a nonzero ``up`` parameter to enable receiving data,
 or with a zero ``up`` parameter do disable receiving data.
 
-The ``trigger`` callback must not sleep; the actual reading of data from
-the device is usually done in an interrupt handler.
+The :c:func:`trigger()` callback must not sleep; the actual reading of
+data from the device is usually done in an interrupt handler.
 
 When data reception is enabled, your interrupt handler should call
-``snd_rawmidi_receive`` for all received data:
+:c:func:`snd_rawmidi_receive()` for all received data:
 
 
 .. code-block:: c

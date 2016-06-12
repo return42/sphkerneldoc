@@ -9,9 +9,10 @@ The V4L2 API defines several different methods to read from or write to
 a device. All drivers exchanging data with applications must support at
 least one of them.
 
-The classic I/O method using the ``read()`` and ``write()`` function is
-automatically selected after opening a V4L2 device. When the driver does
-not support this method attempts to read or write will fail at any time.
+The classic I/O method using the :c:func:`read()` and
+:c:func:`write()` function is automatically selected after opening a
+V4L2 device. When the driver does not support this method attempts to
+read or write will fail at any time.
 
 Other methods must be negotiated. To select the streaming I/O method
 with memory mapped or user buffers applications call the

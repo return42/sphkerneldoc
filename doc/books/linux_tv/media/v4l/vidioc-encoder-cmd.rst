@@ -48,15 +48,16 @@ currently only used by the STOP command and contains one bit: If the
 until the end of the current *Group Of Pictures*, otherwise it will stop
 immediately.
 
-A ``read`` () or :ref:`VIDIOC_STREAMON <vidioc-streamon>` call sends
-an implicit START command to the encoder if it has not been started yet.
-After a STOP command, ``read``\ () calls will read the remaining data
-buffered by the driver. When the buffer is empty, ``read``\ () will
-return zero and the next ``read``\ () call will restart the encoder.
+A :c:func:`read()`() or :ref:`VIDIOC_STREAMON <vidioc-streamon>`
+call sends an implicit START command to the encoder if it has not been
+started yet. After a STOP command, :c:func:`read()`() calls will read
+the remaining data buffered by the driver. When the buffer is empty,
+:c:func:`read()`() will return zero and the next :c:func:`read()`()
+call will restart the encoder.
 
-A ``close`` () or :ref:`VIDIOC_STREAMOFF <vidioc-streamon>` call of
-a streaming file descriptor sends an implicit immediate STOP to the
-encoder, and all buffered data is discarded.
+A :c:func:`close()`() or :ref:`VIDIOC_STREAMOFF <vidioc-streamon>`
+call of a streaming file descriptor sends an implicit immediate STOP to
+the encoder, and all buffered data is discarded.
 
 These ioctls are optional, not all drivers may support them. They were
 introduced in Linux 2.6.21.

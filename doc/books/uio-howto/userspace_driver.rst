@@ -45,13 +45,13 @@ mmap() device memory
 ====================
 
 After you made sure you've got the right device with the memory mappings
-you need, all you have to do is to call ``mmap()`` to map the device's
-memory to userspace.
+you need, all you have to do is to call :c:func:`mmap()` to map the
+device's memory to userspace.
 
-The parameter ``offset`` of the ``mmap()`` call has a special meaning
-for UIO devices: It is used to select which mapping of your device you
-want to map. To map the memory of mapping N, you have to use N times the
-page size as your offset:
+The parameter ``offset`` of the :c:func:`mmap()` call has a special
+meaning for UIO devices: It is used to select which mapping of your
+device you want to map. To map the memory of mapping N, you have to use
+N times the page size as your offset:
 
 
 .. code-block:: c
@@ -74,15 +74,16 @@ After that, your hardware starts working and will generate an interrupt
 as soon as it's finished, has some data available, or needs your
 attention because an error occurred.
 
-``/dev/uioX`` is a read-only file. A ``read()`` will always block until
-an interrupt occurs. There is only one legal value for the ``count``
-parameter of ``read()``, and that is the size of a signed 32 bit integer
-(4). Any other value for ``count`` causes ``read()`` to fail. The signed
-32 bit integer read is the interrupt count of your device. If the value
-is one more than the value you read the last time, everything is OK. If
-the difference is greater than one, you missed interrupts.
+``/dev/uioX`` is a read-only file. A :c:func:`read()` will always
+block until an interrupt occurs. There is only one legal value for the
+``count`` parameter of :c:func:`read()`, and that is the size of a
+signed 32 bit integer (4). Any other value for ``count`` causes
+:c:func:`read()` to fail. The signed 32 bit integer read is the
+interrupt count of your device. If the value is one more than the value
+you read the last time, everything is OK. If the difference is greater
+than one, you missed interrupts.
 
-You can also use ``select()`` on ``/dev/uioX``.
+You can also use :c:func:`select()` on ``/dev/uioX``.
 
 
 .. ------------------------------------------------------------------------------

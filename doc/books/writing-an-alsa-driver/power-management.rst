@@ -8,7 +8,7 @@ Power Management
 
 If the chip is supposed to work with suspend/resume functions, you need
 to add power-management code to the driver. The additional code for
-power-management should be ``ifdef``'ed with ``CONFIG_PM``.
+power-management should be :c:func:`ifdef()`'ed with ``CONFIG_PM``.
 
 If the driver *fully* supports suspend/resume that is, the device can be
 properly resumed to its state when suspend was called, you can set the
@@ -20,14 +20,14 @@ to RAM. If this is set, the trigger callback is called with
 Even if the driver doesn't support PM fully but partial suspend/resume
 is still possible, it's still worthy to implement suspend/resume
 callbacks. In such a case, applications would reset the status by
-calling ``snd_pcm_prepare()`` and restart the stream appropriately.
-Hence, you can define suspend/resume callbacks below but don't set
-``SNDRV_PCM_INFO_RESUME`` info flag to the PCM.
+calling :c:func:`snd_pcm_prepare()` and restart the stream
+appropriately. Hence, you can define suspend/resume callbacks below but
+don't set ``SNDRV_PCM_INFO_RESUME`` info flag to the PCM.
 
 Note that the trigger with SUSPEND can always be called when
-``snd_pcm_suspend_all`` is called, regardless of the
+:c:func:`snd_pcm_suspend_all()` is called, regardless of the
 ``SNDRV_PCM_INFO_RESUME`` flag. The ``RESUME`` flag affects only the
-behavior of ``snd_pcm_resume()``. (Thus, in theory,
+behavior of :c:func:`snd_pcm_resume()`. (Thus, in theory,
 ``SNDRV_PCM_TRIGGER_RESUME`` isn't needed to be handled in the trigger
 callback when no ``SNDRV_PCM_INFO_RESUME`` flag is set. But, it's better
 to keep it for compatibility reasons.)
@@ -57,19 +57,21 @@ The scheme of the real suspend job is as follows.
 
 1. Retrieve the card and the chip data.
 
-2. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D3hot`` to
-   change the power status.
+2. Call :c:func:`snd_power_change_state()` with
+   ``SNDRV_CTL_POWER_D3hot`` to change the power status.
 
-3. Call ``snd_pcm_suspend_all()`` to suspend the running PCM streams.
+3. Call :c:func:`snd_pcm_suspend_all()` to suspend the running PCM
+   streams.
 
-4. If AC97 codecs are used, call ``snd_ac97_suspend()`` for each codec.
+4. If AC97 codecs are used, call :c:func:`snd_ac97_suspend()` for
+   each codec.
 
 5. Save the register values if necessary.
 
 6. Stop the hardware if necessary.
 
-7. Disable the PCI device by calling ``pci_disable_device()``. Then,
-   call ``pci_save_state()`` at last.
+7. Disable the PCI device by calling :c:func:`pci_disable_device()`.
+   Then, call :c:func:`pci_save_state()` at last.
 
 A typical code would be like:
 
@@ -101,20 +103,21 @@ The scheme of the real resume job is as follows.
 
 1. Retrieve the card and the chip data.
 
-2. Set up PCI. First, call ``pci_restore_state()``. Then enable the pci
-   device again by calling ``pci_enable_device()``. Call
-   ``pci_set_master()`` if necessary, too.
+2. Set up PCI. First, call :c:func:`pci_restore_state()`. Then
+   enable the pci device again by calling
+   :c:func:`pci_enable_device()`. Call
+   :c:func:`pci_set_master()` if necessary, too.
 
 3. Re-initialize the chip.
 
 4. Restore the saved registers if necessary.
 
-5. Resume the mixer, e.g. calling ``snd_ac97_resume()``.
+5. Resume the mixer, e.g. calling :c:func:`snd_ac97_resume()`.
 
 6. Restart the hardware (if any).
 
-7. Call ``snd_power_change_state()`` with ``SNDRV_CTL_POWER_D0`` to
-   notify the processes.
+7. Call :c:func:`snd_power_change_state()` with
+   ``SNDRV_CTL_POWER_D0`` to notify the processes.
 
 A typical code would be like:
 
@@ -144,11 +147,12 @@ A typical code would be like:
       }
 
 As shown in the above, it's better to save registers after suspending
-the PCM operations via ``snd_pcm_suspend_all()`` or
-``snd_pcm_suspend()``. It means that the PCM streams are already stopped
-when the register snapshot is taken. But, remember that you don't have
-to restart the PCM stream in the resume callback. It'll be restarted via
-trigger call with ``SNDRV_PCM_TRIGGER_RESUME`` when necessary.
+the PCM operations via :c:func:`snd_pcm_suspend_all()` or
+:c:func:`snd_pcm_suspend()`. It means that the PCM streams are
+already stopped when the register snapshot is taken. But, remember that
+you don't have to restart the PCM stream in the resume callback. It'll
+be restarted via trigger call with ``SNDRV_PCM_TRIGGER_RESUME`` when
+necessary.
 
 OK, we have all callbacks now. Let's set them up. In the initialization
 of the card, make sure that you can get the chip data from the card
@@ -175,8 +179,8 @@ chip data individually.
               ....
       }
 
-When you created the chip data with ``snd_card_new()``, it's anyway
-accessible via ``private_data`` field.
+When you created the chip data with :c:func:`snd_card_new()`, it's
+anyway accessible via ``private_data`` field.
 
 
 .. code-block:: c

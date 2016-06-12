@@ -22,13 +22,14 @@ are starting with one. Physical addresses are of type unsigned long.
 
 This address should not be used directly. Instead, to get an address
 suitable for passing to the accessor functions described below, you
-should call ``ioremap``. An address suitable for accessing the device
-will be returned to you.
+should call :c:func:`ioremap()`. An address suitable for accessing the
+device will be returned to you.
 
 After you've finished using the device (say, in your module's exit
-routine), call ``iounmap`` in order to return the address space to the
-kernel. Most architectures allocate new address space each time you call
-``ioremap``, and they can run out unless you call ``iounmap``.
+routine), call :c:func:`iounmap()` in order to return the address
+space to the kernel. Most architectures allocate new address space each
+time you call :c:func:`ioremap()`, and they can run out unless you
+call :c:func:`iounmap()`.
 
 
 .. _accessing_the_device:
@@ -43,21 +44,22 @@ historical accident, these are named byte, word, long and quad accesses.
 Both read and write accesses are supported; there is no prefetch support
 at this time.
 
-The functions are named ``readb``, ``readw``, ``readl``, ``readq``,
-``readb_relaxed``, ``readw_relaxed``, ``readl_relaxed``,
-``readq_relaxed``, ``writeb``, ``writew``, ``writel`` and ``writeq``.
+The functions are named :c:func:`readb()`, :c:func:`readw()`,
+:c:func:`readl()`, :c:func:`readq()`, :c:func:`readb_relaxed()`,
+:c:func:`readw_relaxed()`, :c:func:`readl_relaxed()`,
+:c:func:`readq_relaxed()`, :c:func:`writeb()`,
+:c:func:`writew()`, :c:func:`writel()` and :c:func:`writeq()`.
 
 Some devices (such as framebuffers) would like to use larger transfers
-than 8 bytes at a time. For these devices, the ``memcpy_toio``,
-``memcpy_fromio`` and ``memset_io`` functions are provided. Do not use
-memset or memcpy on IO addresses; they are not guaranteed to copy data
-in order.
+than 8 bytes at a time. For these devices, the
+:c:func:`memcpy_toio()`, :c:func:`memcpy_fromio()` and
+:c:func:`memset_io()` functions are provided. Do not use memset or
+memcpy on IO addresses; they are not guaranteed to copy data in order.
 
 The read and write functions are defined to be ordered. That is the
 compiler is not permitted to reorder the I/O sequence. When the ordering
-can be compiler optimised, you can use ``
-    __readb`` and friends to indicate the relaxed ordering. Use this
-with care.
+can be compiler optimised, you can use :c:func:`__readb()` and
+friends to indicate the relaxed ordering. Use this with care.
 
 While the basic functions are defined to be synchronous with respect to
 each other and ordered with respect to each other the busses the devices
@@ -99,19 +101,19 @@ In addition to write posting, on some large multiprocessing systems
 (e.g. SGI Challenge, Origin and Altix machines) posted writes won't be
 strongly ordered coming from different CPUs. Thus it's important to
 properly protect parts of your driver that do memory-mapped writes with
-locks and use the ``mmiowb`` to make sure they arrive in the order
-intended. Issuing a regular ``readX
-    `` will also ensure write ordering, but should only be used when the
-driver has to be sure that the write has actually arrived at the device
-(not that it's simply ordered with respect to other writes), since a
-full ``readX`` is a relatively expensive operation.
+locks and use the :c:func:`mmiowb()` to make sure they arrive in the
+order intended. Issuing a regular :c:func:`readX()` will also ensure
+write ordering, but should only be used when the driver has to be sure
+that the write has actually arrived at the device (not that it's simply
+ordered with respect to other writes), since a full :c:func:`readX()`
+is a relatively expensive operation.
 
-Generally, one should use ``mmiowb`` prior to releasing a spinlock that
-protects regions using ``writeb
-    `` or similar functions that aren't surrounded by ``
-    readb`` calls, which will ensure ordering and flushing. The
-following pseudocode illustrates what might occur if write ordering
-isn't guaranteed via ``mmiowb`` or one of the ``readX`` functions.
+Generally, one should use :c:func:`mmiowb()` prior to releasing a
+spinlock that protects regions using :c:func:`writeb()` or similar
+functions that aren't surrounded by :c:func:`readb()` calls, which
+will ensure ordering and flushing. The following pseudocode illustrates
+what might occur if write ordering isn't guaranteed via
+:c:func:`mmiowb()` or one of the :c:func:`readX()` functions.
 
 
 .. code-block:: c
@@ -144,22 +146,22 @@ Fixing it is easy though:
     CPU B:  mmiowb();
     CPU B:  spin_unlock_irqrestore(&dev_lock, flags)
 
-See tg3.c for a real world example of how to use ``mmiowb
-    ``
+See tg3.c for a real world example of how to use :c:func:`mmiowb()`
 
 PCI ordering rules also guarantee that PIO read responses arrive after
 any outstanding DMA writes from that bus, since for some devices the
-result of a ``readb`` call may signal to the driver that a DMA
+result of a :c:func:`readb()` call may signal to the driver that a DMA
 transaction is complete. In many cases, however, the driver may want to
-indicate that the next ``readb`` call has no relation to any previous
-DMA writes performed by the device. The driver can use ``readb_relaxed``
-for these cases, although only some platforms will honor the relaxed
-semantics. Using the relaxed read functions will provide significant
-performance benefits on platforms that support it. The qla2xxx driver
-provides examples of how to use ``readX_relaxed``. In many cases, a
-majority of the driver's ``readX`` calls can safely be converted to
-``readX_relaxed`` calls, since only a few will indicate or depend on DMA
-completion.
+indicate that the next :c:func:`readb()` call has no relation to any
+previous DMA writes performed by the device. The driver can use
+:c:func:`readb_relaxed()` for these cases, although only some
+platforms will honor the relaxed semantics. Using the relaxed read
+functions will provide significant performance benefits on platforms
+that support it. The qla2xxx driver provides examples of how to use
+:c:func:`readX_relaxed()`. In many cases, a majority of the driver's
+:c:func:`readX()` calls can safely be converted to
+:c:func:`readX_relaxed()` calls, since only a few will indicate or
+depend on DMA completion.
 
 
 .. ------------------------------------------------------------------------------

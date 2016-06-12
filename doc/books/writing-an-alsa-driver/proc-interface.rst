@@ -11,7 +11,7 @@ useful for debugging. I recommend you set up proc files if you write a
 driver and want to get a running status or register dumps. The API is
 found in ``<sound/info.h>``.
 
-To create a proc file, call ``snd_card_proc_new()``.
+To create a proc file, call :c:func:`snd_card_proc_new()`.
 
 
 .. code-block:: c
@@ -24,14 +24,14 @@ created. The above example will create a file ``my-file`` under the card
 directory, e.g. ``/proc/asound/card0/my-file``.
 
 Like other components, the proc entry created via
-``snd_card_proc_new()`` will be registered and released automatically in
-the card registration and release functions.
+:c:func:`snd_card_proc_new()` will be registered and released
+automatically in the card registration and release functions.
 
 When the creation is successful, the function stores a new instance in
 the pointer given in the third argument. It is initialized as a text
 proc file for read only. To use this proc file as a read-only text file
 as it is, set the read callback with a private data via
-``snd_info_set_text_ops()``.
+:c:func:`snd_info_set_text_ops()`.
 
 
 .. code-block:: c
@@ -49,8 +49,8 @@ like
       static void my_proc_read(struct snd_info_entry *entry,
                                struct snd_info_buffer *buffer);
 
-In the read callback, use ``snd_iprintf()`` for output strings, which
-works just like normal ``printf()``. For example,
+In the read callback, use :c:func:`snd_iprintf()` for output strings,
+which works just like normal :c:func:`printf()`. For example,
 
 
 .. code-block:: c
@@ -80,10 +80,10 @@ and set the write buffer size and the callback
 
       entry->c.text.write = my_proc_write;
 
-For the write callback, you can use ``snd_info_get_line()`` to get a
-text line, and ``snd_info_get_str()`` to retrieve a string from the
-line. Some examples are found in ``core/oss/mixer_oss.c``, core/oss/and
-``pcm_oss.c``.
+For the write callback, you can use :c:func:`snd_info_get_line()`
+to get a text line, and :c:func:`snd_info_get_str()` to retrieve a
+string from the line. Some examples are found in
+``core/oss/mixer_oss.c``, core/oss/and ``pcm_oss.c``.
 
 For a raw-data proc-file, set the attributes as follows:
 
@@ -105,7 +105,7 @@ the maximum size of the proc file access.
 
 The read/write callbacks of raw mode are more direct than the text mode.
 You need to use a low-level I/O functions such as
-``copy_from/to_user()`` to transfer the data.
+:c:func:`copy_from/to_user()` to transfer the data.
 
 
 .. code-block:: c

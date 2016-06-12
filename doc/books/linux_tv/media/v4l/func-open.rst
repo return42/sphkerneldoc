@@ -45,20 +45,20 @@ Arguments
 Description
 ===========
 
-To open a V4L2 device applications call ``open()`` with the desired
-device name. This function has no side effects; all data format
+To open a V4L2 device applications call :c:func:`open()` with the
+desired device name. This function has no side effects; all data format
 parameters, current input or output, control values or other properties
-remain unchanged. At the first ``open()`` call after loading the driver
-they will be reset to default values, drivers are never in an undefined
-state.
+remain unchanged. At the first :c:func:`open()` call after loading the
+driver they will be reset to default values, drivers are never in an
+undefined state.
 
 
 Return Value
 ============
 
-On success ``open`` returns the new file descriptor. On error -1 is
-returned, and the ``errno`` variable is set appropriately. Possible
-error codes are:
+On success :c:func:`open()` returns the new file descriptor. On error
+-1 is returned, and the ``errno`` variable is set appropriately.
+Possible error codes are:
 
 EACCES
     The caller has no permission to access the device.

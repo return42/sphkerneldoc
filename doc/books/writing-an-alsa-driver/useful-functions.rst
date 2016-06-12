@@ -12,27 +12,28 @@ Useful Functions
 snd_printk() and friends
 ========================
 
-ALSA provides a verbose version of the ``printk()`` function. If a
-kernel config ``CONFIG_SND_VERBOSE_PRINTK`` is set, this function prints
-the given message together with the file name and the line of the
+ALSA provides a verbose version of the :c:func:`printk()` function. If
+a kernel config ``CONFIG_SND_VERBOSE_PRINTK`` is set, this function
+prints the given message together with the file name and the line of the
 caller. The ``KERN_XXX`` prefix is processed as well as the original
-``printk()`` does, so it's recommended to add this prefix, e.g.
+:c:func:`printk()` does, so it's recommended to add this prefix, e.g.
 
 
 .. code-block:: c
 
       snd_printk(KERN_ERR "Oh my, sorry, it's extremely bad!n");
 
-There are also ``printk()``'s for debugging. ``snd_printd()`` can be
-used for general debugging purposes. If ``CONFIG_SND_DEBUG`` is set,
-this function is compiled, and works just like ``snd_printk()``. If the
-ALSA is compiled without the debugging flag, it's ignored.
+There are also :c:func:`printk()`'s for debugging.
+:c:func:`snd_printd()` can be used for general debugging purposes. If
+``CONFIG_SND_DEBUG`` is set, this function is compiled, and works just
+like :c:func:`snd_printk()`. If the ALSA is compiled without the
+debugging flag, it's ignored.
 
-``snd_printdd()`` is compiled in only when ``CONFIG_SND_DEBUG_VERBOSE``
-is set. Please note that ``CONFIG_SND_DEBUG_VERBOSE`` is not set as
-default even if you configure the alsa-driver with ``--with-debug=full``
-option. You need to give explicitly ``--with-debug=detect`` option
-instead.
+:c:func:`snd_printdd()` is compiled in only when
+``CONFIG_SND_DEBUG_VERBOSE`` is set. Please note that
+``CONFIG_SND_DEBUG_VERBOSE`` is not set as default even if you configure
+the alsa-driver with ``--with-debug=full`` option. You need to give
+explicitly ``--with-debug=detect`` option instead.
 
 
 .. _useful-functions-snd-bug:
@@ -40,8 +41,9 @@ instead.
 snd_BUG()
 =========
 
-It shows the ``BUG?`` message and stack trace as well as ``snd_BUG_ON``
-at the point. It's useful to show that a fatal error happens there.
+It shows the ``BUG?`` message and stack trace as well as
+:c:func:`snd_BUG_ON()` at the point. It's useful to show that a
+fatal error happens there.
 
 When no debug flag is set, this macro is ignored.
 
@@ -51,7 +53,8 @@ When no debug flag is set, this macro is ignored.
 snd_BUG_ON()
 ============
 
-``snd_BUG_ON()`` macro is similar with ``WARN_ON()`` macro. For example,
+:c:func:`snd_BUG_ON()` macro is similar with :c:func:`WARN_ON()`
+macro. For example,
 
 
 .. code-block:: c

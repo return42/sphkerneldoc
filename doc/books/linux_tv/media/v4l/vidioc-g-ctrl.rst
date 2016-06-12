@@ -33,10 +33,11 @@ Description
 ===========
 
 To get the current value of a control applications initialize the ``id``
-field of a struct ``v4l2_control`` and call the ``VIDIOC_G_CTRL`` ioctl
-with a pointer to this structure. To change the value of a control
-applications initialize the ``id`` and ``value`` fields of a struct
-``v4l2_control`` and call the ``VIDIOC_S_CTRL`` ioctl.
+field of a struct :c:type:`struct v4l2_control` and call the
+``VIDIOC_G_CTRL`` ioctl with a pointer to this structure. To change the
+value of a control applications initialize the ``id`` and ``value``
+fields of a struct :c:type:`struct v4l2_control` and call the
+``VIDIOC_S_CTRL`` ioctl.
 
 When the ``id`` is invalid drivers return an EINVAL error code. When the
 ``value`` is out of bounds drivers can choose to take the closest valid

@@ -21,11 +21,12 @@ interfaces. Not all host controllers use DMA; some use PIO, and there is
 also a simulator.
 
 The same basic APIs are available to drivers for all those controllers.
-For historical reasons they are in two layers: ``struct usb_bus`` is a
-rather thin layer that became available in the 2.2 kernels, while
-``struct usb_hcd`` is a more featureful layer (available in later 2.4
-kernels and in 2.5) that lets HCDs share common code, to shrink driver
-size and significantly reduce hcd-specific behaviors.
+For historical reasons they are in two layers:
+:c:type:`struct usb_bus` is a rather thin layer that became available
+in the 2.2 kernels, while :c:type:`struct usb_hcd` is a more
+featureful layer (available in later 2.4 kernels and in 2.5) that lets
+HCDs share common code, to shrink driver size and significantly reduce
+hcd-specific behaviors.
 
 
 .. kernel-doc:: drivers/usb/core/hcd.c

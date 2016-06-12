@@ -77,7 +77,7 @@ member, a struct
 Applications can request different parameters by initializing or
 modifying the ``fmt.sliced`` member and calling the
 :ref:`VIDIOC_S_FMT <vidioc-g-fmt>` ioctl with a pointer to the
-``v4l2_format`` structure.
+:c:type:`struct v4l2_format` structure.
 
 The sliced VBI API is more complicated than the raw VBI API because the
 hardware must be told which VBI service to expect on each scan line. Not
@@ -353,11 +353,11 @@ Reading and writing sliced VBI data
 
 A single :ref:`read() <func-read>` or :ref:`write() <func-write>`
 call must pass all data belonging to one video frame. That is an array
-of ``v4l2_sliced_vbi_data`` structures with one or more elements and a
-total size not exceeding ``io_size`` bytes. Likewise in streaming I/O
-mode one buffer of ``io_size`` bytes must contain data of one video
-frame. The ``id`` of unused ``v4l2_sliced_vbi_data`` elements must be
-zero.
+of :c:type:`struct v4l2_sliced_vbi_data` structures with one or
+more elements and a total size not exceeding ``io_size`` bytes. Likewise
+in streaming I/O mode one buffer of ``io_size`` bytes must contain data
+of one video frame. The ``id`` of unused
+:c:type:`struct v4l2_sliced_vbi_data` elements must be zero.
 
 
 .. _v4l2-sliced-vbi-data:

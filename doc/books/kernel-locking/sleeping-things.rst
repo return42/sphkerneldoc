@@ -25,23 +25,24 @@ from user context, and can sleep.
 
 -  Accesses to userspace:
 
-   -  ``copy_from_user()``
+   -  :c:func:`copy_from_user()`
 
-   -  ``copy_to_user()``
+   -  :c:func:`copy_to_user()`
 
-   -  ``get_user()``
+   -  :c:func:`get_user()`
 
-   -  ``put_user()``
+   -  :c:func:`put_user()`
 
--  ``kmalloc(GFP_KERNEL)``
+-  :c:func:`kmalloc(GFP_KERNEL)`
 
--  ``mutex_lock_interruptible()`` and ``mutex_lock()``
+-  :c:func:`mutex_lock_interruptible()` and
+   :c:func:`mutex_lock()`
 
-   There is a ``mutex_trylock()`` which does not sleep. Still, it must
-   not be used inside interrupt context since its implementation is not
-   safe for that. ``mutex_unlock()`` will also never sleep. It cannot be
-   used in interrupt context either since a mutex must be released by
-   the same task that acquired it.
+   There is a :c:func:`mutex_trylock()` which does not sleep. Still,
+   it must not be used inside interrupt context since its implementation
+   is not safe for that. :c:func:`mutex_unlock()` will also never
+   sleep. It cannot be used in interrupt context either since a mutex
+   must be released by the same task that acquired it.
 
 
 .. _dont-sleep:
@@ -52,11 +53,11 @@ Some Functions Which Don't Sleep
 Some functions are safe to call from any context, or holding almost any
 lock.
 
--  ``printk()``
+-  :c:func:`printk()`
 
--  ``kfree()``
+-  :c:func:`kfree()`
 
--  ``add_timer()`` and ``del_timer()``
+-  :c:func:`add_timer()` and :c:func:`del_timer()`
 
 
 .. ------------------------------------------------------------------------------

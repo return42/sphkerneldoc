@@ -43,10 +43,10 @@ has no audio inputs, or none which combine with the current video input.
 Audio inputs have one writable property, the audio mode. To select the
 current audio input *and* change the audio mode, applications initialize
 the ``index`` and ``mode`` fields, and the ``reserved`` array of a
-``v4l2_audio`` structure and call the ``VIDIOC_S_AUDIO`` ioctl. Drivers
-may switch to a different audio mode if the request cannot be satisfied.
-However, this is a write-only ioctl, it does not return the actual new
-audio mode.
+:c:type:`struct v4l2_audio` structure and call the ``VIDIOC_S_AUDIO``
+ioctl. Drivers may switch to a different audio mode if the request
+cannot be satisfied. However, this is a write-only ioctl, it does not
+return the actual new audio mode.
 
 
 .. _v4l2-audio:

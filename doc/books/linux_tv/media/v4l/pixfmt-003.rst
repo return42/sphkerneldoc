@@ -4,10 +4,11 @@
 Multi-planar format structures
 ******************************
 
-The ``v4l2_plane_pix_format`` structures define size and layout for each
-of the planes in a multi-planar format. The ``v4l2_pix_format_mplane``
-structure contains information common to all planes (such as image width
-and height) and an array of ``v4l2_plane_pix_format`` structures,
+The :c:type:`struct v4l2_plane_pix_format` structures define size
+and layout for each of the planes in a multi-planar format. The
+:c:type:`struct v4l2_pix_format_mplane` structure contains
+information common to all planes (such as image width and height) and an
+array of :c:type:`struct v4l2_plane_pix_format` structures,
 describing all planes of that format.
 
 

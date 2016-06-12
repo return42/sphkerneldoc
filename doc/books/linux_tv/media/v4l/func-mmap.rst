@@ -48,8 +48,8 @@ Arguments
     this combination of flags. Note the Linux ``video-buf`` kernel
     module, which is used by the bttv, saa7134, saa7146, cx88 and vivi
     driver supports only ``PROT_READ`` | ``PROT_WRITE``. When the
-    driver does not support the desired protection the ``mmap()``
-    function fails.
+    driver does not support the desired protection the
+    :c:func:`mmap()` function fails.
 
     Note device memory accesses (e. g. the memory on a graphics card
     with video capturing hardware) may incur a performance penalty
@@ -65,8 +65,9 @@ Arguments
 
     ``MAP_FIXED`` requests that the driver selects no other address than
     the one specified. If the specified address cannot be used,
-    ``mmap()`` will fail. If ``MAP_FIXED`` is specified, ``start`` must
-    be a multiple of the pagesize. Use of this option is discouraged.
+    :c:func:`mmap()` will fail. If ``MAP_FIXED`` is specified,
+    ``start`` must be a multiple of the pagesize. Use of this option is
+    discouraged.
 
     One of the ``MAP_SHARED`` or ``MAP_PRIVATE`` flags must be set.
     ``MAP_SHARED`` allows applications to share the mapped memory with
@@ -91,7 +92,7 @@ Arguments
 Description
 ===========
 
-The ``mmap()`` function asks to map ``length`` bytes starting at
+The :c:func:`mmap()` function asks to map ``length`` bytes starting at
 ``offset`` in the memory of the device specified by ``fd`` into the
 application address space, preferably at address ``start``. This latter
 address is a hint only, and is usually specified as 0.
@@ -107,8 +108,8 @@ To unmap buffers the :ref:`munmap() <func-munmap>` function is used.
 Return Value
 ============
 
-On success ``mmap()`` returns a pointer to the mapped buffer. On error
-``MAP_FAILED`` (-1) is returned, and the ``errno`` variable is set
+On success :c:func:`mmap()` returns a pointer to the mapped buffer. On
+error ``MAP_FAILED`` (-1) is returned, and the ``errno`` variable is set
 appropriately. Possible error codes are:
 
 EBADF

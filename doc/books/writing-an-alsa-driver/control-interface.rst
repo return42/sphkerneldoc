@@ -31,7 +31,7 @@ Definition of Controls
 
 To create a new control, you need to define the following three
 callbacks: ``info``, ``get`` and ``put``. Then, define a struct
-``snd_kcontrol_new`` record, such as:
+:c:type:`struct snd_kcontrol_new` record, such as:
 
 
 .. code-block:: c
@@ -192,8 +192,8 @@ info callback
 
 The ``info`` callback is used to get detailed information on this
 control. This must store the values of the given struct
-``snd_ctl_elem_info`` object. For example, for a boolean control with a
-single element:
+:c:type:`struct snd_ctl_elem_info` object. For example, for a
+boolean control with a single element:
 
 
 .. code-block:: c
@@ -238,9 +238,9 @@ the string for the currently given item index.
       }
 
 The above callback can be simplified with a helper function,
-``snd_ctl_enum_info``. The final code looks like below. (You can pass
-ARRAY_SIZE(texts) instead of 4 in the third argument; it's a matter of
-taste.)
+:c:func:`snd_ctl_enum_info()`. The final code looks like below.
+(You can pass ARRAY_SIZE(texts) instead of 4 in the third argument;
+it's a matter of taste.)
 
 
 .. code-block:: c
@@ -255,9 +255,10 @@ taste.)
       }
 
 Some common info callbacks are available for your convenience:
-``snd_ctl_boolean_mono_info()`` and ``snd_ctl_boolean_stereo_info()``.
-Obviously, the former is an info callback for a mono channel boolean
-item, just like ``snd_myctl_mono_info`` above, and the latter is for a
+:c:func:`snd_ctl_boolean_mono_info()` and
+:c:func:`snd_ctl_boolean_stereo_info()`. Obviously, the former is
+an info callback for a mono channel boolean item, just like
+:c:func:`snd_myctl_mono_info()` above, and the latter is for a
 stereo channel boolean item.
 
 
@@ -360,8 +361,8 @@ Constructor
 ===========
 
 When everything is ready, finally we can create a new control. To create
-a control, there are two functions to be called, ``snd_ctl_new1()`` and
-``snd_ctl_add()``.
+a control, there are two functions to be called,
+:c:func:`snd_ctl_new1()` and :c:func:`snd_ctl_add()`.
 
 In the simplest way, you can do like this:
 
@@ -372,12 +373,14 @@ In the simplest way, you can do like this:
       if (err < 0)
               return err;
 
-where ``my_control`` is the struct ``snd_kcontrol_new`` object defined
-above, and chip is the object pointer to be passed to
+where ``my_control`` is the struct :c:type:`struct snd_kcontrol_new`
+object defined above, and chip is the object pointer to be passed to
 kcontrol->private_data which can be referred to in callbacks.
 
-``snd_ctl_new1()`` allocates a new ``snd_kcontrol`` instance, and
-``snd_ctl_add`` assigns the given control component to the card.
+:c:func:`snd_ctl_new1()` allocates a new
+:c:type:`struct snd_kcontrol` instance, and
+:c:func:`snd_ctl_add()` assigns the given control component to the
+card.
 
 
 .. _control-interface-change-notification:
@@ -386,7 +389,7 @@ Change Notification
 ===================
 
 If you need to change and update a control in the interrupt routine, you
-can call ``snd_ctl_notify()``. For example,
+can call :c:func:`snd_ctl_notify()`. For example,
 
 
 .. code-block:: c
@@ -397,8 +400,8 @@ This function takes the card pointer, the event-mask, and the control id
 pointer for the notification. The event-mask specifies the types of
 notification, for example, in the above example, the change of control
 values is notified. The id pointer is the pointer of struct
-``snd_ctl_elem_id`` to be notified. You can find some examples in
-``es1938.c`` or ``es1968.c`` for hardware volume interrupts.
+:c:type:`struct snd_ctl_elem_id` to be notified. You can find some
+examples in ``es1938.c`` or ``es1968.c`` for hardware volume interrupts.
 
 
 .. _control-interface-tlv:
@@ -425,19 +428,21 @@ flag in the ``access`` field; like this:
               .tlv.p = db_scale_my_control,
       };
 
-The ``DECLARE_TLV_DB_SCALE`` macro defines information about a mixer
-control where each step in the control's value changes the dB value by a
-constant dB amount. The first parameter is the name of the variable to
-be defined. The second parameter is the minimum value, in units of 0.01
-dB. The third parameter is the step size, in units of 0.01 dB. Set the
-fourth parameter to 1 if the minimum value actually mutes the control.
+The :c:func:`DECLARE_TLV_DB_SCALE()` macro defines information
+about a mixer control where each step in the control's value changes the
+dB value by a constant dB amount. The first parameter is the name of the
+variable to be defined. The second parameter is the minimum value, in
+units of 0.01 dB. The third parameter is the step size, in units of 0.01
+dB. Set the fourth parameter to 1 if the minimum value actually mutes
+the control.
 
-The ``DECLARE_TLV_DB_LINEAR`` macro defines information about a mixer
-control where the control's value affects the output linearly. The first
-parameter is the name of the variable to be defined. The second
-parameter is the minimum value, in units of 0.01 dB. The third parameter
-is the maximum value, in units of 0.01 dB. If the minimum value mutes
-the control, set the second parameter to ``TLV_DB_GAIN_MUTE``.
+The :c:func:`DECLARE_TLV_DB_LINEAR()` macro defines information
+about a mixer control where the control's value affects the output
+linearly. The first parameter is the name of the variable to be defined.
+The second parameter is the minimum value, in units of 0.01 dB. The
+third parameter is the maximum value, in units of 0.01 dB. If the
+minimum value mutes the control, set the second parameter to
+``TLV_DB_GAIN_MUTE``.
 
 
 .. ------------------------------------------------------------------------------

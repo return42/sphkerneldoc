@@ -19,10 +19,10 @@ trivial to diagnose: not a
 stay-up-five-nights-talk-to-fluffy-code-bunnies kind of problem.
 
 For a slightly more complex case, imagine you have a region shared by a
-softirq and user context. If you use a ``spin_lock()`` call to protect
-it, it is possible that the user context will be interrupted by the
-softirq while it holds the lock, and the softirq will then spin forever
-trying to get the same lock.
+softirq and user context. If you use a :c:func:`spin_lock()` call to
+protect it, it is possible that the user context will be interrupted by
+the softirq while it holds the lock, and the softirq will then spin
+forever trying to get the same lock.
 
 Both of these are called deadlock, and as shown above, it can occur even
 with a single CPU (although not on UP compiles, since spinlocks vanish
@@ -144,13 +144,13 @@ you might do the following:
             spin_unlock_bh(&list_lock);
 
 Sooner or later, this will crash on SMP, because a timer can have just
-gone off before the ``spin_lock_bh()``, and it will only get the lock
-after we ``spin_unlock_bh()``, and then try to free the element (which
-has already been freed!).
+gone off before the :c:func:`spin_lock_bh()`, and it will only get
+the lock after we :c:func:`spin_unlock_bh()`, and then try to free
+the element (which has already been freed!).
 
-This can be avoided by checking the result of ``del_timer()``: if it
-returns 1, the timer has been deleted. If 0, it means (in this case)
-that it is currently running, so we can do:
+This can be avoided by checking the result of :c:func:`del_timer()`:
+if it returns 1, the timer has been deleted. If 0, it means (in this
+case) that it is currently running, so we can do:
 
 
 .. code-block:: c
@@ -172,11 +172,11 @@ that it is currently running, so we can do:
                     spin_unlock_bh(&list_lock);
 
 Another common problem is deleting timers which restart themselves (by
-calling ``add_timer()`` at the end of their timer function). Because
-this is a fairly common case which is prone to races, you should use
-``del_timer_sync()`` (``include/linux/timer.h``) to handle this case. It
-returns the number of times the timer had to be deleted before we
-finally stopped it from adding itself back in.
+calling :c:func:`add_timer()` at the end of their timer function).
+Because this is a fairly common case which is prone to races, you should
+use :c:func:`del_timer_sync()` (``include/linux/timer.h``) to handle
+this case. It returns the number of times the timer had to be deleted
+before we finally stopped it from adding itself back in.
 
 
 .. ------------------------------------------------------------------------------

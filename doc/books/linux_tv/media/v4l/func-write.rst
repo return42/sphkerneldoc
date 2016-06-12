@@ -34,10 +34,11 @@ Arguments
 Description
 ===========
 
-``write()`` writes up to ``count`` bytes to the device referenced by the
-file descriptor ``fd`` from the buffer starting at ``buf``. When the
-hardware outputs are not active yet, this function enables them. When
-``count`` is zero, ``write()`` returns 0 without any other effect.
+:c:func:`write()` writes up to ``count`` bytes to the device
+referenced by the file descriptor ``fd`` from the buffer starting at
+``buf``. When the hardware outputs are not active yet, this function
+enables them. When ``count`` is zero, :c:func:`write()` returns 0
+without any other effect.
 
 When the application does not provide more data in time, the previous
 video frame, raw VBI image, sliced VPS or WSS data is displayed again.
@@ -75,8 +76,8 @@ EIO
     I/O error. This indicates some hardware problem.
 
 EINVAL
-    The ``write()`` function is not supported by this driver, not on
-    this device, or generally not on this type of device.
+    The :c:func:`write()` function is not supported by this driver,
+    not on this device, or generally not on this type of device.
 
 
 .. ------------------------------------------------------------------------------
