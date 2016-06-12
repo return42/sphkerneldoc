@@ -959,6 +959,7 @@ class Constant(XMLTag):
 # ------------------------------------------------------------------------------
 class Property(Constant):      replaceTag = "constant"
 class Token(Constant):         replaceTag = "constant"
+class Filename(Constant):      replaceTag = "constant"
 # ------------------------------------------------------------------------------
 
 # ==============================================================================
@@ -1733,6 +1734,7 @@ class ReSTTemplate(XMLTag):
     rstMarkup = """
 .. kernel-doc:: %(fname)s
 %(options)s
+
 """
 
     def getContext(self, node):
