@@ -957,8 +957,6 @@ class Constant(XMLTag):
                 super().applyFilter(node, rstPrefix=self.rstBlock)
 
 # ------------------------------------------------------------------------------
-class Structfield(Constant):   replaceTag = "constant"
-class Structname(Constant):    replaceTag = "constant"
 class Property(Constant):      replaceTag = "constant"
 class Token(Constant):         replaceTag = "constant"
 # ------------------------------------------------------------------------------
@@ -1298,6 +1296,39 @@ class Funcprototype(XMLTag):
         rst += "( " + ", ".join(ctx.params) + " )"
         return rst
 
+# ==============================================================================
+class Function(XMLTag):
+# ==============================================================================
+
+    def getContext(self, node):
+        ctx = super().getContext(node)
+        ctx.func_call = self.getStripedText(node)
+        if not ctx.func_call.endswith(")"):
+            ctx.func_call += "()"
+        return ctx
+
+    def replaceText(self, node, rstPrefix):
+        ctx = self.getContext(node)
+        rst = ":c:func:`%(func_call)s`"
+        return rst % ctx
+
+# ==============================================================================
+class Structname(XMLTag):
+# ==============================================================================
+
+    def getContext(self, node):
+        ctx = super().getContext(node)
+        ctx.struct_name = self.getStripedText(node)
+        if not ctx.struct_name.startswith("struct"):
+            ctx.struct_name = "struct " + ctx.struct_name
+        return ctx
+
+    def replaceText(self, node, rstPrefix):
+        ctx = self.getContext(node)
+        rst = ":c:type:`%(struct_name)s`"
+        return rst % ctx
+
+class Structfield(Constant):   replaceTag = "constant"
 
 # ==============================================================================
 class Mediaobject(XMLTag):
