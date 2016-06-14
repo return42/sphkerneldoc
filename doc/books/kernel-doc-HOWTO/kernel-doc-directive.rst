@@ -27,37 +27,6 @@ inserted direct under the chapter "My Media Book". The "DOC:" sections, the func
 and the type descriptions will be inserted in the order they appear in the source file.
 Mostly you want to select more fine grained, read on to see how.
 
-kernel-doc config
-=================
-
-Within the sphinx-doc config file (``config.py``) you can set the following
-option.
-
-kernel_doc_raise_error: ``True``
-  If true, fatal errors (like missing function descriptions) raise an error. The
-  default is ``True``. Because this might break your build process, you can
-  change the value to ``False``.
-
-  In this example, the documentation of definition ``no_longer_exists`` is
-  required.
-
-  .. code-block:: rst
-
-      .. kernel-doc::  ./all-in-a-tumble.h
-          :functions:  no_longer_exist
-
-  Since this definition not exists (anymore), the following TODO entry is
-  inserted, when ``kernel_doc_raise_error`` is ``False``.
-
-  .. kernel-doc::  ./all-in-a-tumble.h
-      :functions:  no_longer_exist
-
-
-kernel_doc_verbose_warn: ``True``
-  If true, more warnings will be logged. E.g. a missing description of a
-  function's return value will be logged.
-
-
 kernel-doc options
 ==================
 
@@ -202,3 +171,36 @@ code-snippet below is:
     :language:  c
     :linenos:
 
+kernel-doc config
+=================
+
+Within the sphinx-doc config file (``conf.py`` or ``my_project.conf``) you can
+set the following option.
+
+kernel_doc_raise_error: ``True``
+  If true, fatal errors (like missing function descriptions) raise an error. The
+  default is ``True``. Because this might break your build process, you can
+  change the value to ``False``.
+
+  In this example, the documentation of definition ``no_longer_exists`` is
+  required.
+
+  .. code-block:: rst
+
+      .. kernel-doc::  ./all-in-a-tumble.h
+          :functions:  no_longer_exist
+
+  Since this definition not exists (anymore), the following TODO entry is
+  inserted, when ``kernel_doc_raise_error`` is ``False``.
+
+  .. kernel-doc::  ./all-in-a-tumble.h
+      :functions:  no_longer_exist
+
+
+kernel_doc_verbose_warn: ``True``
+  If true, more warnings will be logged. E.g. a missing description of a
+  function's return value will be logged.
+
+kernel_doc_mode: ``reST``
+  Set parser's default kernel-doc mode ``reST|kernel-doc``. See
+  :ref:`reST-kernel-doc-mode` and :ref:`vintage-kernel-doc-mode`.

@@ -7,41 +7,14 @@
 reST kernel-doc mode
 ====================
 
-To get in use of the fully reST_ add the following comment (e.g.) at the top of
-your source code file (or at any line reST content starts).::
+To distinguish between the vintage markup and the new markup (with reST in), it
+is recommended to add the following comment at the top of your source code file.
+::
 
     /* parse-markup: reST */
 
-In reST mode the kernel-doc parser pass through all text / markups unchanged to
-the reST toolchain including any whitespace.  To toggle back to
-:ref:`vintage-kernel-doc-mode` type the following line::
-
-    /* parse-markup: kernel-doc */
-
-Within reST mode, most of the *vintage* kernel-doc markup -- as described in
-:ref:`kernel-doc-syntax` -- stays unchanged, except the vintage-highlighting
-markup and the treatment of whitespaces in description blocks. The *vintage
-highlighting* markup is not supported in reST mode, because it conflicts with
-the reST markup syntax.
-
-The reST syntax brings it's own markup to refer and highlight function,
-structs or whatever definition e.g.:
-
-* functions ...
-
-  .. code-block:: rst
-
-     :c:func:`foo_func`
-
-* structs ...
-
-  .. code-block:: rst
-
-     :c:type:`stuct foo_struct`
-
-If you are familiar with the vintage style, first this might be a cons-change
-for you, but take in account, that you get a expressive ASCII markup on the
-pro-side.
+This forces the kernel-doc parser to switch into the reST mode, no matter in
+which context the parser runs (see :ref:`vintage-kernel-doc-mode`).
 
 
 reST section structure
@@ -60,7 +33,7 @@ is inserted. To avoid sectioning in any case, place a space in front of the colu
    * lorem
    * ipsum
 
-On the opposite, super-short sections like::
+On the opposite, super-short sections from :ref:`vintage-kernel-doc-mode` like::
 
     Return: sum of a and b
 
@@ -84,8 +57,8 @@ used by the kernel-doc parser also:
 * ``"`` for paragraphs
 
 Within kernel-doc comments you should use this sectioning with care. A
-kernel-doc section like the "Return" section above is translated into a reST
-section with the following markup.
+kernel-doc section like the "Return:" section above is translated into a reST
+sub-section with the following markup.
 
 .. code-block:: rst
 
@@ -99,6 +72,11 @@ can only use the following *sub-levels* within a kernel-doc section.
 
 * ``^`` for subsubsections
 * ``"`` for paragraphs
+
+For mor informations, compare the example subsection "reST sectioning"
+:ref:`example.rst_mode` with it's source :ref:`all-in-a-tumble-src` and take a
+look at :ref:`all-in-a-tumble-debug` to see how these sections getting together
+in the reST output of the kernel-doc parser.
 
 
 further references

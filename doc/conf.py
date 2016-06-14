@@ -162,6 +162,10 @@ keep_warnings = False
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
 
+# ------------------------------------------------------------------------------
+# Options of the kernel-doc parser
+# ------------------------------------------------------------------------------
+
 # If true, fatal errors (like missing function descripions) raise an
 # error. Default: True
 kernel_doc_raise_error = False
@@ -170,6 +174,10 @@ kernel_doc_raise_error = False
 # function's return value will be logged.
 # Default: True
 kernel_doc_verbose_warn = False
+
+# Set parser's default kernel-doc mode ``reST|kernel-doc``.
+# Default: "reST"
+kernel_doc_mode = "reST"
 
 # ------------------------------------------------------------------------------
 # Options for HTML output

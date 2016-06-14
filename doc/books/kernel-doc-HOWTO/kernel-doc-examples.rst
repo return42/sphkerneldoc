@@ -7,10 +7,14 @@
 Examples & test cases
 =====================
 
+.. kernel-doc:: ./all-in-a-tumble.h
+   :doc: About Examples
+
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 1
 
     all-in-a-tumble-src
+    all-in-a-tumble-debug
     all-in-a-tumble
 
 

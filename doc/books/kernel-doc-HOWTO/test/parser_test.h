@@ -64,7 +64,7 @@
  *
  * @registered_async: the subdevice has been registered async.
  *
- * This is a copy&paste of a more complexe struct, just for testing.
+ * This is a copy&paste of a more complex struct, just for testing.
  */
 struct v4l2_subdev_core_ops {
         int (*log_status)(struct v4l2_subdev *sd);

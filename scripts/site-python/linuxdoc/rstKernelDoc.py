@@ -127,6 +127,7 @@ def setup(app):
 
     app.add_config_value('kernel_doc_raise_error', False, 'env')
     app.add_config_value('kernel_doc_verbose_warn', True, 'env')
+    app.add_config_value('kernel_doc_mode', "reST", 'env')
     app.add_directive("kernel-doc", KernelDoc)
 
 # ==============================================================================
@@ -275,6 +276,10 @@ class KernelDoc(Directive):
                     "kernel-doc 'snippets' has non of these options: %s"
                     % ",".join(rest))
 
+        if env.config.kernel_doc_mode not in ["reST", "kernel-doc"]:
+            raise self.errMsg(
+                "unknow kernel-doc mode: %s" % env.config.kernel_doc_mode)
+
         # set parse adjustments
 
         env.note_dependency(fname)
@@ -288,6 +293,7 @@ class KernelDoc(Directive):
             , encoding      = self.options.get("encoding", env.config.source_encoding)
             , translator    = kerneldoc.ReSTTranslator()
             , verbose_warn  = env.config.kernel_doc_verbose_warn
+            , markup        = env.config.kernel_doc_mode
             ,)
 
         opts.set_defaults()

@@ -29,11 +29,11 @@ on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
 
     kernel-doc-intro
     kernel-doc-syntax
-    vintage-kernel-doc-mode
     reST-kernel-doc-mode
     kernel-doc-directive
     table-markup
     kernel-doc-components
+    vintage-kernel-doc-mode
     kernel-doc-examples
 
 The examples in this HOWTO using the kernel-doc comments from the example file

@@ -316,13 +316,19 @@ doc_split_sect   = RE(r"\s*\*\s*(@[\w\s]+):(.*)")
 doc_split_end    = RE(r"^\s*\*/\s*$")
 
 # match expressions used to find embedded type information
-type_constant    = RE(r"\%([-_\w]+)")
-type_func        = RE(r"(\w+)\(\)")
-type_param       = RE(r"\@(\w+)")
-type_struct      = RE(r"\&((struct\s*)*[_\w]+)")
-type_env         = RE(r"(\$\w+)")
-type_enum_full   = RE(r"\&(enum)\s*([_\w]+)")
-type_struct_full = RE(r"\&(struct)\s*([_\w]+)")
+type_enum_full    = RE(r"(?<!\\)\&(enum)\s*([_\w]+)")
+type_struct_full  = RE(r"(?<!\\)\&(struct)\s*([_\w]+)")
+type_typedef_full = RE(r"(?<!\\)\&(typedef)\s*([_\w]+)")
+type_union_full   = RE(r"(?<!\\)\&(union)\s*([_\w]+)")
+type_member       = RE(r"(?<!\\)\&([_\w]+)((\.|->)[_\w]+)")
+type_member_func  = RE(type_member.pattern + r"\(\)")
+type_func         = RE(r"(\w+)(?<!\\)\(\)")
+type_constant     = RE(r"(?<!\\)\%([-_\w]+)")
+type_param        = RE(r"(?<!\\)\@(\w+)")
+type_env          = RE(r"(?<!\\)(\$\w+)")
+type_struct       = RE(r"(?<!\\)\&((struct\s*)*[_\w]+)")
+
+esc_type_prefix  = RE(r"\\([\%\&\$\(])")
 
 CR_NL            = RE(r"[\r\n]")
 C99_comments     = RE(r"//.*$")
@@ -626,10 +632,13 @@ class TranslatorAPI(object):
         ( type_constant      , None )
         , ( type_func        , None )
         , ( type_param       , None )
+        , ( type_struct_full , None )
         , ( type_struct      , None )
-        , ( type_env         , None )
         , ( type_enum_full   , None )
-        , ( type_struct_full , None ) ]
+        , ( type_env         , None )
+        , ( type_member_func , None )
+        , ( type_member      , None )
+        , ]
 
     LINE_COMMENT = ("# ", "")
 
@@ -852,13 +861,20 @@ class ReSTTranslator(TranslatorAPI):
     LINE_COMMENT = (".. ", "")
 
     HIGHLIGHT_MAP = [
-        ( type_constant      , r"``\1``" )
-        , ( type_func        , r":c:func:`\1`")
-        , ( type_param       , r"``\1``" )
-        , ( type_struct      , r":c:type:`struct \1 <\1>`")
-        , ( type_env         , r"``\1``" )
-        , ( type_enum_full   , r":c:type:`\1 \2 <\2>`")
+        # the regexpr are partial *overlapping*, mind the order!
+        (   type_enum_full   , r":c:type:`\1 \2 <\2>`" )
         , ( type_struct_full , r":c:type:`\1 \2 <\2>`" )
+        , ( type_typedef_full, r":c:type:`\1 \2 <\2>`" )
+        , ( type_union_full  , r":c:type:`\1 \2 <\2>`" )
+        , ( type_member_func , r":c:type:`\1\2() <\1>`" )
+        , ( type_member      , r":c:type:`\1\2 <\1>`" )
+        , ( type_func        , r":c:func:`\1`")
+        , ( type_constant    , r"``\1``" )
+        , ( type_param       , r"``\1``" )
+        , ( type_env         , r"``\1``" )
+        , ( type_struct      , r":c:type:`struct \1 <\1>`")
+        # at least replace escaped %, & and $
+        , ( esc_type_prefix  , r"\1")
         , ]
 
     MASK_REST_INLINES = [
@@ -875,6 +891,8 @@ class ReSTTranslator(TranslatorAPI):
     def highlight(self, text):
         if self.options.markup == "kernel-doc":
             text = map_text(text, self.MASK_REST_INLINES + self.HIGHLIGHT_MAP )
+        elif self.options.markup == "reST":
+            text = map_text(text, self.HIGHLIGHT_MAP )
         return text
 
     def format_block(self, content):
@@ -913,8 +931,7 @@ class ReSTTranslator(TranslatorAPI):
         if ID:
             self.write_anchor(ID)
         self.write_header(header, sec_level=sec_level)
-        if (header.lower() == "example"
-            and self.options.markup == "kernel-doc"):
+        if (header.lower() == "example"):
             self.write("\n.. code-block:: c\n\n")
             for l in textwrap.dedent(content).split("\n"):
                 if not l.strip():
@@ -1176,7 +1193,10 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(enum + "." + Parser.section_constants)
         self.write_header(Parser.section_constants, sec_level=3)
 
-        for p_name, p_desc in parameterdescs.items():
+        for p_name in parameterlist:
+            p_desc = parameterdescs.get(p_name, None)
+            if p_desc is None:
+                continue
             self.write_definition(p_name, p_desc)
 
         # sections
@@ -1274,7 +1294,7 @@ class ParseOptions(Container):
         # default's of filtered PARSE_OPTIONS
 
         self.opt_filters    = dict()
-        self.markup         = "kernel-doc"
+        self.markup         = "reST"
         self.highlight      = True  # switch highlighting on/off
         self.add_filters(self.PARSE_OPTIONS)
 
@@ -1458,7 +1478,7 @@ class ParserBuggy(RuntimeError):
     def __init__(self, parserObj, message):
 
         message = ("last parse position %s:%s\n"
-                   % (parserObj.ctx.line_no, parserObj.self.options.fname)
+                   % (parserObj.ctx.line_no, parserObj.options.fname)
                    + message)
         super(ParserBuggy, self).__init__(message)
         self.parserObj = parserObj
@@ -2352,11 +2372,10 @@ class Parser(SimpleLog):
         if C_STRUCT_UNION.match(proto):
 
             if C_STRUCT_UNION[0] != self.ctx.decl_type:
-                raise ParserBuggy(
-                    self
-                    , ("determine of decl_type is inconsistent: '%s' <--> '%s'"
-                       "\nprototype: %s"
-                       % (C_STRUCT_UNION[0], self.ctx.decl_type, proto)))
+                self.error("determine of decl_type is inconsistent: '%s' <--> '%s'"
+                           "\nprototype: %s"
+                           % (C_STRUCT_UNION[0], self.ctx.decl_type, proto))
+                return False
 
             self.ctx.decl_name = C_STRUCT_UNION[1]
             members = C_STRUCT_UNION[2]

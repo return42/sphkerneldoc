@@ -10,7 +10,7 @@ Components of the kernel-doc system
 Many places in the source tree have extractable kernel-doc documentation.  The
 components of this system are:
 
-Documentation/template-book and Documentation/template-book.conf
+Documentation/books/template-book and Documentation/template-book.conf
   Template book and build configuration. It includes additional hints and
   practical recommendations: :ref:`template-book:get-started`.
 

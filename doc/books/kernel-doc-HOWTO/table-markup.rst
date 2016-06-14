@@ -22,7 +22,7 @@ problems in range of output formats. Tables (and preformated text like source
 code listings) should be used advisedly. In a HTML output, the horizontal and
 vertical expansion is handled by a scrollbar. On print medias (paper / pdf)
 there is no scrollbar, automaticaly (page-) breaking a table (or line-breaking a
-preformated text) in the layout process ends mostly in a unwanted results.
+preformated text) in the layout process ends mostly in unwanted results.
 
 .. hint::
 

@@ -3,9 +3,11 @@
 
 .. _all-in-a-tumble-src:
 
-================
-Examples Sources
-================
+=====================
+example's source code
+=====================
+
+Below you find the *source code* of the example file ``all-in-a-tumble.h``.
 
 .. literalinclude:: ./all-in-a-tumble.h
    :linenos:
