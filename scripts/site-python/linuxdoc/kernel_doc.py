@@ -2223,8 +2223,10 @@ class Parser(SimpleLog):
         else:
             self.debug("other section '%(name)s'", name = name)
             if self.ctx.sections.get(name, None):
-                self.error("duplicate section name '%(name)s'", name = name)
-            self.ctx.sections[name] = cont
+                self.warn("duplicate section name '%(name)s'", name = name)
+                self.ctx.sections[name] += "\n\n" + cont
+            else:
+                self.ctx.sections[name] = cont
 
     def dump_function(self, proto):
         self.debug("dump_function(): (1) '%(proto)s'", proto=proto)
