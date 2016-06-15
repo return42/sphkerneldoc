@@ -311,9 +311,11 @@ reST_sect = RE(doc_com.pattern
 
 doc_content      = RE(doc_com_body.pattern + r"(.*)")
 doc_block        = RE(doc_com.pattern + r"DOC:\s*(.*)?")
-doc_split_start  = RE(r"^\s*/\*\*\s*$")
-doc_split_sect   = RE(r"\s*\*\s*(@[\w\s]+):(.*)")
-doc_split_end    = RE(r"^\s*\*/\s*$")
+
+# state: 5 - gathering documentation outside main block
+doc_state5_start = RE(r"^\s*/\*\*\s*$")
+doc_state5_sect  = RE(r"\s*\*\s*(@[\w\s]+):(.*)")
+doc_state5_end   = RE(r"^\s*\*/\s*$")
 
 # match expressions used to find embedded type information
 type_enum_full    = RE(r"(?<!\\)\&(enum)\s*([_\w]+)")
@@ -1922,7 +1924,7 @@ class Parser(SimpleLog):
     def state_3(self, line):
         u"""state: 3 - scanning prototype."""
 
-        if doc_split_start.match(line):
+        if doc_state5_start.match(line):
             self.debug("FLAG: split_doc_state=1 / switch state 3 --> 5")
             self.state = 5
             self.split_doc_state = 1
@@ -1966,17 +1968,17 @@ class Parser(SimpleLog):
         u"""state: 5 - gathering documentation outside main block"""
 
         if (self.split_doc_state == 1
-            and doc_split_sect.match(line)):
+            and doc_state5_sect.match(line)):
 
             # First line (split_doc_state 1) needs to be a @parameter
-            self.ctx.section  = self.sect_title(doc_split_sect[0].strip())
-            self.ctx.contents = doc_split_sect[1].strip()
+            self.ctx.section  = self.sect_title(doc_state5_sect[0].strip())
+            self.ctx.contents = doc_state5_sect[1].strip()
             self.split_doc_state = 2
             self.debug("SPLIT-DOC-START: '%(param)s' / split-state 1 --> 2"
                        , param = self.ctx.section)
             self.info("section: %(sec)s" , sec=self.ctx.section)
 
-        elif doc_split_end.match(line):
+        elif doc_state5_end.match(line):
             # Documentation block end
             self.debug("SPLIT-DOC-END: ...")
 
