@@ -8,7 +8,8 @@ Examples & test cases
 =====================
 
 .. kernel-doc:: ./all-in-a-tumble.h
-   :doc: About Examples
+    :doc: About Examples
+    :no_header:
 
 .. toctree::
     :maxdepth: 1

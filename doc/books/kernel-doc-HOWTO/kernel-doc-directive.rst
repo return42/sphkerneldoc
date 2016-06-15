@@ -36,6 +36,7 @@ Here is a short overview of the options:
 
     .. kernel-doc:: <filename>
         :doc: <section title>
+        :no_header:
         :export:
         :internal:
         :functions: <function [, functions [, ...]]>
@@ -54,6 +55,13 @@ these options make sense:
     Inserts the contents of the ``DOC:`` section titled ``<section title>``.
     Spaces are allowed in ``<section title>``; do not quote the ``<section
     title>``.
+
+    The next option make only sense in conjunction with option ``doc``:
+
+    ``no_header``
+        Do not output DOC: section's title. Usefull, if the surrounding context
+        already has a heading , and the DOC: section title is only used as an
+        identifier.
 
 ``export``
     Inserts the documentation of function, struct or whatever definition that is
@@ -80,10 +88,10 @@ these options make sense:
 
     The next options make only sense in conjunction with option ``snippets``:
 
-    ``:language: <highlighter>``
+    ``language <highlighter>``
         Set highlighting language of the snippet code-block.
 
-    ``:linenos:``
+    ``linenos``
         Set line numbers in the snippet code-block.
 
 ``debug``

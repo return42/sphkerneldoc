@@ -190,6 +190,8 @@ class KernelDoc(Directive):
 
     option_spec = {
         "doc"          : directives.unchanged_required # aka lines containing !P
+        , "no_header"  : directives.flag
+
         , "export"     : directives.flag               # aka lines containing !E
         , "internal"   : directives.flag               # aka lines containing !I
         , "functions"  : directives.unchanged_required # aka lines containing !F
@@ -319,6 +321,7 @@ class KernelDoc(Directive):
             opts.translator = kerneldoc.ReSTTranslator()
 
         if "doc" in self.options:
+            opts.no_header = bool("no_header" in self.options)
             opts.use_names.append(self.options.get("doc"))
 
         if "export" in self.options:

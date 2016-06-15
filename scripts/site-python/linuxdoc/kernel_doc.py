@@ -932,9 +932,10 @@ class ReSTTranslator(TranslatorAPI):
         self.write("\n", (sectag * len(header)), "\n")
 
     def write_section(self, header, content, sec_level=2, ID=None):
-        if ID:
-            self.write_anchor(ID)
-        self.write_header(header, sec_level=sec_level)
+        if not self.options.no_header:
+            if ID:
+                self.write_anchor(ID)
+            self.write_header(header, sec_level=sec_level)
         if (header.lower() == "example"):
             self.write("\n.. code-block:: c\n\n")
             for l in textwrap.dedent(content).split("\n"):
@@ -1271,10 +1272,11 @@ class ParseOptions(Container):
 
         # control which content to print
 
-        self.use_names     = []   # positiv list of names to print / empty list means "print all"
-        self.skip_names    = []   # negativ list of names (not to print)
-        self.error_missing = True # report missing names as errors / else warning
-        self.verbose_warn  = True # more warn messages
+        self.use_names     = []    # positiv list of names to print / empty list means "print all"
+        self.skip_names    = []    # negativ list of names (not to print)
+        self.no_header     = False # skip section header
+        self.error_missing = True  # report missing names as errors / else warning
+        self.verbose_warn  = True  # more warn messages
 
         # self.gather_context: [True/False] Scan additional context from the
         # parsed source. E.g.: The list of exported symbols is a part of the
