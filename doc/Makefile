@@ -11,6 +11,9 @@ Q = @
 srctree=/share/linux
 export srctree
 
+KERNELVERSION := $(shell make -C $(srctree) kernelversion | grep "^[0-9]")
+KERNELRELEASE = $(KERNELVERSION)
+
 PYTHONPATH := $(abspath $(objtree)/scripts/site-python):$(PYTHONPATH)
 
 REPO_ROOT      := $(abspath ..)
@@ -26,7 +29,6 @@ DIST           := $(objtree)/dist
 # External programs used
 
 SPHINXBUILD    := sphinx-build
-KERNELDOC      := $(SCRIPT_FOLDER)/kernel-doc
 DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
 AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
@@ -38,7 +40,9 @@ BOOKS_PDF   := $(patsubst %,%.pdf, $(BOOKS))
 BOOKS_CLEAN := $(patsubst %,%.clean, $(BOOKS))
 
 # sphinx-doc setup
-SPHINXOPTS  :=
+SPHINXOPTS    := -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+
+ALLSPHINXOPTS = $(SPHINXOPTS)
 
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
@@ -56,9 +60,6 @@ DOCBOOKS := $(DOCBOOKS:$(srctree)/Documentation/DocBook/%=%)
 # ------------------------------------------------------------------------------
 # usage
 # ------------------------------------------------------------------------------
-
-test123:
-	echo $(BOOKS_HTML)
 
 PHONY += help help-rqmts
 
@@ -196,7 +197,7 @@ $(DIST):
 
 PHONY += mainpage mainpage.clean
 mainpage: sphinx-doc | $(DIST)
-	$(SPHINXBUILD) -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b html -d $(CACHE)/doctrees/$@ $@ $(DIST)
 	$(Q)echo "HTML build OK / start file at:\n    file://$(abspath $(DIST)/index.html)"
 
 mainpage.clean:
@@ -236,7 +237,7 @@ media2rst: $(srctree)/Documentation/DocBook/media_api.xml
 PHONY += $(BOOKS_HTML)
 $(BOOKS_HTML): sphinx-doc | $(DIST)
 	$(Q)SPHPROJ_CONF=$(patsubst %.html,%.conf,$@) \
-	  $(SPHINXBUILD) -b html \
+	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b html \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) \
 	  $(obj)/$(patsubst %.html,%,$@) \
@@ -250,7 +251,7 @@ $(BOOKS_HTML): sphinx-doc | $(DIST)
 PHONY += $(BOOKS_PDF)
 $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,%.conf,$@) \
-	  $(SPHINXBUILD) -b pdf \
+	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b pdf \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.pdf,%,$@) \
 	  $(obj)/$(patsubst %.pdf,%,$@) \
@@ -271,6 +272,7 @@ $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 # PAPEROPT_a4     = -D latex_paper_size=a4
 # PAPEROPT_letter = -D latex_paper_size=letter
 # ALLSPHINXOPTS   = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+
 # # the i18n builder cannot share the environment and doctrees with the others
 # I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
@@ -284,7 +286,7 @@ $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 # $(RST2TEX): texlive sphinx-doc
 # 	@echo "building $@ ..."
 # 	rm -rf $(CACHE)/$(patsubst books/%,%,$@)
-# 	SPHPROJ_CONF=$(patsubst %.tex,%.conf,$@) $(SPHINXBUILD) -c . -b xelatex \
+# 	SPHPROJ_CONF=$(patsubst %.tex,%.conf,$@) $(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b xelatex \
 # 		$(PAPEROPT_$(PAPER)) \
 # 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
 # 		$(patsubst %.tex,%,$@) \
@@ -313,7 +315,7 @@ src2rst:
 
 .PHONY: src.html
 src.html: sphinx-doc
-	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(DIST)/$(AUTODOC_FOLDER)
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(DIST)/$(AUTODOC_FOLDER)
 
 .PHONY:
 clean-src.html:
@@ -336,7 +338,7 @@ txt2rst:
 
 .PHONY: txt.html
 txt.html: sphinx-doc
-	$(SPHINXBUILD) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(DIST)/$(LINUX_MISC_DOC)
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b html -d $(CACHE)/doctrees/$(LINUX_MISC_DOC) $(LINUX_MISC_DOC) $(DIST)/$(LINUX_MISC_DOC)
 
 .PHONY:
 clean-txt.html:

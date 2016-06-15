@@ -28,9 +28,9 @@ author    = 'The kernel development community'
 # built documents.
 #
 # The short X.Y version.
-version   = 'v4.7'
+# version   = 'v4.7'
 # The full version, including alpha/beta/rc tags.
-release   = 'v4.7-rc2'
+# release   = 'v4.7-rc2'
 
 # ------------------------------------------------------------------------------
 def loadPrjConfig():
