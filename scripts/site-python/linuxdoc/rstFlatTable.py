@@ -49,6 +49,16 @@ u"""
 # (Documentation/books/kernel-doc-HOWTO).
 __version__  = '1.0'
 
+import sys
+
+PY3 = sys.version_info[0] == 3
+PY2 = sys.version_info[0] == 2
+
+if PY3:
+    # pylint: disable=C0103, W0622
+    unicode     = str
+    basestring  = str
+
 # ==============================================================================
 # imports
 # ==============================================================================

@@ -107,6 +107,16 @@ u"""
 # (Documentation/books/kernel-doc-HOWTO).
 __version__  = '1.0'
 
+import sys
+
+PY3 = sys.version_info[0] == 3
+PY2 = sys.version_info[0] == 2
+
+if PY3:
+    # pylint: disable=C0103, W0622
+    unicode     = str
+    basestring  = str
+
 # ==============================================================================
 # imports
 # ==============================================================================
@@ -119,7 +129,7 @@ from docutils.utils import SystemMessage
 from docutils.statemachine import ViewList
 from sphinx.util.nodes import nested_parse_with_titles
 
-import kernel_doc as kerneldoc
+from . import kernel_doc as kerneldoc
 
 # ==============================================================================
 def setup(app):
@@ -237,7 +247,7 @@ class KernelDoc(Directive):
         retVal = []
         try:
             retVal = self._run(doc, env)
-        except SystemMessage, exc:
+        except SystemMessage as exc:
             if env.config.kernel_doc_raise_error:
                 raise
             self.state_machine.insert_input(
