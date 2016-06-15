@@ -18,4 +18,15 @@ Examples & test cases
     all-in-a-tumble-debug
     all-in-a-tumble
 
+Additional tests
+================
 
+.. kernel-doc::  ./all-in-a-tumble.h
+    :doc: multiple DOC sections
+
+option no_header
+================
+
+.. kernel-doc::  ./all-in-a-tumble.h
+    :doc:  Theory of Operation
+    :no_header:

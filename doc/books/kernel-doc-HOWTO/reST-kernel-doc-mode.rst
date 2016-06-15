@@ -16,6 +16,7 @@ is recommended to add the following comment at the top of your source code file.
 This forces the kernel-doc parser to switch into the reST mode, no matter in
 which context the parser runs (see :ref:`vintage-kernel-doc-mode`).
 
+.. _reST-section-structure:
 
 reST section structure
 ======================
@@ -74,6 +75,14 @@ sub-section with the following markup.
 As you see, a kernel-doc section is at reST *subsection* level. This means, you
 can only use the following *sub-levels* within a kernel-doc section.
 
+* ``^`` for subsubsections
+* ``"`` for paragraphs
+
+In contrast to subsections like "Return:", a "DOC:" section has no subsection,
+thats why reST *sub-levels* in "DOC:" sections start a the subsection level,
+tagged with a minus:
+
+* ``-`` for subsections
 * ``^`` for subsubsections
 * ``"`` for paragraphs
 

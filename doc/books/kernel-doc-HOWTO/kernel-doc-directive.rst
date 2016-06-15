@@ -60,8 +60,9 @@ these options make sense:
 
     ``no_header``
         Do not output DOC: section's title. Usefull, if the surrounding context
-        already has a heading , and the DOC: section title is only used as an
-        identifier.
+        already has a heading, and the DOC: section title is only used as an
+        identifier. Take in mind, that this option will not supress any native
+        reST heading markup in the comment (:ref:`reST-section-structure`).
 
 ``export``
     Inserts the documentation of function, struct or whatever definition that is

@@ -30,9 +30,17 @@ int main() {
  * want it to do, at any time.  It reads your mind.  Here's how it works.
  *
  * foo bar splat
+ * -------------
  *
- * The only drawback to this gizmo is that is can sometimes damage
- * hardware, software, or its subject(s).
+ * The only drawback to this gizmo is that is can sometimes damage hardware,
+ * software, or its subject(s).
+ *
+ * DOC: multiple DOC sections
+ *
+ * It's not recommended to place more than one "DOC:" section in the same
+ * comment block. To insert a new "DOC:" section, create a new comment block and
+ * to create a sub-section use the reST markup for headings, see documentation
+ * of function rst_mode()
  */
 /* parse-SNAP: */
 
