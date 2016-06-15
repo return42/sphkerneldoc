@@ -55,7 +55,7 @@ struct my_struct {
 
 /* parse-SNIP: my_long_struct */
 /**
- * struct my_long_struct - short description
+ * struct my_long_struct - short description with &my_struct->a and &my_struct->b
  * @a: first member
  * @b: second member
  *
