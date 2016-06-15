@@ -279,8 +279,8 @@ doc_end          = RE(r"\s*\*+/")
 doc_com          = RE(r"\s*\*\s*")
 doc_com_body     = RE(r"\s*\* ?")
 doc_decl         = RE(doc_com.pattern + r"(\w+)")
-doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*-")
-doc_decl_purpose = RE(r"-(.*)$")
+doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*[-:]")
+doc_decl_purpose = RE(r"[-:](.*)$")
 
 # except pattern like "http://", a whitespace is required after the colon
 doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
