@@ -203,7 +203,7 @@ markups (`sphinx domains`_)::
   - :c:type:`enum my_enum <my_enum>` : name of a enum
   - :c:type:`typedef my_typedef <my_typedef>` : name of a typedef
   - ``CONST`` : name of a constant.
-  - ``\$ENVVAR`` : environmental variable
+  - ``$ENVVAR`` : environmental variable
 
 The `sphinx-doc`_ generator highligts these markups and tries to cross
 referencing to arbitrary locations (`sphinx cross refences`_). The result of a

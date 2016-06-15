@@ -35,12 +35,16 @@ is inserted. To avoid sectioning in any case, place a space in front of the colu
 
 On the opposite, super-short sections from :ref:`vintage-kernel-doc-mode` like::
 
-    Return: sum of a and b
+    Section name: lorem ipsum
 
 are no longer supported, you have to enter at least one line break::
 
-    Return:
-    sum of a and b
+    Section name:
+    lorem ipsum
+
+There is an exception for special section names like "Description:", "Context:"
+or "Return:", which exists mainly for backward compatibility. nevertheless, it
+is recommended to add a newline after the colon.
 
 Beside these *sectioning* of the kernel-doc syntax, reST has it's own chapter,
 section etc. markup (e.g. see `Sections

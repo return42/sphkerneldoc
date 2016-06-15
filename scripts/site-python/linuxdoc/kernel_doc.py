@@ -273,7 +273,6 @@ class RE(object):
 
 # these regular expresions has been *stolen* from the kernel-doc perl script.
 
-doc_special      = RE(r"\@\%\$\&")    # special: [@%$&]
 doc_start        = RE(r"^/\*\*\s*$")  # Allow whitespace at end of comment start.
 doc_end          = RE(r"\s*\*+/")
 doc_com          = RE(r"\s*\*\s*")
@@ -290,18 +289,21 @@ doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
 # enum). Additional condition: the header name should have 3 characters at least!
 doc_sect  = RE(doc_com.pattern
                + r"("
-               + r"[" + doc_special.pattern + r"]\w[^:]*"    # "@foo: lorem" or
+               + r"@\w[^:]*"                                 # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
                + r"|" + r"\w[\w\s]+\w"                       # e.g. "Return: lorem"
                + r")"
                + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
 
-doc_param = RE(doc_com.pattern
+doc_sect_reST = RE(doc_com.pattern
                + r"("
-               + r"[" + doc_special.pattern + r"]\w[^:]*"  # "@foo: lorem" or
+               + r"@\w[^:]*"                                 # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
+               # a tribute to vintage markups, when in reST mode ...
+               + r"|description|context|returns?|notes?|examples?|introduction|intro"
                + r")"
-               + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
+               + r":(.*?)\s*$"    # this matches also strings like "http://..." (doc_sect_except)
+               , flags = re.IGNORECASE)
 
 reST_sect = RE(doc_com.pattern
                + r"("
@@ -330,7 +332,7 @@ type_param        = RE(r"(?<!\\)\@(\w+)")
 type_env          = RE(r"(?<!\\)(\$\w+)")
 type_struct       = RE(r"(?<!\\)\&((struct\s*)*[_\w]+)")
 
-esc_type_prefix  = RE(r"\\([\%\&\$\(])")
+esc_type_prefix  = RE(r"\\([\@\%\&\$\(])")
 
 CR_NL            = RE(r"[\r\n]")
 C99_comments     = RE(r"//.*$")
@@ -1811,12 +1813,13 @@ class Parser(SimpleLog):
             # probe different sect start pattern ...
 
             if self.options.markup == "reST":
-                if doc_param.match(line):
-                    # this is a line with a parameter definition
-                    new_sect = self.sect_title(doc_param[0].strip())
-                    new_cont = doc_param[1].strip()
+                if doc_sect_reST.match(line):
+                    # this is a line with a parameter definition or vintage
+                    # section "Context: lorem", "Return: lorem" etc.
+                    new_sect = self.sect_title(doc_sect_reST[0].strip())
+                    new_cont = doc_sect_reST[1].strip()
                 elif reST_sect.match(line):
-                    # this is a line with a section definition
+                    # this is a line with a section definition "Section name:\n"
                     new_sect = self.sect_title(reST_sect[0].strip())
                     new_cont = ""
             else:  # kernel-doc vintage mode

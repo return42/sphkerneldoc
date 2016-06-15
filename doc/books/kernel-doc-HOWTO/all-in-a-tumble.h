@@ -160,8 +160,7 @@ int user_function(int a)
  *     return 0;
  *   }
  *
- * Return:
- * Sum of ``parameter_a`` and the second is ``parameter_b``.
+ * Return: Sum of ``parameter_a`` and the second is ``parameter_b``.
  *
  * highlighting:
  * The highlight pattern, are non regular reST markups. They are only available
@@ -193,8 +192,8 @@ int user_function(int a)
  * - ``\$ENVVAR`` : environmental variable
  *
  * Since the prefixes ``$...``, ``&...`` and ``@...`` are used to markup the
- * highlight pattern, you have to escape them in other uses: $lorem, \&lorem
- * and \@lorem. To esacpe from function highlighting, use lorem\().
+ * highlight pattern, you have to escape them in other uses: $lorem, \&lorem,
+ * \%lorem and \@lorem. To esacpe from function highlighting, use lorem\().
  *
  * Parser Mode:
  * This is an example with activated reST additions, in this section you will
@@ -232,7 +231,7 @@ int user_function(int a)
  *       +------+      +------+
  *
  * Highlighted code blocks:
- * The next example shows a code example, with highlighting C syntax in the
+ * The next example shows a code block, with highlighting C syntax in the
  * output.
  *
  * .. code-block:: c
@@ -286,11 +285,9 @@ int rst_mode(int a, char b)
  * Long description. This function has two integer arguments. The first is
  * @parameter_a and the second is @parameter_b.
  *
- * Example:
- * user_function(22);
+ * Example: user_function(22);
  *
- * Return:
- * Sum of @parameter_a and @parameter_b.
+ * Return: Sum of @parameter_a and @parameter_b.
  *
  * highlighting:
  *
