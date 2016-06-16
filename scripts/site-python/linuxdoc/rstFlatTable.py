@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8; mode: python -*-
+# pylint: disable=C0330, R0903, R0912
 
 u"""
     flat-table
@@ -30,16 +31,27 @@ u"""
 
     Options:
 
-    * \:header-rows:   [int] count of header rows
-    * \:stub-columns:  [int] count of stub columns
-    * \:widths:        [[int] [int] ... ] widths of columns
-    * \:fill-cells:    instead of autospann missing cells, insert missing cells
+    * header-rows:   [int] count of header rows
+    * stub-columns:  [int] count of stub columns
+    * widths:        [[int] [int] ... ] widths of columns
+    * fill-cells:    instead of autospann missing cells, insert missing cells
 
     roles:
 
-    * \:cspan: [int] additionale columns (*morecols*)
-    * \:rspan: [int] additionale rows (*morerows*)
+    * cspan: [int] additionale columns (*morecols*)
+    * rspan: [int] additionale rows (*morerows*)
 """
+
+# ==============================================================================
+# imports
+# ==============================================================================
+
+import sys
+
+from docutils import nodes
+from docutils.parsers.rst import directives, roles
+from docutils.parsers.rst.directives.tables import Table
+from docutils.utils import SystemMessagePropagation
 
 # ==============================================================================
 # common globals
@@ -48,8 +60,6 @@ u"""
 # The version numbering follows numbering of the specification
 # (Documentation/books/kernel-doc-HOWTO).
 __version__  = '1.0'
-
-import sys
 
 PY3 = sys.version_info[0] == 3
 PY2 = sys.version_info[0] == 2
@@ -60,25 +70,17 @@ if PY3:
     basestring  = str
 
 # ==============================================================================
-# imports
-# ==============================================================================
-
-from docutils import io, nodes, statemachine, utils
-from docutils.parsers.rst import directives, roles
-from docutils.parsers.rst.directives.tables import Table
-from docutils.utils import SystemMessagePropagation
-
-# ==============================================================================
 def setup(app):
 # ==============================================================================
 
     app.add_directive("flat-table", FlatTable)
-    roles.register_local_role('cspan', cspan)
-    roles.register_local_role('rspan', rspan)
+    roles.register_local_role('cspan', c_span)
+    roles.register_local_role('rspan', r_span)
 
 # ==============================================================================
-def cspan(name, rawtext, text, lineno, inliner, options=None, content=None):
+def c_span(name, rawtext, text, lineno, inliner, options=None, content=None):
 # ==============================================================================
+    # pylint: disable=W0613
 
     options  = options if options is not None else {}
     content  = content if content is not None else []
@@ -87,8 +89,9 @@ def cspan(name, rawtext, text, lineno, inliner, options=None, content=None):
     return nodelist, msglist
 
 # ==============================================================================
-def rspan(name, rawtext, text, lineno, inliner, options=None, content=None):
+def r_span(name, rawtext, text, lineno, inliner, options=None, content=None):
 # ==============================================================================
+    # pylint: disable=W0613
 
     options  = options if options is not None else {}
     content  = content if content is not None else []
@@ -98,8 +101,8 @@ def rspan(name, rawtext, text, lineno, inliner, options=None, content=None):
 
 
 # ==============================================================================
-class rowSpan(nodes.General, nodes.Element): pass
-class colSpan(nodes.General, nodes.Element): pass
+class rowSpan(nodes.General, nodes.Element): pass # pylint: disable=C0103,C0321
+class colSpan(nodes.General, nodes.Element): pass # pylint: disable=C0103,C0321
 # ==============================================================================
 
 # ==============================================================================
@@ -163,7 +166,7 @@ class ListTableBuilder(object):
         for colwidth in colwidths:
             colspec = nodes.colspec(colwidth=colwidth)
             # FIXME: It seems, that the stub method only works well in the
-            # absence of rowspan (observed by the html builer, the docutils-xml
+            # absence of rowspan (observed by the html buidler, the docutils-xml
             # build seems OK).  This is not extraordinary, because there exists
             # no table directive (except *this* flat-table) which allows to
             # define coexistent of rowspan and stubs (there was no use-case
@@ -254,7 +257,7 @@ class ListTableBuilder(object):
                 for c in range(cspan):
                     try:
                         self.rows[y].insert(x+c+1, None)
-                    except:
+                    except: # pylint: disable=W0702
                         # the user sets ambiguous rowspans
                         pass # SDK.CONSOLE()
                 # handle colspan in spanned rows
@@ -262,7 +265,7 @@ class ListTableBuilder(object):
                     for c in range(cspan + 1):
                         try:
                             self.rows[y+r+1].insert(x+c, None)
-                        except:
+                        except: # pylint: disable=W0702
                             # the user sets ambiguous rowspans
                             pass # SDK.CONSOLE()
                 x += 1
@@ -304,7 +307,7 @@ class ListTableBuilder(object):
                     retVal += "\n    , "
                 else:
                     content = col[2][0].astext()
-                    if 30 < len (content):
+                    if len (content) > 30:
                         content = content[:30] + "..."
                     retVal += ('(cspan=%s, rspan=%s, %r)'
                                % (col[0], col[1], content))

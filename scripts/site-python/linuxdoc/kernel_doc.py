@@ -445,7 +445,9 @@ OS_ENV = OS_ENV()
 KBUILD_VERBOSE = int(OS_ENV.get("KBUILD_VERBOSE", "0"))
 KERNELVERSION  = OS_ENV.get("KERNELVERSION", "unknown kernel version")
 SRCTREE        = OS_ENV.get("srctree", "")
-GIT_REF        = "Linux kernel source tree: `%(rel_fname)s <https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/%(rel_fname)s>`_"
+GIT_REF        = ("Linux kernel source tree:"
+                  " `%(rel_fname)s <https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/"
+                  "%(rel_fname)s>`_")
 
 # ==============================================================================
 # Logging stuff
@@ -936,7 +938,7 @@ class ReSTTranslator(TranslatorAPI):
             if ID:
                 self.write_anchor(ID)
             self.write_header(header, sec_level=sec_level)
-        if (header.lower() == "example"):
+        if header.lower() == "example":
             self.write("\n.. code-block:: c\n\n")
             for l in textwrap.dedent(content).split("\n"):
                 if not l.strip():
