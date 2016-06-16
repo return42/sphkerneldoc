@@ -381,10 +381,20 @@ class KernelDoc(Directive):
                 code_block.append("    " + l)
             lines = code_block
 
-        content = ViewList(lines)
+        reSTfname = self.state.document.current_source
+
+        content = ViewList()
+        for l in lines:
+            content.append(l, reSTfname, self.lineno)
+
         node = nodes.section()
-        node.document = self.state.document
-        nested_parse_with_titles(self.state, content, node)
+        # nested_parse_with_titles(self.state, content, node)
+
+        buf = self.state.memo.title_styles, self.state.memo.section_level
+        self.state.memo.title_styles, self.state.memo.section_level = [], 0
+        try:
+            self.state.nested_parse(content, self.lineno, node, match_titles=1)
+        finally:
+            self.state.memo.title_styles, self.state.memo.section_level = buf
 
         return node.children
-
