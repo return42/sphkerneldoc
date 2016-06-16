@@ -866,17 +866,17 @@ class ReSTTranslator(TranslatorAPI):
 
     HIGHLIGHT_MAP = [
         # the regexpr are partial *overlapping*, mind the order!
-        (   type_enum_full   , r":c:type:`\1 \2 <\2>`" )
-        , ( type_struct_full , r":c:type:`\1 \2 <\2>`" )
-        , ( type_typedef_full, r":c:type:`\1 \2 <\2>`" )
-        , ( type_union_full  , r":c:type:`\1 \2 <\2>`" )
-        , ( type_member_func , r":c:type:`\1\2() <\1>`" )
-        , ( type_member      , r":c:type:`\1\2 <\1>`" )
-        , ( type_func        , r":c:func:`\1`")
-        , ( type_constant    , r"``\1``" )
-        , ( type_param       , r"``\1``" )
-        , ( type_env         , r"``\1``" )
-        , ( type_struct      , r":c:type:`struct \1 <\1>`")
+        (   type_enum_full   , r"\ :c:type:`\1 \2 <\2>`\ " )
+        , ( type_struct_full , r"\ :c:type:`\1 \2 <\2>`\ " )
+        , ( type_typedef_full, r"\ :c:type:`\1 \2 <\2>`\ " )
+        , ( type_union_full  , r"\ :c:type:`\1 \2 <\2>`\ " )
+        , ( type_member_func , r"\ :c:type:`\1\2() <\1>`\ " )
+        , ( type_member      , r"\ :c:type:`\1\2 <\1>`\ " )
+        , ( type_func        , r"\ :c:func:`\1`\ ")
+        , ( type_constant    , r"\ ``\1``\ " )
+        , ( type_param       , r"\ ``\1``\ " )
+        , ( type_env         , r"\ ``\1``\ " )
+        , ( type_struct      , r"\ :c:type:`struct \1 <\1>`")
         # at least replace escaped %, & and $
         , ( esc_type_prefix  , r"\1")
         , ]
