@@ -42,4 +42,36 @@
     .wy-table-responsive table td { white-space: normal; }
     .wy-table-responsive { overflow: auto; }
     .rst-content table.docutils caption { text-align: left; font-size: 100%; }
+
+    /* admonitions with (rendered) reST markup examples (:class: rst-example)
+     *
+     * .. admonition:: title of the example
+     *     :class: rst-example
+     *     ....
+     */
+
+    div.rst-example > .admonition-title {
+        background-color: inherit;
+        color: inherit; }
+
+    div.rst-example > .admonition-title:before{
+        font-family: inherit;
+        font-style: italic;
+        content: "rendered reST markup:";}
+
+    div.rst-example {
+        padding-left: 12px; padding-right: 12px;
+        background-color: white;
+        border-left: 12px solid #e1e4e5;
+        transform: scale(0.7); }
+
+    div.rst-example:hover {
+        transform: scale(1);
+        background-color: inherit;
+        padding-left: inherit; padding-right: inherit;
+        border-left: inherit; }
+
+    div.rst-example:hover > .admonition-title {
+        display: none;
+    }
 }
