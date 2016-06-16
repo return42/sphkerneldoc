@@ -44,7 +44,7 @@ are no longer supported, you have to enter at least one line break::
     lorem ipsum
 
 There is an exception for special section names like "Description:", "Context:"
-or "Return:", which exists mainly for backward compatibility. nevertheless, it
+or "Return:", which exists mainly for backward compatibility. Nevertheless, it
 is recommended to add a newline after the colon.
 
 Beside these *sectioning* of the kernel-doc syntax, reST has it's own chapter,

@@ -34,7 +34,7 @@ Here is a short overview of the options:
 
 .. code-block:: rst
 
-    .. kernel-doc:: <filename>
+    .. kernel-doc:: <src-filename>
         :doc: <section title>
         :no_header:
         :export:
@@ -46,15 +46,14 @@ Here is a short overview of the options:
         :linenos:
         :debug:
 
-The argument ``<filename>`` is required, it points to a source file in the
+The argument ``<src-filename>`` is required, it points to a source file in the
 kernel source tree. The pathname is relativ to kernel's root folder.  The
 options have the following meaning, but be aware that not all combinations of
 these options make sense:
 
 ``doc <section title>``
-    Inserts the contents of the ``DOC:`` section titled ``<section title>``.
-    Spaces are allowed in ``<section title>``; do not quote the ``<section
-    title>``.
+    Include content of the ``DOC:`` section titled ``<section title>``.  Spaces
+    are allowed in ``<section title>``; do not quote the ``<section title>``.
 
     The next option make only sense in conjunction with option ``doc``:
 
@@ -64,19 +63,25 @@ these options make sense:
         identifier. Take in mind, that this option will not supress any native
         reST heading markup in the comment (:ref:`reST-section-structure`).
 
-``export``
-    Inserts the documentation of function, struct or whatever definition that is
-    exported using EXPORT_SYMBOL (``EXPORT_SYMBOL()``, ``EXPORT_SYMBOL_GPL()`` &
-    ``EXPORT_SYMBOL_GPL_FUTURE()``). Assume that a the all exported symbols are
-    documented.
+``export [<src-fname-pattern> [, ...]]``
+    Include documentation for all function, struct or whatever definition in
+    ``<src-filename>``, exported using EXPORT_SYMBOL macro (``EXPORT_SYMBOL``,
+    ``EXPORT_SYMBOL_GPL`` & ``EXPORT_SYMBOL_GPL_FUTURE``) either in
+    ``<src-filename>`` or in any of the files specified by
+    ``<src-fname-pattern>``.
 
-``internal``
-    Inserts the documentation of function, struct or whatever definition that
-    is documented, but not **not** exported using EXPORT_SYMBOL.
+    The ``<src-fname-pattern>`` (glob) is useful when the kernel-doc comments
+    have been placed in header files, while EXPORT_SYMBOL are next to the
+    function definitions.
+
+``internal [<src-fname-pattern> [, ...]]``
+    Include documentation for all documented definitions, **not** exported using
+    EXPORT_SYMBOL macro either in ``<src-filename>`` or in any of the files
+    specified by ``<src-fname-pattern>``.
+
 
 ``functions <name [, names [, ...]]>``
-    Inserts the documentation of function(s), struct(s) or whatever
-    definition(s) named ``name``.
+    Include documentation for each named definition.
 
 ``module <prefix-id>``
     The option ``:module: <id-prefix>`` sets a module-name. The module-name is
@@ -161,6 +166,16 @@ The following example inserts the documentation of struct 'my_long_struct'.
 * Type reference: :c:type:`my_long_struct` or the alternativ notation
   with title :c:type:`struct my_long_struct <my_long_struct>`
 
+exported
+========
+
+.. code-block:: rst
+
+  .. kernel-doc:: include/uapi/linux/dvb/frontend.h
+     :export: net/mac80211/*.c
+     :module: mac80211
+
+
 Snippets
 ========
 
@@ -170,12 +185,12 @@ code-snippet below is:
 
 .. code-block:: rst
 
-     .. kernel-doc::  ./all-in-a-tumble.h
+     .. kernel-doc::  ./all-in-a-tumble.c
         :snippets:  hello-world
         :language:  c
         :linenos:
 
-.. kernel-doc::  ./all-in-a-tumble.h
+.. kernel-doc::  ./all-in-a-tumble.c
     :snippets:  hello-world
     :language:  c
     :linenos:
@@ -202,8 +217,11 @@ kernel_doc_raise_error: ``True``
   Since this definition not exists (anymore), the following TODO entry is
   inserted, when ``kernel_doc_raise_error`` is ``False``.
 
-  .. kernel-doc::  ./all-in-a-tumble.h
-      :functions:  no_longer_exist
+  .. admonition:: an error gives a ".. todo::" directive with *Oops* in
+      :class: rst-example
+
+       .. kernel-doc::  ./all-in-a-tumble.h
+           :functions:  no_longer_exist
 
 
 kernel_doc_verbose_warn: ``True``

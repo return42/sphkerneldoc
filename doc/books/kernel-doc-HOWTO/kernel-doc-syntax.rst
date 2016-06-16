@@ -87,7 +87,7 @@ A non-void function should have a ``Return:`` section describing the return
 value(s).  Example-sections should contain the string ``EXAMPLE`` so that
 they are marked appropriately in the output format.
 
-.. kernel-doc::  ./all-in-a-tumble.h
+.. kernel-doc::  ./all-in-a-tumble.c
     :snippets:  user_function
     :language:  c
     :linenos:
@@ -238,7 +238,7 @@ The snippet region stops with a new snippet region or at the next::
 
   /* parse-SNAP: */
 
-A small example:
+A small source code example:
 
 .. code-block:: c
 

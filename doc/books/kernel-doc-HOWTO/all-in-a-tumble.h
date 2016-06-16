@@ -10,17 +10,16 @@
  * The content itself is nonsense / don’t look to close ;-)
  */
 
+// testing:
+//
+// .. kernel-doc::  ./all-in-a-tumble.c
+//     :export:  ./all-in-a-tumble.h
+
+EXPORT_SYMBOL_GPL_FUTURE(user_function)
+
 
 // The parse-SNIP/SNAP comments are used to include the C sorce code as snippets
 // into a reST document. These are the examples of the kernel-doc-HOWTO book.
-
-/* parse-SNIP: hello-world */
-#include<stdio.h>
-int main() {
-  printf("Hello World\n");
-  return 0;
-}
-/* parse-SNAP: */
 
 /* parse-SNIP: theory-of-operation */
 /**
@@ -122,28 +121,6 @@ enum my_enum {
  *
  */
 typedef int my_typedef;
-/* parse-SNAP: */
-
-
-
-/* parse-SNIP: user_function */
-/**
- * user_function - function that can only be called in user context
- * @a: some argument
- * Context: !in_interrupt()
- *
- * This function makes no sense, it is only kernel-doc demonstration.
- *
- * Example:
- * x = user_function(22);
- *
- * Return:
- * Returns first argument
- */
-int user_function(int a)
-{
-  return a;
-}
 /* parse-SNAP: */
 
 
@@ -276,7 +253,6 @@ int rst_mode(int a, char b)
 {
   return a + b;
 }
-
 
 
 /* parse-markup: kernel-doc */

@@ -3,9 +3,9 @@
 
 .. _all-in-a-tumble-src:
 
-=====================
-example's source code
-=====================
+===============================
+source of ``all-in-a-tumble.h``
+===============================
 
 Below you find the *source code* of the example file ``all-in-a-tumble.h``.
 

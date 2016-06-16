@@ -1,9 +1,9 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: refs.txt
 
 .. _`Emacs Table Mode`: https://www.emacswiki.org/emacs/TableMode
 .. _`Online Tables Generator`: http://www.tablesgenerator.com/text_tables
 .. _`OASIS XML Exchange Table Model`: https://www.oasis-open.org/specs/tm9901.html
-
 
 .. _xref_table_concerns:
 
@@ -11,24 +11,29 @@
 About tables
 ============
 
-First: the rest-flat-table_ directive is preferred in the Linux kernel tree.
+First: the :ref:`rest-flat-table` directive is preferred in the Linux kernel
+tree.
+
+Intro
+=====
 
 Internaly, the docutils uses a representation according to the `OASIS XML
 Exchange Table Model`_ (same as DocBook). The *OASIS Table Model* gives a huge
 bandwith of possibilities to form tables. This often seduce authors to force a
-specific layout. Misuse of tables in this manner is not recommended, because it
+specific layout. The misuse of tables in this manner is not recommended, it
 breaks the separation of *presentation from content* which most often ends in
-problems in range of output formats. Tables (and preformated text like source
-code listings) should be used advisedly. In a HTML output, the horizontal and
-vertical expansion is handled by a scrollbar. On print medias (paper / pdf)
-there is no scrollbar, automaticaly (page-) breaking a table (or line-breaking a
-preformated text) in the layout process ends mostly in unwanted results.
+various problems in the range of output formats. Tables (and preformated text
+like source code listings) should be used advisedly. In a HTML viewer, the
+horizontal and vertical expansion is handled by a scrollbar. On print medias
+(paper / pdf) there is no scrollbar and automaticaly page-breaking a table or
+line-breaking a preformated text in the layout process ends mostly in unwanted
+results.
 
 .. hint::
 
   Tables and preformated text in itself violate the separation of *presentation
   from content*, but we will never be able to entirely renounce them. Use them
-  with care, if your content should be rendered well, in wide variation of
+  with care, if your content should be rendered well, in the wide variation of
   output formats.
 
 
@@ -495,5 +500,3 @@ content*. HTML-Tables are only rendered within a HTML output.
      </tbody>
    </table>
    </div>
-
-.. include:: refs.txt

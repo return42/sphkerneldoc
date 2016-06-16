@@ -3,9 +3,9 @@
 
 .. _all-in-a-tumble-debug:
 
-====================
-reST of the examples
-====================
+=============================
+reST of ``all-in-a-tumble.h``
+=============================
 
 Below you find the reST_ markup produced by the kernel-doc parser from the
 example file ``all-in-a-tumble.h``.

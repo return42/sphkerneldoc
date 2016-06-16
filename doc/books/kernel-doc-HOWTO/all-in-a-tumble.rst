@@ -3,9 +3,9 @@
 
 .. _all-in-a-tumble:
 
-=================
-rendered examples
-=================
+==============================
+rendered ``all-in-a-tumble.h``
+==============================
 
 Below you see, how the example file ``all-in-a-tumble.h`` is rendered.
 

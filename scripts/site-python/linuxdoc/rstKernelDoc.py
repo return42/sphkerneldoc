@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8; mode: python -*-
-# pylint: disable=C0330, R0903
+# pylint: disable=C0330, R0903, R0914, R0912, R0915
 
 u"""
     rstKernelDoc
@@ -100,14 +100,27 @@ u"""
 """
 
 # ==============================================================================
+# imports
+# ==============================================================================
+
+import sys
+import glob
+from os import path
+from io import StringIO
+from docutils import nodes
+from docutils.parsers.rst import Directive, directives
+from docutils.utils import SystemMessage
+from docutils.statemachine import ViewList
+
+from . import kernel_doc as kerneldoc
+
+# ==============================================================================
 # common globals
 # ==============================================================================
 
 # The version numbering follows numbering of the specification
 # (Documentation/books/kernel-doc-HOWTO).
 __version__  = '1.0'
-
-import sys
 
 PY3 = sys.version_info[0] == 3
 PY2 = sys.version_info[0] == 2
@@ -117,19 +130,6 @@ if PY3:
     unicode     = str
     basestring  = str
 
-# ==============================================================================
-# imports
-# ==============================================================================
-
-from os import path
-from io import StringIO
-from docutils import nodes
-from docutils.parsers.rst import Directive, directives
-from docutils.utils import SystemMessage
-from docutils.statemachine import ViewList
-from sphinx.util.nodes import nested_parse_with_titles
-
-from . import kernel_doc as kerneldoc
 
 # ==============================================================================
 def setup(app):
@@ -192,8 +192,8 @@ class KernelDoc(Directive):
         "doc"          : directives.unchanged_required # aka lines containing !P
         , "no_header"  : directives.flag
 
-        , "export"     : directives.flag               # aka lines containing !E
-        , "internal"   : directives.flag               # aka lines containing !I
+        , "export"     : directives.unchanged_required # aka lines containing !E
+        , "internal"   : directives.unchanged_required # aka lines containing !I
         , "functions"  : directives.unchanged_required # aka lines containing !F
 
         , "debug"      : directives.flag               # insert generated reST as code-block
@@ -220,7 +220,6 @@ class KernelDoc(Directive):
         , "encoding"   : directives.encoding
 
     }
-
 
     def getOopsEntry(self, msg):
         retVal = ("\n\n.. todo::"
@@ -267,8 +266,9 @@ class KernelDoc(Directive):
         if not document.settings.file_insertion_enabled:
             raise self.errMsg('File insertion disabled')
 
-        fname    = self.arguments[0]
-        src_tree = kerneldoc.SRCTREE
+        fname     = self.arguments[0]
+        src_tree  = kerneldoc.SRCTREE
+        exp_files = []  # file pattern to search for EXPORT_SYMBOL
 
         if self.arguments[0].startswith("./"):
             # the prefix "./" indicates a relative pathname
@@ -294,11 +294,10 @@ class KernelDoc(Directive):
 
         # set parse adjustments
 
-        env.note_dependency(fname)
         rstout = StringIO()
         ctx  = kerneldoc.ParserContext()
         opts = kerneldoc.ParseOptions(
-            fname           = fname
+            rel_fname       = fname
             , src_tree      = src_tree
             , id_prefix     = self.options.get("module", "").strip()
             , out           = rstout
@@ -309,9 +308,11 @@ class KernelDoc(Directive):
             ,)
 
         opts.set_defaults()
+
+        env.note_dependency(opts.fname)
         if not path.exists(opts.fname):
             raise self.errMsg(
-                "kernel-doc refers to nonexisting document %s" % fname)
+                "kernel-doc refers to nonexisting document %s" % opts.fname)
 
         if self.options:
             opts.skip_preamble = True
@@ -327,21 +328,48 @@ class KernelDoc(Directive):
         if "export" in self.options:
             # gather exported symbols and add them to the list of names
             kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
-            opts.use_names.extend(ctx.exported_symbols)
+            exp_files.extend((self.options.get('export') or "").replace(","," ").split())
             opts.error_missing = False
 
         if "internal" in self.options:
             # gather exported symbols and add them to the ignore-list of names
             kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
-            opts.skip_names.extend(ctx.exported_symbols)
+            exp_files.extend((self.options.get('internal') or "").replace(","," ").split())
 
         if "functions" in self.options:
             opts.error_missing = True
             opts.use_names.extend(
                 self.options["functions"].replace(","," ").split())
 
+        for pattern in exp_files:
+            if pattern.startswith("./"): # "./" indicates a relative pathname
+                pattern = path.join(
+                    path.dirname(path.normpath(document.current_source))
+                    , pattern[2:])
+            else:
+                pattern = path.join(kerneldoc.SRCTREE, pattern)
+
+            if (not glob.has_magic(pattern)
+                and not path.lexists(pattern)):
+                # if pattern is a filename (is not a glob pattern) and this file
+                # does not exists, an error is raised.
+                raise self.errMsg("file not found: %s" % pattern)
+
+            for fname in glob.glob(pattern):
+                env.note_dependency(path.abspath(fname))
+                kerneldoc.Parser.gather_context(kerneldoc.readFile(fname), ctx)
+
+        if "export" in self.options:
+            if not ctx.exported_symbols:
+                raise self.errMsg("using option :export: but there are no exported symbols")
+            opts.use_names.extend(ctx.exported_symbols)
+
+        if "internal" in self.options:
+            opts.skip_names.extend(ctx.exported_symbols)
+
+
         parser = KernelDocParser(env.app, opts)
-        env.app.info("parse kernel-doc comments from: %s" % fname)
+        env.app.info("parse kernel-doc comments from: %s" % opts.fname)
         parser.parse()
 
         lines = rstout.getvalue().split("\n")
@@ -353,6 +381,14 @@ class KernelDoc(Directive):
             if not_found:
                 raise self.errMsg(
                     "selected section(s) not found: %s" % ", ".join(not_found))
+
+        if "export" in self.options:
+            selected  = opts.use_names
+            names     = parser.ctx.translated_names
+            not_found = [ s for s in selected if s not in names]
+            if not_found:
+                raise self.errMsg(
+                    "exported definitions not found: %s" % ", ".join(not_found))
 
         if "snippets" in self.options:
             selected  = self.options["snippets"].replace(","," ").split()
@@ -388,7 +424,6 @@ class KernelDoc(Directive):
             content.append(l, reSTfname, self.lineno)
 
         node = nodes.section()
-        # nested_parse_with_titles(self.state, content, node)
 
         buf = self.state.memo.title_styles, self.state.memo.section_level
         self.state.memo.title_styles, self.state.memo.section_level = [], 0
