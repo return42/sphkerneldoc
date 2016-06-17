@@ -130,6 +130,7 @@ if PY3:
     unicode     = str
     basestring  = str
 
+PARSER_CACHE = dict()
 
 # ==============================================================================
 def setup(app):
@@ -263,7 +264,6 @@ class KernelDoc(Directive):
 
         opts.set_defaults()
 
-        env.note_dependency(opts.fname)
         if not path.exists(opts.fname):
             raise self.errMsg(
                 "kernel-doc refers to nonexisting document %s" % opts.fname)
@@ -345,6 +345,18 @@ class KernelDoc(Directive):
             self.getOopsEntry(unicode(msg)).split("\n")
             , self.arguments[0])
 
+    def parseSource(self, env, opts):
+        parser = PARSER_CACHE.get(opts.fname, None)
+
+        if parser is None:
+            env.note_dependency(opts.fname)
+            #env.app.info("parse kernel-doc comments from: %s" % opts.fname)
+            parser = KernelDocParser(env.app, opts, kerneldoc.NullTranslator())
+            parser.parse()
+            PARSER_CACHE[opts.fname] = parser
+
+        return parser
+
     def run(self):
         doc = self.state.document
         env = doc.settings.env
@@ -353,8 +365,9 @@ class KernelDoc(Directive):
         try:
             if not doc.settings.file_insertion_enabled:
                 raise self.errMsg('File insertion disabled')
-            opts = self.getParserOptions(doc, env)
-            retVal = self._run(doc, env, opts)
+            opts   = self.getParserOptions(doc, env)
+            parser = self.parseSource(env, opts)
+            retVal = self.getNodes(parser, opts)
 
         except SystemMessage as exc:
             if env.config.kernel_doc_raise_error:
@@ -365,18 +378,18 @@ class KernelDoc(Directive):
             pass
         return retVal
 
-    def _run(self, document, env, opts):
 
-        opts.translator = kerneldoc.ReSTTranslator()
-        #if "snippets" in self.options:
-        #    opts.translator = kerneldoc.ReSTTranslator()
+    def getNodes(self, parser, opts):
+
         rstout = StringIO()
         opts.out = rstout
+        translator = kerneldoc.ReSTTranslator()
+        parser.parse_dump_storage(opts, translator)
 
-        parser = KernelDocParser(env.app, opts)
-        env.app.info("parse kernel-doc comments from: %s" % opts.fname)
-        parser.parse()
+        #if "snippets" in self.options:
+        #    parser.options.translator = kerneldoc.ReSTTranslator()
 
+        # xxxxxxxxxxxxx
         lines = rstout.getvalue().split("\n")
 
         # After the file has been parsed, missing objects should be logged, not
@@ -387,15 +400,15 @@ class KernelDoc(Directive):
 
         if "functions" in self.options:
             selected  = self.options["functions"].replace(","," ").split()
-            names     = parser.ctx.translated_names
+            names     = translator.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
                 self.insertOopsMsg(
                     "selected section(s) not found:\n    %s" % "\n    ,".join(not_found))
 
         if "export" in self.options:
-            selected  = opts.use_names
-            names     = parser.ctx.translated_names
+            selected  = parser.options.use_names
+            names     = translator.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
                 self.insertOopsMsg(

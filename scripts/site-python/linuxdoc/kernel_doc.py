@@ -224,7 +224,7 @@ u"""
 # ==============================================================================
 
 import sys, os, argparse, codecs, collections, textwrap
-import re
+import re, copy
 
 # ==============================================================================
 # common globals
@@ -581,30 +581,31 @@ def main():
     retVal     = 0
 
     for fname in CMD.files:
+        translator = None
         opts = ParseOptions(
             fname           = fname
             , id_prefix     = CMD.id_prefix
             , skip_preamble = CMD.skip_preamble
             , skip_epilog   = CMD.skip_epilog
             , out           = STREAM.appl_out
-            , translator    = ReSTTranslator()
             ,)
         opts.set_defaults()
 
         if CMD.list_exports or CMD.list_internals:
+            translator = ListTranslator(CMD.list_exports, CMD.list_internals)
             opts.gather_context = True
-            opts.translator     = ListTranslator(CMD.list_exports, CMD.list_internals)
 
         elif CMD.use_names:
+            translator = ReSTTranslator()
             opts.use_names  = CMD.use_names
 
         elif CMD.exported or CMD.internal:
+            translator = ReSTTranslator()
             # gather exported symbols ...
             src   = readFile(opts.fname)
             ctx   = ParserContext()
             Parser.gather_context(src, ctx)
 
-            opts.translator    = ReSTTranslator()
             opts.error_missing = False
             opts.use_names     = ctx.exported_symbols
             opts.skip_names    = []
@@ -613,7 +614,7 @@ def main():
                 opts.use_names  = []
                 opts.skip_names = ctx.exported_symbols
 
-        parser = Parser(opts)
+        parser = Parser(opts, translator)
         parser.parse()
         if parser.errors:
             retVal = 1
@@ -651,16 +652,36 @@ class TranslatorAPI(object):
     def __init__(self):
         self.options = None
         self.parser  = None
+        self.translated_names = set()
 
     def setParser(self, parser):
-        self.options = parser.options
         self.parser = parser
+
+    def setOptions(self, options):
+        self.options = options
 
     def highlight(self, cont):
         u"""returns *highlighted* text"""
         if self.options.highlight:
             return map_text(cont, self.HIGHLIGHT_MAP)
         return cont
+
+    def get_preamble(self):
+        retVal = ""
+        if self.options.preamble == "":
+            retVal = self.comment("src-file: %s" % (self.options.rel_fname or self.options.fname))
+        elif self.options.preamble:
+            retVal = self.options.preamble % self
+        return retVal
+
+    def get_epilog(self):
+        retVal = ""
+        if self.options.epilog == "":
+            retVal = self.comment(
+                "\nThis file was automatic generated / don't edit.")
+        elif self.options.epilog:
+            retVal = self.options.epilog % self
+        return retVal
 
     @classmethod
     def comment(cls, cont):
@@ -709,7 +730,7 @@ class TranslatorAPI(object):
     def output_epilog(self):
         raise NotImplementedError
 
-    def output_doc_section(
+    def output_DOC(
             self
             , sections         = None # ctx.sections
             , ):
@@ -761,7 +782,7 @@ class TranslatorAPI(object):
         raise NotImplementedError
 
 # ------------------------------------------------------------------------------
-class NullTranslator(object):
+class NullTranslator(TranslatorAPI):
 # ------------------------------------------------------------------------------
     u"""
     Null translator, translates nothing, just parse.
@@ -771,12 +792,13 @@ class NullTranslator(object):
     # pylint: disable=C0321
     def output_preamble(self, *args, **kwargs):      pass
     def output_epilog(self, *args, **kwargs):        pass
-    def output_doc_section(self, *args, **kwargs):   pass
+    def output_DOC(self, *args, **kwargs):   pass
     def output_function_decl(self, *args, **kwargs): pass
     def output_struct_decl(self, *args, **kwargs):   pass
     def output_union_decl(self, *args, **kwargs):    pass
     def output_enum_decl(self, *args, **kwargs):     pass
     def output_typedef_decl(self, *args, **kwargs):  pass
+    def eof(self):                                   pass
 
 # ------------------------------------------------------------------------------
 class ListTranslator(TranslatorAPI):
@@ -809,7 +831,7 @@ class ListTranslator(TranslatorAPI):
     def output_epilog(self):
         pass
 
-    def output_doc_section(self, sections = None):
+    def output_DOC(self, sections = None):
         for header in sections.keys():
             self.names["DOC"].append(header)
 
@@ -984,7 +1006,7 @@ class ReSTTranslator(TranslatorAPI):
                 "-*- coding: %s; mode: rst -*-\n"
                 % (getattr(self.options.out, "encoding", "utf-8") or "utf-8").lower())
 
-        preamble = self.options.get_preamble()
+        preamble = self.get_preamble()
         if preamble:
             self.write(preamble, "\n")
 
@@ -995,11 +1017,11 @@ class ReSTTranslator(TranslatorAPI):
                 self.write("\n", self.options.top_link % self.options, "\n")
 
     def output_epilog(self):
-        epilog = self.options.get_epilog()
+        epilog = self.get_epilog()
         if epilog:
             self.write(epilog, "\n")
 
-    def output_doc_section(self, sections = None):
+    def output_DOC(self, sections = None):
         for header, content in sections.items():
             self.write_section(header, content, sec_level=2, ID=header)
 
@@ -1257,12 +1279,17 @@ class ParseOptions(Container):
         , ("SNAP",    [], "snap")
         , ]
 
+    def dumpOptions(self):
+        # dumps options which are variable from parsing source-code
+        return dict(
+            highlight = self.highlight
+            , markup  = self.markup )
+
     def __init__(self, *args, **kwargs):
 
         self.id_prefix      = None  # A prefix for generated IDs.
         self.out            = None  # File descriptor for output.
         self.eof_newline    = True  # write newline on end of file
-        self.translator     = None  # Translator object.
 
         self.src_tree       = SRCTREE # root of the kernel sources
         self.rel_fname      = ""      # pathname relative to src_tree
@@ -1332,23 +1359,6 @@ class ParseOptions(Container):
                      " as expected!")
         if not self.fname:
             LOG.error("no source file given!")
-
-    def get_preamble(self):
-        retVal = ""
-        if self.preamble == "":
-            retVal = self.translator.comment("src-file: %s" % (self.rel_fname or self.fname))
-        elif self.preamble:
-            retVal = self.preamble % self
-        return retVal
-
-    def get_epilog(self):
-        retVal = ""
-        if self.epilog == "":
-            retVal = self.translator.comment(
-                "\nThis file was automatic generated / don't edit.")
-        elif self.epilog:
-            retVal = self.epilog % self
-        return retVal
 
     def set_defaults(self):
 
@@ -1445,9 +1455,6 @@ class ParserContext(Container):
         self.decl_purpose      = ""
         self.return_type       = ""
 
-        # record ranslated names
-        self.translated_names  = []
-
         #self.struct_actual     = ""
 
         # Additional context from the parsed source
@@ -1463,14 +1470,17 @@ class ParserContext(Container):
         # SNIP / SNAP
         self.snippets  = collections.OrderedDict()
 
+        # the place, where type dumps are stored
+        self.dump_storage = collections.OrderedDict()
+
         super(ParserContext, self).__init__(self, *args, **kwargs)
 
     def new(self):
         return self.__class__(
             line_no            = self.line_no
             , exported_symbols = self.exported_symbols
-            , translated_names = self.translated_names
-            , snippets         = self.snippets )
+            , snippets         = self.snippets
+            , dump_storage     = self.dump_storage )
 
 
 class ParserBuggy(RuntimeError):
@@ -1537,13 +1547,8 @@ class Parser(SimpleLog):
     section_return    = "Return"
     section_default   = section_descr
 
-    def __init__(self, parse_options):
+    def __init__(self, options, translator):
         super(Parser, self).__init__()
-        self.options = parse_options
-        self.ctx     = ParserContext()
-
-        self.translator = self.options.translator
-        self.translator.setParser(self)
 
         # raw data akku
         self.rawdata    = ""
@@ -1558,6 +1563,22 @@ class Parser(SimpleLog):
         self.warnings          = 0
         self.errors            = 0
         self.anon_struct_union = False
+
+        self.options    = None
+        self.translator = None
+        self.ctx        = ParserContext()
+
+        self.setTranslator(translator)
+        self.setOptions(options)
+
+    def setTranslator(self, translator):
+        self.translator = translator
+        self.translator.setParser(self)
+        self.translator.setOptions(self.options)
+
+    def setOptions(self, options):
+        self.options = options
+        self.translator.setOptions(options)
 
     def reset_state(self):
         self.ctx = self.ctx.new()
@@ -1726,9 +1747,14 @@ class Parser(SimpleLog):
             if not self.options.error_missing:
                 log_missed = self.warn
 
-            for name in self.options.use_names:
-                if name not in self.ctx.translated_names:
-                    log_missed("no documentation for '%(name)s' found", name=name)
+            if isinstance(self.translator, NullTranslator):
+                # the NullTranslator does not translate / translated_names is
+                # empty
+                pass
+            else:
+                for name in self.options.use_names:
+                    if name not in self.translator.translated_names:
+                        log_missed("no documentation for '%(name)s' found", name=name)
 
             if self.errors or self.warnings:
                 self.warn("total errors: %(errors)s / total warnings: %(warnings)s"
@@ -1736,6 +1762,45 @@ class Parser(SimpleLog):
                 self.warnings -= 1
             global INSPECT
             INSPECT = False
+
+    def parse_dump_storage(self, options, translator):
+        self.setOptions(options)
+        self.setTranslator(translator)
+        self.dump_preamble()
+        for name, out_type, opts, kwargs in self.ctx.dump_storage.values():
+            self.options.update(opts)
+            self.output_decl(name, out_type, **kwargs)
+        self.dump_epilog()
+        self.translator.eof()
+
+    def output_decl(self, name, out_type, **kwargs):
+
+        if isinstance(self.translator, NullTranslator):
+            if self.ctx.dump_storage.get(name, None) is not None:
+                # FIXME: what else can we do ... this will lost content
+                first_decl = self.ctx.dump_storage[name]
+                self.error("name %s used several times, you will lost content!!!  first: %s: %s / this %s: %s"
+                           % (name, first_decl[0], first_decl[1], out_type, name))
+
+            self.ctx.dump_storage[name] = (
+                name
+                , out_type
+                , self.options.dumpOptions()
+                , copy.deepcopy(kwargs))
+
+        do_translate = False
+        if name in self.options.skip_names:
+            do_translate = False
+        elif not self.options.use_names:
+            do_translate = True
+        elif name in self.options.use_names:
+            do_translate = True
+        if do_translate:
+            self.translator.translated_names.add(name)
+            out_func = getattr(self.translator, "output_%s" % out_type)
+            out_func(**kwargs)
+        else:
+            self.debug("skip translation of %(t)s: '%(n)s'", t=out_type, n=name)
 
     def state_0(self, line):
         u"""state: 0 - normal code"""
@@ -1954,7 +2019,7 @@ class Parser(SimpleLog):
         if doc_block.match(line):
             # a new DOC block arrived, dump the last section and pass the new
             # DOC block to state 1.
-            self.dump_doc_section(self.ctx.section, self.ctx.contents)
+            self.dump_DOC(self.ctx.section, self.ctx.contents)
             self.ctx = self.ctx.new()
             self.debug("END & START: DOC block / switch state 4 --> 1")
             self.state = 1
@@ -1963,7 +2028,7 @@ class Parser(SimpleLog):
         elif doc_end.match(line):
             # the DOC block ends here, dump it and reset to state 0
             self.debug("END: DOC block / dump doc section / switch state 4 --> 0")
-            self.dump_doc_section(self.ctx.section, self.ctx.contents)
+            self.dump_DOC(self.ctx.section, self.ctx.contents)
             self.ctx = self.ctx.new()
             self.state = 0
 
@@ -2161,23 +2226,6 @@ class Parser(SimpleLog):
                 break
 
     # ------------------------------------------------------------
-    # selective translation
-    # ------------------------------------------------------------
-
-    def mark_as_translated(self, name):
-        u"""Test if content should be translated"""
-        retVal = False
-        if name in self.options.skip_names:
-            retVal = False
-        elif not self.options.use_names:
-            retVal = True
-        elif name in self.options.use_names:
-            retVal = True
-        if retVal:
-            self.ctx.translated_names.append(name)
-        return retVal
-
-    # ------------------------------------------------------------
     # dump objects
     # ------------------------------------------------------------
 
@@ -2321,61 +2369,52 @@ class Parser(SimpleLog):
         if hasRetVal:
             self.check_return_section(self.ctx.decl_name, self.ctx.return_type)
 
-        if self.mark_as_translated(self.ctx.decl_name):
-            self.translator.output_function_decl(
-                function           = self.ctx.decl_name
-                , return_type      = self.ctx.return_type
-                , parameterlist    = self.ctx.parameterlist
-                , parameterdescs   = self.ctx.parameterdescs
-                , parametertypes   = self.ctx.parametertypes
-                , sections         = self.ctx.sections
-                , purpose          = self.ctx.decl_purpose )
-        else:
-            self.debug("skip translation of %(t)s: '%(n)s'"
-                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
+        self.output_decl(
+            self.ctx.decl_name, "function_decl"
+            , function         = self.ctx.decl_name
+            , return_type      = self.ctx.return_type
+            , parameterlist    = self.ctx.parameterlist
+            , parameterdescs   = self.ctx.parameterdescs
+            , parametertypes   = self.ctx.parametertypes
+            , sections         = self.ctx.sections
+            , purpose          = self.ctx.decl_purpose )
 
-    def dump_doc_section(self, name, cont):
-        if self.mark_as_translated(name):
-            self.dump_section(name, cont)
-            self.translator.output_doc_section(sections=self.ctx.sections)
-        else:
-            self.debug("skip translation of DOC: '%(n)s'", n=name)
+    def dump_DOC(self, name, cont):
+        self.dump_section(name, cont)
+        self.output_decl(name, "DOC"
+                         , sections = self.ctx.sections )
 
     def dump_union(self, proto):
+
         if not self.prepare_struct_union(proto):
             self.error("can't parse union!")
             return
 
-        if self.mark_as_translated(self.ctx.decl_name):
-            self.translator.output_union_decl(
-                decl_name          = self.ctx.decl_name
-                , decl_type        = self.ctx.decl_type
-                , parameterlist    = self.ctx.parameterlist
-                , parameterdescs   = self.ctx.parameterdescs
-                , parametertypes   = self.ctx.parametertypes
-                , sections         = self.ctx.sections
-                , purpose          = self.ctx.decl_purpose )
-        else:
-            self.debug("skip translation of %(t)s: '%(n)s'"
-                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
+        self.output_decl(
+            self.ctx.decl_name, "union_decl"
+            , decl_name        = self.ctx.decl_name
+            , decl_type        = self.ctx.decl_type
+            , parameterlist    = self.ctx.parameterlist
+            , parameterdescs   = self.ctx.parameterdescs
+            , parametertypes   = self.ctx.parametertypes
+            , sections         = self.ctx.sections
+            , purpose          = self.ctx.decl_purpose )
 
     def dump_struct(self, proto):
+
         if not self.prepare_struct_union(proto):
             self.error("can't parse struct!")
             return
 
-        if self.mark_as_translated(self.ctx.decl_name):
-            self.translator.output_struct_decl(
-                decl_name          = self.ctx.decl_name
-                , decl_type        = self.ctx.decl_type
-                , parameterlist    = self.ctx.parameterlist
-                , parameterdescs   = self.ctx.parameterdescs
-                , parametertypes   = self.ctx.parametertypes
-                , sections         = self.ctx.sections
-                , purpose          = self.ctx.decl_purpose )
-        else:
-            self.debug("skip translation of %(t)s: '%(n)s'"
-                       , t=self.ctx.decl_type, n=self.ctx.decl_name)
+        self.output_decl(
+            self.ctx.decl_name, "struct_decl"
+            , decl_name        = self.ctx.decl_name
+            , decl_type        = self.ctx.decl_type
+            , parameterlist    = self.ctx.parameterlist
+            , parameterdescs   = self.ctx.parameterdescs
+            , parametertypes   = self.ctx.parametertypes
+            , sections         = self.ctx.sections
+            , purpose          = self.ctx.decl_purpose )
 
     def prepare_struct_union(self, proto):
         self.debug("prepare_struct_union(): '%(proto)s'", proto=proto)
@@ -2463,16 +2502,14 @@ class Parser(SimpleLog):
                         , name = name,  decl_name=self.ctx.decl_name )
                     self.ctx.parameterdescs[name] = Parser.undescribed
 
-            if self.mark_as_translated(self.ctx.decl_name):
-                self.translator.output_enum_decl(
-                    enum               = self.ctx.decl_name
-                    , parameterlist    = self.ctx.parameterlist
-                    , parameterdescs   = self.ctx.parameterdescs
-                    , sections         = self.ctx.sections
-                    , purpose          = self.ctx.decl_purpose )
-            else:
-                self.debug("skip translation of %(t)s: '%(n)s'"
-                           , t=self.ctx.decl_type, n=self.ctx.decl_name)
+            self.output_decl(
+                self.ctx.decl_name, "enum_decl"
+                , enum             = self.ctx.decl_name
+                , parameterlist    = self.ctx.parameterlist
+                , parameterdescs   = self.ctx.parameterdescs
+                , sections         = self.ctx.sections
+                , purpose          = self.ctx.decl_purpose )
+
         else:
             self.error("can't parse enum!")
 
@@ -2491,18 +2528,15 @@ class Parser(SimpleLog):
             f_args = C_FUNC_TYPEDEF[2]
             self.create_parameterlist(f_args, ',')
 
-            if self.mark_as_translated(self.ctx.decl_name):
-                self.translator.output_function_decl(
-                    function           = self.ctx.decl_name
-                    , return_type      = self.ctx.return_type
-                    , parameterlist    = self.ctx.parameterlist
-                    , parameterdescs   = self.ctx.parameterdescs
-                    , parametertypes   = self.ctx.parametertypes
-                    , sections         = self.ctx.sections
-                    , purpose          = self.ctx.decl_purpose)
-            else:
-                self.debug("skip translation of %(t)s: '%(n)s'"
-                           , t=self.ctx.decl_type, n=self.ctx.decl_name)
+            self.output_decl(
+                self.ctx.decl_name, "function_decl"
+                , function         = self.ctx.decl_name
+                , return_type      = self.ctx.return_type
+                , parameterlist    = self.ctx.parameterlist
+                , parameterdescs   = self.ctx.parameterdescs
+                , parametertypes   = self.ctx.parametertypes
+                , sections         = self.ctx.sections
+                , purpose          = self.ctx.decl_purpose )
 
         else:
             self.debug("dump_typedef(): '%(proto)s'", proto=proto)
@@ -2518,14 +2552,11 @@ class Parser(SimpleLog):
             if C_TYPEDEF.match(proto):
                 self.ctx.decl_name = C_TYPEDEF[0]
 
-                if self.mark_as_translated(self.ctx.decl_name):
-                    self.translator.output_typedef_decl(
-                        typedef            = self.ctx.decl_name
-                        , sections         = self.ctx.sections
-                        , purpose          = self.ctx.decl_purpose )
-                else:
-                    self.debug("skip translation of %(t)s: '%(n)s'"
-                               , t=self.ctx.decl_type, n=self.ctx.decl_name)
+                self.output_decl(
+                    self.ctx.decl_name, "typedef_decl"
+                        , typedef   = self.ctx.decl_name
+                        , sections  = self.ctx.sections
+                        , purpose   = self.ctx.decl_purpose )
             else:
                 self.error("can't parse typedef!")
 
