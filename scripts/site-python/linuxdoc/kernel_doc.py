@@ -984,8 +984,9 @@ class ReSTTranslator(TranslatorAPI):
                 "-*- coding: %s; mode: rst -*-\n"
                 % (getattr(self.options.out, "encoding", "utf-8") or "utf-8").lower())
 
-        if self.options.preamble:
-            self.write(self.options.preamble, "\n")
+        preamble = self.options.get_preamble()
+        if preamble:
+            self.write(preamble, "\n")
 
         if self.options.top_title:
             self.write_anchor(self.options.top_title)
@@ -994,8 +995,9 @@ class ReSTTranslator(TranslatorAPI):
                 self.write("\n", self.options.top_link % self.options, "\n")
 
     def output_epilog(self):
-        if self.options.epilog is not None:
-            self.write(self.options.epilog)
+        epilog = self.options.get_epilog()
+        if epilog:
+            self.write(epilog, "\n")
 
     def output_doc_section(self, sections = None):
         for header, content in sections.items():
@@ -1331,6 +1333,23 @@ class ParseOptions(Container):
         if not self.fname:
             LOG.error("no source file given!")
 
+    def get_preamble(self):
+        retVal = ""
+        if self.preamble == "":
+            retVal = self.translator.comment("src-file: %s" % (self.rel_fname or self.fname))
+        elif self.preamble:
+            retVal = self.preamble % self
+        return retVal
+
+    def get_epilog(self):
+        retVal = ""
+        if self.epilog == "":
+            retVal = self.translator.comment(
+                "\nThis file was automatic generated / don't edit.")
+        elif self.epilog:
+            retVal = self.epilog % self
+        return retVal
+
     def set_defaults(self):
 
         # default top title and top link
@@ -1347,21 +1366,6 @@ class ParseOptions(Container):
                 LOG.warn("missing SRCTREE, can't set *top_link* option")
         if self.top_link:
             self.top_link = self.top_link % self
-
-        # default preamble
-
-        if self.preamble == "":
-            self.preamble = self.translator.comment("src-file: %s" % (self.rel_fname or self.fname))
-        if self.preamble:
-            self.preamble = self.preamble % self
-
-        # default epilog
-
-        if self.epilog == "":
-            self.epilog = self.translator.comment(
-                "\nThis file was automatic generated / don't edit.")
-        if self.epilog:
-            self.epilog = self.epilog % self
 
     def add_filters(self, parse_options):
 

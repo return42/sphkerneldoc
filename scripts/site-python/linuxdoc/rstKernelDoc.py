@@ -221,50 +221,7 @@ class KernelDoc(Directive):
 
     }
 
-    def getOopsEntry(self, msg):
-        retVal = ("\n\n.. todo::"
-                  "\n\n    Oops: Document generation inconsistency."
-                  "\n\n    The template for this document tried to insert"
-                  " structured comment at this point, but an error occoured."
-                  " This dummy section is inserted to allow generation to continue.::"
-                  "\n\n")
-
-        for l in msg.split("\n"):
-            retVal +=  "        " + l + "\n"
-        retVal += "\n\n"
-        return retVal
-
-    def errMsg(self, msg, lev=4):
-        err = self.state_machine.reporter.severe(
-            msg
-            , nodes.literal_block(self.block_text, self.block_text)
-            , line=self.lineno )
-        return SystemMessage(err, lev)
-
-    def run(self):
-        doc = self.state.document
-        env = doc.settings.env
-
-        retVal = []
-        try:
-            retVal = self._run(doc, env)
-        except SystemMessage as exc:
-            if env.config.kernel_doc_raise_error:
-                raise
-            self.state_machine.insert_input(
-                self.getOopsEntry(unicode(exc)).split("\n")
-                , self.arguments[0])
-
-        finally:
-            pass
-        return retVal
-
-    def _run(self, document, env):
-
-        # do some checks
-
-        if not document.settings.file_insertion_enabled:
-            raise self.errMsg('File insertion disabled')
+    def getParserOptions(self, doc, env):
 
         fname     = self.arguments[0]
         src_tree  = kerneldoc.SRCTREE
@@ -273,7 +230,7 @@ class KernelDoc(Directive):
         if self.arguments[0].startswith("./"):
             # the prefix "./" indicates a relative pathname
             fname = self.arguments[0][2:]
-            src_tree = path.dirname(path.normpath(document.current_source))
+            src_tree = path.dirname(path.normpath(doc.current_source))
 
         if "internal" in self.options:
             if "export" in self.options:
@@ -294,15 +251,12 @@ class KernelDoc(Directive):
 
         # set parse adjustments
 
-        rstout = StringIO()
         ctx  = kerneldoc.ParserContext()
         opts = kerneldoc.ParseOptions(
             rel_fname       = fname
             , src_tree      = src_tree
             , id_prefix     = self.options.get("module", "").strip()
-            , out           = rstout
             , encoding      = self.options.get("encoding", env.config.source_encoding)
-            , translator    = kerneldoc.ReSTTranslator()
             , verbose_warn  = env.config.kernel_doc_verbose_warn
             , markup        = env.config.kernel_doc_mode
             ,)
@@ -317,9 +271,6 @@ class KernelDoc(Directive):
         if self.options:
             opts.skip_preamble = True
             opts.skip_epilog   = True
-
-        if "snippets" in self.options:
-            opts.translator = kerneldoc.ReSTTranslator()
 
         if "doc" in self.options:
             opts.no_header = bool("no_header" in self.options)
@@ -344,7 +295,7 @@ class KernelDoc(Directive):
         for pattern in exp_files:
             if pattern.startswith("./"): # "./" indicates a relative pathname
                 pattern = path.join(
-                    path.dirname(path.normpath(document.current_source))
+                    path.dirname(path.normpath(doc.current_source))
                     , pattern[2:])
             else:
                 pattern = path.join(kerneldoc.SRCTREE, pattern)
@@ -367,6 +318,60 @@ class KernelDoc(Directive):
         if "internal" in self.options:
             opts.skip_names.extend(ctx.exported_symbols)
 
+        return opts
+
+    def errMsg(self, msg, lev=4):
+        err = self.state_machine.reporter.severe(
+            msg
+            , nodes.literal_block(self.block_text, self.block_text)
+            , line=self.lineno )
+        return SystemMessage(err, lev)
+
+    def getOopsEntry(self, msg):
+        retVal = ("\n\n.. todo::"
+                  "\n\n    Oops: Document generation inconsistency."
+                  "\n\n    The template for this document tried to insert"
+                  " structured comment at this point, but an error occoured."
+                  " This dummy section is inserted to allow generation to continue.::"
+                  "\n\n")
+
+        for l in msg.split("\n"):
+            retVal +=  "        " + l + "\n"
+        retVal += "\n\n"
+        return retVal
+
+    def insertOopsMsg(self, msg):
+        self.state_machine.insert_input(
+            self.getOopsEntry(unicode(msg)).split("\n")
+            , self.arguments[0])
+
+    def run(self):
+        doc = self.state.document
+        env = doc.settings.env
+
+        retVal = []
+        try:
+            if not doc.settings.file_insertion_enabled:
+                raise self.errMsg('File insertion disabled')
+            opts = self.getParserOptions(doc, env)
+            retVal = self._run(doc, env, opts)
+
+        except SystemMessage as exc:
+            if env.config.kernel_doc_raise_error:
+                raise
+            self.insertOopsMsg(exc)
+
+        finally:
+            pass
+        return retVal
+
+    def _run(self, document, env, opts):
+
+        opts.translator = kerneldoc.ReSTTranslator()
+        #if "snippets" in self.options:
+        #    opts.translator = kerneldoc.ReSTTranslator()
+        rstout = StringIO()
+        opts.out = rstout
 
         parser = KernelDocParser(env.app, opts)
         env.app.info("parse kernel-doc comments from: %s" % opts.fname)
@@ -374,29 +379,35 @@ class KernelDoc(Directive):
 
         lines = rstout.getvalue().split("\n")
 
+        # After the file has been parsed, missing objects should be logged, not
+        # raised. If we raise exceptions after parsing all the parsed content
+        # get lost.  Instead of raising an exception, a Oops-message should be
+        # inserted in the reST document and well parsed reST content should be
+        # continued.
+
         if "functions" in self.options:
             selected  = self.options["functions"].replace(","," ").split()
             names     = parser.ctx.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
-                raise self.errMsg(
-                    "selected section(s) not found: %s" % ", ".join(not_found))
+                self.insertOopsMsg(
+                    "selected section(s) not found:\n    %s" % "\n    ,".join(not_found))
 
         if "export" in self.options:
             selected  = opts.use_names
             names     = parser.ctx.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
-                raise self.errMsg(
-                    "exported definitions not found: %s" % ", ".join(not_found))
+                self.insertOopsMsg(
+                    "exported definitions not found:\n    %s" % "\n    ,".join(not_found))
 
         if "snippets" in self.options:
             selected  = self.options["snippets"].replace(","," ").split()
             names     = parser.ctx.snippets.keys()
             not_found = [ s for s in selected if s not in names]
             if not_found:
-                raise self.errMsg(
-                    "selected snippets(s) not found: %s" % ", ".join(not_found))
+                self.insertOopsMsg(
+                    "selected snippets(s) not found:\n    %s" % "\n    ,".join(not_found))
 
             lines = ["", ".. code-block:: %s"
                      % self.options.get("language", "c"), ]
