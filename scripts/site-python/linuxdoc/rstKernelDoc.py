@@ -192,8 +192,8 @@ class KernelDoc(Directive):
         "doc"          : directives.unchanged_required # aka lines containing !P
         , "no_header"  : directives.flag
 
-        , "export"     : directives.unchanged_required # aka lines containing !E
-        , "internal"   : directives.unchanged_required # aka lines containing !I
+        , "export"     : directives.unchanged          # aka lines containing !E
+        , "internal"   : directives.unchanged          # aka lines containing !I
         , "functions"  : directives.unchanged_required # aka lines containing !F
 
         , "debug"      : directives.flag               # insert generated reST as code-block
