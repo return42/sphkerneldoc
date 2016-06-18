@@ -581,7 +581,7 @@ def main():
     retVal     = 0
 
     for fname in CMD.files:
-        translator = None
+        translator = ReSTTranslator()
         opts = ParseOptions(
             fname           = fname
             , id_prefix     = CMD.id_prefix
@@ -596,11 +596,9 @@ def main():
             opts.gather_context = True
 
         elif CMD.use_names:
-            translator = ReSTTranslator()
             opts.use_names  = CMD.use_names
 
         elif CMD.exported or CMD.internal:
-            translator = ReSTTranslator()
             # gather exported symbols ...
             src   = readFile(opts.fname)
             ctx   = ParserContext()
