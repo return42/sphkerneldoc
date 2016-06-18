@@ -650,10 +650,12 @@ class TranslatorAPI(object):
     def __init__(self):
         self.options = None
         self.parser  = None
+        self.dumped_names = []
         self.translated_names = set()
 
     def setParser(self, parser):
         self.parser = parser
+        self.dumped_names = []
 
     def setOptions(self, options):
         self.options = options
@@ -1469,7 +1471,7 @@ class ParserContext(Container):
         self.snippets  = collections.OrderedDict()
 
         # the place, where type dumps are stored
-        self.dump_storage = collections.OrderedDict()
+        self.dump_storage = []
 
         super(ParserContext, self).__init__(self, *args, **kwargs)
 
@@ -1554,7 +1556,6 @@ class Parser(SimpleLog):
         # flags:
         self.state = 0
         self.split_doc_state   = 0
-        self.in_intro          = True
         self.in_doc_sect       = False
         self.in_purpose        = False
         self.brcount           = 0
@@ -1612,16 +1613,6 @@ class Parser(SimpleLog):
     # ------------------------------------------------------------
     # state parser
     # ------------------------------------------------------------
-
-    def parse(self, src=None):
-        if src is not None:
-            for line in src:
-                self.feed(line)
-        else:
-            with openTextFile(self.options.fname, encoding=self.options.encoding) as src:
-                for line in src:
-                    self.feed(line)
-        self.close()
 
     @classmethod
     def gather_context(cls, src, ctx):
@@ -1684,14 +1675,53 @@ class Parser(SimpleLog):
         LOG.info("mod_descr: %(x)s",    x = ctx.mod_descr)
         LOG.info("mod_license : %(x)s", x = ctx.mod_license)
 
-    def close(self):
-        self._parse(eof=True)
+    def parse(self, src=None): # start parsing
+        self.dump_preamble()
+        if src is not None:
+            for line in src:
+                self.feed(line)
+        else:
+            with openTextFile(self.options.fname, encoding=self.options.encoding) as src:
+                for line in src:
+                    self.feed(line)
+        self.dump_epilog()
+        self.translator.eof()
 
-    def feed(self, data):
+    def parse_dump_storage(self, options, translator):
+        self.setOptions(options)
+        self.setTranslator(translator)
+        self.dump_preamble()
+        for name, out_type, opts, kwargs in self.ctx.dump_storage:
+            self.options.update(opts)
+            self.output_decl(name, out_type, **kwargs)
+        self.dump_epilog()
+        self.translator.eof()
+
+    def close(self):           # end parsing
+        self.feed("", eof=True)
+        # log requested but missed documentation
+        log_missed = self.error
+        if not self.options.error_missing:
+            log_missed = self.warn
+
+        if isinstance(self.translator, NullTranslator):
+            # the NullTranslator does not translate / translated_names is
+            # empty
+            pass
+        else:
+            for name in self.options.use_names:
+                if name not in self.translator.translated_names:
+                    log_missed("no documentation for '%(name)s' found", name=name)
+
+        if self.errors or self.warnings:
+            self.warn("total errors: %(errors)s / total warnings: %(warnings)s"
+                      , errors=self.errors, warnings=self.warnings)
+            self.warnings -= 1
+        global INSPECT
+        INSPECT = False
+
+    def feed(self, data, eof=False):
         self.rawdata = self.rawdata + data
-        self._parse()
-
-    def _parse(self, eof=False):
 
         if self.options.gather_context:
             # Scan additional context from the parsed source. For this, collect
@@ -1709,10 +1739,6 @@ class Parser(SimpleLog):
             # keep last line, until EOF
             self.rawdata = lines[-1]
             lines = lines[:-1]
-
-        if self.in_intro:
-            self.dump_preamble()
-            self.in_intro = False
 
         for l in lines:
             self.ctx.line_no += 1
@@ -1736,55 +1762,19 @@ class Parser(SimpleLog):
                 self.error("unhandled exception in line: %(l)s", l=l)
                 raise
 
-        if eof:
-            self.dump_epilog()
-            self.translator.eof()
-
-            # log requested but missed documentation
-            log_missed = self.error
-            if not self.options.error_missing:
-                log_missed = self.warn
-
-            if isinstance(self.translator, NullTranslator):
-                # the NullTranslator does not translate / translated_names is
-                # empty
-                pass
-            else:
-                for name in self.options.use_names:
-                    if name not in self.translator.translated_names:
-                        log_missed("no documentation for '%(name)s' found", name=name)
-
-            if self.errors or self.warnings:
-                self.warn("total errors: %(errors)s / total warnings: %(warnings)s"
-                          , errors=self.errors, warnings=self.warnings)
-                self.warnings -= 1
-            global INSPECT
-            INSPECT = False
-
-    def parse_dump_storage(self, options, translator):
-        self.setOptions(options)
-        self.setTranslator(translator)
-        self.dump_preamble()
-        for name, out_type, opts, kwargs in self.ctx.dump_storage.values():
-            self.options.update(opts)
-            self.output_decl(name, out_type, **kwargs)
-        self.dump_epilog()
-        self.translator.eof()
-
     def output_decl(self, name, out_type, **kwargs):
 
-        if isinstance(self.translator, NullTranslator):
-            if self.ctx.dump_storage.get(name, None) is not None:
-                # FIXME: what else can we do ... this will lost content
-                first_decl = self.ctx.dump_storage[name]
-                self.error("name %s used several times, you will lost content!!!  first: %s: %s / this %s: %s"
-                           % (name, first_decl[0], first_decl[1], out_type, name))
+        if name in self.translator.dumped_names:
+            self.error("name '%s' used several times" % name)
+        self.translator.dumped_names.append(name)
 
-            self.ctx.dump_storage[name] = (
-                name
-                , out_type
-                , self.options.dumpOptions()
-                , copy.deepcopy(kwargs))
+        if isinstance(self.translator, NullTranslator):
+            self.ctx.dump_storage.append(
+                ( name
+                  , out_type
+                  , self.options.dumpOptions()
+                  , copy.deepcopy(kwargs) ) )
+            return
 
         do_translate = False
         if name in self.options.skip_names:
