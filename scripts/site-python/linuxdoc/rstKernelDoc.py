@@ -161,6 +161,7 @@ class KernelDocParser(kerneldoc.Parser):
             , prefix = "" )
 
     def warn(self, message, **replace):
+        self.warnings += 1
         self.app.warn(
             message % replace
             , location = "%s:%s [kernel-doc WARN]" % (self.options.fname, self.ctx.line_no)

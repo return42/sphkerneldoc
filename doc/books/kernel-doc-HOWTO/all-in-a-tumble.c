@@ -21,7 +21,8 @@ int main() {
  * Return:
  * Returns first argument
  */
-int user_function(int a)
+int
+user_function(int a)
 {
   return a;
 }

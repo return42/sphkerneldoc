@@ -2081,7 +2081,7 @@ class Parser(SimpleLog):
 
         stripProto = RE(r"([^\{]*)")
 
-        # ?!?!? MACDOC does not (no more?) exists
+        # ?!?!? MACDOC does not exists (any more)?
         # if ($x =~ m#\s*/\*\s+MACDOC\s*#io || ($x =~ /^#/ && $x !~ /^#\s*define/)) {
         #   do nothing
         # }
@@ -2103,9 +2103,9 @@ class Parser(SimpleLog):
             if SYSCALL_DEFINE.search(self.ctx.prototype):
                 self.ctx.prototype = self.syscall_munge(self.ctx.prototype)
 
-            if (TRACE_EVENT.search(line)
-                or DEFINE_EVENT.search(line)
-                or DEFINE_SINGLE_EVENT.search(line) ):
+            if (TRACE_EVENT.search(self.ctx.prototype)
+                or DEFINE_EVENT.search(self.ctx.prototype)
+                or DEFINE_SINGLE_EVENT.search(self.ctx.prototype) ):
                 self.ctx.prototype = self.tracepoint_munge(self.ctx.prototype)
 
             self.ctx.prototype = self.ctx.prototype.strip()
@@ -2160,10 +2160,10 @@ class Parser(SimpleLog):
 
         tp_name = tp_name.lstrip()
 
-        if TP_PROTO.match(prototype):
+        if TP_PROTO.search(prototype):
             tp_args = TP_PROTO[0]
 
-        if not (tp_name.strip() and tp_args.strip()):
+        if (not tp_name.strip() or not tp_args.strip()):
             self.warn("Unrecognized tracepoint format: %(prototype)s"
                       , prototype=prototype)
         else:
