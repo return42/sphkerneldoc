@@ -12,210 +12,23 @@ u"""
     :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
     The kernel-doc parser extracts documention from linux kernel's source code
-    comments. This is a rewrite of the kernel-doc perl script.
+    comments. This implements the kernel-doc-HOWTO [1]_.
 
     This module provides an API -- which could used by a sphinx-doc generator
     extension -- and a commandline interface, see ``--help``::
 
         $ ./kernel_doc.py --help
 
-    About the rewrite:
+    Compared with the perl kernel-doc script, this implementation has additional
+    features like *parse options* (see below) for a smooth integration of
+    restructuredText (reST) markup in the kernel's source code comments. In
+    addition, this rewrite brings the functionalities, which has been spread in
+    *docproc* and make files (e.g. working with *EXPORTED_SYMBOLS*) back to the
+    kernel-doc parse process. In combination with a (separate) *kernel-doc* reST
+    directive (which uses this module), the documentation generation becomes
+    more clear and flexible.
 
-      The rewrite has additional features like *parse options* (see below) for a
-      smooth integration of restructuredText (reST) markup in the kernel's
-      source code comments. In addition, this rewrite brings the
-      functionalities, which has been spread in *docproc* and make files
-      (e.g. working with *EXPORTED_SYMBOLS*) back to the kernel-doc parse
-      process. In combination with a (separate) *kernel-doc* reST directive
-      which uses this module, the documentation generation becomes much more
-      clear and flexible.
-
-    About reST integration into the kerne-doc markup:
-
-      In general, the markup of the linux kernel's source code comments remains
-      unchanged and the reST markup within the comments is passed through the
-      output. A closer lookup to the *kernel-doc* and *reST* markup revals, that
-      there are some conflicts between reST (inline) markup and kernel-doc
-      markup. This conflicts could be handled fine grained with the *parse
-      options*. Parse options are comments like: ``/* parse-{option-name}:
-      {value} */``, examples about conflicts and *parse options* see below.
-
-    As long as kernel's source code comments remain unchanged, the description
-    *here* is mainly a copy of the kernel-doc origin, except for the additions
-    which are decribed at the end.
-
-    In the following examples,
-
-    * ``(...)?`` signifies optional structure and
-    * ``(...)*`` signifies 0 or more structure elements
-
-    Format of comments.::
-
-        /**
-         * function_name(:)? (- short description)?
-        (* @parameterx: (description of parameter x)?)*
-        (* a blank line)?
-         * (Description:)? (Description of function)?
-         * (section header: (section description)? )*
-         (*)?*/
-
-    So, the trivial example would be::
-
-        /**
-         * my_function
-         */
-
-    If the Description: header tag is omitted, then there must be a blank line
-    after the last parameter specification.::
-
-        /**
-         * my_function - does my stuff
-         * @my_arg: its mine damnit
-         *
-         * Does my stuff explained.
-         */
-
-    or, could also use::
-
-        /**
-         * my_function - does my stuff
-         * @my_arg: its mine damnit
-         * Description: Does my stuff explained.
-         */
-
-    Besides functions you can also write documentation for ``structs``,
-    ``unions``, ``enums`` and ``typedefs``. Instead of the function name you
-    must write the name of the declaration; the struct / union / enum / typedef
-    must always precede the name. Nesting of declarations is not supported.  Use
-    the argument mechanism to document members or constants.::
-
-        /**
-         * struct my_struct - short description
-         * @a: first member
-         * @b: second member
-         *
-         * Longer description
-         */
-        struct my_struct {
-            int a;
-            int b;
-        /* private: */
-            int c;
-        };
-
-    All descriptions can be multiline, except the short function description.
-    For really longs structs, you can also describe arguments inside the body of
-    the struct.::
-
-        /**
-         * struct my_struct - short description
-         * @a: first member
-         * @b: second member
-         *
-         * Longer description
-         */
-        struct my_struct {
-            int a;
-            int b;
-            /**
-             * @c: This is longer description of C
-             *
-             * You can use paragraphs to describe arguments
-             * using this method.
-             */
-            int c;
-        };
-
-    This should be used only for struct/enum members.
-
-    You can also add additional sections. When documenting kernel functions you
-    should document the ``Context:`` of the function, e.g. whether the functions
-    can be called form interrupts. Unlike other sections you can end it with an
-    empty line.
-
-    A non-void function should have a ``Return:`` section describing the return
-    value(s).  Example-sections should contain the string ``EXAMPLE`` so that
-    they are marked appropriately in the output format.::
-
-        /**
-         * user_function - function that can only be called in user context
-         * @a: some argument
-         * Context: !in_interrupt()
-         *
-         * Some description
-         *
-         * Example:
-         *    user_function(22);
-         */
-
-    All descriptive text is further processed, scanning for the following special
-    patterns, which are highlighted appropriately.
-
-    * ``funcname()``   - function
-    * ``$ENVVAR``      - environmental variable
-    * ``&struct_name`` - name of a structure (up to two words including ``struct``)
-    * ``@parameter``   - name of a parameter
-    * ``%CONST``       - name of a constant.
-
-    With the following comment lines, highlighting could be switched on or off::
-
-         /* parse-highlight: on */
-         /* parse-highlight: off */
-
-    In addition you could use the *plain-text markup* restructuredText (reST /
-    http://www.sphinx-doc.org/rest.html) in the descriptive text, which will
-    passed through.
-
-    Determined by the historical development of the kernel-doc comments, the
-    *classic* kernel-doc comments contain characters like ``*`` or strings with
-    e.g. leading/trailing underscore (``_``), which are inline markups in
-    reST. Here a schort example from a *classic* comment::
-
-        <SNIP> -----
-        * In contrast to the other drm_get_*_name functions this one here returns a
-        * const pointer and hence is threadsafe.
-        <SNAP> -----
-
-    In reST markup, the wildcard in the string ``drm_get_*_name`` has to be
-    masked: ``drm_get_\\*_name``. Some more examples from reST markup:
-
-    * Emphasis "*":  like ``*emphasis*`` or ``**emphasis strong**``
-
-    * Leading "_" :  is a *anchor* in reST markup (``_foo``).
-
-    * Trailing "_:  is a reference in reST markup (``foo_``).
-
-    * interpreted text: "`"
-
-    * inline literals: "``"
-
-    * substitution references: "|"
-
-    These special strings will be masked in the output and can't be used as
-    *plain-text markup*.  To get in use of the fully reST markup (stop masking
-    special characters) add the following comment (e.g.) at the top of your
-    source code file.::
-
-       /* parse-markup: reST */
-
-    To toggle back to *classic* kernel-doc behavior (masking special characters
-    in the output) type the following line::
-
-       /* parse-markup: kernel-doc */
-
-    Additional hints for ``kernel-doc.py`` developers:
-
-    If you like to inspect a selective part of the kernel's source comments, you
-    could toggle the global ``INSPECT`` variable with::
-
-       /* parse-INSPECT: on */
-       /* parse-INSPECT: off */
-
-    And with an additional *breakpoint* in the ``kernel_doc.py`` script::
-
-        INSPECT and CONSOLE()
-
-    a console for introspection pops up (see examples in kernel_doc.py sources).
+    .. [1] http://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO
 
 """
 
