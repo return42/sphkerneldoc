@@ -111,7 +111,7 @@ from docutils import nodes
 from docutils.parsers.rst import Directive, directives
 from docutils.utils import SystemMessage
 from docutils.statemachine import ViewList
-
+from sphinx.ext.autodoc import AutodocReporter
 from . import kernel_doc as kerneldoc
 
 # ==============================================================================
@@ -181,6 +181,9 @@ class KernelDocParser(kerneldoc.Parser):
 
 
 # ==============================================================================
+class FaultyOption(Exception):
+    pass
+
 class KernelDoc(Directive):
 # ==============================================================================
 
@@ -223,7 +226,7 @@ class KernelDoc(Directive):
 
     }
 
-    def getParserOptions(self, doc, env):
+    def getParserOptions(self):
 
         fname     = self.arguments[0]
         src_tree  = kerneldoc.SRCTREE
@@ -232,24 +235,23 @@ class KernelDoc(Directive):
         if self.arguments[0].startswith("./"):
             # the prefix "./" indicates a relative pathname
             fname = self.arguments[0][2:]
-            src_tree = path.dirname(path.normpath(doc.current_source))
+            src_tree = path.dirname(path.normpath(self.doc.current_source))
 
-        if "internal" in self.options:
-            if "export" in self.options:
-                raise self.errMsg(
-                    "Options 'export' and 'internal' are orthogonal,"
-                    " can't use them togehter")
+        if "internal" in self.options and "export" in self.options:
+            raise FaultyOption(
+                "Options 'export' and 'internal' are orthogonal,"
+                " can't use them togehter")
 
         if "snippets" in self.options:
             rest = set(self.options.keys()) - set(["snippets", "linenos", "language", "debug"])
             if rest:
-                raise self.errMsg(
+                raise FaultyOption(
                     "kernel-doc 'snippets' has non of these options: %s"
                     % ",".join(rest))
 
-        if env.config.kernel_doc_mode not in ["reST", "kernel-doc"]:
-            raise self.errMsg(
-                "unknow kernel-doc mode: %s" % env.config.kernel_doc_mode)
+        if self.env.config.kernel_doc_mode not in ["reST", "kernel-doc"]:
+            raise FaultyOption(
+                "unknow kernel-doc mode: %s" % self.env.config.kernel_doc_mode)
 
         # set parse adjustments
 
@@ -258,15 +260,15 @@ class KernelDoc(Directive):
             rel_fname       = fname
             , src_tree      = src_tree
             , id_prefix     = self.options.get("module", "").strip()
-            , encoding      = self.options.get("encoding", env.config.source_encoding)
-            , verbose_warn  = env.config.kernel_doc_verbose_warn
-            , markup        = env.config.kernel_doc_mode
+            , encoding      = self.options.get("encoding", self.env.config.source_encoding)
+            , verbose_warn  = self.env.config.kernel_doc_verbose_warn
+            , markup        = self.env.config.kernel_doc_mode
             ,)
 
         opts.set_defaults()
 
         if not path.exists(opts.fname):
-            raise self.errMsg(
+            raise FaultyOption(
                 "kernel-doc refers to nonexisting document %s" % opts.fname)
 
         if self.options:
@@ -281,9 +283,9 @@ class KernelDoc(Directive):
             # gather exported symbols and add them to the list of names
             kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
             exp_files.extend((self.options.get('export') or "").replace(","," ").split())
-            opts.error_missing = False
+            opts.error_missing = True
 
-        if "internal" in self.options:
+        elif "internal" in self.options:
             # gather exported symbols and add them to the ignore-list of names
             kerneldoc.Parser.gather_context(kerneldoc.readFile(opts.fname), ctx)
             exp_files.extend((self.options.get('internal') or "").replace(","," ").split())
@@ -296,7 +298,7 @@ class KernelDoc(Directive):
         for pattern in exp_files:
             if pattern.startswith("./"): # "./" indicates a relative pathname
                 pattern = path.join(
-                    path.dirname(path.normpath(doc.current_source))
+                    path.dirname(path.normpath(self.doc.current_source))
                     , pattern[2:])
             else:
                 pattern = path.join(kerneldoc.SRCTREE, pattern)
@@ -305,15 +307,15 @@ class KernelDoc(Directive):
                 and not path.lexists(pattern)):
                 # if pattern is a filename (is not a glob pattern) and this file
                 # does not exists, an error is raised.
-                raise self.errMsg("file not found: %s" % pattern)
+                raise FaultyOption("file not found: %s" % pattern)
 
             for fname in glob.glob(pattern):
-                env.note_dependency(path.abspath(fname))
+                self.env.note_dependency(path.abspath(fname))
                 kerneldoc.Parser.gather_context(kerneldoc.readFile(fname), ctx)
 
         if "export" in self.options:
             if not ctx.exported_symbols:
-                raise self.errMsg("using option :export: but there are no exported symbols")
+                raise FaultyOption("using option :export: but there are no exported symbols")
             opts.use_names.extend(ctx.exported_symbols)
 
         if "internal" in self.options:
@@ -321,140 +323,166 @@ class KernelDoc(Directive):
 
         return opts
 
-    def errMsg(self, msg, lev=4):
-        err = self.state_machine.reporter.severe(
+    def errMsg(self, msg):
+        msg = unicode(msg)
+        error = self.state_machine.reporter.error(
             msg
             , nodes.literal_block(self.block_text, self.block_text)
-            , line=self.lineno )
-        return SystemMessage(err, lev)
+            , line = self.lineno )
 
-    def getOopsEntry(self, msg):
-        retVal = ("\n\n.. todo::"
-                  "\n\n    Oops: Document generation inconsistency."
-                  "\n\n    The template for this document tried to insert"
-                  " structured comment at this point, but an error occoured."
-                  " This dummy section is inserted to allow generation to continue.::"
-                  "\n\n")
+        # raise exception on error?
+        if self.env.config.kernel_doc_raise_error:
+            raise SystemMessage(error, 4)
 
-        for l in msg.split("\n"):
-            retVal +=  "        " + l + "\n"
-        retVal += "\n\n"
-        return retVal
+        # insert oops/todo admonition
+        todo = ("\n\n.. todo::"
+                "\n\n    Oops: Document generation inconsistency."
+                "\n\n    The template for this document tried to insert"
+                " structured comment at this point, but an error occoured."
+                " This dummy section is inserted to allow generation to continue.::"
+                "\n\n")
 
-    def insertOopsMsg(self, msg):
-        self.state_machine.insert_input(
-            self.getOopsEntry(unicode(msg)).split("\n")
-            , self.arguments[0])
+        for l in error.astext().split("\n"):
+            todo +=  "        " + l + "\n"
+        todo += "\n\n"
+        self.state_machine.insert_input(todo.split("\n"), self.arguments[0] )
 
-    def parseSource(self, env, opts):
+    def parseSource(self, opts):
         parser = PARSER_CACHE.get(opts.fname, None)
 
         if parser is None:
-            env.note_dependency(opts.fname)
-            #env.app.info("parse kernel-doc comments from: %s" % opts.fname)
-            parser = KernelDocParser(env.app, opts, kerneldoc.NullTranslator())
+            self.env.note_dependency(opts.fname)
+            self.env.app.info("parse kernel-doc comments from: %s" % opts.fname)
+            parser = KernelDocParser(self.env.app, opts, kerneldoc.NullTranslator())
             parser.parse()
             PARSER_CACHE[opts.fname] = parser
+        else:
+            parser.setOptions(opts)
 
         return parser
 
     def run(self):
-        doc = self.state.document
-        env = doc.settings.env
 
-        retVal = []
+        self.parser = None
+        self.doc    = self.state.document
+        self.env    = self.doc.settings.env
+        self.nodes  = []
+
         try:
-            if not doc.settings.file_insertion_enabled:
-                raise self.errMsg('File insertion disabled')
-            opts   = self.getParserOptions(doc, env)
-            parser = self.parseSource(env, opts)
-            retVal = self.getNodes(parser, opts)
+            if not self.doc.settings.file_insertion_enabled:
+                raise FaultyOption('docutils: file insertion disabled')
+            opts = self.getParserOptions()
+            self.parser = self.parseSource(opts)
+            self.nodes.extend(self.getNodes())
 
-        except SystemMessage as exc:
-            if env.config.kernel_doc_raise_error:
-                raise
-            self.insertOopsMsg(exc)
+        except FaultyOption as exc:
+            self.errMsg(exc)
 
-        finally:
-            pass
-        return retVal
+        return self.nodes
 
 
-    def getNodes(self, parser, opts):
+    def getNodes(self):
 
-        rstout = StringIO()
-        opts.out = rstout
         translator = kerneldoc.ReSTTranslator()
-        parser.parse_dump_storage(opts, translator)
+        lines      = ""
+        content    = WriterList(self.parser)
+        node       = nodes.section()
 
-        #if "snippets" in self.options:
-        #    parser.options.translator = kerneldoc.ReSTTranslator()
+        # translate
 
-        # xxxxxxxxxxxxx
-        lines = rstout.getvalue().split("\n")
+        if "debug" in self.options:
+            rstout = StringIO()
+            self.parser.options.out = rstout
+            self.parser.parse_dump_storage(translator=translator)
+            code_block = "\n\n.. code-block:: rst\n    :linenos:\n"
+            for l in rstout.getvalue().split("\n"):
+                code_block += "\n    " + l
+            lines = code_block + "\n\n"
 
-        # After the file has been parsed, missing objects should be logged, not
-        # raised. If we raise exceptions after parsing all the parsed content
-        # get lost.  Instead of raising an exception, a Oops-message should be
-        # inserted in the reST document and well parsed reST content should be
-        # continued.
+        elif "snippets" in self.options:
+            selected  = self.options["snippets"].replace(","," ").split()
+            names     = self.parser.ctx.snippets.keys()
+            not_found = [ s for s in selected if s not in names]
+            if not_found:
+                self.errMsg("selected snippets(s) not found:\n    %s"
+                            % "\n    ,".join(not_found))
+
+            code_block = "\n\n.. code-block:: %s\n" % self.options.get("language", "c")
+            if "linenos" in self.options:
+                code_block += "    :linenos:\n"
+
+            snipsnap = ""
+            while selected:
+                snipsnap += self.parser.ctx.snippets[selected.pop(0)] + "\n\n"
+
+            for l in snipsnap.split("\n"):
+                code_block += "\n    " + l
+            lines = code_block + "\n\n"
+
+        else:
+            self.parser.options.out = content
+            self.parser.parse_dump_storage(translator=translator)
+
+        # check translation
 
         if "functions" in self.options:
             selected  = self.options["functions"].replace(","," ").split()
             names     = translator.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
-                self.insertOopsMsg(
-                    "selected section(s) not found:\n    %s" % "\n    ,".join(not_found))
+                self.errMsg(
+                    "selected section(s) not found:\n    %s"
+                    % "\n    ,".join(not_found))
 
         if "export" in self.options:
-            selected  = parser.options.use_names
+            selected  = self.parser.options.use_names
             names     = translator.translated_names
             not_found = [ s for s in selected if s not in names]
             if not_found:
-                self.insertOopsMsg(
-                    "exported definitions not found:\n    %s" % "\n    ,".join(not_found))
+                self.errMsg(
+                    "exported definitions not found:\n    %s"
+                    % "\n    ,".join(not_found))
 
-        if "snippets" in self.options:
-            selected  = self.options["snippets"].replace(","," ").split()
-            names     = parser.ctx.snippets.keys()
-            not_found = [ s for s in selected if s not in names]
-            if not_found:
-                self.insertOopsMsg(
-                    "selected snippets(s) not found:\n    %s" % "\n    ,".join(not_found))
-
-            lines = ["", ".. code-block:: %s"
-                     % self.options.get("language", "c"), ]
-            if "linenos" in self.options:
-                lines.append("    :linenos:")
-            lines.append("")
-
-            while selected:
-                snippet = parser.ctx.snippets[selected.pop(0)].split("\n")
-                lines.extend(["    " + l for l in snippet])
-                if selected:
-                    # delemit snippets with two newlines
-                    lines.extend(["",""])
-
-        if "debug" in self.options:
-            code_block = "\n.. code-block:: rst\n    :linenos:\n\n".split("\n")
-            for l in lines:
-                code_block.append("    " + l)
-            lines = code_block
-
+        # add lines to content list
         reSTfname = self.state.document.current_source
 
-        content = ViewList()
-        for l in lines:
-            content.append(l, reSTfname, self.lineno)
+        content.flush()
+        if lines:
+            for l in lines.split("\n"):
+                content.append(l, reSTfname, self.lineno)
 
-        node = nodes.section()
-
-        buf = self.state.memo.title_styles, self.state.memo.section_level
+        buf = self.state.memo.title_styles, self.state.memo.section_level, self.state.memo.reporter
+        self.state.memo.reporter = AutodocReporter(content, self.state.memo.reporter)
         self.state.memo.title_styles, self.state.memo.section_level = [], 0
         try:
-            self.state.nested_parse(content, self.lineno, node, match_titles=1)
+            self.state.nested_parse(content, 0, node, match_titles=1)
         finally:
-            self.state.memo.title_styles, self.state.memo.section_level = buf
+            self.state.memo.title_styles, self.state.memo.section_level, self.state.memo.reporter = buf
 
         return node.children
+
+
+# ==============================================================================
+class WriterList(ViewList):
+# ==============================================================================
+    u"""docutils ViewList with write method."""
+
+    def __init__(self, parser, *args, **kwargs):
+        ViewList.__init__(self, *args, **kwargs)
+        self.parser = parser
+
+        self.last_offset = -1
+        self.line_buffer = ""
+
+    def write(self, cont):
+        if self.last_offset != self.parser.ctx.offset:
+            self.flush()
+            self.line_buffer = ""
+            self.last_offset = self.parser.ctx.offset
+
+        self.line_buffer += cont
+
+    def flush(self):
+        for i, l in enumerate(self.line_buffer.split("\n")):
+            self.append(l, self.parser.options.fname, self.last_offset)
+        self.line_buffer = ""

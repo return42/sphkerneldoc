@@ -260,7 +260,7 @@ KERNELVERSION  = OS_ENV.get("KERNELVERSION", "unknown kernel version")
 SRCTREE        = OS_ENV.get("srctree", "")
 GIT_REF        = ("Linux kernel source tree:"
                   " `%(rel_fname)s <https://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git/tree/"
-                  "%(rel_fname)s>`_")
+                  "%(rel_fname)s>`__")
 
 # ==============================================================================
 # Logging stuff
@@ -427,6 +427,7 @@ def main():
 
         parser = Parser(opts, translator)
         parser.parse()
+        parser.close()
         if parser.errors:
             retVal = 1
 
@@ -814,6 +815,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write("\n")
 
     def output_preamble(self):
+        self.parser.ctx.offset = 0
         if self.options.mode_line:
             self.write_comment(
                 "-*- coding: %s; mode: rst -*-\n"
@@ -830,11 +832,13 @@ class ReSTTranslator(TranslatorAPI):
                 self.write("\n", self.options.top_link % self.options, "\n")
 
     def output_epilog(self):
+        self.parser.ctx.offset = 0
         epilog = self.get_epilog()
         if epilog:
             self.write(epilog, "\n")
 
     def output_DOC(self, sections = None):
+        self.parser.ctx.offset = self.parser.ctx.decl_offset
         for header, content in sections.items():
             self.write_section(header, content, sec_level=2, ID=header)
 
@@ -848,6 +852,7 @@ class ReSTTranslator(TranslatorAPI):
             , sections         = None # ctx.sections
             , purpose          = None # ctx.decl_purpose
             , ):
+        self.parser.ctx.offset = self.parser.ctx.decl_offset
         self.write_anchor(function)
         self.write_header(function, sec_level=2)
 
@@ -874,7 +879,9 @@ class ReSTTranslator(TranslatorAPI):
             else:
                 p_list.append("%s %s" % (p_type, p_name))
 
-        self.write(", ".join(p_list), ")\n")
+        p_line = ", ".join(p_list)
+        self.write(p_line.replace("*", r"\*")
+                   , ")\n")
 
         # purpose
 
@@ -901,11 +908,16 @@ class ReSTTranslator(TranslatorAPI):
             else:
                 param = ":param %s %s:" % (p_type, p_name)
 
-            self.write_func_param(param, p_desc)
+            self.parser.ctx.offset = parameterdescs.offsets.get(
+                p_name, self.parser.ctx.offset)
+
+            self.write_func_param(param.replace("*", r"\*")
+                                  , p_desc)
 
         # sections
 
         for header, content in sections.items():
+            self.parser.ctx.offset = sections.offsets[header]
             self.write_section(
                 header
                 , content
@@ -924,6 +936,7 @@ class ReSTTranslator(TranslatorAPI):
             , sections         = None # ctx.sections
             , purpose          = None # ctx.decl_purpose
             , ):
+        self.parser.ctx.offset = self.parser.ctx.decl_offset
         self.write_anchor(decl_name)
         self.write_header("%s %s" % (decl_type, decl_name), sec_level=2)
 
@@ -984,11 +997,14 @@ class ReSTTranslator(TranslatorAPI):
             p_desc = parameterdescs.get(p_name, None)
             if p_desc is None:
                 continue
+            self.parser.ctx.offset = parameterdescs.offsets.get(
+                p_name, self.parser.ctx.offset)
             self.write_definition(p_name, p_desc)
 
         # sections
 
         for header, content in sections.items():
+            self.parser.ctx.offset = sections.offsets[header]
             self.write_section(
                 header
                 , content
@@ -1005,6 +1021,7 @@ class ReSTTranslator(TranslatorAPI):
             , sections         = None # ctx.sections
             , purpose          = None # ctx.decl_purpose
             , ):
+        self.parser.ctx.offset = self.parser.ctx.decl_offset
         self.write_anchor(enum)
         self.write_header("enum %s" % enum, sec_level=2)
 
@@ -1039,6 +1056,8 @@ class ReSTTranslator(TranslatorAPI):
 
         for p_name in parameterlist:
             p_desc = parameterdescs.get(p_name, None)
+            self.parser.ctx.offset = parameterdescs.offsets.get(
+                p_name, self.parser.ctx.offset)
             if p_desc is None:
                 continue
             self.write_definition(p_name, p_desc)
@@ -1046,6 +1065,7 @@ class ReSTTranslator(TranslatorAPI):
         # sections
 
         for header, content in sections.items():
+            self.parser.ctx.offset = sections.offsets[header]
             self.write_section(
                 header
                 , content or "???"
@@ -1060,6 +1080,7 @@ class ReSTTranslator(TranslatorAPI):
             , sections         = None # ctx.sections
             , purpose          = None # ctx.decl_purpose
             , ):
+        self.parser.ctx.offset = self.parser.ctx.decl_offset
         self.write_anchor(typedef)
         self.write_header("typedef %s" % typedef, sec_level=2)
 
@@ -1070,6 +1091,7 @@ class ReSTTranslator(TranslatorAPI):
             self.write(self.INDENT, self.highlight(purpose), "\n")
 
         for header, content in sections.items():
+            self.parser.ctx.offset = sections.offsets[header]
             self.write_section(
                 header
                 , content or "???"
@@ -1233,9 +1255,13 @@ class ParseOptions(Container):
 class ParserContext(Container):
 # ------------------------------------------------------------------------------
 
+    def dumpCtx(self):
+        # dumps options which are variable from parsing source-code
+        return dict(
+            decl_offset = self.decl_offset )
+
     def __init__(self, *args, **kwargs):
         self.line_no           = 0
-
         self.contents          = ""
         self.section           = Parser.section_default
 
@@ -1257,7 +1283,7 @@ class ParserContext(Container):
 
         # self.parameterdescs: dictionary of <'@parameter'>:<description>
         # key/values of the parameters. Set by Parser.dump_section
-        self.parameterdescs    = dict()
+        self.parameterdescs    = collections.OrderedDict()
 
         # self.constants: dictionary of <'%CONST'>:<description>
         # key/values. Set by Parser.dump_section
@@ -1285,6 +1311,13 @@ class ParserContext(Container):
 
         # the place, where type dumps are stored
         self.dump_storage = []
+
+        # memo line numbers
+        self.offset = 0
+        self.last_offset = 0
+        self.decl_offset = 0
+        self.sections.offsets = dict()
+        self.parameterdescs.offsets = dict()
 
         super(ParserContext, self).__init__(self, *args, **kwargs)
 
@@ -1500,12 +1533,15 @@ class Parser(SimpleLog):
         self.dump_epilog()
         self.translator.eof()
 
-    def parse_dump_storage(self, options, translator):
-        self.setOptions(options)
-        self.setTranslator(translator)
+    def parse_dump_storage(self, translator=None, options=None):
+        if options is not None:
+            self.setOptions(options)
+        if translator is not None:
+            self.setTranslator(translator)
         self.dump_preamble()
-        for name, out_type, opts, kwargs in self.ctx.dump_storage:
+        for name, out_type, opts, ctx, kwargs in self.ctx.dump_storage:
             self.options.update(opts)
+            self.ctx.update(ctx)
             self.output_decl(name, out_type, **kwargs)
         self.dump_epilog()
         self.translator.eof()
@@ -1576,6 +1612,7 @@ class Parser(SimpleLog):
                 raise
 
     def output_decl(self, name, out_type, **kwargs):
+        self.ctx.offset = self.ctx.decl_offset
 
         if name in self.translator.dumped_names:
             self.error("name '%s' used several times" % name)
@@ -1586,6 +1623,7 @@ class Parser(SimpleLog):
                 ( name
                   , out_type
                   , self.options.dumpOptions()
+                  , self.ctx.dumpCtx()
                   , copy.deepcopy(kwargs) ) )
             return
 
@@ -1608,6 +1646,7 @@ class Parser(SimpleLog):
 
         if doc_start.match(line):
             self.debug("START: kernel-doc comment / switch state 0 --> 1")
+            self.ctx.decl_offset = self.ctx.line_no + 1
             self.state = 1
             self.in_doc_sect = False
 
@@ -1616,6 +1655,7 @@ class Parser(SimpleLog):
 
         if doc_block.match(line):
             self.debug("START: DOC block / switch state 1 --> 4")
+            self.ctx.last_offset = self.ctx.line_no + 1
             self.state = 4
             self.ctx.contents = ""
             self.ctx.section =  self.section_intro
@@ -1625,6 +1665,7 @@ class Parser(SimpleLog):
 
         elif doc_decl.match(line):
             self.debug("START: declaration / switch state 1 --> 2")
+            self.ctx.last_offset = self.ctx.line_no + 1
             self.state = 2
 
             identifier = doc_decl[0].strip()
@@ -1716,6 +1757,7 @@ class Parser(SimpleLog):
                 self.ctx.contents = ""
 
             self.debug("new_sect: '%(sec)s' / desc: '%(desc)s'", sec = new_sect, desc = new_cont)
+            self.ctx.last_offset = self.ctx.line_no + 1
 
             self.in_doc_sect = True
             self.in_purpose  = False
@@ -1752,6 +1794,7 @@ class Parser(SimpleLog):
             cont_line = doc_content[0]
 
             if not cont_line.strip():
+                # it's a empty line
 
                 if self.in_purpose:
 
@@ -1763,6 +1806,7 @@ class Parser(SimpleLog):
                         if not self.in_doc_sect:
                             self.warn("contents before sections '%(c)s'" , c=self.ctx.contents.strip())
                         self.dump_section(self.ctx.section, self.ctx.contents)
+
                     self.ctx.section  = self.section_descr
                     self.ctx.contents = ""
                     self.in_doc_sect  = True
@@ -1777,6 +1821,7 @@ class Parser(SimpleLog):
 
                     self.debug("blank lines after @parameter --> start 'Description' section")
                     self.dump_section(self.ctx.section, self.ctx.contents)
+                    self.ctx.last_offset  = self.ctx.line_no + 1
                     self.ctx.section  = self.section_descr
                     self.ctx.contents = ""
                     self.in_doc_sect  = True
@@ -1853,6 +1898,7 @@ class Parser(SimpleLog):
             self.split_doc_state = 2
             self.debug("SPLIT-DOC-START: '%(param)s' / split-state 1 --> 2"
                        , param = self.ctx.section)
+            self.ctx.last_offset  = self.ctx.line_no + 1
             self.info("section: %(sec)s" , sec=self.ctx.section)
 
         elif doc_state5_end.match(line):
@@ -2059,20 +2105,24 @@ class Parser(SimpleLog):
         self.debug("dump_section(): %(name)s", name = name)
         name = name.strip()
         cont = cont.rstrip() # dismiss trailing whitespace
-        if type_constant.match(name):  # '%CONST' - name of a constant.
-            name = type_constant[0]
-            self.debug("constant section '%(name)s'",  name = name)
-            if self.ctx.constants.get(name, None):
-                self.error("duplicate constant definition '%(name)s'"
-                           , name = name)
-            self.ctx.constants[name] = cont
 
-        elif type_param.match(name):   # '@parameter' - name of a parameter
+        # FIXME: sections with '%CONST' prefix no longer exists
+        #if type_constant.match(name):  # '%CONST' - name of a constant.
+        #    name = type_constant[0]
+        #    self.debug("constant section '%(name)s'",  name = name)
+        #    if self.ctx.constants.get(name, None):
+        #        self.error("duplicate constant definition '%(name)s'"
+        #                   , name = name)
+        #    self.ctx.constants[name] = cont
+
+        if type_param.match(name):   # '@parameter' - name of a parameter
             name = type_param[0]
             self.debug("parameter definition '%(name)s'", name = name)
             if self.ctx.parameterdescs.get(name, None):
                 self.error("duplicate parameter definition '%(name)s'", name = name)
             self.ctx.parameterdescs[name] = cont
+            self.ctx.parameterdescs.offsets[name] = self.ctx.last_offset
+            self.ctx.last_offset = 0
             self.ctx.sectcheck.append(name)
 
         elif name == "@...":
@@ -2081,6 +2131,8 @@ class Parser(SimpleLog):
             if self.ctx.parameterdescs.get(name, None):
                 self.error("parameter definiton '...'")
             self.ctx.parameterdescs[name] = cont
+            self.ctx.parameterdescs.offsets[name] = self.ctx.last_offset
+            self.ctx.last_offset = 0
             self.ctx.sectcheck.append(name)
         else:
             self.debug("other section '%(name)s'", name = name)
@@ -2089,6 +2141,8 @@ class Parser(SimpleLog):
                 self.ctx.sections[name] += "\n\n" + cont
             else:
                 self.ctx.sections[name] = cont
+            self.ctx.sections.offsets[name] = self.ctx.last_offset
+            self.ctx.last_offset = 0
 
     def dump_function(self, proto):
         self.debug("dump_function(): (1) '%(proto)s'", proto=proto)

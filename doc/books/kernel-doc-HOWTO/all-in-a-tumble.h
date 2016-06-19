@@ -274,7 +274,7 @@ typedef int my_typedef;
  *
  */
 
-int rst_mode(int a, char b)
+int rst_mode(int a, char *b)
 {
   return a + b;
 }
