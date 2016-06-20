@@ -802,7 +802,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write("\n")
 
     def write_func_param(self, param, descr):
-        param = self.highlight(param)
+        param = param.replace("*", r"\*")
         self.write("\n", self.INDENT, param)
 
         if descr != Parser.undescribed:
@@ -880,8 +880,7 @@ class ReSTTranslator(TranslatorAPI):
                 p_list.append("%s %s" % (p_type, p_name))
 
         p_line = ", ".join(p_list)
-        self.write(p_line.replace("*", r"\*")
-                   , ")\n")
+        self.write(p_line, ")\n")
 
         # purpose
 
@@ -911,8 +910,7 @@ class ReSTTranslator(TranslatorAPI):
             self.parser.ctx.offset = parameterdescs.offsets.get(
                 p_name, self.parser.ctx.offset)
 
-            self.write_func_param(param.replace("*", r"\*")
-                                  , p_desc)
+            self.write_func_param(param, p_desc)
 
         # sections
 
