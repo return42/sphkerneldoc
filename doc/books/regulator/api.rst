@@ -14,14 +14,18 @@ documented here.
 .. kernel-doc:: include/linux/regulator/consumer.h
     :internal:
 
+
 .. kernel-doc:: include/linux/regulator/machine.h
     :internal:
+
 
 .. kernel-doc:: include/linux/regulator/driver.h
     :internal:
 
+
 .. kernel-doc:: drivers/regulator/core.c
     :export:
+
 
 
 

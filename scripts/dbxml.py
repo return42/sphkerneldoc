@@ -960,6 +960,7 @@ class Constant(XMLTag):
 class Property(Constant):      replaceTag = "constant"
 class Token(Constant):         replaceTag = "constant"
 class Filename(Constant):      replaceTag = "constant"
+class Varname(Constant):       replaceTag = "constant"
 # ------------------------------------------------------------------------------
 
 # ==============================================================================

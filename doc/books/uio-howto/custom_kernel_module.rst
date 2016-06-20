@@ -50,19 +50,19 @@ the members are required, others are optional.
    you can set it here. If this pointer is not NULL, your
    :c:func:`mmap()` will be called instead of the built-in one.
 
--  ``int (*open)(struct uio_info *info, struct inode *inode)
-   ``: Optional. You might want to have your own :c:func:`open()`,
-   e.g. to enable interrupts only when your device is actually used.
+-  ``int (*open)(struct uio_info *info, struct inode *inode)``:
+   Optional. You might want to have your own :c:func:`open()`, e.g. to
+   enable interrupts only when your device is actually used.
 
--  ``int (*release)(struct uio_info *info, struct inode *inode)
-   ``: Optional. If you define your own :c:func:`open()`, you will
+-  ``int (*release)(struct uio_info *info, struct inode *inode)``:
+   Optional. If you define your own :c:func:`open()`, you will
    probably also want a custom :c:func:`release()` function.
 
--  ``int (*irqcontrol)(struct uio_info *info, s32 irq_on)
-   ``: Optional. If you need to be able to enable or disable interrupts
-   from userspace by writing to ``/dev/uioX``, you can implement this
-   function. The parameter ``irq_on`` will be 0 to disable interrupts
-   and 1 to enable them.
+-  ``int (*irqcontrol)(struct uio_info *info, s32 irq_on)``: Optional.
+   If you need to be able to enable or disable interrupts from userspace
+   by writing to ``/dev/uioX``, you can implement this function. The
+   parameter ``irq_on`` will be 0 to disable interrupts and 1 to enable
+   them.
 
 Usually, your device will have one or more memory regions that can be
 mapped to user space. For each region, you have to set up a
@@ -249,8 +249,8 @@ elements:
    ``dynamic_region_sizes`` array.
 
 The dynamic regions defined in the platform data will be appended to the
-`` mem[] `` array after the platform device resources, which implies
-that the total number of static and dynamic memory regions cannot exceed
+``mem[]`` array after the platform device resources, which implies that
+the total number of static and dynamic memory regions cannot exceed
 ``MAX_UIO_MAPS``.
 
 The dynamic memory regions will be allocated when the UIO device file,
