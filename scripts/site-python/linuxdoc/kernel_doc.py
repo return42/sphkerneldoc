@@ -89,18 +89,20 @@ class RE(object):
 doc_start        = RE(r"^/\*\*\s*$")  # Allow whitespace at end of comment start.
 doc_end          = RE(r"\s*\*+/")
 doc_com          = RE(r"\s*\*\s*")
+doc_com_section  = RE(r"\s*\*\s{1,8}") # more than 8 spaces (one tab) as prefix is not a new section comment
 doc_com_body     = RE(r"\s*\* ?")
 doc_decl         = RE(doc_com.pattern + r"(\w+)")
-doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*[-:]")
+#doc_decl_ident   = RE(r"\s*([\w\s]+?)\s*[\(\)]\s*[-:]")
+doc_decl_ident   = RE(doc_com.pattern + r"(struct|union|enum|typedef|function)\s*(\w+)")
 doc_decl_purpose = RE(r"[-:](.*)$")
 
 # except pattern like "http://", a whitespace is required after the colon
-doc_sect_except  = RE(doc_com.pattern + r"(.*?):[^\s]")
+doc_sect_except  = RE(doc_com.pattern + r"[^\s@](.*)?:[^\s]")
 
 #doc_sect = RE(doc_com.pattern + r"([" + doc_special.pattern + r"]?[\w\s]+):(.*)")
 # "section header:" names must be unique per function (or struct,union, typedef,
 # enum). Additional condition: the header name should have 3 characters at least!
-doc_sect  = RE(doc_com.pattern
+doc_sect  = RE(doc_com_section.pattern
                + r"("
                + r"@\w[^:]*"                                 # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
@@ -108,7 +110,7 @@ doc_sect  = RE(doc_com.pattern
                + r")"
                + r":(.*?)\s*$")   # this matches also strings like "http://..." (doc_sect_except)
 
-doc_sect_reST = RE(doc_com.pattern
+doc_sect_reST = RE(doc_com_section.pattern
                + r"("
                + r"@\w[^:]*"                                 # "@foo: lorem" or
                + r"|" + r"\@\.\.\."                          # ellipsis "@...: lorem" or
@@ -118,7 +120,7 @@ doc_sect_reST = RE(doc_com.pattern
                + r":(.*?)\s*$"    # this matches also strings like "http://..." (doc_sect_except)
                , flags = re.IGNORECASE)
 
-reST_sect = RE(doc_com.pattern
+reST_sect = RE(doc_com_section.pattern
                + r"("
                r"\w[\w\s]+\w"
                + r")"
@@ -720,9 +722,9 @@ class ReSTTranslator(TranslatorAPI):
         , ]
 
     MASK_REST_INLINES = [
-        (RE(r"(\*)")        , r"\\\1")  # emphasis
+        (RE(r"\w(_)[\s\*]") , r"\\\1")  # trailing underline
+        , (RE(r"(\*)")      , r"\\\1")  # emphasis
         , (RE(r"(`)")       , r"\\\1")  # interpreted text & inline literals
-        , (RE(r"(_\s)")     , r"\\\1")  # trailing underline
         , (RE(r"(\s)_(\w)") , r"\1_\2") # leading underline
         , (RE(r"(\|)")      , r"\\\1")  # substitution references
         , ]
@@ -1133,6 +1135,7 @@ class ParseOptions(Container):
         # self.out.
 
         self.encoding       = "utf-8"
+        self.tab_width      = 8  # tabstops every n chars
 
         # control which content to print
 
@@ -1588,6 +1591,7 @@ class Parser(SimpleLog):
             lines = lines[:-1]
 
         for l in lines:
+            l = l.expandtabs(self.options.tab_width)
             self.ctx.line_no += 1
             l = self.options.filter_opt(l, self)
             if l is None:
