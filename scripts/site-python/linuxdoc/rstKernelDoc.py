@@ -448,21 +448,21 @@ class KernelDoc(Directive):
             selected  = self.options["snippets"].replace(","," ").split()
             names     = self.parser.ctx.snippets.keys()
             not_found = [ s for s in selected if s not in names]
+            found     = [ s for s in selected if s in names]
             if not_found:
                 self.errMsg("selected snippets(s) not found:\n    %s"
                             % "\n    ,".join(not_found))
 
-            code_block = "\n\n.. code-block:: %s\n" % self.options.get("language", "c")
-            if "linenos" in self.options:
-                code_block += "    :linenos:\n"
-
-            snipsnap = ""
-            while selected:
-                snipsnap += self.parser.ctx.snippets[selected.pop(0)] + "\n\n"
-
-            for l in snipsnap.split("\n"):
-                code_block += "\n    " + l
-            lines = code_block + "\n\n"
+            if found:
+                code_block = "\n\n.. code-block:: %s\n" % self.options.get("language", "c")
+                if "linenos" in self.options:
+                    code_block += "    :linenos:\n"
+                snipsnap = ""
+                while found :
+                    snipsnap += self.parser.ctx.snippets[found.pop(0)] + "\n\n"
+                for l in snipsnap.split("\n"):
+                    code_block += "\n    " + l
+                lines = code_block + "\n\n"
 
         else:
             self.parser.options.out = content
