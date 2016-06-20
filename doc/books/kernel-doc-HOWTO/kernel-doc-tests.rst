@@ -22,31 +22,31 @@ multiple DOC sections
 
    .. kernel-doc::  ./all-in-a-tumble.h
        :doc: multiple DOC sections
-       :no_header:
+       :no-header:
 
 .. admonition:: DOC section
     :class: rst-example
 
     .. kernel-doc::  ./all-in-a-tumble.h
         :doc: multiple DOC sections
-        :no_header:
+        :no-header:
 
 
-option no_header
+option no-header
 ----------------
 
 .. code-block:: rst
 
     .. kernel-doc::  ./all-in-a-tumble.h
         :doc:  Theory of Operation
-        :no_header:
+        :no-header:
 
-.. admonition:: DOC section with "no_header"
+.. admonition:: DOC section with "no-header"
     :class: rst-example
 
     .. kernel-doc::  ./all-in-a-tumble.h
         :doc:  Theory of Operation
-        :no_header:
+        :no-header:
 
 
 exported symbols

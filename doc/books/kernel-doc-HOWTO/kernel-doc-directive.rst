@@ -36,7 +36,7 @@ Here is a short overview of the options:
 
     .. kernel-doc:: <src-filename>
         :doc: <section title>
-        :no_header:
+        :no-header:
         :export:
         :internal:
         :functions: <function [, functions [, ...]]>
@@ -57,7 +57,7 @@ these options make sense:
 
     The next option make only sense in conjunction with option ``doc``:
 
-    ``no_header``
+    ``no-header``
         Do not output DOC: section's title. Usefull, if the surrounding context
         already has a heading, and the DOC: section title is only used as an
         identifier. Take in mind, that this option will not supress any native
