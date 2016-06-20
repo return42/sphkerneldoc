@@ -111,3 +111,21 @@ empty list of exported symbols is treated as an error:
     .. kernel-doc::  ./all-in-a-tumble.c
         :export:  ./match_files_without_exports*
 
+SYSCALL & EVENT
+===============
+
+Source code:
+
+.. kernel-doc::  ./all-in-a-tumble.c
+    :snippets: test_SYSCALL
+
+.. code-block:: rst
+
+    .. kernel-doc::  ./all-in-a-tumble.c
+        :functions:  sys_rt_sigprocmask
+
+.. admonition:: missing exports
+    :class: rst-example
+
+    .. kernel-doc::  ./all-in-a-tumble.c
+        :functions:  sys_rt_sigprocmask
