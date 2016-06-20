@@ -14,26 +14,80 @@ u"""
     The ``kernel-doc`` (:py:class:`KernelDoc`) directive includes contens from
     linux kernel source code comments.
 
-    Options:
+    Here is a short overview of the options:
 
-    * ``:doc: <section title>`` inserts the contents of the ``DOC:`` section
-      titled ``<section title>`` from ``<filename>``.  Spaces are allowed in
-      ``<section title>``; do not quote the ``<section title>``.
+    .. code-block:: rst
 
-    * ``:export:`` inserts the documentation in ``<filename>`` of functions /
-      structs or whatever are exported using EXPORT_SYMBOL (``EXPORT_SYMBOL()``,
-      ``EXPORT_SYMBOL_GPL()`` & ``EXPORT_SYMBOL_GPL_FUTURE()``).
+        .. kernel-doc:: <src-filename>
+            :doc: <section title>
+            :no_header:
+            :export:
+            :internal:
+            :functions: <function [, functions [, ...]]>
+            :module: <prefix-id>
+            :snippets:  <snippet [, snippets [, ...]]>
+            :language:  <snippet-lang>
+            :linenos:
+            :debug:
 
-    * ``:internal:`` is replaced by the documentation of functions, structs,
-      titles etc. that are documented, but not **not** exported using
-      EXPORT_SYMBOL.
+    The argument ``<src-filename>`` is required, it points to a source file in the
+    kernel source tree. The pathname is relativ to kernel's root folder.  The
+    options have the following meaning, but be aware that not all combinations of
+    these options make sense:
 
-    * ``:functions: <function [, functions [, ...]]>`` is replaced by the
-      documentation of function, struct or whatever object/title is documented
-      <filename>.
+    ``doc <section title>``
+        Include content of the ``DOC:`` section titled ``<section title>``.  Spaces
+        are allowed in ``<section title>``; do not quote the ``<section title>``.
 
-    * The option ``:module: <prefix-id>`` sets a module-name, this name is used
-      as prefix for automatic generated IDs (reference anchors).
+        The next option make only sense in conjunction with option ``doc``:
+
+        ``no_header``
+            Do not output DOC: section's title. Usefull, if the surrounding context
+            already has a heading, and the DOC: section title is only used as an
+            identifier. Take in mind, that this option will not supress any native
+            reST heading markup in the comment (:ref:`reST-section-structure`).
+
+    ``export [<src-fname-pattern> [, ...]]``
+        Include documentation for all function, struct or whatever definition in
+        ``<src-filename>``, exported using EXPORT_SYMBOL macro (``EXPORT_SYMBOL``,
+        ``EXPORT_SYMBOL_GPL`` & ``EXPORT_SYMBOL_GPL_FUTURE``) either in
+        ``<src-filename>`` or in any of the files specified by
+        ``<src-fname-pattern>``.
+
+        The ``<src-fname-pattern>`` (glob) is useful when the kernel-doc comments
+        have been placed in header files, while EXPORT_SYMBOL are next to the
+        function definitions.
+
+    ``internal [<src-fname-pattern> [, ...]]``
+        Include documentation for all documented definitions, **not** exported using
+        EXPORT_SYMBOL macro either in ``<src-filename>`` or in any of the files
+        specified by ``<src-fname-pattern>``.
+
+
+    ``functions <name [, names [, ...]]>``
+        Include documentation for each named definition.
+
+    ``module <prefix-id>``
+        The option ``:module: <id-prefix>`` sets a module-name. The module-name is
+        used as a prefix for automatic generated IDs (reference anchors).
+
+    ``snippets <name [, names [, ...]]>``
+        Inserts the source-code passage(s) marked with the snippet ``name``. The
+        snippet is inserted with a `code-block:: <http://www.sphinx-doc.org/en/stable/markup/code.html>`_
+        directive.
+
+        The next options make only sense in conjunction with option ``snippets``:
+
+        ``language <highlighter>``
+            Set highlighting language of the snippet code-block.
+
+        ``linenos``
+            Set line numbers in the snippet code-block.
+
+    ``debug``
+        Inserts a code-block with the generated reST source. This might somtimes
+        helpful to see how the kernel-doc parser transforms the kernel-doc markup to
+        reST markup.
 
     The following example shows how to insert documention from the source file
     ``/drivers/gpu/drm/drm_drv.c``. In this example the documention from the
@@ -95,8 +149,6 @@ u"""
     The last example illustrates, that the option ``:module: tvp514x`` is used
     as a prefix for anchors. E.g. ```ref:`tvp514x.tvp514x_platform_data.members¸```
     refers to the to the member description of ``struct tvp514x_platform_data``.
-
-
 """
 
 # ==============================================================================
