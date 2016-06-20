@@ -259,15 +259,6 @@ class KernelDoc(Directive):
         , "language"   : directives.unchanged_required
         , "linenos"    : directives.flag
 
-        # not yet supported:
-        #
-        # !C<filename> is replaced by nothing, but makes the tools check that
-        # all DOC: sections and documented functions, symbols, etc. are used.
-        # This makes sense to use when you use !F/!P only and want to verify
-        # that all documentation is included.
-        #
-        #, "check"     : directives.flag      # aka lines containing !C
-
         # module name / used as id-prefix
         , "module"     : directives.unchanged_required
 
@@ -386,7 +377,9 @@ class KernelDoc(Directive):
         if self.env.config.kernel_doc_raise_error:
             raise SystemMessage(error, 4)
 
-        # insert oops/todo admonition
+        # insert oops/todo admonition, this is the replacement of the escape
+        # sequences "!C<filename> " formerly used in the DocBook-SGML template
+        # files.
         todo = ("\n\n.. todo::"
                 "\n\n    Oops: Document generation inconsistency."
                 "\n\n    The template for this document tried to insert"
