@@ -1272,6 +1272,7 @@ class ParserContext(Container):
         self.sectcheck         = []
 
         self.prototype         = ""
+        self.last_identifier   = ""
 
         # self.parameterlist: ordered list of the parameters as they appear in
         # the source. The parameterlist is set by Parser.push_parameter and
@@ -1439,22 +1440,26 @@ class Parser(SimpleLog):
     # Log
     # ------------------------------------------------------------
 
-    def error(self, message, **replace):
-        replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no))
+    def error(self, message, _line_no=None, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         self.errors += 1
         super(Parser, self).error(message, **replace)
 
-    def warn(self, message, **replace):
-        replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no))
+    def warn(self, message, _line_no=None, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         self.warnings += 1
         super(Parser, self).warn(message, **replace)
 
-    def info(self, message, **replace):
-        replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no))
+    def info(self, message, _line_no=None, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         super(Parser, self).info(message, **replace)
 
-    def debug(self, message, **replace):
-        replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no))
+    def debug(self, message, _line_no=None, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         super(Parser, self).debug(message, **replace)
 
     # ------------------------------------------------------------
@@ -1606,7 +1611,7 @@ class Parser(SimpleLog):
             state = getattr(self, "state_%s" % self.state)
             try:
                 state(l)
-            except Exception:
+            except Exception as exc:
                 self.warn("total errors: %(errors)s / warnings: %(warnings)s"
                            , errors=self.errors, warnings=self.warnings)
                 self.warnings -= 1
@@ -1671,18 +1676,14 @@ class Parser(SimpleLog):
             self.state = 2
 
             identifier = doc_decl[0].strip()
-            if doc_decl_ident.search(line):
-                identifier = doc_decl_ident[0]
-
             self.ctx.decl_type = "function"
-            for t in ["struct", "union", "enum", "typedef"]:
-                if identifier.startswith(t):
-                    self.ctx.decl_type = t
-                    break
+            if doc_decl_ident.match(line):
+                identifier = doc_decl_ident[1]
+                self.ctx.decl_type = doc_decl_ident[0]
+            self.ctx.last_identifier = identifier.strip()
 
             self.debug("FLAG: in_purpose=True")
             self.in_purpose = True
-
             self.info("scanning doc for: %(t)s '%(i)s'", t=self.ctx.decl_type, i = identifier)
 
             self.ctx.decl_purpose = ""
@@ -1690,9 +1691,8 @@ class Parser(SimpleLog):
                 self.ctx.decl_purpose = doc_decl_purpose[0].strip()
 
             if not self.ctx.decl_purpose:
-                self.warn("missing initial short description of '%(i)s' on line -->|%(line)s|<--"
-                          , i=identifier, line=line)
-
+                self.warn("missing initial short description of '%(i)s'"
+                          , i=self.ctx.last_identifier)
 
         else:
             self.warn("can't understand: -->|%(line)s|<--"
@@ -1759,7 +1759,7 @@ class Parser(SimpleLog):
                 self.ctx.contents = ""
 
             self.debug("new_sect: '%(sec)s' / desc: '%(desc)s'", sec = new_sect, desc = new_cont)
-            self.ctx.last_offset = self.ctx.line_no + 1
+            self.ctx.last_offset = self.ctx.line_no
 
             self.in_doc_sect = True
             self.in_purpose  = False
@@ -1770,7 +1770,7 @@ class Parser(SimpleLog):
                 self.ctx.contents = new_cont + "\n"
             self.info("section: %(sec)s" , sec=self.ctx.section)
 
-        elif doc_end.match(line):
+        elif doc_end.search(line):
 
             # end of the comment-block
 
@@ -1823,7 +1823,7 @@ class Parser(SimpleLog):
 
                     self.debug("blank lines after @parameter --> start 'Description' section")
                     self.dump_section(self.ctx.section, self.ctx.contents)
-                    self.ctx.last_offset  = self.ctx.line_no + 1
+                    self.ctx.last_offset = self.ctx.line_no
                     self.ctx.section  = self.section_descr
                     self.ctx.contents = ""
                     self.in_doc_sect  = True
@@ -1900,7 +1900,7 @@ class Parser(SimpleLog):
             self.split_doc_state = 2
             self.debug("SPLIT-DOC-START: '%(param)s' / split-state 1 --> 2"
                        , param = self.ctx.section)
-            self.ctx.last_offset  = self.ctx.line_no + 1
+            self.ctx.last_offset = self.ctx.line_no
             self.info("section: %(sec)s" , sec=self.ctx.section)
 
         elif doc_state5_end.match(line):
@@ -1984,6 +1984,8 @@ class Parser(SimpleLog):
         if SYSCALL_DEFINE0.search(prototype):
             void = True
         prototype = SYSCALL_DEFINE.sub("long sys_", prototype)
+        if not self.ctx.last_identifier.startswith("sys_"):
+            self.ctx.last_identifier = "sys_%s" % self.ctx.last_identifier
 
         if re.search(r"long (sys_.*?),", prototype):
             prototype = prototype.replace(",", "(", 1)
@@ -2028,6 +2030,8 @@ class Parser(SimpleLog):
             self.warn("Unrecognized tracepoint format: %(prototype)s"
                       , prototype=prototype)
         else:
+            if not self.ctx.last_identifier.startswith("trace_"):
+                self.ctx.last_identifier = "trace_%s" % self.ctx.last_identifier
             retVal = ("static inline void trace_%s(%s)"
                       % (tp_name, tp_args))
         return retVal
@@ -2121,7 +2125,8 @@ class Parser(SimpleLog):
             name = type_param[0]
             self.debug("parameter definition '%(name)s'", name = name)
             if self.ctx.parameterdescs.get(name, None):
-                self.error("duplicate parameter definition '%(name)s'", name = name)
+                self.error("duplicate parameter definition '%(name)s'"
+                           , name = name, line_no = self.ctx.last_offset )
             self.ctx.parameterdescs[name] = cont
             self.ctx.parameterdescs.offsets[name] = self.ctx.last_offset
             self.ctx.last_offset = 0
@@ -2131,7 +2136,8 @@ class Parser(SimpleLog):
             self.debug("parameter definiton '...'")
             name = "..."
             if self.ctx.parameterdescs.get(name, None):
-                self.error("parameter definiton '...'")
+                self.error("parameter definiton '...'"
+                           , line_no = self.ctx.last_offset )
             self.ctx.parameterdescs[name] = cont
             self.ctx.parameterdescs.offsets[name] = self.ctx.last_offset
             self.ctx.last_offset = 0
@@ -2139,7 +2145,8 @@ class Parser(SimpleLog):
         else:
             self.debug("other section '%(name)s'", name = name)
             if self.ctx.sections.get(name, None):
-                self.warn("duplicate section name '%(name)s'", name = name)
+                self.warn("duplicate section name '%(name)s'"
+                          , name = name, line_no = self.ctx.last_offset )
                 self.ctx.sections[name] += "\n\n" + cont
             else:
                 self.ctx.sections[name] = cont
@@ -2215,8 +2222,14 @@ class Parser(SimpleLog):
                 self.create_parameterlist(matchExpr[2], ",")
             else:
                 self.warn("can't understand function proto: '%(prototype)s'"
-                          , **self.ctx)
+                          , prototype = self.ctx.prototype
+                          , line_no = self.ctx.decl_offset)
                 return
+
+            if self.ctx.last_identifier != self.ctx.decl_name:
+                self.warn("function name from comment differs:  %s <--> %s"
+                          % (self.ctx.last_identifier, self.ctx.decl_name)
+                          , line_no = self.ctx.decl_offset)
 
         self.check_sections(self.ctx.decl_name
                             , self.ctx.decl_type
@@ -2247,6 +2260,11 @@ class Parser(SimpleLog):
             self.error("can't parse union!")
             return
 
+        if self.ctx.last_identifier != self.ctx.decl_name:
+            self.warn("struct name from comment differs:  %s <--> %s"
+                      % (self.ctx.last_identifier, self.ctx.decl_name)
+                      , line_no = self.ctx.decl_offset)
+
         self.output_decl(
             self.ctx.decl_name, "union_decl"
             , decl_name        = self.ctx.decl_name
@@ -2262,6 +2280,11 @@ class Parser(SimpleLog):
         if not self.prepare_struct_union(proto):
             self.error("can't parse struct!")
             return
+
+        if self.ctx.last_identifier != self.ctx.decl_name:
+            self.warn("struct name from comment differs:  %s <--> %s"
+                      % (self.ctx.last_identifier, self.ctx.decl_name)
+                      , line_no = self.ctx.decl_offset)
 
         self.output_decl(
             self.ctx.decl_name, "struct_decl"
@@ -2359,6 +2382,11 @@ class Parser(SimpleLog):
                         , name = name,  decl_name=self.ctx.decl_name )
                     self.ctx.parameterdescs[name] = Parser.undescribed
 
+            if self.ctx.last_identifier != self.ctx.decl_name:
+                self.warn("enum name from comment differs:  %s <--> %s"
+                          % (self.ctx.last_identifier, self.ctx.decl_name)
+                          , line_no = self.ctx.decl_offset)
+
             self.output_decl(
                 self.ctx.decl_name, "enum_decl"
                 , enum             = self.ctx.decl_name
@@ -2385,6 +2413,11 @@ class Parser(SimpleLog):
             f_args = C_FUNC_TYPEDEF[2]
             self.create_parameterlist(f_args, ',')
 
+            if self.ctx.last_identifier != self.ctx.decl_name:
+                self.warn("function name from comment differs:  %s <--> %s"
+                          % (self.ctx.last_identifier, self.ctx.decl_name)
+                          , line_no = self.ctx.decl_offset)
+
             self.output_decl(
                 self.ctx.decl_name, "function_decl"
                 , function         = self.ctx.decl_name
@@ -2408,6 +2441,10 @@ class Parser(SimpleLog):
 
             if C_TYPEDEF.match(proto):
                 self.ctx.decl_name = C_TYPEDEF[0]
+                if self.ctx.last_identifier != self.ctx.decl_name:
+                    self.warn("typedef name from comment differs:  %s <--> %s"
+                              % (self.ctx.last_identifier, self.ctx.decl_name)
+                              , line_no = self.ctx.decl_offset)
 
                 self.output_decl(
                     self.ctx.decl_name, "typedef_decl"
@@ -2500,9 +2537,12 @@ class Parser(SimpleLog):
                         p_name = ma[1]
 
                     elif mb.match(p_name):
-                        if p_type:  # skip unnamed bit-fields
+                        if p_type:
                             p_name = mb[0]
                             p_type = "%s:%s" % (p_type, mb[1])
+                        else:
+                            # skip unnamed bit-fields
+                            continue
 
                     self.debug("  parameter#%(c)s : (4) p_name='%(p_name)s' / p_type='%(p_type)s'"
                                , c=c, p_name=p_name, p_type=p_type)
@@ -2566,10 +2606,11 @@ class Parser(SimpleLog):
                     self.warn("Function parameter or member '%(p_name)s' not "
                               "described in '%(decl_name)s'."
                               , p_name = p_name
-                              , decl_name = self.ctx.decl_name)
+                              , decl_name = self.ctx.decl_name
+                              , line_no = self.ctx.last_offset)
                 else:
                     self.warn("no description found for parameter '%(p_name)s'"
-                              , p_name = p_name)
+                              , p_name = p_name, line_no = self.ctx.decl_offset)
                 self.ctx.parameterdescs[p_name] = Parser.undescribed
 
         self.debug(
@@ -2604,11 +2645,15 @@ class Parser(SimpleLog):
                     break
             if err:
                 if decl_type == "function":
-                    self.warn("excess function parameter '%(sect)s' description in '%(decl_name)s'"
-                              , sect = sect, decl_name = decl_name)
+                    self.warn(
+                        "excess function parameter '%(sect)s' description in '%(decl_name)s'"
+                        , sect = sect, decl_name = decl_name
+                        , line_no = self.ctx.last_offset )
                 elif not re.search(r"\b(" + sect + ")[^a-zA-Z0-9]", nested):
-                    self.warn("excess %(decl_type)s member '%(sect)s' description in '%(decl_name)s'"
-                              , decl_type = decl_type, decl_name = decl_name, sect = sect)
+                    self.warn(
+                        "excess %(decl_type)s member '%(sect)s' description in '%(decl_name)s'"
+                        , decl_type = decl_type, decl_name = decl_name, sect = sect
+                        , line_no = self.ctx.last_offset )
             else:
                 self.debug("check_sections(): parameter '%(sect)s': description exists / OK"
                            , sect=sect)
@@ -2626,7 +2671,7 @@ class Parser(SimpleLog):
 
         if self.options.verbose_warn and not self.ctx.sections.get(self.section_return, None):
             self.warn("no description found for return-value of function '%(func)s()'"
-                      , func = decl_name)
+                      , func = decl_name, line_no = self.ctx.last_offset)
         else:
             self.debug("check_return_section(): return-value of %(func)s() OK"
                       , func = decl_name)

@@ -206,30 +206,32 @@ class KernelDocParser(kerneldoc.Parser):
     # -------------------------------------------------
 
     def error(self, message, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         self.errors += 1
-        self.app.warn(
-            message % replace
-            , location = "%s:%s [kernel-doc ERROR]" % (self.options.fname, self.ctx.line_no)
-            , prefix = "" )
+        message = ("%(fname)s:%(line_no)s [kernel-doc ERROR] : " + message) % replace
+        self.app.warn(message, prefix="")
 
     def warn(self, message, **replace):
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
         self.warnings += 1
-        self.app.warn(
-            message % replace
-            , location = "%s:%s [kernel-doc WARN]" % (self.options.fname, self.ctx.line_no)
-            , prefix = "")
+        message = ("%(fname)s:%(line_no)s [kernel-doc WARN] : " + message) % replace
+        self.app.warn(message, prefix="")
 
     def info(self, message, **replace):
-        self.app.verbose(
-            "%s:%s: [kernel-doc INFO]: " %(self.options.fname, self.ctx.line_no)
-            + message % replace)
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
+        message = ("%(fname)s:%(line_no)s [kernel-doc INFO] : " + message) % replace
+        self.app.verbose(message, prefix="")
 
     def debug(self, message, **replace):
         if self.app.verbosity < 2:
             return
-        replace.update(dict(fname=self.options.fname, line_no=self.ctx.line_no, logclass = "DEBUG"))
-        message = "%(fname)s:%(line_no)s [kernel-doc %(logclass)s] : " + message
-        self.app.debug(message, **replace)
+        replace["fname"]   = self.options.fname
+        replace["line_no"] = replace.get("line_no", self.ctx.line_no)
+        message = ("%(fname)s:%(line_no)s [kernel-doc DEBUG] : " + message) % replace
+        self.app.debug(message, prefix="")
 
 
 # ==============================================================================
