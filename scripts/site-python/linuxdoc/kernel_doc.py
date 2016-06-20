@@ -722,11 +722,11 @@ class ReSTTranslator(TranslatorAPI):
         , ]
 
     MASK_REST_INLINES = [
-        (RE(r"\w(_)[\s\*]") , r"\\\1")  # trailing underline
-        , (RE(r"(\*)")      , r"\\\1")  # emphasis
-        , (RE(r"(`)")       , r"\\\1")  # interpreted text & inline literals
-        , (RE(r"(\s)_(\w)") , r"\1_\2") # leading underline
-        , (RE(r"(\|)")      , r"\\\1")  # substitution references
+        (RE(r"(\w)_([\s\*])")  , r"\1\\_\2")  # trailing underline
+        , (RE(r"([\s\*])_(\w)"), r"\1\\_\2")  # leading underline
+        , (RE(r"(\*)")   , r"\\\1")  # emphasis
+        , (RE(r"(`)")    , r"\\\1")  # interpreted text & inline literals
+        , (RE(r"(\|)")   , r"\\\1")  # substitution references
         , ]
 
     FUNC_PTR = RE(r"([^\(]*\(\*)\s*\)\s*\(([^\)]*)\)")
