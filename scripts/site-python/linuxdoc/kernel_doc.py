@@ -858,6 +858,9 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(function)
         self.write_header(function, sec_level=2)
 
+        if self.options.man_sect:
+            self.write("\n:manpage: %s.%s\n" % (function, self.options.man_sect) )
+
         # write function definition
 
         self.write("\n.. c:function:: ")
@@ -1169,6 +1172,7 @@ class ParseOptions(Container):
         self.opt_filters    = dict()
         self.markup         = "reST"
         self.highlight      = True  # switch highlighting on/off
+        self.man_sect       = None  # insert ":manpage:" field, section no "n"
         self.add_filters(self.PARSE_OPTIONS)
 
         # SNIP / SNAP

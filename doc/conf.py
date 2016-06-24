@@ -105,8 +105,9 @@ intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_s
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
 # ones.
 extensions = [
-    "linuxdoc.rstFlatTable"
-    , "linuxdoc.rstKernelDoc"
+    "linuxdoc.rstFlatTable"    # flat-table reST directive
+    , "linuxdoc.rstKernelDoc"  # kernel-doc reST directive
+    , "linuxdoc.manKernelDoc"  # kernel-doc-man sphinx builder
     # , "xelatex"
     , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
@@ -370,6 +371,10 @@ latex_additional_files = [
 # ------------------------------------------------------------------------------
 # Options for manual page output
 # ------------------------------------------------------------------------------
+
+# One entry per manual page. List of tuples
+# (source start file, name, description, authors, manual section).
+man_pages = [ ]
 
 # If true, show URL addresses after external links.
 #man_show_urls = False

@@ -37,6 +37,7 @@ BOOKS := $(filter %/, $(wildcard $(BOOKS_FOLDER)/*/))
 BOOKS := $(BOOKS:%/=%)
 BOOKS_HTML  := $(patsubst %,%.html, $(BOOKS))
 BOOKS_PDF   := $(patsubst %,%.pdf, $(BOOKS))
+BOOKS_MAN   := $(patsubst %,%.man, $(BOOKS))
 BOOKS_CLEAN := $(patsubst %,%.clean, $(BOOKS))
 
 # sphinx-doc setup
@@ -243,6 +244,19 @@ $(BOOKS_HTML): sphinx-doc | $(DIST)
 	  $(obj)/$(patsubst %.html,%,$@) \
 	  $(DIST)/$(patsubst %.html,%,$@)
 	$(Q)echo "HTML build OK / start file at:\n    file://$(abspath $(DIST)/$(patsubst %.html,%,$@)/index.html)"
+
+# reST-book --> man pages
+# ----------------------------------------
+
+PHONY += $(BOOKS_MAN)
+$(BOOKS_MAN): sphinx-doc | $(DIST)
+	$(Q)SPHPROJ_CONF=$(patsubst %.man,%.conf,$@) \
+	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b kernel-doc-man \
+	  -c $(obj) \
+	  -d $(CACHE)/doctrees/$(patsubst %.man,%,$@) \
+	  $(obj)/$(patsubst %.man,%,$@) \
+	  $(DIST)/$(patsubst %.man,%,$@)
+	$(Q)echo "man page build OK / destination at:\n    file://$(abspath $(DIST)/$(patsubst %.html,%,$@))"
 
 
 # reST-book --> PDF

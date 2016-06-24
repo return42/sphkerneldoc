@@ -263,6 +263,7 @@ class KernelDoc(Directive):
 
         # module name / used as id-prefix
         , "module"     : directives.unchanged_required
+        , "man-sect"   : directives.nonnegative_int
 
         # The encoding of the source file with the kernel-doc comments. The
         # default is the config.source_encoding from sphinx configuration and
@@ -308,6 +309,7 @@ class KernelDoc(Directive):
             , encoding      = self.options.get("encoding", self.env.config.source_encoding)
             , verbose_warn  = self.env.config.kernel_doc_verbose_warn
             , markup        = self.env.config.kernel_doc_mode
+            , man_sect      = self.options.get("man-sect", None)
             ,)
 
         opts.set_defaults()
