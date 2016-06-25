@@ -11,13 +11,19 @@ functions.
 
 
 .. kernel-doc:: kernel/irq/irqdesc.c
+    :man-sect: 9
     :internal:
+
 
 .. kernel-doc:: kernel/irq/handle.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: kernel/irq/chip.c
+    :man-sect: 9
     :internal:
+
 
 
 

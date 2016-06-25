@@ -8,7 +8,9 @@ libata Library
 
 
 .. kernel-doc:: drivers/ata/libata-core.c
+    :man-sect: 9
     :export:
+
 
 
 

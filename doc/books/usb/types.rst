@@ -12,7 +12,9 @@ USB, and in APIs including this host side API, gadget APIs, and usbfs.
 
 
 .. kernel-doc:: include/linux/usb/ch9.h
+    :man-sect: 9
     :internal:
+
 
 
 

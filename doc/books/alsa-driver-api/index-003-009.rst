@@ -10,34 +10,46 @@ Hardware-Dependent Devices API
 
 
 .. kernel-doc:: sound/core/hwdep.c
+    :man-sect: 9
     :export:
+
 
 Jack Abstraction Layer API
 ==========================
 
 
 .. kernel-doc:: include/sound/jack.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: sound/core/jack.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: sound/soc/soc-jack.c
+    :man-sect: 9
     :export:
+
 
 ISA DMA Helpers
 ===============
 
 
 .. kernel-doc:: sound/core/isadma.c
+    :man-sect: 9
     :export:
+
 
 Other Helper Macros
 ===================
 
 
 .. kernel-doc:: include/sound/core.h
+    :man-sect: 9
     :internal:
+
 
 
 

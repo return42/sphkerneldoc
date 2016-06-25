@@ -12,40 +12,56 @@ Public functions
 
 
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :man-sect: 9
     :export:
+
 
 Public structures
 =================
 
 
 .. kernel-doc:: include/linux/vga_switcheroo.h
+    :man-sect: 9
     :functions: vga_switcheroo_handler
 
+
 .. kernel-doc:: include/linux/vga_switcheroo.h
+    :man-sect: 9
     :functions: vga_switcheroo_client_ops
+
 
 Public constants
 ================
 
 
 .. kernel-doc:: include/linux/vga_switcheroo.h
+    :man-sect: 9
     :functions: vga_switcheroo_handler_flags_t
 
-.. kernel-doc:: include/linux/vga_switcheroo.h
-    :functions: vga_switcheroo_client_id
 
 .. kernel-doc:: include/linux/vga_switcheroo.h
+    :man-sect: 9
+    :functions: vga_switcheroo_client_id
+
+
+.. kernel-doc:: include/linux/vga_switcheroo.h
+    :man-sect: 9
     :functions: vga_switcheroo_state
+
 
 Private structures
 ==================
 
 
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :man-sect: 9
     :functions: vgasr_priv
 
+
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :man-sect: 9
     :functions: vga_switcheroo_client
+
 
 
 

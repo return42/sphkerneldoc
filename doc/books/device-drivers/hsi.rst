@@ -13,10 +13,14 @@ engines (CMT) in cellular handsets. HSI provides multiplexing for up to
 
 
 .. kernel-doc:: include/linux/hsi/hsi.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/hsi/hsi.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -24,39 +24,57 @@ Runtime Power Management
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_runtime_pm.c
+    :man-sect: 9
     :doc: runtime pm
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_runtime_pm.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_uncore.c
+    :man-sect: 9
     :internal:
+
 
 Interrupt Handling
 ------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_irq.c
+    :man-sect: 9
     :doc: interrupt handling
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_irq.c
+    :man-sect: 9
     :functions: intel_irq_init intel_irq_init_hw intel_hpd_init
 
-.. kernel-doc:: drivers/gpu/drm/i915/i915_irq.c
-    :functions: intel_runtime_pm_disable_interrupts
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_irq.c
+    :man-sect: 9
+    :functions: intel_runtime_pm_disable_interrupts
+
+
+.. kernel-doc:: drivers/gpu/drm/i915/i915_irq.c
+    :man-sect: 9
     :functions: intel_runtime_pm_enable_interrupts
+
 
 Intel GVT-g Guest Support(vGPU)
 -------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
+    :man-sect: 9
     :doc: Intel GVT-g guest support
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_vgpu.c
+    :man-sect: 9
     :internal:
+
 
 Display Hardware Handling
 =========================
@@ -80,23 +98,33 @@ Frontbuffer Tracking
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_frontbuffer.c
+    :man-sect: 9
     :doc: frontbuffer tracking
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_frontbuffer.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem.c
+    :man-sect: 9
     :functions: i915_gem_track_fb
+
 
 Display FIFO Underrun Reporting
 -------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_fifo_underrun.c
+    :man-sect: 9
     :doc: fifo underrun handling
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_fifo_underrun.c
+    :man-sect: 9
     :internal:
+
 
 Plane Configuration
 -------------------
@@ -113,10 +141,14 @@ Atomic Plane Helpers
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_atomic_plane.c
+    :man-sect: 9
     :doc: atomic plane helpers
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_atomic_plane.c
+    :man-sect: 9
     :internal:
+
 
 Output Probing
 --------------
@@ -132,98 +164,142 @@ Hotplug
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_hotplug.c
+    :man-sect: 9
     :doc: Hotplug
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_hotplug.c
+    :man-sect: 9
     :internal:
+
 
 High Definition Audio
 ---------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_audio.c
+    :man-sect: 9
     :doc: High Definition Audio over HDMI and Display Port
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_audio.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: include/drm/i915_component.h
+    :man-sect: 9
     :internal:
+
 
 Panel Self Refresh PSR (PSR/SRD)
 --------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_psr.c
+    :man-sect: 9
     :doc: Panel Self Refresh (PSR/SRD)
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_psr.c
+    :man-sect: 9
     :internal:
+
 
 Frame Buffer Compression (FBC)
 ------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_fbc.c
+    :man-sect: 9
     :doc: Frame Buffer Compression (FBC)
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_fbc.c
+    :man-sect: 9
     :internal:
+
 
 Display Refresh Rate Switching (DRRS)
 -------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :doc: Display Refresh Rate Switching (DRRS)
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :functions: intel_dp_set_drrs_state
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :functions: intel_edp_drrs_enable
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :functions: intel_edp_drrs_disable
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :functions: intel_edp_drrs_invalidate
 
-.. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
-    :functions: intel_edp_drrs_flush
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
+    :functions: intel_edp_drrs_flush
+
+
+.. kernel-doc:: drivers/gpu/drm/i915/intel_dp.c
+    :man-sect: 9
     :functions: intel_dp_drrs_init
+
 
 DPIO
 ----
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_reg.h
+    :man-sect: 9
     :doc: DPIO
+
 
 CSR firmware support for DMC
 ----------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_csr.c
+    :man-sect: 9
     :doc: csr support for dmc
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_csr.c
+    :man-sect: 9
     :internal:
+
 
 Video BIOS Table (VBT)
 ----------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_bios.c
+    :man-sect: 9
     :doc: Video BIOS Table (VBT)
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_bios.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_vbt_defs.h
+    :man-sect: 9
     :internal:
+
 
 Memory Management and Command Submission
 ========================================
@@ -237,71 +313,97 @@ Batchbuffer Parsing
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_cmd_parser.c
+    :man-sect: 9
     :doc: batch buffer command parser
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_cmd_parser.c
+    :man-sect: 9
     :internal:
+
 
 Batchbuffer Pools
 -----------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_batch_pool.c
+    :man-sect: 9
     :doc: batch pool
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_batch_pool.c
+    :man-sect: 9
     :internal:
+
 
 Logical Rings, Logical Ring Contexts and Execlists
 --------------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_lrc.c
+    :man-sect: 9
     :doc: Logical Rings, Logical Ring Contexts and Execlists
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_lrc.c
+    :man-sect: 9
     :internal:
+
 
 Global GTT views
 ----------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_gtt.c
+    :man-sect: 9
     :doc: Global GTT views
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_gtt.c
+    :man-sect: 9
     :internal:
+
 
 GTT Fences and Swizzling
 ------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_fence.c
+    :man-sect: 9
     :internal:
+
 
 Global GTT Fence Handling
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_fence.c
+    :man-sect: 9
     :doc: fence register handling
+
 
 Hardware Tiling and Swizzling Details
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_fence.c
+    :man-sect: 9
     :doc: tiling swizzling details
+
 
 Object Tiling IOCTLs
 --------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_tiling.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_tiling.c
+    :man-sect: 9
     :doc: buffer object tiling
+
 
 Buffer Object Eviction
 ----------------------
@@ -314,7 +416,9 @@ unified memory architecture) available.
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_evict.c
+    :man-sect: 9
     :internal:
+
 
 Buffer Object Memory Shrinking
 ------------------------------
@@ -326,7 +430,9 @@ objects, which has the goal to make space in gpu virtual address spaces.
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_gem_shrinker.c
+    :man-sect: 9
     :internal:
+
 
 GuC
 ===
@@ -337,27 +443,37 @@ GuC-specific firmware loader
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_guc_loader.c
+    :man-sect: 9
     :doc: GuC-specific firmware loader
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/intel_guc_loader.c
+    :man-sect: 9
     :internal:
+
 
 GuC-based command submission
 ----------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_guc_submission.c
+    :man-sect: 9
     :doc: GuC-based command submission
 
+
 .. kernel-doc:: drivers/gpu/drm/i915/i915_guc_submission.c
+    :man-sect: 9
     :internal:
+
 
 GuC Firmware Layout
 -------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/intel_guc_fwif.h
+    :man-sect: 9
     :doc: GuC Firmware Layout
+
 
 Tracing
 =======
@@ -371,21 +487,27 @@ i915_ppgtt_create and i915_ppgtt_release
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_trace.h
+    :man-sect: 9
     :doc: i915_ppgtt_create and i915_ppgtt_release tracepoints
+
 
 i915_context_create and i915_context_free
 -----------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_trace.h
+    :man-sect: 9
     :doc: i915_context_create and i915_context_free tracepoints
+
 
 switch_mm
 ---------
 
 
 .. kernel-doc:: drivers/gpu/drm/i915/i915_trace.h
+    :man-sect: 9
     :doc: switch_mm tracepoint
+
 
 
 

@@ -8,7 +8,9 @@ Internal Functions
 
 
 .. kernel-doc:: drivers/net/wan/z85230.c
+    :man-sect: 9
     :internal:
+
 
 
 

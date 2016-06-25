@@ -8,13 +8,19 @@ Audit Interfaces
 
 
 .. kernel-doc:: kernel/audit.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: kernel/auditsc.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: kernel/auditfilter.c
+    :man-sect: 9
     :internal:
+
 
 
 

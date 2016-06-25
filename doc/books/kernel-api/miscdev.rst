@@ -8,7 +8,9 @@ Miscellaneous Devices
 
 
 .. kernel-doc:: drivers/char/misc.c
+    :man-sect: 9
     :export:
+
 
 
 

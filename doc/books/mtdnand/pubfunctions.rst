@@ -13,13 +13,19 @@ hints" for an explanation.
 
 
 .. kernel-doc:: drivers/mtd/nand/nand_base.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/mtd/nand/nand_bbt.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/mtd/nand/nand_ecc.c
+    :man-sect: 9
     :export:
+
 
 
 

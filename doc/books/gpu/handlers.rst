@@ -12,38 +12,50 @@ apple-gmux Handler
 
 
 .. kernel-doc:: drivers/platform/x86/apple-gmux.c
+    :man-sect: 9
     :doc: Overview
 
+
 .. kernel-doc:: drivers/platform/x86/apple-gmux.c
+    :man-sect: 9
     :doc: Interrupt
+
 
 Graphics mux
 ------------
 
 
 .. kernel-doc:: drivers/platform/x86/apple-gmux.c
+    :man-sect: 9
     :doc: Graphics mux
+
 
 Power control
 -------------
 
 
 .. kernel-doc:: drivers/platform/x86/apple-gmux.c
+    :man-sect: 9
     :doc: Power control
+
 
 Backlight control
 -----------------
 
 
 .. kernel-doc:: drivers/platform/x86/apple-gmux.c
+    :man-sect: 9
     :doc: Backlight control
+
 
 Public functions
 ----------------
 
 
 .. kernel-doc:: include/linux/apple-gmux.h
+    :man-sect: 9
     :internal:
+
 
 
 

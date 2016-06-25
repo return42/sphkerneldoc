@@ -25,10 +25,14 @@ used by one consumer at a time.
 
 
 .. kernel-doc:: include/linux/pwm.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/pwm/core.c
+    :man-sect: 9
     :export:
+
 
 
 

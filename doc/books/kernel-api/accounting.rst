@@ -8,7 +8,9 @@ Accounting Framework
 
 
 .. kernel-doc:: kernel/acct.c
+    :man-sect: 9
     :internal:
+
 
 
 

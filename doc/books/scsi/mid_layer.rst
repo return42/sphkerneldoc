@@ -20,7 +20,9 @@ include/scsi/scsi_device.h
 
 
 .. kernel-doc:: include/scsi/scsi_device.h
+    :man-sect: 9
     :internal:
+
 
 .. _scsi.c:
 
@@ -31,7 +33,9 @@ Main file for the SCSI midlayer.
 
 
 .. kernel-doc:: drivers/scsi/scsi.c
+    :man-sect: 9
     :export:
+
 
 .. _scsicam.c:
 
@@ -43,7 +47,9 @@ support functions, for use with HDIO_GETGEO, etc.
 
 
 .. kernel-doc:: drivers/scsi/scsicam.c
+    :man-sect: 9
     :export:
+
 
 .. _scsi_error.c:
 
@@ -54,7 +60,9 @@ Common SCSI error/timeout handling routines.
 
 
 .. kernel-doc:: drivers/scsi/scsi_error.c
+    :man-sect: 9
     :export:
+
 
 .. _scsi_devinfo.c:
 
@@ -66,7 +74,9 @@ devices.
 
 
 .. kernel-doc:: drivers/scsi/scsi_devinfo.c
+    :man-sect: 9
     :internal:
+
 
 .. _scsi_ioctl.c:
 
@@ -77,7 +87,9 @@ Handle ioctl() calls for SCSI devices.
 
 
 .. kernel-doc:: drivers/scsi/scsi_ioctl.c
+    :man-sect: 9
     :export:
+
 
 .. _scsi_lib.c:
 
@@ -88,7 +100,9 @@ SCSI queuing library.
 
 
 .. kernel-doc:: drivers/scsi/scsi_lib.c
+    :man-sect: 9
     :export:
+
 
 .. _scsi_lib_dma.c:
 
@@ -100,7 +114,9 @@ lists).
 
 
 .. kernel-doc:: drivers/scsi/scsi_lib_dma.c
+    :man-sect: 9
     :export:
+
 
 .. _scsi_module.c:
 
@@ -123,7 +139,9 @@ plumbing to manage /proc/scsi/*
 
 
 .. kernel-doc:: drivers/scsi/scsi_proc.c
+    :man-sect: 9
     :internal:
+
 
 .. _scsi_netlink.c:
 
@@ -138,7 +156,9 @@ for more details.
 
 
 .. kernel-doc:: drivers/scsi/scsi_netlink.c
+    :man-sect: 9
     :internal:
+
 
 .. _scsi_scan.c:
 
@@ -160,7 +180,9 @@ is seen that cannot have a device attached to it.
 
 
 .. kernel-doc:: drivers/scsi/scsi_scan.c
+    :man-sect: 9
     :internal:
+
 
 .. _scsi_sysctl.c:
 
@@ -180,7 +202,9 @@ SCSI sysfs interface routines.
 
 
 .. kernel-doc:: drivers/scsi/scsi_sysfs.c
+    :man-sect: 9
     :export:
+
 
 .. _hosts.c:
 
@@ -191,7 +215,9 @@ mid to lowlevel SCSI driver interface
 
 
 .. kernel-doc:: drivers/scsi/hosts.c
+    :man-sect: 9
     :export:
+
 
 .. _constants.c:
 
@@ -202,7 +228,9 @@ mid to lowlevel SCSI driver interface
 
 
 .. kernel-doc:: drivers/scsi/constants.c
+    :man-sect: 9
     :export:
+
 
 .. _Transport_classes:
 
@@ -223,7 +251,9 @@ for Fibre Channel.
 
 
 .. kernel-doc:: drivers/scsi/scsi_transport_fc.c
+    :man-sect: 9
     :export:
+
 
 .. _iSCSI_transport:
 
@@ -236,7 +266,9 @@ connections.
 
 
 .. kernel-doc:: drivers/scsi/scsi_transport_iscsi.c
+    :man-sect: 9
     :export:
+
 
 .. _SAS_transport:
 
@@ -266,7 +298,9 @@ same for all PHYs in a port.
 
 
 .. kernel-doc:: drivers/scsi/scsi_transport_sas.c
+    :man-sect: 9
     :export:
+
 
 .. _SATA_transport:
 
@@ -287,7 +321,9 @@ attributes for traditional (fast/wide/ultra) SCSI busses.
 
 
 .. kernel-doc:: drivers/scsi/scsi_transport_spi.c
+    :man-sect: 9
     :export:
+
 
 .. _SRP_transport:
 
@@ -299,7 +335,9 @@ attributes for SCSI over Remote Direct Memory Access.
 
 
 .. kernel-doc:: drivers/scsi/scsi_transport_srp.c
+    :man-sect: 9
     :export:
+
 
 
 

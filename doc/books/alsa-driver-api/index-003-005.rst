@@ -10,14 +10,18 @@ Raw MIDI API
 
 
 .. kernel-doc:: sound/core/rawmidi.c
+    :man-sect: 9
     :export:
+
 
 MPU401-UART API
 ===============
 
 
 .. kernel-doc:: sound/drivers/mpu401/mpu401_uart.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -8,7 +8,9 @@ Futex API reference
 
 
 .. kernel-doc:: kernel/futex.c
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -10,7 +10,9 @@ Proc Info Interface
 
 
 .. kernel-doc:: sound/core/info.c
+    :man-sect: 9
     :export:
+
 
 
 

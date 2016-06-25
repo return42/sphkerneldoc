@@ -48,13 +48,19 @@ different policies for how they use the bits transferred with SPI.
 
 
 .. kernel-doc:: include/linux/spi/spi.h
+    :man-sect: 9
     :internal:
 
-.. kernel-doc:: drivers/spi/spi.c
-    :functions: spi_register_board_info
 
 .. kernel-doc:: drivers/spi/spi.c
+    :man-sect: 9
+    :functions: spi_register_board_info
+
+
+.. kernel-doc:: drivers/spi/spi.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -11,10 +11,14 @@ which are used in the generic IRQ layer.
 
 
 .. kernel-doc:: include/linux/irq.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: include/linux/interrupt.h
+    :man-sect: 9
     :internal:
+
 
 
 

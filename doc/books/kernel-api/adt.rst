@@ -12,7 +12,9 @@ Doubly Linked Lists
 
 
 .. kernel-doc:: include/linux/list.h
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -27,22 +27,34 @@ rely on 64bit DMA to eliminate another kind of bounce buffer.
 
 
 .. kernel-doc:: drivers/usb/core/urb.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/core/message.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/core/file.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/core/driver.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/core/usb.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/usb/core/hub.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -8,13 +8,19 @@ The mac80211 workqueue
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: mac80211 workqueue
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_queue_work
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_queue_work
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_queue_delayed_work
+
 
 
 

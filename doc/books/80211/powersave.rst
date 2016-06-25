@@ -8,7 +8,9 @@ Powersave support
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: Powersave support
+
 
 
 

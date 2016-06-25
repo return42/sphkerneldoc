@@ -11,7 +11,9 @@ without continually transferring them between the kernel and user space.
 
 
 .. kernel-doc:: fs/splice.c
+    :man-sect: 9
     :functions: 
+
 
 
 

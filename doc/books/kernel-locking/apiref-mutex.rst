@@ -8,10 +8,14 @@ Mutex API reference
 
 
 .. kernel-doc:: include/linux/mutex.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: kernel/locking/mutex.c
+    :man-sect: 9
     :export:
+
 
 
 

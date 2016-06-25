@@ -8,16 +8,24 @@ Parallel Port Devices
 
 
 .. kernel-doc:: include/linux/parport.h
+    :man-sect: 9
     :internal:
+
 
 .. kernel-doc:: drivers/parport/ieee1284.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/parport/share.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/parport/daisy.c
+    :man-sect: 9
     :internal:
+
 
 
 

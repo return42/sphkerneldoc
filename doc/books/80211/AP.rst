@@ -21,31 +21,49 @@ support for powersaving clients
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: AP support for powersaving clients
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_buffered_bc
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_beacon_get
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_sta_eosp
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_frame_release_type
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_sta_ps_transition
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_sta_ps_transition_ni
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_sta_set_buffered
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_sta_set_buffered
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_sta_block_awake
+
 
 
 

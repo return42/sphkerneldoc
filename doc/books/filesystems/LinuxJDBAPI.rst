@@ -168,7 +168,9 @@ Structures
 
 
 .. kernel-doc:: include/linux/jbd2.h
+    :man-sect: 9
     :internal:
+
 
 .. _functions:
 
@@ -186,10 +188,14 @@ Journal Level
 
 
 .. kernel-doc:: fs/jbd2/journal.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: fs/jbd2/recovery.c
+    :man-sect: 9
     :internal:
+
 
 .. _transaction_level:
 
@@ -198,7 +204,9 @@ Transasction Level
 
 
 .. kernel-doc:: fs/jbd2/transaction.c
+    :man-sect: 9
     :export:
+
 
 .. _see_also:
 

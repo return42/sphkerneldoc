@@ -16,10 +16,14 @@ notes about supporting hw crypto with it.
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_iterate_active_interfaces
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_iterate_active_interfaces_atomic
+
 
 
 

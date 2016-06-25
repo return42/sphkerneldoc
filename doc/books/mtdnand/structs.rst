@@ -14,7 +14,9 @@ explanation.
 
 
 .. kernel-doc:: include/linux/mtd/nand.h
+    :man-sect: 9
     :internal:
+
 
 
 

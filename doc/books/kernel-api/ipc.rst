@@ -12,7 +12,9 @@ IPC utilities
 
 
 .. kernel-doc:: ipc/util.c
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -22,22 +22,27 @@ Industrial I/O devices
 
 
 .. kernel-doc:: include/linux/iio/iio.h
+    :man-sect: 9
     :functions: iio_dev
 
 
 .. kernel-doc:: drivers/iio/industrialio-core.c
+    :man-sect: 9
     :functions: iio_device_alloc
 
 
 .. kernel-doc:: drivers/iio/industrialio-core.c
+    :man-sect: 9
     :functions: iio_device_free
 
 
 .. kernel-doc:: drivers/iio/industrialio-core.c
+    :man-sect: 9
     :functions: iio_device_register
 
 
 .. kernel-doc:: drivers/iio/industrialio-core.c
+    :man-sect: 9
     :functions: iio_device_unregister
 
 An IIO device usually corresponds to a single hardware sensor and it
@@ -117,6 +122,7 @@ IIO device channels
 
 
 .. kernel-doc:: include/linux/iio/iio.h
+    :man-sect: 9
     :functions: iio_chan_spec structure.
 
 An IIO device channel is a representation of a data channel. An IIO
@@ -257,10 +263,12 @@ Industrial I/O buffers
 
 
 .. kernel-doc:: include/linux/iio/buffer.h
+    :man-sect: 9
     :functions: iio_buffer
 
 
 .. kernel-doc:: drivers/iio/industrialio-buffer.c
+    :man-sect: 9
     :export:
 
 The Industrial I/O core offers a way for continuous data capture based
@@ -414,10 +422,12 @@ Industrial I/O triggers
 
 
 .. kernel-doc:: include/linux/iio/trigger.h
+    :man-sect: 9
     :functions: iio_trigger
 
 
 .. kernel-doc:: drivers/iio/industrialio-trigger.c
+    :man-sect: 9
     :export:
 
 In many situations it is useful for a driver to be able to capture data
@@ -492,6 +502,7 @@ IIO trigger ops
 
 
 .. kernel-doc:: include/linux/iio/trigger.h
+    :man-sect: 9
     :functions: iio_trigger_ops
 
 Notice that a trigger has a set of operations attached:
@@ -519,10 +530,12 @@ IIO triggered buffer setup
 
 
 .. kernel-doc:: drivers/iio/buffer/industrialio-triggered-buffer.c
+    :man-sect: 9
     :export:
 
 
 .. kernel-doc:: include/linux/iio/iio.h
+    :man-sect: 9
     :functions: iio_buffer_setup_ops
 
 A typical triggered buffer setup looks like this:

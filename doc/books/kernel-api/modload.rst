@@ -12,7 +12,9 @@ Module Loading
 
 
 .. kernel-doc:: kernel/kmod.c
+    :man-sect: 9
     :export:
+
 
 Inter Module support
 ====================

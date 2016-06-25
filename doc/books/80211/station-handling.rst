@@ -10,16 +10,24 @@ TODO
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_sta
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: sta_notify_cmd
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_find_sta
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_find_sta
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_find_sta_by_ifaddr
+
 
 
 

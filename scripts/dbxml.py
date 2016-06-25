@@ -1743,7 +1743,7 @@ class ReSTTemplate(XMLTag):
         ctx.op      = node.get("op")
         ctx.fname   = node.get("fname")
         ctx.args    = node.get("args")
-        ctx.options = ""
+        ctx.options = "    :man-sect: 9\n"
         if ctx.op == "E":
             ctx.options += "    :export:\n"
         if ctx.op == "I":

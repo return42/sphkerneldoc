@@ -8,25 +8,39 @@ Hardware crypto acceleration
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: Hardware crypto acceleration
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: set_key_cmd
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_key_conf
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_key_flags
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_tkip_p1k
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_get_tkip_p1k_iv
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_get_tkip_p1k_iv
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_tkip_p2k
+
 
 
 

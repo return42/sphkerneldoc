@@ -14,7 +14,9 @@ sysctl interface
 
 
 .. kernel-doc:: kernel/sysctl.c
+    :man-sect: 9
     :export:
+
 
 .. _proc_filesystem_interface:
 
@@ -23,7 +25,9 @@ proc filesystem interface
 
 
 .. kernel-doc:: fs/proc/base.c
+    :man-sect: 9
     :internal:
+
 
 
 

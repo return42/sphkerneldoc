@@ -22,7 +22,9 @@ W1 core functions.
 
 
 .. kernel-doc:: drivers/w1/w1.h
+    :man-sect: 9
     :internal:
+
 
 .. _w1.c:
 
@@ -33,7 +35,9 @@ W1 core functions.
 
 
 .. kernel-doc:: drivers/w1/w1.c
+    :man-sect: 9
     :internal:
+
 
 .. _w1_family.h:
 
@@ -44,7 +48,9 @@ Allows registering device family operations.
 
 
 .. kernel-doc:: drivers/w1/w1_family.h
+    :man-sect: 9
     :internal:
+
 
 .. _w1_family.c:
 
@@ -55,7 +61,9 @@ Allows registering device family operations.
 
 
 .. kernel-doc:: drivers/w1/w1_family.c
+    :man-sect: 9
     :export:
+
 
 .. _w1_int.c:
 
@@ -66,7 +74,9 @@ W1 internal initialization for master devices.
 
 
 .. kernel-doc:: drivers/w1/w1_int.c
+    :man-sect: 9
     :export:
+
 
 .. _w1_netlink.h:
 
@@ -77,7 +87,9 @@ W1 external netlink API structures and commands.
 
 
 .. kernel-doc:: drivers/w1/w1_netlink.h
+    :man-sect: 9
     :internal:
+
 
 .. _w1_io.c:
 
@@ -88,10 +100,14 @@ W1 input/output.
 
 
 .. kernel-doc:: drivers/w1/w1_io.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/w1/w1_io.c
+    :man-sect: 9
     :internal:
+
 
 
 

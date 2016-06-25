@@ -153,7 +153,9 @@ drivers (and usbcore).
 
 
 .. kernel-doc:: include/linux/usb/ch9.h
+    :man-sect: 9
     :internal:
+
 
 .. _core:
 
@@ -165,7 +167,9 @@ drivers to interact with USB peripheral controller drivers.
 
 
 .. kernel-doc:: include/linux/usb/gadget.h
+    :man-sect: 9
     :internal:
+
 
 .. _utils:
 
@@ -178,10 +182,14 @@ utilities include endpoint autoconfiguration.
 
 
 .. kernel-doc:: drivers/usb/gadget/usbstring.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/usb/gadget/config.c
+    :man-sect: 9
     :export:
+
 
 .. _composite:
 
@@ -203,10 +211,14 @@ such as "Device Firmware Upgrade".
 
 
 .. kernel-doc:: include/linux/usb/composite.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/usb/gadget/composite.c
+    :man-sect: 9
     :export:
+
 
 .. _functions:
 
@@ -219,19 +231,29 @@ except for "gadgetfs".
 
 
 .. kernel-doc:: drivers/usb/gadget/function/f_acm.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/gadget/function/f_ecm.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/gadget/function/f_subset.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/gadget/function/f_obex.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/usb/gadget/function/f_serial.c
+    :man-sect: 9
     :export:
+
 
 
 

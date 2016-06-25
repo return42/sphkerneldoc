@@ -8,13 +8,19 @@ Aggregation
 
 
 .. kernel-doc:: net/mac80211/sta_info.h
+    :man-sect: 9
     :functions: sta_ampdu_mlme
 
-.. kernel-doc:: net/mac80211/sta_info.h
-    :functions: tid_ampdu_tx
 
 .. kernel-doc:: net/mac80211/sta_info.h
+    :man-sect: 9
+    :functions: tid_ampdu_tx
+
+
+.. kernel-doc:: net/mac80211/sta_info.h
+    :man-sect: 9
     :functions: tid_ampdu_rx
+
 
 
 

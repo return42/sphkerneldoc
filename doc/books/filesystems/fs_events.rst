@@ -8,7 +8,9 @@ Events based on file descriptors
 
 
 .. kernel-doc:: fs/eventfd.c
+    :man-sect: 9
     :export:
+
 
 
 

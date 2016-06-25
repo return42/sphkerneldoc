@@ -8,7 +8,9 @@ SIGNAL
 
 
 .. kernel-doc:: include/trace/events/signal.h
+    :man-sect: 9
     :internal:
+
 
 
 

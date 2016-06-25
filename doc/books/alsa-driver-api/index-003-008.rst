@@ -10,39 +10,57 @@ ASoC Core API
 
 
 .. kernel-doc:: include/sound/soc.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: sound/soc/soc-core.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/soc/soc-devres.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/soc/soc-io.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/soc/soc-pcm.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/soc/soc-ops.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: sound/soc/soc-compress.c
+    :man-sect: 9
     :export:
+
 
 ASoC DAPM API
 =============
 
 
 .. kernel-doc:: sound/soc/soc-dapm.c
+    :man-sect: 9
     :export:
+
 
 ASoC DMA Engine API
 ===================
 
 
 .. kernel-doc:: sound/soc/soc-generic-dmaengine-pcm.c
+    :man-sect: 9
     :export:
+
 
 
 

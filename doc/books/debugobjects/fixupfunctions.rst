@@ -14,7 +14,9 @@ Debug object type description structure
 
 
 .. kernel-doc:: include/linux/debugobjects.h
+    :man-sect: 9
     :internal:
+
 
 .. _fixup_init:
 

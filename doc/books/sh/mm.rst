@@ -20,7 +20,9 @@ Store Queue API
 
 
 .. kernel-doc:: arch/sh/kernel/cpu/sh4/sq.c
+    :man-sect: 9
     :export:
+
 
 .. _sh5:
 
@@ -35,10 +37,14 @@ TLB Interfaces
 
 
 .. kernel-doc:: arch/sh/mm/tlb-sh5.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: arch/sh/include/asm/tlb_64.h
+    :man-sect: 9
     :internal:
+
 
 
 

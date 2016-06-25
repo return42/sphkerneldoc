@@ -8,7 +8,9 @@ Workqueue
 
 
 .. kernel-doc:: include/trace/events/workqueue.h
+    :man-sect: 9
     :internal:
+
 
 
 

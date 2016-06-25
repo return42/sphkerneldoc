@@ -20,10 +20,14 @@ ccw group devices
 
 
 .. kernel-doc:: arch/s390/include/asm/ccwgroup.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/s390/cio/ccwgroup.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -12,7 +12,9 @@ Key handling basics
 
 
 .. kernel-doc:: net/mac80211/key.c
+    :man-sect: 9
     :doc: Key handling basics
+
 
 MORE TBD
 ========

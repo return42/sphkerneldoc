@@ -16,10 +16,14 @@ relay interface
 
 
 .. kernel-doc:: kernel/relay.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: kernel/relay.c
+    :man-sect: 9
     :internal:
+
 
 
 

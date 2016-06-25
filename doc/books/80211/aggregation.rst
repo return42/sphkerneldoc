@@ -12,7 +12,9 @@ TX A-MPDU aggregation
 
 
 .. kernel-doc:: net/mac80211/agg-tx.c
+    :man-sect: 9
     :doc: TX A-MPDU aggregation
+
 
 
 .. NOT SUPPORTED: '!Cnet/mac80211/agg-tx.c '
@@ -22,13 +24,17 @@ RX A-MPDU aggregation
 
 
 .. kernel-doc:: net/mac80211/agg-rx.c
+    :man-sect: 9
     :doc: RX A-MPDU aggregation
+
 
 
 .. NOT SUPPORTED: '!Cnet/mac80211/agg-rx.c '
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_ampdu_mlme_action
+
 
 
 

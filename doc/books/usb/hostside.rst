@@ -13,7 +13,9 @@ HCD that performs the I/O for the device driver.
 
 
 .. kernel-doc:: include/linux/usb.h
+    :man-sect: 9
     :internal:
+
 
 
 

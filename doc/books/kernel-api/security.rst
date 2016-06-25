@@ -8,10 +8,14 @@ Security Framework
 
 
 .. kernel-doc:: security/security.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: security/inode.c
+    :man-sect: 9
     :export:
+
 
 
 

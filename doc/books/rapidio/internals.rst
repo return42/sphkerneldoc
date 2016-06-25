@@ -17,7 +17,9 @@ Structures
 
 
 .. kernel-doc:: include/linux/rio.h
+    :man-sect: 9
     :internal:
+
 
 .. _Enumeration_and_Discovery:
 
@@ -26,7 +28,9 @@ Enumeration and Discovery
 
 
 .. kernel-doc:: drivers/rapidio/rio-scan.c
+    :man-sect: 9
     :internal:
+
 
 .. _Driver_functionality:
 
@@ -35,10 +39,14 @@ Driver functionality
 
 
 .. kernel-doc:: drivers/rapidio/rio.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/rapidio/rio-access.c
+    :man-sect: 9
     :internal:
+
 
 .. _Device_model_support:
 
@@ -47,7 +55,9 @@ Device model support
 
 
 .. kernel-doc:: drivers/rapidio/rio-driver.c
+    :man-sect: 9
     :internal:
+
 
 .. _Sysfs_support:
 
@@ -56,7 +66,9 @@ Sysfs support
 
 
 .. kernel-doc:: drivers/rapidio/rio-sysfs.c
+    :man-sect: 9
     :internal:
+
 
 .. _PPC32_support:
 
@@ -65,7 +77,9 @@ PPC32 support
 
 
 .. kernel-doc:: arch/powerpc/sysdev/fsl_rio.c
+    :man-sect: 9
     :internal:
+
 
 
 

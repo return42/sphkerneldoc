@@ -14,7 +14,9 @@ SuperHyway
 
 
 .. kernel-doc:: drivers/sh/superhyway/superhyway.c
+    :man-sect: 9
     :export:
+
 
 .. _maple:
 
@@ -23,7 +25,9 @@ Maple
 
 
 .. kernel-doc:: drivers/sh/maple/maple.c
+    :man-sect: 9
     :export:
+
 
 
 

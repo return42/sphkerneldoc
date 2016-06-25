@@ -8,7 +8,9 @@ Char devices
 
 
 .. kernel-doc:: fs/char_dev.c
+    :man-sect: 9
     :export:
+
 
 
 

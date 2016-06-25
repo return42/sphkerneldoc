@@ -41,7 +41,9 @@ codecs, and devices with strict requirements for interface clocking.
 
 
 .. kernel-doc:: include/linux/clk.h
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -13,25 +13,39 @@ mac80211.
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_tx_led_name
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_rx_led_name
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_assoc_led_name
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_get_radio_led_name
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_tpt_blink
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_tpt_led_trigger_flags
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_tpt_led_trigger_flags
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_create_tpt_led_trigger
+
 
 
 

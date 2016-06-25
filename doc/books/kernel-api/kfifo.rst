@@ -12,7 +12,9 @@ kfifo interface
 
 
 .. kernel-doc:: include/linux/kfifo.h
+    :man-sect: 9
     :internal:
+
 
 
 

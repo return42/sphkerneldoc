@@ -6,19 +6,29 @@ Test mode
 
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :doc: Test mode
 
+
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: cfg80211_testmode_alloc_reply_skb
 
+
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: cfg80211_testmode_reply
 
-.. kernel-doc:: include/net/cfg80211.h
-    :functions: cfg80211_testmode_alloc_event_skb
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
+    :functions: cfg80211_testmode_alloc_event_skb
+
+
+.. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: cfg80211_testmode_event
+
 
 
 

@@ -8,10 +8,14 @@ Public Functions Provided
 
 
 .. kernel-doc:: arch/x86/include/asm/io.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: lib/pci_iomap.c
+    :man-sect: 9
     :export:
+
 
 
 

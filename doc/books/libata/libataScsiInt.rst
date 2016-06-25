@@ -8,10 +8,14 @@ libata SCSI translation/emulation
 
 
 .. kernel-doc:: drivers/ata/libata-scsi.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/ata/libata-scsi.c
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -10,40 +10,56 @@ PCM Core
 
 
 .. kernel-doc:: sound/core/pcm.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/core/pcm_lib.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: sound/core/pcm_native.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/sound/pcm.h
+    :man-sect: 9
     :internal:
+
 
 PCM Format Helpers
 ==================
 
 
 .. kernel-doc:: sound/core/pcm_misc.c
+    :man-sect: 9
     :export:
+
 
 PCM Memory Management
 =====================
 
 
 .. kernel-doc:: sound/core/pcm_memory.c
+    :man-sect: 9
     :export:
+
 
 PCM DMA Engine API
 ==================
 
 
 .. kernel-doc:: sound/core/pcm_dmaengine.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/sound/dmaengine_pcm.h
+    :man-sect: 9
     :internal:
+
 
 
 

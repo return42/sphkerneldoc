@@ -42,13 +42,19 @@ i2c_adapter devices which don't support those I2C operations.
 
 
 .. kernel-doc:: include/linux/i2c.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/i2c/i2c-boardinfo.c
+    :man-sect: 9
     :functions: i2c_register_board_info
 
+
 .. kernel-doc:: drivers/i2c/i2c-core.c
+    :man-sect: 9
     :export:
+
 
 
 

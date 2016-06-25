@@ -150,7 +150,9 @@ implementation.
 
 
 .. kernel-doc:: include/linux/kgdb.h
+    :man-sect: 9
     :internal:
+
 
 .. _kgdbocDesign:
 

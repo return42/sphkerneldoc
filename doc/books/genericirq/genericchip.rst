@@ -14,7 +14,9 @@ themselves.
 
 
 .. kernel-doc:: kernel/irq/generic-chip.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -14,10 +14,14 @@ relevant for a board driver developer.
 
 
 .. kernel-doc:: drivers/mtd/nand/nand_base.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/mtd/nand/nand_bbt.c
+    :man-sect: 9
     :internal:
+
 
 
 

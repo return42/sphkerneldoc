@@ -12,14 +12,18 @@ DMI Interfaces
 
 
 .. kernel-doc:: drivers/firmware/dmi_scan.c
+    :man-sect: 9
     :export:
+
 
 EDD Interfaces
 ==============
 
 
 .. kernel-doc:: drivers/firmware/edd.c
+    :man-sect: 9
     :internal:
+
 
 
 

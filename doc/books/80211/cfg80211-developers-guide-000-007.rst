@@ -6,16 +6,24 @@ RFkill integration
 
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :doc: RFkill integration
 
+
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: wiphy_rfkill_set_hw_state
 
-.. kernel-doc:: include/net/cfg80211.h
-    :functions: wiphy_rfkill_start_polling
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
+    :functions: wiphy_rfkill_start_polling
+
+
+.. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: wiphy_rfkill_stop_polling
+
 
 
 

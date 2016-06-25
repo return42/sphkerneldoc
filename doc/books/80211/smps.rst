@@ -8,13 +8,19 @@ Spatial Multiplexing Powersave (SMPS)
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: Spatial multiplexing power save
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_request_smps
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_request_smps
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_smps_mode
+
 
 
 

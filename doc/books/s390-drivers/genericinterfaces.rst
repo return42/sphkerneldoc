@@ -13,7 +13,9 @@ example is the support for adapter interrupts.
 
 
 .. kernel-doc:: drivers/s390/cio/airq.c
+    :man-sect: 9
     :export:
+
 
 
 

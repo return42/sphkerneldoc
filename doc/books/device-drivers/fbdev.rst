@@ -39,31 +39,41 @@ Frame Buffer Memory
 
 
 .. kernel-doc:: drivers/video/fbdev/core/fbmem.c
+    :man-sect: 9
     :export:
+
 
 Frame Buffer Colormap
 =====================
 
 
 .. kernel-doc:: drivers/video/fbdev/core/fbcmap.c
+    :man-sect: 9
     :export:
+
 
 Frame Buffer Video Mode Database
 ================================
 
 
 .. kernel-doc:: drivers/video/fbdev/core/modedb.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/video/fbdev/core/modedb.c
+    :man-sect: 9
     :export:
+
 
 Frame Buffer Macintosh Video Mode Database
 ==========================================
 
 
 .. kernel-doc:: drivers/video/fbdev/macmodes.c
+    :man-sect: 9
     :export:
+
 
 Frame Buffer Fonts
 ==================

@@ -10,16 +10,24 @@ Compress Offload API
 
 
 .. kernel-doc:: sound/core/compress_offload.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/uapi/sound/compress_offload.h
+    :man-sect: 9
     :internal:
+
 
 .. kernel-doc:: include/uapi/sound/compress_params.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: include/sound/compress_driver.h
+    :man-sect: 9
     :internal:
+
 
 
 

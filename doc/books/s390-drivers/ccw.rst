@@ -28,7 +28,9 @@ Operation.
 
 
 .. kernel-doc:: arch/s390/include/asm/cio.h
+    :man-sect: 9
     :internal:
+
 
 .. _ccwdev:
 
@@ -45,13 +47,19 @@ strange side effects may happen.
 
 
 .. kernel-doc:: arch/s390/include/asm/ccwdev.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/s390/cio/device.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/s390/cio/device_ops.c
+    :man-sect: 9
     :export:
+
 
 .. _cmf:
 
@@ -64,10 +72,14 @@ attached device.
 
 
 .. kernel-doc:: arch/s390/include/asm/cmb.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/s390/cio/cmf.c
+    :man-sect: 9
     :export:
+
 
 
 

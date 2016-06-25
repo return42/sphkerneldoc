@@ -10,27 +10,37 @@ General Control Interface
 
 
 .. kernel-doc:: sound/core/control.c
+    :man-sect: 9
     :export:
+
 
 AC97 Codec API
 ==============
 
 
 .. kernel-doc:: sound/pci/ac97/ac97_codec.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: sound/pci/ac97/ac97_pcm.c
+    :man-sect: 9
     :export:
+
 
 Virtual Master Control API
 ==========================
 
 
 .. kernel-doc:: sound/core/vmaster.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/sound/control.h
+    :man-sect: 9
     :internal:
+
 
 
 

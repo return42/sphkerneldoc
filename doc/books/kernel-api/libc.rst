@@ -18,30 +18,42 @@ String Conversions
 
 
 .. kernel-doc:: lib/vsprintf.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/linux/kernel.h
+    :man-sect: 9
     :functions: kstrtol
 
+
 .. kernel-doc:: include/linux/kernel.h
+    :man-sect: 9
     :functions: kstrtoul
 
+
 .. kernel-doc:: lib/kstrtox.c
+    :man-sect: 9
     :export:
+
 
 String Manipulation
 ===================
 
 
 .. kernel-doc:: lib/string.c
+    :man-sect: 9
     :export:
+
 
 Bit Operations
 ==============
 
 
 .. kernel-doc:: arch/x86/include/asm/bitops.h
+    :man-sect: 9
     :internal:
+
 
 
 

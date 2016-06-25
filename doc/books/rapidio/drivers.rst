@@ -18,13 +18,19 @@ Functions
 
 
 .. kernel-doc:: include/linux/rio_drv.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/rapidio/rio-driver.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/rapidio/rio.c
+    :man-sect: 9
     :export:
+
 
 
 

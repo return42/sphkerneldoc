@@ -8,10 +8,14 @@ The Filesystem for Exporting Kernel Objects
 
 
 .. kernel-doc:: fs/sysfs/file.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: fs/sysfs/symlink.c
+    :man-sect: 9
     :export:
+
 
 
 

@@ -8,10 +8,14 @@ Frame filtering
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: Frame filtering
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_filter_flags
+
 
 
 

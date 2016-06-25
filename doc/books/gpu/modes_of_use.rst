@@ -12,14 +12,18 @@ Manual switching and manual power control
 
 
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :man-sect: 9
     :doc: Manual switching and manual power control
+
 
 Driver power control
 ====================
 
 
 .. kernel-doc:: drivers/gpu/vga/vga_switcheroo.c
+    :man-sect: 9
     :doc: Driver power control
+
 
 
 

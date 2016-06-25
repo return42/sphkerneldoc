@@ -8,7 +8,9 @@ IRQ
 
 
 .. kernel-doc:: include/trace/events/irq.h
+    :man-sect: 9
     :internal:
+
 
 
 

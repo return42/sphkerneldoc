@@ -12,7 +12,9 @@ developer.
 
 
 .. kernel-doc:: include/linux/rslib.h
+    :man-sect: 9
     :internal:
+
 
 
 

@@ -8,7 +8,9 @@ ata_piix Internals
 
 
 .. kernel-doc:: drivers/ata/ata_piix.c
+    :man-sect: 9
     :internal:
+
 
 
 

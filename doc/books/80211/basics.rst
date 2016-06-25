@@ -24,31 +24,49 @@ references to other parts of the book.
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_hw
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_hw_flags
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: SET_IEEE80211_DEV
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: SET_IEEE80211_PERM_ADDR
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_ops
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_alloc_hw
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_register_hw
 
-.. kernel-doc:: include/net/mac80211.h
-    :functions: ieee80211_unregister_hw
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
+    :functions: ieee80211_unregister_hw
+
+
+.. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_free_hw
+
 
 
 

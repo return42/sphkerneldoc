@@ -30,13 +30,19 @@ hcd-specific behaviors.
 
 
 .. kernel-doc:: drivers/usb/core/hcd.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/usb/core/hcd-pci.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/usb/core/buffer.c
+    :man-sect: 9
     :internal:
+
 
 
 

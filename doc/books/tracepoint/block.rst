@@ -8,7 +8,9 @@ Block IO
 
 
 .. kernel-doc:: include/trace/events/block.h
+    :man-sect: 9
     :internal:
+
 
 
 

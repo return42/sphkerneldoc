@@ -6,16 +6,24 @@ Regulatory enforcement infrastructure
 
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :doc: Regulatory enforcement infrastructure
 
+
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: regulatory_hint
 
-.. kernel-doc:: include/net/cfg80211.h
-    :functions: wiphy_apply_custom_regulatory
 
 .. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
+    :functions: wiphy_apply_custom_regulatory
+
+
+.. kernel-doc:: include/net/cfg80211.h
+    :man-sect: 9
     :functions: freq_reg_info
+
 
 
 

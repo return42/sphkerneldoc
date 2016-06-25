@@ -12,18 +12,22 @@ documented here.
 
 
 .. kernel-doc:: include/linux/regulator/consumer.h
+    :man-sect: 9
     :internal:
 
 
 .. kernel-doc:: include/linux/regulator/machine.h
+    :man-sect: 9
     :internal:
 
 
 .. kernel-doc:: include/linux/regulator/driver.h
+    :man-sect: 9
     :internal:
 
 
 .. kernel-doc:: drivers/regulator/core.c
+    :man-sect: 9
     :export:
 
 

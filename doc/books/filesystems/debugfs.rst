@@ -14,10 +14,14 @@ debugfs interface
 
 
 .. kernel-doc:: fs/debugfs/inode.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: fs/debugfs/file.c
+    :man-sect: 9
     :export:
+
 
 
 

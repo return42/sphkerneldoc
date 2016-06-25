@@ -5,9 +5,12 @@ The mac80211 subsystem
 ######################
 
     .. kernel-doc:: include/net/mac80211.h
+        :man-sect: 9
         :doc: Introduction
 
+
     .. kernel-doc:: include/net/mac80211.h
+        :man-sect: 9
         :doc: Warning
 
 

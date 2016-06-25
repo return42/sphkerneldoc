@@ -8,10 +8,14 @@
 
 
 .. kernel-doc:: drivers/tty/serial/serial_core.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/tty/serial/8250/8250_core.c
+    :man-sect: 9
     :export:
+
 
 
 

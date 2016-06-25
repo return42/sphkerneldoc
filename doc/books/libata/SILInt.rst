@@ -8,7 +8,9 @@ sata_sil Internals
 
 
 .. kernel-doc:: drivers/ata/sata_sil.c
+    :man-sect: 9
     :internal:
+
 
 
 

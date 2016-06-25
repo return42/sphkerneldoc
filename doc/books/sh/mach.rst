@@ -14,7 +14,9 @@ mach-dreamcast
 
 
 .. kernel-doc:: arch/sh/boards/mach-dreamcast/rtc.c
+    :man-sect: 9
     :internal:
+
 
 .. _x3proto:
 
@@ -23,7 +25,9 @@ mach-x3proto
 
 
 .. kernel-doc:: arch/sh/boards/mach-x3proto/ilsel.c
+    :man-sect: 9
     :export:
+
 
 
 

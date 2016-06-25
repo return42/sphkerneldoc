@@ -11,10 +11,14 @@ functions which are exported.
 
 
 .. kernel-doc:: kernel/irq/manage.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: kernel/irq/chip.c
+    :man-sect: 9
     :export:
+
 
 
 

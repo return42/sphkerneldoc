@@ -5,6 +5,7 @@ The cfg80211 subsystem
 ######################
 
     .. kernel-doc:: include/net/cfg80211.h
+        :man-sect: 9
         :doc: Introduction
 
 

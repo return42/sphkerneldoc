@@ -11,10 +11,14 @@ exported for use by modules.
 
 
 .. kernel-doc:: include/linux/pipe_fs_i.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: fs/pipe.c
+    :man-sect: 9
     :functions: 
+
 
 
 

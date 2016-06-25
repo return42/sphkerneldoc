@@ -14,7 +14,9 @@ Debug object function reference
 
 
 .. kernel-doc:: lib/debugobjects.c
+    :man-sect: 9
     :export:
+
 
 .. _debug_object_init:
 

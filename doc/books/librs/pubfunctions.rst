@@ -11,7 +11,9 @@ Reed-Solomon functions which are exported.
 
 
 .. kernel-doc:: lib/reed_solomon/reed_solomon.c
+    :man-sect: 9
     :export:
+
 
 
 

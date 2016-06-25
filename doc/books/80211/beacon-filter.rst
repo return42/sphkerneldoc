@@ -8,10 +8,14 @@ Beacon filter support
 
 
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :doc: Beacon filter support
 
+
 .. kernel-doc:: include/net/mac80211.h
+    :man-sect: 9
     :functions: ieee80211_beacon_loss
+
 
 
 

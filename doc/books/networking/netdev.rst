@@ -12,41 +12,63 @@ Driver Support
 
 
 .. kernel-doc:: net/core/dev.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: net/ethernet/eth.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: net/sched/sch_generic.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/linux/etherdevice.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: include/linux/netdevice.h
+    :man-sect: 9
     :internal:
+
 
 PHY Support
 ===========
 
 
 .. kernel-doc:: drivers/net/phy/phy.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/net/phy/phy.c
+    :man-sect: 9
     :internal:
+
 
 .. kernel-doc:: drivers/net/phy/phy_device.c
+    :man-sect: 9
     :export:
+
 
 .. kernel-doc:: drivers/net/phy/phy_device.c
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/net/phy/mdio_bus.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/net/phy/mdio_bus.c
+    :man-sect: 9
     :internal:
+
 
 
 

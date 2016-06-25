@@ -160,10 +160,14 @@ Device Instance and Driver Handling
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_drv.c
+    :man-sect: 9
     :doc: driver instance overview
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_drv.c
+    :man-sect: 9
     :export:
+
 
 Driver Load
 -----------
@@ -263,10 +267,14 @@ drivers.
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_pci.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_platform.c
+    :man-sect: 9
     :export:
+
 
 .. _drm-memory-management:
 
@@ -644,23 +652,33 @@ GEM Function Reference
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_gem.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drm_gem.h
+    :man-sect: 9
     :internal:
+
 
 VMA Offset Manager
 ------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_vma_manager.c
+    :man-sect: 9
     :doc: vma offset manager
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_vma_manager.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drm_vma_manager.h
+    :man-sect: 9
     :internal:
+
 
 .. _drm-prime-support:
 
@@ -727,14 +745,18 @@ PRIME Helper Functions
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_prime.c
+    :man-sect: 9
     :doc: PRIME Helpers
+
 
 PRIME Function References
 -------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_prime.c
+    :man-sect: 9
     :export:
+
 
 DRM MM Range Allocator
 ----------------------
@@ -745,37 +767,51 @@ Overview
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :man-sect: 9
     :doc: Overview
+
 
 LRU Scan/Eviction Support
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :man-sect: 9
     :doc: lru scan roaster
+
 
 DRM MM Range Allocator Function References
 ------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mm.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drm_mm.h
+    :man-sect: 9
     :internal:
+
 
 CMA Helper Functions Reference
 ------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_gem_cma_helper.c
+    :man-sect: 9
     :doc: cma helpers
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_gem_cma_helper.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drm_gem_cma_helper.h
+    :man-sect: 9
     :internal:
+
 
 .. _drm-mode-setting:
 
@@ -810,20 +846,28 @@ Display Modes Function Reference
 
 
 .. kernel-doc:: include/drm/drm_modes.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_modes.c
+    :man-sect: 9
     :export:
+
 
 Atomic Mode Setting Function Reference
 --------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_atomic.c
+    :man-sect: 9
     :internal:
+
 
 Frame Buffer Abstraction
 ------------------------
@@ -1314,27 +1358,37 @@ KMS API Functions
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_crtc.c
+    :man-sect: 9
     :export:
+
 
 KMS Data Structures
 -------------------
 
 
 .. kernel-doc:: include/drm/drm_crtc.h
+    :man-sect: 9
     :internal:
+
 
 KMS Locking
 -----------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_modeset_lock.c
+    :man-sect: 9
     :doc: kms locking
 
+
 .. kernel-doc:: include/drm/drm_modeset_lock.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_modeset_lock.c
+    :man-sect: 9
     :export:
+
 
 Mode Setting Helper Functions
 =============================
@@ -1381,165 +1435,235 @@ Overview
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :man-sect: 9
     :doc: overview
+
 
 Implementing Asynchronous Atomic Commit
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :man-sect: 9
     :doc: implementing async commit
+
 
 Atomic State Reset and Initialization
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :man-sect: 9
     :doc: atomic state reset and initialization
 
+
 .. kernel-doc:: include/drm/drm_atomic_helper.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_atomic_helper.c
+    :man-sect: 9
     :export:
+
 
 Modeset Helper Reference for Common Vtables
 -------------------------------------------
 
 
 .. kernel-doc:: include/drm/drm_modeset_helper_vtables.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: include/drm/drm_modeset_helper_vtables.h
+    :man-sect: 9
     :doc: overview
+
 
 Legacy CRTC/Modeset Helper Functions Reference
 ----------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_crtc_helper.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_crtc_helper.c
+    :man-sect: 9
     :doc: overview
+
 
 Output Probing Helper Functions Reference
 -----------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_probe_helper.c
+    :man-sect: 9
     :doc: output probing helper overview
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_probe_helper.c
+    :man-sect: 9
     :export:
+
 
 fbdev Helper Functions Reference
 --------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_fb_helper.c
+    :man-sect: 9
     :doc: fbdev helpers
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_fb_helper.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drm_fb_helper.h
+    :man-sect: 9
     :internal:
+
 
 Framebuffer CMA Helper Functions Reference
 ------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_fb_cma_helper.c
+    :man-sect: 9
     :doc: framebuffer cma helper functions
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_fb_cma_helper.c
+    :man-sect: 9
     :export:
+
 
 Display Port Helper Functions Reference
 ---------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_dp_helper.c
+    :man-sect: 9
     :doc: dp helpers
 
+
 .. kernel-doc:: include/drm/drm_dp_helper.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_dp_helper.c
+    :man-sect: 9
     :export:
+
 
 Display Port Dual Mode Adaptor Helper Functions Reference
 ---------------------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_dp_dual_mode_helper.c
+    :man-sect: 9
     :doc: dp dual mode helpers
 
+
 .. kernel-doc:: include/drm/drm_dp_dual_mode_helper.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_dp_dual_mode_helper.c
+    :man-sect: 9
     :export:
+
 
 Display Port MST Helper Functions Reference
 -------------------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_dp_mst_topology.c
+    :man-sect: 9
     :doc: dp mst helper
 
+
 .. kernel-doc:: include/drm/drm_dp_mst_helper.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_dp_mst_topology.c
+    :man-sect: 9
     :export:
+
 
 MIPI DSI Helper Functions Reference
 -----------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_mipi_dsi.c
+    :man-sect: 9
     :doc: dsi helpers
 
+
 .. kernel-doc:: include/drm/drm_mipi_dsi.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_mipi_dsi.c
+    :man-sect: 9
     :export:
+
 
 EDID Helper Functions Reference
 -------------------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_edid.c
+    :man-sect: 9
     :export:
+
 
 Rectangle Utilities Reference
 -----------------------------
 
 
 .. kernel-doc:: include/drm/drm_rect.h
+    :man-sect: 9
     :doc: rect utils
 
+
 .. kernel-doc:: include/drm/drm_rect.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_rect.c
+    :man-sect: 9
     :export:
+
 
 Flip-work Helper Reference
 --------------------------
 
 
 .. kernel-doc:: include/drm/drm_flip_work.h
+    :man-sect: 9
     :doc: flip utils
 
+
 .. kernel-doc:: include/drm/drm_flip_work.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_flip_work.c
+    :man-sect: 9
     :export:
+
 
 HDMI Infoframes Helper Reference
 --------------------------------
@@ -1551,27 +1675,37 @@ libraries and hence is also included here.
 
 
 .. kernel-doc:: include/linux/hdmi.h
+    :man-sect: 9
     :internal:
 
+
 .. kernel-doc:: drivers/video/hdmi.c
+    :man-sect: 9
     :export:
+
 
 Plane Helper Reference
 ----------------------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_plane_helper.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_plane_helper.c
+    :man-sect: 9
     :doc: overview
+
 
 Tile group
 ----------
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_crtc.c
+    :man-sect: 9
     :doc: Tile group
+
 
 Bridges
 -------
@@ -1582,30 +1716,42 @@ Overview
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :man-sect: 9
     :doc: overview
+
 
 Default bridge callback sequence
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :man-sect: 9
     :doc: bridge callbacks
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_bridge.c
+    :man-sect: 9
     :export:
+
 
 Panel Helper Reference
 ----------------------
 
 
 .. kernel-doc:: include/drm/drm_panel.h
+    :man-sect: 9
     :internal:
 
-.. kernel-doc:: drivers/gpu/drm/drm_panel.c
-    :export:
 
 .. kernel-doc:: drivers/gpu/drm/drm_panel.c
+    :man-sect: 9
+    :export:
+
+
+.. kernel-doc:: drivers/gpu/drm/drm_panel.c
+    :man-sect: 9
     :doc: drm panel
+
 
 .. _drm-kms-properties:
 
@@ -3463,10 +3609,14 @@ Vertical Blanking and Interrupt Handling Functions Reference
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_irq.c
+    :man-sect: 9
     :export:
 
+
 .. kernel-doc:: include/drm/drmP.h
+    :man-sect: 9
     :functions: drm_crtc_vblank_waitqueue
+
 
 Open/Close, File Operations and IOCTLs
 ======================================
@@ -3530,10 +3680,14 @@ File Operations
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_fops.c
+    :man-sect: 9
     :doc: file operations
 
+
 .. kernel-doc:: drivers/gpu/drm/drm_fops.c
+    :man-sect: 9
     :export:
+
 
 IOCTLs
 ------
@@ -3590,7 +3744,9 @@ how the ioctl is allowed to be called.
 
 
 .. kernel-doc:: drivers/gpu/drm/drm_ioctl.c
+    :man-sect: 9
     :export:
+
 
 Legacy Support Code
 ===================
