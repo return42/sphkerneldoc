@@ -253,13 +253,13 @@ $(BOOKS_HTML): sphinx-doc | $(DIST)
 
 PHONY += $(BOOKS_MAN)
 $(BOOKS_MAN): sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.man,conf.py,$@) \
+	$(Q)SPHPROJ_CONF=$(patsubst %.man,%/conf.py,$@) \
 	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b kernel-doc-man \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.man,%,$@) \
 	  $(obj)/$(patsubst %.man,%,$@) \
-	  $(DIST)/$(patsubst %.man,%,$@)
-	$(Q)echo "man page build OK / destination at:\n    file://$(abspath $(DIST)/$(patsubst %.html,%,$@))"
+	  $(DIST)/$(patsubst %.man,%/man,$@)
+	$(Q)echo "man page build OK / destination at:\n    file://$(abspath $(DIST)/$(patsubst %.man,%/man,$@))"
 
 
 # reST-book --> PDF
@@ -267,7 +267,7 @@ $(BOOKS_MAN): sphinx-doc | $(DIST)
 
 PHONY += $(BOOKS_PDF)
 $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,conf.py,$@) \
+	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,%/conf.py,$@) \
 	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b pdf \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.pdf,%,$@) \
