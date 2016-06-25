@@ -93,8 +93,10 @@ def installMedia():
     MSG("install *Media-API* book : %s" % LINUX_TV_BOOK)
 
     if LINUX_TV_BOOK.EXISTS:
-        LINUX_TV_BOOK.rmtree()
-    LINUX_TV_BOOK.DIRNAME.makedirs()
+        for name in LINUX_TV_BOOK.reMatchFind("[^(conf.py)]"):
+            name.delete()
+    else:
+        LINUX_TV_BOOK.makedirs()
 
     fileList = getFileList()
 

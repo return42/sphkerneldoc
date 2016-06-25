@@ -247,8 +247,10 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 
         bookFolder = BOOKS_FOLDER / origFile.BASENAME.SKIPSUFFIX
         if bookFolder.EXISTS:
-            bookFolder.rmtree()
-        bookFolder.makedirs()
+            for name in bookFolder.reMatchFind("[^(conf.py)]"):
+                name.delete()
+        else:
+            bookFolder.makedirs()
 
         for xmlFile in fileList:
             rstFile = xmlFile.suffix(".rst")

@@ -14,7 +14,6 @@ the config file.
 
     cd {linux-kernel}/Documentation/books
     cp -r template-book my-project
-    cp template-book.conf my-project.conf
 
 It is recomended to read through the :ref:`kernel-doc:kernel-doc-howto`. For the
 impatient: no panic, HOWTO is not large but gives you a good starting point.
@@ -71,7 +70,7 @@ To add your project's documentation to the index, edit
 Config File
 ===========
 
-The file ``my-project.conf`` is the config file of the build process. At least,
+The file ``conf.py`` is the config file of the build process. At least,
 you should change the following values to your needs.::
 
     project   = u'Template Book'

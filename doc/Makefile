@@ -240,7 +240,7 @@ media2rst: $(srctree)/Documentation/DocBook/media_api.xml
 
 PHONY += $(BOOKS_HTML)
 $(BOOKS_HTML): sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.html,%.conf,$@) \
+	$(Q)SPHPROJ_CONF=$(patsubst %.html,%/conf.py,$@) \
 	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b html \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) \
@@ -253,7 +253,7 @@ $(BOOKS_HTML): sphinx-doc | $(DIST)
 
 PHONY += $(BOOKS_MAN)
 $(BOOKS_MAN): sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.man,%.conf,$@) \
+	$(Q)SPHPROJ_CONF=$(patsubst %.man,conf.py,$@) \
 	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b kernel-doc-man \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.man,%,$@) \
@@ -267,7 +267,7 @@ $(BOOKS_MAN): sphinx-doc | $(DIST)
 
 PHONY += $(BOOKS_PDF)
 $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,%.conf,$@) \
+	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,conf.py,$@) \
 	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b pdf \
 	  -c $(obj) \
 	  -d $(CACHE)/doctrees/$(patsubst %.pdf,%,$@) \
@@ -303,7 +303,7 @@ $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 # $(RST2TEX): texlive sphinx-doc
 # 	@echo "building $@ ..."
 # 	rm -rf $(CACHE)/$(patsubst books/%,%,$@)
-# 	SPHPROJ_CONF=$(patsubst %.tex,%.conf,$@) $(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b xelatex \
+# 	SPHPROJ_CONF=$(patsubst %.tex,conf.py,$@) $(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b xelatex \
 # 		$(PAPEROPT_$(PAPER)) \
 # 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
 # 		$(patsubst %.tex,%,$@) \
