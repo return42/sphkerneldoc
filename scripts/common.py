@@ -629,7 +629,10 @@ class FSPath(unicode):
         shutil.move(self, dest)
 
     def delete(self):
-        return os.remove(self)
+        if self.ISDIR:
+            self.rmtree()
+        else:
+            os.remove(self)
 
     def rmtree(self, ignore_errors=False, onerror=None):
         shutil.rmtree(self, ignore_errors, onerror)
@@ -826,6 +829,15 @@ class Console(InteractiveConsole):
         if global_ns is None:
             global_ns = {}
 
+        try:
+            import readline, rlcompleter
+            ns = dict()
+            ns.update(global_ns)
+            ns.update(local_ns)
+            readline.set_completer(rlcompleter.Completer(namespace=ns).complete)
+        except Exception:
+            pass
+
         self.local_ns  = local_ns
         self.global_ns = global_ns
         self.compile   = CommandCompiler()
@@ -929,8 +941,10 @@ class SDK(object): # pylint: disable=W0622
     def CONSOLE(frame=None, banner=None):
         u"""Setzt einen Breakpoint für die Console """
 
-        frame = frame or inspect.currentframe().f_back
-        Console.run(frame=frame, banner=banner)
+        frame  = frame or inspect.currentframe().f_back
+        fName  = frame.f_code.co_filename
+        Console.run(frame=frame, banner=banner
+                    , local_ns=frame.f_locals, global_ns=frame.f_globals)
 
 def setRTE():
     #import os, sys  # warning this will be imported from outside of the pyenv
@@ -955,21 +969,15 @@ def setRTE():
         #    pass
 
     def import_readline():
+        histfile = os.path.join(os.path.expanduser("~"), ".sdk-history")
         # sys.stderr.write("interactive session / adding tab completion.\n")
         try:
-            import readline
-            import rlcompleter   # pylint: disable=W0612
+            import readline, rlcompleter  # pylint: disable=W0612
+            readline.set_history_length(1000)
+            if os.path.exists(histfile):
+                readline.read_history_file(histfile)
         except ImportError:
-            try:
-                import pyreadline as readline  #pylint: disable=F0401
-                import rlcompleter
-            except ImportError:
-                # sys.stderr.write(
-                #     "WARNING: no readline support, no completion."
-                #     "\n  Using commandline without completion is'nt funny,"
-                #     "\n  install readline or pyreadline at all.\n"
-                # )
-                readline = None
+            readline = None
         return readline
 
     def bind_tab_complete():
