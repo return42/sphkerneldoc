@@ -943,9 +943,12 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(decl_name)
         self.write_header("%s %s" % (decl_type, decl_name), sec_level=2)
 
-        # write struct definition
+        if self.options.man_sect:
+            self.write("\n:manpage: %s.%s\n" % (decl_name, self.options.man_sect) )
 
-        self.write("\n.. c:type:: %s\n\n" % decl_name)
+        # write struct definition
+        # see https://github.com/sphinx-doc/sphinx/issues/2713
+        self.write("\n.. c:type:: struct %s\n\n" % decl_name)
 
         # purpose
 
@@ -1028,9 +1031,12 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(enum)
         self.write_header("enum %s" % enum, sec_level=2)
 
-        # write union definition
+        if self.options.man_sect:
+            self.write("\n:manpage: %s.%s\n" % (enum, self.options.man_sect) )
 
-        self.write("\n.. c:type:: %s\n\n" % enum)
+        # write union definition
+        # see https://github.com/sphinx-doc/sphinx/issues/2713
+        self.write("\n.. c:type:: enum %s\n\n" % enum)
 
         # purpose
 
@@ -1087,9 +1093,12 @@ class ReSTTranslator(TranslatorAPI):
         self.write_anchor(typedef)
         self.write_header("typedef %s" % typedef, sec_level=2)
 
-        # write typdef definition
+        if self.options.man_sect:
+            self.write("\n:manpage: %s.%s\n" % (typedef, self.options.man_sect) )
 
-        self.write("\n.. c:type:: %s\n\n" % typedef)
+        # write typdef definition
+        # see https://github.com/sphinx-doc/sphinx/issues/2713
+        self.write("\n.. c:type:: typedef %s\n\n" % typedef)
         if purpose:
             self.write(self.INDENT, self.highlight(purpose), "\n")
 

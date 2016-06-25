@@ -23,7 +23,7 @@ u"""
 # imports
 # ==============================================================================
 
-import sys, fnmatch, re
+import sys, re, collections
 from os import path
 
 from docutils.io import FileOutput
@@ -66,7 +66,6 @@ def setup(app):
 
     app.add_builder(KernelDocManBuilder)
     app.add_config_value('author', "", 'env')
-    app.add_config_value('address', "", 'env')
 
 class Section2Manpage(Transform):
     u"""Transforms a *section* tree into an *manpage* tree.
@@ -119,7 +118,8 @@ class Section2Manpage(Transform):
     """
     # The common section order is:
     manTitles = [
-        (re.compile(r"^SYNOPSIS",     flags=re.I), "SYNOPSIS")
+        (re.compile(r"^SYNOPSIS|^DEFINITION"
+                    , flags=re.I), "SYNOPSIS")
         , (re.compile(r"^CONFIG",     flags=re.I), "CONFIGURATION")
         , (re.compile(r"^DESCR",      flags=re.I), "DESCRIPTION")
         , (re.compile(r"^OPTION",     flags=re.I), "OPTIONS")
@@ -152,7 +152,6 @@ class Section2Manpage(Transform):
 
     def strip_man_info(self):
         section = self.document[0]
-
         # strip field list
         field_list = self.getFirstChild(section, nodes.field_list)
         field_list.parent.remove(field_list)
@@ -182,38 +181,43 @@ class Section2Manpage(Transform):
         old_title = self.getFirstChild(section, nodes.title)
         old_title.parent.remove(old_title)
 
+        # gather type of the declaration
+        decl_type = self.getFirstChild(
+            section, addnodes.desc, addnodes.desc_signature, addnodes.desc_type)
+        if decl_type is not None:
+            decl_type = decl_type.astext().strip()
+        man_info.decl_type = decl_type
+
         # complete infos
         man_info.title    = man_info["manpage"]
         man_info.section  = man_info["mansect"]
 
         return man_info
 
-    def isolateSections(self):
-        sections = []
-        while 1:
-            sect = self.getFirstChild(self.document[0], nodes.section)
+    def isolateSections(self, sec_by_title):
+        section = self.document[0]
+        while True:
+            sect = self.getFirstChild(section, nodes.section)
             if not sect:
                 break
-            sections.append(sect)
             sec_parent = sect.parent
             target_idx = sect.parent.index(sect) - 1
             sect.parent.remove(sect)
             if isinstance(sec_parent[target_idx], nodes.target):
                 # drop target / is useless in man-pages
                 del sec_parent[target_idx]
-        sec_by_title = dict()
-        for sec in sections:
-            title = sec[0].astext().upper()
+            title = sect[0].astext().upper()
             for r, man_title in self.manTitles:
                 if r.search(title):
                     title = man_title
+                    sect[0].replace_self(nodes.title(text = title))
                     break
             # we dont know if there are sections with the same title
-            sec_by_title[title] = sec_by_title.get(title, []) + [sec]
+            sec_by_title[title] = sec_by_title.get(title, []) + [sect]
 
         return sec_by_title
 
-    def isolateSynopsis(self):
+    def isolateSynopsis(self, sec_by_title):
         synopsis = None
         c_desc = self.getFirstChild(self.document[0], addnodes.desc)
         if c_desc is not None:
@@ -221,15 +225,25 @@ class Section2Manpage(Transform):
             synopsis = nodes.section()
             synopsis += nodes.title(text = 'synopsis')
             synopsis += c_desc
-        return synopsis
+            sec_by_title["SYNOPSIS"] = sec_by_title.get("SYNOPSIS", []) + [synopsis]
+        return sec_by_title
 
     def apply(self):
         self.document.man_info = self.strip_man_info()
-        sections = self.isolateSections()
-        synopsis = self.isolateSynopsis()
-        sections["SYNOPSIS"] = sections.get("SYNOPSIS", []) + [synopsis]
+        sec_by_title = collections.OrderedDict()
+
+        self.isolateSections(sec_by_title)
+        # On struct, enum, union, typedef, the SYNOPSIS is taken from the
+        # DEFINITION section.
+        if self.document.man_info.decl_type not in [
+                "struct", "enum", "union", "typedef"]:
+            self.isolateSynopsis(sec_by_title)
+
         for sec_name in self.manTitleOrder:
-            sec_list = sections.get(sec_name,[])
+            sec_list = sec_by_title.pop(sec_name,[])
+            self.document[0] += sec_list
+
+        for sec_list in sec_by_title.values():
             self.document[0] += sec_list
 
 # ==============================================================================
@@ -261,17 +275,18 @@ class KernelDocManBuilder(ManualPageBuilder):
         doc_tree += children
         return doc_tree
 
-
     def write(self, *ignored):
         if self.config.man_pages:
             # build manpages from config.man_pages as usual
             ManualPageBuilder.write(self, *ignored)
             # FIXME:
 
+        self.info(bold("scan master tree for kernel-doc man-pages ... ") + darkgreen("{"), nonl=True)
+
         master_tree = self.env.get_doctree(self.config.master_doc)
         master_tree = inline_all_toctrees(
             self, set(), self.config.master_doc, master_tree, darkgreen, [self.config.master_doc])
-        self.info('} ', nonl=True)
+        self.info(darkgreen("}"))
 
         man_nodes   = master_tree.traverse(condition=self.is_manpage)
         if not man_nodes and not self.config.man_pages:
@@ -279,7 +294,7 @@ class KernelDocManBuilder(ManualPageBuilder):
                       'will be written')
             return
 
-        self.info(bold('writing... '), nonl=True)
+        self.info(bold('writing man pages ... '), nonl=True)
 
         for man_parent in man_nodes:
 
@@ -287,8 +302,7 @@ class KernelDocManBuilder(ManualPageBuilder):
             Section2Manpage(doc_tree).apply()
 
             if not doc_tree.man_info["authors"] and self.config.author:
-                doc_tree.man_info["authors"].append(
-                    "%s <%s>" % (self.config.author, self.config.address))
+                doc_tree.man_info["authors"].append(self.config.author)
 
             doc_writer   = ManualPageWriter(self)
             doc_settings = OptionParser(
@@ -300,15 +314,17 @@ class KernelDocManBuilder(ManualPageBuilder):
             doc_settings.__dict__.update(doc_tree.man_info)
             doc_tree.settings = doc_settings
             targetname  = '%s.%s' % (doc_tree.man_info.title, doc_tree.man_info.section)
+            if doc_tree.man_info.decl_type in [
+                    "struct", "enum", "union", "typedef"]:
+                targetname = "%s_%s" % (doc_tree.man_info.decl_type, targetname)
+
             destination = FileOutput(
                 destination_path = path.join(self.outdir, targetname)
                 , encoding='utf-8')
 
-            self.info(darkgreen(targetname) + ' { ', nonl=True)
-
-            #docnames = set()
-            self.info('} ', nonl=True)
+            self.info(darkgreen(targetname) + " ", nonl=True)
             self.env.resolve_references(doc_tree, doc_tree.man_info.manpage, self)
+
             # remove pending_xref nodes
             for pendingnode in doc_tree.traverse(addnodes.pending_xref):
                 pendingnode.replace_self(pendingnode.children)
