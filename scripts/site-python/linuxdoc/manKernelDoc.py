@@ -174,8 +174,12 @@ class Section2Manpage(Transform):
         # strip *purpose*
         desc_content = self.getFirstChild(
             section, addnodes.desc, addnodes.desc_content)
-        man_info.subtitle = desc_content[0].astext()
-        del desc_content[0]
+        if not len(desc_content):
+            # missing initial short description in kernel-doc comment
+            man_info.subtitle = ""
+        else:
+            man_info.subtitle = desc_content[0].astext()
+            del desc_content[0]
 
         # remove section title
         old_title = self.getFirstChild(section, nodes.title)

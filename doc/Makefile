@@ -56,6 +56,8 @@ endif
 #
 DOCBOOKS := $(wildcard $(srctree)/Documentation/DocBook/*.tmpl)
 DOCBOOKS := $(filter-out %/media_api.tmpl,$(DOCBOOKS))
+DOCBOOKS := $(filter-out %/media-entities.tmpl,$(DOCBOOKS))
+DOCBOOKS := $(filter-out %/media-indices.tmpl,$(DOCBOOKS))
 DOCBOOKS := $(DOCBOOKS:$(srctree)/Documentation/DocBook/%=%)
 
 # ------------------------------------------------------------------------------
@@ -183,6 +185,7 @@ all-reST: dbxml2rst media2rst src2rst txt2rst
 PHONY += all-HTML books-html books-pdf books-clean
 all-HTML: sphinx-doc mainpage books-html src.html txt.html
 books-html:  sphinx-doc $(BOOKS_HTML)
+books-man:  sphinx-doc $(BOOKS_MAN)
 books-pdf:   rst2pdf $(BOOKS_PDF)
 books-clean: $(BOOKS_CLEAN)
 
