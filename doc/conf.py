@@ -13,7 +13,7 @@ import os
 from os.path import join as pathjoin
 from os.path import abspath, dirname, splitext, basename, exists
 
-#sys.setrecursionlimit(1500)
+sys.setrecursionlimit(2000)
 
 BASE_FOLDER = abspath(pathjoin(dirname(__file__)))
 

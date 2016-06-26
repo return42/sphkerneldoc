@@ -30,6 +30,7 @@ from docutils.io import FileOutput
 from docutils.frontend import OptionParser
 from docutils import nodes
 from docutils.utils import new_document
+from docutils.parsers.rst import Directive, directives
 
 from sphinx import addnodes
 from sphinx.util.nodes import inline_all_toctrees
@@ -65,9 +66,39 @@ def setup(app):
 # ==============================================================================
 
     app.add_builder(KernelDocManBuilder)
+    app.add_directive("kernel-doc-man", KernelDocMan)
     app.add_config_value('author', "", 'env')
+    app.add_node(kernel_doc_man
+                 , html    = (skip_kernel_doc_man, None)
+                 , latex   = (skip_kernel_doc_man, None)
+                 , texinfo = (skip_kernel_doc_man, None)
+                 , text    = (skip_kernel_doc_man, None)
+                 , man     = (skip_kernel_doc_man, None) )
 
+# ==============================================================================
+class kernel_doc_man(nodes.Invisible, nodes.Element):
+# ==============================================================================
+    """Node to mark a section as *manpage*"""
+
+def skip_kernel_doc_man(self, node):
+    raise nodes.SkipNode
+
+
+# ==============================================================================
+class KernelDocMan(Directive):
+# ==============================================================================
+
+    required_arguments = 1
+    optional_arguments = 0
+
+    def run(self):
+        man_node = kernel_doc_man()
+        man_node["manpage"] = self.arguments[0]
+        return [man_node]
+
+# ==============================================================================
 class Section2Manpage(Transform):
+# ==============================================================================
     u"""Transforms a *section* tree into an *manpage* tree.
 
     The structural layout of a man-page differs from the one produced, by the
@@ -139,7 +170,8 @@ class Section2Manpage(Transform):
 
     manTitleOrder = [t for r,t in manTitles]
 
-    def getFirstChild(self, subtree, *classes):
+    @classmethod
+    def getFirstChild(cls, subtree, *classes):
         for c in classes:
             if subtree is None:
                 break
@@ -151,25 +183,26 @@ class Section2Manpage(Transform):
         return subtree
 
     def strip_man_info(self):
-        section = self.document[0]
+        section  = self.document[0]
+        man_info = Container(authors=[])
+        man_node = self.getFirstChild(section, kernel_doc_man)
+        name, sect = (man_node["manpage"].split(".", -1) + [DEFAULT_MAN_SECT])[:2]
+        man_info["manpage"] = name
+        man_info["mansect"] = sect
+
         # strip field list
         field_list = self.getFirstChild(section, nodes.field_list)
-        field_list.parent.remove(field_list)
-        man_info = Container(authors=[])
-        for field in field_list:
-            name  = field[0].astext().lower()
-            value = field[1].astext()
-            if name == "manpage":
-                name, sect = (value.split(".", -1) + [DEFAULT_MAN_SECT])[:2]
-                man_info["manpage"] = name
-                man_info["mansect"] = sect
-            else:
+        if field_list:
+            field_list.parent.remove(field_list)
+            for field in field_list:
+                name  = field[0].astext().lower()
+                value = field[1].astext()
                 man_info[name] = man_info.get(name, []) + [value,]
 
-        # normalize authors
-        for auth, adr in zip(man_info.get("author", [])
-                             , man_info.get("address", [])):
-            man_info["authors"].append("%s <%s>" % (auth, adr))
+            # normalize authors
+            for auth, adr in zip(man_info.get("author", [])
+                                 , man_info.get("address", [])):
+                man_info["authors"].append("%s <%s>" % (auth, adr))
 
         # strip *purpose*
         desc_content = self.getFirstChild(
@@ -264,15 +297,12 @@ class KernelDocManBuilder(ManualPageBuilder):
     def init(self):
         pass
 
-    def get_manpage_field(self, node):
-        if isinstance(node, nodes.section):
-            for fl in [cn for cn in node if isinstance(cn, nodes.field_list)]:
-                for field in fl:
-                    if field[0].astext() == "manpage":
-                        return field
-
     def is_manpage(self, node):
-        return bool(self.get_manpage_field(node))
+        if isinstance(node, nodes.section):
+            return bool(Section2Manpage.getFirstChild(
+            node, kernel_doc_man) is not None)
+        else:
+            False
 
     def get_partial_document(self, children):
         doc_tree =  new_document('<output>')
@@ -291,7 +321,6 @@ class KernelDocManBuilder(ManualPageBuilder):
         master_tree = inline_all_toctrees(
             self, set(), self.config.master_doc, master_tree, darkgreen, [self.config.master_doc])
         self.info(darkgreen("}"))
-
         man_nodes   = master_tree.traverse(condition=self.is_manpage)
         if not man_nodes and not self.config.man_pages:
             self.warn('no "man_pages" config value nor manual section found; no manual pages '

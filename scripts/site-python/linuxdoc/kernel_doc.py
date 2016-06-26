@@ -859,7 +859,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write_header(function, sec_level=2)
 
         if self.options.man_sect:
-            self.write("\n:manpage: %s.%s\n" % (function, self.options.man_sect) )
+            self.write("\n.. kernel-doc-man:: %s.%s\n" % (function, self.options.man_sect) )
 
         # write function definition
 
@@ -944,7 +944,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write_header("%s %s" % (decl_type, decl_name), sec_level=2)
 
         if self.options.man_sect:
-            self.write("\n:manpage: %s.%s\n" % (decl_name, self.options.man_sect) )
+            self.write("\n.. kernel-doc-man:: %s.%s\n" % (decl_name, self.options.man_sect) )
 
         # write struct definition
         # see https://github.com/sphinx-doc/sphinx/issues/2713
@@ -1032,7 +1032,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write_header("enum %s" % enum, sec_level=2)
 
         if self.options.man_sect:
-            self.write("\n:manpage: %s.%s\n" % (enum, self.options.man_sect) )
+            self.write("\n.. kernel-doc-man:: %s.%s\n" % (enum, self.options.man_sect) )
 
         # write union definition
         # see https://github.com/sphinx-doc/sphinx/issues/2713
@@ -1094,7 +1094,7 @@ class ReSTTranslator(TranslatorAPI):
         self.write_header("typedef %s" % typedef, sec_level=2)
 
         if self.options.man_sect:
-            self.write("\n:manpage: %s.%s\n" % (typedef, self.options.man_sect) )
+            self.write("\n.. kernel-doc-man:: %s.%s\n" % (typedef, self.options.man_sect) )
 
         # write typdef definition
         # see https://github.com/sphinx-doc/sphinx/issues/2713
@@ -1181,7 +1181,7 @@ class ParseOptions(Container):
         self.opt_filters    = dict()
         self.markup         = "reST"
         self.highlight      = True  # switch highlighting on/off
-        self.man_sect       = None  # insert ":manpage:" field, section no "n"
+        self.man_sect       = None  # insert ".. kernel-doc-man:" directive, section no self.man_sect
         self.add_filters(self.PARSE_OPTIONS)
 
         # SNIP / SNAP
