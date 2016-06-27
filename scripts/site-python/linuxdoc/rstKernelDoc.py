@@ -24,7 +24,8 @@ u"""
             :export:
             :internal:
             :functions: <function [, functions [, ...]]>
-            :module: <prefix-id>
+            :module:    <prefix-id>
+            :man-sect:  <man sect-no>
             :snippets:  <snippet [, snippets [, ...]]>
             :language:  <snippet-lang>
             :linenos:
@@ -63,13 +64,17 @@ u"""
         EXPORT_SYMBOL macro either in ``<src-filename>`` or in any of the files
         specified by ``<src-fname-pattern>``.
 
-
     ``functions <name [, names [, ...]]>``
         Include documentation for each named definition.
 
     ``module <prefix-id>``
         The option ``:module: <id-prefix>`` sets a module-name. The module-name is
         used as a prefix for automatic generated IDs (reference anchors).
+
+    ``man-sect <sect-no>``
+
+      Section number of the manual pages (see man man-pages). The man-pages are build
+      by the ``kernel-doc-man`` builder.
 
     ``snippets <name [, names [, ...]]>``
         Inserts the source-code passage(s) marked with the snippet ``name``. The

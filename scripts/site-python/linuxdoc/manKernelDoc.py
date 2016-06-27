@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8; mode: python -*-
-# pylint: disable=C0330, R0903, R0912
+# pylint: disable=C0330, R0903, R0912, C0410
 
 u"""
     kernel-doc-man
@@ -11,12 +11,48 @@ u"""
     :copyright:  Copyright (C) 2016  Markus Heiser
     :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
-    The ``kernel-doc-man`` (:py:class:`KernelDocManBuilder`) is sphinx-builder
-    with some additional features:
+    The ``kernel-doc-man`` (:py:class:`KernelDocManBuilder`) produces manual
+    pages in the groff format. It is a *man* page sphinx-builder mainly written
+    to generate manual pages from kernel-doc comments by :
 
-    * builds man pages defined in docutils-docinfo [DOCINFO] entries
+    * scanning the master doc-tree for sections marked with the
+      ``.. kernel-doc-man::`` directive and build manual pages for theses
+      sections.
 
-    [DOCINFO] http://docutils.sourceforge.net/docs/ref/doctree.html#docinfo
+    * reorder / rename (sub-) sections according to the conventions that should
+      be employed when writing man pages for the Linux man-pages project, see
+      man-pages(7)
+
+    Usage::
+
+        $ sphinx-build -b kernel-doc-man
+
+    rest-Markup entry (e.g):
+
+        .. kernel-doc-man::  manpage-name.9
+
+
+    Since the ``kernel-doc-man`` is an extension of the common sphinx *man*
+    builder [2]_, it is also a full replacement, building booth, the common
+    sphinx man-pages and those marked with the ``.. kernel-doc-man::``
+    directive.
+
+    Mostly authors will use this feature in their reST documents in conjunction
+    with the ``.. kernel-doc::`` directive [1]_, to create man pages from
+    kernel-doc comments.  This could be done, by setting the man section number
+    with the option ``man-sect``, e.g.::
+
+      .. kernel-doc:: include/linux/debugobjects.h
+          :man-sect: 9
+          :internal:
+
+    With this ``:man-sect: 9`` option, the kernel-doc parser will insert a
+    ``.. kernel-doc-man:: <declaration-name>.<man-sect no>`` directive in the
+    reST output, for every section describing a function, union etc.
+
+    _[1] http://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/kernel-doc-directive.html
+    _[2] http://www.sphinx-doc.org/en/stable/config.html#confval-man_pages
+
 """
 
 # ==============================================================================
@@ -30,7 +66,7 @@ from docutils.io import FileOutput
 from docutils.frontend import OptionParser
 from docutils import nodes
 from docutils.utils import new_document
-from docutils.parsers.rst import Directive, directives
+from docutils.parsers.rst import Directive
 
 from sphinx import addnodes
 from sphinx.util.nodes import inline_all_toctrees
@@ -76,11 +112,11 @@ def setup(app):
                  , man     = (skip_kernel_doc_man, None) )
 
 # ==============================================================================
-class kernel_doc_man(nodes.Invisible, nodes.Element):
+class kernel_doc_man(nodes.Invisible, nodes.Element):    # pylint: disable=C0103
 # ==============================================================================
     """Node to mark a section as *manpage*"""
 
-def skip_kernel_doc_man(self, node):
+def skip_kernel_doc_man(self, node):                     # pylint: disable=W0613
     raise nodes.SkipNode
 
 
@@ -302,7 +338,7 @@ class KernelDocManBuilder(ManualPageBuilder):
             return bool(Section2Manpage.getFirstChild(
             node, kernel_doc_man) is not None)
         else:
-            False
+            return False
 
     def get_partial_document(self, children):
         doc_tree =  new_document('<output>')

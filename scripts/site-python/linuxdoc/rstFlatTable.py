@@ -11,18 +11,14 @@ u"""
     :copyright:  Copyright (C) 2016  Markus Heiser
     :license:    GPL Version 2, June 1991 see linux/COPYING for details.
 
-    The ``flat-table`` (:py:class:`FlatTable`) is a double-stage list similar
-    to the ``list-table`` with some additional features:
+    The ``flat-table`` (:py:class:`FlatTable`) is a double-stage list similar to
+    the ``list-table`` with some additional features:
 
     * *column-span*: with the role ``cspan`` a cell can be extended through
-       additional columns
+      additional columns
 
     * *row-span*: with the role ``rspan`` a cell can be extended through
-       additional rows
-
-    * Autospan last cell over missing cell on the right side of the table-row.
-      With Option ``:fill-cells:`` this behavior can changed to insert empty
-      cells instead of spanning.
+      additional rows
 
     * *auto span* rightmost cell of a table row over the missing cells on the
       right side of that table-row.  With Option ``:fill-cells:`` this behavior

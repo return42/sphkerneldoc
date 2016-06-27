@@ -14,19 +14,44 @@ u"""
     The kernel-doc parser extracts documention from linux kernel's source code
     comments. This implements the kernel-doc-HOWTO [1]_.
 
-    This module provides an API -- which could used by a sphinx-doc generator
+    This module provides an API -- which could be used by a sphinx-doc generator
     extension -- and a commandline interface, see ``--help``::
 
-        $ ./kernel_doc.py --help
+        $ scripts/site-python/linuxdoc/kernel_doc.py --help
+
+    But, the commandline is only for test, normaly you don't need it.
 
     Compared with the perl kernel-doc script, this implementation has additional
-    features like *parse options* (see below) for a smooth integration of
-    restructuredText (reST) markup in the kernel's source code comments. In
-    addition, this rewrite brings the functionalities, which has been spread in
-    *docproc* and make files (e.g. working with *EXPORTED_SYMBOLS*) back to the
-    kernel-doc parse process. In combination with a (separate) *kernel-doc* reST
-    directive (which uses this module), the documentation generation becomes
-    more clear and flexible.
+    features like *parse options* for a smooth integration of restructuredText
+    (reST) markup in the kernel's source code comments. In addition, this
+    rewrite brings the functionalities, which has been spread in *docproc* and
+    make files (e.g. working with *EXPORTED_SYMBOLS*) back to the kernel-doc
+    parse process. In combination with a (separate) *kernel-doc* reST directive
+    (which uses this module), the documentation generation becomes more clear
+    and flexible.
+
+    The architecture is simple and consists of three types of objects (three
+    classes).
+
+    * class Parser: The parser parses the sourcefile and dumps extracted
+      kernel-doc data.
+
+    * subclasses of class TranslatorAPI: to translate the dumped kernel-doc data
+      into output formats. There exists two implementations:
+
+      - class NullTranslator: translates nothing, just parse
+
+      - class ReSTTranslator(TranslatorAPI): translates dumped kernel-doc data
+        to reST markup.
+
+      - class ParseOptions: a container full with options to control parsing an
+        translation.
+
+    With the NullTranslator a source file is parsed only once while different
+    output could be generated (multiple times) just by changing the Translator
+    (e.g. with the ReSTTranslator) and the option container.
+
+    With parsing the source files only once, the building time is reduced n-times.
 
     .. [1] http://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO
 
