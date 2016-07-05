@@ -215,7 +215,7 @@ all-reST: dbxml2rst media2rst src2rst txt2rst
 # update github-pages
 PHONY += all-HTML books-html books-pdf books-clean
 all-HTML: sphinx-doc mainpage books-html src.html txt.html
-books-html: sphinx-doc $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) books-index
+books-html: sphinx-doc $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) mainpage
 books-man: sphinx-doc $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)
 books-pdf:   rst2pdf $(BOOKS_PDF) $(BOOKS_MIGRATED_MAN)
 books-clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN)
