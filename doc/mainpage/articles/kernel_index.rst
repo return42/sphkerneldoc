@@ -1,18 +1,40 @@
 .. -*- coding: utf-8; mode: rst -*-
-.. include:: refs.txt
 
 .. _xref_migrated_docbock:
 
 ================================================================================
-                                books (htmldocs)
+                          Linux Kernel's documentation
 ================================================================================
 
-Each book is chunked into a small *project*, which can be build and distributed
-stand-alone. Cross reference between these *projects* will be ensured by
-`intersphinx`_.  The reST source are build from the DocBook-XML sources with the
+Welcome to the Linux Kernel's documentation. Here you will find the Linux Kernel
+documentation maintained in the restructuredText (reST) format.
+
+The reST source are build from the DocBook-XML sources with the
 :ref:`xref_dbtools`.
 
-.. TODO: should be auto generated with the origin title ...
+.. hint::
+
+   The is my POC. Not all documented *here* would be a part of the linux
+   kernel's documentation. E.g. the kernel-doc-HOWTO is my concept paper and not
+   (yet) a part of linux kernel's doc.
+
+
+Collection of articles
+=======================
+
+The collection of articles is searchable from the search bar *here*.
+
+.. toctree::
+   :maxdepth: 1
+   :glob:
+
+   kernel_articles/*
+
+
+References to books
+===================
+
+Each book is chunked into a small *project*, with its own searchbar.
 
 * `kernel-doc HOWTO <../books/kernel-doc-HOWTO/index.html>`_
 * `template book <../books/template-book/index.html>`_
@@ -49,14 +71,4 @@ stand-alone. Cross reference between these *projects* will be ensured by
 * `Writing an ALSA Driver <../books/writing-an-alsa-driver/index.html>`_
 * `Writing an MUSB Glue Layer <../books/writing_musb_glue_layer/index.html>`_
 * `Writing USB Device Drivers <../books/writing_usb_driver/index.html>`_
-* `Z8530 Programming Guide z8530book <../books/z8530book/index.html>`_
-
-.. hint::
-
-   The migrated books passed my tests and have been merged into the
-   **linux-doc-reST** branch of the linux kernel. Pull it from::
-
-     git://github.com/return42/linux.git linux-doc-reST
-
-
-
+* `Z8530 Programming Guide <../books/z8530book/index.html>`_

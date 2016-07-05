@@ -14,7 +14,7 @@ generator.
 .. toctree::
    :maxdepth: 1
 
-   articles/books
+   articles/kernel_index
    articles/linux_misc_doc
    articles/linux_src_doc
 

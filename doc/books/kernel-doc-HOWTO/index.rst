@@ -50,5 +50,12 @@ chapter :ref:`all-in-a-tumble`.
 
 .. hint::
 
-   If you are willing to write a book with reST markup, there is a template,
-   see: :ref:`template-book:get-started`.
+    If you are willing to write documentation with reST markup, you have two
+    choices:
+
+   * Write a *lose reST article*, which is just a common text file with reST
+     markup in see ``Documentation/template-article.rst``
+     (:ref:`:kernel-articles:template-article`)
+
+   * Create a *book* (aka sphinx-project) by copying the template book from
+     ``Documentation/template-book`` (:ref:`template-book:get-started`).

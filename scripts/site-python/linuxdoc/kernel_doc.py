@@ -1233,6 +1233,8 @@ class ParseOptions(Container):
                      " as expected!")
         if not self.fname:
             LOG.error("no source file given!")
+        else:
+            self.fname = os.path.abspath(self.fname)
 
     def set_defaults(self):
 
@@ -1675,9 +1677,9 @@ class Parser(SimpleLog):
         do_translate = False
         if name in self.options.skip_names:
             do_translate = False
-        elif not self.options.use_names:
-            do_translate = True
         elif name in self.options.use_names:
+            do_translate = True
+        elif not self.options.use_names and out_type != "DOC":
             do_translate = True
         if do_translate:
             self.translator.translated_names.add(name)

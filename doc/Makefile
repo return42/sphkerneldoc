@@ -1,9 +1,13 @@
 # -*- coding: utf-8; mode: make -*-
 
+# We need some generic definitions (do not try to remake the file).
+Kbuild.include: ;
+include Kbuild.include
+
 # This makefile is used to convert the kernel documentation to reStructuredText
 # and build all books (aka DocBooks) with sphinx.
 
-PHONY :=
+PHONY =
 
 objtree = $(abspath ..)
 obj = .
@@ -12,7 +16,10 @@ srctree=/share/linux
 export srctree
 
 KERNELVERSION := $(shell make -C $(srctree) kernelversion | grep "^[0-9]")
-KERNELRELEASE = $(KERNELVERSION)
+
+ifndef $(KERNELRELEASE)
+  KERNELRELEASE = $(KERNELVERSION)
+endif
 
 PYTHONPATH := $(abspath $(objtree)/scripts/site-python):$(PYTHONPATH)
 
@@ -21,7 +28,6 @@ SCRIPT_FOLDER  := $(objtree)/scripts
 TEMPLATES      := $(objtree)/templates
 CACHE          := $(objtree)/cache
 DOC_FOLDER     := .
-BOOKS_FOLDER   := books
 AUTODOC_FOLDER := linux_src_doc
 LINUX_MISC_DOC := linux_misc_doc
 DIST           := $(objtree)/dist
@@ -33,22 +39,33 @@ DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
 AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 SYNCDOC_SCRIPT := $(SCRIPT_FOLDER)/syncdoc.sh
 
-BOOKS := $(filter %/, $(wildcard $(BOOKS_FOLDER)/*/))
-BOOKS := $(BOOKS:%/=%)
-BOOKS_HTML  := $(patsubst %,%.html, $(BOOKS))
-BOOKS_PDF   := $(patsubst %,%.pdf, $(BOOKS))
-BOOKS_MAN   := $(patsubst %,%.man, $(BOOKS))
-BOOKS_CLEAN := $(patsubst %,%.clean, $(BOOKS))
+# sphinx-build setup
+SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+sphinx-static=_static
 
-# sphinx-doc setup
-SPHINXOPTS    := -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+# Sphinx projects, we call them *books* which is more common to authors.
+BOOKS=$(patsubst $(obj)/%/conf.py,books/%,$(wildcard $(obj)/*/conf.py))
 
-ALLSPHINXOPTS = $(SPHINXOPTS)
+# fine grained targets
+BOOKS_HTML  = $(patsubst %,%.html, $(BOOKS))
+BOOKS_CLEAN = $(patsubst %,%.clean, $(BOOKS))
+BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
+BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS))
+
+# for the period of transition from books_migrated
+#BOOKS_FOLDER   := books
+MIGRATION_FOLDER=$(obj)/books
+BOOKS_MIGRATED=$(patsubst $(obj)/books/%/conf.py,books/%,$(wildcard $(MIGRATION_FOLDER)/*/conf.py))
+BOOKS_MIGRATED_HTML  = $(patsubst %,%.html, $(BOOKS_MIGRATED))
+BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
+BOOKS_MIGRATED_MAN   = $(patsubst %,%.man, $(BOOKS_MIGRATED))
+BOOKS_MIGRATED_PDF   = $(patsubst %,%.pdf, $(BOOKS_MIGRATED))
 
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
 endif
+
 
 # ------------------------------------------------------------------------------
 # !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
@@ -59,6 +76,75 @@ DOCBOOKS := $(filter-out %/media_api.tmpl,$(DOCBOOKS))
 DOCBOOKS := $(filter-out %/media-entities.tmpl,$(DOCBOOKS))
 DOCBOOKS := $(filter-out %/media-indices.tmpl,$(DOCBOOKS))
 DOCBOOKS := $(DOCBOOKS:$(srctree)/Documentation/DocBook/%=%)
+
+# ------------------------------------------------------------------------------
+# requirements
+# ------------------------------------------------------------------------------
+
+PHONY += sphinx-doc msg-SphinxDoc rst2pdf msg-rst2pdf
+
+
+books-rqmts: msg-sphinx-builder msg-rst2pdf-pkg
+
+msg-sphinx-builder:
+	$(Q)echo "\n\
+The base documentation build system requires sphinx-doc:\n\n\
+  Make sure you have an updated Sphinx installed, grab it from\n\
+  http://sphinx-doc.org or install it from the python package\n\
+  manager (pip). On debian based OS these requirements are \n\
+  installed by::\n\n\
+    sudo apt-get install pip \n\
+    pip install Sphinx"
+
+ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
+sphinx-builder: msg-sphinx-builder
+	$(error The '$(SPHINXBUILD)' command was not found)
+else
+sphinx-builder:
+	@:
+endif
+
+msg-rst2pdf-pkg:
+	$(Q)echo "\n\
+# Building PDF output requires te python package rst2pdf:\n\n\
+#   Make sure you have an updated rst2pdf installed, grab it from\n\
+#   https://github.com/rst2pdf/rst2pdf or install it with pip::\n\n\
+#     pip install rst2pdf\n\n\
+#   If the installation fails, this might be due to missed header files\n\
+#   needed by pillow which is a requirement of rst2pdf. For details take\n\
+#   a look at: \n\n\
+#     https://github.com/python-pillow/Pillow/blob/master/docs/installation.rst#external-libraries\n\n\
+#   Mostly the jpeg headers are missed. On debian based OS these requirements\n\
+#   are installed by::\n\n\
+#     sudo apt-get install libjpeg-dev"
+
+ifeq ($(shell python -c "import rst2pdf" >/dev/null 2>&1; echo $$?), 1)
+rst2pdf-pkg: msg-rst2pdf-pkg
+	$(error The python module rst2pdf was not found)
+else
+rst2pdf-pkg:
+	@:
+endif
+
+ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
+texlive: msg-TeXLive
+	$(error The '$(PDFLATEX)' command was not found)
+else
+texlive:
+	@:
+endif
+
+msg-TeXLive:
+	$(Q)echo "\n\
+TeX output requires TexLive:\n\n\
+  Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
+  it from https://www.tug.org/texlive or install it from your package manager.\n\n\
+  Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\n\
+  and fonts. To process these LaTeX files, a TexLive installation with the\n\
+  additional packages is required. On debian based OS these requirements\n\
+  are installed by::\n\n\
+    sudo apt-get install \\n\
+          texlive-xetex texlive-latex-recommended\n"
 
 # ------------------------------------------------------------------------------
 # usage
@@ -79,13 +165,18 @@ help:
 	$(Q)echo "  txt.html   : build HTML from misc reST files (see txt2rst)"
 	$(Q)echo "  help-rqmts : info about build requirements"
 	$(Q)echo ""
-	$(Q)echo "  books/{name}.html : build only the HTML of document {name}"
-	$(Q)echo "    valid values for books/{name}.html are: \n\n   $(BOOKS_HTML)" | $(FMT)
+	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
+	$(Q)echo "    valid values for books/{name}.html are: \n\n   $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books-pdf : builds all PDF targets:"
 	$(Q)echo
 	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n   $(BOOKS_PDF)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF)" | $(FMT)
+	$(Q)echo
+	$(Q)echo "books-man : builds all man page targets:"
+	$(Q)echo
+	$(Q)echo "  books/{name}.man : build only the man page of document {name}"
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n   $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "The HTML & PDF output formats are placed into folder:"
 	$(Q)echo ""
@@ -105,77 +196,17 @@ help:
 	$(Q)echo "  {fname}.rst : converts only {fname}.tmpl to reST, valid"
 	$(Q)echo "    values for {fname} are: \n\n   $(DB2RST)" | $(FMT)
 	$(Q)echo
-
-
-# ------------------------------------------------------------------------------
-# requirements
-# ------------------------------------------------------------------------------
-
-PHONY += sphinx-doc msg-SphinxDoc rst2pdf msg-rst2pdf
-
-ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
-sphinx-doc: msg-SphinxDoc
-	$(error The '$(SPHINXBUILD)' command was not found)
-else
-sphinx-doc:
-	@:
-endif
-
-ifeq ($(shell python -c "import rst2pdf" >/dev/null 2>&1; echo $$?), 1)
-rst2pdf: msg-rst2pdf
-	$(error The python module rst2pdf was not found)
-else
-rst2pdf:
-	@:
-endif
-
-ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
-texlive: msg-TeXLive
-	$(error The '$(PDFLATEX)' command was not found)
-else
-texlive:
-	@:
-endif
-
-msg-SphinxDoc:
-	$(Q)echo "\n\
-Base documentation build system requires sphinx-doc:\n\n\
-  Make sure you have an updated Sphinx installed, grab it from\n\
-  http://sphinx-doc.org or install it from the python package\n\
-  manager (pip). On debian based OS these requirements are \n\
-  installed by::\n\n\
-    sudo apt-get install pip \n\
-    pip install Sphinx"
-
-msg-rst2pdf:
-	$(Q)echo "\n\
-PDF output requires rst2pdf:\n\n\
-  Make sure you have an updated rst2pdf installed, grab it from\n\
-  https://github.com/rst2pdf/rst2pdf or install it with pip::\n\n\
-    pip install rst2pdf\n\n\
-  If the installation fails, this might be due to missed header files\n\
-  needed by pillow which is a requirement of rst2pdf. For details take\n\
-  a look at: \n\n\
-    https://github.com/python-pillow/Pillow/blob/master/docs/installation.rst#external-libraries\n\n\
-  Mostly the jpeg headers are missed. On debian based OS these requirements\n\
-  are installed by::\n\n\
-    sudo apt-get install libjpeg-dev"
-
-msg-TeXLive:
-	$(Q)echo "\n\
-TeX output requires TexLive:\n\n\
-  Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
-  it from https://www.tug.org/texlive or install it from your package manager.\n\n\
-  Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\n\
-  and fonts. To process these LaTeX files, a TexLive installation with the\n\
-  additional packages is required. On debian based OS these requirements\n\
-  are installed by::\n\n\
-    sudo apt-get install \\n\
-          texlive-xetex texlive-latex-recommended\n"
+	$(Q)echo "make V=0|1 [targets] 0 => quiet build (default), 1 => verbose build"
+	$(Q)echo "make V=2   [targets] 2 => give reason for rebuild of target"
 
 # ------------------------------------------------------------------------------
 # main targets
 # ------------------------------------------------------------------------------
+
+ALLSPHINXOPTS = $(SPHINXOPTS)
+
+DIST_BOOKS = $(DIST)/books
+CACHE_BOOKS = $(CACHE)/books
 
 # update reST in reposetory
 PHONY += all-reST
@@ -184,16 +215,70 @@ all-reST: dbxml2rst media2rst src2rst txt2rst
 # update github-pages
 PHONY += all-HTML books-html books-pdf books-clean
 all-HTML: sphinx-doc mainpage books-html src.html txt.html
-books-html:  sphinx-doc $(BOOKS_HTML)
-books-man:  sphinx-doc $(BOOKS_MAN)
-books-pdf:   rst2pdf $(BOOKS_PDF)
-books-clean: $(BOOKS_CLEAN)
+books-html: sphinx-doc $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) books-index
+books-man: sphinx-doc $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)
+books-pdf:   rst2pdf $(BOOKS_PDF) $(BOOKS_MIGRATED_MAN)
+books-clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN)
 
 PHONY += clean
 clean: mainpage.clean books-clean clean-src.html clean-txt.html
 
-$(DIST):
-	mkdir -p $(DIST)
+$(DIST_BOOKS):
+	mkdir -p $(DIST_BOOKS)
+
+quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3)$4
+      cmd_sphinx = SPHPROJ_CONF=$5$3/conf.py \
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2 \
+	-c $(obj) \
+	-d $(CACHE_BOOKS)/$3 \
+	$(obj)/$5$3 \
+	$(DIST_BOOKS)/$3$4
+
+quiet_cmd_sphinx_clean = CLEAN  $@
+      cmd_sphinx_clean = rm -rf $(CACHE_BOOKS)/$2 $(DIST_BOOKS)/$2
+
+# ------------------------------------------------------------------------------
+# BOOKs
+# ------------------------------------------------------------------------------
+
+PHONY += $(BOOKS_CLEAN)
+$(BOOKS_CLEAN):
+	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
+
+PHONY += $(BOOKS_HTML)
+$(BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@))
+
+PHONY += $(BOOKS_MAN)
+$(BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man)
+	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
+
+PHONY += $(BOOKS_PDF)
+$(BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
+	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf)
+
+
+# migrated DocBook-XML to reST content
+# ------------------------------------
+
+PHONY += $(BOOKS_MIGRATED_CLEAN)
+$(BOOKS_MIGRATED_CLEAN):
+	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
+
+PHONY += $(BOOKS_MIGRATED_HTML)
+$(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,books/)
+
+PHONY += $(BOOKS_MIGRATED_MAN)
+$(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,books/)
+	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
+
+PHONY += $(BOOKS_PDF)
+$(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
+	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books/)
+
 
 # ------------------------------------------------------------------------------
 # mainpage
@@ -207,14 +292,6 @@ mainpage: sphinx-doc | $(DIST)
 mainpage.clean:
 	rm -rf $(addprefix $(DIST)/, articles _sources _static) $(CACHE)/doctrees/mainpage
 	rm -f $(addprefix $(DIST)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
-
-# ------------------------------------------------------------------------------
-# BOOKs
-# ------------------------------------------------------------------------------
-
-PHONY += $(BOOKS_CLEAN)
-$(BOOKS_CLEAN):
-	rm -rf $(DIST)/$(patsubst %.clean,%,$@) $(CACHE)/doctrees/$(patsubst %.clean,%,$@)
 
 
 # DocBook-XML (tmpl) --> reST
@@ -234,47 +311,6 @@ $(srctree)/Documentation/DocBook/media_api.xml:
 PHONY += media2rst
 media2rst: $(srctree)/Documentation/DocBook/media_api.xml
 	$(DBTOOLS_SCRIPT) media2rst
-
-# reST-book --> HTML (sphinx-doc projects)
-# ----------------------------------------
-
-PHONY += $(BOOKS_HTML)
-$(BOOKS_HTML): sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.html,%/conf.py,$@) \
-	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b html \
-	  -c $(obj) \
-	  -d $(CACHE)/doctrees/$(patsubst %.html,%,$@) \
-	  $(obj)/$(patsubst %.html,%,$@) \
-	  $(DIST)/$(patsubst %.html,%,$@)
-	$(Q)echo "HTML build OK / start file at:\n    file://$(abspath $(DIST)/$(patsubst %.html,%,$@)/index.html)"
-
-# reST-book --> man pages
-# ----------------------------------------
-
-PHONY += $(BOOKS_MAN)
-$(BOOKS_MAN): sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.man,%/conf.py,$@) \
-	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b kernel-doc-man \
-	  -c $(obj) \
-	  -d $(CACHE)/doctrees/$(patsubst %.man,%,$@) \
-	  $(obj)/$(patsubst %.man,%,$@) \
-	  $(DIST)/$(patsubst %.man,%/man,$@)
-	$(Q)echo "man page build OK / destination at:\n    file://$(abspath $(DIST)/$(patsubst %.man,%/man,$@))"
-
-
-# reST-book --> PDF
-# ----------------------------------------
-
-PHONY += $(BOOKS_PDF)
-$(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
-	$(Q)SPHPROJ_CONF=$(patsubst %.pdf,%/conf.py,$@) \
-	  $(SPHINXBUILD) $(ALLSPHINXOPTS) -b pdf \
-	  -c $(obj) \
-	  -d $(CACHE)/doctrees/$(patsubst %.pdf,%,$@) \
-	  $(obj)/$(patsubst %.pdf,%,$@) \
-          $(DIST)/rst2pdf
-	$(Q)echo "PDF build OK / pdf files stored in:\n    file://$(abspath $(DIST)/rst2pdf)"
-
 
 
 # # reST-book --> (Xe)LaTeX --> PDF
@@ -304,10 +340,10 @@ $(BOOKS_PDF): rst2pdf sphinx-doc | $(DIST)
 # 	@echo "building $@ ..."
 # 	rm -rf $(CACHE)/$(patsubst books/%,%,$@)
 # 	SPHPROJ_CONF=$(patsubst %.tex,conf.py,$@) $(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b xelatex \
-# 		$(PAPEROPT_$(PAPER)) \
-# 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
-# 		$(patsubst %.tex,%,$@) \
-# 		$(CACHE)/$(patsubst books/%,%,$@)
+# # 		$(PAPEROPT_$(PAPER)) \
+# # 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
+# # 		$(patsubst %.tex,%,$@) \
+# # 		$(CACHE)/$(patsubst books/%,%,$@)
 
 
 # $(TEX2PDF): %.pdf : %.tex texlive
@@ -365,3 +401,4 @@ clean-txt.html:
 # information in a variable se we can use it in if_changed and friends.
 
 .PHONY: $(PHONY)
+

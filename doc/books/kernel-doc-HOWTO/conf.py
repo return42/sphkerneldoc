@@ -37,6 +37,7 @@ author    = u'Linux contributors'
 # extlinks["man"] = ('http://manpages.ubuntu.com/cgi-bin/search.py?q=%s', ' ')
 
 intersphinx_mapping['template-book'] = ('http://return42.github.io/sphkerneldoc/books/template-book/', None)
+intersphinx_mapping['kernel-articles'] = ('http://return42.github.io/sphkerneldoc/', None)
 
 extensions.extend([
     # 'sphinx.ext.pngmath'

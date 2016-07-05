@@ -10,7 +10,7 @@ Components of the kernel-doc system
 Many places in the source tree have extractable kernel-doc documentation.  The
 components of this system are:
 
-Documentation/books/template-book and Documentation/template-book.conf
+Documentation/template-book
   Template book and build configuration. It includes additional hints and
   practical recommendations: :ref:`template-book:get-started`.
 
@@ -21,14 +21,21 @@ Documentation/Makefile.reST and Documentation/conf.py
   build and distributed stand-alone. Cross reference between *subprojects* will
   be ensured by `intersphinx`_.
 
-Documentation/sphinx-static and Documentation/sphinx-tex
+Documentation/sphinx-static
   Paths that contain sphinx-doc_ custom static files (such as style sheets).
 
-Documentation/books
-  In this folder, the books with reST markup are placed. To provide
-  *sphinx-subprojects*, each book has its one folder and a (optional)
-  ``Documentation/books/{book-name}.conf`` file which *overwrites* the basic
-  configuration from ``Documentation/conf.py`` (settings see `sphinx config`_)
+Documentation/index.rst and the other Documentation/\*.rst
+
+  The ``*.rst`` files, are *lose reST articles*, formerly known as *lose text
+  files*.  Theirs html is build by the ``books-index`` target, which is also a
+  prerequisites of the main target ``htmldocs``.
+
+Documentation/\*/conf.py
+
+  In the folders with a ``*/conf.py``, the books with reST markup are
+  placed. To provide *sphinx-subprojects*, each book has it's own folder and a
+  ``Documentation/*/conf.py`` file which *overwrites* the basic configuration
+  from ``Documentation/conf.py`` (settings see `sphinx config`_)
 
 scripts/site-python/linuxdoc
   This folder includes python extensions related to the linux documentation

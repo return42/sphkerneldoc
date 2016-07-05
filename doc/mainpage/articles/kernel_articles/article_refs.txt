@@ -1,0 +1,23 @@
+.. -*- coding: utf-8; mode: rst -*-
+..
+..  common hyperlink targets used by the loose Documentation/*.rst files
+..  http://docutils.sourceforge.net/docs/user/rst/quickref.html#hyperlink-targets
+..
+
+
+.. _`COPYING`: https://github.com/torvalds/linux/blob/master/COPYING
+.. _`Sphinx markup constructs`: http://www.sphinx-doc.org/en/stable/markup/index.html
+.. _`docutils FAQ`: http://docutils.sourceforge.net/FAQ.html
+.. _`docutils`: http://docutils.sourceforge.net/docs/index.html
+.. _`intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html
+.. _`reST (quickref)`: http://docutils.sourceforge.net/docs/user/rst/quickref.html
+.. _`reST (spec)`: http://docutils.sourceforge.net/docs/ref/rst/restructuredtext.html
+.. _`reST`: http://www.sphinx-doc.org/en/stable/rest.html
+.. _`sphinx config`: http://www.sphinx-doc.org/en/stable/config.html
+.. _`sphinx cross refences`: http://www.sphinx-doc.org/en/stable/markup/inline.html#cross-referencing-arbitrary-locations
+.. _`sphinx domains`: http://www.sphinx-doc.org/en/stable/domains.html
+.. _`sphinx-doc FAQ`: http://www.sphinx-doc.org/en/stable/faq.html
+.. _`sphinx-doc`: http://www.sphinx-doc.org/
+.. _`sphinx.ext.intersphinx`: http://www.sphinx-doc.org/en/stable/ext/intersphinx.html#module-sphinx.ext.intersphinx
+.. _`pocoo`: http://www.pocoo.org/
+.. _`src linuxdoc`: https://github.com/return42/linux/tree/docs-next/linux-doc-reST/scripts/site-python/linuxdoc
