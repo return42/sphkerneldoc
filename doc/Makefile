@@ -43,8 +43,9 @@ SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
 sphinx-static=_static
 
 # Sphinx projects, we call them *books* which is more common to authors.
+BOOKS_FOLDER = $(obj)/Documentation
 BOOKS=$(filter-out books/intro,                                           \
-	$(patsubst $(obj)/%/conf.py,books/%,$(wildcard $(obj)/*/conf.py)) \
+	$(patsubst $(BOOKS_FOLDER)/%/conf.py,books/%,$(wildcard $(BOOKS_FOLDER)/*/conf.py)) \
 	)
 
 # fine grained targets
@@ -54,9 +55,8 @@ BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
 BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS))
 
 # for the period of transition from books_migrated
-#BOOKS_FOLDER   := books
-MIGRATION_FOLDER=$(obj)/books
-BOOKS_MIGRATED=$(patsubst $(obj)/books/%/conf.py,books/%,$(wildcard $(MIGRATION_FOLDER)/*/conf.py))
+MIGRATION_FOLDER=$(obj)/Documentation/books_migrated
+BOOKS_MIGRATED=$(patsubst $(MIGRATION_FOLDER)/%/conf.py,books/%,$(wildcard $(MIGRATION_FOLDER)/*/conf.py))
 BOOKS_MIGRATED_HTML  = $(patsubst %,%.html, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_MAN   = $(patsubst %,%.man, $(BOOKS_MIGRATED))
@@ -228,14 +228,25 @@ clean: intro.clean books.clean
 $(DIST_BOOKS):
 	mkdir -p $(DIST_BOOKS)
 
+# $2 sphinx builder e.g. "html"
+# $3 name of the book / e.g. "gpu", used as:
+#    * dest folder relative to $(DIST_BOOKS) and
+#    * cache folder relative to $(CACHE_BOOKS)
+# $4 dest subfolder e.g. "man" for man pages at gpu/man
+# $5 reST source folder relative to $(BOOKS_FOLDER),
+#    e.g. "books_migrated" for the migrated books
+
 quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3$4)
       cmd_sphinx = SPHPROJ_CONF=$5$3/conf.py \
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2 \
 	-c $(obj) \
 	-d $(CACHE_BOOKS)/$3 \
-	$(obj)/$5$3 \
+	$(BOOKS_FOLDER)/$5$3 \
 	$(abspath $(DIST_BOOKS)/$3$4)
 
+# $2 name of the book / e.g. "gpu", used to clean:
+#    * dest folder relative to $(DIST_BOOKS) and
+#    * cache folder relative to $(CACHE_BOOKS)
 quiet_cmd_sphinx_clean = CLEAN  $@
       cmd_sphinx_clean = rm -rf $(CACHE_BOOKS)/$2 $(DIST_BOOKS)/$2
 
@@ -270,16 +281,16 @@ $(BOOKS_MIGRATED_CLEAN):
 
 PHONY += $(BOOKS_MIGRATED_HTML)
 $(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,books/)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,books_migrated/)
 
 PHONY += $(BOOKS_MIGRATED_MAN)
 $(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,books/)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,books_migrated/)
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
 PHONY += $(BOOKS_PDF)
 $(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books/)
+	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
 
 
 # ------------------------------------------------------------------------------
