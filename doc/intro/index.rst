@@ -15,7 +15,6 @@ generator.
    :maxdepth: 1
 
    articles/kernel_index
-   articles/linux_misc_doc
    articles/linux_src_doc
 
 The formated Linux source code documentation is based on the kernel-doc markup,
@@ -32,10 +31,11 @@ allready done automaticly by a collection of tools and scripts (see
 :ref:`xref_dbtools`). The migration is based on the linux kernel mainline and
 will be updated frequently.
 
-This site is a POC and my sandbox. All tested stuff from here is merged into
-the **linux-doc-reST** branch of the linux kernel. Pull it from::
+..
+    This site is a POC and my sandbox. All tested stuff from here is merged into
+    the **linux-doc-reST** branch of the linux kernel. Pull it from::
 
-   git://github.com/return42/linux.git linux-doc-reST
+       git://github.com/return42/linux.git linux-doc-reST
 
 The :ref:`kernel-doc:kernel-doc-howto`, the :ref:`template-book:template-book`
 and ``make books-help`` are your friends.

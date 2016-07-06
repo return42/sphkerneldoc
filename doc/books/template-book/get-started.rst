@@ -7,12 +7,15 @@
 Get started with reST
 *********************
 
-To get started with documentating in reST_ , copy the template-book folder and
-the config file.
+This chapter describes, how to create a reST_ *book* (aka sphinx-project) based
+on the ``Documentation/template-book``. To create only a *loose reST article*
+take a look at ``Documentation/reST-nano-HOWTO.rst``.
+
+To get started copy the template-book folder and the config file.
 
 .. code-block:: sh
 
-    cd {linux-kernel}/Documentation/books
+    cd {linux-kernel}/Documentation
     cp -r template-book my-project
 
 It is recomended to read through the :ref:`kernel-doc:kernel-doc-howto`. For the
@@ -26,13 +29,10 @@ build. Try to build the HTML representation:
 
     cd {linux-kernel}
     make books/my-project.html
-    ...
-    HTML build OK / start file at:
-        Documentation/dist/books/template-book/index.html
+      SPHINX  books/template-book.html --> file://{linux-kernel}/Documentation/dist/books/template-book
 
-The last lines indactes that the build process succeeded and where you find the
-HTML start file, open the index.html file within your favorite HTML browser to
-see what you got ;-)
+The "SPHINX" line shows, where you find the HTML start file, open the
+``index.html`` file within your favorite HTML browser to see what you got ;-)
 
 While HTML is one *big* side with all content in, PDF documents separate books
 and (or) articles. To get *first* PDF you have to active the pdf_documents line
@@ -55,15 +55,14 @@ To get a PDF representation build the ".pdf" target:
    from what a book or an academic article will look like ... this is an ongonig
    procces.
 
-There is also a ".clean" target to get rid of all intermadiate and HTML files,
-except the PDF representations, they will be preserved
+There is also a ".clean" target to get rid of all intermadiate and output files.
 
 To add your project's documentation to the index, edit
-``Documentation/books/index.rst`` and add a reference, e.g.::
+``Documentation/index.rst`` and add a reference, e.g.::
 
   * ...
   * ...
-  * `My Project <my-project/index.html>`_
+  * `My Project <books/my-project/index.html>`_
 
 .. _config_file:
 
@@ -76,5 +75,4 @@ you should change the following values to your needs.::
     project   = u'Template Book'
     copyright = u'2016, The kernel development community'
     author    = u'The kernel development community'
-    version   = u'v4.7'
 

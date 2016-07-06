@@ -10,8 +10,8 @@ Template Book
 :author:    Athor Name
 :address:   author.name@example.com
 
-This is a template document for creating of documentation with
-reST_ markup. Read on: :ref:`get-started`.
+This is a template document for the creation of documentation with reST_
+markup. Read on: :ref:`get-started`.
 
 *******
 Content

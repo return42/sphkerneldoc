@@ -37,6 +37,7 @@ on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
     table-markup
     kernel-doc-components
     vintage-kernel-doc-mode
+    dbxml2rst_migration
     kernel-doc-examples
 
 The examples in this HOWTO using the kernel-doc comments from the example file
@@ -53,9 +54,8 @@ chapter :ref:`all-in-a-tumble`.
     If you are willing to write documentation with reST markup, you have two
     choices:
 
-   * Write a *lose reST article*, which is just a common text file with reST
-     markup in see ``Documentation/template-article.rst``
-     (:ref:`:kernel-articles:template-article`)
+   * Write a *loose reST article*, which is just a ordinary text file with reST
+     markup in, see ``Documentation/reST-nano-HOWTO.rst``
 
    * Create a *book* (aka sphinx-project) by copying the template book from
      ``Documentation/template-book`` (:ref:`template-book:get-started`).

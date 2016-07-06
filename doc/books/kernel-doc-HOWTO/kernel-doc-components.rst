@@ -25,13 +25,11 @@ Documentation/sphinx-static
   Paths that contain sphinx-doc_ custom static files (such as style sheets).
 
 Documentation/index.rst and the other Documentation/\*.rst
-
-  The ``*.rst`` files, are *lose reST articles*, formerly known as *lose text
+  The ``*.rst`` files, are *loose reST articles*, formerly known as *text
   files*.  Theirs html is build by the ``books-index`` target, which is also a
-  prerequisites of the main target ``htmldocs``.
+  prerequisite of the main target ``htmldocs``.
 
 Documentation/\*/conf.py
-
   In the folders with a ``*/conf.py``, the books with reST markup are
   placed. To provide *sphinx-subprojects*, each book has it's own folder and a
   ``Documentation/*/conf.py`` file which *overwrites* the basic configuration
@@ -40,3 +38,8 @@ Documentation/\*/conf.py
 scripts/site-python/linuxdoc
   This folder includes python extensions related to the linux documentation
   processes.
+
+Documentation/books_migrated
+  Content the of automatic migrated DocBook-XML to reST documents
+  (:ref:`dbxml2rst_migration`).
+

@@ -7,16 +7,19 @@
                              source code (autodoc)
 ================================================================================
 
-.. hint::
-
-   All this is in a experimental state.
-
-
-Source code documentation from *autodoc* (``make htmlsrc``).
+Source code documentation from *autodoc*.
 
 * `Linux kernel source <../linux_src_doc/index.html>`_
 
-To build the reST file from the linux kernel sources run:
+.. hint::
+
+   All you find *there* is in a experimental state!!!
+
+autodoc
+=======
+
+The *autodoc* script builds reST files from kernel source tree.  To build the
+reST files run:
 
 .. code-block:: bash
 
@@ -26,9 +29,13 @@ To build the reST file from the linux kernel sources run:
 The makefile target ``src2rst`` uses the script ``./scripts/autodoc.sh`` to
 build the `reST linux_src_doc`_ tree from the source-code comments.
 
+.. hint::
+
+   ``autodoc.sh`` WIP
+
 The documentation is taken from all source files listet in the
 `src_filelist`_. The `reST linux_src_doc`_ files are versioned within this
-reposetory, a rebuild is only required when the linux kernel sources are updated
+reposetory. A rebuild is only required when the linux kernel sources are updated
 to a new release or the `src_filelist`_ is changed. With ``make htmlsrc`` the
 HTML page linked above is build.
 
