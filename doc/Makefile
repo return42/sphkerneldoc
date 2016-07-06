@@ -40,7 +40,7 @@ AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 
 # sphinx-build setup
 SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
-sphinx-static=_static
+sphinx-static=sphinx-static
 
 # Sphinx projects, we call them *books* which is more common to authors.
 BOOKS_FOLDER = $(obj)/Documentation
@@ -55,7 +55,7 @@ BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
 BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS))
 
 # for the period of transition from books_migrated
-MIGRATION_FOLDER=$(obj)/Documentation/books_migrated
+MIGRATION_FOLDER=$(BOOKS_FOLDER)/books_migrated
 BOOKS_MIGRATED=$(patsubst $(MIGRATION_FOLDER)/%/conf.py,books/%,$(wildcard $(MIGRATION_FOLDER)/*/conf.py))
 BOOKS_MIGRATED_HTML  = $(patsubst %,%.html, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
@@ -237,7 +237,7 @@ $(DIST_BOOKS):
 #    e.g. "books_migrated" for the migrated books
 
 quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3$4)
-      cmd_sphinx = SPHPROJ_CONF=$5$3/conf.py \
+      cmd_sphinx = SPHPROJ_CONF=$(BOOKS_FOLDER)/$5$3/conf.py \
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2 \
 	-c $(obj) \
 	-d $(CACHE_BOOKS)/$3 \
@@ -297,17 +297,35 @@ $(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
 # intro page
 # ------------------------------------------------------------------------------
 
+INDEX_CACHE    = $(CACHE)/index-page
+INDEX_ARTICLES = $(filter-out index.rst,$(patsubst $(BOOKS_FOLDER)/%,%,$(wildcard $(BOOKS_FOLDER)/*.rst)))
+INDEX_REL = ../../doc/Documentation/
+
 PHONY += intro.html intro.clean
-intro.html: sphinx-builder | $(DIST)
-	$(call cmd,sphinx,html,$(patsubst %.html,%, $@),/../..)
 
 quiet_cmd_intro_clean = CLEAN  $@
       cmd_intro_clean = \
-	rm -rf $(addprefix $(DIST)/, articles _sources _static) $(CACHE)/doctrees/intro; \
-	rm -f $(addprefix $(DIST)/, .buildinfo LICENSE.html genindex.html index.html objects.inv search.html searchindex.js)
+	rm -rf $(INDEX_CACHE);\
+	rm -rf $(addprefix $(DIST)/, _sources _static articles);\
+	rm -f  $(addprefix $(DIST)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
+
+quiet_cmd_intro = CLEAN  $@
+      cmd_intro = \
+	rm -rf $(INDEX_CACHE)/articles   ;\
+	mkdir -p $(INDEX_CACHE)/articles ;\
+	ln -s -t $(INDEX_CACHE)/articles $(addprefix ../$(INDEX_REL),$(INDEX_ARTICLES) article_refs.txt ) ;\
+	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst sphinx-static poc_sphkerneldoc) ;\
+	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../doc/,conf.py) ;\
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2\
+		-d $(INDEX_CACHE)/.doctrees \
+		$(INDEX_CACHE) \
+		$(DIST)
 
 intro.clean:
 	$(call cmd,intro_clean)
+
+intro.html: sphinx-builder | $(DIST)
+	$(call cmd,intro,html)
 
 
 # DocBook-XML (tmpl) --> reST

@@ -15,7 +15,13 @@ from os.path import abspath, dirname, splitext, basename, exists
 
 sys.setrecursionlimit(2000)
 
-BASE_FOLDER = abspath(pathjoin(dirname(__file__)))
+BASE_FOLDER = []
+for folder in dirname(__file__).split(os.sep):
+    if folder == "cache":
+        BASE_FOLDER.append("doc")
+        break
+    BASE_FOLDER.append(folder)
+BASE_FOLDER = os.sep.join(BASE_FOLDER)
 
 # ------------------------------------------------------------------------------
 # General information about the project.
@@ -153,7 +159,7 @@ master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '_tex', '_static']
+exclude_patterns = ['_build', '_tex', 'sphinx-static']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -212,7 +218,7 @@ html_theme = 'sphinx_rtd_theme'
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
 # so a file named "default.css" will overwrite the builtin "default.css".
-html_static_path = ['_static']
+html_static_path = ['sphinx-static']
 
 html_context = {
     'css_files': [
