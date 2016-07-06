@@ -45,7 +45,7 @@ import media
 # setup
 # ==============================================================================
 
-from dbenv import CACHE, BOOKS_FOLDER, LINUX_DOCBOOK_ROOT
+from dbenv import CACHE, MIGRATION_FOLDER, LINUX_DOCBOOK_ROOT
 
 MSG = CLI.msg
 ERR = CLI.err
@@ -245,7 +245,7 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 
     if not cliArgs.noinstall:
 
-        bookFolder = BOOKS_FOLDER / origFile.BASENAME.SKIPSUFFIX
+        bookFolder = MIGRATION_FOLDER / origFile.BASENAME.SKIPSUFFIX
         if bookFolder.EXISTS:
             for name in bookFolder.reMatchFind("[^(conf.py)]"):
                 name.delete()
@@ -254,9 +254,9 @@ def _db2rst(cliArgs, origFile):                          # pylint: disable=W0613
 
         for xmlFile in fileList:
             rstFile = xmlFile.suffix(".rst")
-            MSG("install file %s" % xmlFile)
             src = folder/ rstFile
             dst = bookFolder / rstFile
+            MSG("install file %s" % dst)
             resource = FSPath(RESOUCE_FORMAT % src.SKIPSUFFIX)
 
             dst.DIRNAME.makedirs()

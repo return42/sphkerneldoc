@@ -29,13 +29,13 @@ from lxml import etree
 # setup
 # ==============================================================================
 
-from dbenv import CACHE, BOOKS_FOLDER, LINUX_DOCBOOK_ROOT
+from dbenv import CACHE, MIGRATION_FOLDER, LINUX_DOCBOOK_ROOT
 
 MSG = CLI.msg
 ERR = CLI.err
 
 LINUX_TV_CACHE  = CACHE / "linux_tv"
-LINUX_TV_BOOK   = BOOKS_FOLDER / "linux_tv"
+LINUX_TV_BOOK   = MIGRATION_FOLDER / "linux_tv"
 
 MEDIA_EXT = EntityContainer(LINUX_TV_CACHE / "media-entities-ext.container")
 MEDIA_INT = EntityContainer(LINUX_TV_CACHE / "media-entities-int.container")
@@ -102,7 +102,6 @@ def installMedia():
 
     for xmlFile in fileList:
         rstFile = xmlFile.suffix(".rst")
-        MSG("install file %s" % rstFile)
 
         src = LINUX_TV_CACHE  / rstFile
         dst = LINUX_TV_BOOK / rstFile
@@ -111,6 +110,7 @@ def installMedia():
         folder = FSPath(RESOUCE_FORMAT % src.SKIPSUFFIX)
 
         dst.DIRNAME.makedirs()
+        MSG("install file %s" % dst)
         src.copyfile(dst)
 
         if folder.EXISTS:
