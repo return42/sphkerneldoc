@@ -13,7 +13,7 @@ been build with the :ref:`xref_dbtools`.
 
 .. hint::
 
-   The is **my** POC. Not all documented *here* would be a part of the linux
+   This **my** POC. Not all documented *here* would be a part of the linux
    kernel's documentation. E.g. the kernel-doc-HOWTO is my concept paper and not
    (yet) a part of linux kernel's doc (:ref:`xref_about_this_poc`).
 

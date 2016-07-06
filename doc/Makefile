@@ -40,7 +40,6 @@ AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
 
 # sphinx-build setup
 SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
-sphinx-static=sphinx-static
 
 # Sphinx projects, we call them *books* which is more common to authors.
 BOOKS_FOLDER = $(obj)/Documentation
@@ -314,7 +313,7 @@ quiet_cmd_intro = CLEAN  $@
 	rm -rf $(INDEX_CACHE)/articles   ;\
 	mkdir -p $(INDEX_CACHE)/articles ;\
 	ln -s -t $(INDEX_CACHE)/articles $(addprefix ../$(INDEX_REL),$(INDEX_ARTICLES) article_refs.txt ) ;\
-	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst sphinx-static poc_sphkerneldoc) ;\
+	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst poc_sphkerneldoc) ;\
 	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../doc/,conf.py) ;\
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2\
 		-d $(INDEX_CACHE)/.doctrees \
