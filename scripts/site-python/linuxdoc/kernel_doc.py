@@ -451,6 +451,10 @@ def main():
             if CMD.internal:
                 opts.use_names  = []
                 opts.skip_names = ctx.exported_symbols
+        else:
+            # if non section is choosen by use-name, internal or exclude, then
+            # use all DOC: sections
+            opts.use_all_docs = True
 
         parser = Parser(opts, translator)
         parser.parse()
@@ -1178,6 +1182,7 @@ class ParseOptions(Container):
 
         self.use_names     = []    # positiv list of names to print / empty list means "print all"
         self.skip_names    = []    # negativ list of names (not to print)
+        self.use_all_docs  = False # True/False print all "DOC:" sections
         self.no_header     = False # skip section header
         self.error_missing = True  # report missing names as errors / else warning
         self.verbose_warn  = True  # more warn messages
@@ -1679,7 +1684,9 @@ class Parser(SimpleLog):
             do_translate = False
         elif name in self.options.use_names:
             do_translate = True
-        elif not self.options.use_names and out_type != "DOC":
+        elif out_type != "DOC"  and not self.options.use_names:
+            do_translate = True
+        elif out_type == "DOC" and self.options.use_all_docs:
             do_translate = True
         if do_translate:
             self.translator.translated_names.add(name)

@@ -323,9 +323,18 @@ class KernelDoc(Directive):
             raise FaultyOption(
                 "kernel-doc refers to nonexisting document %s" % opts.fname)
 
-        if self.options:
-            opts.skip_preamble = True
-            opts.skip_epilog   = True
+        # always skip preamble and epilog in kernel-doc directives
+        opts.skip_preamble = True
+        opts.skip_epilog   = True
+
+        if ("doc" not in self.options
+            and "export" not in self.options
+            and "internal" not in self.options
+            and "functions" not in self.options
+            and "snippets" not in self.options):
+            # if no explicit content is selected, then print all, including all
+            # DOC sections
+            opts.use_all_docs = True
 
         if "doc" in self.options:
             opts.no_header = bool("no-header" in self.options)
