@@ -7,8 +7,10 @@
 kernel-doc HOWTO
 ================
 
-:Author: Tim <twaugh@redhat.com>
-:Author: Markus Heiser <markus.heiser@darmarIT.de>
+:author: Tim
+:address: twaugh@redhat.com
+:author: Markus Heiser
+:address: markus.heiser@darmarIT.de
 
 In order to provide embedded, 'C' friendly, easy to maintain, but consistent and
 extractable documentation of the functions and data structures in the Linux

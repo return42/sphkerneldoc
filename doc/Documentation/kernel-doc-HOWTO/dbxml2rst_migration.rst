@@ -40,7 +40,8 @@ whichever could cause an improper document. Here are some:
 .. caution::
 
    If you are willing to review a book, move the book from the
-  ``Documentation/books_migrated/<name>`` folder down to the
-  ``Documentation/<name>`` folder.
+   ``Documentation/books_migrated/<name>`` folder down to the
+   ``Documentation/<name>`` folder.
+
 
 

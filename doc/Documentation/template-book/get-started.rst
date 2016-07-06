@@ -3,9 +3,9 @@
 
 .. _get-started:
 
-*********************
-Get started with reST
-*********************
+***************************
+Get started with reST books
+***************************
 
 This chapter describes, how to create a reST_ *book* (aka sphinx-project) based
 on the ``Documentation/template-book``. To create only a *loose reST article*
