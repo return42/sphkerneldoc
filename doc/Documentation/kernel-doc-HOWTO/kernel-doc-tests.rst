@@ -63,6 +63,7 @@ and parses comments from ``all-in-a-tumble.c``.
     .. kernel-doc::  ./all-in-a-tumble.c
         :export:  ./all-in-a-tumble.h
         :module: example
+        :man-sect: 2
 
 .. admonition:: exported symbols
     :class: rst-example
@@ -70,6 +71,7 @@ and parses comments from ``all-in-a-tumble.c``.
     .. kernel-doc::  ./all-in-a-tumble.c
         :export:  ./all-in-a-tumble.h
         :module: example
+        :man-sect: 2
 
 
 Get documentation of internal symbols
