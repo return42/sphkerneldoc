@@ -5,7 +5,7 @@ ibmasm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     command_c
     dot_command_c

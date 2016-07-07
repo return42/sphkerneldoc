@@ -5,7 +5,7 @@ lockd
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clntlock_c
     clntproc_c

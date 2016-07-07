@@ -5,7 +5,7 @@ sh
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     boards/index
     drivers/index

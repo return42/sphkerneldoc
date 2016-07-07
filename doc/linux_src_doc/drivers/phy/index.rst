@@ -5,7 +5,7 @@ phy
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     phy-bcm-cygnus-pcie_c
     phy-core_c

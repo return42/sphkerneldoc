@@ -5,7 +5,7 @@ subdev
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bios/index
     secboot/index

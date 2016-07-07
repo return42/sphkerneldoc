@@ -5,7 +5,7 @@ mach-s3c24xx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cpufreq-utils_c
     iotiming-s3c2410_c

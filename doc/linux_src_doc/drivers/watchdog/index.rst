@@ -5,7 +5,7 @@ watchdog
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bfin_wdt_c
     booke_wdt_c

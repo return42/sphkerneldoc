@@ -5,7 +5,7 @@ cifs
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cifs_dfs_ref_c
     dns_resolve_c

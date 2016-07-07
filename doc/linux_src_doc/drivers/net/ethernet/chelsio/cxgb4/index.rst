@@ -5,7 +5,7 @@ cxgb4
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cxgb4_debugfs_c
     cxgb4_ethtool_c

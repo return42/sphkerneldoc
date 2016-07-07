@@ -5,7 +5,7 @@ target
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     tcm_fc/index
     target_core_transport_c

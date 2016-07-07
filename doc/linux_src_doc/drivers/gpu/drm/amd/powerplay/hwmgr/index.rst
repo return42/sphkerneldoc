@@ -5,7 +5,7 @@ hwmgr
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     fiji_hwmgr_c
     fiji_thermal_c

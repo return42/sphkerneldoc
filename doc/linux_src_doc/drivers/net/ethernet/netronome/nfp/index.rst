@@ -5,7 +5,7 @@ nfp
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     nfp_net_common_c
     nfp_net_ctrl_h

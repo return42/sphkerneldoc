@@ -5,7 +5,7 @@ buffer
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     industrialio-buffer-dma_c
     industrialio-buffer-dmaengine_c

@@ -5,6 +5,6 @@ int340x_thermal
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     acpi_thermal_rel_c

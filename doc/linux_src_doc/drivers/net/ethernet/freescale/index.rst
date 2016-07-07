@@ -5,7 +5,7 @@ freescale
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     fman/index
     fec_main_c

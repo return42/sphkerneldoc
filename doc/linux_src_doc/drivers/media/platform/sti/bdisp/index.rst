@@ -5,7 +5,7 @@ bdisp
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bdisp-filter_h
     bdisp-hw_c

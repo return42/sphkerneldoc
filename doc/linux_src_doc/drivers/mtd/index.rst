@@ -5,7 +5,7 @@ mtd
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     devices/index
     maps/index

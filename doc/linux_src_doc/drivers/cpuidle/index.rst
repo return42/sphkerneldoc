@@ -5,7 +5,7 @@ cpuidle
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     governors/index
     coupled_c

@@ -5,7 +5,7 @@ vmwgfx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     device_include/index
     vmwgfx_binding_c

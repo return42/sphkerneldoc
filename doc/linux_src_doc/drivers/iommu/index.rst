@@ -5,7 +5,7 @@ iommu
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     amd_iommu_init_c
     dma-iommu_c

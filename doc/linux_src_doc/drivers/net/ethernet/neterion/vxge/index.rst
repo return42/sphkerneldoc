@@ -5,7 +5,7 @@ vxge
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     vxge-config_c
     vxge-config_h

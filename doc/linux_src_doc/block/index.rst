@@ -5,7 +5,7 @@ block
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     partitions/index
     badblocks_c

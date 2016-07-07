@@ -5,7 +5,7 @@ android
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ion/index
     uapi/index

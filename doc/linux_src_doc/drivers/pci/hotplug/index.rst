@@ -5,7 +5,7 @@ hotplug
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     acpi_pcihp_c
     acpiphp_core_c

@@ -5,7 +5,7 @@ btrfs
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     backref_c
     extent-tree_c

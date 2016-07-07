@@ -5,7 +5,7 @@ intersil
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hostap/index
     orinoco/index

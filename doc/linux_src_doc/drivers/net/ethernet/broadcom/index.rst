@@ -5,7 +5,7 @@ broadcom
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bnx2x/index
     bnxt/index

@@ -5,7 +5,7 @@ mach-omap2
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     am33xx-restart_c
     clkt2xxx_dpll_c

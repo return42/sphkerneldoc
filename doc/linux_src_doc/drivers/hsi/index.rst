@@ -5,7 +5,7 @@ hsi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clients/index
     controllers/index

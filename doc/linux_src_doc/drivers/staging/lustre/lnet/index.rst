@@ -5,7 +5,7 @@ lnet
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     klnds/index
     libcfs/index

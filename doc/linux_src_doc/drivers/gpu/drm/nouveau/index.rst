@@ -5,7 +5,7 @@ nouveau
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     dispnv04/index
     include/index

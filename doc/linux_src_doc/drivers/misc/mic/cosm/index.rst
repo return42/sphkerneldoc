@@ -5,7 +5,7 @@ cosm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cosm_debugfs_c
     cosm_main_c

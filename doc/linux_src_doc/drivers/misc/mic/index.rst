@@ -5,7 +5,7 @@ mic
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     card/index
     common/index

@@ -5,7 +5,7 @@ atheros
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     atl1c/index
     atl1e/index

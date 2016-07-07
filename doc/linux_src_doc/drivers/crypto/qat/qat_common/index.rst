@@ -5,7 +5,7 @@ qat_common
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     adf_admin_c
     adf_aer_c

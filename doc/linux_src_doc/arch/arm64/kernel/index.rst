@@ -5,7 +5,7 @@ kernel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cpuidle_c
     hw_breakpoint_c

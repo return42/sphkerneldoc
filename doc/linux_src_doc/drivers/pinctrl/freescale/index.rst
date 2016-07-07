@@ -5,7 +5,7 @@ freescale
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-imx1_h
     pinctrl-imx_h

@@ -5,7 +5,7 @@ firewire
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     core-device_c
     core-iso_c

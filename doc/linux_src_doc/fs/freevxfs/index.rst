@@ -5,7 +5,7 @@ freevxfs
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     vxfs_bmap_c
     vxfs_fshead_c

@@ -5,7 +5,7 @@ comedi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     drivers/index
     comedi_buf_c

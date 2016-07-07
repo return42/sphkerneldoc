@@ -5,7 +5,7 @@ include
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     asm/index
     cpu-sh2/index

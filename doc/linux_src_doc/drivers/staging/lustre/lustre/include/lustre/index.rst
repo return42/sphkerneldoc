@@ -5,7 +5,7 @@ lustre
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     lustre_idl_h
     lustre_user_h

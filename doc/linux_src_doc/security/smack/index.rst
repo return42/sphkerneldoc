@@ -5,7 +5,7 @@ smack
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     smack_access_c
     smack_lsm_c

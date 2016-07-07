@@ -5,7 +5,7 @@ drv-intf
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     exynos-fimc_h
     s3c_camif_h

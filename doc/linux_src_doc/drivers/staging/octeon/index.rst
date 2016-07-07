@@ -5,7 +5,7 @@ octeon
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ethernet-mdio_c
     ethernet-mem_c

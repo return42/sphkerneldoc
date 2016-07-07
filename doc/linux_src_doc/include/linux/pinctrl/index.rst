@@ -5,7 +5,7 @@ pinctrl
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     devinfo_h
     machine_h

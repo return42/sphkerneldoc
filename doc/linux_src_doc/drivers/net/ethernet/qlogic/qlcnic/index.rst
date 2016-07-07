@@ -5,7 +5,7 @@ qlcnic
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     qlcnic_83xx_init_c
     qlcnic_83xx_vnic_c

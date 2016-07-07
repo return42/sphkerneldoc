@@ -5,7 +5,7 @@ pci
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pci_dma_c
     tioca_provider_c

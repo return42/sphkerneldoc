@@ -5,7 +5,7 @@ boards
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     mach-dreamcast/index
     mach-x3proto/index

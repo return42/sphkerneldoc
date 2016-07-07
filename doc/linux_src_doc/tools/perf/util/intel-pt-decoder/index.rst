@@ -5,7 +5,7 @@ intel-pt-decoder
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     insn_c
     intel-pt-decoder_c

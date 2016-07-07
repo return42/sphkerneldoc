@@ -5,7 +5,7 @@ events
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     block_h
     context_tracking_h

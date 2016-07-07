@@ -5,7 +5,7 @@ ata
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ahci_xgene_c
     ata_generic_c

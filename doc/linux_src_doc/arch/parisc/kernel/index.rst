@@ -5,7 +5,7 @@ kernel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     drivers_c
     firmware_c

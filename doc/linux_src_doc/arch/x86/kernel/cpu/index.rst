@@ -5,7 +5,7 @@ cpu
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     microcode/index
     mtrr/index

@@ -5,7 +5,7 @@ qlogic
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     netxen/index
     qed/index

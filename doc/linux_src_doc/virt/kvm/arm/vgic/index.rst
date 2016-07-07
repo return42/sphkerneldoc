@@ -5,7 +5,7 @@ vgic
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     vgic-init_c
     vgic-kvm-device_c

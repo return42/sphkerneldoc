@@ -5,7 +5,7 @@ clients
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cmt_speech_c
     hsi_char_c

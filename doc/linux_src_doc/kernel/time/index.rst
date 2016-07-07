@@ -5,7 +5,7 @@ time
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     alarmtimer_c
     clockevents_c

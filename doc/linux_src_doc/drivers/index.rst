@@ -5,7 +5,7 @@ drivers
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     acpi/index
     amba/index

@@ -5,7 +5,7 @@ usbhid
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hid-pidff_c
     hid-quirks_c

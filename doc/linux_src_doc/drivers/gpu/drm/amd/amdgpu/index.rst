@@ -5,7 +5,7 @@ amdgpu
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     amdgpu_acp_c
     amdgpu_acpi_c

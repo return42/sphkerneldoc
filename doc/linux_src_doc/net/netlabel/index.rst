@@ -5,7 +5,7 @@ netlabel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     netlabel_addrlist_c
     netlabel_addrlist_h

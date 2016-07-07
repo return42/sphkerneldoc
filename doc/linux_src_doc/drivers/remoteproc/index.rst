@@ -5,7 +5,7 @@ remoteproc
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     da8xx_remoteproc_c
     omap_remoteproc_c

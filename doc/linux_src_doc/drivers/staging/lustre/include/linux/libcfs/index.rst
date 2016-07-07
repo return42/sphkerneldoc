@@ -5,7 +5,7 @@ libcfs
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     linux/index
     libcfs_cpu_h

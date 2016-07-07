@@ -5,7 +5,7 @@ bluetooth
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     btmrvl_main_c
     btmrvl_sdio_c

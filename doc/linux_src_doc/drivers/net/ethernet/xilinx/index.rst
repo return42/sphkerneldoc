@@ -5,7 +5,7 @@ xilinx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ll_temac_h
     ll_temac_main_c

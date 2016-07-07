@@ -5,7 +5,7 @@ avr32
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     kernel/index
     mach-at32ap/index

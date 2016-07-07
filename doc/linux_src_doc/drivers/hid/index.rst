@@ -5,7 +5,7 @@ hid
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     i2c-hid/index
     usbhid/index

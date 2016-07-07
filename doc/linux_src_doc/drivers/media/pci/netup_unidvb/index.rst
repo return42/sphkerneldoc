@@ -5,6 +5,6 @@ netup_unidvb
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     netup_unidvb_core_c

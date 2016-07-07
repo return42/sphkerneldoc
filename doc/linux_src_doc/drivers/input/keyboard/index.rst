@@ -5,7 +5,7 @@ keyboard
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     gpio_keys_c
     nomadik-ske-keypad_c

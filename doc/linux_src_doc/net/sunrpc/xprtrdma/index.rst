@@ -5,7 +5,7 @@ xprtrdma
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     backchannel_c
     frwr_ops_c

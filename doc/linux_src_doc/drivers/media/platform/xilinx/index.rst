@@ -5,7 +5,7 @@ xilinx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     xilinx-dma_c
     xilinx-dma_h

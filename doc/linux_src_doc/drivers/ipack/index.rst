@@ -5,7 +5,7 @@ ipack
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     carriers/index
     devices/index

@@ -5,7 +5,7 @@ power
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bq27xxx_battery_h
     charger-manager_h

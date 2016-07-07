@@ -5,7 +5,7 @@ asymmetric_keys
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     asymmetric_type_c
     pkcs7_parser_c

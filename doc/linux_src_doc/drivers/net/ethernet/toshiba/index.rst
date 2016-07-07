@@ -5,7 +5,7 @@ toshiba
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ps3_gelic_net_c
     spider_net_c

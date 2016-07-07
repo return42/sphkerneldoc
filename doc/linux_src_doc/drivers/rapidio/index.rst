@@ -5,7 +5,7 @@ rapidio
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     devices/index
     rio-access_c

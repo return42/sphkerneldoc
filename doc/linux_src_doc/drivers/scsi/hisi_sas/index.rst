@@ -5,7 +5,7 @@ hisi_sas
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hisi_sas_v1_hw_c
     hisi_sas_v2_hw_c

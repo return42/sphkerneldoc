@@ -5,7 +5,7 @@ s3c-camif
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     camif-core_c
     camif-core_h

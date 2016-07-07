@@ -5,7 +5,7 @@ hisilicon
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hns/index
     hns_mdio_c

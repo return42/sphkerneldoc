@@ -5,7 +5,7 @@ chelsio
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cxgb/index
     cxgb3/index

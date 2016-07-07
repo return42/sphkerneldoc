@@ -5,7 +5,7 @@ linux_src_doc
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     arch/index
     block/index

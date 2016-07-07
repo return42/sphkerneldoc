@@ -5,7 +5,7 @@ cpufreq
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cpufreq-nforce2_c
     cpufreq_c

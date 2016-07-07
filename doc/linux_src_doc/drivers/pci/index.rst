@@ -5,7 +5,7 @@ pci
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     host/index
     hotplug/index

@@ -5,7 +5,7 @@ regulator
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     consumer_h
     driver_h

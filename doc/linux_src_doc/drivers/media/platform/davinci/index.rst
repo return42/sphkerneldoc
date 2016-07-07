@@ -5,7 +5,7 @@ davinci
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     vpbe_c
     vpbe_display_c

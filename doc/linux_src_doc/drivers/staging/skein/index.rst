@@ -5,7 +5,7 @@ skein
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     skein_api_h
     threefish_api_h

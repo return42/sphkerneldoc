@@ -5,7 +5,7 @@ fwserial
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     dma_fifo_c
     dma_fifo_h

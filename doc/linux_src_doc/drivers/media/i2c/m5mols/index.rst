@@ -5,7 +5,7 @@ m5mols
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     m5mols_capture_c
     m5mols_controls_c

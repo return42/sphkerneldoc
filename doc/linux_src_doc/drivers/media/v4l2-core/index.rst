@@ -5,7 +5,7 @@ v4l2-core
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     tuner-core_c
     v4l2-compat-ioctl32_c

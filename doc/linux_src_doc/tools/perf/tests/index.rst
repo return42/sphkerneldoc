@@ -5,7 +5,7 @@ tests
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     keep-tracking_c
     parse-no-sample-id-all_c

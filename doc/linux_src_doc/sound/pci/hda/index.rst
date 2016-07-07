@@ -5,7 +5,7 @@ hda
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hda_auto_parser_c
     hda_beep_c

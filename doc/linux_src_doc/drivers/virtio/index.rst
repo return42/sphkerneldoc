@@ -5,7 +5,7 @@ virtio
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     virtio_pci_modern_c
     virtio_ring_c

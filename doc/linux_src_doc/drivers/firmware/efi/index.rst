@@ -5,7 +5,7 @@ efi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     libstub/index
     capsule-loader_c

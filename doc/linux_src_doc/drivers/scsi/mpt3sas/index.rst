@@ -5,7 +5,7 @@ mpt3sas
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     mpt3sas_base_c
     mpt3sas_base_h

@@ -5,7 +5,7 @@ omap3isp
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ispvideo_h
     omap3isp_h

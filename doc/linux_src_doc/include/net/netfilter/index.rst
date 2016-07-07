@@ -5,7 +5,7 @@ netfilter
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     nf_conntrack_seqadj_h
     nf_tables_h

@@ -5,7 +5,7 @@ xilinx_hwicap
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     buffer_icap_c
     fifo_icap_c

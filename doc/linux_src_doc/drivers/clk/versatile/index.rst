@@ -5,7 +5,7 @@ versatile
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clk-icst_c
     clk-icst_h

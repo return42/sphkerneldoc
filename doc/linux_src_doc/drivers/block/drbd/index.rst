@@ -5,7 +5,7 @@ drbd
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     drbd_actlog_c
     drbd_bitmap_c

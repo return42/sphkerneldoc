@@ -5,7 +5,7 @@ xen
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     events/index
     xen-pciback/index

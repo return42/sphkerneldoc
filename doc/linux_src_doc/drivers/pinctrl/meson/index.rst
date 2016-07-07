@@ -5,7 +5,7 @@ meson
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-meson_c
     pinctrl-meson_h

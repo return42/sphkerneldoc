@@ -5,7 +5,7 @@ serial
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ftdi_sio_ids_h
     generic_c

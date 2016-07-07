@@ -5,7 +5,7 @@ liquidio
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     lio_main_c
     octeon_console_c

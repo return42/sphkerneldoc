@@ -5,7 +5,7 @@ mediatek
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     mtk_disp_ovl_c
     mtk_disp_rdma_c

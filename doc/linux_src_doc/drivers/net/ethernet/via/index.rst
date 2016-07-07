@@ -5,7 +5,7 @@ via
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     via-rhine_c
     via-velocity_c

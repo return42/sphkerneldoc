@@ -5,7 +5,7 @@ libsas
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     sas_ata_c
     sas_discover_c

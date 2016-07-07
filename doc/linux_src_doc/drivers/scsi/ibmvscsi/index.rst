@@ -5,7 +5,7 @@ ibmvscsi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ibmvfc_c
     ibmvscsi_c

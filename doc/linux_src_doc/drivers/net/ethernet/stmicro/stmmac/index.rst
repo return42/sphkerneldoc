@@ -5,7 +5,7 @@ stmmac
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     common_h
     stmmac_main_c

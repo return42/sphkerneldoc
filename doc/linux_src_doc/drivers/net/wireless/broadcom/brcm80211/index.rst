@@ -5,7 +5,7 @@ brcm80211
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     brcmfmac/index
     brcmsmac/index

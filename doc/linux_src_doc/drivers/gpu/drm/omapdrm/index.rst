@@ -5,7 +5,7 @@ omapdrm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     omap_dmm_tiler_c
     omap_drv_c

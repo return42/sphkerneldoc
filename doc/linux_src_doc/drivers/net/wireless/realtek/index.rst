@@ -5,7 +5,7 @@ realtek
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     rtl818x/index
     rtlwifi/index

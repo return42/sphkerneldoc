@@ -5,7 +5,7 @@ samsung
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     exynos_tmu_c
     exynos_tmu_h

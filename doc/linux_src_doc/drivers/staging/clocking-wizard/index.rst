@@ -5,6 +5,6 @@ clocking-wizard
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clk-xlnx-clock-wizard_c

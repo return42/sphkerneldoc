@@ -5,7 +5,7 @@ asm-generic
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bitops/index
     atomic-gcc_h

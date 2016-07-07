@@ -5,7 +5,7 @@ tegra
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     soctherm-fuse_c
     soctherm_c

@@ -5,7 +5,7 @@ qcom
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-msm_c
     pinctrl-msm_h

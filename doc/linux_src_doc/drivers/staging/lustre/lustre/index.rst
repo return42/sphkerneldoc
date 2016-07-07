@@ -5,7 +5,7 @@ lustre
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     fld/index
     include/index

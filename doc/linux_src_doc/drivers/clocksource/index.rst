@@ -5,7 +5,7 @@ clocksource
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     arm_global_timer_c
     cadence_ttc_timer_c

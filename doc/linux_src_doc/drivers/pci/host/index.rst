@@ -5,7 +5,7 @@ host
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pci-hyperv_c
     pci-keystone-dw_c

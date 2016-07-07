@@ -5,7 +5,7 @@ mach-exynos
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     platsmp_c
     suspend_c

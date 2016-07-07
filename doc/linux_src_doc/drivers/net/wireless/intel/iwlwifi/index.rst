@@ -5,7 +5,7 @@ iwlwifi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     dvm/index
     mvm/index

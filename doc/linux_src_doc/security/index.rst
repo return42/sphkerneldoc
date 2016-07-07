@@ -5,7 +5,7 @@ security
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     apparmor/index
     integrity/index

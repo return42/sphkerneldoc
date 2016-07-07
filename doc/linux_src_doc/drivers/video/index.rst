@@ -5,7 +5,7 @@ video
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     backlight/index
     console/index

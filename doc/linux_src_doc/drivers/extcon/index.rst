@@ -5,7 +5,7 @@ extcon
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     extcon-adc-jack_c
     extcon-max14577_c

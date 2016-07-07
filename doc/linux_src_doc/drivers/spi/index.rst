@@ -5,7 +5,7 @@ spi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     spi-bitbang_c
     spi-cadence_c

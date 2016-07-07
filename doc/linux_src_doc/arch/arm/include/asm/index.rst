@@ -5,7 +5,7 @@ asm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hardware/index
     cacheflush_h

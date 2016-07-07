@@ -5,7 +5,7 @@ thermal
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     int340x_thermal/index
     samsung/index

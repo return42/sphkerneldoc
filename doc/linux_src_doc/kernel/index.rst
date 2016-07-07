@@ -5,7 +5,7 @@ kernel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bpf/index
     debug/index

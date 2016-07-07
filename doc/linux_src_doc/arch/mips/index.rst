@@ -5,7 +5,7 @@ mips
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cavium-octeon/index
     include/index

@@ -5,7 +5,7 @@ notify
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     inode_mark_c
     notification_c

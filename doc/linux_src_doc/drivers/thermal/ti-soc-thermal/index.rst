@@ -5,7 +5,7 @@ ti-soc-thermal
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     dra752-bandgap_h
     omap4xxx-bandgap_h

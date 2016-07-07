@@ -5,7 +5,7 @@ bnx2fc
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     bnx2fc_constants_h
     bnx2fc_fcoe_c

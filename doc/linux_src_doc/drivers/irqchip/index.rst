@@ -5,7 +5,7 @@ irqchip
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     exynos-combiner_c
     irq-crossbar_c

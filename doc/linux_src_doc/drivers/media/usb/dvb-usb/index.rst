@@ -5,7 +5,7 @@ dvb-usb
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cinergyT2-fe_c
     dib0700_devices_c

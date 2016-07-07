@@ -5,7 +5,7 @@ input
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     joystick/index
     keyboard/index

@@ -5,7 +5,7 @@ host
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     atmel-mci_c
     dw_mmc-exynos_c

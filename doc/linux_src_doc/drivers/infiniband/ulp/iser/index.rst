@@ -5,7 +5,7 @@ iser
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     iscsi_iser_c
     iscsi_iser_h

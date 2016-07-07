@@ -5,7 +5,7 @@ apparmor
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     include/index
     apparmorfs_c

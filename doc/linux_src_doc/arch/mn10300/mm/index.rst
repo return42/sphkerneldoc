@@ -5,7 +5,7 @@ mm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cache-flush-icache_c
     cache-inv-icache_c

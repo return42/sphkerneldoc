@@ -5,7 +5,7 @@ sparc
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     kernel/index
     lib/index

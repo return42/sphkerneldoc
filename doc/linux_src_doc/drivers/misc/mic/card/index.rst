@@ -5,7 +5,7 @@ card
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     mic_debugfs_c
     mic_device_c

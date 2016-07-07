@@ -5,6 +5,6 @@ device_include
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     svga3d_surfacedefs_h

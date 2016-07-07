@@ -5,7 +5,7 @@ cavium-octeon
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     crypto/index
     executive/index

@@ -5,7 +5,7 @@ rtl8188eu
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     core/index
     include/index

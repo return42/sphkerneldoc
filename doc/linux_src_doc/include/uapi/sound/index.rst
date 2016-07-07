@@ -5,7 +5,7 @@ sound
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     asequencer_h
     compress_offload_h

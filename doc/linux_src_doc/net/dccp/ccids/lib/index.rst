@@ -5,7 +5,7 @@ lib
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     loss_interval_c
     packet_history_c

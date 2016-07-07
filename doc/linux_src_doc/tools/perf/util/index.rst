@@ -5,7 +5,7 @@ util
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     intel-pt-decoder/index
     auxtrace_c

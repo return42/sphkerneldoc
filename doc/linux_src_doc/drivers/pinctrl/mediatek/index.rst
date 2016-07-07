@@ -5,7 +5,7 @@ mediatek
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-mt2701_c
     pinctrl-mtk-common_h

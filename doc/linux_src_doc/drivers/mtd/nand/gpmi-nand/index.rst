@@ -5,7 +5,7 @@ gpmi-nand
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     gpmi-lib_c
     gpmi-nand_h

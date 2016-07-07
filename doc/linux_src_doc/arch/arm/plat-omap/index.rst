@@ -5,7 +5,7 @@ plat-omap
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     include/index
     counter_32k_c

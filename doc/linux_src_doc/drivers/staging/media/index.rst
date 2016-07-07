@@ -5,7 +5,7 @@ media
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     davinci_vpfe/index
     lirc/index

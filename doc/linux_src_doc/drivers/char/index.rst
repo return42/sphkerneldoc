@@ -5,7 +5,7 @@ char
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     agp/index
     hw_random/index

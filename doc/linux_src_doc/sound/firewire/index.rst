@@ -5,7 +5,7 @@ firewire
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     amdtp-am824_c
     amdtp-stream_c

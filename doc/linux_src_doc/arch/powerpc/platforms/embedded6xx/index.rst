@@ -5,7 +5,7 @@ embedded6xx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     flipper-pic_c
     hlwd-pic_c

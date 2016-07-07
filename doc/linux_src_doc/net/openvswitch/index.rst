@@ -5,7 +5,7 @@ openvswitch
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     datapath_c
     datapath_h

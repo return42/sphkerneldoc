@@ -5,7 +5,7 @@ nomadik
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-abx500_c
     pinctrl-abx500_h

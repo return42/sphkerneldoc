@@ -5,7 +5,7 @@ plat-samsung
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     include/index
     pm-check_c

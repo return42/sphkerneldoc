@@ -5,7 +5,7 @@ mach-davinci
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     aemif_c
     board-dm646x-evm_c

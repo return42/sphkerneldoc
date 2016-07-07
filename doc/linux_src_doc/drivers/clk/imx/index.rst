@@ -5,7 +5,7 @@ imx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clk-fixup-div_c
     clk-fixup-mux_c

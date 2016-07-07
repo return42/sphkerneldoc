@@ -5,7 +5,7 @@ devices
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ipoctal_c
     ipoctal_h

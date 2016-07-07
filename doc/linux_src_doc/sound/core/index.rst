@@ -5,7 +5,7 @@ core
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     oss/index
     compress_offload_c

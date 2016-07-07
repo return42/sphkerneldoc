@@ -5,7 +5,7 @@ intel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     ipw2x00/index
     iwlegacy/index

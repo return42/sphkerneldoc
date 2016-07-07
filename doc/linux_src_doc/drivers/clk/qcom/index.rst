@@ -5,7 +5,7 @@ qcom
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     clk-alpha-pll_h
     clk-branch_h

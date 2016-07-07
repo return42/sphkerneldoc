@@ -5,7 +5,7 @@ sound
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     core/index
     drivers/index

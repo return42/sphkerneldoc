@@ -5,7 +5,7 @@ executive
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cvmx-cmd-queue_c
     cvmx-helper-board_c

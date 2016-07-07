@@ -5,7 +5,7 @@ wusbcore
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pal_c
     reservation_c

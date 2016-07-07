@@ -5,7 +5,7 @@ linux
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     scatterlist_h
     virtio_config_h

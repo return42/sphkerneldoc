@@ -5,7 +5,7 @@ powerpc
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     boot/index
     include/index

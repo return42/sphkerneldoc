@@ -5,7 +5,7 @@ scsi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     aacraid/index
     aic94xx/index

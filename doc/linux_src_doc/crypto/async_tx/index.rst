@@ -5,7 +5,7 @@ async_tx
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     async_memcpy_c
     async_pq_c

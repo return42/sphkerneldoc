@@ -5,7 +5,7 @@ hwspinlock
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     hwspinlock_core_c
     hwspinlock_internal_h

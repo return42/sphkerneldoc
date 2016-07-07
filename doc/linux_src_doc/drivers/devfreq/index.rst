@@ -5,7 +5,7 @@ devfreq
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     devfreq-event_c
     devfreq_c

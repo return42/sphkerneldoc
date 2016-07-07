@@ -5,7 +5,7 @@ csiostor
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     csio_hw_c
     csio_init_c

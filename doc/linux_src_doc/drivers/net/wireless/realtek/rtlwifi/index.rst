@@ -5,7 +5,7 @@ rtlwifi
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     rtl8192cu/index
     rtl8192ee/index

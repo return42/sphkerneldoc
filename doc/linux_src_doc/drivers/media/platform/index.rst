@@ -5,7 +5,7 @@ platform
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     am437x/index
     davinci/index

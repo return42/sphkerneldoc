@@ -5,7 +5,7 @@ include
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     apparmor_h
     context_h

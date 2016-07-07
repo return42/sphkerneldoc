@@ -5,7 +5,7 @@ staging
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     android/index
     clocking-wizard/index

@@ -5,7 +5,7 @@ octeon
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     cvmx-bootmem_h
     cvmx-cmd-queue_h

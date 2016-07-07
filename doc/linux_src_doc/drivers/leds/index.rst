@@ -5,7 +5,7 @@ leds
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     trigger/index
     led-class_c

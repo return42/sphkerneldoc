@@ -5,7 +5,7 @@ bnx2i
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     57xx_iscsi_constants_h
     bnx2i_h

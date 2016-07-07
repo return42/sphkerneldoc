@@ -5,7 +5,7 @@ amd
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     amdgpu/index
     amdkfd/index

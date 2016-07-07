@@ -5,7 +5,7 @@ megaraid
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     mbox_defs_h
     mega_common_h

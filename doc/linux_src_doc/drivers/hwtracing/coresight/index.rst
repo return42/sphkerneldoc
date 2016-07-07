@@ -5,7 +5,7 @@ coresight
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     coresight-etb10_c
     coresight-etm-perf_c

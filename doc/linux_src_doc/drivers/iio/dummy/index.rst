@@ -5,7 +5,7 @@ dummy
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     iio_dummy_evgen_c
     iio_simple_dummy_buffer_c

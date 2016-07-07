@@ -5,7 +5,7 @@ samsung
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pinctrl-exynos5440_c
     pinctrl-exynos_h

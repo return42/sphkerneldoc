@@ -5,7 +5,7 @@ isdn
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     capi/index
     gigaset/index

@@ -5,7 +5,7 @@ intel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     atom/index
     baytrail/index

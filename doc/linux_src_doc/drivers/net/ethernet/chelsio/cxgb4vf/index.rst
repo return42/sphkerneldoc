@@ -5,7 +5,7 @@ cxgb4vf
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     adapter_h
     cxgb4vf_main_c

@@ -5,7 +5,7 @@ pch_gbe
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     pch_gbe_api_c
     pch_gbe_ethtool_c

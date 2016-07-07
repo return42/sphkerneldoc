@@ -5,7 +5,7 @@ sti
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     sti_compositor_h
     sti_gdp_c

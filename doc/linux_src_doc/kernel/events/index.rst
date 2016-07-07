@@ -5,7 +5,7 @@ events
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     core_c
     hw_breakpoint_c

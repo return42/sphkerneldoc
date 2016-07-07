@@ -5,7 +5,7 @@ tpm
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     tpm-chip_c
     tpm-interface_c

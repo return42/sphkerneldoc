@@ -5,7 +5,7 @@ atmel
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     atmel-pcm-dma_c
     atmel_ssc_dai_c

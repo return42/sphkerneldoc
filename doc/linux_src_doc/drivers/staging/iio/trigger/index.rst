@@ -5,6 +5,6 @@ trigger
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     iio-trig-bfin-timer_h

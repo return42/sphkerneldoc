@@ -5,7 +5,7 @@ memory
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     samsung/index
     emif_c

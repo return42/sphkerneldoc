@@ -5,7 +5,7 @@ power
 ================================================================================
 
 .. toctree::
-   :maxdepth: 1
+    :maxdepth: 1
 
     avs/index
     reset/index
