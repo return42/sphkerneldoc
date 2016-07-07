@@ -7,5 +7,5 @@ lib
 .. toctree::
    :maxdepth: 1
 
-   spinlock_c
-   string_c
+    spinlock_c
+    string_c

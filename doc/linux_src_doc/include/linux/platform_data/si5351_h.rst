@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-si5351.h
-========
-
+.. src-file: include/linux/platform_data/si5351.h
 
 .. _`si5351_pll_src`:
 
 enum si5351_pll_src
 ===================
 
-.. c:type:: si5351_pll_src
+.. c:type:: enum si5351_pll_src
 
     Si5351 pll clock source
-
 
 .. _`si5351_pll_src.definition`:
 
@@ -23,36 +18,33 @@ Definition
 .. code-block:: c
 
     enum si5351_pll_src {
-      SI5351_PLL_SRC_DEFAULT,
-      SI5351_PLL_SRC_XTAL,
-      SI5351_PLL_SRC_CLKIN
+        SI5351_PLL_SRC_DEFAULT,
+        SI5351_PLL_SRC_XTAL,
+        SI5351_PLL_SRC_CLKIN
     };
-
 
 .. _`si5351_pll_src.constants`:
 
 Constants
 ---------
 
-:``SI5351_PLL_SRC_DEFAULT``:
+SI5351_PLL_SRC_DEFAULT
     default, do not change eeprom config
 
-:``SI5351_PLL_SRC_XTAL``:
+SI5351_PLL_SRC_XTAL
     pll source clock is XTAL input
 
-:``SI5351_PLL_SRC_CLKIN``:
+SI5351_PLL_SRC_CLKIN
     pll source clock is CLKIN input (Si5351C only)
-
 
 .. _`si5351_multisynth_src`:
 
 enum si5351_multisynth_src
 ==========================
 
-.. c:type:: si5351_multisynth_src
+.. c:type:: enum si5351_multisynth_src
 
     Si5351 multisynth clock source
-
 
 .. _`si5351_multisynth_src.definition`:
 
@@ -62,36 +54,33 @@ Definition
 .. code-block:: c
 
     enum si5351_multisynth_src {
-      SI5351_MULTISYNTH_SRC_DEFAULT,
-      SI5351_MULTISYNTH_SRC_VCO0,
-      SI5351_MULTISYNTH_SRC_VCO1
+        SI5351_MULTISYNTH_SRC_DEFAULT,
+        SI5351_MULTISYNTH_SRC_VCO0,
+        SI5351_MULTISYNTH_SRC_VCO1
     };
-
 
 .. _`si5351_multisynth_src.constants`:
 
 Constants
 ---------
 
-:``SI5351_MULTISYNTH_SRC_DEFAULT``:
+SI5351_MULTISYNTH_SRC_DEFAULT
     default, do not change eeprom config
 
-:``SI5351_MULTISYNTH_SRC_VCO0``:
+SI5351_MULTISYNTH_SRC_VCO0
     multisynth source clock is VCO0
 
-:``SI5351_MULTISYNTH_SRC_VCO1``:
+SI5351_MULTISYNTH_SRC_VCO1
     multisynth source clock is VCO1/VXCO
-
 
 .. _`si5351_clkout_src`:
 
 enum si5351_clkout_src
 ======================
 
-.. c:type:: si5351_clkout_src
+.. c:type:: enum si5351_clkout_src
 
     Si5351 clock output clock source
-
 
 .. _`si5351_clkout_src.definition`:
 
@@ -101,45 +90,42 @@ Definition
 .. code-block:: c
 
     enum si5351_clkout_src {
-      SI5351_CLKOUT_SRC_DEFAULT,
-      SI5351_CLKOUT_SRC_MSYNTH_N,
-      SI5351_CLKOUT_SRC_MSYNTH_0_4,
-      SI5351_CLKOUT_SRC_XTAL,
-      SI5351_CLKOUT_SRC_CLKIN
+        SI5351_CLKOUT_SRC_DEFAULT,
+        SI5351_CLKOUT_SRC_MSYNTH_N,
+        SI5351_CLKOUT_SRC_MSYNTH_0_4,
+        SI5351_CLKOUT_SRC_XTAL,
+        SI5351_CLKOUT_SRC_CLKIN
     };
-
 
 .. _`si5351_clkout_src.constants`:
 
 Constants
 ---------
 
-:``SI5351_CLKOUT_SRC_DEFAULT``:
+SI5351_CLKOUT_SRC_DEFAULT
     default, do not change eeprom config
 
-:``SI5351_CLKOUT_SRC_MSYNTH_N``:
+SI5351_CLKOUT_SRC_MSYNTH_N
     clkout N source clock is multisynth N
 
-:``SI5351_CLKOUT_SRC_MSYNTH_0_4``:
+SI5351_CLKOUT_SRC_MSYNTH_0_4
     clkout N source clock is multisynth 0 (N<4)
     or 4 (N>=4)
 
-:``SI5351_CLKOUT_SRC_XTAL``:
+SI5351_CLKOUT_SRC_XTAL
     clkout N source clock is XTAL
 
-:``SI5351_CLKOUT_SRC_CLKIN``:
+SI5351_CLKOUT_SRC_CLKIN
     clkout N source clock is CLKIN (Si5351C only)
-
 
 .. _`si5351_drive_strength`:
 
 enum si5351_drive_strength
 ==========================
 
-.. c:type:: si5351_drive_strength
+.. c:type:: enum si5351_drive_strength
 
     Si5351 clock output drive strength
-
 
 .. _`si5351_drive_strength.definition`:
 
@@ -149,44 +135,41 @@ Definition
 .. code-block:: c
 
     enum si5351_drive_strength {
-      SI5351_DRIVE_DEFAULT,
-      SI5351_DRIVE_2MA,
-      SI5351_DRIVE_4MA,
-      SI5351_DRIVE_6MA,
-      SI5351_DRIVE_8MA
+        SI5351_DRIVE_DEFAULT,
+        SI5351_DRIVE_2MA,
+        SI5351_DRIVE_4MA,
+        SI5351_DRIVE_6MA,
+        SI5351_DRIVE_8MA
     };
-
 
 .. _`si5351_drive_strength.constants`:
 
 Constants
 ---------
 
-:``SI5351_DRIVE_DEFAULT``:
+SI5351_DRIVE_DEFAULT
     default, do not change eeprom config
 
-:``SI5351_DRIVE_2MA``:
+SI5351_DRIVE_2MA
     2mA clock output drive strength
 
-:``SI5351_DRIVE_4MA``:
+SI5351_DRIVE_4MA
     4mA clock output drive strength
 
-:``SI5351_DRIVE_6MA``:
+SI5351_DRIVE_6MA
     6mA clock output drive strength
 
-:``SI5351_DRIVE_8MA``:
+SI5351_DRIVE_8MA
     8mA clock output drive strength
-
 
 .. _`si5351_disable_state`:
 
 enum si5351_disable_state
 =========================
 
-.. c:type:: si5351_disable_state
+.. c:type:: enum si5351_disable_state
 
     Si5351 clock output disable state
-
 
 .. _`si5351_disable_state.definition`:
 
@@ -196,45 +179,42 @@ Definition
 .. code-block:: c
 
     enum si5351_disable_state {
-      SI5351_DISABLE_DEFAULT,
-      SI5351_DISABLE_LOW,
-      SI5351_DISABLE_HIGH,
-      SI5351_DISABLE_FLOATING,
-      SI5351_DISABLE_NEVER
+        SI5351_DISABLE_DEFAULT,
+        SI5351_DISABLE_LOW,
+        SI5351_DISABLE_HIGH,
+        SI5351_DISABLE_FLOATING,
+        SI5351_DISABLE_NEVER
     };
-
 
 .. _`si5351_disable_state.constants`:
 
 Constants
 ---------
 
-:``SI5351_DISABLE_DEFAULT``:
+SI5351_DISABLE_DEFAULT
     default, do not change eeprom config
 
-:``SI5351_DISABLE_LOW``:
+SI5351_DISABLE_LOW
     CLKx is set to a LOW state when disabled
 
-:``SI5351_DISABLE_HIGH``:
+SI5351_DISABLE_HIGH
     CLKx is set to a HIGH state when disabled
 
-:``SI5351_DISABLE_FLOATING``:
+SI5351_DISABLE_FLOATING
     CLKx is set to a FLOATING state when
     disabled
 
-:``SI5351_DISABLE_NEVER``:
+SI5351_DISABLE_NEVER
     CLKx is NEVER disabled
-
 
 .. _`si5351_clkout_config`:
 
 struct si5351_clkout_config
 ===========================
 
-.. c:type:: si5351_clkout_config
+.. c:type:: struct si5351_clkout_config
 
     Si5351 clock output configuration
-
 
 .. _`si5351_clkout_config.definition`:
 
@@ -243,47 +223,46 @@ Definition
 
 .. code-block:: c
 
-  struct si5351_clkout_config {
-    enum si5351_multisynth_src multisynth_src;
-    enum si5351_clkout_src clkout_src;
-    enum si5351_drive_strength drive;
-    bool pll_master;
-    unsigned long rate;
-  };
-
+    struct si5351_clkout_config {
+        enum si5351_multisynth_src multisynth_src;
+        enum si5351_clkout_src clkout_src;
+        enum si5351_drive_strength drive;
+        enum si5351_disable_state disable_state;
+        bool pll_master;
+        unsigned long rate;
+    }
 
 .. _`si5351_clkout_config.members`:
 
 Members
 -------
 
-:``multisynth_src``:
+multisynth_src
     multisynth source clock
 
-:``clkout_src``:
+clkout_src
     clkout source clock
 
-:``drive``:
+drive
     output drive strength
 
-:``pll_master``:
+disable_state
+    *undescribed*
+
+pll_master
     if true, clkout can also change pll rate
 
-:``rate``:
+rate
     initial clkout rate, or default if 0
-
-
-
 
 .. _`si5351_platform_data`:
 
 struct si5351_platform_data
 ===========================
 
-.. c:type:: si5351_platform_data
+.. c:type:: struct si5351_platform_data
 
     Platform data for the Si5351 clock driver
-
 
 .. _`si5351_platform_data.definition`:
 
@@ -292,21 +271,21 @@ Definition
 
 .. code-block:: c
 
-  struct si5351_platform_data {
-    enum si5351_pll_src pll_src[2];
-    struct si5351_clkout_config clkout[8];
-  };
-
+    struct si5351_platform_data {
+        enum si5351_pll_src pll_src[2];
+        struct si5351_clkout_config clkout[8];
+    }
 
 .. _`si5351_platform_data.members`:
 
 Members
 -------
 
-:``pll_src[2]``:
+pll_src
     array of pll source clock setting
 
-:``clkout[8]``:
+clkout
     array of clkout configuration
 
+.. This file was automatic generated / don't edit.
 

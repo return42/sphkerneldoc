@@ -7,9 +7,9 @@ gadget
 .. toctree::
    :maxdepth: 1
 
-   composite_c
-   config_c
-   epautoconf_c
-   usbstring_c
-   function/index
-   udc/index
+    function/index
+    udc/index
+    composite_c
+    config_c
+    epautoconf_c
+    usbstring_c

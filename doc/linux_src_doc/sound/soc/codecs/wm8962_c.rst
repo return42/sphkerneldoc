@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-wm8962.c
-========
-
+.. src-file: sound/soc/codecs/wm8962.c
 
 .. _`wm8962_mic_detect`:
 
 wm8962_mic_detect
 =================
 
-.. c:function:: int wm8962_mic_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack)
+.. c:function:: int wm8962_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack)
 
     Enable microphone detection via the WM8962 IRQ
 
@@ -20,8 +16,6 @@ wm8962_mic_detect
     :param struct snd_soc_jack \*jack:
         jack to report detection events on
 
-
-
 .. _`wm8962_mic_detect.description`:
 
 Description
@@ -30,7 +24,9 @@ Description
 Enable microphone detection via IRQ on the WM8962.  If GPIOs are
 being used to bring out signals to the processor then only platform
 data configuration is needed for WM8962 and processor GPIOs should
-be configured using :c:func:`snd_soc_jack_add_gpios` instead.
+be configured using \ :c:func:`snd_soc_jack_add_gpios`\  instead.
 
 If no jack is supplied detection will be disabled.
+
+.. This file was automatic generated / don't edit.
 

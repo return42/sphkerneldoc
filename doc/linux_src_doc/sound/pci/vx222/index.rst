@@ -7,4 +7,4 @@ vx222
 .. toctree::
    :maxdepth: 1
 
-   vx222_ops_c
+    vx222_ops_c

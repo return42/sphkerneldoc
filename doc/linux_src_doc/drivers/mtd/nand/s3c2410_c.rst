@@ -1,0 +1,289 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/mtd/nand/s3c2410.c
+
+.. _`s3c2410_nand_mtd`:
+
+struct s3c2410_nand_mtd
+=======================
+
+.. c:type:: struct s3c2410_nand_mtd
+
+    driver MTD structure
+
+.. _`s3c2410_nand_mtd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct s3c2410_nand_mtd {
+        struct nand_chip chip;
+        struct s3c2410_nand_set *set;
+        struct s3c2410_nand_info *info;
+        int scan_res;
+    }
+
+.. _`s3c2410_nand_mtd.members`:
+
+Members
+-------
+
+chip
+    The NAND chip information.
+
+set
+    The platform information supplied for this set of NAND chips.
+
+info
+    Link back to the hardware information.
+
+scan_res
+    The result from calling \ :c:func:`nand_scan_ident`\ .
+
+.. _`s3c2410_nand_info`:
+
+struct s3c2410_nand_info
+========================
+
+.. c:type:: struct s3c2410_nand_info
+
+    NAND controller state.
+
+.. _`s3c2410_nand_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct s3c2410_nand_info {
+        struct nand_hw_control controller;
+        struct s3c2410_nand_mtd *mtds;
+        struct s3c2410_platform_nand *platform;
+        struct device *device;
+        struct clk *clk;
+        void __iomem *regs;
+        void __iomem *sel_reg;
+        int sel_bit;
+        int mtd_count;
+        unsigned long save_sel;
+        unsigned long clk_rate;
+        enum s3c_nand_clk_state clk_state;
+        enum s3c_cpu_type cpu_type;
+        #ifdef CONFIG_CPU_FREQ
+        struct notifier_block freq_transition;
+        #endif
+    }
+
+.. _`s3c2410_nand_info.members`:
+
+Members
+-------
+
+controller
+    *undescribed*
+
+mtds
+    An array of MTD instances on this controoler.
+
+platform
+    The platform data for this board.
+
+device
+    The platform device we bound to.
+
+clk
+    The clock resource for this controller.
+
+regs
+    The area mapped for the hardware registers.
+
+sel_reg
+    Pointer to the register controlling the NAND selection.
+
+sel_bit
+    The bit in \ ``sel_reg``\  to select the NAND chip.
+
+mtd_count
+    The number of MTDs created from this controller.
+
+save_sel
+    The contents of \ ``sel_reg``\  to be saved over suspend.
+
+clk_rate
+    The clock rate from \ ``clk``\ .
+
+clk_state
+    The current clock state.
+
+cpu_type
+    The exact type of this controller.
+
+freq_transition
+    *undescribed*
+
+.. _`s3c2410_nand_clk_set_state`:
+
+s3c2410_nand_clk_set_state
+==========================
+
+.. c:function:: void s3c2410_nand_clk_set_state(struct s3c2410_nand_info *info, enum s3c_nand_clk_state new_state)
+
+    Enable, disable or suspend NAND clock.
+
+    :param struct s3c2410_nand_info \*info:
+        The controller instance.
+
+    :param enum s3c_nand_clk_state new_state:
+        State to which clock should be set.
+
+.. _`s3c_nand_calc_rate`:
+
+s3c_nand_calc_rate
+==================
+
+.. c:function:: int s3c_nand_calc_rate(int wanted, unsigned long clk, int max)
+
+    calculate timing data.
+
+    :param int wanted:
+        The cycle time in nanoseconds.
+
+    :param unsigned long clk:
+        The clock rate in kHz.
+
+    :param int max:
+        The maximum divider value.
+
+.. _`s3c_nand_calc_rate.description`:
+
+Description
+-----------
+
+Calculate the timing value from the given parameters.
+
+.. _`s3c2410_nand_setrate`:
+
+s3c2410_nand_setrate
+====================
+
+.. c:function:: int s3c2410_nand_setrate(struct s3c2410_nand_info *info)
+
+    setup controller timing information.
+
+    :param struct s3c2410_nand_info \*info:
+        The controller instance.
+
+.. _`s3c2410_nand_setrate.description`:
+
+Description
+-----------
+
+Given the information supplied by the platform, calculate and set
+the necessary timing registers in the hardware to generate the
+necessary timing cycles to the hardware.
+
+.. _`s3c2410_nand_inithw`:
+
+s3c2410_nand_inithw
+===================
+
+.. c:function:: int s3c2410_nand_inithw(struct s3c2410_nand_info *info)
+
+    basic hardware initialisation
+
+    :param struct s3c2410_nand_info \*info:
+        The hardware state.
+
+.. _`s3c2410_nand_inithw.description`:
+
+Description
+-----------
+
+Do the basic initialisation of the hardware, using \ :c:func:`s3c2410_nand_setrate`\ 
+to setup the hardware access speeds and set the controller to be enabled.
+
+.. _`s3c2410_nand_select_chip`:
+
+s3c2410_nand_select_chip
+========================
+
+.. c:function:: void s3c2410_nand_select_chip(struct mtd_info *mtd, int chip)
+
+    select the given nand chip
+
+    :param struct mtd_info \*mtd:
+        The MTD instance for this chip.
+
+    :param int chip:
+        The chip number.
+
+.. _`s3c2410_nand_select_chip.description`:
+
+Description
+-----------
+
+This is called by the MTD layer to either select a given chip for the
+\ ``mtd``\  instance, or to indicate that the access has finished and the
+chip can be de-selected.
+
+The routine ensures that the nFCE line is correctly setup, and any
+platform specific selection code is called to route nFCE to the specific
+chip.
+
+.. _`s3c2410_nand_init_chip`:
+
+s3c2410_nand_init_chip
+======================
+
+.. c:function:: void s3c2410_nand_init_chip(struct s3c2410_nand_info *info, struct s3c2410_nand_mtd *nmtd, struct s3c2410_nand_set *set)
+
+    initialise a single instance of an chip
+
+    :param struct s3c2410_nand_info \*info:
+        The base NAND controller the chip is on.
+
+    :param struct s3c2410_nand_mtd \*nmtd:
+        The new controller MTD instance to fill in.
+
+    :param struct s3c2410_nand_set \*set:
+        The information passed from the board specific platform data.
+
+.. _`s3c2410_nand_init_chip.description`:
+
+Description
+-----------
+
+Initialise the given \ ``nmtd``\  from the information in \ ``info``\  and \ ``set``\ . This
+readies the structure for use with the MTD layer functions by ensuring
+all pointers are setup and the necessary control routines selected.
+
+.. _`s3c2410_nand_update_chip`:
+
+s3c2410_nand_update_chip
+========================
+
+.. c:function:: void s3c2410_nand_update_chip(struct s3c2410_nand_info *info, struct s3c2410_nand_mtd *nmtd)
+
+    post probe update
+
+    :param struct s3c2410_nand_info \*info:
+        The controller instance.
+
+    :param struct s3c2410_nand_mtd \*nmtd:
+        The driver version of the MTD instance.
+
+.. _`s3c2410_nand_update_chip.description`:
+
+Description
+-----------
+
+This routine is called after the chip probe has successfully completed
+and the relevant per-chip information updated. This call ensure that
+we update the internal state accordingly.
+
+The internal state is currently limited to the ECC state information.
+
+.. This file was automatic generated / don't edit.
+

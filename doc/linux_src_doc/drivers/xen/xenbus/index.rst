@@ -7,4 +7,5 @@ xenbus
 .. toctree::
    :maxdepth: 1
 
-   xenbus_client_c
+    xenbus_client_c
+    xenbus_comms_c

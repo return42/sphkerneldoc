@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-x25.h
-=====
-
+.. src-file: include/net/x25.h
 
 .. _`x25_route`:
 
 struct x25_route
 ================
 
-.. c:type:: x25_route
+.. c:type:: struct x25_route
 
-    x25 routing entry @node - entry in x25_list_lock @address - Start of address range @sigdigits - Number of sig digits @dev - More than one for MLP @refcnt - reference counter
-
+    x25 routing entry \ ``node``\  - entry in x25_list_lock \ ``address``\  - Start of address range \ ``sigdigits``\  - Number of sig digits \ ``dev``\  - More than one for MLP \ ``refcnt``\  - reference counter
 
 .. _`x25_route.definition`:
 
@@ -22,13 +17,33 @@ Definition
 
 .. code-block:: c
 
-  struct x25_route {
-  };
-
+    struct x25_route {
+        struct list_head node;
+        struct x25_address address;
+        unsigned int sigdigits;
+        struct net_device *dev;
+        atomic_t refcnt;
+    }
 
 .. _`x25_route.members`:
 
 Members
 -------
 
+node
+    *undescribed*
+
+address
+    *undescribed*
+
+sigdigits
+    *undescribed*
+
+dev
+    *undescribed*
+
+refcnt
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

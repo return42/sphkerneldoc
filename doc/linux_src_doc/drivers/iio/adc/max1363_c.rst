@@ -1,0 +1,182 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/adc/max1363.c
+
+.. _`max1363_mode`:
+
+struct max1363_mode
+===================
+
+.. c:type:: struct max1363_mode
+
+    scan mode information
+
+.. _`max1363_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct max1363_mode {
+        int8_t conf;
+        unsigned long modemask\[BITS_TO_LONGS(MAX1363_MAX_CHANNELS)\];
+    }
+
+.. _`max1363_mode.members`:
+
+Members
+-------
+
+conf
+    The corresponding value of the configuration register
+
+.. _`max1363_chip_info`:
+
+struct max1363_chip_info
+========================
+
+.. c:type:: struct max1363_chip_info
+
+    chip specifc information
+
+.. _`max1363_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct max1363_chip_info {
+        const struct iio_info *info;
+        const struct iio_chan_spec *channels;
+        int num_channels;
+        const enum max1363_modes *mode_list;
+        enum max1363_modes default_mode;
+        u16 int_vref_mv;
+        u8 num_modes;
+        u8 bits;
+    }
+
+.. _`max1363_chip_info.members`:
+
+Members
+-------
+
+info
+    iio core function callbacks structure
+
+channels
+    channel specification
+
+num_channels
+    number of channels
+
+mode_list
+    array of available scan modes
+
+default_mode
+    the scan mode in which the chip starts up
+
+int_vref_mv
+    the internal reference voltage
+
+num_modes
+    number of modes
+
+bits
+    accuracy of the adc in bits
+
+.. _`max1363_state`:
+
+struct max1363_state
+====================
+
+.. c:type:: struct max1363_state
+
+    driver instance specific data
+
+.. _`max1363_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct max1363_state {
+        struct i2c_client *client;
+        u8 setupbyte;
+        u8 configbyte;
+        const struct max1363_chip_info *chip_info;
+        const struct max1363_mode *current_mode;
+        u32 requestedmask;
+        struct regulator *reg;
+        bool monitor_on;
+        unsigned int monitor_speed:3;
+        u8 mask_high;
+        u8 mask_low;
+        s16 thresh_high[8];
+        s16 thresh_low[8];
+        struct regulator *vref;
+        u32 vref_uv;
+        int (* send) (const struct i2c_client *client,const char *buf, int count);
+        int (* recv) (const struct i2c_client *client,char *buf, int count);
+    }
+
+.. _`max1363_state.members`:
+
+Members
+-------
+
+client
+    i2c_client
+
+setupbyte
+    cache of current device setup byte
+
+configbyte
+    cache of current device config byte
+
+chip_info
+    chip model specific constants, available modes, etc.
+
+current_mode
+    the scan mode of this chip
+
+requestedmask
+    a valid requested set of channels
+
+reg
+    supply regulator
+
+monitor_on
+    whether monitor mode is enabled
+
+monitor_speed
+    parameter corresponding to device monitor speed setting
+
+mask_high
+    bitmask for enabled high thresholds
+
+mask_low
+    bitmask for enabled low thresholds
+
+thresh_high
+    high threshold values
+
+thresh_low
+    low threshold values
+
+vref
+    Reference voltage regulator
+
+vref_uv
+    Actual (external or internal) reference voltage
+
+send
+    function used to send data to the chip
+
+recv
+    function used to receive data from the chip
+
+.. This file was automatic generated / don't edit.
+

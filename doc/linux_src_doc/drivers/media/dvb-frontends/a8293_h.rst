@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-a8293.h
-=======
-
+.. src-file: drivers/media/dvb-frontends/a8293.h
 
 .. _`a8293_platform_data`:
 
 struct a8293_platform_data
 ==========================
 
-.. c:type:: a8293_platform_data
+.. c:type:: struct a8293_platform_data
 
     Platform data for the a8293 driver
-
 
 .. _`a8293_platform_data.definition`:
 
@@ -22,17 +17,17 @@ Definition
 
 .. code-block:: c
 
-  struct a8293_platform_data {
-    struct dvb_frontend * dvb_frontend;
-  };
-
+    struct a8293_platform_data {
+        struct dvb_frontend *dvb_frontend;
+    }
 
 .. _`a8293_platform_data.members`:
 
 Members
 -------
 
-:``dvb_frontend``:
+dvb_frontend
     DVB frontend.
 
+.. This file was automatic generated / don't edit.
 

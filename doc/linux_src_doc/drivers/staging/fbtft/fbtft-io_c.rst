@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-fbtft-io.c
-==========
-
+.. src-file: drivers/staging/fbtft/fbtft-io.c
 
 .. _`fbtft_write_spi_emulate_9`:
 
 fbtft_write_spi_emulate_9
 =========================
 
-.. c:function:: int fbtft_write_spi_emulate_9 (struct fbtft_par *par, void *buf, size_t len)
+.. c:function:: int fbtft_write_spi_emulate_9(struct fbtft_par *par, void *buf, size_t len)
 
     write SPI emulating 9-bit
 
@@ -23,8 +19,6 @@ fbtft_write_spi_emulate_9
     :param size_t len:
         Length of buffer (must be divisible by 8)
 
-
-
 .. _`fbtft_write_spi_emulate_9.description`:
 
 Description
@@ -32,4 +26,6 @@ Description
 
 When 9-bit SPI is not available, this function can be used to emulate that.
 par->extra must hold a transformation buffer used for transfer.
+
+.. This file was automatic generated / don't edit.
 

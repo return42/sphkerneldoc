@@ -7,4 +7,4 @@ atari
 .. toctree::
    :maxdepth: 1
 
-   stdma_c
+    stdma_c

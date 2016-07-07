@@ -1,0 +1,148 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/cm32181.c
+
+.. _`cm32181_reg_init`:
+
+cm32181_reg_init
+================
+
+.. c:function:: int cm32181_reg_init(struct cm32181_chip *cm32181)
+
+    Initialize CM32181 registers
+
+    :param struct cm32181_chip \*cm32181:
+        pointer of struct cm32181.
+
+.. _`cm32181_reg_init.description`:
+
+Description
+-----------
+
+Initialize CM32181 ambient light sensor register to default values.
+
+.. _`cm32181_reg_init.return`:
+
+Return
+------
+
+0 for success; otherwise for error code.
+
+.. _`cm32181_read_als_it`:
+
+cm32181_read_als_it
+===================
+
+.. c:function:: int cm32181_read_als_it(struct cm32181_chip *cm32181, int *val2)
+
+    Get sensor integration time (ms)
+
+    :param struct cm32181_chip \*cm32181:
+        pointer of struct cm32181
+
+    :param int \*val2:
+        pointer of int to load the als_it value.
+
+.. _`cm32181_read_als_it.description`:
+
+Description
+-----------
+
+Report the current integartion time by millisecond.
+
+.. _`cm32181_read_als_it.return`:
+
+Return
+------
+
+IIO_VAL_INT_PLUS_MICRO for success, otherwise -EINVAL.
+
+.. _`cm32181_write_als_it`:
+
+cm32181_write_als_it
+====================
+
+.. c:function:: int cm32181_write_als_it(struct cm32181_chip *cm32181, int val)
+
+    Write sensor integration time
+
+    :param struct cm32181_chip \*cm32181:
+        pointer of struct cm32181.
+
+    :param int val:
+        integration time by millisecond.
+
+.. _`cm32181_write_als_it.description`:
+
+Description
+-----------
+
+Convert integration time (ms) to sensor value.
+
+.. _`cm32181_write_als_it.return`:
+
+Return
+------
+
+i2c_smbus_write_word_data command return value.
+
+.. _`cm32181_get_lux`:
+
+cm32181_get_lux
+===============
+
+.. c:function:: int cm32181_get_lux(struct cm32181_chip *cm32181)
+
+    report current lux value
+
+    :param struct cm32181_chip \*cm32181:
+        pointer of struct cm32181.
+
+.. _`cm32181_get_lux.description`:
+
+Description
+-----------
+
+Convert sensor raw data to lux.  It depends on integration
+time and calibscale variable.
+
+.. _`cm32181_get_lux.return`:
+
+Return
+------
+
+Positive value is lux, otherwise is error code.
+
+.. _`cm32181_get_it_available`:
+
+cm32181_get_it_available
+========================
+
+.. c:function:: ssize_t cm32181_get_it_available(struct device *dev, struct device_attribute *attr, char *buf)
+
+    Get available ALS IT value
+
+    :param struct device \*dev:
+        pointer of struct device.
+
+    :param struct device_attribute \*attr:
+        pointer of struct device_attribute.
+
+    :param char \*buf:
+        pointer of return string buffer.
+
+.. _`cm32181_get_it_available.description`:
+
+Description
+-----------
+
+Display the available integration time values by millisecond.
+
+.. _`cm32181_get_it_available.return`:
+
+Return
+------
+
+string length.
+
+.. This file was automatic generated / don't edit.
+

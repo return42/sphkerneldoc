@@ -7,5 +7,5 @@ frequency
 .. toctree::
    :maxdepth: 1
 
-   ad9523_h
-   adf4350_h
+    ad9523_h
+    adf4350_h

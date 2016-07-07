@@ -7,7 +7,9 @@ efi
 .. toctree::
    :maxdepth: 1
 
-   efi-pstore_c
-   efivars_c
-   vars_c
-   libstub/index
+    libstub/index
+    capsule-loader_c
+    capsule_c
+    efi-pstore_c
+    efivars_c
+    vars_c

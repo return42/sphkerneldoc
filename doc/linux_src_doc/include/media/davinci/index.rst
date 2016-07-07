@@ -7,5 +7,5 @@ davinci
 .. toctree::
    :maxdepth: 1
 
-   vpbe_osd_h
-   vpfe_capture_h
+    vpbe_osd_h
+    vpfe_capture_h

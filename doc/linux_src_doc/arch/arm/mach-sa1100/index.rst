@@ -7,5 +7,6 @@ mach-sa1100
 .. toctree::
    :maxdepth: 1
 
-   jornada720_ssp_c
-   ssp_c
+    hackkit_c
+    jornada720_ssp_c
+    ssp_c

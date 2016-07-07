@@ -7,4 +7,5 @@ include
 .. toctree::
    :maxdepth: 1
 
-   asm/index
+    asm/index
+    uapi/index

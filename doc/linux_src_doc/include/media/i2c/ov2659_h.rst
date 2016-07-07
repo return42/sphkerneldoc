@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ov2659.h
-========
-
+.. src-file: include/media/i2c/ov2659.h
 
 .. _`ov2659_platform_data`:
 
 struct ov2659_platform_data
 ===========================
 
-.. c:type:: ov2659_platform_data
+.. c:type:: struct ov2659_platform_data
 
     ov2659 driver platform data
-
 
 .. _`ov2659_platform_data.definition`:
 
@@ -22,17 +17,17 @@ Definition
 
 .. code-block:: c
 
-  struct ov2659_platform_data {
-    s64 link_frequency;
-  };
-
+    struct ov2659_platform_data {
+        s64 link_frequency;
+    }
 
 .. _`ov2659_platform_data.members`:
 
 Members
 -------
 
-:``link_frequency``:
+link_frequency
     target pixel clock frequency
 
+.. This file was automatic generated / don't edit.
 

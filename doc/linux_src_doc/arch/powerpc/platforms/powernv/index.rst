@@ -7,4 +7,5 @@ powernv
 .. toctree::
    :maxdepth: 1
 
-   opal-irqchip_c
+    eeh-powernv_c
+    opal-irqchip_c

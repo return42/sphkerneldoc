@@ -7,6 +7,6 @@ ti
 .. toctree::
    :maxdepth: 1
 
-   knav_dma_h
-   knav_qmss_h
-   ti-msgmgr_h
+    knav_dma_h
+    knav_qmss_h
+    ti-msgmgr_h

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-drm_ioctl.c
-===========
-
+.. src-file: drivers/gpu/drm/drm_ioctl.c
 
 .. _`drm_noop`:
 
 drm_noop
 ========
 
-.. c:function:: int drm_noop (struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int drm_noop(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
     DRM no-op ioctl implemntation
 
@@ -23,8 +19,6 @@ drm_noop
     :param struct drm_file \*file_priv:
         DRM file for the ioctl call
 
-
-
 .. _`drm_noop.description`:
 
 Description
@@ -36,14 +30,12 @@ checks the result of the ioctl, but doesn't care about the action.
 
 Always returns successfully with 0.
 
-
-
 .. _`drm_invalid_op`:
 
 drm_invalid_op
 ==============
 
-.. c:function:: int drm_invalid_op (struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int drm_invalid_op(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
     DRM invalid ioctl implemntation
 
@@ -55,8 +47,6 @@ drm_invalid_op
 
     :param struct drm_file \*file_priv:
         DRM file for the ioctl call
-
-
 
 .. _`drm_invalid_op.description`:
 
@@ -72,14 +62,12 @@ use this function.
 
 Always fails with a return value of -EINVAL.
 
-
-
 .. _`drm_ioctl`:
 
 drm_ioctl
 =========
 
-.. c:function:: long drm_ioctl (struct file *filp, unsigned int cmd, unsigned long arg)
+.. c:function:: long drm_ioctl(struct file *filp, unsigned int cmd, unsigned long arg)
 
     ioctl callback implementation for DRM drivers
 
@@ -92,33 +80,27 @@ drm_ioctl
     :param unsigned long arg:
         user argument
 
+.. _`drm_ioctl.description`:
 
+Description
+-----------
 
-.. _`drm_ioctl.looks-up-the-ioctl-function-in-the`:
-
-Looks up the ioctl function in the 
------------------------------------
-
-:ioctls table, checking for root
+Looks up the ioctl function in the ::ioctls table, checking for root
 previleges if so required, and dispatches to the respective function.
 
+.. _`drm_ioctl.return`:
 
-
-.. _`drm_ioctl.returns`:
-
-Returns
--------
+Return
+------
 
 Zero on success, negative error code on failure.
-
-
 
 .. _`drm_ioctl_flags`:
 
 drm_ioctl_flags
 ===============
 
-.. c:function:: bool drm_ioctl_flags (unsigned int nr, unsigned int *flags)
+.. c:function:: bool drm_ioctl_flags(unsigned int nr, unsigned int *flags)
 
     Check for core ioctl and return ioctl permission flags
 
@@ -127,8 +109,6 @@ drm_ioctl_flags
 
     :param unsigned int \*flags:
         where to return the ioctl permission flags
-
-
 
 .. _`drm_ioctl_flags.description`:
 
@@ -139,12 +119,12 @@ This ioctl is only used by the vmwgfx driver to augment the access checks
 done by the drm core and insofar a pretty decent layering violation. This
 shouldn't be used by any drivers.
 
+.. _`drm_ioctl_flags.return`:
 
+Return
+------
 
-.. _`drm_ioctl_flags.returns`:
+True if the \ ``nr``\  corresponds to a DRM core ioctl numer, false otherwise.
 
-Returns
--------
-
-True if the ``nr`` corresponds to a DRM core ioctl numer, false otherwise.
+.. This file was automatic generated / don't edit.
 

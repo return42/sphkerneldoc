@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-i2c-core.c
-==========
-
+.. src-file: drivers/i2c/i2c-core.c
 
 .. _`acpi_i2c_register_devices`:
 
 acpi_i2c_register_devices
 =========================
 
-.. c:function:: void acpi_i2c_register_devices (struct i2c_adapter *adap)
+.. c:function:: void acpi_i2c_register_devices(struct i2c_adapter *adap)
 
     enumerate I2C slave devices behind adapter
 
     :param struct i2c_adapter \*adap:
         pointer to adapter
-
-
 
 .. _`acpi_i2c_register_devices.description`:
 
@@ -28,21 +22,17 @@ Enumerate all I2C slave devices behind this adapter by walking the ACPI
 namespace. When a device is found it will be added to the Linux device
 model and bound to the corresponding ACPI handle.
 
-
-
 .. _`i2c_verify_client`:
 
 i2c_verify_client
 =================
 
-.. c:function:: struct i2c_client *i2c_verify_client (struct device *dev)
+.. c:function:: struct i2c_client *i2c_verify_client(struct device *dev)
 
     return parameter as i2c_client, or NULL
 
     :param struct device \*dev:
         device, probably from some driver model iterator
-
-
 
 .. _`i2c_verify_client.description`:
 
@@ -50,60 +40,64 @@ Description
 -----------
 
 When traversing the driver model tree, perhaps using driver model
-iterators like @:c:func:`device_for_each_child`, you can't assume very much
+iterators like @\ :c:func:`device_for_each_child`\ , you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_client.
 
+.. _`i2c_adapter_lock_bus`:
 
+i2c_adapter_lock_bus
+====================
 
-.. _`i2c_lock_adapter`:
-
-i2c_lock_adapter
-================
-
-.. c:function:: void i2c_lock_adapter (struct i2c_adapter *adapter)
+.. c:function:: void i2c_adapter_lock_bus(struct i2c_adapter *adapter, unsigned int flags)
 
     Get exclusive access to an I2C bus segment
 
     :param struct i2c_adapter \*adapter:
         Target I2C bus segment
 
+    :param unsigned int flags:
+        I2C_LOCK_ROOT_ADAPTER locks the root i2c adapter, I2C_LOCK_SEGMENT
+        locks only this branch in the adapter tree
 
+.. _`i2c_adapter_trylock_bus`:
 
-.. _`i2c_trylock_adapter`:
+i2c_adapter_trylock_bus
+=======================
 
-i2c_trylock_adapter
-===================
-
-.. c:function:: int i2c_trylock_adapter (struct i2c_adapter *adapter)
+.. c:function:: int i2c_adapter_trylock_bus(struct i2c_adapter *adapter, unsigned int flags)
 
     Try to get exclusive access to an I2C bus segment
 
     :param struct i2c_adapter \*adapter:
         Target I2C bus segment
 
+    :param unsigned int flags:
+        I2C_LOCK_ROOT_ADAPTER trylocks the root i2c adapter, I2C_LOCK_SEGMENT
+        trylocks only this branch in the adapter tree
 
+.. _`i2c_adapter_unlock_bus`:
 
-.. _`i2c_unlock_adapter`:
+i2c_adapter_unlock_bus
+======================
 
-i2c_unlock_adapter
-==================
-
-.. c:function:: void i2c_unlock_adapter (struct i2c_adapter *adapter)
+.. c:function:: void i2c_adapter_unlock_bus(struct i2c_adapter *adapter, unsigned int flags)
 
     Release exclusive access to an I2C bus segment
 
     :param struct i2c_adapter \*adapter:
         Target I2C bus segment
 
-
+    :param unsigned int flags:
+        I2C_LOCK_ROOT_ADAPTER unlocks the root i2c adapter, I2C_LOCK_SEGMENT
+        unlocks only this branch in the adapter tree
 
 .. _`i2c_new_device`:
 
 i2c_new_device
 ==============
 
-.. c:function:: struct i2c_client *i2c_new_device (struct i2c_adapter *adap, struct i2c_board_info const *info)
+.. c:function:: struct i2c_client *i2c_new_device(struct i2c_adapter *adap, struct i2c_board_info const *info)
 
     instantiate an i2c device
 
@@ -113,8 +107,6 @@ i2c_new_device
     :param struct i2c_board_info const \*info:
         describes one I2C device; bus_num is ignored
 
-
-
 .. _`i2c_new_device.context`:
 
 Context
@@ -122,38 +114,32 @@ Context
 
 can sleep
 
-
-
 .. _`i2c_new_device.description`:
 
 Description
 -----------
 
 Create an i2c device. Binding is handled through driver model
-:c:func:`probe`/:c:func:`remove` methods.  A driver may be bound to this device when we
+\ :c:func:`probe`\ /\ :c:func:`remove`\  methods.  A driver may be bound to this device when we
 return from this function, or any later moment (e.g. maybe hotplugging will
 load the driver module).  This call is not appropriate for use by mainboard
-initialization logic, which usually runs during an :c:func:`arch_initcall` long
+initialization logic, which usually runs during an \ :c:func:`arch_initcall`\  long
 before any i2c_adapter could exist.
 
 This returns the new i2c client, which may be saved for later use with
-:c:func:`i2c_unregister_device`; or NULL to indicate an error.
-
-
+\ :c:func:`i2c_unregister_device`\ ; or NULL to indicate an error.
 
 .. _`i2c_unregister_device`:
 
 i2c_unregister_device
 =====================
 
-.. c:function:: void i2c_unregister_device (struct i2c_client *client)
+.. c:function:: void i2c_unregister_device(struct i2c_client *client)
 
-    reverse effect of i2c_new_device()
+    reverse effect of \ :c:func:`i2c_new_device`\ 
 
     :param struct i2c_client \*client:
-        value returned from :c:func:`i2c_new_device`
-
-
+        value returned from \ :c:func:`i2c_new_device`\ 
 
 .. _`i2c_unregister_device.context`:
 
@@ -162,14 +148,12 @@ Context
 
 can sleep
 
-
-
 .. _`i2c_new_dummy`:
 
 i2c_new_dummy
 =============
 
-.. c:function:: struct i2c_client *i2c_new_dummy (struct i2c_adapter *adapter, u16 address)
+.. c:function:: struct i2c_client *i2c_new_dummy(struct i2c_adapter *adapter, u16 address)
 
     return a new i2c device bound to a dummy driver
 
@@ -179,16 +163,12 @@ i2c_new_dummy
     :param u16 address:
         seven bit address to be used
 
-
-
 .. _`i2c_new_dummy.context`:
 
 Context
 -------
 
 can sleep
-
-
 
 .. _`i2c_new_dummy.description`:
 
@@ -200,28 +180,24 @@ with devices that consume multiple addresses.  Examples of such chips
 include various EEPROMS (like 24c04 and 24c08 models).
 
 These dummy devices have two main uses.  First, most I2C and SMBus calls
-except :c:func:`i2c_transfer` need a client handle; the dummy will be that handle.
+except \ :c:func:`i2c_transfer`\  need a client handle; the dummy will be that handle.
 And second, this prevents the specified address from being bound to a
 different driver.
 
 This returns the new i2c client, which should be saved for later use with
-:c:func:`i2c_unregister_device`; or NULL to indicate an error.
-
-
+\ :c:func:`i2c_unregister_device`\ ; or NULL to indicate an error.
 
 .. _`i2c_verify_adapter`:
 
 i2c_verify_adapter
 ==================
 
-.. c:function:: struct i2c_adapter *i2c_verify_adapter (struct device *dev)
+.. c:function:: struct i2c_adapter *i2c_verify_adapter(struct device *dev)
 
     return parameter as i2c_adapter or NULL
 
     :param struct device \*dev:
         device, probably from some driver model iterator
-
-
 
 .. _`i2c_verify_adapter.description`:
 
@@ -229,25 +205,21 @@ Description
 -----------
 
 When traversing the driver model tree, perhaps using driver model
-iterators like @:c:func:`device_for_each_child`, you can't assume very much
+iterators like @\ :c:func:`device_for_each_child`\ , you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_adapter.
-
-
 
 .. _`__i2c_add_numbered_adapter`:
 
 __i2c_add_numbered_adapter
 ==========================
 
-.. c:function:: int __i2c_add_numbered_adapter (struct i2c_adapter *adap)
+.. c:function:: int __i2c_add_numbered_adapter(struct i2c_adapter *adap)
 
     i2c_add_numbered_adapter where nr is never -1
 
     :param struct i2c_adapter \*adap:
         the adapter to register (with adap->nr initialized)
-
-
 
 .. _`__i2c_add_numbered_adapter.context`:
 
@@ -256,30 +228,24 @@ Context
 
 can sleep
 
-
-
 .. _`__i2c_add_numbered_adapter.description`:
 
 Description
 -----------
 
-See :c:func:`i2c_add_numbered_adapter` for details.
-
-
+See \ :c:func:`i2c_add_numbered_adapter`\  for details.
 
 .. _`i2c_add_adapter`:
 
 i2c_add_adapter
 ===============
 
-.. c:function:: int i2c_add_adapter (struct i2c_adapter *adapter)
+.. c:function:: int i2c_add_adapter(struct i2c_adapter *adapter)
 
     declare i2c adapter, use dynamic bus number
 
     :param struct i2c_adapter \*adapter:
         the adapter to add
-
-
 
 .. _`i2c_add_adapter.context`:
 
@@ -287,8 +253,6 @@ Context
 -------
 
 can sleep
-
-
 
 .. _`i2c_add_adapter.description`:
 
@@ -304,21 +268,17 @@ When this returns zero, a new bus number was allocated and stored
 in adap->nr, and the specified adapter became available for clients.
 Otherwise, a negative errno value is returned.
 
-
-
 .. _`i2c_add_numbered_adapter`:
 
 i2c_add_numbered_adapter
 ========================
 
-.. c:function:: int i2c_add_numbered_adapter (struct i2c_adapter *adap)
+.. c:function:: int i2c_add_numbered_adapter(struct i2c_adapter *adap)
 
     declare i2c adapter, use static bus number
 
     :param struct i2c_adapter \*adap:
         the adapter to register (with adap->nr initialized)
-
-
 
 .. _`i2c_add_numbered_adapter.context`:
 
@@ -326,8 +286,6 @@ Context
 -------
 
 can sleep
-
-
 
 .. _`i2c_add_numbered_adapter.description`:
 
@@ -348,25 +306,21 @@ the required bus ID may not be available.
 
 When this returns zero, the specified adapter became available for
 clients using the bus number provided in adap->nr.  Also, the table
-of I2C devices pre-declared using :c:func:`i2c_register_board_info` is scanned,
+of I2C devices pre-declared using \ :c:func:`i2c_register_board_info`\  is scanned,
 and the appropriate driver model device nodes are created.  Otherwise, a
 negative errno value is returned.
-
-
 
 .. _`i2c_del_adapter`:
 
 i2c_del_adapter
 ===============
 
-.. c:function:: void i2c_del_adapter (struct i2c_adapter *adap)
+.. c:function:: void i2c_del_adapter(struct i2c_adapter *adap)
 
     unregister I2C adapter
 
     :param struct i2c_adapter \*adap:
         the adapter being unregistered
-
-
 
 .. _`i2c_del_adapter.context`:
 
@@ -375,24 +329,20 @@ Context
 
 can sleep
 
-
-
 .. _`i2c_del_adapter.description`:
 
 Description
 -----------
 
 This unregisters an I2C adapter which was previously registered
-by ``i2c_add_adapter`` or ``i2c_add_numbered_adapter``\ .
-
-
+by \ ``i2c_add_adapter``\  or \ ``i2c_add_numbered_adapter``\ .
 
 .. _`i2c_parse_fw_timings`:
 
 i2c_parse_fw_timings
 ====================
 
-.. c:function:: void i2c_parse_fw_timings (struct device *dev, struct i2c_timings *t, bool use_defaults)
+.. c:function:: void i2c_parse_fw_timings(struct device *dev, struct i2c_timings *t, bool use_defaults)
 
     get I2C related timing parameters from firmware
 
@@ -405,8 +355,6 @@ i2c_parse_fw_timings
     :param bool use_defaults:
         bool to use sane defaults derived from the I2C specification
         when properties are not found, otherwise use 0
-
-
 
 .. _`i2c_parse_fw_timings.description`:
 
@@ -421,21 +369,17 @@ results will be 0, so drivers can apply their own defaults later. The latter
 is mainly intended for avoiding regressions of existing drivers which want
 to switch to this function. New drivers almost always should use the defaults.
 
-
-
 .. _`i2c_del_driver`:
 
 i2c_del_driver
 ==============
 
-.. c:function:: void i2c_del_driver (struct i2c_driver *driver)
+.. c:function:: void i2c_del_driver(struct i2c_driver *driver)
 
     unregister I2C driver
 
     :param struct i2c_driver \*driver:
         the driver being unregistered
-
-
 
 .. _`i2c_del_driver.context`:
 
@@ -444,21 +388,17 @@ Context
 
 can sleep
 
-
-
 .. _`i2c_use_client`:
 
 i2c_use_client
 ==============
 
-.. c:function:: struct i2c_client *i2c_use_client (struct i2c_client *client)
+.. c:function:: struct i2c_client *i2c_use_client(struct i2c_client *client)
 
     increments the reference count of the i2c client structure
 
     :param struct i2c_client \*client:
         the client being referenced
-
-
 
 .. _`i2c_use_client.description`:
 
@@ -467,8 +407,6 @@ Description
 
 Each live reference to a client should be refcounted. The driver model does
 that automatically as part of driver binding, so that most drivers don't
-
-
 
 .. _`i2c_use_client.need-to-do-this-explicitly`:
 
@@ -480,21 +418,17 @@ from the device.
 
 A pointer to the client with the incremented reference counter is returned.
 
-
-
 .. _`i2c_release_client`:
 
 i2c_release_client
 ==================
 
-.. c:function:: void i2c_release_client (struct i2c_client *client)
+.. c:function:: void i2c_release_client(struct i2c_client *client)
 
     release a use of the i2c client structure
 
     :param struct i2c_client \*client:
         the client being no longer referenced
-
-
 
 .. _`i2c_release_client.description`:
 
@@ -503,14 +437,12 @@ Description
 
 Must be called when a user of a client is finished with it.
 
-
-
 .. _`__i2c_transfer`:
 
 __i2c_transfer
 ==============
 
-.. c:function:: int __i2c_transfer (struct i2c_adapter *adap, struct i2c_msg *msgs, int num)
+.. c:function:: int __i2c_transfer(struct i2c_adapter *adap, struct i2c_msg *msgs, int num)
 
     unlocked flavor of i2c_transfer
 
@@ -524,8 +456,6 @@ __i2c_transfer
     :param int num:
         Number of messages to be executed.
 
-
-
 .. _`__i2c_transfer.description`:
 
 Description
@@ -536,14 +466,12 @@ Returns negative errno, else the number of messages executed.
 Adapter lock must be held when calling this function. No debug logging
 takes place. adap->algo->master_xfer existence isn't checked.
 
-
-
 .. _`i2c_transfer`:
 
 i2c_transfer
 ============
 
-.. c:function:: int i2c_transfer (struct i2c_adapter *adap, struct i2c_msg *msgs, int num)
+.. c:function:: int i2c_transfer(struct i2c_adapter *adap, struct i2c_msg *msgs, int num)
 
     execute a single or combined I2C message
 
@@ -557,8 +485,6 @@ i2c_transfer
     :param int num:
         Number of messages to be executed.
 
-
-
 .. _`i2c_transfer.description`:
 
 Description
@@ -569,14 +495,12 @@ Returns negative errno, else the number of messages executed.
 Note that there is no requirement that each message be sent to
 the same slave address, although that is the most common model.
 
-
-
 .. _`i2c_master_send`:
 
 i2c_master_send
 ===============
 
-.. c:function:: int i2c_master_send (const struct i2c_client *client, const char *buf, int count)
+.. c:function:: int i2c_master_send(const struct i2c_client *client, const char *buf, int count)
 
     issue a single I2C message in master transmit mode
 
@@ -589,8 +513,6 @@ i2c_master_send
     :param int count:
         How many bytes to write, must be less than 64k since msg.len is u16
 
-
-
 .. _`i2c_master_send.description`:
 
 Description
@@ -598,14 +520,12 @@ Description
 
 Returns negative errno, or else the number of bytes written.
 
-
-
 .. _`i2c_master_recv`:
 
 i2c_master_recv
 ===============
 
-.. c:function:: int i2c_master_recv (const struct i2c_client *client, char *buf, int count)
+.. c:function:: int i2c_master_recv(const struct i2c_client *client, char *buf, int count)
 
     issue a single I2C message in master receive mode
 
@@ -618,8 +538,6 @@ i2c_master_recv
     :param int count:
         How many bytes to read, must be less than 64k since msg.len is u16
 
-
-
 .. _`i2c_master_recv.description`:
 
 Description
@@ -627,21 +545,17 @@ Description
 
 Returns negative errno, or else the number of bytes read.
 
-
-
 .. _`i2c_smbus_read_byte`:
 
 i2c_smbus_read_byte
 ===================
 
-.. c:function:: s32 i2c_smbus_read_byte (const struct i2c_client *client)
+.. c:function:: s32 i2c_smbus_read_byte(const struct i2c_client *client)
 
     SMBus "receive byte" protocol
 
     :param const struct i2c_client \*client:
         Handle to slave device
-
-
 
 .. _`i2c_smbus_read_byte.description`:
 
@@ -651,14 +565,12 @@ Description
 This executes the SMBus "receive byte" protocol, returning negative errno
 else the byte received from the device.
 
-
-
 .. _`i2c_smbus_write_byte`:
 
 i2c_smbus_write_byte
 ====================
 
-.. c:function:: s32 i2c_smbus_write_byte (const struct i2c_client *client, u8 value)
+.. c:function:: s32 i2c_smbus_write_byte(const struct i2c_client *client, u8 value)
 
     SMBus "send byte" protocol
 
@@ -668,8 +580,6 @@ i2c_smbus_write_byte
     :param u8 value:
         Byte to be sent
 
-
-
 .. _`i2c_smbus_write_byte.description`:
 
 Description
@@ -678,14 +588,12 @@ Description
 This executes the SMBus "send byte" protocol, returning negative errno
 else zero on success.
 
-
-
 .. _`i2c_smbus_read_byte_data`:
 
 i2c_smbus_read_byte_data
 ========================
 
-.. c:function:: s32 i2c_smbus_read_byte_data (const struct i2c_client *client, u8 command)
+.. c:function:: s32 i2c_smbus_read_byte_data(const struct i2c_client *client, u8 command)
 
     SMBus "read byte" protocol
 
@@ -695,8 +603,6 @@ i2c_smbus_read_byte_data
     :param u8 command:
         Byte interpreted by slave
 
-
-
 .. _`i2c_smbus_read_byte_data.description`:
 
 Description
@@ -705,14 +611,12 @@ Description
 This executes the SMBus "read byte" protocol, returning negative errno
 else a data byte received from the device.
 
-
-
 .. _`i2c_smbus_write_byte_data`:
 
 i2c_smbus_write_byte_data
 =========================
 
-.. c:function:: s32 i2c_smbus_write_byte_data (const struct i2c_client *client, u8 command, u8 value)
+.. c:function:: s32 i2c_smbus_write_byte_data(const struct i2c_client *client, u8 command, u8 value)
 
     SMBus "write byte" protocol
 
@@ -725,8 +629,6 @@ i2c_smbus_write_byte_data
     :param u8 value:
         Byte being written
 
-
-
 .. _`i2c_smbus_write_byte_data.description`:
 
 Description
@@ -735,14 +637,12 @@ Description
 This executes the SMBus "write byte" protocol, returning negative errno
 else zero on success.
 
-
-
 .. _`i2c_smbus_read_word_data`:
 
 i2c_smbus_read_word_data
 ========================
 
-.. c:function:: s32 i2c_smbus_read_word_data (const struct i2c_client *client, u8 command)
+.. c:function:: s32 i2c_smbus_read_word_data(const struct i2c_client *client, u8 command)
 
     SMBus "read word" protocol
 
@@ -752,8 +652,6 @@ i2c_smbus_read_word_data
     :param u8 command:
         Byte interpreted by slave
 
-
-
 .. _`i2c_smbus_read_word_data.description`:
 
 Description
@@ -762,14 +660,12 @@ Description
 This executes the SMBus "read word" protocol, returning negative errno
 else a 16-bit unsigned "word" received from the device.
 
-
-
 .. _`i2c_smbus_write_word_data`:
 
 i2c_smbus_write_word_data
 =========================
 
-.. c:function:: s32 i2c_smbus_write_word_data (const struct i2c_client *client, u8 command, u16 value)
+.. c:function:: s32 i2c_smbus_write_word_data(const struct i2c_client *client, u8 command, u16 value)
 
     SMBus "write word" protocol
 
@@ -782,8 +678,6 @@ i2c_smbus_write_word_data
     :param u16 value:
         16-bit "word" being written
 
-
-
 .. _`i2c_smbus_write_word_data.description`:
 
 Description
@@ -792,14 +686,12 @@ Description
 This executes the SMBus "write word" protocol, returning negative errno
 else zero on success.
 
-
-
 .. _`i2c_smbus_read_block_data`:
 
 i2c_smbus_read_block_data
 =========================
 
-.. c:function:: s32 i2c_smbus_read_block_data (const struct i2c_client *client, u8 command, u8 *values)
+.. c:function:: s32 i2c_smbus_read_block_data(const struct i2c_client *client, u8 command, u8 *values)
 
     SMBus "block read" protocol
 
@@ -812,8 +704,6 @@ i2c_smbus_read_block_data
     :param u8 \*values:
         Byte array into which data will be read; big enough to hold
         the data returned by the slave.  SMBus allows at most 32 bytes.
-
-
 
 .. _`i2c_smbus_read_block_data.description`:
 
@@ -828,14 +718,12 @@ the I2C_FUNC_SMBUS_READ_BLOCK_DATA functionality.  Not all adapter drivers
 support this; its emulation through I2C messaging relies on a specific
 mechanism (I2C_M_RECV_LEN) which may not be implemented.
 
-
-
 .. _`i2c_smbus_write_block_data`:
 
 i2c_smbus_write_block_data
 ==========================
 
-.. c:function:: s32 i2c_smbus_write_block_data (const struct i2c_client *client, u8 command, u8 length, const u8 *values)
+.. c:function:: s32 i2c_smbus_write_block_data(const struct i2c_client *client, u8 command, u8 length, const u8 *values)
 
     SMBus "block write" protocol
 
@@ -851,8 +739,6 @@ i2c_smbus_write_block_data
     :param const u8 \*values:
         Byte array which will be written.
 
-
-
 .. _`i2c_smbus_write_block_data.description`:
 
 Description
@@ -861,14 +747,12 @@ Description
 This executes the SMBus "block write" protocol, returning negative errno
 else zero on success.
 
-
-
 .. _`i2c_smbus_xfer`:
 
 i2c_smbus_xfer
 ==============
 
-.. c:function:: s32 i2c_smbus_xfer (struct i2c_adapter *adapter, u16 addr, unsigned short flags, char read_write, u8 command, int protocol, union i2c_smbus_data *data)
+.. c:function:: s32 i2c_smbus_xfer(struct i2c_adapter *adapter, u16 addr, unsigned short flags, char read_write, u8 command, int protocol, union i2c_smbus_data *data)
 
     execute SMBus protocol operations
 
@@ -893,8 +777,6 @@ i2c_smbus_xfer
     :param union i2c_smbus_data \*data:
         Data to be read or written
 
-
-
 .. _`i2c_smbus_xfer.description`:
 
 Description
@@ -903,14 +785,12 @@ Description
 This executes an SMBus protocol operation, and returns a negative
 errno code else zero on success.
 
-
-
 .. _`i2c_smbus_read_i2c_block_data_or_emulated`:
 
 i2c_smbus_read_i2c_block_data_or_emulated
 =========================================
 
-.. c:function:: s32 i2c_smbus_read_i2c_block_data_or_emulated (const struct i2c_client *client, u8 command, u8 length, u8 *values)
+.. c:function:: s32 i2c_smbus_read_i2c_block_data_or_emulated(const struct i2c_client *client, u8 command, u8 length, u8 *values)
 
     read block or emulate
 
@@ -928,8 +808,6 @@ i2c_smbus_read_i2c_block_data_or_emulated
         the data returned by the slave.  SMBus allows at most
         I2C_SMBUS_BLOCK_MAX bytes.
 
-
-
 .. _`i2c_smbus_read_i2c_block_data_or_emulated.description`:
 
 Description
@@ -944,4 +822,6 @@ must be mapped to a linear region, so that a block read will have the same
 effect as a byte read. Before using this function you must double-check
 if the I2C slave does support exchanging a block transfer with a byte
 transfer.
+
+.. This file was automatic generated / don't edit.
 

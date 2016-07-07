@@ -7,5 +7,15 @@ adc
 .. toctree::
    :maxdepth: 1
 
-   ad_sigma_delta_c
-   twl4030-madc_c
+    ad7298_c
+    ad7887_c
+    ad7923_c
+    ad799x_c
+    ad_sigma_delta_c
+    at91_adc_c
+    max1363_c
+    palmas_gpadc_c
+    qcom-spmi-iadc_c
+    qcom-spmi-vadc_c
+    twl4030-madc_c
+    twl6030-gpadc_c

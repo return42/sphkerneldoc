@@ -7,4 +7,4 @@ host
 .. toctree::
    :maxdepth: 1
 
-   r592_c
+    r592_c

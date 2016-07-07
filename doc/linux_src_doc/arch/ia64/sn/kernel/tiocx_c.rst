@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-tiocx.c
-=======
-
+.. src-file: arch/ia64/sn/kernel/tiocx.c
 
 .. _`tiocx_match`:
 
 tiocx_match
 ===========
 
-.. c:function:: int tiocx_match (struct device *dev, struct device_driver *drv)
+.. c:function:: int tiocx_match(struct device *dev, struct device_driver *drv)
 
     Try to match driver id list with device.
 
@@ -20,8 +16,6 @@ tiocx_match
     :param struct device_driver \*drv:
         driver pointer
 
-
-
 .. _`tiocx_match.description`:
 
 Description
@@ -29,14 +23,12 @@ Description
 
 Returns 1 if match, 0 otherwise.
 
-
-
 .. _`cx_device_match`:
 
 cx_device_match
 ===============
 
-.. c:function:: const struct cx_device_id *cx_device_match (const struct cx_device_id *ids, struct cx_dev *cx_device)
+.. c:function:: const struct cx_device_id *cx_device_match(const struct cx_device_id *ids, struct cx_dev *cx_device)
 
     Find cx_device in the id table.
 
@@ -46,50 +38,41 @@ cx_device_match
     :param struct cx_dev \*cx_device:
         part/mfg id for the device
 
-
-
 .. _`cx_device_probe`:
 
 cx_device_probe
 ===============
 
-.. c:function:: int cx_device_probe (struct device *dev)
+.. c:function:: int cx_device_probe(struct device *dev)
 
     Look for matching device. Call driver probe routine if found.
 
     :param struct device \*dev:
-
         *undescribed*
-
-
 
 .. _`cx_driver_remove`:
 
 cx_driver_remove
 ================
 
-.. c:function:: int cx_driver_remove (struct device *dev)
+.. c:function:: int cx_driver_remove(struct device *dev)
 
     Remove driver from device struct.
 
     :param struct device \*dev:
         device
 
-
-
 .. _`cx_driver_register`:
 
 cx_driver_register
 ==================
 
-.. c:function:: int cx_driver_register (struct cx_drv *cx_driver)
+.. c:function:: int cx_driver_register(struct cx_drv *cx_driver)
 
     Register the driver.
 
     :param struct cx_drv \*cx_driver:
         driver table (cx_drv struct) from driver
-
-
 
 .. _`cx_driver_register.description`:
 
@@ -101,28 +84,24 @@ The cx_drv struct contains the driver name, a pointer to
 a table of part/mfg numbers and a pointer to the driver's
 probe/attach routine.
 
-
-
 .. _`cx_driver_unregister`:
 
 cx_driver_unregister
 ====================
 
-.. c:function:: int cx_driver_unregister (struct cx_drv *cx_driver)
+.. c:function:: int cx_driver_unregister(struct cx_drv *cx_driver)
 
     Unregister the driver.
 
     :param struct cx_drv \*cx_driver:
         driver table (cx_drv struct) from driver
 
-
-
 .. _`cx_device_register`:
 
 cx_device_register
 ==================
 
-.. c:function:: int cx_device_register (nasid_t nasid, int part_num, int mfg_num, struct hubdev_info *hubdev, int bt)
+.. c:function:: int cx_device_register(nasid_t nasid, int part_num, int mfg_num, struct hubdev_info *hubdev, int bt)
 
     Register a device.
 
@@ -141,36 +120,29 @@ cx_device_register
     :param int bt:
         board type of the device
 
-
-
 .. _`cx_device_unregister`:
 
 cx_device_unregister
 ====================
 
-.. c:function:: int cx_device_unregister (struct cx_dev *cx_dev)
+.. c:function:: int cx_device_unregister(struct cx_dev *cx_dev)
 
     Unregister a device.
 
     :param struct cx_dev \*cx_dev:
         part/mfg id for the device
 
-
-
 .. _`cx_device_reload`:
 
 cx_device_reload
 ================
 
-.. c:function:: int cx_device_reload (struct cx_dev *cx_dev)
+.. c:function:: int cx_device_reload(struct cx_dev *cx_dev)
 
     Reload the device.
 
     :param struct cx_dev \*cx_dev:
-
         *undescribed*
-
-
 
 .. _`cx_device_reload.description`:
 
@@ -179,4 +151,6 @@ Description
 
 Remove the device associated with 'nasid' from device list and then
 call device-register with the given part/mfg numbers.
+
+.. This file was automatic generated / don't edit.
 

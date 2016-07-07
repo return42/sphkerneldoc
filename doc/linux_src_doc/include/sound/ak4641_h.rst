@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ak4641.h
-========
-
+.. src-file: include/sound/ak4641.h
 
 .. _`ak4641_platform_data`:
 
 struct ak4641_platform_data
 ===========================
 
-.. c:type:: ak4641_platform_data
+.. c:type:: struct ak4641_platform_data
 
     platform specific AK4641 configuration
-
 
 .. _`ak4641_platform_data.definition`:
 
@@ -22,25 +17,21 @@ Definition
 
 .. code-block:: c
 
-  struct ak4641_platform_data {
-    int gpio_power;
-    int gpio_npdn;
-  };
-
+    struct ak4641_platform_data {
+        int gpio_power;
+        int gpio_npdn;
+    }
 
 .. _`ak4641_platform_data.members`:
 
 Members
 -------
 
-:``gpio_power``:
+gpio_power
     GPIO to control external power to AK4641
 
-:``gpio_npdn``:
+gpio_npdn
     GPIO connected to AK4641 nPDN pin
-
-
-
 
 .. _`ak4641_platform_data.description`:
 
@@ -48,4 +39,6 @@ Description
 -----------
 
 Both GPIO parameters are optional.
+
+.. This file was automatic generated / don't edit.
 

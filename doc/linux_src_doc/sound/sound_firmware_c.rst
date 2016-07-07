@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-sound_firmware.c
-================
-
+.. src-file: sound/sound_firmware.c
 
 .. _`mod_firmware_load`:
 
 mod_firmware_load
 =================
 
-.. c:function:: int mod_firmware_load (const char *fn, char **fp)
+.. c:function:: int mod_firmware_load(const char *fn, char **fp)
 
     load sound driver firmware
 
@@ -19,8 +15,6 @@ mod_firmware_load
 
     :param char \*\*fp:
         return for the buffer.
-
-
 
 .. _`mod_firmware_load.description`:
 
@@ -35,8 +29,6 @@ vfree when finished.
 The length of the buffer is returned on a successful load, the
 value zero on a failure.
 
-
-
 .. _`mod_firmware_load.caution`:
 
 Caution
@@ -44,4 +36,6 @@ Caution
 
 This API is not recommended. Firmware should be loaded via
 request_firmware.
+
+.. This file was automatic generated / don't edit.
 

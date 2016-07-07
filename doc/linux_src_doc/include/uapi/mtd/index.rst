@@ -7,5 +7,5 @@ mtd
 .. toctree::
    :maxdepth: 1
 
-   mtd-abi_h
-   ubi-user_h
+    mtd-abi_h
+    ubi-user_h

@@ -1,66 +1,56 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-wm831x-core.c
-=============
-
+.. src-file: drivers/mfd/wm831x-core.c
 
 .. _`wm831x_reg_lock`:
 
 wm831x_reg_lock
 ===============
 
-.. c:function:: void wm831x_reg_lock (struct wm831x *wm831x)
+.. c:function:: void wm831x_reg_lock(struct wm831x *wm831x)
+
+    Unlock user keyed registers
 
     :param struct wm831x \*wm831x:
-
         *undescribed*
-
-
 
 .. _`wm831x_reg_lock.description`:
 
 Description
 -----------
 
-
 The WM831x has a user key preventing writes to particularly
 critical registers.  This function locks those registers,
 allowing writes to them.
-
-
 
 .. _`wm831x_reg_unlock`:
 
 wm831x_reg_unlock
 =================
 
-.. c:function:: int wm831x_reg_unlock (struct wm831x *wm831x)
+.. c:function:: int wm831x_reg_unlock(struct wm831x *wm831x)
+
+    Unlock user keyed registers
 
     :param struct wm831x \*wm831x:
-
         *undescribed*
-
-
 
 .. _`wm831x_reg_unlock.description`:
 
 Description
 -----------
 
-
 The WM831x has a user key preventing writes to particularly
 critical registers.  This function locks those registers,
 preventing spurious writes.
-
-
 
 .. _`wm831x_reg_read`:
 
 wm831x_reg_read
 ===============
 
-.. c:function:: int wm831x_reg_read (struct wm831x *wm831x, unsigned short reg)
+.. c:function:: int wm831x_reg_read(struct wm831x *wm831x, unsigned short reg)
+
+    Read a single WM831x register.
 
     :param struct wm831x \*wm831x:
         Device to read from.
@@ -68,14 +58,14 @@ wm831x_reg_read
     :param unsigned short reg:
         Register to read.
 
-
-
 .. _`wm831x_bulk_read`:
 
 wm831x_bulk_read
 ================
 
-.. c:function:: int wm831x_bulk_read (struct wm831x *wm831x, unsigned short reg, int count, u16 *buf)
+.. c:function:: int wm831x_bulk_read(struct wm831x *wm831x, unsigned short reg, int count, u16 *buf)
+
+    Read multiple WM831x registers
 
     :param struct wm831x \*wm831x:
         Device to read from
@@ -89,14 +79,14 @@ wm831x_bulk_read
     :param u16 \*buf:
         Buffer to fill.
 
-
-
 .. _`wm831x_reg_write`:
 
 wm831x_reg_write
 ================
 
-.. c:function:: int wm831x_reg_write (struct wm831x *wm831x, unsigned short reg, unsigned short val)
+.. c:function:: int wm831x_reg_write(struct wm831x *wm831x, unsigned short reg, unsigned short val)
+
+    Write a single WM831x register.
 
     :param struct wm831x \*wm831x:
         Device to write to.
@@ -107,14 +97,14 @@ wm831x_reg_write
     :param unsigned short val:
         Value to write.
 
-
-
 .. _`wm831x_set_bits`:
 
 wm831x_set_bits
 ===============
 
-.. c:function:: int wm831x_set_bits (struct wm831x *wm831x, unsigned short reg, unsigned short mask, unsigned short val)
+.. c:function:: int wm831x_set_bits(struct wm831x *wm831x, unsigned short reg, unsigned short mask, unsigned short val)
+
+    Set the value of a bitfield in a WM831x register
 
     :param struct wm831x \*wm831x:
         Device to write to.
@@ -127,4 +117,6 @@ wm831x_set_bits
 
     :param unsigned short val:
         Value to set (unshifted)
+
+.. This file was automatic generated / don't edit.
 

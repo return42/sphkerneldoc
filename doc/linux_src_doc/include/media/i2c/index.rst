@@ -7,14 +7,14 @@ i2c
 .. toctree::
    :maxdepth: 1
 
-   adv7343_h
-   m5mols_h
-   ov2659_h
-   ov9650_h
-   s5c73m3_h
-   s5k4ecgx_h
-   s5k6aa_h
-   saa7115_h
-   ths7303_h
-   tvp514x_h
-   tvp7002_h
+    adv7343_h
+    m5mols_h
+    ov2659_h
+    ov9650_h
+    s5c73m3_h
+    s5k4ecgx_h
+    s5k6aa_h
+    saa7115_h
+    ths7303_h
+    tvp514x_h
+    tvp7002_h

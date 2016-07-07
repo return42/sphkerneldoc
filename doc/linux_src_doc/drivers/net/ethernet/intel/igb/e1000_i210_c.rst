@@ -1,0 +1,502 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/igb/e1000_i210.c
+
+.. _`igb_get_hw_semaphore_i210`:
+
+igb_get_hw_semaphore_i210
+=========================
+
+.. c:function:: s32 igb_get_hw_semaphore_i210(struct e1000_hw *hw)
+
+    Acquire hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_hw_semaphore_i210.description`:
+
+Description
+-----------
+
+Acquire the HW semaphore to access the PHY or NVM
+
+.. _`igb_acquire_nvm_i210`:
+
+igb_acquire_nvm_i210
+====================
+
+.. c:function:: s32 igb_acquire_nvm_i210(struct e1000_hw *hw)
+
+    Request for access to EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_acquire_nvm_i210.description`:
+
+Description
+-----------
+
+Acquire the necessary semaphores for exclusive access to the EEPROM.
+Set the EEPROM access request bit and wait for EEPROM access grant bit.
+Return successful if access grant bit set, else clear the request for
+EEPROM access and return -E1000_ERR_NVM (-1).
+
+.. _`igb_release_nvm_i210`:
+
+igb_release_nvm_i210
+====================
+
+.. c:function:: void igb_release_nvm_i210(struct e1000_hw *hw)
+
+    Release exclusive access to EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_release_nvm_i210.description`:
+
+Description
+-----------
+
+Stop any current commands to the EEPROM and clear the EEPROM request bit,
+then release the semaphores acquired.
+
+.. _`igb_acquire_swfw_sync_i210`:
+
+igb_acquire_swfw_sync_i210
+==========================
+
+.. c:function:: s32 igb_acquire_swfw_sync_i210(struct e1000_hw *hw, u16 mask)
+
+    Acquire SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`igb_acquire_swfw_sync_i210.description`:
+
+Description
+-----------
+
+Acquire the SW/FW semaphore to access the PHY or NVM.  The mask
+will also specify which port we're acquiring the lock for.
+
+.. _`igb_release_swfw_sync_i210`:
+
+igb_release_swfw_sync_i210
+==========================
+
+.. c:function:: void igb_release_swfw_sync_i210(struct e1000_hw *hw, u16 mask)
+
+    Release SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`igb_release_swfw_sync_i210.description`:
+
+Description
+-----------
+
+Release the SW/FW semaphore used to access the PHY or NVM.  The mask
+will also specify which port we're releasing the lock for.
+
+.. _`igb_read_nvm_srrd_i210`:
+
+igb_read_nvm_srrd_i210
+======================
+
+.. c:function:: s32 igb_read_nvm_srrd_i210(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Reads Shadow Ram using EERD register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset of word in the Shadow Ram to read
+
+    :param u16 words:
+        number of words to read
+
+    :param u16 \*data:
+        word read from the Shadow Ram
+
+.. _`igb_read_nvm_srrd_i210.description`:
+
+Description
+-----------
+
+Reads a 16 bit word from the Shadow Ram using the EERD register.
+Uses necessary synchronization semaphores.
+
+.. _`igb_write_nvm_srwr`:
+
+igb_write_nvm_srwr
+==================
+
+.. c:function:: s32 igb_write_nvm_srwr(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Write to Shadow Ram using EEWR
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset within the Shadow Ram to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        16 bit word(s) to be written to the Shadow Ram
+
+.. _`igb_write_nvm_srwr.description`:
+
+Description
+-----------
+
+Writes data to Shadow Ram at offset using EEWR register.
+
+If igb_update_nvm_checksum is not called after this function , the
+Shadow Ram will most likely contain an invalid checksum.
+
+.. _`igb_write_nvm_srwr_i210`:
+
+igb_write_nvm_srwr_i210
+=======================
+
+.. c:function:: s32 igb_write_nvm_srwr_i210(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Write to Shadow RAM using EEWR
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset within the Shadow RAM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        16 bit word(s) to be written to the Shadow RAM
+
+.. _`igb_write_nvm_srwr_i210.description`:
+
+Description
+-----------
+
+Writes data to Shadow RAM at offset using EEWR register.
+
+If e1000_update_nvm_checksum is not called after this function , the
+data will not be committed to FLASH and also Shadow RAM will most likely
+contain an invalid checksum.
+
+If error code is returned, data and Shadow RAM may be inconsistent - buffer
+partially written.
+
+.. _`igb_read_invm_word_i210`:
+
+igb_read_invm_word_i210
+=======================
+
+.. c:function:: s32 igb_read_invm_word_i210(struct e1000_hw *hw, u8 address, u16 *data)
+
+    Reads OTP
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u8 address:
+        the word address (aka eeprom offset) to read
+
+    :param u16 \*data:
+        pointer to the data read
+
+.. _`igb_read_invm_word_i210.description`:
+
+Description
+-----------
+
+Reads 16-bit words from the OTP. Return error when the word is not
+stored in OTP.
+
+.. _`igb_read_invm_i210`:
+
+igb_read_invm_i210
+==================
+
+.. c:function:: s32 igb_read_invm_i210(struct e1000_hw *hw, u16 offset, u16 words __always_unused, u16 *data)
+
+    Read invm wrapper function for I210/I211
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        *undescribed*
+
+    :param u16 words __always_unused:
+        *undescribed*
+
+    :param u16 \*data:
+        pointer to the data read
+
+.. _`igb_read_invm_i210.description`:
+
+Description
+-----------
+
+Wrapper function to return data formerly found in the NVM.
+
+.. _`igb_read_invm_version`:
+
+igb_read_invm_version
+=====================
+
+.. c:function:: s32 igb_read_invm_version(struct e1000_hw *hw, struct e1000_fw_version *invm_ver)
+
+    Reads iNVM version and image type
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param struct e1000_fw_version \*invm_ver:
+        version structure for the version read
+
+.. _`igb_read_invm_version.description`:
+
+Description
+-----------
+
+Reads iNVM version and image type.
+
+.. _`igb_validate_nvm_checksum_i210`:
+
+igb_validate_nvm_checksum_i210
+==============================
+
+.. c:function:: s32 igb_validate_nvm_checksum_i210(struct e1000_hw *hw)
+
+    Validate EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_validate_nvm_checksum_i210.description`:
+
+Description
+-----------
+
+Calculates the EEPROM checksum by reading/adding each word of the EEPROM
+and then verifies that the sum of the EEPROM is equal to 0xBABA.
+
+.. _`igb_update_nvm_checksum_i210`:
+
+igb_update_nvm_checksum_i210
+============================
+
+.. c:function:: s32 igb_update_nvm_checksum_i210(struct e1000_hw *hw)
+
+    Update EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_update_nvm_checksum_i210.description`:
+
+Description
+-----------
+
+Updates the EEPROM checksum by reading/adding each word of the EEPROM
+up to the checksum.  Then calculates the EEPROM checksum and writes the
+value to the EEPROM. Next commit EEPROM data onto the Flash.
+
+.. _`igb_pool_flash_update_done_i210`:
+
+igb_pool_flash_update_done_i210
+===============================
+
+.. c:function:: s32 igb_pool_flash_update_done_i210(struct e1000_hw *hw)
+
+    Pool FLUDONE status.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_flash_presence_i210`:
+
+igb_get_flash_presence_i210
+===========================
+
+.. c:function:: bool igb_get_flash_presence_i210(struct e1000_hw *hw)
+
+    Check if flash device is detected.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_update_flash_i210`:
+
+igb_update_flash_i210
+=====================
+
+.. c:function:: s32 igb_update_flash_i210(struct e1000_hw *hw)
+
+    Commit EEPROM to the flash
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_valid_led_default_i210`:
+
+igb_valid_led_default_i210
+==========================
+
+.. c:function:: s32 igb_valid_led_default_i210(struct e1000_hw *hw, u16 *data)
+
+    Verify a valid default LED config
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 \*data:
+        pointer to the NVM (EEPROM)
+
+.. _`igb_valid_led_default_i210.description`:
+
+Description
+-----------
+
+Read the EEPROM for the current default LED configuration.  If the
+LED configuration is not valid, set to a valid LED configuration.
+
+.. _`__igb_access_xmdio_reg`:
+
+__igb_access_xmdio_reg
+======================
+
+.. c:function:: s32 __igb_access_xmdio_reg(struct e1000_hw *hw, u16 address, u8 dev_addr, u16 *data, bool read)
+
+    Read/write XMDIO register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 address:
+        XMDIO address to program
+
+    :param u8 dev_addr:
+        device address to program
+
+    :param u16 \*data:
+        pointer to value to read/write from/to the XMDIO address
+
+    :param bool read:
+        boolean flag to indicate read or write
+
+.. _`igb_read_xmdio_reg`:
+
+igb_read_xmdio_reg
+==================
+
+.. c:function:: s32 igb_read_xmdio_reg(struct e1000_hw *hw, u16 addr, u8 dev_addr, u16 *data)
+
+    Read XMDIO register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 addr:
+        XMDIO address to program
+
+    :param u8 dev_addr:
+        device address to program
+
+    :param u16 \*data:
+        value to be read from the EMI address
+
+.. _`igb_write_xmdio_reg`:
+
+igb_write_xmdio_reg
+===================
+
+.. c:function:: s32 igb_write_xmdio_reg(struct e1000_hw *hw, u16 addr, u8 dev_addr, u16 data)
+
+    Write XMDIO register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 addr:
+        XMDIO address to program
+
+    :param u8 dev_addr:
+        device address to program
+
+    :param u16 data:
+        value to be written to the XMDIO address
+
+.. _`igb_init_nvm_params_i210`:
+
+igb_init_nvm_params_i210
+========================
+
+.. c:function:: s32 igb_init_nvm_params_i210(struct e1000_hw *hw)
+
+    Init NVM func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_pll_workaround_i210`:
+
+igb_pll_workaround_i210
+=======================
+
+.. c:function:: s32 igb_pll_workaround_i210(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_pll_workaround_i210.description`:
+
+Description
+-----------
+
+Works around an errata in the PLL circuit where it occasionally
+provides the wrong clock frequency after power up.
+
+.. _`igb_get_cfg_done_i210`:
+
+igb_get_cfg_done_i210
+=====================
+
+.. c:function:: s32 igb_get_cfg_done_i210(struct e1000_hw *hw)
+
+    Read config done bit
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_cfg_done_i210.description`:
+
+Description
+-----------
+
+Read the management control register for the config done bit for
+completion status.  NOTE: silicon which is EEPROM-less will fail trying
+to read the config done bit, so an error is \*ONLY\* logged and returns
+0.  If we were to return with error, EEPROM-less silicon
+would not be able to be reset or change link.
+
+.. This file was automatic generated / don't edit.
+

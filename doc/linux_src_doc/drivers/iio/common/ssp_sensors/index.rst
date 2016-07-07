@@ -7,5 +7,6 @@ ssp_sensors
 .. toctree::
    :maxdepth: 1
 
-   ssp_dev_c
-   ssp_iio_c
+    ssp_dev_c
+    ssp_h
+    ssp_iio_c

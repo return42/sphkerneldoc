@@ -7,4 +7,4 @@ dma
 .. toctree::
    :maxdepth: 1
 
-   dma-api_c
+    dma-api_c

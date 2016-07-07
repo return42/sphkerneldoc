@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-msi.c
-=====
-
+.. src-file: kernel/irq/msi.c
 
 .. _`msi_domain_set_affinity`:
 
 msi_domain_set_affinity
 =======================
 
-.. c:function:: int msi_domain_set_affinity (struct irq_data *irq_data, const struct cpumask *mask, bool force)
+.. c:function:: int msi_domain_set_affinity(struct irq_data *irq_data, const struct cpumask *mask, bool force)
 
     Generic affinity setter function for MSI domains
 
@@ -23,8 +19,6 @@ msi_domain_set_affinity
     :param bool force:
         Flag to enforce setting (disable online checks)
 
-
-
 .. _`msi_domain_set_affinity.description`:
 
 Description
@@ -33,14 +27,12 @@ Description
 Intended to be used by MSI interrupt controllers which are
 implemented with hierarchical domains.
 
-
-
 .. _`msi_create_irq_domain`:
 
 msi_create_irq_domain
 =====================
 
-.. c:function:: struct irq_domain *msi_create_irq_domain (struct fwnode_handle *fwnode, struct msi_domain_info *info, struct irq_domain *parent)
+.. c:function:: struct irq_domain *msi_create_irq_domain(struct fwnode_handle *fwnode, struct msi_domain_info *info, struct irq_domain *parent)
 
     Create a MSI interrupt domain
 
@@ -53,14 +45,12 @@ msi_create_irq_domain
     :param struct irq_domain \*parent:
         Parent irq domain
 
-
-
 .. _`msi_domain_alloc_irqs`:
 
 msi_domain_alloc_irqs
 =====================
 
-.. c:function:: int msi_domain_alloc_irqs (struct irq_domain *domain, struct device *dev, int nvec)
+.. c:function:: int msi_domain_alloc_irqs(struct irq_domain *domain, struct device *dev, int nvec)
 
     Allocate interrupts from a MSI interrupt domain
 
@@ -74,8 +64,6 @@ msi_domain_alloc_irqs
     :param int nvec:
         The number of interrupts to allocate
 
-
-
 .. _`msi_domain_alloc_irqs.description`:
 
 Description
@@ -83,16 +71,14 @@ Description
 
 Returns 0 on success or an error code.
 
-
-
 .. _`msi_domain_free_irqs`:
 
 msi_domain_free_irqs
 ====================
 
-.. c:function:: void msi_domain_free_irqs (struct irq_domain *domain, struct device *dev)
+.. c:function:: void msi_domain_free_irqs(struct irq_domain *domain, struct device *dev)
 
-    Free interrupts from a MSI interrupt @domain associated tp @dev
+    Free interrupts from a MSI interrupt \ ``domain``\  associated tp \ ``dev``\ 
 
     :param struct irq_domain \*domain:
         The domain to managing the interrupts
@@ -101,21 +87,17 @@ msi_domain_free_irqs
         Pointer to device struct of the device for which the interrupts
         are free
 
-
-
 .. _`msi_get_domain_info`:
 
 msi_get_domain_info
 ===================
 
-.. c:function:: struct msi_domain_info *msi_get_domain_info (struct irq_domain *domain)
+.. c:function:: struct msi_domain_info *msi_get_domain_info(struct irq_domain *domain)
 
-    Get the MSI interrupt domain info for @domain
+    Get the MSI interrupt domain info for \ ``domain``\ 
 
     :param struct irq_domain \*domain:
         The interrupt domain to retrieve data from
-
-
 
 .. _`msi_get_domain_info.description`:
 
@@ -123,5 +105,7 @@ Description
 -----------
 
 Returns the pointer to the msi_domain_info stored in
-``domain``\ ->host_data.
+\ ``domain``\ ->host_data.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,0 +1,15 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: arch/x86/kernel/i8259.c
+
+.. _`restore_elcr`:
+
+restore_ELCR
+============
+
+.. c:function:: void restore_ELCR(char *trigger)
+
+    :param char \*trigger:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

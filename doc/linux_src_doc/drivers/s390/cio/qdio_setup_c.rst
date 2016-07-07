@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-qdio_setup.c
-============
-
+.. src-file: drivers/s390/cio/qdio_setup.c
 
 .. _`qdio_free_buffers`:
 
 qdio_free_buffers
 =================
 
-.. c:function:: void qdio_free_buffers (struct qdio_buffer **buf, unsigned int count)
+.. c:function:: void qdio_free_buffers(struct qdio_buffer **buf, unsigned int count)
 
     free qdio buffers
 
@@ -20,14 +16,12 @@ qdio_free_buffers
     :param unsigned int count:
         number of qdio buffers to free
 
-
-
 .. _`qdio_alloc_buffers`:
 
 qdio_alloc_buffers
 ==================
 
-.. c:function:: int qdio_alloc_buffers (struct qdio_buffer **buf, unsigned int count)
+.. c:function:: int qdio_alloc_buffers(struct qdio_buffer **buf, unsigned int count)
 
     allocate qdio buffers
 
@@ -37,14 +31,12 @@ qdio_alloc_buffers
     :param unsigned int count:
         number of qdio buffers to allocate
 
-
-
 .. _`qdio_reset_buffers`:
 
 qdio_reset_buffers
 ==================
 
-.. c:function:: void qdio_reset_buffers (struct qdio_buffer **buf, unsigned int count)
+.. c:function:: void qdio_reset_buffers(struct qdio_buffer **buf, unsigned int count)
 
     reset qdio buffers
 
@@ -53,4 +45,6 @@ qdio_reset_buffers
 
     :param unsigned int count:
         number of qdio buffers that will be zeroed
+
+.. This file was automatic generated / don't edit.
 

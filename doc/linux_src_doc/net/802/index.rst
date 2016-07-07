@@ -7,6 +7,6 @@
 .. toctree::
    :maxdepth: 1
 
-   fc_c
-   fddi_c
-   hippi_c
+    fc_c
+    fddi_c
+    hippi_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-igmp.c
-======
-
+.. src-file: net/ipv4/igmp.c
 
 .. _`ip_mc_check_igmp`:
 
 ip_mc_check_igmp
 ================
 
-.. c:function:: int ip_mc_check_igmp (struct sk_buff *skb, struct sk_buff **skb_trimmed)
+.. c:function:: int ip_mc_check_igmp(struct sk_buff *skb, struct sk_buff **skb_trimmed)
 
     checks whether this is a sane IGMP packet
 
@@ -19,8 +15,6 @@ ip_mc_check_igmp
 
     :param struct sk_buff \*\*skb_trimmed:
         to store an skb pointer trimmed to IPv4 packet tail (optional)
-
-
 
 .. _`ip_mc_check_igmp.description`:
 
@@ -32,7 +26,6 @@ skb transport header accordingly and returns zero.
 
 -EINVAL: A broken packet was detected, i.e. it violates some internet
 standard
-
 -ENOMSG: IP header validation succeeded but it is not an IGMP packet.
 -ENOMEM: A memory allocation failure happened.
 
@@ -46,4 +39,6 @@ desirable for layer 2 frame jugglers).
 
 Caller needs to set the skb network header and free any returned skb if it
 differs from the provided skb.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,5 +7,5 @@ virt
 .. toctree::
    :maxdepth: 1
 
-   kvm/index
-   lib/index
+    kvm/index
+    lib/index

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-async_xor.c
-===========
-
+.. src-file: crypto/async_tx/async_xor.c
 
 .. _`async_xor`:
 
 async_xor
 =========
 
-.. c:function:: struct dma_async_tx_descriptor *async_xor (struct page *dest, struct page **src_list, unsigned int offset, int src_cnt, size_t len, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_xor(struct page *dest, struct page **src_list, unsigned int offset, int src_cnt, size_t len, struct async_submit_ctl *submit)
 
     attempt to xor a set of blocks with a dma engine.
 
@@ -32,8 +28,6 @@ async_xor
     :param struct async_submit_ctl \*submit:
         submission / completion modifiers
 
-
-
 .. _`async_xor.honored-flags`:
 
 honored flags
@@ -47,8 +41,6 @@ the calculation.  The assumption with dma eninges is that they only
 use the destination buffer as a source when it is explicity specified
 in the source list.
 
-
-
 .. _`async_xor.src_list-note`:
 
 src_list note
@@ -58,14 +50,12 @@ if the dest is also a source it must be at index zero.
 The contents of this array will be overwritten if a scribble region
 is not specified.
 
-
-
 .. _`async_xor_val`:
 
 async_xor_val
 =============
 
-.. c:function:: struct dma_async_tx_descriptor *async_xor_val (struct page *dest, struct page **src_list, unsigned int offset, int src_cnt, size_t len, enum sum_check_flags *result, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_xor_val(struct page *dest, struct page **src_list, unsigned int offset, int src_cnt, size_t len, enum sum_check_flags *result, struct async_submit_ctl *submit)
 
     attempt a xor parity check with a dma engine.
 
@@ -90,16 +80,12 @@ async_xor_val
     :param struct async_submit_ctl \*submit:
         submission / completion modifiers
 
-
-
 .. _`async_xor_val.honored-flags`:
 
 honored flags
 -------------
 
 ASYNC_TX_ACK
-
-
 
 .. _`async_xor_val.src_list-note`:
 
@@ -109,4 +95,6 @@ src_list note
 if the dest is also a source it must be at index zero.
 The contents of this array will be overwritten if a scribble region
 is not specified.
+
+.. This file was automatic generated / don't edit.
 

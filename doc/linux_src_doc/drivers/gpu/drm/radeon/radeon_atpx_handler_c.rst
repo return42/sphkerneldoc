@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====================
-radeon_atpx_handler.c
-=====================
-
+.. src-file: drivers/gpu/drm/radeon/radeon_atpx_handler.c
 
 .. _`radeon_atpx_call`:
 
 radeon_atpx_call
 ================
 
-.. c:function:: union acpi_object *radeon_atpx_call (acpi_handle handle, int function, struct acpi_buffer *params)
+.. c:function:: union acpi_object *radeon_atpx_call(acpi_handle handle, int function, struct acpi_buffer *params)
 
     call an ATPX method
 
@@ -23,8 +19,6 @@ radeon_atpx_call
     :param struct acpi_buffer \*params:
         ATPX function params
 
-
-
 .. _`radeon_atpx_call.description`:
 
 Description
@@ -33,14 +27,12 @@ Description
 Executes the requested ATPX function (all asics).
 Returns a pointer to the acpi output buffer.
 
-
-
 .. _`radeon_atpx_parse_functions`:
 
 radeon_atpx_parse_functions
 ===========================
 
-.. c:function:: void radeon_atpx_parse_functions (struct radeon_atpx_functions *f, u32 mask)
+.. c:function:: void radeon_atpx_parse_functions(struct radeon_atpx_functions *f, u32 mask)
 
     parse supported functions
 
@@ -49,8 +41,6 @@ radeon_atpx_parse_functions
 
     :param u32 mask:
         supported functions mask from ATPX
-
-
 
 .. _`radeon_atpx_parse_functions.description`:
 
@@ -61,21 +51,17 @@ Use the supported functions mask from ATPX function
 ATPX_FUNCTION_VERIFY_INTERFACE to determine what functions
 are supported (all asics).
 
-
-
 .. _`radeon_atpx_validate`:
 
 radeon_atpx_validate
 ====================
 
-.. c:function:: int radeon_atpx_validate (struct radeon_atpx *atpx)
+.. c:function:: int radeon_atpx_validate(struct radeon_atpx *atpx)
 
     validate ATPX functions
 
     :param struct radeon_atpx \*atpx:
         radeon atpx struct
-
-
 
 .. _`radeon_atpx_validate.description`:
 
@@ -85,21 +71,17 @@ Description
 Validate that required functions are enabled (all asics).
 returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_verify_interface`:
 
 radeon_atpx_verify_interface
 ============================
 
-.. c:function:: int radeon_atpx_verify_interface (struct radeon_atpx *atpx)
+.. c:function:: int radeon_atpx_verify_interface(struct radeon_atpx *atpx)
 
     verify ATPX
 
     :param struct radeon_atpx \*atpx:
         radeon atpx struct
-
-
 
 .. _`radeon_atpx_verify_interface.description`:
 
@@ -111,14 +93,12 @@ to initialize ATPX and determine what features are supported
 (all asics).
 returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_set_discrete_state`:
 
 radeon_atpx_set_discrete_state
 ==============================
 
-.. c:function:: int radeon_atpx_set_discrete_state (struct radeon_atpx *atpx, u8 state)
+.. c:function:: int radeon_atpx_set_discrete_state(struct radeon_atpx *atpx, u8 state)
 
     power up/down discrete GPU
 
@@ -127,8 +107,6 @@ radeon_atpx_set_discrete_state
 
     :param u8 state:
         discrete GPU state (0 = power down, 1 = power up)
-
-
 
 .. _`radeon_atpx_set_discrete_state.description`:
 
@@ -139,14 +117,12 @@ Execute the ATPX_FUNCTION_POWER_CONTROL ATPX function to
 power down/up the discrete GPU (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_switch_disp_mux`:
 
 radeon_atpx_switch_disp_mux
 ===========================
 
-.. c:function:: int radeon_atpx_switch_disp_mux (struct radeon_atpx *atpx, u16 mux_id)
+.. c:function:: int radeon_atpx_switch_disp_mux(struct radeon_atpx *atpx, u16 mux_id)
 
     switch display mux
 
@@ -155,8 +131,6 @@ radeon_atpx_switch_disp_mux
 
     :param u16 mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
-
-
 
 .. _`radeon_atpx_switch_disp_mux.description`:
 
@@ -168,14 +142,12 @@ switch the display mux between the discrete GPU and integrated GPU
 (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_switch_i2c_mux`:
 
 radeon_atpx_switch_i2c_mux
 ==========================
 
-.. c:function:: int radeon_atpx_switch_i2c_mux (struct radeon_atpx *atpx, u16 mux_id)
+.. c:function:: int radeon_atpx_switch_i2c_mux(struct radeon_atpx *atpx, u16 mux_id)
 
     switch i2c/hpd mux
 
@@ -184,8 +156,6 @@ radeon_atpx_switch_i2c_mux
 
     :param u16 mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
-
-
 
 .. _`radeon_atpx_switch_i2c_mux.description`:
 
@@ -197,14 +167,12 @@ switch the i2c/hpd mux between the discrete GPU and integrated GPU
 (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_switch_start`:
 
 radeon_atpx_switch_start
 ========================
 
-.. c:function:: int radeon_atpx_switch_start (struct radeon_atpx *atpx, u16 mux_id)
+.. c:function:: int radeon_atpx_switch_start(struct radeon_atpx *atpx, u16 mux_id)
 
     notify the sbios of a GPU switch
 
@@ -213,8 +181,6 @@ radeon_atpx_switch_start
 
     :param u16 mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
-
-
 
 .. _`radeon_atpx_switch_start.description`:
 
@@ -226,14 +192,12 @@ function to notify the sbios that a switch between the discrete GPU and
 integrated GPU has begun (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_switch_end`:
 
 radeon_atpx_switch_end
 ======================
 
-.. c:function:: int radeon_atpx_switch_end (struct radeon_atpx *atpx, u16 mux_id)
+.. c:function:: int radeon_atpx_switch_end(struct radeon_atpx *atpx, u16 mux_id)
 
     notify the sbios of a GPU switch
 
@@ -242,8 +206,6 @@ radeon_atpx_switch_end
 
     :param u16 mux_id:
         mux state (0 = integrated GPU, 1 = discrete GPU)
-
-
 
 .. _`radeon_atpx_switch_end.description`:
 
@@ -255,21 +217,17 @@ function to notify the sbios that a switch between the discrete GPU and
 integrated GPU has ended (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_switchto`:
 
 radeon_atpx_switchto
 ====================
 
-.. c:function:: int radeon_atpx_switchto (enum vga_switcheroo_client_id id)
+.. c:function:: int radeon_atpx_switchto(enum vga_switcheroo_client_id id)
 
     switch to the requested GPU
 
     :param enum vga_switcheroo_client_id id:
         GPU to switch to
-
-
 
 .. _`radeon_atpx_switchto.description`:
 
@@ -280,14 +238,12 @@ Execute the necessary ATPX functions to switch between the discrete GPU and
 integrated GPU (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_power_state`:
 
 radeon_atpx_power_state
 =======================
 
-.. c:function:: int radeon_atpx_power_state (enum vga_switcheroo_client_id id, enum vga_switcheroo_state state)
+.. c:function:: int radeon_atpx_power_state(enum vga_switcheroo_client_id id, enum vga_switcheroo_state state)
 
     power down/up the requested GPU
 
@@ -296,8 +252,6 @@ radeon_atpx_power_state
 
     :param enum vga_switcheroo_state state:
         requested power state (0 = off, 1 = on)
-
-
 
 .. _`radeon_atpx_power_state.description`:
 
@@ -308,21 +262,17 @@ Execute the necessary ATPX function to power down/up the discrete GPU
 (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`radeon_atpx_pci_probe_handle`:
 
 radeon_atpx_pci_probe_handle
 ============================
 
-.. c:function:: bool radeon_atpx_pci_probe_handle (struct pci_dev *pdev)
+.. c:function:: bool radeon_atpx_pci_probe_handle(struct pci_dev *pdev)
 
     look up the ATPX handle
 
     :param struct pci_dev \*pdev:
         pci device
-
-
 
 .. _`radeon_atpx_pci_probe_handle.description`:
 
@@ -332,46 +282,37 @@ Description
 Look up the ATPX handles (all asics).
 Returns true if the handles are found, false if not.
 
-
-
 .. _`radeon_atpx_init`:
 
 radeon_atpx_init
 ================
 
-.. c:function:: int radeon_atpx_init ( void)
+.. c:function:: int radeon_atpx_init( void)
 
     verify the ATPX interface
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`radeon_atpx_init.description`:
 
 Description
 -----------
 
-
 Verify the ATPX interface (all asics).
 Returns 0 on success, error on failure.
-
-
 
 .. _`radeon_atpx_get_client_id`:
 
 radeon_atpx_get_client_id
 =========================
 
-.. c:function:: int radeon_atpx_get_client_id (struct pci_dev *pdev)
+.. c:function:: int radeon_atpx_get_client_id(struct pci_dev *pdev)
 
     get the client id
 
     :param struct pci_dev \*pdev:
         pci device
-
-
 
 .. _`radeon_atpx_get_client_id.description`:
 
@@ -381,76 +322,63 @@ Description
 look up whether we are the integrated or discrete GPU (all asics).
 Returns the client id.
 
-
-
 .. _`radeon_atpx_detect`:
 
 radeon_atpx_detect
 ==================
 
-.. c:function:: bool radeon_atpx_detect ( void)
+.. c:function:: bool radeon_atpx_detect( void)
 
     detect whether we have PX
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`radeon_atpx_detect.description`:
 
 Description
 -----------
 
-
 Check if we have a PX system (all asics).
 Returns true if we have a PX system, false if not.
-
-
 
 .. _`radeon_register_atpx_handler`:
 
 radeon_register_atpx_handler
 ============================
 
-.. c:function:: void radeon_register_atpx_handler ( void)
+.. c:function:: void radeon_register_atpx_handler( void)
 
     register with vga_switcheroo
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`radeon_register_atpx_handler.description`:
 
 Description
 -----------
 
-
 Register the PX callbacks with vga_switcheroo (all asics).
-
-
 
 .. _`radeon_unregister_atpx_handler`:
 
 radeon_unregister_atpx_handler
 ==============================
 
-.. c:function:: void radeon_unregister_atpx_handler ( void)
+.. c:function:: void radeon_unregister_atpx_handler( void)
 
     unregister with vga_switcheroo
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`radeon_unregister_atpx_handler.description`:
 
 Description
 -----------
 
-
 Unregister the PX callbacks with vga_switcheroo (all asics).
+
+.. This file was automatic generated / don't edit.
 

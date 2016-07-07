@@ -7,8 +7,8 @@ sst
 .. toctree::
    :maxdepth: 1
 
-   sst_acpi_c
-   sst_h
-   sst_loader_c
-   sst_pci_c
-   sst_stream_c
+    sst_acpi_c
+    sst_h
+    sst_loader_c
+    sst_pci_c
+    sst_stream_c

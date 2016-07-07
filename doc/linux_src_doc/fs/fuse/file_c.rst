@@ -1,47 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-file.c
-======
-
+.. src-file: fs/fuse/file.c
 
 .. _`fuse_aio_complete`:
 
 fuse_aio_complete
 =================
 
-.. c:function:: void fuse_aio_complete (struct fuse_io_priv *io, int err, ssize_t pos)
+.. c:function:: void fuse_aio_complete(struct fuse_io_priv *io, int err, ssize_t pos)
+
+    actual end of fuse request in IO request. Otherwise, if bytes_requested == bytes_transferred or rw == WRITE, the caller sets 'pos' to -1.
 
     :param struct fuse_io_priv \*io:
-
         *undescribed*
 
     :param int err:
-
         *undescribed*
 
     :param ssize_t pos:
-
         *undescribed*
-
-
-
-.. _`fuse_aio_complete.description`:
-
-Description
------------
-
-actual end of fuse request in IO request. Otherwise, if bytes_requested
-== bytes_transferred or rw == WRITE, the caller sets 'pos' to -1.
-
-
 
 .. _`fuse_aio_complete.an-example`:
 
 An example
 ----------
-
-.. code-block:: c
 
 User requested DIO read of 64K. It was splitted into two 32K fuse requests,
 both submitted asynchronously. The first of them was ACKed by userspace as
@@ -52,4 +33,6 @@ pos == 33K.
 Thus, when all fuse requests are completed, the minimal non-negative 'pos'
 will be equal to the length of the longest contiguous fragment of
 transferred data starting from the beginning of IO request.
+
+.. This file was automatic generated / don't edit.
 

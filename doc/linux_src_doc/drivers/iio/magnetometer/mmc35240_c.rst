@@ -1,0 +1,33 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/magnetometer/mmc35240.c
+
+.. _`mmc35240_raw_to_mgauss`:
+
+mmc35240_raw_to_mgauss
+======================
+
+.. c:function:: int mmc35240_raw_to_mgauss(struct mmc35240_data *data, int index, __le16 buf[], int *val)
+
+    convert raw readings to milli gauss. Also apply
+
+    :param struct mmc35240_data \*data:
+        device private data
+
+    :param int index:
+        axis index for which we want the conversion
+
+    :param __le16 buf:
+        raw data to be converted, 2 bytes in little endian format
+
+    :param int \*val:
+        compensated output reading (unit is milli gauss)
+
+.. _`mmc35240_raw_to_mgauss.return`:
+
+Return
+------
+
+0 in case of success, -EINVAL when \ ``index``\  is not valid
+
+.. This file was automatic generated / don't edit.
+

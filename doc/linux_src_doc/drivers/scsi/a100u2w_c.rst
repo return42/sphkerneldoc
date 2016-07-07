@@ -1,0 +1,396 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/scsi/a100u2w.c
+
+.. _`orc_exec_scb`:
+
+orc_exec_scb
+============
+
+.. c:function:: void orc_exec_scb(struct orc_host *host, struct orc_scb *scb)
+
+    Queue an SCB with the HA
+
+    :param struct orc_host \*host:
+        host adapter the SCB belongs to
+
+    :param struct orc_scb \*scb:
+        SCB to queue for execution
+
+.. _`se2_rd_all`:
+
+se2_rd_all
+==========
+
+.. c:function:: int se2_rd_all(struct orc_host *host)
+
+    read SCSI parameters from EEPROM
+
+    :param struct orc_host \*host:
+        Host whose EEPROM is being loaded
+
+.. _`se2_rd_all.description`:
+
+Description
+-----------
+
+Read SCSI H/A configuration parameters from serial EEPROM
+
+.. _`se2_update_all`:
+
+se2_update_all
+==============
+
+.. c:function:: void se2_update_all(struct orc_host *host)
+
+    update the EEPROM
+
+    :param struct orc_host \*host:
+        Host whose EEPROM is being updated
+
+.. _`se2_update_all.description`:
+
+Description
+-----------
+
+Update changed bytes in the EEPROM image.
+
+.. _`read_eeprom`:
+
+read_eeprom
+===========
+
+.. c:function:: void read_eeprom(struct orc_host *host)
+
+    load EEPROM
+
+    :param struct orc_host \*host:
+        Host EEPROM to read
+
+.. _`read_eeprom.description`:
+
+Description
+-----------
+
+Read the EEPROM for a given host. If it is invalid or fails
+the restore the defaults and use them.
+
+.. _`orc_load_firmware`:
+
+orc_load_firmware
+=================
+
+.. c:function:: u8 orc_load_firmware(struct orc_host *host)
+
+    initialise firmware
+
+    :param struct orc_host \*host:
+        Host to set up
+
+.. _`orc_load_firmware.description`:
+
+Description
+-----------
+
+Load the firmware from the EEPROM into controller SRAM. This
+is basically a 4K block copy and then a 4K block read to check
+correctness. The rest is convulted by the indirect interfaces
+in the hardware
+
+.. _`init_alloc_map`:
+
+init_alloc_map
+==============
+
+.. c:function:: void init_alloc_map(struct orc_host *host)
+
+    initialise allocation map
+
+    :param struct orc_host \*host:
+        host map to configure
+
+.. _`init_alloc_map.description`:
+
+Description
+-----------
+
+Initialise the allocation maps for this device. If the device
+is not quiescent the caller must hold the allocation lock
+
+.. _`init_orchid`:
+
+init_orchid
+===========
+
+.. c:function:: int init_orchid(struct orc_host *host)
+
+    initialise the host adapter
+
+    :param struct orc_host \*host:
+        host adapter to initialise
+
+.. _`init_orchid.description`:
+
+Description
+-----------
+
+Initialise the controller and if necessary load the firmware.
+
+Returns -1 if the initialisation fails.
+
+.. _`orc_reset_scsi_bus`:
+
+orc_reset_scsi_bus
+==================
+
+.. c:function:: int orc_reset_scsi_bus(struct orc_host *host)
+
+    perform bus reset
+
+    :param struct orc_host \*host:
+        host being reset
+
+.. _`orc_reset_scsi_bus.description`:
+
+Description
+-----------
+
+Perform a full bus reset on the adapter.
+
+.. _`orc_device_reset`:
+
+orc_device_reset
+================
+
+.. c:function:: int orc_device_reset(struct orc_host *host, struct scsi_cmnd *cmd, unsigned int target)
+
+    device reset handler
+
+    :param struct orc_host \*host:
+        host to reset
+
+    :param struct scsi_cmnd \*cmd:
+        command causing the reset
+        \ ``target``\ ; target device
+
+    :param unsigned int target:
+        *undescribed*
+
+.. _`orc_device_reset.description`:
+
+Description
+-----------
+
+Reset registers, reset a hanging bus and kill active and disconnected
+commands for target w/o soft reset
+
+.. _`__orc_alloc_scb`:
+
+__orc_alloc_scb
+===============
+
+.. c:function:: struct orc_scb *__orc_alloc_scb(struct orc_host *host)
+
+    allocate an SCB
+
+    :param struct orc_host \*host:
+        host to allocate from
+
+.. _`__orc_alloc_scb.description`:
+
+Description
+-----------
+
+Allocate an SCB and return a pointer to the SCB object. NULL
+is returned if no SCB is free. The caller must already hold
+the allocator lock at this point.
+
+.. _`orc_alloc_scb`:
+
+orc_alloc_scb
+=============
+
+.. c:function:: struct orc_scb *orc_alloc_scb(struct orc_host *host)
+
+    allocate an SCB
+
+    :param struct orc_host \*host:
+        host to allocate from
+
+.. _`orc_alloc_scb.description`:
+
+Description
+-----------
+
+Allocate an SCB and return a pointer to the SCB object. NULL
+is returned if no SCB is free.
+
+.. _`orc_release_scb`:
+
+orc_release_scb
+===============
+
+.. c:function:: void orc_release_scb(struct orc_host *host, struct orc_scb *scb)
+
+    release an SCB
+
+    :param struct orc_host \*host:
+        host owning the SCB
+
+    :param struct orc_scb \*scb:
+        SCB that is now free
+
+.. _`orc_release_scb.description`:
+
+Description
+-----------
+
+Called to return a completed SCB to the allocation pool. Before
+calling the SCB must be out of use on both the host and the HA.
+
+.. _`orchid_abort_scb`:
+
+orchid_abort_scb
+================
+
+.. c:function:: int orchid_abort_scb(struct orc_host *host, struct orc_scb *scb)
+
+    abort a command
+
+    :param struct orc_host \*host:
+        *undescribed*
+
+    :param struct orc_scb \*scb:
+        *undescribed*
+
+.. _`orchid_abort_scb.description`:
+
+Description
+-----------
+
+Abort a queued command that has been passed to the firmware layer
+if possible. This is all handled by the firmware. We aks the firmware
+and it either aborts the command or fails
+
+.. _`orc_interrupt`:
+
+orc_interrupt
+=============
+
+.. c:function:: irqreturn_t orc_interrupt(struct orc_host *host)
+
+    IRQ processing
+
+    :param struct orc_host \*host:
+        Host causing the interrupt
+
+.. _`orc_interrupt.description`:
+
+Description
+-----------
+
+This function is called from the IRQ handler and protected
+by the host lock. While the controller reports that there are
+scb's for processing we pull them off the controller, turn the
+index into a host address pointer to the scb and call the scb
+handler.
+
+Returns IRQ_HANDLED if any SCBs were processed, IRQ_NONE otherwise
+
+.. _`inia100_build_scb`:
+
+inia100_build_scb
+=================
+
+.. c:function:: int inia100_build_scb(struct orc_host *host, struct orc_scb *scb, struct scsi_cmnd *cmd)
+
+    build SCB
+
+    :param struct orc_host \*host:
+        host owing the control block
+
+    :param struct orc_scb \*scb:
+        control block to use
+
+    :param struct scsi_cmnd \*cmd:
+        Mid layer command
+
+.. _`inia100_build_scb.description`:
+
+Description
+-----------
+
+Build a host adapter control block from the SCSI mid layer command
+
+.. _`inia100_queue_lck`:
+
+inia100_queue_lck
+=================
+
+.. c:function:: int inia100_queue_lck(struct scsi_cmnd *cmd, void (*) done (struct scsi_cmnd *)
+
+    queue command with host
+
+    :param struct scsi_cmnd \*cmd:
+        Command block
+
+    :param (void (\*) done (struct scsi_cmnd \*):
+        Completion function
+
+.. _`inia100_queue_lck.description`:
+
+Description
+-----------
+
+Called by the mid layer to queue a command. Process the command
+block, build the host specific scb structures and if there is room
+queue the command down to the controller
+
+.. _`inia100_scb_handler`:
+
+inia100_scb_handler
+===================
+
+.. c:function:: void inia100_scb_handler(struct orc_host *host, struct orc_scb *scb)
+
+    interrupt callback
+
+    :param struct orc_host \*host:
+        Host causing the interrupt
+
+    :param struct orc_scb \*scb:
+        SCB the controller returned as needing processing
+
+.. _`inia100_scb_handler.description`:
+
+Description
+-----------
+
+Perform completion processing on a control block. Do the conversions
+from host to SCSI midlayer error coding, save any sense data and
+the complete with the midlayer and recycle the scb.
+
+.. _`inia100_intr`:
+
+inia100_intr
+============
+
+.. c:function:: irqreturn_t inia100_intr(int irqno, void *devid)
+
+    interrupt handler
+
+    :param int irqno:
+        Interrupt value
+
+    :param void \*devid:
+        Host adapter
+
+.. _`inia100_intr.description`:
+
+Description
+-----------
+
+Entry point for IRQ handling. All the real work is performed
+by orc_interrupt.
+
+.. This file was automatic generated / don't edit.
+

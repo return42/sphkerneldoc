@@ -7,5 +7,6 @@ marvell
 .. toctree::
    :maxdepth: 1
 
-   libertas/index
-   libertas_tf/index
+    libertas/index
+    libertas_tf/index
+    mwifiex/index

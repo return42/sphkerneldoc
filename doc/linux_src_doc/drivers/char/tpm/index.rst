@@ -7,6 +7,7 @@ tpm
 .. toctree::
    :maxdepth: 1
 
-   tpm2-cmd_c
-   tpm-chip_c
-   tpm-interface_c
+    tpm-chip_c
+    tpm-interface_c
+    tpm2-cmd_c
+    tpm_ibmvtpm_c

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-sst.h
-=====
-
+.. src-file: sound/soc/intel/atom/sst/sst.h
 
 .. _`sst_block`:
 
 struct sst_block
 ================
 
-.. c:type:: sst_block
+.. c:type:: struct sst_block
 
     This structure is used to block a user/fw data call to another fw/user call
-
 
 .. _`sst_block.definition`:
 
@@ -22,59 +17,54 @@ Definition
 
 .. code-block:: c
 
-  struct sst_block {
-    bool condition;
-    int ret_code;
-    void * data;
-    u32 size;
-    bool on;
-    u32 msg_id;
-    u32 drv_id;
-    struct list_head node;
-  };
-
+    struct sst_block {
+        bool condition;
+        int ret_code;
+        void *data;
+        u32 size;
+        bool on;
+        u32 msg_id;
+        u32 drv_id;
+        struct list_head node;
+    }
 
 .. _`sst_block.members`:
 
 Members
 -------
 
-:``condition``:
+condition
     condition for blocking check
 
-:``ret_code``:
+ret_code
     ret code when block is released
 
-:``data``:
+data
     data ptr
 
-:``size``:
+size
     size of data
 
-:``on``:
+on
     block condition
 
-:``msg_id``:
+msg_id
     msg_id = msgid in mfld/ctp, mrfld = NULL
 
-:``drv_id``:
+drv_id
     str_id in mfld/ctp, = drv_id in mrfld
 
-:``node``:
+node
     list head node
-
-
-
 
 .. _`stream_info`:
 
 struct stream_info
 ==================
 
-.. c:type:: stream_info
+.. c:type:: struct stream_info
 
     structure that holds the stream information
-
 
 .. _`stream_info.definition`:
 
@@ -83,59 +73,86 @@ Definition
 
 .. code-block:: c
 
-  struct stream_info {
-    unsigned int status;
-    unsigned int prev;
-    unsigned int ops;
-    struct mutex lock;
-    void * pcm_substream;
-    void (* period_elapsed) (void *pcm_substream);
-    unsigned int sfreq;
-    u32 cumm_bytes;
-  };
-
+    struct stream_info {
+        unsigned int status;
+        unsigned int prev;
+        unsigned int ops;
+        struct mutex lock;
+        void *pcm_substream;
+        void (* period_elapsed) (void *pcm_substream);
+        unsigned int sfreq;
+        u32 cumm_bytes;
+        void *compr_cb_param;
+        void (* compr_cb) (void *compr_cb_param);
+        void *drain_cb_param;
+        void (* drain_notify) (void *drain_cb_param);
+        unsigned int num_ch;
+        unsigned int pipe_id;
+        unsigned int str_id;
+        unsigned int task_id;
+    }
 
 .. _`stream_info.members`:
 
 Members
 -------
 
-:``status``:
+status
     stream current state
 
-:``prev``:
+prev
     stream prev state
 
-:``ops``:
+ops
     stream operation pb/cp/drm...
 
-:``lock``:
+lock
     stream mutex for protecting state
 
-:``pcm_substream``:
+pcm_substream
     PCM substream
 
-:``period_elapsed``:
+period_elapsed
     PCM period elapsed callback
 
-:``sfreq``:
+sfreq
     stream sampling freq
 
-:``cumm_bytes``:
+cumm_bytes
     cummulative bytes decoded
 
+compr_cb_param
+    *undescribed*
 
+compr_cb
+    *undescribed*
 
+drain_cb_param
+    *undescribed*
+
+drain_notify
+    *undescribed*
+
+num_ch
+    *undescribed*
+
+pipe_id
+    *undescribed*
+
+str_id
+    *undescribed*
+
+task_id
+    *undescribed*
 
 .. _`sst_fw_header`:
 
 struct sst_fw_header
 ====================
 
-.. c:type:: sst_fw_header
+.. c:type:: struct sst_fw_header
 
     FW file headers
-
 
 .. _`sst_fw_header.definition`:
 
@@ -144,47 +161,42 @@ Definition
 
 .. code-block:: c
 
-  struct sst_fw_header {
-    unsigned char signature[FW_SIGNATURE_SIZE];
-    u32 file_size;
-    u32 modules;
-    u32 file_format;
-    u32 reserved[4];
-  };
-
+    struct sst_fw_header {
+        unsigned char signature[FW_SIGNATURE_SIZE];
+        u32 file_size;
+        u32 modules;
+        u32 file_format;
+        u32 reserved[4];
+    }
 
 .. _`sst_fw_header.members`:
 
 Members
 -------
 
-:``signature[FW_SIGNATURE_SIZE]``:
+signature
     FW signature
 
-:``file_size``:
+file_size
     size of fw image
 
-:``modules``:
+modules
     # of modules
 
-:``file_format``:
+file_format
     version of header format
 
-:``reserved[4]``:
+reserved
     reserved fields
-
-
-
 
 .. _`fw_module_header`:
 
 struct fw_module_header
 =======================
 
-.. c:type:: fw_module_header
+.. c:type:: struct fw_module_header
 
     module header in FW
-
 
 .. _`fw_module_header.definition`:
 
@@ -193,47 +205,42 @@ Definition
 
 .. code-block:: c
 
-  struct fw_module_header {
-    unsigned char signature[FW_SIGNATURE_SIZE];
-    u32 mod_size;
-    u32 blocks;
-    u32 type;
-    u32 entry_point;
-  };
-
+    struct fw_module_header {
+        unsigned char signature[FW_SIGNATURE_SIZE];
+        u32 mod_size;
+        u32 blocks;
+        u32 type;
+        u32 entry_point;
+    }
 
 .. _`fw_module_header.members`:
 
 Members
 -------
 
-:``signature[FW_SIGNATURE_SIZE]``:
+signature
     module signature
 
-:``mod_size``:
+mod_size
     size of module
 
-:``blocks``:
+blocks
     block count
 
-:``type``:
+type
     block type
 
-:``entry_point``:
+entry_point
     module netry point
-
-
-
 
 .. _`fw_block_info`:
 
 struct fw_block_info
 ====================
 
-.. c:type:: fw_block_info
+.. c:type:: struct fw_block_info
 
     block header for FW
-
 
 .. _`fw_block_info.definition`:
 
@@ -242,39 +249,38 @@ Definition
 
 .. code-block:: c
 
-  struct fw_block_info {
-    enum sst_ram_type type;
-    u32 size;
-    u32 ram_offset;
-  };
-
+    struct fw_block_info {
+        enum sst_ram_type type;
+        u32 size;
+        u32 ram_offset;
+        u32 rsvd;
+    }
 
 .. _`fw_block_info.members`:
 
 Members
 -------
 
-:``type``:
+type
     block ram type I/D
 
-:``size``:
+size
     size of block
 
-:``ram_offset``:
+ram_offset
     offset in ram
 
-
-
+rsvd
+    *undescribed*
 
 .. _`intel_sst_drv`:
 
 struct intel_sst_drv
 ====================
 
-.. c:type:: intel_sst_drv
+.. c:type:: struct intel_sst_drv
 
     driver ops
-
 
 .. _`intel_sst_drv.definition`:
 
@@ -283,115 +289,216 @@ Definition
 
 .. code-block:: c
 
-  struct intel_sst_drv {
-    int sst_state;
-    unsigned int dev_id;
-    void __iomem * shim;
-    void __iomem * mailbox;
-    void __iomem * iram;
-    void __iomem * dram;
-    unsigned int shim_phy_add;
-    struct sst_shim_regs64 * shim_regs64;
-    struct list_head ipc_dispatch_list;
-    struct sst_platform_info * pdata;
-    struct list_head rx_list;
-    struct work_struct ipc_post_msg_wq;
-    struct workqueue_struct * post_msg_wq;
-    struct stream_info streams[MAX_NUM_STREAMS+1];
-    spinlock_t ipc_spin_lock;
-    spinlock_t block_lock;
-    spinlock_t rx_msg_lock;
-    struct pci_dev * pci;
-    struct device * dev;
-    volatile long unsigned pvt_id;
-    struct mutex sst_lock;
-    unsigned int stream_cnt;
-    struct pm_qos_request * qos;
-  };
-
+    struct intel_sst_drv {
+        int sst_state;
+        int irq_num;
+        unsigned int dev_id;
+        void __iomem *ddr;
+        void __iomem *shim;
+        void __iomem *mailbox;
+        void __iomem *iram;
+        void __iomem *dram;
+        unsigned int mailbox_add;
+        unsigned int iram_base;
+        unsigned int dram_base;
+        unsigned int shim_phy_add;
+        unsigned int iram_end;
+        unsigned int dram_end;
+        unsigned int ddr_end;
+        unsigned int ddr_base;
+        unsigned int mailbox_recv_offset;
+        struct sst_shim_regs64 *shim_regs64;
+        struct list_head block_list;
+        struct list_head ipc_dispatch_list;
+        struct sst_platform_info *pdata;
+        struct list_head rx_list;
+        struct work_struct ipc_post_msg_wq;
+        wait_queue_head_t wait_queue;
+        struct workqueue_struct *post_msg_wq;
+        unsigned int tstamp;
+        struct stream_info streams[MAX_NUM_STREAMS+1];
+        spinlock_t ipc_spin_lock;
+        spinlock_t block_lock;
+        spinlock_t rx_msg_lock;
+        struct pci_dev *pci;
+        struct device *dev;
+        volatile long unsigned pvt_id;
+        struct mutex sst_lock;
+        unsigned int stream_cnt;
+        unsigned int csr_value;
+        void *fw_in_mem;
+        struct sst_sg_list fw_sg_list;
+        struct sst_sg_list library_list;
+        struct intel_sst_ops *ops;
+        struct sst_info info;
+        struct pm_qos_request *qos;
+        unsigned int use_dma;
+        unsigned int use_lli;
+        atomic_t fw_clear_context;
+        bool lib_dwnld_reqd;
+        struct list_head memcpy_list;
+        struct sst_ipc_reg ipc_reg;
+        struct sst_mem_mgr lib_mem_mgr;
+        char firmware_name[FW_NAME_SIZE];
+        struct sst_fw_save *fw_save;
+    }
 
 .. _`intel_sst_drv.members`:
 
 Members
 -------
 
-:``sst_state``:
+sst_state
     current sst device state
 
-:``dev_id``:
+irq_num
+    *undescribed*
+
+dev_id
     device identifier, pci_id for pci devices and acpi_id for acpi
     devices
 
-:``shim``:
+ddr
+    *undescribed*
+
+shim
     SST shim pointer
 
-:``mailbox``:
+mailbox
     SST mailbox pointer
 
-:``iram``:
+iram
     SST IRAM pointer
 
-:``dram``:
+dram
     SST DRAM pointer
 
-:``shim_phy_add``:
+mailbox_add
+    *undescribed*
+
+iram_base
+    *undescribed*
+
+dram_base
+    *undescribed*
+
+shim_phy_add
     SST shim phy addr
 
-:``shim_regs64``:
+iram_end
+    *undescribed*
+
+dram_end
+    *undescribed*
+
+ddr_end
+    *undescribed*
+
+ddr_base
+    *undescribed*
+
+mailbox_recv_offset
+    *undescribed*
+
+shim_regs64
     Struct to save shim registers
 
-:``ipc_dispatch_list``:
+block_list
+    *undescribed*
+
+ipc_dispatch_list
     ipc messages dispatched
 
-:``pdata``:
+pdata
     SST info passed as a part of pci platform data
 
-:``rx_list``:
+rx_list
     to copy the process_reply/process_msg from DSP
 
-:``ipc_post_msg_wq``:
+ipc_post_msg_wq
     wq to post IPC messages context
 
-:``post_msg_wq``:
+wait_queue
+    *undescribed*
+
+post_msg_wq
     wq to post IPC messages
 
-:``streams[MAX_NUM_STREAMS+1]``:
+tstamp
+    *undescribed*
+
+streams
     sst stream contexts
 
-:``ipc_spin_lock``:
+ipc_spin_lock
     spin lock to handle audio shim access and ipc queue
 
-:``block_lock``:
+block_lock
     spin lock to add block to block_list and assign pvt_id
 
-:``rx_msg_lock``:
+rx_msg_lock
     spin lock to handle the rx messages from the DSP
 
-:``pci``:
+pci
     sst pci device struture
 
-:``dev``:
+dev
     pointer to current device struct
 
-:``pvt_id``:
+pvt_id
     sst private id
 
-:``sst_lock``:
+sst_lock
     sst device lock
 
-:``stream_cnt``:
+stream_cnt
     total sst active stream count
 
-:``qos``:
+csr_value
+    *undescribed*
+
+fw_in_mem
+    *undescribed*
+
+fw_sg_list
+    *undescribed*
+
+library_list
+    *undescribed*
+
+ops
+    *undescribed*
+
+info
+    *undescribed*
+
+qos
     PM Qos struct
+    firmware_name : Firmware / Library name
 
+use_dma
+    *undescribed*
 
+use_lli
+    *undescribed*
 
+fw_clear_context
+    *undescribed*
 
-.. _`intel_sst_drv.firmware_name`:
+lib_dwnld_reqd
+    *undescribed*
 
-firmware_name 
---------------
+memcpy_list
+    *undescribed*
 
-Firmware / Library name
+ipc_reg
+    *undescribed*
+
+lib_mem_mgr
+    *undescribed*
+
+fw_save
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

@@ -1,38 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-da7210.c
-========
-
+.. src-file: sound/soc/codecs/da7210.c
 
 .. _`da7210_set_dai_pll`:
 
 da7210_set_dai_pll
 ==================
 
-.. c:function:: int da7210_set_dai_pll (struct snd_soc_dai *codec_dai, int pll_id, int source, unsigned int fref, unsigned int fout)
+.. c:function:: int da7210_set_dai_pll(struct snd_soc_dai *codec_dai, int pll_id, int source, unsigned int fref, unsigned int fout)
+
+    Configure the codec PLL
 
     :param struct snd_soc_dai \*codec_dai:
-
         *undescribed*
 
     :param int pll_id:
-
         *undescribed*
 
     :param int source:
-
         *undescribed*
 
     :param unsigned int fref:
-
         *undescribed*
 
     :param unsigned int fout:
-
         *undescribed*
-
-
 
 .. _`da7210_set_dai_pll.note`:
 
@@ -41,4 +32,6 @@ Note
 
 Supported PLL input frequencies are 12MHz, 13MHz, 13.5MHz, 14.4MHz,
 19.2MHz, 19.6MHz and 19.8MHz
+
+.. This file was automatic generated / don't edit.
 

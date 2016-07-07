@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-adv7511.h
-=========
-
+.. src-file: drivers/gpu/drm/i2c/adv7511.h
 
 .. _`adv7511_sync_polarity`:
 
 enum adv7511_sync_polarity
 ==========================
 
-.. c:type:: adv7511_sync_polarity
+.. c:type:: enum adv7511_sync_polarity
 
     Polarity for the input sync signals
-
 
 .. _`adv7511_sync_polarity.definition`:
 
@@ -23,27 +18,25 @@ Definition
 .. code-block:: c
 
     enum adv7511_sync_polarity {
-      ADV7511_SYNC_POLARITY_PASSTHROUGH,
-      ADV7511_SYNC_POLARITY_LOW,
-      ADV7511_SYNC_POLARITY_HIGH
+        ADV7511_SYNC_POLARITY_PASSTHROUGH,
+        ADV7511_SYNC_POLARITY_LOW,
+        ADV7511_SYNC_POLARITY_HIGH
     };
-
 
 .. _`adv7511_sync_polarity.constants`:
 
 Constants
 ---------
 
-:``ADV7511_SYNC_POLARITY_PASSTHROUGH``:
+ADV7511_SYNC_POLARITY_PASSTHROUGH
     Sync polarity matches that of
     the currently configured mode.
 
-:``ADV7511_SYNC_POLARITY_LOW``:
+ADV7511_SYNC_POLARITY_LOW
     Sync polarity is low
 
-:``ADV7511_SYNC_POLARITY_HIGH``:
+ADV7511_SYNC_POLARITY_HIGH
     Sync polarity is high
-
 
 .. _`adv7511_sync_polarity.description`:
 
@@ -58,17 +51,14 @@ If the polarity is set to PASSTHROUGH, the ADV7511 will route the signal
 unchanged. This is used when the upstream graphics core already generates
 the sync signals with the correct polarity.
 
-
-
 .. _`adv7511_link_config`:
 
 struct adv7511_link_config
 ==========================
 
-.. c:type:: adv7511_link_config
+.. c:type:: struct adv7511_link_config
 
     Describes adv7511 hardware configuration
-
 
 .. _`adv7511_link_config.definition`:
 
@@ -77,67 +67,62 @@ Definition
 
 .. code-block:: c
 
-  struct adv7511_link_config {
-    unsigned int input_color_depth;
-    enum hdmi_colorspace input_colorspace;
-    enum adv7511_input_clock input_clock;
-    unsigned int input_style;
-    enum adv7511_input_justification input_justification;
-    int clock_delay;
-    bool embedded_sync;
-    enum adv7511_input_sync_pulse sync_pulse;
-    enum adv7511_sync_polarity vsync_polarity;
-    enum adv7511_sync_polarity hsync_polarity;
-  };
-
+    struct adv7511_link_config {
+        unsigned int input_color_depth;
+        enum hdmi_colorspace input_colorspace;
+        enum adv7511_input_clock input_clock;
+        unsigned int input_style;
+        enum adv7511_input_justification input_justification;
+        int clock_delay;
+        bool embedded_sync;
+        enum adv7511_input_sync_pulse sync_pulse;
+        enum adv7511_sync_polarity vsync_polarity;
+        enum adv7511_sync_polarity hsync_polarity;
+    }
 
 .. _`adv7511_link_config.members`:
 
 Members
 -------
 
-:``input_color_depth``:
+input_color_depth
     Number of bits per color component (8, 10 or 12)
 
-:``input_colorspace``:
+input_colorspace
     The input colorspace (RGB, YUV444, YUV422)
 
-:``input_clock``:
+input_clock
     The input video clock style (1x, 2x, DDR)
 
-:``input_style``:
+input_style
     The input component arrangement variant
 
-:``input_justification``:
+input_justification
     Video input format bit justification
 
-:``clock_delay``:
+clock_delay
     Clock delay for the input clock (in ps)
 
-:``embedded_sync``:
+embedded_sync
     Video input uses BT.656-style embedded sync
 
-:``sync_pulse``:
+sync_pulse
     Select the sync pulse
 
-:``vsync_polarity``:
+vsync_polarity
     vsync input signal configuration
 
-:``hsync_polarity``:
+hsync_polarity
     hsync input signal configuration
-
-
-
 
 .. _`adv7511_csc_scaling`:
 
 enum adv7511_csc_scaling
 ========================
 
-.. c:type:: adv7511_csc_scaling
+.. c:type:: enum adv7511_csc_scaling
 
     Scaling factor for the ADV7511 CSC
-
 
 .. _`adv7511_csc_scaling.definition`:
 
@@ -147,36 +132,33 @@ Definition
 .. code-block:: c
 
     enum adv7511_csc_scaling {
-      ADV7511_CSC_SCALING_1,
-      ADV7511_CSC_SCALING_2,
-      ADV7511_CSC_SCALING_4
+        ADV7511_CSC_SCALING_1,
+        ADV7511_CSC_SCALING_2,
+        ADV7511_CSC_SCALING_4
     };
-
 
 .. _`adv7511_csc_scaling.constants`:
 
 Constants
 ---------
 
-:``ADV7511_CSC_SCALING_1``:
+ADV7511_CSC_SCALING_1
     CSC results are not scaled
 
-:``ADV7511_CSC_SCALING_2``:
+ADV7511_CSC_SCALING_2
     CSC results are scaled by a factor of two
 
-:``ADV7511_CSC_SCALING_4``:
+ADV7511_CSC_SCALING_4
     CSC results are scalled by a factor of four
-
 
 .. _`adv7511_video_config`:
 
 struct adv7511_video_config
 ===========================
 
-.. c:type:: adv7511_video_config
+.. c:type:: struct adv7511_video_config
 
     Describes adv7511 hardware configuration
-
 
 .. _`adv7511_video_config.definition`:
 
@@ -185,33 +167,33 @@ Definition
 
 .. code-block:: c
 
-  struct adv7511_video_config {
-    bool csc_enable;
-    enum adv7511_csc_scaling csc_scaling_factor;
-    const uint16_t * csc_coefficents;
-    bool hdmi_mode;
-    struct hdmi_avi_infoframe avi_infoframe;
-  };
-
+    struct adv7511_video_config {
+        bool csc_enable;
+        enum adv7511_csc_scaling csc_scaling_factor;
+        const uint16_t *csc_coefficents;
+        bool hdmi_mode;
+        struct hdmi_avi_infoframe avi_infoframe;
+    }
 
 .. _`adv7511_video_config.members`:
 
 Members
 -------
 
-:``csc_enable``:
+csc_enable
     Whether to enable color space conversion
 
-:``csc_scaling_factor``:
+csc_scaling_factor
     Color space conversion scaling factor
 
-:``csc_coefficents``:
+csc_coefficents
     Color space conversion coefficents
 
-:``hdmi_mode``:
+hdmi_mode
     Whether to use HDMI or DVI output mode
 
-:``avi_infoframe``:
+avi_infoframe
     HDMI infoframe
 
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-jz4780_bch.c
-============
-
+.. src-file: drivers/mtd/nand/jz4780_bch.c
 
 .. _`jz4780_bch_calculate`:
 
 jz4780_bch_calculate
 ====================
 
-.. c:function:: int jz4780_bch_calculate (struct jz4780_bch *bch, struct jz4780_bch_params *params, const u8 *buf, u8 *ecc_code)
+.. c:function:: int jz4780_bch_calculate(struct jz4780_bch *bch, struct jz4780_bch_params *params, const u8 *buf, u8 *ecc_code)
 
     calculate ECC for a data buffer
 
@@ -26,8 +22,6 @@ jz4780_bch_calculate
     :param u8 \*ecc_code:
         output buffer with ECC.
 
-
-
 .. _`jz4780_bch_calculate.return`:
 
 Return
@@ -36,14 +30,12 @@ Return
 0 on success, -ETIMEDOUT if timed out while waiting for BCH
 controller.
 
-
-
 .. _`jz4780_bch_correct`:
 
 jz4780_bch_correct
 ==================
 
-.. c:function:: int jz4780_bch_correct (struct jz4780_bch *bch, struct jz4780_bch_params *params, u8 *buf, u8 *ecc_code)
+.. c:function:: int jz4780_bch_correct(struct jz4780_bch *bch, struct jz4780_bch_params *params, u8 *buf, u8 *ecc_code)
 
     detect and correct bit errors
 
@@ -59,8 +51,6 @@ jz4780_bch_correct
     :param u8 \*ecc_code:
         ECC read from the chip.
 
-
-
 .. _`jz4780_bch_correct.description`:
 
 Description
@@ -68,8 +58,6 @@ Description
 
 Given the raw data and the ECC read from the NAND device, detects and
 corrects errors in the data.
-
-
 
 .. _`jz4780_bch_correct.return`:
 
@@ -79,21 +67,17 @@ Return
 the number of bit errors corrected, -EBADMSG if there are too many
 errors to correct or -ETIMEDOUT if we timed out waiting for the controller.
 
-
-
 .. _`jz4780_bch_get`:
 
 jz4780_bch_get
 ==============
 
-.. c:function:: struct jz4780_bch *jz4780_bch_get (struct device_node *np)
+.. c:function:: struct jz4780_bch *jz4780_bch_get(struct device_node *np)
 
     get the BCH controller device
 
     :param struct device_node \*np:
         BCH device tree node.
-
-
 
 .. _`jz4780_bch_get.description`:
 
@@ -101,10 +85,8 @@ Description
 -----------
 
 Gets the BCH controller device from the specified device tree node. The
-device must be released with :c:func:`jz4780_bch_release` when it is no longer being
+device must be released with \ :c:func:`jz4780_bch_release`\  when it is no longer being
 used.
-
-
 
 .. _`jz4780_bch_get.return`:
 
@@ -114,21 +96,17 @@ Return
 a pointer to jz4780_bch, errors are encoded into the pointer.
 PTR_ERR(-EPROBE_DEFER) if the device hasn't been initialised yet.
 
-
-
 .. _`of_jz4780_bch_get`:
 
 of_jz4780_bch_get
 =================
 
-.. c:function:: struct jz4780_bch *of_jz4780_bch_get (struct device_node *of_node)
+.. c:function:: struct jz4780_bch *of_jz4780_bch_get(struct device_node *of_node)
 
     get the BCH controller from a DT node
 
     :param struct device_node \*of_node:
         the node that contains a bch-controller property.
-
-
 
 .. _`of_jz4780_bch_get.description`:
 
@@ -138,8 +116,6 @@ Description
 Get the bch-controller property from the given device tree
 node and pass it to jz4780_bch_get to do the work.
 
-
-
 .. _`of_jz4780_bch_get.return`:
 
 Return
@@ -148,17 +124,17 @@ Return
 a pointer to jz4780_bch, errors are encoded into the pointer.
 PTR_ERR(-EPROBE_DEFER) if the device hasn't been initialised yet.
 
-
-
 .. _`jz4780_bch_release`:
 
 jz4780_bch_release
 ==================
 
-.. c:function:: void jz4780_bch_release (struct jz4780_bch *bch)
+.. c:function:: void jz4780_bch_release(struct jz4780_bch *bch)
 
     release the BCH controller device
 
     :param struct jz4780_bch \*bch:
         BCH device.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,6 +7,7 @@
 .. toctree::
    :maxdepth: 1
 
-   mpc52xx_common_c
-   mpc52xx_gpt_c
-   mpc52xx_lpbfifo_c
+    mpc52xx_common_c
+    mpc52xx_gpt_c
+    mpc52xx_lpbfifo_c
+    mpc52xx_pic_c

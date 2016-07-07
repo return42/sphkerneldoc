@@ -7,4 +7,4 @@ message
 .. toctree::
    :maxdepth: 1
 
-   fusion/index
+    fusion/index

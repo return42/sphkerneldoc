@@ -1,29 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/clk/clk-gate.c
 
-==========
-clk-gate.c
-==========
+.. _`clk_hw_register_gate`:
 
+clk_hw_register_gate
+====================
 
-.. _`basic-gatable-clock-which-can-gate-and-ungate-it-s-ouput`:
-
-basic gatable clock which can gate and ungate it's ouput
-========================================================
-
-Traits of this clock:
-prepare - clk_(un)prepare only ensures parent is (un)prepared
-enable - clk_enable and clk_disable are functional & control gating
-rate - inherits rate from parent.  No clk_set_rate support
-parent - fixed parent.  No clk_set_parent support
-
-
-
-.. _`clk_register_gate`:
-
-clk_register_gate
-=================
-
-.. c:function:: struct clk *clk_register_gate (struct device *dev, const char *name, const char *parent_name, unsigned long flags, void __iomem *reg, u8 bit_idx, u8 clk_gate_flags, spinlock_t *lock)
+.. c:function:: struct clk_hw *clk_hw_register_gate(struct device *dev, const char *name, const char *parent_name, unsigned long flags, void __iomem *reg, u8 bit_idx, u8 clk_gate_flags, spinlock_t *lock)
 
     register a gate clock with the clock framework
 
@@ -50,4 +33,6 @@ clk_register_gate
 
     :param spinlock_t \*lock:
         shared register lock for this clock
+
+.. This file was automatic generated / don't edit.
 

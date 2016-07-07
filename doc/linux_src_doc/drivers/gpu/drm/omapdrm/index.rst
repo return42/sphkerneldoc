@@ -7,8 +7,8 @@ omapdrm
 .. toctree::
    :maxdepth: 1
 
-   omap_dmm_tiler_c
-   omap_drv_c
-   omap_gem_c
-   omap_irq_c
-   tcm_h
+    omap_dmm_tiler_c
+    omap_drv_c
+    omap_gem_c
+    omap_irq_c
+    tcm_h

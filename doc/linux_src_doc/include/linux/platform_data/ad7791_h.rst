@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ad7791.h
-========
-
+.. src-file: include/linux/platform_data/ad7791.h
 
 .. _`ad7791_platform_data`:
 
 struct ad7791_platform_data
 ===========================
 
-.. c:type:: ad7791_platform_data
+.. c:type:: struct ad7791_platform_data
 
     AD7791 device platform data
-
 
 .. _`ad7791_platform_data.definition`:
 
@@ -22,26 +17,26 @@ Definition
 
 .. code-block:: c
 
-  struct ad7791_platform_data {
-    bool buffered;
-    bool burnout_current;
-    bool unipolar;
-  };
-
+    struct ad7791_platform_data {
+        bool buffered;
+        bool burnout_current;
+        bool unipolar;
+    }
 
 .. _`ad7791_platform_data.members`:
 
 Members
 -------
 
-:``buffered``:
+buffered
     If set to true configure the device for buffered input mode.
 
-:``burnout_current``:
+burnout_current
     If set to true the 100mA burnout current is enabled.
 
-:``unipolar``:
+unipolar
     If set to true sample in unipolar mode, if set to false sample in
     bipolar mode.
 
+.. This file was automatic generated / don't edit.
 

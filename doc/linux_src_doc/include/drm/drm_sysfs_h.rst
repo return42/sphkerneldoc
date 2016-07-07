@@ -1,27 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-drm_sysfs.h
-===========
-
+.. src-file: include/drm/drm_sysfs.h
 
 .. _`drm_class_device_register`:
 
 drm_class_device_register
 =========================
 
-.. c:function:: int drm_class_device_register (struct device *dev)
+.. c:function:: int drm_class_device_register(struct device *dev)
+
+    don't want to include the full drmP.h file.
 
     :param struct device \*dev:
-
         *undescribed*
 
-
-
-.. _`drm_class_device_register.description`:
-
-Description
------------
-
-don't want to include the full drmP.h file.
+.. This file was automatic generated / don't edit.
 

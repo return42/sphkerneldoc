@@ -1,0 +1,141 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/regulator/ab8500.c
+
+.. _`ab8500_shared_mode`:
+
+struct ab8500_shared_mode
+=========================
+
+.. c:type:: struct ab8500_shared_mode
+
+    is used when mode is shared between two regulators.
+
+.. _`ab8500_shared_mode.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ab8500_shared_mode {
+        struct ab8500_regulator_info *shared_regulator;
+        bool lp_mode_req;
+    }
+
+.. _`ab8500_shared_mode.members`:
+
+Members
+-------
+
+shared_regulator
+    pointer to the other sharing regulator
+
+lp_mode_req
+    low power mode requested by this regulator
+
+.. _`ab8500_regulator_info`:
+
+struct ab8500_regulator_info
+============================
+
+.. c:type:: struct ab8500_regulator_info
+
+    ab8500 regulator information
+
+.. _`ab8500_regulator_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ab8500_regulator_info {
+        struct device *dev;
+        struct regulator_desc desc;
+        struct regulator_dev *regulator;
+        struct ab8500_shared_mode *shared_mode;
+        int load_lp_uA;
+        u8 update_bank;
+        u8 update_reg;
+        u8 update_mask;
+        u8 update_val;
+        u8 update_val_idle;
+        u8 update_val_normal;
+        u8 mode_bank;
+        u8 mode_reg;
+        u8 mode_mask;
+        u8 mode_val_idle;
+        u8 mode_val_normal;
+        u8 voltage_bank;
+        u8 voltage_reg;
+        u8 voltage_mask;
+        struct expand_register;
+    }
+
+.. _`ab8500_regulator_info.members`:
+
+Members
+-------
+
+dev
+    device pointer
+
+desc
+    regulator description
+
+regulator
+    *undescribed*
+
+shared_mode
+    used when mode is shared between two regulators
+
+load_lp_uA
+    maximum load in idle (low power) mode
+
+update_bank
+    bank to control on/off
+
+update_reg
+    register to control on/off
+
+update_mask
+    mask to enable/disable and set mode of regulator
+
+update_val
+    bits holding the regulator current mode
+
+update_val_idle
+    bits to enable the regulator in idle (low power) mode
+
+update_val_normal
+    bits to enable the regulator in normal (high power) mode
+
+mode_bank
+    bank with location of mode register
+
+mode_reg
+    mode register
+
+mode_mask
+    mask for setting mode
+
+mode_val_idle
+    mode setting for low power
+
+mode_val_normal
+    mode setting for normal power
+
+voltage_bank
+    bank to control regulator voltage
+
+voltage_reg
+    register to control regulator voltage
+
+voltage_mask
+    mask to control regulator voltage
+
+expand_register
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

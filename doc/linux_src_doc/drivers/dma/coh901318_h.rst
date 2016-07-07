@@ -1,0 +1,229 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/dma/coh901318.h
+
+.. _`coh901318_lli`:
+
+struct coh901318_lli
+====================
+
+.. c:type:: struct coh901318_lli
+
+    linked list item for DMAC
+
+.. _`coh901318_lli.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct coh901318_lli {
+        u32 control;
+        dma_addr_t src_addr;
+        dma_addr_t dst_addr;
+        dma_addr_t link_addr;
+        void *virt_link_addr;
+        dma_addr_t phy_this;
+    }
+
+.. _`coh901318_lli.members`:
+
+Members
+-------
+
+control
+    control settings for DMAC
+
+src_addr
+    transfer source address
+
+dst_addr
+    transfer destination address
+
+link_addr
+    physical address to next lli
+
+virt_link_addr
+    virtual address of next lli (only used by pool_free)
+
+phy_this
+    physical address of current lli (only used by pool_free)
+
+.. _`coh901318_pool_create`:
+
+coh901318_pool_create
+=====================
+
+.. c:function:: int coh901318_pool_create(struct coh901318_pool *pool, struct device *dev, size_t lli_nbr, size_t align)
+
+    Creates an dma pool for lli:s
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param struct device \*dev:
+        dma device
+
+    :param size_t lli_nbr:
+        number of lli:s in the pool
+
+    :param size_t align:
+        *undescribed*
+
+.. _`coh901318_pool_destroy`:
+
+coh901318_pool_destroy
+======================
+
+.. c:function:: int coh901318_pool_destroy(struct coh901318_pool *pool)
+
+    Destroys the dma pool
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+        returns 0 on success otherwise none zero
+
+.. _`coh901318_lli_alloc`:
+
+coh901318_lli_alloc
+===================
+
+.. c:function:: struct coh901318_lli *coh901318_lli_alloc(struct coh901318_pool *pool, unsigned int len)
+
+    Allocates a linked list
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param unsigned int len:
+        length to list
+
+.. _`coh901318_lli_alloc.return`:
+
+Return
+------
+
+none NULL if success otherwise NULL
+
+.. _`coh901318_lli_free`:
+
+coh901318_lli_free
+==================
+
+.. c:function:: void coh901318_lli_free(struct coh901318_pool *pool, struct coh901318_lli **lli)
+
+    Returns the linked list items to the pool
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param struct coh901318_lli \*\*lli:
+        reference to lli pointer to be freed
+
+.. _`coh901318_lli_fill_memcpy`:
+
+coh901318_lli_fill_memcpy
+=========================
+
+.. c:function:: int coh901318_lli_fill_memcpy(struct coh901318_pool *pool, struct coh901318_lli *lli, dma_addr_t src, unsigned int size, dma_addr_t dst, u32 ctrl_chained, u32 ctrl_last)
+
+    Prepares the lli:s for dma memcpy
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param struct coh901318_lli \*lli:
+        allocated lli
+
+    :param dma_addr_t src:
+        src address
+
+    :param unsigned int size:
+        transfer size
+
+    :param dma_addr_t dst:
+        destination address
+
+    :param u32 ctrl_chained:
+        ctrl for chained lli
+
+    :param u32 ctrl_last:
+        ctrl for the last lli
+        returns number of CPU interrupts for the lli, negative on error.
+
+.. _`coh901318_lli_fill_single`:
+
+coh901318_lli_fill_single
+=========================
+
+.. c:function:: int coh901318_lli_fill_single(struct coh901318_pool *pool, struct coh901318_lli *lli, dma_addr_t buf, unsigned int size, dma_addr_t dev_addr, u32 ctrl_chained, u32 ctrl_last, enum dma_transfer_direction dir)
+
+    Prepares the lli:s for dma single transfer
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param struct coh901318_lli \*lli:
+        allocated lli
+
+    :param dma_addr_t buf:
+        transfer buffer
+
+    :param unsigned int size:
+        transfer size
+
+    :param dma_addr_t dev_addr:
+        address of periphal
+
+    :param u32 ctrl_chained:
+        ctrl for chained lli
+
+    :param u32 ctrl_last:
+        ctrl for the last lli
+
+    :param enum dma_transfer_direction dir:
+        direction of transfer (to or from device)
+        returns number of CPU interrupts for the lli, negative on error.
+
+.. _`coh901318_lli_fill_sg`:
+
+coh901318_lli_fill_sg
+=====================
+
+.. c:function:: int coh901318_lli_fill_sg(struct coh901318_pool *pool, struct coh901318_lli *lli, struct scatterlist *sg, unsigned int nents, dma_addr_t dev_addr, u32 ctrl_chained, u32 ctrl, u32 ctrl_last, enum dma_transfer_direction dir, u32 ctrl_irq_mask)
+
+    Prepares the lli:s for dma scatter list transfer
+
+    :param struct coh901318_pool \*pool:
+        pool handle
+
+    :param struct coh901318_lli \*lli:
+        allocated lli
+
+    :param struct scatterlist \*sg:
+        scatter gather list
+
+    :param unsigned int nents:
+        number of entries in sg
+
+    :param dma_addr_t dev_addr:
+        address of periphal
+
+    :param u32 ctrl_chained:
+        ctrl for chained lli
+
+    :param u32 ctrl:
+        ctrl of middle lli
+
+    :param u32 ctrl_last:
+        ctrl for the last lli
+
+    :param enum dma_transfer_direction dir:
+        direction of transfer (to or from device)
+
+    :param u32 ctrl_irq_mask:
+        ctrl mask for CPU interrupt
+        returns number of CPU interrupts for the lli, negative on error.
+
+.. This file was automatic generated / don't edit.
+

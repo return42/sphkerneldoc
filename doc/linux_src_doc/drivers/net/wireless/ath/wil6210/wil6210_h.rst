@@ -1,0 +1,281 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/ath/wil6210/wil6210.h
+
+.. _`wil_get_bits`:
+
+WIL_GET_BITS
+============
+
+.. c:function:: u32 WIL_GET_BITS(u32 x, int b0, int b1)
+
+    \ ``b1``\ ] (inclusive) from the value \ ``x``\  it should be \ ``b0``\  <= \ ``b1``\ , or result is incorrect
+
+    :param u32 x:
+        *undescribed*
+
+    :param int b0:
+        *undescribed*
+
+    :param int b1:
+        *undescribed*
+
+.. _`mk_cidxtid`:
+
+mk_cidxtid
+==========
+
+.. c:function:: u8 mk_cidxtid(u8 cid, u8 tid)
+
+    construct \ ``cidxtid``\  field
+
+    :param u8 cid:
+        CID value
+
+    :param u8 tid:
+        TID value
+
+.. _`mk_cidxtid.description`:
+
+Description
+-----------
+
+\ ``cidxtid``\  field encoded as bits 0..3 - CID; 4..7 - TID
+
+.. _`parse_cidxtid`:
+
+parse_cidxtid
+=============
+
+.. c:function:: void parse_cidxtid(u8 cidxtid, u8 *cid, u8 *tid)
+
+    parse \ ``cidxtid``\  field
+
+    :param u8 cidxtid:
+        *undescribed*
+
+    :param u8 \*cid:
+        store CID value here
+
+    :param u8 \*tid:
+        store TID value here
+
+.. _`parse_cidxtid.description`:
+
+Description
+-----------
+
+\ ``cidxtid``\  field encoded as bits 0..3 - CID; 4..7 - TID
+
+.. _`wil_ctx`:
+
+struct wil_ctx
+==============
+
+.. c:type:: struct wil_ctx
+
+    software context for Vring descriptor
+
+.. _`wil_ctx.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wil_ctx {
+        struct sk_buff *skb;
+        u8 nr_frags;
+        u8 mapped_as;
+    }
+
+.. _`wil_ctx.members`:
+
+Members
+-------
+
+skb
+    *undescribed*
+
+nr_frags
+    *undescribed*
+
+mapped_as
+    *undescribed*
+
+.. _`wil_tid_ampdu_rx`:
+
+struct wil_tid_ampdu_rx
+=======================
+
+.. c:type:: struct wil_tid_ampdu_rx
+
+    TID aggregation information (Rx).
+
+.. _`wil_tid_ampdu_rx.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wil_tid_ampdu_rx {
+        struct sk_buff **reorder_buf;
+        unsigned long *reorder_time;
+        struct timer_list session_timer;
+        struct timer_list reorder_timer;
+        unsigned long last_rx;
+        u16 head_seq_num;
+        u16 stored_mpdu_num;
+        u16 ssn;
+        u16 buf_size;
+        u16 timeout;
+        u16 ssn_last_drop;
+        unsigned long long total;
+        unsigned long long drop_dup;
+        unsigned long long drop_old;
+        u8 dialog_token;
+        bool first_time;
+    }
+
+.. _`wil_tid_ampdu_rx.members`:
+
+Members
+-------
+
+reorder_buf
+    buffer to reorder incoming aggregated MPDUs
+
+reorder_time
+    jiffies when skb was added
+
+session_timer
+    check if peer keeps Tx-ing on the TID (by timeout value)
+
+reorder_timer
+    releases expired frames from the reorder buffer.
+
+last_rx
+    jiffies of last rx activity
+
+head_seq_num
+    head sequence number in reordering buffer.
+
+stored_mpdu_num
+    number of MPDUs in reordering buffer
+
+ssn
+    Starting Sequence Number expected to be aggregated.
+
+buf_size
+    buffer size for incoming A-MPDUs
+
+timeout
+    reset timer value (in TUs).
+
+ssn_last_drop
+    SSN of the last dropped frame
+
+total
+    total number of processed incoming frames
+
+drop_dup
+    duplicate frames dropped for this reorder buffer
+
+drop_old
+    old frames dropped for this reorder buffer
+
+dialog_token
+    dialog token for aggregation session
+
+first_time
+    true when this buffer used 1-st time
+
+.. _`wil_tid_crypto_rx_single`:
+
+struct wil_tid_crypto_rx_single
+===============================
+
+.. c:type:: struct wil_tid_crypto_rx_single
+
+    TID crypto information (Rx).
+
+.. _`wil_tid_crypto_rx_single.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wil_tid_crypto_rx_single {
+        u8 pn[IEEE80211_GCMP_PN_LEN];
+        bool key_set;
+    }
+
+.. _`wil_tid_crypto_rx_single.members`:
+
+Members
+-------
+
+pn
+    GCMP PN for the session
+
+key_set
+    valid key present
+
+.. _`wil_sta_info`:
+
+struct wil_sta_info
+===================
+
+.. c:type:: struct wil_sta_info
+
+    data for peer
+
+.. _`wil_sta_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wil_sta_info {
+        u8 addr[ETH_ALEN];
+        enum wil_sta_status status;
+        struct wil_net_stats stats;
+        struct wil_tid_ampdu_rx  *tid_rx[WIL_STA_TID_NUM];
+        spinlock_t tid_rx_lock;
+        unsigned long tid_rx_timer_expired[BITS_TO_LONGS(WIL_STA_TID_NUM)];
+        unsigned long tid_rx_stop_requested[BITS_TO_LONGS(WIL_STA_TID_NUM)];
+        struct wil_tid_crypto_rx tid_crypto_rx[WIL_STA_TID_NUM];
+        struct wil_tid_crypto_rx group_crypto_rx;
+    }
+
+.. _`wil_sta_info.members`:
+
+Members
+-------
+
+status
+    *undescribed*
+
+stats
+    *undescribed*
+
+tid_rx_lock
+    *undescribed*
+
+group_crypto_rx
+    *undescribed*
+
+.. _`wil_sta_info.description`:
+
+Description
+-----------
+
+Peer identified by its CID (connection ID)
+NIC performs beam forming for each peer;
+if no beam forming done, frame exchange is not
+possible.
+
+.. This file was automatic generated / don't edit.
+

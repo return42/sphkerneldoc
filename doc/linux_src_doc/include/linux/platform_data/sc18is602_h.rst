@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-sc18is602.h
-===========
-
+.. src-file: include/linux/platform_data/sc18is602.h
 
 .. _`sc18is602_platform_data`:
 
 struct sc18is602_platform_data
 ==============================
 
-.. c:type:: sc18is602_platform_data
+.. c:type:: struct sc18is602_platform_data
 
-    sc18is602 info @clock_frequency SC18IS603 oscillator frequency
-
+    sc18is602 info \ ``clock_frequency``\              SC18IS603 oscillator frequency
 
 .. _`sc18is602_platform_data.definition`:
 
@@ -22,13 +17,17 @@ Definition
 
 .. code-block:: c
 
-  struct sc18is602_platform_data {
-  };
-
+    struct sc18is602_platform_data {
+        u32 clock_frequency;
+    }
 
 .. _`sc18is602_platform_data.members`:
 
 Members
 -------
 
+clock_frequency
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

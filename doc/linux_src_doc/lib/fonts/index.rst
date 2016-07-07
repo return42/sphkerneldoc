@@ -7,4 +7,4 @@ fonts
 .. toctree::
    :maxdepth: 1
 
-   fonts_c
+    fonts_c

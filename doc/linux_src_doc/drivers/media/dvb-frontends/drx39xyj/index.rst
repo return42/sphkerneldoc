@@ -7,6 +7,5 @@ drx39xyj
 .. toctree::
    :maxdepth: 1
 
-   bsp_i2c_h
-   drx_driver_h
-   drxj_c
+    drx_driver_h
+    drxj_c

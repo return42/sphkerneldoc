@@ -7,6 +7,15 @@ char
 .. toctree::
    :maxdepth: 1
 
-   apm-emulation_c
-   agp/index
-   tpm/index
+    agp/index
+    hw_random/index
+    pcmcia/index
+    tpm/index
+    xilinx_hwicap/index
+    apm-emulation_c
+    bfin-otp_c
+    mbcs_c
+    misc_c
+    mmtimer_c
+    tile-srom_c
+    uv_mmtimer_c

@@ -7,4 +7,5 @@ spmi
 .. toctree::
    :maxdepth: 1
 
-   spmi_c
+    spmi-pmic-arb_c
+    spmi_c

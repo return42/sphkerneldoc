@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-balloon.c
-=========
-
+.. src-file: drivers/xen/balloon.c
 
 .. _`alloc_xenballooned_pages`:
 
 alloc_xenballooned_pages
 ========================
 
-.. c:function:: int alloc_xenballooned_pages (int nr_pages, struct page **pages)
+.. c:function:: int alloc_xenballooned_pages(int nr_pages, struct page **pages)
 
     get pages that have been ballooned out
 
@@ -19,16 +15,14 @@ alloc_xenballooned_pages
 
     :param struct page \*\*pages:
         pages returned
-        ``return`` 0 on success, error otherwise
-
-
+        \ ``return``\  0 on success, error otherwise
 
 .. _`free_xenballooned_pages`:
 
 free_xenballooned_pages
 =======================
 
-.. c:function:: void free_xenballooned_pages (int nr_pages, struct page **pages)
+.. c:function:: void free_xenballooned_pages(int nr_pages, struct page **pages)
 
     return pages retrieved with get_ballooned_pages
 
@@ -37,4 +31,6 @@ free_xenballooned_pages
 
     :param struct page \*\*pages:
         pages to return
+
+.. This file was automatic generated / don't edit.
 

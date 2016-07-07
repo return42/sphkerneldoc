@@ -7,5 +7,5 @@ msm
 .. toctree::
    :maxdepth: 1
 
-   msm_atomic_c
-   mdp/index
+    mdp/index
+    msm_atomic_c

@@ -1,0 +1,129 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/3945-rs.c
+
+.. _`il3945_rate_scale_flush_wins`:
+
+il3945_rate_scale_flush_wins
+============================
+
+.. c:function:: int il3945_rate_scale_flush_wins(struct il3945_rs_sta *rs_sta)
+
+    flush out the rate scale wins
+
+    :param struct il3945_rs_sta \*rs_sta:
+        *undescribed*
+
+.. _`il3945_rate_scale_flush_wins.description`:
+
+Description
+-----------
+
+Returns the number of wins that have gathered data but were
+not flushed.  If there were any that were not flushed, then
+reschedule the rate flushing routine.
+
+.. _`il3945_collect_tx_data`:
+
+il3945_collect_tx_data
+======================
+
+.. c:function:: void il3945_collect_tx_data(struct il3945_rs_sta *rs_sta, struct il3945_rate_scale_data *win, int success, int retries, int idx)
+
+    Update the success/failure sliding win
+
+    :param struct il3945_rs_sta \*rs_sta:
+        *undescribed*
+
+    :param struct il3945_rate_scale_data \*win:
+        *undescribed*
+
+    :param int success:
+        *undescribed*
+
+    :param int retries:
+        *undescribed*
+
+    :param int idx:
+        *undescribed*
+
+.. _`il3945_collect_tx_data.description`:
+
+Description
+-----------
+
+We keep a sliding win of the last 64 packets transmitted
+at this rate.  win->data contains the bitmask of successful
+packets.
+
+.. _`il3945_rs_tx_status`:
+
+il3945_rs_tx_status
+===================
+
+.. c:function:: void il3945_rs_tx_status(void *il_rate, struct ieee80211_supported_band *sband, struct ieee80211_sta *sta, void *il_sta, struct sk_buff *skb)
+
+    Update rate control values based on Tx results
+
+    :param void \*il_rate:
+        *undescribed*
+
+    :param struct ieee80211_supported_band \*sband:
+        *undescribed*
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+    :param void \*il_sta:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        *undescribed*
+
+.. _`il3945_rs_tx_status.note`:
+
+NOTE
+----
+
+Uses il_priv->retry_rate for the # of retries attempted by
+the hardware for each rate.
+
+.. _`il3945_rs_get_rate`:
+
+il3945_rs_get_rate
+==================
+
+.. c:function:: void il3945_rs_get_rate(void *il_r, struct ieee80211_sta *sta, void *il_sta, struct ieee80211_tx_rate_control *txrc)
+
+    find the rate for the requested packet
+
+    :param void \*il_r:
+        *undescribed*
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+    :param void \*il_sta:
+        *undescribed*
+
+    :param struct ieee80211_tx_rate_control \*txrc:
+        *undescribed*
+
+.. _`il3945_rs_get_rate.description`:
+
+Description
+-----------
+
+Returns the ieee80211_rate structure allocated by the driver.
+
+The rate control algorithm has no internal mapping between hw_mode's
+rate ordering and the rate ordering used by the rate control algorithm.
+
+The rate control algorithm uses a single table of rates that goes across
+the entire A/B/G spectrum vs. being limited to just one particular
+hw_mode.
+
+As such, we can't convert the idx obtained below into the hw_mode's
+rate table and must reference the driver allocated rate table
+
+.. This file was automatic generated / don't edit.
+

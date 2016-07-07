@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-shdma-base.c
-============
-
+.. src-file: drivers/dma/sh/shdma-base.c
 
 .. _`shdma_add_desc`:
 
 shdma_add_desc
 ==============
 
-.. c:function:: struct shdma_desc *shdma_add_desc (struct shdma_chan *schan, unsigned long flags, dma_addr_t *dst, dma_addr_t *src, size_t *len, struct shdma_desc **first, enum dma_transfer_direction direction)
+.. c:function:: struct shdma_desc *shdma_add_desc(struct shdma_chan *schan, unsigned long flags, dma_addr_t *dst, dma_addr_t *src, size_t *len, struct shdma_desc **first, enum dma_transfer_direction direction)
 
     get, set up and return one transfer descriptor
 
@@ -37,10 +33,7 @@ shdma_add_desc
     :param enum dma_transfer_direction direction:
         needed for slave DMA to decide which address to keep constant,
         equals DMA_MEM_TO_MEM for MEMCPY
-
         Returns 0 or an error
-
-
 
 .. _`shdma_add_desc.locks`:
 
@@ -48,4 +41,6 @@ Locks
 -----
 
 called with desc_lock held
+
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-drm_gem.h
-=========
-
+.. src-file: include/drm/drm_gem.h
 
 .. _`drm_gem_object`:
 
 struct drm_gem_object
 =====================
 
-.. c:type:: drm_gem_object
+.. c:type:: struct drm_gem_object
 
     GEM buffer object
-
 
 .. _`drm_gem_object.definition`:
 
@@ -22,37 +17,36 @@ Definition
 
 .. code-block:: c
 
-  struct drm_gem_object {
-    struct kref refcount;
-    unsigned handle_count;
-    struct drm_device * dev;
-    struct file * filp;
-    struct drm_vma_offset_node vma_node;
-    size_t size;
-    int name;
-    uint32_t read_domains;
-    uint32_t write_domain;
-    uint32_t pending_read_domains;
-    uint32_t pending_write_domain;
-    struct dma_buf * dma_buf;
-    struct dma_buf_attachment * import_attach;
-  };
-
+    struct drm_gem_object {
+        struct kref refcount;
+        unsigned handle_count;
+        struct drm_device *dev;
+        struct file *filp;
+        struct drm_vma_offset_node vma_node;
+        size_t size;
+        int name;
+        uint32_t read_domains;
+        uint32_t write_domain;
+        uint32_t pending_read_domains;
+        uint32_t pending_write_domain;
+        struct dma_buf *dma_buf;
+        struct dma_buf_attachment *import_attach;
+    }
 
 .. _`drm_gem_object.members`:
 
 Members
 -------
 
-:``refcount``:
+refcount
 
     Reference count of this object
 
-    Please use :c:func:`drm_gem_object_reference` to acquire and
-    :c:func:`drm_gem_object_unreference` or :c:func:`drm_gem_object_unreference_unlocked`
+    Please use \ :c:func:`drm_gem_object_reference`\  to acquire and
+    \ :c:func:`drm_gem_object_unreference`\  or \ :c:func:`drm_gem_object_unreference_unlocked`\ 
     to release a reference to a GEM buffer object.
 
-:``handle_count``:
+handle_count
 
     This is the GEM file_priv handle count of this object.
 
@@ -62,57 +56,57 @@ Members
 
     Protected by dev->object_name_lock.
 
-:``dev``:
+dev
     DRM dev this object belongs to.
 
-:``filp``:
+filp
 
     SHMEM file node used as backing storage for swappable buffer objects.
     GEM also supports driver private objects with driver-specific backing
     storage (contiguous CMA memory, special reserved blocks). In this
-    case ``filp`` is NULL.
+    case \ ``filp``\  is NULL.
 
-:``vma_node``:
+vma_node
 
     Mapping info for this object to support mmap. Drivers are supposed to
-    allocate the mmap offset using :c:func:`drm_gem_create_mmap_offset`. The
-    offset itself can be retrieved using :c:func:`drm_vma_node_offset_addr`.
+    allocate the mmap offset using \ :c:func:`drm_gem_create_mmap_offset`\ . The
+    offset itself can be retrieved using \ :c:func:`drm_vma_node_offset_addr`\ .
 
-    Memory mapping itself is handled by :c:func:`drm_gem_mmap`, which also checks
+    Memory mapping itself is handled by \ :c:func:`drm_gem_mmap`\ , which also checks
     that userspace is allowed to access the object.
 
-:``size``:
+size
 
     Size of the object, in bytes.  Immutable over the object's
     lifetime.
 
-:``name``:
+name
 
     Global name for this object, starts at 1. 0 means unnamed.
     Access is covered by dev->object_name_lock. This is used by the GEM_FLINK
     and GEM_OPEN ioctls.
 
-:``read_domains``:
+read_domains
 
     Read memory domains. These monitor which caches contain read/write data
     related to the object. When transitioning from one set of domains
     to another, the driver is called to ensure that caches are suitably
     flushed and invalidated.
 
-:``write_domain``:
+write_domain
     Corresponding unique write memory domain.
 
-:``pending_read_domains``:
+pending_read_domains
 
     While validating an exec operation, the
     new read/write domain values are computed here.
     They will be transferred to the above values
     at the point that any cache flushing occurs
 
-:``pending_write_domain``:
-    Write domain similar to ``pending_read_domains``\ .
+pending_write_domain
+    Write domain similar to \ ``pending_read_domains``\ .
 
-:``dma_buf``:
+dma_buf
 
     dma-buf associated with this GEM object.
 
@@ -122,7 +116,7 @@ Members
 
     Protected by obj->object_name_lock.
 
-:``import_attach``:
+import_attach
 
     dma-buf attachment backing this object.
 
@@ -138,93 +132,64 @@ Members
     (e.g. virtual devices or a displaylink behind an usb bus) they can
     simply leave it as NULL.
 
-
-
-
 .. _`drm_gem_object.description`:
 
 Description
 -----------
-
 
 This structure defines the generic parts for GEM buffer objects, which are
 mostly around handling mmap and userspace handles.
 
 Buffer objects are often abbreviated to BO.
 
-
-
 .. _`drm_gem_object_reference`:
 
 drm_gem_object_reference
 ========================
 
-.. c:function:: void drm_gem_object_reference (struct drm_gem_object *obj)
+.. c:function:: void drm_gem_object_reference(struct drm_gem_object *obj)
 
     acquire a GEM BO reference
 
     :param struct drm_gem_object \*obj:
         GEM buffer object
 
-
-
 .. _`drm_gem_object_reference.description`:
 
 Description
 -----------
 
-This acquires additional reference to ``obj``\ . It is illegal to call this
+This acquires additional reference to \ ``obj``\ . It is illegal to call this
 without already holding a reference. No locks required.
 
+.. _`__drm_gem_object_unreference`:
 
+__drm_gem_object_unreference
+============================
 
-.. _`drm_gem_object_unreference`:
+.. c:function:: void __drm_gem_object_unreference(struct drm_gem_object *obj)
 
-drm_gem_object_unreference
-==========================
-
-.. c:function:: void drm_gem_object_unreference (struct drm_gem_object *obj)
-
-    release a GEM BO reference
+    raw function to release a GEM BO reference
 
     :param struct drm_gem_object \*obj:
         GEM buffer object
 
-
-
-.. _`drm_gem_object_unreference.description`:
+.. _`__drm_gem_object_unreference.description`:
 
 Description
 -----------
 
-This releases a reference to ``obj``\ . Callers must hold the dev->struct_mutex
-lock when calling this function, even when the driver doesn't use
-dev->struct_mutex for anything.
+This function is meant to be used by drivers which are not encumbered with
+dev->struct_mutex legacy locking and which are using the
+gem_free_object_unlocked callback. It avoids all the locking checks and
+locking overhead of \ :c:func:`drm_gem_object_unreference`\  and
+\ :c:func:`drm_gem_object_unreference_unlocked`\ .
 
-For drivers not encumbered with legacy locking use
-:c:func:`drm_gem_object_unreference_unlocked` instead.
+Drivers should never call this directly in their code. Instead they should
+wrap it up into a driver_gem_object_unreference(struct driver_gem_object
+\*obj) wrapper function, and use that. Shared code should never call this, to
+avoid breaking drivers by accident which still depend upon dev->struct_mutex
+locking.
 
-
-
-.. _`drm_gem_object_unreference_unlocked`:
-
-drm_gem_object_unreference_unlocked
-===================================
-
-.. c:function:: void drm_gem_object_unreference_unlocked (struct drm_gem_object *obj)
-
-    release a GEM BO reference
-
-    :param struct drm_gem_object \*obj:
-        GEM buffer object
-
-
-
-.. _`drm_gem_object_unreference_unlocked.description`:
-
-Description
------------
-
-This releases a reference to ``obj``\ . Callers must not hold the
-dev->struct_mutex lock when calling this function.
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-mips_cdmm.c
-===========
-
+.. src-file: drivers/bus/mips_cdmm.c
 
 .. _`mips_cdmm_work_dev`:
 
 struct mips_cdmm_work_dev
 =========================
 
-.. c:type:: mips_cdmm_work_dev
+.. c:type:: struct mips_cdmm_work_dev
 
     Data for per-device call work.
-
 
 .. _`mips_cdmm_work_dev.definition`:
 
@@ -22,90 +17,76 @@ Definition
 
 .. code-block:: c
 
-  struct mips_cdmm_work_dev {
-    void * fn;
-    struct mips_cdmm_device * dev;
-  };
-
+    struct mips_cdmm_work_dev {
+        void *fn;
+        struct mips_cdmm_device *dev;
+    }
 
 .. _`mips_cdmm_work_dev.members`:
 
 Members
 -------
 
-:``fn``:
+fn
     CDMM driver callback function to call for the device.
 
-:``dev``:
-    CDMM device to pass to ``fn``\ .
-
-
-
+dev
+    CDMM device to pass to \ ``fn``\ .
 
 .. _`mips_cdmm_void_work`:
 
 mips_cdmm_void_work
 ===================
 
-.. c:function:: long mips_cdmm_void_work (void *data)
+.. c:function:: long mips_cdmm_void_work(void *data)
 
     Call a void returning CDMM driver callback.
 
     :param void \*data:
         struct mips_cdmm_work_dev pointer.
 
-
-
 .. _`mips_cdmm_void_work.description`:
 
 Description
 -----------
 
-A :c:func:`work_on_cpu` callback function to call an arbitrary CDMM driver callback
+A \ :c:func:`work_on_cpu`\  callback function to call an arbitrary CDMM driver callback
 function which doesn't return a value.
-
-
 
 .. _`mips_cdmm_int_work`:
 
 mips_cdmm_int_work
 ==================
 
-.. c:function:: long mips_cdmm_int_work (void *data)
+.. c:function:: long mips_cdmm_int_work(void *data)
 
     Call an int returning CDMM driver callback.
 
     :param void \*data:
         struct mips_cdmm_work_dev pointer.
 
-
-
 .. _`mips_cdmm_int_work.description`:
 
 Description
 -----------
 
-A :c:func:`work_on_cpu` callback function to call an arbitrary CDMM driver callback
+A \ :c:func:`work_on_cpu`\  callback function to call an arbitrary CDMM driver callback
 function which returns an int.
-
-
 
 .. _`build_percpu_helper`:
 
 BUILD_PERCPU_HELPER
 ===================
 
-.. c:function:: BUILD_PERCPU_HELPER ( _ret,  _name)
+.. c:function::  BUILD_PERCPU_HELPER( _ret,  _name)
 
     Helper to call a CDMM driver callback on right CPU.
 
-    :param _ret:
+    :param  _ret:
         Return type (void or int).
 
-    :param _name:
+    :param  _name:
         Name of CDMM driver callback function.
-
-
 
 .. _`build_percpu_helper.description`:
 
@@ -116,21 +97,17 @@ Generates a specific device callback function to call a CDMM driver callback
 function on the appropriate CPU for the device, and if applicable return the
 result.
 
-
-
 .. _`mips_cdmm_driver_register`:
 
 mips_cdmm_driver_register
 =========================
 
-.. c:function:: int mips_cdmm_driver_register (struct mips_cdmm_driver *drv)
+.. c:function:: int mips_cdmm_driver_register(struct mips_cdmm_driver *drv)
 
     Register a CDMM driver.
 
     :param struct mips_cdmm_driver \*drv:
         CDMM driver information.
-
-
 
 .. _`mips_cdmm_driver_register.description`:
 
@@ -140,30 +117,24 @@ Description
 Register a CDMM driver with the CDMM subsystem. The driver will be informed
 of matching devices which are discovered.
 
+.. _`mips_cdmm_driver_register.return`:
 
-
-.. _`mips_cdmm_driver_register.returns`:
-
-Returns
--------
+Return
+------
 
 0 on success.
-
-
 
 .. _`mips_cdmm_driver_unregister`:
 
 mips_cdmm_driver_unregister
 ===========================
 
-.. c:function:: void mips_cdmm_driver_unregister (struct mips_cdmm_driver *drv)
+.. c:function:: void mips_cdmm_driver_unregister(struct mips_cdmm_driver *drv)
 
     Unregister a CDMM driver.
 
     :param struct mips_cdmm_driver \*drv:
         CDMM driver information.
-
-
 
 .. _`mips_cdmm_driver_unregister.description`:
 
@@ -172,17 +143,14 @@ Description
 
 Unregister a CDMM driver from the CDMM subsystem.
 
-
-
 .. _`mips_cdmm_bus`:
 
 struct mips_cdmm_bus
 ====================
 
-.. c:type:: mips_cdmm_bus
+.. c:type:: struct mips_cdmm_bus
 
     Info about CDMM bus.
-
 
 .. _`mips_cdmm_bus.definition`:
 
@@ -191,146 +159,124 @@ Definition
 
 .. code-block:: c
 
-  struct mips_cdmm_bus {
-    phys_addr_t phys;
-    void __iomem * regs;
-    unsigned int drbs;
-    unsigned int drbs_reserved;
-    bool discovered;
-    bool offline;
-  };
-
+    struct mips_cdmm_bus {
+        phys_addr_t phys;
+        void __iomem *regs;
+        unsigned int drbs;
+        unsigned int drbs_reserved;
+        bool discovered;
+        bool offline;
+    }
 
 .. _`mips_cdmm_bus.members`:
 
 Members
 -------
 
-:``phys``:
+phys
     Physical address at which it is mapped.
 
-:``regs``:
+regs
     Virtual address where registers can be accessed.
 
-:``drbs``:
+drbs
     Total number of DRBs.
 
-:``drbs_reserved``:
+drbs_reserved
     Number of DRBs reserved.
 
-:``discovered``:
+discovered
     Whether the devices on the bus have been discovered yet.
 
-:``offline``:
+offline
     Whether the CDMM bus is going offline (or very early
     coming back online), in which case it should be
     reconfigured each time.
-
-
-
 
 .. _`mips_cdmm_get_bus`:
 
 mips_cdmm_get_bus
 =================
 
-.. c:function:: struct mips_cdmm_bus *mips_cdmm_get_bus ( void)
+.. c:function:: struct mips_cdmm_bus *mips_cdmm_get_bus( void)
 
     Get the per-CPU CDMM bus information.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`mips_cdmm_get_bus.description`:
 
 Description
 -----------
 
-
 Get information about the per-CPU CDMM bus, if the bus is present.
 
 The caller must prevent migration to another CPU, either by disabling
 pre-emption or by running from a pinned kernel thread.
 
+.. _`mips_cdmm_get_bus.return`:
 
-
-.. _`mips_cdmm_get_bus.returns`:
-
-Returns
--------
+Return
+------
 
 Pointer to CDMM bus information for the current CPU.
 May return ERR_PTR(-errno) in case of error, so check with
-:c:func:`IS_ERR`.
-
-
+\ :c:func:`IS_ERR`\ .
 
 .. _`mips_cdmm_cur_base`:
 
 mips_cdmm_cur_base
 ==================
 
-.. c:function:: phys_addr_t mips_cdmm_cur_base ( void)
+.. c:function:: phys_addr_t mips_cdmm_cur_base( void)
 
     Find current physical base address of CDMM region.
 
-    :param void:
+    :param  void:
         no arguments
 
+.. _`mips_cdmm_cur_base.return`:
 
-
-.. _`mips_cdmm_cur_base.returns`:
-
-Returns
--------
+Return
+------
 
 Physical base address of CDMM region according to cdmmbase CP0
 register, or 0 if the CDMM region is disabled.
-
-
 
 .. _`mips_cdmm_phys_base`:
 
 mips_cdmm_phys_base
 ===================
 
-.. c:function:: phys_addr_t mips_cdmm_phys_base ( void)
+.. c:function:: phys_addr_t mips_cdmm_phys_base( void)
 
     Choose a physical base address for CDMM region.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`mips_cdmm_phys_base.description`:
 
 Description
 -----------
 
-
 Picking a suitable physical address at which to map the CDMM region is
 platform specific, so this weak function can be overridden by platform
 code to pick a suitable value if none is configured by the bootloader.
-
-
 
 .. _`mips_cdmm_setup`:
 
 mips_cdmm_setup
 ===============
 
-.. c:function:: int mips_cdmm_setup (struct mips_cdmm_bus *bus)
+.. c:function:: int mips_cdmm_setup(struct mips_cdmm_bus *bus)
 
     Ensure the CDMM bus is initialised and usable.
 
     :param struct mips_cdmm_bus \*bus:
         Pointer to bus information for current CPU.
         IS_ERR(bus) is checked, so no need for caller to check.
-
-
 
 .. _`mips_cdmm_setup.description`:
 
@@ -340,23 +286,19 @@ Description
 The caller must prevent migration to another CPU, either by disabling
 pre-emption or by running from a pinned kernel thread.
 
-Returns        0 on success, -errno on failure.
-
-
+Returns      0 on success, -errno on failure.
 
 .. _`mips_cdmm_early_probe`:
 
 mips_cdmm_early_probe
 =====================
 
-.. c:function:: void __iomem *mips_cdmm_early_probe (unsigned int dev_type)
+.. c:function:: void __iomem *mips_cdmm_early_probe(unsigned int dev_type)
 
     Minimally probe for a specific device on CDMM.
 
     :param unsigned int dev_type:
         CDMM type code to look for.
-
-
 
 .. _`mips_cdmm_early_probe.description`:
 
@@ -370,34 +312,28 @@ example to configure an early FDC console device.
 The caller must prevent migration to another CPU, either by disabling
 pre-emption or by running from a pinned kernel thread.
 
+.. _`mips_cdmm_early_probe.return`:
 
-
-.. _`mips_cdmm_early_probe.returns`:
-
-Returns
--------
+Return
+------
 
 MMIO pointer to device memory. The caller can read the ACSR
 register to find more information about the device (such as the
 version number or the number of blocks).
 May return IOMEM_ERR_PTR(-errno) in case of error, so check with
-:c:func:`IS_ERR`.
-
-
+\ :c:func:`IS_ERR`\ .
 
 .. _`mips_cdmm_release`:
 
 mips_cdmm_release
 =================
 
-.. c:function:: void mips_cdmm_release (struct device *dev)
+.. c:function:: void mips_cdmm_release(struct device *dev)
 
     Release a removed CDMM device.
 
     :param struct device \*dev:
         Device object
-
-
 
 .. _`mips_cdmm_release.description`:
 
@@ -407,35 +343,29 @@ Description
 Clean up the struct mips_cdmm_device for an unused CDMM device. This is
 called automatically by the driver core when a device is removed.
 
-
-
 .. _`mips_cdmm_bus_discover`:
 
 mips_cdmm_bus_discover
 ======================
 
-.. c:function:: void mips_cdmm_bus_discover (struct mips_cdmm_bus *bus)
+.. c:function:: void mips_cdmm_bus_discover(struct mips_cdmm_bus *bus)
 
     Discover the devices on the CDMM bus.
 
     :param struct mips_cdmm_bus \*bus:
         CDMM bus information, must already be set up.
 
-
-
 .. _`build_perdev_helper`:
 
 BUILD_PERDEV_HELPER
 ===================
 
-.. c:function:: BUILD_PERDEV_HELPER ( _name)
+.. c:function::  BUILD_PERDEV_HELPER( _name)
 
     Helper to call a CDMM driver callback if CPU matches.
 
-    :param _name:
+    :param  _name:
         Name of CDMM driver callback function.
-
-
 
 .. _`build_perdev_helper.description`:
 
@@ -451,45 +381,37 @@ event (such as the CPU going online/offline).
 
 It is expected to already be called from the appropriate CPU.
 
-
-
 .. _`mips_cdmm_bus_down`:
 
 mips_cdmm_bus_down
 ==================
 
-.. c:function:: long mips_cdmm_bus_down (void *data)
+.. c:function:: long mips_cdmm_bus_down(void *data)
 
     Tear down the CDMM bus.
 
     :param void \*data:
         Pointer to unsigned int CPU number.
 
-
-
 .. _`mips_cdmm_bus_down.description`:
 
 Description
 -----------
 
-This work_on_cpu callback function is executed on a given CPU to call the
-CDMM driver cpu_down callback for all devices on that CPU.
-
-
+This function is executed on the hotplugged CPU and calls the CDMM
+driver cpu_down callback for all devices on that CPU.
 
 .. _`mips_cdmm_bus_up`:
 
 mips_cdmm_bus_up
 ================
 
-.. c:function:: long mips_cdmm_bus_up (void *data)
+.. c:function:: long mips_cdmm_bus_up(void *data)
 
     Bring up the CDMM bus.
 
     :param void \*data:
         Pointer to unsigned int CPU number.
-
-
 
 .. _`mips_cdmm_bus_up.description`:
 
@@ -500,16 +422,16 @@ This work_on_cpu callback function is executed on a given CPU to discover
 CDMM devices on that CPU, or to call the CDMM driver cpu_up callback for all
 devices already discovered on that CPU.
 
-It is used during initialisation and when CPUs are brought online.
-
-
+It is used as work_on_cpu callback function during
+initialisation. When CPUs are brought online the function is
+invoked directly on the hotplugged CPU.
 
 .. _`mips_cdmm_cpu_notify`:
 
 mips_cdmm_cpu_notify
 ====================
 
-.. c:function:: int mips_cdmm_cpu_notify (struct notifier_block *nb, unsigned long action, void *data)
+.. c:function:: int mips_cdmm_cpu_notify(struct notifier_block *nb, unsigned long action, void *data)
 
     Take action when a CPU is going online or offline.
 
@@ -522,8 +444,6 @@ mips_cdmm_cpu_notify
     :param void \*data:
         CPU number.
 
-
-
 .. _`mips_cdmm_cpu_notify.description`:
 
 Description
@@ -534,38 +454,33 @@ onlined. When CPUs go offline or come back online, so does their CDMM bus, so
 devices must be informed. Also when CPUs come online for the first time the
 devices on the CDMM bus need discovering.
 
+.. _`mips_cdmm_cpu_notify.return`:
 
-
-.. _`mips_cdmm_cpu_notify.returns`:
-
-Returns
--------
+Return
+------
 
 NOTIFY_OK if event was used.
 NOTIFY_DONE if we didn't care.
-
-
 
 .. _`mips_cdmm_init`:
 
 mips_cdmm_init
 ==============
 
-.. c:function:: int mips_cdmm_init ( void)
+.. c:function:: int mips_cdmm_init( void)
 
     Initialise CDMM bus.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`mips_cdmm_init.description`:
 
 Description
 -----------
 
-
 Initialise CDMM bus, discover CDMM devices for online CPUs, and arrange for
 hotplug notifications so the CDMM drivers can be kept up to date.
+
+.. This file was automatic generated / don't edit.
 

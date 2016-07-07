@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-soc-devres.c
-============
-
+.. src-file: sound/soc/soc-devres.c
 
 .. _`devm_snd_soc_register_component`:
 
 devm_snd_soc_register_component
 ===============================
 
-.. c:function:: int devm_snd_soc_register_component (struct device *dev, const struct snd_soc_component_driver *cmpnt_drv, struct snd_soc_dai_driver *dai_drv, int num_dai)
+.. c:function:: int devm_snd_soc_register_component(struct device *dev, const struct snd_soc_component_driver *cmpnt_drv, struct snd_soc_dai_driver *dai_drv, int num_dai)
 
     resource managed component registration
 
@@ -26,8 +22,6 @@ devm_snd_soc_register_component
     :param int num_dai:
         Number of DAIs to register
 
-
-
 .. _`devm_snd_soc_register_component.description`:
 
 Description
@@ -36,14 +30,12 @@ Description
 Register a component with automatic unregistration when the device is
 unregistered.
 
-
-
 .. _`devm_snd_soc_register_platform`:
 
 devm_snd_soc_register_platform
 ==============================
 
-.. c:function:: int devm_snd_soc_register_platform (struct device *dev, const struct snd_soc_platform_driver *platform_drv)
+.. c:function:: int devm_snd_soc_register_platform(struct device *dev, const struct snd_soc_platform_driver *platform_drv)
 
     resource managed platform registration
 
@@ -53,8 +45,6 @@ devm_snd_soc_register_platform
     :param const struct snd_soc_platform_driver \*platform_drv:
         platform to register
 
-
-
 .. _`devm_snd_soc_register_platform.description`:
 
 Description
@@ -63,14 +53,12 @@ Description
 Register a platform driver with automatic unregistration when the device is
 unregistered.
 
-
-
 .. _`devm_snd_soc_register_card`:
 
 devm_snd_soc_register_card
 ==========================
 
-.. c:function:: int devm_snd_soc_register_card (struct device *dev, struct snd_soc_card *card)
+.. c:function:: int devm_snd_soc_register_card(struct device *dev, struct snd_soc_card *card)
 
     resource managed card registration
 
@@ -80,8 +68,6 @@ devm_snd_soc_register_card
     :param struct snd_soc_card \*card:
         Card to register
 
-
-
 .. _`devm_snd_soc_register_card.description`:
 
 Description
@@ -90,14 +76,12 @@ Description
 Register a card with automatic unregistration when the device is
 unregistered.
 
-
-
 .. _`devm_snd_dmaengine_pcm_register`:
 
 devm_snd_dmaengine_pcm_register
 ===============================
 
-.. c:function:: int devm_snd_dmaengine_pcm_register (struct device *dev, const struct snd_dmaengine_pcm_config *config, unsigned int flags)
+.. c:function:: int devm_snd_dmaengine_pcm_register(struct device *dev, const struct snd_dmaengine_pcm_config *config, unsigned int flags)
 
     resource managed dmaengine PCM registration
 
@@ -110,8 +94,6 @@ devm_snd_dmaengine_pcm_register
     :param unsigned int flags:
         Platform specific quirks
 
-
-
 .. _`devm_snd_dmaengine_pcm_register.description`:
 
 Description
@@ -119,4 +101,6 @@ Description
 
 Register a dmaengine based PCM device with automatic unregistration when the
 device is unregistered.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,20 +1,18 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-stddef.h
-========
-
+.. src-file: include/linux/stddef.h
 
 .. _`offsetofend`:
 
 offsetofend
 ===========
 
-.. c:function:: offsetofend ( TYPE,  MEMBER)
+.. c:function::  offsetofend( TYPE,  MEMBER)
 
-    :param TYPE:
+    :param  TYPE:
         The type of the structure
 
-    :param MEMBER:
+    :param  MEMBER:
         The member within the structure to get the end offset of
+
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-ww_mutex.h
-==========
-
+.. src-file: include/linux/ww_mutex.h
 
 .. _`ww_mutex_init`:
 
 ww_mutex_init
 =============
 
-.. c:function:: void ww_mutex_init (struct ww_mutex *lock, struct ww_class *ww_class)
+.. c:function:: void ww_mutex_init(struct ww_mutex *lock, struct ww_class *ww_class)
 
     initialize the w/w mutex
 
@@ -19,8 +15,6 @@ ww_mutex_init
 
     :param struct ww_class \*ww_class:
         the w/w class the mutex should belong to
-
-
 
 .. _`ww_mutex_init.description`:
 
@@ -32,14 +26,12 @@ class.
 
 It is not allowed to initialize an already locked mutex.
 
-
-
 .. _`ww_acquire_init`:
 
 ww_acquire_init
 ===============
 
-.. c:function:: void ww_acquire_init (struct ww_acquire_ctx *ctx, struct ww_class *ww_class)
+.. c:function:: void ww_acquire_init(struct ww_acquire_ctx *ctx, struct ww_class *ww_class)
 
     initialize a w/w acquire context
 
@@ -48,8 +40,6 @@ ww_acquire_init
 
     :param struct ww_class \*ww_class:
         w/w class of the context
-
-
 
 .. _`ww_acquire_init.description`:
 
@@ -68,28 +58,24 @@ for the same w/w class when acquiring mutexes can also result in undetected
 deadlocks, and is hence also forbidden. Both types of abuse will be caught by
 enabling CONFIG_PROVE_LOCKING.
 
-Nesting of acquire contexts for _different_ w/w classes is possible, subject
+Nesting of acquire contexts for \_different\_ w/w classes is possible, subject
 to the usual locking rules between different lock classes.
 
 An acquire context must be released with ww_acquire_fini by the same task
 before the memory is freed. It is recommended to allocate the context itself
 on the stack.
 
-
-
 .. _`ww_acquire_done`:
 
 ww_acquire_done
 ===============
 
-.. c:function:: void ww_acquire_done (struct ww_acquire_ctx *ctx)
+.. c:function:: void ww_acquire_done(struct ww_acquire_ctx *ctx)
 
     marks the end of the acquire phase
 
     :param struct ww_acquire_ctx \*ctx:
         the acquire context
-
-
 
 .. _`ww_acquire_done.description`:
 
@@ -103,38 +89,32 @@ Calling this function is optional, it is just useful to document w/w mutex
 code and clearly designated the acquire phase from actually using the locked
 data structures.
 
-
-
 .. _`ww_acquire_fini`:
 
 ww_acquire_fini
 ===============
 
-.. c:function:: void ww_acquire_fini (struct ww_acquire_ctx *ctx)
+.. c:function:: void ww_acquire_fini(struct ww_acquire_ctx *ctx)
 
     releases a w/w acquire context
 
     :param struct ww_acquire_ctx \*ctx:
         the acquire context to free
 
-
-
 .. _`ww_acquire_fini.description`:
 
 Description
 -----------
 
-Releases a w/w acquire context. This must be called _after_ all acquired w/w
+Releases a w/w acquire context. This must be called \_after\_ all acquired w/w
 mutexes have been released with ww_mutex_unlock.
-
-
 
 .. _`ww_mutex_lock`:
 
 ww_mutex_lock
 =============
 
-.. c:function:: int ww_mutex_lock (struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+.. c:function:: int ww_mutex_lock(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 
     acquire the w/w mutex
 
@@ -143,8 +123,6 @@ ww_mutex_lock
 
     :param struct ww_acquire_ctx \*ctx:
         w/w acquire context, or NULL to acquire only a single lock.
-
-
 
 .. _`ww_mutex_lock.description`:
 
@@ -170,19 +148,17 @@ The mutex must later on be released by the same task that
 acquired it. The task may not exit without first unlocking the mutex. Also,
 kernel memory where the mutex resides must not be freed with the mutex still
 locked. The mutex must first be initialized (or statically defined) before it
-can be locked. :c:func:`memset`-ing the mutex to 0 is not allowed. The mutex must be
+can be locked. \ :c:func:`memset`\ -ing the mutex to 0 is not allowed. The mutex must be
 of the same w/w lock class as was used to initialize the acquire context.
 
 A mutex acquired with this function must be released with ww_mutex_unlock.
-
-
 
 .. _`ww_mutex_lock_interruptible`:
 
 ww_mutex_lock_interruptible
 ===========================
 
-.. c:function:: int ww_mutex_lock_interruptible (struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+.. c:function:: int ww_mutex_lock_interruptible(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 
     acquire the w/w mutex, interruptible
 
@@ -191,8 +167,6 @@ ww_mutex_lock_interruptible
 
     :param struct ww_acquire_ctx \*ctx:
         w/w acquire context
-
-
 
 .. _`ww_mutex_lock_interruptible.description`:
 
@@ -219,19 +193,17 @@ The mutex must later on be released by the same task that
 acquired it. The task may not exit without first unlocking the mutex. Also,
 kernel memory where the mutex resides must not be freed with the mutex still
 locked. The mutex must first be initialized (or statically defined) before it
-can be locked. :c:func:`memset`-ing the mutex to 0 is not allowed. The mutex must be
+can be locked. \ :c:func:`memset`\ -ing the mutex to 0 is not allowed. The mutex must be
 of the same w/w lock class as was used to initialize the acquire context.
 
 A mutex acquired with this function must be released with ww_mutex_unlock.
-
-
 
 .. _`ww_mutex_lock_slow`:
 
 ww_mutex_lock_slow
 ==================
 
-.. c:function:: void ww_mutex_lock_slow (struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+.. c:function:: void ww_mutex_lock_slow(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 
     slowpath acquiring of the w/w mutex
 
@@ -240,8 +212,6 @@ ww_mutex_lock_slow
 
     :param struct ww_acquire_ctx \*ctx:
         w/w acquire context
-
-
 
 .. _`ww_mutex_lock_slow.description`:
 
@@ -266,14 +236,12 @@ Note that the slowpath lock acquiring can also be done by calling
 ww_mutex_lock directly. This function here is simply to help w/w mutex
 locking code readability by clearly denoting the slowpath.
 
-
-
 .. _`ww_mutex_lock_slow_interruptible`:
 
 ww_mutex_lock_slow_interruptible
 ================================
 
-.. c:function:: int ww_mutex_lock_slow_interruptible (struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
+.. c:function:: int ww_mutex_lock_slow_interruptible(struct ww_mutex *lock, struct ww_acquire_ctx *ctx)
 
     slowpath acquiring of the w/w mutex, interruptible
 
@@ -282,8 +250,6 @@ ww_mutex_lock_slow_interruptible
 
     :param struct ww_acquire_ctx \*ctx:
         w/w acquire context
-
-
 
 .. _`ww_mutex_lock_slow_interruptible.description`:
 
@@ -310,21 +276,17 @@ Note that the slowpath lock acquiring can also be done by calling
 ww_mutex_lock_interruptible directly. This function here is simply to help
 w/w mutex locking code readability by clearly denoting the slowpath.
 
-
-
 .. _`ww_mutex_trylock`:
 
 ww_mutex_trylock
 ================
 
-.. c:function:: int ww_mutex_trylock (struct ww_mutex *lock)
+.. c:function:: int ww_mutex_trylock(struct ww_mutex *lock)
 
     tries to acquire the w/w mutex without acquire context
 
     :param struct ww_mutex \*lock:
         mutex to lock
-
-
 
 .. _`ww_mutex_trylock.description`:
 
@@ -334,21 +296,17 @@ Description
 Trylocks a mutex without acquire context, so no deadlock detection is
 possible. Returns 1 if the mutex has been acquired successfully, 0 otherwise.
 
-
-
 .. _`ww_mutex_is_locked`:
 
 ww_mutex_is_locked
 ==================
 
-.. c:function:: bool ww_mutex_is_locked (struct ww_mutex *lock)
+.. c:function:: bool ww_mutex_is_locked(struct ww_mutex *lock)
 
     is the w/w mutex locked
 
     :param struct ww_mutex \*lock:
         the mutex to be queried
-
-
 
 .. _`ww_mutex_is_locked.description`:
 
@@ -356,4 +314,6 @@ Description
 -----------
 
 Returns 1 if the mutex is locked, 0 if unlocked.
+
+.. This file was automatic generated / don't edit.
 

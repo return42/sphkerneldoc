@@ -7,4 +7,4 @@ cirrus
 .. toctree::
    :maxdepth: 1
 
-   ep93xx-ac97_c
+    ep93xx-ac97_c

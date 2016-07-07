@@ -7,7 +7,7 @@ misc
 .. toctree::
    :maxdepth: 1
 
-   adutux_c
-   iowarrior_c
-   ldusb_c
-   legousbtower_c
+    adutux_c
+    iowarrior_c
+    ldusb_c
+    legousbtower_c

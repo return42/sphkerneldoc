@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-hda_local.h
-===========
-
+.. src-file: sound/pci/hda/hda_local.h
 
 .. _`snd_hda_set_pin_ctl`:
 
 snd_hda_set_pin_ctl
 ===================
 
-.. c:function:: int snd_hda_set_pin_ctl (struct hda_codec *codec, hda_nid_t pin, unsigned int val)
+.. c:function:: int snd_hda_set_pin_ctl(struct hda_codec *codec, hda_nid_t pin, unsigned int val)
 
     Set a pin-control value safely
 
@@ -22,8 +18,6 @@ snd_hda_set_pin_ctl
 
     :param unsigned int val:
         the pin-control value (AC_PINCTL\_\* bits)
-
-
 
 .. _`snd_hda_set_pin_ctl.description`:
 
@@ -36,17 +30,15 @@ capabilities.  For example, when PIN_HP is passed but the pin has no
 HP-drive capability, the HP bit is omitted.
 
 The function doesn't check the input VREF capability bits, though.
-Use :c:func:`snd_hda_get_default_vref` to guess the right value.
+Use \ :c:func:`snd_hda_get_default_vref`\  to guess the right value.
 Also, this function is only for analog pins, not for HDMI pins.
-
-
 
 .. _`snd_hda_set_pin_ctl_cache`:
 
 snd_hda_set_pin_ctl_cache
 =========================
 
-.. c:function:: int snd_hda_set_pin_ctl_cache (struct hda_codec *codec, hda_nid_t pin, unsigned int val)
+.. c:function:: int snd_hda_set_pin_ctl_cache(struct hda_codec *codec, hda_nid_t pin, unsigned int val)
 
     Set a pin-control value safely
 
@@ -59,23 +51,19 @@ snd_hda_set_pin_ctl_cache
     :param unsigned int val:
         the pin-control value (AC_PINCTL\_\* bits)
 
-
-
 .. _`snd_hda_set_pin_ctl_cache.description`:
 
 Description
 -----------
 
-Just like :c:func:`snd_hda_set_pin_ctl` but write to cache as well.
-
-
+Just like \ :c:func:`snd_hda_set_pin_ctl`\  but write to cache as well.
 
 .. _`snd_hda_query_pin_caps`:
 
 snd_hda_query_pin_caps
 ======================
 
-.. c:function:: u32 snd_hda_query_pin_caps (struct hda_codec *codec, hda_nid_t nid)
+.. c:function:: u32 snd_hda_query_pin_caps(struct hda_codec *codec, hda_nid_t nid)
 
     Query PIN capabilities
 
@@ -84,8 +72,6 @@ snd_hda_query_pin_caps
 
     :param hda_nid_t nid:
         the NID to query
-
-
 
 .. _`snd_hda_query_pin_caps.description`:
 
@@ -98,14 +84,12 @@ Returns the obtained capability bits.
 When cap bits have been already read, this doesn't read again but
 returns the cached value.
 
-
-
 .. _`snd_hda_override_pin_caps`:
 
 snd_hda_override_pin_caps
 =========================
 
-.. c:function:: int snd_hda_override_pin_caps (struct hda_codec *codec, hda_nid_t nid, unsigned int caps)
+.. c:function:: int snd_hda_override_pin_caps(struct hda_codec *codec, hda_nid_t nid, unsigned int caps)
 
     Override the pin capabilities
 
@@ -118,8 +102,6 @@ snd_hda_override_pin_caps
     :param unsigned int caps:
         the capability bits to set
 
-
-
 .. _`snd_hda_override_pin_caps.description`:
 
 Description
@@ -128,4 +110,6 @@ Description
 Override the cached PIN capabilitiy bits value by the given one.
 
 Returns zero if successful or a negative error code.
+
+.. This file was automatic generated / don't edit.
 

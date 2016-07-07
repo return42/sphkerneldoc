@@ -7,4 +7,8 @@ sched
 .. toctree::
    :maxdepth: 1
 
-   ematch_c
+    act_csum_c
+    em_canid_c
+    ematch_c
+    sch_generic_c
+    sch_htb_c

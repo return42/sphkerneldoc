@@ -7,10 +7,9 @@ i2c
 .. toctree::
    :maxdepth: 1
 
-   apds990x_h
-   bh1770glc_h
-   i2c-hid_h
-   mpr121_touchkey_h
-   pcf857x_h
-   sx150x_h
-   tps65010_h
+    apds990x_h
+    bh1770glc_h
+    i2c-hid_h
+    mpr121_touchkey_h
+    pcf857x_h
+    tps65010_h

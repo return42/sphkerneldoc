@@ -7,4 +7,5 @@ wlcore
 .. toctree::
    :maxdepth: 1
 
-   cmd_c
+    cmd_c
+    spi_c

@@ -7,7 +7,7 @@ crypto
 .. toctree::
    :maxdepth: 1
 
-   crypto_c
-   fname_c
-   keyinfo_c
-   policy_c
+    crypto_c
+    fname_c
+    keyinfo_c
+    policy_c

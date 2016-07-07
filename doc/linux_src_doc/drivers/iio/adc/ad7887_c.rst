@@ -1,0 +1,58 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/adc/ad7887.c
+
+.. _`ad7887_chip_info`:
+
+struct ad7887_chip_info
+=======================
+
+.. c:type:: struct ad7887_chip_info
+
+    chip specifc information
+
+.. _`ad7887_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7887_chip_info {
+        u16 int_vref_mv;
+        struct iio_chan_spec channel[3];
+    }
+
+.. _`ad7887_chip_info.members`:
+
+Members
+-------
+
+int_vref_mv
+    the internal reference voltage
+
+channel
+    channel specification
+
+.. _`ad7887_trigger_handler`:
+
+ad7887_trigger_handler
+======================
+
+.. c:function:: irqreturn_t ad7887_trigger_handler(int irq, void *p)
+
+    :param int irq:
+        *undescribed*
+
+    :param void \*p:
+        *undescribed*
+
+.. _`ad7887_trigger_handler.description`:
+
+Description
+-----------
+
+Currently there is no option in this driver to disable the saving of
+timestamps within the ring.
+
+.. This file was automatic generated / don't edit.
+

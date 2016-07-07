@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-cipher.h
-========
-
+.. src-file: drivers/crypto/qce/cipher.h
 
 .. _`qce_cipher_reqctx`:
 
 struct qce_cipher_reqctx
 ========================
 
-.. c:type:: qce_cipher_reqctx
+.. c:type:: struct qce_cipher_reqctx
 
     holds private cipher objects per request
-
 
 .. _`qce_cipher_reqctx.definition`:
 
@@ -22,57 +17,57 @@ Definition
 
 .. code-block:: c
 
-  struct qce_cipher_reqctx {
-    unsigned long flags;
-    u8 * iv;
-    unsigned int ivsize;
-    int src_nents;
-    int dst_nents;
-    struct scatterlist result_sg;
-    struct sg_table dst_tbl;
-    struct scatterlist * dst_sg;
-    struct sg_table src_tbl;
-    struct scatterlist * src_sg;
-    unsigned int cryptlen;
-  };
-
+    struct qce_cipher_reqctx {
+        unsigned long flags;
+        u8 *iv;
+        unsigned int ivsize;
+        int src_nents;
+        int dst_nents;
+        struct scatterlist result_sg;
+        struct sg_table dst_tbl;
+        struct scatterlist *dst_sg;
+        struct sg_table src_tbl;
+        struct scatterlist *src_sg;
+        unsigned int cryptlen;
+    }
 
 .. _`qce_cipher_reqctx.members`:
 
 Members
 -------
 
-:``flags``:
+flags
     operation flags
 
-:``iv``:
+iv
     pointer to the IV
 
-:``ivsize``:
+ivsize
     IV size
 
-:``src_nents``:
+src_nents
     source entries
 
-:``dst_nents``:
+dst_nents
     destination entries
 
-:``result_sg``:
+result_sg
     scatterlist used for result buffer
 
-:``dst_tbl``:
+dst_tbl
     destination sg table
 
-:``dst_sg``:
+dst_sg
     destination sg pointer table beginning
 
-:``src_tbl``:
+src_tbl
     source sg table
 
-:``src_sg``:
+src_sg
     source sg pointer table beginning;
 
-:``cryptlen``:
+cryptlen
     crypto length
 
+.. This file was automatic generated / don't edit.
 

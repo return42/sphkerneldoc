@@ -1,0 +1,34 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/rpr0521.c
+
+.. _`rpr0521_set_power_state`:
+
+rpr0521_set_power_state
+=======================
+
+.. c:function:: int rpr0521_set_power_state(struct rpr0521_data *data, bool on, u8 device_mask)
+
+    handles runtime PM state and sensors enabled status
+
+    :param struct rpr0521_data \*data:
+        rpr0521 device private data
+
+    :param bool on:
+        state to be set for devices in \ ``device_mask``\ 
+
+    :param u8 device_mask:
+        bitmask specifying for which device we need to update \ ``on``\  state
+
+.. _`rpr0521_set_power_state.description`:
+
+Description
+-----------
+
+We rely on rpr0521_runtime_resume to enable our \ ``device_mask``\  devices, but
+if (for example) PXS was enabled (pxs_dev_en = true) by a previous call to
+rpr0521_runtime_resume and we want to enable ALS we MUST set ALS enable
+bit of RPR0521_REG_MODE_CTRL here because rpr0521_runtime_resume will not
+be called twice.
+
+.. This file was automatic generated / don't edit.
+

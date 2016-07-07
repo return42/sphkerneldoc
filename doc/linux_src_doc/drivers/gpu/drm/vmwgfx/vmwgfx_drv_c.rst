@@ -1,62 +1,42 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-vmwgfx_drv.c
-============
-
+.. src-file: drivers/gpu/drm/vmwgfx/vmwgfx_drv.c
 
 .. _`drm_ioctl_vmw_get_param`:
 
 DRM_IOCTL_VMW_GET_PARAM
 =======================
 
-.. c:function:: DRM_IOCTL_VMW_GET_PARAM ()
-
-
+.. c:function::  DRM_IOCTL_VMW_GET_PARAM()
 
 .. _`vmw_ioctl_def`:
 
 VMW_IOCTL_DEF
 =============
 
-.. c:function:: VMW_IOCTL_DEF ( ioctl,  func,  flags)
+.. c:function::  VMW_IOCTL_DEF( ioctl,  func,  flags)
 
-    :param ioctl:
+    DRM_COMMAND_BASE.
 
+    :param  ioctl:
         *undescribed*
 
-    :param func:
-
+    :param  func:
         *undescribed*
 
-    :param flags:
-
+    :param  flags:
         *undescribed*
-
-
-
-.. _`vmw_ioctl_def.description`:
-
-Description
------------
-
-DRM_COMMAND_BASE.
-
-
 
 .. _`vmw_dummy_query_bo_create`:
 
 vmw_dummy_query_bo_create
 =========================
 
-.. c:function:: int vmw_dummy_query_bo_create (struct vmw_private *dev_priv)
+.. c:function:: int vmw_dummy_query_bo_create(struct vmw_private *dev_priv)
 
     create a bo to hold a dummy query result
 
     :param struct vmw_private \*dev_priv:
         A device private structure.
-
-
 
 .. _`vmw_dummy_query_bo_create.description`:
 
@@ -71,21 +51,17 @@ No interruptible waits are done within this function.
 
 Returns an error if bo creation or initialization fails.
 
-
-
 .. _`vmw_request_device_late`:
 
 vmw_request_device_late
 =======================
 
-.. c:function:: int vmw_request_device_late (struct vmw_private *dev_priv)
+.. c:function:: int vmw_request_device_late(struct vmw_private *dev_priv)
 
     Perform late device setup
 
     :param struct vmw_private \*dev_priv:
         Pointer to device private.
-
-
 
 .. _`vmw_request_device_late.description`:
 
@@ -97,21 +73,17 @@ buffer submission. These tasks are split out to a separate function
 because it reverts vmw_release_device_early and is intended to be used
 by an error path in the hibernation code.
 
-
-
 .. _`vmw_release_device_early`:
 
 vmw_release_device_early
 ========================
 
-.. c:function:: void vmw_release_device_early (struct vmw_private *dev_priv)
+.. c:function:: void vmw_release_device_early(struct vmw_private *dev_priv)
 
     Early part of fifo takedown.
 
     :param struct vmw_private \*dev_priv:
         Pointer to device private struct.
-
-
 
 .. _`vmw_release_device_early.description`:
 
@@ -121,21 +93,17 @@ Description
 This is the first part of command submission takedown, to be called before
 buffer management is taken down.
 
-
-
 .. _`vmw_release_device_late`:
 
 vmw_release_device_late
 =======================
 
-.. c:function:: void vmw_release_device_late (struct vmw_private *dev_priv)
+.. c:function:: void vmw_release_device_late(struct vmw_private *dev_priv)
 
     Late part of fifo takedown.
 
     :param struct vmw_private \*dev_priv:
         Pointer to device private struct.
-
-
 
 .. _`vmw_release_device_late.description`:
 
@@ -145,48 +113,38 @@ Description
 This is the last part of the command submission takedown, to be called when
 command submission is no longer needed. It may wait on pending fences.
 
-
-
 .. _`vmw_get_initial_size`:
 
 vmw_get_initial_size
 ====================
 
-.. c:function:: void vmw_get_initial_size (struct vmw_private *dev_priv)
+.. c:function:: void vmw_get_initial_size(struct vmw_private *dev_priv)
 
     :param struct vmw_private \*dev_priv:
-
         *undescribed*
-
-
 
 .. _`vmw_get_initial_size.description`:
 
 Description
 -----------
 
-
-It does so by reading SVGA_REG_[WIDTH|HEIGHT] regs and then
-clamping the value to fb_max_[width|height] fields and the
-VMW_MIN_INITIAL_[WIDTH|HEIGHT].
+It does so by reading SVGA_REG_[WIDTH\|HEIGHT] regs and then
+clamping the value to fb_max_[width\|height] fields and the
+VMW_MIN_INITIAL_[WIDTH\|HEIGHT].
 If the values appear to be invalid, set them to
-VMW_MIN_INITIAL_[WIDTH|HEIGHT].
-
-
+VMW_MIN_INITIAL_[WIDTH\|HEIGHT].
 
 .. _`vmw_dma_select_mode`:
 
 vmw_dma_select_mode
 ===================
 
-.. c:function:: int vmw_dma_select_mode (struct vmw_private *dev_priv)
+.. c:function:: int vmw_dma_select_mode(struct vmw_private *dev_priv)
 
     Determine how DMA mappings should be set up for this system.
 
     :param struct vmw_private \*dev_priv:
         Pointer to a struct vmw_private
-
-
 
 .. _`vmw_dma_select_mode.description`:
 
@@ -200,22 +158,17 @@ If this function decides that DMA is not possible, it returns -EINVAL.
 The driver may then try to disable features of the device that require
 DMA.
 
-
-
 .. _`vmw_dma_masks`:
 
 vmw_dma_masks
 =============
 
-.. c:function:: int vmw_dma_masks (struct vmw_private *dev_priv)
+.. c:function:: int vmw_dma_masks(struct vmw_private *dev_priv)
 
     set required page- and dma masks
 
     :param struct vmw_private \*dev_priv:
-
         *undescribed*
-
-
 
 .. _`vmw_dma_masks.description`:
 
@@ -225,14 +178,12 @@ Description
 With 32-bit we can only handle 32 bit PFNs. Optionally set that
 restriction also for 64-bit systems.
 
-
-
 .. _`__vmw_svga_enable`:
 
 __vmw_svga_enable
 =================
 
-.. c:function:: void __vmw_svga_enable (struct vmw_private *dev_priv)
+.. c:function:: void __vmw_svga_enable(struct vmw_private *dev_priv)
 
     Enable SVGA mode, FIFO and use of VRAM.
 
@@ -240,28 +191,24 @@ __vmw_svga_enable
         Pointer to device private struct.
         Needs the reservation sem to be held in non-exclusive mode.
 
-
-
 .. _`vmw_svga_enable`:
 
 vmw_svga_enable
 ===============
 
-.. c:function:: void vmw_svga_enable (struct vmw_private *dev_priv)
+.. c:function:: void vmw_svga_enable(struct vmw_private *dev_priv)
 
     Enable SVGA mode, FIFO and use of VRAM.
 
     :param struct vmw_private \*dev_priv:
         Pointer to device private struct.
 
-
-
 .. _`__vmw_svga_disable`:
 
 __vmw_svga_disable
 ==================
 
-.. c:function:: void __vmw_svga_disable (struct vmw_private *dev_priv)
+.. c:function:: void __vmw_svga_disable(struct vmw_private *dev_priv)
 
     Disable SVGA mode and use of VRAM.
 
@@ -270,18 +217,18 @@ __vmw_svga_disable
         Needs the reservation sem to be held in exclusive mode.
         Will not empty VRAM. VRAM must be emptied by caller.
 
-
-
 .. _`vmw_svga_disable`:
 
 vmw_svga_disable
 ================
 
-.. c:function:: void vmw_svga_disable (struct vmw_private *dev_priv)
+.. c:function:: void vmw_svga_disable(struct vmw_private *dev_priv)
 
     Disable SVGA_MODE, and use of VRAM. Keep the fifo running.
 
     :param struct vmw_private \*dev_priv:
         Pointer to device private struct.
         Will empty VRAM.
+
+.. This file was automatic generated / don't edit.
 

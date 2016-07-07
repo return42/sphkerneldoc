@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==================
-x509_cert_parser.c
-==================
-
+.. src-file: crypto/asymmetric_keys/x509_cert_parser.c
 
 .. _`x509_decode_time`:
 
 x509_decode_time
 ================
 
-.. c:function:: int x509_decode_time (time64_t *_t, size_t hdrlen, unsigned char tag, const unsigned char *value, size_t vlen)
+.. c:function:: int x509_decode_time(time64_t *_t, size_t hdrlen, unsigned char tag, const unsigned char *value, size_t vlen)
 
     Decode an X.509 time ASN.1 object
 
@@ -29,20 +25,20 @@ x509_decode_time
     :param size_t vlen:
         The size of the object value
 
-
-
 .. _`x509_decode_time.description`:
 
 Description
 -----------
 
 Decode an ASN.1 universal time or generalised time field into a struct the
-kernel can handle and check it for validity.  The time is decoded thus::
+kernel can handle and check it for validity.  The time is decoded thus:
 
-        [RFC5280 §4.1.2.5]
-        CAs conforming to this profile MUST always encode certificate validity
-        dates through the year 2049 as UTCTime; certificate validity dates in
-        2050 or later MUST be encoded as GeneralizedTime.  Conforming
-        applications MUST be able to process validity dates that are encoded in
-        either UTCTime or GeneralizedTime.
+[RFC5280 §4.1.2.5]
+CAs conforming to this profile MUST always encode certificate validity
+dates through the year 2049 as UTCTime; certificate validity dates in
+2050 or later MUST be encoded as GeneralizedTime.  Conforming
+applications MUST be able to process validity dates that are encoded in
+either UTCTime or GeneralizedTime.
+
+.. This file was automatic generated / don't edit.
 

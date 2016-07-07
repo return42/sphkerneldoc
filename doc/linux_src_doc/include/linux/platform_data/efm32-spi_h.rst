@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-efm32-spi.h
-===========
-
+.. src-file: include/linux/platform_data/efm32-spi.h
 
 .. _`efm32_spi_pdata`:
 
 struct efm32_spi_pdata
 ======================
 
-.. c:type:: efm32_spi_pdata
-
-    
+.. c:type:: struct efm32_spi_pdata
 
 
 .. _`efm32_spi_pdata.definition`:
@@ -22,18 +16,18 @@ Definition
 
 .. code-block:: c
 
-  struct efm32_spi_pdata {
-    u8 location;
-  };
-
+    struct efm32_spi_pdata {
+        u8 location;
+    }
 
 .. _`efm32_spi_pdata.members`:
 
 Members
 -------
 
-:``location``:
+location
     pinmux location for the I/O pins (to be written to the ROUTE
     register)
 
+.. This file was automatic generated / don't edit.
 

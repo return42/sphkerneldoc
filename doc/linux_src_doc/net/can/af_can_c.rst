@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-af_can.c
-========
-
+.. src-file: net/can/af_can.c
 
 .. _`can_send`:
 
 can_send
 ========
 
-.. c:function:: int can_send (struct sk_buff *skb, int loop)
+.. c:function:: int can_send(struct sk_buff *skb, int loop)
 
     transmit a CAN frame (optional with local loopback)
 
@@ -20,16 +16,12 @@ can_send
     :param int loop:
         loopback for listeners on local CAN sockets (recommended default!)
 
-
-
 .. _`can_send.description`:
 
 Description
 -----------
 
 Due to the loopback this routine must not be called from hardirq context.
-
-
 
 .. _`can_send.return`:
 
@@ -38,38 +30,32 @@ Return
 
 0 on success
 -ENETDOWN when the selected interface is down
--ENOBUFS on full driver queue (see :c:func:`net_xmit_errno`)
--ENOMEM when local loopback failed at calling :c:func:`skb_clone`
+-ENOBUFS on full driver queue (see \ :c:func:`net_xmit_errno`\ )
+-ENOMEM when local loopback failed at calling \ :c:func:`skb_clone`\ 
 -EPERM when trying to send on a non-CAN interface
 -EMSGSIZE CAN frame size is bigger than CAN interface MTU
 -EINVAL when the skb->data does not contain a valid CAN frame
-
-
 
 .. _`effhash`:
 
 effhash
 =======
 
-.. c:function:: unsigned int effhash (canid_t can_id)
+.. c:function:: unsigned int effhash(canid_t can_id)
 
     hash function for 29 bit CAN identifier reduction
 
     :param canid_t can_id:
         29 bit CAN identifier
 
-
-
 .. _`effhash.description`:
 
 Description
 -----------
 
-To reduce the linear traversal in one linked list of _single_ EFF CAN
+To reduce the linear traversal in one linked list of \_single\_ EFF CAN
 frame subscriptions the 29 bit identifier is mapped to 10 bits.
 (see CAN_EFF_RCV_HASH_BITS definition)
-
-
 
 .. _`effhash.return`:
 
@@ -78,14 +64,12 @@ Return
 
 Hash value from 0x000 - 0x3FF ( enforced by CAN_EFF_RCV_HASH_BITS mask )
 
-
-
 .. _`find_rcv_list`:
 
 find_rcv_list
 =============
 
-.. c:function:: struct hlist_head *find_rcv_list (canid_t *can_id, canid_t *mask, struct dev_rcv_lists *d)
+.. c:function:: struct hlist_head *find_rcv_list(canid_t *can_id, canid_t *mask, struct dev_rcv_lists *d)
 
     determine optimal filterlist inside device filter struct
 
@@ -97,8 +81,6 @@ find_rcv_list
 
     :param struct dev_rcv_lists \*d:
         pointer to the device filter struct
-
-
 
 .. _`find_rcv_list.description`:
 
@@ -120,8 +102,6 @@ The filter can be inverted (CAN_INV_FILTER bit set in can_id) or it can
 filter for error messages (CAN_ERR_FLAG bit set in mask). For error msg
 frames there is a special filterlist and a special rx path filter handling.
 
-
-
 .. _`find_rcv_list.return`:
 
 Return
@@ -131,14 +111,12 @@ Pointer to optimal filterlist for the given can_id/mask pair.
 Constistency checked mask.
 Reduced can_id to have a preprocessed filter compare value.
 
-
-
 .. _`can_rx_register`:
 
 can_rx_register
 ===============
 
-.. c:function:: int can_rx_register (struct net_device *dev, canid_t can_id, canid_t mask, void (*func) (struct sk_buff *, void *, void *data, char *ident)
+.. c:function:: int can_rx_register(struct net_device *dev, canid_t can_id, canid_t mask, void (*) func (struct sk_buff *, void *, void *data, char *ident)
 
     subscribe CAN frames from a specific interface
 
@@ -151,7 +129,7 @@ can_rx_register
     :param canid_t mask:
         CAN mask (see description)
 
-    :param void (\*func) (struct sk_buff \*, void \*):
+    :param (void (\*) func (struct sk_buff \*, void \*):
         callback function on filter match
 
     :param void \*data:
@@ -159,8 +137,6 @@ can_rx_register
 
     :param char \*ident:
         string for calling module identification
-
-
 
 .. _`can_rx_register.description`:
 
@@ -179,9 +155,7 @@ The provided pointer to the sk_buff is guaranteed to be valid as long as
 the callback function is running. The callback function must \*not\* free
 the given sk_buff while processing it's task. When the given sk_buff is
 needed after the end of the callback function it must be cloned inside
-the callback function with :c:func:`skb_clone`.
-
-
+the callback function with \ :c:func:`skb_clone`\ .
 
 .. _`can_rx_register.return`:
 
@@ -192,14 +166,12 @@ Return
 -ENOMEM on missing cache mem to create subscription entry
 -ENODEV unknown device
 
-
-
 .. _`can_rx_unregister`:
 
 can_rx_unregister
 =================
 
-.. c:function:: void can_rx_unregister (struct net_device *dev, canid_t can_id, canid_t mask, void (*func) (struct sk_buff *, void *, void *data)
+.. c:function:: void can_rx_unregister(struct net_device *dev, canid_t can_id, canid_t mask, void (*) func (struct sk_buff *, void *, void *data)
 
     unsubscribe CAN frames from a specific interface
 
@@ -212,13 +184,11 @@ can_rx_unregister
     :param canid_t mask:
         CAN mask
 
-    :param void (\*func) (struct sk_buff \*, void \*):
+    :param (void (\*) func (struct sk_buff \*, void \*):
         callback function on filter match
 
     :param void \*data:
         returned parameter for callback function
-
-
 
 .. _`can_rx_unregister.description`:
 
@@ -227,21 +197,17 @@ Description
 
 Removes subscription entry depending on given (subscription) values.
 
-
-
 .. _`can_proto_register`:
 
 can_proto_register
 ==================
 
-.. c:function:: int can_proto_register (const struct can_proto *cp)
+.. c:function:: int can_proto_register(const struct can_proto *cp)
 
     register CAN transport protocol
 
     :param const struct can_proto \*cp:
         pointer to CAN protocol structure
-
-
 
 .. _`can_proto_register.return`:
 
@@ -251,19 +217,19 @@ Return
 0 on success
 -EINVAL invalid (out of range) protocol number
 -EBUSY  protocol already in use
--ENOBUF if :c:func:`proto_register` fails
-
-
+-ENOBUF if \ :c:func:`proto_register`\  fails
 
 .. _`can_proto_unregister`:
 
 can_proto_unregister
 ====================
 
-.. c:function:: void can_proto_unregister (const struct can_proto *cp)
+.. c:function:: void can_proto_unregister(const struct can_proto *cp)
 
     unregister CAN transport protocol
 
     :param const struct can_proto \*cp:
         pointer to CAN protocol structure
+
+.. This file was automatic generated / don't edit.
 

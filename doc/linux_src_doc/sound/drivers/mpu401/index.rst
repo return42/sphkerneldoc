@@ -7,4 +7,4 @@ mpu401
 .. toctree::
    :maxdepth: 1
 
-   mpu401_uart_c
+    mpu401_uart_c

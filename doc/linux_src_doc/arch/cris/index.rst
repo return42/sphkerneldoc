@@ -7,4 +7,5 @@ cris
 .. toctree::
    :maxdepth: 1
 
-   mm/index
+    include/index
+    mm/index

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-sha1.c
-======
-
+.. src-file: lib/sha1.c
 
 .. _`sha_transform`:
 
 sha_transform
 =============
 
-.. c:function:: void sha_transform (__u32 *digest, const char *data, __u32 *array)
+.. c:function:: void sha_transform(__u32 *digest, const char *data, __u32 *array)
 
     single block SHA1 transform
 
@@ -23,8 +19,6 @@ sha_transform
     :param __u32 \*array:
         16 words of workspace (see note)
 
-
-
 .. _`sha_transform.description`:
 
 Description
@@ -35,8 +29,6 @@ Be warned, it does not handle padding and message digest, do not
 confuse it with the full FIPS 180-1 digest algorithm for variable
 length messages.
 
-
-
 .. _`sha_transform.note`:
 
 Note
@@ -46,17 +38,17 @@ If the hash is security sensitive, the caller should be sure
 to clear the workspace. This is left to the caller to avoid
 unnecessary clears between chained hashing operations.
 
-
-
 .. _`sha_init`:
 
 sha_init
 ========
 
-.. c:function:: void sha_init (__u32 *buf)
+.. c:function:: void sha_init(__u32 *buf)
 
     initialize the vectors for a SHA1 digest
 
     :param __u32 \*buf:
         vector to initialize
+
+.. This file was automatic generated / don't edit.
 

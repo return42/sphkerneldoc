@@ -7,4 +7,6 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   dma_c
+    dma_c
+    irq_cpu_c
+    kgdb_c

@@ -7,5 +7,5 @@ caif
 .. toctree::
    :maxdepth: 1
 
-   caif_socket_h
-   if_caif_h
+    caif_socket_h
+    if_caif_h

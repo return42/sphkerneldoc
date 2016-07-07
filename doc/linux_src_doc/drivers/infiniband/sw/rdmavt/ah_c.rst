@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-ah.c
-====
-
+.. src-file: drivers/infiniband/sw/rdmavt/ah.c
 
 .. _`rvt_check_ah`:
 
 rvt_check_ah
 ============
 
-.. c:function:: int rvt_check_ah (struct ib_device *ibdev, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_check_ah(struct ib_device *ibdev, struct ib_ah_attr *ah_attr)
 
     validate the attributes of AH
 
@@ -20,8 +16,6 @@ rvt_check_ah
     :param struct ib_ah_attr \*ah_attr:
         the attributes of the AH
 
-
-
 .. _`rvt_check_ah.description`:
 
 Description
@@ -30,8 +24,6 @@ Description
 If driver supports a more detailed check_ah function call back to it
 otherwise just check the basics.
 
-
-
 .. _`rvt_check_ah.return`:
 
 Return
@@ -39,14 +31,12 @@ Return
 
 0 on success
 
-
-
 .. _`rvt_create_ah`:
 
 rvt_create_ah
 =============
 
-.. c:function:: struct ib_ah *rvt_create_ah (struct ib_pd *pd, struct ib_ah_attr *ah_attr)
+.. c:function:: struct ib_ah *rvt_create_ah(struct ib_pd *pd, struct ib_ah_attr *ah_attr)
 
     create an address handle
 
@@ -56,16 +46,12 @@ rvt_create_ah
     :param struct ib_ah_attr \*ah_attr:
         the attributes of the AH
 
-
-
 .. _`rvt_create_ah.description`:
 
 Description
 -----------
 
 This may be called from interrupt context.
-
-
 
 .. _`rvt_create_ah.return`:
 
@@ -74,21 +60,17 @@ Return
 
 newly allocated ah
 
-
-
 .. _`rvt_destroy_ah`:
 
 rvt_destroy_ah
 ==============
 
-.. c:function:: int rvt_destroy_ah (struct ib_ah *ibah)
+.. c:function:: int rvt_destroy_ah(struct ib_ah *ibah)
 
     Destory an address handle
 
     :param struct ib_ah \*ibah:
         address handle
-
-
 
 .. _`rvt_destroy_ah.return`:
 
@@ -97,14 +79,12 @@ Return
 
 0 on success
 
-
-
 .. _`rvt_modify_ah`:
 
 rvt_modify_ah
 =============
 
-.. c:function:: int rvt_modify_ah (struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_modify_ah(struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
 
     modify an ah with given attrs
 
@@ -114,8 +94,6 @@ rvt_modify_ah
     :param struct ib_ah_attr \*ah_attr:
         attrs to apply
 
-
-
 .. _`rvt_modify_ah.return`:
 
 Return
@@ -123,14 +101,12 @@ Return
 
 0 on success
 
-
-
 .. _`rvt_query_ah`:
 
 rvt_query_ah
 ============
 
-.. c:function:: int rvt_query_ah (struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
+.. c:function:: int rvt_query_ah(struct ib_ah *ibah, struct ib_ah_attr *ah_attr)
 
     return attrs for ah
 
@@ -140,12 +116,12 @@ rvt_query_ah
     :param struct ib_ah_attr \*ah_attr:
         return info in this
 
-
-
 .. _`rvt_query_ah.return`:
 
 Return
 ------
 
 always 0
+
+.. This file was automatic generated / don't edit.
 

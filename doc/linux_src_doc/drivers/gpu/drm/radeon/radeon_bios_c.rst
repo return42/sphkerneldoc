@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-radeon_bios.c
-=============
-
+.. src-file: drivers/gpu/drm/radeon/radeon_bios.c
 
 .. _`radeon_atrm_call`:
 
 radeon_atrm_call
 ================
 
-.. c:function:: int radeon_atrm_call (acpi_handle atrm_handle, uint8_t *bios, int offset, int len)
+.. c:function:: int radeon_atrm_call(acpi_handle atrm_handle, uint8_t *bios, int offset, int len)
 
     fetch a chunk of the vbios
 
@@ -26,8 +22,6 @@ radeon_atrm_call
     :param int len:
         length of vbios image data to fetch
 
-
-
 .. _`radeon_atrm_call.description`:
 
 Description
@@ -36,4 +30,6 @@ Description
 Executes ATRM to fetch a chunk of the discrete
 vbios image on PX systems (all asics).
 Returns the length of the buffer fetched.
+
+.. This file was automatic generated / don't edit.
 

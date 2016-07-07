@@ -7,4 +7,4 @@ dio
 .. toctree::
    :maxdepth: 1
 
-   dio-driver_c
+    dio-driver_c

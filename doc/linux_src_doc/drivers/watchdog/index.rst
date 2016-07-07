@@ -7,4 +7,21 @@ watchdog
 .. toctree::
    :maxdepth: 1
 
-   watchdog_core_c
+    bfin_wdt_c
+    booke_wdt_c
+    cadence_wdt_c
+    eurotechwdt_c
+    iop_wdt_c
+    it87_wdt_c
+    mei_wdt_c
+    octeon-wdt-main_c
+    pc87413_wdt_c
+    pcwd_usb_c
+    s3c2410_wdt_c
+    sbsa_gwdt_c
+    sp805_wdt_c
+    ts72xx_wdt_c
+    watchdog_core_c
+    wdrtas_c
+    wdt_c
+    wdt_pci_c

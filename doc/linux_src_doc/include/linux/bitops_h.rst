@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-bitops.h
-========
-
+.. src-file: include/linux/bitops.h
 
 .. _`rol64`:
 
 rol64
 =====
 
-.. c:function:: __u64 rol64 (__u64 word, unsigned int shift)
+.. c:function:: __u64 rol64(__u64 word, unsigned int shift)
 
     rotate a 64-bit value left
 
@@ -20,14 +16,12 @@ rol64
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`ror64`:
 
 ror64
 =====
 
-.. c:function:: __u64 ror64 (__u64 word, unsigned int shift)
+.. c:function:: __u64 ror64(__u64 word, unsigned int shift)
 
     rotate a 64-bit value right
 
@@ -37,14 +31,12 @@ ror64
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`rol32`:
 
 rol32
 =====
 
-.. c:function:: __u32 rol32 (__u32 word, unsigned int shift)
+.. c:function:: __u32 rol32(__u32 word, unsigned int shift)
 
     rotate a 32-bit value left
 
@@ -54,14 +46,12 @@ rol32
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`ror32`:
 
 ror32
 =====
 
-.. c:function:: __u32 ror32 (__u32 word, unsigned int shift)
+.. c:function:: __u32 ror32(__u32 word, unsigned int shift)
 
     rotate a 32-bit value right
 
@@ -71,14 +61,12 @@ ror32
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`rol16`:
 
 rol16
 =====
 
-.. c:function:: __u16 rol16 (__u16 word, unsigned int shift)
+.. c:function:: __u16 rol16(__u16 word, unsigned int shift)
 
     rotate a 16-bit value left
 
@@ -88,14 +76,12 @@ rol16
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`ror16`:
 
 ror16
 =====
 
-.. c:function:: __u16 ror16 (__u16 word, unsigned int shift)
+.. c:function:: __u16 ror16(__u16 word, unsigned int shift)
 
     rotate a 16-bit value right
 
@@ -105,14 +91,12 @@ ror16
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`rol8`:
 
 rol8
 ====
 
-.. c:function:: __u8 rol8 (__u8 word, unsigned int shift)
+.. c:function:: __u8 rol8(__u8 word, unsigned int shift)
 
     rotate an 8-bit value left
 
@@ -122,14 +106,12 @@ rol8
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`ror8`:
 
 ror8
 ====
 
-.. c:function:: __u8 ror8 (__u8 word, unsigned int shift)
+.. c:function:: __u8 ror8(__u8 word, unsigned int shift)
 
     rotate an 8-bit value right
 
@@ -139,14 +121,12 @@ ror8
     :param unsigned int shift:
         bits to roll
 
-
-
 .. _`sign_extend32`:
 
 sign_extend32
 =============
 
-.. c:function:: __s32 sign_extend32 (__u32 value, int index)
+.. c:function:: __s32 sign_extend32(__u32 value, int index)
 
     sign extend a 32-bit value using specified bit as sign-bit
 
@@ -156,8 +136,6 @@ sign_extend32
     :param int index:
         0 based bit index (0<=index<32) to sign bit
 
-
-
 .. _`sign_extend32.description`:
 
 Description
@@ -165,14 +143,12 @@ Description
 
 This is safe to use for 16- and 8-bit types as well.
 
-
-
 .. _`sign_extend64`:
 
 sign_extend64
 =============
 
-.. c:function:: __s64 sign_extend64 (__u64 value, int index)
+.. c:function:: __s64 sign_extend64(__u64 value, int index)
 
     sign extend a 64-bit value using specified bit as sign-bit
 
@@ -182,39 +158,33 @@ sign_extend64
     :param int index:
         0 based bit index (0<=index<64) to sign bit
 
-
-
 .. _`__ffs64`:
 
 __ffs64
 =======
 
-.. c:function:: unsigned long __ffs64 (u64 word)
+.. c:function:: unsigned long __ffs64(u64 word)
 
     find first set bit in a 64 bit word
 
     :param u64 word:
         The 64 bit word
 
-
-
 .. _`__ffs64.description`:
 
 Description
 -----------
 
-On 64 bit arches this is a synomyn for __ffs
-The result is not defined if no bits are set, so check that ``word``
+On 64 bit arches this is a synomyn for \__ffs
+The result is not defined if no bits are set, so check that \ ``word``\ 
 is non-zero before calling this.
-
-
 
 .. _`find_last_bit`:
 
 find_last_bit
 =============
 
-.. c:function:: unsigned long find_last_bit (const unsigned long *addr, unsigned long size)
+.. c:function:: unsigned long find_last_bit(const unsigned long *addr, unsigned long size)
 
     find the last set bit in a memory region
 
@@ -224,12 +194,12 @@ find_last_bit
     :param unsigned long size:
         The number of bits to search
 
-
-
 .. _`find_last_bit.description`:
 
 Description
 -----------
 
 Returns the bit number of the last set bit, or size.
+
+.. This file was automatic generated / don't edit.
 

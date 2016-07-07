@@ -1,0 +1,1243 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/igb/e1000_82575.c
+
+.. _`igb_write_vfta_i350`:
+
+igb_write_vfta_i350
+===================
+
+.. c:function:: void igb_write_vfta_i350(struct e1000_hw *hw, u32 offset, u32 value)
+
+    Write value to VLAN filter table
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset in VLAN filter table
+
+    :param u32 value:
+        register value written to VLAN filter table
+
+.. _`igb_write_vfta_i350.description`:
+
+Description
+-----------
+
+Writes value at the given offset in the register array which stores
+the VLAN filter table.
+
+.. _`igb_sgmii_uses_mdio_82575`:
+
+igb_sgmii_uses_mdio_82575
+=========================
+
+.. c:function:: bool igb_sgmii_uses_mdio_82575(struct e1000_hw *hw)
+
+    Determine if I2C pins are for external MDIO
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_sgmii_uses_mdio_82575.description`:
+
+Description
+-----------
+
+Called to determine if the I2C pins are being used for I2C or as an
+external MDIO interface since the two options are mutually exclusive.
+
+.. _`igb_check_for_link_media_swap`:
+
+igb_check_for_link_media_swap
+=============================
+
+.. c:function:: s32 igb_check_for_link_media_swap(struct e1000_hw *hw)
+
+    Check which M88E1112 interface linked
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_check_for_link_media_swap.description`:
+
+Description
+-----------
+
+Poll the M88E1112 interfaces to see which interface achieved link.
+
+.. _`igb_init_phy_params_82575`:
+
+igb_init_phy_params_82575
+=========================
+
+.. c:function:: s32 igb_init_phy_params_82575(struct e1000_hw *hw)
+
+    Init PHY func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_init_nvm_params_82575`:
+
+igb_init_nvm_params_82575
+=========================
+
+.. c:function:: s32 igb_init_nvm_params_82575(struct e1000_hw *hw)
+
+    Init NVM func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_init_mac_params_82575`:
+
+igb_init_mac_params_82575
+=========================
+
+.. c:function:: s32 igb_init_mac_params_82575(struct e1000_hw *hw)
+
+    Init MAC func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_set_sfp_media_type_82575`:
+
+igb_set_sfp_media_type_82575
+============================
+
+.. c:function:: s32 igb_set_sfp_media_type_82575(struct e1000_hw *hw)
+
+    derives SFP module media type.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_set_sfp_media_type_82575.description`:
+
+Description
+-----------
+
+The media type is chosen based on SFP module.
+compatibility flags retrieved from SFP ID EEPROM.
+
+.. _`igb_acquire_phy_82575`:
+
+igb_acquire_phy_82575
+=====================
+
+.. c:function:: s32 igb_acquire_phy_82575(struct e1000_hw *hw)
+
+    Acquire rights to access PHY
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_acquire_phy_82575.description`:
+
+Description
+-----------
+
+Acquire access rights to the correct PHY.  This is a
+function pointer entry point called by the api module.
+
+.. _`igb_release_phy_82575`:
+
+igb_release_phy_82575
+=====================
+
+.. c:function:: void igb_release_phy_82575(struct e1000_hw *hw)
+
+    Release rights to access PHY
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_release_phy_82575.description`:
+
+Description
+-----------
+
+A wrapper to release access rights to the correct PHY.  This is a
+function pointer entry point called by the api module.
+
+.. _`igb_read_phy_reg_sgmii_82575`:
+
+igb_read_phy_reg_sgmii_82575
+============================
+
+.. c:function:: s32 igb_read_phy_reg_sgmii_82575(struct e1000_hw *hw, u32 offset, u16 *data)
+
+    Read PHY register using sgmii
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to be read
+
+    :param u16 \*data:
+        pointer to the read data
+
+.. _`igb_read_phy_reg_sgmii_82575.description`:
+
+Description
+-----------
+
+Reads the PHY register at offset using the serial gigabit media independent
+interface and stores the retrieved information in data.
+
+.. _`igb_write_phy_reg_sgmii_82575`:
+
+igb_write_phy_reg_sgmii_82575
+=============================
+
+.. c:function:: s32 igb_write_phy_reg_sgmii_82575(struct e1000_hw *hw, u32 offset, u16 data)
+
+    Write PHY register using sgmii
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to write to
+
+    :param u16 data:
+        data to write at register offset
+
+.. _`igb_write_phy_reg_sgmii_82575.description`:
+
+Description
+-----------
+
+Writes the data to PHY register at the offset using the serial gigabit
+media independent interface.
+
+.. _`igb_get_phy_id_82575`:
+
+igb_get_phy_id_82575
+====================
+
+.. c:function:: s32 igb_get_phy_id_82575(struct e1000_hw *hw)
+
+    Retrieve PHY addr and id
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_phy_id_82575.description`:
+
+Description
+-----------
+
+Retrieves the PHY address and ID for both PHY's which do and do not use
+sgmi interface.
+
+.. _`igb_phy_hw_reset_sgmii_82575`:
+
+igb_phy_hw_reset_sgmii_82575
+============================
+
+.. c:function:: s32 igb_phy_hw_reset_sgmii_82575(struct e1000_hw *hw)
+
+    Performs a PHY reset
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_phy_hw_reset_sgmii_82575.description`:
+
+Description
+-----------
+
+Resets the PHY using the serial gigabit media independent interface.
+
+.. _`igb_set_d0_lplu_state_82575`:
+
+igb_set_d0_lplu_state_82575
+===========================
+
+.. c:function:: s32 igb_set_d0_lplu_state_82575(struct e1000_hw *hw, bool active)
+
+    Set Low Power Linkup D0 state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        true to enable LPLU, false to disable
+
+.. _`igb_set_d0_lplu_state_82575.description`:
+
+Description
+-----------
+
+Sets the LPLU D0 state according to the active flag.  When
+activating LPLU this function also disables smart speed
+and vice versa.  LPLU will not be activated unless the
+device autonegotiation advertisement meets standards of
+either 10 or 10/100 or 10/100/1000 at all duplexes.
+This is a function pointer entry point only called by
+PHY setup routines.
+
+.. _`igb_set_d0_lplu_state_82580`:
+
+igb_set_d0_lplu_state_82580
+===========================
+
+.. c:function:: s32 igb_set_d0_lplu_state_82580(struct e1000_hw *hw, bool active)
+
+    Set Low Power Linkup D0 state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        true to enable LPLU, false to disable
+
+.. _`igb_set_d0_lplu_state_82580.description`:
+
+Description
+-----------
+
+Sets the LPLU D0 state according to the active flag.  When
+activating LPLU this function also disables smart speed
+and vice versa.  LPLU will not be activated unless the
+device autonegotiation advertisement meets standards of
+either 10 or 10/100 or 10/100/1000 at all duplexes.
+This is a function pointer entry point only called by
+PHY setup routines.
+
+.. _`igb_set_d3_lplu_state_82580`:
+
+igb_set_d3_lplu_state_82580
+===========================
+
+.. c:function:: s32 igb_set_d3_lplu_state_82580(struct e1000_hw *hw, bool active)
+
+    Sets low power link up state for D3
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        boolean used to enable/disable lplu
+
+.. _`igb_set_d3_lplu_state_82580.description`:
+
+Description
+-----------
+
+Success returns 0, Failure returns 1
+
+The low power link up (lplu) state is set to the power management level D3
+and SmartSpeed is disabled when active is true, else clear lplu for D3
+and enable Smartspeed.  LPLU and Smartspeed are mutually exclusive.  LPLU
+is used during Dx states where the power conservation is most important.
+During driver activity, SmartSpeed should be enabled so performance is
+maintained.
+
+.. _`igb_acquire_nvm_82575`:
+
+igb_acquire_nvm_82575
+=====================
+
+.. c:function:: s32 igb_acquire_nvm_82575(struct e1000_hw *hw)
+
+    Request for access to EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_acquire_nvm_82575.description`:
+
+Description
+-----------
+
+Acquire the necessary semaphores for exclusive access to the EEPROM.
+Set the EEPROM access request bit and wait for EEPROM access grant bit.
+Return successful if access grant bit set, else clear the request for
+EEPROM access and return -E1000_ERR_NVM (-1).
+
+.. _`igb_release_nvm_82575`:
+
+igb_release_nvm_82575
+=====================
+
+.. c:function:: void igb_release_nvm_82575(struct e1000_hw *hw)
+
+    Release exclusive access to EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_release_nvm_82575.description`:
+
+Description
+-----------
+
+Stop any current commands to the EEPROM and clear the EEPROM request bit,
+then release the semaphores acquired.
+
+.. _`igb_acquire_swfw_sync_82575`:
+
+igb_acquire_swfw_sync_82575
+===========================
+
+.. c:function:: s32 igb_acquire_swfw_sync_82575(struct e1000_hw *hw, u16 mask)
+
+    Acquire SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`igb_acquire_swfw_sync_82575.description`:
+
+Description
+-----------
+
+Acquire the SW/FW semaphore to access the PHY or NVM.  The mask
+will also specify which port we're acquiring the lock for.
+
+.. _`igb_release_swfw_sync_82575`:
+
+igb_release_swfw_sync_82575
+===========================
+
+.. c:function:: void igb_release_swfw_sync_82575(struct e1000_hw *hw, u16 mask)
+
+    Release SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`igb_release_swfw_sync_82575.description`:
+
+Description
+-----------
+
+Release the SW/FW semaphore used to access the PHY or NVM.  The mask
+will also specify which port we're releasing the lock for.
+
+.. _`igb_get_cfg_done_82575`:
+
+igb_get_cfg_done_82575
+======================
+
+.. c:function:: s32 igb_get_cfg_done_82575(struct e1000_hw *hw)
+
+    Read config done bit
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_cfg_done_82575.description`:
+
+Description
+-----------
+
+Read the management control register for the config done bit for
+completion status.  NOTE: silicon which is EEPROM-less will fail trying
+to read the config done bit, so an error is \*ONLY\* logged and returns
+0.  If we were to return with error, EEPROM-less silicon
+would not be able to be reset or change link.
+
+.. _`igb_get_link_up_info_82575`:
+
+igb_get_link_up_info_82575
+==========================
+
+.. c:function:: s32 igb_get_link_up_info_82575(struct e1000_hw *hw, u16 *speed, u16 *duplex)
+
+    Get link speed/duplex info
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 \*speed:
+        stores the current speed
+
+    :param u16 \*duplex:
+        stores the current duplex
+
+.. _`igb_get_link_up_info_82575.description`:
+
+Description
+-----------
+
+This is a wrapper function, if using the serial gigabit media independent
+interface, use PCS to retrieve the link speed and duplex information.
+Otherwise, use the generic function to get the link speed and duplex info.
+
+.. _`igb_check_for_link_82575`:
+
+igb_check_for_link_82575
+========================
+
+.. c:function:: s32 igb_check_for_link_82575(struct e1000_hw *hw)
+
+    Check for link
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_check_for_link_82575.description`:
+
+Description
+-----------
+
+If sgmii is enabled, then use the pcs register to determine link, otherwise
+use the generic interface for determining link.
+
+.. _`igb_power_up_serdes_link_82575`:
+
+igb_power_up_serdes_link_82575
+==============================
+
+.. c:function:: void igb_power_up_serdes_link_82575(struct e1000_hw *hw)
+
+    Power up the serdes link after shutdown
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_get_pcs_speed_and_duplex_82575`:
+
+igb_get_pcs_speed_and_duplex_82575
+==================================
+
+.. c:function:: s32 igb_get_pcs_speed_and_duplex_82575(struct e1000_hw *hw, u16 *speed, u16 *duplex)
+
+    Retrieve current speed/duplex
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 \*speed:
+        stores the current speed
+
+    :param u16 \*duplex:
+        stores the current duplex
+
+.. _`igb_get_pcs_speed_and_duplex_82575.description`:
+
+Description
+-----------
+
+Using the physical coding sub-layer (PCS), retrieve the current speed and
+duplex, then store the values in the pointers provided.
+
+.. _`igb_shutdown_serdes_link_82575`:
+
+igb_shutdown_serdes_link_82575
+==============================
+
+.. c:function:: void igb_shutdown_serdes_link_82575(struct e1000_hw *hw)
+
+    Remove link during power down
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_shutdown_serdes_link_82575.description`:
+
+Description
+-----------
+
+In the case of fiber serdes, shut down optics and PCS on driver unload
+when management pass thru is not enabled.
+
+.. _`igb_reset_hw_82575`:
+
+igb_reset_hw_82575
+==================
+
+.. c:function:: s32 igb_reset_hw_82575(struct e1000_hw *hw)
+
+    Reset hardware
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_reset_hw_82575.description`:
+
+Description
+-----------
+
+This resets the hardware into a known state.  This is a
+function pointer entry point called by the api module.
+
+.. _`igb_init_hw_82575`:
+
+igb_init_hw_82575
+=================
+
+.. c:function:: s32 igb_init_hw_82575(struct e1000_hw *hw)
+
+    Initialize hardware
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_init_hw_82575.description`:
+
+Description
+-----------
+
+This inits the hardware readying it for operation.
+
+.. _`igb_setup_copper_link_82575`:
+
+igb_setup_copper_link_82575
+===========================
+
+.. c:function:: s32 igb_setup_copper_link_82575(struct e1000_hw *hw)
+
+    Configure copper link settings
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_setup_copper_link_82575.description`:
+
+Description
+-----------
+
+Configures the link for auto-neg or forced speed and duplex.  Then we check
+for link, once link is established calls to configure collision distance
+and flow control are called.
+
+.. _`igb_setup_serdes_link_82575`:
+
+igb_setup_serdes_link_82575
+===========================
+
+.. c:function:: s32 igb_setup_serdes_link_82575(struct e1000_hw *hw)
+
+    Setup link for serdes
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_setup_serdes_link_82575.description`:
+
+Description
+-----------
+
+Configure the physical coding sub-layer (PCS) link.  The PCS link is
+used on copper connections where the serialized gigabit media independent
+interface (sgmii), or serdes fiber is being used.  Configures the link
+for auto-negotiation or forces speed/duplex.
+
+.. _`igb_sgmii_active_82575`:
+
+igb_sgmii_active_82575
+======================
+
+.. c:function:: bool igb_sgmii_active_82575(struct e1000_hw *hw)
+
+    Return sgmii state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_sgmii_active_82575.description`:
+
+Description
+-----------
+
+82575 silicon has a serialized gigabit media independent interface (sgmii)
+which can be enabled for use in the embedded applications.  Simply
+return the current state of the sgmii interface.
+
+.. _`igb_reset_init_script_82575`:
+
+igb_reset_init_script_82575
+===========================
+
+.. c:function:: s32 igb_reset_init_script_82575(struct e1000_hw *hw)
+
+    Inits HW defaults after reset
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_reset_init_script_82575.description`:
+
+Description
+-----------
+
+Inits recommended HW defaults after a reset when there is no EEPROM
+detected. This is only for the 82575.
+
+.. _`igb_read_mac_addr_82575`:
+
+igb_read_mac_addr_82575
+=======================
+
+.. c:function:: s32 igb_read_mac_addr_82575(struct e1000_hw *hw)
+
+    Read device MAC address
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_power_down_phy_copper_82575`:
+
+igb_power_down_phy_copper_82575
+===============================
+
+.. c:function:: void igb_power_down_phy_copper_82575(struct e1000_hw *hw)
+
+    Remove link during PHY power down
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_power_down_phy_copper_82575.description`:
+
+Description
+-----------
+
+In the case of a PHY power down to save power, or to turn off link during a
+driver unload, or wake on lan is not enabled, remove the link.
+
+.. _`igb_clear_hw_cntrs_82575`:
+
+igb_clear_hw_cntrs_82575
+========================
+
+.. c:function:: void igb_clear_hw_cntrs_82575(struct e1000_hw *hw)
+
+    Clear device specific hardware counters
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_clear_hw_cntrs_82575.description`:
+
+Description
+-----------
+
+Clears the hardware counters by reading the counter registers.
+
+.. _`igb_rx_fifo_flush_82575`:
+
+igb_rx_fifo_flush_82575
+=======================
+
+.. c:function:: void igb_rx_fifo_flush_82575(struct e1000_hw *hw)
+
+    Clean rx fifo after RX enable
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_rx_fifo_flush_82575.description`:
+
+Description
+-----------
+
+After rx enable if manageability is enabled then there is likely some
+bad data at the start of the fifo and possibly in the DMA fifo. This
+function clears the fifos and flushes any packets that came in as rx was
+being enabled.
+
+.. _`igb_set_pcie_completion_timeout`:
+
+igb_set_pcie_completion_timeout
+===============================
+
+.. c:function:: s32 igb_set_pcie_completion_timeout(struct e1000_hw *hw)
+
+    set pci-e completion timeout
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_set_pcie_completion_timeout.description`:
+
+Description
+-----------
+
+The defaults for 82575 and 82576 should be in the range of 50us to 50ms,
+however the hardware default for these parts is 500us to 1ms which is less
+than the 10ms recommended by the pci-e spec.  To address this we need to
+increase the value to either 10ms to 200ms for capability version 1 config,
+or 16ms to 55ms for version 2.
+
+.. _`igb_vmdq_set_anti_spoofing_pf`:
+
+igb_vmdq_set_anti_spoofing_pf
+=============================
+
+.. c:function:: void igb_vmdq_set_anti_spoofing_pf(struct e1000_hw *hw, bool enable, int pf)
+
+    enable or disable anti-spoofing
+
+    :param struct e1000_hw \*hw:
+        pointer to the hardware struct
+
+    :param bool enable:
+        state to enter, either enabled or disabled
+
+    :param int pf:
+        Physical Function pool - do not set anti-spoofing for the PF
+
+.. _`igb_vmdq_set_anti_spoofing_pf.description`:
+
+Description
+-----------
+
+enables/disables L2 switch anti-spoofing functionality.
+
+.. _`igb_vmdq_set_loopback_pf`:
+
+igb_vmdq_set_loopback_pf
+========================
+
+.. c:function:: void igb_vmdq_set_loopback_pf(struct e1000_hw *hw, bool enable)
+
+    enable or disable vmdq loopback
+
+    :param struct e1000_hw \*hw:
+        pointer to the hardware struct
+
+    :param bool enable:
+        state to enter, either enabled or disabled
+
+.. _`igb_vmdq_set_loopback_pf.description`:
+
+Description
+-----------
+
+enables/disables L2 switch loopback functionality.
+
+.. _`igb_vmdq_set_replication_pf`:
+
+igb_vmdq_set_replication_pf
+===========================
+
+.. c:function:: void igb_vmdq_set_replication_pf(struct e1000_hw *hw, bool enable)
+
+    enable or disable vmdq replication
+
+    :param struct e1000_hw \*hw:
+        pointer to the hardware struct
+
+    :param bool enable:
+        state to enter, either enabled or disabled
+
+.. _`igb_vmdq_set_replication_pf.description`:
+
+Description
+-----------
+
+enables/disables replication of packets across multiple pools.
+
+.. _`igb_read_phy_reg_82580`:
+
+igb_read_phy_reg_82580
+======================
+
+.. c:function:: s32 igb_read_phy_reg_82580(struct e1000_hw *hw, u32 offset, u16 *data)
+
+    Read 82580 MDI control register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to be read
+
+    :param u16 \*data:
+        pointer to the read data
+
+.. _`igb_read_phy_reg_82580.description`:
+
+Description
+-----------
+
+Reads the MDI control register in the PHY at offset and stores the
+information read to data.
+
+.. _`igb_write_phy_reg_82580`:
+
+igb_write_phy_reg_82580
+=======================
+
+.. c:function:: s32 igb_write_phy_reg_82580(struct e1000_hw *hw, u32 offset, u16 data)
+
+    Write 82580 MDI control register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to write to
+
+    :param u16 data:
+        data to write to register at offset
+
+.. _`igb_write_phy_reg_82580.description`:
+
+Description
+-----------
+
+Writes data to MDI control register in the PHY at offset.
+
+.. _`igb_reset_mdicnfg_82580`:
+
+igb_reset_mdicnfg_82580
+=======================
+
+.. c:function:: s32 igb_reset_mdicnfg_82580(struct e1000_hw *hw)
+
+    Reset MDICNFG destination and com_mdio bits
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_reset_mdicnfg_82580.description`:
+
+Description
+-----------
+
+This resets the the MDICNFG.Destination and MDICNFG.Com_MDIO bits based on
+the values found in the EEPROM.  This addresses an issue in which these
+bits are not restored from EEPROM after reset.
+
+.. _`igb_reset_hw_82580`:
+
+igb_reset_hw_82580
+==================
+
+.. c:function:: s32 igb_reset_hw_82580(struct e1000_hw *hw)
+
+    Reset hardware
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_reset_hw_82580.description`:
+
+Description
+-----------
+
+This resets function or entire device (all ports, etc.)
+to a known state.
+
+.. _`igb_rxpbs_adjust_82580`:
+
+igb_rxpbs_adjust_82580
+======================
+
+.. c:function:: u16 igb_rxpbs_adjust_82580(u32 data)
+
+    adjust RXPBS value to reflect actual RX PBA size
+
+    :param u32 data:
+        data received by reading RXPBS register
+
+.. _`igb_rxpbs_adjust_82580.description`:
+
+Description
+-----------
+
+The 82580 uses a table based approach for packet buffer allocation sizes.
+This function converts the retrieved value into the correct table value
+0x0 0x1 0x2 0x3 0x4 0x5 0x6 0x7
+0x0 36  72 144   1   2   4   8  16
+0x8 35  70 140 rsv rsv rsv rsv rsv
+
+.. _`igb_validate_nvm_checksum_with_offset`:
+
+igb_validate_nvm_checksum_with_offset
+=====================================
+
+.. c:function:: s32 igb_validate_nvm_checksum_with_offset(struct e1000_hw *hw, u16 offset)
+
+    Validate EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset in words of the checksum protected region
+
+.. _`igb_validate_nvm_checksum_with_offset.description`:
+
+Description
+-----------
+
+Calculates the EEPROM checksum by reading/adding each word of the EEPROM
+and then verifies that the sum of the EEPROM is equal to 0xBABA.
+
+.. _`igb_update_nvm_checksum_with_offset`:
+
+igb_update_nvm_checksum_with_offset
+===================================
+
+.. c:function:: s32 igb_update_nvm_checksum_with_offset(struct e1000_hw *hw, u16 offset)
+
+    Update EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset in words of the checksum protected region
+
+.. _`igb_update_nvm_checksum_with_offset.description`:
+
+Description
+-----------
+
+Updates the EEPROM checksum by reading/adding each word of the EEPROM
+up to the checksum.  Then calculates the EEPROM checksum and writes the
+value to the EEPROM.
+
+.. _`igb_validate_nvm_checksum_82580`:
+
+igb_validate_nvm_checksum_82580
+===============================
+
+.. c:function:: s32 igb_validate_nvm_checksum_82580(struct e1000_hw *hw)
+
+    Validate EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_validate_nvm_checksum_82580.description`:
+
+Description
+-----------
+
+Calculates the EEPROM section checksum by reading/adding each word of
+the EEPROM and then verifies that the sum of the EEPROM is
+equal to 0xBABA.
+
+.. _`igb_update_nvm_checksum_82580`:
+
+igb_update_nvm_checksum_82580
+=============================
+
+.. c:function:: s32 igb_update_nvm_checksum_82580(struct e1000_hw *hw)
+
+    Update EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_update_nvm_checksum_82580.description`:
+
+Description
+-----------
+
+Updates the EEPROM section checksums for all 4 ports by reading/adding
+each word of the EEPROM up to the checksum.  Then calculates the EEPROM
+checksum and writes the value to the EEPROM.
+
+.. _`igb_validate_nvm_checksum_i350`:
+
+igb_validate_nvm_checksum_i350
+==============================
+
+.. c:function:: s32 igb_validate_nvm_checksum_i350(struct e1000_hw *hw)
+
+    Validate EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_validate_nvm_checksum_i350.description`:
+
+Description
+-----------
+
+Calculates the EEPROM section checksum by reading/adding each word of
+the EEPROM and then verifies that the sum of the EEPROM is
+equal to 0xBABA.
+
+.. _`igb_update_nvm_checksum_i350`:
+
+igb_update_nvm_checksum_i350
+============================
+
+.. c:function:: s32 igb_update_nvm_checksum_i350(struct e1000_hw *hw)
+
+    Update EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`igb_update_nvm_checksum_i350.description`:
+
+Description
+-----------
+
+Updates the EEPROM section checksums for all 4 ports by reading/adding
+each word of the EEPROM up to the checksum.  Then calculates the EEPROM
+checksum and writes the value to the EEPROM.
+
+.. _`__igb_access_emi_reg`:
+
+__igb_access_emi_reg
+====================
+
+.. c:function:: s32 __igb_access_emi_reg(struct e1000_hw *hw, u16 address, u16 *data, bool read)
+
+    Read/write EMI register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 address:
+        *undescribed*
+
+    :param u16 \*data:
+        pointer to value to read/write from/to the EMI address
+
+    :param bool read:
+        boolean flag to indicate read or write
+
+.. _`igb_read_emi_reg`:
+
+igb_read_emi_reg
+================
+
+.. c:function:: s32 igb_read_emi_reg(struct e1000_hw *hw, u16 addr, u16 *data)
+
+    Read Extended Management Interface register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 addr:
+        EMI address to program
+
+    :param u16 \*data:
+        value to be read from the EMI address
+
+.. _`igb_set_eee_i350`:
+
+igb_set_eee_i350
+================
+
+.. c:function:: s32 igb_set_eee_i350(struct e1000_hw *hw, bool adv1G, bool adv100M)
+
+    Enable/disable EEE support
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool adv1G:
+        boolean flag enabling 1G EEE advertisement
+
+    :param bool adv100M:
+        *undescribed*
+
+.. _`igb_set_eee_i350.description`:
+
+Description
+-----------
+
+Enable/disable EEE based on setting in dev_spec structure.
+
+.. _`igb_set_eee_i354`:
+
+igb_set_eee_i354
+================
+
+.. c:function:: s32 igb_set_eee_i354(struct e1000_hw *hw, bool adv1G, bool adv100M)
+
+    Enable/disable EEE support
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool adv1G:
+        boolean flag enabling 1G EEE advertisement
+
+    :param bool adv100M:
+        *undescribed*
+
+.. _`igb_set_eee_i354.description`:
+
+Description
+-----------
+
+Enable/disable EEE legacy mode based on setting in dev_spec structure.
+
+.. _`igb_get_eee_status_i354`:
+
+igb_get_eee_status_i354
+=======================
+
+.. c:function:: s32 igb_get_eee_status_i354(struct e1000_hw *hw, bool *status)
+
+    Get EEE status
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool \*status:
+        EEE status
+
+.. _`igb_get_eee_status_i354.description`:
+
+Description
+-----------
+
+Get EEE status by guessing based on whether Tx or Rx LPI indications have
+been received.
+
+.. _`igb_get_thermal_sensor_data_generic`:
+
+igb_get_thermal_sensor_data_generic
+===================================
+
+.. c:function:: s32 igb_get_thermal_sensor_data_generic(struct e1000_hw *hw)
+
+    Gathers thermal sensor data
+
+    :param struct e1000_hw \*hw:
+        pointer to hardware structure
+
+.. _`igb_get_thermal_sensor_data_generic.description`:
+
+Description
+-----------
+
+Updates the temperatures in mac.thermal_sensor_data
+
+.. _`igb_init_thermal_sensor_thresh_generic`:
+
+igb_init_thermal_sensor_thresh_generic
+======================================
+
+.. c:function:: s32 igb_init_thermal_sensor_thresh_generic(struct e1000_hw *hw)
+
+    Sets thermal sensor thresholds
+
+    :param struct e1000_hw \*hw:
+        pointer to hardware structure
+
+.. _`igb_init_thermal_sensor_thresh_generic.description`:
+
+Description
+-----------
+
+Sets the thermal sensor thresholds according to the NVM map
+and save off the threshold and location values into mac.thermal_sensor_data
+
+.. This file was automatic generated / don't edit.
+

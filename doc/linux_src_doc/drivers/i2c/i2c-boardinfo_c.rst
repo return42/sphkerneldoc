@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-i2c-boardinfo.c
-===============
-
+.. src-file: drivers/i2c/i2c-boardinfo.c
 
 .. _`i2c_register_board_info`:
 
 i2c_register_board_info
 =======================
 
-.. c:function:: int i2c_register_board_info (int busnum, struct i2c_board_info const *info, unsigned len)
+.. c:function:: int i2c_register_board_info(int busnum, struct i2c_board_info const *info, unsigned len)
 
     statically declare I2C devices
 
@@ -24,8 +20,6 @@ i2c_register_board_info
         how many descriptors in the vector; may be zero to reserve
         the specified bus number.
 
-
-
 .. _`i2c_register_board_info.description`:
 
 Description
@@ -33,7 +27,7 @@ Description
 
 Systems using the Linux I2C driver stack can declare tables of board info
 while they initialize.  This should be done in board-specific init code
-near :c:func:`arch_initcall` time, or equivalent, before any I2C adapter driver is
+near \ :c:func:`arch_initcall`\  time, or equivalent, before any I2C adapter driver is
 registered.  For example, mainboard init code could define several devices,
 as could the init code for each daughtercard in a board stack.
 
@@ -43,6 +37,8 @@ are used to bind "new style" I2C drivers to the devices.  The bus number
 for any device declared using this routine is not available for dynamic
 allocation.
 
-The board info passed can safely be __initdata, but be careful of embedded
+The board info passed can safely be \__initdata, but be careful of embedded
 pointers (for platform_data, functions, etc) since that won't be copied.
+
+.. This file was automatic generated / don't edit.
 

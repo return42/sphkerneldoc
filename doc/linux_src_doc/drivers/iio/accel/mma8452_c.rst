@@ -1,0 +1,101 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/accel/mma8452.c
+
+.. _`mma_chip_info`:
+
+struct mma_chip_info
+====================
+
+.. c:type:: struct mma_chip_info
+
+    chip specific data for Freescale's accelerometers
+
+.. _`mma_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mma_chip_info {
+        u8 chip_id;
+        const struct iio_chan_spec *channels;
+        int num_channels;
+        const int mma_scales[3][2];
+        u8 ev_cfg;
+        u8 ev_cfg_ele;
+        u8 ev_cfg_chan_shift;
+        u8 ev_src;
+        u8 ev_src_xe;
+        u8 ev_src_ye;
+        u8 ev_src_ze;
+        u8 ev_ths;
+        u8 ev_ths_mask;
+        u8 ev_count;
+    }
+
+.. _`mma_chip_info.members`:
+
+Members
+-------
+
+chip_id
+    WHO_AM_I register's value
+
+channels
+    struct iio_chan_spec matching the device's
+    capabilities
+
+num_channels
+    number of channels
+
+mma_scales
+    scale factors for converting register values
+    to m/s^2; 3 modes: 2g, 4g, 8g; 2 integers
+    per mode: m/s^2 and micro m/s^2
+
+ev_cfg
+    event config register address
+
+ev_cfg_ele
+    latch bit in event config register
+
+ev_cfg_chan_shift
+    number of the bit to enable events in X
+    direction; in event config register
+
+ev_src
+    event source register address
+
+ev_src_xe
+    bit in event source register that indicates
+    an event in X direction
+
+ev_src_ye
+    bit in event source register that indicates
+    an event in Y direction
+
+ev_src_ze
+    bit in event source register that indicates
+    an event in Z direction
+
+ev_ths
+    event threshold register address
+
+ev_ths_mask
+    mask for the threshold value
+
+ev_count
+    event count (period) register address
+
+.. _`mma_chip_info.description`:
+
+Description
+-----------
+
+Since not all chips supported by the driver support comparing high pass
+filtered data for events (interrupts), different interrupt sources are
+used for different chips and the relevant registers are included here.
+
+.. This file was automatic generated / don't edit.
+

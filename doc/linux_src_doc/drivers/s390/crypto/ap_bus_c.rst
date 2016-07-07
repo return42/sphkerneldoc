@@ -1,107 +1,89 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ap_bus.c
-========
-
+.. src-file: drivers/s390/crypto/ap_bus.c
 
 .. _`ap_using_interrupts`:
 
 ap_using_interrupts
 ===================
 
-.. c:function:: int ap_using_interrupts ( void)
+.. c:function:: int ap_using_interrupts( void)
 
     Returns non-zero if interrupt support is available.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`ap_instructions_available`:
 
 ap_instructions_available
 =========================
 
-.. c:function:: int ap_instructions_available ( void)
+.. c:function:: int ap_instructions_available( void)
 
     Test if AP instructions are available.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`ap_instructions_available.description`:
 
 Description
 -----------
 
-
 Returns 0 if the AP instructions are installed.
-
-
 
 .. _`ap_interrupts_available`:
 
 ap_interrupts_available
 =======================
 
-.. c:function:: int ap_interrupts_available ( void)
+.. c:function:: int ap_interrupts_available( void)
 
-    :param void:
+    Test if AP interrupts are available.
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_interrupts_available.description`:
 
 Description
 -----------
 
-
 Returns 1 if AP interrupts are available.
-
-
 
 .. _`ap_configuration_available`:
 
 ap_configuration_available
 ==========================
 
-.. c:function:: int ap_configuration_available ( void)
+.. c:function:: int ap_configuration_available( void)
 
-    :param void:
+    Test if AP configuration information is available.
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_configuration_available.description`:
 
 Description
 -----------
 
-information is available.
-
 Returns 1 if AP configuration information is available.
-
-
 
 .. _`ap_test_queue`:
 
 ap_test_queue
 =============
 
-.. c:function:: struct ap_queue_status ap_test_queue (ap_qid_t qid, unsigned long *info)
+.. c:function:: struct ap_queue_status ap_test_queue(ap_qid_t qid, unsigned long *info)
+
+    Test adjunct processor queue.
 
     :param ap_qid_t qid:
         The AP queue number
 
     :param unsigned long \*info:
         Pointer to queue descriptor
-
-
 
 .. _`ap_test_queue.description`:
 
@@ -110,19 +92,17 @@ Description
 
 Returns AP queue status structure.
 
-
-
 .. _`ap_reset_queue`:
 
 ap_reset_queue
 ==============
 
-.. c:function:: struct ap_queue_status ap_reset_queue (ap_qid_t qid)
+.. c:function:: struct ap_queue_status ap_reset_queue(ap_qid_t qid)
+
+    Reset adjunct processor queue.
 
     :param ap_qid_t qid:
         The AP queue number
-
-
 
 .. _`ap_reset_queue.description`:
 
@@ -131,22 +111,20 @@ Description
 
 Returns AP queue status structure.
 
-
-
 .. _`ap_queue_interruption_control`:
 
 ap_queue_interruption_control
 =============================
 
-.. c:function:: struct ap_queue_status ap_queue_interruption_control (ap_qid_t qid, void *ind)
+.. c:function:: struct ap_queue_status ap_queue_interruption_control(ap_qid_t qid, void *ind)
+
+    Enable interruption for a specific AP.
 
     :param ap_qid_t qid:
         The AP queue number
 
     :param void \*ind:
         The notification indicator byte
-
-
 
 .. _`ap_queue_interruption_control.description`:
 
@@ -155,75 +133,69 @@ Description
 
 Returns AP queue status.
 
-
-
 .. _`ap_query_configuration`:
 
 ap_query_configuration
 ======================
 
-.. c:function:: int ap_query_configuration ( void)
+.. c:function:: int ap_query_configuration( void)
 
-    :param void:
+    Get AP configuration data
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_query_configuration.description`:
 
 Description
 -----------
 
-
 Returns 0 on success, or -EOPNOTSUPP.
-
-
 
 .. _`ap_init_configuration`:
 
 ap_init_configuration
 =====================
 
-.. c:function:: void ap_init_configuration ( void)
+.. c:function:: void ap_init_configuration( void)
 
-    :param void:
+    Allocate and query configuration array.
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_queue_enable_interruption`:
 
 ap_queue_enable_interruption
 ============================
 
-.. c:function:: int ap_queue_enable_interruption (struct ap_device *ap_dev, void *ind)
+.. c:function:: int ap_queue_enable_interruption(struct ap_device *ap_dev, void *ind)
+
+    Enable interruption on an AP.
 
     :param struct ap_device \*ap_dev:
-
         *undescribed*
 
     :param void \*ind:
         the notification indicator byte
-
-
 
 .. _`ap_queue_enable_interruption.description`:
 
 Description
 -----------
 
-Enables interruption on AP queue via :c:func:`ap_queue_interruption_control`. Based
+Enables interruption on AP queue via \ :c:func:`ap_queue_interruption_control`\ . Based
 on the return value it waits a while and tests the AP queue if interrupts
-have been switched on using :c:func:`ap_test_queue`.
-
-
+have been switched on using \ :c:func:`ap_test_queue`\ .
 
 .. _`__ap_send`:
 
 __ap_send
 =========
 
-.. c:function:: struct ap_queue_status __ap_send (ap_qid_t qid, unsigned long long psmid, void *msg, size_t length, unsigned int special)
+.. c:function:: struct ap_queue_status __ap_send(ap_qid_t qid, unsigned long long psmid, void *msg, size_t length, unsigned int special)
+
+    Send message to adjunct processor queue.
 
     :param ap_qid_t qid:
         The AP queue number
@@ -240,8 +212,6 @@ __ap_send
     :param unsigned int special:
         Special Bit
 
-
-
 .. _`__ap_send.description`:
 
 Description
@@ -252,14 +222,14 @@ Condition code 1 on NQAP can't happen because the L bit is 1.
 Condition code 2 on NQAP also means the send is incomplete,
 because a segment boundary was reached. The NQAP is repeated.
 
-
-
 .. _`__ap_recv`:
 
 __ap_recv
 =========
 
-.. c:function:: struct ap_queue_status __ap_recv (ap_qid_t qid, unsigned long long *psmid, void *msg, size_t length)
+.. c:function:: struct ap_queue_status __ap_recv(ap_qid_t qid, unsigned long long *psmid, void *msg, size_t length)
+
+    Receive message from adjunct processor queue.
 
     :param ap_qid_t qid:
         The AP queue number
@@ -273,8 +243,6 @@ __ap_recv
     :param size_t length:
         The message length
 
-
-
 .. _`__ap_recv.description`:
 
 Description
@@ -282,7 +250,7 @@ Description
 
 Returns AP queue status structure.
 Condition code 1 on DQAP means the receive has taken place
-but only partially.        The response is incomplete, hence the
+but only partially.  The response is incomplete, hence the
 DQAP is repeated.
 Condition code 2 on DQAP also means the receive is incomplete,
 this time because a segment boundary was reached. Again, the
@@ -291,14 +259,14 @@ Note that gpr2 is used by the DQAP instruction to keep track of
 any 'residual' length, in case the instruction gets interrupted.
 Hence it gets zeroed before the instruction.
 
-
-
 .. _`ap_query_queue`:
 
 ap_query_queue
 ==============
 
-.. c:function:: int ap_query_queue (ap_qid_t qid, int *queue_depth, int *device_type, unsigned int *facilities)
+.. c:function:: int ap_query_queue(ap_qid_t qid, int *queue_depth, int *device_type, unsigned int *facilities)
+
+    Check if an AP queue is available.
 
     :param ap_qid_t qid:
         The AP queue number
@@ -312,49 +280,36 @@ ap_query_queue
     :param unsigned int \*facilities:
         Pointer to facility indicator
 
-
-
 .. _`ap_sm_recv`:
 
 ap_sm_recv
 ==========
 
-.. c:function:: struct ap_queue_status ap_sm_recv (struct ap_device *ap_dev)
+.. c:function:: struct ap_queue_status ap_sm_recv(struct ap_device *ap_dev)
+
+    Receive pending reply messages from an AP device but do not change the state of the device.
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
 
-
-
 .. _`ap_sm_recv.description`:
 
 Description
 -----------
 
 Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
-
-
-
-.. _`ap_sm_recv.description`:
-
-Description
------------
-
-Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
-
-
 
 .. _`ap_sm_read`:
 
 ap_sm_read
 ==========
 
-.. c:function:: enum ap_wait ap_sm_read (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_read(struct ap_device *ap_dev)
+
+    Receive pending reply messages from an AP device.
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
-
-
 
 .. _`ap_sm_read.description`:
 
@@ -363,19 +318,17 @@ Description
 
 Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
 
-
-
 .. _`ap_sm_write`:
 
 ap_sm_write
 ===========
 
-.. c:function:: enum ap_wait ap_sm_write (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_write(struct ap_device *ap_dev)
+
+    Send messages from the request queue to an AP device.
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
-
-
 
 .. _`ap_sm_write.description`:
 
@@ -384,19 +337,17 @@ Description
 
 Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
 
-
-
 .. _`ap_sm_read_write`:
 
 ap_sm_read_write
 ================
 
-.. c:function:: enum ap_wait ap_sm_read_write (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_read_write(struct ap_device *ap_dev)
+
+    Send and receive messages to/from an AP device.
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
-
-
 
 .. _`ap_sm_read_write.description`:
 
@@ -405,20 +356,17 @@ Description
 
 Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
 
-
-
 .. _`ap_sm_reset`:
 
 ap_sm_reset
 ===========
 
-.. c:function:: enum ap_wait ap_sm_reset (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_reset(struct ap_device *ap_dev)
+
+    Reset an AP queue.
 
     :param struct ap_device \*ap_dev:
-
         *undescribed*
-
-
 
 .. _`ap_sm_reset.description`:
 
@@ -427,19 +375,17 @@ Description
 
 Submit the Reset command to an AP queue.
 
-
-
 .. _`ap_sm_reset_wait`:
 
 ap_sm_reset_wait
 ================
 
-.. c:function:: enum ap_wait ap_sm_reset_wait (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_reset_wait(struct ap_device *ap_dev)
+
+    Test queue for completion of the reset operation
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
-
-
 
 .. _`ap_sm_reset_wait.description`:
 
@@ -448,19 +394,17 @@ Description
 
 Returns AP_POLL_IMMEDIATELY, AP_POLL_AFTER_TIMEROUT or 0.
 
-
-
 .. _`ap_sm_setirq_wait`:
 
 ap_sm_setirq_wait
 =================
 
-.. c:function:: enum ap_wait ap_sm_setirq_wait (struct ap_device *ap_dev)
+.. c:function:: enum ap_wait ap_sm_setirq_wait(struct ap_device *ap_dev)
+
+    Test queue for completion of the irq enablement
 
     :param struct ap_device \*ap_dev:
         pointer to the AP device
-
-
 
 .. _`ap_sm_setirq_wait.description`:
 
@@ -469,19 +413,17 @@ Description
 
 Returns AP_POLL_IMMEDIATELY, AP_POLL_AFTER_TIMEROUT or 0.
 
-
-
 .. _`ap_request_timeout`:
 
 ap_request_timeout
 ==================
 
-.. c:function:: void ap_request_timeout (unsigned long data)
+.. c:function:: void ap_request_timeout(unsigned long data)
+
+    Handling of request timeouts
 
     :param unsigned long data:
         Holds the AP device.
-
-
 
 .. _`ap_request_timeout.description`:
 
@@ -490,19 +432,17 @@ Description
 
 Handles request timeouts.
 
-
-
 .. _`ap_poll_timeout`:
 
 ap_poll_timeout
 ===============
 
-.. c:function:: enum hrtimer_restart ap_poll_timeout (struct hrtimer *unused)
+.. c:function:: enum hrtimer_restart ap_poll_timeout(struct hrtimer *unused)
+
+    AP receive polling for finished AP requests.
 
     :param struct hrtimer \*unused:
         Unused pointer.
-
-
 
 .. _`ap_poll_timeout.description`:
 
@@ -511,33 +451,29 @@ Description
 
 Schedules the AP tasklet using a high resolution timer.
 
-
-
 .. _`ap_interrupt_handler`:
 
 ap_interrupt_handler
 ====================
 
-.. c:function:: void ap_interrupt_handler (struct airq_struct *airq)
+.. c:function:: void ap_interrupt_handler(struct airq_struct *airq)
 
     Schedule ap_tasklet on interrupt
 
     :param struct airq_struct \*airq:
         pointer to adapter interrupt descriptor
 
-
-
 .. _`ap_tasklet_fn`:
 
 ap_tasklet_fn
 =============
 
-.. c:function:: void ap_tasklet_fn (unsigned long dummy)
+.. c:function:: void ap_tasklet_fn(unsigned long dummy)
+
+    Tasklet to poll all AP devices.
 
     :param unsigned long dummy:
         Unused variable
-
-
 
 .. _`ap_tasklet_fn.description`:
 
@@ -546,19 +482,17 @@ Description
 
 Poll all AP devices on the bus.
 
-
-
 .. _`ap_poll_thread`:
 
 ap_poll_thread
 ==============
 
-.. c:function:: int ap_poll_thread (void *data)
+.. c:function:: int ap_poll_thread(void *data)
+
+    Thread that polls for finished requests.
 
     :param void \*data:
         Unused pointer
-
-
 
 .. _`ap_poll_thread.description`:
 
@@ -571,14 +505,14 @@ a cpu that doesn't have anything better to do. The polling stops
 as soon as there is another task or if all messages have been
 delivered.
 
-
-
 .. _`ap_queue_message`:
 
 ap_queue_message
 ================
 
-.. c:function:: void ap_queue_message (struct ap_device *ap_dev, struct ap_message *ap_msg)
+.. c:function:: void ap_queue_message(struct ap_device *ap_dev, struct ap_message *ap_msg)
+
+    Queue a request to an AP device.
 
     :param struct ap_device \*ap_dev:
         The AP device to queue the message to
@@ -586,22 +520,20 @@ ap_queue_message
     :param struct ap_message \*ap_msg:
         The message that is to be added
 
-
-
 .. _`ap_cancel_message`:
 
 ap_cancel_message
 =================
 
-.. c:function:: void ap_cancel_message (struct ap_device *ap_dev, struct ap_message *ap_msg)
+.. c:function:: void ap_cancel_message(struct ap_device *ap_dev, struct ap_message *ap_msg)
+
+    Cancel a crypto request.
 
     :param struct ap_device \*ap_dev:
         The AP device that has the message queued
 
     :param struct ap_message \*ap_msg:
         The message that is to be removed
-
-
 
 .. _`ap_cancel_message.description`:
 
@@ -613,22 +545,18 @@ from the device pending or request queue. Note that the
 request stays on the AP queue. When it finishes the message
 reply will be discarded because the psmid can't be found.
 
-
-
 .. _`ap_bus_match`:
 
 ap_bus_match
 ============
 
-.. c:function:: int ap_bus_match (struct device *dev, struct device_driver *drv)
+.. c:function:: int ap_bus_match(struct device *dev, struct device_driver *drv)
 
     :param struct device \*dev:
         Pointer to device
 
     :param struct device_driver \*drv:
         Pointer to device_driver
-
-
 
 .. _`ap_bus_match.description`:
 
@@ -637,22 +565,20 @@ Description
 
 AP bus driver registration/unregistration.
 
-
-
 .. _`ap_uevent`:
 
 ap_uevent
 =========
 
-.. c:function:: int ap_uevent (struct device *dev, struct kobj_uevent_env *env)
+.. c:function:: int ap_uevent(struct device *dev, struct kobj_uevent_env *env)
+
+    Uevent function for AP devices.
 
     :param struct device \*dev:
         Pointer to device
 
     :param struct kobj_uevent_env \*env:
         Pointer to kobj_uevent_env
-
-
 
 .. _`ap_uevent.description`:
 
@@ -662,19 +588,17 @@ Description
 It sets up a single environment variable DEV_TYPE which contains the
 hardware device type.
 
-
-
 .. _`__ap_flush_queue`:
 
 __ap_flush_queue
 ================
 
-.. c:function:: void __ap_flush_queue (struct ap_device *ap_dev)
+.. c:function:: void __ap_flush_queue(struct ap_device *ap_dev)
+
+    Flush requests.
 
     :param struct ap_device \*ap_dev:
         Pointer to the AP device
-
-
 
 .. _`__ap_flush_queue.description`:
 
@@ -683,44 +607,39 @@ Description
 
 Flush all requests from the request/pending queue of an AP device.
 
-
-
 .. _`ap_select_domain`:
 
 ap_select_domain
 ================
 
-.. c:function:: int ap_select_domain ( void)
+.. c:function:: int ap_select_domain( void)
 
-    :param void:
+    Select an AP domain.
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_select_domain.description`:
 
 Description
 -----------
 
-
 Pick one of the 16 AP domains.
-
-
 
 .. _`__ap_scan_bus`:
 
 __ap_scan_bus
 =============
 
-.. c:function:: int __ap_scan_bus (struct device *dev, void *data)
+.. c:function:: int __ap_scan_bus(struct device *dev, void *data)
+
+    Scan the AP bus.
 
     :param struct device \*dev:
         Pointer to device
 
     :param void \*data:
         Pointer to data
-
-
 
 .. _`__ap_scan_bus.description`:
 
@@ -729,47 +648,43 @@ Description
 
 Scan the AP bus for new devices.
 
-
-
 .. _`ap_module_init`:
 
 ap_module_init
 ==============
 
-.. c:function:: int ap_module_init ( void)
+.. c:function:: int ap_module_init( void)
 
-    :param void:
+    The module initialization code.
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_module_init.description`:
 
 Description
 -----------
 
-
 Initializes the module.
-
-
 
 .. _`ap_module_exit`:
 
 ap_module_exit
 ==============
 
-.. c:function:: void ap_module_exit ( void)
+.. c:function:: void ap_module_exit( void)
 
-    :param void:
+    The module termination code
+
+    :param  void:
         no arguments
-
-
 
 .. _`ap_module_exit.description`:
 
 Description
 -----------
 
-
 Terminates the module.
+
+.. This file was automatic generated / don't edit.
 

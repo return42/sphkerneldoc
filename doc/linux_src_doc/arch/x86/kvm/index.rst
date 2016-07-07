@@ -7,5 +7,6 @@ kvm
 .. toctree::
    :maxdepth: 1
 
-   mmu_c
-   x86_c
+    mmu_c
+    svm_c
+    x86_c

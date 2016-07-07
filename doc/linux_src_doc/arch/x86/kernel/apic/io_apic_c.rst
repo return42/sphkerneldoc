@@ -1,30 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-io_apic.c
-=========
-
+.. src-file: arch/x86/kernel/apic/io_apic.c
 
 .. _`disable_ioapic_support`:
 
 disable_ioapic_support
 ======================
 
-.. c:function:: void disable_ioapic_support ( void)
+.. c:function:: void disable_ioapic_support( void)
 
     disables ioapic support at runtime
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`mp_register_ioapic`:
 
 mp_register_ioapic
 ==================
 
-.. c:function:: int mp_register_ioapic (int id, u32 address, u32 gsi_base, struct ioapic_domain_cfg *cfg)
+.. c:function:: int mp_register_ioapic(int id, u32 address, u32 gsi_base, struct ioapic_domain_cfg *cfg)
 
     Register an IOAPIC device
 
@@ -39,4 +33,6 @@ mp_register_ioapic
 
     :param struct ioapic_domain_cfg \*cfg:
         configuration information for the IOAPIC
+
+.. This file was automatic generated / don't edit.
 

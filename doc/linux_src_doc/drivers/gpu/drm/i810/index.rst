@@ -7,4 +7,4 @@ i810
 .. toctree::
    :maxdepth: 1
 
-   i810_dma_c
+    i810_dma_c

@@ -1,74 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-cryp_core.c
-===========
-
+.. src-file: drivers/crypto/ux500/cryp/cryp_core.c
 
 .. _`cryp_max_key_size`:
 
 CRYP_MAX_KEY_SIZE
 =================
 
-.. c:function:: CRYP_MAX_KEY_SIZE ()
+.. c:function::  CRYP_MAX_KEY_SIZE()
 
     Ericsson SA 2010
 
-
-
 .. _`cryp_max_key_size.author`:
 
 Author
 ------
 
-Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
+Shujuan Chen <shujuan.chen\ ``stericsson``\ .com> for ST-Ericsson.
 
+Joakim Bech <joakim.xx.bech\ ``stericsson``\ .com> for ST-Ericsson.
 
+Berne Hebark <berne.herbark\ ``stericsson``\ .com> for ST-Ericsson.
 
-.. _`cryp_max_key_size.author`:
+Niklas Hernaeus <niklas.hernaeus\ ``stericsson``\ .com> for ST-Ericsson.
 
-Author
-------
-
-Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
-
-
-
-.. _`cryp_max_key_size.author`:
-
-Author
-------
+Jonas Linde <jonas.linde\ ``stericsson``\ .com> for ST-Ericsson.
 
 Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
-
-
-
-.. _`cryp_max_key_size.author`:
-
-Author
-------
-
-Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
-
-
-
-.. _`cryp_max_key_size.author`:
-
-Author
-------
-
-Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
-
-
-
-.. _`cryp_max_key_size.author`:
-
-Author
-------
-
-Andreas Westin <andreas.westin\ ``stericsson``\ .com> for ST-Ericsson.
-
-
 
 .. _`cryp_max_key_size.license-terms`:
 
@@ -77,17 +34,14 @@ License terms
 
 GNU General Public License (GPL) version 2
 
-
-
 .. _`cryp_driver_data`:
 
 struct cryp_driver_data
 =======================
 
-.. c:type:: cryp_driver_data
+.. c:type:: struct cryp_driver_data
 
     data specific to the driver.
-
 
 .. _`cryp_driver_data.definition`:
 
@@ -96,35 +50,30 @@ Definition
 
 .. code-block:: c
 
-  struct cryp_driver_data {
-    struct klist device_list;
-    struct semaphore device_allocation;
-  };
-
+    struct cryp_driver_data {
+        struct klist device_list;
+        struct semaphore device_allocation;
+    }
 
 .. _`cryp_driver_data.members`:
 
 Members
 -------
 
-:``device_list``:
+device_list
     A list of registered devices to choose from.
 
-:``device_allocation``:
+device_allocation
     A semaphore initialized with number of devices.
-
-
-
 
 .. _`cryp_ctx`:
 
 struct cryp_ctx
 ===============
 
-.. c:type:: cryp_ctx
+.. c:type:: struct cryp_ctx
 
     Crypto context
-
 
 .. _`cryp_ctx.definition`:
 
@@ -133,90 +82,89 @@ Definition
 
 .. code-block:: c
 
-  struct cryp_ctx {
-    struct cryp_config config;
-    u32 keylen;
-    u8 * iv;
-    const u8 * indata;
-    u8 * outdata;
-    u32 datalen;
-    u32 outlen;
-    u32 blocksize;
-    u8 updated;
-    struct cryp_device_context dev_ctx;
-    struct cryp_device_data * device;
-  };
-
+    struct cryp_ctx {
+        struct cryp_config config;
+        u8 key[CRYP_MAX_KEY_SIZE];
+        u32 keylen;
+        u8 *iv;
+        const u8 *indata;
+        u8 *outdata;
+        u32 datalen;
+        u32 outlen;
+        u32 blocksize;
+        u8 updated;
+        struct cryp_device_context dev_ctx;
+        struct cryp_device_data *device;
+        u32 session_id;
+    }
 
 .. _`cryp_ctx.members`:
 
 Members
 -------
 
-:``config``:
+config
     Crypto mode.
-    ``key``\ [CRYP_MAX_KEY_SIZE]: Key.
 
-:``keylen``:
+key
+    Key.
+
+keylen
     Length of key.
 
-:``iv``:
+iv
     Pointer to initialization vector.
 
-:``indata``:
+indata
     Pointer to indata.
 
-:``outdata``:
+outdata
     Pointer to outdata.
 
-:``datalen``:
+datalen
     Length of indata.
 
-:``outlen``:
+outlen
     Length of outdata.
 
-:``blocksize``:
+blocksize
     Size of blocks.
 
-:``updated``:
+updated
     Updated flag.
 
-:``dev_ctx``:
+dev_ctx
     Device dependent context.
 
-:``device``:
+device
     Pointer to the device.
 
-
-
+session_id
+    *undescribed*
 
 .. _`uint8p_to_uint32_be`:
 
 uint8p_to_uint32_be
 ===================
 
-.. c:function:: u32 uint8p_to_uint32_be (u8 *in)
+.. c:function:: u32 uint8p_to_uint32_be(u8 *in)
 
-    4\\*uint8 to uint32 big endian
+    4\*uint8 to uint32 big endian
 
     :param u8 \*in:
         Data to convert.
-
-
 
 .. _`swap_bits_in_byte`:
 
 swap_bits_in_byte
 =================
 
-.. c:function:: u8 swap_bits_in_byte (u8 b)
+.. c:function:: u8 swap_bits_in_byte(u8 b)
 
     mirror the bits in a byte
 
     :param u8 b:
         the byte to be mirrored
-
-
 
 .. _`swap_bits_in_byte.the-bits-are-swapped-the-following-way`:
 
@@ -239,27 +187,25 @@ Nibble 2 (n2):
 
 Combine the two nibbles to a complete and swapped byte.
 
-
-
 .. _`cryp_algs_register_all`:
 
 cryp_algs_register_all
 ======================
 
-.. c:function:: int cryp_algs_register_all ( void)
+.. c:function:: int cryp_algs_register_all( void)
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`cryp_algs_unregister_all`:
 
 cryp_algs_unregister_all
 ========================
 
-.. c:function:: void cryp_algs_unregister_all ( void)
+.. c:function:: void cryp_algs_unregister_all( void)
 
-    :param void:
+    :param  void:
         no arguments
+
+.. This file was automatic generated / don't edit.
 

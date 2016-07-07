@@ -7,4 +7,4 @@ mpi
 .. toctree::
    :maxdepth: 1
 
-   mpicoder_c
+    mpicoder_c

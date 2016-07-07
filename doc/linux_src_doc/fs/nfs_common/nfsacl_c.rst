@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-nfsacl.c
-========
-
+.. src-file: fs/nfs_common/nfsacl.c
 
 .. _`nfsacl_encode`:
 
 nfsacl_encode
 =============
 
-.. c:function:: int nfsacl_encode (struct xdr_buf *buf, unsigned int base, struct inode *inode, struct posix_acl *acl, int encode_entries, int typeflag)
+.. c:function:: int nfsacl_encode(struct xdr_buf *buf, unsigned int base, struct inode *inode, struct posix_acl *acl, int encode_entries, int typeflag)
 
     Encode an NFSv3 ACL
 
@@ -32,8 +28,6 @@ nfsacl_encode
     :param int typeflag:
         ACL type: NFS_ACL_DEFAULT or zero
 
-
-
 .. _`nfsacl_encode.description`:
 
 Description
@@ -41,14 +35,12 @@ Description
 
 Returns size of encoded ACL in bytes or a negative errno value.
 
-
-
 .. _`nfsacl_decode`:
 
 nfsacl_decode
 =============
 
-.. c:function:: int nfsacl_decode (struct xdr_buf *buf, unsigned int base, unsigned int *aclcnt, struct posix_acl **pacl)
+.. c:function:: int nfsacl_decode(struct xdr_buf *buf, unsigned int base, unsigned int *aclcnt, struct posix_acl **pacl)
 
     Decode an NFSv3 ACL
 
@@ -64,12 +56,12 @@ nfsacl_decode
     :param struct posix_acl \*\*pacl:
         buffer in which to place decoded posix_acl
 
-
-
 .. _`nfsacl_decode.description`:
 
 Description
 -----------
 
 Returns the length of the decoded ACL in bytes, or a negative errno value.
+
+.. This file was automatic generated / don't edit.
 

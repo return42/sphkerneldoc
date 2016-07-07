@@ -7,4 +7,5 @@ mcb
 .. toctree::
    :maxdepth: 1
 
-   mcb-core_c
+    mcb-core_c
+    mcb-internal_h

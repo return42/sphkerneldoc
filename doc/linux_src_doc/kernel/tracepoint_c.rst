@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-tracepoint.c
-============
-
+.. src-file: kernel/tracepoint.c
 
 .. _`tracepoint_probe_register_prio`:
 
 tracepoint_probe_register_prio
 ==============================
 
-.. c:function:: int tracepoint_probe_register_prio (struct tracepoint *tp, void *probe, void *data, int prio)
+.. c:function:: int tracepoint_probe_register_prio(struct tracepoint *tp, void *probe, void *data, int prio)
 
     Connect a probe to a tracepoint
 
@@ -26,8 +22,6 @@ tracepoint_probe_register_prio
     :param int prio:
         priority of this function over other registered functions
 
-
-
 .. _`tracepoint_probe_register_prio.description`:
 
 Description
@@ -35,26 +29,22 @@ Description
 
 Returns 0 if ok, error value on error.
 
-
-
 .. _`tracepoint_probe_register_prio.note`:
 
 Note
 ----
 
-if ``tp`` is within a module, the caller is responsible for
+if \ ``tp``\  is within a module, the caller is responsible for
 unregistering the probe before the module is gone. This can be
 performed either with a tracepoint module going notifier, or from
 within module exit functions.
-
-
 
 .. _`tracepoint_probe_register`:
 
 tracepoint_probe_register
 =========================
 
-.. c:function:: int tracepoint_probe_register (struct tracepoint *tp, void *probe, void *data)
+.. c:function:: int tracepoint_probe_register(struct tracepoint *tp, void *probe, void *data)
 
     Connect a probe to a tracepoint
 
@@ -67,8 +57,6 @@ tracepoint_probe_register
     :param void \*data:
         tracepoint data
 
-
-
 .. _`tracepoint_probe_register.description`:
 
 Description
@@ -76,26 +64,22 @@ Description
 
 Returns 0 if ok, error value on error.
 
-
-
 .. _`tracepoint_probe_register.note`:
 
 Note
 ----
 
-if ``tp`` is within a module, the caller is responsible for
+if \ ``tp``\  is within a module, the caller is responsible for
 unregistering the probe before the module is gone. This can be
 performed either with a tracepoint module going notifier, or from
 within module exit functions.
-
-
 
 .. _`tracepoint_probe_unregister`:
 
 tracepoint_probe_unregister
 ===========================
 
-.. c:function:: int tracepoint_probe_unregister (struct tracepoint *tp, void *probe, void *data)
+.. c:function:: int tracepoint_probe_unregister(struct tracepoint *tp, void *probe, void *data)
 
     Disconnect a probe from a tracepoint
 
@@ -108,8 +92,6 @@ tracepoint_probe_unregister
     :param void \*data:
         tracepoint data
 
-
-
 .. _`tracepoint_probe_unregister.description`:
 
 Description
@@ -117,21 +99,17 @@ Description
 
 Returns 0 if ok, error value on error.
 
-
-
 .. _`register_tracepoint_module_notifier`:
 
 register_tracepoint_module_notifier
 ===================================
 
-.. c:function:: int register_tracepoint_module_notifier (struct notifier_block *nb)
+.. c:function:: int register_tracepoint_module_notifier(struct notifier_block *nb)
 
     register tracepoint coming/going notifier
 
     :param struct notifier_block \*nb:
         notifier block
-
-
 
 .. _`register_tracepoint_module_notifier.description`:
 
@@ -143,21 +121,17 @@ coming/going with the tracepoint_module_list_mutex held.
 The notifier block callback should expect a "struct tp_module" data
 pointer.
 
-
-
 .. _`unregister_tracepoint_module_notifier`:
 
 unregister_tracepoint_module_notifier
 =====================================
 
-.. c:function:: int unregister_tracepoint_module_notifier (struct notifier_block *nb)
+.. c:function:: int unregister_tracepoint_module_notifier(struct notifier_block *nb)
 
     unregister tracepoint coming/going notifier
 
     :param struct notifier_block \*nb:
         notifier block
-
-
 
 .. _`unregister_tracepoint_module_notifier.description`:
 
@@ -167,20 +141,20 @@ Description
 The notifier block callback should expect a "struct tp_module" data
 pointer.
 
-
-
 .. _`for_each_kernel_tracepoint`:
 
 for_each_kernel_tracepoint
 ==========================
 
-.. c:function:: void for_each_kernel_tracepoint (void (*fct) (struct tracepoint *tp, void *priv, void *priv)
+.. c:function:: void for_each_kernel_tracepoint(void (*) fct (struct tracepoint *tp, void *priv, void *priv)
 
     iteration on all kernel tracepoints
 
-    :param void (\*fct) (struct tracepoint \*tp, void \*priv):
+    :param (void (\*) fct (struct tracepoint \*tp, void \*priv):
         callback
 
     :param void \*priv:
         private data
+
+.. This file was automatic generated / don't edit.
 

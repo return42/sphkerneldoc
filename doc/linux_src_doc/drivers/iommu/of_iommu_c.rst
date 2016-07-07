@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-of_iommu.c
-==========
-
+.. src-file: drivers/iommu/of_iommu.c
 
 .. _`of_get_dma_window`:
 
 of_get_dma_window
 =================
 
-.. c:function:: int of_get_dma_window (struct device_node *dn, const char *prefix, int index, unsigned long *busno, dma_addr_t *addr, size_t *size)
+.. c:function:: int of_get_dma_window(struct device_node *dn, const char *prefix, int index, unsigned long *busno, dma_addr_t *addr, size_t *size)
 
     Parse \*dma-window property and returns 0 if found.
 
@@ -32,8 +28,6 @@ of_get_dma_window
     :param size_t \*size:
         Returns the range that DMA can handle
 
-
-
 .. _`of_get_dma_window.description`:
 
 Description
@@ -42,4 +36,6 @@ Description
 This supports different formats flexibly. "prefix" can be
 configured if any. "busno" and "index" are optionally
 specified. Set 0(or NULL) if not used.
+
+.. This file was automatic generated / don't edit.
 

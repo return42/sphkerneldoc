@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-s5c73m3.h
-=========
-
+.. src-file: include/media/i2c/s5c73m3.h
 
 .. _`s5c73m3_gpio`:
 
 struct s5c73m3_gpio
 ===================
 
-.. c:type:: s5c73m3_gpio
+.. c:type:: struct s5c73m3_gpio
 
     data structure describing a GPIO
-
 
 .. _`s5c73m3_gpio.definition`:
 
@@ -22,35 +17,30 @@ Definition
 
 .. code-block:: c
 
-  struct s5c73m3_gpio {
-    int gpio;
-    int level;
-  };
-
+    struct s5c73m3_gpio {
+        int gpio;
+        int level;
+    }
 
 .. _`s5c73m3_gpio.members`:
 
 Members
 -------
 
-:``gpio``:
+gpio
     GPIO number
 
-:``level``:
-    indicates active state of the ``gpio``
-
-
-
+level
+    indicates active state of the \ ``gpio``\ 
 
 .. _`s5c73m3_platform_data`:
 
 struct s5c73m3_platform_data
 ============================
 
-.. c:type:: s5c73m3_platform_data
+.. c:type:: struct s5c73m3_platform_data
 
     s5c73m3 driver platform data
-
 
 .. _`s5c73m3_platform_data.definition`:
 
@@ -59,37 +49,41 @@ Definition
 
 .. code-block:: c
 
-  struct s5c73m3_platform_data {
-    unsigned long mclk_frequency;
-    struct s5c73m3_gpio gpio_reset;
-    struct s5c73m3_gpio gpio_stby;
-    u8 nlanes;
-    u8 horiz_flip;
-    u8 vert_flip;
-  };
-
+    struct s5c73m3_platform_data {
+        unsigned long mclk_frequency;
+        struct s5c73m3_gpio gpio_reset;
+        struct s5c73m3_gpio gpio_stby;
+        enum v4l2_mbus_type bus_type;
+        u8 nlanes;
+        u8 horiz_flip;
+        u8 vert_flip;
+    }
 
 .. _`s5c73m3_platform_data.members`:
 
 Members
 -------
 
-:``mclk_frequency``:
+mclk_frequency
     sensor's master clock frequency in Hz
 
-:``gpio_reset``:
+gpio_reset
     GPIO driving RESET pin
 
-:``gpio_stby``:
+gpio_stby
     GPIO driving STBY pin
 
-:``nlanes``:
+bus_type
+    *undescribed*
+
+nlanes
     maximum number of MIPI-CSI lanes used
 
-:``horiz_flip``:
+horiz_flip
     default horizontal image flip value, non zero to enable
 
-:``vert_flip``:
+vert_flip
     default vertical image flip value, non zero to enable
 
+.. This file was automatic generated / don't edit.
 

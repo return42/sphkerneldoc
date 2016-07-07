@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-misc.c
-======
-
+.. src-file: sound/core/misc.c
 
 .. _`snd_pci_quirk_lookup_id`:
 
 snd_pci_quirk_lookup_id
 =======================
 
-.. c:function:: const struct snd_pci_quirk *snd_pci_quirk_lookup_id (u16 vendor, u16 device, const struct snd_pci_quirk *list)
+.. c:function:: const struct snd_pci_quirk *snd_pci_quirk_lookup_id(u16 vendor, u16 device, const struct snd_pci_quirk *list)
 
     look up a PCI SSID quirk list
 
@@ -23,8 +19,6 @@ snd_pci_quirk_lookup_id
     :param const struct snd_pci_quirk \*list:
         quirk list, terminated by a null entry
 
-
-
 .. _`snd_pci_quirk_lookup_id.description`:
 
 Description
@@ -36,14 +30,12 @@ values may match.
 
 Returns the matched entry pointer, or NULL if nothing matched.
 
-
-
 .. _`snd_pci_quirk_lookup`:
 
 snd_pci_quirk_lookup
 ====================
 
-.. c:function:: const struct snd_pci_quirk *snd_pci_quirk_lookup (struct pci_dev *pci, const struct snd_pci_quirk *list)
+.. c:function:: const struct snd_pci_quirk *snd_pci_quirk_lookup(struct pci_dev *pci, const struct snd_pci_quirk *list)
 
     look up a PCI SSID quirk list
 
@@ -52,8 +44,6 @@ snd_pci_quirk_lookup
 
     :param const struct snd_pci_quirk \*list:
         quirk list, terminated by a null entry
-
-
 
 .. _`snd_pci_quirk_lookup.description`:
 
@@ -65,4 +55,6 @@ with the same PCI SSID.  When subdevice is 0, all subdevice
 values may match.
 
 Returns the matched entry pointer, or NULL if nothing matched.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-mmc_ops.c
-=========
-
+.. src-file: drivers/mmc/core/mmc_ops.c
 
 .. _`__mmc_switch`:
 
 __mmc_switch
 ============
 
-.. c:function:: int __mmc_switch (struct mmc_card *card, u8 set, u8 index, u8 value, unsigned int timeout_ms, bool use_busy_signal, bool send_status, bool ignore_crc)
+.. c:function:: int __mmc_switch(struct mmc_card *card, u8 set, u8 index, u8 value, unsigned int timeout_ms, bool use_busy_signal, bool send_status, bool ignore_crc)
 
     modify EXT_CSD register
 
@@ -39,12 +35,12 @@ __mmc_switch
     :param bool ignore_crc:
         ignore CRC errors when sending status cmd to poll for busy
 
-
-
 .. _`__mmc_switch.description`:
 
 Description
 -----------
 
 Modifies the EXT_CSD register for selected card.
+
+.. This file was automatic generated / don't edit.
 

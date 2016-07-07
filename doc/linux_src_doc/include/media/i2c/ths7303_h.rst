@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-ths7303.h
-=========
-
+.. src-file: include/media/i2c/ths7303.h
 
 .. _`ths7303_platform_data`:
 
 struct ths7303_platform_data
 ============================
 
-.. c:type:: ths7303_platform_data
+.. c:type:: struct ths7303_platform_data
 
     Platform dependent data
-
 
 .. _`ths7303_platform_data.definition`:
 
@@ -22,25 +17,25 @@ Definition
 
 .. code-block:: c
 
-  struct ths7303_platform_data {
-    u8 ch_1;
-    u8 ch_2;
-    u8 ch_3;
-  };
-
+    struct ths7303_platform_data {
+        u8 ch_1;
+        u8 ch_2;
+        u8 ch_3;
+    }
 
 .. _`ths7303_platform_data.members`:
 
 Members
 -------
 
-:``ch_1``:
+ch_1
     Bias value for channel one.
 
-:``ch_2``:
+ch_2
     Bias value for channel two.
 
-:``ch_3``:
+ch_3
     Bias value for channel three.
 
+.. This file was automatic generated / don't edit.
 

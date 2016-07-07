@@ -7,4 +7,4 @@ sh
 .. toctree::
    :maxdepth: 1
 
-   shdma-base_c
+    shdma-base_c

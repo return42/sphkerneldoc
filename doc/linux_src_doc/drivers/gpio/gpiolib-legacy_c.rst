@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-gpiolib-legacy.c
-================
-
+.. src-file: drivers/gpio/gpiolib-legacy.c
 
 .. _`gpio_request_one`:
 
 gpio_request_one
 ================
 
-.. c:function:: int gpio_request_one (unsigned gpio, unsigned long flags, const char *label)
+.. c:function:: int gpio_request_one(unsigned gpio, unsigned long flags, const char *label)
 
     request a single GPIO with initial configuration
 
@@ -23,14 +19,12 @@ gpio_request_one
     :param const char \*label:
         a literal description string of this GPIO
 
-
-
 .. _`gpio_request_array`:
 
 gpio_request_array
 ==================
 
-.. c:function:: int gpio_request_array (const struct gpio *array, size_t num)
+.. c:function:: int gpio_request_array(const struct gpio *array, size_t num)
 
     request multiple GPIOs in a single call
 
@@ -40,14 +34,12 @@ gpio_request_array
     :param size_t num:
         how many GPIOs in the array
 
-
-
 .. _`gpio_free_array`:
 
 gpio_free_array
 ===============
 
-.. c:function:: void gpio_free_array (const struct gpio *array, size_t num)
+.. c:function:: void gpio_free_array(const struct gpio *array, size_t num)
 
     release multiple GPIOs in a single call
 
@@ -56,4 +48,6 @@ gpio_free_array
 
     :param size_t num:
         how many GPIOs in the array
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,5 @@ pci
 .. toctree::
    :maxdepth: 1
 
-   pci-common_c
+    pci-common_c
+    xilinx_pci_c

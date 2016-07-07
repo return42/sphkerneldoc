@@ -1,29 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-genalloc.h
-==========
-
+.. src-file: include/linux/genalloc.h
 
 .. _`long`:
 
 long
 ====
 
-.. c:function:: typedef unsigned long ( *genpool_algo_t)
+.. c:function:: typedef unsigned long(*genpool_algo_t)
 
-    :param  \*genpool_algo_t:
-
+    :param \*genpool_algo_t:
         *undescribed*
-
-
 
 .. _`gen_pool_add`:
 
 gen_pool_add
 ============
 
-.. c:function:: int gen_pool_add (struct gen_pool *pool, unsigned long addr, size_t size, int nid)
+.. c:function:: int gen_pool_add(struct gen_pool *pool, unsigned long addr, size_t size, int nid)
 
     add a new chunk of special memory to the pool
 
@@ -40,8 +33,6 @@ gen_pool_add
         node id of the node the chunk structure and bitmap should be
         allocated on, or -1
 
-
-
 .. _`gen_pool_add.description`:
 
 Description
@@ -50,4 +41,6 @@ Description
 Add a new chunk of special memory to the specified pool.
 
 Returns 0 on success or a -ve errno on failure.
+
+.. This file was automatic generated / don't edit.
 

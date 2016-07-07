@@ -1,19 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-setup.c
-=======
-
+.. src-file: arch/x86/kernel/setup.c
 
 .. _`copy_edd`:
 
 copy_edd
 ========
 
-.. c:function:: void copy_edd ( void)
+.. c:function:: void copy_edd( void)
 
     Copy the BIOS EDD information from boot_params into a safe place.
 
-    :param void:
+    :param  void:
         no arguments
+
+.. This file was automatic generated / don't edit.
 

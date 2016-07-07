@@ -7,5 +7,6 @@ mailbox
 .. toctree::
    :maxdepth: 1
 
-   mailbox_c
-   pcc_c
+    mailbox_c
+    pcc_c
+    ti-msgmgr_c

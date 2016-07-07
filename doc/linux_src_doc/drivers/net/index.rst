@@ -7,12 +7,18 @@ net
 .. toctree::
    :maxdepth: 1
 
-   macvlan_c
-   mdio_c
-   mii_c
-   tun_c
-   ethernet/index
-   phy/index
-   wan/index
-   wimax/index
-   wireless/index
+    bonding/index
+    can/index
+    ethernet/index
+    phy/index
+    ppp/index
+    wan/index
+    wimax/index
+    wireless/index
+    xen-netback/index
+    macsec_c
+    mdio_c
+    mii_c
+    netconsole_c
+    tun_c
+    xen-netfront_c

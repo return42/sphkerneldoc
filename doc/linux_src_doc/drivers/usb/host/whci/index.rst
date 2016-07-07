@@ -7,10 +7,10 @@ whci
 .. toctree::
    :maxdepth: 1
 
-   asl_c
-   hw_c
-   pzl_c
-   qset_c
-   whcd_h
-   whci-hc_h
-   wusb_c
+    asl_c
+    hw_c
+    pzl_c
+    qset_c
+    whcd_h
+    whci-hc_h
+    wusb_c

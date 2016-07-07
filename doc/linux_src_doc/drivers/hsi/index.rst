@@ -7,5 +7,7 @@ hsi
 .. toctree::
    :maxdepth: 1
 
-   hsi_boardinfo_c
-   clients/index
+    clients/index
+    controllers/index
+    hsi_boardinfo_c
+    hsi_c

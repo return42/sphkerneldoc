@@ -7,5 +7,5 @@ mdp5
 .. toctree::
    :maxdepth: 1
 
-   mdp5_ctl_c
-   mdp5_ctl_h
+    mdp5_ctl_c
+    mdp5_ctl_h

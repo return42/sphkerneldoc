@@ -7,4 +7,4 @@ auth_gss
 .. toctree::
    :maxdepth: 1
 
-   gss_mech_switch_c
+    gss_mech_switch_c

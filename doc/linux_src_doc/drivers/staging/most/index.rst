@@ -7,5 +7,10 @@ most
 .. toctree::
    :maxdepth: 1
 
-   aim-network/index
-   mostcore/index
+    aim-cdev/index
+    aim-network/index
+    aim-sound/index
+    hdm-dim2/index
+    hdm-i2c/index
+    hdm-usb/index
+    mostcore/index

@@ -1,0 +1,73 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/ide/it8213.c
+
+.. _`it8213_set_pio_mode`:
+
+it8213_set_pio_mode
+===================
+
+.. c:function:: void it8213_set_pio_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    set host controller for PIO mode
+
+    :param ide_hwif_t \*hwif:
+        port
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`it8213_set_pio_mode.description`:
+
+Description
+-----------
+
+Set the interface PIO mode.
+
+.. _`it8213_set_dma_mode`:
+
+it8213_set_dma_mode
+===================
+
+.. c:function:: void it8213_set_dma_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    set host controller for DMA mode
+
+    :param ide_hwif_t \*hwif:
+        port
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`it8213_set_dma_mode.description`:
+
+Description
+-----------
+
+Tune the ITE chipset for the DMA mode.
+
+.. _`it8213_init_one`:
+
+it8213_init_one
+===============
+
+.. c:function:: int it8213_init_one(struct pci_dev *dev, const struct pci_device_id *id)
+
+    pci layer discovery entry
+
+    :param struct pci_dev \*dev:
+        PCI device
+
+    :param const struct pci_device_id \*id:
+        ident table entry
+
+.. _`it8213_init_one.description`:
+
+Description
+-----------
+
+Called by the PCI code when it finds an ITE8213 controller. As
+this device follows the standard interfaces we can use the
+standard helper functions to do almost all the work for us.
+
+.. This file was automatic generated / don't edit.
+

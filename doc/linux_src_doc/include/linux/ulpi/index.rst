@@ -7,5 +7,5 @@ ulpi
 .. toctree::
    :maxdepth: 1
 
-   driver_h
-   interface_h
+    driver_h
+    interface_h

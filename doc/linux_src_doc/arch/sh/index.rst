@@ -7,8 +7,9 @@ sh
 .. toctree::
    :maxdepth: 1
 
-   boards/index
-   drivers/index
-   include/index
-   kernel/index
-   mm/index
+    boards/index
+    drivers/index
+    include/index
+    kernel/index
+    math-emu/index
+    mm/index

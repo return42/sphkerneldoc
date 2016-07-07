@@ -1,0 +1,30 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/w1/slaves/w1_ds2408.c
+
+.. _`activity_write`:
+
+activity_write
+==============
+
+.. c:function:: ssize_t activity_write(struct file *filp, struct kobject *kobj, struct bin_attribute *bin_attr, char *buf, loff_t off, size_t count)
+
+    :param struct file \*filp:
+        *undescribed*
+
+    :param struct kobject \*kobj:
+        *undescribed*
+
+    :param struct bin_attribute \*bin_attr:
+        *undescribed*
+
+    :param char \*buf:
+        *undescribed*
+
+    :param loff_t off:
+        *undescribed*
+
+    :param size_t count:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

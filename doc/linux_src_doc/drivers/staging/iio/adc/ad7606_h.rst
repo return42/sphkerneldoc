@@ -1,0 +1,178 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/adc/ad7606.h
+
+.. _`ad7606_platform_data`:
+
+struct ad7606_platform_data
+===========================
+
+.. c:type:: struct ad7606_platform_data
+
+    platform/board specific information
+
+.. _`ad7606_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7606_platform_data {
+        unsigned int default_os;
+        unsigned int default_range;
+        unsigned int gpio_convst;
+        unsigned int gpio_reset;
+        unsigned int gpio_range;
+        unsigned int gpio_os0;
+        unsigned int gpio_os1;
+        unsigned int gpio_os2;
+        unsigned int gpio_frstdata;
+        unsigned int gpio_stby;
+    }
+
+.. _`ad7606_platform_data.members`:
+
+Members
+-------
+
+default_os
+    default oversampling value {0, 2, 4, 8, 16, 32, 64}
+
+default_range
+    default range +/-{5000, 10000} mVolt
+
+gpio_convst
+    number of gpio connected to the CONVST pin
+
+gpio_reset
+    gpio connected to the RESET pin, if not used set to -1
+
+gpio_range
+    gpio connected to the RANGE pin, if not used set to -1
+
+gpio_os0
+    gpio connected to the OS0 pin, if not used set to -1
+
+gpio_os1
+    gpio connected to the OS1 pin, if not used set to -1
+
+gpio_os2
+    gpio connected to the OS2 pin, if not used set to -1
+
+gpio_frstdata
+    gpio connected to the FRSTDAT pin, if not used set to -1
+
+gpio_stby
+    gpio connected to the STBY pin, if not used set to -1
+
+.. _`ad7606_chip_info`:
+
+struct ad7606_chip_info
+=======================
+
+.. c:type:: struct ad7606_chip_info
+
+    chip specific information
+
+.. _`ad7606_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7606_chip_info {
+        const char *name;
+        u16 int_vref_mv;
+        const struct iio_chan_spec *channels;
+        unsigned int num_channels;
+    }
+
+.. _`ad7606_chip_info.members`:
+
+Members
+-------
+
+name
+    identification string for chip
+
+int_vref_mv
+    the internal reference voltage
+
+channels
+    channel specification
+
+num_channels
+    number of channels
+
+.. _`ad7606_state`:
+
+struct ad7606_state
+===================
+
+.. c:type:: struct ad7606_state
+
+    driver instance specific data
+
+.. _`ad7606_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7606_state {
+        struct device *dev;
+        const struct ad7606_chip_info *chip_info;
+        struct ad7606_platform_data *pdata;
+        struct regulator *reg;
+        struct work_struct poll_work;
+        wait_queue_head_t wq_data_avail;
+        const struct ad7606_bus_ops *bops;
+        unsigned int range;
+        unsigned int oversampling;
+        bool done;
+        void __iomem *base_address;
+        unsigned short data[8] ____cacheline_aligned;
+    }
+
+.. _`ad7606_state.members`:
+
+Members
+-------
+
+dev
+    *undescribed*
+
+chip_info
+    *undescribed*
+
+pdata
+    *undescribed*
+
+reg
+    *undescribed*
+
+poll_work
+    *undescribed*
+
+wq_data_avail
+    *undescribed*
+
+bops
+    *undescribed*
+
+range
+    *undescribed*
+
+oversampling
+    *undescribed*
+
+done
+    *undescribed*
+
+base_address
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

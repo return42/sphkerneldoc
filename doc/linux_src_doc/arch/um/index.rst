@@ -7,4 +7,6 @@ um
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
+    include/index
+    kernel/index
+    os-Linux/index

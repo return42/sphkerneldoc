@@ -1,0 +1,74 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/cdc/ad7150.c
+
+.. _`ad7150_chip_info`:
+
+struct ad7150_chip_info
+=======================
+
+.. c:type:: struct ad7150_chip_info
+
+    instance specific chip data
+
+.. _`ad7150_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7150_chip_info {
+        struct i2c_client *client;
+        u64 current_event;
+        u16 threshold[2][2];
+        u8 thresh_sensitivity[2][2];
+        u8 mag_sensitivity[2][2];
+        u8 thresh_timeout[2][2];
+        u8 mag_timeout[2][2];
+        int old_state;
+        char *conversion_mode;
+        struct mutex state_lock;
+    }
+
+.. _`ad7150_chip_info.members`:
+
+Members
+-------
+
+client
+    i2c client for this device
+
+current_event
+    device always has one type of event enabled.
+    This element stores the event code of the current one.
+
+threshold
+    thresholds for simple capacitance value events
+
+thresh_sensitivity
+    threshold for simple capacitance offset
+    from 'average' value.
+
+thresh_timeout
+    a timeout, in samples from the moment an
+    adaptive threshold event occurs to when the average
+    value jumps to current value.
+
+mag_timeout
+    a timeout, in sample from the moment an
+    adaptive magnitude event occurs to when the average
+    value jumps to the current value.
+
+old_state
+    store state from previous event, allowing confirmation
+    of new condition.
+
+conversion_mode
+    the current conversion mode.
+
+state_lock
+    ensure consistent state of this structure wrt the
+    hardware.
+
+.. This file was automatic generated / don't edit.
+

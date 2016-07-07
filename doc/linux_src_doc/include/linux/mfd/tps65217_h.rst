@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-tps65217.h
-==========
-
+.. src-file: include/linux/mfd/tps65217.h
 
 .. _`tps65217_board`:
 
 struct tps65217_board
 =====================
 
-.. c:type:: tps65217_board
+.. c:type:: struct tps65217_board
 
     packages regulator init data
-
 
 .. _`tps65217_board.definition`:
 
@@ -22,17 +17,19 @@ Definition
 
 .. code-block:: c
 
-  struct tps65217_board {
-  };
-
+    struct tps65217_board {
+        struct regulator_init_data  *tps65217_init_data[TPS65217_NUM_REGULATOR];
+        struct device_node  *of_node[TPS65217_NUM_REGULATOR];
+        struct tps65217_bl_pdata *bl_pdata;
+    }
 
 .. _`tps65217_board.members`:
 
 Members
 -------
 
-
-
+bl_pdata
+    *undescribed*
 
 .. _`tps65217_board.description`:
 
@@ -41,17 +38,14 @@ Description
 
 Board data may be used to initialize regulator.
 
-
-
 .. _`tps65217`:
 
 struct tps65217
 ===============
 
-.. c:type:: tps65217
+.. c:type:: struct tps65217
 
     tps65217 sub-driver chip access routines
-
 
 .. _`tps65217.definition`:
 
@@ -60,23 +54,37 @@ Definition
 
 .. code-block:: c
 
-  struct tps65217 {
-  };
-
+    struct tps65217 {
+        struct device *dev;
+        struct tps65217_board *pdata;
+        unsigned long id;
+        struct regulator_desc desc[TPS65217_NUM_REGULATOR];
+        struct regmap *regmap;
+    }
 
 .. _`tps65217.members`:
 
 Members
 -------
 
+dev
+    *undescribed*
 
+pdata
+    *undescribed*
 
+id
+    *undescribed*
+
+regmap
+    *undescribed*
 
 .. _`tps65217.description`:
 
 Description
 -----------
 
-
 Device data may be used to access the TPS65217 chip
+
+.. This file was automatic generated / don't edit.
 

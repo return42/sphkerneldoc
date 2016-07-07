@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-smd.c
-=====
-
+.. src-file: drivers/soc/qcom/smd.c
 
 .. _`qcom_smd_edge`:
 
 struct qcom_smd_edge
 ====================
 
-.. c:type:: qcom_smd_edge
+.. c:type:: struct qcom_smd_edge
 
     representing a remote processor
-
 
 .. _`qcom_smd_edge.definition`:
 
@@ -22,83 +17,82 @@ Definition
 
 .. code-block:: c
 
-  struct qcom_smd_edge {
-    struct qcom_smd * smd;
-    struct device_node * of_node;
-    unsigned edge_id;
-    unsigned remote_pid;
-    int irq;
-    struct regmap * ipc_regmap;
-    int ipc_offset;
-    int ipc_bit;
-    struct list_head channels;
-    spinlock_t channels_lock;
-    unsigned long allocated[SMD_ALLOC_TBL_COUNT][BITS_TO_LONGS(SMD_ALLOC_TBL_SIZE)];
-    bool need_rescan;
-    unsigned smem_available;
-    struct work_struct work;
-  };
-
+    struct qcom_smd_edge {
+        struct qcom_smd *smd;
+        struct device_node *of_node;
+        unsigned edge_id;
+        unsigned remote_pid;
+        int irq;
+        struct regmap *ipc_regmap;
+        int ipc_offset;
+        int ipc_bit;
+        struct list_head channels;
+        spinlock_t channels_lock;
+        unsigned long allocated[SMD_ALLOC_TBL_COUNT]\[BITS_TO_LONGS(SMD_ALLOC_TBL_SIZE)\];
+        unsigned smem_available;
+        wait_queue_head_t new_channel_event;
+        struct work_struct scan_work;
+        struct work_struct state_work;
+    }
 
 .. _`qcom_smd_edge.members`:
 
 Members
 -------
 
-:``smd``:
+smd
     handle to qcom_smd
 
-:``of_node``:
+of_node
     of_node handle for information related to this edge
 
-:``edge_id``:
+edge_id
     identifier of this edge
 
-:``remote_pid``:
+remote_pid
     identifier of remote processor
 
-:``irq``:
+irq
     interrupt for signals on this edge
 
-:``ipc_regmap``:
+ipc_regmap
     regmap handle holding the outgoing ipc register
 
-:``ipc_offset``:
-    offset within ``ipc_regmap`` of the register for ipc
+ipc_offset
+    offset within \ ``ipc_regmap``\  of the register for ipc
 
-:``ipc_bit``:
-    bit in the register at ``ipc_offset`` of ``ipc_regmap``
+ipc_bit
+    bit in the register at \ ``ipc_offset``\  of \ ``ipc_regmap``\ 
 
-:``channels``:
+channels
     list of all channels detected on this edge
 
-:``channels_lock``:
-    guard for modifications of ``channels``
+channels_lock
+    guard for modifications of \ ``channels``\ 
 
-:``allocated[SMD_ALLOC_TBL_COUNT][BITS_TO_LONGS(SMD_ALLOC_TBL_SIZE)]``:
+allocated
     array of bitmaps representing already allocated channels
 
-:``need_rescan``:
-    flag that the ``work`` needs to scan smem for new channels
-
-:``smem_available``:
+smem_available
     last available amount of smem triggering a channel scan
 
-:``work``:
-    work item for edge house keeping
+new_channel_event
+    *undescribed*
 
+scan_work
+    work item for discovering new channels
 
-
+state_work
+    work item for edge state changes
 
 .. _`qcom_smd_channel`:
 
 struct qcom_smd_channel
 =======================
 
-.. c:type:: qcom_smd_channel
+.. c:type:: struct qcom_smd_channel
 
     smd channel struct
-
 
 .. _`qcom_smd_channel.definition`:
 
@@ -107,95 +101,98 @@ Definition
 
 .. code-block:: c
 
-  struct qcom_smd_channel {
-    struct qcom_smd_edge * edge;
-    struct qcom_smd_device * qsdev;
-    char * name;
-    enum smd_channel_state state;
-    enum smd_channel_state remote_state;
-    struct smd_channel_info_pair * info;
-    struct smd_channel_info_word_pair * info_word;
-    struct mutex tx_lock;
-    wait_queue_head_t fblockread_event;
-    void * tx_fifo;
-    void * rx_fifo;
-    int fifo_size;
-    void * bounce_buffer;
-    int (* cb) (struct qcom_smd_device *, const void *, size_t);
-    spinlock_t recv_lock;
-    int pkt_size;
-    struct list_head list;
-  };
-
+    struct qcom_smd_channel {
+        struct qcom_smd_edge *edge;
+        struct qcom_smd_device *qsdev;
+        char *name;
+        enum smd_channel_state state;
+        enum smd_channel_state remote_state;
+        struct smd_channel_info_pair *info;
+        struct smd_channel_info_word_pair *info_word;
+        struct mutex tx_lock;
+        wait_queue_head_t fblockread_event;
+        void *tx_fifo;
+        void *rx_fifo;
+        int fifo_size;
+        void *bounce_buffer;
+        qcom_smd_cb_t cb;
+        spinlock_t recv_lock;
+        int pkt_size;
+        void *drvdata;
+        struct list_head list;
+        struct list_head dev_list;
+    }
 
 .. _`qcom_smd_channel.members`:
 
 Members
 -------
 
-:``edge``:
+edge
     qcom_smd_edge this channel is living on
 
-:``qsdev``:
+qsdev
     reference to a associated smd client device
 
-:``name``:
+name
     name of the channel
 
-:``state``:
+state
     local state of the channel
 
-:``remote_state``:
+remote_state
     remote state of the channel
 
-:``info``:
+info
     byte aligned outgoing/incoming channel info
 
-:``info_word``:
+info_word
     word aligned outgoing/incoming channel info
 
-:``tx_lock``:
+tx_lock
     lock to make writes to the channel mutually exclusive
 
-:``fblockread_event``:
+fblockread_event
     wakeup event tied to tx fBLOCKREADINTR
 
-:``tx_fifo``:
+tx_fifo
     pointer to the outgoing ring buffer
 
-:``rx_fifo``:
+rx_fifo
     pointer to the incoming ring buffer
 
-:``fifo_size``:
+fifo_size
     size of each ring buffer
 
-:``bounce_buffer``:
+bounce_buffer
     bounce buffer for reading wrapped packets
 
-:``cb``:
+cb
     callback function registered for this channel
 
-:``recv_lock``:
+recv_lock
     guard for rx info modifications and cb pointer
 
-:``pkt_size``:
+pkt_size
     size of the currently handled packet
 
-:``list``:
-    lite entry for ``channels`` in qcom_smd_edge
+drvdata
+    *undescribed*
 
+list
+    lite entry for \ ``channels``\  in qcom_smd_edge
 
-
+dev_list
+    *undescribed*
 
 .. _`qcom_smd`:
 
 struct qcom_smd
 ===============
 
-.. c:type:: qcom_smd
+.. c:type:: struct qcom_smd
 
     smd struct
-
 
 .. _`qcom_smd.definition`:
 
@@ -204,39 +201,34 @@ Definition
 
 .. code-block:: c
 
-  struct qcom_smd {
-    struct device * dev;
-    unsigned num_edges;
-    struct qcom_smd_edge edges[0];
-  };
-
+    struct qcom_smd {
+        struct device *dev;
+        unsigned num_edges;
+        struct qcom_smd_edge edges[0];
+    }
 
 .. _`qcom_smd.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     device struct
 
-:``num_edges``:
-    number of entries in ``edges``
+num_edges
+    number of entries in \ ``edges``\ 
 
-:``edges[0]``:
+edges
     array of edges to be handled
-
-
-
 
 .. _`qcom_smd_alloc_entry`:
 
 struct qcom_smd_alloc_entry
 ===========================
 
-.. c:type:: qcom_smd_alloc_entry
+.. c:type:: struct qcom_smd_alloc_entry
 
     channel allocation entry
-
 
 .. _`qcom_smd_alloc_entry.definition`:
 
@@ -245,40 +237,36 @@ Definition
 
 .. code-block:: c
 
-  struct qcom_smd_alloc_entry {
-    u8 name[20];
-    __le32 cid;
-    __le32 flags;
-    __le32 ref_count;
-  };
-
+    struct qcom_smd_alloc_entry {
+        u8 name[20];
+        __le32 cid;
+        __le32 flags;
+        __le32 ref_count;
+    }
 
 .. _`qcom_smd_alloc_entry.members`:
 
 Members
 -------
 
-:``name[20]``:
+name
     channel name
 
-:``cid``:
+cid
     channel index
 
-:``flags``:
+flags
     channel flags and edge id
 
-:``ref_count``:
+ref_count
     reference count of the channel
-
-
-
 
 .. _`qcom_smd_send`:
 
 qcom_smd_send
 =============
 
-.. c:function:: int qcom_smd_send (struct qcom_smd_channel *channel, const void *data, int len)
+.. c:function:: int qcom_smd_send(struct qcom_smd_channel *channel, const void *data, int len)
 
     write data to smd channel
 
@@ -291,8 +279,6 @@ qcom_smd_send
     :param int len:
         number of bytes to write
 
-
-
 .. _`qcom_smd_send.description`:
 
 Description
@@ -303,31 +289,55 @@ signal the remote end. It will sleep until there is enough space available
 in the tx buffer, utilizing the fBLOCKREADINTR signaling mechanism to avoid
 polling.
 
-
-
 .. _`qcom_smd_driver_register`:
 
 qcom_smd_driver_register
 ========================
 
-.. c:function:: int qcom_smd_driver_register (struct qcom_smd_driver *qsdrv)
+.. c:function:: int qcom_smd_driver_register(struct qcom_smd_driver *qsdrv)
 
     register a smd driver
 
     :param struct qcom_smd_driver \*qsdrv:
         qcom_smd_driver struct
 
-
-
 .. _`qcom_smd_driver_unregister`:
 
 qcom_smd_driver_unregister
 ==========================
 
-.. c:function:: void qcom_smd_driver_unregister (struct qcom_smd_driver *qsdrv)
+.. c:function:: void qcom_smd_driver_unregister(struct qcom_smd_driver *qsdrv)
 
     unregister a smd driver
 
     :param struct qcom_smd_driver \*qsdrv:
         qcom_smd_driver struct
+
+.. _`qcom_smd_open_channel`:
+
+qcom_smd_open_channel
+=====================
+
+.. c:function:: struct qcom_smd_channel *qcom_smd_open_channel(struct qcom_smd_channel *parent, const char *name, qcom_smd_cb_t cb)
+
+    claim additional channels on the same edge
+
+    :param struct qcom_smd_channel \*parent:
+        *undescribed*
+
+    :param const char \*name:
+        channel name
+
+    :param qcom_smd_cb_t cb:
+        callback method to use for incoming data
+
+.. _`qcom_smd_open_channel.description`:
+
+Description
+-----------
+
+Returns a channel handle on success, or -EPROBE_DEFER if the channel isn't
+ready.
+
+.. This file was automatic generated / don't edit.
 

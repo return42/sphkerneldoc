@@ -7,7 +7,7 @@ keys
 .. toctree::
    :maxdepth: 1
 
-   key_c
-   keyring_c
-   permission_c
-   request_key_c
+    key_c
+    keyring_c
+    permission_c
+    request_key_c

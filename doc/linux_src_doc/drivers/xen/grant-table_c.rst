@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-grant-table.c
-=============
-
+.. src-file: drivers/xen/grant-table.c
 
 .. _`gnttab_alloc_pages`:
 
 gnttab_alloc_pages
 ==================
 
-.. c:function:: int gnttab_alloc_pages (int nr_pages, struct page **pages)
+.. c:function:: int gnttab_alloc_pages(int nr_pages, struct page **pages)
 
     alloc pages suitable for grant mapping into
 
@@ -20,21 +16,20 @@ gnttab_alloc_pages
     :param struct page \*\*pages:
         returns the pages
 
-
-
 .. _`gnttab_free_pages`:
 
 gnttab_free_pages
 =================
 
-.. c:function:: void gnttab_free_pages (int nr_pages, struct page **pages)
+.. c:function:: void gnttab_free_pages(int nr_pages, struct page **pages)
 
-    free pages allocated by gnttab_alloc_pages() @nr_pages; number of pages to free
+    free pages allocated by \ :c:func:`gnttab_alloc_pages`\  \ ``nr_pages``\ ; number of pages to free
 
     :param int nr_pages:
-
         *undescribed*
 
     :param struct page \*\*pages:
         the pages
+
+.. This file was automatic generated / don't edit.
 

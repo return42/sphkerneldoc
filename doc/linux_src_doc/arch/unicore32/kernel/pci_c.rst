@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-pci.c
-=====
-
+.. src-file: arch/unicore32/kernel/pci.c
 
 .. _`pcibios_enable_device`:
 
 pcibios_enable_device
 =====================
 
-.. c:function:: int pcibios_enable_device (struct pci_dev *dev, int mask)
+.. c:function:: int pcibios_enable_device(struct pci_dev *dev, int mask)
 
     Enable I/O and memory.
 
@@ -18,6 +14,7 @@ pcibios_enable_device
         PCI device to be enabled
 
     :param int mask:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

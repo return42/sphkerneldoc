@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-radeon_sync.c
-=============
-
+.. src-file: drivers/gpu/drm/radeon/radeon_sync.c
 
 .. _`radeon_sync_create`:
 
 radeon_sync_create
 ==================
 
-.. c:function:: void radeon_sync_create (struct radeon_sync *sync)
+.. c:function:: void radeon_sync_create(struct radeon_sync *sync)
 
     zero init sync object
 
     :param struct radeon_sync \*sync:
         sync object to initialize
-
-
 
 .. _`radeon_sync_create.description`:
 
@@ -26,14 +20,12 @@ Description
 
 Just clear the sync object for now.
 
-
-
 .. _`radeon_sync_fence`:
 
 radeon_sync_fence
 =================
 
-.. c:function:: void radeon_sync_fence (struct radeon_sync *sync, struct radeon_fence *fence)
+.. c:function:: void radeon_sync_fence(struct radeon_sync *sync, struct radeon_fence *fence)
 
     use the semaphore to sync to a fence
 
@@ -43,8 +35,6 @@ radeon_sync_fence
     :param struct radeon_fence \*fence:
         fence to sync to
 
-
-
 .. _`radeon_sync_fence.description`:
 
 Description
@@ -52,19 +42,16 @@ Description
 
 Sync to the fence using the semaphore objects
 
-
-
 .. _`radeon_sync_resv`:
 
 radeon_sync_resv
 ================
 
-.. c:function:: int radeon_sync_resv (struct radeon_device *rdev, struct radeon_sync *sync, struct reservation_object *resv, bool shared)
+.. c:function:: int radeon_sync_resv(struct radeon_device *rdev, struct radeon_sync *sync, struct reservation_object *resv, bool shared)
 
     use the semaphores to sync to a reservation object
 
     :param struct radeon_device \*rdev:
-
         *undescribed*
 
     :param struct radeon_sync \*sync:
@@ -76,8 +63,6 @@ radeon_sync_resv
     :param bool shared:
         true if we should only sync to the exclusive fence
 
-
-
 .. _`radeon_sync_resv.description`:
 
 Description
@@ -85,14 +70,12 @@ Description
 
 Sync to the fence using the semaphore objects
 
-
-
 .. _`radeon_sync_rings`:
 
 radeon_sync_rings
 =================
 
-.. c:function:: int radeon_sync_rings (struct radeon_device *rdev, struct radeon_sync *sync, int ring)
+.. c:function:: int radeon_sync_rings(struct radeon_device *rdev, struct radeon_sync *sync, int ring)
 
     sync ring to all registered fences
 
@@ -105,8 +88,6 @@ radeon_sync_rings
     :param int ring:
         ring that needs sync
 
-
-
 .. _`radeon_sync_rings.description`:
 
 Description
@@ -115,14 +96,12 @@ Description
 Ensure that all registered fences are signaled before letting
 the ring continue. The caller must hold the ring lock.
 
-
-
 .. _`radeon_sync_free`:
 
 radeon_sync_free
 ================
 
-.. c:function:: void radeon_sync_free (struct radeon_device *rdev, struct radeon_sync *sync, struct radeon_fence *fence)
+.. c:function:: void radeon_sync_free(struct radeon_device *rdev, struct radeon_sync *sync, struct radeon_fence *fence)
 
     free the sync object
 
@@ -135,12 +114,12 @@ radeon_sync_free
     :param struct radeon_fence \*fence:
         fence to use for the free
 
-
-
 .. _`radeon_sync_free.description`:
 
 Description
 -----------
 
 Free the sync object by freeing all semaphores in it.
+
+.. This file was automatic generated / don't edit.
 

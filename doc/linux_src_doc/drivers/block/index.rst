@@ -7,4 +7,6 @@ block
 .. toctree::
    :maxdepth: 1
 
-   drbd/index
+    drbd/index
+    cciss_c
+    xen-blkfront_c

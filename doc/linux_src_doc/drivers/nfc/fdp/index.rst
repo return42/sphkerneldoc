@@ -7,4 +7,4 @@ fdp
 .. toctree::
    :maxdepth: 1
 
-   fdp_c
+    fdp_c

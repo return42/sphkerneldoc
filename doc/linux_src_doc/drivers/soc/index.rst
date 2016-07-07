@@ -7,7 +7,8 @@ soc
 .. toctree::
    :maxdepth: 1
 
-   fsl/index
-   qcom/index
-   tegra/index
-   ti/index
+    fsl/index
+    mediatek/index
+    qcom/index
+    tegra/index
+    ti/index

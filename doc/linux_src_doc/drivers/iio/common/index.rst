@@ -7,6 +7,6 @@ common
 .. toctree::
    :maxdepth: 1
 
-   ms_sensors/index
-   ssp_sensors/index
-   st_sensors/index
+    ms_sensors/index
+    ssp_sensors/index
+    st_sensors/index

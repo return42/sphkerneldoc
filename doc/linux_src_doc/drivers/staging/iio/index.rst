@@ -7,4 +7,13 @@ iio
 .. toctree::
    :maxdepth: 1
 
-   adc/index
+    accel/index
+    adc/index
+    cdc/index
+    frequency/index
+    gyro/index
+    impedance-analyzer/index
+    light/index
+    meter/index
+    trigger/index
+    ring_hw_h

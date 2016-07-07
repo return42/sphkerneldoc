@@ -7,4 +7,4 @@ tegra
 .. toctree::
    :maxdepth: 1
 
-   dc_c
+    dc_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-arm-cci.c
-=========
-
+.. src-file: drivers/bus/arm-cci.c
 
 .. _`__cci_ace_get_port`:
 
 __cci_ace_get_port
 ==================
 
-.. c:function:: int __cci_ace_get_port (struct device_node *dn, int type)
+.. c:function:: int __cci_ace_get_port(struct device_node *dn, int type)
 
     Function to retrieve the port index connected to a cpu or device.
 
@@ -20,8 +16,6 @@ __cci_ace_get_port
     :param int type:
         port type
 
-
-
 .. _`__cci_ace_get_port.return-value`:
 
 Return value
@@ -30,14 +24,12 @@ Return value
 - CCI port index if success
 - -ENODEV if failure
 
-
-
 .. _`cci_port_control`:
 
 cci_port_control
 ================
 
-.. c:function:: void notrace cci_port_control (unsigned int port, bool enable)
+.. c:function:: void notrace cci_port_control(unsigned int port, bool enable)
 
     function to control a CCI port
 
@@ -47,21 +39,17 @@ cci_port_control
     :param bool enable:
         if true enables the port, if false disables it
 
-
-
 .. _`cci_disable_port_by_cpu`:
 
 cci_disable_port_by_cpu
 =======================
 
-.. c:function:: int notrace cci_disable_port_by_cpu (u64 mpidr)
+.. c:function:: int notrace cci_disable_port_by_cpu(u64 mpidr)
 
     function to disable a CCI port by CPU reference
 
     :param u64 mpidr:
         mpidr of the CPU whose CCI port should be disabled
-
-
 
 .. _`cci_disable_port_by_cpu.description`:
 
@@ -73,8 +61,6 @@ controlling that CPU cluster. Code disabling CPU CCI ports
 must make sure that the CPU running the code is the last active CPU
 in the cluster ie all other CPUs are quiescent in a low power state.
 
-
-
 .. _`cci_disable_port_by_cpu.return`:
 
 Return
@@ -83,27 +69,22 @@ Return
 0 on success
 -ENODEV on port look-up failure
 
-
-
 .. _`cci_enable_port_for_self`:
 
 cci_enable_port_for_self
 ========================
 
-.. c:function:: void __naked cci_enable_port_for_self ( void)
+.. c:function:: void __naked cci_enable_port_for_self( void)
 
     enable a CCI port for calling CPU
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`cci_enable_port_for_self.description`:
 
 Description
 -----------
-
 
 Enabling a CCI port for the calling CPU implies enabling the CCI
 port controlling that CPU's cluster. Caller must make sure that the
@@ -120,14 +101,12 @@ On success this returns with the proper CCI port enabled.  In case of
 any failure this never returns as the inability to enable the CCI is
 fatal and there is no possible recovery at this stage.
 
-
-
 .. _`__cci_control_port_by_device`:
 
 __cci_control_port_by_device
 ============================
 
-.. c:function:: int notrace __cci_control_port_by_device (struct device_node *dn, bool enable)
+.. c:function:: int notrace __cci_control_port_by_device(struct device_node *dn, bool enable)
 
     function to control a CCI port by device reference
 
@@ -138,8 +117,6 @@ __cci_control_port_by_device
     :param bool enable:
         if true enables the port, if false disables it
 
-
-
 .. _`__cci_control_port_by_device.return`:
 
 Return
@@ -148,24 +125,20 @@ Return
 0 on success
 -ENODEV on port look-up failure
 
-
-
 .. _`__cci_control_port_by_index`:
 
 __cci_control_port_by_index
 ===========================
 
-.. c:function:: int notrace __cci_control_port_by_index (u32 port, bool enable)
+.. c:function:: int notrace __cci_control_port_by_index(u32 port, bool enable)
 
     function to control a CCI port by port index
 
     :param u32 port:
-        port index previously retrieved with :c:func:`cci_ace_get_port`
+        port index previously retrieved with \ :c:func:`cci_ace_get_port`\ 
 
     :param bool enable:
         if true enables the port, if false disables it
-
-
 
 .. _`__cci_control_port_by_index.return`:
 
@@ -175,4 +148,6 @@ Return
 0 on success
 -ENODEV on port index out of range
 -EPERM if operation carried out on an ACE PORT
+
+.. This file was automatic generated / don't edit.
 

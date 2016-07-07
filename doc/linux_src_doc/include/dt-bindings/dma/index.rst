@@ -7,4 +7,4 @@ dma
 .. toctree::
    :maxdepth: 1
 
-   nbpfaxi_h
+    nbpfaxi_h

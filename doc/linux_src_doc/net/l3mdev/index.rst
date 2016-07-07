@@ -7,4 +7,4 @@ l3mdev
 .. toctree::
    :maxdepth: 1
 
-   l3mdev_c
+    l3mdev_c

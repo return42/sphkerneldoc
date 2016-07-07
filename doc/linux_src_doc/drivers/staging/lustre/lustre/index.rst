@@ -7,9 +7,14 @@ lustre
 .. toctree::
    :maxdepth: 1
 
-   ldlm/index
-   llite/index
-   lov/index
-   mgc/index
-   obdclass/index
-   ptlrpc/index
+    fld/index
+    include/index
+    ldlm/index
+    llite/index
+    lmv/index
+    lov/index
+    mdc/index
+    mgc/index
+    obdclass/index
+    osc/index
+    ptlrpc/index

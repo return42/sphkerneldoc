@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===================
-vmwgfx_cmdbuf_res.c
-===================
-
+.. src-file: drivers/gpu/drm/vmwgfx/vmwgfx_cmdbuf_res.c
 
 .. _`vmw_cmdbuf_res`:
 
 struct vmw_cmdbuf_res
 =====================
 
-.. c:type:: vmw_cmdbuf_res
+.. c:type:: struct vmw_cmdbuf_res
 
     Command buffer managed resource entry.
-
 
 .. _`vmw_cmdbuf_res.definition`:
 
@@ -22,48 +17,43 @@ Definition
 
 .. code-block:: c
 
-  struct vmw_cmdbuf_res {
-    struct vmw_resource * res;
-    struct drm_hash_item hash;
-    struct list_head head;
-    enum vmw_cmdbuf_res_state state;
-    struct vmw_cmdbuf_res_manager * man;
-  };
-
+    struct vmw_cmdbuf_res {
+        struct vmw_resource *res;
+        struct drm_hash_item hash;
+        struct list_head head;
+        enum vmw_cmdbuf_res_state state;
+        struct vmw_cmdbuf_res_manager *man;
+    }
 
 .. _`vmw_cmdbuf_res.members`:
 
 Members
 -------
 
-:``res``:
+res
     Refcounted pointer to a struct vmw_resource.
 
-:``hash``:
+hash
     Hash entry for the manager hash table.
 
-:``head``:
+head
     List head used either by the staging list or the manager list
     of commited resources.
 
-:``state``:
+state
     Staging state of this resource entry.
 
-:``man``:
+man
     Pointer to a resource manager for this entry.
-
-
-
 
 .. _`vmw_cmdbuf_res_manager`:
 
 struct vmw_cmdbuf_res_manager
 =============================
 
-.. c:type:: vmw_cmdbuf_res_manager
+.. c:type:: struct vmw_cmdbuf_res_manager
 
     Command buffer resource manager.
-
 
 .. _`vmw_cmdbuf_res_manager.definition`:
 
@@ -72,46 +62,40 @@ Definition
 
 .. code-block:: c
 
-  struct vmw_cmdbuf_res_manager {
-    struct drm_open_hash resources;
-    struct list_head list;
-    struct vmw_private * dev_priv;
-  };
-
+    struct vmw_cmdbuf_res_manager {
+        struct drm_open_hash resources;
+        struct list_head list;
+        struct vmw_private *dev_priv;
+    }
 
 .. _`vmw_cmdbuf_res_manager.members`:
 
 Members
 -------
 
-:``resources``:
+resources
     Hash table containing staged and commited command buffer
     resources
 
-:``list``:
+list
     List of commited command buffer resources.
 
-:``dev_priv``:
+dev_priv
     Pointer to a device private structure.
-
-
-
 
 .. _`vmw_cmdbuf_res_manager.description`:
 
 Description
 -----------
 
-``resources`` and ``list`` are protected by the cmdbuf mutex for now.
-
-
+\ ``resources``\  and \ ``list``\  are protected by the cmdbuf mutex for now.
 
 .. _`vmw_cmdbuf_res_lookup`:
 
 vmw_cmdbuf_res_lookup
 =====================
 
-.. c:function:: struct vmw_resource *vmw_cmdbuf_res_lookup (struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key)
+.. c:function:: struct vmw_resource *vmw_cmdbuf_res_lookup(struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key)
 
     Look up a command buffer resource
 
@@ -119,13 +103,10 @@ vmw_cmdbuf_res_lookup
         Pointer to the command buffer resource manager
 
     :param enum vmw_cmdbuf_res_type res_type:
-
         *undescribed*
 
     :param u32 user_key:
         The user key.
-
-
 
 .. _`vmw_cmdbuf_res_lookup.description`:
 
@@ -135,14 +116,12 @@ Description
 Returns a valid refcounted struct vmw_resource pointer on success,
 an error pointer on failure.
 
-
-
 .. _`vmw_cmdbuf_res_free`:
 
 vmw_cmdbuf_res_free
 ===================
 
-.. c:function:: void vmw_cmdbuf_res_free (struct vmw_cmdbuf_res_manager *man, struct vmw_cmdbuf_res *entry)
+.. c:function:: void vmw_cmdbuf_res_free(struct vmw_cmdbuf_res_manager *man, struct vmw_cmdbuf_res *entry)
 
     Free a command buffer resource.
 
@@ -152,8 +131,6 @@ vmw_cmdbuf_res_free
     :param struct vmw_cmdbuf_res \*entry:
         Pointer to a struct vmw_cmdbuf_res.
 
-
-
 .. _`vmw_cmdbuf_res_free.description`:
 
 Description
@@ -162,21 +139,17 @@ Description
 Frees a struct vmw_cmdbuf_res entry and drops its reference to the
 struct vmw_resource.
 
-
-
 .. _`vmw_cmdbuf_res_commit`:
 
 vmw_cmdbuf_res_commit
 =====================
 
-.. c:function:: void vmw_cmdbuf_res_commit (struct list_head *list)
+.. c:function:: void vmw_cmdbuf_res_commit(struct list_head *list)
 
     Commit a list of command buffer resource actions
 
     :param struct list_head \*list:
         Caller's list of command buffer resource actions.
-
-
 
 .. _`vmw_cmdbuf_res_commit.description`:
 
@@ -188,21 +161,17 @@ additions or removals.
 It is typically called when the execbuf ioctl call triggering these
 actions has commited the fifo contents to the device.
 
-
-
 .. _`vmw_cmdbuf_res_revert`:
 
 vmw_cmdbuf_res_revert
 =====================
 
-.. c:function:: void vmw_cmdbuf_res_revert (struct list_head *list)
+.. c:function:: void vmw_cmdbuf_res_revert(struct list_head *list)
 
     Revert a list of command buffer resource actions
 
     :param struct list_head \*list:
         Caller's list of command buffer resource action
-
-
 
 .. _`vmw_cmdbuf_res_revert.description`:
 
@@ -215,14 +184,12 @@ It is typically called when the execbuf ioctl call triggering these
 actions failed for some reason, and the command stream was never
 submitted.
 
-
-
 .. _`vmw_cmdbuf_res_add`:
 
 vmw_cmdbuf_res_add
 ==================
 
-.. c:function:: int vmw_cmdbuf_res_add (struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key, struct vmw_resource *res, struct list_head *list)
+.. c:function:: int vmw_cmdbuf_res_add(struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key, struct vmw_resource *res, struct list_head *list)
 
     Stage a command buffer managed resource for addition.
 
@@ -241,25 +208,21 @@ vmw_cmdbuf_res_add
     :param struct list_head \*list:
         The staging list.
 
-
-
 .. _`vmw_cmdbuf_res_add.description`:
 
 Description
 -----------
 
 This function allocates a struct vmw_cmdbuf_res entry and adds the
-resource to the hash table of the manager identified by ``man``\ . The
-entry is then put on the staging list identified by ``list``\ .
-
-
+resource to the hash table of the manager identified by \ ``man``\ . The
+entry is then put on the staging list identified by \ ``list``\ .
 
 .. _`vmw_cmdbuf_res_remove`:
 
 vmw_cmdbuf_res_remove
 =====================
 
-.. c:function:: int vmw_cmdbuf_res_remove (struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key, struct list_head *list, struct vmw_resource **res_p)
+.. c:function:: int vmw_cmdbuf_res_remove(struct vmw_cmdbuf_res_manager *man, enum vmw_cmdbuf_res_type res_type, u32 user_key, struct list_head *list, struct vmw_resource **res_p)
 
     Stage a command buffer managed resource for removal.
 
@@ -280,8 +243,6 @@ vmw_cmdbuf_res_remove
         struct vmw_resource on successful return. The pointer will be
         non ref-counted.
 
-
-
 .. _`vmw_cmdbuf_res_remove.description`:
 
 Description
@@ -292,21 +253,17 @@ hash table and, if it exists, removes it. Depending on its current staging
 state it then either removes the entry from the staging list or adds it
 to it with a staging state of removal.
 
-
-
 .. _`vmw_cmdbuf_res_man_create`:
 
 vmw_cmdbuf_res_man_create
 =========================
 
-.. c:function:: struct vmw_cmdbuf_res_manager *vmw_cmdbuf_res_man_create (struct vmw_private *dev_priv)
+.. c:function:: struct vmw_cmdbuf_res_manager *vmw_cmdbuf_res_man_create(struct vmw_private *dev_priv)
 
     Allocate a command buffer managed resource manager.
 
     :param struct vmw_private \*dev_priv:
         Pointer to a struct vmw_private
-
-
 
 .. _`vmw_cmdbuf_res_man_create.description`:
 
@@ -316,21 +273,17 @@ Description
 Allocates and initializes a command buffer managed resource manager. Returns
 an error pointer on failure.
 
-
-
 .. _`vmw_cmdbuf_res_man_destroy`:
 
 vmw_cmdbuf_res_man_destroy
 ==========================
 
-.. c:function:: void vmw_cmdbuf_res_man_destroy (struct vmw_cmdbuf_res_manager *man)
+.. c:function:: void vmw_cmdbuf_res_man_destroy(struct vmw_cmdbuf_res_manager *man)
 
     Destroy a command buffer managed resource manager.
 
     :param struct vmw_cmdbuf_res_manager \*man:
         Pointer to the  manager to destroy.
-
-
 
 .. _`vmw_cmdbuf_res_man_destroy.description`:
 
@@ -340,4 +293,6 @@ Description
 This function destroys a command buffer managed resource manager and
 unreferences / frees all command buffer managed resources and -entries
 associated with it.
+
+.. This file was automatic generated / don't edit.
 

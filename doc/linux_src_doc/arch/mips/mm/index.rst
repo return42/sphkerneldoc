@@ -7,4 +7,5 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   c-octeon_c
+    c-octeon_c
+    gup_c

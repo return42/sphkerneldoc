@@ -7,4 +7,4 @@ hsi
 .. toctree::
    :maxdepth: 1
 
-   hsi_h
+    hsi_h

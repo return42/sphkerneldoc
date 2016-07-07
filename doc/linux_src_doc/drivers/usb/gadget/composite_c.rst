@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-composite.c
-===========
-
+.. src-file: drivers/usb/gadget/composite.c
 
 .. _`usb_os_string`:
 
 struct usb_os_string
 ====================
 
-.. c:type:: usb_os_string
+.. c:type:: struct usb_os_string
 
     represents OS String to be reported by a gadget
-
 
 .. _`usb_os_string.definition`:
 
@@ -22,44 +17,40 @@ Definition
 
 .. code-block:: c
 
-  struct usb_os_string {
-    __u8 bLength;
-    __u8 bDescriptorType;
-    __u8 qwSignature[OS_STRING_QW_SIGN_LEN];
-    __u8 bMS_VendorCode;
-    __u8 bPad;
-  };
-
+    struct usb_os_string {
+        __u8 bLength;
+        __u8 bDescriptorType;
+        __u8 qwSignature[OS_STRING_QW_SIGN_LEN];
+        __u8 bMS_VendorCode;
+        __u8 bPad;
+    }
 
 .. _`usb_os_string.members`:
 
 Members
 -------
 
-:``bLength``:
+bLength
     total length of the entire descritor, always 0x12
 
-:``bDescriptorType``:
+bDescriptorType
     USB_DT_STRING
 
-:``qwSignature[OS_STRING_QW_SIGN_LEN]``:
+qwSignature
     the OS String proper
 
-:``bMS_VendorCode``:
+bMS_VendorCode
     code used by the host for subsequent requests
 
-:``bPad``:
+bPad
     not used, must be zero
-
-
-
 
 .. _`function_descriptors`:
 
 function_descriptors
 ====================
 
-.. c:function:: struct usb_descriptor_header **function_descriptors (struct usb_function *f, enum usb_device_speed speed)
+.. c:function:: struct usb_descriptor_header **function_descriptors(struct usb_function *f, enum usb_device_speed speed)
 
     get function descriptors for speed
 
@@ -69,8 +60,6 @@ function_descriptors
     :param enum usb_device_speed speed:
         the speed
 
-
-
 .. _`function_descriptors.description`:
 
 Description
@@ -78,21 +67,17 @@ Description
 
 Returns the descriptors or NULL if not set.
 
-
-
 .. _`next_ep_desc`:
 
 next_ep_desc
 ============
 
-.. c:function:: struct usb_descriptor_header**next_ep_desc (struct usb_descriptor_header **t)
+.. c:function:: struct usb_descriptor_header**next_ep_desc(struct usb_descriptor_header **t)
 
     advance to the next EP descriptor
 
     :param struct usb_descriptor_header \*\*t:
         currect pointer within descriptor array
-
-
 
 .. _`next_ep_desc.return`:
 
@@ -101,17 +86,15 @@ Return
 
 next EP descriptor or NULL
 
-Iterate over ``t`` until either EP descriptor found or
+Iterate over \ ``t``\  until either EP descriptor found or
 NULL (that indicates end of list) encountered
-
-
 
 .. _`config_ep_by_speed`:
 
 config_ep_by_speed
 ==================
 
-.. c:function:: int config_ep_by_speed (struct usb_gadget *g, struct usb_function *f, struct usb_ep *_ep)
+.. c:function:: int config_ep_by_speed(struct usb_gadget *g, struct usb_function *f, struct usb_ep *_ep)
 
     configures the given endpoint according to gadget speed.
 
@@ -123,8 +106,6 @@ config_ep_by_speed
 
     :param struct usb_ep \*_ep:
         the endpoint to configure
-
-
 
 .. _`config_ep_by_speed.return`:
 
@@ -140,8 +121,6 @@ assigned to it - overwrites it with currently corresponding
 descriptor. The endpoint maxpacket field is updated according
 to the chosen descriptor.
 
-
-
 .. _`config_ep_by_speed.note`:
 
 Note
@@ -150,14 +129,12 @@ Note
 the supplied function should hold all the descriptors
 for supported speeds
 
-
-
 .. _`usb_add_function`:
 
 usb_add_function
 ================
 
-.. c:function:: int usb_add_function (struct usb_configuration *config, struct usb_function *function)
+.. c:function:: int usb_add_function(struct usb_configuration *config, struct usb_function *function)
 
     add a function to a configuration
 
@@ -167,8 +144,6 @@ usb_add_function
     :param struct usb_function \*function:
         the function being added
 
-
-
 .. _`usb_add_function.context`:
 
 Context
@@ -176,36 +151,30 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_add_function.description`:
 
 Description
 -----------
 
 After initialization, each configuration must have one or more
-functions added to it.  Adding a function involves calling its @:c:func:`bind`
+functions added to it.  Adding a function involves calling its @\ :c:func:`bind`\ 
 method to allocate resources such as interface and string identifiers
 and endpoints.
 
-This function returns the value of the function's :c:func:`bind`, which is
+This function returns the value of the function's \ :c:func:`bind`\ , which is
 zero for success else a negative errno value.
-
-
 
 .. _`usb_function_deactivate`:
 
 usb_function_deactivate
 =======================
 
-.. c:function:: int usb_function_deactivate (struct usb_function *function)
+.. c:function:: int usb_function_deactivate(struct usb_function *function)
 
     prevent function and gadget enumeration
 
     :param struct usb_function \*function:
         the function that isn't yet ready to respond
-
-
 
 .. _`usb_function_deactivate.description`:
 
@@ -214,7 +183,7 @@ Description
 
 Blocks response of the gadget driver to host enumeration by
 preventing the data line pullup from being activated.  This is
-normally called during @:c:func:`bind` processing to change from the
+normally called during @\ :c:func:`bind`\  processing to change from the
 initial "ready to respond" state, or when a required resource
 becomes available.
 
@@ -227,41 +196,35 @@ data pullups.
 
 Returns zero on success, else negative errno.
 
-
-
 .. _`usb_function_activate`:
 
 usb_function_activate
 =====================
 
-.. c:function:: int usb_function_activate (struct usb_function *function)
+.. c:function:: int usb_function_activate(struct usb_function *function)
 
     allow function and gadget enumeration
 
     :param struct usb_function \*function:
-        function on which :c:func:`usb_function_activate` was called
-
-
+        function on which \ :c:func:`usb_function_activate`\  was called
 
 .. _`usb_function_activate.description`:
 
 Description
 -----------
 
-Reverses effect of :c:func:`usb_function_deactivate`.  If no more functions
+Reverses effect of \ :c:func:`usb_function_deactivate`\ .  If no more functions
 are delaying their activation, the gadget driver will respond to
 host enumeration procedures.
 
 Returns zero on success, else negative errno.
-
-
 
 .. _`usb_interface_id`:
 
 usb_interface_id
 ================
 
-.. c:function:: int usb_interface_id (struct usb_configuration *config, struct usb_function *function)
+.. c:function:: int usb_interface_id(struct usb_configuration *config, struct usb_function *function)
 
     allocate an unused interface ID
 
@@ -271,8 +234,6 @@ usb_interface_id
     :param struct usb_function \*function:
         function handling the interface
 
-
-
 .. _`usb_interface_id.context`:
 
 Context
@@ -280,18 +241,16 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_interface_id.description`:
 
 Description
 -----------
 
-:c:func:`usb_interface_id` is called from usb_function.:c:func:`bind` callbacks to
+\ :c:func:`usb_interface_id`\  is called from usb_function.\ :c:func:`bind`\  callbacks to
 allocate new interface IDs.  The function driver will then store that
 ID in interface, association, CDC union, and other descriptors.  It
 will also handle any control requests targeted at that interface,
-particularly changing its altsetting via :c:func:`set_alt`.  There may
+particularly changing its altsetting via \ :c:func:`set_alt`\ .  There may
 also be class-specific or vendor-specific requests to handle.
 
 All interface identifier should be allocated using this routine, to
@@ -304,22 +263,18 @@ multiple versions of the relevant descriptors.
 Returns the interface ID which was allocated; or -ENODEV if no
 more interface IDs can be allocated.
 
-
-
 .. _`bos_desc`:
 
 bos_desc
 ========
 
-.. c:function:: int bos_desc (struct usb_composite_dev *cdev)
+.. c:function:: int bos_desc(struct usb_composite_dev *cdev)
 
     prepares the BOS descriptor.
 
     :param struct usb_composite_dev \*cdev:
         pointer to usb_composite device to generate the bos
         descriptor for
-
-
 
 .. _`bos_desc.description`:
 
@@ -330,14 +285,12 @@ This function generates the BOS (Binary Device Object)
 descriptor and its device capabilities descriptors. The BOS
 descriptor should be supported by a SuperSpeed device.
 
-
-
 .. _`usb_add_config`:
 
 usb_add_config
 ==============
 
-.. c:function:: int usb_add_config (struct usb_composite_dev *cdev, struct usb_configuration *config, int (*bind) (struct usb_configuration *)
+.. c:function:: int usb_add_config(struct usb_composite_dev *cdev, struct usb_configuration *config, int (*) bind (struct usb_configuration *)
 
     add a configuration to a device.
 
@@ -347,10 +300,8 @@ usb_add_config
     :param struct usb_configuration \*config:
         the configuration, with bConfigurationValue assigned
 
-    :param int (\*bind) (struct usb_configuration \*):
+    :param (int (\*) bind (struct usb_configuration \*):
         the configuration's bind function
-
-
 
 .. _`usb_add_config.context`:
 
@@ -359,29 +310,25 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_add_config.description`:
 
 Description
 -----------
 
-One of the main tasks of a composite @:c:func:`bind` routine is to
+One of the main tasks of a composite @\ :c:func:`bind`\  routine is to
 add each of the configurations it supports, using this routine.
 
-This function returns the value of the configuration's @:c:func:`bind`, which
+This function returns the value of the configuration's @\ :c:func:`bind`\ , which
 is zero for success else a negative errno value.  Binding configurations
 assigns global resources including string IDs, and per-configuration
 resources such as interface IDs and endpoints.
-
-
 
 .. _`usb_remove_config`:
 
 usb_remove_config
 =================
 
-.. c:function:: void usb_remove_config (struct usb_composite_dev *cdev, struct usb_configuration *config)
+.. c:function:: void usb_remove_config(struct usb_composite_dev *cdev, struct usb_configuration *config)
 
     remove a configuration from a device.
 
@@ -390,8 +337,6 @@ usb_remove_config
 
     :param struct usb_configuration \*config:
         the configuration
-
-
 
 .. _`usb_remove_config.description`:
 
@@ -402,21 +347,17 @@ Drivers must call usb_gadget_disconnect before calling this function
 to disconnect the device from the host and make sure the host will not
 try to enumerate the device while we are changing the config list.
 
-
-
 .. _`usb_string_id`:
 
 usb_string_id
 =============
 
-.. c:function:: int usb_string_id (struct usb_composite_dev *cdev)
+.. c:function:: int usb_string_id(struct usb_composite_dev *cdev)
 
     allocate an unused string ID
 
     :param struct usb_composite_dev \*cdev:
         the device whose string descriptor IDs are being allocated
-
-
 
 .. _`usb_string_id.context`:
 
@@ -425,30 +366,26 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_string_id.description`:
 
 Description
 -----------
 
-@:c:func:`usb_string_id` is called from :c:func:`bind` callbacks to allocate
+@\ :c:func:`usb_string_id`\  is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then store that ID in the appropriate descriptors and string table.
 
 All string identifier should be allocated using this,
-@:c:func:`usb_string_ids_tab` or @:c:func:`usb_string_ids_n` routine, to ensure
+@\ :c:func:`usb_string_ids_tab`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure
 that for example different functions don't wrongly assign different
 meanings to the same identifier.
-
-
 
 .. _`usb_string_ids_tab`:
 
 usb_string_ids_tab
 ==================
 
-.. c:function:: int usb_string_ids_tab (struct usb_composite_dev *cdev, struct usb_string *str)
+.. c:function:: int usb_string_ids_tab(struct usb_composite_dev *cdev, struct usb_string *str)
 
     allocate unused string IDs in batch
 
@@ -458,8 +395,6 @@ usb_string_ids_tab
     :param struct usb_string \*str:
         an array of usb_string objects to assign numbers to
 
-
-
 .. _`usb_string_ids_tab.context`:
 
 Context
@@ -467,31 +402,27 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_string_ids_tab.description`:
 
 Description
 -----------
 
-@:c:func:`usb_string_ids` is called from :c:func:`bind` callbacks to allocate
+@\ :c:func:`usb_string_ids`\  is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then copy IDs from the string table to the appropriate descriptors
 and string table for other languages.
 
 All string identifier should be allocated using this,
-@:c:func:`usb_string_id` or @:c:func:`usb_string_ids_n` routine, to ensure that for
+@\ :c:func:`usb_string_id`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure that for
 example different functions don't wrongly assign different meanings
 to the same identifier.
-
-
 
 .. _`usb_gstrings_attach`:
 
 usb_gstrings_attach
 ===================
 
-.. c:function:: struct usb_string *usb_gstrings_attach (struct usb_composite_dev *cdev, struct usb_gadget_strings **sp, unsigned n_strings)
+.. c:function:: struct usb_string *usb_gstrings_attach(struct usb_composite_dev *cdev, struct usb_gadget_strings **sp, unsigned n_strings)
 
     attach gadget strings to a cdev and assign ids
 
@@ -505,8 +436,6 @@ usb_gstrings_attach
     :param unsigned n_strings:
         number of entries in each usb_strings array (sp[]->strings)
 
-
-
 .. _`usb_gstrings_attach.description`:
 
 Description
@@ -519,8 +448,6 @@ array may contain multiple languages and should be NULL terminated.
 The ->language pointer of each struct usb_gadget_strings has to contain the
 same amount of entries.
 
-
-
 .. _`usb_gstrings_attach.for-instance`:
 
 For instance
@@ -530,14 +457,12 @@ sp[0] is en-US, sp[1] is es-ES. It is expected that the first
 usb_string entry of es-ES contains the translation of the first usb_string
 entry of en-US. Therefore both entries become the same id assign.
 
-
-
 .. _`usb_string_ids_n`:
 
 usb_string_ids_n
 ================
 
-.. c:function:: int usb_string_ids_n (struct usb_composite_dev *c, unsigned n)
+.. c:function:: int usb_string_ids_n(struct usb_composite_dev *c, unsigned n)
 
     allocate unused string IDs in batch
 
@@ -547,8 +472,6 @@ usb_string_ids_n
     :param unsigned n:
         number of string IDs to allocate
 
-
-
 .. _`usb_string_ids_n.context`:
 
 Context
@@ -556,41 +479,35 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_string_ids_n.description`:
 
 Description
 -----------
 
-Returns the first requested ID.  This ID and next ``n``\ -1 IDs are now
-valid IDs.  At least provided that ``n`` is non-zero because if it
+Returns the first requested ID.  This ID and next \ ``n``\ -1 IDs are now
+valid IDs.  At least provided that \ ``n``\  is non-zero because if it
 is, returns last requested ID which is now very useful information.
 
-@:c:func:`usb_string_ids_n` is called from :c:func:`bind` callbacks to allocate
+@\ :c:func:`usb_string_ids_n`\  is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then store that ID in the appropriate descriptors and string table.
 
 All string identifier should be allocated using this,
-@:c:func:`usb_string_id` or @:c:func:`usb_string_ids_n` routine, to ensure that for
+@\ :c:func:`usb_string_id`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure that for
 example different functions don't wrongly assign different meanings
 to the same identifier.
-
-
 
 .. _`usb_composite_probe`:
 
 usb_composite_probe
 ===================
 
-.. c:function:: int usb_composite_probe (struct usb_composite_driver *driver)
+.. c:function:: int usb_composite_probe(struct usb_composite_driver *driver)
 
     register a composite driver
 
     :param struct usb_composite_driver \*driver:
         the driver to register
-
-
 
 .. _`usb_composite_probe.context`:
 
@@ -599,8 +516,6 @@ Context
 
 single threaded during gadget setup
 
-
-
 .. _`usb_composite_probe.description`:
 
 Description
@@ -608,29 +523,25 @@ Description
 
 This function is used to register drivers using the composite driver
 framework.  The return value is zero, or a negative errno value.
-Those values normally come from the driver's ``bind`` method, which does
+Those values normally come from the driver's \ ``bind``\  method, which does
 all the work of setting up the driver to match the hardware.
 
 On successful return, the gadget is ready to respond to requests from
-the host, unless one of its components invokes :c:func:`usb_gadget_disconnect`
+the host, unless one of its components invokes \ :c:func:`usb_gadget_disconnect`\ 
 while it was binding.  That would usually be done in order to wait for
 some userspace participation.
-
-
 
 .. _`usb_composite_unregister`:
 
 usb_composite_unregister
 ========================
 
-.. c:function:: void usb_composite_unregister (struct usb_composite_driver *driver)
+.. c:function:: void usb_composite_unregister(struct usb_composite_driver *driver)
 
     unregister a composite driver
 
     :param struct usb_composite_driver \*driver:
         the driver to unregister
-
-
 
 .. _`usb_composite_unregister.description`:
 
@@ -640,21 +551,17 @@ Description
 This function is used to unregister drivers using the composite
 driver framework.
 
-
-
 .. _`usb_composite_setup_continue`:
 
 usb_composite_setup_continue
 ============================
 
-.. c:function:: void usb_composite_setup_continue (struct usb_composite_dev *cdev)
+.. c:function:: void usb_composite_setup_continue(struct usb_composite_dev *cdev)
 
     Continue with the control transfer
 
     :param struct usb_composite_dev \*cdev:
         the composite device who's control transfer was kept waiting
-
-
 
 .. _`usb_composite_setup_continue.description`:
 
@@ -663,7 +570,9 @@ Description
 
 This function must be called by the USB function driver to continue
 with the control transfer's data/status stage in case it had requested to
-delay the data/status stages. A USB function's setup handler (e.g. :c:func:`set_alt`)
+delay the data/status stages. A USB function's setup handler (e.g. \ :c:func:`set_alt`\ )
 can request the composite framework to delay the setup request's data/status
 stages by returning USB_GADGET_DELAYED_STATUS.
+
+.. This file was automatic generated / don't edit.
 

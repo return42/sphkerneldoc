@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-dc.c
-====
-
+.. src-file: drivers/gpu/drm/tegra/dc.c
 
 .. _`tegra_dc_state_setup_clock`:
 
 tegra_dc_state_setup_clock
 ==========================
 
-.. c:function:: int tegra_dc_state_setup_clock (struct tegra_dc *dc, struct drm_crtc_state *crtc_state, struct clk *clk, unsigned long pclk, unsigned int div)
+.. c:function:: int tegra_dc_state_setup_clock(struct tegra_dc *dc, struct drm_crtc_state *crtc_state, struct clk *clk, unsigned long pclk, unsigned int div)
 
     check clock settings and store them in atomic state
 
@@ -29,12 +25,12 @@ tegra_dc_state_setup_clock
     :param unsigned int div:
         shift clock divider
 
+.. _`tegra_dc_state_setup_clock.return`:
 
-
-.. _`tegra_dc_state_setup_clock.returns`:
-
-Returns
--------
+Return
+------
 
 0 on success or a negative error-code on failure.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,40 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ide-io.c
-========
-
+.. src-file: drivers/ide/ide-io.c
 
 .. _`do_special`:
 
 do_special
 ==========
 
-.. c:function:: ide_startstop_t do_special (ide_drive_t *drive)
+.. c:function:: ide_startstop_t do_special(ide_drive_t *drive)
 
     issue some special commands
 
     :param ide_drive_t \*drive:
         drive the command is for
 
-
-
 .. _`do_special.description`:
 
 Description
 -----------
 
-:c:func:`do_special` is used to issue ATA_CMD_INIT_DEV_PARAMS,
+\ :c:func:`do_special`\  is used to issue ATA_CMD_INIT_DEV_PARAMS,
 ATA_CMD_RESTORE and ATA_CMD_SET_MULTI commands to a drive.
-
-
 
 .. _`execute_drive_cmd`:
 
 execute_drive_cmd
 =================
 
-.. c:function:: ide_startstop_t execute_drive_cmd (ide_drive_t *drive, struct request *rq)
+.. c:function:: ide_startstop_t execute_drive_cmd(ide_drive_t *drive, struct request *rq)
 
     issue special drive command
 
@@ -44,50 +36,39 @@ execute_drive_cmd
     :param struct request \*rq:
         the request structure holding the command
 
-
-
 .. _`execute_drive_cmd.description`:
 
 Description
 -----------
 
-:c:func:`execute_drive_cmd` issues a special drive command,  usually 
-initiated by :c:func:`ioctl` from the external hdparm program. The
-command can be a drive command, drive task or taskfile 
+\ :c:func:`execute_drive_cmd`\  issues a special drive command,  usually
+initiated by \ :c:func:`ioctl`\  from the external hdparm program. The
+command can be a drive command, drive task or taskfile
 operation. Weirdly you can call it with NULL to wait for
 all commands to finish. Don't do this as that is due to change
-
-
 
 .. _`start_request`:
 
 start_request
 =============
 
-.. c:function:: ide_startstop_t start_request (ide_drive_t *drive, struct request *rq)
+.. c:function:: ide_startstop_t start_request(ide_drive_t *drive, struct request *rq)
 
     start of I/O and command issuing for IDE
 
     :param ide_drive_t \*drive:
-
         *undescribed*
 
     :param struct request \*rq:
-
         *undescribed*
-
-
 
 .. _`start_request.description`:
 
 Description
 -----------
 
-
-:c:func:`start_request` initiates handling of a new I/O request. It
+\ :c:func:`start_request`\  initiates handling of a new I/O request. It
 accepts commands and I/O (read/write) requests.
-
-
 
 .. _`start_request.fixme`:
 
@@ -96,14 +77,12 @@ FIXME
 
 this function needs a rename
 
-
-
 .. _`ide_stall_queue`:
 
 ide_stall_queue
 ===============
 
-.. c:function:: void ide_stall_queue (ide_drive_t *drive, unsigned long timeout)
+.. c:function:: void ide_stall_queue(ide_drive_t *drive, unsigned long timeout)
 
     pause an IDE device
 
@@ -113,31 +92,25 @@ ide_stall_queue
     :param unsigned long timeout:
         time to stall for (jiffies)
 
-
-
 .. _`ide_stall_queue.description`:
 
 Description
 -----------
 
-:c:func:`ide_stall_queue` can be used by a drive to give excess bandwidth back
+\ :c:func:`ide_stall_queue`\  can be used by a drive to give excess bandwidth back
 to the port by sleeping for timeout jiffies.
-
-
 
 .. _`ide_timer_expiry`:
 
 ide_timer_expiry
 ================
 
-.. c:function:: void ide_timer_expiry (unsigned long data)
+.. c:function:: void ide_timer_expiry(unsigned long data)
 
     handle lack of an IDE interrupt
 
     :param unsigned long data:
         timer callback magic (hwif)
-
-
 
 .. _`ide_timer_expiry.description`:
 
@@ -153,14 +126,12 @@ invoking the handler and checking the drive DMA status. We
 have an excessively incestuous relationship with the DMA
 logic that wants cleaning up.
 
-
-
 .. _`unexpected_intr`:
 
 unexpected_intr
 ===============
 
-.. c:function:: void unexpected_intr (int irq, ide_hwif_t *hwif)
+.. c:function:: void unexpected_intr(int irq, ide_hwif_t *hwif)
 
     handle an unexpected IDE interrupt
 
@@ -169,8 +140,6 @@ unexpected_intr
 
     :param ide_hwif_t \*hwif:
         port being processed
-
-
 
 .. _`unexpected_intr.description`:
 
@@ -186,28 +155,26 @@ On laptops (and "green" PCs), an unexpected interrupt occurs whenever
 the drive enters "idle", "standby", or "sleep" mode, so if the status
 looks "good", we just ignore the interrupt completely.
 
-This routine assumes :c:func:`__cli` is in effect when called.
+This routine assumes \\ :c:func:`__cli`\  is in effect when called.
 
 If an unexpected interrupt happens on irq15 while we are handling irq14
 and if the two interfaces are "serialized" (CMD640), then it looks like
-we could screw up by interfering with a new request being set up for 
+we could screw up by interfering with a new request being set up for
 irq15.
 
-In reality, this is a non-issue.  The new command is not sent unless 
+In reality, this is a non-issue.  The new command is not sent unless
 the drive is ready to accept one, in which case we know the drive is
-not trying to interrupt us.  And :c:func:`ide_set_handler` is always invoked
+not trying to interrupt us.  And \ :c:func:`ide_set_handler`\  is always invoked
 before completing the issuance of any new drive command, so we will not
 be accidentally invoked as a result of any valid command completion
 interrupt.
-
-
 
 .. _`ide_intr`:
 
 ide_intr
 ========
 
-.. c:function:: irqreturn_t ide_intr (int irq, void *dev_id)
+.. c:function:: irqreturn_t ide_intr(int irq, void *dev_id)
 
     default IDE interrupt handler
 
@@ -216,8 +183,6 @@ ide_intr
 
     :param void \*dev_id:
         hwif
-
-
 
 .. _`ide_intr.description`:
 
@@ -241,4 +206,6 @@ don't ever decide to give up.
 The handler eventually returns ide_stopped to indicate the
 request completed. At this point we issue the next request
 on the port and the process begins again.
+
+.. This file was automatic generated / don't edit.
 

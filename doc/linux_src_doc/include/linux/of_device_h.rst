@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-of_device.h
-===========
-
+.. src-file: include/linux/of_device.h
 
 .. _`of_driver_match_device`:
 
 of_driver_match_device
 ======================
 
-.. c:function:: int of_driver_match_device (struct device *dev, const struct device_driver *drv)
+.. c:function:: int of_driver_match_device(struct device *dev, const struct device_driver *drv)
 
     Tell if a driver's of_match_table matches a device.
 
@@ -19,4 +15,6 @@ of_driver_match_device
 
     :param const struct device_driver \*drv:
         the device_driver structure to test
+
+.. This file was automatic generated / don't edit.
 

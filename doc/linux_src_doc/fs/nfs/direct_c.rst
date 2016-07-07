@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-direct.c
-========
-
+.. src-file: fs/nfs/direct.c
 
 .. _`nfs_direct_io`:
 
 nfs_direct_IO
 =============
 
-.. c:function:: ssize_t nfs_direct_IO (struct kiocb *iocb, struct iov_iter *iter, loff_t pos)
+.. c:function:: ssize_t nfs_direct_IO(struct kiocb *iocb, struct iov_iter *iter)
 
     NFS address space operation for direct I/O
 
@@ -18,13 +14,7 @@ nfs_direct_IO
         target I/O control block
 
     :param struct iov_iter \*iter:
-
         *undescribed*
-
-    :param loff_t pos:
-        offset in file to begin the operation
-
-
 
 .. _`nfs_direct_io.description`:
 
@@ -36,14 +26,12 @@ the NFS client supports direct I/O. However, for most direct IO, we
 shunt off direct read and write requests before the VFS gets them,
 so this method is only ever called for swap.
 
-
-
 .. _`nfs_file_direct_read`:
 
 nfs_file_direct_read
 ====================
 
-.. c:function:: ssize_t nfs_file_direct_read (struct kiocb *iocb, struct iov_iter *iter, loff_t pos)
+.. c:function:: ssize_t nfs_file_direct_read(struct kiocb *iocb, struct iov_iter *iter)
 
     file direct read operation for NFS files
 
@@ -53,18 +41,13 @@ nfs_file_direct_read
     :param struct iov_iter \*iter:
         vector of user buffers into which to read data
 
-    :param loff_t pos:
-        byte offset in file where reading starts
-
-
-
 .. _`nfs_file_direct_read.description`:
 
 Description
 -----------
 
 We use this function for direct reads instead of calling
-:c:func:`generic_file_aio_read` in order to avoid gfar's check to see if
+\ :c:func:`generic_file_aio_read`\  in order to avoid gfar's check to see if
 the request starts before the end of the file.  For that check
 to work, we must generate a GETATTR before each direct read, and
 even then there is a window between the GETATTR and the subsequent
@@ -77,14 +60,12 @@ atime locally, as the NFS server sets the file's atime, and this
 client must read the updated atime from the server back into its
 cache.
 
-
-
 .. _`nfs_file_direct_write`:
 
 nfs_file_direct_write
 =====================
 
-.. c:function:: ssize_t nfs_file_direct_write (struct kiocb *iocb, struct iov_iter *iter)
+.. c:function:: ssize_t nfs_file_direct_write(struct kiocb *iocb, struct iov_iter *iter)
 
     file direct write operation for NFS files
 
@@ -94,15 +75,13 @@ nfs_file_direct_write
     :param struct iov_iter \*iter:
         vector of user buffers from which to write data
 
-
-
 .. _`nfs_file_direct_write.description`:
 
 Description
 -----------
 
 We use this function for direct writes instead of calling
-:c:func:`generic_file_aio_write` in order to avoid taking the inode
+\ :c:func:`generic_file_aio_write`\  in order to avoid taking the inode
 semaphore and updating the i_size.  The NFS server will set
 the new i_size and this client must read the updated size
 back into its cache.  We let the server do generic write
@@ -116,39 +95,29 @@ readers of this file.
 Note that O_APPEND is not supported for NFS direct writes, as there
 is no atomic O_APPEND write facility in the NFS protocol.
 
-
-
 .. _`nfs_init_directcache`:
 
 nfs_init_directcache
 ====================
 
-.. c:function:: int nfs_init_directcache ( void)
+.. c:function:: int nfs_init_directcache( void)
 
     create a slab cache for nfs_direct_req structures
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`nfs_destroy_directcache`:
 
 nfs_destroy_directcache
 =======================
 
-.. c:function:: void nfs_destroy_directcache ( void)
+.. c:function:: void nfs_destroy_directcache( void)
 
     destroy the slab cache for nfs_direct_req structures
 
-    :param void:
+    :param  void:
         no arguments
 
-
-
-.. _`nfs_destroy_directcache.description`:
-
-Description
------------
-
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-arizona.c
-=========
-
+.. src-file: sound/soc/codecs/arizona.c
 
 .. _`arizona_set_output_mode`:
 
 arizona_set_output_mode
 =======================
 
-.. c:function:: int arizona_set_output_mode (struct snd_soc_codec *codec, int output, bool diff)
+.. c:function:: int arizona_set_output_mode(struct snd_soc_codec *codec, int output, bool diff)
 
     Set the mode of the specified output
 
@@ -22,8 +18,6 @@ arizona_set_output_mode
 
     :param bool diff:
         True to set the output to differential mode
-
-
 
 .. _`arizona_set_output_mode.description`:
 
@@ -38,4 +32,6 @@ supported using this function.
 
 Most systems have a single static configuration and should use
 platform data instead.
+
+.. This file was automatic generated / don't edit.
 

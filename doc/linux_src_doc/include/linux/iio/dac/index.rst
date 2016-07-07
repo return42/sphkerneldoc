@@ -7,5 +7,5 @@ dac
 .. toctree::
    :maxdepth: 1
 
-   ad5421_h
-   ad5791_h
+    ad5421_h
+    ad5791_h

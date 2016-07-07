@@ -7,9 +7,12 @@ powerpc
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
-   kvm/index
-   mm/index
-   platforms/index
-   sysdev/index
-   xmon/index
+    boot/index
+    include/index
+    kernel/index
+    kvm/index
+    mm/index
+    oprofile/index
+    platforms/index
+    sysdev/index
+    xmon/index

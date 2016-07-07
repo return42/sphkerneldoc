@@ -1,31 +1,92 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. src-file: certs/system_keyring.c
 
-================
-system_keyring.c
-================
+.. _`restrict_link_by_builtin_trusted`:
 
+restrict_link_by_builtin_trusted
+================================
 
-.. _`system_verify_data`:
+.. c:function:: int restrict_link_by_builtin_trusted(struct key *keyring, const struct key_type *type, const union key_payload *payload)
 
-system_verify_data
-==================
+    Restrict keyring addition by built in CA
 
-.. c:function:: int system_verify_data (const void *data, unsigned long len, const void *raw_pkcs7, size_t pkcs7_len, enum key_being_used_for usage)
+    :param struct key \*keyring:
+        *undescribed*
 
-    based signature on system data.
+    :param const struct key_type \*type:
+        *undescribed*
+
+    :param const union key_payload \*payload:
+        *undescribed*
+
+.. _`restrict_link_by_builtin_trusted.description`:
+
+Description
+-----------
+
+Restrict the addition of keys into a keyring based on the key-to-be-added
+being vouched for by a key in the built in system keyring.
+
+.. _`restrict_link_by_builtin_and_secondary_trusted`:
+
+restrict_link_by_builtin_and_secondary_trusted
+==============================================
+
+.. c:function:: int restrict_link_by_builtin_and_secondary_trusted(struct key *keyring, const struct key_type *type, const union key_payload *payload)
+
+    Restrict keyring addition by both builtin and secondary keyrings
+
+    :param struct key \*keyring:
+        *undescribed*
+
+    :param const struct key_type \*type:
+        *undescribed*
+
+    :param const union key_payload \*payload:
+        *undescribed*
+
+.. _`restrict_link_by_builtin_and_secondary_trusted.description`:
+
+Description
+-----------
+
+Restrict the addition of keys into a keyring based on the key-to-be-added
+being vouched for by a key in either the built-in or the secondary system
+keyrings.
+
+.. _`verify_pkcs7_signature`:
+
+verify_pkcs7_signature
+======================
+
+.. c:function:: int verify_pkcs7_signature(const void *data, size_t len, const void *raw_pkcs7, size_t pkcs7_len, struct key *trusted_keys, enum key_being_used_for usage, int (*) view_content (void *ctx, const void *data, size_t len, size_t asn1hdrlen, void *ctx)
+
+    Verify a PKCS#7-based signature on system data.
 
     :param const void \*data:
-        The data to be verified.
+        The data to be verified (NULL if expecting internal data).
 
-    :param unsigned long len:
-        Size of ``data``\ .
+    :param size_t len:
+        Size of \ ``data``\ .
 
     :param const void \*raw_pkcs7:
         The PKCS#7 message that is the signature.
 
     :param size_t pkcs7_len:
-        The size of ``raw_pkcs7``\ .
+        The size of \ ``raw_pkcs7``\ .
+
+    :param struct key \*trusted_keys:
+        Trusted keys to use (NULL for builtin trusted keys only,
+        (void \*)1UL for all trusted keys).
 
     :param enum key_being_used_for usage:
         The use to which the key is being put.
+
+    :param (int (\*) view_content (void \*ctx, const void \*data, size_t len, size_t asn1hdrlen):
+        Callback to gain access to content.
+
+    :param void \*ctx:
+        Context for callback.
+
+.. This file was automatic generated / don't edit.
 

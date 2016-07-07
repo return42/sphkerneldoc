@@ -7,4 +7,4 @@ imu
 .. toctree::
    :maxdepth: 1
 
-   adis_h
+    adis_h

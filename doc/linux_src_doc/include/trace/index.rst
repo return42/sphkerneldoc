@@ -7,4 +7,4 @@ trace
 .. toctree::
    :maxdepth: 1
 
-   events/index
+    events/index

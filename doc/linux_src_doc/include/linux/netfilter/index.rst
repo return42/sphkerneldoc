@@ -7,4 +7,4 @@ netfilter
 .. toctree::
    :maxdepth: 1
 
-   x_tables_h
+    x_tables_h

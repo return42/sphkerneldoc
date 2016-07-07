@@ -7,5 +7,7 @@ infiniband
 .. toctree::
    :maxdepth: 1
 
-   core/index
-   sw/index
+    core/index
+    hw/index
+    sw/index
+    ulp/index

@@ -7,4 +7,8 @@ ima
 .. toctree::
    :maxdepth: 1
 
-   ima_main_c
+    ima_api_c
+    ima_appraise_c
+    ima_crypto_c
+    ima_main_c
+    ima_policy_c

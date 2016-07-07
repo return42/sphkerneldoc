@@ -7,5 +7,5 @@ common
 .. toctree::
    :maxdepth: 1
 
-   common_c
-   ulpi_c
+    common_c
+    ulpi_c

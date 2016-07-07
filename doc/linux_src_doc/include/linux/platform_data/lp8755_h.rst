@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-lp8755.h
-========
-
+.. src-file: include/linux/platform_data/lp8755.h
 
 .. _`lp8755_platform_data`:
 
 struct lp8755_platform_data
 ===========================
 
-.. c:type:: lp8755_platform_data
-
-    
+.. c:type:: struct lp8755_platform_data
 
 
 .. _`lp8755_platform_data.definition`:
@@ -22,17 +16,21 @@ Definition
 
 .. code-block:: c
 
-  struct lp8755_platform_data {
-    struct regulator_init_data * buck_data[LP8755_BUCK_MAX];
-  };
-
+    struct lp8755_platform_data {
+        int mphase;
+        struct regulator_init_data  *buck_data[LP8755_BUCK_MAX];
+    }
 
 .. _`lp8755_platform_data.members`:
 
 Members
 -------
 
-:``buck_data[LP8755_BUCK_MAX]``:
+mphase
+    *undescribed*
+
+buck_data
     buck0~6 init voltage in uV
 
+.. This file was automatic generated / don't edit.
 

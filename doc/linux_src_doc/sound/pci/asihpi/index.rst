@@ -7,5 +7,5 @@ asihpi
 .. toctree::
    :maxdepth: 1
 
-   asihpi_c
-   hpicmn_c
+    asihpi_c
+    hpicmn_c

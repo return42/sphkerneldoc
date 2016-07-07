@@ -7,5 +7,5 @@ capi
 .. toctree::
    :maxdepth: 1
 
-   capiutil_c
-   kcapi_c
+    capiutil_c
+    kcapi_c

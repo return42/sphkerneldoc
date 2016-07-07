@@ -1,0 +1,30 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/frequency/ad9832.c
+
+.. _`iio_dev_attr_freq`:
+
+IIO_DEV_ATTR_FREQ
+=================
+
+.. c:function::  IIO_DEV_ATTR_FREQ( 0,  0,  S_IWUSR,  NULL,  ad9832_write,  AD9832_FREQ0HM)
+
+    :param  0:
+        *undescribed*
+
+    :param  0:
+        *undescribed*
+
+    :param  S_IWUSR:
+        *undescribed*
+
+    :param  NULL:
+        *undescribed*
+
+    :param  ad9832_write:
+        *undescribed*
+
+    :param  AD9832_FREQ0HM:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

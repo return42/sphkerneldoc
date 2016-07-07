@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-tps65218.h
-==========
-
+.. src-file: include/linux/mfd/tps65218.h
 
 .. _`tps_info`:
 
 struct tps_info
 ===============
 
-.. c:type:: tps_info
+.. c:type:: struct tps_info
 
     packages regulator constraints
-
 
 .. _`tps_info.definition`:
 
@@ -22,33 +17,29 @@ Definition
 
 .. code-block:: c
 
-  struct tps_info {
-    int id;
-    const char * name;
-    int min_uV;
-    int max_uV;
-  };
-
+    struct tps_info {
+        int id;
+        const char *name;
+        int min_uV;
+        int max_uV;
+    }
 
 .. _`tps_info.members`:
 
 Members
 -------
 
-:``id``:
+id
     Id of the regulator
 
-:``name``:
+name
     Voltage regulator name
 
-:``min_uV``:
+min_uV
     minimum micro volts
 
-:``max_uV``:
+max_uV
     minimum micro volts
-
-
-
 
 .. _`tps_info.description`:
 
@@ -57,17 +48,14 @@ Description
 
 This data is used to check the regualtor voltage limits while setting.
 
-
-
 .. _`tps65218`:
 
 struct tps65218
 ===============
 
-.. c:type:: tps65218
+.. c:type:: struct tps65218
 
     tps65218 sub-driver chip access routines
-
 
 .. _`tps65218.definition`:
 
@@ -76,23 +64,50 @@ Definition
 
 .. code-block:: c
 
-  struct tps65218 {
-  };
-
+    struct tps65218 {
+        struct device *dev;
+        unsigned int id;
+        struct mutex tps_lock;
+        int irq;
+        u32 irq_mask;
+        struct regmap_irq_chip_data *irq_data;
+        struct regulator_desc desc[TPS65218_NUM_REGULATOR];
+        struct tps_info  *info[TPS65218_NUM_REGULATOR];
+        struct regmap *regmap;
+    }
 
 .. _`tps65218.members`:
 
 Members
 -------
 
+dev
+    *undescribed*
 
+id
+    *undescribed*
 
+tps_lock
+    *undescribed*
+
+irq
+    *undescribed*
+
+irq_mask
+    *undescribed*
+
+irq_data
+    *undescribed*
+
+regmap
+    *undescribed*
 
 .. _`tps65218.description`:
 
 Description
 -----------
 
-
 Device data may be used to access the TPS65218 chip
+
+.. This file was automatic generated / don't edit.
 

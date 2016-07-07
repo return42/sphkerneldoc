@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-scif_mmap.c
-===========
-
+.. src-file: drivers/misc/mic/scif/scif_mmap.c
 
 .. _`scif_vma_open`:
 
 scif_vma_open
 =============
 
-.. c:function:: void scif_vma_open (struct vm_area_struct *vma)
+.. c:function:: void scif_vma_open(struct vm_area_struct *vma)
 
     VMA open driver callback
 
@@ -25,14 +21,12 @@ scif_vma_open
         due to a call to munmap on a subset of the VMA resulting in two VMAs.
         The kernel invokes this function only on one of the two VMAs.
 
-
-
 .. _`scif_munmap`:
 
 scif_munmap
 ===========
 
-.. c:function:: void scif_munmap (struct vm_area_struct *vma)
+.. c:function:: void scif_munmap(struct vm_area_struct *vma)
 
     VMA close driver callback.
 
@@ -42,14 +36,12 @@ scif_munmap
         Note that there's no usage count associated with VMA's; the area
         is opened and closed exactly once by each process that uses it.
 
-
-
 .. _`scif_mmap`:
 
 scif_mmap
 =========
 
-.. c:function:: int scif_mmap (struct vm_area_struct *vma, scif_epd_t epd)
+.. c:function:: int scif_mmap(struct vm_area_struct *vma, scif_epd_t epd)
 
     Map pages in virtual address space to a remote window.
 
@@ -59,13 +51,13 @@ scif_mmap
     :param scif_epd_t epd:
         endpoint descriptor
 
-
-
 .. _`scif_mmap.return`:
 
 Return
 ------
 
-Upon successful completion, :c:func:`scif_mmap` returns zero
+Upon successful completion, \ :c:func:`scif_mmap`\  returns zero
 else an apt error is returned as documented in scif.h
+
+.. This file was automatic generated / don't edit.
 

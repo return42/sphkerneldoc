@@ -7,4 +7,5 @@ platform
 .. toctree::
    :maxdepth: 1
 
-   intel-quark/index
+    intel-quark/index
+    ts5500/index

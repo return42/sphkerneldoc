@@ -7,4 +7,4 @@ ntb
 .. toctree::
    :maxdepth: 1
 
-   ntb_transport_c
+    ntb_transport_c

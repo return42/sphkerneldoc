@@ -1,44 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-spinlock.h
-==========
-
+.. src-file: include/linux/spinlock.h
 
 .. _`raw_spin_unlock_wait`:
 
 raw_spin_unlock_wait
 ====================
 
-.. c:function:: raw_spin_unlock_wait ( lock)
+.. c:function::  raw_spin_unlock_wait( lock)
 
     wait until the spinlock gets unlocked
 
-    :param lock:
+    :param  lock:
         the spinlock in question.
-
-
 
 .. _`raw_spin_can_lock`:
 
 raw_spin_can_lock
 =================
 
-.. c:function:: raw_spin_can_lock ( lock)
+.. c:function::  raw_spin_can_lock( lock)
 
-    would raw_spin_trylock() succeed?
+    would \ :c:func:`raw_spin_trylock`\  succeed?
 
-    :param lock:
+    :param  lock:
         the spinlock in question.
-
-
 
 .. _`_atomic_dec_and_lock`:
 
 _atomic_dec_and_lock
 ====================
 
-.. c:function:: int _atomic_dec_and_lock (atomic_t *atomic, spinlock_t *lock)
+.. c:function:: int _atomic_dec_and_lock(atomic_t *atomic, spinlock_t *lock)
 
     lock on reaching reference count zero
 
@@ -48,13 +40,13 @@ _atomic_dec_and_lock
     :param spinlock_t \*lock:
         the spinlock in question
 
-
-
 .. _`_atomic_dec_and_lock.description`:
 
 Description
 -----------
 
-Decrements ``atomic`` by 1.  If the result is 0, returns true and locks
-``lock``\ .  Returns false for all other cases.
+Decrements \ ``atomic``\  by 1.  If the result is 0, returns true and locks
+\ ``lock``\ .  Returns false for all other cases.
+
+.. This file was automatic generated / don't edit.
 

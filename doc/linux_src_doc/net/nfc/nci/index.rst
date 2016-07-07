@@ -7,5 +7,5 @@ nci
 .. toctree::
    :maxdepth: 1
 
-   core_c
-   spi_c
+    core_c
+    spi_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-phy-sun4i-usb.h
-===============
-
+.. src-file: include/linux/phy/phy-sun4i-usb.h
 
 .. _`sun4i_usb_phy_set_squelch_detect`:
 
 sun4i_usb_phy_set_squelch_detect
 ================================
 
-.. c:function:: void sun4i_usb_phy_set_squelch_detect (struct phy *phy, bool enabled)
+.. c:function:: void sun4i_usb_phy_set_squelch_detect(struct phy *phy, bool enabled)
 
     Enable/disable squelch detect
 
@@ -19,4 +15,6 @@ sun4i_usb_phy_set_squelch_detect
 
     :param bool enabled:
         wether to enable or disable squelch detect
+
+.. This file was automatic generated / don't edit.
 

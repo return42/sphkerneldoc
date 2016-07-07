@@ -7,6 +7,6 @@ vx
 .. toctree::
    :maxdepth: 1
 
-   vx_cmd_c
-   vx_cmd_h
-   vx_core_c
+    vx_cmd_c
+    vx_cmd_h
+    vx_core_c

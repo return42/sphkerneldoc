@@ -1,0 +1,791 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/e1000e/82571.c
+
+.. _`e1000_init_phy_params_82571`:
+
+e1000_init_phy_params_82571
+===========================
+
+.. c:function:: s32 e1000_init_phy_params_82571(struct e1000_hw *hw)
+
+    Init PHY func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_nvm_params_82571`:
+
+e1000_init_nvm_params_82571
+===========================
+
+.. c:function:: s32 e1000_init_nvm_params_82571(struct e1000_hw *hw)
+
+    Init NVM func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_mac_params_82571`:
+
+e1000_init_mac_params_82571
+===========================
+
+.. c:function:: s32 e1000_init_mac_params_82571(struct e1000_hw *hw)
+
+    Init MAC func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_phy_id_82571`:
+
+e1000_get_phy_id_82571
+======================
+
+.. c:function:: s32 e1000_get_phy_id_82571(struct e1000_hw *hw)
+
+    Retrieve the PHY ID and revision
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_phy_id_82571.description`:
+
+Description
+-----------
+
+Reads the PHY registers and stores the PHY ID and possibly the PHY
+revision in the hardware structure.
+
+.. _`e1000_get_hw_semaphore_82571`:
+
+e1000_get_hw_semaphore_82571
+============================
+
+.. c:function:: s32 e1000_get_hw_semaphore_82571(struct e1000_hw *hw)
+
+    Acquire hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_hw_semaphore_82571.description`:
+
+Description
+-----------
+
+Acquire the HW semaphore to access the PHY or NVM
+
+.. _`e1000_put_hw_semaphore_82571`:
+
+e1000_put_hw_semaphore_82571
+============================
+
+.. c:function:: void e1000_put_hw_semaphore_82571(struct e1000_hw *hw)
+
+    Release hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_put_hw_semaphore_82571.description`:
+
+Description
+-----------
+
+Release hardware semaphore used to access the PHY or NVM
+
+.. _`e1000_get_hw_semaphore_82573`:
+
+e1000_get_hw_semaphore_82573
+============================
+
+.. c:function:: s32 e1000_get_hw_semaphore_82573(struct e1000_hw *hw)
+
+    Acquire hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_hw_semaphore_82573.description`:
+
+Description
+-----------
+
+Acquire the HW semaphore during reset.
+
+.. _`e1000_put_hw_semaphore_82573`:
+
+e1000_put_hw_semaphore_82573
+============================
+
+.. c:function:: void e1000_put_hw_semaphore_82573(struct e1000_hw *hw)
+
+    Release hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_put_hw_semaphore_82573.description`:
+
+Description
+-----------
+
+Release hardware semaphore used during reset.
+
+.. _`e1000_get_hw_semaphore_82574`:
+
+e1000_get_hw_semaphore_82574
+============================
+
+.. c:function:: s32 e1000_get_hw_semaphore_82574(struct e1000_hw *hw)
+
+    Acquire hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_hw_semaphore_82574.description`:
+
+Description
+-----------
+
+Acquire the HW semaphore to access the PHY or NVM.
+
+.. _`e1000_put_hw_semaphore_82574`:
+
+e1000_put_hw_semaphore_82574
+============================
+
+.. c:function:: void e1000_put_hw_semaphore_82574(struct e1000_hw *hw)
+
+    Release hardware semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_put_hw_semaphore_82574.description`:
+
+Description
+-----------
+
+Release hardware semaphore used to access the PHY or NVM
+
+.. _`e1000_set_d0_lplu_state_82574`:
+
+e1000_set_d0_lplu_state_82574
+=============================
+
+.. c:function:: s32 e1000_set_d0_lplu_state_82574(struct e1000_hw *hw, bool active)
+
+    Set Low Power Linkup D0 state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        true to enable LPLU, false to disable
+
+.. _`e1000_set_d0_lplu_state_82574.description`:
+
+Description
+-----------
+
+Sets the LPLU D0 state according to the active flag.
+LPLU will not be activated unless the
+device autonegotiation advertisement meets standards of
+either 10 or 10/100 or 10/100/1000 at all duplexes.
+This is a function pointer entry point only called by
+PHY setup routines.
+
+.. _`e1000_set_d3_lplu_state_82574`:
+
+e1000_set_d3_lplu_state_82574
+=============================
+
+.. c:function:: s32 e1000_set_d3_lplu_state_82574(struct e1000_hw *hw, bool active)
+
+    Sets low power link up state for D3
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        boolean used to enable/disable lplu
+
+.. _`e1000_set_d3_lplu_state_82574.description`:
+
+Description
+-----------
+
+The low power link up (lplu) state is set to the power management level D3
+when active is true, else clear lplu for D3. LPLU
+is used during Dx states where the power conservation is most important.
+During driver activity, SmartSpeed should be enabled so performance is
+maintained.
+
+.. _`e1000_acquire_nvm_82571`:
+
+e1000_acquire_nvm_82571
+=======================
+
+.. c:function:: s32 e1000_acquire_nvm_82571(struct e1000_hw *hw)
+
+    Request for access to the EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_acquire_nvm_82571.description`:
+
+Description
+-----------
+
+To gain access to the EEPROM, first we must obtain a hardware semaphore.
+Then for non-82573 hardware, set the EEPROM access request bit and wait
+for EEPROM access grant bit.  If the access grant bit is not set, release
+hardware semaphore.
+
+.. _`e1000_release_nvm_82571`:
+
+e1000_release_nvm_82571
+=======================
+
+.. c:function:: void e1000_release_nvm_82571(struct e1000_hw *hw)
+
+    Release exclusive access to EEPROM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_release_nvm_82571.description`:
+
+Description
+-----------
+
+Stop any current commands to the EEPROM and clear the EEPROM request bit.
+
+.. _`e1000_write_nvm_82571`:
+
+e1000_write_nvm_82571
+=====================
+
+.. c:function:: s32 e1000_write_nvm_82571(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Write to EEPROM using appropriate interface
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset within the EEPROM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        16 bit word(s) to be written to the EEPROM
+
+.. _`e1000_write_nvm_82571.description`:
+
+Description
+-----------
+
+For non-82573 silicon, write data to EEPROM at offset using SPI interface.
+
+If e1000e_update_nvm_checksum is not called after this function, the
+EEPROM will most likely contain an invalid checksum.
+
+.. _`e1000_update_nvm_checksum_82571`:
+
+e1000_update_nvm_checksum_82571
+===============================
+
+.. c:function:: s32 e1000_update_nvm_checksum_82571(struct e1000_hw *hw)
+
+    Update EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_update_nvm_checksum_82571.description`:
+
+Description
+-----------
+
+Updates the EEPROM checksum by reading/adding each word of the EEPROM
+up to the checksum.  Then calculates the EEPROM checksum and writes the
+value to the EEPROM.
+
+.. _`e1000_validate_nvm_checksum_82571`:
+
+e1000_validate_nvm_checksum_82571
+=================================
+
+.. c:function:: s32 e1000_validate_nvm_checksum_82571(struct e1000_hw *hw)
+
+    Validate EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_validate_nvm_checksum_82571.description`:
+
+Description
+-----------
+
+Calculates the EEPROM checksum by reading/adding each word of the EEPROM
+and then verifies that the sum of the EEPROM is equal to 0xBABA.
+
+.. _`e1000_write_nvm_eewr_82571`:
+
+e1000_write_nvm_eewr_82571
+==========================
+
+.. c:function:: s32 e1000_write_nvm_eewr_82571(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Write to EEPROM for 82573 silicon
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset within the EEPROM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        16 bit word(s) to be written to the EEPROM
+
+.. _`e1000_write_nvm_eewr_82571.description`:
+
+Description
+-----------
+
+After checking for invalid values, poll the EEPROM to ensure the previous
+command has completed before trying to write the next word.  After write
+poll for completion.
+
+If e1000e_update_nvm_checksum is not called after this function, the
+EEPROM will most likely contain an invalid checksum.
+
+.. _`e1000_get_cfg_done_82571`:
+
+e1000_get_cfg_done_82571
+========================
+
+.. c:function:: s32 e1000_get_cfg_done_82571(struct e1000_hw *hw)
+
+    Poll for configuration done
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_cfg_done_82571.description`:
+
+Description
+-----------
+
+Reads the management control register for the config done bit to be set.
+
+.. _`e1000_set_d0_lplu_state_82571`:
+
+e1000_set_d0_lplu_state_82571
+=============================
+
+.. c:function:: s32 e1000_set_d0_lplu_state_82571(struct e1000_hw *hw, bool active)
+
+    Set Low Power Linkup D0 state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool active:
+        true to enable LPLU, false to disable
+
+.. _`e1000_set_d0_lplu_state_82571.description`:
+
+Description
+-----------
+
+Sets the LPLU D0 state according to the active flag.  When activating LPLU
+this function also disables smart speed and vice versa.  LPLU will not be
+activated unless the device autonegotiation advertisement meets standards
+of either 10 or 10/100 or 10/100/1000 at all duplexes.  This is a function
+pointer entry point only called by PHY setup routines.
+
+.. _`e1000_reset_hw_82571`:
+
+e1000_reset_hw_82571
+====================
+
+.. c:function:: s32 e1000_reset_hw_82571(struct e1000_hw *hw)
+
+    Reset hardware
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_reset_hw_82571.description`:
+
+Description
+-----------
+
+This resets the hardware into a known state.
+
+.. _`e1000_init_hw_82571`:
+
+e1000_init_hw_82571
+===================
+
+.. c:function:: s32 e1000_init_hw_82571(struct e1000_hw *hw)
+
+    Initialize hardware
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_hw_82571.description`:
+
+Description
+-----------
+
+This inits the hardware readying it for operation.
+
+.. _`e1000_initialize_hw_bits_82571`:
+
+e1000_initialize_hw_bits_82571
+==============================
+
+.. c:function:: void e1000_initialize_hw_bits_82571(struct e1000_hw *hw)
+
+    Initialize hardware-dependent bits
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_initialize_hw_bits_82571.description`:
+
+Description
+-----------
+
+Initializes required hardware-dependent bits needed for normal operation.
+
+.. _`e1000_clear_vfta_82571`:
+
+e1000_clear_vfta_82571
+======================
+
+.. c:function:: void e1000_clear_vfta_82571(struct e1000_hw *hw)
+
+    Clear VLAN filter table
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_clear_vfta_82571.description`:
+
+Description
+-----------
+
+Clears the register array which contains the VLAN filter table by
+setting all the values to 0.
+
+.. _`e1000_check_mng_mode_82574`:
+
+e1000_check_mng_mode_82574
+==========================
+
+.. c:function:: bool e1000_check_mng_mode_82574(struct e1000_hw *hw)
+
+    Check manageability is enabled
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_check_mng_mode_82574.description`:
+
+Description
+-----------
+
+Reads the NVM Initialization Control Word 2 and returns true
+(>0) if any manageability is enabled, else false (0).
+
+.. _`e1000_led_on_82574`:
+
+e1000_led_on_82574
+==================
+
+.. c:function:: s32 e1000_led_on_82574(struct e1000_hw *hw)
+
+    Turn LED on
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_led_on_82574.description`:
+
+Description
+-----------
+
+Turn LED on.
+
+.. _`e1000_check_phy_82574`:
+
+e1000_check_phy_82574
+=====================
+
+.. c:function:: bool e1000_check_phy_82574(struct e1000_hw *hw)
+
+    check 82574 phy hung state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_check_phy_82574.description`:
+
+Description
+-----------
+
+Returns whether phy is hung or not
+
+.. _`e1000_setup_link_82571`:
+
+e1000_setup_link_82571
+======================
+
+.. c:function:: s32 e1000_setup_link_82571(struct e1000_hw *hw)
+
+    Setup flow control and link settings
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_setup_link_82571.description`:
+
+Description
+-----------
+
+Determines which flow control settings to use, then configures flow
+control.  Calls the appropriate media-specific link configuration
+function.  Assuming the adapter has a valid link partner, a valid link
+should be established.  Assumes the hardware has previously been reset
+and the transmitter and receiver are not enabled.
+
+.. _`e1000_setup_copper_link_82571`:
+
+e1000_setup_copper_link_82571
+=============================
+
+.. c:function:: s32 e1000_setup_copper_link_82571(struct e1000_hw *hw)
+
+    Configure copper link settings
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_setup_copper_link_82571.description`:
+
+Description
+-----------
+
+Configures the link for auto-neg or forced speed and duplex.  Then we check
+for link, once link is established calls to configure collision distance
+and flow control are called.
+
+.. _`e1000_setup_fiber_serdes_link_82571`:
+
+e1000_setup_fiber_serdes_link_82571
+===================================
+
+.. c:function:: s32 e1000_setup_fiber_serdes_link_82571(struct e1000_hw *hw)
+
+    Setup link for fiber/serdes
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_setup_fiber_serdes_link_82571.description`:
+
+Description
+-----------
+
+Configures collision distance and flow control for fiber and serdes links.
+Upon successful setup, poll for link.
+
+.. _`e1000_check_for_serdes_link_82571`:
+
+e1000_check_for_serdes_link_82571
+=================================
+
+.. c:function:: s32 e1000_check_for_serdes_link_82571(struct e1000_hw *hw)
+
+    Check for link (Serdes)
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_check_for_serdes_link_82571.description`:
+
+Description
+-----------
+
+Reports the link state as up or down.
+
+If autonegotiation is supported by the link partner, the link state is
+determined by the result of autonegotiation. This is the most likely case.
+If autonegotiation is not supported by the link partner, and the link
+has a valid signal, force the link up.
+
+.. _`e1000_check_for_serdes_link_82571.the-link-state-is-represented-internally-here-by-4-states`:
+
+The link state is represented internally here by 4 states
+---------------------------------------------------------
+
+
+1) down
+2) autoneg_progress
+3) autoneg_complete (the link successfully autonegotiated)
+4) forced_up (the link has been forced up, it did not autonegotiate)
+
+.. _`e1000_valid_led_default_82571`:
+
+e1000_valid_led_default_82571
+=============================
+
+.. c:function:: s32 e1000_valid_led_default_82571(struct e1000_hw *hw, u16 *data)
+
+    Verify a valid default LED config
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 \*data:
+        pointer to the NVM (EEPROM)
+
+.. _`e1000_valid_led_default_82571.description`:
+
+Description
+-----------
+
+Read the EEPROM for the current default LED configuration.  If the
+LED configuration is not valid, set to a valid LED configuration.
+
+.. _`e1000e_get_laa_state_82571`:
+
+e1000e_get_laa_state_82571
+==========================
+
+.. c:function:: bool e1000e_get_laa_state_82571(struct e1000_hw *hw)
+
+    Get locally administered address state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000e_get_laa_state_82571.description`:
+
+Description
+-----------
+
+Retrieve and return the current locally administered address state.
+
+.. _`e1000e_set_laa_state_82571`:
+
+e1000e_set_laa_state_82571
+==========================
+
+.. c:function:: void e1000e_set_laa_state_82571(struct e1000_hw *hw, bool state)
+
+    Set locally administered address state
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param bool state:
+        enable/disable locally administered address
+
+.. _`e1000e_set_laa_state_82571.description`:
+
+Description
+-----------
+
+Enable/Disable the current locally administered address state.
+
+.. _`e1000_fix_nvm_checksum_82571`:
+
+e1000_fix_nvm_checksum_82571
+============================
+
+.. c:function:: s32 e1000_fix_nvm_checksum_82571(struct e1000_hw *hw)
+
+    Fix EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_fix_nvm_checksum_82571.description`:
+
+Description
+-----------
+
+Verifies that the EEPROM has completed the update.  After updating the
+EEPROM, we need to check bit 15 in work 0x23 for the checksum fix.  If
+the checksum fix is not implemented, we need to set the bit and update
+the checksum.  Otherwise, if bit 15 is set and the checksum is incorrect,
+we need to return bad checksum.
+
+.. _`e1000_read_mac_addr_82571`:
+
+e1000_read_mac_addr_82571
+=========================
+
+.. c:function:: s32 e1000_read_mac_addr_82571(struct e1000_hw *hw)
+
+    Read device MAC address
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_power_down_phy_copper_82571`:
+
+e1000_power_down_phy_copper_82571
+=================================
+
+.. c:function:: void e1000_power_down_phy_copper_82571(struct e1000_hw *hw)
+
+    Remove link during PHY power down
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_power_down_phy_copper_82571.description`:
+
+Description
+-----------
+
+In the case of a PHY power down to save power, or to turn off link during a
+driver unload, or wake on lan is not enabled, remove the link.
+
+.. _`e1000_clear_hw_cntrs_82571`:
+
+e1000_clear_hw_cntrs_82571
+==========================
+
+.. c:function:: void e1000_clear_hw_cntrs_82571(struct e1000_hw *hw)
+
+    Clear device specific hardware counters
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_clear_hw_cntrs_82571.description`:
+
+Description
+-----------
+
+Clears the hardware counters by reading the counter registers.
+
+.. This file was automatic generated / don't edit.
+

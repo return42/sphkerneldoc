@@ -7,6 +7,6 @@ abx500
 .. toctree::
    :maxdepth: 1
 
-   ab8500-bm_h
-   ab8500_h
-   ux500_chargalg_h
+    ab8500-bm_h
+    ab8500_h
+    ux500_chargalg_h

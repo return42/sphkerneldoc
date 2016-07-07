@@ -7,6 +7,6 @@ amba
 .. toctree::
    :maxdepth: 1
 
-   mmci_h
-   pl022_h
-   pl08x_h
+    mmci_h
+    pl022_h
+    pl08x_h

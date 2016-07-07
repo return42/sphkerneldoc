@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-adf_pf2vf_msg.c
-===============
-
+.. src-file: drivers/crypto/qat/qat_common/adf_pf2vf_msg.c
 
 .. _`adf_iov_putmsg`:
 
 adf_iov_putmsg
 ==============
 
-.. c:function:: int adf_iov_putmsg (struct adf_accel_dev *accel_dev, u32 msg, u8 vf_nr)
+.. c:function:: int adf_iov_putmsg(struct adf_accel_dev *accel_dev, u32 msg, u8 vf_nr)
 
     send PF2VF message
 
@@ -23,16 +19,12 @@ adf_iov_putmsg
     :param u8 vf_nr:
         VF number to which the message will be sent
 
-
-
 .. _`adf_iov_putmsg.description`:
 
 Description
 -----------
 
 Function sends a messge from the PF to a VF
-
-
 
 .. _`adf_iov_putmsg.return`:
 
@@ -41,21 +33,17 @@ Return
 
 0 on success, error code otherwise.
 
-
-
 .. _`adf_enable_vf2pf_comms`:
 
 adf_enable_vf2pf_comms
 ======================
 
-.. c:function:: int adf_enable_vf2pf_comms (struct adf_accel_dev *accel_dev)
+.. c:function:: int adf_enable_vf2pf_comms(struct adf_accel_dev *accel_dev)
 
     Function enables communication from vf to pf
 
     :param struct adf_accel_dev \*accel_dev:
         Pointer to acceleration device virtual function.
-
-
 
 .. _`adf_enable_vf2pf_comms.return`:
 
@@ -63,4 +51,6 @@ Return
 ------
 
 0 on success, error code otherwise.
+
+.. This file was automatic generated / don't edit.
 

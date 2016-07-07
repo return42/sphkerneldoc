@@ -7,4 +7,8 @@ nfc
 .. toctree::
    :maxdepth: 1
 
-   fdp/index
+    fdp/index
+    nfcmrvl/index
+    st-nci/index
+    st21nfca/index
+    mei_phy_h

@@ -7,4 +7,5 @@ ti-st
 .. toctree::
    :maxdepth: 1
 
-   st_core_c
+    st_core_c
+    st_kim_c

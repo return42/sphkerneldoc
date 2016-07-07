@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-rslib.h
-=======
-
+.. src-file: include/linux/rslib.h
 
 .. _`rs_control`:
 
 struct rs_control
 =================
 
-.. c:type:: rs_control
+.. c:type:: struct rs_control
 
     rs control structure
-
 
 .. _`rs_control.definition`:
 
@@ -22,65 +17,65 @@ Definition
 
 .. code-block:: c
 
-  struct rs_control {
-    int mm;
-    int nn;
-    uint16_t * alpha_to;
-    uint16_t * index_of;
-    uint16_t * genpoly;
-    int nroots;
-    int fcr;
-    int prim;
-    int iprim;
-    int gfpoly;
-    int (* gffunc) (int);
-    int users;
-    struct list_head list;
-  };
-
+    struct rs_control {
+        int mm;
+        int nn;
+        uint16_t *alpha_to;
+        uint16_t *index_of;
+        uint16_t *genpoly;
+        int nroots;
+        int fcr;
+        int prim;
+        int iprim;
+        int gfpoly;
+        int (* gffunc) (int);
+        int users;
+        struct list_head list;
+    }
 
 .. _`rs_control.members`:
 
 Members
 -------
 
-:``mm``:
+mm
     Bits per symbol
 
-:``nn``:
+nn
     Symbols per block (= (1<<mm)-1)
 
-:``alpha_to``:
+alpha_to
     log lookup table
 
-:``index_of``:
+index_of
     Antilog lookup table
 
-:``genpoly``:
+genpoly
     Generator polynomial
 
-:``nroots``:
+nroots
     Number of generator roots = number of parity symbols
 
-:``fcr``:
+fcr
     First consecutive root, index form
 
-:``prim``:
+prim
     Primitive element, index form
 
-:``iprim``:
+iprim
     prim-th root of 1, index form
 
-:``gfpoly``:
+gfpoly
     The primitive generator polynominal
 
-:``gffunc``:
+gffunc
     Function to generate the field, if non-canonical representation
 
-:``users``:
+users
     Users of this structure
 
-:``list``:
+list
     List entry for the rs control list
 
+.. This file was automatic generated / don't edit.
 

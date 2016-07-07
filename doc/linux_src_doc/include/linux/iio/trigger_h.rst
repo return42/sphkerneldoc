@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-trigger.h
-=========
-
+.. src-file: include/linux/iio/trigger.h
 
 .. _`iio_trigger_ops`:
 
 struct iio_trigger_ops
 ======================
 
-.. c:type:: iio_trigger_ops
+.. c:type:: struct iio_trigger_ops
 
     operations structure for an iio_trigger.
-
 
 .. _`iio_trigger_ops.definition`:
 
@@ -22,35 +17,31 @@ Definition
 
 .. code-block:: c
 
-  struct iio_trigger_ops {
-    struct module * owner;
-    int (* set_trigger_state) (struct iio_trigger *trig, bool state);
-    int (* try_reenable) (struct iio_trigger *trig);
-    int (* validate_device) (struct iio_trigger *trig,struct iio_dev *indio_dev);
-  };
-
+    struct iio_trigger_ops {
+        struct module *owner;
+        int (* set_trigger_state) (struct iio_trigger *trig, bool state);
+        int (* try_reenable) (struct iio_trigger *trig);
+        int (* validate_device) (struct iio_trigger *trig,struct iio_dev *indio_dev);
+    }
 
 .. _`iio_trigger_ops.members`:
 
 Members
 -------
 
-:``owner``:
+owner
     used to monitor usage count of the trigger.
 
-:``set_trigger_state``:
+set_trigger_state
     switch on/off the trigger on demand
 
-:``try_reenable``:
+try_reenable
     function to reenable the trigger when the
     use count is zero (may be NULL)
 
-:``validate_device``:
+validate_device
     function to validate the device when the
     current trigger gets changed.
-
-
-
 
 .. _`iio_trigger_ops.description`:
 
@@ -60,17 +51,14 @@ Description
 This is typically static const within a driver and shared by
 instances of a given device.
 
-
-
 .. _`iio_trigger`:
 
 struct iio_trigger
 ==================
 
-.. c:type:: iio_trigger
+.. c:type:: struct iio_trigger
 
     industrial I/O trigger device
-
 
 .. _`iio_trigger.definition`:
 
@@ -79,72 +67,68 @@ Definition
 
 .. code-block:: c
 
-  struct iio_trigger {
-    const struct iio_trigger_ops * ops;
-    int id;
-    const char * name;
-    struct device dev;
-    struct list_head list;
-    struct list_head alloc_list;
-    atomic_t use_count;
-    struct irq_chip subirq_chip;
-    int subirq_base;
-    struct iio_subirq subirqs[CONFIG_IIO_CONSUMERS_PER_TRIGGER];
-    unsigned long pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)];
-    struct mutex pool_lock;
-  };
-
+    struct iio_trigger {
+        const struct iio_trigger_ops *ops;
+        int id;
+        const char *name;
+        struct device dev;
+        struct list_head list;
+        struct list_head alloc_list;
+        atomic_t use_count;
+        struct irq_chip subirq_chip;
+        int subirq_base;
+        struct iio_subirq subirqs[CONFIG_IIO_CONSUMERS_PER_TRIGGER];
+        unsigned long pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)];
+        struct mutex pool_lock;
+    }
 
 .. _`iio_trigger.members`:
 
 Members
 -------
 
-:``ops``:
+ops
     [DRIVER] operations structure
 
-:``id``:
+id
     [INTERN] unique id number
 
-:``name``:
+name
     [DRIVER] unique name
 
-:``dev``:
+dev
     [DRIVER] associated device (if relevant)
 
-:``list``:
+list
     [INTERN] used in maintenance of global trigger list
 
-:``alloc_list``:
+alloc_list
     [DRIVER] used for driver specific trigger list
 
-:``use_count``:
+use_count
     use count for the trigger
 
-:``subirq_chip``:
+subirq_chip
     [INTERN] associate 'virtual' irq chip.
 
-:``subirq_base``:
+subirq_base
     [INTERN] base number for irqs provided by trigger.
 
-:``subirqs[CONFIG_IIO_CONSUMERS_PER_TRIGGER]``:
+subirqs
     [INTERN] information about the 'child' irqs.
 
-:``pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)]``:
+pool
     [INTERN] bitmap of irqs currently in use.
 
-:``pool_lock``:
+pool_lock
     [INTERN] protection of the irq pool.
-
-
-
 
 .. _`iio_trigger_set_drvdata`:
 
 iio_trigger_set_drvdata
 =======================
 
-.. c:function:: void iio_trigger_set_drvdata (struct iio_trigger *trig, void *data)
+.. c:function:: void iio_trigger_set_drvdata(struct iio_trigger *trig, void *data)
 
     Set trigger driver data
 
@@ -154,82 +138,68 @@ iio_trigger_set_drvdata
     :param void \*data:
         Driver specific data
 
-
-
 .. _`iio_trigger_set_drvdata.description`:
 
 Description
 -----------
 
 Allows to attach an arbitrary pointer to an IIO trigger, which can later be
-retrieved by :c:func:`iio_trigger_get_drvdata`.
-
-
+retrieved by \ :c:func:`iio_trigger_get_drvdata`\ .
 
 .. _`iio_trigger_get_drvdata`:
 
 iio_trigger_get_drvdata
 =======================
 
-.. c:function:: void *iio_trigger_get_drvdata (struct iio_trigger *trig)
+.. c:function:: void *iio_trigger_get_drvdata(struct iio_trigger *trig)
 
     Get trigger driver data
 
     :param struct iio_trigger \*trig:
         IIO trigger structure
 
-
-
 .. _`iio_trigger_get_drvdata.description`:
 
 Description
 -----------
 
-Returns the data previously set with :c:func:`iio_trigger_set_drvdata`
-
-
+Returns the data previously set with \ :c:func:`iio_trigger_set_drvdata`\ 
 
 .. _`iio_trigger_register`:
 
 iio_trigger_register
 ====================
 
-.. c:function:: int iio_trigger_register (struct iio_trigger *trig_info)
+.. c:function:: int iio_trigger_register(struct iio_trigger *trig_info)
 
     register a trigger with the IIO core
 
     :param struct iio_trigger \*trig_info:
         trigger to be registered
 
-
-
 .. _`iio_trigger_unregister`:
 
 iio_trigger_unregister
 ======================
 
-.. c:function:: void iio_trigger_unregister (struct iio_trigger *trig_info)
+.. c:function:: void iio_trigger_unregister(struct iio_trigger *trig_info)
 
     unregister a trigger from the core
 
     :param struct iio_trigger \*trig_info:
         trigger to be unregistered
 
-
-
 .. _`iio_trigger_poll`:
 
 iio_trigger_poll
 ================
 
-.. c:function:: void iio_trigger_poll (struct iio_trigger *trig)
+.. c:function:: void iio_trigger_poll(struct iio_trigger *trig)
 
     called on a trigger occurring
 
     :param struct iio_trigger \*trig:
         trigger which occurred
-
-
 
 .. _`iio_trigger_poll.description`:
 
@@ -237,4 +207,6 @@ Description
 -----------
 
 Typically called in relevant hardware interrupt handler.
+
+.. This file was automatic generated / don't edit.
 

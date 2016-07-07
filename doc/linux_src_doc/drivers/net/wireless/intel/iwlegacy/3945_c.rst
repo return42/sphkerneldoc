@@ -1,0 +1,504 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/3945.c
+
+.. _`il3945_disable_events`:
+
+il3945_disable_events
+=====================
+
+.. c:function:: void il3945_disable_events(struct il_priv *il)
+
+    Disable selected events in uCode event log
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_disable_events.description`:
+
+Description
+-----------
+
+Disable an event by writing "1"s into "disable"
+bitmap in SRAM.  Bit position corresponds to Event # (id/type).
+Default values of 0 enable uCode events to be logged.
+Use for only special debugging.  This function is just a placeholder as-is,
+you'll need to provide the special bits! ...
+
+.. _`il3945_tx_queue_reclaim`:
+
+il3945_tx_queue_reclaim
+=======================
+
+.. c:function:: void il3945_tx_queue_reclaim(struct il_priv *il, int txq_id, int idx)
+
+    Reclaim Tx queue entries already Tx'd
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param int txq_id:
+        *undescribed*
+
+    :param int idx:
+        *undescribed*
+
+.. _`il3945_tx_queue_reclaim.description`:
+
+Description
+-----------
+
+When FW advances 'R' idx, all entries between old and new 'R' idx
+need to be reclaimed. As result, some free space forms. If there is
+enough free space (> low mark), wake the stack that feeds us.
+
+.. _`il3945_hdl_tx`:
+
+il3945_hdl_tx
+=============
+
+.. c:function:: void il3945_hdl_tx(struct il_priv *il, struct il_rx_buf *rxb)
+
+    Handle Tx response
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_rx_buf \*rxb:
+        *undescribed*
+
+.. _`il3945_hw_txq_free_tfd`:
+
+il3945_hw_txq_free_tfd
+======================
+
+.. c:function:: void il3945_hw_txq_free_tfd(struct il_priv *il, struct il_tx_queue *txq)
+
+    Free one TFD, those at idx [txq->q.read_ptr]
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_tx_queue \*txq:
+        *undescribed*
+
+.. _`il3945_hw_txq_free_tfd.description`:
+
+Description
+-----------
+
+Does NOT advance any idxes
+
+.. _`il3945_hw_build_tx_cmd_rate`:
+
+il3945_hw_build_tx_cmd_rate
+===========================
+
+.. c:function:: void il3945_hw_build_tx_cmd_rate(struct il_priv *il, struct il_device_cmd *cmd, struct ieee80211_tx_info *info, struct ieee80211_hdr *hdr, int sta_id)
+
+    Add rate portion to TX_CMD:
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_device_cmd \*cmd:
+        *undescribed*
+
+    :param struct ieee80211_tx_info \*info:
+        *undescribed*
+
+    :param struct ieee80211_hdr \*hdr:
+        *undescribed*
+
+    :param int sta_id:
+        *undescribed*
+
+.. _`il3945_txq_ctx_reset`:
+
+il3945_txq_ctx_reset
+====================
+
+.. c:function:: int il3945_txq_ctx_reset(struct il_priv *il)
+
+    Reset TX queue context
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_txq_ctx_reset.description`:
+
+Description
+-----------
+
+Destroys all DMA structures and initialize them again
+
+.. _`il3945_hw_txq_ctx_free`:
+
+il3945_hw_txq_ctx_free
+======================
+
+.. c:function:: void il3945_hw_txq_ctx_free(struct il_priv *il)
+
+    Free TXQ Context
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_hw_txq_ctx_free.description`:
+
+Description
+-----------
+
+Destroy all TX DMA queues and structures
+
+.. _`il3945_hw_reg_adjust_power_by_temp`:
+
+il3945_hw_reg_adjust_power_by_temp
+==================================
+
+.. c:function:: int il3945_hw_reg_adjust_power_by_temp(int new_reading, int old_reading)
+
+    return idx delta into power gain settings table
+
+    :param int new_reading:
+        *undescribed*
+
+    :param int old_reading:
+        *undescribed*
+
+.. _`il3945_hw_reg_temp_out_of_range`:
+
+il3945_hw_reg_temp_out_of_range
+===============================
+
+.. c:function:: int il3945_hw_reg_temp_out_of_range(int temperature)
+
+    Keep temperature in sane range
+
+    :param int temperature:
+        *undescribed*
+
+.. _`il3945_hw_reg_txpower_get_temperature`:
+
+il3945_hw_reg_txpower_get_temperature
+=====================================
+
+.. c:function:: int il3945_hw_reg_txpower_get_temperature(struct il_priv *il)
+
+    get the current temperature by reading from NIC
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_is_temp_calib_needed`:
+
+il3945_is_temp_calib_needed
+===========================
+
+.. c:function:: int il3945_is_temp_calib_needed(struct il_priv *il)
+
+    determines if new calibration is needed
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_is_temp_calib_needed.description`:
+
+Description
+-----------
+
+records new temperature in tx_mgr->temperature.
+replaces tx_mgr->last_temperature \*only\* if calib needed
+
+.. _`il3945_hw_reg_set_scan_power`:
+
+il3945_hw_reg_set_scan_power
+============================
+
+.. c:function:: void il3945_hw_reg_set_scan_power(struct il_priv *il, u32 scan_tbl_idx, s32 rate_idx, const s8 *clip_pwrs, struct il_channel_info *ch_info, int band_idx)
+
+    Set Tx power for scan probe requests
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u32 scan_tbl_idx:
+        *undescribed*
+
+    :param s32 rate_idx:
+        *undescribed*
+
+    :param const s8 \*clip_pwrs:
+        *undescribed*
+
+    :param struct il_channel_info \*ch_info:
+        *undescribed*
+
+    :param int band_idx:
+        *undescribed*
+
+.. _`il3945_hw_reg_set_scan_power.description`:
+
+Description
+-----------
+
+Set (in our channel info database) the direct scan Tx power for 1 Mbit (CCK)
+or 6 Mbit (OFDM) rates.
+
+.. _`il3945_send_tx_power`:
+
+il3945_send_tx_power
+====================
+
+.. c:function:: int il3945_send_tx_power(struct il_priv *il)
+
+    fill in Tx Power command with gain settings
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_send_tx_power.description`:
+
+Description
+-----------
+
+Configures power settings for all rates for the current channel,
+using values from channel info struct, and send to NIC
+
+.. _`il3945_hw_reg_set_new_power`:
+
+il3945_hw_reg_set_new_power
+===========================
+
+.. c:function:: int il3945_hw_reg_set_new_power(struct il_priv *il, struct il_channel_info *ch_info)
+
+    Configures power tables at new levels
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_channel_info \*ch_info:
+        Channel to update.  Uses power_info.requested_power.
+
+.. _`il3945_hw_reg_set_new_power.description`:
+
+Description
+-----------
+
+Replace requested_power and base_power_idx ch_info fields for
+one channel.
+
+Called if user or spectrum management changes power preferences.
+Takes into account h/w and modulation limitations (clip power).
+
+This does \*not\* send anything to NIC, just sets up ch_info for one channel.
+
+.. _`il3945_hw_reg_set_new_power.note`:
+
+NOTE
+----
+
+\ :c:func:`reg_compensate_for_temperature_dif`\  \*must\* be run after this to
+properly fill out the scan powers, and actual h/w gain settings,
+and send changes to NIC
+
+.. _`il3945_hw_reg_get_ch_txpower_limit`:
+
+il3945_hw_reg_get_ch_txpower_limit
+==================================
+
+.. c:function:: int il3945_hw_reg_get_ch_txpower_limit(struct il_channel_info *ch_info)
+
+    returns new power limit for channel
+
+    :param struct il_channel_info \*ch_info:
+        *undescribed*
+
+.. _`il3945_hw_reg_get_ch_txpower_limit.note`:
+
+NOTE
+----
+
+Returned power limit may be less (but not more) than requested,
+based strictly on regulatory (eeprom and spectrum mgt) limitations
+(no consideration for h/w clipping limitations).
+
+.. _`il3945_hw_reg_comp_txpower_temp`:
+
+il3945_hw_reg_comp_txpower_temp
+===============================
+
+.. c:function:: int il3945_hw_reg_comp_txpower_temp(struct il_priv *il)
+
+    Compensate for temperature
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_hw_reg_comp_txpower_temp.description`:
+
+Description
+-----------
+
+Compensate txpower settings of \*all\* channels for temperature.
+This only accounts for the difference between current temperature
+and the factory calibration temperatures, and bases the new settings
+on the channel's base_power_idx.
+
+If RxOn is "associated", this sends the new Txpower to NIC!
+
+.. _`il3945_commit_rxon`:
+
+il3945_commit_rxon
+==================
+
+.. c:function:: int il3945_commit_rxon(struct il_priv *il)
+
+    commit staging_rxon to hardware
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_commit_rxon.description`:
+
+Description
+-----------
+
+The RXON command in staging_rxon is committed to the hardware and
+the active_rxon structure is updated with the new data.  This
+function correctly transitions out of the RXON_ASSOC_MSK state if
+a HW tune is required based on the RXON structure changes.
+
+.. _`il3945_reg_txpower_periodic`:
+
+il3945_reg_txpower_periodic
+===========================
+
+.. c:function:: void il3945_reg_txpower_periodic(struct il_priv *il)
+
+    called when time to check our temperature.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_reg_txpower_periodic.description`:
+
+Description
+-----------
+
+-- reset periodic timer
+-- see if temp has changed enough to warrant re-calibration ... if so:
+-- correct coeffs for temp (can reset temp timer)
+-- save this temp as "last",
+-- send new set of gain settings to NIC
+
+.. _`il3945_reg_txpower_periodic.note`:
+
+NOTE
+----
+
+This should continue working, even when we're not associated,
+
+.. _`il3945_hw_reg_get_ch_grp_idx`:
+
+il3945_hw_reg_get_ch_grp_idx
+============================
+
+.. c:function:: u16 il3945_hw_reg_get_ch_grp_idx(struct il_priv *il, const struct il_channel_info *ch_info)
+
+    find the channel-group idx (0-4) for channel.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param const struct il_channel_info \*ch_info:
+        *undescribed*
+
+.. _`il3945_hw_reg_get_ch_grp_idx.description`:
+
+Description
+-----------
+
+This function is used when initializing channel-info structs.
+
+.. _`il3945_hw_reg_get_ch_grp_idx.note`:
+
+NOTE
+----
+
+These channel groups do \*NOT\* match the bands above!
+These channel groups are based on factory-tested channels;
+on A-band, EEPROM's "group frequency" entries represent the top
+channel in each group 1-4.  Group 5 All B/G channels are in group 0.
+
+.. _`il3945_hw_reg_get_matched_power_idx`:
+
+il3945_hw_reg_get_matched_power_idx
+===================================
+
+.. c:function:: int il3945_hw_reg_get_matched_power_idx(struct il_priv *il, s8 requested_power, s32 setting_idx, s32 *new_idx)
+
+    Interpolate to get nominal idx
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param s8 requested_power:
+        *undescribed*
+
+    :param s32 setting_idx:
+        *undescribed*
+
+    :param s32 \*new_idx:
+        *undescribed*
+
+.. _`il3945_hw_reg_get_matched_power_idx.description`:
+
+Description
+-----------
+
+Interpolate to get nominal (i.e. at factory calibration temperature) idx
+into radio/DSP gain settings table for requested power.
+
+.. _`il3945_txpower_set_from_eeprom`:
+
+il3945_txpower_set_from_eeprom
+==============================
+
+.. c:function:: int il3945_txpower_set_from_eeprom(struct il_priv *il)
+
+    Set channel power info based on EEPROM
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_txpower_set_from_eeprom.description`:
+
+Description
+-----------
+
+Second pass (during init) to set up il->channel_info
+
+Set up Tx-power settings in our channel info database for each VALID
+(for this geo/SKU) channel, at all Tx data rates, based on eeprom values
+and current temperature.
+
+Since this is based on current temperature (at init time), these values may
+not be valid for very long, but it gives us a starting/default point,
+and allows us to active (i.e. using Tx) scan.
+
+This does \*not\* write values to NIC, just sets up our internal table.
+
+.. _`il3945_init_hw_rate_table`:
+
+il3945_init_hw_rate_table
+=========================
+
+.. c:function:: int il3945_init_hw_rate_table(struct il_priv *il)
+
+    Initialize the hardware rate fallback table
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

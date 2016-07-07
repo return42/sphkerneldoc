@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-input.h
-=======
-
+.. src-file: include/uapi/linux/input.h
 
 .. _`input_absinfo`:
 
 struct input_absinfo
 ====================
 
-.. c:type:: input_absinfo
+.. c:type:: struct input_absinfo
 
     used by EVIOCGABS/EVIOCSABS ioctls
-
 
 .. _`input_absinfo.definition`:
 
@@ -22,44 +17,40 @@ Definition
 
 .. code-block:: c
 
-  struct input_absinfo {
-    __s32 value;
-    __s32 minimum;
-    __s32 maximum;
-    __s32 fuzz;
-    __s32 flat;
-    __s32 resolution;
-  };
-
+    struct input_absinfo {
+        __s32 value;
+        __s32 minimum;
+        __s32 maximum;
+        __s32 fuzz;
+        __s32 flat;
+        __s32 resolution;
+    }
 
 .. _`input_absinfo.members`:
 
 Members
 -------
 
-:``value``:
+value
     latest reported value for the axis.
 
-:``minimum``:
+minimum
     specifies minimum value for the axis.
 
-:``maximum``:
+maximum
     specifies maximum value for the axis.
 
-:``fuzz``:
+fuzz
     specifies fuzz value that is used to filter noise from
     the event stream.
 
-:``flat``:
+flat
     values that are within this value will be discarded by
     joydev interface and reported as 0 instead.
 
-:``resolution``:
+resolution
     specifies resolution for the values reported for
     the axis.
-
-
-
 
 .. _`input_absinfo.description`:
 
@@ -73,17 +64,14 @@ Resolution for main axes (ABS_X, ABS_Y, ABS_Z) is reported in
 units per millimeter (units/mm), resolution for rotational axes
 (ABS_RX, ABS_RY, ABS_RZ) is reported in units per radian.
 
-
-
 .. _`input_keymap_entry`:
 
 struct input_keymap_entry
 =========================
 
-.. c:type:: input_keymap_entry
+.. c:type:: struct input_keymap_entry
 
     used by EVIOCGKEYCODE/EVIOCSKEYCODE ioctls
-
 
 .. _`input_keymap_entry.definition`:
 
@@ -92,40 +80,36 @@ Definition
 
 .. code-block:: c
 
-  struct input_keymap_entry {
-    #define INPUT_KEYMAP_BY_INDEX	(1 \\\lt;\\\lt; 0)
-    __u8 flags;
-    __u8 len;
-    __u16 index;
-    __u32 keycode;
-    __u8 scancode[32];
-  };
-
+    struct input_keymap_entry {
+        #define INPUT_KEYMAP_BY_INDEX (1 << 0)
+        __u8 flags;
+        __u8 len;
+        __u16 index;
+        __u32 keycode;
+        __u8 scancode[32];
+    }
 
 .. _`input_keymap_entry.members`:
 
 Members
 -------
 
-:``flags``:
+flags
     allows to specify how kernel should handle the request. For
     example, setting INPUT_KEYMAP_BY_INDEX flag indicates that kernel
-    should perform lookup in keymap by ``index`` instead of ``scancode``
+    should perform lookup in keymap by \ ``index``\  instead of \ ``scancode``\ 
 
-:``len``:
-    length of the scancode that resides in ``scancode`` buffer.
+len
+    length of the scancode that resides in \ ``scancode``\  buffer.
 
-:``index``:
+index
     index in the keymap, may be used instead of scancode
 
-:``keycode``:
+keycode
     key code assigned to this scancode
 
-:``scancode[32]``:
+scancode
     scancode represented in machine-endian form.
-
-
-
 
 .. _`input_keymap_entry.description`:
 
@@ -133,25 +117,21 @@ Description
 -----------
 
 The structure is used to retrieve and modify keymap data. Users have
-option of performing lookup either by ``scancode`` itself or by ``index``
+option of performing lookup either by \ ``scancode``\  itself or by \ ``index``\ 
 in keymap entry. EVIOCGKEYCODE will also return scancode or index
 (depending on which element was used to perform lookup).
-
-
 
 .. _`eviocgmtslots`:
 
 EVIOCGMTSLOTS
 =============
 
-.. c:function:: EVIOCGMTSLOTS ( len)
+.. c:function::  EVIOCGMTSLOTS( len)
 
     get MT slot values
 
-    :param len:
+    :param  len:
         size of the data buffer in bytes
-
-
 
 .. _`eviocgmtslots.description`:
 
@@ -161,15 +141,14 @@ Description
 The ioctl buffer argument should be binary equivalent to
 
 struct input_mt_request_layout {
-__u32 code;
-__s32 values[num_slots];
-
+\__u32 code;
+\__s32 values[num_slots];
 };
 
 where num_slots is the (arbitrary) number of MT slots to extract.
 
 The ioctl size argument (len) is the size of the buffer, which
-should satisfy len = (num_slots + 1) * sizeof(__s32).  If len is
+should satisfy len = (num_slots + 1) \* sizeof(__s32).  If len is
 too small to fit all available slots, the first num_slots are
 returned.
 
@@ -179,24 +158,19 @@ ABS_MT code.
 
 If the request code is not an ABS_MT value, -EINVAL is returned.
 
-
-
 .. _`eviocgmask`:
 
 EVIOCGMASK
 ==========
 
-.. c:function:: EVIOCGMASK ()
+.. c:function::  EVIOCGMASK()
 
     Retrieve current event mask
-
-
 
 .. _`eviocgmask.description`:
 
 Description
 -----------
-
 
 This ioctl allows user to retrieve the current event mask for specific
 event type. The argument must be of type "struct input_mask" and
@@ -224,24 +198,19 @@ This ioctl may fail with ENODEV in case the file is revoked, EFAULT
 if the receive-buffer points to invalid memory, or EINVAL if the kernel
 does not implement the ioctl.
 
-
-
 .. _`eviocsmask`:
 
 EVIOCSMASK
 ==========
 
-.. c:function:: EVIOCSMASK ()
+.. c:function::  EVIOCSMASK()
 
     Set event mask
-
-
 
 .. _`eviocsmask.description`:
 
 Description
 -----------
-
 
 This ioctl is the counterpart to EVIOCGMASK. Instead of receiving the
 current event mask, this changes the client's event mask for a specific
@@ -261,17 +230,14 @@ This ioctl may fail with ENODEV in case the file is revoked. EFAULT is
 returned if the receive-buffer points to invalid memory. EINVAL is returned
 if the kernel does not implement the ioctl.
 
-
-
 .. _`ff_replay`:
 
 struct ff_replay
 ================
 
-.. c:type:: ff_replay
+.. c:type:: struct ff_replay
 
     defines scheduling of the force-feedback effect
-
 
 .. _`ff_replay.definition`:
 
@@ -280,35 +246,30 @@ Definition
 
 .. code-block:: c
 
-  struct ff_replay {
-    __u16 length;
-    __u16 delay;
-  };
-
+    struct ff_replay {
+        __u16 length;
+        __u16 delay;
+    }
 
 .. _`ff_replay.members`:
 
 Members
 -------
 
-:``length``:
+length
     duration of the effect
 
-:``delay``:
+delay
     delay before effect should start playing
-
-
-
 
 .. _`ff_trigger`:
 
 struct ff_trigger
 =================
 
-.. c:type:: ff_trigger
+.. c:type:: struct ff_trigger
 
     defines what triggers the force-feedback effect
-
 
 .. _`ff_trigger.definition`:
 
@@ -317,35 +278,30 @@ Definition
 
 .. code-block:: c
 
-  struct ff_trigger {
-    __u16 button;
-    __u16 interval;
-  };
-
+    struct ff_trigger {
+        __u16 button;
+        __u16 interval;
+    }
 
 .. _`ff_trigger.members`:
 
 Members
 -------
 
-:``button``:
+button
     number of the button triggering the effect
 
-:``interval``:
+interval
     controls how soon the effect can be re-triggered
-
-
-
 
 .. _`ff_envelope`:
 
 struct ff_envelope
 ==================
 
-.. c:type:: ff_envelope
+.. c:type:: struct ff_envelope
 
     generic force-feedback effect envelope
-
 
 .. _`ff_envelope.definition`:
 
@@ -354,55 +310,48 @@ Definition
 
 .. code-block:: c
 
-  struct ff_envelope {
-    __u16 attack_length;
-    __u16 attack_level;
-    __u16 fade_length;
-    __u16 fade_level;
-  };
-
+    struct ff_envelope {
+        __u16 attack_length;
+        __u16 attack_level;
+        __u16 fade_length;
+        __u16 fade_level;
+    }
 
 .. _`ff_envelope.members`:
 
 Members
 -------
 
-:``attack_length``:
+attack_length
     duration of the attack (ms)
 
-:``attack_level``:
+attack_level
     level at the beginning of the attack
 
-:``fade_length``:
+fade_length
     duration of fade (ms)
 
-:``fade_level``:
+fade_level
     level at the end of fade
-
-
-
 
 .. _`ff_envelope.description`:
 
 Description
 -----------
 
-The ``attack_level`` and ``fade_level`` are absolute values; when applying
+The \ ``attack_level``\  and \ ``fade_level``\  are absolute values; when applying
 envelope force-feedback core will convert to positive/negative
 value based on polarity of the default level of the effect.
 Valid range for the attack and fade levels is 0x0000 - 0x7fff
-
-
 
 .. _`ff_constant_effect`:
 
 struct ff_constant_effect
 =========================
 
-.. c:type:: ff_constant_effect
+.. c:type:: struct ff_constant_effect
 
     defines parameters of a constant force-feedback effect
-
 
 .. _`ff_constant_effect.definition`:
 
@@ -411,35 +360,30 @@ Definition
 
 .. code-block:: c
 
-  struct ff_constant_effect {
-    __s16 level;
-    struct ff_envelope envelope;
-  };
-
+    struct ff_constant_effect {
+        __s16 level;
+        struct ff_envelope envelope;
+    }
 
 .. _`ff_constant_effect.members`:
 
 Members
 -------
 
-:``level``:
+level
     strength of the effect; may be negative
 
-:``envelope``:
+envelope
     envelope data
-
-
-
 
 .. _`ff_ramp_effect`:
 
 struct ff_ramp_effect
 =====================
 
-.. c:type:: ff_ramp_effect
+.. c:type:: struct ff_ramp_effect
 
     defines parameters of a ramp force-feedback effect
-
 
 .. _`ff_ramp_effect.definition`:
 
@@ -448,39 +392,34 @@ Definition
 
 .. code-block:: c
 
-  struct ff_ramp_effect {
-    __s16 start_level;
-    __s16 end_level;
-    struct ff_envelope envelope;
-  };
-
+    struct ff_ramp_effect {
+        __s16 start_level;
+        __s16 end_level;
+        struct ff_envelope envelope;
+    }
 
 .. _`ff_ramp_effect.members`:
 
 Members
 -------
 
-:``start_level``:
+start_level
     beginning strength of the effect; may be negative
 
-:``end_level``:
+end_level
     final strength of the effect; may be negative
 
-:``envelope``:
+envelope
     envelope data
-
-
-
 
 .. _`ff_condition_effect`:
 
 struct ff_condition_effect
 ==========================
 
-.. c:type:: ff_condition_effect
+.. c:type:: struct ff_condition_effect
 
     defines a spring or friction force-feedback effect
-
 
 .. _`ff_condition_effect.definition`:
 
@@ -489,52 +428,47 @@ Definition
 
 .. code-block:: c
 
-  struct ff_condition_effect {
-    __u16 right_saturation;
-    __u16 left_saturation;
-    __s16 right_coeff;
-    __s16 left_coeff;
-    __u16 deadband;
-    __s16 center;
-  };
-
+    struct ff_condition_effect {
+        __u16 right_saturation;
+        __u16 left_saturation;
+        __s16 right_coeff;
+        __s16 left_coeff;
+        __u16 deadband;
+        __s16 center;
+    }
 
 .. _`ff_condition_effect.members`:
 
 Members
 -------
 
-:``right_saturation``:
+right_saturation
     maximum level when joystick moved all way to the right
 
-:``left_saturation``:
+left_saturation
     same for the left side
 
-:``right_coeff``:
+right_coeff
     controls how fast the force grows when the joystick moves
     to the right
 
-:``left_coeff``:
+left_coeff
     same for the left side
 
-:``deadband``:
+deadband
     size of the dead zone, where no force is produced
 
-:``center``:
+center
     position of the dead zone
-
-
-
 
 .. _`ff_periodic_effect`:
 
 struct ff_periodic_effect
 =========================
 
-.. c:type:: ff_periodic_effect
+.. c:type:: struct ff_periodic_effect
 
     defines parameters of a periodic force-feedback effect
-
 
 .. _`ff_periodic_effect.definition`:
 
@@ -543,49 +477,45 @@ Definition
 
 .. code-block:: c
 
-  struct ff_periodic_effect {
-    __u16 waveform;
-    __u16 period;
-    __s16 magnitude;
-    __s16 offset;
-    __u16 phase;
-    struct ff_envelope envelope;
-    __u32 custom_len;
-    __s16 __user * custom_data;
-  };
-
+    struct ff_periodic_effect {
+        __u16 waveform;
+        __u16 period;
+        __s16 magnitude;
+        __s16 offset;
+        __u16 phase;
+        struct ff_envelope envelope;
+        __u32 custom_len;
+        __s16 __user *custom_data;
+    }
 
 .. _`ff_periodic_effect.members`:
 
 Members
 -------
 
-:``waveform``:
+waveform
     kind of the effect (wave)
 
-:``period``:
+period
     period of the wave (ms)
 
-:``magnitude``:
+magnitude
     peak value
 
-:``offset``:
+offset
     mean value of the wave (roughly)
 
-:``phase``:
+phase
     'horizontal' shift
 
-:``envelope``:
+envelope
     envelope data
 
-:``custom_len``:
+custom_len
     number of samples (FF_CUSTOM only)
 
-:``custom_data``:
+custom_data
     buffer of samples (FF_CUSTOM only)
-
-
-
 
 .. _`ff_periodic_effect.description`:
 
@@ -596,8 +526,6 @@ Known waveforms - FF_SQUARE, FF_TRIANGLE, FF_SINE, FF_SAW_UP,
 FF_SAW_DOWN, FF_CUSTOM. The exact syntax FF_CUSTOM is undefined
 for the time being as no driver supports it yet.
 
-
-
 .. _`ff_periodic_effect.note`:
 
 Note
@@ -606,17 +534,14 @@ Note
 the data pointed by custom_data is copied by the driver.
 You can therefore dispose of the memory after the upload/update.
 
-
-
 .. _`ff_rumble_effect`:
 
 struct ff_rumble_effect
 =======================
 
-.. c:type:: ff_rumble_effect
+.. c:type:: struct ff_rumble_effect
 
     defines parameters of a periodic force-feedback effect
-
 
 .. _`ff_rumble_effect.definition`:
 
@@ -625,25 +550,21 @@ Definition
 
 .. code-block:: c
 
-  struct ff_rumble_effect {
-    __u16 strong_magnitude;
-    __u16 weak_magnitude;
-  };
-
+    struct ff_rumble_effect {
+        __u16 strong_magnitude;
+        __u16 weak_magnitude;
+    }
 
 .. _`ff_rumble_effect.members`:
 
 Members
 -------
 
-:``strong_magnitude``:
+strong_magnitude
     magnitude of the heavy motor
 
-:``weak_magnitude``:
+weak_magnitude
     magnitude of the light one
-
-
-
 
 .. _`ff_rumble_effect.description`:
 
@@ -653,17 +574,14 @@ Description
 Some rumble pads have two motors of different weight. Strong_magnitude
 represents the magnitude of the vibration generated by the heavy one.
 
-
-
 .. _`ff_effect`:
 
 struct ff_effect
 ================
 
-.. c:type:: ff_effect
+.. c:type:: struct ff_effect
 
     defines force feedback effect
-
 
 .. _`ff_effect.definition`:
 
@@ -672,44 +590,40 @@ Definition
 
 .. code-block:: c
 
-  struct ff_effect {
-    __u16 type;
-    __s16 id;
-    __u16 direction;
-    struct ff_trigger trigger;
-    struct ff_replay replay;
-    union u;
-  };
-
+    struct ff_effect {
+        __u16 type;
+        __s16 id;
+        __u16 direction;
+        struct ff_trigger trigger;
+        struct ff_replay replay;
+        union u;
+    }
 
 .. _`ff_effect.members`:
 
 Members
 -------
 
-:``type``:
+type
     type of the effect (FF_CONSTANT, FF_PERIODIC, FF_RAMP, FF_SPRING,
     FF_FRICTION, FF_DAMPER, FF_RUMBLE, FF_INERTIA, or FF_CUSTOM)
 
-:``id``:
+id
     an unique id assigned to an effect
 
-:``direction``:
+direction
     direction of the effect
 
-:``trigger``:
+trigger
     trigger conditions (struct ff_trigger)
 
-:``replay``:
+replay
     scheduling of the effect (struct ff_replay)
 
-:``u``:
+u
     effect-specific structure (one of ff_constant_effect, ff_ramp_effect,
     ff_periodic_effect, ff_condition_effect, ff_rumble_effect) further
     defining effect parameters
-
-
-
 
 .. _`ff_effect.description`:
 
@@ -717,11 +631,9 @@ Description
 -----------
 
 This structure is sent through ioctl from the application to the driver.
-To create a new effect application should set its ``id`` to -1; the kernel
-will return assigned ``id`` which can later be used to update or delete
+To create a new effect application should set its \ ``id``\  to -1; the kernel
+will return assigned \ ``id``\  which can later be used to update or delete
 this effect.
-
-
 
 .. _`ff_effect.direction-of-the-effect-is-encoded-as-follows`:
 
@@ -732,4 +644,6 @@ Direction of the effect is encoded as follows
 90 deg -> 0x4000 (left)
 180 deg -> 0x8000 (up)
 270 deg -> 0xC000 (right)
+
+.. This file was automatic generated / don't edit.
 

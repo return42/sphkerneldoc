@@ -7,5 +7,6 @@ evm
 .. toctree::
    :maxdepth: 1
 
-   evm_crypto_c
-   evm_main_c
+    evm_crypto_c
+    evm_main_c
+    evm_secfs_c

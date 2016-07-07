@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-mixart_hwdep.c
-==============
-
+.. src-file: sound/pci/mixart/mixart_hwdep.c
 
 .. _`mixart_wait_nice_for_register_value`:
 
 mixart_wait_nice_for_register_value
 ===================================
 
-.. c:function:: int mixart_wait_nice_for_register_value (struct mixart_mgr *mgr, u32 offset, int is_egal, u32 value, unsigned long timeout)
+.. c:function:: int mixart_wait_nice_for_register_value(struct mixart_mgr *mgr, u32 offset, int is_egal, u32 value, unsigned long timeout)
 
     :param struct mixart_mgr \*mgr:
         pointer to miXart manager structure
@@ -26,4 +22,6 @@ mixart_wait_nice_for_register_value
 
     :param unsigned long timeout:
         timeout in centisenconds
+
+.. This file was automatic generated / don't edit.
 

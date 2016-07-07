@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/health/afe4404.c
+
+.. _`afe4404_data`:
+
+struct afe4404_data
+===================
+
+.. c:type:: struct afe4404_data
+
+    \ ``dev``\  - Device structure \ ``regmap``\  - Register map of the device \ ``regulator``\  - Pointer to the regulator for the IC \ ``trig``\  - IIO trigger for this device \ ``irq``\  - ADC_RDY line interrupt number
+
+.. _`afe4404_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct afe4404_data {
+        struct device *dev;
+        struct regmap *regmap;
+        struct regulator *regulator;
+        struct iio_trigger *trig;
+        int irq;
+    }
+
+.. _`afe4404_data.members`:
+
+Members
+-------
+
+dev
+    *undescribed*
+
+regmap
+    *undescribed*
+
+regulator
+    *undescribed*
+
+trig
+    *undescribed*
+
+irq
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

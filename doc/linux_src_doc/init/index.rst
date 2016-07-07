@@ -7,4 +7,4 @@ init
 .. toctree::
    :maxdepth: 1
 
-   do_mounts_c
+    do_mounts_c

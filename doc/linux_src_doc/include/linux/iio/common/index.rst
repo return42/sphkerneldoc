@@ -7,5 +7,5 @@ common
 .. toctree::
    :maxdepth: 1
 
-   ssp_sensors_h
-   st_sensors_h
+    ssp_sensors_h
+    st_sensors_h

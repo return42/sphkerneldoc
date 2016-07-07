@@ -7,5 +7,5 @@ sn2
 .. toctree::
    :maxdepth: 1
 
-   cache_c
-   sn2_smp_c
+    cache_c
+    sn2_smp_c

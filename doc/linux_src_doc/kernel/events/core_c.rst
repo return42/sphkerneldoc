@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-core.c
-======
-
+.. src-file: kernel/events/core.c
 
 .. _`task_function_call`:
 
 task_function_call
 ==================
 
-.. c:function:: int task_function_call (struct task_struct *p, remote_function_f func, void *info)
+.. c:function:: int task_function_call(struct task_struct *p, remote_function_f func, void *info)
 
     call a function on the cpu on which a task runs
 
@@ -23,40 +19,33 @@ task_function_call
     :param void \*info:
         the function call argument
 
-
-
 .. _`task_function_call.description`:
 
 Description
 -----------
 
-Calls the function ``func`` when the task is currently running. This might
+Calls the function \ ``func``\  when the task is currently running. This might
 be on the current CPU, which just calls the function directly
 
+.. _`task_function_call.return`:
 
+Return
+------
 
-.. _`task_function_call.returns`:
-
-returns
--------
-
-``func`` return value, or
+\ ``func``\  return value, or
 -ESRCH  - when the process isn't running
 -EAGAIN - when the process moved away
-
-
 
 .. _`cpu_function_call`:
 
 cpu_function_call
 =================
 
-.. c:function:: int cpu_function_call (int cpu, remote_function_f func, void *info)
+.. c:function:: int cpu_function_call(int cpu, remote_function_f func, void *info)
 
     call a function on the cpu
 
     :param int cpu:
-
         *undescribed*
 
     :param remote_function_f func:
@@ -65,32 +54,26 @@ cpu_function_call
     :param void \*info:
         the function call argument
 
-
-
 .. _`cpu_function_call.description`:
 
 Description
 -----------
 
-Calls the function ``func`` on the remote cpu.
+Calls the function \ ``func``\  on the remote cpu.
 
+.. _`cpu_function_call.return`:
 
+Return
+------
 
-.. _`cpu_function_call.returns`:
-
-returns
--------
-
-``func`` return value or -ENXIO when the cpu is offline
-
-
+\ ``func``\  return value or -ENXIO when the cpu is offline
 
 .. _`sys_perf_event_open`:
 
 sys_perf_event_open
 ===================
 
-.. c:function:: long sys_perf_event_open (struct perf_event_attr __user *attr_uptr, pid_t pid, int cpu, int group_fd, unsigned long flags)
+.. c:function:: long sys_perf_event_open(struct perf_event_attr __user *attr_uptr, pid_t pid, int cpu, int group_fd, unsigned long flags)
 
     open a performance event, associate it to a task/cpu
 
@@ -107,17 +90,14 @@ sys_perf_event_open
         group leader event fd
 
     :param unsigned long flags:
-
         *undescribed*
-
-
 
 .. _`perf_event_create_kernel_counter`:
 
 perf_event_create_kernel_counter
 ================================
 
-.. c:function:: struct perf_event *perf_event_create_kernel_counter (struct perf_event_attr *attr, int cpu, struct task_struct *task, perf_overflow_handler_t overflow_handler, void *context)
+.. c:function:: struct perf_event *perf_event_create_kernel_counter(struct perf_event_attr *attr, int cpu, struct task_struct *task, perf_overflow_handler_t overflow_handler, void *context)
 
     :param struct perf_event_attr \*attr:
         attributes of the counter to create
@@ -129,10 +109,10 @@ perf_event_create_kernel_counter
         task to profile (NULL for percpu)
 
     :param perf_overflow_handler_t overflow_handler:
-
         *undescribed*
 
     :param void \*context:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

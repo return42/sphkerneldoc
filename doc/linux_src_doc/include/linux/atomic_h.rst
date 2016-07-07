@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-atomic.h
-========
-
+.. src-file: include/linux/atomic.h
 
 .. _`atomic_add_unless`:
 
 atomic_add_unless
 =================
 
-.. c:function:: int atomic_add_unless (atomic_t *v, int a, int u)
+.. c:function:: int atomic_add_unless(atomic_t *v, int a, int u)
 
     add unless the number is already a given value
 
@@ -23,48 +19,40 @@ atomic_add_unless
     :param int u:
         ...unless v is equal to u.
 
-
-
 .. _`atomic_add_unless.description`:
 
 Description
 -----------
 
-Atomically adds ``a`` to ``v``\ , so long as ``v`` was not already ``u``\ .
-Returns non-zero if ``v`` was not ``u``\ , and zero otherwise.
-
-
+Atomically adds \ ``a``\  to \ ``v``\ , so long as \ ``v``\  was not already \ ``u``\ .
+Returns non-zero if \ ``v``\  was not \ ``u``\ , and zero otherwise.
 
 .. _`atomic_inc_not_zero`:
 
 atomic_inc_not_zero
 ===================
 
-.. c:function:: atomic_inc_not_zero ( v)
+.. c:function::  atomic_inc_not_zero( v)
 
     increment unless the number is zero
 
-    :param v:
+    :param  v:
         pointer of type atomic_t
-
-
 
 .. _`atomic_inc_not_zero.description`:
 
 Description
 -----------
 
-Atomically increments ``v`` by 1, so long as ``v`` is non-zero.
-Returns non-zero if ``v`` was non-zero, and zero otherwise.
-
-
+Atomically increments \ ``v``\  by 1, so long as \ ``v``\  is non-zero.
+Returns non-zero if \ ``v``\  was non-zero, and zero otherwise.
 
 .. _`atomic_inc_not_zero_hint`:
 
 atomic_inc_not_zero_hint
 ========================
 
-.. c:function:: int atomic_inc_not_zero_hint (atomic_t *v, int hint)
+.. c:function:: int atomic_inc_not_zero_hint(atomic_t *v, int hint)
 
     increment if not null
 
@@ -74,41 +62,37 @@ atomic_inc_not_zero_hint
     :param int hint:
         probable value of the atomic before the increment
 
-
-
 .. _`atomic_inc_not_zero_hint.description`:
 
 Description
 -----------
 
-This version of :c:func:`atomic_inc_not_zero` gives a hint of probable
+This version of \ :c:func:`atomic_inc_not_zero`\  gives a hint of probable
 value of the atomic. This helps processor to not read the memory
 before doing the atomic read/modify/write cycle, lowering
 number of bus transactions on some arches.
 
+.. _`atomic_inc_not_zero_hint.return`:
 
-
-.. _`atomic_inc_not_zero_hint.returns`:
-
-Returns
--------
+Return
+------
 
 0 if increment was not done, 1 otherwise.
-
-
 
 .. _`atomic_fetch_or`:
 
 atomic_fetch_or
 ===============
 
-.. c:function:: int atomic_fetch_or (atomic_t *p, int mask)
+.. c:function:: int atomic_fetch_or(int mask, atomic_t *p)
 
-    perform \*p |= mask and return old value of \*p
+    perform \*p \|= mask and return old value of \*p
+
+    :param int mask:
+        mask to OR on the atomic_t
 
     :param atomic_t \*p:
         pointer to atomic_t
 
-    :param int mask:
-        mask to OR on the atomic_t
+.. This file was automatic generated / don't edit.
 

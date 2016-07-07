@@ -1,0 +1,282 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/4965.c
+
+.. _`il4965_verify_inst_sparse`:
+
+il4965_verify_inst_sparse
+=========================
+
+.. c:function:: int il4965_verify_inst_sparse(struct il_priv *il, __le32 *image, u32 len)
+
+    verify runtime uCode image in card vs. host, using sample data 100 bytes apart.  If these sample points are good, it's a pretty good bet that everything between them is good, too.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param __le32 \*image:
+        *undescribed*
+
+    :param u32 len:
+        *undescribed*
+
+.. _`il4965_verify_inst_full`:
+
+il4965_verify_inst_full
+=======================
+
+.. c:function:: int il4965_verify_inst_full(struct il_priv *il, __le32 *image, u32 len)
+
+    verify runtime uCode image in card vs. host, looking at all data.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param __le32 \*image:
+        *undescribed*
+
+    :param u32 len:
+        *undescribed*
+
+.. _`il4965_verify_ucode`:
+
+il4965_verify_ucode
+===================
+
+.. c:function:: int il4965_verify_ucode(struct il_priv *il)
+
+    determine which instruction image is in SRAM, and verify its contents
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_load_bsm`:
+
+il4965_load_bsm
+===============
+
+.. c:function:: int il4965_load_bsm(struct il_priv *il)
+
+    Load bootstrap instructions
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_load_bsm.bsm-operation`:
+
+BSM operation
+-------------
+
+
+The Bootstrap State Machine (BSM) stores a short bootstrap uCode program
+in special SRAM that does not power down during RFKILL.  When powering back
+up after power-saving sleeps (or during initial uCode load), the BSM loads
+the bootstrap program into the on-board processor, and starts it.
+
+The bootstrap program loads (via DMA) instructions and data for a new
+program from host DRAM locations indicated by the host driver in the
+BSM_DRAM\_\* registers.  Once the new program is loaded, it starts
+automatically.
+
+When initializing the NIC, the host driver points the BSM to the
+"initialize" uCode image.  This uCode sets up some internal data, then
+notifies host via "initialize alive" that it is complete.
+
+The host then replaces the BSM_DRAM\_\* pointer values to point to the
+normal runtime uCode instructions and a backup uCode data cache buffer
+(filled initially with starting data values for the on-board processor),
+then triggers the "initialize" uCode to load and launch the runtime uCode,
+which begins normal operation.
+
+When doing a power-save shutdown, runtime uCode saves data SRAM into
+the backup data cache in DRAM before SRAM is powered down.
+
+When powering back up, the BSM loads the bootstrap program.  This reloads
+the runtime uCode instructions and the backup data cache into SRAM,
+and re-launches the runtime uCode from where it left off.
+
+.. _`il4965_set_ucode_ptrs`:
+
+il4965_set_ucode_ptrs
+=====================
+
+.. c:function:: int il4965_set_ucode_ptrs(struct il_priv *il)
+
+    Set uCode address location
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_set_ucode_ptrs.description`:
+
+Description
+-----------
+
+Tell initialization uCode where to find runtime uCode.
+
+BSM registers initially contain pointers to initialization uCode.
+We need to replace them to load runtime uCode inst and data,
+and to save runtime data when powering down.
+
+.. _`il4965_init_alive_start`:
+
+il4965_init_alive_start
+=======================
+
+.. c:function:: void il4965_init_alive_start(struct il_priv *il)
+
+    Called after N_ALIVE notification received
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_init_alive_start.description`:
+
+Description
+-----------
+
+Called after N_ALIVE notification received from "initialize" uCode.
+
+The 4965 "initialize" ALIVE reply contains calibration data for:
+Voltage, temperature, and MIMO tx gain correction, now stored in il
+(3945 does not contain this data).
+
+Tell "initialize" uCode to go ahead and load the runtime uCode.
+
+.. _`il4965_get_voltage_compensation`:
+
+il4965_get_voltage_compensation
+===============================
+
+.. c:function:: s32 il4965_get_voltage_compensation(s32 eeprom_voltage, s32 current_voltage)
+
+    Power supply voltage comp for txpower
+
+    :param s32 eeprom_voltage:
+        *undescribed*
+
+    :param s32 current_voltage:
+        *undescribed*
+
+.. _`il4965_get_voltage_compensation.description`:
+
+Description
+-----------
+
+Determines power supply voltage compensation for txpower calculations.
+Returns number of 1/2-dB steps to subtract from gain table idx,
+to compensate for difference between power supply voltage during
+factory measurements, vs. current power supply voltage.
+
+Voltage indication is higher for lower voltage.
+Lower voltage requires more gain (lower gain table idx).
+
+.. _`il4965_interpolate_chan`:
+
+il4965_interpolate_chan
+=======================
+
+.. c:function:: int il4965_interpolate_chan(struct il_priv *il, u32 channel, struct il_eeprom_calib_ch_info *chan_info)
+
+    Interpolate factory measurements for one channel
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u32 channel:
+        *undescribed*
+
+    :param struct il_eeprom_calib_ch_info \*chan_info:
+        *undescribed*
+
+.. _`il4965_interpolate_chan.description`:
+
+Description
+-----------
+
+Interpolates factory measurements from the two sample channels within a
+sub-band, to apply to channel of interest.  Interpolation is proportional to
+differences in channel frequencies, which is proportional to differences
+in channel number.
+
+.. _`il4965_send_tx_power`:
+
+il4965_send_tx_power
+====================
+
+.. c:function:: int il4965_send_tx_power(struct il_priv *il)
+
+    Configure the TXPOWER level user limit
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_send_tx_power.description`:
+
+Description
+-----------
+
+Uses the active RXON for channel, band, and characteristics (ht40, high)
+The power limit is taken from il->tx_power_user_lmt.
+
+.. _`il4965_txq_update_byte_cnt_tbl`:
+
+il4965_txq_update_byte_cnt_tbl
+==============================
+
+.. c:function:: void il4965_txq_update_byte_cnt_tbl(struct il_priv *il, struct il_tx_queue *txq, u16 byte_cnt)
+
+    Set up entry in Tx byte-count array
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_tx_queue \*txq:
+        *undescribed*
+
+    :param u16 byte_cnt:
+        *undescribed*
+
+.. _`il4965_hw_get_temperature`:
+
+il4965_hw_get_temperature
+=========================
+
+.. c:function:: int il4965_hw_get_temperature(struct il_priv *il)
+
+    return the calibrated temperature (in Kelvin)
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_hw_get_temperature.description`:
+
+Description
+-----------
+
+A return of <0 indicates bogus data in the stats
+
+.. _`il4965_is_temp_calib_needed`:
+
+il4965_is_temp_calib_needed
+===========================
+
+.. c:function:: int il4965_is_temp_calib_needed(struct il_priv *il)
+
+    determines if new calibration is needed
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_is_temp_calib_needed.description`:
+
+Description
+-----------
+
+If the temperature changed has changed sufficiently, then a recalibration
+is needed.
+
+Assumes caller will replace il->last_temperature once calibration
+executed.
+
+.. This file was automatic generated / don't edit.
+

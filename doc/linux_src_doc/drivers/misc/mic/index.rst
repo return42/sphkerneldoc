@@ -7,4 +7,9 @@ mic
 .. toctree::
    :maxdepth: 1
 
-   scif/index
+    card/index
+    common/index
+    cosm/index
+    host/index
+    scif/index
+    vop/index

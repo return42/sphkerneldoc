@@ -7,4 +7,4 @@ samsung
 .. toctree::
    :maxdepth: 1
 
-   core_h
+    core_h

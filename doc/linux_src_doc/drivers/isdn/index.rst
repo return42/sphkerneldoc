@@ -7,5 +7,5 @@ isdn
 .. toctree::
    :maxdepth: 1
 
-   capi/index
-   gigaset/index
+    capi/index
+    gigaset/index

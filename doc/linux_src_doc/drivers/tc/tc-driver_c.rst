@@ -1,24 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-tc-driver.c
-===========
-
+.. src-file: drivers/tc/tc-driver.c
 
 .. _`tc_register_driver`:
 
 tc_register_driver
 ==================
 
-.. c:function:: int tc_register_driver (struct tc_driver *tdrv)
+.. c:function:: int tc_register_driver(struct tc_driver *tdrv)
 
     register a new TC driver
 
     :param struct tc_driver \*tdrv:
-
         *undescribed*
-
-
 
 .. _`tc_register_driver.description`:
 
@@ -30,22 +23,17 @@ Returns a negative value on error, otherwise 0.
 If no error occurred, the driver remains registered even if
 no device was claimed during registration.
 
-
-
 .. _`tc_unregister_driver`:
 
 tc_unregister_driver
 ====================
 
-.. c:function:: void tc_unregister_driver (struct tc_driver *tdrv)
+.. c:function:: void tc_unregister_driver(struct tc_driver *tdrv)
 
     unregister a TC driver
 
     :param struct tc_driver \*tdrv:
-
         *undescribed*
-
-
 
 .. _`tc_unregister_driver.description`:
 
@@ -53,18 +41,16 @@ Description
 -----------
 
 Deletes the driver structure from the list of registered TC drivers,
-gives it a chance to clean up by calling its :c:func:`remove` function for
+gives it a chance to clean up by calling its \ :c:func:`remove`\  function for
 each device it was responsible for, and marks those devices as
 driverless.
-
-
 
 .. _`tc_match_device`:
 
 tc_match_device
 ===============
 
-.. c:function:: const struct tc_device_id *tc_match_device (struct tc_driver *tdrv, struct tc_dev *tdev)
+.. c:function:: const struct tc_device_id *tc_match_device(struct tc_driver *tdrv, struct tc_dev *tdev)
 
     tell if a TC device structure has a matching TC device ID structure
 
@@ -74,8 +60,6 @@ tc_match_device
     :param struct tc_dev \*tdev:
         the TC device structure to match against
 
-
-
 .. _`tc_match_device.description`:
 
 Description
@@ -83,16 +67,14 @@ Description
 
 Used by a driver to check whether a TC device present in the
 system is in its list of supported devices.  Returns the matching
-tc_device_id structure or ``NULL`` if there is no match.
-
-
+tc_device_id structure or \ ``NULL``\  if there is no match.
 
 .. _`tc_bus_match`:
 
 tc_bus_match
 ============
 
-.. c:function:: int tc_bus_match (struct device *dev, struct device_driver *drv)
+.. c:function:: int tc_bus_match(struct device *dev, struct device_driver *drv)
 
     Tell if a device structure has a matching TC device ID structure
 
@@ -102,8 +84,6 @@ tc_bus_match
     :param struct device_driver \*drv:
         the device driver to search for matching TC device ID strings
 
-
-
 .. _`tc_bus_match.description`:
 
 Description
@@ -112,4 +92,6 @@ Description
 Used by a driver to check whether a TC device present in the
 system is in its list of supported devices.  Returns 1 if there
 is a match or 0 otherwise.
+
+.. This file was automatic generated / don't edit.
 

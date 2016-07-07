@@ -7,4 +7,5 @@ hwspinlock
 .. toctree::
    :maxdepth: 1
 
-   hwspinlock_core_c
+    hwspinlock_core_c
+    hwspinlock_internal_h

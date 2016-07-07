@@ -7,7 +7,8 @@ locking
 .. toctree::
    :maxdepth: 1
 
-   qrwlock_c
-   qspinlock_c
-   rtmutex_c
-   semaphore_c
+    mutex_c
+    qrwlock_c
+    qspinlock_c
+    rtmutex_c
+    semaphore_c

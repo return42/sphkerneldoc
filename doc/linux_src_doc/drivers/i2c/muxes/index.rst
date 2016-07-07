@@ -7,4 +7,4 @@ muxes
 .. toctree::
    :maxdepth: 1
 
-   i2c-arb-gpio-challenge_c
+    i2c-arb-gpio-challenge_c

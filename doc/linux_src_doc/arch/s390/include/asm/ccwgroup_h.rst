@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-ccwgroup.h
-==========
-
+.. src-file: arch/s390/include/asm/ccwgroup.h
 
 .. _`ccwgroup_device`:
 
 struct ccwgroup_device
 ======================
 
-.. c:type:: ccwgroup_device
+.. c:type:: struct ccwgroup_device
 
     ccw group device
-
 
 .. _`ccwgroup_device.definition`:
 
@@ -22,48 +17,43 @@ Definition
 
 .. code-block:: c
 
-  struct ccwgroup_device {
-    enum state;
-    unsigned int count;
-    struct device dev;
-    struct work_struct ungroup_work;
-    struct ccw_device * cdev[0];
-  };
-
+    struct ccwgroup_device {
+        enum state;
+        unsigned int count;
+        struct device dev;
+        struct work_struct ungroup_work;
+        struct ccw_device  *cdev[0];
+    }
 
 .. _`ccwgroup_device.members`:
 
 Members
 -------
 
-:``state``:
+state
     online/offline state
 
-:``count``:
+count
     number of attached slave devices
 
-:``dev``:
+dev
     embedded device structure
 
-:``ungroup_work``:
+ungroup_work
     work to be done when a ccwgroup notifier has action
-    type ``BUS_NOTIFY_UNBIND_DRIVER``
+    type \ ``BUS_NOTIFY_UNBIND_DRIVER``\ 
 
-:``cdev[0]``:
+cdev
     variable number of slave devices, allocated as needed
-
-
-
 
 .. _`ccwgroup_driver`:
 
 struct ccwgroup_driver
 ======================
 
-.. c:type:: ccwgroup_driver
+.. c:type:: struct ccwgroup_driver
 
     driver for ccw group devices
-
 
 .. _`ccwgroup_driver.definition`:
 
@@ -72,57 +62,57 @@ Definition
 
 .. code-block:: c
 
-  struct ccwgroup_driver {
-    int (* setup) (struct ccwgroup_device *);
-    void (* remove) (struct ccwgroup_device *);
-    int (* set_online) (struct ccwgroup_device *);
-    int (* set_offline) (struct ccwgroup_device *);
-    void (* shutdown) (struct ccwgroup_device *);
-    int (* prepare) (struct ccwgroup_device *);
-    void (* complete) (struct ccwgroup_device *);
-    int (* freeze) (struct ccwgroup_device *);
-    int (* thaw) (struct ccwgroup_device *);
-    int (* restore) (struct ccwgroup_device *);
-    struct device_driver driver;
-  };
-
+    struct ccwgroup_driver {
+        int (* setup) (struct ccwgroup_device *);
+        void (* remove) (struct ccwgroup_device *);
+        int (* set_online) (struct ccwgroup_device *);
+        int (* set_offline) (struct ccwgroup_device *);
+        void (* shutdown) (struct ccwgroup_device *);
+        int (* prepare) (struct ccwgroup_device *);
+        void (* complete) (struct ccwgroup_device *);
+        int (* freeze) (struct ccwgroup_device *);
+        int (* thaw) (struct ccwgroup_device *);
+        int (* restore) (struct ccwgroup_device *);
+        struct device_driver driver;
+    }
 
 .. _`ccwgroup_driver.members`:
 
 Members
 -------
 
-:``setup``:
+setup
     function called during device creation to setup the device
 
-:``remove``:
+remove
     function called on remove
 
-:``set_online``:
+set_online
     function called when device is set online
 
-:``set_offline``:
+set_offline
     function called when device is set offline
 
-:``shutdown``:
+shutdown
     function called when device is shut down
 
-:``prepare``:
+prepare
     prepare for pm state transition
 
-:``complete``:
-    undo work done in ``prepare``
+complete
+    undo work done in \ ``prepare``\ 
 
-:``freeze``:
+freeze
     callback for freezing during hibernation snapshotting
 
-:``thaw``:
-    undo work done in ``freeze``
+thaw
+    undo work done in \ ``freeze``\ 
 
-:``restore``:
+restore
     callback for restoring after hibernation
 
-:``driver``:
+driver
     embedded driver structure
 
+.. This file was automatic generated / don't edit.
 

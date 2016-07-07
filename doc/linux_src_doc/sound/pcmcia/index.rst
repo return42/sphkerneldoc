@@ -7,5 +7,5 @@ pcmcia
 .. toctree::
    :maxdepth: 1
 
-   pdaudiocf/index
-   vx/index
+    pdaudiocf/index
+    vx/index

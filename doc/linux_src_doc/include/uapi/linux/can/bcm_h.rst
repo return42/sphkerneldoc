@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-bcm.h
-=====
-
+.. src-file: include/uapi/linux/can/bcm.h
 
 .. _`bcm_msg_head`:
 
 struct bcm_msg_head
 ===================
 
-.. c:type:: bcm_msg_head
+.. c:type:: struct bcm_msg_head
 
     head of messages to/from the broadcast manager
-
 
 .. _`bcm_msg_head.definition`:
 
@@ -22,45 +17,45 @@ Definition
 
 .. code-block:: c
 
-  struct bcm_msg_head {
-    __u32 opcode;
-    __u32 flags;
-    __u32 count;
-    struct bcm_timeval ival1;
-    struct bcm_timeval ival2;
-    canid_t can_id;
-    __u32 nframes;
-    struct can_frame frames[0];
-  };
-
+    struct bcm_msg_head {
+        __u32 opcode;
+        __u32 flags;
+        __u32 count;
+        struct bcm_timeval ival1;
+        struct bcm_timeval ival2;
+        canid_t can_id;
+        __u32 nframes;
+        struct can_frame frames[0];
+    }
 
 .. _`bcm_msg_head.members`:
 
 Members
 -------
 
-:``opcode``:
+opcode
     opcode, see enum below.
 
-:``flags``:
+flags
     special flags, see below.
 
-:``count``:
+count
     number of frames to send before changing interval.
 
-:``ival1``:
-    interval for the first ``count`` frames.
+ival1
+    interval for the first \ ``count``\  frames.
 
-:``ival2``:
+ival2
     interval for the following frames.
 
-:``can_id``:
+can_id
     CAN ID of frames to be sent or received.
 
-:``nframes``:
+nframes
     number of frames appended to the message head.
 
-:``frames[0]``:
+frames
     array of CAN frames.
 
+.. This file was automatic generated / don't edit.
 

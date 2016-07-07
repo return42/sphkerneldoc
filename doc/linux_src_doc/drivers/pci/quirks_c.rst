@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-quirks.c
-========
-
+.. src-file: drivers/pci/quirks.c
 
 .. _`quirk_via_vlink`:
 
 quirk_via_vlink
 ===============
 
-.. c:function:: void quirk_via_vlink (struct pci_dev *dev)
+.. c:function:: void quirk_via_vlink(struct pci_dev *dev)
 
     VIA VLink IRQ number update
 
     :param struct pci_dev \*dev:
         PCI device
-
-
 
 .. _`quirk_via_vlink.description`:
 
@@ -31,4 +25,6 @@ to the right place.
 We only do this on systems where a VIA south bridge was detected,
 and only for VIA devices on the motherboard (see quirk_via_bridge
 above).
+
+.. This file was automatic generated / don't edit.
 

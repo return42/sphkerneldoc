@@ -7,4 +7,4 @@ tc
 .. toctree::
    :maxdepth: 1
 
-   tc-driver_c
+    tc-driver_c

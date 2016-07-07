@@ -7,4 +7,4 @@ i2c
 .. toctree::
    :maxdepth: 1
 
-   adv7511_h
+    adv7511_h

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-w1.h
-====
-
+.. src-file: drivers/w1/w1.h
 
 .. _`w1_reg_num`:
 
 struct w1_reg_num
 =================
 
-.. c:type:: w1_reg_num
+.. c:type:: struct w1_reg_num
 
     broken out slave device id
-
 
 .. _`w1_reg_num.definition`:
 
@@ -22,56 +17,51 @@ Definition
 
 .. code-block:: c
 
-  struct w1_reg_num {
-    #if defined(__LITTLE_ENDIAN_BITFIELD)
-    __u64 family:8;
-    __u64 id:48;
-    __u64 crc:8;
-    #elif defined(__BIG_ENDIAN_BITFIELD)
-    __u64 crc:8;
-    __u64 id:48;
-    __u64 family:8;
-    #else
-    #error "Please fix \\\lt;asm/byteorder.h\\\gt;"
-    #endif
-  };
-
+    struct w1_reg_num {
+        #if defined(__LITTLE_ENDIAN_BITFIELD)
+        __u64 family:8:48:8;
+        __u64 id:8:48;
+        __u64 crc:8;
+        #elif defined(__BIG_ENDIAN_BITFIELD)
+        __u64 crc:8;
+        __u64 id:8:48;
+        __u64 family:8:48:8;
+        #else
+        #error "Please fix <asm/byteorder.h>"
+        #endif
+    }
 
 .. _`w1_reg_num.members`:
 
 Members
 -------
 
-:``family``:
+family
     identifies the type of device
 
-:``id``:
+id
     along with family is the unique device id
 
-:``crc``:
+crc
     checksum of the other bytes
 
-:``crc``:
+crc
     checksum of the other bytes
 
-:``id``:
+id
     along with family is the unique device id
 
-:``family``:
+family
     identifies the type of device
-
-
-
 
 .. _`w1_slave`:
 
 struct w1_slave
 ===============
 
-.. c:type:: w1_slave
+.. c:type:: struct w1_slave
 
     holds a single slave device on the bus
-
 
 .. _`w1_slave.definition`:
 
@@ -80,71 +70,66 @@ Definition
 
 .. code-block:: c
 
-  struct w1_slave {
-    struct module * owner;
-    unsigned char name[W1_MAXNAMELEN];
-    struct list_head w1_slave_entry;
-    struct w1_reg_num reg_num;
-    atomic_t refcnt;
-    int ttl;
-    unsigned long flags;
-    struct w1_master * master;
-    struct w1_family * family;
-    void * family_data;
-    struct device dev;
-  };
-
+    struct w1_slave {
+        struct module *owner;
+        unsigned char name[W1_MAXNAMELEN];
+        struct list_head w1_slave_entry;
+        struct w1_reg_num reg_num;
+        atomic_t refcnt;
+        int ttl;
+        unsigned long flags;
+        struct w1_master *master;
+        struct w1_family *family;
+        void *family_data;
+        struct device dev;
+    }
 
 .. _`w1_slave.members`:
 
 Members
 -------
 
-:``owner``:
+owner
     Points to the one wire "wire" kernel module.
 
-:``name[W1_MAXNAMELEN]``:
+name
     Device id is ascii.
 
-:``w1_slave_entry``:
+w1_slave_entry
     data for the linked list
 
-:``reg_num``:
+reg_num
     the slave id in binary
 
-:``refcnt``:
+refcnt
     reference count, delete when 0
 
-:``ttl``:
+ttl
     decrement per search this slave isn't found, deatch at 0
 
-:``flags``:
+flags
     bit flags for W1_SLAVE_ACTIVE W1_SLAVE_DETACH
 
-:``master``:
+master
     bus which this slave is on
 
-:``family``:
+family
     module for device family type
 
-:``family_data``:
+family_data
     pointer for use by the family module
 
-:``dev``:
+dev
     kernel device identifier
-
-
-
 
 .. _`w1_bus_master`:
 
 struct w1_bus_master
 ====================
 
-.. c:type:: w1_bus_master
+.. c:type:: struct w1_bus_master
 
     operations available on a bus master
-
 
 .. _`w1_bus_master.definition`:
 
@@ -153,76 +138,72 @@ Definition
 
 .. code-block:: c
 
-  struct w1_bus_master {
-    void * data;
-    u8 (* read_bit) (void *);
-    void (* write_bit) (void *, u8);
-    u8 (* touch_bit) (void *, u8);
-    u8 (* read_byte) (void *);
-    void (* write_byte) (void *, u8);
-    u8 (* read_block) (void *, u8 *, int);
-    void (* write_block) (void *, const u8 *, int);
-    u8 (* triplet) (void *, u8);
-    u8 (* reset_bus) (void *);
-    u8 (* set_pullup) (void *, int);
-    void (* search) (void *, struct w1_master *,u8, w1_slave_found_callback);
-  };
-
+    struct w1_bus_master {
+        void *data;
+        u8 (* read_bit) (void *);
+        void (* write_bit) (void *, u8);
+        u8 (* touch_bit) (void *, u8);
+        u8 (* read_byte) (void *);
+        void (* write_byte) (void *, u8);
+        u8 (* read_block) (void *, u8 *, int);
+        void (* write_block) (void *, const u8 *, int);
+        u8 (* triplet) (void *, u8);
+        u8 (* reset_bus) (void *);
+        u8 (* set_pullup) (void *, int);
+        void (* search) (void *, struct w1_master *,u8, w1_slave_found_callback);
+    }
 
 .. _`w1_bus_master.members`:
 
 Members
 -------
 
-:``data``:
+data
     the first parameter in all the functions below
 
-:``read_bit``:
-    Sample the line level ``return`` the level read (0 or 1)
+read_bit
+    Sample the line level \ ``return``\  the level read (0 or 1)
 
-:``write_bit``:
+write_bit
     Sets the line level
 
-:``touch_bit``:
+touch_bit
     the lowest-level function for devices that really support the
     1-wire protocol.
     touch_bit(0) = write-0 cycle
     touch_bit(1) = write-1 / read cycle
-    ``return`` the bit read (0 or 1)
+    \ ``return``\  the bit read (0 or 1)
 
-:``read_byte``:
+read_byte
     Reads a bytes. Same as 8 touch_bit(1) calls.
-    ``return`` the byte read
+    \ ``return``\  the byte read
 
-:``write_byte``:
+write_byte
     Writes a byte. Same as 8 touch_bit(x) calls.
 
-:``read_block``:
-    Same as a series of :c:func:`read_byte` calls
-    ``return`` the number of bytes read
+read_block
+    Same as a series of \ :c:func:`read_byte`\  calls
+    \ ``return``\  the number of bytes read
 
-:``write_block``:
-    Same as a series of :c:func:`write_byte` calls
+write_block
+    Same as a series of \ :c:func:`write_byte`\  calls
 
-:``triplet``:
+triplet
     Combines two reads and a smart write for ROM searches
-    ``return`` bit0=Id bit1=comp_id bit2=dir_taken
+    \ ``return``\  bit0=Id bit1=comp_id bit2=dir_taken
 
-:``reset_bus``:
+reset_bus
     long write-0 with a read for the presence pulse detection
-    ``return`` -1=Error, 0=Device present, 1=No device present
+    \ ``return``\  -1=Error, 0=Device present, 1=No device present
 
-:``set_pullup``:
+set_pullup
     Put out a strong pull-up pulse of the specified duration.
-    ``return`` -1=Error, 0=completed
+    \ ``return``\  -1=Error, 0=completed
 
-:``search``:
+search
     Really nice hardware can handles the different types of ROM search
     w1_master\* is passed to the slave found callback.
     u8 is search_type, W1_SEARCH or W1_ALARM_SEARCH
-
-
-
 
 .. _`w1_bus_master.note`:
 
@@ -235,17 +216,14 @@ like a parallel/serial port.
 Either define read_bit and write_bit OR define, at minimum, touch_bit and
 reset_bus.
 
-
-
 .. _`w1_master_flags`:
 
 enum w1_master_flags
 ====================
 
-.. c:type:: w1_master_flags
+.. c:type:: enum w1_master_flags
 
     bitfields used in w1_master.flags
-
 
 .. _`w1_master_flags.definition`:
 
@@ -255,32 +233,29 @@ Definition
 .. code-block:: c
 
     enum w1_master_flags {
-      W1_ABORT_SEARCH,
-      W1_WARN_MAX_COUNT
+        W1_ABORT_SEARCH,
+        W1_WARN_MAX_COUNT
     };
-
 
 .. _`w1_master_flags.constants`:
 
 Constants
 ---------
 
-:``W1_ABORT_SEARCH``:
+W1_ABORT_SEARCH
     abort searching early on shutdown
 
-:``W1_WARN_MAX_COUNT``:
+W1_WARN_MAX_COUNT
     limit warning when the maximum count is reached
-
 
 .. _`w1_master`:
 
 struct w1_master
 ================
 
-.. c:type:: w1_master
+.. c:type:: struct w1_master
 
     one per bus master
-
 
 .. _`w1_master.definition`:
 
@@ -289,131 +264,126 @@ Definition
 
 .. code-block:: c
 
-  struct w1_master {
-    struct list_head w1_master_entry;
-    struct module * owner;
-    unsigned char name[W1_MAXNAMELEN];
-    struct mutex list_mutex;
-    struct list_head slist;
-    struct list_head async_list;
-    int max_slave_count;
-    int slave_count;
-    unsigned long attempts;
-    int slave_ttl;
-    int initialized;
-    u32 id;
-    int search_count;
-    u64 search_id;
-    atomic_t refcnt;
-    void * priv;
-    int enable_pullup;
-    int pullup_duration;
-    long flags;
-    struct task_struct * thread;
-    struct mutex mutex;
-    struct mutex bus_mutex;
-    struct device_driver * driver;
-    struct device dev;
-    struct w1_bus_master * bus_master;
-    u32 seq;
-  };
-
+    struct w1_master {
+        struct list_head w1_master_entry;
+        struct module *owner;
+        unsigned char name[W1_MAXNAMELEN];
+        struct mutex list_mutex;
+        struct list_head slist;
+        struct list_head async_list;
+        int max_slave_count;
+        int slave_count;
+        unsigned long attempts;
+        int slave_ttl;
+        int initialized;
+        u32 id;
+        int search_count;
+        u64 search_id;
+        atomic_t refcnt;
+        void *priv;
+        int enable_pullup;
+        int pullup_duration;
+        long flags;
+        struct task_struct *thread;
+        struct mutex mutex;
+        struct mutex bus_mutex;
+        struct device_driver *driver;
+        struct device dev;
+        struct w1_bus_master *bus_master;
+        u32 seq;
+    }
 
 .. _`w1_master.members`:
 
 Members
 -------
 
-:``w1_master_entry``:
+w1_master_entry
     master linked list
 
-:``owner``:
+owner
     module owner
 
-:``name[W1_MAXNAMELEN]``:
+name
     dynamically allocate bus name
 
-:``list_mutex``:
+list_mutex
     protect slist and async_list
 
-:``slist``:
+slist
     linked list of slaves
 
-:``async_list``:
+async_list
     linked list of netlink commands to execute
 
-:``max_slave_count``:
+max_slave_count
     maximum number of slaves to search for at a time
 
-:``slave_count``:
+slave_count
     current number of slaves known
 
-:``attempts``:
+attempts
     number of searches ran
 
-:``slave_ttl``:
+slave_ttl
     number of searches before a slave is timed out
 
-:``initialized``:
+initialized
     prevent init/removal race conditions
 
-:``id``:
+id
     w1 bus number
 
-:``search_count``:
+search_count
     number of automatic searches to run, -1 unlimited
 
-:``search_id``:
+search_id
     allows continuing a search
 
-:``refcnt``:
+refcnt
     reference count
 
-:``priv``:
+priv
     private data storage
 
-:``enable_pullup``:
+enable_pullup
     allows a strong pullup
 
-:``pullup_duration``:
+pullup_duration
     time for the next strong pullup
 
-:``flags``:
+flags
     one of w1_master_flags
 
-:``thread``:
+thread
     thread for bus search and netlink commands
 
-:``mutex``:
+mutex
     protect most of w1_master
 
-:``bus_mutex``:
+bus_mutex
     pretect concurrent bus access
 
-:``driver``:
+driver
     sysfs driver
 
-:``dev``:
+dev
     sysfs device
 
-:``bus_master``:
+bus_master
     io operations available
 
-:``seq``:
+seq
     sequence number used for netlink broadcasts
-
-
-
 
 .. _`w1_async_cmd`:
 
 struct w1_async_cmd
 ===================
 
-.. c:type:: w1_async_cmd
+.. c:type:: struct w1_async_cmd
 
     execute callback from the w1_process kthread
-
 
 .. _`w1_async_cmd.definition`:
 
@@ -422,26 +392,22 @@ Definition
 
 .. code-block:: c
 
-  struct w1_async_cmd {
-    struct list_head async_entry;
-    void (* cb) (struct w1_master *dev, struct w1_async_cmd *async_cmd);
-  };
-
+    struct w1_async_cmd {
+        struct list_head async_entry;
+        void (* cb) (struct w1_master *dev, struct w1_async_cmd *async_cmd);
+    }
 
 .. _`w1_async_cmd.members`:
 
 Members
 -------
 
-:``async_entry``:
+async_entry
     link entry
 
-:``cb``:
+cb
     callback function, must list_del and destroy this list before
     returning
-
-
-
 
 .. _`w1_async_cmd.description`:
 
@@ -450,4 +416,6 @@ Description
 
 When inserted into the w1_master async_list, w1_process will execute
 the callback.  Embed this into the structure with the command details.
+
+.. This file was automatic generated / don't edit.
 

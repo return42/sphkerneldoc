@@ -1,32 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-rtciobrg.c
-==========
-
+.. src-file: arch/arm/mach-prima2/rtciobrg.c
 
 .. _`devm_regmap_init_iobg`:
 
 devm_regmap_init_iobg
 =====================
 
-.. c:function:: struct regmap *devm_regmap_init_iobg (struct device *dev, const struct regmap_config *config)
+.. c:function:: struct regmap *devm_regmap_init_iobg(struct device *dev, const struct regmap_config *config)
+
+    Initialise managed register map
 
     :param struct device \*dev:
-
         *undescribed*
 
     :param const struct regmap_config \*config:
         Configuration for register map
-
-
 
 .. _`devm_regmap_init_iobg.description`:
 
 Description
 -----------
 
-The return value will be an :c:func:`ERR_PTR` on error or a valid pointer
+The return value will be an \ :c:func:`ERR_PTR`\  on error or a valid pointer
 to a struct regmap.  The regmap will be automatically freed by the
 device management code.
+
+.. This file was automatic generated / don't edit.
 

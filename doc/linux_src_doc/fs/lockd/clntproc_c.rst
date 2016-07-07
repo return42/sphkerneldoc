@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-clntproc.c
-==========
-
+.. src-file: fs/lockd/clntproc.c
 
 .. _`nlmclnt_proc`:
 
 nlmclnt_proc
 ============
 
-.. c:function:: int nlmclnt_proc (struct nlm_host *host, int cmd, struct file_lock *fl)
+.. c:function:: int nlmclnt_proc(struct nlm_host *host, int cmd, struct file_lock *fl)
 
     Perform a single client-side lock request
 
@@ -22,4 +18,6 @@ nlmclnt_proc
 
     :param struct file_lock \*fl:
         address of arguments for the lock operation
+
+.. This file was automatic generated / don't edit.
 

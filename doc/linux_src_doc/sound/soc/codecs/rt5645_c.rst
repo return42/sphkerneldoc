@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-rt5645.c
-========
-
+.. src-file: sound/soc/codecs/rt5645.c
 
 .. _`set_dmic_clk`:
 
 set_dmic_clk
 ============
 
-.. c:function:: int set_dmic_clk (struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
+.. c:function:: int set_dmic_clk(struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
 
     Set parameter of dmic.
 
@@ -23,14 +19,12 @@ set_dmic_clk
     :param int event:
         Event id.
 
-
-
 .. _`rt5645_sel_asrc_clk_src`:
 
 rt5645_sel_asrc_clk_src
 =======================
 
-.. c:function:: int rt5645_sel_asrc_clk_src (struct snd_soc_codec *codec, unsigned int filter_mask, unsigned int clk_src)
+.. c:function:: int rt5645_sel_asrc_clk_src(struct snd_soc_codec *codec, unsigned int filter_mask, unsigned int clk_src)
 
     select ASRC clock source for a set of filters
 
@@ -43,8 +37,6 @@ rt5645_sel_asrc_clk_src
     :param unsigned int clk_src:
         clock source
 
-
-
 .. _`rt5645_sel_asrc_clk_src.description`:
 
 Description
@@ -52,9 +44,11 @@ Description
 
 The ASRC function is for asynchronous MCLK and LRCK. Also, since RT5645 can
 only support standard 32fs or 64fs i2s format, ASRC should be enabled to
-support special i2s clock format such as Intel's 100fs(100 * sampling rate).
+support special i2s clock format such as Intel's 100fs(100 \* sampling rate).
 ASRC function will track i2s clock and generate a corresponding system clock
 for codec. This function provides an API to select the clock source for a
 set of filters specified by the mask. And the codec driver will turn on ASRC
 for these filters if ASRC is selected as their clock source.
+
+.. This file was automatic generated / don't edit.
 

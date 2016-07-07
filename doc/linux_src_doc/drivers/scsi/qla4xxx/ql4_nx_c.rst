@@ -1,0 +1,229 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/scsi/qla4xxx/ql4_nx.c
+
+.. _`qla4_82xx_idc_lock`:
+
+qla4_82xx_idc_lock
+==================
+
+.. c:function:: int qla4_82xx_idc_lock(struct scsi_qla_host *ha)
+
+    hw_lock
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+.. _`qla4_82xx_idc_lock.description`:
+
+Description
+-----------
+
+General purpose lock used to synchronize access to
+CRB_DEV_STATE, CRB_DEV_REF_COUNT, etc.
+
+.. _`qla4_82xx_pinit_from_rom`:
+
+qla4_82xx_pinit_from_rom
+========================
+
+.. c:function:: int qla4_82xx_pinit_from_rom(struct scsi_qla_host *ha, int verbose)
+
+    to put the ISP into operational state
+
+    :param struct scsi_qla_host \*ha:
+        *undescribed*
+
+    :param int verbose:
+        *undescribed*
+
+.. _`qla4_8xxx_ms_mem_write_128b`:
+
+qla4_8xxx_ms_mem_write_128b
+===========================
+
+.. c:function:: int qla4_8xxx_ms_mem_write_128b(struct scsi_qla_host *ha, uint64_t addr, uint32_t *data, uint32_t count)
+
+    Writes data to MS/off-chip memory
+
+    :param struct scsi_qla_host \*ha:
+        Pointer to adapter structure
+
+    :param uint64_t addr:
+        Flash address to write to
+
+    :param uint32_t \*data:
+        Data to be written
+
+    :param uint32_t count:
+        word_count to be written
+
+.. _`qla4_8xxx_ms_mem_write_128b.return`:
+
+Return
+------
+
+On success return QLA_SUCCESS
+On error return QLA_ERROR
+
+.. _`qla4_8xxx_collect_md_data`:
+
+qla4_8xxx_collect_md_data
+=========================
+
+.. c:function:: int qla4_8xxx_collect_md_data(struct scsi_qla_host *ha)
+
+    Retrieve firmware minidump data.
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+.. _`qla4_8xxx_uevent_emit`:
+
+qla4_8xxx_uevent_emit
+=====================
+
+.. c:function:: void qla4_8xxx_uevent_emit(struct scsi_qla_host *ha, u32 code)
+
+    Send uevent when the firmware dump is ready.
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+    :param u32 code:
+        *undescribed*
+
+.. _`qla4_8xxx_device_bootstrap`:
+
+qla4_8xxx_device_bootstrap
+==========================
+
+.. c:function:: int qla4_8xxx_device_bootstrap(struct scsi_qla_host *ha)
+
+    Initialize device, set DEV_READY, start fw
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+.. _`qla4_8xxx_device_bootstrap.note`:
+
+Note
+----
+
+IDC lock must be held upon entry
+
+.. _`qla4_82xx_need_reset_handler`:
+
+qla4_82xx_need_reset_handler
+============================
+
+.. c:function:: void qla4_82xx_need_reset_handler(struct scsi_qla_host *ha)
+
+    Code to start reset sequence
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+.. _`qla4_82xx_need_reset_handler.note`:
+
+Note
+----
+
+IDC lock must be held upon entry
+
+.. _`qla4_8xxx_need_qsnt_handler`:
+
+qla4_8xxx_need_qsnt_handler
+===========================
+
+.. c:function:: void qla4_8xxx_need_qsnt_handler(struct scsi_qla_host *ha)
+
+    Code to start qsnt
+
+    :param struct scsi_qla_host \*ha:
+        pointer to adapter structure
+
+.. _`qla4_8xxx_device_state_handler`:
+
+qla4_8xxx_device_state_handler
+==============================
+
+.. c:function:: int qla4_8xxx_device_state_handler(struct scsi_qla_host *ha)
+
+    Adapter state machine
+
+    :param struct scsi_qla_host \*ha:
+        pointer to host adapter structure.
+
+.. _`qla4_8xxx_device_state_handler.note`:
+
+Note
+----
+
+IDC lock must be UNLOCKED upon entry
+
+.. _`qla4_82xx_read_optrom_data`:
+
+qla4_82xx_read_optrom_data
+==========================
+
+.. c:function:: uint8_t *qla4_82xx_read_optrom_data(struct scsi_qla_host *ha, uint8_t *buf, uint32_t offset, uint32_t length)
+
+    :param struct scsi_qla_host \*ha:
+        *undescribed*
+
+    :param uint8_t \*buf:
+        *undescribed*
+
+    :param uint32_t offset:
+        *undescribed*
+
+    :param uint32_t length:
+        *undescribed*
+
+.. _`qla4_8xxx_stop_firmware`:
+
+qla4_8xxx_stop_firmware
+=======================
+
+.. c:function:: int qla4_8xxx_stop_firmware(struct scsi_qla_host *ha)
+
+    stops firmware on specified adapter instance
+
+    :param struct scsi_qla_host \*ha:
+        pointer to host adapter structure.
+
+.. _`qla4_8xxx_stop_firmware.remarks`:
+
+Remarks
+-------
+
+For iSCSI, throws away all I/O and AENs into bit bucket, so they will
+not be available after successful return.  Driver must cleanup potential
+outstanding I/O's after calling this funcion.
+
+.. _`qla4_82xx_isp_reset`:
+
+qla4_82xx_isp_reset
+===================
+
+.. c:function:: int qla4_82xx_isp_reset(struct scsi_qla_host *ha)
+
+    Resets ISP and aborts all outstanding commands.
+
+    :param struct scsi_qla_host \*ha:
+        pointer to host adapter structure.
+
+.. _`qla4_8xxx_get_sys_info`:
+
+qla4_8xxx_get_sys_info
+======================
+
+.. c:function:: int qla4_8xxx_get_sys_info(struct scsi_qla_host *ha)
+
+    get adapter MAC address(es) and serial number
+
+    :param struct scsi_qla_host \*ha:
+        pointer to host adapter structure.
+
+.. This file was automatic generated / don't edit.
+

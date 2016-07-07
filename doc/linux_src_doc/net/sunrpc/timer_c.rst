@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-timer.c
-=======
-
+.. src-file: net/sunrpc/timer.c
 
 .. _`rpc_init_rtt`:
 
 rpc_init_rtt
 ============
 
-.. c:function:: void rpc_init_rtt (struct rpc_rtt *rt, unsigned long timeo)
+.. c:function:: void rpc_init_rtt(struct rpc_rtt *rt, unsigned long timeo)
 
     Initialize an RPC RTT estimator context
 
@@ -20,14 +16,12 @@ rpc_init_rtt
     :param unsigned long timeo:
         initial timeout value, in jiffies
 
-
-
 .. _`rpc_update_rtt`:
 
 rpc_update_rtt
 ==============
 
-.. c:function:: void rpc_update_rtt (struct rpc_rtt *rt, unsigned int timer, long m)
+.. c:function:: void rpc_update_rtt(struct rpc_rtt *rt, unsigned int timer, long m)
 
     Update an RPC RTT estimator context
 
@@ -40,24 +34,20 @@ rpc_update_rtt
     :param long m:
         recent actual RTT, in jiffies
 
+.. _`rpc_update_rtt.description`:
 
+Description
+-----------
 
-.. _`rpc_update_rtt.nb`:
-
-NB
---
-
-When computing the smoothed RTT and standard deviation,
+NB: When computing the smoothed RTT and standard deviation,
 be careful not to produce negative intermediate results.
-
-
 
 .. _`rpc_calc_rto`:
 
 rpc_calc_rto
 ============
 
-.. c:function:: unsigned long rpc_calc_rto (struct rpc_rtt *rt, unsigned int timer)
+.. c:function:: unsigned long rpc_calc_rto(struct rpc_rtt *rt, unsigned int timer)
 
     Provide an estimated timeout value
 
@@ -66,8 +56,6 @@ rpc_calc_rto
 
     :param unsigned int timer:
         timer array index (request type)
-
-
 
 .. _`rpc_calc_rto.description`:
 
@@ -86,4 +74,6 @@ conservative timeout is desired.
 getattr, lookup,
 read, write, commit     - A+4D
 other                   - timeo
+
+.. This file was automatic generated / don't edit.
 

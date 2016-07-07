@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/input/misc/drv2665.c
+
+.. _`drv2665_data`:
+
+struct drv2665_data
+===================
+
+.. c:type:: struct drv2665_data
+
+    \ ``input_dev``\  - Pointer to the input device \ ``client``\  - Pointer to the I2C client \ ``regmap``\  - Register map of the device \ ``work``\  - Work item used to off load the enable/disable of the vibration \ ``regulator``\  - Pointer to the regulator for the IC
+
+.. _`drv2665_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drv2665_data {
+        struct input_dev *input_dev;
+        struct i2c_client *client;
+        struct regmap *regmap;
+        struct work_struct work;
+        struct regulator *regulator;
+    }
+
+.. _`drv2665_data.members`:
+
+Members
+-------
+
+input_dev
+    *undescribed*
+
+client
+    *undescribed*
+
+regmap
+    *undescribed*
+
+work
+    *undescribed*
+
+regulator
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

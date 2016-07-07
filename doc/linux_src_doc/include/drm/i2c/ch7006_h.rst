@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ch7006.h
-========
-
+.. src-file: include/drm/i2c/ch7006.h
 
 .. _`ch7006_encoder_params`:
 
 struct ch7006_encoder_params
 ============================
 
-.. c:type:: ch7006_encoder_params
-
-    
+.. c:type:: struct ch7006_encoder_params
 
 
 .. _`ch7006_encoder_params.definition`:
@@ -22,27 +16,28 @@ Definition
 
 .. code-block:: c
 
-  struct ch7006_encoder_params {
-  };
-
+    struct ch7006_encoder_params {
+        enum active_detect;
+    }
 
 .. _`ch7006_encoder_params.members`:
 
 Members
 -------
 
-
-
+active_detect
+    *undescribed*
 
 .. _`ch7006_encoder_params.description`:
 
 Description
 -----------
 
-
 Describes how the ch7006 is wired up with the GPU. It should be
-used as the ``params`` parameter of its ``set_config`` method.
+used as the \ ``params``\  parameter of its \ ``set_config``\  method.
 
 See "http://www.chrontel.com/pdf/7006.pdf" for their precise
 meaning.
+
+.. This file was automatic generated / don't edit.
 

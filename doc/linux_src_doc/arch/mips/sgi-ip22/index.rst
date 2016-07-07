@@ -7,4 +7,4 @@ sgi-ip22
 .. toctree::
    :maxdepth: 1
 
-   ip22-gio_c
+    ip22-gio_c

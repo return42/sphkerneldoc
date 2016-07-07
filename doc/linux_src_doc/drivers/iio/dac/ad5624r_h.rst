@@ -1,0 +1,87 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5624r.h
+
+.. _`ad5624r_chip_info`:
+
+struct ad5624r_chip_info
+========================
+
+.. c:type:: struct ad5624r_chip_info
+
+    chip specific information
+
+.. _`ad5624r_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5624r_chip_info {
+        const struct iio_chan_spec *channels;
+        u16 int_vref_mv;
+    }
+
+.. _`ad5624r_chip_info.members`:
+
+Members
+-------
+
+channels
+    channel spec for the DAC
+
+int_vref_mv
+    AD5620/40/60: the internal reference voltage
+
+.. _`ad5624r_state`:
+
+struct ad5624r_state
+====================
+
+.. c:type:: struct ad5624r_state
+
+    driver instance specific data
+
+.. _`ad5624r_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5624r_state {
+        struct spi_device *us;
+        const struct ad5624r_chip_info *chip_info;
+        struct regulator *reg;
+        unsigned short vref_mv;
+        unsigned pwr_down_mask;
+        unsigned pwr_down_mode;
+    }
+
+.. _`ad5624r_state.members`:
+
+Members
+-------
+
+us
+    spi_device
+
+chip_info
+    chip model specific constants, available modes etc
+
+reg
+    supply regulator
+
+vref_mv
+    actual reference voltage used
+    \ ``pwr_down_mask``\        power down mask
+    \ ``pwr_down_mode``\        current power down mode
+
+pwr_down_mask
+    *undescribed*
+
+pwr_down_mode
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

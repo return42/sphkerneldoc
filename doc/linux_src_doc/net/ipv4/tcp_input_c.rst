@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-tcp_input.c
-===========
-
+.. src-file: net/ipv4/tcp_input.c
 
 .. _`tcp_try_coalesce`:
 
 tcp_try_coalesce
 ================
 
-.. c:function:: bool tcp_try_coalesce (struct sock *sk, struct sk_buff *to, struct sk_buff *from, bool *fragstolen)
+.. c:function:: bool tcp_try_coalesce(struct sock *sk, struct sk_buff *to, struct sk_buff *from, bool *fragstolen)
 
     try to merge skb to prior one
 
@@ -26,16 +22,16 @@ tcp_try_coalesce
     :param bool \*fragstolen:
         pointer to boolean
 
-
-
 .. _`tcp_try_coalesce.description`:
 
 Description
 -----------
 
-Before queueing skb ``from`` after ``to``\ , try to merge them
+Before queueing skb \ ``from``\  after \ ``to``\ , try to merge them
 to reduce overall memory use and queue lengths, if cost is small.
 Packets in ofo or receive queues can stay a long time.
 Better try to coalesce them right now to avoid future collapses.
-Returns true if caller should free ``from`` instead of queueing it
+Returns true if caller should free \ ``from``\  instead of queueing it
+
+.. This file was automatic generated / don't edit.
 

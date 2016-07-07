@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-mpc512x_shared.c
-================
-
+.. src-file: arch/powerpc/platforms/512x/mpc512x_shared.c
 
 .. _`mpc512x_cs_config`:
 
 mpc512x_cs_config
 =================
 
-.. c:function:: int mpc512x_cs_config (unsigned int cs, u32 val)
+.. c:function:: int mpc512x_cs_config(unsigned int cs, u32 val)
 
     Setup chip select configuration
 
@@ -20,8 +16,6 @@ mpc512x_cs_config
     :param u32 val:
         chip select configuration value
 
-
-
 .. _`mpc512x_cs_config.description`:
 
 Description
@@ -30,4 +24,6 @@ Description
 Perform chip select configuration for devices on LocalPlus Bus.
 Intended to dynamically reconfigure the chip select parameters
 for configurable devices on the bus.
+
+.. This file was automatic generated / don't edit.
 

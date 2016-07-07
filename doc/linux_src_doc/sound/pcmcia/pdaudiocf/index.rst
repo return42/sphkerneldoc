@@ -7,4 +7,4 @@ pdaudiocf
 .. toctree::
    :maxdepth: 1
 
-   pdaudiocf_c
+    pdaudiocf_c

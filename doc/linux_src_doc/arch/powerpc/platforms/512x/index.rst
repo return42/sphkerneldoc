@@ -7,4 +7,4 @@
 .. toctree::
    :maxdepth: 1
 
-   mpc512x_shared_c
+    mpc512x_shared_c

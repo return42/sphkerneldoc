@@ -7,4 +7,6 @@ usbhid
 .. toctree::
    :maxdepth: 1
 
-   hid-quirks_c
+    hid-pidff_c
+    hid-quirks_c
+    usbkbd_c

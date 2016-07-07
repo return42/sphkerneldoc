@@ -7,4 +7,4 @@ xmon
 .. toctree::
    :maxdepth: 1
 
-   xmon_c
+    xmon_c

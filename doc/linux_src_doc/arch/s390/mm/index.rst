@@ -7,4 +7,5 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   gmap_c
+    gmap_c
+    gup_c

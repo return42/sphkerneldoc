@@ -7,4 +7,4 @@ omap
 .. toctree::
    :maxdepth: 1
 
-   mcbsp_c
+    mcbsp_c

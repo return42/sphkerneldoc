@@ -7,4 +7,7 @@ fuse
 .. toctree::
    :maxdepth: 1
 
-   file_c
+    cuse_c
+    dir_c
+    file_c
+    fuse_i_h

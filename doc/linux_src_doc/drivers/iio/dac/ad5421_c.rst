@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5421.c
+
+.. _`ad5421_state`:
+
+struct ad5421_state
+===================
+
+.. c:type:: struct ad5421_state
+
+    driver instance specific data
+
+.. _`ad5421_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5421_state {
+        struct spi_device *spi;
+        unsigned int ctrl;
+        enum ad5421_current_range current_range;
+        unsigned int fault_mask;
+        union data[2] ____cacheline_aligned;
+    }
+
+.. _`ad5421_state.members`:
+
+Members
+-------
+
+spi
+    spi_device
+
+ctrl
+    control register cache
+
+current_range
+    current range which the device is configured for
+
+fault_mask
+    software masking of events
+
+data
+    spi transfer buffers
+
+.. This file was automatic generated / don't edit.
+

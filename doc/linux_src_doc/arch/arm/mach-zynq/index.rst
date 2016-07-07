@@ -7,4 +7,7 @@ mach-zynq
 .. toctree::
    :maxdepth: 1
 
-   platsmp_c
+    common_c
+    platsmp_c
+    pm_c
+    slcr_c

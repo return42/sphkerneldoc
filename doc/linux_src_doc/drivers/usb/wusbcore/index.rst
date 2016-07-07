@@ -7,9 +7,9 @@ wusbcore
 .. toctree::
    :maxdepth: 1
 
-   pal_c
-   reservation_c
-   security_c
-   wa-hc_c
-   wa-hc_h
-   wusbhc_c
+    pal_c
+    reservation_c
+    security_c
+    wa-hc_c
+    wa-hc_h
+    wusbhc_c

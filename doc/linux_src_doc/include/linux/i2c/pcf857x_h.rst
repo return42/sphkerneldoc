@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-pcf857x.h
-=========
-
+.. src-file: include/linux/i2c/pcf857x.h
 
 .. _`pcf857x_platform_data`:
 
 struct pcf857x_platform_data
 ============================
 
-.. c:type:: pcf857x_platform_data
+.. c:type:: struct pcf857x_platform_data
 
     data to set up pcf857x driver
-
 
 .. _`pcf857x_platform_data.definition`:
 
@@ -22,51 +17,47 @@ Definition
 
 .. code-block:: c
 
-  struct pcf857x_platform_data {
-    unsigned gpio_base;
-    unsigned n_latch;
-    int (* setup) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
-    int (* teardown) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
-    void * context;
-  };
-
+    struct pcf857x_platform_data {
+        unsigned gpio_base;
+        unsigned n_latch;
+        int (* setup) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
+        int (* teardown) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
+        void *context;
+    }
 
 .. _`pcf857x_platform_data.members`:
 
 Members
 -------
 
-:``gpio_base``:
+gpio_base
     number of the chip's first GPIO
 
-:``n_latch``:
+n_latch
     optional bit-inverse of initial register value; if
     you leave this initialized to zero the driver will act
     like the chip was just reset
 
-:``setup``:
+setup
     optional callback issued once the GPIOs are valid
 
-:``teardown``:
+teardown
     optional callback issued before the GPIOs are invalidated
 
-:``context``:
-    optional parameter passed to :c:func:`setup` and :c:func:`teardown`
-
-
-
+context
+    optional parameter passed to \ :c:func:`setup`\  and \ :c:func:`teardown`\ 
 
 .. _`pcf857x_platform_data.description`:
 
 Description
 -----------
 
-In addition to the :c:func:`I2C_BOARD_INFO` state appropriate to each chip,
+In addition to the \ :c:func:`I2C_BOARD_INFO`\  state appropriate to each chip,
 the i2c_board_info used with the pcf875x driver must provide its
 platform_data (pointer to one of these structures) with at least
 the gpio_base value initialized.
 
-The ``setup`` callback may be used with the kind of board-specific glue
+The \ ``setup``\  callback may be used with the kind of board-specific glue
 which hands the (now-valid) GPIOs to other drivers, or which puts
 devices in their initial states using these GPIOs.
 
@@ -77,4 +68,6 @@ values are driven, or provide access to input values.  That must be
 inferred by reading the chip's value and knowing the last value written
 to it.  If you leave n_latch initialized to zero, that last written
 value is presumed to be all ones (as if the chip were just reset).
+
+.. This file was automatic generated / don't edit.
 

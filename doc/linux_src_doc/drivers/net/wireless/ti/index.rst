@@ -7,4 +7,5 @@ ti
 .. toctree::
    :maxdepth: 1
 
-   wlcore/index
+    wl1251/index
+    wlcore/index

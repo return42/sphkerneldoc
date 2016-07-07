@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-skcipher.h
-==========
-
+.. src-file: include/crypto/skcipher.h
 
 .. _`skcipher_request`:
 
 struct skcipher_request
 =======================
 
-.. c:type:: skcipher_request
+.. c:type:: struct skcipher_request
 
     Symmetric key cipher request
-
 
 .. _`skcipher_request.definition`:
 
@@ -22,51 +17,46 @@ Definition
 
 .. code-block:: c
 
-  struct skcipher_request {
-    unsigned int cryptlen;
-    u8 * iv;
-    struct scatterlist * src;
-    struct scatterlist * dst;
-    struct crypto_async_request base;
-    void * __ctx[];
-  };
-
+    struct skcipher_request {
+        unsigned int cryptlen;
+        u8 *iv;
+        struct scatterlist *src;
+        struct scatterlist *dst;
+        struct crypto_async_request base;
+        void  *__ctx[];
+    }
 
 .. _`skcipher_request.members`:
 
 Members
 -------
 
-:``cryptlen``:
+cryptlen
     Number of bytes to encrypt or decrypt
 
-:``iv``:
+iv
     Initialisation Vector
 
-:``src``:
+src
     Source SG list
 
-:``dst``:
+dst
     Destination SG list
 
-:``base``:
+base
     Underlying async request request
 
-:``__ctx[]``:
+__ctx
     Start of private context data
-
-
-
 
 .. _`skcipher_givcrypt_request`:
 
 struct skcipher_givcrypt_request
 ================================
 
-.. c:type:: skcipher_givcrypt_request
+.. c:type:: struct skcipher_givcrypt_request
 
     Crypto request with IV generation
-
 
 .. _`skcipher_givcrypt_request.definition`:
 
@@ -75,69 +65,32 @@ Definition
 
 .. code-block:: c
 
-  struct skcipher_givcrypt_request {
-    u64 seq;
-    u8 * giv;
-    struct ablkcipher_request creq;
-  };
-
+    struct skcipher_givcrypt_request {
+        u64 seq;
+        u8 *giv;
+        struct ablkcipher_request creq;
+    }
 
 .. _`skcipher_givcrypt_request.members`:
 
 Members
 -------
 
-:``seq``:
+seq
     Sequence number for IV generation
 
-:``giv``:
+giv
     Space for generated IV
 
-:``creq``:
+creq
     The crypto request itself
-
-
-
-
-.. _`symmetric-key-cipher-api`:
-
-Symmetric Key Cipher API
-========================
-
-Symmetric key cipher API is used with the ciphers of type
-CRYPTO_ALG_TYPE_SKCIPHER (listed as type "skcipher" in /proc/crypto).
-
-Asynchronous cipher operations imply that the function invocation for a
-cipher request returns immediately before the completion of the operation.
-The cipher request is scheduled as a separate kernel thread and therefore
-load-balanced on the different CPUs via the process scheduler. To allow
-the kernel crypto API to inform the caller about the completion of a cipher
-request, the caller must provide a callback function. That function is
-invoked with the cipher handle when the request completes.
-
-To support the asynchronous operation, additional information than just the
-cipher handle must be supplied to the kernel crypto API. That additional
-information is given by filling in the skcipher_request data structure.
-
-For the symmetric key cipher API, the state is maintained with the tfm
-cipher handle. A single tfm can be used across multiple calls and in
-parallel. For asynchronous block cipher calls, context data supplied and
-only used by the caller can be referenced the request data structure in
-addition to the IV used for the cipher request. The maintenance of such
-state information would be important for a crypto driver implementer to
-have, because when calling the callback function upon completion of the
-cipher operation, that callback function may need some information about
-which operation just finished if it invoked multiple in parallel. This
-state information is unused by the kernel crypto API.
-
-
 
 .. _`crypto_alloc_skcipher`:
 
 crypto_alloc_skcipher
 =====================
 
-.. c:function:: struct crypto_skcipher *crypto_alloc_skcipher (const char *alg_name, u32 type, u32 mask)
+.. c:function:: struct crypto_skcipher *crypto_alloc_skcipher(const char *alg_name, u32 type, u32 mask)
 
     allocate symmetric key cipher handle
 
@@ -151,8 +104,6 @@ crypto_alloc_skcipher
     :param u32 mask:
         specifies the mask for the cipher
 
-
-
 .. _`crypto_alloc_skcipher.description`:
 
 Description
@@ -162,38 +113,32 @@ Allocate a cipher handle for an skcipher. The returned struct
 crypto_skcipher is the cipher handle that is required for any subsequent
 API invocation for that skcipher.
 
-
-
 .. _`crypto_alloc_skcipher.return`:
 
 Return
 ------
 
-allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
-of an error, :c:func:`PTR_ERR` returns the error code.
-
-
+allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
+of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_skcipher`:
 
 crypto_free_skcipher
 ====================
 
-.. c:function:: void crypto_free_skcipher (struct crypto_skcipher *tfm)
+.. c:function:: void crypto_free_skcipher(struct crypto_skcipher *tfm)
 
     zeroize and free cipher handle
 
     :param struct crypto_skcipher \*tfm:
         cipher handle to be freed
 
-
-
 .. _`crypto_has_skcipher`:
 
 crypto_has_skcipher
 ===================
 
-.. c:function:: int crypto_has_skcipher (const char *alg_name, u32 type, u32 mask)
+.. c:function:: int crypto_has_skcipher(const char *alg_name, u32 type, u32 mask)
 
     Search for the availability of an skcipher.
 
@@ -207,8 +152,6 @@ crypto_has_skcipher
     :param u32 mask:
         specifies the mask for the cipher
 
-
-
 .. _`crypto_has_skcipher.return`:
 
 Return
@@ -217,21 +160,17 @@ Return
 true when the skcipher is known to the kernel crypto API; false
 otherwise
 
-
-
 .. _`crypto_skcipher_ivsize`:
 
 crypto_skcipher_ivsize
 ======================
 
-.. c:function:: unsigned int crypto_skcipher_ivsize (struct crypto_skcipher *tfm)
+.. c:function:: unsigned int crypto_skcipher_ivsize(struct crypto_skcipher *tfm)
 
     obtain IV size
 
     :param struct crypto_skcipher \*tfm:
         cipher handle
-
-
 
 .. _`crypto_skcipher_ivsize.description`:
 
@@ -241,8 +180,6 @@ Description
 The size of the IV for the skcipher referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-
-
 .. _`crypto_skcipher_ivsize.return`:
 
 Return
@@ -250,21 +187,17 @@ Return
 
 IV size in bytes
 
-
-
 .. _`crypto_skcipher_blocksize`:
 
 crypto_skcipher_blocksize
 =========================
 
-.. c:function:: unsigned int crypto_skcipher_blocksize (struct crypto_skcipher *tfm)
+.. c:function:: unsigned int crypto_skcipher_blocksize(struct crypto_skcipher *tfm)
 
     obtain block size of cipher
 
     :param struct crypto_skcipher \*tfm:
         cipher handle
-
-
 
 .. _`crypto_skcipher_blocksize.description`:
 
@@ -275,8 +208,6 @@ The block size for the skcipher referenced with the cipher handle is
 returned. The caller may use that information to allocate appropriate
 memory for the data returned by the encryption or decryption operation
 
-
-
 .. _`crypto_skcipher_blocksize.return`:
 
 Return
@@ -284,14 +215,12 @@ Return
 
 block size of cipher
 
-
-
 .. _`crypto_skcipher_setkey`:
 
 crypto_skcipher_setkey
 ======================
 
-.. c:function:: int crypto_skcipher_setkey (struct crypto_skcipher *tfm, const u8 *key, unsigned int keylen)
+.. c:function:: int crypto_skcipher_setkey(struct crypto_skcipher *tfm, const u8 *key, unsigned int keylen)
 
     set key for cipher
 
@@ -303,8 +232,6 @@ crypto_skcipher_setkey
 
     :param unsigned int keylen:
         length of the key in bytes
-
-
 
 .. _`crypto_skcipher_setkey.description`:
 
@@ -319,8 +246,6 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-
-
 .. _`crypto_skcipher_setkey.return`:
 
 Return
@@ -328,21 +253,17 @@ Return
 
 0 if the setting of the key was successful; < 0 if an error occurred
 
-
-
 .. _`crypto_skcipher_reqtfm`:
 
 crypto_skcipher_reqtfm
 ======================
 
-.. c:function:: struct crypto_skcipher *crypto_skcipher_reqtfm (struct skcipher_request *req)
+.. c:function:: struct crypto_skcipher *crypto_skcipher_reqtfm(struct skcipher_request *req)
 
     obtain cipher handle from request
 
     :param struct skcipher_request \*req:
         skcipher_request out of which the cipher handle is to be obtained
-
-
 
 .. _`crypto_skcipher_reqtfm.description`:
 
@@ -352,8 +273,6 @@ Description
 Return the crypto_skcipher handle when furnishing an skcipher_request
 data structure.
 
-
-
 .. _`crypto_skcipher_reqtfm.return`:
 
 Return
@@ -361,22 +280,18 @@ Return
 
 crypto_skcipher handle
 
-
-
 .. _`crypto_skcipher_encrypt`:
 
 crypto_skcipher_encrypt
 =======================
 
-.. c:function:: int crypto_skcipher_encrypt (struct skcipher_request *req)
+.. c:function:: int crypto_skcipher_encrypt(struct skcipher_request *req)
 
     encrypt plaintext
 
     :param struct skcipher_request \*req:
         reference to the skcipher_request handle that holds all information
         needed to perform the cipher operation
-
-
 
 .. _`crypto_skcipher_encrypt.description`:
 
@@ -387,8 +302,6 @@ Encrypt plaintext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
 skcipher_request\_\* functions.
 
-
-
 .. _`crypto_skcipher_encrypt.return`:
 
 Return
@@ -396,22 +309,18 @@ Return
 
 0 if the cipher operation was successful; < 0 if an error occurred
 
-
-
 .. _`crypto_skcipher_decrypt`:
 
 crypto_skcipher_decrypt
 =======================
 
-.. c:function:: int crypto_skcipher_decrypt (struct skcipher_request *req)
+.. c:function:: int crypto_skcipher_decrypt(struct skcipher_request *req)
 
     decrypt ciphertext
 
     :param struct skcipher_request \*req:
         reference to the skcipher_request handle that holds all information
         needed to perform the cipher operation
-
-
 
 .. _`crypto_skcipher_decrypt.description`:
 
@@ -422,8 +331,6 @@ Decrypt ciphertext data using the skcipher_request handle. That data
 structure and how it is filled with data is discussed with the
 skcipher_request\_\* functions.
 
-
-
 .. _`crypto_skcipher_decrypt.return`:
 
 Return
@@ -431,35 +338,17 @@ Return
 
 0 if the cipher operation was successful; < 0 if an error occurred
 
-
-
-.. _`symmetric-key-cipher-request-handle`:
-
-Symmetric Key Cipher Request Handle
-===================================
-
-The skcipher_request data structure contains all pointers to data
-required for the symmetric key cipher operation. This includes the cipher
-handle (which can be used by multiple skcipher_request instances), pointer
-to plaintext and ciphertext, asynchronous callback function, etc. It acts
-as a handle to the skcipher_request\_\* API calls in a similar way as
-skcipher handle to the crypto_skcipher\_\* API calls.
-
-
-
 .. _`crypto_skcipher_reqsize`:
 
 crypto_skcipher_reqsize
 =======================
 
-.. c:function:: unsigned int crypto_skcipher_reqsize (struct crypto_skcipher *tfm)
+.. c:function:: unsigned int crypto_skcipher_reqsize(struct crypto_skcipher *tfm)
 
     obtain size of the request data structure
 
     :param struct crypto_skcipher \*tfm:
         cipher handle
-
-
 
 .. _`crypto_skcipher_reqsize.return`:
 
@@ -468,14 +357,12 @@ Return
 
 number of bytes
 
-
-
 .. _`skcipher_request_set_tfm`:
 
 skcipher_request_set_tfm
 ========================
 
-.. c:function:: void skcipher_request_set_tfm (struct skcipher_request *req, struct crypto_skcipher *tfm)
+.. c:function:: void skcipher_request_set_tfm(struct skcipher_request *req, struct crypto_skcipher *tfm)
 
     update cipher handle reference in request
 
@@ -485,8 +372,6 @@ skcipher_request_set_tfm
     :param struct crypto_skcipher \*tfm:
         cipher handle that shall be added to the request handle
 
-
-
 .. _`skcipher_request_set_tfm.description`:
 
 Description
@@ -495,14 +380,12 @@ Description
 Allow the caller to replace the existing skcipher handle in the request
 data structure with a different one.
 
-
-
 .. _`skcipher_request_alloc`:
 
 skcipher_request_alloc
 ======================
 
-.. c:function:: struct skcipher_request *skcipher_request_alloc (struct crypto_skcipher *tfm, gfp_t gfp)
+.. c:function:: struct skcipher_request *skcipher_request_alloc(struct crypto_skcipher *tfm, gfp_t gfp)
 
     allocate request data structure
 
@@ -511,8 +394,6 @@ skcipher_request_alloc
 
     :param gfp_t gfp:
         memory allocation flag that is handed to kmalloc by the API call.
-
-
 
 .. _`skcipher_request_alloc.description`:
 
@@ -523,38 +404,31 @@ Allocate the request data structure that must be used with the skcipher
 encrypt and decrypt API calls. During the allocation, the provided skcipher
 handle is registered in the request data structure.
 
-
-
 .. _`skcipher_request_alloc.return`:
 
 Return
 ------
 
-allocated request handle in case of success; :c:func:`IS_ERR` is true in case
-of an error, :c:func:`PTR_ERR` returns the error code.
-
-
+allocated request handle in case of success, or NULL if out of memory
 
 .. _`skcipher_request_free`:
 
 skcipher_request_free
 =====================
 
-.. c:function:: void skcipher_request_free (struct skcipher_request *req)
+.. c:function:: void skcipher_request_free(struct skcipher_request *req)
 
     zeroize and free request data structure
 
     :param struct skcipher_request \*req:
         request data structure cipher handle to be freed
 
-
-
 .. _`skcipher_request_set_callback`:
 
 skcipher_request_set_callback
 =============================
 
-.. c:function:: void skcipher_request_set_callback (struct skcipher_request *req, u32 flags, crypto_completion_t compl, void *data)
+.. c:function:: void skcipher_request_set_callback(struct skcipher_request *req, u32 flags, crypto_completion_t compl, void *data)
 
     set asynchronous callback function
 
@@ -580,8 +454,6 @@ skcipher_request_set_callback
         callback function can access the memory via the "data" field in the
         crypto_async_request data structure provided to the callback function.
 
-
-
 .. _`skcipher_request_set_callback.description`:
 
 Description
@@ -595,14 +467,12 @@ must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
 
-
-
 .. _`skcipher_request_set_crypt`:
 
 skcipher_request_set_crypt
 ==========================
 
-.. c:function:: void skcipher_request_set_crypt (struct skcipher_request *req, struct scatterlist *src, struct scatterlist *dst, unsigned int cryptlen, void *iv)
+.. c:function:: void skcipher_request_set_crypt(struct skcipher_request *req, struct scatterlist *src, struct scatterlist *dst, unsigned int cryptlen, void *iv)
 
     set data buffers
 
@@ -616,13 +486,11 @@ skcipher_request_set_crypt
         destination scatter / gather list
 
     :param unsigned int cryptlen:
-        number of bytes to process from ``src``
+        number of bytes to process from \ ``src``\ 
 
     :param void \*iv:
         IV for the cipher operation which must comply with the IV size defined
         by crypto_skcipher_ivsize
-
-
 
 .. _`skcipher_request_set_crypt.description`:
 
@@ -635,4 +503,6 @@ scatter / gather lists.
 For encryption, the source is treated as the plaintext and the
 destination is the ciphertext. For a decryption operation, the use is
 reversed - the source is the ciphertext and the destination is the plaintext.
+
+.. This file was automatic generated / don't edit.
 

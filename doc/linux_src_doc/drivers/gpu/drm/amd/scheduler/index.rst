@@ -7,5 +7,5 @@ scheduler
 .. toctree::
    :maxdepth: 1
 
-   gpu_scheduler_c
-   sched_fence_c
+    gpu_scheduler_c
+    sched_fence_c

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====================
-i2c-cros-ec-tunnel.c
-====================
-
+.. src-file: drivers/i2c/busses/i2c-cros-ec-tunnel.c
 
 .. _`ec_i2c_device`:
 
 struct ec_i2c_device
 ====================
 
-.. c:type:: ec_i2c_device
+.. c:type:: struct ec_i2c_device
 
     Driver data for I2C tunnel
-
 
 .. _`ec_i2c_device.definition`:
 
@@ -22,48 +17,44 @@ Definition
 
 .. code-block:: c
 
-  struct ec_i2c_device {
-    struct device * dev;
-    struct i2c_adapter adap;
-    struct cros_ec_device * ec;
-    u16 remote_bus;
-    u8 request_buf[256];
-    u8 response_buf[256];
-  };
-
+    struct ec_i2c_device {
+        struct device *dev;
+        struct i2c_adapter adap;
+        struct cros_ec_device *ec;
+        u16 remote_bus;
+        u8 request_buf[256];
+        u8 response_buf[256];
+    }
 
 .. _`ec_i2c_device.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     Device node
 
-:``adap``:
+adap
     I2C adapter
 
-:``ec``:
+ec
     Pointer to EC device
 
-:``remote_bus``:
+remote_bus
     The EC bus number we tunnel to on the other side.
 
-:``request_buf[256]``:
+request_buf
     Buffer for transmitting data; we expect most transfers to fit.
 
-:``response_buf[256]``:
+response_buf
     Buffer for receiving data; we expect most transfers to fit.
-
-
-
 
 .. _`ec_i2c_count_message`:
 
 ec_i2c_count_message
 ====================
 
-.. c:function:: int ec_i2c_count_message (const struct i2c_msg i2c_msgs[], int num)
+.. c:function:: int ec_i2c_count_message(const struct i2c_msg i2c_msgs[], int num)
 
     Count bytes needed for ec_i2c_construct_message
 
@@ -73,8 +64,6 @@ ec_i2c_count_message
     :param int num:
         The number of i2c messages.
 
-
-
 .. _`ec_i2c_count_message.description`:
 
 Description
@@ -82,14 +71,12 @@ Description
 
 Returns the number of bytes the messages will take up.
 
-
-
 .. _`ec_i2c_construct_message`:
 
 ec_i2c_construct_message
 ========================
 
-.. c:function:: int ec_i2c_construct_message (u8 *buf, const struct i2c_msg i2c_msgs[], int num, u16 bus_num)
+.. c:function:: int ec_i2c_construct_message(u8 *buf, const struct i2c_msg i2c_msgs[], int num, u16 bus_num)
 
     construct a message to go to the EC
 
@@ -105,32 +92,22 @@ ec_i2c_construct_message
     :param u16 bus_num:
         The remote bus number we want to talk to.
 
-
-
 .. _`ec_i2c_construct_message.description`:
 
 Description
 -----------
 
-Returns 0 or a negative error number.
-
-
-
-.. _`ec_i2c_construct_message.description`:
-
-Description
------------
+This function effectively stuffs the standard i2c_msg format of Linux into
+a format that the EC understands.
 
 Returns 0 or a negative error number.
-
-
 
 .. _`ec_i2c_count_response`:
 
 ec_i2c_count_response
 =====================
 
-.. c:function:: int ec_i2c_count_response (struct i2c_msg i2c_msgs[], int num)
+.. c:function:: int ec_i2c_count_response(struct i2c_msg i2c_msgs[], int num)
 
     Count bytes needed for ec_i2c_parse_response
 
@@ -140,8 +117,6 @@ ec_i2c_count_response
     :param int num:
         The number of i2c messages expected.
 
-
-
 .. _`ec_i2c_count_response.description`:
 
 Description
@@ -149,14 +124,12 @@ Description
 
 Returns the number of response bytes expeced.
 
-
-
 .. _`ec_i2c_parse_response`:
 
 ec_i2c_parse_response
 =====================
 
-.. c:function:: int ec_i2c_parse_response (const u8 *buf, struct i2c_msg i2c_msgs[], int *num)
+.. c:function:: int ec_i2c_parse_response(const u8 *buf, struct i2c_msg i2c_msgs[], int *num)
 
     Parse a response from the EC
 
@@ -170,21 +143,14 @@ ec_i2c_parse_response
         The number of i2c messages; will be modified to include the actual
         number received.
 
-
-
 .. _`ec_i2c_parse_response.description`:
 
 Description
 -----------
 
-Returns 0 or a negative error number.
-
-
-
-.. _`ec_i2c_parse_response.description`:
-
-Description
------------
+We'll take the EC's response and copy it back into msgs.
 
 Returns 0 or a negative error number.
+
+.. This file was automatic generated / don't edit.
 

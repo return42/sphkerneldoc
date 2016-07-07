@@ -7,4 +7,5 @@ rds
 .. toctree::
    :maxdepth: 1
 
-   page_c
+    page_c
+    rds_h

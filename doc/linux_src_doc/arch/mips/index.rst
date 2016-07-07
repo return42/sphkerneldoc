@@ -7,9 +7,14 @@ mips
 .. toctree::
    :maxdepth: 1
 
-   cavium-octeon/index
-   kernel/index
-   kvm/index
-   lib/index
-   mm/index
-   sgi-ip22/index
+    cavium-octeon/index
+    include/index
+    kernel/index
+    kvm/index
+    lib/index
+    mm/index
+    net/index
+    netlogic/index
+    pci/index
+    sgi-ip22/index
+    sgi-ip27/index

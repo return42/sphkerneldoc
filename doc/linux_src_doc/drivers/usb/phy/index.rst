@@ -7,5 +7,5 @@ phy
 .. toctree::
    :maxdepth: 1
 
-   of_c
-   phy_c
+    of_c
+    phy_c

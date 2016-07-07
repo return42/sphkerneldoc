@@ -7,12 +7,17 @@ misc
 .. toctree::
    :maxdepth: 1
 
-   atmel_tclib_c
-   enclosure_c
-   pti_c
-   cb710/index
-   eeprom/index
-   lis3lv02d/index
-   mei/index
-   mic/index
-   ti-st/index
+    cb710/index
+    cxl/index
+    echo/index
+    eeprom/index
+    genwqe/index
+    ibmasm/index
+    lis3lv02d/index
+    mei/index
+    mic/index
+    ti-st/index
+    atmel_tclib_c
+    enclosure_c
+    pch_phub_c
+    pti_c

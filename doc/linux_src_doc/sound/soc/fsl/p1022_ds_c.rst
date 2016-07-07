@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-p1022_ds.c
-==========
-
+.. src-file: sound/soc/fsl/p1022_ds.c
 
 .. _`ccsr_guts_pmuxcr_uart0_i2c1_mask`:
 
 CCSR_GUTS_PMUXCR_UART0_I2C1_MASK
 ================================
 
-.. c:function:: CCSR_GUTS_PMUXCR_UART0_I2C1_MASK ()
-
-
+.. c:function::  CCSR_GUTS_PMUXCR_UART0_I2C1_MASK()
 
 .. _`ccsr_guts_pmuxcr_uart0_i2c1_mask.author`:
 
@@ -27,169 +21,145 @@ This file is licensed under the terms of the GNU General Public License
 version 2.  This program is licensed "as is" without any warranty of any
 kind, whether express or implied.
 
-
-
 .. _`p1022_ds_machine_probe`:
 
 p1022_ds_machine_probe
 ======================
 
-.. c:function:: int p1022_ds_machine_probe (struct snd_soc_card *card)
+.. c:function:: int p1022_ds_machine_probe(struct snd_soc_card *card)
+
+    initialize the board
 
     :param struct snd_soc_card \*card:
-
         *undescribed*
-
-
 
 .. _`p1022_ds_machine_probe.description`:
 
 Description
 -----------
 
-
 This function is used to initialize the board-specific hardware.
 
 Here we program the DMACR and PMUXCR registers.
-
-
 
 .. _`p1022_ds_startup`:
 
 p1022_ds_startup
 ================
 
-.. c:function:: int p1022_ds_startup (struct snd_pcm_substream *substream)
+.. c:function:: int p1022_ds_startup(struct snd_pcm_substream *substream)
+
+    program the board with various hardware parameters
 
     :param struct snd_pcm_substream \*substream:
-
         *undescribed*
-
-
 
 .. _`p1022_ds_startup.description`:
 
 Description
 -----------
 
-
 This function takes board-specific information, like clock frequencies
 and serial data formats, and passes that information to the codec and
 transport drivers.
-
-
 
 .. _`p1022_ds_machine_remove`:
 
 p1022_ds_machine_remove
 =======================
 
-.. c:function:: int p1022_ds_machine_remove (struct snd_soc_card *card)
+.. c:function:: int p1022_ds_machine_remove(struct snd_soc_card *card)
+
+    Remove the sound device
 
     :param struct snd_soc_card \*card:
-
         *undescribed*
-
-
 
 .. _`p1022_ds_machine_remove.description`:
 
 Description
 -----------
 
-
 This function is called to remove the sound device for one SSI.  We
 de-program the DMACR and PMUXCR register.
-
-
 
 .. _`p1022_ds_probe`:
 
 p1022_ds_probe
 ==============
 
-.. c:function:: int p1022_ds_probe (struct platform_device *pdev)
+.. c:function:: int p1022_ds_probe(struct platform_device *pdev)
+
+    platform probe function for the machine driver
 
     :param struct platform_device \*pdev:
-
         *undescribed*
-
-
 
 .. _`p1022_ds_probe.description`:
 
 Description
 -----------
 
-
 Although this is a machine driver, the SSI node is the "master" node with
 respect to audio hardware connections.  Therefore, we create a new ASoC
 device for each new SSI node that has a codec attached.
-
-
 
 .. _`p1022_ds_remove`:
 
 p1022_ds_remove
 ===============
 
-.. c:function:: int p1022_ds_remove (struct platform_device *pdev)
+.. c:function:: int p1022_ds_remove(struct platform_device *pdev)
+
+    remove the platform device
 
     :param struct platform_device \*pdev:
-
         *undescribed*
-
-
 
 .. _`p1022_ds_remove.description`:
 
 Description
 -----------
 
-
 This function is called when the platform device is removed.
-
-
 
 .. _`p1022_ds_init`:
 
 p1022_ds_init
 =============
 
-.. c:function:: int p1022_ds_init ( void)
+.. c:function:: int p1022_ds_init( void)
 
-    :param void:
+    machine driver initialization.
+
+    :param  void:
         no arguments
-
-
 
 .. _`p1022_ds_init.description`:
 
 Description
 -----------
 
-
 This function is called when this module is loaded.
-
-
 
 .. _`p1022_ds_exit`:
 
 p1022_ds_exit
 =============
 
-.. c:function:: void __exit p1022_ds_exit ( void)
+.. c:function:: void __exit p1022_ds_exit( void)
 
-    :param void:
+    machine driver exit
+
+    :param  void:
         no arguments
-
-
 
 .. _`p1022_ds_exit.description`:
 
 Description
 -----------
 
-
 This function is called when this driver is unloaded.
+
+.. This file was automatic generated / don't edit.
 

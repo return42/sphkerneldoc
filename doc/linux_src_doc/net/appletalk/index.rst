@@ -7,6 +7,6 @@ appletalk
 .. toctree::
    :maxdepth: 1
 
-   aarp_c
-   ddp_c
-   dev_c
+    aarp_c
+    ddp_c
+    dev_c

@@ -7,4 +7,4 @@ trigger
 .. toctree::
    :maxdepth: 1
 
-   ledtrig-cpu_c
+    ledtrig-cpu_c

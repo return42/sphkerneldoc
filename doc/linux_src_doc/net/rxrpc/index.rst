@@ -7,10 +7,9 @@ rxrpc
 .. toctree::
    :maxdepth: 1
 
-   af_rxrpc_c
-   ar-accept_c
-   ar-key_c
-   ar-output_c
-   ar-recvmsg_c
-   ar-security_c
-   ar-skbuff_c
+    af_rxrpc_c
+    ar-accept_c
+    ar-key_c
+    ar-output_c
+    ar-recvmsg_c
+    ar-skbuff_c

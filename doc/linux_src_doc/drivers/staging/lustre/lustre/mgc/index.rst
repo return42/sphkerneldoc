@@ -7,4 +7,4 @@ mgc
 .. toctree::
    :maxdepth: 1
 
-   mgc_request_c
+    mgc_request_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-sas_host_smp.c
-==============
-
+.. src-file: drivers/scsi/libsas/sas_host_smp.c
 
 .. _`to_sas_gpio_gp_bit`:
 
 to_sas_gpio_gp_bit
 ==================
 
-.. c:function:: u8 *to_sas_gpio_gp_bit (unsigned int od, u8 *data, u8 index, u8 count, u8 *bit)
+.. c:function:: u8 *to_sas_gpio_gp_bit(unsigned int od, u8 *data, u8 index, u8 count, u8 *bit)
 
     given the gpio frame data find the byte/bit position of 'od'
 
@@ -28,8 +24,6 @@ to_sas_gpio_gp_bit
 
     :param u8 \*bit:
         bit position of 'od' in the returned byte
-
-
 
 .. _`to_sas_gpio_gp_bit.description`:
 
@@ -49,4 +43,6 @@ The general-purpose (raw-bitstream) RX registers have the same layout
 although 'od' is renamed 'id' for 'input data'.
 
 SFF-8489 defines the behavior of the LEDs in response to the 'od' values.
+
+.. This file was automatic generated / don't edit.
 

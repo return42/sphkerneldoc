@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-svcsock.c
-=========
-
+.. src-file: net/sunrpc/svcsock.c
 
 .. _`svc_addsock`:
 
 svc_addsock
 ===========
 
-.. c:function:: int svc_addsock (struct svc_serv *serv, const int fd, char *name_return, const size_t len)
+.. c:function:: int svc_addsock(struct svc_serv *serv, const int fd, char *name_return, const size_t len)
 
     add a listener socket to an RPC service
 
@@ -26,8 +22,6 @@ svc_addsock
     :param const size_t len:
         size of the buffer
 
-
-
 .. _`svc_addsock.description`:
 
 Description
@@ -36,4 +30,6 @@ Description
 Fills in socket name and returns positive length of name if successful.
 Name is terminated with '\n'.  On error, returns a negative errno
 value.
+
+.. This file was automatic generated / don't edit.
 

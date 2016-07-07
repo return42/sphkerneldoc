@@ -7,4 +7,4 @@ fsl
 .. toctree::
    :maxdepth: 1
 
-   qe/index
+    qe/index

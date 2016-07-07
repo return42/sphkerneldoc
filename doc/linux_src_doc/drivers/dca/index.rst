@@ -7,4 +7,4 @@ dca
 .. toctree::
    :maxdepth: 1
 
-   dca-core_c
+    dca-core_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-libata-scsi.c
-=============
-
+.. src-file: drivers/ata/libata-scsi.c
 
 .. _`ata_std_bios_param`:
 
 ata_std_bios_param
 ==================
 
-.. c:function:: int ata_std_bios_param (struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom[])
+.. c:function:: int ata_std_bios_param(struct scsi_device *sdev, struct block_device *bdev, sector_t capacity, int geom[])
 
     generic bios head/sector/cylinder calculator used by sd.
 
@@ -18,15 +14,13 @@ ata_std_bios_param
         SCSI device for which BIOS geometry is to be determined
 
     :param struct block_device \*bdev:
-        block device associated with ``sdev``
+        block device associated with \ ``sdev``\ 
 
     :param sector_t capacity:
         capacity of SCSI device
 
     :param int geom:
         location to which geometry will be output
-
-
 
 .. _`ata_std_bios_param.description`:
 
@@ -38,8 +32,6 @@ used by sd. Most BIOSes nowadays expect a XXX/255/16  (CHS)
 mapping. Some situations may arise where the disk is not
 bootable if this is not used.
 
-
-
 .. _`ata_std_bios_param.locking`:
 
 LOCKING
@@ -47,40 +39,32 @@ LOCKING
 
 Defined by the SCSI layer.  We don't really care.
 
+.. _`ata_std_bios_param.return`:
 
-
-.. _`ata_std_bios_param.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero.
-
-
 
 .. _`ata_scsi_unlock_native_capacity`:
 
 ata_scsi_unlock_native_capacity
 ===============================
 
-.. c:function:: void ata_scsi_unlock_native_capacity (struct scsi_device *sdev)
+.. c:function:: void ata_scsi_unlock_native_capacity(struct scsi_device *sdev)
 
     unlock native capacity
 
     :param struct scsi_device \*sdev:
         SCSI device to adjust device capacity for
 
-
-
 .. _`ata_scsi_unlock_native_capacity.description`:
 
 Description
 -----------
 
-This function is called if a partition on ``sdev`` extends beyond
+This function is called if a partition on \ ``sdev``\  extends beyond
 the end of the device.  It requests EH to unlock HPA.
-
-
 
 .. _`ata_scsi_unlock_native_capacity.locking`:
 
@@ -89,14 +73,12 @@ LOCKING
 
 Defined by the SCSI layer.  Might sleep.
 
-
-
 .. _`ata_get_identity`:
 
 ata_get_identity
 ================
 
-.. c:function:: int ata_get_identity (struct ata_port *ap, struct scsi_device *sdev, void __user *arg)
+.. c:function:: int ata_get_identity(struct ata_port *ap, struct scsi_device *sdev, void __user *arg)
 
     Handler for HDIO_GET_IDENTITY ioctl
 
@@ -109,8 +91,6 @@ ata_get_identity
     :param void __user \*arg:
         User buffer area for identify data
 
-
-
 .. _`ata_get_identity.locking`:
 
 LOCKING
@@ -118,23 +98,19 @@ LOCKING
 
 Defined by the SCSI layer.  We don't really care.
 
+.. _`ata_get_identity.return`:
 
-
-.. _`ata_get_identity.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, negative errno on error.
-
-
 
 .. _`ata_cmd_ioctl`:
 
 ata_cmd_ioctl
 =============
 
-.. c:function:: int ata_cmd_ioctl (struct scsi_device *scsidev, void __user *arg)
+.. c:function:: int ata_cmd_ioctl(struct scsi_device *scsidev, void __user *arg)
 
     Handler for HDIO_DRIVE_CMD ioctl
 
@@ -144,8 +120,6 @@ ata_cmd_ioctl
     :param void __user \*arg:
         User provided data for issuing command
 
-
-
 .. _`ata_cmd_ioctl.locking`:
 
 LOCKING
@@ -153,23 +127,19 @@ LOCKING
 
 Defined by the SCSI layer.  We don't really care.
 
+.. _`ata_cmd_ioctl.return`:
 
-
-.. _`ata_cmd_ioctl.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, negative errno on error.
-
-
 
 .. _`ata_task_ioctl`:
 
 ata_task_ioctl
 ==============
 
-.. c:function:: int ata_task_ioctl (struct scsi_device *scsidev, void __user *arg)
+.. c:function:: int ata_task_ioctl(struct scsi_device *scsidev, void __user *arg)
 
     Handler for HDIO_DRIVE_TASK ioctl
 
@@ -179,8 +149,6 @@ ata_task_ioctl
     :param void __user \*arg:
         User provided data for issuing command
 
-
-
 .. _`ata_task_ioctl.locking`:
 
 LOCKING
@@ -188,23 +156,19 @@ LOCKING
 
 Defined by the SCSI layer.  We don't really care.
 
+.. _`ata_task_ioctl.return`:
 
-
-.. _`ata_task_ioctl.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, negative errno on error.
-
-
 
 .. _`ata_scsi_qc_new`:
 
 ata_scsi_qc_new
 ===============
 
-.. c:function:: struct ata_queued_cmd *ata_scsi_qc_new (struct ata_device *dev, struct scsi_cmnd *cmd)
+.. c:function:: struct ata_queued_cmd *ata_scsi_qc_new(struct ata_device *dev, struct scsi_cmnd *cmd)
 
     acquire new ata_queued_cmd reference
 
@@ -213,8 +177,6 @@ ata_scsi_qc_new
 
     :param struct scsi_cmnd \*cmd:
         SCSI command that originated this ATA command
-
-
 
 .. _`ata_scsi_qc_new.description`:
 
@@ -229,8 +191,6 @@ If a command was available, fill in the SCSI-specific
 portions of the structure with information on the
 current command.
 
-
-
 .. _`ata_scsi_qc_new.locking`:
 
 LOCKING
@@ -238,23 +198,19 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_qc_new.return`:
 
+Return
+------
 
-.. _`ata_scsi_qc_new.returns`:
-
-RETURNS
--------
-
-Command allocated, or ``NULL`` if none available.
-
-
+Command allocated, or \ ``NULL``\  if none available.
 
 .. _`ata_dump_status`:
 
 ata_dump_status
 ===============
 
-.. c:function:: void ata_dump_status (unsigned id, struct ata_taskfile *tf)
+.. c:function:: void ata_dump_status(unsigned id, struct ata_taskfile *tf)
 
     user friendly display of error info
 
@@ -263,8 +219,6 @@ ata_dump_status
 
     :param struct ata_taskfile \*tf:
         ptr to filled out taskfile
-
-
 
 .. _`ata_dump_status.description`:
 
@@ -275,8 +229,6 @@ Decode and dump the ATA error/status registers for the user so
 that they have some idea what really happened at the non
 make-believe layer.
 
-
-
 .. _`ata_dump_status.locking`:
 
 LOCKING
@@ -284,14 +236,12 @@ LOCKING
 
 inherited from caller
 
-
-
 .. _`ata_to_sense_error`:
 
 ata_to_sense_error
 ==================
 
-.. c:function:: void ata_to_sense_error (unsigned id, u8 drv_stat, u8 drv_err, u8 *sk, u8 *asc, u8 *ascq, int verbose)
+.. c:function:: void ata_to_sense_error(unsigned id, u8 drv_stat, u8 drv_err, u8 *sk, u8 *asc, u8 *ascq, int verbose)
 
     convert ATA error to SCSI error
 
@@ -316,8 +266,6 @@ ata_to_sense_error
     :param int verbose:
         be verbose
 
-
-
 .. _`ata_to_sense_error.description`:
 
 Description
@@ -327,8 +275,6 @@ Converts an ATA error into a SCSI error.  Fill out pointers to
 SK, ASC, and ASCQ bytes for later use in fixed or descriptor
 format sense blocks.
 
-
-
 .. _`ata_to_sense_error.locking`:
 
 LOCKING
@@ -336,31 +282,25 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_gen_ata_sense`:
 
 ata_gen_ata_sense
 =================
 
-.. c:function:: void ata_gen_ata_sense (struct ata_queued_cmd *qc)
+.. c:function:: void ata_gen_ata_sense(struct ata_queued_cmd *qc)
 
     generate a SCSI fixed sense block
 
     :param struct ata_queued_cmd \*qc:
         Command that we are erroring out
 
-
-
 .. _`ata_gen_ata_sense.description`:
 
 Description
 -----------
 
-Generate sense block for a failed ATA command ``qc``\ .  Descriptor
+Generate sense block for a failed ATA command \ ``qc``\ .  Descriptor
 format is used to accommodate LBA48 block address.
-
-
 
 .. _`ata_gen_ata_sense.locking`:
 
@@ -369,21 +309,17 @@ LOCKING
 
 None.
 
-
-
 .. _`atapi_drain_needed`:
 
 atapi_drain_needed
 ==================
 
-.. c:function:: int atapi_drain_needed (struct request *rq)
+.. c:function:: int atapi_drain_needed(struct request *rq)
 
     Check whether data transfer may overflow
 
     :param struct request \*rq:
         request to be checked
-
-
 
 .. _`atapi_drain_needed.description`:
 
@@ -391,11 +327,9 @@ Description
 -----------
 
 ATAPI commands which transfer variable length data to host
-might overflow due to application error or hardare bug.  This
+might overflow due to application error or hardware bug.  This
 function checks whether overflow should be drained and ignored
-for ``request``\ .
-
-
+for \ ``request``\ .
 
 .. _`atapi_drain_needed.locking`:
 
@@ -404,30 +338,24 @@ LOCKING
 
 None.
 
+.. _`atapi_drain_needed.return`:
 
-
-.. _`atapi_drain_needed.returns`:
-
-RETURNS
--------
+Return
+------
 
 1 if ; otherwise, 0.
-
-
 
 .. _`ata_scsi_slave_config`:
 
 ata_scsi_slave_config
 =====================
 
-.. c:function:: int ata_scsi_slave_config (struct scsi_device *sdev)
+.. c:function:: int ata_scsi_slave_config(struct scsi_device *sdev)
 
     Set SCSI device attributes
 
     :param struct scsi_device \*sdev:
         SCSI device to examine
-
-
 
 .. _`ata_scsi_slave_config.description`:
 
@@ -438,8 +366,6 @@ This is called before we actually start reading
 and writing to the device, to configure certain
 SCSI mid-layer behaviors.
 
-
-
 .. _`ata_scsi_slave_config.locking`:
 
 LOCKING
@@ -447,35 +373,29 @@ LOCKING
 
 Defined by SCSI layer.  We don't really care.
 
-
-
 .. _`ata_scsi_slave_destroy`:
 
 ata_scsi_slave_destroy
 ======================
 
-.. c:function:: void ata_scsi_slave_destroy (struct scsi_device *sdev)
+.. c:function:: void ata_scsi_slave_destroy(struct scsi_device *sdev)
 
     SCSI device is about to be destroyed
 
     :param struct scsi_device \*sdev:
         SCSI device to be destroyed
 
-
-
 .. _`ata_scsi_slave_destroy.description`:
 
 Description
 -----------
 
-``sdev`` is about to be destroyed for hot/warm unplugging.  If
+\ ``sdev``\  is about to be destroyed for hot/warm unplugging.  If
 this unplugging was initiated by libata as indicated by NULL
 dev->sdev, this function doesn't have to do anything.
 Otherwise, SCSI layer initiated warm-unplug is in progress.
 Clear dev->sdev, schedule the device for ATA detach and invoke
 EH.
-
-
 
 .. _`ata_scsi_slave_destroy.locking`:
 
@@ -484,14 +404,12 @@ LOCKING
 
 Defined by SCSI layer.  We don't really care.
 
-
-
 .. _`__ata_change_queue_depth`:
 
 __ata_change_queue_depth
 ========================
 
-.. c:function:: int __ata_change_queue_depth (struct ata_port *ap, struct scsi_device *sdev, int queue_depth)
+.. c:function:: int __ata_change_queue_depth(struct ata_port *ap, struct scsi_device *sdev, int queue_depth)
 
     helper for ata_scsi_change_queue_depth
 
@@ -504,8 +422,6 @@ __ata_change_queue_depth
     :param int queue_depth:
         new queue depth
 
-
-
 .. _`__ata_change_queue_depth.description`:
 
 Description
@@ -514,14 +430,12 @@ Description
 libsas and libata have different approaches for associating a sdev to
 its ata_port.
 
-
-
 .. _`ata_scsi_change_queue_depth`:
 
 ata_scsi_change_queue_depth
 ===========================
 
-.. c:function:: int ata_scsi_change_queue_depth (struct scsi_device *sdev, int queue_depth)
+.. c:function:: int ata_scsi_change_queue_depth(struct scsi_device *sdev, int queue_depth)
 
     SCSI callback for queue depth config
 
@@ -530,8 +444,6 @@ ata_scsi_change_queue_depth
 
     :param int queue_depth:
         new queue depth
-
-
 
 .. _`ata_scsi_change_queue_depth.description`:
 
@@ -542,8 +454,6 @@ This is libata standard hostt->change_queue_depth callback.
 SCSI will call into this callback when user tries to set queue
 depth via sysfs.
 
-
-
 .. _`ata_scsi_change_queue_depth.locking`:
 
 LOCKING
@@ -551,30 +461,24 @@ LOCKING
 
 SCSI layer (we don't care)
 
+.. _`ata_scsi_change_queue_depth.return`:
 
-
-.. _`ata_scsi_change_queue_depth.returns`:
-
-RETURNS
--------
+Return
+------
 
 Newly configured queue depth.
-
-
 
 .. _`ata_scsi_start_stop_xlat`:
 
 ata_scsi_start_stop_xlat
 ========================
 
-.. c:function:: unsigned int ata_scsi_start_stop_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_start_stop_xlat(struct ata_queued_cmd *qc)
 
     Translate SCSI START STOP UNIT command
 
     :param struct ata_queued_cmd \*qc:
         Storage for translated ATA taskfile
-
-
 
 .. _`ata_scsi_start_stop_xlat.description`:
 
@@ -586,8 +490,6 @@ Sets up an ATA taskfile to issue STANDBY (to stop) or READ VERIFY
 CHECK POWER MODE to see what power mode the device is already in.
 [See SAT revision 5 at www.t10.org]
 
-
-
 .. _`ata_scsi_start_stop_xlat.locking`:
 
 LOCKING
@@ -595,30 +497,24 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_start_stop_xlat.return`:
 
-
-.. _`ata_scsi_start_stop_xlat.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on error.
-
-
 
 .. _`ata_scsi_flush_xlat`:
 
 ata_scsi_flush_xlat
 ===================
 
-.. c:function:: unsigned int ata_scsi_flush_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_flush_xlat(struct ata_queued_cmd *qc)
 
     Translate SCSI SYNCHRONIZE CACHE command
 
     :param struct ata_queued_cmd \*qc:
         Storage for translated ATA taskfile
-
-
 
 .. _`ata_scsi_flush_xlat.description`:
 
@@ -628,8 +524,6 @@ Description
 Sets up an ATA taskfile to issue FLUSH CACHE or
 FLUSH CACHE EXT.
 
-
-
 .. _`ata_scsi_flush_xlat.locking`:
 
 LOCKING
@@ -637,23 +531,19 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_flush_xlat.return`:
 
-
-.. _`ata_scsi_flush_xlat.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on error.
-
-
 
 .. _`scsi_6_lba_len`:
 
 scsi_6_lba_len
 ==============
 
-.. c:function:: void scsi_6_lba_len (const u8 *cdb, u64 *plba, u32 *plen)
+.. c:function:: void scsi_6_lba_len(const u8 *cdb, u64 *plba, u32 *plen)
 
     Get LBA and transfer length
 
@@ -665,8 +555,6 @@ scsi_6_lba_len
 
     :param u32 \*plen:
         the transfer length
-
-
 
 .. _`scsi_6_lba_len.description`:
 
@@ -675,14 +563,12 @@ Description
 
 Calculate LBA and transfer length for 6-byte commands.
 
-
-
 .. _`scsi_10_lba_len`:
 
 scsi_10_lba_len
 ===============
 
-.. c:function:: void scsi_10_lba_len (const u8 *cdb, u64 *plba, u32 *plen)
+.. c:function:: void scsi_10_lba_len(const u8 *cdb, u64 *plba, u32 *plen)
 
     Get LBA and transfer length
 
@@ -694,8 +580,6 @@ scsi_10_lba_len
 
     :param u32 \*plen:
         the transfer length
-
-
 
 .. _`scsi_10_lba_len.description`:
 
@@ -704,14 +588,12 @@ Description
 
 Calculate LBA and transfer length for 10-byte commands.
 
-
-
 .. _`scsi_16_lba_len`:
 
 scsi_16_lba_len
 ===============
 
-.. c:function:: void scsi_16_lba_len (const u8 *cdb, u64 *plba, u32 *plen)
+.. c:function:: void scsi_16_lba_len(const u8 *cdb, u64 *plba, u32 *plen)
 
     Get LBA and transfer length
 
@@ -724,8 +606,6 @@ scsi_16_lba_len
     :param u32 \*plen:
         the transfer length
 
-
-
 .. _`scsi_16_lba_len.description`:
 
 Description
@@ -733,21 +613,17 @@ Description
 
 Calculate LBA and transfer length for 16-byte commands.
 
-
-
 .. _`ata_scsi_verify_xlat`:
 
 ata_scsi_verify_xlat
 ====================
 
-.. c:function:: unsigned int ata_scsi_verify_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_verify_xlat(struct ata_queued_cmd *qc)
 
     Translate SCSI VERIFY command into an ATA one
 
     :param struct ata_queued_cmd \*qc:
         Storage for translated ATA taskfile
-
-
 
 .. _`ata_scsi_verify_xlat.description`:
 
@@ -756,8 +632,6 @@ Description
 
 Converts SCSI VERIFY command to an ATA READ VERIFY command.
 
-
-
 .. _`ata_scsi_verify_xlat.locking`:
 
 LOCKING
@@ -765,30 +639,24 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_verify_xlat.return`:
 
-
-.. _`ata_scsi_verify_xlat.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on error.
-
-
 
 .. _`ata_scsi_rw_xlat`:
 
 ata_scsi_rw_xlat
 ================
 
-.. c:function:: unsigned int ata_scsi_rw_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_rw_xlat(struct ata_queued_cmd *qc)
 
     Translate SCSI r/w command into an ATA one
 
     :param struct ata_queued_cmd \*qc:
         Storage for translated ATA taskfile
-
-
 
 .. _`ata_scsi_rw_xlat.description`:
 
@@ -800,10 +668,8 @@ ATA counterpart, including starting sector (LBA),
 sector count, and taking into account the device's LBA48
 support.
 
-Commands ``READ_6``\ , ``READ_10``\ , ``READ_16``\ , ``WRITE_6``\ , ``WRITE_10``\ , and
-``WRITE_16`` are currently supported.
-
-
+Commands \ ``READ_6``\ , \ ``READ_10``\ , \ ``READ_16``\ , \ ``WRITE_6``\ , \ ``WRITE_10``\ , and
+\ ``WRITE_16``\  are currently supported.
 
 .. _`ata_scsi_rw_xlat.locking`:
 
@@ -812,23 +678,19 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_rw_xlat.return`:
 
-
-.. _`ata_scsi_rw_xlat.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on error.
-
-
 
 .. _`ata_scsi_translate`:
 
 ata_scsi_translate
 ==================
 
-.. c:function:: int ata_scsi_translate (struct ata_device *dev, struct scsi_cmnd *cmd, ata_xlat_func_t xlat_func)
+.. c:function:: int ata_scsi_translate(struct ata_device *dev, struct scsi_cmnd *cmd, ata_xlat_func_t xlat_func)
 
     Translate then issue SCSI command to ATA device
 
@@ -839,16 +701,14 @@ ata_scsi_translate
         SCSI command to execute
 
     :param ata_xlat_func_t xlat_func:
-        Actor which translates ``cmd`` to an ATA taskfile
-
-
+        Actor which translates \ ``cmd``\  to an ATA taskfile
 
 .. _`ata_scsi_translate.description`:
 
 Description
 -----------
 
-Our ->:c:func:`queuecommand` function has decided that the SCSI
+Our ->\ :c:func:`queuecommand`\  function has decided that the SCSI
 command issued can be directly translated into an ATA
 command, rather than handled internally.
 
@@ -861,8 +721,6 @@ then cmd->result (and possibly cmd->sense_buffer) are assumed
 to be set reflecting an error condition or clean (early)
 termination.
 
-
-
 .. _`ata_scsi_translate.locking`:
 
 LOCKING
@@ -870,24 +728,20 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_translate.return`:
 
-
-.. _`ata_scsi_translate.returns`:
-
-RETURNS
--------
+Return
+------
 
 0 on success, SCSI_ML_QUEUE_DEVICE_BUSY if the command
 needs to be deferred.
-
-
 
 .. _`ata_scsi_rbuf_get`:
 
 ata_scsi_rbuf_get
 =================
 
-.. c:function:: void *ata_scsi_rbuf_get (struct scsi_cmnd *cmd, bool copy_in, unsigned long *flags)
+.. c:function:: void *ata_scsi_rbuf_get(struct scsi_cmnd *cmd, bool copy_in, unsigned long *flags)
 
     Map response buffer.
 
@@ -900,16 +754,12 @@ ata_scsi_rbuf_get
     :param unsigned long \*flags:
         unsigned long variable to store irq enable status
 
-
-
 .. _`ata_scsi_rbuf_get.description`:
 
 Description
 -----------
 
 Prepare buffer for simulated SCSI commands.
-
-
 
 .. _`ata_scsi_rbuf_get.locking`:
 
@@ -918,23 +768,19 @@ LOCKING
 
 spin_lock_irqsave(ata_scsi_rbuf_lock) on success
 
+.. _`ata_scsi_rbuf_get.return`:
 
-
-.. _`ata_scsi_rbuf_get.returns`:
-
-RETURNS
--------
+Return
+------
 
 Pointer to response buffer.
-
-
 
 .. _`ata_scsi_rbuf_put`:
 
 ata_scsi_rbuf_put
 =================
 
-.. c:function:: void ata_scsi_rbuf_put (struct scsi_cmnd *cmd, bool copy_out, unsigned long *flags)
+.. c:function:: void ata_scsi_rbuf_put(struct scsi_cmnd *cmd, bool copy_out, unsigned long *flags)
 
     Unmap response buffer.
 
@@ -945,19 +791,15 @@ ata_scsi_rbuf_put
         copy out result
 
     :param unsigned long \*flags:
-        ``flags`` passed to :c:func:`ata_scsi_rbuf_get`
-
-
+        \ ``flags``\  passed to \ :c:func:`ata_scsi_rbuf_get`\ 
 
 .. _`ata_scsi_rbuf_put.description`:
 
 Description
 -----------
 
-Returns rbuf buffer.  The result is copied to ``cmd``\ 's buffer if
-``copy_back`` is true.
-
-
+Returns rbuf buffer.  The result is copied to \ ``cmd``\ 's buffer if
+\ ``copy_back``\  is true.
 
 .. _`ata_scsi_rbuf_put.locking`:
 
@@ -966,24 +808,20 @@ LOCKING
 
 Unlocks ata_scsi_rbuf_lock.
 
-
-
 .. _`ata_scsi_rbuf_fill`:
 
 ata_scsi_rbuf_fill
 ==================
 
-.. c:function:: void ata_scsi_rbuf_fill (struct ata_scsi_args *args, unsigned int (*actor) (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: void ata_scsi_rbuf_fill(struct ata_scsi_args *args, unsigned int (*) actor (struct ata_scsi_args *args, u8 *rbuf)
 
     wrapper for SCSI command simulators
 
     :param struct ata_scsi_args \*args:
         device IDENTIFY data / SCSI command of interest.
 
-    :param unsigned int (\*actor) (struct ata_scsi_args \*args, u8 \*rbuf):
+    :param (unsigned int (\*) actor (struct ata_scsi_args \*args, u8 \*rbuf):
         Callback hook for desired SCSI command simulator
-
-
 
 .. _`ata_scsi_rbuf_fill.description`:
 
@@ -997,8 +835,6 @@ indicates whether the handler wishes the SCSI command to be
 completed successfully (0), or not (in which case cmd->result
 and sense buffer are assumed to be set).
 
-
-
 .. _`ata_scsi_rbuf_fill.locking`:
 
 LOCKING
@@ -1006,14 +842,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_inq_std`:
 
 ata_scsiop_inq_std
 ==================
 
-.. c:function:: unsigned int ata_scsiop_inq_std (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_inq_std(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate INQUIRY command
 
@@ -1023,8 +857,6 @@ ata_scsiop_inq_std
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_inq_std.description`:
 
 Description
@@ -1033,8 +865,6 @@ Description
 Returns standard device identification data associated
 with non-VPD INQUIRY command output.
 
-
-
 .. _`ata_scsiop_inq_std.locking`:
 
 LOCKING
@@ -1042,14 +872,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_inq_00`:
 
 ata_scsiop_inq_00
 =================
 
-.. c:function:: unsigned int ata_scsiop_inq_00 (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_inq_00(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate INQUIRY VPD page 0, list of pages
 
@@ -1059,16 +887,12 @@ ata_scsiop_inq_00
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_inq_00.description`:
 
 Description
 -----------
 
 Returns list of inquiry VPD pages available.
-
-
 
 .. _`ata_scsiop_inq_00.locking`:
 
@@ -1077,14 +901,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_inq_80`:
 
 ata_scsiop_inq_80
 =================
 
-.. c:function:: unsigned int ata_scsiop_inq_80 (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_inq_80(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate INQUIRY VPD page 80, device serial number
 
@@ -1094,16 +916,12 @@ ata_scsiop_inq_80
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_inq_80.description`:
 
 Description
 -----------
 
 Returns ATA device serial number.
-
-
 
 .. _`ata_scsiop_inq_80.locking`:
 
@@ -1112,14 +930,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_inq_83`:
 
 ata_scsiop_inq_83
 =================
 
-.. c:function:: unsigned int ata_scsiop_inq_83 (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_inq_83(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate INQUIRY VPD page 83, device identity
 
@@ -1129,8 +945,6 @@ ata_scsiop_inq_83
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_inq_83.yields-two-logical-unit-device-identification-designators`:
 
 Yields two logical unit device identification designators
@@ -1138,10 +952,7 @@ Yields two logical unit device identification designators
 
 - vendor specific ASCII containing the ATA serial number
 - SAT defined "t10 vendor id based" containing ASCII vendor
-
-  name ("ATA     "), model and serial numbers.
-
-
+name ("ATA     "), model and serial numbers.
 
 .. _`ata_scsiop_inq_83.locking`:
 
@@ -1150,14 +961,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_inq_89`:
 
 ata_scsiop_inq_89
 =================
 
-.. c:function:: unsigned int ata_scsiop_inq_89 (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_inq_89(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate INQUIRY VPD page 89, ATA info
 
@@ -1167,16 +976,12 @@ ata_scsiop_inq_89
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_inq_89.description`:
 
 Description
 -----------
 
 Yields SAT-specified ATA VPD page.
-
-
 
 .. _`ata_scsiop_inq_89.locking`:
 
@@ -1185,14 +990,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_noop`:
 
 ata_scsiop_noop
 ===============
 
-.. c:function:: unsigned int ata_scsiop_noop (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_noop(struct ata_scsi_args *args, u8 *rbuf)
 
     Command handler that simply returns success.
 
@@ -1202,8 +1005,6 @@ ata_scsiop_noop
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_noop.description`:
 
 Description
@@ -1212,8 +1013,6 @@ Description
 No operation.  Simply returns success to caller, to indicate
 that the caller should successfully complete this SCSI command.
 
-
-
 .. _`ata_scsiop_noop.locking`:
 
 LOCKING
@@ -1221,14 +1020,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`modecpy`:
 
 modecpy
 =======
 
-.. c:function:: void modecpy (u8 *dest, const u8 *src, int n, bool changeable)
+.. c:function:: void modecpy(u8 *dest, const u8 *src, int n, bool changeable)
 
     Prepare response for MODE SENSE
 
@@ -1244,8 +1041,6 @@ modecpy
     :param bool changeable:
         whether changeable parameters are requested
 
-
-
 .. _`modecpy.description`:
 
 Description
@@ -1254,8 +1049,6 @@ Description
 Generate a generic MODE SENSE page for either current or changeable
 parameters.
 
-
-
 .. _`modecpy.locking`:
 
 LOCKING
@@ -1263,14 +1056,12 @@ LOCKING
 
 None.
 
-
-
 .. _`ata_msense_caching`:
 
 ata_msense_caching
 ==================
 
-.. c:function:: unsigned int ata_msense_caching (u16 *id, u8 *buf, bool changeable)
+.. c:function:: unsigned int ata_msense_caching(u16 *id, u8 *buf, bool changeable)
 
     Simulate MODE SENSE caching info page
 
@@ -1283,8 +1074,6 @@ ata_msense_caching
     :param bool changeable:
         whether changeable parameters are requested
 
-
-
 .. _`ata_msense_caching.description`:
 
 Description
@@ -1294,8 +1083,6 @@ Generate a caching info page, which conditionally indicates
 write caching to the SCSI layer, depending on device
 capabilities.
 
-
-
 .. _`ata_msense_caching.locking`:
 
 LOCKING
@@ -1303,24 +1090,23 @@ LOCKING
 
 None.
 
-
-
 .. _`ata_msense_ctl_mode`:
 
 ata_msense_ctl_mode
 ===================
 
-.. c:function:: unsigned int ata_msense_ctl_mode (u8 *buf, bool changeable)
+.. c:function:: unsigned int ata_msense_ctl_mode(struct ata_device *dev, u8 *buf, bool changeable)
 
     Simulate MODE SENSE control mode page
+
+    :param struct ata_device \*dev:
+        ATA device of interest
 
     :param u8 \*buf:
         output buffer
 
     :param bool changeable:
         whether changeable parameters are requested
-
-
 
 .. _`ata_msense_ctl_mode.description`:
 
@@ -1329,8 +1115,6 @@ Description
 
 Generate a generic MODE SENSE control mode page.
 
-
-
 .. _`ata_msense_ctl_mode.locking`:
 
 LOCKING
@@ -1338,14 +1122,12 @@ LOCKING
 
 None.
 
-
-
 .. _`ata_msense_rw_recovery`:
 
 ata_msense_rw_recovery
 ======================
 
-.. c:function:: unsigned int ata_msense_rw_recovery (u8 *buf, bool changeable)
+.. c:function:: unsigned int ata_msense_rw_recovery(u8 *buf, bool changeable)
 
     Simulate MODE SENSE r/w error recovery page
 
@@ -1355,16 +1137,12 @@ ata_msense_rw_recovery
     :param bool changeable:
         whether changeable parameters are requested
 
-
-
 .. _`ata_msense_rw_recovery.description`:
 
 Description
 -----------
 
 Generate a generic MODE SENSE r/w error recovery page.
-
-
 
 .. _`ata_msense_rw_recovery.locking`:
 
@@ -1373,14 +1151,12 @@ LOCKING
 
 None.
 
-
-
 .. _`ata_scsiop_mode_sense`:
 
 ata_scsiop_mode_sense
 =====================
 
-.. c:function:: unsigned int ata_scsiop_mode_sense (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_mode_sense(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate MODE SENSE 6, 10 commands
 
@@ -1389,8 +1165,6 @@ ata_scsiop_mode_sense
 
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
-
-
 
 .. _`ata_scsiop_mode_sense.description`:
 
@@ -1401,8 +1175,6 @@ Simulate MODE SENSE commands. Assume this is invoked for direct
 access devices (e.g. disks) only. There should be no block
 descriptor for other device types.
 
-
-
 .. _`ata_scsiop_mode_sense.locking`:
 
 LOCKING
@@ -1410,14 +1182,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsiop_read_cap`:
 
 ata_scsiop_read_cap
 ===================
 
-.. c:function:: unsigned int ata_scsiop_read_cap (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_read_cap(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate READ CAPACITY[ 16] commands
 
@@ -1427,16 +1197,12 @@ ata_scsiop_read_cap
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_read_cap.description`:
 
 Description
 -----------
 
 Simulate READ CAPACITY commands.
-
-
 
 .. _`ata_scsiop_read_cap.locking`:
 
@@ -1445,14 +1211,12 @@ LOCKING
 
 None.
 
-
-
 .. _`ata_scsiop_report_luns`:
 
 ata_scsiop_report_luns
 ======================
 
-.. c:function:: unsigned int ata_scsiop_report_luns (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: unsigned int ata_scsiop_report_luns(struct ata_scsi_args *args, u8 *rbuf)
 
     Simulate REPORT LUNS command
 
@@ -1462,16 +1226,12 @@ ata_scsiop_report_luns
     :param u8 \*rbuf:
         Response buffer, to which simulated SCSI cmd output is sent.
 
-
-
 .. _`ata_scsiop_report_luns.description`:
 
 Description
 -----------
 
 Simulate REPORT LUNS command.
-
-
 
 .. _`ata_scsiop_report_luns.locking`:
 
@@ -1480,21 +1240,17 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`atapi_xlat`:
 
 atapi_xlat
 ==========
 
-.. c:function:: unsigned int atapi_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int atapi_xlat(struct ata_queued_cmd *qc)
 
     Initialize PACKET taskfile
 
     :param struct ata_queued_cmd \*qc:
         command structure to be initialized
-
-
 
 .. _`atapi_xlat.locking`:
 
@@ -1503,23 +1259,19 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`atapi_xlat.return`:
 
-
-.. _`atapi_xlat.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on failure.
-
-
 
 .. _`ata_scsi_find_dev`:
 
 ata_scsi_find_dev
 =================
 
-.. c:function:: struct ata_device *ata_scsi_find_dev (struct ata_port *ap, const struct scsi_device *scsidev)
+.. c:function:: struct ata_device *ata_scsi_find_dev(struct ata_port *ap, const struct scsi_device *scsidev)
 
     lookup ata_device from scsi_cmnd
 
@@ -1528,8 +1280,6 @@ ata_scsi_find_dev
 
     :param const struct scsi_device \*scsidev:
         SCSI device from which we derive the ATA device
-
-
 
 .. _`ata_scsi_find_dev.description`:
 
@@ -1541,8 +1291,6 @@ map that onto an ATA bus, and using that mapping
 determine which ata_device is associated with the
 SCSI command to be sent.
 
-
-
 .. _`ata_scsi_find_dev.locking`:
 
 LOCKING
@@ -1550,30 +1298,24 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_find_dev.return`:
 
+Return
+------
 
-.. _`ata_scsi_find_dev.returns`:
-
-RETURNS
--------
-
-Associated ATA device, or ``NULL`` if not found.
-
-
+Associated ATA device, or \ ``NULL``\  if not found.
 
 .. _`ata_scsi_pass_thru`:
 
 ata_scsi_pass_thru
 ==================
 
-.. c:function:: unsigned int ata_scsi_pass_thru (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_pass_thru(struct ata_queued_cmd *qc)
 
     convert ATA pass-thru CDB to taskfile
 
     :param struct ata_queued_cmd \*qc:
         command structure to be initialized
-
-
 
 .. _`ata_scsi_pass_thru.description`:
 
@@ -1582,23 +1324,40 @@ Description
 
 Handles either 12 or 16-byte versions of the CDB.
 
+.. _`ata_scsi_pass_thru.return`:
 
-
-.. _`ata_scsi_pass_thru.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on failure.
 
+.. _`ata_scsi_report_zones_complete`:
 
+ata_scsi_report_zones_complete
+==============================
+
+.. c:function:: void ata_scsi_report_zones_complete(struct ata_queued_cmd *qc)
+
+    convert ATA output
+
+    :param struct ata_queued_cmd \*qc:
+        command structure returning the data
+
+.. _`ata_scsi_report_zones_complete.description`:
+
+Description
+-----------
+
+Convert T-13 little-endian field representation into
+T-10 big-endian field representation.
+What a mess.
 
 .. _`ata_mselect_caching`:
 
 ata_mselect_caching
 ===================
 
-.. c:function:: int ata_mselect_caching (struct ata_queued_cmd *qc, const u8 *buf, int len)
+.. c:function:: int ata_mselect_caching(struct ata_queued_cmd *qc, const u8 *buf, int len, u16 *fp)
 
     Simulate MODE SELECT for caching info page
 
@@ -1611,7 +1370,8 @@ ata_mselect_caching
     :param int len:
         number of valid bytes in the input buffer
 
-
+    :param u16 \*fp:
+        out parameter for the failed field on error
 
 .. _`ata_mselect_caching.description`:
 
@@ -1620,8 +1380,6 @@ Description
 
 Prepare a taskfile to modify caching information for the device.
 
-
-
 .. _`ata_mselect_caching.locking`:
 
 LOCKING
@@ -1629,21 +1387,52 @@ LOCKING
 
 None.
 
+.. _`ata_mselect_control`:
 
+ata_mselect_control
+===================
+
+.. c:function:: int ata_mselect_control(struct ata_queued_cmd *qc, const u8 *buf, int len, u16 *fp)
+
+    Simulate MODE SELECT for control page
+
+    :param struct ata_queued_cmd \*qc:
+        Storage for translated ATA taskfile
+
+    :param const u8 \*buf:
+        input buffer
+
+    :param int len:
+        number of valid bytes in the input buffer
+
+    :param u16 \*fp:
+        out parameter for the failed field on error
+
+.. _`ata_mselect_control.description`:
+
+Description
+-----------
+
+Prepare a taskfile to modify caching information for the device.
+
+.. _`ata_mselect_control.locking`:
+
+LOCKING
+-------
+
+None.
 
 .. _`ata_scsi_mode_select_xlat`:
 
 ata_scsi_mode_select_xlat
 =========================
 
-.. c:function:: unsigned int ata_scsi_mode_select_xlat (struct ata_queued_cmd *qc)
+.. c:function:: unsigned int ata_scsi_mode_select_xlat(struct ata_queued_cmd *qc)
 
     Simulate MODE SELECT 6, 10 commands
 
     :param struct ata_queued_cmd \*qc:
         Storage for translated ATA taskfile
-
-
 
 .. _`ata_scsi_mode_select_xlat.description`:
 
@@ -1654,8 +1443,6 @@ Converts a MODE SELECT command to an ATA SET FEATURES taskfile.
 Assume this is invoked for direct access devices (e.g. disks) only.
 There should be no block descriptor for other device types.
 
-
-
 .. _`ata_scsi_mode_select_xlat.locking`:
 
 LOCKING
@@ -1663,14 +1450,12 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_get_xlat_func`:
 
 ata_get_xlat_func
 =================
 
-.. c:function:: ata_xlat_func_t ata_get_xlat_func (struct ata_device *dev, u8 cmd)
+.. c:function:: ata_xlat_func_t ata_get_xlat_func(struct ata_device *dev, u8 cmd)
 
     check if SCSI to ATA translation is possible
 
@@ -1680,8 +1465,6 @@ ata_get_xlat_func
     :param u8 cmd:
         SCSI command opcode to consider
 
-
-
 .. _`ata_get_xlat_func.description`:
 
 Description
@@ -1690,23 +1473,19 @@ Description
 Look up the SCSI command given, and determine whether the
 SCSI command is to be translated or simulated.
 
+.. _`ata_get_xlat_func.return`:
 
+Return
+------
 
-.. _`ata_get_xlat_func.returns`:
-
-RETURNS
--------
-
-Pointer to translation function if possible, ``NULL`` if not.
-
-
+Pointer to translation function if possible, \ ``NULL``\  if not.
 
 .. _`ata_scsi_dump_cdb`:
 
 ata_scsi_dump_cdb
 =================
 
-.. c:function:: void ata_scsi_dump_cdb (struct ata_port *ap, struct scsi_cmnd *cmd)
+.. c:function:: void ata_scsi_dump_cdb(struct ata_port *ap, struct scsi_cmnd *cmd)
 
     dump SCSI command contents to dmesg
 
@@ -1716,23 +1495,19 @@ ata_scsi_dump_cdb
     :param struct scsi_cmnd \*cmd:
         SCSI command to dump
 
-
-
 .. _`ata_scsi_dump_cdb.description`:
 
 Description
 -----------
 
-Prints the contents of a SCSI command via :c:func:`printk`.
-
-
+Prints the contents of a SCSI command via \ :c:func:`printk`\ .
 
 .. _`ata_scsi_queuecmd`:
 
 ata_scsi_queuecmd
 =================
 
-.. c:function:: int ata_scsi_queuecmd (struct Scsi_Host *shost, struct scsi_cmnd *cmd)
+.. c:function:: int ata_scsi_queuecmd(struct Scsi_Host *shost, struct scsi_cmnd *cmd)
 
     Issue SCSI cdb to libata-managed device
 
@@ -1741,8 +1516,6 @@ ata_scsi_queuecmd
 
     :param struct scsi_cmnd \*cmd:
         SCSI command to be sent
-
-
 
 .. _`ata_scsi_queuecmd.description`:
 
@@ -1756,8 +1529,6 @@ SCSI device by evaluating and responding to certain
 SCSI commands.  This creates the overall effect of
 ATA and ATAPI devices appearing as SCSI devices.
 
-
-
 .. _`ata_scsi_queuecmd.locking`:
 
 LOCKING
@@ -1765,24 +1536,20 @@ LOCKING
 
 ATA host lock
 
+.. _`ata_scsi_queuecmd.return`:
 
+Return
+------
 
-.. _`ata_scsi_queuecmd.returns`:
-
-RETURNS
--------
-
-Return value from :c:func:`__ata_scsi_queuecmd` if ``cmd`` can be queued,
+Return value from \\ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
 0 otherwise.
-
-
 
 .. _`ata_scsi_simulate`:
 
 ata_scsi_simulate
 =================
 
-.. c:function:: void ata_scsi_simulate (struct ata_device *dev, struct scsi_cmnd *cmd)
+.. c:function:: void ata_scsi_simulate(struct ata_device *dev, struct scsi_cmnd *cmd)
 
     simulate SCSI command on ATA device
 
@@ -1792,8 +1559,6 @@ ata_scsi_simulate
     :param struct scsi_cmnd \*cmd:
         SCSI command being sent to device.
 
-
-
 .. _`ata_scsi_simulate.description`:
 
 Description
@@ -1802,8 +1567,6 @@ Description
 Interprets and directly executes a select list of SCSI commands
 that can be handled internally.
 
-
-
 .. _`ata_scsi_simulate.locking`:
 
 LOCKING
@@ -1811,33 +1574,27 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsi_offline_dev`:
 
 ata_scsi_offline_dev
 ====================
 
-.. c:function:: int ata_scsi_offline_dev (struct ata_device *dev)
+.. c:function:: int ata_scsi_offline_dev(struct ata_device *dev)
 
     offline attached SCSI device
 
     :param struct ata_device \*dev:
         ATA device to offline attached SCSI device for
 
-
-
 .. _`ata_scsi_offline_dev.description`:
 
 Description
 -----------
 
-This function is called from :c:func:`ata_eh_hotplug` and responsible
-for taking the SCSI device attached to ``dev`` offline.  This
+This function is called from \ :c:func:`ata_eh_hotplug`\  and responsible
+for taking the SCSI device attached to \ ``dev``\  offline.  This
 function is called with host lock which protects dev->sdev
 against clearing.
-
-
 
 .. _`ata_scsi_offline_dev.locking`:
 
@@ -1846,40 +1603,32 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
+.. _`ata_scsi_offline_dev.return`:
 
-
-.. _`ata_scsi_offline_dev.returns`:
-
-RETURNS
--------
+Return
+------
 
 1 if attached SCSI device exists, 0 otherwise.
-
-
 
 .. _`ata_scsi_remove_dev`:
 
 ata_scsi_remove_dev
 ===================
 
-.. c:function:: void ata_scsi_remove_dev (struct ata_device *dev)
+.. c:function:: void ata_scsi_remove_dev(struct ata_device *dev)
 
     remove attached SCSI device
 
     :param struct ata_device \*dev:
         ATA device to remove attached SCSI device for
 
-
-
 .. _`ata_scsi_remove_dev.description`:
 
 Description
 -----------
 
-This function is called from :c:func:`ata_eh_scsi_hotplug` and
-responsible for removing the SCSI device attached to ``dev``\ .
-
-
+This function is called from \ :c:func:`ata_eh_scsi_hotplug`\  and
+responsible for removing the SCSI device attached to \ ``dev``\ .
 
 .. _`ata_scsi_remove_dev.locking`:
 
@@ -1888,21 +1637,17 @@ LOCKING
 
 Kernel thread context (may sleep).
 
-
-
 .. _`ata_scsi_media_change_notify`:
 
 ata_scsi_media_change_notify
 ============================
 
-.. c:function:: void ata_scsi_media_change_notify (struct ata_device *dev)
+.. c:function:: void ata_scsi_media_change_notify(struct ata_device *dev)
 
     send media change event
 
     :param struct ata_device \*dev:
         Pointer to the disk device with media change event
-
-
 
 .. _`ata_scsi_media_change_notify.description`:
 
@@ -1912,8 +1657,6 @@ Description
 Tell the block layer to send a media change notification
 event.
 
-
-
 .. _`ata_scsi_media_change_notify.locking`:
 
 LOCKING
@@ -1921,21 +1664,17 @@ LOCKING
 
 spin_lock_irqsave(host lock)
 
-
-
 .. _`ata_scsi_hotplug`:
 
 ata_scsi_hotplug
 ================
 
-.. c:function:: void ata_scsi_hotplug (struct work_struct *work)
+.. c:function:: void ata_scsi_hotplug(struct work_struct *work)
 
     SCSI part of hotplug
 
     :param struct work_struct \*work:
         Pointer to ATA port to perform SCSI hotplug on
-
-
 
 .. _`ata_scsi_hotplug.description`:
 
@@ -1947,8 +1686,6 @@ workqueue after EH completes.  This is necessary because SCSI
 hot plugging requires working EH and hot unplugging is
 synchronized with hot plugging with a mutex.
 
-
-
 .. _`ata_scsi_hotplug.locking`:
 
 LOCKING
@@ -1956,14 +1693,12 @@ LOCKING
 
 Kernel thread context (may sleep).
 
-
-
 .. _`ata_scsi_user_scan`:
 
 ata_scsi_user_scan
 ==================
 
-.. c:function:: int ata_scsi_user_scan (struct Scsi_Host *shost, unsigned int channel, unsigned int id, u64 lun)
+.. c:function:: int ata_scsi_user_scan(struct Scsi_Host *shost, unsigned int channel, unsigned int id, u64 lun)
 
     indication for user-initiated bus scan
 
@@ -1979,8 +1714,6 @@ ata_scsi_user_scan
     :param u64 lun:
         LUN to scan
 
-
-
 .. _`ata_scsi_user_scan.description`:
 
 Description
@@ -1989,8 +1722,6 @@ Description
 This function is called when user explicitly requests bus
 scan.  Set probe pending flag and invoke EH.
 
-
-
 .. _`ata_scsi_user_scan.locking`:
 
 LOCKING
@@ -1998,30 +1729,24 @@ LOCKING
 
 SCSI layer (we don't care)
 
+.. _`ata_scsi_user_scan.return`:
 
-
-.. _`ata_scsi_user_scan.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero.
-
-
 
 .. _`ata_scsi_dev_rescan`:
 
 ata_scsi_dev_rescan
 ===================
 
-.. c:function:: void ata_scsi_dev_rescan (struct work_struct *work)
+.. c:function:: void ata_scsi_dev_rescan(struct work_struct *work)
 
-    initiate scsi_rescan_device()
+    initiate \ :c:func:`scsi_rescan_device`\ 
 
     :param struct work_struct \*work:
-        Pointer to ATA port to perform :c:func:`scsi_rescan_device`
-
-
+        Pointer to ATA port to perform \ :c:func:`scsi_rescan_device`\ 
 
 .. _`ata_scsi_dev_rescan.description`:
 
@@ -2031,8 +1756,6 @@ Description
 After ATA pass thru (SAT) commands are executed successfully,
 libata need to propagate the changes to SCSI layer.
 
-
-
 .. _`ata_scsi_dev_rescan.locking`:
 
 LOCKING
@@ -2040,14 +1763,12 @@ LOCKING
 
 Kernel thread context (may sleep).
 
-
-
 .. _`ata_sas_port_alloc`:
 
 ata_sas_port_alloc
 ==================
 
-.. c:function:: struct ata_port *ata_sas_port_alloc (struct ata_host *host, struct ata_port_info *port_info, struct Scsi_Host *shost)
+.. c:function:: struct ata_port *ata_sas_port_alloc(struct ata_host *host, struct ata_port_info *port_info, struct Scsi_Host *shost)
 
     Allocate port for a SAS attached SATA device
 
@@ -2060,8 +1781,6 @@ ata_sas_port_alloc
     :param struct Scsi_Host \*shost:
         SCSI host that the scsi device is attached to
 
-
-
 .. _`ata_sas_port_alloc.locking`:
 
 LOCKING
@@ -2069,30 +1788,24 @@ LOCKING
 
 PCI/etc. bus probe sem.
 
+.. _`ata_sas_port_alloc.return`:
 
-
-.. _`ata_sas_port_alloc.returns`:
-
-RETURNS
--------
+Return
+------
 
 ata_port pointer on success / NULL on failure.
-
-
 
 .. _`ata_sas_port_start`:
 
 ata_sas_port_start
 ==================
 
-.. c:function:: int ata_sas_port_start (struct ata_port *ap)
+.. c:function:: int ata_sas_port_start(struct ata_port *ap)
 
     Set port up for dma.
 
     :param struct ata_port \*ap:
         Port to initialize
-
-
 
 .. _`ata_sas_port_start.description`:
 
@@ -2102,9 +1815,7 @@ Description
 Called just after data structures for each port are
 initialized.
 
-May be used as the :c:func:`port_start` entry in ata_port_operations.
-
-
+May be used as the \ :c:func:`port_start`\  entry in ata_port_operations.
 
 .. _`ata_sas_port_start.locking`:
 
@@ -2113,30 +1824,24 @@ LOCKING
 
 Inherited from caller.
 
-
-
 .. _`ata_sas_port_stop`:
 
 ata_sas_port_stop
 =================
 
-.. c:function:: void ata_sas_port_stop (struct ata_port *ap)
+.. c:function:: void ata_sas_port_stop(struct ata_port *ap)
 
-    Undo ata_sas_port_start()
+    Undo \ :c:func:`ata_sas_port_start`\ 
 
     :param struct ata_port \*ap:
         Port to shut down
-
-
 
 .. _`ata_sas_port_stop.description`:
 
 Description
 -----------
 
-May be used as the :c:func:`port_stop` entry in ata_port_operations.
-
-
+May be used as the \ :c:func:`port_stop`\  entry in ata_port_operations.
 
 .. _`ata_sas_port_stop.locking`:
 
@@ -2145,21 +1850,17 @@ LOCKING
 
 Inherited from caller.
 
-
-
 .. _`ata_sas_async_probe`:
 
 ata_sas_async_probe
 ===================
 
-.. c:function:: void ata_sas_async_probe (struct ata_port *ap)
+.. c:function:: void ata_sas_async_probe(struct ata_port *ap)
 
     simply schedule probing and return
 
     :param struct ata_port \*ap:
         Port to probe
-
-
 
 .. _`ata_sas_async_probe.description`:
 
@@ -2167,23 +1868,19 @@ Description
 -----------
 
 For batch scheduling of probe for sas attached ata devices, assumes
-the port has already been through :c:func:`ata_sas_port_init`
-
-
+the port has already been through \ :c:func:`ata_sas_port_init`\ 
 
 .. _`ata_sas_port_init`:
 
 ata_sas_port_init
 =================
 
-.. c:function:: int ata_sas_port_init (struct ata_port *ap)
+.. c:function:: int ata_sas_port_init(struct ata_port *ap)
 
     Initialize a SATA device
 
     :param struct ata_port \*ap:
         SATA port to initialize
-
-
 
 .. _`ata_sas_port_init.locking`:
 
@@ -2192,37 +1889,31 @@ LOCKING
 
 PCI/etc. bus probe sem.
 
+.. _`ata_sas_port_init.return`:
 
-
-.. _`ata_sas_port_init.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero on success, non-zero on error.
-
-
 
 .. _`ata_sas_port_destroy`:
 
 ata_sas_port_destroy
 ====================
 
-.. c:function:: void ata_sas_port_destroy (struct ata_port *ap)
+.. c:function:: void ata_sas_port_destroy(struct ata_port *ap)
 
     Destroy a SATA port allocated by ata_sas_port_alloc
 
     :param struct ata_port \*ap:
         SATA port to destroy
 
-
-
 .. _`ata_sas_slave_configure`:
 
 ata_sas_slave_configure
 =======================
 
-.. c:function:: int ata_sas_slave_configure (struct scsi_device *sdev, struct ata_port *ap)
+.. c:function:: int ata_sas_slave_configure(struct scsi_device *sdev, struct ata_port *ap)
 
     Default slave_config routine for libata devices
 
@@ -2232,23 +1923,19 @@ ata_sas_slave_configure
     :param struct ata_port \*ap:
         ATA port to which SCSI device is attached
 
+.. _`ata_sas_slave_configure.return`:
 
-
-.. _`ata_sas_slave_configure.returns`:
-
-RETURNS
--------
+Return
+------
 
 Zero.
-
-
 
 .. _`ata_sas_queuecmd`:
 
 ata_sas_queuecmd
 ================
 
-.. c:function:: int ata_sas_queuecmd (struct scsi_cmnd *cmd, struct ata_port *ap)
+.. c:function:: int ata_sas_queuecmd(struct scsi_cmnd *cmd, struct ata_port *ap)
 
     Issue SCSI cdb to libata-managed device
 
@@ -2258,13 +1945,13 @@ ata_sas_queuecmd
     :param struct ata_port \*ap:
         ATA port to which the command is being sent
 
+.. _`ata_sas_queuecmd.return`:
 
+Return
+------
 
-.. _`ata_sas_queuecmd.returns`:
-
-RETURNS
--------
-
-Return value from :c:func:`__ata_scsi_queuecmd` if ``cmd`` can be queued,
+Return value from \\ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
 0 otherwise.
+
+.. This file was automatic generated / don't edit.
 

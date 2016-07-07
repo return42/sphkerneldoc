@@ -1,0 +1,628 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/e1000e/80003es2lan.c
+
+.. _`e1000_init_phy_params_80003es2lan`:
+
+e1000_init_phy_params_80003es2lan
+=================================
+
+.. c:function:: s32 e1000_init_phy_params_80003es2lan(struct e1000_hw *hw)
+
+    Init ESB2 PHY func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_nvm_params_80003es2lan`:
+
+e1000_init_nvm_params_80003es2lan
+=================================
+
+.. c:function:: s32 e1000_init_nvm_params_80003es2lan(struct e1000_hw *hw)
+
+    Init ESB2 NVM func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_mac_params_80003es2lan`:
+
+e1000_init_mac_params_80003es2lan
+=================================
+
+.. c:function:: s32 e1000_init_mac_params_80003es2lan(struct e1000_hw *hw)
+
+    Init ESB2 MAC func ptrs.
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_acquire_phy_80003es2lan`:
+
+e1000_acquire_phy_80003es2lan
+=============================
+
+.. c:function:: s32 e1000_acquire_phy_80003es2lan(struct e1000_hw *hw)
+
+    Acquire rights to access PHY
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_acquire_phy_80003es2lan.description`:
+
+Description
+-----------
+
+A wrapper to acquire access rights to the correct PHY.
+
+.. _`e1000_release_phy_80003es2lan`:
+
+e1000_release_phy_80003es2lan
+=============================
+
+.. c:function:: void e1000_release_phy_80003es2lan(struct e1000_hw *hw)
+
+    Release rights to access PHY
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_release_phy_80003es2lan.description`:
+
+Description
+-----------
+
+A wrapper to release access rights to the correct PHY.
+
+.. _`e1000_acquire_mac_csr_80003es2lan`:
+
+e1000_acquire_mac_csr_80003es2lan
+=================================
+
+.. c:function:: s32 e1000_acquire_mac_csr_80003es2lan(struct e1000_hw *hw)
+
+    Acquire right to access Kumeran register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_acquire_mac_csr_80003es2lan.description`:
+
+Description
+-----------
+
+Acquire the semaphore to access the Kumeran interface.
+
+.. _`e1000_release_mac_csr_80003es2lan`:
+
+e1000_release_mac_csr_80003es2lan
+=================================
+
+.. c:function:: void e1000_release_mac_csr_80003es2lan(struct e1000_hw *hw)
+
+    Release right to access Kumeran Register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_release_mac_csr_80003es2lan.description`:
+
+Description
+-----------
+
+Release the semaphore used to access the Kumeran interface
+
+.. _`e1000_acquire_nvm_80003es2lan`:
+
+e1000_acquire_nvm_80003es2lan
+=============================
+
+.. c:function:: s32 e1000_acquire_nvm_80003es2lan(struct e1000_hw *hw)
+
+    Acquire rights to access NVM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_acquire_nvm_80003es2lan.description`:
+
+Description
+-----------
+
+Acquire the semaphore to access the EEPROM.
+
+.. _`e1000_release_nvm_80003es2lan`:
+
+e1000_release_nvm_80003es2lan
+=============================
+
+.. c:function:: void e1000_release_nvm_80003es2lan(struct e1000_hw *hw)
+
+    Relinquish rights to access NVM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_release_nvm_80003es2lan.description`:
+
+Description
+-----------
+
+Release the semaphore used to access the EEPROM.
+
+.. _`e1000_acquire_swfw_sync_80003es2lan`:
+
+e1000_acquire_swfw_sync_80003es2lan
+===================================
+
+.. c:function:: s32 e1000_acquire_swfw_sync_80003es2lan(struct e1000_hw *hw, u16 mask)
+
+    Acquire SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`e1000_acquire_swfw_sync_80003es2lan.description`:
+
+Description
+-----------
+
+Acquire the SW/FW semaphore to access the PHY or NVM.  The mask
+will also specify which port we're acquiring the lock for.
+
+.. _`e1000_release_swfw_sync_80003es2lan`:
+
+e1000_release_swfw_sync_80003es2lan
+===================================
+
+.. c:function:: void e1000_release_swfw_sync_80003es2lan(struct e1000_hw *hw, u16 mask)
+
+    Release SW/FW semaphore
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 mask:
+        specifies which semaphore to acquire
+
+.. _`e1000_release_swfw_sync_80003es2lan.description`:
+
+Description
+-----------
+
+Release the SW/FW semaphore used to access the PHY or NVM.  The mask
+will also specify which port we're releasing the lock for.
+
+.. _`e1000_read_phy_reg_gg82563_80003es2lan`:
+
+e1000_read_phy_reg_gg82563_80003es2lan
+======================================
+
+.. c:function:: s32 e1000_read_phy_reg_gg82563_80003es2lan(struct e1000_hw *hw, u32 offset, u16 *data)
+
+    Read GG82563 PHY register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        offset of the register to read
+
+    :param u16 \*data:
+        pointer to the data returned from the operation
+
+.. _`e1000_read_phy_reg_gg82563_80003es2lan.description`:
+
+Description
+-----------
+
+Read the GG82563 PHY register.
+
+.. _`e1000_write_phy_reg_gg82563_80003es2lan`:
+
+e1000_write_phy_reg_gg82563_80003es2lan
+=======================================
+
+.. c:function:: s32 e1000_write_phy_reg_gg82563_80003es2lan(struct e1000_hw *hw, u32 offset, u16 data)
+
+    Write GG82563 PHY register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        offset of the register to read
+
+    :param u16 data:
+        value to write to the register
+
+.. _`e1000_write_phy_reg_gg82563_80003es2lan.description`:
+
+Description
+-----------
+
+Write to the GG82563 PHY register.
+
+.. _`e1000_write_nvm_80003es2lan`:
+
+e1000_write_nvm_80003es2lan
+===========================
+
+.. c:function:: s32 e1000_write_nvm_80003es2lan(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Write to ESB2 NVM
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 offset:
+        offset of the register to read
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        buffer of data to write to the NVM
+
+.. _`e1000_write_nvm_80003es2lan.description`:
+
+Description
+-----------
+
+Write "words" of data to the ESB2 NVM.
+
+.. _`e1000_get_cfg_done_80003es2lan`:
+
+e1000_get_cfg_done_80003es2lan
+==============================
+
+.. c:function:: s32 e1000_get_cfg_done_80003es2lan(struct e1000_hw *hw)
+
+    Wait for configuration to complete
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_cfg_done_80003es2lan.description`:
+
+Description
+-----------
+
+Wait a specific amount of time for manageability processes to complete.
+This is a function pointer entry point called by the phy module.
+
+.. _`e1000_phy_force_speed_duplex_80003es2lan`:
+
+e1000_phy_force_speed_duplex_80003es2lan
+========================================
+
+.. c:function:: s32 e1000_phy_force_speed_duplex_80003es2lan(struct e1000_hw *hw)
+
+    Force PHY speed and duplex
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_phy_force_speed_duplex_80003es2lan.description`:
+
+Description
+-----------
+
+Force the speed and duplex settings onto the PHY.  This is a
+function pointer entry point called by the phy module.
+
+.. _`e1000_get_cable_length_80003es2lan`:
+
+e1000_get_cable_length_80003es2lan
+==================================
+
+.. c:function:: s32 e1000_get_cable_length_80003es2lan(struct e1000_hw *hw)
+
+    Set approximate cable length
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_get_cable_length_80003es2lan.description`:
+
+Description
+-----------
+
+Find the approximate cable length as measured by the GG82563 PHY.
+This is a function pointer entry point called by the phy module.
+
+.. _`e1000_get_link_up_info_80003es2lan`:
+
+e1000_get_link_up_info_80003es2lan
+==================================
+
+.. c:function:: s32 e1000_get_link_up_info_80003es2lan(struct e1000_hw *hw, u16 *speed, u16 *duplex)
+
+    Report speed and duplex
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 \*speed:
+        pointer to speed buffer
+
+    :param u16 \*duplex:
+        pointer to duplex buffer
+
+.. _`e1000_get_link_up_info_80003es2lan.description`:
+
+Description
+-----------
+
+Retrieve the current speed and duplex configuration.
+
+.. _`e1000_reset_hw_80003es2lan`:
+
+e1000_reset_hw_80003es2lan
+==========================
+
+.. c:function:: s32 e1000_reset_hw_80003es2lan(struct e1000_hw *hw)
+
+    Reset the ESB2 controller
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_reset_hw_80003es2lan.description`:
+
+Description
+-----------
+
+Perform a global reset to the ESB2 controller.
+
+.. _`e1000_init_hw_80003es2lan`:
+
+e1000_init_hw_80003es2lan
+=========================
+
+.. c:function:: s32 e1000_init_hw_80003es2lan(struct e1000_hw *hw)
+
+    Initialize the ESB2 controller
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_init_hw_80003es2lan.description`:
+
+Description
+-----------
+
+Initialize the hw bits, LED, VFTA, MTA, link and hw counters.
+
+.. _`e1000_initialize_hw_bits_80003es2lan`:
+
+e1000_initialize_hw_bits_80003es2lan
+====================================
+
+.. c:function:: void e1000_initialize_hw_bits_80003es2lan(struct e1000_hw *hw)
+
+    Init hw bits of ESB2
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_initialize_hw_bits_80003es2lan.description`:
+
+Description
+-----------
+
+Initializes required hardware-dependent bits needed for normal operation.
+
+.. _`e1000_copper_link_setup_gg82563_80003es2lan`:
+
+e1000_copper_link_setup_gg82563_80003es2lan
+===========================================
+
+.. c:function:: s32 e1000_copper_link_setup_gg82563_80003es2lan(struct e1000_hw *hw)
+
+    Configure GG82563 Link
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_copper_link_setup_gg82563_80003es2lan.description`:
+
+Description
+-----------
+
+Setup some GG82563 PHY registers for obtaining link
+
+.. _`e1000_setup_copper_link_80003es2lan`:
+
+e1000_setup_copper_link_80003es2lan
+===================================
+
+.. c:function:: s32 e1000_setup_copper_link_80003es2lan(struct e1000_hw *hw)
+
+    Setup Copper Link for ESB2
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_setup_copper_link_80003es2lan.description`:
+
+Description
+-----------
+
+Essentially a wrapper for setting up all things "copper" related.
+This is a function pointer entry point called by the mac module.
+
+.. _`e1000_cfg_on_link_up_80003es2lan`:
+
+e1000_cfg_on_link_up_80003es2lan
+================================
+
+.. c:function:: s32 e1000_cfg_on_link_up_80003es2lan(struct e1000_hw *hw)
+
+    es2 link configuration after link-up
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_cfg_on_link_up_80003es2lan.description`:
+
+Description
+-----------
+
+Configure the KMRN interface by applying last minute quirks for
+10/100 operation.
+
+.. _`e1000_cfg_kmrn_10_100_80003es2lan`:
+
+e1000_cfg_kmrn_10_100_80003es2lan
+=================================
+
+.. c:function:: s32 e1000_cfg_kmrn_10_100_80003es2lan(struct e1000_hw *hw, u16 duplex)
+
+    Apply "quirks" for 10/100 operation
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u16 duplex:
+        current duplex setting
+
+.. _`e1000_cfg_kmrn_10_100_80003es2lan.description`:
+
+Description
+-----------
+
+Configure the KMRN interface by applying last minute quirks for
+10/100 operation.
+
+.. _`e1000_cfg_kmrn_1000_80003es2lan`:
+
+e1000_cfg_kmrn_1000_80003es2lan
+===============================
+
+.. c:function:: s32 e1000_cfg_kmrn_1000_80003es2lan(struct e1000_hw *hw)
+
+    Apply "quirks" for gigabit operation
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_cfg_kmrn_1000_80003es2lan.description`:
+
+Description
+-----------
+
+Configure the KMRN interface by applying last minute quirks for
+gigabit operation.
+
+.. _`e1000_read_kmrn_reg_80003es2lan`:
+
+e1000_read_kmrn_reg_80003es2lan
+===============================
+
+.. c:function:: s32 e1000_read_kmrn_reg_80003es2lan(struct e1000_hw *hw, u32 offset, u16 *data)
+
+    Read kumeran register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to be read
+
+    :param u16 \*data:
+        pointer to the read data
+
+.. _`e1000_read_kmrn_reg_80003es2lan.description`:
+
+Description
+-----------
+
+Acquire semaphore, then read the PHY register at offset
+using the kumeran interface.  The information retrieved is stored in data.
+Release the semaphore before exiting.
+
+.. _`e1000_write_kmrn_reg_80003es2lan`:
+
+e1000_write_kmrn_reg_80003es2lan
+================================
+
+.. c:function:: s32 e1000_write_kmrn_reg_80003es2lan(struct e1000_hw *hw, u32 offset, u16 data)
+
+    Write kumeran register
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param u32 offset:
+        register offset to write to
+
+    :param u16 data:
+        data to write at register offset
+
+.. _`e1000_write_kmrn_reg_80003es2lan.description`:
+
+Description
+-----------
+
+Acquire semaphore, then write the data to PHY register
+at the offset using the kumeran interface.  Release semaphore
+before exiting.
+
+.. _`e1000_read_mac_addr_80003es2lan`:
+
+e1000_read_mac_addr_80003es2lan
+===============================
+
+.. c:function:: s32 e1000_read_mac_addr_80003es2lan(struct e1000_hw *hw)
+
+    Read device MAC address
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_power_down_phy_copper_80003es2lan`:
+
+e1000_power_down_phy_copper_80003es2lan
+=======================================
+
+.. c:function:: void e1000_power_down_phy_copper_80003es2lan(struct e1000_hw *hw)
+
+    Remove link during PHY power down
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_power_down_phy_copper_80003es2lan.description`:
+
+Description
+-----------
+
+In the case of a PHY power down to save power, or to turn off link during a
+driver unload, or wake on lan is not enabled, remove the link.
+
+.. _`e1000_clear_hw_cntrs_80003es2lan`:
+
+e1000_clear_hw_cntrs_80003es2lan
+================================
+
+.. c:function:: void e1000_clear_hw_cntrs_80003es2lan(struct e1000_hw *hw)
+
+    Clear device specific hardware counters
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_clear_hw_cntrs_80003es2lan.description`:
+
+Description
+-----------
+
+Clears the hardware counters by reading the counter registers.
+
+.. This file was automatic generated / don't edit.
+

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-udp.c
-=====
-
+.. src-file: net/ipv6/udp.c
 
 .. _`udp6_hwcsum_outgoing`:
 
 udp6_hwcsum_outgoing
 ====================
 
-.. c:function:: void udp6_hwcsum_outgoing (struct sock *sk, struct sk_buff *skb, const struct in6_addr *saddr, const struct in6_addr *daddr, int len)
+.. c:function:: void udp6_hwcsum_outgoing(struct sock *sk, struct sk_buff *skb, const struct in6_addr *saddr, const struct in6_addr *daddr, int len)
 
     handle outgoing HW checksumming
 
@@ -22,14 +18,13 @@ udp6_hwcsum_outgoing
         (checksum field must be zeroed out)
 
     :param const struct in6_addr \*saddr:
-
         *undescribed*
 
     :param const struct in6_addr \*daddr:
-
         *undescribed*
 
     :param int len:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

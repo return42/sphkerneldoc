@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-pinctrl-intel.c
-===============
-
+.. src-file: drivers/pinctrl/intel/pinctrl-intel.c
 
 .. _`intel_pinctrl`:
 
 struct intel_pinctrl
 ====================
 
-.. c:type:: intel_pinctrl
+.. c:type:: struct intel_pinctrl
 
     Intel pinctrl private structure
-
 
 .. _`intel_pinctrl.definition`:
 
@@ -22,49 +17,49 @@ Definition
 
 .. code-block:: c
 
-  struct intel_pinctrl {
-    struct device * dev;
-    spinlock_t lock;
-    struct pinctrl_desc pctldesc;
-    struct pinctrl_dev * pctldev;
-    struct gpio_chip chip;
-    const struct intel_pinctrl_soc_data * soc;
-    struct intel_community * communities;
-    size_t ncommunities;
-    struct intel_pinctrl_context context;
-  };
-
+    struct intel_pinctrl {
+        struct device *dev;
+        spinlock_t lock;
+        struct pinctrl_desc pctldesc;
+        struct pinctrl_dev *pctldev;
+        struct gpio_chip chip;
+        const struct intel_pinctrl_soc_data *soc;
+        struct intel_community *communities;
+        size_t ncommunities;
+        struct intel_pinctrl_context context;
+    }
 
 .. _`intel_pinctrl.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     Pointer to the device structure
 
-:``lock``:
+lock
     Lock to serialize register access
 
-:``pctldesc``:
+pctldesc
     Pin controller description
 
-:``pctldev``:
+pctldev
     Pointer to the pin controller device
 
-:``chip``:
+chip
     GPIO chip in this pin controller
 
-:``soc``:
+soc
     SoC/PCH specific pin configuration data
 
-:``communities``:
+communities
     All communities in this pin controller
 
-:``ncommunities``:
+ncommunities
     Number of communities in this pin controller
 
-:``context``:
+context
     Configuration saved over system sleep
 
+.. This file was automatic generated / don't edit.
 

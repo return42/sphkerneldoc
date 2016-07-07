@@ -1,0 +1,45 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/regulator/ab3100.c
+
+.. _`ab3100_regulator`:
+
+struct ab3100_regulator
+=======================
+
+.. c:type:: struct ab3100_regulator
+
+    A struct passed around the individual regulator functions
+
+.. _`ab3100_regulator.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ab3100_regulator {
+        struct regulator_dev *rdev;
+        struct device *dev;
+        struct ab3100_platform_data *plfdata;
+        u8 regreg;
+    }
+
+.. _`ab3100_regulator.members`:
+
+Members
+-------
+
+rdev
+    *undescribed*
+
+dev
+    handle to the device
+
+plfdata
+    AB3100 platform data passed in at probe time
+
+regreg
+    regulator register number in the AB3100
+
+.. This file was automatic generated / don't edit.
+

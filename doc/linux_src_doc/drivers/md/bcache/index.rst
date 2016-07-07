@@ -7,4 +7,8 @@ bcache
 .. toctree::
    :maxdepth: 1
 
-   closure_c
+    btree_c
+    closure_c
+    closure_h
+    request_c
+    util_c

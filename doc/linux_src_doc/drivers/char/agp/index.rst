@@ -7,5 +7,5 @@ agp
 .. toctree::
    :maxdepth: 1
 
-   backend_c
-   generic_c
+    backend_c
+    generic_c

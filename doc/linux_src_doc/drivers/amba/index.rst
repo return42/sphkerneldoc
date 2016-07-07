@@ -7,4 +7,4 @@ amba
 .. toctree::
    :maxdepth: 1
 
-   bus_c
+    bus_c

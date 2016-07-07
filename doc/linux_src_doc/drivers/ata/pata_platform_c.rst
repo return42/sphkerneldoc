@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-pata_platform.c
-===============
-
+.. src-file: drivers/ata/pata_platform.c
 
 .. _`__pata_platform_probe`:
 
 __pata_platform_probe
 =====================
 
-.. c:function:: int __pata_platform_probe (struct device *dev, struct resource *io_res, struct resource *ctl_res, struct resource *irq_res, unsigned int ioport_shift, int __pio_mask, struct scsi_host_template *sht)
+.. c:function:: int __pata_platform_probe(struct device *dev, struct resource *io_res, struct resource *ctl_res, struct resource *irq_res, unsigned int ioport_shift, int __pio_mask, struct scsi_host_template *sht)
 
     attach a platform interface
 
@@ -35,8 +31,6 @@ __pata_platform_probe
     :param struct scsi_host_template \*sht:
         scsi_host_template to use when registering
 
-
-
 .. _`__pata_platform_probe.description`:
 
 Description
@@ -44,8 +38,6 @@ Description
 
 Register a platform bus IDE interface. Such interfaces are PIO and we
 assume do not support IRQ sharing.
-
-
 
 .. _`__pata_platform_probe.platform-devices-are-expected-to-contain-at-least-2-resources-per-port`:
 
@@ -56,19 +48,19 @@ Platform devices are expected to contain at least 2 resources per port
 - I/O Base (IORESOURCE_IO or IORESOURCE_MEM)
 - CTL Base (IORESOURCE_IO or IORESOURCE_MEM)
 
-
-
 .. _`__pata_platform_probe.and-optionally`:
 
 and optionally
 --------------
 
 
-- IRQ           (IORESOURCE_IRQ)
+- IRQ      (IORESOURCE_IRQ)
 
-        If the base resources are both mem types, the :c:func:`ioremap` is handled
-        here. For IORESOURCE_IO, it's assumed that there's no remapping
-        necessary.
+If the base resources are both mem types, the \ :c:func:`ioremap`\  is handled
+here. For IORESOURCE_IO, it's assumed that there's no remapping
+necessary.
 
-        If no IRQ resource is present, PIO polling mode is used instead.
+If no IRQ resource is present, PIO polling mode is used instead.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,27 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===================
-cdv_intel_display.c
-===================
-
+.. src-file: drivers/gpu/drm/gma500/cdv_intel_display.c
 
 .. _`cdv_intel_panel_fitter_pipe`:
 
 cdv_intel_panel_fitter_pipe
 ===========================
 
-.. c:function:: int cdv_intel_panel_fitter_pipe (struct drm_device *dev)
+.. c:function:: int cdv_intel_panel_fitter_pipe(struct drm_device *dev)
+
+    or -1 if the panel fitter is not present or not in use
 
     :param struct drm_device \*dev:
-
         *undescribed*
 
-
-
-.. _`cdv_intel_panel_fitter_pipe.description`:
-
-Description
------------
-
-or -1 if the panel fitter is not present or not in use
+.. This file was automatic generated / don't edit.
 

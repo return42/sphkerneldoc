@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-dprc.c
-======
-
+.. src-file: drivers/staging/fsl-mc/bus/dprc.c
 
 .. _`dprc_open`:
 
 dprc_open
 =========
 
-.. c:function:: int dprc_open (struct fsl_mc_io *mc_io, u32 cmd_flags, int container_id, u16 *token)
+.. c:function:: int dprc_open(struct fsl_mc_io *mc_io, u32 cmd_flags, int container_id, u16 *token)
 
     Open DPRC object for use
 
@@ -26,8 +22,6 @@ dprc_open
     :param u16 \*token:
         Returned token of DPRC object
 
-
-
 .. _`dprc_open.return`:
 
 Return
@@ -35,16 +29,14 @@ Return
 
 '0' on Success; Error code otherwise.
 
-``warning``        Required before any operation on the object.
-
-
+\ ``warning``\      Required before any operation on the object.
 
 .. _`dprc_close`:
 
 dprc_close
 ==========
 
-.. c:function:: int dprc_close (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token)
+.. c:function:: int dprc_close(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token)
 
     Close the control session of the object
 
@@ -57,8 +49,6 @@ dprc_close
     :param u16 token:
         Token of DPRC object
 
-
-
 .. _`dprc_close.description`:
 
 Description
@@ -67,8 +57,6 @@ Description
 After this function is called, no further operations are
 allowed on the object without opening a new control session.
 
-
-
 .. _`dprc_close.return`:
 
 Return
@@ -76,14 +64,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_create_container`:
 
 dprc_create_container
 =====================
 
-.. c:function:: int dprc_create_container (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, struct dprc_cfg *cfg, int *child_container_id, u64 *child_portal_offset)
+.. c:function:: int dprc_create_container(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, struct dprc_cfg *cfg, int *child_container_id, u64 *child_portal_offset)
 
     Create child container
 
@@ -105,8 +91,6 @@ dprc_create_container
     :param u64 \*child_portal_offset:
         Returned child portal offset from MC portal base
 
-
-
 .. _`dprc_create_container.return`:
 
 Return
@@ -114,14 +98,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_destroy_container`:
 
 dprc_destroy_container
 ======================
 
-.. c:function:: int dprc_destroy_container (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id)
+.. c:function:: int dprc_destroy_container(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id)
 
     Destroy child container.
 
@@ -137,8 +119,6 @@ dprc_destroy_container
     :param int child_container_id:
         ID of the container to destroy
 
-
-
 .. _`dprc_destroy_container.description`:
 
 Description
@@ -146,8 +126,6 @@ Description
 
 This function terminates the child container, so following this call the
 child container ID becomes invalid.
-
-
 
 .. _`dprc_destroy_container.notes`:
 
@@ -157,10 +135,7 @@ Notes
 - All resources and objects of the destroyed container are returned to the
 parent container or destroyed if were created be the destroyed container.
 - This function destroy all the child containers of the specified
-
-  container prior to destroying the container itself.
-
-
+container prior to destroying the container itself.
 
 .. _`dprc_destroy_container.warning`:
 
@@ -170,8 +145,6 @@ warning
 Only the parent container is allowed to destroy a child policy
 Container 0 can't be destroyed
 
-
-
 .. _`dprc_destroy_container.return`:
 
 Return
@@ -179,14 +152,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_reset_container`:
 
 dprc_reset_container
 ====================
 
-.. c:function:: int dprc_reset_container (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id)
+.. c:function:: int dprc_reset_container(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id)
 
     Reset child container.
 
@@ -201,8 +172,6 @@ dprc_reset_container
 
     :param int child_container_id:
         ID of the container to reset
-
-
 
 .. _`dprc_reset_container.description`:
 
@@ -222,8 +191,6 @@ Note that such request may be submitted even if the child software context
 has not crashed, but the resulting object cleanup operations will not be
 aware of that.
 
-
-
 .. _`dprc_reset_container.return`:
 
 Return
@@ -231,14 +198,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_irq`:
 
 dprc_get_irq
 ============
 
-.. c:function:: int dprc_get_irq (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
+.. c:function:: int dprc_get_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
 
     Get IRQ information from the DPRC.
 
@@ -261,8 +226,6 @@ dprc_get_irq
     :param struct dprc_irq_cfg \*irq_cfg:
         IRQ attributes
 
-
-
 .. _`dprc_get_irq.return`:
 
 Return
@@ -270,14 +233,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_irq`:
 
 dprc_set_irq
 ============
 
-.. c:function:: int dprc_set_irq (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, struct dprc_irq_cfg *irq_cfg)
+.. c:function:: int dprc_set_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, struct dprc_irq_cfg *irq_cfg)
 
     Set IRQ information for the DPRC to trigger an interrupt.
 
@@ -296,8 +257,6 @@ dprc_set_irq
     :param struct dprc_irq_cfg \*irq_cfg:
         IRQ configuration
 
-
-
 .. _`dprc_set_irq.return`:
 
 Return
@@ -305,14 +264,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_irq_enable`:
 
 dprc_get_irq_enable
 ===================
 
-.. c:function:: int dprc_get_irq_enable (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u8 *en)
+.. c:function:: int dprc_get_irq_enable(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u8 *en)
 
     Get overall interrupt state.
 
@@ -331,8 +288,6 @@ dprc_get_irq_enable
     :param u8 \*en:
         Returned interrupt state - enable = 1, disable = 0
 
-
-
 .. _`dprc_get_irq_enable.return`:
 
 Return
@@ -340,14 +295,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_irq_enable`:
 
 dprc_set_irq_enable
 ===================
 
-.. c:function:: int dprc_set_irq_enable (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u8 en)
+.. c:function:: int dprc_set_irq_enable(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u8 en)
 
     Set overall interrupt state.
 
@@ -366,8 +319,6 @@ dprc_set_irq_enable
     :param u8 en:
         Interrupt state - enable = 1, disable = 0
 
-
-
 .. _`dprc_set_irq_enable.description`:
 
 Description
@@ -378,8 +329,6 @@ Each interrupt can have up to 32 causes.  The enable/disable control's the
 overall interrupt state. if the interrupt is disabled no causes will cause
 an interrupt.
 
-
-
 .. _`dprc_set_irq_enable.return`:
 
 Return
@@ -387,14 +336,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_irq_mask`:
 
 dprc_get_irq_mask
 =================
 
-.. c:function:: int dprc_get_irq_mask (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 *mask)
+.. c:function:: int dprc_get_irq_mask(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 *mask)
 
     Get interrupt mask.
 
@@ -413,8 +360,6 @@ dprc_get_irq_mask
     :param u32 \*mask:
         Returned event mask to trigger interrupt
 
-
-
 .. _`dprc_get_irq_mask.description`:
 
 Description
@@ -423,8 +368,6 @@ Description
 Every interrupt can have up to 32 causes and the interrupt model supports
 masking/unmasking each cause independently
 
-
-
 .. _`dprc_get_irq_mask.return`:
 
 Return
@@ -432,14 +375,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_irq_mask`:
 
 dprc_set_irq_mask
 =================
 
-.. c:function:: int dprc_set_irq_mask (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 mask)
+.. c:function:: int dprc_set_irq_mask(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 mask)
 
     Set interrupt mask.
 
@@ -457,21 +398,17 @@ dprc_set_irq_mask
 
     :param u32 mask:
         event mask to trigger interrupt;
+        each bit:
+        0 = ignore event
+        1 = consider event for asserting irq
 
+.. _`dprc_set_irq_mask.description`:
 
-
-.. _`dprc_set_irq_mask.each-bit`:
-
-each bit
---------
-
-0 = ignore event
-1 = consider event for asserting irq
+Description
+-----------
 
 Every interrupt can have up to 32 causes and the interrupt model supports
 masking/unmasking each cause independently
-
-
 
 .. _`dprc_set_irq_mask.return`:
 
@@ -480,14 +417,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_irq_status`:
 
 dprc_get_irq_status
 ===================
 
-.. c:function:: int dprc_get_irq_status (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 *status)
+.. c:function:: int dprc_get_irq_status(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 *status)
 
     Get the current status of any pending interrupts.
 
@@ -505,11 +440,8 @@ dprc_get_irq_status
 
     :param u32 \*status:
         Returned interrupts status - one bit per cause:
-
-                                0 = no interrupt pending
-                                1 = interrupt pending
-
-
+        0 = no interrupt pending
+        1 = interrupt pending
 
 .. _`dprc_get_irq_status.return`:
 
@@ -518,14 +450,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_clear_irq_status`:
 
 dprc_clear_irq_status
 =====================
 
-.. c:function:: int dprc_clear_irq_status (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 status)
+.. c:function:: int dprc_clear_irq_status(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, u8 irq_index, u32 status)
 
     Clear a pending interrupt's status
 
@@ -543,11 +473,8 @@ dprc_clear_irq_status
 
     :param u32 status:
         bits to clear (W1C) - one bit per cause:
-
-                                                0 = don't change
-                                                1 = clear status bit
-
-
+        0 = don't change
+        1 = clear status bit
 
 .. _`dprc_clear_irq_status.return`:
 
@@ -556,14 +483,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_attributes`:
 
 dprc_get_attributes
 ===================
 
-.. c:function:: int dprc_get_attributes (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, struct dprc_attributes *attr)
+.. c:function:: int dprc_get_attributes(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, struct dprc_attributes *attr)
 
     Obtains container attributes
 
@@ -575,13 +500,10 @@ dprc_get_attributes
 
     :param u16 token:
         Token of DPRC object
-        ``attributes``        Returned container attributes
+        \ ``attributes``\   Returned container attributes
 
     :param struct dprc_attributes \*attr:
-
         *undescribed*
-
-
 
 .. _`dprc_get_attributes.return`:
 
@@ -590,14 +512,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_res_quota`:
 
 dprc_set_res_quota
 ==================
 
-.. c:function:: int dprc_set_res_quota (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, char *type, u16 quota)
+.. c:function:: int dprc_set_res_quota(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, char *type, u16 quota)
 
     Set allocation policy for a specific resource/object type in a child container
 
@@ -617,12 +537,10 @@ dprc_set_res_quota
         Resource/object type
 
     :param u16 quota:
-        Sets the maximum number of resources of        the selected type
+        Sets the maximum number of resources of the selected type
         that the child container is allowed to allocate from its parent;
         when quota is set to -1, the policy is the same as container's
         general policy.
-
-
 
 .. _`dprc_set_res_quota.description`:
 
@@ -637,8 +555,6 @@ This function sets allocation policy for a specific resource type.
 The default policy for all resource types matches the container's 'global'
 allocation policy.
 
-
-
 .. _`dprc_set_res_quota.return`:
 
 Return
@@ -646,16 +562,14 @@ Return
 
 '0' on Success; Error code otherwise.
 
-``warning``        Only the parent container is allowed to change a child policy.
-
-
+\ ``warning``\      Only the parent container is allowed to change a child policy.
 
 .. _`dprc_get_res_quota`:
 
 dprc_get_res_quota
 ==================
 
-.. c:function:: int dprc_get_res_quota (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, char *type, u16 *quota)
+.. c:function:: int dprc_get_res_quota(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, char *type, u16 *quota)
 
     Gets the allocation policy of a specific resource/object type in a child container
 
@@ -667,10 +581,9 @@ dprc_get_res_quota
 
     :param u16 token:
         Token of DPRC object
-        ``child_container_id``\ ;        ID of the child container
+        \ ``child_container_id``\ ; ID of the child container
 
     :param int child_container_id:
-
         *undescribed*
 
     :param char \*type:
@@ -682,8 +595,6 @@ dprc_get_res_quota
         when quota is set to -1, the policy is the same as container's
         general policy.
 
-
-
 .. _`dprc_get_res_quota.return`:
 
 Return
@@ -691,14 +602,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_assign`:
 
 dprc_assign
 ===========
 
-.. c:function:: int dprc_assign (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int container_id, struct dprc_res_req *res_req)
+.. c:function:: int dprc_assign(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int container_id, struct dprc_res_req *res_req)
 
     Assigns objects or resource to a child container.
 
@@ -718,8 +627,6 @@ dprc_assign
         Describes the type and amount of resources to
         assign to the given container
 
-
-
 .. _`dprc_assign.description`:
 
 Description
@@ -734,24 +641,17 @@ available in the container itself.
 
 The type of assignment depends on the dprc_res_req options, as follows:
 - DPRC_RES_REQ_OPT_EXPLICIT: indicates that assigned resources should have
-
-  the explicit base ID specified at the id_base_align field of res_req.
-
+the explicit base ID specified at the id_base_align field of res_req.
 - DPRC_RES_REQ_OPT_ALIGNED: indicates that the assigned resources should be
-
-  aligned to the value given at id_base_align field of res_req.
-
+aligned to the value given at id_base_align field of res_req.
 - DPRC_RES_REQ_OPT_PLUGGED: Relevant only for object assignment,
-
-  and indicates that the object must be set to the plugged state.
+and indicates that the object must be set to the plugged state.
 
 A container may use this function with its own ID in order to change a
 object state to plugged or unplugged.
 
 If IRQ information has been set in the child DPRC, it will signal an
 interrupt following every change in its object assignment.
-
-
 
 .. _`dprc_assign.return`:
 
@@ -760,14 +660,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_unassign`:
 
 dprc_unassign
 =============
 
-.. c:function:: int dprc_unassign (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, struct dprc_res_req *res_req)
+.. c:function:: int dprc_unassign(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int child_container_id, struct dprc_res_req *res_req)
 
     Un-assigns objects or resources from a child container and moves them into this (parent) DPRC.
 
@@ -787,8 +685,6 @@ dprc_unassign
         Describes the type and amount of resources to un-assign from
         the child container
 
-
-
 .. _`dprc_unassign.description`:
 
 Description
@@ -797,8 +693,6 @@ Description
 Un-assignment of objects can succeed only if the object is not in the
 plugged or opened state.
 
-
-
 .. _`dprc_unassign.return`:
 
 Return
@@ -806,14 +700,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_pool_count`:
 
 dprc_get_pool_count
 ===================
 
-.. c:function:: int dprc_get_pool_count (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int *pool_count)
+.. c:function:: int dprc_get_pool_count(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int *pool_count)
 
     Get the number of dprc's pools
 
@@ -829,8 +721,6 @@ dprc_get_pool_count
     :param int \*pool_count:
         Returned number of resource pools in the dprc
 
-
-
 .. _`dprc_get_pool_count.return`:
 
 Return
@@ -838,14 +728,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_pool`:
 
 dprc_get_pool
 =============
 
-.. c:function:: int dprc_get_pool (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int pool_index, char *type)
+.. c:function:: int dprc_get_pool(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int pool_index, char *type)
 
     Get the type (string) of a certain dprc's pool
 
@@ -857,16 +745,13 @@ dprc_get_pool
 
     :param u16 token:
         Token of DPRC object
-        ``pool_index``\ ;        Index of the pool to be queried (< pool_count)
+        \ ``pool_index``\ ; Index of the pool to be queried (< pool_count)
 
     :param int pool_index:
-
         *undescribed*
 
     :param char \*type:
         The type of the pool
-
-
 
 .. _`dprc_get_pool.description`:
 
@@ -875,10 +760,8 @@ Description
 
 The pool types retrieved one by one by incrementing
 pool_index up to (not including) the value of pool_count returned
-from :c:func:`dprc_get_pool_count`. :c:func:`dprc_get_pool_count` must
-be called prior to :c:func:`dprc_get_pool`.
-
-
+from \ :c:func:`dprc_get_pool_count`\ . \ :c:func:`dprc_get_pool_count`\  must
+be called prior to \ :c:func:`dprc_get_pool`\ .
 
 .. _`dprc_get_pool.return`:
 
@@ -887,14 +770,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_obj_count`:
 
 dprc_get_obj_count
 ==================
 
-.. c:function:: int dprc_get_obj_count (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int *obj_count)
+.. c:function:: int dprc_get_obj_count(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int *obj_count)
 
     Obtains the number of objects in the DPRC
 
@@ -910,8 +791,6 @@ dprc_get_obj_count
     :param int \*obj_count:
         Number of objects assigned to the DPRC
 
-
-
 .. _`dprc_get_obj_count.return`:
 
 Return
@@ -919,14 +798,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_obj`:
 
 dprc_get_obj
 ============
 
-.. c:function:: int dprc_get_obj (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int obj_index, struct dprc_obj_desc *obj_desc)
+.. c:function:: int dprc_get_obj(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, int obj_index, struct dprc_obj_desc *obj_desc)
 
     Get general information on an object
 
@@ -945,8 +822,6 @@ dprc_get_obj
     :param struct dprc_obj_desc \*obj_desc:
         Returns the requested object descriptor
 
-
-
 .. _`dprc_get_obj.description`:
 
 Description
@@ -954,10 +829,8 @@ Description
 
 The object descriptors are retrieved one by one by incrementing
 obj_index up to (not including) the value of obj_count returned
-from :c:func:`dprc_get_obj_count`. :c:func:`dprc_get_obj_count` must
-be called prior to :c:func:`dprc_get_obj`.
-
-
+from \ :c:func:`dprc_get_obj_count`\ . \ :c:func:`dprc_get_obj_count`\  must
+be called prior to \ :c:func:`dprc_get_obj`\ .
 
 .. _`dprc_get_obj.return`:
 
@@ -966,14 +839,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_obj_desc`:
 
 dprc_get_obj_desc
 =================
 
-.. c:function:: int dprc_get_obj_desc (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, struct dprc_obj_desc *obj_desc)
+.. c:function:: int dprc_get_obj_desc(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, struct dprc_obj_desc *obj_desc)
 
     Get object descriptor.
 
@@ -995,8 +866,6 @@ dprc_get_obj_desc
     :param struct dprc_obj_desc \*obj_desc:
         The returned descriptor to fill and return to the user
 
-
-
 .. _`dprc_get_obj_desc.return`:
 
 Return
@@ -1004,14 +873,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_obj_irq`:
 
 dprc_set_obj_irq
 ================
 
-.. c:function:: int dprc_set_obj_irq (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 irq_index, struct dprc_irq_cfg *irq_cfg)
+.. c:function:: int dprc_set_obj_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 irq_index, struct dprc_irq_cfg *irq_cfg)
 
     Set IRQ information for object to trigger an interrupt.
 
@@ -1036,8 +903,6 @@ dprc_set_obj_irq
     :param struct dprc_irq_cfg \*irq_cfg:
         IRQ configuration
 
-
-
 .. _`dprc_set_obj_irq.return`:
 
 Return
@@ -1045,14 +910,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_obj_irq`:
 
 dprc_get_obj_irq
 ================
 
-.. c:function:: int dprc_get_obj_irq (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
+.. c:function:: int dprc_get_obj_irq(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 irq_index, int *type, struct dprc_irq_cfg *irq_cfg)
 
     Get IRQ information from object.
 
@@ -1081,8 +944,6 @@ dprc_get_obj_irq
     :param struct dprc_irq_cfg \*irq_cfg:
         The returned IRQ attributes
 
-
-
 .. _`dprc_get_obj_irq.return`:
 
 Return
@@ -1090,14 +951,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_res_count`:
 
 dprc_get_res_count
 ==================
 
-.. c:function:: int dprc_get_res_count (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *type, int *res_count)
+.. c:function:: int dprc_get_res_count(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *type, int *res_count)
 
     Obtains the number of free resources that are assigned to this container, by pool type
 
@@ -1117,8 +976,6 @@ dprc_get_res_count
         Returned number of free resources of the given
         resource type that are assigned to this DPRC
 
-
-
 .. _`dprc_get_res_count.return`:
 
 Return
@@ -1126,14 +983,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_res_ids`:
 
 dprc_get_res_ids
 ================
 
-.. c:function:: int dprc_get_res_ids (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *type, struct dprc_res_ids_range_desc *range_desc)
+.. c:function:: int dprc_get_res_ids(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *type, struct dprc_res_ids_range_desc *range_desc)
 
     Obtains IDs of free resources in the container
 
@@ -1152,8 +1007,6 @@ dprc_get_res_ids
     :param struct dprc_res_ids_range_desc \*range_desc:
         range descriptor
 
-
-
 .. _`dprc_get_res_ids.return`:
 
 Return
@@ -1161,14 +1014,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_obj_region`:
 
 dprc_get_obj_region
 ===================
 
-.. c:function:: int dprc_get_obj_region (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 region_index, struct dprc_region_desc *region_desc)
+.. c:function:: int dprc_get_obj_region(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, u8 region_index, struct dprc_region_desc *region_desc)
 
     Get region information for a specified object.
 
@@ -1180,22 +1031,19 @@ dprc_get_obj_region
 
     :param u16 token:
         Token of DPRC object
-        ``obj_type``\ ;        Object type as returned in :c:func:`dprc_get_obj`
+        \ ``obj_type``\ ;   Object type as returned in \ :c:func:`dprc_get_obj`\ 
 
     :param char \*obj_type:
-
         *undescribed*
 
     :param int obj_id:
-        Unique object instance as returned in :c:func:`dprc_get_obj`
+        Unique object instance as returned in \ :c:func:`dprc_get_obj`\ 
 
     :param u8 region_index:
         The specific region to query
 
     :param struct dprc_region_desc \*region_desc:
         Returns the requested region descriptor
-
-
 
 .. _`dprc_get_obj_region.return`:
 
@@ -1204,14 +1052,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_set_obj_label`:
 
 dprc_set_obj_label
 ==================
 
-.. c:function:: int dprc_set_obj_label (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, char *label)
+.. c:function:: int dprc_set_obj_label(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, char *obj_type, int obj_id, char *label)
 
     Set object label.
 
@@ -1233,8 +1079,6 @@ dprc_set_obj_label
     :param char \*label:
         The required label. The maximum length is 16 chars.
 
-
-
 .. _`dprc_set_obj_label.return`:
 
 Return
@@ -1242,14 +1086,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_connect`:
 
 dprc_connect
 ============
 
-.. c:function:: int dprc_connect (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint1, const struct dprc_endpoint *endpoint2, const struct dprc_connection_cfg *cfg)
+.. c:function:: int dprc_connect(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint1, const struct dprc_endpoint *endpoint2, const struct dprc_connection_cfg *cfg)
 
     Connect two endpoints to create a network link between them
 
@@ -1270,16 +1112,8 @@ dprc_connect
 
     :param const struct dprc_connection_cfg \*cfg:
         Connection configuration. The connection configuration is ignored for
-        connections made to DPMAC objects, where rate is set according to
+        connections made to DPMAC objects, where rate is retrieved from the
         MAC configuration.
-        The committed rate is the guaranteed rate for the connection.
-        The maximum rate is an upper limit allowed for the connection; it is
-        expected to be equal or higher than the committed rate.
-        When committed and maximum rates are both zero, the connection is set
-        to "best effort" mode, having lower priority compared to connections
-        with committed or maximum rates.
-
-
 
 .. _`dprc_connect.return`:
 
@@ -1288,14 +1122,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_disconnect`:
 
 dprc_disconnect
 ===============
 
-.. c:function:: int dprc_disconnect (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint)
+.. c:function:: int dprc_disconnect(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint)
 
     Disconnect one endpoint to remove its network connection
 
@@ -1311,8 +1143,6 @@ dprc_disconnect
     :param const struct dprc_endpoint \*endpoint:
         Endpoint configuration parameters
 
-
-
 .. _`dprc_disconnect.return`:
 
 Return
@@ -1320,14 +1150,12 @@ Return
 
 '0' on Success; Error code otherwise.
 
-
-
 .. _`dprc_get_connection`:
 
 dprc_get_connection
 ===================
 
-.. c:function:: int dprc_get_connection (struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint1, struct dprc_endpoint *endpoint2, int *state)
+.. c:function:: int dprc_get_connection(struct fsl_mc_io *mc_io, u32 cmd_flags, u16 token, const struct dprc_endpoint *endpoint1, struct dprc_endpoint *endpoint2, int *state)
 
     Get connected endpoint and link status if connection exists.
 
@@ -1347,9 +1175,10 @@ dprc_get_connection
         Returned endpoint 2 configuration parameters
 
     :param int \*state:
-        Returned link state: 1 - link is up, 0 - link is down
-
-
+        Returned link state:
+        1 - link is up;
+        0 - link is down;
+        -1 - no connection (endpoint2 information is irrelevant)
 
 .. _`dprc_get_connection.return`:
 
@@ -1357,4 +1186,6 @@ Return
 ------
 
 '0' on Success; -ENAVAIL if connection does not exist.
+
+.. This file was automatic generated / don't edit.
 

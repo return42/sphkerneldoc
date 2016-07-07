@@ -1,0 +1,61 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: arch/x86/platform/ts5500/ts5500.c
+
+.. _`ts5500_sbc`:
+
+struct ts5500_sbc
+=================
+
+.. c:type:: struct ts5500_sbc
+
+    TS-5500 board description
+
+.. _`ts5500_sbc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ts5500_sbc {
+        const char *name;
+        int id;
+        bool sram;
+        bool rs485;
+        bool adc;
+        bool ereset;
+        bool itr;
+        u8 jumpers;
+    }
+
+.. _`ts5500_sbc.members`:
+
+Members
+-------
+
+name
+    Board model name.
+
+id
+    Board product ID.
+
+sram
+    Flag for SRAM option.
+
+rs485
+    Flag for RS-485 option.
+
+adc
+    Flag for Analog/Digital converter option.
+
+ereset
+    Flag for External Reset option.
+
+itr
+    Flag for Industrial Temperature Range option.
+
+jumpers
+    Bitfield for jumpers' state.
+
+.. This file was automatic generated / don't edit.
+

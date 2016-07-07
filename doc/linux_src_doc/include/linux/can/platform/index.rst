@@ -7,4 +7,4 @@ platform
 .. toctree::
    :maxdepth: 1
 
-   ti_hecc_h
+    ti_hecc_h

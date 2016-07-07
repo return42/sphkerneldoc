@@ -7,4 +7,4 @@ siano
 .. toctree::
    :maxdepth: 1
 
-   smscoreapi_c
+    smscoreapi_c

@@ -1,33 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-pal.c
-=====
-
+.. src-file: drivers/usb/wusbcore/pal.c
 
 .. _`wusbhc_pal_register`:
 
 wusbhc_pal_register
 ===================
 
-.. c:function:: int wusbhc_pal_register (struct wusbhc *wusbhc)
+.. c:function:: int wusbhc_pal_register(struct wusbhc *wusbhc)
 
     register the WUSB HC as a UWB PAL
 
     :param struct wusbhc \*wusbhc:
         the WUSB HC
 
-
-
 .. _`wusbhc_pal_unregister`:
 
 wusbhc_pal_unregister
 =====================
 
-.. c:function:: void wusbhc_pal_unregister (struct wusbhc *wusbhc)
+.. c:function:: void wusbhc_pal_unregister(struct wusbhc *wusbhc)
 
     unregister the WUSB HC as a UWB PAL
 
     :param struct wusbhc \*wusbhc:
         the WUSB HC
+
+.. This file was automatic generated / don't edit.
 

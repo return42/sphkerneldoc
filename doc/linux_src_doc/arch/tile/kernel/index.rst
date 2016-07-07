@@ -7,4 +7,4 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   setup_c
+    setup_c

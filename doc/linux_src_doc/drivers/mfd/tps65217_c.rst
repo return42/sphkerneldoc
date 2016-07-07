@@ -1,16 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-tps65217.c
-==========
-
+.. src-file: drivers/mfd/tps65217.c
 
 .. _`tps65217_reg_read`:
 
 tps65217_reg_read
 =================
 
-.. c:function:: int tps65217_reg_read (struct tps65217 *tps, unsigned int reg, unsigned int *val)
+.. c:function:: int tps65217_reg_read(struct tps65217 *tps, unsigned int reg, unsigned int *val)
+
+    Read a single tps65217 register.
 
     :param struct tps65217 \*tps:
         Device to read from.
@@ -21,17 +19,16 @@ tps65217_reg_read
     :param unsigned int \*val:
         Contians the value
 
-
-
 .. _`tps65217_reg_write`:
 
 tps65217_reg_write
 ==================
 
-.. c:function:: int tps65217_reg_write (struct tps65217 *tps, unsigned int reg, unsigned int val, unsigned int level)
+.. c:function:: int tps65217_reg_write(struct tps65217 *tps, unsigned int reg, unsigned int val, unsigned int level)
+
+    Write a single tps65217 register.
 
     :param struct tps65217 \*tps:
-
         *undescribed*
 
     :param unsigned int reg:
@@ -43,17 +40,16 @@ tps65217_reg_write
     :param unsigned int level:
         Password protected level
 
-
-
 .. _`tps65217_update_bits`:
 
 tps65217_update_bits
 ====================
 
-.. c:function:: int tps65217_update_bits (struct tps65217 *tps, unsigned int reg, unsigned int mask, unsigned int val, unsigned int level)
+.. c:function:: int tps65217_update_bits(struct tps65217 *tps, unsigned int reg, unsigned int mask, unsigned int val, unsigned int level)
+
+    Modify bits w.r.t mask, val and level.
 
     :param struct tps65217 \*tps:
-
         *undescribed*
 
     :param unsigned int reg:
@@ -67,4 +63,6 @@ tps65217_update_bits
 
     :param unsigned int level:
         Password protected level
+
+.. This file was automatic generated / don't edit.
 

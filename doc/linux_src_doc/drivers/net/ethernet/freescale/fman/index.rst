@@ -7,6 +7,7 @@ fman
 .. toctree::
    :maxdepth: 1
 
-   fman_c
-   fman_port_c
-   mac_c
+    fman_c
+    fman_muram_c
+    fman_port_c
+    mac_c

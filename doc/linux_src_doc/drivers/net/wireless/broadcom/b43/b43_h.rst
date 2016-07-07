@@ -1,0 +1,17 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/broadcom/b43/b43.h
+
+.. _`b43_current_band`:
+
+b43_current_band
+================
+
+.. c:function:: enum nl80211_band b43_current_band(struct b43_wl *wl)
+
+    Returns the currently used band. Returns one of NL80211_BAND_2GHZ and NL80211_BAND_5GHZ.
+
+    :param struct b43_wl \*wl:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

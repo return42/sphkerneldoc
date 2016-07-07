@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-ring_buffer.c
-=============
-
+.. src-file: kernel/trace/ring_buffer.c
 
 .. _`ring_buffer_event_length`:
 
 ring_buffer_event_length
 ========================
 
-.. c:function:: unsigned ring_buffer_event_length (struct ring_buffer_event *event)
+.. c:function:: unsigned ring_buffer_event_length(struct ring_buffer_event *event)
 
     return the length of the event
 
     :param struct ring_buffer_event \*event:
         the event to get the length of
-
-
 
 .. _`ring_buffer_event_length.description`:
 
@@ -30,35 +24,29 @@ returns the size of the event itself. With the exception
 of a TIME EXTEND, where it still returns the size of the
 data load of the data event after it.
 
-
-
 .. _`ring_buffer_event_data`:
 
 ring_buffer_event_data
 ======================
 
-.. c:function:: void *ring_buffer_event_data (struct ring_buffer_event *event)
+.. c:function:: void *ring_buffer_event_data(struct ring_buffer_event *event)
 
     return the data of the event
 
     :param struct ring_buffer_event \*event:
         the event to get the data from
 
-
-
 .. _`ring_buffer_page_len`:
 
 ring_buffer_page_len
 ====================
 
-.. c:function:: size_t ring_buffer_page_len (void *page)
+.. c:function:: size_t ring_buffer_page_len(void *page)
 
     the size of data on the page.
 
     :param void \*page:
         The page to read
-
-
 
 .. _`ring_buffer_page_len.description`:
 
@@ -67,14 +55,12 @@ Description
 
 Returns the amount of data on the page, including buffer page header.
 
-
-
 .. _`ring_buffer_wait`:
 
 ring_buffer_wait
 ================
 
-.. c:function:: int ring_buffer_wait (struct ring_buffer *buffer, int cpu, bool full)
+.. c:function:: int ring_buffer_wait(struct ring_buffer *buffer, int cpu, bool full)
 
     wait for input to the ring buffer
 
@@ -85,27 +71,23 @@ ring_buffer_wait
         the cpu buffer to wait on
 
     :param bool full:
-        wait until a full page is available, if ``cpu`` != RING_BUFFER_ALL_CPUS
-
-
+        wait until a full page is available, if \ ``cpu``\  != RING_BUFFER_ALL_CPUS
 
 .. _`ring_buffer_wait.description`:
 
 Description
 -----------
 
-If ``cpu`` == RING_BUFFER_ALL_CPUS then the task will wake up as soon
-as data is added to any of the ``buffer``\ 's cpu buffers. Otherwise
+If \ ``cpu``\  == RING_BUFFER_ALL_CPUS then the task will wake up as soon
+as data is added to any of the \ ``buffer``\ 's cpu buffers. Otherwise
 it will wait for data to be added to a specific cpu buffer.
-
-
 
 .. _`ring_buffer_poll_wait`:
 
 ring_buffer_poll_wait
 =====================
 
-.. c:function:: int ring_buffer_poll_wait (struct ring_buffer *buffer, int cpu, struct file *filp, poll_table *poll_table)
+.. c:function:: int ring_buffer_poll_wait(struct ring_buffer *buffer, int cpu, struct file *filp, poll_table *poll_table)
 
     poll on buffer input
 
@@ -121,54 +103,44 @@ ring_buffer_poll_wait
     :param poll_table \*poll_table:
         The poll descriptor
 
-
-
 .. _`ring_buffer_poll_wait.description`:
 
 Description
 -----------
 
-If ``cpu`` == RING_BUFFER_ALL_CPUS then the task will wake up as soon
-as data is added to any of the ``buffer``\ 's cpu buffers. Otherwise
+If \ ``cpu``\  == RING_BUFFER_ALL_CPUS then the task will wake up as soon
+as data is added to any of the \ ``buffer``\ 's cpu buffers. Otherwise
 it will wait for data to be added to a specific cpu buffer.
 
-Returns POLLIN | POLLRDNORM if data exists in the buffers,
+Returns POLLIN \| POLLRDNORM if data exists in the buffers,
 zero otherwise.
-
-
 
 .. _`rb_check_list`:
 
 rb_check_list
 =============
 
-.. c:function:: int rb_check_list (struct ring_buffer_per_cpu *cpu_buffer, struct list_head *list)
+.. c:function:: int rb_check_list(struct ring_buffer_per_cpu *cpu_buffer, struct list_head *list)
 
     make sure a pointer to a list has the last bits zero
 
     :param struct ring_buffer_per_cpu \*cpu_buffer:
-
         *undescribed*
 
     :param struct list_head \*list:
-
         *undescribed*
-
-
 
 .. _`rb_check_pages`:
 
 rb_check_pages
 ==============
 
-.. c:function:: int rb_check_pages (struct ring_buffer_per_cpu *cpu_buffer)
+.. c:function:: int rb_check_pages(struct ring_buffer_per_cpu *cpu_buffer)
 
     integrity check of buffer pages
 
     :param struct ring_buffer_per_cpu \*cpu_buffer:
         CPU buffer with pages to test
-
-
 
 .. _`rb_check_pages.description`:
 
@@ -178,14 +150,12 @@ Description
 As a safety measure we check to make sure the data pages have not
 been corrupted.
 
-
-
 .. _`__ring_buffer_alloc`:
 
 __ring_buffer_alloc
 ===================
 
-.. c:function:: struct ring_buffer *__ring_buffer_alloc (unsigned long size, unsigned flags, struct lock_class_key *key)
+.. c:function:: struct ring_buffer *__ring_buffer_alloc(unsigned long size, unsigned flags, struct lock_class_key *key)
 
     allocate a new ring_buffer
 
@@ -196,10 +166,7 @@ __ring_buffer_alloc
         attributes to set for the ring buffer.
 
     :param struct lock_class_key \*key:
-
         *undescribed*
-
-
 
 .. _`__ring_buffer_alloc.description`:
 
@@ -211,28 +178,24 @@ flag. This flag means that the buffer will overwrite old data
 when the buffer wraps. If this flag is not set, the buffer will
 drop data when the tail hits the head.
 
-
-
 .. _`ring_buffer_free`:
 
 ring_buffer_free
 ================
 
-.. c:function:: void ring_buffer_free (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_free(struct ring_buffer *buffer)
 
     free a ring buffer.
 
     :param struct ring_buffer \*buffer:
         the buffer to free.
 
-
-
 .. _`ring_buffer_resize`:
 
 ring_buffer_resize
 ==================
 
-.. c:function:: int ring_buffer_resize (struct ring_buffer *buffer, unsigned long size, int cpu_id)
+.. c:function:: int ring_buffer_resize(struct ring_buffer *buffer, unsigned long size, int cpu_id)
 
     resize the ring buffer
 
@@ -245,40 +208,32 @@ ring_buffer_resize
     :param int cpu_id:
         the cpu buffer to resize
 
-
-
 .. _`ring_buffer_resize.description`:
 
 Description
 -----------
 
-Minimum size is 2 * BUF_PAGE_SIZE.
+Minimum size is 2 \* BUF_PAGE_SIZE.
 
 Returns 0 on success and < 0 on failure.
-
-
 
 .. _`rb_update_event`:
 
 rb_update_event
 ===============
 
-.. c:function:: void rb_update_event (struct ring_buffer_per_cpu *cpu_buffer, struct ring_buffer_event *event, struct rb_event_info *info)
+.. c:function:: void rb_update_event(struct ring_buffer_per_cpu *cpu_buffer, struct ring_buffer_event *event, struct rb_event_info *info)
 
     update event type and data
 
     :param struct ring_buffer_per_cpu \*cpu_buffer:
-
         *undescribed*
 
     :param struct ring_buffer_event \*event:
         the event to update
 
     :param struct rb_event_info \*info:
-
         *undescribed*
-
-
 
 .. _`rb_update_event.description`:
 
@@ -290,14 +245,12 @@ is the actual size that is written to the ring buffer,
 and with this, we can determine what to place into the
 data field.
 
-
-
 .. _`ring_buffer_unlock_commit`:
 
 ring_buffer_unlock_commit
 =========================
 
-.. c:function:: int ring_buffer_unlock_commit (struct ring_buffer *buffer, struct ring_buffer_event *event)
+.. c:function:: int ring_buffer_unlock_commit(struct ring_buffer *buffer, struct ring_buffer_event *event)
 
     commit a reserved
 
@@ -306,8 +259,6 @@ ring_buffer_unlock_commit
 
     :param struct ring_buffer_event \*event:
         The event pointer to commit.
-
-
 
 .. _`ring_buffer_unlock_commit.description`:
 
@@ -318,14 +269,12 @@ This commits the data to the ring buffer, and releases any locks held.
 
 Must be paired with ring_buffer_lock_reserve.
 
-
-
 .. _`ring_buffer_lock_reserve`:
 
 ring_buffer_lock_reserve
 ========================
 
-.. c:function:: struct ring_buffer_event *ring_buffer_lock_reserve (struct ring_buffer *buffer, unsigned long length)
+.. c:function:: struct ring_buffer_event *ring_buffer_lock_reserve(struct ring_buffer *buffer, unsigned long length)
 
     reserve a part of the buffer
 
@@ -335,8 +284,6 @@ ring_buffer_lock_reserve
     :param unsigned long length:
         the length of the data to reserve (excluding event header)
 
-
-
 .. _`ring_buffer_lock_reserve.description`:
 
 Description
@@ -344,7 +291,7 @@ Description
 
 Returns a reseverd event on the ring buffer to copy directly to.
 The user of this interface will need to get the body to write into
-and can use the :c:func:`ring_buffer_event_data` interface.
+and can use the \ :c:func:`ring_buffer_event_data`\  interface.
 
 The length is the length of the data needed, not the event length
 which also includes the event header.
@@ -352,14 +299,12 @@ which also includes the event header.
 Must be paired with ring_buffer_unlock_commit, unless NULL is returned.
 If NULL is returned, then nothing has been allocated or locked.
 
-
-
 .. _`ring_buffer_discard_commit`:
 
 ring_buffer_discard_commit
 ==========================
 
-.. c:function:: void ring_buffer_discard_commit (struct ring_buffer *buffer, struct ring_buffer_event *event)
+.. c:function:: void ring_buffer_discard_commit(struct ring_buffer *buffer, struct ring_buffer_event *event)
 
     discard an event that has not been committed
 
@@ -368,8 +313,6 @@ ring_buffer_discard_commit
 
     :param struct ring_buffer_event \*event:
         non committed event to discard
-
-
 
 .. _`ring_buffer_discard_commit.description`:
 
@@ -390,14 +333,12 @@ up as discarded, and perform the commit.
 If this function is called, do not call ring_buffer_unlock_commit on
 the event.
 
-
-
 .. _`ring_buffer_write`:
 
 ring_buffer_write
 =================
 
-.. c:function:: int ring_buffer_write (struct ring_buffer *buffer, unsigned long length, void *data)
+.. c:function:: int ring_buffer_write(struct ring_buffer *buffer, unsigned long length, void *data)
 
     write data to the buffer without reserving
 
@@ -409,8 +350,6 @@ ring_buffer_write
 
     :param void \*data:
         The data to write to the buffer.
-
-
 
 .. _`ring_buffer_write.description`:
 
@@ -424,21 +363,17 @@ may be easier to simply call this function.
 Note, like ring_buffer_lock_reserve, the length is the length of the data
 and not the length of the event which would hold the header.
 
-
-
 .. _`ring_buffer_record_disable`:
 
 ring_buffer_record_disable
 ==========================
 
-.. c:function:: void ring_buffer_record_disable (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_record_disable(struct ring_buffer *buffer)
 
     stop all writes into the buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer to stop writes to.
-
-
 
 .. _`ring_buffer_record_disable.description`:
 
@@ -448,23 +383,19 @@ Description
 This prevents all writes to the buffer. Any attempt to write
 to the buffer after this will fail and return NULL.
 
-The caller should call :c:func:`synchronize_sched` after this.
-
-
+The caller should call \ :c:func:`synchronize_sched`\  after this.
 
 .. _`ring_buffer_record_enable`:
 
 ring_buffer_record_enable
 =========================
 
-.. c:function:: void ring_buffer_record_enable (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_record_enable(struct ring_buffer *buffer)
 
     enable writes to the buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer to enable writes
-
-
 
 .. _`ring_buffer_record_enable.description`:
 
@@ -474,21 +405,17 @@ Description
 Note, multiple disables will need the same number of enables
 to truly enable the writing (much like preempt_disable).
 
-
-
 .. _`ring_buffer_record_off`:
 
 ring_buffer_record_off
 ======================
 
-.. c:function:: void ring_buffer_record_off (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_record_off(struct ring_buffer *buffer)
 
     stop all writes into the buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer to stop writes to.
-
-
 
 .. _`ring_buffer_record_off.description`:
 
@@ -498,25 +425,21 @@ Description
 This prevents all writes to the buffer. Any attempt to write
 to the buffer after this will fail and return NULL.
 
-This is different than :c:func:`ring_buffer_record_disable` as
-it works like an on/off switch, where as the :c:func:`disable` version
-must be paired with a :c:func:`enable`.
-
-
+This is different than \ :c:func:`ring_buffer_record_disable`\  as
+it works like an on/off switch, where as the \ :c:func:`disable`\  version
+must be paired with a \ :c:func:`enable`\ .
 
 .. _`ring_buffer_record_on`:
 
 ring_buffer_record_on
 =====================
 
-.. c:function:: void ring_buffer_record_on (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_record_on(struct ring_buffer *buffer)
 
     restart writes into the buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer to start writes to.
-
-
 
 .. _`ring_buffer_record_on.description`:
 
@@ -524,27 +447,23 @@ Description
 -----------
 
 This enables all writes to the buffer that was disabled by
-:c:func:`ring_buffer_record_off`.
+\ :c:func:`ring_buffer_record_off`\ .
 
-This is different than :c:func:`ring_buffer_record_enable` as
-it works like an on/off switch, where as the :c:func:`enable` version
-must be paired with a :c:func:`disable`.
-
-
+This is different than \ :c:func:`ring_buffer_record_enable`\  as
+it works like an on/off switch, where as the \ :c:func:`enable`\  version
+must be paired with a \ :c:func:`disable`\ .
 
 .. _`ring_buffer_record_is_on`:
 
 ring_buffer_record_is_on
 ========================
 
-.. c:function:: int ring_buffer_record_is_on (struct ring_buffer *buffer)
+.. c:function:: int ring_buffer_record_is_on(struct ring_buffer *buffer)
 
     return true if the ring buffer can write
 
     :param struct ring_buffer \*buffer:
         The ring buffer to see if write is enabled
-
-
 
 .. _`ring_buffer_record_is_on.description`:
 
@@ -553,14 +472,12 @@ Description
 
 Returns true if the ring buffer is in a state that it accepts writes.
 
-
-
 .. _`ring_buffer_record_disable_cpu`:
 
 ring_buffer_record_disable_cpu
 ==============================
 
-.. c:function:: void ring_buffer_record_disable_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: void ring_buffer_record_disable_cpu(struct ring_buffer *buffer, int cpu)
 
     stop all writes into the cpu_buffer
 
@@ -570,8 +487,6 @@ ring_buffer_record_disable_cpu
     :param int cpu:
         The CPU buffer to stop
 
-
-
 .. _`ring_buffer_record_disable_cpu.description`:
 
 Description
@@ -580,16 +495,14 @@ Description
 This prevents all writes to the buffer. Any attempt to write
 to the buffer after this will fail and return NULL.
 
-The caller should call :c:func:`synchronize_sched` after this.
-
-
+The caller should call \ :c:func:`synchronize_sched`\  after this.
 
 .. _`ring_buffer_record_enable_cpu`:
 
 ring_buffer_record_enable_cpu
 =============================
 
-.. c:function:: void ring_buffer_record_enable_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: void ring_buffer_record_enable_cpu(struct ring_buffer *buffer, int cpu)
 
     enable writes to the buffer
 
@@ -599,8 +512,6 @@ ring_buffer_record_enable_cpu
     :param int cpu:
         The CPU to enable.
 
-
-
 .. _`ring_buffer_record_enable_cpu.description`:
 
 Description
@@ -609,14 +520,12 @@ Description
 Note, multiple disables will need the same number of enables
 to truly enable the writing (much like preempt_disable).
 
-
-
 .. _`ring_buffer_oldest_event_ts`:
 
 ring_buffer_oldest_event_ts
 ===========================
 
-.. c:function:: u64 ring_buffer_oldest_event_ts (struct ring_buffer *buffer, int cpu)
+.. c:function:: u64 ring_buffer_oldest_event_ts(struct ring_buffer *buffer, int cpu)
 
     get the oldest event timestamp from the buffer
 
@@ -626,14 +535,12 @@ ring_buffer_oldest_event_ts
     :param int cpu:
         The per CPU buffer to read from.
 
-
-
 .. _`ring_buffer_bytes_cpu`:
 
 ring_buffer_bytes_cpu
 =====================
 
-.. c:function:: unsigned long ring_buffer_bytes_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_bytes_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of bytes consumed in a cpu buffer
 
@@ -643,14 +550,12 @@ ring_buffer_bytes_cpu
     :param int cpu:
         The per CPU buffer to read from.
 
-
-
 .. _`ring_buffer_entries_cpu`:
 
 ring_buffer_entries_cpu
 =======================
 
-.. c:function:: unsigned long ring_buffer_entries_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_entries_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of entries in a cpu buffer
 
@@ -660,14 +565,12 @@ ring_buffer_entries_cpu
     :param int cpu:
         The per CPU buffer to get the entries from.
 
-
-
 .. _`ring_buffer_overrun_cpu`:
 
 ring_buffer_overrun_cpu
 =======================
 
-.. c:function:: unsigned long ring_buffer_overrun_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_overrun_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of overruns caused by the ring buffer wrapping around (only if RB_FL_OVERWRITE is on).
 
@@ -677,14 +580,12 @@ ring_buffer_overrun_cpu
     :param int cpu:
         The per CPU buffer to get the number of overruns from
 
-
-
 .. _`ring_buffer_commit_overrun_cpu`:
 
 ring_buffer_commit_overrun_cpu
 ==============================
 
-.. c:function:: unsigned long ring_buffer_commit_overrun_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_commit_overrun_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of overruns caused by commits failing due to the buffer wrapping around while there are uncommitted events, such as during an interrupt storm.
 
@@ -694,14 +595,12 @@ ring_buffer_commit_overrun_cpu
     :param int cpu:
         The per CPU buffer to get the number of overruns from
 
-
-
 .. _`ring_buffer_dropped_events_cpu`:
 
 ring_buffer_dropped_events_cpu
 ==============================
 
-.. c:function:: unsigned long ring_buffer_dropped_events_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_dropped_events_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of dropped events caused by the ring buffer filling up (only if RB_FL_OVERWRITE is off).
 
@@ -711,14 +610,12 @@ ring_buffer_dropped_events_cpu
     :param int cpu:
         The per CPU buffer to get the number of overruns from
 
-
-
 .. _`ring_buffer_read_events_cpu`:
 
 ring_buffer_read_events_cpu
 ===========================
 
-.. c:function:: unsigned long ring_buffer_read_events_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_read_events_cpu(struct ring_buffer *buffer, int cpu)
 
     get the number of events successfully read
 
@@ -728,21 +625,17 @@ ring_buffer_read_events_cpu
     :param int cpu:
         The per CPU buffer to get the number of events read
 
-
-
 .. _`ring_buffer_entries`:
 
 ring_buffer_entries
 ===================
 
-.. c:function:: unsigned long ring_buffer_entries (struct ring_buffer *buffer)
+.. c:function:: unsigned long ring_buffer_entries(struct ring_buffer *buffer)
 
     get the number of entries in a buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer
-
-
 
 .. _`ring_buffer_entries.description`:
 
@@ -752,21 +645,17 @@ Description
 Returns the total number of entries in the ring buffer
 (all CPU entries)
 
-
-
 .. _`ring_buffer_overruns`:
 
 ring_buffer_overruns
 ====================
 
-.. c:function:: unsigned long ring_buffer_overruns (struct ring_buffer *buffer)
+.. c:function:: unsigned long ring_buffer_overruns(struct ring_buffer *buffer)
 
     get the number of overruns in buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer
-
-
 
 .. _`ring_buffer_overruns.description`:
 
@@ -776,21 +665,17 @@ Description
 Returns the total number of overruns in the ring buffer
 (all CPU entries)
 
-
-
 .. _`ring_buffer_iter_reset`:
 
 ring_buffer_iter_reset
 ======================
 
-.. c:function:: void ring_buffer_iter_reset (struct ring_buffer_iter *iter)
+.. c:function:: void ring_buffer_iter_reset(struct ring_buffer_iter *iter)
 
     reset an iterator
 
     :param struct ring_buffer_iter \*iter:
         The iterator to reset
-
-
 
 .. _`ring_buffer_iter_reset.description`:
 
@@ -800,28 +685,24 @@ Description
 Resets the iterator, so that it will start from the beginning
 again.
 
-
-
 .. _`ring_buffer_iter_empty`:
 
 ring_buffer_iter_empty
 ======================
 
-.. c:function:: int ring_buffer_iter_empty (struct ring_buffer_iter *iter)
+.. c:function:: int ring_buffer_iter_empty(struct ring_buffer_iter *iter)
 
     check if an iterator has no more to read
 
     :param struct ring_buffer_iter \*iter:
         The iterator to check
 
-
-
 .. _`ring_buffer_peek`:
 
 ring_buffer_peek
 ================
 
-.. c:function:: struct ring_buffer_event *ring_buffer_peek (struct ring_buffer *buffer, int cpu, u64 *ts, unsigned long *lost_events)
+.. c:function:: struct ring_buffer_event *ring_buffer_peek(struct ring_buffer *buffer, int cpu, u64 *ts, unsigned long *lost_events)
 
     peek at the next event to be read
 
@@ -837,8 +718,6 @@ ring_buffer_peek
     :param unsigned long \*lost_events:
         a variable to store if events were lost (may be NULL)
 
-
-
 .. _`ring_buffer_peek.description`:
 
 Description
@@ -847,14 +726,12 @@ Description
 This will return the event that will be read next, but does
 not consume the data.
 
-
-
 .. _`ring_buffer_iter_peek`:
 
 ring_buffer_iter_peek
 =====================
 
-.. c:function:: struct ring_buffer_event *ring_buffer_iter_peek (struct ring_buffer_iter *iter, u64 *ts)
+.. c:function:: struct ring_buffer_event *ring_buffer_iter_peek(struct ring_buffer_iter *iter, u64 *ts)
 
     peek at the next event to be read
 
@@ -864,8 +741,6 @@ ring_buffer_iter_peek
     :param u64 \*ts:
         The timestamp counter of this event.
 
-
-
 .. _`ring_buffer_iter_peek.description`:
 
 Description
@@ -874,14 +749,12 @@ Description
 This will return the event that will be read next, but does
 not increment the iterator.
 
-
-
 .. _`ring_buffer_consume`:
 
 ring_buffer_consume
 ===================
 
-.. c:function:: struct ring_buffer_event *ring_buffer_consume (struct ring_buffer *buffer, int cpu, u64 *ts, unsigned long *lost_events)
+.. c:function:: struct ring_buffer_event *ring_buffer_consume(struct ring_buffer *buffer, int cpu, u64 *ts, unsigned long *lost_events)
 
     return an event and consume it
 
@@ -897,8 +770,6 @@ ring_buffer_consume
     :param unsigned long \*lost_events:
         a variable to store if events were lost (may be NULL)
 
-
-
 .. _`ring_buffer_consume.description`:
 
 Description
@@ -908,14 +779,12 @@ Returns the next event in the ring buffer, and that event is consumed.
 Meaning, that sequential reads will keep returning a different event,
 and eventually empty the ring buffer if the producer is slower.
 
-
-
 .. _`ring_buffer_read_prepare`:
 
 ring_buffer_read_prepare
 ========================
 
-.. c:function:: struct ring_buffer_iter *ring_buffer_read_prepare (struct ring_buffer *buffer, int cpu)
+.. c:function:: struct ring_buffer_iter *ring_buffer_read_prepare(struct ring_buffer *buffer, int cpu)
 
     Prepare for a non consuming read of the buffer
 
@@ -924,8 +793,6 @@ ring_buffer_read_prepare
 
     :param int cpu:
         The cpu buffer to iterate over
-
-
 
 .. _`ring_buffer_read_prepare.description`:
 
@@ -947,47 +814,38 @@ for real.
 
 This overall must be paired with ring_buffer_read_finish.
 
-
-
 .. _`ring_buffer_read_prepare_sync`:
 
 ring_buffer_read_prepare_sync
 =============================
 
-.. c:function:: void ring_buffer_read_prepare_sync ( void)
+.. c:function:: void ring_buffer_read_prepare_sync( void)
 
     Synchronize a set of prepare calls
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`ring_buffer_read_prepare_sync.description`:
 
 Description
 -----------
 
-
 All previously invoked ring_buffer_read_prepare calls to prepare
 iterators will be synchronized.  Afterwards, read_buffer_read_start
 calls on those iterators are allowed.
-
-
 
 .. _`ring_buffer_read_start`:
 
 ring_buffer_read_start
 ======================
 
-.. c:function:: void ring_buffer_read_start (struct ring_buffer_iter *iter)
+.. c:function:: void ring_buffer_read_start(struct ring_buffer_iter *iter)
 
     start a non consuming read of the buffer
 
     :param struct ring_buffer_iter \*iter:
         The iterator returned by ring_buffer_read_prepare
-
-
 
 .. _`ring_buffer_read_start.description`:
 
@@ -1001,21 +859,17 @@ performed.
 
 Must be paired with ring_buffer_read_finish.
 
-
-
 .. _`ring_buffer_read_finish`:
 
 ring_buffer_read_finish
 =======================
 
-.. c:function:: void ring_buffer_read_finish (struct ring_buffer_iter *iter)
+.. c:function:: void ring_buffer_read_finish(struct ring_buffer_iter *iter)
 
     finish reading the iterator of the buffer
 
     :param struct ring_buffer_iter \*iter:
         The iterator retrieved by ring_buffer_start
-
-
 
 .. _`ring_buffer_read_finish.description`:
 
@@ -1025,14 +879,12 @@ Description
 This re-enables the recording to the buffer, and frees the
 iterator.
 
-
-
 .. _`ring_buffer_read`:
 
 ring_buffer_read
 ================
 
-.. c:function:: struct ring_buffer_event *ring_buffer_read (struct ring_buffer_iter *iter, u64 *ts)
+.. c:function:: struct ring_buffer_event *ring_buffer_read(struct ring_buffer_iter *iter, u64 *ts)
 
     read the next item in the ring buffer by the iterator
 
@@ -1042,8 +894,6 @@ ring_buffer_read
     :param u64 \*ts:
         The time stamp of the event read.
 
-
-
 .. _`ring_buffer_read.description`:
 
 Description
@@ -1051,14 +901,12 @@ Description
 
 This reads the next event in the ring buffer and increments the iterator.
 
-
-
 .. _`ring_buffer_size`:
 
 ring_buffer_size
 ================
 
-.. c:function:: unsigned long ring_buffer_size (struct ring_buffer *buffer, int cpu)
+.. c:function:: unsigned long ring_buffer_size(struct ring_buffer *buffer, int cpu)
 
     return the size of the ring buffer (in bytes)
 
@@ -1066,17 +914,14 @@ ring_buffer_size
         The ring buffer.
 
     :param int cpu:
-
         *undescribed*
-
-
 
 .. _`ring_buffer_reset_cpu`:
 
 ring_buffer_reset_cpu
 =====================
 
-.. c:function:: void ring_buffer_reset_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: void ring_buffer_reset_cpu(struct ring_buffer *buffer, int cpu)
 
     reset a ring buffer per CPU buffer
 
@@ -1086,42 +931,36 @@ ring_buffer_reset_cpu
     :param int cpu:
         The CPU buffer to be reset
 
-
-
 .. _`ring_buffer_reset`:
 
 ring_buffer_reset
 =================
 
-.. c:function:: void ring_buffer_reset (struct ring_buffer *buffer)
+.. c:function:: void ring_buffer_reset(struct ring_buffer *buffer)
 
     reset a ring buffer
 
     :param struct ring_buffer \*buffer:
         The ring buffer to reset all cpu buffers
 
-
-
 .. _`ring_buffer_empty`:
 
 ring_buffer_empty
 =================
 
-.. c:function:: bool ring_buffer_empty (struct ring_buffer *buffer)
+.. c:function:: bool ring_buffer_empty(struct ring_buffer *buffer)
 
     is the ring buffer empty?
 
     :param struct ring_buffer \*buffer:
         The ring buffer to test
 
-
-
 .. _`ring_buffer_empty_cpu`:
 
 ring_buffer_empty_cpu
 =====================
 
-.. c:function:: bool ring_buffer_empty_cpu (struct ring_buffer *buffer, int cpu)
+.. c:function:: bool ring_buffer_empty_cpu(struct ring_buffer *buffer, int cpu)
 
     is a cpu buffer of a ring buffer empty?
 
@@ -1131,14 +970,12 @@ ring_buffer_empty_cpu
     :param int cpu:
         The CPU buffer to test
 
-
-
 .. _`ring_buffer_swap_cpu`:
 
 ring_buffer_swap_cpu
 ====================
 
-.. c:function:: int ring_buffer_swap_cpu (struct ring_buffer *buffer_a, struct ring_buffer *buffer_b, int cpu)
+.. c:function:: int ring_buffer_swap_cpu(struct ring_buffer *buffer_a, struct ring_buffer *buffer_b, int cpu)
 
     swap a CPU buffer between two ring buffers
 
@@ -1149,10 +986,7 @@ ring_buffer_swap_cpu
         The other buffer to swap with
 
     :param int cpu:
-
         *undescribed*
-
-
 
 .. _`ring_buffer_swap_cpu.description`:
 
@@ -1164,14 +998,12 @@ of a CPU buffer and has another back up buffer lying around.
 it is expected that the tracer handles the cpu buffer not being
 used at the moment.
 
-
-
 .. _`ring_buffer_alloc_read_page`:
 
 ring_buffer_alloc_read_page
 ===========================
 
-.. c:function:: void *ring_buffer_alloc_read_page (struct ring_buffer *buffer, int cpu)
+.. c:function:: void *ring_buffer_alloc_read_page(struct ring_buffer *buffer, int cpu)
 
     allocate a page to read from buffer
 
@@ -1180,8 +1012,6 @@ ring_buffer_alloc_read_page
 
     :param int cpu:
         the cpu buffer to allocate.
-
-
 
 .. _`ring_buffer_alloc_read_page.description`:
 
@@ -1196,23 +1026,19 @@ needs to get pages from the ring buffer, it passes the result
 of this function into ring_buffer_read_page, which will swap
 the page that was allocated, with the read page of the buffer.
 
+.. _`ring_buffer_alloc_read_page.return`:
 
-
-.. _`ring_buffer_alloc_read_page.returns`:
-
-Returns
--------
+Return
+------
 
 The page allocated, or NULL on error.
-
-
 
 .. _`ring_buffer_free_read_page`:
 
 ring_buffer_free_read_page
 ==========================
 
-.. c:function:: void ring_buffer_free_read_page (struct ring_buffer *buffer, void *data)
+.. c:function:: void ring_buffer_free_read_page(struct ring_buffer *buffer, void *data)
 
     free an allocated read page
 
@@ -1222,8 +1048,6 @@ ring_buffer_free_read_page
     :param void \*data:
         the page to free
 
-
-
 .. _`ring_buffer_free_read_page.description`:
 
 Description
@@ -1231,14 +1055,12 @@ Description
 
 Free a page allocated from ring_buffer_alloc_read_page.
 
-
-
 .. _`ring_buffer_read_page`:
 
 ring_buffer_read_page
 =====================
 
-.. c:function:: int ring_buffer_read_page (struct ring_buffer *buffer, void **data_page, size_t len, int cpu, int full)
+.. c:function:: int ring_buffer_read_page(struct ring_buffer *buffer, void **data_page, size_t len, int cpu, int full)
 
     extract a page from the ring buffer
 
@@ -1257,38 +1079,30 @@ ring_buffer_read_page
     :param int full:
         should the extraction only happen when the page is full.
 
-
-
 .. _`ring_buffer_read_page.description`:
 
 Description
 -----------
 
 This function will pull out a page from the ring buffer and consume it.
-``data_page`` must be the address of the variable that was returned
+\ ``data_page``\  must be the address of the variable that was returned
 from ring_buffer_alloc_read_page. This is because the page might be used
 to swap with a page in the ring buffer.
-
-
 
 .. _`ring_buffer_read_page.for-example`:
 
 for example
 -----------
 
-.. code-block:: c
+rpage = ring_buffer_alloc_read_page(buffer, cpu);
+if (!rpage)
+return error;
+ret = ring_buffer_read_page(buffer, \ :c:type:`struct rpage <rpage>`, len, cpu, 0);
+if (ret >= 0)
+process_page(rpage, ret);
 
-	rpage = ring_buffer_alloc_read_page(buffer, cpu);
-	if (!rpage)
-		return error;
-	ret = ring_buffer_read_page(buffer, :c:type:`struct rpage <rpage>`, len, cpu, 0);
-	if (ret >= 0)
-		process_page(rpage, ret);
-
-When ``full`` is set, the function will not return true unless
+When \ ``full``\  is set, the function will not return true unless
 the writer is off the reader page.
-
-
 
 .. _`ring_buffer_read_page.note`:
 
@@ -1300,13 +1114,13 @@ The ring buffer can be used anywhere in the kernel and can not
 blindly call wake_up. The layer that uses the ring buffer must be
 responsible for that.
 
+.. _`ring_buffer_read_page.return`:
 
-
-.. _`ring_buffer_read_page.returns`:
-
-Returns
--------
+Return
+------
 
 >=0 if data has been transferred, returns the offset of consumed data.
 <0 if no data has been transferred.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-cdc-wdm.c
-=========
-
+.. src-file: drivers/usb/class/cdc-wdm.c
 
 .. _`usb_cdc_wdm_register`:
 
 usb_cdc_wdm_register
 ====================
 
-.. c:function:: struct usb_driver *usb_cdc_wdm_register (struct usb_interface *intf, struct usb_endpoint_descriptor *ep, int bufsize, int (*manage_power) (struct usb_interface *, int)
+.. c:function:: struct usb_driver *usb_cdc_wdm_register(struct usb_interface *intf, struct usb_endpoint_descriptor *ep, int bufsize, int (*) manage_power (struct usb_interface *, int)
 
     register a WDM subdriver
 
@@ -23,11 +19,8 @@ usb_cdc_wdm_register
     :param int bufsize:
         maximum message size to support for read/write
 
-    :param int (\*manage_power) (struct usb_interface \*, int):
-
+    :param (int (\*) manage_power (struct usb_interface \*, int):
         *undescribed*
-
-
 
 .. _`usb_cdc_wdm_register.description`:
 
@@ -46,4 +39,6 @@ The return value is a pointer to the subdriver's struct usb_driver.
 The registering driver is responsible for calling this subdriver's
 disconnect, suspend, resume, pre_reset and post_reset methods from
 its own.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-apds990x.h
-==========
-
+.. src-file: include/linux/i2c/apds990x.h
 
 .. _`apds990x_platform_data`:
 
 struct apds990x_platform_data
 =============================
 
-.. c:type:: apds990x_platform_data
+.. c:type:: struct apds990x_platform_data
 
     platform data for apsd990x.c driver
-
 
 .. _`apds990x_platform_data.definition`:
 
@@ -22,33 +17,33 @@ Definition
 
 .. code-block:: c
 
-  struct apds990x_platform_data {
-    struct apds990x_chip_factors cf;
-    u8 ppcount;
-    int (* setup_resources) (void);
-    int (* release_resources) (void);
-  };
-
+    struct apds990x_platform_data {
+        struct apds990x_chip_factors cf;
+        u8 pdrive;
+        u8 ppcount;
+        int (* setup_resources) (void);
+        int (* release_resources) (void);
+    }
 
 .. _`apds990x_platform_data.members`:
 
 Members
 -------
 
-:``cf``:
+cf
     chip factor data
 
-:``ppcount``:
+pdrive
+    *undescribed*
+
+ppcount
     number of IR pulses used for proximity estimation
 
-:``setup_resources``:
+setup_resources
     interrupt line setup call back function
 
-:``release_resources``:
+release_resources
     interrupt line release call back function
-
-
-
 
 .. _`apds990x_platform_data.description`:
 
@@ -57,4 +52,6 @@ Description
 
 Proximity detection result depends heavily on correct ppcount, pdrive
 and cover window.
+
+.. This file was automatic generated / don't edit.
 

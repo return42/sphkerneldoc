@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-tc3589x.c
-=========
-
+.. src-file: drivers/mfd/tc3589x.c
 
 .. _`tc3589x_version`:
 
 enum tc3589x_version
 ====================
 
-.. c:type:: tc3589x_version
+.. c:type:: enum tc3589x_version
 
     indicates the TC3589x version
-
 
 .. _`tc3589x_version.definition`:
 
@@ -23,49 +18,47 @@ Definition
 .. code-block:: c
 
     enum tc3589x_version {
-      TC3589X_TC35890,
-      TC3589X_TC35892,
-      TC3589X_TC35893,
-      TC3589X_TC35894,
-      TC3589X_TC35895,
-      TC3589X_TC35896,
-      TC3589X_UNKNOWN
+        TC3589X_TC35890,
+        TC3589X_TC35892,
+        TC3589X_TC35893,
+        TC3589X_TC35894,
+        TC3589X_TC35895,
+        TC3589X_TC35896,
+        TC3589X_UNKNOWN
     };
-
 
 .. _`tc3589x_version.constants`:
 
 Constants
 ---------
 
-:``TC3589X_TC35890``:
--- undescribed --
+TC3589X_TC35890
+    *undescribed*
 
-:``TC3589X_TC35892``:
--- undescribed --
+TC3589X_TC35892
+    *undescribed*
 
-:``TC3589X_TC35893``:
--- undescribed --
+TC3589X_TC35893
+    *undescribed*
 
-:``TC3589X_TC35894``:
--- undescribed --
+TC3589X_TC35894
+    *undescribed*
 
-:``TC3589X_TC35895``:
--- undescribed --
+TC3589X_TC35895
+    *undescribed*
 
-:``TC3589X_TC35896``:
--- undescribed --
+TC3589X_TC35896
+    *undescribed*
 
-:``TC3589X_UNKNOWN``:
--- undescribed --
-
+TC3589X_UNKNOWN
+    *undescribed*
 
 .. _`tc3589x_reg_read`:
 
 tc3589x_reg_read
 ================
 
-.. c:function:: int tc3589x_reg_read (struct tc3589x *tc3589x, u8 reg)
+.. c:function:: int tc3589x_reg_read(struct tc3589x *tc3589x, u8 reg)
 
     read a single TC3589x register
 
@@ -75,14 +68,12 @@ tc3589x_reg_read
     :param u8 reg:
         Register to read
 
-
-
 .. _`tc3589x_reg_write`:
 
 tc3589x_reg_write
 =================
 
-.. c:function:: int tc3589x_reg_write (struct tc3589x *tc3589x, u8 reg, u8 data)
+.. c:function:: int tc3589x_reg_write(struct tc3589x *tc3589x, u8 reg, u8 data)
 
     write a single TC3589x register
 
@@ -95,14 +86,12 @@ tc3589x_reg_write
     :param u8 data:
         Value to write
 
-
-
 .. _`tc3589x_block_read`:
 
 tc3589x_block_read
 ==================
 
-.. c:function:: int tc3589x_block_read (struct tc3589x *tc3589x, u8 reg, u8 length, u8 *values)
+.. c:function:: int tc3589x_block_read(struct tc3589x *tc3589x, u8 reg, u8 length, u8 *values)
 
     read multiple TC3589x registers
 
@@ -118,14 +107,12 @@ tc3589x_block_read
     :param u8 \*values:
         Buffer to write to
 
-
-
 .. _`tc3589x_block_write`:
 
 tc3589x_block_write
 ===================
 
-.. c:function:: int tc3589x_block_write (struct tc3589x *tc3589x, u8 reg, u8 length, const u8 *values)
+.. c:function:: int tc3589x_block_write(struct tc3589x *tc3589x, u8 reg, u8 length, const u8 *values)
 
     write multiple TC3589x registers
 
@@ -141,14 +128,12 @@ tc3589x_block_write
     :param const u8 \*values:
         Values to write
 
-
-
 .. _`tc3589x_set_bits`:
 
 tc3589x_set_bits
 ================
 
-.. c:function:: int tc3589x_set_bits (struct tc3589x *tc3589x, u8 reg, u8 mask, u8 val)
+.. c:function:: int tc3589x_set_bits(struct tc3589x *tc3589x, u8 reg, u8 mask, u8 val)
 
     set the value of a bitfield in a TC3589x register
 
@@ -162,6 +147,7 @@ tc3589x_set_bits
         Mask of bits to set
 
     :param u8 val:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

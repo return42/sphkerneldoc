@@ -7,5 +7,5 @@
 .. toctree::
    :maxdepth: 1
 
-   842_compress_c
-   842_decompress_c
+    842_compress_c
+    842_decompress_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-range.c
-=======
-
+.. src-file: drivers/staging/comedi/range.c
 
 .. _`comedi_check_chanlist`:
 
 comedi_check_chanlist
 =====================
 
-.. c:function:: int comedi_check_chanlist (struct comedi_subdevice *s, int n, unsigned int *chanlist)
+.. c:function:: int comedi_check_chanlist(struct comedi_subdevice *s, int n, unsigned int *chanlist)
 
     Validate each element in a chanlist.
 
@@ -22,8 +18,6 @@ comedi_check_chanlist
 
     :param unsigned int \*chanlist:
         the chanlist to validate
-
-
 
 .. _`comedi_check_chanlist.description`:
 
@@ -38,13 +32,13 @@ the comedi subdevice.  It does not check whether the analog reference
 type and the flags are supported.  Drivers that care should check those
 themselves.
 
-
-
 .. _`comedi_check_chanlist.return`:
 
 Return
 ------
 
-``0`` if all ``chanlist`` elements are valid (success),
-``-EINVAL`` if one or more elements are invalid.
+\ ``0``\  if all \ ``chanlist``\  elements are valid (success),
+\ ``-EINVAL``\  if one or more elements are invalid.
+
+.. This file was automatic generated / don't edit.
 

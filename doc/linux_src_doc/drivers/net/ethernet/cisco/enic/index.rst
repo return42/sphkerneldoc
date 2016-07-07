@@ -7,4 +7,4 @@ enic
 .. toctree::
    :maxdepth: 1
 
-   enic_api_c
+    enic_api_c

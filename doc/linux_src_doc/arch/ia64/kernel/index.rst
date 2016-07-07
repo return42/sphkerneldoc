@@ -7,5 +7,7 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   numa_c
-   setup_c
+    crash_dump_c
+    mca_drv_c
+    numa_c
+    setup_c

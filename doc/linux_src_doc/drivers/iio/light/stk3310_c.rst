@@ -1,0 +1,25 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/stk3310.c
+
+.. _`stk3310_reg_state`:
+
+STK3310_REG_STATE
+=================
+
+.. c:function::  STK3310_REG_STATE()
+
+.. _`stk3310_reg_state.description`:
+
+Description
+-----------
+
+Copyright (c) 2015, Intel Corporation.
+
+This file is subject to the terms and conditions of version 2 of
+the GNU General Public License. See the file COPYING in the main
+directory of this archive for more details.
+
+IIO driver for STK3310/STK3311. 7-bit I2C address: 0x48.
+
+.. This file was automatic generated / don't edit.
+

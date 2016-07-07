@@ -7,6 +7,5 @@ dt-bindings
 .. toctree::
    :maxdepth: 1
 
-   dma/index
-   power/index
-   reset/index
+    dma/index
+    power/index

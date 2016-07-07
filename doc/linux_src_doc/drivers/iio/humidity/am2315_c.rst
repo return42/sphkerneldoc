@@ -1,0 +1,25 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/humidity/am2315.c
+
+.. _`am2315_reg_hum_msb`:
+
+AM2315_REG_HUM_MSB
+==================
+
+.. c:function::  AM2315_REG_HUM_MSB()
+
+.. _`am2315_reg_hum_msb.description`:
+
+Description
+-----------
+
+Copyright (c) 2016, Intel Corporation.
+
+This file is subject to the terms and conditions of version 2 of
+the GNU General Public License. See the file COPYING in the main
+directory of this archive for more details.
+
+7-bit I2C address: 0x5C.
+
+.. This file was automatic generated / don't edit.
+

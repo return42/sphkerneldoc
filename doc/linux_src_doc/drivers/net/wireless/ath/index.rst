@@ -7,8 +7,15 @@ ath
 .. toctree::
    :maxdepth: 1
 
-   dfs_pattern_detector_c
-   hw_c
-   regd_c
-   ath10k/index
-   ath9k/index
+    ath10k/index
+    ath5k/index
+    ath9k/index
+    wcn36xx/index
+    wil6210/index
+    ath_h
+    dfs_pattern_detector_c
+    dfs_pattern_detector_h
+    dfs_pri_detector_c
+    dfs_pri_detector_h
+    hw_c
+    regd_c

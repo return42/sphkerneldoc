@@ -7,5 +7,6 @@ versatile
 .. toctree::
    :maxdepth: 1
 
-   clk-icst_c
-   clk-impd1_c
+    clk-icst_c
+    clk-icst_h
+    clk-impd1_c

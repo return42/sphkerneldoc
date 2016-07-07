@@ -1,28 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-bug.h
-=====
-
+.. src-file: include/linux/bug.h
 
 .. _`build_bug_on_msg`:
 
 BUILD_BUG_ON_MSG
 ================
 
-.. c:function:: BUILD_BUG_ON_MSG ( cond,  msg)
+.. c:function::  BUILD_BUG_ON_MSG( cond,  msg)
 
     break compile if a condition is true & emit supplied error message.
 
-    :param cond:
-
+    :param  cond:
         *undescribed*
 
-    :param msg:
-
+    :param  msg:
         *undescribed*
-
-
 
 .. _`build_bug_on_msg.description`:
 
@@ -31,21 +23,17 @@ Description
 
 See BUILD_BUG_ON for description.
 
-
-
 .. _`build_bug_on`:
 
 BUILD_BUG_ON
 ============
 
-.. c:function:: BUILD_BUG_ON ( condition)
+.. c:function::  BUILD_BUG_ON( condition)
 
     break compile if a condition is true.
 
-    :param condition:
+    :param  condition:
         the condition which the compiler should know is false.
-
-
 
 .. _`build_bug_on.description`:
 
@@ -66,26 +54,26 @@ error on gcc 4.3 and later).  If for some reason, neither creates a
 compile-time error, we'll still have a link-time error, which is harder to
 track down.
 
-
-
 .. _`build_bug`:
 
 BUILD_BUG
 =========
 
-.. c:function:: BUILD_BUG ()
+.. c:function::  BUILD_BUG( void)
 
     break compile if used.
 
-
+    :param  void:
+        no arguments
 
 .. _`build_bug.description`:
 
 Description
 -----------
 
-
 If you have some code that you expect the compiler to eliminate at
 build time, you should use BUILD_BUG to detect if it is
 unexpectedly used.
+
+.. This file was automatic generated / don't edit.
 

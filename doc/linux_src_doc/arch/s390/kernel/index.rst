@@ -7,4 +7,5 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   dis_c
+    dis_c
+    ptrace_c

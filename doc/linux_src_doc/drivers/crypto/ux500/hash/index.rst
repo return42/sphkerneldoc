@@ -7,5 +7,5 @@ hash
 .. toctree::
    :maxdepth: 1
 
-   hash_alg_h
-   hash_core_c
+    hash_alg_h
+    hash_core_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-buffer_head.h
-=============
-
+.. src-file: include/linux/buffer_head.h
 
 .. _`__bread`:
 
 __bread
 =======
 
-.. c:function:: struct buffer_head *__bread (struct block_device *bdev, sector_t block, unsigned size)
+.. c:function:: struct buffer_head *__bread(struct block_device *bdev, sector_t block, unsigned size)
 
     reads a specified block and returns the bh
 
@@ -23,8 +19,6 @@ __bread
     :param unsigned size:
         size (in bytes) to read
 
-
-
 .. _`__bread.description`:
 
 Description
@@ -33,4 +27,6 @@ Description
 Reads a specified block, and returns buffer head that contains it.
 The page cache is allocated from movable area so that it can be migrated.
 It returns NULL if the block was unreadable.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,7 +7,8 @@ xen
 .. toctree::
    :maxdepth: 1
 
-   balloon_c
-   grant-table_c
-   events/index
-   xenbus/index
+    events/index
+    xen-pciback/index
+    xenbus/index
+    balloon_c
+    grant-table_c

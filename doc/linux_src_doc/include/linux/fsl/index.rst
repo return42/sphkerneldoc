@@ -7,5 +7,4 @@ fsl
 .. toctree::
    :maxdepth: 1
 
-   guts_h
-   bestcomm/index
+    bestcomm/index

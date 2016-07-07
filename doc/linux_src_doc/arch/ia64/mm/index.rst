@@ -7,4 +7,6 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   init_c
+    contig_c
+    discontig_c
+    init_c

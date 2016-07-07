@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-padata.h
-========
-
+.. src-file: include/linux/padata.h
 
 .. _`padata_priv`:
 
 struct padata_priv
 ==================
 
-.. c:type:: padata_priv
+.. c:type:: struct padata_priv
 
     Embedded to the users data structure.
-
 
 .. _`padata_priv.definition`:
 
@@ -22,50 +17,44 @@ Definition
 
 .. code-block:: c
 
-  struct padata_priv {
-    struct list_head list;
-    struct parallel_data * pd;
-    int cb_cpu;
-    int info;
-    void (* parallel) (struct padata_priv *padata);
-    void (* serial) (struct padata_priv *padata);
-  };
-
+    struct padata_priv {
+        struct list_head list;
+        struct parallel_data *pd;
+        int cb_cpu;
+        int info;
+        void (* parallel) (struct padata_priv *padata);
+        void (* serial) (struct padata_priv *padata);
+    }
 
 .. _`padata_priv.members`:
 
 Members
 -------
 
-:``list``:
+list
     List entry, to attach to the padata lists.
 
-:``pd``:
+pd
     Pointer to the internal control structure.
 
-:``cb_cpu``:
+cb_cpu
     Callback cpu for serializatioon.
 
-:``info``:
+info
     Used to pass information from the parallel to the serial function.
 
-:``parallel``:
+parallel
     Parallel execution function.
 
-:``serial``:
+serial
     Serial complete function.
-
-
-
 
 .. _`padata_list`:
 
 struct padata_list
 ==================
 
-.. c:type:: padata_list
-
-    
+.. c:type:: struct padata_list
 
 
 .. _`padata_list.definition`:
@@ -75,35 +64,30 @@ Definition
 
 .. code-block:: c
 
-  struct padata_list {
-    struct list_head list;
-    spinlock_t lock;
-  };
-
+    struct padata_list {
+        struct list_head list;
+        spinlock_t lock;
+    }
 
 .. _`padata_list.members`:
 
 Members
 -------
 
-:``list``:
+list
     List head.
 
-:``lock``:
+lock
     List lock.
-
-
-
 
 .. _`padata_serial_queue`:
 
 struct padata_serial_queue
 ==========================
 
-.. c:type:: padata_serial_queue
+.. c:type:: struct padata_serial_queue
 
     The percpu padata serial queue
-
 
 .. _`padata_serial_queue.definition`:
 
@@ -112,39 +96,34 @@ Definition
 
 .. code-block:: c
 
-  struct padata_serial_queue {
-    struct padata_list serial;
-    struct work_struct work;
-    struct parallel_data * pd;
-  };
-
+    struct padata_serial_queue {
+        struct padata_list serial;
+        struct work_struct work;
+        struct parallel_data *pd;
+    }
 
 .. _`padata_serial_queue.members`:
 
 Members
 -------
 
-:``serial``:
+serial
     List to wait for serialization after reordering.
 
-:``work``:
+work
     work struct for serialization.
 
-:``pd``:
+pd
     Backpointer to the internal control structure.
-
-
-
 
 .. _`padata_parallel_queue`:
 
 struct padata_parallel_queue
 ============================
 
-.. c:type:: padata_parallel_queue
+.. c:type:: struct padata_parallel_queue
 
     The percpu padata parallel queue
-
 
 .. _`padata_parallel_queue.definition`:
 
@@ -153,51 +132,46 @@ Definition
 
 .. code-block:: c
 
-  struct padata_parallel_queue {
-    struct padata_list parallel;
-    struct padata_list reorder;
-    struct parallel_data * pd;
-    struct work_struct work;
-    atomic_t num_obj;
-    int cpu_index;
-  };
-
+    struct padata_parallel_queue {
+        struct padata_list parallel;
+        struct padata_list reorder;
+        struct parallel_data *pd;
+        struct work_struct work;
+        atomic_t num_obj;
+        int cpu_index;
+    }
 
 .. _`padata_parallel_queue.members`:
 
 Members
 -------
 
-:``parallel``:
+parallel
     List to wait for parallelization.
 
-:``reorder``:
+reorder
     List to wait for reordering after parallel processing.
 
-:``pd``:
+pd
     Backpointer to the internal control structure.
 
-:``work``:
+work
     work struct for parallelization.
 
-:``num_obj``:
+num_obj
     Number of objects that are processed by this cpu.
 
-:``cpu_index``:
+cpu_index
     Index of the cpu.
-
-
-
 
 .. _`padata_cpumask`:
 
 struct padata_cpumask
 =====================
 
-.. c:type:: padata_cpumask
+.. c:type:: struct padata_cpumask
 
     The cpumasks for the parallel/serial workers
-
 
 .. _`padata_cpumask.definition`:
 
@@ -206,35 +180,30 @@ Definition
 
 .. code-block:: c
 
-  struct padata_cpumask {
-    cpumask_var_t pcpu;
-    cpumask_var_t cbcpu;
-  };
-
+    struct padata_cpumask {
+        cpumask_var_t pcpu;
+        cpumask_var_t cbcpu;
+    }
 
 .. _`padata_cpumask.members`:
 
 Members
 -------
 
-:``pcpu``:
+pcpu
     cpumask for the parallel workers.
 
-:``cbcpu``:
+cbcpu
     cpumask for the serial (callback) workers.
-
-
-
 
 .. _`parallel_data`:
 
 struct parallel_data
 ====================
 
-.. c:type:: parallel_data
+.. c:type:: struct parallel_data
 
     Internal control structure, covers everything that depends on the cpumask in use.
-
 
 .. _`parallel_data.definition`:
 
@@ -243,59 +212,62 @@ Definition
 
 .. code-block:: c
 
-  struct parallel_data {
-    struct padata_instance * pinst;
-    struct padata_parallel_queue __percpu * pqueue;
-    struct padata_serial_queue __percpu * squeue;
-    atomic_t reorder_objects;
-    atomic_t refcnt;
-    struct padata_cpumask cpumask;
-    unsigned int processed;
-    struct timer_list timer;
-  };
-
+    struct parallel_data {
+        struct padata_instance *pinst;
+        struct padata_parallel_queue __percpu *pqueue;
+        struct padata_serial_queue __percpu *squeue;
+        atomic_t reorder_objects;
+        atomic_t refcnt;
+        atomic_t seq_nr;
+        struct padata_cpumask cpumask;
+        spinlock_t lock ____cacheline_aligned;
+        unsigned int processed;
+        struct timer_list timer;
+    }
 
 .. _`parallel_data.members`:
 
 Members
 -------
 
-:``pinst``:
+pinst
     padata instance.
 
-:``pqueue``:
+pqueue
     percpu padata queues used for parallelization.
 
-:``squeue``:
+squeue
     percpu padata queues used for serialuzation.
 
-:``reorder_objects``:
+reorder_objects
     Number of objects waiting in the reorder queues.
 
-:``refcnt``:
+refcnt
     Number of objects holding a reference on this parallel_data.
 
-:``cpumask``:
+seq_nr
+    *undescribed*
+
+cpumask
     The cpumasks in use for parallel and serial workers.
 
-:``processed``:
+____cacheline_aligned
+    *undescribed*
+
+processed
     Number of already processed objects.
 
-:``timer``:
+timer
     Reorder timer.
-
-
-
 
 .. _`padata_instance`:
 
 struct padata_instance
 ======================
 
-.. c:type:: padata_instance
+.. c:type:: struct padata_instance
 
     The overall control structure.
-
 
 .. _`padata_instance.definition`:
 
@@ -304,50 +276,50 @@ Definition
 
 .. code-block:: c
 
-  struct padata_instance {
-    struct notifier_block cpu_notifier;
-    struct workqueue_struct * wq;
-    struct parallel_data * pd;
-    struct padata_cpumask cpumask;
-    struct blocking_notifier_head cpumask_change_notifier;
-    struct kobject kobj;
-    struct mutex lock;
-    u8 flags;
-    #define PADATA_INIT	1
-    #define PADATA_RESET	2
-    #define PADATA_INVALID	4
-  };
-
+    struct padata_instance {
+        struct notifier_block cpu_notifier;
+        struct workqueue_struct *wq;
+        struct parallel_data *pd;
+        struct padata_cpumask cpumask;
+        struct blocking_notifier_head cpumask_change_notifier;
+        struct kobject kobj;
+        struct mutex lock;
+        u8 flags;
+        #define PADATA_INIT 1
+        #define PADATA_RESET 2
+        #define PADATA_INVALID 4
+    }
 
 .. _`padata_instance.members`:
 
 Members
 -------
 
-:``cpu_notifier``:
+cpu_notifier
     cpu hotplug notifier.
 
-:``wq``:
+wq
     The workqueue in use.
 
-:``pd``:
+pd
     The internal control structure.
 
-:``cpumask``:
+cpumask
     User supplied cpumasks for parallel and serial works.
 
-:``cpumask_change_notifier``:
+cpumask_change_notifier
     Notifiers chain for user-defined notify
-    callbacks that will be called when either ``pcpu`` or ``cbcpu``
+    callbacks that will be called when either \ ``pcpu``\  or \ ``cbcpu``\ 
     or both cpumasks change.
 
-:``kobj``:
+kobj
     padata instance kernel object.
 
-:``lock``:
+lock
     padata instance lock.
 
-:``flags``:
+flags
     padata flags.
 
+.. This file was automatic generated / don't edit.
 

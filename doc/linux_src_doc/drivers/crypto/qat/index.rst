@@ -7,4 +7,4 @@ qat
 .. toctree::
    :maxdepth: 1
 
-   qat_common/index
+    qat_common/index

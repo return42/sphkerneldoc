@@ -7,5 +7,5 @@ ccp
 .. toctree::
    :maxdepth: 1
 
-   ccp-crypto-main_c
-   ccp-dev_c
+    ccp-crypto-main_c
+    ccp-dev_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===================
-of_display_timing.c
-===================
-
+.. src-file: drivers/video/of_display_timing.c
 
 .. _`parse_timing_property`:
 
 parse_timing_property
 =====================
 
-.. c:function:: int parse_timing_property (const struct device_node *np, const char *name, struct timing_entry *result)
+.. c:function:: int parse_timing_property(const struct device_node *np, const char *name, struct timing_entry *result)
 
     parse timing_entry from device_node
 
@@ -23,24 +19,20 @@ parse_timing_property
     :param struct timing_entry \*result:
         will be set to the return value
 
-
-
 .. _`parse_timing_property.description`:
 
-DESCRIPTION
+Description
 -----------
 
 Every display_timing can be specified with either just the typical value or
 a range consisting of min/typ/max. This function helps handling this
-
-
 
 .. _`of_parse_display_timing`:
 
 of_parse_display_timing
 =======================
 
-.. c:function:: int of_parse_display_timing (const struct device_node *np, struct display_timing *dt)
+.. c:function:: int of_parse_display_timing(const struct device_node *np, struct display_timing *dt)
 
     parse display_timing entry from device_node
 
@@ -48,17 +40,14 @@ of_parse_display_timing
         device_node with the properties
 
     :param struct display_timing \*dt:
-
         *undescribed*
-
-
 
 .. _`of_get_display_timing`:
 
 of_get_display_timing
 =====================
 
-.. c:function:: int of_get_display_timing (struct device_node *np, const char *name, struct display_timing *dt)
+.. c:function:: int of_get_display_timing(struct device_node *np, const char *name, struct display_timing *dt)
 
     parse a display_timing entry
 
@@ -71,31 +60,29 @@ of_get_display_timing
     :param struct display_timing \*dt:
         display_timing struct to fill
 
-
-
 .. _`of_get_display_timings`:
 
 of_get_display_timings
 ======================
 
-.. c:function:: struct display_timings *of_get_display_timings (struct device_node *np)
+.. c:function:: struct display_timings *of_get_display_timings(struct device_node *np)
 
     parse all display_timing entries from a device_node
 
     :param struct device_node \*np:
         device_node with the subnodes
 
-
-
 .. _`of_display_timings_exist`:
 
 of_display_timings_exist
 ========================
 
-.. c:function:: int of_display_timings_exist (struct device_node *np)
+.. c:function:: int of_display_timings_exist(struct device_node *np)
 
     check if a display-timings node is provided
 
     :param struct device_node \*np:
         device_node with the timing
+
+.. This file was automatic generated / don't edit.
 

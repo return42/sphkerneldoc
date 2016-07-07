@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-queue.c
-=======
-
+.. src-file: drivers/mmc/card/queue.c
 
 .. _`mmc_init_queue`:
 
 mmc_init_queue
 ==============
 
-.. c:function:: int mmc_init_queue (struct mmc_queue *mq, struct mmc_card *card, spinlock_t *lock, const char *subname)
+.. c:function:: int mmc_init_queue(struct mmc_queue *mq, struct mmc_card *card, spinlock_t *lock, const char *subname)
 
     initialise a queue structure.
 
@@ -26,8 +22,6 @@ mmc_init_queue
     :param const char \*subname:
         partition subname
 
-
-
 .. _`mmc_init_queue.description`:
 
 Description
@@ -35,21 +29,17 @@ Description
 
 Initialise a MMC card request queue.
 
-
-
 .. _`mmc_queue_suspend`:
 
 mmc_queue_suspend
 =================
 
-.. c:function:: void mmc_queue_suspend (struct mmc_queue *mq)
+.. c:function:: void mmc_queue_suspend(struct mmc_queue *mq)
 
     suspend a MMC request queue
 
     :param struct mmc_queue \*mq:
         MMC queue to suspend
-
-
 
 .. _`mmc_queue_suspend.description`:
 
@@ -60,17 +50,17 @@ Stop the block request queue, and wait for our thread to
 complete any outstanding requests.  This ensures that we
 won't suspend while a request is being processed.
 
-
-
 .. _`mmc_queue_resume`:
 
 mmc_queue_resume
 ================
 
-.. c:function:: void mmc_queue_resume (struct mmc_queue *mq)
+.. c:function:: void mmc_queue_resume(struct mmc_queue *mq)
 
     resume a previously suspended MMC request queue
 
     :param struct mmc_queue \*mq:
         MMC queue to resume
+
+.. This file was automatic generated / don't edit.
 

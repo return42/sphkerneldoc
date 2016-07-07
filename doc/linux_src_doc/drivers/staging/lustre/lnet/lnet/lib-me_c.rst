@@ -1,54 +1,40 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-lib-me.c
-========
-
+.. src-file: drivers/staging/lustre/lnet/lnet/lib-me.c
 
 .. _`lnetmeattach`:
 
 LNetMEAttach
 ============
 
-.. c:function:: int LNetMEAttach (unsigned int portal, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+.. c:function:: int LNetMEAttach(unsigned int portal, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+
+    ME is empty, i.e. not associated with a memory descriptor. \ :c:func:`LNetMDAttach`\  can be used to attach a MD to an empty ME.
 
     :param unsigned int portal:
-
         *undescribed*
 
     :param lnet_process_id_t match_id:
-
         *undescribed*
 
     :param __u64 match_bits:
-
         *undescribed*
 
     :param __u64 ignore_bits:
-
         *undescribed*
 
     :param lnet_unlink_t unlink:
-
         *undescribed*
 
     :param lnet_ins_pos_t pos:
-
         *undescribed*
 
     :param lnet_handle_me_t \*handle:
-
         *undescribed*
-
-
 
 .. _`lnetmeattach.description`:
 
 Description
 -----------
-
-ME is empty, i.e. not associated with a memory descriptor. :c:func:`LNetMDAttach`
-can be used to attach a MD to an empty ME.
 
 \param portal The portal table index where the ME should be attached.
 \param match_id Specifies the match criteria for the process ID of
@@ -68,101 +54,85 @@ Valid values are LNET_RETAIN and LNET_UNLINK.
 appended to the match list. Allowed constants: LNET_INS_BEFORE,
 LNET_INS_AFTER.
 \param handle On successful returns, a handle to the newly created ME
-object is saved here. This handle can be used later in :c:func:`LNetMEInsert`,
-:c:func:`LNetMEUnlink`, or :c:func:`LNetMDAttach` functions.
+object is saved here. This handle can be used later in \ :c:func:`LNetMEInsert`\ ,
+\ :c:func:`LNetMEUnlink`\ , or \ :c:func:`LNetMDAttach`\  functions.
 
 \retval 0       On success.
 \retval -EINVAL If \a portal is invalid.
 \retval -ENOMEM If new ME object cannot be allocated.
-
-
 
 .. _`lnetmeinsert`:
 
 LNetMEInsert
 ============
 
-.. c:function:: int LNetMEInsert (lnet_handle_me_t current_meh, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+.. c:function:: int LNetMEInsert(lnet_handle_me_t current_meh, lnet_process_id_t match_id, __u64 match_bits, __u64 ignore_bits, lnet_unlink_t unlink, lnet_ins_pos_t pos, lnet_handle_me_t *handle)
+
+    \a current_meh. The new ME is empty, i.e. not associated with a memory descriptor. \ :c:func:`LNetMDAttach`\  can be used to attach a MD to an empty ME.
 
     :param lnet_handle_me_t current_meh:
-
         *undescribed*
 
     :param lnet_process_id_t match_id:
-
         *undescribed*
 
     :param __u64 match_bits:
-
         *undescribed*
 
     :param __u64 ignore_bits:
-
         *undescribed*
 
     :param lnet_unlink_t unlink:
-
         *undescribed*
 
     :param lnet_ins_pos_t pos:
-
         *undescribed*
 
     :param lnet_handle_me_t \*handle:
-
         *undescribed*
-
-
 
 .. _`lnetmeinsert.description`:
 
 Description
 -----------
 
-\a current_meh. The new ME is empty, i.e. not associated with a memory
-descriptor. :c:func:`LNetMDAttach` can be used to attach a MD to an empty ME.
-
-This function is identical to :c:func:`LNetMEAttach` except for the position
+This function is identical to \ :c:func:`LNetMEAttach`\  except for the position
 where the new ME is inserted.
 
 \param current_meh A handle for a ME. The new ME will be inserted
 immediately before or immediately after this ME.
 \param match_id,match_bits,ignore_bits,unlink,pos,handle See the discussion
-for :c:func:`LNetMEAttach`.
+for \ :c:func:`LNetMEAttach`\ .
 
 \retval 0       On success.
 \retval -ENOMEM If new ME object cannot be allocated.
 \retval -ENOENT If \a current_meh does not point to a valid match entry.
-
-
 
 .. _`lnetmeunlink`:
 
 LNetMEUnlink
 ============
 
-.. c:function:: int LNetMEUnlink (lnet_handle_me_t meh)
+.. c:function:: int LNetMEUnlink(lnet_handle_me_t meh)
 
     :param lnet_handle_me_t meh:
-
         *undescribed*
-
-
 
 .. _`lnetmeunlink.description`:
 
 Description
 -----------
 
-
 This operation also releases any resources associated with the ME. If a
 memory descriptor is attached to the ME, then it will be unlinked as well
 and an unlink event will be generated. It is an error to use the ME handle
-after calling :c:func:`LNetMEUnlink`.
+after calling \ :c:func:`LNetMEUnlink`\ .
 
 \param meh A handle for the ME to be unlinked.
 
 \retval 0       On success.
 \retval -ENOENT If \a meh does not point to a valid ME.
-\see :c:func:`LNetMDUnlink` for the discussion on delivering unlink event.
+\see \ :c:func:`LNetMDUnlink`\  for the discussion on delivering unlink event.
+
+.. This file was automatic generated / don't edit.
 

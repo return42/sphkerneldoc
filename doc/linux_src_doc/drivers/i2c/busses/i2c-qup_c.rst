@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-i2c-qup.c
-=========
-
+.. src-file: drivers/i2c/busses/i2c-qup.c
 
 .. _`qup_i2c_wait_ready`:
 
 qup_i2c_wait_ready
 ==================
 
-.. c:function:: int qup_i2c_wait_ready (struct qup_i2c_dev *qup, int op, bool val, int len)
+.. c:function:: int qup_i2c_wait_ready(struct qup_i2c_dev *qup, int op, bool val, int len)
 
     wait for a give number of bytes in tx/rx path
 
@@ -25,4 +21,6 @@ qup_i2c_wait_ready
 
     :param int len:
         The length the bytes to be transferred
+
+.. This file was automatic generated / don't edit.
 

@@ -7,5 +7,5 @@ nfs_common
 .. toctree::
    :maxdepth: 1
 
-   grace_c
-   nfsacl_c
+    grace_c
+    nfsacl_c

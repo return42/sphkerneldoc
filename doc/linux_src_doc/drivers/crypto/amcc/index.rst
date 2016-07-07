@@ -7,9 +7,8 @@ amcc
 .. toctree::
    :maxdepth: 1
 
-   crypto4xx_alg_c
-   crypto4xx_core_c
-   crypto4xx_core_h
-   crypto4xx_reg_def_h
-   crypto4xx_sa_c
-   crypto4xx_sa_h
+    crypto4xx_alg_c
+    crypto4xx_core_c
+    crypto4xx_reg_def_h
+    crypto4xx_sa_c
+    crypto4xx_sa_h

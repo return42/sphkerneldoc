@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-hw.c
-====
-
+.. src-file: drivers/usb/host/whci/hw.c
 
 .. _`whc_do_gencmd`:
 
 whc_do_gencmd
 =============
 
-.. c:function:: int whc_do_gencmd (struct whc *whc, u32 cmd, u32 params, void *addr, size_t len)
+.. c:function:: int whc_do_gencmd(struct whc *whc, u32 cmd, u32 params, void *addr, size_t len)
 
     start a generic command via the WUSBGENCMDSTS register
 
@@ -29,14 +25,12 @@ whc_do_gencmd
     :param size_t len:
         length of the data (if any).
 
-
-
 .. _`whc_hw_error`:
 
 whc_hw_error
 ============
 
-.. c:function:: void whc_hw_error (struct whc *whc, const char *reason)
+.. c:function:: void whc_hw_error(struct whc *whc, const char *reason)
 
     recover from a hardware error
 
@@ -46,12 +40,12 @@ whc_hw_error
     :param const char \*reason:
         a description of the failure.
 
-
-
 .. _`whc_hw_error.description`:
 
 Description
 -----------
 
 Recover from broken hardware with a full reset.
+
+.. This file was automatic generated / don't edit.
 

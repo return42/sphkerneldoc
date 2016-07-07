@@ -7,4 +7,4 @@ bios
 .. toctree::
    :maxdepth: 1
 
-   init_c
+    init_c

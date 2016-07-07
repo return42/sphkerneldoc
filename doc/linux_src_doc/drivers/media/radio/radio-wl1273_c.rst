@@ -1,0 +1,76 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/radio/radio-wl1273.c
+
+.. _`wl1273_fm_upload_firmware_patch`:
+
+wl1273_fm_upload_firmware_patch
+===============================
+
+.. c:function:: int wl1273_fm_upload_firmware_patch(struct wl1273_device *radio)
+
+    Upload the firmware.
+
+    :param struct wl1273_device \*radio:
+        A pointer to the device struct.
+
+.. _`wl1273_fm_upload_firmware_patch.description`:
+
+Description
+-----------
+
+The firmware file consists of arrays of bytes where the first byte
+gives the array length. The first byte in the file gives the
+number of these arrays.
+
+.. _`wl1273_fm_get_tx_ctune`:
+
+wl1273_fm_get_tx_ctune
+======================
+
+.. c:function:: unsigned int wl1273_fm_get_tx_ctune(struct wl1273_device *radio)
+
+    Get the TX tuning capacitor value.
+
+    :param struct wl1273_device \*radio:
+        A pointer to the device struct.
+
+.. _`wl1273_fm_set_preemphasis`:
+
+wl1273_fm_set_preemphasis
+=========================
+
+.. c:function:: int wl1273_fm_set_preemphasis(struct wl1273_device *radio, unsigned int preemphasis)
+
+    Set the TX pre-emphasis value.
+
+    :param struct wl1273_device \*radio:
+        A pointer to the device struct.
+
+    :param unsigned int preemphasis:
+        The new pre-amphasis value.
+
+.. _`wl1273_fm_set_preemphasis.description`:
+
+Description
+-----------
+
+Possible pre-emphasis values are: V4L2_PREEMPHASIS_DISABLED,
+V4L2_PREEMPHASIS_50_uS and V4L2_PREEMPHASIS_75_uS.
+
+.. _`wl1273_fm_set_tx_power`:
+
+wl1273_fm_set_tx_power
+======================
+
+.. c:function:: int wl1273_fm_set_tx_power(struct wl1273_device *radio, u16 power)
+
+    Set the transmission power value.
+
+    :param struct wl1273_device \*radio:
+        *undescribed*
+
+    :param u16 power:
+        The new power value.
+
+.. This file was automatic generated / don't edit.
+

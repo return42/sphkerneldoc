@@ -1,24 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-uaccess.h
-=========
-
+.. src-file: include/linux/uaccess.h
 
 .. _`probe_kernel_address`:
 
 probe_kernel_address
 ====================
 
-.. c:function:: probe_kernel_address ( addr,  retval)
+.. c:function::  probe_kernel_address( addr,  retval)
 
-    :param addr:
+    safely attempt to read from a location
+
+    :param  addr:
         address to read from
 
-    :param retval:
+    :param  retval:
         read into this variable
-
-
 
 .. _`probe_kernel_address.description`:
 
@@ -26,4 +22,6 @@ Description
 -----------
 
 Returns 0 on success, or -EFAULT.
+
+.. This file was automatic generated / don't edit.
 

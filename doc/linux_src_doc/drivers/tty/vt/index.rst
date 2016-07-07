@@ -7,7 +7,8 @@ vt
 .. toctree::
    :maxdepth: 1
 
-   consolemap_c
-   keyboard_c
-   vt_c
-   vt_ioctl_c
+    consolemap_c
+    keyboard_c
+    selection_c
+    vt_c
+    vt_ioctl_c

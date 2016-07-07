@@ -7,6 +7,7 @@ buffer
 .. toctree::
    :maxdepth: 1
 
-   industrialio-buffer-dma_c
-   industrialio-buffer-dmaengine_c
-   kfifo_buf_c
+    industrialio-buffer-dma_c
+    industrialio-buffer-dmaengine_c
+    industrialio-triggered-buffer_c
+    kfifo_buf_c

@@ -7,4 +7,4 @@ mellanox
 .. toctree::
    :maxdepth: 1
 
-   mlx4/index
+    mlx4/index

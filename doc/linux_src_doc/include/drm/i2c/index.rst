@@ -7,5 +7,5 @@ i2c
 .. toctree::
    :maxdepth: 1
 
-   ch7006_h
-   sil164_h
+    ch7006_h
+    sil164_h

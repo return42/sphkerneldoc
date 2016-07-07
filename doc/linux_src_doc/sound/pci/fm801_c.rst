@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-fm801.c
-=======
-
+.. src-file: sound/pci/fm801.c
 
 .. _`fm801`:
 
 struct fm801
 ============
 
-.. c:type:: fm801
+.. c:type:: struct fm801
 
     describes FM801 chip
-
 
 .. _`fm801.definition`:
 
@@ -22,45 +17,150 @@ Definition
 
 .. code-block:: c
 
-  struct fm801 {
-    unsigned long port;
-    unsigned int multichannel:1;
-    unsigned int secondary:1;
-    unsigned char secondary_addr;
-    unsigned int tea575x_tuner;
-    unsigned short ply_ctrl;
-    unsigned short cap_ctrl;
-    #ifdef CONFIG_SND_FM801_TEA575X_BOOL
-    #endif
-    #ifdef CONFIG_PM_SLEEP
-    #endif
-  };
-
+    struct fm801 {
+        struct device *dev;
+        int irq;
+        unsigned long port;
+        unsigned int multichannel:1;
+        unsigned int secondary:1:1;
+        unsigned char secondary_addr;
+        unsigned int tea575x_tuner;
+        unsigned short ply_ctrl;
+        unsigned short cap_ctrl;
+        unsigned long ply_buffer;
+        unsigned int ply_buf;
+        unsigned int ply_count;
+        unsigned int ply_size;
+        unsigned int ply_pos;
+        unsigned long cap_buffer;
+        unsigned int cap_buf;
+        unsigned int cap_count;
+        unsigned int cap_size;
+        unsigned int cap_pos;
+        struct snd_ac97_bus *ac97_bus;
+        struct snd_ac97 *ac97;
+        struct snd_ac97 *ac97_sec;
+        struct snd_card *card;
+        struct snd_pcm *pcm;
+        struct snd_rawmidi *rmidi;
+        struct snd_pcm_substream *playback_substream;
+        struct snd_pcm_substream *capture_substream;
+        unsigned int p_dma_size;
+        unsigned int c_dma_size;
+        spinlock_t reg_lock;
+        struct snd_info_entry *proc_entry;
+        #ifdef CONFIG_SND_FM801_TEA575X_BOOL
+        struct v4l2_device v4l2_dev;
+        struct snd_tea575x tea;
+        #endif
+        #ifdef CONFIG_PM_SLEEP
+        u16 saved_regs[0x20];
+        #endif
+    }
 
 .. _`fm801.members`:
 
 Members
 -------
 
-:``port``:
+dev
+    *undescribed*
+
+irq
+    *undescribed*
+
+port
     I/O port number
 
-:``multichannel``:
+multichannel
     multichannel support
 
-:``secondary``:
+secondary
     secondary codec
 
-:``secondary_addr``:
+secondary_addr
     address of the secondary codec
 
-:``tea575x_tuner``:
+tea575x_tuner
     tuner access method & flags
 
-:``ply_ctrl``:
+ply_ctrl
     playback control
 
-:``cap_ctrl``:
+cap_ctrl
     capture control
 
+ply_buffer
+    *undescribed*
+
+ply_buf
+    *undescribed*
+
+ply_count
+    *undescribed*
+
+ply_size
+    *undescribed*
+
+ply_pos
+    *undescribed*
+
+cap_buffer
+    *undescribed*
+
+cap_buf
+    *undescribed*
+
+cap_count
+    *undescribed*
+
+cap_size
+    *undescribed*
+
+cap_pos
+    *undescribed*
+
+ac97_bus
+    *undescribed*
+
+ac97
+    *undescribed*
+
+ac97_sec
+    *undescribed*
+
+card
+    *undescribed*
+
+pcm
+    *undescribed*
+
+rmidi
+    *undescribed*
+
+playback_substream
+    *undescribed*
+
+capture_substream
+    *undescribed*
+
+p_dma_size
+    *undescribed*
+
+c_dma_size
+    *undescribed*
+
+reg_lock
+    *undescribed*
+
+proc_entry
+    *undescribed*
+
+v4l2_dev
+    *undescribed*
+
+tea
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

@@ -1,24 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-btmrvl_main.c
-=============
-
+.. src-file: drivers/bluetooth/btmrvl_main.c
 
 .. _`version`:
 
 VERSION
 =======
 
-.. c:function:: VERSION ()
-
-
+.. c:function::  VERSION()
 
 .. _`version.description`:
 
 Description
 -----------
-
 
 Copyright (C) 2009, Marvell International Ltd.
 
@@ -28,19 +21,13 @@ Ltd. under the terms of the GNU General Public License Version 2, June 1991
 accordance with the terms and conditions of the License, a copy of which
 is available by writing to the Free Software Foundation, Inc.,
 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA or on the
-
-
-
-.. _`version.worldwide-web-at-http`:
-
-worldwide web at http
----------------------
-
-//www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
+worldwide web at http://www.gnu.org/licenses/old-licenses/gpl-2.0.txt.
 
 
 THE FILE IS DISTRIBUTED AS-IS, WITHOUT WARRANTY OF ANY KIND, AND THE
 IMPLIED WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE
 ARE EXPRESSLY DISCLAIMED.  The License provides additional details about
 this warranty disclaimer.
+
+.. This file was automatic generated / don't edit.
 

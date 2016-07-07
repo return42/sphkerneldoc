@@ -1,36 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-nx-aes-cbc.c
-============
-
+.. src-file: drivers/crypto/nx/nx-aes-cbc.c
 
 .. _`cbc_aes_nx_set_key`:
 
 cbc_aes_nx_set_key
 ==================
 
-.. c:function:: int cbc_aes_nx_set_key (struct crypto_tfm *tfm, const u8 *in_key, unsigned int key_len)
+.. c:function:: int cbc_aes_nx_set_key(struct crypto_tfm *tfm, const u8 *in_key, unsigned int key_len)
 
     :param struct crypto_tfm \*tfm:
-
         *undescribed*
 
     :param const u8 \*in_key:
-
         *undescribed*
 
     :param unsigned int key_len:
-
         *undescribed*
-
-
 
 .. _`cbc_aes_nx_set_key.description`:
 
 Description
 -----------
-
 
 Copyright (C) 2011-2012 International Business Machines Inc.
 
@@ -47,12 +37,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
-
 .. _`cbc_aes_nx_set_key.author`:
 
 Author
 ------
 
 Kent Yoder <yoder1\ ``us``\ .ibm.com>
+
+.. This file was automatic generated / don't edit.
 

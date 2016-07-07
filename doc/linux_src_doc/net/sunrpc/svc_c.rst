@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-svc.c
-=====
-
+.. src-file: net/sunrpc/svc.c
 
 .. _`svc_register`:
 
 svc_register
 ============
 
-.. c:function:: int svc_register (const struct svc_serv *serv, struct net *net, const int family, const unsigned short proto, const unsigned short port)
+.. c:function:: int svc_register(const struct svc_serv *serv, struct net *net, const int family, const unsigned short proto, const unsigned short port)
 
     register an RPC service with the local portmapper
 
@@ -29,12 +25,12 @@ svc_register
     :param const unsigned short port:
         port to advertise
 
-
-
 .. _`svc_register.description`:
 
 Description
 -----------
 
 Service is registered for any address in the passed-in protocol family
+
+.. This file was automatic generated / don't edit.
 

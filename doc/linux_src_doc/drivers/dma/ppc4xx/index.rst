@@ -7,4 +7,5 @@ ppc4xx
 .. toctree::
    :maxdepth: 1
 
-   adma_c
+    adma_c
+    adma_h

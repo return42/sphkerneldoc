@@ -7,9 +7,11 @@ i2400m
 .. toctree::
    :maxdepth: 1
 
-   control_c
-   driver_c
-   fw_c
-   netdev_c
-   rx_c
-   tx_c
+    control_c
+    driver_c
+    fw_c
+    i2400m-usb_h
+    i2400m_h
+    netdev_c
+    rx_c
+    tx_c

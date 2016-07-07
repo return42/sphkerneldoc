@@ -7,4 +7,4 @@ soc
 .. toctree::
    :maxdepth: 1
 
-   bcm2835/index
+    bcm2835/index

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-wm8994.c
-========
-
+.. src-file: sound/soc/codecs/wm8994.c
 
 .. _`wm8994_mic_detect`:
 
 wm8994_mic_detect
 =================
 
-.. c:function:: int wm8994_mic_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack, int micbias)
+.. c:function:: int wm8994_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, int micbias)
 
     Enable microphone detection via the WM8994 IRQ
 
@@ -23,8 +19,6 @@ wm8994_mic_detect
     :param int micbias:
         microphone bias to detect on
 
-
-
 .. _`wm8994_mic_detect.description`:
 
 Description
@@ -33,19 +27,17 @@ Description
 Enable microphone detection via IRQ on the WM8994.  If GPIOs are
 being used to bring out signals to the processor then only platform
 data configuration is needed for WM8994 and processor GPIOs should
-be configured using :c:func:`snd_soc_jack_add_gpios` instead.
+be configured using \ :c:func:`snd_soc_jack_add_gpios`\  instead.
 
 Configuration of detection levels is available via the micbias1_lvl
 and micbias2_lvl platform data members.
-
-
 
 .. _`wm8958_mic_detect`:
 
 wm8958_mic_detect
 =================
 
-.. c:function:: int wm8958_mic_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack, wm1811_micdet_cb det_cb, void *det_cb_data, wm1811_mic_id_cb id_cb, void *id_cb_data)
+.. c:function:: int wm8958_mic_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, wm1811_micdet_cb det_cb, void *det_cb_data, wm1811_mic_id_cb id_cb, void *id_cb_data)
 
     Enable microphone detection via the WM8958 IRQ
 
@@ -56,22 +48,16 @@ wm8958_mic_detect
         jack to report detection events on
 
     :param wm1811_micdet_cb det_cb:
-
         *undescribed*
 
     :param void \*det_cb_data:
-
         *undescribed*
 
     :param wm1811_mic_id_cb id_cb:
-
         *undescribed*
 
     :param void \*id_cb_data:
-
         *undescribed*
-
-
 
 .. _`wm8958_mic_detect.description`:
 
@@ -87,4 +73,6 @@ support complex accessory detection, especially when used in
 conjunction with external circuitry.  In order to provide maximum
 flexiblity a callback is provided which allows a completely custom
 detection algorithm.
+
+.. This file was automatic generated / don't edit.
 

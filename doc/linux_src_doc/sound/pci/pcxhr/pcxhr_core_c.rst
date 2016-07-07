@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-pcxhr_core.c
-============
-
+.. src-file: sound/pci/pcxhr/pcxhr_core.c
 
 .. _`pcxhr_init_rmh`:
 
 pcxhr_init_rmh
 ==============
 
-.. c:function:: void pcxhr_init_rmh (struct pcxhr_rmh *rmh, int cmd)
+.. c:function:: void pcxhr_init_rmh(struct pcxhr_rmh *rmh, int cmd)
 
     initialize the RMH instance
 
@@ -19,4 +15,6 @@ pcxhr_init_rmh
 
     :param int cmd:
         the rmh command to be set
+
+.. This file was automatic generated / don't edit.
 

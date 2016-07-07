@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-mcp-core.c
-==========
-
+.. src-file: drivers/mfd/mcp-core.c
 
 .. _`mcp_set_telecom_divisor`:
 
 mcp_set_telecom_divisor
 =======================
 
-.. c:function:: void mcp_set_telecom_divisor (struct mcp *mcp, unsigned int div)
+.. c:function:: void mcp_set_telecom_divisor(struct mcp *mcp, unsigned int div)
 
     set the telecom divisor
 
@@ -20,8 +16,6 @@ mcp_set_telecom_divisor
     :param unsigned int div:
         SIB clock divisor
 
-
-
 .. _`mcp_set_telecom_divisor.description`:
 
 Description
@@ -30,14 +24,12 @@ Description
 Set the telecom divisor on the MCP interface.  The resulting
 sample rate is SIBCLOCK/div.
 
-
-
 .. _`mcp_set_audio_divisor`:
 
 mcp_set_audio_divisor
 =====================
 
-.. c:function:: void mcp_set_audio_divisor (struct mcp *mcp, unsigned int div)
+.. c:function:: void mcp_set_audio_divisor(struct mcp *mcp, unsigned int div)
 
     set the audio divisor
 
@@ -47,8 +39,6 @@ mcp_set_audio_divisor
     :param unsigned int div:
         SIB clock divisor
 
-
-
 .. _`mcp_set_audio_divisor.description`:
 
 Description
@@ -56,14 +46,12 @@ Description
 
 Set the audio divisor on the MCP interface.
 
-
-
 .. _`mcp_reg_write`:
 
 mcp_reg_write
 =============
 
-.. c:function:: void mcp_reg_write (struct mcp *mcp, unsigned int reg, unsigned int val)
+.. c:function:: void mcp_reg_write(struct mcp *mcp, unsigned int reg, unsigned int val)
 
     write a device register
 
@@ -76,8 +64,6 @@ mcp_reg_write
     :param unsigned int val:
         16-bit data value
 
-
-
 .. _`mcp_reg_write.description`:
 
 Description
@@ -86,14 +72,12 @@ Description
 Write a device register.  The MCP interface must be enabled
 to prevent this function hanging.
 
-
-
 .. _`mcp_reg_read`:
 
 mcp_reg_read
 ============
 
-.. c:function:: unsigned int mcp_reg_read (struct mcp *mcp, unsigned int reg)
+.. c:function:: unsigned int mcp_reg_read(struct mcp *mcp, unsigned int reg)
 
     read a device register
 
@@ -103,8 +87,6 @@ mcp_reg_read
     :param unsigned int reg:
         4-bit register index
 
-
-
 .. _`mcp_reg_read.description`:
 
 Description
@@ -113,21 +95,17 @@ Description
 Read a device register and return its value.  The MCP interface
 must be enabled to prevent this function hanging.
 
-
-
 .. _`mcp_enable`:
 
 mcp_enable
 ==========
 
-.. c:function:: void mcp_enable (struct mcp *mcp)
+.. c:function:: void mcp_enable(struct mcp *mcp)
 
     enable the MCP interface
 
     :param struct mcp \*mcp:
         MCP interface to enable
-
-
 
 .. _`mcp_enable.description`:
 
@@ -137,21 +115,17 @@ Description
 Enable the MCP interface.  Each call to mcp_enable will need
 a corresponding call to mcp_disable to disable the interface.
 
-
-
 .. _`mcp_disable`:
 
 mcp_disable
 ===========
 
-.. c:function:: void mcp_disable (struct mcp *mcp)
+.. c:function:: void mcp_disable(struct mcp *mcp)
 
     disable the MCP interface
 
     :param struct mcp \*mcp:
         MCP interface to disable
-
-
 
 .. _`mcp_disable.description`:
 
@@ -161,4 +135,6 @@ Description
 Disable the MCP interface.  The MCP interface will only be
 disabled once the number of calls to mcp_enable matches the
 number of calls to mcp_disable.
+
+.. This file was automatic generated / don't edit.
 

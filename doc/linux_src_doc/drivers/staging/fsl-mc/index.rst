@@ -7,4 +7,5 @@ fsl-mc
 .. toctree::
    :maxdepth: 1
 
-   bus/index
+    bus/index
+    include/index

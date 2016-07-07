@@ -1,0 +1,52 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/us5182d.c
+
+.. _`us5182d_update_dark_th`:
+
+us5182d_update_dark_th
+======================
+
+.. c:function:: int us5182d_update_dark_th(struct us5182d_data *data, int index)
+
+    update Darh_Th registers \ ``data``\         us5182d_data structure \ ``index``\        index in us5182d_dark_ths array to use for the updated value
+
+    :param struct us5182d_data \*data:
+        *undescribed*
+
+    :param int index:
+        *undescribed*
+
+.. _`us5182d_update_dark_th.description`:
+
+Description
+-----------
+
+Function needs to be called with a lock held because it needs two i2c write
+byte operations as these registers (0x27 0x28) don't work in word mode
+accessing.
+
+.. _`us5182d_apply_scale`:
+
+us5182d_apply_scale
+===================
+
+.. c:function:: int us5182d_apply_scale(struct us5182d_data *data, int index)
+
+    update the ALS scale \ ``data``\         us5182d_data structure \ ``index``\        index in us5182d_scales array to use for the updated value
+
+    :param struct us5182d_data \*data:
+        *undescribed*
+
+    :param int index:
+        *undescribed*
+
+.. _`us5182d_apply_scale.description`:
+
+Description
+-----------
+
+Function needs to be called with a lock held as we're having more than one
+i2c operation.
+
+.. This file was automatic generated / don't edit.
+

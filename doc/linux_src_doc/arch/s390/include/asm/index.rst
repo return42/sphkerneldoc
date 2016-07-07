@@ -7,6 +7,15 @@ asm
 .. toctree::
    :maxdepth: 1
 
-   ccwdev_h
-   ccwgroup_h
-   cio_h
+    bitops_h
+    ccwdev_h
+    ccwgroup_h
+    cio_h
+    cpacf_h
+    facility_h
+    fcx_h
+    gmap_h
+    scsw_h
+    spinlock_h
+    timex_h
+    uaccess_h

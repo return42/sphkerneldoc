@@ -7,5 +7,6 @@ netfilter
 .. toctree::
    :maxdepth: 1
 
-   nf_tables_api_c
-   x_tables_c
+    nf_tables_api_c
+    x_tables_c
+    xt_TPROXY_c

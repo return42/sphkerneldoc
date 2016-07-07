@@ -7,4 +7,6 @@ gcov
 .. toctree::
    :maxdepth: 1
 
-   base_c
+    base_c
+    fs_c
+    gcc_3_4_c

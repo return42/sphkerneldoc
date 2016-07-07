@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-intel-svm.h
-===========
-
+.. src-file: include/linux/intel-svm.h
 
 .. _`intel_svm_bind_mm`:
 
 intel_svm_bind_mm
 =================
 
-.. c:function:: int intel_svm_bind_mm (struct device *dev, int *pasid, int flags, struct svm_dev_ops *ops)
+.. c:function:: int intel_svm_bind_mm(struct device *dev, int *pasid, int flags, struct svm_dev_ops *ops)
 
     Bind the current process to a PASID
 
@@ -26,18 +22,16 @@ intel_svm_bind_mm
     :param struct svm_dev_ops \*ops:
         Callbacks to device driver
 
-
-
 .. _`intel_svm_bind_mm.description`:
 
 Description
 -----------
 
 This function attempts to enable PASID support for the given device.
-If the ``pasid`` argument is non-\ ``NULL``\ , a PASID is allocated for access
+If the \ ``pasid``\  argument is non-\ ``NULL``\ , a PASID is allocated for access
 to the MM of the current process.
 
-By using a ``NULL`` value for the ``pasid`` argument, this function can
+By using a \ ``NULL``\  value for the \ ``pasid``\  argument, this function can
 be used to simply validate that PASID support is available for the
 given device — i.e. that it is behind an IOMMU which has the
 requisite support, and is enabled.
@@ -53,14 +47,12 @@ mechanism is appropriate.
 Multiple calls from the same process may result in the same PASID
 being re-used. A reference count is kept.
 
-
-
 .. _`intel_svm_unbind_mm`:
 
 intel_svm_unbind_mm
 ===================
 
-.. c:function:: int intel_svm_unbind_mm (struct device *dev, int pasid)
+.. c:function:: int intel_svm_unbind_mm(struct device *dev, int pasid)
 
     Unbind a specified PASID
 
@@ -69,8 +61,6 @@ intel_svm_unbind_mm
 
     :param int pasid:
         PASID value to be unbound
-
-
 
 .. _`intel_svm_unbind_mm.description`:
 
@@ -86,4 +76,6 @@ PASID is revoked and may no longer be used by hardware.
 Device drivers are required to ensure that no access (including
 page requests) is currently outstanding for the PASID in question,
 before calling this function.
+
+.. This file was automatic generated / don't edit.
 

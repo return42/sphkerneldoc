@@ -1,44 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-core-iso.c
-==========
-
+.. src-file: drivers/firewire/core-iso.c
 
 .. _`fw_iso_resource_manage`:
 
 fw_iso_resource_manage
 ======================
 
-.. c:function:: void fw_iso_resource_manage (struct fw_card *card, int generation, u64 channels_mask, int *channel, int *bandwidth, bool allocate)
+.. c:function:: void fw_iso_resource_manage(struct fw_card *card, int generation, u64 channels_mask, int *channel, int *bandwidth, bool allocate)
 
     Allocate or deallocate a channel and/or bandwidth
 
     :param struct fw_card \*card:
-
         *undescribed*
 
     :param int generation:
-
         *undescribed*
 
     :param u64 channels_mask:
-
         *undescribed*
 
     :param int \*channel:
-
         *undescribed*
 
     :param int \*bandwidth:
-
         *undescribed*
 
     :param bool allocate:
-
         *undescribed*
-
-
 
 .. _`fw_iso_resource_manage.in-parameters`:
 
@@ -46,8 +34,6 @@ In parameters
 -------------
 
 card, generation, channels_mask, bandwidth, allocate
-
-
 
 .. _`fw_iso_resource_manage.out-parameters`:
 
@@ -73,4 +59,6 @@ If channel allocation fails, no bandwidth will be allocated either.
 If bandwidth allocation fails, no channel will be allocated either.
 But deallocations of channel and bandwidth are tried independently
 of each other's success.
+
+.. This file was automatic generated / don't edit.
 

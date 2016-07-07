@@ -1,0 +1,59 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/e100.c
+
+.. _`e100_io_error_detected`:
+
+e100_io_error_detected
+======================
+
+.. c:function:: pci_ers_result_t e100_io_error_detected(struct pci_dev *pdev, pci_channel_state_t state)
+
+    called when PCI error is detected.
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+    :param pci_channel_state_t state:
+        The current pci connection state
+
+.. _`e100_io_slot_reset`:
+
+e100_io_slot_reset
+==================
+
+.. c:function:: pci_ers_result_t e100_io_slot_reset(struct pci_dev *pdev)
+
+    called after the pci bus has been reset.
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+.. _`e100_io_slot_reset.description`:
+
+Description
+-----------
+
+Restart the card from scratch.
+
+.. _`e100_io_resume`:
+
+e100_io_resume
+==============
+
+.. c:function:: void e100_io_resume(struct pci_dev *pdev)
+
+    resume normal operations
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+.. _`e100_io_resume.description`:
+
+Description
+-----------
+
+Resume normal operations after an error recovery
+sequence has been completed.
+
+.. This file was automatic generated / don't edit.
+

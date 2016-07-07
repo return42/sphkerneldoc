@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-hcd_ddma.c
-==========
-
+.. src-file: drivers/usb/dwc2/hcd_ddma.c
 
 .. _`dwc2_hcd_qh_init_ddma`:
 
 dwc2_hcd_qh_init_ddma
 =====================
 
-.. c:function:: int dwc2_hcd_qh_init_ddma (struct dwc2_hsotg *hsotg, struct dwc2_qh *qh, gfp_t mem_flags)
+.. c:function:: int dwc2_hcd_qh_init_ddma(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh, gfp_t mem_flags)
 
     Initializes a QH structure's Descriptor DMA related members
 
@@ -21,10 +17,7 @@ dwc2_hcd_qh_init_ddma
         The QH to init
 
     :param gfp_t mem_flags:
-
         *undescribed*
-
-
 
 .. _`dwc2_hcd_qh_init_ddma.return`:
 
@@ -36,14 +29,12 @@ Return
 Allocates memory for the descriptor list. For the first periodic QH,
 allocates memory for the FrameList and enables periodic scheduling.
 
-
-
 .. _`dwc2_hcd_qh_free_ddma`:
 
 dwc2_hcd_qh_free_ddma
 =====================
 
-.. c:function:: void dwc2_hcd_qh_free_ddma (struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+.. c:function:: void dwc2_hcd_qh_free_ddma(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
 
     Frees a QH structure's Descriptor DMA related members
 
@@ -53,8 +44,6 @@ dwc2_hcd_qh_free_ddma
     :param struct dwc2_qh \*qh:
         The QH to free
 
-
-
 .. _`dwc2_hcd_qh_free_ddma.description`:
 
 Description
@@ -63,14 +52,12 @@ Description
 Frees descriptor list memory associated with the QH. If QH is periodic and
 the last, frees FrameList memory and disables periodic scheduling.
 
-
-
 .. _`dwc2_hcd_start_xfer_ddma`:
 
 dwc2_hcd_start_xfer_ddma
 ========================
 
-.. c:function:: void dwc2_hcd_start_xfer_ddma (struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
+.. c:function:: void dwc2_hcd_start_xfer_ddma(struct dwc2_hsotg *hsotg, struct dwc2_qh *qh)
 
     Starts a transfer in Descriptor DMA mode
 
@@ -79,8 +66,6 @@ dwc2_hcd_start_xfer_ddma
 
     :param struct dwc2_qh \*qh:
         The QH to init
-
-
 
 .. _`dwc2_hcd_start_xfer_ddma.return`:
 
@@ -100,14 +85,12 @@ session. Then the transfer is started via enabling the channel.
 For Isochronous endpoints the channel is not halted on XferComplete
 interrupt so remains assigned to the endpoint(QH) until session is done.
 
-
-
 .. _`dwc2_hcd_complete_xfer_ddma`:
 
 dwc2_hcd_complete_xfer_ddma
 ===========================
 
-.. c:function:: void dwc2_hcd_complete_xfer_ddma (struct dwc2_hsotg *hsotg, struct dwc2_host_chan *chan, int chnum, enum dwc2_halt_status halt_status)
+.. c:function:: void dwc2_hcd_complete_xfer_ddma(struct dwc2_hsotg *hsotg, struct dwc2_host_chan *chan, int chnum, enum dwc2_halt_status halt_status)
 
     Scans the descriptor list, updates URB's status and calls completion routine for the URB if it's done. Called from interrupt handlers.
 
@@ -124,8 +107,6 @@ dwc2_hcd_complete_xfer_ddma
         Reason the channel is being halted or just XferComplete
         for isochronous transfers
 
-
-
 .. _`dwc2_hcd_complete_xfer_ddma.description`:
 
 Description
@@ -136,4 +117,6 @@ In case of Isochronous endpoint the channel is not halted until the end of
 the session, i.e. QTD list is empty.
 If periodic channel released the FrameList is updated accordingly.
 Calls transaction selection routines to activate pending transfers.
+
+.. This file was automatic generated / don't edit.
 

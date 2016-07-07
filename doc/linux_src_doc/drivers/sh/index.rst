@@ -7,4 +7,7 @@ sh
 .. toctree::
    :maxdepth: 1
 
-   clk/index
+    clk/index
+    intc/index
+    maple/index
+    superhyway/index

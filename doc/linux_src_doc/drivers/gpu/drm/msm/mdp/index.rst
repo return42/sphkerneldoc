@@ -7,4 +7,4 @@ mdp
 .. toctree::
    :maxdepth: 1
 
-   mdp5/index
+    mdp5/index

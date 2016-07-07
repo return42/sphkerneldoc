@@ -7,4 +7,4 @@ vfio
 .. toctree::
    :maxdepth: 1
 
-   vfio_c
+    vfio_c

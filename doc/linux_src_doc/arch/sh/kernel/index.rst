@@ -7,5 +7,10 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   sh_bios_c
-   unwinder_c
+    cpu/index
+    crash_dump_c
+    dwarf_c
+    kprobes_c
+    ptrace_c
+    sh_bios_c
+    unwinder_c

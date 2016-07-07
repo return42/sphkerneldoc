@@ -7,4 +7,4 @@ dns_resolver
 .. toctree::
    :maxdepth: 1
 
-   dns_query_c
+    dns_query_c

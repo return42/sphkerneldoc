@@ -7,6 +7,6 @@ dma
 .. toctree::
    :maxdepth: 1
 
-   dw_h
-   hsu_h
-   xilinx_dma_h
+    dw_h
+    hsu_h
+    xilinx_dma_h

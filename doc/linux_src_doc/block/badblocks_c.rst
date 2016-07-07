@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-badblocks.c
-===========
-
+.. src-file: block/badblocks.c
 
 .. _`badblocks_check`:
 
 badblocks_check
 ===============
 
-.. c:function:: int badblocks_check (struct badblocks *bb, sector_t s, int sectors, sector_t *first_bad, int *bad_sectors)
+.. c:function:: int badblocks_check(struct badblocks *bb, sector_t s, int sectors, sector_t *first_bad, int *bad_sectors)
 
     check a given range for bad sectors
 
@@ -27,9 +23,7 @@ badblocks_check
         pointer to store location of the first badblock
 
     :param int \*bad_sectors:
-        pointer to store number of badblocks after ``first_bad``
-
-
+        pointer to store number of badblocks after \ ``first_bad``\ 
 
 .. _`badblocks_check.description`:
 
@@ -43,7 +37,6 @@ Length of bad-range, in sectors: 0-511 for lengths 1-512
 Start of bad-range, sector offset, 54 bits (allows 8 exbibytes)
 A 'shift' can be set so that larger blocks are tracked and
 consequently larger devices can be covered.
-
 'Acknowledged' flag - 1 bit. - the most significant bit.
 
 Locking of the bad-block table uses a seqlock so badblocks_check
@@ -57,34 +50,22 @@ to the last range that starts at-or-before the given endpoint,
 (or "before the sector after the target range")
 then see if it ends after the given start.
 
+.. _`badblocks_check.return`:
 
+Return
+------
 
-.. _`badblocks_check.0`:
-
-0
--
-
-there are no known bad blocks in the range
-
-
-
-.. _`badblocks_check.1`:
-
-1
--
-
-there are known bad block which are all acknowledged
+0: there are no known bad blocks in the range
+1: there are known bad block which are all acknowledged
 -1: there are bad blocks which have not yet been acknowledged in metadata.
 plus the start/length of the first bad section we overlap.
-
-
 
 .. _`badblocks_set`:
 
 badblocks_set
 =============
 
-.. c:function:: int badblocks_set (struct badblocks *bb, sector_t s, int sectors, int acknowledged)
+.. c:function:: int badblocks_set(struct badblocks *bb, sector_t s, int sectors, int acknowledged)
 
     Add a range of bad blocks to the table.
 
@@ -100,8 +81,6 @@ badblocks_set
     :param int acknowledged:
         weather to mark the bad sectors as acknowledged
 
-
-
 .. _`badblocks_set.description`:
 
 Description
@@ -111,32 +90,20 @@ This might extend the table, or might contract it if two adjacent ranges
 can be merged. We binary-search to find the 'insertion' point, then
 decide how best to handle it.
 
+.. _`badblocks_set.return`:
 
+Return
+------
 
-.. _`badblocks_set.0`:
-
-0
--
-
-success
-
-
-
-.. _`badblocks_set.1`:
-
-1
--
-
-failed to set badblocks (out of space)
-
-
+0: success
+1: failed to set badblocks (out of space)
 
 .. _`badblocks_clear`:
 
 badblocks_clear
 ===============
 
-.. c:function:: int badblocks_clear (struct badblocks *bb, sector_t s, int sectors)
+.. c:function:: int badblocks_clear(struct badblocks *bb, sector_t s, int sectors)
 
     Remove a range of bad blocks to the table.
 
@@ -149,8 +116,6 @@ badblocks_clear
     :param int sectors:
         number of sectors to mark as bad
 
-
-
 .. _`badblocks_clear.description`:
 
 Description
@@ -160,39 +125,25 @@ This may involve extending the table if we spilt a region,
 but it must not fail.  So if the table becomes full, we just
 drop the remove request.
 
+.. _`badblocks_clear.return`:
 
+Return
+------
 
-.. _`badblocks_clear.0`:
-
-0
--
-
-success
-
-
-
-.. _`badblocks_clear.1`:
-
-1
--
-
-failed to clear badblocks
-
-
+0: success
+1: failed to clear badblocks
 
 .. _`ack_all_badblocks`:
 
 ack_all_badblocks
 =================
 
-.. c:function:: void ack_all_badblocks (struct badblocks *bb)
+.. c:function:: void ack_all_badblocks(struct badblocks *bb)
 
     Acknowledge all bad blocks in a list.
 
     :param struct badblocks \*bb:
         the badblocks structure that holds all badblock information
-
-
 
 .. _`ack_all_badblocks.description`:
 
@@ -202,14 +153,12 @@ Description
 This only succeeds if ->changed is clear.  It is used by
 in-kernel metadata updates
 
-
-
 .. _`badblocks_show`:
 
 badblocks_show
 ==============
 
-.. c:function:: ssize_t badblocks_show (struct badblocks *bb, char *page, int unack)
+.. c:function:: ssize_t badblocks_show(struct badblocks *bb, char *page, int unack)
 
     sysfs access to bad-blocks list
 
@@ -222,8 +171,6 @@ badblocks_show
     :param int unack:
         weather to show unacknowledged badblocks
 
-
-
 .. _`badblocks_show.return`:
 
 Return
@@ -231,14 +178,12 @@ Return
 
 Length of returned data
 
-
-
 .. _`badblocks_store`:
 
 badblocks_store
 ===============
 
-.. c:function:: ssize_t badblocks_store (struct badblocks *bb, const char *page, size_t len, int unack)
+.. c:function:: ssize_t badblocks_store(struct badblocks *bb, const char *page, size_t len, int unack)
 
     sysfs access to bad-blocks list
 
@@ -254,8 +199,6 @@ badblocks_store
     :param int unack:
         weather to show unacknowledged badblocks
 
-
-
 .. _`badblocks_store.return`:
 
 Return
@@ -263,14 +206,12 @@ Return
 
 Length of the buffer processed or -ve error.
 
-
-
 .. _`badblocks_init`:
 
 badblocks_init
 ==============
 
-.. c:function:: int badblocks_init (struct badblocks *bb, int enable)
+.. c:function:: int badblocks_init(struct badblocks *bb, int enable)
 
     initialize the badblocks structure
 
@@ -280,27 +221,25 @@ badblocks_init
     :param int enable:
         weather to enable badblocks accounting
 
+.. _`badblocks_init.return`:
 
+Return
+------
 
-.. _`badblocks_init.0`:
-
-0
--
-
-success
+0: success
 -ve errno: on error
-
-
 
 .. _`badblocks_exit`:
 
 badblocks_exit
 ==============
 
-.. c:function:: void badblocks_exit (struct badblocks *bb)
+.. c:function:: void badblocks_exit(struct badblocks *bb)
 
     free the badblocks structure
 
     :param struct badblocks \*bb:
         the badblocks structure that holds all badblock information
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,4 @@ haswell
 .. toctree::
    :maxdepth: 1
 
-   sst-haswell-ipc_h
+    sst-haswell-ipc_h

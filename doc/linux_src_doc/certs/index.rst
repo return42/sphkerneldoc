@@ -7,4 +7,4 @@ certs
 .. toctree::
    :maxdepth: 1
 
-   system_keyring_c
+    system_keyring_c

@@ -7,4 +7,6 @@ cxgb3
 .. toctree::
    :maxdepth: 1
 
-   cxgb3_offload_c
+    cxgb3_main_c
+    cxgb3_offload_c
+    sge_c

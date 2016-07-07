@@ -7,7 +7,7 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   iomv_c
-   setup_c
-   tiocx_c
-   sn2/index
+    sn2/index
+    iomv_c
+    setup_c
+    tiocx_c

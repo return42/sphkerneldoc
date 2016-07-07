@@ -7,5 +7,8 @@ fbtft
 .. toctree::
    :maxdepth: 1
 
-   fbtft-core_c
-   fbtft-io_c
+    fb_st7789v_c
+    fbtft-core_c
+    fbtft-io_c
+    fbtft_h
+    flexfb_c

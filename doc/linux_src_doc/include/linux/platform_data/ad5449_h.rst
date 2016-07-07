@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ad5449.h
-========
-
+.. src-file: include/linux/platform_data/ad5449.h
 
 .. _`ad5449_sdo_mode`:
 
 enum ad5449_sdo_mode
 ====================
 
-.. c:type:: ad5449_sdo_mode
+.. c:type:: enum ad5449_sdo_mode
 
     AD5449 SDO pin configuration
-
 
 .. _`ad5449_sdo_mode.definition`:
 
@@ -23,41 +18,38 @@ Definition
 .. code-block:: c
 
     enum ad5449_sdo_mode {
-      AD5449_SDO_DRIVE_FULL,
-      AD5449_SDO_DRIVE_WEAK,
-      AD5449_SDO_OPEN_DRAIN,
-      AD5449_SDO_DISABLED
+        AD5449_SDO_DRIVE_FULL,
+        AD5449_SDO_DRIVE_WEAK,
+        AD5449_SDO_OPEN_DRAIN,
+        AD5449_SDO_DISABLED
     };
-
 
 .. _`ad5449_sdo_mode.constants`:
 
 Constants
 ---------
 
-:``AD5449_SDO_DRIVE_FULL``:
+AD5449_SDO_DRIVE_FULL
     Drive the SDO pin with full strength.
 
-:``AD5449_SDO_DRIVE_WEAK``:
+AD5449_SDO_DRIVE_WEAK
     Drive the SDO pin with not full strength.
 
-:``AD5449_SDO_OPEN_DRAIN``:
+AD5449_SDO_OPEN_DRAIN
     Operate the SDO pin in open-drain mode.
 
-:``AD5449_SDO_DISABLED``:
+AD5449_SDO_DISABLED
     Disable the SDO pin, in this mode it is not possible to
     read back from the device.
-
 
 .. _`ad5449_platform_data`:
 
 struct ad5449_platform_data
 ===========================
 
-.. c:type:: ad5449_platform_data
+.. c:type:: struct ad5449_platform_data
 
     Platform data for the ad5449 DAC driver
-
 
 .. _`ad5449_platform_data.definition`:
 
@@ -66,22 +58,22 @@ Definition
 
 .. code-block:: c
 
-  struct ad5449_platform_data {
-    enum ad5449_sdo_mode sdo_mode;
-    bool hardware_clear_to_midscale;
-  };
-
+    struct ad5449_platform_data {
+        enum ad5449_sdo_mode sdo_mode;
+        bool hardware_clear_to_midscale;
+    }
 
 .. _`ad5449_platform_data.members`:
 
 Members
 -------
 
-:``sdo_mode``:
+sdo_mode
     SDO pin mode
 
-:``hardware_clear_to_midscale``:
+hardware_clear_to_midscale
     Whether asserting the hardware CLR pin sets the
     outputs to midscale (true) or to zero scale(false).
 
+.. This file was automatic generated / don't edit.
 

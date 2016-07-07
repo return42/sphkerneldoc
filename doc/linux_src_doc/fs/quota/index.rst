@@ -7,5 +7,5 @@ quota
 .. toctree::
    :maxdepth: 1
 
-   kqid_c
-   netlink_c
+    kqid_c
+    netlink_c

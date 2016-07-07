@@ -7,4 +7,7 @@ intel_th
 .. toctree::
    :maxdepth: 1
 
-   core_c
+    core_c
+    gth_c
+    intel_th_h
+    msu_c

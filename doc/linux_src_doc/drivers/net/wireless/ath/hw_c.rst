@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-hw.c
-====
-
+.. src-file: drivers/net/wireless/ath/hw.c
 
 .. _`ath_hw_setbssidmask`:
 
 ath_hw_setbssidmask
 ===================
 
-.. c:function:: void ath_hw_setbssidmask (struct ath_common *common)
+.. c:function:: void ath_hw_setbssidmask(struct ath_common *common)
 
     filter out bssids we listen
 
     :param struct ath_common \*common:
         the ath_common struct for the device.
-
-
 
 .. _`ath_hw_setbssidmask.description`:
 
@@ -31,8 +25,6 @@ BSS every bit matters since we lock to only one BSS. In AP mode with
 multiple BSSes (virtual interfaces) not every bit matters because hw must
 accept frames for all BSSes and so we tweak some bits of our mac address
 in order to have multiple BSSes.
-
-
 
 .. _`ath_hw_setbssidmask.note`:
 
@@ -51,36 +43,35 @@ BSSes. Later it is assumed the hardware will "and" (&) the BSSID mask with
 the MAC address to obtain the relevant bits and compare the result with
 (frame's BSSID & mask) to see if they match.
 
-
-
 .. _`ath_hw_setbssidmask.simple-example`:
 
 Simple example
 --------------
 
-.. code-block:: c
-
 on your card you have have two BSSes you have created with
 BSSID-01 and BSSID-02. Lets assume BSSID-01 will not use the MAC address.
 There is another BSSID-03 but you are not part of it. For simplicity's sake,
 
+.. _`ath_hw_setbssidmask.assuming-only-4-bits-for-a-mac-address-and-for-bssids-you-can-then-have`:
 
+assuming only 4 bits for a mac address and for BSSIDs you can then have
+-----------------------------------------------------------------------
+
+
+\
 
 .. _`ath_hw_setbssidmask.mac`:
 
 MAC
 ---
 
-0001 |
-BSSID-01:   0100 | --> Belongs to us
-BSSID-02:   1001 |
+0001 \|
+BSSID-01:   0100 \| --> Belongs to us
+BSSID-02:   1001 \|
 /
-
 -------------------
-BSSID-03:   0110  | --> External
+BSSID-03:   0110  \| --> External
 -------------------
-
-
 
 .. _`ath_hw_setbssidmask.our-bssid_mask-would-then-be`:
 
@@ -91,7 +82,6 @@ Our bssid_mask would then be
 On loop iteration for BSSID-01:
 ~(0001 ^ 0100)  -> ~(0101)
 ->   1010
-
 bssid_mask      =    1010
 
 On loop iteration for BSSID-02:
@@ -117,20 +107,12 @@ hardware to only look at the second least significant bit and the
 common bit amongst the MAC and BSSIDs is 0, this frame has the 2nd LSB
 as 1, which does not match 0.
 
-
-
-.. _`ath_hw_setbssidmask.the-hardware-will-do`:
-
-the hardware will do
---------------------
-
+So with IFRAME-01 we \*assume\* the hardware will do:
 
 allow = (IFRAME-01 & bssid_mask) == (bssid_mask & MAC) ? 1 : 0;
 --> allow = (0110 & 0010) == (0010 & 0001) ? 1 : 0;
 --> allow = (0010) == 0000 ? 1 : 0;
 --> allow = 0
-
-
 
 .. _`ath_hw_setbssidmask.lets-now-test-a-frame-that-should-work`:
 
@@ -145,35 +127,27 @@ allow = (IFRAME-02 & bssid_mask) == (bssid_mask & MAC) ? 1 : 0;
 --> allow = (0000) == (0000)
 --> allow = 1
 
-
-
 .. _`ath_hw_setbssidmask.other-examples`:
 
 Other examples
 --------------
-
-.. code-block:: c
 
 
 IFRAME-03:  0100 --> allowed
 IFRAME-04:  1001 --> allowed
 IFRAME-05:  1101 --> allowed but its not for us!!!
 
-
-
 .. _`ath_hw_cycle_counters_update`:
 
 ath_hw_cycle_counters_update
 ============================
 
-.. c:function:: void ath_hw_cycle_counters_update (struct ath_common *common)
+.. c:function:: void ath_hw_cycle_counters_update(struct ath_common *common)
 
     common function to update cycle counters
 
     :param struct ath_common \*common:
         the ath_common struct for the device.
-
-
 
 .. _`ath_hw_cycle_counters_update.description`:
 
@@ -182,4 +156,6 @@ Description
 
 This function is used to update all cycle counters in one place.
 It has to be called while holding common->cc_lock!
+
+.. This file was automatic generated / don't edit.
 

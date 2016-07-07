@@ -7,4 +7,4 @@ spi
 .. toctree::
    :maxdepth: 1
 
-   spidev_h
+    spidev_h

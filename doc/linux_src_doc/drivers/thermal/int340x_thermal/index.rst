@@ -7,4 +7,4 @@ int340x_thermal
 .. toctree::
    :maxdepth: 1
 
-   acpi_thermal_rel_c
+    acpi_thermal_rel_c

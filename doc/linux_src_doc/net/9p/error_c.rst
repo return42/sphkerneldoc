@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-error.c
-=======
-
+.. src-file: net/9p/error.c
 
 .. _`errormap`:
 
 struct errormap
 ===============
 
-.. c:type:: errormap
+.. c:type:: struct errormap
 
     map string errors from Plan 9 to Linux numeric ids
-
 
 .. _`errormap.definition`:
 
@@ -22,54 +17,48 @@ Definition
 
 .. code-block:: c
 
-  struct errormap {
-    char * name;
-    int val;
-    int namelen;
-    struct hlist_node list;
-  };
-
+    struct errormap {
+        char *name;
+        int val;
+        int namelen;
+        struct hlist_node list;
+    }
 
 .. _`errormap.members`:
 
 Members
 -------
 
-:``name``:
+name
     string sent over 9P
 
-:``val``:
-    numeric id most closely representing ``name``
+val
+    numeric id most closely representing \ ``name``\ 
 
-:``namelen``:
+namelen
     length of string
 
-:``list``:
+list
     hash-table list for string lookup
-
-
-
 
 .. _`p9_error_init`:
 
 p9_error_init
 =============
 
-.. c:function:: int p9_error_init ( void)
+.. c:function:: int p9_error_init( void)
 
     preload mappings into hash list
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`p9_errstr2errno`:
 
 p9_errstr2errno
 ===============
 
-.. c:function:: int p9_errstr2errno (char *errstr, int len)
+.. c:function:: int p9_errstr2errno(char *errstr, int len)
 
     convert error string to error number
 
@@ -78,4 +67,6 @@ p9_errstr2errno
 
     :param int len:
         length of error string
+
+.. This file was automatic generated / don't edit.
 

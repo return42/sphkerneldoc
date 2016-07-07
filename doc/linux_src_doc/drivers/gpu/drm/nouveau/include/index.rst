@@ -7,4 +7,4 @@ include
 .. toctree::
    :maxdepth: 1
 
-   nvif/index
+    nvif/index

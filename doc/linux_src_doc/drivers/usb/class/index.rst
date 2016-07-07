@@ -7,5 +7,5 @@ class
 .. toctree::
    :maxdepth: 1
 
-   cdc-wdm_c
-   usbtmc_c
+    cdc-wdm_c
+    usbtmc_c

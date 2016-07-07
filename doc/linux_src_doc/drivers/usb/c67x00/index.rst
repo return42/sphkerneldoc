@@ -7,7 +7,7 @@ c67x00
 .. toctree::
    :maxdepth: 1
 
-   c67x00_h
-   c67x00-hcd_c
-   c67x00-ll-hpi_c
-   c67x00-sched_c
+    c67x00-hcd_c
+    c67x00-ll-hpi_c
+    c67x00-sched_c
+    c67x00_h

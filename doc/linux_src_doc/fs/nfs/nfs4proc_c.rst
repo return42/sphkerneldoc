@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-nfs4proc.c
-==========
-
+.. src-file: fs/nfs/nfs4proc.c
 
 .. _`nfs41_check_open_stateid`:
 
 nfs41_check_open_stateid
 ========================
 
-.. c:function:: int nfs41_check_open_stateid (struct nfs4_state *state)
+.. c:function:: int nfs41_check_open_stateid(struct nfs4_state *state)
 
     possibly free an open stateid
 
     :param struct nfs4_state \*state:
         NFSv4 state for an inode
-
-
 
 .. _`nfs41_check_open_stateid.description`:
 
@@ -27,14 +21,12 @@ Description
 Returns NFS_OK if recovery for this stateid is now finished.
 Otherwise a negative NFS4ERR value is returned.
 
-
-
 .. _`nfs4_proc_get_rootfh`:
 
 nfs4_proc_get_rootfh
 ====================
 
-.. c:function:: int nfs4_proc_get_rootfh (struct nfs_server *server, struct nfs_fh *fhandle, struct nfs_fsinfo *info, bool auth_probe)
+.. c:function:: int nfs4_proc_get_rootfh(struct nfs_server *server, struct nfs_fh *fhandle, struct nfs_fsinfo *info, bool auth_probe)
 
     get file handle for server's pseudoroot
 
@@ -50,8 +42,6 @@ nfs4_proc_get_rootfh
     :param bool auth_probe:
         probe the auth flavours
 
-
-
 .. _`nfs4_proc_get_rootfh.description`:
 
 Description
@@ -59,14 +49,12 @@ Description
 
 Returns zero on success, or a negative errno.
 
-
-
 .. _`nfs4_proc_setclientid`:
 
 nfs4_proc_setclientid
 =====================
 
-.. c:function:: int nfs4_proc_setclientid (struct nfs_client *clp, u32 program, unsigned short port, struct rpc_cred *cred, struct nfs4_setclientid_res *res)
+.. c:function:: int nfs4_proc_setclientid(struct nfs_client *clp, u32 program, unsigned short port, struct rpc_cred *cred, struct nfs4_setclientid_res *res)
 
     Negotiate client ID
 
@@ -85,8 +73,6 @@ nfs4_proc_setclientid
     :param struct nfs4_setclientid_res \*res:
         where to place the result
 
-
-
 .. _`nfs4_proc_setclientid.description`:
 
 Description
@@ -94,14 +80,12 @@ Description
 
 Returns zero, a negative errno, or a negative NFS4ERR status code.
 
-
-
 .. _`nfs4_proc_setclientid_confirm`:
 
 nfs4_proc_setclientid_confirm
 =============================
 
-.. c:function:: int nfs4_proc_setclientid_confirm (struct nfs_client *clp, struct nfs4_setclientid_res *arg, struct rpc_cred *cred)
+.. c:function:: int nfs4_proc_setclientid_confirm(struct nfs_client *clp, struct nfs4_setclientid_res *arg, struct rpc_cred *cred)
 
     Confirm client ID
 
@@ -109,13 +93,10 @@ nfs4_proc_setclientid_confirm
         state data structure
 
     :param struct nfs4_setclientid_res \*arg:
-
         *undescribed*
 
     :param struct rpc_cred \*cred:
         RPC credential to use for this call
-
-
 
 .. _`nfs4_proc_setclientid_confirm.description`:
 
@@ -124,21 +105,17 @@ Description
 
 Returns zero, a negative errno, or a negative NFS4ERR status code.
 
-
-
 .. _`nfs41_check_expired_locks`:
 
 nfs41_check_expired_locks
 =========================
 
-.. c:function:: int nfs41_check_expired_locks (struct nfs4_state *state)
+.. c:function:: int nfs41_check_expired_locks(struct nfs4_state *state)
 
     possibly free a lock stateid
 
     :param struct nfs4_state \*state:
         NFSv4 state for an inode
-
-
 
 .. _`nfs41_check_expired_locks.description`:
 
@@ -148,14 +125,12 @@ Description
 Returns NFS_OK if recovery for this stateid is now finished.
 Otherwise a negative NFS4ERR value is returned.
 
-
-
 .. _`nfs4_proc_get_locations`:
 
 nfs4_proc_get_locations
 =======================
 
-.. c:function:: int nfs4_proc_get_locations (struct inode *inode, struct nfs4_fs_locations *locations, struct page *page, struct rpc_cred *cred)
+.. c:function:: int nfs4_proc_get_locations(struct inode *inode, struct nfs4_fs_locations *locations, struct page *page, struct rpc_cred *cred)
 
     discover locations for a migrated FSID
 
@@ -170,8 +145,6 @@ nfs4_proc_get_locations
 
     :param struct rpc_cred \*cred:
         credential to use for this operation
-
-
 
 .. _`nfs4_proc_get_locations.description`:
 
@@ -188,14 +161,12 @@ asserted.
 -NFS4ERR_LEASE_MOVED is returned if the server still has leases
 from this client that require migration recovery.
 
-
-
 .. _`nfs4_proc_fsid_present`:
 
 nfs4_proc_fsid_present
 ======================
 
-.. c:function:: int nfs4_proc_fsid_present (struct inode *inode, struct rpc_cred *cred)
+.. c:function:: int nfs4_proc_fsid_present(struct inode *inode, struct rpc_cred *cred)
 
     Is this FSID present or absent on server?
 
@@ -204,8 +175,6 @@ nfs4_proc_fsid_present
 
     :param struct rpc_cred \*cred:
         credential to use for this operation
-
-
 
 .. _`nfs4_proc_fsid_present.description`:
 
@@ -221,89 +190,57 @@ Returns NFS4_OK if the FSID is present on this server,
 NFS4ERR code if some error occurred on the server, or a
 negative errno if a local failure occurred.
 
-
-
 .. _`_nfs4_proc_secinfo`:
 
 _nfs4_proc_secinfo
 ==================
 
-.. c:function:: int _nfs4_proc_secinfo (struct inode *dir, const struct qstr *name, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
+.. c:function:: int _nfs4_proc_secinfo(struct inode *dir, const struct qstr *name, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
+
+    cl_rpcclient is using krb5i/p, use the integrity protected cl_rpcclient and the machine credential as per RFC3530bis and RFC5661 Security Considerations sections. Otherwise, just use the user cred with the filesystem's rpc_client.
 
     :param struct inode \*dir:
-
         *undescribed*
 
     :param const struct qstr \*name:
-
         *undescribed*
 
     :param struct nfs4_secinfo_flavors \*flavors:
-
         *undescribed*
 
     :param bool use_integrity:
-
         *undescribed*
-
-
-
-.. _`_nfs4_proc_secinfo.description`:
-
-Description
------------
-
-cl_rpcclient is using krb5i/p, use the integrity protected cl_rpcclient
-and the machine credential as per RFC3530bis and RFC5661 Security
-Considerations sections. Otherwise, just use the user cred with the
-filesystem's rpc_client.
-
-
 
 .. _`_nfs41_proc_secinfo_no_name`:
 
 _nfs41_proc_secinfo_no_name
 ===========================
 
-.. c:function:: int _nfs41_proc_secinfo_no_name (struct nfs_server *server, struct nfs_fh *fhandle, struct nfs_fsinfo *info, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
+.. c:function:: int _nfs41_proc_secinfo_no_name(struct nfs_server *server, struct nfs_fh *fhandle, struct nfs_fsinfo *info, struct nfs4_secinfo_flavors *flavors, bool use_integrity)
+
+    possible) as per RFC3530bis and RFC5661 Security Considerations sections
 
     :param struct nfs_server \*server:
-
         *undescribed*
 
     :param struct nfs_fh \*fhandle:
-
         *undescribed*
 
     :param struct nfs_fsinfo \*info:
-
         *undescribed*
 
     :param struct nfs4_secinfo_flavors \*flavors:
-
         *undescribed*
 
     :param bool use_integrity:
-
         *undescribed*
-
-
-
-.. _`_nfs41_proc_secinfo_no_name.description`:
-
-Description
------------
-
-possible) as per RFC3530bis and RFC5661 Security Considerations sections
-
-
 
 .. _`nfs41_test_stateid`:
 
 nfs41_test_stateid
 ==================
 
-.. c:function:: int nfs41_test_stateid (struct nfs_server *server, nfs4_stateid *stateid, struct rpc_cred *cred)
+.. c:function:: int nfs41_test_stateid(struct nfs_server *server, nfs4_stateid *stateid, struct rpc_cred *cred)
 
     perform a TEST_STATEID operation
 
@@ -316,8 +253,6 @@ nfs41_test_stateid
     :param struct rpc_cred \*cred:
         credential
 
-
-
 .. _`nfs41_test_stateid.description`:
 
 Description
@@ -327,14 +262,12 @@ Returns NFS_OK if the server recognizes that "stateid" is valid.
 Otherwise a negative NFS4ERR value is returned if the operation
 failed or the state ID is not currently valid.
 
-
-
 .. _`nfs41_free_stateid`:
 
 nfs41_free_stateid
 ==================
 
-.. c:function:: int nfs41_free_stateid (struct nfs_server *server, nfs4_stateid *stateid, struct rpc_cred *cred)
+.. c:function:: int nfs41_free_stateid(struct nfs_server *server, nfs4_stateid *stateid, struct rpc_cred *cred)
 
     perform a FREE_STATEID operation
 
@@ -347,8 +280,6 @@ nfs41_free_stateid
     :param struct rpc_cred \*cred:
         credential
 
-
-
 .. _`nfs41_free_stateid.description`:
 
 Description
@@ -356,4 +287,6 @@ Description
 
 Returns NFS_OK if the server freed "stateid".  Otherwise a
 negative NFS4ERR value is returned.
+
+.. This file was automatic generated / don't edit.
 

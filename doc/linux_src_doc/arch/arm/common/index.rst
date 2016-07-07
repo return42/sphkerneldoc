@@ -7,5 +7,5 @@ common
 .. toctree::
    :maxdepth: 1
 
-   locomo_c
-   sa1111_c
+    locomo_c
+    sa1111_c

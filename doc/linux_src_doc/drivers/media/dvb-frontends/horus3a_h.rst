@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-horus3a.h
-=========
-
+.. src-file: drivers/media/dvb-frontends/horus3a.h
 
 .. _`horus3a_config`:
 
 struct horus3a_config
 =====================
 
-.. c:type:: horus3a_config
+.. c:type:: struct horus3a_config
 
     the configuration of Horus3A tuner driver
-
 
 .. _`horus3a_config.definition`:
 
@@ -22,30 +17,30 @@ Definition
 
 .. code-block:: c
 
-  struct horus3a_config {
-    u8 i2c_address;
-    u8 xtal_freq_mhz;
-    void * set_tuner_priv;
-    int (* set_tuner_callback) (void *, int);
-  };
-
+    struct horus3a_config {
+        u8 i2c_address;
+        u8 xtal_freq_mhz;
+        void *set_tuner_priv;
+        int (* set_tuner_callback) (void *, int);
+    }
 
 .. _`horus3a_config.members`:
 
 Members
 -------
 
-:``i2c_address``:
+i2c_address
     I2C address of the tuner
 
-:``xtal_freq_mhz``:
+xtal_freq_mhz
     Oscillator frequency, MHz
 
-:``set_tuner_priv``:
+set_tuner_priv
     Callback function private context
 
-:``set_tuner_callback``:
+set_tuner_callback
     Callback function that notifies the parent driver
     which tuner is active now
 
+.. This file was automatic generated / don't edit.
 

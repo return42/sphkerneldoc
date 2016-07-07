@@ -7,6 +7,8 @@ fcoe
 .. toctree::
    :maxdepth: 1
 
-   fcoe_ctlr_c
-   fcoe_sysfs_c
-   fcoe_transport_c
+    fcoe_c
+    fcoe_ctlr_c
+    fcoe_h
+    fcoe_sysfs_c
+    fcoe_transport_c

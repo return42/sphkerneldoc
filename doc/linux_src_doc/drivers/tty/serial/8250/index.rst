@@ -7,4 +7,5 @@
 .. toctree::
    :maxdepth: 1
 
-   8250_port_c
+    8250_core_c
+    8250_port_c

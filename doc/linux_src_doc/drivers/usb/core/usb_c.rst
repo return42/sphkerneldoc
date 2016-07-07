@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-usb.c
-=====
-
+.. src-file: drivers/usb/core/usb.c
 
 .. _`usb_find_alt_setting`:
 
 usb_find_alt_setting
 ====================
 
-.. c:function:: struct usb_host_interface *usb_find_alt_setting (struct usb_host_config *config, unsigned int iface_num, unsigned int alt_num)
+.. c:function:: struct usb_host_interface *usb_find_alt_setting(struct usb_host_config *config, unsigned int iface_num, unsigned int alt_num)
 
     Given a configuration, find the alternate setting for the given interface.
 
@@ -23,8 +19,6 @@ usb_find_alt_setting
     :param unsigned int alt_num:
         alternate interface setting number to search for.
 
-
-
 .. _`usb_find_alt_setting.description`:
 
 Description
@@ -32,23 +26,19 @@ Description
 
 Search the configuration's interface cache for the given alt setting.
 
-
-
 .. _`usb_find_alt_setting.return`:
 
 Return
 ------
 
-The alternate setting, if found. ``NULL`` otherwise.
-
-
+The alternate setting, if found. \ ``NULL``\  otherwise.
 
 .. _`usb_ifnum_to_if`:
 
 usb_ifnum_to_if
 ===============
 
-.. c:function:: struct usb_interface *usb_ifnum_to_if (const struct usb_device *dev, unsigned ifnum)
+.. c:function:: struct usb_interface *usb_ifnum_to_if(const struct usb_device *dev, unsigned ifnum)
 
     get the interface object with a given interface number
 
@@ -57,8 +47,6 @@ usb_ifnum_to_if
 
     :param unsigned ifnum:
         the desired interface
-
-
 
 .. _`usb_ifnum_to_if.description`:
 
@@ -78,24 +66,20 @@ alternate settings available for this interfaces.
 Don't call this function unless you are bound to one of the interfaces
 on this device or you have locked the device!
 
-
-
 .. _`usb_ifnum_to_if.return`:
 
 Return
 ------
 
-A pointer to the interface that has ``ifnum`` as interface number,
-if found. ``NULL`` otherwise.
-
-
+A pointer to the interface that has \ ``ifnum``\  as interface number,
+if found. \ ``NULL``\  otherwise.
 
 .. _`usb_altnum_to_altsetting`:
 
 usb_altnum_to_altsetting
 ========================
 
-.. c:function:: struct usb_host_interface *usb_altnum_to_altsetting (const struct usb_interface *intf, unsigned int altnum)
+.. c:function:: struct usb_host_interface *usb_altnum_to_altsetting(const struct usb_interface *intf, unsigned int altnum)
 
     get the altsetting structure with a given alternate setting number.
 
@@ -104,8 +88,6 @@ usb_altnum_to_altsetting
 
     :param unsigned int altnum:
         the desired alternate setting number
-
-
 
 .. _`usb_altnum_to_altsetting.description`:
 
@@ -123,24 +105,20 @@ drivers avoid such mistakes.
 Don't call this function unless you are bound to the intf interface
 or you have locked the device!
 
-
-
 .. _`usb_altnum_to_altsetting.return`:
 
 Return
 ------
 
-A pointer to the entry of the altsetting array of ``intf`` that
-has ``altnum`` as the alternate setting number. ``NULL`` if not found.
-
-
+A pointer to the entry of the altsetting array of \ ``intf``\  that
+has \ ``altnum``\  as the alternate setting number. \ ``NULL``\  if not found.
 
 .. _`usb_find_interface`:
 
 usb_find_interface
 ==================
 
-.. c:function:: struct usb_interface *usb_find_interface (struct usb_driver *drv, int minor)
+.. c:function:: struct usb_interface *usb_find_interface(struct usb_driver *drv, int minor)
 
     find usb_interface pointer for driver and device
 
@@ -149,8 +127,6 @@ usb_find_interface
 
     :param int minor:
         the minor number of the desired device
-
-
 
 .. _`usb_find_interface.description`:
 
@@ -161,58 +137,48 @@ This walks the bus device list and returns a pointer to the interface
 with the matching minor and driver.  Note, this only works for devices
 that share the USB major number.
 
-
-
 .. _`usb_find_interface.return`:
 
 Return
 ------
 
-A pointer to the interface with the matching major and ``minor``\ .
-
-
+A pointer to the interface with the matching major and \ ``minor``\ .
 
 .. _`usb_for_each_dev`:
 
 usb_for_each_dev
 ================
 
-.. c:function:: int usb_for_each_dev (void *data, int (*fn) (struct usb_device *, void *)
+.. c:function:: int usb_for_each_dev(void *data, int (*) fn (struct usb_device *, void *)
 
     iterate over all USB devices in the system
 
     :param void \*data:
         data pointer that will be handed to the callback function
 
-    :param int (\*fn) (struct usb_device \*, void \*):
+    :param (int (\*) fn (struct usb_device \*, void \*):
         callback function to be called for each USB device
-
-
 
 .. _`usb_for_each_dev.description`:
 
 Description
 -----------
 
-Iterate over all USB devices and call ``fn`` for each, passing it ``data``\ . If it
+Iterate over all USB devices and call \ ``fn``\  for each, passing it \ ``data``\ . If it
 returns anything other than 0, we break the iteration prematurely and return
 that value.
-
-
 
 .. _`usb_release_dev`:
 
 usb_release_dev
 ===============
 
-.. c:function:: void usb_release_dev (struct device *dev)
+.. c:function:: void usb_release_dev(struct device *dev)
 
     free a usb device structure when all users of it are finished.
 
     :param struct device \*dev:
         device that's been disconnected
-
-
 
 .. _`usb_release_dev.description`:
 
@@ -222,14 +188,12 @@ Description
 Will be called only by the device core when all users of this usb device are
 done.
 
-
-
 .. _`usb_alloc_dev`:
 
 usb_alloc_dev
 =============
 
-.. c:function:: struct usb_device *usb_alloc_dev (struct usb_device *parent, struct usb_bus *bus, unsigned port1)
+.. c:function:: struct usb_device *usb_alloc_dev(struct usb_device *parent, struct usb_bus *bus, unsigned port1)
 
     usb device constructor (usbcore-internal)
 
@@ -242,16 +206,12 @@ usb_alloc_dev
     :param unsigned port1:
         one-based index of port; ignored for root hubs
 
-
-
 .. _`usb_alloc_dev.context`:
 
 Context
 -------
 
-!:c:func:`in_interrupt`
-
-
+!\ :c:func:`in_interrupt`\ 
 
 .. _`usb_alloc_dev.description`:
 
@@ -263,31 +223,25 @@ controllers) should ever call this.
 
 This call may not be used in a non-sleeping context.
 
-
-
 .. _`usb_alloc_dev.return`:
 
 Return
 ------
 
-On success, a pointer to the allocated usb device. ``NULL`` on
+On success, a pointer to the allocated usb device. \ ``NULL``\  on
 failure.
-
-
 
 .. _`usb_get_dev`:
 
 usb_get_dev
 ===========
 
-.. c:function:: struct usb_device *usb_get_dev (struct usb_device *dev)
+.. c:function:: struct usb_device *usb_get_dev(struct usb_device *dev)
 
     increments the reference count of the usb device structure
 
     :param struct usb_device \*dev:
         the device being referenced
-
-
 
 .. _`usb_get_dev.description`:
 
@@ -297,10 +251,8 @@ Description
 Each live reference to a device should be refcounted.
 
 Drivers for USB interfaces should normally record such references in
-their :c:func:`probe` methods, when they bind to an interface, and release
-them by calling :c:func:`usb_put_dev`, in their :c:func:`disconnect` methods.
-
-
+their \ :c:func:`probe`\  methods, when they bind to an interface, and release
+them by calling \ :c:func:`usb_put_dev`\ , in their \ :c:func:`disconnect`\  methods.
 
 .. _`usb_get_dev.return`:
 
@@ -309,21 +261,17 @@ Return
 
 A pointer to the device with the incremented reference counter.
 
-
-
 .. _`usb_put_dev`:
 
 usb_put_dev
 ===========
 
-.. c:function:: void usb_put_dev (struct usb_device *dev)
+.. c:function:: void usb_put_dev(struct usb_device *dev)
 
     release a use of the usb device structure
 
     :param struct usb_device \*dev:
         device that's been disconnected
-
-
 
 .. _`usb_put_dev.description`:
 
@@ -333,21 +281,17 @@ Description
 Must be called when a user of a device is finished with it.  When the last
 user of the device calls this function, the memory of the device is freed.
 
-
-
 .. _`usb_get_intf`:
 
 usb_get_intf
 ============
 
-.. c:function:: struct usb_interface *usb_get_intf (struct usb_interface *intf)
+.. c:function:: struct usb_interface *usb_get_intf(struct usb_interface *intf)
 
     increments the reference count of the usb interface structure
 
     :param struct usb_interface \*intf:
         the interface being referenced
-
-
 
 .. _`usb_get_intf.description`:
 
@@ -357,10 +301,8 @@ Description
 Each live reference to a interface must be refcounted.
 
 Drivers for USB interfaces should normally record such references in
-their :c:func:`probe` methods, when they bind to an interface, and release
-them by calling :c:func:`usb_put_intf`, in their :c:func:`disconnect` methods.
-
-
+their \ :c:func:`probe`\  methods, when they bind to an interface, and release
+them by calling \ :c:func:`usb_put_intf`\ , in their \ :c:func:`disconnect`\  methods.
 
 .. _`usb_get_intf.return`:
 
@@ -369,21 +311,17 @@ Return
 
 A pointer to the interface with the incremented reference counter.
 
-
-
 .. _`usb_put_intf`:
 
 usb_put_intf
 ============
 
-.. c:function:: void usb_put_intf (struct usb_interface *intf)
+.. c:function:: void usb_put_intf(struct usb_interface *intf)
 
     release a use of the usb interface structure
 
     :param struct usb_interface \*intf:
         interface that's been decremented
-
-
 
 .. _`usb_put_intf.description`:
 
@@ -394,14 +332,12 @@ Must be called when a user of an interface is finished with it.  When the
 last user of the interface calls this function, the memory of the interface
 is freed.
 
-
-
 .. _`usb_lock_device_for_reset`:
 
 usb_lock_device_for_reset
 =========================
 
-.. c:function:: int usb_lock_device_for_reset (struct usb_device *udev, const struct usb_interface *iface)
+.. c:function:: int usb_lock_device_for_reset(struct usb_device *udev, const struct usb_interface *iface)
 
     cautiously acquire the lock for a usb device structure
 
@@ -410,8 +346,6 @@ usb_lock_device_for_reset
 
     :param const struct usb_interface \*iface:
         interface bound to the driver making the request (optional)
-
-
 
 .. _`usb_lock_device_for_reset.description`:
 
@@ -422,10 +356,8 @@ Attempts to acquire the device lock, but fails if the device is
 NOTATTACHED or SUSPENDED, or if iface is specified and the interface
 is neither BINDING nor BOUND.  Rather than sleeping to wait for the
 lock, the routine polls repeatedly.  This is to prevent deadlock with
-disconnect; in some drivers (such as usb-storage) the :c:func:`disconnect`
-or :c:func:`suspend` method will block waiting for a device reset to complete.
-
-
+disconnect; in some drivers (such as usb-storage) the \ :c:func:`disconnect`\ 
+or \ :c:func:`suspend`\  method will block waiting for a device reset to complete.
 
 .. _`usb_lock_device_for_reset.return`:
 
@@ -434,21 +366,17 @@ Return
 
 A negative error code for failure, otherwise 0.
 
-
-
 .. _`usb_get_current_frame_number`:
 
 usb_get_current_frame_number
 ============================
 
-.. c:function:: int usb_get_current_frame_number (struct usb_device *dev)
+.. c:function:: int usb_get_current_frame_number(struct usb_device *dev)
 
     return current bus frame number
 
     :param struct usb_device \*dev:
         the device whose bus is being queried
-
-
 
 .. _`usb_get_current_frame_number.return`:
 
@@ -458,8 +386,6 @@ Return
 The current frame number for the USB host controller used
 with the given USB device. This can be used when scheduling
 isochronous requests.
-
-
 
 .. _`usb_get_current_frame_number.note`:
 
@@ -471,14 +397,12 @@ horizons". While one type might support scheduling only 32 frames
 into the future, others could support scheduling up to 1024 frames
 into the future.
 
-
-
 .. _`usb_alloc_coherent`:
 
 usb_alloc_coherent
 ==================
 
-.. c:function:: void *usb_alloc_coherent (struct usb_device *dev, size_t size, gfp_t mem_flags, dma_addr_t *dma)
+.. c:function:: void *usb_alloc_coherent(struct usb_device *dev, size_t size, gfp_t mem_flags, dma_addr_t *dma)
 
     allocate dma-consistent buffer for URB_NO_xxx_DMA_MAP
 
@@ -494,8 +418,6 @@ usb_alloc_coherent
     :param dma_addr_t \*dma:
         used to return DMA address of buffer
 
-
-
 .. _`usb_alloc_coherent.return`:
 
 Return
@@ -505,8 +427,6 @@ Either null (indicating no buffer could be allocated), or the
 cpu-space pointer to a buffer that may be used to perform DMA to the
 specified device.  Such cpu-space buffers are returned along with the DMA
 address (through the pointer provided).
-
-
 
 .. _`usb_alloc_coherent.note`:
 
@@ -521,18 +441,16 @@ Using these buffers also eliminates cacheline sharing problems on
 architectures where CPU caches are not DMA-coherent.  On systems without
 bus-snooping caches, these buffers are uncached.
 
-When the buffer is no longer used, free it with :c:func:`usb_free_coherent`.
-
-
+When the buffer is no longer used, free it with \ :c:func:`usb_free_coherent`\ .
 
 .. _`usb_free_coherent`:
 
 usb_free_coherent
 =================
 
-.. c:function:: void usb_free_coherent (struct usb_device *dev, size_t size, void *addr, dma_addr_t dma)
+.. c:function:: void usb_free_coherent(struct usb_device *dev, size_t size, void *addr, dma_addr_t dma)
 
-    free memory allocated with usb_alloc_coherent()
+    free memory allocated with \ :c:func:`usb_alloc_coherent`\ 
 
     :param struct usb_device \*dev:
         device the buffer was used with
@@ -546,32 +464,26 @@ usb_free_coherent
     :param dma_addr_t dma:
         DMA address of buffer
 
-
-
 .. _`usb_free_coherent.description`:
 
 Description
 -----------
 
 This reclaims an I/O buffer, letting it be reused.  The memory must have
-been allocated using :c:func:`usb_alloc_coherent`, and the parameters must match
+been allocated using \ :c:func:`usb_alloc_coherent`\ , and the parameters must match
 those provided in that allocation request.
-
-
 
 .. _`usb_buffer_map`:
 
 usb_buffer_map
 ==============
 
-.. c:function:: struct urb *usb_buffer_map (struct urb *urb)
+.. c:function:: struct urb *usb_buffer_map(struct urb *urb)
 
     create DMA mapping(s) for an urb
 
     :param struct urb \*urb:
         urb whose transfer_buffer/setup_packet will be mapped
-
-
 
 .. _`usb_buffer_map.description`:
 
@@ -583,65 +495,55 @@ succeeds. If the device is connected to this system through a non-DMA
 controller, this operation always succeeds.
 
 This call would normally be used for an urb which is reused, perhaps
-as the target of a large periodic transfer, with :c:func:`usb_buffer_dmasync`
+as the target of a large periodic transfer, with \ :c:func:`usb_buffer_dmasync`\ 
 calls to synchronize memory and dma state.
 
-Reverse the effect of this call with :c:func:`usb_buffer_unmap`.
-
-
+Reverse the effect of this call with \ :c:func:`usb_buffer_unmap`\ .
 
 .. _`usb_buffer_map.return`:
 
 Return
 ------
 
-Either ``NULL`` (indicating no buffer could be mapped), or ``urb``\ .
-
-
+Either \ ``NULL``\  (indicating no buffer could be mapped), or \ ``urb``\ .
 
 .. _`usb_buffer_dmasync`:
 
 usb_buffer_dmasync
 ==================
 
-.. c:function:: void usb_buffer_dmasync (struct urb *urb)
+.. c:function:: void usb_buffer_dmasync(struct urb *urb)
 
     synchronize DMA and CPU view of buffer(s)
 
     :param struct urb \*urb:
         urb whose transfer_buffer/setup_packet will be synchronized
 
-
-
 .. _`usb_buffer_unmap`:
 
 usb_buffer_unmap
 ================
 
-.. c:function:: void usb_buffer_unmap (struct urb *urb)
+.. c:function:: void usb_buffer_unmap(struct urb *urb)
 
     free DMA mapping(s) for an urb
 
     :param struct urb \*urb:
         urb whose transfer_buffer will be unmapped
 
-
-
 .. _`usb_buffer_unmap.description`:
 
 Description
 -----------
 
-Reverses the effect of :c:func:`usb_buffer_map`.
-
-
+Reverses the effect of \ :c:func:`usb_buffer_map`\ .
 
 .. _`usb_buffer_map_sg`:
 
 usb_buffer_map_sg
 =================
 
-.. c:function:: int usb_buffer_map_sg (const struct usb_device *dev, int is_in, struct scatterlist *sg, int nents)
+.. c:function:: int usb_buffer_map_sg(const struct usb_device *dev, int is_in, struct scatterlist *sg, int nents)
 
     create scatterlist DMA mapping(s) for an endpoint
 
@@ -657,8 +559,6 @@ usb_buffer_map_sg
     :param int nents:
         the number of entries in the scatterlist
 
-
-
 .. _`usb_buffer_map_sg.return`:
 
 Return
@@ -666,8 +566,6 @@ Return
 
 Either < 0 (indicating no buffers could be mapped), or the
 number of DMA mapping array entries in the scatterlist.
-
-
 
 .. _`usb_buffer_map_sg.note`:
 
@@ -685,19 +583,17 @@ mapping entry returned, stopping on the first error or when all succeed.
 Better yet, use the usb_sg\_\*() calls, which do that (and more) for you.
 
 This call would normally be used when translating scatterlist requests,
-rather than :c:func:`usb_buffer_map`, since on some hardware (with IOMMUs) it
+rather than \ :c:func:`usb_buffer_map`\ , since on some hardware (with IOMMUs) it
 may be able to coalesce mappings for improved I/O efficiency.
 
-Reverse the effect of this call with :c:func:`usb_buffer_unmap_sg`.
-
-
+Reverse the effect of this call with \ :c:func:`usb_buffer_unmap_sg`\ .
 
 .. _`usb_buffer_dmasync_sg`:
 
 usb_buffer_dmasync_sg
 =====================
 
-.. c:function:: void usb_buffer_dmasync_sg (const struct usb_device *dev, int is_in, struct scatterlist *sg, int n_hw_ents)
+.. c:function:: void usb_buffer_dmasync_sg(const struct usb_device *dev, int is_in, struct scatterlist *sg, int n_hw_ents)
 
     synchronize DMA and CPU view of scatterlist buffer(s)
 
@@ -713,8 +609,6 @@ usb_buffer_dmasync_sg
     :param int n_hw_ents:
         the positive return value from usb_buffer_map_sg
 
-
-
 .. _`usb_buffer_dmasync_sg.description`:
 
 Description
@@ -723,14 +617,12 @@ Description
 Use this when you are re-using a scatterlist's data buffers for
 another USB request.
 
-
-
 .. _`usb_buffer_unmap_sg`:
 
 usb_buffer_unmap_sg
 ===================
 
-.. c:function:: void usb_buffer_unmap_sg (const struct usb_device *dev, int is_in, struct scatterlist *sg, int n_hw_ents)
+.. c:function:: void usb_buffer_unmap_sg(const struct usb_device *dev, int is_in, struct scatterlist *sg, int n_hw_ents)
 
     free DMA mapping(s) for a scatterlist
 
@@ -746,12 +638,12 @@ usb_buffer_unmap_sg
     :param int n_hw_ents:
         the positive return value from usb_buffer_map_sg
 
-
-
 .. _`usb_buffer_unmap_sg.description`:
 
 Description
 -----------
 
-Reverses the effect of :c:func:`usb_buffer_map_sg`.
+Reverses the effect of \ :c:func:`usb_buffer_map_sg`\ .
+
+.. This file was automatic generated / don't edit.
 

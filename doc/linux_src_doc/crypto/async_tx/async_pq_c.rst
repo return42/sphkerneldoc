@@ -1,82 +1,63 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-async_pq.c
-==========
-
+.. src-file: crypto/async_tx/async_pq.c
 
 .. _`do_async_gen_syndrome`:
 
 do_async_gen_syndrome
 =====================
 
-.. c:function:: __async_inline struct dma_async_tx_descriptor *do_async_gen_syndrome (struct dma_chan *chan, const unsigned char *scfs, int disks, struct dmaengine_unmap_data *unmap, enum dma_ctrl_flags dma_flags, struct async_submit_ctl *submit)
+.. c:function:: __async_inline struct dma_async_tx_descriptor *do_async_gen_syndrome(struct dma_chan *chan, const unsigned char *scfs, int disks, struct dmaengine_unmap_data *unmap, enum dma_ctrl_flags dma_flags, struct async_submit_ctl *submit)
 
     asynchronously calculate P and/or Q
 
     :param struct dma_chan \*chan:
-
         *undescribed*
 
     :param const unsigned char \*scfs:
-
         *undescribed*
 
     :param int disks:
-
         *undescribed*
 
     :param struct dmaengine_unmap_data \*unmap:
-
         *undescribed*
 
     :param enum dma_ctrl_flags dma_flags:
-
         *undescribed*
 
     :param struct async_submit_ctl \*submit:
-
         *undescribed*
-
-
 
 .. _`do_sync_gen_syndrome`:
 
 do_sync_gen_syndrome
 ====================
 
-.. c:function:: void do_sync_gen_syndrome (struct page **blocks, unsigned int offset, int disks, size_t len, struct async_submit_ctl *submit)
+.. c:function:: void do_sync_gen_syndrome(struct page **blocks, unsigned int offset, int disks, size_t len, struct async_submit_ctl *submit)
 
     synchronously calculate a raid6 syndrome
 
     :param struct page \*\*blocks:
-
         *undescribed*
 
     :param unsigned int offset:
-
         *undescribed*
 
     :param int disks:
-
         *undescribed*
 
     :param size_t len:
-
         *undescribed*
 
     :param struct async_submit_ctl \*submit:
-
         *undescribed*
-
-
 
 .. _`async_gen_syndrome`:
 
 async_gen_syndrome
 ==================
 
-.. c:function:: struct dma_async_tx_descriptor *async_gen_syndrome (struct page **blocks, unsigned int offset, int disks, size_t len, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_gen_syndrome(struct page **blocks, unsigned int offset, int disks, size_t len, struct async_submit_ctl *submit)
 
     asynchronously calculate a raid6 syndrome
 
@@ -94,8 +75,6 @@ async_gen_syndrome
 
     :param struct async_submit_ctl \*submit:
         submission/completion modifiers
-
-
 
 .. _`async_gen_syndrome.general-note`:
 
@@ -115,14 +94,12 @@ set to NULL those buffers will be replaced with the raid6_zero_page
 in the synchronous path and omitted in the hardware-asynchronous
 path.
 
-
-
 .. _`async_syndrome_val`:
 
 async_syndrome_val
 ==================
 
-.. c:function:: struct dma_async_tx_descriptor *async_syndrome_val (struct page **blocks, unsigned int offset, int disks, size_t len, enum sum_check_flags *pqres, struct page *spare, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_syndrome_val(struct page **blocks, unsigned int offset, int disks, size_t len, enum sum_check_flags *pqres, struct page *spare, struct async_submit_ctl *submit)
 
     asynchronously validate a raid6 syndrome
 
@@ -147,8 +124,6 @@ async_syndrome_val
     :param struct async_submit_ctl \*submit:
         submission / completion modifiers
 
-
-
 .. _`async_syndrome_val.description`:
 
 Description
@@ -158,4 +133,6 @@ The same notes from async_gen_syndrome apply to the 'blocks',
 and 'disks' parameters of this routine.  The synchronous path
 requires a temporary result buffer and submit->scribble to be
 specified.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,5 @@ onenand
 .. toctree::
    :maxdepth: 1
 
-   onenand_base_c
+    onenand_base_c
+    onenand_bbt_c

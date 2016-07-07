@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ad7291.h
-========
-
+.. src-file: include/linux/platform_data/ad7291.h
 
 .. _`ad7291_platform_data`:
 
 struct ad7291_platform_data
 ===========================
 
-.. c:type:: ad7291_platform_data
+.. c:type:: struct ad7291_platform_data
 
     AD7291 platform data
-
 
 .. _`ad7291_platform_data.definition`:
 
@@ -22,17 +17,17 @@ Definition
 
 .. code-block:: c
 
-  struct ad7291_platform_data {
-    bool use_external_ref;
-  };
-
+    struct ad7291_platform_data {
+        bool use_external_ref;
+    }
 
 .. _`ad7291_platform_data.members`:
 
 Members
 -------
 
-:``use_external_ref``:
+use_external_ref
     Whether to use an external or internal reference voltage
 
+.. This file was automatic generated / don't edit.
 

@@ -1,0 +1,206 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/input/touchscreen/s3c2410_ts.c
+
+.. _`s3c2410ts`:
+
+struct s3c2410ts
+================
+
+.. c:type:: struct s3c2410ts
+
+    driver touchscreen state.
+
+.. _`s3c2410ts.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct s3c2410ts {
+        struct s3c_adc_client *client;
+        struct device *dev;
+        struct input_dev *input;
+        struct clk *clock;
+        void __iomem *io;
+        unsigned long xp;
+        unsigned long yp;
+        int irq_tc;
+        int count;
+        int shift;
+        int features;
+    }
+
+.. _`s3c2410ts.members`:
+
+Members
+-------
+
+client
+    The ADC client we registered with the core driver.
+
+dev
+    The device we are bound to.
+
+input
+    The input device we registered with the input subsystem.
+
+clock
+    The clock for the adc.
+
+io
+    Pointer to the IO base.
+
+xp
+    The accumulated X position data.
+
+yp
+    The accumulated Y position data.
+
+irq_tc
+    The interrupt number for pen up/down interrupt
+
+count
+    The number of samples collected.
+
+shift
+    The log2 of the maximum count to read in one go.
+
+features
+    The features supported by the TSADC MOdule.
+
+.. _`get_down`:
+
+get_down
+========
+
+.. c:function:: bool get_down(unsigned long data0, unsigned long data1)
+
+    return the down state of the pen
+
+    :param unsigned long data0:
+        The data read from ADCDAT0 register.
+
+    :param unsigned long data1:
+        The data read from ADCDAT1 register.
+
+.. _`get_down.description`:
+
+Description
+-----------
+
+Return non-zero if both readings show that the pen is down.
+
+.. _`stylus_irq`:
+
+stylus_irq
+==========
+
+.. c:function:: irqreturn_t stylus_irq(int irq, void *dev_id)
+
+    touchscreen stylus event interrupt
+
+    :param int irq:
+        The interrupt number
+
+    :param void \*dev_id:
+        The device ID.
+
+.. _`stylus_irq.description`:
+
+Description
+-----------
+
+Called when the IRQ_TC is fired for a pen up or down event.
+
+.. _`s3c24xx_ts_conversion`:
+
+s3c24xx_ts_conversion
+=====================
+
+.. c:function:: void s3c24xx_ts_conversion(struct s3c_adc_client *client, unsigned data0, unsigned data1, unsigned *left)
+
+    ADC conversion callback
+
+    :param struct s3c_adc_client \*client:
+        The client that was registered with the ADC core.
+
+    :param unsigned data0:
+        The reading from ADCDAT0.
+
+    :param unsigned data1:
+        The reading from ADCDAT1.
+
+    :param unsigned \*left:
+        The number of samples left.
+
+.. _`s3c24xx_ts_conversion.description`:
+
+Description
+-----------
+
+Called when a conversion has finished.
+
+.. _`s3c24xx_ts_select`:
+
+s3c24xx_ts_select
+=================
+
+.. c:function:: void s3c24xx_ts_select(struct s3c_adc_client *client, unsigned select)
+
+    ADC selection callback.
+
+    :param struct s3c_adc_client \*client:
+        The client that was registered with the ADC core.
+
+    :param unsigned select:
+        The reason for select.
+
+.. _`s3c24xx_ts_select.description`:
+
+Description
+-----------
+
+Called when the ADC core selects (or deslects) us as a client.
+
+.. _`s3c2410ts_probe`:
+
+s3c2410ts_probe
+===============
+
+.. c:function:: int s3c2410ts_probe(struct platform_device *pdev)
+
+    device core probe entry point
+
+    :param struct platform_device \*pdev:
+        The device we are being bound to.
+
+.. _`s3c2410ts_probe.description`:
+
+Description
+-----------
+
+Initialise, find and allocate any resources we need to run and then
+register with the ADC and input systems.
+
+.. _`s3c2410ts_remove`:
+
+s3c2410ts_remove
+================
+
+.. c:function:: int s3c2410ts_remove(struct platform_device *pdev)
+
+    device core removal entry point
+
+    :param struct platform_device \*pdev:
+        The device we are being removed from.
+
+.. _`s3c2410ts_remove.description`:
+
+Description
+-----------
+
+Free up our state ready to be removed.
+
+.. This file was automatic generated / don't edit.
+

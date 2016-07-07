@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-seqno-fence.h
-=============
-
+.. src-file: include/linux/seqno-fence.h
 
 .. _`to_seqno_fence`:
 
 to_seqno_fence
 ==============
 
-.. c:function:: struct seqno_fence *to_seqno_fence (struct fence *fence)
+.. c:function:: struct seqno_fence *to_seqno_fence(struct fence *fence)
 
     cast a fence to a seqno_fence
 
     :param struct fence \*fence:
         fence to cast to a seqno_fence
-
-
 
 .. _`to_seqno_fence.description`:
 
@@ -27,14 +21,12 @@ Description
 Returns NULL if the fence is not a seqno_fence,
 or the seqno_fence otherwise.
 
-
-
 .. _`seqno_fence_init`:
 
 seqno_fence_init
 ================
 
-.. c:function:: void seqno_fence_init (struct seqno_fence *fence, spinlock_t *lock, struct dma_buf *sync_buf, uint32_t context, uint32_t seqno_ofs, uint32_t seqno, enum seqno_fence_condition cond, const struct fence_ops *ops)
+.. c:function:: void seqno_fence_init(struct seqno_fence *fence, spinlock_t *lock, struct dma_buf *sync_buf, uint32_t context, uint32_t seqno_ofs, uint32_t seqno, enum seqno_fence_condition cond, const struct fence_ops *ops)
 
     initialize a seqno fence
 
@@ -51,7 +43,7 @@ seqno_fence_init
         the execution context this fence is a part of
 
     :param uint32_t seqno_ofs:
-        the offset within ``sync_buf``
+        the offset within \ ``sync_buf``\ 
 
     :param uint32_t seqno:
         the sequence # to signal on
@@ -61,8 +53,6 @@ seqno_fence_init
 
     :param const struct fence_ops \*ops:
         the fence_ops for operations on this seqno fence
-
-
 
 .. _`seqno_fence_init.description`:
 
@@ -94,4 +84,6 @@ before submitting instructions for the hardware to wait on the fence.
 However, when ops.enable_signaling is not called, it doesn't have to be
 done as soon as possible, just before there's any real danger of seqno
 wraparound.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-selinux.h
-=========
-
+.. src-file: include/linux/selinux.h
 
 .. _`selinux_is_enabled`:
 
 selinux_is_enabled
 ==================
 
-.. c:function:: bool selinux_is_enabled ( void)
+.. c:function:: bool selinux_is_enabled( void)
 
     is SELinux enabled?
 
-    :param void:
+    :param  void:
         no arguments
+
+.. This file was automatic generated / don't edit.
 

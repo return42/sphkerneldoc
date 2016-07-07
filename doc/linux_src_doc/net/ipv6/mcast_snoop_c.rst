@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-mcast_snoop.c
-=============
-
+.. src-file: net/ipv6/mcast_snoop.c
 
 .. _`ipv6_mc_check_mld`:
 
 ipv6_mc_check_mld
 =================
 
-.. c:function:: int ipv6_mc_check_mld (struct sk_buff *skb, struct sk_buff **skb_trimmed)
+.. c:function:: int ipv6_mc_check_mld(struct sk_buff *skb, struct sk_buff **skb_trimmed)
 
     checks whether this is a sane MLD packet
 
@@ -19,8 +15,6 @@ ipv6_mc_check_mld
 
     :param struct sk_buff \*\*skb_trimmed:
         to store an skb pointer trimmed to IPv6 packet tail (optional)
-
-
 
 .. _`ipv6_mc_check_mld.description`:
 
@@ -32,7 +26,6 @@ skb transport header accordingly and returns zero.
 
 -EINVAL: A broken packet was detected, i.e. it violates some internet
 standard
-
 -ENOMSG: IP header validation succeeded but it is not an MLD packet.
 -ENOMEM: A memory allocation failure happened.
 
@@ -46,4 +39,6 @@ desirable for layer 2 frame jugglers).
 
 Caller needs to set the skb network header and free any returned skb if it
 differs from the provided skb.
+
+.. This file was automatic generated / don't edit.
 

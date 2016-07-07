@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-mptlan.c
-========
-
+.. src-file: drivers/message/fusion/mptlan.c
 
 .. _`lan_reply`:
 
 lan_reply
 =========
 
-.. c:function:: int lan_reply (MPT_ADAPTER *ioc, MPT_FRAME_HDR *mf, MPT_FRAME_HDR *reply)
+.. c:function:: int lan_reply(MPT_ADAPTER *ioc, MPT_FRAME_HDR *mf, MPT_FRAME_HDR *reply)
 
     Handle all data sent from the hardware.
 
@@ -23,8 +19,6 @@ lan_reply
     :param MPT_FRAME_HDR \*reply:
         Pointer to MPT reply frame
 
-
-
 .. _`lan_reply.description`:
 
 Description
@@ -32,4 +26,6 @@ Description
 
 Returns 1 indicating original alloc'd request frame ptr
 should be freed, or 0 if it shouldn't.
+
+.. This file was automatic generated / don't edit.
 

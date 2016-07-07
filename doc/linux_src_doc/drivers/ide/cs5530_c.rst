@@ -1,0 +1,105 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/ide/cs5530.c
+
+.. _`cs5530_set_pio_mode`:
+
+cs5530_set_pio_mode
+===================
+
+.. c:function:: void cs5530_set_pio_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    set host controller for PIO mode
+
+    :param ide_hwif_t \*hwif:
+        port
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`cs5530_set_pio_mode.description`:
+
+Description
+-----------
+
+Handles setting of PIO mode for the chipset.
+
+The \ :c:func:`init_hwif_cs5530`\  routine guarantees that all drives
+will have valid default PIO timings set up before we get here.
+
+.. _`cs5530_udma_filter`:
+
+cs5530_udma_filter
+==================
+
+.. c:function:: u8 cs5530_udma_filter(ide_drive_t *drive)
+
+    UDMA filter
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`cs5530_udma_filter.description`:
+
+Description
+-----------
+
+\ :c:func:`cs5530_udma_filter`\  does UDMA mask filtering for the given drive
+taking into the consideration capabilities of the mate device.
+
+The CS5530 specifies that two drives sharing a cable cannot mix
+UDMA/MDMA.  It has to be one or the other, for the pair, though
+different timings can still be chosen for each drive.  We could
+set the appropriate timing bits on the fly, but that might be
+a bit confusing.  So, for now we statically handle this requirement
+by looking at our mate drive to see what it is capable of, before
+choosing a mode for our own drive.
+
+.. _`cs5530_udma_filter.note`:
+
+Note
+----
+
+This relies on the fact we never fail from UDMA to MWDMA2
+but instead drop to PIO.
+
+.. _`init_chipset_cs5530`:
+
+init_chipset_cs5530
+===================
+
+.. c:function:: int init_chipset_cs5530(struct pci_dev *dev)
+
+    set up 5530 bridge
+
+    :param struct pci_dev \*dev:
+        PCI device
+
+.. _`init_chipset_cs5530.description`:
+
+Description
+-----------
+
+Initialize the cs5530 bridge for reliable IDE DMA operation.
+
+.. _`init_hwif_cs5530`:
+
+init_hwif_cs5530
+================
+
+.. c:function:: void init_hwif_cs5530(ide_hwif_t *hwif)
+
+    initialise an IDE channel
+
+    :param ide_hwif_t \*hwif:
+        IDE to initialize
+
+.. _`init_hwif_cs5530.description`:
+
+Description
+-----------
+
+This gets invoked by the IDE driver once for each channel. It
+performs channel-specific pre-initialization before drive probing.
+
+.. This file was automatic generated / don't edit.
+

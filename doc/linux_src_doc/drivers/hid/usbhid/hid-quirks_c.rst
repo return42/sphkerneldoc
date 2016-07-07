@@ -1,24 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-hid-quirks.c
-============
-
+.. src-file: drivers/hid/usbhid/hid-quirks.c
 
 .. _`usbhid_exists_dquirk`:
 
 usbhid_exists_dquirk
 ====================
 
-.. c:function:: struct hid_blacklist *usbhid_exists_dquirk (const u16 idVendor, const u16 idProduct)
+.. c:function:: struct hid_blacklist *usbhid_exists_dquirk(const u16 idVendor, const u16 idProduct)
+
+    find any dynamic quirks for a USB HID device
 
     :param const u16 idVendor:
         the 16-bit USB vendor ID, in native byteorder
 
     :param const u16 idProduct:
         the 16-bit USB product ID, in native byteorder
-
-
 
 .. _`usbhid_exists_dquirk.description`:
 
@@ -29,23 +25,21 @@ Scans dquirks_list for a matching dynamic quirk and returns
 the pointer to the relevant struct hid_blacklist if found.
 Must be called with a read lock held on dquirks_rwsem.
 
+.. _`usbhid_exists_dquirk.return`:
 
+Return
+------
 
-.. _`usbhid_exists_dquirk.returns`:
-
-Returns
--------
-
-NULL if no quirk found, struct hid_blacklist * if found.
-
-
+NULL if no quirk found, struct hid_blacklist \* if found.
 
 .. _`usbhid_modify_dquirk`:
 
 usbhid_modify_dquirk
 ====================
 
-.. c:function:: int usbhid_modify_dquirk (const u16 idVendor, const u16 idProduct, const u32 quirks)
+.. c:function:: int usbhid_modify_dquirk(const u16 idVendor, const u16 idProduct, const u32 quirks)
+
+    add/replace a HID quirk
 
     :param const u16 idVendor:
         the 16-bit USB vendor ID, in native byteorder
@@ -56,8 +50,6 @@ usbhid_modify_dquirk
     :param const u32 quirks:
         the u32 quirks value to add/replace
 
-
-
 .. _`usbhid_modify_dquirk.description`:
 
 Description
@@ -67,28 +59,24 @@ If an dynamic quirk exists in memory for this (idVendor,
 idProduct) pair, replace its quirks value with what was
 provided.  Otherwise, add the quirk to the dynamic quirks list.
 
+.. _`usbhid_modify_dquirk.return`:
 
-
-.. _`usbhid_modify_dquirk.returns`:
-
-Returns
--------
+Return
+------
 
 0 OK, -error on failure.
-
-
 
 .. _`usbhid_remove_all_dquirks`:
 
 usbhid_remove_all_dquirks
 =========================
 
-.. c:function:: void usbhid_remove_all_dquirks ( void)
+.. c:function:: void usbhid_remove_all_dquirks( void)
 
-    :param void:
+    remove all runtime HID quirks from memory
+
+    :param  void:
         no arguments
-
-
 
 .. _`usbhid_remove_all_dquirks.description`:
 
@@ -98,32 +86,29 @@ Description
 Free all memory associated with dynamic quirks - called before
 module unload.
 
-
-
 .. _`usbhid_quirks_init`:
 
 usbhid_quirks_init
 ==================
 
-.. c:function:: int usbhid_quirks_init (char **quirks_param)
+.. c:function:: int usbhid_quirks_init(char **quirks_param)
+
+    apply USB HID quirks specified at module load time
 
     :param char \*\*quirks_param:
-
         *undescribed*
-
-
 
 .. _`usbhid_quirks_exit`:
 
 usbhid_quirks_exit
 ==================
 
-.. c:function:: void usbhid_quirks_exit ( void)
+.. c:function:: void usbhid_quirks_exit( void)
 
-    :param void:
+    release memory associated with dynamic_quirks
+
+    :param  void:
         no arguments
-
-
 
 .. _`usbhid_quirks_exit.description`:
 
@@ -133,31 +118,27 @@ Description
 Release all memory associated with dynamic quirks.  Called upon
 module unload.
 
+.. _`usbhid_quirks_exit.return`:
 
-
-.. _`usbhid_quirks_exit.returns`:
-
-Returns
--------
+Return
+------
 
 nothing
-
-
 
 .. _`usbhid_exists_squirk`:
 
 usbhid_exists_squirk
 ====================
 
-.. c:function:: const struct hid_blacklist *usbhid_exists_squirk (const u16 idVendor, const u16 idProduct)
+.. c:function:: const struct hid_blacklist *usbhid_exists_squirk(const u16 idVendor, const u16 idProduct)
+
+    return any static quirks for a USB HID device
 
     :param const u16 idVendor:
         the 16-bit USB vendor ID, in native byteorder
 
     :param const u16 idProduct:
         the 16-bit USB product ID, in native byteorder
-
-
 
 .. _`usbhid_exists_squirk.description`:
 
@@ -167,31 +148,27 @@ Description
 Given a USB vendor ID and product ID, return a pointer to
 the hid_blacklist entry associated with that device.
 
+.. _`usbhid_exists_squirk.return`:
 
-
-.. _`usbhid_exists_squirk.returns`:
-
-Returns
--------
+Return
+------
 
 pointer if quirk found, or NULL if no quirks found.
-
-
 
 .. _`usbhid_lookup_quirk`:
 
 usbhid_lookup_quirk
 ===================
 
-.. c:function:: u32 usbhid_lookup_quirk (const u16 idVendor, const u16 idProduct)
+.. c:function:: u32 usbhid_lookup_quirk(const u16 idVendor, const u16 idProduct)
+
+    return any quirks associated with a USB HID device
 
     :param const u16 idVendor:
         the 16-bit USB vendor ID, in native byteorder
 
     :param const u16 idProduct:
         the 16-bit USB product ID, in native byteorder
-
-
 
 .. _`usbhid_lookup_quirk.description`:
 
@@ -201,12 +178,12 @@ Description
 Given a USB vendor ID and product ID, return any quirks associated
 with that device.
 
+.. _`usbhid_lookup_quirk.return`:
 
-
-.. _`usbhid_lookup_quirk.returns`:
-
-Returns
--------
+Return
+------
 
 a u32 quirks value.
+
+.. This file was automatic generated / don't edit.
 

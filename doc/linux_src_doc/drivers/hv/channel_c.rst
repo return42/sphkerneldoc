@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-channel.c
-=========
-
+.. src-file: drivers/hv/channel.c
 
 .. _`vmbus_sendpacket`:
 
 vmbus_sendpacket
 ================
 
-.. c:function:: int vmbus_sendpacket (struct vmbus_channel *channel, void *buffer, u32 bufferlen, u64 requestid, enum vmbus_packet_type type, u32 flags)
+.. c:function:: int vmbus_sendpacket(struct vmbus_channel *channel, void *buffer, u32 bufferlen, u64 requestid, enum vmbus_packet_type type, u32 flags)
 
     Send the specified buffer on the given channel
 
@@ -31,29 +27,24 @@ vmbus_sendpacket
         packet etc.
 
     :param u32 flags:
-
         *undescribed*
-
-
 
 .. _`vmbus_sendpacket.description`:
 
 Description
 -----------
 
-Sends data in ``buffer`` directly to hyper-v via the vmbus
+Sends data in \ ``buffer``\  directly to hyper-v via the vmbus
 This will send the data unparsed to hyper-v.
 
 Mainly used by Hyper-V drivers.
-
-
 
 .. _`__vmbus_recvpacket`:
 
 __vmbus_recvpacket
 ==================
 
-.. c:function:: int __vmbus_recvpacket (struct vmbus_channel *channel, void *buffer, u32 bufferlen, u32 *buffer_actual_len, u64 *requestid, bool raw)
+.. c:function:: int __vmbus_recvpacket(struct vmbus_channel *channel, void *buffer, u32 bufferlen, u32 *buffer_actual_len, u64 *requestid, bool raw)
 
     Retrieve the user packet on the specified channel
 
@@ -73,10 +64,7 @@ __vmbus_recvpacket
         Identifier of the request
 
     :param bool raw:
-
         *undescribed*
-
-
 
 .. _`__vmbus_recvpacket.description`:
 
@@ -87,4 +75,6 @@ Receives directly from the hyper-v vmbus and puts the data it received
 into Buffer. This will receive the data unparsed from hyper-v.
 
 Mainly used by Hyper-V drivers.
+
+.. This file was automatic generated / don't edit.
 

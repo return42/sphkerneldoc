@@ -7,4 +7,4 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   physmem_c
+    physmem_c

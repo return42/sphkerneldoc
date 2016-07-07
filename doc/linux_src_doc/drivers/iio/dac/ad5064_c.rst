@@ -1,0 +1,146 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5064.c
+
+.. _`ad5064_regmap_type`:
+
+enum ad5064_regmap_type
+=======================
+
+.. c:type:: enum ad5064_regmap_type
+
+    Register layout variant
+
+.. _`ad5064_regmap_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum ad5064_regmap_type {
+        AD5064_REGMAP_ADI,
+        AD5064_REGMAP_ADI2,
+        AD5064_REGMAP_LTC
+    };
+
+.. _`ad5064_regmap_type.constants`:
+
+Constants
+---------
+
+AD5064_REGMAP_ADI
+    Old Analog Devices register map layout
+
+AD5064_REGMAP_ADI2
+    New Analog Devices register map layout
+
+AD5064_REGMAP_LTC
+    LTC register map layout
+
+.. _`ad5064_chip_info`:
+
+struct ad5064_chip_info
+=======================
+
+.. c:type:: struct ad5064_chip_info
+
+    chip specific information
+
+.. _`ad5064_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5064_chip_info {
+        bool shared_vref;
+        unsigned long internal_vref;
+        const struct iio_chan_spec *channels;
+        unsigned int num_channels;
+        enum ad5064_regmap_type regmap_type;
+    }
+
+.. _`ad5064_chip_info.members`:
+
+Members
+-------
+
+shared_vref
+    whether the vref supply is shared between channels
+
+internal_vref
+    internal reference voltage. 0 if the chip has no
+
+channels
+    *undescribed*
+
+num_channels
+    number of channels
+
+regmap_type
+    register map layout variant
+
+.. _`ad5064_state`:
+
+struct ad5064_state
+===================
+
+.. c:type:: struct ad5064_state
+
+    driver instance specific data
+
+.. _`ad5064_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5064_state {
+        struct device *dev;
+        const struct ad5064_chip_info *chip_info;
+        struct regulator_bulk_data vref_reg[AD5064_MAX_VREFS];
+        bool pwr_down[AD5064_MAX_DAC_CHANNELS];
+        u8 pwr_down_mode[AD5064_MAX_DAC_CHANNELS];
+        unsigned int dac_cache[AD5064_MAX_DAC_CHANNELS];
+        bool use_internal_vref;
+        ad5064_write_func write;
+        union data ____cacheline_aligned;
+    }
+
+.. _`ad5064_state.members`:
+
+Members
+-------
+
+dev
+    the device for this driver instance
+
+chip_info
+    chip model specific constants, available modes etc
+
+vref_reg
+    vref supply regulators
+
+pwr_down
+    whether channel is powered down
+
+pwr_down_mode
+    channel's current power down mode
+
+dac_cache
+    current DAC raw value (chip does not support readback)
+
+use_internal_vref
+    set to true if the internal reference voltage should be
+    used.
+
+write
+    register write callback
+
+____cacheline_aligned
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

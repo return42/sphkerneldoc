@@ -7,4 +7,4 @@ pcxhr
 .. toctree::
    :maxdepth: 1
 
-   pcxhr_core_c
+    pcxhr_core_c

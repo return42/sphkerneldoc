@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-pl08x.h
-=======
-
+.. src-file: include/linux/amba/pl08x.h
 
 .. _`pl08x_channel_data`:
 
 struct pl08x_channel_data
 =========================
 
-.. c:type:: pl08x_channel_data
+.. c:type:: struct pl08x_channel_data
 
     data structure to pass info between platform and PL08x driver regarding channel configuration
-
 
 .. _`pl08x_channel_data.definition`:
 
@@ -22,28 +17,27 @@ Definition
 
 .. code-block:: c
 
-  struct pl08x_channel_data {
-    const char * bus_id;
-    int min_signal;
-    int max_signal;
-    u32 muxval;
-    u32 cctl_memcpy;
-    dma_addr_t addr;
-    bool single;
-    u8 periph_buses;
-  };
-
+    struct pl08x_channel_data {
+        const char *bus_id;
+        int min_signal;
+        int max_signal;
+        u32 muxval;
+        u32 cctl_memcpy;
+        dma_addr_t addr;
+        bool single;
+        u8 periph_buses;
+    }
 
 .. _`pl08x_channel_data.members`:
 
 Members
 -------
 
-:``bus_id``:
+bus_id
     name of this device channel, not just a device name since
     devices may have more than one channel e.g. "foo_tx"
 
-:``min_signal``:
+min_signal
     the minimum DMA signal number to be muxed in for this
     channel (for platforms supporting muxed signals). If you have
     static assignments, make sure this is set to the assigned signal
@@ -51,46 +45,41 @@ Members
     when these are not enough they often get muxed (in hardware)
     disabling simultaneous use of the same channel for two devices.
 
-:``max_signal``:
+max_signal
     the maximum DMA signal number to be muxed in for
     the channel. Set to the same as min_signal for
     devices with static assignments
 
-:``muxval``:
+muxval
     a number usually used to poke into some mux regiser to
     mux in the signal to this channel
 
-:``cctl_memcpy``:
+cctl_memcpy
     options for the channel control register for memcpy
+    \*\*\* not used for slave channels \*\*\*
 
-     *** not used for slave channels ***
-
-:``addr``:
+addr
     source/target address in physical memory for this DMA channel,
     can be the address of a FIFO register for burst requests for example.
     This can be left undefined if the PrimeCell API is used for configuring
     this.
 
-:``single``:
+single
     the device connected to this channel will request single DMA
     transfers, not bursts. (Bursts are default.)
 
-:``periph_buses``:
+periph_buses
     the device connected to this channel is accessible via
-    these buses (use PL08X_AHB1 | PL08X_AHB2).
-
-
-
+    these buses (use PL08X_AHB1 \| PL08X_AHB2).
 
 .. _`pl08x_platform_data`:
 
 struct pl08x_platform_data
 ==========================
 
-.. c:type:: pl08x_platform_data
+.. c:type:: struct pl08x_platform_data
 
     the platform configuration for the PL08x PrimeCells.
-
 
 .. _`pl08x_platform_data.definition`:
 
@@ -99,41 +88,45 @@ Definition
 
 .. code-block:: c
 
-  struct pl08x_platform_data {
-    const struct pl08x_channel_data * slave_channels;
-    int (* get_xfer_signal) (const struct pl08x_channel_data *);
-    void (* put_xfer_signal) (const struct pl08x_channel_data *, int);
-    u8 lli_buses;
-    u8 mem_buses;
-  };
-
+    struct pl08x_platform_data {
+        struct pl08x_channel_data *slave_channels;
+        unsigned int num_slave_channels;
+        struct pl08x_channel_data memcpy_channel;
+        int (* get_xfer_signal) (const struct pl08x_channel_data *);
+        void (* put_xfer_signal) (const struct pl08x_channel_data *, int);
+        u8 lli_buses;
+        u8 mem_buses;
+    }
 
 .. _`pl08x_platform_data.members`:
 
 Members
 -------
 
-:``slave_channels``:
+slave_channels
     the channels defined for the different devices on the
     platform, all inclusive, including multiplexed channels. The available
     physical channels will be multiplexed around these signals as they are
     requested, just enumerate all possible channels.
 
-:``get_xfer_signal``:
+num_slave_channels
+    *undescribed*
+
+memcpy_channel
+    *undescribed*
+
+get_xfer_signal
     request a physical signal to be used for a DMA transfer
 
-:``put_xfer_signal``:
+put_xfer_signal
     indicate to the platform that this physical signal is not
     running any DMA transfer and multiplexing can be recycled
 
-:``lli_buses``:
-    buses which LLIs can be fetched from: PL08X_AHB1 | PL08X_AHB2
+lli_buses
+    buses which LLIs can be fetched from: PL08X_AHB1 \| PL08X_AHB2
 
-:``mem_buses``:
-    buses which memory can be accessed from: PL08X_AHB1 | PL08X_AHB2
-
-
-
+mem_buses
+    buses which memory can be accessed from: PL08X_AHB1 \| PL08X_AHB2
 
 .. _`pl08x_platform_data.immediately`:
 
@@ -143,4 +136,6 @@ immediately
 if there is some multiplexing or similar blocking the use
 of the channel the transfer can be denied by returning less than zero,
 else it returns the allocated signal number
+
+.. This file was automatic generated / don't edit.
 

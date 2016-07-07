@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-jack.c
-======
-
+.. src-file: sound/core/jack.c
 
 .. _`snd_jack_add_new_kctl`:
 
 snd_jack_add_new_kctl
 =====================
 
-.. c:function:: int snd_jack_add_new_kctl (struct snd_jack *jack, const char *name, int mask)
+.. c:function:: int snd_jack_add_new_kctl(struct snd_jack *jack, const char *name, int mask)
 
     Create a new snd_jack_kctl and add it to jack
 
@@ -24,16 +20,12 @@ snd_jack_add_new_kctl
         a bitmask of enum snd_jack_type values that can be detected
         by this snd_jack_kctl object.
 
-
-
 .. _`snd_jack_add_new_kctl.description`:
 
 Description
 -----------
 
 Creates a new snd_kcontrol object and adds it to the jack kctl_list.
-
-
 
 .. _`snd_jack_add_new_kctl.return`:
 
@@ -42,14 +34,12 @@ Return
 
 Zero if successful, or a negative error code on failure.
 
-
-
 .. _`snd_jack_new`:
 
 snd_jack_new
 ============
 
-.. c:function:: int snd_jack_new (struct snd_card *card, const char *id, int type, struct snd_jack **jjack, bool initial_kctl, bool phantom_jack)
+.. c:function:: int snd_jack_new(struct snd_card *card, const char *id, int type, struct snd_jack **jjack, bool initial_kctl, bool phantom_jack)
 
     Create a new jack
 
@@ -72,8 +62,6 @@ snd_jack_new
     :param bool phantom_jack:
         Don't create a input device for phantom jacks.
 
-
-
 .. _`snd_jack_new.description`:
 
 Description
@@ -81,24 +69,20 @@ Description
 
 Creates a new jack object.
 
-
-
 .. _`snd_jack_new.return`:
 
 Return
 ------
 
 Zero if successful, or a negative error code on failure.
-On success ``jjack`` will be initialised.
-
-
+On success \ ``jjack``\  will be initialised.
 
 .. _`snd_jack_set_parent`:
 
 snd_jack_set_parent
 ===================
 
-.. c:function:: void snd_jack_set_parent (struct snd_jack *jack, struct device *parent)
+.. c:function:: void snd_jack_set_parent(struct snd_jack *jack, struct device *parent)
 
     Set the parent device for a jack
 
@@ -107,8 +91,6 @@ snd_jack_set_parent
 
     :param struct device \*parent:
         The device to set as parent for the jack.
-
-
 
 .. _`snd_jack_set_parent.description`:
 
@@ -119,14 +101,12 @@ Set the parent for the jack devices in the device tree.  This
 function is only valid prior to registration of the jack.  If no
 parent is configured then the parent device will be the sound card.
 
-
-
 .. _`snd_jack_set_key`:
 
 snd_jack_set_key
 ================
 
-.. c:function:: int snd_jack_set_key (struct snd_jack *jack, enum snd_jack_types type, int keytype)
+.. c:function:: int snd_jack_set_key(struct snd_jack *jack, enum snd_jack_types type, int keytype)
 
     Set a key mapping on a jack
 
@@ -139,14 +119,12 @@ snd_jack_set_key
     :param int keytype:
         Input layer key type to be reported
 
-
-
 .. _`snd_jack_set_key.description`:
 
 Description
 -----------
 
-Map a SND_JACK_BTN_ button type to an input layer key, allowing
+Map a SND_JACK_BTN\_ button type to an input layer key, allowing
 reporting of keys on accessories via the jack abstraction.  If no
 mapping is provided but keys are enabled in the jack type then
 BTN_n numeric buttons will be reported.
@@ -162,8 +140,6 @@ using this abstraction.
 
 This function may only be called prior to registration of the jack.
 
-
-
 .. _`snd_jack_set_key.return`:
 
 Return
@@ -171,14 +147,12 @@ Return
 
 Zero if successful, or a negative error code on failure.
 
-
-
 .. _`snd_jack_report`:
 
 snd_jack_report
 ===============
 
-.. c:function:: void snd_jack_report (struct snd_jack *jack, int status)
+.. c:function:: void snd_jack_report(struct snd_jack *jack, int status)
 
     Report the current status of a jack
 
@@ -187,4 +161,6 @@ snd_jack_report
 
     :param int status:
         The current status of the jack
+
+.. This file was automatic generated / don't edit.
 

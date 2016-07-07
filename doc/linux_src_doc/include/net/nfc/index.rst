@@ -7,5 +7,5 @@ nfc
 .. toctree::
    :maxdepth: 1
 
-   digital_h
-   nfc_h
+    digital_h
+    nfc_h

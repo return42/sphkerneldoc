@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-pxa27x_udc.h
-============
-
+.. src-file: drivers/usb/gadget/udc/pxa27x_udc.h
 
 .. _`udc_usb_ep`:
 
 struct udc_usb_ep
 =================
 
-.. c:type:: udc_usb_ep
+.. c:type:: struct udc_usb_ep
 
     container of each usb_ep structure
-
 
 .. _`udc_usb_ep.definition`:
 
@@ -22,43 +17,38 @@ Definition
 
 .. code-block:: c
 
-  struct udc_usb_ep {
-    struct usb_ep usb_ep;
-    struct usb_endpoint_descriptor desc;
-    struct pxa_udc * dev;
-    struct pxa_ep * pxa_ep;
-  };
-
+    struct udc_usb_ep {
+        struct usb_ep usb_ep;
+        struct usb_endpoint_descriptor desc;
+        struct pxa_udc *dev;
+        struct pxa_ep *pxa_ep;
+    }
 
 .. _`udc_usb_ep.members`:
 
 Members
 -------
 
-:``usb_ep``:
+usb_ep
     usb endpoint
 
-:``desc``:
+desc
     usb descriptor, especially type and address
 
-:``dev``:
+dev
     udc managing this endpoint
 
-:``pxa_ep``:
-    matching pxa_ep (cache of :c:func:`find_pxa_ep` call)
-
-
-
+pxa_ep
+    matching pxa_ep (cache of \ :c:func:`find_pxa_ep`\  call)
 
 .. _`pxa_ep`:
 
 struct pxa_ep
 =============
 
-.. c:type:: pxa_ep
+.. c:type:: struct pxa_ep
 
     pxa endpoint
-
 
 .. _`pxa_ep.definition`:
 
@@ -67,98 +57,87 @@ Definition
 
 .. code-block:: c
 
-  struct pxa_ep {
-    struct pxa_udc * dev;
-    struct list_head queue;
-    spinlock_t lock;
-    unsigned enabled:1;
-    unsigned in_handle_ep:1;
-    unsigned idx:5;
-    char * name;
-    unsigned dir_in:1;
-    unsigned addr:4;
-    unsigned config:2;
-    unsigned interface:3;
-    unsigned alternate:3;
-    unsigned fifo_size;
-    unsigned type;
-    #ifdef CONFIG_PM
-    u32 udccsr_value;
-    u32 udccr_value;
-    #endif
-    struct stats stats;
-  };
-
+    struct pxa_ep {
+        struct pxa_udc *dev;
+        struct list_head queue;
+        spinlock_t lock;
+        unsigned enabled:1;
+        unsigned in_handle_ep:1;
+        unsigned idx:5;
+        char *name;
+        unsigned dir_in:1;
+        unsigned addr:4;
+        unsigned config:2;
+        unsigned interface:3;
+        unsigned alternate:3;
+        unsigned fifo_size;
+        unsigned type;
+        #ifdef CONFIG_PM
+        u32 udccsr_value;
+        u32 udccr_value;
+        #endif
+        struct stats stats;
+    }
 
 .. _`pxa_ep.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     udc device
 
-:``queue``:
+queue
     requests queue
 
-:``lock``:
+lock
     lock to pxa_ep data (queues and stats)
 
-:``enabled``:
+enabled
     true when endpoint enabled (not stopped by gadget layer)
 
-:``in_handle_ep``:
-    number of recursions of :c:func:`handle_ep` function
+in_handle_ep
+    number of recursions of \ :c:func:`handle_ep`\  function
+    Prevents deadlocks or infinite recursions of types :
+    irq->\ :c:func:`handle_ep`\ ->\ :c:func:`req_done`\ ->req.\ :c:func:`complete`\ ->\ :c:func:`pxa_ep_queue`\ ->\ :c:func:`handle_ep`\ 
+    or
+    \ :c:func:`pxa_ep_queue`\ ->\ :c:func:`handle_ep`\ ->\ :c:func:`req_done`\ ->req.\ :c:func:`complete`\ ->\ :c:func:`pxa_ep_queue`\ 
 
-:``idx``:
+idx
     endpoint index (1 => epA, 2 => epB, ..., 24 => epX)
 
-:``name``:
+name
     endpoint name (for trace/debug purpose)
 
-:``dir_in``:
+dir_in
     1 if IN endpoint, 0 if OUT endpoint
 
-:``addr``:
+addr
     usb endpoint number
 
-:``config``:
+config
     configuration in which this endpoint is active
 
-:``interface``:
+interface
     interface in which this endpoint is active
 
-:``alternate``:
+alternate
     altsetting in which this endpoitn is active
 
-:``fifo_size``:
+fifo_size
     max packet size in the endpoint fifo
 
-:``type``:
+type
     endpoint type (bulk, iso, int, ...)
 
-:``udccsr_value``:
+udccsr_value
     save register of UDCCSR0 for suspend/resume
 
-:``udccr_value``:
+udccr_value
     save register of UDCCR for suspend/resume
 
-:``stats``:
+stats
     endpoint statistics
-
-
-
-
-.. _`pxa_ep.prevents-deadlocks-or-infinite-recursions-of-types`:
-
-Prevents deadlocks or infinite recursions of types 
----------------------------------------------------
-
-irq->:c:func:`handle_ep`->:c:func:`req_done`->req.:c:func:`complete`->:c:func:`pxa_ep_queue`->:c:func:`handle_ep`
-or
-:c:func:`pxa_ep_queue`->:c:func:`handle_ep`->:c:func:`req_done`->req.:c:func:`complete`->:c:func:`pxa_ep_queue`
-
-
 
 .. _`pxa_ep.description`:
 
@@ -173,17 +152,14 @@ for use more or less like a pxa255.
 As we define the pxa_ep statically, we must guess all needed pxa_ep for all
 gadget which may work with this udc driver.
 
-
-
 .. _`pxa27x_request`:
 
 struct pxa27x_request
 =====================
 
-.. c:type:: pxa27x_request
+.. c:type:: struct pxa27x_request
 
     container of each usb_request structure
-
 
 .. _`pxa27x_request.definition`:
 
@@ -192,43 +168,38 @@ Definition
 
 .. code-block:: c
 
-  struct pxa27x_request {
-    struct usb_request req;
-    struct udc_usb_ep * udc_usb_ep;
-    unsigned in_use:1;
-    struct list_head queue;
-  };
-
+    struct pxa27x_request {
+        struct usb_request req;
+        struct udc_usb_ep *udc_usb_ep;
+        unsigned in_use:1;
+        struct list_head queue;
+    }
 
 .. _`pxa27x_request.members`:
 
 Members
 -------
 
-:``req``:
+req
     usb request
 
-:``udc_usb_ep``:
+udc_usb_ep
     usb endpoint the request was submitted on
 
-:``in_use``:
+in_use
     sanity check if request already queued on an pxa_ep
 
-:``queue``:
+queue
     linked list of requests, linked on pxa_ep->queue
-
-
-
 
 .. _`pxa_udc`:
 
 struct pxa_udc
 ==============
 
-.. c:type:: pxa_udc
+.. c:type:: struct pxa_udc
 
     udc structure
-
 
 .. _`pxa_udc.definition`:
 
@@ -237,109 +208,117 @@ Definition
 
 .. code-block:: c
 
-  struct pxa_udc {
-    void __iomem * regs;
-    int irq;
-    struct clk * clk;
-    struct usb_gadget_driver * driver;
-    struct device * dev;
-    void (* udc_command) (int);
-    struct gpio_desc * gpiod;
-    struct usb_phy * transceiver;
-    enum ep0_state ep0state;
-    struct udc_stats stats;
-    struct udc_usb_ep udc_usb_ep[NR_USB_ENDPOINTS];
-    struct pxa_ep pxa_ep[NR_PXA_ENDPOINTS];
-    unsigned enabled:1;
-    unsigned pullup_on:1;
-    unsigned pullup_resume:1;
-    unsigned config:2;
-    unsigned last_interface:3;
-    unsigned last_alternate:3;
-    #ifdef CONFIG_PM
-    unsigned udccsr0;
-    #endif
-    #ifdef CONFIG_USB_GADGET_DEBUG_FS
-    struct dentry * debugfs_root;
-    struct dentry * debugfs_state;
-    struct dentry * debugfs_queues;
-    struct dentry * debugfs_eps;
-    #endif
-  };
-
+    struct pxa_udc {
+        void __iomem *regs;
+        int irq;
+        struct clk *clk;
+        struct usb_gadget gadget;
+        struct usb_gadget_driver *driver;
+        struct device *dev;
+        void (* udc_command) (int);
+        struct gpio_desc *gpiod;
+        struct usb_phy *transceiver;
+        enum ep0_state ep0state;
+        struct udc_stats stats;
+        struct udc_usb_ep udc_usb_ep[NR_USB_ENDPOINTS];
+        struct pxa_ep pxa_ep[NR_PXA_ENDPOINTS];
+        unsigned enabled:1;
+        unsigned pullup_on:1;
+        unsigned pullup_resume:1;
+        unsigned vbus_sensed:1;
+        unsigned config:2;
+        unsigned last_interface:3;
+        unsigned last_alternate:3;
+        #ifdef CONFIG_PM
+        unsigned udccsr0;
+        #endif
+        #ifdef CONFIG_USB_GADGET_DEBUG_FS
+        struct dentry *debugfs_root;
+        struct dentry *debugfs_state;
+        struct dentry *debugfs_queues;
+        struct dentry *debugfs_eps;
+        #endif
+    }
 
 .. _`pxa_udc.members`:
 
 Members
 -------
 
-:``regs``:
+regs
     mapped IO space
 
-:``irq``:
+irq
     udc irq
 
-:``clk``:
+clk
     udc clock
 
-:``driver``:
+gadget
+    *undescribed*
+
+driver
     bound gadget (zero, g_ether, g_mass_storage, ...)
 
-:``dev``:
+dev
     device
 
-:``udc_command``:
+udc_command
     machine specific function to activate D+ pullup
 
-:``gpiod``:
+gpiod
     gpio descriptor of gpio for D+ pullup (or NULL if none)
 
-:``transceiver``:
+transceiver
     external transceiver to handle vbus sense and D+ pullup
 
-:``ep0state``:
+ep0state
     control endpoint state machine state
 
-:``stats``:
+stats
     statistics on udc usage
 
-:``udc_usb_ep[NR_USB_ENDPOINTS]``:
+udc_usb_ep
     array of usb endpoints offered by the gadget
 
-:``pxa_ep[NR_PXA_ENDPOINTS]``:
+pxa_ep
     array of pxa available endpoints
 
-:``enabled``:
-    UDC was enabled by a previous :c:func:`udc_enable`
+enabled
+    UDC was enabled by a previous \ :c:func:`udc_enable`\ 
 
-:``pullup_on``:
+pullup_on
     if pullup resistor connected to D+ pin
 
-:``pullup_resume``:
+pullup_resume
     if pullup resistor should be connected to D+ pin on resume
 
-:``config``:
+vbus_sensed
+    *undescribed*
+
+config
     UDC active configuration
 
-:``last_interface``:
+last_interface
     UDC interface of the last SET_INTERFACE host request
 
-:``last_alternate``:
+last_alternate
     UDC altsetting of the last SET_INTERFACE host request
 
-:``udccsr0``:
+udccsr0
     save of udccsr0 in case of suspend
 
-:``debugfs_root``:
+debugfs_root
     root entry of debug filesystem
 
-:``debugfs_state``:
+debugfs_state
     debugfs entry for "udcstate"
 
-:``debugfs_queues``:
+debugfs_queues
     debugfs entry for "queues"
 
-:``debugfs_eps``:
+debugfs_eps
     debugfs entry for "epstate"
 
+.. This file was automatic generated / don't edit.
 

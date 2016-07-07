@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-attr.c
-======
-
+.. src-file: fs/attr.c
 
 .. _`inode_change_ok`:
 
 inode_change_ok
 ===============
 
-.. c:function:: int inode_change_ok (const struct inode *inode, struct iattr *attr)
+.. c:function:: int inode_change_ok(const struct inode *inode, struct iattr *attr)
 
     check if attribute changes to an inode are allowed
 
@@ -20,28 +16,24 @@ inode_change_ok
     :param struct iattr \*attr:
         attributes to change
 
-
-
 .. _`inode_change_ok.description`:
 
 Description
 -----------
 
-Check if we are allowed to change the attributes contained in ``attr``
+Check if we are allowed to change the attributes contained in \ ``attr``\ 
 in the given inode.  This includes the normal unix access permission
 checks, as well as checks for rlimits and others.
 
 Should be called as the first thing in ->setattr implementations,
 possibly after taking additional locks.
 
-
-
 .. _`inode_newsize_ok`:
 
 inode_newsize_ok
 ================
 
-.. c:function:: int inode_newsize_ok (const struct inode *inode, loff_t offset)
+.. c:function:: int inode_newsize_ok(const struct inode *inode, loff_t offset)
 
     may this inode be truncated to a given size
 
@@ -50,8 +42,6 @@ inode_newsize_ok
 
     :param loff_t offset:
         the new size to assign to the inode
-
-
 
 .. _`inode_newsize_ok.description`:
 
@@ -63,18 +53,16 @@ inode_newsize_ok must be called with i_mutex held.
 inode_newsize_ok will check filesystem limits and ulimits to check that the
 new inode size is within limits. inode_newsize_ok will also send SIGXFSZ
 when necessary. Caller must not proceed with inode size change if failure is
-returned. ``inode`` must be a file (not directory), with appropriate
+returned. \ ``inode``\  must be a file (not directory), with appropriate
 permissions to allow truncate (inode_newsize_ok does NOT check these
 conditions).
-
-
 
 .. _`setattr_copy`:
 
 setattr_copy
 ============
 
-.. c:function:: void setattr_copy (struct inode *inode, const struct iattr *attr)
+.. c:function:: void setattr_copy(struct inode *inode, const struct iattr *attr)
 
     copy simple metadata updates into the generic inode
 
@@ -83,8 +71,6 @@ setattr_copy
 
     :param const struct iattr \*attr:
         the new attributes
-
-
 
 .. _`setattr_copy.description`:
 
@@ -101,14 +87,12 @@ The inode is not marked as dirty after this operation. The rationale is
 that for "simple" filesystems, the struct inode is the inode storage.
 The caller is free to mark the inode dirty afterwards if needed.
 
-
-
 .. _`notify_change`:
 
 notify_change
 =============
 
-.. c:function:: int notify_change (struct dentry *dentry, struct iattr *attr, struct inode **delegated_inode)
+.. c:function:: int notify_change(struct dentry *dentry, struct iattr *attr, struct inode **delegated_inode)
 
     modify attributes of a filesytem object
 
@@ -116,13 +100,10 @@ notify_change
         object affected
 
     :param struct iattr \*attr:
-
         *undescribed*
 
     :param struct inode \*\*delegated_inode:
         returns inode, if the inode is delegated
-
-
 
 .. _`notify_change.description`:
 
@@ -142,4 +123,6 @@ be appropriate for callers that expect the underlying filesystem not
 to be NFS exported.  Also, passing NULL is fine for callers holding
 the file open for write, as there can be no conflicting delegation in
 that case.
+
+.. This file was automatic generated / don't edit.
 

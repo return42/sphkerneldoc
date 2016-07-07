@@ -7,4 +7,4 @@ cisco
 .. toctree::
    :maxdepth: 1
 
-   enic/index
+    enic/index

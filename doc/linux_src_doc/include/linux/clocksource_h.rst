@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-clocksource.h
-=============
-
+.. src-file: include/linux/clocksource.h
 
 .. _`clocksource`:
 
 struct clocksource
 ==================
 
-.. c:type:: clocksource
+.. c:type:: struct clocksource
 
     hardware abstraction for a free running counter Provides mostly state-free accessors to the underlying hardware. This is the structure used for system time.
-
 
 .. _`clocksource.definition`:
 
@@ -22,65 +17,64 @@ Definition
 
 .. code-block:: c
 
-  struct clocksource {
-    cycle_t (* read) (struct clocksource *cs);
-    cycle_t mask;
-    u32 mult;
-    u32 shift;
-    u64 max_idle_ns;
-    u32 maxadj;
-    #ifdef CONFIG_ARCH_CLOCKSOURCE_DATA
-    struct arch_clocksource_data archdata;
-    #endif
-    u64 max_cycles;
-    const char * name;
-    struct list_head list;
-    int rating;
-    int (* enable) (struct clocksource *cs);
-    void (* disable) (struct clocksource *cs);
-    unsigned long flags;
-    void (* suspend) (struct clocksource *cs);
-    void (* resume) (struct clocksource *cs);
-  };
-
+    struct clocksource {
+        cycle_t (* read) (struct clocksource *cs);
+        cycle_t mask;
+        u32 mult;
+        u32 shift;
+        u64 max_idle_ns;
+        u32 maxadj;
+        #ifdef CONFIG_ARCH_CLOCKSOURCE_DATA
+        struct arch_clocksource_data archdata;
+        #endif
+        u64 max_cycles;
+        const char *name;
+        struct list_head list;
+        int rating;
+        int (* enable) (struct clocksource *cs);
+        void (* disable) (struct clocksource *cs);
+        unsigned long flags;
+        void (* suspend) (struct clocksource *cs);
+        void (* resume) (struct clocksource *cs);
+    }
 
 .. _`clocksource.members`:
 
 Members
 -------
 
-:``read``:
+read
     returns a cycle value, passes clocksource as argument
 
-:``mask``:
+mask
     bitmask for two's complement
     subtraction of non 64 bit counters
 
-:``mult``:
+mult
     cycle to nanosecond multiplier
 
-:``shift``:
+shift
     cycle to nanosecond divisor (power of two)
 
-:``max_idle_ns``:
+max_idle_ns
     max idle time permitted by the clocksource (nsecs)
 
-:``maxadj``:
+maxadj
     maximum adjustment value to mult (~11%)
 
-:``archdata``:
+archdata
     arch-specific data
 
-:``max_cycles``:
+max_cycles
     maximum safe cycle value which won't overflow on multiplication
 
-:``name``:
+name
     ptr to clocksource name
 
-:``list``:
+list
     list head for registration
 
-:``rating``:
+rating
     rating value for selection (higher is better)
     To avoid rating inflation the following
     list should give you a guide as to how
@@ -97,23 +91,20 @@ Members
     The ideal clocksource. A must-use where
     available.
 
-:``enable``:
+enable
     optional function to enable the clocksource
 
-:``disable``:
+disable
     optional function to disable the clocksource
 
-:``flags``:
+flags
     flags describing special properties
 
-:``suspend``:
+suspend
     suspend function for the clocksource, if necessary
 
-:``resume``:
+resume
     resume function for the clocksource, if necessary
-
-
-
 
 .. _`clocksource.note`:
 
@@ -130,14 +121,12 @@ clocksource into your own struct. Depending on the amount of
 information you need you should consider to cache line align that
 structure.
 
-
-
 .. _`clocksource_khz2mult`:
 
 clocksource_khz2mult
 ====================
 
-.. c:function:: u32 clocksource_khz2mult (u32 khz, u32 shift_constant)
+.. c:function:: u32 clocksource_khz2mult(u32 khz, u32 shift_constant)
 
     calculates mult from khz and shift
 
@@ -147,8 +136,6 @@ clocksource_khz2mult
     :param u32 shift_constant:
         Clocksource shift factor
 
-
-
 .. _`clocksource_khz2mult.description`:
 
 Description
@@ -157,14 +144,12 @@ Description
 Helper functions that converts a khz counter frequency to a timsource
 multiplier, given the clocksource shift value
 
-
-
 .. _`clocksource_hz2mult`:
 
 clocksource_hz2mult
 ===================
 
-.. c:function:: u32 clocksource_hz2mult (u32 hz, u32 shift_constant)
+.. c:function:: u32 clocksource_hz2mult(u32 hz, u32 shift_constant)
 
     calculates mult from hz and shift
 
@@ -173,8 +158,6 @@ clocksource_hz2mult
 
     :param u32 shift_constant:
         Clocksource shift factor
-
-
 
 .. _`clocksource_hz2mult.description`:
 
@@ -185,14 +168,12 @@ Helper functions that converts a hz counter
 frequency to a timsource multiplier, given the
 clocksource shift value
 
-
-
 .. _`clocksource_cyc2ns`:
 
 clocksource_cyc2ns
 ==================
 
-.. c:function:: s64 clocksource_cyc2ns (cycle_t cycles, u32 mult, u32 shift)
+.. c:function:: s64 clocksource_cyc2ns(cycle_t cycles, u32 mult, u32 shift)
 
     converts clocksource cycles to nanoseconds
 
@@ -205,8 +186,6 @@ clocksource_cyc2ns
     :param u32 shift:
         cycle to nanosecond divisor (power of two)
 
-
-
 .. _`clocksource_cyc2ns.description`:
 
 Description
@@ -214,5 +193,7 @@ Description
 
 Converts cycles to nanoseconds, using the given mult and shift.
 
-XXX - This could use some :c:func:`mult_lxl_ll` asm optimization
+XXX - This could use some \ :c:func:`mult_lxl_ll`\  asm optimization
+
+.. This file was automatic generated / don't edit.
 

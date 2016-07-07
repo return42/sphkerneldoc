@@ -7,5 +7,5 @@ apic
 .. toctree::
    :maxdepth: 1
 
-   apic_c
-   io_apic_c
+    apic_c
+    io_apic_c

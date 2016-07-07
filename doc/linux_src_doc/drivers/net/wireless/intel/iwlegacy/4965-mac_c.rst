@@ -1,0 +1,519 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/4965-mac.c
+
+.. _`il4965_dma_addr2rbd_ptr`:
+
+il4965_dma_addr2rbd_ptr
+=======================
+
+.. c:function:: __le32 il4965_dma_addr2rbd_ptr(struct il_priv *il, dma_addr_t dma_addr)
+
+    convert a DMA address to a uCode read buffer ptr
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param dma_addr_t dma_addr:
+        *undescribed*
+
+.. _`il4965_rx_queue_restock`:
+
+il4965_rx_queue_restock
+=======================
+
+.. c:function:: void il4965_rx_queue_restock(struct il_priv *il)
+
+    refill RX queue from pre-allocated pool
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_rx_queue_restock.description`:
+
+Description
+-----------
+
+If there are slots in the RX queue that need to be restocked,
+and we have free pre-allocated buffers, fill the ranks as much
+as we can, pulling from rx_free.
+
+This moves the 'write' idx forward to catch up with 'processed', and
+also updates the memory address in the firmware to reference the new
+target buffer.
+
+.. _`il4965_rx_allocate`:
+
+il4965_rx_allocate
+==================
+
+.. c:function:: void il4965_rx_allocate(struct il_priv *il, gfp_t priority)
+
+    Move all used packet from rx_used to rx_free
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param gfp_t priority:
+        *undescribed*
+
+.. _`il4965_rx_allocate.description`:
+
+Description
+-----------
+
+When moving to rx_free an SKB is allocated for the slot.
+
+Also restock the Rx queue via il_rx_queue_restock.
+This is called as a scheduled work item (except for during initialization)
+
+.. _`il4965_set_rxon_chain`:
+
+il4965_set_rxon_chain
+=====================
+
+.. c:function:: void il4965_set_rxon_chain(struct il_priv *il)
+
+    Set up Rx chain usage in "staging" RXON image
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_set_rxon_chain.description`:
+
+Description
+-----------
+
+Selects how many and which Rx receivers/antennas/chains to use.
+This should not be used for scan command ... it puts data in wrong place.
+
+.. _`il4965_hw_txq_ctx_free`:
+
+il4965_hw_txq_ctx_free
+======================
+
+.. c:function:: void il4965_hw_txq_ctx_free(struct il_priv *il)
+
+    Free TXQ Context
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_hw_txq_ctx_free.description`:
+
+Description
+-----------
+
+Destroy all TX DMA queues and structures
+
+.. _`il4965_txq_ctx_alloc`:
+
+il4965_txq_ctx_alloc
+====================
+
+.. c:function:: int il4965_txq_ctx_alloc(struct il_priv *il)
+
+    allocate TX queue context Allocate all Tx DMA structures and initialize them
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_txq_ctx_alloc.description`:
+
+Description
+-----------
+
+\ ``param``\  il
+\ ``return``\  error code
+
+.. _`il4965_txq_ctx_stop`:
+
+il4965_txq_ctx_stop
+===================
+
+.. c:function:: void il4965_txq_ctx_stop(struct il_priv *il)
+
+    Stop all Tx DMA channels
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_tx_queue_stop_scheduler`:
+
+il4965_tx_queue_stop_scheduler
+==============================
+
+.. c:function:: void il4965_tx_queue_stop_scheduler(struct il_priv *il, u16 txq_id)
+
+    Stop queue, but keep configuration
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u16 txq_id:
+        *undescribed*
+
+.. _`il4965_tx_queue_set_q2ratid`:
+
+il4965_tx_queue_set_q2ratid
+===========================
+
+.. c:function:: int il4965_tx_queue_set_q2ratid(struct il_priv *il, u16 ra_tid, u16 txq_id)
+
+    Map unique receiver/tid combination to a queue
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u16 ra_tid:
+        *undescribed*
+
+    :param u16 txq_id:
+        *undescribed*
+
+.. _`il4965_txq_agg_enable`:
+
+il4965_txq_agg_enable
+=====================
+
+.. c:function:: int il4965_txq_agg_enable(struct il_priv *il, int txq_id, int tx_fifo, int sta_id, int tid, u16 ssn_idx)
+
+    Set up & enable aggregation for selected queue
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param int txq_id:
+        *undescribed*
+
+    :param int tx_fifo:
+        *undescribed*
+
+    :param int sta_id:
+        *undescribed*
+
+    :param int tid:
+        *undescribed*
+
+    :param u16 ssn_idx:
+        *undescribed*
+
+.. _`il4965_txq_agg_enable.note`:
+
+NOTE
+----
+
+txq_id must be greater than IL49_FIRST_AMPDU_QUEUE,
+i.e. it must be one of the higher queues used for aggregation
+
+.. _`il4965_txq_agg_disable`:
+
+il4965_txq_agg_disable
+======================
+
+.. c:function:: int il4965_txq_agg_disable(struct il_priv *il, u16 txq_id, u16 ssn_idx, u8 tx_fifo)
+
+    il->lock must be held by the caller
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u16 txq_id:
+        *undescribed*
+
+    :param u16 ssn_idx:
+        *undescribed*
+
+    :param u8 tx_fifo:
+        *undescribed*
+
+.. _`il4965_tx_status_reply_compressed_ba`:
+
+il4965_tx_status_reply_compressed_ba
+====================================
+
+.. c:function:: int il4965_tx_status_reply_compressed_ba(struct il_priv *il, struct il_ht_agg *agg, struct il_compressed_ba_resp *ba_resp)
+
+    Update tx status from block-ack
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_ht_agg \*agg:
+        *undescribed*
+
+    :param struct il_compressed_ba_resp \*ba_resp:
+        *undescribed*
+
+.. _`il4965_tx_status_reply_compressed_ba.description`:
+
+Description
+-----------
+
+Go through block-ack's bitmap of ACK'd frames, update driver's record of
+ACK vs. not.  This gets sent to mac80211, then to rate scaling algo.
+
+.. _`il4965_tx_status_reply_tx`:
+
+il4965_tx_status_reply_tx
+=========================
+
+.. c:function:: int il4965_tx_status_reply_tx(struct il_priv *il, struct il_ht_agg *agg, struct il4965_tx_resp *tx_resp, int txq_id, u16 start_idx)
+
+    Handle Tx response for frames in aggregation queue
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_ht_agg \*agg:
+        *undescribed*
+
+    :param struct il4965_tx_resp \*tx_resp:
+        *undescribed*
+
+    :param int txq_id:
+        *undescribed*
+
+    :param u16 start_idx:
+        *undescribed*
+
+.. _`il4965_hdl_tx`:
+
+il4965_hdl_tx
+=============
+
+.. c:function:: void il4965_hdl_tx(struct il_priv *il, struct il_rx_buf *rxb)
+
+    Handle standard (non-aggregation) Tx response
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_rx_buf \*rxb:
+        *undescribed*
+
+.. _`il4965_hwrate_to_tx_control`:
+
+il4965_hwrate_to_tx_control
+===========================
+
+.. c:function:: void il4965_hwrate_to_tx_control(struct il_priv *il, u32 rate_n_flags, struct ieee80211_tx_info *info)
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param u32 rate_n_flags:
+        *undescribed*
+
+    :param struct ieee80211_tx_info \*info:
+        *undescribed*
+
+.. _`il4965_hdl_compressed_ba`:
+
+il4965_hdl_compressed_ba
+========================
+
+.. c:function:: void il4965_hdl_compressed_ba(struct il_priv *il, struct il_rx_buf *rxb)
+
+    Handler for N_COMPRESSED_BA
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_rx_buf \*rxb:
+        *undescribed*
+
+.. _`il4965_hdl_compressed_ba.description`:
+
+Description
+-----------
+
+Handles block-acknowledge notification from device, which reports success
+of frames sent via aggregation.
+
+.. _`il4965_alloc_bcast_station`:
+
+il4965_alloc_bcast_station
+==========================
+
+.. c:function:: int il4965_alloc_bcast_station(struct il_priv *il)
+
+    add broadcast station into driver's station table.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_alloc_bcast_station.description`:
+
+Description
+-----------
+
+This adds the broadcast station into the driver's station table
+and marks it driver active, so that it will be restored to the
+device at the next best time.
+
+.. _`il4965_update_bcast_station`:
+
+il4965_update_bcast_station
+===========================
+
+.. c:function:: int il4965_update_bcast_station(struct il_priv *il)
+
+    update broadcast station's LQ command
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_update_bcast_station.description`:
+
+Description
+-----------
+
+Only used by iwl4965. Placed here to have all bcast station management
+code together.
+
+.. _`il4965_sta_tx_modify_enable_tid`:
+
+il4965_sta_tx_modify_enable_tid
+===============================
+
+.. c:function:: int il4965_sta_tx_modify_enable_tid(struct il_priv *il, int sta_id, int tid)
+
+    Enable Tx for this TID in station table
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param int sta_id:
+        *undescribed*
+
+    :param int tid:
+        *undescribed*
+
+.. _`il4965_hw_txq_free_tfd`:
+
+il4965_hw_txq_free_tfd
+======================
+
+.. c:function:: void il4965_hw_txq_free_tfd(struct il_priv *il, struct il_tx_queue *txq)
+
+    Free all chunks referenced by TFD [txq->q.read_ptr] \ ``il``\  - driver ilate data \ ``txq``\  - tx queue
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct il_tx_queue \*txq:
+        *undescribed*
+
+.. _`il4965_hw_txq_free_tfd.description`:
+
+Description
+-----------
+
+Does NOT advance any TFD circular buffer read/write idxes
+Does NOT free the TFD itself (which is within circular buffer)
+
+.. _`il4965_bg_stats_periodic`:
+
+il4965_bg_stats_periodic
+========================
+
+.. c:function:: void il4965_bg_stats_periodic(unsigned long data)
+
+    Timer callback to queue stats
+
+    :param unsigned long data:
+        *undescribed*
+
+.. _`il4965_bg_stats_periodic.description`:
+
+Description
+-----------
+
+This callback is provided in order to send a stats request.
+
+This timer function is continually reset to execute within
+60 seconds since the last N_STATS was received.  We need to
+ensure we receive the stats in order to update the temperature
+used for calibrating the TXPOWER.
+
+.. _`il4965_setup_handlers`:
+
+il4965_setup_handlers
+=====================
+
+.. c:function:: void il4965_setup_handlers(struct il_priv *il)
+
+    Initialize Rx handler callbacks
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_setup_handlers.description`:
+
+Description
+-----------
+
+Setup the RX handlers for each of the reply types sent from the uCode
+to the host.
+
+This function chains into the hardware specific files for them to setup
+any hardware specific handlers as well.
+
+.. _`il4965_rx_handle`:
+
+il4965_rx_handle
+================
+
+.. c:function:: void il4965_rx_handle(struct il_priv *il)
+
+    Main entry function for receiving responses from uCode
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il4965_rx_handle.description`:
+
+Description
+-----------
+
+Uses the il->handlers callback function array to invoke
+the appropriate handlers, including command responses,
+frame-received notifications, and other notifications.
+
+.. _`il4965_ucode_callback`:
+
+il4965_ucode_callback
+=====================
+
+.. c:function:: void il4965_ucode_callback(const struct firmware *ucode_raw, void *context)
+
+    callback when firmware was loaded
+
+    :param const struct firmware \*ucode_raw:
+        *undescribed*
+
+    :param void \*context:
+        *undescribed*
+
+.. _`il4965_ucode_callback.description`:
+
+Description
+-----------
+
+If loaded successfully, copies the firmware into buffers
+for the card to fetch (via DMA).
+
+.. _`il4965_alive_start`:
+
+il4965_alive_start
+==================
+
+.. c:function:: void il4965_alive_start(struct il_priv *il)
+
+    called after N_ALIVE notification received from protocol/runtime uCode (initialization uCode's Alive gets handled by \ :c:func:`il_init_alive_start`\ ).
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

@@ -7,4 +7,4 @@ stmicro
 .. toctree::
    :maxdepth: 1
 
-   stmmac/index
+    stmmac/index

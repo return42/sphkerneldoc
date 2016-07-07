@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-mpicoder.c
-==========
-
+.. src-file: lib/mpi/mpicoder.c
 
 .. _`mpi_read_raw_data`:
 
 mpi_read_raw_data
 =================
 
-.. c:function:: MPI mpi_read_raw_data (const void *xbuffer, size_t nbytes)
+.. c:function:: MPI mpi_read_raw_data(const void *xbuffer, size_t nbytes)
 
     Read a raw byte stream as a positive integer
 
@@ -20,14 +16,12 @@ mpi_read_raw_data
     :param size_t nbytes:
         The amount of data to read
 
-
-
 .. _`mpi_read_buffer`:
 
 mpi_read_buffer
 ===============
 
-.. c:function:: int mpi_read_buffer (MPI a, uint8_t *buf, unsigned buf_len, unsigned *nbytes, int *sign)
+.. c:function:: int mpi_read_buffer(MPI a, uint8_t *buf, unsigned buf_len, unsigned *nbytes, int *sign)
 
     read MPI to a bufer provided by user (msb first)
 
@@ -49,8 +43,6 @@ mpi_read_buffer
     :param int \*sign:
         if not NULL, it will be set to the sign of a.
 
-
-
 .. _`mpi_read_buffer.return`:
 
 Return
@@ -58,14 +50,12 @@ Return
 
 0 on success or error code in case of error
 
-
-
 .. _`mpi_write_to_sgl`:
 
 mpi_write_to_sgl
 ================
 
-.. c:function:: int mpi_write_to_sgl (MPI a, struct scatterlist *sgl, unsigned *nbytes, int *sign)
+.. c:function:: int mpi_write_to_sgl(MPI a, struct scatterlist *sgl, unsigned *nbytes, int *sign)
 
     Funnction exports MPI to an sgl (msb first)
 
@@ -86,18 +76,13 @@ mpi_write_to_sgl
     :param int \*sign:
         if not NULL, it will be set to the sign of a.
 
-
-
 .. _`mpi_write_to_sgl.description`:
 
 Description
 -----------
 
-
 This function works in the same way as the mpi_read_buffer, but it
-takes an sgl instead of u8 * buf.
-
-
+takes an sgl instead of u8 \* buf.
 
 .. _`mpi_write_to_sgl.return`:
 
@@ -105,4 +90,6 @@ Return
 ------
 
 0 on success or error code in case of error
+
+.. This file was automatic generated / don't edit.
 

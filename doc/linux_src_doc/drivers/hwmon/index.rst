@@ -7,4 +7,10 @@ hwmon
 .. toctree::
    :maxdepth: 1
 
-   hwmon_c
+    hih6130_c
+    hwmon_c
+    iio_hwmon_c
+    max197_c
+    s3c-hwmon_c
+    sht15_c
+    sht21_c

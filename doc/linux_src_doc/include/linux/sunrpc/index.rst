@@ -7,4 +7,5 @@ sunrpc
 .. toctree::
    :maxdepth: 1
 
-   addr_h
+    addr_h
+    auth_h

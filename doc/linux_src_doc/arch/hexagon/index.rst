@@ -7,4 +7,5 @@ hexagon
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
+    include/index
+    kernel/index

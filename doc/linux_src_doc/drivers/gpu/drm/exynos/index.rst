@@ -7,5 +7,5 @@ exynos
 .. toctree::
    :maxdepth: 1
 
-   exynos7_drm_decon_c
-   exynos_drm_fimd_c
+    exynos7_drm_decon_c
+    exynos_drm_fimd_c

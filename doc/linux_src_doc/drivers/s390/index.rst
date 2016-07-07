@@ -7,7 +7,8 @@ s390
 .. toctree::
    :maxdepth: 1
 
-   char/index
-   cio/index
-   crypto/index
-   net/index
+    char/index
+    cio/index
+    crypto/index
+    net/index
+    scsi/index

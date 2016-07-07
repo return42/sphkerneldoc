@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-vce_v1_0.c
-==========
-
+.. src-file: drivers/gpu/drm/radeon/vce_v1_0.c
 
 .. _`vce_v1_0_get_rptr`:
 
 vce_v1_0_get_rptr
 =================
 
-.. c:function:: uint32_t vce_v1_0_get_rptr (struct radeon_device *rdev, struct radeon_ring *ring)
+.. c:function:: uint32_t vce_v1_0_get_rptr(struct radeon_device *rdev, struct radeon_ring *ring)
 
     get read pointer
 
@@ -20,8 +16,6 @@ vce_v1_0_get_rptr
     :param struct radeon_ring \*ring:
         radeon_ring pointer
 
-
-
 .. _`vce_v1_0_get_rptr.description`:
 
 Description
@@ -29,14 +23,12 @@ Description
 
 Returns the current hardware read pointer
 
-
-
 .. _`vce_v1_0_get_wptr`:
 
 vce_v1_0_get_wptr
 =================
 
-.. c:function:: uint32_t vce_v1_0_get_wptr (struct radeon_device *rdev, struct radeon_ring *ring)
+.. c:function:: uint32_t vce_v1_0_get_wptr(struct radeon_device *rdev, struct radeon_ring *ring)
 
     get write pointer
 
@@ -46,8 +38,6 @@ vce_v1_0_get_wptr
     :param struct radeon_ring \*ring:
         radeon_ring pointer
 
-
-
 .. _`vce_v1_0_get_wptr.description`:
 
 Description
@@ -55,14 +45,12 @@ Description
 
 Returns the current hardware write pointer
 
-
-
 .. _`vce_v1_0_set_wptr`:
 
 vce_v1_0_set_wptr
 =================
 
-.. c:function:: void vce_v1_0_set_wptr (struct radeon_device *rdev, struct radeon_ring *ring)
+.. c:function:: void vce_v1_0_set_wptr(struct radeon_device *rdev, struct radeon_ring *ring)
 
     set write pointer
 
@@ -72,8 +60,6 @@ vce_v1_0_set_wptr
     :param struct radeon_ring \*ring:
         radeon_ring pointer
 
-
-
 .. _`vce_v1_0_set_wptr.description`:
 
 Description
@@ -81,21 +67,17 @@ Description
 
 Commits the write pointer to the hardware
 
-
-
 .. _`vce_v1_0_start`:
 
 vce_v1_0_start
 ==============
 
-.. c:function:: int vce_v1_0_start (struct radeon_device *rdev)
+.. c:function:: int vce_v1_0_start(struct radeon_device *rdev)
 
     start VCE block
 
     :param struct radeon_device \*rdev:
         radeon_device pointer
-
-
 
 .. _`vce_v1_0_start.description`:
 
@@ -103,4 +85,6 @@ Description
 -----------
 
 Setup and start the VCE block
+
+.. This file was automatic generated / don't edit.
 

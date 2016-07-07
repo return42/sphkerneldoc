@@ -7,6 +7,6 @@ qce
 .. toctree::
    :maxdepth: 1
 
-   cipher_h
-   core_h
-   sha_h
+    cipher_h
+    core_h
+    sha_h

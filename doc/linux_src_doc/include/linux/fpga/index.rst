@@ -7,4 +7,4 @@ fpga
 .. toctree::
    :maxdepth: 1
 
-   fpga-mgr_h
+    fpga-mgr_h

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-sh_dma.h
-========
-
+.. src-file: include/linux/sh_dma.h
 
 .. _`sh_dmae_channel`:
 
 struct sh_dmae_channel
 ======================
 
-.. c:type:: sh_dmae_channel
+.. c:type:: struct sh_dmae_channel
 
     DMAC channel platform data
-
 
 .. _`sh_dmae_channel.definition`:
 
@@ -22,47 +17,42 @@ Definition
 
 .. code-block:: c
 
-  struct sh_dmae_channel {
-    unsigned int offset;
-    unsigned int dmars;
-    unsigned int chclr_offset;
-    unsigned char dmars_bit;
-    unsigned char chclr_bit;
-  };
-
+    struct sh_dmae_channel {
+        unsigned int offset;
+        unsigned int dmars;
+        unsigned int chclr_offset;
+        unsigned char dmars_bit;
+        unsigned char chclr_bit;
+    }
 
 .. _`sh_dmae_channel.members`:
 
 Members
 -------
 
-:``offset``:
+offset
     register offset within the main IOMEM resource
 
-:``dmars``:
+dmars
     channel DMARS register offset
 
-:``chclr_offset``:
+chclr_offset
     channel CHCLR register offset
 
-:``dmars_bit``:
+dmars_bit
     channel DMARS field offset within the register
 
-:``chclr_bit``:
+chclr_bit
     bit position, to be set to reset the channel
-
-
-
 
 .. _`sh_dmae_pdata`:
 
 struct sh_dmae_pdata
 ====================
 
-.. c:type:: sh_dmae_pdata
+.. c:type:: struct sh_dmae_pdata
 
     DMAC platform data
-
 
 .. _`sh_dmae_pdata.definition`:
 
@@ -71,89 +61,89 @@ Definition
 
 .. code-block:: c
 
-  struct sh_dmae_pdata {
-    const struct sh_dmae_slave_config * slave;
-    int slave_num;
-    const struct sh_dmae_channel * channel;
-    int channel_num;
-    unsigned int ts_low_shift;
-    unsigned int ts_low_mask;
-    unsigned int ts_high_shift;
-    unsigned int ts_high_mask;
-    const unsigned int * ts_shift;
-    int ts_shift_num;
-    u16 dmaor_init;
-    unsigned int chcr_offset;
-    u32 chcr_ie_bit;
-    unsigned int dmaor_is_32bit:1;
-    unsigned int needs_tend_set:1;
-    unsigned int no_dmars:1;
-    unsigned int chclr_present:1;
-    unsigned int chclr_bitwise:1;
-    unsigned int slave_only:1;
-  };
-
+    struct sh_dmae_pdata {
+        const struct sh_dmae_slave_config *slave;
+        int slave_num;
+        const struct sh_dmae_channel *channel;
+        int channel_num;
+        unsigned int ts_low_shift;
+        unsigned int ts_low_mask;
+        unsigned int ts_high_shift;
+        unsigned int ts_high_mask;
+        const unsigned int *ts_shift;
+        int ts_shift_num;
+        u16 dmaor_init;
+        unsigned int chcr_offset;
+        u32 chcr_ie_bit;
+        unsigned int dmaor_is_32bit:1;
+        unsigned int needs_tend_set:1;
+        unsigned int no_dmars:1;
+        unsigned int chclr_present:1;
+        unsigned int chclr_bitwise:1;
+        unsigned int slave_only:1;
+    }
 
 .. _`sh_dmae_pdata.members`:
 
 Members
 -------
 
-:``slave``:
+slave
     array of slaves
 
-:``slave_num``:
+slave_num
     number of slaves in the above array
 
-:``channel``:
+channel
     array of DMA channels
 
-:``channel_num``:
+channel_num
     number of channels in the above array
 
-:``ts_low_shift``:
+ts_low_shift
     shift of the low part of the TS field
 
-:``ts_low_mask``:
+ts_low_mask
     low TS field mask
 
-:``ts_high_shift``:
+ts_high_shift
     additional shift of the high part of the TS field
 
-:``ts_high_mask``:
+ts_high_mask
     high TS field mask
 
-:``ts_shift``:
+ts_shift
     array of Transfer Size shifts, indexed by TS value
 
-:``ts_shift_num``:
+ts_shift_num
     number of shifts in the above array
 
-:``dmaor_init``:
+dmaor_init
     DMAOR initialisation value
 
-:``chcr_offset``:
+chcr_offset
     CHCR address offset
 
-:``chcr_ie_bit``:
+chcr_ie_bit
     CHCR Interrupt Enable bit
 
-:``dmaor_is_32bit``:
+dmaor_is_32bit
     DMAOR is a 32-bit register
 
-:``needs_tend_set``:
+needs_tend_set
     the TEND register has to be set
 
-:``no_dmars``:
+no_dmars
     DMAC has no DMARS registers
 
-:``chclr_present``:
+chclr_present
     DMAC has one or several CHCLR registers
 
-:``chclr_bitwise``:
+chclr_bitwise
     channel CHCLR registers are bitwise
 
-:``slave_only``:
+slave_only
     DMAC cannot be used for MEMCPY
 
+.. This file was automatic generated / don't edit.
 

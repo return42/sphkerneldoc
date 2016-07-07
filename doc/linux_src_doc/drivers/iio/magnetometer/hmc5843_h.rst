@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/magnetometer/hmc5843.h
+
+.. _`hmc5843_data`:
+
+struct hmc5843_data
+===================
+
+.. c:type:: struct hmc5843_data
+
+    device specific data
+
+.. _`hmc5843_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hmc5843_data {
+        struct device *dev;
+        struct mutex lock;
+        struct regmap *regmap;
+        const struct hmc5843_chip_info *variant;
+        __be16 buffer[8];
+    }
+
+.. _`hmc5843_data.members`:
+
+Members
+-------
+
+dev
+    actual device
+
+lock
+    update and read regmap data
+
+regmap
+    hardware access register maps
+
+variant
+    describe chip variants
+
+buffer
+    3x 16-bit channels + padding + 64-bit timestamp
+
+.. This file was automatic generated / don't edit.
+

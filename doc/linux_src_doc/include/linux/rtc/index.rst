@@ -7,4 +7,4 @@ rtc
 .. toctree::
    :maxdepth: 1
 
-   ds1685_h
+    ds1685_h

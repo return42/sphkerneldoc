@@ -7,5 +7,5 @@ netlink
 .. toctree::
    :maxdepth: 1
 
-   af_netlink_c
-   genetlink_c
+    af_netlink_c
+    genetlink_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-file_table.c
-============
-
+.. src-file: fs/file_table.c
 
 .. _`alloc_file`:
 
 alloc_file
 ==========
 
-.. c:function:: struct file *alloc_file (struct path *path, fmode_t mode, const struct file_operations *fop)
+.. c:function:: struct file *alloc_file(struct path *path, fmode_t mode, const struct file_operations *fop)
 
     allocate and initialize a 'struct file'
 
@@ -22,4 +18,6 @@ alloc_file
 
     :param const struct file_operations \*fop:
         the 'struct file_operations' for the new file
+
+.. This file was automatic generated / don't edit.
 

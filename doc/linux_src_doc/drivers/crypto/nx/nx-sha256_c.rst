@@ -1,30 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-nx-sha256.c
-===========
-
+.. src-file: drivers/crypto/nx/nx-sha256.c
 
 .. _`nx_crypto_ctx_sha256_init`:
 
 nx_crypto_ctx_sha256_init
 =========================
 
-.. c:function:: int nx_crypto_ctx_sha256_init (struct crypto_tfm *tfm)
+.. c:function:: int nx_crypto_ctx_sha256_init(struct crypto_tfm *tfm)
 
     256 routines supporting the Power 7+ Nest Accelerators driver
 
     :param struct crypto_tfm \*tfm:
-
         *undescribed*
-
-
 
 .. _`nx_crypto_ctx_sha256_init.description`:
 
 Description
 -----------
-
 
 Copyright (C) 2011-2012 International Business Machines Inc.
 
@@ -41,12 +33,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
-
 .. _`nx_crypto_ctx_sha256_init.author`:
 
 Author
 ------
 
 Kent Yoder <yoder1\ ``us``\ .ibm.com>
+
+.. This file was automatic generated / don't edit.
 

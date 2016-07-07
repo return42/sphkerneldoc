@@ -7,4 +7,8 @@ mtrr
 .. toctree::
    :maxdepth: 1
 
-   generic_c
+    amd_c
+    centaur_c
+    cleanup_c
+    generic_c
+    main_c

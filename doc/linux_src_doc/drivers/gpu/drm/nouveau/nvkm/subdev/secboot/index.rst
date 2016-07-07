@@ -7,7 +7,7 @@ secboot
 .. toctree::
    :maxdepth: 1
 
-   base_c
-   gm200_c
-   gm20b_c
-   priv_h
+    base_c
+    gm200_c
+    gm20b_c
+    priv_h

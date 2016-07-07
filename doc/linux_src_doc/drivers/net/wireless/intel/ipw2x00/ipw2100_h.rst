@@ -1,0 +1,12 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/ipw2x00/ipw2100.h
+
+.. _`host_complete`:
+
+HOST_COMPLETE
+=============
+
+.. c:function::  HOST_COMPLETE()
+
+.. This file was automatic generated / don't edit.
+

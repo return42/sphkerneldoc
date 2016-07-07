@@ -7,4 +7,7 @@ ipc
 .. toctree::
    :maxdepth: 1
 
-   util_c
+    msg_c
+    sem_c
+    shm_c
+    util_c

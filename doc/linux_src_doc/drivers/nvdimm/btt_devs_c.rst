@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-btt_devs.c
-==========
-
+.. src-file: drivers/nvdimm/btt_devs.c
 
 .. _`nd_btt_arena_is_valid`:
 
 nd_btt_arena_is_valid
 =====================
 
-.. c:function:: bool nd_btt_arena_is_valid (struct nd_btt *nd_btt, struct btt_sb *super)
+.. c:function:: bool nd_btt_arena_is_valid(struct nd_btt *nd_btt, struct btt_sb *super)
 
     check if the metadata layout is valid
 
@@ -19,8 +15,6 @@ nd_btt_arena_is_valid
 
     :param struct btt_sb \*super:
         pointer to the arena's info block being tested
-
-
 
 .. _`nd_btt_arena_is_valid.description`:
 
@@ -31,12 +25,12 @@ Check consistency of the btt info block with itself by validating
 the checksum, and with the parent namespace by verifying the
 parent_uuid contained in the info block with the one supplied in.
 
+.. _`nd_btt_arena_is_valid.return`:
 
-
-.. _`nd_btt_arena_is_valid.returns`:
-
-Returns
--------
+Return
+------
 
 false for an invalid info block, true for a valid one
+
+.. This file was automatic generated / don't edit.
 

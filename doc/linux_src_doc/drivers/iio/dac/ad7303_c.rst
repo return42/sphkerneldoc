@@ -1,0 +1,53 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad7303.c
+
+.. _`ad7303_state`:
+
+struct ad7303_state
+===================
+
+.. c:type:: struct ad7303_state
+
+    driver instance specific data
+
+.. _`ad7303_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7303_state {
+        struct spi_device *spi;
+        uint16_t config;
+        uint8_t dac_cache[2];
+        struct regulator *vdd_reg;
+        struct regulator *vref_reg;
+        __be16 data ____cacheline_aligned;
+    }
+
+.. _`ad7303_state.members`:
+
+Members
+-------
+
+spi
+    the device for this driver instance
+
+config
+    cached config register value
+
+dac_cache
+    current DAC raw value (chip does not support readback)
+
+vdd_reg
+    *undescribed*
+
+vref_reg
+    *undescribed*
+
+____cacheline_aligned
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

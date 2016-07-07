@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-irq-vic.c
-=========
-
+.. src-file: drivers/irqchip/irq-vic.c
 
 .. _`vic_device`:
 
 struct vic_device
 =================
 
-.. c:type:: vic_device
+.. c:type:: struct vic_device
 
     VIC PM device
-
 
 .. _`vic_device.definition`:
 
@@ -22,71 +17,65 @@ Definition
 
 .. code-block:: c
 
-  struct vic_device {
-    void __iomem * base;
-    int irq;
-    u32 valid_sources;
-    u32 resume_sources;
-    u32 resume_irqs;
-    u32 int_select;
-    u32 int_enable;
-    u32 soft_int;
-    u32 protect;
-    struct irq_domain * domain;
-  };
-
+    struct vic_device {
+        void __iomem *base;
+        int irq;
+        u32 valid_sources;
+        u32 resume_sources;
+        u32 resume_irqs;
+        u32 int_select;
+        u32 int_enable;
+        u32 soft_int;
+        u32 protect;
+        struct irq_domain *domain;
+    }
 
 .. _`vic_device.members`:
 
 Members
 -------
 
-:``base``:
+base
     The register base for the VIC.
 
-:``irq``:
+irq
     The IRQ number for the base of the VIC.
 
-:``valid_sources``:
+valid_sources
     A bitmask of valid interrupts
 
-:``resume_sources``:
+resume_sources
     A bitmask of interrupts for resume.
 
-:``resume_irqs``:
+resume_irqs
     The IRQs enabled for resume.
 
-:``int_select``:
+int_select
     Save for VIC_INT_SELECT.
 
-:``int_enable``:
+int_enable
     Save for VIC_INT_ENABLE.
 
-:``soft_int``:
+soft_int
     Save for VIC_INT_SOFT.
 
-:``protect``:
+protect
     Save for VIC_PROTECT.
 
-:``domain``:
+domain
     The IRQ domain for the VIC.
-
-
-
 
 .. _`vic_init2`:
 
 vic_init2
 =========
 
-.. c:function:: void vic_init2 (void __iomem *base)
+.. c:function:: void vic_init2(void __iomem *base)
 
     common initialisation code
 
     :param void __iomem \*base:
         Base of the VIC.
-
-
 
 .. _`vic_init2.description`:
 
@@ -96,40 +85,33 @@ Description
 Common initialisation code for registration
 and resume.
 
-
-
 .. _`vic_pm_init`:
 
 vic_pm_init
 ===========
 
-.. c:function:: int vic_pm_init ( void)
+.. c:function:: int vic_pm_init( void)
 
     initicall to register VIC pm
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`vic_pm_init.description`:
 
 Description
 -----------
 
-
-This is called via :c:func:`late_initcall` to register
+This is called via \ :c:func:`late_initcall`\  to register
 the resources for the VICs due to the early
 nature of the VIC's registration.
-
-
 
 .. _`vic_register`:
 
 vic_register
 ============
 
-.. c:function:: void vic_register (void __iomem *base, unsigned int parent_irq, unsigned int irq, u32 valid_sources, u32 resume_sources, struct device_node *node)
+.. c:function:: void vic_register(void __iomem *base, unsigned int parent_irq, unsigned int irq, u32 valid_sources, u32 resume_sources, struct device_node *node)
 
     Register a VIC.
 
@@ -151,8 +133,6 @@ vic_register
     :param struct device_node \*node:
         The device tree node associated with the VIC.
 
-
-
 .. _`vic_register.description`:
 
 Description
@@ -164,14 +144,12 @@ taken to re-instate the settings on resume.
 
 This also configures the IRQ domain for the VIC.
 
-
-
 .. _`vic_init`:
 
 vic_init
 ========
 
-.. c:function:: void vic_init (void __iomem *base, unsigned int irq_start, u32 vic_sources, u32 resume_sources)
+.. c:function:: void vic_init(void __iomem *base, unsigned int irq_start, u32 vic_sources, u32 resume_sources)
 
     initialise a vectored interrupt controller
 
@@ -187,14 +165,12 @@ vic_init
     :param u32 resume_sources:
         bitmask of interrupt sources to allow for resume
 
-
-
 .. _`vic_init_cascaded`:
 
 vic_init_cascaded
 =================
 
-.. c:function:: int vic_init_cascaded (void __iomem *base, unsigned int parent_irq, u32 vic_sources, u32 resume_sources)
+.. c:function:: int vic_init_cascaded(void __iomem *base, unsigned int parent_irq, u32 vic_sources, u32 resume_sources)
 
     initialise a cascaded vectored interrupt controller
 
@@ -210,12 +186,12 @@ vic_init_cascaded
     :param u32 resume_sources:
         bitmask of interrupt sources to allow for resume
 
-
-
 .. _`vic_init_cascaded.description`:
 
 Description
 -----------
 
 This returns the base for the new interrupts or negative on error.
+
+.. This file was automatic generated / don't edit.
 

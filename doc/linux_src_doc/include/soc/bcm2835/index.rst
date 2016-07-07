@@ -7,4 +7,4 @@ bcm2835
 .. toctree::
    :maxdepth: 1
 
-   raspberrypi-firmware_h
+    raspberrypi-firmware_h

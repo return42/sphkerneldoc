@@ -1,0 +1,61 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/input/misc/drv2667.c
+
+.. _`drv2667_data`:
+
+struct drv2667_data
+===================
+
+.. c:type:: struct drv2667_data
+
+    \ ``input_dev``\  - Pointer to the input device \ ``client``\  - Pointer to the I2C client \ ``regmap``\  - Register map of the device \ ``work``\  - Work item used to off load the enable/disable of the vibration \ ``regulator``\  - Pointer to the regulator for the IC \ ``magnitude``\  - Magnitude of the vibration event
+
+.. _`drv2667_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drv2667_data {
+        struct input_dev *input_dev;
+        struct i2c_client *client;
+        struct regmap *regmap;
+        struct work_struct work;
+        struct regulator *regulator;
+        u32 page;
+        u32 magnitude;
+        u32 frequency;
+    }
+
+.. _`drv2667_data.members`:
+
+Members
+-------
+
+input_dev
+    *undescribed*
+
+client
+    *undescribed*
+
+regmap
+    *undescribed*
+
+work
+    *undescribed*
+
+regulator
+    *undescribed*
+
+page
+    *undescribed*
+
+magnitude
+    *undescribed*
+
+frequency
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

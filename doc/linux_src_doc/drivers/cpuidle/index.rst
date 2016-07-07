@@ -7,6 +7,11 @@ cpuidle
 .. toctree::
    :maxdepth: 1
 
-   cpuidle_c
-   driver_c
-   dt_idle_states_c
+    governors/index
+    coupled_c
+    cpuidle-big_little_c
+    cpuidle_c
+    driver_c
+    dt_idle_states_c
+    governor_c
+    sysfs_c

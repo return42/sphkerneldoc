@@ -1,0 +1,38 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/3945.h
+
+.. _`il3945_hw_find_station`:
+
+il3945_hw_find_station
+======================
+
+.. c:function:: u8 il3945_hw_find_station(struct il_priv *il, const u8 *bssid)
+
+    Find station id for a given BSSID
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param const u8 \*bssid:
+        MAC address of station ID to find
+
+.. _`il3945_hw_find_station.note`:
+
+NOTE
+----
+
+This should not be hardware specific but the code has
+not yet been merged into a single common layer for managing the
+station tables.
+
+.. _`fh39_mem_lower_bound`:
+
+FH39_MEM_LOWER_BOUND
+====================
+
+.. c:function::  FH39_MEM_LOWER_BOUND()
+
+    Addresses are offsets from device's PCI hardware base address.
+
+.. This file was automatic generated / don't edit.
+

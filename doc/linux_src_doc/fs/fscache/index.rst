@@ -7,7 +7,7 @@ fscache
 .. toctree::
    :maxdepth: 1
 
-   cache_c
-   object_c
-   operation_c
-   page_c
+    cache_c
+    object_c
+    operation_c
+    page_c

@@ -7,4 +7,4 @@ baytrail
 .. toctree::
    :maxdepth: 1
 
-   sst-baytrail-ipc_h
+    sst-baytrail-ipc_h

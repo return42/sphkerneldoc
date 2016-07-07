@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-rhashtable.c
-============
-
+.. src-file: lib/rhashtable.c
 
 .. _`rhashtable_expand`:
 
 rhashtable_expand
 =================
 
-.. c:function:: int rhashtable_expand (struct rhashtable *ht)
+.. c:function:: int rhashtable_expand(struct rhashtable *ht)
 
     Expand hash table while allowing concurrent lookups
 
     :param struct rhashtable \*ht:
         the hash table to expand
-
-
 
 .. _`rhashtable_expand.description`:
 
@@ -27,7 +21,7 @@ Description
 A secondary bucket array is allocated and the hash entries are migrated.
 
 This function may only be called in a context where it is safe to call
-:c:func:`synchronize_rcu`, e.g. not within a :c:func:`rcu_read_lock` section.
+\ :c:func:`synchronize_rcu`\ , e.g. not within a \ :c:func:`rcu_read_lock`\  section.
 
 The caller must ensure that no concurrent resizing occurs by holding
 ht->mutex.
@@ -35,21 +29,17 @@ ht->mutex.
 It is valid to have concurrent insertions and deletions protected by per
 bucket locks or concurrent RCU protected lookups and traversals.
 
-
-
 .. _`rhashtable_shrink`:
 
 rhashtable_shrink
 =================
 
-.. c:function:: int rhashtable_shrink (struct rhashtable *ht)
+.. c:function:: int rhashtable_shrink(struct rhashtable *ht)
 
     Shrink hash table while allowing concurrent lookups
 
     :param struct rhashtable \*ht:
         the hash table to shrink
-
-
 
 .. _`rhashtable_shrink.description`:
 
@@ -68,14 +58,12 @@ It is however valid to have concurrent lookups if they are RCU protected.
 It is valid to have concurrent insertions and deletions protected by per
 bucket locks or concurrent RCU protected lookups and traversals.
 
-
-
 .. _`rhashtable_walk_init`:
 
 rhashtable_walk_init
 ====================
 
-.. c:function:: int rhashtable_walk_init (struct rhashtable *ht, struct rhashtable_iter *iter)
+.. c:function:: int rhashtable_walk_init(struct rhashtable *ht, struct rhashtable_iter *iter, gfp_t gfp)
 
     Initialise an iterator
 
@@ -85,7 +73,8 @@ rhashtable_walk_init
     :param struct rhashtable_iter \*iter:
         Hash table Iterator
 
-
+    :param gfp_t gfp:
+        GFP flags for allocations
 
 .. _`rhashtable_walk_init.description`:
 
@@ -108,21 +97,17 @@ context or with spin locks held.
 You must call rhashtable_walk_exit if this function returns
 successfully.
 
-
-
 .. _`rhashtable_walk_exit`:
 
 rhashtable_walk_exit
 ====================
 
-.. c:function:: void rhashtable_walk_exit (struct rhashtable_iter *iter)
+.. c:function:: void rhashtable_walk_exit(struct rhashtable_iter *iter)
 
     Free an iterator
 
     :param struct rhashtable_iter \*iter:
         Hash table Iterator
-
-
 
 .. _`rhashtable_walk_exit.description`:
 
@@ -131,21 +116,17 @@ Description
 
 This function frees resources allocated by rhashtable_walk_init.
 
-
-
 .. _`rhashtable_walk_start`:
 
 rhashtable_walk_start
 =====================
 
-.. c:function:: int rhashtable_walk_start (struct rhashtable_iter *iter)
+.. c:function:: int rhashtable_walk_start(struct rhashtable_iter *iter)
 
     Start a hash table walk
 
     :param struct rhashtable_iter \*iter:
         Hash table iterator
-
-
 
 .. _`rhashtable_walk_start.description`:
 
@@ -162,21 +143,17 @@ Returns -EAGAIN if resize event occured.  Note that the iterator
 will rewind back to the beginning and you may use it immediately
 by calling rhashtable_walk_next.
 
-
-
 .. _`rhashtable_walk_next`:
 
 rhashtable_walk_next
 ====================
 
-.. c:function:: void *rhashtable_walk_next (struct rhashtable_iter *iter)
+.. c:function:: void *rhashtable_walk_next(struct rhashtable_iter *iter)
 
     Return the next object and advance the iterator
 
     :param struct rhashtable_iter \*iter:
         Hash table iterator
-
-
 
 .. _`rhashtable_walk_next.description`:
 
@@ -191,21 +168,17 @@ Returns the next object or NULL when the end of the table is reached.
 Returns -EAGAIN if resize event occured.  Note that the iterator
 will rewind back to the beginning and you may continue to use it.
 
-
-
 .. _`rhashtable_walk_stop`:
 
 rhashtable_walk_stop
 ====================
 
-.. c:function:: void rhashtable_walk_stop (struct rhashtable_iter *iter)
+.. c:function:: void rhashtable_walk_stop(struct rhashtable_iter *iter)
 
     Finish a hash table walk
 
     :param struct rhashtable_iter \*iter:
         Hash table iterator
-
-
 
 .. _`rhashtable_walk_stop.description`:
 
@@ -214,14 +187,12 @@ Description
 
 Finish a hash table walk.
 
-
-
 .. _`rhashtable_init`:
 
 rhashtable_init
 ===============
 
-.. c:function:: int rhashtable_init (struct rhashtable *ht, const struct rhashtable_params *params)
+.. c:function:: int rhashtable_init(struct rhashtable *ht, const struct rhashtable_params *params)
 
     initialize a new hash table
 
@@ -231,8 +202,6 @@ rhashtable_init
     :param const struct rhashtable_params \*params:
         configuration parameters
 
-
-
 .. _`rhashtable_init.description`:
 
 Description
@@ -241,79 +210,67 @@ Description
 Initializes a new hash table based on the provided configuration
 parameters. A table can be configured either with a variable or
 
-
-
 .. _`rhashtable_init.configuration-example-1`:
 
 Configuration Example 1
 -----------------------
 
-.. code-block:: c
-
 Fixed length keys
 struct test_obj {
-	int			key;
-	void *			my_member;
-	struct rhash_head	node;
+int                     key;
+void \*                  my_member;
+struct rhash_head       node;
 };
 
 struct rhashtable_params params = {
-	.head_offset = offsetof(struct test_obj, node),
-	.key_offset = offsetof(struct test_obj, key),
-	.key_len = sizeof(int),
-	.hashfn = jhash,
-	.nulls_base = (1U << RHT_BASE_SHIFT),
+.head_offset = offsetof(struct test_obj, node),
+.key_offset = offsetof(struct test_obj, key),
+.key_len = sizeof(int),
+.hashfn = jhash,
+.nulls_base = (1U << RHT_BASE_SHIFT),
 };
-
-
 
 .. _`rhashtable_init.configuration-example-2`:
 
 Configuration Example 2
 -----------------------
 
-.. code-block:: c
-
 Variable length keys
 struct test_obj {
-	[...]
-	struct rhash_head	node;
+[...]
+struct rhash_head       node;
 };
 
-u32 my_hash_fn(const void *data, u32 len, u32 seed)
+u32 my_hash_fn(const void \*data, u32 len, u32 seed)
 {
-	struct test_obj *obj = data;
+struct test_obj \*obj = data;
 
-	return [... hash ...];
+return [... hash ...];
 }
 
 struct rhashtable_params params = {
-	.head_offset = offsetof(struct test_obj, node),
-	.hashfn = jhash,
-	.obj_hashfn = my_hash_fn,
+.head_offset = offsetof(struct test_obj, node),
+.hashfn = jhash,
+.obj_hashfn = my_hash_fn,
 };
-
-
 
 .. _`rhashtable_free_and_destroy`:
 
 rhashtable_free_and_destroy
 ===========================
 
-.. c:function:: void rhashtable_free_and_destroy (struct rhashtable *ht, void (*free_fn) (void *ptr, void *arg, void *arg)
+.. c:function:: void rhashtable_free_and_destroy(struct rhashtable *ht, void (*) free_fn (void *ptr, void *arg, void *arg)
 
     free elements and destroy hash table
 
     :param struct rhashtable \*ht:
         the hash table to destroy
 
-    :param void (\*free_fn) (void \*ptr, void \*arg):
+    :param (void (\*) free_fn (void \*ptr, void \*arg):
         callback to release resources of element
 
     :param void \*arg:
         pointer passed to free_fn
-
-
 
 .. _`rhashtable_free_and_destroy.description`:
 
@@ -328,4 +285,6 @@ must occur in a compatible manner. Then frees the bucket array.
 This function will eventually sleep to wait for an async resize
 to complete. The caller is responsible that no further write operations
 occurs in parallel.
+
+.. This file was automatic generated / don't edit.
 

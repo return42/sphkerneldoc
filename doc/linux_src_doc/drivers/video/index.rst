@@ -7,7 +7,9 @@ video
 .. toctree::
    :maxdepth: 1
 
-   of_display_timing_c
-   of_videomode_c
-   backlight/index
-   fbdev/index
+    backlight/index
+    console/index
+    fbdev/index
+    hdmi_c
+    of_display_timing_c
+    of_videomode_c

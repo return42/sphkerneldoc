@@ -1,0 +1,152 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/hwmon/hih6130.c
+
+.. _`hih6130`:
+
+struct hih6130
+==============
+
+.. c:type:: struct hih6130
+
+    HIH-6130 device specific data
+
+.. _`hih6130.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct hih6130 {
+        struct i2c_client *client;
+        struct mutex lock;
+        bool valid;
+        unsigned long last_update;
+        int temperature;
+        int humidity;
+        size_t write_length;
+    }
+
+.. _`hih6130.members`:
+
+Members
+-------
+
+client
+    *undescribed*
+
+lock
+    mutex to protect measurement values
+
+valid
+    only false before first measurement is taken
+
+last_update
+    time of last update (jiffies)
+
+temperature
+    cached temperature measurement value
+
+humidity
+    cached humidity measurement value
+
+write_length
+    length for I2C measurement request
+
+.. _`hih6130_temp_ticks_to_millicelsius`:
+
+hih6130_temp_ticks_to_millicelsius
+==================================
+
+.. c:function:: int hih6130_temp_ticks_to_millicelsius(int ticks)
+
+    convert raw temperature ticks to milli celsius
+
+    :param int ticks:
+        temperature ticks value received from sensor
+
+.. _`hih6130_rh_ticks_to_per_cent_mille`:
+
+hih6130_rh_ticks_to_per_cent_mille
+==================================
+
+.. c:function:: int hih6130_rh_ticks_to_per_cent_mille(int ticks)
+
+    convert raw humidity ticks to one-thousandths of a percent relative humidity
+
+    :param int ticks:
+        humidity ticks value received from sensor
+
+.. _`hih6130_update_measurements`:
+
+hih6130_update_measurements
+===========================
+
+.. c:function:: int hih6130_update_measurements(struct device *dev)
+
+    get updated measurements from device
+
+    :param struct device \*dev:
+        device
+
+.. _`hih6130_update_measurements.description`:
+
+Description
+-----------
+
+Returns 0 on success, else negative errno.
+
+.. _`hih6130_show_temperature`:
+
+hih6130_show_temperature
+========================
+
+.. c:function:: ssize_t hih6130_show_temperature(struct device *dev, struct device_attribute *attr, char *buf)
+
+    show temperature measurement value in sysfs
+
+    :param struct device \*dev:
+        device
+
+    :param struct device_attribute \*attr:
+        device attribute
+
+    :param char \*buf:
+        sysfs buffer (PAGE_SIZE) where measurement values are written to
+
+.. _`hih6130_show_temperature.description`:
+
+Description
+-----------
+
+Will be called on read access to temp1_input sysfs attribute.
+Returns number of bytes written into buffer, negative errno on error.
+
+.. _`hih6130_show_humidity`:
+
+hih6130_show_humidity
+=====================
+
+.. c:function:: ssize_t hih6130_show_humidity(struct device *dev, struct device_attribute *attr, char *buf)
+
+    show humidity measurement value in sysfs
+
+    :param struct device \*dev:
+        device
+
+    :param struct device_attribute \*attr:
+        device attribute
+
+    :param char \*buf:
+        sysfs buffer (PAGE_SIZE) where measurement values are written to
+
+.. _`hih6130_show_humidity.description`:
+
+Description
+-----------
+
+Will be called on read access to humidity1_input sysfs attribute.
+Returns number of bytes written into buffer, negative errno on error.
+
+.. This file was automatic generated / don't edit.
+

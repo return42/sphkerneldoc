@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ab3100.h
-========
-
+.. src-file: include/linux/mfd/ab3100.h
 
 .. _`ab3100`:
 
 struct ab3100
 =============
 
-.. c:type:: ab3100
-
-    
+.. c:type:: struct ab3100
 
 
 .. _`ab3100.definition`:
@@ -22,53 +16,49 @@ Definition
 
 .. code-block:: c
 
-  struct ab3100 {
-    struct mutex access_mutex;
-    struct device * dev;
-    struct i2c_client * i2c_client;
-    struct i2c_client * testreg_client;
-    char chip_name[32];
-    u8 chip_id;
-    struct blocking_notifier_head event_subscribers;
-    u8 startup_events[3];
-    bool startup_events_read;
-  };
-
+    struct ab3100 {
+        struct mutex access_mutex;
+        struct device *dev;
+        struct i2c_client *i2c_client;
+        struct i2c_client *testreg_client;
+        char chip_name[32];
+        u8 chip_id;
+        struct blocking_notifier_head event_subscribers;
+        u8 startup_events[3];
+        bool startup_events_read;
+    }
 
 .. _`ab3100.members`:
 
 Members
 -------
 
-:``access_mutex``:
+access_mutex
     lock out concurrent accesses to the AB3100 registers
 
-:``dev``:
+dev
     pointer to the containing device
 
-:``i2c_client``:
+i2c_client
     I2C client for this chip
 
-:``testreg_client``:
+testreg_client
     secondary client for test registers
 
-:``chip_name[32]``:
+chip_name
     name of this chip variant
 
-:``chip_id``:
+chip_id
     8 bit chip ID for this chip variant
 
-:``event_subscribers``:
+event_subscribers
     event subscribers are listed here
 
-:``startup_events[3]``:
+startup_events
     a copy of the first reading of the event registers
 
-:``startup_events_read``:
+startup_events_read
     whether the first events have been read
-
-
-
 
 .. _`ab3100.description`:
 
@@ -79,17 +69,14 @@ This struct is PRIVATE and devices using it should NOT
 access ANY fields. It is used as a token for calling the
 AB3100 functions.
 
-
-
 .. _`ab3100_platform_data`:
 
 struct ab3100_platform_data
 ===========================
 
-.. c:type:: ab3100_platform_data
+.. c:type:: struct ab3100_platform_data
 
-    
-
+    Data supplied to initialize board connections to the AB3100
 
 .. _`ab3100_platform_data.definition`:
 
@@ -98,40 +85,27 @@ Definition
 
 .. code-block:: c
 
-  struct ab3100_platform_data {
-    struct regulator_init_data reg_constraints[AB3100_NUM_REGULATORS];
-    u8 reg_initvals[AB3100_NUM_REGULATORS+2];
-    int external_voltage;
-  };
-
+    struct ab3100_platform_data {
+        struct regulator_init_data reg_constraints[AB3100_NUM_REGULATORS];
+        u8 reg_initvals[AB3100_NUM_REGULATORS+2];
+        int external_voltage;
+    }
 
 .. _`ab3100_platform_data.members`:
 
 Members
 -------
 
-:``reg_constraints[AB3100_NUM_REGULATORS]``:
+reg_constraints
     regulator constraints for target board
 
-:``reg_initvals[AB3100_NUM_REGULATORS+2]``:
+reg_initvals
     initial values for the regulator registers
     plus two sleep settings for LDO E and the BUCK converter.
     exactly AB3100_NUM_REGULATORS+2 values must be sent in.
 
-:``external_voltage``:
+external_voltage
     voltage level of the external regulator.
-
-
-
-
-.. _`ab3100_platform_data.description`:
-
-Description
------------
-
-Data supplied to initialize board connections to the AB3100
-
-
 
 .. _`ab3100_platform_data.the-order-of-these-constraints-are`:
 
@@ -141,8 +115,6 @@ the order of these constraints are
 LDO A, C, D, E,
 F, G, H, K, EXT and BUCK.
 
-
-
 .. _`ab3100_platform_data.order`:
 
 Order
@@ -150,4 +122,6 @@ Order
 
 LDO A, C, E, E sleep, F, G, H, K, EXT, BUCK,
 BUCK sleep, LDO D. (LDO D need to be initialized last.)
+
+.. This file was automatic generated / don't edit.
 

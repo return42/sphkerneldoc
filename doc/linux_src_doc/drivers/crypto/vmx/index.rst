@@ -7,4 +7,4 @@ vmx
 .. toctree::
    :maxdepth: 1
 
-   ghash_c
+    ghash_c

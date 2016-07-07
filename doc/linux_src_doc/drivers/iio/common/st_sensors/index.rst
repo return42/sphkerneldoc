@@ -7,4 +7,4 @@ st_sensors
 .. toctree::
    :maxdepth: 1
 
-   st_sensors_i2c_c
+    st_sensors_i2c_c

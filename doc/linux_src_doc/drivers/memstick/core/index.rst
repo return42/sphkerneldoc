@@ -7,4 +7,4 @@ core
 .. toctree::
    :maxdepth: 1
 
-   memstick_c
+    memstick_c

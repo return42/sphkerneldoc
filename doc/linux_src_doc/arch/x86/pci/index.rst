@@ -7,5 +7,8 @@ pci
 .. toctree::
    :maxdepth: 1
 
-   i386_c
-   sta2x11-fixup_c
+    amd_bus_c
+    i386_c
+    intel_mid_pci_c
+    sta2x11-fixup_c
+    vmd_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-hda_jack.h
-==========
-
+.. src-file: sound/pci/hda/hda_jack.h
 
 .. _`snd_hda_jack_detect`:
 
 snd_hda_jack_detect
 ===================
 
-.. c:function:: bool snd_hda_jack_detect (struct hda_codec *codec, hda_nid_t nid)
+.. c:function:: bool snd_hda_jack_detect(struct hda_codec *codec, hda_nid_t nid)
 
     Detect the jack
 
@@ -19,4 +15,6 @@ snd_hda_jack_detect
 
     :param hda_nid_t nid:
         pin NID to check jack detection
+
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-membarrier.h
-============
-
+.. src-file: include/uapi/linux/membarrier.h
 
 .. _`membarrier_cmd`:
 
 enum membarrier_cmd
 ===================
 
-.. c:type:: membarrier_cmd
+.. c:type:: enum membarrier_cmd
 
     membarrier system call command
-
 
 .. _`membarrier_cmd.definition`:
 
@@ -23,21 +18,20 @@ Definition
 .. code-block:: c
 
     enum membarrier_cmd {
-      MEMBARRIER_CMD_QUERY,
-      MEMBARRIER_CMD_SHARED
+        MEMBARRIER_CMD_QUERY,
+        MEMBARRIER_CMD_SHARED
     };
-
 
 .. _`membarrier_cmd.constants`:
 
 Constants
 ---------
 
-:``MEMBARRIER_CMD_QUERY``:
+MEMBARRIER_CMD_QUERY
     Query the set of supported commands. It returns
     a bitmask of valid commands.
 
-:``MEMBARRIER_CMD_SHARED``:
+MEMBARRIER_CMD_SHARED
     Execute a memory barrier on all running threads.
     Upon return from system call, the caller thread
     is ensured that all running threads have passed
@@ -48,7 +42,6 @@ Constants
     state). This covers threads from all processes
     running on the system. This command returns 0.
 
-
 .. _`membarrier_cmd.description`:
 
 Description
@@ -57,4 +50,6 @@ Description
 Command to be passed to the membarrier system call. The commands need to
 be a single bit each, except for MEMBARRIER_CMD_QUERY which is assigned to
 the value 0.
+
+.. This file was automatic generated / don't edit.
 

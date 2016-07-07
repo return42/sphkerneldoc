@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-ts3a227e.c
-==========
-
+.. src-file: sound/soc/codecs/ts3a227e.c
 
 .. _`ts3a227e_enable_jack_detect`:
 
 ts3a227e_enable_jack_detect
 ===========================
 
-.. c:function:: int ts3a227e_enable_jack_detect (struct snd_soc_component *component, struct snd_soc_jack *jack)
+.. c:function:: int ts3a227e_enable_jack_detect(struct snd_soc_component *component, struct snd_soc_jack *jack)
 
     Specify a jack for event reporting
 
@@ -20,8 +16,6 @@ ts3a227e_enable_jack_detect
     :param struct snd_soc_jack \*jack:
         jack to use to report headset and button events on
 
-
-
 .. _`ts3a227e_enable_jack_detect.description`:
 
 Description
@@ -30,4 +24,6 @@ Description
 After this function has been called the headset insert/remove and button
 events 0-3 will be routed to the given jack.  Jack can be null to stop
 reporting.
+
+.. This file was automatic generated / don't edit.
 

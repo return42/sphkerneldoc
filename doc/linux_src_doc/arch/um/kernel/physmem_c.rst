@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-physmem.c
-=========
-
+.. src-file: arch/um/kernel/physmem.c
 
 .. _`setup_physmem`:
 
 setup_physmem
 =============
 
-.. c:function:: void setup_physmem (unsigned long start, unsigned long reserve_end, unsigned long len, unsigned long long highmem)
+.. c:function:: void setup_physmem(unsigned long start, unsigned long reserve_end, unsigned long len, unsigned long long highmem)
 
     Setup physical memory for UML
 
@@ -28,8 +24,6 @@ setup_physmem
     :param unsigned long long highmem:
         Number of highmem bytes that should be mapped/made available.
 
-
-
 .. _`setup_physmem.description`:
 
 Description
@@ -45,4 +39,6 @@ but the mapped-to address is the last address of the executable image
 
 The memory mapped memory of the temporary file is used as backing memory
 of all user space processes/kernel tasks.
+
+.. This file was automatic generated / don't edit.
 

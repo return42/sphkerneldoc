@@ -7,4 +7,4 @@ eeprom
 .. toctree::
    :maxdepth: 1
 
-   eeprom_93cx6_c
+    eeprom_93cx6_c

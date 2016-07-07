@@ -1,20 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-r592.c
-======
-
+.. src-file: drivers/memstick/host/r592.c
 
 .. _`memstick_debug_get_tpc_name`:
 
 memstick_debug_get_tpc_name
 ===========================
 
-.. c:function:: const char *memstick_debug_get_tpc_name (int tpc)
+.. c:function:: const char *memstick_debug_get_tpc_name(int tpc)
 
     debug helper that returns string for a TPC number
 
     :param int tpc:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

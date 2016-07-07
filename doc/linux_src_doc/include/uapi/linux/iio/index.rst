@@ -7,4 +7,4 @@ iio
 .. toctree::
    :maxdepth: 1
 
-   events_h
+    events_h

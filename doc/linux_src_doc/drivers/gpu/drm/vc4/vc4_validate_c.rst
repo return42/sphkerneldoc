@@ -1,24 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-vc4_validate.c
-==============
-
+.. src-file: drivers/gpu/drm/vc4/vc4_validate.c
 
 .. _`validate_args`:
 
 VALIDATE_ARGS
 =============
 
-.. c:function:: VALIDATE_ARGS ()
-
-
+.. c:function::  VALIDATE_ARGS()
 
 .. _`validate_args.description`:
 
 Description
 -----------
-
 
 The VC4 has no IOMMU between it and system memory.  So, a user with
 access to execute command lists could escalate privilege by
@@ -34,33 +27,23 @@ sure they're constrained within the BOs they reference.
 Note that because of the validation that's happening anyway, this
 is where GEM relocation processing happens.
 
-
-
 .. _`size_is_lt`:
 
 size_is_lt
 ==========
 
-.. c:function:: bool size_is_lt (uint32_t width, uint32_t height, int cpp)
+.. c:function:: bool size_is_lt(uint32_t width, uint32_t height, int cpp)
+
+    this function, so we lay out our miptrees accordingly.
 
     :param uint32_t width:
-
         *undescribed*
 
     :param uint32_t height:
-
         *undescribed*
 
     :param int cpp:
-
         *undescribed*
 
-
-
-.. _`size_is_lt.description`:
-
-Description
------------
-
-this function, so we lay out our miptrees accordingly.
+.. This file was automatic generated / don't edit.
 

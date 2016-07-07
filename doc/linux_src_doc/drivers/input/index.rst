@@ -7,6 +7,17 @@ input
 .. toctree::
    :maxdepth: 1
 
-   matrix-keymap_c
-   rmi4/index
-   touchscreen/index
+    joystick/index
+    keyboard/index
+    misc/index
+    mouse/index
+    rmi4/index
+    serio/index
+    touchscreen/index
+    ff-core_c
+    ff-memless_c
+    input-mt_c
+    input-polldev_c
+    input_c
+    matrix-keymap_c
+    sparse-keymap_c

@@ -1,0 +1,261 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/3945-mac.c
+
+.. _`il3945_get_antenna_flags`:
+
+il3945_get_antenna_flags
+========================
+
+.. c:function:: __le32 il3945_get_antenna_flags(const struct il_priv *il)
+
+    Get antenna flags for RXON command
+
+    :param const struct il_priv \*il:
+        eeprom and antenna fields are used to determine antenna flags
+
+.. _`il3945_get_antenna_flags.description`:
+
+Description
+-----------
+
+il->eeprom39  is used to determine if antenna AUX/MAIN are reversed
+il3945_mod_params.antenna specifies the antenna diversity mode:
+
+IL_ANTENNA_DIVERSITY - NIC selects best antenna by itself
+IL_ANTENNA_MAIN      - Force MAIN antenna
+IL_ANTENNA_AUX       - Force AUX antenna
+
+.. _`il3945_setup_handlers`:
+
+il3945_setup_handlers
+=====================
+
+.. c:function:: void il3945_setup_handlers(struct il_priv *il)
+
+    Initialize Rx handler callbacks
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_setup_handlers.description`:
+
+Description
+-----------
+
+Setup the RX handlers for each of the reply types sent from the uCode
+to the host.
+
+This function chains into the hardware specific files for them to setup
+any hardware specific handlers as well.
+
+.. _`il3945_dma_addr2rbd_ptr`:
+
+il3945_dma_addr2rbd_ptr
+=======================
+
+.. c:function:: __le32 il3945_dma_addr2rbd_ptr(struct il_priv *il, dma_addr_t dma_addr)
+
+    convert a DMA address to a uCode read buffer ptr
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param dma_addr_t dma_addr:
+        *undescribed*
+
+.. _`il3945_rx_queue_restock`:
+
+il3945_rx_queue_restock
+=======================
+
+.. c:function:: void il3945_rx_queue_restock(struct il_priv *il)
+
+    refill RX queue from pre-allocated pool
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_rx_queue_restock.description`:
+
+Description
+-----------
+
+If there are slots in the RX queue that need to be restocked,
+and we have free pre-allocated buffers, fill the ranks as much
+as we can, pulling from rx_free.
+
+This moves the 'write' idx forward to catch up with 'processed', and
+also updates the memory address in the firmware to reference the new
+target buffer.
+
+.. _`il3945_rx_allocate`:
+
+il3945_rx_allocate
+==================
+
+.. c:function:: void il3945_rx_allocate(struct il_priv *il, gfp_t priority)
+
+    Move all used packet from rx_used to rx_free
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param gfp_t priority:
+        *undescribed*
+
+.. _`il3945_rx_allocate.description`:
+
+Description
+-----------
+
+When moving to rx_free an SKB is allocated for the slot.
+
+Also restock the Rx queue via il3945_rx_queue_restock.
+This is called as a scheduled work item (except for during initialization)
+
+.. _`il3945_rx_handle`:
+
+il3945_rx_handle
+================
+
+.. c:function:: void il3945_rx_handle(struct il_priv *il)
+
+    Main entry function for receiving responses from uCode
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_rx_handle.description`:
+
+Description
+-----------
+
+Uses the il->handlers callback function array to invoke
+the appropriate handlers, including command responses,
+frame-received notifications, and other notifications.
+
+.. _`il3945_verify_inst_full`:
+
+il3945_verify_inst_full
+=======================
+
+.. c:function:: int il3945_verify_inst_full(struct il_priv *il, __le32 *image, u32 len)
+
+    verify runtime uCode image in card vs. host, looking at all data.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param __le32 \*image:
+        *undescribed*
+
+    :param u32 len:
+        *undescribed*
+
+.. _`il3945_verify_inst_sparse`:
+
+il3945_verify_inst_sparse
+=========================
+
+.. c:function:: int il3945_verify_inst_sparse(struct il_priv *il, __le32 *image, u32 len)
+
+    verify runtime uCode image in card vs. host, using sample data 100 bytes apart.  If these sample points are good, it's a pretty good bet that everything between them is good, too.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param __le32 \*image:
+        *undescribed*
+
+    :param u32 len:
+        *undescribed*
+
+.. _`il3945_verify_ucode`:
+
+il3945_verify_ucode
+===================
+
+.. c:function:: int il3945_verify_ucode(struct il_priv *il)
+
+    determine which instruction image is in SRAM, and verify its contents
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_read_ucode`:
+
+il3945_read_ucode
+=================
+
+.. c:function:: int il3945_read_ucode(struct il_priv *il)
+
+    Read uCode images from disk file.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_read_ucode.description`:
+
+Description
+-----------
+
+Copy into buffers for card to fetch via bus-mastering
+
+.. _`il3945_set_ucode_ptrs`:
+
+il3945_set_ucode_ptrs
+=====================
+
+.. c:function:: int il3945_set_ucode_ptrs(struct il_priv *il)
+
+    Set uCode address location
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_set_ucode_ptrs.description`:
+
+Description
+-----------
+
+Tell initialization uCode where to find runtime uCode.
+
+BSM registers initially contain pointers to initialization uCode.
+We need to replace them to load runtime uCode inst and data,
+and to save runtime data when powering down.
+
+.. _`il3945_init_alive_start`:
+
+il3945_init_alive_start
+=======================
+
+.. c:function:: void il3945_init_alive_start(struct il_priv *il)
+
+    Called after N_ALIVE notification received
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. _`il3945_init_alive_start.description`:
+
+Description
+-----------
+
+Called after N_ALIVE notification received from "initialize" uCode.
+
+Tell "initialize" uCode to go ahead and load the runtime uCode.
+
+.. _`il3945_alive_start`:
+
+il3945_alive_start
+==================
+
+.. c:function:: void il3945_alive_start(struct il_priv *il)
+
+    called after N_ALIVE notification received from protocol/runtime uCode (initialization uCode's Alive gets handled by \ :c:func:`il3945_init_alive_start`\ ).
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

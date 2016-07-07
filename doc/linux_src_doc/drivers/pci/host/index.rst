@@ -7,4 +7,10 @@ host
 .. toctree::
    :maxdepth: 1
 
-   pcie-iproc_c
+    pci-hyperv_c
+    pci-keystone-dw_c
+    pci-keystone_c
+    pci-xgene_c
+    pcie-iproc_c
+    pcie-xilinx-nwl_c
+    pcie-xilinx_c

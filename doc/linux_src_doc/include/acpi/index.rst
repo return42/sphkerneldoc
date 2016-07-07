@@ -7,4 +7,4 @@ acpi
 .. toctree::
    :maxdepth: 1
 
-   acpi_bus_h
+    acpi_bus_h

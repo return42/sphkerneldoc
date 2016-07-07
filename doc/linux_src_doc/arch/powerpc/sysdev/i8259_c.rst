@@ -1,0 +1,22 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: arch/powerpc/sysdev/i8259.c
+
+.. _`i8259_init`:
+
+i8259_init
+==========
+
+.. c:function:: void i8259_init(struct device_node *node, unsigned long intack_addr)
+
+    Initialize the legacy controller
+
+    :param struct device_node \*node:
+        device node of the legacy PIC (can be NULL, but then, it will match
+        all interrupts, so beware)
+
+    :param unsigned long intack_addr:
+        PCI interrupt acknowledge (real) address which will return
+        the active irq from the 8259
+
+.. This file was automatic generated / don't edit.
+

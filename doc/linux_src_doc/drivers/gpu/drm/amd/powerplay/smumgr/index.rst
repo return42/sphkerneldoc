@@ -7,5 +7,6 @@ smumgr
 .. toctree::
    :maxdepth: 1
 
-   fiji_smumgr_c
-   tonga_smumgr_c
+    fiji_smumgr_c
+    polaris10_smumgr_c
+    tonga_smumgr_c

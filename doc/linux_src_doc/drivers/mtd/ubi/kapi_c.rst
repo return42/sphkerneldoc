@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-kapi.c
-======
-
+.. src-file: drivers/mtd/ubi/kapi.c
 
 .. _`ubi_do_get_device_info`:
 
 ubi_do_get_device_info
 ======================
 
-.. c:function:: void ubi_do_get_device_info (struct ubi_device *ubi, struct ubi_device_info *di)
+.. c:function:: void ubi_do_get_device_info(struct ubi_device *ubi, struct ubi_device_info *di)
 
     get information about UBI device.
 
@@ -20,24 +16,20 @@ ubi_do_get_device_info
     :param struct ubi_device_info \*di:
         the information is stored here
 
-
-
 .. _`ubi_do_get_device_info.description`:
 
 Description
 -----------
 
-This function is the same as ':c:func:`ubi_get_device_info`', but it assumes the UBI
+This function is the same as '\ :c:func:`ubi_get_device_info`\ ', but it assumes the UBI
 device is locked and cannot disappear.
-
-
 
 .. _`ubi_get_device_info`:
 
 ubi_get_device_info
 ===================
 
-.. c:function:: int ubi_get_device_info (int ubi_num, struct ubi_device_info *di)
+.. c:function:: int ubi_get_device_info(int ubi_num, struct ubi_device_info *di)
 
     get information about UBI device.
 
@@ -47,24 +39,20 @@ ubi_get_device_info
     :param struct ubi_device_info \*di:
         the information is stored here
 
-
-
 .. _`ubi_get_device_info.description`:
 
 Description
 -----------
 
-This function returns ``0`` in case of success, ``-EINVAL`` if the UBI device
-number is invalid, and ``-ENODEV`` if there is no such UBI device.
-
-
+This function returns \ ``0``\  in case of success, \ ``-EINVAL``\  if the UBI device
+number is invalid, and \ ``-ENODEV``\  if there is no such UBI device.
 
 .. _`ubi_do_get_volume_info`:
 
 ubi_do_get_volume_info
 ======================
 
-.. c:function:: void ubi_do_get_volume_info (struct ubi_device *ubi, struct ubi_volume *vol, struct ubi_volume_info *vi)
+.. c:function:: void ubi_do_get_volume_info(struct ubi_device *ubi, struct ubi_volume *vol, struct ubi_volume_info *vi)
 
     get information about UBI volume.
 
@@ -77,14 +65,12 @@ ubi_do_get_volume_info
     :param struct ubi_volume_info \*vi:
         the information is stored here
 
-
-
 .. _`ubi_get_volume_info`:
 
 ubi_get_volume_info
 ===================
 
-.. c:function:: void ubi_get_volume_info (struct ubi_volume_desc *desc, struct ubi_volume_info *vi)
+.. c:function:: void ubi_get_volume_info(struct ubi_volume_desc *desc, struct ubi_volume_info *vi)
 
     get information about UBI volume.
 
@@ -94,14 +80,12 @@ ubi_get_volume_info
     :param struct ubi_volume_info \*vi:
         the information is stored here
 
-
-
 .. _`ubi_open_volume`:
 
 ubi_open_volume
 ===============
 
-.. c:function:: struct ubi_volume_desc *ubi_open_volume (int ubi_num, int vol_id, int mode)
+.. c:function:: struct ubi_volume_desc *ubi_open_volume(int ubi_num, int vol_id, int mode)
 
     open UBI volume.
 
@@ -114,14 +98,12 @@ ubi_open_volume
     :param int mode:
         open mode
 
-
-
 .. _`ubi_open_volume.description`:
 
 Description
 -----------
 
-The ``mode`` parameter specifies if the volume should be opened in read-only
+The \ ``mode``\  parameter specifies if the volume should be opened in read-only
 mode, read-write mode, or exclusive mode. The exclusive mode guarantees that
 nobody else will be able to open this volume. UBI allows to have many volume
 readers and one writer at a time.
@@ -133,14 +115,12 @@ checksum of each logical eraseblock will be checked.
 This function returns volume descriptor in case of success and a negative
 error code in case of failure.
 
-
-
 .. _`ubi_open_volume_nm`:
 
 ubi_open_volume_nm
 ==================
 
-.. c:function:: struct ubi_volume_desc *ubi_open_volume_nm (int ubi_num, const char *name, int mode)
+.. c:function:: struct ubi_volume_desc *ubi_open_volume_nm(int ubi_num, const char *name, int mode)
 
     open UBI volume by name.
 
@@ -153,23 +133,19 @@ ubi_open_volume_nm
     :param int mode:
         open mode
 
-
-
 .. _`ubi_open_volume_nm.description`:
 
 Description
 -----------
 
-This function is similar to ':c:func:`ubi_open_volume`', but opens a volume by name.
-
-
+This function is similar to '\ :c:func:`ubi_open_volume`\ ', but opens a volume by name.
 
 .. _`ubi_open_volume_path`:
 
 ubi_open_volume_path
 ====================
 
-.. c:function:: struct ubi_volume_desc *ubi_open_volume_path (const char *pathname, int mode)
+.. c:function:: struct ubi_volume_desc *ubi_open_volume_path(const char *pathname, int mode)
 
     open UBI volume by its character device node path.
 
@@ -179,38 +155,32 @@ ubi_open_volume_path
     :param int mode:
         open mode
 
-
-
 .. _`ubi_open_volume_path.description`:
 
 Description
 -----------
 
-This function is similar to ':c:func:`ubi_open_volume`', but opens a volume the path
+This function is similar to '\ :c:func:`ubi_open_volume`\ ', but opens a volume the path
 to its character device node.
-
-
 
 .. _`ubi_close_volume`:
 
 ubi_close_volume
 ================
 
-.. c:function:: void ubi_close_volume (struct ubi_volume_desc *desc)
+.. c:function:: void ubi_close_volume(struct ubi_volume_desc *desc)
 
     close UBI volume.
 
     :param struct ubi_volume_desc \*desc:
         volume descriptor
 
-
-
 .. _`leb_read_sanity_check`:
 
 leb_read_sanity_check
 =====================
 
-.. c:function:: int leb_read_sanity_check (struct ubi_volume_desc *desc, int lnum, int offset, int len)
+.. c:function:: int leb_read_sanity_check(struct ubi_volume_desc *desc, int lnum, int offset, int len)
 
     does sanity checks on read requests.
 
@@ -226,24 +196,20 @@ leb_read_sanity_check
     :param int len:
         how many bytes to read
 
-
-
 .. _`leb_read_sanity_check.description`:
 
 Description
 -----------
 
-This function is used by :c:func:`ubi_leb_read` and :c:func:`ubi_leb_read_sg`
+This function is used by \ :c:func:`ubi_leb_read`\  and \ :c:func:`ubi_leb_read_sg`\ 
 to perform sanity checks.
-
-
 
 .. _`ubi_leb_read`:
 
 ubi_leb_read
 ============
 
-.. c:function:: int ubi_leb_read (struct ubi_volume_desc *desc, int lnum, char *buf, int offset, int len, int check)
+.. c:function:: int ubi_leb_read(struct ubi_volume_desc *desc, int lnum, char *buf, int offset, int len, int check)
 
     read data.
 
@@ -265,40 +231,35 @@ ubi_leb_read
     :param int check:
         whether UBI has to check the read data's CRC or not.
 
-
-
 .. _`ubi_leb_read.description`:
 
 Description
 -----------
 
-This function reads data from offset ``offset`` of logical eraseblock ``lnum`` and
-stores the data at ``buf``\ . When reading from static volumes, ``check`` specifies
+This function reads data from offset \ ``offset``\  of logical eraseblock \ ``lnum``\  and
+stores the data at \ ``buf``\ . When reading from static volumes, \ ``check``\  specifies
 whether the data has to be checked or not. If yes, the whole logical
 eraseblock will be read and its CRC checksum will be checked (i.e., the CRC
 checksum is per-eraseblock). So checking may substantially slow down the
-read speed. The ``check`` argument is ignored for dynamic volumes.
+read speed. The \ ``check``\  argument is ignored for dynamic volumes.
 
 In case of success, this function returns zero. In case of failure, this
 function returns a negative error code.
 
-``-EBADMSG`` error code is returned:
+\ ``-EBADMSG``\  error code is returned:
 o for both static and dynamic volumes if MTD driver has detected a data
 integrity problem (unrecoverable ECC checksum mismatch in case of NAND);
-
 o for static volumes in case of data CRC mismatch.
 
 If the volume is damaged because of an interrupted update this function just
-returns immediately with ``-EBADF`` error code.
-
-
+returns immediately with \ ``-EBADF``\  error code.
 
 .. _`ubi_leb_read_sg`:
 
 ubi_leb_read_sg
 ===============
 
-.. c:function:: int ubi_leb_read_sg (struct ubi_volume_desc *desc, int lnum, struct ubi_sgl *sgl, int offset, int len, int check)
+.. c:function:: int ubi_leb_read_sg(struct ubi_volume_desc *desc, int lnum, struct ubi_sgl *sgl, int offset, int len, int check)
 
     read data into a scatter gather list.
 
@@ -309,7 +270,6 @@ ubi_leb_read_sg
         logical eraseblock number to read from
 
     :param struct ubi_sgl \*sgl:
-
         *undescribed*
 
     :param int offset:
@@ -321,25 +281,21 @@ ubi_leb_read_sg
     :param int check:
         whether UBI has to check the read data's CRC or not.
 
-
-
 .. _`ubi_leb_read_sg.description`:
 
 Description
 -----------
 
-This function works exactly like :c:func:`ubi_leb_read_sg`. But instead of
+This function works exactly like \ :c:func:`ubi_leb_read_sg`\ . But instead of
 storing the read data into a buffer it writes to an UBI scatter gather
 list.
-
-
 
 .. _`ubi_leb_write`:
 
 ubi_leb_write
 =============
 
-.. c:function:: int ubi_leb_write (struct ubi_volume_desc *desc, int lnum, const void *buf, int offset, int len)
+.. c:function:: int ubi_leb_write(struct ubi_volume_desc *desc, int lnum, const void *buf, int offset, int len)
 
     write data.
 
@@ -358,15 +314,13 @@ ubi_leb_write
     :param int len:
         how many bytes to write
 
-
-
 .. _`ubi_leb_write.description`:
 
 Description
 -----------
 
-This function writes ``len`` bytes of data from ``buf`` to offset ``offset`` of
-logical eraseblock ``lnum``\ .
+This function writes \ ``len``\  bytes of data from \ ``buf``\  to offset \ ``offset``\  of
+logical eraseblock \ ``lnum``\ .
 
 This function takes care of physical eraseblock write failures. If write to
 the physical eraseblock write operation fails, the logical eraseblock is
@@ -380,16 +334,14 @@ something was still written to the flash media, but that may be some
 garbage.
 
 If the volume is damaged because of an interrupted update this function just
-returns immediately with ``-EBADF`` code.
-
-
+returns immediately with \ ``-EBADF``\  code.
 
 .. _`ubi_leb_erase`:
 
 ubi_leb_erase
 =============
 
-.. c:function:: int ubi_leb_erase (struct ubi_volume_desc *desc, int lnum)
+.. c:function:: int ubi_leb_erase(struct ubi_volume_desc *desc, int lnum)
 
     erase logical eraseblock.
 
@@ -399,28 +351,24 @@ ubi_leb_erase
     :param int lnum:
         logical eraseblock number
 
-
-
 .. _`ubi_leb_erase.description`:
 
 Description
 -----------
 
-This function un-maps logical eraseblock ``lnum`` and synchronously erases the
+This function un-maps logical eraseblock \ ``lnum``\  and synchronously erases the
 correspondent physical eraseblock. Returns zero in case of success and a
 negative error code in case of failure.
 
 If the volume is damaged because of an interrupted update this function just
-returns immediately with ``-EBADF`` code.
-
-
+returns immediately with \ ``-EBADF``\  code.
 
 .. _`ubi_leb_unmap`:
 
 ubi_leb_unmap
 =============
 
-.. c:function:: int ubi_leb_unmap (struct ubi_volume_desc *desc, int lnum)
+.. c:function:: int ubi_leb_unmap(struct ubi_volume_desc *desc, int lnum)
 
     un-map logical eraseblock.
 
@@ -430,14 +378,12 @@ ubi_leb_unmap
     :param int lnum:
         logical eraseblock number
 
-
-
 .. _`ubi_leb_unmap.description`:
 
 Description
 -----------
 
-This function un-maps logical eraseblock ``lnum`` and schedules the
+This function un-maps logical eraseblock \ ``lnum``\  and schedules the
 corresponding physical eraseblock for erasure, so that it will eventually be
 physically erased in background. This operation is much faster than the
 erase operation.
@@ -466,16 +412,14 @@ then written to, it will contain the last written data.
 
 This function returns zero in case of success and a negative error code in
 case of failure. If the volume is damaged because of an interrupted update
-this function just returns immediately with ``-EBADF`` code.
-
-
+this function just returns immediately with \ ``-EBADF``\  code.
 
 .. _`ubi_leb_map`:
 
 ubi_leb_map
 ===========
 
-.. c:function:: int ubi_leb_map (struct ubi_volume_desc *desc, int lnum)
+.. c:function:: int ubi_leb_map(struct ubi_volume_desc *desc, int lnum)
 
     map logical eraseblock to a physical eraseblock.
 
@@ -485,32 +429,28 @@ ubi_leb_map
     :param int lnum:
         logical eraseblock number
 
-
-
 .. _`ubi_leb_map.description`:
 
 Description
 -----------
 
-This function maps an un-mapped logical eraseblock ``lnum`` to a physical
+This function maps an un-mapped logical eraseblock \ ``lnum``\  to a physical
 eraseblock. This means, that after a successful invocation of this
-function the logical eraseblock ``lnum`` will be empty (contain only ``0xFF``
+function the logical eraseblock \ ``lnum``\  will be empty (contain only \ ``0xFF``\ 
 bytes) and be mapped to a physical eraseblock, even if an unclean reboot
 happens.
 
-This function returns zero in case of success, ``-EBADF`` if the volume is
-damaged because of an interrupted update, ``-EBADMSG`` if the logical
+This function returns zero in case of success, \ ``-EBADF``\  if the volume is
+damaged because of an interrupted update, \ ``-EBADMSG``\  if the logical
 eraseblock is already mapped, and other negative error codes in case of
 other failures.
-
-
 
 .. _`ubi_is_mapped`:
 
 ubi_is_mapped
 =============
 
-.. c:function:: int ubi_is_mapped (struct ubi_volume_desc *desc, int lnum)
+.. c:function:: int ubi_is_mapped(struct ubi_volume_desc *desc, int lnum)
 
     check if logical eraseblock is mapped.
 
@@ -520,39 +460,33 @@ ubi_is_mapped
     :param int lnum:
         logical eraseblock number
 
-
-
 .. _`ubi_is_mapped.description`:
 
 Description
 -----------
 
-This function checks if logical eraseblock ``lnum`` is mapped to a physical
+This function checks if logical eraseblock \ ``lnum``\  is mapped to a physical
 eraseblock. If a logical eraseblock is un-mapped, this does not necessarily
 mean it will still be un-mapped after the UBI device is re-attached. The
 logical eraseblock may become mapped to the physical eraseblock it was last
 mapped to.
 
-This function returns ``1`` if the LEB is mapped, ``0`` if not, and a negative
+This function returns \ ``1``\  if the LEB is mapped, \ ``0``\  if not, and a negative
 error code in case of failure. If the volume is damaged because of an
-interrupted update this function just returns immediately with ``-EBADF`` error
+interrupted update this function just returns immediately with \ ``-EBADF``\  error
 code.
-
-
 
 .. _`ubi_sync`:
 
 ubi_sync
 ========
 
-.. c:function:: int ubi_sync (int ubi_num)
+.. c:function:: int ubi_sync(int ubi_num)
 
     synchronize UBI device buffers.
 
     :param int ubi_num:
         UBI device to synchronize
-
-
 
 .. _`ubi_sync.description`:
 
@@ -563,14 +497,12 @@ The underlying MTD device may cache data in hardware or in software. This
 function ensures the caches are flushed. Returns zero in case of success and
 a negative error code in case of failure.
 
-
-
 .. _`ubi_flush`:
 
 ubi_flush
 =========
 
-.. c:function:: int ubi_flush (int ubi_num, int vol_id, int lnum)
+.. c:function:: int ubi_flush(int ubi_num, int vol_id, int lnum)
 
     flush UBI work queue.
 
@@ -583,27 +515,23 @@ ubi_flush
     :param int lnum:
         logical eraseblock number to flush for
 
-
-
 .. _`ubi_flush.description`:
 
 Description
 -----------
 
 This function executes all pending works for a particular volume id / logical
-eraseblock number pair. If either value is set to ``UBI_ALL``\ , then it acts as
+eraseblock number pair. If either value is set to \ ``UBI_ALL``\ , then it acts as
 a wildcard for all of the corresponding volume numbers or logical
 eraseblock numbers. It returns zero in case of success and a negative error
 code in case of failure.
-
-
 
 .. _`ubi_register_volume_notifier`:
 
 ubi_register_volume_notifier
 ============================
 
-.. c:function:: int ubi_register_volume_notifier (struct notifier_block *nb, int ignore_existing)
+.. c:function:: int ubi_register_volume_notifier(struct notifier_block *nb, int ignore_existing)
 
     register a volume notifier.
 
@@ -614,44 +542,40 @@ ubi_register_volume_notifier
         if non-zero, do not send "added" notification for all
         already existing volumes
 
-
-
 .. _`ubi_register_volume_notifier.description`:
 
 Description
 -----------
 
 This function registers a volume notifier, which means that
-'nb->:c:func:`notifier_call`' will be invoked when an UBI  volume is created,
+'nb->\ :c:func:`notifier_call`\ ' will be invoked when an UBI  volume is created,
 removed, re-sized, re-named, or updated. The first argument of the function
 is the notification type. The second argument is pointer to a
-:c:type:`struct ubi_notification <ubi_notification>` object which describes the notification event.
+\ :c:type:`struct ubi_notification <ubi_notification>`\  object which describes the notification event.
 Using UBI API from the volume notifier is prohibited.
 
 This function returns zero in case of success and a negative error code
 in case of failure.
-
-
 
 .. _`ubi_unregister_volume_notifier`:
 
 ubi_unregister_volume_notifier
 ==============================
 
-.. c:function:: int ubi_unregister_volume_notifier (struct notifier_block *nb)
+.. c:function:: int ubi_unregister_volume_notifier(struct notifier_block *nb)
 
     unregister the volume notifier.
 
     :param struct notifier_block \*nb:
         the notifier description object
 
-
-
 .. _`ubi_unregister_volume_notifier.description`:
 
 Description
 -----------
 
-This function unregisters volume notifier ``nm`` and returns zero in case of
+This function unregisters volume notifier \ ``nm``\  and returns zero in case of
 success and a negative error code in case of failure.
+
+.. This file was automatic generated / don't edit.
 

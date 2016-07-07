@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-nfs4state.c
-===========
-
+.. src-file: fs/nfs/nfs4state.c
 
 .. _`nfs40_discover_server_trunking`:
 
 nfs40_discover_server_trunking
 ==============================
 
-.. c:function:: int nfs40_discover_server_trunking (struct nfs_client *clp, struct nfs_client **result, struct rpc_cred *cred)
+.. c:function:: int nfs40_discover_server_trunking(struct nfs_client *clp, struct nfs_client **result, struct rpc_cred *cred)
 
     Detect server IP address trunking (mv0)
 
@@ -23,8 +19,6 @@ nfs40_discover_server_trunking
     :param struct rpc_cred \*cred:
         credential to use for trunking test
 
-
-
 .. _`nfs40_discover_server_trunking.description`:
 
 Description
@@ -34,8 +28,6 @@ Returns zero, a negative errno, or a negative NFS4ERR status.
 If zero is returned, an nfs_client pointer is planted in
 "result".
 
-
-
 .. _`nfs40_discover_server_trunking.note`:
 
 Note
@@ -43,21 +35,17 @@ Note
 
 The returned client may not yet be marked ready.
 
-
-
 .. _`nfs4_get_renew_cred_locked`:
 
 nfs4_get_renew_cred_locked
 ==========================
 
-.. c:function:: struct rpc_cred *nfs4_get_renew_cred_locked (struct nfs_client *clp)
+.. c:function:: struct rpc_cred *nfs4_get_renew_cred_locked(struct nfs_client *clp)
 
     Acquire credential for a renew operation
 
     :param struct nfs_client \*clp:
         client state handle
-
-
 
 .. _`nfs4_get_renew_cred_locked.description`:
 
@@ -67,14 +55,12 @@ Description
 Returns an rpc_cred with reference count bumped, or NULL.
 Caller must hold clp->cl_lock.
 
-
-
 .. _`nfs41_discover_server_trunking`:
 
 nfs41_discover_server_trunking
 ==============================
 
-.. c:function:: int nfs41_discover_server_trunking (struct nfs_client *clp, struct nfs_client **result, struct rpc_cred *cred)
+.. c:function:: int nfs41_discover_server_trunking(struct nfs_client *clp, struct nfs_client **result, struct rpc_cred *cred)
 
     Detect server IP address trunking (mv1)
 
@@ -87,8 +73,6 @@ nfs41_discover_server_trunking
     :param struct rpc_cred \*cred:
         credential to use for trunking test
 
-
-
 .. _`nfs41_discover_server_trunking.description`:
 
 Description
@@ -98,8 +82,6 @@ Returns NFS4_OK, a negative errno, or a negative NFS4ERR status.
 If NFS4_OK is returned, an nfs_client pointer is planted in
 "result".
 
-
-
 .. _`nfs41_discover_server_trunking.note`:
 
 Note
@@ -107,21 +89,17 @@ Note
 
 The returned client may not yet be marked ready.
 
-
-
 .. _`nfs4_get_clid_cred`:
 
 nfs4_get_clid_cred
 ==================
 
-.. c:function:: struct rpc_cred *nfs4_get_clid_cred (struct nfs_client *clp)
+.. c:function:: struct rpc_cred *nfs4_get_clid_cred(struct nfs_client *clp)
 
     Acquire credential for a setclientid operation
 
     :param struct nfs_client \*clp:
         client state handle
-
-
 
 .. _`nfs4_get_clid_cred.description`:
 
@@ -130,14 +108,12 @@ Description
 
 Returns an rpc_cred with reference count bumped, or NULL.
 
-
-
 .. _`nfs4_get_state_owner`:
 
 nfs4_get_state_owner
 ====================
 
-.. c:function:: struct nfs4_state_owner *nfs4_get_state_owner (struct nfs_server *server, struct rpc_cred *cred, gfp_t gfp_flags)
+.. c:function:: struct nfs4_state_owner *nfs4_get_state_owner(struct nfs_server *server, struct rpc_cred *cred, gfp_t gfp_flags)
 
     Look up a state owner given a credential
 
@@ -148,10 +124,7 @@ nfs4_get_state_owner
         RPC credential to match
 
     :param gfp_t gfp_flags:
-
         *undescribed*
-
-
 
 .. _`nfs4_get_state_owner.description`:
 
@@ -160,21 +133,17 @@ Description
 
 Returns a pointer to an instantiated nfs4_state_owner struct, or NULL.
 
-
-
 .. _`nfs4_put_state_owner`:
 
 nfs4_put_state_owner
 ====================
 
-.. c:function:: void nfs4_put_state_owner (struct nfs4_state_owner *sp)
+.. c:function:: void nfs4_put_state_owner(struct nfs4_state_owner *sp)
 
     Release a nfs4_state_owner
 
     :param struct nfs4_state_owner \*sp:
         state owner data to release
-
-
 
 .. _`nfs4_put_state_owner.description`:
 
@@ -189,21 +158,17 @@ It also pins the uniquifier of dropped state owners for
 a while, to ensure that those state owner names are
 never reused.
 
-
-
 .. _`nfs4_purge_state_owners`:
 
 nfs4_purge_state_owners
 =======================
 
-.. c:function:: void nfs4_purge_state_owners (struct nfs_server *server)
+.. c:function:: void nfs4_purge_state_owners(struct nfs_server *server)
 
     Release all cached state owners
 
     :param struct nfs_server \*server:
         nfs_server with cached state owners to release
-
-
 
 .. _`nfs4_purge_state_owners.description`:
 
@@ -213,21 +178,17 @@ Description
 Called at umount time.  Remaining state owners will be on
 the LRU with ref count of zero.
 
-
-
 .. _`nfs4_schedule_migration_recovery`:
 
 nfs4_schedule_migration_recovery
 ================================
 
-.. c:function:: int nfs4_schedule_migration_recovery (const struct nfs_server *server)
+.. c:function:: int nfs4_schedule_migration_recovery(const struct nfs_server *server)
 
     trigger migration recovery
 
     :param const struct nfs_server \*server:
         FSID that is migrating
-
-
 
 .. _`nfs4_schedule_migration_recovery.description`:
 
@@ -237,28 +198,24 @@ Description
 Returns zero if recovery has started, otherwise a negative NFS4ERR
 value is returned.
 
-
-
 .. _`nfs4_schedule_lease_moved_recovery`:
 
 nfs4_schedule_lease_moved_recovery
 ==================================
 
-.. c:function:: void nfs4_schedule_lease_moved_recovery (struct nfs_client *clp)
+.. c:function:: void nfs4_schedule_lease_moved_recovery(struct nfs_client *clp)
 
     start lease-moved recovery
 
     :param struct nfs_client \*clp:
         server to check for moved leases
 
-
-
 .. _`nfs4_discover_server_trunking`:
 
 nfs4_discover_server_trunking
 =============================
 
-.. c:function:: int nfs4_discover_server_trunking (struct nfs_client *clp, struct nfs_client **result)
+.. c:function:: int nfs4_discover_server_trunking(struct nfs_client *clp, struct nfs_client **result)
 
     Detect server IP address trunking
 
@@ -268,8 +225,6 @@ nfs4_discover_server_trunking
     :param struct nfs_client \*\*result:
         OUT: found nfs_client, or clp
 
-
-
 .. _`nfs4_discover_server_trunking.description`:
 
 Description
@@ -278,8 +233,6 @@ Description
 Returns zero or a negative errno.  If zero is returned,
 an nfs_client pointer is planted in "result".
 
-
-
 .. _`nfs4_discover_server_trunking.note`:
 
 Note
@@ -287,5 +240,7 @@ Note
 
 since we are invoked in process context, and
 not from inside the state manager, we cannot use
-:c:func:`nfs4_handle_reclaim_lease_error`.
+\ :c:func:`nfs4_handle_reclaim_lease_error`\ .
+
+.. This file was automatic generated / don't edit.
 

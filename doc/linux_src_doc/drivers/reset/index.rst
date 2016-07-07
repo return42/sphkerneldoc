@@ -7,4 +7,5 @@ reset
 .. toctree::
    :maxdepth: 1
 
-   core_c
+    sti/index
+    core_c

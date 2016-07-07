@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-intel_bios.c
-============
-
+.. src-file: drivers/gpu/drm/gma500/intel_bios.c
 
 .. _`psb_intel_init_bios`:
 
 psb_intel_init_bios
 ===================
 
-.. c:function:: int psb_intel_init_bios (struct drm_device *dev)
+.. c:function:: int psb_intel_init_bios(struct drm_device *dev)
 
     initialize VBIOS settings & find VBT
 
     :param struct drm_device \*dev:
         DRM device
-
-
 
 .. _`psb_intel_init_bios.description`:
 
@@ -34,16 +28,15 @@ this method of groping around in the BIOS data.
 
 Returns 0 on success, nonzero on failure.
 
-
-
 .. _`psb_intel_destroy_bios`:
 
 psb_intel_destroy_bios
 ======================
 
-.. c:function:: void psb_intel_destroy_bios (struct drm_device *dev)
+.. c:function:: void psb_intel_destroy_bios(struct drm_device *dev)
 
     :param struct drm_device \*dev:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

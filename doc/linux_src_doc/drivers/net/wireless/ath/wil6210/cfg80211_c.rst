@@ -1,0 +1,53 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/ath/wil6210/cfg80211.c
+
+.. _`_wil_cfg80211_find_ie`:
+
+_wil_cfg80211_find_ie
+=====================
+
+.. c:function:: const u8 *_wil_cfg80211_find_ie(const u8 *ies, u16 ies_len, const u8 *ie, u16 ie_len)
+
+    return a pointer to the beginning of IE in the list or NULL if not found
+
+    :param const u8 \*ies:
+        *undescribed*
+
+    :param u16 ies_len:
+        *undescribed*
+
+    :param const u8 \*ie:
+        *undescribed*
+
+    :param u16 ie_len:
+        *undescribed*
+
+.. _`_wil_cfg80211_merge_extra_ies`:
+
+_wil_cfg80211_merge_extra_ies
+=============================
+
+.. c:function:: int _wil_cfg80211_merge_extra_ies(const u8 *ies1, u16 ies1_len, const u8 *ies2, u16 ies2_len, u8 **merged_ies, u16 *merged_len)
+
+    do not include IEs from the second list which exist in the first list. add only vendor specific IEs from second list to keep the merged list sorted (since vendor-specific IE has the highest tag number) caller must free the allocated memory for merged IEs
+
+    :param const u8 \*ies1:
+        *undescribed*
+
+    :param u16 ies1_len:
+        *undescribed*
+
+    :param const u8 \*ies2:
+        *undescribed*
+
+    :param u16 ies2_len:
+        *undescribed*
+
+    :param u8 \*\*merged_ies:
+        *undescribed*
+
+    :param u16 \*merged_len:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===================
-async_raid6_recov.c
-===================
-
+.. src-file: crypto/async_tx/async_raid6_recov.c
 
 .. _`async_raid6_2data_recov`:
 
 async_raid6_2data_recov
 =======================
 
-.. c:function:: struct dma_async_tx_descriptor *async_raid6_2data_recov (int disks, size_t bytes, int faila, int failb, struct page **blocks, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_raid6_2data_recov(int disks, size_t bytes, int faila, int failb, struct page **blocks, struct async_submit_ctl *submit)
 
     asynchronously calculate two missing data blocks
 
@@ -32,14 +28,12 @@ async_raid6_2data_recov
     :param struct async_submit_ctl \*submit:
         submission/completion modifiers
 
-
-
 .. _`async_raid6_datap_recov`:
 
 async_raid6_datap_recov
 =======================
 
-.. c:function:: struct dma_async_tx_descriptor *async_raid6_datap_recov (int disks, size_t bytes, int faila, struct page **blocks, struct async_submit_ctl *submit)
+.. c:function:: struct dma_async_tx_descriptor *async_raid6_datap_recov(int disks, size_t bytes, int faila, struct page **blocks, struct async_submit_ctl *submit)
 
     asynchronously calculate a data and the 'p' block
 
@@ -57,4 +51,6 @@ async_raid6_datap_recov
 
     :param struct async_submit_ctl \*submit:
         submission/completion modifiers
+
+.. This file was automatic generated / don't edit.
 

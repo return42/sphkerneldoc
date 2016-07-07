@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-mptctl.c
-========
-
+.. src-file: drivers/message/fusion/mptctl.c
 
 .. _`mptctl_syscall_down`:
 
 mptctl_syscall_down
 ===================
 
-.. c:function:: int mptctl_syscall_down (MPT_ADAPTER *ioc, int nonblock)
+.. c:function:: int mptctl_syscall_down(MPT_ADAPTER *ioc, int nonblock)
 
     Down the MPT adapter syscall semaphore.
 
@@ -19,8 +15,6 @@ mptctl_syscall_down
 
     :param int nonblock:
         boolean, non-zero if O_NONBLOCK is set
-
-
 
 .. _`mptctl_syscall_down.description`:
 
@@ -31,4 +25,6 @@ All of the ioctl commands can potentially sleep, which is illegal
 with a spinlock held, thus we perform mutual exclusion here.
 
 Returns negative errno on error, or zero for success.
+
+.. This file was automatic generated / don't edit.
 

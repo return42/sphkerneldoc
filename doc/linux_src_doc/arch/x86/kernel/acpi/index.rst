@@ -7,4 +7,5 @@ acpi
 .. toctree::
    :maxdepth: 1
 
-   boot_c
+    boot_c
+    sleep_c

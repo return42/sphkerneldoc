@@ -7,5 +7,5 @@ qe
 .. toctree::
    :maxdepth: 1
 
-   gpio_c
-   qe_common_c
+    gpio_c
+    qe_common_c

@@ -7,6 +7,6 @@
 .. toctree::
    :maxdepth: 1
 
-   9p_h
-   client_h
-   transport_h
+    9p_h
+    client_h
+    transport_h

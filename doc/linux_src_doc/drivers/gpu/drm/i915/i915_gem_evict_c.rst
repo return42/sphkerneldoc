@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-i915_gem_evict.c
-================
-
+.. src-file: drivers/gpu/drm/i915/i915_gem_evict.c
 
 .. _`i915_gem_evict_something`:
 
 i915_gem_evict_something
 ========================
 
-.. c:function:: int i915_gem_evict_something (struct drm_device *dev, struct i915_address_space *vm, int min_size, unsigned alignment, unsigned cache_level, unsigned long start, unsigned long end, unsigned flags)
+.. c:function:: int i915_gem_evict_something(struct drm_device *dev, struct i915_address_space *vm, int min_size, unsigned alignment, unsigned cache_level, unsigned long start, unsigned long end, unsigned flags)
 
     Evict vmas to make room for binding a new one
 
@@ -38,8 +34,6 @@ i915_gem_evict_something
     :param unsigned flags:
         additional flags to control the eviction algorithm
 
-
-
 .. _`i915_gem_evict_something.description`:
 
 Description
@@ -55,8 +49,6 @@ Since this function is only used to free up virtual address space it only
 ignores pinned vmas, and not object where the backing storage itself is
 pinned. Hence obj->pages_pin_count does not protect against eviction.
 
-
-
 .. _`i915_gem_evict_something.to-clarify`:
 
 To clarify
@@ -65,14 +57,12 @@ To clarify
 This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
 
-
-
 .. _`i915_gem_evict_vm`:
 
 i915_gem_evict_vm
 =================
 
-.. c:function:: int i915_gem_evict_vm (struct i915_address_space *vm, bool do_idle)
+.. c:function:: int i915_gem_evict_vm(struct i915_address_space *vm, bool do_idle)
 
     Evict all idle vmas from a vm
 
@@ -82,20 +72,16 @@ i915_gem_evict_vm
     :param bool do_idle:
         Boolean directing whether to idle first.
 
-
-
 .. _`i915_gem_evict_vm.description`:
 
 Description
 -----------
 
 This function evicts all idles vmas from a vm. If all unpinned vmas should be
-evicted the ``do_idle`` needs to be set to true.
+evicted the \ ``do_idle``\  needs to be set to true.
 
 This is used by the execbuf code as a last-ditch effort to defragment the
 address space.
-
-
 
 .. _`i915_gem_evict_vm.to-clarify`:
 
@@ -104,4 +90,6 @@ To clarify
 
 This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
+
+.. This file was automatic generated / don't edit.
 

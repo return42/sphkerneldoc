@@ -7,4 +7,4 @@ usb
 .. toctree::
    :maxdepth: 1
 
-   endpoint_c
+    endpoint_c

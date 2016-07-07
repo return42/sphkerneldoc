@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-mtdcore.c
-=========
-
+.. src-file: drivers/mtd/mtdcore.c
 
 .. _`add_mtd_device`:
 
 add_mtd_device
 ==============
 
-.. c:function:: int add_mtd_device (struct mtd_info *mtd)
+.. c:function:: int add_mtd_device(struct mtd_info *mtd)
 
     register an MTD device
 
     :param struct mtd_info \*mtd:
         pointer to new MTD device info structure
-
-
 
 .. _`add_mtd_device.description`:
 
@@ -28,21 +22,17 @@ Add a device to the list of MTD devices present in the system, and
 notify each currently active MTD 'user' of its arrival. Returns
 zero on success or non-zero on failure.
 
-
-
 .. _`del_mtd_device`:
 
 del_mtd_device
 ==============
 
-.. c:function:: int del_mtd_device (struct mtd_info *mtd)
+.. c:function:: int del_mtd_device(struct mtd_info *mtd)
 
     unregister an MTD device
 
     :param struct mtd_info \*mtd:
         pointer to MTD device info structure
-
-
 
 .. _`del_mtd_device.description`:
 
@@ -54,36 +44,32 @@ and notify each currently active MTD 'user' of its departure.
 Returns zero on success or 1 on failure, which currently will happen
 if the requested device does not appear to be present in the list.
 
-
-
 .. _`mtd_device_parse_register`:
 
 mtd_device_parse_register
 =========================
 
-.. c:function:: int mtd_device_parse_register (struct mtd_info *mtd, const char *const *types, struct mtd_part_parser_data *parser_data, const struct mtd_partition *parts, int nr_parts)
+.. c:function:: int mtd_device_parse_register(struct mtd_info *mtd, const char * const *types, struct mtd_part_parser_data *parser_data, const struct mtd_partition *parts, int nr_parts)
 
     parse partitions and register an MTD device.
 
     :param struct mtd_info \*mtd:
         the MTD device to register
 
-    :param const \*types:
+    :param const char \* const \*types:
         the list of MTD partition probes to try, see
-        ':c:func:`parse_mtd_partitions`' for more information
+        '\ :c:func:`parse_mtd_partitions`\ ' for more information
 
     :param struct mtd_part_parser_data \*parser_data:
         MTD partition parser-specific data
 
     :param const struct mtd_partition \*parts:
         fallback partition information to register, if parsing fails;
-        only valid if ``nr_parts`` > ``0``
+        only valid if \ ``nr_parts``\  > \ ``0``\ 
 
     :param int nr_parts:
         the number of partitions in parts, if zero then the full
         MTD device is registered if no partition info is found
-
-
 
 .. _`mtd_device_parse_register.description`:
 
@@ -91,9 +77,7 @@ Description
 -----------
 
 This function aggregates MTD partitions parsing (done by
-':c:func:`parse_mtd_partitions`') and MTD device and partitions registering. It
-
-
+'\ :c:func:`parse_mtd_partitions`\ ') and MTD device and partitions registering. It
 
 .. _`mtd_device_parse_register.basically-follows-the-most-common-pattern-found-in-many-mtd-drivers`:
 
@@ -101,32 +85,25 @@ basically follows the most common pattern found in many MTD drivers
 -------------------------------------------------------------------
 
 
-* It first tries to probe partitions on MTD device ``mtd`` using parsers
-
-  specified in ``types`` (if ``types`` is ``NULL``\ , then the default list of parsers
-  is used, see ':c:func:`parse_mtd_partitions`' for more information). If none are
-  found this functions tries to fallback to information specified in
-  ``parts``\ /\ ``nr_parts``\ .
-
-* If any partitioning info was found, this function registers the found
-
-  partitions. If the MTD_PARTITIONED_MASTER option is set, then the device
-  as a whole is registered first.
-
-* If no partitions were found this function just registers the MTD device
-
-  ``mtd`` and exits.
+\* It first tries to probe partitions on MTD device \ ``mtd``\  using parsers
+specified in \ ``types``\  (if \ ``types``\  is \ ``NULL``\ , then the default list of parsers
+is used, see '\ :c:func:`parse_mtd_partitions`\ ' for more information). If none are
+found this functions tries to fallback to information specified in
+\ ``parts``\ /\ ``nr_parts``\ .
+\* If any partitioning info was found, this function registers the found
+partitions. If the MTD_PARTITIONED_MASTER option is set, then the device
+as a whole is registered first.
+\* If no partitions were found this function just registers the MTD device
+\ ``mtd``\  and exits.
 
 Returns zero in case of success and a negative error code in case of failure.
-
-
 
 .. _`mtd_device_unregister`:
 
 mtd_device_unregister
 =====================
 
-.. c:function:: int mtd_device_unregister (struct mtd_info *master)
+.. c:function:: int mtd_device_unregister(struct mtd_info *master)
 
     unregister an existing MTD device.
 
@@ -134,21 +111,17 @@ mtd_device_unregister
         the MTD device to unregister.  This will unregister both the master
         and any partitions if registered.
 
-
-
 .. _`register_mtd_user`:
 
 register_mtd_user
 =================
 
-.. c:function:: void register_mtd_user (struct mtd_notifier *new)
+.. c:function:: void register_mtd_user(struct mtd_notifier *new)
 
     register a 'user' of MTD devices.
 
     :param struct mtd_notifier \*new:
         pointer to notifier info structure
-
-
 
 .. _`register_mtd_user.description`:
 
@@ -159,21 +132,17 @@ Registers a pair of callbacks function to be called upon addition
 or removal of MTD devices. Causes the 'add' callback to be immediately
 invoked for each MTD device currently present in the system.
 
-
-
 .. _`unregister_mtd_user`:
 
 unregister_mtd_user
 ===================
 
-.. c:function:: int unregister_mtd_user (struct mtd_notifier *old)
+.. c:function:: int unregister_mtd_user(struct mtd_notifier *old)
 
     unregister a 'user' of MTD devices.
 
     :param struct mtd_notifier \*old:
         pointer to notifier info structure
-
-
 
 .. _`unregister_mtd_user.description`:
 
@@ -185,14 +154,12 @@ notified upon addition or removal of MTD devices. Causes the
 'remove' callback to be immediately invoked for each MTD device
 currently present in the system.
 
-
-
 .. _`get_mtd_device`:
 
 get_mtd_device
 ==============
 
-.. c:function:: struct mtd_info *get_mtd_device (struct mtd_info *mtd, int num)
+.. c:function:: struct mtd_info *get_mtd_device(struct mtd_info *mtd, int num)
 
     obtain a validated handle for an MTD device
 
@@ -202,34 +169,28 @@ get_mtd_device
     :param int num:
         internal device number of the required MTD device
 
-
-
 .. _`get_mtd_device.description`:
 
 Description
 -----------
 
 Given a number and NULL address, return the num'th entry in the device
-table, if any.        Given an address and num == -1, search the device table
+table, if any.  Given an address and num == -1, search the device table
 for a device with that address and return if it's still present. Given
 both, return the num'th driver only if its address matches. Return
 error code if not.
-
-
 
 .. _`get_mtd_device_nm`:
 
 get_mtd_device_nm
 =================
 
-.. c:function:: struct mtd_info *get_mtd_device_nm (const char *name)
+.. c:function:: struct mtd_info *get_mtd_device_nm(const char *name)
 
     obtain a validated handle for an MTD device by device name
 
     :param const char \*name:
         MTD device name to open
-
-
 
 .. _`get_mtd_device_nm.description`:
 
@@ -239,14 +200,419 @@ Description
 This function returns MTD device description structure in case of
 success and an error code in case of failure.
 
+.. _`mtd_ooblayout_ecc`:
 
+mtd_ooblayout_ecc
+=================
+
+.. c:function:: int mtd_ooblayout_ecc(struct mtd_info *mtd, int section, struct mtd_oob_region *oobecc)
+
+    Get the OOB region definition of a specific ECC section
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param int section:
+        ECC section. Depending on the layout you may have all the ECC
+        bytes stored in a single contiguous section, or one section
+        per ECC chunk (and sometime several sections for a single ECC
+        ECC chunk)
+
+    :param struct mtd_oob_region \*oobecc:
+        OOB region struct filled with the appropriate ECC position
+        information
+
+.. _`mtd_ooblayout_ecc.description`:
+
+Description
+-----------
+
+This functions return ECC section information in the OOB area. I you want
+to get all the ECC bytes information, then you should call
+mtd_ooblayout_ecc(mtd, section++, oobecc) until it returns -ERANGE.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_free`:
+
+mtd_ooblayout_free
+==================
+
+.. c:function:: int mtd_ooblayout_free(struct mtd_info *mtd, int section, struct mtd_oob_region *oobfree)
+
+    Get the OOB region definition of a specific free section
+
+    :param struct mtd_info \*mtd:
+        MTD device structure
+
+    :param int section:
+        Free section you are interested in. Depending on the layout
+        you may have all the free bytes stored in a single contiguous
+        section, or one section per ECC chunk plus an extra section
+        for the remaining bytes (or other funky layout).
+
+    :param struct mtd_oob_region \*oobfree:
+        OOB region struct filled with the appropriate free position
+        information
+
+.. _`mtd_ooblayout_free.description`:
+
+Description
+-----------
+
+This functions return free bytes position in the OOB area. I you want
+to get all the free bytes information, then you should call
+mtd_ooblayout_free(mtd, section++, oobfree) until it returns -ERANGE.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_find_region`:
+
+mtd_ooblayout_find_region
+=========================
+
+.. c:function:: int mtd_ooblayout_find_region(struct mtd_info *mtd, int byte, int *sectionp, struct mtd_oob_region *oobregion, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+
+    Find the region attached to a specific byte
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param int byte:
+        the byte we are searching for
+
+    :param int \*sectionp:
+        pointer where the section id will be stored
+
+    :param struct mtd_oob_region \*oobregion:
+        used to retrieve the ECC position
+
+    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+        iterator function. Should be either mtd_ooblayout_free or
+        mtd_ooblayout_ecc depending on the region type you're searching for
+
+.. _`mtd_ooblayout_find_region.description`:
+
+Description
+-----------
+
+This functions returns the section id and oobregion information of a
+specific byte. For example, say you want to know where the 4th ECC byte is
+stored, you'll use:
+
+mtd_ooblayout_find_region(mtd, 3, \ :c:type:`struct section <section>`, \ :c:type:`struct oobregion <oobregion>`, mtd_ooblayout_ecc);
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_find_eccregion`:
+
+mtd_ooblayout_find_eccregion
+============================
+
+.. c:function:: int mtd_ooblayout_find_eccregion(struct mtd_info *mtd, int eccbyte, int *section, struct mtd_oob_region *oobregion)
+
+    Find the ECC region attached to a specific ECC byte
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param int eccbyte:
+        the byte we are searching for
+
+    :param int \*section:
+        *undescribed*
+
+    :param struct mtd_oob_region \*oobregion:
+        OOB region information
+
+.. _`mtd_ooblayout_find_eccregion.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_find_region`\  except it searches for a specific ECC
+byte.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_get_bytes`:
+
+mtd_ooblayout_get_bytes
+=======================
+
+.. c:function:: int mtd_ooblayout_get_bytes(struct mtd_info *mtd, u8 *buf, const u8 *oobbuf, int start, int nbytes, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+
+    Extract OOB bytes from the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param u8 \*buf:
+        destination buffer to store OOB bytes
+
+    :param const u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first byte to retrieve
+
+    :param int nbytes:
+        number of bytes to retrieve
+
+    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+        section iterator
+
+.. _`mtd_ooblayout_get_bytes.description`:
+
+Description
+-----------
+
+Extract bytes attached to a specific category (ECC or free)
+from the OOB buffer and copy them into buf.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_set_bytes`:
+
+mtd_ooblayout_set_bytes
+=======================
+
+.. c:function:: int mtd_ooblayout_set_bytes(struct mtd_info *mtd, const u8 *buf, u8 *oobbuf, int start, int nbytes, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+
+    put OOB bytes into the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param const u8 \*buf:
+        source buffer to get OOB bytes from
+
+    :param u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first OOB byte to set
+
+    :param int nbytes:
+        number of OOB bytes to set
+
+    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+        section iterator
+
+.. _`mtd_ooblayout_set_bytes.description`:
+
+Description
+-----------
+
+Fill the OOB buffer with data provided in buf. The category (ECC or free)
+is selected by passing the appropriate iterator.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_count_bytes`:
+
+mtd_ooblayout_count_bytes
+=========================
+
+.. c:function:: int mtd_ooblayout_count_bytes(struct mtd_info *mtd, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+
+    count the number of bytes in a OOB category
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+        category iterator
+
+.. _`mtd_ooblayout_count_bytes.description`:
+
+Description
+-----------
+
+Count the number of bytes in a given category.
+
+Returns a positive value on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_get_eccbytes`:
+
+mtd_ooblayout_get_eccbytes
+==========================
+
+.. c:function:: int mtd_ooblayout_get_eccbytes(struct mtd_info *mtd, u8 *eccbuf, const u8 *oobbuf, int start, int nbytes)
+
+    extract ECC bytes from the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param u8 \*eccbuf:
+        destination buffer to store ECC bytes
+
+    :param const u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first ECC byte to retrieve
+
+    :param int nbytes:
+        number of ECC bytes to retrieve
+
+.. _`mtd_ooblayout_get_eccbytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_get_bytes`\ , except it acts on ECC bytes.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_set_eccbytes`:
+
+mtd_ooblayout_set_eccbytes
+==========================
+
+.. c:function:: int mtd_ooblayout_set_eccbytes(struct mtd_info *mtd, const u8 *eccbuf, u8 *oobbuf, int start, int nbytes)
+
+    set ECC bytes into the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param const u8 \*eccbuf:
+        source buffer to get ECC bytes from
+
+    :param u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first ECC byte to set
+
+    :param int nbytes:
+        number of ECC bytes to set
+
+.. _`mtd_ooblayout_set_eccbytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_set_bytes`\ , except it acts on ECC bytes.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_get_databytes`:
+
+mtd_ooblayout_get_databytes
+===========================
+
+.. c:function:: int mtd_ooblayout_get_databytes(struct mtd_info *mtd, u8 *databuf, const u8 *oobbuf, int start, int nbytes)
+
+    extract data bytes from the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param u8 \*databuf:
+        destination buffer to store ECC bytes
+
+    :param const u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first ECC byte to retrieve
+
+    :param int nbytes:
+        number of ECC bytes to retrieve
+
+.. _`mtd_ooblayout_get_databytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_get_bytes`\ , except it acts on free bytes.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_set_databytes`:
+
+mtd_ooblayout_set_databytes
+===========================
+
+.. c:function:: int mtd_ooblayout_set_databytes(struct mtd_info *mtd, const u8 *databuf, u8 *oobbuf, int start, int nbytes)
+
+    set data bytes into the oob buffer
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+    :param const u8 \*databuf:
+        *undescribed*
+
+    :param u8 \*oobbuf:
+        OOB buffer
+
+    :param int start:
+        first ECC byte to set
+
+    :param int nbytes:
+        number of ECC bytes to set
+
+.. _`mtd_ooblayout_set_databytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_get_bytes`\ , except it acts on free bytes.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_count_freebytes`:
+
+mtd_ooblayout_count_freebytes
+=============================
+
+.. c:function:: int mtd_ooblayout_count_freebytes(struct mtd_info *mtd)
+
+    count the number of free bytes in OOB
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+.. _`mtd_ooblayout_count_freebytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_count_bytes`\ , except it count free bytes.
+
+Returns zero on success, a negative error code otherwise.
+
+.. _`mtd_ooblayout_count_eccbytes`:
+
+mtd_ooblayout_count_eccbytes
+============================
+
+.. c:function:: int mtd_ooblayout_count_eccbytes(struct mtd_info *mtd)
+
+    count the number of ECC bytes in OOB
+
+    :param struct mtd_info \*mtd:
+        mtd info structure
+
+.. _`mtd_ooblayout_count_eccbytes.description`:
+
+Description
+-----------
+
+Works like \ :c:func:`mtd_ooblayout_count_bytes`\ , except it count ECC bytes.
+
+Returns zero on success, a negative error code otherwise.
 
 .. _`mtd_kmalloc_up_to`:
 
 mtd_kmalloc_up_to
 =================
 
-.. c:function:: void *mtd_kmalloc_up_to (const struct mtd_info *mtd, size_t *size)
+.. c:function:: void *mtd_kmalloc_up_to(const struct mtd_info *mtd, size_t *size)
 
     allocate a contiguous buffer up to the specified size
 
@@ -256,8 +622,6 @@ mtd_kmalloc_up_to
     :param size_t \*size:
         a pointer to the ideal or maximum size of the allocation, points
         to the actual allocation size on success.
-
-
 
 .. _`mtd_kmalloc_up_to.description`:
 
@@ -281,4 +645,6 @@ fragmented-memory situations where such reduced allocations, from a
 requested ideal, are allowed.
 
 Returns a pointer to the allocated buffer on success; otherwise, NULL.
+
+.. This file was automatic generated / don't edit.
 

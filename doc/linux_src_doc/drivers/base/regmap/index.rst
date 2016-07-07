@@ -7,6 +7,6 @@ regmap
 .. toctree::
    :maxdepth: 1
 
-   regcache_c
-   regmap_c
-   regmap-irq_c
+    regcache_c
+    regmap-irq_c
+    regmap_c

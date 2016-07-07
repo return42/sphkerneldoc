@@ -1,27 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-i386.c
-======
-
+.. src-file: arch/x86/pci/i386.c
 
 .. _`fs_initcall`:
 
 fs_initcall
 ===========
 
-.. c:function:: fs_initcall ( pcibios_assign_resources)
+.. c:function::  fs_initcall( pcibios_assign_resources)
 
-    :param pcibios_assign_resources:
+    give a chance for motherboard reserve resources
 
+    :param  pcibios_assign_resources:
         *undescribed*
 
-
-
-.. _`fs_initcall.description`:
-
-Description
------------
-
-give a chance for motherboard reserve resources
+.. This file was automatic generated / don't edit.
 

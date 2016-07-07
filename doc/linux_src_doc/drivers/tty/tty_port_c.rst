@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-tty_port.c
-==========
-
+.. src-file: drivers/tty/tty_port.c
 
 .. _`tty_port_link_device`:
 
 tty_port_link_device
 ====================
 
-.. c:function:: void tty_port_link_device (struct tty_port *port, struct tty_driver *driver, unsigned index)
+.. c:function:: void tty_port_link_device(struct tty_port *port, struct tty_driver *driver, unsigned index)
 
     link tty and tty_port
 
@@ -23,26 +19,22 @@ tty_port_link_device
     :param unsigned index:
         index of the tty
 
-
-
 .. _`tty_port_link_device.description`:
 
 Description
 -----------
 
-Provide the tty layer wit ha link from a tty (specified by ``index``\ ) to a
+Provide the tty layer wit ha link from a tty (specified by \ ``index``\ ) to a
 tty_port (\ ``port``\ ). Use this only if neither tty_port_register_device nor
 tty_port_install is used in the driver. If used, this has to be called before
 tty_register_driver.
-
-
 
 .. _`tty_port_register_device`:
 
 tty_port_register_device
 ========================
 
-.. c:function:: struct device *tty_port_register_device (struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device)
+.. c:function:: struct device *tty_port_register_device(struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device)
 
     register tty device
 
@@ -58,25 +50,21 @@ tty_port_register_device
     :param struct device \*device:
         parent if exists, otherwise NULL
 
-
-
 .. _`tty_port_register_device.description`:
 
 Description
 -----------
 
-It is the same as tty_register_device except the provided ``port`` is linked to
-a concrete tty specified by ``index``\ . Use this or tty_port_install (or both).
+It is the same as tty_register_device except the provided \ ``port``\  is linked to
+a concrete tty specified by \ ``index``\ . Use this or tty_port_install (or both).
 Call tty_port_link_device as a last resort.
-
-
 
 .. _`tty_port_register_device_attr`:
 
 tty_port_register_device_attr
 =============================
 
-.. c:function:: struct device *tty_port_register_device_attr (struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device, void *drvdata, const struct attribute_group **attr_grp)
+.. c:function:: struct device *tty_port_register_device_attr(struct tty_port *port, struct tty_driver *driver, unsigned index, struct device *device, void *drvdata, const struct attribute_group **attr_grp)
 
     register tty device
 
@@ -98,32 +86,26 @@ tty_port_register_device_attr
     :param const struct attribute_group \*\*attr_grp:
         Attribute group to be set on device.
 
-
-
 .. _`tty_port_register_device_attr.description`:
 
 Description
 -----------
 
-It is the same as tty_register_device_attr except the provided ``port`` is
-linked to a concrete tty specified by ``index``\ . Use this or tty_port_install
+It is the same as tty_register_device_attr except the provided \ ``port``\  is
+linked to a concrete tty specified by \ ``index``\ . Use this or tty_port_install
 (or both). Call tty_port_link_device as a last resort.
-
-
 
 .. _`tty_port_destroy`:
 
 tty_port_destroy
 ================
 
-.. c:function:: void tty_port_destroy (struct tty_port *port)
+.. c:function:: void tty_port_destroy(struct tty_port *port)
 
     - destroy inited port
 
     :param struct tty_port \*port:
         tty port to be doestroyed
-
-
 
 .. _`tty_port_destroy.description`:
 
@@ -134,21 +116,17 @@ When a port was initialized using tty_port_init, one has to destroy the
 port by this function. Either indirectly by using tty_port refcounting
 (tty_port_put) or directly if refcounting is not used.
 
-
-
 .. _`tty_port_tty_get`:
 
 tty_port_tty_get
 ================
 
-.. c:function:: struct tty_struct *tty_port_tty_get (struct tty_port *port)
+.. c:function:: struct tty_struct *tty_port_tty_get(struct tty_port *port)
 
     get a tty reference
 
     :param struct tty_port \*port:
         tty port
-
-
 
 .. _`tty_port_tty_get.description`:
 
@@ -158,14 +136,12 @@ Description
 Return a refcount protected tty instance or NULL if the port is not
 associated with a tty (eg due to close or hangup)
 
-
-
 .. _`tty_port_tty_set`:
 
 tty_port_tty_set
 ================
 
-.. c:function:: void tty_port_tty_set (struct tty_port *port, struct tty_struct *tty)
+.. c:function:: void tty_port_tty_set(struct tty_port *port, struct tty_struct *tty)
 
     set the tty of a port
 
@@ -175,8 +151,6 @@ tty_port_tty_set
     :param struct tty_struct \*tty:
         the tty
 
-
-
 .. _`tty_port_tty_set.description`:
 
 Description
@@ -185,21 +159,17 @@ Description
 Associate the port and tty pair. Manages any internal refcounts.
 Pass NULL to deassociate a port
 
-
-
 .. _`tty_port_hangup`:
 
 tty_port_hangup
 ===============
 
-.. c:function:: void tty_port_hangup (struct tty_port *port)
+.. c:function:: void tty_port_hangup(struct tty_port *port)
 
     hangup helper
 
     :param struct tty_port \*port:
         tty port
-
-
 
 .. _`tty_port_hangup.description`:
 
@@ -211,14 +181,12 @@ reference.
 
 Caller holds tty lock.
 
-
-
 .. _`tty_port_tty_hangup`:
 
 tty_port_tty_hangup
 ===================
 
-.. c:function:: void tty_port_tty_hangup (struct tty_port *port, bool check_clocal)
+.. c:function:: void tty_port_tty_hangup(struct tty_port *port, bool check_clocal)
 
     helper to hang up a tty
 
@@ -228,35 +196,29 @@ tty_port_tty_hangup
     :param bool check_clocal:
         hang only ttys with CLOCAL unset?
 
-
-
 .. _`tty_port_tty_wakeup`:
 
 tty_port_tty_wakeup
 ===================
 
-.. c:function:: void tty_port_tty_wakeup (struct tty_port *port)
+.. c:function:: void tty_port_tty_wakeup(struct tty_port *port)
 
     helper to wake up a tty
 
     :param struct tty_port \*port:
         tty port
 
-
-
 .. _`tty_port_carrier_raised`:
 
 tty_port_carrier_raised
 =======================
 
-.. c:function:: int tty_port_carrier_raised (struct tty_port *port)
+.. c:function:: int tty_port_carrier_raised(struct tty_port *port)
 
     carrier raised check
 
     :param struct tty_port \*port:
         tty port
-
-
 
 .. _`tty_port_carrier_raised.description`:
 
@@ -267,21 +229,17 @@ Wrapper for the carrier detect logic. For the moment this is used
 to hide some internal details. This will eventually become entirely
 internal to the tty port.
 
-
-
 .. _`tty_port_raise_dtr_rts`:
 
 tty_port_raise_dtr_rts
 ======================
 
-.. c:function:: void tty_port_raise_dtr_rts (struct tty_port *port)
+.. c:function:: void tty_port_raise_dtr_rts(struct tty_port *port)
 
     Raise DTR/RTS
 
     :param struct tty_port \*port:
         tty port
-
-
 
 .. _`tty_port_raise_dtr_rts.description`:
 
@@ -292,21 +250,17 @@ Wrapper for the DTR/RTS raise logic. For the moment this is used
 to hide some internal details. This will eventually become entirely
 internal to the tty port.
 
-
-
 .. _`tty_port_lower_dtr_rts`:
 
 tty_port_lower_dtr_rts
 ======================
 
-.. c:function:: void tty_port_lower_dtr_rts (struct tty_port *port)
+.. c:function:: void tty_port_lower_dtr_rts(struct tty_port *port)
 
     Lower DTR/RTS
 
     :param struct tty_port \*port:
         tty port
-
-
 
 .. _`tty_port_lower_dtr_rts.description`:
 
@@ -317,14 +271,12 @@ Wrapper for the DTR/RTS raise logic. For the moment this is used
 to hide some internal details. This will eventually become entirely
 internal to the tty port.
 
-
-
 .. _`tty_port_block_til_ready`:
 
 tty_port_block_til_ready
 ========================
 
-.. c:function:: int tty_port_block_til_ready (struct tty_port *port, struct tty_struct *tty, struct file *filp)
+.. c:function:: int tty_port_block_til_ready(struct tty_port *port, struct tty_struct *tty, struct file *filp)
 
     Waiting logic for tty open
 
@@ -337,16 +289,12 @@ tty_port_block_til_ready
     :param struct file \*filp:
         the file pointer of the opener
 
-
-
 .. _`tty_port_block_til_ready.description`:
 
 Description
 -----------
 
 Implement the core POSIX/SuS tty behaviour when opening a tty device.
-
-
 
 .. _`tty_port_block_til_ready.handles`:
 
@@ -359,62 +307,45 @@ Handles
 - signals
 - port flags and counts
 
-        The passed tty_port must implement the carrier_raised method if it can
-        do carrier detect and the dtr_rts method if it supports software
-        management of these lines. Note that the dtr/rts raise is done each
-        iteration as a hangup may have previously dropped them while we wait.
+The passed tty_port must implement the carrier_raised method if it can
+do carrier detect and the dtr_rts method if it supports software
+management of these lines. Note that the dtr/rts raise is done each
+iteration as a hangup may have previously dropped them while we wait.
 
-        Caller holds tty lock.
+Caller holds tty lock.
 
-
-
-.. _`tty_port_block_til_ready.nb`:
-
-NB
---
-
-May drop and reacquire tty lock when blocking, so tty and tty_port
+NB: May drop and reacquire tty lock when blocking, so tty and tty_port
 may have changed state (eg., may have been hung up).
-
-
 
 .. _`tty_port_close`:
 
 tty_port_close
 ==============
 
-.. c:function:: void tty_port_close (struct tty_port *port, struct tty_struct *tty, struct file *filp)
+.. c:function:: void tty_port_close(struct tty_port *port, struct tty_struct *tty, struct file *filp)
 
     :param struct tty_port \*port:
-
         *undescribed*
 
     :param struct tty_struct \*tty:
-
         *undescribed*
 
     :param struct file \*filp:
-
         *undescribed*
-
-
 
 .. _`tty_port_close.description`:
 
 Description
 -----------
 
-
 Caller holds tty lock
-
-
 
 .. _`tty_port_install`:
 
 tty_port_install
 ================
 
-.. c:function:: int tty_port_install (struct tty_port *port, struct tty_driver *driver, struct tty_struct *tty)
+.. c:function:: int tty_port_install(struct tty_port *port, struct tty_driver *driver, struct tty_struct *tty)
 
     generic tty->ops->install handler
 
@@ -427,55 +358,40 @@ tty_port_install
     :param struct tty_struct \*tty:
         tty to be installed
 
-
-
 .. _`tty_port_install.description`:
 
 Description
 -----------
 
-It is the same as tty_standard_install except the provided ``port`` is linked
-to a concrete tty specified by ``tty``\ . Use this or tty_port_register_device
+It is the same as tty_standard_install except the provided \ ``port``\  is linked
+to a concrete tty specified by \ ``tty``\ . Use this or tty_port_register_device
 (or both). Call tty_port_link_device as a last resort.
-
-
 
 .. _`tty_port_open`:
 
 tty_port_open
 =============
 
-.. c:function:: int tty_port_open (struct tty_port *port, struct tty_struct *tty, struct file *filp)
+.. c:function:: int tty_port_open(struct tty_port *port, struct tty_struct *tty, struct file *filp)
 
     :param struct tty_port \*port:
-
         *undescribed*
 
     :param struct tty_struct \*tty:
-
         *undescribed*
 
     :param struct file \*filp:
-
         *undescribed*
-
-
 
 .. _`tty_port_open.description`:
 
 Description
 -----------
 
-
 Caller holds tty lock.
 
-
-
-.. _`tty_port_open.nb`:
-
-NB
---
-
-may drop and reacquire tty lock (in :c:func:`tty_port_block_til_ready`) so
+NB: may drop and reacquire tty lock (in \ :c:func:`tty_port_block_til_ready`\ ) so
 tty and tty_port may have changed state (eg., may be hung up now)
+
+.. This file was automatic generated / don't edit.
 

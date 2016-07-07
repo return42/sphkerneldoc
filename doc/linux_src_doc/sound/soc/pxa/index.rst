@@ -7,4 +7,4 @@ pxa
 .. toctree::
    :maxdepth: 1
 
-   pxa-ssp_c
+    pxa-ssp_c

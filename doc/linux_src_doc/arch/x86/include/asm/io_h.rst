@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-io.h
-====
-
+.. src-file: arch/x86/include/asm/io.h
 
 .. _`virt_to_phys`:
 
 virt_to_phys
 ============
 
-.. c:function:: phys_addr_t virt_to_phys (volatile void *address)
+.. c:function:: phys_addr_t virt_to_phys(volatile void *address)
 
     map virtual addresses to physical
 
     :param volatile void \*address:
         address to remap
-
-
 
 .. _`virt_to_phys.description`:
 
@@ -32,21 +26,17 @@ This function does not give bus mappings for DMA transfers. In
 almost all conceivable cases a device driver should not be using
 this function
 
-
-
 .. _`phys_to_virt`:
 
 phys_to_virt
 ============
 
-.. c:function:: void *phys_to_virt (phys_addr_t address)
+.. c:function:: void *phys_to_virt(phys_addr_t address)
 
     map physical address to virtual
 
     :param phys_addr_t address:
         address to remap
-
-
 
 .. _`phys_to_virt.description`:
 
@@ -61,14 +51,12 @@ This function does not handle bus mappings for DMA transfers. In
 almost all conceivable cases a device driver should not be using
 this function
 
-
-
 .. _`ioremap_nocache`:
 
 ioremap_nocache
 ===============
 
-.. c:function:: void __iomem *ioremap_nocache (resource_size_t offset, unsigned long size)
+.. c:function:: void __iomem *ioremap_nocache(resource_size_t offset, unsigned long size)
 
     map bus memory into CPU space
 
@@ -77,8 +65,6 @@ ioremap_nocache
 
     :param unsigned long size:
         size of the resource to map
-
-
 
 .. _`ioremap_nocache.description`:
 
@@ -92,5 +78,7 @@ address is not guaranteed to be usable directly as a virtual
 address.
 
 If the area you are trying to map is a PCI BAR you should have a
-look at :c:func:`pci_iomap`.
+look at \ :c:func:`pci_iomap`\ .
+
+.. This file was automatic generated / don't edit.
 

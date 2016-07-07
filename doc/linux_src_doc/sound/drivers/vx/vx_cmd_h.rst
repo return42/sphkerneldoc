@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-vx_cmd.h
-========
-
+.. src-file: sound/drivers/vx/vx_cmd.h
 
 .. _`vx_set_pipe_cmd_params`:
 
 vx_set_pipe_cmd_params
 ======================
 
-.. c:function:: void vx_set_pipe_cmd_params (struct vx_rmh *rmh, int is_capture, int param1, int param2)
+.. c:function:: void vx_set_pipe_cmd_params(struct vx_rmh *rmh, int is_capture, int param1, int param2)
 
     fill first command word for pipe commands
 
@@ -26,14 +22,12 @@ vx_set_pipe_cmd_params
     :param int param2:
         second pipe-parameter
 
-
-
 .. _`vx_set_stream_cmd_params`:
 
 vx_set_stream_cmd_params
 ========================
 
-.. c:function:: void vx_set_stream_cmd_params (struct vx_rmh *rmh, int is_capture, int pipe)
+.. c:function:: void vx_set_stream_cmd_params(struct vx_rmh *rmh, int is_capture, int pipe)
 
     fill first command word for stream commands
 
@@ -45,4 +39,6 @@ vx_set_stream_cmd_params
 
     :param int pipe:
         the pipe index (zero-based)
+
+.. This file was automatic generated / don't edit.
 

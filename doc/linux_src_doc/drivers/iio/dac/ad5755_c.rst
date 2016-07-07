@@ -1,0 +1,89 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5755.c
+
+.. _`ad5755_chip_info`:
+
+struct ad5755_chip_info
+=======================
+
+.. c:type:: struct ad5755_chip_info
+
+    chip specific information
+
+.. _`ad5755_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5755_chip_info {
+        const struct iio_chan_spec channel_template;
+        unsigned int calib_shift;
+        bool has_voltage_out;
+    }
+
+.. _`ad5755_chip_info.members`:
+
+Members
+-------
+
+channel_template
+    channel specification
+
+calib_shift
+    shift for the calibration data registers
+
+has_voltage_out
+    whether the chip has voltage outputs
+
+.. _`ad5755_state`:
+
+struct ad5755_state
+===================
+
+.. c:type:: struct ad5755_state
+
+    driver instance specific data
+
+.. _`ad5755_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5755_state {
+        struct spi_device *spi;
+        const struct ad5755_chip_info *chip_info;
+        unsigned int pwr_down;
+        unsigned int ctrl[AD5755_NUM_CHANNELS];
+        struct iio_chan_spec channels[AD5755_NUM_CHANNELS];
+        union data[2] ____cacheline_aligned;
+    }
+
+.. _`ad5755_state.members`:
+
+Members
+-------
+
+spi
+    spi device the driver is attached to
+
+chip_info
+    chip model specific constants, available modes etc
+
+pwr_down
+    bitmask which contains  hether a channel is powered down or not
+
+ctrl
+    software shadow of the channel ctrl registers
+
+channels
+    iio channel spec for the device
+
+data
+    spi transfer buffers
+
+.. This file was automatic generated / don't edit.
+

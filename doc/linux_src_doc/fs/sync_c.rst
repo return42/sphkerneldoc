@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-sync.c
-======
-
+.. src-file: fs/sync.c
 
 .. _`vfs_fsync_range`:
 
 vfs_fsync_range
 ===============
 
-.. c:function:: int vfs_fsync_range (struct file *file, loff_t start, loff_t end, int datasync)
+.. c:function:: int vfs_fsync_range(struct file *file, loff_t start, loff_t end, int datasync)
 
     helper to sync a range of data & metadata to disk
 
@@ -26,25 +22,21 @@ vfs_fsync_range
     :param int datasync:
         perform only datasync
 
-
-
 .. _`vfs_fsync_range.description`:
 
 Description
 -----------
 
-Write back data in range ``start``\ ..\ ``end`` and metadata for ``file`` to disk.  If
-``datasync`` is set only metadata needed to access modified file data is
+Write back data in range \ ``start``\ ..\ ``end``\  and metadata for \ ``file``\  to disk.  If
+\ ``datasync``\  is set only metadata needed to access modified file data is
 written.
-
-
 
 .. _`vfs_fsync`:
 
 vfs_fsync
 =========
 
-.. c:function:: int vfs_fsync (struct file *file, int datasync)
+.. c:function:: int vfs_fsync(struct file *file, int datasync)
 
     perform a fsync or fdatasync on a file
 
@@ -54,13 +46,13 @@ vfs_fsync
     :param int datasync:
         only perform a fdatasync operation
 
-
-
 .. _`vfs_fsync.description`:
 
 Description
 -----------
 
-Write back data and metadata for ``file`` to disk.  If ``datasync`` is
+Write back data and metadata for \ ``file``\  to disk.  If \ ``datasync``\  is
 set only metadata needed to access modified file data is written.
+
+.. This file was automatic generated / don't edit.
 

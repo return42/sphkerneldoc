@@ -1,137 +1,99 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-cvmx-pko.c
-==========
-
+.. src-file: arch/mips/cavium-octeon/executive/cvmx-pko.c
 
 .. _`__cvmx_pko_int`:
 
 __cvmx_pko_int
 ==============
 
-.. c:function:: int __cvmx_pko_int (int interface, int index)
+.. c:function:: int __cvmx_pko_int(int interface, int index)
 
     :param int interface:
-
         *undescribed*
 
     :param int index:
-
         *undescribed*
-
-
 
 .. _`cvmx_pko_initialize_global`:
 
 cvmx_pko_initialize_global
 ==========================
 
-.. c:function:: void cvmx_pko_initialize_global ( void)
+.. c:function:: void cvmx_pko_initialize_global( void)
 
-    :param void:
+    output system.  This does chip global config, and should only be done by one core.
+
+    :param  void:
         no arguments
-
-
-
-.. _`cvmx_pko_initialize_global.description`:
-
-Description
------------
-
-output system.  This does chip global config, and should only be
-done by one core.
-
-
 
 .. _`cvmx_pko_initialize_local`:
 
 cvmx_pko_initialize_local
 =========================
 
-.. c:function:: int cvmx_pko_initialize_local ( void)
+.. c:function:: int cvmx_pko_initialize_local( void)
 
     core initialization required by the PKO routines. This must be called on all cores that will do packet output, and must be called after the FPA has been initialized and filled with pages.
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`cvmx_pko_initialize_local.description`:
 
 Description
 -----------
 
-
 Returns 0 on success
 !0 on failure
-
-
 
 .. _`cvmx_pko_enable`:
 
 cvmx_pko_enable
 ===============
 
-.. c:function:: void cvmx_pko_enable ( void)
+.. c:function:: void cvmx_pko_enable( void)
 
-    :param void:
+    configured.
+
+    :param  void:
         no arguments
-
-
-
-.. _`cvmx_pko_enable.description`:
-
-Description
------------
-
-configured.
-
-
 
 .. _`cvmx_pko_disable`:
 
 cvmx_pko_disable
 ================
 
-.. c:function:: void cvmx_pko_disable ( void)
+.. c:function:: void cvmx_pko_disable( void)
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`__cvmx_pko_reset`:
 
 __cvmx_pko_reset
 ================
 
-.. c:function:: void __cvmx_pko_reset ( void)
+.. c:function:: void __cvmx_pko_reset( void)
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`cvmx_pko_shutdown`:
 
 cvmx_pko_shutdown
 =================
 
-.. c:function:: void cvmx_pko_shutdown ( void)
+.. c:function:: void cvmx_pko_shutdown( void)
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`cvmx_pko_config_port`:
 
 cvmx_pko_config_port
 ====================
 
-.. c:function:: cvmx_pko_status_t cvmx_pko_config_port (uint64_t port, uint64_t base_queue, uint64_t num_queues, const uint64_t priority[])
+.. c:function:: cvmx_pko_status_t cvmx_pko_config_port(uint64_t port, uint64_t base_queue, uint64_t num_queues, const uint64_t priority[])
 
     :param uint64_t port:
         Port to configure.
@@ -154,27 +116,26 @@ cvmx_pko_config_port
         queues have higher priority than higher numbered queues.
         There must be num_queues elements in the array.
 
-
-
 .. _`cvmx_pko_show_queue_map`:
 
 cvmx_pko_show_queue_map
 =======================
 
-.. c:function:: void cvmx_pko_show_queue_map ()
+.. c:function:: void cvmx_pko_show_queue_map( void)
 
     > queues for different cores.
 
-
+    :param  void:
+        no arguments
 
 .. _`cvmx_pko_rate_limit_packets`:
 
 cvmx_pko_rate_limit_packets
 ===========================
 
-.. c:function:: int cvmx_pko_rate_limit_packets (int port, int packets_s, int burst)
+.. c:function:: int cvmx_pko_rate_limit_packets(int port, int packets_s, int burst)
 
-     supported on CN51XX and higher, excluding CN58XX.
+    supported on CN51XX and higher, excluding CN58XX.
 
     :param int port:
         Port to rate limit
@@ -186,8 +147,6 @@ cvmx_pko_rate_limit_packets
         Maximum number of packets to burst in a row before rate
         limiting cuts in.
 
-
-
 .. _`cvmx_pko_rate_limit_packets.description`:
 
 Description
@@ -195,14 +154,14 @@ Description
 
 Returns Zero on success, negative on failure
 
-
-
 .. _`cvmx_pko_rate_limit_bits`:
 
 cvmx_pko_rate_limit_bits
 ========================
 
-.. c:function:: int cvmx_pko_rate_limit_bits (int port, uint64_t bits_s, int burst)
+.. c:function:: int cvmx_pko_rate_limit_bits(int port, uint64_t bits_s, int burst)
+
+    supported on CN51XX and higher, excluding CN58XX.
 
     :param int port:
         Port to rate limit
@@ -214,8 +173,6 @@ cvmx_pko_rate_limit_bits
         Maximum number of bits to burst before rate
         limiting cuts in.
 
-
-
 .. _`cvmx_pko_rate_limit_bits.description`:
 
 Description
@@ -223,12 +180,5 @@ Description
 
 Returns Zero on success, negative on failure
 
-
-
-.. _`cvmx_pko_rate_limit_bits.description`:
-
-Description
------------
-
-Returns Zero on success, negative on failure
+.. This file was automatic generated / don't edit.
 

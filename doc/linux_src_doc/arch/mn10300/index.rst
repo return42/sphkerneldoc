@@ -7,4 +7,6 @@ mn10300
 .. toctree::
    :maxdepth: 1
 
-   mm/index
+    include/index
+    kernel/index
+    mm/index

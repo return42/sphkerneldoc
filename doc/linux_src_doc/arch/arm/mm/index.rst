@@ -7,4 +7,6 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   dma-mapping_c
+    cache-l2x0_c
+    cache-uniphier_c
+    dma-mapping_c

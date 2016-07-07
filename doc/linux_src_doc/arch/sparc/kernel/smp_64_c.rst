@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-smp_64.c
-========
-
+.. src-file: arch/sparc/kernel/smp_64.c
 
 .. _`pcpu_alloc_bootmem`:
 
 pcpu_alloc_bootmem
 ==================
 
-.. c:function:: void *pcpu_alloc_bootmem (unsigned int cpu, size_t size, size_t align)
+.. c:function:: void *pcpu_alloc_bootmem(unsigned int cpu, size_t size, size_t align)
 
     NUMA friendly alloc_bootmem wrapper for percpu
 
@@ -23,23 +19,21 @@ pcpu_alloc_bootmem
     :param size_t align:
         alignment
 
-
-
 .. _`pcpu_alloc_bootmem.description`:
 
 Description
 -----------
 
-Allocate ``size`` bytes aligned at ``align`` for cpu ``cpu``\ .  This wrapper
+Allocate \ ``size``\  bytes aligned at \ ``align``\  for cpu \ ``cpu``\ .  This wrapper
 does the right thing for NUMA regardless of the current
 configuration.
 
+.. _`pcpu_alloc_bootmem.return`:
 
-
-.. _`pcpu_alloc_bootmem.returns`:
-
-RETURNS
--------
+Return
+------
 
 Pointer to the allocated area on success, NULL on failure.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-rl6231.c
-========
-
+.. src-file: sound/soc/codecs/rl6231.c
 
 .. _`rl6231_get_pre_div`:
 
 rl6231_get_pre_div
 ==================
 
-.. c:function:: int rl6231_get_pre_div (struct regmap *map, unsigned int reg, int sft)
+.. c:function:: int rl6231_get_pre_div(struct regmap *map, unsigned int reg, int sft)
 
     Return the value of pre divider.
 
@@ -23,8 +19,6 @@ rl6231_get_pre_div
     :param int sft:
         shift.
 
-
-
 .. _`rl6231_get_pre_div.description`:
 
 Description
@@ -33,21 +27,17 @@ Description
 Return the value of pre divider from given register value.
 Return negative error code for unexpected register value.
 
-
-
 .. _`rl6231_calc_dmic_clk`:
 
 rl6231_calc_dmic_clk
 ====================
 
-.. c:function:: int rl6231_calc_dmic_clk (int rate)
+.. c:function:: int rl6231_calc_dmic_clk(int rate)
 
     Calculate the frequency divider parameter of dmic.
 
     :param int rate:
         base clock rate.
-
-
 
 .. _`rl6231_calc_dmic_clk.description`:
 
@@ -57,14 +47,12 @@ Description
 Choose divider parameter that gives the highest possible DMIC frequency in
 1MHz - 3MHz range.
 
-
-
 .. _`rl6231_pll_calc`:
 
 rl6231_pll_calc
 ===============
 
-.. c:function:: int rl6231_pll_calc (const unsigned int freq_in, const unsigned int freq_out, struct rl6231_pll_code *pll_code)
+.. c:function:: int rl6231_pll_calc(const unsigned int freq_in, const unsigned int freq_out, struct rl6231_pll_code *pll_code)
 
     Calcualte PLL M/N/K code.
 
@@ -77,8 +65,6 @@ rl6231_pll_calc
     :param struct rl6231_pll_code \*pll_code:
         Pointer to structure with M, N, K and bypass flag.
 
-
-
 .. _`rl6231_pll_calc.description`:
 
 Description
@@ -87,4 +73,6 @@ Description
 Calcualte M/N/K code to configure PLL for codec.
 
 Returns 0 for success or negative error code.
+
+.. This file was automatic generated / don't edit.
 

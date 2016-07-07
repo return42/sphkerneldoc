@@ -7,4 +7,4 @@ qcom
 .. toctree::
    :maxdepth: 1
 
-   smd_h
+    smd_h

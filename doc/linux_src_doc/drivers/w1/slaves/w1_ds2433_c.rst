@@ -1,0 +1,55 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/w1/slaves/w1_ds2433.c
+
+.. _`w1_f23_fix_count`:
+
+w1_f23_fix_count
+================
+
+.. c:function:: size_t w1_f23_fix_count(loff_t off, size_t count, size_t size)
+
+    This would not be needed if the file size didn't reset to 0 after a write.
+
+    :param loff_t off:
+        *undescribed*
+
+    :param size_t count:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
+.. _`w1_f23_write`:
+
+w1_f23_write
+============
+
+.. c:function:: int w1_f23_write(struct w1_slave *sl, int addr, int len, const u8 *data)
+
+    Then copies the scratchpad to EEPROM. The data must be on one page. The master must be locked.
+
+    :param struct w1_slave \*sl:
+        *undescribed*
+
+    :param int addr:
+        *undescribed*
+
+    :param int len:
+        *undescribed*
+
+    :param const u8 \*data:
+        *undescribed*
+
+.. _`w1_f23_write.description`:
+
+Description
+-----------
+
+\ ``param``\  sl    The slave structure
+\ ``param``\  addr  Address for the write
+\ ``param``\  len   length must be <= (W1_PAGE_SIZE - (addr & W1_PAGE_MASK))
+\ ``param``\  data  The data to write
+\ ``return``\       0=Success -1=failure
+
+.. This file was automatic generated / don't edit.
+

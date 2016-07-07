@@ -7,4 +7,4 @@ core
 .. toctree::
    :maxdepth: 1
 
-   firmware_c
+    firmware_c

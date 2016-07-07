@@ -7,6 +7,6 @@ gpu
 .. toctree::
    :maxdepth: 1
 
-   drm/index
-   host1x/index
-   vga/index
+    drm/index
+    host1x/index
+    vga/index

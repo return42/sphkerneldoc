@@ -7,4 +7,4 @@ lib
 .. toctree::
    :maxdepth: 1
 
-   bitops_c
+    bitops_c

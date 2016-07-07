@@ -7,5 +7,7 @@ aer
 .. toctree::
    :maxdepth: 1
 
-   aerdrv_c
-   aerdrv_core_c
+    aerdrv_acpi_c
+    aerdrv_c
+    aerdrv_core_c
+    ecrc_c

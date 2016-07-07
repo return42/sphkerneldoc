@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-debugobjects.c
-==============
-
+.. src-file: lib/debugobjects.c
 
 .. _`debug_object_init`:
 
 debug_object_init
 =================
 
-.. c:function:: void debug_object_init (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_init(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object is initialized
 
@@ -20,14 +16,12 @@ debug_object_init
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_init_on_stack`:
 
 debug_object_init_on_stack
 ==========================
 
-.. c:function:: void debug_object_init_on_stack (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_init_on_stack(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object on stack is initialized
 
@@ -37,14 +31,12 @@ debug_object_init_on_stack
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_activate`:
 
 debug_object_activate
 =====================
 
-.. c:function:: int debug_object_activate (void *addr, struct debug_obj_descr *descr)
+.. c:function:: int debug_object_activate(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object is activated
 
@@ -55,14 +47,12 @@ debug_object_activate
         pointer to an object specific debug description structure
         Returns 0 for success, -EINVAL for check failed.
 
-
-
 .. _`debug_object_deactivate`:
 
 debug_object_deactivate
 =======================
 
-.. c:function:: void debug_object_deactivate (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_deactivate(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object is deactivated
 
@@ -72,14 +62,12 @@ debug_object_deactivate
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_destroy`:
 
 debug_object_destroy
 ====================
 
-.. c:function:: void debug_object_destroy (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_destroy(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object is destroyed
 
@@ -89,14 +77,12 @@ debug_object_destroy
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_free`:
 
 debug_object_free
 =================
 
-.. c:function:: void debug_object_free (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_free(void *addr, struct debug_obj_descr *descr)
 
     debug checks when an object is freed
 
@@ -106,14 +92,12 @@ debug_object_free
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_assert_init`:
 
 debug_object_assert_init
 ========================
 
-.. c:function:: void debug_object_assert_init (void *addr, struct debug_obj_descr *descr)
+.. c:function:: void debug_object_assert_init(void *addr, struct debug_obj_descr *descr)
 
     debug checks when object should be init-ed
 
@@ -123,14 +107,12 @@ debug_object_assert_init
     :param struct debug_obj_descr \*descr:
         pointer to an object specific debug description structure
 
-
-
 .. _`debug_object_active_state`:
 
 debug_object_active_state
 =========================
 
-.. c:function:: void debug_object_active_state (void *addr, struct debug_obj_descr *descr, unsigned int expect, unsigned int next)
+.. c:function:: void debug_object_active_state(void *addr, struct debug_obj_descr *descr, unsigned int expect, unsigned int next)
 
     debug checks object usage state machine
 
@@ -145,4 +127,6 @@ debug_object_active_state
 
     :param unsigned int next:
         state to move to if expected state is found
+
+.. This file was automatic generated / don't edit.
 

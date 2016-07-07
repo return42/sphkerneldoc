@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-sa_query.c
-==========
-
+.. src-file: drivers/infiniband/core/sa_query.c
 
 .. _`ib_sa_cancel_query`:
 
 ib_sa_cancel_query
 ==================
 
-.. c:function:: void ib_sa_cancel_query (int id, struct ib_sa_query *query)
+.. c:function:: void ib_sa_cancel_query(int id, struct ib_sa_query *query)
 
     try to cancel an SA query
 
@@ -19,8 +15,6 @@ ib_sa_cancel_query
 
     :param struct ib_sa_query \*query:
         query pointer to cancel
-
-
 
 .. _`ib_sa_cancel_query.description`:
 
@@ -31,14 +25,12 @@ Try to cancel an SA query.  If the id and query don't match up or
 the query has already completed, nothing is done.  Otherwise the
 query is canceled and will complete with a status of -EINTR.
 
-
-
 .. _`ib_sa_path_rec_get`:
 
 ib_sa_path_rec_get
 ==================
 
-.. c:function:: int ib_sa_path_rec_get (struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback) (int status, struct ib_sa_path_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
+.. c:function:: int ib_sa_path_rec_get(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*) callback (int status, struct ib_sa_path_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
 
     Start a Path get query
 
@@ -63,7 +55,7 @@ ib_sa_path_rec_get
     :param gfp_t gfp_mask:
         GFP mask to use for internal allocations
 
-    :param void (\*callback) (int status, struct ib_sa_path_rec \*resp, void \*context):
+    :param (void (\*) callback (int status, struct ib_sa_path_rec \*resp, void \*context):
         function called when query completes, times out or is
         canceled
 
@@ -72,8 +64,6 @@ ib_sa_path_rec_get
 
     :param struct ib_sa_query \*\*sa_query:
         query context, used to cancel query
-
-
 
 .. _`ib_sa_path_rec_get.description`:
 
@@ -87,18 +77,16 @@ is canceled, -ETIMEDOUT is the query timed out, or -EIO if an error
 occurred sending the query.  The resp parameter of the callback is
 only valid if status is 0.
 
-If the return value of :c:func:`ib_sa_path_rec_get` is negative, it is an
+If the return value of \ :c:func:`ib_sa_path_rec_get`\  is negative, it is an
 error code.  Otherwise it is a query ID that can be used to cancel
 the query.
-
-
 
 .. _`ib_sa_service_rec_query`:
 
 ib_sa_service_rec_query
 =======================
 
-.. c:function:: int ib_sa_service_rec_query (struct ib_sa_client *client, struct ib_device *device, u8 port_num, u8 method, struct ib_sa_service_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback) (int status, struct ib_sa_service_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
+.. c:function:: int ib_sa_service_rec_query(struct ib_sa_client *client, struct ib_device *device, u8 port_num, u8 method, struct ib_sa_service_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*) callback (int status, struct ib_sa_service_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
 
     Start Service Record operation
 
@@ -126,7 +114,7 @@ ib_sa_service_rec_query
     :param gfp_t gfp_mask:
         GFP mask to use for internal allocations
 
-    :param void (\*callback) (int status, struct ib_sa_service_rec \*resp, void \*context):
+    :param (void (\*) callback (int status, struct ib_sa_service_rec \*resp, void \*context):
         function called when request completes, times out or is
         canceled
 
@@ -135,8 +123,6 @@ ib_sa_service_rec_query
 
     :param struct ib_sa_query \*\*sa_query:
         request context, used to cancel request
-
-
 
 .. _`ib_sa_service_rec_query.description`:
 
@@ -151,7 +137,9 @@ is canceled, -ETIMEDOUT is the query timed out, or -EIO if an error
 occurred sending the query.  The resp parameter of the callback is
 only valid if status is 0.
 
-If the return value of :c:func:`ib_sa_service_rec_query` is negative, it is an
+If the return value of \ :c:func:`ib_sa_service_rec_query`\  is negative, it is an
 error code.  Otherwise it is a request ID that can be used to cancel
 the query.
+
+.. This file was automatic generated / don't edit.
 

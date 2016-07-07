@@ -7,5 +7,8 @@ opp
 .. toctree::
    :maxdepth: 1
 
-   core_c
-   cpu_c
+    core_c
+    cpu_c
+    debugfs_c
+    of_c
+    opp_h

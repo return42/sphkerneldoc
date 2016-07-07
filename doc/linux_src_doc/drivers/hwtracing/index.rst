@@ -7,6 +7,6 @@ hwtracing
 .. toctree::
    :maxdepth: 1
 
-   coresight/index
-   intel_th/index
-   stm/index
+    coresight/index
+    intel_th/index
+    stm/index

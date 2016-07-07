@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-tc3589x.h
-=========
-
+.. src-file: include/linux/mfd/tc3589x.h
 
 .. _`tc3589x_platform_data`:
 
 struct tc3589x_platform_data
 ============================
 
-.. c:type:: tc3589x_platform_data
+.. c:type:: struct tc3589x_platform_data
 
     TC3589x platform data
-
 
 .. _`tc3589x_platform_data.definition`:
 
@@ -22,17 +17,17 @@ Definition
 
 .. code-block:: c
 
-  struct tc3589x_platform_data {
-    unsigned int block;
-  };
-
+    struct tc3589x_platform_data {
+        unsigned int block;
+    }
 
 .. _`tc3589x_platform_data.members`:
 
 Members
 -------
 
-:``block``:
+block
     bitmask of blocks to enable (use TC3589x_BLOCK\_\*)
 
+.. This file was automatic generated / don't edit.
 

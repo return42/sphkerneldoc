@@ -1,0 +1,441 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/clk/ingenic/cgu.h
+
+.. _`ingenic_cgu_pll_info`:
+
+struct ingenic_cgu_pll_info
+===========================
+
+.. c:type:: struct ingenic_cgu_pll_info
+
+    information about a PLL
+
+.. _`ingenic_cgu_pll_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_pll_info {
+        unsigned reg;
+        const s8 *od_encoding;
+        u8 m_shift;
+        u8 m_bits;
+        u8 m_offset;
+        u8 n_shift;
+        u8 n_bits;
+        u8 n_offset;
+        u8 od_shift;
+        u8 od_bits;
+        u8 od_max;
+        u8 bypass_bit;
+        u8 enable_bit;
+        u8 stable_bit;
+    }
+
+.. _`ingenic_cgu_pll_info.members`:
+
+Members
+-------
+
+reg
+    the offset of the PLL's control register within the CGU
+
+od_encoding
+    a pointer to an array mapping post-VCO divider values to
+    their encoded values in the PLL control register, or -1 for
+    unsupported values
+
+m_shift
+    the number of bits to shift the multiplier value by (ie. the
+    index of the lowest bit of the multiplier value in the PLL's
+    control register)
+
+m_bits
+    the size of the multiplier field in bits
+
+m_offset
+    the multiplier value which encodes to 0 in the PLL's control
+    register
+
+n_shift
+    the number of bits to shift the divider value by (ie. the
+    index of the lowest bit of the divider value in the PLL's
+    control register)
+
+n_bits
+    the size of the divider field in bits
+
+n_offset
+    the divider value which encodes to 0 in the PLL's control
+    register
+
+od_shift
+    the number of bits to shift the post-VCO divider value by (ie.
+    the index of the lowest bit of the post-VCO divider value in
+    the PLL's control register)
+
+od_bits
+    the size of the post-VCO divider field in bits
+
+od_max
+    the maximum post-VCO divider value
+
+bypass_bit
+    the index of the bypass bit in the PLL control register
+
+enable_bit
+    the index of the enable bit in the PLL control register
+
+stable_bit
+    the index of the stable bit in the PLL control register
+
+.. _`ingenic_cgu_mux_info`:
+
+struct ingenic_cgu_mux_info
+===========================
+
+.. c:type:: struct ingenic_cgu_mux_info
+
+    information about a clock mux
+
+.. _`ingenic_cgu_mux_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_mux_info {
+        unsigned reg;
+        u8 shift;
+        u8 bits;
+    }
+
+.. _`ingenic_cgu_mux_info.members`:
+
+Members
+-------
+
+reg
+    offset of the mux control register within the CGU
+
+shift
+    number of bits to shift the mux value by (ie. the index of
+    the lowest bit of the mux value within its control register)
+
+bits
+    the size of the mux value in bits
+
+.. _`ingenic_cgu_div_info`:
+
+struct ingenic_cgu_div_info
+===========================
+
+.. c:type:: struct ingenic_cgu_div_info
+
+    information about a divider
+
+.. _`ingenic_cgu_div_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_div_info {
+        unsigned reg;
+        u8 shift;
+        u8 div;
+        u8 bits;
+        s8 ce_bit;
+        s8 busy_bit;
+        s8 stop_bit;
+    }
+
+.. _`ingenic_cgu_div_info.members`:
+
+Members
+-------
+
+reg
+    offset of the divider control register within the CGU
+
+shift
+    number of bits to left shift the divide value by (ie. the index of
+    the lowest bit of the divide value within its control register)
+
+div
+    number of bits to divide the divider value by (i.e. if the
+    effective divider value is the value written to the register
+    multiplied by some constant)
+
+bits
+    the size of the divide value in bits
+
+ce_bit
+    the index of the change enable bit within reg, or -1 if there
+    isn't one
+
+busy_bit
+    the index of the busy bit within reg, or -1 if there isn't one
+
+stop_bit
+    the index of the stop bit within reg, or -1 if there isn't one
+
+.. _`ingenic_cgu_fixdiv_info`:
+
+struct ingenic_cgu_fixdiv_info
+==============================
+
+.. c:type:: struct ingenic_cgu_fixdiv_info
+
+    information about a fixed divider
+
+.. _`ingenic_cgu_fixdiv_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_fixdiv_info {
+        unsigned div;
+    }
+
+.. _`ingenic_cgu_fixdiv_info.members`:
+
+Members
+-------
+
+div
+    the divider applied to the parent clock
+
+.. _`ingenic_cgu_gate_info`:
+
+struct ingenic_cgu_gate_info
+============================
+
+.. c:type:: struct ingenic_cgu_gate_info
+
+    information about a clock gate
+
+.. _`ingenic_cgu_gate_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_gate_info {
+        unsigned reg;
+        u8 bit;
+    }
+
+.. _`ingenic_cgu_gate_info.members`:
+
+Members
+-------
+
+reg
+    offset of the gate control register within the CGU
+
+bit
+    offset of the bit in the register that controls the gate
+
+.. _`ingenic_cgu_custom_info`:
+
+struct ingenic_cgu_custom_info
+==============================
+
+.. c:type:: struct ingenic_cgu_custom_info
+
+    information about a custom (SoC) clock
+
+.. _`ingenic_cgu_custom_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_custom_info {
+        struct clk_ops *clk_ops;
+    }
+
+.. _`ingenic_cgu_custom_info.members`:
+
+Members
+-------
+
+clk_ops
+    custom clock operation callbacks
+
+.. _`ingenic_cgu_clk_info`:
+
+struct ingenic_cgu_clk_info
+===========================
+
+.. c:type:: struct ingenic_cgu_clk_info
+
+    information about a clock
+
+.. _`ingenic_cgu_clk_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu_clk_info {
+        const char *name;
+         enum;
+    }
+
+.. _`ingenic_cgu_clk_info.members`:
+
+Members
+-------
+
+name
+    name of the clock
+
+enum
+    *undescribed*
+
+.. _`ingenic_cgu`:
+
+struct ingenic_cgu
+==================
+
+.. c:type:: struct ingenic_cgu
+
+    data about the CGU
+
+.. _`ingenic_cgu.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_cgu {
+        struct device_node *np;
+        void __iomem *base;
+        const struct ingenic_cgu_clk_info *clock_info;
+        struct clk_onecell_data clocks;
+        spinlock_t lock;
+    }
+
+.. _`ingenic_cgu.members`:
+
+Members
+-------
+
+np
+    the device tree node that caused the CGU to be probed
+
+base
+    the ioremap'ed base address of the CGU registers
+
+clock_info
+    an array containing information about implemented clocks
+
+clocks
+    used to provide clocks to DT, allows lookup of struct clk\*
+
+lock
+    lock to be held whilst manipulating CGU registers
+
+.. _`ingenic_clk`:
+
+struct ingenic_clk
+==================
+
+.. c:type:: struct ingenic_clk
+
+    private data for a clock
+
+.. _`ingenic_clk.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ingenic_clk {
+        struct clk_hw hw;
+        struct ingenic_cgu *cgu;
+        unsigned idx;
+    }
+
+.. _`ingenic_clk.members`:
+
+Members
+-------
+
+hw
+    see Documentation/clk.txt
+
+cgu
+    a pointer to the CGU data
+
+idx
+    the index of this clock in cgu->clock_info
+
+.. _`ingenic_cgu_new`:
+
+ingenic_cgu_new
+===============
+
+.. c:function:: struct ingenic_cgu *ingenic_cgu_new(const struct ingenic_cgu_clk_info *clock_info, unsigned num_clocks, struct device_node *np)
+
+    create a new CGU instance
+
+    :param const struct ingenic_cgu_clk_info \*clock_info:
+        an array of clock information structures describing the clocks
+        which are implemented by the CGU
+
+    :param unsigned num_clocks:
+        the number of entries in clock_info
+
+    :param struct device_node \*np:
+        the device tree node which causes this CGU to be probed
+
+.. _`ingenic_cgu_new.return`:
+
+Return
+------
+
+a pointer to the CGU instance if initialisation is successful,
+otherwise NULL.
+
+.. _`ingenic_cgu_register_clocks`:
+
+ingenic_cgu_register_clocks
+===========================
+
+.. c:function:: int ingenic_cgu_register_clocks(struct ingenic_cgu *cgu)
+
+    Registers the clocks
+
+    :param struct ingenic_cgu \*cgu:
+        pointer to cgu data
+
+.. _`ingenic_cgu_register_clocks.description`:
+
+Description
+-----------
+
+Register the clocks described by the CGU with the common clock framework.
+
+.. _`ingenic_cgu_register_clocks.return`:
+
+Return
+------
+
+0 on success or -errno if unsuccesful.
+
+.. This file was automatic generated / don't edit.
+

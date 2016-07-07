@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-exthdrs.c
-=========
-
+.. src-file: net/ipv6/exthdrs.c
 
 .. _`fl6_update_dst`:
 
 fl6_update_dst
 ==============
 
-.. c:function:: struct in6_addr *fl6_update_dst (struct flowi6 *fl6, const struct ipv6_txoptions *opt, struct in6_addr *orig)
+.. c:function:: struct in6_addr *fl6_update_dst(struct flowi6 *fl6, const struct ipv6_txoptions *opt, struct in6_addr *orig)
 
     update flowi destination address with info given by srcrt option, if any.
 
@@ -23,8 +19,6 @@ fl6_update_dst
     :param struct in6_addr \*orig:
         copy of original daddr address if modified
 
-
-
 .. _`fl6_update_dst.description`:
 
 Description
@@ -32,4 +26,6 @@ Description
 
 Returns NULL if no txoptions or no srcrt, otherwise returns orig
 and initial value of fl6->daddr set in orig
+
+.. This file was automatic generated / don't edit.
 

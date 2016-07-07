@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-clk-impd1.c
-===========
-
+.. src-file: drivers/clk/versatile/clk-impd1.c
 
 .. _`integrator_impd1_clk_init`:
 
 integrator_impd1_clk_init
 =========================
 
-.. c:function:: void integrator_impd1_clk_init (void __iomem *base, unsigned int id)
+.. c:function:: void integrator_impd1_clk_init(void __iomem *base, unsigned int id)
 
     set up the integrator clock tree
 
@@ -19,4 +15,6 @@ integrator_impd1_clk_init
 
     :param unsigned int id:
         the ID of this LM
+
+.. This file was automatic generated / don't edit.
 

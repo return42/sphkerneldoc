@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-dma.c
-=====
-
+.. src-file: arch/hexagon/kernel/dma.c
 
 .. _`hexagon_map_page`:
 
 hexagon_map_page
 ================
 
-.. c:function:: dma_addr_t hexagon_map_page (struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t hexagon_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
 
     maps an address for device DMA
 
@@ -32,8 +28,6 @@ hexagon_map_page
     :param struct dma_attrs \*attrs:
         pointer to DMA attrs (not used)
 
-
-
 .. _`hexagon_map_page.description`:
 
 Description
@@ -47,4 +41,6 @@ so far.  Straight translation between phys and virtual.
 
 DMA is not cache coherent so sync is necessary; this
 seems to be a convenient place to do it.
+
+.. This file was automatic generated / don't edit.
 

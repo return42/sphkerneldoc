@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-renesas_usb3.c
-==============
-
+.. src-file: drivers/usb/gadget/udc/renesas_usb3.c
 
 .. _`usb3_handle_standard_request`:
 
 usb3_handle_standard_request
 ============================
 
-.. c:function:: bool usb3_handle_standard_request (struct renesas_usb3 *usb3, struct usb_ctrlrequest *ctrl)
+.. c:function:: bool usb3_handle_standard_request(struct renesas_usb3 *usb3, struct usb_ctrlrequest *ctrl)
 
     handle some standard requests
 
@@ -20,12 +16,12 @@ usb3_handle_standard_request
     :param struct usb_ctrlrequest \*ctrl:
         a pointer of setup data
 
-
-
 .. _`usb3_handle_standard_request.description`:
 
 Description
 -----------
 
 Returns true if this function handled a standard request
+
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-sections.h
-==========
-
+.. src-file: include/asm-generic/sections.h
 
 .. _`memory_contains`:
 
 memory_contains
 ===============
 
-.. c:function:: bool memory_contains (void *begin, void *end, void *virt, size_t size)
+.. c:function:: bool memory_contains(void *begin, void *end, void *virt, size_t size)
 
     checks if an object is contained within a memory region
 
@@ -26,25 +22,21 @@ memory_contains
     :param size_t size:
         size of the memory object
 
+.. _`memory_contains.return`:
 
+Return
+------
 
-.. _`memory_contains.returns`:
-
-Returns
--------
-
-true if the object specified by ``virt`` and ``size`` is entirely
-contained within the memory region defined by ``begin`` and ``end``\ , false
+true if the object specified by \ ``virt``\  and \ ``size``\  is entirely
+contained within the memory region defined by \ ``begin``\  and \ ``end``\ , false
 otherwise.
-
-
 
 .. _`memory_intersects`:
 
 memory_intersects
 =================
 
-.. c:function:: bool memory_intersects (void *begin, void *end, void *virt, size_t size)
+.. c:function:: bool memory_intersects(void *begin, void *end, void *virt, size_t size)
 
     checks if the region occupied by an object intersects with another memory region
 
@@ -60,24 +52,20 @@ memory_intersects
     :param size_t size:
         size of the memory object
 
+.. _`memory_intersects.return`:
 
+Return
+------
 
-.. _`memory_intersects.returns`:
-
-Returns
--------
-
-true if an object's memory region, specified by ``virt`` and ``size``\ ,
-intersects with the region specified by ``begin`` and ``end``\ , false otherwise.
-
-
+true if an object's memory region, specified by \ ``virt``\  and \ ``size``\ ,
+intersects with the region specified by \ ``begin``\  and \ ``end``\ , false otherwise.
 
 .. _`init_section_contains`:
 
 init_section_contains
 =====================
 
-.. c:function:: bool init_section_contains (void *virt, size_t size)
+.. c:function:: bool init_section_contains(void *virt, size_t size)
 
     checks if an object is contained within the init section
 
@@ -87,24 +75,20 @@ init_section_contains
     :param size_t size:
         size of the memory object
 
+.. _`init_section_contains.return`:
 
+Return
+------
 
-.. _`init_section_contains.returns`:
-
-Returns
--------
-
-true if the object specified by ``virt`` and ``size`` is entirely
+true if the object specified by \ ``virt``\  and \ ``size``\  is entirely
 contained within the init section, false otherwise.
-
-
 
 .. _`init_section_intersects`:
 
 init_section_intersects
 =======================
 
-.. c:function:: bool init_section_intersects (void *virt, size_t size)
+.. c:function:: bool init_section_intersects(void *virt, size_t size)
 
     checks if the region occupied by an object intersects with the init section
 
@@ -114,13 +98,13 @@ init_section_intersects
     :param size_t size:
         size of the memory object
 
+.. _`init_section_intersects.return`:
 
+Return
+------
 
-.. _`init_section_intersects.returns`:
-
-Returns
--------
-
-true if an object's memory region, specified by ``virt`` and ``size``\ ,
+true if an object's memory region, specified by \ ``virt``\  and \ ``size``\ ,
 intersects with the init section, false otherwise.
+
+.. This file was automatic generated / don't edit.
 

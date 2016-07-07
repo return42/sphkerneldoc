@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-usbstring.c
-===========
-
+.. src-file: drivers/usb/gadget/usbstring.c
 
 .. _`usb_gadget_get_string`:
 
 usb_gadget_get_string
 =====================
 
-.. c:function:: int usb_gadget_get_string (struct usb_gadget_strings *table, int id, u8 *buf)
+.. c:function:: int usb_gadget_get_string(struct usb_gadget_strings *table, int id, u8 *buf)
 
     fill out a string descriptor
 
@@ -22,8 +18,6 @@ usb_gadget_get_string
 
     :param u8 \*buf:
         at least 256 bytes, must be 16-bit aligned
-
-
 
 .. _`usb_gadget_get_string.description`:
 
@@ -40,4 +34,6 @@ using this routine after choosing which set of UTF-8 strings to use.
 Note that US-ASCII is a strict subset of UTF-8; any string bytes with
 the eighth bit set will be multibyte UTF-8 characters, not ISO-8859/1
 characters (which are also widely used in C strings).
+
+.. This file was automatic generated / don't edit.
 

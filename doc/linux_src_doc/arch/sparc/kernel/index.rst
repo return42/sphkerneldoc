@@ -7,4 +7,4 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   smp_64_c
+    smp_64_c

@@ -7,5 +7,5 @@ video
 .. toctree::
    :maxdepth: 1
 
-   exynos_mipi_dsim_h
-   videomode_h
+    exynos_mipi_dsim_h
+    videomode_h

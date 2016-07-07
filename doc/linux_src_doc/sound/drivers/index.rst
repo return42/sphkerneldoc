@@ -7,5 +7,5 @@ drivers
 .. toctree::
    :maxdepth: 1
 
-   mpu401/index
-   vx/index
+    mpu401/index
+    vx/index

@@ -7,4 +7,6 @@ intel
 .. toctree::
    :maxdepth: 1
 
-   pinctrl-intel_c
+    pinctrl-cherryview_c
+    pinctrl-intel_c
+    pinctrl-intel_h

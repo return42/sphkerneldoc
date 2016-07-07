@@ -7,5 +7,6 @@ fat
 .. toctree::
    :maxdepth: 1
 
-   dir_c
-   misc_c
+    dir_c
+    misc_c
+    nfs_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-nlattr.c
-========
-
+.. src-file: lib/nlattr.c
 
 .. _`nla_validate`:
 
 nla_validate
 ============
 
-.. c:function:: int nla_validate (const struct nlattr *head, int len, int maxtype, const struct nla_policy *policy)
+.. c:function:: int nla_validate(const struct nlattr *head, int len, int maxtype, const struct nla_policy *policy)
 
     Validate a stream of attributes
 
@@ -26,8 +22,6 @@ nla_validate
     :param const struct nla_policy \*policy:
         validation policy
 
-
-
 .. _`nla_validate.description`:
 
 Description
@@ -39,25 +33,20 @@ ignored. See documenation of struct nla_policy for more details.
 
 Returns 0 on success or a negative error code.
 
-
-
 .. _`nla_policy_len`:
 
 nla_policy_len
 ==============
 
-.. c:function:: int nla_policy_len (const struct nla_policy *p, int n)
+.. c:function:: int nla_policy_len(const struct nla_policy *p, int n)
 
     Determin the max. length of a policy
 
     :param const struct nla_policy \*p:
-
         *undescribed*
 
     :param int n:
         number of policies
-
-
 
 .. _`nla_policy_len.description`:
 
@@ -70,14 +59,12 @@ message.
 
 Returns 0 on success or a negative error code.
 
-
-
 .. _`nla_parse`:
 
 nla_parse
 =========
 
-.. c:function:: int nla_parse (struct nlattr **tb, int maxtype, const struct nlattr *head, int len, const struct nla_policy *policy)
+.. c:function:: int nla_parse(struct nlattr **tb, int maxtype, const struct nlattr *head, int len, const struct nla_policy *policy)
 
     Parse a stream of attributes into a tb buffer
 
@@ -96,8 +83,6 @@ nla_parse
     :param const struct nla_policy \*policy:
         validation policy
 
-
-
 .. _`nla_parse.description`:
 
 Description
@@ -110,14 +95,12 @@ reasons. policy may be set to NULL if no validation is required.
 
 Returns 0 on success or a negative error code.
 
-
-
 .. _`nla_find`:
 
 nla_find
 ========
 
-.. c:function:: struct nlattr *nla_find (const struct nlattr *head, int len, int attrtype)
+.. c:function:: struct nlattr *nla_find(const struct nlattr *head, int len, int attrtype)
 
     Find a specific attribute in a stream of attributes
 
@@ -130,8 +113,6 @@ nla_find
     :param int attrtype:
         type of attribute to look for
 
-
-
 .. _`nla_find.description`:
 
 Description
@@ -139,14 +120,12 @@ Description
 
 Returns the first attribute in the stream matching the specified type.
 
-
-
 .. _`nla_strlcpy`:
 
 nla_strlcpy
 ===========
 
-.. c:function:: size_t nla_strlcpy (char *dst, const struct nlattr *nla, size_t dstsize)
+.. c:function:: size_t nla_strlcpy(char *dst, const struct nlattr *nla, size_t dstsize)
 
     Copy string attribute payload into a sized buffer
 
@@ -159,8 +138,6 @@ nla_strlcpy
     :param size_t dstsize:
         size of destination buffer
 
-
-
 .. _`nla_strlcpy.description`:
 
 Description
@@ -172,14 +149,12 @@ strlcpy the destination buffer is always padded out.
 
 Returns the length of the source buffer.
 
-
-
 .. _`nla_memcpy`:
 
 nla_memcpy
 ==========
 
-.. c:function:: int nla_memcpy (void *dest, const struct nlattr *src, int count)
+.. c:function:: int nla_memcpy(void *dest, const struct nlattr *src, int count)
 
     Copy a netlink attribute into another memory area
 
@@ -192,8 +167,6 @@ nla_memcpy
     :param int count:
         size of the destination area
 
-
-
 .. _`nla_memcpy.note`:
 
 Note
@@ -204,14 +177,12 @@ attribute's payload. memcpy
 
 Returns the number of bytes copied.
 
-
-
 .. _`nla_memcmp`:
 
 nla_memcmp
 ==========
 
-.. c:function:: int nla_memcmp (const struct nlattr *nla, const void *data, size_t size)
+.. c:function:: int nla_memcmp(const struct nlattr *nla, const void *data, size_t size)
 
     Compare an attribute with sized memory area
 
@@ -224,14 +195,12 @@ nla_memcmp
     :param size_t size:
         size of memory area
 
-
-
 .. _`nla_strcmp`:
 
 nla_strcmp
 ==========
 
-.. c:function:: int nla_strcmp (const struct nlattr *nla, const char *str)
+.. c:function:: int nla_strcmp(const struct nlattr *nla, const char *str)
 
     Compare a string attribute against a string
 
@@ -241,14 +210,12 @@ nla_strcmp
     :param const char \*str:
         another string
 
-
-
 .. _`__nla_reserve`:
 
 __nla_reserve
 =============
 
-.. c:function:: struct nlattr *__nla_reserve (struct sk_buff *skb, int attrtype, int attrlen)
+.. c:function:: struct nlattr *__nla_reserve(struct sk_buff *skb, int attrtype, int attrlen)
 
     reserve room for attribute on the skb
 
@@ -260,8 +227,6 @@ __nla_reserve
 
     :param int attrlen:
         length of attribute payload
-
-
 
 .. _`__nla_reserve.description`:
 
@@ -274,14 +239,45 @@ room for the payload but does not copy it.
 The caller is responsible to ensure that the skb provides enough
 tailroom for the attribute header and payload.
 
+.. _`__nla_reserve_64bit`:
 
+__nla_reserve_64bit
+===================
+
+.. c:function:: struct nlattr *__nla_reserve_64bit(struct sk_buff *skb, int attrtype, int attrlen, int padattr)
+
+    reserve room for attribute on the skb and align it
+
+    :param struct sk_buff \*skb:
+        socket buffer to reserve room on
+
+    :param int attrtype:
+        attribute type
+
+    :param int attrlen:
+        length of attribute payload
+
+    :param int padattr:
+        attribute type for the padding
+
+.. _`__nla_reserve_64bit.description`:
+
+Description
+-----------
+
+Adds a netlink attribute header to a socket buffer and reserves
+room for the payload but does not copy it. It also ensure that this
+attribute will have a 64-bit aligned \ :c:func:`nla_data`\  area.
+
+The caller is responsible to ensure that the skb provides enough
+tailroom for the attribute header and payload.
 
 .. _`__nla_reserve_nohdr`:
 
 __nla_reserve_nohdr
 ===================
 
-.. c:function:: void *__nla_reserve_nohdr (struct sk_buff *skb, int attrlen)
+.. c:function:: void *__nla_reserve_nohdr(struct sk_buff *skb, int attrlen)
 
     reserve room for attribute without header
 
@@ -290,8 +286,6 @@ __nla_reserve_nohdr
 
     :param int attrlen:
         length of attribute payload
-
-
 
 .. _`__nla_reserve_nohdr.description`:
 
@@ -303,14 +297,12 @@ Reserves room for attribute payload without a header.
 The caller is responsible to ensure that the skb provides enough
 tailroom for the payload.
 
-
-
 .. _`nla_reserve`:
 
 nla_reserve
 ===========
 
-.. c:function:: struct nlattr *nla_reserve (struct sk_buff *skb, int attrtype, int attrlen)
+.. c:function:: struct nlattr *nla_reserve(struct sk_buff *skb, int attrtype, int attrlen)
 
     reserve room for attribute on the skb
 
@@ -323,8 +315,6 @@ nla_reserve
     :param int attrlen:
         length of attribute payload
 
-
-
 .. _`nla_reserve.description`:
 
 Description
@@ -336,14 +326,45 @@ room for the payload but does not copy it.
 Returns NULL if the tailroom of the skb is insufficient to store
 the attribute header and payload.
 
+.. _`nla_reserve_64bit`:
 
+nla_reserve_64bit
+=================
+
+.. c:function:: struct nlattr *nla_reserve_64bit(struct sk_buff *skb, int attrtype, int attrlen, int padattr)
+
+    reserve room for attribute on the skb and align it
+
+    :param struct sk_buff \*skb:
+        socket buffer to reserve room on
+
+    :param int attrtype:
+        attribute type
+
+    :param int attrlen:
+        length of attribute payload
+
+    :param int padattr:
+        attribute type for the padding
+
+.. _`nla_reserve_64bit.description`:
+
+Description
+-----------
+
+Adds a netlink attribute header to a socket buffer and reserves
+room for the payload but does not copy it. It also ensure that this
+attribute will have a 64-bit aligned \ :c:func:`nla_data`\  area.
+
+Returns NULL if the tailroom of the skb is insufficient to store
+the attribute header and payload.
 
 .. _`nla_reserve_nohdr`:
 
 nla_reserve_nohdr
 =================
 
-.. c:function:: void *nla_reserve_nohdr (struct sk_buff *skb, int attrlen)
+.. c:function:: void *nla_reserve_nohdr(struct sk_buff *skb, int attrlen)
 
     reserve room for attribute without header
 
@@ -352,8 +373,6 @@ nla_reserve_nohdr
 
     :param int attrlen:
         length of attribute payload
-
-
 
 .. _`nla_reserve_nohdr.description`:
 
@@ -365,14 +384,12 @@ Reserves room for attribute payload without a header.
 Returns NULL if the tailroom of the skb is insufficient to store
 the attribute payload.
 
-
-
 .. _`__nla_put`:
 
 __nla_put
 =========
 
-.. c:function:: void __nla_put (struct sk_buff *skb, int attrtype, int attrlen, const void *data)
+.. c:function:: void __nla_put(struct sk_buff *skb, int attrtype, int attrlen, const void *data)
 
     Add a netlink attribute to a socket buffer
 
@@ -387,8 +404,6 @@ __nla_put
 
     :param const void \*data:
         head of attribute payload
-
-
 
 .. _`__nla_put.description`:
 
@@ -398,14 +413,44 @@ Description
 The caller is responsible to ensure that the skb provides enough
 tailroom for the attribute header and payload.
 
+.. _`__nla_put_64bit`:
 
+__nla_put_64bit
+===============
+
+.. c:function:: void __nla_put_64bit(struct sk_buff *skb, int attrtype, int attrlen, const void *data, int padattr)
+
+    Add a netlink attribute to a socket buffer and align it
+
+    :param struct sk_buff \*skb:
+        socket buffer to add attribute to
+
+    :param int attrtype:
+        attribute type
+
+    :param int attrlen:
+        length of attribute payload
+
+    :param const void \*data:
+        head of attribute payload
+
+    :param int padattr:
+        attribute type for the padding
+
+.. _`__nla_put_64bit.description`:
+
+Description
+-----------
+
+The caller is responsible to ensure that the skb provides enough
+tailroom for the attribute header and payload.
 
 .. _`__nla_put_nohdr`:
 
 __nla_put_nohdr
 ===============
 
-.. c:function:: void __nla_put_nohdr (struct sk_buff *skb, int attrlen, const void *data)
+.. c:function:: void __nla_put_nohdr(struct sk_buff *skb, int attrlen, const void *data)
 
     Add a netlink attribute without header
 
@@ -418,8 +463,6 @@ __nla_put_nohdr
     :param const void \*data:
         head of attribute payload
 
-
-
 .. _`__nla_put_nohdr.description`:
 
 Description
@@ -428,14 +471,12 @@ Description
 The caller is responsible to ensure that the skb provides enough
 tailroom for the attribute payload.
 
-
-
 .. _`nla_put`:
 
 nla_put
 =======
 
-.. c:function:: int nla_put (struct sk_buff *skb, int attrtype, int attrlen, const void *data)
+.. c:function:: int nla_put(struct sk_buff *skb, int attrtype, int attrlen, const void *data)
 
     Add a netlink attribute to a socket buffer
 
@@ -451,8 +492,6 @@ nla_put
     :param const void \*data:
         head of attribute payload
 
-
-
 .. _`nla_put.description`:
 
 Description
@@ -461,14 +500,44 @@ Description
 Returns -EMSGSIZE if the tailroom of the skb is insufficient to store
 the attribute header and payload.
 
+.. _`nla_put_64bit`:
 
+nla_put_64bit
+=============
+
+.. c:function:: int nla_put_64bit(struct sk_buff *skb, int attrtype, int attrlen, const void *data, int padattr)
+
+    Add a netlink attribute to a socket buffer and align it
+
+    :param struct sk_buff \*skb:
+        socket buffer to add attribute to
+
+    :param int attrtype:
+        attribute type
+
+    :param int attrlen:
+        length of attribute payload
+
+    :param const void \*data:
+        head of attribute payload
+
+    :param int padattr:
+        attribute type for the padding
+
+.. _`nla_put_64bit.description`:
+
+Description
+-----------
+
+Returns -EMSGSIZE if the tailroom of the skb is insufficient to store
+the attribute header and payload.
 
 .. _`nla_put_nohdr`:
 
 nla_put_nohdr
 =============
 
-.. c:function:: int nla_put_nohdr (struct sk_buff *skb, int attrlen, const void *data)
+.. c:function:: int nla_put_nohdr(struct sk_buff *skb, int attrlen, const void *data)
 
     Add a netlink attribute without header
 
@@ -481,8 +550,6 @@ nla_put_nohdr
     :param const void \*data:
         head of attribute payload
 
-
-
 .. _`nla_put_nohdr.description`:
 
 Description
@@ -491,14 +558,12 @@ Description
 Returns -EMSGSIZE if the tailroom of the skb is insufficient to store
 the attribute payload.
 
-
-
 .. _`nla_append`:
 
 nla_append
 ==========
 
-.. c:function:: int nla_append (struct sk_buff *skb, int attrlen, const void *data)
+.. c:function:: int nla_append(struct sk_buff *skb, int attrlen, const void *data)
 
     Add a netlink attribute without header or padding
 
@@ -511,8 +576,6 @@ nla_append
     :param const void \*data:
         head of attribute payload
 
-
-
 .. _`nla_append.description`:
 
 Description
@@ -520,4 +583,6 @@ Description
 
 Returns -EMSGSIZE if the tailroom of the skb is insufficient to store
 the attribute payload.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,4 @@ libstub
 .. toctree::
    :maxdepth: 1
 
-   string_c
+    string_c

@@ -7,6 +7,6 @@ drv-intf
 .. toctree::
    :maxdepth: 1
 
-   exynos-fimc_h
-   s3c_camif_h
-   soc_mediabus_h
+    exynos-fimc_h
+    s3c_camif_h
+    soc_mediabus_h

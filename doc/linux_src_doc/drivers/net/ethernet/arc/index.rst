@@ -7,4 +7,8 @@ arc
 .. toctree::
    :maxdepth: 1
 
-   emac_main_c
+    emac_arc_c
+    emac_h
+    emac_main_c
+    emac_mdio_c
+    emac_rockchip_c

@@ -7,4 +7,4 @@ vx
 .. toctree::
    :maxdepth: 1
 
-   vxpocket_c
+    vxpocket_c

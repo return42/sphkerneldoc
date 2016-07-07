@@ -7,6 +7,8 @@ lockd
 .. toctree::
    :maxdepth: 1
 
-   clntlock_c
-   clntproc_c
-   svcsubs_c
+    clntlock_c
+    clntproc_c
+    host_c
+    mon_c
+    svcsubs_c

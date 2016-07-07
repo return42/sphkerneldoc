@@ -1,18 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-flow_dissector.h
-================
-
+.. src-file: include/net/flow_dissector.h
 
 .. _`flow_dissector_key_control`:
 
 struct flow_dissector_key_control
 =================================
 
-.. c:type:: flow_dissector_key_control
-
-    
+.. c:type:: struct flow_dissector_key_control
 
 
 .. _`flow_dissector_key_control.definition`:
@@ -22,30 +16,32 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_control {
-    u16 thoff;
-  };
-
+    struct flow_dissector_key_control {
+        u16 thoff;
+        u16 addr_type;
+        u32 flags;
+    }
 
 .. _`flow_dissector_key_control.members`:
 
 Members
 -------
 
-:``thoff``:
+thoff
     Transport header offset
 
+addr_type
+    *undescribed*
 
-
+flags
+    *undescribed*
 
 .. _`flow_dissector_key_basic`:
 
 struct flow_dissector_key_basic
 ===============================
 
-.. c:type:: flow_dissector_key_basic
-
-    
+.. c:type:: struct flow_dissector_key_basic
 
 
 .. _`flow_dissector_key_basic.definition`:
@@ -55,34 +51,32 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_basic {
-    __be16 n_proto;
-    u8 ip_proto;
-  };
-
+    struct flow_dissector_key_basic {
+        __be16 n_proto;
+        u8 ip_proto;
+        u8 padding;
+    }
 
 .. _`flow_dissector_key_basic.members`:
 
 Members
 -------
 
-:``n_proto``:
+n_proto
     Network header protocol (eg. IPv4/IPv6)
 
-:``ip_proto``:
+ip_proto
     Transport header protocol (eg. TCP/UDP)
 
-
-
+padding
+    *undescribed*
 
 .. _`flow_dissector_key_ipv4_addrs`:
 
 struct flow_dissector_key_ipv4_addrs
 ====================================
 
-.. c:type:: flow_dissector_key_ipv4_addrs
-
-    
+.. c:type:: struct flow_dissector_key_ipv4_addrs
 
 
 .. _`flow_dissector_key_ipv4_addrs.definition`:
@@ -92,34 +86,28 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_ipv4_addrs {
-    __be32 src;
-    __be32 dst;
-  };
-
+    struct flow_dissector_key_ipv4_addrs {
+        __be32 src;
+        __be32 dst;
+    }
 
 .. _`flow_dissector_key_ipv4_addrs.members`:
 
 Members
 -------
 
-:``src``:
+src
     source ip address
 
-:``dst``:
+dst
     destination ip address
-
-
-
 
 .. _`flow_dissector_key_ipv6_addrs`:
 
 struct flow_dissector_key_ipv6_addrs
 ====================================
 
-.. c:type:: flow_dissector_key_ipv6_addrs
-
-    
+.. c:type:: struct flow_dissector_key_ipv6_addrs
 
 
 .. _`flow_dissector_key_ipv6_addrs.definition`:
@@ -129,34 +117,28 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_ipv6_addrs {
-    struct in6_addr src;
-    struct in6_addr dst;
-  };
-
+    struct flow_dissector_key_ipv6_addrs {
+        struct in6_addr src;
+        struct in6_addr dst;
+    }
 
 .. _`flow_dissector_key_ipv6_addrs.members`:
 
 Members
 -------
 
-:``src``:
+src
     source ip address
 
-:``dst``:
+dst
     destination ip address
-
-
-
 
 .. _`flow_dissector_key_tipc_addrs`:
 
 struct flow_dissector_key_tipc_addrs
 ====================================
 
-.. c:type:: flow_dissector_key_tipc_addrs
-
-    
+.. c:type:: struct flow_dissector_key_tipc_addrs
 
 
 .. _`flow_dissector_key_tipc_addrs.definition`:
@@ -166,30 +148,24 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_tipc_addrs {
-    __be32 srcnode;
-  };
-
+    struct flow_dissector_key_tipc_addrs {
+        __be32 srcnode;
+    }
 
 .. _`flow_dissector_key_tipc_addrs.members`:
 
 Members
 -------
 
-:``srcnode``:
+srcnode
     source node address
-
-
-
 
 .. _`flow_dissector_key_addrs`:
 
 struct flow_dissector_key_addrs
 ===============================
 
-.. c:type:: flow_dissector_key_addrs
-
-    
+.. c:type:: struct flow_dissector_key_addrs
 
 
 .. _`flow_dissector_key_addrs.definition`:
@@ -199,20 +175,17 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_addrs {
-    union {unnamed_union};
-  };
-
+    struct flow_dissector_key_addrs {
+        union {unnamed_union};
+    }
 
 .. _`flow_dissector_key_addrs.members`:
 
 Members
 -------
 
-:``{unnamed_union}``:
+{unnamed_union}
     anonymous
-
-
 
 
 .. _`flow_dissector_key_eth_addrs`:
@@ -220,9 +193,7 @@ Members
 struct flow_dissector_key_eth_addrs
 ===================================
 
-.. c:type:: flow_dissector_key_eth_addrs
-
-    
+.. c:type:: struct flow_dissector_key_eth_addrs
 
 
 .. _`flow_dissector_key_eth_addrs.definition`:
@@ -232,21 +203,21 @@ Definition
 
 .. code-block:: c
 
-  struct flow_dissector_key_eth_addrs {
-    unsigned char dst[ETH_ALEN];
-    unsigned char src[ETH_ALEN];
-  };
-
+    struct flow_dissector_key_eth_addrs {
+        unsigned char dst[ETH_ALEN];
+        unsigned char src[ETH_ALEN];
+    }
 
 .. _`flow_dissector_key_eth_addrs.members`:
 
 Members
 -------
 
-:``dst[ETH_ALEN]``:
+dst
     destination Ethernet address
 
-:``src[ETH_ALEN]``:
+src
     source Ethernet address
 
+.. This file was automatic generated / don't edit.
 

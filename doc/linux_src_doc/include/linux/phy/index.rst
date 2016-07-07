@@ -7,6 +7,6 @@ phy
 .. toctree::
    :maxdepth: 1
 
-   phy_h
-   phy-qcom-ufs_h
-   phy-sun4i-usb_h
+    phy-qcom-ufs_h
+    phy-sun4i-usb_h
+    phy_h

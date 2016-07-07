@@ -7,6 +7,9 @@ wireless
 .. toctree::
    :maxdepth: 1
 
-   radiotap_c
-   reg_c
-   scan_c
+    core_h
+    radiotap_c
+    reg_c
+    reg_h
+    scan_c
+    wext-compat_c

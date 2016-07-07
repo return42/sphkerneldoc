@@ -7,4 +7,4 @@ events
 .. toctree::
    :maxdepth: 1
 
-   events_base_c
+    events_base_c

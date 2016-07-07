@@ -7,4 +7,7 @@ parport
 .. toctree::
    :maxdepth: 1
 
-   daisy_c
+    daisy_c
+    ieee1284_c
+    parport_ip32_c
+    share_c

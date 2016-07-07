@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-intel_scu_ipc.c
-===============
-
+.. src-file: drivers/platform/x86/intel_scu_ipc.c
 
 .. _`intel_scu_ipc_ioread8`:
 
 intel_scu_ipc_ioread8
 =====================
 
-.. c:function:: int intel_scu_ipc_ioread8 (u16 addr, u8 *data)
+.. c:function:: int intel_scu_ipc_ioread8(u16 addr, u8 *data)
 
     read a word via the SCU
 
@@ -19,8 +15,6 @@ intel_scu_ipc_ioread8
 
     :param u8 \*data:
         return pointer for read byte
-
-
 
 .. _`intel_scu_ipc_ioread8.description`:
 
@@ -32,14 +26,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_ioread16`:
 
 intel_scu_ipc_ioread16
 ======================
 
-.. c:function:: int intel_scu_ipc_ioread16 (u16 addr, u16 *data)
+.. c:function:: int intel_scu_ipc_ioread16(u16 addr, u16 *data)
 
     read a word via the SCU
 
@@ -48,8 +40,6 @@ intel_scu_ipc_ioread16
 
     :param u16 \*data:
         return pointer for read word
-
-
 
 .. _`intel_scu_ipc_ioread16.description`:
 
@@ -61,14 +51,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_ioread32`:
 
 intel_scu_ipc_ioread32
 ======================
 
-.. c:function:: int intel_scu_ipc_ioread32 (u16 addr, u32 *data)
+.. c:function:: int intel_scu_ipc_ioread32(u16 addr, u32 *data)
 
     read a dword via the SCU
 
@@ -77,8 +65,6 @@ intel_scu_ipc_ioread32
 
     :param u32 \*data:
         return pointer for read dword
-
-
 
 .. _`intel_scu_ipc_ioread32.description`:
 
@@ -90,14 +76,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_iowrite8`:
 
 intel_scu_ipc_iowrite8
 ======================
 
-.. c:function:: int intel_scu_ipc_iowrite8 (u16 addr, u8 data)
+.. c:function:: int intel_scu_ipc_iowrite8(u16 addr, u8 data)
 
     write a byte via the SCU
 
@@ -106,8 +90,6 @@ intel_scu_ipc_iowrite8
 
     :param u8 data:
         byte to write
-
-
 
 .. _`intel_scu_ipc_iowrite8.description`:
 
@@ -119,14 +101,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_iowrite16`:
 
 intel_scu_ipc_iowrite16
 =======================
 
-.. c:function:: int intel_scu_ipc_iowrite16 (u16 addr, u16 data)
+.. c:function:: int intel_scu_ipc_iowrite16(u16 addr, u16 data)
 
     write a word via the SCU
 
@@ -135,8 +115,6 @@ intel_scu_ipc_iowrite16
 
     :param u16 data:
         word to write
-
-
 
 .. _`intel_scu_ipc_iowrite16.description`:
 
@@ -148,14 +126,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_iowrite32`:
 
 intel_scu_ipc_iowrite32
 =======================
 
-.. c:function:: int intel_scu_ipc_iowrite32 (u16 addr, u32 data)
+.. c:function:: int intel_scu_ipc_iowrite32(u16 addr, u32 data)
 
     write a dword via the SCU
 
@@ -164,8 +140,6 @@ intel_scu_ipc_iowrite32
 
     :param u32 data:
         dword to write
-
-
 
 .. _`intel_scu_ipc_iowrite32.description`:
 
@@ -177,14 +151,12 @@ locking between SCU accesses is handled for the caller.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_readv`:
 
 intel_scu_ipc_readv
 ===================
 
-.. c:function:: int intel_scu_ipc_readv (u16 *addr, u8 *data, int len)
+.. c:function:: int intel_scu_ipc_readv(u16 *addr, u8 *data, int len)
 
     read a set of registers
 
@@ -196,8 +168,6 @@ intel_scu_ipc_readv
 
     :param int len:
         length of array
-
-
 
 .. _`intel_scu_ipc_readv.description`:
 
@@ -211,14 +181,12 @@ The largest array length permitted by the hardware is 5 items.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_writev`:
 
 intel_scu_ipc_writev
 ====================
 
-.. c:function:: int intel_scu_ipc_writev (u16 *addr, u8 *data, int len)
+.. c:function:: int intel_scu_ipc_writev(u16 *addr, u8 *data, int len)
 
     write a set of registers
 
@@ -230,8 +198,6 @@ intel_scu_ipc_writev
 
     :param int len:
         length of array
-
-
 
 .. _`intel_scu_ipc_writev.description`:
 
@@ -245,14 +211,12 @@ The largest array length permitted by the hardware is 5 items.
 
 This function may sleep.
 
-
-
 .. _`intel_scu_ipc_update_register`:
 
 intel_scu_ipc_update_register
 =============================
 
-.. c:function:: int intel_scu_ipc_update_register (u16 addr, u8 bits, u8 mask)
+.. c:function:: int intel_scu_ipc_update_register(u16 addr, u8 bits, u8 mask)
 
     r/m/w a register
 
@@ -264,8 +228,6 @@ intel_scu_ipc_update_register
 
     :param u8 mask:
         mask of bits to update
-
-
 
 .. _`intel_scu_ipc_update_register.description`:
 
@@ -281,14 +243,12 @@ returns 0 on success or an error code.
 This function may sleep. Locking between SCU accesses is handled
 for the caller.
 
-
-
 .. _`intel_scu_ipc_simple_command`:
 
 intel_scu_ipc_simple_command
 ============================
 
-.. c:function:: int intel_scu_ipc_simple_command (int cmd, int sub)
+.. c:function:: int intel_scu_ipc_simple_command(int cmd, int sub)
 
     send a simple command
 
@@ -297,8 +257,6 @@ intel_scu_ipc_simple_command
 
     :param int sub:
         sub type
-
-
 
 .. _`intel_scu_ipc_simple_command.description`:
 
@@ -312,14 +270,12 @@ by another SCU access by the time this function returns.
 This function may sleep. Locking for SCU accesses is handled for
 the caller.
 
-
-
 .. _`intel_scu_ipc_command`:
 
 intel_scu_ipc_command
 =====================
 
-.. c:function:: int intel_scu_ipc_command (int cmd, int sub, u32 *in, int inlen, u32 *out, int outlen)
+.. c:function:: int intel_scu_ipc_command(int cmd, int sub, u32 *in, int inlen, u32 *out, int outlen)
 
     command with data
 
@@ -339,10 +295,7 @@ intel_scu_ipc_command
         output data
 
     :param int outlen:
-
         *undescribed*
-
-
 
 .. _`intel_scu_ipc_command.description`:
 
@@ -352,14 +305,12 @@ Description
 Issue a command to the SCU which involves data transfers. Do the
 data copies under the lock but leave it for the caller to interpret
 
-
-
 .. _`intel_scu_ipc_i2c_cntrl`:
 
 intel_scu_ipc_i2c_cntrl
 =======================
 
-.. c:function:: int intel_scu_ipc_i2c_cntrl (u32 addr, u32 *data)
+.. c:function:: int intel_scu_ipc_i2c_cntrl(u32 addr, u32 *data)
 
     I2C read/write operations
 
@@ -368,8 +319,6 @@ intel_scu_ipc_i2c_cntrl
 
     :param u32 \*data:
         data to read/write
-
-
 
 .. _`intel_scu_ipc_i2c_cntrl.description`:
 
@@ -383,14 +332,12 @@ Returns an error code or 0 on success.
 
 This has to be in the IPC driver for the locking.
 
-
-
 .. _`ipc_probe`:
 
 ipc_probe
 =========
 
-.. c:function:: int ipc_probe (struct pci_dev *pdev, const struct pci_device_id *id)
+.. c:function:: int ipc_probe(struct pci_dev *pdev, const struct pci_device_id *id)
 
     probe an Intel SCU IPC
 
@@ -400,8 +347,6 @@ ipc_probe
     :param const struct pci_device_id \*id:
         entry in the match table
 
-
-
 .. _`ipc_probe.description`:
 
 Description
@@ -409,4 +354,6 @@ Description
 
 Enable and install an intel SCU IPC. This appears in the PCI space
 but uses some hard coded addresses as well.
+
+.. This file was automatic generated / don't edit.
 

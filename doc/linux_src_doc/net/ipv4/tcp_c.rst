@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-tcp.c
-=====
-
+.. src-file: net/ipv4/tcp.c
 
 .. _`tcp_splice_read`:
 
 tcp_splice_read
 ===============
 
-.. c:function:: ssize_t tcp_splice_read (struct socket *sock, loff_t *ppos, struct pipe_inode_info *pipe, size_t len, unsigned int flags)
+.. c:function:: ssize_t tcp_splice_read(struct socket *sock, loff_t *ppos, struct pipe_inode_info *pipe, size_t len, unsigned int flags)
 
     splice data from TCP socket to a pipe
 
@@ -29,8 +25,6 @@ tcp_splice_read
     :param unsigned int flags:
         splice modifier flags
 
-
-
 .. _`tcp_splice_read.description`:
 
 Description
@@ -38,29 +32,26 @@ Description
 
 Will read pages from given socket and fill them into a pipe.
 
-
-
 .. _`tcp_get_md5sig_pool`:
 
 tcp_get_md5sig_pool
 ===================
 
-.. c:function:: struct tcp_md5sig_pool *tcp_get_md5sig_pool ( void)
+.. c:function:: struct tcp_md5sig_pool *tcp_get_md5sig_pool( void)
 
     get md5sig_pool for this user
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`tcp_get_md5sig_pool.description`:
 
 Description
 -----------
 
-
 We use percpu structure, so if we succeed, we exit with preemption
 and BH disabled, to make sure another thread or softirq handling
 wont try to get same context.
+
+.. This file was automatic generated / don't edit.
 

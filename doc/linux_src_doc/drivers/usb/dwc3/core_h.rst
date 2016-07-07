@@ -1,66 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-core.h
-======
-
-
-.. _`__drivers_usb_dwc3_core_h`:
-
-__DRIVERS_USB_DWC3_CORE_H
-=========================
-
-.. c:function:: __DRIVERS_USB_DWC3_CORE_H ()
-
-    DesignWare USB3 DRD Core Header
-
-
-
-.. _`__drivers_usb_dwc3_core_h.description`:
-
-Description
------------
-
-
-Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
-
-
-
-.. _`__drivers_usb_dwc3_core_h.authors`:
-
-Authors
--------
-
-Felipe Balbi <balbi\ ``ti``\ .com>,
-Sebastian Andrzej Siewior <bigeasy\ ``linutronix``\ .de>
-
-
-
-.. _`__drivers_usb_dwc3_core_h.this-program-is-free-software`:
-
-This program is free software
------------------------------
-
-you can redistribute it and/or modify
-it under the terms of the GNU General Public License version 2  of
-the License as published by the Free Software Foundation.
-
-This program is distributed in the hope that it will be useful,
-but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-GNU General Public License for more details.
-
-
+.. src-file: drivers/usb/dwc3/core.h
 
 .. _`dwc3_event_buffer`:
 
 struct dwc3_event_buffer
 ========================
 
-.. c:type:: dwc3_event_buffer
+.. c:type:: struct dwc3_event_buffer
 
     Software event buffer representation
-
 
 .. _`dwc3_event_buffer.definition`:
 
@@ -69,56 +17,51 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_event_buffer {
-    void * buf;
-    unsigned length;
-    unsigned int lpos;
-    unsigned int count;
-    unsigned int flags;
-    #define DWC3_EVENT_PENDING	BIT(0)
-    dma_addr_t dma;
-    struct dwc3 * dwc;
-  };
-
+    struct dwc3_event_buffer {
+        void *buf;
+        unsigned length;
+        unsigned int lpos;
+        unsigned int count;
+        unsigned int flags;
+        #define DWC3_EVENT_PENDING BIT(0)
+        dma_addr_t dma;
+        struct dwc3 *dwc;
+    }
 
 .. _`dwc3_event_buffer.members`:
 
 Members
 -------
 
-:``buf``:
-    _THE_ buffer
+buf
+    _THE\_ buffer
 
-:``length``:
+length
     size of this buffer
 
-:``lpos``:
+lpos
     event offset
 
-:``count``:
+count
     cache of last read event count register
 
-:``flags``:
+flags
     flags related to this event buffer
 
-:``dma``:
+dma
     dma_addr_t
 
-:``dwc``:
+dwc
     pointer to DWC controller
-
-
-
 
 .. _`dwc3_ep`:
 
 struct dwc3_ep
 ==============
 
-.. c:type:: dwc3_ep
+.. c:type:: struct dwc3_ep
 
     device side endpoint representation
-
 
 .. _`dwc3_ep.definition`:
 
@@ -127,102 +70,101 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_ep {
-    struct usb_ep endpoint;
-    struct list_head request_list;
-    struct list_head req_queued;
-    struct dwc3_trb * trb_pool;
-    dma_addr_t trb_pool_dma;
-    u32 free_slot;
-    u32 busy_slot;
-    struct dwc3 * dwc;
-    u32 saved_state;
-    unsigned flags;
-    #define DWC3_EP_ENABLED		(1 \\\lt;\\\lt; 0)
-    #define DWC3_EP_STALL		(1 \\\lt;\\\lt; 1)
-    #define DWC3_EP_WEDGE		(1 \\\lt;\\\lt; 2)
-    #define DWC3_EP_BUSY		(1 \\\lt;\\\lt; 4)
-    #define DWC3_EP_PENDING_REQUEST	(1 \\\lt;\\\lt; 5)
-    #define DWC3_EP_MISSED_ISOC	(1 \\\lt;\\\lt; 6)
-    #define DWC3_EP0_DIR_IN		(1 \\\lt;\\\lt; 31)
-    u8 number;
-    u8 type;
-    u8 resource_index;
-    u32 interval;
-    char name[20];
-    unsigned direction:1;
-    unsigned stream_capable:1;
-  };
-
+    struct dwc3_ep {
+        struct usb_ep endpoint;
+        struct list_head pending_list;
+        struct list_head started_list;
+        struct dwc3_trb *trb_pool;
+        dma_addr_t trb_pool_dma;
+        const struct usb_ss_ep_comp_descriptor *comp_desc;
+        struct dwc3 *dwc;
+        u32 saved_state;
+        unsigned flags;
+        #define DWC3_EP_ENABLED (1 << 0)
+        #define DWC3_EP_STALL (1 << 1)
+        #define DWC3_EP_WEDGE (1 << 2)
+        #define DWC3_EP_BUSY (1 << 4)
+        #define DWC3_EP_PENDING_REQUEST (1 << 5)
+        #define DWC3_EP_MISSED_ISOC (1 << 6)
+        #define DWC3_EP0_DIR_IN (1 << 31)
+        u8 trb_enqueue;
+        u8 trb_dequeue;
+        u8 number;
+        u8 type;
+        u8 resource_index;
+        u32 interval;
+        char name[20];
+        unsigned direction:1;
+        unsigned stream_capable:1;
+    }
 
 .. _`dwc3_ep.members`:
 
 Members
 -------
 
-:``endpoint``:
+endpoint
     usb endpoint
 
-:``request_list``:
-    list of requests for this endpoint
+pending_list
+    list of pending requests for this endpoint
 
-:``req_queued``:
-    list of requests on this ep which have TRBs setup
+started_list
+    list of started requests on this endpoint
 
-:``trb_pool``:
+trb_pool
     array of transaction buffers
 
-:``trb_pool_dma``:
-    dma address of ``trb_pool``
+trb_pool_dma
+    dma address of \ ``trb_pool``\ 
 
-:``free_slot``:
-    next slot which is going to be used
+comp_desc
+    *undescribed*
 
-:``busy_slot``:
-    first slot which is owned by HW
-
-:``dwc``:
+dwc
     pointer to DWC controller
 
-:``saved_state``:
+saved_state
     ep state saved during hibernation
 
-:``flags``:
+flags
     endpoint flags (wedged, stalled, ...)
 
-:``number``:
+trb_enqueue
+    enqueue 'pointer' into TRB array
+
+trb_dequeue
+    dequeue 'pointer' into TRB array
+
+number
     endpoint number (1 - 15)
 
-:``type``:
+type
     set to bmAttributes & USB_ENDPOINT_XFERTYPE_MASK
 
-:``resource_index``:
+resource_index
     Resource transfer index
 
-:``interval``:
+interval
     the interval on which the ISOC transfer is started
 
-:``name[20]``:
+name
     a human readable name e.g. ep1out-bulk
 
-:``direction``:
+direction
     true for TX, false for RX
 
-:``stream_capable``:
+stream_capable
     true when streams are enabled
-
-
-
 
 .. _`dwc3_trb`:
 
 struct dwc3_trb
 ===============
 
-.. c:type:: dwc3_trb
+.. c:type:: struct dwc3_trb
 
     transfer request block (hw format)
-
 
 .. _`dwc3_trb.definition`:
 
@@ -231,39 +173,102 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_trb {
-    u32 bpl;
-    u32 bph;
-    u32 size;
-  };
-
+    struct dwc3_trb {
+        u32 bpl;
+        u32 bph;
+        u32 size;
+        u32 ctrl;
+    }
 
 .. _`dwc3_trb.members`:
 
 Members
 -------
 
-:``bpl``:
+bpl
     DW0-3
 
-:``bph``:
+bph
     DW4-7
 
-:``size``:
+size
     DW8-B
 
+ctrl
+    *undescribed*
 
+.. _`dwc3_request`:
 
+struct dwc3_request
+===================
+
+.. c:type:: struct dwc3_request
+
+    representation of a transfer request
+
+.. _`dwc3_request.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dwc3_request {
+        struct usb_request request;
+        struct list_head list;
+        struct dwc3_ep *dep;
+        u8 first_trb_index;
+        u8 epnum;
+        struct dwc3_trb *trb;
+        dma_addr_t trb_dma;
+        unsigned direction:1;
+        unsigned mapped:1;
+        unsigned started:1;
+    }
+
+.. _`dwc3_request.members`:
+
+Members
+-------
+
+request
+    struct usb_request to be transferred
+
+list
+    a list_head used for request queueing
+
+dep
+    struct dwc3_ep owning this request
+
+first_trb_index
+    index to first trb used by this request
+
+epnum
+    endpoint number to which this request refers
+
+trb
+    pointer to struct dwc3_trb
+
+trb_dma
+    DMA address of \ ``trb``\ 
+
+direction
+    IN or OUT direction flag
+
+mapped
+    true when request has been dma-mapped
+
+started
+    *undescribed*
 
 .. _`dwc3`:
 
 struct dwc3
 ===========
 
-.. c:type:: dwc3
+.. c:type:: struct dwc3
 
     representation of our controller
-
 
 .. _`dwc3.definition`:
 
@@ -272,358 +277,357 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3 {
-    struct usb_ctrlrequest * ctrl_req;
-    struct dwc3_trb * ep0_trb;
-    void * ep0_bounce;
-    void * zlp_buf;
-    u8 * setup_buf;
-    dma_addr_t ctrl_req_addr;
-    dma_addr_t ep0_bounce_addr;
-    dma_addr_t scratch_addr;
-    struct dwc3_request ep0_usb_req;
-    spinlock_t lock;
-    struct device * dev;
-    struct platform_device * xhci;
-    struct usb_gadget gadget;
-    struct usb_gadget_driver * gadget_driver;
-    struct usb_phy * usb2_phy;
-    struct usb_phy * usb3_phy;
-    struct phy * usb2_generic_phy;
-    struct phy * usb3_generic_phy;
-    struct ulpi * ulpi;
-    void __iomem * regs;
-    size_t regs_size;
-    enum usb_dr_mode dr_mode;
-    u32 dcfg;
-    u32 gctl;
-    u32 nr_scratch;
-    u32 num_event_buffers;
-    u32 u1u2;
-    u32 maximum_speed;
-    u32 revision;
-    #define DWC3_REVISION_173A	0x5533173a
-    #define DWC3_REVISION_175A	0x5533175a
-    #define DWC3_REVISION_180A	0x5533180a
-    #define DWC3_REVISION_183A	0x5533183a
-    #define DWC3_REVISION_185A	0x5533185a
-    #define DWC3_REVISION_187A	0x5533187a
-    #define DWC3_REVISION_188A	0x5533188a
-    #define DWC3_REVISION_190A	0x5533190a
-    #define DWC3_REVISION_194A	0x5533194a
-    #define DWC3_REVISION_200A	0x5533200a
-    #define DWC3_REVISION_202A	0x5533202a
-    #define DWC3_REVISION_210A	0x5533210a
-    #define DWC3_REVISION_220A	0x5533220a
-    #define DWC3_REVISION_230A	0x5533230a
-    #define DWC3_REVISION_240A	0x5533240a
-    #define DWC3_REVISION_250A	0x5533250a
-    #define DWC3_REVISION_260A	0x5533260a
-    #define DWC3_REVISION_270A	0x5533270a
-    #define DWC3_REVISION_280A	0x5533280a
-    #define DWC3_REVISION_IS_DWC31		0x80000000
-    #define DWC3_USB31_REVISION_110A	(0x3131302a | DWC3_REVISION_IS_USB31)
-    enum dwc3_ep0_next ep0_next_event;
-    enum dwc3_ep0_state ep0state;
-    enum dwc3_link_state link_state;
-    u16 isoch_delay;
-    u16 u2sel;
-    u16 u2pel;
-    u8 u1sel;
-    u8 u1pel;
-    u8 speed;
-    u8 num_out_eps;
-    u8 num_in_eps;
-    void * mem;
-    struct dwc3_hwparams hwparams;
-    struct dentry * root;
-    struct debugfs_regset32 * regset;
-    u8 test_mode;
-    u8 test_mode_nr;
-    u8 lpm_nyet_threshold;
-    u8 hird_threshold;
-    const char * hsphy_interface;
-    unsigned delayed_status:1;
-    unsigned ep0_bounced:1;
-    unsigned ep0_expect_in:1;
-    unsigned has_hibernation:1;
-    unsigned has_lpm_erratum:1;
-    unsigned is_utmi_l1_suspend:1;
-    unsigned is_fpga:1;
-    unsigned needs_fifo_resize:1;
-    unsigned pullups_connected:1;
-    unsigned resize_fifos:1;
-    unsigned setup_packet_pending:1;
-    unsigned three_stage_setup:1;
-    unsigned usb3_lpm_capable:1;
-    unsigned disable_scramble_quirk:1;
-    unsigned u2exit_lfps_quirk:1;
-    unsigned u2ss_inp3_quirk:1;
-    unsigned req_p1p2p3_quirk:1;
-    unsigned del_p1p2p3_quirk:1;
-    unsigned del_phy_power_chg_quirk:1;
-    unsigned lfps_filter_quirk:1;
-    unsigned rx_detect_poll_quirk:1;
-    unsigned dis_u3_susphy_quirk:1;
-    unsigned dis_u2_susphy_quirk:1;
-    unsigned dis_enblslpm_quirk:1;
-    unsigned tx_de_emphasis_quirk:1;
-    unsigned tx_de_emphasis:2;
-  };
-
+    struct dwc3 {
+        struct usb_ctrlrequest *ctrl_req;
+        struct dwc3_trb *ep0_trb;
+        void *ep0_bounce;
+        void *zlp_buf;
+        void *scratchbuf;
+        u8 *setup_buf;
+        dma_addr_t ctrl_req_addr;
+        dma_addr_t ep0_trb_addr;
+        dma_addr_t ep0_bounce_addr;
+        dma_addr_t scratch_addr;
+        struct dwc3_request ep0_usb_req;
+        spinlock_t lock;
+        struct device *dev;
+        struct platform_device *xhci;
+        struct resource xhci_resources[DWC3_XHCI_RESOURCES_NUM];
+        struct dwc3_event_buffer *ev_buf;
+        struct dwc3_ep  *eps[DWC3_ENDPOINTS_NUM];
+        struct usb_gadget gadget;
+        struct usb_gadget_driver *gadget_driver;
+        struct usb_phy *usb2_phy;
+        struct usb_phy *usb3_phy;
+        struct phy *usb2_generic_phy;
+        struct phy *usb3_generic_phy;
+        struct ulpi *ulpi;
+        void __iomem *regs;
+        size_t regs_size;
+        enum usb_dr_mode dr_mode;
+        u32 dcfg;
+        u32 gctl;
+        u32 nr_scratch;
+        u32 u1u2;
+        u32 maximum_speed;
+        u32 revision;
+        #define DWC3_REVISION_173A 0x5533173a
+        #define DWC3_REVISION_175A 0x5533175a
+        #define DWC3_REVISION_180A 0x5533180a
+        #define DWC3_REVISION_183A 0x5533183a
+        #define DWC3_REVISION_185A 0x5533185a
+        #define DWC3_REVISION_187A 0x5533187a
+        #define DWC3_REVISION_188A 0x5533188a
+        #define DWC3_REVISION_190A 0x5533190a
+        #define DWC3_REVISION_194A 0x5533194a
+        #define DWC3_REVISION_200A 0x5533200a
+        #define DWC3_REVISION_202A 0x5533202a
+        #define DWC3_REVISION_210A 0x5533210a
+        #define DWC3_REVISION_220A 0x5533220a
+        #define DWC3_REVISION_230A 0x5533230a
+        #define DWC3_REVISION_240A 0x5533240a
+        #define DWC3_REVISION_250A 0x5533250a
+        #define DWC3_REVISION_260A 0x5533260a
+        #define DWC3_REVISION_270A 0x5533270a
+        #define DWC3_REVISION_280A 0x5533280a
+        #define DWC3_REVISION_IS_DWC31 0x80000000
+        #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_USB31)
+        enum dwc3_ep0_next ep0_next_event;
+        enum dwc3_ep0_state ep0state;
+        enum dwc3_link_state link_state;
+        u16 isoch_delay;
+        u16 u2sel;
+        u16 u2pel;
+        u8 u1sel;
+        u8 u1pel;
+        u8 speed;
+        u8 num_out_eps;
+        u8 num_in_eps;
+        void *mem;
+        struct dwc3_hwparams hwparams;
+        struct dentry *root;
+        struct debugfs_regset32 *regset;
+        u8 test_mode;
+        u8 test_mode_nr;
+        u8 lpm_nyet_threshold;
+        u8 hird_threshold;
+        const char *hsphy_interface;
+        unsigned delayed_status:1;
+        unsigned ep0_bounced:1;
+        unsigned ep0_expect_in:1;
+        unsigned has_hibernation:1;
+        unsigned has_lpm_erratum:1;
+        unsigned is_utmi_l1_suspend:1;
+        unsigned is_fpga:1;
+        unsigned pullups_connected:1;
+        unsigned setup_packet_pending:1;
+        unsigned three_stage_setup:1;
+        unsigned usb3_lpm_capable:1;
+        unsigned disable_scramble_quirk:1;
+        unsigned u2exit_lfps_quirk:1;
+        unsigned u2ss_inp3_quirk:1;
+        unsigned req_p1p2p3_quirk:1;
+        unsigned del_p1p2p3_quirk:1;
+        unsigned del_phy_power_chg_quirk:1;
+        unsigned lfps_filter_quirk:1;
+        unsigned rx_detect_poll_quirk:1;
+        unsigned dis_u3_susphy_quirk:1;
+        unsigned dis_u2_susphy_quirk:1;
+        unsigned dis_enblslpm_quirk:1;
+        unsigned dis_rxdet_inp3_quirk:1;
+        unsigned tx_de_emphasis_quirk:1;
+        unsigned tx_de_emphasis:2;
+    }
 
 .. _`dwc3.members`:
 
 Members
 -------
 
-:``ctrl_req``:
+ctrl_req
     usb control request which is used for ep0
 
-:``ep0_trb``:
+ep0_trb
     dma address of ep0_trb
 
-:``ep0_bounce``:
+ep0_bounce
     bounce buffer for ep0
 
-:``zlp_buf``:
+zlp_buf
     used when request->zero is set
 
-:``setup_buf``:
+scratchbuf
+    *undescribed*
+
+setup_buf
     used while precessing STD USB requests
 
-:``ctrl_req_addr``:
+ctrl_req_addr
     dma address of ctrl_req
 
-:``ep0_bounce_addr``:
+ep0_trb_addr
+    *undescribed*
+
+ep0_bounce_addr
     dma address of ep0_bounce
 
-:``scratch_addr``:
+scratch_addr
     dma address of scratchbuf
 
-:``ep0_usb_req``:
+ep0_usb_req
     dummy req used while handling STD USB requests
 
-:``lock``:
+lock
     for synchronizing
 
-:``dev``:
+dev
     pointer to our struct device
 
-:``xhci``:
+xhci
     pointer to our xHCI child
 
-:``gadget``:
+ev_buf
+    *undescribed*
+
+gadget
     device side representation of the peripheral controller
 
-:``gadget_driver``:
+gadget_driver
     pointer to the gadget driver
 
-:``usb2_phy``:
+usb2_phy
     pointer to USB2 PHY
 
-:``usb3_phy``:
+usb3_phy
     pointer to USB3 PHY
 
-:``usb2_generic_phy``:
+usb2_generic_phy
     pointer to USB2 PHY
 
-:``usb3_generic_phy``:
+usb3_generic_phy
     pointer to USB3 PHY
 
-:``ulpi``:
+ulpi
     pointer to ulpi interface
 
-:``regs``:
+regs
     base address for our registers
 
-:``regs_size``:
+regs_size
     address space size
 
-:``dr_mode``:
+dr_mode
     requested mode of operation
 
-:``dcfg``:
+dcfg
     saved contents of DCFG register
 
-:``gctl``:
+gctl
     saved contents of GCTL register
 
-:``nr_scratch``:
+nr_scratch
     number of scratch buffers
 
-:``num_event_buffers``:
-    calculated number of event buffers
-
-:``u1u2``:
+u1u2
     only used on revisions <1.83a for workaround
 
-:``maximum_speed``:
+maximum_speed
     maximum speed requested (mainly for testing purposes)
 
-:``revision``:
+revision
     revision register contents
 
-:``ep0_next_event``:
+ep0_next_event
     hold the next expected event
 
-:``ep0state``:
+ep0state
     state of endpoint zero
 
-:``link_state``:
+link_state
     link state
 
-:``isoch_delay``:
+isoch_delay
     wValue from Set Isochronous Delay request;
 
-:``u2sel``:
+u2sel
     parameter from Set SEL request.
 
-:``u2pel``:
+u2pel
     parameter from Set SEL request.
 
-:``u1sel``:
+u1sel
     parameter from Set SEL request.
 
-:``u1pel``:
+u1pel
     parameter from Set SEL request.
 
-:``speed``:
+speed
     device speed (super, high, full, low)
 
-:``num_out_eps``:
+num_out_eps
     number of out endpoints
 
-:``num_in_eps``:
+num_in_eps
     number of in endpoints
 
-:``mem``:
+mem
     points to start of memory which is used for this struct.
 
-:``hwparams``:
+hwparams
     copy of hwparams registers
 
-:``root``:
+root
     debugfs root folder pointer
 
-:``regset``:
+regset
     debugfs pointer to regdump file
 
-:``test_mode``:
+test_mode
     true when we're entering a USB test mode
 
-:``test_mode_nr``:
+test_mode_nr
     test feature selector
 
-:``lpm_nyet_threshold``:
+lpm_nyet_threshold
     LPM NYET response threshold
 
-:``hird_threshold``:
+hird_threshold
     HIRD threshold
 
-:``hsphy_interface``:
+hsphy_interface
     "utmi" or "ulpi"
 
-:``delayed_status``:
+delayed_status
     true when gadget driver asks for delayed status
 
-:``ep0_bounced``:
+ep0_bounced
     true when we used bounce buffer
 
-:``ep0_expect_in``:
+ep0_expect_in
     true when we expect a DATA IN transfer
 
-:``has_hibernation``:
+has_hibernation
     true when dwc3 was configured with Hibernation
 
-:``has_lpm_erratum``:
+has_lpm_erratum
     true when core was configured with LPM Erratum. Note that
     there's now way for software to detect this in runtime.
 
-:``is_utmi_l1_suspend``:
+is_utmi_l1_suspend
     the core asserts output signal
+    0       - utmi_sleep_n
+    1       - utmi_l1_suspend_n
 
-            0        - utmi_sleep_n
-            1        - utmi_l1_suspend_n
-
-:``is_fpga``:
+is_fpga
     true when we are using the FPGA board
 
-:``needs_fifo_resize``:
-    not all users might want fifo resizing, flag it
-
-:``pullups_connected``:
+pullups_connected
     true when Run/Stop bit is set
 
-:``resize_fifos``:
-    tells us it's ok to reconfigure our TxFIFO sizes.
-
-:``setup_packet_pending``:
+setup_packet_pending
     true when there's a Setup Packet in FIFO. Workaround
 
-:``three_stage_setup``:
+three_stage_setup
     set if we perform a three phase setup
 
-:``usb3_lpm_capable``:
+usb3_lpm_capable
     set if hadrware supports Link Power Management
 
-:``disable_scramble_quirk``:
+disable_scramble_quirk
     set if we enable the disable scramble quirk
 
-:``u2exit_lfps_quirk``:
+u2exit_lfps_quirk
     set if we enable u2exit lfps quirk
 
-:``u2ss_inp3_quirk``:
+u2ss_inp3_quirk
     set if we enable P3 OK for U2/SS Inactive quirk
 
-:``req_p1p2p3_quirk``:
+req_p1p2p3_quirk
     set if we enable request p1p2p3 quirk
 
-:``del_p1p2p3_quirk``:
+del_p1p2p3_quirk
     set if we enable delay p1p2p3 quirk
 
-:``del_phy_power_chg_quirk``:
+del_phy_power_chg_quirk
     set if we enable delay phy power change quirk
 
-:``lfps_filter_quirk``:
+lfps_filter_quirk
     set if we enable LFPS filter quirk
 
-:``rx_detect_poll_quirk``:
+rx_detect_poll_quirk
     set if we enable rx_detect to polling lfps quirk
 
-:``dis_u3_susphy_quirk``:
+dis_u3_susphy_quirk
     set if we disable usb3 suspend phy
 
-:``dis_u2_susphy_quirk``:
+dis_u2_susphy_quirk
     set if we disable usb2 suspend phy
 
-:``dis_enblslpm_quirk``:
+dis_enblslpm_quirk
     set if we clear enblslpm in GUSB2PHYCFG,
     disabling the suspend signal to the PHY.
 
-:``tx_de_emphasis_quirk``:
+dis_rxdet_inp3_quirk
+    *undescribed*
+
+tx_de_emphasis_quirk
     set if we enable Tx de-emphasis quirk
 
-:``tx_de_emphasis``:
+tx_de_emphasis
     Tx de-emphasis value
-
-            0        - -6dB de-emphasis
-            1        - -3.5dB de-emphasis
-            2        - No de-emphasis
-            3        - Reserved
-
-
-
+    0       - -6dB de-emphasis
+    1       - -3.5dB de-emphasis
+    2       - No de-emphasis
+    3       - Reserved
 
 .. _`dwc3_event_depevt`:
 
 struct dwc3_event_depevt
 ========================
 
-.. c:type:: dwc3_event_depevt
+.. c:type:: struct dwc3_event_depevt
 
     Device Endpoint Events
-
 
 .. _`dwc3_event_depevt.definition`:
 
@@ -632,71 +636,67 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_event_depevt {
-    u32 one_bit:1;
-    u32 endpoint_number:5;
-    u32 endpoint_event:4;
-    u32 reserved11_10:2;
-    u32 status:4;
-    #define DEPEVT_STATUS_TRANSFER_ACTIVE	(1 \\\lt;\\\lt; 3)
-    #define DEPEVT_STATUS_BUSERR	(1 \\\lt;\\\lt; 0)
-    #define DEPEVT_STATUS_SHORT	(1 \\\lt;\\\lt; 1)
-    #define DEPEVT_STATUS_IOC	(1 \\\lt;\\\lt; 2)
-    #define DEPEVT_STATUS_LST	(1 \\\lt;\\\lt; 3)
-    #define DEPEVT_STREAMEVT_FOUND		1
-    #define DEPEVT_STREAMEVT_NOTFOUND	2
-    #define DEPEVT_STATUS_CONTROL_DATA	1
-    #define DEPEVT_STATUS_CONTROL_STATUS	2
-    u32 parameters:16;
-  };
-
+    struct dwc3_event_depevt {
+        u32 one_bit:1;
+        u32 endpoint_number:5;
+        u32 endpoint_event:4;
+        u32 reserved11_10:2;
+        u32 status:4;
+        #define DEPEVT_STATUS_TRANSFER_ACTIVE (1 << 3)
+        #define DEPEVT_STATUS_BUSERR (1 << 0)
+        #define DEPEVT_STATUS_SHORT (1 << 1)
+        #define DEPEVT_STATUS_IOC (1 << 2)
+        #define DEPEVT_STATUS_LST (1 << 3)
+        #define DEPEVT_STREAMEVT_FOUND 1
+        #define DEPEVT_STREAMEVT_NOTFOUND 2
+        #define DEPEVT_STATUS_CONTROL_DATA 1
+        #define DEPEVT_STATUS_CONTROL_STATUS 2
+        #define DEPEVT_TRANSFER_NO_RESOURCE 1
+        #define DEPEVT_TRANSFER_BUS_EXPIRY 2
+        u32 parameters:16;
+    }
 
 .. _`dwc3_event_depevt.members`:
 
 Members
 -------
 
-:``one_bit``:
+one_bit
     indicates this is an endpoint event (not used)
 
-:``endpoint_number``:
+endpoint_number
     number of the endpoint
 
-:``endpoint_event``:
-    The event we have::
+endpoint_event
+    The event we have:
+    0x00    - Reserved
+    0x01    - XferComplete
+    0x02    - XferInProgress
+    0x03    - XferNotReady
+    0x04    - RxTxFifoEvt (IN->Underrun, OUT->Overrun)
+    0x05    - Reserved
+    0x06    - StreamEvt
+    0x07    - EPCmdCmplt
 
-            0x00        - Reserved
-            0x01        - XferComplete
-            0x02        - XferInProgress
-            0x03        - XferNotReady
-            0x04        - RxTxFifoEvt (IN->Underrun, OUT->Overrun)
-            0x05        - Reserved
-            0x06        - StreamEvt
-            0x07        - EPCmdCmplt
-
-:``reserved11_10``:
+reserved11_10
     Reserved, don't use.
 
-:``status``:
+status
     Indicates the status of the event. Refer to databook for
     more information.
 
-:``parameters``:
+parameters
     Parameters of the current event. Refer to databook for
     more information.
-
-
-
 
 .. _`dwc3_event_devt`:
 
 struct dwc3_event_devt
 ======================
 
-.. c:type:: dwc3_event_devt
+.. c:type:: struct dwc3_event_devt
 
     Device Events
-
 
 .. _`dwc3_event_devt.definition`:
 
@@ -705,65 +705,59 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_event_devt {
-    u32 one_bit:1;
-    u32 device_event:7;
-    u32 type:4;
-    u32 reserved15_12:4;
-    u32 event_info:9;
-    u32 reserved31_25:7;
-  };
-
+    struct dwc3_event_devt {
+        u32 one_bit:1;
+        u32 device_event:7;
+        u32 type:4;
+        u32 reserved15_12:4;
+        u32 event_info:9;
+        u32 reserved31_25:7;
+    }
 
 .. _`dwc3_event_devt.members`:
 
 Members
 -------
 
-:``one_bit``:
+one_bit
     indicates this is a non-endpoint event (not used)
 
-:``device_event``:
+device_event
     indicates it's a device event. Should read as 0x00
 
-:``type``:
+type
     indicates the type of device event.
+    0       - DisconnEvt
+    1       - USBRst
+    2       - ConnectDone
+    3       - ULStChng
+    4       - WkUpEvt
+    5       - Reserved
+    6       - EOPF
+    7       - SOF
+    8       - Reserved
+    9       - ErrticErr
+    10      - CmdCmplt
+    11      - EvntOverflow
+    12      - VndrDevTstRcved
 
-            0        - DisconnEvt
-            1        - USBRst
-            2        - ConnectDone
-            3        - ULStChng
-            4        - WkUpEvt
-            5        - Reserved
-            6        - EOPF
-            7        - SOF
-            8        - Reserved
-            9        - ErrticErr
-            10        - CmdCmplt
-            11        - EvntOverflow
-            12        - VndrDevTstRcved
-
-:``reserved15_12``:
+reserved15_12
     Reserved, not used
 
-:``event_info``:
+event_info
     Information about this event
 
-:``reserved31_25``:
+reserved31_25
     Reserved, not used
-
-
-
 
 .. _`dwc3_event_gevt`:
 
 struct dwc3_event_gevt
 ======================
 
-.. c:type:: dwc3_event_gevt
+.. c:type:: struct dwc3_event_gevt
 
     Other Core Events
-
 
 .. _`dwc3_event_gevt.definition`:
 
@@ -772,43 +766,38 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_event_gevt {
-    u32 one_bit:1;
-    u32 device_event:7;
-    u32 phy_port_number:4;
-    u32 reserved31_12:20;
-  };
-
+    struct dwc3_event_gevt {
+        u32 one_bit:1;
+        u32 device_event:7;
+        u32 phy_port_number:4;
+        u32 reserved31_12:20;
+    }
 
 .. _`dwc3_event_gevt.members`:
 
 Members
 -------
 
-:``one_bit``:
+one_bit
     indicates this is a non-endpoint event (not used)
 
-:``device_event``:
+device_event
     indicates it's (0x03) Carkit or (0x04) I2C event.
 
-:``phy_port_number``:
+phy_port_number
     self-explanatory
 
-:``reserved31_12``:
+reserved31_12
     Reserved, not used.
-
-
-
 
 .. _`dwc3_event`:
 
 union dwc3_event
 ================
 
-.. c:type:: dwc3_event
+.. c:type:: struct dwc3_event
 
     representation of Event Buffer contents
-
 
 .. _`dwc3_event.definition`:
 
@@ -817,47 +806,42 @@ Definition
 
 .. code-block:: c
 
-  union dwc3_event {
-    u32 raw;
-    struct dwc3_event_type type;
-    struct dwc3_event_depevt depevt;
-    struct dwc3_event_devt devt;
-    struct dwc3_event_gevt gevt;
-  };
-
+    union dwc3_event {
+        u32 raw;
+        struct dwc3_event_type type;
+        struct dwc3_event_depevt depevt;
+        struct dwc3_event_devt devt;
+        struct dwc3_event_gevt gevt;
+    }
 
 .. _`dwc3_event.members`:
 
 Members
 -------
 
-:``raw``:
+raw
     raw 32-bit event
 
-:``type``:
+type
     the type of the event
 
-:``depevt``:
+depevt
     Device Endpoint Event
 
-:``devt``:
+devt
     Device Event
 
-:``gevt``:
+gevt
     Global Event
-
-
-
 
 .. _`dwc3_gadget_ep_cmd_params`:
 
 struct dwc3_gadget_ep_cmd_params
 ================================
 
-.. c:type:: dwc3_gadget_ep_cmd_params
+.. c:type:: struct dwc3_gadget_ep_cmd_params
 
     representation of endpoint command parameters
-
 
 .. _`dwc3_gadget_ep_cmd_params.definition`:
 
@@ -866,25 +850,25 @@ Definition
 
 .. code-block:: c
 
-  struct dwc3_gadget_ep_cmd_params {
-    u32 param2;
-    u32 param1;
-    u32 param0;
-  };
-
+    struct dwc3_gadget_ep_cmd_params {
+        u32 param2;
+        u32 param1;
+        u32 param0;
+    }
 
 .. _`dwc3_gadget_ep_cmd_params.members`:
 
 Members
 -------
 
-:``param2``:
+param2
     third parameter
 
-:``param1``:
+param1
     second parameter
 
-:``param0``:
+param0
     first parameter
 
+.. This file was automatic generated / don't edit.
 

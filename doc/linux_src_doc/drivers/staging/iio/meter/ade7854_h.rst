@@ -1,0 +1,85 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/meter/ade7854.h
+
+.. _`ade7854_state`:
+
+struct ade7854_state
+====================
+
+.. c:type:: struct ade7854_state
+
+    device instance specific data
+
+.. _`ade7854_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ade7854_state {
+        struct spi_device *spi;
+        struct i2c_client *i2c;
+        int (* read_reg_8) (struct device *, u16, u8 *);
+        int (* read_reg_16) (struct device *, u16, u16 *);
+        int (* read_reg_24) (struct device *, u16, u32 *);
+        int (* read_reg_32) (struct device *, u16, u32 *);
+        int (* write_reg_8) (struct device *, u16, u8);
+        int (* write_reg_16) (struct device *, u16, u16);
+        int (* write_reg_24) (struct device *, u16, u32);
+        int (* write_reg_32) (struct device *, u16, u32);
+        int irq;
+        struct mutex buf_lock;
+        u8 tx[ADE7854_MAX_TX] ____cacheline_aligned;
+        u8 rx[ADE7854_MAX_RX];
+    }
+
+.. _`ade7854_state.members`:
+
+Members
+-------
+
+spi
+    actual spi_device
+
+i2c
+    *undescribed*
+
+read_reg_8
+    *undescribed*
+
+read_reg_16
+    *undescribed*
+
+read_reg_24
+    *undescribed*
+
+read_reg_32
+    *undescribed*
+
+write_reg_8
+    *undescribed*
+
+write_reg_16
+    *undescribed*
+
+write_reg_24
+    *undescribed*
+
+write_reg_32
+    *undescribed*
+
+irq
+    *undescribed*
+
+buf_lock
+    mutex to protect tx and rx
+
+tx
+    transmit buffer
+
+rx
+    receive buffer
+
+.. This file was automatic generated / don't edit.
+

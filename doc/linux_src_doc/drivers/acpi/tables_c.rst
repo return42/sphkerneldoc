@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-tables.c
-========
-
+.. src-file: drivers/acpi/tables.c
 
 .. _`acpi_parse_entries_array`:
 
 acpi_parse_entries_array
 ========================
 
-.. c:function:: int acpi_parse_entries_array (char *id, unsigned long table_size, struct acpi_table_header *table_header, struct acpi_subtable_proc *proc, int proc_num, unsigned int max_entries)
+.. c:function:: int acpi_parse_entries_array(char *id, unsigned long table_size, struct acpi_table_header *table_header, struct acpi_subtable_proc *proc, int proc_num, unsigned int max_entries)
 
     for each proc_num find a suitable subtable
 
@@ -33,8 +29,6 @@ acpi_parse_entries_array
     :param unsigned int max_entries:
         how many entries can we process?
 
-
-
 .. _`acpi_parse_entries_array.description`:
 
 Description
@@ -47,16 +41,14 @@ entry id.
 On success returns sum of all matching entries for all proc handlers.
 Otherwise, -ENODEV or -EINVAL is returned.
 
-
-
 .. _`acpi_table_parse`:
 
 acpi_table_parse
 ================
 
-.. c:function:: int acpi_table_parse (char *id, acpi_tbl_table_handler handler)
+.. c:function:: int acpi_table_parse(char *id, acpi_tbl_table_handler handler)
 
-    find table with @id, run @handler on it
+    find table with \ ``id``\ , run \ ``handler``\  on it
 
     :param char \*id:
         table id to find
@@ -64,15 +56,15 @@ acpi_table_parse
     :param acpi_tbl_table_handler handler:
         handler to run
 
-
-
 .. _`acpi_table_parse.description`:
 
 Description
 -----------
 
-Scan the ACPI System Descriptor Table (STD) for a table matching ``id``\ ,
-run ``handler`` on it.
+Scan the ACPI System Descriptor Table (STD) for a table matching \ ``id``\ ,
+run \ ``handler``\  on it.
 
 Return 0 if table found, -errno if not.
+
+.. This file was automatic generated / don't edit.
 

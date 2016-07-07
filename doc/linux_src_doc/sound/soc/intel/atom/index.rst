@@ -7,5 +7,5 @@ atom
 .. toctree::
    :maxdepth: 1
 
-   sst-atom-controls_c
-   sst/index
+    sst/index
+    sst-atom-controls_c

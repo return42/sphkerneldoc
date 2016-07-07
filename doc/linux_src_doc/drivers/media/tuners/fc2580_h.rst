@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/tuners/fc2580.h
+
+.. _`fc2580_platform_data`:
+
+struct fc2580_platform_data
+===========================
+
+.. c:type:: struct fc2580_platform_data
+
+    Platform data for the fc2580 driver
+
+.. _`fc2580_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fc2580_platform_data {
+        u32 clk;
+        struct dvb_frontend *dvb_frontend;
+        struct v4l2_subdev* (* get_v4l2_subdev) (struct i2c_client *);
+    }
+
+.. _`fc2580_platform_data.members`:
+
+Members
+-------
+
+clk
+    Clock frequency (0 = internal clock).
+
+dvb_frontend
+    DVB frontend.
+
+get_v4l2_subdev
+    Get V4L2 subdev.
+
+.. This file was automatic generated / don't edit.
+

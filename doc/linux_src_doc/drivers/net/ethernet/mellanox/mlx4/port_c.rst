@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-port.c
-======
-
+.. src-file: drivers/net/ethernet/mellanox/mlx4/port.c
 
 .. _`mlx4_get_module_info`:
 
 mlx4_get_module_info
 ====================
 
-.. c:function:: int mlx4_get_module_info (struct mlx4_dev *dev, u8 port, u16 offset, u16 size, u8 *data)
+.. c:function:: int mlx4_get_module_info(struct mlx4_dev *dev, u8 port, u16 offset, u16 size, u8 *data)
 
     Read cable module eeprom data
 
@@ -29,8 +25,6 @@ mlx4_get_module_info
     :param u8 \*data:
         output buffer to put the requested data into.
 
-
-
 .. _`mlx4_get_module_info.description`:
 
 Description
@@ -40,4 +34,6 @@ Reads cable module eeprom data, puts the outcome data into
 data pointer paramer.
 Returns num of read bytes on success or a negative error
 code.
+
+.. This file was automatic generated / don't edit.
 

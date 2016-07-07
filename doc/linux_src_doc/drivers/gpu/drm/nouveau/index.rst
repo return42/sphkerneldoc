@@ -7,7 +7,7 @@ nouveau
 .. toctree::
    :maxdepth: 1
 
-   nouveau_ioc32_c
-   dispnv04/index
-   include/index
-   nvkm/index
+    dispnv04/index
+    include/index
+    nvkm/index
+    nouveau_ioc32_c

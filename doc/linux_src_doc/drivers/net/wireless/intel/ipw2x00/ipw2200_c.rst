@@ -1,0 +1,247 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/ipw2x00/ipw2200.c
+
+.. _`ipw_alive`:
+
+ipw_alive
+=========
+
+.. c:function:: int ipw_alive(struct ipw_priv *priv)
+
+    Reads debug register from domain0. If card is present, pre-defined value should be found there.
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+.. _`ipw_alive.description`:
+
+Description
+-----------
+
+\ ``param``\  priv
+\ ``return``\  1 if card is present, 0 otherwise
+
+.. _`ipw_rx_queue_space`:
+
+ipw_rx_queue_space
+==================
+
+.. c:function:: int ipw_rx_queue_space(const struct ipw_rx_queue *q)
+
+    :param const struct ipw_rx_queue \*q:
+        *undescribed*
+
+.. _`ipw_rx_queue_space.description`:
+
+Description
+-----------
+
+Theory of operation
+
+A queue is a circular buffers with 'Read' and 'Write' pointers.
+2 empty entries always kept in the buffer to protect from overflow.
+
+For Tx queue, there are low mark and high mark limits. If, after queuing
+the packet for Tx, free space become < low mark, Tx queue stopped. When
+reclaiming packets (on 'tx done IRQ), if free space become > high mark,
+Tx queue resumed.
+
+The IPW operates with six queues, one receive queue in the device's
+sram, one transmit queue for sending commands to the device firmware,
+and four transmit queues for data.
+
+The four transmit queues allow for performing quality of service (qos)
+transmissions as per the 802.11 protocol.  Currently Linux does not
+provide a mechanism to the user for utilizing prioritized queues, so
+we only utilize the first data transmit queue (queue1).
+
+.. _`ipw_queue_init`:
+
+ipw_queue_init
+==============
+
+.. c:function:: void ipw_queue_init(struct ipw_priv *priv, struct clx2_queue *q, int count, u32 read, u32 write, u32 base, u32 size)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param struct clx2_queue \*q:
+        *undescribed*
+
+    :param int count:
+        *undescribed*
+
+    :param u32 read:
+        *undescribed*
+
+    :param u32 write:
+        *undescribed*
+
+    :param u32 base:
+        *undescribed*
+
+    :param u32 size:
+        *undescribed*
+
+.. _`ipw_queue_init.description`:
+
+Description
+-----------
+
+\ ``param``\  q                queue to init
+\ ``param``\  count            Number of BD's to allocate. Should be power of 2
+\ ``param``\  read_register    Address for 'read' register
+(not offset within BAR, full address)
+\ ``param``\  write_register   Address for 'write' register
+(not offset within BAR, full address)
+\ ``param``\  base_register    Address for 'base' register
+(not offset within BAR, full address)
+\ ``param``\  size             Address for 'size' register
+(not offset within BAR, full address)
+
+.. _`ipw_queue_tx_free_tfd`:
+
+ipw_queue_tx_free_tfd
+=====================
+
+.. c:function:: void ipw_queue_tx_free_tfd(struct ipw_priv *priv, struct clx2_tx_queue *txq)
+
+    >q.last_used]. Do NOT advance any indexes
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param struct clx2_tx_queue \*txq:
+        *undescribed*
+
+.. _`ipw_queue_tx_free_tfd.description`:
+
+Description
+-----------
+
+\ ``param``\  dev
+\ ``param``\  txq
+
+.. _`ipw_queue_tx_free`:
+
+ipw_queue_tx_free
+=================
+
+.. c:function:: void ipw_queue_tx_free(struct ipw_priv *priv, struct clx2_tx_queue *txq)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param struct clx2_tx_queue \*txq:
+        *undescribed*
+
+.. _`ipw_queue_tx_free.description`:
+
+Description
+-----------
+
+Empty queue by removing and destroying all BD's.
+Free all buffers.
+
+\ ``param``\  dev
+\ ``param``\  q
+
+.. _`ipw_tx_queue_free`:
+
+ipw_tx_queue_free
+=================
+
+.. c:function:: void ipw_tx_queue_free(struct ipw_priv *priv)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+.. _`ipw_tx_queue_free.description`:
+
+Description
+-----------
+
+\ ``param``\  priv
+
+.. _`ipw_rx_notification`:
+
+ipw_rx_notification
+===================
+
+.. c:function:: void ipw_rx_notification(struct ipw_priv *priv, struct ipw_rx_notification *notif)
+
+    Called from interrupt routine
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param struct ipw_rx_notification \*notif:
+        *undescribed*
+
+.. _`ipw_queue_reset`:
+
+ipw_queue_reset
+===============
+
+.. c:function:: int ipw_queue_reset(struct ipw_priv *priv)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+.. _`ipw_queue_reset.description`:
+
+Description
+-----------
+
+\ ``param``\  priv
+\ ``return``\  error code
+
+.. _`ipw_queue_tx_reclaim`:
+
+ipw_queue_tx_reclaim
+====================
+
+.. c:function:: int ipw_queue_tx_reclaim(struct ipw_priv *priv, struct clx2_tx_queue *txq, int qindex)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param struct clx2_tx_queue \*txq:
+        *undescribed*
+
+    :param int qindex:
+        *undescribed*
+
+.. _`ipw_queue_tx_reclaim.description`:
+
+Description
+-----------
+
+When FW advances 'R' index, all entries between old and
+new 'R' index need to be reclaimed. As result, some free space
+forms. If there is enough free space (> low mark), wake Tx queue.
+
+\ ``note``\  Need to protect against garbage in 'R' index
+\ ``param``\  priv
+\ ``param``\  txq
+\ ``param``\  qindex
+\ ``return``\  Number of used entries remains in the queue
+
+.. _`ipw_sw_reset`:
+
+ipw_sw_reset
+============
+
+.. c:function:: int ipw_sw_reset(struct ipw_priv *priv, int option)
+
+    :param struct ipw_priv \*priv:
+        *undescribed*
+
+    :param int option:
+        options to control different reset behaviour
+        0 = reset everything except the 'disable' module_param
+        1 = reset everything and print out driver info (for probe only)
+        2 = reset everything
+
+.. This file was automatic generated / don't edit.
+

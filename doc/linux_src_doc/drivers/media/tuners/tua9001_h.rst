@@ -1,0 +1,33 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/tuners/tua9001.h
+
+.. _`tua9001_platform_data`:
+
+struct tua9001_platform_data
+============================
+
+.. c:type:: struct tua9001_platform_data
+
+    Platform data for the tua9001 driver
+
+.. _`tua9001_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct tua9001_platform_data {
+        struct dvb_frontend *dvb_frontend;
+    }
+
+.. _`tua9001_platform_data.members`:
+
+Members
+-------
+
+dvb_frontend
+    DVB frontend.
+
+.. This file was automatic generated / don't edit.
+

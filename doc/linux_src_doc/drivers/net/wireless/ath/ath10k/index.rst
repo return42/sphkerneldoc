@@ -7,4 +7,6 @@ ath10k
 .. toctree::
    :maxdepth: 1
 
-   debug_c
+    debug_c
+    spectral_h
+    wmi_h

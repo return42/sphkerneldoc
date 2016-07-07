@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ab8500.h
-========
-
+.. src-file: include/linux/mfd/abx500/ab8500.h
 
 .. _`ab8500`:
 
 struct ab8500
 =============
 
-.. c:type:: ab8500
+.. c:type:: struct ab8500
 
     ab8500 internal structure
-
 
 .. _`ab8500.definition`:
 
@@ -22,92 +17,95 @@ Definition
 
 .. code-block:: c
 
-  struct ab8500 {
-    struct device * dev;
-    struct mutex lock;
-    struct mutex irq_lock;
-    atomic_t transfer_ongoing;
-    int irq;
-    enum ab8500_version version;
-    u8 chip_id;
-    int (* write) (struct ab8500 *ab8500, u16 addr, u8 data);
-    int (* write_masked) (struct ab8500 *ab8500, u16 addr, u8 mask, u8 data);
-    int (* read) (struct ab8500 *ab8500, u16 addr);
-    unsigned long tx_buf[4];
-    unsigned long rx_buf[4];
-    u8 * mask;
-    u8 * oldmask;
-    int mask_size;
-    const int * irq_reg_offset;
-  };
-
+    struct ab8500 {
+        struct device *dev;
+        struct mutex lock;
+        struct mutex irq_lock;
+        atomic_t transfer_ongoing;
+        int irq;
+        struct irq_domain *domain;
+        enum ab8500_version version;
+        u8 chip_id;
+        int (* write) (struct ab8500 *ab8500, u16 addr, u8 data);
+        int (* write_masked) (struct ab8500 *ab8500, u16 addr, u8 mask, u8 data);
+        int (* read) (struct ab8500 *ab8500, u16 addr);
+        unsigned long tx_buf[4];
+        unsigned long rx_buf[4];
+        u8 *mask;
+        u8 *oldmask;
+        int mask_size;
+        const int *irq_reg_offset;
+        int it_latchhier_num;
+    }
 
 .. _`ab8500.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     parent device
 
-:``lock``:
+lock
     read/write operations lock
 
-:``irq_lock``:
+irq_lock
     genirq bus lock
 
-:``transfer_ongoing``:
+transfer_ongoing
     0 if no transfer ongoing
 
-:``irq``:
+irq
     irq line
 
-:``version``:
+domain
+    *undescribed*
+
+version
     chip version id (e.g. ab8500 or ab9540)
 
-:``chip_id``:
+chip_id
     chip revision id
 
-:``write``:
+write
     register write
 
-:``write_masked``:
+write_masked
     masked register write
 
-:``read``:
+read
     register read
 
-:``tx_buf[4]``:
+tx_buf
     tx buf for SPI
 
-:``rx_buf[4]``:
+rx_buf
     rx buf for SPI
 
-:``mask``:
+mask
     cache of IRQ regs for bus lock
 
-:``oldmask``:
+oldmask
     cache of previous IRQ regs for bus lock
 
-:``mask_size``:
+mask_size
     Actual number of valid entries in mask[], oldmask[] and
     irq_reg_offset
 
-:``irq_reg_offset``:
+irq_reg_offset
     Array of offsets into IRQ registers
 
-
-
+it_latchhier_num
+    *undescribed*
 
 .. _`ab8500_platform_data`:
 
 struct ab8500_platform_data
 ===========================
 
-.. c:type:: ab8500_platform_data
+.. c:type:: struct ab8500_platform_data
 
     AB8500 platform data
-
 
 .. _`ab8500_platform_data.definition`:
 
@@ -116,21 +114,29 @@ Definition
 
 .. code-block:: c
 
-  struct ab8500_platform_data {
-    void (* init) (struct ab8500 *);
-    struct ab8500_regulator_platform_data * regulator;
-  };
-
+    struct ab8500_platform_data {
+        void (* init) (struct ab8500 *);
+        struct ab8500_regulator_platform_data *regulator;
+        struct ab8500_codec_platform_data *codec;
+        struct ab8500_sysctrl_platform_data *sysctrl;
+    }
 
 .. _`ab8500_platform_data.members`:
 
 Members
 -------
 
-:``init``:
+init
     board-specific initialization after detection of ab8500
 
-:``regulator``:
+regulator
     machine-specific constraints for regulators
 
+codec
+    *undescribed*
+
+sysctrl
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

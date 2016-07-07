@@ -7,7 +7,9 @@ imu
 .. toctree::
    :maxdepth: 1
 
-   adis_buffer_c
-   adis_c
-   adis_trigger_c
-   inv_mpu6050/index
+    inv_mpu6050/index
+    adis16400_h
+    adis_buffer_c
+    adis_c
+    adis_trigger_c
+    kmx61_c

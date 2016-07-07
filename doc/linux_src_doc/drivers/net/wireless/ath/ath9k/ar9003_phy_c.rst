@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-ar9003_phy.c
-============
-
+.. src-file: drivers/net/wireless/ath/ath9k/ar9003_phy.c
 
 .. _`ar9003_hw_set_channel`:
 
 ar9003_hw_set_channel
 =====================
 
-.. c:function:: int ar9003_hw_set_channel (struct ath_hw *ah, struct ath9k_channel *chan)
+.. c:function:: int ar9003_hw_set_channel(struct ath_hw *ah, struct ath9k_channel *chan)
 
     set channel on single-chip device
 
@@ -18,8 +14,7 @@ ar9003_hw_set_channel
         atheros hardware structure
 
     :param struct ath9k_channel \*chan:
-
-
+        *undescribed*
 
 .. _`ar9003_hw_set_channel.description`:
 
@@ -35,25 +30,23 @@ hardware channel value. Assumes writes have been enabled to analog bus.
 Actual Expression,
 
 For 2GHz channel,
-Channel Frequency = (3/4) * freq_ref * (chansel[8:0] + chanfrac[16:0]/2^17)
+Channel Frequency = (3/4) \* freq_ref \* (chansel[8:0] + chanfrac[16:0]/2^17)
 (freq_ref = 40MHz)
 
 For 5GHz channel,
-Channel Frequency = (3/2) * freq_ref * (chansel[8:0] + chanfrac[16:0]/2^10)
+Channel Frequency = (3/2) \* freq_ref \* (chansel[8:0] + chanfrac[16:0]/2^10)
 (freq_ref = 40MHz/(24>>amodeRefSel))
 
 For 5GHz channels which are 5MHz spaced,
-Channel Frequency = (3/2) * freq_ref * (chansel[8:0] + chanfrac[16:0]/2^17)
+Channel Frequency = (3/2) \* freq_ref \* (chansel[8:0] + chanfrac[16:0]/2^17)
 (freq_ref = 40MHz)
-
-
 
 .. _`ar9003_hw_spur_mitigate_mrc_cck`:
 
 ar9003_hw_spur_mitigate_mrc_cck
 ===============================
 
-.. c:function:: void ar9003_hw_spur_mitigate_mrc_cck (struct ath_hw *ah, struct ath9k_channel *chan)
+.. c:function:: void ar9003_hw_spur_mitigate_mrc_cck(struct ath_hw *ah, struct ath9k_channel *chan)
 
     convert baseband spur frequency
 
@@ -61,8 +54,7 @@ ar9003_hw_spur_mitigate_mrc_cck
         atheros hardware structure
 
     :param struct ath9k_channel \*chan:
-
-
+        *undescribed*
 
 .. _`ar9003_hw_spur_mitigate_mrc_cck.description`:
 
@@ -73,4 +65,6 @@ For single-chip solutions. Converts to baseband spur frequency given the
 input channel frequency and compute register settings below.
 
 Spur mitigation for MRC CCK
+
+.. This file was automatic generated / don't edit.
 

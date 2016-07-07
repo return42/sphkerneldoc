@@ -7,4 +7,4 @@ dispnv04
 .. toctree::
    :maxdepth: 1
 
-   crtc_c
+    crtc_c

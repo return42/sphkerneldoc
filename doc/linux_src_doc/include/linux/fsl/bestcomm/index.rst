@@ -7,5 +7,5 @@ bestcomm
 .. toctree::
    :maxdepth: 1
 
-   bestcomm_h
-   bestcomm_priv_h
+    bestcomm_h
+    bestcomm_priv_h

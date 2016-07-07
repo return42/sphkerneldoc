@@ -7,5 +7,7 @@ mlx4
 .. toctree::
    :maxdepth: 1
 
-   fw_c
-   port_c
+    en_clock_c
+    fw_c
+    fw_qos_h
+    port_c

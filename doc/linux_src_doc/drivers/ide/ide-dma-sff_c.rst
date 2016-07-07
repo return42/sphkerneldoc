@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-ide-dma-sff.c
-=============
-
+.. src-file: drivers/ide/ide-dma-sff.c
 
 .. _`config_drive_for_dma`:
 
 config_drive_for_dma
 ====================
 
-.. c:function:: int config_drive_for_dma (ide_drive_t *drive)
+.. c:function:: int config_drive_for_dma(ide_drive_t *drive)
 
     attempt to activate IDE DMA
 
     :param ide_drive_t \*drive:
         the drive to place in DMA mode
-
-
 
 .. _`config_drive_for_dma.description`:
 
@@ -30,14 +24,12 @@ support DMA but predate the DMA properties or that are known
 to have DMA handling bugs are also set up appropriately based
 on the good/bad drive lists.
 
-
-
 .. _`ide_dma_host_set`:
 
 ide_dma_host_set
 ================
 
-.. c:function:: void ide_dma_host_set (ide_drive_t *drive, int on)
+.. c:function:: void ide_dma_host_set(ide_drive_t *drive, int on)
 
     Enable/disable DMA on a host
 
@@ -45,10 +37,7 @@ ide_dma_host_set
         drive to control
 
     :param int on:
-
         *undescribed*
-
-
 
 .. _`ide_dma_host_set.description`:
 
@@ -58,34 +47,27 @@ Description
 Enable/disable DMA on an IDE controller following generic
 bus-mastering IDE controller behaviour.
 
-
-
 .. _`ide_build_dmatable`:
 
 ide_build_dmatable
 ==================
 
-.. c:function:: int ide_build_dmatable (ide_drive_t *drive, struct ide_cmd *cmd)
+.. c:function:: int ide_build_dmatable(ide_drive_t *drive, struct ide_cmd *cmd)
 
     build IDE DMA table
 
     :param ide_drive_t \*drive:
-
         *undescribed*
 
     :param struct ide_cmd \*cmd:
-
         *undescribed*
-
-
 
 .. _`ide_build_dmatable.description`:
 
 Description
 -----------
 
-
-:c:func:`ide_build_dmatable` prepares a dma request. We map the command
+\ :c:func:`ide_build_dmatable`\  prepares a dma request. We map the command
 to get the pci bus addresses of the buffers and then build up
 the PRD table that the IDE layer wants to be fed.
 
@@ -98,14 +80,12 @@ returns 0 otherwise.
 
 May also be invoked from trm290.c
 
-
-
 .. _`ide_dma_setup`:
 
 ide_dma_setup
 =============
 
-.. c:function:: int ide_dma_setup (ide_drive_t *drive, struct ide_cmd *cmd)
+.. c:function:: int ide_dma_setup(ide_drive_t *drive, struct ide_cmd *cmd)
 
     begin a DMA phase
 
@@ -114,8 +94,6 @@ ide_dma_setup
 
     :param struct ide_cmd \*cmd:
         command
-
-
 
 .. _`ide_dma_setup.description`:
 
@@ -130,21 +108,17 @@ override this function if they need to
 Returns 0 on success. If a PIO fallback is required then 1
 is returned.
 
-
-
 .. _`ide_dma_sff_timer_expiry`:
 
 ide_dma_sff_timer_expiry
 ========================
 
-.. c:function:: int ide_dma_sff_timer_expiry (ide_drive_t *drive)
+.. c:function:: int ide_dma_sff_timer_expiry(ide_drive_t *drive)
 
     handle a DMA timeout
 
     :param ide_drive_t \*drive:
         Drive that timed out
-
-
 
 .. _`ide_dma_sff_timer_expiry.description`:
 
@@ -159,4 +133,6 @@ Finally if we have an interrupt we let it complete the I/O.
 But only one time - we clear expiry and if it's still not
 completed after WAIT_CMD, we error and retry in PIO.
 This can occur if an interrupt is lost or due to hang or bugs.
+
+.. This file was automatic generated / don't edit.
 

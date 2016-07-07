@@ -1,44 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-fc_libfc.c
-==========
-
+.. src-file: drivers/scsi/libfc/fc_libfc.c
 
 .. _`libfc_init`:
 
 libfc_init
 ==========
 
-.. c:function:: int libfc_init ( void)
+.. c:function:: int libfc_init( void)
 
     Initialize libfc.ko
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`libfc_exit`:
 
 libfc_exit
 ==========
 
-.. c:function:: void __exit libfc_exit ( void)
+.. c:function:: void __exit libfc_exit( void)
 
     Tear down libfc.ko
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`fc_copy_buffer_to_sglist`:
 
 fc_copy_buffer_to_sglist
 ========================
 
-.. c:function:: u32 fc_copy_buffer_to_sglist (void *buf, size_t len, struct scatterlist *sg, u32 *nents, size_t *offset, u32 *crc)
+.. c:function:: u32 fc_copy_buffer_to_sglist(void *buf, size_t len, struct scatterlist *sg, u32 *nents, size_t *offset, u32 *crc)
 
     This routine copies the data of a buffer into a scatter-gather list (SG list).
 
@@ -61,14 +53,12 @@ fc_copy_buffer_to_sglist
         pointer to the 32-bit crc value.
         If crc is NULL, CRC is not calculated.
 
-
-
 .. _`fc_fill_hdr`:
 
 fc_fill_hdr
 ===========
 
-.. c:function:: void fc_fill_hdr (struct fc_frame *fp, const struct fc_frame *in_fp, enum fc_rctl r_ctl, u32 f_ctl, u16 seq_cnt, u32 parm_offset)
+.. c:function:: void fc_fill_hdr(struct fc_frame *fp, const struct fc_frame *in_fp, enum fc_rctl r_ctl, u32 f_ctl, u16 seq_cnt, u32 parm_offset)
 
     fill FC header fields based on request
 
@@ -90,14 +80,12 @@ fc_fill_hdr
     :param u32 parm_offset:
         parameter / offset value
 
-
-
 .. _`fc_fill_reply_hdr`:
 
 fc_fill_reply_hdr
 =================
 
-.. c:function:: void fc_fill_reply_hdr (struct fc_frame *fp, const struct fc_frame *in_fp, enum fc_rctl r_ctl, u32 parm_offset)
+.. c:function:: void fc_fill_reply_hdr(struct fc_frame *fp, const struct fc_frame *in_fp, enum fc_rctl r_ctl, u32 parm_offset)
 
     fill FC reply header fields based on request
 
@@ -113,14 +101,12 @@ fc_fill_reply_hdr
     :param u32 parm_offset:
         parameter / offset value
 
-
-
 .. _`fc_fc4_conf_lport_params`:
 
 fc_fc4_conf_lport_params
 ========================
 
-.. c:function:: void fc_fc4_conf_lport_params (struct fc_lport *lport, enum fc_fh_type type)
+.. c:function:: void fc_fc4_conf_lport_params(struct fc_lport *lport, enum fc_fh_type type)
 
     Modify "service_params" of specified lport if there is service provider (target provider) registered with libfc for specified "fc_ft_type"
 
@@ -130,14 +116,12 @@ fc_fc4_conf_lport_params
     :param enum fc_fh_type type:
         FC-4 type, such as FC_TYPE_FCP
 
-
-
 .. _`fc_fc4_register_provider`:
 
 fc_fc4_register_provider
 ========================
 
-.. c:function:: int fc_fc4_register_provider (enum fc_fh_type type, struct fc4_prov *prov)
+.. c:function:: int fc_fc4_register_provider(enum fc_fh_type type, struct fc4_prov *prov)
 
     register FC-4 upper-level provider.
 
@@ -147,8 +131,6 @@ fc_fc4_register_provider
     :param struct fc4_prov \*prov:
         structure describing provider including ops vector.
 
-
-
 .. _`fc_fc4_register_provider.description`:
 
 Description
@@ -156,14 +138,12 @@ Description
 
 Returns 0 on success, negative error otherwise.
 
-
-
 .. _`fc_fc4_deregister_provider`:
 
 fc_fc4_deregister_provider
 ==========================
 
-.. c:function:: void fc_fc4_deregister_provider (enum fc_fh_type type, struct fc4_prov *prov)
+.. c:function:: void fc_fc4_deregister_provider(enum fc_fh_type type, struct fc4_prov *prov)
 
     deregister FC-4 upper-level provider.
 
@@ -173,31 +153,29 @@ fc_fc4_deregister_provider
     :param struct fc4_prov \*prov:
         structure describing provider including ops vector.
 
-
-
 .. _`fc_fc4_add_lport`:
 
 fc_fc4_add_lport
 ================
 
-.. c:function:: void fc_fc4_add_lport (struct fc_lport *lport)
+.. c:function:: void fc_fc4_add_lport(struct fc_lport *lport)
 
     add new local port to list and run notifiers.
 
     :param struct fc_lport \*lport:
         The new local port.
 
-
-
 .. _`fc_fc4_del_lport`:
 
 fc_fc4_del_lport
 ================
 
-.. c:function:: void fc_fc4_del_lport (struct fc_lport *lport)
+.. c:function:: void fc_fc4_del_lport(struct fc_lport *lport)
 
     remove local port from list and run notifiers.
 
     :param struct fc_lport \*lport:
         The new local port.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,0 +1,79 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5764.c
+
+.. _`ad5764_chip_info`:
+
+struct ad5764_chip_info
+=======================
+
+.. c:type:: struct ad5764_chip_info
+
+    chip specific information
+
+.. _`ad5764_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5764_chip_info {
+        unsigned long int_vref;
+        const struct iio_chan_spec *channels;
+    }
+
+.. _`ad5764_chip_info.members`:
+
+Members
+-------
+
+int_vref
+    Value of the internal reference voltage in uV - 0 if external
+    reference voltage is used
+    \ ``channel``\      channel specification
+
+channels
+    *undescribed*
+
+.. _`ad5764_state`:
+
+struct ad5764_state
+===================
+
+.. c:type:: struct ad5764_state
+
+    driver instance specific data
+
+.. _`ad5764_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5764_state {
+        struct spi_device *spi;
+        const struct ad5764_chip_info *chip_info;
+        struct regulator_bulk_data vref_reg[2];
+        union data[2] ____cacheline_aligned;
+    }
+
+.. _`ad5764_state.members`:
+
+Members
+-------
+
+spi
+    spi_device
+
+chip_info
+    chip info
+
+vref_reg
+    vref supply regulators
+
+data
+    spi transfer buffers
+
+.. This file was automatic generated / don't edit.
+

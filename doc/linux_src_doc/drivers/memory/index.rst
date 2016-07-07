@@ -7,6 +7,9 @@ memory
 .. toctree::
    :maxdepth: 1
 
-   jz4780-nemc_c
-   of_memory_c
-   omap-gpmc_c
+    samsung/index
+    emif_c
+    jz4780-nemc_c
+    of_memory_c
+    omap-gpmc_c
+    ti-aemif_c

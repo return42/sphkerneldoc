@@ -7,4 +7,5 @@ platform
 .. toctree::
    :maxdepth: 1
 
-   x86/index
+    goldfish/index
+    x86/index

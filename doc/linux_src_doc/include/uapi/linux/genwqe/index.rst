@@ -7,4 +7,4 @@ genwqe
 .. toctree::
    :maxdepth: 1
 
-   genwqe_card_h
+    genwqe_card_h

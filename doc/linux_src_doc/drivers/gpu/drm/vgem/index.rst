@@ -7,4 +7,4 @@ vgem
 .. toctree::
    :maxdepth: 1
 
-   vgem_drv_c
+    vgem_drv_c

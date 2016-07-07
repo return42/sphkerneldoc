@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====================
-invensense_mpu6050.h
-====================
-
+.. src-file: include/linux/platform_data/invensense_mpu6050.h
 
 .. _`inv_mpu6050_platform_data`:
 
 struct inv_mpu6050_platform_data
 ================================
 
-.. c:type:: inv_mpu6050_platform_data
+.. c:type:: struct inv_mpu6050_platform_data
 
     Platform data for the mpu driver
-
 
 .. _`inv_mpu6050_platform_data.definition`:
 
@@ -22,21 +17,18 @@ Definition
 
 .. code-block:: c
 
-  struct inv_mpu6050_platform_data {
-    __s8 orientation[9];
-  };
-
+    struct inv_mpu6050_platform_data {
+        __s8 orientation[9];
+    }
 
 .. _`inv_mpu6050_platform_data.members`:
 
 Members
 -------
 
-:``orientation[9]``:
-    Orientation matrix of the chip
-
-
-
+orientation
+    Orientation matrix of the chip (deprecated in favor of
+    mounting matrix retrieved from device-tree)
 
 .. _`inv_mpu6050_platform_data.description`:
 
@@ -48,4 +40,8 @@ work on this platform.  The orientation matricies are 3x3 rotation matricies
 that are applied to the data to rotate from the mounting orientation to the
 platform orientation.  The values must be one of 0, 1, or -1 and each row and
 column should have exactly 1 non-zero value.
+
+Deprecated in favor of mounting matrix retrieved from device-tree.
+
+.. This file was automatic generated / don't edit.
 

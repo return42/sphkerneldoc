@@ -1,0 +1,42 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/imu/adis16400.h
+
+.. _`adis16400_state`:
+
+struct adis16400_state
+======================
+
+.. c:type:: struct adis16400_state
+
+    device instance specific data
+
+.. _`adis16400_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct adis16400_state {
+        struct adis16400_chip_info *variant;
+        int filt_int;
+        struct adis adis;
+        unsigned long avail_scan_mask[2];
+    }
+
+.. _`adis16400_state.members`:
+
+Members
+-------
+
+variant
+    chip variant info
+
+filt_int
+    integer part of requested filter frequency
+
+adis
+    adis device
+
+.. This file was automatic generated / don't edit.
+

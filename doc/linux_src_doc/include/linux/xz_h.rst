@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-xz.h
-====
-
+.. src-file: include/linux/xz.h
 
 .. _`xz_mode`:
 
 enum xz_mode
 ============
 
-.. c:type:: xz_mode
+.. c:type:: enum xz_mode
 
     Operation mode
-
 
 .. _`xz_mode.definition`:
 
@@ -23,38 +18,36 @@ Definition
 .. code-block:: c
 
     enum xz_mode {
-      XZ_SINGLE,
-      XZ_PREALLOC,
-      XZ_DYNALLOC
+        XZ_SINGLE,
+        XZ_PREALLOC,
+        XZ_DYNALLOC
     };
-
 
 .. _`xz_mode.constants`:
 
 Constants
 ---------
 
-:``XZ_SINGLE``:
+XZ_SINGLE
     Single-call mode. This uses less RAM than
     than multi-call modes, because the LZMA2
     dictionary doesn't need to be allocated as
     part of the decoder state. All required data
     structures are allocated at initialization,
-    so :c:func:`xz_dec_run` cannot return XZ_MEM_ERROR.
+    so \ :c:func:`xz_dec_run`\  cannot return XZ_MEM_ERROR.
 
-:``XZ_PREALLOC``:
+XZ_PREALLOC
     Multi-call mode with preallocated LZMA2
     dictionary buffer. All data structures are
-    allocated at initialization, so :c:func:`xz_dec_run`
+    allocated at initialization, so \ :c:func:`xz_dec_run`\ 
     cannot return XZ_MEM_ERROR.
 
-:``XZ_DYNALLOC``:
+XZ_DYNALLOC
     Multi-call mode. The LZMA2 dictionary is
     allocated once the required size has been
     parsed from the stream headers. If the
-    allocation fails, :c:func:`xz_dec_run` will return
+    allocation fails, \ :c:func:`xz_dec_run`\  will return
     XZ_MEM_ERROR.
-
 
 .. _`xz_mode.description`:
 
@@ -67,17 +60,14 @@ or XZ_DEC_DYNALLOC. The xz_dec kernel module is always compiled
 with support for all operation modes, but the preboot code may
 be built with fewer features to minimize code size.
 
-
-
 .. _`xz_ret`:
 
 enum xz_ret
 ===========
 
-.. c:type:: xz_ret
+.. c:type:: enum xz_ret
 
     Return codes
-
 
 .. _`xz_ret.definition`:
 
@@ -87,75 +77,73 @@ Definition
 .. code-block:: c
 
     enum xz_ret {
-      XZ_OK,
-      XZ_STREAM_END,
-      XZ_UNSUPPORTED_CHECK,
-      XZ_MEM_ERROR,
-      XZ_MEMLIMIT_ERROR,
-      XZ_FORMAT_ERROR,
-      XZ_OPTIONS_ERROR,
-      XZ_DATA_ERROR,
-      XZ_BUF_ERROR
+        XZ_OK,
+        XZ_STREAM_END,
+        XZ_UNSUPPORTED_CHECK,
+        XZ_MEM_ERROR,
+        XZ_MEMLIMIT_ERROR,
+        XZ_FORMAT_ERROR,
+        XZ_OPTIONS_ERROR,
+        XZ_DATA_ERROR,
+        XZ_BUF_ERROR
     };
-
 
 .. _`xz_ret.constants`:
 
 Constants
 ---------
 
-:``XZ_OK``:
+XZ_OK
     Everything is OK so far. More input or more
     output space is required to continue. This
     return code is possible only in multi-call mode
     (XZ_PREALLOC or XZ_DYNALLOC).
 
-:``XZ_STREAM_END``:
+XZ_STREAM_END
     Operation finished successfully.
 
-:``XZ_UNSUPPORTED_CHECK``:
+XZ_UNSUPPORTED_CHECK
     Integrity check type is not supported. Decoding
     is still possible in multi-call mode by simply
-    calling :c:func:`xz_dec_run` again.
+    calling \ :c:func:`xz_dec_run`\  again.
     Note that this return value is used only if
     XZ_DEC_ANY_CHECK was defined at build time,
     which is not used in the kernel. Unsupported
     check types return XZ_OPTIONS_ERROR if
     XZ_DEC_ANY_CHECK was not defined at build time.
 
-:``XZ_MEM_ERROR``:
+XZ_MEM_ERROR
     Allocating memory failed. This return code is
     possible only if the decoder was initialized
     with XZ_DYNALLOC. The amount of memory that was
     tried to be allocated was no more than the
-    dict_max argument given to :c:func:`xz_dec_init`.
+    dict_max argument given to \ :c:func:`xz_dec_init`\ .
 
-:``XZ_MEMLIMIT_ERROR``:
+XZ_MEMLIMIT_ERROR
     A bigger LZMA2 dictionary would be needed than
     allowed by the dict_max argument given to
-    :c:func:`xz_dec_init`. This return value is possible
+    \ :c:func:`xz_dec_init`\ . This return value is possible
     only in multi-call mode (XZ_PREALLOC or
     XZ_DYNALLOC); the single-call mode (XZ_SINGLE)
     ignores the dict_max argument.
 
-:``XZ_FORMAT_ERROR``:
+XZ_FORMAT_ERROR
     File format was not recognized (wrong magic
     bytes).
 
-:``XZ_OPTIONS_ERROR``:
+XZ_OPTIONS_ERROR
     This implementation doesn't support the requested
     compression options. In the decoder this means
     that the header CRC32 matches, but the header
     itself specifies something that we don't support.
 
-:``XZ_DATA_ERROR``:
+XZ_DATA_ERROR
     Compressed data is corrupt.
 
-:``XZ_BUF_ERROR``:
+XZ_BUF_ERROR
     Cannot make any progress. Details are slightly
     different between multi-call and single-call
     mode; more information below.
-
 
 .. _`xz_ret.description`:
 
@@ -175,17 +163,14 @@ decoder produce more output than the caller expected. When it is
 (relatively) clear that the compressed input is truncated, XZ_DATA_ERROR
 is used instead of XZ_BUF_ERROR.
 
-
-
 .. _`xz_buf`:
 
 struct xz_buf
 =============
 
-.. c:type:: xz_buf
+.. c:type:: struct xz_buf
 
     Passing input and output buffers to XZ code
-
 
 .. _`xz_buf.definition`:
 
@@ -194,45 +179,41 @@ Definition
 
 .. code-block:: c
 
-  struct xz_buf {
-    const uint8_t * in;
-    size_t in_pos;
-    size_t in_size;
-    uint8_t * out;
-    size_t out_pos;
-    size_t out_size;
-  };
-
+    struct xz_buf {
+        const uint8_t *in;
+        size_t in_pos;
+        size_t in_size;
+        uint8_t *out;
+        size_t out_pos;
+        size_t out_size;
+    }
 
 .. _`xz_buf.members`:
 
 Members
 -------
 
-:``in``:
+in
     Beginning of the input buffer. This may be NULL if and only
     if in_pos is equal to in_size.
 
-:``in_pos``:
+in_pos
     Current position in the input buffer. This must not exceed
     in_size.
 
-:``in_size``:
+in_size
     Size of the input buffer
 
-:``out``:
+out
     Beginning of the output buffer. This may be NULL if and only
     if out_pos is equal to out_size.
 
-:``out_pos``:
+out_pos
     Current position in the output buffer. This must not exceed
     out_size.
 
-:``out_size``:
+out_size
     Size of the output buffer
-
-
-
 
 .. _`xz_buf.description`:
 
@@ -242,14 +223,12 @@ Description
 Only the contents of the output buffer from out[out_pos] onward, and
 the variables in_pos and out_pos are modified by the XZ code.
 
-
-
 .. _`xz_dec_init`:
 
 xz_dec_init
 ===========
 
-.. c:function:: XZ_EXTERN struct xz_dec *xz_dec_init (enum xz_mode mode, uint32_t dict_max)
+.. c:function:: XZ_EXTERN struct xz_dec *xz_dec_init(enum xz_mode mode, uint32_t dict_max)
 
     Allocate and initialize a XZ decoder state
 
@@ -267,14 +246,12 @@ xz_dec_init
         except for kernel and initramfs images where a bigger
         dictionary can be fine and useful.
 
-
-
 .. _`xz_dec_init.description`:
 
 Description
 -----------
 
-Single-call mode (XZ_SINGLE): :c:func:`xz_dec_run` decodes the whole stream at
+Single-call mode (XZ_SINGLE): \ :c:func:`xz_dec_run`\  decodes the whole stream at
 once. The caller must provide enough output space or the decoding will
 fail. The output space is used as the dictionary buffer, which is why
 there is no need to allocate the dictionary as part of the decoder's
@@ -287,41 +264,37 @@ can be smaller than the dictionary size stored in the stream headers.
 
 Multi-call mode with preallocated dictionary (XZ_PREALLOC): dict_max bytes
 of memory is preallocated for the LZMA2 dictionary. This way there is no
-risk that :c:func:`xz_dec_run` could run out of memory, since :c:func:`xz_dec_run` will
+risk that \ :c:func:`xz_dec_run`\  could run out of memory, since \ :c:func:`xz_dec_run`\  will
 never allocate any memory. Instead, if the preallocated dictionary is too
-small for decoding the given input stream, :c:func:`xz_dec_run` will return
+small for decoding the given input stream, \ :c:func:`xz_dec_run`\  will return
 XZ_MEMLIMIT_ERROR. Thus, it is important to know what kind of data will be
 decoded to avoid allocating excessive amount of memory for the dictionary.
 
 Multi-call mode with dynamically allocated dictionary (XZ_DYNALLOC):
-dict_max specifies the maximum allowed dictionary size that :c:func:`xz_dec_run`
+dict_max specifies the maximum allowed dictionary size that \ :c:func:`xz_dec_run`\ 
 may allocate once it has parsed the dictionary size from the stream
 headers. This way excessive allocations can be avoided while still
 limiting the maximum memory usage to a sane value to prevent running the
 system out of memory when decompressing streams from untrusted sources.
 
-On success, :c:func:`xz_dec_init` returns a pointer to struct xz_dec, which is
-ready to be used with :c:func:`xz_dec_run`. If memory allocation fails,
-:c:func:`xz_dec_init` returns NULL.
-
-
+On success, \ :c:func:`xz_dec_init`\  returns a pointer to struct xz_dec, which is
+ready to be used with \ :c:func:`xz_dec_run`\ . If memory allocation fails,
+\ :c:func:`xz_dec_init`\  returns NULL.
 
 .. _`xz_dec_run`:
 
 xz_dec_run
 ==========
 
-.. c:function:: XZ_EXTERN enum xz_ret xz_dec_run (struct xz_dec *s, struct xz_buf *b)
+.. c:function:: XZ_EXTERN enum xz_ret xz_dec_run(struct xz_dec *s, struct xz_buf *b)
 
     Run the XZ decoder
 
     :param struct xz_dec \*s:
-        Decoder state allocated using :c:func:`xz_dec_init`
+        Decoder state allocated using \ :c:func:`xz_dec_init`\ 
 
     :param struct xz_buf \*b:
         Input and output buffers
-
-
 
 .. _`xz_dec_run.description`:
 
@@ -341,21 +314,17 @@ cannot give the single-call decoder a too small buffer and then expect to
 get that amount valid data from the beginning of the stream. You must use
 the multi-call decoder if you don't want to uncompress the whole stream.
 
-
-
 .. _`xz_dec_reset`:
 
 xz_dec_reset
 ============
 
-.. c:function:: XZ_EXTERN void xz_dec_reset (struct xz_dec *s)
+.. c:function:: XZ_EXTERN void xz_dec_reset(struct xz_dec *s)
 
     Reset an already allocated decoder state
 
     :param struct xz_dec \*s:
-        Decoder state allocated using :c:func:`xz_dec_init`
-
-
+        Decoder state allocated using \ :c:func:`xz_dec_init`\ 
 
 .. _`xz_dec_reset.description`:
 
@@ -363,24 +332,24 @@ Description
 -----------
 
 This function can be used to reset the multi-call decoder state without
-freeing and reallocating memory with :c:func:`xz_dec_end` and :c:func:`xz_dec_init`.
+freeing and reallocating memory with \ :c:func:`xz_dec_end`\  and \ :c:func:`xz_dec_init`\ .
 
-In single-call mode, :c:func:`xz_dec_reset` is always called in the beginning of
-:c:func:`xz_dec_run`. Thus, explicit call to :c:func:`xz_dec_reset` is useful only in
+In single-call mode, \ :c:func:`xz_dec_reset`\  is always called in the beginning of
+\ :c:func:`xz_dec_run`\ . Thus, explicit call to \ :c:func:`xz_dec_reset`\  is useful only in
 multi-call mode.
-
-
 
 .. _`xz_dec_end`:
 
 xz_dec_end
 ==========
 
-.. c:function:: XZ_EXTERN void xz_dec_end (struct xz_dec *s)
+.. c:function:: XZ_EXTERN void xz_dec_end(struct xz_dec *s)
 
     Free the memory allocated for the decoder state
 
     :param struct xz_dec \*s:
-        Decoder state allocated using :c:func:`xz_dec_init`. If s is NULL,
+        Decoder state allocated using \ :c:func:`xz_dec_init`\ . If s is NULL,
         this function does nothing.
+
+.. This file was automatic generated / don't edit.
 

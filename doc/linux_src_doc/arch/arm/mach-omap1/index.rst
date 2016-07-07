@@ -7,4 +7,8 @@ mach-omap1
 .. toctree::
    :maxdepth: 1
 
-   clock_c
+    clock_c
+    clock_h
+    pm_c
+    reset_c
+    timer_c

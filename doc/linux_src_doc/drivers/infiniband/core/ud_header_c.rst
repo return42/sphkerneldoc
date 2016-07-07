@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-ud_header.c
-===========
-
+.. src-file: drivers/infiniband/core/ud_header.c
 
 .. _`ib_ud_header_init`:
 
 ib_ud_header_init
 =================
 
-.. c:function:: int ib_ud_header_init (int payload_bytes, int lrh_present, int eth_present, int vlan_present, int grh_present, int ip_version, int udp_present, int immediate_present, struct ib_ud_header *header)
+.. c:function:: int ib_ud_header_init(int payload_bytes, int lrh_present, int eth_present, int vlan_present, int grh_present, int ip_version, int udp_present, int immediate_present, struct ib_ud_header *header)
 
     Initialize UD header structure
 
@@ -41,14 +37,12 @@ ib_ud_header_init
     :param struct ib_ud_header \*header:
         Structure to initialize
 
-
-
 .. _`ib_ud_header_pack`:
 
 ib_ud_header_pack
 =================
 
-.. c:function:: int ib_ud_header_pack (struct ib_ud_header *header, void *buf)
+.. c:function:: int ib_ud_header_pack(struct ib_ud_header *header, void *buf)
 
     Pack UD header struct into wire format
 
@@ -58,24 +52,20 @@ ib_ud_header_pack
     :param void \*buf:
         Buffer to pack into
 
-
-
 .. _`ib_ud_header_pack.description`:
 
 Description
 -----------
 
-:c:func:`ib_ud_header_pack` packs the UD header structure ``header`` into wire
-format in the buffer ``buf``\ .
-
-
+\ :c:func:`ib_ud_header_pack`\  packs the UD header structure \ ``header``\  into wire
+format in the buffer \ ``buf``\ .
 
 .. _`ib_ud_header_unpack`:
 
 ib_ud_header_unpack
 ===================
 
-.. c:function:: int ib_ud_header_unpack (void *buf, struct ib_ud_header *header)
+.. c:function:: int ib_ud_header_unpack(void *buf, struct ib_ud_header *header)
 
     Unpack UD header struct from wire format
 
@@ -85,13 +75,13 @@ ib_ud_header_unpack
     :param struct ib_ud_header \*header:
         UD header struct
 
-
-
 .. _`ib_ud_header_unpack.description`:
 
 Description
 -----------
 
-:c:func:`ib_ud_header_pack` unpacks the UD header structure ``header`` from wire
-format in the buffer ``buf``\ .
+\ :c:func:`ib_ud_header_pack`\  unpacks the UD header structure \ ``header``\  from wire
+format in the buffer \ ``buf``\ .
+
+.. This file was automatic generated / don't edit.
 

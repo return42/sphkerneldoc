@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-dw.h
-====
-
+.. src-file: include/linux/dma/dw.h
 
 .. _`dw_dma_chip`:
 
 struct dw_dma_chip
 ==================
 
-.. c:type:: dw_dma_chip
+.. c:type:: struct dw_dma_chip
 
     representation of DesignWare DMA controller hardware
-
 
 .. _`dw_dma_chip.definition`:
 
@@ -22,33 +17,37 @@ Definition
 
 .. code-block:: c
 
-  struct dw_dma_chip {
-    struct device * dev;
-    int irq;
-    void __iomem * regs;
-    struct clk * clk;
-    struct dw_dma * dw;
-  };
-
+    struct dw_dma_chip {
+        struct device *dev;
+        int irq;
+        void __iomem *regs;
+        struct clk *clk;
+        struct dw_dma *dw;
+        const struct dw_dma_platform_data *pdata;
+    }
 
 .. _`dw_dma_chip.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     struct device of the DMA controller
 
-:``irq``:
+irq
     irq line
 
-:``regs``:
+regs
     memory mapped I/O space
 
-:``clk``:
+clk
     hclk clock
 
-:``dw``:
-    struct dw_dma that is filed by :c:func:`dw_dma_probe`
+dw
+    struct dw_dma that is filed by \ :c:func:`dw_dma_probe`\ 
 
+pdata
+    pointer to platform data
+
+.. This file was automatic generated / don't edit.
 

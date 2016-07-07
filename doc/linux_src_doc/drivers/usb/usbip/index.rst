@@ -7,6 +7,6 @@ usbip
 .. toctree::
    :maxdepth: 1
 
-   stub_dev_c
-   stub_tx_c
-   usbip_common_h
+    stub_dev_c
+    stub_tx_c
+    usbip_common_h

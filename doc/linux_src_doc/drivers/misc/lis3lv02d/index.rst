@@ -7,4 +7,4 @@ lis3lv02d
 .. toctree::
    :maxdepth: 1
 
-   lis3lv02d_c
+    lis3lv02d_c

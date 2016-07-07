@@ -7,4 +7,4 @@ brcmnand
 .. toctree::
    :maxdepth: 1
 
-   brcmnand_c
+    brcmnand_c

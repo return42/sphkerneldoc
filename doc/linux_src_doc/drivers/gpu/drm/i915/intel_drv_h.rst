@@ -1,59 +1,54 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-intel_drv.h
-===========
-
+.. src-file: drivers/gpu/drm/i915/intel_drv.h
 
 .. _`_wait_for`:
 
 _wait_for
 =========
 
-.. c:function:: _wait_for ( COND,  MS,  W)
+.. c:function::  _wait_for( COND,  US,  W)
 
     magic (register) wait macro
 
-    :param COND:
-
+    :param  COND:
         *undescribed*
 
-    :param MS:
-
+    :param  US:
         *undescribed*
 
-    :param W:
-
+    :param  W:
         *undescribed*
-
-
 
 .. _`_wait_for.description`:
 
 Description
 -----------
 
-
 Does the right thing for modeset paths when run under kdgb or similar atomic
 contexts. Note that it's important that we check the condition again after
 having timed out, since the timeout could be due to preemption or similar and
 we've never had a chance to check the condition before the timeout.
 
+.. _`_wait_for.todo`:
 
+TODO
+----
+
+When modesetting has fully transitioned to atomic, the below
+\ :c:func:`drm_can_sleep`\  can be removed and \ :c:func:`in_atomic`\ /!\ :c:func:`in_atomic`\  asserts
+added.
 
 .. _`disable_rpm_wakeref_asserts`:
 
 disable_rpm_wakeref_asserts
 ===========================
 
-.. c:function:: void disable_rpm_wakeref_asserts (struct drm_i915_private *dev_priv)
+.. c:function:: void disable_rpm_wakeref_asserts(struct drm_i915_private *dev_priv)
 
     disable the RPM assert checks
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
-
-
 
 .. _`disable_rpm_wakeref_asserts.description`:
 
@@ -66,29 +61,25 @@ It's meant to be used only in special circumstances where our rule about
 the wakelock refcount wrt. the device power state doesn't hold. According
 to this rule at any point where we access the HW or want to keep the HW in
 an active state we must hold an RPM wakelock reference acquired via one of
-the :c:func:`intel_runtime_pm_get` helpers. Currently there are a few special spots
+the \ :c:func:`intel_runtime_pm_get`\  helpers. Currently there are a few special spots
 where this rule doesn't hold: the IRQ and suspend/resume handlers, the
 forcewake release timer, and the GPU RPS and hangcheck works. All other
 users should avoid using this function.
 
 Any calls to this function must have a symmetric call to
-:c:func:`enable_rpm_wakeref_asserts`.
-
-
+\ :c:func:`enable_rpm_wakeref_asserts`\ .
 
 .. _`enable_rpm_wakeref_asserts`:
 
 enable_rpm_wakeref_asserts
 ==========================
 
-.. c:function:: void enable_rpm_wakeref_asserts (struct drm_i915_private *dev_priv)
+.. c:function:: void enable_rpm_wakeref_asserts(struct drm_i915_private *dev_priv)
 
     re-enable the RPM assert checks
 
     :param struct drm_i915_private \*dev_priv:
         i915 device instance
-
-
 
 .. _`enable_rpm_wakeref_asserts.description`:
 
@@ -100,5 +91,7 @@ disable_rpm_wakeref_asserts. It's meant to be used only in special
 circumstances otherwise its use should be avoided.
 
 Any calls to this function must have a symmetric call to
-:c:func:`disable_rpm_wakeref_asserts`.
+\ :c:func:`disable_rpm_wakeref_asserts`\ .
+
+.. This file was automatic generated / don't edit.
 

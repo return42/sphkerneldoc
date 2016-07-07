@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==================
-videobuf2-memops.h
-==================
-
+.. src-file: include/media/videobuf2-memops.h
 
 .. _`vb2_vmarea_handler`:
 
 struct vb2_vmarea_handler
 =========================
 
-.. c:type:: vb2_vmarea_handler
+.. c:type:: struct vb2_vmarea_handler
 
     common vma refcount tracking handler
-
 
 .. _`vb2_vmarea_handler.definition`:
 
@@ -22,25 +17,25 @@ Definition
 
 .. code-block:: c
 
-  struct vb2_vmarea_handler {
-    atomic_t * refcount;
-    void (* put) (void *arg);
-    void * arg;
-  };
-
+    struct vb2_vmarea_handler {
+        atomic_t *refcount;
+        void (* put) (void *arg);
+        void *arg;
+    }
 
 .. _`vb2_vmarea_handler.members`:
 
 Members
 -------
 
-:``refcount``:
+refcount
     pointer to refcount entry in the buffer
 
-:``put``:
+put
     callback to function that decreases buffer refcount
 
-:``arg``:
-    argument for ``put`` callback
+arg
+    argument for \ ``put``\  callback
 
+.. This file was automatic generated / don't edit.
 

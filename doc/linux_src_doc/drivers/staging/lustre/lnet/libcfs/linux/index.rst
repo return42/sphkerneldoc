@@ -7,7 +7,7 @@ linux
 .. toctree::
    :maxdepth: 1
 
-   linux-cpu_c
-   linux-crypto_c
-   linux-debug_c
-   linux-prim_c
+    linux-cpu_c
+    linux-crypto_c
+    linux-crypto_h
+    linux-debug_c

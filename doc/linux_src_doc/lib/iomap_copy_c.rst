@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-iomap_copy.c
-============
-
+.. src-file: lib/iomap_copy.c
 
 .. _`__iowrite32_copy`:
 
 __iowrite32_copy
 ================
 
-.. c:function:: void __iowrite32_copy (void __iomem *to, const void *from, size_t count)
+.. c:function:: void __iowrite32_copy(void __iomem *to, const void *from, size_t count)
 
     copy data to MMIO space, in 32-bit units
 
@@ -23,8 +19,6 @@ __iowrite32_copy
     :param size_t count:
         number of 32-bit quantities to copy
 
-
-
 .. _`__iowrite32_copy.description`:
 
 Description
@@ -34,14 +28,12 @@ Copy data from kernel space to MMIO space, in units of 32 bits at a
 time.  Order of access is not guaranteed, nor is a memory barrier
 performed afterwards.
 
-
-
 .. _`__ioread32_copy`:
 
 __ioread32_copy
 ===============
 
-.. c:function:: void __ioread32_copy (void *to, const void __iomem *from, size_t count)
+.. c:function:: void __ioread32_copy(void *to, const void __iomem *from, size_t count)
 
     copy data from MMIO space, in 32-bit units
 
@@ -54,8 +46,6 @@ __ioread32_copy
     :param size_t count:
         number of 32-bit quantities to copy
 
-
-
 .. _`__ioread32_copy.description`:
 
 Description
@@ -65,14 +55,12 @@ Copy data from MMIO space to kernel space, in units of 32 bits at a
 time.  Order of access is not guaranteed, nor is a memory barrier
 performed afterwards.
 
-
-
 .. _`__iowrite64_copy`:
 
 __iowrite64_copy
 ================
 
-.. c:function:: void __iowrite64_copy (void __iomem *to, const void *from, size_t count)
+.. c:function:: void __iowrite64_copy(void __iomem *to, const void *from, size_t count)
 
     copy data to MMIO space, in 64-bit or 32-bit units
 
@@ -85,8 +73,6 @@ __iowrite64_copy
     :param size_t count:
         number of 64-bit quantities to copy
 
-
-
 .. _`__iowrite64_copy.description`:
 
 Description
@@ -95,4 +81,6 @@ Description
 Copy data from kernel space to MMIO space, in units of 32 or 64 bits at a
 time.  Order of access is not guaranteed, nor is a memory barrier
 performed afterwards.
+
+.. This file was automatic generated / don't edit.
 

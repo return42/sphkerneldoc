@@ -7,5 +7,6 @@ kvm
 .. toctree::
    :maxdepth: 1
 
-   book3s_hv_builtin_c
-   book3s_hv_rm_xics_c
+    book3s_hv_builtin_c
+    book3s_hv_rm_xics_c
+    booke_c

@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-region_devs.c
-=============
-
+.. src-file: drivers/nvdimm/region_devs.c
 
 .. _`nd_region_to_nstype`:
 
 nd_region_to_nstype
 ===================
 
-.. c:function:: int nd_region_to_nstype (struct nd_region *nd_region)
+.. c:function:: int nd_region_to_nstype(struct nd_region *nd_region)
 
     region to an integer namespace type
 
     :param struct nd_region \*nd_region:
         region-device to interrogate
-
-
 
 .. _`nd_region_to_nstype.description`:
 
@@ -28,21 +22,17 @@ This is the 'nstype' attribute of a region as well, an input to the
 MODALIAS for namespace devices, and bit number for a nvdimm_bus to match
 namespace devices with namespace drivers.
 
-
-
 .. _`nd_region_acquire_lane`:
 
 nd_region_acquire_lane
 ======================
 
-.. c:function:: unsigned int nd_region_acquire_lane (struct nd_region *nd_region)
+.. c:function:: unsigned int nd_region_acquire_lane(struct nd_region *nd_region)
 
     allocate and lock a lane
 
     :param struct nd_region \*nd_region:
         region id and number of lanes possible
-
-
 
 .. _`nd_region_acquire_lane.description`:
 
@@ -61,4 +51,6 @@ acquired recursively.  We lock on the first instance.
 
 In the case of a BTT instance on top of PMEM, we only acquire a lane
 for the BTT metadata updates.
+
+.. This file was automatic generated / don't edit.
 

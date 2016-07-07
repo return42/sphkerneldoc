@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-zpool.h
-=======
-
+.. src-file: include/linux/zpool.h
 
 .. _`zpool_driver`:
 
 struct zpool_driver
 ===================
 
-.. c:type:: zpool_driver
+.. c:type:: struct zpool_driver
 
     driver implementation for zpool
-
 
 .. _`zpool_driver.definition`:
 
@@ -22,57 +17,61 @@ Definition
 
 .. code-block:: c
 
-  struct zpool_driver {
-    char * type;
-    struct list_head list;
-    void *(* create) (const char *name,gfp_t gfp,const struct zpool_ops *ops,struct zpool *zpool);
-    void (* destroy) (void *pool);
-    int (* malloc) (void *pool, size_t size, gfp_t gfp,unsigned long *handle);
-    void (* free) (void *pool, unsigned long handle);
-    int (* shrink) (void *pool, unsigned int pages,unsigned int *reclaimed);
-    void *(* map) (void *pool, unsigned long handle,enum zpool_mapmode mm);
-    void (* unmap) (void *pool, unsigned long handle);
-    u64 (* total_size) (void *pool);
-  };
-
+    struct zpool_driver {
+        char *type;
+        struct module *owner;
+        atomic_t refcount;
+        struct list_head list;
+        void *(* create) (const char *name,gfp_t gfp,const struct zpool_ops *ops,struct zpool *zpool);
+        void (* destroy) (void *pool);
+        int (* malloc) (void *pool, size_t size, gfp_t gfp,unsigned long *handle);
+        void (* free) (void *pool, unsigned long handle);
+        int (* shrink) (void *pool, unsigned int pages,unsigned int *reclaimed);
+        void *(* map) (void *pool, unsigned long handle,enum zpool_mapmode mm);
+        void (* unmap) (void *pool, unsigned long handle);
+        u64 (* total_size) (void *pool);
+    }
 
 .. _`zpool_driver.members`:
 
 Members
 -------
 
-:``type``:
+type
     name of the driver.
 
-:``list``:
+owner
+    *undescribed*
+
+refcount
+    *undescribed*
+
+list
     entry in the list of zpool drivers.
 
-:``create``:
+create
     create a new pool.
 
-:``destroy``:
+destroy
     destroy a pool.
 
-:``malloc``:
+malloc
     allocate mem from a pool.
 
-:``free``:
+free
     free mem from a pool.
 
-:``shrink``:
+shrink
     shrink the pool.
 
-:``map``:
+map
     map a handle.
 
-:``unmap``:
+unmap
     unmap a handle.
 
-:``total_size``:
+total_size
     get total size of a pool.
-
-
-
 
 .. _`zpool_driver.description`:
 
@@ -81,4 +80,6 @@ Description
 
 This is created by a zpool implementation and registered
 with zpool.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,4 @@ mach-dreamcast
 .. toctree::
    :maxdepth: 1
 
-   rtc_c
+    rtc_c

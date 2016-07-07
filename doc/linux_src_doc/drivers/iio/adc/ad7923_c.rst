@@ -1,0 +1,39 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/adc/ad7923.c
+
+.. _`ad7923_update_scan_mode`:
+
+ad7923_update_scan_mode
+=======================
+
+.. c:function:: int ad7923_update_scan_mode(struct iio_dev *indio_dev, const unsigned long *active_scan_mask)
+
+    :param struct iio_dev \*indio_dev:
+        *undescribed*
+
+    :param const unsigned long \*active_scan_mask:
+        *undescribed*
+
+.. _`ad7923_trigger_handler`:
+
+ad7923_trigger_handler
+======================
+
+.. c:function:: irqreturn_t ad7923_trigger_handler(int irq, void *p)
+
+    :param int irq:
+        *undescribed*
+
+    :param void \*p:
+        *undescribed*
+
+.. _`ad7923_trigger_handler.description`:
+
+Description
+-----------
+
+Currently there is no option in this driver to disable the saving of
+timestamps within the ring.
+
+.. This file was automatic generated / don't edit.
+

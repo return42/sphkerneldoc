@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/gyro/adis16080.c
+
+.. _`adis16080_state`:
+
+struct adis16080_state
+======================
+
+.. c:type:: struct adis16080_state
+
+    device instance specific data
+
+.. _`adis16080_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct adis16080_state {
+        struct spi_device *us;
+        const struct adis16080_chip_info *info;
+        __be16 buf ____cacheline_aligned;
+    }
+
+.. _`adis16080_state.members`:
+
+Members
+-------
+
+us
+    actual spi_device to write data
+
+info
+    chip specific parameters
+
+____cacheline_aligned
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

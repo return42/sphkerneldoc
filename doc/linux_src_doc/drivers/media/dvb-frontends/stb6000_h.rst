@@ -1,39 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-stb6000.h
-=========
-
+.. src-file: drivers/media/dvb-frontends/stb6000.h
 
 .. _`stb6000_attach`:
 
 stb6000_attach
 ==============
 
-.. c:function:: struct dvb_frontend *stb6000_attach (struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c)
+.. c:function:: struct dvb_frontend *stb6000_attach(struct dvb_frontend *fe, int addr, struct i2c_adapter *i2c)
 
     :param struct dvb_frontend \*fe:
-
         *undescribed*
 
     :param int addr:
-
         *undescribed*
 
     :param struct i2c_adapter \*i2c:
-
         *undescribed*
-
-
 
 .. _`stb6000_attach.description`:
 
 Description
 -----------
 
+\ ``param``\  fe Frontend to attach to.
+\ ``param``\  addr i2c address of the tuner.
+\ ``param``\  i2c i2c adapter to use.
+\ ``return``\  FE pointer on success, NULL on failure.
 
-``param`` fe Frontend to attach to.
-``param`` addr i2c address of the tuner.
-``param`` i2c i2c adapter to use.
-``return`` FE pointer on success, NULL on failure.
+.. This file was automatic generated / don't edit.
 

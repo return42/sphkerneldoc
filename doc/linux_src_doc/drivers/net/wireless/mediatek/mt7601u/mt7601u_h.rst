@@ -1,0 +1,243 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/mediatek/mt7601u/mt7601u.h
+
+.. _`mt7601u_dev`:
+
+struct mt7601u_dev
+==================
+
+.. c:type:: struct mt7601u_dev
+
+    adapter structure
+
+.. _`mt7601u_dev.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct mt7601u_dev {
+        struct ieee80211_hw *hw;
+        struct device *dev;
+        unsigned long state;
+        struct mutex mutex;
+        unsigned long wcid_mask[N_WCIDS / BITS_PER_LONG];
+        struct cfg80211_chan_def chandef;
+        struct ieee80211_supported_band *sband_2g;
+        struct mt7601u_mcu mcu;
+        struct delayed_work cal_work;
+        struct delayed_work mac_work;
+        struct workqueue_struct *stat_wq;
+        struct delayed_work stat_work;
+        struct mt76_wcid *mon_wcid;
+        struct mt76_wcid __rcu  *wcid[N_WCIDS];
+        spinlock_t lock;
+        spinlock_t mac_lock;
+        const u16 *beacon_offsets;
+        u8 macaddr[ETH_ALEN];
+        struct mt7601u_eeprom_params *ee;
+        struct mutex vendor_req_mutex;
+        void *vend_buf;
+        struct mutex reg_atomic_mutex;
+        struct mutex hw_atomic_mutex;
+        u32 rxfilter;
+        u32 debugfs_reg;
+        u8 out_eps[8];
+        u8 in_eps[8];
+        u16 out_max_packet;
+        u16 in_max_packet;
+        spinlock_t tx_lock;
+        struct tasklet_struct tx_tasklet;
+        struct mt7601u_tx_queue *tx_q;
+        struct sk_buff_head tx_skb_done;
+        atomic_t avg_ampdu_len;
+        spinlock_t rx_lock;
+        struct tasklet_struct rx_tasklet;
+        struct mt7601u_rx_queue rx_q;
+        spinlock_t con_mon_lock;
+        u8 ap_bssid[ETH_ALEN];
+        s8 bcn_freq_off;
+        u8 bcn_phy_mode;
+        int avg_rssi;
+        u8 agc_save;
+        struct mt7601u_freq_cal freq_cal;
+        bool tssi_read_trig;
+        s8 tssi_init;
+        s8 tssi_init_hvga;
+        s16 tssi_init_hvga_offset_db;
+        int prev_pwr_diff;
+        enum mt_temp_mode temp_mode;
+        int curr_temp;
+        int dpd_temp;
+        s8 raw_temp;
+        bool pll_lock_protect;
+        u8 bw;
+        bool chan_ext_below;
+        u32 rf_pa_mode[2];
+        struct mac_stats stats;
+    }
+
+.. _`mt7601u_dev.members`:
+
+Members
+-------
+
+hw
+    *undescribed*
+
+dev
+    *undescribed*
+
+state
+    *undescribed*
+
+mutex
+    ensures exclusive access from mac80211 callbacks.
+
+chandef
+    *undescribed*
+
+sband_2g
+    *undescribed*
+
+mcu
+    *undescribed*
+
+cal_work
+    *undescribed*
+
+mac_work
+    *undescribed*
+
+stat_wq
+    *undescribed*
+
+stat_work
+    *undescribed*
+
+mon_wcid
+    *undescribed*
+
+lock
+    protects \ ``wcid``\ ->tx_rate.
+
+mac_lock
+    locks out mac80211's tx status and rx paths.
+
+beacon_offsets
+    *undescribed*
+
+ee
+    *undescribed*
+
+vendor_req_mutex
+    protects \ ``vend_buf``\ , ensures atomicity of split writes.
+
+vend_buf
+    *undescribed*
+
+reg_atomic_mutex
+    ensures atomicity of indirect register accesses
+    (accesses to RF and BBP).
+
+hw_atomic_mutex
+    ensures exclusive access to HW during critical
+    operations (power management, channel switch).
+
+rxfilter
+    *undescribed*
+
+debugfs_reg
+    *undescribed*
+
+out_max_packet
+    *undescribed*
+
+in_max_packet
+    *undescribed*
+
+tx_lock
+    protects \ ``tx_q``\  and changes of MT7601U_STATE\_\*\_STATS
+    flags in \ ``state``\ .
+
+tx_tasklet
+    *undescribed*
+
+tx_q
+    *undescribed*
+
+tx_skb_done
+    *undescribed*
+
+avg_ampdu_len
+    *undescribed*
+
+rx_lock
+    protects \ ``rx_q``\ .
+
+rx_tasklet
+    *undescribed*
+
+rx_q
+    *undescribed*
+
+con_mon_lock
+    protects \ ``ap_bssid``\ , \ ``bcn``\ \_\*, \ ``avg_rssi``\ .
+
+bcn_freq_off
+    *undescribed*
+
+bcn_phy_mode
+    *undescribed*
+
+avg_rssi
+    *undescribed*
+
+agc_save
+    *undescribed*
+
+freq_cal
+    *undescribed*
+
+tssi_read_trig
+    *undescribed*
+
+tssi_init
+    *undescribed*
+
+tssi_init_hvga
+    *undescribed*
+
+tssi_init_hvga_offset_db
+    *undescribed*
+
+prev_pwr_diff
+    *undescribed*
+
+temp_mode
+    *undescribed*
+
+curr_temp
+    *undescribed*
+
+dpd_temp
+    *undescribed*
+
+raw_temp
+    *undescribed*
+
+pll_lock_protect
+    *undescribed*
+
+bw
+    *undescribed*
+
+chan_ext_below
+    *undescribed*
+
+stats
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
+

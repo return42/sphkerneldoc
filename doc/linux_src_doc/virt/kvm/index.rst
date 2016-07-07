@@ -7,4 +7,5 @@ kvm
 .. toctree::
    :maxdepth: 1
 
-   kvm_main_c
+    arm/index
+    kvm_main_c

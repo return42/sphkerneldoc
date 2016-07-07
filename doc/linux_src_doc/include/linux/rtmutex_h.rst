@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-rtmutex.h
-=========
-
+.. src-file: include/linux/rtmutex.h
 
 .. _`rt_mutex_is_locked`:
 
 rt_mutex_is_locked
 ==================
 
-.. c:function:: int rt_mutex_is_locked (struct rt_mutex *lock)
+.. c:function:: int rt_mutex_is_locked(struct rt_mutex *lock)
 
     is the mutex locked
 
     :param struct rt_mutex \*lock:
         the mutex to be queried
-
-
 
 .. _`rt_mutex_is_locked.description`:
 
@@ -25,4 +19,6 @@ Description
 -----------
 
 Returns 1 if the mutex is locked, 0 if unlocked.
+
+.. This file was automatic generated / don't edit.
 

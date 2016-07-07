@@ -7,4 +7,4 @@ adc
 .. toctree::
    :maxdepth: 1
 
-   ad_sigma_delta_h
+    ad_sigma_delta_h

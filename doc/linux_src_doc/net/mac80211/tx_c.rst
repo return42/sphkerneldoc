@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-tx.c
-====
-
+.. src-file: net/mac80211/tx.c
 
 .. _`ieee80211_build_hdr`:
 
 ieee80211_build_hdr
 ===================
 
-.. c:function:: struct sk_buff *ieee80211_build_hdr (struct ieee80211_sub_if_data *sdata, struct sk_buff *skb, u32 info_flags, struct sta_info *sta)
+.. c:function:: struct sk_buff *ieee80211_build_hdr(struct ieee80211_sub_if_data *sdata, struct sk_buff *skb, u32 info_flags, struct sta_info *sta)
 
     build 802.11 header in the given frame
 
@@ -24,10 +20,7 @@ ieee80211_build_hdr
         skb flags to set
 
     :param struct sta_info \*sta:
-
         *undescribed*
-
-
 
 .. _`ieee80211_build_hdr.description`:
 
@@ -44,23 +37,19 @@ header building.
 
 The function requires the read-side RCU lock held
 
+.. _`ieee80211_build_hdr.return`:
 
+Return
+------
 
-.. _`ieee80211_build_hdr.returns`:
-
-Returns
--------
-
-the (possibly reallocated) skb or an :c:func:`ERR_PTR` code
-
-
+the (possibly reallocated) skb or an \ :c:func:`ERR_PTR`\  code
 
 .. _`ieee80211_subif_start_xmit`:
 
 ieee80211_subif_start_xmit
 ==========================
 
-.. c:function:: netdev_tx_t ieee80211_subif_start_xmit (struct sk_buff *skb, struct net_device *dev)
+.. c:function:: netdev_tx_t ieee80211_subif_start_xmit(struct sk_buff *skb, struct net_device *dev)
 
     netif start_xmit function for 802.3 vifs
 
@@ -70,12 +59,12 @@ ieee80211_subif_start_xmit
     :param struct net_device \*dev:
         incoming interface
 
-
-
 .. _`ieee80211_subif_start_xmit.description`:
 
 Description
 -----------
 
 On failure skb will be freed.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,33 +1,29 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-sdio_bus.c
-==========
-
+.. src-file: drivers/mmc/core/sdio_bus.c
 
 .. _`sdio_register_driver`:
 
 sdio_register_driver
 ====================
 
-.. c:function:: int sdio_register_driver (struct sdio_driver *drv)
+.. c:function:: int sdio_register_driver(struct sdio_driver *drv)
 
     register a function driver
 
     :param struct sdio_driver \*drv:
         SDIO function driver
 
-
-
 .. _`sdio_unregister_driver`:
 
 sdio_unregister_driver
 ======================
 
-.. c:function:: void sdio_unregister_driver (struct sdio_driver *drv)
+.. c:function:: void sdio_unregister_driver(struct sdio_driver *drv)
 
     unregister a function driver
 
     :param struct sdio_driver \*drv:
         SDIO function driver
+
+.. This file was automatic generated / don't edit.
 

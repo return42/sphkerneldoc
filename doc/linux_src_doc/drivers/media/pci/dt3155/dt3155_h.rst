@@ -1,0 +1,97 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/media/pci/dt3155/dt3155.h
+
+.. _`dt3155_priv`:
+
+struct dt3155_priv
+==================
+
+.. c:type:: struct dt3155_priv
+
+    private data structure
+
+.. _`dt3155_priv.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct dt3155_priv {
+        struct v4l2_device v4l2_dev;
+        struct video_device vdev;
+        struct pci_dev *pdev;
+        struct vb2_queue vidq;
+        struct vb2_alloc_ctx *alloc_ctx;
+        struct vb2_v4l2_buffer *curr_buf;
+        struct mutex mux;
+        struct list_head dmaq;
+        spinlock_t lock;
+        v4l2_std_id std;
+        unsigned width;
+        unsigned height;
+        unsigned input;
+        unsigned int sequence;
+        void __iomem *regs;
+        u8 csr2;
+        u8 config;
+    }
+
+.. _`dt3155_priv.members`:
+
+Members
+-------
+
+v4l2_dev
+    v4l2_device structure
+
+vdev
+    video_device structure
+
+pdev
+    pointer to pci_dev structure
+
+vidq
+    vb2_queue structure
+
+alloc_ctx
+    dma_contig allocation context
+
+curr_buf
+    pointer to curren buffer
+
+mux
+    mutex to protect the instance
+
+dmaq
+    queue for dma buffers
+
+lock
+    spinlock for dma queue
+
+std
+    input standard
+
+width
+    frame width
+
+height
+    frame height
+
+input
+    current input
+
+sequence
+    frame counter
+
+regs
+    local copy of mmio base register
+
+csr2
+    local copy of csr2 register
+
+config
+    local copy of config register
+
+.. This file was automatic generated / don't edit.
+

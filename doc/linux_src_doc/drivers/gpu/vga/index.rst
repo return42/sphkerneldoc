@@ -7,4 +7,4 @@ vga
 .. toctree::
    :maxdepth: 1
 
-   vga_switcheroo_c
+    vga_switcheroo_c

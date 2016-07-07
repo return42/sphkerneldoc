@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-ata.h
-=====
-
+.. src-file: include/linux/ata.h
 
 .. _`ata_id_major_version`:
 
 ata_id_major_version
 ====================
 
-.. c:function:: unsigned int ata_id_major_version (const u16 *id)
+.. c:function:: unsigned int ata_id_major_version(const u16 *id)
 
     get ATA level of drive
 
     :param const u16 \*id:
         Identify data
-
-
 
 .. _`ata_id_major_version.caveats`:
 
@@ -30,4 +24,6 @@ ATA-3 introduces word 80 and accurate reporting
 
 The practical impact of this is that ata_id_major_version cannot
 reliably report on drives below ATA3.
+
+.. This file was automatic generated / don't edit.
 

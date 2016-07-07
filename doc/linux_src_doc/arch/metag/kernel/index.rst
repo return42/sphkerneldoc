@@ -7,4 +7,10 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   setup_c
+    perf/index
+    clock_c
+    devtree_c
+    irq_c
+    setup_c
+    smp_c
+    tcm_c

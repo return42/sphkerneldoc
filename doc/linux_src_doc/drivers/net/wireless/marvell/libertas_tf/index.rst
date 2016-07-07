@@ -7,5 +7,8 @@ libertas_tf
 .. toctree::
    :maxdepth: 1
 
-   cmd_c
-   main_c
+    cmd_c
+    if_usb_c
+    if_usb_h
+    libertas_tf_h
+    main_c

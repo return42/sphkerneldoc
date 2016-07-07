@@ -1,0 +1,80 @@
+.. -*- coding: utf-8; mode: rst -*-
+
+================================================================================
+mach-omap2
+================================================================================
+
+.. toctree::
+   :maxdepth: 1
+
+    am33xx-restart_c
+    clkt2xxx_dpll_c
+    clkt2xxx_dpllcore_c
+    clkt2xxx_virt_prcm_set_c
+    clock_c
+    clockdomain_c
+    clockdomain_h
+    cm2xxx_c
+    cm33xx_c
+    cm3xxx_c
+    cm_common_c
+    cm_h
+    cminst44xx_c
+    common_h
+    control_c
+    cpuidle34xx_c
+    cpuidle44xx_c
+    devices_c
+    hdq1w_c
+    i2c_c
+    msdi_c
+    mux_c
+    mux_h
+    omap-mpuss-lowpower_c
+    omap-pm-noop_c
+    omap-pm_h
+    omap-secure_c
+    omap2-restart_c
+    omap3-restart_c
+    omap4-restart_c
+    omap_device_c
+    omap_device_h
+    omap_hwmod_3xxx_data_c
+    omap_hwmod_c
+    omap_hwmod_h
+    omap_hwmod_reset_c
+    omap_opp_data_h
+    omap_phy_internal_c
+    omap_twl_c
+    opp2xxx_h
+    opp3xxx_data_c
+    opp4xxx_data_c
+    opp_c
+    pm44xx_c
+    pm_c
+    pmu_c
+    powerdomain_c
+    powerdomain_h
+    prcm-common_h
+    prcm_mpu44xx_c
+    prm2xxx_3xxx_c
+    prm2xxx_c
+    prm33xx_c
+    prm3xxx_c
+    prm44xx_c
+    prm_common_c
+    prm_h
+    prminst44xx_c
+    sdrc_c
+    sdrc_h
+    serial_c
+    ti81xx-restart_c
+    timer_c
+    usb-host_c
+    vc_c
+    vc_h
+    voltage_c
+    voltage_h
+    vp_c
+    vp_h
+    wd_timer_c

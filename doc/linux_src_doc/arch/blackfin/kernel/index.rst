@@ -7,4 +7,4 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   bfin_dma_c
+    bfin_dma_c

@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=================
-hda_auto_parser.c
-=================
-
+.. src-file: sound/pci/hda/hda_auto_parser.c
 
 .. _`snd_hda_get_input_pin_attr`:
 
 snd_hda_get_input_pin_attr
 ==========================
 
-.. c:function:: int snd_hda_get_input_pin_attr (unsigned int def_conf)
+.. c:function:: int snd_hda_get_input_pin_attr(unsigned int def_conf)
 
     Get the input pin attribute from pin config
 
     :param unsigned int def_conf:
         pin configuration value
-
-
 
 .. _`snd_hda_get_input_pin_attr.description`:
 
@@ -27,14 +21,12 @@ Description
 Guess the input pin attribute (INPUT_PIN_ATTR_XXX) from the given
 default pin configuration value.
 
-
-
 .. _`hda_get_input_pin_label`:
 
 hda_get_input_pin_label
 =======================
 
-.. c:function:: const char *hda_get_input_pin_label (struct hda_codec *codec, const struct auto_pin_cfg_item *item, hda_nid_t pin, bool check_location)
+.. c:function:: const char *hda_get_input_pin_label(struct hda_codec *codec, const struct auto_pin_cfg_item *item, hda_nid_t pin, bool check_location)
 
     Give a label for the given input pin
 
@@ -50,25 +42,21 @@ hda_get_input_pin_label
     :param bool check_location:
         flag to add the jack location prefix
 
-
-
 .. _`hda_get_input_pin_label.description`:
 
 Description
 -----------
 
-When ``check_location`` is true, the function checks the pin location
+When \ ``check_location``\  is true, the function checks the pin location
 for mic and line-in pins, and set an appropriate prefix like "Front",
 "Rear", "Internal".
-
-
 
 .. _`hda_get_autocfg_input_label`:
 
 hda_get_autocfg_input_label
 ===========================
 
-.. c:function:: const char *hda_get_autocfg_input_label (struct hda_codec *codec, const struct auto_pin_cfg *cfg, int input)
+.. c:function:: const char *hda_get_autocfg_input_label(struct hda_codec *codec, const struct auto_pin_cfg *cfg, int input)
 
     Get a label for the given input
 
@@ -81,26 +69,22 @@ hda_get_autocfg_input_label
     :param int input:
         the input index number
 
-
-
 .. _`hda_get_autocfg_input_label.description`:
 
 Description
 -----------
 
 Get a label for the given input pin defined by the autocfg item.
-Unlike :c:func:`hda_get_input_pin_label`, this function checks all inputs
+Unlike \ :c:func:`hda_get_input_pin_label`\ , this function checks all inputs
 defined in autocfg and avoids the redundant mic/line prefix as much as
 possible.
-
-
 
 .. _`snd_hda_get_pin_label`:
 
 snd_hda_get_pin_label
 =====================
 
-.. c:function:: int snd_hda_get_pin_label (struct hda_codec *codec, hda_nid_t nid, const struct auto_pin_cfg *cfg, char *label, int maxlen, int *indexp)
+.. c:function:: int snd_hda_get_pin_label(struct hda_codec *codec, hda_nid_t nid, const struct auto_pin_cfg *cfg, char *label, int maxlen, int *indexp)
 
     Get a label for the given I/O pin
 
@@ -122,31 +106,27 @@ snd_hda_get_pin_label
     :param int \*indexp:
         the pointer to return the index number (for multiple ctls)
 
-
-
 .. _`snd_hda_get_pin_label.description`:
 
 Description
 -----------
 
 Get a label for the given pin.  This function works for both input and
-output pins.  When ``cfg`` is given as non-NULL, the function tries to get
-an optimized label using :c:func:`hda_get_autocfg_input_label`.
+output pins.  When \ ``cfg``\  is given as non-NULL, the function tries to get
+an optimized label using \ :c:func:`hda_get_autocfg_input_label`\ .
 
 This function tries to give a unique label string for the pin as much as
 possible.  For example, when the multiple line-outs are present, it adds
-the channel suffix like "Front", "Surround", etc (only when ``cfg`` is given).
-If no unique name with a suffix is available and ``indexp`` is non-NULL, the
+the channel suffix like "Front", "Surround", etc (only when \ ``cfg``\  is given).
+If no unique name with a suffix is available and \ ``indexp``\  is non-NULL, the
 index number is stored in the pointer.
-
-
 
 .. _`snd_hda_add_verbs`:
 
 snd_hda_add_verbs
 =================
 
-.. c:function:: int snd_hda_add_verbs (struct hda_codec *codec, const struct hda_verb *list)
+.. c:function:: int snd_hda_add_verbs(struct hda_codec *codec, const struct hda_verb *list)
 
     Add verbs to the init list
 
@@ -156,38 +136,32 @@ snd_hda_add_verbs
     :param const struct hda_verb \*list:
         zero-terminated verb list to add
 
-
-
 .. _`snd_hda_add_verbs.description`:
 
 Description
 -----------
 
 Append the given verb list to the execution list.  The verbs will be
-performed at init and resume time via :c:func:`snd_hda_apply_verbs`.
-
-
+performed at init and resume time via \ :c:func:`snd_hda_apply_verbs`\ .
 
 .. _`snd_hda_apply_verbs`:
 
 snd_hda_apply_verbs
 ===================
 
-.. c:function:: void snd_hda_apply_verbs (struct hda_codec *codec)
+.. c:function:: void snd_hda_apply_verbs(struct hda_codec *codec)
 
     Execute the init verb lists
 
     :param struct hda_codec \*codec:
         the HDA codec
 
-
-
 .. _`snd_hda_apply_pincfgs`:
 
 snd_hda_apply_pincfgs
 =====================
 
-.. c:function:: void snd_hda_apply_pincfgs (struct hda_codec *codec, const struct hda_pintbl *cfg)
+.. c:function:: void snd_hda_apply_pincfgs(struct hda_codec *codec, const struct hda_pintbl *cfg)
 
     Set each pin config in the given list
 
@@ -197,14 +171,12 @@ snd_hda_apply_pincfgs
     :param const struct hda_pintbl \*cfg:
         NULL-terminated pin config table
 
-
-
 .. _`snd_hda_apply_fixup`:
 
 snd_hda_apply_fixup
 ===================
 
-.. c:function:: void snd_hda_apply_fixup (struct hda_codec *codec, int action)
+.. c:function:: void snd_hda_apply_fixup(struct hda_codec *codec, int action)
 
     Apply the fixup chain with the given action
 
@@ -214,14 +186,12 @@ snd_hda_apply_fixup
     :param int action:
         fixup action (HDA_FIXUP_ACT_XXX)
 
-
-
 .. _`snd_hda_pick_pin_fixup`:
 
 snd_hda_pick_pin_fixup
 ======================
 
-.. c:function:: void snd_hda_pick_pin_fixup (struct hda_codec *codec, const struct snd_hda_pin_quirk *pin_quirk, const struct hda_fixup *fixlist)
+.. c:function:: void snd_hda_pick_pin_fixup(struct hda_codec *codec, const struct snd_hda_pin_quirk *pin_quirk, const struct hda_fixup *fixlist)
 
     Pick up a fixup matching with the pin quirk list
 
@@ -234,14 +204,12 @@ snd_hda_pick_pin_fixup
     :param const struct hda_fixup \*fixlist:
         the fixup list
 
-
-
 .. _`snd_hda_pick_fixup`:
 
 snd_hda_pick_fixup
 ==================
 
-.. c:function:: void snd_hda_pick_fixup (struct hda_codec *codec, const struct hda_model_fixup *models, const struct snd_pci_quirk *quirk, const struct hda_fixup *fixlist)
+.. c:function:: void snd_hda_pick_fixup(struct hda_codec *codec, const struct hda_model_fixup *models, const struct snd_pci_quirk *quirk, const struct hda_fixup *fixlist)
 
     Pick up a fixup matching with PCI/codec SSID or model string
 
@@ -257,8 +225,6 @@ snd_hda_pick_fixup
     :param const struct hda_fixup \*fixlist:
         the fixup list
 
-
-
 .. _`snd_hda_pick_fixup.description`:
 
 Description
@@ -271,4 +237,6 @@ When a special model string "nofixup" is given, also no fixup is applied.
 The function tries to find the matching model name at first, if given.
 If nothing matched, try to look up the PCI SSID.
 If still nothing matched, try to look up the codec SSID.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,5 @@ iucv
 .. toctree::
    :maxdepth: 1
 
-   iucv_c
+    af_iucv_c
+    iucv_c

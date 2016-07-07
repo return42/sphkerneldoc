@@ -1,48 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-enic_api.c
-==========
-
+.. src-file: drivers/net/ethernet/cisco/enic/enic_api.c
 
 .. _`enic_api_devcmd_proxy_by_index`:
 
 enic_api_devcmd_proxy_by_index
 ==============================
 
-.. c:function:: int enic_api_devcmd_proxy_by_index (struct net_device *netdev, int vf, enum vnic_devcmd_cmd cmd, u64 *a0, u64 *a1, int wait)
+.. c:function:: int enic_api_devcmd_proxy_by_index(struct net_device *netdev, int vf, enum vnic_devcmd_cmd cmd, u64 *a0, u64 *a1, int wait)
 
     :param struct net_device \*netdev:
-
         *undescribed*
 
     :param int vf:
-
         *undescribed*
 
     :param enum vnic_devcmd_cmd cmd:
-
         *undescribed*
 
     :param u64 \*a0:
-
         *undescribed*
 
     :param u64 \*a1:
-
         *undescribed*
 
     :param int wait:
-
         *undescribed*
-
-
 
 .. _`enic_api_devcmd_proxy_by_index.description`:
 
 Description
 -----------
-
 
 This program is free software; you may redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -56,4 +43,6 @@ BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
 ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
 CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+.. This file was automatic generated / don't edit.
 

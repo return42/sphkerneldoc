@@ -7,4 +7,4 @@ xilinx
 .. toctree::
    :maxdepth: 1
 
-   xilinx_vdma_c
+    xilinx_vdma_c

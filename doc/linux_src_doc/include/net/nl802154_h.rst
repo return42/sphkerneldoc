@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-nl802154.h
-==========
-
+.. src-file: include/net/nl802154.h
 
 .. _`nl802154_wpan_phy_capability_attr`:
 
 enum nl802154_wpan_phy_capability_attr
 ======================================
 
-.. c:type:: nl802154_wpan_phy_capability_attr
+.. c:type:: enum nl802154_wpan_phy_capability_attr
 
     wpan phy capability attributes
-
 
 .. _`nl802154_wpan_phy_capability_attr.definition`:
 
@@ -23,97 +18,94 @@ Definition
 .. code-block:: c
 
     enum nl802154_wpan_phy_capability_attr {
-      __NL802154_CAP_ATTR_INVALID,
-      NL802154_CAP_ATTR_IFTYPES,
-      NL802154_CAP_ATTR_CHANNELS,
-      NL802154_CAP_ATTR_TX_POWERS,
-      NL802154_CAP_ATTR_CCA_ED_LEVELS,
-      NL802154_CAP_ATTR_CCA_MODES,
-      NL802154_CAP_ATTR_CCA_OPTS,
-      NL802154_CAP_ATTR_MIN_MINBE,
-      NL802154_CAP_ATTR_MAX_MINBE,
-      NL802154_CAP_ATTR_MIN_MAXBE,
-      NL802154_CAP_ATTR_MAX_MAXBE,
-      NL802154_CAP_ATTR_MIN_CSMA_BACKOFFS,
-      NL802154_CAP_ATTR_MAX_CSMA_BACKOFFS,
-      NL802154_CAP_ATTR_MIN_FRAME_RETRIES,
-      NL802154_CAP_ATTR_MAX_FRAME_RETRIES,
-      NL802154_CAP_ATTR_LBT,
-      __NL802154_CAP_ATTR_AFTER_LAST,
-      NL802154_CAP_ATTR_MAX
+        __NL802154_CAP_ATTR_INVALID,
+        NL802154_CAP_ATTR_IFTYPES,
+        NL802154_CAP_ATTR_CHANNELS,
+        NL802154_CAP_ATTR_TX_POWERS,
+        NL802154_CAP_ATTR_CCA_ED_LEVELS,
+        NL802154_CAP_ATTR_CCA_MODES,
+        NL802154_CAP_ATTR_CCA_OPTS,
+        NL802154_CAP_ATTR_MIN_MINBE,
+        NL802154_CAP_ATTR_MAX_MINBE,
+        NL802154_CAP_ATTR_MIN_MAXBE,
+        NL802154_CAP_ATTR_MAX_MAXBE,
+        NL802154_CAP_ATTR_MIN_CSMA_BACKOFFS,
+        NL802154_CAP_ATTR_MAX_CSMA_BACKOFFS,
+        NL802154_CAP_ATTR_MIN_FRAME_RETRIES,
+        NL802154_CAP_ATTR_MAX_FRAME_RETRIES,
+        NL802154_CAP_ATTR_LBT,
+        __NL802154_CAP_ATTR_AFTER_LAST,
+        NL802154_CAP_ATTR_MAX
     };
-
 
 .. _`nl802154_wpan_phy_capability_attr.constants`:
 
 Constants
 ---------
 
-:``__NL802154_CAP_ATTR_INVALID``:
+__NL802154_CAP_ATTR_INVALID
     attribute number 0 is reserved
 
-:``NL802154_CAP_ATTR_IFTYPES``:
+NL802154_CAP_ATTR_IFTYPES
     nl802154_iftype flags
 
-:``NL802154_CAP_ATTR_CHANNELS``:
+NL802154_CAP_ATTR_CHANNELS
     a nested attribute for nl802154_channel_attr
 
-:``NL802154_CAP_ATTR_TX_POWERS``:
+NL802154_CAP_ATTR_TX_POWERS
     a nested attribute for
     nl802154_wpan_phy_tx_power
 
-:``NL802154_CAP_ATTR_CCA_ED_LEVELS``:
--- undescribed --
+NL802154_CAP_ATTR_CCA_ED_LEVELS
+    *undescribed*
 
-:``NL802154_CAP_ATTR_CCA_MODES``:
+NL802154_CAP_ATTR_CCA_MODES
     nl802154_cca_modes flags
 
-:``NL802154_CAP_ATTR_CCA_OPTS``:
+NL802154_CAP_ATTR_CCA_OPTS
     nl802154_cca_opts flags
 
-:``NL802154_CAP_ATTR_MIN_MINBE``:
+NL802154_CAP_ATTR_MIN_MINBE
     minimum of minbe value
 
-:``NL802154_CAP_ATTR_MAX_MINBE``:
+NL802154_CAP_ATTR_MAX_MINBE
     maximum of maxbe value
 
-:``NL802154_CAP_ATTR_MIN_MAXBE``:
+NL802154_CAP_ATTR_MIN_MAXBE
     minimum of maxbe value
 
-:``NL802154_CAP_ATTR_MAX_MAXBE``:
--- undescribed --
+NL802154_CAP_ATTR_MAX_MAXBE
+    *undescribed*
 
-:``NL802154_CAP_ATTR_MIN_CSMA_BACKOFFS``:
+NL802154_CAP_ATTR_MIN_CSMA_BACKOFFS
     minimum of csma backoff value
 
-:``NL802154_CAP_ATTR_MAX_CSMA_BACKOFFS``:
+NL802154_CAP_ATTR_MAX_CSMA_BACKOFFS
     maximum of csma backoffs value
 
-:``NL802154_CAP_ATTR_MIN_FRAME_RETRIES``:
+NL802154_CAP_ATTR_MIN_FRAME_RETRIES
     minimum of frame retries value
 
-:``NL802154_CAP_ATTR_MAX_FRAME_RETRIES``:
+NL802154_CAP_ATTR_MAX_FRAME_RETRIES
     maximum of frame retries value
 
-:``NL802154_CAP_ATTR_LBT``:
+NL802154_CAP_ATTR_LBT
     nl802154_supported_bool_states flags
 
-:``__NL802154_CAP_ATTR_AFTER_LAST``:
+__NL802154_CAP_ATTR_AFTER_LAST
     internal use
 
-:``NL802154_CAP_ATTR_MAX``:
+NL802154_CAP_ATTR_MAX
     highest cap attribute currently defined
-
 
 .. _`nl802154_cca_modes`:
 
 enum nl802154_cca_modes
 =======================
 
-.. c:type:: nl802154_cca_modes
+.. c:type:: enum nl802154_cca_modes
 
     cca modes
-
 
 .. _`nl802154_cca_modes.definition`:
 
@@ -123,61 +115,58 @@ Definition
 .. code-block:: c
 
     enum nl802154_cca_modes {
-      __NL802154_CCA_INVALID,
-      NL802154_CCA_ENERGY,
-      NL802154_CCA_CARRIER,
-      NL802154_CCA_ENERGY_CARRIER,
-      NL802154_CCA_ALOHA,
-      NL802154_CCA_UWB_SHR,
-      NL802154_CCA_UWB_MULTIPLEXED,
-      __NL802154_CCA_ATTR_AFTER_LAST,
-      NL802154_CCA_ATTR_MAX
+        __NL802154_CCA_INVALID,
+        NL802154_CCA_ENERGY,
+        NL802154_CCA_CARRIER,
+        NL802154_CCA_ENERGY_CARRIER,
+        NL802154_CCA_ALOHA,
+        NL802154_CCA_UWB_SHR,
+        NL802154_CCA_UWB_MULTIPLEXED,
+        __NL802154_CCA_ATTR_AFTER_LAST,
+        NL802154_CCA_ATTR_MAX
     };
-
 
 .. _`nl802154_cca_modes.constants`:
 
 Constants
 ---------
 
-:``__NL802154_CCA_INVALID``:
+__NL802154_CCA_INVALID
     cca mode number 0 is reserved
 
-:``NL802154_CCA_ENERGY``:
+NL802154_CCA_ENERGY
     Energy above threshold
 
-:``NL802154_CCA_CARRIER``:
+NL802154_CCA_CARRIER
     Carrier sense only
 
-:``NL802154_CCA_ENERGY_CARRIER``:
+NL802154_CCA_ENERGY_CARRIER
     Carrier sense with energy above threshold
 
-:``NL802154_CCA_ALOHA``:
+NL802154_CCA_ALOHA
     CCA shall always report an idle medium
 
-:``NL802154_CCA_UWB_SHR``:
+NL802154_CCA_UWB_SHR
     UWB preamble sense based on the SHR of a frame
 
-:``NL802154_CCA_UWB_MULTIPLEXED``:
+NL802154_CCA_UWB_MULTIPLEXED
     UWB preamble sense based on the packet with
     the multiplexed preamble
 
-:``__NL802154_CCA_ATTR_AFTER_LAST``:
+__NL802154_CCA_ATTR_AFTER_LAST
     Internal
 
-:``NL802154_CCA_ATTR_MAX``:
+NL802154_CCA_ATTR_MAX
     Maximum CCA attribute number
-
 
 .. _`nl802154_cca_opts`:
 
 enum nl802154_cca_opts
 ======================
 
-.. c:type:: nl802154_cca_opts
+.. c:type:: enum nl802154_cca_opts
 
     additional options for cca modes
-
 
 .. _`nl802154_cca_opts.definition`:
 
@@ -187,40 +176,37 @@ Definition
 .. code-block:: c
 
     enum nl802154_cca_opts {
-      NL802154_CCA_OPT_ENERGY_CARRIER_AND,
-      NL802154_CCA_OPT_ENERGY_CARRIER_OR,
-      __NL802154_CCA_OPT_ATTR_AFTER_LAST,
-      NL802154_CCA_OPT_ATTR_MAX
+        NL802154_CCA_OPT_ENERGY_CARRIER_AND,
+        NL802154_CCA_OPT_ENERGY_CARRIER_OR,
+        __NL802154_CCA_OPT_ATTR_AFTER_LAST,
+        NL802154_CCA_OPT_ATTR_MAX
     };
-
 
 .. _`nl802154_cca_opts.constants`:
 
 Constants
 ---------
 
-:``NL802154_CCA_OPT_ENERGY_CARRIER_AND``:
+NL802154_CCA_OPT_ENERGY_CARRIER_AND
     NL802154_CCA_ENERGY_CARRIER with AND
 
-:``NL802154_CCA_OPT_ENERGY_CARRIER_OR``:
+NL802154_CCA_OPT_ENERGY_CARRIER_OR
     NL802154_CCA_ENERGY_CARRIER with OR
 
-:``__NL802154_CCA_OPT_ATTR_AFTER_LAST``:
--- undescribed --
+__NL802154_CCA_OPT_ATTR_AFTER_LAST
+    *undescribed*
 
-:``NL802154_CCA_OPT_ATTR_MAX``:
--- undescribed --
-
+NL802154_CCA_OPT_ATTR_MAX
+    *undescribed*
 
 .. _`nl802154_supported_bool_states`:
 
 enum nl802154_supported_bool_states
 ===================================
 
-.. c:type:: nl802154_supported_bool_states
+.. c:type:: enum nl802154_supported_bool_states
 
     bool states for bool capability entry
-
 
 .. _`nl802154_supported_bool_states.definition`:
 
@@ -230,34 +216,36 @@ Definition
 .. code-block:: c
 
     enum nl802154_supported_bool_states {
-      NL802154_SUPPORTED_BOOL_FALSE,
-      NL802154_SUPPORTED_BOOL_TRUE,
-      __NL802154_SUPPORTED_BOOL_INVALD,
-      NL802154_SUPPORTED_BOOL_BOTH,
-      __NL802154_SUPPORTED_BOOL_AFTER_LAST,
-      NL802154_SUPPORTED_BOOL_MAX
+        NL802154_SUPPORTED_BOOL_FALSE,
+        NL802154_SUPPORTED_BOOL_TRUE,
+        __NL802154_SUPPORTED_BOOL_INVALD,
+        NL802154_SUPPORTED_BOOL_BOTH,
+        __NL802154_SUPPORTED_BOOL_AFTER_LAST,
+        NL802154_SUPPORTED_BOOL_MAX
     };
-
 
 .. _`nl802154_supported_bool_states.constants`:
 
 Constants
 ---------
 
-:``NL802154_SUPPORTED_BOOL_FALSE``:
+NL802154_SUPPORTED_BOOL_FALSE
     indicates to set false
 
-:``NL802154_SUPPORTED_BOOL_TRUE``:
+NL802154_SUPPORTED_BOOL_TRUE
     indicates to set true
 
-:``__NL802154_SUPPORTED_BOOL_INVALD``:
+__NL802154_SUPPORTED_BOOL_INVALD
     reserved
 
-:``NL802154_SUPPORTED_BOOL_BOTH``:
+NL802154_SUPPORTED_BOOL_BOTH
     indicates to set true and false
 
-:``__NL802154_SUPPORTED_BOOL_AFTER_LAST``:
+__NL802154_SUPPORTED_BOOL_AFTER_LAST
     Internal
 
-:``NL802154_SUPPORTED_BOOL_MAX``:
+NL802154_SUPPORTED_BOOL_MAX
     highest value for bool states
+
+.. This file was automatic generated / don't edit.
+

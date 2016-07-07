@@ -1,0 +1,73 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/adc/ad7192.h
+
+.. _`ad7192_platform_data`:
+
+struct ad7192_platform_data
+===========================
+
+.. c:type:: struct ad7192_platform_data
+
+    platform/board specific information
+
+.. _`ad7192_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad7192_platform_data {
+        u16 vref_mv;
+        u8 clock_source_sel;
+        u32 ext_clk_hz;
+        bool refin2_en;
+        bool rej60_en;
+        bool sinc3_en;
+        bool chop_en;
+        bool buf_en;
+        bool unipolar_en;
+        bool burnout_curr_en;
+    }
+
+.. _`ad7192_platform_data.members`:
+
+Members
+-------
+
+vref_mv
+    the external reference voltage in millivolt
+
+clock_source_sel
+    [0..3]
+    0 External 4.92 MHz clock connected from MCLK1 to MCLK2
+    1 External Clock applied to MCLK2
+    2 Internal 4.92 MHz Clock not available at the MCLK2 pin
+    3 Internal 4.92 MHz Clock available at the MCLK2 pin
+
+ext_clk_hz
+    *undescribed*
+
+refin2_en
+    REFIN1/REFIN2 Reference Select (AD7190/2 only)
+
+rej60_en
+    50/60Hz notch filter enable
+
+sinc3_en
+    SINC3 filter enable (default SINC4)
+
+chop_en
+    CHOP mode enable
+
+buf_en
+    buffered input mode enable
+
+unipolar_en
+    unipolar mode enable
+
+burnout_curr_en
+    constant current generators on AIN(+\|-) enable
+
+.. This file was automatic generated / don't edit.
+

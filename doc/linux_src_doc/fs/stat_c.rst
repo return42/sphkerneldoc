@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-stat.c
-======
-
+.. src-file: fs/stat.c
 
 .. _`vfs_getattr_nosec`:
 
 vfs_getattr_nosec
 =================
 
-.. c:function:: int vfs_getattr_nosec (struct path *path, struct kstat *stat)
+.. c:function:: int vfs_getattr_nosec(struct path *path, struct kstat *stat)
 
     getattr without security checks
 
@@ -19,8 +15,6 @@ vfs_getattr_nosec
 
     :param struct kstat \*stat:
         structure to return attributes in
-
-
 
 .. _`vfs_getattr_nosec.description`:
 
@@ -33,4 +27,6 @@ Currently the only caller other than vfs_getattr is internal to the
 filehandle lookup code, which uses only the inode number and returns
 no attributes to any user.  Any other code probably wants
 vfs_getattr.
+
+.. This file was automatic generated / don't edit.
 

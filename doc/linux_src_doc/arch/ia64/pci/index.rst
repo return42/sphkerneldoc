@@ -7,4 +7,4 @@ pci
 .. toctree::
    :maxdepth: 1
 
-   pci_c
+    pci_c

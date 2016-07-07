@@ -7,6 +7,9 @@ md
 .. toctree::
    :maxdepth: 1
 
-   dm-uevent_c
-   raid5_c
-   bcache/index
+    bcache/index
+    dm-ioctl_c
+    dm-log-userspace-transfer_c
+    dm-uevent_c
+    raid5_c
+    raid5_h

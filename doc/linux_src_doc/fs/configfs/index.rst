@@ -7,5 +7,6 @@ configfs
 .. toctree::
    :maxdepth: 1
 
-   dir_c
-   item_c
+    dir_c
+    file_c
+    item_c

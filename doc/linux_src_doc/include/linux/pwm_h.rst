@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=====
-pwm.h
-=====
-
+.. src-file: include/linux/pwm.h
 
 .. _`pwm_polarity`:
 
 enum pwm_polarity
 =================
 
-.. c:type:: pwm_polarity
+.. c:type:: enum pwm_polarity
 
     polarity of a PWM signal
-
 
 .. _`pwm_polarity.definition`:
 
@@ -23,36 +18,83 @@ Definition
 .. code-block:: c
 
     enum pwm_polarity {
-      PWM_POLARITY_NORMAL,
-      PWM_POLARITY_INVERSED
+        PWM_POLARITY_NORMAL,
+        PWM_POLARITY_INVERSED
     };
-
 
 .. _`pwm_polarity.constants`:
 
 Constants
 ---------
 
-:``PWM_POLARITY_NORMAL``:
+PWM_POLARITY_NORMAL
     a high signal for the duration of the duty-
     cycle, followed by a low signal for the remainder of the pulse
     period
 
-:``PWM_POLARITY_INVERSED``:
+PWM_POLARITY_INVERSED
     a low signal for the duration of the duty-
     cycle, followed by a high signal for the remainder of the pulse
     period
 
+.. _`pwm_args`:
+
+struct pwm_args
+===============
+
+.. c:type:: struct pwm_args
+
+    board-dependent PWM arguments
+
+.. _`pwm_args.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct pwm_args {
+        unsigned int period;
+        enum pwm_polarity polarity;
+    }
+
+.. _`pwm_args.members`:
+
+Members
+-------
+
+period
+    reference period
+
+polarity
+    reference polarity
+
+.. _`pwm_args.description`:
+
+Description
+-----------
+
+This structure describes board-dependent arguments attached to a PWM
+device. These arguments are usually retrieved from the PWM lookup table or
+device tree.
+
+.. _`pwm_args.do-not-confuse-this-with-the-pwm-state`:
+
+Do not confuse this with the PWM state
+--------------------------------------
+
+PWM arguments represent the initial
+configuration that users want to use on this PWM device rather than the
+current PWM hardware state.
 
 .. _`pwm_device`:
 
 struct pwm_device
 =================
 
-.. c:type:: pwm_device
+.. c:type:: struct pwm_device
 
     PWM channel object
-
 
 .. _`pwm_device.definition`:
 
@@ -61,67 +103,69 @@ Definition
 
 .. code-block:: c
 
-  struct pwm_device {
-    const char * label;
-    unsigned long flags;
-    unsigned int hwpwm;
-    unsigned int pwm;
-    struct pwm_chip * chip;
-    void * chip_data;
-    struct mutex lock;
-    unsigned int period;
-    unsigned int duty_cycle;
-    enum pwm_polarity polarity;
-  };
-
+    struct pwm_device {
+        const char *label;
+        unsigned long flags;
+        unsigned int hwpwm;
+        unsigned int pwm;
+        struct pwm_chip *chip;
+        void *chip_data;
+        struct pwm_args args;
+        struct pwm_state state;
+    }
 
 .. _`pwm_device.members`:
 
 Members
 -------
 
-:``label``:
+label
     name of the PWM device
 
-:``flags``:
+flags
     flags associated with the PWM device
 
-:``hwpwm``:
+hwpwm
     per-chip relative index of the PWM device
 
-:``pwm``:
+pwm
     global index of the PWM device
 
-:``chip``:
+chip
     PWM chip providing this PWM device
 
-:``chip_data``:
+chip_data
     chip-private data associated with the PWM device
 
-:``lock``:
-    used to serialize accesses to the PWM device where necessary
+args
+    PWM arguments
 
-:``period``:
-    period of the PWM signal (in nanoseconds)
+state
+    curent PWM channel state
 
-:``duty_cycle``:
-    duty cycle of the PWM signal (in nanoseconds)
+.. _`pwm_get_state`:
 
-:``polarity``:
-    polarity of the PWM signal
+pwm_get_state
+=============
 
+.. c:function:: void pwm_get_state(const struct pwm_device *pwm, struct pwm_state *state)
 
+    retrieve the current PWM state
 
+    :param const struct pwm_device \*pwm:
+        PWM device
+
+    :param struct pwm_state \*state:
+        state to fill with the current PWM state
 
 .. _`pwm_ops`:
 
 struct pwm_ops
 ==============
 
-.. c:type:: pwm_ops
+.. c:type:: struct pwm_ops
 
     PWM controller operations
-
 
 .. _`pwm_ops.definition`:
 
@@ -130,61 +174,69 @@ Definition
 
 .. code-block:: c
 
-  struct pwm_ops {
-    int (* request) (struct pwm_chip *chip, struct pwm_device *pwm);
-    void (* free) (struct pwm_chip *chip, struct pwm_device *pwm);
-    int (* config) (struct pwm_chip *chip, struct pwm_device *pwm,int duty_ns, int period_ns);
-    int (* set_polarity) (struct pwm_chip *chip, struct pwm_device *pwm,enum pwm_polarity polarity);
-    int (* enable) (struct pwm_chip *chip, struct pwm_device *pwm);
-    void (* disable) (struct pwm_chip *chip, struct pwm_device *pwm);
-    #ifdef CONFIG_DEBUG_FS
-    void (* dbg_show) (struct pwm_chip *chip, struct seq_file *s);
-    #endif
-    struct module * owner;
-  };
-
+    struct pwm_ops {
+        int (* request) (struct pwm_chip *chip, struct pwm_device *pwm);
+        void (* free) (struct pwm_chip *chip, struct pwm_device *pwm);
+        int (* config) (struct pwm_chip *chip, struct pwm_device *pwm,int duty_ns, int period_ns);
+        int (* set_polarity) (struct pwm_chip *chip, struct pwm_device *pwm,enum pwm_polarity polarity);
+        int (* enable) (struct pwm_chip *chip, struct pwm_device *pwm);
+        void (* disable) (struct pwm_chip *chip, struct pwm_device *pwm);
+        int (* apply) (struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
+        void (* get_state) (struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
+        #ifdef CONFIG_DEBUG_FS
+        void (* dbg_show) (struct pwm_chip *chip, struct seq_file *s);
+        #endif
+        struct module *owner;
+    }
 
 .. _`pwm_ops.members`:
 
 Members
 -------
 
-:``request``:
+request
     optional hook for requesting a PWM
 
-:``free``:
+free
     optional hook for freeing a PWM
 
-:``config``:
+config
     configure duty cycles and period length for this PWM
 
-:``set_polarity``:
+set_polarity
     configure the polarity of this PWM
 
-:``enable``:
+enable
     enable PWM output toggling
 
-:``disable``:
+disable
     disable PWM output toggling
 
-:``dbg_show``:
+apply
+    atomically apply a new PWM config. The state argument
+    should be adjusted with the real hardware config (if the
+    approximate the period or duty_cycle value, state should
+    reflect it)
+
+get_state
+    get the current PWM state. This function is only
+    called once per PWM device when the PWM chip is
+    registered.
+
+dbg_show
     optional routine to show contents in debugfs
 
-:``owner``:
+owner
     helps prevent removal of modules exporting active PWMs
-
-
-
 
 .. _`pwm_chip`:
 
 struct pwm_chip
 ===============
 
-.. c:type:: pwm_chip
+.. c:type:: struct pwm_chip
 
     abstract a PWM controller
-
 
 .. _`pwm_chip.definition`:
 
@@ -193,50 +245,136 @@ Definition
 
 .. code-block:: c
 
-  struct pwm_chip {
-    struct device * dev;
-    struct list_head list;
-    const struct pwm_ops * ops;
-    int base;
-    unsigned int npwm;
-    struct pwm_device * pwms;
-    struct pwm_device * (* of_xlate) (struct pwm_chip *pc,const struct of_phandle_args *args);
-    unsigned int of_pwm_n_cells;
-    bool can_sleep;
-  };
-
+    struct pwm_chip {
+        struct device *dev;
+        struct list_head list;
+        const struct pwm_ops *ops;
+        int base;
+        unsigned int npwm;
+        struct pwm_device *pwms;
+        struct pwm_device * (* of_xlate) (struct pwm_chip *pc,const struct of_phandle_args *args);
+        unsigned int of_pwm_n_cells;
+        bool can_sleep;
+    }
 
 .. _`pwm_chip.members`:
 
 Members
 -------
 
-:``dev``:
+dev
     device providing the PWMs
 
-:``list``:
+list
     list node for internal use
 
-:``ops``:
+ops
     callbacks for this PWM controller
 
-:``base``:
+base
     number of first PWM controlled by this chip
 
-:``npwm``:
+npwm
     number of PWMs controlled by this chip
 
-:``pwms``:
+pwms
     array of PWM devices allocated by the framework
 
-:``of_xlate``:
+of_xlate
     request a PWM device given a device tree PWM specifier
 
-:``of_pwm_n_cells``:
+of_pwm_n_cells
     number of cells expected in the device tree PWM specifier
 
-:``can_sleep``:
-    must be true if the .:c:func:`config`, .:c:func:`enable` or .:c:func:`disable`
+can_sleep
+    must be true if the .\ :c:func:`config`\ , .\ :c:func:`enable`\  or .\ :c:func:`disable`\ 
     operations may sleep
 
+.. _`pwm_config`:
+
+pwm_config
+==========
+
+.. c:function:: int pwm_config(struct pwm_device *pwm, int duty_ns, int period_ns)
+
+    change a PWM device configuration
+
+    :param struct pwm_device \*pwm:
+        PWM device
+
+    :param int duty_ns:
+        "on" time (in nanoseconds)
+
+    :param int period_ns:
+        duration (in nanoseconds) of one cycle
+
+.. _`pwm_config.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`pwm_set_polarity`:
+
+pwm_set_polarity
+================
+
+.. c:function:: int pwm_set_polarity(struct pwm_device *pwm, enum pwm_polarity polarity)
+
+    configure the polarity of a PWM signal
+
+    :param struct pwm_device \*pwm:
+        PWM device
+
+    :param enum pwm_polarity polarity:
+        new polarity of the PWM signal
+
+.. _`pwm_set_polarity.description`:
+
+Description
+-----------
+
+Note that the polarity cannot be configured while the PWM device is
+enabled.
+
+.. _`pwm_set_polarity.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`pwm_enable`:
+
+pwm_enable
+==========
+
+.. c:function:: int pwm_enable(struct pwm_device *pwm)
+
+    start a PWM output toggling
+
+    :param struct pwm_device \*pwm:
+        PWM device
+
+.. _`pwm_enable.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`pwm_disable`:
+
+pwm_disable
+===========
+
+.. c:function:: void pwm_disable(struct pwm_device *pwm)
+
+    stop a PWM output toggling
+
+    :param struct pwm_device \*pwm:
+        PWM device
+
+.. This file was automatic generated / don't edit.
 

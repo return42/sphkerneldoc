@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-amdgpu_object.c
-===============
-
+.. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_object.c
 
 .. _`amdgpu_bo_fence`:
 
 amdgpu_bo_fence
 ===============
 
-.. c:function:: void amdgpu_bo_fence (struct amdgpu_bo *bo, struct fence *fence, bool shared)
+.. c:function:: void amdgpu_bo_fence(struct amdgpu_bo *bo, struct fence *fence, bool shared)
 
     add fence to buffer object
 
@@ -22,4 +18,6 @@ amdgpu_bo_fence
 
     :param bool shared:
         true if fence should be added shared
+
+.. This file was automatic generated / don't edit.
 

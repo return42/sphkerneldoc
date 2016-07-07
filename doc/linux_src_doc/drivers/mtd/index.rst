@@ -7,8 +7,10 @@ mtd
 .. toctree::
    :maxdepth: 1
 
-   mtdcore_c
-   mtdpart_c
-   nand/index
-   onenand/index
-   ubi/index
+    devices/index
+    maps/index
+    nand/index
+    onenand/index
+    ubi/index
+    mtdcore_c
+    mtdpart_c

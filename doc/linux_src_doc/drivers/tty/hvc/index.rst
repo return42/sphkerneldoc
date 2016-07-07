@@ -7,4 +7,5 @@ hvc
 .. toctree::
    :maxdepth: 1
 
-   hvc_console_c
+    hvc_console_c
+    hvc_iucv_c

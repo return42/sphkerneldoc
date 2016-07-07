@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-dib8000.c
-=========
-
+.. src-file: drivers/media/dvb-frontends/dib8000.c
 
 .. _`is_manual_mode`:
 
 is_manual_mode
 ==============
 
-.. c:function:: int is_manual_mode (struct dtv_frontend_properties *c)
+.. c:function:: int is_manual_mode(struct dtv_frontend_properties *c)
 
     Check if TMCC should be used for parameters settings
 
     :param struct dtv_frontend_properties \*c:
         struct dvb_frontend_properties
-
-
 
 .. _`is_manual_mode.description`:
 
@@ -34,4 +28,6 @@ properly specified, otherwise the device won't lock.
 
 Check if all those conditions are properly satisfied before allowing
 the device to use the manual frequency lock mode.
+
+.. This file was automatic generated / don't edit.
 

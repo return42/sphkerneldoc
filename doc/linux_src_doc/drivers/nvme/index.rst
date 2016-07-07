@@ -7,4 +7,4 @@ nvme
 .. toctree::
    :maxdepth: 1
 
-   host/index
+    host/index

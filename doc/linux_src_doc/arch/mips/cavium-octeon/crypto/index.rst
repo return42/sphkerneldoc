@@ -7,4 +7,4 @@ crypto
 .. toctree::
    :maxdepth: 1
 
-   octeon-crypto_c
+    octeon-crypto_c

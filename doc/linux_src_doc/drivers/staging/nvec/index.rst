@@ -7,4 +7,5 @@ nvec
 .. toctree::
    :maxdepth: 1
 
-   nvec_c
+    nvec_c
+    nvec_h

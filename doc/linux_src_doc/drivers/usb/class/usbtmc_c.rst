@@ -1,30 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-usbtmc.c
-========
-
+.. src-file: drivers/usb/class/usbtmc.c
 
 .. _`pr_fmt`:
 
 pr_fmt
 ======
 
-.. c:function:: pr_fmt ( fmt)
+.. c:function::  pr_fmt( fmt)
 
     USB Test & Measurement class driver
 
-    :param fmt:
-
+    :param  fmt:
         *undescribed*
-
-
 
 .. _`pr_fmt.description`:
 
 Description
 -----------
-
 
 Copyright (C) 2007 Stefan Kopp, Gechingen, Germany
 Copyright (C) 2008 Novell, Inc.
@@ -41,13 +33,7 @@ MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
 GNU General Public License for more details.
 
 The GNU General Public License is available at
+http://www.gnu.org/copyleft/gpl.html.
 
-
-
-.. _`pr_fmt.http`:
-
-http
-----
-
-//www.gnu.org/copyleft/gpl.html.
+.. This file was automatic generated / don't edit.
 

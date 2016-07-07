@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-hw_random.h
-===========
-
+.. src-file: include/linux/hw_random.h
 
 .. _`hwrng`:
 
 struct hwrng
 ============
 
-.. c:type:: hwrng
+.. c:type:: struct hwrng
 
     Hardware Random Number Generator driver
-
 
 .. _`hwrng.definition`:
 
@@ -22,51 +17,63 @@ Definition
 
 .. code-block:: c
 
-  struct hwrng {
-    const char * name;
-    int (* init) (struct hwrng *rng);
-    void (* cleanup) (struct hwrng *rng);
-    int (* data_present) (struct hwrng *rng, int wait);
-    int (* data_read) (struct hwrng *rng, u32 *data);
-    int (* read) (struct hwrng *rng, void *data, size_t max, bool wait);
-    unsigned long priv;
-    unsigned short quality;
-  };
-
+    struct hwrng {
+        const char *name;
+        int (* init) (struct hwrng *rng);
+        void (* cleanup) (struct hwrng *rng);
+        int (* data_present) (struct hwrng *rng, int wait);
+        int (* data_read) (struct hwrng *rng, u32 *data);
+        int (* read) (struct hwrng *rng, void *data, size_t max, bool wait);
+        unsigned long priv;
+        unsigned short quality;
+        struct list_head list;
+        struct kref ref;
+        struct completion cleanup_done;
+    }
 
 .. _`hwrng.members`:
 
 Members
 -------
 
-:``name``:
+name
     Unique RNG name.
 
-:``init``:
+init
     Initialization callback (can be NULL).
 
-:``cleanup``:
+cleanup
     Cleanup callback (can be NULL).
 
-:``data_present``:
+data_present
     Callback to determine if data is available
     on the RNG. If NULL, it is assumed that
-    there is always data available.  \*OBSOLETE*
+    there is always data available.  \*OBSOLETE\*
 
-:``data_read``:
+data_read
     Read data from the RNG device.
     Returns the number of lower random bytes in "data".
-    Must not be NULL.    \*OBSOLETE*
+    Must not be NULL.    \*OBSOLETE\*
 
-:``read``:
+read
     New API. drivers can fill up to max bytes of data
     into the buffer. The buffer is aligned for any type.
 
-:``priv``:
+priv
     Private data, for use by the RNG driver.
 
-:``quality``:
+quality
     Estimation of true entropy in RNG's bitstream
     (per mill).
 
+list
+    *undescribed*
+
+ref
+    *undescribed*
+
+cleanup_done
+    *undescribed*
+
+.. This file was automatic generated / don't edit.
 

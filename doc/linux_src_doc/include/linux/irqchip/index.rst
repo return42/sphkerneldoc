@@ -7,4 +7,4 @@ irqchip
 .. toctree::
    :maxdepth: 1
 
-   irq-omap-intc_h
+    mips-gic_h

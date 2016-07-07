@@ -7,8 +7,8 @@ caif
 .. toctree::
    :maxdepth: 1
 
-   caif_dev_h
-   caif_device_h
-   caif_hsi_h
-   caif_layer_h
-   cfcnfg_h
+    caif_dev_h
+    caif_device_h
+    caif_hsi_h
+    caif_layer_h
+    cfcnfg_h

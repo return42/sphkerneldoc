@@ -7,6 +7,8 @@ bus
 .. toctree::
    :maxdepth: 1
 
-   arm-cci_c
-   mips_cdmm_c
-   sunxi-rsb_c
+    arm-cci_c
+    mips_cdmm_c
+    omap_l3_noc_c
+    omap_l3_noc_h
+    sunxi-rsb_c

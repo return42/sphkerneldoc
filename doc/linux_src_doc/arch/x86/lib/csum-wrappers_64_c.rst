@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==================
-csum-wrappers_64.c
-==================
-
+.. src-file: arch/x86/lib/csum-wrappers_64.c
 
 .. _`csum_partial_copy_from_user`:
 
 csum_partial_copy_from_user
 ===========================
 
-.. c:function:: __wsum csum_partial_copy_from_user (const void __user *src, void *dst, int len, __wsum isum, int *errp)
+.. c:function:: __wsum csum_partial_copy_from_user(const void __user *src, void *dst, int len, __wsum isum, int *errp)
 
     Copy and checksum from user space.
 
@@ -29,8 +25,6 @@ csum_partial_copy_from_user
     :param int \*errp:
         set to -EFAULT for an bad source address.
 
-
-
 .. _`csum_partial_copy_from_user.description`:
 
 Description
@@ -39,14 +33,12 @@ Description
 Returns an 32bit unfolded checksum of the buffer.
 src and dst are best aligned to 64bits.
 
-
-
 .. _`csum_partial_copy_to_user`:
 
 csum_partial_copy_to_user
 =========================
 
-.. c:function:: __wsum csum_partial_copy_to_user (const void *src, void __user *dst, int len, __wsum isum, int *errp)
+.. c:function:: __wsum csum_partial_copy_to_user(const void *src, void __user *dst, int len, __wsum isum, int *errp)
 
     Copy and checksum to user space.
 
@@ -65,8 +57,6 @@ csum_partial_copy_to_user
     :param int \*errp:
         set to -EFAULT for an bad destination address.
 
-
-
 .. _`csum_partial_copy_to_user.description`:
 
 Description
@@ -75,14 +65,12 @@ Description
 Returns an 32bit unfolded checksum of the buffer.
 src and dst are best aligned to 64bits.
 
-
-
 .. _`csum_partial_copy_nocheck`:
 
 csum_partial_copy_nocheck
 =========================
 
-.. c:function:: __wsum csum_partial_copy_nocheck (const void *src, void *dst, int len, __wsum sum)
+.. c:function:: __wsum csum_partial_copy_nocheck(const void *src, void *dst, int len, __wsum sum)
 
     Copy and checksum.
 
@@ -98,12 +86,12 @@ csum_partial_copy_nocheck
     :param __wsum sum:
         initial sum that is added into the result (32bit unfolded)
 
-
-
 .. _`csum_partial_copy_nocheck.description`:
 
 Description
 -----------
 
 Returns an 32bit unfolded checksum of the buffer.
+
+.. This file was automatic generated / don't edit.
 

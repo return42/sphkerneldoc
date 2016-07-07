@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-wm8350.c
-========
-
+.. src-file: sound/soc/codecs/wm8350.c
 
 .. _`wm8350_hp_jack_detect`:
 
 wm8350_hp_jack_detect
 =====================
 
-.. c:function:: int wm8350_hp_jack_detect (struct snd_soc_codec *codec, enum wm8350_jack which, struct snd_soc_jack *jack, int report)
+.. c:function:: int wm8350_hp_jack_detect(struct snd_soc_codec *codec, enum wm8350_jack which, struct snd_soc_jack *jack, int report)
 
     Enable headphone jack detection.
 
@@ -26,8 +22,6 @@ wm8350_hp_jack_detect
     :param int report:
         value to report
 
-
-
 .. _`wm8350_hp_jack_detect.description`:
 
 Description
@@ -36,14 +30,12 @@ Description
 Enables the headphone jack detection of the WM8350.  If no report
 is specified then detection is disabled.
 
-
-
 .. _`wm8350_mic_jack_detect`:
 
 wm8350_mic_jack_detect
 ======================
 
-.. c:function:: int wm8350_mic_jack_detect (struct snd_soc_codec *codec, struct snd_soc_jack *jack, int detect_report, int short_report)
+.. c:function:: int wm8350_mic_jack_detect(struct snd_soc_codec *codec, struct snd_soc_jack *jack, int detect_report, int short_report)
 
     Enable microphone jack detection.
 
@@ -59,8 +51,6 @@ wm8350_mic_jack_detect
     :param int short_report:
         value to report when microphone short detected
 
-
-
 .. _`wm8350_mic_jack_detect.description`:
 
 Description
@@ -68,4 +58,6 @@ Description
 
 Enables the microphone jack detection of the WM8350.  If both reports
 are specified as zero then detection is disabled.
+
+.. This file was automatic generated / don't edit.
 

@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ks8842.h
-========
-
+.. src-file: include/linux/ks8842.h
 
 .. _`ks8842_platform_data`:
 
 struct ks8842_platform_data
 ===========================
 
-.. c:type:: ks8842_platform_data
+.. c:type:: struct ks8842_platform_data
 
     Platform data of the KS8842 network driver
-
 
 .. _`ks8842_platform_data.definition`:
 
@@ -22,26 +17,26 @@ Definition
 
 .. code-block:: c
 
-  struct ks8842_platform_data {
-    u8 macaddr[ETH_ALEN];
-    int rx_dma_channel;
-    int tx_dma_channel;
-  };
-
+    struct ks8842_platform_data {
+        u8 macaddr[ETH_ALEN];
+        int rx_dma_channel;
+        int tx_dma_channel;
+    }
 
 .. _`ks8842_platform_data.members`:
 
 Members
 -------
 
-:``macaddr[ETH_ALEN]``:
+macaddr
     The MAC address of the device, set to all 0:s to use the on in
     the chip.
 
-:``rx_dma_channel``:
+rx_dma_channel
     The DMA channel to use for RX, -1 for none.
 
-:``tx_dma_channel``:
+tx_dma_channel
     The DMA channel to use for TX, -1 for none.
 
+.. This file was automatic generated / don't edit.
 

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-dns_query.c
-===========
-
+.. src-file: net/dns_resolver/dns_query.c
 
 .. _`dns_query`:
 
 dns_query
 =========
 
-.. c:function:: int dns_query (const char *type, const char *name, size_t namelen, const char *options, char **_result, time64_t *_expiry)
+.. c:function:: int dns_query(const char *type, const char *name, size_t namelen, const char *options, char **_result, time64_t *_expiry)
 
     Query the DNS
 
@@ -32,8 +28,6 @@ dns_query
     :param time64_t \*_expiry:
         Where to store the result expiry time (or NULL)
 
-
-
 .. _`dns_query.description`:
 
 Description
@@ -51,4 +45,6 @@ The DNS resolution lookup is performed by upcalling to userspace by way of
 requesting a key of type dns_resolver.
 
 Returns the size of the result on success, -ve error code otherwise.
+
+.. This file was automatic generated / don't edit.
 

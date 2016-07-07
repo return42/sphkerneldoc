@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-tps65086.h
-==========
-
+.. src-file: include/linux/mfd/tps65086.h
 
 .. _`tps65086`:
 
 struct tps65086
 ===============
 
-.. c:type:: tps65086
+.. c:type:: struct tps65086
 
     state holder for the tps65086 driver
-
 
 .. _`tps65086.definition`:
 
@@ -22,23 +17,36 @@ Definition
 
 .. code-block:: c
 
-  struct tps65086 {
-  };
-
+    struct tps65086 {
+        struct device *dev;
+        struct regmap *regmap;
+        int irq;
+        struct regmap_irq_chip_data *irq_data;
+    }
 
 .. _`tps65086.members`:
 
 Members
 -------
 
+dev
+    *undescribed*
 
+regmap
+    *undescribed*
 
+irq
+    *undescribed*
+
+irq_data
+    *undescribed*
 
 .. _`tps65086.description`:
 
 Description
 -----------
 
-
 Device data may be used to access the TPS65086 chip
+
+.. This file was automatic generated / don't edit.
 

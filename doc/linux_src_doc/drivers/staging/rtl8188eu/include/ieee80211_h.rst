@@ -1,0 +1,81 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/rtl8188eu/include/ieee80211.h
+
+.. _`rtw_ieee80211_channel_flags`:
+
+enum rtw_ieee80211_channel_flags
+================================
+
+.. c:type:: enum rtw_ieee80211_channel_flags
+
+    channel flags
+
+.. _`rtw_ieee80211_channel_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rtw_ieee80211_channel_flags {
+        RTW_IEEE80211_CHAN_DISABLED,
+        RTW_IEEE80211_CHAN_PASSIVE_SCAN,
+        RTW_IEEE80211_CHAN_NO_IBSS,
+        RTW_IEEE80211_CHAN_RADAR,
+        RTW_IEEE80211_CHAN_NO_HT40PLUS,
+        RTW_IEEE80211_CHAN_NO_HT40MINUS
+    };
+
+.. _`rtw_ieee80211_channel_flags.constants`:
+
+Constants
+---------
+
+RTW_IEEE80211_CHAN_DISABLED
+    This channel is disabled.
+
+RTW_IEEE80211_CHAN_PASSIVE_SCAN
+    Only passive scanning is permitted
+    on this channel.
+
+RTW_IEEE80211_CHAN_NO_IBSS
+    IBSS is not allowed on this channel.
+
+RTW_IEEE80211_CHAN_RADAR
+    Radar detection is required on this channel.
+
+RTW_IEEE80211_CHAN_NO_HT40PLUS
+    extension channel above this channel
+    is not permitted.
+
+RTW_IEEE80211_CHAN_NO_HT40MINUS
+    extension channel below this channel
+    is not permitted.
+
+.. _`rtw_ieee80211_channel_flags.description`:
+
+Description
+-----------
+
+Channel flags set by the regulatory control code.
+
+.. _`for_each_ie`:
+
+for_each_ie
+===========
+
+.. c:function::  for_each_ie( ie,  buf,  buf_len)
+
+    iterate over continuous IEs
+
+    :param  ie:
+        *undescribed*
+
+    :param  buf:
+        *undescribed*
+
+    :param  buf_len:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

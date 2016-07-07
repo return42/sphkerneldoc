@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-coh901318.c
-===========
-
+.. src-file: drivers/dma/coh901318.c
 
 .. _`coh901318_params`:
 
 struct coh901318_params
 =======================
 
-.. c:type:: coh901318_params
+.. c:type:: struct coh901318_params
 
     parameters for DMAC configuration
-
 
 .. _`coh901318_params.definition`:
 
@@ -22,43 +17,38 @@ Definition
 
 .. code-block:: c
 
-  struct coh901318_params {
-    u32 config;
-    u32 ctrl_lli_last;
-    u32 ctrl_lli;
-    u32 ctrl_lli_chained;
-  };
-
+    struct coh901318_params {
+        u32 config;
+        u32 ctrl_lli_last;
+        u32 ctrl_lli;
+        u32 ctrl_lli_chained;
+    }
 
 .. _`coh901318_params.members`:
 
 Members
 -------
 
-:``config``:
+config
     DMA config register
 
-:``ctrl_lli_last``:
+ctrl_lli_last
     DMA control register for the last lli in the list
 
-:``ctrl_lli``:
+ctrl_lli
     DMA control register for an lli
 
-:``ctrl_lli_chained``:
+ctrl_lli_chained
     DMA control register for a chained lli
-
-
-
 
 .. _`coh_dma_channel`:
 
 struct coh_dma_channel
 ======================
 
-.. c:type:: coh_dma_channel
+.. c:type:: struct coh_dma_channel
 
     dma channel base
-
 
 .. _`coh_dma_channel.definition`:
 
@@ -67,47 +57,42 @@ Definition
 
 .. code-block:: c
 
-  struct coh_dma_channel {
-    const char name[32];
-    const int number;
-    const int desc_nbr_max;
-    const int priority_high;
-    const struct coh901318_params param;
-  };
-
+    struct coh_dma_channel {
+        const char name[32];
+        const int number;
+        const int desc_nbr_max;
+        const int priority_high;
+        const struct coh901318_params param;
+    }
 
 .. _`coh_dma_channel.members`:
 
 Members
 -------
 
-:``name[32]``:
+name
     ascii name of dma channel
 
-:``number``:
+number
     channel id number
 
-:``desc_nbr_max``:
+desc_nbr_max
     number of preallocated descriptors
 
-:``priority_high``:
+priority_high
     prio of channel, 0 low otherwise high.
 
-:``param``:
+param
     configuration parameters
-
-
-
 
 .. _`powersave`:
 
 struct powersave
 ================
 
-.. c:type:: powersave
+.. c:type:: struct powersave
 
     DMA power save structure
-
 
 .. _`powersave.definition`:
 
@@ -116,21 +101,21 @@ Definition
 
 .. code-block:: c
 
-  struct powersave {
-    spinlock_t lock;
-    u64 started_channels;
-  };
-
+    struct powersave {
+        spinlock_t lock;
+        u64 started_channels;
+    }
 
 .. _`powersave.members`:
 
 Members
 -------
 
-:``lock``:
+lock
     lock protecting data in this struct
 
-:``started_channels``:
+started_channels
     bit mask indicating active dma channels
 
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,5 @@ debug
 .. toctree::
    :maxdepth: 1
 
-   debug_core_c
+    debug_core_c
+    gdbstub_c

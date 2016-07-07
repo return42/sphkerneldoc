@@ -7,10 +7,16 @@ dccp
 .. toctree::
    :maxdepth: 1
 
-   ackvec_c
-   feat_c
-   input_c
-   ipv4_c
-   options_c
-   output_c
-   timer_c
+    ccids/index
+    ackvec_c
+    ackvec_h
+    ccid_c
+    ccid_h
+    dccp_h
+    feat_c
+    feat_h
+    input_c
+    ipv4_c
+    options_c
+    output_c
+    timer_c

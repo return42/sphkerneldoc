@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-xilinx_dma.h
-============
-
+.. src-file: include/linux/dma/xilinx_dma.h
 
 .. _`xilinx_vdma_config`:
 
 struct xilinx_vdma_config
 =========================
 
-.. c:type:: xilinx_vdma_config
+.. c:type:: struct xilinx_vdma_config
 
     VDMA Configuration structure
-
 
 .. _`xilinx_vdma_config.definition`:
 
@@ -22,53 +17,110 @@ Definition
 
 .. code-block:: c
 
-  struct xilinx_vdma_config {
-    int frm_dly;
-    int gen_lock;
-    int master;
-    int frm_cnt_en;
-    int park;
-    int park_frm;
-    int coalesc;
-    int delay;
-    int reset;
-    int ext_fsync;
-  };
-
+    struct xilinx_vdma_config {
+        int frm_dly;
+        int gen_lock;
+        int master;
+        int frm_cnt_en;
+        int park;
+        int park_frm;
+        int coalesc;
+        int delay;
+        int reset;
+        int ext_fsync;
+    }
 
 .. _`xilinx_vdma_config.members`:
 
 Members
 -------
 
-:``frm_dly``:
+frm_dly
     Frame delay
 
-:``gen_lock``:
+gen_lock
     Whether in gen-lock mode
 
-:``master``:
+master
     Master that it syncs to
 
-:``frm_cnt_en``:
+frm_cnt_en
     Enable frame count enable
 
-:``park``:
+park
     Whether wants to park
 
-:``park_frm``:
+park_frm
     Frame to park on
 
-:``coalesc``:
+coalesc
     Interrupt coalescing threshold
 
-:``delay``:
+delay
     Delay counter
 
-:``reset``:
+reset
     Reset Channel
 
-:``ext_fsync``:
+ext_fsync
     External Frame Sync source
 
+.. _`xdma_ip_type`:
+
+enum xdma_ip_type
+=================
+
+.. c:type:: enum xdma_ip_type
+
+    DMA IP type.
+
+.. _`xdma_ip_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum xdma_ip_type {
+        XDMA_TYPE_AXIDMA,
+        XDMA_TYPE_CDMA,
+        XDMA_TYPE_VDMA
+    };
+
+.. _`xdma_ip_type.constants`:
+
+Constants
+---------
+
+XDMA_TYPE_AXIDMA
+    *undescribed*
+
+XDMA_TYPE_CDMA
+    *undescribed*
+
+XDMA_TYPE_VDMA
+    *undescribed*
+
+.. _`xdma_ip_type.xdma_type_axidma`:
+
+XDMA_TYPE_AXIDMA
+----------------
+
+Axi dma ip.
+
+.. _`xdma_ip_type.xdma_type_cdma`:
+
+XDMA_TYPE_CDMA
+--------------
+
+Axi cdma ip.
+
+.. _`xdma_ip_type.xdma_type_vdma`:
+
+XDMA_TYPE_VDMA
+--------------
+
+Axi vdma ip.
+
+.. This file was automatic generated / don't edit.
 

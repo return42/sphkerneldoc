@@ -7,4 +7,4 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   pgtable_c
+    pgtable_c

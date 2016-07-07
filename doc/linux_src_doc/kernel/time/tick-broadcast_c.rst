@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-tick-broadcast.c
-================
-
+.. src-file: kernel/time/tick-broadcast.c
 
 .. _`tick_broadcast_control`:
 
 tick_broadcast_control
 ======================
 
-.. c:function:: void tick_broadcast_control (enum tick_broadcast_mode mode)
+.. c:function:: void tick_broadcast_control(enum tick_broadcast_mode mode)
 
     Enable/disable or force broadcast mode
 
     :param enum tick_broadcast_mode mode:
         The selected broadcast mode
-
-
 
 .. _`tick_broadcast_control.description`:
 
@@ -31,18 +25,17 @@ Called with interrupts disabled, so clockevents_lock is not
 required here because the local clock event device cannot go away
 under us.
 
-
-
 .. _`tick_broadcast_setup_oneshot`:
 
 tick_broadcast_setup_oneshot
 ============================
 
-.. c:function:: void tick_broadcast_setup_oneshot (struct clock_event_device *bc)
+.. c:function:: void tick_broadcast_setup_oneshot(struct clock_event_device *bc)
 
     setup the broadcast device
 
     :param struct clock_event_device \*bc:
-
         *undescribed*
+
+.. This file was automatic generated / don't edit.
 

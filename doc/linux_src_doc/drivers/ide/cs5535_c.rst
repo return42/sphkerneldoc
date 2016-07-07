@@ -1,0 +1,49 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/ide/cs5535.c
+
+.. _`cs5535_set_dma_mode`:
+
+cs5535_set_dma_mode
+===================
+
+.. c:function:: void cs5535_set_dma_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    set host controller for DMA mode
+
+    :param ide_hwif_t \*hwif:
+        port
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`cs5535_set_dma_mode.description`:
+
+Description
+-----------
+
+Programs the chipset for DMA mode.
+
+.. _`cs5535_set_pio_mode`:
+
+cs5535_set_pio_mode
+===================
+
+.. c:function:: void cs5535_set_pio_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    set host controller for PIO mode
+
+    :param ide_hwif_t \*hwif:
+        port
+
+    :param ide_drive_t \*drive:
+        drive
+
+.. _`cs5535_set_pio_mode.description`:
+
+Description
+-----------
+
+A callback from the upper layers for PIO-only tuning.
+
+.. This file was automatic generated / don't edit.
+

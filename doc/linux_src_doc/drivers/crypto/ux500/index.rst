@@ -7,5 +7,5 @@ ux500
 .. toctree::
    :maxdepth: 1
 
-   cryp/index
-   hash/index
+    cryp/index
+    hash/index

@@ -1,0 +1,69 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/ide/cs5536.c
+
+.. _`cs5536_cable_detect`:
+
+cs5536_cable_detect
+===================
+
+.. c:function:: u8 cs5536_cable_detect(ide_hwif_t *hwif)
+
+    detect cable type
+
+    :param ide_hwif_t \*hwif:
+        Port to detect on
+
+.. _`cs5536_cable_detect.description`:
+
+Description
+-----------
+
+Perform cable detection for ATA66 capable cable.
+
+Returns a cable type.
+
+.. _`cs5536_set_pio_mode`:
+
+cs5536_set_pio_mode
+===================
+
+.. c:function:: void cs5536_set_pio_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    PIO timing setup
+
+    :param ide_hwif_t \*hwif:
+        ATA port
+
+    :param ide_drive_t \*drive:
+        ATA device
+
+.. _`cs5536_set_dma_mode`:
+
+cs5536_set_dma_mode
+===================
+
+.. c:function:: void cs5536_set_dma_mode(ide_hwif_t *hwif, ide_drive_t *drive)
+
+    DMA timing setup
+
+    :param ide_hwif_t \*hwif:
+        ATA port
+
+    :param ide_drive_t \*drive:
+        ATA device
+
+.. _`cs5536_init_one`:
+
+cs5536_init_one
+===============
+
+.. c:function:: int cs5536_init_one(struct pci_dev *dev, const struct pci_device_id *id)
+
+    :param struct pci_dev \*dev:
+        PCI device
+
+    :param const struct pci_device_id \*id:
+        Entry in match table
+
+.. This file was automatic generated / don't edit.
+

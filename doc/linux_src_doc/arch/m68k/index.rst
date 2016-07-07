@@ -7,5 +7,6 @@ m68k
 .. toctree::
    :maxdepth: 1
 
-   atari/index
-   kernel/index
+    atari/index
+    include/index
+    kernel/index

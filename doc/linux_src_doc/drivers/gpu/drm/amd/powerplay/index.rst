@@ -7,5 +7,5 @@ powerplay
 .. toctree::
    :maxdepth: 1
 
-   hwmgr/index
-   smumgr/index
+    hwmgr/index
+    smumgr/index

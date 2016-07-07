@@ -1,0 +1,86 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/dac/ad5761.c
+
+.. _`ad5761_chip_info`:
+
+struct ad5761_chip_info
+=======================
+
+.. c:type:: struct ad5761_chip_info
+
+    chip specific information
+
+.. _`ad5761_chip_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5761_chip_info {
+        unsigned long int_vref;
+        const struct iio_chan_spec channel;
+    }
+
+.. _`ad5761_chip_info.members`:
+
+Members
+-------
+
+int_vref
+    Value of the internal reference voltage in mV - 0 if external
+    reference voltage is used
+
+channel
+    channel specification
+
+.. _`ad5761_state`:
+
+struct ad5761_state
+===================
+
+.. c:type:: struct ad5761_state
+
+    driver instance specific data
+
+.. _`ad5761_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad5761_state {
+        struct spi_device *spi;
+        struct regulator *vref_reg;
+        bool use_intref;
+        int vref;
+        enum ad5761_voltage_range range;
+        union data[3] ____cacheline_aligned;
+    }
+
+.. _`ad5761_state.members`:
+
+Members
+-------
+
+spi
+    spi_device
+
+vref_reg
+    reference voltage regulator
+
+use_intref
+    true when the internal voltage reference is used
+
+vref
+    actual voltage reference in mVolts
+
+range
+    output range mode used
+
+data
+    cache aligned spi buffer
+
+.. This file was automatic generated / don't edit.
+

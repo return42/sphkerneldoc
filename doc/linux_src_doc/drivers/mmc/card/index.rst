@@ -7,4 +7,6 @@ card
 .. toctree::
    :maxdepth: 1
 
-   queue_c
+    mmc_test_c
+    queue_c
+    sdio_uart_c

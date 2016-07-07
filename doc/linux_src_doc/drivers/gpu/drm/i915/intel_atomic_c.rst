@@ -1,27 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-intel_atomic.c
-==============
-
-
-.. _`atomic-modeset-support`:
-
-atomic modeset support
-======================
-
-The functions here implement the state management and hardware programming
-dispatch required by the atomic modeset infrastructure.
-See intel_atomic_plane.c for the plane-specific atomic functionality.
-
-
+.. src-file: drivers/gpu/drm/i915/intel_atomic.c
 
 .. _`intel_connector_atomic_get_property`:
 
 intel_connector_atomic_get_property
 ===================================
 
-.. c:function:: int intel_connector_atomic_get_property (struct drm_connector *connector, const struct drm_connector_state *state, struct drm_property *property, uint64_t *val)
+.. c:function:: int intel_connector_atomic_get_property(struct drm_connector *connector, const struct drm_connector_state *state, struct drm_property *property, uint64_t *val)
 
     fetch connector property value
 
@@ -37,8 +22,6 @@ intel_connector_atomic_get_property
     :param uint64_t \*val:
         pointer to write property value into
 
-
-
 .. _`intel_connector_atomic_get_property.description`:
 
 Description
@@ -48,14 +31,12 @@ The DRM core does not store shadow copies of properties for
 atomic-capable drivers.  This entrypoint is used to fetch
 the current value of a driver-specific connector property.
 
-
-
 .. _`intel_crtc_destroy_state`:
 
 intel_crtc_destroy_state
 ========================
 
-.. c:function:: void intel_crtc_destroy_state (struct drm_crtc *crtc, struct drm_crtc_state *state)
+.. c:function:: void intel_crtc_destroy_state(struct drm_crtc *crtc, struct drm_crtc_state *state)
 
     destroy crtc state
 
@@ -63,10 +44,7 @@ intel_crtc_destroy_state
         drm crtc
 
     :param struct drm_crtc_state \*state:
-
         *undescribed*
-
-
 
 .. _`intel_crtc_destroy_state.description`:
 
@@ -76,14 +54,12 @@ Description
 Destroys the crtc state (both common and Intel-specific) for the
 specified crtc.
 
-
-
 .. _`intel_atomic_setup_scalers`:
 
 intel_atomic_setup_scalers
 ==========================
 
-.. c:function:: int intel_atomic_setup_scalers (struct drm_device *dev, struct intel_crtc *intel_crtc, struct intel_crtc_state *crtc_state)
+.. c:function:: int intel_atomic_setup_scalers(struct drm_device *dev, struct intel_crtc *intel_crtc, struct intel_crtc_state *crtc_state)
 
     setup scalers for crtc per staged requests
 
@@ -91,13 +67,10 @@ intel_atomic_setup_scalers
         DRM device
 
     :param struct intel_crtc \*intel_crtc:
-
         *undescribed*
 
     :param struct intel_crtc_state \*crtc_state:
         incoming crtc_state to validate and setup scalers
-
-
 
 .. _`intel_atomic_setup_scalers.description`:
 
@@ -105,19 +78,19 @@ Description
 -----------
 
 This function sets up scalers based on staged scaling requests for
-a ``crtc`` and its planes. It is called from crtc level check path. If request
+a \ ``crtc``\  and its planes. It is called from crtc level check path. If request
 is a supportable request, it attaches scalers to requested planes and crtc.
 
 This function takes into account the current scaler(s) in use by any planes
 not being part of this atomic state
 
+.. _`intel_atomic_setup_scalers.return`:
 
-
-.. _`intel_atomic_setup_scalers.returns`:
-
-Returns
--------
+Return
+------
 
 0 - scalers were setup succesfully
 error code - otherwise
+
+.. This file was automatic generated / don't edit.
 

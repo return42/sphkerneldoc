@@ -1,27 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-gpiolib-sysfs.c
-===============
-
+.. src-file: drivers/gpio/gpiolib-sysfs.c
 
 .. _`gpiod_export`:
 
 gpiod_export
 ============
 
-.. c:function:: int gpiod_export (struct gpio_desc *desc, bool direction_may_change)
+.. c:function:: int gpiod_export(struct gpio_desc *desc, bool direction_may_change)
 
     export a GPIO through sysfs
 
     :param struct gpio_desc \*desc:
-
         *undescribed*
 
     :param bool direction_may_change:
         true if userspace may change gpio direction
-
-
 
 .. _`gpiod_export.context`:
 
@@ -29,8 +22,6 @@ Context
 -------
 
 arch_initcall or later
-
-
 
 .. _`gpiod_export.description`:
 
@@ -46,14 +37,12 @@ the gpio's direction.  A "value" attribute will always be provided.
 
 Returns zero on success, else an error.
 
-
-
 .. _`gpiod_export_link`:
 
 gpiod_export_link
 =================
 
-.. c:function:: int gpiod_export_link (struct device *dev, const char *name, struct gpio_desc *desc)
+.. c:function:: int gpiod_export_link(struct device *dev, const char *name, struct gpio_desc *desc)
 
     create a sysfs link to an exported GPIO node
 
@@ -64,10 +53,7 @@ gpiod_export_link
         name of the symlink
 
     :param struct gpio_desc \*desc:
-
         *undescribed*
-
-
 
 .. _`gpiod_export_link.description`:
 
@@ -79,27 +65,24 @@ node. Caller is responsible for unlinking.
 
 Returns zero on success, else an error.
 
-
-
 .. _`gpiod_unexport`:
 
 gpiod_unexport
 ==============
 
-.. c:function:: void gpiod_unexport (struct gpio_desc *desc)
+.. c:function:: void gpiod_unexport(struct gpio_desc *desc)
 
-    reverse effect of gpio_export()
+    reverse effect of \ :c:func:`gpio_export`\ 
 
     :param struct gpio_desc \*desc:
-
         *undescribed*
-
-
 
 .. _`gpiod_unexport.description`:
 
 Description
 -----------
 
-This is implicit on :c:func:`gpio_free`.
+This is implicit on \ :c:func:`gpio_free`\ .
+
+.. This file was automatic generated / don't edit.
 

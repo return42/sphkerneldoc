@@ -7,4 +7,4 @@ wimax
 .. toctree::
    :maxdepth: 1
 
-   i2400m/index
+    i2400m/index

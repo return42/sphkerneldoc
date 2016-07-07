@@ -1,36 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-ptrace.c
-========
-
+.. src-file: kernel/ptrace.c
 
 .. _`__ptrace_unlink`:
 
 __ptrace_unlink
 ===============
 
-.. c:function:: void __ptrace_unlink (struct task_struct *child)
+.. c:function:: void __ptrace_unlink(struct task_struct *child)
 
     unlink ptracee and restore its execution state
 
     :param struct task_struct \*child:
         ptracee to be unlinked
 
-
-
 .. _`__ptrace_unlink.description`:
 
 Description
 -----------
 
-Remove ``child`` from the ptrace list, move it back to the original parent,
+Remove \ ``child``\  from the ptrace list, move it back to the original parent,
 and restore the execution state so that it conforms to the group stop
 state.
 
 Unlinking can happen via two paths - explicit PTRACE_DETACH or ptracer
 exiting.  For PTRACE_DETACH, unless the ptracee has been killed between
-:c:func:`ptrace_check_attach` and here, it's guaranteed to be in TASK_TRACED.
+\ :c:func:`ptrace_check_attach`\  and here, it's guaranteed to be in TASK_TRACED.
 If the ptracer is exiting, the ptracee can be in any state.
 
 After detach, the ptracee should be in a state which conforms to the
@@ -45,23 +39,19 @@ stopped task.  However, in this direction, the intermediate RUNNING
 state is not hidden even from the current ptracer and if it immediately
 re-attaches and performs a WNOHANG wait(2), it may fail.
 
-
-
 .. _`__ptrace_unlink.context`:
 
-CONTEXT
+Context
 -------
 
 write_lock_irq(tasklist_lock)
-
-
 
 .. _`ptrace_check_attach`:
 
 ptrace_check_attach
 ===================
 
-.. c:function:: int ptrace_check_attach (struct task_struct *child, bool ignore_state)
+.. c:function:: int ptrace_check_attach(struct task_struct *child, bool ignore_state)
 
     check whether ptracee is ready for ptrace operation
 
@@ -69,61 +59,52 @@ ptrace_check_attach
         ptracee to check for
 
     :param bool ignore_state:
-        don't check whether ``child`` is currently ``TASK_TRACED``
-
-
+        don't check whether \ ``child``\  is currently \ ``TASK_TRACED``\ 
 
 .. _`ptrace_check_attach.description`:
 
 Description
 -----------
 
-Check whether ``child`` is being ptraced by ``current`` and ready for further
-ptrace operations.  If ``ignore_state`` is ``false``\ , ``child`` also should be in
-``TASK_TRACED`` state and on return the child is guaranteed to be traced
-and not executing.  If ``ignore_state`` is ``true``\ , ``child`` can be in any
+Check whether \ ``child``\  is being ptraced by \ ``current``\  and ready for further
+ptrace operations.  If \ ``ignore_state``\  is \ ``false``\ , \ ``child``\  also should be in
+\ ``TASK_TRACED``\  state and on return the child is guaranteed to be traced
+and not executing.  If \ ``ignore_state``\  is \ ``true``\ , \ ``child``\  can be in any
 state.
-
-
 
 .. _`ptrace_check_attach.context`:
 
-CONTEXT
+Context
 -------
 
-Grabs and releases tasklist_lock and ``child``\ ->sighand->siglock.
+Grabs and releases tasklist_lock and \ ``child``\ ->sighand->siglock.
 
+.. _`ptrace_check_attach.return`:
 
+Return
+------
 
-.. _`ptrace_check_attach.returns`:
-
-RETURNS
--------
-
-0 on success, -ESRCH if ``child`` is not ready.
-
-
+0 on success, -ESRCH if \ ``child``\  is not ready.
 
 .. _`ptrace_traceme`:
 
 ptrace_traceme
 ==============
 
-.. c:function:: int ptrace_traceme ( void)
+.. c:function:: int ptrace_traceme( void)
 
-    - helper for PTRACE_TRACEME
+    -  helper for PTRACE_TRACEME
 
-    :param void:
+    :param  void:
         no arguments
-
-
 
 .. _`ptrace_traceme.description`:
 
 Description
 -----------
 
-
 Performs checks and sets PT_PTRACED.
 Should be used by all ptrace implementations for PTRACE_TRACEME.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,6 @@ mach-davinci
 .. toctree::
    :maxdepth: 1
 
-   clock_c
+    aemif_c
+    board-dm646x-evm_c
+    clock_c

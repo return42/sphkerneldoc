@@ -7,6 +7,6 @@ ext
 .. toctree::
    :maxdepth: 1
 
-   hdac_ext_bus_c
-   hdac_ext_controller_c
-   hdac_ext_stream_c
+    hdac_ext_bus_c
+    hdac_ext_controller_c
+    hdac_ext_stream_c

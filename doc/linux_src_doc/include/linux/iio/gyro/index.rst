@@ -7,4 +7,4 @@ gyro
 .. toctree::
    :maxdepth: 1
 
-   itg3200_h
+    itg3200_h

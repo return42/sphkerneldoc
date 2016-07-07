@@ -7,4 +7,4 @@ kernel
 .. toctree::
    :maxdepth: 1
 
-   ints_c
+    ints_c

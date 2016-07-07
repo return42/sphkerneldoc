@@ -7,4 +7,4 @@ macintosh
 .. toctree::
    :maxdepth: 1
 
-   macio_asic_c
+    macio_asic_c

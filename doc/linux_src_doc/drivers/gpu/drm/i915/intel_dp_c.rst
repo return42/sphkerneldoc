@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-intel_dp.c
-==========
-
+.. src-file: drivers/gpu/drm/i915/intel_dp.c
 
 .. _`is_edp`:
 
 is_edp
 ======
 
-.. c:function:: bool is_edp (struct intel_dp *intel_dp)
+.. c:function:: bool is_edp(struct intel_dp *intel_dp)
 
     is the given port attached to an eDP panel (either CPU or PCH)
 
     :param struct intel_dp \*intel_dp:
         DP struct
-
-
 
 .. _`is_edp.description`:
 
@@ -27,14 +21,12 @@ Description
 If a CPU or PCH DP output is attached to an eDP panel, this function
 will return true, and false otherwise.
 
-
-
 .. _`intel_dp_set_drrs_state`:
 
 intel_dp_set_drrs_state
 =======================
 
-.. c:function:: void intel_dp_set_drrs_state (struct drm_device *dev, int refresh_rate)
+.. c:function:: void intel_dp_set_drrs_state(struct drm_device *dev, int refresh_rate)
 
     program registers for RR switch to take effect
 
@@ -43,8 +35,6 @@ intel_dp_set_drrs_state
 
     :param int refresh_rate:
         RR to be programmed
-
-
 
 .. _`intel_dp_set_drrs_state.description`:
 
@@ -58,21 +48,17 @@ this case, RR value needs to be passed from user space).
 
 The caller of this function needs to take a lock on dev_priv->drrs.
 
-
-
 .. _`intel_edp_drrs_enable`:
 
 intel_edp_drrs_enable
 =====================
 
-.. c:function:: void intel_edp_drrs_enable (struct intel_dp *intel_dp)
+.. c:function:: void intel_edp_drrs_enable(struct intel_dp *intel_dp)
 
     init drrs struct if supported
 
     :param struct intel_dp \*intel_dp:
         DP struct
-
-
 
 .. _`intel_edp_drrs_enable.description`:
 
@@ -81,28 +67,24 @@ Description
 
 Initializes frontbuffer_bits and drrs.dp
 
-
-
 .. _`intel_edp_drrs_disable`:
 
 intel_edp_drrs_disable
 ======================
 
-.. c:function:: void intel_edp_drrs_disable (struct intel_dp *intel_dp)
+.. c:function:: void intel_edp_drrs_disable(struct intel_dp *intel_dp)
 
     Disable DRRS
 
     :param struct intel_dp \*intel_dp:
         DP struct
 
-
-
 .. _`intel_edp_drrs_invalidate`:
 
 intel_edp_drrs_invalidate
 =========================
 
-.. c:function:: void intel_edp_drrs_invalidate (struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_edp_drrs_invalidate(struct drm_device *dev, unsigned frontbuffer_bits)
 
     Disable Idleness DRRS
 
@@ -111,8 +93,6 @@ intel_edp_drrs_invalidate
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
-
-
 
 .. _`intel_edp_drrs_invalidate.description`:
 
@@ -124,14 +104,12 @@ Hence DRRS needs to be Upclocked, i.e. (LOW_RR -> HIGH_RR).
 
 Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
 
-
-
 .. _`intel_edp_drrs_flush`:
 
 intel_edp_drrs_flush
 ====================
 
-.. c:function:: void intel_edp_drrs_flush (struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_edp_drrs_flush(struct drm_device *dev, unsigned frontbuffer_bits)
 
     Restart Idleness DRRS
 
@@ -140,8 +118,6 @@ intel_edp_drrs_flush
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
-
-
 
 .. _`intel_edp_drrs_flush.description`:
 
@@ -155,56 +131,12 @@ if no other planes are dirty.
 
 Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
 
-
-
-.. _`display-refresh-rate-switching--drrs-`:
-
-Display Refresh Rate Switching (DRRS)
-=====================================
-
-Display Refresh Rate Switching (DRRS) is a power conservation feature
-which enables swtching between low and high refresh rates,
-dynamically, based on the usage scenario. This feature is applicable
-for internal panels.
-
-Indication that the panel supports DRRS is given by the panel EDID, which
-would list multiple refresh rates for one resolution.
-
-DRRS is of 2 types - static and seamless.
-Static DRRS involves changing refresh rate (RR) by doing a full modeset
-(may appear as a blink on screen) and is used in dock-undock scenario.
-Seamless DRRS involves changing RR without any visual effect to the user
-and can be used during normal system usage. This is done by programming
-certain registers.
-
-Support for static/seamless DRRS may be indicated in the VBT based on
-inputs from the panel spec.
-
-DRRS saves power by switching to low RR based on usage scenarios.
-
-eDP DRRS:-
-The implementation is based on frontbuffer tracking implementation.
-
-When there is a disturbance on the screen triggered by user activity or a
-periodic system activity, DRRS is disabled (RR is changed to high RR).
-When there is no movement on screen, after a timeout of 1 second, a switch
-to low RR is made.
-For integration with frontbuffer tracking code,
-
-:c:func:`intel_edp_drrs_invalidate` and :c:func:`intel_edp_drrs_flush` are called.
-
-DRRS can be further extended to support other internal panels and also
-the scenario of video playback wherein RR is set based on the rate
-requested by userspace.
-
-
-
 .. _`intel_dp_drrs_init`:
 
 intel_dp_drrs_init
 ==================
 
-.. c:function:: struct drm_display_mode *intel_dp_drrs_init (struct intel_connector *intel_connector, struct drm_display_mode *fixed_mode)
+.. c:function:: struct drm_display_mode *intel_dp_drrs_init(struct intel_connector *intel_connector, struct drm_display_mode *fixed_mode)
 
     Init basic DRRS work and mutex.
 
@@ -214,8 +146,6 @@ intel_dp_drrs_init
     :param struct drm_display_mode \*fixed_mode:
         preferred mode of panel
 
-
-
 .. _`intel_dp_drrs_init.description`:
 
 Description
@@ -224,14 +154,14 @@ Description
 This function is  called only once at driver load to initialize basic
 DRRS stuff.
 
+.. _`intel_dp_drrs_init.return`:
 
-
-.. _`intel_dp_drrs_init.returns`:
-
-Returns
--------
+Return
+------
 
 Downclock mode if panel supports it, else return NULL.
 DRRS support is determined by the presence of downclock mode (apart
 from VBT setting).
+
+.. This file was automatic generated / don't edit.
 

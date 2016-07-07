@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-====
-ie.c
-====
-
+.. src-file: drivers/uwb/ie.c
 
 .. _`uwb_ie_next`:
 
 uwb_ie_next
 ===========
 
-.. c:function:: struct uwb_ie_hdr *uwb_ie_next (void **ptr, size_t *len)
+.. c:function:: struct uwb_ie_hdr *uwb_ie_next(void **ptr, size_t *len)
 
     get the next IE in a buffer
 
@@ -20,27 +16,23 @@ uwb_ie_next
     :param size_t \*len:
         length of the buffer
 
-
-
 .. _`uwb_ie_next.description`:
 
 Description
 -----------
 
-Both ``ptr`` and ``len`` are updated so subsequent calls to :c:func:`uwb_ie_next`
+Both \ ``ptr``\  and \ ``len``\  are updated so subsequent calls to \ :c:func:`uwb_ie_next`\ 
 will get the next IE.
 
-NULL is returned (and ``ptr`` and ``len`` will not be updated) if there
+NULL is returned (and \ ``ptr``\  and \ ``len``\  will not be updated) if there
 are no more IEs in the buffer or the buffer is too short.
-
-
 
 .. _`uwb_ie_dump_hex`:
 
 uwb_ie_dump_hex
 ===============
 
-.. c:function:: int uwb_ie_dump_hex (const struct uwb_ie_hdr *ies, size_t len, char *buf, size_t size)
+.. c:function:: int uwb_ie_dump_hex(const struct uwb_ie_hdr *ies, size_t len, char *buf, size_t size)
 
     print IEs to a character buffer
 
@@ -54,9 +46,7 @@ uwb_ie_dump_hex
         the destination buffer.
 
     :param size_t size:
-        size of ``buf``\ .
-
-
+        size of \ ``buf``\ .
 
 .. _`uwb_ie_dump_hex.description`:
 
@@ -65,23 +55,18 @@ Description
 
 Returns the number of characters written.
 
-
-
 .. _`uwb_rc_get_ie`:
 
 uwb_rc_get_ie
 =============
 
-.. c:function:: ssize_t uwb_rc_get_ie (struct uwb_rc *uwb_rc, struct uwb_rc_evt_get_ie **pget_ie)
+.. c:function:: ssize_t uwb_rc_get_ie(struct uwb_rc *uwb_rc, struct uwb_rc_evt_get_ie **pget_ie)
 
     :param struct uwb_rc \*uwb_rc:
         UWB Radio Controller
 
     :param struct uwb_rc_evt_get_ie \*\*pget_ie:
-
         *undescribed*
-
-
 
 .. _`uwb_rc_get_ie.description`:
 
@@ -92,37 +77,30 @@ We don't need to lock the uwb_rc's mutex because we don't modify
 anything. Once done with the iedata buffer, call
 uwb_rc_ie_release(iedata). Don't call kfree on it.
 
-
-
 .. _`uwb_rc_set_ie`:
 
 uwb_rc_set_ie
 =============
 
-.. c:function:: int uwb_rc_set_ie (struct uwb_rc *rc, struct uwb_rc_cmd_set_ie *cmd)
+.. c:function:: int uwb_rc_set_ie(struct uwb_rc *rc, struct uwb_rc_cmd_set_ie *cmd)
 
     :param struct uwb_rc \*rc:
-
         *undescribed*
 
     :param struct uwb_rc_cmd_set_ie \*cmd:
         pointer to the SET-IE command with the IEs to set
-
-
 
 .. _`uwb_rc_ie_setup`:
 
 uwb_rc_ie_setup
 ===============
 
-.. c:function:: int uwb_rc_ie_setup (struct uwb_rc *uwb_rc)
+.. c:function:: int uwb_rc_ie_setup(struct uwb_rc *uwb_rc)
 
     setup a radio controller's IE manager
 
     :param struct uwb_rc \*uwb_rc:
         the radio controller.
-
-
 
 .. _`uwb_rc_ie_setup.description`:
 
@@ -135,14 +113,12 @@ be just the hardware's MAC and PHY Capability IEs).
 
 Returns 0 on success; -ve on an error.
 
-
-
 .. _`uwb_rc_ie_add`:
 
 uwb_rc_ie_add
 =============
 
-.. c:function:: int uwb_rc_ie_add (struct uwb_rc *uwb_rc, const struct uwb_ie_hdr *ies, size_t size)
+.. c:function:: int uwb_rc_ie_add(struct uwb_rc *uwb_rc, const struct uwb_ie_hdr *ies, size_t size)
 
     add new IEs to the radio controller's beacon
 
@@ -155,8 +131,6 @@ uwb_rc_ie_add
 
     :param size_t size:
         length of all the IEs.
-
-
 
 .. _`uwb_rc_ie_add.description`:
 
@@ -175,14 +149,12 @@ new one, and call SET IE with all the IEs needed.
 
 Returns 0 on success; or -ENOMEM.
 
-
-
 .. _`uwb_rc_ie_rm`:
 
 uwb_rc_ie_rm
 ============
 
-.. c:function:: int uwb_rc_ie_rm (struct uwb_rc *uwb_rc, enum uwb_ie element_id)
+.. c:function:: int uwb_rc_ie_rm(struct uwb_rc *uwb_rc, enum uwb_ie element_id)
 
     remove an IE from the radio controller's beacon
 
@@ -192,15 +164,15 @@ uwb_rc_ie_rm
     :param enum uwb_ie element_id:
         the element ID of the IE to remove.
 
-
-
 .. _`uwb_rc_ie_rm.description`:
 
 Description
 -----------
 
-Only IEs previously added with :c:func:`uwb_rc_ie_add` may be removed.
+Only IEs previously added with \ :c:func:`uwb_rc_ie_add`\  may be removed.
 
 Returns 0 on success; or -ve the SET-IE command to the radio
 controller failed.
+
+.. This file was automatic generated / don't edit.
 

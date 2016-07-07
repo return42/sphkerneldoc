@@ -7,4 +7,4 @@ common
 .. toctree::
    :maxdepth: 1
 
-   siano/index
+    siano/index

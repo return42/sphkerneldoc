@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-sock_reuseport.c
-================
-
+.. src-file: net/core/sock_reuseport.c
 
 .. _`reuseport_add_sock`:
 
 reuseport_add_sock
 ==================
 
-.. c:function:: int reuseport_add_sock (struct sock *sk, struct sock *sk2)
+.. c:function:: int reuseport_add_sock(struct sock *sk, struct sock *sk2)
 
     Add a socket to the reuseport group of another.
 
@@ -21,14 +17,12 @@ reuseport_add_sock
         Socket belonging to the existing reuseport group.
         May return ENOMEM and not add socket to group under memory pressure.
 
-
-
 .. _`reuseport_select_sock`:
 
 reuseport_select_sock
 =====================
 
-.. c:function:: struct sock *reuseport_select_sock (struct sock *sk, u32 hash, struct sk_buff *skb, int hdr_len)
+.. c:function:: struct sock *reuseport_select_sock(struct sock *sk, u32 hash, struct sk_buff *skb, int hdr_len)
 
     Select a socket from an SO_REUSEPORT group.
 
@@ -46,4 +40,6 @@ reuseport_select_sock
         the skb does not yet point at the payload, this parameter represents
         how far the pointer needs to advance to reach the payload.
         Returns a socket that should receive the packet (or NULL on error).
+
+.. This file was automatic generated / don't edit.
 

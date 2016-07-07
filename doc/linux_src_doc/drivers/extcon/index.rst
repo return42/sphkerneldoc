@@ -7,4 +7,8 @@ extcon
 .. toctree::
    :maxdepth: 1
 
-   extcon_c
+    extcon-adc-jack_c
+    extcon-max14577_c
+    extcon-max77693_c
+    extcon-usb-gpio_c
+    extcon_c

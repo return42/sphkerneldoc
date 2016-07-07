@@ -7,9 +7,13 @@ rdmavt
 .. toctree::
    :maxdepth: 1
 
-   ah_c
-   cq_c
-   mcast_c
-   mr_c
-   qp_c
-   vt_c
+    ah_c
+    cq_c
+    mad_c
+    mcast_c
+    mmap_c
+    mr_c
+    pd_c
+    qp_c
+    srq_c
+    vt_c

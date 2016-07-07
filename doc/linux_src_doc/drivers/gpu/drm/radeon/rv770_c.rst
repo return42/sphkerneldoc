@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-rv770.c
-=======
-
+.. src-file: drivers/gpu/drm/radeon/rv770.c
 
 .. _`rv770_get_xclk`:
 
 rv770_get_xclk
 ==============
 
-.. c:function:: u32 rv770_get_xclk (struct radeon_device *rdev)
+.. c:function:: u32 rv770_get_xclk(struct radeon_device *rdev)
 
     get the xclk
 
     :param struct radeon_device \*rdev:
         radeon_device pointer
-
-
 
 .. _`rv770_get_xclk.description`:
 
@@ -26,4 +20,6 @@ Description
 
 Returns the reference clock used by the gfx engine
 (r7xx-cayman).
+
+.. This file was automatic generated / don't edit.
 

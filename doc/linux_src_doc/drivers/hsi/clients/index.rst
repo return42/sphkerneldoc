@@ -7,4 +7,6 @@ clients
 .. toctree::
    :maxdepth: 1
 
-   ssi_protocol_c
+    cmt_speech_c
+    hsi_char_c
+    ssi_protocol_c

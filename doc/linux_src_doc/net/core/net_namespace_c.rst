@@ -1,23 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-net_namespace.c
-===============
-
+.. src-file: net/core/net_namespace.c
 
 .. _`register_pernet_subsys`:
 
 register_pernet_subsys
 ======================
 
-.. c:function:: int register_pernet_subsys (struct pernet_operations *ops)
+.. c:function:: int register_pernet_subsys(struct pernet_operations *ops)
 
     register a network namespace subsystem
 
     :param struct pernet_operations \*ops:
         pernet operations structure for the subsystem
-
-
 
 .. _`register_pernet_subsys.description`:
 
@@ -39,21 +33,17 @@ When a network namespace is destroyed all of the exit methods
 are called in the reverse of the order with which they were
 registered.
 
-
-
 .. _`unregister_pernet_subsys`:
 
 unregister_pernet_subsys
 ========================
 
-.. c:function:: void unregister_pernet_subsys (struct pernet_operations *ops)
+.. c:function:: void unregister_pernet_subsys(struct pernet_operations *ops)
 
     unregister a network namespace subsystem
 
     :param struct pernet_operations \*ops:
         pernet operations structure to manipulate
-
-
 
 .. _`unregister_pernet_subsys.description`:
 
@@ -65,21 +55,17 @@ used when network namespaces are created or destroyed.  In
 addition run the exit method for all existing network
 namespaces.
 
-
-
 .. _`register_pernet_device`:
 
 register_pernet_device
 ======================
 
-.. c:function:: int register_pernet_device (struct pernet_operations *ops)
+.. c:function:: int register_pernet_device(struct pernet_operations *ops)
 
     register a network namespace device
 
     :param struct pernet_operations \*ops:
         pernet operations structure for the subsystem
-
-
 
 .. _`register_pernet_device.description`:
 
@@ -101,21 +87,17 @@ When a network namespace is destroyed all of the exit methods
 are called in the reverse of the order with which they were
 registered.
 
-
-
 .. _`unregister_pernet_device`:
 
 unregister_pernet_device
 ========================
 
-.. c:function:: void unregister_pernet_device (struct pernet_operations *ops)
+.. c:function:: void unregister_pernet_device(struct pernet_operations *ops)
 
     unregister a network namespace netdevice
 
     :param struct pernet_operations \*ops:
         pernet operations structure to manipulate
-
-
 
 .. _`unregister_pernet_device.description`:
 
@@ -126,4 +108,6 @@ Remove the pernet operations structure from the list to be
 used when network namespaces are created or destroyed.  In
 addition run the exit method for all existing network
 namespaces.
+
+.. This file was automatic generated / don't edit.
 

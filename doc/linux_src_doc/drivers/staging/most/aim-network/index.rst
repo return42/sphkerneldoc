@@ -7,4 +7,4 @@ aim-network
 .. toctree::
    :maxdepth: 1
 
-   networking_c
+    networking_c

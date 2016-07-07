@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-of_memory.c
-===========
-
+.. src-file: drivers/memory/of_memory.c
 
 .. _`of_get_min_tck`:
 
 of_get_min_tck
 ==============
 
-.. c:function:: const struct lpddr2_min_tck *of_get_min_tck (struct device_node *np, struct device *dev)
+.. c:function:: const struct lpddr2_min_tck *of_get_min_tck(struct device_node *np, struct device *dev)
 
     extract min timing values for ddr
 
@@ -18,10 +14,7 @@ of_get_min_tck
         pointer to ddr device tree node
 
     :param struct device \*dev:
-
         *undescribed*
-
-
 
 .. _`of_get_min_tck.description`:
 
@@ -33,14 +26,12 @@ from device tree node. Returns a pointer to the populated
 structure. If any error in populating the structure, returns
 default min timings provided by JEDEC.
 
-
-
 .. _`of_get_ddr_timings`:
 
 of_get_ddr_timings
 ==================
 
-.. c:function:: const struct lpddr2_timings *of_get_ddr_timings (struct device_node *np_ddr, struct device *dev, u32 device_type, u32 *nr_frequencies)
+.. c:function:: const struct lpddr2_timings *of_get_ddr_timings(struct device_node *np_ddr, struct device *dev, u32 device_type, u32 *nr_frequencies)
 
     extracts the ddr timings and updates no of frequencies available.
 
@@ -57,8 +48,6 @@ of_get_ddr_timings
         No of frequencies available for ddr
         (updated by this function)
 
-
-
 .. _`of_get_ddr_timings.description`:
 
 Description
@@ -67,4 +56,6 @@ Description
 Populates lpddr2_timings structure by extracting data from device
 tree node. Returns pointer to populated structure. If any error
 while populating, returns default timings provided by JEDEC.
+
+.. This file was automatic generated / don't edit.
 

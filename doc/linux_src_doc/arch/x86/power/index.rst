@@ -7,4 +7,5 @@ power
 .. toctree::
    :maxdepth: 1
 
-   cpu_c
+    cpu_c
+    hibernate_64_c

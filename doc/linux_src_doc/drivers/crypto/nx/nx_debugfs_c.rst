@@ -1,28 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-nx_debugfs.c
-============
-
+.. src-file: drivers/crypto/nx/nx_debugfs.c
 
 .. _`nx_debugfs_init`:
 
 nx_debugfs_init
 ===============
 
-.. c:function:: int nx_debugfs_init (struct nx_crypto_driver *drv)
+.. c:function:: int nx_debugfs_init(struct nx_crypto_driver *drv)
 
     :param struct nx_crypto_driver \*drv:
-
         *undescribed*
-
-
 
 .. _`nx_debugfs_init.description`:
 
 Description
 -----------
-
 
 Copyright (C) 2011-2012 International Business Machines Inc.
 
@@ -39,12 +31,12 @@ You should have received a copy of the GNU General Public License
 along with this program; if not, write to the Free Software
 Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-
-
 .. _`nx_debugfs_init.author`:
 
 Author
 ------
 
 Kent Yoder <yoder1\ ``us``\ .ibm.com>
+
+.. This file was automatic generated / don't edit.
 

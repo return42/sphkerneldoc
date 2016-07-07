@@ -7,4 +7,7 @@ android
 .. toctree::
    :maxdepth: 1
 
-   ion/index
+    ion/index
+    uapi/index
+    ashmem_c
+    sync_h

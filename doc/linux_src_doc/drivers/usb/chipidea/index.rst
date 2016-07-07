@@ -7,10 +7,10 @@ chipidea
 .. toctree::
    :maxdepth: 1
 
-   ci_h
-   ci_hdrc_pci_c
-   core_c
-   debug_c
-   otg_c
-   udc_c
-   udc_h
+    ci_h
+    ci_hdrc_pci_c
+    core_c
+    debug_c
+    otg_c
+    udc_c
+    udc_h

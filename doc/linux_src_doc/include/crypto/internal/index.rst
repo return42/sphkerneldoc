@@ -7,4 +7,4 @@ internal
 .. toctree::
    :maxdepth: 1
 
-   akcipher_h
+    akcipher_h

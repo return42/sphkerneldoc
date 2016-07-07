@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=================
-hdac_ext_stream.c
-=================
-
+.. src-file: sound/hda/ext/hdac_ext_stream.c
 
 .. _`snd_hdac_ext_stream_init`:
 
 snd_hdac_ext_stream_init
 ========================
 
-.. c:function:: void snd_hdac_ext_stream_init (struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, int idx, int direction, int tag)
+.. c:function:: void snd_hdac_ext_stream_init(struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, int idx, int direction, int tag)
 
     initialize each stream (aka device)
 
@@ -29,8 +25,6 @@ snd_hdac_ext_stream_init
     :param int tag:
         the tag id to assign
 
-
-
 .. _`snd_hdac_ext_stream_init.description`:
 
 Description
@@ -39,14 +33,12 @@ Description
 initialize the stream, if ppcap is enabled then init those and then
 invoke hdac stream initialization routine
 
-
-
 .. _`snd_hdac_ext_stream_init_all`:
 
 snd_hdac_ext_stream_init_all
 ============================
 
-.. c:function:: int snd_hdac_ext_stream_init_all (struct hdac_ext_bus *ebus, int start_idx, int num_stream, int dir)
+.. c:function:: int snd_hdac_ext_stream_init_all(struct hdac_ext_bus *ebus, int start_idx, int num_stream, int dir)
 
     create and initialize the stream objects for an extended hda bus
 
@@ -62,28 +54,24 @@ snd_hdac_ext_stream_init_all
     :param int dir:
         direction of streams
 
-
-
 .. _`snd_hdac_stream_free_all`:
 
 snd_hdac_stream_free_all
 ========================
 
-.. c:function:: void snd_hdac_stream_free_all (struct hdac_ext_bus *ebus)
+.. c:function:: void snd_hdac_stream_free_all(struct hdac_ext_bus *ebus)
 
     free hdac extended stream objects
 
     :param struct hdac_ext_bus \*ebus:
         HD-audio ext core bus
 
-
-
 .. _`snd_hdac_ext_stream_decouple`:
 
 snd_hdac_ext_stream_decouple
 ============================
 
-.. c:function:: void snd_hdac_ext_stream_decouple (struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, bool decouple)
+.. c:function:: void snd_hdac_ext_stream_decouple(struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, bool decouple)
 
     decouple the hdac stream
 
@@ -96,56 +84,48 @@ snd_hdac_ext_stream_decouple
     :param bool decouple:
         flag to decouple
 
-
-
 .. _`snd_hdac_ext_link_stream_start`:
 
 snd_hdac_ext_link_stream_start
 ==============================
 
-.. c:function:: void snd_hdac_ext_link_stream_start (struct hdac_ext_stream *stream)
+.. c:function:: void snd_hdac_ext_link_stream_start(struct hdac_ext_stream *stream)
 
     start a stream
 
     :param struct hdac_ext_stream \*stream:
         HD-audio ext core stream to start
 
-
-
 .. _`snd_hdac_ext_link_stream_clear`:
 
 snd_hdac_ext_link_stream_clear
 ==============================
 
-.. c:function:: void snd_hdac_ext_link_stream_clear (struct hdac_ext_stream *stream)
+.. c:function:: void snd_hdac_ext_link_stream_clear(struct hdac_ext_stream *stream)
 
     stop a stream DMA
 
     :param struct hdac_ext_stream \*stream:
         HD-audio ext core stream to stop
 
-
-
 .. _`snd_hdac_ext_link_stream_reset`:
 
 snd_hdac_ext_link_stream_reset
 ==============================
 
-.. c:function:: void snd_hdac_ext_link_stream_reset (struct hdac_ext_stream *stream)
+.. c:function:: void snd_hdac_ext_link_stream_reset(struct hdac_ext_stream *stream)
 
     reset a stream
 
     :param struct hdac_ext_stream \*stream:
         HD-audio ext core stream to reset
 
-
-
 .. _`snd_hdac_ext_link_stream_setup`:
 
 snd_hdac_ext_link_stream_setup
 ==============================
 
-.. c:function:: int snd_hdac_ext_link_stream_setup (struct hdac_ext_stream *stream, int fmt)
+.. c:function:: int snd_hdac_ext_link_stream_setup(struct hdac_ext_stream *stream, int fmt)
 
     set up the SD for streaming
 
@@ -155,14 +135,12 @@ snd_hdac_ext_link_stream_setup
     :param int fmt:
         stream format
 
-
-
 .. _`snd_hdac_ext_link_set_stream_id`:
 
 snd_hdac_ext_link_set_stream_id
 ===============================
 
-.. c:function:: void snd_hdac_ext_link_set_stream_id (struct hdac_ext_link *link, int stream)
+.. c:function:: void snd_hdac_ext_link_set_stream_id(struct hdac_ext_link *link, int stream)
 
     maps stream id to link output
 
@@ -171,15 +149,13 @@ snd_hdac_ext_link_set_stream_id
 
     :param int stream:
         stream id
-
-
 
 .. _`snd_hdac_ext_link_clear_stream_id`:
 
 snd_hdac_ext_link_clear_stream_id
 =================================
 
-.. c:function:: void snd_hdac_ext_link_clear_stream_id (struct hdac_ext_link *link, int stream)
+.. c:function:: void snd_hdac_ext_link_clear_stream_id(struct hdac_ext_link *link, int stream)
 
     maps stream id to link output
 
@@ -189,14 +165,12 @@ snd_hdac_ext_link_clear_stream_id
     :param int stream:
         stream id
 
-
-
 .. _`snd_hdac_ext_stream_assign`:
 
 snd_hdac_ext_stream_assign
 ==========================
 
-.. c:function:: struct hdac_ext_stream *snd_hdac_ext_stream_assign (struct hdac_ext_bus *ebus, struct snd_pcm_substream *substream, int type)
+.. c:function:: struct hdac_ext_stream *snd_hdac_ext_stream_assign(struct hdac_ext_bus *ebus, struct snd_pcm_substream *substream, int type)
 
     assign a stream for the PCM
 
@@ -209,8 +183,6 @@ snd_hdac_ext_stream_assign
     :param int type:
         type of stream (coupled, host or link stream)
 
-
-
 .. _`snd_hdac_ext_stream_assign.description`:
 
 Description
@@ -219,8 +191,6 @@ Description
 This assigns the stream based on the type (coupled/host/link), for the
 given PCM substream, assigns it and returns the stream object
 
-
-
 .. _`snd_hdac_ext_stream_assign.coupled`:
 
 coupled
@@ -228,16 +198,12 @@ coupled
 
 Looks for an unused stream
 
-
-
 .. _`snd_hdac_ext_stream_assign.host`:
 
 host
 ----
 
 Looks for an unused decoupled host stream
-
-
 
 .. _`snd_hdac_ext_stream_assign.link`:
 
@@ -250,14 +216,12 @@ If no stream is free, returns NULL. The function tries to keep using
 the same stream object when it's used beforehand.  when a stream is
 decoupled, it becomes a host stream and link stream.
 
-
-
 .. _`snd_hdac_ext_stream_release`:
 
 snd_hdac_ext_stream_release
 ===========================
 
-.. c:function:: void snd_hdac_ext_stream_release (struct hdac_ext_stream *stream, int type)
+.. c:function:: void snd_hdac_ext_stream_release(struct hdac_ext_stream *stream, int type)
 
     release the assigned stream
 
@@ -267,23 +231,19 @@ snd_hdac_ext_stream_release
     :param int type:
         type of stream (coupled, host or link stream)
 
-
-
 .. _`snd_hdac_ext_stream_release.description`:
 
 Description
 -----------
 
-Release the stream that has been assigned by :c:func:`snd_hdac_ext_stream_assign`.
-
-
+Release the stream that has been assigned by \ :c:func:`snd_hdac_ext_stream_assign`\ .
 
 .. _`snd_hdac_ext_stream_spbcap_enable`:
 
 snd_hdac_ext_stream_spbcap_enable
 =================================
 
-.. c:function:: void snd_hdac_ext_stream_spbcap_enable (struct hdac_ext_bus *ebus, bool enable, int index)
+.. c:function:: void snd_hdac_ext_stream_spbcap_enable(struct hdac_ext_bus *ebus, bool enable, int index)
 
     enable SPIB for a stream
 
@@ -296,14 +256,12 @@ snd_hdac_ext_stream_spbcap_enable
     :param int index:
         stream index for which SPIB need to be enabled
 
-
-
 .. _`snd_hdac_ext_stream_set_spib`:
 
 snd_hdac_ext_stream_set_spib
 ============================
 
-.. c:function:: int snd_hdac_ext_stream_set_spib (struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, u32 value)
+.. c:function:: int snd_hdac_ext_stream_set_spib(struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, u32 value)
 
     sets the spib value of a stream
 
@@ -316,14 +274,12 @@ snd_hdac_ext_stream_set_spib
     :param u32 value:
         spib value to set
 
-
-
 .. _`snd_hdac_ext_stream_get_spbmaxfifo`:
 
 snd_hdac_ext_stream_get_spbmaxfifo
 ==================================
 
-.. c:function:: int snd_hdac_ext_stream_get_spbmaxfifo (struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream)
+.. c:function:: int snd_hdac_ext_stream_get_spbmaxfifo(struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream)
 
     gets the spib value of a stream
 
@@ -333,8 +289,6 @@ snd_hdac_ext_stream_get_spbmaxfifo
     :param struct hdac_ext_stream \*stream:
         hdac_ext_stream
 
-
-
 .. _`snd_hdac_ext_stream_get_spbmaxfifo.description`:
 
 Description
@@ -342,28 +296,24 @@ Description
 
 Return maxfifo for the stream
 
-
-
 .. _`snd_hdac_ext_stop_streams`:
 
 snd_hdac_ext_stop_streams
 =========================
 
-.. c:function:: void snd_hdac_ext_stop_streams (struct hdac_ext_bus *ebus)
+.. c:function:: void snd_hdac_ext_stop_streams(struct hdac_ext_bus *ebus)
 
     stop all stream if running
 
     :param struct hdac_ext_bus \*ebus:
         HD-audio ext core bus
 
-
-
 .. _`snd_hdac_ext_stream_drsm_enable`:
 
 snd_hdac_ext_stream_drsm_enable
 ===============================
 
-.. c:function:: void snd_hdac_ext_stream_drsm_enable (struct hdac_ext_bus *ebus, bool enable, int index)
+.. c:function:: void snd_hdac_ext_stream_drsm_enable(struct hdac_ext_bus *ebus, bool enable, int index)
 
     enable DMA resume for a stream
 
@@ -376,14 +326,12 @@ snd_hdac_ext_stream_drsm_enable
     :param int index:
         stream index for which DRSM need to be enabled
 
-
-
 .. _`snd_hdac_ext_stream_set_dpibr`:
 
 snd_hdac_ext_stream_set_dpibr
 =============================
 
-.. c:function:: int snd_hdac_ext_stream_set_dpibr (struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, u32 value)
+.. c:function:: int snd_hdac_ext_stream_set_dpibr(struct hdac_ext_bus *ebus, struct hdac_ext_stream *stream, u32 value)
 
     sets the dpibr value of a stream
 
@@ -396,14 +344,12 @@ snd_hdac_ext_stream_set_dpibr
     :param u32 value:
         dpib value to set
 
-
-
 .. _`snd_hdac_ext_stream_set_lpib`:
 
 snd_hdac_ext_stream_set_lpib
 ============================
 
-.. c:function:: int snd_hdac_ext_stream_set_lpib (struct hdac_ext_stream *stream, u32 value)
+.. c:function:: int snd_hdac_ext_stream_set_lpib(struct hdac_ext_stream *stream, u32 value)
 
     sets the lpib value of a stream
 
@@ -412,4 +358,6 @@ snd_hdac_ext_stream_set_lpib
 
     :param u32 value:
         lpib value to set
+
+.. This file was automatic generated / don't edit.
 

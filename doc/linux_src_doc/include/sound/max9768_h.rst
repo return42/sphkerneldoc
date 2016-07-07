@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-max9768.h
-=========
-
+.. src-file: include/sound/max9768.h
 
 .. _`max9768_pdata`:
 
 struct max9768_pdata
 ====================
 
-.. c:type:: max9768_pdata
+.. c:type:: struct max9768_pdata
 
     optional platform specific MAX9768 configuration
-
 
 .. _`max9768_pdata.definition`:
 
@@ -22,27 +17,27 @@ Definition
 
 .. code-block:: c
 
-  struct max9768_pdata {
-    int shdn_gpio;
-    int mute_gpio;
-    unsigned flags;
-    #define MAX9768_FLAG_CLASSIC_PWM	(1 \\\lt;\\\lt; 0)
-  };
-
+    struct max9768_pdata {
+        int shdn_gpio;
+        int mute_gpio;
+        unsigned flags;
+        #define MAX9768_FLAG_CLASSIC_PWM (1 << 0)
+    }
 
 .. _`max9768_pdata.members`:
 
 Members
 -------
 
-:``shdn_gpio``:
+shdn_gpio
     GPIO to SHDN pin. If not valid, pin must be hardwired HIGH
 
-:``mute_gpio``:
+mute_gpio
     GPIO to MUTE pin. If not valid, control for mute won't be added
 
-:``flags``:
+flags
     configuration flags, e.g. set classic PWM mode (check datasheet
     regarding "filterless modulation" which is default).
 
+.. This file was automatic generated / don't edit.
 

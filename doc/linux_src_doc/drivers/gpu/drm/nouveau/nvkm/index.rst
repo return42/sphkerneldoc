@@ -7,6 +7,6 @@ nvkm
 .. toctree::
    :maxdepth: 1
 
-   core/index
-   engine/index
-   subdev/index
+    core/index
+    engine/index
+    subdev/index

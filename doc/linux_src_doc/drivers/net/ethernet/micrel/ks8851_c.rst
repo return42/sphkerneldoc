@@ -1,0 +1,912 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/micrel/ks8851.c
+
+.. _`ks8851_rxctrl`:
+
+struct ks8851_rxctrl
+====================
+
+.. c:type:: struct ks8851_rxctrl
+
+    KS8851 driver rx control
+
+.. _`ks8851_rxctrl.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ks8851_rxctrl {
+        u16 mchash[4];
+        u16 rxcr1;
+        u16 rxcr2;
+    }
+
+.. _`ks8851_rxctrl.members`:
+
+Members
+-------
+
+mchash
+    Multicast hash-table data.
+
+rxcr1
+    KS_RXCR1 register setting
+
+rxcr2
+    KS_RXCR2 register setting
+
+.. _`ks8851_rxctrl.description`:
+
+Description
+-----------
+
+Representation of the settings needs to control the receive filtering
+such as the multicast hash-filter and the receive register settings. This
+is used to make the job of working out if the receive settings change and
+then issuing the new settings to the worker that will send the necessary
+commands.
+
+.. _`ks8851_tx_hdr`:
+
+union ks8851_tx_hdr
+===================
+
+.. c:type:: struct ks8851_tx_hdr
+
+    tx header data
+
+.. _`ks8851_tx_hdr.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    union ks8851_tx_hdr {
+        u8 txb[6];
+        __le16 txw[3];
+    }
+
+.. _`ks8851_tx_hdr.members`:
+
+Members
+-------
+
+txb
+    The header as bytes
+
+txw
+    The header as 16bit, little-endian words
+
+.. _`ks8851_tx_hdr.description`:
+
+Description
+-----------
+
+A dual representation of the tx header data to allow
+access to individual bytes, and to allow 16bit accesses
+with 16bit alignment.
+
+.. _`ks8851_net`:
+
+struct ks8851_net
+=================
+
+.. c:type:: struct ks8851_net
+
+    KS8851 driver private data
+
+.. _`ks8851_net.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ks8851_net {
+        struct net_device *netdev;
+        struct spi_device *spidev;
+        struct mutex lock;
+        spinlock_t statelock;
+        u32 msg_enable ____cacheline_aligned;
+        u8 rxd[8];
+        u8 txd[8];
+        u32 msg_enable ____cacheline_aligned;
+        u16 tx_space;
+        u8 fid;
+        u16 rc_ier;
+        u16 rc_rxqcr;
+        u16 rc_ccr;
+        u16 eeprom_size;
+        struct mii_if_info mii;
+        struct ks8851_rxctrl rxctrl;
+        struct work_struct tx_work;
+        struct work_struct rxctrl_work;
+        struct sk_buff_head txq;
+        struct spi_message spi_msg1;
+        struct spi_message spi_msg2;
+        struct spi_transfer spi_xfer1;
+        struct spi_transfer spi_xfer2[2];
+        struct eeprom_93cx6 eeprom;
+        struct regulator *vdd_reg;
+        struct regulator *vdd_io;
+        int gpio;
+    }
+
+.. _`ks8851_net.members`:
+
+Members
+-------
+
+netdev
+    The network device we're bound to
+
+spidev
+    The spi device we're bound to.
+
+lock
+    Lock to ensure that the device is not accessed when busy.
+
+statelock
+    Lock on this structure for tx list.
+
+____cacheline_aligned
+    *undescribed*
+
+rxd
+    Space for receiving SPI data, in DMA-able space.
+
+txd
+    Space for transmitting SPI data, in DMA-able space.
+
+____cacheline_aligned
+    *undescribed*
+
+tx_space
+    *undescribed*
+
+fid
+    Incrementing frame id tag.
+
+rc_ier
+    Cached copy of KS_IER.
+
+rc_rxqcr
+    Cached copy of KS_RXQCR.
+
+rc_ccr
+    Cached copy of KS_CCR.
+
+eeprom_size
+    Companion eeprom size in Bytes, 0 if no eeprom
+
+mii
+    The MII state information for the mii calls.
+
+rxctrl
+    RX settings for \ ``rxctrl_work``\ .
+
+tx_work
+    Work queue for tx packets
+
+rxctrl_work
+    Work queue for updating RX mode and multicast lists
+
+txq
+    Queue of packets for transmission.
+
+spi_msg1
+    pre-setup SPI transfer with one message, \ ``spi_xfer1``\ .
+
+spi_msg2
+    pre-setup SPI transfer with two messages, \ ``spi_xfer2``\ .
+
+spi_xfer1
+    *undescribed*
+
+eeprom
+    93CX6 EEPROM state for accessing on-board EEPROM.
+
+vdd_reg
+    Optional regulator supplying the chip
+
+vdd_io
+    Optional digital power supply for IO
+
+gpio
+    Optional reset_n gpio
+
+.. _`ks8851_net.description`:
+
+Description
+-----------
+
+The \ ``lock``\  ensures that the chip is protected when certain operations are
+in progress. When the read or write packet transfer is in progress, most
+of the chip registers are not ccessible until the transfer is finished and
+the DMA has been de-asserted.
+
+The \ ``statelock``\  is used to protect information in the structure which may
+need to be accessed via several sources, such as the network driver layer
+or one of the work queues.
+
+We align the buffers we may use for rx/tx to ensure that if the SPI driver
+wants to DMA map them, it will not have any problems with data the driver
+modifies.
+
+.. _`ks8851_wrreg16`:
+
+ks8851_wrreg16
+==============
+
+.. c:function:: void ks8851_wrreg16(struct ks8851_net *ks, unsigned reg, unsigned val)
+
+    write 16bit register value to chip
+
+    :param struct ks8851_net \*ks:
+        The chip state
+
+    :param unsigned reg:
+        The register address
+
+    :param unsigned val:
+        The value to write
+
+.. _`ks8851_wrreg16.description`:
+
+Description
+-----------
+
+Issue a write to put the value \ ``val``\  into the register specified in \ ``reg``\ .
+
+.. _`ks8851_wrreg8`:
+
+ks8851_wrreg8
+=============
+
+.. c:function:: void ks8851_wrreg8(struct ks8851_net *ks, unsigned reg, unsigned val)
+
+    write 8bit register value to chip
+
+    :param struct ks8851_net \*ks:
+        The chip state
+
+    :param unsigned reg:
+        The register address
+
+    :param unsigned val:
+        The value to write
+
+.. _`ks8851_wrreg8.description`:
+
+Description
+-----------
+
+Issue a write to put the value \ ``val``\  into the register specified in \ ``reg``\ .
+
+.. _`ks8851_rx_1msg`:
+
+ks8851_rx_1msg
+==============
+
+.. c:function:: bool ks8851_rx_1msg(struct ks8851_net *ks)
+
+    select whether to use one or two messages for spi read
+
+    :param struct ks8851_net \*ks:
+        The device structure
+
+.. _`ks8851_rx_1msg.description`:
+
+Description
+-----------
+
+Return whether to generate a single message with a tx and rx buffer
+supplied to \ :c:func:`spi_sync`\ , or alternatively send the tx and rx buffers
+as separate messages.
+
+Depending on the hardware in use, a single message may be more efficient
+on interrupts or work done by the driver.
+
+This currently always returns true until we add some per-device data passed
+from the platform code to specify which mode is better.
+
+.. _`ks8851_rdreg`:
+
+ks8851_rdreg
+============
+
+.. c:function:: void ks8851_rdreg(struct ks8851_net *ks, unsigned op, u8 *rxb, unsigned rxl)
+
+    issue read register command and return the data
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+    :param unsigned op:
+        The register address and byte enables in message format.
+
+    :param u8 \*rxb:
+        The RX buffer to return the result into
+
+    :param unsigned rxl:
+        The length of data expected.
+
+.. _`ks8851_rdreg.description`:
+
+Description
+-----------
+
+This is the low level read call that issues the necessary spi message(s)
+to read data from the register specified in \ ``op``\ .
+
+.. _`ks8851_rdreg8`:
+
+ks8851_rdreg8
+=============
+
+.. c:function:: unsigned ks8851_rdreg8(struct ks8851_net *ks, unsigned reg)
+
+    read 8 bit register from device
+
+    :param struct ks8851_net \*ks:
+        The chip information
+
+    :param unsigned reg:
+        The register address
+
+.. _`ks8851_rdreg8.description`:
+
+Description
+-----------
+
+Read a 8bit register from the chip, returning the result
+
+.. _`ks8851_rdreg16`:
+
+ks8851_rdreg16
+==============
+
+.. c:function:: unsigned ks8851_rdreg16(struct ks8851_net *ks, unsigned reg)
+
+    read 16 bit register from device
+
+    :param struct ks8851_net \*ks:
+        The chip information
+
+    :param unsigned reg:
+        The register address
+
+.. _`ks8851_rdreg16.description`:
+
+Description
+-----------
+
+Read a 16bit register from the chip, returning the result
+
+.. _`ks8851_rdreg32`:
+
+ks8851_rdreg32
+==============
+
+.. c:function:: unsigned ks8851_rdreg32(struct ks8851_net *ks, unsigned reg)
+
+    read 32 bit register from device
+
+    :param struct ks8851_net \*ks:
+        The chip information
+
+    :param unsigned reg:
+        The register address
+
+.. _`ks8851_rdreg32.description`:
+
+Description
+-----------
+
+Read a 32bit register from the chip.
+
+Note, this read requires the address be aligned to 4 bytes.
+
+.. _`ks8851_soft_reset`:
+
+ks8851_soft_reset
+=================
+
+.. c:function:: void ks8851_soft_reset(struct ks8851_net *ks, unsigned op)
+
+    issue one of the soft reset to the device
+
+    :param struct ks8851_net \*ks:
+        The device state.
+
+    :param unsigned op:
+        The bit(s) to set in the GRR
+
+.. _`ks8851_soft_reset.description`:
+
+Description
+-----------
+
+Issue the relevant soft-reset command to the device's GRR register
+specified by \ ``op``\ .
+
+Note, the delays are in there as a caution to ensure that the reset
+has time to take effect and then complete. Since the datasheet does
+not currently specify the exact sequence, we have chosen something
+that seems to work with our device.
+
+.. _`ks8851_set_powermode`:
+
+ks8851_set_powermode
+====================
+
+.. c:function:: void ks8851_set_powermode(struct ks8851_net *ks, unsigned pwrmode)
+
+    set power mode of the device
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+    :param unsigned pwrmode:
+        The power mode value to write to KS_PMECR.
+
+.. _`ks8851_set_powermode.description`:
+
+Description
+-----------
+
+Change the power mode of the chip.
+
+.. _`ks8851_write_mac_addr`:
+
+ks8851_write_mac_addr
+=====================
+
+.. c:function:: int ks8851_write_mac_addr(struct net_device *dev)
+
+    write mac address to device registers
+
+    :param struct net_device \*dev:
+        The network device
+
+.. _`ks8851_write_mac_addr.description`:
+
+Description
+-----------
+
+Update the KS8851 MAC address registers from the address in \ ``dev``\ .
+
+This call assumes that the chip is not running, so there is no need to
+shutdown the RXQ process whilst setting this.
+
+.. _`ks8851_read_mac_addr`:
+
+ks8851_read_mac_addr
+====================
+
+.. c:function:: void ks8851_read_mac_addr(struct net_device *dev)
+
+    read mac address from device registers
+
+    :param struct net_device \*dev:
+        The network device
+
+.. _`ks8851_read_mac_addr.description`:
+
+Description
+-----------
+
+Update our copy of the KS8851 MAC address from the registers of \ ``dev``\ .
+
+.. _`ks8851_init_mac`:
+
+ks8851_init_mac
+===============
+
+.. c:function:: void ks8851_init_mac(struct ks8851_net *ks)
+
+    initialise the mac address
+
+    :param struct ks8851_net \*ks:
+        The device structure
+
+.. _`ks8851_init_mac.description`:
+
+Description
+-----------
+
+Get or create the initial mac address for the device and then set that
+into the station address register. If there is an EEPROM present, then
+we try that. If no valid mac address is found we use \ :c:func:`eth_random_addr`\ 
+to create a new one.
+
+.. _`ks8851_rdfifo`:
+
+ks8851_rdfifo
+=============
+
+.. c:function:: void ks8851_rdfifo(struct ks8851_net *ks, u8 *buff, unsigned len)
+
+    read data from the receive fifo
+
+    :param struct ks8851_net \*ks:
+        The device state.
+
+    :param u8 \*buff:
+        The buffer address
+
+    :param unsigned len:
+        The length of the data to read
+
+.. _`ks8851_rdfifo.description`:
+
+Description
+-----------
+
+Issue an RXQ FIFO read command and read the \ ``len``\  amount of data from
+the FIFO into the buffer specified by \ ``buff``\ .
+
+.. _`ks8851_dbg_dumpkkt`:
+
+ks8851_dbg_dumpkkt
+==================
+
+.. c:function:: void ks8851_dbg_dumpkkt(struct ks8851_net *ks, u8 *rxpkt)
+
+    dump initial packet contents to debug
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+    :param u8 \*rxpkt:
+        The data for the received packet
+
+.. _`ks8851_dbg_dumpkkt.description`:
+
+Description
+-----------
+
+Dump the initial data from the packet to \ :c:func:`dev_dbg`\ .
+
+.. _`ks8851_rx_pkts`:
+
+ks8851_rx_pkts
+==============
+
+.. c:function:: void ks8851_rx_pkts(struct ks8851_net *ks)
+
+    receive packets from the host
+
+    :param struct ks8851_net \*ks:
+        The device information.
+
+.. _`ks8851_rx_pkts.description`:
+
+Description
+-----------
+
+This is called from the IRQ work queue when the system detects that there
+are packets in the receive queue. Find out how many packets there are and
+read them from the FIFO.
+
+.. _`ks8851_irq`:
+
+ks8851_irq
+==========
+
+.. c:function:: irqreturn_t ks8851_irq(int irq, void *_ks)
+
+    IRQ handler for dealing with interrupt requests
+
+    :param int irq:
+        IRQ number
+
+    :param void \*_ks:
+        cookie
+
+.. _`ks8851_irq.description`:
+
+Description
+-----------
+
+This handler is invoked when the IRQ line asserts to find out what happened.
+As we cannot allow ourselves to sleep in HARDIRQ context, this handler runs
+in thread context.
+
+Read the interrupt status, work out what needs to be done and then clear
+any of the interrupts that are not needed.
+
+.. _`calc_txlen`:
+
+calc_txlen
+==========
+
+.. c:function:: unsigned calc_txlen(unsigned len)
+
+    calculate size of message to send packet
+
+    :param unsigned len:
+        Length of data
+
+.. _`calc_txlen.description`:
+
+Description
+-----------
+
+Returns the size of the TXFIFO message needed to send
+this packet.
+
+.. _`ks8851_wrpkt`:
+
+ks8851_wrpkt
+============
+
+.. c:function:: void ks8851_wrpkt(struct ks8851_net *ks, struct sk_buff *txp, bool irq)
+
+    write packet to TX FIFO
+
+    :param struct ks8851_net \*ks:
+        The device state.
+
+    :param struct sk_buff \*txp:
+        The sk_buff to transmit.
+
+    :param bool irq:
+        IRQ on completion of the packet.
+
+.. _`ks8851_wrpkt.description`:
+
+Description
+-----------
+
+Send the \ ``txp``\  to the chip. This means creating the relevant packet header
+specifying the length of the packet and the other information the chip
+needs, such as IRQ on completion. Send the header and the packet data to
+the device.
+
+.. _`ks8851_done_tx`:
+
+ks8851_done_tx
+==============
+
+.. c:function:: void ks8851_done_tx(struct ks8851_net *ks, struct sk_buff *txb)
+
+    update and then free skbuff after transmitting
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+    :param struct sk_buff \*txb:
+        The buffer transmitted
+
+.. _`ks8851_tx_work`:
+
+ks8851_tx_work
+==============
+
+.. c:function:: void ks8851_tx_work(struct work_struct *work)
+
+    process tx packet(s)
+
+    :param struct work_struct \*work:
+        The work strucutre what was scheduled.
+
+.. _`ks8851_tx_work.description`:
+
+Description
+-----------
+
+This is called when a number of packets have been scheduled for
+transmission and need to be sent to the device.
+
+.. _`ks8851_net_open`:
+
+ks8851_net_open
+===============
+
+.. c:function:: int ks8851_net_open(struct net_device *dev)
+
+    open network device
+
+    :param struct net_device \*dev:
+        The network device being opened.
+
+.. _`ks8851_net_open.description`:
+
+Description
+-----------
+
+Called when the network device is marked active, such as a user executing
+'ifconfig up' on the device.
+
+.. _`ks8851_net_stop`:
+
+ks8851_net_stop
+===============
+
+.. c:function:: int ks8851_net_stop(struct net_device *dev)
+
+    close network device
+
+    :param struct net_device \*dev:
+        The device being closed.
+
+.. _`ks8851_net_stop.description`:
+
+Description
+-----------
+
+Called to close down a network device which has been active. Cancell any
+work, shutdown the RX and TX process and then place the chip into a low
+power state whilst it is not being used.
+
+.. _`ks8851_start_xmit`:
+
+ks8851_start_xmit
+=================
+
+.. c:function:: netdev_tx_t ks8851_start_xmit(struct sk_buff *skb, struct net_device *dev)
+
+    transmit packet
+
+    :param struct sk_buff \*skb:
+        The buffer to transmit
+
+    :param struct net_device \*dev:
+        The device used to transmit the packet.
+
+.. _`ks8851_start_xmit.description`:
+
+Description
+-----------
+
+Called by the network layer to transmit the \ ``skb``\ . Queue the packet for
+the device and schedule the necessary work to transmit the packet when
+it is free.
+
+We do this to firstly avoid sleeping with the network device locked,
+and secondly so we can round up more than one packet to transmit which
+means we can try and avoid generating too many transmit done interrupts.
+
+.. _`ks8851_rxctrl_work`:
+
+ks8851_rxctrl_work
+==================
+
+.. c:function:: void ks8851_rxctrl_work(struct work_struct *work)
+
+    work handler to change rx mode
+
+    :param struct work_struct \*work:
+        The work structure this belongs to.
+
+.. _`ks8851_rxctrl_work.description`:
+
+Description
+-----------
+
+Lock the device and issue the necessary changes to the receive mode from
+the network device layer. This is done so that we can do this without
+having to sleep whilst holding the network device lock.
+
+Since the recommendation from Micrel is that the RXQ is shutdown whilst the
+receive parameters are programmed, we issue a write to disable the RXQ and
+then wait for the interrupt handler to be triggered once the RXQ shutdown is
+complete. The interrupt handler then writes the new values into the chip.
+
+.. _`ks8851_eeprom_claim`:
+
+ks8851_eeprom_claim
+===================
+
+.. c:function:: int ks8851_eeprom_claim(struct ks8851_net *ks)
+
+    claim device EEPROM and activate the interface
+
+    :param struct ks8851_net \*ks:
+        The network device state.
+
+.. _`ks8851_eeprom_claim.description`:
+
+Description
+-----------
+
+Check for the presence of an EEPROM, and then activate software access
+to the device.
+
+.. _`ks8851_eeprom_release`:
+
+ks8851_eeprom_release
+=====================
+
+.. c:function:: void ks8851_eeprom_release(struct ks8851_net *ks)
+
+    release the EEPROM interface
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+.. _`ks8851_eeprom_release.description`:
+
+Description
+-----------
+
+Release the software access to the device EEPROM
+
+.. _`ks8851_phy_reg`:
+
+ks8851_phy_reg
+==============
+
+.. c:function:: int ks8851_phy_reg(int reg)
+
+    convert MII register into a KS8851 register
+
+    :param int reg:
+        MII register number.
+
+.. _`ks8851_phy_reg.description`:
+
+Description
+-----------
+
+Return the KS8851 register number for the corresponding MII PHY register
+if possible. Return zero if the MII register has no direct mapping to the
+KS8851 register set.
+
+.. _`ks8851_phy_read`:
+
+ks8851_phy_read
+===============
+
+.. c:function:: int ks8851_phy_read(struct net_device *dev, int phy_addr, int reg)
+
+    MII interface PHY register read.
+
+    :param struct net_device \*dev:
+        The network device the PHY is on.
+
+    :param int phy_addr:
+        Address of PHY (ignored as we only have one)
+
+    :param int reg:
+        The register to read.
+
+.. _`ks8851_phy_read.description`:
+
+Description
+-----------
+
+This call reads data from the PHY register specified in \ ``reg``\ . Since the
+device does not support all the MII registers, the non-existent values
+are always returned as zero.
+
+We return zero for unsupported registers as the MII code does not check
+the value returned for any error status, and simply returns it to the
+caller. The mii-tool that the driver was tested with takes any -ve error
+as real PHY capabilities, thus displaying incorrect data to the user.
+
+.. _`ks8851_read_selftest`:
+
+ks8851_read_selftest
+====================
+
+.. c:function:: int ks8851_read_selftest(struct ks8851_net *ks)
+
+    read the selftest memory info.
+
+    :param struct ks8851_net \*ks:
+        The device state
+
+.. _`ks8851_read_selftest.description`:
+
+Description
+-----------
+
+Read and check the TX/RX memory selftest information.
+
+.. This file was automatic generated / don't edit.
+

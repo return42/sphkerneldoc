@@ -1,43 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===============
-drm_dp_helper.c
-===============
-
-
-.. _`dp-helpers`:
-
-dp helpers
-==========
-
-These functions contain some common logic and helpers at various abstraction
-levels to deal with Display Port sink devices and related things like DP aux
-channel transfers, EDID reading over DP aux channels, decoding certain DPCD
-blocks, ...
-
-
-
-.. _`dp-helpers`:
-
-dp helpers
-==========
-
-The DisplayPort AUX channel is an abstraction to allow generic, driver-
-independent access to AUX functionality. Drivers can take advantage of
-this by filling in the fields of the drm_dp_aux structure.
-
-Transactions are described using a hardware-independent drm_dp_aux_msg
-structure, which is passed into a driver's .:c:func:`transfer` implementation.
-Both native and I2C-over-AUX transactions are supported.
-
-
+.. src-file: drivers/gpu/drm/drm_dp_helper.c
 
 .. _`drm_dp_dpcd_read`:
 
 drm_dp_dpcd_read
 ================
 
-.. c:function:: ssize_t drm_dp_dpcd_read (struct drm_dp_aux *aux, unsigned int offset, void *buffer, size_t size)
+.. c:function:: ssize_t drm_dp_dpcd_read(struct drm_dp_aux *aux, unsigned int offset, void *buffer, size_t size)
 
     read a series of bytes from the DPCD
 
@@ -51,9 +20,7 @@ drm_dp_dpcd_read
         buffer to store the register values
 
     :param size_t size:
-        number of bytes in ``buffer``
-
-
+        number of bytes in \ ``buffer``\ 
 
 .. _`drm_dp_dpcd_read.description`:
 
@@ -67,14 +34,12 @@ function returns -EPROTO. Errors from the underlying AUX channel transfer
 function, with the exception of -EBUSY (which causes the transaction to
 be retried), are propagated to the caller.
 
-
-
 .. _`drm_dp_dpcd_write`:
 
 drm_dp_dpcd_write
 =================
 
-.. c:function:: ssize_t drm_dp_dpcd_write (struct drm_dp_aux *aux, unsigned int offset, void *buffer, size_t size)
+.. c:function:: ssize_t drm_dp_dpcd_write(struct drm_dp_aux *aux, unsigned int offset, void *buffer, size_t size)
 
     write a series of bytes to the DPCD
 
@@ -88,9 +53,7 @@ drm_dp_dpcd_write
         buffer containing the values to write
 
     :param size_t size:
-        number of bytes in ``buffer``
-
-
+        number of bytes in \ ``buffer``\ 
 
 .. _`drm_dp_dpcd_write.description`:
 
@@ -104,14 +67,12 @@ function returns -EPROTO. Errors from the underlying AUX channel transfer
 function, with the exception of -EBUSY (which causes the transaction to
 be retried), are propagated to the caller.
 
-
-
 .. _`drm_dp_dpcd_read_link_status`:
 
 drm_dp_dpcd_read_link_status
 ============================
 
-.. c:function:: int drm_dp_dpcd_read_link_status (struct drm_dp_aux *aux, u8 status[DP_LINK_STATUS_SIZE])
+.. c:function:: int drm_dp_dpcd_read_link_status(struct drm_dp_aux *aux, u8 status[DP_LINK_STATUS_SIZE])
 
     read DPCD link status (bytes 0x202-0x207)
 
@@ -121,8 +82,6 @@ drm_dp_dpcd_read_link_status
     :param u8 status:
         buffer to store the link status in (must be at least 6 bytes)
 
-
-
 .. _`drm_dp_dpcd_read_link_status.description`:
 
 Description
@@ -131,14 +90,12 @@ Description
 Returns the number of bytes transferred on success or a negative error
 code on failure.
 
-
-
 .. _`drm_dp_link_probe`:
 
 drm_dp_link_probe
 =================
 
-.. c:function:: int drm_dp_link_probe (struct drm_dp_aux *aux, struct drm_dp_link *link)
+.. c:function:: int drm_dp_link_probe(struct drm_dp_aux *aux, struct drm_dp_link *link)
 
     probe a DisplayPort link for capabilities
 
@@ -148,27 +105,23 @@ drm_dp_link_probe
     :param struct drm_dp_link \*link:
         pointer to structure in which to return link capabilities
 
-
-
 .. _`drm_dp_link_probe.description`:
 
 Description
 -----------
 
 The structure filled in by this function can usually be passed directly
-into :c:func:`drm_dp_link_power_up` and :c:func:`drm_dp_link_configure` to power up and
+into \ :c:func:`drm_dp_link_power_up`\  and \ :c:func:`drm_dp_link_configure`\  to power up and
 configure the link based on the link's capabilities.
 
 Returns 0 on success or a negative error code on failure.
-
-
 
 .. _`drm_dp_link_power_up`:
 
 drm_dp_link_power_up
 ====================
 
-.. c:function:: int drm_dp_link_power_up (struct drm_dp_aux *aux, struct drm_dp_link *link)
+.. c:function:: int drm_dp_link_power_up(struct drm_dp_aux *aux, struct drm_dp_link *link)
 
     power up a DisplayPort link
 
@@ -178,8 +131,6 @@ drm_dp_link_power_up
     :param struct drm_dp_link \*link:
         pointer to a structure containing the link configuration
 
-
-
 .. _`drm_dp_link_power_up.description`:
 
 Description
@@ -187,14 +138,12 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
-
-
 .. _`drm_dp_link_power_down`:
 
 drm_dp_link_power_down
 ======================
 
-.. c:function:: int drm_dp_link_power_down (struct drm_dp_aux *aux, struct drm_dp_link *link)
+.. c:function:: int drm_dp_link_power_down(struct drm_dp_aux *aux, struct drm_dp_link *link)
 
     power down a DisplayPort link
 
@@ -204,8 +153,6 @@ drm_dp_link_power_down
     :param struct drm_dp_link \*link:
         pointer to a structure containing the link configuration
 
-
-
 .. _`drm_dp_link_power_down.description`:
 
 Description
@@ -213,14 +160,12 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
-
-
 .. _`drm_dp_link_configure`:
 
 drm_dp_link_configure
 =====================
 
-.. c:function:: int drm_dp_link_configure (struct drm_dp_aux *aux, struct drm_dp_link *link)
+.. c:function:: int drm_dp_link_configure(struct drm_dp_aux *aux, struct drm_dp_link *link)
 
     configure a DisplayPort link
 
@@ -230,8 +175,6 @@ drm_dp_link_configure
     :param struct drm_dp_link \*link:
         pointer to a structure containing the link configuration
 
-
-
 .. _`drm_dp_link_configure.description`:
 
 Description
@@ -239,40 +182,60 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
+.. _`drm_dp_aux_init`:
 
+drm_dp_aux_init
+===============
+
+.. c:function:: void drm_dp_aux_init(struct drm_dp_aux *aux)
+
+    minimally initialise an aux channel
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+.. _`drm_dp_aux_init.description`:
+
+Description
+-----------
+
+If you need to use the drm_dp_aux's i2c adapter prior to registering it
+with the outside world, call \ :c:func:`drm_dp_aux_init`\  first. You must still
+call \ :c:func:`drm_dp_aux_register`\  once the connector has been registered to
+allow userspace access to the auxiliary DP channel.
 
 .. _`drm_dp_aux_register`:
 
 drm_dp_aux_register
 ===================
 
-.. c:function:: int drm_dp_aux_register (struct drm_dp_aux *aux)
+.. c:function:: int drm_dp_aux_register(struct drm_dp_aux *aux)
 
     initialise and register aux channel
 
     :param struct drm_dp_aux \*aux:
         DisplayPort AUX channel
 
-
-
 .. _`drm_dp_aux_register.description`:
 
 Description
 -----------
 
+Automatically calls \ :c:func:`drm_dp_aux_init`\  if this hasn't been done yet.
+
 Returns 0 on success or a negative error code on failure.
-
-
 
 .. _`drm_dp_aux_unregister`:
 
 drm_dp_aux_unregister
 =====================
 
-.. c:function:: void drm_dp_aux_unregister (struct drm_dp_aux *aux)
+.. c:function:: void drm_dp_aux_unregister(struct drm_dp_aux *aux)
 
     unregister an AUX adapter
 
     :param struct drm_dp_aux \*aux:
         DisplayPort AUX channel
+
+.. This file was automatic generated / don't edit.
 

@@ -7,5 +7,6 @@ tile
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
-   mm/index
+    include/index
+    kernel/index
+    mm/index

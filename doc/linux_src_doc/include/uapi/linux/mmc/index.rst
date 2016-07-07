@@ -7,4 +7,4 @@ mmc
 .. toctree::
    :maxdepth: 1
 
-   ioctl_h
+    ioctl_h

@@ -1,0 +1,1540 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/ethernet/intel/e1000/e1000_hw.c
+
+.. _`e1000_set_phy_type`:
+
+e1000_set_phy_type
+==================
+
+.. c:function:: s32 e1000_set_phy_type(struct e1000_hw *hw)
+
+    Set the phy type member in the hw struct.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_init_script`:
+
+e1000_phy_init_script
+=====================
+
+.. c:function:: void e1000_phy_init_script(struct e1000_hw *hw)
+
+    IGP phy init script - initializes the GbE PHY
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_set_mac_type`:
+
+e1000_set_mac_type
+==================
+
+.. c:function:: s32 e1000_set_mac_type(struct e1000_hw *hw)
+
+    Set the mac type member in the hw struct.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_set_media_type`:
+
+e1000_set_media_type
+====================
+
+.. c:function:: void e1000_set_media_type(struct e1000_hw *hw)
+
+    Set media type and TBI compatibility.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_reset_hw`:
+
+e1000_reset_hw
+==============
+
+.. c:function:: s32 e1000_reset_hw(struct e1000_hw *hw)
+
+    reset the hardware completely
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_reset_hw.description`:
+
+Description
+-----------
+
+Reset the transmit and receive units; mask and clear all interrupts.
+
+.. _`e1000_init_hw`:
+
+e1000_init_hw
+=============
+
+.. c:function:: s32 e1000_init_hw(struct e1000_hw *hw)
+
+    Performs basic configuration of the adapter.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_init_hw.description`:
+
+Description
+-----------
+
+Assumes that the controller has previously been reset and is in a
+post-reset uninitialized state. Initializes the receive address registers,
+multicast table, and VLAN filter table. Calls routines to setup link
+configuration and flow control settings. Clears all on-chip counters. Leaves
+the transmit and receive units disabled and uninitialized.
+
+.. _`e1000_adjust_serdes_amplitude`:
+
+e1000_adjust_serdes_amplitude
+=============================
+
+.. c:function:: s32 e1000_adjust_serdes_amplitude(struct e1000_hw *hw)
+
+    Adjust SERDES output amplitude based on EEPROM setting.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code.
+
+.. _`e1000_setup_link`:
+
+e1000_setup_link
+================
+
+.. c:function:: s32 e1000_setup_link(struct e1000_hw *hw)
+
+    Configures flow control and link settings.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_setup_link.description`:
+
+Description
+-----------
+
+Determines which flow control settings to use. Calls the appropriate media-
+specific link configuration function. Configures the flow control settings.
+Assuming the adapter has a valid link partner, a valid link should be
+established. Assumes the hardware has previously been reset and the
+transmitter and receiver are not enabled.
+
+.. _`e1000_setup_fiber_serdes_link`:
+
+e1000_setup_fiber_serdes_link
+=============================
+
+.. c:function:: s32 e1000_setup_fiber_serdes_link(struct e1000_hw *hw)
+
+    prepare fiber or serdes link
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_setup_fiber_serdes_link.description`:
+
+Description
+-----------
+
+Manipulates Physical Coding Sublayer functions in order to configure
+link. Assumes the hardware has been previously reset and the transmitter
+and receiver are not enabled.
+
+.. _`e1000_copper_link_rtl_setup`:
+
+e1000_copper_link_rtl_setup
+===========================
+
+.. c:function:: s32 e1000_copper_link_rtl_setup(struct e1000_hw *hw)
+
+    Copper link setup for e1000_phy_rtl series.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_rtl_setup.description`:
+
+Description
+-----------
+
+Commits changes to PHY configuration by calling \ :c:func:`e1000_phy_reset`\ .
+
+.. _`e1000_copper_link_preconfig`:
+
+e1000_copper_link_preconfig
+===========================
+
+.. c:function:: s32 e1000_copper_link_preconfig(struct e1000_hw *hw)
+
+    early configuration for copper
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_preconfig.description`:
+
+Description
+-----------
+
+Make sure we have a valid PHY and change PHY mode before link setup.
+
+.. _`e1000_copper_link_igp_setup`:
+
+e1000_copper_link_igp_setup
+===========================
+
+.. c:function:: s32 e1000_copper_link_igp_setup(struct e1000_hw *hw)
+
+    Copper link setup for e1000_phy_igp series.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_mgp_setup`:
+
+e1000_copper_link_mgp_setup
+===========================
+
+.. c:function:: s32 e1000_copper_link_mgp_setup(struct e1000_hw *hw)
+
+    Copper link setup for e1000_phy_m88 series.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_autoneg`:
+
+e1000_copper_link_autoneg
+=========================
+
+.. c:function:: s32 e1000_copper_link_autoneg(struct e1000_hw *hw)
+
+    setup auto-neg
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_autoneg.description`:
+
+Description
+-----------
+
+Setup auto-negotiation and flow control advertisements,
+and then perform auto-negotiation.
+
+.. _`e1000_copper_link_postconfig`:
+
+e1000_copper_link_postconfig
+============================
+
+.. c:function:: s32 e1000_copper_link_postconfig(struct e1000_hw *hw)
+
+    post link setup
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_copper_link_postconfig.description`:
+
+Description
+-----------
+
+Config the MAC and the PHY after link is up.
+1) Set up the MAC to the current PHY speed/duplex
+if we are on 82543.  If we
+are on newer silicon, we only need to configure
+collision distance in the Transmit Control Register.
+2) Set up flow control on the MAC to that established with
+the link partner.
+3) Config DSP to improve Gigabit link quality for some PHY revisions.
+
+.. _`e1000_setup_copper_link`:
+
+e1000_setup_copper_link
+=======================
+
+.. c:function:: s32 e1000_setup_copper_link(struct e1000_hw *hw)
+
+    phy/speed/duplex setting
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_setup_copper_link.description`:
+
+Description
+-----------
+
+Detects which PHY is present and sets up the speed and duplex
+
+.. _`e1000_phy_setup_autoneg`:
+
+e1000_phy_setup_autoneg
+=======================
+
+.. c:function:: s32 e1000_phy_setup_autoneg(struct e1000_hw *hw)
+
+    phy settings
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_setup_autoneg.description`:
+
+Description
+-----------
+
+Configures PHY autoneg and flow control advertisement settings
+
+.. _`e1000_phy_force_speed_duplex`:
+
+e1000_phy_force_speed_duplex
+============================
+
+.. c:function:: s32 e1000_phy_force_speed_duplex(struct e1000_hw *hw)
+
+    force link settings
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_force_speed_duplex.description`:
+
+Description
+-----------
+
+Force PHY speed and duplex settings to hw->forced_speed_duplex
+
+.. _`e1000_config_collision_dist`:
+
+e1000_config_collision_dist
+===========================
+
+.. c:function:: void e1000_config_collision_dist(struct e1000_hw *hw)
+
+    set collision distance register
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_config_collision_dist.description`:
+
+Description
+-----------
+
+Sets the collision distance in the Transmit Control register.
+Link should have been established previously. Reads the speed and duplex
+information from the Device Status register.
+
+.. _`e1000_config_mac_to_phy`:
+
+e1000_config_mac_to_phy
+=======================
+
+.. c:function:: s32 e1000_config_mac_to_phy(struct e1000_hw *hw)
+
+    sync phy and mac settings
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_config_mac_to_phy.description`:
+
+Description
+-----------
+
+Sets MAC speed and duplex settings to reflect the those in the PHY
+The contents of the PHY register containing the needed information need to
+be passed in.
+
+.. _`e1000_force_mac_fc`:
+
+e1000_force_mac_fc
+==================
+
+.. c:function:: s32 e1000_force_mac_fc(struct e1000_hw *hw)
+
+    force flow control settings
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_force_mac_fc.description`:
+
+Description
+-----------
+
+Forces the MAC's flow control settings.
+Sets the TFCE and RFCE bits in the device control register to reflect
+the adapter settings. TFCE and RFCE need to be explicitly set by
+software when a Copper PHY is used because autonegotiation is managed
+by the PHY rather than the MAC. Software must also configure these
+bits when link is forced on a fiber connection.
+
+.. _`e1000_config_fc_after_link_up`:
+
+e1000_config_fc_after_link_up
+=============================
+
+.. c:function:: s32 e1000_config_fc_after_link_up(struct e1000_hw *hw)
+
+    configure flow control after autoneg
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_config_fc_after_link_up.description`:
+
+Description
+-----------
+
+Configures flow control settings after link is established
+Should be called immediately after a valid link has been established.
+Forces MAC flow control settings if link was forced. When in MII/GMII mode
+and autonegotiation is enabled, the MAC flow control settings will be set
+based on the flow control negotiated by the PHY. In TBI mode, the TFCE
+and RFCE bits will be automatically set to the negotiated flow control mode.
+
+.. _`e1000_check_for_serdes_link_generic`:
+
+e1000_check_for_serdes_link_generic
+===================================
+
+.. c:function:: s32 e1000_check_for_serdes_link_generic(struct e1000_hw *hw)
+
+    Check for link (Serdes)
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+.. _`e1000_check_for_serdes_link_generic.description`:
+
+Description
+-----------
+
+Checks for link up on the hardware.  If link is not up and we have
+a signal, then we need to force link up.
+
+.. _`e1000_check_for_link`:
+
+e1000_check_for_link
+====================
+
+.. c:function:: s32 e1000_check_for_link(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_check_for_link.description`:
+
+Description
+-----------
+
+Checks to see if the link status of the hardware has changed.
+Called by any function that needs to check the link status of the adapter.
+
+.. _`e1000_get_speed_and_duplex`:
+
+e1000_get_speed_and_duplex
+==========================
+
+.. c:function:: s32 e1000_get_speed_and_duplex(struct e1000_hw *hw, u16 *speed, u16 *duplex)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 \*speed:
+        Speed of the connection
+
+    :param u16 \*duplex:
+        Duplex setting of the connection
+
+.. _`e1000_get_speed_and_duplex.description`:
+
+Description
+-----------
+
+Detects the current speed and duplex settings of the hardware.
+
+.. _`e1000_wait_autoneg`:
+
+e1000_wait_autoneg
+==================
+
+.. c:function:: s32 e1000_wait_autoneg(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_wait_autoneg.description`:
+
+Description
+-----------
+
+Blocks until autoneg completes or times out (~4.5 seconds)
+
+.. _`e1000_raise_mdi_clk`:
+
+e1000_raise_mdi_clk
+===================
+
+.. c:function:: void e1000_raise_mdi_clk(struct e1000_hw *hw, u32 *ctrl)
+
+    Raises the Management Data Clock
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 \*ctrl:
+        Device control register's current value
+
+.. _`e1000_lower_mdi_clk`:
+
+e1000_lower_mdi_clk
+===================
+
+.. c:function:: void e1000_lower_mdi_clk(struct e1000_hw *hw, u32 *ctrl)
+
+    Lowers the Management Data Clock
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 \*ctrl:
+        Device control register's current value
+
+.. _`e1000_shift_out_mdi_bits`:
+
+e1000_shift_out_mdi_bits
+========================
+
+.. c:function:: void e1000_shift_out_mdi_bits(struct e1000_hw *hw, u32 data, u16 count)
+
+    Shifts data bits out to the PHY
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 data:
+        Data to send out to the PHY
+
+    :param u16 count:
+        Number of bits to shift out
+
+.. _`e1000_shift_out_mdi_bits.description`:
+
+Description
+-----------
+
+Bits are shifted out in MSB to LSB order.
+
+.. _`e1000_shift_in_mdi_bits`:
+
+e1000_shift_in_mdi_bits
+=======================
+
+.. c:function:: u16 e1000_shift_in_mdi_bits(struct e1000_hw *hw)
+
+    Shifts data bits in from the PHY
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_shift_in_mdi_bits.description`:
+
+Description
+-----------
+
+Bits are shifted in in MSB to LSB order.
+
+.. _`e1000_read_phy_reg`:
+
+e1000_read_phy_reg
+==================
+
+.. c:function:: s32 e1000_read_phy_reg(struct e1000_hw *hw, u32 reg_addr, u16 *phy_data)
+
+    read a phy register
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 reg_addr:
+        address of the PHY register to read
+
+    :param u16 \*phy_data:
+        pointer to the value on the PHY register
+
+.. _`e1000_read_phy_reg.description`:
+
+Description
+-----------
+
+Reads the value from a PHY register, if the value is on a specific non zero
+page, sets the page first.
+
+.. _`e1000_write_phy_reg`:
+
+e1000_write_phy_reg
+===================
+
+.. c:function:: s32 e1000_write_phy_reg(struct e1000_hw *hw, u32 reg_addr, u16 phy_data)
+
+    write a phy register
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 reg_addr:
+        address of the PHY register to write
+
+    :param u16 phy_data:
+        *undescribed*
+
+.. _`e1000_write_phy_reg.description`:
+
+Description
+-----------
+
+Writes a value to a PHY register
+
+.. _`e1000_phy_hw_reset`:
+
+e1000_phy_hw_reset
+==================
+
+.. c:function:: s32 e1000_phy_hw_reset(struct e1000_hw *hw)
+
+    reset the phy, hardware style
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_hw_reset.description`:
+
+Description
+-----------
+
+Returns the PHY to the power-on reset state
+
+.. _`e1000_phy_reset`:
+
+e1000_phy_reset
+===============
+
+.. c:function:: s32 e1000_phy_reset(struct e1000_hw *hw)
+
+    reset the phy to commit settings
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_reset.description`:
+
+Description
+-----------
+
+Resets the PHY
+Sets bit 15 of the MII Control register
+
+.. _`e1000_detect_gig_phy`:
+
+e1000_detect_gig_phy
+====================
+
+.. c:function:: s32 e1000_detect_gig_phy(struct e1000_hw *hw)
+
+    check the phy type
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_detect_gig_phy.description`:
+
+Description
+-----------
+
+Probes the expected PHY address for known PHY IDs
+
+.. _`e1000_phy_reset_dsp`:
+
+e1000_phy_reset_dsp
+===================
+
+.. c:function:: s32 e1000_phy_reset_dsp(struct e1000_hw *hw)
+
+    reset DSP
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_phy_reset_dsp.description`:
+
+Description
+-----------
+
+Resets the PHY's DSP
+
+.. _`e1000_phy_igp_get_info`:
+
+e1000_phy_igp_get_info
+======================
+
+.. c:function:: s32 e1000_phy_igp_get_info(struct e1000_hw *hw, struct e1000_phy_info *phy_info)
+
+    get igp specific registers
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param struct e1000_phy_info \*phy_info:
+        PHY information structure
+
+.. _`e1000_phy_igp_get_info.description`:
+
+Description
+-----------
+
+Get PHY information from various PHY registers for igp PHY only.
+
+.. _`e1000_phy_m88_get_info`:
+
+e1000_phy_m88_get_info
+======================
+
+.. c:function:: s32 e1000_phy_m88_get_info(struct e1000_hw *hw, struct e1000_phy_info *phy_info)
+
+    get m88 specific registers
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param struct e1000_phy_info \*phy_info:
+        PHY information structure
+
+.. _`e1000_phy_m88_get_info.description`:
+
+Description
+-----------
+
+Get PHY information from various PHY registers for m88 PHY only.
+
+.. _`e1000_phy_get_info`:
+
+e1000_phy_get_info
+==================
+
+.. c:function:: s32 e1000_phy_get_info(struct e1000_hw *hw, struct e1000_phy_info *phy_info)
+
+    request phy info
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param struct e1000_phy_info \*phy_info:
+        PHY information structure
+
+.. _`e1000_phy_get_info.description`:
+
+Description
+-----------
+
+Get PHY information from various PHY registers
+
+.. _`e1000_init_eeprom_params`:
+
+e1000_init_eeprom_params
+========================
+
+.. c:function:: s32 e1000_init_eeprom_params(struct e1000_hw *hw)
+
+    initialize sw eeprom vars
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_init_eeprom_params.description`:
+
+Description
+-----------
+
+Sets up eeprom variables in the hw struct.  Must be called after mac_type
+is configured.
+
+.. _`e1000_raise_ee_clk`:
+
+e1000_raise_ee_clk
+==================
+
+.. c:function:: void e1000_raise_ee_clk(struct e1000_hw *hw, u32 *eecd)
+
+    Raises the EEPROM's clock input.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 \*eecd:
+        EECD's current value
+
+.. _`e1000_lower_ee_clk`:
+
+e1000_lower_ee_clk
+==================
+
+.. c:function:: void e1000_lower_ee_clk(struct e1000_hw *hw, u32 *eecd)
+
+    Lowers the EEPROM's clock input.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 \*eecd:
+        EECD's current value
+
+.. _`e1000_shift_out_ee_bits`:
+
+e1000_shift_out_ee_bits
+=======================
+
+.. c:function:: void e1000_shift_out_ee_bits(struct e1000_hw *hw, u16 data, u16 count)
+
+    Shift data bits out to the EEPROM.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 data:
+        data to send to the EEPROM
+
+    :param u16 count:
+        number of bits to shift out
+
+.. _`e1000_shift_in_ee_bits`:
+
+e1000_shift_in_ee_bits
+======================
+
+.. c:function:: u16 e1000_shift_in_ee_bits(struct e1000_hw *hw, u16 count)
+
+    Shift data bits in from the EEPROM
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 count:
+        number of bits to shift in
+
+.. _`e1000_acquire_eeprom`:
+
+e1000_acquire_eeprom
+====================
+
+.. c:function:: s32 e1000_acquire_eeprom(struct e1000_hw *hw)
+
+    Prepares EEPROM for access
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_acquire_eeprom.description`:
+
+Description
+-----------
+
+Lowers EEPROM clock. Clears input pin. Sets the chip select pin. This
+function should be called before issuing a command to the EEPROM.
+
+.. _`e1000_standby_eeprom`:
+
+e1000_standby_eeprom
+====================
+
+.. c:function:: void e1000_standby_eeprom(struct e1000_hw *hw)
+
+    Returns EEPROM to a "standby" state
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_release_eeprom`:
+
+e1000_release_eeprom
+====================
+
+.. c:function:: void e1000_release_eeprom(struct e1000_hw *hw)
+
+    drop chip select
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_release_eeprom.description`:
+
+Description
+-----------
+
+Terminates a command by inverting the EEPROM's chip select pin
+
+.. _`e1000_spi_eeprom_ready`:
+
+e1000_spi_eeprom_ready
+======================
+
+.. c:function:: s32 e1000_spi_eeprom_ready(struct e1000_hw *hw)
+
+    Reads a 16 bit word from the EEPROM.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_read_eeprom`:
+
+e1000_read_eeprom
+=================
+
+.. c:function:: s32 e1000_read_eeprom(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Reads a 16 bit word from the EEPROM.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 offset:
+        offset of  word in the EEPROM to read
+
+    :param u16 words:
+        number of words to read
+
+    :param u16 \*data:
+        word read from the EEPROM
+
+.. _`e1000_validate_eeprom_checksum`:
+
+e1000_validate_eeprom_checksum
+==============================
+
+.. c:function:: s32 e1000_validate_eeprom_checksum(struct e1000_hw *hw)
+
+    Verifies that the EEPROM has a valid checksum
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_validate_eeprom_checksum.description`:
+
+Description
+-----------
+
+Reads the first 64 16 bit words of the EEPROM and sums the values read.
+If the the sum of the 64 16 bit words is 0xBABA, the EEPROM's checksum is
+valid.
+
+.. _`e1000_update_eeprom_checksum`:
+
+e1000_update_eeprom_checksum
+============================
+
+.. c:function:: s32 e1000_update_eeprom_checksum(struct e1000_hw *hw)
+
+    Calculates/writes the EEPROM checksum
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_update_eeprom_checksum.description`:
+
+Description
+-----------
+
+Sums the first 63 16 bit words of the EEPROM. Subtracts the sum from 0xBABA.
+Writes the difference to word offset 63 of the EEPROM.
+
+.. _`e1000_write_eeprom`:
+
+e1000_write_eeprom
+==================
+
+.. c:function:: s32 e1000_write_eeprom(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    write words to the different EEPROM types.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 offset:
+        offset within the EEPROM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        16 bit word to be written to the EEPROM
+
+.. _`e1000_write_eeprom.description`:
+
+Description
+-----------
+
+If e1000_update_eeprom_checksum is not called after this function, the
+EEPROM will most likely contain an invalid checksum.
+
+.. _`e1000_write_eeprom_spi`:
+
+e1000_write_eeprom_spi
+======================
+
+.. c:function:: s32 e1000_write_eeprom_spi(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Writes a 16 bit word to a given offset in an SPI EEPROM.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 offset:
+        offset within the EEPROM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        pointer to array of 8 bit words to be written to the EEPROM
+
+.. _`e1000_write_eeprom_microwire`:
+
+e1000_write_eeprom_microwire
+============================
+
+.. c:function:: s32 e1000_write_eeprom_microwire(struct e1000_hw *hw, u16 offset, u16 words, u16 *data)
+
+    Writes a 16 bit word to a given offset in a Microwire EEPROM.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 offset:
+        offset within the EEPROM to be written to
+
+    :param u16 words:
+        number of words to write
+
+    :param u16 \*data:
+        pointer to array of 8 bit words to be written to the EEPROM
+
+.. _`e1000_read_mac_addr`:
+
+e1000_read_mac_addr
+===================
+
+.. c:function:: s32 e1000_read_mac_addr(struct e1000_hw *hw)
+
+    read the adapters MAC from eeprom
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_read_mac_addr.description`:
+
+Description
+-----------
+
+Reads the adapter's MAC address from the EEPROM and inverts the LSB for the
+second function of dual function devices
+
+.. _`e1000_init_rx_addrs`:
+
+e1000_init_rx_addrs
+===================
+
+.. c:function:: void e1000_init_rx_addrs(struct e1000_hw *hw)
+
+    Initializes receive address filters.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_init_rx_addrs.description`:
+
+Description
+-----------
+
+Places the MAC address in receive address register 0 and clears the rest
+of the receive address registers. Clears the multicast table. Assumes
+the receiver is in reset when the routine is called.
+
+.. _`e1000_hash_mc_addr`:
+
+e1000_hash_mc_addr
+==================
+
+.. c:function:: u32 e1000_hash_mc_addr(struct e1000_hw *hw, u8 *mc_addr)
+
+    Hashes an address to determine its location in the multicast table
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u8 \*mc_addr:
+        the multicast address to hash
+
+.. _`e1000_rar_set`:
+
+e1000_rar_set
+=============
+
+.. c:function:: void e1000_rar_set(struct e1000_hw *hw, u8 *addr, u32 index)
+
+    Puts an ethernet address into a receive address register.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u8 \*addr:
+        Address to put into receive address register
+
+    :param u32 index:
+        Receive address register to write
+
+.. _`e1000_write_vfta`:
+
+e1000_write_vfta
+================
+
+.. c:function:: void e1000_write_vfta(struct e1000_hw *hw, u32 offset, u32 value)
+
+    Writes a value to the specified offset in the VLAN filter table.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 offset:
+        Offset in VLAN filer table to write
+
+    :param u32 value:
+        Value to write into VLAN filter table
+
+.. _`e1000_clear_vfta`:
+
+e1000_clear_vfta
+================
+
+.. c:function:: void e1000_clear_vfta(struct e1000_hw *hw)
+
+    Clears the VLAN filer table
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_setup_led`:
+
+e1000_setup_led
+===============
+
+.. c:function:: s32 e1000_setup_led(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_setup_led.description`:
+
+Description
+-----------
+
+Prepares SW controlable LED for use and saves the current state of the LED.
+
+.. _`e1000_cleanup_led`:
+
+e1000_cleanup_led
+=================
+
+.. c:function:: s32 e1000_cleanup_led(struct e1000_hw *hw)
+
+    Restores the saved state of the SW controlable LED.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_led_on`:
+
+e1000_led_on
+============
+
+.. c:function:: s32 e1000_led_on(struct e1000_hw *hw)
+
+    Turns on the software controllable LED
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_led_off`:
+
+e1000_led_off
+=============
+
+.. c:function:: s32 e1000_led_off(struct e1000_hw *hw)
+
+    Turns off the software controllable LED
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_clear_hw_cntrs`:
+
+e1000_clear_hw_cntrs
+====================
+
+.. c:function:: void e1000_clear_hw_cntrs(struct e1000_hw *hw)
+
+    Clears all hardware statistics counters.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_reset_adaptive`:
+
+e1000_reset_adaptive
+====================
+
+.. c:function:: void e1000_reset_adaptive(struct e1000_hw *hw)
+
+    Resets Adaptive IFS to its default state.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_reset_adaptive.description`:
+
+Description
+-----------
+
+Call this after e1000_init_hw. You may override the IFS defaults by setting
+hw->ifs_params_forced to true. However, you must initialize hw->
+current_ifs_val, ifs_min_val, ifs_max_val, ifs_step_size, and ifs_ratio
+before calling this function.
+
+.. _`e1000_update_adaptive`:
+
+e1000_update_adaptive
+=====================
+
+.. c:function:: void e1000_update_adaptive(struct e1000_hw *hw)
+
+    update adaptive IFS
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_update_adaptive.description`:
+
+Description
+-----------
+
+Called during the callback/watchdog routine to update IFS value based on
+the ratio of transmits to collisions.
+
+.. _`e1000_get_bus_info`:
+
+e1000_get_bus_info
+==================
+
+.. c:function:: void e1000_get_bus_info(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_get_bus_info.description`:
+
+Description
+-----------
+
+Gets the current PCI bus type, speed, and width of the hardware
+
+.. _`e1000_write_reg_io`:
+
+e1000_write_reg_io
+==================
+
+.. c:function:: void e1000_write_reg_io(struct e1000_hw *hw, u32 offset, u32 value)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u32 offset:
+        offset to write to
+
+    :param u32 value:
+        value to write
+
+.. _`e1000_write_reg_io.description`:
+
+Description
+-----------
+
+Writes a value to one of the devices registers using port I/O (as opposed to
+memory mapped I/O). Only 82544 and newer devices support port I/O.
+
+.. _`e1000_get_cable_length`:
+
+e1000_get_cable_length
+======================
+
+.. c:function:: s32 e1000_get_cable_length(struct e1000_hw *hw, u16 *min_length, u16 *max_length)
+
+    Estimates the cable length.
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param u16 \*min_length:
+        The estimated minimum length
+
+    :param u16 \*max_length:
+        The estimated maximum length
+
+.. _`e1000_get_cable_length.return`:
+
+Return
+------
+
+- E1000_ERR_XXX
+E1000_SUCCESS
+
+This function always returns a ranged length (minimum & maximum).
+So for M88 phy's, this function interprets the one value returned from the
+register to the minimum and maximum range.
+For IGP phy's, the function calculates the range by the AGC registers.
+
+.. _`e1000_check_polarity`:
+
+e1000_check_polarity
+====================
+
+.. c:function:: s32 e1000_check_polarity(struct e1000_hw *hw, e1000_rev_polarity *polarity)
+
+    Check the cable polarity
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param e1000_rev_polarity \*polarity:
+        output parameter : 0 - Polarity is not reversed
+        1 - Polarity is reversed.
+
+.. _`e1000_check_polarity.return`:
+
+Return
+------
+
+- E1000_ERR_XXX
+E1000_SUCCESS
+
+For phy's older than IGP, this function simply reads the polarity bit in the
+Phy Status register.  For IGP phy's, this bit is valid only if link speed is
+10 Mbps.  If the link speed is 100 Mbps there is no polarity so this bit will
+return 0.  If the link speed is 1000 Mbps the polarity status is in the
+IGP01E1000_PHY_PCS_INIT_REG.
+
+.. _`e1000_check_downshift`:
+
+e1000_check_downshift
+=====================
+
+.. c:function:: s32 e1000_check_downshift(struct e1000_hw *hw)
+
+    Check if Downshift occurred
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_check_downshift.return`:
+
+Return
+------
+
+- E1000_ERR_XXX
+E1000_SUCCESS
+
+For phy's older than IGP, this function reads the Downshift bit in the Phy
+Specific Status register.  For IGP phy's, it reads the Downgrade bit in the
+Link Health register.  In IGP this bit is latched high, so the driver must
+read it immediately after link is established.
+
+.. _`e1000_config_dsp_after_link_change`:
+
+e1000_config_dsp_after_link_change
+==================================
+
+.. c:function:: s32 e1000_config_dsp_after_link_change(struct e1000_hw *hw, bool link_up)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param bool link_up:
+        was link up at the time this was called
+
+.. _`e1000_config_dsp_after_link_change.return`:
+
+Return
+------
+
+- E1000_ERR_PHY if fail to read/write the PHY
+E1000_SUCCESS at any other case.
+
+82541_rev_2 & 82547_rev_2 have the capability to configure the DSP when a
+gigabit link is achieved to improve link quality.
+
+.. _`e1000_set_phy_mode`:
+
+e1000_set_phy_mode
+==================
+
+.. c:function:: s32 e1000_set_phy_mode(struct e1000_hw *hw)
+
+    Set PHY to class A mode
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_set_phy_mode.description`:
+
+Description
+-----------
+
+Assumes the following operations will follow to enable the new class mode.
+1. Do a PHY soft reset
+2. Restart auto-negotiation or force link.
+
+.. _`e1000_set_d3_lplu_state`:
+
+e1000_set_d3_lplu_state
+=======================
+
+.. c:function:: s32 e1000_set_d3_lplu_state(struct e1000_hw *hw, bool active)
+
+    set d3 link power state
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+    :param bool active:
+        true to enable lplu false to disable lplu.
+
+.. _`e1000_set_d3_lplu_state.description`:
+
+Description
+-----------
+
+This function sets the lplu state according to the active flag.  When
+activating lplu this function also disables smart speed and vise versa.
+lplu will not be activated unless the device autonegotiation advertisement
+meets standards of either 10 or 10/100 or 10/100/1000 at all duplexes.
+
+.. _`e1000_set_d3_lplu_state.return`:
+
+Return
+------
+
+- E1000_ERR_PHY if fail to read/write the PHY
+E1000_SUCCESS at any other case.
+
+.. _`e1000_set_vco_speed`:
+
+e1000_set_vco_speed
+===================
+
+.. c:function:: s32 e1000_set_vco_speed(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_set_vco_speed.description`:
+
+Description
+-----------
+
+Change VCO speed register to improve Bit Error Rate performance of SERDES.
+
+.. _`e1000_enable_mng_pass_thru`:
+
+e1000_enable_mng_pass_thru
+==========================
+
+.. c:function:: u32 e1000_enable_mng_pass_thru(struct e1000_hw *hw)
+
+    check for bmc pass through
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_enable_mng_pass_thru.description`:
+
+Description
+-----------
+
+Verifies the hardware needs to allow ARPs to be processed by the host
+
+.. _`e1000_enable_mng_pass_thru.return`:
+
+Return
+------
+
+- true/false
+
+.. _`e1000_get_auto_rd_done`:
+
+e1000_get_auto_rd_done
+======================
+
+.. c:function:: s32 e1000_get_auto_rd_done(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_get_auto_rd_done.description`:
+
+Description
+-----------
+
+Check for EEPROM Auto Read bit done.
+
+.. _`e1000_get_auto_rd_done.return`:
+
+Return
+------
+
+- E1000_ERR_RESET if fail to reset MAC
+E1000_SUCCESS at any other case.
+
+.. _`e1000_get_phy_cfg_done`:
+
+e1000_get_phy_cfg_done
+======================
+
+.. c:function:: s32 e1000_get_phy_cfg_done(struct e1000_hw *hw)
+
+    :param struct e1000_hw \*hw:
+        Struct containing variables accessed by shared code
+
+.. _`e1000_get_phy_cfg_done.description`:
+
+Description
+-----------
+
+Checks if the PHY configuration is done
+
+.. _`e1000_get_phy_cfg_done.return`:
+
+Return
+------
+
+- E1000_ERR_RESET if fail to reset MAC
+E1000_SUCCESS at any other case.
+
+.. This file was automatic generated / don't edit.
+

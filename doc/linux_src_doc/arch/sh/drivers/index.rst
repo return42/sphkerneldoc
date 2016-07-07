@@ -7,4 +7,4 @@ drivers
 .. toctree::
    :maxdepth: 1
 
-   dma/index
+    dma/index

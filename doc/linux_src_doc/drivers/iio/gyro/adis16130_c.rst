@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/gyro/adis16130.c
+
+.. _`adis16130_state`:
+
+struct adis16130_state
+======================
+
+.. c:type:: struct adis16130_state
+
+    device instance specific data
+
+.. _`adis16130_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct adis16130_state {
+        struct spi_device *us;
+        struct mutex buf_lock;
+        u8 buf[4] ____cacheline_aligned;
+    }
+
+.. _`adis16130_state.members`:
+
+Members
+-------
+
+us
+    actual spi_device to write data
+
+buf_lock
+    mutex to protect tx and rx
+
+buf
+    unified tx/rx buffer
+
+.. This file was automatic generated / don't edit.
+

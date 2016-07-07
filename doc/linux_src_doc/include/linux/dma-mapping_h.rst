@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-dma-mapping.h
-=============
-
+.. src-file: include/linux/dma-mapping.h
 
 .. _`dma_mmap_attrs`:
 
 dma_mmap_attrs
 ==============
 
-.. c:function:: int dma_mmap_attrs (struct device *dev, struct vm_area_struct *vma, void *cpu_addr, dma_addr_t dma_addr, size_t size, struct dma_attrs *attrs)
+.. c:function:: int dma_mmap_attrs(struct device *dev, struct vm_area_struct *vma, void *cpu_addr, dma_addr_t dma_addr, size_t size, struct dma_attrs *attrs)
 
     map a coherent DMA allocation into user space
 
@@ -24,7 +20,6 @@ dma_mmap_attrs
         kernel CPU-view address returned from dma_alloc_attrs
 
     :param dma_addr_t dma_addr:
-
         *undescribed*
 
     :param size_t size:
@@ -32,8 +27,6 @@ dma_mmap_attrs
 
     :param struct dma_attrs \*attrs:
         attributes of mapping properties requested in dma_alloc_attrs
-
-
 
 .. _`dma_mmap_attrs.description`:
 
@@ -43,4 +36,6 @@ Description
 Map a coherent DMA buffer previously allocated by dma_alloc_attrs
 into user space.  The coherent DMA buffer must not be freed by the
 driver until the user space mapping has been released.
+
+.. This file was automatic generated / don't edit.
 

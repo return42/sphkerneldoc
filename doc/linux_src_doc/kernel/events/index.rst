@@ -7,6 +7,6 @@ events
 .. toctree::
    :maxdepth: 1
 
-   core_c
-   hw_breakpoint_c
-   uprobes_c
+    core_c
+    hw_breakpoint_c
+    uprobes_c

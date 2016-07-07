@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-fb_cmdline.c
-============
-
+.. src-file: drivers/video/fbdev/core/fb_cmdline.c
 
 .. _`fb_get_options`:
 
 fb_get_options
 ==============
 
-.. c:function:: int fb_get_options (const char *name, char **option)
+.. c:function:: int fb_get_options(const char *name, char **option)
 
     get kernel boot parameters
 
@@ -22,8 +18,6 @@ fb_get_options
     :param char \*\*option:
         the option will be stored here
 
-
-
 .. _`fb_get_options.note`:
 
 NOTE
@@ -31,21 +25,17 @@ NOTE
 
 Needed to maintain backwards compatibility
 
-
-
 .. _`video_setup`:
 
 video_setup
 ===========
 
-.. c:function:: int video_setup (char *options)
+.. c:function:: int video_setup(char *options)
 
     process command line options
 
     :param char \*options:
         string of options
-
-
 
 .. _`video_setup.description`:
 
@@ -54,16 +44,16 @@ Description
 
 Process command line options for frame buffer subsystem.
 
-
-
 .. _`video_setup.note`:
 
 NOTE
 ----
 
-This function is a __setup and __init function.
+This function is a \__setup and \__init function.
 It only stores the options.  Drivers have to call
-:c:func:`fb_get_options` as necessary.
+\ :c:func:`fb_get_options`\  as necessary.
 
 Returns zero.
+
+.. This file was automatic generated / don't edit.
 

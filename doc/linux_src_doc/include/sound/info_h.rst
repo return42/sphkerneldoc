@@ -1,38 +1,30 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-info.h
-======
-
+.. src-file: include/sound/info.h
 
 .. _`snd_iprintf`:
 
 snd_iprintf
 ===========
 
-.. c:function:: snd_iprintf ( buf,  fmt,  args...)
+.. c:function::  snd_iprintf( buf,  fmt,  args...)
 
     printf on the procfs buffer
 
-    :param buf:
+    :param  buf:
         the procfs buffer
 
-    :param fmt:
+    :param  fmt:
         the printf format
 
-    :param args...:
+    :param  args...:
         variable arguments
-
-
 
 .. _`snd_iprintf.description`:
 
 Description
 -----------
 
-Outputs the string on the procfs buffer just like :c:func:`printf`.
-
-
+Outputs the string on the procfs buffer just like \ :c:func:`printf`\ .
 
 .. _`snd_iprintf.return`:
 
@@ -40,4 +32,6 @@ Return
 ------
 
 zero for success, or a negative error code.
+
+.. This file was automatic generated / don't edit.
 

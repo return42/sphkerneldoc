@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-dm-uevent.c
-===========
-
+.. src-file: drivers/md/dm-uevent.c
 
 .. _`dm_send_uevents`:
 
 dm_send_uevents
 ===============
 
-.. c:function:: void dm_send_uevents (struct list_head *events, struct kobject *kobj)
+.. c:function:: void dm_send_uevents(struct list_head *events, struct kobject *kobj)
 
     send uevents for given list
 
@@ -20,14 +16,12 @@ dm_send_uevents
     :param struct kobject \*kobj:
         kobject generating event
 
-
-
 .. _`dm_path_uevent`:
 
 dm_path_uevent
 ==============
 
-.. c:function:: void dm_path_uevent (enum dm_uevent_type event_type, struct dm_target *ti, const char *path, unsigned nr_valid_paths)
+.. c:function:: void dm_path_uevent(enum dm_uevent_type event_type, struct dm_target *ti, const char *path, unsigned nr_valid_paths)
 
     called to create a new path event and queue it
 
@@ -42,4 +36,6 @@ dm_path_uevent
 
     :param unsigned nr_valid_paths:
         number of valid paths remaining
+
+.. This file was automatic generated / don't edit.
 

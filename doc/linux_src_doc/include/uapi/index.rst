@@ -7,7 +7,7 @@ uapi
 .. toctree::
    :maxdepth: 1
 
-   drm/index
-   linux/index
-   mtd/index
-   sound/index
+    drm/index
+    linux/index
+    mtd/index
+    sound/index

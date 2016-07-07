@@ -7,4 +7,4 @@ rpmsg
 .. toctree::
    :maxdepth: 1
 
-   virtio_rpmsg_bus_c
+    virtio_rpmsg_bus_c

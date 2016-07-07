@@ -7,4 +7,6 @@ intel
 .. toctree::
    :maxdepth: 1
 
-   iwlegacy/index
+    ipw2x00/index
+    iwlegacy/index
+    iwlwifi/index

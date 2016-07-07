@@ -7,4 +7,6 @@ microblaze
 .. toctree::
    :maxdepth: 1
 
-   pci/index
+    include/index
+    kernel/index
+    pci/index

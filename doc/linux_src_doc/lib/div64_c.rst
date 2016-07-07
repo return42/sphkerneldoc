@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=======
-div64.c
-=======
-
+.. src-file: lib/div64.c
 
 .. _`div64_u64_rem`:
 
 div64_u64_rem
 =============
 
-.. c:function:: u64 div64_u64_rem (u64 dividend, u64 divisor, u64 *remainder)
+.. c:function:: u64 div64_u64_rem(u64 dividend, u64 divisor, u64 *remainder)
 
     unsigned 64bit divide with 64bit divisor and remainder
 
@@ -23,8 +19,6 @@ div64_u64_rem
     :param u64 \*remainder:
         64bit remainder
 
-
-
 .. _`div64_u64_rem.description`:
 
 Description
@@ -35,14 +29,12 @@ But this operation, which includes math for calculating the remainder,
 is kept distinct to avoid slowing down the div64_u64 operation on 32bit
 systems.
 
-
-
 .. _`div64_u64`:
 
 div64_u64
 =========
 
-.. c:function:: u64 div64_u64 (u64 dividend, u64 divisor)
+.. c:function:: u64 div64_u64(u64 dividend, u64 divisor)
 
     unsigned 64bit divide with 64bit divisor
 
@@ -51,8 +43,6 @@ div64_u64
 
     :param u64 divisor:
         64bit divisor
-
-
 
 .. _`div64_u64.description`:
 
@@ -65,14 +55,12 @@ can be found here and is available for use without restriction.
 
 'http://www.hackersdelight.org/hdcodetxt/divDouble.c.txt'
 
-
-
 .. _`div64_s64`:
 
 div64_s64
 =========
 
-.. c:function:: s64 div64_s64 (s64 dividend, s64 divisor)
+.. c:function:: s64 div64_s64(s64 dividend, s64 divisor)
 
     signed 64bit divide with 64bit divisor
 
@@ -81,4 +69,6 @@ div64_s64
 
     :param s64 divisor:
         64bit divisor
+
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,4 @@ mixart
 .. toctree::
    :maxdepth: 1
 
-   mixart_hwdep_c
+    mixart_hwdep_c

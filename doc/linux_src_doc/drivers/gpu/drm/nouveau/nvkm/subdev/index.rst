@@ -7,6 +7,6 @@ subdev
 .. toctree::
    :maxdepth: 1
 
-   bios/index
-   secboot/index
-   volt/index
+    bios/index
+    secboot/index
+    volt/index

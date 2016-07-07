@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-gpio_keys.h
-===========
-
+.. src-file: include/linux/gpio_keys.h
 
 .. _`gpio_keys_button`:
 
 struct gpio_keys_button
 =======================
 
-.. c:type:: gpio_keys_button
+.. c:type:: struct gpio_keys_button
 
     configuration parameters
-
 
 .. _`gpio_keys_button.definition`:
 
@@ -22,73 +17,68 @@ Definition
 
 .. code-block:: c
 
-  struct gpio_keys_button {
-    unsigned int code;
-    int gpio;
-    int active_low;
-    const char * desc;
-    unsigned int type;
-    int wakeup;
-    int debounce_interval;
-    bool can_disable;
-    int value;
-    unsigned int irq;
-    struct gpio_desc * gpiod;
-  };
-
+    struct gpio_keys_button {
+        unsigned int code;
+        int gpio;
+        int active_low;
+        const char *desc;
+        unsigned int type;
+        int wakeup;
+        int debounce_interval;
+        bool can_disable;
+        int value;
+        unsigned int irq;
+        struct gpio_desc *gpiod;
+    }
 
 .. _`gpio_keys_button.members`:
 
 Members
 -------
 
-:``code``:
+code
     input event code (KEY\_\*, SW\_\*)
 
-:``gpio``:
-    ``-1`` if this key does not support gpio
+gpio
+    \ ``-1``\  if this key does not support gpio
 
-:``active_low``:
-    ``true`` indicates that button is considered
+active_low
+    \ ``true``\  indicates that button is considered
     depressed when gpio is low
 
-:``desc``:
+desc
     label that will be attached to button's gpio
 
-:``type``:
-    input event type (\ ``EV_KEY``\ , ``EV_SW``\ , ``EV_ABS``\ )
+type
+    input event type (\ ``EV_KEY``\ , \ ``EV_SW``\ , \ ``EV_ABS``\ )
 
-:``wakeup``:
+wakeup
     configure the button as a wake-up source
 
-:``debounce_interval``:
+debounce_interval
     debounce ticks interval in msecs
 
-:``can_disable``:
-    ``true`` indicates that userspace is allowed to
+can_disable
+    \ ``true``\  indicates that userspace is allowed to
     disable button via sysfs
 
-:``value``:
-    axis value for ``EV_ABS``
+value
+    axis value for \ ``EV_ABS``\ 
 
-:``irq``:
+irq
     Irq number in case of interrupt keys
 
-:``gpiod``:
+gpiod
     GPIO descriptor
-
-
-
 
 .. _`gpio_keys_platform_data`:
 
 struct gpio_keys_platform_data
 ==============================
 
-.. c:type:: gpio_keys_platform_data
+.. c:type:: struct gpio_keys_platform_data
 
     platform data for gpio_keys driver
-
 
 .. _`gpio_keys_platform_data.definition`:
 
@@ -97,42 +87,42 @@ Definition
 
 .. code-block:: c
 
-  struct gpio_keys_platform_data {
-    struct gpio_keys_button * buttons;
-    int nbuttons;
-    unsigned int poll_interval;
-    unsigned int rep:1;
-    int (* enable) (struct device *dev);
-    void (* disable) (struct device *dev);
-    const char * name;
-  };
-
+    struct gpio_keys_platform_data {
+        struct gpio_keys_button *buttons;
+        int nbuttons;
+        unsigned int poll_interval;
+        unsigned int rep:1;
+        int (* enable) (struct device *dev);
+        void (* disable) (struct device *dev);
+        const char *name;
+    }
 
 .. _`gpio_keys_platform_data.members`:
 
 Members
 -------
 
-:``buttons``:
-    pointer to array of :c:type:`struct gpio_keys_button <gpio_keys_button>` structures
+buttons
+    pointer to array of \ :c:type:`struct gpio_keys_button <gpio_keys_button>` structures
     describing buttons attached to the device
 
-:``nbuttons``:
-    number of elements in ``buttons`` array
+nbuttons
+    number of elements in \ ``buttons``\  array
 
-:``poll_interval``:
+poll_interval
     polling interval in msecs - for polling driver only
 
-:``rep``:
+rep
     enable input subsystem auto repeat
 
-:``enable``:
+enable
     platform hook for enabling the device
 
-:``disable``:
+disable
     platform hook for disabling the device
 
-:``name``:
+name
     input device name
 
+.. This file was automatic generated / don't edit.
 

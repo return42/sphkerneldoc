@@ -7,4 +7,4 @@ keys
 .. toctree::
    :maxdepth: 1
 
-   asymmetric-subtype_h
+    asymmetric-subtype_h

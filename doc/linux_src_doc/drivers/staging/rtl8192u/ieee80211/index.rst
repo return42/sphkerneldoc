@@ -7,4 +7,4 @@ ieee80211
 .. toctree::
    :maxdepth: 1
 
-   rtl819x_HTProc_c
+    rtl819x_HTProc_c

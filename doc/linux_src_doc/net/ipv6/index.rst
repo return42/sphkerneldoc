@@ -7,8 +7,11 @@ ipv6
 .. toctree::
    :maxdepth: 1
 
-   exthdrs_c
-   ip6_output_c
-   ip6_tunnel_c
-   mcast_snoop_c
-   udp_c
+    ah6_c
+    exthdrs_c
+    ip6_gre_c
+    ip6_output_c
+    ip6_tunnel_c
+    ip6_vti_c
+    mcast_snoop_c
+    udp_c

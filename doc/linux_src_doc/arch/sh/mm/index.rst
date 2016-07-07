@@ -7,4 +7,6 @@ mm
 .. toctree::
    :maxdepth: 1
 
-   tlb-sh5_c
+    cache-sh4_c
+    gup_c
+    tlb-sh5_c

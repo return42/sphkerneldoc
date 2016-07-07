@@ -1,0 +1,118 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/net/wireless/intel/iwlegacy/4965-rs.c
+
+.. _`il4965_rs_collect_tx_data`:
+
+il4965_rs_collect_tx_data
+=========================
+
+.. c:function:: int il4965_rs_collect_tx_data(struct il_scale_tbl_info *tbl, int scale_idx, int attempts, int successes)
+
+    Update the success/failure sliding win
+
+    :param struct il_scale_tbl_info \*tbl:
+        *undescribed*
+
+    :param int scale_idx:
+        *undescribed*
+
+    :param int attempts:
+        *undescribed*
+
+    :param int successes:
+        *undescribed*
+
+.. _`il4965_rs_collect_tx_data.description`:
+
+Description
+-----------
+
+We keep a sliding win of the last 62 packets transmitted
+at this rate.  win->data contains the bitmask of successful
+packets.
+
+.. _`il4965_rs_use_green`:
+
+il4965_rs_use_green
+===================
+
+.. c:function:: bool il4965_rs_use_green(struct il_priv *il, struct ieee80211_sta *sta)
+
+    field mode is valid if the station supports it and there are no non-GF stations present in the BSS.
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+.. _`il4965_rs_get_supported_rates`:
+
+il4965_rs_get_supported_rates
+=============================
+
+.. c:function:: u16 il4965_rs_get_supported_rates(struct il_lq_sta *lq_sta, struct ieee80211_hdr *hdr, enum il_table_type rate_type)
+
+    get the available rates
+
+    :param struct il_lq_sta \*lq_sta:
+        *undescribed*
+
+    :param struct ieee80211_hdr \*hdr:
+        *undescribed*
+
+    :param enum il_table_type rate_type:
+        *undescribed*
+
+.. _`il4965_rs_get_supported_rates.description`:
+
+Description
+-----------
+
+if management frame or broadcast frame only return
+basic available rates.
+
+.. _`il4965_rs_initialize_lq`:
+
+il4965_rs_initialize_lq
+=======================
+
+.. c:function:: void il4965_rs_initialize_lq(struct il_priv *il, struct ieee80211_conf *conf, struct ieee80211_sta *sta, struct il_lq_sta *lq_sta)
+
+    Initialize a station's hardware rate table
+
+    :param struct il_priv \*il:
+        *undescribed*
+
+    :param struct ieee80211_conf \*conf:
+        *undescribed*
+
+    :param struct ieee80211_sta \*sta:
+        *undescribed*
+
+    :param struct il_lq_sta \*lq_sta:
+        *undescribed*
+
+.. _`il4965_rs_initialize_lq.description`:
+
+Description
+-----------
+
+The uCode's station table contains a table of fallback rates
+for automatic fallback during transmission.
+
+.. _`il4965_rs_initialize_lq.note`:
+
+NOTE
+----
+
+This sets up a default set of values.  These will be replaced later
+if the driver's iwl-4965-rs rate scaling algorithm is used, instead of
+rc80211_simple.
+
+Run C_ADD_STA command to set up station table entry, before
+calling this function (which runs C_TX_LINK_QUALITY_CMD,
+which requires station table entry to exist).
+
+.. This file was automatic generated / don't edit.
+

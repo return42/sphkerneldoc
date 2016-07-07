@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-dma-contiguous.h
-================
-
+.. src-file: include/linux/dma-contiguous.h
 
 .. _`dma_declare_contiguous`:
 
 dma_declare_contiguous
 ======================
 
-.. c:function:: int dma_declare_contiguous (struct device *dev, phys_addr_t size, phys_addr_t base, phys_addr_t limit)
+.. c:function:: int dma_declare_contiguous(struct device *dev, phys_addr_t size, phys_addr_t base, phys_addr_t limit)
 
     reserve area for contiguous memory handling for particular device
 
@@ -26,8 +22,6 @@ dma_declare_contiguous
     :param phys_addr_t limit:
         End address of the reserved memory (optional, 0 for any).
 
-
-
 .. _`dma_declare_contiguous.description`:
 
 Description
@@ -36,4 +30,6 @@ Description
 This function reserves memory for specified device. It should be
 called by board specific code when early allocator (memblock or bootmem)
 is still activate.
+
+.. This file was automatic generated / don't edit.
 

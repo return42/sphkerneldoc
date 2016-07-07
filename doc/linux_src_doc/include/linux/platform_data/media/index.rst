@@ -7,6 +7,6 @@ media
 .. toctree::
    :maxdepth: 1
 
-   camera-mx2_h
-   camera-mx3_h
-   omap4iss_h
+    camera-mx2_h
+    camera-mx3_h
+    omap4iss_h

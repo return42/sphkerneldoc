@@ -1,25 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-amdgpu_ib.c
-===========
-
+.. src-file: drivers/gpu/drm/amd/amdgpu/amdgpu_ib.c
 
 .. _`amdgpu_ib_get`:
 
 amdgpu_ib_get
 =============
 
-.. c:function:: int amdgpu_ib_get (struct amdgpu_device *adev, struct amdgpu_vm *vm, unsigned size, struct amdgpu_ib *ib)
+.. c:function:: int amdgpu_ib_get(struct amdgpu_device *adev, struct amdgpu_vm *vm, unsigned size, struct amdgpu_ib *ib)
 
     request an IB (Indirect Buffer)
 
     :param struct amdgpu_device \*adev:
-
         *undescribed*
 
     :param struct amdgpu_vm \*vm:
-
         *undescribed*
 
     :param unsigned size:
@@ -27,8 +21,6 @@ amdgpu_ib_get
 
     :param struct amdgpu_ib \*ib:
         IB object returned
-
-
 
 .. _`amdgpu_ib_get.description`:
 
@@ -39,14 +31,12 @@ Request an IB (all asics).  IBs are allocated using the
 suballocator.
 Returns 0 on success, error on failure.
 
-
-
 .. _`amdgpu_ib_free`:
 
 amdgpu_ib_free
 ==============
 
-.. c:function:: void amdgpu_ib_free (struct amdgpu_device *adev, struct amdgpu_ib *ib, struct fence *f)
+.. c:function:: void amdgpu_ib_free(struct amdgpu_device *adev, struct amdgpu_ib *ib, struct fence *f)
 
     free an IB (Indirect Buffer)
 
@@ -59,8 +49,6 @@ amdgpu_ib_free
     :param struct fence \*f:
         the fence SA bo need wait on for the ib alloation
 
-
-
 .. _`amdgpu_ib_free.description`:
 
 Description
@@ -68,19 +56,16 @@ Description
 
 Free an IB (all asics).
 
-
-
 .. _`amdgpu_ib_schedule`:
 
 amdgpu_ib_schedule
 ==================
 
-.. c:function:: int amdgpu_ib_schedule (struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct fence *last_vm_update, struct fence **f)
+.. c:function:: int amdgpu_ib_schedule(struct amdgpu_ring *ring, unsigned num_ibs, struct amdgpu_ib *ibs, struct fence *last_vm_update, struct amdgpu_job *job, struct fence **f)
 
     schedule an IB (Indirect Buffer) on the ring
 
     :param struct amdgpu_ring \*ring:
-
         *undescribed*
 
     :param unsigned num_ibs:
@@ -90,13 +75,13 @@ amdgpu_ib_schedule
         IB objects to schedule
 
     :param struct fence \*last_vm_update:
+        *undescribed*
 
+    :param struct amdgpu_job \*job:
         *undescribed*
 
     :param struct fence \*\*f:
         fence created during this submission
-
-
 
 .. _`amdgpu_ib_schedule.description`:
 
@@ -116,21 +101,17 @@ IBs, one for the CE and one for the DE.  If there is a CE IB (called
 a CONST_IB), it will be put on the ring prior to the DE IB.  Prior
 to SI there was just a DE IB.
 
-
-
 .. _`amdgpu_ib_pool_init`:
 
 amdgpu_ib_pool_init
 ===================
 
-.. c:function:: int amdgpu_ib_pool_init (struct amdgpu_device *adev)
+.. c:function:: int amdgpu_ib_pool_init(struct amdgpu_device *adev)
 
     Init the IB (Indirect Buffer) pool
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
-
-
 
 .. _`amdgpu_ib_pool_init.description`:
 
@@ -141,21 +122,17 @@ Initialize the suballocator to manage a pool of memory
 for use as IBs (all asics).
 Returns 0 on success, error on failure.
 
-
-
 .. _`amdgpu_ib_pool_fini`:
 
 amdgpu_ib_pool_fini
 ===================
 
-.. c:function:: void amdgpu_ib_pool_fini (struct amdgpu_device *adev)
+.. c:function:: void amdgpu_ib_pool_fini(struct amdgpu_device *adev)
 
     Free the IB (Indirect Buffer) pool
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
-
-
 
 .. _`amdgpu_ib_pool_fini.description`:
 
@@ -165,21 +142,17 @@ Description
 Tear down the suballocator managing the pool of memory
 for use as IBs (all asics).
 
-
-
 .. _`amdgpu_ib_ring_tests`:
 
 amdgpu_ib_ring_tests
 ====================
 
-.. c:function:: int amdgpu_ib_ring_tests (struct amdgpu_device *adev)
+.. c:function:: int amdgpu_ib_ring_tests(struct amdgpu_device *adev)
 
     test IBs on the rings
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
-
-
 
 .. _`amdgpu_ib_ring_tests.description`:
 
@@ -190,4 +163,6 @@ Test an IB (Indirect Buffer) on each ring.
 If the test fails, disable the ring.
 Returns 0 on success, error if the primary GFX ring
 IB test fails.
+
+.. This file was automatic generated / don't edit.
 

@@ -7,5 +7,6 @@ cell
 .. toctree::
    :maxdepth: 1
 
-   spu_base_c
-   spufs/index
+    spufs/index
+    smp_c
+    spu_base_c

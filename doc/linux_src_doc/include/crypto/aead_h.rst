@@ -1,76 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-======
-aead.h
-======
-
-
-.. _`authenticated-encryption-with-associated-data--aead--cipher-api`:
-
-Authenticated Encryption With Associated Data (AEAD) Cipher API
-===============================================================
-
-The AEAD cipher API is used with the ciphers of type CRYPTO_ALG_TYPE_AEAD
-(listed as type "aead" in /proc/crypto)
-
-The most prominent examples for this type of encryption is GCM and CCM.
-However, the kernel supports other types of AEAD ciphers which are defined
-with the following cipher string::
-
-        authenc(keyed message digest, block cipher)
-
-For example: authenc(hmac(sha256), cbc(aes))
-
-The example code provided for the symmetric key cipher operation
-applies here as well. Naturally all \*skcipher\* symbols must be exchanged
-the \*aead\* pendants discussed in the following. In addition, for the AEAD
-operation, the aead_request_set_ad function must be used to set the
-pointer to the associated data memory location before performing the
-encryption or decryption operation. In case of an encryption, the associated
-data memory is filled during the encryption operation. For decryption, the
-associated data memory must contain data that is used to verify the integrity
-of the decrypted data. Another deviation from the asynchronous block cipher
-operation is that the caller should explicitly check for -EBADMSG of the
-crypto_aead_decrypt. That error indicates an authentication error, i.e.
-a breach in the integrity of the message. In essence, that -EBADMSG error
-code is the key bonus an AEAD cipher has over "standard" block chaining
-modes.
-
-Memory Structure:
-
-To support the needs of the most prominent user of AEAD ciphers, namely
-IPSEC, the AEAD ciphers have a special memory layout the caller must adhere
-to.
-
-The scatter list pointing to the input data must contain:
-
-* for RFC4106 ciphers, the concatenation of
-associated authentication data || IV || plaintext or ciphertext. Note, the
-same IV (buffer) is also set with the aead_request_set_crypt call. Note,
-the API call of aead_request_set_ad must provide the length of the AAD and
-the IV. The API call of aead_request_set_crypt only points to the size of
-the input plaintext or ciphertext.
-
-* for "normal" AEAD ciphers, the concatenation of
-associated authentication data || plaintext or ciphertext.
-
-It is important to note that if multiple scatter gather list entries form
-the input data mentioned above, the first entry must not point to a NULL
-buffer. If there is any potential where the AAD buffer can be NULL, the
-calling code must contain a precaution to ensure that this does not result
-in the first scatter gather list entry pointing to a NULL buffer.
-
-
+.. src-file: include/crypto/aead.h
 
 .. _`aead_request`:
 
 struct aead_request
 ===================
 
-.. c:type:: aead_request
+.. c:type:: struct aead_request
 
     AEAD request
-
 
 .. _`aead_request.definition`:
 
@@ -79,55 +17,50 @@ Definition
 
 .. code-block:: c
 
-  struct aead_request {
-    struct crypto_async_request base;
-    unsigned int assoclen;
-    unsigned int cryptlen;
-    u8 * iv;
-    struct scatterlist * src;
-    struct scatterlist * dst;
-    void * __ctx[];
-  };
-
+    struct aead_request {
+        struct crypto_async_request base;
+        unsigned int assoclen;
+        unsigned int cryptlen;
+        u8 *iv;
+        struct scatterlist *src;
+        struct scatterlist *dst;
+        void  *__ctx[];
+    }
 
 .. _`aead_request.members`:
 
 Members
 -------
 
-:``base``:
+base
     Common attributes for async crypto requests
 
-:``assoclen``:
+assoclen
     Length in bytes of associated data for authentication
 
-:``cryptlen``:
+cryptlen
     Length of data to be encrypted or decrypted
 
-:``iv``:
+iv
     Initialisation vector
 
-:``src``:
+src
     Source data
 
-:``dst``:
+dst
     Destination data
 
-:``__ctx[]``:
+__ctx
     Start of private context data
-
-
-
 
 .. _`aead_alg`:
 
 struct aead_alg
 ===============
 
-.. c:type:: aead_alg
+.. c:type:: struct aead_alg
 
     AEAD cipher definition
-
 
 .. _`aead_alg.definition`:
 
@@ -136,29 +69,28 @@ Definition
 
 .. code-block:: c
 
-  struct aead_alg {
-    int (* setkey) (struct crypto_aead *tfm, const u8 *key,unsigned int keylen);
-    int (* setauthsize) (struct crypto_aead *tfm, unsigned int authsize);
-    int (* encrypt) (struct aead_request *req);
-    int (* decrypt) (struct aead_request *req);
-    int (* init) (struct crypto_aead *tfm);
-    void (* exit) (struct crypto_aead *tfm);
-    const char * geniv;
-    unsigned int ivsize;
-    unsigned int maxauthsize;
-    struct crypto_alg base;
-  };
-
+    struct aead_alg {
+        int (* setkey) (struct crypto_aead *tfm, const u8 *key,unsigned int keylen);
+        int (* setauthsize) (struct crypto_aead *tfm, unsigned int authsize);
+        int (* encrypt) (struct aead_request *req);
+        int (* decrypt) (struct aead_request *req);
+        int (* init) (struct crypto_aead *tfm);
+        void (* exit) (struct crypto_aead *tfm);
+        const char *geniv;
+        unsigned int ivsize;
+        unsigned int maxauthsize;
+        struct crypto_alg base;
+    }
 
 .. _`aead_alg.members`:
 
 Members
 -------
 
-:``setkey``:
+setkey
     see struct ablkcipher_alg
 
-:``setauthsize``:
+setauthsize
     Set authentication size for the AEAD transformation. This
     function is used to specify the consumer requested size of the
     authentication tag to be either generated by the transformation
@@ -167,13 +99,13 @@ Members
     responsible for checking the authentication tag size for
     validity.
 
-:``encrypt``:
+encrypt
     see struct ablkcipher_alg
 
-:``decrypt``:
+decrypt
     see struct ablkcipher_alg
 
-:``init``:
+init
     Initialize the cryptographic transformation object. This function
     is used to initialize the cryptographic transformation object.
     This function is called only once at the instantiation time, right
@@ -183,18 +115,18 @@ Members
     requirement of the transformation and put any software fallbacks
     in place.
 
-:``exit``:
+exit
     Deinitialize the cryptographic transformation object. This is a
-    counterpart to ``init``\ , used to remove various changes set in
-    ``init``\ .
+    counterpart to \ ``init``\ , used to remove various changes set in
+    \ ``init``\ .
 
-:``geniv``:
+geniv
     see struct ablkcipher_alg
 
-:``ivsize``:
+ivsize
     see struct ablkcipher_alg
 
-:``maxauthsize``:
+maxauthsize
     Set the maximum authentication tag size supported by the
     transformation. A transformation may support smaller tag sizes.
     As the authentication tag is a message digest to ensure the
@@ -202,27 +134,22 @@ Members
     largest authentication tag possible as defined by this
     variable.
 
-:``base``:
+base
     Definition of a generic crypto cipher algorithm.
-
-
-
 
 .. _`aead_alg.description`:
 
 Description
 -----------
 
-All fields except ``ivsize`` is mandatory and must be filled.
-
-
+All fields except \ ``ivsize``\  is mandatory and must be filled.
 
 .. _`crypto_alloc_aead`:
 
 crypto_alloc_aead
 =================
 
-.. c:function:: struct crypto_aead *crypto_alloc_aead (const char *alg_name, u32 type, u32 mask)
+.. c:function:: struct crypto_aead *crypto_alloc_aead(const char *alg_name, u32 type, u32 mask)
 
     allocate AEAD cipher handle
 
@@ -236,8 +163,6 @@ crypto_alloc_aead
     :param u32 mask:
         specifies the mask for the cipher
 
-
-
 .. _`crypto_alloc_aead.description`:
 
 Description
@@ -247,45 +172,37 @@ Allocate a cipher handle for an AEAD. The returned struct
 crypto_aead is the cipher handle that is required for any subsequent
 API invocation for that AEAD.
 
-
-
 .. _`crypto_alloc_aead.return`:
 
 Return
 ------
 
-allocated cipher handle in case of success; :c:func:`IS_ERR` is true in case
-of an error, :c:func:`PTR_ERR` returns the error code.
-
-
+allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
+of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_aead`:
 
 crypto_free_aead
 ================
 
-.. c:function:: void crypto_free_aead (struct crypto_aead *tfm)
+.. c:function:: void crypto_free_aead(struct crypto_aead *tfm)
 
     zeroize and free aead handle
 
     :param struct crypto_aead \*tfm:
         cipher handle to be freed
 
-
-
 .. _`crypto_aead_ivsize`:
 
 crypto_aead_ivsize
 ==================
 
-.. c:function:: unsigned int crypto_aead_ivsize (struct crypto_aead *tfm)
+.. c:function:: unsigned int crypto_aead_ivsize(struct crypto_aead *tfm)
 
     obtain IV size
 
     :param struct crypto_aead \*tfm:
         cipher handle
-
-
 
 .. _`crypto_aead_ivsize.description`:
 
@@ -295,8 +212,6 @@ Description
 The size of the IV for the aead referenced by the cipher handle is
 returned. This IV size may be zero if the cipher does not need an IV.
 
-
-
 .. _`crypto_aead_ivsize.return`:
 
 Return
@@ -304,21 +219,17 @@ Return
 
 IV size in bytes
 
-
-
 .. _`crypto_aead_authsize`:
 
 crypto_aead_authsize
 ====================
 
-.. c:function:: unsigned int crypto_aead_authsize (struct crypto_aead *tfm)
+.. c:function:: unsigned int crypto_aead_authsize(struct crypto_aead *tfm)
 
     obtain maximum authentication data size
 
     :param struct crypto_aead \*tfm:
         cipher handle
-
-
 
 .. _`crypto_aead_authsize.description`:
 
@@ -331,8 +242,6 @@ zero if the cipher implements a hard-coded maximum.
 
 The authentication data may also be known as "tag value".
 
-
-
 .. _`crypto_aead_authsize.return`:
 
 Return
@@ -340,21 +249,17 @@ Return
 
 authentication data size / tag size in bytes
 
-
-
 .. _`crypto_aead_blocksize`:
 
 crypto_aead_blocksize
 =====================
 
-.. c:function:: unsigned int crypto_aead_blocksize (struct crypto_aead *tfm)
+.. c:function:: unsigned int crypto_aead_blocksize(struct crypto_aead *tfm)
 
     obtain block size of cipher
 
     :param struct crypto_aead \*tfm:
         cipher handle
-
-
 
 .. _`crypto_aead_blocksize.description`:
 
@@ -365,8 +270,6 @@ The block size for the AEAD referenced with the cipher handle is returned.
 The caller may use that information to allocate appropriate memory for the
 data returned by the encryption or decryption operation
 
-
-
 .. _`crypto_aead_blocksize.return`:
 
 Return
@@ -374,14 +277,12 @@ Return
 
 block size of cipher
 
-
-
 .. _`crypto_aead_setkey`:
 
 crypto_aead_setkey
 ==================
 
-.. c:function:: int crypto_aead_setkey (struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
+.. c:function:: int crypto_aead_setkey(struct crypto_aead *tfm, const u8 *key, unsigned int keylen)
 
     set key for cipher
 
@@ -393,8 +294,6 @@ crypto_aead_setkey
 
     :param unsigned int keylen:
         length of the key in bytes
-
-
 
 .. _`crypto_aead_setkey.description`:
 
@@ -409,8 +308,6 @@ different cipher modes depending on the key size, such as AES-128 vs AES-192
 vs. AES-256. When providing a 16 byte key for an AES cipher handle, AES-128
 is performed.
 
-
-
 .. _`crypto_aead_setkey.return`:
 
 Return
@@ -418,14 +315,12 @@ Return
 
 0 if the setting of the key was successful; < 0 if an error occurred
 
-
-
 .. _`crypto_aead_setauthsize`:
 
 crypto_aead_setauthsize
 =======================
 
-.. c:function:: int crypto_aead_setauthsize (struct crypto_aead *tfm, unsigned int authsize)
+.. c:function:: int crypto_aead_setauthsize(struct crypto_aead *tfm, unsigned int authsize)
 
     set authentication data size
 
@@ -435,8 +330,6 @@ crypto_aead_setauthsize
     :param unsigned int authsize:
         size of the authentication data / tag in bytes
 
-
-
 .. _`crypto_aead_setauthsize.description`:
 
 Description
@@ -445,8 +338,6 @@ Description
 Set the authentication data size / tag size. AEAD requires an authentication
 tag (or MAC) in addition to the associated data.
 
-
-
 .. _`crypto_aead_setauthsize.return`:
 
 Return
@@ -454,22 +345,18 @@ Return
 
 0 if the setting of the key was successful; < 0 if an error occurred
 
-
-
 .. _`crypto_aead_encrypt`:
 
 crypto_aead_encrypt
 ===================
 
-.. c:function:: int crypto_aead_encrypt (struct aead_request *req)
+.. c:function:: int crypto_aead_encrypt(struct aead_request *req)
 
     encrypt plaintext
 
     :param struct aead_request \*req:
         reference to the aead_request handle that holds all information
         needed to perform the cipher operation
-
-
 
 .. _`crypto_aead_encrypt.description`:
 
@@ -488,8 +375,6 @@ crypto_aead_setauthsize invocation. The caller must ensure
 that sufficient memory is available for the ciphertext and
 the authentication tag.
 
-
-
 .. _`crypto_aead_encrypt.return`:
 
 Return
@@ -497,22 +382,18 @@ Return
 
 0 if the cipher operation was successful; < 0 if an error occurred
 
-
-
 .. _`crypto_aead_decrypt`:
 
 crypto_aead_decrypt
 ===================
 
-.. c:function:: int crypto_aead_decrypt (struct aead_request *req)
+.. c:function:: int crypto_aead_decrypt(struct aead_request *req)
 
     decrypt ciphertext
 
     :param struct aead_request \*req:
         reference to the ablkcipher_request handle that holds all information
         needed to perform the cipher operation
-
-
 
 .. _`crypto_aead_decrypt.description`:
 
@@ -528,50 +409,29 @@ authentication data / tag. That authentication data / tag
 must have the size defined by the crypto_aead_setauthsize
 invocation.
 
-
-
 .. _`crypto_aead_decrypt.return`:
 
 Return
 ------
 
 0 if the cipher operation was successful; -EBADMSG: The AEAD
-
-           cipher operation performs the authentication of the data during the
-           decryption operation. Therefore, the function returns this error if
-           the authentication of the ciphertext was unsuccessful (i.e. the
-           integrity of the ciphertext or the associated data was violated);
-           < 0 if an error occurred.
-
-
-
-.. _`asynchronous-aead-request-handle`:
-
-Asynchronous AEAD Request Handle
-================================
-
-The aead_request data structure contains all pointers to data required for
-the AEAD cipher operation. This includes the cipher handle (which can be
-used by multiple aead_request instances), pointer to plaintext and
-ciphertext, asynchronous callback function, etc. It acts as a handle to the
-aead_request\_\* API calls in a similar way as AEAD handle to the
-crypto_aead\_\* API calls.
-
-
+cipher operation performs the authentication of the data during the
+decryption operation. Therefore, the function returns this error if
+the authentication of the ciphertext was unsuccessful (i.e. the
+integrity of the ciphertext or the associated data was violated);
+< 0 if an error occurred.
 
 .. _`crypto_aead_reqsize`:
 
 crypto_aead_reqsize
 ===================
 
-.. c:function:: unsigned int crypto_aead_reqsize (struct crypto_aead *tfm)
+.. c:function:: unsigned int crypto_aead_reqsize(struct crypto_aead *tfm)
 
     obtain size of the request data structure
 
     :param struct crypto_aead \*tfm:
         cipher handle
-
-
 
 .. _`crypto_aead_reqsize.return`:
 
@@ -580,14 +440,12 @@ Return
 
 number of bytes
 
-
-
 .. _`aead_request_set_tfm`:
 
 aead_request_set_tfm
 ====================
 
-.. c:function:: void aead_request_set_tfm (struct aead_request *req, struct crypto_aead *tfm)
+.. c:function:: void aead_request_set_tfm(struct aead_request *req, struct crypto_aead *tfm)
 
     update cipher handle reference in request
 
@@ -597,8 +455,6 @@ aead_request_set_tfm
     :param struct crypto_aead \*tfm:
         cipher handle that shall be added to the request handle
 
-
-
 .. _`aead_request_set_tfm.description`:
 
 Description
@@ -607,14 +463,12 @@ Description
 Allow the caller to replace the existing aead handle in the request
 data structure with a different one.
 
-
-
 .. _`aead_request_alloc`:
 
 aead_request_alloc
 ==================
 
-.. c:function:: struct aead_request *aead_request_alloc (struct crypto_aead *tfm, gfp_t gfp)
+.. c:function:: struct aead_request *aead_request_alloc(struct crypto_aead *tfm, gfp_t gfp)
 
     allocate request data structure
 
@@ -623,8 +477,6 @@ aead_request_alloc
 
     :param gfp_t gfp:
         memory allocation flag that is handed to kmalloc by the API call.
-
-
 
 .. _`aead_request_alloc.description`:
 
@@ -635,38 +487,31 @@ Allocate the request data structure that must be used with the AEAD
 encrypt and decrypt API calls. During the allocation, the provided aead
 handle is registered in the request data structure.
 
-
-
 .. _`aead_request_alloc.return`:
 
 Return
 ------
 
-allocated request handle in case of success; :c:func:`IS_ERR` is true in case
-of an error, :c:func:`PTR_ERR` returns the error code.
-
-
+allocated request handle in case of success, or NULL if out of memory
 
 .. _`aead_request_free`:
 
 aead_request_free
 =================
 
-.. c:function:: void aead_request_free (struct aead_request *req)
+.. c:function:: void aead_request_free(struct aead_request *req)
 
     zeroize and free request data structure
 
     :param struct aead_request \*req:
         request data structure cipher handle to be freed
 
-
-
 .. _`aead_request_set_callback`:
 
 aead_request_set_callback
 =========================
 
-.. c:function:: void aead_request_set_callback (struct aead_request *req, u32 flags, crypto_completion_t compl, void *data)
+.. c:function:: void aead_request_set_callback(struct aead_request *req, u32 flags, crypto_completion_t compl, void *data)
 
     set asynchronous callback function
 
@@ -692,8 +537,6 @@ aead_request_set_callback
         callback function can access the memory via the "data" field in the
         crypto_async_request data structure provided to the callback function.
 
-
-
 .. _`aead_request_set_callback.description`:
 
 Description
@@ -707,14 +550,12 @@ must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)
 
-
-
 .. _`aead_request_set_crypt`:
 
 aead_request_set_crypt
 ======================
 
-.. c:function:: void aead_request_set_crypt (struct aead_request *req, struct scatterlist *src, struct scatterlist *dst, unsigned int cryptlen, u8 *iv)
+.. c:function:: void aead_request_set_crypt(struct aead_request *req, struct scatterlist *src, struct scatterlist *dst, unsigned int cryptlen, u8 *iv)
 
     set data buffers
 
@@ -728,13 +569,11 @@ aead_request_set_crypt
         destination scatter / gather list
 
     :param unsigned int cryptlen:
-        number of bytes to process from ``src``
+        number of bytes to process from \ ``src``\ 
 
     :param u8 \*iv:
         IV for the cipher operation which must comply with the IV size defined
-        by :c:func:`crypto_aead_ivsize`
-
-
+        by \ :c:func:`crypto_aead_ivsize`\ 
 
 .. _`aead_request_set_crypt.description`:
 
@@ -771,17 +610,15 @@ ciphertext and the authentication tag while the encryption
 invocation must only point to the plaintext data size. The
 following code snippet illustrates the memory usage
 buffer = kmalloc(ptbuflen + (enc ? authsize : 0));
-sg_init_one(:c:type:`struct sg <sg>`, buffer, ptbuflen + (enc ? authsize : 0));
-aead_request_set_crypt(req, :c:type:`struct sg <sg>`, :c:type:`struct sg <sg>`, ptbuflen, iv);
-
-
+sg_init_one(\ :c:type:`struct sg <sg>`, buffer, ptbuflen + (enc ? authsize : 0));
+aead_request_set_crypt(req, \ :c:type:`struct sg <sg>`, \ :c:type:`struct sg <sg>`, ptbuflen, iv);
 
 .. _`aead_request_set_ad`:
 
 aead_request_set_ad
 ===================
 
-.. c:function:: void aead_request_set_ad (struct aead_request *req, unsigned int assoclen)
+.. c:function:: void aead_request_set_ad(struct aead_request *req, unsigned int assoclen)
 
     set associated data information
 
@@ -791,8 +628,6 @@ aead_request_set_ad
     :param unsigned int assoclen:
         number of bytes in associated data
 
-
-
 .. _`aead_request_set_ad.description`:
 
 Description
@@ -800,4 +635,6 @@ Description
 
 Setting the AD information.  This function sets the length of
 the associated data.
+
+.. This file was automatic generated / don't edit.
 

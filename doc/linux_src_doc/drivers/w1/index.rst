@@ -7,8 +7,13 @@ w1
 .. toctree::
    :maxdepth: 1
 
-   w1_c
-   w1_family_h
-   w1_h
-   w1_io_c
-   w1_netlink_h
+    masters/index
+    slaves/index
+    w1_c
+    w1_family_c
+    w1_family_h
+    w1_h
+    w1_int_c
+    w1_io_c
+    w1_netlink_c
+    w1_netlink_h

@@ -7,5 +7,6 @@ lnet
 .. toctree::
    :maxdepth: 1
 
-   libcfs/index
-   lnet/index
+    klnds/index
+    libcfs/index
+    lnet/index

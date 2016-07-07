@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-================
-of_touchscreen.c
-================
-
+.. src-file: drivers/input/touchscreen/of_touchscreen.c
 
 .. _`touchscreen_parse_properties`:
 
 touchscreen_parse_properties
 ============================
 
-.. c:function:: void touchscreen_parse_properties (struct input_dev *input, bool multitouch)
+.. c:function:: void touchscreen_parse_properties(struct input_dev *input, bool multitouch)
 
     parse common touchscreen DT properties
 
@@ -21,8 +17,6 @@ touchscreen_parse_properties
         specifies whether parsed properties should be applied to
         single-touch or multi-touch axes
 
-
-
 .. _`touchscreen_parse_properties.description`:
 
 Description
@@ -31,4 +25,6 @@ Description
 This function parses common DT properties for touchscreens and setups the
 input device accordingly. The function keeps previously set up default
 values if no value is specified via DT.
+
+.. This file was automatic generated / don't edit.
 

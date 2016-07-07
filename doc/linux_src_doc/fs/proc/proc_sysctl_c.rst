@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=============
-proc_sysctl.c
-=============
-
+.. src-file: fs/proc/proc_sysctl.c
 
 .. _`get_subdir`:
 
 get_subdir
 ==========
 
-.. c:function:: struct ctl_dir *get_subdir (struct ctl_dir *dir, const char *name, int namelen)
+.. c:function:: struct ctl_dir *get_subdir(struct ctl_dir *dir, const char *name, int namelen)
 
     find or create a subdir with the specified name.
 
@@ -23,8 +19,6 @@ get_subdir
     :param int namelen:
         The length of name
 
-
-
 .. _`get_subdir.description`:
 
 Description
@@ -32,18 +26,16 @@ Description
 
 Takes a directory with an elevated reference count so we know that
 if we drop the lock the directory will not go away.  Upon success
-the reference is moved from ``dir`` to the returned subdirectory.
-Upon error an error code is returned and the reference on ``dir`` is
+the reference is moved from \ ``dir``\  to the returned subdirectory.
+Upon error an error code is returned and the reference on \ ``dir``\  is
 simply dropped.
-
-
 
 .. _`__register_sysctl_table`:
 
 __register_sysctl_table
 =======================
 
-.. c:function:: struct ctl_table_header *__register_sysctl_table (struct ctl_table_set *set, const char *path, struct ctl_table *table)
+.. c:function:: struct ctl_table_header *__register_sysctl_table(struct ctl_table_set *set, const char *path, struct ctl_table *table)
 
     register a leaf sysctl table
 
@@ -56,19 +48,17 @@ __register_sysctl_table
     :param struct ctl_table \*table:
         the top-level table structure
 
-
-
 .. _`__register_sysctl_table.description`:
 
 Description
 -----------
 
-Register a sysctl table hierarchy. ``table`` should be a filled in ctl_table
+Register a sysctl table hierarchy. \ ``table``\  should be a filled in ctl_table
 array. A completely 0 filled entry terminates the table.
 
-The members of the :c:type:`struct ctl_table <ctl_table>` structure are used as follows:
+The members of the \ :c:type:`struct ctl_table <ctl_table>`\  structure are used as follows:
 
-procname - the name of the sysctl file under /proc/sys. Set to ``NULL`` to not
+procname - the name of the sysctl file under /proc/sys. Set to \ ``NULL``\  to not
 enter a sysctl file
 
 data - a pointer to data for use by proc_handler
@@ -77,7 +67,7 @@ maxlen - the maximum size in bytes of the data
 
 mode - the file permissions for the /proc/sys file
 
-child - must be ``NULL``\ .
+child - must be \ ``NULL``\ .
 
 proc_handler - the text handler routine (described below)
 
@@ -89,24 +79,22 @@ under /proc; non-leaf nodes will be represented by directories.
 There must be a proc_handler routine for any terminal nodes.
 Several default handlers are available to cover common cases -
 
-:c:func:`proc_dostring`, :c:func:`proc_dointvec`, :c:func:`proc_dointvec_jiffies`,
-:c:func:`proc_dointvec_userhz_jiffies`, :c:func:`proc_dointvec_minmax`,
-:c:func:`proc_doulongvec_ms_jiffies_minmax`, :c:func:`proc_doulongvec_minmax`
+\ :c:func:`proc_dostring`\ , \ :c:func:`proc_dointvec`\ , \ :c:func:`proc_dointvec_jiffies`\ ,
+\ :c:func:`proc_dointvec_userhz_jiffies`\ , \ :c:func:`proc_dointvec_minmax`\ ,
+\ :c:func:`proc_doulongvec_ms_jiffies_minmax`\ , \ :c:func:`proc_doulongvec_minmax`\ 
 
 It is the handler's job to read the input buffer from user memory
 and process it. The handler should return 0 on success.
 
-This routine returns ``NULL`` on a failure to register, and a pointer
+This routine returns \ ``NULL``\  on a failure to register, and a pointer
 to the table header on success.
-
-
 
 .. _`register_sysctl`:
 
 register_sysctl
 ===============
 
-.. c:function:: struct ctl_table_header *register_sysctl (const char *path, struct ctl_table *table)
+.. c:function:: struct ctl_table_header *register_sysctl(const char *path, struct ctl_table *table)
 
     register a sysctl table
 
@@ -116,26 +104,22 @@ register_sysctl
     :param struct ctl_table \*table:
         the table structure
 
-
-
 .. _`register_sysctl.description`:
 
 Description
 -----------
 
-Register a sysctl table. ``table`` should be a filled in ctl_table
+Register a sysctl table. \ ``table``\  should be a filled in ctl_table
 array. A completely 0 filled entry terminates the table.
 
-See __register_sysctl_table for more details.
-
-
+See \__register_sysctl_table for more details.
 
 .. _`__register_sysctl_paths`:
 
 __register_sysctl_paths
 =======================
 
-.. c:function:: struct ctl_table_header *__register_sysctl_paths (struct ctl_table_set *set, const struct ctl_path *path, struct ctl_table *table)
+.. c:function:: struct ctl_table_header *__register_sysctl_paths(struct ctl_table_set *set, const struct ctl_path *path, struct ctl_table *table)
 
     register a sysctl table hierarchy
 
@@ -148,26 +132,22 @@ __register_sysctl_paths
     :param struct ctl_table \*table:
         the top-level table structure
 
-
-
 .. _`__register_sysctl_paths.description`:
 
 Description
 -----------
 
-Register a sysctl table hierarchy. ``table`` should be a filled in ctl_table
+Register a sysctl table hierarchy. \ ``table``\  should be a filled in ctl_table
 array. A completely 0 filled entry terminates the table.
 
-See __register_sysctl_table for more details.
-
-
+See \__register_sysctl_table for more details.
 
 .. _`register_sysctl_paths`:
 
 register_sysctl_paths
 =====================
 
-.. c:function:: struct ctl_table_header *register_sysctl_paths (const struct ctl_path *path, struct ctl_table *table)
+.. c:function:: struct ctl_table_header *register_sysctl_paths(const struct ctl_path *path, struct ctl_table *table)
 
     register a sysctl table hierarchy
 
@@ -177,59 +157,49 @@ register_sysctl_paths
     :param struct ctl_table \*table:
         the top-level table structure
 
-
-
 .. _`register_sysctl_paths.description`:
 
 Description
 -----------
 
-Register a sysctl table hierarchy. ``table`` should be a filled in ctl_table
+Register a sysctl table hierarchy. \ ``table``\  should be a filled in ctl_table
 array. A completely 0 filled entry terminates the table.
 
-See __register_sysctl_paths for more details.
-
-
+See \__register_sysctl_paths for more details.
 
 .. _`register_sysctl_table`:
 
 register_sysctl_table
 =====================
 
-.. c:function:: struct ctl_table_header *register_sysctl_table (struct ctl_table *table)
+.. c:function:: struct ctl_table_header *register_sysctl_table(struct ctl_table *table)
 
     register a sysctl table hierarchy
 
     :param struct ctl_table \*table:
         the top-level table structure
 
-
-
 .. _`register_sysctl_table.description`:
 
 Description
 -----------
 
-Register a sysctl table hierarchy. ``table`` should be a filled in ctl_table
+Register a sysctl table hierarchy. \ ``table``\  should be a filled in ctl_table
 array. A completely 0 filled entry terminates the table.
 
 See register_sysctl_paths for more details.
-
-
 
 .. _`unregister_sysctl_table`:
 
 unregister_sysctl_table
 =======================
 
-.. c:function:: void unregister_sysctl_table (struct ctl_table_header *header)
+.. c:function:: void unregister_sysctl_table(struct ctl_table_header *header)
 
     unregister a sysctl table hierarchy
 
     :param struct ctl_table_header \*header:
         the header returned from register_sysctl_table
-
-
 
 .. _`unregister_sysctl_table.description`:
 
@@ -238,4 +208,6 @@ Description
 
 Unregisters the sysctl table and all children. proc entries may not
 actually be removed until they are no longer used by anyone.
+
+.. This file was automatic generated / don't edit.
 

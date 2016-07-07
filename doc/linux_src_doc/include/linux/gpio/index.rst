@@ -7,5 +7,5 @@ gpio
 .. toctree::
    :maxdepth: 1
 
-   driver_h
-   machine_h
+    driver_h
+    machine_h

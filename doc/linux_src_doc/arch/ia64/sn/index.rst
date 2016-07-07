@@ -7,5 +7,5 @@ sn
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
-   pci/index
+    kernel/index
+    pci/index

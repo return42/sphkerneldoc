@@ -7,4 +7,4 @@ sw
 .. toctree::
    :maxdepth: 1
 
-   rdmavt/index
+    rdmavt/index

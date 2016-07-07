@@ -1,0 +1,45 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/meter/ade7754.h
+
+.. _`ade7754_state`:
+
+struct ade7754_state
+====================
+
+.. c:type:: struct ade7754_state
+
+    device instance specific data
+
+.. _`ade7754_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ade7754_state {
+        struct spi_device *us;
+        struct mutex buf_lock;
+        u8 tx[ADE7754_MAX_TX] ____cacheline_aligned;
+        u8 rx[ADE7754_MAX_RX];
+    }
+
+.. _`ade7754_state.members`:
+
+Members
+-------
+
+us
+    actual spi_device
+
+buf_lock
+    mutex to protect tx and rx
+
+tx
+    transmit buffer
+
+rx
+    receive buffer
+
+.. This file was automatic generated / don't edit.
+

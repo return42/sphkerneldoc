@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-sata_sil.c
-==========
-
+.. src-file: drivers/ata/sata_sil.c
 
 .. _`sil_set_mode`:
 
 sil_set_mode
 ============
 
-.. c:function:: int sil_set_mode (struct ata_link *link, struct ata_device **r_failed)
+.. c:function:: int sil_set_mode(struct ata_link *link, struct ata_device **r_failed)
 
     wrap set_mode functions
 
@@ -20,8 +16,6 @@ sil_set_mode
     :param struct ata_device \*\*r_failed:
         returned device when we fail
 
-
-
 .. _`sil_set_mode.description`:
 
 Description
@@ -30,21 +24,17 @@ Description
 Wrap the libata method for device setup as after the setup we need
 to inspect the results and do some configuration work
 
-
-
 .. _`sil_dev_config`:
 
 sil_dev_config
 ==============
 
-.. c:function:: void sil_dev_config (struct ata_device *dev)
+.. c:function:: void sil_dev_config(struct ata_device *dev)
 
     Apply device/host-specific errata fixups
 
     :param struct ata_device \*dev:
         Device to be examined
-
-
 
 .. _`sil_dev_config.description`:
 
@@ -71,7 +61,9 @@ devices/hosts/firmwares that need it.
 The Maxtor quirk is in the blacklist, but I'm keeping the original
 pessimistic fix for the following reasons...
 - There seems to be less info on it, only one device gleaned off the
-Windows        driver, maybe only one is affected.  More info would be greatly
+Windows driver, maybe only one is affected.  More info would be greatly
 appreciated.
 - But then again UDMA5 is hardly anything to complain about
+
+.. This file was automatic generated / don't edit.
 

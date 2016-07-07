@@ -1,0 +1,134 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/iio/frequency/ad9832.h
+
+.. _`ad9832_state`:
+
+struct ad9832_state
+===================
+
+.. c:type:: struct ad9832_state
+
+    driver instance specific data
+
+.. _`ad9832_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad9832_state {
+        struct spi_device *spi;
+        struct regulator *reg;
+        unsigned long mclk;
+        unsigned short ctrl_fp;
+        unsigned short ctrl_ss;
+        unsigned short ctrl_src;
+        struct spi_transfer xfer;
+        struct spi_message msg;
+        struct spi_transfer freq_xfer[4];
+        struct spi_message freq_msg;
+        struct spi_transfer phase_xfer[2];
+        struct spi_message phase_msg;
+        union {unnamed_union};
+    }
+
+.. _`ad9832_state.members`:
+
+Members
+-------
+
+spi
+    spi_device
+
+reg
+    supply regulator
+
+mclk
+    external master clock
+
+ctrl_fp
+    cached frequency/phase control word
+
+ctrl_ss
+    cached sync/selsrc control word
+
+ctrl_src
+    cached sleep/reset/clr word
+
+xfer
+    default spi transfer
+
+msg
+    default spi message
+
+freq_xfer
+    tuning word spi transfer
+
+freq_msg
+    tuning word spi message
+
+phase_xfer
+    tuning word spi transfer
+
+phase_msg
+    tuning word spi message
+
+{unnamed_union}
+    anonymous
+
+
+.. _`ad9832_platform_data`:
+
+struct ad9832_platform_data
+===========================
+
+.. c:type:: struct ad9832_platform_data
+
+    platform specific information
+
+.. _`ad9832_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ad9832_platform_data {
+        unsigned long mclk;
+        unsigned long freq0;
+        unsigned long freq1;
+        unsigned short phase0;
+        unsigned short phase1;
+        unsigned short phase2;
+        unsigned short phase3;
+    }
+
+.. _`ad9832_platform_data.members`:
+
+Members
+-------
+
+mclk
+    master clock in Hz
+
+freq0
+    power up freq0 tuning word in Hz
+
+freq1
+    power up freq1 tuning word in Hz
+
+phase0
+    power up phase0 value [0..4095] correlates with 0..2PI
+
+phase1
+    power up phase1 value [0..4095] correlates with 0..2PI
+
+phase2
+    power up phase2 value [0..4095] correlates with 0..2PI
+
+phase3
+    power up phase3 value [0..4095] correlates with 0..2PI
+
+.. This file was automatic generated / don't edit.
+

@@ -7,7 +7,7 @@ nfc
 .. toctree::
    :maxdepth: 1
 
-   core_c
-   digital_core_c
-   netlink_c
-   nci/index
+    nci/index
+    core_c
+    digital_core_c
+    netlink_c

@@ -7,8 +7,8 @@ i2c
 .. toctree::
    :maxdepth: 1
 
-   i2c-boardinfo_c
-   i2c-core_c
-   i2c-smbus_c
-   busses/index
-   muxes/index
+    busses/index
+    muxes/index
+    i2c-boardinfo_c
+    i2c-core_c
+    i2c-smbus_c

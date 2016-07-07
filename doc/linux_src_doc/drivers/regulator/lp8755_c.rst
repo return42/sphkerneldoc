@@ -1,0 +1,62 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/regulator/lp8755.c
+
+.. _`lp8755_read`:
+
+lp8755_read
+===========
+
+.. c:function:: int lp8755_read(struct lp8755_chip *pchip, unsigned int reg, unsigned int *val)
+
+    read a single register value from lp8755. \ ``pchip``\  : device to read from \ ``reg``\    : register to read from \ ``val``\    : pointer to store read value
+
+    :param struct lp8755_chip \*pchip:
+        *undescribed*
+
+    :param unsigned int reg:
+        *undescribed*
+
+    :param unsigned int \*val:
+        *undescribed*
+
+.. _`lp8755_write`:
+
+lp8755_write
+============
+
+.. c:function:: int lp8755_write(struct lp8755_chip *pchip, unsigned int reg, unsigned int val)
+
+    write a single register value to lp8755. \ ``pchip``\  : device to write to \ ``reg``\    : register to write to \ ``val``\    : value to be written
+
+    :param struct lp8755_chip \*pchip:
+        *undescribed*
+
+    :param unsigned int reg:
+        *undescribed*
+
+    :param unsigned int val:
+        *undescribed*
+
+.. _`lp8755_update_bits`:
+
+lp8755_update_bits
+==================
+
+.. c:function:: int lp8755_update_bits(struct lp8755_chip *pchip, unsigned int reg, unsigned int mask, unsigned int val)
+
+    set the values of bit fields in lp8755 register. \ ``pchip``\  : device to read from \ ``reg``\    : register to update \ ``mask``\   : bitmask to be changed \ ``val``\    : value for bitmask
+
+    :param struct lp8755_chip \*pchip:
+        *undescribed*
+
+    :param unsigned int reg:
+        *undescribed*
+
+    :param unsigned int mask:
+        *undescribed*
+
+    :param unsigned int val:
+        *undescribed*
+
+.. This file was automatic generated / don't edit.
+

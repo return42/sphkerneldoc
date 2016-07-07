@@ -1,28 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-=========
-lib-ptl.c
-=========
-
+.. src-file: drivers/staging/lustre/lnet/lnet/lib-ptl.c
 
 .. _`lnetsetlazyportal`:
 
 LNetSetLazyPortal
 =================
 
-.. c:function:: int LNetSetLazyPortal (int portal)
+.. c:function:: int LNetSetLazyPortal(int portal)
 
     :param int portal:
-
         *undescribed*
-
-
 
 .. _`lnetsetlazyportal.description`:
 
 Description
 -----------
-
 
 This portal attribute only affects incoming PUT requests to the portal,
 and is off by default. By default, if there's no matching MD for an
@@ -49,30 +41,27 @@ shared among all clients.
 \retval 0       On success.
 \retval -EINVAL If \a portal is not a valid index.
 
-
-
 .. _`lnetclearlazyportal`:
 
 LNetClearLazyPortal
 ===================
 
-.. c:function:: int LNetClearLazyPortal (int portal)
+.. c:function:: int LNetClearLazyPortal(int portal)
+
+    if any, will be all dropped when this function returns.
 
     :param int portal:
-
         *undescribed*
-
-
 
 .. _`lnetclearlazyportal.description`:
 
 Description
 -----------
 
-if any, will be all dropped when this function returns.
-
 \param portal Index of the portal to disable the lazy attribute on.
 
 \retval 0       On success.
 \retval -EINVAL If \a portal is not a valid index.
+
+.. This file was automatic generated / don't edit.
 

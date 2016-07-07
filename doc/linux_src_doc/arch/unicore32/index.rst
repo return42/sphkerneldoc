@@ -7,4 +7,4 @@ unicore32
 .. toctree::
    :maxdepth: 1
 
-   kernel/index
+    kernel/index

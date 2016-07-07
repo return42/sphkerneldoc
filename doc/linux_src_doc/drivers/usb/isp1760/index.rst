@@ -7,5 +7,5 @@ isp1760
 .. toctree::
    :maxdepth: 1
 
-   isp1760-udc_c
-   isp1760-udc_h
+    isp1760-udc_c
+    isp1760-udc_h

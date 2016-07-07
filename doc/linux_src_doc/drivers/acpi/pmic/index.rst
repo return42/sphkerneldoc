@@ -7,4 +7,4 @@ pmic
 .. toctree::
    :maxdepth: 1
 
-   intel_pmic_xpower_c
+    intel_pmic_xpower_c

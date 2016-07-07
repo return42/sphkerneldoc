@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==========
-property.c
-==========
-
+.. src-file: drivers/acpi/property.c
 
 .. _`acpi_data_get_property`:
 
 acpi_data_get_property
 ======================
 
-.. c:function:: int acpi_data_get_property (struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_data_get_property(struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI property with given name
 
@@ -24,41 +20,35 @@ acpi_data_get_property
         Expected property type
 
     :param const union acpi_object \*\*obj:
-        Location to store the property value (if not ``NULL``\ )
-
-
+        Location to store the property value (if not \ ``NULL``\ )
 
 .. _`acpi_data_get_property.description`:
 
 Description
 -----------
 
-Look up a property with ``name`` and store a pointer to the resulting ACPI
-object at the location pointed to by ``obj`` if found.
+Look up a property with \ ``name``\  and store a pointer to the resulting ACPI
+object at the location pointed to by \ ``obj``\  if found.
 
 Callers must not attempt to free the returned objects.  These objects will be
-freed by the ACPI core automatically during the removal of ``data``\ .
-
-
+freed by the ACPI core automatically during the removal of \ ``data``\ .
 
 .. _`acpi_data_get_property.return`:
 
 Return
 ------
 
-``0`` if property with ``name`` has been found (success),
-``-EINVAL`` if the arguments are invalid,
-``-EINVAL`` if the property doesn't exist,
-``-EPROTO`` if the property value type doesn't match ``type``\ .
-
-
+\ ``0``\  if property with \ ``name``\  has been found (success),
+\ ``-EINVAL``\  if the arguments are invalid,
+\ ``-EINVAL``\  if the property doesn't exist,
+\ ``-EPROTO``\  if the property value type doesn't match \ ``type``\ .
 
 .. _`acpi_dev_get_property`:
 
 acpi_dev_get_property
 =====================
 
-.. c:function:: int acpi_dev_get_property (struct acpi_device *adev, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_dev_get_property(struct acpi_device *adev, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI property with given name.
 
@@ -72,16 +62,14 @@ acpi_dev_get_property
         Expected property type.
 
     :param const union acpi_object \*\*obj:
-        Location to store the property value (if not ``NULL``\ ).
-
-
+        Location to store the property value (if not \ ``NULL``\ ).
 
 .. _`acpi_node_prop_get`:
 
 acpi_node_prop_get
 ==================
 
-.. c:function:: int acpi_node_prop_get (struct fwnode_handle *fwnode, const char *propname, void **valptr)
+.. c:function:: int acpi_node_prop_get(struct fwnode_handle *fwnode, const char *propname, void **valptr)
 
     return an ACPI property with given name.
 
@@ -92,21 +80,18 @@ acpi_node_prop_get
         Name of the property.
 
     :param void \*\*valptr:
-        Location to store a pointer to the property value (if not ``NULL``\ ).
-
-
+        Location to store a pointer to the property value (if not \ ``NULL``\ ).
 
 .. _`acpi_data_get_property_array`:
 
 acpi_data_get_property_array
 ============================
 
-.. c:function:: int acpi_data_get_property_array (struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
+.. c:function:: int acpi_data_get_property_array(struct acpi_device_data *data, const char *name, acpi_object_type type, const union acpi_object **obj)
 
     return an ACPI array property with given name
 
     :param struct acpi_device_data \*data:
-
         *undescribed*
 
     :param const char \*name:
@@ -118,40 +103,34 @@ acpi_data_get_property_array
     :param const union acpi_object \*\*obj:
         Location to store a pointer to the property value (if not NULL)
 
-
-
 .. _`acpi_data_get_property_array.description`:
 
 Description
 -----------
 
-Look up an array property with ``name`` and store a pointer to the resulting
-ACPI object at the location pointed to by ``obj`` if found.
+Look up an array property with \ ``name``\  and store a pointer to the resulting
+ACPI object at the location pointed to by \ ``obj``\  if found.
 
 Callers must not attempt to free the returned objects.  Those objects will be
-freed by the ACPI core automatically during the removal of ``data``\ .
-
-
+freed by the ACPI core automatically during the removal of \ ``data``\ .
 
 .. _`acpi_data_get_property_array.return`:
 
 Return
 ------
 
-``0`` if array property (package) with ``name`` has been found (success),
-``-EINVAL`` if the arguments are invalid,
-``-EINVAL`` if the property doesn't exist,
-``-EPROTO`` if the property is not a package or the type of its elements
-doesn't match ``type``\ .
-
-
+\ ``0``\  if array property (package) with \ ``name``\  has been found (success),
+\ ``-EINVAL``\  if the arguments are invalid,
+\ ``-EINVAL``\  if the property doesn't exist,
+\ ``-EPROTO``\  if the property is not a package or the type of its elements
+doesn't match \ ``type``\ .
 
 .. _`acpi_data_get_property_reference`:
 
 acpi_data_get_property_reference
 ================================
 
-.. c:function:: int acpi_data_get_property_reference (struct acpi_device_data *data, const char *propname, size_t index, struct acpi_reference_args *args)
+.. c:function:: int acpi_data_get_property_reference(struct acpi_device_data *data, const char *propname, size_t index, struct acpi_reference_args *args)
 
     returns handle to the referenced object
 
@@ -167,38 +146,32 @@ acpi_data_get_property_reference
     :param struct acpi_reference_args \*args:
         Location to store the returned reference with optional arguments
 
-
-
 .. _`acpi_data_get_property_reference.description`:
 
 Description
 -----------
 
-Find property with ``name``\ , verifify that it is a package containing at least
+Find property with \ ``name``\ , verifify that it is a package containing at least
 one object reference and if so, store the ACPI device object pointer to the
-target object in ``args``\ ->adev.  If the reference includes arguments, store
-them in the ``args``\ ->args[] array.
+target object in \ ``args``\ ->adev.  If the reference includes arguments, store
+them in the \ ``args``\ ->args[] array.
 
-If there's more than one reference in the property value package, ``index`` is
+If there's more than one reference in the property value package, \ ``index``\  is
 used to select the one to return.
-
-
 
 .. _`acpi_data_get_property_reference.return`:
 
 Return
 ------
 
-``0`` on success, negative error code on failure.
-
-
+\ ``0``\  on success, negative error code on failure.
 
 .. _`acpi_node_get_property_reference`:
 
 acpi_node_get_property_reference
 ================================
 
-.. c:function:: int acpi_node_get_property_reference (struct fwnode_handle *fwnode, const char *name, size_t index, struct acpi_reference_args *args)
+.. c:function:: int acpi_node_get_property_reference(struct fwnode_handle *fwnode, const char *name, size_t index, struct acpi_reference_args *args)
 
     get a handle to the referenced object.
 
@@ -206,7 +179,6 @@ acpi_node_get_property_reference
         Firmware node to get the property from.
 
     :param const char \*name:
-
         *undescribed*
 
     :param size_t index:
@@ -215,14 +187,12 @@ acpi_node_get_property_reference
     :param struct acpi_reference_args \*args:
         Location to store the returned reference with optional arguments.
 
-
-
 .. _`acpi_node_prop_read`:
 
 acpi_node_prop_read
 ===================
 
-.. c:function:: int acpi_node_prop_read (struct fwnode_handle *fwnode, const char *propname, enum dev_prop_type proptype, void *val, size_t nval)
+.. c:function:: int acpi_node_prop_read(struct fwnode_handle *fwnode, const char *propname, enum dev_prop_type proptype, void *val, size_t nval)
 
     retrieve the value of an ACPI property with given name.
 
@@ -236,30 +206,26 @@ acpi_node_prop_read
         Expected property type.
 
     :param void \*val:
-        Location to store the property value (if not ``NULL``\ ).
+        Location to store the property value (if not \ ``NULL``\ ).
 
     :param size_t nval:
-        Size of the array pointed to by ``val``\ .
-
-
+        Size of the array pointed to by \ ``val``\ .
 
 .. _`acpi_node_prop_read.description`:
 
 Description
 -----------
 
-If ``val`` is ``NULL``\ , return the number of array elements comprising the value
-of the property.  Otherwise, read at most ``nval`` values to the array at the
-location pointed to by ``val``\ .
-
-
+If \ ``val``\  is \ ``NULL``\ , return the number of array elements comprising the value
+of the property.  Otherwise, read at most \ ``nval``\  values to the array at the
+location pointed to by \ ``val``\ .
 
 .. _`acpi_get_next_subnode`:
 
 acpi_get_next_subnode
 =====================
 
-.. c:function:: struct fwnode_handle *acpi_get_next_subnode (struct device *dev, struct fwnode_handle *child)
+.. c:function:: struct fwnode_handle *acpi_get_next_subnode(struct device *dev, struct fwnode_handle *child)
 
     Return the next child node handle for a device.
 
@@ -268,4 +234,6 @@ acpi_get_next_subnode
 
     :param struct fwnode_handle \*child:
         Handle to one of the device's child nodes or a null handle.
+
+.. This file was automatic generated / don't edit.
 

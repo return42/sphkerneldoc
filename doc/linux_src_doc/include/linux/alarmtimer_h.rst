@@ -1,19 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-============
-alarmtimer.h
-============
-
+.. src-file: include/linux/alarmtimer.h
 
 .. _`alarm`:
 
 struct alarm
 ============
 
-.. c:type:: alarm
+.. c:type:: struct alarm
 
     Alarm timer structure
-
 
 .. _`alarm.definition`:
 
@@ -22,30 +17,38 @@ Definition
 
 .. code-block:: c
 
-  struct alarm {
-    struct timerqueue_node node;
-    enum alarmtimer_restart	(* function) (struct alarm *, ktime_t now);
-    enum alarmtimer_type type;
-    void * data;
-  };
-
+    struct alarm {
+        struct timerqueue_node node;
+        struct hrtimer timer;
+        enum alarmtimer_restart (* function) (struct alarm *, ktime_t now);
+        enum alarmtimer_type type;
+        int state;
+        void *data;
+    }
 
 .. _`alarm.members`:
 
 Members
 -------
 
-:``node``:
+node
     timerqueue node for adding to the event list this value
     also includes the expiration time.
 
-:``function``:
+timer
+    *undescribed*
+
+function
     Function pointer to be executed when the timer fires.
 
-:``type``:
+type
     Alarm type (BOOTTIME/REALTIME)
 
-:``data``:
+state
+    *undescribed*
+
+data
     Internal data value.
 
+.. This file was automatic generated / don't edit.
 

@@ -7,4 +7,4 @@ lib
 .. toctree::
    :maxdepth: 1
 
-   irqbypass_c
+    irqbypass_c

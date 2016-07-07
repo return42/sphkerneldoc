@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-========
-rt5659.c
-========
-
+.. src-file: sound/soc/codecs/rt5659.c
 
 .. _`rt5659_headset_detect`:
 
 rt5659_headset_detect
 =====================
 
-.. c:function:: int rt5659_headset_detect (struct snd_soc_codec *codec, int jack_insert)
+.. c:function:: int rt5659_headset_detect(struct snd_soc_codec *codec, int jack_insert)
 
     Detect headset.
 
@@ -19,8 +15,6 @@ rt5659_headset_detect
 
     :param int jack_insert:
         Jack insert or not.
-
-
 
 .. _`rt5659_headset_detect.description`:
 
@@ -31,14 +25,12 @@ Detect whether is headset or not when jack inserted.
 
 Returns detect status.
 
-
-
 .. _`set_dmic_clk`:
 
 set_dmic_clk
 ============
 
-.. c:function:: int set_dmic_clk (struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
+.. c:function:: int set_dmic_clk(struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
 
     Set parameter of dmic.
 
@@ -51,8 +43,6 @@ set_dmic_clk
     :param int event:
         Event id.
 
-
-
 .. _`set_dmic_clk.description`:
 
 Description
@@ -60,4 +50,6 @@ Description
 
 Choose dmic clock between 1MHz and 3MHz.
 It is better for clock to approximate 3MHz.
+
+.. This file was automatic generated / don't edit.
 

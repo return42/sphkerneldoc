@@ -7,4 +7,14 @@ intel
 .. toctree::
    :maxdepth: 1
 
-   i40e/index
+    e1000/index
+    e1000e/index
+    fm10k/index
+    i40e/index
+    i40evf/index
+    igb/index
+    igbvf/index
+    ixgb/index
+    ixgbe/index
+    ixgbevf/index
+    e100_c

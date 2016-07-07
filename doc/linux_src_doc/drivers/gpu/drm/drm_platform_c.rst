@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-==============
-drm_platform.c
-==============
-
+.. src-file: drivers/gpu/drm/drm_platform.c
 
 .. _`drm_platform_init`:
 
 drm_platform_init
 =================
 
-.. c:function:: int drm_platform_init (struct drm_driver *driver, struct platform_device *platform_device)
+.. c:function:: int drm_platform_init(struct drm_driver *driver, struct platform_device *platform_device)
 
     Register a platform device with the DRM subsystem
 
@@ -20,8 +16,6 @@ drm_platform_init
     :param struct platform_device \*platform_device:
         platform device to register
 
-
-
 .. _`drm_platform_init.description`:
 
 Description
@@ -29,19 +23,15 @@ Description
 
 Registers the specified DRM device driver and platform device with the DRM
 subsystem, initializing a drm_device structure and calling the driver's
-.:c:func:`load` function.
-
-
+.\ :c:func:`load`\  function.
 
 .. _`drm_platform_init.note`:
 
 NOTE
 ----
 
-This function is deprecated, please use :c:func:`drm_dev_alloc` and
-:c:func:`drm_dev_register` instead and remove your ->:c:func:`load` callback.
-
-
+This function is deprecated, please use \ :c:func:`drm_dev_alloc`\  and
+\ :c:func:`drm_dev_register`\  instead and remove your ->\ :c:func:`load`\  callback.
 
 .. _`drm_platform_init.return`:
 
@@ -49,4 +39,6 @@ Return
 ------
 
 0 on success or a negative error code on failure.
+
+.. This file was automatic generated / don't edit.
 

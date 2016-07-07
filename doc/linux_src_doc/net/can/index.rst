@@ -7,4 +7,4 @@ can
 .. toctree::
    :maxdepth: 1
 
-   af_can_c
+    af_can_c

@@ -1,16 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
-
-===========
-memweight.c
-===========
-
+.. src-file: lib/memweight.c
 
 .. _`memweight`:
 
 memweight
 =========
 
-.. c:function:: size_t memweight (const void *ptr, size_t bytes)
+.. c:function:: size_t memweight(const void *ptr, size_t bytes)
 
     count the total number of bits set in memory area
 
@@ -19,4 +15,6 @@ memweight
 
     :param size_t bytes:
         the size of the area
+
+.. This file was automatic generated / don't edit.
 

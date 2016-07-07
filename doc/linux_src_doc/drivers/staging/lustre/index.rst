@@ -7,5 +7,6 @@ lustre
 .. toctree::
    :maxdepth: 1
 
-   lnet/index
-   lustre/index
+    include/index
+    lnet/index
+    lustre/index
