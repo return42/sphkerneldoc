@@ -18,26 +18,21 @@ Source code documentation from *autodoc*.
 autodoc
 =======
 
-The *autodoc* script builds reST files from kernel source tree.  To build the
-reST files run:
+.. _`reST linux_src_doc`: https://github.com/return42/sphkerneldoc/tree/master/doc/linux_src_doc
+
+The makefile target ``src2rst`` uses the script ``scripts/autodoc.py`` which
+makes a full scan of the kernel source tree, gather all kernel-doc comments and
+builds a analogous tree (`reST linux_src_doc`_) of reST files with the
+documentation from the source-code comments.
 
 .. code-block:: bash
 
    cd doc
    make src2rst
 
-The makefile target ``src2rst`` uses the script ``./scripts/autodoc.sh`` to
-build the `reST linux_src_doc`_ tree from the source-code comments.
-
-.. hint::
-
-   ``autodoc.sh`` WIP
-
-The documentation is taken from all source files listet in the
-`src_filelist`_. The `reST linux_src_doc`_ files are versioned within this
-reposetory. A rebuild is only required when the linux kernel sources are updated
-to a new release or the `src_filelist`_ is changed. With ``make htmlsrc`` the
-HTML page linked above is build.
+The `reST linux_src_doc`_ files are versioned within this reposetory. A rebuild
+is only required when the linux kernel sources are updated to a new release.
+With ``make src.html`` the HTML page linked above is build.
 
 .. _`cross_references`:
 
@@ -64,6 +59,3 @@ E.g. to refer to a function in the DVB-Frontend, write:
 which will be rendered like this:
 
     lorem :ref:`dtv_get_frontend <linux:dtv_get_frontend>` ipsum
-
-.. _src_filelist: https://github.com/return42/sphkerneldoc/blob/master/scripts/src_filelist
-.. _`reST linux_src_doc`: https://github.com/return42/sphkerneldoc/tree/master/doc/linux_src_doc

@@ -23,20 +23,16 @@ endif
 
 PYTHONPATH := $(abspath $(objtree)/scripts/site-python):$(PYTHONPATH)
 
-REPO_ROOT      := $(abspath ..)
 SCRIPT_FOLDER  := $(objtree)/scripts
-TEMPLATES      := $(objtree)/templates
 CACHE          := $(objtree)/cache
-DOC_FOLDER     := .
-AUTODOC_FOLDER := linux_src_doc
-LINUX_MISC_DOC := linux_misc_doc
+AUTODOC_FOLDER := $(objtree)/doc/linux_src_doc
 DIST           := $(objtree)/dist
 
 # External programs used
 
 SPHINXBUILD    := sphinx-build
 DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
-AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.sh
+AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.py
 
 # sphinx-build setup
 SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
@@ -391,24 +387,27 @@ media2rst: $(srctree)/Documentation/DocBook/media_api.xml
 # autodoc reST
 # ------------
 
-.PHONY: src2rst
+PHONY += src2rst
 src2rst:
 	rm -rf $(AUTODOC_FOLDER)
-	$(AUTODOC_SCRIPT)
+	$(AUTODOC_SCRIPT) $(srctree) $(AUTODOC_FOLDER)
 
 # reST --> HTML
 # -------------
 
-.PHONY: src.html
+PHONY += src.html
 src.html: sphinx-builder
-	$(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b html -d $(CACHE)/doctrees/$(AUTODOC_FOLDER) $(AUTODOC_FOLDER) $(DIST)/$(AUTODOC_FOLDER)
+	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b html\
+		-c .\
+		-d $(CACHE)/doctrees/linux_src_doc \
+		$(AUTODOC_FOLDER) \
+		$(DIST)/linux_src_doc
 
-.PHONY:
-clean-src.html:
-	rm -rf $(DIST)/$(AUTODOC_FOLDER) $(CACHE)/doctrees/$(AUTODOC_FOLDER)
+PHONY += src.clean
+src.clean:
+	rm -rf $(CACHE)/doctrees/linux_src_doc $(DIST)/linux_src_doc
 
 # Declare the contents of the .PHONY variable as phony.  We keep that
 # information in a variable se we can use it in if_changed and friends.
 
 .PHONY: $(PHONY)
-

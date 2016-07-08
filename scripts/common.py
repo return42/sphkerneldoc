@@ -598,7 +598,10 @@ class FSPath(unicode):
 
     def walk(self, topdown=True, onerror=None, followlinks=False):
         for dirpath, dirnames, filenames in os.walk(self, topdown, onerror, followlinks):
-            yield self.__class__(dirpath), dirnames, filenames
+            yield (self.__class__(dirpath)
+                   , [self.__class__(x) for x in dirnames]
+                   , [self.__class__(x) for x in filenames]
+                   )
 
     def reMatchFind(self, name, isFile=True, isDir=True, followlinks=False):
 

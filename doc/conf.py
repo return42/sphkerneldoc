@@ -13,7 +13,9 @@ import os
 from os.path import join as pathjoin
 from os.path import abspath, dirname, splitext, basename, exists
 
-sys.setrecursionlimit(2000)
+# the build of the linux_src_doc needs increation of the recursion limit (a
+# limit of 2000 fails unregular)
+sys.setrecursionlimit(5000)
 
 BASE_FOLDER = []
 for folder in dirname(__file__).split(os.sep):
