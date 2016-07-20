@@ -225,7 +225,8 @@ set_emul_temp
     temperature.
 
 set_trip_temp
-    *undescribed*
+    a pointer to a function that sets the trip temperature on
+    hardware.
 
 .. _`thermal_trip`:
 

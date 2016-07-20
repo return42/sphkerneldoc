@@ -8,3 +8,4 @@ st_sensors
     :maxdepth: 1
 
     st_sensors_i2c_c
+    st_sensors_trigger_c

@@ -49,7 +49,6 @@ drm
     drm_fb_helper_c
     drm_flip_work_c
     drm_fops_c
-    drm_fourcc_c
     drm_gem_c
     drm_gem_cma_helper_c
     drm_info_c
@@ -69,7 +68,6 @@ drm
     drm_prime_c
     drm_probe_helper_c
     drm_rect_c
-    drm_simple_kms_helper_c
     drm_sysfs_c
     drm_vm_c
     drm_vma_manager_c

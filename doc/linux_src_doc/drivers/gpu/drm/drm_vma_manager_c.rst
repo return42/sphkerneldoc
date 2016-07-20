@@ -96,14 +96,11 @@ Example
 
 .. code-block:: c
 
-
-    ::
-
-        drm_vma_offset_lock_lookup(mgr);
-        node = drm_vma_offset_lookup_locked(mgr);
-        if (node)
-            kref_get_unless_zero(container_of(node, sth, entr));
-        drm_vma_offset_unlock_lookup(mgr);
+    drm_vma_offset_lock_lookup(mgr);
+    node = drm_vma_offset_lookup_locked(mgr);
+    if (node)
+        kref_get_unless_zero(container_of(node, sth, entr));
+    drm_vma_offset_unlock_lookup(mgr);
 
 
 .. _`drm_vma_offset_lookup_locked.return`:

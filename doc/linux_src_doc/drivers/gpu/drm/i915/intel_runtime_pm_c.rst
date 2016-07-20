@@ -225,7 +225,7 @@ intel_power_domains_init_hw
         i915 device instance
 
     :param bool resume:
-        Called from resume code paths or not
+        *undescribed*
 
 .. _`intel_power_domains_init_hw.description`:
 

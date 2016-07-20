@@ -23,7 +23,7 @@ Definition
         struct rcu_head rcu;
         struct list_head cb_list;
         spinlock_t *lock;
-        u64 context;
+        unsigned context;
         unsigned seqno;
         unsigned long flags;
         ktime_t timestamp;

@@ -1163,35 +1163,12 @@ This is equivalent to \ :c:func:`gpiod_get`\ , except that when no GPIO was assi
 the requested function it will return NULL. This is convenient for drivers
 that need to handle optional GPIOs.
 
-.. _`gpiod_parse_flags`:
-
-gpiod_parse_flags
-=================
-
-.. c:function:: void gpiod_parse_flags(struct gpio_desc *desc, unsigned long lflags)
-
-    helper function to parse GPIO lookup flags
-
-    :param struct gpio_desc \*desc:
-        gpio to be setup
-
-    :param unsigned long lflags:
-        gpio_lookup_flags - returned from \ :c:func:`of_find_gpio`\  or
-        \ :c:func:`of_get_gpio_hog`\ 
-
-.. _`gpiod_parse_flags.description`:
-
-Description
------------
-
-Set the GPIO descriptor flags based on the given GPIO lookup flags.
-
 .. _`gpiod_configure_flags`:
 
 gpiod_configure_flags
 =====================
 
-.. c:function:: int gpiod_configure_flags(struct gpio_desc *desc, const char *con_id, enum gpiod_flags dflags)
+.. c:function:: int gpiod_configure_flags(struct gpio_desc *desc, const char *con_id, unsigned long lflags, enum gpiod_flags dflags)
 
     helper function to configure a given GPIO
 
@@ -1200,6 +1177,10 @@ gpiod_configure_flags
 
     :param const char \*con_id:
         function within the GPIO consumer
+
+    :param unsigned long lflags:
+        gpio_lookup_flags - returned from \ :c:func:`of_find_gpio`\  or
+        \ :c:func:`of_get_gpio_hog`\ 
 
     :param enum gpiod_flags dflags:
         gpiod_flags - optional GPIO initialization flags

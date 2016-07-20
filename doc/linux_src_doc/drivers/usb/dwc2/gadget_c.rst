@@ -988,7 +988,7 @@ dwc2_hsotg_ep_dequeue
 dwc2_hsotg_ep_sethalt
 =====================
 
-.. c:function:: int dwc2_hsotg_ep_sethalt(struct usb_ep *ep, int value)
+.. c:function:: int dwc2_hsotg_ep_sethalt(struct usb_ep *ep, int value, bool now)
 
     set halt on a given endpoint
 
@@ -997,6 +997,18 @@ dwc2_hsotg_ep_sethalt
 
     :param int value:
         Set or unset the halt.
+
+    :param bool now:
+        If true, stall the endpoint now. Otherwise return -EAGAIN if
+        the endpoint is busy processing requests.
+
+.. _`dwc2_hsotg_ep_sethalt.description`:
+
+Description
+-----------
+
+We need to stall the endpoint immediately if request comes from set_feature
+protocol command handler.
 
 .. _`dwc2_hsotg_ep_sethalt_lock`:
 

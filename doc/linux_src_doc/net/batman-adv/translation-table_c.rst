@@ -962,6 +962,30 @@ Return
 
 the checksum of the local table
 
+.. _`batadv_tt_req_node_release`:
+
+batadv_tt_req_node_release
+==========================
+
+.. c:function:: void batadv_tt_req_node_release(struct kref *ref)
+
+    free tt_req node entry
+
+    :param struct kref \*ref:
+        kref pointer of the tt req_node entry
+
+.. _`batadv_tt_req_node_put`:
+
+batadv_tt_req_node_put
+======================
+
+.. c:function:: void batadv_tt_req_node_put(struct batadv_tt_req_node *tt_req_node)
+
+    decrement the tt_req_node refcounter and possibly release it
+
+    :param struct batadv_tt_req_node \*tt_req_node:
+        tt_req_node to be free'd
+
 .. _`batadv_tt_req_node_new`:
 
 batadv_tt_req_node_new

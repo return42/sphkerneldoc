@@ -329,7 +329,7 @@ unmap_mapping_range
 do_set_pte
 ==========
 
-.. c:function:: void do_set_pte(struct vm_area_struct *vma, unsigned long address, struct page *page, pte_t *pte, bool write, bool anon, bool old)
+.. c:function:: void do_set_pte(struct vm_area_struct *vma, unsigned long address, struct page *page, pte_t *pte, bool write, bool anon)
 
     setup new PTE entry for given page and add reverse page mapping.
 
@@ -350,9 +350,6 @@ do_set_pte
 
     :param bool anon:
         true, if it's anonymous page
-
-    :param bool old:
-        *undescribed*
 
 .. _`do_set_pte.description`:
 

@@ -1191,32 +1191,6 @@ Description
 This procedure append the user data in the fragment part
 of the skb if any page alloc fails user this procedure returns  -ENOMEM
 
-.. _`skb_push_rcsum`:
-
-skb_push_rcsum
-==============
-
-.. c:function:: unsigned char *skb_push_rcsum(struct sk_buff *skb, unsigned len)
-
-    push skb and update receive checksum
-
-    :param struct sk_buff \*skb:
-        buffer to update
-
-    :param unsigned len:
-        length of data pulled
-
-.. _`skb_push_rcsum.description`:
-
-Description
------------
-
-This function performs an skb_push on the packet and updates
-the CHECKSUM_COMPLETE checksum.  It should be used on
-receive path processing instead of skb_push unless you know
-that the checksum difference is zero (e.g., a valid IP header)
-or you are setting ip_summed to CHECKSUM_NONE.
-
 .. _`skb_pull_rcsum`:
 
 skb_pull_rcsum

@@ -60,18 +60,12 @@ enable FBC for the chosen CRTC. If it does, it will set dev_priv->fbc.crtc.
 intel_fbc_enable
 ================
 
-.. c:function:: void intel_fbc_enable(struct intel_crtc *crtc, struct intel_crtc_state *crtc_state, struct intel_plane_state *plane_state)
+.. c:function:: void intel_fbc_enable(struct intel_crtc *crtc)
 
     tries to enable FBC on the CRTC
 
     :param struct intel_crtc \*crtc:
         the CRTC
-
-    :param struct intel_crtc_state \*crtc_state:
-        *undescribed*
-
-    :param struct intel_plane_state \*plane_state:
-        *undescribed*
 
 .. _`intel_fbc_enable.description`:
 

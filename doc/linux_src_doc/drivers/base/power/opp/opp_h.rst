@@ -177,7 +177,7 @@ Definition
         struct device_node *np;
         unsigned long clock_latency_ns_max;
         unsigned int voltage_tolerance_v1;
-        bool shared_opp;
+        enum opp_table_access shared_opp;
         struct dev_pm_opp *suspend_opp;
         unsigned int *supported_hw;
         unsigned int supported_hw_count;

@@ -185,6 +185,7 @@ Definition
         struct work_struct dirty_work;
         struct list_head kernel_fb_list;
         bool delayed_hotplug;
+        bool atomic;
     }
 
 .. _`drm_fb_helper.members`:
@@ -241,6 +242,14 @@ delayed_hotplug
     A hotplug was received while fbdev wasn't in control of the DRM
     device, i.e. another KMS master was active. The output configuration
     needs to be reprobe when fbdev is in control again.
+
+atomic
+
+    Use atomic updates for \ :c:func:`restore_fbdev_mode`\ , etc.  This defaults to
+    true if driver has DRIVER_ATOMIC feature flag, but drivers can
+    override it to true after \ :c:func:`drm_fb_helper_init`\  if they support atomic
+    modeset but do not yet advertise DRIVER_ATOMIC (note that fb-helper
+    does not require ASYNC commits).
 
 .. _`drm_fb_helper.description`:
 

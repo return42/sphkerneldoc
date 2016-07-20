@@ -12,7 +12,6 @@ drm
     drmP_h
     drm_atomic_h
     drm_atomic_helper_h
-    drm_auth_h
     drm_crtc_h
     drm_dp_dual_mode_helper_h
     drm_dp_helper_h
@@ -31,7 +30,6 @@ drm
     drm_modeset_lock_h
     drm_panel_h
     drm_rect_h
-    drm_simple_kms_helper_h
     drm_sysfs_h
     drm_vma_manager_h
     i915_component_h

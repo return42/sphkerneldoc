@@ -48,7 +48,7 @@ ecryptfs_to_hex
         src; must be at least of size (src_size \* 2)
 
     :param char \*src:
-        Buffer to be converted to a hex string respresentation
+        Buffer to be converted to a hex string representation
 
     :param size_t src_size:
         number of bytes to convert
@@ -65,7 +65,7 @@ ecryptfs_from_hex
         size (src_size / 2)
 
     :param char \*src:
-        Buffer to be converted from a hex string respresentation to raw value
+        Buffer to be converted from a hex string representation to raw value
 
     :param int dst_size:
         size of dst buffer, or number of hex characters pairs to convert
@@ -745,7 +745,7 @@ Description
 
 Common entry point for reading file metadata. From here, we could
 retrieve the header information from the header region of the file,
-the xattr region of the file, or some other repostory that is
+the xattr region of the file, or some other repository that is
 stored separately from the file itself. The current implementation
 supports retrieving the metadata information from the file contents
 and from the xattr region.

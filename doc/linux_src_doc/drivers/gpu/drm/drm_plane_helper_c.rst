@@ -6,7 +6,7 @@
 drm_plane_helper_check_update
 =============================
 
-.. c:function:: int drm_plane_helper_check_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_rect *src, struct drm_rect *dest, const struct drm_rect *clip, unsigned int rotation, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool *visible)
+.. c:function:: int drm_plane_helper_check_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_rect *src, struct drm_rect *dest, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool *visible)
 
     Check plane update for validity
 
@@ -27,9 +27,6 @@ drm_plane_helper_check_update
 
     :param const struct drm_rect \*clip:
         integer clipping coordinates
-
-    :param unsigned int rotation:
-        plane rotation
 
     :param int min_scale:
         minimum \ ``src``\ :\ ``dest``\  scaling factor in 16.16 fixed point
@@ -124,12 +121,10 @@ return an error.
 
 Note that we make some assumptions about hardware limitations that may not be
 true for all hardware --
-
-1. Primary plane cannot be repositioned.
-2. Primary plane cannot be scaled.
-3. Primary plane must cover the entire CRTC.
-4. Subpixel positioning is not supported.
-
+1) Primary plane cannot be repositioned.
+2) Primary plane cannot be scaled.
+3) Primary plane must cover the entire CRTC.
+4) Subpixel positioning is not supported.
 Drivers for hardware that don't have these restrictions can provide their
 own implementation rather than using this helper.
 

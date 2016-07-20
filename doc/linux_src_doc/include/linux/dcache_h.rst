@@ -181,5 +181,25 @@ dentry or it may be a lower dentry pinned by the upper.
 
 Normal filesystems should not use this to access their own dentries.
 
+.. _`d_real_inode`:
+
+d_real_inode
+============
+
+.. c:function:: struct inode *d_real_inode(struct dentry *dentry)
+
+    Return the real inode
+
+    :param struct dentry \*dentry:
+        The dentry to query
+
+.. _`d_real_inode.description`:
+
+Description
+-----------
+
+If dentry is on an union/overlay, then return the underlying, real inode.
+Otherwise return \ :c:func:`d_inode`\ .
+
 .. This file was automatic generated / don't edit.
 

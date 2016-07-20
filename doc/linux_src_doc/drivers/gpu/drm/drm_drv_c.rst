@@ -85,50 +85,6 @@ instead to make sure that the device isn't userspace accessible any more
 while teardown is in progress, ensuring that userspace can't access an
 inconsistent state.
 
-.. _`drm_dev_init`:
-
-drm_dev_init
-============
-
-.. c:function:: int drm_dev_init(struct drm_device *dev, struct drm_driver *driver, struct device *parent)
-
-    Initialise new DRM device
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param struct drm_driver \*driver:
-        DRM driver
-
-    :param struct device \*parent:
-        Parent device object
-
-.. _`drm_dev_init.description`:
-
-Description
------------
-
-Initialize a new DRM device. No device registration is done.
-Call \ :c:func:`drm_dev_register`\  to advertice the device to user space and register it
-with other core subsystems. This should be done last in the device
-initialization sequence to make sure userspace can't access an inconsistent
-state.
-
-The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
-\ :c:func:`drm_dev_unref`\  to take and drop further ref-counts.
-
-Note that for purely virtual devices \ ``parent``\  can be NULL.
-
-Drivers that do not want to allocate their own device struct
-embedding struct \ :c:type:`struct drm_device <drm_device>` can call \ :c:func:`drm_dev_alloc`\  instead.
-
-.. _`drm_dev_init.return`:
-
-Return
-------
-
-0 on success, or error code on failure.
-
 .. _`drm_dev_alloc`:
 
 drm_dev_alloc
@@ -159,9 +115,6 @@ The initial ref-count of the object is 1. Use \ :c:func:`drm_dev_ref`\  and
 \ :c:func:`drm_dev_unref`\  to take and drop further ref-counts.
 
 Note that for purely virtual devices \ ``parent``\  can be NULL.
-
-Drivers that wish to subclass or embed struct \ :c:type:`struct drm_device <drm_device>` into their
-own struct should look at using \ :c:func:`drm_dev_init`\  instead.
 
 .. _`drm_dev_alloc.return`:
 
@@ -237,7 +190,11 @@ Description
 
 Register the DRM device \ ``dev``\  with the system, advertise device to user-space
 and start normal device operation. \ ``dev``\  must be allocated via \ :c:func:`drm_dev_alloc`\ 
-previously.
+previously. Right after \ :c:func:`drm_dev_register`\  the driver should call
+\ :c:func:`drm_connector_register_all`\  to register all connectors in sysfs. This is
+a separate call for backward compatibility with drivers still using
+the deprecated ->\ :c:func:`load`\  callback, where connectors are registered from within
+the ->\ :c:func:`load`\  callback.
 
 Never call this twice on any device!
 
@@ -282,6 +239,37 @@ Unregister the DRM device from the system. This does the reverse of
 
 This should be called first in the device teardown code to make sure
 userspace can't access the device instance any more.
+
+.. _`drm_dev_set_unique`:
+
+drm_dev_set_unique
+==================
+
+.. c:function:: int drm_dev_set_unique(struct drm_device *dev, const char *name)
+
+    Set the unique name of a DRM device
+
+    :param struct drm_device \*dev:
+        device of which to set the unique name
+
+    :param const char \*name:
+        unique name
+
+.. _`drm_dev_set_unique.description`:
+
+Description
+-----------
+
+Sets the unique name of a DRM device using the specified string. Drivers
+can use this at driver probe time if the unique name of the devices they
+drive is static.
+
+.. _`drm_dev_set_unique.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
 
 .. This file was automatic generated / don't edit.
 

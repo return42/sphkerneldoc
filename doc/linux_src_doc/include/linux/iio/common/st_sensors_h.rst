@@ -277,6 +277,8 @@ Definition
         unsigned int (* get_irq_data_ready) (struct iio_dev *indio_dev);
         const struct st_sensor_transfer_function *tf;
         struct st_sensor_transfer_buffer tb;
+        bool hw_irq_trigger;
+        s64 hw_timestamp;
     }
 
 .. _`st_sensor_data.members`:
@@ -331,6 +333,12 @@ tf
 
 tb
     Transfer buffers and mutex used by I/O operations.
+
+hw_irq_trigger
+    if we're using the hardware interrupt on the sensor.
+
+hw_timestamp
+    Latest timestamp from the interrupt handler, when in use.
 
 .. _`st_sensor_data.num_data_channels`:
 

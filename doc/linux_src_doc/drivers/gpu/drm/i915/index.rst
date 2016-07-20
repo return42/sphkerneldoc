@@ -7,7 +7,6 @@ i915
 .. toctree::
     :maxdepth: 1
 
-    gvt/index
     dvo_ivch_c
     i915_cmd_parser_c
     i915_debugfs_c
@@ -21,7 +20,6 @@ i915
     i915_gem_execbuffer_c
     i915_gem_fence_c
     i915_gem_gtt_c
-    i915_gem_gtt_h
     i915_gem_shrinker_c
     i915_gem_tiling_c
     i915_gem_userptr_c
@@ -48,7 +46,6 @@ i915
     intel_frontbuffer_c
     intel_guc_fwif_h
     intel_guc_loader_c
-    intel_gvt_c
     intel_hotplug_c
     intel_i2c_c
     intel_lrc_c

@@ -694,11 +694,6 @@ best_encoder
     inspect dynamic configuration state should instead use
     \ ``atomic_best_encoder``\ .
 
-    You can leave this function to NULL if the connector is only
-    attached to a single encoder and you are using the atomic helpers.
-    In this case, the core will call \ :c:func:`drm_atomic_helper_best_encoder`\ 
-    for you.
-
     RETURNS:
 
     Encoder that should be used for the given connector and connector
@@ -712,9 +707,8 @@ atomic_best_encoder
     need to select the best encoder depending upon the desired
     configuration and can't select it statically.
 
-    This function is used by \ :c:func:`drm_atomic_helper_check_modeset`\ .
-    If it is not implemented, the core will fallback to \ ``best_encoder``\ 
-    (or \ :c:func:`drm_atomic_helper_best_encoder`\  if \ ``best_encoder``\  is NULL).
+    This function is used by \ :c:func:`drm_atomic_helper_check_modeset`\  and either
+    this or \ ``best_encoder``\  is required.
 
     NOTE:
 
@@ -908,67 +902,6 @@ drm_plane_helper_add
 
     :param const struct drm_plane_helper_funcs \*funcs:
         helper vtable to set for \ ``plane``\ 
-
-.. _`drm_mode_config_helper_funcs`:
-
-struct drm_mode_config_helper_funcs
-===================================
-
-.. c:type:: struct drm_mode_config_helper_funcs
-
-    global modeset helper operations
-
-.. _`drm_mode_config_helper_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_mode_config_helper_funcs {
-        void (* atomic_commit_tail) (struct drm_atomic_state *state);
-    }
-
-.. _`drm_mode_config_helper_funcs.members`:
-
-Members
--------
-
-atomic_commit_tail
-
-    This hook is used by the default \ :c:func:`atomic_commit`\  hook implemented in
-    \ :c:func:`drm_atomic_helper_commit`\  together with the nonblocking commit
-    helpers (see \ :c:func:`drm_atomic_helper_setup_commit`\  for a starting point)
-    to implement blocking and nonblocking commits easily. It is not used
-    by the atomic helpers
-
-    This hook should first commit the given atomic state to the hardware.
-    But drivers can add more waiting calls at the start of their
-    implementation, e.g. to wait for driver-internal request for implicit
-    syncing, before starting to commit the update to the hardware.
-
-    After the atomic update is committed to the hardware this hook needs
-    to call \ :c:func:`drm_atomic_helper_commit_hw_done`\ . Then wait for the upate
-    to be executed by the hardware, for example using
-    \ :c:func:`drm_atomic_helper_wait_for_vblanks`\ , and then clean up the old
-    framebuffers using \ :c:func:`drm_atomic_helper_cleanup_planes`\ .
-
-    When disabling a CRTC this hook \_must\_ stall for the commit to
-    complete. Vblank waits don't work on disabled CRTC, hence the core
-    can't take care of this. And it also can't rely on the vblank event,
-    since that can be signalled already when the screen shows black,
-    which can happen much earlier than the last hardware access needed to
-    shut off the display pipeline completely.
-
-    This hook is optional, the default implementation is
-    \ :c:func:`drm_atomic_helper_commit_tail`\ .
-
-.. _`drm_mode_config_helper_funcs.description`:
-
-Description
------------
-
-These helper functions are used by the atomic helpers.
 
 .. This file was automatic generated / don't edit.
 

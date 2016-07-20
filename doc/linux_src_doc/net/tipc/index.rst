@@ -13,7 +13,6 @@ tipc
     discover_c
     link_c
     msg_c
-    msg_h
     name_distr_c
     name_distr_h
     name_table_c

@@ -1,6 +1,73 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_sysfs.c
 
+.. _`__drm_class_suspend`:
+
+__drm_class_suspend
+===================
+
+.. c:function:: int __drm_class_suspend(struct device *dev, pm_message_t state)
+
+    internal DRM class suspend routine
+
+    :param struct device \*dev:
+        Linux device to suspend
+
+    :param pm_message_t state:
+        power state to enter
+
+.. _`__drm_class_suspend.description`:
+
+Description
+-----------
+
+Just figures out what the actual struct drm_device associated with
+\ ``dev``\  is and calls its suspend hook, if present.
+
+.. _`drm_class_suspend`:
+
+drm_class_suspend
+=================
+
+.. c:function:: int drm_class_suspend(struct device *dev)
+
+    internal DRM class suspend hook. Simply calls \\ :c:func:`__drm_class_suspend`\  with the correct pm state.
+
+    :param struct device \*dev:
+        Linux device to suspend
+
+.. _`drm_class_freeze`:
+
+drm_class_freeze
+================
+
+.. c:function:: int drm_class_freeze(struct device *dev)
+
+    internal DRM class freeze hook. Simply calls \\ :c:func:`__drm_class_suspend`\  with the correct pm state.
+
+    :param struct device \*dev:
+        Linux device to freeze
+
+.. _`drm_class_resume`:
+
+drm_class_resume
+================
+
+.. c:function:: int drm_class_resume(struct device *dev)
+
+    DRM class resume hook
+
+    :param struct device \*dev:
+        Linux device to resume
+
+.. _`drm_class_resume.description`:
+
+Description
+-----------
+
+Just figures out what the actual struct drm_device associated with
+\ ``dev``\  is and calls its resume hook, if present.
+
 .. _`drm_sysfs_init`:
 
 drm_sysfs_init

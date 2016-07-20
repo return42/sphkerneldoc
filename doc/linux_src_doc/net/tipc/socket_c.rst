@@ -430,7 +430,7 @@ Multi-threaded: parallel calls with reference to same queues may occur
 tipc_sk_proto_rcv
 =================
 
-.. c:function:: void tipc_sk_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb)
+.. c:function:: void tipc_sk_proto_rcv(struct tipc_sock *tsk, struct sk_buff *skb, struct sk_buff_head *xmitq)
 
     receive a connection mng protocol message
 
@@ -439,6 +439,9 @@ tipc_sk_proto_rcv
 
     :param struct sk_buff \*skb:
         pointer to message buffer.
+
+    :param struct sk_buff_head \*xmitq:
+        *undescribed*
 
 .. _`tipc_sendmsg`:
 
@@ -725,7 +728,7 @@ Returns overload limit according to corresponding message importance
 filter_rcv
 ==========
 
-.. c:function:: bool filter_rcv(struct sock *sk, struct sk_buff *skb)
+.. c:function:: bool filter_rcv(struct sock *sk, struct sk_buff *skb, struct sk_buff_head *xmitq)
 
     validate incoming message
 
@@ -734,6 +737,9 @@ filter_rcv
 
     :param struct sk_buff \*skb:
         pointer to message.
+
+    :param struct sk_buff_head \*xmitq:
+        *undescribed*
 
 .. _`filter_rcv.description`:
 
@@ -776,7 +782,7 @@ Returns 0
 tipc_sk_enqueue
 ===============
 
-.. c:function:: void tipc_sk_enqueue(struct sk_buff_head *inputq, struct sock *sk, u32 dport)
+.. c:function:: void tipc_sk_enqueue(struct sk_buff_head *inputq, struct sock *sk, u32 dport, struct sk_buff_head *xmitq)
 
     extract all buffers with destination 'dport' from inputq and try adding them to socket or backlog queue
 
@@ -788,6 +794,9 @@ tipc_sk_enqueue
 
     :param u32 dport:
         port number for the socket
+
+    :param struct sk_buff_head \*xmitq:
+        *undescribed*
 
 .. _`tipc_sk_enqueue.description`:
 

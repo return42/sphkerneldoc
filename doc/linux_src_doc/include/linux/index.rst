@@ -110,7 +110,6 @@ linux
     etherdevice_h
     ethtool_h
     extcon_h
-    fence-array_h
     fence_h
     fixp-arith_h
     freezer_h

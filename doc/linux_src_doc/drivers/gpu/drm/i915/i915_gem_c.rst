@@ -9,13 +9,13 @@ i915_gem_create_ioctl
 .. c:function:: int i915_gem_create_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
     :param struct drm_device \*dev:
-        drm device pointer
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file pointer
+        *undescribed*
 
 .. _`i915_gem_pread_ioctl`:
 
@@ -25,13 +25,13 @@ i915_gem_pread_ioctl
 .. c:function:: int i915_gem_pread_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
     :param struct drm_device \*dev:
-        drm device pointer
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file pointer
+        *undescribed*
 
 .. _`i915_gem_pread_ioctl.description`:
 
@@ -45,21 +45,21 @@ On error, the contents of \*data are undefined.
 i915_gem_gtt_pwrite_fast
 ========================
 
-.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_i915_private *i915, struct drm_i915_gem_object *obj, struct drm_i915_gem_pwrite *args, struct drm_file *file)
+.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_device *dev, struct drm_i915_gem_object *obj, struct drm_i915_gem_pwrite *args, struct drm_file *file)
 
     user into the GTT, uncached.
 
-    :param struct drm_i915_private \*i915:
+    :param struct drm_device \*dev:
         *undescribed*
 
     :param struct drm_i915_gem_object \*obj:
-        i915 gem object
+        *undescribed*
 
     :param struct drm_i915_gem_pwrite \*args:
-        pwrite arguments structure
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file pointer
+        *undescribed*
 
 .. _`i915_gem_pwrite_ioctl`:
 
@@ -69,13 +69,13 @@ i915_gem_pwrite_ioctl
 .. c:function:: int i915_gem_pwrite_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
     :param struct drm_device \*dev:
-        drm device
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file
+        *undescribed*
 
 .. _`i915_gem_pwrite_ioctl.description`:
 
@@ -103,7 +103,7 @@ __i915_wait_request
         in - how long to wait (NULL forever); out - how much time remaining
 
     :param struct intel_rps_client \*rps:
-        RPS client
+        *undescribed*
 
 .. _`__i915_wait_request.note`:
 
@@ -130,7 +130,7 @@ i915_wait_request
     request and object lists appropriately for that event.
 
     :param struct drm_i915_gem_request \*req:
-        request to wait on
+        *undescribed*
 
 .. _`i915_gem_object_wait_rendering`:
 
@@ -142,10 +142,10 @@ i915_gem_object_wait_rendering
     safe to unbind from the GTT or access from the CPU.
 
     :param struct drm_i915_gem_object \*obj:
-        i915 gem object
+        *undescribed*
 
     :param bool readonly:
-        waiting for read access or write
+        *undescribed*
 
 .. _`i915_gem_set_domain_ioctl`:
 
@@ -157,13 +157,13 @@ i915_gem_set_domain_ioctl
     through the mmap ioctl's mapping or a GTT mapping.
 
     :param struct drm_device \*dev:
-        drm device
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file
+        *undescribed*
 
 .. _`i915_gem_sw_finish_ioctl`:
 
@@ -173,13 +173,13 @@ i915_gem_sw_finish_ioctl
 .. c:function:: int i915_gem_sw_finish_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
     :param struct drm_device \*dev:
-        drm device
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file
+        *undescribed*
 
 .. _`i915_gem_mmap_ioctl`:
 
@@ -188,16 +188,16 @@ i915_gem_mmap_ioctl
 
 .. c:function:: int i915_gem_mmap_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    Maps the contents of an object, returning the address it is mapped to.
+    into.
 
     :param struct drm_device \*dev:
-        drm device
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file
+        *undescribed*
 
 .. _`i915_gem_mmap_ioctl.description`:
 
@@ -289,16 +289,16 @@ i915_gem_get_gtt_alignment
     return required GTT alignment for an object
 
     :param struct drm_device \*dev:
-        drm device
+        *undescribed*
 
     :param uint32_t size:
-        object size
+        *undescribed*
 
     :param int tiling_mode:
-        tiling mode
+        *undescribed*
 
     :param bool fenced:
-        is fenced alignemned required or not
+        *undescribed*
 
 .. _`i915_gem_get_gtt_alignment.description`:
 
@@ -345,14 +345,14 @@ userspace.
 i915_gem_request_alloc
 ======================
 
-.. c:function:: struct drm_i915_gem_request *i915_gem_request_alloc(struct intel_engine_cs *engine, struct i915_gem_context *ctx)
+.. c:function:: struct drm_i915_gem_request *i915_gem_request_alloc(struct intel_engine_cs *engine, struct intel_context *ctx)
 
     allocate a request structure
 
     :param struct intel_engine_cs \*engine:
         engine that we wish to issue the request on.
 
-    :param struct i915_gem_context \*ctx:
+    :param struct intel_context \*ctx:
         context that the request will be associated with.
         This can be NULL if the request is not directly related to
         any specific user context, in which case this function will
@@ -374,7 +374,7 @@ i915_gem_retire_requests_ring
 .. c:function:: void i915_gem_retire_requests_ring(struct intel_engine_cs *engine)
 
     :param struct intel_engine_cs \*engine:
-        engine to retire requests on
+        *undescribed*
 
 .. _`i915_gem_object_flush_active`:
 
@@ -386,7 +386,7 @@ i915_gem_object_flush_active
     busy by flushing any required write domains, emitting any outstanding lazy request and retiring and completed requests.
 
     :param struct drm_i915_gem_object \*obj:
-        object to flush
+        *undescribed*
 
 .. _`i915_gem_wait_ioctl`:
 
@@ -398,13 +398,13 @@ i915_gem_wait_ioctl
     implements DRM_IOCTL_I915_GEM_WAIT
 
     :param struct drm_device \*dev:
-        drm device pointer
+        *undescribed*
 
     :param void \*data:
-        ioctl data blob
+        *undescribed*
 
     :param struct drm_file \*file:
-        drm file pointer
+        *undescribed*
 
 .. _`i915_gem_wait_ioctl.description`:
 
@@ -490,19 +490,19 @@ i915_gem_object_bind_to_vm
     there.
 
     :param struct drm_i915_gem_object \*obj:
-        object to bind
+        *undescribed*
 
     :param struct i915_address_space \*vm:
-        address space to bind into
+        *undescribed*
 
     :param const struct i915_ggtt_view \*ggtt_view:
-        global gtt view if applicable
+        *undescribed*
 
     :param unsigned alignment:
-        requested alignment
+        *undescribed*
 
     :param uint64_t flags:
-        mask of PIN\_\* flags to use
+        *undescribed*
 
 .. _`i915_gem_object_set_to_gtt_domain`:
 
@@ -512,10 +512,10 @@ i915_gem_object_set_to_gtt_domain
 .. c:function:: int i915_gem_object_set_to_gtt_domain(struct drm_i915_gem_object *obj, bool write)
 
     :param struct drm_i915_gem_object \*obj:
-        object to act on
+        *undescribed*
 
     :param bool write:
-        ask for write access or read only
+        *undescribed*
 
 .. _`i915_gem_object_set_to_gtt_domain.description`:
 
@@ -535,10 +535,10 @@ i915_gem_object_set_cache_level
     level of an object across all VMA.
 
     :param struct drm_i915_gem_object \*obj:
-        object to act on
+        *undescribed*
 
     :param enum i915_cache_level cache_level:
-        new cache level to set for the object
+        *undescribed*
 
 .. _`i915_gem_object_set_cache_level.description`:
 
@@ -563,10 +563,10 @@ i915_gem_object_set_to_cpu_domain
 .. c:function:: int i915_gem_object_set_to_cpu_domain(struct drm_i915_gem_object *obj, bool write)
 
     :param struct drm_i915_gem_object \*obj:
-        object to act on
+        *undescribed*
 
     :param bool write:
-        requesting write or read-only access
+        *undescribed*
 
 .. _`i915_gem_object_set_to_cpu_domain.description`:
 

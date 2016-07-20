@@ -6,7 +6,7 @@
 fence_context_alloc
 ===================
 
-.. c:function:: u64 fence_context_alloc(unsigned num)
+.. c:function:: unsigned fence_context_alloc(unsigned num)
 
     allocate an array of fence contexts
 
@@ -260,7 +260,7 @@ fence might be freed before return, resulting in undefined behavior.
 fence_init
 ==========
 
-.. c:function:: void fence_init(struct fence *fence, const struct fence_ops *ops, spinlock_t *lock, u64 context, unsigned seqno)
+.. c:function:: void fence_init(struct fence *fence, const struct fence_ops *ops, spinlock_t *lock, unsigned context, unsigned seqno)
 
     Initialize a custom fence.
 
@@ -273,7 +273,7 @@ fence_init
     :param spinlock_t \*lock:
         [in]    the irqsafe spinlock to use for locking this fence
 
-    :param u64 context:
+    :param unsigned context:
         [in]    the execution context this fence is run on
 
     :param unsigned seqno:

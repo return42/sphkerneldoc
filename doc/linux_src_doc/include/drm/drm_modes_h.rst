@@ -467,8 +467,6 @@ Description
 
 The horizontal and vertical timings are defined per the following diagram.
 
-::
-
 
 Active                 Front           Sync           Back
 Region                 Porch                          Porch

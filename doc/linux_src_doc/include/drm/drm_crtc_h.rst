@@ -160,7 +160,7 @@ mode
     current mode timings
 
 mode_blob
-    \ :c:type:`struct drm_property_blob <drm_property_blob>` for \ ``mode``\ 
+    *undescribed*
 
 degamma_lut
     Lookup table for converting framebuffer pixel data
@@ -212,7 +212,7 @@ Definition
         int (* cursor_set) (struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height);
         int (* cursor_set2) (struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height,int32_t hot_x, int32_t hot_y);
         int (* cursor_move) (struct drm_crtc *crtc, int x, int y);
-        int (* gamma_set) (struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t size);
+        void (* gamma_set) (struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t start, uint32_t size);
         void (* destroy) (struct drm_crtc *crtc);
         int (* set_config) (struct drm_mode_set *set);
         int (* page_flip) (struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags);
@@ -221,8 +221,6 @@ Definition
         void (* atomic_destroy_state) (struct drm_crtc *crtc,struct drm_crtc_state *state);
         int (* atomic_set_property) (struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property,uint64_t val);
         int (* atomic_get_property) (struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property,uint64_t *val);
-        int (* late_register) (struct drm_crtc *crtc);
-        void (* early_unregister) (struct drm_crtc *crtc);
     }
 
 .. _`drm_crtc_funcs.members`:
@@ -493,26 +491,6 @@ atomic_get_property
     driver (which should never happen, the core only asks for
     properties attached to this CRTC).
 
-late_register
-
-    This optional hook can be used to register additional userspace
-    interfaces attached to the crtc like debugfs interfaces.
-    It is called late in the driver load sequence from \ :c:func:`drm_dev_register`\ .
-    Everything added from this callback should be unregistered in
-    the early_unregister callback.
-
-    Returns:
-
-    0 on success, or a negative error code on failure.
-
-early_unregister
-
-    This optional hook should be used to unregister the additional
-    userspace interfaces attached to the crtc from
-    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
-    early in the driver unload sequence to disable userspace access
-    before data structures are torndown.
-
 .. _`drm_crtc_funcs.description`:
 
 Description
@@ -552,7 +530,6 @@ Definition
         struct drm_mode_object base;
         struct drm_plane *primary;
         struct drm_plane *cursor;
-        unsigned index;
         int cursor_x;
         int cursor_y;
         bool enabled;
@@ -566,8 +543,6 @@ Definition
         const struct drm_crtc_helper_funcs *helper_private;
         struct drm_object_properties properties;
         struct drm_crtc_state *state;
-        struct list_head commit_list;
-        spinlock_t commit_lock;
         struct drm_modeset_acquire_ctx *acquire_ctx;
     }
 
@@ -586,14 +561,10 @@ head
     list management
 
 name
-    human readable name, can be overwritten by the driver
+    *undescribed*
 
 mutex
-
-    This provides a read lock for the overall crtc state (mode, dpms
-    state, ...) and a write lock for everything which can be update
-    without a full modeset (fb, cursor data, crtc properties ...). Full
-    modeset also need to grab dev->mode_config.connection_mutex.
+    per-CRTC locking
 
 base
     base KMS object for ID tracking etc.
@@ -603,9 +574,6 @@ primary
 
 cursor
     cursor plane for this CRTC
-
-index
-    *undescribed*
 
 cursor_x
     current x position of the cursor, used for universal cursor planes
@@ -644,26 +612,11 @@ properties
     property tracking for this CRTC
 
 state
-
-    Current atomic state for this CRTC.
-
-commit_list
-
-    List of \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>` structures tracking pending commits.
-    Protected by \ ``commit_lock``\ . This list doesn't hold its own full
-    reference, but burrows it from the ongoing commit. Commit entries
-    must be removed from this list once the commit is fully completed,
-    but before it's correspoding \ :c:type:`struct drm_atomic_state <drm_atomic_state>` gets destroyed.
-
-commit_lock
-
-    Spinlock to protect \ ``commit_list``\ .
+    current atomic state for this CRTC
 
 acquire_ctx
-
-    Per-CRTC implicit acquire context used by atomic drivers for legacy
-    IOCTLs, so that atomic drivers can get at the locking acquire
-    context.
+    per-CRTC implicit acquire context used by atomic drivers for
+    legacy IOCTLs
 
 .. _`drm_crtc.description`:
 
@@ -736,8 +689,6 @@ Definition
         void (* force) (struct drm_connector *connector);
         int (* fill_modes) (struct drm_connector *connector, uint32_t max_width, uint32_t max_height);
         int (* set_property) (struct drm_connector *connector, struct drm_property *property,uint64_t val);
-        int (* late_register) (struct drm_connector *connector);
-        void (* early_unregister) (struct drm_connector *connector);
         void (* destroy) (struct drm_connector *connector);
         struct drm_connector_state *(* atomic_duplicate_state) (struct drm_connector *connector);
         void (* atomic_destroy_state) (struct drm_connector *connector,struct drm_connector_state *state);
@@ -841,27 +792,6 @@ set_property
     RETURNS:
 
     0 on success or a negative error code on failure.
-
-late_register
-
-    This optional hook can be used to register additional userspace
-    interfaces attached to the connector, light backlight control, i2c,
-    DP aux or similar interfaces. It is called late in the driver load
-    sequence from \ :c:func:`drm_connector_register`\  when registering all the
-    core drm connector interfaces. Everything added from this callback
-    should be unregistered in the early_unregister callback.
-
-    Returns:
-
-    0 on success, or a negative error code on failure.
-
-early_unregister
-
-    This optional hook should be used to unregister the additional
-    userspace interfaces attached to the connector from
-    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_connector_unregister`\ ,
-    early in the driver unload sequence to disable userspace access
-    before data structures are torndown.
 
 destroy
 
@@ -989,8 +919,6 @@ Definition
     struct drm_encoder_funcs {
         void (* reset) (struct drm_encoder *encoder);
         void (* destroy) (struct drm_encoder *encoder);
-        int (* late_register) (struct drm_encoder *encoder);
-        void (* early_unregister) (struct drm_encoder *encoder);
     }
 
 .. _`drm_encoder_funcs.members`:
@@ -1009,26 +937,6 @@ destroy
     Clean up encoder resources. This is only called at driver unload time
     through \ :c:func:`drm_mode_config_cleanup`\  since an encoder cannot be
     hotplugged in DRM.
-
-late_register
-
-    This optional hook can be used to register additional userspace
-    interfaces attached to the encoder like debugfs interfaces.
-    It is called late in the driver load sequence from \ :c:func:`drm_dev_register`\ .
-    Everything added from this callback should be unregistered in
-    the early_unregister callback.
-
-    Returns:
-
-    0 on success, or a negative error code on failure.
-
-early_unregister
-
-    This optional hook should be used to unregister the additional
-    userspace interfaces attached to the encoder from
-    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
-    early in the driver unload sequence to disable userspace access
-    before data structures are torndown.
 
 .. _`drm_encoder_funcs.description`:
 
@@ -1059,7 +967,6 @@ Definition
         struct drm_mode_object base;
         char *name;
         int encoder_type;
-        unsigned index;
         uint32_t possible_crtcs;
         uint32_t possible_clones;
         struct drm_crtc *crtc;
@@ -1083,13 +990,10 @@ base
     base KMS object
 
 name
-    human readable name, can be overwritten by the driver
+    encoder name
 
 encoder_type
     one of the \ ``DRM_MODE_ENCODER_``\ <foo> types in drm_mode.h
-
-index
-    *undescribed*
 
 possible_crtcs
     bitmask of potential CRTC bindings
@@ -1146,7 +1050,6 @@ Definition
         bool interlace_allowed;
         bool doublescan_allowed;
         bool stereo_allowed;
-        bool registered;
         struct list_head modes;
         enum drm_connector_status status;
         struct list_head probed_modes;
@@ -1207,10 +1110,10 @@ base
     base KMS object
 
 name
-    human readable name, can be overwritten by the driver
+    connector name
 
 connector_id
-    compacted connector id useful indexing arrays
+    *undescribed*
 
 connector_type
     one of the \ ``DRM_MODE_CONNECTOR_``\ <foo> types from drm_mode.h
@@ -1226,9 +1129,6 @@ doublescan_allowed
 
 stereo_allowed
     can this connector handle stereo modes?
-
-registered
-    is this connector exposed (registered) with userspace?
 
 modes
     modes available on this connector (from \ :c:func:`fill_modes`\  + user)
@@ -1252,17 +1152,10 @@ properties
     property tracking for this connector
 
 path_blob_ptr
-
-    DRM blob property data for the DP MST path property.
+    DRM blob property data for the DP MST path property
 
 tile_blob_ptr
-
-    DRM blob property data for the tile property (used mostly by DP MST).
-    This is meant for screens which are driven through separate display
-    pipelines represented by \ :c:type:`struct drm_crtc <drm_crtc>`, which might not be running with
-    genlocked clocks. For tiled panels which are genlocked, like
-    dual-link LVDS or dual-link DSI, the driver should try to not expose
-    the tiling and virtualize both \ :c:type:`struct drm_crtc <drm_crtc>` and \ :c:type:`struct drm_plane <drm_plane>` if needed.
+    *undescribed*
 
 polled
     a \ ``DRM_CONNECTOR_POLL_``\ <foo> value for core driven polling
@@ -1435,7 +1328,7 @@ src_w
     width of visible portion of plane (in 16.16)
 
 rotation
-    rotation of the plane
+    *undescribed*
 
 state
     backpointer to global drm_atomic_state
@@ -1466,8 +1359,6 @@ Definition
         void (* atomic_destroy_state) (struct drm_plane *plane,struct drm_plane_state *state);
         int (* atomic_set_property) (struct drm_plane *plane,struct drm_plane_state *state,struct drm_property *property,uint64_t val);
         int (* atomic_get_property) (struct drm_plane *plane,const struct drm_plane_state *state,struct drm_property *property,uint64_t *val);
-        int (* late_register) (struct drm_plane *plane);
-        void (* early_unregister) (struct drm_plane *plane);
     }
 
 .. _`drm_plane_funcs.members`:
@@ -1635,26 +1526,6 @@ atomic_get_property
     driver (which should never happen, the core only asks for
     properties attached to this plane).
 
-late_register
-
-    This optional hook can be used to register additional userspace
-    interfaces attached to the plane like debugfs interfaces.
-    It is called late in the driver load sequence from \ :c:func:`drm_dev_register`\ .
-    Everything added from this callback should be unregistered in
-    the early_unregister callback.
-
-    Returns:
-
-    0 on success, or a negative error code on failure.
-
-early_unregister
-
-    This optional hook should be used to unregister the additional
-    userspace interfaces attached to the plane from
-    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
-    early in the driver unload sequence to disable userspace access
-    before data structures are torndown.
-
 .. _`drm_plane`:
 
 struct drm_plane
@@ -1687,7 +1558,6 @@ Definition
         const struct drm_plane_funcs *funcs;
         struct drm_object_properties properties;
         enum drm_plane_type type;
-        unsigned index;
         const struct drm_plane_helper_funcs *helper_private;
         struct drm_plane_state *state;
     }
@@ -1704,13 +1574,10 @@ head
     for list management
 
 name
-    human readable name, can be overwritten by the driver
+    *undescribed*
 
 mutex
-
-    Protects modeset plane state, together with the mutex of \ :c:type:`struct drm_crtc <drm_crtc>`
-    this plane is linked to (when active, getting actived or getting
-    disabled).
+    *undescribed*
 
 base
     base mode object
@@ -1746,11 +1613,8 @@ properties
 type
     type of plane (overlay, primary, cursor)
 
-index
-    *undescribed*
-
 helper_private
-    mid-layer private data
+    *undescribed*
 
 state
     current atomic state for this plane
@@ -1937,121 +1801,6 @@ funcs
 driver_private
     pointer to the bridge driver's internal context
 
-.. _`drm_crtc_commit`:
-
-struct drm_crtc_commit
-======================
-
-.. c:type:: struct drm_crtc_commit
-
-    track modeset commits on a CRTC
-
-.. _`drm_crtc_commit.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_crtc_commit {
-        struct drm_crtc *crtc;
-        struct kref ref;
-        struct completion flip_done;
-        struct completion hw_done;
-        struct completion cleanup_done;
-        struct list_head commit_entry;
-        struct drm_pending_vblank_event *event;
-    }
-
-.. _`drm_crtc_commit.members`:
-
-Members
--------
-
-crtc
-
-    DRM CRTC for this commit.
-
-ref
-
-    Reference count for this structure. Needed to allow blocking on
-    completions without the risk of the completion disappearing
-    meanwhile.
-
-flip_done
-
-    Will be signaled when the hardware has flipped to the new set of
-    buffers. Signals at the same time as when the drm event for this
-    commit is sent to userspace, or when an out-fence is singalled. Note
-    that for most hardware, in most cases this happens after \ ``hw_done``\  is
-    signalled.
-
-hw_done
-
-    Will be signalled when all hw register changes for this commit have
-    been written out. Especially when disabling a pipe this can be much
-    later than than \ ``flip_done``\ , since that can signal already when the
-    screen goes black, whereas to fully shut down a pipe more register
-    I/O is required.
-
-    Note that this does not need to include separately reference-counted
-    resources like backing storage buffer pinning, or runtime pm
-    management.
-
-cleanup_done
-
-    Will be signalled after old buffers have been cleaned up by calling
-    \ :c:func:`drm_atomic_helper_cleanup_planes`\ . Since this can only happen after
-    a vblank wait completed it might be a bit later. This completion is
-    useful to throttle updates and avoid hardware updates getting ahead
-    of the buffer cleanup too much.
-
-commit_entry
-
-    Entry on the per-CRTC commit_list. Protected by crtc->commit_lock.
-
-event
-
-    \ :c:type:`struct drm_pending_vblank_event <drm_pending_vblank_event>` pointer to clean up private events.
-
-.. _`drm_crtc_commit.description`:
-
-Description
------------
-
-This structure is used to track pending modeset changes and atomic commit on
-a per-CRTC basis. Since updating the list should never block this structure
-is reference counted to allow waiters to safely wait on an event to complete,
-without holding any locks.
-
-It has 3 different events in total to allow a fine-grained synchronization
-between outstanding updates::
-
-atomic commit thread                    hardware
-
-write new state into hardware   ---->   ...
-signal hw_done
-switch to new state on next
-...                                     v/hblank
-
-wait for buffers to show up             ...
-
-...                                     send completion irq
-irq handler signals flip_done
-cleanup old buffers
-
-signal cleanup_done
-
-wait for flip_done              <----
-clean up atomic state
-
-The important bit to know is that cleanup_done is the terminal event, but the
-ordering between flip_done and hw_done is entirely up to the specific driver
-and modeset state change.
-
-For an implementation of how to use this look at
-\ :c:func:`drm_atomic_helper_setup_commit`\  from the atomic helper library.
-
 .. _`drm_atomic_state`:
 
 struct drm_atomic_state
@@ -2073,12 +1822,14 @@ Definition
         bool allow_modeset:1;
         bool legacy_cursor_update:1;
         bool legacy_set_config:1;
-        struct __drm_planes_state *planes;
-        struct __drm_crtcs_state *crtcs;
+        struct drm_plane **planes;
+        struct drm_plane_state **plane_states;
+        struct drm_crtc **crtcs;
+        struct drm_crtc_state **crtc_states;
         int num_connector;
-        struct __drm_connnectors_state *connectors;
+        struct drm_connector **connectors;
+        struct drm_connector_state **connector_states;
         struct drm_modeset_acquire_ctx *acquire_ctx;
-        struct work_struct commit_work;
     }
 
 .. _`drm_atomic_state.members`:
@@ -2099,24 +1850,28 @@ legacy_set_config
     Disable conflicting encoders instead of failing with -EINVAL.
 
 planes
-    pointer to array of structures with per-plane data
+    pointer to array of plane pointers
+
+plane_states
+    pointer to array of plane states pointers
 
 crtcs
     pointer to array of CRTC pointers
+
+crtc_states
+    pointer to array of CRTC states pointers
 
 num_connector
     size of the \ ``connectors``\  and \ ``connector_states``\  arrays
 
 connectors
-    pointer to array of structures with per-connector data
+    pointer to array of connector pointers
+
+connector_states
+    pointer to array of connector states pointers
 
 acquire_ctx
     acquire context for this atomic modeset state update
-
-commit_work
-
-    Work item which can be used by the driver or helpers to execute the
-    commit without blocking.
 
 .. _`drm_mode_set`:
 
@@ -2547,7 +2302,6 @@ Definition
         bool allow_fb_modifiers;
         uint32_t cursor_width;
         uint32_t cursor_height;
-        struct drm_mode_config_helper_funcs *helper_private;
     }
 
 .. _`drm_mode_config.members`:
@@ -2566,19 +2320,13 @@ acquire_ctx
     legacy IOCTLs
 
 idr_mutex
-
-    Mutex for KMS ID allocation and management. Protects both \ ``crtc_idr``\ 
-    and \ ``tile_idr``\ .
+    mutex for KMS ID allocation and management
 
 crtc_idr
-
-    Main KMS ID tracking object. Use this idr for all IDs, fb, crtc,
-    connector, modes - just makes life easier to have only one.
+    main KMS ID tracking object
 
 tile_idr
-
-    Use this idr for allocating new IDs for tiled sinks like use in some
-    high-res DP MST screens.
+    *undescribed*
 
 fb_lock
     mutex to protect fb state and lists
@@ -2647,7 +2395,7 @@ poll_running
     track polling status for this device
 
 delayed_event
-    track delayed poll uevent deliver for this device
+    *undescribed*
 
 output_poll_work
     delayed work for polling in process context
@@ -2802,17 +2550,13 @@ async_page_flip
     does this device support async flips on the primary plane?
 
 allow_fb_modifiers
-
-    Whether the driver supports fb modifiers in the ADDFB2.1 ioctl call.
+    *undescribed*
 
 cursor_width
     hint to userspace for max cursor width
 
 cursor_height
     hint to userspace for max cursor height
-
-helper_private
-    mid-layer private data
 
 .. _`drm_mode_config.description`:
 
@@ -2873,26 +2617,6 @@ Description
 
 Iterate over all encoders specified by bitmask.
 
-.. _`drm_crtc_index`:
-
-drm_crtc_index
-==============
-
-.. c:function:: unsigned int drm_crtc_index(struct drm_crtc *crtc)
-
-    find the index of a registered CRTC
-
-    :param struct drm_crtc \*crtc:
-        CRTC to find index for
-
-.. _`drm_crtc_index.description`:
-
-Description
------------
-
-Given a registered CRTC, return the index of that CRTC within a DRM
-device's list of CRTCs.
-
 .. _`drm_crtc_mask`:
 
 drm_crtc_mask
@@ -2912,26 +2636,6 @@ Description
 
 Given a registered CRTC, return the mask bit of that CRTC for an
 encoder's possible_crtcs field.
-
-.. _`drm_encoder_index`:
-
-drm_encoder_index
-=================
-
-.. c:function:: unsigned int drm_encoder_index(struct drm_encoder *encoder)
-
-    find the index of a registered encoder
-
-    :param struct drm_encoder \*encoder:
-        encoder to find index for
-
-.. _`drm_encoder_index.description`:
-
-Description
------------
-
-Given a registered encoder, return the index of that encoder within a DRM
-device's list of encoders.
 
 .. _`drm_encoder_crtc_ok`:
 
@@ -2954,26 +2658,6 @@ Description
 -----------
 
 Return false if \ ``encoder``\  can't be driven by \ ``crtc``\ , true otherwise.
-
-.. _`drm_plane_index`:
-
-drm_plane_index
-===============
-
-.. c:function:: unsigned int drm_plane_index(struct drm_plane *plane)
-
-    find the index of a registered plane
-
-    :param struct drm_plane \*plane:
-        plane to find index for
-
-.. _`drm_plane_index.description`:
-
-Description
------------
-
-Given a registered plane, return the index of that plane within a DRM
-device's list of planes.
 
 .. _`drm_connector_lookup`:
 

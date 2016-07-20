@@ -29,7 +29,7 @@ gnet_stats_start_copy_compat
         dumping handle
 
     :param int padattr:
-        *undescribed*
+        padding attribute
 
 .. _`gnet_stats_start_copy_compat.description`:
 
@@ -67,7 +67,7 @@ gnet_stats_start_copy
         dumping handle
 
     :param int padattr:
-        *undescribed*
+        padding attribute
 
 .. _`gnet_stats_start_copy.description`:
 

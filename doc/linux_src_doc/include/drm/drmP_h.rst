@@ -108,6 +108,58 @@ DRM_IOCTL_DEF_DRV
     :param  _flags:
         *undescribed*
 
+.. _`drm_master`:
+
+struct drm_master
+=================
+
+.. c:type:: struct drm_master
+
+    drm master structure
+
+.. _`drm_master.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct drm_master {
+        struct kref refcount;
+        struct drm_minor *minor;
+        char *unique;
+        int unique_len;
+        struct idr magic_map;
+        struct drm_lock_data lock;
+        void *driver_priv;
+    }
+
+.. _`drm_master.members`:
+
+Members
+-------
+
+refcount
+    Refcount for this master object.
+
+minor
+    Link back to minor char device we are master for. Immutable.
+
+unique
+    Unique identifier: e.g. busid. Protected by drm_global_mutex.
+
+unique_len
+    Length of unique field. Protected by drm_global_mutex.
+
+magic_map
+    Map of used authentication tokens. Protected by struct_mutex.
+
+lock
+    DRI lock information.
+
+driver_priv
+    Pointer to driver-private information.
+
 .. _`drm_crtc_vblank_waitqueue`:
 
 drm_crtc_vblank_waitqueue

@@ -36,12 +36,12 @@ Return true if an irq storm was detected on \ ``pin``\ .
 intel_hpd_irq_handler
 =====================
 
-.. c:function:: void intel_hpd_irq_handler(struct drm_i915_private *dev_priv, u32 pin_mask, u32 long_mask)
+.. c:function:: void intel_hpd_irq_handler(struct drm_device *dev, u32 pin_mask, u32 long_mask)
 
     main hotplug irq handler
 
-    :param struct drm_i915_private \*dev_priv:
-        drm_i915_private
+    :param struct drm_device \*dev:
+        drm device
 
     :param u32 pin_mask:
         a mask of hpd pins that have triggered the irq

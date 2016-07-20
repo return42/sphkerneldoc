@@ -162,7 +162,8 @@ Description
 
 This updates the \ ``cpumask``\  with CPUs that are sharing OPPs with \ ``cpu_dev``\ .
 
-Returns -ENODEV if OPP table isn't already present.
+Returns -ENODEV if OPP table isn't already present and -EINVAL if the OPP
+table's status is access-unknown.
 
 .. _`dev_pm_opp_get_sharing_cpus.locking`:
 

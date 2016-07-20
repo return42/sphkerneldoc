@@ -630,28 +630,6 @@ Return
 
 0 on success or a negative error code on failure
 
-.. _`mipi_dsi_set_tear_scanline`:
-
-mipi_dsi_set_tear_scanline
-==========================
-
-.. c:function:: int mipi_dsi_set_tear_scanline(struct mipi_dsi_device *dsi, u16 param)
-
-    turn on the display module's Tearing Effect output signal on the TE signal line when display module reaches line N defined by STS[n:0].
-
-    :param struct mipi_dsi_device \*dsi:
-        DSI peripheral device
-
-    :param u16 param:
-        STS[10:0]
-
-.. _`mipi_dsi_set_tear_scanline.return`:
-
-Return
-------
-
-0 on success or a negative error code on failure
-
 .. _`mipi_dsi_dcs_set_pixel_format`:
 
 mipi_dsi_dcs_set_pixel_format

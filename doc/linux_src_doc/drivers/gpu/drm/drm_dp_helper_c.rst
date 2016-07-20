@@ -182,28 +182,6 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
-.. _`drm_dp_aux_init`:
-
-drm_dp_aux_init
-===============
-
-.. c:function:: void drm_dp_aux_init(struct drm_dp_aux *aux)
-
-    minimally initialise an aux channel
-
-    :param struct drm_dp_aux \*aux:
-        DisplayPort AUX channel
-
-.. _`drm_dp_aux_init.description`:
-
-Description
------------
-
-If you need to use the drm_dp_aux's i2c adapter prior to registering it
-with the outside world, call \ :c:func:`drm_dp_aux_init`\  first. You must still
-call \ :c:func:`drm_dp_aux_register`\  once the connector has been registered to
-allow userspace access to the auxiliary DP channel.
-
 .. _`drm_dp_aux_register`:
 
 drm_dp_aux_register
@@ -220,8 +198,6 @@ drm_dp_aux_register
 
 Description
 -----------
-
-Automatically calls \ :c:func:`drm_dp_aux_init`\  if this hasn't been done yet.
 
 Returns 0 on success or a negative error code on failure.
 

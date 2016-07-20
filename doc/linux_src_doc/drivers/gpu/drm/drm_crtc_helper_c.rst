@@ -395,5 +395,32 @@ functions for the primary plane.
 This is a transitional helper useful for converting drivers to the atomic
 interfaces.
 
+.. _`drm_helper_crtc_enable_color_mgmt`:
+
+drm_helper_crtc_enable_color_mgmt
+=================================
+
+.. c:function:: void drm_helper_crtc_enable_color_mgmt(struct drm_crtc *crtc, int degamma_lut_size, int gamma_lut_size)
+
+    enable color management properties
+
+    :param struct drm_crtc \*crtc:
+        DRM CRTC
+
+    :param int degamma_lut_size:
+        the size of the degamma lut (before CSC)
+
+    :param int gamma_lut_size:
+        the size of the gamma lut (after CSC)
+
+.. _`drm_helper_crtc_enable_color_mgmt.description`:
+
+Description
+-----------
+
+This function lets the driver enable the color correction properties on a
+CRTC. This includes 3 degamma, csc and gamma properties that userspace can
+set and 2 size properties to inform the userspace of the lut sizes.
+
 .. This file was automatic generated / don't edit.
 

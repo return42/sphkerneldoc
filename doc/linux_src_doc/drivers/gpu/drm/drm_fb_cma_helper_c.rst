@@ -11,16 +11,16 @@ drm_fb_cma_create_with_funcs
     helper function for the \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>` ->fb_create callback function
 
     :param struct drm_device \*dev:
-        DRM device
+        *undescribed*
 
     :param struct drm_file \*file_priv:
-        drm file for the ioctl call
+        *undescribed*
 
     :param const struct drm_mode_fb_cmd2 \*mode_cmd:
-        metadata from the userspace fb creation request
+        *undescribed*
 
     :param const struct drm_framebuffer_funcs \*funcs:
-        vtable to be used for the new framebuffer object
+        *undescribed*
 
 .. _`drm_fb_cma_create_with_funcs.description`:
 
@@ -41,13 +41,13 @@ drm_fb_cma_create
     \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>` ->fb_create callback function
 
     :param struct drm_device \*dev:
-        DRM device
+        *undescribed*
 
     :param struct drm_file \*file_priv:
-        drm file for the ioctl call
+        *undescribed*
 
     :param const struct drm_mode_fb_cmd2 \*mode_cmd:
-        metadata from the userspace fb creation request
+        *undescribed*
 
 .. _`drm_fb_cma_create.description`:
 
@@ -92,10 +92,10 @@ drm_fb_cma_debugfs_show
     Helper to list CMA framebuffer objects in debugfs.
 
     :param struct seq_file \*m:
-        output file
+        *undescribed*
 
     :param void \*arg:
-        private data for the callback
+        *undescribed*
 
 .. _`drm_fbdev_cma_init_with_funcs`:
 

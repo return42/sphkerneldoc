@@ -384,6 +384,27 @@ FIXME
 
 when reducing GTT size align new size on power of 2.
 
+.. _`radeon_device_is_virtual`:
+
+radeon_device_is_virtual
+========================
+
+.. c:function:: bool radeon_device_is_virtual( void)
+
+    check if we are running is a virtual environment
+
+    :param  void:
+        no arguments
+
+.. _`radeon_device_is_virtual.description`:
+
+Description
+-----------
+
+Check if the asic has been passed through to a VM (all asics).
+Used at driver startup.
+Returns true if virtual or false if not.
+
 .. _`radeon_card_posted`:
 
 radeon_card_posted

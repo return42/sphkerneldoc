@@ -103,12 +103,12 @@ on the caller to explicitly handle the dev_priv->uncore.lock spinlock.
 gen6_reset_engines
 ==================
 
-.. c:function:: int gen6_reset_engines(struct drm_i915_private *dev_priv, unsigned engine_mask)
+.. c:function:: int gen6_reset_engines(struct drm_device *dev, unsigned engine_mask)
 
     reset individual engines
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device
+    :param struct drm_device \*dev:
+        DRM device
 
     :param unsigned engine_mask:
         mask of \ :c:func:`intel_ring_flag`\  engines or ALL_ENGINES for full reset

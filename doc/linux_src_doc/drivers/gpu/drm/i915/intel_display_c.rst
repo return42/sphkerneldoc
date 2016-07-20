@@ -34,17 +34,17 @@ intel_pipe_will_have_type
 intel_PLL_is_valid
 ==================
 
-.. c:function:: bool intel_PLL_is_valid(struct drm_device *dev, const struct intel_limit *limit, const struct dpll *clock)
+.. c:function:: bool intel_PLL_is_valid(struct drm_device *dev, const intel_limit_t *limit, const intel_clock_t *clock)
 
     the given connectors.
 
     :param struct drm_device \*dev:
         *undescribed*
 
-    :param const struct intel_limit \*limit:
+    :param const intel_limit_t \*limit:
         *undescribed*
 
-    :param const struct dpll \*clock:
+    :param const intel_clock_t \*clock:
         *undescribed*
 
 .. _`i9xx_disable_pll`:
@@ -301,8 +301,8 @@ FIXME
 -----
 
 Atomic modeset support for i915 is not yet complete.  At the moment
-nonblocking commits are only safe for pure plane updates. Everything else
-should work though.
+we can only handle plane-related operations and do not yet support
+nonblocking commit.
 
 RETURNS
 Zero for success or -errno.

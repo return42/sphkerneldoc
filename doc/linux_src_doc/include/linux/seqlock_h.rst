@@ -310,7 +310,7 @@ struct entry \*entry;
 unsigned seq, idx;
 
 do {
-seq = lockless_dereference(latch)->seq;
+seq = raw_read_seqcount_latch(\ :c:type:`latch->seq <latch>`\ );
 
 idx = seq & 0x01;
 entry = data_query(latch->data[idx], ...);

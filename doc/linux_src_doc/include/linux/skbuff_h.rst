@@ -1674,6 +1674,32 @@ After doing a pull on a received packet, you need to call this to
 update the CHECKSUM_COMPLETE checksum, or set ip_summed to
 CHECKSUM_NONE so that it can be recomputed from scratch.
 
+.. _`skb_push_rcsum`:
+
+skb_push_rcsum
+==============
+
+.. c:function:: unsigned char *skb_push_rcsum(struct sk_buff *skb, unsigned int len)
+
+    push skb and update receive checksum
+
+    :param struct sk_buff \*skb:
+        buffer to update
+
+    :param unsigned int len:
+        length of data pulled
+
+.. _`skb_push_rcsum.description`:
+
+Description
+-----------
+
+This function performs an skb_push on the packet and updates
+the CHECKSUM_COMPLETE checksum.  It should be used on
+receive path processing instead of skb_push unless you know
+that the checksum difference is zero (e.g., a valid IP header)
+or you are setting ip_summed to CHECKSUM_NONE.
+
 .. _`pskb_trim_rcsum`:
 
 pskb_trim_rcsum

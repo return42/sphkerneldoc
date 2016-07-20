@@ -1,42 +1,36 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_drv.h
 
-.. _`i915_gem_context`:
+.. _`intel_context`:
 
-struct i915_gem_context
-=======================
+struct intel_context
+====================
 
-.. c:type:: struct i915_gem_context
+.. c:type:: struct intel_context
 
     as the name implies, represents a context.
 
-.. _`i915_gem_context.definition`:
+.. _`intel_context.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct i915_gem_context {
+    struct intel_context {
         struct kref ref;
+        int user_handle;
+        uint8_t remap_slice;
         struct drm_i915_private *i915;
+        int flags;
         struct drm_i915_file_private *file_priv;
-        struct i915_hw_ppgtt *ppgtt;
         struct i915_ctx_hang_stats hang_stats;
-        unsigned long flags;
-        unsigned hw_id;
-        u32 user_handle;
-        #define CONTEXT_NO_ZEROMAP (1<<0)
-        struct intel_context engine[I915_NUM_ENGINES];
-        u32 ring_size;
-        u32 desc_template;
-        struct atomic_notifier_head status_notifier;
-        bool execlists_force_single_submission;
+        struct i915_hw_ppgtt *ppgtt;
+        struct engine[I915_NUM_ENGINES];
         struct list_head link;
-        u8 remap_slice;
     }
 
-.. _`i915_gem_context.members`:
+.. _`intel_context.members`:
 
 Members
 -------
@@ -44,112 +38,40 @@ Members
 ref
     reference count.
 
+user_handle
+    userspace tracking identity for this context.
+
+remap_slice
+    l3 row remapping information.
+
 i915
     *undescribed*
-
-file_priv
-    filp associated with this context (NULL for global default
-    context).
-
-ppgtt
-    virtual memory space used by this context.
-
-hang_stats
-    information about the role of this context in possible GPU
-    hangs.
 
 flags
     context specific flags:
     CONTEXT_NO_ZEROMAP: do not allow mapping things to page 0.
 
-hw_id
-    *undescribed*
+file_priv
+    filp associated with this context (NULL for global default
+    context).
 
-user_handle
-    userspace tracking identity for this context.
+hang_stats
+    information about the role of this context in possible GPU
+    hangs.
 
-ring_size
-    *undescribed*
-
-desc_template
-    *undescribed*
-
-status_notifier
-    *undescribed*
-
-execlists_force_single_submission
-    *undescribed*
+ppgtt
+    virtual memory space used by this context.
 
 link
     link in the global list of contexts.
 
-remap_slice
-    l3 row remapping information.
-
-.. _`i915_gem_context.description`:
+.. _`intel_context.description`:
 
 Description
 -----------
 
 Contexts are memory images used by the hardware to store copies of their
 internal state.
-
-.. _`__sg_next`:
-
-__sg_next
-=========
-
-.. c:function:: struct scatterlist *__sg_next(struct scatterlist *sg)
-
-    return the next scatterlist entry in a list
-
-    :param struct scatterlist \*sg:
-        The current sg entry
-
-.. _`__sg_next.description`:
-
-Description
------------
-
-If the entry is the last, return NULL; otherwise, step to the next
-element in the array (\ ``sg``\ @+1). If that's a chain pointer, follow it;
-otherwise just return the pointer to the current element.
-
-.. _`for_each_sgt_dma`:
-
-for_each_sgt_dma
-================
-
-.. c:function::  for_each_sgt_dma( __dmap,  __iter,  __sgt)
-
-    iterate over the DMA addresses of the given sg_table
-
-    :param  __dmap:
-        DMA address (output)
-
-    :param  __iter:
-        'struct sgt_iter' (iterator state, internal)
-
-    :param  __sgt:
-        sg_table to iterate over (input)
-
-.. _`for_each_sgt_page`:
-
-for_each_sgt_page
-=================
-
-.. c:function::  for_each_sgt_page( __pp,  __iter,  __sgt)
-
-    iterate over the pages of the given sg_table
-
-    :param  __pp:
-        page pointer (output)
-
-    :param  __iter:
-        'struct sgt_iter' (iterator state, internal)
-
-    :param  __sgt:
-        sg_table to iterate over (input)
 
 .. _`i915_gem_object_pin_map`:
 

@@ -44,11 +44,7 @@ afterwards after that change. It is permitted to call this function multiple
 times for the same update, e.g. when the ->atomic_check functions depend upon
 the adjusted dotclock for fifo space allocation and watermark computation.
 
-.. _`drm_atomic_helper_check_modeset.return`:
-
-Return
-------
-
+RETURNS
 Zero for success or -errno
 
 .. _`drm_atomic_helper_check_planes`:
@@ -78,11 +74,7 @@ This does all the plane update related checks using by calling into the
 It also sets crtc_state->planes_changed to indicate that a crtc has
 updated planes.
 
-.. _`drm_atomic_helper_check_planes.return`:
-
-Return
-------
-
+RETURNS
 Zero for success or -errno
 
 .. _`drm_atomic_helper_check`:
@@ -123,11 +115,7 @@ and then \ :c:func:`drm_atomic_helper_check_planes`\ . The assumption is that th
 ->atomic_check functions depend upon an updated adjusted_mode.clock to
 e.g. properly compute watermarks.
 
-.. _`drm_atomic_helper_check.return`:
-
-Return
-------
-
+RETURNS
 Zero for success or -errno
 
 .. _`drm_atomic_helper_update_legacy_modeset_state`:
@@ -302,41 +290,6 @@ crtcs (ie. before cleaning up old framebuffers using
 framebuffers have actually changed to optimize for the legacy cursor and
 plane update use-case.
 
-.. _`drm_atomic_helper_commit_tail`:
-
-drm_atomic_helper_commit_tail
-=============================
-
-.. c:function:: void drm_atomic_helper_commit_tail(struct drm_atomic_state *state)
-
-    commit atomic update to hardware
-
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
-
-.. _`drm_atomic_helper_commit_tail.description`:
-
-Description
------------
-
-This is the default implemenation for the ->\ :c:func:`atomic_commit_tail`\  hook of the
-\ :c:type:`struct drm_mode_config_helper_funcs <drm_mode_config_helper_funcs>` vtable.
-
-Note that the default ordering of how the various stages are called is to
-match the legacy modeset helper library closest. One peculiarity of that is
-that it doesn't mesh well with runtime PM at all.
-
-For drivers supporting runtime PM the recommended sequence is instead ::
-
-drm_atomic_helper_commit_modeset_disables(dev, state);
-
-drm_atomic_helper_commit_modeset_enables(dev, state);
-
-drm_atomic_helper_commit_planes(dev, state, true);
-
-for committing the atomic update to hardware.  See the kerneldoc entries for
-these three functions for more details.
-
 .. _`drm_atomic_helper_commit`:
 
 drm_atomic_helper_commit
@@ -353,7 +306,7 @@ drm_atomic_helper_commit
         the driver state object
 
     :param bool nonblock:
-        whether nonblocking behavior is requested.
+        *undescribed*
 
 .. _`drm_atomic_helper_commit.description`:
 
@@ -361,168 +314,27 @@ Description
 -----------
 
 This function commits a with \ :c:func:`drm_atomic_helper_check`\  pre-validated state
-object. This can still fail when e.g. the framebuffer reservation fails. This
-function implements nonblocking commits, using
-\ :c:func:`drm_atomic_helper_setup_commit`\  and related functions.
+object. This can still fail when e.g. the framebuffer reservation fails. For
+now this doesn't implement nonblocking commits.
 
 Note that right now this function does not support nonblocking commits, hence
-driver writers must implement their own version for now.
+driver writers must implement their own version for now. Also note that the
+default ordering of how the various stages are called is to match the legacy
+modeset helper library closest. One peculiarity of that is that it doesn't
+mesh well with runtime PM at all.
 
-Committing the actual hardware state is done through the
-->\ :c:func:`atomic_commit_tail`\  callback of the \ :c:type:`struct drm_mode_config_helper_funcs <drm_mode_config_helper_funcs>` vtable,
-or it's default implementation \ :c:func:`drm_atomic_helper_commit_tail`\ .
+For drivers supporting runtime PM the recommended sequence is
 
-.. _`drm_atomic_helper_commit.return`:
+drm_atomic_helper_commit_modeset_disables(dev, state);
 
-Return
-------
+drm_atomic_helper_commit_modeset_enables(dev, state);
 
+drm_atomic_helper_commit_planes(dev, state, true);
+
+See the kerneldoc entries for these three functions for more details.
+
+RETURNS
 Zero for success or -errno.
-
-.. _`drm_atomic_helper_setup_commit`:
-
-drm_atomic_helper_setup_commit
-==============================
-
-.. c:function:: int drm_atomic_helper_setup_commit(struct drm_atomic_state *state, bool nonblock)
-
-    setup possibly nonblocking commit
-
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
-
-    :param bool nonblock:
-        whether nonblocking behavior is requested.
-
-.. _`drm_atomic_helper_setup_commit.description`:
-
-Description
------------
-
-This function prepares \ ``state``\  to be used by the atomic helper's support for
-nonblocking commits. Drivers using the nonblocking commit infrastructure
-should always call this function from their ->atomic_commit hook.
-
-To be able to use this support drivers need to use a few more helper
-functions. \ :c:func:`drm_atomic_helper_wait_for_dependencies`\  must be called before
-actually committing the hardware state, and for nonblocking commits this call
-must be placed in the async worker. See also \ :c:func:`drm_atomic_helper_swap_state`\ 
-and it's stall parameter, for when a driver's commit hooks look at the
-->state pointers of struct \ :c:type:`struct drm_crtc <drm_crtc>`, \ :c:type:`struct drm_plane <drm_plane>` or \ :c:type:`struct drm_connector <drm_connector>` directly.
-
-Completion of the hardware commit step must be signalled using
-\ :c:func:`drm_atomic_helper_commit_hw_done`\ . After this step the driver is not allowed
-to read or change any permanent software or hardware modeset state. The only
-exception is state protected by other means than \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>` locks.
-Only the free standing \ ``state``\  with pointers to the old state structures can
-be inspected, e.g. to clean up old buffers using
-\ :c:func:`drm_atomic_helper_cleanup_planes`\ .
-
-At the very end, before cleaning up \ ``state``\  drivers must call
-\ :c:func:`drm_atomic_helper_commit_cleanup_done`\ .
-
-This is all implemented by in \ :c:func:`drm_atomic_helper_commit`\ , giving drivers a
-complete and esay-to-use default implementation of the \ :c:func:`atomic_commit`\  hook.
-
-The tracking of asynchronously executed and still pending commits is done
-using the core structure \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`.
-
-By default there's no need to clean up resources allocated by this function
-
-.. _`drm_atomic_helper_setup_commit.explicitly`:
-
-explicitly
-----------
-
-\ :c:func:`drm_atomic_state_default_clear`\  will take care of that
-automatically.
-
-.. _`drm_atomic_helper_setup_commit.return`:
-
-Return
-------
-
-
-0 on success. -EBUSY when userspace schedules nonblocking commits too fast,
--ENOMEM on allocation failures and -EINTR when a signal is pending.
-
-.. _`drm_atomic_helper_wait_for_dependencies`:
-
-drm_atomic_helper_wait_for_dependencies
-=======================================
-
-.. c:function:: void drm_atomic_helper_wait_for_dependencies(struct drm_atomic_state *state)
-
-    wait for required preceeding commits
-
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
-
-.. _`drm_atomic_helper_wait_for_dependencies.description`:
-
-Description
------------
-
-This function waits for all preceeding commits that touch the same CRTC as
-\ ``state``\  to both be committed to the hardware (as signalled by
-drm_atomic_helper_commit_hw_done) and executed by the hardware (as signalled
-by calling drm_crtc_vblank_send_event on the event member of
-\ :c:type:`struct drm_crtc_state <drm_crtc_state>`).
-
-This is part of the atomic helper support for nonblocking commits, see
-\ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
-
-.. _`drm_atomic_helper_commit_hw_done`:
-
-drm_atomic_helper_commit_hw_done
-================================
-
-.. c:function:: void drm_atomic_helper_commit_hw_done(struct drm_atomic_state *state)
-
-    setup possible nonblocking commit
-
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
-
-.. _`drm_atomic_helper_commit_hw_done.description`:
-
-Description
------------
-
-This function is used to signal completion of the hardware commit step. After
-this step the driver is not allowed to read or change any permanent software
-or hardware modeset state. The only exception is state protected by other
-means than \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>` locks.
-
-Drivers should try to postpone any expensive or delayed cleanup work after
-this function is called.
-
-This is part of the atomic helper support for nonblocking commits, see
-\ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
-
-.. _`drm_atomic_helper_commit_cleanup_done`:
-
-drm_atomic_helper_commit_cleanup_done
-=====================================
-
-.. c:function:: void drm_atomic_helper_commit_cleanup_done(struct drm_atomic_state *state)
-
-    signal completion of commit
-
-    :param struct drm_atomic_state \*state:
-        new modeset state to be committed
-
-.. _`drm_atomic_helper_commit_cleanup_done.description`:
-
-Description
------------
-
-This signals completion of the atomic update \ ``state``\ , including any cleanup
-work. If used, it must be called right before calling
-\ :c:func:`drm_atomic_state_free`\ .
-
-This is part of the atomic helper support for nonblocking commits, see
-\ :c:func:`drm_atomic_helper_setup_commit`\  for an overview.
 
 .. _`drm_atomic_helper_prepare_planes`:
 
@@ -699,15 +511,15 @@ fails at any point after calling \ :c:func:`drm_atomic_helper_prepare_planes`\ .
 drm_atomic_helper_swap_state
 ============================
 
-.. c:function:: void drm_atomic_helper_swap_state(struct drm_atomic_state *state, bool stall)
+.. c:function:: void drm_atomic_helper_swap_state(struct drm_device *dev, struct drm_atomic_state *state)
 
     store atomic state into current sw state
 
+    :param struct drm_device \*dev:
+        DRM device
+
     :param struct drm_atomic_state \*state:
         atomic state
-
-    :param bool stall:
-        stall for proceeding commits
 
 .. _`drm_atomic_helper_swap_state.description`:
 
@@ -733,11 +545,6 @@ With that sequence it fits perfectly into the plane prepare/cleanup sequence:
 
 5. Call \ :c:func:`drm_atomic_helper_cleanup_planes`\  with \ ``state``\ , which since step 3
 contains the old state. Also do any other cleanup required with that state.
-
-\ ``stall``\  must be set when nonblocking commits for this driver directly access
-the ->state pointer of \ :c:type:`struct drm_plane <drm_plane>`, \ :c:type:`struct drm_crtc <drm_crtc>` or \ :c:type:`struct drm_connector <drm_connector>`. With the
-current atomic helpers this is almost always the case, since the helpers
-don't pass the right state structures to the callbacks.
 
 .. _`drm_atomic_helper_update_plane`:
 
@@ -1567,7 +1374,7 @@ subclassed connector state structure.
 drm_atomic_helper_legacy_gamma_set
 ==================================
 
-.. c:function:: int drm_atomic_helper_legacy_gamma_set(struct drm_crtc *crtc, u16 *red, u16 *green, u16 *blue, uint32_t size)
+.. c:function:: void drm_atomic_helper_legacy_gamma_set(struct drm_crtc *crtc, u16 *red, u16 *green, u16 *blue, uint32_t start, uint32_t size)
 
     set the legacy gamma correction table
 
@@ -1582,6 +1389,9 @@ drm_atomic_helper_legacy_gamma_set
 
     :param u16 \*blue:
         green correction table
+
+    :param uint32_t start:
+        *undescribed*
 
     :param uint32_t size:
         size of the tables

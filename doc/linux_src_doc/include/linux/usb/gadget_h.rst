@@ -1249,6 +1249,7 @@ Definition
         struct device_driver driver;
         char *udc_name;
         struct list_head pending;
+        unsigned match_existing_only:1;
     }
 
 .. _`usb_gadget_driver.members`:
@@ -1303,6 +1304,10 @@ udc_name
 
 pending
     UDC core private data used for deferred probe of this driver.
+
+match_existing_only
+    If udc is not found, return an error and don't add this
+    gadget driver to list of pending driver
 
 .. _`usb_gadget_driver.description`:
 

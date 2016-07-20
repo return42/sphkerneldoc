@@ -65,7 +65,7 @@ Definition
         const struct sync_timeline_ops *ops;
         char name[32];
         bool destroyed;
-        u64 context;
+        int context;
         int value;
         struct list_head child_list_head;
         spinlock_t child_list_lock;

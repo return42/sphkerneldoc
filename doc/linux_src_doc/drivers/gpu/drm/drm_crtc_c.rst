@@ -41,6 +41,33 @@ Description
 Note you could abuse this and return something out of bounds, but that
 would be a caller error.  No unscrubbed user data should make it here.
 
+.. _`drm_get_format_name`:
+
+drm_get_format_name
+===================
+
+.. c:function:: const char *drm_get_format_name(uint32_t format)
+
+    return a string for drm fourcc format
+
+    :param uint32_t format:
+        format to compute name of
+
+.. _`drm_get_format_name.description`:
+
+Description
+-----------
+
+Note that the buffer used by this function is globally shared and owned by
+the function itself.
+
+.. _`drm_get_format_name.fixme`:
+
+FIXME
+-----
+
+This isn't really multithreading safe.
+
 .. _`drm_mode_object_get`:
 
 drm_mode_object_get
@@ -380,6 +407,26 @@ This function cleans up \ ``crtc``\  and removes it from the DRM mode setting
 core. Note that the function does \*not\* free the crtc structure itself,
 this is the responsibility of the caller.
 
+.. _`drm_crtc_index`:
+
+drm_crtc_index
+==============
+
+.. c:function:: unsigned int drm_crtc_index(struct drm_crtc *crtc)
+
+    find the index of a registered CRTC
+
+    :param struct drm_crtc \*crtc:
+        CRTC to find index for
+
+.. _`drm_crtc_index.description`:
+
+Description
+-----------
+
+Given a registered CRTC, return the index of that CRTC within a DRM
+device's list of CRTCs.
+
 .. _`drm_display_info_set_bus_formats`:
 
 drm_display_info_set_bus_formats
@@ -548,9 +595,9 @@ Description
 -----------
 
 This function registers all connectors in sysfs and other places so that
-userspace can start to access them. \ :c:func:`drm_connector_register_all`\  is called
-automatically from \ :c:func:`drm_dev_register`\  to complete the device registration,
-if they don't call \ :c:func:`drm_connector_register`\  on each connector individually.
+userspace can start to access them. Drivers can call it after calling
+\ :c:func:`drm_dev_register`\  to complete the device registration, if they don't call
+\ :c:func:`drm_connector_register`\  on each connector individually.
 
 When a device is unplugged and should be removed from userspace access,
 call \ :c:func:`drm_connector_unregister_all`\ , which is the inverse of this
@@ -627,6 +674,26 @@ Return
 ------
 
 Zero on success, error code on failure.
+
+.. _`drm_encoder_index`:
+
+drm_encoder_index
+=================
+
+.. c:function:: unsigned int drm_encoder_index(struct drm_encoder *encoder)
+
+    find the index of a registered encoder
+
+    :param struct drm_encoder \*encoder:
+        encoder to find index for
+
+.. _`drm_encoder_index.description`:
+
+Description
+-----------
+
+Given a registered encoder, return the index of that encoder within a DRM
+device's list of encoders.
 
 .. _`drm_encoder_cleanup`:
 
@@ -763,6 +830,26 @@ Description
 This function cleans up \ ``plane``\  and removes it from the DRM mode setting
 core. Note that the function does \*not\* free the plane structure itself,
 this is the responsibility of the caller.
+
+.. _`drm_plane_index`:
+
+drm_plane_index
+===============
+
+.. c:function:: unsigned int drm_plane_index(struct drm_plane *plane)
+
+    find the index of a registered plane
+
+    :param struct drm_plane \*plane:
+        plane to find index for
+
+.. _`drm_plane_index.description`:
+
+Description
+-----------
+
+Given a registered plane, return the index of that CRTC within a DRM
+device's list of planes.
 
 .. _`drm_plane_from_index`:
 
@@ -2951,6 +3038,163 @@ Return
 
 Zero on success, negative errno on failure.
 
+.. _`drm_fb_get_bpp_depth`:
+
+drm_fb_get_bpp_depth
+====================
+
+.. c:function:: void drm_fb_get_bpp_depth(uint32_t format, unsigned int *depth, int *bpp)
+
+    get the bpp/depth values for format
+
+    :param uint32_t format:
+        pixel format (DRM_FORMAT\_\*)
+
+    :param unsigned int \*depth:
+        storage for the depth value
+
+    :param int \*bpp:
+        storage for the bpp value
+
+.. _`drm_fb_get_bpp_depth.description`:
+
+Description
+-----------
+
+This only supports RGB formats here for compat with code that doesn't use
+pixel formats directly yet.
+
+.. _`drm_format_num_planes`:
+
+drm_format_num_planes
+=====================
+
+.. c:function:: int drm_format_num_planes(uint32_t format)
+
+    get the number of planes for format
+
+    :param uint32_t format:
+        pixel format (DRM_FORMAT\_\*)
+
+.. _`drm_format_num_planes.return`:
+
+Return
+------
+
+The number of planes used by the specified pixel format.
+
+.. _`drm_format_plane_cpp`:
+
+drm_format_plane_cpp
+====================
+
+.. c:function:: int drm_format_plane_cpp(uint32_t format, int plane)
+
+    determine the bytes per pixel value
+
+    :param uint32_t format:
+        pixel format (DRM_FORMAT\_\*)
+
+    :param int plane:
+        plane index
+
+.. _`drm_format_plane_cpp.return`:
+
+Return
+------
+
+The bytes per pixel value for the specified plane.
+
+.. _`drm_format_horz_chroma_subsampling`:
+
+drm_format_horz_chroma_subsampling
+==================================
+
+.. c:function:: int drm_format_horz_chroma_subsampling(uint32_t format)
+
+    get the horizontal chroma subsampling factor
+
+    :param uint32_t format:
+        pixel format (DRM_FORMAT\_\*)
+
+.. _`drm_format_horz_chroma_subsampling.return`:
+
+Return
+------
+
+The horizontal chroma subsampling factor for the
+specified pixel format.
+
+.. _`drm_format_vert_chroma_subsampling`:
+
+drm_format_vert_chroma_subsampling
+==================================
+
+.. c:function:: int drm_format_vert_chroma_subsampling(uint32_t format)
+
+    get the vertical chroma subsampling factor
+
+    :param uint32_t format:
+        pixel format (DRM_FORMAT\_\*)
+
+.. _`drm_format_vert_chroma_subsampling.return`:
+
+Return
+------
+
+The vertical chroma subsampling factor for the
+specified pixel format.
+
+.. _`drm_format_plane_width`:
+
+drm_format_plane_width
+======================
+
+.. c:function:: int drm_format_plane_width(int width, uint32_t format, int plane)
+
+    width of the plane given the first plane
+
+    :param int width:
+        width of the first plane
+
+    :param uint32_t format:
+        pixel format
+
+    :param int plane:
+        plane index
+
+.. _`drm_format_plane_width.return`:
+
+Return
+------
+
+The width of \ ``plane``\ , given that the width of the first plane is \ ``width``\ .
+
+.. _`drm_format_plane_height`:
+
+drm_format_plane_height
+=======================
+
+.. c:function:: int drm_format_plane_height(int height, uint32_t format, int plane)
+
+    height of the plane given the first plane
+
+    :param int height:
+        height of the first plane
+
+    :param uint32_t format:
+        pixel format
+
+    :param int plane:
+        plane index
+
+.. _`drm_format_plane_height.return`:
+
+Return
+------
+
+The height of \ ``plane``\ , given that the height of the first plane is \ ``height``\ .
+
 .. _`drm_rotation_simplify`:
 
 drm_rotation_simplify
@@ -3124,40 +3368,6 @@ Return
 ------
 
 new tile group or error.
-
-.. _`drm_crtc_enable_color_mgmt`:
-
-drm_crtc_enable_color_mgmt
-==========================
-
-.. c:function:: void drm_crtc_enable_color_mgmt(struct drm_crtc *crtc, uint degamma_lut_size, bool has_ctm, uint gamma_lut_size)
-
-    enable color management properties
-
-    :param struct drm_crtc \*crtc:
-        DRM CRTC
-
-    :param uint degamma_lut_size:
-        the size of the degamma lut (before CSC)
-
-    :param bool has_ctm:
-        whether to attach ctm_property for CSC matrix
-
-    :param uint gamma_lut_size:
-        the size of the gamma lut (after CSC)
-
-.. _`drm_crtc_enable_color_mgmt.description`:
-
-Description
------------
-
-This function lets the driver enable the color correction
-properties on a CRTC. This includes 3 degamma, csc and gamma
-properties that userspace can set and 2 size properties to inform
-the userspace of the lut sizes. Each of the properties are
-optional. The gamma and degamma properties are only attached if
-their size is not 0 and ctm_property is only attached if has_ctm is
-true.
 
 .. This file was automatic generated / don't edit.
 

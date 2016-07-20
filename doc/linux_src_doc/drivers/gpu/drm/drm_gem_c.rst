@@ -523,7 +523,7 @@ Description
 -----------
 
 Called after the last reference to the object has been lost.
-Must be called holding \ :c:type:`drm_device->struct_mutex <drm_device>`\ .
+Must be called holding struct\_ mutex
 
 Frees the object
 

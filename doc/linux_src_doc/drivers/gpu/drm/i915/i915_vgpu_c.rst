@@ -6,12 +6,12 @@
 i915_check_vgpu
 ===============
 
-.. c:function:: void i915_check_vgpu(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_check_vgpu(struct drm_device *dev)
 
     detect virtual GPU
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct drm_device \*dev:
+        drm device \*
 
 .. _`i915_check_vgpu.description`:
 
@@ -26,12 +26,12 @@ running on a vGPU.
 intel_vgt_deballoon
 ===================
 
-.. c:function:: void intel_vgt_deballoon(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_vgt_deballoon( void)
 
     deballoon reserved graphics address trunks
 
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+    :param  void:
+        no arguments
 
 .. _`intel_vgt_deballoon.description`:
 
@@ -46,12 +46,12 @@ driver is unloaded or when ballooning fails.
 intel_vgt_balloon
 =================
 
-.. c:function:: int intel_vgt_balloon(struct drm_i915_private *dev_priv)
+.. c:function:: int intel_vgt_balloon(struct drm_device *dev)
 
     balloon out reserved graphics address trunks
 
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+    :param struct drm_device \*dev:
+        drm device
 
 .. _`intel_vgt_balloon.description`:
 
@@ -71,28 +71,28 @@ view, the total size is the same as the physical one, with the start address
 of its graphic space being zero. Yet there are some portions ballooned out(
 the shadow part, which are marked as reserved by drm allocator). From the
 host point of view, the graphic address space is partitioned by multiple
-vGPUs in different VMs. ::
+vGPUs in different VMs.
 
 vGPU1 view         Host view
 0 ------> +-----------+     +-----------+
-^       \|###########\|     \|   vGPU3   \|
-\|       \|###########\|     +-----------+
-\|       \|###########\|     \|   vGPU2   \|
+^       \|///////////\|     \|   vGPU3   \|
+\|       \|///////////\|     +-----------+
+\|       \|///////////\|     \|   vGPU2   \|
 \|       +-----------+     +-----------+
 mappable GM    \| available \| ==> \|   vGPU1   \|
 \|       +-----------+     +-----------+
-\|       \|###########\|     \|           \|
-v       \|###########\|     \|   Host    \|
+\|       \|///////////\|     \|           \|
+v       \|///////////\|     \|   Host    \|
 +=======+===========+     +===========+
-^       \|###########\|     \|   vGPU3   \|
-\|       \|###########\|     +-----------+
-\|       \|###########\|     \|   vGPU2   \|
+^       \|///////////\|     \|   vGPU3   \|
+\|       \|///////////\|     +-----------+
+\|       \|///////////\|     \|   vGPU2   \|
 \|       +-----------+     +-----------+
 unmappable GM    \| available \| ==> \|   vGPU1   \|
 \|       +-----------+     +-----------+
-\|       \|###########\|     \|           \|
-\|       \|###########\|     \|   Host    \|
-v       \|###########\|     \|           \|
+\|       \|///////////\|     \|           \|
+\|       \|///////////\|     \|   Host    \|
+v       \|///////////\|     \|           \|
 total GM size ------> +-----------+     +-----------+
 
 .. _`intel_vgt_balloon.return`:

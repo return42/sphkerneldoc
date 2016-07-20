@@ -63,7 +63,7 @@ ecryptfs_open
 .. c:function:: int ecryptfs_open(struct inode *inode, struct file *file)
 
     :param struct inode \*inode:
-        inode speciying file to open
+        inode specifying file to open
 
     :param struct file \*file:
         Structure to return filled in
@@ -85,7 +85,7 @@ ecryptfs_dir_open
 .. c:function:: int ecryptfs_dir_open(struct inode *inode, struct file *file)
 
     :param struct inode \*inode:
-        inode speciying file to open
+        inode specifying file to open
 
     :param struct file \*file:
         Structure to return filled in

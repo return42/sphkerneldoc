@@ -169,6 +169,13 @@ FUSE_NO_OPEN_SUPPORT
 
 kernel supports zero-message opens
 
+.. _`fuse_async_read.fuse_parallel_dirops`:
+
+FUSE_PARALLEL_DIROPS
+--------------------
+
+allow parallel lookups and readdir
+
 .. _`cuse_unrestricted_ioctl`:
 
 CUSE_UNRESTRICTED_IOCTL

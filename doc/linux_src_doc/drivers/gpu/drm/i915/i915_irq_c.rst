@@ -147,12 +147,12 @@ ibx_display_interrupt_update
 i915_enable_asle_pipestat
 =========================
 
-.. c:function:: void i915_enable_asle_pipestat(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_enable_asle_pipestat(struct drm_device *dev)
 
     enable ASLE pipestat for OpRegion
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct drm_device \*dev:
+        drm device
 
 .. _`ivybridge_parity_work`:
 
@@ -180,12 +180,12 @@ it is likely the same row is more likely to go bad again.
 i915_reset_and_wakeup
 =====================
 
-.. c:function:: void i915_reset_and_wakeup(struct drm_i915_private *dev_priv)
+.. c:function:: void i915_reset_and_wakeup(struct drm_device *dev)
 
     do process context error handling work
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct drm_device \*dev:
+        drm device
 
 .. _`i915_reset_and_wakeup.description`:
 
@@ -200,12 +200,12 @@ was detected.
 i915_handle_error
 =================
 
-.. c:function:: void i915_handle_error(struct drm_i915_private *dev_priv, u32 engine_mask, const char *fmt,  ...)
+.. c:function:: void i915_handle_error(struct drm_device *dev, u32 engine_mask, const char *fmt,  ...)
 
     handle a gpu error
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device private
+    :param struct drm_device \*dev:
+        drm device
 
     :param u32 engine_mask:
         mask representing engines that are hung
@@ -216,7 +216,7 @@ i915_handle_error
         of a ring dump etc.).
 
     :param const char \*fmt:
-        Error message format string
+        *undescribed*
 
     :param ... :
         variable arguments

@@ -223,12 +223,12 @@ GPU turbo limits to i915.
 intel_suspend_gt_powersave
 ==========================
 
-.. c:function:: void intel_suspend_gt_powersave(struct drm_i915_private *dev_priv)
+.. c:function:: void intel_suspend_gt_powersave(struct drm_device *dev)
 
     suspend PM work and helper threads
 
-    :param struct drm_i915_private \*dev_priv:
-        i915 device
+    :param struct drm_device \*dev:
+        drm device
 
 .. _`intel_suspend_gt_powersave.description`:
 

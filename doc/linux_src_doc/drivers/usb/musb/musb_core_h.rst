@@ -53,7 +53,7 @@ Definition
         int (* adjust_channel_params) (struct dma_channel *channel,u16 packet_sz, u8 *mode,dma_addr_t *dma_addr, u32 *len);
         void (* pre_root_reset_end) (struct musb *musb);
         void (* post_root_reset_end) (struct musb *musb);
-        void (* phy_callback) (enum musb_vbus_id_status status);
+        int (* phy_callback) (enum musb_vbus_id_status status);
     }
 
 .. _`musb_platform_ops.members`:

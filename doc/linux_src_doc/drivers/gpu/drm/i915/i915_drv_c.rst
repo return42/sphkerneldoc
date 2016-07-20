@@ -6,12 +6,12 @@
 i915_reset
 ==========
 
-.. c:function:: int i915_reset(struct drm_i915_private *dev_priv)
+.. c:function:: int i915_reset(struct drm_device *dev)
 
     reset chip after a hang
 
-    :param struct drm_i915_private \*dev_priv:
-        *undescribed*
+    :param struct drm_device \*dev:
+        drm device to reset
 
 .. _`i915_reset.description`:
 
