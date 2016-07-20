@@ -2160,16 +2160,18 @@ class Parser(SimpleLog):
         cont = cont.rstrip() # dismiss trailing whitespace
 
         # FIXME: sections with '%CONST' prefix no longer exists
-        #if type_constant.match(name):  # '%CONST' - name of a constant.
-        #    name = type_constant[0]
+        # _type_constant     = RE(r"\%([-_\w]+)")
+        #if _type_constant.match(name):  # '%CONST' - name of a constant.
+        #    name = _type_constant[0]
         #    self.debug("constant section '%(name)s'",  name = name)
         #    if self.ctx.constants.get(name, None):
         #        self.error("duplicate constant definition '%(name)s'"
         #                   , name = name)
         #    self.ctx.constants[name] = cont
 
-        if type_param.match(name):   # '@parameter' - name of a parameter
-            name = type_param[0]
+        _type_param  = RE(r"\@(\w+)")
+        if _type_param.match(name):   # '@parameter' - name of a parameter
+            name = _type_param[0]
             self.debug("parameter definition '%(name)s'", name = name)
             if self.ctx.parameterdescs.get(name, None):
                 self.error("duplicate parameter definition '%(name)s'"
