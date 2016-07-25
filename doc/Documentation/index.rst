@@ -84,6 +84,8 @@ About this POC
 
    poc_sphkerneldoc/why_rest
    poc_sphkerneldoc/dbtools
-   poc_sphkerneldoc/faq
    poc_sphkerneldoc/linux_src_doc
    poc_sphkerneldoc/LICENSE
+
+There is also a :ref:`reST-nano-HOWTO` with additional informations to
+:ref:`xref_faq`.

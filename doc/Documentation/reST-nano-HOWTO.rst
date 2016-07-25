@@ -2,7 +2,7 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. include:: article_refs.txt
 
-.. _reST-nano-HOWTO.rst:
+.. _reST-nano-HOWTO:
 
 ###############
 reST nano HOWTO
@@ -46,6 +46,7 @@ OK, thats all you have to know for the start. You see, a *loose reST article* is
 nothing more than a trival text file, but with *batteries included* ;-) ... see
 :ref:`kernel-doc-extensions`.
 
+.. _xref_faq:
 
 ===================
 reST and sphinx-doc
