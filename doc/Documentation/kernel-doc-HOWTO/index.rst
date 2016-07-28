@@ -36,6 +36,7 @@ on sphinx-doc_ and the DocBook documents will be migrated to reST gradually.
     kernel-doc-syntax
     reST-kernel-doc-mode
     kernel-doc-directive
+    kernel-include-directive
     table-markup
     kernel-doc-components
     vintage-kernel-doc-mode
