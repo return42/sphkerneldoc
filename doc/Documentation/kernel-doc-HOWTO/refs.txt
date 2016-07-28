@@ -14,4 +14,4 @@
 .. _`docutils`: http://docutils.sourceforge.net/docs/index.html
 .. _`docutils FAQ`: http://docutils.sourceforge.net/FAQ.html
 
-.. _`dbtools`: http://return42.github.io/sphkerneldoc/articles/dbtools.html
+.. _`dbxml2rst`: http://return42.github.io/dbxml2rst

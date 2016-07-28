@@ -1,4 +1,5 @@
 .. -*- coding: utf-8; mode: rst -*-
+.. include:: article_refs.txt
 
 .. _xref_migrated_docbock:
 
@@ -7,21 +8,22 @@
 ================================================================================
 
 Welcome to the Linux Kernel's documentation. Here you will find the Linux Kernel
-documentation maintained in (or migrated to) the restructuredText format
+documentation maintained in (or migrated to) the reStructuredText format
 (**reST**). The reST sources which are migrated from the DocBook-XML sources has
-been build with the :ref:`xref_dbtools`.
+been build with the `dbxml2rst`_ toolkit.
 
 .. hint::
 
-   This **my** POC. Not all documented *here* would be a part of the linux
+   This **my** POC. Not all documented *here* would be a part of the Linux
    kernel's documentation. E.g. the kernel-doc-HOWTO is my concept paper and not
-   (yet) a part of linux kernel's doc (:ref:`xref_about_this_poc`).
+   (yet) a part of Linux kernel's doc (:ref:`xref_about_this_poc`).
 
 
 Collection of articles
 =======================
 
-The collection of articles is searchable from the search bar *here*.
+The collection of the following articles is searchable from the search-bar
+*here*.
 
 .. toctree::
    :maxdepth: 1
@@ -33,7 +35,8 @@ The collection of articles is searchable from the search bar *here*.
 References to books
 ===================
 
-Each book is chunked into a small *project*, with its own searchbar.
+Each book is chunked into a small *project*. Each project has it's own
+search-bar.
 
 * `kernel-doc HOWTO <books/kernel-doc-HOWTO/index.html>`_
 * `template book <books/template-book/index.html>`_
@@ -83,7 +86,6 @@ About this POC
    :glob:
 
    poc_sphkerneldoc/why_rest
-   poc_sphkerneldoc/dbtools
    poc_sphkerneldoc/linux_src_doc
    poc_sphkerneldoc/LICENSE
 

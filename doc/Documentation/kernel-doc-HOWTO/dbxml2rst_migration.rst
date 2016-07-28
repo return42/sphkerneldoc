@@ -10,10 +10,10 @@ DocBook-XML to reST migration
 The folder ``Documentation/books_migrated`` is only for shipping the automatic
 migrated DocBook-XML to reST documents.
 
-* The automatic migration is described in `dbtools`_.
+* The automatic migration is described in `dbxml2rst`_.
 
-Take a look at the commit message log, to see on which commit each
-migration was applied.
+Take a look at the commit message log of ``Documentation/books_migrated``, to
+see on which commit each migration was applied.
 
 Review
 ======
@@ -22,10 +22,10 @@ It is recommended to review each automatic migrated document. The migration
 itself is mostly perfect, but there are some other (historical) reasons
 whichever could cause an improper document. Here are some:
 
-* The new document build toolchain is more strict than the old one.
+* The new document build tool-chain is more strict than the old one.
 
-* The old kernel-doc/docproc was/is buggy, e.g. it includs all declarations when
-  only exported (``!E<filename>``) should be included, but in the sorce file are no
+* The old kernel-doc/docproc was/is buggy, e.g. it includes all declarations when
+  only exported (``!E<filename>``) should be included, but in the source file are no
   symbols exported. The ``!Elib/debugobjects.c`` of the ``debugobjects.tmpl`` is
   an example for this. In the past, this *misbehavior* of the docproc has been
   taken as a feature, by the authors :-o
