@@ -309,6 +309,7 @@ quiet_cmd_intro = CLEAN  $@
 	rm -rf $(INDEX_CACHE)/articles   ;\
 	mkdir -p $(INDEX_CACHE)/articles ;\
 	ln -s -t $(INDEX_CACHE)/articles $(addprefix ../$(INDEX_REL),$(INDEX_ARTICLES) article_refs.txt ) ;\
+	ln -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL), article_refs.txt ) ;\
 	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst poc_sphkerneldoc) ;\
 	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../doc/,conf.py) ;\
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2\
