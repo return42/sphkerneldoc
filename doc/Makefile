@@ -1,5 +1,11 @@
 # -*- coding: utf-8; mode: make -*-
 
+# External programs used
+
+SPHINXBUILD    := sphinx-build
+DBTOOLS_SCRIPT := /share/dbxml2rst/linux-db2rst
+AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.py
+
 # We need some generic definitions (do not try to remake the file).
 Kbuild.include: ;
 include Kbuild.include
@@ -27,12 +33,6 @@ SCRIPT_FOLDER  := $(objtree)/scripts
 CACHE          := $(objtree)/cache
 AUTODOC_FOLDER := $(objtree)/doc/linux_src_doc
 DIST           := $(objtree)/dist
-
-# External programs used
-
-SPHINXBUILD    := sphinx-build
-DBTOOLS_SCRIPT := $(SCRIPT_FOLDER)/dbtools
-AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.py
 
 # sphinx-build setup
 SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
@@ -331,7 +331,7 @@ dbxml2rst: media2rst $(DB2RST)
 
 .PHONY:	$(DB2RST)
 $(DB2RST):
-	$(DBTOOLS_SCRIPT) db2rst $(patsubst %.rst, %.tmpl, ${@})
+	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) db2rst $(srctree) $(patsubst %.rst, %.tmpl, ${@})
 
 $(srctree)/Documentation/DocBook/media_api.xml:
 	$(MAKE) -C $(srctree) xmldocs
@@ -339,7 +339,7 @@ $(srctree)/Documentation/DocBook/media_api.xml:
 # the linux_tv book has it's own treatment
 PHONY += media2rst
 media2rst: $(srctree)/Documentation/DocBook/media_api.xml
-	$(DBTOOLS_SCRIPT) media2rst
+	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) media2rst $(srctree)
 
 
 # # reST-book --> (Xe)LaTeX --> PDF
