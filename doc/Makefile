@@ -3,8 +3,8 @@
 # External programs used
 
 SPHINXBUILD    := sphinx-build
-DBTOOLS_SCRIPT := /share/dbxml2rst/linux-db2rst
-AUTODOC_SCRIPT := $(SCRIPT_FOLDER)/autodoc.py
+DBTOOLS_SCRIPT := linux-db2rst
+AUTODOC_SCRIPT := kernel-autodoc --markup kernel-doc
 
 # We need some generic definitions (do not try to remake the file).
 Kbuild.include: ;

@@ -1,7 +1,0 @@
-#!/usr/bin/env bash
-# -*- coding: utf-8; mode: sh -*-
-
-export PATH="$HOME/.local/bin:$PATH"
-
-# where is your linux src-clone?
-LINUX_SRC_TREE="/share/torvalds/linux"

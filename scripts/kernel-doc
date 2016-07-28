@@ -1,5 +1,10 @@
 #!/usr/bin/perl -w
 
+
+# HINT: this script is no longer needed,
+# it exists only for historical reasons.
+
+
 use strict;
 
 ## Copyright (c) 1998 Michael Zucchi, All Rights Reserved        ##

@@ -66,8 +66,8 @@ def loadPrjConfig():
 # ------------------------------------------------------------------------------
 
 # only for debugging:
-sys.path.append(abspath(pathjoin(BASE_FOLDER, "..", 'scripts')))
-import common  # to get the SDK debugger/console
+#sys.path.append(abspath(pathjoin(BASE_FOLDER, "..", 'scripts')))
+#import common  # to get the SDK debugger/console
 
 # If extensions (or modules to document with autodoc) are in another directory,
 # add these directories to sys.path here.
