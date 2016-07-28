@@ -2280,6 +2280,7 @@ Definition
         u8 addr[ETH_ALEN];
         unsigned short vid;
         struct batadv_bla_backbone_gw *backbone_gw;
+        spinlock_t backbone_lock;
         unsigned long lasttime;
         struct hlist_node hash_entry;
         struct rcu_head rcu;
@@ -2299,6 +2300,9 @@ vid
 
 backbone_gw
     pointer to backbone gw claiming this client
+
+backbone_lock
+    lock protecting backbone_gw pointer
 
 lasttime
     last time we heard of claim (locals only)

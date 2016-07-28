@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/core/filter.c
 
-.. _`sk_filter`:
+.. _`sk_filter_trim_cap`:
 
-sk_filter
-=========
+sk_filter_trim_cap
+==================
 
-.. c:function:: int sk_filter(struct sock *sk, struct sk_buff *skb)
+.. c:function:: int sk_filter_trim_cap(struct sock *sk, struct sk_buff *skb, unsigned int cap)
 
     run a packet through a socket filter
 
@@ -16,7 +16,10 @@ sk_filter
     :param struct sk_buff \*skb:
         buffer to filter
 
-.. _`sk_filter.description`:
+    :param unsigned int cap:
+        limit on how short the eBPF program may trim the packet
+
+.. _`sk_filter_trim_cap.description`:
 
 Description
 -----------

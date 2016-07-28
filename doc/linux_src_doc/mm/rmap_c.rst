@@ -99,7 +99,7 @@ returns the number of ptes which referenced the page.
 page_move_anon_rmap
 ===================
 
-.. c:function:: void page_move_anon_rmap(struct page *page, struct vm_area_struct *vma, unsigned long address)
+.. c:function:: void page_move_anon_rmap(struct page *page, struct vm_area_struct *vma)
 
     move a page to our anon_vma
 
@@ -108,9 +108,6 @@ page_move_anon_rmap
 
     :param struct vm_area_struct \*vma:
         the vma the page belongs to
-
-    :param unsigned long address:
-        the user virtual address mapped
 
 .. _`page_move_anon_rmap.description`:
 

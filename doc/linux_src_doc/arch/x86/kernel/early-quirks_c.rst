@@ -26,7 +26,7 @@ Description
 
 Check the vendor & device ID against the early quirks table.
 
-If the device is single function, let \ :c:func:`early_quirks`\  know so we don't
+If the device is single function, let \ :c:func:`early_pci_scan_bus`\  know so we don't
 poke at this device again.
 
 .. This file was automatic generated / don't edit.

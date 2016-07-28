@@ -3084,7 +3084,7 @@ Returns the number of vectors reserved or negative on failure
 i40e_vsi_alloc_q_vector
 =======================
 
-.. c:function:: int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx)
+.. c:function:: int i40e_vsi_alloc_q_vector(struct i40e_vsi *vsi, int v_idx, int cpu)
 
     Allocate memory for a single interrupt vector
 
@@ -3093,6 +3093,9 @@ i40e_vsi_alloc_q_vector
 
     :param int v_idx:
         index of the vector in the vsi struct
+
+    :param int cpu:
+        cpu to be used on affinity_mask
 
 .. _`i40e_vsi_alloc_q_vector.description`:
 

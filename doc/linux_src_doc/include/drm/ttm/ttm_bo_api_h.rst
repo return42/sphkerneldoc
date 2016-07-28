@@ -451,6 +451,31 @@ wait by reserving the buffer.
 Returns -EBUSY if no_wait is true and the buffer is busy.
 Returns -ERESTARTSYS if interrupted by a signal.
 
+.. _`ttm_bo_mem_compat`:
+
+ttm_bo_mem_compat
+=================
+
+.. c:function:: bool ttm_bo_mem_compat(struct ttm_placement *placement, struct ttm_mem_reg *mem, uint32_t *new_flags)
+
+    Check if proposed placement is compatible with a bo
+
+    :param struct ttm_placement \*placement:
+        Return immediately if buffer is busy.
+
+    :param struct ttm_mem_reg \*mem:
+        The struct ttm_mem_reg indicating the region where the bo resides
+
+    :param uint32_t \*new_flags:
+        Describes compatible placement found
+
+.. _`ttm_bo_mem_compat.description`:
+
+Description
+-----------
+
+Returns true if the placement is compatible
+
 .. _`ttm_bo_validate`:
 
 ttm_bo_validate

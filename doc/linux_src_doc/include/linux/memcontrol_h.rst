@@ -19,25 +19,6 @@ mem_cgroup_events
     :param unsigned int nr:
         the number of events to account for
 
-.. _`mem_cgroup_from_id`:
-
-mem_cgroup_from_id
-==================
-
-.. c:function:: struct mem_cgroup *mem_cgroup_from_id(unsigned short id)
-
-    look up a memcg from an id
-
-    :param unsigned short id:
-        the id to look up
-
-.. _`mem_cgroup_from_id.description`:
-
-Description
------------
-
-Caller must hold \ :c:func:`rcu_read_lock`\  and use \ :c:func:`css_tryget`\  as necessary.
-
 .. _`parent_mem_cgroup`:
 
 parent_mem_cgroup

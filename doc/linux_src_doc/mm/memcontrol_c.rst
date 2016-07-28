@@ -407,6 +407,25 @@ ancestors.  Note that this doesn't consider the actual amount of
 available memory in the system.  The caller should further cap
 \*\ ``pheadroom``\  accordingly.
 
+.. _`mem_cgroup_from_id`:
+
+mem_cgroup_from_id
+==================
+
+.. c:function:: struct mem_cgroup *mem_cgroup_from_id(unsigned short id)
+
+    look up a memcg from a memcg id
+
+    :param unsigned short id:
+        the memcg id to look up
+
+.. _`mem_cgroup_from_id.description`:
+
+Description
+-----------
+
+Caller must hold \ :c:func:`rcu_read_lock`\ .
+
 .. _`mem_cgroup_css_reset`:
 
 mem_cgroup_css_reset

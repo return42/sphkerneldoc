@@ -374,6 +374,25 @@ batadv_bla_add_claim
     :param struct batadv_bla_backbone_gw \*backbone_gw:
         the backbone gateway which claims it
 
+.. _`batadv_bla_claim_get_backbone_gw`:
+
+batadv_bla_claim_get_backbone_gw
+================================
+
+.. c:function:: struct batadv_bla_backbone_gw *batadv_bla_claim_get_backbone_gw(struct batadv_bla_claim *claim)
+
+    Get valid reference for backbone_gw of claim
+
+    :param struct batadv_bla_claim \*claim:
+        claim whose backbone_gw should be returned
+
+.. _`batadv_bla_claim_get_backbone_gw.description`:
+
+Description
+-----------
+
+Return: valid reference to claim::backbone_gw
+
 .. _`batadv_bla_del_claim`:
 
 batadv_bla_del_claim

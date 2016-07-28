@@ -148,6 +148,21 @@ depends on the reason
 -ENODATA for bad header, -EBADR for broadcast
 destination or source, and -EREMOTE for non-local (other host) destination.
 
+.. _`batadv_last_bonding_replace`:
+
+batadv_last_bonding_replace
+===========================
+
+.. c:function:: void batadv_last_bonding_replace(struct batadv_orig_node *orig_node, struct batadv_orig_ifinfo *new_candidate)
+
+    Replace last_bonding_candidate of orig_node
+
+    :param struct batadv_orig_node \*orig_node:
+        originator node whose bonding candidates should be replaced
+
+    :param struct batadv_orig_ifinfo \*new_candidate:
+        new bonding candidate or NULL
+
 .. _`batadv_find_router`:
 
 batadv_find_router
