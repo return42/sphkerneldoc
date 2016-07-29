@@ -1,8 +1,11 @@
-Linux Kernel's documentation
+.. -*- coding: utf-8; mode: rst -*-
+================================================================================
+                          Linux Kernel's documentation
+================================================================================
 
-Welcome to the Linux Kernel’s documentation. This is a proof of concept, a
-toolchain to migrate the Kernel’s documentation to the Sphinx-Doc generator.
+Welcome to the Linux Kernel's documentation. Here you will find the Linux Kernel
+documentation maintained in -- or migrated to -- the reStructuredText (**reST**)
+format.
 
-Project documentation is available at:
+        http://return42.github.io/sphkerneldoc/
 
-* http://return42.github.io/sphkerneldoc

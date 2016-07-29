@@ -1,4 +1,3 @@
-
 .. -*- coding: utf-8; mode: rst -*-
 .. include:: article_refs.txt
 
@@ -57,7 +56,7 @@ Here are some handy links about reST_  and the `Sphinx markup constructs`_:
 * reST_ primer, `reST (quickref)`_, `reST (spec)`_
 * `Sphinx markup constructs`_
 * `sphinx domains`_
-* `sphinx cross refences`_
+* `sphinx cross references`_
 * `intersphinx`_, `sphinx.ext.intersphinx`_
 * `sphinx-doc`_, `sphinx-doc FAQ`_
 * `docutils`_, `docutils FAQ`_
@@ -90,7 +89,7 @@ about a extension / superset of the reST markup and a extended docutils
 processer.  `sphinx-doc`_ is a project from the `pocoo`_ team, precisely Georg
 Brandl.  One of these reST extensions is the `sphinx domains`_ to document
 source code (e.g. ``C`` / ``C++``). An other extension to name is the concept of
-`sphinx cross refences`_ and the `intersphinx`_ extension. With this
+`sphinx cross references`_ and the `intersphinx`_ extension. With this
 extension the `sphinx-doc`_ documentation generator genrates links to other
 projects documentation. E.g. refer a content in the documentation of the linux
 source tree with ``:ref:`dtv_get_frontend <linux:dtv_get_frontend>```
@@ -103,7 +102,7 @@ What is required?
 
 Beside sphinx-doc_ a kernel-doc reST customization is required (see below).  The
 customization includes a kernel-doc parser module and an integration into sphinx
-(`src linuxdoc`_).
+(:ref:`LinuxDoc project <linuxdoc:linuxdoc>`).
 
 .. _kernel-doc-extensions:
 
@@ -111,10 +110,11 @@ customization includes a kernel-doc parser module and an integration into sphinx
 kernel-doc reST extensions
 ==========================
 
-The kernel-doc project includes two reST markup extensions:
+The kernel-doc project includes some reST markup extensions:
 
-* the kernel-doc directive :ref:`[ref] <kernel-doc:kernel-doc-directive>` and
+* the kernel-doc directive :ref:`[ref] <kernel-doc:kernel-doc-directive>`
 * the flat-table directive :ref:`[ref] <kernel-doc:rest-flat-table>`
+* the kernel-include directive :ref:`[ref] <kernel-include-directive>`
 
 In the following, you will find some usage examples of these extension.
 
@@ -131,6 +131,24 @@ directive:
 
 .. kernel-doc:: include/trace/events/signal.h
    :functions:  trace_signal_deliver
+
+
+include intermediates
+=====================
+
+To include intermediate files from build process, use the
+``.. kernel-include::`` directive.
+
+.. code-block:: rst
+
+    .. _media_header:
+
+    ****************************
+    Media Controller Header File
+    ****************************
+
+    .. kernel-include:: $BUILDDIR/media.h.rst
+
 
 
 use flat-table

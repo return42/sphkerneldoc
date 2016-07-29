@@ -35,10 +35,9 @@ Documentation/\*/conf.py
   ``Documentation/*/conf.py`` file which *overwrites* the basic configuration
   from ``Documentation/conf.py`` (settings see `sphinx config`_)
 
-scripts/site-python/linuxdoc
-  This folder includes python extensions related to the Linux documentation
-  processes. At this time, this folder is moved to the
-  ``dbxml2rst`_ project (see installation instructions there).
+:ref:`LinuxDoc project <linuxdoc:linuxdoc>`
+  This includes python extensions related to the Linux documentation processes,
+  see installation instructions at :ref:`LinuxDoc project <linuxdoc:linuxdoc>`.
 
 Documentation/books_migrated
   Content the of automatic migrated DocBook-XML to reST documents

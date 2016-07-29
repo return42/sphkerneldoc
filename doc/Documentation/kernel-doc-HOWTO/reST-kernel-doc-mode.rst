@@ -54,11 +54,11 @@ no heading levels assigned to certain characters as the structure is determined
 from the succession of headings. However, there is a common convention, which is
 used by the kernel-doc parser also:
 
-* ``#`` with overline, for parts
-* ``*`` with overline, for chapters
+* ``#`` with over-line, for parts
+* ``*`` with over-line, for chapters
 * ``=`` for sections
 * ``-`` for subsections
-* ``^`` for subsubsections
+* ``^`` for sub-subsections
 * ``"`` for paragraphs
 
 Within kernel-doc comments you should use this sectioning with care. A
@@ -75,7 +75,7 @@ sub-section with the following markup.
 As you see, a kernel-doc section is at reST *subsection* level. This means, you
 can only use the following *sub-levels* within a kernel-doc section.
 
-* ``^`` for subsubsections
+* ``^`` for sub-subsections
 * ``"`` for paragraphs
 
 In contrast to subsections like "Return:", a "DOC:" section has no subsection,
@@ -83,10 +83,10 @@ thats why reST *sub-levels* in "DOC:" sections start a the subsection level,
 tagged with a minus:
 
 * ``-`` for subsections
-* ``^`` for subsubsections
+* ``^`` for sub-subsections
 * ``"`` for paragraphs
 
-For mor informations, compare the example subsection "reST sectioning"
+For more informations, compare the example subsection "reST sectioning"
 :ref:`example.rst_mode` with it's source :ref:`all-in-a-tumble-src` and take a
 look at :ref:`all-in-a-tumble-debug` to see how these sections getting together
 in the reST output of the kernel-doc parser.
@@ -100,12 +100,12 @@ Here are some handy links about reST_  and the `Sphinx markup constructs`_:
 * reST_ primer, `reST (quickref)`_, `reST (spec)`_
 * `Sphinx markup constructs`_
 * `sphinx domains`_
-* `sphinx cross refences`_
+* `sphinx cross references`_
 * `intersphinx`_, `sphinx.ext.intersphinx`_
 * `sphinx-doc`_, `sphinx-doc FAQ`_
 * `docutils`_, `docutils FAQ`_
 
 In absence of a more detailed C style guide for documentation, the `Python's
-Style Guide for documentating
+Style Guide for documentation
 <https://docs.python.org/devguide/documenting.html#style-guide>`_ provides a
 good orientation.

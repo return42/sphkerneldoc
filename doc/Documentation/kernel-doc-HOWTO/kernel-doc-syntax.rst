@@ -99,12 +99,13 @@ Rendered example: :ref:`example.user_function`
 structs, unions
 ===============
 
-Beside functions you can also write documentation for structs, unions. Instead
-of the function name you must write the name of the declaration; the ``struct``
-or ``union`` must always precede the name. Nesting of declarations is not
-supported.  Use the ``@argument`` mechanism to document members or constants.
+Beside functions you can also write documentation for ``structs``,
+``unions``. Instead of the function name you must write the name of the
+declaration; the ``struct`` or ``union`` must always precede the name. Nesting
+of declarations is not supported.  Use the ``@argument`` mechanism to document
+members or constants.
 
-Inside a struct description, you can use the 'private:' and 'public:' comment
+Inside a ``struct`` description, you can use the 'private:' and 'public:' comment
 tags.  Structure fields that are inside a 'private:' area are not listed in the
 generated output documentation.  The 'private:' and 'public:' tags must begin
 immediately following a ``/*`` comment marker.  They may optionally include
@@ -117,9 +118,9 @@ comments between the ``:`` and the ending ``*/`` marker.
 
 Rendered example: :ref:`example.my_struct`
 
-All descriptions can be multiline, except the short function description.
-For really longs structs, you can also describe arguments inside the body of
-the struct.
+All descriptions can be multi-line, except the short function description.
+For really longs ``structs``, you can also describe arguments inside the body of
+the ``struct``.
 
 .. kernel-doc::  ./all-in-a-tumble.h
     :snippets:  my_long_struct
@@ -154,14 +155,14 @@ Rendered example: :ref:`example.my_typedef`
 
 .. _kernel-doc-syntax-doc:
 
-ducumentation blocks
+documentation blocks
 ====================
 
 To facilitate having source code and comments close together, you can include
 kernel-doc documentation blocks that are *free-form* comments instead of being
-kernel-doc for functions, structures, unions, enums, or typedefs.  This could be
-used for something like a theory of operation for a driver or library code, for
-example.
+kernel-doc for functions, structures, unions, enumerations, or typedefs.  This
+could be used for something like a theory of operation for a driver or library
+code, for example.
 
 This is done by using a ``DOC:`` section keyword with a section title. A small
 example:
@@ -205,8 +206,8 @@ markups (`sphinx domains`_)::
   - ``CONST`` : name of a constant.
   - ``$ENVVAR`` : environmental variable
 
-The `sphinx-doc`_ generator highligts these markups and tries to cross
-referencing to arbitrary locations (`sphinx cross refences`_). The result of a
+The `sphinx-doc`_ generator highlights these markups and tries to cross
+referencing to arbitrary locations (`sphinx cross references`_). The result of a
 cross reference depends on the context of the document which includes the
 kernel-doc comment. You don't have to use the *highlight* pattern, if you prefer
 *pure* reST, use the reST markup.

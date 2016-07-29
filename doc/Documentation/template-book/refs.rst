@@ -10,7 +10,7 @@ Here are some handy links about reST_  and the `Sphinx markup constructs`_:
 * `sphinx-doc`_, `sphinx-doc FAQ`_
 * `Sphinx markup constructs`_
 * `sphinx domains`_
-* `sphinx cross refences`_
+* `sphinx cross references`_
 * `sphinx config`_
 * `intersphinx`_, `sphinx.ext.intersphinx`_
 * `docutils`_, `docutils FAQ`_

@@ -48,7 +48,7 @@ Here is a short overview of the options:
         :debug:
 
 The argument ``<src-filename>`` is required, it points to a source file in the
-kernel source tree. The pathname is relativ to kernel's root folder.  The
+kernel source tree. The pathname is relative to kernel's root folder.  The
 options have the following meaning, but be aware that not all combinations of
 these options make sense:
 
@@ -59,9 +59,9 @@ these options make sense:
     The next option make only sense in conjunction with option ``doc``:
 
     ``no-header``
-        Do not output DOC: section's title. Usefull, if the surrounding context
+        Do not output DOC: section's title. Useful, if the surrounding context
         already has a heading, and the DOC: section title is only used as an
-        identifier. Take in mind, that this option will not supress any native
+        identifier. Take in mind, that this option will not suppress any native
         reST heading markup in the comment (:ref:`reST-section-structure`).
 
 ``export [<src-fname-pattern> [, ...]]``
@@ -106,11 +106,11 @@ these options make sense:
         Set line numbers in the snippet code-block.
 
 ``debug``
-    Inserts a code-block with the generated reST source. This might somtimes
+    Inserts a code-block with the generated reST source. This might sometimes
     helpful to see how the kernel-doc parser transforms the kernel-doc markup to
     reST markup.
 
-ducumentation blocks
+documentation blocks
 ====================
 
 The following example inserts the documentation block with the title "Theory of

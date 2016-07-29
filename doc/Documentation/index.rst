@@ -8,15 +8,22 @@
 ================================================================================
 
 Welcome to the Linux Kernel's documentation. Here you will find the Linux Kernel
-documentation maintained in (or migrated to) the reStructuredText format
-(**reST**). The reST sources which are migrated from the DocBook-XML sources has
-been build with the `dbxml2rst`_ toolkit.
+documentation maintained in -- or migrated to -- the reStructuredText (**reST**)
+format .
 
 .. hint::
 
-   This **my** POC. Not all documented *here* would be a part of the Linux
-   kernel's documentation. E.g. the kernel-doc-HOWTO is my concept paper and not
-   (yet) a part of Linux kernel's doc (:ref:`xref_about_this_poc`).
+   Not all documented *here* is a part of the Linux kernel's doc.  E.g. the
+   kernel-doc-HOWTO is my concept paper and not (yet) a part of Linux kernel's
+   doc (:ref:`xref_about_this_poc`).
+
+This *POC* demonstrate how a *straight forward* solution works. It is an
+approach to extend the current Linux Kernel sphinx extensions and concepts. For
+this, this POC makes use of the libraries:
+
+* :ref:`LinuxDoc project <linuxdoc:linuxdoc>`
+* :ref:`DocBook-XML to reST project <dbxml2rst:dbxml2rst>` (see
+  :ref:`dbxml2rst_migration`).
 
 
 Collection of articles

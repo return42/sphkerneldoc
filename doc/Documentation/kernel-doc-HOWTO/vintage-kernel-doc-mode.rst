@@ -14,13 +14,13 @@ Vintage kernel-doc mode
     comments.
 
 Within the *vintage* kernel-doc mode the kernel-doc parser ignores any
-whitespace formatting/markup. Since formatting with whitespaces is substantial
+whitespace formatting/markup. Since formatting with whitespace is substantial
 for ASCII markups, it's recommended to use the :ref:`reST-kernel-doc-mode` on
 any new or changed comment!
 
 Determined by the history of the kernel-doc comments, the *vintage* kernel-doc
 comments contain characters like "*" or strings with e.g. leading/trailing
-underscore ("_"), which are inline markups in reST. Here a short example from a
+underscore ("_"), which are in-line markups in reST. Here a short example from a
 *vintage* comment::
 
     <SNIP> -----
@@ -36,7 +36,7 @@ Within reST markup (the new base format), the wildcard in the string
 * Leading "_" :  is a *anchor* in reST markup (``_foo``).
 * Trailing "_:  is a reference in reST markup (``foo_``).
 * interpreted text: "`"
-* inline literals: "``"
+* in-line literals: "``"
 * substitution references: "|"
 
 As long as the kernel-doc parser runs in the *vintage* kernel-doc mode, these
@@ -57,10 +57,8 @@ starts).::
     /* parse-markup: reST */ *
 
 In reST mode the kernel-doc parser pass through all text unchanged to the reST
-toolchain including any whitespace and reST markup.
-
-
-To toggle back to :ref:`vintage-kernel-doc-mode` type the following line::
+tool-chain including any whitespace and reST markup. To toggle back to
+:ref:`vintage-kernel-doc-mode` type the following line::
 
     /* parse-markup: kernel-doc */
 
@@ -107,6 +105,3 @@ In the following, you will find some quirks of the *vintage* kernel-doc mode.
 
   every line of which would start a new section.  Again, probably not what you
   were after.
-
-
-

@@ -10,10 +10,10 @@ DocBook-XML to reST migration
 The folder ``Documentation/books_migrated`` is only for shipping the automatic
 migrated DocBook-XML to reST documents.
 
-* The automatic migration is described in `dbxml2rst`_.
+* The automatic migration is described in :ref:`dbxml2rst:dbxml2rst`.
 
-Take a look at the commit message log of ``Documentation/books_migrated``, to
-see on which commit each migration was applied.
+Take a look at the `books_migrated history`_ in this POC, to see on which commit
+each migration was applied.
 
 Review
 ======
@@ -41,7 +41,8 @@ whichever could cause an improper document. Here are some:
 
    If you are willing to review a book, move the book from the
    ``Documentation/books_migrated/<name>`` folder down to the
-   ``Documentation/<name>`` folder.
+   ``Documentation/<name>`` folder. If you prefer to migrated other XML files,
+   use the migration toolkit from :ref:`dbxml2rst:dbxml2rst` .
 
 
-
+.. _`books_migrated history`: https://github.com/return42/sphkerneldoc/commits/master/doc/Documentation/books_migrated

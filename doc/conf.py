@@ -110,6 +110,8 @@ intersphinx_mapping = {}
 intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
 intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
 intersphinx_mapping['template-book'] = ('http://return42.github.io/sphkerneldoc/books/template-book/', None)
+intersphinx_mapping['linuxdoc'] =  ('http://return42.github.io/linuxdoc', None)
+intersphinx_mapping['dbxml2rst'] =  ('http://return42.github.io/dbxml2rst', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom

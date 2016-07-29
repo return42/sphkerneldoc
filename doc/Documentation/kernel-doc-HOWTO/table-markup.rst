@@ -17,21 +17,21 @@ tree.
 Intro
 =====
 
-Internaly, the docutils uses a representation according to the `OASIS XML
+Internally, the docutils uses a representation according to the `OASIS XML
 Exchange Table Model`_ (same as DocBook). The *OASIS Table Model* gives a huge
-bandwith of possibilities to form tables. This often seduce authors to force a
+bandwidth of possibilities to form tables. This often seduce authors to force a
 specific layout. The misuse of tables in this manner is not recommended, it
 breaks the separation of *presentation from content* which most often ends in
-various problems in the range of output formats. Tables (and preformated text
+various problems in the range of output formats. Tables (and pre-formated text
 like source code listings) should be used advisedly. In a HTML viewer, the
 horizontal and vertical expansion is handled by a scrollbar. On print medias
-(paper / pdf) there is no scrollbar and automaticaly page-breaking a table or
-line-breaking a preformated text in the layout process ends mostly in unwanted
+(paper / pdf) there is no scrollbar and automatically page-breaking a table or
+line-breaking a pre-formated text in the layout process ends mostly in unwanted
 results.
 
 .. hint::
 
-  Tables and preformated text in itself violate the separation of *presentation
+  Tables and pre-formated text in itself violate the separation of *presentation
   from content*, but we will never be able to entirely renounce them. Use them
   with care, if your content should be rendered well, in the wide variation of
   output formats.
@@ -43,8 +43,8 @@ ASCII-art tables
 ASCII-art tables might be comfortable for readers of the text-files, but they
 have huge disadvantages in the creation and modifying. First, they are hard to
 edit. Think about adding a row or a column to a ASCII-art table or adding a
-paraggraph in a cell, it is a nightmare on big tables. Second the diff of
-modifing ASCII-art tables is not meaningfull, e.g. widening a cell generates a
+paragraph in a cell, it is a nightmare on big tables. Second the diff of
+modifying ASCII-art tables is not meaningful, e.g. widening a cell generates a
 diff in which also changes are included, which are only ascribable to the
 ASCII-art (see also :ref:`list-table-directives`).
 
@@ -129,9 +129,9 @@ List table directives
 =====================
 
 The *list table* formats are double stage list, compared to the ASCII-art they
-migth not be as comfortable for readers of the text-files. Their advantage is,
+might not be as comfortable for readers of the text-files. Their advantage is,
 that they are easy to create/modify and that the diff of a modification is much
-more meaningfull, because it is limited to the modified content.
+more meaningful, because it is limited to the modified content.
 
 .. _rest-list-table:
 
@@ -201,7 +201,7 @@ to the ``list-table`` with some additional features:
 
 * *auto span* rightmost cell of a table row over the missing cells on the right
   side of that table-row.  With Option ``:fill-cells:`` this behavior can
-  changed from *auto span* to *auto fill*, which automaticly inserts (empty)
+  changed from *auto span* to *auto fill*, which automatically inserts (empty)
   cells instead of spanning the last cell.
 
 options:
@@ -209,12 +209,12 @@ options:
 :header-rows:   [int] count of header rows
 :stub-columns:  [int] count of stub columns
 :widths:        [[int] [int] ... ] widths of columns
-:fill-cells:    instead of autospann missing cells, insert missing cells
+:fill-cells:    instead of auto-span missing cells, insert missing cells
 
 roles:
 
-:cspan: [int] additionale columns (*morecols*)
-:rspan: [int] additionale rows (*morerows*)
+:cspan: [int] additional columns (*morecols*)
+:rspan: [int] additional rows (*morerows*)
 
 The example below shows how to use this markup.  The first level of the staged
 list is the *table-row*. In the *table-row* there is only one markup allowed,
