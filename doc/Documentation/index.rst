@@ -18,6 +18,10 @@ using the libraries:
 * :ref:`DocBook-XML to reST project <dbxml2rst:dbxml2rst>` (see
   :ref:`dbxml2rst_migration`).
 
+The source of this POC is available at:
+
+* https://github.com/return42/sphkerneldoc
+
 
 Collection of articles
 =======================

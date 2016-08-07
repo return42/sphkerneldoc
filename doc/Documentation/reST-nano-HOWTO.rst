@@ -122,7 +122,7 @@ include source code comments
 ============================
 
 To include kernel-doc comments from your sources use the ``.. kernel-doc::``
-directive:
+directive :ref:`[ref] <kernel-doc:kernel-doc-directive>`:
 
 .. code-block:: rst
 
@@ -137,7 +137,7 @@ include intermediates
 =====================
 
 To include intermediate files from build process, use the
-``.. kernel-include::`` directive.
+``.. kernel-include::`` directive :ref:`[ref] <kernel-include-directive>`.
 
 .. code-block:: rst
 
@@ -154,11 +154,12 @@ To include intermediate files from build process, use the
 use flat-table
 ==============
 
-For tables, it is recommend to use the ``.. flat-table::`` directive.  The
-``flat-table`` is a *list table* format.  The *list table* formats are double
-stage list. Compared to the ASCII-art they migth not be as comfortable for
-readers of the text-files. Their advantage is, that they are easy to
-create/modify and that the diff of a modification is much more meaningfull,
+For tables, it is recommend to use the ``.. flat-table::`` directive :ref:`[ref]
+<kernel-doc:rest-flat-table>`.  The ``flat-table`` is a *list table* format.
+The *list table* formats are double stage list. Compared to the ASCII-art they
+migth not be as comfortable for readers of the text-files. Their advantage is,
+that they are easy to create/modify and that the diff of a modification is much
+more meaningfull,
 
 .. flat-table:: example table
    :fill-cells:
