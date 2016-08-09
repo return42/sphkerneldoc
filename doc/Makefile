@@ -35,7 +35,7 @@ AUTODOC_FOLDER := $(objtree)/doc/linux_src_doc
 DIST           := $(objtree)/dist
 
 # sphinx-build setup
-SPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+SPHINXOPTS =
 
 # Sphinx projects, we call them *books* which is more common to authors.
 BOOKS_FOLDER = $(obj)/Documentation
@@ -199,7 +199,7 @@ help:
 # main targets
 # ------------------------------------------------------------------------------
 
-ALLSPHINXOPTS = $(SPHINXOPTS)
+ALLSPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE) $(SPHINXOPTS)
 
 DIST_BOOKS = $(DIST)/books
 CACHE_BOOKS = $(CACHE)/books
