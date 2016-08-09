@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-pko.h
 
+.. _`cvmx_pko_lock_t`:
+
+typedef cvmx_pko_lock_t
+=======================
+
+.. c:type:: typedef cvmx_pko_lock_t
+
+
+.. _`cvmx_pko_doorbell_address_t`:
+
+typedef cvmx_pko_doorbell_address_t
+===================================
+
+.. c:type:: typedef cvmx_pko_doorbell_address_t
+
+
+.. _`cvmx_pko_command_word0_t`:
+
+typedef cvmx_pko_command_word0_t
+================================
+
+.. c:type:: typedef cvmx_pko_command_word0_t
+
+
+.. _`cvmx_pko_state_elem_t`:
+
+typedef cvmx_pko_state_elem_t
+=============================
+
+.. c:type:: typedef cvmx_pko_state_elem_t
+
+
 .. _`cvmx_pko_initialize_global`:
 
 cvmx_pko_initialize_global

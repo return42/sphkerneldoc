@@ -10,6 +10,7 @@ ntfs
     aops_c
     aops_h
     attrib_c
+    attrib_h
     bitmap_c
     bitmap_h
     collate_c
@@ -33,6 +34,7 @@ ntfs
     ntfs_h
     quota_c
     runlist_c
+    runlist_h
     super_c
     sysctl_c
     time_h

@@ -1,6 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/uapi/drm/drm.h
 
+.. _`drm_drawable_info_type_t`:
+
+typedef drm_drawable_info_type_t
+================================
+
+.. c:type:: typedef drm_drawable_info_type_t
+
+
 .. _`drm_client_cap_stereo_3d`:
 
 DRM_CLIENT_CAP_STEREO_3D

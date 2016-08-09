@@ -1,19 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/ib_cm.h
 
-.. _`int`:
+.. _`ib_cm_handler`:
 
-int
-===
+ib_cm_handler
+=============
 
-.. c:function:: typedef int(*ib_cm_handler)
+.. c:function:: int ib_cm_handler(struct ib_cm_id *cm_id, struct ib_cm_event *event)
 
     User-defined callback to process communication events.
 
-    :param \*ib_cm_handler:
-        *undescribed*
+    :param struct ib_cm_id \*cm_id:
+        Communication identifier associated with the reported event.
 
-.. _`int.description`:
+    :param struct ib_cm_event \*event:
+        Information about the communication event.
+
+.. _`ib_cm_handler.description`:
 
 Description
 -----------

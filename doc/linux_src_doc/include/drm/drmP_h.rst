@@ -69,7 +69,7 @@ Description
 drm_ioctl_t
 ===========
 
-.. c:function:: typedef int drm_ioctl_t(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: int drm_ioctl_t(struct drm_device *dev, void *data, struct drm_file *file_priv)
 
     :param struct drm_device \*dev:
         *undescribed*

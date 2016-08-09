@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/isci/scu_task_context.h
 
+.. _`scu_sata_task_type`:
+
+typedef scu_sata_task_type
+==========================
+
+.. c:type:: typedef scu_sata_task_type
+
+    This enumeration defines the various SATA task types the SCU hardware will accept. The definition for the various task types the SCU hardware will accept can be found in the DS specification.
+
+.. _`scu_sata_task_type.description`:
+
+Description
+-----------
+
+???
+
 .. _`scu_context_command_request_type_post_tc`:
 
 SCU_CONTEXT_COMMAND_REQUEST_TYPE_POST_TC

@@ -408,15 +408,19 @@ belonging to the PAL and initialized with \ :c:func:`uwb_pal_init`\ ).  Fields
 should be set appropriately by the PAL before registering the PAL
 with \ :c:func:`uwb_pal_register`\ .
 
-.. _`int`:
+.. _`uwb_dev_for_each_f`:
 
-int
-===
+uwb_dev_for_each_f
+==================
 
-.. c:function:: typedef int(*uwb_dev_for_each_f)
+.. c:function:: int uwb_dev_for_each_f(struct device *dev, void *priv)
 
-    :param \*uwb_dev_for_each_f:
-        *undescribed*
+    :param struct device \*dev:
+        Linux device instance
+        'uwb_dev = container_of(dev, struct uwb_dev, dev)'
+
+    :param void \*priv:
+        Data passed by the caller to 'uwb_{dev,rc}\ :c:func:`_foreach`\ '.
 
 .. _`uwb_rsv_is_owner`:
 

@@ -154,16 +154,19 @@ Description
 
 Returns 0 on success, negative value on error
 
-.. _`void`:
+.. _`amd_iommu_invalidate_ctx`:
 
-void
-====
+amd_iommu_invalidate_ctx
+========================
 
-.. c:function:: typedef void(*amd_iommu_invalidate_ctx)
+.. c:function:: void amd_iommu_invalidate_ctx(struct pci_dev *pdev, int pasid)
 
     Register a call-back for invalidating a pasid context. This call-back is invoked when the IOMMUv2 driver needs to invalidate a PASID context, for example because the task that is bound to that context is about to exit.
 
-    :param \*amd_iommu_invalidate_ctx:
+    :param struct pci_dev \*pdev:
+        The PCI device the call-back should be registered for
+
+    :param int pasid:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

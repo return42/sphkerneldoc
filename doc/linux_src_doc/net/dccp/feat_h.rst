@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/dccp/feat.h
 
+.. _`dccp_feat_val`:
+
+typedef dccp_feat_val
+=====================
+
+.. c:type:: typedef dccp_feat_val
+
+    Container for SP or NN feature values
+
 .. _`dccp_feat_entry`:
 
 struct dccp_feat_entry

@@ -10,6 +10,33 @@ CVMX_CMD_QUEUE_ENABLE_MAX_DEPTH
 
     don't use it and it slows down the command queue processing significantly.
 
+.. _`cvmx_cmd_queue_id_t`:
+
+typedef cvmx_cmd_queue_id_t
+===========================
+
+.. c:type:: typedef cvmx_cmd_queue_id_t
+
+    queues. Each hardware block has up to 65536 sub identifiers for multiple command queues. Not all chips support all hardware units.
+
+.. _`cvmx_cmd_queue_result_t`:
+
+typedef cvmx_cmd_queue_result_t
+===============================
+
+.. c:type:: typedef cvmx_cmd_queue_result_t
+
+    a new buffer and the associated FPA pool is empty. It can also fail if the number of queued command words reaches the maximum set at initialization.
+
+.. _`__cvmx_cmd_queue_all_state_t`:
+
+typedef \__cvmx_cmd_queue_all_state_t
+=====================================
+
+.. c:type:: typedef __cvmx_cmd_queue_all_state_t
+
+    It is stored in a bootmem named block and shared by all applications running on Octeon. Tickets are stored in a differnet cache line that queue information to reduce the contention on the ll/sc used to get a ticket. If this is not the case, the update of queue state causes the ll/sc to fail quite often.
+
 .. _`cvmx_cmd_queue_initialize`:
 
 cvmx_cmd_queue_initialize

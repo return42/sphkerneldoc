@@ -1,19 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/net/nfc/digital.h
 
-.. _`void`:
+.. _`nfc_digital_cmd_complete_t`:
 
-void
-====
+nfc_digital_cmd_complete_t
+==========================
 
-.. c:function:: typedef void(*nfc_digital_cmd_complete_t)
+.. c:function:: void nfc_digital_cmd_complete_t(struct nfc_digital_dev *ddev, void *arg, struct sk_buff *resp)
 
     Definition of command result callback
 
-    :param \*nfc_digital_cmd_complete_t:
-        *undescribed*
+    :param struct nfc_digital_dev \*ddev:
+        nfc_digital_device ref
 
-.. _`void.description`:
+    :param void \*arg:
+        user data
+
+    :param struct sk_buff \*resp:
+        response data
+
+.. _`nfc_digital_cmd_complete_t.description`:
 
 Description
 -----------

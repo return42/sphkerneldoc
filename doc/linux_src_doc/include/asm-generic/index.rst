@@ -12,6 +12,7 @@ asm-generic
     futex_h
     getorder_h
     io_h
+    msi_h
     mutex-dec_h
     mutex-xchg_h
     qrwlock_h

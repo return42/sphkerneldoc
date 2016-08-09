@@ -378,6 +378,15 @@ SUM_CHECK_P_RESULT
 SUM_CHECK_Q_RESULT
     *undescribed*
 
+.. _`dma_cap_mask_t`:
+
+typedef dma_cap_mask_t
+======================
+
+.. c:type:: typedef dma_cap_mask_t
+
+    capabilities bitmap modeled after cpumask_t. See linux/cpumask.h
+
 .. _`dma_chan_percpu`:
 
 struct dma_chan_percpu

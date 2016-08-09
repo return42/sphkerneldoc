@@ -1,19 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/net/nfc/nfc.h
 
-.. _`void`:
+.. _`data_exchange_cb_t`:
 
-void
-====
+data_exchange_cb_t
+==================
 
-.. c:function:: typedef void(*data_exchange_cb_t)
+.. c:function:: void data_exchange_cb_t(void *context, struct sk_buff *skb, int err)
 
     Definition of nfc_data_exchange callback
 
-    :param \*data_exchange_cb_t:
-        *undescribed*
+    :param void \*context:
+        nfc_data_exchange cb_context parameter
 
-.. _`void.description`:
+    :param struct sk_buff \*skb:
+        response data
+
+    :param int err:
+        If an error has occurred during data exchange, it is the
+        error number. Zero means no error.
+
+.. _`data_exchange_cb_t.description`:
 
 Description
 -----------

@@ -121,31 +121,41 @@ ib_set_rmpp_flags
     :param u8 flags:
         The flags to set.
 
-.. _`void`:
+.. _`ib_mad_send_handler`:
 
-void
-====
+ib_mad_send_handler
+===================
 
-.. c:function:: typedef void(*ib_mad_send_handler)
+.. c:function:: void ib_mad_send_handler(struct ib_mad_agent *mad_agent, struct ib_mad_send_wc *mad_send_wc)
 
     callback handler for a sent MAD.
 
-    :param \*ib_mad_send_handler:
-        *undescribed*
+    :param struct ib_mad_agent \*mad_agent:
+        MAD agent that sent the MAD.
 
-.. _`void`:
+    :param struct ib_mad_send_wc \*mad_send_wc:
+        Send work completion information on the sent MAD.
 
-void
-====
+.. _`ib_mad_snoop_handler`:
 
-.. c:function:: typedef void(*ib_mad_snoop_handler)
+ib_mad_snoop_handler
+====================
+
+.. c:function:: void ib_mad_snoop_handler(struct ib_mad_agent *mad_agent, struct ib_mad_send_buf *send_buf, struct ib_mad_send_wc *mad_send_wc)
 
     Callback handler for snooping sent MADs.
 
-    :param \*ib_mad_snoop_handler:
-        *undescribed*
+    :param struct ib_mad_agent \*mad_agent:
+        MAD agent that snooped the MAD.
 
-.. _`void.description`:
+    :param struct ib_mad_send_buf \*send_buf:
+        send MAD data buffer.
+
+    :param struct ib_mad_send_wc \*mad_send_wc:
+        Work completion information on the sent MAD.  Valid
+        only for snooping that occurs on a send completion.
+
+.. _`ib_mad_snoop_handler.description`:
 
 Description
 -----------
@@ -153,19 +163,25 @@ Description
 Clients snooping MADs should not modify data referenced by the \ ``send_buf``\ 
 or \ ``mad_send_wc``\ .
 
-.. _`void`:
+.. _`ib_mad_recv_handler`:
 
-void
-====
+ib_mad_recv_handler
+===================
 
-.. c:function:: typedef void(*ib_mad_recv_handler)
+.. c:function:: void ib_mad_recv_handler(struct ib_mad_agent *mad_agent, struct ib_mad_send_buf *send_buf, struct ib_mad_recv_wc *mad_recv_wc)
 
     callback handler for a received MAD.
 
-    :param \*ib_mad_recv_handler:
-        *undescribed*
+    :param struct ib_mad_agent \*mad_agent:
+        MAD agent requesting the received MAD.
 
-.. _`void.description`:
+    :param struct ib_mad_send_buf \*send_buf:
+        Send buffer if found, else NULL
+
+    :param struct ib_mad_recv_wc \*mad_recv_wc:
+        Received work completion information on the received MAD.
+
+.. _`ib_mad_recv_handler.description`:
 
 Description
 -----------

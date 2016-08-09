@@ -6,7 +6,7 @@
 user_regset_active_fn
 =====================
 
-.. c:function:: typedef int user_regset_active_fn(struct task_struct *target, const struct user_regset *regset)
+.. c:function:: int user_regset_active_fn(struct task_struct *target, const struct user_regset *regset)
 
     type of \ ``active``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
@@ -36,7 +36,7 @@ is no inexpensive check to yield a value < \ ``n``\ .
 user_regset_get_fn
 ==================
 
-.. c:function:: typedef int user_regset_get_fn(struct task_struct *target, const struct user_regset *regset, unsigned int pos, unsigned int count, void *kbuf, void __user *ubuf)
+.. c:function:: int user_regset_get_fn(struct task_struct *target, const struct user_regset *regset, unsigned int pos, unsigned int count, void *kbuf, void __user *ubuf)
 
     type of \ ``get``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
@@ -75,7 +75,7 @@ return value is possible.
 user_regset_set_fn
 ==================
 
-.. c:function:: typedef int user_regset_set_fn(struct task_struct *target, const struct user_regset *regset, unsigned int pos, unsigned int count, const void *kbuf, const void __user *ubuf)
+.. c:function:: int user_regset_set_fn(struct task_struct *target, const struct user_regset *regset, unsigned int pos, unsigned int count, const void *kbuf, const void __user *ubuf)
 
     type of \ ``set``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 
@@ -114,7 +114,7 @@ return value is possible.
 user_regset_writeback_fn
 ========================
 
-.. c:function:: typedef int user_regset_writeback_fn(struct task_struct *target, const struct user_regset *regset, int immediate)
+.. c:function:: int user_regset_writeback_fn(struct task_struct *target, const struct user_regset *regset, int immediate)
 
     type of \ ``writeback``\  function in \ :c:type:`struct user_regset <user_regset>`\ 
 

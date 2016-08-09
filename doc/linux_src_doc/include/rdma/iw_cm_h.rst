@@ -1,29 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/iw_cm.h
 
-.. _`int`:
+.. _`iw_cm_handler`:
 
-int
-===
+iw_cm_handler
+=============
 
-.. c:function:: typedef int(*iw_cm_handler)
+.. c:function:: int iw_cm_handler(struct iw_cm_id *cm_id, struct iw_cm_event *event)
 
     Function to be called by the IW CM when delivering events to the client.
 
-    :param \*iw_cm_handler:
-        *undescribed*
+    :param struct iw_cm_id \*cm_id:
+        The IW CM identifier associated with the event.
 
-.. _`int`:
+    :param struct iw_cm_event \*event:
+        Pointer to the event structure.
 
-int
-===
+.. _`iw_event_handler`:
 
-.. c:function:: typedef int(*iw_event_handler)
+iw_event_handler
+================
+
+.. c:function:: int iw_event_handler(struct iw_cm_id *cm_id, struct iw_cm_event *event)
 
     Function called by the provider when delivering provider events to the IW CM.  Returns either 0 indicating the event was processed or -errno if the event could not be processed.
 
-    :param \*iw_event_handler:
-        *undescribed*
+    :param struct iw_cm_id \*cm_id:
+        The IW CM identifier associated with the event.
+
+    :param struct iw_cm_event \*event:
+        Pointer to the event structure.
 
 .. _`iw_create_cm_id`:
 

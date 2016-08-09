@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-fpa.h
 
+.. _`cvmx_fpa_iobdma_data_t`:
+
+typedef cvmx_fpa_iobdma_data_t
+==============================
+
+.. c:type:: typedef cvmx_fpa_iobdma_data_t
+
+
+.. _`cvmx_fpa_pool_info_t`:
+
+typedef cvmx_fpa_pool_info_t
+============================
+
+.. c:type:: typedef cvmx_fpa_pool_info_t
+
+
 .. _`cvmx_fpa_get_name`:
 
 cvmx_fpa_get_name

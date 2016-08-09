@@ -1,6 +1,40 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-pip.h
 
+.. _`cvmx_pip_rcv_err_t`:
+
+typedef cvmx_pip_rcv_err_t
+==========================
+
+.. c:type:: typedef cvmx_pip_rcv_err_t
+
+    late collision (data received before collision) late collisions cannot be detected by the receiver they would appear as JAM bits which would appear as bad FCS or carrier extend error which is CVMX_PIP_EXTEND_ERR
+
+.. _`cvmx_pip_err_t`:
+
+typedef cvmx_pip_err_t
+======================
+
+.. c:type:: typedef cvmx_pip_err_t
+
+
+.. _`cvmx_pip_port_status_t`:
+
+typedef cvmx_pip_port_status_t
+==============================
+
+.. c:type:: typedef cvmx_pip_port_status_t
+
+
+.. _`cvmx_pip_pkt_inst_hdr_t`:
+
+typedef cvmx_pip_pkt_inst_hdr_t
+===============================
+
+.. c:type:: typedef cvmx_pip_pkt_inst_hdr_t
+
+    to a packet by external hardware.
+
 .. _`cvmx_pip_config_port`:
 
 cvmx_pip_config_port

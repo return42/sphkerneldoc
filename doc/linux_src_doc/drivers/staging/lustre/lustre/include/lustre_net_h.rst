@@ -59,19 +59,22 @@ of ?_NBUFS is added to the pool.
 Messages larger than ?_MAXREQSIZE are dropped.  Request buffers are
 considered full when less than ?_MAXREQSIZE is left in them.
 
-.. _`bool`:
+.. _`nrs_pol_desc_compat_t`:
 
-bool
-====
+nrs_pol_desc_compat_t
+=====================
 
-.. c:function:: typedef bool(*nrs_pol_desc_compat_t)
+.. c:function:: bool nrs_pol_desc_compat_t(const struct ptlrpc_service *svc, const struct ptlrpc_nrs_pol_desc *desc)
 
     for handling RPCs of a particular PTLRPC service.
 
-    :param \*nrs_pol_desc_compat_t:
+    :param const struct ptlrpc_service \*svc:
         *undescribed*
 
-.. _`bool.description`:
+    :param const struct ptlrpc_nrs_pol_desc \*desc:
+        *undescribed*
+
+.. _`nrs_pol_desc_compat_t.description`:
 
 Description
 -----------

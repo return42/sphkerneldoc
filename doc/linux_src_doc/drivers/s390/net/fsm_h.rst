@@ -26,15 +26,62 @@ FSM_DEBUG_HISTORY
 
     Events/Statechanges and print it if a action_function is not found.
 
-.. _`void`:
+.. _`fsm_function_t`:
 
-void
-====
+fsm_function_t
+==============
 
-.. c:function:: typedef void(*fsm_function_t)
+.. c:function:: void fsm_function_t(void *,  int, void *)
 
-    :param \*fsm_function_t:
+    :param void \*:
         *undescribed*
+
+    :param  int:
+        *undescribed*
+
+    :param void \*:
+        *undescribed*
+
+.. _`fsm`:
+
+typedef fsm
+===========
+
+.. c:type:: typedef fsm
+
+
+.. _`fsm_history`:
+
+typedef fsm_history
+===================
+
+.. c:type:: typedef fsm_history
+
+
+.. _`fsm_instance`:
+
+typedef fsm_instance
+====================
+
+.. c:type:: typedef fsm_instance
+
+
+.. _`fsm_node`:
+
+typedef fsm_node
+================
+
+.. c:type:: typedef fsm_node
+
+    event combination
+
+.. _`fsm_timer`:
+
+typedef fsm_timer
+=================
+
+.. c:type:: typedef fsm_timer
+
 
 .. _`init_fsm`:
 

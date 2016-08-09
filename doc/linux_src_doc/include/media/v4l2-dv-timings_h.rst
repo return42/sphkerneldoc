@@ -6,7 +6,7 @@
 v4l2_check_dv_timings_fnc
 =========================
 
-.. c:function:: typedef bool v4l2_check_dv_timings_fnc(const struct v4l2_dv_timings *t, void *handle)
+.. c:function:: bool v4l2_check_dv_timings_fnc(const struct v4l2_dv_timings *t, void *handle)
 
     timings check callback
 

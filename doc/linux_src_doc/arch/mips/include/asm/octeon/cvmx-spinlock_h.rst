@@ -1,6 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-spinlock.h
 
+.. _`cvmx_spinlock_t`:
+
+typedef cvmx_spinlock_t
+=======================
+
+.. c:type:: typedef cvmx_spinlock_t
+
+
 .. _`cvmx_spinlock_init`:
 
 cvmx_spinlock_init

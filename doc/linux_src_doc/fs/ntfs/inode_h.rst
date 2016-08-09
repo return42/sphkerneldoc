@@ -20,5 +20,30 @@ Description
 
 \ :c:func:`NTFS_I`\  returns the ntfs inode associated with the VFS \ ``inode``\ .
 
+.. _`ntfs_attr`:
+
+typedef ntfs_attr
+=================
+
+.. c:type:: typedef ntfs_attr
+
+    ntfs in memory attribute structure
+
+.. _`ntfs_attr.description`:
+
+Description
+-----------
+
+This structure exists only to provide a small structure for the
+ntfs_{attr_}\ :c:func:`iget`\ /\ :c:func:`ntfs_test_inode`\ /\ :c:func:`ntfs_init_locked_inode`\  mechanism.
+
+.. _`ntfs_attr.note`:
+
+NOTE
+----
+
+Elements are ordered by size to make the structure as compact as
+possible on all architectures.
+
 .. This file was automatic generated / don't edit.
 

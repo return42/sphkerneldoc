@@ -1,19 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/rdma/rdma_cm.h
 
-.. _`int`:
+.. _`rdma_cm_event_handler`:
 
-int
-===
+rdma_cm_event_handler
+=====================
 
-.. c:function:: typedef int(*rdma_cm_event_handler)
+.. c:function:: int rdma_cm_event_handler(struct rdma_cm_id *id, struct rdma_cm_event *event)
 
     Callback used to report user events.
 
-    :param \*rdma_cm_event_handler:
+    :param struct rdma_cm_id \*id:
         *undescribed*
 
-.. _`int.notes`:
+    :param struct rdma_cm_event \*event:
+        *undescribed*
+
+.. _`rdma_cm_event_handler.notes`:
 
 Notes
 -----

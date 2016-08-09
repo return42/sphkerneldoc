@@ -332,7 +332,7 @@ It contains all the necessary data to handle such queues.
 amdkfd_ioctl_t
 ==============
 
-.. c:function:: typedef int amdkfd_ioctl_t(struct file *filep, struct kfd_process *p, void *data)
+.. c:function:: int amdkfd_ioctl_t(struct file *filep, struct kfd_process *p, void *data)
 
     :param struct file \*filep:
         *undescribed*

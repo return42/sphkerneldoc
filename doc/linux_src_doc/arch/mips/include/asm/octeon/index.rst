@@ -30,6 +30,7 @@ octeon
     cvmx-spi_h
     cvmx-spinlock_h
     cvmx-sysinfo_h
+    cvmx-wqe_h
     cvmx_h
     octeon-feature_h
     octeon_h

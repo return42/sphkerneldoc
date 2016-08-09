@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/include/lustre_dlm.h
 
+.. _`ldlm_side_t`:
+
+typedef ldlm_side_t
+===================
+
+.. c:type:: typedef ldlm_side_t
+
+    The "client" type is actually an indication that this is a narrow local view into complete namespace on the server. Such namespaces cannot make any decisions about lack of conflicts or do any autonomous lock granting without first speaking to a server.
+
 .. _`ldlm_cb_blocking`:
 
 LDLM_CB_BLOCKING

@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/s390/crypto/ap_bus.h
 
+.. _`ap_qid_t`:
+
+typedef ap_qid_t
+================
+
+.. c:type:: typedef ap_qid_t
+
+    6 bit device index and a 4 bit queue index (domain).
+
 .. _`ap_queue_status`:
 
 struct ap_queue_status

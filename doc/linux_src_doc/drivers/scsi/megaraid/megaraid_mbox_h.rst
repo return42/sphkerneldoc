@@ -1,6 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/megaraid/megaraid_mbox.h
 
+.. _`mbox_ccb_t`:
+
+typedef mbox_ccb_t
+==================
+
+.. c:type:: typedef mbox_ccb_t
+
+    command control block specific to mailbox based controllers
+
+.. _`mbox_ccb_t.description`:
+
+Description
+-----------
+
+command control block specific to the mailbox based controllers
+
 .. _`max_ld_extended64`:
 
 MAX_LD_EXTENDED64

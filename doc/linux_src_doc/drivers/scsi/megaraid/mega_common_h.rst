@@ -1,6 +1,27 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/megaraid/mega_common.h
 
+.. _`scb_t`:
+
+typedef scb_t
+=============
+
+.. c:type:: typedef scb_t
+
+    scsi command control block
+
+.. _`scb_t.description`:
+
+Description
+-----------
+
+This is our central data structure to issue commands the each driver.
+Driver specific data structures are maintained in the ccb field.
+scb provides a field 'gp', which can be used by LLD for its own purposes
+
+dev_channel and dev_target must be initialized with the actual channel and
+target on the controller.
+
 .. _`mraid_get_device_map`:
 
 MRAID_GET_DEVICE_MAP

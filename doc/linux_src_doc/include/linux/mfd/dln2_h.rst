@@ -1,19 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/mfd/dln2.h
 
-.. _`void`:
+.. _`dln2_event_cb_t`:
 
-void
-====
+dln2_event_cb_t
+===============
 
-.. c:function:: typedef void(*dln2_event_cb_t)
+.. c:function:: void dln2_event_cb_t(struct platform_device *pdev, u16 echo, const void *data, int len)
 
     event callback function signature
 
-    :param \*dln2_event_cb_t:
+    :param struct platform_device \*pdev:
         *undescribed*
 
-.. _`void.description`:
+    :param u16 echo:
+        *undescribed*
+
+    :param const void \*data:
+        *undescribed*
+
+    :param int len:
+        *undescribed*
+
+.. _`dln2_event_cb_t.description`:
 
 Description
 -----------

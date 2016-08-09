@@ -7,4 +7,7 @@ hv
 .. toctree::
     :maxdepth: 1
 
+    drv_pcie_rc_intf_h
+    drv_xgbe_impl_h
+    drv_xgbe_intf_h
     netio_intf_h

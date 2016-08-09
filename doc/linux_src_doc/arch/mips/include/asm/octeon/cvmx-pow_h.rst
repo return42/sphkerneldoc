@@ -1,6 +1,83 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-pow.h
 
+.. _`cvmx_pow_wait_t`:
+
+typedef cvmx_pow_wait_t
+=======================
+
+.. c:type:: typedef cvmx_pow_wait_t
+
+
+.. _`cvmx_pow_tag_op_t`:
+
+typedef cvmx_pow_tag_op_t
+=========================
+
+.. c:type:: typedef cvmx_pow_tag_op_t
+
+
+.. _`cvmx_pow_tag_req_t`:
+
+typedef cvmx_pow_tag_req_t
+==========================
+
+.. c:type:: typedef cvmx_pow_tag_req_t
+
+
+.. _`cvmx_pow_load_addr_t`:
+
+typedef cvmx_pow_load_addr_t
+============================
+
+.. c:type:: typedef cvmx_pow_load_addr_t
+
+
+.. _`cvmx_pow_tag_load_resp_t`:
+
+typedef cvmx_pow_tag_load_resp_t
+================================
+
+.. c:type:: typedef cvmx_pow_tag_load_resp_t
+
+    (except CSR reads)
+
+.. _`cvmx_pow_tag_store_addr_t`:
+
+typedef cvmx_pow_tag_store_addr_t
+=================================
+
+.. c:type:: typedef cvmx_pow_tag_store_addr_t
+
+    The store address is meaningful on stores to the POW.  The hardware assumes that an aligned 64-bit store was used for all these stores.  Note the assumption that the work queue entry is aligned on an 8-byte boundary (since the low-order 3 address bits must be zero).  Note that not all fields are used by all operations.
+
+.. _`cvmx_pow_tag_store_addr_t.note`:
+
+NOTE
+----
+
+The following is the behavior of the pending switch bit at the PP
+for POW stores (i.e. when did<7:3> == 0xc)
+- did<2:0> == 0      => pending switch bit is set
+- did<2:0> == 1      => no affect on the pending switch bit
+- did<2:0> == 3      => pending switch bit is cleared
+- did<2:0> == 7      => no affect on the pending switch bit
+- did<2:0> == others => must not be used
+- No other loads/stores have an affect on the pending switch bit
+- The switch bus from POW can clear the pending switch bit
+
+NOTE: did<2:0> == 2 is used by the HW for a special single-cycle
+ADDWQ command that only contains the pointer). SW must never use
+did<2:0> == 2.
+
+.. _`cvmx_pow_iobdma_store_t`:
+
+typedef cvmx_pow_iobdma_store_t
+===============================
+
+.. c:type:: typedef cvmx_pow_iobdma_store_t
+
+
 .. _`cvmx_pow_get_current_tag`:
 
 cvmx_pow_get_current_tag

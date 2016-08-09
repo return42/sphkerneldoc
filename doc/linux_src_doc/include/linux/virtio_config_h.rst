@@ -6,7 +6,7 @@
 vq_callback_t
 =============
 
-.. c:function:: typedef void vq_callback_t(struct virtqueue *)
+.. c:function:: void vq_callback_t(struct virtqueue *)
 
     operations for configuring a virtio device
 

@@ -1,6 +1,51 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-fau.h
 
+.. _`cvmx_fau_tagwait64_t`:
+
+typedef cvmx_fau_tagwait64_t
+============================
+
+.. c:type:: typedef cvmx_fau_tagwait64_t
+
+    bit will be set. Otherwise the value of the register before the update will be returned.
+
+.. _`cvmx_fau_tagwait32_t`:
+
+typedef cvmx_fau_tagwait32_t
+============================
+
+.. c:type:: typedef cvmx_fau_tagwait32_t
+
+    bit will be set. Otherwise the value of the register before the update will be returned.
+
+.. _`cvmx_fau_tagwait16_t`:
+
+typedef cvmx_fau_tagwait16_t
+============================
+
+.. c:type:: typedef cvmx_fau_tagwait16_t
+
+    bit will be set. Otherwise the value of the register before the update will be returned.
+
+.. _`cvmx_fau_tagwait8_t`:
+
+typedef cvmx_fau_tagwait8_t
+===========================
+
+.. c:type:: typedef cvmx_fau_tagwait8_t
+
+    bit will be set. Otherwise the value of the register before the update will be returned.
+
+.. _`cvmx_fau_async_tagwait_result_t`:
+
+typedef cvmx_fau_async_tagwait_result_t
+=======================================
+
+.. c:type:: typedef cvmx_fau_async_tagwait_result_t
+
+    the error bit will be set. Otherwise the value of the register before the update will be returned.
+
 .. _`__cvmx_fau_store_address`:
 
 __cvmx_fau_store_address

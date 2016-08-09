@@ -1,26 +1,35 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/include/lu_object.h
 
-.. _`int`:
+.. _`lu_printer_t`:
 
-int
-===
+lu_printer_t
+============
 
-.. c:function:: typedef int(*lu_printer_t)
+.. c:function:: int lu_printer_t(const struct lu_env *env, void *cookie, const char *format, ...)__printf(3# 4)
 
     :\ :c:func:`loo_object_print`\  method.
 
-    :param \*lu_printer_t:
+    :param const struct lu_env \*env:
         *undescribed*
 
-.. _`int.description`:
+    :param void \*cookie:
+        *undescribed*
+
+    :param const char \*format:
+        *undescribed*
+
+    :param ...)__printf(3# 4:
+        *undescribed*
+
+.. _`lu_printer_t.description`:
 
 Description
 -----------
 
 Printer function is needed to provide some flexibility in (semi-)debugging
 
-.. _`int.output`:
+.. _`lu_printer_t.output`:
 
 output
 ------

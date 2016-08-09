@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/types.h
 
+.. _`sector_t`:
+
+typedef sector_t
+================
+
+.. c:type:: typedef sector_t
+
+
+.. _`sector_t.description`:
+
+Description
+-----------
+
+Linux always considers sectors to be 512 bytes long independently
+of the devices real block size.
+
+blkcnt_t is the type of the inode's block count.
+
 .. _`callback_head`:
 
 struct callback_head
