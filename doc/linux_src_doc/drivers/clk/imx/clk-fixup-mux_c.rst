@@ -20,7 +20,7 @@ Definition
     struct clk_fixup_mux {
         struct clk_mux mux;
         const struct clk_ops *ops;
-        void (* fixup) (u32 *val);
+        void (*fixup)(u32 *val);
     }
 
 .. _`clk_fixup_mux.members`:

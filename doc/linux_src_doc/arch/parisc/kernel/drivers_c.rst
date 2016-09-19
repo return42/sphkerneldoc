@@ -6,11 +6,11 @@
 for_each_padev
 ==============
 
-.. c:function:: int for_each_padev(int (*) fn (struct device *, void *, void *data)
+.. c:function:: int for_each_padev(int (*fn)(struct device *, void *), void *data)
 
     Iterate over all devices in the tree
 
-    :param (int (\*) fn (struct device \*, void \*):
+    :param int (\*fn)(struct device \*, void \*):
         Function to call for each device.
 
     :param void \*data:

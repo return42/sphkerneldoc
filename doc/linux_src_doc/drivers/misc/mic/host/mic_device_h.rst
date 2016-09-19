@@ -175,18 +175,18 @@ Definition
     struct mic_hw_ops {
         u8 aper_bar;
         u8 mmio_bar;
-        u32 (* read_spad) (struct mic_device *mdev, unsigned int idx);
-        void (* write_spad) (struct mic_device *mdev, unsigned int idx, u32 val);
-        void (* send_intr) (struct mic_device *mdev, int doorbell);
-        u32 (* ack_interrupt) (struct mic_device *mdev);
-        void (* intr_workarounds) (struct mic_device *mdev);
-        void (* reset) (struct mic_device *mdev);
-        void (* reset_fw_ready) (struct mic_device *mdev);
-        bool (* is_fw_ready) (struct mic_device *mdev);
-        void (* send_firmware_intr) (struct mic_device *mdev);
-        int (* load_mic_fw) (struct mic_device *mdev, const char *buf);
-        u32 (* get_postcode) (struct mic_device *mdev);
-        bool (* dma_filter) (struct dma_chan *chan, void *param);
+        u32 (*read_spad)(struct mic_device *mdev, unsigned int idx);
+        void (*write_spad)(struct mic_device *mdev, unsigned int idx, u32 val);
+        void (*send_intr)(struct mic_device *mdev, int doorbell);
+        u32 (*ack_interrupt)(struct mic_device *mdev);
+        void (*intr_workarounds)(struct mic_device *mdev);
+        void (*reset)(struct mic_device *mdev);
+        void (*reset_fw_ready)(struct mic_device *mdev);
+        bool (*is_fw_ready)(struct mic_device *mdev);
+        void (*send_firmware_intr)(struct mic_device *mdev);
+        int (*load_mic_fw)(struct mic_device *mdev, const char *buf);
+        u32 (*get_postcode)(struct mic_device *mdev);
+        bool (*dma_filter)(struct dma_chan *chan, void *param);
     }
 
 .. _`mic_hw_ops.members`:

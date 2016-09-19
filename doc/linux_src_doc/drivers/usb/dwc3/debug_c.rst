@@ -6,11 +6,11 @@
 dwc3_trace
 ==========
 
-.. c:function:: void dwc3_trace(void (*) trace (struct va_format *, const char *fmt,  ...)
+.. c:function:: void dwc3_trace(void (*trace)(struct va_format *), const char *fmt,  ...)
 
     DesignWare USB3 DRD Controller Debug/Trace Support
 
-    :param (void (\*) trace (struct va_format \*):
+    :param void (\*trace)(struct va_format \*):
         *undescribed*
 
     :param const char \*fmt:

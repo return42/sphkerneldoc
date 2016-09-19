@@ -85,7 +85,7 @@ returned.
 tracefs_create_instance_dir
 ===========================
 
-.. c:function:: struct dentry *tracefs_create_instance_dir(const char *name, struct dentry *parent, int (*) mkdir (const char *name, int (*) rmdir (const char *name)
+.. c:function:: struct dentry *tracefs_create_instance_dir(const char *name, struct dentry *parent, int (*mkdir)(const char *name), int (*rmdir)(const char *name))
 
     create the tracing instances directory
 
@@ -95,10 +95,10 @@ tracefs_create_instance_dir
     :param struct dentry \*parent:
         The parent directory that the instances directory will exist
 
-    :param (int (\*) mkdir (const char \*name):
+    :param int (\*mkdir)(const char \*name):
         The function to call when a mkdir is performed.
 
-    :param (int (\*) rmdir (const char \*name):
+    :param int (\*rmdir)(const char \*name):
         The function to call when a rmdir is performed.
 
 .. _`tracefs_create_instance_dir.description`:

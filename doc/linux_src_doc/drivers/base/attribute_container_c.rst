@@ -50,14 +50,14 @@ attribute_container_unregister
 attribute_container_add_device
 ==============================
 
-.. c:function:: void attribute_container_add_device(struct device *dev, int (*) fn (struct attribute_container *, struct device *, struct device *)
+.. c:function:: void attribute_container_add_device(struct device *dev, int (*fn)(struct attribute_container *, struct device *, struct device *))
 
     see if any container is interested in dev
 
     :param struct device \*dev:
         device to add attributes to
 
-    :param (int (\*) fn (struct attribute_container \*, struct device \*, struct device \*):
+    :param int (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         function to trigger addition of class device.
 
 .. _`attribute_container_add_device.description`:
@@ -82,14 +82,14 @@ which is not relinquished until the release of the classdev.
 attribute_container_remove_device
 =================================
 
-.. c:function:: void attribute_container_remove_device(struct device *dev, void (*) fn (struct attribute_container *, struct device *, struct device *)
+.. c:function:: void attribute_container_remove_device(struct device *dev, void (*fn)(struct attribute_container *, struct device *, struct device *))
 
     make device eligible for removal.
 
     :param struct device \*dev:
         The generic device
 
-    :param (void (\*) fn (struct attribute_container \*, struct device \*, struct device \*):
+    :param void (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         A function to call to remove the device
 
 .. _`attribute_container_remove_device.description`:
@@ -117,7 +117,7 @@ to do the final put on the classdev.
 attribute_container_device_trigger
 ==================================
 
-.. c:function:: void attribute_container_device_trigger(struct device *dev, int (*) fn (struct attribute_container *, struct device *, struct device *)
+.. c:function:: void attribute_container_device_trigger(struct device *dev, int (*fn)(struct attribute_container *, struct device *, struct device *))
 
     execute a trigger for each matching classdev
 
@@ -125,7 +125,7 @@ attribute_container_device_trigger
         The generic device to run the trigger for
         \ ``fn``\     the function to execute for each classdev.
 
-    :param (int (\*) fn (struct attribute_container \*, struct device \*, struct device \*):
+    :param int (\*fn)(struct attribute_container \*, struct device \*, struct device \*):
         *undescribed*
 
 .. _`attribute_container_device_trigger.description`:
@@ -142,14 +142,14 @@ container, then use \ :c:func:`attribute_container_trigger`\  instead.
 attribute_container_trigger
 ===========================
 
-.. c:function:: void attribute_container_trigger(struct device *dev, int (*) fn (struct attribute_container *, struct device *)
+.. c:function:: void attribute_container_trigger(struct device *dev, int (*fn)(struct attribute_container *, struct device *))
 
     trigger a function for each matching container
 
     :param struct device \*dev:
         The generic device to activate the trigger for
 
-    :param (int (\*) fn (struct attribute_container \*, struct device \*):
+    :param int (\*fn)(struct attribute_container \*, struct device \*):
         the function to trigger
 
 .. _`attribute_container_trigger.description`:

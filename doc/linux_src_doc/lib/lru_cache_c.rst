@@ -392,7 +392,7 @@ Used to initialize the active set to some previously recorded state.
 lc_seq_dump_details
 ===================
 
-.. c:function:: void lc_seq_dump_details(struct seq_file *seq, struct lru_cache *lc, char *utext, void (*) detail (struct seq_file *, struct lc_element *)
+.. c:function:: void lc_seq_dump_details(struct seq_file *seq, struct lru_cache *lc, char *utext, void (*detail)(struct seq_file *, struct lc_element *))
 
     Dump a complete LRU cache to seq in textual form.
 
@@ -405,7 +405,7 @@ lc_seq_dump_details
     :param char \*utext:
         user supplied additional "heading" or other info
 
-    :param (void (\*) detail (struct seq_file \*, struct lc_element \*):
+    :param void (\*detail)(struct seq_file \*, struct lc_element \*):
         function pointer the user may provide to dump further details
         of the object the lc_element is embedded in. May be NULL.
 

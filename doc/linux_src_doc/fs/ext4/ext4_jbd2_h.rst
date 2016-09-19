@@ -19,7 +19,7 @@ Definition
 
     struct ext4_journal_cb_entry {
         struct list_head jce_list;
-        void (* jce_func) (struct super_block *sb,struct ext4_journal_cb_entry *jce, int error);
+        void (*jce_func)(struct super_block *sb,struct ext4_journal_cb_entry *jce, int error);
     }
 
 .. _`ext4_journal_cb_entry.members`:
@@ -48,14 +48,14 @@ as it's first element and pass it to \ :c:func:`ext4_journal_callback_add`\ .
 ext4_journal_callback_add
 =========================
 
-.. c:function:: void ext4_journal_callback_add(handle_t *handle, void (*) func (struct super_block *sb, struct ext4_journal_cb_entry *jce, int rc, struct ext4_journal_cb_entry *jce)
+.. c:function:: void ext4_journal_callback_add(handle_t *handle, void (*func)(struct super_block *sb, struct ext4_journal_cb_entry *jce, int rc), struct ext4_journal_cb_entry *jce)
 
     add a function to call after transaction commit
 
     :param handle_t \*handle:
         active journal transaction handle to register callback on
 
-    :param (void (\*) func (struct super_block \*sb, struct ext4_journal_cb_entry \*jce, int rc):
+    :param void (\*func)(struct super_block \*sb, struct ext4_journal_cb_entry \*jce, int rc):
         callback function to call after the transaction has committed:
 
     :param struct ext4_journal_cb_entry \*jce:

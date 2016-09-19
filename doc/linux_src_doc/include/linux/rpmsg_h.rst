@@ -227,9 +227,9 @@ Definition
     struct rpmsg_driver {
         struct device_driver drv;
         const struct rpmsg_device_id *id_table;
-        int (* probe) (struct rpmsg_channel *dev);
-        void (* remove) (struct rpmsg_channel *dev);
-        void (* callback) (struct rpmsg_channel *, void *, int, void *, u32);
+        int (*probe)(struct rpmsg_channel *dev);
+        void (*remove)(struct rpmsg_channel *dev);
+        void (*callback)(struct rpmsg_channel *, void *, int, void *, u32);
     }
 
 .. _`rpmsg_driver.members`:

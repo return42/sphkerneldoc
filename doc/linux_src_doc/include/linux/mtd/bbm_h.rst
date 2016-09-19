@@ -98,7 +98,7 @@ Definition
         int badblockpos;
         int options;
         uint8_t *bbt;
-        int (* isbad_bbt) (struct mtd_info *mtd, loff_t ofs, int allowbbt);
+        int (*isbad_bbt)(struct mtd_info *mtd, loff_t ofs, int allowbbt);
         struct nand_bbt_descr *badblock_pattern;
         void *priv;
     }

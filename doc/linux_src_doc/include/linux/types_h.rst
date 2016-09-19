@@ -37,7 +37,7 @@ Definition
 
     struct callback_head {
         struct callback_head *next;
-        void (* func) (struct callback_head *head);
+        void (*func)(struct callback_head *head);
     }
 
 .. _`callback_head.members`:

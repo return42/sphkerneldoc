@@ -20,8 +20,8 @@ Definition
     struct tps65010_board {
         int base;
         unsigned outmask;
-        int (* setup) (struct i2c_client *client, void *context);
-        int (* teardown) (struct i2c_client *client, void *context);
+        int (*setup)(struct i2c_client *client, void *context);
+        int (*teardown)(struct i2c_client *client, void *context);
         void *context;
     }
 

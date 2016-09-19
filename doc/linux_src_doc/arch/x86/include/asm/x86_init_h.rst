@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct x86_init_mpparse {
-        void (* mpc_record) (unsigned int mode);
-        void (* setup_ioapic_ids) (void);
-        int (* mpc_apic_id) (struct mpc_cpu *m);
-        void (* smp_read_mpc_oem) (struct mpc_table *mpc);
-        void (* mpc_oem_pci_bus) (struct mpc_bus *m);
-        void (* mpc_oem_bus_info) (struct mpc_bus *m, char *name);
-        void (* find_smp_config) (void);
-        void (* get_smp_config) (unsigned int early);
+        void (*mpc_record)(unsigned int mode);
+        void (*setup_ioapic_ids)(void);
+        int (*mpc_apic_id)(struct mpc_cpu *m);
+        void (*smp_read_mpc_oem)(struct mpc_table *mpc);
+        void (*mpc_oem_pci_bus)(struct mpc_bus *m);
+        void (*mpc_oem_bus_info)(struct mpc_bus *m, char *name);
+        void (*find_smp_config)(void);
+        void (*get_smp_config)(unsigned int early);
     }
 
 .. _`x86_init_mpparse.members`:
@@ -74,9 +74,9 @@ Definition
 .. code-block:: c
 
     struct x86_init_resources {
-        void (* probe_roms) (void);
-        void (* reserve_resources) (void);
-        char *(* memory_setup) (void);
+        void (*probe_roms)(void);
+        void (*reserve_resources)(void);
+        char *(*memory_setup)(void);
     }
 
 .. _`x86_init_resources.members`:
@@ -111,9 +111,9 @@ Definition
 .. code-block:: c
 
     struct x86_init_irqs {
-        void (* pre_vector_init) (void);
-        void (* intr_init) (void);
-        void (* trap_init) (void);
+        void (*pre_vector_init)(void);
+        void (*intr_init)(void);
+        void (*trap_init)(void);
     }
 
 .. _`x86_init_irqs.members`:
@@ -148,8 +148,8 @@ Definition
 .. code-block:: c
 
     struct x86_init_oem {
-        void (* arch_setup) (void);
-        void (* banner) (void);
+        void (*arch_setup)(void);
+        void (*banner)(void);
     }
 
 .. _`x86_init_oem.members`:
@@ -180,7 +180,7 @@ Definition
 .. code-block:: c
 
     struct x86_init_paging {
-        void (* pagetable_init) (void);
+        void (*pagetable_init)(void);
     }
 
 .. _`x86_init_paging.members`:
@@ -211,9 +211,9 @@ Definition
 .. code-block:: c
 
     struct x86_init_timers {
-        void (* setup_percpu_clockev) (void);
-        void (* timer_init) (void);
-        void (* wallclock_init) (void);
+        void (*setup_percpu_clockev)(void);
+        void (*timer_init)(void);
+        void (*wallclock_init)(void);
     }
 
 .. _`x86_init_timers.members`:
@@ -247,7 +247,7 @@ Definition
 .. code-block:: c
 
     struct x86_init_iommu {
-        int (* iommu_init) (void);
+        int (*iommu_init)(void);
     }
 
 .. _`x86_init_iommu.members`:
@@ -275,10 +275,10 @@ Definition
 .. code-block:: c
 
     struct x86_init_pci {
-        int (* arch_init) (void);
-        int (* init) (void);
-        void (* init_irq) (void);
-        void (* fixup_irqs) (void);
+        int (*arch_init)(void);
+        int (*init)(void);
+        void (*init_irq)(void);
+        void (*fixup_irqs)(void);
     }
 
 .. _`x86_init_pci.members`:
@@ -371,9 +371,9 @@ Definition
 .. code-block:: c
 
     struct x86_cpuinit_ops {
-        void (* setup_percpu_clockev) (void);
-        void (* early_percpu_clock_init) (void);
-        void (* fixup_cpu_id) (struct cpuinfo_x86 *c, int node);
+        void (*setup_percpu_clockev)(void);
+        void (*early_percpu_clock_init)(void);
+        void (*fixup_cpu_id)(struct cpuinfo_x86 *c, int node);
     }
 
 .. _`x86_cpuinit_ops.members`:
@@ -492,19 +492,19 @@ Definition
 .. code-block:: c
 
     struct x86_platform_ops {
-        unsigned long (* calibrate_tsc) (void);
-        void (* get_wallclock) (struct timespec *ts);
-        int (* set_wallclock) (const struct timespec *ts);
-        void (* iommu_shutdown) (void);
-        bool (* is_untracked_pat_range) (u64 start, u64 end);
-        void (* nmi_init) (void);
-        unsigned char (* get_nmi_reason) (void);
-        int (* i8042_detect) (void);
-        void (* save_sched_clock_state) (void);
-        void (* restore_sched_clock_state) (void);
-        void (* apic_post_init) (void);
+        unsigned long (*calibrate_tsc)(void);
+        void (*get_wallclock)(struct timespec *ts);
+        int (*set_wallclock)(const struct timespec *ts);
+        void (*iommu_shutdown)(void);
+        bool (*is_untracked_pat_range)(u64 start, u64 end);
+        void (*nmi_init)(void);
+        unsigned char (*get_nmi_reason)(void);
+        int (*i8042_detect)(void);
+        void (*save_sched_clock_state)(void);
+        void (*restore_sched_clock_state)(void);
+        void (*apic_post_init)(void);
         struct x86_legacy_features legacy;
-        void (* set_legacy_features) (void);
+        void (*set_legacy_features)(void);
     }
 
 .. _`x86_platform_ops.members`:

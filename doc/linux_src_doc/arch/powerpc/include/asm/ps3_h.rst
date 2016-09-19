@@ -208,9 +208,9 @@ Definition
         enum ps3_match_id match_id;
         enum ps3_match_sub_id match_sub_id;
         struct device_driver core;
-        int (* probe) (struct ps3_system_bus_device *);
-        int (* remove) (struct ps3_system_bus_device *);
-        int (* shutdown) (struct ps3_system_bus_device *);
+        int (*probe)(struct ps3_system_bus_device *);
+        int (*remove)(struct ps3_system_bus_device *);
+        int (*shutdown)(struct ps3_system_bus_device *);
     }
 
 .. _`ps3_system_bus_driver.members`:

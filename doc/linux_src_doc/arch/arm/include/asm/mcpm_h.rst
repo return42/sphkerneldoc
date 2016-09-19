@@ -199,11 +199,11 @@ An error is returned if the registration has been done previously.
 mcpm_sync_init
 ==============
 
-.. c:function:: int mcpm_sync_init(void (*) power_up_setup (unsigned int affinity_level)
+.. c:function:: int mcpm_sync_init(void (*power_up_setup)(unsigned int affinity_level))
 
     Initialize the cluster synchronization support
 
-    :param (void (\*) power_up_setup (unsigned int affinity_level):
+    :param void (\*power_up_setup)(unsigned int affinity_level):
         platform specific function invoked during very
         early CPU/cluster bringup stage.
 
@@ -228,11 +228,11 @@ point.
 mcpm_loopback
 =============
 
-.. c:function:: int mcpm_loopback(void (*) cache_disable (void)
+.. c:function:: int mcpm_loopback(void (*cache_disable)(void))
 
     make a run through the MCPM low-level code
 
-    :param (void (\*) cache_disable (void):
+    :param void (\*cache_disable)(void):
         pointer to function performing cache disabling
 
 .. _`mcpm_loopback.description`:

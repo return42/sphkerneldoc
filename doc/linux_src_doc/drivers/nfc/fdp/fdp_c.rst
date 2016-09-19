@@ -6,12 +6,12 @@
 fdp_nci_set_data_pkt_counter
 ============================
 
-.. c:function:: void fdp_nci_set_data_pkt_counter(struct nci_dev *ndev, void (*) cb (struct nci_dev *ndev, int count)
+.. c:function:: void fdp_nci_set_data_pkt_counter(struct nci_dev *ndev, void (*cb)(struct nci_dev *ndev), int count)
 
     :param struct nci_dev \*ndev:
         *undescribed*
 
-    :param (void (\*) cb (struct nci_dev \*ndev):
+    :param void (\*cb)(struct nci_dev \*ndev):
         *undescribed*
 
     :param int count:

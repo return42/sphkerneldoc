@@ -534,7 +534,7 @@ dpm_suspend_end
 legacy_suspend
 ==============
 
-.. c:function:: int legacy_suspend(struct device *dev, pm_message_t state, int (*) cb (struct device *dev, pm_message_t state, char *info)
+.. c:function:: int legacy_suspend(struct device *dev, pm_message_t state, int (*cb)(struct device *dev, pm_message_t state), char *info)
 
     Execute a legacy (bus or class) suspend callback for device.
 
@@ -544,7 +544,7 @@ legacy_suspend
     :param pm_message_t state:
         PM transition of the system being carried out.
 
-    :param (int (\*) cb (struct device \*dev, pm_message_t state):
+    :param int (\*cb)(struct device \*dev, pm_message_t state):
         Suspend callback to execute.
 
     :param char \*info:
@@ -662,14 +662,14 @@ device_pm_wait_for_dev
 dpm_for_each_dev
 ================
 
-.. c:function:: void dpm_for_each_dev(void *data, void (*) fn (struct device *, void *)
+.. c:function:: void dpm_for_each_dev(void *data, void (*fn)(struct device *, void *))
 
     device iterator.
 
     :param void \*data:
         data for the callback.
 
-    :param (void (\*) fn (struct device \*, void \*):
+    :param void (\*fn)(struct device \*, void \*):
         function to be called for each device.
 
 .. _`dpm_for_each_dev.description`:

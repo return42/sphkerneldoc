@@ -94,11 +94,11 @@ Definition
 .. code-block:: c
 
     struct fpga_manager_ops {
-        enum fpga_mgr_states (* state) (struct fpga_manager *mgr);
-        int (* write_init) (struct fpga_manager *mgr, u32 flags,const char *buf, size_t count);
-        int (* write) (struct fpga_manager *mgr, const char *buf, size_t count);
-        int (* write_complete) (struct fpga_manager *mgr, u32 flags);
-        void (* fpga_remove) (struct fpga_manager *mgr);
+        enum fpga_mgr_states (*state)(struct fpga_manager *mgr);
+        int (*write_init)(struct fpga_manager *mgr, u32 flags,const char *buf, size_t count);
+        int (*write)(struct fpga_manager *mgr, const char *buf, size_t count);
+        int (*write_complete)(struct fpga_manager *mgr, u32 flags);
+        void (*fpga_remove)(struct fpga_manager *mgr);
     }
 
 .. _`fpga_manager_ops.members`:

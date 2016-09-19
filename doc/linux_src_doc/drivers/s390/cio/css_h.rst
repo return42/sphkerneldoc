@@ -20,18 +20,18 @@ Definition
     struct css_driver {
         struct css_device_id *subchannel_type;
         struct device_driver drv;
-        void (* irq) (struct subchannel *);
-        int (* chp_event) (struct subchannel *, struct chp_link *, int);
-        int (* sch_event) (struct subchannel *, int);
-        int (* probe) (struct subchannel *);
-        int (* remove) (struct subchannel *);
-        void (* shutdown) (struct subchannel *);
-        int (* prepare) (struct subchannel *);
-        void (* complete) (struct subchannel *);
-        int (* freeze) (struct subchannel *);
-        int (* thaw) (struct subchannel *);
-        int (* restore) (struct subchannel *);
-        int (* settle) (void);
+        void (*irq)(struct subchannel *);
+        int (*chp_event)(struct subchannel *, struct chp_link *, int);
+        int (*sch_event)(struct subchannel *, int);
+        int (*probe)(struct subchannel *);
+        int (*remove)(struct subchannel *);
+        void (*shutdown)(struct subchannel *);
+        int (*prepare)(struct subchannel *);
+        void (*complete)(struct subchannel *);
+        int (*freeze)(struct subchannel *);
+        int (*thaw)(struct subchannel *);
+        int (*restore)(struct subchannel *);
+        int (*settle)(void);
     }
 
 .. _`css_driver.members`:

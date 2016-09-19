@@ -59,10 +59,10 @@ Definition
 
     struct st_proto_s {
         enum proto_type type;
-        long (* recv) (void *, struct sk_buff *);
-        unsigned char (* match_packet) (const unsigned char *data);
-        void (* reg_complete_cb) (void *, char data);
-        long (* write) (struct sk_buff *skb);
+        long (*recv)(void *, struct sk_buff *);
+        unsigned char (*match_packet)(const unsigned char *data);
+        void (*reg_complete_cb)(void *, char data);
+        long (*write)(struct sk_buff *skb);
         void *priv_data;
         unsigned char chnl_id;
         unsigned short max_frame_size;
@@ -563,12 +563,12 @@ Definition
         unsigned char dev_name[UART_DEV_NAME_LEN];
         u32 flow_cntrl;
         u32 baud_rate;
-        int (* suspend) (struct platform_device *, pm_message_t);
-        int (* resume) (struct platform_device *);
-        int (* chip_enable) (struct kim_data_s *);
-        int (* chip_disable) (struct kim_data_s *);
-        int (* chip_asleep) (struct kim_data_s *);
-        int (* chip_awake) (struct kim_data_s *);
+        int (*suspend)(struct platform_device *, pm_message_t);
+        int (*resume)(struct platform_device *);
+        int (*chip_enable)(struct kim_data_s *);
+        int (*chip_disable)(struct kim_data_s *);
+        int (*chip_asleep)(struct kim_data_s *);
+        int (*chip_awake)(struct kim_data_s *);
     }
 
 .. _`ti_st_plat_data.members`:

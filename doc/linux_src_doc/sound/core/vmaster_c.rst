@@ -43,14 +43,14 @@ The created control element, or \ ``NULL``\  for errors (ENOMEM).
 snd_ctl_add_vmaster_hook
 ========================
 
-.. c:function:: int snd_ctl_add_vmaster_hook(struct snd_kcontrol *kcontrol, void (*) hook (void *private_data, int, void *private_data)
+.. c:function:: int snd_ctl_add_vmaster_hook(struct snd_kcontrol *kcontrol, void (*hook)(void *private_data, int), void *private_data)
 
     Add a hook to a vmaster control
 
     :param struct snd_kcontrol \*kcontrol:
         vmaster kctl element
 
-    :param (void (\*) hook (void \*private_data, int):
+    :param void (\*hook)(void \*private_data, int):
         the hook function
 
     :param void \*private_data:

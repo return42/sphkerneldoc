@@ -1036,7 +1036,7 @@ true if the entry is a valid, false otherwise.
 batadv_tt_tvlv_generate
 =======================
 
-.. c:function:: void batadv_tt_tvlv_generate(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, void *tvlv_buff, u16 tt_len, bool (*) valid_cb (const void *, const void *, void *cb_data)
+.. c:function:: void batadv_tt_tvlv_generate(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, void *tvlv_buff, u16 tt_len, bool (*valid_cb)(const void *, const void *), void *cb_data)
 
     fill the tvlv buff with the tt entries from the specified tt hash
 
@@ -1052,7 +1052,7 @@ batadv_tt_tvlv_generate
     :param u16 tt_len:
         expected tvlv tt data buffer length in number of bytes
 
-    :param (bool (\*) valid_cb (const void \*, const void \*):
+    :param bool (\*valid_cb)(const void \*, const void \*):
         function to filter tt change entries
 
     :param void \*cb_data:

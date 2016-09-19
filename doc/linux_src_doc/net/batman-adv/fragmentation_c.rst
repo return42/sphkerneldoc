@@ -25,14 +25,14 @@ Free fragments in the passed hlist. Should be called with appropriate lock.
 batadv_frag_purge_orig
 ======================
 
-.. c:function:: void batadv_frag_purge_orig(struct batadv_orig_node *orig_node, bool (*) check_cb (struct batadv_frag_table_entry *)
+.. c:function:: void batadv_frag_purge_orig(struct batadv_orig_node *orig_node, bool (*check_cb)(struct batadv_frag_table_entry *))
 
     free fragments associated to an orig
 
     :param struct batadv_orig_node \*orig_node:
         originator to free fragments from
 
-    :param (bool (\*) check_cb (struct batadv_frag_table_entry \*):
+    :param bool (\*check_cb)(struct batadv_frag_table_entry \*):
         optional function to tell if an entry should be purged
 
 .. _`batadv_frag_size_limit`:

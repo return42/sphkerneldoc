@@ -155,7 +155,7 @@ rpc_remove_pipe_dir_object
 rpc_find_or_alloc_pipe_dir_object
 =================================
 
-.. c:function:: struct rpc_pipe_dir_object *rpc_find_or_alloc_pipe_dir_object(struct net *net, struct rpc_pipe_dir_head *pdh, int (*) match (struct rpc_pipe_dir_object *, void *, struct rpc_pipe_dir_object *(*) alloc (void *, void *data)
+.. c:function:: struct rpc_pipe_dir_object *rpc_find_or_alloc_pipe_dir_object(struct net *net, struct rpc_pipe_dir_head *pdh, int (*match)(struct rpc_pipe_dir_object *, void *), struct rpc_pipe_dir_object *(*alloc)(void *), void *data)
 
     :param struct net \*net:
         pointer to struct net
@@ -163,10 +163,10 @@ rpc_find_or_alloc_pipe_dir_object
     :param struct rpc_pipe_dir_head \*pdh:
         pointer to struct rpc_pipe_dir_head
 
-    :param (int (\*) match (struct rpc_pipe_dir_object \*, void \*):
+    :param int (\*match)(struct rpc_pipe_dir_object \*, void \*):
         match struct rpc_pipe_dir_object to data
 
-    :param (struct rpc_pipe_dir_object \*(\*) alloc (void \*):
+    :param struct rpc_pipe_dir_object \*(\*alloc)(void \*):
         allocate a new struct rpc_pipe_dir_object
 
     :param void \*data:

@@ -20,12 +20,12 @@ Definition
     struct machine_desc {
         const char *name;
         const char **dt_compat;
-        void (* init_early) (void);
+        void (*init_early)(void);
         #ifdef CONFIG_SMP
-        void (* init_per_cpu) (unsigned int);
+        void (*init_per_cpu)(unsigned int);
         #endif
-        void (* init_machine) (void);
-        void (* init_late) (void);
+        void (*init_machine)(void);
+        void (*init_late)(void);
     }
 
 .. _`machine_desc.members`:

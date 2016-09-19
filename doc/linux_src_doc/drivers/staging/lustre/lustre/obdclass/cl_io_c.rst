@@ -835,7 +835,7 @@ cl_req_attr_set
 cl_sync_io_init
 ===============
 
-.. c:function:: void cl_sync_io_init(struct cl_sync_io *anchor, int nr, void (*) end (const struct lu_env *, struct cl_sync_io *)
+.. c:function:: void cl_sync_io_init(struct cl_sync_io *anchor, int nr, void (*end)(const struct lu_env *, struct cl_sync_io *))
 
     :param struct cl_sync_io \*anchor:
         *undescribed*
@@ -843,7 +843,7 @@ cl_sync_io_init
     :param int nr:
         *undescribed*
 
-    :param (void (\*) end (const struct lu_env \*, struct cl_sync_io \*):
+    :param void (\*end)(const struct lu_env \*, struct cl_sync_io \*):
         *undescribed*
 
 .. _`cl_sync_io_wait`:

@@ -444,7 +444,7 @@ vmw_legacy_srf_destroy
 vmw_surface_init
 ================
 
-.. c:function:: int vmw_surface_init(struct vmw_private *dev_priv, struct vmw_surface *srf, void (*) res_free (struct vmw_resource *res)
+.. c:function:: int vmw_surface_init(struct vmw_private *dev_priv, struct vmw_surface *srf, void (*res_free)(struct vmw_resource *res))
 
     initialize a struct vmw_surface
 
@@ -454,7 +454,7 @@ vmw_surface_init
     :param struct vmw_surface \*srf:
         Pointer to the struct vmw_surface to initialize.
 
-    :param (void (\*) res_free (struct vmw_resource \*res):
+    :param void (\*res_free)(struct vmw_resource \*res):
         Pointer to a resource destructor used to free
         the object.
 

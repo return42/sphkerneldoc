@@ -326,14 +326,14 @@ Build a host adapter control block from the SCSI mid layer command
 inia100_queue_lck
 =================
 
-.. c:function:: int inia100_queue_lck(struct scsi_cmnd *cmd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int inia100_queue_lck(struct scsi_cmnd *cmd, void (*done)(struct scsi_cmnd *))
 
     queue command with host
 
     :param struct scsi_cmnd \*cmd:
         Command block
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         Completion function
 
 .. _`inia100_queue_lck.description`:

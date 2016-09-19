@@ -121,7 +121,7 @@ is ready for registration.
 ib_sg_to_pages
 ==============
 
-.. c:function:: int ib_sg_to_pages(struct ib_mr *mr, struct scatterlist *sgl, int sg_nents, unsigned int *sg_offset_p, int (*) set_page (struct ib_mr *, u64)
+.. c:function:: int ib_sg_to_pages(struct ib_mr *mr, struct scatterlist *sgl, int sg_nents, unsigned int *sg_offset_p, int (*set_page)(struct ib_mr *, u64))
 
     Convert the largest prefix of a sg list to a page vector
 
@@ -140,7 +140,7 @@ ib_sg_to_pages
         byte that has not been processed where n is the return
         value of this function.
 
-    :param (int (\*) set_page (struct ib_mr \*, u64):
+    :param int (\*set_page)(struct ib_mr \*, u64):
         driver page assignment function pointer
 
 .. _`ib_sg_to_pages.description`:

@@ -22,8 +22,8 @@ Definition
         struct spi_message msg;
         struct spi_transfer transfers[SPI_TEST_MAX_TRANSFERS];
         unsigned int transfer_count;
-        int (* run_test) (struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
-        int (* execute_msg) (struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
+        int (*run_test)(struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
+        int (*execute_msg)(struct spi_device *spi, struct spi_test *test,void *tx, void *rx);
         int expected_return;
         int iterate_len[SPI_TEST_MAX_ITERATE];
         int iterate_tx_align;

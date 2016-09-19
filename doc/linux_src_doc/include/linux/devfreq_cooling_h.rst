@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct devfreq_cooling_power {
-        unsigned long (* get_static_power) (unsigned long voltage);
-        unsigned long (* get_dynamic_power) (unsigned long freq,unsigned long voltage);
+        unsigned long (*get_static_power)(unsigned long voltage);
+        unsigned long (*get_dynamic_power)(unsigned long freq,unsigned long voltage);
         unsigned long dyn_power_coeff;
     }
 

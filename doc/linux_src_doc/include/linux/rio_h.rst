@@ -67,13 +67,13 @@ Definition
 
     struct rio_switch_ops {
         struct module *owner;
-        int (* add_entry) (struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 route_port);
-        int (* get_entry) (struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 *route_port);
-        int (* clr_table) (struct rio_mport *mport, u16 destid, u8 hopcount,u16 table);
-        int (* set_domain) (struct rio_mport *mport, u16 destid, u8 hopcount,u8 sw_domain);
-        int (* get_domain) (struct rio_mport *mport, u16 destid, u8 hopcount,u8 *sw_domain);
-        int (* em_init) (struct rio_dev *dev);
-        int (* em_handle) (struct rio_dev *dev, u8 swport);
+        int (*add_entry)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 route_port);
+        int (*get_entry)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table, u16 route_destid, u8 *route_port);
+        int (*clr_table)(struct rio_mport *mport, u16 destid, u8 hopcount,u16 table);
+        int (*set_domain)(struct rio_mport *mport, u16 destid, u8 hopcount,u8 sw_domain);
+        int (*get_domain)(struct rio_mport *mport, u16 destid, u8 hopcount,u8 *sw_domain);
+        int (*em_init)(struct rio_dev *dev);
+        int (*em_handle)(struct rio_dev *dev, u8 swport);
     }
 
 .. _`rio_switch_ops.members`:
@@ -152,7 +152,7 @@ Definition
         struct rio_driver *driver;
         struct device dev;
         struct resource riores[RIO_MAX_DEV_RESOURCES];
-        int (* pwcback) (struct rio_dev *rdev, union rio_pw_msg *msg, int step);
+        int (*pwcback)(struct rio_dev *rdev, union rio_pw_msg *msg, int step);
         u16 destid;
         u8 hopcount;
         struct rio_dev *prev;
@@ -267,7 +267,7 @@ Definition
 
     struct rio_msg {
         struct resource *res;
-        void (* mcback) (struct rio_mport * mport, void *dev_id, int mbox, int slot);
+        void (*mcback)(struct rio_mport * mport, void *dev_id, int mbox, int slot);
     }
 
 .. _`rio_msg.members`:
@@ -300,7 +300,7 @@ Definition
     struct rio_dbell {
         struct list_head node;
         struct resource *res;
-        void (* dinb) (struct rio_mport *mport, void *dev_id, u16 src, u16 dst, u16 info);
+        void (*dinb)(struct rio_mport *mport, void *dev_id, u16 src, u16 dst, u16 info);
         void *dev_id;
     }
 
@@ -468,7 +468,7 @@ Definition
         unsigned char id;
         struct device dev;
         void *enum_data;
-        void (* release) (struct rio_net *net);
+        void (*release)(struct rio_net *net);
     }
 
 .. _`rio_net.members`:
@@ -568,24 +568,24 @@ Definition
 .. code-block:: c
 
     struct rio_ops {
-        int (* lcread) (struct rio_mport *mport, int index, u32 offset, int len,u32 *data);
-        int (* lcwrite) (struct rio_mport *mport, int index, u32 offset, int len,u32 data);
-        int (* cread) (struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 *data);
-        int (* cwrite) (struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 data);
-        int (* dsend) (struct rio_mport *mport, int index, u16 destid, u16 data);
-        int (* pwenable) (struct rio_mport *mport, int enable);
-        int (* open_outb_mbox) (struct rio_mport *mport, void *dev_id,int mbox, int entries);
-        void (* close_outb_mbox) (struct rio_mport *mport, int mbox);
-        int (* open_inb_mbox) (struct rio_mport *mport, void *dev_id,int mbox, int entries);
-        void (* close_inb_mbox) (struct rio_mport *mport, int mbox);
-        int (* add_outb_message) (struct rio_mport *mport, struct rio_dev *rdev,int mbox, void *buffer, size_t len);
-        int (* add_inb_buffer) (struct rio_mport *mport, int mbox, void *buf);
-        void *(* get_inb_message) (struct rio_mport *mport, int mbox);
-        int (* map_inb) (struct rio_mport *mport, dma_addr_t lstart,u64 rstart, u32 size, u32 flags);
-        void (* unmap_inb) (struct rio_mport *mport, dma_addr_t lstart);
-        int (* query_mport) (struct rio_mport *mport,struct rio_mport_attr *attr);
-        int (* map_outb) (struct rio_mport *mport, u16 destid, u64 rstart,u32 size, u32 flags, dma_addr_t *laddr);
-        void (* unmap_outb) (struct rio_mport *mport, u16 destid, u64 rstart);
+        int (*lcread)(struct rio_mport *mport, int index, u32 offset, int len,u32 *data);
+        int (*lcwrite)(struct rio_mport *mport, int index, u32 offset, int len,u32 data);
+        int (*cread)(struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 *data);
+        int (*cwrite)(struct rio_mport *mport, int index, u16 destid,u8 hopcount, u32 offset, int len, u32 data);
+        int (*dsend)(struct rio_mport *mport, int index, u16 destid, u16 data);
+        int (*pwenable)(struct rio_mport *mport, int enable);
+        int (*open_outb_mbox)(struct rio_mport *mport, void *dev_id,int mbox, int entries);
+        void (*close_outb_mbox)(struct rio_mport *mport, int mbox);
+        int (*open_inb_mbox)(struct rio_mport *mport, void *dev_id,int mbox, int entries);
+        void (*close_inb_mbox)(struct rio_mport *mport, int mbox);
+        int (*add_outb_message)(struct rio_mport *mport, struct rio_dev *rdev,int mbox, void *buffer, size_t len);
+        int (*add_inb_buffer)(struct rio_mport *mport, int mbox, void *buf);
+        void *(*get_inb_message)(struct rio_mport *mport, int mbox);
+        int (*map_inb)(struct rio_mport *mport, dma_addr_t lstart,u64 rstart, u32 size, u32 flags);
+        void (*unmap_inb)(struct rio_mport *mport, dma_addr_t lstart);
+        int (*query_mport)(struct rio_mport *mport,struct rio_mport_attr *attr);
+        int (*map_outb)(struct rio_mport *mport, u16 destid, u64 rstart,u32 size, u32 flags, dma_addr_t *laddr);
+        void (*unmap_outb)(struct rio_mport *mport, u16 destid, u64 rstart);
     }
 
 .. _`rio_ops.members`:
@@ -667,12 +667,12 @@ Definition
         struct list_head node;
         char *name;
         const struct rio_device_id *id_table;
-        int (* probe) (struct rio_dev * dev, const struct rio_device_id * id);
-        void (* remove) (struct rio_dev * dev);
-        void (* shutdown) (struct rio_dev *dev);
-        int (* suspend) (struct rio_dev * dev, u32 state);
-        int (* resume) (struct rio_dev * dev);
-        int (* enable_wake) (struct rio_dev * dev, u32 state, int enable);
+        int (*probe)(struct rio_dev * dev, const struct rio_device_id * id);
+        void (*remove)(struct rio_dev * dev);
+        void (*shutdown)(struct rio_dev *dev);
+        int (*suspend)(struct rio_dev * dev, u32 state);
+        int (*resume)(struct rio_dev * dev);
+        int (*enable_wake)(struct rio_dev * dev, u32 state, int enable);
         struct device_driver driver;
     }
 
@@ -737,8 +737,8 @@ Definition
 
     struct rio_scan {
         struct module *owner;
-        int (* enumerate) (struct rio_mport *mport, u32 flags);
-        int (* discover) (struct rio_mport *mport, u32 flags);
+        int (*enumerate)(struct rio_mport *mport, u32 flags);
+        int (*discover)(struct rio_mport *mport, u32 flags);
     }
 
 .. _`rio_scan.members`:

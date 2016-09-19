@@ -19,7 +19,7 @@ Definition
 
     struct kmsg_dumper {
         struct list_head list;
-        void (* dump) (struct kmsg_dumper *dumper, enum kmsg_dump_reason reason);
+        void (*dump)(struct kmsg_dumper *dumper, enum kmsg_dump_reason reason);
         enum kmsg_dump_reason max_reason;
         bool active;
         bool registered;

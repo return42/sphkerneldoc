@@ -628,7 +628,7 @@ code.
 debugfs_create_devm_seqfile
 ===========================
 
-.. c:function:: struct dentry *debugfs_create_devm_seqfile(struct device *dev, const char *name, struct dentry *parent, int (*) read_fn (struct seq_file *s, void *data)
+.. c:function:: struct dentry *debugfs_create_devm_seqfile(struct device *dev, const char *name, struct dentry *parent, int (*read_fn)(struct seq_file *s, void *data))
 
     create a debugfs file that is bound to device.
 
@@ -643,7 +643,7 @@ debugfs_create_devm_seqfile
         directory dentry if set.  If this parameter is \ ``NULL``\ , then the
         file will be created in the root of the debugfs filesystem.
 
-    :param (int (\*) read_fn (struct seq_file \*s, void \*data):
+    :param int (\*read_fn)(struct seq_file \*s, void \*data):
         function pointer called to print the seq_file content.
 
 .. This file was automatic generated / don't edit.

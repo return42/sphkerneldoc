@@ -196,20 +196,20 @@ Definition
 .. code-block:: c
 
     struct clkdm_ops {
-        int (* clkdm_add_wkdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_del_wkdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_read_wkdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_clear_all_wkdeps) (struct clockdomain *clkdm);
-        int (* clkdm_add_sleepdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_del_sleepdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_read_sleepdep) (struct clockdomain *clkdm1, struct clockdomain *clkdm2);
-        int (* clkdm_clear_all_sleepdeps) (struct clockdomain *clkdm);
-        int (* clkdm_sleep) (struct clockdomain *clkdm);
-        int (* clkdm_wakeup) (struct clockdomain *clkdm);
-        void (* clkdm_allow_idle) (struct clockdomain *clkdm);
-        void (* clkdm_deny_idle) (struct clockdomain *clkdm);
-        int (* clkdm_clk_enable) (struct clockdomain *clkdm);
-        int (* clkdm_clk_disable) (struct clockdomain *clkdm);
+        int (*clkdm_add_wkdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_del_wkdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_read_wkdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_clear_all_wkdeps)(struct clockdomain *clkdm);
+        int (*clkdm_add_sleepdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_del_sleepdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_read_sleepdep)(struct clockdomain *clkdm1, struct clockdomain *clkdm2);
+        int (*clkdm_clear_all_sleepdeps)(struct clockdomain *clkdm);
+        int (*clkdm_sleep)(struct clockdomain *clkdm);
+        int (*clkdm_wakeup)(struct clockdomain *clkdm);
+        void (*clkdm_allow_idle)(struct clockdomain *clkdm);
+        void (*clkdm_deny_idle)(struct clockdomain *clkdm);
+        int (*clkdm_clk_enable)(struct clockdomain *clkdm);
+        int (*clkdm_clk_disable)(struct clockdomain *clkdm);
     }
 
 .. _`clkdm_ops.members`:

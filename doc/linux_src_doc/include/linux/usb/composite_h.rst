@@ -172,19 +172,19 @@ Definition
         struct usb_configuration *config;
         struct usb_os_desc_table *os_desc_table;
         unsigned os_desc_n;
-        int (* bind) (struct usb_configuration *,struct usb_function *);
-        void (* unbind) (struct usb_configuration *,struct usb_function *);
-        void (* free_func) (struct usb_function *f);
+        int (*bind)(struct usb_configuration *,struct usb_function *);
+        void (*unbind)(struct usb_configuration *,struct usb_function *);
+        void (*free_func)(struct usb_function *f);
         struct module *mod;
-        int (* set_alt) (struct usb_function *,unsigned interface, unsigned alt);
-        int (* get_alt) (struct usb_function *,unsigned interface);
-        void (* disable) (struct usb_function *);
-        int (* setup) (struct usb_function *,const struct usb_ctrlrequest *);
-        bool (* req_match) (struct usb_function *,const struct usb_ctrlrequest *);
-        void (* suspend) (struct usb_function *);
-        void (* resume) (struct usb_function *);
-        int (* get_status) (struct usb_function *);
-        int (* func_suspend) (struct usb_function *,u8 suspend_opt);
+        int (*set_alt)(struct usb_function *,unsigned interface, unsigned alt);
+        int (*get_alt)(struct usb_function *,unsigned interface);
+        void (*disable)(struct usb_function *);
+        int (*setup)(struct usb_function *,const struct usb_ctrlrequest *);
+        bool (*req_match)(struct usb_function *,const struct usb_ctrlrequest *);
+        void (*suspend)(struct usb_function *);
+        void (*resume)(struct usb_function *);
+        int (*get_status)(struct usb_function *);
+        int (*func_suspend)(struct usb_function *,u8 suspend_opt);
     }
 
 .. _`usb_function.members`:
@@ -330,8 +330,8 @@ Definition
         const char *label;
         struct usb_gadget_strings **strings;
         const struct usb_descriptor_header **descriptors;
-        void (* unbind) (struct usb_configuration *);
-        int (* setup) (struct usb_configuration *,const struct usb_ctrlrequest *);
+        void (*unbind)(struct usb_configuration *);
+        int (*setup)(struct usb_configuration *,const struct usb_ctrlrequest *);
         u8 bConfigurationValue;
         u8 iConfiguration;
         u8 bmAttributes;
@@ -430,11 +430,11 @@ Definition
         struct usb_gadget_strings **strings;
         enum usb_device_speed max_speed;
         unsigned needs_serial:1;
-        int (* bind) (struct usb_composite_dev *cdev);
-        int (* unbind) (struct usb_composite_dev *);
-        void (* disconnect) (struct usb_composite_dev *);
-        void (* suspend) (struct usb_composite_dev *);
-        void (* resume) (struct usb_composite_dev *);
+        int (*bind)(struct usb_composite_dev *cdev);
+        int (*unbind)(struct usb_composite_dev *);
+        void (*disconnect)(struct usb_composite_dev *);
+        void (*suspend)(struct usb_composite_dev *);
+        void (*resume)(struct usb_composite_dev *);
         struct usb_gadget_driver gadget_driver;
     }
 

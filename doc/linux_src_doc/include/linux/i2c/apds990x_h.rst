@@ -21,8 +21,8 @@ Definition
         struct apds990x_chip_factors cf;
         u8 pdrive;
         u8 ppcount;
-        int (* setup_resources) (void);
-        int (* release_resources) (void);
+        int (*setup_resources)(void);
+        int (*release_resources)(void);
     }
 
 .. _`apds990x_platform_data.members`:

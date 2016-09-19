@@ -50,23 +50,23 @@ Definition
 .. code-block:: c
 
     struct fbtft_ops {
-        int (* write) (struct fbtft_par *par, void *buf, size_t len);
-        int (* read) (struct fbtft_par *par, void *buf, size_t len);
-        int (* write_vmem) (struct fbtft_par *par, size_t offset, size_t len);
-        void (* write_register) (struct fbtft_par *par, int len, ...);
-        void (* set_addr_win) (struct fbtft_par *par,int xs, int ys, int xe, int ye);
-        void (* reset) (struct fbtft_par *par);
-        void (* mkdirty) (struct fb_info *info, int from, int to);
-        void (* update_display) (struct fbtft_par *par,unsigned start_line, unsigned end_line);
-        int (* init_display) (struct fbtft_par *par);
-        int (* blank) (struct fbtft_par *par, bool on);
-        unsigned long (* request_gpios_match) (struct fbtft_par *par,const struct fbtft_gpio *gpio);
-        int (* request_gpios) (struct fbtft_par *par);
-        int (* verify_gpios) (struct fbtft_par *par);
-        void (* register_backlight) (struct fbtft_par *par);
-        void (* unregister_backlight) (struct fbtft_par *par);
-        int (* set_var) (struct fbtft_par *par);
-        int (* set_gamma) (struct fbtft_par *par, unsigned long *curves);
+        int (*write)(struct fbtft_par *par, void *buf, size_t len);
+        int (*read)(struct fbtft_par *par, void *buf, size_t len);
+        int (*write_vmem)(struct fbtft_par *par, size_t offset, size_t len);
+        void (*write_register)(struct fbtft_par *par, int len, ...);
+        void (*set_addr_win)(struct fbtft_par *par,int xs, int ys, int xe, int ye);
+        void (*reset)(struct fbtft_par *par);
+        void (*mkdirty)(struct fb_info *info, int from, int to);
+        void (*update_display)(struct fbtft_par *par,unsigned start_line, unsigned end_line);
+        int (*init_display)(struct fbtft_par *par);
+        int (*blank)(struct fbtft_par *par, bool on);
+        unsigned long (*request_gpios_match)(struct fbtft_par *par,const struct fbtft_gpio *gpio);
+        int (*request_gpios)(struct fbtft_par *par);
+        int (*verify_gpios)(struct fbtft_par *par);
+        void (*register_backlight)(struct fbtft_par *par);
+        void (*unregister_backlight)(struct fbtft_par *par);
+        int (*set_var)(struct fbtft_par *par);
+        int (*set_gamma)(struct fbtft_par *par, unsigned long *curves);
     }
 
 .. _`fbtft_ops.members`:

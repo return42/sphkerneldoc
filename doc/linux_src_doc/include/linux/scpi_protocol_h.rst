@@ -18,16 +18,16 @@ Definition
 .. code-block:: c
 
     struct scpi_ops {
-        u32 (* get_version) (void);
-        int (* clk_get_range) (u16, unsigned long *, unsigned long *);
-        unsigned long (* clk_get_val) (u16);
-        int (* clk_set_val) (u16, unsigned long);
-        int (* dvfs_get_idx) (u8);
-        int (* dvfs_set_idx) (u8, u8);
-        struct scpi_dvfs_info *(* dvfs_get_info) (u8);
-        int (* sensor_get_capability) (u16 *sensors);
-        int (* sensor_get_info) (u16 sensor_id, struct scpi_sensor_info *);
-        int (* sensor_get_value) (u16, u64 *);
+        u32 (*get_version)(void);
+        int (*clk_get_range)(u16, unsigned long *, unsigned long *);
+        unsigned long (*clk_get_val)(u16);
+        int (*clk_set_val)(u16, unsigned long);
+        int (*dvfs_get_idx)(u8);
+        int (*dvfs_set_idx)(u8, u8);
+        struct scpi_dvfs_info *(*dvfs_get_info)(u8);
+        int (*sensor_get_capability)(u16 *sensors);
+        int (*sensor_get_info)(u16 sensor_id, struct scpi_sensor_info *);
+        int (*sensor_get_value)(u16, u64 *);
     }
 
 .. _`scpi_ops.members`:

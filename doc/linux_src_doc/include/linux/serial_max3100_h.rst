@@ -20,7 +20,7 @@ Definition
     struct plat_max3100 {
         int loopback;
         int crystal;
-        void (* max3100_hw_suspend) (int suspend);
+        void (*max3100_hw_suspend)(int suspend);
         int poll_time;
     }
 

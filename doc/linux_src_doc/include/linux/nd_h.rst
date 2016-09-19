@@ -21,7 +21,7 @@ Definition
         int force_raw;
         struct device dev;
         struct device *claim;
-        int (* rw_bytes) (struct nd_namespace_common *, resource_size_t offset,void *buf, size_t size, int rw);
+        int (*rw_bytes)(struct nd_namespace_common *, resource_size_t offset,void *buf, size_t size, int rw);
     }
 
 .. _`nd_namespace_common.members`:

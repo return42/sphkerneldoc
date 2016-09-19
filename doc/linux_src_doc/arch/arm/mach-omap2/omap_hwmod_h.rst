@@ -664,11 +664,11 @@ Definition
         const char *name;
         struct omap_hwmod_class_sysconfig *sysc;
         u32 rev;
-        int (* pre_shutdown) (struct omap_hwmod *oh);
-        int (* reset) (struct omap_hwmod *oh);
-        int (* enable_preprogram) (struct omap_hwmod *oh);
-        void (* lock) (struct omap_hwmod *oh);
-        void (* unlock) (struct omap_hwmod *oh);
+        int (*pre_shutdown)(struct omap_hwmod *oh);
+        int (*reset)(struct omap_hwmod *oh);
+        int (*enable_preprogram)(struct omap_hwmod *oh);
+        void (*lock)(struct omap_hwmod *oh);
+        void (*unlock)(struct omap_hwmod *oh);
     }
 
 .. _`omap_hwmod_class.members`:
@@ -792,7 +792,7 @@ Definition
         struct lock_class_key hwmod_key;
         struct list_head node;
         struct omap_hwmod_ocp_if *_mpu_port;
-        unsigned int (* xlate_irq) (unsigned int);
+        unsigned int (*xlate_irq)(unsigned int);
         u16 flags;
         u8 mpu_rt_idx;
         u8 response_lat;

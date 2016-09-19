@@ -6,7 +6,7 @@
 phy_register_fixup
 ==================
 
-.. c:function:: int phy_register_fixup(const char *bus_id, u32 phy_uid, u32 phy_uid_mask, int (*) run (struct phy_device *)
+.. c:function:: int phy_register_fixup(const char *bus_id, u32 phy_uid, u32 phy_uid_mask, int (*run)(struct phy_device *))
 
     creates a new phy_fixup and adds it to the list
 
@@ -21,7 +21,7 @@ phy_register_fixup
         Applied to phydev->phy_id and fixup->phy_uid before
         comparison
 
-    :param (int (\*) run (struct phy_device \*):
+    :param int (\*run)(struct phy_device \*):
         The actual code to be run when a matching PHY is found
 
 .. _`get_phy_c45_ids`:
@@ -167,14 +167,14 @@ phy_find_first
 phy_prepare_link
 ================
 
-.. c:function:: void phy_prepare_link(struct phy_device *phydev, void (*) handler (struct net_device *)
+.. c:function:: void phy_prepare_link(struct phy_device *phydev, void (*handler)(struct net_device *))
 
     prepares the PHY layer to monitor link status
 
     :param struct phy_device \*phydev:
         target phy_device struct
 
-    :param (void (\*) handler (struct net_device \*):
+    :param void (\*handler)(struct net_device \*):
         callback function for link status change notifications
 
 .. _`phy_prepare_link.description`:
@@ -194,7 +194,7 @@ this function.
 phy_connect_direct
 ==================
 
-.. c:function:: int phy_connect_direct(struct net_device *dev, struct phy_device *phydev, void (*) handler (struct net_device *, phy_interface_t interface)
+.. c:function:: int phy_connect_direct(struct net_device *dev, struct phy_device *phydev, void (*handler)(struct net_device *), phy_interface_t interface)
 
     connect an ethernet device to a specific phy_device
 
@@ -204,7 +204,7 @@ phy_connect_direct
     :param struct phy_device \*phydev:
         the pointer to the phy device
 
-    :param (void (\*) handler (struct net_device \*):
+    :param void (\*handler)(struct net_device \*):
         callback function for state change notifications
 
     :param phy_interface_t interface:
@@ -215,7 +215,7 @@ phy_connect_direct
 phy_connect
 ===========
 
-.. c:function:: struct phy_device *phy_connect(struct net_device *dev, const char *bus_id, void (*) handler (struct net_device *, phy_interface_t interface)
+.. c:function:: struct phy_device *phy_connect(struct net_device *dev, const char *bus_id, void (*handler)(struct net_device *), phy_interface_t interface)
 
     connect an ethernet device to a PHY device
 
@@ -225,7 +225,7 @@ phy_connect
     :param const char \*bus_id:
         the id string of the PHY device to connect
 
-    :param (void (\*) handler (struct net_device \*):
+    :param void (\*handler)(struct net_device \*):
         callback function for state change notifications
 
     :param phy_interface_t interface:

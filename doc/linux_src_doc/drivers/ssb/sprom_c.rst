@@ -6,11 +6,11 @@
 ssb_arch_register_fallback_sprom
 ================================
 
-.. c:function:: int ssb_arch_register_fallback_sprom(int (*) sprom_callback (struct ssb_bus *bus, struct ssb_sprom *out)
+.. c:function:: int ssb_arch_register_fallback_sprom(int (*sprom_callback)(struct ssb_bus *bus, struct ssb_sprom *out))
 
     Registers a method providing a fallback SPROM if no SPROM is found.
 
-    :param (int (\*) sprom_callback (struct ssb_bus \*bus, struct ssb_sprom \*out):
+    :param int (\*sprom_callback)(struct ssb_bus \*bus, struct ssb_sprom \*out):
         The callback function.
 
 .. _`ssb_arch_register_fallback_sprom.description`:

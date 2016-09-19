@@ -737,7 +737,7 @@ Definition
         enum ccp_engine engine;
         u32 engine_error;
         union u;
-        void (* callback) (void *data, int err);
+        void (*callback)(void *data, int err);
         void *data;
     }
 

@@ -81,10 +81,10 @@ Definition
 .. code-block:: c
 
     struct drm_fb_helper_funcs {
-        void (* gamma_set) (struct drm_crtc *crtc, u16 red, u16 green,u16 blue, int regno);
-        void (* gamma_get) (struct drm_crtc *crtc, u16 *red, u16 *green,u16 *blue, int regno);
-        int (* fb_probe) (struct drm_fb_helper *helper,struct drm_fb_helper_surface_size *sizes);
-        bool (* initial_config) (struct drm_fb_helper *fb_helper,struct drm_fb_helper_crtc **crtcs,struct drm_display_mode **modes,struct drm_fb_offset *offsets,bool *enabled, int width, int height);
+        void (*gamma_set)(struct drm_crtc *crtc, u16 red, u16 green,u16 blue, int regno);
+        void (*gamma_get)(struct drm_crtc *crtc, u16 *red, u16 *green,u16 *blue, int regno);
+        int (*fb_probe)(struct drm_fb_helper *helper,struct drm_fb_helper_surface_size *sizes);
+        bool (*initial_config)(struct drm_fb_helper *fb_helper,struct drm_fb_helper_crtc **crtcs,struct drm_display_mode **modes,struct drm_fb_offset *offsets,bool *enabled, int width, int height);
     }
 
 .. _`drm_fb_helper_funcs.members`:

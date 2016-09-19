@@ -844,14 +844,14 @@ Returns a free event from the pool.
 ibmvfc_init_event
 =================
 
-.. c:function:: void ibmvfc_init_event(struct ibmvfc_event *evt, void (*) done (struct ibmvfc_event *, u8 format)
+.. c:function:: void ibmvfc_init_event(struct ibmvfc_event *evt, void (*done)(struct ibmvfc_event *), u8 format)
 
     Initialize fields in an event struct that are always required.
 
     :param struct ibmvfc_event \*evt:
         The event
 
-    :param (void (\*) done (struct ibmvfc_event \*):
+    :param void (\*done)(struct ibmvfc_event \*):
         Routine to call when the event is responded to
 
     :param u8 format:
@@ -1014,14 +1014,14 @@ Return
 ibmvfc_queuecommand_lck
 =======================
 
-.. c:function:: int ibmvfc_queuecommand_lck(struct scsi_cmnd *cmnd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int ibmvfc_queuecommand_lck(struct scsi_cmnd *cmnd, void (*done)(struct scsi_cmnd *))
 
     The queuecommand function of the scsi template
 
     :param struct scsi_cmnd \*cmnd:
         struct scsi_cmnd to be executed
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         Callback function to be called when cmnd is completed
 
 .. _`ibmvfc_queuecommand_lck.return`:
@@ -1211,7 +1211,7 @@ Return
 ibmvfc_wait_for_ops
 ===================
 
-.. c:function:: int ibmvfc_wait_for_ops(struct ibmvfc_host *vhost, void *device, int (*) match (struct ibmvfc_event *, void *)
+.. c:function:: int ibmvfc_wait_for_ops(struct ibmvfc_host *vhost, void *device, int (*match)(struct ibmvfc_event *, void *))
 
     Wait for ops to complete
 
@@ -1221,7 +1221,7 @@ ibmvfc_wait_for_ops
     :param void \*device:
         device to match (starget or sdev)
 
-    :param (int (\*) match (struct ibmvfc_event \*, void \*):
+    :param int (\*match)(struct ibmvfc_event \*, void \*):
         match function
 
 .. _`ibmvfc_wait_for_ops.return`:
@@ -1800,14 +1800,14 @@ Nothing
 ibmvfc_init_tgt
 ===============
 
-.. c:function:: void ibmvfc_init_tgt(struct ibmvfc_target *tgt, void (*) job_step (struct ibmvfc_target *)
+.. c:function:: void ibmvfc_init_tgt(struct ibmvfc_target *tgt, void (*job_step)(struct ibmvfc_target *))
 
     Set the next init job step for the target
 
     :param struct ibmvfc_target \*tgt:
         ibmvfc target struct
 
-    :param (void (\*) job_step (struct ibmvfc_target \*):
+    :param void (\*job_step)(struct ibmvfc_target \*):
         job step to perform
 
 .. _`ibmvfc_retry_tgt_init`:
@@ -1815,14 +1815,14 @@ ibmvfc_init_tgt
 ibmvfc_retry_tgt_init
 =====================
 
-.. c:function:: int ibmvfc_retry_tgt_init(struct ibmvfc_target *tgt, void (*) job_step (struct ibmvfc_target *)
+.. c:function:: int ibmvfc_retry_tgt_init(struct ibmvfc_target *tgt, void (*job_step)(struct ibmvfc_target *))
 
     Attempt to retry a step in target initialization
 
     :param struct ibmvfc_target \*tgt:
         ibmvfc target struct
 
-    :param (void (\*) job_step (struct ibmvfc_target \*):
+    :param void (\*job_step)(struct ibmvfc_target \*):
         initialization job step
 
 .. _`ibmvfc_retry_tgt_init.return`:

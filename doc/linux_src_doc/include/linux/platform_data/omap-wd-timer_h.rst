@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct omap_wd_timer_platform_data {
-        u32 (* read_reset_sources) (void);
+        u32 (*read_reset_sources)(void);
     }
 
 .. _`omap_wd_timer_platform_data.members`:

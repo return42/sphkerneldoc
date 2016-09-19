@@ -141,7 +141,7 @@ Definition
     struct fc_exch_mgr_anchor {
         struct list_head ema_list;
         struct fc_exch_mgr *mp;
-        bool (* match) (struct fc_frame *);
+        bool (*match)(struct fc_frame *);
     }
 
 .. _`fc_exch_mgr_anchor.members`:
@@ -1206,7 +1206,7 @@ fix error handler.
 fc_exch_seq_send
 ================
 
-.. c:function:: struct fc_seq *fc_exch_seq_send(struct fc_lport *lport, struct fc_frame *fp, void (*) resp (struct fc_seq *, struct fc_frame *fp, void *arg, void (*) destructor (struct fc_seq *, void *, void *arg, u32 timer_msec)
+.. c:function:: struct fc_seq *fc_exch_seq_send(struct fc_lport *lport, struct fc_frame *fp, void (*resp)(struct fc_seq *, struct fc_frame *fp, void *arg), void (*destructor)(struct fc_seq *, void *), void *arg, u32 timer_msec)
 
     Send a frame using a new exchange and sequence
 
@@ -1216,10 +1216,10 @@ fc_exch_seq_send
     :param struct fc_frame \*fp:
         The frame to be sent
 
-    :param (void (\*) resp (struct fc_seq \*, struct fc_frame \*fp, void \*arg):
+    :param void (\*resp)(struct fc_seq \*, struct fc_frame \*fp, void \*arg):
         The response handler for this request
 
-    :param (void (\*) destructor (struct fc_seq \*, void \*):
+    :param void (\*destructor)(struct fc_seq \*, void \*):
         The destructor for the exchange
 
     :param void \*arg:
@@ -1292,7 +1292,7 @@ fc_exch_update_stats
 fc_exch_mgr_add
 ===============
 
-.. c:function:: struct fc_exch_mgr_anchor *fc_exch_mgr_add(struct fc_lport *lport, struct fc_exch_mgr *mp, bool (*) match (struct fc_frame *)
+.. c:function:: struct fc_exch_mgr_anchor *fc_exch_mgr_add(struct fc_lport *lport, struct fc_exch_mgr *mp, bool (*match)(struct fc_frame *))
 
     Add an exchange manager to a local port's list of EMs
 
@@ -1302,7 +1302,7 @@ fc_exch_mgr_add
     :param struct fc_exch_mgr \*mp:
         The exchange manager to be added to the local port
 
-    :param (bool (\*) match (struct fc_frame \*):
+    :param bool (\*match)(struct fc_frame \*):
         The match routine that indicates when this EM should be used
 
 .. _`fc_exch_mgr_destroy`:
@@ -1349,7 +1349,7 @@ fc_exch_mgr_list_clone
 fc_exch_mgr_alloc
 =================
 
-.. c:function:: struct fc_exch_mgr *fc_exch_mgr_alloc(struct fc_lport *lport, enum fc_class class, u16 min_xid, u16 max_xid, bool (*) match (struct fc_frame *)
+.. c:function:: struct fc_exch_mgr *fc_exch_mgr_alloc(struct fc_lport *lport, enum fc_class class, u16 min_xid, u16 max_xid, bool (*match)(struct fc_frame *))
 
     Allocate an exchange manager
 
@@ -1365,7 +1365,7 @@ fc_exch_mgr_alloc
     :param u16 max_xid:
         The maximum XID for exchanges from the new EM
 
-    :param (bool (\*) match (struct fc_frame \*):
+    :param bool (\*match)(struct fc_frame \*):
         The match routine for the new EM
 
 .. _`fc_exch_mgr_free`:

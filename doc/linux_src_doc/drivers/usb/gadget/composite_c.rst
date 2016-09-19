@@ -290,7 +290,7 @@ descriptor should be supported by a SuperSpeed device.
 usb_add_config
 ==============
 
-.. c:function:: int usb_add_config(struct usb_composite_dev *cdev, struct usb_configuration *config, int (*) bind (struct usb_configuration *)
+.. c:function:: int usb_add_config(struct usb_composite_dev *cdev, struct usb_configuration *config, int (*bind)(struct usb_configuration *))
 
     add a configuration to a device.
 
@@ -300,7 +300,7 @@ usb_add_config
     :param struct usb_configuration \*config:
         the configuration, with bConfigurationValue assigned
 
-    :param (int (\*) bind (struct usb_configuration \*):
+    :param int (\*bind)(struct usb_configuration \*):
         the configuration's bind function
 
 .. _`usb_add_config.context`:

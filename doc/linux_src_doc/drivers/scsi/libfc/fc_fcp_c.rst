@@ -535,7 +535,7 @@ Returns rec tov in jiffies as rpriv->e_d_tov + 1 second
 fc_fcp_cmd_send
 ===============
 
-.. c:function:: int fc_fcp_cmd_send(struct fc_lport *lport, struct fc_fcp_pkt *fsp, void (*) resp (struct fc_seq *, struct fc_frame *fp, void *arg)
+.. c:function:: int fc_fcp_cmd_send(struct fc_lport *lport, struct fc_fcp_pkt *fsp, void (*resp)(struct fc_seq *, struct fc_frame *fp, void *arg))
 
     Send a FCP command
 
@@ -545,7 +545,7 @@ fc_fcp_cmd_send
     :param struct fc_fcp_pkt \*fsp:
         The FCP packet the command is on
 
-    :param (void (\*) resp (struct fc_seq \*, struct fc_frame \*fp, void \*arg):
+    :param void (\*resp)(struct fc_seq \*, struct fc_frame \*fp, void \*arg):
         The handler for the response
 
 .. _`fc_fcp_error`:

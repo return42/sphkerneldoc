@@ -443,11 +443,11 @@ core and try to enable interrupt driven mode.
 puts_raw_fixed
 ==============
 
-.. c:function:: void puts_raw_fixed(int (*) puts_raw (const char *s, int len, const char *s, int count)
+.. c:function:: void puts_raw_fixed(int (*puts_raw)(const char *s, int len), const char *s, int count)
 
     sn_sal_console_write helper for adding \r's as required
 
-    :param (int (\*) puts_raw (const char \*s, int len):
+    :param int (\*puts_raw)(const char \*s, int len):
         puts function to do the writing
 
     :param const char \*s:

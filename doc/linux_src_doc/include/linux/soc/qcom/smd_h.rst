@@ -80,8 +80,8 @@ Definition
     struct qcom_smd_driver {
         struct device_driver driver;
         const struct qcom_smd_id *smd_match_table;
-        int (* probe) (struct qcom_smd_device *dev);
-        void (* remove) (struct qcom_smd_device *dev);
+        int (*probe)(struct qcom_smd_device *dev);
+        void (*remove)(struct qcom_smd_device *dev);
         qcom_smd_cb_t callback;
     }
 

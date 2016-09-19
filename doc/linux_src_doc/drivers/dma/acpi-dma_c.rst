@@ -68,14 +68,14 @@ controller to be used later.
 acpi_dma_controller_register
 ============================
 
-.. c:function:: int acpi_dma_controller_register(struct device *dev, struct dma_chan *(*) acpi_dma_xlate (struct acpi_dma_spec *, struct acpi_dma *, void *data)
+.. c:function:: int acpi_dma_controller_register(struct device *dev, struct dma_chan *(*acpi_dma_xlate)(struct acpi_dma_spec *, struct acpi_dma *), void *data)
 
     Register a DMA controller to ACPI DMA helpers
 
     :param struct device \*dev:
         struct device of DMA controller
 
-    :param (struct dma_chan \*(\*) acpi_dma_xlate (struct acpi_dma_spec \*, struct acpi_dma \*):
+    :param struct dma_chan \*(\*acpi_dma_xlate)(struct acpi_dma_spec \*, struct acpi_dma \*):
         translation function which converts a dma specifier
         into a dma_chan structure
         \ ``data``\                 pointer to controller specific data to be used by
@@ -130,14 +130,14 @@ Return
 devm_acpi_dma_controller_register
 =================================
 
-.. c:function:: int devm_acpi_dma_controller_register(struct device *dev, struct dma_chan *(*) acpi_dma_xlate (struct acpi_dma_spec *, struct acpi_dma *, void *data)
+.. c:function:: int devm_acpi_dma_controller_register(struct device *dev, struct dma_chan *(*acpi_dma_xlate)(struct acpi_dma_spec *, struct acpi_dma *), void *data)
 
     resource managed \ :c:func:`acpi_dma_controller_register`\ 
 
     :param struct device \*dev:
         device that is registering this DMA controller
 
-    :param (struct dma_chan \*(\*) acpi_dma_xlate (struct acpi_dma_spec \*, struct acpi_dma \*):
+    :param struct dma_chan \*(\*acpi_dma_xlate)(struct acpi_dma_spec \*, struct acpi_dma \*):
         translation function
         \ ``data``\                 pointer to controller specific data
 

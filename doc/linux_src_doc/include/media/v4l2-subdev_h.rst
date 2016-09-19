@@ -18,32 +18,32 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_core_ops {
-        int (* log_status) (struct v4l2_subdev *sd);
-        int (* s_io_pin_config) (struct v4l2_subdev *sd, size_t n,struct v4l2_subdev_io_pin_config *pincfg);
-        int (* init) (struct v4l2_subdev *sd, u32 val);
-        int (* load_fw) (struct v4l2_subdev *sd);
-        int (* reset) (struct v4l2_subdev *sd, u32 val);
-        int (* s_gpio) (struct v4l2_subdev *sd, u32 val);
-        int (* queryctrl) (struct v4l2_subdev *sd, struct v4l2_queryctrl *qc);
-        int (* g_ctrl) (struct v4l2_subdev *sd, struct v4l2_control *ctrl);
-        int (* s_ctrl) (struct v4l2_subdev *sd, struct v4l2_control *ctrl);
-        int (* g_ext_ctrls) (struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
-        int (* s_ext_ctrls) (struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
-        int (* try_ext_ctrls) (struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
-        int (* querymenu) (struct v4l2_subdev *sd, struct v4l2_querymenu *qm);
-        long (* ioctl) (struct v4l2_subdev *sd, unsigned int cmd, void *arg);
+        int (*log_status)(struct v4l2_subdev *sd);
+        int (*s_io_pin_config)(struct v4l2_subdev *sd, size_t n,struct v4l2_subdev_io_pin_config *pincfg);
+        int (*init)(struct v4l2_subdev *sd, u32 val);
+        int (*load_fw)(struct v4l2_subdev *sd);
+        int (*reset)(struct v4l2_subdev *sd, u32 val);
+        int (*s_gpio)(struct v4l2_subdev *sd, u32 val);
+        int (*queryctrl)(struct v4l2_subdev *sd, struct v4l2_queryctrl *qc);
+        int (*g_ctrl)(struct v4l2_subdev *sd, struct v4l2_control *ctrl);
+        int (*s_ctrl)(struct v4l2_subdev *sd, struct v4l2_control *ctrl);
+        int (*g_ext_ctrls)(struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
+        int (*s_ext_ctrls)(struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
+        int (*try_ext_ctrls)(struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
+        int (*querymenu)(struct v4l2_subdev *sd, struct v4l2_querymenu *qm);
+        long (*ioctl)(struct v4l2_subdev *sd, unsigned int cmd, void *arg);
         #ifdef CONFIG_COMPAT
-        long (* compat_ioctl32) (struct v4l2_subdev *sd, unsigned int cmd,unsigned long arg);
+        long (*compat_ioctl32)(struct v4l2_subdev *sd, unsigned int cmd,unsigned long arg);
         #endif
         #ifdef CONFIG_VIDEO_ADV_DEBUG
-        int (* g_register) (struct v4l2_subdev *sd, struct v4l2_dbg_register *reg);
-        int (* s_register) (struct v4l2_subdev *sd, const struct v4l2_dbg_register *reg);
+        int (*g_register)(struct v4l2_subdev *sd, struct v4l2_dbg_register *reg);
+        int (*s_register)(struct v4l2_subdev *sd, const struct v4l2_dbg_register *reg);
         #endif
-        int (* s_power) (struct v4l2_subdev *sd, int on);
-        int (* interrupt_service_routine) (struct v4l2_subdev *sd,u32 status, bool *handled);
-        int (* subscribe_event) (struct v4l2_subdev *sd, struct v4l2_fh *fh,struct v4l2_event_subscription *sub);
-        int (* unsubscribe_event) (struct v4l2_subdev *sd, struct v4l2_fh *fh,struct v4l2_event_subscription *sub);
-        int (* registered_async) (struct v4l2_subdev *sd);
+        int (*s_power)(struct v4l2_subdev *sd, int on);
+        int (*interrupt_service_routine)(struct v4l2_subdev *sd,u32 status, bool *handled);
+        int (*subscribe_event)(struct v4l2_subdev *sd, struct v4l2_fh *fh,struct v4l2_event_subscription *sub);
+        int (*unsubscribe_event)(struct v4l2_subdev *sd, struct v4l2_fh *fh,struct v4l2_event_subscription *sub);
+        int (*registered_async)(struct v4l2_subdev *sd);
     }
 
 .. _`v4l2_subdev_core_ops.members`:
@@ -151,16 +151,16 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_tuner_ops {
-        int (* s_radio) (struct v4l2_subdev *sd);
-        int (* s_frequency) (struct v4l2_subdev *sd, const struct v4l2_frequency *freq);
-        int (* g_frequency) (struct v4l2_subdev *sd, struct v4l2_frequency *freq);
-        int (* enum_freq_bands) (struct v4l2_subdev *sd, struct v4l2_frequency_band *band);
-        int (* g_tuner) (struct v4l2_subdev *sd, struct v4l2_tuner *vt);
-        int (* s_tuner) (struct v4l2_subdev *sd, const struct v4l2_tuner *vt);
-        int (* g_modulator) (struct v4l2_subdev *sd, struct v4l2_modulator *vm);
-        int (* s_modulator) (struct v4l2_subdev *sd, const struct v4l2_modulator *vm);
-        int (* s_type_addr) (struct v4l2_subdev *sd, struct tuner_setup *type);
-        int (* s_config) (struct v4l2_subdev *sd, const struct v4l2_priv_tun_config *config);
+        int (*s_radio)(struct v4l2_subdev *sd);
+        int (*s_frequency)(struct v4l2_subdev *sd, const struct v4l2_frequency *freq);
+        int (*g_frequency)(struct v4l2_subdev *sd, struct v4l2_frequency *freq);
+        int (*enum_freq_bands)(struct v4l2_subdev *sd, struct v4l2_frequency_band *band);
+        int (*g_tuner)(struct v4l2_subdev *sd, struct v4l2_tuner *vt);
+        int (*s_tuner)(struct v4l2_subdev *sd, const struct v4l2_tuner *vt);
+        int (*g_modulator)(struct v4l2_subdev *sd, struct v4l2_modulator *vm);
+        int (*s_modulator)(struct v4l2_subdev *sd, const struct v4l2_modulator *vm);
+        int (*s_type_addr)(struct v4l2_subdev *sd, struct tuner_setup *type);
+        int (*s_config)(struct v4l2_subdev *sd, const struct v4l2_priv_tun_config *config);
     }
 
 .. _`v4l2_subdev_tuner_ops.members`:
@@ -219,10 +219,10 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_audio_ops {
-        int (* s_clock_freq) (struct v4l2_subdev *sd, u32 freq);
-        int (* s_i2s_clock_freq) (struct v4l2_subdev *sd, u32 freq);
-        int (* s_routing) (struct v4l2_subdev *sd, u32 input, u32 output, u32 config);
-        int (* s_stream) (struct v4l2_subdev *sd, int enable);
+        int (*s_clock_freq)(struct v4l2_subdev *sd, u32 freq);
+        int (*s_i2s_clock_freq)(struct v4l2_subdev *sd, u32 freq);
+        int (*s_routing)(struct v4l2_subdev *sd, u32 input, u32 output, u32 config);
+        int (*s_stream)(struct v4l2_subdev *sd, int enable);
     }
 
 .. _`v4l2_subdev_audio_ops.members`:
@@ -343,30 +343,30 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_video_ops {
-        int (* s_routing) (struct v4l2_subdev *sd, u32 input, u32 output, u32 config);
-        int (* s_crystal_freq) (struct v4l2_subdev *sd, u32 freq, u32 flags);
-        int (* g_std) (struct v4l2_subdev *sd, v4l2_std_id *norm);
-        int (* s_std) (struct v4l2_subdev *sd, v4l2_std_id norm);
-        int (* s_std_output) (struct v4l2_subdev *sd, v4l2_std_id std);
-        int (* g_std_output) (struct v4l2_subdev *sd, v4l2_std_id *std);
-        int (* querystd) (struct v4l2_subdev *sd, v4l2_std_id *std);
-        int (* g_tvnorms) (struct v4l2_subdev *sd, v4l2_std_id *std);
-        int (* g_tvnorms_output) (struct v4l2_subdev *sd, v4l2_std_id *std);
-        int (* g_input_status) (struct v4l2_subdev *sd, u32 *status);
-        int (* s_stream) (struct v4l2_subdev *sd, int enable);
-        int (* cropcap) (struct v4l2_subdev *sd, struct v4l2_cropcap *cc);
-        int (* g_crop) (struct v4l2_subdev *sd, struct v4l2_crop *crop);
-        int (* s_crop) (struct v4l2_subdev *sd, const struct v4l2_crop *crop);
-        int (* g_parm) (struct v4l2_subdev *sd, struct v4l2_streamparm *param);
-        int (* s_parm) (struct v4l2_subdev *sd, struct v4l2_streamparm *param);
-        int (* g_frame_interval) (struct v4l2_subdev *sd,struct v4l2_subdev_frame_interval *interval);
-        int (* s_frame_interval) (struct v4l2_subdev *sd,struct v4l2_subdev_frame_interval *interval);
-        int (* s_dv_timings) (struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
-        int (* g_dv_timings) (struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
-        int (* query_dv_timings) (struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
-        int (* g_mbus_config) (struct v4l2_subdev *sd,struct v4l2_mbus_config *cfg);
-        int (* s_mbus_config) (struct v4l2_subdev *sd,const struct v4l2_mbus_config *cfg);
-        int (* s_rx_buffer) (struct v4l2_subdev *sd, void *buf,unsigned int *size);
+        int (*s_routing)(struct v4l2_subdev *sd, u32 input, u32 output, u32 config);
+        int (*s_crystal_freq)(struct v4l2_subdev *sd, u32 freq, u32 flags);
+        int (*g_std)(struct v4l2_subdev *sd, v4l2_std_id *norm);
+        int (*s_std)(struct v4l2_subdev *sd, v4l2_std_id norm);
+        int (*s_std_output)(struct v4l2_subdev *sd, v4l2_std_id std);
+        int (*g_std_output)(struct v4l2_subdev *sd, v4l2_std_id *std);
+        int (*querystd)(struct v4l2_subdev *sd, v4l2_std_id *std);
+        int (*g_tvnorms)(struct v4l2_subdev *sd, v4l2_std_id *std);
+        int (*g_tvnorms_output)(struct v4l2_subdev *sd, v4l2_std_id *std);
+        int (*g_input_status)(struct v4l2_subdev *sd, u32 *status);
+        int (*s_stream)(struct v4l2_subdev *sd, int enable);
+        int (*cropcap)(struct v4l2_subdev *sd, struct v4l2_cropcap *cc);
+        int (*g_crop)(struct v4l2_subdev *sd, struct v4l2_crop *crop);
+        int (*s_crop)(struct v4l2_subdev *sd, const struct v4l2_crop *crop);
+        int (*g_parm)(struct v4l2_subdev *sd, struct v4l2_streamparm *param);
+        int (*s_parm)(struct v4l2_subdev *sd, struct v4l2_streamparm *param);
+        int (*g_frame_interval)(struct v4l2_subdev *sd,struct v4l2_subdev_frame_interval *interval);
+        int (*s_frame_interval)(struct v4l2_subdev *sd,struct v4l2_subdev_frame_interval *interval);
+        int (*s_dv_timings)(struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
+        int (*g_dv_timings)(struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
+        int (*query_dv_timings)(struct v4l2_subdev *sd,struct v4l2_dv_timings *timings);
+        int (*g_mbus_config)(struct v4l2_subdev *sd,struct v4l2_mbus_config *cfg);
+        int (*s_mbus_config)(struct v4l2_subdev *sd,const struct v4l2_mbus_config *cfg);
+        int (*s_rx_buffer)(struct v4l2_subdev *sd, void *buf,unsigned int *size);
     }
 
 .. _`v4l2_subdev_video_ops.members`:
@@ -479,13 +479,13 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_vbi_ops {
-        int (* decode_vbi_line) (struct v4l2_subdev *sd, struct v4l2_decode_vbi_line *vbi_line);
-        int (* s_vbi_data) (struct v4l2_subdev *sd, const struct v4l2_sliced_vbi_data *vbi_data);
-        int (* g_vbi_data) (struct v4l2_subdev *sd, struct v4l2_sliced_vbi_data *vbi_data);
-        int (* g_sliced_vbi_cap) (struct v4l2_subdev *sd, struct v4l2_sliced_vbi_cap *cap);
-        int (* s_raw_fmt) (struct v4l2_subdev *sd, struct v4l2_vbi_format *fmt);
-        int (* g_sliced_fmt) (struct v4l2_subdev *sd, struct v4l2_sliced_vbi_format *fmt);
-        int (* s_sliced_fmt) (struct v4l2_subdev *sd, struct v4l2_sliced_vbi_format *fmt);
+        int (*decode_vbi_line)(struct v4l2_subdev *sd, struct v4l2_decode_vbi_line *vbi_line);
+        int (*s_vbi_data)(struct v4l2_subdev *sd, const struct v4l2_sliced_vbi_data *vbi_data);
+        int (*g_vbi_data)(struct v4l2_subdev *sd, struct v4l2_sliced_vbi_data *vbi_data);
+        int (*g_sliced_vbi_cap)(struct v4l2_subdev *sd, struct v4l2_sliced_vbi_cap *cap);
+        int (*s_raw_fmt)(struct v4l2_subdev *sd, struct v4l2_vbi_format *fmt);
+        int (*g_sliced_fmt)(struct v4l2_subdev *sd, struct v4l2_sliced_vbi_format *fmt);
+        int (*s_sliced_fmt)(struct v4l2_subdev *sd, struct v4l2_sliced_vbi_format *fmt);
     }
 
 .. _`v4l2_subdev_vbi_ops.members`:
@@ -547,8 +547,8 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_sensor_ops {
-        int (* g_skip_top_lines) (struct v4l2_subdev *sd, u32 *lines);
-        int (* g_skip_frames) (struct v4l2_subdev *sd, u32 *frames);
+        int (*g_skip_top_lines)(struct v4l2_subdev *sd, u32 *lines);
+        int (*g_skip_frames)(struct v4l2_subdev *sd, u32 *frames);
     }
 
 .. _`v4l2_subdev_sensor_ops.members`:
@@ -584,23 +584,23 @@ Definition
 .. code-block:: c
 
     struct v4l2_subdev_pad_ops {
-        int (* init_cfg) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg);
-        int (* enum_mbus_code) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_mbus_code_enum *code);
-        int (* enum_frame_size) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_frame_size_enum *fse);
-        int (* enum_frame_interval) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_frame_interval_enum *fie);
-        int (* get_fmt) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_format *format);
-        int (* set_fmt) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_format *format);
-        int (* get_selection) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_selection *sel);
-        int (* set_selection) (struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_selection *sel);
-        int (* get_edid) (struct v4l2_subdev *sd, struct v4l2_edid *edid);
-        int (* set_edid) (struct v4l2_subdev *sd, struct v4l2_edid *edid);
-        int (* dv_timings_cap) (struct v4l2_subdev *sd,struct v4l2_dv_timings_cap *cap);
-        int (* enum_dv_timings) (struct v4l2_subdev *sd,struct v4l2_enum_dv_timings *timings);
+        int (*init_cfg)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg);
+        int (*enum_mbus_code)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_mbus_code_enum *code);
+        int (*enum_frame_size)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_frame_size_enum *fse);
+        int (*enum_frame_interval)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_frame_interval_enum *fie);
+        int (*get_fmt)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_format *format);
+        int (*set_fmt)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_format *format);
+        int (*get_selection)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_selection *sel);
+        int (*set_selection)(struct v4l2_subdev *sd,struct v4l2_subdev_pad_config *cfg,struct v4l2_subdev_selection *sel);
+        int (*get_edid)(struct v4l2_subdev *sd, struct v4l2_edid *edid);
+        int (*set_edid)(struct v4l2_subdev *sd, struct v4l2_edid *edid);
+        int (*dv_timings_cap)(struct v4l2_subdev *sd,struct v4l2_dv_timings_cap *cap);
+        int (*enum_dv_timings)(struct v4l2_subdev *sd,struct v4l2_enum_dv_timings *timings);
         #ifdef CONFIG_MEDIA_CONTROLLER
-        int (* link_validate) (struct v4l2_subdev *sd, struct media_link *link,struct v4l2_subdev_format *source_fmt,struct v4l2_subdev_format *sink_fmt);
+        int (*link_validate)(struct v4l2_subdev *sd, struct media_link *link,struct v4l2_subdev_format *source_fmt,struct v4l2_subdev_format *sink_fmt);
         #endif
-        int (* get_frame_desc) (struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
-        int (* set_frame_desc) (struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
+        int (*get_frame_desc)(struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
+        int (*set_frame_desc)(struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
     }
 
 .. _`v4l2_subdev_pad_ops.members`:

@@ -20,13 +20,13 @@ Definition
     struct smp_hotplug_thread {
         struct task_struct __percpu **store;
         struct list_head list;
-        int (* thread_should_run) (unsigned int cpu);
-        void (* thread_fn) (unsigned int cpu);
-        void (* create) (unsigned int cpu);
-        void (* setup) (unsigned int cpu);
-        void (* cleanup) (unsigned int cpu, bool online);
-        void (* park) (unsigned int cpu);
-        void (* unpark) (unsigned int cpu);
+        int (*thread_should_run)(unsigned int cpu);
+        void (*thread_fn)(unsigned int cpu);
+        void (*create)(unsigned int cpu);
+        void (*setup)(unsigned int cpu);
+        void (*cleanup)(unsigned int cpu, bool online);
+        void (*park)(unsigned int cpu);
+        void (*unpark)(unsigned int cpu);
         cpumask_var_t cpumask;
         bool selfparking;
         const char *thread_comm;

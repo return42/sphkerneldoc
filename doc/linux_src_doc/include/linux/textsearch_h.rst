@@ -51,11 +51,11 @@ Definition
 
     struct ts_ops {
         const char *name;
-        struct ts_config * (* init) (const void *, unsigned int, gfp_t, int);
-        unsigned int (* find) (struct ts_config *,struct ts_state *);
-        void (* destroy) (struct ts_config *);
-        void * (* get_pattern) (struct ts_config *);
-        unsigned int (* get_pattern_len) (struct ts_config *);
+        struct ts_config * (*init)(const void *, unsigned int, gfp_t, int);
+        unsigned int (*find)(struct ts_config *,struct ts_state *);
+        void (*destroy)(struct ts_config *);
+        void * (*get_pattern)(struct ts_config *);
+        unsigned int (*get_pattern_len)(struct ts_config *);
         struct module *owner;
         struct list_head list;
     }
@@ -108,8 +108,8 @@ Definition
     struct ts_config {
         struct ts_ops *ops;
         int flags;
-        unsigned int (* get_next_block) (unsigned int consumed,const u8 **dst,struct ts_config *conf,struct ts_state *state);
-        void (* finish) (struct ts_config *conf,struct ts_state *state);
+        unsigned int (*get_next_block)(unsigned int consumed,const u8 **dst,struct ts_config *conf,struct ts_state *state);
+        void (*finish)(struct ts_config *conf,struct ts_state *state);
     }
 
 .. _`ts_config.members`:

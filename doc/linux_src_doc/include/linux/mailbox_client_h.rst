@@ -22,9 +22,9 @@ Definition
         bool tx_block;
         unsigned long tx_tout;
         bool knows_txdone;
-        void (* rx_callback) (struct mbox_client *cl, void *mssg);
-        void (* tx_prepare) (struct mbox_client *cl, void *mssg);
-        void (* tx_done) (struct mbox_client *cl, void *mssg, int r);
+        void (*rx_callback)(struct mbox_client *cl, void *mssg);
+        void (*tx_prepare)(struct mbox_client *cl, void *mssg);
+        void (*tx_done)(struct mbox_client *cl, void *mssg, int r);
     }
 
 .. _`mbox_client.members`:

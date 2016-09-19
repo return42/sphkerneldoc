@@ -119,7 +119,7 @@ will wake us from suspend.
 alarm_init
 ==========
 
-.. c:function:: void alarm_init(struct alarm *alarm, enum alarmtimer_type type, enum alarmtimer_restart (*) function (struct alarm *, ktime_t)
+.. c:function:: void alarm_init(struct alarm *alarm, enum alarmtimer_type type, enum alarmtimer_restart (*function)(struct alarm *, ktime_t))
 
     Initialize an alarm structure
 
@@ -129,7 +129,7 @@ alarm_init
     :param enum alarmtimer_type type:
         the type of the alarm
 
-    :param (enum alarmtimer_restart (\*) function (struct alarm \*, ktime_t):
+    :param enum alarmtimer_restart (\*function)(struct alarm \*, ktime_t):
         callback that is run when the alarm fires
 
 .. _`alarm_start`:

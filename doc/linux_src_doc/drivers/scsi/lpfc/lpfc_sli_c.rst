@@ -6311,14 +6311,14 @@ provided rpi via a bitmask.
 lpfc_sli4_resume_rpi
 ====================
 
-.. c:function:: int lpfc_sli4_resume_rpi(struct lpfc_nodelist *ndlp, void (*) cmpl (struct lpfc_hba *, LPFC_MBOXQ_t *, void *arg)
+.. c:function:: int lpfc_sli4_resume_rpi(struct lpfc_nodelist *ndlp, void (*cmpl)(struct lpfc_hba *, LPFC_MBOXQ_t *), void *arg)
 
     Remove the rpi bitmask region
 
     :param struct lpfc_nodelist \*ndlp:
         *undescribed*
 
-    :param (void (\*) cmpl (struct lpfc_hba \*, LPFC_MBOXQ_t \*):
+    :param void (\*cmpl)(struct lpfc_hba \*, LPFC_MBOXQ_t \*):
         *undescribed*
 
     :param void \*arg:

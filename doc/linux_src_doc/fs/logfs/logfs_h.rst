@@ -74,9 +74,9 @@ Definition
 .. code-block:: c
 
     struct logfs_area_ops {
-        void (* get_free_segment) (struct logfs_area *area);
-        void (* get_erase_count) (struct logfs_area *area);
-        int (* erase_segment) (struct logfs_area *area);
+        void (*get_free_segment)(struct logfs_area *area);
+        void (*get_erase_count)(struct logfs_area *area);
+        int (*erase_segment)(struct logfs_area *area);
     }
 
 .. _`logfs_area_ops.members`:
@@ -110,15 +110,15 @@ Definition
 .. code-block:: c
 
     struct logfs_device_ops {
-        struct page *(* find_first_sb) (struct super_block *sb, u64 *ofs);
-        struct page *(* find_last_sb) (struct super_block *sb, u64 *ofs);
-        int (* write_sb) (struct super_block *sb, struct page *page);
-        int (* readpage) (void *_sb, struct page *page);
-        void (* writeseg) (struct super_block *sb, u64 ofs, size_t len);
-        int (* erase) (struct super_block *sb, loff_t ofs, size_t len,int ensure_write);
-        int (* can_write_buf) (struct super_block *sb, u64 ofs);
-        void (* sync) (struct super_block *sb);
-        void (* put_device) (struct logfs_super *s);
+        struct page *(*find_first_sb)(struct super_block *sb, u64 *ofs);
+        struct page *(*find_last_sb)(struct super_block *sb, u64 *ofs);
+        int (*write_sb)(struct super_block *sb, struct page *page);
+        int (*readpage)(void *_sb, struct page *page);
+        void (*writeseg)(struct super_block *sb, u64 ofs, size_t len);
+        int (*erase)(struct super_block *sb, loff_t ofs, size_t len,int ensure_write);
+        int (*can_write_buf)(struct super_block *sb, u64 ofs);
+        void (*sync)(struct super_block *sb);
+        void (*put_device)(struct logfs_super *s);
     }
 
 .. _`logfs_device_ops.members`:

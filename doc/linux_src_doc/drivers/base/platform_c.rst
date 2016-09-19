@@ -380,14 +380,14 @@ platform_driver_unregister
 __platform_driver_probe
 =======================
 
-.. c:function:: int __platform_driver_probe(struct platform_driver *drv, int (*) probe (struct platform_device *, struct module *module)
+.. c:function:: int __platform_driver_probe(struct platform_driver *drv, int (*probe)(struct platform_device *), struct module *module)
 
     register driver for non-hotpluggable device
 
     :param struct platform_driver \*drv:
         platform driver structure
 
-    :param (int (\*) probe (struct platform_device \*):
+    :param int (\*probe)(struct platform_device \*):
         the driver probe routine, probably from an \__init section
 
     :param struct module \*module:
@@ -417,14 +417,14 @@ a negative error code and with the driver not registered.
 __platform_create_bundle
 ========================
 
-.. c:function:: struct platform_device *__platform_create_bundle(struct platform_driver *driver, int (*) probe (struct platform_device *, struct resource *res, unsigned int n_res, const void *data, size_t size, struct module *module)
+.. c:function:: struct platform_device *__platform_create_bundle(struct platform_driver *driver, int (*probe)(struct platform_device *), struct resource *res, unsigned int n_res, const void *data, size_t size, struct module *module)
 
     register driver and create corresponding device
 
     :param struct platform_driver \*driver:
         platform driver structure
 
-    :param (int (\*) probe (struct platform_device \*):
+    :param int (\*probe)(struct platform_device \*):
         the driver probe routine, probably from an \__init section
 
     :param struct resource \*res:

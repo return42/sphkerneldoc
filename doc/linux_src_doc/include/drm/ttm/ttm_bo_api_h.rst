@@ -268,7 +268,7 @@ Definition
         struct ttm_bo_global *glob;
         struct ttm_bo_device *bdev;
         enum ttm_bo_type type;
-        void (* destroy) (struct ttm_buffer_object *);
+        void (*destroy)(struct ttm_buffer_object *);
         unsigned long num_pages;
         size_t acc_size;
         struct kref kref;
@@ -717,7 +717,7 @@ Returns size to account for a buffer object
 ttm_bo_init
 ===========
 
-.. c:function:: int ttm_bo_init(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*) destroy (struct ttm_buffer_object *)
+.. c:function:: int ttm_bo_init(struct ttm_bo_device *bdev, struct ttm_buffer_object *bo, unsigned long size, enum ttm_bo_type type, struct ttm_placement *placement, uint32_t page_alignment, bool interrubtible, struct file *persistent_swap_storage, size_t acc_size, struct sg_table *sg, struct reservation_object *resv, void (*destroy)(struct ttm_buffer_object *))
 
     :param struct ttm_bo_device \*bdev:
         Pointer to a ttm_bo_device struct.
@@ -756,7 +756,7 @@ ttm_bo_init
     :param struct reservation_object \*resv:
         Pointer to a reservation_object, or NULL to let ttm allocate one.
 
-    :param (void (\*) destroy (struct ttm_buffer_object \*):
+    :param void (\*destroy)(struct ttm_buffer_object \*):
         Destroy function. Use NULL for \ :c:func:`kfree`\ .
 
 .. _`ttm_bo_init.description`:

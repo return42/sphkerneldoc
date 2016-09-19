@@ -6,7 +6,7 @@
 driver_for_each_device
 ======================
 
-.. c:function:: int driver_for_each_device(struct device_driver *drv, struct device *start, void *data, int (*) fn (struct device *, void *)
+.. c:function:: int driver_for_each_device(struct device_driver *drv, struct device *start, void *data, int (*fn)(struct device *, void *))
 
     Iterator for devices bound to a driver.
 
@@ -19,7 +19,7 @@ driver_for_each_device
     :param void \*data:
         Data to pass to the callback.
 
-    :param (int (\*) fn (struct device \*, void \*):
+    :param int (\*fn)(struct device \*, void \*):
         Function to call for each device.
 
 .. _`driver_for_each_device.description`:
@@ -34,7 +34,7 @@ Iterate over the \ ``drv``\ 's list of devices calling \ ``fn``\  for each one.
 driver_find_device
 ==================
 
-.. c:function:: struct device *driver_find_device(struct device_driver *drv, struct device *start, void *data, int (*) match (struct device *dev, void *data)
+.. c:function:: struct device *driver_find_device(struct device_driver *drv, struct device *start, void *data, int (*match)(struct device *dev, void *data))
 
     device iterator for locating a particular device.
 
@@ -47,7 +47,7 @@ driver_find_device
     :param void \*data:
         Data to pass to match function
 
-    :param (int (\*) match (struct device \*dev, void \*data):
+    :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
 
 .. _`driver_find_device.description`:

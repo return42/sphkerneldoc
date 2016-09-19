@@ -324,7 +324,7 @@ unlock_two_nondirectories
 iget5_locked
 ============
 
-.. c:function:: struct inode *iget5_locked(struct super_block *sb, unsigned long hashval, int (*) test (struct inode *, void *, int (*) set (struct inode *, void *, void *data)
+.. c:function:: struct inode *iget5_locked(struct super_block *sb, unsigned long hashval, int (*test)(struct inode *, void *), int (*set)(struct inode *, void *), void *data)
 
     obtain an inode from a mounted file system
 
@@ -334,10 +334,10 @@ iget5_locked
     :param unsigned long hashval:
         hash value (usually inode number) to get
 
-    :param (int (\*) test (struct inode \*, void \*):
+    :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
 
-    :param (int (\*) set (struct inode \*, void \*):
+    :param int (\*set)(struct inode \*, void \*):
         callback used to initialize a new struct inode
 
     :param void \*data:
@@ -426,7 +426,7 @@ currently becomes quite slow.
 ilookup5_nowait
 ===============
 
-.. c:function:: struct inode *ilookup5_nowait(struct super_block *sb, unsigned long hashval, int (*) test (struct inode *, void *, void *data)
+.. c:function:: struct inode *ilookup5_nowait(struct super_block *sb, unsigned long hashval, int (*test)(struct inode *, void *), void *data)
 
     search for an inode in the inode cache
 
@@ -436,7 +436,7 @@ ilookup5_nowait
     :param unsigned long hashval:
         hash value (usually inode number) to search for
 
-    :param (int (\*) test (struct inode \*, void \*):
+    :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
 
     :param void \*data:
@@ -471,7 +471,7 @@ Note2
 ilookup5
 ========
 
-.. c:function:: struct inode *ilookup5(struct super_block *sb, unsigned long hashval, int (*) test (struct inode *, void *, void *data)
+.. c:function:: struct inode *ilookup5(struct super_block *sb, unsigned long hashval, int (*test)(struct inode *, void *), void *data)
 
     search for an inode in the inode cache
 
@@ -481,7 +481,7 @@ ilookup5
     :param unsigned long hashval:
         hash value (usually inode number) to search for
 
-    :param (int (\*) test (struct inode \*, void \*):
+    :param int (\*test)(struct inode \*, void \*):
         callback used for comparisons between inodes
 
     :param void \*data:
@@ -535,7 +535,7 @@ cache, the inode is returned with an incremented reference count.
 find_inode_nowait
 =================
 
-.. c:function:: struct inode *find_inode_nowait(struct super_block *sb, unsigned long hashval, int (*) match (struct inode *, unsigned long, void *, void *data)
+.. c:function:: struct inode *find_inode_nowait(struct super_block *sb, unsigned long hashval, int (*match)(struct inode *, unsigned long, void *), void *data)
 
     find an inode in the inode cache
 
@@ -545,7 +545,7 @@ find_inode_nowait
     :param unsigned long hashval:
         hash value (usually inode number) to search for
 
-    :param (int (\*) match (struct inode \*, unsigned long, void \*):
+    :param int (\*match)(struct inode \*, unsigned long, void \*):
         callback used for comparisons between inodes
 
     :param void \*data:

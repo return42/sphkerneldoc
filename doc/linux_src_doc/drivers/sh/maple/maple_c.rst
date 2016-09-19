@@ -46,14 +46,14 @@ path of any module drivers.
 maple_getcond_callback
 ======================
 
-.. c:function:: void maple_getcond_callback(struct maple_device *dev, void (*) callback (struct mapleq *mq, unsigned long interval, unsigned long function)
+.. c:function:: void maple_getcond_callback(struct maple_device *dev, void (*callback)(struct mapleq *mq), unsigned long interval, unsigned long function)
 
     setup handling MAPLE_COMMAND_GETCOND
 
     :param struct maple_device \*dev:
         device responding
 
-    :param (void (\*) callback (struct mapleq \*mq):
+    :param void (\*callback)(struct mapleq \*mq):
         handler callback
 
     :param unsigned long interval:

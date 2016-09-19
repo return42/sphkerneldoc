@@ -19,11 +19,11 @@ Definition
 
     struct falcon_board_type {
         u8 id;
-        int (* init) (struct efx_nic *nic);
-        void (* init_phy) (struct efx_nic *efx);
-        void (* fini) (struct efx_nic *nic);
-        void (* set_id_led) (struct efx_nic *efx, enum efx_led_mode mode);
-        int (* monitor) (struct efx_nic *nic);
+        int (*init)(struct efx_nic *nic);
+        void (*init_phy)(struct efx_nic *efx);
+        void (*fini)(struct efx_nic *nic);
+        void (*set_id_led)(struct efx_nic *efx, enum efx_led_mode mode);
+        int (*monitor)(struct efx_nic *nic);
     }
 
 .. _`falcon_board_type.members`:

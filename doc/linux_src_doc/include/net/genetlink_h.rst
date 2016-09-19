@@ -53,10 +53,10 @@ Definition
         unsigned int maxattr;
         bool netnsok;
         bool parallel_ops;
-        int (* pre_doit) (const struct genl_ops *ops,struct sk_buff *skb,struct genl_info *info);
-        void (* post_doit) (const struct genl_ops *ops,struct sk_buff *skb,struct genl_info *info);
-        int (* mcast_bind) (struct net *net, int group);
-        void (* mcast_unbind) (struct net *net, int group);
+        int (*pre_doit)(const struct genl_ops *ops,struct sk_buff *skb,struct genl_info *info);
+        void (*post_doit)(const struct genl_ops *ops,struct sk_buff *skb,struct genl_info *info);
+        int (*mcast_bind)(struct net *net, int group);
+        void (*mcast_unbind)(struct net *net, int group);
         struct nlattr **attrbuf;
         const struct genl_ops *ops;
         const struct genl_multicast_group *mcgrps;
@@ -211,10 +211,10 @@ Definition
 
     struct genl_ops {
         const struct nla_policy *policy;
-        int (* doit) (struct sk_buff *skb,struct genl_info *info);
-        int (* start) (struct netlink_callback *cb);
-        int (* dumpit) (struct sk_buff *skb,struct netlink_callback *cb);
-        int (* done) (struct netlink_callback *cb);
+        int (*doit)(struct sk_buff *skb,struct genl_info *info);
+        int (*start)(struct netlink_callback *cb);
+        int (*dumpit)(struct sk_buff *skb,struct netlink_callback *cb);
+        int (*done)(struct netlink_callback *cb);
         u8 cmd;
         u8 internal_flags;
         u8 flags;

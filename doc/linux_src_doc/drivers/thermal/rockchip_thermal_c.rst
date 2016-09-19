@@ -77,12 +77,12 @@ Definition
         int tshut_temp;
         enum tshut_mode tshut_mode;
         enum tshut_polarity tshut_polarity;
-        void (* initialize) (struct regmap *grf,void __iomem *reg, enum tshut_polarity p);
-        void (* irq_ack) (void __iomem *reg);
-        void (* control) (void __iomem *reg, bool on);
-        int (* get_temp) (struct chip_tsadc_table table,int chn, void __iomem *reg, int *temp);
-        void (* set_tshut_temp) (struct chip_tsadc_table table,int chn, void __iomem *reg, int temp);
-        void (* set_tshut_mode) (int chn, void __iomem *reg, enum tshut_mode m);
+        void (*initialize)(struct regmap *grf,void __iomem *reg, enum tshut_polarity p);
+        void (*irq_ack)(void __iomem *reg);
+        void (*control)(void __iomem *reg, bool on);
+        int (*get_temp)(struct chip_tsadc_table table,int chn, void __iomem *reg, int *temp);
+        void (*set_tshut_temp)(struct chip_tsadc_table table,int chn, void __iomem *reg, int temp);
+        void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
         struct chip_tsadc_table table;
     }
 

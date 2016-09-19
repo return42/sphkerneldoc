@@ -22,10 +22,10 @@ Definition
         u8 pid;
         u8 npins;
         unsigned *pins;
-        int (* mpp_get) (unsigned pid, unsigned long *config);
-        int (* mpp_set) (unsigned pid, unsigned long config);
-        int (* mpp_gpio_req) (unsigned pid);
-        int (* mpp_gpio_dir) (unsigned pid, bool input);
+        int (*mpp_get)(unsigned pid, unsigned long *config);
+        int (*mpp_set)(unsigned pid, unsigned long config);
+        int (*mpp_gpio_req)(unsigned pid);
+        int (*mpp_gpio_dir)(unsigned pid, bool input);
     }
 
 .. _`mvebu_mpp_ctrl.members`:

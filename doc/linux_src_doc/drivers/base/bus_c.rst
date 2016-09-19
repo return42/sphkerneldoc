@@ -6,7 +6,7 @@
 bus_for_each_dev
 ================
 
-.. c:function:: int bus_for_each_dev(struct bus_type *bus, struct device *start, void *data, int (*) fn (struct device *, void *)
+.. c:function:: int bus_for_each_dev(struct bus_type *bus, struct device *start, void *data, int (*fn)(struct device *, void *))
 
     device iterator.
 
@@ -19,7 +19,7 @@ bus_for_each_dev
     :param void \*data:
         data for the callback.
 
-    :param (int (\*) fn (struct device \*, void \*):
+    :param int (\*fn)(struct device \*, void \*):
         function to be called for each device.
 
 .. _`bus_for_each_dev.description`:
@@ -49,7 +49,7 @@ count in the supplied callback.
 bus_find_device
 ===============
 
-.. c:function:: struct device *bus_find_device(struct bus_type *bus, struct device *start, void *data, int (*) match (struct device *dev, void *data)
+.. c:function:: struct device *bus_find_device(struct bus_type *bus, struct device *start, void *data, int (*match)(struct device *dev, void *data))
 
     device iterator for locating a particular device.
 
@@ -62,7 +62,7 @@ bus_find_device
     :param void \*data:
         Data to pass to match function
 
-    :param (int (\*) match (struct device \*dev, void \*data):
+    :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
 
 .. _`bus_find_device.description`:
@@ -137,7 +137,7 @@ the returned object is taken.
 bus_for_each_drv
 ================
 
-.. c:function:: int bus_for_each_drv(struct bus_type *bus, struct device_driver *start, void *data, int (*) fn (struct device_driver *, void *)
+.. c:function:: int bus_for_each_drv(struct bus_type *bus, struct device_driver *start, void *data, int (*fn)(struct device_driver *, void *))
 
     driver iterator
 
@@ -150,7 +150,7 @@ bus_for_each_drv
     :param void \*data:
         data to pass to the callback.
 
-    :param (int (\*) fn (struct device_driver \*, void \*):
+    :param int (\*fn)(struct device_driver \*, void \*):
         function to call for each driver.
 
 .. _`bus_for_each_drv.description`:

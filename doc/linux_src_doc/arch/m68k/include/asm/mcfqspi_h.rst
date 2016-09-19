@@ -18,10 +18,10 @@ Definition
 .. code-block:: c
 
     struct mcfqspi_cs_control {
-        int (* setup) (struct mcfqspi_cs_control *);
-        void (* teardown) (struct mcfqspi_cs_control *);
-        void (* select) (struct mcfqspi_cs_control *, u8, bool);
-        void (* deselect) (struct mcfqspi_cs_control *, u8, bool);
+        int (*setup)(struct mcfqspi_cs_control *);
+        void (*teardown)(struct mcfqspi_cs_control *);
+        void (*select)(struct mcfqspi_cs_control *, u8, bool);
+        void (*deselect)(struct mcfqspi_cs_control *, u8, bool);
     }
 
 .. _`mcfqspi_cs_control.members`:

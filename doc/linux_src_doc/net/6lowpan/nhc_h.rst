@@ -25,9 +25,9 @@ Definition
         u8 *id;
         u8 *idmask;
         const size_t idlen;
-        void (* idsetup) (struct lowpan_nhc *nhc);
-        int (* uncompress) (struct sk_buff *skb, size_t needed);
-        int (* compress) (struct sk_buff *skb, u8 **hc_ptr);
+        void (*idsetup)(struct lowpan_nhc *nhc);
+        int (*uncompress)(struct sk_buff *skb, size_t needed);
+        int (*compress)(struct sk_buff *skb, u8 **hc_ptr);
     }
 
 .. _`lowpan_nhc.members`:

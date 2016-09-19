@@ -20,7 +20,7 @@ Definition
     struct fc2580_platform_data {
         u32 clk;
         struct dvb_frontend *dvb_frontend;
-        struct v4l2_subdev* (* get_v4l2_subdev) (struct i2c_client *);
+        struct v4l2_subdev* (*get_v4l2_subdev)(struct i2c_client *);
     }
 
 .. _`fc2580_platform_data.members`:

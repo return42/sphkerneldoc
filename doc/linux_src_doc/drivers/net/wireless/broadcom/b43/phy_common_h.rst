@@ -90,28 +90,28 @@ Definition
 .. code-block:: c
 
     struct b43_phy_operations {
-        int (* allocate) (struct b43_wldev *dev);
-        void (* free) (struct b43_wldev *dev);
-        void (* prepare_structs) (struct b43_wldev *dev);
-        int (* prepare_hardware) (struct b43_wldev *dev);
-        int (* init) (struct b43_wldev *dev);
-        void (* exit) (struct b43_wldev *dev);
-        u16 (* phy_read) (struct b43_wldev *dev, u16 reg);
-        void (* phy_write) (struct b43_wldev *dev, u16 reg, u16 value);
-        void (* phy_maskset) (struct b43_wldev *dev, u16 reg, u16 mask, u16 set);
-        u16 (* radio_read) (struct b43_wldev *dev, u16 reg);
-        void (* radio_write) (struct b43_wldev *dev, u16 reg, u16 value);
-        bool (* supports_hwpctl) (struct b43_wldev *dev);
-        void (* software_rfkill) (struct b43_wldev *dev, bool blocked);
-        void (* switch_analog) (struct b43_wldev *dev, bool on);
-        int (* switch_channel) (struct b43_wldev *dev, unsigned int new_channel);
-        unsigned int (* get_default_chan) (struct b43_wldev *dev);
-        void (* set_rx_antenna) (struct b43_wldev *dev, int antenna);
-        int (* interf_mitigation) (struct b43_wldev *dev,enum b43_interference_mitigation new_mode);
-        enum b43_txpwr_result (* recalc_txpower) (struct b43_wldev *dev,bool ignore_tssi);
-        void (* adjust_txpower) (struct b43_wldev *dev);
-        void (* pwork_15sec) (struct b43_wldev *dev);
-        void (* pwork_60sec) (struct b43_wldev *dev);
+        int (*allocate)(struct b43_wldev *dev);
+        void (*free)(struct b43_wldev *dev);
+        void (*prepare_structs)(struct b43_wldev *dev);
+        int (*prepare_hardware)(struct b43_wldev *dev);
+        int (*init)(struct b43_wldev *dev);
+        void (*exit)(struct b43_wldev *dev);
+        u16 (*phy_read)(struct b43_wldev *dev, u16 reg);
+        void (*phy_write)(struct b43_wldev *dev, u16 reg, u16 value);
+        void (*phy_maskset)(struct b43_wldev *dev, u16 reg, u16 mask, u16 set);
+        u16 (*radio_read)(struct b43_wldev *dev, u16 reg);
+        void (*radio_write)(struct b43_wldev *dev, u16 reg, u16 value);
+        bool (*supports_hwpctl)(struct b43_wldev *dev);
+        void (*software_rfkill)(struct b43_wldev *dev, bool blocked);
+        void (*switch_analog)(struct b43_wldev *dev, bool on);
+        int (*switch_channel)(struct b43_wldev *dev, unsigned int new_channel);
+        unsigned int (*get_default_chan)(struct b43_wldev *dev);
+        void (*set_rx_antenna)(struct b43_wldev *dev, int antenna);
+        int (*interf_mitigation)(struct b43_wldev *dev,enum b43_interference_mitigation new_mode);
+        enum b43_txpwr_result (*recalc_txpower)(struct b43_wldev *dev,bool ignore_tssi);
+        void (*adjust_txpower)(struct b43_wldev *dev);
+        void (*pwork_15sec)(struct b43_wldev *dev);
+        void (*pwork_60sec)(struct b43_wldev *dev);
     }
 
 .. _`b43_phy_operations.members`:

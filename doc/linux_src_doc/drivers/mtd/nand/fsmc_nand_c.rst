@@ -35,7 +35,7 @@ Definition
         void __iomem *cmd_va;
         void __iomem *addr_va;
         void __iomem *regs_va;
-        void (* select_chip) (uint32_t bank, uint32_t busw);
+        void (*select_chip)(uint32_t bank, uint32_t busw);
     }
 
 .. _`fsmc_nand_data.members`:

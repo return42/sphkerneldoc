@@ -69,14 +69,14 @@ none
 ipr_init_ipr_cmnd
 =================
 
-.. c:function:: void ipr_init_ipr_cmnd(struct ipr_cmnd *ipr_cmd, void (*) fast_done (struct ipr_cmnd *)
+.. c:function:: void ipr_init_ipr_cmnd(struct ipr_cmnd *ipr_cmd, void (*fast_done)(struct ipr_cmnd *))
 
     Initialize an IPR Cmnd block
 
     :param struct ipr_cmnd \*ipr_cmd:
         ipr command struct
 
-    :param (void (\*) fast_done (struct ipr_cmnd \*):
+    :param void (\*fast_done)(struct ipr_cmnd \*):
         *undescribed*
 
 .. _`ipr_init_ipr_cmnd.return-value`:
@@ -305,17 +305,17 @@ none
 ipr_do_req
 ==========
 
-.. c:function:: void ipr_do_req(struct ipr_cmnd *ipr_cmd, void (*) done (struct ipr_cmnd *, void (*) timeout_func (struct ipr_cmnd *, u32 timeout)
+.. c:function:: void ipr_do_req(struct ipr_cmnd *ipr_cmd, void (*done)(struct ipr_cmnd *), void (*timeout_func)(struct ipr_cmnd *), u32 timeout)
 
     Send driver initiated requests.
 
     :param struct ipr_cmnd \*ipr_cmd:
         ipr command struct
 
-    :param (void (\*) done (struct ipr_cmnd \*):
+    :param void (\*done)(struct ipr_cmnd \*):
         done function
 
-    :param (void (\*) timeout_func (struct ipr_cmnd \*):
+    :param void (\*timeout_func)(struct ipr_cmnd \*):
         timeout function
 
     :param u32 timeout:
@@ -404,14 +404,14 @@ nothing
 ipr_send_blocking_cmd
 =====================
 
-.. c:function:: void ipr_send_blocking_cmd(struct ipr_cmnd *ipr_cmd, void (*) timeout_func (struct ipr_cmnd *ipr_cmd, u32 timeout)
+.. c:function:: void ipr_send_blocking_cmd(struct ipr_cmnd *ipr_cmd, void (*timeout_func)(struct ipr_cmnd *ipr_cmd), u32 timeout)
 
     Send command and sleep on its completion.
 
     :param struct ipr_cmnd \*ipr_cmd:
         ipr command struct
 
-    :param (void (\*) timeout_func (struct ipr_cmnd \*ipr_cmd):
+    :param void (\*timeout_func)(struct ipr_cmnd \*ipr_cmd):
         function to invoke if command times out
 
     :param u32 timeout:
@@ -2714,7 +2714,7 @@ Return
 ipr_wait_for_ops
 ================
 
-.. c:function:: int ipr_wait_for_ops(struct ipr_ioa_cfg *ioa_cfg, void *device, int (*) match (struct ipr_cmnd *, void *)
+.. c:function:: int ipr_wait_for_ops(struct ipr_ioa_cfg *ioa_cfg, void *device, int (*match)(struct ipr_cmnd *, void *))
 
     Wait for matching commands to complete
 
@@ -2724,7 +2724,7 @@ ipr_wait_for_ops
     :param void \*device:
         device to match (sdev)
 
-    :param (int (\*) match (struct ipr_cmnd \*, void \*):
+    :param int (\*match)(struct ipr_cmnd \*, void \*):
         match function to use
 
 .. _`ipr_wait_for_ops.return`:
@@ -5067,14 +5067,14 @@ none
 _ipr_initiate_ioa_reset
 =======================
 
-.. c:function:: void _ipr_initiate_ioa_reset(struct ipr_ioa_cfg *ioa_cfg, int (*) job_step (struct ipr_cmnd *, enum ipr_shutdown_type shutdown_type)
+.. c:function:: void _ipr_initiate_ioa_reset(struct ipr_ioa_cfg *ioa_cfg, int (*job_step)(struct ipr_cmnd *), enum ipr_shutdown_type shutdown_type)
 
     Initiate an adapter reset
 
     :param struct ipr_ioa_cfg \*ioa_cfg:
         ioa config struct
 
-    :param (int (\*) job_step (struct ipr_cmnd \*):
+    :param int (\*job_step)(struct ipr_cmnd \*):
         first job step of reset job
 
     :param enum ipr_shutdown_type shutdown_type:

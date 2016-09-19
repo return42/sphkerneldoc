@@ -92,11 +92,11 @@ titled "ACPI additions for FW latency optimizations."
 pci_msi_register_fwnode_provider
 ================================
 
-.. c:function:: void pci_msi_register_fwnode_provider(struct fwnode_handle *(*) fn (struct device *)
+.. c:function:: void pci_msi_register_fwnode_provider(struct fwnode_handle *(*fn)(struct device *))
 
     Register callback to retrieve fwnode
 
-    :param (struct fwnode_handle \*(\*) fn (struct device \*):
+    :param struct fwnode_handle \*(\*fn)(struct device \*):
         Callback matching a device to a fwnode that identifies a PCI
         MSI domain.
 

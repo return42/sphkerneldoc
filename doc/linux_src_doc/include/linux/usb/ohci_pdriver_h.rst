@@ -22,9 +22,9 @@ Definition
         unsigned big_endian_mmio:1;
         unsigned no_big_frame_no:1;
         unsigned int num_ports;
-        int (* power_on) (struct platform_device *pdev);
-        void (* power_off) (struct platform_device *pdev);
-        void (* power_suspend) (struct platform_device *pdev);
+        int (*power_on)(struct platform_device *pdev);
+        void (*power_off)(struct platform_device *pdev);
+        void (*power_suspend)(struct platform_device *pdev);
     }
 
 .. _`usb_ohci_pdata.members`:

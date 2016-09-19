@@ -1304,7 +1304,7 @@ the libfc LOGO response handler.
 fcoe_elsct_send
 ===============
 
-.. c:function:: struct fc_seq *fcoe_elsct_send(struct fc_lport *lport, u32 did, struct fc_frame *fp, unsigned int op, void (*) resp (struct fc_seq *, struct fc_frame *, void *, void *arg, u32 timeout)
+.. c:function:: struct fc_seq *fcoe_elsct_send(struct fc_lport *lport, u32 did, struct fc_frame *fp, unsigned int op, void (*resp)(struct fc_seq *, struct fc_frame *, void *), void *arg, u32 timeout)
 
     FCoE specific ELS handler
 
@@ -1320,7 +1320,7 @@ fcoe_elsct_send
     :param unsigned int op:
         *undescribed*
 
-    :param (void (\*) resp (struct fc_seq \*, struct fc_frame \*, void \*):
+    :param void (\*resp)(struct fc_seq \*, struct fc_frame \*, void \*):
         *undescribed*
 
     :param void \*arg:

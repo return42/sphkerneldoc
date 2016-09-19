@@ -28,7 +28,7 @@ Record common AppArmor audit data from \ ``sa``\
 aa_audit_msg
 ============
 
-.. c:function:: void aa_audit_msg(int type, struct common_audit_data *sa, void (*) cb (struct audit_buffer *, void *)
+.. c:function:: void aa_audit_msg(int type, struct common_audit_data *sa, void (*cb)(struct audit_buffer *, void *))
 
     Log a message to the audit subsystem
 
@@ -38,7 +38,7 @@ aa_audit_msg
     :param struct common_audit_data \*sa:
         audit event structure (NOT NULL)
 
-    :param (void (\*) cb (struct audit_buffer \*, void \*):
+    :param void (\*cb)(struct audit_buffer \*, void \*):
         optional callback fn for type specific fields (MAYBE NULL)
 
 .. _`aa_audit`:
@@ -46,7 +46,7 @@ aa_audit_msg
 aa_audit
 ========
 
-.. c:function:: int aa_audit(int type, struct aa_profile *profile, gfp_t gfp, struct common_audit_data *sa, void (*) cb (struct audit_buffer *, void *)
+.. c:function:: int aa_audit(int type, struct aa_profile *profile, gfp_t gfp, struct common_audit_data *sa, void (*cb)(struct audit_buffer *, void *))
 
     Log a profile based audit event to the audit subsystem
 
@@ -62,7 +62,7 @@ aa_audit
     :param struct common_audit_data \*sa:
         audit event (NOT NULL)
 
-    :param (void (\*) cb (struct audit_buffer \*, void \*):
+    :param void (\*cb)(struct audit_buffer \*, void \*):
         optional callback fn for type specific fields (MAYBE NULL)
 
 .. _`aa_audit.description`:

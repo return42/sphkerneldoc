@@ -6,9 +6,9 @@
 m68k_setup_auto_interrupt
 =========================
 
-.. c:function:: void m68k_setup_auto_interrupt(void (*) handler (unsigned int, struct pt_regs *)
+.. c:function:: void m68k_setup_auto_interrupt(void (*handler)(unsigned int, struct pt_regs *))
 
-    :param (void (\*) handler (unsigned int, struct pt_regs \*):
+    :param void (\*handler)(unsigned int, struct pt_regs \*):
         called from auto vector interrupts
 
 .. _`m68k_setup_auto_interrupt.description`:

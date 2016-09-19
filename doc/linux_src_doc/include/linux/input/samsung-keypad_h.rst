@@ -23,7 +23,7 @@ Definition
         unsigned int cols;
         bool no_autorepeat;
         bool wakeup;
-        void (* cfg_gpio) (unsigned int rows, unsigned int cols);
+        void (*cfg_gpio)(unsigned int rows, unsigned int cols);
     }
 
 .. _`samsung_keypad_platdata.members`:

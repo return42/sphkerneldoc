@@ -6,17 +6,17 @@
 iio_triggered_event_setup
 =========================
 
-.. c:function:: int iio_triggered_event_setup(struct iio_dev *indio_dev, irqreturn_t (*) h (int irq, void *p, irqreturn_t (*) thread (int irq, void *p)
+.. c:function:: int iio_triggered_event_setup(struct iio_dev *indio_dev, irqreturn_t (*h)(int irq, void *p), irqreturn_t (*thread)(int irq, void *p))
 
     Setup pollfunc_event for triggered event
 
     :param struct iio_dev \*indio_dev:
         IIO device structure
 
-    :param (irqreturn_t (\*) h (int irq, void \*p):
+    :param irqreturn_t (\*h)(int irq, void \*p):
         Function which will be used as pollfunc_event top half
 
-    :param (irqreturn_t (\*) thread (int irq, void \*p):
+    :param irqreturn_t (\*thread)(int irq, void \*p):
         Function which will be used as pollfunc_event bottom half
 
 .. _`iio_triggered_event_setup.description`:

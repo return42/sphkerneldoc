@@ -18,12 +18,12 @@ Definition
 .. code-block:: c
 
     struct clkops {
-        int (* enable) (struct clk *);
-        void (* disable) (struct clk *);
-        void (* find_idlest) (struct clk *, void __iomem **,u8 *, u8 *);
-        void (* find_companion) (struct clk *, void __iomem **,u8 *);
-        void (* allow_idle) (struct clk *);
-        void (* deny_idle) (struct clk *);
+        int (*enable)(struct clk *);
+        void (*disable)(struct clk *);
+        void (*find_idlest)(struct clk *, void __iomem **,u8 *, u8 *);
+        void (*find_companion)(struct clk *, void __iomem **,u8 *);
+        void (*allow_idle)(struct clk *);
+        void (*deny_idle)(struct clk *);
     }
 
 .. _`clkops.members`:
@@ -88,10 +88,10 @@ Definition
         struct list_head sibling;
         unsigned long rate;
         void __iomem *enable_reg;
-        unsigned long (* recalc) (struct clk *);
-        int (* set_rate) (struct clk *, unsigned long);
-        long (* round_rate) (struct clk *, unsigned long);
-        void (* init) (struct clk *);
+        unsigned long (*recalc)(struct clk *);
+        int (*set_rate)(struct clk *, unsigned long);
+        long (*round_rate)(struct clk *, unsigned long);
+        void (*init)(struct clk *);
         u8 enable_bit;
         s8 usecount;
         u8 fixed_div;

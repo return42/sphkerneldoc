@@ -109,9 +109,9 @@ Definition
         const int nchannels;
         const struct iio_chan_spec *iio_channels;
         const struct twl6030_ideal_code *ideal;
-        int (* start_conversion) (int channel);
-        u8 (* channel_to_reg) (int channel);
-        int (* calibrate) (struct twl6030_gpadc_data *gpadc);
+        int (*start_conversion)(int channel);
+        u8 (*channel_to_reg)(int channel);
+        int (*calibrate)(struct twl6030_gpadc_data *gpadc);
     }
 
 .. _`twl6030_gpadc_platform_data.members`:

@@ -89,8 +89,8 @@ Definition
 .. code-block:: c
 
     struct snd_dmaengine_pcm_config {
-        int (* prepare_slave_config) (struct snd_pcm_substream *substream,struct snd_pcm_hw_params *params,struct dma_slave_config *slave_config);
-        struct dma_chan *(* compat_request_channel) (struct snd_soc_pcm_runtime *rtd,struct snd_pcm_substream *substream);
+        int (*prepare_slave_config)(struct snd_pcm_substream *substream,struct snd_pcm_hw_params *params,struct dma_slave_config *slave_config);
+        struct dma_chan *(*compat_request_channel)(struct snd_soc_pcm_runtime *rtd,struct snd_pcm_substream *substream);
         dma_filter_fn compat_filter_fn;
         struct device *dma_dev;
         const char  *chan_names[SNDRV_PCM_STREAM_LAST + 1];

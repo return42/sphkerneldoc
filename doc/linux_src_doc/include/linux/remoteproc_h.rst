@@ -607,10 +607,10 @@ Definition
 .. code-block:: c
 
     struct rproc_ops {
-        int (* start) (struct rproc *rproc);
-        int (* stop) (struct rproc *rproc);
-        void (* kick) (struct rproc *rproc, int vqid);
-        void * (* da_to_va) (struct rproc *rproc, u64 da, int len);
+        int (*start)(struct rproc *rproc);
+        int (*stop)(struct rproc *rproc);
+        void (*kick)(struct rproc *rproc, int vqid);
+        void * (*da_to_va)(struct rproc *rproc, u64 da, int len);
     }
 
 .. _`rproc_ops.members`:

@@ -101,7 +101,7 @@ Return
 sdma_txinit_ahg
 ===============
 
-.. c:function:: int sdma_txinit_ahg(struct sdma_txreq *tx, u16 flags, u16 tlen, u8 ahg_entry, u8 num_ahg, u32 *ahg, u8 ahg_hlen, void (*) cb (struct sdma_txreq *, int)
+.. c:function:: int sdma_txinit_ahg(struct sdma_txreq *tx, u16 flags, u16 tlen, u8 ahg_entry, u8 num_ahg, u32 *ahg, u8 ahg_hlen, void (*cb)(struct sdma_txreq *, int))
 
     initialize an sdma_txreq struct with AHG
 
@@ -126,7 +126,7 @@ sdma_txinit_ahg
     :param u8 ahg_hlen:
         number of bytes from ASIC entry to use
 
-    :param (void (\*) cb (struct sdma_txreq \*, int):
+    :param void (\*cb)(struct sdma_txreq \*, int):
         callback
 
 .. _`sdma_txinit_ahg.description`:
@@ -179,7 +179,7 @@ and RDMA_WRITE_MIDDLE.
 sdma_txinit
 ===========
 
-.. c:function:: int sdma_txinit(struct sdma_txreq *tx, u16 flags, u16 tlen, void (*) cb (struct sdma_txreq *, int)
+.. c:function:: int sdma_txinit(struct sdma_txreq *tx, u16 flags, u16 tlen, void (*cb)(struct sdma_txreq *, int))
 
     initialize an sdma_txreq struct (no AHG)
 
@@ -192,7 +192,7 @@ sdma_txinit
     :param u16 tlen:
         total packet length (pbc + headers + data)
 
-    :param (void (\*) cb (struct sdma_txreq \*, int):
+    :param void (\*cb)(struct sdma_txreq \*, int):
         callback pointer
 
 .. _`sdma_txinit.description`:

@@ -149,9 +149,9 @@ Definition
 .. code-block:: c
 
     struct st_sensor_transfer_function {
-        int (* read_byte) (struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 *res_byte);
-        int (* write_byte) (struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 data);
-        int (* read_multiple_byte) (struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data,bool multiread_bit);
+        int (*read_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 *res_byte);
+        int (*write_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, u8 data);
+        int (*read_multiple_byte)(struct st_sensor_transfer_buffer *tb,struct device *dev, u8 reg_addr, int len, u8 *data,bool multiread_bit);
     }
 
 .. _`st_sensor_transfer_function.members`:
@@ -274,7 +274,7 @@ Definition
         unsigned int num_data_channels;
         u8 drdy_int_pin;
         bool int_pin_open_drain;
-        unsigned int (* get_irq_data_ready) (struct iio_dev *indio_dev);
+        unsigned int (*get_irq_data_ready)(struct iio_dev *indio_dev);
         const struct st_sensor_transfer_function *tf;
         struct st_sensor_transfer_buffer tb;
         bool hw_irq_trigger;

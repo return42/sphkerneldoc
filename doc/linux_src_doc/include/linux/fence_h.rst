@@ -157,15 +157,15 @@ Definition
 .. code-block:: c
 
     struct fence_ops {
-        const char * (* get_driver_name) (struct fence *fence);
-        const char * (* get_timeline_name) (struct fence *fence);
-        bool (* enable_signaling) (struct fence *fence);
-        bool (* signaled) (struct fence *fence);
-        signed long (* wait) (struct fence *fence, bool intr, signed long timeout);
-        void (* release) (struct fence *fence);
-        int (* fill_driver_data) (struct fence *fence, void *data, int size);
-        void (* fence_value_str) (struct fence *fence, char *str, int size);
-        void (* timeline_value_str) (struct fence *fence, char *str, int size);
+        const char * (*get_driver_name)(struct fence *fence);
+        const char * (*get_timeline_name)(struct fence *fence);
+        bool (*enable_signaling)(struct fence *fence);
+        bool (*signaled)(struct fence *fence);
+        signed long (*wait)(struct fence *fence, bool intr, signed long timeout);
+        void (*release)(struct fence *fence);
+        int (*fill_driver_data)(struct fence *fence, void *data, int size);
+        void (*fence_value_str)(struct fence *fence, char *str, int size);
+        void (*timeline_value_str)(struct fence *fence, char *str, int size);
     }
 
 .. _`fence_ops.members`:

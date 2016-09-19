@@ -31,8 +31,8 @@ Definition
         struct qce_dma_data dma;
         int burst_size;
         unsigned int pipe_pair_id;
-        int (* async_req_enqueue) (struct qce_device *qce,struct crypto_async_request *req);
-        void (* async_req_done) (struct qce_device *qce, int ret);
+        int (*async_req_enqueue)(struct qce_device *qce,struct crypto_async_request *req);
+        void (*async_req_done)(struct qce_device *qce, int ret);
     }
 
 .. _`qce_device.members`:
@@ -103,9 +103,9 @@ Definition
 
     struct qce_algo_ops {
         u32 type;
-        int (* register_algs) (struct qce_device *qce);
-        void (* unregister_algs) (struct qce_device *qce);
-        int (* async_req_handle) (struct crypto_async_request *async_req);
+        int (*register_algs)(struct qce_device *qce);
+        void (*unregister_algs)(struct qce_device *qce);
+        int (*async_req_handle)(struct crypto_async_request *async_req);
     }
 
 .. _`qce_algo_ops.members`:

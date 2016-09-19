@@ -120,7 +120,7 @@ Definition
 .. code-block:: c
 
     struct vmw_cmd_entry {
-        int (* func) (struct vmw_private *, struct vmw_sw_context *,SVGA3dCmdHeader *);
+        int (*func)(struct vmw_private *, struct vmw_sw_context *,SVGA3dCmdHeader *);
         bool user_allow;
         bool gb_disable;
         bool gb_enable;

@@ -61,14 +61,14 @@ true if the entry has to be purged now, false otherwise.
 __batadv_dat_purge
 ==================
 
-.. c:function:: void __batadv_dat_purge(struct batadv_priv *bat_priv, bool (*) to_purge (struct batadv_dat_entry *)
+.. c:function:: void __batadv_dat_purge(struct batadv_priv *bat_priv, bool (*to_purge)(struct batadv_dat_entry *))
 
     delete entries from the DAT local storage
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
 
-    :param (bool (\*) to_purge (struct batadv_dat_entry \*):
+    :param bool (\*to_purge)(struct batadv_dat_entry \*):
         function in charge to decide whether an entry has to be purged or
         not. This function takes the dat_entry as argument and has to
         returns a boolean value: true is the entry has to be deleted,

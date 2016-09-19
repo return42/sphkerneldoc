@@ -219,8 +219,8 @@ Definition
         struct hsi_client *cl;
         struct sg_table sgt;
         void *context;
-        void (* complete) (struct hsi_msg *msg);
-        void (* destructor) (struct hsi_msg *msg);
+        void (*complete)(struct hsi_msg *msg);
+        void (*destructor)(struct hsi_msg *msg);
         int status;
         unsigned int actual_len;
         unsigned int channel;
@@ -291,12 +291,12 @@ Definition
         unsigned int shared:1;
         int claimed;
         struct mutex lock;
-        int (* async) (struct hsi_msg *msg);
-        int (* setup) (struct hsi_client *cl);
-        int (* flush) (struct hsi_client *cl);
-        int (* start_tx) (struct hsi_client *cl);
-        int (* stop_tx) (struct hsi_client *cl);
-        int (* release) (struct hsi_client *cl);
+        int (*async)(struct hsi_msg *msg);
+        int (*setup)(struct hsi_client *cl);
+        int (*flush)(struct hsi_client *cl);
+        int (*start_tx)(struct hsi_client *cl);
+        int (*stop_tx)(struct hsi_client *cl);
+        int (*release)(struct hsi_client *cl);
         struct atomic_notifier_head n_head;
     }
 

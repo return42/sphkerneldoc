@@ -1148,11 +1148,11 @@ fabric-generated ELSes.
 fcoe_ctlr_disc_start
 ====================
 
-.. c:function:: void fcoe_ctlr_disc_start(void (*) callback (struct fc_lport *, enum fc_disc_event, struct fc_lport *lport)
+.. c:function:: void fcoe_ctlr_disc_start(void (*callback)(struct fc_lport *, enum fc_disc_event), struct fc_lport *lport)
 
     start discovery for VN2VN mode.
 
-    :param (void (\*) callback (struct fc_lport \*, enum fc_disc_event):
+    :param void (\*callback)(struct fc_lport \*, enum fc_disc_event):
         *undescribed*
 
     :param struct fc_lport \*lport:

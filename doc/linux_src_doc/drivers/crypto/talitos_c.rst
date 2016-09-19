@@ -6,7 +6,7 @@
 talitos_submit
 ==============
 
-.. c:function:: int talitos_submit(struct device *dev, int ch, struct talitos_desc *desc, void (*) callback (struct device *dev, struct talitos_desc *desc, void *context, int error, void *context)
+.. c:function:: int talitos_submit(struct device *dev, int ch, struct talitos_desc *desc, void (*callback)(struct device *dev, struct talitos_desc *desc, void *context, int error), void *context)
 
     submits a descriptor to the device for processing
 
@@ -19,7 +19,7 @@ talitos_submit
     :param struct talitos_desc \*desc:
         the descriptor to be processed by the device
 
-    :param (void (\*) callback (struct device \*dev, struct talitos_desc \*desc, void \*context, int error):
+    :param void (\*callback)(struct device \*dev, struct talitos_desc \*desc, void \*context, int error):
         whom to call when processing is complete
 
     :param void \*context:

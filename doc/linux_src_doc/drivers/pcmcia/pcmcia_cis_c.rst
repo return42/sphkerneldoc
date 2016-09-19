@@ -34,7 +34,7 @@ Description
 pccard_loop_tuple
 =================
 
-.. c:function:: int pccard_loop_tuple(struct pcmcia_socket *s, unsigned int function, cisdata_t code, cisparse_t *parse, void *priv_data, int (*) loop_tuple (tuple_t *tuple, cisparse_t *parse, void *priv_data)
+.. c:function:: int pccard_loop_tuple(struct pcmcia_socket *s, unsigned int function, cisdata_t code, cisparse_t *parse, void *priv_data, int (*loop_tuple)(tuple_t *tuple, cisparse_t *parse, void *priv_data))
 
     loop over tuples in the CIS
 
@@ -53,7 +53,7 @@ pccard_loop_tuple
     :param void \*priv_data:
         private data to be passed to the loop_tuple function.
 
-    :param (int (\*) loop_tuple (tuple_t \*tuple, cisparse_t \*parse, void \*priv_data):
+    :param int (\*loop_tuple)(tuple_t \*tuple, cisparse_t \*parse, void \*priv_data):
         function to call for each CIS entry of type \ ``function``\ . IT
         gets passed the raw tuple, the paresed tuple (if \ ``parse``\  is
         set) and \ ``priv_data``\ .
@@ -111,14 +111,14 @@ by a struct pcmcia_cfg_mem.
 pcmcia_loop_config
 ==================
 
-.. c:function:: int pcmcia_loop_config(struct pcmcia_device *p_dev, int (*) conf_check (struct pcmcia_device *p_dev, void *priv_data, void *priv_data)
+.. c:function:: int pcmcia_loop_config(struct pcmcia_device *p_dev, int (*conf_check)(struct pcmcia_device *p_dev, void *priv_data), void *priv_data)
 
     loop over configuration options
 
     :param struct pcmcia_device \*p_dev:
         the struct pcmcia_device which we need to loop for.
 
-    :param (int (\*) conf_check (struct pcmcia_device \*p_dev, void \*priv_data):
+    :param int (\*conf_check)(struct pcmcia_device \*p_dev, void \*priv_data):
         function to call for each configuration option.
         It gets passed the struct pcmcia_device and private data
         being passed to \ :c:func:`pcmcia_loop_config`\ 
@@ -167,7 +167,7 @@ by a struct pcmcia_cfg_mem.
 pcmcia_loop_tuple
 =================
 
-.. c:function:: int pcmcia_loop_tuple(struct pcmcia_device *p_dev, cisdata_t code, int (*) loop_tuple (struct pcmcia_device *p_dev, tuple_t *tuple, void *priv_data, void *priv_data)
+.. c:function:: int pcmcia_loop_tuple(struct pcmcia_device *p_dev, cisdata_t code, int (*loop_tuple)(struct pcmcia_device *p_dev, tuple_t *tuple, void *priv_data), void *priv_data)
 
     loop over tuples in the CIS
 
@@ -177,7 +177,7 @@ pcmcia_loop_tuple
     :param cisdata_t code:
         which CIS code shall we look for?
 
-    :param (int (\*) loop_tuple (struct pcmcia_device \*p_dev, tuple_t \*tuple, void \*priv_data):
+    :param int (\*loop_tuple)(struct pcmcia_device \*p_dev, tuple_t \*tuple, void \*priv_data):
         function to call for each CIS entry of type \ ``function``\ . IT
         gets passed the raw tuple and \ ``priv_data``\ .
 

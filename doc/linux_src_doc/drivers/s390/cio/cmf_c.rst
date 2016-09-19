@@ -58,12 +58,12 @@ Definition
 .. code-block:: c
 
     struct cmb_operations {
-        int (* alloc) (struct ccw_device *);
-        void (* free) (struct ccw_device *);
-        int (* set) (struct ccw_device *, u32);
-        u64 (* read) (struct ccw_device *, int);
-        int (* readall) (struct ccw_device *, struct cmbdata *);
-        void (* reset) (struct ccw_device *);
+        int (*alloc)(struct ccw_device *);
+        void (*free)(struct ccw_device *);
+        int (*set)(struct ccw_device *, u32);
+        u64 (*read)(struct ccw_device *, int);
+        int (*readall)(struct ccw_device *, struct cmbdata *);
+        void (*reset)(struct ccw_device *);
     }
 
 .. _`cmb_operations.members`:

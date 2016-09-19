@@ -1221,7 +1221,7 @@ ib_post_recv
 ib_create_cq
 ============
 
-.. c:function:: struct ib_cq *ib_create_cq(struct ib_device *device, ib_comp_handler comp_handler, void (*) event_handler (struct ib_event *, void *, void *cq_context, const struct ib_cq_init_attr *cq_attr)
+.. c:function:: struct ib_cq *ib_create_cq(struct ib_device *device, ib_comp_handler comp_handler, void (*event_handler)(struct ib_event *, void *), void *cq_context, const struct ib_cq_init_attr *cq_attr)
 
     Creates a CQ on the specified device.
 
@@ -1232,7 +1232,7 @@ ib_create_cq
         A user-specified callback that is invoked when a
         completion event occurs on the CQ.
 
-    :param (void (\*) event_handler (struct ib_event \*, void \*):
+    :param void (\*event_handler)(struct ib_event \*, void \*):
         A user-specified callback that is invoked when an
         asynchronous event not associated with a completion occurs on the CQ.
 

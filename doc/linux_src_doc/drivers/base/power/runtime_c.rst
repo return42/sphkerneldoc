@@ -66,11 +66,11 @@ rpm_check_suspend_allowed
 __rpm_callback
 ==============
 
-.. c:function:: int __rpm_callback(int (*) cb (struct device *, struct device *dev) __releases(&dev->power.lock) __acquires(&dev->power.lock)
+.. c:function:: int __rpm_callback(int (*cb)(struct device *), struct device *dev) __releases(&dev->power.lock) __acquires(&dev->power.lock)
 
     Run a given runtime PM callback for a given device.
 
-    :param (int (\*) cb (struct device \*):
+    :param int (\*cb)(struct device \*):
         Runtime PM callback to run.
 
     :param struct device \*dev) __releases(&dev->power.lock) __acquires(&dev->power.lock:
@@ -109,11 +109,11 @@ This function must be called under dev->power.lock with interrupts disabled.
 rpm_callback
 ============
 
-.. c:function:: int rpm_callback(int (*) cb (struct device *, struct device *dev)
+.. c:function:: int rpm_callback(int (*cb)(struct device *), struct device *dev)
 
     Run a given runtime PM callback for a given device.
 
-    :param (int (\*) cb (struct device \*):
+    :param int (\*cb)(struct device \*):
         Runtime PM callback to run.
 
     :param struct device \*dev:

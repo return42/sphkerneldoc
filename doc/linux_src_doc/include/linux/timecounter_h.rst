@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct cyclecounter {
-        cycle_t (* read) (const struct cyclecounter *cc);
+        cycle_t (*read)(const struct cyclecounter *cc);
         cycle_t mask;
         u32 mult;
         u32 shift;

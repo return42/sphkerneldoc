@@ -115,7 +115,7 @@ The dev_addr->net field must be initialized.
 rdma_resolve_ip
 ===============
 
-.. c:function:: int rdma_resolve_ip(struct rdma_addr_client *client, struct sockaddr *src_addr, struct sockaddr *dst_addr, struct rdma_dev_addr *addr, int timeout_ms, void (*) callback (int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context, void *context)
+.. c:function:: int rdma_resolve_ip(struct rdma_addr_client *client, struct sockaddr *src_addr, struct sockaddr *dst_addr, struct rdma_dev_addr *addr, int timeout_ms, void (*callback)(int status, struct sockaddr *src_addr, struct rdma_dev_addr *addr, void *context), void *context)
 
     Resolve source and destination IP addresses to RDMA hardware addresses.
 
@@ -138,7 +138,7 @@ rdma_resolve_ip
     :param int timeout_ms:
         Amount of time to wait for the address resolution to complete.
 
-    :param (void (\*) callback (int status, struct sockaddr \*src_addr, struct rdma_dev_addr \*addr, void \*context):
+    :param void (\*callback)(int status, struct sockaddr \*src_addr, struct rdma_dev_addr \*addr, void \*context):
         Call invoked once address resolution has completed, timed out,
         or been canceled.  A status of 0 indicates success.
 

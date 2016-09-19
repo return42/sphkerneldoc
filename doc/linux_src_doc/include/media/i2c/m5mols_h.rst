@@ -20,7 +20,7 @@ Definition
     struct m5mols_platform_data {
         int gpio_reset;
         u8 reset_polarity;
-        int (* set_power) (struct device *dev, int on);
+        int (*set_power)(struct device *dev, int on);
     }
 
 .. _`m5mols_platform_data.members`:

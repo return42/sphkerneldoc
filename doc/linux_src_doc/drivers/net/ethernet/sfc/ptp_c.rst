@@ -168,8 +168,8 @@ Definition
         bool enabled;
         unsigned int mode;
         unsigned int time_format;
-        void (* ns_to_nic_time) (s64 ns, u32 *nic_major, u32 *nic_minor);
-        ktime_t (* nic_to_kernel_time) (u32 nic_major, u32 nic_minor,s32 correction);
+        void (*ns_to_nic_time)(s64 ns, u32 *nic_major, u32 *nic_minor);
+        ktime_t (*nic_to_kernel_time)(u32 nic_major, u32 nic_minor,s32 correction);
         unsigned int min_synchronisation_ns;
         struct ts_corrections;
         efx_qword_t evt_frags[MAX_EVENT_FRAGS];

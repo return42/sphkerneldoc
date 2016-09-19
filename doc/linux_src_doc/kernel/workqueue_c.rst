@@ -2003,14 +2003,14 @@ online CPU before, cpus_allowed of all its workers should be restored.
 work_on_cpu
 ===========
 
-.. c:function:: long work_on_cpu(int cpu, long (*) fn (void *, void *arg)
+.. c:function:: long work_on_cpu(int cpu, long (*fn)(void *), void *arg)
 
     run a function in thread context on a particular cpu
 
     :param int cpu:
         the cpu to run on
 
-    :param (long (\*) fn (void \*):
+    :param long (\*fn)(void \*):
         the function to run
 
     :param void \*arg:

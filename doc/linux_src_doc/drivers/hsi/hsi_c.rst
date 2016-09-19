@@ -224,14 +224,14 @@ hsi_release_port
 hsi_register_port_event
 =======================
 
-.. c:function:: int hsi_register_port_event(struct hsi_client *cl, void (*) handler (struct hsi_client *, unsigned long)
+.. c:function:: int hsi_register_port_event(struct hsi_client *cl, void (*handler)(struct hsi_client *, unsigned long))
 
     Register a client to receive port events
 
     :param struct hsi_client \*cl:
         HSI client that wants to receive port events
 
-    :param (void (\*) handler (struct hsi_client \*, unsigned long):
+    :param void (\*handler)(struct hsi_client \*, unsigned long):
         Event handler callback
 
 .. _`hsi_register_port_event.description`:

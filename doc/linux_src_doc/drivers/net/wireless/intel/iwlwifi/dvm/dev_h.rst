@@ -300,10 +300,10 @@ Definition
 .. code-block:: c
 
     struct iwl_dvm_cfg {
-        void (* set_hw_params) (struct iwl_priv *priv);
-        int (* set_channel_switch) (struct iwl_priv *priv,struct ieee80211_channel_switch *ch_switch);
-        void (* nic_config) (struct iwl_priv *priv);
-        void (* temperature) (struct iwl_priv *priv);
+        void (*set_hw_params)(struct iwl_priv *priv);
+        int (*set_channel_switch)(struct iwl_priv *priv,struct ieee80211_channel_switch *ch_switch);
+        void (*nic_config)(struct iwl_priv *priv);
+        void (*temperature)(struct iwl_priv *priv);
         const struct iwl_dvm_bt_params *bt_params;
         s32 chain_noise_scale;
         u8 plcp_delta_threshold;

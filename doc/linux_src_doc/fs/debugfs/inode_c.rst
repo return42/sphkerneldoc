@@ -184,7 +184,7 @@ returned.
 debugfs_create_automount
 ========================
 
-.. c:function:: struct dentry *debugfs_create_automount(const char *name, struct dentry *parent, struct vfsmount *(*) f (void *, void *data)
+.. c:function:: struct dentry *debugfs_create_automount(const char *name, struct dentry *parent, struct vfsmount *(*f)(void *), void *data)
 
     create automount point in the debugfs filesystem
 
@@ -196,7 +196,7 @@ debugfs_create_automount
         directory dentry if set.  If this parameter is NULL, then the
         file will be created in the root of the debugfs filesystem.
 
-    :param (struct vfsmount \*(\*) f (void \*):
+    :param struct vfsmount \*(\*f)(void \*):
         function to be called when pathname resolution steps on that one.
 
     :param void \*data:

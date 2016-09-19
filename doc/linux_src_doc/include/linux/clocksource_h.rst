@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct clocksource {
-        cycle_t (* read) (struct clocksource *cs);
+        cycle_t (*read)(struct clocksource *cs);
         cycle_t mask;
         u32 mult;
         u32 shift;
@@ -31,11 +31,11 @@ Definition
         const char *name;
         struct list_head list;
         int rating;
-        int (* enable) (struct clocksource *cs);
-        void (* disable) (struct clocksource *cs);
+        int (*enable)(struct clocksource *cs);
+        void (*disable)(struct clocksource *cs);
         unsigned long flags;
-        void (* suspend) (struct clocksource *cs);
-        void (* resume) (struct clocksource *cs);
+        void (*suspend)(struct clocksource *cs);
+        void (*resume)(struct clocksource *cs);
     }
 
 .. _`clocksource.members`:

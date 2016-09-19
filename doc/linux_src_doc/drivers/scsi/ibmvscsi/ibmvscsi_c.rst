@@ -267,14 +267,14 @@ will syncrhonze things.
 init_event_struct
 =================
 
-.. c:function:: void init_event_struct(struct srp_event_struct *evt_struct, void (*) done (struct srp_event_struct *, u8 format, int timeout)
+.. c:function:: void init_event_struct(struct srp_event_struct *evt_struct, void (*done)(struct srp_event_struct *), u8 format, int timeout)
 
     Initialize fields in an event struct that are always required.
 
     :param struct srp_event_struct \*evt_struct:
         *undescribed*
 
-    :param (void (\*) done (struct srp_event_struct \*):
+    :param void (\*done)(struct srp_event_struct \*):
         Routine to call when the event is responded to
 
     :param u8 format:
@@ -486,14 +486,14 @@ lun_from_dev
 ibmvscsi_queuecommand_lck
 =========================
 
-.. c:function:: int ibmvscsi_queuecommand_lck(struct scsi_cmnd *cmnd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int ibmvscsi_queuecommand_lck(struct scsi_cmnd *cmnd, void (*done)(struct scsi_cmnd *))
 
     - The queuecommand function of the scsi template
 
     :param struct scsi_cmnd \*cmnd:
         *undescribed*
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         Callback function to be called when cmd is completed
 
 .. _`map_persist_bufs`:

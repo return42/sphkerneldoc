@@ -100,12 +100,12 @@ Definition
         u8 nr_irqs;
         const struct omap_prcm_irq *irqs;
         int irq;
-        unsigned int (* xlate_irq) (unsigned int);
-        void (* read_pending_irqs) (unsigned long *events);
-        void (* ocp_barrier) (void);
-        void (* save_and_clear_irqen) (u32 *saved_mask);
-        void (* restore_irqen) (u32 *saved_mask);
-        void (* reconfigure_io_chain) (void);
+        unsigned int (*xlate_irq)(unsigned int);
+        void (*read_pending_irqs)(unsigned long *events);
+        void (*ocp_barrier)(void);
+        void (*save_and_clear_irqen)(u32 *saved_mask);
+        void (*restore_irqen)(u32 *saved_mask);
+        void (*reconfigure_io_chain)(void);
         u32 *saved_mask;
         u32 *priority_mask;
         int base_irq;
@@ -203,7 +203,7 @@ Definition
         s16 offset;
         u16 flags;
         s32 device_inst_offset;
-        int (* init) (const struct omap_prcm_init_data *data);
+        int (*init)(const struct omap_prcm_init_data *data);
         struct device_node *np;
     }
 

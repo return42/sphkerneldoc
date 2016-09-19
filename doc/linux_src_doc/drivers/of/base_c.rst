@@ -1166,11 +1166,11 @@ list, so it won't be found any more.
 of_alias_scan
 =============
 
-.. c:function:: void of_alias_scan(void * (*) dt_alloc (u64 size, u64 align)
+.. c:function:: void of_alias_scan(void * (*dt_alloc)(u64 size, u64 align))
 
     Scan all properties of the 'aliases' node
 
-    :param (void \* (\*) dt_alloc (u64 size, u64 align):
+    :param void \* (\*dt_alloc)(u64 size, u64 align):
         An allocator that provides a virtual address to memory
         for storing the resulting tree
 

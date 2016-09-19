@@ -99,15 +99,15 @@ Definition
 .. code-block:: c
 
     struct akcipher_alg {
-        int (* sign) (struct akcipher_request *req);
-        int (* verify) (struct akcipher_request *req);
-        int (* encrypt) (struct akcipher_request *req);
-        int (* decrypt) (struct akcipher_request *req);
-        int (* set_pub_key) (struct crypto_akcipher *tfm, const void *key,unsigned int keylen);
-        int (* set_priv_key) (struct crypto_akcipher *tfm, const void *key,unsigned int keylen);
-        int (* max_size) (struct crypto_akcipher *tfm);
-        int (* init) (struct crypto_akcipher *tfm);
-        void (* exit) (struct crypto_akcipher *tfm);
+        int (*sign)(struct akcipher_request *req);
+        int (*verify)(struct akcipher_request *req);
+        int (*encrypt)(struct akcipher_request *req);
+        int (*decrypt)(struct akcipher_request *req);
+        int (*set_pub_key)(struct crypto_akcipher *tfm, const void *key,unsigned int keylen);
+        int (*set_priv_key)(struct crypto_akcipher *tfm, const void *key,unsigned int keylen);
+        int (*max_size)(struct crypto_akcipher *tfm);
+        int (*init)(struct crypto_akcipher *tfm);
+        void (*exit)(struct crypto_akcipher *tfm);
         unsigned int reqsize;
         struct crypto_alg base;
     }

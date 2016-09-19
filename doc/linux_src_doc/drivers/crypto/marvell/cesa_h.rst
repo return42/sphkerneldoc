@@ -636,10 +636,10 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_req_ops {
-        void (* prepare) (struct crypto_async_request *req,struct mv_cesa_engine *engine);
-        int (* process) (struct crypto_async_request *req, u32 status);
-        void (* step) (struct crypto_async_request *req);
-        void (* cleanup) (struct crypto_async_request *req);
+        void (*prepare)(struct crypto_async_request *req,struct mv_cesa_engine *engine);
+        int (*process)(struct crypto_async_request *req, u32 status);
+        void (*step)(struct crypto_async_request *req);
+        void (*cleanup)(struct crypto_async_request *req);
     }
 
 .. _`mv_cesa_req_ops.members`:

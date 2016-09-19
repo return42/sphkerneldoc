@@ -18,10 +18,10 @@ Definition
 .. code-block:: c
 
     struct phy_ops {
-        int (* init) (struct phy *phy);
-        int (* exit) (struct phy *phy);
-        int (* power_on) (struct phy *phy);
-        int (* power_off) (struct phy *phy);
+        int (*init)(struct phy *phy);
+        int (*exit)(struct phy *phy);
+        int (*power_on)(struct phy *phy);
+        int (*power_off)(struct phy *phy);
         struct module *owner;
     }
 
@@ -150,7 +150,7 @@ Definition
         struct device_node *children;
         struct module *owner;
         struct list_head list;
-        struct phy * (* of_xlate) (struct device *dev,struct of_phandle_args *args);
+        struct phy * (*of_xlate)(struct device *dev,struct of_phandle_args *args);
     }
 
 .. _`phy_provider.members`:

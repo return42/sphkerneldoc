@@ -4781,100 +4781,100 @@ Definition
 .. code-block:: c
 
     struct cfg80211_ops {
-        int (* suspend) (struct wiphy *wiphy, struct cfg80211_wowlan *wow);
-        int (* resume) (struct wiphy *wiphy);
-        void (* set_wakeup) (struct wiphy *wiphy, bool enabled);
-        struct wireless_dev * (* add_virtual_intf) (struct wiphy *wiphy,const char *name,unsigned char name_assign_type,enum nl80211_iftype type,u32 *flags,struct vif_params *params);
-        int (* del_virtual_intf) (struct wiphy *wiphy,struct wireless_dev *wdev);
-        int (* change_virtual_intf) (struct wiphy *wiphy,struct net_device *dev,enum nl80211_iftype type, u32 *flags,struct vif_params *params);
-        int (* add_key) (struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,struct key_params *params);
-        int (* get_key) (struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,void *cookie,void (*callback);
-        int (* del_key) (struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr);
-        int (* set_default_key) (struct wiphy *wiphy,struct net_device *netdev,u8 key_index, bool unicast, bool multicast);
-        int (* set_default_mgmt_key) (struct wiphy *wiphy,struct net_device *netdev,u8 key_index);
-        int (* start_ap) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_ap_settings *settings);
-        int (* change_beacon) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_beacon_data *info);
-        int (* stop_ap) (struct wiphy *wiphy, struct net_device *dev);
-        int (* add_station) (struct wiphy *wiphy, struct net_device *dev,const u8 *mac,struct station_parameters *params);
-        int (* del_station) (struct wiphy *wiphy, struct net_device *dev,struct station_del_parameters *params);
-        int (* change_station) (struct wiphy *wiphy, struct net_device *dev,const u8 *mac,struct station_parameters *params);
-        int (* get_station) (struct wiphy *wiphy, struct net_device *dev,const u8 *mac, struct station_info *sinfo);
-        int (* dump_station) (struct wiphy *wiphy, struct net_device *dev,int idx, u8 *mac, struct station_info *sinfo);
-        int (* add_mpath) (struct wiphy *wiphy, struct net_device *dev,const u8 *dst, const u8 *next_hop);
-        int (* del_mpath) (struct wiphy *wiphy, struct net_device *dev,const u8 *dst);
-        int (* change_mpath) (struct wiphy *wiphy, struct net_device *dev,const u8 *dst, const u8 *next_hop);
-        int (* get_mpath) (struct wiphy *wiphy, struct net_device *dev,u8 *dst, u8 *next_hop, struct mpath_info *pinfo);
-        int (* dump_mpath) (struct wiphy *wiphy, struct net_device *dev,int idx, u8 *dst, u8 *next_hop,struct mpath_info *pinfo);
-        int (* get_mpp) (struct wiphy *wiphy, struct net_device *dev,u8 *dst, u8 *mpp, struct mpath_info *pinfo);
-        int (* dump_mpp) (struct wiphy *wiphy, struct net_device *dev,int idx, u8 *dst, u8 *mpp,struct mpath_info *pinfo);
-        int (* get_mesh_config) (struct wiphy *wiphy,struct net_device *dev,struct mesh_config *conf);
-        int (* update_mesh_config) (struct wiphy *wiphy,struct net_device *dev, u32 mask,const struct mesh_config *nconf);
-        int (* join_mesh) (struct wiphy *wiphy, struct net_device *dev,const struct mesh_config *conf,const struct mesh_setup *setup);
-        int (* leave_mesh) (struct wiphy *wiphy, struct net_device *dev);
-        int (* join_ocb) (struct wiphy *wiphy, struct net_device *dev,struct ocb_setup *setup);
-        int (* leave_ocb) (struct wiphy *wiphy, struct net_device *dev);
-        int (* change_bss) (struct wiphy *wiphy, struct net_device *dev,struct bss_parameters *params);
-        int (* set_txq_params) (struct wiphy *wiphy, struct net_device *dev,struct ieee80211_txq_params *params);
-        int (* libertas_set_mesh_channel) (struct wiphy *wiphy,struct net_device *dev,struct ieee80211_channel *chan);
-        int (* set_monitor_channel) (struct wiphy *wiphy,struct cfg80211_chan_def *chandef);
-        int (* scan) (struct wiphy *wiphy,struct cfg80211_scan_request *request);
-        void (* abort_scan) (struct wiphy *wiphy, struct wireless_dev *wdev);
-        int (* auth) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_auth_request *req);
-        int (* assoc) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_assoc_request *req);
-        int (* deauth) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_deauth_request *req);
-        int (* disassoc) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_disassoc_request *req);
-        int (* connect) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_connect_params *sme);
-        int (* disconnect) (struct wiphy *wiphy, struct net_device *dev,u16 reason_code);
-        int (* join_ibss) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_ibss_params *params);
-        int (* leave_ibss) (struct wiphy *wiphy, struct net_device *dev);
-        int (* set_mcast_rate) (struct wiphy *wiphy, struct net_device *dev,int rate[NUM_NL80211_BANDS]);
-        int (* set_wiphy_params) (struct wiphy *wiphy, u32 changed);
-        int (* set_tx_power) (struct wiphy *wiphy, struct wireless_dev *wdev,enum nl80211_tx_power_setting type, int mbm);
-        int (* get_tx_power) (struct wiphy *wiphy, struct wireless_dev *wdev,int *dbm);
-        int (* set_wds_peer) (struct wiphy *wiphy, struct net_device *dev,const u8 *addr);
-        void (* rfkill_poll) (struct wiphy *wiphy);
+        int (*suspend)(struct wiphy *wiphy, struct cfg80211_wowlan *wow);
+        int (*resume)(struct wiphy *wiphy);
+        void (*set_wakeup)(struct wiphy *wiphy, bool enabled);
+        struct wireless_dev * (*add_virtual_intf)(struct wiphy *wiphy,const char *name,unsigned char name_assign_type,enum nl80211_iftype type,u32 *flags,struct vif_params *params);
+        int (*del_virtual_intf)(struct wiphy *wiphy,struct wireless_dev *wdev);
+        int (*change_virtual_intf)(struct wiphy *wiphy,struct net_device *dev,enum nl80211_iftype type, u32 *flags,struct vif_params *params);
+        int (*add_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,struct key_params *params);
+        int (*get_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr,void *cookie,void (*callback);
+        int (*del_key)(struct wiphy *wiphy, struct net_device *netdev,u8 key_index, bool pairwise, const u8 *mac_addr);
+        int (*set_default_key)(struct wiphy *wiphy,struct net_device *netdev,u8 key_index, bool unicast, bool multicast);
+        int (*set_default_mgmt_key)(struct wiphy *wiphy,struct net_device *netdev,u8 key_index);
+        int (*start_ap)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_ap_settings *settings);
+        int (*change_beacon)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_beacon_data *info);
+        int (*stop_ap)(struct wiphy *wiphy, struct net_device *dev);
+        int (*add_station)(struct wiphy *wiphy, struct net_device *dev,const u8 *mac,struct station_parameters *params);
+        int (*del_station)(struct wiphy *wiphy, struct net_device *dev,struct station_del_parameters *params);
+        int (*change_station)(struct wiphy *wiphy, struct net_device *dev,const u8 *mac,struct station_parameters *params);
+        int (*get_station)(struct wiphy *wiphy, struct net_device *dev,const u8 *mac, struct station_info *sinfo);
+        int (*dump_station)(struct wiphy *wiphy, struct net_device *dev,int idx, u8 *mac, struct station_info *sinfo);
+        int (*add_mpath)(struct wiphy *wiphy, struct net_device *dev,const u8 *dst, const u8 *next_hop);
+        int (*del_mpath)(struct wiphy *wiphy, struct net_device *dev,const u8 *dst);
+        int (*change_mpath)(struct wiphy *wiphy, struct net_device *dev,const u8 *dst, const u8 *next_hop);
+        int (*get_mpath)(struct wiphy *wiphy, struct net_device *dev,u8 *dst, u8 *next_hop, struct mpath_info *pinfo);
+        int (*dump_mpath)(struct wiphy *wiphy, struct net_device *dev,int idx, u8 *dst, u8 *next_hop,struct mpath_info *pinfo);
+        int (*get_mpp)(struct wiphy *wiphy, struct net_device *dev,u8 *dst, u8 *mpp, struct mpath_info *pinfo);
+        int (*dump_mpp)(struct wiphy *wiphy, struct net_device *dev,int idx, u8 *dst, u8 *mpp,struct mpath_info *pinfo);
+        int (*get_mesh_config)(struct wiphy *wiphy,struct net_device *dev,struct mesh_config *conf);
+        int (*update_mesh_config)(struct wiphy *wiphy,struct net_device *dev, u32 mask,const struct mesh_config *nconf);
+        int (*join_mesh)(struct wiphy *wiphy, struct net_device *dev,const struct mesh_config *conf,const struct mesh_setup *setup);
+        int (*leave_mesh)(struct wiphy *wiphy, struct net_device *dev);
+        int (*join_ocb)(struct wiphy *wiphy, struct net_device *dev,struct ocb_setup *setup);
+        int (*leave_ocb)(struct wiphy *wiphy, struct net_device *dev);
+        int (*change_bss)(struct wiphy *wiphy, struct net_device *dev,struct bss_parameters *params);
+        int (*set_txq_params)(struct wiphy *wiphy, struct net_device *dev,struct ieee80211_txq_params *params);
+        int (*libertas_set_mesh_channel)(struct wiphy *wiphy,struct net_device *dev,struct ieee80211_channel *chan);
+        int (*set_monitor_channel)(struct wiphy *wiphy,struct cfg80211_chan_def *chandef);
+        int (*scan)(struct wiphy *wiphy,struct cfg80211_scan_request *request);
+        void (*abort_scan)(struct wiphy *wiphy, struct wireless_dev *wdev);
+        int (*auth)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_auth_request *req);
+        int (*assoc)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_assoc_request *req);
+        int (*deauth)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_deauth_request *req);
+        int (*disassoc)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_disassoc_request *req);
+        int (*connect)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_connect_params *sme);
+        int (*disconnect)(struct wiphy *wiphy, struct net_device *dev,u16 reason_code);
+        int (*join_ibss)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_ibss_params *params);
+        int (*leave_ibss)(struct wiphy *wiphy, struct net_device *dev);
+        int (*set_mcast_rate)(struct wiphy *wiphy, struct net_device *dev,int rate[NUM_NL80211_BANDS]);
+        int (*set_wiphy_params)(struct wiphy *wiphy, u32 changed);
+        int (*set_tx_power)(struct wiphy *wiphy, struct wireless_dev *wdev,enum nl80211_tx_power_setting type, int mbm);
+        int (*get_tx_power)(struct wiphy *wiphy, struct wireless_dev *wdev,int *dbm);
+        int (*set_wds_peer)(struct wiphy *wiphy, struct net_device *dev,const u8 *addr);
+        void (*rfkill_poll)(struct wiphy *wiphy);
         #ifdef CONFIG_NL80211_TESTMODE
-        int (* testmode_cmd) (struct wiphy *wiphy, struct wireless_dev *wdev,void *data, int len);
-        int (* testmode_dump) (struct wiphy *wiphy, struct sk_buff *skb,struct netlink_callback *cb,void *data, int len);
+        int (*testmode_cmd)(struct wiphy *wiphy, struct wireless_dev *wdev,void *data, int len);
+        int (*testmode_dump)(struct wiphy *wiphy, struct sk_buff *skb,struct netlink_callback *cb,void *data, int len);
         #endif
-        int (* set_bitrate_mask) (struct wiphy *wiphy,struct net_device *dev,const u8 *peer,const struct cfg80211_bitrate_mask *mask);
-        int (* dump_survey) (struct wiphy *wiphy, struct net_device *netdev,int idx, struct survey_info *info);
-        int (* set_pmksa) (struct wiphy *wiphy, struct net_device *netdev,struct cfg80211_pmksa *pmksa);
-        int (* del_pmksa) (struct wiphy *wiphy, struct net_device *netdev,struct cfg80211_pmksa *pmksa);
-        int (* flush_pmksa) (struct wiphy *wiphy, struct net_device *netdev);
-        int (* remain_on_channel) (struct wiphy *wiphy,struct wireless_dev *wdev,struct ieee80211_channel *chan,unsigned int duration,u64 *cookie);
-        int (* cancel_remain_on_channel) (struct wiphy *wiphy,struct wireless_dev *wdev,u64 cookie);
-        int (* mgmt_tx) (struct wiphy *wiphy, struct wireless_dev *wdev,struct cfg80211_mgmt_tx_params *params,u64 *cookie);
-        int (* mgmt_tx_cancel_wait) (struct wiphy *wiphy,struct wireless_dev *wdev,u64 cookie);
-        int (* set_power_mgmt) (struct wiphy *wiphy, struct net_device *dev,bool enabled, int timeout);
-        int (* set_cqm_rssi_config) (struct wiphy *wiphy,struct net_device *dev,s32 rssi_thold, u32 rssi_hyst);
-        int (* set_cqm_txe_config) (struct wiphy *wiphy,struct net_device *dev,u32 rate, u32 pkts, u32 intvl);
-        void (* mgmt_frame_register) (struct wiphy *wiphy,struct wireless_dev *wdev,u16 frame_type, bool reg);
-        int (* set_antenna) (struct wiphy *wiphy, u32 tx_ant, u32 rx_ant);
-        int (* get_antenna) (struct wiphy *wiphy, u32 *tx_ant, u32 *rx_ant);
-        int (* sched_scan_start) (struct wiphy *wiphy,struct net_device *dev,struct cfg80211_sched_scan_request *request);
-        int (* sched_scan_stop) (struct wiphy *wiphy, struct net_device *dev);
-        int (* set_rekey_data) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_gtk_rekey_data *data);
-        int (* tdls_mgmt) (struct wiphy *wiphy, struct net_device *dev,const u8 *peer, u8 action_code, u8 dialog_token,u16 status_code, u32 peer_capability,bool initiator, const u8 *buf, size_t len);
-        int (* tdls_oper) (struct wiphy *wiphy, struct net_device *dev,const u8 *peer, enum nl80211_tdls_operation oper);
-        int (* probe_client) (struct wiphy *wiphy, struct net_device *dev,const u8 *peer, u64 *cookie);
-        int (* set_noack_map) (struct wiphy *wiphy,struct net_device *dev,u16 noack_map);
-        int (* get_channel) (struct wiphy *wiphy,struct wireless_dev *wdev,struct cfg80211_chan_def *chandef);
-        int (* start_p2p_device) (struct wiphy *wiphy,struct wireless_dev *wdev);
-        void (* stop_p2p_device) (struct wiphy *wiphy,struct wireless_dev *wdev);
-        int (* set_mac_acl) (struct wiphy *wiphy, struct net_device *dev,const struct cfg80211_acl_data *params);
-        int (* start_radar_detection) (struct wiphy *wiphy,struct net_device *dev,struct cfg80211_chan_def *chandef,u32 cac_time_ms);
-        int (* update_ft_ies) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_update_ft_ies_params *ftie);
-        int (* crit_proto_start) (struct wiphy *wiphy,struct wireless_dev *wdev,enum nl80211_crit_proto_id protocol,u16 duration);
-        void (* crit_proto_stop) (struct wiphy *wiphy,struct wireless_dev *wdev);
-        int (* set_coalesce) (struct wiphy *wiphy,struct cfg80211_coalesce *coalesce);
-        int (* channel_switch) (struct wiphy *wiphy,struct net_device *dev,struct cfg80211_csa_settings *params);
-        int (* set_qos_map) (struct wiphy *wiphy,struct net_device *dev,struct cfg80211_qos_map *qos_map);
-        int (* set_ap_chanwidth) (struct wiphy *wiphy, struct net_device *dev,struct cfg80211_chan_def *chandef);
-        int (* add_tx_ts) (struct wiphy *wiphy, struct net_device *dev,u8 tsid, const u8 *peer, u8 user_prio,u16 admitted_time);
-        int (* del_tx_ts) (struct wiphy *wiphy, struct net_device *dev,u8 tsid, const u8 *peer);
-        int (* tdls_channel_switch) (struct wiphy *wiphy,struct net_device *dev,const u8 *addr, u8 oper_class,struct cfg80211_chan_def *chandef);
-        void (* tdls_cancel_channel_switch) (struct wiphy *wiphy,struct net_device *dev,const u8 *addr);
+        int (*set_bitrate_mask)(struct wiphy *wiphy,struct net_device *dev,const u8 *peer,const struct cfg80211_bitrate_mask *mask);
+        int (*dump_survey)(struct wiphy *wiphy, struct net_device *netdev,int idx, struct survey_info *info);
+        int (*set_pmksa)(struct wiphy *wiphy, struct net_device *netdev,struct cfg80211_pmksa *pmksa);
+        int (*del_pmksa)(struct wiphy *wiphy, struct net_device *netdev,struct cfg80211_pmksa *pmksa);
+        int (*flush_pmksa)(struct wiphy *wiphy, struct net_device *netdev);
+        int (*remain_on_channel)(struct wiphy *wiphy,struct wireless_dev *wdev,struct ieee80211_channel *chan,unsigned int duration,u64 *cookie);
+        int (*cancel_remain_on_channel)(struct wiphy *wiphy,struct wireless_dev *wdev,u64 cookie);
+        int (*mgmt_tx)(struct wiphy *wiphy, struct wireless_dev *wdev,struct cfg80211_mgmt_tx_params *params,u64 *cookie);
+        int (*mgmt_tx_cancel_wait)(struct wiphy *wiphy,struct wireless_dev *wdev,u64 cookie);
+        int (*set_power_mgmt)(struct wiphy *wiphy, struct net_device *dev,bool enabled, int timeout);
+        int (*set_cqm_rssi_config)(struct wiphy *wiphy,struct net_device *dev,s32 rssi_thold, u32 rssi_hyst);
+        int (*set_cqm_txe_config)(struct wiphy *wiphy,struct net_device *dev,u32 rate, u32 pkts, u32 intvl);
+        void (*mgmt_frame_register)(struct wiphy *wiphy,struct wireless_dev *wdev,u16 frame_type, bool reg);
+        int (*set_antenna)(struct wiphy *wiphy, u32 tx_ant, u32 rx_ant);
+        int (*get_antenna)(struct wiphy *wiphy, u32 *tx_ant, u32 *rx_ant);
+        int (*sched_scan_start)(struct wiphy *wiphy,struct net_device *dev,struct cfg80211_sched_scan_request *request);
+        int (*sched_scan_stop)(struct wiphy *wiphy, struct net_device *dev);
+        int (*set_rekey_data)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_gtk_rekey_data *data);
+        int (*tdls_mgmt)(struct wiphy *wiphy, struct net_device *dev,const u8 *peer, u8 action_code, u8 dialog_token,u16 status_code, u32 peer_capability,bool initiator, const u8 *buf, size_t len);
+        int (*tdls_oper)(struct wiphy *wiphy, struct net_device *dev,const u8 *peer, enum nl80211_tdls_operation oper);
+        int (*probe_client)(struct wiphy *wiphy, struct net_device *dev,const u8 *peer, u64 *cookie);
+        int (*set_noack_map)(struct wiphy *wiphy,struct net_device *dev,u16 noack_map);
+        int (*get_channel)(struct wiphy *wiphy,struct wireless_dev *wdev,struct cfg80211_chan_def *chandef);
+        int (*start_p2p_device)(struct wiphy *wiphy,struct wireless_dev *wdev);
+        void (*stop_p2p_device)(struct wiphy *wiphy,struct wireless_dev *wdev);
+        int (*set_mac_acl)(struct wiphy *wiphy, struct net_device *dev,const struct cfg80211_acl_data *params);
+        int (*start_radar_detection)(struct wiphy *wiphy,struct net_device *dev,struct cfg80211_chan_def *chandef,u32 cac_time_ms);
+        int (*update_ft_ies)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_update_ft_ies_params *ftie);
+        int (*crit_proto_start)(struct wiphy *wiphy,struct wireless_dev *wdev,enum nl80211_crit_proto_id protocol,u16 duration);
+        void (*crit_proto_stop)(struct wiphy *wiphy,struct wireless_dev *wdev);
+        int (*set_coalesce)(struct wiphy *wiphy,struct cfg80211_coalesce *coalesce);
+        int (*channel_switch)(struct wiphy *wiphy,struct net_device *dev,struct cfg80211_csa_settings *params);
+        int (*set_qos_map)(struct wiphy *wiphy,struct net_device *dev,struct cfg80211_qos_map *qos_map);
+        int (*set_ap_chanwidth)(struct wiphy *wiphy, struct net_device *dev,struct cfg80211_chan_def *chandef);
+        int (*add_tx_ts)(struct wiphy *wiphy, struct net_device *dev,u8 tsid, const u8 *peer, u8 user_prio,u16 admitted_time);
+        int (*del_tx_ts)(struct wiphy *wiphy, struct net_device *dev,u8 tsid, const u8 *peer);
+        int (*tdls_channel_switch)(struct wiphy *wiphy,struct net_device *dev,const u8 *addr, u8 oper_class,struct cfg80211_chan_def *chandef);
+        void (*tdls_cancel_channel_switch)(struct wiphy *wiphy,struct net_device *dev,const u8 *addr);
     }
 
 .. _`cfg80211_ops.members`:
@@ -5790,8 +5790,8 @@ Definition
     struct wiphy_vendor_command {
         struct nl80211_vendor_cmd_info info;
         u32 flags;
-        int (* doit) (struct wiphy *wiphy, struct wireless_dev *wdev,const void *data, int data_len);
-        int (* dumpit) (struct wiphy *wiphy, struct wireless_dev *wdev,struct sk_buff *skb, const void *data, int data_len,unsigned long *storage);
+        int (*doit)(struct wiphy *wiphy, struct wireless_dev *wdev,const void *data, int data_len);
+        int (*dumpit)(struct wiphy *wiphy, struct wireless_dev *wdev,struct sk_buff *skb, const void *data, int data_len,unsigned long *storage);
     }
 
 .. _`wiphy_vendor_command.members`:
@@ -5883,7 +5883,7 @@ Definition
         u8 extended_capabilities_len;
         const void *privid;
         struct ieee80211_supported_band  *bands[NUM_NL80211_BANDS];
-        void (* reg_notifier) (struct wiphy *wiphy,struct regulatory_request *request);
+        void (*reg_notifier)(struct wiphy *wiphy,struct regulatory_request *request);
         const struct ieee80211_regdomain __rcu *regd;
         struct device dev;
         bool registered;
@@ -9322,7 +9322,7 @@ the interface combinations.
 cfg80211_iter_combinations
 ==========================
 
-.. c:function:: int cfg80211_iter_combinations(struct wiphy *wiphy, const int num_different_channels, const u8 radar_detect, const int iftype_num[NUM_NL80211_IFTYPES], void (*) iter (const struct ieee80211_iface_combination *c, void *data, void *data)
+.. c:function:: int cfg80211_iter_combinations(struct wiphy *wiphy, const int num_different_channels, const u8 radar_detect, const int iftype_num[NUM_NL80211_IFTYPES], void (*iter)(const struct ieee80211_iface_combination *c, void *data), void *data)
 
     iterate over matching combinations
 
@@ -9342,7 +9342,7 @@ cfg80211_iter_combinations
         array with the numbers of interfaces of each interface
         type.  The index is the interface type as specified in \ :c:type:`enum nl80211_iftype <nl80211_iftype>`\ .
 
-    :param (void (\*) iter (const struct ieee80211_iface_combination \*c, void \*data):
+    :param void (\*iter)(const struct ieee80211_iface_combination \*c, void \*data):
         function to call for each matching combination
 
     :param void \*data:

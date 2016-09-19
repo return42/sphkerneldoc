@@ -6,14 +6,14 @@
 __mutex_fastpath_lock
 =====================
 
-.. c:function:: void __mutex_fastpath_lock(atomic_t *v, void (*) fail_fn (atomic_t *)
+.. c:function:: void __mutex_fastpath_lock(atomic_t *v, void (*fail_fn)(atomic_t *))
 
     decrement and call function if negative
 
     :param atomic_t \*v:
         pointer of type atomic_t
 
-    :param (void (\*) fail_fn (atomic_t \*):
+    :param void (\*fail_fn)(atomic_t \*):
         function to call if the result is negative
 
 .. _`__mutex_fastpath_lock.description`:
@@ -48,14 +48,14 @@ if the fastpath succeeds, or -1 otherwise.
 __mutex_fastpath_unlock
 =======================
 
-.. c:function:: void __mutex_fastpath_unlock(atomic_t *v, void (*) fail_fn (atomic_t *)
+.. c:function:: void __mutex_fastpath_unlock(atomic_t *v, void (*fail_fn)(atomic_t *))
 
     increment and call function if nonpositive
 
     :param atomic_t \*v:
         pointer of type atomic_t
 
-    :param (void (\*) fail_fn (atomic_t \*):
+    :param void (\*fail_fn)(atomic_t \*):
         function to call if the result is nonpositive
 
 .. _`__mutex_fastpath_unlock.description`:
@@ -70,14 +70,14 @@ Atomically increments \ ``v``\  and calls <fail_fn> if the result is nonpositive
 __mutex_fastpath_trylock
 ========================
 
-.. c:function:: int __mutex_fastpath_trylock(atomic_t *count, int (*) fail_fn (atomic_t *)
+.. c:function:: int __mutex_fastpath_trylock(atomic_t *count, int (*fail_fn)(atomic_t *))
 
     try to acquire the mutex, without waiting
 
     :param atomic_t \*count:
         pointer of type atomic_t
 
-    :param (int (\*) fail_fn (atomic_t \*):
+    :param int (\*fail_fn)(atomic_t \*):
         fallback function
 
 .. _`__mutex_fastpath_trylock.description`:

@@ -45,8 +45,8 @@ Definition
         pid_t evtThread;
         struct task_struct *xmitThread;
         pid_t recvThread;
-        uint (* dvobj_init) (struct _adapter *adapter);
-        void (* dvobj_deinit) (struct _adapter *adapter);
+        uint (*dvobj_init)(struct _adapter *adapter);
+        void (*dvobj_deinit)(struct _adapter *adapter);
         struct net_device *pnetdev;
         int bup;
         struct net_device_stats stats;

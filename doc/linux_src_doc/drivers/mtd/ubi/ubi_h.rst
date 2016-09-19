@@ -1205,7 +1205,7 @@ Definition
 
     struct ubi_work {
         struct list_head list;
-        int (* func) (struct ubi_device *ubi, struct ubi_work *wrk, int shutdown);
+        int (*func)(struct ubi_device *ubi, struct ubi_work *wrk, int shutdown);
         struct ubi_wl_entry *e;
         int vol_id;
         int lnum;

@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct hmcdrv_ftp_ops {
-        int (* startup) (void);
-        void (* shutdown) (void);
-        ssize_t (* transfer) (const struct hmcdrv_ftp_cmdspec *ftp,size_t *fsize);
+        int (*startup)(void);
+        void (*shutdown)(void);
+        ssize_t (*transfer)(const struct hmcdrv_ftp_cmdspec *ftp,size_t *fsize);
     }
 
 .. _`hmcdrv_ftp_ops.members`:

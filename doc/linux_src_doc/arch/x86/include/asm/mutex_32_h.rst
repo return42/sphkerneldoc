@@ -78,14 +78,14 @@ to return 0 otherwise.
 __mutex_fastpath_trylock
 ========================
 
-.. c:function:: int __mutex_fastpath_trylock(atomic_t *count, int (*) fail_fn (atomic_t *)
+.. c:function:: int __mutex_fastpath_trylock(atomic_t *count, int (*fail_fn)(atomic_t *))
 
     try to acquire the mutex, without waiting
 
     :param atomic_t \*count:
         pointer of type atomic_t
 
-    :param (int (\*) fail_fn (atomic_t \*):
+    :param int (\*fail_fn)(atomic_t \*):
         fallback function
 
 .. _`__mutex_fastpath_trylock.description`:

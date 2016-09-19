@@ -68,12 +68,12 @@ Definition
     struct umc_driver {
         char *name;
         u8 cap_id;
-        int (* match) (struct umc_driver *, struct umc_dev *);
+        int (*match)(struct umc_driver *, struct umc_dev *);
         const void *match_data;
-        int (* probe) (struct umc_dev *);
-        void (* remove) (struct umc_dev *);
-        int (* pre_reset) (struct umc_dev *);
-        int (* post_reset) (struct umc_dev *);
+        int (*probe)(struct umc_dev *);
+        void (*remove)(struct umc_dev *);
+        int (*pre_reset)(struct umc_dev *);
+        int (*post_reset)(struct umc_dev *);
         struct device_driver driver;
     }
 

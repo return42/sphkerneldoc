@@ -26,10 +26,10 @@ Definition
         unsigned no_io_watchdog:1;
         unsigned reset_on_resume:1;
         unsigned dma_mask_64:1;
-        int (* power_on) (struct platform_device *pdev);
-        void (* power_off) (struct platform_device *pdev);
-        void (* power_suspend) (struct platform_device *pdev);
-        int (* pre_setup) (struct usb_hcd *hcd);
+        int (*power_on)(struct platform_device *pdev);
+        void (*power_off)(struct platform_device *pdev);
+        void (*power_suspend)(struct platform_device *pdev);
+        int (*pre_setup)(struct usb_hcd *hcd);
     }
 
 .. _`usb_ehci_pdata.members`:

@@ -6,7 +6,7 @@
 arc_unwind_core
 ===============
 
-.. c:function:: notrace noinline unsigned int arc_unwind_core(struct task_struct *tsk, struct pt_regs *regs, int (*) consumer_fn (unsigned int, void *, void *arg)
+.. c:function:: notrace noinline unsigned int arc_unwind_core(struct task_struct *tsk, struct pt_regs *regs, int (*consumer_fn)(unsigned int, void *), void *arg)
 
     Unwind the kernel mode stack for an execution context
 
@@ -18,7 +18,7 @@ arc_unwind_core
         If NULL, use pt_regs of \ ``tsk``\  (if !NULL) otherwise
         use the current values of {SP, FP, BLINK, PC}
 
-    :param (int (\*) consumer_fn (unsigned int, void \*):
+    :param int (\*consumer_fn)(unsigned int, void \*):
         Callback invoked for each frame unwound
         Returns 0 to continue unwinding, -1 to stop
 

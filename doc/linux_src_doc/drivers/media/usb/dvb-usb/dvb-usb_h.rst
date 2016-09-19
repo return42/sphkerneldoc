@@ -72,11 +72,11 @@ Definition
         #define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD 0x10
         int caps;
         int pid_filter_count;
-        int (* streaming_ctrl) (struct dvb_usb_adapter *, int);
-        int (* pid_filter_ctrl) (struct dvb_usb_adapter *, int);
-        int (* pid_filter) (struct dvb_usb_adapter *, int, u16, int);
-        int (* frontend_attach) (struct dvb_usb_adapter *);
-        int (* tuner_attach) (struct dvb_usb_adapter *);
+        int (*streaming_ctrl)(struct dvb_usb_adapter *, int);
+        int (*pid_filter_ctrl)(struct dvb_usb_adapter *, int);
+        int (*pid_filter)(struct dvb_usb_adapter *, int, u16, int);
+        int (*frontend_attach)(struct dvb_usb_adapter *);
+        int (*tuner_attach)(struct dvb_usb_adapter *);
         struct usb_data_stream_properties stream;
         int size_of_priv;
     }
@@ -139,7 +139,7 @@ Definition
         #define REMOTE_KEY_REPEAT 0x02
         struct rc_map_table *rc_map_table;
         int rc_map_size;
-        int (* rc_query) (struct dvb_usb_device *, u32 *, int *);
+        int (*rc_query)(struct dvb_usb_device *, u32 *, int *);
         int rc_interval;
     }
 
@@ -182,9 +182,9 @@ Definition
         u64 protocol;
         u64 allowed_protos;
         enum rc_driver_type driver_type;
-        int (* change_protocol) (struct rc_dev *dev, u64 *rc_type);
+        int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
         char *module_name;
-        int (* rc_query) (struct dvb_usb_device *d);
+        int (*rc_query)(struct dvb_usb_device *d);
         int rc_interval;
         bool bulk_mode;
     }
@@ -271,8 +271,8 @@ Definition
 
     struct dvb_usb_fe_adapter {
         struct dvb_frontend *fe;
-        int (* fe_init) (struct dvb_frontend *);
-        int (* fe_sleep) (struct dvb_frontend *);
+        int (*fe_init)(struct dvb_frontend *);
+        int (*fe_sleep)(struct dvb_frontend *);
         struct usb_data_stream stream;
         int pid_filtering;
         int max_feed_count;

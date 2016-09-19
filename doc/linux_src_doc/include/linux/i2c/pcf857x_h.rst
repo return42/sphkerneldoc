@@ -20,8 +20,8 @@ Definition
     struct pcf857x_platform_data {
         unsigned gpio_base;
         unsigned n_latch;
-        int (* setup) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
-        int (* teardown) (struct i2c_client *client,int gpio, unsigned ngpio,void *context);
+        int (*setup)(struct i2c_client *client,int gpio, unsigned ngpio,void *context);
+        int (*teardown)(struct i2c_client *client,int gpio, unsigned ngpio,void *context);
         void *context;
     }
 

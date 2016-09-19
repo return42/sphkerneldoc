@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct powercap_control_type_ops {
-        int (* set_enable) (struct powercap_control_type *, bool mode);
-        int (* get_enable) (struct powercap_control_type *, bool *mode);
-        int (* release) (struct powercap_control_type *);
+        int (*set_enable)(struct powercap_control_type *, bool mode);
+        int (*get_enable)(struct powercap_control_type *, bool *mode);
+        int (*release)(struct powercap_control_type *);
     }
 
 .. _`powercap_control_type_ops.members`:
@@ -135,14 +135,14 @@ Definition
 .. code-block:: c
 
     struct powercap_zone_ops {
-        int (* get_max_energy_range_uj) (struct powercap_zone *, u64 *);
-        int (* get_energy_uj) (struct powercap_zone *, u64 *);
-        int (* reset_energy_uj) (struct powercap_zone *);
-        int (* get_max_power_range_uw) (struct powercap_zone *, u64 *);
-        int (* get_power_uw) (struct powercap_zone *, u64 *);
-        int (* set_enable) (struct powercap_zone *, bool mode);
-        int (* get_enable) (struct powercap_zone *, bool *mode);
-        int (* release) (struct powercap_zone *);
+        int (*get_max_energy_range_uj)(struct powercap_zone *, u64 *);
+        int (*get_energy_uj)(struct powercap_zone *, u64 *);
+        int (*reset_energy_uj)(struct powercap_zone *);
+        int (*get_max_power_range_uw)(struct powercap_zone *, u64 *);
+        int (*get_power_uw)(struct powercap_zone *, u64 *);
+        int (*set_enable)(struct powercap_zone *, bool mode);
+        int (*get_enable)(struct powercap_zone *, bool *mode);
+        int (*release)(struct powercap_zone *);
     }
 
 .. _`powercap_zone_ops.members`:
@@ -304,15 +304,15 @@ Definition
 .. code-block:: c
 
     struct powercap_zone_constraint_ops {
-        int (* set_power_limit_uw) (struct powercap_zone *, int, u64);
-        int (* get_power_limit_uw) (struct powercap_zone *, int, u64 *);
-        int (* set_time_window_us) (struct powercap_zone *, int, u64);
-        int (* get_time_window_us) (struct powercap_zone *, int, u64 *);
-        int (* get_max_power_uw) (struct powercap_zone *, int, u64 *);
-        int (* get_min_power_uw) (struct powercap_zone *, int, u64 *);
-        int (* get_max_time_window_us) (struct powercap_zone *, int, u64 *);
-        int (* get_min_time_window_us) (struct powercap_zone *, int, u64 *);
-        const char *(* get_name) (struct powercap_zone *, int);
+        int (*set_power_limit_uw)(struct powercap_zone *, int, u64);
+        int (*get_power_limit_uw)(struct powercap_zone *, int, u64 *);
+        int (*set_time_window_us)(struct powercap_zone *, int, u64);
+        int (*get_time_window_us)(struct powercap_zone *, int, u64 *);
+        int (*get_max_power_uw)(struct powercap_zone *, int, u64 *);
+        int (*get_min_power_uw)(struct powercap_zone *, int, u64 *);
+        int (*get_max_time_window_us)(struct powercap_zone *, int, u64 *);
+        int (*get_min_time_window_us)(struct powercap_zone *, int, u64 *);
+        const char *(*get_name)(struct powercap_zone *, int);
     }
 
 .. _`powercap_zone_constraint_ops.members`:

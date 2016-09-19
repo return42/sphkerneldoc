@@ -146,11 +146,11 @@ pointer.
 for_each_kernel_tracepoint
 ==========================
 
-.. c:function:: void for_each_kernel_tracepoint(void (*) fct (struct tracepoint *tp, void *priv, void *priv)
+.. c:function:: void for_each_kernel_tracepoint(void (*fct)(struct tracepoint *tp, void *priv), void *priv)
 
     iteration on all kernel tracepoints
 
-    :param (void (\*) fct (struct tracepoint \*tp, void \*priv):
+    :param void (\*fct)(struct tracepoint \*tp, void \*priv):
         callback
 
     :param void \*priv:

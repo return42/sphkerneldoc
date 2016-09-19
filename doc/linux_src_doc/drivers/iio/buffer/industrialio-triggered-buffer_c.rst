@@ -6,17 +6,17 @@
 iio_triggered_buffer_setup
 ==========================
 
-.. c:function:: int iio_triggered_buffer_setup(struct iio_dev *indio_dev, irqreturn_t (*) h (int irq, void *p, irqreturn_t (*) thread (int irq, void *p, const struct iio_buffer_setup_ops *setup_ops)
+.. c:function:: int iio_triggered_buffer_setup(struct iio_dev *indio_dev, irqreturn_t (*h)(int irq, void *p), irqreturn_t (*thread)(int irq, void *p), const struct iio_buffer_setup_ops *setup_ops)
 
     Setup triggered buffer and pollfunc
 
     :param struct iio_dev \*indio_dev:
         IIO device structure
 
-    :param (irqreturn_t (\*) h (int irq, void \*p):
+    :param irqreturn_t (\*h)(int irq, void \*p):
         Function which will be used as pollfunc top half
 
-    :param (irqreturn_t (\*) thread (int irq, void \*p):
+    :param irqreturn_t (\*thread)(int irq, void \*p):
         Function which will be used as pollfunc bottom half
 
     :param const struct iio_buffer_setup_ops \*setup_ops:

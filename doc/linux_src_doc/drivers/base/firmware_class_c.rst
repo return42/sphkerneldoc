@@ -186,7 +186,7 @@ release_firmware
 request_firmware_nowait
 =======================
 
-.. c:function:: int request_firmware_nowait(struct module *module, bool uevent, const char *name, struct device *device, gfp_t gfp, void *context, void (*) cont (const struct firmware *fw, void *context)
+.. c:function:: int request_firmware_nowait(struct module *module, bool uevent, const char *name, struct device *device, gfp_t gfp, void *context, void (*cont)(const struct firmware *fw, void *context))
 
     asynchronous version of request_firmware
 
@@ -210,7 +210,7 @@ request_firmware_nowait
         will be passed over to \ ``cont``\ , and
         \ ``fw``\  may be \ ``NULL``\  if firmware request fails.
 
-    :param (void (\*) cont (const struct firmware \*fw, void \*context):
+    :param void (\*cont)(const struct firmware \*fw, void \*context):
         function will be called asynchronously when the firmware
         request is over.
 

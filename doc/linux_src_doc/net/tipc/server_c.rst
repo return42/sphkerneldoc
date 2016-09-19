@@ -24,7 +24,7 @@ Definition
         unsigned long flags;
         struct tipc_server *server;
         struct work_struct rwork;
-        int (* rx_action) (struct tipc_conn *con);
+        int (*rx_action)(struct tipc_conn *con);
         void *usr_data;
         struct list_head outqueue;
         spinlock_t outqueue_lock;

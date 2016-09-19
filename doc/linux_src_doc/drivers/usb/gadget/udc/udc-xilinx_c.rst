@@ -155,8 +155,8 @@ Definition
         void __iomem *addr;
         spinlock_t lock;
         bool dma_enabled;
-        unsigned int (* read_fn) (void __iomem *);
-        void (* write_fn) (void __iomem *, u32, u32);
+        unsigned int (*read_fn)(void __iomem *);
+        void (*write_fn)(void __iomem *, u32, u32);
     }
 
 .. _`xusb_udc.members`:

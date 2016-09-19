@@ -78,20 +78,20 @@ Definition
 .. code-block:: c
 
     struct nilfs_bmap_operations {
-        int (* bop_lookup) (const struct nilfs_bmap *, __u64, int, __u64 *);
-        int (* bop_lookup_contig) (const struct nilfs_bmap *, __u64, __u64 *,unsigned int);
-        int (* bop_insert) (struct nilfs_bmap *, __u64, __u64);
-        int (* bop_delete) (struct nilfs_bmap *, __u64);
-        void (* bop_clear) (struct nilfs_bmap *);
-        int (* bop_propagate) (struct nilfs_bmap *, struct buffer_head *);
-        void (* bop_lookup_dirty_buffers) (struct nilfs_bmap *,struct list_head *);
-        int (* bop_assign) (struct nilfs_bmap *,struct buffer_head **,sector_t,union nilfs_binfo *);
-        int (* bop_mark) (struct nilfs_bmap *, __u64, int);
-        int (* bop_seek_key) (const struct nilfs_bmap *, __u64, __u64 *);
-        int (* bop_last_key) (const struct nilfs_bmap *, __u64 *);
-        int (* bop_check_insert) (const struct nilfs_bmap *, __u64);
-        int (* bop_check_delete) (struct nilfs_bmap *, __u64);
-        int (* bop_gather_data) (struct nilfs_bmap *, __u64 *, __u64 *, int);
+        int (*bop_lookup)(const struct nilfs_bmap *, __u64, int, __u64 *);
+        int (*bop_lookup_contig)(const struct nilfs_bmap *, __u64, __u64 *,unsigned int);
+        int (*bop_insert)(struct nilfs_bmap *, __u64, __u64);
+        int (*bop_delete)(struct nilfs_bmap *, __u64);
+        void (*bop_clear)(struct nilfs_bmap *);
+        int (*bop_propagate)(struct nilfs_bmap *, struct buffer_head *);
+        void (*bop_lookup_dirty_buffers)(struct nilfs_bmap *,struct list_head *);
+        int (*bop_assign)(struct nilfs_bmap *,struct buffer_head **,sector_t,union nilfs_binfo *);
+        int (*bop_mark)(struct nilfs_bmap *, __u64, int);
+        int (*bop_seek_key)(const struct nilfs_bmap *, __u64, __u64 *);
+        int (*bop_last_key)(const struct nilfs_bmap *, __u64 *);
+        int (*bop_check_insert)(const struct nilfs_bmap *, __u64);
+        int (*bop_check_delete)(struct nilfs_bmap *, __u64);
+        int (*bop_gather_data)(struct nilfs_bmap *, __u64 *, __u64 *, int);
     }
 
 .. _`nilfs_bmap_operations.members`:

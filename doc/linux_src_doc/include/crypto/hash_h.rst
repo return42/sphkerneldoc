@@ -65,14 +65,14 @@ Definition
 .. code-block:: c
 
     struct ahash_alg {
-        int (* init) (struct ahash_request *req);
-        int (* update) (struct ahash_request *req);
-        int (* final) (struct ahash_request *req);
-        int (* finup) (struct ahash_request *req);
-        int (* digest) (struct ahash_request *req);
-        int (* export) (struct ahash_request *req, void *out);
-        int (* import) (struct ahash_request *req, const void *in);
-        int (* setkey) (struct crypto_ahash *tfm, const u8 *key,unsigned int keylen);
+        int (*init)(struct ahash_request *req);
+        int (*update)(struct ahash_request *req);
+        int (*final)(struct ahash_request *req);
+        int (*finup)(struct ahash_request *req);
+        int (*digest)(struct ahash_request *req);
+        int (*export)(struct ahash_request *req, void *out);
+        int (*import)(struct ahash_request *req, const void *in);
+        int (*setkey)(struct crypto_ahash *tfm, const u8 *key,unsigned int keylen);
         struct hash_alg_common halg;
     }
 
@@ -170,14 +170,14 @@ Definition
 .. code-block:: c
 
     struct shash_alg {
-        int (* init) (struct shash_desc *desc);
-        int (* update) (struct shash_desc *desc, const u8 *data,unsigned int len);
-        int (* final) (struct shash_desc *desc, u8 *out);
-        int (* finup) (struct shash_desc *desc, const u8 *data,unsigned int len, u8 *out);
-        int (* digest) (struct shash_desc *desc, const u8 *data,unsigned int len, u8 *out);
-        int (* export) (struct shash_desc *desc, void *out);
-        int (* import) (struct shash_desc *desc, const void *in);
-        int (* setkey) (struct crypto_shash *tfm, const u8 *key,unsigned int keylen);
+        int (*init)(struct shash_desc *desc);
+        int (*update)(struct shash_desc *desc, const u8 *data,unsigned int len);
+        int (*final)(struct shash_desc *desc, u8 *out);
+        int (*finup)(struct shash_desc *desc, const u8 *data,unsigned int len, u8 *out);
+        int (*digest)(struct shash_desc *desc, const u8 *data,unsigned int len, u8 *out);
+        int (*export)(struct shash_desc *desc, void *out);
+        int (*import)(struct shash_desc *desc, const void *in);
+        int (*setkey)(struct crypto_shash *tfm, const u8 *key,unsigned int keylen);
         unsigned int descsize;
         unsigned int digestsize;
         unsigned int statesize;

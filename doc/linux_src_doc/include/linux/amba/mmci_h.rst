@@ -19,8 +19,8 @@ Definition
 
     struct mmci_platform_data {
         unsigned int ocr_mask;
-        int (* ios_handler) (struct device *, struct mmc_ios *);
-        unsigned int (* status) (struct device *);
+        int (*ios_handler)(struct device *, struct mmc_ios *);
+        unsigned int (*status)(struct device *);
         int gpio_wp;
         int gpio_cd;
         bool cd_invert;

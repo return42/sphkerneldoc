@@ -872,8 +872,8 @@ Definition
     struct of_clk_provider {
         struct list_head link;
         struct device_node *node;
-        struct clk *(* get) (struct of_phandle_args *clkspec, void *data);
-        struct clk_hw *(* get_hw) (struct of_phandle_args *clkspec, void *data);
+        struct clk *(*get)(struct of_phandle_args *clkspec, void *data);
+        struct clk_hw *(*get_hw)(struct of_phandle_args *clkspec, void *data);
         void *data;
     }
 
@@ -903,14 +903,14 @@ data
 of_clk_add_provider
 ===================
 
-.. c:function:: int of_clk_add_provider(struct device_node *np, struct clk *(*) clk_src_get (struct of_phandle_args *clkspec, void *data, void *data)
+.. c:function:: int of_clk_add_provider(struct device_node *np, struct clk *(*clk_src_get)(struct of_phandle_args *clkspec, void *data), void *data)
 
     Register a clock provider for a node
 
     :param struct device_node \*np:
         Device node pointer associated with clock provider
 
-    :param (struct clk \*(\*) clk_src_get (struct of_phandle_args \*clkspec, void \*data):
+    :param struct clk \*(\*clk_src_get)(struct of_phandle_args \*clkspec, void \*data):
         callback for decoding clock
 
     :param void \*data:
@@ -921,14 +921,14 @@ of_clk_add_provider
 of_clk_add_hw_provider
 ======================
 
-.. c:function:: int of_clk_add_hw_provider(struct device_node *np, struct clk_hw *(*) get (struct of_phandle_args *clkspec, void *data, void *data)
+.. c:function:: int of_clk_add_hw_provider(struct device_node *np, struct clk_hw *(*get)(struct of_phandle_args *clkspec, void *data), void *data)
 
     Register a clock provider for a node
 
     :param struct device_node \*np:
         Device node pointer associated with clock provider
 
-    :param (struct clk_hw \*(\*) get (struct of_phandle_args \*clkspec, void \*data):
+    :param struct clk_hw \*(\*get)(struct of_phandle_args \*clkspec, void \*data):
         callback for decoding clk_hw
 
     :param void \*data:

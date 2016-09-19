@@ -65,9 +65,9 @@ Definition
         struct stmpe_variant_block *blocks;
         int num_blocks;
         int num_irqs;
-        int (* enable) (struct stmpe *stmpe, unsigned int blocks, bool enable);
-        int (* get_altfunc) (struct stmpe *stmpe, enum stmpe_block block);
-        int (* enable_autosleep) (struct stmpe *stmpe, int autosleep_timeout);
+        int (*enable)(struct stmpe *stmpe, unsigned int blocks, bool enable);
+        int (*get_altfunc)(struct stmpe *stmpe, enum stmpe_block block);
+        int (*enable_autosleep)(struct stmpe *stmpe, int autosleep_timeout);
     }
 
 .. _`stmpe_variant_info.members`:
@@ -134,11 +134,11 @@ Definition
         int irq;
         void *client;
         struct device *dev;
-        int (* read_byte) (struct stmpe *stmpe, u8 reg);
-        int (* write_byte) (struct stmpe *stmpe, u8 reg, u8 val);
-        int (* read_block) (struct stmpe *stmpe, u8 reg, u8 len, u8 *values);
-        int (* write_block) (struct stmpe *stmpe, u8 reg, u8 len,const u8 *values);
-        void (* init) (struct stmpe *stmpe);
+        int (*read_byte)(struct stmpe *stmpe, u8 reg);
+        int (*write_byte)(struct stmpe *stmpe, u8 reg, u8 val);
+        int (*read_block)(struct stmpe *stmpe, u8 reg, u8 len, u8 *values);
+        int (*write_block)(struct stmpe *stmpe, u8 reg, u8 len,const u8 *values);
+        void (*init)(struct stmpe *stmpe);
     }
 
 .. _`stmpe_client_info.members`:

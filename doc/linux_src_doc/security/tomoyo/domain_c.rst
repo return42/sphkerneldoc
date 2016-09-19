@@ -6,7 +6,7 @@
 tomoyo_update_policy
 ====================
 
-.. c:function:: int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size, struct tomoyo_acl_param *param, bool (*) check_duplicate (const struct tomoyo_acl_head *, const struct tomoyo_acl_head *)
+.. c:function:: int tomoyo_update_policy(struct tomoyo_acl_head *new_entry, const int size, struct tomoyo_acl_param *param, bool (*check_duplicate)(const struct tomoyo_acl_head *, const struct tomoyo_acl_head *))
 
     Update an entry for exception policy.
 
@@ -19,7 +19,7 @@ tomoyo_update_policy
     :param struct tomoyo_acl_param \*param:
         Pointer to "struct tomoyo_acl_param".
 
-    :param (bool (\*) check_duplicate (const struct tomoyo_acl_head \*, const struct tomoyo_acl_head \*):
+    :param bool (\*check_duplicate)(const struct tomoyo_acl_head \*, const struct tomoyo_acl_head \*):
         Callback function to find duplicated entry.
 
 .. _`tomoyo_update_policy.description`:
@@ -58,7 +58,7 @@ Returns true if \ ``a``\  == \ ``b``\ , false otherwise.
 tomoyo_update_domain
 ====================
 
-.. c:function:: int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size, struct tomoyo_acl_param *param, bool (*) check_duplicate (const struct tomoyo_acl_info *, const struct tomoyo_acl_info *, bool (*) merge_duplicate (struct tomoyo_acl_info *, struct tomoyo_acl_info *, const bool)
+.. c:function:: int tomoyo_update_domain(struct tomoyo_acl_info *new_entry, const int size, struct tomoyo_acl_param *param, bool (*check_duplicate)(const struct tomoyo_acl_info *, const struct tomoyo_acl_info *), bool (*merge_duplicate)(struct tomoyo_acl_info *, struct tomoyo_acl_info *, const bool))
 
     Update an entry for domain policy.
 
@@ -71,10 +71,10 @@ tomoyo_update_domain
     :param struct tomoyo_acl_param \*param:
         Pointer to "struct tomoyo_acl_param".
 
-    :param (bool (\*) check_duplicate (const struct tomoyo_acl_info \*, const struct tomoyo_acl_info \*):
+    :param bool (\*check_duplicate)(const struct tomoyo_acl_info \*, const struct tomoyo_acl_info \*):
         Callback function to find duplicated entry.
 
-    :param (bool (\*) merge_duplicate (struct tomoyo_acl_info \*, struct tomoyo_acl_info \*, const bool):
+    :param bool (\*merge_duplicate)(struct tomoyo_acl_info \*, struct tomoyo_acl_info \*, const bool):
         Callback function to merge duplicated entry.
 
 .. _`tomoyo_update_domain.description`:
@@ -91,14 +91,14 @@ Caller holds \ :c:func:`tomoyo_read_lock`\ .
 tomoyo_check_acl
 ================
 
-.. c:function:: void tomoyo_check_acl(struct tomoyo_request_info *r, bool (*) check_entry (struct tomoyo_request_info *, const struct tomoyo_acl_info *)
+.. c:function:: void tomoyo_check_acl(struct tomoyo_request_info *r, bool (*check_entry)(struct tomoyo_request_info *, const struct tomoyo_acl_info *))
 
     Do permission check.
 
     :param struct tomoyo_request_info \*r:
         Pointer to "struct tomoyo_request_info".
 
-    :param (bool (\*) check_entry (struct tomoyo_request_info \*, const struct tomoyo_acl_info \*):
+    :param bool (\*check_entry)(struct tomoyo_request_info \*, const struct tomoyo_acl_info \*):
         Callback function to check type specific parameters.
 
 .. _`tomoyo_check_acl.description`:

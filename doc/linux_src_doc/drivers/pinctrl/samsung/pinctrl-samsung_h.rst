@@ -308,10 +308,10 @@ Definition
     struct samsung_pin_ctrl {
         const struct samsung_pin_bank_data *pin_banks;
         u32 nr_banks;
-        int (* eint_gpio_init) (struct samsung_pinctrl_drv_data *);
-        int (* eint_wkup_init) (struct samsung_pinctrl_drv_data *);
-        void (* suspend) (struct samsung_pinctrl_drv_data *);
-        void (* resume) (struct samsung_pinctrl_drv_data *);
+        int (*eint_gpio_init)(struct samsung_pinctrl_drv_data *);
+        int (*eint_wkup_init)(struct samsung_pinctrl_drv_data *);
+        void (*suspend)(struct samsung_pinctrl_drv_data *);
+        void (*resume)(struct samsung_pinctrl_drv_data *);
     }
 
 .. _`samsung_pin_ctrl.members`:
@@ -370,8 +370,8 @@ Definition
         u32 nr_banks;
         unsigned int pin_base;
         unsigned int nr_pins;
-        void (* suspend) (struct samsung_pinctrl_drv_data *);
-        void (* resume) (struct samsung_pinctrl_drv_data *);
+        void (*suspend)(struct samsung_pinctrl_drv_data *);
+        void (*resume)(struct samsung_pinctrl_drv_data *);
     }
 
 .. _`samsung_pinctrl_drv_data.members`:

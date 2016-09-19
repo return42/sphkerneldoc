@@ -24,7 +24,7 @@ Definition
         unsigned int have_lout:1;
         int amp_gpio;
         int amp_gain[2];
-        void (* startup) (void);
+        void (*startup)(void);
     }
 
 .. _`s3c24xx_audio_simtec_pdata.members`:

@@ -454,7 +454,7 @@ user vanishes.
 starget_for_each_device
 =======================
 
-.. c:function:: void starget_for_each_device(struct scsi_target *starget, void *data, void (*) fn (struct scsi_device *, void *)
+.. c:function:: void starget_for_each_device(struct scsi_target *starget, void *data, void (*fn)(struct scsi_device *, void *))
 
     helper to walk all devices of a target
 
@@ -464,7 +464,7 @@ starget_for_each_device
     :param void \*data:
         Opaque passed to each function call.
 
-    :param (void (\*) fn (struct scsi_device \*, void \*):
+    :param void (\*fn)(struct scsi_device \*, void \*):
         Function to call on each device
 
 .. _`starget_for_each_device.description`:
@@ -481,7 +481,7 @@ out of the loop.
 __starget_for_each_device
 =========================
 
-.. c:function:: void __starget_for_each_device(struct scsi_target *starget, void *data, void (*) fn (struct scsi_device *, void *)
+.. c:function:: void __starget_for_each_device(struct scsi_target *starget, void *data, void (*fn)(struct scsi_device *, void *))
 
     helper to walk all devices of a target (UNLOCKED)
 
@@ -491,7 +491,7 @@ __starget_for_each_device
     :param void \*data:
         parameter for callback @\ :c:func:`fn`\ 
 
-    :param (void (\*) fn (struct scsi_device \*, void \*):
+    :param void (\*fn)(struct scsi_device \*, void \*):
         callback function that is invoked for each device
 
 .. _`__starget_for_each_device.description`:

@@ -23,11 +23,11 @@ Definition
         const char *vertag;
         struct module *owner;
         struct visor_channeltype_descriptor *channel_types;
-        int (* probe) (struct visor_device *dev);
-        void (* remove) (struct visor_device *dev);
-        void (* channel_interrupt) (struct visor_device *dev);
-        int (* pause) (struct visor_device *dev,visorbus_state_complete_func complete_func);
-        int (* resume) (struct visor_device *dev,visorbus_state_complete_func complete_func);
+        int (*probe)(struct visor_device *dev);
+        void (*remove)(struct visor_device *dev);
+        void (*channel_interrupt)(struct visor_device *dev);
+        int (*pause)(struct visor_device *dev,visorbus_state_complete_func complete_func);
+        int (*resume)(struct visor_device *dev,visorbus_state_complete_func complete_func);
         struct device_driver driver;
         struct driver_attribute version_attr;
     }

@@ -62,7 +62,7 @@ Definition
     struct s3c64xx_spi_info {
         int src_clk_nr;
         int num_cs;
-        int (* cfg_gpio) (void);
+        int (*cfg_gpio)(void);
         dma_filter_fn filter;
         void *dma_tx;
         void *dma_rx;
@@ -96,11 +96,11 @@ dma_rx
 s3c64xx_spi0_set_platdata
 =========================
 
-.. c:function:: void s3c64xx_spi0_set_platdata(int (*) cfg_gpio (void, int src_clk_nr, int num_cs)
+.. c:function:: void s3c64xx_spi0_set_platdata(int (*cfg_gpio)(void), int src_clk_nr, int num_cs)
 
     SPI Controller configure callback by the board initialization code.
 
-    :param (int (\*) cfg_gpio (void):
+    :param int (\*cfg_gpio)(void):
         Pointer to gpio setup function.
 
     :param int src_clk_nr:

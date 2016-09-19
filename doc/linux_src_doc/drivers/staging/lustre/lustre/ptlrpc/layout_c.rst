@@ -131,7 +131,7 @@ __req_capsule_offset
 swabber_dumper_helper
 =====================
 
-.. c:function:: void swabber_dumper_helper(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, int offset, void *value, int len, int dump, void (*) swabber (void *)
+.. c:function:: void swabber_dumper_helper(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, int offset, void *value, int len, int dump, void (*swabber)(void *))
 
     them if desired.
 
@@ -156,7 +156,7 @@ swabber_dumper_helper
     :param int dump:
         *undescribed*
 
-    :param (void (\*) swabber (void \*):
+    :param void (\*swabber)(void \*):
         *undescribed*
 
 .. _`__req_capsule_get`:
@@ -164,7 +164,7 @@ swabber_dumper_helper
 __req_capsule_get
 =================
 
-.. c:function:: void *__req_capsule_get(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, void (*) swabber (void *, int dump)
+.. c:function:: void *__req_capsule_get(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, void (*swabber)(void *), int dump)
 
     corresponding to the given RMF (\a field).
 
@@ -177,7 +177,7 @@ __req_capsule_get
     :param enum req_location loc:
         *undescribed*
 
-    :param (void (\*) swabber (void \*):
+    :param void (\*swabber)(void \*):
         *undescribed*
 
     :param int dump:

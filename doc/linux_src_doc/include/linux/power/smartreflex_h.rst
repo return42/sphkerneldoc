@@ -46,7 +46,7 @@ Definition
 .. code-block:: c
 
     struct omap_sr_pmic_data {
-        void (* sr_pmic_init) (void);
+        void (*sr_pmic_init)(void);
     }
 
 .. _`omap_sr_pmic_data.members`:
@@ -102,10 +102,10 @@ Definition
 .. code-block:: c
 
     struct omap_sr_class_data {
-        int (* enable) (struct omap_sr *sr);
-        int (* disable) (struct omap_sr *sr, int is_volt_reset);
-        int (* configure) (struct omap_sr *sr);
-        int (* notify) (struct omap_sr *sr, u32 status);
+        int (*enable)(struct omap_sr *sr);
+        int (*disable)(struct omap_sr *sr, int is_volt_reset);
+        int (*configure)(struct omap_sr *sr);
+        int (*notify)(struct omap_sr *sr, u32 status);
         u8 notify_flags;
         u8 class_type;
     }

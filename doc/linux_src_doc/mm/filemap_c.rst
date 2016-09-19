@@ -823,7 +823,7 @@ We never return with VM_FAULT_RETRY and a bit from VM_FAULT_ERROR set.
 read_cache_page
 ===============
 
-.. c:function:: struct page *read_cache_page(struct address_space *mapping, pgoff_t index, int (*) filler (void *, struct page *, void *data)
+.. c:function:: struct page *read_cache_page(struct address_space *mapping, pgoff_t index, int (*filler)(void *, struct page *), void *data)
 
     read into page cache, fill it if needed
 
@@ -833,7 +833,7 @@ read_cache_page
     :param pgoff_t index:
         the page index
 
-    :param (int (\*) filler (void \*, struct page \*):
+    :param int (\*filler)(void \*, struct page \*):
         function to perform the read
 
     :param void \*data:

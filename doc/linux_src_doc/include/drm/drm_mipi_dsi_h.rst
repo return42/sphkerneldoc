@@ -111,9 +111,9 @@ Definition
 .. code-block:: c
 
     struct mipi_dsi_host_ops {
-        int (* attach) (struct mipi_dsi_host *host,struct mipi_dsi_device *dsi);
-        int (* detach) (struct mipi_dsi_host *host,struct mipi_dsi_device *dsi);
-        ssize_t (* transfer) (struct mipi_dsi_host *host,const struct mipi_dsi_msg *msg);
+        int (*attach)(struct mipi_dsi_host *host,struct mipi_dsi_device *dsi);
+        int (*detach)(struct mipi_dsi_host *host,struct mipi_dsi_device *dsi);
+        ssize_t (*transfer)(struct mipi_dsi_host *host,const struct mipi_dsi_msg *msg);
     }
 
 .. _`mipi_dsi_host_ops.members`:
@@ -350,9 +350,9 @@ Definition
 
     struct mipi_dsi_driver {
         struct device_driver driver;
-        int(* probe) (struct mipi_dsi_device *dsi);
-        int(* remove) (struct mipi_dsi_device *dsi);
-        void (* shutdown) (struct mipi_dsi_device *dsi);
+        int(*probe)(struct mipi_dsi_device *dsi);
+        int(*remove)(struct mipi_dsi_device *dsi);
+        void (*shutdown)(struct mipi_dsi_device *dsi);
     }
 
 .. _`mipi_dsi_driver.members`:

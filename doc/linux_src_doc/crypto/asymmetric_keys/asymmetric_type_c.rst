@@ -94,7 +94,7 @@ asymmetric_key_id_partial
 asymmetric_match_key_ids
 ========================
 
-.. c:function:: bool asymmetric_match_key_ids(const struct asymmetric_key_ids *kids, const struct asymmetric_key_id *match_id, bool (*) match (const struct asymmetric_key_id *kid1, const struct asymmetric_key_id *kid2)
+.. c:function:: bool asymmetric_match_key_ids(const struct asymmetric_key_ids *kids, const struct asymmetric_key_id *match_id, bool (*match)(const struct asymmetric_key_id *kid1, const struct asymmetric_key_id *kid2))
 
     Search asymmetric key IDs
 
@@ -104,7 +104,7 @@ asymmetric_match_key_ids
     :param const struct asymmetric_key_id \*match_id:
         The key ID we're looking for
 
-    :param (bool (\*) match (const struct asymmetric_key_id \*kid1, const struct asymmetric_key_id \*kid2):
+    :param bool (\*match)(const struct asymmetric_key_id \*kid1, const struct asymmetric_key_id \*kid2):
         The match function to use
 
 .. _`asymmetric_key_hex_to_key_id`:

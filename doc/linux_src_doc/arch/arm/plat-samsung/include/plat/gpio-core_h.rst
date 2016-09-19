@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct samsung_gpio_pm {
-        void (* save) (struct samsung_gpio_chip *chip);
-        void (* resume) (struct samsung_gpio_chip *chip);
+        void (*save)(struct samsung_gpio_chip *chip);
+        void (*resume)(struct samsung_gpio_chip *chip);
     }
 
 .. _`samsung_gpio_pm.members`:

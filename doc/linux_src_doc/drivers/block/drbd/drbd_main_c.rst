@@ -426,17 +426,17 @@ Clears all bits in the bitmap and writes the whole bitmap to stable storage.
 drbd_queue_bitmap_io
 ====================
 
-.. c:function:: void drbd_queue_bitmap_io(struct drbd_device *device, int (*) io_fn (struct drbd_device *, void (*) done (struct drbd_device *, int, char *why, enum bm_flag flags)
+.. c:function:: void drbd_queue_bitmap_io(struct drbd_device *device, int (*io_fn)(struct drbd_device *), void (*done)(struct drbd_device *, int), char *why, enum bm_flag flags)
 
     Queues an IO operation on the whole bitmap
 
     :param struct drbd_device \*device:
         DRBD device.
 
-    :param (int (\*) io_fn (struct drbd_device \*):
+    :param int (\*io_fn)(struct drbd_device \*):
         IO callback to be called when bitmap IO is possible
 
-    :param (void (\*) done (struct drbd_device \*, int):
+    :param void (\*done)(struct drbd_device \*, int):
         callback to be called after the bitmap IO was performed
 
     :param char \*why:
@@ -463,14 +463,14 @@ Its worker function encloses the call of \ :c:func:`io_fn`\  by \ :c:func:`get_l
 drbd_bitmap_io
 ==============
 
-.. c:function:: int drbd_bitmap_io(struct drbd_device *device, int (*) io_fn (struct drbd_device *, char *why, enum bm_flag flags)
+.. c:function:: int drbd_bitmap_io(struct drbd_device *device, int (*io_fn)(struct drbd_device *), char *why, enum bm_flag flags)
 
     Does an IO operation on the whole bitmap
 
     :param struct drbd_device \*device:
         DRBD device.
 
-    :param (int (\*) io_fn (struct drbd_device \*):
+    :param int (\*io_fn)(struct drbd_device \*):
         IO callback to be called when bitmap IO is possible
 
     :param char \*why:

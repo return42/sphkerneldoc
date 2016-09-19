@@ -117,11 +117,11 @@ that \ ``task``\  itself is safe to dereference.
 kthread_create_on_node
 ======================
 
-.. c:function:: struct task_struct *kthread_create_on_node(int (*) threadfn (void *data, void *data, int node, const char namefmt[],  ...)
+.. c:function:: struct task_struct *kthread_create_on_node(int (*threadfn)(void *data), void *data, int node, const char namefmt[],  ...)
 
     create a kthread.
 
-    :param (int (\*) threadfn (void \*data):
+    :param int (\*threadfn)(void \*data):
         the function to run until signal_pending(current).
 
     :param void \*data:
@@ -186,11 +186,11 @@ stopped (i.e., just returned from \ :c:func:`kthread_create`\ ).
 kthread_create_on_cpu
 =====================
 
-.. c:function:: struct task_struct *kthread_create_on_cpu(int (*) threadfn (void *data, void *data, unsigned int cpu, const char *namefmt)
+.. c:function:: struct task_struct *kthread_create_on_cpu(int (*threadfn)(void *data), void *data, unsigned int cpu, const char *namefmt)
 
     Create a cpu bound kthread
 
-    :param (int (\*) threadfn (void \*data):
+    :param int (\*threadfn)(void \*data):
         the function to run until signal_pending(current).
 
     :param void \*data:

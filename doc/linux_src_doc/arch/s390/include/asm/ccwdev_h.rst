@@ -23,7 +23,7 @@ Definition
         struct ccw_driver *drv;
         struct device dev;
         int online;
-        void (* handler) (struct ccw_device *, unsigned long, struct irb *);
+        void (*handler)(struct ccw_device *, unsigned long, struct irb *);
     }
 
 .. _`ccw_device.members`:
@@ -76,19 +76,19 @@ Definition
 
     struct ccw_driver {
         struct ccw_device_id *ids;
-        int (* probe) (struct ccw_device *);
-        void (* remove) (struct ccw_device *);
-        int (* set_online) (struct ccw_device *);
-        int (* set_offline) (struct ccw_device *);
-        int (* notify) (struct ccw_device *, int);
-        void (* path_event) (struct ccw_device *, int *);
-        void (* shutdown) (struct ccw_device *);
-        int (* prepare) (struct ccw_device *);
-        void (* complete) (struct ccw_device *);
-        int (* freeze) (struct ccw_device *);
-        int (* thaw) (struct ccw_device *);
-        int (* restore) (struct ccw_device *);
-        enum uc_todo (* uc_handler) (struct ccw_device *, struct irb *);
+        int (*probe)(struct ccw_device *);
+        void (*remove)(struct ccw_device *);
+        int (*set_online)(struct ccw_device *);
+        int (*set_offline)(struct ccw_device *);
+        int (*notify)(struct ccw_device *, int);
+        void (*path_event)(struct ccw_device *, int *);
+        void (*shutdown)(struct ccw_device *);
+        int (*prepare)(struct ccw_device *);
+        void (*complete)(struct ccw_device *);
+        int (*freeze)(struct ccw_device *);
+        int (*thaw)(struct ccw_device *);
+        int (*restore)(struct ccw_device *);
+        enum uc_todo (*uc_handler)(struct ccw_device *, struct irb *);
         struct device_driver driver;
         enum interruption_class int_class;
     }

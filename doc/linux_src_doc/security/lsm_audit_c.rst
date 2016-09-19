@@ -71,17 +71,17 @@ dump_common_audit_data
 common_lsm_audit
 ================
 
-.. c:function:: void common_lsm_audit(struct common_audit_data *a, void (*) pre_audit (struct audit_buffer *, void *, void (*) post_audit (struct audit_buffer *, void *)
+.. c:function:: void common_lsm_audit(struct common_audit_data *a, void (*pre_audit)(struct audit_buffer *, void *), void (*post_audit)(struct audit_buffer *, void *))
 
     generic LSM auditing function
 
     :param struct common_audit_data \*a:
         auxiliary audit data
 
-    :param (void (\*) pre_audit (struct audit_buffer \*, void \*):
+    :param void (\*pre_audit)(struct audit_buffer \*, void \*):
         lsm-specific pre-audit callback
 
-    :param (void (\*) post_audit (struct audit_buffer \*, void \*):
+    :param void (\*post_audit)(struct audit_buffer \*, void \*):
         lsm-specific post-audit callback
 
 .. _`common_lsm_audit.description`:

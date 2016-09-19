@@ -20,7 +20,7 @@ Definition
     struct pmic8xxx_pwrkey {
         int key_press_irq;
         struct regmap *regmap;
-        int (* shutdown_fn) (struct pmic8xxx_pwrkey *, bool);
+        int (*shutdown_fn)(struct pmic8xxx_pwrkey *, bool);
     }
 
 .. _`pmic8xxx_pwrkey.members`:

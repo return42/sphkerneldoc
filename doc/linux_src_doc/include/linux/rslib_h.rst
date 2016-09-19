@@ -28,7 +28,7 @@ Definition
         int prim;
         int iprim;
         int gfpoly;
-        int (* gffunc) (int);
+        int (*gffunc)(int);
         int users;
         struct list_head list;
     }

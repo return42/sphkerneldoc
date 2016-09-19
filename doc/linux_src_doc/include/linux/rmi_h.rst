@@ -259,7 +259,7 @@ Definition
         u8 bits_per_word;
         u16 mode;
         void *cs_assert_data;
-        int (* cs_assert) (const void *cs_assert_data, const bool assert);
+        int (*cs_assert)(const void *cs_assert_data, const bool assert);
     }
 
 .. _`rmi_device_platform_data_spi.members`:
@@ -525,9 +525,9 @@ Definition
 .. code-block:: c
 
     struct rmi_transport_ops {
-        int (* write_block) (struct rmi_transport_dev *xport, u16 addr,const void *buf, size_t len);
-        int (* read_block) (struct rmi_transport_dev *xport, u16 addr,void *buf, size_t len);
-        int (* reset) (struct rmi_transport_dev *xport, u16 reset_addr);
+        int (*write_block)(struct rmi_transport_dev *xport, u16 addr,const void *buf, size_t len);
+        int (*read_block)(struct rmi_transport_dev *xport, u16 addr,void *buf, size_t len);
+        int (*reset)(struct rmi_transport_dev *xport, u16 reset_addr);
     }
 
 .. _`rmi_transport_ops.members`:
@@ -562,11 +562,11 @@ Definition
 
     struct rmi_driver {
         struct device_driver driver;
-        int (* reset_handler) (struct rmi_device *rmi_dev);
-        int (* clear_irq_bits) (struct rmi_device *rmi_dev, unsigned long *mask);
-        int (* set_irq_bits) (struct rmi_device *rmi_dev, unsigned long *mask);
-        int (* store_productid) (struct rmi_device *rmi_dev);
-        int (* set_input_params) (struct rmi_device *rmi_dev,struct input_dev *input);
+        int (*reset_handler)(struct rmi_device *rmi_dev);
+        int (*clear_irq_bits)(struct rmi_device *rmi_dev, unsigned long *mask);
+        int (*set_irq_bits)(struct rmi_device *rmi_dev, unsigned long *mask);
+        int (*store_productid)(struct rmi_device *rmi_dev);
+        int (*set_input_params)(struct rmi_device *rmi_dev,struct input_dev *input);
         void *data;
     }
 

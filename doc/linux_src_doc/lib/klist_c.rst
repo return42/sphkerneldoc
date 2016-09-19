@@ -6,17 +6,17 @@
 klist_init
 ==========
 
-.. c:function:: void klist_init(struct klist *k, void (*) get (struct klist_node *, void (*) put (struct klist_node *)
+.. c:function:: void klist_init(struct klist *k, void (*get)(struct klist_node *), void (*put)(struct klist_node *))
 
     Initialize a klist structure.
 
     :param struct klist \*k:
         The klist we're initializing.
 
-    :param (void (\*) get (struct klist_node \*):
+    :param void (\*get)(struct klist_node \*):
         The get function for the embedding object (NULL if none)
 
-    :param (void (\*) put (struct klist_node \*):
+    :param void (\*put)(struct klist_node \*):
         The put function for the embedding object (NULL if none)
 
 .. _`klist_init.description`:

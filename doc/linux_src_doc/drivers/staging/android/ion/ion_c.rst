@@ -23,7 +23,7 @@ Definition
         struct mutex buffer_lock;
         struct rw_semaphore lock;
         struct plist_head heaps;
-        long (* custom_ioctl) (struct ion_client *client, unsigned int cmd,unsigned long arg);
+        long (*custom_ioctl)(struct ion_client *client, unsigned int cmd,unsigned long arg);
         struct rb_root clients;
         struct dentry *debug_root;
         struct dentry *heaps_debug_root;

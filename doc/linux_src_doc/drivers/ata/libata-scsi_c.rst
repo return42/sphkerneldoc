@@ -813,14 +813,14 @@ Unlocks ata_scsi_rbuf_lock.
 ata_scsi_rbuf_fill
 ==================
 
-.. c:function:: void ata_scsi_rbuf_fill(struct ata_scsi_args *args, unsigned int (*) actor (struct ata_scsi_args *args, u8 *rbuf)
+.. c:function:: void ata_scsi_rbuf_fill(struct ata_scsi_args *args, unsigned int (*actor)(struct ata_scsi_args *args, u8 *rbuf))
 
     wrapper for SCSI command simulators
 
     :param struct ata_scsi_args \*args:
         device IDENTIFY data / SCSI command of interest.
 
-    :param (unsigned int (\*) actor (struct ata_scsi_args \*args, u8 \*rbuf):
+    :param unsigned int (\*actor)(struct ata_scsi_args \*args, u8 \*rbuf):
         Callback hook for desired SCSI command simulator
 
 .. _`ata_scsi_rbuf_fill.description`:

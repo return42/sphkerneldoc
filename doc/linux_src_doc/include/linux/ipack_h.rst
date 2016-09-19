@@ -20,7 +20,7 @@ Definition
         unsigned int slot;
         struct ipack_bus_device *bus;
         struct device dev;
-        void (* release) (struct ipack_device *dev);
+        void (*release)(struct ipack_device *dev);
         struct ipack_region region[IPACK_SPACE_COUNT];
         u8 *id;
         size_t id_avail;
@@ -99,8 +99,8 @@ Definition
 .. code-block:: c
 
     struct ipack_driver_ops {
-        int (* probe) (struct ipack_device *dev);
-        void (* remove) (struct ipack_device *dev);
+        int (*probe)(struct ipack_device *dev);
+        void (*remove)(struct ipack_device *dev);
     }
 
 .. _`ipack_driver_ops.members`:
@@ -168,13 +168,13 @@ Definition
 .. code-block:: c
 
     struct ipack_bus_ops {
-        int (* request_irq) (struct ipack_device *dev,irqreturn_t (*handler);
-        int (* free_irq) (struct ipack_device *dev);
-        int (* get_clockrate) (struct ipack_device *dev);
-        int (* set_clockrate) (struct ipack_device *dev, int mherz);
-        int (* get_error) (struct ipack_device *dev);
-        int (* get_timeout) (struct ipack_device *dev);
-        int (* reset_timeout) (struct ipack_device *dev);
+        int (*request_irq)(struct ipack_device *dev,irqreturn_t (*handler);
+        int (*free_irq)(struct ipack_device *dev);
+        int (*get_clockrate)(struct ipack_device *dev);
+        int (*set_clockrate)(struct ipack_device *dev, int mherz);
+        int (*get_error)(struct ipack_device *dev);
+        int (*get_timeout)(struct ipack_device *dev);
+        int (*reset_timeout)(struct ipack_device *dev);
     }
 
 .. _`ipack_bus_ops.members`:

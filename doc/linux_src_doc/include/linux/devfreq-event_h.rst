@@ -112,11 +112,11 @@ Definition
 .. code-block:: c
 
     struct devfreq_event_ops {
-        int (* enable) (struct devfreq_event_dev *edev);
-        int (* disable) (struct devfreq_event_dev *edev);
-        int (* reset) (struct devfreq_event_dev *edev);
-        int (* set_event) (struct devfreq_event_dev *edev);
-        int (* get_event) (struct devfreq_event_dev *edev,struct devfreq_event_data *edata);
+        int (*enable)(struct devfreq_event_dev *edev);
+        int (*disable)(struct devfreq_event_dev *edev);
+        int (*reset)(struct devfreq_event_dev *edev);
+        int (*set_event)(struct devfreq_event_dev *edev);
+        int (*get_event)(struct devfreq_event_dev *edev,struct devfreq_event_data *edata);
     }
 
 .. _`devfreq_event_ops.members`:

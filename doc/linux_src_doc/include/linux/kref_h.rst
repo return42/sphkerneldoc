@@ -30,7 +30,7 @@ kref_get
 kref_sub
 ========
 
-.. c:function:: int kref_sub(struct kref *kref, unsigned int count, void (*) release (struct kref *kref)
+.. c:function:: int kref_sub(struct kref *kref, unsigned int count, void (*release)(struct kref *kref))
 
     subtract a number of refcounts for object.
 
@@ -40,7 +40,7 @@ kref_sub
     :param unsigned int count:
         Number of recounts to subtract.
 
-    :param (void (\*) release (struct kref \*kref):
+    :param void (\*release)(struct kref \*kref):
         pointer to the function that will clean up the object when the
         last reference to the object is released.
         This pointer is required, and it is not acceptable to pass kfree
@@ -65,14 +65,14 @@ gone, not present.
 kref_put
 ========
 
-.. c:function:: int kref_put(struct kref *kref, void (*) release (struct kref *kref)
+.. c:function:: int kref_put(struct kref *kref, void (*release)(struct kref *kref))
 
     decrement refcount for object.
 
     :param struct kref \*kref:
         object.
 
-    :param (void (\*) release (struct kref \*kref):
+    :param void (\*release)(struct kref \*kref):
         pointer to the function that will clean up the object when the
         last reference to the object is released.
         This pointer is required, and it is not acceptable to pass kfree

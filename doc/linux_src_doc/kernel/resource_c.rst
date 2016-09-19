@@ -122,7 +122,7 @@ reallocate_resource
 allocate_resource
 =================
 
-.. c:function:: int allocate_resource(struct resource *root, struct resource *new, resource_size_t size, resource_size_t min, resource_size_t max, resource_size_t align, resource_size_t (*) alignf (void *, const struct resource *, resource_size_t, resource_size_t, void *alignf_data)
+.. c:function:: int allocate_resource(struct resource *root, struct resource *new, resource_size_t size, resource_size_t min, resource_size_t max, resource_size_t align, resource_size_t (*alignf)(void *, const struct resource *, resource_size_t, resource_size_t), void *alignf_data)
 
     allocate empty slot in the resource tree given range & alignment. The resource will be reallocated with a new size if it was already allocated
 
@@ -144,7 +144,7 @@ allocate_resource
     :param resource_size_t align:
         alignment requested, in bytes
 
-    :param (resource_size_t (\*) alignf (void \*, const struct resource \*, resource_size_t, resource_size_t):
+    :param resource_size_t (\*alignf)(void \*, const struct resource \*, resource_size_t, resource_size_t):
         alignment function, optional, called if not NULL
 
     :param void \*alignf_data:

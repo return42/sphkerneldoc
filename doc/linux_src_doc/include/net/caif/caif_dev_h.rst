@@ -151,17 +151,17 @@ caif_disconnect_client
 caif_client_register_refcnt
 ===========================
 
-.. c:function:: void caif_client_register_refcnt(struct cflayer *adapt_layer, void (*) hold (struct cflayer *lyr, void (*) put (struct cflayer *lyr)
+.. c:function:: void caif_client_register_refcnt(struct cflayer *adapt_layer, void (*hold)(struct cflayer *lyr), void (*put)(struct cflayer *lyr))
 
     register ref-count functions provided by client.
 
     :param struct cflayer \*adapt_layer:
         Client layer using CAIF Stack.
 
-    :param (void (\*) hold (struct cflayer \*lyr):
+    :param void (\*hold)(struct cflayer \*lyr):
         Function provided by client layer increasing ref-count
 
-    :param (void (\*) put (struct cflayer \*lyr):
+    :param void (\*put)(struct cflayer \*lyr):
         Function provided by client layer decreasing ref-count
 
 .. _`caif_client_register_refcnt.description`:

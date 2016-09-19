@@ -19,7 +19,7 @@ Definition
 
     struct vb2_vmarea_handler {
         atomic_t *refcount;
-        void (* put) (void *arg);
+        void (*put)(void *arg);
         void *arg;
     }
 

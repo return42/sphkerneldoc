@@ -133,7 +133,7 @@ complete whether the iteration ran till the end or not.
 class_for_each_device
 =====================
 
-.. c:function:: int class_for_each_device(struct class *class, struct device *start, void *data, int (*) fn (struct device *, void *)
+.. c:function:: int class_for_each_device(struct class *class, struct device *start, void *data, int (*fn)(struct device *, void *))
 
     device iterator
 
@@ -146,7 +146,7 @@ class_for_each_device
     :param void \*data:
         data for the callback
 
-    :param (int (\*) fn (struct device \*, void \*):
+    :param int (\*fn)(struct device \*, void \*):
         function to be called for each device
 
 .. _`class_for_each_device.description`:
@@ -170,7 +170,7 @@ code.  There's no locking restriction.
 class_find_device
 =================
 
-.. c:function:: struct device *class_find_device(struct class *class, struct device *start, const void *data, int (*) match (struct device *, const void *)
+.. c:function:: struct device *class_find_device(struct class *class, struct device *start, const void *data, int (*match)(struct device *, const void *))
 
     device iterator for locating a particular device
 
@@ -183,7 +183,7 @@ class_find_device
     :param const void \*data:
         data for the match function
 
-    :param (int (\*) match (struct device \*, const void \*):
+    :param int (\*match)(struct device \*, const void \*):
         function to check device
 
 .. _`class_find_device.description`:

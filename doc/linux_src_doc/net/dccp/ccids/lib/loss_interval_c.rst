@@ -28,7 +28,7 @@ returns \`true' if p > p_prev  <=>  1/p < 1/p_prev
 tfrc_lh_interval_add
 ====================
 
-.. c:function:: int tfrc_lh_interval_add(struct tfrc_loss_hist *lh, struct tfrc_rx_hist *rh, u32 (*) calc_first_li (struct sock *, struct sock *sk)
+.. c:function:: int tfrc_lh_interval_add(struct tfrc_loss_hist *lh, struct tfrc_rx_hist *rh, u32 (*calc_first_li)(struct sock *), struct sock *sk)
 
     Insert new record into the Loss Interval database
 
@@ -38,7 +38,7 @@ tfrc_lh_interval_add
     :param struct tfrc_rx_hist \*rh:
         Receive history containing a fresh loss event
 
-    :param (u32 (\*) calc_first_li (struct sock \*):
+    :param u32 (\*calc_first_li)(struct sock \*):
         Caller-dependent routine to compute length of first interval
 
     :param struct sock \*sk:

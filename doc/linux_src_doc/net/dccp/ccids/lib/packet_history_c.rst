@@ -6,7 +6,7 @@
 tfrc_rx_handle_loss
 ===================
 
-.. c:function:: int tfrc_rx_handle_loss(struct tfrc_rx_hist *h, struct tfrc_loss_hist *lh, struct sk_buff *skb, const u64 ndp, u32 (*) calc_first_li (struct sock *, struct sock *sk)
+.. c:function:: int tfrc_rx_handle_loss(struct tfrc_rx_hist *h, struct tfrc_loss_hist *lh, struct sk_buff *skb, const u64 ndp, u32 (*calc_first_li)(struct sock *), struct sock *sk)
 
     Loss detection and further processing
 
@@ -22,7 +22,7 @@ tfrc_rx_handle_loss
     :param const u64 ndp:
         The NDP count belonging to \ ``skb``\ 
 
-    :param (u32 (\*) calc_first_li (struct sock \*):
+    :param u32 (\*calc_first_li)(struct sock \*):
         Caller-dependent computation of first loss interval in \ ``lh``\ 
 
     :param struct sock \*sk:

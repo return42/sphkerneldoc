@@ -26,7 +26,7 @@ Definition
         bool broken_sg_support;
         unsigned short sd_head_align;
         unsigned short sd_sgentry_align;
-        void (* reset) (void);
+        void (*reset)(void);
     }
 
 .. _`brcmfmac_sdio_pd.members`:
@@ -222,8 +222,8 @@ Definition
 .. code-block:: c
 
     struct brcmfmac_platform_data {
-        void (* power_on) (void);
-        void (* power_off) (void);
+        void (*power_on)(void);
+        void (*power_off)(void);
         char *fw_alternative_path;
         int device_count;
         struct brcmfmac_pd_device devices[0];

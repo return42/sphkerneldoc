@@ -168,7 +168,7 @@ reference is released.
 usb_add_gadget_udc_release
 ==========================
 
-.. c:function:: int usb_add_gadget_udc_release(struct device *parent, struct usb_gadget *gadget, void (*) release (struct device *dev)
+.. c:function:: int usb_add_gadget_udc_release(struct device *parent, struct usb_gadget *gadget, void (*release)(struct device *dev))
 
     adds a new gadget to the udc class driver list
 
@@ -179,7 +179,7 @@ usb_add_gadget_udc_release
     :param struct usb_gadget \*gadget:
         the gadget to be added to the list.
 
-    :param (void (\*) release (struct device \*dev):
+    :param void (\*release)(struct device \*dev):
         a gadget release function.
 
 .. _`usb_add_gadget_udc_release.description`:

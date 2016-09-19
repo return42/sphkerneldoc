@@ -118,8 +118,8 @@ Definition
         s16 thresh_low[8];
         struct regulator *vref;
         u32 vref_uv;
-        int (* send) (const struct i2c_client *client,const char *buf, int count);
-        int (* recv) (const struct i2c_client *client,char *buf, int count);
+        int (*send)(const struct i2c_client *client,const char *buf, int count);
+        int (*recv)(const struct i2c_client *client,char *buf, int count);
     }
 
 .. _`max1363_state.members`:

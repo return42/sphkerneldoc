@@ -30,7 +30,7 @@ query is canceled and will complete with a status of -EINTR.
 ib_sa_path_rec_get
 ==================
 
-.. c:function:: int ib_sa_path_rec_get(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*) callback (int status, struct ib_sa_path_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
+.. c:function:: int ib_sa_path_rec_get(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_path_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback)(int status, struct ib_sa_path_rec *resp, void *context), void *context, struct ib_sa_query **sa_query)
 
     Start a Path get query
 
@@ -55,7 +55,7 @@ ib_sa_path_rec_get
     :param gfp_t gfp_mask:
         GFP mask to use for internal allocations
 
-    :param (void (\*) callback (int status, struct ib_sa_path_rec \*resp, void \*context):
+    :param void (\*callback)(int status, struct ib_sa_path_rec \*resp, void \*context):
         function called when query completes, times out or is
         canceled
 
@@ -86,7 +86,7 @@ the query.
 ib_sa_service_rec_query
 =======================
 
-.. c:function:: int ib_sa_service_rec_query(struct ib_sa_client *client, struct ib_device *device, u8 port_num, u8 method, struct ib_sa_service_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*) callback (int status, struct ib_sa_service_rec *resp, void *context, void *context, struct ib_sa_query **sa_query)
+.. c:function:: int ib_sa_service_rec_query(struct ib_sa_client *client, struct ib_device *device, u8 port_num, u8 method, struct ib_sa_service_rec *rec, ib_sa_comp_mask comp_mask, int timeout_ms, gfp_t gfp_mask, void (*callback)(int status, struct ib_sa_service_rec *resp, void *context), void *context, struct ib_sa_query **sa_query)
 
     Start Service Record operation
 
@@ -114,7 +114,7 @@ ib_sa_service_rec_query
     :param gfp_t gfp_mask:
         GFP mask to use for internal allocations
 
-    :param (void (\*) callback (int status, struct ib_sa_service_rec \*resp, void \*context):
+    :param void (\*callback)(int status, struct ib_sa_service_rec \*resp, void \*context):
         function called when request completes, times out or is
         canceled
 

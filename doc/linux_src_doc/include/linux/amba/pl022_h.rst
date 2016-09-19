@@ -567,7 +567,7 @@ Definition
         u16 bus_id;
         u8 num_chipselect;
         u8 enable_dma:1;
-        bool (* dma_filter) (struct dma_chan *chan, void *filter_param);
+        bool (*dma_filter)(struct dma_chan *chan, void *filter_param);
         void *dma_rx_param;
         void *dma_tx_param;
         int autosuspend_delay;
@@ -641,7 +641,7 @@ Definition
         enum ssp_microwire_wait_state wait_state;
         enum ssp_duplex duplex;
         enum ssp_clkdelay clkdelay;
-        void (* cs_control) (u32 control);
+        void (*cs_control)(u32 control);
     }
 
 .. _`pl022_config_chip.members`:

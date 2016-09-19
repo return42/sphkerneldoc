@@ -6,7 +6,7 @@
 pci_bus_alloc_resource
 ======================
 
-.. c:function:: int pci_bus_alloc_resource(struct pci_bus *bus, struct resource *res, resource_size_t size, resource_size_t align, resource_size_t min, unsigned long type_mask, resource_size_t (*) alignf (void *, const struct resource *, resource_size_t, resource_size_t, void *alignf_data)
+.. c:function:: int pci_bus_alloc_resource(struct pci_bus *bus, struct resource *res, resource_size_t size, resource_size_t align, resource_size_t min, unsigned long type_mask, resource_size_t (*alignf)(void *, const struct resource *, resource_size_t, resource_size_t), void *alignf_data)
 
     allocate a resource from a parent bus
 
@@ -28,7 +28,7 @@ pci_bus_alloc_resource
     :param unsigned long type_mask:
         IORESOURCE\_\* type flags
 
-    :param (resource_size_t (\*) alignf (void \*, const struct resource \*, resource_size_t, resource_size_t):
+    :param resource_size_t (\*alignf)(void \*, const struct resource \*, resource_size_t, resource_size_t):
         resource alignment function
 
     :param void \*alignf_data:

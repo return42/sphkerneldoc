@@ -73,13 +73,13 @@ Definition
     struct rmi_function_handler {
         struct device_driver driver;
         u8 func;
-        int (* probe) (struct rmi_function *fn);
-        void (* remove) (struct rmi_function *fn);
-        int (* config) (struct rmi_function *fn);
-        int (* reset) (struct rmi_function *fn);
-        int (* attention) (struct rmi_function *fn, unsigned long *irq_bits);
-        int (* suspend) (struct rmi_function *fn);
-        int (* resume) (struct rmi_function *fn);
+        int (*probe)(struct rmi_function *fn);
+        void (*remove)(struct rmi_function *fn);
+        int (*config)(struct rmi_function *fn);
+        int (*reset)(struct rmi_function *fn);
+        int (*attention)(struct rmi_function *fn, unsigned long *irq_bits);
+        int (*suspend)(struct rmi_function *fn);
+        int (*resume)(struct rmi_function *fn);
     }
 
 .. _`rmi_function_handler.members`:

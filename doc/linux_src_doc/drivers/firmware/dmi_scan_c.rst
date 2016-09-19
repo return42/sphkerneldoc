@@ -213,11 +213,11 @@ range of [0,9999], [0,12] and [0,31] respectively.
 dmi_walk
 ========
 
-.. c:function:: int dmi_walk(void (*) decode (const struct dmi_header *, void *, void *private_data)
+.. c:function:: int dmi_walk(void (*decode)(const struct dmi_header *, void *), void *private_data)
 
     Walk the DMI table and get called back for every record
 
-    :param (void (\*) decode (const struct dmi_header \*, void \*):
+    :param void (\*decode)(const struct dmi_header \*, void \*):
         Callback function
 
     :param void \*private_data:

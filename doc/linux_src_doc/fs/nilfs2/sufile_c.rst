@@ -58,7 +58,7 @@ nilfs_sufile_get_ncleansegs
 nilfs_sufile_updatev
 ====================
 
-.. c:function:: int nilfs_sufile_updatev(struct inode *sufile, __u64 *segnumv, size_t nsegs, int create, size_t *ndone, void (*) dofunc (struct inode *, __u64, struct buffer_head *, struct buffer_head *)
+.. c:function:: int nilfs_sufile_updatev(struct inode *sufile, __u64 *segnumv, size_t nsegs, int create, size_t *ndone, void (*dofunc)(struct inode *, __u64, struct buffer_head *, struct buffer_head *))
 
     modify multiple segment usages at a time
 
@@ -77,7 +77,7 @@ nilfs_sufile_updatev
     :param size_t \*ndone:
         place to store number of modified segments on \ ``segnumv``\ 
 
-    :param (void (\*) dofunc (struct inode \*, __u64, struct buffer_head \*, struct buffer_head \*):
+    :param void (\*dofunc)(struct inode \*, __u64, struct buffer_head \*, struct buffer_head \*):
         primitive operation for the update
 
 .. _`nilfs_sufile_updatev.description`:

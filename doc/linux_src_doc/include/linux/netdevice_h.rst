@@ -559,7 +559,7 @@ Get network device private data
 netif_napi_add
 ==============
 
-.. c:function:: void netif_napi_add(struct net_device *dev, struct napi_struct *napi, int (*) poll (struct napi_struct *, int, int weight)
+.. c:function:: void netif_napi_add(struct net_device *dev, struct napi_struct *napi, int (*poll)(struct napi_struct *, int), int weight)
 
     initialize a NAPI context
 
@@ -569,7 +569,7 @@ netif_napi_add
     :param struct napi_struct \*napi:
         NAPI context
 
-    :param (int (\*) poll (struct napi_struct \*, int):
+    :param int (\*poll)(struct napi_struct \*, int):
         polling function
 
     :param int weight:
@@ -588,7 +588,7 @@ Description
 netif_tx_napi_add
 =================
 
-.. c:function:: void netif_tx_napi_add(struct net_device *dev, struct napi_struct *napi, int (*) poll (struct napi_struct *, int, int weight)
+.. c:function:: void netif_tx_napi_add(struct net_device *dev, struct napi_struct *napi, int (*poll)(struct napi_struct *, int), int weight)
 
     initialize a NAPI context
 
@@ -598,7 +598,7 @@ netif_tx_napi_add
     :param struct napi_struct \*napi:
         NAPI context
 
-    :param (int (\*) poll (struct napi_struct \*, int):
+    :param int (\*poll)(struct napi_struct \*, int):
         polling function
 
     :param int weight:
@@ -1130,17 +1130,17 @@ Get network device transmit lock
 __dev_uc_sync
 =============
 
-.. c:function:: int __dev_uc_sync(struct net_device *dev, int (*) sync (struct net_device *, const unsigned char *, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: int __dev_uc_sync(struct net_device *dev, int (*sync)(struct net_device *, const unsigned char *), int (*unsync)(struct net_device *, const unsigned char *))
 
     Synchonize device's unicast list
 
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) sync (struct net_device \*, const unsigned char \*):
+    :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__dev_uc_sync.description`:
@@ -1156,14 +1156,14 @@ addresses that have been deleted.
 __dev_uc_unsync
 ===============
 
-.. c:function:: void __dev_uc_unsync(struct net_device *dev, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: void __dev_uc_unsync(struct net_device *dev, int (*unsync)(struct net_device *, const unsigned char *))
 
     Remove synchronized addresses from device
 
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__dev_uc_unsync.description`:
@@ -1178,17 +1178,17 @@ Remove all addresses that were added to the device by \ :c:func:`dev_uc_sync`\ .
 __dev_mc_sync
 =============
 
-.. c:function:: int __dev_mc_sync(struct net_device *dev, int (*) sync (struct net_device *, const unsigned char *, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: int __dev_mc_sync(struct net_device *dev, int (*sync)(struct net_device *, const unsigned char *), int (*unsync)(struct net_device *, const unsigned char *))
 
     Synchonize device's multicast list
 
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) sync (struct net_device \*, const unsigned char \*):
+    :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__dev_mc_sync.description`:
@@ -1204,14 +1204,14 @@ addresses that have been deleted.
 __dev_mc_unsync
 ===============
 
-.. c:function:: void __dev_mc_unsync(struct net_device *dev, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: void __dev_mc_unsync(struct net_device *dev, int (*unsync)(struct net_device *, const unsigned char *))
 
     Remove synchronized addresses from device
 
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__dev_mc_unsync.description`:

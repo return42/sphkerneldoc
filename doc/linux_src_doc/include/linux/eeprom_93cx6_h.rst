@@ -19,8 +19,8 @@ Definition
 
     struct eeprom_93cx6 {
         void *data;
-        void (* register_read) (struct eeprom_93cx6 *eeprom);
-        void (* register_write) (struct eeprom_93cx6 *eeprom);
+        void (*register_read)(struct eeprom_93cx6 *eeprom);
+        void (*register_write)(struct eeprom_93cx6 *eeprom);
         int width;
         char drive_data;
         char reg_data_in;

@@ -28,14 +28,14 @@ Safe to use from interrupt context
 nvme_dif_remap
 ==============
 
-.. c:function:: void nvme_dif_remap(struct request *req, void (*) dif_swap (u32 p, u32 v, struct t10_pi_tuple *pi)
+.. c:function:: void nvme_dif_remap(struct request *req, void (*dif_swap)(u32 p, u32 v, struct t10_pi_tuple *pi))
 
     remaps ref tags to bip seed and physical lba
 
     :param struct request \*req:
         *undescribed*
 
-    :param (void (\*) dif_swap (u32 p, u32 v, struct t10_pi_tuple \*pi):
+    :param void (\*dif_swap)(u32 p, u32 v, struct t10_pi_tuple \*pi):
         *undescribed*
 
 .. _`nvme_dif_remap.description`:

@@ -88,7 +88,7 @@ Definition
     struct arc_emac_priv {
         const char *drv_name;
         const char *drv_version;
-        void (* set_mac_speed) (void *priv, unsigned int speed);
+        void (*set_mac_speed)(void *priv, unsigned int speed);
         struct device *dev;
         struct phy_device *phy_dev;
         struct mii_bus *bus;

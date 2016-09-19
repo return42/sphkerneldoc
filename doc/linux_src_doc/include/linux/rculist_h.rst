@@ -167,7 +167,7 @@ Note
 __list_splice_init_rcu
 ======================
 
-.. c:function:: void __list_splice_init_rcu(struct list_head *list, struct list_head *prev, struct list_head *next, void (*) sync (void)
+.. c:function:: void __list_splice_init_rcu(struct list_head *list, struct list_head *prev, struct list_head *next, void (*sync)(void))
 
     join an RCU-protected list into an existing list.
 
@@ -180,7 +180,7 @@ __list_splice_init_rcu
     :param struct list_head \*next:
         points to the first element of the existing list
 
-    :param (void (\*) sync (void):
+    :param void (\*sync)(void):
         function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
 
 .. _`__list_splice_init_rcu.description`:
@@ -210,7 +210,7 @@ members.
 list_splice_init_rcu
 ====================
 
-.. c:function:: void list_splice_init_rcu(struct list_head *list, struct list_head *head, void (*) sync (void)
+.. c:function:: void list_splice_init_rcu(struct list_head *list, struct list_head *head, void (*sync)(void))
 
     splice an RCU-protected list into an existing list, designed for stacks.
 
@@ -220,7 +220,7 @@ list_splice_init_rcu
     :param struct list_head \*head:
         the place in the existing list to splice the first list into
 
-    :param (void (\*) sync (void):
+    :param void (\*sync)(void):
         function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
 
 .. _`list_splice_tail_init_rcu`:
@@ -228,7 +228,7 @@ list_splice_init_rcu
 list_splice_tail_init_rcu
 =========================
 
-.. c:function:: void list_splice_tail_init_rcu(struct list_head *list, struct list_head *head, void (*) sync (void)
+.. c:function:: void list_splice_tail_init_rcu(struct list_head *list, struct list_head *head, void (*sync)(void))
 
     splice an RCU-protected list into an existing list, designed for queues.
 
@@ -238,7 +238,7 @@ list_splice_tail_init_rcu
     :param struct list_head \*head:
         the place in the existing list to splice the first list into
 
-    :param (void (\*) sync (void):
+    :param void (\*sync)(void):
         function to sync: \ :c:func:`synchronize_rcu`\ , \ :c:func:`synchronize_sched`\ , ...
 
 .. _`list_entry_rcu`:

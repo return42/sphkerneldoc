@@ -63,8 +63,8 @@ Definition
 
     struct sunxi_rsb_driver {
         struct device_driver driver;
-        int (* probe) (struct sunxi_rsb_device *rdev);
-        int (* remove) (struct sunxi_rsb_device *rdev);
+        int (*probe)(struct sunxi_rsb_device *rdev);
+        int (*remove)(struct sunxi_rsb_device *rdev);
     }
 
 .. _`sunxi_rsb_driver.members`:

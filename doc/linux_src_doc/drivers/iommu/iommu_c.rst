@@ -52,7 +52,7 @@ should hold a group reference.
 iommu_group_set_iommudata
 =========================
 
-.. c:function:: void iommu_group_set_iommudata(struct iommu_group *group, void *iommu_data, void (*) release (void *iommu_data)
+.. c:function:: void iommu_group_set_iommudata(struct iommu_group *group, void *iommu_data, void (*release)(void *iommu_data))
 
     set iommu_data for a group
 
@@ -62,7 +62,7 @@ iommu_group_set_iommudata
     :param void \*iommu_data:
         new data
 
-    :param (void (\*) release (void \*iommu_data):
+    :param void (\*release)(void \*iommu_data):
         release function for iommu_data
 
 .. _`iommu_group_set_iommudata.description`:
@@ -145,7 +145,7 @@ it's current group.  This decrements the iommu group reference count.
 __iommu_group_for_each_dev
 ==========================
 
-.. c:function:: int __iommu_group_for_each_dev(struct iommu_group *group, void *data, int (*) fn (struct device *, void *)
+.. c:function:: int __iommu_group_for_each_dev(struct iommu_group *group, void *data, int (*fn)(struct device *, void *))
 
     iterate over each device in the group
 
@@ -155,7 +155,7 @@ __iommu_group_for_each_dev
     :param void \*data:
         caller opaque data to be passed to callback function
 
-    :param (int (\*) fn (struct device \*, void \*):
+    :param int (\*fn)(struct device \*, void \*):
         caller supplied callback function
 
 .. _`__iommu_group_for_each_dev.description`:

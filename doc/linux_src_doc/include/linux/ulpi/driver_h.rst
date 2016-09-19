@@ -55,8 +55,8 @@ Definition
 
     struct ulpi_driver {
         const struct ulpi_device_id *id_table;
-        int (* probe) (struct ulpi *ulpi);
-        void (* remove) (struct ulpi *ulpi);
+        int (*probe)(struct ulpi *ulpi);
+        void (*remove)(struct ulpi *ulpi);
         struct device_driver driver;
     }
 

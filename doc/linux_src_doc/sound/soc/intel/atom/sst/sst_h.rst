@@ -79,13 +79,13 @@ Definition
         unsigned int ops;
         struct mutex lock;
         void *pcm_substream;
-        void (* period_elapsed) (void *pcm_substream);
+        void (*period_elapsed)(void *pcm_substream);
         unsigned int sfreq;
         u32 cumm_bytes;
         void *compr_cb_param;
-        void (* compr_cb) (void *compr_cb_param);
+        void (*compr_cb)(void *compr_cb_param);
         void *drain_cb_param;
-        void (* drain_notify) (void *drain_cb_param);
+        void (*drain_notify)(void *drain_cb_param);
         unsigned int num_ch;
         unsigned int pipe_id;
         unsigned int str_id;

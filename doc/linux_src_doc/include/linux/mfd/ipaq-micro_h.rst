@@ -163,9 +163,9 @@ Definition
         spinlock_t lock;
         struct ipaq_micro_msg *msg;
         struct list_head queue;
-        void (* key) (void *data, int len, unsigned char *rxdata);
+        void (*key)(void *data, int len, unsigned char *rxdata);
         void *key_data;
-        void (* ts) (void *data, int len, unsigned char *rxdata);
+        void (*ts)(void *data, int len, unsigned char *rxdata);
         void *ts_data;
     }
 

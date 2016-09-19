@@ -65,26 +65,26 @@ Definition
 .. code-block:: c
 
     struct clk_ops {
-        int (* prepare) (struct clk_hw *hw);
-        void (* unprepare) (struct clk_hw *hw);
-        int (* is_prepared) (struct clk_hw *hw);
-        void (* unprepare_unused) (struct clk_hw *hw);
-        int (* enable) (struct clk_hw *hw);
-        void (* disable) (struct clk_hw *hw);
-        int (* is_enabled) (struct clk_hw *hw);
-        void (* disable_unused) (struct clk_hw *hw);
-        unsigned long (* recalc_rate) (struct clk_hw *hw,unsigned long parent_rate);
-        long (* round_rate) (struct clk_hw *hw, unsigned long rate,unsigned long *parent_rate);
-        int (* determine_rate) (struct clk_hw *hw,struct clk_rate_request *req);
-        int (* set_parent) (struct clk_hw *hw, u8 index);
-        u8 (* get_parent) (struct clk_hw *hw);
-        int (* set_rate) (struct clk_hw *hw, unsigned long rate,unsigned long parent_rate);
-        int (* set_rate_and_parent) (struct clk_hw *hw,unsigned long rate,unsigned long parent_rate, u8 index);
-        unsigned long (* recalc_accuracy) (struct clk_hw *hw,unsigned long parent_accuracy);
-        int (* get_phase) (struct clk_hw *hw);
-        int (* set_phase) (struct clk_hw *hw, int degrees);
-        void (* init) (struct clk_hw *hw);
-        int (* debug_init) (struct clk_hw *hw, struct dentry *dentry);
+        int (*prepare)(struct clk_hw *hw);
+        void (*unprepare)(struct clk_hw *hw);
+        int (*is_prepared)(struct clk_hw *hw);
+        void (*unprepare_unused)(struct clk_hw *hw);
+        int (*enable)(struct clk_hw *hw);
+        void (*disable)(struct clk_hw *hw);
+        int (*is_enabled)(struct clk_hw *hw);
+        void (*disable_unused)(struct clk_hw *hw);
+        unsigned long (*recalc_rate)(struct clk_hw *hw,unsigned long parent_rate);
+        long (*round_rate)(struct clk_hw *hw, unsigned long rate,unsigned long *parent_rate);
+        int (*determine_rate)(struct clk_hw *hw,struct clk_rate_request *req);
+        int (*set_parent)(struct clk_hw *hw, u8 index);
+        u8 (*get_parent)(struct clk_hw *hw);
+        int (*set_rate)(struct clk_hw *hw, unsigned long rate,unsigned long parent_rate);
+        int (*set_rate_and_parent)(struct clk_hw *hw,unsigned long rate,unsigned long parent_rate, u8 index);
+        unsigned long (*recalc_accuracy)(struct clk_hw *hw,unsigned long parent_accuracy);
+        int (*get_phase)(struct clk_hw *hw);
+        int (*set_phase)(struct clk_hw *hw, int degrees);
+        void (*init)(struct clk_hw *hw);
+        int (*debug_init)(struct clk_hw *hw, struct dentry *dentry);
     }
 
 .. _`clk_ops.members`:

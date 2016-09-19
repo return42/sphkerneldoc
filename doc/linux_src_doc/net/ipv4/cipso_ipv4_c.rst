@@ -365,14 +365,14 @@ Releases a DOI definition reference obtained from \ :c:func:`cipso_v4_doi_getdef
 cipso_v4_doi_walk
 =================
 
-.. c:function:: int cipso_v4_doi_walk(u32 *skip_cnt, int (*) callback (struct cipso_v4_doi *doi_def, void *arg, void *cb_arg)
+.. c:function:: int cipso_v4_doi_walk(u32 *skip_cnt, int (*callback)(struct cipso_v4_doi *doi_def, void *arg), void *cb_arg)
 
     Iterate through the DOI definitions
 
     :param u32 \*skip_cnt:
         skip past this number of DOI definitions, updated
 
-    :param (int (\*) callback (struct cipso_v4_doi \*doi_def, void \*arg):
+    :param int (\*callback)(struct cipso_v4_doi \*doi_def, void \*arg):
         callback for each DOI definition
 
     :param void \*cb_arg:

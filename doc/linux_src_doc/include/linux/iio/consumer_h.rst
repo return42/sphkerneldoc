@@ -198,14 +198,14 @@ devm_iio_channel_release_all
 iio_channel_get_all_cb
 ======================
 
-.. c:function:: struct iio_cb_buffer *iio_channel_get_all_cb(struct device *dev, int (*) cb (const void *data, void *private, void *private)
+.. c:function:: struct iio_cb_buffer *iio_channel_get_all_cb(struct device *dev, int (*cb)(const void *data, void *private), void *private)
 
     register callback for triggered capture
 
     :param struct device \*dev:
         Pointer to client device.
 
-    :param (int (\*) cb (const void \*data, void \*private):
+    :param int (\*cb)(const void \*data, void \*private):
         Callback function.
 
     :param void \*private:

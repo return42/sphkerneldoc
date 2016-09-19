@@ -19,9 +19,9 @@ Definition
 
     struct sync_timeline_ops {
         const char *driver_name;
-        int (* has_signaled) (struct fence *fence);
-        void (* timeline_value_str) (struct sync_timeline *timeline, char *str,int size);
-        void (* fence_value_str) (struct fence *fence, char *str, int size);
+        int (*has_signaled)(struct fence *fence);
+        void (*timeline_value_str)(struct sync_timeline *timeline, char *str,int size);
+        void (*fence_value_str)(struct fence *fence, char *str, int size);
     }
 
 .. _`sync_timeline_ops.members`:

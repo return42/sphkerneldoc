@@ -21,7 +21,7 @@ Definition
         u8 i2c_address;
         u8 xtal_freq_mhz;
         void *set_tuner_priv;
-        int (* set_tuner_callback) (void *, int);
+        int (*set_tuner_callback)(void *, int);
     }
 
 .. _`horus3a_config.members`:

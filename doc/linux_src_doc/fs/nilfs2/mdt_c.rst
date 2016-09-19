@@ -6,7 +6,7 @@
 nilfs_mdt_get_block
 ===================
 
-.. c:function:: int nilfs_mdt_get_block(struct inode *inode, unsigned long blkoff, int create, void (*) init_block (struct inode *, struct buffer_head *, void *, struct buffer_head **out_bh)
+.. c:function:: int nilfs_mdt_get_block(struct inode *inode, unsigned long blkoff, int create, void (*init_block)(struct inode *, struct buffer_head *, void *), struct buffer_head **out_bh)
 
     read or create a buffer on meta data file.
 
@@ -19,7 +19,7 @@ nilfs_mdt_get_block
     :param int create:
         create flag
 
-    :param (void (\*) init_block (struct inode \*, struct buffer_head \*, void \*):
+    :param void (\*init_block)(struct inode \*, struct buffer_head \*, void \*):
         initializer used for newly allocated block
 
     :param struct buffer_head \*\*out_bh:

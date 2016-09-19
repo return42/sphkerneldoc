@@ -267,8 +267,8 @@ Definition
 .. code-block:: c
 
     struct media_entity_operations {
-        int (* link_setup) (struct media_entity *entity,const struct media_pad *local,const struct media_pad *remote, u32 flags);
-        int (* link_validate) (struct media_link *link);
+        int (*link_setup)(struct media_entity *entity,const struct media_pad *local,const struct media_pad *remote, u32 flags);
+        int (*link_validate)(struct media_link *link);
     }
 
 .. _`media_entity_operations.members`:

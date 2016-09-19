@@ -63,16 +63,16 @@ Definition
 .. code-block:: c
 
     struct ccwgroup_driver {
-        int (* setup) (struct ccwgroup_device *);
-        void (* remove) (struct ccwgroup_device *);
-        int (* set_online) (struct ccwgroup_device *);
-        int (* set_offline) (struct ccwgroup_device *);
-        void (* shutdown) (struct ccwgroup_device *);
-        int (* prepare) (struct ccwgroup_device *);
-        void (* complete) (struct ccwgroup_device *);
-        int (* freeze) (struct ccwgroup_device *);
-        int (* thaw) (struct ccwgroup_device *);
-        int (* restore) (struct ccwgroup_device *);
+        int (*setup)(struct ccwgroup_device *);
+        void (*remove)(struct ccwgroup_device *);
+        int (*set_online)(struct ccwgroup_device *);
+        int (*set_offline)(struct ccwgroup_device *);
+        void (*shutdown)(struct ccwgroup_device *);
+        int (*prepare)(struct ccwgroup_device *);
+        void (*complete)(struct ccwgroup_device *);
+        int (*freeze)(struct ccwgroup_device *);
+        int (*thaw)(struct ccwgroup_device *);
+        int (*restore)(struct ccwgroup_device *);
         struct device_driver driver;
     }
 

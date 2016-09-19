@@ -70,7 +70,7 @@ Definition
         struct gpio_pint_saved saved_data;
         int map_count;
         spinlock_t lock;
-        int (* pint_map_port) (struct gpio_pint *pint, bool assign,u8 map, struct irq_domain *domain);
+        int (*pint_map_port)(struct gpio_pint *pint, bool assign,u8 map, struct irq_domain *domain);
     }
 
 .. _`gpio_pint.members`:

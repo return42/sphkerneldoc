@@ -1003,14 +1003,14 @@ Definition
 
     struct usb_driver {
         const char *name;
-        int (* probe) (struct usb_interface *intf,const struct usb_device_id *id);
-        void (* disconnect) (struct usb_interface *intf);
-        int (* unlocked_ioctl) (struct usb_interface *intf, unsigned int code,void *buf);
-        int (* suspend) (struct usb_interface *intf, pm_message_t message);
-        int (* resume) (struct usb_interface *intf);
-        int (* reset_resume) (struct usb_interface *intf);
-        int (* pre_reset) (struct usb_interface *intf);
-        int (* post_reset) (struct usb_interface *intf);
+        int (*probe)(struct usb_interface *intf,const struct usb_device_id *id);
+        void (*disconnect)(struct usb_interface *intf);
+        int (*unlocked_ioctl)(struct usb_interface *intf, unsigned int code,void *buf);
+        int (*suspend)(struct usb_interface *intf, pm_message_t message);
+        int (*resume)(struct usb_interface *intf);
+        int (*reset_resume)(struct usb_interface *intf);
+        int (*pre_reset)(struct usb_interface *intf);
+        int (*post_reset)(struct usb_interface *intf);
         const struct usb_device_id *id_table;
         struct usb_dynids dynids;
         struct usbdrv_wrap drvwrap;
@@ -1141,10 +1141,10 @@ Definition
 
     struct usb_device_driver {
         const char *name;
-        int (* probe) (struct usb_device *udev);
-        void (* disconnect) (struct usb_device *udev);
-        int (* suspend) (struct usb_device *udev, pm_message_t message);
-        int (* resume) (struct usb_device *udev, pm_message_t message);
+        int (*probe)(struct usb_device *udev);
+        void (*disconnect)(struct usb_device *udev);
+        int (*suspend)(struct usb_device *udev, pm_message_t message);
+        int (*resume)(struct usb_device *udev, pm_message_t message);
         struct usbdrv_wrap drvwrap;
         unsigned int supports_autosuspend:1;
     }
@@ -1207,7 +1207,7 @@ Definition
 
     struct usb_class_driver {
         char *name;
-        char *(* devnode) (struct device *dev, umode_t *mode);
+        char *(*devnode)(struct device *dev, umode_t *mode);
         const struct file_operations *fops;
         int minor_base;
     }

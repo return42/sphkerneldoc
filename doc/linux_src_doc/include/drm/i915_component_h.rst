@@ -19,12 +19,12 @@ Definition
 
     struct i915_audio_component_ops {
         struct module *owner;
-        void (* get_power) (struct device *);
-        void (* put_power) (struct device *);
-        void (* codec_wake_override) (struct device *, bool enable);
-        int (* get_cdclk_freq) (struct device *);
-        int (* sync_audio_rate) (struct device *, int port, int rate);
-        int (* get_eld) (struct device *, int port, bool *enabled,unsigned char *buf, int max_bytes);
+        void (*get_power)(struct device *);
+        void (*put_power)(struct device *);
+        void (*codec_wake_override)(struct device *, bool enable);
+        int (*get_cdclk_freq)(struct device *);
+        int (*sync_audio_rate)(struct device *, int port, int rate);
+        int (*get_eld)(struct device *, int port, bool *enabled,unsigned char *buf, int max_bytes);
     }
 
 .. _`i915_audio_component_ops.members`:
@@ -83,7 +83,7 @@ Definition
 
     struct i915_audio_component_audio_ops {
         void *audio_ptr;
-        void (* pin_eld_notify) (void *audio_ptr, int port);
+        void (*pin_eld_notify)(void *audio_ptr, int port);
     }
 
 .. _`i915_audio_component_audio_ops.members`:

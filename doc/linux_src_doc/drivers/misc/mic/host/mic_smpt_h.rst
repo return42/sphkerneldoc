@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct mic_smpt_ops {
-        void (* init) (struct mic_device *mdev);
-        void (* set) (struct mic_device *mdev, dma_addr_t dma_addr, u8 index);
+        void (*init)(struct mic_device *mdev);
+        void (*set)(struct mic_device *mdev, dma_addr_t dma_addr, u8 index);
     }
 
 .. _`mic_smpt_ops.members`:

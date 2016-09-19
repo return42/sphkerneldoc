@@ -6,7 +6,7 @@
 nilfs_ioctl_wrap_copy
 =====================
 
-.. c:function:: int nilfs_ioctl_wrap_copy(struct the_nilfs *nilfs, struct nilfs_argv *argv, int dir, ssize_t (*) dofunc (struct the_nilfs *, __u64 *, int, void *, size_t, size_t)
+.. c:function:: int nilfs_ioctl_wrap_copy(struct the_nilfs *nilfs, struct nilfs_argv *argv, int dir, ssize_t (*dofunc)(struct the_nilfs *, __u64 *, int, void *, size_t, size_t))
 
     wrapping function of get/set metadata info
 
@@ -19,7 +19,7 @@ nilfs_ioctl_wrap_copy
     :param int dir:
         set of direction flags
 
-    :param (ssize_t (\*) dofunc (struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
+    :param ssize_t (\*dofunc)(struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
         concrete function of get/set metadata info
 
 .. _`nilfs_ioctl_wrap_copy.description`:
@@ -867,7 +867,7 @@ On success, 0 is returned or error code, otherwise.
 nilfs_ioctl_get_info
 ====================
 
-.. c:function:: int nilfs_ioctl_get_info(struct inode *inode, struct file *filp, unsigned int cmd, void __user *argp, size_t membsz, ssize_t (*) dofunc (struct the_nilfs *, __u64 *, int, void *, size_t, size_t)
+.. c:function:: int nilfs_ioctl_get_info(struct inode *inode, struct file *filp, unsigned int cmd, void __user *argp, size_t membsz, ssize_t (*dofunc)(struct the_nilfs *, __u64 *, int, void *, size_t, size_t))
 
     wrapping function of get metadata info
 
@@ -886,7 +886,7 @@ nilfs_ioctl_get_info
     :param size_t membsz:
         size of an item in bytes
 
-    :param (ssize_t (\*) dofunc (struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
+    :param ssize_t (\*dofunc)(struct the_nilfs \*, __u64 \*, int, void \*, size_t, size_t):
         concrete function of getting metadata info
 
 .. _`nilfs_ioctl_get_info.description`:

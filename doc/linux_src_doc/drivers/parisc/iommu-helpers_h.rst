@@ -6,7 +6,7 @@
 iommu_fill_pdir
 ===============
 
-.. c:function:: unsigned int iommu_fill_pdir(struct ioc *ioc, struct scatterlist *startsg, int nents, unsigned long hint, void (*) iommu_io_pdir_entry (u64 *, space_t, unsigned long, unsigned long)
+.. c:function:: unsigned int iommu_fill_pdir(struct ioc *ioc, struct scatterlist *startsg, int nents, unsigned long hint, void (*iommu_io_pdir_entry)(u64 *, space_t, unsigned long, unsigned long))
 
     Insert coalesced scatter/gather chunks into the I/O Pdir.
 
@@ -22,7 +22,7 @@ iommu_fill_pdir
     :param unsigned long hint:
         The DMA Hint.
 
-    :param (void (\*) iommu_io_pdir_entry (u64 \*, space_t, unsigned long, unsigned long):
+    :param void (\*iommu_io_pdir_entry)(u64 \*, space_t, unsigned long, unsigned long):
         *undescribed*
 
 .. _`iommu_fill_pdir.description`:

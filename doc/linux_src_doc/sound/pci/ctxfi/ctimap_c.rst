@@ -6,7 +6,7 @@
 input_mapper_add
 ================
 
-.. c:function:: int input_mapper_add(struct list_head *mappers, struct imapper *entry, int (*) map_op (void *, struct imapper *, void *data)
+.. c:function:: int input_mapper_add(struct list_head *mappers, struct imapper *entry, int (*map_op)(void *, struct imapper *), void *data)
 
     :param struct list_head \*mappers:
         *undescribed*
@@ -14,7 +14,7 @@ input_mapper_add
     :param struct imapper \*entry:
         *undescribed*
 
-    :param (int (\*) map_op (void \*, struct imapper \*):
+    :param int (\*map_op)(void \*, struct imapper \*):
         *undescribed*
 
     :param void \*data:

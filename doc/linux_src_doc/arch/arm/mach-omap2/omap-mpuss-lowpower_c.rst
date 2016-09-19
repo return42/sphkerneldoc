@@ -18,10 +18,10 @@ Definition
 .. code-block:: c
 
     struct cpu_pm_ops {
-        int (* finish_suspend) (unsigned long cpu_state);
-        void (* resume) (void);
-        void (* scu_prepare) (unsigned int cpu_id, unsigned int cpu_state);
-        void (* hotplug_restart) (void);
+        int (*finish_suspend)(unsigned long cpu_state);
+        void (*resume)(void);
+        void (*scu_prepare)(unsigned int cpu_id, unsigned int cpu_state);
+        void (*hotplug_restart)(void);
     }
 
 .. _`cpu_pm_ops.members`:

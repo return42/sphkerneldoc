@@ -78,7 +78,7 @@ Set usermodehelper_disabled to \ ``depth``\  and wait for running helpers to exi
 call_usermodehelper_setup
 =========================
 
-.. c:function:: struct subprocess_info *call_usermodehelper_setup(char *path, char **argv, char **envp, gfp_t gfp_mask, int (*) init (struct subprocess_info *info, struct cred *new, void (*) cleanup (struct subprocess_info *info, void *data)
+.. c:function:: struct subprocess_info *call_usermodehelper_setup(char *path, char **argv, char **envp, gfp_t gfp_mask, int (*init)(struct subprocess_info *info, struct cred *new), void (*cleanup)(struct subprocess_info *info), void *data)
 
     prepare to call a usermode helper
 
@@ -94,10 +94,10 @@ call_usermodehelper_setup
     :param gfp_t gfp_mask:
         gfp mask for memory allocation
 
-    :param (int (\*) init (struct subprocess_info \*info, struct cred \*new):
+    :param int (\*init)(struct subprocess_info \*info, struct cred \*new):
         an init function
 
-    :param (void (\*) cleanup (struct subprocess_info \*info):
+    :param void (\*cleanup)(struct subprocess_info \*info):
         a cleanup function
 
     :param void \*data:

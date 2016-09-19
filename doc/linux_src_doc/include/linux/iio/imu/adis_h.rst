@@ -28,7 +28,7 @@ Definition
         unsigned int startup_delay;
         const char * const *status_error_msgs;
         unsigned int status_error_mask;
-        int (* enable_irq) (struct adis *adis, bool enable);
+        int (*enable_irq)(struct adis *adis, bool enable);
         bool has_paging;
     }
 

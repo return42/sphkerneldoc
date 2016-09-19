@@ -209,9 +209,9 @@ Definition
         struct sg_page_iter iter;
         unsigned long i;
         unsigned long num_pages;
-        bool (* next) (struct vmw_piter *);
-        dma_addr_t (* dma_address) (struct vmw_piter *);
-        struct page *(* page) (struct vmw_piter *);
+        bool (*next)(struct vmw_piter *);
+        dma_addr_t (*dma_address)(struct vmw_piter *);
+        struct page *(*page)(struct vmw_piter *);
     }
 
 .. _`vmw_piter.members`:

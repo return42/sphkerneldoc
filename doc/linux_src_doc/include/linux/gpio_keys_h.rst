@@ -92,8 +92,8 @@ Definition
         int nbuttons;
         unsigned int poll_interval;
         unsigned int rep:1;
-        int (* enable) (struct device *dev);
-        void (* disable) (struct device *dev);
+        int (*enable)(struct device *dev);
+        void (*disable)(struct device *dev);
         const char *name;
     }
 

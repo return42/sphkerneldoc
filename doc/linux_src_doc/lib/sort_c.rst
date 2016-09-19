@@ -6,7 +6,7 @@
 sort
 ====
 
-.. c:function:: void sort(void *base, size_t num, size_t size, int (*) cmp_func (const void *, const void *, void (*) swap_func (void *, void *, int size)
+.. c:function:: void sort(void *base, size_t num, size_t size, int (*cmp_func)(const void *, const void *), void (*swap_func)(void *, void *, int size))
 
     sort an array of elements
 
@@ -19,10 +19,10 @@ sort
     :param size_t size:
         size of each element
 
-    :param (int (\*) cmp_func (const void \*, const void \*):
+    :param int (\*cmp_func)(const void \*, const void \*):
         pointer to comparison function
 
-    :param (void (\*) swap_func (void \*, void \*, int size):
+    :param void (\*swap_func)(void \*, void \*, int size):
         pointer to swap function or NULL
 
 .. _`sort.description`:

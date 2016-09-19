@@ -83,34 +83,34 @@ Definition
 .. code-block:: c
 
     struct ath_hw_private_ops {
-        void (* init_hang_checks) (struct ath_hw *ah);
-        bool (* detect_mac_hang) (struct ath_hw *ah);
-        bool (* detect_bb_hang) (struct ath_hw *ah);
-        void (* init_cal_settings) (struct ath_hw *ah);
-        bool (* init_cal) (struct ath_hw *ah, struct ath9k_channel *chan);
-        void (* init_mode_gain_regs) (struct ath_hw *ah);
-        void (* setup_calibration) (struct ath_hw *ah,struct ath9k_cal_list *currCal);
-        int (* rf_set_freq) (struct ath_hw *ah,struct ath9k_channel *chan);
-        void (* spur_mitigate_freq) (struct ath_hw *ah,struct ath9k_channel *chan);
-        bool (* set_rf_regs) (struct ath_hw *ah,struct ath9k_channel *chan,u16 modesIndex);
-        void (* set_channel_regs) (struct ath_hw *ah, struct ath9k_channel *chan);
-        void (* init_bb) (struct ath_hw *ah,struct ath9k_channel *chan);
-        int (* process_ini) (struct ath_hw *ah, struct ath9k_channel *chan);
-        void (* olc_init) (struct ath_hw *ah);
-        void (* set_rfmode) (struct ath_hw *ah, struct ath9k_channel *chan);
-        void (* mark_phy_inactive) (struct ath_hw *ah);
-        void (* set_delta_slope) (struct ath_hw *ah, struct ath9k_channel *chan);
-        bool (* rfbus_req) (struct ath_hw *ah);
-        void (* rfbus_done) (struct ath_hw *ah);
-        void (* restore_chainmask) (struct ath_hw *ah);
-        u32 (* compute_pll_control) (struct ath_hw *ah,struct ath9k_channel *chan);
-        bool (* ani_control) (struct ath_hw *ah, enum ath9k_ani_cmd cmd,int param);
-        void (* do_getnf) (struct ath_hw *ah, int16_t nfarray[NUM_NF_READINGS]);
-        void (* set_radar_params) (struct ath_hw *ah,struct ath_hw_radar_conf *conf);
-        int (* fast_chan_change) (struct ath_hw *ah, struct ath9k_channel *chan,u8 *ini_reloaded);
-        void (* ani_cache_ini_regs) (struct ath_hw *ah);
+        void (*init_hang_checks)(struct ath_hw *ah);
+        bool (*detect_mac_hang)(struct ath_hw *ah);
+        bool (*detect_bb_hang)(struct ath_hw *ah);
+        void (*init_cal_settings)(struct ath_hw *ah);
+        bool (*init_cal)(struct ath_hw *ah, struct ath9k_channel *chan);
+        void (*init_mode_gain_regs)(struct ath_hw *ah);
+        void (*setup_calibration)(struct ath_hw *ah,struct ath9k_cal_list *currCal);
+        int (*rf_set_freq)(struct ath_hw *ah,struct ath9k_channel *chan);
+        void (*spur_mitigate_freq)(struct ath_hw *ah,struct ath9k_channel *chan);
+        bool (*set_rf_regs)(struct ath_hw *ah,struct ath9k_channel *chan,u16 modesIndex);
+        void (*set_channel_regs)(struct ath_hw *ah, struct ath9k_channel *chan);
+        void (*init_bb)(struct ath_hw *ah,struct ath9k_channel *chan);
+        int (*process_ini)(struct ath_hw *ah, struct ath9k_channel *chan);
+        void (*olc_init)(struct ath_hw *ah);
+        void (*set_rfmode)(struct ath_hw *ah, struct ath9k_channel *chan);
+        void (*mark_phy_inactive)(struct ath_hw *ah);
+        void (*set_delta_slope)(struct ath_hw *ah, struct ath9k_channel *chan);
+        bool (*rfbus_req)(struct ath_hw *ah);
+        void (*rfbus_done)(struct ath_hw *ah);
+        void (*restore_chainmask)(struct ath_hw *ah);
+        u32 (*compute_pll_control)(struct ath_hw *ah,struct ath9k_channel *chan);
+        bool (*ani_control)(struct ath_hw *ah, enum ath9k_ani_cmd cmd,int param);
+        void (*do_getnf)(struct ath_hw *ah, int16_t nfarray[NUM_NF_READINGS]);
+        void (*set_radar_params)(struct ath_hw *ah,struct ath_hw_radar_conf *conf);
+        int (*fast_chan_change)(struct ath_hw *ah, struct ath9k_channel *chan,u8 *ini_reloaded);
+        void (*ani_cache_ini_regs)(struct ath_hw *ah);
         #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
-        bool (* is_aic_enabled) (struct ath_hw *ah);
+        bool (*is_aic_enabled)(struct ath_hw *ah);
         #endif
     }
 
@@ -291,24 +291,24 @@ Definition
 .. code-block:: c
 
     struct ath_hw_ops {
-        void (* config_pci_powersave) (struct ath_hw *ah,bool power_off);
-        void (* rx_enable) (struct ath_hw *ah);
-        void (* set_desc_link) (void *ds, u32 link);
-        int (* calibrate) (struct ath_hw *ah, struct ath9k_channel *chan,u8 rxchainmask, bool longcal);
-        bool (* get_isr) (struct ath_hw *ah, enum ath9k_int *masked,u32 *sync_cause_p);
-        void (* set_txdesc) (struct ath_hw *ah, void *ds,struct ath_tx_info *i);
-        int (* proc_txdesc) (struct ath_hw *ah, void *ds,struct ath_tx_status *ts);
-        int (* get_duration) (struct ath_hw *ah, const void *ds, int index);
-        void (* antdiv_comb_conf_get) (struct ath_hw *ah,struct ath_hw_antcomb_conf *antconf);
-        void (* antdiv_comb_conf_set) (struct ath_hw *ah,struct ath_hw_antcomb_conf *antconf);
-        void (* spectral_scan_config) (struct ath_hw *ah,struct ath_spec_scan *param);
-        void (* spectral_scan_trigger) (struct ath_hw *ah);
-        void (* spectral_scan_wait) (struct ath_hw *ah);
-        void (* tx99_start) (struct ath_hw *ah, u32 qnum);
-        void (* tx99_stop) (struct ath_hw *ah);
-        void (* tx99_set_txpower) (struct ath_hw *ah, u8 power);
+        void (*config_pci_powersave)(struct ath_hw *ah,bool power_off);
+        void (*rx_enable)(struct ath_hw *ah);
+        void (*set_desc_link)(void *ds, u32 link);
+        int (*calibrate)(struct ath_hw *ah, struct ath9k_channel *chan,u8 rxchainmask, bool longcal);
+        bool (*get_isr)(struct ath_hw *ah, enum ath9k_int *masked,u32 *sync_cause_p);
+        void (*set_txdesc)(struct ath_hw *ah, void *ds,struct ath_tx_info *i);
+        int (*proc_txdesc)(struct ath_hw *ah, void *ds,struct ath_tx_status *ts);
+        int (*get_duration)(struct ath_hw *ah, const void *ds, int index);
+        void (*antdiv_comb_conf_get)(struct ath_hw *ah,struct ath_hw_antcomb_conf *antconf);
+        void (*antdiv_comb_conf_set)(struct ath_hw *ah,struct ath_hw_antcomb_conf *antconf);
+        void (*spectral_scan_config)(struct ath_hw *ah,struct ath_spec_scan *param);
+        void (*spectral_scan_trigger)(struct ath_hw *ah);
+        void (*spectral_scan_wait)(struct ath_hw *ah);
+        void (*tx99_start)(struct ath_hw *ah, u32 qnum);
+        void (*tx99_stop)(struct ath_hw *ah);
+        void (*tx99_set_txpower)(struct ath_hw *ah, u8 power);
         #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
-        void (* set_bt_ant_diversity) (struct ath_hw *hw, bool enable);
+        void (*set_bt_ant_diversity)(struct ath_hw *hw, bool enable);
         #endif
     }
 

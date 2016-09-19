@@ -6,7 +6,7 @@
 subdev_8255_init
 ================
 
-.. c:function:: int subdev_8255_init(struct comedi_device *dev, struct comedi_subdevice *s, int (*) io (struct comedi_device *dev, int dir, int port, int data, unsigned long regbase, unsigned long regbase)
+.. c:function:: int subdev_8255_init(struct comedi_device *dev, struct comedi_subdevice *s, int (*io)(struct comedi_device *dev, int dir, int port, int data, unsigned long regbase), unsigned long regbase)
 
     initialize DIO subdevice for driving I/O mapped 8255
 
@@ -16,7 +16,7 @@ subdev_8255_init
     :param struct comedi_subdevice \*s:
         comedi subdevice to initialize
 
-    :param (int (\*) io (struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
+    :param int (\*io)(struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
         (optional) register I/O call-back function
 
     :param unsigned long regbase:
@@ -61,7 +61,7 @@ Return
 subdev_8255_mm_init
 ===================
 
-.. c:function:: int subdev_8255_mm_init(struct comedi_device *dev, struct comedi_subdevice *s, int (*) io (struct comedi_device *dev, int dir, int port, int data, unsigned long regbase, unsigned long regbase)
+.. c:function:: int subdev_8255_mm_init(struct comedi_device *dev, struct comedi_subdevice *s, int (*io)(struct comedi_device *dev, int dir, int port, int data, unsigned long regbase), unsigned long regbase)
 
     initialize DIO subdevice for driving mmio-mapped 8255
 
@@ -71,7 +71,7 @@ subdev_8255_mm_init
     :param struct comedi_subdevice \*s:
         comedi subdevice to initialize
 
-    :param (int (\*) io (struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
+    :param int (\*io)(struct comedi_device \*dev, int dir, int port, int data, unsigned long regbase):
         (optional) register I/O call-back function
 
     :param unsigned long regbase:

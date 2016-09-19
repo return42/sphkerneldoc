@@ -178,10 +178,10 @@ Definition
     struct ep93xx_dma_engine {
         struct dma_device dma_dev;
         bool m2m;
-        int (* hw_setup) (struct ep93xx_dma_chan *);
-        void (* hw_shutdown) (struct ep93xx_dma_chan *);
-        void (* hw_submit) (struct ep93xx_dma_chan *);
-        int (* hw_interrupt) (struct ep93xx_dma_chan *);
+        int (*hw_setup)(struct ep93xx_dma_chan *);
+        void (*hw_shutdown)(struct ep93xx_dma_chan *);
+        void (*hw_submit)(struct ep93xx_dma_chan *);
+        int (*hw_interrupt)(struct ep93xx_dma_chan *);
         #define INTERRUPT_UNKNOWN 0
         #define INTERRUPT_DONE 1
         #define INTERRUPT_NEXT_BUFFER 2

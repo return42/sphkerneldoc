@@ -34,11 +34,11 @@ Definition
         struct regulator *regulator;
         struct thermal_zone_device *tzd;
         unsigned int ntrip;
-        int (* tmu_initialize) (struct platform_device *pdev);
-        void (* tmu_control) (struct platform_device *pdev, bool on);
-        int (* tmu_read) (struct exynos_tmu_data *data);
-        void (* tmu_set_emulation) (struct exynos_tmu_data *data, int temp);
-        void (* tmu_clear_irqs) (struct exynos_tmu_data *data);
+        int (*tmu_initialize)(struct platform_device *pdev);
+        void (*tmu_control)(struct platform_device *pdev, bool on);
+        int (*tmu_read)(struct exynos_tmu_data *data);
+        void (*tmu_set_emulation)(struct exynos_tmu_data *data, int temp);
+        void (*tmu_clear_irqs)(struct exynos_tmu_data *data);
     }
 
 .. _`exynos_tmu_data.members`:

@@ -45,7 +45,7 @@ Allocate the lowest free resource from the resource manager, and set
 vmw_resource_init
 =================
 
-.. c:function:: int vmw_resource_init(struct vmw_private *dev_priv, struct vmw_resource *res, bool delay_id, void (*) res_free (struct vmw_resource *res, const struct vmw_res_func *func)
+.. c:function:: int vmw_resource_init(struct vmw_private *dev_priv, struct vmw_resource *res, bool delay_id, void (*res_free)(struct vmw_resource *res), const struct vmw_res_func *func)
 
     initialize a struct vmw_resource
 
@@ -59,7 +59,7 @@ vmw_resource_init
         Boolean whether to defer device id allocation until
         the first validation.
 
-    :param (void (\*) res_free (struct vmw_resource \*res):
+    :param void (\*res_free)(struct vmw_resource \*res):
         Resource destructor.
 
     :param const struct vmw_res_func \*func:
@@ -70,12 +70,12 @@ vmw_resource_init
 vmw_resource_activate
 =====================
 
-.. c:function:: void vmw_resource_activate(struct vmw_resource *res, void (*) hw_destroy (struct vmw_resource *)
+.. c:function:: void vmw_resource_activate(struct vmw_resource *res, void (*hw_destroy)(struct vmw_resource *))
 
     :param struct vmw_resource \*res:
         Pointer to the newly created resource
 
-    :param (void (\*) hw_destroy (struct vmw_resource \*):
+    :param void (\*hw_destroy)(struct vmw_resource \*):
         Destroy function. NULL if none.
 
 .. _`vmw_resource_activate.description`:

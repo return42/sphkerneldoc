@@ -291,14 +291,14 @@ Definition
     struct kgdb_arch {
         unsigned char gdb_bpt_instr[BREAK_INSTR_SIZE];
         unsigned long flags;
-        int (* set_breakpoint) (unsigned long, char *);
-        int (* remove_breakpoint) (unsigned long, char *);
-        int (* set_hw_breakpoint) (unsigned long, int, enum kgdb_bptype);
-        int (* remove_hw_breakpoint) (unsigned long, int, enum kgdb_bptype);
-        void (* disable_hw_break) (struct pt_regs *regs);
-        void (* remove_all_hw_break) (void);
-        void (* correct_hw_break) (void);
-        void (* enable_nmi) (bool on);
+        int (*set_breakpoint)(unsigned long, char *);
+        int (*remove_breakpoint)(unsigned long, char *);
+        int (*set_hw_breakpoint)(unsigned long, int, enum kgdb_bptype);
+        int (*remove_hw_breakpoint)(unsigned long, int, enum kgdb_bptype);
+        void (*disable_hw_break)(struct pt_regs *regs);
+        void (*remove_all_hw_break)(void);
+        void (*correct_hw_break)(void);
+        void (*enable_nmi)(bool on);
     }
 
 .. _`kgdb_arch.members`:
@@ -361,12 +361,12 @@ Definition
 
     struct kgdb_io {
         const char *name;
-        int (* read_char) (void);
-        void (* write_char) (u8);
-        void (* flush) (void);
-        int (* init) (void);
-        void (* pre_exception) (void);
-        void (* post_exception) (void);
+        int (*read_char)(void);
+        void (*write_char)(u8);
+        void (*flush)(void);
+        int (*init)(void);
+        void (*pre_exception)(void);
+        void (*post_exception)(void);
         int is_console;
     }
 

@@ -46,7 +46,7 @@ Special stuff for managing IO windows, because they are scarce
 pcmcia_access_config
 ====================
 
-.. c:function:: int pcmcia_access_config(struct pcmcia_device *p_dev, off_t where, u8 *val, int (*) accessf (struct pcmcia_socket *s, int attr, unsigned int addr, unsigned int len, void *ptr)
+.. c:function:: int pcmcia_access_config(struct pcmcia_device *p_dev, off_t where, u8 *val, int (*accessf)(struct pcmcia_socket *s, int attr, unsigned int addr, unsigned int len, void *ptr))
 
     read or write card configuration registers
 
@@ -59,7 +59,7 @@ pcmcia_access_config
     :param u8 \*val:
         *undescribed*
 
-    :param (int (\*) accessf (struct pcmcia_socket \*s, int attr, unsigned int addr, unsigned int len, void \*ptr):
+    :param int (\*accessf)(struct pcmcia_socket \*s, int attr, unsigned int addr, unsigned int len, void \*ptr):
         *undescribed*
 
 .. _`pcmcia_access_config.description`:

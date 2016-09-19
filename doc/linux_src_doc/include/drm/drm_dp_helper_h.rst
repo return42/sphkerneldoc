@@ -66,7 +66,7 @@ Definition
         struct i2c_adapter ddc;
         struct device *dev;
         struct mutex hw_mutex;
-        ssize_t (* transfer) (struct drm_dp_aux *aux,struct drm_dp_aux_msg *msg);
+        ssize_t (*transfer)(struct drm_dp_aux *aux,struct drm_dp_aux_msg *msg);
         unsigned i2c_nack_count;
         unsigned i2c_defer_count;
     }

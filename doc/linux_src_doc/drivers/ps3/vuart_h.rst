@@ -19,10 +19,10 @@ Definition
 
     struct ps3_vuart_port_driver {
         struct ps3_system_bus_driver core;
-        int (* probe) (struct ps3_system_bus_device *);
-        int (* remove) (struct ps3_system_bus_device *);
-        void (* shutdown) (struct ps3_system_bus_device *);
-        void (* work) (struct ps3_system_bus_device *);
+        int (*probe)(struct ps3_system_bus_device *);
+        int (*remove)(struct ps3_system_bus_device *);
+        void (*shutdown)(struct ps3_system_bus_device *);
+        void (*work)(struct ps3_system_bus_device *);
     }
 
 .. _`ps3_vuart_port_driver.members`:

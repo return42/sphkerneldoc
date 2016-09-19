@@ -6,7 +6,7 @@
 call_srcu
 =========
 
-.. c:function:: void call_srcu(struct srcu_struct *sp, struct rcu_head *head, void (*) func (struct rcu_head *head)
+.. c:function:: void call_srcu(struct srcu_struct *sp, struct rcu_head *head, void (*func)(struct rcu_head *head))
 
     Queue a callback for invocation after an SRCU grace period
 
@@ -16,7 +16,7 @@ call_srcu
     :param struct rcu_head \*head:
         structure to be used for queueing the SRCU callback.
 
-    :param (void (\*) func (struct rcu_head \*head):
+    :param void (\*func)(struct rcu_head \*head):
         function to be invoked after the SRCU grace period
 
 .. _`call_srcu.description`:

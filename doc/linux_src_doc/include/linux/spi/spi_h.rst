@@ -216,9 +216,9 @@ Definition
 
     struct spi_driver {
         const struct spi_device_id *id_table;
-        int (* probe) (struct spi_device *spi);
-        int (* remove) (struct spi_device *spi);
-        void (* shutdown) (struct spi_device *spi);
+        int (*probe)(struct spi_device *spi);
+        int (*remove)(struct spi_device *spi);
+        void (*shutdown)(struct spi_device *spi);
         struct device_driver driver;
     }
 
@@ -339,14 +339,14 @@ Definition
         #define SPI_MASTER_NO_TX BIT(2)
         #define SPI_MASTER_MUST_RX BIT(3)
         #define SPI_MASTER_MUST_TX BIT(4)
-        size_t (* max_transfer_size) (struct spi_device *spi);
+        size_t (*max_transfer_size)(struct spi_device *spi);
         spinlock_t bus_lock_spinlock;
         struct mutex bus_lock_mutex;
         bool bus_lock_flag;
-        int (* setup) (struct spi_device *spi);
-        int (* transfer) (struct spi_device *spi,struct spi_message *mesg);
-        void (* cleanup) (struct spi_device *spi);
-        bool (* can_dma) (struct spi_master *master,struct spi_device *spi,struct spi_transfer *xfer);
+        int (*setup)(struct spi_device *spi);
+        int (*transfer)(struct spi_device *spi,struct spi_message *mesg);
+        void (*cleanup)(struct spi_device *spi);
+        bool (*can_dma)(struct spi_master *master,struct spi_device *spi,struct spi_transfer *xfer);
         bool queued;
         struct kthread_worker kworker;
         struct task_struct *kworker_task;
@@ -363,23 +363,23 @@ Definition
         bool cur_msg_mapped;
         struct completion xfer_completion;
         size_t max_dma_len;
-        int (* prepare_transfer_hardware) (struct spi_master *master);
-        int (* transfer_one_message) (struct spi_master *master,struct spi_message *mesg);
-        int (* unprepare_transfer_hardware) (struct spi_master *master);
-        int (* prepare_message) (struct spi_master *master,struct spi_message *message);
-        int (* unprepare_message) (struct spi_master *master,struct spi_message *message);
-        int (* spi_flash_read) (struct spi_device *spi,struct spi_flash_read_message *msg);
-        bool (* flash_read_supported) (struct spi_device *spi);
-        void (* set_cs) (struct spi_device *spi, bool enable);
-        int (* transfer_one) (struct spi_master *master, struct spi_device *spi,struct spi_transfer *transfer);
-        void (* handle_err) (struct spi_master *master,struct spi_message *message);
+        int (*prepare_transfer_hardware)(struct spi_master *master);
+        int (*transfer_one_message)(struct spi_master *master,struct spi_message *mesg);
+        int (*unprepare_transfer_hardware)(struct spi_master *master);
+        int (*prepare_message)(struct spi_master *master,struct spi_message *message);
+        int (*unprepare_message)(struct spi_master *master,struct spi_message *message);
+        int (*spi_flash_read)(struct spi_device *spi,struct spi_flash_read_message *msg);
+        bool (*flash_read_supported)(struct spi_device *spi);
+        void (*set_cs)(struct spi_device *spi, bool enable);
+        int (*transfer_one)(struct spi_master *master, struct spi_device *spi,struct spi_transfer *transfer);
+        void (*handle_err)(struct spi_master *master,struct spi_message *message);
         int *cs_gpios;
         struct spi_statistics statistics;
         struct dma_chan *dma_tx;
         struct dma_chan *dma_rx;
         void *dummy_rx;
         void *dummy_tx;
-        int (* fw_translate_cs) (struct spi_master *master, unsigned cs);
+        int (*fw_translate_cs)(struct spi_master *master, unsigned cs);
     }
 
 .. _`spi_master.members`:
@@ -809,7 +809,7 @@ Definition
         struct list_head transfers;
         struct spi_device *spi;
         unsigned is_dma_mapped:1;
-        void (* complete) (void *context);
+        void (*complete)(void *context);
         void *context;
         unsigned frame_length;
         unsigned actual_length;

@@ -6,7 +6,7 @@
 qlt_lport_register
 ==================
 
-.. c:function:: int qlt_lport_register(void *target_lport_ptr, u64 phys_wwpn, u64 npiv_wwpn, u64 npiv_wwnn, int (*) callback (struct scsi_qla_host *, void *, u64, u64)
+.. c:function:: int qlt_lport_register(void *target_lport_ptr, u64 phys_wwpn, u64 npiv_wwpn, u64 npiv_wwnn, int (*callback)(struct scsi_qla_host *, void *, u64, u64))
 
     register lport with external module
 
@@ -22,7 +22,7 @@ qlt_lport_register
     :param u64 npiv_wwnn:
         *undescribed*
 
-    :param (int (\*) callback (struct scsi_qla_host \*, void \*, u64, u64):
+    :param int (\*callback)(struct scsi_qla_host \*, void \*, u64, u64):
         lport initialization callback for tcm_qla2xxx code
 
 .. _`qlt_lport_deregister`:

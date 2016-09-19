@@ -6,7 +6,7 @@
 cpuhp_setup_state
 =================
 
-.. c:function:: int cpuhp_setup_state(enum cpuhp_state state, const char *name, int (*) startup (unsigned int cpu, int (*) teardown (unsigned int cpu)
+.. c:function:: int cpuhp_setup_state(enum cpuhp_state state, const char *name, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu))
 
     Setup hotplug state callbacks with calling the callbacks
 
@@ -16,10 +16,10 @@ cpuhp_setup_state
     :param const char \*name:
         Name of the callback (will be used in debug output)
 
-    :param (int (\*) startup (unsigned int cpu):
+    :param int (\*startup)(unsigned int cpu):
         startup callback function
 
-    :param (int (\*) teardown (unsigned int cpu):
+    :param int (\*teardown)(unsigned int cpu):
         teardown callback function
 
 .. _`cpuhp_setup_state.description`:
@@ -35,7 +35,7 @@ the present cpus which have already reached the \ ``state``\ .
 cpuhp_setup_state_nocalls
 =========================
 
-.. c:function:: int cpuhp_setup_state_nocalls(enum cpuhp_state state, const char *name, int (*) startup (unsigned int cpu, int (*) teardown (unsigned int cpu)
+.. c:function:: int cpuhp_setup_state_nocalls(enum cpuhp_state state, const char *name, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu))
 
     Setup hotplug state callbacks without calling the callbacks
 
@@ -45,10 +45,10 @@ cpuhp_setup_state_nocalls
     :param const char \*name:
         Name of the callback.
 
-    :param (int (\*) startup (unsigned int cpu):
+    :param int (\*startup)(unsigned int cpu):
         startup callback function
 
-    :param (int (\*) teardown (unsigned int cpu):
+    :param int (\*teardown)(unsigned int cpu):
         teardown callback function
 
 .. _`cpuhp_setup_state_nocalls.description`:

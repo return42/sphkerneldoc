@@ -6,7 +6,7 @@
 __hw_addr_sync_dev
 ==================
 
-.. c:function:: int __hw_addr_sync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*) sync (struct net_device *, const unsigned char *, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: int __hw_addr_sync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*sync)(struct net_device *, const unsigned char *), int (*unsync)(struct net_device *, const unsigned char *))
 
     Synchonize device's multicast list
 
@@ -16,10 +16,10 @@ __hw_addr_sync_dev
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) sync (struct net_device \*, const unsigned char \*):
+    :param int (\*sync)(struct net_device \*, const unsigned char \*):
         function to call if address should be added
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__hw_addr_sync_dev.description`:
@@ -38,7 +38,7 @@ any notification to the device.
 __hw_addr_unsync_dev
 ====================
 
-.. c:function:: void __hw_addr_unsync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*) unsync (struct net_device *, const unsigned char *)
+.. c:function:: void __hw_addr_unsync_dev(struct netdev_hw_addr_list *list, struct net_device *dev, int (*unsync)(struct net_device *, const unsigned char *))
 
     Remove synchronized addresses from device
 
@@ -48,7 +48,7 @@ __hw_addr_unsync_dev
     :param struct net_device \*dev:
         device to sync
 
-    :param (int (\*) unsync (struct net_device \*, const unsigned char \*):
+    :param int (\*unsync)(struct net_device \*, const unsigned char \*):
         function to call if address should be removed
 
 .. _`__hw_addr_unsync_dev.description`:

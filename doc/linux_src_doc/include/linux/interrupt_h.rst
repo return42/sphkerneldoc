@@ -97,8 +97,8 @@ Definition
         unsigned int irq;
         struct kref kref;
         struct work_struct work;
-        void (* notify) (struct irq_affinity_notify *, const cpumask_t *mask);
-        void (* release) (struct kref *ref);
+        void (*notify)(struct irq_affinity_notify *, const cpumask_t *mask);
+        void (*release)(struct kref *ref);
     }
 
 .. _`irq_affinity_notify.members`:

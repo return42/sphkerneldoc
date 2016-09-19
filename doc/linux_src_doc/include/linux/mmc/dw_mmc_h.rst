@@ -66,8 +66,8 @@ Definition
         u8 part_buf_start;
         u8 part_buf_count;
         union {unnamed_union};
-        void (* push_data) (struct dw_mci *host, void *buf, int cnt);
-        void (* pull_data) (struct dw_mci *host, void *buf, int cnt);
+        void (*push_data)(struct dw_mci *host, void *buf, int cnt);
+        void (*pull_data)(struct dw_mci *host, void *buf, int cnt);
         u32 quirks;
         bool vqmmc_enabled;
         unsigned long irq_flags;

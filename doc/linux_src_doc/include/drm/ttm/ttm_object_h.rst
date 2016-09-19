@@ -149,8 +149,8 @@ Definition
         bool shareable;
         struct ttm_object_file *tfile;
         struct kref refcount;
-        void (* refcount_release) (struct ttm_base_object **base);
-        void (* ref_obj_release) (struct ttm_base_object *base,enum ttm_ref_type ref_type);
+        void (*refcount_release)(struct ttm_base_object **base);
+        void (*ref_obj_release)(struct ttm_base_object *base,enum ttm_ref_type ref_type);
     }
 
 .. _`ttm_base_object.members`:
@@ -225,7 +225,7 @@ Definition
         size_t size;
         enum ttm_object_type real_type;
         struct dma_buf *dma_buf;
-        void (* refcount_release) (struct ttm_base_object **);
+        void (*refcount_release)(struct ttm_base_object **);
     }
 
 .. _`ttm_prime_object.members`:
@@ -259,7 +259,7 @@ refcount_release
 ttm_base_object_init
 ====================
 
-.. c:function:: int ttm_base_object_init(struct ttm_object_file *tfile, struct ttm_base_object *base, bool shareable, enum ttm_object_type type, void (*) refcount_release (struct ttm_base_object **, void (*) ref_obj_release (struct ttm_base_object *, enum ttm_ref_type ref_type)
+.. c:function:: int ttm_base_object_init(struct ttm_object_file *tfile, struct ttm_base_object *base, bool shareable, enum ttm_object_type type, void (*refcount_release)(struct ttm_base_object **), void (*ref_obj_release)(struct ttm_base_object *, enum ttm_ref_type ref_type))
 
     :param struct ttm_object_file \*tfile:
         Pointer to a struct ttm_object_file.
@@ -274,10 +274,10 @@ ttm_base_object_init
     :param enum ttm_object_type type:
         The object type.
 
-    :param (void (\*) refcount_release (struct ttm_base_object \*\*):
+    :param void (\*refcount_release)(struct ttm_base_object \*\*):
         See the struct ttm_base_object description.
 
-    :param (void (\*) ref_obj_release (struct ttm_base_object \*, enum ttm_ref_type ref_type):
+    :param void (\*ref_obj_release)(struct ttm_base_object \*, enum ttm_ref_type ref_type):
         See the struct ttm_base_object description.
 
 .. _`ttm_base_object_init.description`:

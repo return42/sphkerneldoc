@@ -732,7 +732,7 @@ adapter.
 t4_load_phy_fw
 ==============
 
-.. c:function:: int t4_load_phy_fw(struct adapter *adap, int win, spinlock_t *win_lock, int (*) phy_fw_version (const u8 *, size_t, const u8 *phy_fw_data, size_t phy_fw_size)
+.. c:function:: int t4_load_phy_fw(struct adapter *adap, int win, spinlock_t *win_lock, int (*phy_fw_version)(const u8 *, size_t), const u8 *phy_fw_data, size_t phy_fw_size)
 
     download port PHY firmware
 
@@ -745,7 +745,7 @@ t4_load_phy_fw
     :param spinlock_t \*win_lock:
         the lock to use to guard the memory copy
 
-    :param (int (\*) phy_fw_version (const u8 \*, size_t):
+    :param int (\*phy_fw_version)(const u8 \*, size_t):
         function to check PHY firmware versions
 
     :param const u8 \*phy_fw_data:

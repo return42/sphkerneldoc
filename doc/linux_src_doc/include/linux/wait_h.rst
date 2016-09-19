@@ -918,14 +918,14 @@ the \ ``mode``\  allows that signal to wake the process.
 wait_on_atomic_t
 ================
 
-.. c:function:: int wait_on_atomic_t(atomic_t *val, int (*) action (atomic_t *, unsigned mode)
+.. c:function:: int wait_on_atomic_t(atomic_t *val, int (*action)(atomic_t *), unsigned mode)
 
     Wait for an atomic_t to become 0
 
     :param atomic_t \*val:
         The atomic value being waited on, a kernel virtual address
 
-    :param (int (\*) action (atomic_t \*):
+    :param int (\*action)(atomic_t \*):
         the function used to sleep, which may take special actions
 
     :param unsigned mode:

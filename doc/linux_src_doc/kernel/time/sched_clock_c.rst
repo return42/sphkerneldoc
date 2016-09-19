@@ -21,7 +21,7 @@ Definition
         u64 epoch_ns;
         u64 epoch_cyc;
         u64 sched_clock_mask;
-        u64 (* read_sched_clock) (void);
+        u64 (*read_sched_clock)(void);
         u32 mult;
         u32 shift;
     }
@@ -81,7 +81,7 @@ Definition
         struct clock_read_data read_data[2];
         ktime_t wrap_kt;
         unsigned long rate;
-        u64 (* actual_read_sched_clock) (void);
+        u64 (*actual_read_sched_clock)(void);
     }
 
 .. _`clock_data.members`:

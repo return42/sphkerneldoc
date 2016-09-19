@@ -30,11 +30,11 @@ Definition
         bool no_irq;
         bool uie_unsupported;
         bool alloc_io_resources;
-        u8 (* read) (struct ds1685_priv *, int);
-        void (* write) (struct ds1685_priv *, int, u8);
-        void (* prepare_poweroff) (void);
-        void (* wake_alarm) (void);
-        void (* post_ram_clear) (void);
+        u8 (*read)(struct ds1685_priv *, int);
+        void (*write)(struct ds1685_priv *, int, u8);
+        void (*prepare_poweroff)(void);
+        void (*wake_alarm)(void);
+        void (*post_ram_clear)(void);
     }
 
 .. _`ds1685_priv.members`:
@@ -115,11 +115,11 @@ Definition
         const bool no_irq;
         const bool uie_unsupported;
         const bool alloc_io_resources;
-        u8 (* plat_read) (struct ds1685_priv *, int);
-        void (* plat_write) (struct ds1685_priv *, int, u8);
-        void (* plat_prepare_poweroff) (void);
-        void (* plat_wake_alarm) (void);
-        void (* plat_post_ram_clear) (void);
+        u8 (*plat_read)(struct ds1685_priv *, int);
+        void (*plat_write)(struct ds1685_priv *, int, u8);
+        void (*plat_prepare_poweroff)(void);
+        void (*plat_wake_alarm)(void);
+        void (*plat_post_ram_clear)(void);
     }
 
 .. _`ds1685_rtc_platform_data.members`:

@@ -229,7 +229,7 @@ Definition
         struct spear_pingroup **groups;
         unsigned ngroups;
         struct spear_gpio_pingroup *gpio_pingroups;
-        void (* gpio_request_endisable) (struct spear_pmx *pmx, int offset,bool enable);
+        void (*gpio_request_endisable)(struct spear_pmx *pmx, int offset,bool enable);
         unsigned ngpio_pingroups;
         bool modes_supported;
         u16 mode;

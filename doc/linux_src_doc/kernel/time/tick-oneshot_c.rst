@@ -31,14 +31,14 @@ tick_resume_oneshot
 tick_setup_oneshot
 ==================
 
-.. c:function:: void tick_setup_oneshot(struct clock_event_device *newdev, void (*) handler (struct clock_event_device *, ktime_t next_event)
+.. c:function:: void tick_setup_oneshot(struct clock_event_device *newdev, void (*handler)(struct clock_event_device *), ktime_t next_event)
 
     setup the event device for oneshot mode (hres or nohz)
 
     :param struct clock_event_device \*newdev:
         *undescribed*
 
-    :param (void (\*) handler (struct clock_event_device \*):
+    :param void (\*handler)(struct clock_event_device \*):
         *undescribed*
 
     :param ktime_t next_event:
@@ -49,11 +49,11 @@ tick_setup_oneshot
 tick_switch_to_oneshot
 ======================
 
-.. c:function:: int tick_switch_to_oneshot(void (*) handler (struct clock_event_device *)
+.. c:function:: int tick_switch_to_oneshot(void (*handler)(struct clock_event_device *))
 
     switch to oneshot mode
 
-    :param (void (\*) handler (struct clock_event_device \*):
+    :param void (\*handler)(struct clock_event_device \*):
         *undescribed*
 
 .. _`tick_oneshot_mode_active`:

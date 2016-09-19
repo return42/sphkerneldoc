@@ -6,7 +6,7 @@
 input_ff_create_memless
 =======================
 
-.. c:function:: int input_ff_create_memless(struct input_dev *dev, void *data, int (*) play_effect (struct input_dev *, void *, struct ff_effect *)
+.. c:function:: int input_ff_create_memless(struct input_dev *dev, void *data, int (*play_effect)(struct input_dev *, void *, struct ff_effect *))
 
     create memoryless force-feedback device
 
@@ -16,7 +16,7 @@ input_ff_create_memless
     :param void \*data:
         driver-specific data to be passed into \ ``play_effect``\ 
 
-    :param (int (\*) play_effect (struct input_dev \*, void \*, struct ff_effect \*):
+    :param int (\*play_effect)(struct input_dev \*, void \*, struct ff_effect \*):
         driver-specific method for playing FF effect
 
 .. This file was automatic generated / don't edit.

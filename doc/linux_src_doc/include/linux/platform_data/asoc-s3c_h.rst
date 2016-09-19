@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct s3c_audio_pdata {
-        int (* cfg_gpio) (struct platform_device *);
+        int (*cfg_gpio)(struct platform_device *);
         dma_filter_fn dma_filter;
         void *dma_playback;
         void *dma_capture;

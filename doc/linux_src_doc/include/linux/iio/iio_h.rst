@@ -20,8 +20,8 @@ Definition
     struct iio_chan_spec_ext_info {
         const char *name;
         enum iio_shared_by shared;
-        ssize_t (* read) (struct iio_dev *, uintptr_t private,struct iio_chan_spec const *, char *buf);
-        ssize_t (* write) (struct iio_dev *, uintptr_t private,struct iio_chan_spec const *, const char *buf,size_t len);
+        ssize_t (*read)(struct iio_dev *, uintptr_t private,struct iio_chan_spec const *, char *buf);
+        ssize_t (*write)(struct iio_dev *, uintptr_t private,struct iio_chan_spec const *, const char *buf,size_t len);
         uintptr_t private;
     }
 
@@ -64,8 +64,8 @@ Definition
     struct iio_enum {
         const char * const *items;
         unsigned int num_items;
-        int (* set) (struct iio_dev *, const struct iio_chan_spec *, unsigned int);
-        int (* get) (struct iio_dev *, const struct iio_chan_spec *);
+        int (*set)(struct iio_dev *, const struct iio_chan_spec *, unsigned int);
+        int (*get)(struct iio_dev *, const struct iio_chan_spec *);
     }
 
 .. _`iio_enum.members`:
@@ -430,20 +430,20 @@ Definition
         struct module *driver_module;
         struct attribute_group *event_attrs;
         const struct attribute_group *attrs;
-        int (* read_raw) (struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int *val,int *val2,long mask);
-        int (* read_raw_multi) (struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int max_len,int *vals,int *val_len,long mask);
-        int (* write_raw) (struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int val,int val2,long mask);
-        int (* write_raw_get_fmt) (struct iio_dev *indio_dev,struct iio_chan_spec const *chan,long mask);
-        int (* read_event_config) (struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir);
-        int (* write_event_config) (struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,int state);
-        int (* read_event_value) (struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,enum iio_event_info info, int *val, int *val2);
-        int (* write_event_value) (struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,enum iio_event_info info, int val, int val2);
-        int (* validate_trigger) (struct iio_dev *indio_dev,struct iio_trigger *trig);
-        int (* update_scan_mode) (struct iio_dev *indio_dev,const unsigned long *scan_mask);
-        int (* debugfs_reg_access) (struct iio_dev *indio_dev,unsigned reg, unsigned writeval,unsigned *readval);
-        int (* of_xlate) (struct iio_dev *indio_dev,const struct of_phandle_args *iiospec);
-        int (* hwfifo_set_watermark) (struct iio_dev *indio_dev, unsigned val);
-        int (* hwfifo_flush_to_buffer) (struct iio_dev *indio_dev,unsigned count);
+        int (*read_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int *val,int *val2,long mask);
+        int (*read_raw_multi)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int max_len,int *vals,int *val_len,long mask);
+        int (*write_raw)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,int val,int val2,long mask);
+        int (*write_raw_get_fmt)(struct iio_dev *indio_dev,struct iio_chan_spec const *chan,long mask);
+        int (*read_event_config)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir);
+        int (*write_event_config)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,int state);
+        int (*read_event_value)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,enum iio_event_info info, int *val, int *val2);
+        int (*write_event_value)(struct iio_dev *indio_dev,const struct iio_chan_spec *chan,enum iio_event_type type,enum iio_event_direction dir,enum iio_event_info info, int val, int val2);
+        int (*validate_trigger)(struct iio_dev *indio_dev,struct iio_trigger *trig);
+        int (*update_scan_mode)(struct iio_dev *indio_dev,const unsigned long *scan_mask);
+        int (*debugfs_reg_access)(struct iio_dev *indio_dev,unsigned reg, unsigned writeval,unsigned *readval);
+        int (*of_xlate)(struct iio_dev *indio_dev,const struct of_phandle_args *iiospec);
+        int (*hwfifo_set_watermark)(struct iio_dev *indio_dev, unsigned val);
+        int (*hwfifo_flush_to_buffer)(struct iio_dev *indio_dev,unsigned count);
     }
 
 .. _`iio_info.members`:
@@ -548,11 +548,11 @@ Definition
 .. code-block:: c
 
     struct iio_buffer_setup_ops {
-        int (* preenable) (struct iio_dev *);
-        int (* postenable) (struct iio_dev *);
-        int (* predisable) (struct iio_dev *);
-        int (* postdisable) (struct iio_dev *);
-        bool (* validate_scan_mask) (struct iio_dev *indio_dev,const unsigned long *scan_mask);
+        int (*preenable)(struct iio_dev *);
+        int (*postenable)(struct iio_dev *);
+        int (*predisable)(struct iio_dev *);
+        int (*postdisable)(struct iio_dev *);
+        bool (*validate_scan_mask)(struct iio_dev *indio_dev,const unsigned long *scan_mask);
     }
 
 .. _`iio_buffer_setup_ops.members`:

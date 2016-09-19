@@ -175,16 +175,16 @@ Definition
 .. code-block:: c
 
     struct pwm_ops {
-        int (* request) (struct pwm_chip *chip, struct pwm_device *pwm);
-        void (* free) (struct pwm_chip *chip, struct pwm_device *pwm);
-        int (* config) (struct pwm_chip *chip, struct pwm_device *pwm,int duty_ns, int period_ns);
-        int (* set_polarity) (struct pwm_chip *chip, struct pwm_device *pwm,enum pwm_polarity polarity);
-        int (* enable) (struct pwm_chip *chip, struct pwm_device *pwm);
-        void (* disable) (struct pwm_chip *chip, struct pwm_device *pwm);
-        int (* apply) (struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
-        void (* get_state) (struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
+        int (*request)(struct pwm_chip *chip, struct pwm_device *pwm);
+        void (*free)(struct pwm_chip *chip, struct pwm_device *pwm);
+        int (*config)(struct pwm_chip *chip, struct pwm_device *pwm,int duty_ns, int period_ns);
+        int (*set_polarity)(struct pwm_chip *chip, struct pwm_device *pwm,enum pwm_polarity polarity);
+        int (*enable)(struct pwm_chip *chip, struct pwm_device *pwm);
+        void (*disable)(struct pwm_chip *chip, struct pwm_device *pwm);
+        int (*apply)(struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
+        void (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
         #ifdef CONFIG_DEBUG_FS
-        void (* dbg_show) (struct pwm_chip *chip, struct seq_file *s);
+        void (*dbg_show)(struct pwm_chip *chip, struct seq_file *s);
         #endif
         struct module *owner;
     }
@@ -252,7 +252,7 @@ Definition
         int base;
         unsigned int npwm;
         struct pwm_device *pwms;
-        struct pwm_device * (* of_xlate) (struct pwm_chip *pc,const struct of_phandle_args *args);
+        struct pwm_device * (*of_xlate)(struct pwm_chip *pc,const struct of_phandle_args *args);
         unsigned int of_pwm_n_cells;
         bool can_sleep;
     }

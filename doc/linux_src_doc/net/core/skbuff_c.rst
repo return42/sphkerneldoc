@@ -1164,7 +1164,7 @@ to the first occurrence or UINT_MAX if no match was found.
 skb_append_datato_frags
 =======================
 
-.. c:function:: int skb_append_datato_frags(struct sock *sk, struct sk_buff *skb, int (*) getfrag (void *from, char *to, int offset, int len, int odd, struct sk_buff *skb, void *from, int length)
+.. c:function:: int skb_append_datato_frags(struct sock *sk, struct sk_buff *skb, int (*getfrag)(void *from, char *to, int offset, int len, int odd, struct sk_buff *skb), void *from, int length)
 
     append the user data to a skb
 
@@ -1174,7 +1174,7 @@ skb_append_datato_frags
     :param struct sk_buff \*skb:
         skb structure to be appended with user data.
 
-    :param (int (\*) getfrag (void \*from, char \*to, int offset, int len, int odd, struct sk_buff \*skb):
+    :param int (\*getfrag)(void \*from, char \*to, int offset, int len, int odd, struct sk_buff \*skb):
         call back function to be used for getting the user data
 
     :param void \*from:
@@ -1407,7 +1407,7 @@ differs from the provided skb.
 skb_checksum_trimmed
 ====================
 
-.. c:function:: struct sk_buff *skb_checksum_trimmed(struct sk_buff *skb, unsigned int transport_len, __sum16(*) skb_chkf (struct sk_buff *skb)
+.. c:function:: struct sk_buff *skb_checksum_trimmed(struct sk_buff *skb, unsigned int transport_len, __sum16(*skb_chkf)(struct sk_buff *skb))
 
     validate checksum of an skb
 
@@ -1417,7 +1417,7 @@ skb_checksum_trimmed
     :param unsigned int transport_len:
         the data length beyond the network header
 
-    :param (__sum16(\*) skb_chkf (struct sk_buff \*skb):
+    :param __sum16(\*skb_chkf)(struct sk_buff \*skb):
         checksum function to use
 
 .. _`skb_checksum_trimmed.description`:

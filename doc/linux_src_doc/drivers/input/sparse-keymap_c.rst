@@ -52,7 +52,7 @@ input device using sparse keymap.
 sparse_keymap_setup
 ===================
 
-.. c:function:: int sparse_keymap_setup(struct input_dev *dev, const struct key_entry *keymap, int (*) setup (struct input_dev *, struct key_entry *)
+.. c:function:: int sparse_keymap_setup(struct input_dev *dev, const struct key_entry *keymap, int (*setup)(struct input_dev *, struct key_entry *))
 
     set up sparse keymap for an input device
 
@@ -63,7 +63,7 @@ sparse_keymap_setup
         Keymap in form of array of \ :c:type:`struct key_entry <key_entry>` structures ending
         with \ ``KE_END``\  type entry
 
-    :param (int (\*) setup (struct input_dev \*, struct key_entry \*):
+    :param int (\*setup)(struct input_dev \*, struct key_entry \*):
         Function that can be used to adjust keymap entries
         depending on device's deeds, may be \ ``NULL``\ 
 

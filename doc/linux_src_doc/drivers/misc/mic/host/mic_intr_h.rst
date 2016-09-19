@@ -157,11 +157,11 @@ Definition
 .. code-block:: c
 
     struct mic_hw_intr_ops {
-        void (* intr_init) (struct mic_device *mdev);
-        void (* enable_interrupts) (struct mic_device *mdev);
-        void (* disable_interrupts) (struct mic_device *mdev);
-        void (* program_msi_to_src_map) (struct mic_device *mdev,int idx, int intr_src, bool set);
-        u32 (* read_msi_to_src_map) (struct mic_device *mdev,int idx);
+        void (*intr_init)(struct mic_device *mdev);
+        void (*enable_interrupts)(struct mic_device *mdev);
+        void (*disable_interrupts)(struct mic_device *mdev);
+        void (*program_msi_to_src_map)(struct mic_device *mdev,int idx, int intr_src, bool set);
+        u32 (*read_msi_to_src_map)(struct mic_device *mdev,int idx);
     }
 
 .. _`mic_hw_intr_ops.members`:

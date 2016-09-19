@@ -47,14 +47,14 @@ Returns the sap or \ ``NULL``\  if not found.
 llc_sap_open
 ============
 
-.. c:function:: struct llc_sap *llc_sap_open(unsigned char lsap, int (*) func (struct sk_buff *skb, struct net_device *dev, struct packet_type *pt, struct net_device *orig_dev)
+.. c:function:: struct llc_sap *llc_sap_open(unsigned char lsap, int (*func)(struct sk_buff *skb, struct net_device *dev, struct packet_type *pt, struct net_device *orig_dev))
 
     open interface to the upper layers.
 
     :param unsigned char lsap:
         SAP number.
 
-    :param (int (\*) func (struct sk_buff \*skb, struct net_device \*dev, struct packet_type \*pt, struct net_device \*orig_dev):
+    :param int (\*func)(struct sk_buff \*skb, struct net_device \*dev, struct packet_type \*pt, struct net_device \*orig_dev):
         rcv func for datalink protos
 
 .. _`llc_sap_open.description`:

@@ -53,7 +53,7 @@ called by \ :c:func:`cpu_up`\  to online a node without onlined memory.
 walk_memory_range
 =================
 
-.. c:function:: int walk_memory_range(unsigned long start_pfn, unsigned long end_pfn, void *arg, int (*) func (struct memory_block *, void *)
+.. c:function:: int walk_memory_range(unsigned long start_pfn, unsigned long end_pfn, void *arg, int (*func)(struct memory_block *, void *))
 
     walks through all mem sections in [start_pfn, end_pfn)
 
@@ -66,7 +66,7 @@ walk_memory_range
     :param void \*arg:
         argument passed to func
 
-    :param (int (\*) func (struct memory_block \*, void \*):
+    :param int (\*func)(struct memory_block \*, void \*):
         callback for each memory section walked
 
 .. _`walk_memory_range.description`:

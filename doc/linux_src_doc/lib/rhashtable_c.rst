@@ -259,14 +259,14 @@ struct rhashtable_params params = {
 rhashtable_free_and_destroy
 ===========================
 
-.. c:function:: void rhashtable_free_and_destroy(struct rhashtable *ht, void (*) free_fn (void *ptr, void *arg, void *arg)
+.. c:function:: void rhashtable_free_and_destroy(struct rhashtable *ht, void (*free_fn)(void *ptr, void *arg), void *arg)
 
     free elements and destroy hash table
 
     :param struct rhashtable \*ht:
         the hash table to destroy
 
-    :param (void (\*) free_fn (void \*ptr, void \*arg):
+    :param void (\*free_fn)(void \*ptr, void \*arg):
         callback to release resources of element
 
     :param void \*arg:

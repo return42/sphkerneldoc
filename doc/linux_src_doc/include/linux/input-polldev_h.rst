@@ -19,9 +19,9 @@ Definition
 
     struct input_polled_dev {
         void *private;
-        void (* open) (struct input_polled_dev *dev);
-        void (* close) (struct input_polled_dev *dev);
-        void (* poll) (struct input_polled_dev *dev);
+        void (*open)(struct input_polled_dev *dev);
+        void (*close)(struct input_polled_dev *dev);
+        void (*poll)(struct input_polled_dev *dev);
         unsigned int poll_interval;
         unsigned int poll_interval_max;
         unsigned int poll_interval_min;

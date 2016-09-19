@@ -55,14 +55,14 @@ See Documentation/devicetree/bindings/graph.txt for the bindings.
 drm_of_component_probe
 ======================
 
-.. c:function:: int drm_of_component_probe(struct device *dev, int (*) compare_of (struct device *, void *, const struct component_master_ops *m_ops)
+.. c:function:: int drm_of_component_probe(struct device *dev, int (*compare_of)(struct device *, void *), const struct component_master_ops *m_ops)
 
     Generic probe function for a component based master
 
     :param struct device \*dev:
         master device containing the OF node
 
-    :param (int (\*) compare_of (struct device \*, void \*):
+    :param int (\*compare_of)(struct device \*, void \*):
         compare function used for matching components
 
     :param const struct component_master_ops \*m_ops:

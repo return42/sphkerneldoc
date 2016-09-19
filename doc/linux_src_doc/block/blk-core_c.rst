@@ -1337,7 +1337,7 @@ Free all bios in \ ``rq``\  for a cloned request.
 blk_rq_prep_clone
 =================
 
-.. c:function:: int blk_rq_prep_clone(struct request *rq, struct request *rq_src, struct bio_set *bs, gfp_t gfp_mask, int (*) bio_ctr (struct bio *, struct bio *, void *, void *data)
+.. c:function:: int blk_rq_prep_clone(struct request *rq, struct request *rq_src, struct bio_set *bs, gfp_t gfp_mask, int (*bio_ctr)(struct bio *, struct bio *, void *), void *data)
 
     Helper function to setup clone request
 
@@ -1353,7 +1353,7 @@ blk_rq_prep_clone
     :param gfp_t gfp_mask:
         memory allocation mask for bio
 
-    :param (int (\*) bio_ctr (struct bio \*, struct bio \*, void \*):
+    :param int (\*bio_ctr)(struct bio \*, struct bio \*, void \*):
         setup function to be called for each clone bio.
         Returns \ ``0``\  for success, non \ ``0``\  for failure.
 

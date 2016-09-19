@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct w1_family_ops {
-        int (* add_slave) (struct w1_slave *);
-        void (* remove_slave) (struct w1_slave *);
+        int (*add_slave)(struct w1_slave *);
+        void (*remove_slave)(struct w1_slave *);
         const struct attribute_group **groups;
     }
 

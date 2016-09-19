@@ -92,8 +92,8 @@ Definition
         struct pl08x_channel_data *slave_channels;
         unsigned int num_slave_channels;
         struct pl08x_channel_data memcpy_channel;
-        int (* get_xfer_signal) (const struct pl08x_channel_data *);
-        void (* put_xfer_signal) (const struct pl08x_channel_data *, int);
+        int (*get_xfer_signal)(const struct pl08x_channel_data *);
+        void (*put_xfer_signal)(const struct pl08x_channel_data *, int);
         u8 lli_buses;
         u8 mem_buses;
     }

@@ -488,20 +488,20 @@ None
 pmcraid_send_cmd
 ================
 
-.. c:function:: void pmcraid_send_cmd(struct pmcraid_cmd *cmd, void (*) cmd_done (struct pmcraid_cmd *, unsigned long timeout, void (*) timeout_func (struct pmcraid_cmd *)
+.. c:function:: void pmcraid_send_cmd(struct pmcraid_cmd *cmd, void (*cmd_done)(struct pmcraid_cmd *), unsigned long timeout, void (*timeout_func)(struct pmcraid_cmd *))
 
     fires a command to IOA
 
     :param struct pmcraid_cmd \*cmd:
         pointer to the command block to be fired to IOA
 
-    :param (void (\*) cmd_done (struct pmcraid_cmd \*):
+    :param void (\*cmd_done)(struct pmcraid_cmd \*):
         command completion function, called once IOA responds
 
     :param unsigned long timeout:
         timeout to wait for this command completion
 
-    :param (void (\*) timeout_func (struct pmcraid_cmd \*):
+    :param void (\*timeout_func)(struct pmcraid_cmd \*):
         timeout handler
 
 .. _`pmcraid_send_cmd.description`:
@@ -707,7 +707,7 @@ pmcraid_prepare_cancel_cmd
 pmcraid_cancel_hcam
 ===================
 
-.. c:function:: void pmcraid_cancel_hcam(struct pmcraid_cmd *cmd, u8 type, void (*) cmd_done (struct pmcraid_cmd *)
+.. c:function:: void pmcraid_cancel_hcam(struct pmcraid_cmd *cmd, u8 type, void (*cmd_done)(struct pmcraid_cmd *))
 
     sends ABORT task to abort a given HCAM
 
@@ -717,7 +717,7 @@ pmcraid_cancel_hcam
     :param u8 type:
         HCAM type
 
-    :param (void (\*) cmd_done (struct pmcraid_cmd \*):
+    :param void (\*cmd_done)(struct pmcraid_cmd \*):
         op done function for the cancelling command
 
 .. _`pmcraid_cancel_ccn`:
@@ -1668,14 +1668,14 @@ Return value
 pmcraid_queuecommand_lck
 ========================
 
-.. c:function:: int pmcraid_queuecommand_lck(struct scsi_cmnd *scsi_cmd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int pmcraid_queuecommand_lck(struct scsi_cmnd *scsi_cmd, void (*done)(struct scsi_cmnd *))
 
     Queue a mid-layer request
 
     :param struct scsi_cmnd \*scsi_cmd:
         scsi command struct
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         done function
 
 .. _`pmcraid_queuecommand_lck.description`:

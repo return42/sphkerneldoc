@@ -93,11 +93,11 @@ is already locked.
 fc_disc_start
 =============
 
-.. c:function:: void fc_disc_start(void (*) disc_callback (struct fc_lport *, enum fc_disc_event, struct fc_lport *lport)
+.. c:function:: void fc_disc_start(void (*disc_callback)(struct fc_lport *, enum fc_disc_event), struct fc_lport *lport)
 
     Start discovery on a local port
 
-    :param (void (\*) disc_callback (struct fc_lport \*, enum fc_disc_event):
+    :param void (\*disc_callback)(struct fc_lport \*, enum fc_disc_event):
         Callback function to be called when discovery is complete
 
     :param struct fc_lport \*lport:

@@ -28,7 +28,7 @@ Definition
         unsigned no_interrupt:1;
         unsigned zero:1;
         unsigned short_not_ok:1;
-        void (* complete) (struct usb_ep *ep,struct usb_request *req);
+        void (*complete)(struct usb_ep *ep,struct usb_request *req);
         void *context;
         struct list_head list;
         int status;
@@ -1239,13 +1239,13 @@ Definition
     struct usb_gadget_driver {
         char *function;
         enum usb_device_speed max_speed;
-        int (* bind) (struct usb_gadget *gadget,struct usb_gadget_driver *driver);
-        void (* unbind) (struct usb_gadget *);
-        int (* setup) (struct usb_gadget *,const struct usb_ctrlrequest *);
-        void (* disconnect) (struct usb_gadget *);
-        void (* suspend) (struct usb_gadget *);
-        void (* resume) (struct usb_gadget *);
-        void (* reset) (struct usb_gadget *);
+        int (*bind)(struct usb_gadget *gadget,struct usb_gadget_driver *driver);
+        void (*unbind)(struct usb_gadget *);
+        int (*setup)(struct usb_gadget *,const struct usb_ctrlrequest *);
+        void (*disconnect)(struct usb_gadget *);
+        void (*suspend)(struct usb_gadget *);
+        void (*resume)(struct usb_gadget *);
+        void (*reset)(struct usb_gadget *);
         struct device_driver driver;
         char *udc_name;
         struct list_head pending;

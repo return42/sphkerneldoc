@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct ablkcipher_alg {
-        int (* setkey) (struct crypto_ablkcipher *tfm, const u8 *key,unsigned int keylen);
-        int (* encrypt) (struct ablkcipher_request *req);
-        int (* decrypt) (struct ablkcipher_request *req);
-        int (* givencrypt) (struct skcipher_givcrypt_request *req);
-        int (* givdecrypt) (struct skcipher_givcrypt_request *req);
+        int (*setkey)(struct crypto_ablkcipher *tfm, const u8 *key,unsigned int keylen);
+        int (*encrypt)(struct ablkcipher_request *req);
+        int (*decrypt)(struct ablkcipher_request *req);
+        int (*givencrypt)(struct skcipher_givcrypt_request *req);
+        int (*givdecrypt)(struct skcipher_givcrypt_request *req);
         const char *geniv;
         unsigned int min_keysize;
         unsigned int max_keysize;
@@ -122,9 +122,9 @@ Definition
 .. code-block:: c
 
     struct blkcipher_alg {
-        int (* setkey) (struct crypto_tfm *tfm, const u8 *key,unsigned int keylen);
-        int (* encrypt) (struct blkcipher_desc *desc,struct scatterlist *dst, struct scatterlist *src,unsigned int nbytes);
-        int (* decrypt) (struct blkcipher_desc *desc,struct scatterlist *dst, struct scatterlist *src,unsigned int nbytes);
+        int (*setkey)(struct crypto_tfm *tfm, const u8 *key,unsigned int keylen);
+        int (*encrypt)(struct blkcipher_desc *desc,struct scatterlist *dst, struct scatterlist *src,unsigned int nbytes);
+        int (*decrypt)(struct blkcipher_desc *desc,struct scatterlist *dst, struct scatterlist *src,unsigned int nbytes);
         const char *geniv;
         unsigned int min_keysize;
         unsigned int max_keysize;
@@ -183,9 +183,9 @@ Definition
     struct cipher_alg {
         unsigned int cia_min_keysize;
         unsigned int cia_max_keysize;
-        int (* cia_setkey) (struct crypto_tfm *tfm, const u8 *key,unsigned int keylen);
-        void (* cia_encrypt) (struct crypto_tfm *tfm, u8 *dst, const u8 *src);
-        void (* cia_decrypt) (struct crypto_tfm *tfm, u8 *dst, const u8 *src);
+        int (*cia_setkey)(struct crypto_tfm *tfm, const u8 *key,unsigned int keylen);
+        void (*cia_encrypt)(struct crypto_tfm *tfm, u8 *dst, const u8 *src);
+        void (*cia_decrypt)(struct crypto_tfm *tfm, u8 *dst, const u8 *src);
     }
 
 .. _`cipher_alg.members`:
@@ -281,9 +281,9 @@ Definition
         char cra_driver_name[CRYPTO_MAX_ALG_NAME];
         const struct crypto_type *cra_type;
         union cra_u;
-        int (* cra_init) (struct crypto_tfm *tfm);
-        void (* cra_exit) (struct crypto_tfm *tfm);
-        void (* cra_destroy) (struct crypto_alg *alg);
+        int (*cra_init)(struct crypto_tfm *tfm);
+        void (*cra_exit)(struct crypto_tfm *tfm);
+        void (*cra_destroy)(struct crypto_alg *alg);
         struct module *cra_module;
     }
 

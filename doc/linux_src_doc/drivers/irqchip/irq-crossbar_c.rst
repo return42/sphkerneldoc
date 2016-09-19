@@ -25,7 +25,7 @@ Definition
         uint *irq_map;
         void __iomem *crossbar_base;
         int *register_offsets;
-        void (* write) (int, int);
+        void (*write)(int, int);
     }
 
 .. _`crossbar_device.members`:

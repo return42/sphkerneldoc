@@ -67,7 +67,7 @@ Definition
         unsigned int type;
         unsigned int mode_mask;
         void *config;
-        int (* tuner_callback) (void *dev, int component, int cmd, int arg);
+        int (*tuner_callback)(void *dev, int component, int cmd, int arg);
     }
 
 .. _`tuner_setup.members`:

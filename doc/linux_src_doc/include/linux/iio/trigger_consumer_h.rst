@@ -19,8 +19,8 @@ Definition
 
     struct iio_poll_func {
         struct iio_dev *indio_dev;
-        irqreturn_t (* h) (int irq, void *p);
-        irqreturn_t (* thread) (int irq, void *p);
+        irqreturn_t (*h)(int irq, void *p);
+        irqreturn_t (*thread)(int irq, void *p);
         int type;
         char *name;
         int irq;

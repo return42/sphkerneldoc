@@ -20,7 +20,7 @@ Definition
     struct bq27xxx_platform_data {
         const char *name;
         enum bq27xxx_chip chip;
-        int (* read) (struct device *dev, unsigned int);
+        int (*read)(struct device *dev, unsigned int);
     }
 
 .. _`bq27xxx_platform_data.members`:

@@ -47,14 +47,14 @@ Free a structure allocated with \ :c:func:`ib_alloc_device`\ .
 ib_register_device
 ==================
 
-.. c:function:: int ib_register_device(struct ib_device *device, int (*) port_callback (struct ib_device *, u8, struct kobject *)
+.. c:function:: int ib_register_device(struct ib_device *device, int (*port_callback)(struct ib_device *, u8, struct kobject *))
 
     Register an IB device with IB core
 
     :param struct ib_device \*device:
         Device to register
 
-    :param (int (\*) port_callback (struct ib_device \*, u8, struct kobject \*):
+    :param int (\*port_callback)(struct ib_device \*, u8, struct kobject \*):
         *undescribed*
 
 .. _`ib_register_device.description`:

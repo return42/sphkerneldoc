@@ -39,11 +39,11 @@ is required.
 enclosure_for_each_device
 =========================
 
-.. c:function:: int enclosure_for_each_device(int (*) fn (struct enclosure_device *, void *, void *data)
+.. c:function:: int enclosure_for_each_device(int (*fn)(struct enclosure_device *, void *), void *data)
 
     calls a function for each enclosure
 
-    :param (int (\*) fn (struct enclosure_device \*, void \*):
+    :param int (\*fn)(struct enclosure_device \*, void \*):
         the function to call
 
     :param void \*data:

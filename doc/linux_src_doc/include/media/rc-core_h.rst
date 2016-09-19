@@ -123,20 +123,20 @@ Definition
         u32 max_timeout;
         u32 rx_resolution;
         u32 tx_resolution;
-        int (* change_protocol) (struct rc_dev *dev, u64 *rc_type);
-        int (* change_wakeup_protocol) (struct rc_dev *dev, u64 *rc_type);
-        int (* open) (struct rc_dev *dev);
-        void (* close) (struct rc_dev *dev);
-        int (* s_tx_mask) (struct rc_dev *dev, u32 mask);
-        int (* s_tx_carrier) (struct rc_dev *dev, u32 carrier);
-        int (* s_tx_duty_cycle) (struct rc_dev *dev, u32 duty_cycle);
-        int (* s_rx_carrier_range) (struct rc_dev *dev, u32 min, u32 max);
-        int (* tx_ir) (struct rc_dev *dev, unsigned *txbuf, unsigned n);
-        void (* s_idle) (struct rc_dev *dev, bool enable);
-        int (* s_learning_mode) (struct rc_dev *dev, int enable);
-        int (* s_carrier_report) (struct rc_dev *dev, int enable);
-        int (* s_filter) (struct rc_dev *dev,struct rc_scancode_filter *filter);
-        int (* s_wakeup_filter) (struct rc_dev *dev,struct rc_scancode_filter *filter);
+        int (*change_protocol)(struct rc_dev *dev, u64 *rc_type);
+        int (*change_wakeup_protocol)(struct rc_dev *dev, u64 *rc_type);
+        int (*open)(struct rc_dev *dev);
+        void (*close)(struct rc_dev *dev);
+        int (*s_tx_mask)(struct rc_dev *dev, u32 mask);
+        int (*s_tx_carrier)(struct rc_dev *dev, u32 carrier);
+        int (*s_tx_duty_cycle)(struct rc_dev *dev, u32 duty_cycle);
+        int (*s_rx_carrier_range)(struct rc_dev *dev, u32 min, u32 max);
+        int (*tx_ir)(struct rc_dev *dev, unsigned *txbuf, unsigned n);
+        void (*s_idle)(struct rc_dev *dev, bool enable);
+        int (*s_learning_mode)(struct rc_dev *dev, int enable);
+        int (*s_carrier_report)(struct rc_dev *dev, int enable);
+        int (*s_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
+        int (*s_wakeup_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
     }
 
 .. _`rc_dev.members`:

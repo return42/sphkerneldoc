@@ -20,7 +20,7 @@ Definition
     struct zfcp_fsf_ct_els {
         struct scatterlist *req;
         struct scatterlist *resp;
-        void (* handler) (void *);
+        void (*handler)(void *);
         void *handler_data;
         struct zfcp_port *port;
         int status;

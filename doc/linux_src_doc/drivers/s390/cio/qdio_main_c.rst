@@ -337,7 +337,7 @@ Return codes
 qdio_pnso_brinfo
 ================
 
-.. c:function:: int qdio_pnso_brinfo(struct subchannel_id schid, int cnc, u16 *response, void (*) cb (void *priv, enum qdio_brinfo_entry_type type, void *entry, void *priv)
+.. c:function:: int qdio_pnso_brinfo(struct subchannel_id schid, int cnc, u16 *response, void (*cb)(void *priv, enum qdio_brinfo_entry_type type, void *entry), void *priv)
 
     perform network subchannel op #0 - bridge info.
 
@@ -350,7 +350,7 @@ qdio_pnso_brinfo
     :param u16 \*response:
         Response code will be stored at this address
 
-    :param (void (\*) cb (void \*priv, enum qdio_brinfo_entry_type type, void \*entry):
+    :param void (\*cb)(void \*priv, enum qdio_brinfo_entry_type type, void \*entry):
         Callback function will be executed for each element
         of the address list
 

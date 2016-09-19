@@ -18,20 +18,20 @@ Definition
 .. code-block:: c
 
     struct dma_buf_ops {
-        int (* attach) (struct dma_buf *, struct device *,struct dma_buf_attachment *);
-        void (* detach) (struct dma_buf *, struct dma_buf_attachment *);
-        struct sg_table * (* map_dma_buf) (struct dma_buf_attachment *,enum dma_data_direction);
-        void (* unmap_dma_buf) (struct dma_buf_attachment *,struct sg_table *,enum dma_data_direction);
-        void (* release) (struct dma_buf *);
-        int (* begin_cpu_access) (struct dma_buf *, enum dma_data_direction);
-        int (* end_cpu_access) (struct dma_buf *, enum dma_data_direction);
-        void *(* kmap_atomic) (struct dma_buf *, unsigned long);
-        void (* kunmap_atomic) (struct dma_buf *, unsigned long, void *);
-        void *(* kmap) (struct dma_buf *, unsigned long);
-        void (* kunmap) (struct dma_buf *, unsigned long, void *);
-        int (* mmap) (struct dma_buf *, struct vm_area_struct *vma);
-        void *(* vmap) (struct dma_buf *);
-        void (* vunmap) (struct dma_buf *, void *vaddr);
+        int (*attach)(struct dma_buf *, struct device *,struct dma_buf_attachment *);
+        void (*detach)(struct dma_buf *, struct dma_buf_attachment *);
+        struct sg_table * (*map_dma_buf)(struct dma_buf_attachment *,enum dma_data_direction);
+        void (*unmap_dma_buf)(struct dma_buf_attachment *,struct sg_table *,enum dma_data_direction);
+        void (*release)(struct dma_buf *);
+        int (*begin_cpu_access)(struct dma_buf *, enum dma_data_direction);
+        int (*end_cpu_access)(struct dma_buf *, enum dma_data_direction);
+        void *(*kmap_atomic)(struct dma_buf *, unsigned long);
+        void (*kunmap_atomic)(struct dma_buf *, unsigned long, void *);
+        void *(*kmap)(struct dma_buf *, unsigned long);
+        void (*kunmap)(struct dma_buf *, unsigned long, void *);
+        int (*mmap)(struct dma_buf *, struct vm_area_struct *vma);
+        void *(*vmap)(struct dma_buf *);
+        void (*vunmap)(struct dma_buf *, void *vaddr);
     }
 
 .. _`dma_buf_ops.members`:

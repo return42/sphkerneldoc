@@ -6,7 +6,7 @@
 finish_open
 ===========
 
-.. c:function:: int finish_open(struct file *file, struct dentry *dentry, int (*) open (struct inode *, struct file *, int *opened)
+.. c:function:: int finish_open(struct file *file, struct dentry *dentry, int (*open)(struct inode *, struct file *), int *opened)
 
     finish opening a file
 
@@ -16,7 +16,7 @@ finish_open
     :param struct dentry \*dentry:
         pointer to dentry
 
-    :param (int (\*) open (struct inode \*, struct file \*):
+    :param int (\*open)(struct inode \*, struct file \*):
         open callback
 
     :param int \*opened:

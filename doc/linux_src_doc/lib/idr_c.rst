@@ -224,14 +224,14 @@ free up the id mappings and cached idr_layers.
 idr_for_each
 ============
 
-.. c:function:: int idr_for_each(struct idr *idp, int (*) fn (int id, void *p, void *data, void *data)
+.. c:function:: int idr_for_each(struct idr *idp, int (*fn)(int id, void *p, void *data), void *data)
 
     iterate through all stored pointers
 
     :param struct idr \*idp:
         idr handle
 
-    :param (int (\*) fn (int id, void \*p, void \*data):
+    :param int (\*fn)(int id, void \*p, void \*data):
         function to be called for each pointer
 
     :param void \*data:

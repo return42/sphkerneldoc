@@ -20,12 +20,12 @@ Definition
     struct msm_otg_platform_data {
         int *phy_init_seq;
         int phy_init_sz;
-        void (* vbus_power) (bool on);
+        void (*vbus_power)(bool on);
         unsigned power_budget;
         enum usb_dr_mode mode;
         enum otg_control_type otg_control;
         enum msm_usb_phy_type phy_type;
-        void (* setup_gpio) (enum usb_otg_state state);
+        void (*setup_gpio)(enum usb_otg_state state);
     }
 
 .. _`msm_otg_platform_data.members`:

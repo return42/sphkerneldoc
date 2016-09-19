@@ -201,10 +201,10 @@ Definition
         struct cflayer *up;
         struct cflayer *dn;
         struct list_head node;
-        int (* receive) (struct cflayer *layr, struct cfpkt *cfpkt);
-        int (* transmit) (struct cflayer *layr, struct cfpkt *cfpkt);
-        void (* ctrlcmd) (struct cflayer *layr, enum caif_ctrlcmd ctrl,int phyid);
-        int (* modemcmd) (struct cflayer *layr, enum caif_modemcmd ctrl);
+        int (*receive)(struct cflayer *layr, struct cfpkt *cfpkt);
+        int (*transmit)(struct cflayer *layr, struct cfpkt *cfpkt);
+        void (*ctrlcmd)(struct cflayer *layr, enum caif_ctrlcmd ctrl,int phyid);
+        int (*modemcmd)(struct cflayer *layr, enum caif_modemcmd ctrl);
         unsigned int id;
         char name[CAIF_LAYER_NAME_SZ];
     }

@@ -65,12 +65,12 @@ Definition
         struct pmu pmu;
         const char *name;
         u32 version;
-        irqreturn_t (* handle_irq) (int irq_num, void *dev);
-        void (* enable) (struct hw_perf_event *evt, int idx);
-        void (* disable) (struct hw_perf_event *evt, int idx);
-        u64 (* read) (int idx);
-        void (* write) (int idx, u32 val);
-        int (* event_map) (int idx);
+        irqreturn_t (*handle_irq)(int irq_num, void *dev);
+        void (*enable)(struct hw_perf_event *evt, int idx);
+        void (*disable)(struct hw_perf_event *evt, int idx);
+        u64 (*read)(int idx);
+        void (*write)(int idx, u32 val);
+        int (*event_map)(int idx);
         const int (*cache_events)[PERF_COUNT_HW_CACHE_MAX][PERF_COUNT_HW_CACHE_OP_MAX][PERF_COUNT_HW_CACHE_RESULT_MAX];
         u32 max_period;
         int max_events;

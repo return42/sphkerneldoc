@@ -26,7 +26,7 @@ or zero otherwise.
 ep_call_nested
 ==============
 
-.. c:function:: int ep_call_nested(struct nested_calls *ncalls, int max_nests, int (*) nproc (void *, void *, int, void *priv, void *cookie, void *ctx)
+.. c:function:: int ep_call_nested(struct nested_calls *ncalls, int max_nests, int (*nproc)(void *, void *, int), void *priv, void *cookie, void *ctx)
 
     Perform a bound (possibly) nested call, by checking that the recursion limit is not exceeded, and that the same nested call (by the meaning of same cookie) is no re-entered.
 
@@ -36,7 +36,7 @@ ep_call_nested
     :param int max_nests:
         Maximum number of allowed nesting calls.
 
-    :param (int (\*) nproc (void \*, void \*, int):
+    :param int (\*nproc)(void \*, void \*, int):
         Nested call core function pointer.
 
     :param void \*priv:
@@ -61,14 +61,14 @@ the maximum recursion limit has been exceeded.
 ep_scan_ready_list
 ==================
 
-.. c:function:: int ep_scan_ready_list(struct eventpoll *ep, int (*) sproc (struct eventpoll *, struct list_head *, void *, void *priv, int depth, bool ep_locked)
+.. c:function:: int ep_scan_ready_list(struct eventpoll *ep, int (*sproc)(struct eventpoll *, struct list_head *, void *), void *priv, int depth, bool ep_locked)
 
     Scans the ready list in a way that makes possible for the scan code, to call f_op->\ :c:func:`poll`\ . Also allows for O(NumReady) performance.
 
     :param struct eventpoll \*ep:
         Pointer to the epoll private data structure.
 
-    :param (int (\*) sproc (struct eventpoll \*, struct list_head \*, void \*):
+    :param int (\*sproc)(struct eventpoll \*, struct list_head \*, void \*):
         Pointer to the scan callback.
 
     :param void \*priv:

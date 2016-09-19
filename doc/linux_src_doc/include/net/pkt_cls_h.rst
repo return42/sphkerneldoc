@@ -199,10 +199,10 @@ Definition
     struct tcf_ematch_ops {
         int kind;
         int datalen;
-        int (* change) (struct net *net, void *,int, struct tcf_ematch *);
-        int (* match) (struct sk_buff *, struct tcf_ematch *,struct tcf_pkt_info *);
-        void (* destroy) (struct tcf_ematch *);
-        int (* dump) (struct sk_buff *, struct tcf_ematch *);
+        int (*change)(struct net *net, void *,int, struct tcf_ematch *);
+        int (*match)(struct sk_buff *, struct tcf_ematch *,struct tcf_pkt_info *);
+        void (*destroy)(struct tcf_ematch *);
+        int (*dump)(struct sk_buff *, struct tcf_ematch *);
         struct module *owner;
         struct list_head link;
     }

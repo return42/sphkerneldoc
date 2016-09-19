@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct qrtr_endpoint {
-        int (* xmit) (struct qrtr_endpoint *ep, struct sk_buff *skb);
+        int (*xmit)(struct qrtr_endpoint *ep, struct sk_buff *skb);
     }
 
 .. _`qrtr_endpoint.members`:

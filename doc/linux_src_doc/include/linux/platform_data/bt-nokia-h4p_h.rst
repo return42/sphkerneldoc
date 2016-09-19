@@ -28,7 +28,7 @@ Definition
         phys_addr_t uart_base;
         const char *uart_iclk;
         const char *uart_fclk;
-        void (* set_pm_limits) (struct device *dev, bool set);
+        void (*set_pm_limits)(struct device *dev, bool set);
     }
 
 .. _`hci_h4p_platform_data.members`:

@@ -21,22 +21,22 @@ Definition
         const struct hid_device_id *id_table;
         struct list_head dyn_list;
         spinlock_t dyn_lock;
-        int (* probe) (struct hid_device *dev, const struct hid_device_id *id);
-        void (* remove) (struct hid_device *dev);
+        int (*probe)(struct hid_device *dev, const struct hid_device_id *id);
+        void (*remove)(struct hid_device *dev);
         const struct hid_report_id *report_table;
-        int (* raw_event) (struct hid_device *hdev, struct hid_report *report,u8 *data, int size);
+        int (*raw_event)(struct hid_device *hdev, struct hid_report *report,u8 *data, int size);
         const struct hid_usage_id *usage_table;
-        int (* event) (struct hid_device *hdev, struct hid_field *field,struct hid_usage *usage, __s32 value);
-        void (* report) (struct hid_device *hdev, struct hid_report *report);
-        __u8 *(* report_fixup) (struct hid_device *hdev, __u8 *buf,unsigned int *size);
-        int (* input_mapping) (struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field,struct hid_usage *usage, unsigned long **bit, int *max);
-        int (* input_mapped) (struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field,struct hid_usage *usage, unsigned long **bit, int *max);
-        int (* input_configured) (struct hid_device *hdev,struct hid_input *hidinput);
-        void (* feature_mapping) (struct hid_device *hdev,struct hid_field *field,struct hid_usage *usage);
+        int (*event)(struct hid_device *hdev, struct hid_field *field,struct hid_usage *usage, __s32 value);
+        void (*report)(struct hid_device *hdev, struct hid_report *report);
+        __u8 *(*report_fixup)(struct hid_device *hdev, __u8 *buf,unsigned int *size);
+        int (*input_mapping)(struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field,struct hid_usage *usage, unsigned long **bit, int *max);
+        int (*input_mapped)(struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field,struct hid_usage *usage, unsigned long **bit, int *max);
+        int (*input_configured)(struct hid_device *hdev,struct hid_input *hidinput);
+        void (*feature_mapping)(struct hid_device *hdev,struct hid_field *field,struct hid_usage *usage);
         #ifdef CONFIG_PM
-        int (* suspend) (struct hid_device *hdev, pm_message_t message);
-        int (* resume) (struct hid_device *hdev);
-        int (* reset_resume) (struct hid_device *hdev);
+        int (*suspend)(struct hid_device *hdev, pm_message_t message);
+        int (*resume)(struct hid_device *hdev);
+        int (*reset_resume)(struct hid_device *hdev);
         #endif
     }
 

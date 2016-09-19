@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct rfkill_ops {
-        void (* poll) (struct rfkill *rfkill, void *data);
-        void (* query) (struct rfkill *rfkill, void *data);
-        int (* set_block) (void *data, bool blocked);
+        void (*poll)(struct rfkill *rfkill, void *data);
+        void (*query)(struct rfkill *rfkill, void *data);
+        int (*set_block)(void *data, bool blocked);
     }
 
 .. _`rfkill_ops.members`:

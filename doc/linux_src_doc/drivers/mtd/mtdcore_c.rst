@@ -271,7 +271,7 @@ Returns zero on success, a negative error code otherwise.
 mtd_ooblayout_find_region
 =========================
 
-.. c:function:: int mtd_ooblayout_find_region(struct mtd_info *mtd, int byte, int *sectionp, struct mtd_oob_region *oobregion, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+.. c:function:: int mtd_ooblayout_find_region(struct mtd_info *mtd, int byte, int *sectionp, struct mtd_oob_region *oobregion, int (*iter)(struct mtd_info *, int section, struct mtd_oob_region *oobregion))
 
     Find the region attached to a specific byte
 
@@ -287,7 +287,7 @@ mtd_ooblayout_find_region
     :param struct mtd_oob_region \*oobregion:
         used to retrieve the ECC position
 
-    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+    :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         iterator function. Should be either mtd_ooblayout_free or
         mtd_ooblayout_ecc depending on the region type you're searching for
 
@@ -340,7 +340,7 @@ Returns zero on success, a negative error code otherwise.
 mtd_ooblayout_get_bytes
 =======================
 
-.. c:function:: int mtd_ooblayout_get_bytes(struct mtd_info *mtd, u8 *buf, const u8 *oobbuf, int start, int nbytes, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+.. c:function:: int mtd_ooblayout_get_bytes(struct mtd_info *mtd, u8 *buf, const u8 *oobbuf, int start, int nbytes, int (*iter)(struct mtd_info *, int section, struct mtd_oob_region *oobregion))
 
     Extract OOB bytes from the oob buffer
 
@@ -359,7 +359,7 @@ mtd_ooblayout_get_bytes
     :param int nbytes:
         number of bytes to retrieve
 
-    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+    :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         section iterator
 
 .. _`mtd_ooblayout_get_bytes.description`:
@@ -377,7 +377,7 @@ Returns zero on success, a negative error code otherwise.
 mtd_ooblayout_set_bytes
 =======================
 
-.. c:function:: int mtd_ooblayout_set_bytes(struct mtd_info *mtd, const u8 *buf, u8 *oobbuf, int start, int nbytes, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+.. c:function:: int mtd_ooblayout_set_bytes(struct mtd_info *mtd, const u8 *buf, u8 *oobbuf, int start, int nbytes, int (*iter)(struct mtd_info *, int section, struct mtd_oob_region *oobregion))
 
     put OOB bytes into the oob buffer
 
@@ -396,7 +396,7 @@ mtd_ooblayout_set_bytes
     :param int nbytes:
         number of OOB bytes to set
 
-    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+    :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         section iterator
 
 .. _`mtd_ooblayout_set_bytes.description`:
@@ -414,14 +414,14 @@ Returns zero on success, a negative error code otherwise.
 mtd_ooblayout_count_bytes
 =========================
 
-.. c:function:: int mtd_ooblayout_count_bytes(struct mtd_info *mtd, int (*) iter (struct mtd_info *, int section, struct mtd_oob_region *oobregion)
+.. c:function:: int mtd_ooblayout_count_bytes(struct mtd_info *mtd, int (*iter)(struct mtd_info *, int section, struct mtd_oob_region *oobregion))
 
     count the number of bytes in a OOB category
 
     :param struct mtd_info \*mtd:
         mtd info structure
 
-    :param (int (\*) iter (struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
+    :param int (\*iter)(struct mtd_info \*, int section, struct mtd_oob_region \*oobregion):
         category iterator
 
 .. _`mtd_ooblayout_count_bytes.description`:

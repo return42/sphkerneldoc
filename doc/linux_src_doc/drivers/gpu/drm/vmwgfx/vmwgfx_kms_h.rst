@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct vmw_kms_dirty {
-        void (* fifo_commit) (struct vmw_kms_dirty *);
-        void (* clip) (struct vmw_kms_dirty *);
+        void (*fifo_commit)(struct vmw_kms_dirty *);
+        void (*clip)(struct vmw_kms_dirty *);
         size_t fifo_reserve_size;
         struct vmw_private *dev_priv;
         struct vmw_display_unit *unit;

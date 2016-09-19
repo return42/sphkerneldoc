@@ -146,22 +146,22 @@ Definition
 .. code-block:: c
 
     struct at91_pinctrl_mux_ops {
-        enum at91_mux (* get_periph) (void __iomem *pio, unsigned mask);
-        void (* mux_A_periph) (void __iomem *pio, unsigned mask);
-        void (* mux_B_periph) (void __iomem *pio, unsigned mask);
-        void (* mux_C_periph) (void __iomem *pio, unsigned mask);
-        void (* mux_D_periph) (void __iomem *pio, unsigned mask);
-        bool (* get_deglitch) (void __iomem *pio, unsigned pin);
-        void (* set_deglitch) (void __iomem *pio, unsigned mask, bool is_on);
-        bool (* get_debounce) (void __iomem *pio, unsigned pin, u32 *div);
-        void (* set_debounce) (void __iomem *pio, unsigned mask, bool is_on, u32 div);
-        bool (* get_pulldown) (void __iomem *pio, unsigned pin);
-        void (* set_pulldown) (void __iomem *pio, unsigned mask, bool is_on);
-        bool (* get_schmitt_trig) (void __iomem *pio, unsigned pin);
-        void (* disable_schmitt_trig) (void __iomem *pio, unsigned mask);
-        unsigned (* get_drivestrength) (void __iomem *pio, unsigned pin);
-        void (* set_drivestrength) (void __iomem *pio, unsigned pin,u32 strength);
-        int (* irq_type) (struct irq_data *d, unsigned type);
+        enum at91_mux (*get_periph)(void __iomem *pio, unsigned mask);
+        void (*mux_A_periph)(void __iomem *pio, unsigned mask);
+        void (*mux_B_periph)(void __iomem *pio, unsigned mask);
+        void (*mux_C_periph)(void __iomem *pio, unsigned mask);
+        void (*mux_D_periph)(void __iomem *pio, unsigned mask);
+        bool (*get_deglitch)(void __iomem *pio, unsigned pin);
+        void (*set_deglitch)(void __iomem *pio, unsigned mask, bool is_on);
+        bool (*get_debounce)(void __iomem *pio, unsigned pin, u32 *div);
+        void (*set_debounce)(void __iomem *pio, unsigned mask, bool is_on, u32 div);
+        bool (*get_pulldown)(void __iomem *pio, unsigned pin);
+        void (*set_pulldown)(void __iomem *pio, unsigned mask, bool is_on);
+        bool (*get_schmitt_trig)(void __iomem *pio, unsigned pin);
+        void (*disable_schmitt_trig)(void __iomem *pio, unsigned mask);
+        unsigned (*get_drivestrength)(void __iomem *pio, unsigned pin);
+        void (*set_drivestrength)(void __iomem *pio, unsigned pin,u32 strength);
+        int (*irq_type)(struct irq_data *d, unsigned type);
     }
 
 .. _`at91_pinctrl_mux_ops.members`:

@@ -1020,10 +1020,10 @@ Definition
 .. code-block:: c
 
     struct s5p_mfc_codec_ops {
-        int (* pre_seq_start) (struct s5p_mfc_ctx *ctx);
-        int (* post_seq_start) (struct s5p_mfc_ctx *ctx);
-        int (* pre_frame_start) (struct s5p_mfc_ctx *ctx);
-        int (* post_frame_start) (struct s5p_mfc_ctx *ctx);
+        int (*pre_seq_start)(struct s5p_mfc_ctx *ctx);
+        int (*post_seq_start)(struct s5p_mfc_ctx *ctx);
+        int (*pre_frame_start)(struct s5p_mfc_ctx *ctx);
+        int (*post_frame_start)(struct s5p_mfc_ctx *ctx);
     }
 
 .. _`s5p_mfc_codec_ops.members`:

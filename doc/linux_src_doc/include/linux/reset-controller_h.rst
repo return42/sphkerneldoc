@@ -17,10 +17,10 @@ Definition
 .. code-block:: c
 
     struct reset_control_ops {
-        int (* reset) (struct reset_controller_dev *rcdev, unsigned long id);
-        int (* assert) (struct reset_controller_dev *rcdev, unsigned long id);
-        int (* deassert) (struct reset_controller_dev *rcdev, unsigned long id);
-        int (* status) (struct reset_controller_dev *rcdev, unsigned long id);
+        int (*reset)(struct reset_controller_dev *rcdev, unsigned long id);
+        int (*assert)(struct reset_controller_dev *rcdev, unsigned long id);
+        int (*deassert)(struct reset_controller_dev *rcdev, unsigned long id);
+        int (*status)(struct reset_controller_dev *rcdev, unsigned long id);
     }
 
 .. _`reset_control_ops.members`:
@@ -64,7 +64,7 @@ Definition
         struct list_head reset_control_head;
         struct device_node *of_node;
         int of_reset_n_cells;
-        int (* of_xlate) (struct reset_controller_dev *rcdev,const struct of_phandle_args *reset_spec);
+        int (*of_xlate)(struct reset_controller_dev *rcdev,const struct of_phandle_args *reset_spec);
         unsigned int nr_resets;
     }
 

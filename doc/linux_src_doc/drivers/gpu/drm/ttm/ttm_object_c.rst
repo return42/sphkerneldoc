@@ -22,7 +22,7 @@ Definition
         atomic_t object_count;
         struct ttm_mem_global *mem_glob;
         struct dma_buf_ops ops;
-        void (* dmabuf_release) (struct dma_buf *dma_buf);
+        void (*dmabuf_release)(struct dma_buf *dma_buf);
         size_t dma_buf_size;
     }
 
@@ -267,7 +267,7 @@ ttm_prime_handle_to_fd
 ttm_prime_object_init
 =====================
 
-.. c:function:: int ttm_prime_object_init(struct ttm_object_file *tfile, size_t size, struct ttm_prime_object *prime, bool shareable, enum ttm_object_type type, void (*) refcount_release (struct ttm_base_object **, void (*) ref_obj_release (struct ttm_base_object *, enum ttm_ref_type ref_type)
+.. c:function:: int ttm_prime_object_init(struct ttm_object_file *tfile, size_t size, struct ttm_prime_object *prime, bool shareable, enum ttm_object_type type, void (*refcount_release)(struct ttm_base_object **), void (*ref_obj_release)(struct ttm_base_object *, enum ttm_ref_type ref_type))
 
     Initialize a ttm_prime_object
 
@@ -286,10 +286,10 @@ ttm_prime_object_init
     :param enum ttm_object_type type:
         See ttm_base_object_init
 
-    :param (void (\*) refcount_release (struct ttm_base_object \*\*):
+    :param void (\*refcount_release)(struct ttm_base_object \*\*):
         See ttm_base_object_init
 
-    :param (void (\*) ref_obj_release (struct ttm_base_object \*, enum ttm_ref_type ref_type):
+    :param void (\*ref_obj_release)(struct ttm_base_object \*, enum ttm_ref_type ref_type):
         See ttm_base_object_init
 
 .. _`ttm_prime_object_init.description`:

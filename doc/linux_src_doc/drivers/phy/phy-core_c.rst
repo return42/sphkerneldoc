@@ -427,7 +427,7 @@ to destroy the phy.
 __of_phy_provider_register
 ==========================
 
-.. c:function:: struct phy_provider *__of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*) of_xlate (struct device *dev, struct of_phandle_args *args)
+.. c:function:: struct phy_provider *__of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*of_xlate)(struct device *dev, struct of_phandle_args *args))
 
     create/register phy provider with the framework
 
@@ -440,7 +440,7 @@ __of_phy_provider_register
     :param struct module \*owner:
         the module owner containing of_xlate
 
-    :param (struct phy \* (\*) of_xlate (struct device \*dev, struct of_phandle_args \*args):
+    :param struct phy \* (\*of_xlate)(struct device \*dev, struct of_phandle_args \*args):
         function pointer to obtain phy instance from phy provider
 
 .. _`__of_phy_provider_register.description`:
@@ -464,7 +464,7 @@ error code is returned.
 __devm_of_phy_provider_register
 ===============================
 
-.. c:function:: struct phy_provider *__devm_of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*) of_xlate (struct device *dev, struct of_phandle_args *args)
+.. c:function:: struct phy_provider *__devm_of_phy_provider_register(struct device *dev, struct device_node *children, struct module *owner, struct phy * (*of_xlate)(struct device *dev, struct of_phandle_args *args))
 
     create/register phy provider with the framework
 
@@ -477,7 +477,7 @@ __devm_of_phy_provider_register
     :param struct module \*owner:
         the module owner containing of_xlate
 
-    :param (struct phy \* (\*) of_xlate (struct device \*dev, struct of_phandle_args \*args):
+    :param struct phy \* (\*of_xlate)(struct device \*dev, struct of_phandle_args \*args):
         function pointer to obtain phy instance from phy provider
 
 .. _`__devm_of_phy_provider_register.description`:

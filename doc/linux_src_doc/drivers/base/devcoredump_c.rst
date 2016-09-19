@@ -81,7 +81,7 @@ devcd_read_from_sgtable
 dev_coredumpm
 =============
 
-.. c:function:: void dev_coredumpm(struct device *dev, struct module *owner, void *data, size_t datalen, gfp_t gfp, ssize_t (*) read (char *buffer, loff_t offset, size_t count, void *data, size_t datalen, void (*) free (void *data)
+.. c:function:: void dev_coredumpm(struct device *dev, struct module *owner, void *data, size_t datalen, gfp_t gfp, ssize_t (*read)(char *buffer, loff_t offset, size_t count, void *data, size_t datalen), void (*free)(void *data))
 
     create device coredump with read/free methods
 
@@ -100,10 +100,10 @@ dev_coredumpm
     :param gfp_t gfp:
         allocation flags
 
-    :param (ssize_t (\*) read (char \*buffer, loff_t offset, size_t count, void \*data, size_t datalen):
+    :param ssize_t (\*read)(char \*buffer, loff_t offset, size_t count, void \*data, size_t datalen):
         function to read from the given buffer
 
-    :param (void (\*) free (void \*data):
+    :param void (\*free)(void \*data):
         function to free the given buffer
 
 .. _`dev_coredumpm.description`:

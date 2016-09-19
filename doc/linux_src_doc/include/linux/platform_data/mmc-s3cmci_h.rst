@@ -26,7 +26,7 @@ Definition
         unsigned int gpio_detect;
         unsigned int gpio_wprotect;
         unsigned long ocr_avail;
-        void (* set_power) (unsigned char power_mode,unsigned short vdd);
+        void (*set_power)(unsigned char power_mode,unsigned short vdd);
     }
 
 .. _`s3c24xx_mci_pdata.members`:

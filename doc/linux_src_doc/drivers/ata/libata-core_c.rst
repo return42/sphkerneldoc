@@ -1572,7 +1572,7 @@ Return
 ata_wait_ready
 ==============
 
-.. c:function:: int ata_wait_ready(struct ata_link *link, unsigned long deadline, int (*) check_ready (struct ata_link *link)
+.. c:function:: int ata_wait_ready(struct ata_link *link, unsigned long deadline, int (*check_ready)(struct ata_link *link))
 
     wait for link to become ready
 
@@ -1582,7 +1582,7 @@ ata_wait_ready
     :param unsigned long deadline:
         deadline jiffies for the operation
 
-    :param (int (\*) check_ready (struct ata_link \*link):
+    :param int (\*check_ready)(struct ata_link \*link):
         callback to check link readiness
 
 .. _`ata_wait_ready.description`:
@@ -1617,7 +1617,7 @@ Return
 ata_wait_after_reset
 ====================
 
-.. c:function:: int ata_wait_after_reset(struct ata_link *link, unsigned long deadline, int (*) check_ready (struct ata_link *link)
+.. c:function:: int ata_wait_after_reset(struct ata_link *link, unsigned long deadline, int (*check_ready)(struct ata_link *link))
 
     wait for link to become ready after reset
 
@@ -1627,7 +1627,7 @@ ata_wait_after_reset
     :param unsigned long deadline:
         deadline jiffies for the operation
 
-    :param (int (\*) check_ready (struct ata_link \*link):
+    :param int (\*check_ready)(struct ata_link \*link):
         callback to check link readiness
 
 .. _`ata_wait_after_reset.description`:
@@ -1825,7 +1825,7 @@ Return
 sata_link_hardreset
 ===================
 
-.. c:function:: int sata_link_hardreset(struct ata_link *link, const unsigned long *timing, unsigned long deadline, bool *online, int (*) check_ready (struct ata_link *)
+.. c:function:: int sata_link_hardreset(struct ata_link *link, const unsigned long *timing, unsigned long deadline, bool *online, int (*check_ready)(struct ata_link *))
 
     reset link via SATA phy reset
 
@@ -1841,7 +1841,7 @@ sata_link_hardreset
     :param bool \*online:
         optional out parameter indicating link onlineness
 
-    :param (int (\*) check_ready (struct ata_link \*):
+    :param int (\*check_ready)(struct ata_link \*):
         optional callback to check link readiness
 
 .. _`sata_link_hardreset.description`:

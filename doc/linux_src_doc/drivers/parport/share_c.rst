@@ -231,7 +231,7 @@ with \ ``port``\  as the parameter.
 parport_register_device
 =======================
 
-.. c:function:: struct pardevice *parport_register_device(struct parport *port, const char *name, int (*) pf (void *, void (*) kf (void *, void (*) irq_func (void *, int flags, void *handle)
+.. c:function:: struct pardevice *parport_register_device(struct parport *port, const char *name, int (*pf)(void *), void (*kf)(void *), void (*irq_func)(void *), int flags, void *handle)
 
     register a device on a parallel port
 
@@ -241,13 +241,13 @@ parport_register_device
     :param const char \*name:
         a name to refer to the device
 
-    :param (int (\*) pf (void \*):
+    :param int (\*pf)(void \*):
         preemption callback
 
-    :param (void (\*) kf (void \*):
+    :param void (\*kf)(void \*):
         kick callback (wake-up)
 
-    :param (void (\*) irq_func (void \*):
+    :param void (\*irq_func)(void \*):
         interrupt handler
 
     :param int flags:

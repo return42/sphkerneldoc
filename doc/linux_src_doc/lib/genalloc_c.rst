@@ -216,14 +216,14 @@ NMI-safe cmpxchg implementation.
 gen_pool_for_each_chunk
 =======================
 
-.. c:function:: void gen_pool_for_each_chunk(struct gen_pool *pool, void (*) func (struct gen_pool *pool, struct gen_pool_chunk *chunk, void *data, void *data)
+.. c:function:: void gen_pool_for_each_chunk(struct gen_pool *pool, void (*func)(struct gen_pool *pool, struct gen_pool_chunk *chunk, void *data), void *data)
 
     call func for every chunk of generic memory pool
 
     :param struct gen_pool \*pool:
         the generic memory pool
 
-    :param (void (\*) func (struct gen_pool \*pool, struct gen_pool_chunk \*chunk, void \*data):
+    :param void (\*func)(struct gen_pool \*pool, struct gen_pool_chunk \*chunk, void \*data):
         func to call
 
     :param void \*data:

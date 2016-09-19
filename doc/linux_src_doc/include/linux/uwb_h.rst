@@ -349,8 +349,8 @@ Definition
         const char *name;
         struct device *device;
         struct uwb_rc *rc;
-        void (* channel_changed) (struct uwb_pal *pal, int channel);
-        void (* new_rsv) (struct uwb_pal *pal, struct uwb_rsv *rsv);
+        void (*channel_changed)(struct uwb_pal *pal, int channel);
+        void (*new_rsv)(struct uwb_pal *pal, struct uwb_rsv *rsv);
         int channel;
         struct dentry *debugfs_dir;
     }

@@ -102,7 +102,7 @@ It returns the size of unflattened device tree or error code
 __unflatten_device_tree
 =======================
 
-.. c:function:: void *__unflatten_device_tree(const void *blob, struct device_node *dad, struct device_node **mynodes, void *(*) dt_alloc (u64 size, u64 align)
+.. c:function:: void *__unflatten_device_tree(const void *blob, struct device_node *dad, struct device_node **mynodes, void *(*dt_alloc)(u64 size, u64 align))
 
     create tree of device_nodes from flat blob
 
@@ -115,7 +115,7 @@ __unflatten_device_tree
     :param struct device_node \*\*mynodes:
         The device_node tree created by the call
 
-    :param (void \*(\*) dt_alloc (u64 size, u64 align):
+    :param void \*(\*dt_alloc)(u64 size, u64 align):
         An allocator that provides a virtual address to memory
         for the resulting tree
 
@@ -249,11 +249,11 @@ early_init_fdt_reserve_self
 of_scan_flat_dt
 ===============
 
-.. c:function:: int of_scan_flat_dt(int (*) it (unsigned long node, const char *uname, int depth, void *data, void *data)
+.. c:function:: int of_scan_flat_dt(int (*it)(unsigned long node, const char *uname, int depth, void *data), void *data)
 
     scan flattened tree blob and call callback on each.
 
-    :param (int (\*) it (unsigned long node, const char \*uname, int depth, void \*data):
+    :param int (\*it)(unsigned long node, const char \*uname, int depth, void \*data):
         callback function
 
     :param void \*data:
@@ -353,14 +353,14 @@ of_flat_dt_match
 of_flat_dt_match_machine
 ========================
 
-.. c:function:: const void *of_flat_dt_match_machine(const void *default_match, const void * (*) get_next_compat (const char * const**)
+.. c:function:: const void *of_flat_dt_match_machine(const void *default_match, const void * (*get_next_compat)(const char * const**))
 
     Iterate match tables to find matching machine.
 
     :param const void \*default_match:
         A machine specific ptr to return in case of no match.
 
-    :param (const void \* (\*) get_next_compat (const char \* const\*\*):
+    :param const void \* (\*get_next_compat)(const char \* const\*\*):
         callback function to return next compatible match table.
 
 .. _`of_flat_dt_match_machine.description`:

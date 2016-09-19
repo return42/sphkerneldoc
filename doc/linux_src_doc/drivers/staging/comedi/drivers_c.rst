@@ -163,7 +163,7 @@ Returns \ ``insn``\ ->n on success, or -EINVAL if \ ``s``\ ->readback is NULL.
 comedi_timeout
 ==============
 
-.. c:function:: int comedi_timeout(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, int (*) cb (struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, unsigned long context, unsigned long context)
+.. c:function:: int comedi_timeout(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, int (*cb)(struct comedi_device *dev, struct comedi_subdevice *s, struct comedi_insn *insn, unsigned long context), unsigned long context)
 
     Busy-wait for a driver condition to occur
 
@@ -176,7 +176,7 @@ comedi_timeout
     :param struct comedi_insn \*insn:
         COMEDI instruction.
 
-    :param (int (\*) cb (struct comedi_device \*dev, struct comedi_subdevice \*s, struct comedi_insn \*insn, unsigned long context):
+    :param int (\*cb)(struct comedi_device \*dev, struct comedi_subdevice \*s, struct comedi_insn \*insn, unsigned long context):
         Callback to check for the condition.
 
     :param unsigned long context:
@@ -413,7 +413,7 @@ Return a bit-mask of the handled events.
 comedi_load_firmware
 ====================
 
-.. c:function:: int comedi_load_firmware(struct comedi_device *dev, struct device *device, const char *name, int (*) cb (struct comedi_device *dev, const u8 *data, size_t size, unsigned long context, unsigned long context)
+.. c:function:: int comedi_load_firmware(struct comedi_device *dev, struct device *device, const char *name, int (*cb)(struct comedi_device *dev, const u8 *data, size_t size, unsigned long context), unsigned long context)
 
     Request and load firmware for a device
 
@@ -426,7 +426,7 @@ comedi_load_firmware
     :param const char \*name:
         The name of the firmware image.
 
-    :param (int (\*) cb (struct comedi_device \*dev, const u8 \*data, size_t size, unsigned long context):
+    :param int (\*cb)(struct comedi_device \*dev, const u8 \*data, size_t size, unsigned long context):
         Callback to the upload the firmware image.
 
     :param unsigned long context:

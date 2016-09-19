@@ -110,9 +110,9 @@ Definition
         u8 priority;
         u8 dest_addr[ETH_ALEN];
         u8 ctl_src_addr[ETH_ALEN];
-        void (* send) (struct fcoe_ctlr *, struct sk_buff *);
-        void (* update_mac) (struct fc_lport *, u8 *addr);
-        u8 * (* get_src_addr) (struct fc_lport *);
+        void (*send)(struct fcoe_ctlr *, struct sk_buff *);
+        void (*update_mac)(struct fc_lport *, u8 *addr);
+        u8 * (*get_src_addr)(struct fc_lport *);
         struct mutex ctlr_mutex;
         spinlock_t ctlr_lock;
     }
@@ -469,7 +469,7 @@ Definition
         struct timer_list timer;
         struct work_struct destroy_work;
         u8 data_src_addr[ETH_ALEN];
-        struct net_device * (* get_netdev) (const struct fc_lport *lport);
+        struct net_device * (*get_netdev)(const struct fc_lport *lport);
     }
 
 .. _`fcoe_port.members`:

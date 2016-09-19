@@ -416,8 +416,8 @@ Definition
         const int constant;
         const int slope_pcb;
         const int constant_pcb;
-        int (* register_cooling) (struct ti_bandgap *bgp, int id);
-        int (* unregister_cooling) (struct ti_bandgap *bgp, int id);
+        int (*register_cooling)(struct ti_bandgap *bgp, int id);
+        int (*unregister_cooling)(struct ti_bandgap *bgp, int id);
     }
 
 .. _`ti_temp_sensor.members`:
@@ -489,9 +489,9 @@ Definition
         char *fclock_name;
         char *div_ck_name;
         int sensor_count;
-        int (* report_temperature) (struct ti_bandgap *bgp, int id);
-        int (* expose_sensor) (struct ti_bandgap *bgp, int id, char *domain);
-        int (* remove_sensor) (struct ti_bandgap *bgp, int id);
+        int (*report_temperature)(struct ti_bandgap *bgp, int id);
+        int (*expose_sensor)(struct ti_bandgap *bgp, int id, char *domain);
+        int (*remove_sensor)(struct ti_bandgap *bgp, int id);
         struct ti_temp_sensor sensors[];
     }
 

@@ -130,7 +130,7 @@ Definition
 .. code-block:: c
 
     struct ssp_sensor_data {
-        int (* process_data) (struct iio_dev *indio_dev, void *buf,int64_t timestamp);
+        int (*process_data)(struct iio_dev *indio_dev, void *buf,int64_t timestamp);
         enum ssp_sensor_type type;
         u8 *buffer;
     }

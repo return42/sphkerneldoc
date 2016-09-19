@@ -437,7 +437,7 @@ Definition
 
     struct dma_router {
         struct device *dev;
-        void (* route_free) (struct device *dev, void *route_data);
+        void (*route_free)(struct device *dev, void *route_data);
     }
 
 .. _`dma_router.members`:
@@ -836,8 +836,8 @@ Definition
         enum dma_ctrl_flags flags;
         dma_addr_t phys;
         struct dma_chan *chan;
-        dma_cookie_t (* tx_submit) (struct dma_async_tx_descriptor *tx);
-        int (* desc_free) (struct dma_async_tx_descriptor *tx);
+        dma_cookie_t (*tx_submit)(struct dma_async_tx_descriptor *tx);
+        int (*desc_free)(struct dma_async_tx_descriptor *tx);
         dma_async_tx_callback callback;
         void *callback_param;
         struct dmaengine_unmap_data *unmap;
@@ -1093,28 +1093,28 @@ Definition
         u32 max_burst;
         bool descriptor_reuse;
         enum dma_residue_granularity residue_granularity;
-        int (* device_alloc_chan_resources) (struct dma_chan *chan);
-        void (* device_free_chan_resources) (struct dma_chan *chan);
-        struct dma_async_tx_descriptor *(* device_prep_dma_memcpy) (struct dma_chan *chan, dma_addr_t dst, dma_addr_t src,size_t len, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_xor) (struct dma_chan *chan, dma_addr_t dst, dma_addr_t *src,unsigned int src_cnt, size_t len, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_xor_val) (struct dma_chan *chan, dma_addr_t *src, unsigned int src_cnt,size_t len, enum sum_check_flags *result, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_pq) (struct dma_chan *chan, dma_addr_t *dst, dma_addr_t *src,unsigned int src_cnt, const unsigned char *scf,size_t len, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_pq_val) (struct dma_chan *chan, dma_addr_t *pq, dma_addr_t *src,unsigned int src_cnt, const unsigned char *scf, size_t len,enum sum_check_flags *pqres, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_memset) (struct dma_chan *chan, dma_addr_t dest, int value, size_t len,unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_memset_sg) (struct dma_chan *chan, struct scatterlist *sg,unsigned int nents, int value, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_interrupt) (struct dma_chan *chan, unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_sg) (struct dma_chan *chan,struct scatterlist *dst_sg, unsigned int dst_nents,struct scatterlist *src_sg, unsigned int src_nents,unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_slave_sg) (struct dma_chan *chan, struct scatterlist *sgl,unsigned int sg_len, enum dma_transfer_direction direction,unsigned long flags, void *context);
-        struct dma_async_tx_descriptor *(* device_prep_dma_cyclic) (struct dma_chan *chan, dma_addr_t buf_addr, size_t buf_len,size_t period_len, enum dma_transfer_direction direction,unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_interleaved_dma) (struct dma_chan *chan, struct dma_interleaved_template *xt,unsigned long flags);
-        struct dma_async_tx_descriptor *(* device_prep_dma_imm_data) (struct dma_chan *chan, dma_addr_t dst, u64 data,unsigned long flags);
-        int (* device_config) (struct dma_chan *chan,struct dma_slave_config *config);
-        int (* device_pause) (struct dma_chan *chan);
-        int (* device_resume) (struct dma_chan *chan);
-        int (* device_terminate_all) (struct dma_chan *chan);
-        void (* device_synchronize) (struct dma_chan *chan);
-        enum dma_status (* device_tx_status) (struct dma_chan *chan,dma_cookie_t cookie,struct dma_tx_state *txstate);
-        void (* device_issue_pending) (struct dma_chan *chan);
+        int (*device_alloc_chan_resources)(struct dma_chan *chan);
+        void (*device_free_chan_resources)(struct dma_chan *chan);
+        struct dma_async_tx_descriptor *(*device_prep_dma_memcpy)(struct dma_chan *chan, dma_addr_t dst, dma_addr_t src,size_t len, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_xor)(struct dma_chan *chan, dma_addr_t dst, dma_addr_t *src,unsigned int src_cnt, size_t len, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_xor_val)(struct dma_chan *chan, dma_addr_t *src, unsigned int src_cnt,size_t len, enum sum_check_flags *result, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_pq)(struct dma_chan *chan, dma_addr_t *dst, dma_addr_t *src,unsigned int src_cnt, const unsigned char *scf,size_t len, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_pq_val)(struct dma_chan *chan, dma_addr_t *pq, dma_addr_t *src,unsigned int src_cnt, const unsigned char *scf, size_t len,enum sum_check_flags *pqres, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_memset)(struct dma_chan *chan, dma_addr_t dest, int value, size_t len,unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_memset_sg)(struct dma_chan *chan, struct scatterlist *sg,unsigned int nents, int value, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_interrupt)(struct dma_chan *chan, unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_sg)(struct dma_chan *chan,struct scatterlist *dst_sg, unsigned int dst_nents,struct scatterlist *src_sg, unsigned int src_nents,unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_slave_sg)(struct dma_chan *chan, struct scatterlist *sgl,unsigned int sg_len, enum dma_transfer_direction direction,unsigned long flags, void *context);
+        struct dma_async_tx_descriptor *(*device_prep_dma_cyclic)(struct dma_chan *chan, dma_addr_t buf_addr, size_t buf_len,size_t period_len, enum dma_transfer_direction direction,unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_interleaved_dma)(struct dma_chan *chan, struct dma_interleaved_template *xt,unsigned long flags);
+        struct dma_async_tx_descriptor *(*device_prep_dma_imm_data)(struct dma_chan *chan, dma_addr_t dst, u64 data,unsigned long flags);
+        int (*device_config)(struct dma_chan *chan,struct dma_slave_config *config);
+        int (*device_pause)(struct dma_chan *chan);
+        int (*device_resume)(struct dma_chan *chan);
+        int (*device_terminate_all)(struct dma_chan *chan);
+        void (*device_synchronize)(struct dma_chan *chan);
+        enum dma_status (*device_tx_status)(struct dma_chan *chan,dma_cookie_t cookie,struct dma_tx_state *txstate);
+        void (*device_issue_pending)(struct dma_chan *chan);
     }
 
 .. _`dma_device.members`:

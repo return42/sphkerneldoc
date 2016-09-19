@@ -356,7 +356,7 @@ Definition
         u32 desc_submitcount;
         u32 residue;
         struct xilinx_axidma_tx_segment *seg_v;
-        void (* start_transfer) (struct xilinx_dma_chan *chan);
+        void (*start_transfer)(struct xilinx_dma_chan *chan);
     }
 
 .. _`xilinx_dma_chan.members`:

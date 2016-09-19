@@ -225,7 +225,7 @@ acpi_dev_free_resource_list
 acpi_dev_get_resources
 ======================
 
-.. c:function:: int acpi_dev_get_resources(struct acpi_device *adev, struct list_head *list, int (*) preproc (struct acpi_resource *, void *, void *preproc_data)
+.. c:function:: int acpi_dev_get_resources(struct acpi_device *adev, struct list_head *list, int (*preproc)(struct acpi_resource *, void *), void *preproc_data)
 
     Get current resources of a device.
 
@@ -235,7 +235,7 @@ acpi_dev_get_resources
     :param struct list_head \*list:
         Head of the resultant list of resources (must be empty).
 
-    :param (int (\*) preproc (struct acpi_resource \*, void \*):
+    :param int (\*preproc)(struct acpi_resource \*, void \*):
         The caller's preprocessing routine.
 
     :param void \*preproc_data:

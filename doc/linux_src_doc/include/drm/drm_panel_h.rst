@@ -18,12 +18,12 @@ Definition
 .. code-block:: c
 
     struct drm_panel_funcs {
-        int (* disable) (struct drm_panel *panel);
-        int (* unprepare) (struct drm_panel *panel);
-        int (* prepare) (struct drm_panel *panel);
-        int (* enable) (struct drm_panel *panel);
-        int (* get_modes) (struct drm_panel *panel);
-        int (* get_timings) (struct drm_panel *panel, unsigned int num_timings,struct display_timing *timings);
+        int (*disable)(struct drm_panel *panel);
+        int (*unprepare)(struct drm_panel *panel);
+        int (*prepare)(struct drm_panel *panel);
+        int (*enable)(struct drm_panel *panel);
+        int (*get_modes)(struct drm_panel *panel);
+        int (*get_timings)(struct drm_panel *panel, unsigned int num_timings,struct display_timing *timings);
     }
 
 .. _`drm_panel_funcs.members`:

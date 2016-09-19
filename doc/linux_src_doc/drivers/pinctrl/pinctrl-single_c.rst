@@ -354,7 +354,7 @@ Definition
         int irq;
         unsigned irq_enable_mask;
         unsigned irq_status_mask;
-        void (* rearm) (void);
+        void (*rearm)(void);
     }
 
 .. _`pcs_soc_data.members`:
@@ -426,8 +426,8 @@ Definition
         unsigned ngroups;
         unsigned nfuncs;
         struct pinctrl_desc desc;
-        unsigned (* read) (void __iomem *reg);
-        void (* write) (unsigned val, void __iomem *reg);
+        unsigned (*read)(void __iomem *reg);
+        void (*write)(unsigned val, void __iomem *reg);
     }
 
 .. _`pcs_device.members`:

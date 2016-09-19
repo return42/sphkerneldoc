@@ -49,7 +49,7 @@ struct device refcount incremented by one, or NULL on failure.
 of_phy_connect
 ==============
 
-.. c:function:: struct phy_device *of_phy_connect(struct net_device *dev, struct device_node *phy_np, void (*) hndlr (struct net_device *, u32 flags, phy_interface_t iface)
+.. c:function:: struct phy_device *of_phy_connect(struct net_device *dev, struct device_node *phy_np, void (*hndlr)(struct net_device *), u32 flags, phy_interface_t iface)
 
     Connect to the phy described in the device tree
 
@@ -59,7 +59,7 @@ of_phy_connect
     :param struct device_node \*phy_np:
         Pointer to device tree node for the PHY
 
-    :param (void (\*) hndlr (struct net_device \*):
+    :param void (\*hndlr)(struct net_device \*):
         Link state callback for the network device
 
     :param u32 flags:

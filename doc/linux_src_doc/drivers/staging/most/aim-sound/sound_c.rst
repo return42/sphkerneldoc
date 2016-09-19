@@ -30,7 +30,7 @@ Definition
         bool is_stream_running;
         struct task_struct *playback_task;
         wait_queue_head_t playback_waitq;
-        void (* copy_fn) (void *alsa, void *most, unsigned int bytes);
+        void (*copy_fn)(void *alsa, void *most, unsigned int bytes);
     }
 
 .. _`channel.members`:

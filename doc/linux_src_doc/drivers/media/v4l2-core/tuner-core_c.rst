@@ -6,7 +6,7 @@
 set_type
 ========
 
-.. c:function:: void set_type(struct i2c_client *c, unsigned int type, unsigned int new_mode_mask, void *new_config, int (*) tuner_callback (void *dev, int component, int cmd, int arg)
+.. c:function:: void set_type(struct i2c_client *c, unsigned int type, unsigned int new_mode_mask, void *new_config, int (*tuner_callback)(void *dev, int component, int cmd, int arg))
 
     Sets the tuner type for a given device
 
@@ -22,7 +22,7 @@ set_type
     :param void \*new_config:
         an optional parameter used by a few tuners to adjust
 
-    :param (int (\*) tuner_callback (void \*dev, int component, int cmd, int arg):
+    :param int (\*tuner_callback)(void \*dev, int component, int cmd, int arg):
         an optional function to be called when switching
         to analog mode
 

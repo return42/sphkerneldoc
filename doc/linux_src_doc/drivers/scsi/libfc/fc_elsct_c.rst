@@ -6,7 +6,7 @@
 fc_elsct_send
 =============
 
-.. c:function:: struct fc_seq *fc_elsct_send(struct fc_lport *lport, u32 did, struct fc_frame *fp, unsigned int op, void (*) resp (struct fc_seq *, struct fc_frame *, void *, void *arg, u32 timer_msec)
+.. c:function:: struct fc_seq *fc_elsct_send(struct fc_lport *lport, u32 did, struct fc_frame *fp, unsigned int op, void (*resp)(struct fc_seq *, struct fc_frame *, void *), void *arg, u32 timer_msec)
 
     Send an ELS or CT frame
 
@@ -22,7 +22,7 @@ fc_elsct_send
     :param unsigned int op:
         The operational code
 
-    :param (void (\*) resp (struct fc_seq \*, struct fc_frame \*, void \*):
+    :param void (\*resp)(struct fc_seq \*, struct fc_frame \*, void \*):
         The callback routine when the response is received
 
     :param void \*arg:

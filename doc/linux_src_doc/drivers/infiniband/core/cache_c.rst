@@ -6,7 +6,7 @@
 ib_cache_gid_find_by_filter
 ===========================
 
-.. c:function:: int ib_cache_gid_find_by_filter(struct ib_device *ib_dev, const union ib_gid *gid, u8 port, bool (*) filter (const union ib_gid *, const struct ib_gid_attr *, void *, void *context, u16 *index)
+.. c:function:: int ib_cache_gid_find_by_filter(struct ib_device *ib_dev, const union ib_gid *gid, u8 port, bool (*filter)(const union ib_gid *, const struct ib_gid_attr *, void *), void *context, u16 *index)
 
     Returns the GID table index where a specified GID value occurs
 
@@ -19,7 +19,7 @@ ib_cache_gid_find_by_filter
     :param u8 port:
         *undescribed*
 
-    :param (bool (\*) filter (const union ib_gid \*, const struct ib_gid_attr \*, void \*):
+    :param bool (\*filter)(const union ib_gid \*, const struct ib_gid_attr \*, void \*):
         The filter function is executed on any matching GID in the table.
         If the filter function returns true, the corresponding index is returned,
         otherwise, we continue searching the GID table. It's guaranteed that

@@ -1068,7 +1068,7 @@ the Beacon and Atim queues.
 rt2x00queue_for_each_entry
 ==========================
 
-.. c:function:: bool rt2x00queue_for_each_entry(struct data_queue *queue, enum queue_index start, enum queue_index end, void *data, bool (*) fn (struct queue_entry *entry, void *data)
+.. c:function:: bool rt2x00queue_for_each_entry(struct data_queue *queue, enum queue_index start, enum queue_index end, void *data, bool (*fn)(struct queue_entry *entry, void *data))
 
     Loop through all entries in the queue
 
@@ -1084,7 +1084,7 @@ rt2x00queue_for_each_entry
     :param void \*data:
         Data to pass to the callback function
 
-    :param (bool (\*) fn (struct queue_entry \*entry, void \*data):
+    :param bool (\*fn)(struct queue_entry \*entry, void \*data):
         The function to call for each \ :c:type:`struct queue_entry <queue_entry>`\ 
 
 .. _`rt2x00queue_for_each_entry.description`:

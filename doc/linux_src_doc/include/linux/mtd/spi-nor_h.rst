@@ -31,16 +31,16 @@ Definition
         bool sst_write_second;
         u32 flags;
         u8 cmd_buf[SPI_NOR_MAX_CMD_SIZE];
-        int (* prepare) (struct spi_nor *nor, enum spi_nor_ops ops);
-        void (* unprepare) (struct spi_nor *nor, enum spi_nor_ops ops);
-        int (* read_reg) (struct spi_nor *nor, u8 opcode, u8 *buf, int len);
-        int (* write_reg) (struct spi_nor *nor, u8 opcode, u8 *buf, int len);
-        int (* read) (struct spi_nor *nor, loff_t from,size_t len, size_t *retlen, u_char *read_buf);
-        void (* write) (struct spi_nor *nor, loff_t to,size_t len, size_t *retlen, const u_char *write_buf);
-        int (* erase) (struct spi_nor *nor, loff_t offs);
-        int (* flash_lock) (struct spi_nor *nor, loff_t ofs, uint64_t len);
-        int (* flash_unlock) (struct spi_nor *nor, loff_t ofs, uint64_t len);
-        int (* flash_is_locked) (struct spi_nor *nor, loff_t ofs, uint64_t len);
+        int (*prepare)(struct spi_nor *nor, enum spi_nor_ops ops);
+        void (*unprepare)(struct spi_nor *nor, enum spi_nor_ops ops);
+        int (*read_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);
+        int (*write_reg)(struct spi_nor *nor, u8 opcode, u8 *buf, int len);
+        int (*read)(struct spi_nor *nor, loff_t from,size_t len, size_t *retlen, u_char *read_buf);
+        void (*write)(struct spi_nor *nor, loff_t to,size_t len, size_t *retlen, const u_char *write_buf);
+        int (*erase)(struct spi_nor *nor, loff_t offs);
+        int (*flash_lock)(struct spi_nor *nor, loff_t ofs, uint64_t len);
+        int (*flash_unlock)(struct spi_nor *nor, loff_t ofs, uint64_t len);
+        int (*flash_is_locked)(struct spi_nor *nor, loff_t ofs, uint64_t len);
         void *priv;
     }
 

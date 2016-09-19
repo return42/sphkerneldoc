@@ -82,8 +82,8 @@ Definition
         #define LIS3_USE_BLOCK_READ 0x02
         u16 driver_features;
         int default_rate;
-        int (* setup_resources) (void);
-        int (* release_resources) (void);
+        int (*setup_resources)(void);
+        int (*release_resources)(void);
         s16 st_min_limits[3];
         s16 st_max_limits[3];
         int irq2;

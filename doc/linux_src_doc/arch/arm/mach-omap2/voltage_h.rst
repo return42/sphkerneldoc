@@ -70,11 +70,11 @@ Definition
         struct omap_voltdm_pmic *pmic;
         struct omap_vp_param *vp_param;
         struct omap_vc_param *vc_param;
-        u32 (* read) (u8 offset);
-        void (* write) (u32 val, u8 offset);
-        u32 (* rmw) (u32 mask, u32 bits, u8 offset);
+        u32 (*read)(u8 offset);
+        void (*write)(u32 val, u8 offset);
+        u32 (*rmw)(u32 mask, u32 bits, u8 offset);
         union sys_clk;
-        int (* scale) (struct voltagedomain *voltdm,unsigned long target_volt);
+        int (*scale)(struct voltagedomain *voltdm,unsigned long target_volt);
         u32 nominal_volt;
         struct omap_volt_data *volt_data;
     }
@@ -164,8 +164,8 @@ Definition
         bool i2c_high_speed;
         u32 i2c_pad_load;
         u8 i2c_mcode;
-        unsigned long (* vsel_to_uv) (const u8 vsel);
-        u8 (* uv_to_vsel) (unsigned long uV);
+        unsigned long (*vsel_to_uv)(const u8 vsel);
+        u8 (*uv_to_vsel)(unsigned long uV);
     }
 
 .. _`omap_voltdm_pmic.members`:

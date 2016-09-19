@@ -22,8 +22,8 @@ Definition
         struct parallel_data *pd;
         int cb_cpu;
         int info;
-        void (* parallel) (struct padata_priv *padata);
-        void (* serial) (struct padata_priv *padata);
+        void (*parallel)(struct padata_priv *padata);
+        void (*serial)(struct padata_priv *padata);
     }
 
 .. _`padata_priv.members`:

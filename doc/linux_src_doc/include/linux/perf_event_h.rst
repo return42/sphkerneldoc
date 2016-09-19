@@ -122,31 +122,31 @@ Definition
         int task_ctx_nr;
         int hrtimer_interval_ms;
         unsigned int nr_addr_filters;
-        void (* pmu_enable) (struct pmu *pmu);
-        void (* pmu_disable) (struct pmu *pmu);
-        int (* event_init) (struct perf_event *event);
-        void (* event_mapped) (struct perf_event *event);
-        void (* event_unmapped) (struct perf_event *event);
+        void (*pmu_enable)(struct pmu *pmu);
+        void (*pmu_disable)(struct pmu *pmu);
+        int (*event_init)(struct perf_event *event);
+        void (*event_mapped)(struct perf_event *event);
+        void (*event_unmapped)(struct perf_event *event);
         #define PERF_EF_START 0x01
         #define PERF_EF_RELOAD 0x02
         #define PERF_EF_UPDATE 0x04
-        int (* add) (struct perf_event *event, int flags);
-        void (* del) (struct perf_event *event, int flags);
-        void (* start) (struct perf_event *event, int flags);
-        void (* stop) (struct perf_event *event, int flags);
-        void (* read) (struct perf_event *event);
-        void (* start_txn) (struct pmu *pmu, unsigned int txn_flags);
-        int (* commit_txn) (struct pmu *pmu);
-        void (* cancel_txn) (struct pmu *pmu);
-        int (* event_idx) (struct perf_event *event);
-        void (* sched_task) (struct perf_event_context *ctx,bool sched_in);
+        int (*add)(struct perf_event *event, int flags);
+        void (*del)(struct perf_event *event, int flags);
+        void (*start)(struct perf_event *event, int flags);
+        void (*stop)(struct perf_event *event, int flags);
+        void (*read)(struct perf_event *event);
+        void (*start_txn)(struct pmu *pmu, unsigned int txn_flags);
+        int (*commit_txn)(struct pmu *pmu);
+        void (*cancel_txn)(struct pmu *pmu);
+        int (*event_idx)(struct perf_event *event);
+        void (*sched_task)(struct perf_event_context *ctx,bool sched_in);
         size_t task_ctx_size;
-        u64 (* count) (struct perf_event *event);
-        void *(* setup_aux) (int cpu, void **pages,int nr_pages, bool overwrite);
-        void (* free_aux) (void *aux);
-        int (* addr_filters_validate) (struct list_head *filters);
-        void (* addr_filters_sync) (struct perf_event *event);
-        int (* filter_match) (struct perf_event *event);
+        u64 (*count)(struct perf_event *event);
+        void *(*setup_aux)(int cpu, void **pages,int nr_pages, bool overwrite);
+        void (*free_aux)(void *aux);
+        int (*addr_filters_validate)(struct list_head *filters);
+        void (*addr_filters_sync)(struct perf_event *event);
+        int (*filter_match)(struct perf_event *event);
     }
 
 .. _`pmu.members`:
@@ -474,11 +474,11 @@ Definition
         struct perf_addr_filters_head addr_filters;
         unsigned long *addr_filters_offs;
         unsigned long addr_filters_gen;
-        void (* destroy) (struct perf_event *);
+        void (*destroy)(struct perf_event *);
         struct rcu_head rcu_head;
         struct pid_namespace *ns;
         u64 id;
-        u64 (* clock) (void);
+        u64 (*clock)(void);
         perf_overflow_handler_t overflow_handler;
         void *overflow_handler_context;
         #ifdef CONFIG_EVENT_TRACING

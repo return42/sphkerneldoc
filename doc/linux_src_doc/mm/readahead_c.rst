@@ -6,7 +6,7 @@
 read_cache_pages
 ================
 
-.. c:function:: int read_cache_pages(struct address_space *mapping, struct list_head *pages, int (*) filler (void *, struct page *, void *data)
+.. c:function:: int read_cache_pages(struct address_space *mapping, struct list_head *pages, int (*filler)(void *, struct page *), void *data)
 
     populate an address space with some pages & start reads against them
 
@@ -17,7 +17,7 @@ read_cache_pages
         The address of a list_head which contains the target pages.  These
         pages have their ->index populated and are otherwise uninitialised.
 
-    :param (int (\*) filler (void \*, struct page \*):
+    :param int (\*filler)(void \*, struct page \*):
         callback routine for filling a single page.
 
     :param void \*data:

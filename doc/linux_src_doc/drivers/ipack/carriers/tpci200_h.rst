@@ -20,7 +20,7 @@ Definition
     struct slot_irq {
         struct ipack_device *holder;
         int vector;
-        irqreturn_t (* handler) (void *);
+        irqreturn_t (*handler)(void *);
         void *arg;
     }
 

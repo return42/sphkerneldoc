@@ -781,7 +781,7 @@ Definition
         int used;
         int size;
         int jhead;
-        int (* sync_callback) (struct ubifs_info *c, int lnum, int free, int pad);
+        int (*sync_callback)(struct ubifs_info *c, int lnum, int free, int pad);
         struct mutex io_mutex;
         spinlock_t lock;
         ktime_t softlimit;
@@ -1633,7 +1633,7 @@ Definition
         int main_first;
         long long main_bytes;
         uint8_t key_hash_type;
-        uint32_t (* key_hash) (const char *str, int len);
+        uint32_t (*key_hash)(const char *str, int len);
         int key_fmt;
         int key_len;
         int fanout;

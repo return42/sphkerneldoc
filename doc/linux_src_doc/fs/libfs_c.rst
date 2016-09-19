@@ -191,7 +191,7 @@ advanced by this number, or negative value is returned on error.
 generic_fh_to_dentry
 ====================
 
-.. c:function:: struct dentry *generic_fh_to_dentry(struct super_block *sb, struct fid *fid, int fh_len, int fh_type, struct inode *(*) get_inode (struct super_block *sb, u64 ino, u32 gen)
+.. c:function:: struct dentry *generic_fh_to_dentry(struct super_block *sb, struct fid *fid, int fh_len, int fh_type, struct inode *(*get_inode)(struct super_block *sb, u64 ino, u32 gen))
 
     generic helper for the fh_to_dentry export operation
 
@@ -207,7 +207,7 @@ generic_fh_to_dentry
     :param int fh_type:
         type of file handle
 
-    :param (struct inode \*(\*) get_inode (struct super_block \*sb, u64 ino, u32 gen):
+    :param struct inode \*(\*get_inode)(struct super_block \*sb, u64 ino, u32 gen):
         filesystem callback to retrieve inode
 
 .. _`generic_fh_to_dentry.description`:
@@ -224,7 +224,7 @@ inode for the object specified in the file handle.
 generic_fh_to_parent
 ====================
 
-.. c:function:: struct dentry *generic_fh_to_parent(struct super_block *sb, struct fid *fid, int fh_len, int fh_type, struct inode *(*) get_inode (struct super_block *sb, u64 ino, u32 gen)
+.. c:function:: struct dentry *generic_fh_to_parent(struct super_block *sb, struct fid *fid, int fh_len, int fh_type, struct inode *(*get_inode)(struct super_block *sb, u64 ino, u32 gen))
 
     generic helper for the fh_to_parent export operation
 
@@ -240,7 +240,7 @@ generic_fh_to_parent
     :param int fh_type:
         type of file handle
 
-    :param (struct inode \*(\*) get_inode (struct super_block \*sb, u64 ino, u32 gen):
+    :param struct inode \*(\*get_inode)(struct super_block \*sb, u64 ino, u32 gen):
         filesystem callback to retrieve inode
 
 .. _`generic_fh_to_parent.description`:

@@ -28,8 +28,8 @@ Definition
         __u8 led_def_curr;
         #define BH1770_NEUTRAL_GA 16384
         __u32 glass_attenuation;
-        int (* setup_resources) (void);
-        int (* release_resources) (void);
+        int (*setup_resources)(void);
+        int (*release_resources)(void);
     }
 
 .. _`bh1770_platform_data.members`:

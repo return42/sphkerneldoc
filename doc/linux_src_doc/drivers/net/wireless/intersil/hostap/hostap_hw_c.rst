@@ -117,7 +117,7 @@ called only from user process context.
 hfa384x_cmd_callback
 ====================
 
-.. c:function:: int hfa384x_cmd_callback(struct net_device *dev, u16 cmd, u16 param0, void (*) callback (struct net_device *dev, long context, u16 resp0, u16 status, long context)
+.. c:function:: int hfa384x_cmd_callback(struct net_device *dev, u16 cmd, u16 param0, void (*callback)(struct net_device *dev, long context, u16 resp0, u16 status), long context)
 
     Issue a Prism2 command; callback when completed
 
@@ -130,7 +130,7 @@ hfa384x_cmd_callback
     :param u16 param0:
         value for Param0 register
 
-    :param (void (\*) callback (struct net_device \*dev, long context, u16 resp0, u16 status):
+    :param void (\*callback)(struct net_device \*dev, long context, u16 resp0, u16 status):
         command completion callback function (\ ``NULL``\  = no callback)
 
     :param long context:

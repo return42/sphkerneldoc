@@ -19,15 +19,15 @@ Definition
 
     struct i2c_driver {
         unsigned int class;
-        int (* attach_adapter) (struct i2c_adapter *);
-        int (* probe) (struct i2c_client *, const struct i2c_device_id *);
-        int (* remove) (struct i2c_client *);
-        void (* shutdown) (struct i2c_client *);
-        void (* alert) (struct i2c_client *, unsigned int data);
-        int (* command) (struct i2c_client *client, unsigned int cmd, void *arg);
+        int (*attach_adapter)(struct i2c_adapter *);
+        int (*probe)(struct i2c_client *, const struct i2c_device_id *);
+        int (*remove)(struct i2c_client *);
+        void (*shutdown)(struct i2c_client *);
+        void (*alert)(struct i2c_client *, unsigned int data);
+        int (*command)(struct i2c_client *client, unsigned int cmd, void *arg);
         struct device_driver driver;
         const struct i2c_device_id *id_table;
-        int (* detect) (struct i2c_client *, struct i2c_board_info *);
+        int (*detect)(struct i2c_client *, struct i2c_board_info *);
         const unsigned short *address_list;
         struct list_head clients;
     }
@@ -283,12 +283,12 @@ Definition
 .. code-block:: c
 
     struct i2c_algorithm {
-        int (* master_xfer) (struct i2c_adapter *adap, struct i2c_msg *msgs,int num);
-        int (* smbus_xfer) (struct i2c_adapter *adap, u16 addr,unsigned short flags, char read_write,u8 command, int size, union i2c_smbus_data *data);
-        u32 (* functionality) (struct i2c_adapter *);
+        int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs,int num);
+        int (*smbus_xfer)(struct i2c_adapter *adap, u16 addr,unsigned short flags, char read_write,u8 command, int size, union i2c_smbus_data *data);
+        u32 (*functionality)(struct i2c_adapter *);
         #if IS_ENABLED(CONFIG_I2C_SLAVE)
-        int (* reg_slave) (struct i2c_client *client);
-        int (* unreg_slave) (struct i2c_client *client);
+        int (*reg_slave)(struct i2c_client *client);
+        int (*unreg_slave)(struct i2c_client *client);
         #endif
     }
 
@@ -391,12 +391,12 @@ Definition
 .. code-block:: c
 
     struct i2c_bus_recovery_info {
-        int (* recover_bus) (struct i2c_adapter *);
-        int (* get_scl) (struct i2c_adapter *);
-        void (* set_scl) (struct i2c_adapter *, int val);
-        int (* get_sda) (struct i2c_adapter *);
-        void (* prepare_recovery) (struct i2c_adapter *);
-        void (* unprepare_recovery) (struct i2c_adapter *);
+        int (*recover_bus)(struct i2c_adapter *);
+        int (*get_scl)(struct i2c_adapter *);
+        void (*set_scl)(struct i2c_adapter *, int val);
+        int (*get_sda)(struct i2c_adapter *);
+        void (*prepare_recovery)(struct i2c_adapter *);
+        void (*unprepare_recovery)(struct i2c_adapter *);
         int scl_gpio;
         int sda_gpio;
     }

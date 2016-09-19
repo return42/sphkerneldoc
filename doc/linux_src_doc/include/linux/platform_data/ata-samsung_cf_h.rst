@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct s3c_ide_platdata {
-        void (* setup_gpio) (void);
+        void (*setup_gpio)(void);
     }
 
 .. _`s3c_ide_platdata.members`:

@@ -25,15 +25,15 @@ Definition
         const struct attribute_group **bus_groups;
         const struct attribute_group **dev_groups;
         const struct attribute_group **drv_groups;
-        int (* match) (struct device *dev, struct device_driver *drv);
-        int (* uevent) (struct device *dev, struct kobj_uevent_env *env);
-        int (* probe) (struct device *dev);
-        int (* remove) (struct device *dev);
-        void (* shutdown) (struct device *dev);
-        int (* online) (struct device *dev);
-        int (* offline) (struct device *dev);
-        int (* suspend) (struct device *dev, pm_message_t state);
-        int (* resume) (struct device *dev);
+        int (*match)(struct device *dev, struct device_driver *drv);
+        int (*uevent)(struct device *dev, struct kobj_uevent_env *env);
+        int (*probe)(struct device *dev);
+        int (*remove)(struct device *dev);
+        void (*shutdown)(struct device *dev);
+        int (*online)(struct device *dev);
+        int (*offline)(struct device *dev);
+        int (*suspend)(struct device *dev, pm_message_t state);
+        int (*resume)(struct device *dev);
         const struct dev_pm_ops *pm;
         const struct iommu_ops *iommu_ops;
         struct subsys_private *p;
@@ -208,11 +208,11 @@ Definition
         enum probe_type probe_type;
         const struct of_device_id *of_match_table;
         const struct acpi_device_id *acpi_match_table;
-        int (* probe) (struct device *dev);
-        int (* remove) (struct device *dev);
-        void (* shutdown) (struct device *dev);
-        int (* suspend) (struct device *dev, pm_message_t state);
-        int (* resume) (struct device *dev);
+        int (*probe)(struct device *dev);
+        int (*remove)(struct device *dev);
+        void (*shutdown)(struct device *dev);
+        int (*suspend)(struct device *dev, pm_message_t state);
+        int (*resume)(struct device *dev);
         const struct attribute_group **groups;
         const struct dev_pm_ops *pm;
         struct driver_private *p;
@@ -310,8 +310,8 @@ Definition
         const char *name;
         struct bus_type *subsys;
         struct list_head node;
-        int (* add_dev) (struct device *dev, struct subsys_interface *sif);
-        void (* remove_dev) (struct device *dev, struct subsys_interface *sif);
+        int (*add_dev)(struct device *dev, struct subsys_interface *sif);
+        void (*remove_dev)(struct device *dev, struct subsys_interface *sif);
     }
 
 .. _`subsys_interface.members`:
@@ -366,14 +366,14 @@ Definition
         struct class_attribute *class_attrs;
         const struct attribute_group **dev_groups;
         struct kobject *dev_kobj;
-        int (* dev_uevent) (struct device *dev, struct kobj_uevent_env *env);
-        char *(* devnode) (struct device *dev, umode_t *mode);
-        void (* class_release) (struct class *class);
-        void (* dev_release) (struct device *dev);
-        int (* suspend) (struct device *dev, pm_message_t state);
-        int (* resume) (struct device *dev);
+        int (*dev_uevent)(struct device *dev, struct kobj_uevent_env *env);
+        char *(*devnode)(struct device *dev, umode_t *mode);
+        void (*class_release)(struct class *class);
+        void (*dev_release)(struct device *dev);
+        int (*suspend)(struct device *dev, pm_message_t state);
+        int (*resume)(struct device *dev);
         const struct kobj_ns_type_operations *ns_type;
-        const void *(* namespace) (struct device *dev);
+        const void *(*namespace)(struct device *dev);
         const struct dev_pm_ops *pm;
         struct subsys_private *p;
     }
@@ -503,7 +503,7 @@ Definition
         struct klist_node knode_class;
         struct class *class;
         const struct attribute_group **groups;
-        void (* release) (struct device *dev);
+        void (*release)(struct device *dev);
         struct iommu_group *iommu_group;
         bool offline_disabled:1;
         bool offline:1;

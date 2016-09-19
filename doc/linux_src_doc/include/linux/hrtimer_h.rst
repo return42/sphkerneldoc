@@ -20,7 +20,7 @@ Definition
     struct hrtimer {
         struct timerqueue_node node;
         ktime_t _softexpires;
-        enum hrtimer_restart (* function) (struct hrtimer *);
+        enum hrtimer_restart (*function)(struct hrtimer *);
         struct hrtimer_clock_base *base;
         u8 state;
         u8 is_rel;
@@ -140,7 +140,7 @@ Definition
         int index;
         clockid_t clockid;
         struct timerqueue_head active;
-        ktime_t (* get_time) (void);
+        ktime_t (*get_time)(void);
         ktime_t offset;
     }
 

@@ -29,7 +29,7 @@ Definition
     struct apd_device_desc {
         unsigned int flags;
         unsigned int fixed_clk_rate;
-        int (* setup) (struct apd_private_data *pdata);
+        int (*setup)(struct apd_private_data *pdata);
     }
 
 .. _`apd_device_desc.members`:

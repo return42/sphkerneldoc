@@ -20,9 +20,9 @@ Definition
     struct omap_rng_pdata {
         u16 *regs;
         u32 data_size;
-        u32 (* data_present) (struct omap_rng_dev *priv);
-        int (* init) (struct omap_rng_dev *priv);
-        void (* cleanup) (struct omap_rng_dev *priv);
+        u32 (*data_present)(struct omap_rng_dev *priv);
+        int (*init)(struct omap_rng_dev *priv);
+        void (*cleanup)(struct omap_rng_dev *priv);
     }
 
 .. _`omap_rng_pdata.members`:

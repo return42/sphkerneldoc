@@ -72,8 +72,8 @@ Definition
         unsigned int keycodemax;
         unsigned int keycodesize;
         void *keycode;
-        int (* setkeycode) (struct input_dev *dev,const struct input_keymap_entry *ke,unsigned int *old_keycode);
-        int (* getkeycode) (struct input_dev *dev,struct input_keymap_entry *ke);
+        int (*setkeycode)(struct input_dev *dev,const struct input_keymap_entry *ke,unsigned int *old_keycode);
+        int (*getkeycode)(struct input_dev *dev,struct input_keymap_entry *ke);
         struct ff_device *ff;
         unsigned int repeat_key;
         struct timer_list timer;
@@ -84,10 +84,10 @@ Definition
         unsigned long led[BITS_TO_LONGS(LED_CNT)];
         unsigned long snd[BITS_TO_LONGS(SND_CNT)];
         unsigned long sw[BITS_TO_LONGS(SW_CNT)];
-        int (* open) (struct input_dev *dev);
-        void (* close) (struct input_dev *dev);
-        int (* flush) (struct input_dev *dev, struct file *file);
-        int (* event) (struct input_dev *dev, unsigned int type, unsigned int code, int value);
+        int (*open)(struct input_dev *dev);
+        void (*close)(struct input_dev *dev);
+        int (*flush)(struct input_dev *dev, struct file *file);
+        int (*event)(struct input_dev *dev, unsigned int type, unsigned int code, int value);
         struct input_handle __rcu *grab;
         spinlock_t event_lock;
         struct mutex mutex;
@@ -296,13 +296,13 @@ Definition
 
     struct input_handler {
         void *private;
-        void (* event) (struct input_handle *handle, unsigned int type, unsigned int code, int value);
-        void (* events) (struct input_handle *handle,const struct input_value *vals, unsigned int count);
-        bool (* filter) (struct input_handle *handle, unsigned int type, unsigned int code, int value);
-        bool (* match) (struct input_handler *handler, struct input_dev *dev);
-        int (* connect) (struct input_handler *handler, struct input_dev *dev, const struct input_device_id *id);
-        void (* disconnect) (struct input_handle *handle);
-        void (* start) (struct input_handle *handle);
+        void (*event)(struct input_handle *handle, unsigned int type, unsigned int code, int value);
+        void (*events)(struct input_handle *handle,const struct input_value *vals, unsigned int count);
+        bool (*filter)(struct input_handle *handle, unsigned int type, unsigned int code, int value);
+        bool (*match)(struct input_handler *handler, struct input_dev *dev);
+        int (*connect)(struct input_handler *handler, struct input_dev *dev, const struct input_device_id *id);
+        void (*disconnect)(struct input_handle *handle);
+        void (*start)(struct input_handle *handle);
         bool legacy_minors;
         int minor;
         const char *name;
@@ -482,12 +482,12 @@ Definition
 .. code-block:: c
 
     struct ff_device {
-        int (* upload) (struct input_dev *dev, struct ff_effect *effect,struct ff_effect *old);
-        int (* erase) (struct input_dev *dev, int effect_id);
-        int (* playback) (struct input_dev *dev, int effect_id, int value);
-        void (* set_gain) (struct input_dev *dev, u16 gain);
-        void (* set_autocenter) (struct input_dev *dev, u16 magnitude);
-        void (* destroy) (struct ff_device *);
+        int (*upload)(struct input_dev *dev, struct ff_effect *effect,struct ff_effect *old);
+        int (*erase)(struct input_dev *dev, int effect_id);
+        int (*playback)(struct input_dev *dev, int effect_id, int value);
+        void (*set_gain)(struct input_dev *dev, u16 gain);
+        void (*set_autocenter)(struct input_dev *dev, u16 magnitude);
+        void (*destroy)(struct ff_device *);
         void *private;
         unsigned long ffbit[BITS_TO_LONGS(FF_CNT)];
         struct mutex mutex;

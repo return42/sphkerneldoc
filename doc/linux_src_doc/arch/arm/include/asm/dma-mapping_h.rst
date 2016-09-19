@@ -110,9 +110,9 @@ driver until the user space mapping has been released.
 dmabounce_register_dev
 ======================
 
-.. c:function:: int dmabounce_register_dev(int (*)  (struct device *, dma_addr_t, size_t, unsigned long, unsigned long, int (*)  (struct device *, dma_addr_t, size_t)
+.. c:function:: int dmabounce_register_dev(int (*)(struct device *, dma_addr_t, size_t), unsigned long, unsigned long, int (*)(struct device *, dma_addr_t, size_t))
 
-    :param (int (\*)  (struct device \*, dma_addr_t, size_t):
+    :param int (\*)(struct device \*, dma_addr_t, size_t):
         *undescribed*
 
     :param unsigned long:
@@ -121,7 +121,7 @@ dmabounce_register_dev
     :param unsigned long:
         *undescribed*
 
-    :param (int (\*)  (struct device \*, dma_addr_t, size_t):
+    :param int (\*)(struct device \*, dma_addr_t, size_t):
         *undescribed*
 
 .. _`dmabounce_register_dev.description`:

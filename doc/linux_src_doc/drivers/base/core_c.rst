@@ -451,7 +451,7 @@ freed by the caller.
 device_for_each_child
 =====================
 
-.. c:function:: int device_for_each_child(struct device *parent, void *data, int (*) fn (struct device *dev, void *data)
+.. c:function:: int device_for_each_child(struct device *parent, void *data, int (*fn)(struct device *dev, void *data))
 
     device child iterator.
 
@@ -461,7 +461,7 @@ device_for_each_child
     :param void \*data:
         data for the callback.
 
-    :param (int (\*) fn (struct device \*dev, void \*data):
+    :param int (\*fn)(struct device \*dev, void \*data):
         function to be called for each device.
 
 .. _`device_for_each_child.description`:
@@ -480,7 +480,7 @@ other than 0, we break out and return that value.
 device_for_each_child_reverse
 =============================
 
-.. c:function:: int device_for_each_child_reverse(struct device *parent, void *data, int (*) fn (struct device *dev, void *data)
+.. c:function:: int device_for_each_child_reverse(struct device *parent, void *data, int (*fn)(struct device *dev, void *data))
 
     device child iterator in reversed order.
 
@@ -490,7 +490,7 @@ device_for_each_child_reverse
     :param void \*data:
         data for the callback.
 
-    :param (int (\*) fn (struct device \*dev, void \*data):
+    :param int (\*fn)(struct device \*dev, void \*data):
         function to be called for each device.
 
 .. _`device_for_each_child_reverse.description`:
@@ -509,7 +509,7 @@ other than 0, we break out and return that value.
 device_find_child
 =================
 
-.. c:function:: struct device *device_find_child(struct device *parent, void *data, int (*) match (struct device *dev, void *data)
+.. c:function:: struct device *device_find_child(struct device *parent, void *data, int (*match)(struct device *dev, void *data))
 
     device iterator for locating a particular device.
 
@@ -519,7 +519,7 @@ device_find_child
     :param void \*data:
         Data to pass to match function
 
-    :param (int (\*) match (struct device \*dev, void \*data):
+    :param int (\*match)(struct device \*dev, void \*data):
         Callback function to check device
 
 .. _`device_find_child.description`:

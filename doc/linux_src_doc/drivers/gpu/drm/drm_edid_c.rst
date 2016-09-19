@@ -129,14 +129,14 @@ Return
 drm_do_get_edid
 ===============
 
-.. c:function:: struct edid *drm_do_get_edid(struct drm_connector *connector, int (*) get_edid_block (void *data, u8 *buf, unsigned int block, size_t len, void *data)
+.. c:function:: struct edid *drm_do_get_edid(struct drm_connector *connector, int (*get_edid_block)(void *data, u8 *buf, unsigned int block, size_t len), void *data)
 
     get EDID data using a custom EDID block read function
 
     :param struct drm_connector \*connector:
         connector we're probing
 
-    :param (int (\*) get_edid_block (void \*data, u8 \*buf, unsigned int block, size_t len):
+    :param int (\*get_edid_block)(void \*data, u8 \*buf, unsigned int block, size_t len):
         EDID block read function
 
     :param void \*data:

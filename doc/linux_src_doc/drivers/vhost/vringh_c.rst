@@ -44,7 +44,7 @@ yourself!
 vringh_getdesc_user
 ===================
 
-.. c:function:: int vringh_getdesc_user(struct vringh *vrh, struct vringh_iov *riov, struct vringh_iov *wiov, bool (*) getrange (struct vringh *vrh, u64 addr, struct vringh_range *r, u16 *head)
+.. c:function:: int vringh_getdesc_user(struct vringh *vrh, struct vringh_iov *riov, struct vringh_iov *wiov, bool (*getrange)(struct vringh *vrh, u64 addr, struct vringh_range *r), u16 *head)
 
     get next available descriptor from userspace ring.
 
@@ -57,7 +57,7 @@ vringh_getdesc_user
     :param struct vringh_iov \*wiov:
         where to put the writable descriptors (or NULL)
 
-    :param (bool (\*) getrange (struct vringh \*vrh, u64 addr, struct vringh_range \*r):
+    :param bool (\*getrange)(struct vringh \*vrh, u64 addr, struct vringh_range \*r):
         function to call to check ranges.
 
     :param u16 \*head:

@@ -21,8 +21,8 @@ Definition
         enum dwc2_hsotg_dmamode dma;
         unsigned int is_osc:1;
         int phy_type;
-        int (* phy_init) (struct platform_device *pdev, int type);
-        int (* phy_exit) (struct platform_device *pdev, int type);
+        int (*phy_init)(struct platform_device *pdev, int type);
+        int (*phy_exit)(struct platform_device *pdev, int type);
     }
 
 .. _`dwc2_hsotg_plat.members`:

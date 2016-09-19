@@ -254,7 +254,7 @@ true if the entry has to be purged now, false otherwise
 batadv_nc_purge_orig_nc_nodes
 =============================
 
-.. c:function:: void batadv_nc_purge_orig_nc_nodes(struct batadv_priv *bat_priv, struct list_head *list, spinlock_t *lock, bool (*) to_purge (struct batadv_priv *, struct batadv_nc_node *)
+.. c:function:: void batadv_nc_purge_orig_nc_nodes(struct batadv_priv *bat_priv, struct list_head *list, spinlock_t *lock, bool (*to_purge)(struct batadv_priv *, struct batadv_nc_node *))
 
     go through list of nc nodes and purge stale entries
 
@@ -267,7 +267,7 @@ batadv_nc_purge_orig_nc_nodes
     :param spinlock_t \*lock:
         nc node list lock
 
-    :param (bool (\*) to_purge (struct batadv_priv \*, struct batadv_nc_node \*):
+    :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_node \*):
         function in charge to decide whether an entry has to be purged or
         not. This function takes the nc node as argument and has to return
         a boolean value: true if the entry has to be deleted, false
@@ -278,7 +278,7 @@ batadv_nc_purge_orig_nc_nodes
 batadv_nc_purge_orig
 ====================
 
-.. c:function:: void batadv_nc_purge_orig(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node, bool (*) to_purge (struct batadv_priv *, struct batadv_nc_node *)
+.. c:function:: void batadv_nc_purge_orig(struct batadv_priv *bat_priv, struct batadv_orig_node *orig_node, bool (*to_purge)(struct batadv_priv *, struct batadv_nc_node *))
 
     purges all nc node data attached of the given originator
 
@@ -288,7 +288,7 @@ batadv_nc_purge_orig
     :param struct batadv_orig_node \*orig_node:
         orig_node with the nc node entries to be purged
 
-    :param (bool (\*) to_purge (struct batadv_priv \*, struct batadv_nc_node \*):
+    :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_node \*):
         function in charge to decide whether an entry has to be purged or
         not. This function takes the nc node as argument and has to return
         a boolean value: true is the entry has to be deleted, false
@@ -311,7 +311,7 @@ batadv_nc_purge_orig_hash
 batadv_nc_purge_paths
 =====================
 
-.. c:function:: void batadv_nc_purge_paths(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, bool (*) to_purge (struct batadv_priv *, struct batadv_nc_path *)
+.. c:function:: void batadv_nc_purge_paths(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, bool (*to_purge)(struct batadv_priv *, struct batadv_nc_path *))
 
     traverse all nc paths part of the hash and remove unused ones
 
@@ -321,7 +321,7 @@ batadv_nc_purge_paths
     :param struct batadv_hashtable \*hash:
         hash table containing the nc paths to check
 
-    :param (bool (\*) to_purge (struct batadv_priv \*, struct batadv_nc_path \*):
+    :param bool (\*to_purge)(struct batadv_priv \*, struct batadv_nc_path \*):
         function in charge to decide whether an entry has to be purged or
         not. This function takes the nc node as argument and has to return
         a boolean value: true is the entry has to be deleted, false
@@ -498,7 +498,7 @@ yet and true otherwise.
 batadv_nc_process_nc_paths
 ==========================
 
-.. c:function:: void batadv_nc_process_nc_paths(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, bool (*) process_fn (struct batadv_priv *, struct batadv_nc_path *, struct batadv_nc_packet *)
+.. c:function:: void batadv_nc_process_nc_paths(struct batadv_priv *bat_priv, struct batadv_hashtable *hash, bool (*process_fn)(struct batadv_priv *, struct batadv_nc_path *, struct batadv_nc_packet *))
 
     traverse given nc packet pool and free timed out nc packets
 
@@ -508,7 +508,7 @@ batadv_nc_process_nc_paths
     :param struct batadv_hashtable \*hash:
         to be processed hash table
 
-    :param (bool (\*) process_fn (struct batadv_priv \*, struct batadv_nc_path \*, struct batadv_nc_packet \*):
+    :param bool (\*process_fn)(struct batadv_priv \*, struct batadv_nc_path \*, struct batadv_nc_packet \*):
         Function called to process given nc packet. Should return true
         to encourage this function to proceed with the next packet.
         Otherwise the rest of the current queue is skipped.

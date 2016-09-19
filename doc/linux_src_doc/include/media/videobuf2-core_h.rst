@@ -18,21 +18,21 @@ Definition
 .. code-block:: c
 
     struct vb2_mem_ops {
-        void *(* alloc) (void *alloc_ctx, unsigned long size,enum dma_data_direction dma_dir,gfp_t gfp_flags);
-        void (* put) (void *buf_priv);
-        struct dma_buf *(* get_dmabuf) (void *buf_priv, unsigned long flags);
-        void *(* get_userptr) (void *alloc_ctx, unsigned long vaddr,unsigned long size,enum dma_data_direction dma_dir);
-        void (* put_userptr) (void *buf_priv);
-        void (* prepare) (void *buf_priv);
-        void (* finish) (void *buf_priv);
-        void *(* attach_dmabuf) (void *alloc_ctx, struct dma_buf *dbuf,unsigned long size,enum dma_data_direction dma_dir);
-        void (* detach_dmabuf) (void *buf_priv);
-        int (* map_dmabuf) (void *buf_priv);
-        void (* unmap_dmabuf) (void *buf_priv);
-        void *(* vaddr) (void *buf_priv);
-        void *(* cookie) (void *buf_priv);
-        unsigned int (* num_users) (void *buf_priv);
-        int (* mmap) (void *buf_priv, struct vm_area_struct *vma);
+        void *(*alloc)(void *alloc_ctx, unsigned long size,enum dma_data_direction dma_dir,gfp_t gfp_flags);
+        void (*put)(void *buf_priv);
+        struct dma_buf *(*get_dmabuf)(void *buf_priv, unsigned long flags);
+        void *(*get_userptr)(void *alloc_ctx, unsigned long vaddr,unsigned long size,enum dma_data_direction dma_dir);
+        void (*put_userptr)(void *buf_priv);
+        void (*prepare)(void *buf_priv);
+        void (*finish)(void *buf_priv);
+        void *(*attach_dmabuf)(void *alloc_ctx, struct dma_buf *dbuf,unsigned long size,enum dma_data_direction dma_dir);
+        void (*detach_dmabuf)(void *buf_priv);
+        int (*map_dmabuf)(void *buf_priv);
+        void (*unmap_dmabuf)(void *buf_priv);
+        void *(*vaddr)(void *buf_priv);
+        void *(*cookie)(void *buf_priv);
+        unsigned int (*num_users)(void *buf_priv);
+        int (*mmap)(void *buf_priv, struct vm_area_struct *vma);
     }
 
 .. _`vb2_mem_ops.members`:
@@ -380,16 +380,16 @@ Definition
 .. code-block:: c
 
     struct vb2_ops {
-        int (* queue_setup) (struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes,unsigned int sizes[], void *alloc_ctxs[]);
-        void (* wait_prepare) (struct vb2_queue *q);
-        void (* wait_finish) (struct vb2_queue *q);
-        int (* buf_init) (struct vb2_buffer *vb);
-        int (* buf_prepare) (struct vb2_buffer *vb);
-        void (* buf_finish) (struct vb2_buffer *vb);
-        void (* buf_cleanup) (struct vb2_buffer *vb);
-        int (* start_streaming) (struct vb2_queue *q, unsigned int count);
-        void (* stop_streaming) (struct vb2_queue *q);
-        void (* buf_queue) (struct vb2_buffer *vb);
+        int (*queue_setup)(struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes,unsigned int sizes[], void *alloc_ctxs[]);
+        void (*wait_prepare)(struct vb2_queue *q);
+        void (*wait_finish)(struct vb2_queue *q);
+        int (*buf_init)(struct vb2_buffer *vb);
+        int (*buf_prepare)(struct vb2_buffer *vb);
+        void (*buf_finish)(struct vb2_buffer *vb);
+        void (*buf_cleanup)(struct vb2_buffer *vb);
+        int (*start_streaming)(struct vb2_queue *q, unsigned int count);
+        void (*stop_streaming)(struct vb2_queue *q);
+        void (*buf_queue)(struct vb2_buffer *vb);
     }
 
 .. _`vb2_ops.members`:
@@ -514,10 +514,10 @@ Definition
 .. code-block:: c
 
     struct vb2_buf_ops {
-        int (* verify_planes_array) (struct vb2_buffer *vb, const void *pb);
-        void (* fill_user_buffer) (struct vb2_buffer *vb, void *pb);
-        int (* fill_vb2_buffer) (struct vb2_buffer *vb, const void *pb,struct vb2_plane *planes);
-        void (* copy_timestamp) (struct vb2_buffer *vb, const void *pb);
+        int (*verify_planes_array)(struct vb2_buffer *vb, const void *pb);
+        void (*fill_user_buffer)(struct vb2_buffer *vb, void *pb);
+        int (*fill_vb2_buffer)(struct vb2_buffer *vb, const void *pb,struct vb2_plane *planes);
+        void (*copy_timestamp)(struct vb2_buffer *vb, const void *pb);
     }
 
 .. _`vb2_buf_ops.members`:

@@ -96,14 +96,14 @@ Patch buffer addresses, make sure buffer sizes are correct.
 amdgpu_uvd_cs_reg
 =================
 
-.. c:function:: int amdgpu_uvd_cs_reg(struct amdgpu_uvd_cs_ctx *ctx, int (*) cb (struct amdgpu_uvd_cs_ctx *ctx)
+.. c:function:: int amdgpu_uvd_cs_reg(struct amdgpu_uvd_cs_ctx *ctx, int (*cb)(struct amdgpu_uvd_cs_ctx *ctx))
 
     parse register writes
 
     :param struct amdgpu_uvd_cs_ctx \*ctx:
         UVD parser context
 
-    :param (int (\*) cb (struct amdgpu_uvd_cs_ctx \*ctx):
+    :param int (\*cb)(struct amdgpu_uvd_cs_ctx \*ctx):
         callback function
 
 .. _`amdgpu_uvd_cs_reg.description`:
@@ -118,14 +118,14 @@ Parse the register writes, call cb on each complete command.
 amdgpu_uvd_cs_packets
 =====================
 
-.. c:function:: int amdgpu_uvd_cs_packets(struct amdgpu_uvd_cs_ctx *ctx, int (*) cb (struct amdgpu_uvd_cs_ctx *ctx)
+.. c:function:: int amdgpu_uvd_cs_packets(struct amdgpu_uvd_cs_ctx *ctx, int (*cb)(struct amdgpu_uvd_cs_ctx *ctx))
 
     parse UVD packets
 
     :param struct amdgpu_uvd_cs_ctx \*ctx:
         UVD parser context
 
-    :param (int (\*) cb (struct amdgpu_uvd_cs_ctx \*ctx):
+    :param int (\*cb)(struct amdgpu_uvd_cs_ctx \*ctx):
         callback function
 
 .. _`amdgpu_uvd_cs_packets.description`:

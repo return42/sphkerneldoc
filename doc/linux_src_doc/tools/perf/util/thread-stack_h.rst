@@ -83,7 +83,7 @@ Definition
 
     struct call_return_processor {
         struct call_path_root *cpr;
-        int (* process) (struct call_return *cr, void *data);
+        int (*process)(struct call_return *cr, void *data);
         void *data;
     }
 

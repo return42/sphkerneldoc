@@ -63,13 +63,13 @@ Definition
 
     struct debug_obj_descr {
         const char *name;
-        void *(* debug_hint) (void *addr);
-        bool (* is_static_object) (void *addr);
-        bool (* fixup_init) (void *addr, enum debug_obj_state state);
-        bool (* fixup_activate) (void *addr, enum debug_obj_state state);
-        bool (* fixup_destroy) (void *addr, enum debug_obj_state state);
-        bool (* fixup_free) (void *addr, enum debug_obj_state state);
-        bool (* fixup_assert_init) (void *addr, enum debug_obj_state state);
+        void *(*debug_hint)(void *addr);
+        bool (*is_static_object)(void *addr);
+        bool (*fixup_init)(void *addr, enum debug_obj_state state);
+        bool (*fixup_activate)(void *addr, enum debug_obj_state state);
+        bool (*fixup_destroy)(void *addr, enum debug_obj_state state);
+        bool (*fixup_free)(void *addr, enum debug_obj_state state);
+        bool (*fixup_assert_init)(void *addr, enum debug_obj_state state);
     }
 
 .. _`debug_obj_descr.members`:

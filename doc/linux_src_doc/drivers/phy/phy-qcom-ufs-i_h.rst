@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct ufs_qcom_phy_specific_ops {
-        int (* calibrate_phy) (struct ufs_qcom_phy *phy, bool is_rate_B);
-        void (* start_serdes) (struct ufs_qcom_phy *phy);
-        int (* is_physical_coding_sublayer_ready) (struct ufs_qcom_phy *phy);
-        void (* set_tx_lane_enable) (struct ufs_qcom_phy *phy, u32 val);
-        void (* power_control) (struct ufs_qcom_phy *phy, bool val);
+        int (*calibrate_phy)(struct ufs_qcom_phy *phy, bool is_rate_B);
+        void (*start_serdes)(struct ufs_qcom_phy *phy);
+        int (*is_physical_coding_sublayer_ready)(struct ufs_qcom_phy *phy);
+        void (*set_tx_lane_enable)(struct ufs_qcom_phy *phy, u32 val);
+        void (*power_control)(struct ufs_qcom_phy *phy, bool val);
     }
 
 .. _`ufs_qcom_phy_specific_ops.members`:

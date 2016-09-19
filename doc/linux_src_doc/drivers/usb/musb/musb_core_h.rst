@@ -26,34 +26,34 @@ Definition
         #define MUSB_IN_TUSB BIT(1)
         #define MUSB_INDEXED_EP BIT(0)
         u32 quirks;
-        int (* init) (struct musb *musb);
-        int (* exit) (struct musb *musb);
-        void (* enable) (struct musb *musb);
-        void (* disable) (struct musb *musb);
-        u32 (* ep_offset) (u8 epnum, u16 offset);
-        void (* ep_select) (void __iomem *mbase, u8 epnum);
+        int (*init)(struct musb *musb);
+        int (*exit)(struct musb *musb);
+        void (*enable)(struct musb *musb);
+        void (*disable)(struct musb *musb);
+        u32 (*ep_offset)(u8 epnum, u16 offset);
+        void (*ep_select)(void __iomem *mbase, u8 epnum);
         u16 fifo_mode;
-        u32 (* fifo_offset) (u8 epnum);
-        u32 (* busctl_offset) (u8 epnum, u16 offset);
-        u8 (* readb) (const void __iomem *addr, unsigned offset);
-        void (* writeb) (void __iomem *addr, unsigned offset, u8 data);
-        u16 (* readw) (const void __iomem *addr, unsigned offset);
-        void (* writew) (void __iomem *addr, unsigned offset, u16 data);
-        u32 (* readl) (const void __iomem *addr, unsigned offset);
-        void (* writel) (void __iomem *addr, unsigned offset, u32 data);
-        void (* read_fifo) (struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
-        void (* write_fifo) (struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
-        struct dma_controller *(* dma_init) (struct musb *musb, void __iomem *base);
-        void (* dma_exit) (struct dma_controller *c);
-        int (* set_mode) (struct musb *musb, u8 mode);
-        void (* try_idle) (struct musb *musb, unsigned long timeout);
-        int (* recover) (struct musb *musb);
-        int (* vbus_status) (struct musb *musb);
-        void (* set_vbus) (struct musb *musb, int on);
-        int (* adjust_channel_params) (struct dma_channel *channel,u16 packet_sz, u8 *mode,dma_addr_t *dma_addr, u32 *len);
-        void (* pre_root_reset_end) (struct musb *musb);
-        void (* post_root_reset_end) (struct musb *musb);
-        int (* phy_callback) (enum musb_vbus_id_status status);
+        u32 (*fifo_offset)(u8 epnum);
+        u32 (*busctl_offset)(u8 epnum, u16 offset);
+        u8 (*readb)(const void __iomem *addr, unsigned offset);
+        void (*writeb)(void __iomem *addr, unsigned offset, u8 data);
+        u16 (*readw)(const void __iomem *addr, unsigned offset);
+        void (*writew)(void __iomem *addr, unsigned offset, u16 data);
+        u32 (*readl)(const void __iomem *addr, unsigned offset);
+        void (*writel)(void __iomem *addr, unsigned offset, u32 data);
+        void (*read_fifo)(struct musb_hw_ep *hw_ep, u16 len, u8 *buf);
+        void (*write_fifo)(struct musb_hw_ep *hw_ep, u16 len, const u8 *buf);
+        struct dma_controller *(*dma_init)(struct musb *musb, void __iomem *base);
+        void (*dma_exit)(struct dma_controller *c);
+        int (*set_mode)(struct musb *musb, u8 mode);
+        void (*try_idle)(struct musb *musb, unsigned long timeout);
+        int (*recover)(struct musb *musb);
+        int (*vbus_status)(struct musb *musb);
+        void (*set_vbus)(struct musb *musb, int on);
+        int (*adjust_channel_params)(struct dma_channel *channel,u16 packet_sz, u8 *mode,dma_addr_t *dma_addr, u32 *len);
+        void (*pre_root_reset_end)(struct musb *musb);
+        void (*post_root_reset_end)(struct musb *musb);
+        int (*phy_callback)(enum musb_vbus_id_status status);
     }
 
 .. _`musb_platform_ops.members`:

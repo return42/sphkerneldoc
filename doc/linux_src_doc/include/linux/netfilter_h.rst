@@ -6,7 +6,7 @@
 nf_hook_thresh
 ==============
 
-.. c:function:: int nf_hook_thresh(u_int8_t pf, unsigned int hook, struct net *net, struct sock *sk, struct sk_buff *skb, struct net_device *indev, struct net_device *outdev, int (*) okfn (struct net *, struct sock *, struct sk_buff *, int thresh)
+.. c:function:: int nf_hook_thresh(u_int8_t pf, unsigned int hook, struct net *net, struct sock *sk, struct sk_buff *skb, struct net_device *indev, struct net_device *outdev, int (*okfn)(struct net *, struct sock *, struct sk_buff *), int thresh)
 
     call a netfilter hook
 
@@ -31,7 +31,7 @@ nf_hook_thresh
     :param struct net_device \*outdev:
         *undescribed*
 
-    :param (int (\*) okfn (struct net \*, struct sock \*, struct sk_buff \*):
+    :param int (\*okfn)(struct net \*, struct sock \*, struct sk_buff \*):
         *undescribed*
 
     :param int thresh:

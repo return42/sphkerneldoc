@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct vsp1_entity_operations {
-        void (* destroy) (struct vsp1_entity *);
-        void (* set_memory) (struct vsp1_entity *, struct vsp1_dl_list *dl);
-        void (* configure) (struct vsp1_entity *, struct vsp1_pipeline *,struct vsp1_dl_list *);
+        void (*destroy)(struct vsp1_entity *);
+        void (*set_memory)(struct vsp1_entity *, struct vsp1_dl_list *dl);
+        void (*configure)(struct vsp1_entity *, struct vsp1_pipeline *,struct vsp1_dl_list *);
     }
 
 .. _`vsp1_entity_operations.members`:

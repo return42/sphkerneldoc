@@ -59,7 +59,7 @@ keyrings.
 verify_pkcs7_signature
 ======================
 
-.. c:function:: int verify_pkcs7_signature(const void *data, size_t len, const void *raw_pkcs7, size_t pkcs7_len, struct key *trusted_keys, enum key_being_used_for usage, int (*) view_content (void *ctx, const void *data, size_t len, size_t asn1hdrlen, void *ctx)
+.. c:function:: int verify_pkcs7_signature(const void *data, size_t len, const void *raw_pkcs7, size_t pkcs7_len, struct key *trusted_keys, enum key_being_used_for usage, int (*view_content)(void *ctx, const void *data, size_t len, size_t asn1hdrlen), void *ctx)
 
     Verify a PKCS#7-based signature on system data.
 
@@ -82,7 +82,7 @@ verify_pkcs7_signature
     :param enum key_being_used_for usage:
         The use to which the key is being put.
 
-    :param (int (\*) view_content (void \*ctx, const void \*data, size_t len, size_t asn1hdrlen):
+    :param int (\*view_content)(void \*ctx, const void \*data, size_t len, size_t asn1hdrlen):
         Callback to gain access to content.
 
     :param void \*ctx:

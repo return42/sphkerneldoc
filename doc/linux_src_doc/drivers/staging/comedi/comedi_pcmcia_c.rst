@@ -34,14 +34,14 @@ Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
 comedi_pcmcia_enable
 ====================
 
-.. c:function:: int comedi_pcmcia_enable(struct comedi_device *dev, int (*) conf_check (struct pcmcia_device *, void *)
+.. c:function:: int comedi_pcmcia_enable(struct comedi_device *dev, int (*conf_check)(struct pcmcia_device *, void *))
 
     Request the regions and enable the PCMCIA device
 
     :param struct comedi_device \*dev:
         COMEDI device.
 
-    :param (int (\*) conf_check (struct pcmcia_device \*, void \*):
+    :param int (\*conf_check)(struct pcmcia_device \*, void \*):
         Optional callback to check each configuration option of the
         PCMCIA device and request I/O regions.
 

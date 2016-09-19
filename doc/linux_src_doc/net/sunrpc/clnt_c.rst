@@ -102,14 +102,14 @@ xprt.
 rpc_clnt_iterate_for_each_xprt
 ==============================
 
-.. c:function:: int rpc_clnt_iterate_for_each_xprt(struct rpc_clnt *clnt, int (*) fn (struct rpc_clnt *, struct rpc_xprt *, void *, void *data)
+.. c:function:: int rpc_clnt_iterate_for_each_xprt(struct rpc_clnt *clnt, int (*fn)(struct rpc_clnt *, struct rpc_xprt *, void *), void *data)
 
     Apply a function to all transports
 
     :param struct rpc_clnt \*clnt:
         pointer to client
 
-    :param (int (\*) fn (struct rpc_clnt \*, struct rpc_xprt \*, void \*):
+    :param int (\*fn)(struct rpc_clnt \*, struct rpc_xprt \*, void \*):
         function to apply
 
     :param void \*data:
@@ -413,7 +413,7 @@ rpc_clnt_test_and_add_xprt
 rpc_clnt_add_xprt
 =================
 
-.. c:function:: int rpc_clnt_add_xprt(struct rpc_clnt *clnt, struct xprt_create *xprtargs, int (*) setup (struct rpc_clnt *, struct rpc_xprt_switch *, struct rpc_xprt *, void *, void *data)
+.. c:function:: int rpc_clnt_add_xprt(struct rpc_clnt *clnt, struct xprt_create *xprtargs, int (*setup)(struct rpc_clnt *, struct rpc_xprt_switch *, struct rpc_xprt *, void *), void *data)
 
     Add a new transport to a rpc_clnt
 
@@ -423,7 +423,7 @@ rpc_clnt_add_xprt
     :param struct xprt_create \*xprtargs:
         pointer to struct xprt_create
 
-    :param (int (\*) setup (struct rpc_clnt \*, struct rpc_xprt_switch \*, struct rpc_xprt \*, void \*):
+    :param int (\*setup)(struct rpc_clnt \*, struct rpc_xprt_switch \*, struct rpc_xprt \*, void \*):
         callback to test and/or set up the connection
 
     :param void \*data:

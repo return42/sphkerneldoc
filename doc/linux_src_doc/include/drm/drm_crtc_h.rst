@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct drm_framebuffer_funcs {
-        void (* destroy) (struct drm_framebuffer *framebuffer);
-        int (* create_handle) (struct drm_framebuffer *fb,struct drm_file *file_priv,unsigned int *handle);
-        int (* dirty) (struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips,unsigned num_clips);
+        void (*destroy)(struct drm_framebuffer *framebuffer);
+        int (*create_handle)(struct drm_framebuffer *fb,struct drm_file *file_priv,unsigned int *handle);
+        int (*dirty)(struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips,unsigned num_clips);
     }
 
 .. _`drm_framebuffer_funcs.members`:
@@ -208,19 +208,19 @@ Definition
 .. code-block:: c
 
     struct drm_crtc_funcs {
-        void (* reset) (struct drm_crtc *crtc);
-        int (* cursor_set) (struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height);
-        int (* cursor_set2) (struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height,int32_t hot_x, int32_t hot_y);
-        int (* cursor_move) (struct drm_crtc *crtc, int x, int y);
-        void (* gamma_set) (struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t start, uint32_t size);
-        void (* destroy) (struct drm_crtc *crtc);
-        int (* set_config) (struct drm_mode_set *set);
-        int (* page_flip) (struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags);
-        int (* set_property) (struct drm_crtc *crtc,struct drm_property *property, uint64_t val);
-        struct drm_crtc_state *(* atomic_duplicate_state) (struct drm_crtc *crtc);
-        void (* atomic_destroy_state) (struct drm_crtc *crtc,struct drm_crtc_state *state);
-        int (* atomic_set_property) (struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property,uint64_t val);
-        int (* atomic_get_property) (struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property,uint64_t *val);
+        void (*reset)(struct drm_crtc *crtc);
+        int (*cursor_set)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height);
+        int (*cursor_set2)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height,int32_t hot_x, int32_t hot_y);
+        int (*cursor_move)(struct drm_crtc *crtc, int x, int y);
+        void (*gamma_set)(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t start, uint32_t size);
+        void (*destroy)(struct drm_crtc *crtc);
+        int (*set_config)(struct drm_mode_set *set);
+        int (*page_flip)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags);
+        int (*set_property)(struct drm_crtc *crtc,struct drm_property *property, uint64_t val);
+        struct drm_crtc_state *(*atomic_duplicate_state)(struct drm_crtc *crtc);
+        void (*atomic_destroy_state)(struct drm_crtc *crtc,struct drm_crtc_state *state);
+        int (*atomic_set_property)(struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property,uint64_t val);
+        int (*atomic_get_property)(struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property,uint64_t *val);
     }
 
 .. _`drm_crtc_funcs.members`:
@@ -683,17 +683,17 @@ Definition
 .. code-block:: c
 
     struct drm_connector_funcs {
-        int (* dpms) (struct drm_connector *connector, int mode);
-        void (* reset) (struct drm_connector *connector);
-        enum drm_connector_status (* detect) (struct drm_connector *connector,bool force);
-        void (* force) (struct drm_connector *connector);
-        int (* fill_modes) (struct drm_connector *connector, uint32_t max_width, uint32_t max_height);
-        int (* set_property) (struct drm_connector *connector, struct drm_property *property,uint64_t val);
-        void (* destroy) (struct drm_connector *connector);
-        struct drm_connector_state *(* atomic_duplicate_state) (struct drm_connector *connector);
-        void (* atomic_destroy_state) (struct drm_connector *connector,struct drm_connector_state *state);
-        int (* atomic_set_property) (struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property,uint64_t val);
-        int (* atomic_get_property) (struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property,uint64_t *val);
+        int (*dpms)(struct drm_connector *connector, int mode);
+        void (*reset)(struct drm_connector *connector);
+        enum drm_connector_status (*detect)(struct drm_connector *connector,bool force);
+        void (*force)(struct drm_connector *connector);
+        int (*fill_modes)(struct drm_connector *connector, uint32_t max_width, uint32_t max_height);
+        int (*set_property)(struct drm_connector *connector, struct drm_property *property,uint64_t val);
+        void (*destroy)(struct drm_connector *connector);
+        struct drm_connector_state *(*atomic_duplicate_state)(struct drm_connector *connector);
+        void (*atomic_destroy_state)(struct drm_connector *connector,struct drm_connector_state *state);
+        int (*atomic_set_property)(struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property,uint64_t val);
+        int (*atomic_get_property)(struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property,uint64_t *val);
     }
 
 .. _`drm_connector_funcs.members`:
@@ -917,8 +917,8 @@ Definition
 .. code-block:: c
 
     struct drm_encoder_funcs {
-        void (* reset) (struct drm_encoder *encoder);
-        void (* destroy) (struct drm_encoder *encoder);
+        void (*reset)(struct drm_encoder *encoder);
+        void (*destroy)(struct drm_encoder *encoder);
     }
 
 .. _`drm_encoder_funcs.members`:
@@ -1350,15 +1350,15 @@ Definition
 .. code-block:: c
 
     struct drm_plane_funcs {
-        int (* update_plane) (struct drm_plane *plane,struct drm_crtc *crtc, struct drm_framebuffer *fb,int crtc_x, int crtc_y,unsigned int crtc_w, unsigned int crtc_h,uint32_t src_x, uint32_t src_y,uint32_t src_w, uint32_t src_h);
-        int (* disable_plane) (struct drm_plane *plane);
-        void (* destroy) (struct drm_plane *plane);
-        void (* reset) (struct drm_plane *plane);
-        int (* set_property) (struct drm_plane *plane,struct drm_property *property, uint64_t val);
-        struct drm_plane_state *(* atomic_duplicate_state) (struct drm_plane *plane);
-        void (* atomic_destroy_state) (struct drm_plane *plane,struct drm_plane_state *state);
-        int (* atomic_set_property) (struct drm_plane *plane,struct drm_plane_state *state,struct drm_property *property,uint64_t val);
-        int (* atomic_get_property) (struct drm_plane *plane,const struct drm_plane_state *state,struct drm_property *property,uint64_t *val);
+        int (*update_plane)(struct drm_plane *plane,struct drm_crtc *crtc, struct drm_framebuffer *fb,int crtc_x, int crtc_y,unsigned int crtc_w, unsigned int crtc_h,uint32_t src_x, uint32_t src_y,uint32_t src_w, uint32_t src_h);
+        int (*disable_plane)(struct drm_plane *plane);
+        void (*destroy)(struct drm_plane *plane);
+        void (*reset)(struct drm_plane *plane);
+        int (*set_property)(struct drm_plane *plane,struct drm_property *property, uint64_t val);
+        struct drm_plane_state *(*atomic_duplicate_state)(struct drm_plane *plane);
+        void (*atomic_destroy_state)(struct drm_plane *plane,struct drm_plane_state *state);
+        int (*atomic_set_property)(struct drm_plane *plane,struct drm_plane_state *state,struct drm_property *property,uint64_t val);
+        int (*atomic_get_property)(struct drm_plane *plane,const struct drm_plane_state *state,struct drm_property *property,uint64_t *val);
     }
 
 .. _`drm_plane_funcs.members`:
@@ -1636,13 +1636,13 @@ Definition
 .. code-block:: c
 
     struct drm_bridge_funcs {
-        int (* attach) (struct drm_bridge *bridge);
-        bool (* mode_fixup) (struct drm_bridge *bridge,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        void (* disable) (struct drm_bridge *bridge);
-        void (* post_disable) (struct drm_bridge *bridge);
-        void (* mode_set) (struct drm_bridge *bridge,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        void (* pre_enable) (struct drm_bridge *bridge);
-        void (* enable) (struct drm_bridge *bridge);
+        int (*attach)(struct drm_bridge *bridge);
+        bool (*mode_fixup)(struct drm_bridge *bridge,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        void (*disable)(struct drm_bridge *bridge);
+        void (*post_disable)(struct drm_bridge *bridge);
+        void (*mode_set)(struct drm_bridge *bridge,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        void (*pre_enable)(struct drm_bridge *bridge);
+        void (*enable)(struct drm_bridge *bridge);
     }
 
 .. _`drm_bridge_funcs.members`:
@@ -1952,13 +1952,13 @@ Definition
 .. code-block:: c
 
     struct drm_mode_config_funcs {
-        struct drm_framebuffer *(* fb_create) (struct drm_device *dev,struct drm_file *file_priv,const struct drm_mode_fb_cmd2 *mode_cmd);
-        void (* output_poll_changed) (struct drm_device *dev);
-        int (* atomic_check) (struct drm_device *dev,struct drm_atomic_state *state);
-        int (* atomic_commit) (struct drm_device *dev,struct drm_atomic_state *state,bool nonblock);
-        struct drm_atomic_state *(* atomic_state_alloc) (struct drm_device *dev);
-        void (* atomic_state_clear) (struct drm_atomic_state *state);
-        void (* atomic_state_free) (struct drm_atomic_state *state);
+        struct drm_framebuffer *(*fb_create)(struct drm_device *dev,struct drm_file *file_priv,const struct drm_mode_fb_cmd2 *mode_cmd);
+        void (*output_poll_changed)(struct drm_device *dev);
+        int (*atomic_check)(struct drm_device *dev,struct drm_atomic_state *state);
+        int (*atomic_commit)(struct drm_device *dev,struct drm_atomic_state *state,bool nonblock);
+        struct drm_atomic_state *(*atomic_state_alloc)(struct drm_device *dev);
+        void (*atomic_state_clear)(struct drm_atomic_state *state);
+        void (*atomic_state_free)(struct drm_atomic_state *state);
     }
 
 .. _`drm_mode_config_funcs.members`:

@@ -50,7 +50,7 @@ Definition
 .. code-block:: c
 
     struct s5k6aa_platform_data {
-        int (* set_power) (int enable);
+        int (*set_power)(int enable);
         unsigned long mclk_frequency;
         struct s5k6aa_gpio gpio_reset;
         struct s5k6aa_gpio gpio_stby;

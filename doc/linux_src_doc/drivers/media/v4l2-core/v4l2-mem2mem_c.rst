@@ -462,7 +462,7 @@ Usually called from driver's \ :c:func:`remove`\  function.
 v4l2_m2m_ctx_init
 =================
 
-.. c:function:: struct v4l2_m2m_ctx *v4l2_m2m_ctx_init(struct v4l2_m2m_dev *m2m_dev, void *drv_priv, int (*) queue_init (void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq)
+.. c:function:: struct v4l2_m2m_ctx *v4l2_m2m_ctx_init(struct v4l2_m2m_dev *m2m_dev, void *drv_priv, int (*queue_init)(void *priv, struct vb2_queue *src_vq, struct vb2_queue *dst_vq))
 
     allocate and initialize a m2m context \ ``priv``\  - driver's instance private data \ ``m2m_dev``\  - a previously initialized m2m_dev struct \ ``vq_init``\  - a callback for queue type-specific initialization function to be used for initializing videobuf_queues
 
@@ -472,7 +472,7 @@ v4l2_m2m_ctx_init
     :param void \*drv_priv:
         *undescribed*
 
-    :param (int (\*) queue_init (void \*priv, struct vb2_queue \*src_vq, struct vb2_queue \*dst_vq):
+    :param int (\*queue_init)(void \*priv, struct vb2_queue \*src_vq, struct vb2_queue \*dst_vq):
         *undescribed*
 
 .. _`v4l2_m2m_ctx_init.description`:

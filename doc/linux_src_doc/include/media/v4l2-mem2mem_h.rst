@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct v4l2_m2m_ops {
-        void (* device_run) (void *priv);
-        int (* job_ready) (void *priv);
-        void (* job_abort) (void *priv);
-        void (* lock) (void *priv);
-        void (* unlock) (void *priv);
+        void (*device_run)(void *priv);
+        int (*job_ready)(void *priv);
+        void (*job_abort)(void *priv);
+        void (*lock)(void *priv);
+        void (*unlock)(void *priv);
     }
 
 .. _`v4l2_m2m_ops.members`:

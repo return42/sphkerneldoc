@@ -168,7 +168,7 @@ ptlrpc_add_rqs_to_pool
 ptlrpc_init_rq_pool
 ===================
 
-.. c:function:: struct ptlrpc_request_pool *ptlrpc_init_rq_pool(int num_rq, int msgsize, int (*) populate_pool (struct ptlrpc_request_pool *, int)
+.. c:function:: struct ptlrpc_request_pool *ptlrpc_init_rq_pool(int num_rq, int msgsize, int (*populate_pool)(struct ptlrpc_request_pool *, int))
 
     \a num_rq - initial number of requests to create for the pool \a msgsize - maximum message size possible for requests in thid pool \a populate_pool - function to be called when more requests need to be added to the pool Returns pointer to newly created pool or NULL on error.
 
@@ -178,7 +178,7 @@ ptlrpc_init_rq_pool
     :param int msgsize:
         *undescribed*
 
-    :param (int (\*) populate_pool (struct ptlrpc_request_pool \*, int):
+    :param int (\*populate_pool)(struct ptlrpc_request_pool \*, int):
         *undescribed*
 
 .. _`ptlrpc_prep_req_from_pool`:
@@ -828,12 +828,12 @@ ptlrpc_sample_next_xid
 ptlrpcd_alloc_work
 ==================
 
-.. c:function:: void *ptlrpcd_alloc_work(struct obd_import *imp, int (*) cb (const struct lu_env *, void *, void *cbdata)
+.. c:function:: void *ptlrpcd_alloc_work(struct obd_import *imp, int (*cb)(const struct lu_env *, void *), void *cbdata)
 
     :param struct obd_import \*imp:
         *undescribed*
 
-    :param (int (\*) cb (const struct lu_env \*, void \*):
+    :param int (\*cb)(const struct lu_env \*, void \*):
         *undescribed*
 
     :param void \*cbdata:

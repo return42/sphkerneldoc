@@ -56,7 +56,7 @@ below IPCMNI) then initialise the ids idr.
 ipc_init_proc_interface
 =======================
 
-.. c:function:: void ipc_init_proc_interface(const char *path, const char *header, int ids, int (*) show (struct seq_file *, void *)
+.. c:function:: void ipc_init_proc_interface(const char *path, const char *header, int ids, int (*show)(struct seq_file *, void *))
 
     create a proc interface for sysipc types using a seq_file interface.
 
@@ -69,7 +69,7 @@ ipc_init_proc_interface
     :param int ids:
         ipc id table to iterate.
 
-    :param (int (\*) show (struct seq_file \*, void \*):
+    :param int (\*show)(struct seq_file \*, void \*):
         show routine.
 
 .. _`ipc_findkey`:

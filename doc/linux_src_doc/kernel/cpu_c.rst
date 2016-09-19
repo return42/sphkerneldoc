@@ -6,7 +6,7 @@
 cpuhp_invoke_callback
 =====================
 
-.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state step, int (*) cb (unsigned int)
+.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state step, int (*cb)(unsigned int))
 
     :param unsigned int cpu:
         The cpu for which the callback should be invoked
@@ -14,7 +14,7 @@ cpuhp_invoke_callback
     :param enum cpuhp_state step:
         The step in the state machine
 
-    :param (int (\*) cb (unsigned int):
+    :param int (\*cb)(unsigned int):
         The callback function to invoke
 
 .. _`cpuhp_invoke_callback.description`:
@@ -75,7 +75,7 @@ enables interrupts and before the "boot" cpu returns from \\ :c:func:`__cpu_up`\
 __cpuhp_setup_state
 ===================
 
-.. c:function:: int __cpuhp_setup_state(enum cpuhp_state state, const char *name, bool invoke, int (*) startup (unsigned int cpu, int (*) teardown (unsigned int cpu)
+.. c:function:: int __cpuhp_setup_state(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu))
 
     Setup the callbacks for an hotplug machine state
 
@@ -89,10 +89,10 @@ __cpuhp_setup_state
         If true, the startup function is invoked for cpus where
         cpu state >= \ ``state``\ 
 
-    :param (int (\*) startup (unsigned int cpu):
+    :param int (\*startup)(unsigned int cpu):
         startup callback function
 
-    :param (int (\*) teardown (unsigned int cpu):
+    :param int (\*teardown)(unsigned int cpu):
         teardown callback function
 
 .. _`__cpuhp_setup_state.description`:

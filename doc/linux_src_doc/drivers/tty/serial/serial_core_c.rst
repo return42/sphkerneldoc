@@ -112,7 +112,7 @@ uart_get_lsr_info
 uart_console_write
 ==================
 
-.. c:function:: void uart_console_write(struct uart_port *port, const char *s, unsigned int count, void (*) putchar (struct uart_port *, int)
+.. c:function:: void uart_console_write(struct uart_port *port, const char *s, unsigned int count, void (*putchar)(struct uart_port *, int))
 
     write a console message to a serial port
 
@@ -125,7 +125,7 @@ uart_console_write
     :param unsigned int count:
         number of characters in string to write
 
-    :param (void (\*) putchar (struct uart_port \*, int):
+    :param void (\*putchar)(struct uart_port \*, int):
         function to write character to port
 
 .. _`uart_parse_earlycon`:

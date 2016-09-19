@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct wil_platform_ops {
-        int (* bus_request) (void *handle, uint32_t kbps );
-        int (* suspend) (void *handle);
-        int (* resume) (void *handle);
-        void (* uninit) (void *handle);
-        int (* notify) (void *handle, enum wil_platform_event evt);
+        int (*bus_request)(void *handle, uint32_t kbps );
+        int (*suspend)(void *handle);
+        int (*resume)(void *handle);
+        void (*uninit)(void *handle);
+        int (*notify)(void *handle, enum wil_platform_event evt);
     }
 
 .. _`wil_platform_ops.members`:
@@ -62,8 +62,8 @@ Definition
 .. code-block:: c
 
     struct wil_platform_rops {
-        int (* ramdump) (void *wil_handle, void *buf, uint32_t size);
-        int (* fw_recovery) (void *wil_handle);
+        int (*ramdump)(void *wil_handle, void *buf, uint32_t size);
+        int (*fw_recovery)(void *wil_handle);
     }
 
 .. _`wil_platform_rops.members`:

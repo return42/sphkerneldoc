@@ -57,17 +57,17 @@ Definition
 .. code-block:: c
 
     struct prm_ll_data {
-        u32 (* read_reset_sources) (void);
-        bool (* was_any_context_lost_old) (u8 part, s16 inst, u16 idx);
-        void (* clear_context_loss_flags_old) (u8 part, s16 inst, u16 idx);
-        int (* late_init) (void);
-        int (* assert_hardreset) (u8 shift, u8 part, s16 prm_mod, u16 offset);
-        int (* deassert_hardreset) (u8 shift, u8 st_shift, u8 part, s16 prm_mod,u16 offset, u16 st_offset);
-        int (* is_hardreset_asserted) (u8 shift, u8 part, s16 prm_mod,u16 offset);
-        void (* reset_system) (void);
-        int (* clear_mod_irqs) (s16 module, u8 regs, u32 wkst_mask);
-        u32 (* vp_check_txdone) (u8 vp_id);
-        void (* vp_clear_txdone) (u8 vp_id);
+        u32 (*read_reset_sources)(void);
+        bool (*was_any_context_lost_old)(u8 part, s16 inst, u16 idx);
+        void (*clear_context_loss_flags_old)(u8 part, s16 inst, u16 idx);
+        int (*late_init)(void);
+        int (*assert_hardreset)(u8 shift, u8 part, s16 prm_mod, u16 offset);
+        int (*deassert_hardreset)(u8 shift, u8 st_shift, u8 part, s16 prm_mod,u16 offset, u16 st_offset);
+        int (*is_hardreset_asserted)(u8 shift, u8 part, s16 prm_mod,u16 offset);
+        void (*reset_system)(void);
+        int (*clear_mod_irqs)(s16 module, u8 regs, u32 wkst_mask);
+        u32 (*vp_check_txdone)(u8 vp_id);
+        void (*vp_clear_txdone)(u8 vp_id);
     }
 
 .. _`prm_ll_data.members`:

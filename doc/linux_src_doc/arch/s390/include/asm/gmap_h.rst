@@ -87,7 +87,7 @@ Definition
 
     struct gmap_notifier {
         struct list_head list;
-        void (* notifier_call) (struct gmap *gmap, unsigned long gaddr);
+        void (*notifier_call)(struct gmap *gmap, unsigned long gaddr);
     }
 
 .. _`gmap_notifier.members`:

@@ -23,8 +23,8 @@ Definition
         unsigned int tx_tail;
         unsigned int tx_max;
         struct napi_struct napi;
-        u32 (* read_reg) (const struct xcan_priv *priv, enum xcan_reg reg);
-        void (* write_reg) (const struct xcan_priv *priv, enum xcan_reg reg,u32 val);
+        u32 (*read_reg)(const struct xcan_priv *priv, enum xcan_reg reg);
+        void (*write_reg)(const struct xcan_priv *priv, enum xcan_reg reg,u32 val);
         struct device *dev;
         void __iomem *reg_base;
         unsigned long irq_flags;

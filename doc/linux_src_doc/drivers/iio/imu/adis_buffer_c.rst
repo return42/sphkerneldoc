@@ -6,7 +6,7 @@
 adis_setup_buffer_and_trigger
 =============================
 
-.. c:function:: int adis_setup_buffer_and_trigger(struct adis *adis, struct iio_dev *indio_dev, irqreturn_t (*) trigger_handler (int, void *)
+.. c:function:: int adis_setup_buffer_and_trigger(struct adis *adis, struct iio_dev *indio_dev, irqreturn_t (*trigger_handler)(int, void *))
 
     Sets up buffer and trigger for the adis device
 
@@ -16,7 +16,7 @@ adis_setup_buffer_and_trigger
     :param struct iio_dev \*indio_dev:
         The IIO device.
 
-    :param (irqreturn_t (\*) trigger_handler (int, void \*):
+    :param irqreturn_t (\*trigger_handler)(int, void \*):
         Optional trigger handler, may be NULL.
 
 .. _`adis_setup_buffer_and_trigger.description`:

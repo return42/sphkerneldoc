@@ -116,7 +116,7 @@ Reduced can_id to have a preprocessed filter compare value.
 can_rx_register
 ===============
 
-.. c:function:: int can_rx_register(struct net_device *dev, canid_t can_id, canid_t mask, void (*) func (struct sk_buff *, void *, void *data, char *ident)
+.. c:function:: int can_rx_register(struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data, char *ident)
 
     subscribe CAN frames from a specific interface
 
@@ -129,7 +129,7 @@ can_rx_register
     :param canid_t mask:
         CAN mask (see description)
 
-    :param (void (\*) func (struct sk_buff \*, void \*):
+    :param void (\*func)(struct sk_buff \*, void \*):
         callback function on filter match
 
     :param void \*data:
@@ -171,7 +171,7 @@ Return
 can_rx_unregister
 =================
 
-.. c:function:: void can_rx_unregister(struct net_device *dev, canid_t can_id, canid_t mask, void (*) func (struct sk_buff *, void *, void *data)
+.. c:function:: void can_rx_unregister(struct net_device *dev, canid_t can_id, canid_t mask, void (*func)(struct sk_buff *, void *), void *data)
 
     unsubscribe CAN frames from a specific interface
 
@@ -184,7 +184,7 @@ can_rx_unregister
     :param canid_t mask:
         CAN mask
 
-    :param (void (\*) func (struct sk_buff \*, void \*):
+    :param void (\*func)(struct sk_buff \*, void \*):
         callback function on filter match
 
     :param void \*data:

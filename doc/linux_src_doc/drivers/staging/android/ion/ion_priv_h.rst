@@ -94,15 +94,15 @@ Definition
 .. code-block:: c
 
     struct ion_heap_ops {
-        int (* allocate) (struct ion_heap *heap,struct ion_buffer *buffer, unsigned long len,unsigned long align, unsigned long flags);
-        void (* free) (struct ion_buffer *buffer);
-        int (* phys) (struct ion_heap *heap, struct ion_buffer *buffer,ion_phys_addr_t *addr, size_t *len);
-        struct sg_table * (* map_dma) (struct ion_heap *heap,struct ion_buffer *buffer);
-        void (* unmap_dma) (struct ion_heap *heap, struct ion_buffer *buffer);
-        void * (* map_kernel) (struct ion_heap *heap, struct ion_buffer *buffer);
-        void (* unmap_kernel) (struct ion_heap *heap, struct ion_buffer *buffer);
-        int (* map_user) (struct ion_heap *mapper, struct ion_buffer *buffer,struct vm_area_struct *vma);
-        int (* shrink) (struct ion_heap *heap, gfp_t gfp_mask, int nr_to_scan);
+        int (*allocate)(struct ion_heap *heap,struct ion_buffer *buffer, unsigned long len,unsigned long align, unsigned long flags);
+        void (*free)(struct ion_buffer *buffer);
+        int (*phys)(struct ion_heap *heap, struct ion_buffer *buffer,ion_phys_addr_t *addr, size_t *len);
+        struct sg_table * (*map_dma)(struct ion_heap *heap,struct ion_buffer *buffer);
+        void (*unmap_dma)(struct ion_heap *heap, struct ion_buffer *buffer);
+        void * (*map_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
+        void (*unmap_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
+        int (*map_user)(struct ion_heap *mapper, struct ion_buffer *buffer,struct vm_area_struct *vma);
+        int (*shrink)(struct ion_heap *heap, gfp_t gfp_mask, int nr_to_scan);
     }
 
 .. _`ion_heap_ops.members`:
@@ -204,7 +204,7 @@ Definition
         spinlock_t free_lock;
         wait_queue_head_t waitqueue;
         struct task_struct *task;
-        int (* debug_show) (struct ion_heap *heap, struct seq_file *, void *);
+        int (*debug_show)(struct ion_heap *heap, struct seq_file *, void *);
     }
 
 .. _`ion_heap.members`:
@@ -312,11 +312,11 @@ in, this can affect how buffers are allocated from the heap.
 ion_device_create
 =================
 
-.. c:function:: struct ion_device *ion_device_create(long (*) custom_ioctl (struct ion_client *client, unsigned int cmd, unsigned long arg)
+.. c:function:: struct ion_device *ion_device_create(long (*custom_ioctl)(struct ion_client *client, unsigned int cmd, unsigned long arg))
 
     allocates and returns an ion device
 
-    :param (long (\*) custom_ioctl (struct ion_client \*client, unsigned int cmd, unsigned long arg):
+    :param long (\*custom_ioctl)(struct ion_client \*client, unsigned int cmd, unsigned long arg):
         arch specific ioctl function if applicable
 
 .. _`ion_device_create.description`:

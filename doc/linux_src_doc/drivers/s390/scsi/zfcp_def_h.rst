@@ -157,7 +157,7 @@ Definition
         struct zfcp_erp_action *erp_action;
         mempool_t *pool;
         unsigned long long issued;
-        void (* handler) (struct zfcp_fsf_req *);
+        void (*handler)(struct zfcp_fsf_req *);
     }
 
 .. _`zfcp_fsf_req.members`:

@@ -51,9 +51,9 @@ Definition
 .. code-block:: c
 
     struct ep93xx_spi_chip_ops {
-        int (* setup) (struct spi_device *spi);
-        void (* cleanup) (struct spi_device *spi);
-        void (* cs_control) (struct spi_device *spi, int value);
+        int (*setup)(struct spi_device *spi);
+        void (*cleanup)(struct spi_device *spi);
+        void (*cs_control)(struct spi_device *spi, int value);
     }
 
 .. _`ep93xx_spi_chip_ops.members`:

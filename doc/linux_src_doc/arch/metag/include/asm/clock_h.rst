@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct meta_clock_desc {
-        unsigned long (* get_core_freq) (void);
+        unsigned long (*get_core_freq)(void);
     }
 
 .. _`meta_clock_desc.members`:

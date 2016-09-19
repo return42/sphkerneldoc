@@ -17,19 +17,19 @@ Definition
 .. code-block:: c
 
     struct device_queue_manager_ops {
-        int (* create_queue) (struct device_queue_manager *dqm,struct queue *q,struct qcm_process_device *qpd,int *allocate_vmid);
-        int (* destroy_queue) (struct device_queue_manager *dqm,struct qcm_process_device *qpd,struct queue *q);
-        int (* update_queue) (struct device_queue_manager *dqm,struct queue *q);
-        struct mqd_manager * (* get_mqd_manager) (struct device_queue_manager *dqm,enum KFD_MQD_TYPE type);
-        int (* register_process) (struct device_queue_manager *dqm,struct qcm_process_device *qpd);
-        int (* unregister_process) (struct device_queue_manager *dqm,struct qcm_process_device *qpd);
-        int (* initialize) (struct device_queue_manager *dqm);
-        int (* start) (struct device_queue_manager *dqm);
-        int (* stop) (struct device_queue_manager *dqm);
-        void (* uninitialize) (struct device_queue_manager *dqm);
-        int (* create_kernel_queue) (struct device_queue_manager *dqm,struct kernel_queue *kq,struct qcm_process_device *qpd);
-        void (* destroy_kernel_queue) (struct device_queue_manager *dqm,struct kernel_queue *kq,struct qcm_process_device *qpd);
-        bool (* set_cache_memory_policy) (struct device_queue_manager *dqm,struct qcm_process_device *qpd,enum cache_policy default_policy,enum cache_policy alternate_policy,void __user *alternate_aperture_base,uint64_t alternate_aperture_size);
+        int (*create_queue)(struct device_queue_manager *dqm,struct queue *q,struct qcm_process_device *qpd,int *allocate_vmid);
+        int (*destroy_queue)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,struct queue *q);
+        int (*update_queue)(struct device_queue_manager *dqm,struct queue *q);
+        struct mqd_manager * (*get_mqd_manager)(struct device_queue_manager *dqm,enum KFD_MQD_TYPE type);
+        int (*register_process)(struct device_queue_manager *dqm,struct qcm_process_device *qpd);
+        int (*unregister_process)(struct device_queue_manager *dqm,struct qcm_process_device *qpd);
+        int (*initialize)(struct device_queue_manager *dqm);
+        int (*start)(struct device_queue_manager *dqm);
+        int (*stop)(struct device_queue_manager *dqm);
+        void (*uninitialize)(struct device_queue_manager *dqm);
+        int (*create_kernel_queue)(struct device_queue_manager *dqm,struct kernel_queue *kq,struct qcm_process_device *qpd);
+        void (*destroy_kernel_queue)(struct device_queue_manager *dqm,struct kernel_queue *kq,struct qcm_process_device *qpd);
+        bool (*set_cache_memory_policy)(struct device_queue_manager *dqm,struct qcm_process_device *qpd,enum cache_policy default_policy,enum cache_policy alternate_policy,void __user *alternate_aperture_base,uint64_t alternate_aperture_size);
     }
 
 .. _`device_queue_manager_ops.members`:

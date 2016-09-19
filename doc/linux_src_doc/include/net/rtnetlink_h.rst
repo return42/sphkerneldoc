@@ -21,28 +21,28 @@ Definition
         struct list_head list;
         const char *kind;
         size_t priv_size;
-        void (* setup) (struct net_device *dev);
+        void (*setup)(struct net_device *dev);
         int maxtype;
         const struct nla_policy *policy;
-        int (* validate) (struct nlattr *tb[],struct nlattr *data[]);
-        int (* newlink) (struct net *src_net,struct net_device *dev,struct nlattr *tb[],struct nlattr *data[]);
-        int (* changelink) (struct net_device *dev,struct nlattr *tb[],struct nlattr *data[]);
-        void (* dellink) (struct net_device *dev,struct list_head *head);
-        size_t (* get_size) (const struct net_device *dev);
-        int (* fill_info) (struct sk_buff *skb,const struct net_device *dev);
-        size_t (* get_xstats_size) (const struct net_device *dev);
-        int (* fill_xstats) (struct sk_buff *skb,const struct net_device *dev);
-        unsigned int (* get_num_tx_queues) (void);
-        unsigned int (* get_num_rx_queues) (void);
+        int (*validate)(struct nlattr *tb[],struct nlattr *data[]);
+        int (*newlink)(struct net *src_net,struct net_device *dev,struct nlattr *tb[],struct nlattr *data[]);
+        int (*changelink)(struct net_device *dev,struct nlattr *tb[],struct nlattr *data[]);
+        void (*dellink)(struct net_device *dev,struct list_head *head);
+        size_t (*get_size)(const struct net_device *dev);
+        int (*fill_info)(struct sk_buff *skb,const struct net_device *dev);
+        size_t (*get_xstats_size)(const struct net_device *dev);
+        int (*fill_xstats)(struct sk_buff *skb,const struct net_device *dev);
+        unsigned int (*get_num_tx_queues)(void);
+        unsigned int (*get_num_rx_queues)(void);
         int slave_maxtype;
         const struct nla_policy *slave_policy;
-        int (* slave_validate) (struct nlattr *tb[],struct nlattr *data[]);
-        int (* slave_changelink) (struct net_device *dev,struct net_device *slave_dev,struct nlattr *tb[],struct nlattr *data[]);
-        size_t (* get_slave_size) (const struct net_device *dev,const struct net_device *slave_dev);
-        int (* fill_slave_info) (struct sk_buff *skb,const struct net_device *dev,const struct net_device *slave_dev);
-        struct net *(* get_link_net) (const struct net_device *dev);
-        size_t (* get_linkxstats_size) (const struct net_device *dev);
-        int (* fill_linkxstats) (struct sk_buff *skb,const struct net_device *dev,int *prividx);
+        int (*slave_validate)(struct nlattr *tb[],struct nlattr *data[]);
+        int (*slave_changelink)(struct net_device *dev,struct net_device *slave_dev,struct nlattr *tb[],struct nlattr *data[]);
+        size_t (*get_slave_size)(const struct net_device *dev,const struct net_device *slave_dev);
+        int (*fill_slave_info)(struct sk_buff *skb,const struct net_device *dev,const struct net_device *slave_dev);
+        struct net *(*get_link_net)(const struct net_device *dev);
+        size_t (*get_linkxstats_size)(const struct net_device *dev);
+        int (*fill_linkxstats)(struct sk_buff *skb,const struct net_device *dev,int *prividx);
     }
 
 .. _`rtnl_link_ops.members`:
@@ -149,10 +149,10 @@ Definition
     struct rtnl_af_ops {
         struct list_head list;
         int family;
-        int (* fill_link_af) (struct sk_buff *skb,const struct net_device *dev,u32 ext_filter_mask);
-        size_t (* get_link_af_size) (const struct net_device *dev,u32 ext_filter_mask);
-        int (* validate_link_af) (const struct net_device *dev,const struct nlattr *attr);
-        int (* set_link_af) (struct net_device *dev,const struct nlattr *attr);
+        int (*fill_link_af)(struct sk_buff *skb,const struct net_device *dev,u32 ext_filter_mask);
+        size_t (*get_link_af_size)(const struct net_device *dev,u32 ext_filter_mask);
+        int (*validate_link_af)(const struct net_device *dev,const struct nlattr *attr);
+        int (*set_link_af)(struct net_device *dev,const struct nlattr *attr);
     }
 
 .. _`rtnl_af_ops.members`:

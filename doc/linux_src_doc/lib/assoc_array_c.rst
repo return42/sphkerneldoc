@@ -6,14 +6,14 @@
 assoc_array_iterate
 ===================
 
-.. c:function:: int assoc_array_iterate(const struct assoc_array *array, int (*) iterator (const void *object, void *iterator_data, void *iterator_data)
+.. c:function:: int assoc_array_iterate(const struct assoc_array *array, int (*iterator)(const void *object, void *iterator_data), void *iterator_data)
 
     Pass all objects in the array to a callback
 
     :param const struct assoc_array \*array:
         The array to iterate over.
 
-    :param (int (\*) iterator (const void \*object, void \*iterator_data):
+    :param int (\*iterator)(const void \*object, void \*iterator_data):
         The callback function.
 
     :param void \*iterator_data:
@@ -283,7 +283,7 @@ that was to be inserted.  That is left to the caller.
 assoc_array_gc
 ==============
 
-.. c:function:: int assoc_array_gc(struct assoc_array *array, const struct assoc_array_ops *ops, bool (*) iterator (void *object, void *iterator_data, void *iterator_data)
+.. c:function:: int assoc_array_gc(struct assoc_array *array, const struct assoc_array_ops *ops, bool (*iterator)(void *object, void *iterator_data), void *iterator_data)
 
     Garbage collect an associative array.
 
@@ -293,7 +293,7 @@ assoc_array_gc
     :param const struct assoc_array_ops \*ops:
         The operations to use.
 
-    :param (bool (\*) iterator (void \*object, void \*iterator_data):
+    :param bool (\*iterator)(void \*object, void \*iterator_data):
         A callback function to pass judgement on each object.
 
     :param void \*iterator_data:

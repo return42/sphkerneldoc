@@ -401,14 +401,14 @@ Definition
 .. code-block:: c
 
     struct pstate_funcs {
-        int (* get_max) (void);
-        int (* get_max_physical) (void);
-        int (* get_min) (void);
-        int (* get_turbo) (void);
-        int (* get_scaling) (void);
-        u64 (* get_val) (struct cpudata*, int pstate);
-        void (* get_vid) (struct cpudata *);
-        int32_t (* get_target_pstate) (struct cpudata *);
+        int (*get_max)(void);
+        int (*get_max_physical)(void);
+        int (*get_min)(void);
+        int (*get_turbo)(void);
+        int (*get_scaling)(void);
+        u64 (*get_val)(struct cpudata*, int pstate);
+        void (*get_vid)(struct cpudata *);
+        int32_t (*get_target_pstate)(struct cpudata *);
     }
 
 .. _`pstate_funcs.members`:

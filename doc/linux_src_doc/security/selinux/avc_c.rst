@@ -162,11 +162,11 @@ avc_audit_post_callback
 avc_add_callback
 ================
 
-.. c:function:: int avc_add_callback(int (*) callback (u32 event, u32 events)
+.. c:function:: int avc_add_callback(int (*callback)(u32 event), u32 events)
 
     Register a callback for security events.
 
-    :param (int (\*) callback (u32 event):
+    :param int (\*callback)(u32 event):
         callback function
 
     :param u32 events:

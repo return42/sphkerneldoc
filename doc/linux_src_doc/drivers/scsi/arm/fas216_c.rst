@@ -479,14 +479,14 @@ Complete processing for current command
 fas216_queue_command_lck
 ========================
 
-.. c:function:: int fas216_queue_command_lck(struct scsi_cmnd *SCpnt, void (*) done (struct scsi_cmnd *)
+.. c:function:: int fas216_queue_command_lck(struct scsi_cmnd *SCpnt, void (*done)(struct scsi_cmnd *))
 
     queue a command for adapter to process.
 
     :param struct scsi_cmnd \*SCpnt:
         Command to queue
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         done function to call once command is complete
 
 .. _`fas216_queue_command_lck.description`:
@@ -534,14 +534,14 @@ Trigger restart of a waiting thread in fas216_command
 fas216_noqueue_command_lck
 ==========================
 
-.. c:function:: int fas216_noqueue_command_lck(struct scsi_cmnd *SCpnt, void (*) done (struct scsi_cmnd *)
+.. c:function:: int fas216_noqueue_command_lck(struct scsi_cmnd *SCpnt, void (*done)(struct scsi_cmnd *))
 
     process a command for the adapter.
 
     :param struct scsi_cmnd \*SCpnt:
         Command to queue
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         *undescribed*
 
 .. _`fas216_noqueue_command_lck.description`:

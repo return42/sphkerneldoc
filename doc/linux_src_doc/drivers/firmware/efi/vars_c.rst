@@ -6,11 +6,11 @@
 efivar_init
 ===========
 
-.. c:function:: int efivar_init(int (*) func (efi_char16_t *, efi_guid_t, unsigned long, void *, void *data, bool duplicates, struct list_head *head)
+.. c:function:: int efivar_init(int (*func)(efi_char16_t *, efi_guid_t, unsigned long, void *), void *data, bool duplicates, struct list_head *head)
 
     build the initial list of EFI variables
 
-    :param (int (\*) func (efi_char16_t \*, efi_guid_t, unsigned long, void \*):
+    :param int (\*func)(efi_char16_t \*, efi_guid_t, unsigned long, void \*):
         callback function to invoke for every variable
 
     :param void \*data:
@@ -383,11 +383,11 @@ Unlock the variable list and allow modifications to the list again.
 __efivar_entry_iter
 ===================
 
-.. c:function:: int __efivar_entry_iter(int (*) func (struct efivar_entry *, void *, struct list_head *head, void *data, struct efivar_entry **prev)
+.. c:function:: int __efivar_entry_iter(int (*func)(struct efivar_entry *, void *), struct list_head *head, void *data, struct efivar_entry **prev)
 
     iterate over variable list
 
-    :param (int (\*) func (struct efivar_entry \*, void \*):
+    :param int (\*func)(struct efivar_entry \*, void \*):
         callback function
 
     :param struct list_head \*head:
@@ -424,11 +424,11 @@ The restrictions for \ ``func``\  are the same as documented for
 efivar_entry_iter
 =================
 
-.. c:function:: int efivar_entry_iter(int (*) func (struct efivar_entry *, void *, struct list_head *head, void *data)
+.. c:function:: int efivar_entry_iter(int (*func)(struct efivar_entry *, void *), struct list_head *head, void *data)
 
     iterate over variable list
 
-    :param (int (\*) func (struct efivar_entry \*, void \*):
+    :param int (\*func)(struct efivar_entry \*, void \*):
         callback function
 
     :param struct list_head \*head:

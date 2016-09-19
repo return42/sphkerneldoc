@@ -140,17 +140,17 @@ Definition
 
     struct w1_bus_master {
         void *data;
-        u8 (* read_bit) (void *);
-        void (* write_bit) (void *, u8);
-        u8 (* touch_bit) (void *, u8);
-        u8 (* read_byte) (void *);
-        void (* write_byte) (void *, u8);
-        u8 (* read_block) (void *, u8 *, int);
-        void (* write_block) (void *, const u8 *, int);
-        u8 (* triplet) (void *, u8);
-        u8 (* reset_bus) (void *);
-        u8 (* set_pullup) (void *, int);
-        void (* search) (void *, struct w1_master *,u8, w1_slave_found_callback);
+        u8 (*read_bit)(void *);
+        void (*write_bit)(void *, u8);
+        u8 (*touch_bit)(void *, u8);
+        u8 (*read_byte)(void *);
+        void (*write_byte)(void *, u8);
+        u8 (*read_block)(void *, u8 *, int);
+        void (*write_block)(void *, const u8 *, int);
+        u8 (*triplet)(void *, u8);
+        u8 (*reset_bus)(void *);
+        u8 (*set_pullup)(void *, int);
+        void (*search)(void *, struct w1_master *,u8, w1_slave_found_callback);
     }
 
 .. _`w1_bus_master.members`:
@@ -394,7 +394,7 @@ Definition
 
     struct w1_async_cmd {
         struct list_head async_entry;
-        void (* cb) (struct w1_master *dev, struct w1_async_cmd *async_cmd);
+        void (*cb)(struct w1_master *dev, struct w1_async_cmd *async_cmd);
     }
 
 .. _`w1_async_cmd.members`:

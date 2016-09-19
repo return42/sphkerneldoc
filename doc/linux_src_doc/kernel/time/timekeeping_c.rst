@@ -418,11 +418,11 @@ interval is partial_history_cycles.
 get_device_system_crosststamp
 =============================
 
-.. c:function:: int get_device_system_crosststamp(int (*) get_time_fn (ktime_t *device_time, struct system_counterval_t *sys_counterval, void *ctx, void *ctx, struct system_time_snapshot *history_begin, struct system_device_crosststamp *xtstamp)
+.. c:function:: int get_device_system_crosststamp(int (*get_time_fn)(ktime_t *device_time, struct system_counterval_t *sys_counterval, void *ctx), void *ctx, struct system_time_snapshot *history_begin, struct system_device_crosststamp *xtstamp)
 
     Synchronously capture system/device timestamp
 
-    :param (int (\*) get_time_fn (ktime_t \*device_time, struct system_counterval_t \*sys_counterval, void \*ctx):
+    :param int (\*get_time_fn)(ktime_t \*device_time, struct system_counterval_t \*sys_counterval, void \*ctx):
         Callback to get simultaneous device time and
         system counter from the device driver
 

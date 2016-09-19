@@ -24,7 +24,7 @@ Definition
         u32 mbx_offset;
         u32 int_line;
         u32 version;
-        void (* transceiver_switch) (int);
+        void (*transceiver_switch)(int);
     }
 
 .. _`ti_hecc_platform_data.members`:

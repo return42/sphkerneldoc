@@ -140,7 +140,7 @@ make_classification_flags
 tonga_get_powerplay_table_entry
 ===============================
 
-.. c:function:: int tonga_get_powerplay_table_entry(struct pp_hwmgr *hwmgr, uint32_t entry_index, struct pp_power_state *power_state, int (*) call_back_func (struct pp_hwmgr *, void *, struct pp_power_state *, void *, uint32_t)
+.. c:function:: int tonga_get_powerplay_table_entry(struct pp_hwmgr *hwmgr, uint32_t entry_index, struct pp_power_state *power_state, int (*call_back_func)(struct pp_hwmgr *, void *, struct pp_power_state *, void *, uint32_t))
 
     This function is called by the hardware back-end. \ ``param``\  hwmgr Pointer to the hardware manager. \ ``param``\  entry_index The index of the entry to be extracted from the table. \ ``param``\  power_state The address of the PowerState instance being created. \ ``return``\  -1 if the entry cannot be retrieved.
 
@@ -153,7 +153,7 @@ tonga_get_powerplay_table_entry
     :param struct pp_power_state \*power_state:
         *undescribed*
 
-    :param (int (\*) call_back_func (struct pp_hwmgr \*, void \*, struct pp_power_state \*, void \*, uint32_t):
+    :param int (\*call_back_func)(struct pp_hwmgr \*, void \*, struct pp_power_state \*, void \*, uint32_t):
         *undescribed*
 
 .. This file was automatic generated / don't edit.

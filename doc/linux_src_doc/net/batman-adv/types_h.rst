@@ -2873,22 +2873,22 @@ Definition
     struct batadv_algo_ops {
         struct hlist_node list;
         char *name;
-        void (* bat_iface_activate) (struct batadv_hard_iface *hard_iface);
-        int (* bat_iface_enable) (struct batadv_hard_iface *hard_iface);
-        void (* bat_iface_disable) (struct batadv_hard_iface *hard_iface);
-        void (* bat_iface_update_mac) (struct batadv_hard_iface *hard_iface);
-        void (* bat_primary_iface_set) (struct batadv_hard_iface *hard_iface);
-        void (* bat_ogm_schedule) (struct batadv_hard_iface *hard_iface);
-        void (* bat_ogm_emit) (struct batadv_forw_packet *forw_packet);
-        void (* bat_hardif_neigh_init) (struct batadv_hardif_neigh_node *neigh);
-        int (* bat_neigh_cmp) (struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
-        bool (* bat_neigh_is_similar_or_better) (struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
-        void (* bat_neigh_print) (struct batadv_priv *priv, struct seq_file *seq);
-        void (* bat_neigh_free) (struct batadv_neigh_node *neigh);
-        void (* bat_orig_print) (struct batadv_priv *priv, struct seq_file *seq,struct batadv_hard_iface *hard_iface);
-        void (* bat_orig_free) (struct batadv_orig_node *orig_node);
-        int (* bat_orig_add_if) (struct batadv_orig_node *orig_node,int max_if_num);
-        int (* bat_orig_del_if) (struct batadv_orig_node *orig_node,int max_if_num, int del_if_num);
+        void (*bat_iface_activate)(struct batadv_hard_iface *hard_iface);
+        int (*bat_iface_enable)(struct batadv_hard_iface *hard_iface);
+        void (*bat_iface_disable)(struct batadv_hard_iface *hard_iface);
+        void (*bat_iface_update_mac)(struct batadv_hard_iface *hard_iface);
+        void (*bat_primary_iface_set)(struct batadv_hard_iface *hard_iface);
+        void (*bat_ogm_schedule)(struct batadv_hard_iface *hard_iface);
+        void (*bat_ogm_emit)(struct batadv_forw_packet *forw_packet);
+        void (*bat_hardif_neigh_init)(struct batadv_hardif_neigh_node *neigh);
+        int (*bat_neigh_cmp)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
+        bool (*bat_neigh_is_similar_or_better)(struct batadv_neigh_node *neigh1,struct batadv_hard_iface *if_outgoing1,struct batadv_neigh_node *neigh2,struct batadv_hard_iface *if_outgoing2);
+        void (*bat_neigh_print)(struct batadv_priv *priv, struct seq_file *seq);
+        void (*bat_neigh_free)(struct batadv_neigh_node *neigh);
+        void (*bat_orig_print)(struct batadv_priv *priv, struct seq_file *seq,struct batadv_hard_iface *hard_iface);
+        void (*bat_orig_free)(struct batadv_orig_node *orig_node);
+        int (*bat_orig_add_if)(struct batadv_orig_node *orig_node,int max_if_num);
+        int (*bat_orig_del_if)(struct batadv_orig_node *orig_node,int max_if_num, int del_if_num);
     }
 
 .. _`batadv_algo_ops.members`:
@@ -3132,8 +3132,8 @@ Definition
 
     struct batadv_tvlv_handler {
         struct hlist_node list;
-        void (* ogm_handler) (struct batadv_priv *bat_priv,struct batadv_orig_node *orig,u8 flags, void *tvlv_value, u16 tvlv_value_len);
-        int (* unicast_handler) (struct batadv_priv *bat_priv,u8 *src, u8 *dst,void *tvlv_value, u16 tvlv_value_len);
+        void (*ogm_handler)(struct batadv_priv *bat_priv,struct batadv_orig_node *orig,u8 flags, void *tvlv_value, u16 tvlv_value_len);
+        int (*unicast_handler)(struct batadv_priv *bat_priv,u8 *src, u8 *dst,void *tvlv_value, u16 tvlv_value_len);
         u8 type;
         u8 version;
         u8 flags;

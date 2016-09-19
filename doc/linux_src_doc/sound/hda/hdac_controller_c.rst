@@ -161,7 +161,7 @@ snd_hdac_bus_stop_chip
 snd_hdac_bus_handle_stream_irq
 ==============================
 
-.. c:function:: int snd_hdac_bus_handle_stream_irq(struct hdac_bus *bus, unsigned int status, void (*) ack (struct hdac_bus *, struct hdac_stream *)
+.. c:function:: int snd_hdac_bus_handle_stream_irq(struct hdac_bus *bus, unsigned int status, void (*ack)(struct hdac_bus *, struct hdac_stream *))
 
     interrupt handler for streams
 
@@ -171,7 +171,7 @@ snd_hdac_bus_handle_stream_irq
     :param unsigned int status:
         INTSTS register value
 
-    :param (void (\*) ack (struct hdac_bus \*, struct hdac_stream \*):
+    :param void (\*ack)(struct hdac_bus \*, struct hdac_stream \*):
         *undescribed*
 
 .. _`snd_hdac_bus_handle_stream_irq.description`:

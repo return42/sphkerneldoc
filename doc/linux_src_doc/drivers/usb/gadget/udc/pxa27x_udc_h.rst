@@ -215,7 +215,7 @@ Definition
         struct usb_gadget gadget;
         struct usb_gadget_driver *driver;
         struct device *dev;
-        void (* udc_command) (int);
+        void (*udc_command)(int);
         struct gpio_desc *gpiod;
         struct usb_phy *transceiver;
         enum ep0_state ep0state;

@@ -21,10 +21,10 @@ Definition
         struct list_head node;
         void *token;
         int irq;
-        int (* add_consumer) (struct irq_bypass_producer *,struct irq_bypass_consumer *);
-        void (* del_consumer) (struct irq_bypass_producer *,struct irq_bypass_consumer *);
-        void (* stop) (struct irq_bypass_producer *);
-        void (* start) (struct irq_bypass_producer *);
+        int (*add_consumer)(struct irq_bypass_producer *,struct irq_bypass_consumer *);
+        void (*del_consumer)(struct irq_bypass_producer *,struct irq_bypass_consumer *);
+        void (*stop)(struct irq_bypass_producer *);
+        void (*start)(struct irq_bypass_producer *);
     }
 
 .. _`irq_bypass_producer.members`:
@@ -81,10 +81,10 @@ Definition
     struct irq_bypass_consumer {
         struct list_head node;
         void *token;
-        int (* add_producer) (struct irq_bypass_consumer *,struct irq_bypass_producer *);
-        void (* del_producer) (struct irq_bypass_consumer *,struct irq_bypass_producer *);
-        void (* stop) (struct irq_bypass_consumer *);
-        void (* start) (struct irq_bypass_consumer *);
+        int (*add_producer)(struct irq_bypass_consumer *,struct irq_bypass_producer *);
+        void (*del_producer)(struct irq_bypass_consumer *,struct irq_bypass_producer *);
+        void (*stop)(struct irq_bypass_consumer *);
+        void (*start)(struct irq_bypass_consumer *);
     }
 
 .. _`irq_bypass_consumer.members`:

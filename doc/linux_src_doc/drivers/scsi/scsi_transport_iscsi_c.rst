@@ -138,7 +138,7 @@ pointer to found flashnode session object on success
 iscsi_find_flashnode_sess
 =========================
 
-.. c:function:: struct device *iscsi_find_flashnode_sess(struct Scsi_Host *shost, void *data, int (*) fn (struct device *dev, void *data)
+.. c:function:: struct device *iscsi_find_flashnode_sess(struct Scsi_Host *shost, void *data, int (*fn)(struct device *dev, void *data))
 
     finds flashnode session entry
 
@@ -148,7 +148,7 @@ iscsi_find_flashnode_sess
     :param void \*data:
         pointer to data containing value to use for comparison
 
-    :param (int (\*) fn (struct device \*dev, void \*data):
+    :param int (\*fn)(struct device \*dev, void \*data):
         function pointer that does actual comparison
 
 .. _`iscsi_find_flashnode_sess.description`:

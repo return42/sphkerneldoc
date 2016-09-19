@@ -362,14 +362,14 @@ Post the command to the controller if mailbox is available.
 megaraid_queue_command_lck
 ==========================
 
-.. c:function:: int megaraid_queue_command_lck(struct scsi_cmnd *scp, void (*) done (struct scsi_cmnd *)
+.. c:function:: int megaraid_queue_command_lck(struct scsi_cmnd *scp, void (*done)(struct scsi_cmnd *))
 
     generic queue entry point for all LLDs
 
     :param struct scsi_cmnd \*scp:
         pointer to the scsi command to be executed
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         callback routine to be called after the cmd has be completed
 
 .. _`megaraid_queue_command_lck.description`:

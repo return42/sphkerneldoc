@@ -6,7 +6,7 @@
 list_sort
 =========
 
-.. c:function:: void list_sort(void *priv, struct list_head *head, int (*) cmp (void *priv, struct list_head *a, struct list_head *b)
+.. c:function:: void list_sort(void *priv, struct list_head *head, int (*cmp)(void *priv, struct list_head *a, struct list_head *b))
 
     sort a list
 
@@ -16,7 +16,7 @@ list_sort
     :param struct list_head \*head:
         the list to sort
 
-    :param (int (\*) cmp (void \*priv, struct list_head \*a, struct list_head \*b):
+    :param int (\*cmp)(void \*priv, struct list_head \*a, struct list_head \*b):
         the elements comparison function
 
 .. _`list_sort.description`:

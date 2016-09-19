@@ -940,7 +940,7 @@ Definition
         struct ksz_shared_mem desc_pool;
         spinlock_t hwlock;
         struct mutex lock;
-        int (* dev_rcv) (struct dev_info *);
+        int (*dev_rcv)(struct dev_info *);
         struct sk_buff *last_skb;
         int skb_index;
         int skb_len;

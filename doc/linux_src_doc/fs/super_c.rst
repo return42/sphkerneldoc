@@ -166,17 +166,17 @@ change the attachments of dentries to inodes.
 sget
 ====
 
-.. c:function:: struct super_block *sget(struct file_system_type *type, int (*) test (struct super_block *,void *, int (*) set (struct super_block *,void *, int flags, void *data)
+.. c:function:: struct super_block *sget(struct file_system_type *type, int (*test)(struct super_block *,void *), int (*set)(struct super_block *,void *), int flags, void *data)
 
     find or create a superblock
 
     :param struct file_system_type \*type:
         filesystem type superblock should belong to
 
-    :param (int (\*) test (struct super_block \*,void \*):
+    :param int (\*test)(struct super_block \*,void \*):
         comparison callback
 
-    :param (int (\*) set (struct super_block \*,void \*):
+    :param int (\*set)(struct super_block \*,void \*):
         setup callback
 
     :param int flags:
@@ -190,11 +190,11 @@ sget
 iterate_supers
 ==============
 
-.. c:function:: void iterate_supers(void (*) f (struct super_block *, void *, void *arg)
+.. c:function:: void iterate_supers(void (*f)(struct super_block *, void *), void *arg)
 
     call function for all active superblocks
 
-    :param (void (\*) f (struct super_block \*, void \*):
+    :param void (\*f)(struct super_block \*, void \*):
         function to call
 
     :param void \*arg:
@@ -213,14 +213,14 @@ locked superblock and given argument.
 iterate_supers_type
 ===================
 
-.. c:function:: void iterate_supers_type(struct file_system_type *type, void (*) f (struct super_block *, void *, void *arg)
+.. c:function:: void iterate_supers_type(struct file_system_type *type, void (*f)(struct super_block *, void *), void *arg)
 
     call function for superblocks of given type
 
     :param struct file_system_type \*type:
         fs type
 
-    :param (void (\*) f (struct super_block \*, void \*):
+    :param void (\*f)(struct super_block \*, void \*):
         function to call
 
     :param void \*arg:

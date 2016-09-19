@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct hwspinlock_ops {
-        int (* trylock) (struct hwspinlock *lock);
-        void (* unlock) (struct hwspinlock *lock);
-        void (* relax) (struct hwspinlock *lock);
+        int (*trylock)(struct hwspinlock *lock);
+        void (*unlock)(struct hwspinlock *lock);
+        void (*relax)(struct hwspinlock *lock);
     }
 
 .. _`hwspinlock_ops.members`:

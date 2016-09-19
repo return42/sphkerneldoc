@@ -6,7 +6,7 @@
 rs_init
 =======
 
-.. c:function:: struct rs_control *rs_init(int symsize, int gfpoly, int (*) gffunc (int, int fcr, int prim, int nroots)
+.. c:function:: struct rs_control *rs_init(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots)
 
     Initialize a Reed-Solomon codec
 
@@ -16,7 +16,7 @@ rs_init
     :param int gfpoly:
         Field generator polynomial coefficients
 
-    :param (int (\*) gffunc (int):
+    :param int (\*gffunc)(int):
         Field generator function
 
     :param int fcr:
@@ -54,7 +54,7 @@ free_rs
 init_rs_internal
 ================
 
-.. c:function:: struct rs_control *init_rs_internal(int symsize, int gfpoly, int (*) gffunc (int, int fcr, int prim, int nroots)
+.. c:function:: struct rs_control *init_rs_internal(int symsize, int gfpoly, int (*gffunc)(int), int fcr, int prim, int nroots)
 
     Find a matching or allocate a new rs control structure
 
@@ -66,7 +66,7 @@ init_rs_internal
         with the 0th coefficient in the low order bit. The polynomial
         must be primitive;
 
-    :param (int (\*) gffunc (int):
+    :param int (\*gffunc)(int):
         pointer to function to generate the next field element,
         or the multiplicative identity element if given 0.  Used
         instead of gfpoly if gfpoly is 0
@@ -113,14 +113,14 @@ init_rs
 init_rs_non_canonical
 =====================
 
-.. c:function:: struct rs_control *init_rs_non_canonical(int symsize, int (*) gffunc (int, int fcr, int prim, int nroots)
+.. c:function:: struct rs_control *init_rs_non_canonical(int symsize, int (*gffunc)(int), int fcr, int prim, int nroots)
 
     Find a matching or allocate a new rs control structure, for fields with non-canonical representation
 
     :param int symsize:
         the symbol size (number of bits)
 
-    :param (int (\*) gffunc (int):
+    :param int (\*gffunc)(int):
         pointer to function to generate the next field element,
         or the multiplicative identity element if given 0.  Used
         instead of gfpoly if gfpoly is 0

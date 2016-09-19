@@ -18,15 +18,15 @@ Definition
 .. code-block:: c
 
     struct omap_hwmod_soc_ops {
-        void (* enable_module) (struct omap_hwmod *oh);
-        int (* disable_module) (struct omap_hwmod *oh);
-        int (* wait_target_ready) (struct omap_hwmod *oh);
-        int (* assert_hardreset) (struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
-        int (* deassert_hardreset) (struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
-        int (* is_hardreset_asserted) (struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
-        int (* init_clkdm) (struct omap_hwmod *oh);
-        void (* update_context_lost) (struct omap_hwmod *oh);
-        int (* get_context_lost) (struct omap_hwmod *oh);
+        void (*enable_module)(struct omap_hwmod *oh);
+        int (*disable_module)(struct omap_hwmod *oh);
+        int (*wait_target_ready)(struct omap_hwmod *oh);
+        int (*assert_hardreset)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
+        int (*deassert_hardreset)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
+        int (*is_hardreset_asserted)(struct omap_hwmod *oh,struct omap_hwmod_rst_info *ohri);
+        int (*init_clkdm)(struct omap_hwmod *oh);
+        void (*update_context_lost)(struct omap_hwmod *oh);
+        int (*get_context_lost)(struct omap_hwmod *oh);
     }
 
 .. _`omap_hwmod_soc_ops.members`:
@@ -2021,11 +2021,11 @@ struct omap_hwmod \*, or NULL upon error.
 omap_hwmod_for_each
 ===================
 
-.. c:function:: int omap_hwmod_for_each(int (*) fn (struct omap_hwmod *oh, void *data, void *data)
+.. c:function:: int omap_hwmod_for_each(int (*fn)(struct omap_hwmod *oh, void *data), void *data)
 
     call function for each registered omap_hwmod
 
-    :param (int (\*) fn (struct omap_hwmod \*oh, void \*data):
+    :param int (\*fn)(struct omap_hwmod \*oh, void \*data):
         pointer to a callback function
 
     :param void \*data:
@@ -2473,14 +2473,14 @@ from \\ :c:func:`_deassert_hardreset`\ .
 omap_hwmod_for_each_by_class
 ============================
 
-.. c:function:: int omap_hwmod_for_each_by_class(const char *classname, int (*) fn (struct omap_hwmod *oh, void *user, void *user)
+.. c:function:: int omap_hwmod_for_each_by_class(const char *classname, int (*fn)(struct omap_hwmod *oh, void *user), void *user)
 
     call \ ``fn``\  for each hwmod of class \ ``classname``\ 
 
     :param const char \*classname:
         struct omap_hwmod_class name to search for
 
-    :param (int (\*) fn (struct omap_hwmod \*oh, void \*user):
+    :param int (\*fn)(struct omap_hwmod \*oh, void \*user):
         callback function pointer to call for each hwmod in class \ ``classname``\ 
 
     :param void \*user:

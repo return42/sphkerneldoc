@@ -163,7 +163,7 @@ D_WALK_SKIP
 d_walk
 ======
 
-.. c:function:: void d_walk(struct dentry *parent, void *data, enum d_walk_ret (*) enter (void *, struct dentry *, void (*) finish (void *)
+.. c:function:: void d_walk(struct dentry *parent, void *data, enum d_walk_ret (*enter)(void *, struct dentry *), void (*finish)(void *))
 
     walk the dentry tree
 
@@ -173,10 +173,10 @@ d_walk
     :param void \*data:
         data passed to @\ :c:func:`enter`\  and @\ :c:func:`finish`\ 
 
-    :param (enum d_walk_ret (\*) enter (void \*, struct dentry \*):
+    :param enum d_walk_ret (\*enter)(void \*, struct dentry \*):
         callback when first entering the dentry
 
-    :param (void (\*) finish (void \*):
+    :param void (\*finish)(void \*):
         callback when successfully finished the walk
 
 .. _`d_walk.description`:

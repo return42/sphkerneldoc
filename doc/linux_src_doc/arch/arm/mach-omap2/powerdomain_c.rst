@@ -221,11 +221,11 @@ to the struct powerdomain if found, or NULL otherwise.
 pwrdm_for_each
 ==============
 
-.. c:function:: int pwrdm_for_each(int (*) fn (struct powerdomain *pwrdm, void *user, void *user)
+.. c:function:: int pwrdm_for_each(int (*fn)(struct powerdomain *pwrdm, void *user), void *user)
 
     call function on each registered clockdomain
 
-    :param (int (\*) fn (struct powerdomain \*pwrdm, void \*user):
+    :param int (\*fn)(struct powerdomain \*pwrdm, void \*user):
         callback function \*
 
     :param void \*user:

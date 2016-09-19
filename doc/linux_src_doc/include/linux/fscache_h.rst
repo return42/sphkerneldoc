@@ -717,14 +717,14 @@ detached, otherwise it will just be detached.
 fscache_enable_cookie
 =====================
 
-.. c:function:: void fscache_enable_cookie(struct fscache_cookie *cookie, bool (*) can_enable (void *data, void *data)
+.. c:function:: void fscache_enable_cookie(struct fscache_cookie *cookie, bool (*can_enable)(void *data), void *data)
 
     Reenable a cookie
 
     :param struct fscache_cookie \*cookie:
         The cookie representing the cache object
 
-    :param (bool (\*) can_enable (void \*data):
+    :param bool (\*can_enable)(void \*data):
         A function to permit enablement once lock is held
 
     :param void \*data:

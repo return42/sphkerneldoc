@@ -133,7 +133,7 @@ nfs_async_rename_release
 nfs_async_rename
 ================
 
-.. c:function:: struct rpc_task *nfs_async_rename(struct inode *old_dir, struct inode *new_dir, struct dentry *old_dentry, struct dentry *new_dentry, void (*) complete (struct rpc_task *, struct nfs_renamedata *)
+.. c:function:: struct rpc_task *nfs_async_rename(struct inode *old_dir, struct inode *new_dir, struct dentry *old_dentry, struct dentry *new_dentry, void (*complete)(struct rpc_task *, struct nfs_renamedata *))
 
     perform an asynchronous rename operation
 
@@ -149,7 +149,7 @@ nfs_async_rename
     :param struct dentry \*new_dentry:
         dentry to which the old_dentry should be renamed
 
-    :param (void (\*) complete (struct rpc_task \*, struct nfs_renamedata \*):
+    :param void (\*complete)(struct rpc_task \*, struct nfs_renamedata \*):
         *undescribed*
 
 .. _`nfs_async_rename.description`:

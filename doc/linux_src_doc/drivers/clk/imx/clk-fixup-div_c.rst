@@ -20,7 +20,7 @@ Definition
     struct clk_fixup_div {
         struct clk_divider divider;
         const struct clk_ops *ops;
-        void (* fixup) (u32 *val);
+        void (*fixup)(u32 *val);
     }
 
 .. _`clk_fixup_div.members`:

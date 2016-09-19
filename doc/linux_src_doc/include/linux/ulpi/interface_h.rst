@@ -19,8 +19,8 @@ Definition
 
     struct ulpi_ops {
         struct device *dev;
-        int (* read) (struct ulpi_ops *ops, u8 addr);
-        int (* write) (struct ulpi_ops *ops, u8 addr, u8 val);
+        int (*read)(struct ulpi_ops *ops, u8 addr);
+        int (*write)(struct ulpi_ops *ops, u8 addr, u8 val);
     }
 
 .. _`ulpi_ops.members`:

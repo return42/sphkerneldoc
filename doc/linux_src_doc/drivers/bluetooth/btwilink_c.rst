@@ -20,7 +20,7 @@ Definition
     struct ti_st {
         struct hci_dev *hdev;
         char reg_status;
-        long (* st_write) (struct sk_buff *);
+        long (*st_write)(struct sk_buff *);
         struct completion wait_reg_completion;
     }
 

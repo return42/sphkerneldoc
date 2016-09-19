@@ -676,14 +676,14 @@ we build the scatter gather lists and ensure they are mapped properly.
 i91u_queuecommand_lck
 =====================
 
-.. c:function:: int i91u_queuecommand_lck(struct scsi_cmnd *cmd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int i91u_queuecommand_lck(struct scsi_cmnd *cmd, void (*done)(struct scsi_cmnd *))
 
     Queue a new command if possible
 
     :param struct scsi_cmnd \*cmd:
         SCSI command block from the mid layer
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         Completion handler
 
 .. _`i91u_queuecommand_lck.description`:

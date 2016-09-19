@@ -18,19 +18,19 @@ Definition
 .. code-block:: c
 
     struct ide_port_ops {
-        void (* init_dev) (ide_drive_t *);
-        void (* set_pio_mode) (struct hwif_s *, ide_drive_t *);
-        void (* set_dma_mode) (struct hwif_s *, ide_drive_t *);
-        int (* reset_poll) (ide_drive_t *);
-        void (* pre_reset) (ide_drive_t *);
-        void (* resetproc) (ide_drive_t *);
-        void (* maskproc) (ide_drive_t *, int);
-        void (* quirkproc) (ide_drive_t *);
-        void (* clear_irq) (ide_drive_t *);
-        int (* test_irq) (struct hwif_s *);
-        u8 (* mdma_filter) (ide_drive_t *);
-        u8 (* udma_filter) (ide_drive_t *);
-        u8 (* cable_detect) (struct hwif_s *);
+        void (*init_dev)(ide_drive_t *);
+        void (*set_pio_mode)(struct hwif_s *, ide_drive_t *);
+        void (*set_dma_mode)(struct hwif_s *, ide_drive_t *);
+        int (*reset_poll)(ide_drive_t *);
+        void (*pre_reset)(ide_drive_t *);
+        void (*resetproc)(ide_drive_t *);
+        void (*maskproc)(ide_drive_t *, int);
+        void (*quirkproc)(ide_drive_t *);
+        void (*clear_irq)(ide_drive_t *);
+        int (*test_irq)(struct hwif_s *);
+        u8 (*mdma_filter)(ide_drive_t *);
+        u8 (*udma_filter)(ide_drive_t *);
+        u8 (*cable_detect)(struct hwif_s *);
     }
 
 .. _`ide_port_ops.members`:

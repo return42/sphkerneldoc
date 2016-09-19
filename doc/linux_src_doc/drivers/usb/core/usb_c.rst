@@ -149,14 +149,14 @@ A pointer to the interface with the matching major and \ ``minor``\ .
 usb_for_each_dev
 ================
 
-.. c:function:: int usb_for_each_dev(void *data, int (*) fn (struct usb_device *, void *)
+.. c:function:: int usb_for_each_dev(void *data, int (*fn)(struct usb_device *, void *))
 
     iterate over all USB devices in the system
 
     :param void \*data:
         data pointer that will be handed to the callback function
 
-    :param (int (\*) fn (struct usb_device \*, void \*):
+    :param int (\*fn)(struct usb_device \*, void \*):
         callback function to be called for each USB device
 
 .. _`usb_for_each_dev.description`:

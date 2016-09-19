@@ -6,7 +6,7 @@
 usb_cdc_wdm_register
 ====================
 
-.. c:function:: struct usb_driver *usb_cdc_wdm_register(struct usb_interface *intf, struct usb_endpoint_descriptor *ep, int bufsize, int (*) manage_power (struct usb_interface *, int)
+.. c:function:: struct usb_driver *usb_cdc_wdm_register(struct usb_interface *intf, struct usb_endpoint_descriptor *ep, int bufsize, int (*manage_power)(struct usb_interface *, int))
 
     register a WDM subdriver
 
@@ -19,7 +19,7 @@ usb_cdc_wdm_register
     :param int bufsize:
         maximum message size to support for read/write
 
-    :param (int (\*) manage_power (struct usb_interface \*, int):
+    :param int (\*manage_power)(struct usb_interface \*, int):
         *undescribed*
 
 .. _`usb_cdc_wdm_register.description`:

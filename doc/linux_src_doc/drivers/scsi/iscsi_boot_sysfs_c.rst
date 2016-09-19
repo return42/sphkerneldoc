@@ -6,7 +6,7 @@
 iscsi_boot_create_target
 ========================
 
-.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_target(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*) show (void *data, int type, char *buf, umode_t (*) is_visible (void *data, int type, void (*) release (void *data)
+.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_target(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*show)(void *data, int type, char *buf), umode_t (*is_visible)(void *data, int type), void (*release)(void *data))
 
     create boot target sysfs dir
 
@@ -19,13 +19,13 @@ iscsi_boot_create_target
     :param void \*data:
         driver specific data for target
 
-    :param (ssize_t (\*) show (void \*data, int type, char \*buf):
+    :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
 
-    :param (umode_t (\*) is_visible (void \*data, int type):
+    :param umode_t (\*is_visible)(void \*data, int type):
         attr visibility function
 
-    :param (void (\*) release (void \*data):
+    :param void (\*release)(void \*data):
         release function
 
 .. _`iscsi_boot_create_target.note`:
@@ -41,7 +41,7 @@ when all refs to the target kobject have been released.
 iscsi_boot_create_initiator
 ===========================
 
-.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_initiator(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*) show (void *data, int type, char *buf, umode_t (*) is_visible (void *data, int type, void (*) release (void *data)
+.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_initiator(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*show)(void *data, int type, char *buf), umode_t (*is_visible)(void *data, int type), void (*release)(void *data))
 
     create boot initiator sysfs dir
 
@@ -54,13 +54,13 @@ iscsi_boot_create_initiator
     :param void \*data:
         driver specific data
 
-    :param (ssize_t (\*) show (void \*data, int type, char \*buf):
+    :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
 
-    :param (umode_t (\*) is_visible (void \*data, int type):
+    :param umode_t (\*is_visible)(void \*data, int type):
         attr visibility function
 
-    :param (void (\*) release (void \*data):
+    :param void (\*release)(void \*data):
         release function
 
 .. _`iscsi_boot_create_initiator.note`:
@@ -76,7 +76,7 @@ when all refs to the initiator kobject have been released.
 iscsi_boot_create_ethernet
 ==========================
 
-.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_ethernet(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*) show (void *data, int type, char *buf, umode_t (*) is_visible (void *data, int type, void (*) release (void *data)
+.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_ethernet(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*show)(void *data, int type, char *buf), umode_t (*is_visible)(void *data, int type), void (*release)(void *data))
 
     create boot ethernet sysfs dir
 
@@ -89,13 +89,13 @@ iscsi_boot_create_ethernet
     :param void \*data:
         driver specific data
 
-    :param (ssize_t (\*) show (void \*data, int type, char \*buf):
+    :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
 
-    :param (umode_t (\*) is_visible (void \*data, int type):
+    :param umode_t (\*is_visible)(void \*data, int type):
         attr visibility function
 
-    :param (void (\*) release (void \*data):
+    :param void (\*release)(void \*data):
         release function
 
 .. _`iscsi_boot_create_ethernet.note`:
@@ -111,7 +111,7 @@ when all refs to the ethernet kobject have been released.
 iscsi_boot_create_acpitbl
 =========================
 
-.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_acpitbl(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*) show (void *data, int type, char *buf, umode_t (*) is_visible (void *data, int type, void (*) release (void *data)
+.. c:function:: struct iscsi_boot_kobj *iscsi_boot_create_acpitbl(struct iscsi_boot_kset *boot_kset, int index, void *data, ssize_t (*show)(void *data, int type, char *buf), umode_t (*is_visible)(void *data, int type), void (*release)(void *data))
 
     create boot acpi table sysfs dir
 
@@ -124,13 +124,13 @@ iscsi_boot_create_acpitbl
     :param void \*data:
         driver specific data
 
-    :param (ssize_t (\*) show (void \*data, int type, char \*buf):
+    :param ssize_t (\*show)(void \*data, int type, char \*buf):
         attr show function
 
-    :param (umode_t (\*) is_visible (void \*data, int type):
+    :param umode_t (\*is_visible)(void \*data, int type):
         attr visibility function
 
-    :param (void (\*) release (void \*data):
+    :param void (\*release)(void \*data):
         release function
 
 .. _`iscsi_boot_create_acpitbl.note`:

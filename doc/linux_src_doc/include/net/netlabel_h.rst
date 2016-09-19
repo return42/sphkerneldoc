@@ -19,7 +19,7 @@ Definition
 
     struct netlbl_lsm_cache {
         atomic_t refcount;
-        void (* free) (const void *data);
+        void (*free)(const void *data);
         void *data;
     }
 

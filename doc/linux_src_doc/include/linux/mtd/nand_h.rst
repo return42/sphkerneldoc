@@ -67,19 +67,19 @@ Definition
         int postpad;
         unsigned int options;
         void *priv;
-        void (* hwctl) (struct mtd_info *mtd, int mode);
-        int (* calculate) (struct mtd_info *mtd, const uint8_t *dat,uint8_t *ecc_code);
-        int (* correct) (struct mtd_info *mtd, uint8_t *dat, uint8_t *read_ecc,uint8_t *calc_ecc);
-        int (* read_page_raw) (struct mtd_info *mtd, struct nand_chip *chip,uint8_t *buf, int oob_required, int page);
-        int (* write_page_raw) (struct mtd_info *mtd, struct nand_chip *chip,const uint8_t *buf, int oob_required, int page);
-        int (* read_page) (struct mtd_info *mtd, struct nand_chip *chip,uint8_t *buf, int oob_required, int page);
-        int (* read_subpage) (struct mtd_info *mtd, struct nand_chip *chip,uint32_t offs, uint32_t len, uint8_t *buf, int page);
-        int (* write_subpage) (struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, uint32_t data_len,const uint8_t *data_buf, int oob_required, int page);
-        int (* write_page) (struct mtd_info *mtd, struct nand_chip *chip,const uint8_t *buf, int oob_required, int page);
-        int (* write_oob_raw) (struct mtd_info *mtd, struct nand_chip *chip,int page);
-        int (* read_oob_raw) (struct mtd_info *mtd, struct nand_chip *chip,int page);
-        int (* read_oob) (struct mtd_info *mtd, struct nand_chip *chip, int page);
-        int (* write_oob) (struct mtd_info *mtd, struct nand_chip *chip,int page);
+        void (*hwctl)(struct mtd_info *mtd, int mode);
+        int (*calculate)(struct mtd_info *mtd, const uint8_t *dat,uint8_t *ecc_code);
+        int (*correct)(struct mtd_info *mtd, uint8_t *dat, uint8_t *read_ecc,uint8_t *calc_ecc);
+        int (*read_page_raw)(struct mtd_info *mtd, struct nand_chip *chip,uint8_t *buf, int oob_required, int page);
+        int (*write_page_raw)(struct mtd_info *mtd, struct nand_chip *chip,const uint8_t *buf, int oob_required, int page);
+        int (*read_page)(struct mtd_info *mtd, struct nand_chip *chip,uint8_t *buf, int oob_required, int page);
+        int (*read_subpage)(struct mtd_info *mtd, struct nand_chip *chip,uint32_t offs, uint32_t len, uint8_t *buf, int page);
+        int (*write_subpage)(struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, uint32_t data_len,const uint8_t *data_buf, int oob_required, int page);
+        int (*write_page)(struct mtd_info *mtd, struct nand_chip *chip,const uint8_t *buf, int oob_required, int page);
+        int (*write_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip,int page);
+        int (*read_oob_raw)(struct mtd_info *mtd, struct nand_chip *chip,int page);
+        int (*read_oob)(struct mtd_info *mtd, struct nand_chip *chip, int page);
+        int (*write_oob)(struct mtd_info *mtd, struct nand_chip *chip,int page);
     }
 
 .. _`nand_ecc_ctrl.members`:
@@ -247,25 +247,25 @@ Definition
         struct mtd_info mtd;
         void __iomem *IO_ADDR_R;
         void __iomem *IO_ADDR_W;
-        uint8_t (* read_byte) (struct mtd_info *mtd);
-        u16 (* read_word) (struct mtd_info *mtd);
-        void (* write_byte) (struct mtd_info *mtd, uint8_t byte);
-        void (* write_buf) (struct mtd_info *mtd, const uint8_t *buf, int len);
-        void (* read_buf) (struct mtd_info *mtd, uint8_t *buf, int len);
-        void (* select_chip) (struct mtd_info *mtd, int chip);
-        int (* block_bad) (struct mtd_info *mtd, loff_t ofs);
-        int (* block_markbad) (struct mtd_info *mtd, loff_t ofs);
-        void (* cmd_ctrl) (struct mtd_info *mtd, int dat, unsigned int ctrl);
-        int (* dev_ready) (struct mtd_info *mtd);
-        void (* cmdfunc) (struct mtd_info *mtd, unsigned command, int column,int page_addr);
-        int(* waitfunc) (struct mtd_info *mtd, struct nand_chip *this);
-        int (* erase) (struct mtd_info *mtd, int page);
-        int (* scan_bbt) (struct mtd_info *mtd);
-        int (* errstat) (struct mtd_info *mtd, struct nand_chip *this, int state,int status, int page);
-        int (* write_page) (struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, int data_len, const uint8_t *buf,int oob_required, int page, int cached, int raw);
-        int (* onfi_set_features) (struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
-        int (* onfi_get_features) (struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
-        int (* setup_read_retry) (struct mtd_info *mtd, int retry_mode);
+        uint8_t (*read_byte)(struct mtd_info *mtd);
+        u16 (*read_word)(struct mtd_info *mtd);
+        void (*write_byte)(struct mtd_info *mtd, uint8_t byte);
+        void (*write_buf)(struct mtd_info *mtd, const uint8_t *buf, int len);
+        void (*read_buf)(struct mtd_info *mtd, uint8_t *buf, int len);
+        void (*select_chip)(struct mtd_info *mtd, int chip);
+        int (*block_bad)(struct mtd_info *mtd, loff_t ofs);
+        int (*block_markbad)(struct mtd_info *mtd, loff_t ofs);
+        void (*cmd_ctrl)(struct mtd_info *mtd, int dat, unsigned int ctrl);
+        int (*dev_ready)(struct mtd_info *mtd);
+        void (*cmdfunc)(struct mtd_info *mtd, unsigned command, int column,int page_addr);
+        int(*waitfunc)(struct mtd_info *mtd, struct nand_chip *this);
+        int (*erase)(struct mtd_info *mtd, int page);
+        int (*scan_bbt)(struct mtd_info *mtd);
+        int (*errstat)(struct mtd_info *mtd, struct nand_chip *this, int state,int status, int page);
+        int (*write_page)(struct mtd_info *mtd, struct nand_chip *chip,uint32_t offset, int data_len, const uint8_t *buf,int oob_required, int page, int cached, int raw);
+        int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
+        int (*onfi_get_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
+        int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
         int chip_delay;
         unsigned int options;
         unsigned int bbt_options;
@@ -660,15 +660,15 @@ Definition
 .. code-block:: c
 
     struct platform_nand_ctrl {
-        int (* probe) (struct platform_device *pdev);
-        void (* remove) (struct platform_device *pdev);
-        void (* hwcontrol) (struct mtd_info *mtd, int cmd);
-        int (* dev_ready) (struct mtd_info *mtd);
-        void (* select_chip) (struct mtd_info *mtd, int chip);
-        void (* cmd_ctrl) (struct mtd_info *mtd, int dat, unsigned int ctrl);
-        void (* write_buf) (struct mtd_info *mtd, const uint8_t *buf, int len);
-        void (* read_buf) (struct mtd_info *mtd, uint8_t *buf, int len);
-        unsigned char (* read_byte) (struct mtd_info *mtd);
+        int (*probe)(struct platform_device *pdev);
+        void (*remove)(struct platform_device *pdev);
+        void (*hwcontrol)(struct mtd_info *mtd, int cmd);
+        int (*dev_ready)(struct mtd_info *mtd);
+        void (*select_chip)(struct mtd_info *mtd, int chip);
+        void (*cmd_ctrl)(struct mtd_info *mtd, int dat, unsigned int ctrl);
+        void (*write_buf)(struct mtd_info *mtd, const uint8_t *buf, int len);
+        void (*read_buf)(struct mtd_info *mtd, uint8_t *buf, int len);
+        unsigned char (*read_byte)(struct mtd_info *mtd);
         void *priv;
     }
 

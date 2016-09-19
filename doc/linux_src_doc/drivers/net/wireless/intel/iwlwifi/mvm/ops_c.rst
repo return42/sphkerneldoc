@@ -58,7 +58,7 @@ Definition
     struct iwl_rx_handlers {
         u16 cmd_id;
         enum iwl_rx_handler_context context;
-        void (* fn) (struct iwl_mvm *mvm, struct iwl_rx_cmd_buffer *rxb);
+        void (*fn)(struct iwl_mvm *mvm, struct iwl_rx_cmd_buffer *rxb);
     }
 
 .. _`iwl_rx_handlers.members`:

@@ -18,8 +18,8 @@ Definition
 .. code-block:: c
 
     struct ske_keypad_platform_data {
-        int (* init) (void);
-        int (* exit) (void);
+        int (*init)(void);
+        int (*exit)(void);
         const struct matrix_keymap_data *keymap_data;
         u8 krow;
         u8 kcol;

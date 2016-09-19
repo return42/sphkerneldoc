@@ -22,10 +22,10 @@ Definition
         const char **dt_compat;
         struct meta_clock_desc *clocks;
         unsigned int nr_irqs;
-        void (* init_early) (void);
-        void (* init_irq) (void);
-        void (* init_machine) (void);
-        void (* init_late) (void);
+        void (*init_early)(void);
+        void (*init_irq)(void);
+        void (*init_machine)(void);
+        void (*init_late)(void);
     }
 
 .. _`machine_desc.members`:

@@ -22,7 +22,7 @@ Definition
         void __iomem *base;
         struct completion cmd_complete;
         struct clk *clk;
-        u32 (* get_clk_rate_khz) (struct dw_i2c_dev *dev);
+        u32 (*get_clk_rate_khz)(struct dw_i2c_dev *dev);
         struct dw_pci_controller *controller;
         int cmd_err;
         struct i2c_msg *msgs;
@@ -51,8 +51,8 @@ Definition
         u16 ss_lcnt;
         u16 fs_hcnt;
         u16 fs_lcnt;
-        int (* acquire_lock) (struct dw_i2c_dev *dev);
-        void (* release_lock) (struct dw_i2c_dev *dev);
+        int (*acquire_lock)(struct dw_i2c_dev *dev);
+        void (*release_lock)(struct dw_i2c_dev *dev);
         bool pm_runtime_disabled;
     }
 

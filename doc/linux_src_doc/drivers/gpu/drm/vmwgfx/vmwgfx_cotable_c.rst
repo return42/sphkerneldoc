@@ -72,7 +72,7 @@ Definition
     struct vmw_cotable_info {
         u32 min_initial_entries;
         u32 size;
-        void (* unbind_func) (struct vmw_private *, struct list_head *,bool);
+        void (*unbind_func)(struct vmw_private *, struct list_head *,bool);
     }
 
 .. _`vmw_cotable_info.members`:

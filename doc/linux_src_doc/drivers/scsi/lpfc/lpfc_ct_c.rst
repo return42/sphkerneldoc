@@ -31,7 +31,7 @@ Return 1 if abort has been handled, 0 otherwise.
 lpfc_gen_req
 ============
 
-.. c:function:: int lpfc_gen_req(struct lpfc_vport *vport, struct lpfc_dmabuf *bmp, struct lpfc_dmabuf *inp, struct lpfc_dmabuf *outp, void (*) cmpl (struct lpfc_hba *, struct lpfc_iocbq *, struct lpfc_iocbq *, struct lpfc_nodelist *ndlp, uint32_t usr_flg, uint32_t num_entry, uint32_t tmo, uint8_t retry)
+.. c:function:: int lpfc_gen_req(struct lpfc_vport *vport, struct lpfc_dmabuf *bmp, struct lpfc_dmabuf *inp, struct lpfc_dmabuf *outp, void (*cmpl)(struct lpfc_hba *, struct lpfc_iocbq *, struct lpfc_iocbq *), struct lpfc_nodelist *ndlp, uint32_t usr_flg, uint32_t num_entry, uint32_t tmo, uint8_t retry)
 
     Build and issue a GEN_REQUEST command  to the SLI Layer
 
@@ -47,7 +47,7 @@ lpfc_gen_req
     :param struct lpfc_dmabuf \*outp:
         Pointer to data buffer that hold the CT command.
 
-    :param (void (\*) cmpl (struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
+    :param void (\*cmpl)(struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
         completion routine to call when command completes
 
     :param struct lpfc_nodelist \*ndlp:
@@ -77,7 +77,7 @@ This function as the final part for issuing a CT command.
 lpfc_ct_cmd
 ===========
 
-.. c:function:: int lpfc_ct_cmd(struct lpfc_vport *vport, struct lpfc_dmabuf *inmp, struct lpfc_dmabuf *bmp, struct lpfc_nodelist *ndlp, void (*) cmpl (struct lpfc_hba *, struct lpfc_iocbq *, struct lpfc_iocbq *, uint32_t rsp_size, uint8_t retry)
+.. c:function:: int lpfc_ct_cmd(struct lpfc_vport *vport, struct lpfc_dmabuf *inmp, struct lpfc_dmabuf *bmp, struct lpfc_nodelist *ndlp, void (*cmpl)(struct lpfc_hba *, struct lpfc_iocbq *, struct lpfc_iocbq *), uint32_t rsp_size, uint8_t retry)
 
     Build and issue a CT command
 
@@ -93,7 +93,7 @@ lpfc_ct_cmd
     :param struct lpfc_nodelist \*ndlp:
         Destination NPort nodelist entry
 
-    :param (void (\*) cmpl (struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
+    :param void (\*cmpl)(struct lpfc_hba \*, struct lpfc_iocbq \*, struct lpfc_iocbq \*):
         completion routine to call when command completes
 
     :param uint32_t rsp_size:

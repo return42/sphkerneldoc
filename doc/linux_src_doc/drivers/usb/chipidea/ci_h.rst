@@ -86,9 +86,9 @@ Definition
 .. code-block:: c
 
     struct ci_role_driver {
-        int (* start) (struct ci_hdrc *);
-        void (* stop) (struct ci_hdrc *);
-        irqreturn_t (* irq) (struct ci_hdrc *);
+        int (*start)(struct ci_hdrc *);
+        void (*stop)(struct ci_hdrc *);
+        irqreturn_t (*irq)(struct ci_hdrc *);
         const char *name;
     }
 

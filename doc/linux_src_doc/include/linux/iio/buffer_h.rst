@@ -27,15 +27,15 @@ Definition
 .. code-block:: c
 
     struct iio_buffer_access_funcs {
-        int (* store_to) (struct iio_buffer *buffer, const void *data);
-        int (* read_first_n) (struct iio_buffer *buffer,size_t n,char __user *buf);
-        size_t (* data_available) (struct iio_buffer *buffer);
-        int (* request_update) (struct iio_buffer *buffer);
-        int (* set_bytes_per_datum) (struct iio_buffer *buffer, size_t bpd);
-        int (* set_length) (struct iio_buffer *buffer, int length);
-        int (* enable) (struct iio_buffer *buffer, struct iio_dev *indio_dev);
-        int (* disable) (struct iio_buffer *buffer, struct iio_dev *indio_dev);
-        void (* release) (struct iio_buffer *buffer);
+        int (*store_to)(struct iio_buffer *buffer, const void *data);
+        int (*read_first_n)(struct iio_buffer *buffer,size_t n,char __user *buf);
+        size_t (*data_available)(struct iio_buffer *buffer);
+        int (*request_update)(struct iio_buffer *buffer);
+        int (*set_bytes_per_datum)(struct iio_buffer *buffer, size_t bpd);
+        int (*set_length)(struct iio_buffer *buffer, int length);
+        int (*enable)(struct iio_buffer *buffer, struct iio_dev *indio_dev);
+        int (*disable)(struct iio_buffer *buffer, struct iio_dev *indio_dev);
+        void (*release)(struct iio_buffer *buffer);
         unsigned int modes;
         unsigned int flags;
     }

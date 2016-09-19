@@ -86,7 +86,7 @@ not be the case and this function should be used then.
 acpi_add_pm_notifier
 ====================
 
-.. c:function:: acpi_status acpi_add_pm_notifier(struct acpi_device *adev, struct device *dev, void (*) work_func (struct work_struct *work)
+.. c:function:: acpi_status acpi_add_pm_notifier(struct acpi_device *adev, struct device *dev, void (*work_func)(struct work_struct *work))
 
     Register PM notify handler for given ACPI device.
 
@@ -96,7 +96,7 @@ acpi_add_pm_notifier
     :param struct device \*dev:
         Device to generate a wakeup event for while handling the notification.
 
-    :param (void (\*) work_func (struct work_struct \*work):
+    :param void (\*work_func)(struct work_struct \*work):
         Work function to execute when handling the notification.
 
 .. _`acpi_add_pm_notifier.note`:

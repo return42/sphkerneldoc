@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct caif_dev_common {
-        void (* flowctrl) (struct net_device *net, int on);
+        void (*flowctrl)(struct net_device *net, int on);
         enum caif_link_selector link_select;
         int use_frag;
         int use_fcs;

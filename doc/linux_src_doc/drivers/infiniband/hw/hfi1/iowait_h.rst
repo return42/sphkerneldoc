@@ -20,9 +20,9 @@ Definition
     struct iowait {
         struct list_head list;
         struct list_head tx_head;
-        int (* sleep) (struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,unsigned seq);
-        void (* wakeup) (struct iowait *wait, int reason);
-        void (* sdma_drained) (struct iowait *wait);
+        int (*sleep)(struct sdma_engine *sde,struct iowait *wait,struct sdma_txreq *tx,unsigned seq);
+        void (*wakeup)(struct iowait *wait, int reason);
+        void (*sdma_drained)(struct iowait *wait);
         struct work_struct iowork;
         wait_queue_head_t wait_dma;
         wait_queue_head_t wait_pio;
@@ -103,7 +103,7 @@ The wait_dma member along with the iow
 iowait_init
 ===========
 
-.. c:function:: void iowait_init(struct iowait *wait, u32 tx_limit, void (*) func (struct work_struct *work, int (*) sleep ( struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, unsigned seq, void (*) wakeup (struct iowait *wait, int reason, void (*) sdma_drained (struct iowait *wait)
+.. c:function:: void iowait_init(struct iowait *wait, u32 tx_limit, void (*func)(struct work_struct *work), int (*sleep)( struct sdma_engine *sde, struct iowait *wait, struct sdma_txreq *tx, unsigned seq), void (*wakeup)(struct iowait *wait, int reason), void (*sdma_drained)(struct iowait *wait))
 
     initialize wait structure
 
@@ -113,16 +113,16 @@ iowait_init
     :param u32 tx_limit:
         limit for overflow queuing
 
-    :param (void (\*) func (struct work_struct \*work):
+    :param void (\*func)(struct work_struct \*work):
         restart function for workqueue
 
-    :param (int (\*) sleep ( struct sdma_engine \*sde, struct iowait \*wait, struct sdma_txreq \*tx, unsigned seq):
+    :param int (\*sleep)( struct sdma_engine \*sde, struct iowait \*wait, struct sdma_txreq \*tx, unsigned seq):
         sleep function for no space
 
-    :param (void (\*) wakeup (struct iowait \*wait, int reason):
+    :param void (\*wakeup)(struct iowait \*wait, int reason):
         *undescribed*
 
-    :param (void (\*) sdma_drained (struct iowait \*wait):
+    :param void (\*sdma_drained)(struct iowait \*wait):
         *undescribed*
 
 .. _`iowait_init.description`:

@@ -70,9 +70,9 @@ Definition
 .. code-block:: c
 
     struct v4l2_ctrl_ops {
-        int (* g_volatile_ctrl) (struct v4l2_ctrl *ctrl);
-        int (* try_ctrl) (struct v4l2_ctrl *ctrl);
-        int (* s_ctrl) (struct v4l2_ctrl *ctrl);
+        int (*g_volatile_ctrl)(struct v4l2_ctrl *ctrl);
+        int (*try_ctrl)(struct v4l2_ctrl *ctrl);
+        int (*s_ctrl)(struct v4l2_ctrl *ctrl);
     }
 
 .. _`v4l2_ctrl_ops.members`:
@@ -113,10 +113,10 @@ Definition
 .. code-block:: c
 
     struct v4l2_ctrl_type_ops {
-        bool (* equal) (const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr1,union v4l2_ctrl_ptr ptr2);
-        void (* init) (const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
-        void (* log) (const struct v4l2_ctrl *ctrl);
-        int (* validate) (const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
+        bool (*equal)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr1,union v4l2_ctrl_ptr ptr2);
+        void (*init)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
+        void (*log)(const struct v4l2_ctrl *ctrl);
+        int (*validate)(const struct v4l2_ctrl *ctrl, u32 idx,union v4l2_ctrl_ptr ptr);
     }
 
 .. _`v4l2_ctrl_type_ops.members`:
@@ -858,7 +858,7 @@ If \ ``id``\  refers to a non-integer-menu control, then this function will retu
 v4l2_ctrl_add_handler
 =====================
 
-.. c:function:: int v4l2_ctrl_add_handler(struct v4l2_ctrl_handler *hdl, struct v4l2_ctrl_handler *add, bool (*) filter (const struct v4l2_ctrl *ctrl)
+.. c:function:: int v4l2_ctrl_add_handler(struct v4l2_ctrl_handler *hdl, struct v4l2_ctrl_handler *add, bool (*filter)(const struct v4l2_ctrl *ctrl))
 
     Add all controls from handler \ ``add``\  to handler \ ``hdl``\ .
 
@@ -869,7 +869,7 @@ v4l2_ctrl_add_handler
         The control handler whose controls you want to add to
         the \ ``hdl``\  control handler.
 
-    :param (bool (\*) filter (const struct v4l2_ctrl \*ctrl):
+    :param bool (\*filter)(const struct v4l2_ctrl \*ctrl):
         This function will filter which controls should be added.
 
 .. _`v4l2_ctrl_add_handler.description`:

@@ -43,7 +43,7 @@ Pointer to allocated devres on success, NULL on failure.
 devres_for_each_res
 ===================
 
-.. c:function:: void devres_for_each_res(struct device *dev, dr_release_t release, dr_match_t match, void *match_data, void (*) fn (struct device *, void *, void *, void *data)
+.. c:function:: void devres_for_each_res(struct device *dev, dr_release_t release, dr_match_t match, void *match_data, void (*fn)(struct device *, void *, void *), void *data)
 
     Resource iterator
 
@@ -59,7 +59,7 @@ devres_for_each_res
     :param void \*match_data:
         Data for the match function
 
-    :param (void (\*) fn (struct device \*, void \*, void \*):
+    :param void (\*fn)(struct device \*, void \*, void \*):
         Function to be called for each matched resource.
 
     :param void \*data:
@@ -451,14 +451,14 @@ The number of released non-group resources.
 devm_add_action
 ===============
 
-.. c:function:: int devm_add_action(struct device *dev, void (*) action (void *, void *data)
+.. c:function:: int devm_add_action(struct device *dev, void (*action)(void *), void *data)
 
     add a custom action to list of managed resources
 
     :param struct device \*dev:
         Device that owns the action
 
-    :param (void (\*) action (void \*):
+    :param void (\*action)(void \*):
         Function that should be called
 
     :param void \*data:
@@ -477,14 +477,14 @@ it gets executed as part of standard resource unwinding.
 devm_remove_action
 ==================
 
-.. c:function:: void devm_remove_action(struct device *dev, void (*) action (void *, void *data)
+.. c:function:: void devm_remove_action(struct device *dev, void (*action)(void *), void *data)
 
     removes previously added custom action
 
     :param struct device \*dev:
         Device that owns the action
 
-    :param (void (\*) action (void \*):
+    :param void (\*action)(void \*):
         Function implementing the action
 
     :param void \*data:

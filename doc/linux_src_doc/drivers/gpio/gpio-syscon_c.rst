@@ -23,7 +23,7 @@ Definition
         unsigned int bit_count;
         unsigned int dat_bit_offset;
         unsigned int dir_bit_offset;
-        void (* set) (struct gpio_chip *chip,unsigned offset, int value);
+        void (*set)(struct gpio_chip *chip,unsigned offset, int value);
     }
 
 .. _`syscon_gpio_data.members`:

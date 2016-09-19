@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct mbox_chan_ops {
-        int (* send_data) (struct mbox_chan *chan, void *data);
-        int (* startup) (struct mbox_chan *chan);
-        void (* shutdown) (struct mbox_chan *chan);
-        bool (* last_tx_done) (struct mbox_chan *chan);
-        bool (* peek_data) (struct mbox_chan *chan);
+        int (*send_data)(struct mbox_chan *chan, void *data);
+        int (*startup)(struct mbox_chan *chan);
+        void (*shutdown)(struct mbox_chan *chan);
+        bool (*last_tx_done)(struct mbox_chan *chan);
+        bool (*peek_data)(struct mbox_chan *chan);
     }
 
 .. _`mbox_chan_ops.members`:
@@ -90,7 +90,7 @@ Definition
         bool txdone_irq;
         bool txdone_poll;
         unsigned txpoll_period;
-        struct mbox_chan *(* of_xlate) (struct mbox_controller *mbox,const struct of_phandle_args *sp);
+        struct mbox_chan *(*of_xlate)(struct mbox_controller *mbox,const struct of_phandle_args *sp);
         struct hrtimer poll_hrt;
         struct list_head node;
     }

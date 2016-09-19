@@ -18,15 +18,15 @@ Definition
 .. code-block:: c
 
     struct brcmf_bus_ops {
-        int (* preinit) (struct device *dev);
-        void (* stop) (struct device *dev);
-        int (* txdata) (struct device *dev, struct sk_buff *skb);
-        int (* txctl) (struct device *dev, unsigned char *msg, uint len);
-        int (* rxctl) (struct device *dev, unsigned char *msg, uint len);
-        struct pktq * (* gettxq) (struct device *dev);
-        void (* wowl_config) (struct device *dev, bool enabled);
-        size_t (* get_ramsize) (struct device *dev);
-        int (* get_memdump) (struct device *dev, void *data, size_t len);
+        int (*preinit)(struct device *dev);
+        void (*stop)(struct device *dev);
+        int (*txdata)(struct device *dev, struct sk_buff *skb);
+        int (*txctl)(struct device *dev, unsigned char *msg, uint len);
+        int (*rxctl)(struct device *dev, unsigned char *msg, uint len);
+        struct pktq * (*gettxq)(struct device *dev);
+        void (*wowl_config)(struct device *dev, bool enabled);
+        size_t (*get_ramsize)(struct device *dev);
+        int (*get_memdump)(struct device *dev, void *data, size_t len);
     }
 
 .. _`brcmf_bus_ops.members`:

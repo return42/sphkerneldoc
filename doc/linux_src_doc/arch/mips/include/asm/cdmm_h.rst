@@ -63,11 +63,11 @@ Definition
 
     struct mips_cdmm_driver {
         struct device_driver drv;
-        int (* probe) (struct mips_cdmm_device *);
-        int (* remove) (struct mips_cdmm_device *);
-        void (* shutdown) (struct mips_cdmm_device *);
-        int (* cpu_down) (struct mips_cdmm_device *);
-        int (* cpu_up) (struct mips_cdmm_device *);
+        int (*probe)(struct mips_cdmm_device *);
+        int (*remove)(struct mips_cdmm_device *);
+        void (*shutdown)(struct mips_cdmm_device *);
+        int (*cpu_down)(struct mips_cdmm_device *);
+        int (*cpu_up)(struct mips_cdmm_device *);
         const struct mips_cdmm_device_id *id_table;
     }
 

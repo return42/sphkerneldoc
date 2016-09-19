@@ -25,7 +25,7 @@ Definition
         char model;
         u8 minor;
         char name[CHAMELEON_FILENAME_LEN + 1];
-        int (* get_irq) (struct mcb_device *dev);
+        int (*get_irq)(struct mcb_device *dev);
     }
 
 .. _`mcb_bus.members`:
@@ -153,9 +153,9 @@ Definition
     struct mcb_driver {
         struct device_driver driver;
         const struct mcb_device_id *id_table;
-        int (* probe) (struct mcb_device *mdev, const struct mcb_device_id *id);
-        void (* remove) (struct mcb_device *mdev);
-        void (* shutdown) (struct mcb_device *mdev);
+        int (*probe)(struct mcb_device *mdev, const struct mcb_device_id *id);
+        void (*remove)(struct mcb_device *mdev);
+        void (*shutdown)(struct mcb_device *mdev);
     }
 
 .. _`mcb_driver.members`:

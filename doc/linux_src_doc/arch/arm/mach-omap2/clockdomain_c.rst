@@ -311,11 +311,11 @@ to the struct clockdomain if found, or NULL otherwise.
 clkdm_for_each
 ==============
 
-.. c:function:: int clkdm_for_each(int (*) fn (struct clockdomain *clkdm, void *user, void *user)
+.. c:function:: int clkdm_for_each(int (*fn)(struct clockdomain *clkdm, void *user), void *user)
 
     call function on each registered clockdomain
 
-    :param (int (\*) fn (struct clockdomain \*clkdm, void \*user):
+    :param int (\*fn)(struct clockdomain \*clkdm, void \*user):
         callback function \*
 
     :param void \*user:

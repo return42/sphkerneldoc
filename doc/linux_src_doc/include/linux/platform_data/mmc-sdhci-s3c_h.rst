@@ -25,9 +25,9 @@ Definition
         enum cd_types cd_type;
         int ext_cd_gpio;
         bool ext_cd_gpio_invert;
-        int (* ext_cd_init) (void (*notify_func);
-        int (* ext_cd_cleanup) (void (*notify_func);
-        void (* cfg_gpio) (struct platform_device *dev, int width);
+        int (*ext_cd_init)(void (*notify_func);
+        int (*ext_cd_cleanup)(void (*notify_func);
+        void (*cfg_gpio)(struct platform_device *dev, int width);
     }
 
 .. _`s3c_sdhci_platdata.members`:

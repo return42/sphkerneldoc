@@ -385,7 +385,7 @@ responsible for ensuring that rcu_read_[un]\ :c:func:`lock`\  is called.
 netlbl_domhsh_walk
 ==================
 
-.. c:function:: int netlbl_domhsh_walk(u32 *skip_bkt, u32 *skip_chain, int (*) callback (struct netlbl_dom_map *entry, void *arg, void *cb_arg)
+.. c:function:: int netlbl_domhsh_walk(u32 *skip_bkt, u32 *skip_chain, int (*callback)(struct netlbl_dom_map *entry, void *arg), void *cb_arg)
 
     Iterate through the domain mapping hash table
 
@@ -395,7 +395,7 @@ netlbl_domhsh_walk
     :param u32 \*skip_chain:
         the number of entries to skip in the first iterated bucket
 
-    :param (int (\*) callback (struct netlbl_dom_map \*entry, void \*arg):
+    :param int (\*callback)(struct netlbl_dom_map \*entry, void \*arg):
         callback for each entry
 
     :param void \*cb_arg:

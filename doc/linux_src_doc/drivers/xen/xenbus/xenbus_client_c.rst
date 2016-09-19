@@ -6,7 +6,7 @@
 xenbus_watch_path
 =================
 
-.. c:function:: int xenbus_watch_path(struct xenbus_device *dev, const char *path, struct xenbus_watch *watch, void (*) callback (struct xenbus_watch *, const char **, unsigned int)
+.. c:function:: int xenbus_watch_path(struct xenbus_device *dev, const char *path, struct xenbus_watch *watch, void (*callback)(struct xenbus_watch *, const char **, unsigned int))
 
     register a watch
 
@@ -19,7 +19,7 @@ xenbus_watch_path
     :param struct xenbus_watch \*watch:
         watch to register
 
-    :param (void (\*) callback (struct xenbus_watch \*, const char \*\*, unsigned int):
+    :param void (\*callback)(struct xenbus_watch \*, const char \*\*, unsigned int):
         callback to register
 
 .. _`xenbus_watch_path.description`:
@@ -39,7 +39,7 @@ be saved in the store.
 xenbus_watch_pathfmt
 ====================
 
-.. c:function:: int xenbus_watch_pathfmt(struct xenbus_device *dev, struct xenbus_watch *watch, void (*) callback (struct xenbus_watch *, const char **, unsigned int, const char *pathfmt,  ...)
+.. c:function:: int xenbus_watch_pathfmt(struct xenbus_device *dev, struct xenbus_watch *watch, void (*callback)(struct xenbus_watch *, const char **, unsigned int), const char *pathfmt,  ...)
 
     register a watch on a sprintf-formatted path
 
@@ -49,7 +49,7 @@ xenbus_watch_pathfmt
     :param struct xenbus_watch \*watch:
         watch to register
 
-    :param (void (\*) callback (struct xenbus_watch \*, const char \*\*, unsigned int):
+    :param void (\*callback)(struct xenbus_watch \*, const char \*\*, unsigned int):
         callback to register
 
     :param const char \*pathfmt:

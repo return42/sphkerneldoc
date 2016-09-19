@@ -490,18 +490,18 @@ batadv_tvlv_ogm_receive
 batadv_tvlv_handler_register
 ============================
 
-.. c:function:: void batadv_tvlv_handler_register(struct batadv_priv *bat_priv, void (*) optr (struct batadv_priv *bat_priv, struct batadv_orig_node *orig, u8 flags, void *tvlv_value, u16 tvlv_value_len, int (*) uptr (struct batadv_priv *bat_priv, u8 *src, u8 *dst, void *tvlv_value, u16 tvlv_value_len, u8 type, u8 version, u8 flags)
+.. c:function:: void batadv_tvlv_handler_register(struct batadv_priv *bat_priv, void (*optr)(struct batadv_priv *bat_priv, struct batadv_orig_node *orig, u8 flags, void *tvlv_value, u16 tvlv_value_len), int (*uptr)(struct batadv_priv *bat_priv, u8 *src, u8 *dst, void *tvlv_value, u16 tvlv_value_len), u8 type, u8 version, u8 flags)
 
     register tvlv handler based on the provided type and version (both need to match) for ogm tvlv payload and/or unicast payload
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
 
-    :param (void (\*) optr (struct batadv_priv \*bat_priv, struct batadv_orig_node \*orig, u8 flags, void \*tvlv_value, u16 tvlv_value_len):
+    :param void (\*optr)(struct batadv_priv \*bat_priv, struct batadv_orig_node \*orig, u8 flags, void \*tvlv_value, u16 tvlv_value_len):
         ogm tvlv handler callback function. This function receives the orig
         node, flags and the tvlv content as argument to process.
 
-    :param (int (\*) uptr (struct batadv_priv \*bat_priv, u8 \*src, u8 \*dst, void \*tvlv_value, u16 tvlv_value_len):
+    :param int (\*uptr)(struct batadv_priv \*bat_priv, u8 \*src, u8 \*dst, void \*tvlv_value, u16 tvlv_value_len):
         unicast tvlv handler callback function. This function receives the
         source & destination of the unicast packet as well as the tvlv content
         to process.

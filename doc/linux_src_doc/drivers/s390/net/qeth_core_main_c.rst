@@ -6,7 +6,7 @@
 qeth_send_control_data
 ======================
 
-.. c:function:: int qeth_send_control_data(struct qeth_card *card, int len, struct qeth_cmd_buffer *iob, int (*) reply_cb (struct qeth_card *cb_card, struct qeth_reply *cb_reply, unsigned long cb_cmd, void *reply_param)
+.. c:function:: int qeth_send_control_data(struct qeth_card *card, int len, struct qeth_cmd_buffer *iob, int (*reply_cb)(struct qeth_card *cb_card, struct qeth_reply *cb_reply, unsigned long cb_cmd), void *reply_param)
 
     send control command to the card
 
@@ -19,7 +19,7 @@ qeth_send_control_data
     :param struct qeth_cmd_buffer \*iob:
         qeth_cmd_buffer pointer
 
-    :param (int (\*) reply_cb (struct qeth_card \*cb_card, struct qeth_reply \*cb_reply, unsigned long cb_cmd):
+    :param int (\*reply_cb)(struct qeth_card \*cb_card, struct qeth_reply \*cb_reply, unsigned long cb_cmd):
         callback function pointer
 
     :param void \*reply_param:
@@ -46,7 +46,7 @@ field 'param' of the structure qeth_reply.
 qeth_send_ipa_cmd
 =================
 
-.. c:function:: int qeth_send_ipa_cmd(struct qeth_card *card, struct qeth_cmd_buffer *iob, int (*) reply_cb (struct qeth_card *, struct qeth_reply*, unsigned long, void *reply_param)
+.. c:function:: int qeth_send_ipa_cmd(struct qeth_card *card, struct qeth_cmd_buffer *iob, int (*reply_cb)(struct qeth_card *, struct qeth_reply*, unsigned long), void *reply_param)
 
     send an IPA command
 
@@ -56,7 +56,7 @@ qeth_send_ipa_cmd
     :param struct qeth_cmd_buffer \*iob:
         *undescribed*
 
-    :param (int (\*) reply_cb (struct qeth_card \*, struct qeth_reply\*, unsigned long):
+    :param int (\*reply_cb)(struct qeth_card \*, struct qeth_reply\*, unsigned long):
         *undescribed*
 
     :param void \*reply_param:

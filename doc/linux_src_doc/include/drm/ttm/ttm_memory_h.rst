@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ttm_mem_shrink {
-        int (* do_shrink) (struct ttm_mem_shrink *);
+        int (*do_shrink)(struct ttm_mem_shrink *);
     }
 
 .. _`ttm_mem_shrink.members`:
@@ -43,14 +43,14 @@ and can be accessed using \ :c:func:`container_of`\ .
 ttm_mem_init_shrink
 ===================
 
-.. c:function:: void ttm_mem_init_shrink(struct ttm_mem_shrink *shrink, int (*) func (struct ttm_mem_shrink *)
+.. c:function:: void ttm_mem_init_shrink(struct ttm_mem_shrink *shrink, int (*func)(struct ttm_mem_shrink *))
 
     initialize a struct ttm_mem_shrink object
 
     :param struct ttm_mem_shrink \*shrink:
         The object to initialize.
 
-    :param (int (\*) func (struct ttm_mem_shrink \*):
+    :param int (\*func)(struct ttm_mem_shrink \*):
         The callback function.
 
 .. _`ttm_mem_register_shrink`:

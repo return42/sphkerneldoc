@@ -72,7 +72,7 @@ Definition
     struct ad5446_chip_info {
         struct iio_chan_spec channel;
         u16 int_vref_mv;
-        int (* write) (struct ad5446_state *st, unsigned val);
+        int (*write)(struct ad5446_state *st, unsigned val);
     }
 
 .. _`ad5446_chip_info.members`:

@@ -77,7 +77,7 @@ Find a line number and file name for \ ``addr``\  in \ ``cu_die``\ .
 cu_walk_functions_at
 ====================
 
-.. c:function:: int cu_walk_functions_at(Dwarf_Die *cu_die, Dwarf_Addr addr, int (*) callback (Dwarf_Die *, void *, void *data)
+.. c:function:: int cu_walk_functions_at(Dwarf_Die *cu_die, Dwarf_Addr addr, int (*callback)(Dwarf_Die *, void *), void *data)
 
     Walk on function DIEs at given address
 
@@ -87,7 +87,7 @@ cu_walk_functions_at
     :param Dwarf_Addr addr:
         An address
 
-    :param (int (\*) callback (Dwarf_Die \*, void \*):
+    :param int (\*callback)(Dwarf_Die \*, void \*):
         A callback which called with found DIEs
 
     :param void \*data:
@@ -322,14 +322,14 @@ function is called.
 die_find_child
 ==============
 
-.. c:function:: Dwarf_Die *die_find_child(Dwarf_Die *rt_die, int (*) callback (Dwarf_Die *, void *, void *data, Dwarf_Die *die_mem)
+.. c:function:: Dwarf_Die *die_find_child(Dwarf_Die *rt_die, int (*callback)(Dwarf_Die *, void *), void *data, Dwarf_Die *die_mem)
 
     Generic DIE search function in DIE tree
 
     :param Dwarf_Die \*rt_die:
         a root DIE
 
-    :param (int (\*) callback (Dwarf_Die \*, void \*):
+    :param int (\*callback)(Dwarf_Die \*, void \*):
         a callback function
 
     :param void \*data:
@@ -464,14 +464,14 @@ it down and returns deepest one.
 die_walk_instances
 ==================
 
-.. c:function:: int die_walk_instances(Dwarf_Die *or_die, int (*) callback (Dwarf_Die *, void *, void *data)
+.. c:function:: int die_walk_instances(Dwarf_Die *or_die, int (*callback)(Dwarf_Die *, void *), void *data)
 
     Walk on instances of given DIE
 
     :param Dwarf_Die \*or_die:
         an abstract original DIE
 
-    :param (int (\*) callback (Dwarf_Die \*, void \*):
+    :param int (\*callback)(Dwarf_Die \*, void \*):
         a callback function which is called with instance DIE
 
     :param void \*data:

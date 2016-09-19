@@ -24,7 +24,7 @@ Definition
         union nilfs_bmap_ptr_req bp_oldreq;
         union nilfs_bmap_ptr_req bp_newreq;
         struct nilfs_btnode_chkey_ctxt bp_ctxt;
-        void (* bp_op) (struct nilfs_bmap *, struct nilfs_btree_path *,int, __u64 *, __u64 *);
+        void (*bp_op)(struct nilfs_bmap *, struct nilfs_btree_path *,int, __u64 *, __u64 *);
     }
 
 .. _`nilfs_btree_path.members`:

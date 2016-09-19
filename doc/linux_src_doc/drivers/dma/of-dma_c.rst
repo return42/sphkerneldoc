@@ -52,14 +52,14 @@ to request channel from the real DMA controller.
 of_dma_controller_register
 ==========================
 
-.. c:function:: int of_dma_controller_register(struct device_node *np, struct dma_chan *(*) of_dma_xlate (struct of_phandle_args *, struct of_dma *, void *data)
+.. c:function:: int of_dma_controller_register(struct device_node *np, struct dma_chan *(*of_dma_xlate)(struct of_phandle_args *, struct of_dma *), void *data)
 
     Register a DMA controller to DT DMA helpers
 
     :param struct device_node \*np:
         device node of DMA controller
 
-    :param (struct dma_chan \*(\*) of_dma_xlate (struct of_phandle_args \*, struct of_dma \*):
+    :param struct dma_chan \*(\*of_dma_xlate)(struct of_phandle_args \*, struct of_dma \*):
         translation function which converts a phandle
         arguments list into a dma_chan structure
         \ ``data``\                 pointer to controller specific data to be used by
@@ -102,14 +102,14 @@ Memory allocated by \ :c:func:`of_dma_controller_register`\  is freed here.
 of_dma_router_register
 ======================
 
-.. c:function:: int of_dma_router_register(struct device_node *np, void *(*) of_dma_route_allocate (struct of_phandle_args *, struct of_dma *, struct dma_router *dma_router)
+.. c:function:: int of_dma_router_register(struct device_node *np, void *(*of_dma_route_allocate)(struct of_phandle_args *, struct of_dma *), struct dma_router *dma_router)
 
     Register a DMA router to DT DMA helpers as a controller
 
     :param struct device_node \*np:
         device node of DMA router
 
-    :param (void \*(\*) of_dma_route_allocate (struct of_phandle_args \*, struct of_dma \*):
+    :param void \*(\*of_dma_route_allocate)(struct of_phandle_args \*, struct of_dma \*):
         setup function for the router which need to
         modify the dma_spec for the DMA controller to
         use and to set up the requested route.

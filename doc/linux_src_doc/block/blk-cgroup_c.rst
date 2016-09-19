@@ -98,7 +98,7 @@ Destroy all blkgs associated with \ ``q``\ .
 blkcg_print_blkgs
 =================
 
-.. c:function:: void blkcg_print_blkgs(struct seq_file *sf, struct blkcg *blkcg, u64 (*) prfill (struct seq_file *, struct blkg_policy_data *, int, const struct blkcg_policy *pol, int data, bool show_total)
+.. c:function:: void blkcg_print_blkgs(struct seq_file *sf, struct blkcg *blkcg, u64 (*prfill)(struct seq_file *, struct blkg_policy_data *, int), const struct blkcg_policy *pol, int data, bool show_total)
 
     helper for printing per-blkg data
 
@@ -108,7 +108,7 @@ blkcg_print_blkgs
     :param struct blkcg \*blkcg:
         blkcg of interest
 
-    :param (u64 (\*) prfill (struct seq_file \*, struct blkg_policy_data \*, int):
+    :param u64 (\*prfill)(struct seq_file \*, struct blkg_policy_data \*, int):
         fill function to print out a blkg
 
     :param const struct blkcg_policy \*pol:

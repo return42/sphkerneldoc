@@ -64,7 +64,7 @@ Definition
     struct gcov_ctr_info {
         unsigned int num;
         gcov_type *values;
-        void (* merge) (gcov_type *, unsigned int);
+        void (*merge)(gcov_type *, unsigned int);
     }
 
 .. _`gcov_ctr_info.members`:

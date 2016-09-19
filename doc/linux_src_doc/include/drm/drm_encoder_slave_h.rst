@@ -18,18 +18,18 @@ Definition
 .. code-block:: c
 
     struct drm_encoder_slave_funcs {
-        void (* set_config) (struct drm_encoder *encoder,void *params);
-        void (* destroy) (struct drm_encoder *encoder);
-        void (* dpms) (struct drm_encoder *encoder, int mode);
-        void (* save) (struct drm_encoder *encoder);
-        void (* restore) (struct drm_encoder *encoder);
-        bool (* mode_fixup) (struct drm_encoder *encoder,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        int (* mode_valid) (struct drm_encoder *encoder,struct drm_display_mode *mode);
-        void (* mode_set) (struct drm_encoder *encoder,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        enum drm_connector_status (* detect) (struct drm_encoder *encoder,struct drm_connector *connector);
-        int (* get_modes) (struct drm_encoder *encoder,struct drm_connector *connector);
-        int (* create_resources) (struct drm_encoder *encoder,struct drm_connector *connector);
-        int (* set_property) (struct drm_encoder *encoder,struct drm_connector *connector,struct drm_property *property,uint64_t val);
+        void (*set_config)(struct drm_encoder *encoder,void *params);
+        void (*destroy)(struct drm_encoder *encoder);
+        void (*dpms)(struct drm_encoder *encoder, int mode);
+        void (*save)(struct drm_encoder *encoder);
+        void (*restore)(struct drm_encoder *encoder);
+        bool (*mode_fixup)(struct drm_encoder *encoder,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        int (*mode_valid)(struct drm_encoder *encoder,struct drm_display_mode *mode);
+        void (*mode_set)(struct drm_encoder *encoder,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
+        enum drm_connector_status (*detect)(struct drm_encoder *encoder,struct drm_connector *connector);
+        int (*get_modes)(struct drm_encoder *encoder,struct drm_connector *connector);
+        int (*create_resources)(struct drm_encoder *encoder,struct drm_connector *connector);
+        int (*set_property)(struct drm_encoder *encoder,struct drm_connector *connector,struct drm_property *property,uint64_t val);
     }
 
 .. _`drm_encoder_slave_funcs.members`:
@@ -161,7 +161,7 @@ Definition
 
     struct drm_i2c_encoder_driver {
         struct i2c_driver i2c_driver;
-        int (* encoder_init) (struct i2c_client *client,struct drm_device *dev,struct drm_encoder_slave *encoder);
+        int (*encoder_init)(struct i2c_client *client,struct drm_device *dev,struct drm_encoder_slave *encoder);
     }
 
 .. _`drm_i2c_encoder_driver.members`:

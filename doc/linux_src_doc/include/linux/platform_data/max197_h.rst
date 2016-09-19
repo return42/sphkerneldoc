@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct max197_platform_data {
-        int (* convert) (u8 ctrl);
+        int (*convert)(u8 ctrl);
     }
 
 .. _`max197_platform_data.members`:

@@ -111,7 +111,7 @@ Definition
         int invert;
         int debounce_time;
         bool wake;
-        int (* jack_status_check) (void *data);
+        int (*jack_status_check)(void *data);
     }
 
 .. _`snd_soc_jack_gpio.members`:

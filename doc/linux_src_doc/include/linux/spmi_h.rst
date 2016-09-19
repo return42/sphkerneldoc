@@ -56,9 +56,9 @@ Definition
     struct spmi_controller {
         struct device dev;
         unsigned int nr;
-        int (* cmd) (struct spmi_controller *ctrl, u8 opcode, u8 sid);
-        int (* read_cmd) (struct spmi_controller *ctrl, u8 opcode,u8 sid, u16 addr, u8 *buf, size_t len);
-        int (* write_cmd) (struct spmi_controller *ctrl, u8 opcode,u8 sid, u16 addr, const u8 *buf, size_t len);
+        int (*cmd)(struct spmi_controller *ctrl, u8 opcode, u8 sid);
+        int (*read_cmd)(struct spmi_controller *ctrl, u8 opcode,u8 sid, u16 addr, u8 *buf, size_t len);
+        int (*write_cmd)(struct spmi_controller *ctrl, u8 opcode,u8 sid, u16 addr, const u8 *buf, size_t len);
     }
 
 .. _`spmi_controller.members`:
@@ -111,8 +111,8 @@ Definition
 
     struct spmi_driver {
         struct device_driver driver;
-        int (* probe) (struct spmi_device *sdev);
-        void (* remove) (struct spmi_device *sdev);
+        int (*probe)(struct spmi_device *sdev);
+        void (*remove)(struct spmi_device *sdev);
     }
 
 .. _`spmi_driver.members`:

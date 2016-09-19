@@ -114,7 +114,7 @@ Definition
         int writers;
         int users;
         wait_queue_head_t wait_queue;
-        int (* kernel_ioctl) (struct file *file, unsigned int cmd, void *arg);
+        int (*kernel_ioctl)(struct file *file, unsigned int cmd, void *arg);
         #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
         const char *name;
         struct media_intf_devnode *intf_devnode;

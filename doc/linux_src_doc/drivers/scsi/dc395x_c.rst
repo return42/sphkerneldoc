@@ -66,14 +66,14 @@ eeprom_override
 dc395x_queue_command_lck
 ========================
 
-.. c:function:: int dc395x_queue_command_lck(struct scsi_cmnd *cmd, void (*) done (struct scsi_cmnd *)
+.. c:function:: int dc395x_queue_command_lck(struct scsi_cmnd *cmd, void (*done)(struct scsi_cmnd *))
 
     queue scsi command passed from the mid layer, invoke 'done' on completion
 
     :param struct scsi_cmnd \*cmd:
         pointer to scsi command object
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         function pointer to be invoked on completion
 
 .. _`dc395x_queue_command_lck.description`:

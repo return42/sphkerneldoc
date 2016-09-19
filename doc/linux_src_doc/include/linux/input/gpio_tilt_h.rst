@@ -114,8 +114,8 @@ Definition
         int nr_states;
         int debounce_interval;
         unsigned int poll_interval;
-        int (* enable) (struct device *dev);
-        void (* disable) (struct device *dev);
+        int (*enable)(struct device *dev);
+        void (*disable)(struct device *dev);
     }
 
 .. _`gpio_tilt_platform_data.members`:

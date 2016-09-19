@@ -6,14 +6,14 @@
 atp870u_queuecommand_lck
 ========================
 
-.. c:function:: int atp870u_queuecommand_lck(struct scsi_cmnd *req_p, void (*) done (struct scsi_cmnd *)
+.. c:function:: int atp870u_queuecommand_lck(struct scsi_cmnd *req_p, void (*done)(struct scsi_cmnd *))
 
     Queue SCSI command
 
     :param struct scsi_cmnd \*req_p:
         request block
 
-    :param (void (\*) done (struct scsi_cmnd \*):
+    :param void (\*done)(struct scsi_cmnd \*):
         completion function
 
 .. _`atp870u_queuecommand_lck.description`:

@@ -37,8 +37,8 @@ Definition
         u8 envelope_mode:1;
         u8 lnb_hv_pol:1;
         u8 lnb_en_pol:1;
-        struct dvb_frontend* (* get_dvb_frontend) (struct i2c_client *);
-        struct i2c_adapter* (* get_i2c_adapter) (struct i2c_client *);
+        struct dvb_frontend* (*get_dvb_frontend)(struct i2c_client *);
+        struct i2c_adapter* (*get_i2c_adapter)(struct i2c_client *);
     }
 
 .. _`m88ds3103_platform_data.members`:

@@ -276,7 +276,7 @@ Definition
         struct v4l2_ctrl *wdr;
         struct v4l2_ctrl *stabilization;
         struct v4l2_ctrl *jpeg_quality;
-        int (* set_power) (struct device *dev, int on);
+        int (*set_power)(struct device *dev, int on);
         struct mutex lock;
         struct v4l2_mbus_framefmt ffmt[M5MOLS_RESTYPE_MAX];
         int res_type;

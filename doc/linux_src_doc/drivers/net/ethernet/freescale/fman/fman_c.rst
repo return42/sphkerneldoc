@@ -6,7 +6,7 @@
 fman_register_intr
 ==================
 
-.. c:function:: void fman_register_intr(struct fman *fman, enum fman_event_modules module, u8 mod_id, enum fman_intr_type intr_type, void (*) isr_cb (void *src_arg, void *src_arg)
+.. c:function:: void fman_register_intr(struct fman *fman, enum fman_event_modules module, u8 mod_id, enum fman_intr_type intr_type, void (*isr_cb)(void *src_arg), void *src_arg)
 
     :param struct fman \*fman:
         A Pointer to FMan device
@@ -20,7 +20,7 @@ fman_register_intr
     :param enum fman_intr_type intr_type:
         Interrupt type (error/normal) selection.
 
-    :param (void (\*) isr_cb (void \*src_arg):
+    :param void (\*isr_cb)(void \*src_arg):
         *undescribed*
 
     :param void \*src_arg:

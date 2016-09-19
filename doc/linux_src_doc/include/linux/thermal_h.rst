@@ -156,9 +156,9 @@ Definition
 
     struct thermal_governor {
         char name[THERMAL_NAME_LENGTH];
-        int (* bind_to_tz) (struct thermal_zone_device *tz);
-        void (* unbind_from_tz) (struct thermal_zone_device *tz);
-        int (* throttle) (struct thermal_zone_device *tz, int trip);
+        int (*bind_to_tz)(struct thermal_zone_device *tz);
+        void (*unbind_from_tz)(struct thermal_zone_device *tz);
+        int (*throttle)(struct thermal_zone_device *tz, int trip);
         struct list_head governor_list;
     }
 
@@ -203,10 +203,10 @@ Definition
 .. code-block:: c
 
     struct thermal_zone_of_device_ops {
-        int (* get_temp) (void *, int *);
-        int (* get_trend) (void *, long *);
-        int (* set_emul_temp) (void *, int);
-        int (* set_trip_temp) (void *, int, int);
+        int (*get_temp)(void *, int *);
+        int (*get_trend)(void *, long *);
+        int (*set_emul_temp)(void *, int);
+        int (*set_trip_temp)(void *, int, int);
     }
 
 .. _`thermal_zone_of_device_ops.members`:

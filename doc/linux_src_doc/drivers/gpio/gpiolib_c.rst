@@ -265,14 +265,14 @@ A gpio_chip with any GPIOs still requested may not be removed.
 gpiochip_find
 =============
 
-.. c:function:: struct gpio_chip *gpiochip_find(void *data, int (*) match (struct gpio_chip *chip, void *data)
+.. c:function:: struct gpio_chip *gpiochip_find(void *data, int (*match)(struct gpio_chip *chip, void *data))
 
     iterator for locating a specific gpio_chip
 
     :param void \*data:
         data to pass to match function
 
-    :param (int (\*) match (struct gpio_chip \*chip, void \*data):
+    :param int (\*match)(struct gpio_chip \*chip, void \*data):
         *undescribed*
 
 .. _`gpiochip_find.description`:

@@ -20,7 +20,7 @@ Definition
     struct alarm {
         struct timerqueue_node node;
         struct hrtimer timer;
-        enum alarmtimer_restart (* function) (struct alarm *, ktime_t now);
+        enum alarmtimer_restart (*function)(struct alarm *, ktime_t now);
         enum alarmtimer_type type;
         int state;
         void *data;

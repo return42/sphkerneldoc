@@ -169,11 +169,11 @@ Definition
 
     struct vport_ops {
         enum ovs_vport_type type;
-        struct vport *(* create) (const struct vport_parms *);
-        void (* destroy) (struct vport *);
-        int (* set_options) (struct vport *, struct nlattr *);
-        int (* get_options) (const struct vport *, struct sk_buff *);
-        netdev_tx_t (* send) (struct sk_buff *skb);
+        struct vport *(*create)(const struct vport_parms *);
+        void (*destroy)(struct vport *);
+        int (*set_options)(struct vport *, struct nlattr *);
+        int (*get_options)(const struct vport *, struct sk_buff *);
+        netdev_tx_t (*send)(struct sk_buff *skb);
         struct module *owner;
         struct list_head list;
     }

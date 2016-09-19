@@ -253,7 +253,7 @@ Definition
         struct regulation_constraints constraints;
         int num_consumer_supplies;
         struct regulator_consumer_supply *consumer_supplies;
-        int (* regulator_init) (void *driver_data);
+        int (*regulator_init)(void *driver_data);
         void *driver_data;
     }
 

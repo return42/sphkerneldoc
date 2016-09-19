@@ -20,7 +20,7 @@ Definition
     struct da8xx_rproc {
         struct rproc *rproc;
         struct clk *dsp_clk;
-        void (* ack_fxn) (struct irq_data *data);
+        void (*ack_fxn)(struct irq_data *data);
         struct irq_data *irq_data;
         void __iomem *chipsig;
         void __iomem *bootreg;

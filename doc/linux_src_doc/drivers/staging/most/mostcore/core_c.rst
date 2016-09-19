@@ -31,8 +31,8 @@ Definition
 
     struct most_c_attr {
         struct attribute attr;
-        ssize_t (* show) (struct most_c_obj *d,struct most_c_attr *attr,char *buf);
-        ssize_t (* store) (struct most_c_obj *d,struct most_c_attr *attr,const char *buf,size_t count);
+        ssize_t (*show)(struct most_c_obj *d,struct most_c_attr *attr,char *buf);
+        ssize_t (*store)(struct most_c_obj *d,struct most_c_attr *attr,const char *buf,size_t count);
     }
 
 .. _`most_c_attr.members`:
@@ -177,8 +177,8 @@ Definition
 
     struct most_inst_attribute {
         struct attribute attr;
-        ssize_t (* show) (struct most_inst_obj *d,struct most_inst_attribute *attr,char *buf);
-        ssize_t (* store) (struct most_inst_obj *d,struct most_inst_attribute *attr,const char *buf,size_t count);
+        ssize_t (*show)(struct most_inst_obj *d,struct most_inst_attribute *attr,char *buf);
+        ssize_t (*store)(struct most_inst_obj *d,struct most_inst_attribute *attr,const char *buf,size_t count);
     }
 
 .. _`most_inst_attribute.members`:
@@ -313,8 +313,8 @@ Definition
 
     struct most_aim_attribute {
         struct attribute attr;
-        ssize_t (* show) (struct most_aim_obj *d,struct most_aim_attribute *attr,char *buf);
-        ssize_t (* store) (struct most_aim_obj *d,struct most_aim_attribute *attr,const char *buf,size_t count);
+        ssize_t (*show)(struct most_aim_obj *d,struct most_aim_attribute *attr,char *buf);
+        ssize_t (*store)(struct most_aim_obj *d,struct most_aim_attribute *attr,const char *buf,size_t count);
     }
 
 .. _`most_aim_attribute.members`:
@@ -598,7 +598,7 @@ Calls the completion handler of an attached AIM.
 arm_mbo_chain
 =============
 
-.. c:function:: int arm_mbo_chain(struct most_c_obj *c, int dir, void (*) compl (struct mbo *)
+.. c:function:: int arm_mbo_chain(struct most_c_obj *c, int dir, void (*compl)(struct mbo *))
 
     helper function that arms an MBO chain for the HDM
 
@@ -608,7 +608,7 @@ arm_mbo_chain
     :param int dir:
         direction of the channel
 
-    :param (void (\*) compl (struct mbo \*):
+    :param void (\*compl)(struct mbo \*):
         pointer to completion function
 
 .. _`arm_mbo_chain.description`:

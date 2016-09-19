@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct ste_modem_dev_cb {
-        void (* kick) (struct ste_modem_device *mdev, int notify_id);
+        void (*kick)(struct ste_modem_device *mdev, int notify_id);
     }
 
 .. _`ste_modem_dev_cb.members`:
@@ -53,10 +53,10 @@ Definition
 .. code-block:: c
 
     struct ste_modem_dev_ops {
-        int (* power) (struct ste_modem_device *mdev, bool on);
-        int (* kick) (struct ste_modem_device *mdev, int notify_id);
-        int (* kick_subscribe) (struct ste_modem_device *mdev, int notify_id);
-        int (* setup) (struct ste_modem_device *mdev,struct ste_modem_dev_cb *cfg);
+        int (*power)(struct ste_modem_device *mdev, bool on);
+        int (*kick)(struct ste_modem_device *mdev, int notify_id);
+        int (*kick_subscribe)(struct ste_modem_device *mdev, int notify_id);
+        int (*setup)(struct ste_modem_device *mdev,struct ste_modem_dev_cb *cfg);
     }
 
 .. _`ste_modem_dev_ops.members`:

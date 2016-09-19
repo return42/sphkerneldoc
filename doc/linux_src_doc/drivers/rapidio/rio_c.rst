@@ -115,7 +115,7 @@ for an RIO device.
 rio_request_inb_mbox
 ====================
 
-.. c:function:: int rio_request_inb_mbox(struct rio_mport *mport, void *dev_id, int mbox, int entries, void (*) minb (struct rio_mport * mport, void *dev_id, int mbox, int slot)
+.. c:function:: int rio_request_inb_mbox(struct rio_mport *mport, void *dev_id, int mbox, int entries, void (*minb)(struct rio_mport * mport, void *dev_id, int mbox, int slot))
 
     request inbound mailbox service
 
@@ -131,7 +131,7 @@ rio_request_inb_mbox
     :param int entries:
         Number of entries in inbound mailbox queue
 
-    :param (void (\*) minb (struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
+    :param void (\*minb)(struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
         Callback to execute when inbound message is received
 
 .. _`rio_request_inb_mbox.description`:
@@ -170,7 +170,7 @@ if the request has been satisfied.
 rio_request_outb_mbox
 =====================
 
-.. c:function:: int rio_request_outb_mbox(struct rio_mport *mport, void *dev_id, int mbox, int entries, void (*) moutb (struct rio_mport * mport, void *dev_id, int mbox, int slot)
+.. c:function:: int rio_request_outb_mbox(struct rio_mport *mport, void *dev_id, int mbox, int entries, void (*moutb)(struct rio_mport * mport, void *dev_id, int mbox, int slot))
 
     request outbound mailbox service
 
@@ -186,7 +186,7 @@ rio_request_outb_mbox
     :param int entries:
         Number of entries in outbound mailbox queue
 
-    :param (void (\*) moutb (struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
+    :param void (\*moutb)(struct rio_mport \* mport, void \*dev_id, int mbox, int slot):
         Callback to execute when outbound message is sent
 
 .. _`rio_request_outb_mbox.description`:
@@ -225,7 +225,7 @@ if the request has been satisfied.
 rio_setup_inb_dbell
 ===================
 
-.. c:function:: int rio_setup_inb_dbell(struct rio_mport *mport, void *dev_id, struct resource *res, void (*) dinb (struct rio_mport * mport, void *dev_id, u16 src, u16 dst, u16 info)
+.. c:function:: int rio_setup_inb_dbell(struct rio_mport *mport, void *dev_id, struct resource *res, void (*dinb)(struct rio_mport * mport, void *dev_id, u16 src, u16 dst, u16 info))
 
     bind inbound doorbell callback
 
@@ -238,7 +238,7 @@ rio_setup_inb_dbell
     :param struct resource \*res:
         Doorbell message resource
 
-    :param (void (\*) dinb (struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
+    :param void (\*dinb)(struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
         Callback to execute when doorbell is received
 
 .. _`rio_setup_inb_dbell.description`:
@@ -255,7 +255,7 @@ satisfied.
 rio_request_inb_dbell
 =====================
 
-.. c:function:: int rio_request_inb_dbell(struct rio_mport *mport, void *dev_id, u16 start, u16 end, void (*) dinb (struct rio_mport * mport, void *dev_id, u16 src, u16 dst, u16 info)
+.. c:function:: int rio_request_inb_dbell(struct rio_mport *mport, void *dev_id, u16 start, u16 end, void (*dinb)(struct rio_mport * mport, void *dev_id, u16 src, u16 dst, u16 info))
 
     request inbound doorbell message service
 
@@ -271,7 +271,7 @@ rio_request_inb_dbell
     :param u16 end:
         Doorbell info range end
 
-    :param (void (\*) dinb (struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
+    :param void (\*dinb)(struct rio_mport \* mport, void \*dev_id, u16 src, u16 dst, u16 info):
         Callback to execute when doorbell is received
 
 .. _`rio_request_inb_dbell.description`:
@@ -364,7 +364,7 @@ request has been satisfied.
 rio_add_mport_pw_handler
 ========================
 
-.. c:function:: int rio_add_mport_pw_handler(struct rio_mport *mport, void *context, int (*) pwcback (struct rio_mport *mport, void *context, union rio_pw_msg *msg, int step)
+.. c:function:: int rio_add_mport_pw_handler(struct rio_mport *mport, void *context, int (*pwcback)(struct rio_mport *mport, void *context, union rio_pw_msg *msg, int step))
 
     add port-write message handler into the list of mport specific pw handlers
 
@@ -374,7 +374,7 @@ rio_add_mport_pw_handler
     :param void \*context:
         Handler specific context to pass on event
 
-    :param (int (\*) pwcback (struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
+    :param int (\*pwcback)(struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
         Callback to execute when portwrite is received
 
 .. _`rio_add_mport_pw_handler.description`:
@@ -389,7 +389,7 @@ Returns 0 if the request has been satisfied.
 rio_del_mport_pw_handler
 ========================
 
-.. c:function:: int rio_del_mport_pw_handler(struct rio_mport *mport, void *context, int (*) pwcback (struct rio_mport *mport, void *context, union rio_pw_msg *msg, int step)
+.. c:function:: int rio_del_mport_pw_handler(struct rio_mport *mport, void *context, int (*pwcback)(struct rio_mport *mport, void *context, union rio_pw_msg *msg, int step))
 
     remove port-write message handler from the list of mport specific pw handlers
 
@@ -399,7 +399,7 @@ rio_del_mport_pw_handler
     :param void \*context:
         Registered handler specific context to pass on event
 
-    :param (int (\*) pwcback (struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
+    :param int (\*pwcback)(struct rio_mport \*mport, void \*context, union rio_pw_msg \*msg, int step):
         Registered callback function
 
 .. _`rio_del_mport_pw_handler.description`:
@@ -414,14 +414,14 @@ Returns 0 if the request has been satisfied.
 rio_request_inb_pwrite
 ======================
 
-.. c:function:: int rio_request_inb_pwrite(struct rio_dev *rdev, int (*) pwcback (struct rio_dev *rdev, union rio_pw_msg *msg, int step)
+.. c:function:: int rio_request_inb_pwrite(struct rio_dev *rdev, int (*pwcback)(struct rio_dev *rdev, union rio_pw_msg *msg, int step))
 
     request inbound port-write message service for specific RapidIO device
 
     :param struct rio_dev \*rdev:
         RIO device to which register inbound port-write callback routine
 
-    :param (int (\*) pwcback (struct rio_dev \*rdev, union rio_pw_msg \*msg, int step):
+    :param int (\*pwcback)(struct rio_dev \*rdev, union rio_pw_msg \*msg, int step):
         Callback routine to execute when port-write is received
 
 .. _`rio_request_inb_pwrite.description`:

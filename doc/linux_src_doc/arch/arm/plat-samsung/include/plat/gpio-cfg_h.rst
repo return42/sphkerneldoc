@@ -18,10 +18,10 @@ Definition
 
     struct samsung_gpio_cfg {
         unsigned int cfg_eint;
-        samsung_gpio_pull_t (* get_pull) (struct samsung_gpio_chip *chip, unsigned offs);
-        int (* set_pull) (struct samsung_gpio_chip *chip, unsigned offs,samsung_gpio_pull_t pull);
-        unsigned (* get_config) (struct samsung_gpio_chip *chip, unsigned offs);
-        int (* set_config) (struct samsung_gpio_chip *chip, unsigned offs,unsigned config);
+        samsung_gpio_pull_t (*get_pull)(struct samsung_gpio_chip *chip, unsigned offs);
+        int (*set_pull)(struct samsung_gpio_chip *chip, unsigned offs,samsung_gpio_pull_t pull);
+        unsigned (*get_config)(struct samsung_gpio_chip *chip, unsigned offs);
+        int (*set_config)(struct samsung_gpio_chip *chip, unsigned offs,unsigned config);
     }
 
 .. _`samsung_gpio_cfg.members`:

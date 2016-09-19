@@ -22,7 +22,7 @@ Definition
         struct device *dev;
         bool was_wake_device;
         struct class *cros_class;
-        int (* cmd_readmem) (struct cros_ec_device *ec, unsigned int offset,unsigned int bytes, void *dest);
+        int (*cmd_readmem)(struct cros_ec_device *ec, unsigned int offset,unsigned int bytes, void *dest);
         u16 max_request;
         u16 max_response;
         u16 max_passthru;
@@ -34,8 +34,8 @@ Definition
         int din_size;
         int dout_size;
         bool wake_enabled;
-        int (* cmd_xfer) (struct cros_ec_device *ec,struct cros_ec_command *msg);
-        int (* pkt_xfer) (struct cros_ec_device *ec,struct cros_ec_command *msg);
+        int (*cmd_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
+        int (*pkt_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
         struct mutex lock;
     }
 

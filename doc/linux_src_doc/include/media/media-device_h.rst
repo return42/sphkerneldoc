@@ -20,7 +20,7 @@ Definition
     struct media_entity_notify {
         struct list_head list;
         void *notify_data;
-        void (* notify) (struct media_entity *entity, void *notify_data);
+        void (*notify)(struct media_entity *entity, void *notify_data);
     }
 
 .. _`media_entity_notify.members`:
@@ -82,9 +82,9 @@ Definition
         struct mutex graph_mutex;
         struct media_entity_graph pm_count_walk;
         void *source_priv;
-        int (* enable_source) (struct media_entity *entity,struct media_pipeline *pipe);
-        void (* disable_source) (struct media_entity *entity);
-        int (* link_notify) (struct media_link *link, u32 flags,unsigned int notification);
+        int (*enable_source)(struct media_entity *entity,struct media_pipeline *pipe);
+        void (*disable_source)(struct media_entity *entity);
+        int (*link_notify)(struct media_link *link, u32 flags,unsigned int notification);
     }
 
 .. _`media_device.members`:

@@ -497,7 +497,7 @@ FALSE.
 rt2x00usb_register_read_async
 =============================
 
-.. c:function:: void rt2x00usb_register_read_async(struct rt2x00_dev *rt2x00dev, const unsigned int offset, bool (*) callback (struct rt2x00_dev*, int, u32)
+.. c:function:: void rt2x00usb_register_read_async(struct rt2x00_dev *rt2x00dev, const unsigned int offset, bool (*callback)(struct rt2x00_dev*, int, u32))
 
     Asynchronously read 32bit register word
 
@@ -507,7 +507,7 @@ rt2x00usb_register_read_async
     :param const unsigned int offset:
         Register offset
 
-    :param (bool (\*) callback (struct rt2x00_dev\*, int, u32):
+    :param bool (\*callback)(struct rt2x00_dev\*, int, u32):
         Functon to call when read completes.
 
 .. _`rt2x00usb_register_read_async.description`:

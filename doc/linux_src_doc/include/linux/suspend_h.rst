@@ -18,16 +18,16 @@ Definition
 .. code-block:: c
 
     struct platform_suspend_ops {
-        int (* valid) (suspend_state_t state);
-        int (* begin) (suspend_state_t state);
-        int (* prepare) (void);
-        int (* prepare_late) (void);
-        int (* enter) (suspend_state_t state);
-        void (* wake) (void);
-        void (* finish) (void);
-        bool (* suspend_again) (void);
-        void (* end) (void);
-        void (* recover) (void);
+        int (*valid)(suspend_state_t state);
+        int (*begin)(suspend_state_t state);
+        int (*prepare)(void);
+        int (*prepare_late)(void);
+        int (*enter)(suspend_state_t state);
+        void (*wake)(void);
+        void (*finish)(void);
+        bool (*suspend_again)(void);
+        void (*end)(void);
+        void (*recover)(void);
     }
 
 .. _`platform_suspend_ops.members`:
@@ -190,16 +190,16 @@ Definition
 .. code-block:: c
 
     struct platform_hibernation_ops {
-        int (* begin) (void);
-        void (* end) (void);
-        int (* pre_snapshot) (void);
-        void (* finish) (void);
-        int (* prepare) (void);
-        int (* enter) (void);
-        void (* leave) (void);
-        int (* pre_restore) (void);
-        void (* restore_cleanup) (void);
-        void (* recover) (void);
+        int (*begin)(void);
+        void (*end)(void);
+        int (*pre_snapshot)(void);
+        void (*finish)(void);
+        int (*prepare)(void);
+        int (*enter)(void);
+        void (*leave)(void);
+        int (*pre_restore)(void);
+        void (*restore_cleanup)(void);
+        void (*recover)(void);
     }
 
 .. _`platform_hibernation_ops.members`:

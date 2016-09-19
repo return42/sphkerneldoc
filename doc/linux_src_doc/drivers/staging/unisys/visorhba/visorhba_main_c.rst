@@ -6,11 +6,11 @@
 visor_thread_start
 ==================
 
-.. c:function:: struct task_struct *visor_thread_start(int (*) threadfn (void *, void *thrcontext, char *name)
+.. c:function:: struct task_struct *visor_thread_start(int (*threadfn)(void *), void *thrcontext, char *name)
 
     starts a thread for the device
 
-    :param (int (\*) threadfn (void \*):
+    :param int (\*threadfn)(void \*):
         Function the thread starts
 
     :param void \*thrcontext:
@@ -240,14 +240,14 @@ Returns string with info
 visorhba_queue_command_lck
 ==========================
 
-.. c:function:: int visorhba_queue_command_lck(struct scsi_cmnd *scsicmd, void (*) visorhba_cmnd_done (struct scsi_cmnd *)
+.. c:function:: int visorhba_queue_command_lck(struct scsi_cmnd *scsicmd, void (*visorhba_cmnd_done)(struct scsi_cmnd *))
 
     - queues command to the Service Partition
 
     :param struct scsi_cmnd \*scsicmd:
         Command to be queued
 
-    :param (void (\*) visorhba_cmnd_done (struct scsi_cmnd \*):
+    :param void (\*visorhba_cmnd_done)(struct scsi_cmnd \*):
         *undescribed*
 
 .. _`visorhba_queue_command_lck.description`:

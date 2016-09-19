@@ -216,7 +216,7 @@ decoding
 vga_client_register
 ===================
 
-.. c:function:: int vga_client_register(struct pci_dev *pdev, void *cookie, void (*) irq_set_state (void *cookie, bool state, unsigned int (*) set_vga_decode (void *cookie, bool state)
+.. c:function:: int vga_client_register(struct pci_dev *pdev, void *cookie, void (*irq_set_state)(void *cookie, bool state), unsigned int (*set_vga_decode)(void *cookie, bool state))
 
     :param struct pci_dev \*pdev:
         pci device of the VGA client
@@ -224,10 +224,10 @@ vga_client_register
     :param void \*cookie:
         client cookie to be used in callbacks
 
-    :param (void (\*) irq_set_state (void \*cookie, bool state):
+    :param void (\*irq_set_state)(void \*cookie, bool state):
         irq state change callback
 
-    :param (unsigned int (\*) set_vga_decode (void \*cookie, bool state):
+    :param unsigned int (\*set_vga_decode)(void \*cookie, bool state):
         vga decode change callback
 
 .. _`vga_client_register.return-value`:

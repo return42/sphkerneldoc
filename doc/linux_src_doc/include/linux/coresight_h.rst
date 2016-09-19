@@ -266,13 +266,13 @@ Definition
 .. code-block:: c
 
     struct coresight_ops_sink {
-        int (* enable) (struct coresight_device *csdev, u32 mode);
-        void (* disable) (struct coresight_device *csdev);
-        void *(* alloc_buffer) (struct coresight_device *csdev, int cpu,void **pages, int nr_pages, bool overwrite);
-        void (* free_buffer) (void *config);
-        int (* set_buffer) (struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
-        unsigned long (* reset_buffer) (struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config, bool *lost);
-        void (* update_buffer) (struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
+        int (*enable)(struct coresight_device *csdev, u32 mode);
+        void (*disable)(struct coresight_device *csdev);
+        void *(*alloc_buffer)(struct coresight_device *csdev, int cpu,void **pages, int nr_pages, bool overwrite);
+        void (*free_buffer)(void *config);
+        int (*set_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
+        unsigned long (*reset_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config, bool *lost);
+        void (*update_buffer)(struct coresight_device *csdev,struct perf_output_handle *handle,void *sink_config);
     }
 
 .. _`coresight_ops_sink.members`:
@@ -318,8 +318,8 @@ Definition
 .. code-block:: c
 
     struct coresight_ops_link {
-        int (* enable) (struct coresight_device *csdev, int iport, int oport);
-        void (* disable) (struct coresight_device *csdev, int iport, int oport);
+        int (*enable)(struct coresight_device *csdev, int iport, int oport);
+        void (*disable)(struct coresight_device *csdev, int iport, int oport);
     }
 
 .. _`coresight_ops_link.members`:
@@ -350,10 +350,10 @@ Definition
 .. code-block:: c
 
     struct coresight_ops_source {
-        int (* cpu_id) (struct coresight_device *csdev);
-        int (* trace_id) (struct coresight_device *csdev);
-        int (* enable) (struct coresight_device *csdev,struct perf_event_attr *attr, u32 mode);
-        void (* disable) (struct coresight_device *csdev);
+        int (*cpu_id)(struct coresight_device *csdev);
+        int (*trace_id)(struct coresight_device *csdev);
+        int (*enable)(struct coresight_device *csdev,struct perf_event_attr *attr, u32 mode);
+        void (*disable)(struct coresight_device *csdev);
     }
 
 .. _`coresight_ops_source.members`:

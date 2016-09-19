@@ -21,9 +21,9 @@ Definition
         struct device *dev;
         unsigned long max_freq;
         const struct cvb_table *cvb;
-        void (* init_clock_trimmers) (void);
-        void (* set_clock_trimmers_high) (void);
-        void (* set_clock_trimmers_low) (void);
+        void (*init_clock_trimmers)(void);
+        void (*set_clock_trimmers_high)(void);
+        void (*set_clock_trimmers_low)(void);
     }
 
 .. _`tegra_dfll_soc_data.members`:

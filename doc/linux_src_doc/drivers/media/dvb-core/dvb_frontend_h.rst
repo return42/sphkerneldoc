@@ -274,25 +274,25 @@ Definition
 
     struct dvb_tuner_ops {
         struct dvb_tuner_info info;
-        int (* release) (struct dvb_frontend *fe);
-        int (* init) (struct dvb_frontend *fe);
-        int (* sleep) (struct dvb_frontend *fe);
-        int (* suspend) (struct dvb_frontend *fe);
-        int (* resume) (struct dvb_frontend *fe);
-        int (* set_params) (struct dvb_frontend *fe);
-        int (* set_analog_params) (struct dvb_frontend *fe, struct analog_parameters *p);
-        int (* set_config) (struct dvb_frontend *fe, void *priv_cfg);
-        int (* get_frequency) (struct dvb_frontend *fe, u32 *frequency);
-        int (* get_bandwidth) (struct dvb_frontend *fe, u32 *bandwidth);
-        int (* get_if_frequency) (struct dvb_frontend *fe, u32 *frequency);
+        int (*release)(struct dvb_frontend *fe);
+        int (*init)(struct dvb_frontend *fe);
+        int (*sleep)(struct dvb_frontend *fe);
+        int (*suspend)(struct dvb_frontend *fe);
+        int (*resume)(struct dvb_frontend *fe);
+        int (*set_params)(struct dvb_frontend *fe);
+        int (*set_analog_params)(struct dvb_frontend *fe, struct analog_parameters *p);
+        int (*set_config)(struct dvb_frontend *fe, void *priv_cfg);
+        int (*get_frequency)(struct dvb_frontend *fe, u32 *frequency);
+        int (*get_bandwidth)(struct dvb_frontend *fe, u32 *bandwidth);
+        int (*get_if_frequency)(struct dvb_frontend *fe, u32 *frequency);
         #define TUNER_STATUS_LOCKED 1
         #define TUNER_STATUS_STEREO 2
-        int (* get_status) (struct dvb_frontend *fe, u32 *status);
-        int (* get_rf_strength) (struct dvb_frontend *fe, u16 *strength);
-        int (* get_afc) (struct dvb_frontend *fe, s32 *afc);
-        int (* calc_regs) (struct dvb_frontend *fe, u8 *buf, int buf_len);
-        int (* set_frequency) (struct dvb_frontend *fe, u32 frequency);
-        int (* set_bandwidth) (struct dvb_frontend *fe, u32 bandwidth);
+        int (*get_status)(struct dvb_frontend *fe, u32 *status);
+        int (*get_rf_strength)(struct dvb_frontend *fe, u16 *strength);
+        int (*get_afc)(struct dvb_frontend *fe, s32 *afc);
+        int (*calc_regs)(struct dvb_frontend *fe, u8 *buf, int buf_len);
+        int (*set_frequency)(struct dvb_frontend *fe, u32 frequency);
+        int (*set_bandwidth)(struct dvb_frontend *fe, u32 bandwidth);
     }
 
 .. _`dvb_tuner_ops.members`:
@@ -426,14 +426,14 @@ Definition
 
     struct analog_demod_ops {
         struct analog_demod_info info;
-        void (* set_params) (struct dvb_frontend *fe,struct analog_parameters *params);
-        int (* has_signal) (struct dvb_frontend *fe, u16 *signal);
-        int (* get_afc) (struct dvb_frontend *fe, s32 *afc);
-        void (* tuner_status) (struct dvb_frontend *fe);
-        void (* standby) (struct dvb_frontend *fe);
-        void (* release) (struct dvb_frontend *fe);
-        int (* i2c_gate_ctrl) (struct dvb_frontend *fe, int enable);
-        int (* set_config) (struct dvb_frontend *fe, void *priv_cfg);
+        void (*set_params)(struct dvb_frontend *fe,struct analog_parameters *params);
+        int (*has_signal)(struct dvb_frontend *fe, u16 *signal);
+        int (*get_afc)(struct dvb_frontend *fe, s32 *afc);
+        void (*tuner_status)(struct dvb_frontend *fe);
+        void (*standby)(struct dvb_frontend *fe);
+        void (*release)(struct dvb_frontend *fe);
+        int (*i2c_gate_ctrl)(struct dvb_frontend *fe, int enable);
+        int (*set_config)(struct dvb_frontend *fe, void *priv_cfg);
     }
 
 .. _`analog_demod_ops.members`:
@@ -495,37 +495,37 @@ Definition
     struct dvb_frontend_ops {
         struct dvb_frontend_info info;
         u8 delsys[MAX_DELSYS];
-        void (* release) (struct dvb_frontend* fe);
-        void (* release_sec) (struct dvb_frontend* fe);
-        int (* init) (struct dvb_frontend* fe);
-        int (* sleep) (struct dvb_frontend* fe);
-        int (* write) (struct dvb_frontend* fe, const u8 buf[], int len);
-        int (* tune) (struct dvb_frontend* fe,bool re_tune,unsigned int mode_flags,unsigned int *delay,enum fe_status *status);
-        enum dvbfe_algo (* get_frontend_algo) (struct dvb_frontend *fe);
-        int (* set_frontend) (struct dvb_frontend *fe);
-        int (* get_tune_settings) (struct dvb_frontend* fe, struct dvb_frontend_tune_settings* settings);
-        int (* get_frontend) (struct dvb_frontend *fe,struct dtv_frontend_properties *props);
-        int (* read_status) (struct dvb_frontend *fe, enum fe_status *status);
-        int (* read_ber) (struct dvb_frontend* fe, u32* ber);
-        int (* read_signal_strength) (struct dvb_frontend* fe, u16* strength);
-        int (* read_snr) (struct dvb_frontend* fe, u16* snr);
-        int (* read_ucblocks) (struct dvb_frontend* fe, u32* ucblocks);
-        int (* diseqc_reset_overload) (struct dvb_frontend* fe);
-        int (* diseqc_send_master_cmd) (struct dvb_frontend* fe, struct dvb_diseqc_master_cmd* cmd);
-        int (* diseqc_recv_slave_reply) (struct dvb_frontend* fe, struct dvb_diseqc_slave_reply* reply);
-        int (* diseqc_send_burst) (struct dvb_frontend *fe,enum fe_sec_mini_cmd minicmd);
-        int (* set_tone) (struct dvb_frontend *fe, enum fe_sec_tone_mode tone);
-        int (* set_voltage) (struct dvb_frontend *fe,enum fe_sec_voltage voltage);
-        int (* enable_high_lnb_voltage) (struct dvb_frontend* fe, long arg);
-        int (* dishnetwork_send_legacy_command) (struct dvb_frontend* fe, unsigned long cmd);
-        int (* i2c_gate_ctrl) (struct dvb_frontend* fe, int enable);
-        int (* ts_bus_ctrl) (struct dvb_frontend* fe, int acquire);
-        int (* set_lna) (struct dvb_frontend *);
-        enum dvbfe_search (* search) (struct dvb_frontend *fe);
+        void (*release)(struct dvb_frontend* fe);
+        void (*release_sec)(struct dvb_frontend* fe);
+        int (*init)(struct dvb_frontend* fe);
+        int (*sleep)(struct dvb_frontend* fe);
+        int (*write)(struct dvb_frontend* fe, const u8 buf[], int len);
+        int (*tune)(struct dvb_frontend* fe,bool re_tune,unsigned int mode_flags,unsigned int *delay,enum fe_status *status);
+        enum dvbfe_algo (*get_frontend_algo)(struct dvb_frontend *fe);
+        int (*set_frontend)(struct dvb_frontend *fe);
+        int (*get_tune_settings)(struct dvb_frontend* fe, struct dvb_frontend_tune_settings* settings);
+        int (*get_frontend)(struct dvb_frontend *fe,struct dtv_frontend_properties *props);
+        int (*read_status)(struct dvb_frontend *fe, enum fe_status *status);
+        int (*read_ber)(struct dvb_frontend* fe, u32* ber);
+        int (*read_signal_strength)(struct dvb_frontend* fe, u16* strength);
+        int (*read_snr)(struct dvb_frontend* fe, u16* snr);
+        int (*read_ucblocks)(struct dvb_frontend* fe, u32* ucblocks);
+        int (*diseqc_reset_overload)(struct dvb_frontend* fe);
+        int (*diseqc_send_master_cmd)(struct dvb_frontend* fe, struct dvb_diseqc_master_cmd* cmd);
+        int (*diseqc_recv_slave_reply)(struct dvb_frontend* fe, struct dvb_diseqc_slave_reply* reply);
+        int (*diseqc_send_burst)(struct dvb_frontend *fe,enum fe_sec_mini_cmd minicmd);
+        int (*set_tone)(struct dvb_frontend *fe, enum fe_sec_tone_mode tone);
+        int (*set_voltage)(struct dvb_frontend *fe,enum fe_sec_voltage voltage);
+        int (*enable_high_lnb_voltage)(struct dvb_frontend* fe, long arg);
+        int (*dishnetwork_send_legacy_command)(struct dvb_frontend* fe, unsigned long cmd);
+        int (*i2c_gate_ctrl)(struct dvb_frontend* fe, int enable);
+        int (*ts_bus_ctrl)(struct dvb_frontend* fe, int acquire);
+        int (*set_lna)(struct dvb_frontend *);
+        enum dvbfe_search (*search)(struct dvb_frontend *fe);
         struct dvb_tuner_ops tuner_ops;
         struct analog_demod_ops analog_ops;
-        int (* set_property) (struct dvb_frontend* fe, struct dtv_property* tvp);
-        int (* get_property) (struct dvb_frontend* fe, struct dtv_property* tvp);
+        int (*set_property)(struct dvb_frontend* fe, struct dtv_property* tvp);
+        int (*get_property)(struct dvb_frontend* fe, struct dtv_property* tvp);
     }
 
 .. _`dvb_frontend_ops.members`:
@@ -947,7 +947,7 @@ Definition
         struct dtv_frontend_properties dtv_property_cache;
         #define DVB_FRONTEND_COMPONENT_TUNER 0
         #define DVB_FRONTEND_COMPONENT_DEMOD 1
-        int (* callback) (void *adapter_priv, int component, int cmd, int arg);
+        int (*callback)(void *adapter_priv, int component, int cmd, int arg);
         int id;
         unsigned int exit;
     }

@@ -322,7 +322,7 @@ window following the current one
 msc_buffer_iterate
 ==================
 
-.. c:function:: ssize_t msc_buffer_iterate(struct msc_iter *iter, size_t size, void *data, unsigned long (*) fn (void *, void *, size_t)
+.. c:function:: ssize_t msc_buffer_iterate(struct msc_iter *iter, size_t size, void *data, unsigned long (*fn)(void *, void *, size_t))
 
     go through multiblock buffer's data
 
@@ -335,7 +335,7 @@ msc_buffer_iterate
     :param void \*data:
         callback's private data
 
-    :param (unsigned long (\*) fn (void \*, void \*, size_t):
+    :param unsigned long (\*fn)(void \*, void \*, size_t):
         iterator callback
 
 .. _`msc_buffer_iterate.description`:

@@ -2145,7 +2145,7 @@ otherwise the internal statistics structure is used.
 alloc_netdev_mqs
 ================
 
-.. c:function:: struct net_device *alloc_netdev_mqs(int sizeof_priv, const char *name, unsigned char name_assign_type, void (*) setup (struct net_device *, unsigned int txqs, unsigned int rxqs)
+.. c:function:: struct net_device *alloc_netdev_mqs(int sizeof_priv, const char *name, unsigned char name_assign_type, void (*setup)(struct net_device *), unsigned int txqs, unsigned int rxqs)
 
     allocate network device
 
@@ -2158,7 +2158,7 @@ alloc_netdev_mqs
     :param unsigned char name_assign_type:
         origin of device name
 
-    :param (void (\*) setup (struct net_device \*):
+    :param void (\*setup)(struct net_device \*):
         callback to initialize device
 
     :param unsigned int txqs:

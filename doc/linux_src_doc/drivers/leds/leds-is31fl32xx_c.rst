@@ -27,8 +27,8 @@ Definition
         bool pwm_registers_reversed;
         u8 led_control_register_base;
         u8 enable_bits_per_led_control_register;
-        int (* reset_func) (struct is31fl32xx_priv *priv);
-        int (* sw_shutdown_func) (struct is31fl32xx_priv *priv, bool enable);
+        int (*reset_func)(struct is31fl32xx_priv *priv);
+        int (*sw_shutdown_func)(struct is31fl32xx_priv *priv, bool enable);
     }
 
 .. _`is31fl32xx_chipdef.members`:

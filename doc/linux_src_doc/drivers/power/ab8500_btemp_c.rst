@@ -19,7 +19,7 @@ Definition
 
     struct ab8500_btemp_interrupts {
         char *name;
-        irqreturn_t (* isr) (int irq, void *data);
+        irqreturn_t (*isr)(int irq, void *data);
     }
 
 .. _`ab8500_btemp_interrupts.members`:

@@ -516,7 +516,7 @@ removes it from lists of known handlers.
 input_handler_for_each_handle
 =============================
 
-.. c:function:: int input_handler_for_each_handle(struct input_handler *handler, void *data, int (*) fn (struct input_handle *, void *)
+.. c:function:: int input_handler_for_each_handle(struct input_handler *handler, void *data, int (*fn)(struct input_handle *, void *))
 
     handle iterator
 
@@ -526,7 +526,7 @@ input_handler_for_each_handle
     :param void \*data:
         data for the callback
 
-    :param (int (\*) fn (struct input_handle \*, void \*):
+    :param int (\*fn)(struct input_handle \*, void \*):
         function to be called for each handle
 
 .. _`input_handler_for_each_handle.description`:

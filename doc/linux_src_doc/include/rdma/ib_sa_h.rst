@@ -30,7 +30,7 @@ ib_sa_unregister_client
 ib_sa_join_multicast
 ====================
 
-.. c:function:: struct ib_sa_multicast *ib_sa_join_multicast(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_mcmember_rec *rec, ib_sa_comp_mask comp_mask, gfp_t gfp_mask, int (*) callback (int status, struct ib_sa_multicast *multicast, void *context)
+.. c:function:: struct ib_sa_multicast *ib_sa_join_multicast(struct ib_sa_client *client, struct ib_device *device, u8 port_num, struct ib_sa_mcmember_rec *rec, ib_sa_comp_mask comp_mask, gfp_t gfp_mask, int (*callback)(int status, struct ib_sa_multicast *multicast), void *context)
 
     Initiates a join request to the specified multicast group.
 
@@ -54,7 +54,7 @@ ib_sa_join_multicast
     :param gfp_t gfp_mask:
         GFP mask for memory allocations.
 
-    :param (int (\*) callback (int status, struct ib_sa_multicast \*multicast):
+    :param int (\*callback)(int status, struct ib_sa_multicast \*multicast):
         User callback invoked once the join operation completes.
 
     :param void \*context:

@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct intel_mid_ops {
-        void (* arch_setup) (void);
+        void (*arch_setup)(void);
     }
 
 .. _`intel_mid_ops.members`:

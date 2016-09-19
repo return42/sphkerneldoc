@@ -63,7 +63,7 @@ e_info->error_dev_num and e_info->dev[], based on the given information.
 broadcast_error_message
 =======================
 
-.. c:function:: pci_ers_result_t broadcast_error_message(struct pci_dev *dev, enum pci_channel_state state, char *error_mesg, int (*) cb (struct pci_dev *, void *)
+.. c:function:: pci_ers_result_t broadcast_error_message(struct pci_dev *dev, enum pci_channel_state state, char *error_mesg, int (*cb)(struct pci_dev *, void *))
 
     handle message broadcast to downstream drivers
 
@@ -76,7 +76,7 @@ broadcast_error_message
     :param char \*error_mesg:
         message to print
 
-    :param (int (\*) cb (struct pci_dev \*, void \*):
+    :param int (\*cb)(struct pci_dev \*, void \*):
         callback to be broadcasted
 
 .. _`broadcast_error_message.description`:

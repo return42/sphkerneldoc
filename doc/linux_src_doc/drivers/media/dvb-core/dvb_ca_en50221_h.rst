@@ -19,14 +19,14 @@ Definition
 
     struct dvb_ca_en50221 {
         struct module *owner;
-        int (* read_attribute_mem) (struct dvb_ca_en50221 *ca,int slot, int address);
-        int (* write_attribute_mem) (struct dvb_ca_en50221 *ca,int slot, int address, u8 value);
-        int (* read_cam_control) (struct dvb_ca_en50221 *ca,int slot, u8 address);
-        int (* write_cam_control) (struct dvb_ca_en50221 *ca,int slot, u8 address, u8 value);
-        int (* slot_reset) (struct dvb_ca_en50221 *ca, int slot);
-        int (* slot_shutdown) (struct dvb_ca_en50221 *ca, int slot);
-        int (* slot_ts_enable) (struct dvb_ca_en50221 *ca, int slot);
-        int (* poll_slot_status) (struct dvb_ca_en50221 *ca, int slot, int open);
+        int (*read_attribute_mem)(struct dvb_ca_en50221 *ca,int slot, int address);
+        int (*write_attribute_mem)(struct dvb_ca_en50221 *ca,int slot, int address, u8 value);
+        int (*read_cam_control)(struct dvb_ca_en50221 *ca,int slot, u8 address);
+        int (*write_cam_control)(struct dvb_ca_en50221 *ca,int slot, u8 address, u8 value);
+        int (*slot_reset)(struct dvb_ca_en50221 *ca, int slot);
+        int (*slot_shutdown)(struct dvb_ca_en50221 *ca, int slot);
+        int (*slot_ts_enable)(struct dvb_ca_en50221 *ca, int slot);
+        int (*poll_slot_status)(struct dvb_ca_en50221 *ca, int slot, int open);
         void *data;
         void *private;
     }
