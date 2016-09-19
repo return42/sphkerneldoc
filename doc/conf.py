@@ -121,6 +121,7 @@ extensions = [
     , "linuxdoc.rstKernelDoc"  # kernel-doc reST directive
     , "linuxdoc.manKernelDoc"  # kernel-doc-man sphinx builder
     , "linuxdoc.kernel_include"  # kernel_include directive
+    , "linuxdoc.cdomain"
     # , "xelatex"
     , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
