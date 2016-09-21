@@ -196,6 +196,24 @@ kernel_doc_verbose_warn = False
 # Default: "reST"
 kernel_doc_mode = "reST"
 
+# In nickpick mode, it will complain about lots of missing references that
+#
+# 1) are just typedefs like: bool, __u32, etc;
+# 2) It will complain for things like: enum, NULL;
+# 3) It will complain for symbols that should be on different
+#    books (but currently aren't ported to ReST)
+#
+# The list below has a list of such symbols to be ignored in nitpick mode
+#
+nitpick_ignore = [
+    ("c:type", "bool"),
+    ("c:type", "enum"),
+    ("c:type", "u16"),
+    ("c:type", "u32"),
+    ("c:type", "u64"),
+    ("c:type", "u8"),
+    ]
+
 # ------------------------------------------------------------------------------
 # Options for HTML output
 # ------------------------------------------------------------------------------
