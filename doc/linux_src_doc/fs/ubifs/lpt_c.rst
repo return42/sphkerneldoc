@@ -972,6 +972,16 @@ Members
 -------
 
 ptr
+    *undescribed*
+
+ptr.nnode
+    pointer to the nnode (if it is an nnode) which may be here or in
+    the tree
+
+ptr.pnode
+    ditto for pnode
+
+ptr.cnode
     ditto for cnode
 
 .. _`scan_get_nnode`:

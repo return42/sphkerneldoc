@@ -233,6 +233,12 @@ Members
 -------
 
 firmware
+    *undescribed*
+
+firmware.major
+    Firmware major number.
+
+firmware.minor
     Firmware minor numbers.
 
 patch_id

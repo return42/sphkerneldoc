@@ -103,6 +103,18 @@ cache
     NetLabel LSM specific cache
 
 attr
+    *undescribed*
+
+attr.mls
+    MLS sensitivity label
+
+attr.mls.cat
+    MLS category bitmap
+
+attr.mls.lvl
+    MLS sensitivity level
+
+attr.secid
     LSM specific secid token
 
 .. _`netlbl_lsm_secattr.description`:

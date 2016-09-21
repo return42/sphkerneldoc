@@ -44,7 +44,7 @@ alloc_workqueue
         max in-flight work items, 0 for default
 
     :param  args...:
-        variable arguments
+        args for \ ``fmt``\ 
 
 .. _`alloc_workqueue.description`:
 
@@ -80,7 +80,7 @@ alloc_ordered_workqueue
         WQ\_\* flags (only WQ_FREEZABLE and WQ_MEM_RECLAIM are meaningful)
 
     :param  args...:
-        variable arguments
+        args for \ ``fmt``\ 
 
 .. _`alloc_ordered_workqueue.description`:
 

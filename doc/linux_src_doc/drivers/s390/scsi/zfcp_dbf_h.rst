@@ -182,6 +182,12 @@ lun_status
     current status of the lun
 
 u
+    *undescribed*
+
+u.trig
+    structure zfcp_dbf_rec_trigger
+
+u.run
     structure zfcp_dbf_rec_running
 
 .. _`zfcp_dbf_san_id`:

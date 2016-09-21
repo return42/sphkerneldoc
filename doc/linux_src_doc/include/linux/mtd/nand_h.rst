@@ -545,6 +545,13 @@ name
     a human-readable name of the NAND chip
 
 ecc
+    ECC correctability and step information from the datasheet.
+
+ecc.strength_ds
+    The ECC correctability from the datasheet, same as the
+    \ ``ecc_strength_ds``\  in nand_chip{}.
+
+ecc.step_ds
     The ECC step required by the \ ``ecc``\ .strength_ds, same as the
     \ ``ecc_step_ds``\  in nand_chip{}, also from the datasheet.
     For example, the "4bit ECC for each 512Byte" can be set with
