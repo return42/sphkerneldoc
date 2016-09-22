@@ -36,7 +36,7 @@ Definition
         bool cpu_pwr_good_en;
         u32 lp0_vec_phys;
         u32 lp0_vec_size;
-        unsigned long powergates_available\[BITS_TO_LONGS(TEGRA_POWERGATE_MAX)\];
+        unsigned long powergates_available[BITS_TO_LONGS(TEGRA_POWERGATE_MAX)];
         struct mutex powergates_lock;
     }
 
@@ -98,6 +98,9 @@ lp0_vec_phys
 
 lp0_vec_size
     size of the LP0 warm boot code
+
+powergates_available
+    Bitmap of available power gates
 
 powergates_lock
     mutex for power gate register access

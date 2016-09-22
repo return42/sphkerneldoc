@@ -59,7 +59,7 @@ Definition
         unsigned int pinfuncnt;
         struct mutex mutex;
         struct tb10x_port ports[TB10X_PORTS];
-        unsigned long gpios\[BITS_TO_LONGS(MAX_PIN + 1)\];
+        unsigned long gpios[BITS_TO_LONGS(MAX_PIN + 1)];
     }
 
 .. _`tb10x_pinctrl.members`:
@@ -90,6 +90,9 @@ mutex
 
 ports
     current state of each port.
+
+gpios
+    Indicates if a given pin is currently used as GPIO (1) or not (0).
 
 .. This file was automatic generated / don't edit.
 

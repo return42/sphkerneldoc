@@ -28,7 +28,7 @@ Definition
         int ipc_bit;
         struct list_head channels;
         spinlock_t channels_lock;
-        unsigned long allocated[SMD_ALLOC_TBL_COUNT]\[BITS_TO_LONGS(SMD_ALLOC_TBL_SIZE)\];
+        unsigned long allocated[SMD_ALLOC_TBL_COUNT][BITS_TO_LONGS(SMD_ALLOC_TBL_SIZE)];
         unsigned smem_available;
         wait_queue_head_t new_channel_event;
         struct work_struct scan_work;

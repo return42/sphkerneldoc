@@ -19,7 +19,7 @@ Definition
 
     struct max1363_mode {
         int8_t conf;
-        unsigned long modemask\[BITS_TO_LONGS(MAX1363_MAX_CHANNELS)\];
+        unsigned long modemask[BITS_TO_LONGS(MAX1363_MAX_CHANNELS)];
     }
 
 .. _`max1363_mode.members`:
@@ -29,6 +29,9 @@ Members
 
 conf
     The corresponding value of the configuration register
+
+modemask
+    Bit mask corresponding to channels enabled in this mode
 
 .. _`max1363_chip_info`:
 

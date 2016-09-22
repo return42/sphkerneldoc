@@ -13,6 +13,18 @@ kvm_arm_get_running_vcpu
     :param  void:
         no arguments
 
+.. _`kvm_get_running_vcpus`:
+
+kvm_get_running_vcpus
+=====================
+
+.. c:function:: struct kvm_vcpu * __percpu *kvm_get_running_vcpus( void)
+
+    get the per-CPU array of currently running vcpus.
+
+    :param  void:
+        no arguments
+
 .. _`kvm_arch_init_vm`:
 
 kvm_arch_init_vm

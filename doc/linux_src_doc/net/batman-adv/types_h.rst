@@ -578,7 +578,7 @@ Definition
         s16 tt_buff_len;
         spinlock_t tt_buff_lock;
         spinlock_t tt_lock;
-        unsigned long bcast_bits\[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)\];
+        unsigned long bcast_bits[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)];
         u32 last_bcast_seqno;
         struct hlist_head neigh_list;
         spinlock_t neigh_list_lock;
@@ -662,6 +662,11 @@ tt_lock
     made up by two operations (data structure update and metdata -CRC/TTVN-
     recalculation) and they have to be executed atomically in order to avoid
     another thread to read the table/metadata between those.
+
+bcast_bits
+    bitfield containing the info which payload broadcast originated
+    from this orig node this host already has seen (relative to
+    last_bcast_seqno)
 
 last_bcast_seqno
     last broadcast sequence number received by this host
@@ -983,7 +988,7 @@ Definition
         u8 tq_recv[BATADV_TQ_GLOBAL_WINDOW_SIZE];
         u8 tq_index;
         u8 tq_avg;
-        unsigned long real_bits\[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)\];
+        unsigned long real_bits[BITS_TO_LONGS(BATADV_TQ_LOCAL_WINDOW_SIZE)];
         u8 real_packet_count;
     }
 
@@ -1000,6 +1005,10 @@ tq_index
 
 tq_avg
     averaged tq of all tq values in the ring buffer (tq_recv)
+
+real_bits
+    bitfield containing the number of OGMs received from this neigh
+    node (relative to orig_node->last_real_seqno)
 
 real_packet_count
     counted result of real_bits

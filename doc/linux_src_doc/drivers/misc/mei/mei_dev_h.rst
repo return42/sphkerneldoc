@@ -499,8 +499,8 @@ Definition
         unsigned int hbm_f_ie_supported:1;
         struct rw_semaphore me_clients_rwsem;
         struct list_head me_clients;
-        unsigned long me_clients_map\[BITS_TO_LONGS(MEI_CLIENTS_MAX)\];
-        unsigned long host_clients_map\[BITS_TO_LONGS(MEI_CLIENTS_MAX)\];
+        unsigned long me_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
+        unsigned long host_clients_map[BITS_TO_LONGS(MEI_CLIENTS_MAX)];
         bool allow_fixed_address;
         bool override_fixed_address;
         struct mei_cl_cb amthif_cmd_list;
@@ -631,6 +631,12 @@ me_clients_rwsem
 
 me_clients
     list of FW clients
+
+me_clients_map
+    FW clients bit map
+
+host_clients_map
+    host clients id pool
 
 allow_fixed_address
     allow user space to connect a fixed client

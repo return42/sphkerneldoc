@@ -84,9 +84,9 @@ Definition
         u32 *value;
         u32 last_value;
         struct irq_domain *domain;
-        unsigned long irq_enabled\[BITS_TO_LONGS(32)\];
-        unsigned long irq_rising\[BITS_TO_LONGS(32)\];
-        unsigned long irq_falling\[BITS_TO_LONGS(32)\];
+        unsigned long irq_enabled[BITS_TO_LONGS(32)];
+        unsigned long irq_rising[BITS_TO_LONGS(32)];
+        unsigned long irq_falling[BITS_TO_LONGS(32)];
         struct qcom_smem_state *state;
         spinlock_t lock;
     }
@@ -113,6 +113,15 @@ last_value
 
 domain
     irq_domain for inbound entries
+
+irq_enabled
+    bitmap to track enabled irq bits
+
+irq_rising
+    bitmap to mark irq bits for rising detection
+
+irq_falling
+    bitmap to mark irq bits for falling detection
 
 state
     smem state handle

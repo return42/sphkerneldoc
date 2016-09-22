@@ -85,9 +85,9 @@ Definition
     struct smsm_entry {
         struct qcom_smsm *smsm;
         struct irq_domain *domain;
-        unsigned long irq_enabled\[BITS_TO_LONGS(32)\];
-        unsigned long irq_rising\[BITS_TO_LONGS(32)\];
-        unsigned long irq_falling\[BITS_TO_LONGS(32)\];
+        unsigned long irq_enabled[BITS_TO_LONGS(32)];
+        unsigned long irq_rising[BITS_TO_LONGS(32)];
+        unsigned long irq_falling[BITS_TO_LONGS(32)];
         u32 last_value;
         u32 *remote_state;
         u32 *subscription;
@@ -103,6 +103,15 @@ smsm
 
 domain
     IRQ domain for this entry, if representing a remote system
+
+irq_enabled
+    bitmap of which state bits IRQs are enabled
+
+irq_rising
+    bitmap tracking if rising bits should be propagated
+
+irq_falling
+    bitmap tracking if falling bits should be propagated
 
 last_value
     snapshot of state bits last time the interrupts where propagated

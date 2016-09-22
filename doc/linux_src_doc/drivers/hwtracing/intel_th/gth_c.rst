@@ -22,7 +22,7 @@ Definition
         struct intel_th_output *output;
         unsigned int index;
         unsigned int port_type;
-        unsigned long master\[BITS_TO_LONGS(TH_CONFIGURABLE_MASTERS + 1)\];
+        unsigned long master[BITS_TO_LONGS(TH_CONFIGURABLE_MASTERS + 1)];
     }
 
 .. _`gth_output.members`:
@@ -41,6 +41,9 @@ index
 
 port_type
     one of GTH\_\* port type values
+
+master
+    bitmap of masters configured for this output
 
 .. _`gth_device`:
 

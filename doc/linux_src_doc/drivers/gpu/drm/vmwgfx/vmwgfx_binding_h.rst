@@ -331,7 +331,7 @@ Definition
         struct vmw_ctx_bindinfo_shader shader;
         struct vmw_ctx_bindinfo_cb const_buffers[SVGA3D_DX_MAX_CONSTBUFFERS];
         struct vmw_ctx_bindinfo_view shader_res[SVGA3D_DX_MAX_SRVIEWS];
-        unsigned long dirty_sr\[BITS_TO_LONGS(SVGA3D_DX_MAX_SRVIEWS)\];
+        unsigned long dirty_sr[BITS_TO_LONGS(SVGA3D_DX_MAX_SRVIEWS)];
         unsigned long dirty;
     }
 
@@ -345,6 +345,10 @@ shader
 
 shader_res
     Shader resource view bindings for this shader type.
+
+dirty_sr
+    Bitmap tracking individual shader resource bindings changes
+    that have not yet been emitted to the device.
 
 dirty
     Bitmap tracking per-binding type binding changes that have not

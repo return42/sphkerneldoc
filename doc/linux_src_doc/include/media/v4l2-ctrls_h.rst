@@ -1180,6 +1180,26 @@ Description
 This function returns the name of the given control ID or NULL if it isn't
 a known control.
 
+.. _`v4l2_ctrl_get_menu`:
+
+v4l2_ctrl_get_menu
+==================
+
+.. c:function:: const char * const *v4l2_ctrl_get_menu(u32 id)
+
+    Get the menu string array of the control
+
+    :param u32 id:
+        The control ID.
+
+.. _`v4l2_ctrl_get_menu.description`:
+
+Description
+-----------
+
+This function returns the NULL-terminated menu string array name of the
+given control ID or NULL if it isn't a known menu control.
+
 .. _`v4l2_ctrl_get_int_menu`:
 
 v4l2_ctrl_get_int_menu

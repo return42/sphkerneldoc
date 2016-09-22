@@ -28,7 +28,7 @@ Definition
         struct vmw_ctx_bindinfo_ib index_buffer;
         struct vmw_dx_shader_bindings per_shader[SVGA3D_NUM_SHADERTYPE_DX10];
         unsigned long dirty;
-        unsigned long dirty_vb\[BITS_TO_LONGS(SVGA3D_DX_MAX_VERTEXBUFFERS)\];
+        unsigned long dirty_vb[BITS_TO_LONGS(SVGA3D_DX_MAX_VERTEXBUFFERS)];
         u32 bind_cmd_buffer[VMW_MAX_VIEW_BINDINGS];
         u32 bind_cmd_count;
         u32 bind_first_slot;
@@ -69,6 +69,10 @@ per_shader
 dirty
     Bitmap tracking per binding-type changes that have not yet
     been emitted to the device.
+
+dirty_vb
+    Bitmap tracking individual vertex buffer binding changes that
+    have not yet been emitted to the device.
 
 bind_cmd_buffer
     Scratch space used to construct binding commands.

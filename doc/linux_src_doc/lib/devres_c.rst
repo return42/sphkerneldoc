@@ -180,6 +180,32 @@ Description
 Managed \ :c:func:`ioport_unmap`\ .  \ ``addr``\  must have been mapped using
 \ :c:func:`devm_ioport_map`\ .
 
+.. _`pcim_iomap_table`:
+
+pcim_iomap_table
+================
+
+.. c:function:: void __iomem * const *pcim_iomap_table(struct pci_dev *pdev)
+
+    access iomap allocation table
+
+    :param struct pci_dev \*pdev:
+        PCI device to access iomap table for
+
+.. _`pcim_iomap_table.description`:
+
+Description
+-----------
+
+Access iomap allocation table for \ ``dev``\ .  If iomap table doesn't
+exist and \ ``pdev``\  is managed, it will be allocated.  All iomaps
+recorded in the iomap table are automatically unmapped on driver
+detach.
+
+This function might sleep when the table is first allocated but can
+be safely called without context and guaranteed to succed once
+allocated.
+
 .. _`pcim_iomap`:
 
 pcim_iomap

@@ -24,8 +24,8 @@ Definition
         struct notifier_block restart_nb;
         int irq;
         spinlock_t lock;
-        unsigned long dual_edge_irqs\[BITS_TO_LONGS(MAX_NR_GPIO)\];
-        unsigned long enabled_irqs\[BITS_TO_LONGS(MAX_NR_GPIO)\];
+        unsigned long dual_edge_irqs[BITS_TO_LONGS(MAX_NR_GPIO)];
+        unsigned long enabled_irqs[BITS_TO_LONGS(MAX_NR_GPIO)];
         const struct msm_pinctrl_soc_data *soc;
         void __iomem *regs;
     }
@@ -53,6 +53,14 @@ irq
 lock
     Spinlock to protect register resources as well
     as msm_pinctrl data structures.
+
+dual_edge_irqs
+    Bitmap of irqs that need sw emulated dual edge
+    detection.
+    \ ``soc``\ ;            Reference to soc_data of platform specific data.
+
+enabled_irqs
+    Bitmap of currently enabled irqs.
 
 soc
     *undescribed*
