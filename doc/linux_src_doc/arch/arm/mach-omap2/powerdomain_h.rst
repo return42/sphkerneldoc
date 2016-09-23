@@ -44,10 +44,10 @@ Definition
         const u32 mem_ret_mask[PWRDM_MAX_MEM_BANKS];
         const u32 mem_pwrst_mask[PWRDM_MAX_MEM_BANKS];
         const u32 mem_retst_mask[PWRDM_MAX_MEM_BANKS];
-        #ifdef CONFIG_PM_DEBUG
+    #ifdef CONFIG_PM_DEBUG
         s64 timer;
         s64 state_timer[PWRDM_MAX_PWRSTS];
-        #endif
+    #endif
     }
 
 .. _`powerdomain.members`:

@@ -30,9 +30,9 @@ Definition
         char *label;
         void *data;
         struct list_head list;
-        #ifdef CONFIG_PINCTRL
+    #ifdef CONFIG_PINCTRL
         struct list_head pin_ranges;
-        #endif
+    #endif
     }
 
 .. _`gpio_device.members`:

@@ -27,12 +27,12 @@ Definition
         unsigned int size;
         cpumask_t shared_cpu_map;
         unsigned int attributes;
-        #define CACHE_WRITE_THROUGH BIT(0)
-        #define CACHE_WRITE_BACK BIT(1)
-        #define CACHE_WRITE_POLICY_MASK \
+    #define CACHE_WRITE_THROUGH BIT(0)
+    #define CACHE_WRITE_BACK BIT(1)
+    #define CACHE_WRITE_POLICY_MASK \
         (CACHE_WRITE_THROUGH | CACHE_WRITE_BACK)#define CACHE_READ_ALLOCATE BIT(2);
-        #define CACHE_WRITE_ALLOCATE BIT(3)
-        #define CACHE_ALLOCATE_POLICY_MASK \
+    #define CACHE_WRITE_ALLOCATE BIT(3)
+    #define CACHE_ALLOCATE_POLICY_MASK \
         (CACHE_READ_ALLOCATE | CACHE_WRITE_ALLOCATE)struct device_node *of_node;
         bool disable_sysfs;
         void *priv;

@@ -401,11 +401,11 @@ Definition
         u32 rx_offset;
         struct nfp_net_tx_ring *tx_rings;
         struct nfp_net_rx_ring *rx_rings;
-        #ifdef CONFIG_PCI_IOV
+    #ifdef CONFIG_PCI_IOV
         unsigned int num_vfs;
         struct vf_data_storage *vfinfo;
         int vf_rate_link_speed;
-        #endif
+    #endif
         struct nfp_cpp *cpp;
         struct platform_device *nfp_dev_cpp;
         struct nfp_cpp_area *ctrl_area;

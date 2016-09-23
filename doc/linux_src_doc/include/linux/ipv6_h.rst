@@ -21,27 +21,27 @@ Definition
         struct in6_addr saddr;
         struct in6_pktinfo sticky_pktinfo;
         const struct in6_addr *daddr_cache;
-        #ifdef CONFIG_IPV6_SUBTREES
+    #ifdef CONFIG_IPV6_SUBTREES
         const struct in6_addr *saddr_cache;
-        #endif
+    #endif
         __be32 flow_label;
         __u32 frag_size;
-        #if defined(__BIG_ENDIAN_BITFIELD)
+    #if defined(__BIG_ENDIAN_BITFIELD)
         __s16 hop_limit:9;
         __u16 __unused_1:7;
-        #else
+    #else
         __u16 __unused_1:7;
         __s16 hop_limit:9;
-        #endif
-        #if defined(__BIG_ENDIAN_BITFIELD)
+    #endif
+    #if defined(__BIG_ENDIAN_BITFIELD)
         __s16 mcast_hops:9;
         __u16 __unused_2:1:6;
         __u16 mc_loop:1;
-        #else
+    #else
         __u16 mc_loop:1;
         __u16 __unused_2:1:6;
         __s16 mcast_hops:9;
-        #endif
+    #endif
         int ucast_oif;
         int mcast_oif;
         union rxopt;

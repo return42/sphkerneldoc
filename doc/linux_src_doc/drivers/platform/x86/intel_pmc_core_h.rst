@@ -20,9 +20,9 @@ Definition
     struct pmc_dev {
         u32 base_addr;
         void __iomem *regbase;
-        #if IS_ENABLED(CONFIG_DEBUG_FS)
+    #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-        #endif
+    #endif
         bool has_slp_s0_res;
     }
 

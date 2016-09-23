@@ -335,8 +335,8 @@ Definition
 
     struct xhci_container_ctx {
         unsigned type;
-        #define XHCI_CTX_TYPE_DEVICE 0x1
-        #define XHCI_CTX_TYPE_INPUT 0x2
+    #define XHCI_CTX_TYPE_DEVICE 0x1
+    #define XHCI_CTX_TYPE_INPUT 0x2
         int size;
         u8 *bytes;
         dma_addr_t dma;

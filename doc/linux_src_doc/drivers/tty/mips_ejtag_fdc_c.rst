@@ -102,9 +102,9 @@ Definition
         int irq;
         bool removing;
         struct timer_list poll_timer;
-        #ifdef CONFIG_MAGIC_SYSRQ
+    #ifdef CONFIG_MAGIC_SYSRQ
         bool sysrq_pressed;
-        #endif
+    #endif
     }
 
 .. _`mips_ejtag_fdc_tty.members`:

@@ -108,9 +108,9 @@ Definition
         union {unnamed_union};
         struct hlist_head hlist;
         unsigned long kpfn;
-        #ifdef CONFIG_NUMA
+    #ifdef CONFIG_NUMA
         int nid;
-        #endif
+    #endif
     }
 
 .. _`stable_node.members`:

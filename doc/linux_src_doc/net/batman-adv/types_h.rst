@@ -217,9 +217,9 @@ Definition
         struct net_device *soft_iface;
         struct rcu_head rcu;
         struct batadv_hard_iface_bat_iv bat_iv;
-        #ifdef CONFIG_BATMAN_ADV_BATMAN_V
+    #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_hard_iface_bat_v bat_v;
-        #endif
+    #endif
         struct work_struct cleanup_work;
         struct dentry *debug_dir;
         struct hlist_head neigh_list;
@@ -559,18 +559,18 @@ Definition
         u8 orig[ETH_ALEN];
         struct hlist_head ifinfo_list;
         struct batadv_orig_ifinfo *last_bonding_candidate;
-        #ifdef CONFIG_BATMAN_ADV_DAT
+    #ifdef CONFIG_BATMAN_ADV_DAT
         batadv_dat_addr_t dat_addr;
-        #endif
+    #endif
         unsigned long last_seen;
         unsigned long bcast_seqno_reset;
-        #ifdef CONFIG_BATMAN_ADV_MCAST
+    #ifdef CONFIG_BATMAN_ADV_MCAST
         spinlock_t mcast_handler_lock;
         u8 mcast_flags;
         struct hlist_node mcast_want_all_unsnoopables_node;
         struct hlist_node mcast_want_all_ipv4_node;
         struct hlist_node mcast_want_all_ipv6_node;
-        #endif
+    #endif
         unsigned long capabilities;
         unsigned long capa_initialized;
         atomic_t last_ttvn;
@@ -587,12 +587,12 @@ Definition
         spinlock_t bcast_seqno_lock;
         struct kref refcount;
         struct rcu_head rcu;
-        #ifdef CONFIG_BATMAN_ADV_NC
+    #ifdef CONFIG_BATMAN_ADV_NC
         struct list_head in_coding_list;
         struct list_head out_coding_list;
         spinlock_t in_coding_list_lock;
         spinlock_t out_coding_list_lock;
-        #endif
+    #endif
         struct batadv_frag_table_entry fragments[BATADV_FRAG_BUFFER_COUNT];
         struct hlist_head vlan_list;
         spinlock_t vlan_list_lock;
@@ -871,9 +871,9 @@ Definition
         u8 addr[ETH_ALEN];
         struct batadv_hard_iface *if_incoming;
         unsigned long last_seen;
-        #ifdef CONFIG_BATMAN_ADV_BATMAN_V
+    #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_hardif_neigh_node_bat_v bat_v;
-        #endif
+    #endif
         struct kref refcount;
         struct rcu_head rcu;
     }
@@ -1065,9 +1065,9 @@ Definition
         struct hlist_node list;
         struct batadv_hard_iface *if_outgoing;
         struct batadv_neigh_ifinfo_bat_iv bat_iv;
-        #ifdef CONFIG_BATMAN_ADV_BATMAN_V
+    #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_neigh_ifinfo_bat_v bat_v;
-        #endif
+    #endif
         u8 last_ttl;
         struct kref refcount;
         struct rcu_head rcu;
@@ -1901,22 +1901,22 @@ Definition
         atomic_t fragmentation;
         atomic_t packet_size_max;
         atomic_t frag_seqno;
-        #ifdef CONFIG_BATMAN_ADV_BLA
+    #ifdef CONFIG_BATMAN_ADV_BLA
         atomic_t bridge_loop_avoidance;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_DAT
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_DAT
         atomic_t distributed_arp_table;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_MCAST
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_MCAST
         atomic_t multicast_mode;
-        #endif
+    #endif
         atomic_t gw_mode;
         atomic_t gw_sel_class;
         atomic_t orig_interval;
         atomic_t hop_penalty;
-        #ifdef CONFIG_BATMAN_ADV_DEBUG
+    #ifdef CONFIG_BATMAN_ADV_DEBUG
         atomic_t log_level;
-        #endif
+    #endif
         u32 isolation_mark;
         u32 isolation_mark_mask;
         atomic_t bcast_seqno;
@@ -1936,28 +1936,28 @@ Definition
         struct batadv_algo_ops *bat_algo_ops;
         struct hlist_head softif_vlan_list;
         spinlock_t softif_vlan_list_lock;
-        #ifdef CONFIG_BATMAN_ADV_BLA
+    #ifdef CONFIG_BATMAN_ADV_BLA
         struct batadv_priv_bla bla;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_DEBUG
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_DEBUG
         struct batadv_priv_debug_log *debug_log;
-        #endif
+    #endif
         struct batadv_priv_gw gw;
         struct batadv_priv_tt tt;
         struct batadv_priv_tvlv tvlv;
-        #ifdef CONFIG_BATMAN_ADV_DAT
+    #ifdef CONFIG_BATMAN_ADV_DAT
         struct batadv_priv_dat dat;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_MCAST
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_MCAST
         struct batadv_priv_mcast mcast;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_NC
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_NC
         atomic_t network_coding;
         struct batadv_priv_nc nc;
-        #endif
-        #ifdef CONFIG_BATMAN_ADV_BATMAN_V
+    #endif
+    #ifdef CONFIG_BATMAN_ADV_BATMAN_V
         struct batadv_priv_bat_v bat_v;
-        #endif
+    #endif
     }
 
 .. _`batadv_priv.members`:

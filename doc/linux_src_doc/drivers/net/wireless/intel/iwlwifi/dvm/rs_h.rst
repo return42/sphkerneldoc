@@ -162,13 +162,13 @@ Definition
         struct iwl_scale_tbl_info lq_info[LQ_SIZE];
         struct iwl_traffic_load load[IWL_MAX_TID_COUNT];
         u8 tx_agg_tid_en;
-        #ifdef CONFIG_MAC80211_DEBUGFS
+    #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *rs_sta_dbgfs_scale_table_file;
         struct dentry *rs_sta_dbgfs_stats_table_file;
         struct dentry *rs_sta_dbgfs_rate_scale_data_file;
         struct dentry *rs_sta_dbgfs_tx_agg_tid_en_file;
         u32 dbg_fixed_rate;
-        #endif
+    #endif
         struct iwl_priv *drv;
         int last_txrate_idx;
         u32 last_rate_n_flags;

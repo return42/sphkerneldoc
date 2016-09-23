@@ -19,11 +19,11 @@ Definition
 
     struct hw_mode_spec {
         unsigned int supported_bands;
-        #define SUPPORT_BAND_2GHZ 0x00000001
-        #define SUPPORT_BAND_5GHZ 0x00000002
+    #define SUPPORT_BAND_2GHZ 0x00000001
+    #define SUPPORT_BAND_5GHZ 0x00000002
         unsigned int supported_rates;
-        #define SUPPORT_RATE_CCK 0x00000001
-        #define SUPPORT_RATE_OFDM 0x00000002
+    #define SUPPORT_RATE_CCK 0x00000001
+    #define SUPPORT_RATE_OFDM 0x00000002
         unsigned int num_channels;
         const struct rf_channel *channels;
         const struct channel_info *channels_info;

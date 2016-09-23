@@ -29,11 +29,11 @@ Definition
         int mfe_shared;
         struct dvb_device *mfe_dvbdev;
         struct mutex mfe_lock;
-        #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
+    #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
         struct media_device *mdev;
         struct media_entity *conn;
         struct media_pad *conn_pads;
-        #endif
+    #endif
     }
 
 .. _`dvb_adapter.members`:
@@ -115,7 +115,7 @@ Definition
         int users;
         wait_queue_head_t wait_queue;
         int (*kernel_ioctl)(struct file *file, unsigned int cmd, void *arg);
-        #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
+    #if defined(CONFIG_MEDIA_CONTROLLER_DVB)
         const char *name;
         struct media_intf_devnode *intf_devnode;
         unsigned tsout_num_entities;
@@ -123,7 +123,7 @@ Definition
         struct media_entity * *tsout_entity;
         struct media_pad *pads;
         struct media_pad * *tsout_pads;
-        #endif
+    #endif
         void *priv;
     }
 

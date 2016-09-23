@@ -183,9 +183,9 @@ Definition
         void (*disable)(struct pwm_chip *chip, struct pwm_device *pwm);
         int (*apply)(struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
         void (*get_state)(struct pwm_chip *chip, struct pwm_device *pwm,struct pwm_state *state);
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         void (*dbg_show)(struct pwm_chip *chip, struct seq_file *s);
-        #endif
+    #endif
         struct module *owner;
     }
 

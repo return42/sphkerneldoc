@@ -73,8 +73,8 @@ Definition
         const unsigned long num_cfgs;
         struct notifier_block clk_nb;
         unsigned long flags;
-        #define CLK_CPU_HAS_DIV1 (1 << 0)
-        #define CLK_CPU_NEEDS_DEBUG_ALT_DIV (1 << 1)
+    #define CLK_CPU_HAS_DIV1 (1 << 0)
+    #define CLK_CPU_NEEDS_DEBUG_ALT_DIV (1 << 1)
     }
 
 .. _`exynos_cpuclk.members`:

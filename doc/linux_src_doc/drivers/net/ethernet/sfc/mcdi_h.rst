@@ -118,10 +118,10 @@ Definition
         spinlock_t async_lock;
         struct list_head async_list;
         struct timer_list async_timer;
-        #ifdef CONFIG_SFC_MCDI_LOGGING
+    #ifdef CONFIG_SFC_MCDI_LOGGING
         char *logging_buffer;
         bool logging_enabled;
-        #endif
+    #endif
         unsigned int proxy_rx_handle;
         int proxy_rx_status;
         wait_queue_head_t proxy_rx_wq;
@@ -212,9 +212,9 @@ Definition
 
     struct efx_mcdi_data {
         struct efx_mcdi_iface iface;
-        #ifdef CONFIG_SFC_MCDI_MON
+    #ifdef CONFIG_SFC_MCDI_MON
         struct efx_mcdi_mon hwmon;
-        #endif
+    #endif
         u32 fn_flags;
     }
 

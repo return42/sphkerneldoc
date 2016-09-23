@@ -106,11 +106,11 @@ Definition
         s64 ntp_error;
         u32 ntp_error_shift;
         u32 ntp_err_mult;
-        #ifdef CONFIG_DEBUG_TIMEKEEPING
+    #ifdef CONFIG_DEBUG_TIMEKEEPING
         long last_warning;
         int underflow_seen;
         int overflow_seen;
-        #endif
+    #endif
     }
 
 .. _`timekeeper.members`:

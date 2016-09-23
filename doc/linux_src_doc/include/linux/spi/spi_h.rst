@@ -29,7 +29,7 @@ Definition
         unsigned long long bytes;
         unsigned long long bytes_rx;
         unsigned long long bytes_tx;
-        #define SPI_STATISTICS_HISTO_SIZE 17
+    #define SPI_STATISTICS_HISTO_SIZE 17
         unsigned long transfer_bytes_histo[SPI_STATISTICS_HISTO_SIZE];
         unsigned long transfers_split_maxsize;
     }
@@ -103,22 +103,22 @@ Definition
         u8 chip_select;
         u8 bits_per_word;
         u16 mode;
-        #define SPI_CPHA 0x01
-        #define SPI_CPOL 0x02
-        #define SPI_MODE_0 (0|0)
-        #define SPI_MODE_1 (0|SPI_CPHA)
-        #define SPI_MODE_2 (SPI_CPOL|0)
-        #define SPI_MODE_3 (SPI_CPOL|SPI_CPHA)
-        #define SPI_CS_HIGH 0x04
-        #define SPI_LSB_FIRST 0x08
-        #define SPI_3WIRE 0x10
-        #define SPI_LOOP 0x20
-        #define SPI_NO_CS 0x40
-        #define SPI_READY 0x80
-        #define SPI_TX_DUAL 0x100
-        #define SPI_TX_QUAD 0x200
-        #define SPI_RX_DUAL 0x400
-        #define SPI_RX_QUAD 0x800
+    #define SPI_CPHA 0x01
+    #define SPI_CPOL 0x02
+    #define SPI_MODE_0 (0|0)
+    #define SPI_MODE_1 (0|SPI_CPHA)
+    #define SPI_MODE_2 (SPI_CPOL|0)
+    #define SPI_MODE_3 (SPI_CPOL|SPI_CPHA)
+    #define SPI_CS_HIGH 0x04
+    #define SPI_LSB_FIRST 0x08
+    #define SPI_3WIRE 0x10
+    #define SPI_LOOP 0x20
+    #define SPI_NO_CS 0x40
+    #define SPI_READY 0x80
+    #define SPI_TX_DUAL 0x100
+    #define SPI_TX_QUAD 0x200
+    #define SPI_RX_DUAL 0x400
+    #define SPI_RX_QUAD 0x800
         int irq;
         void *controller_state;
         void *controller_data;
@@ -328,17 +328,17 @@ Definition
         u16 dma_alignment;
         u16 mode_bits;
         u32 bits_per_word_mask;
-        #define SPI_BPW_MASK(bits) BIT((bits) - 1)
-        #define SPI_BIT_MASK(bits) (((bits) == 32) ? ~0U : (BIT(bits) - 1))
-        #define SPI_BPW_RANGE_MASK(min# max) (SPI_BIT_MASK(max) - SPI_BIT_MASK(min - 1))
+    #define SPI_BPW_MASK(bits) BIT((bits) - 1)
+    #define SPI_BIT_MASK(bits) (((bits) == 32) ? ~0U : (BIT(bits) - 1))
+    #define SPI_BPW_RANGE_MASK(min# max) (SPI_BIT_MASK(max) - SPI_BIT_MASK(min - 1))
         u32 min_speed_hz;
         u32 max_speed_hz;
         u16 flags;
-        #define SPI_MASTER_HALF_DUPLEX BIT(0)
-        #define SPI_MASTER_NO_RX BIT(1)
-        #define SPI_MASTER_NO_TX BIT(2)
-        #define SPI_MASTER_MUST_RX BIT(3)
-        #define SPI_MASTER_MUST_TX BIT(4)
+    #define SPI_MASTER_HALF_DUPLEX BIT(0)
+    #define SPI_MASTER_NO_RX BIT(1)
+    #define SPI_MASTER_NO_TX BIT(2)
+    #define SPI_MASTER_MUST_RX BIT(3)
+    #define SPI_MASTER_MUST_TX BIT(4)
         size_t (*max_transfer_size)(struct spi_device *spi);
         spinlock_t bus_lock_spinlock;
         struct mutex bus_lock_mutex;
@@ -668,9 +668,9 @@ Definition
         unsigned cs_change:1;
         unsigned tx_nbits:3;
         unsigned rx_nbits:3;
-        #define SPI_NBITS_SINGLE 0x01
-        #define SPI_NBITS_DUAL 0x02
-        #define SPI_NBITS_QUAD 0x04
+    #define SPI_NBITS_SINGLE 0x01
+    #define SPI_NBITS_DUAL 0x02
+    #define SPI_NBITS_QUAD 0x04
         u8 bits_per_word;
         u16 delay_usecs;
         u32 speed_hz;

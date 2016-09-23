@@ -70,10 +70,10 @@ Definition
         unsigned short debug;
         unsigned int afid;
         unsigned int cache;
-        #ifdef CONFIG_9P_FSCACHE
+    #ifdef CONFIG_9P_FSCACHE
         char *cachetag;
         struct fscache_cookie *fscache;
-        #endif
+    #endif
         char *uname;
         char *aname;
         unsigned int maxdata;

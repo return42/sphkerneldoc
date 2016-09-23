@@ -231,11 +231,11 @@ Definition
         unsigned int direction;
         struct mutex lock;
         int device;
-        #ifdef CONFIG_SND_VERBOSE_PROCFS
+    #ifdef CONFIG_SND_VERBOSE_PROCFS
         char id[64];
         struct snd_info_entry *proc_root;
         struct snd_info_entry *proc_info_entry;
-        #endif
+    #endif
     }
 
 .. _`snd_compr.members`:

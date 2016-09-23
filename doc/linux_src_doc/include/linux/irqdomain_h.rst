@@ -67,13 +67,13 @@ Definition
         int (*map)(struct irq_domain *d, unsigned int virq, irq_hw_number_t hw);
         void (*unmap)(struct irq_domain *d, unsigned int virq);
         int (*xlate)(struct irq_domain *d, struct device_node *node,const u32 *intspec, unsigned int intsize,unsigned long *out_hwirq, unsigned int *out_type);
-        #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
+    #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
         int (*alloc)(struct irq_domain *d, unsigned int virq,unsigned int nr_irqs, void *arg);
         void (*free)(struct irq_domain *d, unsigned int virq,unsigned int nr_irqs);
         void (*activate)(struct irq_domain *d, struct irq_data *irq_data);
         void (*deactivate)(struct irq_domain *d, struct irq_data *irq_data);
         int (*translate)(struct irq_domain *d, struct irq_fwspec *fwspec,unsigned long *out_hwirq, unsigned int *out_type);
-        #endif
+    #endif
     }
 
 .. _`irq_domain_ops.members`:
@@ -149,9 +149,9 @@ Definition
         struct fwnode_handle *fwnode;
         enum irq_domain_bus_token bus_token;
         struct irq_domain_chip_generic *gc;
-        #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
+    #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
         struct irq_domain *parent;
-        #endif
+    #endif
         irq_hw_number_t hwirq_max;
         unsigned int revmap_direct_max_irq;
         unsigned int revmap_size;

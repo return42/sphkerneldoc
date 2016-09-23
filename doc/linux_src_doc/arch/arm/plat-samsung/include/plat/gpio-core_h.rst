@@ -57,9 +57,9 @@ Definition
         int irq_base;
         int group;
         spinlock_t lock;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         u32 pm_save[4];
-        #endif
+    #endif
         u32 bitmap_gpio_int;
     }
 

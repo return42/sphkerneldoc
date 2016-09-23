@@ -23,7 +23,7 @@ Definition
         unsigned int lpos;
         unsigned int count;
         unsigned int flags;
-        #define DWC3_EVENT_PENDING BIT(0)
+    #define DWC3_EVENT_PENDING BIT(0)
         dma_addr_t dma;
         struct dwc3 *dwc;
     }
@@ -80,13 +80,13 @@ Definition
         struct dwc3 *dwc;
         u32 saved_state;
         unsigned flags;
-        #define DWC3_EP_ENABLED (1 << 0)
-        #define DWC3_EP_STALL (1 << 1)
-        #define DWC3_EP_WEDGE (1 << 2)
-        #define DWC3_EP_BUSY (1 << 4)
-        #define DWC3_EP_PENDING_REQUEST (1 << 5)
-        #define DWC3_EP_MISSED_ISOC (1 << 6)
-        #define DWC3_EP0_DIR_IN (1 << 31)
+    #define DWC3_EP_ENABLED (1 << 0)
+    #define DWC3_EP_STALL (1 << 1)
+    #define DWC3_EP_WEDGE (1 << 2)
+    #define DWC3_EP_BUSY (1 << 4)
+    #define DWC3_EP_PENDING_REQUEST (1 << 5)
+    #define DWC3_EP_MISSED_ISOC (1 << 6)
+    #define DWC3_EP0_DIR_IN (1 << 31)
         u8 trb_enqueue;
         u8 trb_dequeue;
         u8 number;
@@ -311,27 +311,27 @@ Definition
         u32 u1u2;
         u32 maximum_speed;
         u32 revision;
-        #define DWC3_REVISION_173A 0x5533173a
-        #define DWC3_REVISION_175A 0x5533175a
-        #define DWC3_REVISION_180A 0x5533180a
-        #define DWC3_REVISION_183A 0x5533183a
-        #define DWC3_REVISION_185A 0x5533185a
-        #define DWC3_REVISION_187A 0x5533187a
-        #define DWC3_REVISION_188A 0x5533188a
-        #define DWC3_REVISION_190A 0x5533190a
-        #define DWC3_REVISION_194A 0x5533194a
-        #define DWC3_REVISION_200A 0x5533200a
-        #define DWC3_REVISION_202A 0x5533202a
-        #define DWC3_REVISION_210A 0x5533210a
-        #define DWC3_REVISION_220A 0x5533220a
-        #define DWC3_REVISION_230A 0x5533230a
-        #define DWC3_REVISION_240A 0x5533240a
-        #define DWC3_REVISION_250A 0x5533250a
-        #define DWC3_REVISION_260A 0x5533260a
-        #define DWC3_REVISION_270A 0x5533270a
-        #define DWC3_REVISION_280A 0x5533280a
-        #define DWC3_REVISION_IS_DWC31 0x80000000
-        #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_USB31)
+    #define DWC3_REVISION_173A 0x5533173a
+    #define DWC3_REVISION_175A 0x5533175a
+    #define DWC3_REVISION_180A 0x5533180a
+    #define DWC3_REVISION_183A 0x5533183a
+    #define DWC3_REVISION_185A 0x5533185a
+    #define DWC3_REVISION_187A 0x5533187a
+    #define DWC3_REVISION_188A 0x5533188a
+    #define DWC3_REVISION_190A 0x5533190a
+    #define DWC3_REVISION_194A 0x5533194a
+    #define DWC3_REVISION_200A 0x5533200a
+    #define DWC3_REVISION_202A 0x5533202a
+    #define DWC3_REVISION_210A 0x5533210a
+    #define DWC3_REVISION_220A 0x5533220a
+    #define DWC3_REVISION_230A 0x5533230a
+    #define DWC3_REVISION_240A 0x5533240a
+    #define DWC3_REVISION_250A 0x5533250a
+    #define DWC3_REVISION_260A 0x5533260a
+    #define DWC3_REVISION_270A 0x5533270a
+    #define DWC3_REVISION_280A 0x5533280a
+    #define DWC3_REVISION_IS_DWC31 0x80000000
+    #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_USB31)
         enum dwc3_ep0_next ep0_next_event;
         enum dwc3_ep0_state ep0state;
         enum dwc3_link_state link_state;
@@ -642,17 +642,17 @@ Definition
         u32 endpoint_event:4;
         u32 reserved11_10:2;
         u32 status:4;
-        #define DEPEVT_STATUS_TRANSFER_ACTIVE (1 << 3)
-        #define DEPEVT_STATUS_BUSERR (1 << 0)
-        #define DEPEVT_STATUS_SHORT (1 << 1)
-        #define DEPEVT_STATUS_IOC (1 << 2)
-        #define DEPEVT_STATUS_LST (1 << 3)
-        #define DEPEVT_STREAMEVT_FOUND 1
-        #define DEPEVT_STREAMEVT_NOTFOUND 2
-        #define DEPEVT_STATUS_CONTROL_DATA 1
-        #define DEPEVT_STATUS_CONTROL_STATUS 2
-        #define DEPEVT_TRANSFER_NO_RESOURCE 1
-        #define DEPEVT_TRANSFER_BUS_EXPIRY 2
+    #define DEPEVT_STATUS_TRANSFER_ACTIVE (1 << 3)
+    #define DEPEVT_STATUS_BUSERR (1 << 0)
+    #define DEPEVT_STATUS_SHORT (1 << 1)
+    #define DEPEVT_STATUS_IOC (1 << 2)
+    #define DEPEVT_STATUS_LST (1 << 3)
+    #define DEPEVT_STREAMEVT_FOUND 1
+    #define DEPEVT_STREAMEVT_NOTFOUND 2
+    #define DEPEVT_STATUS_CONTROL_DATA 1
+    #define DEPEVT_STATUS_CONTROL_STATUS 2
+    #define DEPEVT_TRANSFER_NO_RESOURCE 1
+    #define DEPEVT_TRANSFER_BUS_EXPIRY 2
         u32 parameters:16;
     }
 

@@ -410,12 +410,12 @@ Definition
         u32 quirks;
         atomic_t urbnum;
         unsigned long active_duration;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         unsigned long connect_time;
         unsigned do_remote_wakeup:1;
         unsigned reset_resume:1;
         unsigned port_is_suspended:1;
-        #endif
+    #endif
         struct wusb_dev *wusb_dev;
         int slot_id;
         enum usb_device_removable removable;

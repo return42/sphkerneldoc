@@ -27,9 +27,9 @@ Definition
         __u64 i_cno;
         struct address_space i_btnode_cache;
         struct list_head i_dirty;
-        #ifdef CONFIG_NILFS_XATTR
+    #ifdef CONFIG_NILFS_XATTR
         struct rw_semaphore xattr_sem;
-        #endif
+    #endif
         struct buffer_head *i_bh;
         struct nilfs_root *i_root;
         struct inode vfs_inode;

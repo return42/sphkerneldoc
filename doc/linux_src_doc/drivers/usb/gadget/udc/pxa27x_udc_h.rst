@@ -72,10 +72,10 @@ Definition
         unsigned alternate:3;
         unsigned fifo_size;
         unsigned type;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         u32 udccsr_value;
         u32 udccr_value;
-        #endif
+    #endif
         struct stats stats;
     }
 
@@ -229,15 +229,15 @@ Definition
         unsigned config:2;
         unsigned last_interface:3;
         unsigned last_alternate:3;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         unsigned udccsr0;
-        #endif
-        #ifdef CONFIG_USB_GADGET_DEBUG_FS
+    #endif
+    #ifdef CONFIG_USB_GADGET_DEBUG_FS
         struct dentry *debugfs_root;
         struct dentry *debugfs_state;
         struct dentry *debugfs_queues;
         struct dentry *debugfs_eps;
-        #endif
+    #endif
     }
 
 .. _`pxa_udc.members`:

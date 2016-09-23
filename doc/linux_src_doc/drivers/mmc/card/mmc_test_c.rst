@@ -273,9 +273,9 @@ Definition
         struct mmc_card *card;
         u8 scratch[BUFFER_SIZE];
         u8 *buffer;
-        #ifdef CONFIG_HIGHMEM
+    #ifdef CONFIG_HIGHMEM
         struct page *highmem;
-        #endif
+    #endif
         struct mmc_test_area area;
         struct mmc_test_general_result *gr;
     }

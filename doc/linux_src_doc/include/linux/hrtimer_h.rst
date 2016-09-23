@@ -24,11 +24,11 @@ Definition
         struct hrtimer_clock_base *base;
         u8 state;
         u8 is_rel;
-        #ifdef CONFIG_TIMER_STATS
+    #ifdef CONFIG_TIMER_STATS
         int start_pid;
         void *start_site;
         char start_comm[16];
-        #endif
+    #endif
     }
 
 .. _`hrtimer.members`:

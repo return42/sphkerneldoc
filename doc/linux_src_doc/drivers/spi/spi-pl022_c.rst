@@ -92,14 +92,14 @@ Definition
         u32 exp_fifo_level;
         enum ssp_rx_level_trig rx_lev_trig;
         enum ssp_tx_level_trig tx_lev_trig;
-        #ifdef CONFIG_DMA_ENGINE
+    #ifdef CONFIG_DMA_ENGINE
         struct dma_chan *dma_rx_channel;
         struct dma_chan *dma_tx_channel;
         struct sg_table sgt_rx;
         struct sg_table sgt_tx;
         char *dummypage;
         bool dma_running;
-        #endif
+    #endif
         int cur_cs;
         int *chipselects;
     }

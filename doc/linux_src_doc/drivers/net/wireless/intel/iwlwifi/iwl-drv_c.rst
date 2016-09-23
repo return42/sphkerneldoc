@@ -27,11 +27,11 @@ Definition
         int fw_index;
         char firmware_name[64];
         struct completion request_firmware_complete;
-        #ifdef CONFIG_IWLWIFI_DEBUGFS
+    #ifdef CONFIG_IWLWIFI_DEBUGFS
         struct dentry *dbgfs_drv;
         struct dentry *dbgfs_trans;
         struct dentry *dbgfs_op_mode;
-        #endif
+    #endif
     }
 
 .. _`iwl_drv.members`:

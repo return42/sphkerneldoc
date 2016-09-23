@@ -18,9 +18,9 @@ Definition
 .. code-block:: c
 
     struct mips_static_suspend_state {
-        #ifdef CONFIG_EVA
+    #ifdef CONFIG_EVA
         unsigned long segctl[3];
-        #endif
+    #endif
         unsigned long sp;
     }
 

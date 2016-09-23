@@ -120,54 +120,54 @@ Definition
 
     struct vxge_hw_tim_intr_config {
         u32 intr_enable;
-        #define VXGE_HW_TIM_INTR_ENABLE 1
-        #define VXGE_HW_TIM_INTR_DISABLE 0
-        #define VXGE_HW_TIM_INTR_DEFAULT 0
+    #define VXGE_HW_TIM_INTR_ENABLE 1
+    #define VXGE_HW_TIM_INTR_DISABLE 0
+    #define VXGE_HW_TIM_INTR_DEFAULT 0
         u32 btimer_val;
-        #define VXGE_HW_MIN_TIM_BTIMER_VAL 0
-        #define VXGE_HW_MAX_TIM_BTIMER_VAL 67108864
-        #define VXGE_HW_USE_FLASH_DEFAULT (~0)
+    #define VXGE_HW_MIN_TIM_BTIMER_VAL 0
+    #define VXGE_HW_MAX_TIM_BTIMER_VAL 67108864
+    #define VXGE_HW_USE_FLASH_DEFAULT (~0)
         u32 timer_ac_en;
-        #define VXGE_HW_TIM_TIMER_AC_ENABLE 1
-        #define VXGE_HW_TIM_TIMER_AC_DISABLE 0
+    #define VXGE_HW_TIM_TIMER_AC_ENABLE 1
+    #define VXGE_HW_TIM_TIMER_AC_DISABLE 0
         u32 timer_ci_en;
-        #define VXGE_HW_TIM_TIMER_CI_ENABLE 1
-        #define VXGE_HW_TIM_TIMER_CI_DISABLE 0
+    #define VXGE_HW_TIM_TIMER_CI_ENABLE 1
+    #define VXGE_HW_TIM_TIMER_CI_DISABLE 0
         u32 timer_ri_en;
-        #define VXGE_HW_TIM_TIMER_RI_ENABLE 1
-        #define VXGE_HW_TIM_TIMER_RI_DISABLE 0
+    #define VXGE_HW_TIM_TIMER_RI_ENABLE 1
+    #define VXGE_HW_TIM_TIMER_RI_DISABLE 0
         u32 rtimer_val;
-        #define VXGE_HW_MIN_TIM_RTIMER_VAL 0
-        #define VXGE_HW_MAX_TIM_RTIMER_VAL 67108864
+    #define VXGE_HW_MIN_TIM_RTIMER_VAL 0
+    #define VXGE_HW_MAX_TIM_RTIMER_VAL 67108864
         u32 util_sel;
-        #define VXGE_HW_TIM_UTIL_SEL_LEGACY_TX_NET_UTIL 17
-        #define VXGE_HW_TIM_UTIL_SEL_LEGACY_RX_NET_UTIL 18
-        #define VXGE_HW_TIM_UTIL_SEL_LEGACY_TX_RX_AVE_NET_UTIL 19
-        #define VXGE_HW_TIM_UTIL_SEL_PER_VPATH 63
+    #define VXGE_HW_TIM_UTIL_SEL_LEGACY_TX_NET_UTIL 17
+    #define VXGE_HW_TIM_UTIL_SEL_LEGACY_RX_NET_UTIL 18
+    #define VXGE_HW_TIM_UTIL_SEL_LEGACY_TX_RX_AVE_NET_UTIL 19
+    #define VXGE_HW_TIM_UTIL_SEL_PER_VPATH 63
         u32 ltimer_val;
-        #define VXGE_HW_MIN_TIM_LTIMER_VAL 0
-        #define VXGE_HW_MAX_TIM_LTIMER_VAL 67108864
+    #define VXGE_HW_MIN_TIM_LTIMER_VAL 0
+    #define VXGE_HW_MAX_TIM_LTIMER_VAL 67108864
         u32 urange_a;
-        #define VXGE_HW_MIN_TIM_URANGE_A 0
-        #define VXGE_HW_MAX_TIM_URANGE_A 100
+    #define VXGE_HW_MIN_TIM_URANGE_A 0
+    #define VXGE_HW_MAX_TIM_URANGE_A 100
         u32 uec_a;
-        #define VXGE_HW_MIN_TIM_UEC_A 0
-        #define VXGE_HW_MAX_TIM_UEC_A 65535
+    #define VXGE_HW_MIN_TIM_UEC_A 0
+    #define VXGE_HW_MAX_TIM_UEC_A 65535
         u32 urange_b;
-        #define VXGE_HW_MIN_TIM_URANGE_B 0
-        #define VXGE_HW_MAX_TIM_URANGE_B 100
+    #define VXGE_HW_MIN_TIM_URANGE_B 0
+    #define VXGE_HW_MAX_TIM_URANGE_B 100
         u32 uec_b;
-        #define VXGE_HW_MIN_TIM_UEC_B 0
-        #define VXGE_HW_MAX_TIM_UEC_B 65535
+    #define VXGE_HW_MIN_TIM_UEC_B 0
+    #define VXGE_HW_MAX_TIM_UEC_B 65535
         u32 urange_c;
-        #define VXGE_HW_MIN_TIM_URANGE_C 0
-        #define VXGE_HW_MAX_TIM_URANGE_C 100
+    #define VXGE_HW_MIN_TIM_URANGE_C 0
+    #define VXGE_HW_MAX_TIM_URANGE_C 100
         u32 uec_c;
-        #define VXGE_HW_MIN_TIM_UEC_C 0
-        #define VXGE_HW_MAX_TIM_UEC_C 65535
+    #define VXGE_HW_MIN_TIM_UEC_C 0
+    #define VXGE_HW_MAX_TIM_UEC_C 65535
         u32 uec_d;
-        #define VXGE_HW_MIN_TIM_UEC_D 0
-        #define VXGE_HW_MAX_TIM_UEC_D 65535
+    #define VXGE_HW_MIN_TIM_UEC_D 0
+    #define VXGE_HW_MAX_TIM_UEC_D 65535
     }
 
 .. _`vxge_hw_tim_intr_config.members`:

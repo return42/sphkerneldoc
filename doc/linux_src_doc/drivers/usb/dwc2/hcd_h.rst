@@ -26,11 +26,11 @@ Definition
         unsigned ep_type:2;
         unsigned max_packet:11;
         unsigned data_pid_start:2;
-        #define DWC2_HC_PID_DATA0 TSIZ_SC_MC_PID_DATA0
-        #define DWC2_HC_PID_DATA2 TSIZ_SC_MC_PID_DATA2
-        #define DWC2_HC_PID_DATA1 TSIZ_SC_MC_PID_DATA1
-        #define DWC2_HC_PID_MDATA TSIZ_SC_MC_PID_MDATA
-        #define DWC2_HC_PID_SETUP TSIZ_SC_MC_PID_SETUP
+    #define DWC2_HC_PID_DATA0 TSIZ_SC_MC_PID_DATA0
+    #define DWC2_HC_PID_DATA2 TSIZ_SC_MC_PID_DATA2
+    #define DWC2_HC_PID_DATA1 TSIZ_SC_MC_PID_DATA1
+    #define DWC2_HC_PID_MDATA TSIZ_SC_MC_PID_MDATA
+    #define DWC2_HC_PID_SETUP TSIZ_SC_MC_PID_SETUP
         unsigned multi_count:2;
         u8 *xfer_buf;
         dma_addr_t xfer_dma;
@@ -47,10 +47,10 @@ Definition
         u8 hub_addr;
         u8 hub_port;
         u8 xact_pos;
-        #define DWC2_HCSPLT_XACTPOS_MID HCSPLT_XACTPOS_MID
-        #define DWC2_HCSPLT_XACTPOS_END HCSPLT_XACTPOS_END
-        #define DWC2_HCSPLT_XACTPOS_BEGIN HCSPLT_XACTPOS_BEGIN
-        #define DWC2_HCSPLT_XACTPOS_ALL HCSPLT_XACTPOS_ALL
+    #define DWC2_HCSPLT_XACTPOS_MID HCSPLT_XACTPOS_MID
+    #define DWC2_HCSPLT_XACTPOS_END HCSPLT_XACTPOS_END
+    #define DWC2_HCSPLT_XACTPOS_BEGIN HCSPLT_XACTPOS_BEGIN
+    #define DWC2_HCSPLT_XACTPOS_ALL HCSPLT_XACTPOS_ALL
         u8 requests;
         u8 schinfo;
         u16 ntd;

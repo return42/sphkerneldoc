@@ -264,10 +264,10 @@ Definition
         u64 prev_tsc;
         u64 prev_cummulative_iowait;
         struct sample sample;
-        #ifdef CONFIG_ACPI
+    #ifdef CONFIG_ACPI
         struct acpi_processor_performance acpi_perf_data;
         bool valid_pss_table;
-        #endif
+    #endif
     }
 
 .. _`cpudata.members`:

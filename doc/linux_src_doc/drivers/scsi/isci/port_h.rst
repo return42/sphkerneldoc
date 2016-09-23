@@ -20,7 +20,7 @@ Definition
     struct isci_port {
         struct isci_host *isci_host;
         struct list_head remote_dev_list;
-        #define IPORT_RESET_PENDING 0
+    #define IPORT_RESET_PENDING 0
         unsigned long state;
         enum sci_status hard_reset_status;
         struct sci_base_state_machine sm;

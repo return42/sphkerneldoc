@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct isp1760_udc {
-        #ifdef CONFIG_USB_ISP1761_UDC
+    #ifdef CONFIG_USB_ISP1761_UDC
         struct isp1760_device *isp;
         int irq;
         char *irqname;
@@ -33,7 +33,7 @@ Definition
         u16 ep0_length;
         bool connected;
         unsigned int devstatus;
-        #endif
+    #endif
     }
 
 .. _`isp1760_udc.members`:

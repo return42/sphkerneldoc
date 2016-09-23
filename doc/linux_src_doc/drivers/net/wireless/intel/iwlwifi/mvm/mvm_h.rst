@@ -234,20 +234,20 @@ Definition
         int tx_key_idx;
         bool seqno_valid;
         u16 seqno;
-        #endif
-        #if IS_ENABLED(CONFIG_IPV6)
+    #endif
+    #if IS_ENABLED(CONFIG_IPV6)
         struct in6_addr target_ipv6_addrs[IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX];
         unsigned long tentative_addrs[BITS_TO_LONGS(IWL_PROTO_OFFLOAD_NUM_IPV6_ADDRS_MAX)];
         int num_target_ipv6_addrs;
-        #endif
-        #ifdef CONFIG_IWLWIFI_DEBUGFS
+    #endif
+    #ifdef CONFIG_IWLWIFI_DEBUGFS
         struct dentry *dbgfs_dir;
         struct dentry *dbgfs_slink;
         struct iwl_dbgfs_pm dbgfs_pm;
         struct iwl_dbgfs_bf dbgfs_bf;
         struct iwl_mac_power_cmd mac_pwr_cmd;
         int dbgfs_quota_min;
-        #endif
+    #endif
         enum ieee80211_smps_mode smps_requests[NUM_IWL_MVM_SMPS_REQ];
         u8 uapsd_misbehaving_bssid[ETH_ALEN];
         bool csa_countdown;

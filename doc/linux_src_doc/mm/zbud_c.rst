@@ -24,10 +24,10 @@ Definition
         struct list_head lru;
         u64 pages_nr;
         const struct zbud_ops *ops;
-        #ifdef CONFIG_ZPOOL
+    #ifdef CONFIG_ZPOOL
         struct zpool *zpool;
         const struct zpool_ops *zpool_ops;
-        #endif
+    #endif
     }
 
 .. _`zbud_pool.members`:

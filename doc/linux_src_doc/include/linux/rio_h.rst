@@ -358,9 +358,9 @@ Definition
         unsigned char name[RIO_MAX_MPORT_NAME];
         struct device dev;
         void *priv;
-        #ifdef CONFIG_RAPIDIO_DMA_ENGINE
+    #ifdef CONFIG_RAPIDIO_DMA_ENGINE
         struct dma_device dma;
-        #endif
+    #endif
         struct rio_scan *nscan;
         atomic_t state;
         unsigned int pwe_refcnt;

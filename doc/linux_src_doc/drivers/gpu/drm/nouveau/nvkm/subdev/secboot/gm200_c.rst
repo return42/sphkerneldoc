@@ -191,9 +191,9 @@ Definition
         u32 app_data_off;
         u32 app_data_size;
         u32 flags;
-        #define LSF_FLAG_LOAD_CODE_AT_0 1
-        #define LSF_FLAG_DMACTL_REQ_CTX 4
-        #define LSF_FLAG_FORCE_PRIV_LOAD 8
+    #define LSF_FLAG_LOAD_CODE_AT_0 1
+    #define LSF_FLAG_DMACTL_REQ_CTX 4
+    #define LSF_FLAG_FORCE_PRIV_LOAD 8
     }
 
 .. _`lsf_lsb_header.members`:
@@ -273,13 +273,13 @@ Definition
         u32 bootstrap_owner;
         u32 lazy_bootstrap;
         u32 status;
-        #define LSF_IMAGE_STATUS_NONE 0
-        #define LSF_IMAGE_STATUS_COPY 1
-        #define LSF_IMAGE_STATUS_VALIDATION_CODE_FAILED 2
-        #define LSF_IMAGE_STATUS_VALIDATION_DATA_FAILED 3
-        #define LSF_IMAGE_STATUS_VALIDATION_DONE 4
-        #define LSF_IMAGE_STATUS_VALIDATION_SKIPPED 5
-        #define LSF_IMAGE_STATUS_BOOTSTRAP_READY 6
+    #define LSF_IMAGE_STATUS_NONE 0
+    #define LSF_IMAGE_STATUS_COPY 1
+    #define LSF_IMAGE_STATUS_VALIDATION_CODE_FAILED 2
+    #define LSF_IMAGE_STATUS_VALIDATION_DATA_FAILED 3
+    #define LSF_IMAGE_STATUS_VALIDATION_DONE 4
+    #define LSF_IMAGE_STATUS_VALIDATION_SKIPPED 5
+    #define LSF_IMAGE_STATUS_BOOTSTRAP_READY 6
     }
 
 .. _`lsf_wpr_header.members`:

@@ -299,9 +299,9 @@ Definition
         struct list_head entry;
         struct device *dev;
         struct charger_desc *desc;
-        #ifdef CONFIG_THERMAL
+    #ifdef CONFIG_THERMAL
         struct thermal_zone_device *tzd_batt;
-        #endif
+    #endif
         bool charger_enabled;
         unsigned long fullbatt_vchk_jiffies_at;
         struct delayed_work fullbatt_vchk_work;

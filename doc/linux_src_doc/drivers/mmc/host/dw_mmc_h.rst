@@ -26,10 +26,10 @@ Definition
         unsigned int clock;
         unsigned int __clk_old;
         unsigned long flags;
-        #define DW_MMC_CARD_PRESENT 0
-        #define DW_MMC_CARD_NEED_INIT 1
-        #define DW_MMC_CARD_NO_LOW_PWR 2
-        #define DW_MMC_CARD_NO_USE_HOLD 3
+    #define DW_MMC_CARD_PRESENT 0
+    #define DW_MMC_CARD_NEED_INIT 1
+    #define DW_MMC_CARD_NO_LOW_PWR 2
+    #define DW_MMC_CARD_NO_USE_HOLD 3
         int id;
         int sdio_id;
     }

@@ -186,7 +186,7 @@ Definition
         bool xmit_more_available;
         unsigned long tx_packets;
         unsigned int empty_read_count ____cacheline_aligned_in_smp;
-        #define EFX_EMPTY_COUNT_VALID 0x80000000
+    #define EFX_EMPTY_COUNT_VALID 0x80000000
         atomic_t flush_outstanding;
     }
 
@@ -569,20 +569,20 @@ Definition
         unsigned int irq_moderation;
         struct net_device *napi_dev;
         struct napi_struct napi_str;
-        #ifdef CONFIG_NET_RX_BUSY_POLL
+    #ifdef CONFIG_NET_RX_BUSY_POLL
         unsigned long busy_poll_state;
-        #endif
+    #endif
         struct efx_special_buffer eventq;
         unsigned int eventq_mask;
         unsigned int eventq_read_ptr;
         int event_test_cpu;
         unsigned int irq_count;
         unsigned int irq_mod_score;
-        #ifdef CONFIG_RFS_ACCEL
+    #ifdef CONFIG_RFS_ACCEL
         unsigned int rfs_filters_added;
-        #define RPS_FLOW_ID_INVALID 0xFFFFFFFF
+    #define RPS_FLOW_ID_INVALID 0xFFFFFFFF
         u32 *rps_flow_id;
-        #endif
+    #endif
         unsigned n_rx_tobe_disc;
         unsigned n_rx_ip_hdr_chksum_err;
         unsigned n_rx_tcp_udp_chksum_err;
@@ -1106,9 +1106,9 @@ Definition
         unsigned irq_zero_count;
         unsigned irq_level;
         struct delayed_work selftest_work;
-        #ifdef CONFIG_SFC_MTD
+    #ifdef CONFIG_SFC_MTD
         struct list_head mtd_list;
-        #endif
+    #endif
         void *nic_data;
         struct efx_mcdi_data *mcdi;
         struct mutex mac_lock;
@@ -1141,19 +1141,19 @@ Definition
         struct rw_semaphore filter_sem;
         spinlock_t filter_lock;
         void *filter_state;
-        #ifdef CONFIG_RFS_ACCEL
+    #ifdef CONFIG_RFS_ACCEL
         unsigned int rps_expire_channel;
         unsigned int rps_expire_index;
-        #endif
+    #endif
         atomic_t active_queues;
         atomic_t rxq_flush_pending;
         atomic_t rxq_flush_outstanding;
         wait_queue_head_t flush_wq;
-        #ifdef CONFIG_SFC_SRIOV
+    #ifdef CONFIG_SFC_SRIOV
         unsigned vf_count;
         unsigned vf_init_count;
         unsigned vi_scale;
-        #endif
+    #endif
         struct efx_ptp_data *ptp_data;
         char *vpd_sn;
         struct delayed_work monitor_work ____cacheline_aligned_in_smp;
@@ -1621,18 +1621,18 @@ Definition
         u32 (*filter_count_rx_used)(struct efx_nic *efx,enum efx_filter_priority priority);
         u32 (*filter_get_rx_id_limit)(struct efx_nic *efx);
         s32 (*filter_get_rx_ids)(struct efx_nic *efx,enum efx_filter_priority priority,u32 *buf, u32 size);
-        #ifdef CONFIG_RFS_ACCEL
+    #ifdef CONFIG_RFS_ACCEL
         s32 (*filter_rfs_insert)(struct efx_nic *efx,struct efx_filter_spec *spec);
         bool (*filter_rfs_expire_one)(struct efx_nic *efx, u32 flow_id,unsigned int index);
-        #endif
-        #ifdef CONFIG_SFC_MTD
+    #endif
+    #ifdef CONFIG_SFC_MTD
         int (*mtd_probe)(struct efx_nic *efx);
         void (*mtd_rename)(struct efx_mtd_partition *part);
         int (*mtd_read)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, u8 *buffer);
         int (*mtd_erase)(struct mtd_info *mtd, loff_t start, size_t len);
         int (*mtd_write)(struct mtd_info *mtd, loff_t start, size_t len,size_t *retlen, const u8 *buffer);
         int (*mtd_sync)(struct mtd_info *mtd);
-        #endif
+    #endif
         void (*ptp_write_host_time)(struct efx_nic *efx, u32 host_time);
         int (*ptp_set_ts_sync_events)(struct efx_nic *efx, bool en, bool temp);
         int (*ptp_set_ts_config)(struct efx_nic *efx,struct hwtstamp_config *init);

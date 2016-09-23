@@ -49,13 +49,13 @@ Definition
         unsigned int c_dma_size;
         spinlock_t reg_lock;
         struct snd_info_entry *proc_entry;
-        #ifdef CONFIG_SND_FM801_TEA575X_BOOL
+    #ifdef CONFIG_SND_FM801_TEA575X_BOOL
         struct v4l2_device v4l2_dev;
         struct snd_tea575x tea;
-        #endif
-        #ifdef CONFIG_PM_SLEEP
+    #endif
+    #ifdef CONFIG_PM_SLEEP
         u16 saved_regs[0x20];
-        #endif
+    #endif
     }
 
 .. _`fm801.members`:

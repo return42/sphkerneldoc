@@ -697,9 +697,9 @@ Definition
         struct ieee80211_fast_tx __rcu *fast_tx;
         struct ieee80211_fast_rx __rcu *fast_rx;
         struct ieee80211_sta_rx_stats __percpu *pcpu_rx_stats;
-        #ifdef CONFIG_MAC80211_MESH
+    #ifdef CONFIG_MAC80211_MESH
         struct mesh_sta *mesh;
-        #endif
+    #endif
         struct work_struct drv_deliver_wk;
         u16 listen_interval;
         bool dead;
@@ -718,9 +718,9 @@ Definition
         u16 tid_seq[IEEE80211_QOS_CTL_TID_MASK + 1];
         struct sta_ampdu_mlme ampdu_mlme;
         u8 timer_to_tid[IEEE80211_NUM_TIDS];
-        #ifdef CONFIG_MAC80211_DEBUGFS
+    #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *debugfs_dir;
-        #endif
+    #endif
         enum ieee80211_sta_rx_bandwidth cur_max_bandwidth;
         enum ieee80211_smps_mode known_smps_mode;
         const struct ieee80211_cipher_scheme *cipher_scheme;

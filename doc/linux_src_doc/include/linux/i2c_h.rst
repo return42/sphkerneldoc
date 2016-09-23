@@ -122,9 +122,9 @@ Definition
         struct device dev;
         int irq;
         struct list_head detected;
-        #if IS_ENABLED(CONFIG_I2C_SLAVE)
+    #if IS_ENABLED(CONFIG_I2C_SLAVE)
         i2c_slave_cb_t slave_cb;
-        #endif
+    #endif
     }
 
 .. _`i2c_client.members`:
@@ -286,10 +286,10 @@ Definition
         int (*master_xfer)(struct i2c_adapter *adap, struct i2c_msg *msgs,int num);
         int (*smbus_xfer)(struct i2c_adapter *adap, u16 addr,unsigned short flags, char read_write,u8 command, int size, union i2c_smbus_data *data);
         u32 (*functionality)(struct i2c_adapter *);
-        #if IS_ENABLED(CONFIG_I2C_SLAVE)
+    #if IS_ENABLED(CONFIG_I2C_SLAVE)
         int (*reg_slave)(struct i2c_client *client);
         int (*unreg_slave)(struct i2c_client *client);
-        #endif
+    #endif
     }
 
 .. _`i2c_algorithm.members`:

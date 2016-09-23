@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct prev_cputime {
-        #ifndef CONFIG_VIRT_CPU_ACCOUNTING_NATIVE
+    #ifndef CONFIG_VIRT_CPU_ACCOUNTING_NATIVE
         cputime_t utime;
         cputime_t stime;
         raw_spinlock_t lock;
-        #endif
+    #endif
     }
 
 .. _`prev_cputime.members`:

@@ -29,10 +29,10 @@ Definition
         int sg_call_ents;
         int sg_mapped_ents;
         enum map_err_types map_err_type;
-        #ifdef CONFIG_STACKTRACE
+    #ifdef CONFIG_STACKTRACE
         struct stack_trace stacktrace;
         unsigned long st_entries[DMA_DEBUG_STACKTRACE_ENTRIES];
-        #endif
+    #endif
     }
 
 .. _`dma_debug_entry.members`:

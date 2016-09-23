@@ -1767,9 +1767,9 @@ Definition
         struct drm_device *dev;
         struct drm_encoder *encoder;
         struct drm_bridge *next;
-        #ifdef CONFIG_OF
+    #ifdef CONFIG_OF
         struct device_node *of_node;
-        #endif
+    #endif
         struct list_head list;
         const struct drm_bridge_funcs *funcs;
         void *driver_private;

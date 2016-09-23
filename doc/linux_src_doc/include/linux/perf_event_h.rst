@@ -18,14 +18,14 @@ Definition
 .. code-block:: c
 
     struct hw_perf_event {
-        #ifdef CONFIG_PERF_EVENTS
+    #ifdef CONFIG_PERF_EVENTS
         union {unnamed_union};
         struct task_struct *target;
         void *addr_filters;
         unsigned long addr_filters_gen;
-        #define PERF_HES_STOPPED 0x01
-        #define PERF_HES_UPTODATE 0x02
-        #define PERF_HES_ARCH 0x04
+    #define PERF_HES_STOPPED 0x01
+    #define PERF_HES_UPTODATE 0x02
+    #define PERF_HES_ARCH 0x04
         int state;
         local64_t prev_count;
         u64 sample_period;
@@ -35,7 +35,7 @@ Definition
         u64 interrupts;
         u64 freq_time_stamp;
         u64 freq_count_stamp;
-        #endif
+    #endif
     }
 
 .. _`hw_perf_event.members`:
@@ -127,9 +127,9 @@ Definition
         int (*event_init)(struct perf_event *event);
         void (*event_mapped)(struct perf_event *event);
         void (*event_unmapped)(struct perf_event *event);
-        #define PERF_EF_START 0x01
-        #define PERF_EF_RELOAD 0x02
-        #define PERF_EF_UPDATE 0x04
+    #define PERF_EF_START 0x01
+    #define PERF_EF_RELOAD 0x02
+    #define PERF_EF_UPDATE 0x04
         int (*add)(struct perf_event *event, int flags);
         void (*del)(struct perf_event *event, int flags);
         void (*start)(struct perf_event *event, int flags);
@@ -420,7 +420,7 @@ Definition
 .. code-block:: c
 
     struct perf_event {
-        #ifdef CONFIG_PERF_EVENTS
+    #ifdef CONFIG_PERF_EVENTS
         struct list_head event_entry;
         struct list_head group_entry;
         struct list_head sibling_list;
@@ -481,18 +481,18 @@ Definition
         u64 (*clock)(void);
         perf_overflow_handler_t overflow_handler;
         void *overflow_handler_context;
-        #ifdef CONFIG_EVENT_TRACING
+    #ifdef CONFIG_EVENT_TRACING
         struct trace_event_call *tp_event;
         struct event_filter *filter;
-        #ifdef CONFIG_FUNCTION_TRACER
+    #ifdef CONFIG_FUNCTION_TRACER
         struct ftrace_ops ftrace_ops;
-        #endif
-        #endif
-        #ifdef CONFIG_CGROUP_PERF
+    #endif
+    #endif
+    #ifdef CONFIG_CGROUP_PERF
         struct perf_cgroup *cgrp;
         int cgrp_defer_enabled;
-        #endif
-        #endif
+    #endif
+    #endif
     }
 
 .. _`perf_event.members`:

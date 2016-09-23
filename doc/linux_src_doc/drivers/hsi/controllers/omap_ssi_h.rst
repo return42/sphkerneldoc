@@ -84,9 +84,9 @@ Definition
         struct omap_ssm_ctx ssr;
         u32 loss_count;
         u32 port_id;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *dir;
-        #endif
+    #endif
     }
 
 .. _`omap_ssi_port.members`:
@@ -237,9 +237,9 @@ Definition
         u32 gdd_gcr;
         int (*get_loss)(struct device *dev);
         struct omap_ssi_port **port;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *dir;
-        #endif
+    #endif
     }
 
 .. _`omap_ssi_controller.members`:

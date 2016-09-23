@@ -225,32 +225,32 @@ Definition
 
     struct vxge_hw_fifo_config {
         u32 enable;
-        #define VXGE_HW_FIFO_ENABLE 1
-        #define VXGE_HW_FIFO_DISABLE 0
+    #define VXGE_HW_FIFO_ENABLE 1
+    #define VXGE_HW_FIFO_DISABLE 0
         u32 fifo_blocks;
-        #define VXGE_HW_MIN_FIFO_BLOCKS 2
-        #define VXGE_HW_MAX_FIFO_BLOCKS 128
+    #define VXGE_HW_MIN_FIFO_BLOCKS 2
+    #define VXGE_HW_MAX_FIFO_BLOCKS 128
         u32 max_frags;
-        #define VXGE_HW_MIN_FIFO_FRAGS 1
-        #define VXGE_HW_MAX_FIFO_FRAGS 256
+    #define VXGE_HW_MIN_FIFO_FRAGS 1
+    #define VXGE_HW_MAX_FIFO_FRAGS 256
         u32 memblock_size;
-        #define VXGE_HW_MIN_FIFO_MEMBLOCK_SIZE VXGE_HW_BLOCK_SIZE
-        #define VXGE_HW_MAX_FIFO_MEMBLOCK_SIZE 131072
-        #define VXGE_HW_DEF_FIFO_MEMBLOCK_SIZE 8096
+    #define VXGE_HW_MIN_FIFO_MEMBLOCK_SIZE VXGE_HW_BLOCK_SIZE
+    #define VXGE_HW_MAX_FIFO_MEMBLOCK_SIZE 131072
+    #define VXGE_HW_DEF_FIFO_MEMBLOCK_SIZE 8096
         u32 alignment_size;
-        #define VXGE_HW_MIN_FIFO_ALIGNMENT_SIZE 0
-        #define VXGE_HW_MAX_FIFO_ALIGNMENT_SIZE 65536
-        #define VXGE_HW_DEF_FIFO_ALIGNMENT_SIZE VXGE_CACHE_LINE_SIZE
+    #define VXGE_HW_MIN_FIFO_ALIGNMENT_SIZE 0
+    #define VXGE_HW_MAX_FIFO_ALIGNMENT_SIZE 65536
+    #define VXGE_HW_DEF_FIFO_ALIGNMENT_SIZE VXGE_CACHE_LINE_SIZE
         u32 intr;
-        #define VXGE_HW_FIFO_QUEUE_INTR_ENABLE 1
-        #define VXGE_HW_FIFO_QUEUE_INTR_DISABLE 0
-        #define VXGE_HW_FIFO_QUEUE_INTR_DEFAULT 0
+    #define VXGE_HW_FIFO_QUEUE_INTR_ENABLE 1
+    #define VXGE_HW_FIFO_QUEUE_INTR_DISABLE 0
+    #define VXGE_HW_FIFO_QUEUE_INTR_DEFAULT 0
         u32 no_snoop_bits;
-        #define VXGE_HW_FIFO_NO_SNOOP_DISABLED 0
-        #define VXGE_HW_FIFO_NO_SNOOP_TXD 1
-        #define VXGE_HW_FIFO_NO_SNOOP_FRM 2
-        #define VXGE_HW_FIFO_NO_SNOOP_ALL 3
-        #define VXGE_HW_FIFO_NO_SNOOP_DEFAULT 0
+    #define VXGE_HW_FIFO_NO_SNOOP_DISABLED 0
+    #define VXGE_HW_FIFO_NO_SNOOP_TXD 1
+    #define VXGE_HW_FIFO_NO_SNOOP_FRM 2
+    #define VXGE_HW_FIFO_NO_SNOOP_ALL 3
+    #define VXGE_HW_FIFO_NO_SNOOP_DEFAULT 0
     }
 
 .. _`vxge_hw_fifo_config.members`:
@@ -317,25 +317,25 @@ Definition
 
     struct vxge_hw_ring_config {
         u32 enable;
-        #define VXGE_HW_RING_ENABLE 1
-        #define VXGE_HW_RING_DISABLE 0
-        #define VXGE_HW_RING_DEFAULT 1
+    #define VXGE_HW_RING_ENABLE 1
+    #define VXGE_HW_RING_DISABLE 0
+    #define VXGE_HW_RING_DEFAULT 1
         u32 ring_blocks;
-        #define VXGE_HW_MIN_RING_BLOCKS 1
-        #define VXGE_HW_MAX_RING_BLOCKS 128
-        #define VXGE_HW_DEF_RING_BLOCKS 2
+    #define VXGE_HW_MIN_RING_BLOCKS 1
+    #define VXGE_HW_MAX_RING_BLOCKS 128
+    #define VXGE_HW_DEF_RING_BLOCKS 2
         u32 buffer_mode;
-        #define VXGE_HW_RING_RXD_BUFFER_MODE_1 1
-        #define VXGE_HW_RING_RXD_BUFFER_MODE_3 3
-        #define VXGE_HW_RING_RXD_BUFFER_MODE_5 5
-        #define VXGE_HW_RING_RXD_BUFFER_MODE_DEFAULT 1
+    #define VXGE_HW_RING_RXD_BUFFER_MODE_1 1
+    #define VXGE_HW_RING_RXD_BUFFER_MODE_3 3
+    #define VXGE_HW_RING_RXD_BUFFER_MODE_5 5
+    #define VXGE_HW_RING_RXD_BUFFER_MODE_DEFAULT 1
         u32 scatter_mode;
-        #define VXGE_HW_RING_SCATTER_MODE_A 0
-        #define VXGE_HW_RING_SCATTER_MODE_B 1
-        #define VXGE_HW_RING_SCATTER_MODE_C 2
-        #define VXGE_HW_RING_SCATTER_MODE_USE_FLASH_DEFAULT 0xffffffff
+    #define VXGE_HW_RING_SCATTER_MODE_A 0
+    #define VXGE_HW_RING_SCATTER_MODE_B 1
+    #define VXGE_HW_RING_SCATTER_MODE_C 2
+    #define VXGE_HW_RING_SCATTER_MODE_USE_FLASH_DEFAULT 0xffffffff
         u64 rxds_limit;
-        #define VXGE_HW_DEF_RING_RXDS_LIMIT 44
+    #define VXGE_HW_DEF_RING_RXDS_LIMIT 44
     }
 
 .. _`vxge_hw_ring_config.members`:
@@ -378,25 +378,25 @@ Definition
 
     struct vxge_hw_vp_config {
         u32 vp_id;
-        #define VXGE_HW_VPATH_PRIORITY_MIN 0
-        #define VXGE_HW_VPATH_PRIORITY_MAX 16
-        #define VXGE_HW_VPATH_PRIORITY_DEFAULT 0
+    #define VXGE_HW_VPATH_PRIORITY_MIN 0
+    #define VXGE_HW_VPATH_PRIORITY_MAX 16
+    #define VXGE_HW_VPATH_PRIORITY_DEFAULT 0
         u32 min_bandwidth;
-        #define VXGE_HW_VPATH_BANDWIDTH_MIN 0
-        #define VXGE_HW_VPATH_BANDWIDTH_MAX 100
-        #define VXGE_HW_VPATH_BANDWIDTH_DEFAULT 0
+    #define VXGE_HW_VPATH_BANDWIDTH_MIN 0
+    #define VXGE_HW_VPATH_BANDWIDTH_MAX 100
+    #define VXGE_HW_VPATH_BANDWIDTH_DEFAULT 0
         struct vxge_hw_ring_config ring;
         struct vxge_hw_fifo_config fifo;
         struct vxge_hw_tim_intr_config tti;
         struct vxge_hw_tim_intr_config rti;
         u32 mtu;
-        #define VXGE_HW_VPATH_MIN_INITIAL_MTU VXGE_HW_MIN_MTU
-        #define VXGE_HW_VPATH_MAX_INITIAL_MTU VXGE_HW_MAX_MTU
-        #define VXGE_HW_VPATH_USE_FLASH_DEFAULT_INITIAL_MTU 0xffffffff
+    #define VXGE_HW_VPATH_MIN_INITIAL_MTU VXGE_HW_MIN_MTU
+    #define VXGE_HW_VPATH_MAX_INITIAL_MTU VXGE_HW_MAX_MTU
+    #define VXGE_HW_VPATH_USE_FLASH_DEFAULT_INITIAL_MTU 0xffffffff
         u32 rpa_strip_vlan_tag;
-        #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_ENABLE 1
-        #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_DISABLE 0
-        #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_USE_FLASH_DEFAULT 0xffffffff
+    #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_ENABLE 1
+    #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_DISABLE 0
+    #define VXGE_HW_VPATH_RPA_STRIP_VLAN_TAG_USE_FLASH_DEFAULT 0xffffffff
     }
 
 .. _`vxge_hw_vp_config.members`:
@@ -461,33 +461,33 @@ Definition
 
     struct vxge_hw_device_config {
         u32 device_poll_millis;
-        #define VXGE_HW_MIN_DEVICE_POLL_MILLIS 1
-        #define VXGE_HW_MAX_DEVICE_POLL_MILLIS 100000
-        #define VXGE_HW_DEF_DEVICE_POLL_MILLIS 1000
+    #define VXGE_HW_MIN_DEVICE_POLL_MILLIS 1
+    #define VXGE_HW_MAX_DEVICE_POLL_MILLIS 100000
+    #define VXGE_HW_DEF_DEVICE_POLL_MILLIS 1000
         u32 dma_blockpool_initial;
         u32 dma_blockpool_max;
-        #define VXGE_HW_MIN_DMA_BLOCK_POOL_SIZE 0
-        #define VXGE_HW_INITIAL_DMA_BLOCK_POOL_SIZE 0
-        #define VXGE_HW_INCR_DMA_BLOCK_POOL_SIZE 4
-        #define VXGE_HW_MAX_DMA_BLOCK_POOL_SIZE 4096
-        #define VXGE_HW_MAX_PAYLOAD_SIZE_512 2
+    #define VXGE_HW_MIN_DMA_BLOCK_POOL_SIZE 0
+    #define VXGE_HW_INITIAL_DMA_BLOCK_POOL_SIZE 0
+    #define VXGE_HW_INCR_DMA_BLOCK_POOL_SIZE 4
+    #define VXGE_HW_MAX_DMA_BLOCK_POOL_SIZE 4096
+    #define VXGE_HW_MAX_PAYLOAD_SIZE_512 2
         u32 intr_mode:2;
-        #define VXGE_HW_INTR_MODE_IRQLINE 0
-        #define VXGE_HW_INTR_MODE_MSIX 1
-        #define VXGE_HW_INTR_MODE_MSIX_ONE_SHOT 2
-        #define VXGE_HW_INTR_MODE_DEF 0
-        #define VXGE_HW_RTH_DISABLE 0
-        #define VXGE_HW_RTH_ENABLE 1
-        #define VXGE_HW_RTH_DEFAULT 0
-        #define VXGE_HW_RTH_IT_TYPE_SOLO_IT 0
-        #define VXGE_HW_RTH_IT_TYPE_MULTI_IT 1
-        #define VXGE_HW_RTH_IT_TYPE_DEFAULT 0
-        #define VXGE_HW_RTS_MAC_DISABLE 0
-        #define VXGE_HW_RTS_MAC_ENABLE 1
-        #define VXGE_HW_RTS_MAC_DEFAULT 0
-        #define VXGE_HW_HWTS_DISABLE 0
-        #define VXGE_HW_HWTS_ENABLE 1
-        #define VXGE_HW_HWTS_DEFAULT 1
+    #define VXGE_HW_INTR_MODE_IRQLINE 0
+    #define VXGE_HW_INTR_MODE_MSIX 1
+    #define VXGE_HW_INTR_MODE_MSIX_ONE_SHOT 2
+    #define VXGE_HW_INTR_MODE_DEF 0
+    #define VXGE_HW_RTH_DISABLE 0
+    #define VXGE_HW_RTH_ENABLE 1
+    #define VXGE_HW_RTH_DEFAULT 0
+    #define VXGE_HW_RTH_IT_TYPE_SOLO_IT 0
+    #define VXGE_HW_RTH_IT_TYPE_MULTI_IT 1
+    #define VXGE_HW_RTH_IT_TYPE_DEFAULT 0
+    #define VXGE_HW_RTS_MAC_DISABLE 0
+    #define VXGE_HW_RTS_MAC_ENABLE 1
+    #define VXGE_HW_RTS_MAC_DEFAULT 0
+    #define VXGE_HW_HWTS_DISABLE 0
+    #define VXGE_HW_HWTS_ENABLE 1
+    #define VXGE_HW_HWTS_DEFAULT 1
         struct vxge_hw_vp_config vp_config[VXGE_HW_MAX_VIRTUAL_PATHS];
     }
 
@@ -562,8 +562,8 @@ Definition
 
     struct __vxge_hw_device {
         u32 magic;
-        #define VXGE_HW_DEVICE_MAGIC 0x12345678
-        #define VXGE_HW_DEVICE_DEAD 0xDEADDEAD
+    #define VXGE_HW_DEVICE_MAGIC 0x12345678
+    #define VXGE_HW_DEVICE_DEAD 0xDEADDEAD
         void __iomem *bar0;
         struct pci_dev *pdev;
         struct net_device *ndev;
@@ -573,9 +573,9 @@ Definition
         u32 host_type;
         u32 func_id;
         u32 access_rights;
-        #define VXGE_HW_DEVICE_ACCESS_RIGHT_VPATH 0x1
-        #define VXGE_HW_DEVICE_ACCESS_RIGHT_SRPCIM 0x2
-        #define VXGE_HW_DEVICE_ACCESS_RIGHT_MRPCIM 0x4
+    #define VXGE_HW_DEVICE_ACCESS_RIGHT_VPATH 0x1
+    #define VXGE_HW_DEVICE_ACCESS_RIGHT_SRPCIM 0x2
+    #define VXGE_HW_DEVICE_ACCESS_RIGHT_MRPCIM 0x4
         struct vxge_hw_legacy_reg __iomem *legacy_reg;
         struct vxge_hw_toc_reg __iomem *toc_reg;
         struct vxge_hw_common_reg __iomem *common_reg;
@@ -705,26 +705,26 @@ Definition
 
     struct vxge_hw_device_hw_info {
         u32 host_type;
-        #define VXGE_HW_NO_MR_NO_SR_NORMAL_FUNCTION 0
-        #define VXGE_HW_MR_NO_SR_VH0_BASE_FUNCTION 1
-        #define VXGE_HW_NO_MR_SR_VH0_FUNCTION0 2
-        #define VXGE_HW_NO_MR_SR_VH0_VIRTUAL_FUNCTION 3
-        #define VXGE_HW_MR_SR_VH0_INVALID_CONFIG 4
-        #define VXGE_HW_SR_VH_FUNCTION0 5
-        #define VXGE_HW_SR_VH_VIRTUAL_FUNCTION 6
-        #define VXGE_HW_VH_NORMAL_FUNCTION 7
+    #define VXGE_HW_NO_MR_NO_SR_NORMAL_FUNCTION 0
+    #define VXGE_HW_MR_NO_SR_VH0_BASE_FUNCTION 1
+    #define VXGE_HW_NO_MR_SR_VH0_FUNCTION0 2
+    #define VXGE_HW_NO_MR_SR_VH0_VIRTUAL_FUNCTION 3
+    #define VXGE_HW_MR_SR_VH0_INVALID_CONFIG 4
+    #define VXGE_HW_SR_VH_FUNCTION0 5
+    #define VXGE_HW_SR_VH_VIRTUAL_FUNCTION 6
+    #define VXGE_HW_VH_NORMAL_FUNCTION 7
         u64 function_mode;
-        #define VXGE_HW_FUNCTION_MODE_SINGLE_FUNCTION 0
-        #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION 1
-        #define VXGE_HW_FUNCTION_MODE_SRIOV 2
-        #define VXGE_HW_FUNCTION_MODE_MRIOV 3
-        #define VXGE_HW_FUNCTION_MODE_MRIOV_8 4
-        #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_17 5
-        #define VXGE_HW_FUNCTION_MODE_SRIOV_8 6
-        #define VXGE_HW_FUNCTION_MODE_SRIOV_4 7
-        #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_2 8
-        #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_4 9
-        #define VXGE_HW_FUNCTION_MODE_MRIOV_4 10
+    #define VXGE_HW_FUNCTION_MODE_SINGLE_FUNCTION 0
+    #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION 1
+    #define VXGE_HW_FUNCTION_MODE_SRIOV 2
+    #define VXGE_HW_FUNCTION_MODE_MRIOV 3
+    #define VXGE_HW_FUNCTION_MODE_MRIOV_8 4
+    #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_17 5
+    #define VXGE_HW_FUNCTION_MODE_SRIOV_8 6
+    #define VXGE_HW_FUNCTION_MODE_SRIOV_4 7
+    #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_2 8
+    #define VXGE_HW_FUNCTION_MODE_MULTI_FUNCTION_4 9
+    #define VXGE_HW_FUNCTION_MODE_MRIOV_4 10
         u32 func_id;
         u64 vpath_mask;
         struct vxge_hw_device_version fw_version;
@@ -892,25 +892,25 @@ Definition
 
     struct vxge_hw_fifo_txd {
         u64 control_0;
-        #define VXGE_HW_FIFO_TXD_LIST_OWN_ADAPTER vxge_mBIT(7)
-        #define VXGE_HW_FIFO_TXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
-        #define VXGE_HW_FIFO_TXD_T_CODE(val) vxge_vBIT(val# 12# 4)
-        #define VXGE_HW_FIFO_TXD_T_CODE_UNUSED VXGE_HW_FIFO_T_CODE_UNUSED
-        #define VXGE_HW_FIFO_TXD_GATHER_CODE(val) vxge_vBIT(val# 22# 2)
-        #define VXGE_HW_FIFO_TXD_GATHER_CODE_FIRST VXGE_HW_FIFO_GATHER_CODE_FIRST
-        #define VXGE_HW_FIFO_TXD_GATHER_CODE_LAST VXGE_HW_FIFO_GATHER_CODE_LAST
-        #define VXGE_HW_FIFO_TXD_LSO_EN vxge_mBIT(30)
-        #define VXGE_HW_FIFO_TXD_LSO_MSS(val) vxge_vBIT(val# 34# 14)
-        #define VXGE_HW_FIFO_TXD_BUFFER_SIZE(val) vxge_vBIT(val# 48# 16)
+    #define VXGE_HW_FIFO_TXD_LIST_OWN_ADAPTER vxge_mBIT(7)
+    #define VXGE_HW_FIFO_TXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
+    #define VXGE_HW_FIFO_TXD_T_CODE(val) vxge_vBIT(val# 12# 4)
+    #define VXGE_HW_FIFO_TXD_T_CODE_UNUSED VXGE_HW_FIFO_T_CODE_UNUSED
+    #define VXGE_HW_FIFO_TXD_GATHER_CODE(val) vxge_vBIT(val# 22# 2)
+    #define VXGE_HW_FIFO_TXD_GATHER_CODE_FIRST VXGE_HW_FIFO_GATHER_CODE_FIRST
+    #define VXGE_HW_FIFO_TXD_GATHER_CODE_LAST VXGE_HW_FIFO_GATHER_CODE_LAST
+    #define VXGE_HW_FIFO_TXD_LSO_EN vxge_mBIT(30)
+    #define VXGE_HW_FIFO_TXD_LSO_MSS(val) vxge_vBIT(val# 34# 14)
+    #define VXGE_HW_FIFO_TXD_BUFFER_SIZE(val) vxge_vBIT(val# 48# 16)
         u64 control_1;
-        #define VXGE_HW_FIFO_TXD_TX_CKO_IPV4_EN vxge_mBIT(5)
-        #define VXGE_HW_FIFO_TXD_TX_CKO_TCP_EN vxge_mBIT(6)
-        #define VXGE_HW_FIFO_TXD_TX_CKO_UDP_EN vxge_mBIT(7)
-        #define VXGE_HW_FIFO_TXD_VLAN_ENABLE vxge_mBIT(15)
-        #define VXGE_HW_FIFO_TXD_VLAN_TAG(val) vxge_vBIT(val# 16# 16)
-        #define VXGE_HW_FIFO_TXD_INT_NUMBER(val) vxge_vBIT(val# 34# 6)
-        #define VXGE_HW_FIFO_TXD_INT_TYPE_PER_LIST vxge_mBIT(46)
-        #define VXGE_HW_FIFO_TXD_INT_TYPE_UTILZ vxge_mBIT(47)
+    #define VXGE_HW_FIFO_TXD_TX_CKO_IPV4_EN vxge_mBIT(5)
+    #define VXGE_HW_FIFO_TXD_TX_CKO_TCP_EN vxge_mBIT(6)
+    #define VXGE_HW_FIFO_TXD_TX_CKO_UDP_EN vxge_mBIT(7)
+    #define VXGE_HW_FIFO_TXD_VLAN_ENABLE vxge_mBIT(15)
+    #define VXGE_HW_FIFO_TXD_VLAN_TAG(val) vxge_vBIT(val# 16# 16)
+    #define VXGE_HW_FIFO_TXD_INT_NUMBER(val) vxge_vBIT(val# 34# 6)
+    #define VXGE_HW_FIFO_TXD_INT_TYPE_PER_LIST vxge_mBIT(46)
+    #define VXGE_HW_FIFO_TXD_INT_TYPE_UTILZ vxge_mBIT(47)
         u64 buffer_pointer;
         u64 host_control;
     }
@@ -1076,30 +1076,30 @@ Definition
     struct vxge_hw_ring_rxd_1 {
         u64 host_control;
         u64 control_0;
-        #define VXGE_HW_RING_RXD_RTH_BUCKET_GET(ctrl0) vxge_bVALn(ctrl0# 0# 7)
-        #define VXGE_HW_RING_RXD_LIST_OWN_ADAPTER vxge_mBIT(7)
-        #define VXGE_HW_RING_RXD_FAST_PATH_ELIGIBLE_GET(ctrl0) vxge_bVALn(ctrl0# 8# 1)
-        #define VXGE_HW_RING_RXD_L3_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 9# 1)
-        #define VXGE_HW_RING_RXD_L4_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 10# 1)
-        #define VXGE_HW_RING_RXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
-        #define VXGE_HW_RING_RXD_T_CODE(val) vxge_vBIT(val# 12# 4)
-        #define VXGE_HW_RING_RXD_T_CODE_UNUSED VXGE_HW_RING_T_CODE_UNUSED
-        #define VXGE_HW_RING_RXD_SYN_GET(ctrl0) vxge_bVALn(ctrl0# 16# 1)
-        #define VXGE_HW_RING_RXD_IS_ICMP_GET(ctrl0) vxge_bVALn(ctrl0# 17# 1)
-        #define VXGE_HW_RING_RXD_RTH_SPDM_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 18# 1)
-        #define VXGE_HW_RING_RXD_RTH_IT_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 19# 1)
-        #define VXGE_HW_RING_RXD_RTH_HASH_TYPE_GET(ctrl0) vxge_bVALn(ctrl0# 20# 4)
-        #define VXGE_HW_RING_RXD_IS_VLAN_GET(ctrl0) vxge_bVALn(ctrl0# 24# 1)
-        #define VXGE_HW_RING_RXD_ETHER_ENCAP_GET(ctrl0) vxge_bVALn(ctrl0# 25# 2)
-        #define VXGE_HW_RING_RXD_FRAME_PROTO_GET(ctrl0) vxge_bVALn(ctrl0# 27# 5)
-        #define VXGE_HW_RING_RXD_L3_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 32# 16)
-        #define VXGE_HW_RING_RXD_L4_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 48# 16)
+    #define VXGE_HW_RING_RXD_RTH_BUCKET_GET(ctrl0) vxge_bVALn(ctrl0# 0# 7)
+    #define VXGE_HW_RING_RXD_LIST_OWN_ADAPTER vxge_mBIT(7)
+    #define VXGE_HW_RING_RXD_FAST_PATH_ELIGIBLE_GET(ctrl0) vxge_bVALn(ctrl0# 8# 1)
+    #define VXGE_HW_RING_RXD_L3_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 9# 1)
+    #define VXGE_HW_RING_RXD_L4_CKSUM_CORRECT_GET(ctrl0) vxge_bVALn(ctrl0# 10# 1)
+    #define VXGE_HW_RING_RXD_T_CODE_GET(ctrl0) vxge_bVALn(ctrl0# 12# 4)
+    #define VXGE_HW_RING_RXD_T_CODE(val) vxge_vBIT(val# 12# 4)
+    #define VXGE_HW_RING_RXD_T_CODE_UNUSED VXGE_HW_RING_T_CODE_UNUSED
+    #define VXGE_HW_RING_RXD_SYN_GET(ctrl0) vxge_bVALn(ctrl0# 16# 1)
+    #define VXGE_HW_RING_RXD_IS_ICMP_GET(ctrl0) vxge_bVALn(ctrl0# 17# 1)
+    #define VXGE_HW_RING_RXD_RTH_SPDM_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 18# 1)
+    #define VXGE_HW_RING_RXD_RTH_IT_HIT_GET(ctrl0) vxge_bVALn(ctrl0# 19# 1)
+    #define VXGE_HW_RING_RXD_RTH_HASH_TYPE_GET(ctrl0) vxge_bVALn(ctrl0# 20# 4)
+    #define VXGE_HW_RING_RXD_IS_VLAN_GET(ctrl0) vxge_bVALn(ctrl0# 24# 1)
+    #define VXGE_HW_RING_RXD_ETHER_ENCAP_GET(ctrl0) vxge_bVALn(ctrl0# 25# 2)
+    #define VXGE_HW_RING_RXD_FRAME_PROTO_GET(ctrl0) vxge_bVALn(ctrl0# 27# 5)
+    #define VXGE_HW_RING_RXD_L3_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 32# 16)
+    #define VXGE_HW_RING_RXD_L4_CKSUM_GET(ctrl0) vxge_bVALn(ctrl0# 48# 16)
         u64 control_1;
-        #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_GET(ctrl1) vxge_bVALn(ctrl1# 2# 14)
-        #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE(val) vxge_vBIT(val# 2# 14)
-        #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_MASK vxge_vBIT(0x3FFF# 2# 14)
-        #define VXGE_HW_RING_RXD_1_RTH_HASH_VAL_GET(ctrl1) vxge_bVALn(ctrl1# 16# 32)
-        #define VXGE_HW_RING_RXD_VLAN_TAG_GET(ctrl1) vxge_bVALn(ctrl1# 48# 16)
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_GET(ctrl1) vxge_bVALn(ctrl1# 2# 14)
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE(val) vxge_vBIT(val# 2# 14)
+    #define VXGE_HW_RING_RXD_1_BUFFER0_SIZE_MASK vxge_vBIT(0x3FFF# 2# 14)
+    #define VXGE_HW_RING_RXD_1_RTH_HASH_VAL_GET(ctrl1) vxge_bVALn(ctrl1# 16# 32)
+    #define VXGE_HW_RING_RXD_VLAN_TAG_GET(ctrl1) vxge_bVALn(ctrl1# 48# 16)
         u64 buffer0_ptr;
     }
 

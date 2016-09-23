@@ -25,9 +25,9 @@ Definition
         struct irq_domain *irqhost;
         u32 ipb_freq;
         u8 wdt_mode;
-        #if defined(CONFIG_GPIOLIB)
+    #if defined(CONFIG_GPIOLIB)
         struct gpio_chip gc;
-        #endif
+    #endif
     }
 
 .. _`mpc52xx_gpt_priv.members`:

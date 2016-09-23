@@ -21,9 +21,9 @@ Definition
         unsigned int nr_banks;
         struct irq_domain *domain;
         unsigned long unmasked[4];
-        #ifdef CONFIG_METAG_SUSPEND_MEM
+    #ifdef CONFIG_METAG_SUSPEND_MEM
         unsigned long levels_altered[4];
-        #endif
+    #endif
     }
 
 .. _`meta_intc_priv.members`:

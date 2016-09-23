@@ -114,8 +114,8 @@ Definition
         struct clk *pclk;
         struct clk *core_clk;
         void __iomem *regs;
-        #define ID 0
-        #define B_SESS_VLD 1
+    #define ID 0
+    #define B_SESS_VLD 1
         unsigned long inputs;
         struct work_struct sm_work;
         atomic_t in_lpm;

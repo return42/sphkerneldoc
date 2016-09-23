@@ -78,7 +78,7 @@ Definition
         struct tasklet_struct tasklet;
         spinlock_t lock;
         unsigned long flags;
-        #define EP93XX_DMA_IS_CYCLIC 0
+    #define EP93XX_DMA_IS_CYCLIC 0
         int buffer;
         struct list_head active;
         struct list_head queue;
@@ -182,9 +182,9 @@ Definition
         void (*hw_shutdown)(struct ep93xx_dma_chan *);
         void (*hw_submit)(struct ep93xx_dma_chan *);
         int (*hw_interrupt)(struct ep93xx_dma_chan *);
-        #define INTERRUPT_UNKNOWN 0
-        #define INTERRUPT_DONE 1
-        #define INTERRUPT_NEXT_BUFFER 2
+    #define INTERRUPT_UNKNOWN 0
+    #define INTERRUPT_DONE 1
+    #define INTERRUPT_NEXT_BUFFER 2
         size_t num_channels;
         struct ep93xx_dma_chan channels[];
     }

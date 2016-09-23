@@ -24,9 +24,9 @@ Definition
         u32 shift;
         u64 max_idle_ns;
         u32 maxadj;
-        #ifdef CONFIG_ARCH_CLOCKSOURCE_DATA
+    #ifdef CONFIG_ARCH_CLOCKSOURCE_DATA
         struct arch_clocksource_data archdata;
-        #endif
+    #endif
         u64 max_cycles;
         const char *name;
         struct list_head list;

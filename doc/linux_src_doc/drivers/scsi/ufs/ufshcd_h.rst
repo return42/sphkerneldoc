@@ -465,12 +465,12 @@ Definition
         void *priv;
         unsigned int irq;
         bool is_irq_enabled;
-        #define UFSHCD_QUIRK_BROKEN_INTR_AGGR UFS_BIT(0)
-        #define UFSHCD_QUIRK_DELAY_BEFORE_DME_CMDS UFS_BIT(1)
-        #define UFSHCD_QUIRK_BROKEN_LCC UFS_BIT(2)
-        #define UFSHCD_QUIRK_BROKEN_PA_RXHSUNTERMCAP UFS_BIT(3)
-        #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE UFS_BIT(4)
-        #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION UFS_BIT(5)
+    #define UFSHCD_QUIRK_BROKEN_INTR_AGGR UFS_BIT(0)
+    #define UFSHCD_QUIRK_DELAY_BEFORE_DME_CMDS UFS_BIT(1)
+    #define UFSHCD_QUIRK_BROKEN_LCC UFS_BIT(2)
+    #define UFSHCD_QUIRK_BROKEN_PA_RXHSUNTERMCAP UFS_BIT(3)
+    #define UFSHCD_QUIRK_DME_PEER_ACCESS_AUTO_MODE UFS_BIT(4)
+    #define UFSHCD_QUIRK_BROKEN_UFS_HCI_VERSION UFS_BIT(5)
         unsigned int quirks;
         unsigned int dev_quirks;
         wait_queue_head_t tm_wq;
@@ -505,11 +505,11 @@ Definition
         struct ufs_pwr_mode_info max_pwr_info;
         struct ufs_clk_gating clk_gating;
         u32 caps;
-        #define UFSHCD_CAP_CLK_GATING (1 << 0)
-        #define UFSHCD_CAP_HIBERN8_WITH_CLK_GATING (1 << 1)
-        #define UFSHCD_CAP_CLK_SCALING (1 << 2)
-        #define UFSHCD_CAP_AUTO_BKOPS_SUSPEND (1 << 3)
-        #define UFSHCD_CAP_INTR_AGGR (1 << 4)
+    #define UFSHCD_CAP_CLK_GATING (1 << 0)
+    #define UFSHCD_CAP_HIBERN8_WITH_CLK_GATING (1 << 1)
+    #define UFSHCD_CAP_CLK_SCALING (1 << 2)
+    #define UFSHCD_CAP_AUTO_BKOPS_SUSPEND (1 << 3)
+    #define UFSHCD_CAP_INTR_AGGR (1 << 4)
         struct devfreq *devfreq;
         struct ufs_clk_scaling clk_scaling;
         bool is_sys_suspended;

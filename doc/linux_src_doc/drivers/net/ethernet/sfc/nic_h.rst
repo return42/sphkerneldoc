@@ -248,7 +248,7 @@ Definition
         struct efx_nic *efx;
         int wol_filter_id;
         u64 stats[SIENA_STAT_COUNT];
-        #ifdef CONFIG_SFC_SRIOV
+    #ifdef CONFIG_SFC_SRIOV
         struct siena_vf *vf;
         struct efx_channel *vfdi_channel;
         unsigned vf_buftbl_base;
@@ -257,7 +257,7 @@ Definition
         struct list_head local_page_list;
         struct mutex local_lock;
         struct work_struct peer_work;
-        #endif
+    #endif
     }
 
 .. _`siena_nic_data.members`:
@@ -341,10 +341,10 @@ Definition
         bool must_probe_vswitching;
         unsigned int pf_index;
         u8 port_id[ETH_ALEN];
-        #ifdef CONFIG_SFC_SRIOV
+    #ifdef CONFIG_SFC_SRIOV
         unsigned int vf_index;
         struct ef10_vf *vf;
-        #endif
+    #endif
         u8 vport_mac[ETH_ALEN];
     }
 

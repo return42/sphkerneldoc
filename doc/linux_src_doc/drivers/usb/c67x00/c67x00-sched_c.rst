@@ -68,11 +68,11 @@ Definition
         u8 ctrl_reg;
         u8 status;
         u8 retry_cnt;
-        #define TT_OFFSET 2
-        #define TT_CONTROL 0
-        #define TT_ISOCHRONOUS 1
-        #define TT_BULK 2
-        #define TT_INTERRUPT 3
+    #define TT_OFFSET 2
+    #define TT_CONTROL 0
+    #define TT_ISOCHRONOUS 1
+    #define TT_BULK 2
+    #define TT_INTERRUPT 3
         u8 residue;
         __le16 next_td_addr;
         struct list_head td_list;

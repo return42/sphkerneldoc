@@ -1250,7 +1250,7 @@ Definition
     struct ubifs_budget_req {
         unsigned int fast:1;
         unsigned int recalculate:1;
-        #ifndef UBIFS_DEBUG
+    #ifndef UBIFS_DEBUG
         unsigned int new_page;
         unsigned int dirtied_page;
         unsigned int new_dent;
@@ -1259,7 +1259,7 @@ Definition
         unsigned int new_ino_d;
         unsigned int dirtied_ino;
         unsigned int dirtied_ino_d;
-        #else
+    #else
         unsigned int new_page;
         unsigned int dirtied_page;
         unsigned int new_dent;
@@ -1268,7 +1268,7 @@ Definition
         unsigned int new_ino_d;
         unsigned int dirtied_ino;
         unsigned int dirtied_ino_d;
-        #endif
+    #endif
         int idx_growth;
         int data_growth;
         int dd_growth;

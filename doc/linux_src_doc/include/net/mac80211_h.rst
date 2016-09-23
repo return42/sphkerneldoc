@@ -2355,9 +2355,9 @@ Definition
         struct ieee80211_txq *txq;
         struct ieee80211_chanctx_conf __rcu *chanctx_conf;
         u32 driver_flags;
-        #ifdef CONFIG_MAC80211_DEBUGFS
+    #ifdef CONFIG_MAC80211_DEBUGFS
         struct dentry *debugfs_dir;
-        #endif
+    #endif
         unsigned int probe_req_reg;
         u8 drv_priv[0];
     }
@@ -4199,11 +4199,11 @@ Definition
         void (*tx)(struct ieee80211_hw *hw,struct ieee80211_tx_control *control,struct sk_buff *skb);
         int (*start)(struct ieee80211_hw *hw);
         void (*stop)(struct ieee80211_hw *hw);
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         int (*suspend)(struct ieee80211_hw *hw, struct cfg80211_wowlan *wowlan);
         int (*resume)(struct ieee80211_hw *hw);
         void (*set_wakeup)(struct ieee80211_hw *hw, bool enabled);
-        #endif
+    #endif
         int (*add_interface)(struct ieee80211_hw *hw,struct ieee80211_vif *vif);
         int (*change_interface)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,enum nl80211_iftype new_type, bool p2p);
         void (*remove_interface)(struct ieee80211_hw *hw,struct ieee80211_vif *vif);
@@ -4231,10 +4231,10 @@ Definition
         int (*set_rts_threshold)(struct ieee80211_hw *hw, u32 value);
         int (*sta_add)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,struct ieee80211_sta *sta);
         int (*sta_remove)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,struct ieee80211_sta *sta);
-        #ifdef CONFIG_MAC80211_DEBUGFS
+    #ifdef CONFIG_MAC80211_DEBUGFS
         void (*sta_add_debugfs)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta,struct dentry *dir);
         void (*sta_remove_debugfs)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta,struct dentry *dir);
-        #endif
+    #endif
         void (*sta_notify)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,enum sta_notify_cmd, struct ieee80211_sta *sta);
         int (*sta_state)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,struct ieee80211_sta *sta,enum ieee80211_sta_state old_state,enum ieee80211_sta_state new_state);
         void (*sta_pre_rcu_remove)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta);
@@ -4250,10 +4250,10 @@ Definition
         int (*get_survey)(struct ieee80211_hw *hw, int idx,struct survey_info *survey);
         void (*rfkill_poll)(struct ieee80211_hw *hw);
         void (*set_coverage_class)(struct ieee80211_hw *hw, s16 coverage_class);
-        #ifdef CONFIG_NL80211_TESTMODE
+    #ifdef CONFIG_NL80211_TESTMODE
         int (*testmode_cmd)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,void *data, int len);
         int (*testmode_dump)(struct ieee80211_hw *hw, struct sk_buff *skb,struct netlink_callback *cb,void *data, int len);
-        #endif
+    #endif
         void (*flush)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,u32 queues, bool drop);
         void (*channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_channel_switch *ch_switch);
         int (*set_antenna)(struct ieee80211_hw *hw, u32 tx_ant, u32 rx_ant);
@@ -4279,9 +4279,9 @@ Definition
         void (*unassign_vif_chanctx)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_chanctx_conf *ctx);
         int (*switch_vif_chanctx)(struct ieee80211_hw *hw,struct ieee80211_vif_chanctx_switch *vifs,int n_vifs,enum ieee80211_chanctx_switch_mode mode);
         void (*reconfig_complete)(struct ieee80211_hw *hw,enum ieee80211_reconfig_type reconfig_type);
-        #if IS_ENABLED(CONFIG_IPV6)
+    #if IS_ENABLED(CONFIG_IPV6)
         void (*ipv6_addr_change)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct inet6_dev *idev);
-        #endif
+    #endif
         void (*channel_switch_beacon)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct cfg80211_chan_def *chandef);
         int (*pre_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_channel_switch *ch_switch);
         int (*post_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif);

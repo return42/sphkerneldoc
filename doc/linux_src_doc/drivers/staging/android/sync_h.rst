@@ -70,9 +70,9 @@ Definition
         struct list_head child_list_head;
         spinlock_t child_list_lock;
         struct list_head active_list_head;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct list_head sync_timeline_list;
-        #endif
+    #endif
     }
 
 .. _`sync_timeline.members`:

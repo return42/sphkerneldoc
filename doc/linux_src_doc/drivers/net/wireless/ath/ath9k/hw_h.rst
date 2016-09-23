@@ -109,9 +109,9 @@ Definition
         void (*set_radar_params)(struct ath_hw *ah,struct ath_hw_radar_conf *conf);
         int (*fast_chan_change)(struct ath_hw *ah, struct ath9k_channel *chan,u8 *ini_reloaded);
         void (*ani_cache_ini_regs)(struct ath_hw *ah);
-        #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
+    #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
         bool (*is_aic_enabled)(struct ath_hw *ah);
-        #endif
+    #endif
     }
 
 .. _`ath_hw_private_ops.members`:
@@ -307,9 +307,9 @@ Definition
         void (*tx99_start)(struct ath_hw *ah, u32 qnum);
         void (*tx99_stop)(struct ath_hw *ah);
         void (*tx99_set_txpower)(struct ath_hw *ah, u8 power);
-        #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
+    #ifdef CONFIG_ATH9K_BTCOEX_SUPPORT
         void (*set_bt_ant_diversity)(struct ath_hw *hw, bool enable);
-        #endif
+    #endif
     }
 
 .. _`ath_hw_ops.members`:

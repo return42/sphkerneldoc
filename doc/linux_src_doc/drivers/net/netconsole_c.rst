@@ -19,9 +19,9 @@ Definition
 
     struct netconsole_target {
         struct list_head list;
-        #ifdef CONFIG_NETCONSOLE_DYNAMIC
+    #ifdef CONFIG_NETCONSOLE_DYNAMIC
         struct config_item item;
-        #endif
+    #endif
         bool enabled;
         bool extended;
         struct netpoll np;

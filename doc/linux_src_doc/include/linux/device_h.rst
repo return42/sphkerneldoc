@@ -472,27 +472,27 @@ Definition
         void *driver_data;
         struct dev_pm_info power;
         struct dev_pm_domain *pm_domain;
-        #ifdef CONFIG_GENERIC_MSI_IRQ_DOMAIN
+    #ifdef CONFIG_GENERIC_MSI_IRQ_DOMAIN
         struct irq_domain *msi_domain;
-        #endif
-        #ifdef CONFIG_PINCTRL
+    #endif
+    #ifdef CONFIG_PINCTRL
         struct dev_pin_info *pins;
-        #endif
-        #ifdef CONFIG_GENERIC_MSI_IRQ
+    #endif
+    #ifdef CONFIG_GENERIC_MSI_IRQ
         struct list_head msi_list;
-        #endif
-        #ifdef CONFIG_NUMA
+    #endif
+    #ifdef CONFIG_NUMA
         int numa_node;
-        #endif
+    #endif
         u64 *dma_mask;
         u64 coherent_dma_mask;
         unsigned long dma_pfn_offset;
         struct device_dma_parameters *dma_parms;
         struct list_head dma_pools;
         struct dma_coherent_mem *dma_mem;
-        #ifdef CONFIG_DMA_CMA
+    #ifdef CONFIG_DMA_CMA
         struct cma *cma_area;
-        #endif
+    #endif
         struct dev_archdata archdata;
         struct device_node *of_node;
         struct fwnode_handle *fwnode;

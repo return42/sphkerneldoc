@@ -174,11 +174,11 @@ Definition
         const struct pinmux_ops *pmxops;
         const struct pinconf_ops *confops;
         struct module *owner;
-        #ifdef CONFIG_GENERIC_PINCONF
+    #ifdef CONFIG_GENERIC_PINCONF
         unsigned int num_custom_params;
         const struct pinconf_generic_params *custom_params;
         const struct pin_config_item *custom_conf_items;
-        #endif
+    #endif
     }
 
 .. _`pinctrl_desc.members`:

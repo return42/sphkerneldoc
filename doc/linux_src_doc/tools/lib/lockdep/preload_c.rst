@@ -22,7 +22,7 @@ Definition
         struct lockdep_map dep_map;
         struct lock_class_key key;
         struct rb_node node;
-        #define LIBLOCKDEP_MAX_LOCK_NAME 22
+    #define LIBLOCKDEP_MAX_LOCK_NAME 22
         char name[LIBLOCKDEP_MAX_LOCK_NAME];
     }
 

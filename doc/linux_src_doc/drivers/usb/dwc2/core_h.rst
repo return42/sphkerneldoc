@@ -847,12 +847,12 @@ Definition
         struct dwc2_hregs_backup hr_backup;
         struct dentry *debug_root;
         struct debugfs_regset32 *regset;
-        #define DWC2_CORE_REV_2_71a 0x4f54271a
-        #define DWC2_CORE_REV_2_90a 0x4f54290a
-        #define DWC2_CORE_REV_2_92a 0x4f54292a
-        #define DWC2_CORE_REV_2_94a 0x4f54294a
-        #define DWC2_CORE_REV_3_00a 0x4f54300a
-        #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+    #define DWC2_CORE_REV_2_71a 0x4f54271a
+    #define DWC2_CORE_REV_2_90a 0x4f54290a
+    #define DWC2_CORE_REV_2_92a 0x4f54292a
+    #define DWC2_CORE_REV_2_94a 0x4f54294a
+    #define DWC2_CORE_REV_3_00a 0x4f54300a
+    #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
         union dwc2_hcd_internal_flags flags;
         struct list_head non_periodic_sched_inactive;
         struct list_head non_periodic_sched_active;
@@ -869,13 +869,13 @@ Definition
         bool bus_suspended;
         bool new_connection;
         u16 last_frame_num;
-        #ifdef CONFIG_USB_DWC2_TRACK_MISSED_SOFS
-        #define FRAME_NUM_ARRAY_SIZE 1000
+    #ifdef CONFIG_USB_DWC2_TRACK_MISSED_SOFS
+    #define FRAME_NUM_ARRAY_SIZE 1000
         u16 *frame_num_array;
         u16 *last_frame_num_array;
         int frame_num_idx;
         int dumped_frame_num_array;
-        #endif
+    #endif
         struct list_head free_hc_list;
         int periodic_channels;
         int non_periodic_channels;
@@ -883,7 +883,7 @@ Definition
         struct dwc2_host_chan  *hc_ptr_array[MAX_EPS_CHANNELS];
         u8 *status_buf;
         dma_addr_t status_buf_dma;
-        #define DWC2_HCD_STATUS_BUF_SIZE 64
+    #define DWC2_HCD_STATUS_BUF_SIZE 64
         struct delayed_work start_work;
         struct delayed_work reset_work;
         u8 otg_port;
@@ -892,7 +892,7 @@ Definition
         u32 frame_list_sz;
         struct kmem_cache *desc_gen_cache;
         struct kmem_cache *desc_hsisoc_cache;
-        #ifdef DEBUG
+    #ifdef DEBUG
         u32 frrem_samples;
         u64 frrem_accum;
         u32 hfnum_7_samples_a;
@@ -907,9 +907,9 @@ Definition
         u64 hfnum_0_frrem_accum_b;
         u32 hfnum_other_samples_b;
         u64 hfnum_other_frrem_accum_b;
-        #endif
-        #endif
-        #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
+    #endif
+    #endif
+    #if IS_ENABLED(CONFIG_USB_DWC2_PERIPHERAL) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
         struct usb_gadget_driver *driver;
         int fifo_mem;
         unsigned int dedicated_fifos:1;
@@ -930,7 +930,7 @@ Definition
         u32 g_rx_fifo_sz;
         u32 g_np_g_tx_fifo_sz;
         u32 g_tx_fifo_sz[MAX_EPS_CHANNELS];
-        #endif
+    #endif
     }
 
 .. _`dwc2_hsotg.members`:

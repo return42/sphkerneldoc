@@ -32,9 +32,9 @@ Definition
         struct opp_table *opp_table;
         struct rcu_head rcu_head;
         struct device_node *np;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
-        #endif
+    #endif
     }
 
 .. _`dev_pm_opp.members`:
@@ -122,9 +122,9 @@ Definition
         struct list_head node;
         const struct device *dev;
         struct rcu_head rcu_head;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
-        #endif
+    #endif
     }
 
 .. _`opp_device.members`:
@@ -184,10 +184,10 @@ Definition
         const char *prop_name;
         struct clk *clk;
         struct regulator *regulator;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *dentry;
         char dentry_name[NAME_MAX];
-        #endif
+    #endif
     }
 
 .. _`opp_table.members`:

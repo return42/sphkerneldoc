@@ -112,7 +112,7 @@ Definition
         struct tfrc_rx_hist rx_hist;
         struct tfrc_loss_hist rx_li_hist;
         u16 rx_s;
-        #define rx_pinv rx_li_hist.i_mean
+    #define rx_pinv rx_li_hist.i_mean
     }
 
 .. _`ccid3_hc_rx_sock.members`:

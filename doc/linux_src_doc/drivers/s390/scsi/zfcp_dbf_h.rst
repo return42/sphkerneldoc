@@ -463,7 +463,7 @@ Definition
         u8 scsi_retries;
         u8 scsi_allowed;
         u8 fcp_rsp_info;
-        #define ZFCP_DBF_SCSI_OPCODE 16
+    #define ZFCP_DBF_SCSI_OPCODE 16
         u8 scsi_opcode[ZFCP_DBF_SCSI_OPCODE];
         u64 fsf_req_id;
         u64 host_scribble;
@@ -535,7 +535,7 @@ Definition
         u8 counter;
         char area[ZFCP_DBF_TAG_LEN];
         u64 fsf_req_id;
-        #define ZFCP_DBF_PAY_MAX_REC 0x100
+    #define ZFCP_DBF_PAY_MAX_REC 0x100
         char data[ZFCP_DBF_PAY_MAX_REC];
     }
 

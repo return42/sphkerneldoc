@@ -32,13 +32,13 @@ Definition
         int (*try_ext_ctrls)(struct v4l2_subdev *sd, struct v4l2_ext_controls *ctrls);
         int (*querymenu)(struct v4l2_subdev *sd, struct v4l2_querymenu *qm);
         long (*ioctl)(struct v4l2_subdev *sd, unsigned int cmd, void *arg);
-        #ifdef CONFIG_COMPAT
+    #ifdef CONFIG_COMPAT
         long (*compat_ioctl32)(struct v4l2_subdev *sd, unsigned int cmd,unsigned long arg);
-        #endif
-        #ifdef CONFIG_VIDEO_ADV_DEBUG
+    #endif
+    #ifdef CONFIG_VIDEO_ADV_DEBUG
         int (*g_register)(struct v4l2_subdev *sd, struct v4l2_dbg_register *reg);
         int (*s_register)(struct v4l2_subdev *sd, const struct v4l2_dbg_register *reg);
-        #endif
+    #endif
         int (*s_power)(struct v4l2_subdev *sd, int on);
         int (*interrupt_service_routine)(struct v4l2_subdev *sd,u32 status, bool *handled);
         int (*subscribe_event)(struct v4l2_subdev *sd, struct v4l2_fh *fh,struct v4l2_event_subscription *sub);
@@ -596,9 +596,9 @@ Definition
         int (*set_edid)(struct v4l2_subdev *sd, struct v4l2_edid *edid);
         int (*dv_timings_cap)(struct v4l2_subdev *sd,struct v4l2_dv_timings_cap *cap);
         int (*enum_dv_timings)(struct v4l2_subdev *sd,struct v4l2_enum_dv_timings *timings);
-        #ifdef CONFIG_MEDIA_CONTROLLER
+    #ifdef CONFIG_MEDIA_CONTROLLER
         int (*link_validate)(struct v4l2_subdev *sd, struct media_link *link,struct v4l2_subdev_format *source_fmt,struct v4l2_subdev_format *sink_fmt);
-        #endif
+    #endif
         int (*get_frame_desc)(struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
         int (*set_frame_desc)(struct v4l2_subdev *sd, unsigned int pad,struct v4l2_mbus_frame_desc *fd);
     }

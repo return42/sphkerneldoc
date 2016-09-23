@@ -21,9 +21,9 @@ Definition
         struct file *file;
         struct kref kref;
         char name[32];
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct list_head sync_file_list;
-        #endif
+    #endif
         int num_fences;
         wait_queue_head_t wq;
         atomic_t status;

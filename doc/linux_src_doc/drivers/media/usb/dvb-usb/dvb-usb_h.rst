@@ -19,7 +19,7 @@ Definition
 
     struct dvb_usb_device_description {
         const char *name;
-        #define DVB_USB_ID_MAX_NUM 15
+    #define DVB_USB_ID_MAX_NUM 15
         struct usb_device_id  *cold_ids[DVB_USB_ID_MAX_NUM];
         struct usb_device_id  *warm_ids[DVB_USB_ID_MAX_NUM];
     }
@@ -65,11 +65,11 @@ Definition
 .. code-block:: c
 
     struct dvb_usb_adapter_fe_properties {
-        #define DVB_USB_ADAP_HAS_PID_FILTER 0x01
-        #define DVB_USB_ADAP_PID_FILTER_CAN_BE_TURNED_OFF 0x02
-        #define DVB_USB_ADAP_NEED_PID_FILTERING 0x04
-        #define DVB_USB_ADAP_RECEIVES_204_BYTE_TS 0x08
-        #define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD 0x10
+    #define DVB_USB_ADAP_HAS_PID_FILTER 0x01
+    #define DVB_USB_ADAP_PID_FILTER_CAN_BE_TURNED_OFF 0x02
+    #define DVB_USB_ADAP_NEED_PID_FILTERING 0x04
+    #define DVB_USB_ADAP_RECEIVES_204_BYTE_TS 0x08
+    #define DVB_USB_ADAP_RECEIVES_RAW_PAYLOAD 0x10
         int caps;
         int pid_filter_count;
         int (*streaming_ctrl)(struct dvb_usb_adapter *, int);
@@ -134,9 +134,9 @@ Definition
 .. code-block:: c
 
     struct dvb_rc_legacy {
-        #define REMOTE_NO_KEY_PRESSED 0x00
-        #define REMOTE_KEY_PRESSED 0x01
-        #define REMOTE_KEY_REPEAT 0x02
+    #define REMOTE_NO_KEY_PRESSED 0x00
+    #define REMOTE_KEY_PRESSED 0x01
+    #define REMOTE_KEY_REPEAT 0x02
         struct rc_map_table *rc_map_table;
         int rc_map_size;
         int (*rc_query)(struct dvb_usb_device *, u32 *, int *);
@@ -326,10 +326,10 @@ Definition
         struct dvb_usb_device_properties props;
         struct dvb_usb_device_description *desc;
         struct usb_device *udev;
-        #define DVB_USB_STATE_INIT 0x000
-        #define DVB_USB_STATE_I2C 0x001
-        #define DVB_USB_STATE_DVB 0x002
-        #define DVB_USB_STATE_REMOTE 0x004
+    #define DVB_USB_STATE_INIT 0x000
+    #define DVB_USB_STATE_I2C 0x001
+    #define DVB_USB_STATE_DVB 0x002
+    #define DVB_USB_STATE_REMOTE 0x004
         int state;
         int powered;
         struct mutex usb_mutex;

@@ -22,9 +22,9 @@ Definition
         struct irq_data irq_data;
         unsigned int __percpu *kstat_irqs;
         irq_flow_handler_t handle_irq;
-        #ifdef CONFIG_IRQ_PREFLOW_FASTEOI
+    #ifdef CONFIG_IRQ_PREFLOW_FASTEOI
         irq_preflow_handler_t preflow_handler;
-        #endif
+    #endif
         struct irqaction *action;
         unsigned int status_use_accessors;
         unsigned int core_internal_state__do_not_mess_with_it;
@@ -38,28 +38,28 @@ Definition
         raw_spinlock_t lock;
         struct cpumask *percpu_enabled;
         const struct cpumask *percpu_affinity;
-        #ifdef CONFIG_SMP
+    #ifdef CONFIG_SMP
         const struct cpumask *affinity_hint;
         struct irq_affinity_notify *affinity_notify;
-        #ifdef CONFIG_GENERIC_PENDING_IRQ
+    #ifdef CONFIG_GENERIC_PENDING_IRQ
         cpumask_var_t pending_mask;
-        #endif
-        #endif
+    #endif
+    #endif
         unsigned long threads_oneshot;
         atomic_t threads_active;
         wait_queue_head_t wait_for_threads;
-        #ifdef CONFIG_PM_SLEEP
+    #ifdef CONFIG_PM_SLEEP
         unsigned int nr_actions;
         unsigned int no_suspend_depth;
         unsigned int cond_suspend_depth;
         unsigned int force_resume_depth;
-        #endif
-        #ifdef CONFIG_PROC_FS
+    #endif
+    #ifdef CONFIG_PROC_FS
         struct proc_dir_entry *dir;
-        #endif
-        #ifdef CONFIG_SPARSE_IRQ
+    #endif
+    #ifdef CONFIG_SPARSE_IRQ
         struct rcu_head rcu;
-        #endif
+    #endif
         int parent_irq;
         struct module *owner;
         const char *name;

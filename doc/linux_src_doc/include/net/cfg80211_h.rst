@@ -4833,10 +4833,10 @@ Definition
         int (*get_tx_power)(struct wiphy *wiphy, struct wireless_dev *wdev,int *dbm);
         int (*set_wds_peer)(struct wiphy *wiphy, struct net_device *dev,const u8 *addr);
         void (*rfkill_poll)(struct wiphy *wiphy);
-        #ifdef CONFIG_NL80211_TESTMODE
+    #ifdef CONFIG_NL80211_TESTMODE
         int (*testmode_cmd)(struct wiphy *wiphy, struct wireless_dev *wdev,void *data, int len);
         int (*testmode_dump)(struct wiphy *wiphy, struct sk_buff *skb,struct netlink_callback *cb,void *data, int len);
-        #endif
+    #endif
         int (*set_bitrate_mask)(struct wiphy *wiphy,struct net_device *dev,const u8 *peer,const struct cfg80211_bitrate_mask *mask);
         int (*dump_survey)(struct wiphy *wiphy, struct net_device *netdev,int idx, struct survey_info *info);
         int (*set_pmksa)(struct wiphy *wiphy, struct net_device *netdev,struct cfg80211_pmksa *pmksa);
@@ -5869,10 +5869,10 @@ Definition
         u8 coverage_class;
         char fw_version[ETHTOOL_FWVERS_LEN];
         u32 hw_version;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         const struct wiphy_wowlan_support *wowlan;
         struct cfg80211_wowlan *wowlan_config;
-        #endif
+    #endif
         u16 max_remain_on_channel_duration;
         u8 max_num_pmkids;
         u32 available_antennas_tx;
@@ -5892,9 +5892,9 @@ Definition
         const struct ieee80211_vht_cap *vht_capa_mod_mask;
         struct list_head wdev_list;
         possible_net_t _net;
-        #ifdef CONFIG_CFG80211_WEXT
+    #ifdef CONFIG_CFG80211_WEXT
         const struct iw_handler_def *wext;
-        #endif
+    #endif
         const struct wiphy_coalesce_support *coalesce;
         const struct wiphy_vendor_command *vendor_commands;
         const struct nl80211_vendor_cmd_info *vendor_events;
@@ -6433,9 +6433,9 @@ Definition
         unsigned long cac_start_time;
         unsigned int cac_time_ms;
         u32 owner_nlportid;
-        #ifdef CONFIG_CFG80211_WEXT
+    #ifdef CONFIG_CFG80211_WEXT
         struct wext;
-        #endif
+    #endif
     }
 
 .. _`wireless_dev.members`:

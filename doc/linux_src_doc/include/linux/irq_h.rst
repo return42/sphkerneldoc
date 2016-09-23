@@ -19,15 +19,15 @@ Definition
 
     struct irq_common_data {
         unsigned int __private state_use_accessors;
-        #ifdef CONFIG_NUMA
+    #ifdef CONFIG_NUMA
         unsigned int node;
-        #endif
+    #endif
         void *handler_data;
         struct msi_desc *msi_desc;
         cpumask_var_t affinity;
-        #ifdef CONFIG_GENERIC_IRQ_IPI
+    #ifdef CONFIG_GENERIC_IRQ_IPI
         unsigned int ipi_offset;
-        #endif
+    #endif
     }
 
 .. _`irq_common_data.members`:
@@ -79,9 +79,9 @@ Definition
         struct irq_common_data *common;
         struct irq_chip *chip;
         struct irq_domain *domain;
-        #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
+    #ifdef CONFIG_IRQ_DOMAIN_HIERARCHY
         struct irq_data *parent_data;
-        #endif
+    #endif
         void *chip_data;
     }
 

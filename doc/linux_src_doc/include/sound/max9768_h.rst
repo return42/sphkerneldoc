@@ -21,7 +21,7 @@ Definition
         int shdn_gpio;
         int mute_gpio;
         unsigned flags;
-        #define MAX9768_FLAG_CLASSIC_PWM (1 << 0)
+    #define MAX9768_FLAG_CLASSIC_PWM (1 << 0)
     }
 
 .. _`max9768_pdata.members`:

@@ -65,11 +65,11 @@ Definition
         unsigned int nr_channels;
         bool is_private;
         bool is_memcpy;
-        #define CHAN_ALLOCATION_ASCENDING 0
-        #define CHAN_ALLOCATION_DESCENDING 1
+    #define CHAN_ALLOCATION_ASCENDING 0
+    #define CHAN_ALLOCATION_DESCENDING 1
         unsigned char chan_allocation_order;
-        #define CHAN_PRIORITY_ASCENDING 0
-        #define CHAN_PRIORITY_DESCENDING 1
+    #define CHAN_PRIORITY_ASCENDING 0
+    #define CHAN_PRIORITY_DESCENDING 1
         unsigned char chan_priority;
         unsigned int block_size;
         unsigned char nr_masters;

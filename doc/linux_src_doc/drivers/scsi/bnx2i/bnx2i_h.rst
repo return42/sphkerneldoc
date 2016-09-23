@@ -200,7 +200,7 @@ Definition
         struct bnx2i_hba *hba;
         struct completion cmd_cleanup_cmpl;
         u32 iscsi_conn_cid;
-        #define BNX2I_CID_RESERVED 0x5AFF
+    #define BNX2I_CID_RESERVED 0x5AFF
         u32 fw_cid;
         struct timer_list poll_timer;
         struct bnx2i_endpoint *ep;
@@ -336,23 +336,23 @@ Definition
         resource_size_t reg_base;
         u32 age;
         unsigned long cnic_dev_type;
-        #define BNX2I_NX2_DEV_5706 0x0
-        #define BNX2I_NX2_DEV_5708 0x1
-        #define BNX2I_NX2_DEV_5709 0x2
-        #define BNX2I_NX2_DEV_57710 0x3
+    #define BNX2I_NX2_DEV_5706 0x0
+    #define BNX2I_NX2_DEV_5708 0x1
+    #define BNX2I_NX2_DEV_5709 0x2
+    #define BNX2I_NX2_DEV_57710 0x3
         u32 mail_queue_access;
-        #define BNX2I_MQ_KERNEL_MODE 0x0
-        #define BNX2I_MQ_KERNEL_BYPASS_MODE 0x1
-        #define BNX2I_MQ_BIN_MODE 0x2
+    #define BNX2I_MQ_KERNEL_MODE 0x0
+    #define BNX2I_MQ_KERNEL_BYPASS_MODE 0x1
+    #define BNX2I_MQ_BIN_MODE 0x2
         unsigned long reg_with_cnic;
-        #define BNX2I_CNIC_REGISTERED 1
+    #define BNX2I_CNIC_REGISTERED 1
         unsigned long adapter_state;
-        #define ADAPTER_STATE_UP 0
-        #define ADAPTER_STATE_GOING_DOWN 1
-        #define ADAPTER_STATE_LINK_DOWN 2
-        #define ADAPTER_STATE_INIT_FAILED 31
+    #define ADAPTER_STATE_UP 0
+    #define ADAPTER_STATE_GOING_DOWN 1
+    #define ADAPTER_STATE_LINK_DOWN 2
+    #define ADAPTER_STATE_INIT_FAILED 31
         unsigned int mtu_supported;
-        #define BNX2I_MAX_MTU_SUPPORTED 9000
+    #define BNX2I_MAX_MTU_SUPPORTED 9000
         struct Scsi_Host *shost;
         u32 max_sqes;
         u32 max_rqes;
@@ -389,9 +389,9 @@ Definition
         u32 num_sess_opened;
         u32 num_conn_opened;
         unsigned int ctx_ccell_tasks;
-        #ifdef CONFIG_32BIT
+    #ifdef CONFIG_32BIT
         spinlock_t stat_lock;
-        #endif
+    #endif
         struct bnx2i_stats_info bnx2i_stats;
         struct iscsi_stats_info stats;
     }
@@ -583,9 +583,9 @@ Definition
 
     struct qp_info {
         void __iomem *ctx_base;
-        #define DPM_TRIGER_TYPE 0x40
-        #define BNX2I_570x_QUE_DB_SIZE 0
-        #define BNX2I_5771x_QUE_DB_SIZE 16
+    #define DPM_TRIGER_TYPE 0x40
+    #define BNX2I_570x_QUE_DB_SIZE 0
+    #define BNX2I_5771x_QUE_DB_SIZE 16
         struct sqe *sq_virt;
         dma_addr_t sq_phys;
         u32 sq_mem_size;
@@ -801,9 +801,9 @@ Definition
         u32 ec_shift;
         struct qp_info qp;
         struct ep_handles ids;
-        #define ep_iscsi_cid ids.drv_iscsi_cid
-        #define ep_cid ids.fw_cid
-        #define ep_pg_cid ids.pg_cid
+    #define ep_iscsi_cid ids.drv_iscsi_cid
+    #define ep_cid ids.fw_cid
+    #define ep_pg_cid ids.pg_cid
         struct timer_list ofld_timer;
         wait_queue_head_t ofld_wait;
     }

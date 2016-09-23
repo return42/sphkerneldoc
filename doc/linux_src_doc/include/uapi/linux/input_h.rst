@@ -81,7 +81,7 @@ Definition
 .. code-block:: c
 
     struct input_keymap_entry {
-        #define INPUT_KEYMAP_BY_INDEX (1 << 0)
+    #define INPUT_KEYMAP_BY_INDEX (1 << 0)
         __u8 flags;
         __u8 len;
         __u16 index;

@@ -98,9 +98,9 @@ Definition
         u8 flags;
         u8 rate_offset;
         u8 src_offset;
-        #if defined(CONFIG_PM_DEBUG) && defined(CONFIG_DEBUG_FS)
+    #if defined(CONFIG_PM_DEBUG) && defined(CONFIG_DEBUG_FS)
         struct dentry *dent;
-        #endif
+    #endif
     }
 
 .. _`clk.members`:

@@ -249,9 +249,9 @@ Definition
         struct list_head queue_node;
         unsigned int clock;
         unsigned long flags;
-        #define ATMCI_CARD_PRESENT 0
-        #define ATMCI_CARD_NEED_INIT 1
-        #define ATMCI_SHUTDOWN 2
+    #define ATMCI_CARD_PRESENT 0
+    #define ATMCI_CARD_NEED_INIT 1
+    #define ATMCI_SHUTDOWN 2
         int detect_pin;
         int wp_pin;
         bool detect_is_active_high;

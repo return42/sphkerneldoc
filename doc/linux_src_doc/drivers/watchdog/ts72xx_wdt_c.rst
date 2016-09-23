@@ -20,8 +20,8 @@ Definition
     struct ts72xx_wdt {
         struct mutex lock;
         int regval;
-        #define TS72XX_WDT_BUSY_FLAG 1
-        #define TS72XX_WDT_EXPECT_CLOSE_FLAG 2
+    #define TS72XX_WDT_BUSY_FLAG 1
+    #define TS72XX_WDT_EXPECT_CLOSE_FLAG 2
         int flags;
         void __iomem *control_reg;
         void __iomem *feed_reg;

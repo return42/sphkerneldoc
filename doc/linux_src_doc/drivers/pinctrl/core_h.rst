@@ -29,9 +29,9 @@ Definition
         struct pinctrl_state *hog_default;
         struct pinctrl_state *hog_sleep;
         struct mutex mutex;
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         struct dentry *device_root;
-        #endif
+    #endif
     }
 
 .. _`pinctrl_dev.members`:
@@ -299,12 +299,12 @@ Definition
         struct pinctrl_dev *pctldev;
         const char *name;
         bool dynamic_name;
-        #ifdef CONFIG_PINMUX
+    #ifdef CONFIG_PINMUX
         unsigned mux_usecount;
         const char *mux_owner;
         const struct pinctrl_setting_mux *mux_setting;
         const char *gpio_owner;
-        #endif
+    #endif
     }
 
 .. _`pin_desc.members`:

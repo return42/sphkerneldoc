@@ -75,7 +75,7 @@ Definition
         const char *const *names;
         bool can_sleep;
         bool irq_not_threaded;
-        #if IS_ENABLED(CONFIG_GPIO_GENERIC)
+    #if IS_ENABLED(CONFIG_GPIO_GENERIC)
         unsigned long (*read_reg)(void __iomem *reg);
         void (*write_reg)(void __iomem *reg, unsigned long data);
         unsigned long (*pin2mask)(struct gpio_chip *gc, unsigned int pin);
@@ -87,8 +87,8 @@ Definition
         spinlock_t bgpio_lock;
         unsigned long bgpio_data;
         unsigned long bgpio_dir;
-        #endif
-        #ifdef CONFIG_GPIOLIB_IRQCHIP
+    #endif
+    #ifdef CONFIG_GPIOLIB_IRQCHIP
         struct irq_chip *irqchip;
         struct irq_domain *irqdomain;
         unsigned int irq_base;
@@ -96,12 +96,12 @@ Definition
         unsigned int irq_default_type;
         int irq_parent;
         struct lock_class_key *lock_key;
-        #endif
-        #if defined(CONFIG_OF_GPIO)
+    #endif
+    #if defined(CONFIG_OF_GPIO)
         struct device_node *of_node;
         int of_gpio_n_cells;
         int (*of_xlate)(struct gpio_chip *gc,const struct of_phandle_args *gpiospec, u32 *flags);
-        #endif
+    #endif
     }
 
 .. _`gpio_chip.members`:

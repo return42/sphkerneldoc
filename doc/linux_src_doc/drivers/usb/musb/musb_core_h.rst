@@ -18,13 +18,13 @@ Definition
 .. code-block:: c
 
     struct musb_platform_ops {
-        #define MUSB_DMA_UX500 BIT(6)
-        #define MUSB_DMA_CPPI41 BIT(5)
-        #define MUSB_DMA_CPPI BIT(4)
-        #define MUSB_DMA_TUSB_OMAP BIT(3)
-        #define MUSB_DMA_INVENTRA BIT(2)
-        #define MUSB_IN_TUSB BIT(1)
-        #define MUSB_INDEXED_EP BIT(0)
+    #define MUSB_DMA_UX500 BIT(6)
+    #define MUSB_DMA_CPPI41 BIT(5)
+    #define MUSB_DMA_CPPI BIT(4)
+    #define MUSB_DMA_TUSB_OMAP BIT(3)
+    #define MUSB_DMA_INVENTRA BIT(2)
+    #define MUSB_IN_TUSB BIT(1)
+    #define MUSB_INDEXED_EP BIT(0)
         u32 quirks;
         int (*init)(struct musb *musb);
         int (*exit)(struct musb *musb);

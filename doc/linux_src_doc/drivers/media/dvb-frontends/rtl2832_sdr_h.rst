@@ -19,13 +19,13 @@ Definition
 
     struct rtl2832_sdr_platform_data {
         u32 clk;
-        #define RTL2832_SDR_TUNER_FC2580 0x21
-        #define RTL2832_SDR_TUNER_TUA9001 0x24
-        #define RTL2832_SDR_TUNER_FC0012 0x26
-        #define RTL2832_SDR_TUNER_E4000 0x27
-        #define RTL2832_SDR_TUNER_FC0013 0x29
-        #define RTL2832_SDR_TUNER_R820T 0x2a
-        #define RTL2832_SDR_TUNER_R828D 0x2b
+    #define RTL2832_SDR_TUNER_FC2580 0x21
+    #define RTL2832_SDR_TUNER_TUA9001 0x24
+    #define RTL2832_SDR_TUNER_FC0012 0x26
+    #define RTL2832_SDR_TUNER_E4000 0x27
+    #define RTL2832_SDR_TUNER_FC0013 0x29
+    #define RTL2832_SDR_TUNER_R820T 0x2a
+    #define RTL2832_SDR_TUNER_R828D 0x2b
         u8 tuner;
         struct regmap *regmap;
         struct dvb_frontend *dvb_frontend;

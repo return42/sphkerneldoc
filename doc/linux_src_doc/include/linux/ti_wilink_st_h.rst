@@ -146,8 +146,8 @@ Definition
     struct st_data_s {
         unsigned long st_state;
         struct sk_buff *tx_skb;
-        #define ST_TX_SENDING 1
-        #define ST_TX_WAKEUP 2
+    #define ST_TX_SENDING 1
+    #define ST_TX_WAKEUP 2
         unsigned long tx_state;
         struct st_proto_s  *list[ST_MAX_CHANNELS];
         bool is_registered[ST_MAX_CHANNELS];

@@ -79,7 +79,7 @@ Definition
 
     struct dccp_sock {
         struct inet_connection_sock dccps_inet_connection;
-        #define dccps_syn_rtt dccps_inet_connection.icsk_ack.lrcvtime
+    #define dccps_syn_rtt dccps_inet_connection.icsk_ack.lrcvtime
         __u64 dccps_swl;
         __u64 dccps_swh;
         __u64 dccps_awl;

@@ -482,9 +482,9 @@ Definition
         enum mei_hbm_state hbm_state;
         u16 init_clients_timer;
         enum mei_pg_event pg_event;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         struct dev_pm_domain pg_domain;
-        #endif
+    #endif
         unsigned char rd_msg_buf[MEI_RD_MSG_BUF_SIZE];
         u32 rd_msg_hdr;
         u8 hbuf_depth;
@@ -515,9 +515,9 @@ Definition
         struct work_struct bus_rescan_work;
         struct list_head device_list;
         struct mutex cl_bus_lock;
-        #if IS_ENABLED(CONFIG_DEBUG_FS)
+    #if IS_ENABLED(CONFIG_DEBUG_FS)
         struct dentry *dbgfs_dir;
-        #endif
+    #endif
         const struct mei_hw_ops *ops;
         char hw[0];
     }

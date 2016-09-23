@@ -393,22 +393,22 @@ Definition
         const struct attribute_group  *sysfs_groups[4];
         const struct attribute_group *sysfs_rx_queue_group;
         const struct rtnl_link_ops *rtnl_link_ops;
-        #define GSO_MAX_SIZE 65536
+    #define GSO_MAX_SIZE 65536
         unsigned int gso_max_size;
-        #define GSO_MAX_SEGS 65535
+    #define GSO_MAX_SEGS 65535
         u16 gso_max_segs;
-        #ifdef CONFIG_DCB
+    #ifdef CONFIG_DCB
         const struct dcbnl_rtnl_ops *dcbnl_ops;
-        #endif
+    #endif
         u8 num_tc;
         struct netdev_tc_txq tc_to_txq[TC_MAX_QUEUE];
         u8 prio_tc_map[TC_BITMASK + 1];
-        #if IS_ENABLED(CONFIG_FCOE)
+    #if IS_ENABLED(CONFIG_FCOE)
         unsigned int fcoe_ddp_xid;
-        #endif
-        #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
+    #endif
+    #if IS_ENABLED(CONFIG_CGROUP_NET_PRIO)
         struct netprio_map __rcu *priomap;
-        #endif
+    #endif
         struct phy_device *phydev;
         struct lock_class_key *qdisc_tx_busylock;
         bool proto_down;

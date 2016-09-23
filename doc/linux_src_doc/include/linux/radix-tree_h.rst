@@ -199,9 +199,9 @@ Definition
         unsigned long index;
         unsigned long next_index;
         unsigned long tags;
-        #ifdef CONFIG_RADIX_TREE_MULTIORDER
+    #ifdef CONFIG_RADIX_TREE_MULTIORDER
         unsigned int shift;
-        #endif
+    #endif
     }
 
 .. _`radix_tree_iter.members`:

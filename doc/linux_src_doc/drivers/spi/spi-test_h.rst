@@ -30,19 +30,19 @@ Definition
         int iterate_rx_align;
         u32 iterate_transfer_mask;
         u32 fill_option;
-        #define FILL_MEMSET_8 0
-        #define FILL_MEMSET_16 1
-        #define FILL_MEMSET_24 2
-        #define FILL_MEMSET_32 3
-        #define FILL_COUNT_8 4
-        #define FILL_COUNT_16 5
-        #define FILL_COUNT_24 6
-        #define FILL_COUNT_32 7
-        #define FILL_TRANSFER_BYTE_8 8
-        #define FILL_TRANSFER_BYTE_16 9
-        #define FILL_TRANSFER_BYTE_24 10
-        #define FILL_TRANSFER_BYTE_32 11
-        #define FILL_TRANSFER_NUM 16
+    #define FILL_MEMSET_8 0
+    #define FILL_MEMSET_16 1
+    #define FILL_MEMSET_24 2
+    #define FILL_MEMSET_32 3
+    #define FILL_COUNT_8 4
+    #define FILL_COUNT_16 5
+    #define FILL_COUNT_24 6
+    #define FILL_COUNT_32 7
+    #define FILL_TRANSFER_BYTE_8 8
+    #define FILL_TRANSFER_BYTE_16 9
+    #define FILL_TRANSFER_BYTE_24 10
+    #define FILL_TRANSFER_BYTE_32 11
+    #define FILL_TRANSFER_NUM 16
         u32 fill_pattern;
     }
 

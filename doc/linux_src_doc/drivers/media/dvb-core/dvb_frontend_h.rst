@@ -285,8 +285,8 @@ Definition
         int (*get_frequency)(struct dvb_frontend *fe, u32 *frequency);
         int (*get_bandwidth)(struct dvb_frontend *fe, u32 *bandwidth);
         int (*get_if_frequency)(struct dvb_frontend *fe, u32 *frequency);
-        #define TUNER_STATUS_LOCKED 1
-        #define TUNER_STATUS_STEREO 2
+    #define TUNER_STATUS_LOCKED 1
+    #define TUNER_STATUS_STEREO 2
         int (*get_status)(struct dvb_frontend *fe, u32 *status);
         int (*get_rf_strength)(struct dvb_frontend *fe, u16 *strength);
         int (*get_afc)(struct dvb_frontend *fe, s32 *afc);
@@ -957,8 +957,8 @@ Definition
         void *sec_priv;
         void *analog_demod_priv;
         struct dtv_frontend_properties dtv_property_cache;
-        #define DVB_FRONTEND_COMPONENT_TUNER 0
-        #define DVB_FRONTEND_COMPONENT_DEMOD 1
+    #define DVB_FRONTEND_COMPONENT_TUNER 0
+    #define DVB_FRONTEND_COMPONENT_DEMOD 1
         int (*callback)(void *adapter_priv, int component, int cmd, int arg);
         int id;
         unsigned int exit;

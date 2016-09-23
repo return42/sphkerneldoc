@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     enum net_device_flags {
-        #if __UAPI_DEF_IF_NET_DEVICE_FLAGS;IFF_UP = 1<<0,
+    #if __UAPI_DEF_IF_NET_DEVICE_FLAGS;IFF_UP = 1<<0,
         IFF_BROADCAST,
         IFF_DEBUG,
         IFF_LOOPBACK,

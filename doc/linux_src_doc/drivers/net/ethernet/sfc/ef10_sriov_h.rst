@@ -24,7 +24,7 @@ Definition
         unsigned int vport_assigned;
         u8 mac[ETH_ALEN];
         u16 vlan;
-        #define EFX_EF10_NO_VLAN 0
+    #define EFX_EF10_NO_VLAN 0
     }
 
 .. _`ef10_vf.members`:

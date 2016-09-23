@@ -165,9 +165,9 @@ Definition
         unsigned char real_dev_addr[ETH_ALEN];
         struct proc_dir_entry *dent;
         struct vlan_pcpu_stats __percpu *vlan_pcpu_stats;
-        #ifdef CONFIG_NET_POLL_CONTROLLER
+    #ifdef CONFIG_NET_POLL_CONTROLLER
         struct netpoll *netpoll;
-        #endif
+    #endif
         unsigned int nest_level;
     }
 

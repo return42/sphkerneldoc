@@ -53,8 +53,8 @@ Definition
         u8 mnctr_en_bit;
         u8 mnctr_reset_bit;
         u8 mnctr_mode_shift;
-        #define MNCTR_MODE_DUAL 0x2
-        #define MNCTR_MODE_MASK 0x3
+    #define MNCTR_MODE_DUAL 0x2
+    #define MNCTR_MODE_MASK 0x3
         u8 n_val_shift;
         u8 m_val_shift;
         u8 width;
@@ -137,7 +137,7 @@ Definition
 
     struct src_sel {
         u8 src_sel_shift;
-        #define SRC_SEL_MASK 0x7
+    #define SRC_SEL_MASK 0x7
         const struct parent_map *parent_map;
     }
 

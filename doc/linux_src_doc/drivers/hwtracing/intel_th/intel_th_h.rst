@@ -251,9 +251,9 @@ Definition
         struct intel_th_device *hub;
         int id;
         int major;
-        #ifdef CONFIG_INTEL_TH_DEBUG
+    #ifdef CONFIG_INTEL_TH_DEBUG
         struct dentry *dbg;
-        #endif
+    #endif
     }
 
 .. _`intel_th.members`:

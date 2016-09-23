@@ -33,11 +33,11 @@ Definition
         int (*input_mapped)(struct hid_device *hdev,struct hid_input *hidinput, struct hid_field *field,struct hid_usage *usage, unsigned long **bit, int *max);
         int (*input_configured)(struct hid_device *hdev,struct hid_input *hidinput);
         void (*feature_mapping)(struct hid_device *hdev,struct hid_field *field,struct hid_usage *usage);
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         int (*suspend)(struct hid_device *hdev, pm_message_t message);
         int (*resume)(struct hid_device *hdev);
         int (*reset_resume)(struct hid_device *hdev);
-        #endif
+    #endif
     }
 
 .. _`hid_driver.members`:

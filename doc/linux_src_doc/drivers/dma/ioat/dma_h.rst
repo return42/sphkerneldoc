@@ -21,11 +21,11 @@ Definition
         struct pci_dev *pdev;
         void __iomem *reg_base;
         struct dma_pool *completion_pool;
-        #define MAX_SED_POOLS 5
+    #define MAX_SED_POOLS 5
         struct dma_pool  *sed_hw_pool[MAX_SED_POOLS];
         struct dma_device dma_dev;
         u8 version;
-        #define IOAT_MAX_CHANS 4
+    #define IOAT_MAX_CHANS 4
         struct msix_entry msix_entries[IOAT_MAX_CHANS];
         struct ioatdma_chan  *idx[IOAT_MAX_CHANS];
         struct dca_provider *dca;
@@ -144,9 +144,9 @@ Definition
         size_t len;
         struct dma_async_tx_descriptor txd;
         enum sum_check_flags *result;
-        #ifdef DEBUG
+    #ifdef DEBUG
         int id;
-        #endif
+    #endif
         struct ioat_sed_ent *sed;
     }
 

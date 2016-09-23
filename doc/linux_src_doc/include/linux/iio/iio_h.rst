@@ -620,14 +620,14 @@ Definition
         struct mutex info_exist_lock;
         const struct iio_buffer_setup_ops *setup_ops;
         struct cdev chrdev;
-        #define IIO_MAX_GROUPS 6
+    #define IIO_MAX_GROUPS 6
         const struct attribute_group  *groups[IIO_MAX_GROUPS + 1];
         int groupcounter;
         unsigned long flags;
-        #if defined(CONFIG_DEBUG_FS)
+    #if defined(CONFIG_DEBUG_FS)
         struct dentry *debugfs_dentry;
         unsigned cached_reg_addr;
-        #endif
+    #endif
     }
 
 .. _`iio_dev.members`:

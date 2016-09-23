@@ -285,9 +285,9 @@ Definition
         struct kobject kobj;
         struct mutex lock;
         u8 flags;
-        #define PADATA_INIT 1
-        #define PADATA_RESET 2
-        #define PADATA_INVALID 4
+    #define PADATA_INIT 1
+    #define PADATA_RESET 2
+    #define PADATA_INVALID 4
     }
 
 .. _`padata_instance.members`:

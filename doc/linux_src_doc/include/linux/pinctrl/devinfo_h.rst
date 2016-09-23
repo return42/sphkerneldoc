@@ -21,10 +21,10 @@ Definition
         struct pinctrl *p;
         struct pinctrl_state *default_state;
         struct pinctrl_state *init_state;
-        #ifdef CONFIG_PM
+    #ifdef CONFIG_PM
         struct pinctrl_state *sleep_state;
         struct pinctrl_state *idle_state;
-        #endif
+    #endif
     }
 
 .. _`dev_pin_info.members`:

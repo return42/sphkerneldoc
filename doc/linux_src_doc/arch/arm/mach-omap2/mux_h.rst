@@ -116,12 +116,12 @@ Definition
     struct omap_mux {
         u16 reg_offset;
         u16 gpio;
-        #ifdef CONFIG_OMAP_MUX
+    #ifdef CONFIG_OMAP_MUX
         char  *muxnames[OMAP_MUX_NR_MODES];
-        #ifdef CONFIG_DEBUG_FS
+    #ifdef CONFIG_DEBUG_FS
         char  *balls[OMAP_MUX_NR_SIDES];
-        #endif
-        #endif
+    #endif
+    #endif
     }
 
 .. _`omap_mux.members`:

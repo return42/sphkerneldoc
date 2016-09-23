@@ -18,17 +18,17 @@ Definition
 .. code-block:: c
 
     struct w1_reg_num {
-        #if defined(__LITTLE_ENDIAN_BITFIELD)
+    #if defined(__LITTLE_ENDIAN_BITFIELD)
         __u64 family:8:48:8;
         __u64 id:8:48;
         __u64 crc:8;
-        #elif defined(__BIG_ENDIAN_BITFIELD)
+    #elif defined(__BIG_ENDIAN_BITFIELD)
         __u64 crc:8;
         __u64 id:8:48;
         __u64 family:8:48:8;
-        #else
-        #error "Please fix <asm/byteorder.h>"
-        #endif
+    #else
+    #error "Please fix <asm/byteorder.h>"
+    #endif
     }
 
 .. _`w1_reg_num.members`:

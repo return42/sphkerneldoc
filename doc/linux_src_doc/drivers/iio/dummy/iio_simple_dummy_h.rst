@@ -31,12 +31,12 @@ Definition
         int steps_enabled;
         int steps;
         int height;
-        #ifdef CONFIG_IIO_SIMPLE_DUMMY_EVENTS
+    #ifdef CONFIG_IIO_SIMPLE_DUMMY_EVENTS
         int event_irq;
         int event_val;
         bool event_en;
         s64 event_timestamp;
-        #endif
+    #endif
     }
 
 .. _`iio_dummy_state.members`:
