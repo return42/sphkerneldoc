@@ -4,7 +4,7 @@
 
 SPHINXBUILD    := sphinx-build
 DBTOOLS_SCRIPT := linux-db2rst
-AUTODOC_SCRIPT := kernel-autodoc --markup kernel-doc
+AUTODOC_SCRIPT := kernel-autodoc
 
 # We need some generic definitions (do not try to remake the file).
 Kbuild.include: ;
@@ -388,10 +388,14 @@ media2rst: $(srctree)/Documentation/DocBook/media_api.xml
 # autodoc reST
 # ------------
 
+PHONY += src-reST-Files
+src-reST-Files:
+	kernel-docgrep $(srctree) > src-reST-Files.txt
+
 PHONY += src2rst
-src2rst:
+src2rst: src-reST-Files
 	rm -rf $(AUTODOC_FOLDER)
-	$(AUTODOC_SCRIPT) $(srctree) $(AUTODOC_FOLDER)
+	$(AUTODOC_SCRIPT)  --markup kernel-doc --rst-files src-reST-Files.txt $(srctree) $(AUTODOC_FOLDER)
 
 # reST --> HTML
 # -------------
