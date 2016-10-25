@@ -1,5 +1,8 @@
 # -*- coding: utf-8; mode: make -*-
 
+srctree=/share/linux-docs-next
+export srctree
+
 # External programs used
 
 SPHINXBUILD    := sphinx-build
@@ -18,16 +21,12 @@ PHONY =
 objtree = $(abspath ..)
 obj = .
 Q = @
-srctree=/share/linux
-export srctree
 
 KERNELVERSION := $(shell make -C $(srctree) kernelversion | grep "^[0-9]")
 
 ifndef $(KERNELRELEASE)
   KERNELRELEASE = $(KERNELVERSION)
 endif
-
-PYTHONPATH := $(abspath $(objtree)/scripts/site-python):$(PYTHONPATH)
 
 SCRIPT_FOLDER  := $(objtree)/scripts
 CACHE          := $(objtree)/cache
@@ -62,15 +61,7 @@ ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
 endif
 
-
-# ------------------------------------------------------------------------------
-# !!! deleted media_api.xml from DOCBOOKS objects / the linux_tv book has it's
-# !!! own treatment see below target media2rst
-#
 DOCBOOKS := $(wildcard $(srctree)/Documentation/DocBook/*.tmpl)
-DOCBOOKS := $(filter-out %/media_api.tmpl,$(DOCBOOKS))
-DOCBOOKS := $(filter-out %/media-entities.tmpl,$(DOCBOOKS))
-DOCBOOKS := $(filter-out %/media-indices.tmpl,$(DOCBOOKS))
 DOCBOOKS := $(DOCBOOKS:$(srctree)/Documentation/DocBook/%=%)
 
 # ------------------------------------------------------------------------------
@@ -152,7 +143,7 @@ PHONY += help help-rqmts
 help-rqmts: msg-sphinx-builder msg-rst2pdf-pkg msg-texlive
 
 help:
-	$(Q)echo "Please use \`make <target>' where <target> is one of ..."
+	$(Q)echo "Please use 'make <target>' where <target> is one of ..."
 	$(Q)echo
 	$(Q)echo "all-HTML : build all HTML targets:"
 	$(Q)echo
@@ -163,17 +154,17 @@ help:
 	$(Q)echo "help-rqmts : info about build requirements"
 	$(Q)echo
 	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
-	$(Q)echo "    valid values for books/{name}.html are: \n\n   $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
 	$(Q)echo
 	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
 	$(Q)echo "  books/{name}.man : build only the man page of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n   $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "The HTML & PDF output formats are placed into folder:"
 	$(Q)echo ""
@@ -181,19 +172,24 @@ help:
 	$(Q)echo ""
 	$(Q)echo "all-reST : builds all reST targets:"
 	$(Q)echo
-	$(Q)echo "  dbxml2rst : convert kernel's DocBook-XML books to reST (incl. media2rst)"
-	$(Q)echo "  media2rst : convert linux_tv (media book) DocBook-XML to reST"
-	$(Q)echo "  src2rst   : generate reST documentation from source code"
-	$(Q)echo
-	$(Q)echo "  .. hint:"
-	$(Q)echo
-	$(Q)echo "    The reST files are versioned within *this* reposetory."
-	$(Q)echo
+	$(Q)echo "  src2rst     : generate reST documentation from source code"
+	$(Q)echo "  dbxml2rst   : convert kernel's DocBook-XML books to reST"
 	$(Q)echo "  {fname}.rst : converts only {fname}.tmpl to reST, valid"
-	$(Q)echo "    values for {fname} are: \n\n   $(DB2RST)" | $(FMT)
+	$(Q)echo "    values for {fname} are: \n\n    $(DB2RST)" | $(FMT)
+	$(Q)echo
+	$(Q)echo ".. hint:"
+	$(Q)echo
+	$(Q)echo "   The reST files are versioned within *this* reposetory."
+	$(Q)echo
+	$(Q)echo "   Use 'make srctree=<kernel-src>' to point to kernel's"
+	$(Q)echo "   sources (default $(srctree))"
+	$(Q)echo
+	$(Q)echo "   It's recommended to use docs-next from lwn:"
+	$(Q)echo "      git git://git.lwn.net/linux.git docs-next"
 	$(Q)echo
 	$(Q)echo "make V=0|1 [targets] 0 => quiet build (default), 1 => verbose build"
 	$(Q)echo "make V=2   [targets] 2 => give reason for rebuild of target"
+
 
 # ------------------------------------------------------------------------------
 # main targets
@@ -206,7 +202,7 @@ CACHE_BOOKS = $(CACHE)/books
 
 # update reST in reposetory
 PHONY += all-reST
-all-reST: dbxml2rst media2rst src2rst
+all-reST: dbxml2rst src2rst
 
 # update github-pages
 PHONY += all-HTML books.html books.pdf books.man books.clean
@@ -327,21 +323,21 @@ intro.html: sphinx-builder | $(DIST)
 # DocBook-XML (tmpl) --> reST
 # --------------------
 
-DB2RST := $(patsubst %.tmpl, %.rst, $(DOCBOOKS))
-dbxml2rst: media2rst $(DB2RST)
+DB2RST := $(patsubst %.tmpl,%.rst,$(DOCBOOKS))
+dbxml2rst: dbxml2rst.clean $(DB2RST) dbxml2rst.post
+
+dbxml2rst.clean:
+	rm -f $(MIGRATION_FOLDER)/*/*.rst
+
+dbxml2rst.post:
+	$(Q)echo
+	$(Q)echo "CHECK IF SOME OF THE $(MIGRATION_FOLDER)/*/conf.py ARE OBSOLETE!"
+	$(Q)echo "IF SO, DROP THOSE FOLDERS."
+	$(Q)echo
 
 .PHONY:	$(DB2RST)
 $(DB2RST):
-	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) db2rst $(srctree) $(patsubst %.rst, %.tmpl, ${@})
-
-$(srctree)/Documentation/DocBook/media_api.xml:
-	$(MAKE) -C $(srctree) xmldocs
-
-# the linux_tv book has it's own treatment
-PHONY += media2rst
-media2rst: $(srctree)/Documentation/DocBook/media_api.xml
-	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) media2rst $(srctree)
-
+	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
 # # reST-book --> (Xe)LaTeX --> PDF
 # # -----------------------------------
