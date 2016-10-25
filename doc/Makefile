@@ -56,6 +56,14 @@ BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_MAN   = $(patsubst %,%.man, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_PDF   = $(patsubst %,%.pdf, $(BOOKS_MIGRATED))
 
+# kernel's sphinx-books
+KERNEL_FOLDER=$(srctree)/Documentation
+KERNEL_BOOKS=$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py))
+KERNEL_BOOKS_HTML  = $(patsubst %,books/%.html, $(KERNEL_BOOKS))
+KERNEL_BOOKS_CLEAN = $(patsubst %,books/%.clean, $(KERNEL_BOOKS))
+KERNEL_BOOKS_MAN   = $(patsubst %,books/%.man, $(KERNEL_BOOKS))
+KERNEL_BOOKS_PDF   = $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
+
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
 FMT = fmt
@@ -154,17 +162,17 @@ help:
 	$(Q)echo "help-rqmts : info about build requirements"
 	$(Q)echo
 	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
-	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
 	$(Q)echo
 	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
 	$(Q)echo "  books/{name}.man : build only the man page of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "The HTML & PDF output formats are placed into folder:"
 	$(Q)echo ""
@@ -207,10 +215,10 @@ all-reST: dbxml2rst src2rst
 # update github-pages
 PHONY += all-HTML books.html books.pdf books.man books.clean
 all-HTML:    sphinx-builder books.html src.html
-books.html:  sphinx-builder $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) intro.html
-books.man:   sphinx-builder $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN)
-books.pdf:   rst2pdf $(BOOKS_PDF) $(BOOKS_MIGRATED_MAN)
-books.clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) intro.clean
+books.html:  sphinx-builder $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML) intro.html
+books.man:   sphinx-builder $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)
+books.pdf:   rst2pdf $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
+books.clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN) intro.clean
 #books-rqmts: msg-sphinx-builder msg-rst2pdf-pkg
 
 PHONY += clean
@@ -224,16 +232,18 @@ $(DIST_BOOKS):
 #    * dest folder relative to $(DIST_BOOKS) and
 #    * cache folder relative to $(CACHE_BOOKS)
 # $4 dest subfolder e.g. "man" for man pages at gpu/man
-# $5 reST source folder relative to $(BOOKS_FOLDER),
-#    e.g. "books_migrated" for the migrated books
+# $5 reST source folder,
+#    e.g. "$(BOOKS_FOLDER)/books_migrated" for the migrated books
 
 quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3$4)
-      cmd_sphinx = SPHPROJ_CONF=$(BOOKS_FOLDER)/$5$3/conf.py \
-	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2 \
+      cmd_sphinx = SPHPROJ_CONF=$(abspath $5/$3/conf.py) \
+	$(SPHINXBUILD) \
+	$(ALLSPHINXOPTS) \
+	-b $2 \
 	-c $(obj) \
 	-d $(CACHE_BOOKS)/$3 \
-	$(BOOKS_FOLDER)/$5$3 \
-	$(abspath $(DIST_BOOKS)/$3$4)
+	$(abspath $5/$3) \
+	$(abspath $(DIST_BOOKS)/$3/$4)
 
 # $2 name of the book / e.g. "gpu", used to clean:
 #    * dest folder relative to $(DIST_BOOKS) and
@@ -244,6 +254,9 @@ quiet_cmd_sphinx_clean = CLEAN  $@
 # ------------------------------------------------------------------------------
 # BOOKs
 # ------------------------------------------------------------------------------
+#
+# e.g.: make books/template-book.html
+#
 
 PHONY += $(BOOKS_CLEAN)
 $(BOOKS_CLEAN):
@@ -251,37 +264,64 @@ $(BOOKS_CLEAN):
 
 PHONY += $(BOOKS_HTML)
 $(BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@))
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_FOLDER))
 
 PHONY += $(BOOKS_MAN)
 $(BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(BOOKS_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
-PHONY += $(BOOKS_PDF)
-$(BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf)
+# PHONY += $(BOOKS_PDF)
+# $(BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
+# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf)
 
 
 # migrated DocBook-XML to reST content
 # ------------------------------------
-
+#
+# e.g: make books/debugobjects.html
+#
 PHONY += $(BOOKS_MIGRATED_CLEAN)
 $(BOOKS_MIGRATED_CLEAN):
 	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
 
 PHONY += $(BOOKS_MIGRATED_HTML)
 $(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,books_migrated/)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_FOLDER)/books_migrated)
 
 PHONY += $(BOOKS_MIGRATED_MAN)
 $(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,books_migrated/)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(BOOKS_FOLDER)/books_migrated)
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
-PHONY += $(BOOKS_PDF)
-$(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
+# PHONY += $(BOOKS_MIGRATED_PDF)
+# $(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
+# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
+
+
+# kernel's sphinx-books
+# ------------------------------------
+#
+# e.g: make books/gpu.html
+#
+
+PHONY += $(KERNEL_BOOKS_CLEAN)
+$(KERNEL_BOOKS_CLEAN):
+	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
+
+PHONY += $(KERNEL_BOOKS_HTML)
+$(KERNEL_BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(KERNEL_FOLDER))
+
+PHONY += $(KERNEL_BOOKS_MAN)
+$(KERNEL_BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(KERNEL_FOLDER))
+	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
+
+# PHONY += $(KERNEL_BOOKS_PDF)
+# $(KERNEL_BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
+# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
+
 
 
 # ------------------------------------------------------------------------------
