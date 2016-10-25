@@ -448,7 +448,7 @@ Spare area autoplacement default schemes
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  Offset
 
@@ -456,7 +456,7 @@ Spare area autoplacement default schemes
 
        -  Comment
 
-    -  .. row 2
+    -  .. table row
 
        -  0x00
 
@@ -464,7 +464,7 @@ Spare area autoplacement default schemes
 
        -  Error correction code byte 0
 
-    -  .. row 3
+    -  .. table row
 
        -  0x01
 
@@ -472,7 +472,7 @@ Spare area autoplacement default schemes
 
        -  Error correction code byte 1
 
-    -  .. row 4
+    -  .. table row
 
        -  0x02
 
@@ -480,7 +480,7 @@ Spare area autoplacement default schemes
 
        -  Error correction code byte 2
 
-    -  .. row 5
+    -  .. table row
 
        -  0x03
 
@@ -488,7 +488,7 @@ Spare area autoplacement default schemes
 
        -  
 
-    -  .. row 6
+    -  .. table row
 
        -  0x04
 
@@ -496,7 +496,7 @@ Spare area autoplacement default schemes
 
        -  
 
-    -  .. row 7
+    -  .. table row
 
        -  0x05
 
@@ -506,7 +506,7 @@ Spare area autoplacement default schemes
           applies only to the first page in a block. In the remaining pages
           this byte is reserved
 
-    -  .. row 8
+    -  .. table row
 
        -  0x06
 
@@ -514,7 +514,7 @@ Spare area autoplacement default schemes
 
        -  
 
-    -  .. row 9
+    -  .. table row
 
        -  0x07
 
@@ -536,7 +536,7 @@ Spare area autoplacement default schemes
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  Offset
 
@@ -544,7 +544,7 @@ Spare area autoplacement default schemes
 
        -  Comment
 
-    -  .. row 2
+    -  .. table row
 
        -  0x00
 
@@ -553,7 +553,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the lower 256 Byte data in this
           page
 
-    -  .. row 3
+    -  .. table row
 
        -  0x01
 
@@ -562,7 +562,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the lower 256 Bytes of data in
           this page
 
-    -  .. row 4
+    -  .. table row
 
        -  0x02
 
@@ -571,7 +571,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the lower 256 Bytes of data in
           this page
 
-    -  .. row 5
+    -  .. table row
 
        -  0x03
 
@@ -580,7 +580,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the upper 256 Bytes of data in
           this page
 
-    -  .. row 6
+    -  .. table row
 
        -  0x04
 
@@ -588,7 +588,7 @@ Spare area autoplacement default schemes
 
        -  reserved
 
-    -  .. row 7
+    -  .. table row
 
        -  0x05
 
@@ -598,7 +598,7 @@ Spare area autoplacement default schemes
           applies only to the first page in a block. In the remaining pages
           this byte is reserved
 
-    -  .. row 8
+    -  .. table row
 
        -  0x06
 
@@ -607,7 +607,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the upper 256 Bytes of data in
           this page
 
-    -  .. row 9
+    -  .. table row
 
        -  0x07
 
@@ -616,7 +616,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the upper 256 Bytes of data in
           this page
 
-    -  .. row 10
+    -  .. table row
 
        -  0x08 - 0x0F
 
@@ -638,7 +638,7 @@ Spare area autoplacement default schemes
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  Offset
 
@@ -646,7 +646,7 @@ Spare area autoplacement default schemes
 
        -  Comment
 
-    -  .. row 2
+    -  .. table row
 
        -  0x00
 
@@ -656,7 +656,7 @@ Spare area autoplacement default schemes
           applies only to the first page in a block. In the remaining pages
           this byte is reserved
 
-    -  .. row 3
+    -  .. table row
 
        -  0x01
 
@@ -664,7 +664,7 @@ Spare area autoplacement default schemes
 
        -  Reserved
 
-    -  .. row 4
+    -  .. table row
 
        -  0x02-0x27
 
@@ -672,7 +672,7 @@ Spare area autoplacement default schemes
 
        -  
 
-    -  .. row 5
+    -  .. table row
 
        -  0x28
 
@@ -681,7 +681,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the first 256 Byte data in this
           page
 
-    -  .. row 6
+    -  .. table row
 
        -  0x29
 
@@ -690,7 +690,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the first 256 Bytes of data in
           this page
 
-    -  .. row 7
+    -  .. table row
 
        -  0x2A
 
@@ -699,7 +699,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the first 256 Bytes data in this
           page
 
-    -  .. row 8
+    -  .. table row
 
        -  0x2B
 
@@ -708,7 +708,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the second 256 Bytes of data in
           this page
 
-    -  .. row 9
+    -  .. table row
 
        -  0x2C
 
@@ -717,7 +717,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the second 256 Bytes of data in
           this page
 
-    -  .. row 10
+    -  .. table row
 
        -  0x2D
 
@@ -726,7 +726,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the second 256 Bytes of data in
           this page
 
-    -  .. row 11
+    -  .. table row
 
        -  0x2E
 
@@ -735,7 +735,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the third 256 Bytes of data in
           this page
 
-    -  .. row 12
+    -  .. table row
 
        -  0x2F
 
@@ -744,7 +744,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the third 256 Bytes of data in
           this page
 
-    -  .. row 13
+    -  .. table row
 
        -  0x30
 
@@ -753,7 +753,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the third 256 Bytes of data in
           this page
 
-    -  .. row 14
+    -  .. table row
 
        -  0x31
 
@@ -762,7 +762,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the fourth 256 Bytes of data in
           this page
 
-    -  .. row 15
+    -  .. table row
 
        -  0x32
 
@@ -771,7 +771,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the fourth 256 Bytes of data in
           this page
 
-    -  .. row 16
+    -  .. table row
 
        -  0x33
 
@@ -780,7 +780,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the fourth 256 Bytes of data in
           this page
 
-    -  .. row 17
+    -  .. table row
 
        -  0x34
 
@@ -789,7 +789,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the fifth 256 Bytes of data in
           this page
 
-    -  .. row 18
+    -  .. table row
 
        -  0x35
 
@@ -798,7 +798,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the fifth 256 Bytes of data in
           this page
 
-    -  .. row 19
+    -  .. table row
 
        -  0x36
 
@@ -807,7 +807,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the fifth 256 Bytes of data in
           this page
 
-    -  .. row 20
+    -  .. table row
 
        -  0x37
 
@@ -816,7 +816,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the sixt 256 Bytes of data in this
           page
 
-    -  .. row 21
+    -  .. table row
 
        -  0x38
 
@@ -825,7 +825,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the sixt 256 Bytes of data in this
           page
 
-    -  .. row 22
+    -  .. table row
 
        -  0x39
 
@@ -834,7 +834,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the sixt 256 Bytes of data in this
           page
 
-    -  .. row 23
+    -  .. table row
 
        -  0x3A
 
@@ -843,7 +843,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the seventh 256 Bytes of data in
           this page
 
-    -  .. row 24
+    -  .. table row
 
        -  0x3B
 
@@ -852,7 +852,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the seventh 256 Bytes of data in
           this page
 
-    -  .. row 25
+    -  .. table row
 
        -  0x3C
 
@@ -861,7 +861,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 2 of the seventh 256 Bytes of data in
           this page
 
-    -  .. row 26
+    -  .. table row
 
        -  0x3D
 
@@ -870,7 +870,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 0 of the eighth 256 Bytes of data in
           this page
 
-    -  .. row 27
+    -  .. table row
 
        -  0x3E
 
@@ -879,7 +879,7 @@ Spare area autoplacement default schemes
        -  Error correction code byte 1 of the eighth 256 Bytes of data in
           this page
 
-    -  .. row 28
+    -  .. table row
 
        -  0x3F
 
@@ -893,8 +893,8 @@ Spare area autoplacement default schemes
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

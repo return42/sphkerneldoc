@@ -213,7 +213,7 @@ are therefore not covered in the subsequent sections).
 The type flag specifies the type of the cipher algorithm. The caller
 usually provides a 0 when the caller wants the default handling.
 Otherwise, the caller may provide the following selections which match
-the the aforementioned cipher types:
+the aforementioned cipher types:
 
 -  CRYPTO_ALG_TYPE_CIPHER Single block cipher
 
@@ -448,8 +448,8 @@ operation:
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

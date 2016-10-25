@@ -552,7 +552,7 @@ A typical triggered buffer setup looks like this:
 
         irqreturn_t sensor_iio_pollfunc(int irq, void *p)
         {
-            pf->timestamp = iio_get_time_ns();
+            pf->timestamp = iio_get_time_ns((struct indio_dev *)p);
             return IRQ_WAKE_THREAD;
         }
 
@@ -602,8 +602,8 @@ The important things to notice here are:
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

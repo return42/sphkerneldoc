@@ -55,19 +55,19 @@ happen:
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  CPU 1
 
        -  CPU 2
 
-    -  .. row 2
+    -  .. table row
 
        -  Grab lock A -> OK
 
        -  Grab lock B -> OK
 
-    -  .. row 3
+    -  .. table row
 
        -  Grab lock B -> spin
 
@@ -181,8 +181,8 @@ before we finally stopped it from adding itself back in.
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

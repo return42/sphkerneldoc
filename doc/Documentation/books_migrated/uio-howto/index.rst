@@ -16,6 +16,11 @@ version 2.
     I/O system.
 
 
+:revision: 0.10 / 2016-10-17 (*sch*)
+
+Added generic hyperv driver
+
+
 :revision: 0.9 / 2009-07-16 (*mst*)
 
 Added generic pci driver
@@ -69,6 +74,7 @@ First draft.
     custom_kernel_module
     userspace_driver
     uio_pci_generic
+    uio_hv_generic
 
 
 .. _app1:
@@ -84,10 +90,10 @@ Further information
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------
 
 

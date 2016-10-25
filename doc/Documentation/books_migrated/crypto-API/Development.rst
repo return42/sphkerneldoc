@@ -24,7 +24,8 @@ The generic registration functions can be found in
 include/linux/crypto.h and their definition can be seen below. The
 former function registers a single transformation, while the latter
 works on an array of transformation descriptions. The latter is useful
-when registering transformations in bulk.
+when registering transformations in bulk, for example when a driver
+implements multiple transformations.
 
 
 .. code-block:: c
@@ -44,16 +45,20 @@ Notice that both registration and unregistration functions do return a
 value, so make sure to handle errors. A return code of zero implies
 success. Any return code < 0 implies an error.
 
-The bulk registration / unregistration functions require that struct
-crypto_alg is an array of count size. These functions simply loop over
-that array and register / unregister each individual algorithm. If an
-error occurs, the loop is terminated at the offending algorithm
-definition. That means, the algorithms prior to the offending algorithm
-are successfully registered. Note, the caller has no way of knowing
-which cipher implementations have successfully registered. If this is
-important to know, the caller should loop through the different
-implementations using the single instance *_alg functions for each
-individual implementation.
+The bulk registration/unregistration functions register/unregister each
+transformation in the given array of length count. They handle errors as
+follows:
+
+-  crypto_register_algs() succeeds if and only if it successfully
+   registers all the given transformations. If an error occurs partway
+   through, then it rolls back successful registrations before returning
+   the error code. Note that if a driver needs to handle registration
+   errors for individual transformations, then it will need to use the
+   non-bulk function crypto_register_alg() instead.
+
+-  crypto_unregister_algs() tries to unregister all the given
+   transformations, continuing on error. It logs errors and always
+   returns zero.
 
 
 Single-Block Symmetric Ciphers [CIPHER]
@@ -260,8 +265,8 @@ worry about this.
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

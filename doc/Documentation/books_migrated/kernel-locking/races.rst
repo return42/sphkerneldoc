@@ -24,41 +24,41 @@ This is what they would expect to happen:
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  Instance 1
 
        -  Instance 2
 
-    -  .. row 2
+    -  .. table row
 
        -  read very_important_count (5)
 
        -  
 
-    -  .. row 3
+    -  .. table row
 
        -  add 1 (6)
 
        -  
 
-    -  .. row 4
+    -  .. table row
 
        -  write very_important_count (6)
 
        -  
 
-    -  .. row 5
+    -  .. table row
 
        -  
        -  read very_important_count (6)
 
-    -  .. row 6
+    -  .. table row
 
        -  
        -  add 1 (7)
 
-    -  .. row 7
+    -  .. table row
 
        -  
        -  write very_important_count (7)
@@ -73,41 +73,41 @@ This is what might happen:
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  Instance 1
 
        -  Instance 2
 
-    -  .. row 2
+    -  .. table row
 
        -  read very_important_count (5)
 
        -  
 
-    -  .. row 3
+    -  .. table row
 
        -  
        -  read very_important_count (5)
 
-    -  .. row 4
+    -  .. table row
 
        -  add 1 (6)
 
        -  
 
-    -  .. row 5
+    -  .. table row
 
        -  
        -  add 1 (6)
 
-    -  .. row 6
+    -  .. table row
 
        -  write very_important_count (6)
 
        -  
 
-    -  .. row 7
+    -  .. table row
 
        -  
        -  write very_important_count (6)
@@ -139,8 +139,8 @@ primitives, but I'll pretend they don't exist.
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------

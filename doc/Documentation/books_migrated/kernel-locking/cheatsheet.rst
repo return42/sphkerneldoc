@@ -43,7 +43,7 @@ spinlock primitives.
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  
        -  IRQ Handler A
@@ -66,13 +66,13 @@ spinlock primitives.
 
        -  User Context B
 
-    -  .. row 2
+    -  .. table row
 
        -  IRQ Handler A
 
        -  None
 
-    -  .. row 3
+    -  .. table row
 
        -  IRQ Handler B
 
@@ -80,7 +80,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 4
+    -  .. table row
 
        -  Softirq A
 
@@ -90,7 +90,7 @@ spinlock primitives.
 
        -  SL
 
-    -  .. row 5
+    -  .. table row
 
        -  Softirq B
 
@@ -102,7 +102,7 @@ spinlock primitives.
 
        -  SL
 
-    -  .. row 6
+    -  .. table row
 
        -  Tasklet A
 
@@ -116,7 +116,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 7
+    -  .. table row
 
        -  Tasklet B
 
@@ -132,7 +132,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 8
+    -  .. table row
 
        -  Timer A
 
@@ -150,7 +150,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 9
+    -  .. table row
 
        -  Timer B
 
@@ -170,7 +170,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 10
+    -  .. table row
 
        -  User Context A
 
@@ -192,7 +192,7 @@ spinlock primitives.
 
        -  None
 
-    -  .. row 11
+    -  .. table row
 
        -  User Context B
 
@@ -224,31 +224,31 @@ spinlock primitives.
     :stub-columns: 0
 
 
-    -  .. row 1
+    -  .. table row
 
        -  SLIS
 
        -  spin_lock_irqsave
 
-    -  .. row 2
+    -  .. table row
 
        -  SLI
 
        -  spin_lock_irq
 
-    -  .. row 3
+    -  .. table row
 
        -  SL
 
        -  spin_lock
 
-    -  .. row 4
+    -  .. table row
 
        -  SLBH
 
        -  spin_lock_bh
 
-    -  .. row 5
+    -  .. table row
 
        -  MLI
 
@@ -259,8 +259,8 @@ spinlock primitives.
 
 .. ------------------------------------------------------------------------------
 .. This file was automatically converted from DocBook-XML with the dbxml
-.. library (https://github.com/return42/sphkerneldoc). The origin XML comes
-.. from the linux kernel, refer to:
+.. library (https://github.com/return42/dbxml2rst). The origin XML comes
+.. from the linux kernel:
 ..
-.. * https://github.com/torvalds/linux/tree/master/Documentation/DocBook
+..   http://git.kernel.org/cgit/linux/kernel/git/torvalds/linux.git
 .. ------------------------------------------------------------------------------
