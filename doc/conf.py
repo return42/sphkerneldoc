@@ -194,6 +194,12 @@ kernel_doc_verbose_warn = False
 # Default: "reST"
 kernel_doc_mode = "reST"
 
+# Global fallback for man section of kernel-doc directives. Set this value if
+# you want to create man pages for those kernel-doc directives, which has not
+# been set a ``:man-sect:`` value.
+# Default: None
+kernel_doc_mansect = 9
+
 # In nickpick mode, it will complain about lots of missing references that
 #
 # 1) are just typedefs like: bool, __u32, etc;

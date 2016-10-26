@@ -233,6 +233,13 @@ kernel_doc_verbose_warn: ``True``
   If true, more warnings will be logged. E.g. a missing description of a
   function's return value will be logged.
 
+kernel_doc_mansect: ``None``
+  Global fallback for man section of kernel-doc directives. Set this value if
+  you want to create man pages for those kernel-doc directives, which has not
+  been set a ``:man-sect:`` value. The default is ``None``, which means; do the
+  opposite and create only man pages for those directives which has been set the
+  ``:man-sect:`` option (``None`` is what you mostly want).
+
 kernel_doc_mode: ``reST``
   Set parser's default kernel-doc mode ``reST|kernel-doc``. See
   :ref:`reST-kernel-doc-mode` and :ref:`vintage-kernel-doc-mode`.
