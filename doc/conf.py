@@ -12,6 +12,10 @@ import sys
 import os
 from os.path import join as pathjoin
 from os.path import abspath, dirname, splitext, basename, exists
+import sphinx
+
+# Get Sphinx version
+major, minor, patch = map(int, sphinx.__version__.split("."))
 
 # the build of the linux_src_doc needs increation of the recursion limit (a
 # limit of 2000 fails unregular)
@@ -123,25 +127,16 @@ extensions = [
     , "linuxdoc.kernel_include"  # kernel_include directive
     , "linuxdoc.cdomain"
     # , "xelatex"
-    , 'sphinx.ext.autodoc'
     , 'sphinx.ext.extlinks'
-    #, 'sphinx.ext.autosummary'
-    #, 'sphinx.ext.doctest'
     , 'sphinx.ext.todo'
-    , 'sphinx.ext.coverage'
-    #, 'sphinx.ext.pngmath'
-    #, 'sphinx.ext.mathjax'
-    , 'sphinx.ext.viewcode'
     , 'sphinx.ext.intersphinx'
     , 'sphinx.ext.ifconfig'
 ]
 
-# Gracefully handle missing rst2pdf.
-try:
-    import rst2pdf
-    extensions += ['rst2pdf.pdfbuilder']
-except ImportError:
-    pass
+if major == 1 and minor < 4:
+    extensions.append("sphinx.ext.pngmath")
+else:
+    extensions.append("sphinx.ext.imgmath")
 
 # Add any paths that contain templates here, relative to this directory.
 templates_path = ['_templates']
@@ -178,6 +173,9 @@ keep_warnings = False
 
 # If true, `todo` and `todoList` produce output, else they produce nothing.
 todo_include_todos = True
+
+primary_domain = 'C'
+highlight_language = 'guess'
 
 # ------------------------------------------------------------------------------
 # Options of the kernel-doc parser

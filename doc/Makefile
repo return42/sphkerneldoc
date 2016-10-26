@@ -167,7 +167,7 @@ help:
 	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
 	$(Q)echo
 	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF" | $(FMT)
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
