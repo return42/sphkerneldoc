@@ -8,8 +8,8 @@ ALLDVI = $(addsuffix .dvi,$(ALLDOCS))
 ARCHIVEPRREFIX =
 
 # Additional LaTeX options
-LATEXOPTS = # -interaction=batchmode
-LATEX_ENV = max_print_line=120
+LATEXOPTS = -interaction=nonstopmode
+LATEX_ENV = max_print_line=240
 
 # format: pdf or dvi
 FMT = pdf

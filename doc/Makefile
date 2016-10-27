@@ -1,5 +1,13 @@
 # -*- coding: utf-8; mode: make -*-
 
+# sphinx-build setup
+SPHINXOPTS =
+# The paper size ('letter' or 'a4').
+PAPER     := a4
+# The font size ('10pt', '11pt' or '12pt')
+FONTSIZE  := 11
+
+
 srctree=/share/linux-docs-next
 export srctree
 
@@ -28,13 +36,10 @@ ifndef $(KERNELRELEASE)
   KERNELRELEASE = $(KERNELVERSION)
 endif
 
-SCRIPT_FOLDER  := $(objtree)/scripts
 CACHE          := $(objtree)/cache
 AUTODOC_FOLDER := $(objtree)/doc/linux_src_doc
 DIST           := $(objtree)/dist
 
-# sphinx-build setup
-SPHINXOPTS =
 
 # Sphinx projects, we call them *books* which is more common to authors.
 BOOKS_FOLDER = $(obj)/Documentation
@@ -46,15 +51,16 @@ BOOKS=$(filter-out books/intro,                                           \
 BOOKS_HTML  = $(patsubst %,%.html, $(BOOKS))
 BOOKS_CLEAN = $(patsubst %,%.clean, $(BOOKS))
 BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
-BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS))
+BOOKS_LATEX = $(patsubst %,%.latex, $(BOOKS))
+BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS)) $(patsubst %,%.pdf, $(BOOKS_MIGRATED)) $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
 
 # for the period of transition from books_migrated
-MIGRATION_FOLDER=$(BOOKS_FOLDER)/books_migrated
-BOOKS_MIGRATED=$(patsubst $(MIGRATION_FOLDER)/%/conf.py,books/%,$(wildcard $(MIGRATION_FOLDER)/*/conf.py))
+BOOKS_MIGRATED_FOLDER=$(BOOKS_FOLDER)/books_migrated
+BOOKS_MIGRATED=$(patsubst $(BOOKS_MIGRATED_FOLDER)/%/conf.py,books/%,$(wildcard $(BOOKS_MIGRATED_FOLDER)/*/conf.py))
 BOOKS_MIGRATED_HTML  = $(patsubst %,%.html, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_CLEAN = $(patsubst %,%.clean, $(BOOKS_MIGRATED))
 BOOKS_MIGRATED_MAN   = $(patsubst %,%.man, $(BOOKS_MIGRATED))
-BOOKS_MIGRATED_PDF   = $(patsubst %,%.pdf, $(BOOKS_MIGRATED))
+BOOKS_MIGRATED_LATEX = $(patsubst %,%.latex, $(BOOKS_MIGRATED))
 
 # kernel's sphinx-books
 KERNEL_FOLDER=$(srctree)/Documentation
@@ -62,7 +68,8 @@ KERNEL_BOOKS=$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL
 KERNEL_BOOKS_HTML  = $(patsubst %,books/%.html, $(KERNEL_BOOKS))
 KERNEL_BOOKS_CLEAN = $(patsubst %,books/%.clean, $(KERNEL_BOOKS))
 KERNEL_BOOKS_MAN   = $(patsubst %,books/%.man, $(KERNEL_BOOKS))
-KERNEL_BOOKS_PDF   = $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
+KERNEL_BOOKS_LATEX = $(patsubst %,books/%.latex, $(KERNEL_BOOKS))
+
 
 FMT = cat
 ifeq ($(shell which fmt >/dev/null 2>&1; echo $$?), 0)
@@ -85,7 +92,7 @@ The base documentation build system requires sphinx-doc:\n\n\
   http://sphinx-doc.org or install it from the python package\n\
   manager (pip). On debian based OS these requirements are \n\
   installed by::\n\n\
-    sudo apt-get install pip \n\
+    sudo apt-get install pip\n\
     pip install Sphinx"
 
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
@@ -98,15 +105,15 @@ endif
 
 PHONY += msg-texlive texlive
 
-ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
+ifeq ($(shell which xelatex >/dev/null 2>&1; echo $$?), 1)
 texlive: msg-TeXLive
-	$(error The '$(PDFLATEX)' command was not found)
+	$(error The 'xelatex' command was not found)
 else
 texlive:
 	@:
 endif
 
-msg-texlive:
+msg-TeXLive:
 	$(Q)echo "\n\
 TeX output requires TexLive:\n\n\
   Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
@@ -115,8 +122,9 @@ TeX output requires TexLive:\n\n\
   and fonts. To process these LaTeX files, a TexLive installation with the\n\
   additional packages is required. On debian based OS these requirements\n\
   are installed by::\n\n\
-    sudo apt-get install \\n\
-          texlive-xetex texlive-latex-recommended\n"
+    sudo apt-get install\n\
+         texlive-base texlive-xetex texlive-latex-recommended\n\
+         texlive-extra-utils dvipng ttf-dejavu\n"
 
 # ------------------------------------------------------------------------------
 # usage
@@ -139,6 +147,11 @@ help:
 	$(Q)echo
 	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
 	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML)" | $(FMT)
+	$(Q)echo
+	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
+	$(Q)echo
+	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
+	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) " | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
@@ -174,11 +187,6 @@ help:
 # main targets
 # ------------------------------------------------------------------------------
 
-ALLSPHINXOPTS = -D version=$(KERNELVERSION) -D release=$(KERNELRELEASE) $(SPHINXOPTS)
-
-DIST_BOOKS = $(DIST)/books
-CACHE_BOOKS = $(CACHE)/books
-
 # update reST in reposetory
 PHONY += all-reST
 all-reST: dbxml2rst src2rst
@@ -188,7 +196,7 @@ PHONY += all-HTML books.html books.pdf books.man books.clean
 all-HTML:    sphinx-builder books.html src.html
 books.html:  sphinx-builder $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML) intro.html
 books.man:   sphinx-builder $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)
-#books.pdf:   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
+books.pdf:   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
 books.clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN) intro.clean
 
 PHONY += clean
@@ -196,6 +204,13 @@ clean: intro.clean books.clean
 
 $(DIST_BOOKS):
 	mkdir -p $(DIST_BOOKS)
+
+ALLSPHINXOPTS = $(SPHINXOPTS)\
+	-D latex_paper_size=$(PAPER) -D latex_font_size=$(FONTSIZE)\
+	-D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+
+DIST_BOOKS = $(DIST)/books
+CACHE_BOOKS = $(CACHE)/books
 
 # $2 sphinx builder e.g. "html"
 # $3 name of the book / e.g. "gpu", used as:
@@ -205,7 +220,7 @@ $(DIST_BOOKS):
 # $5 reST source folder,
 #    e.g. "$(BOOKS_FOLDER)/books_migrated" for the migrated books
 
-quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3$4)
+quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
       cmd_sphinx = SPHPROJ_CONF=$(abspath $5/$3/conf.py) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
@@ -225,7 +240,7 @@ quiet_cmd_sphinx_clean = CLEAN  $@
 # BOOKs
 # ------------------------------------------------------------------------------
 #
-# e.g.: make books/template-book.html
+# e.g.: make books/template-book.[html|man|latex|pdf|clean]
 #
 
 PHONY += $(BOOKS_CLEAN)
@@ -238,18 +253,23 @@ $(BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
 
 PHONY += $(BOOKS_MAN)
 $(BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(BOOKS_FOLDER))
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(BOOKS_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
-# PHONY += $(BOOKS_PDF)
-# $(BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf)
+PHONY += $(BOOKS_LATEX)
+$(BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
+	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(BOOKS_FOLDER))
+
+# latex to PDF is for all books the same
+PHONY += $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
+$(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
+	$(MAKE) PDFLATEX=xelatex -C $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex
 
 
 # migrated DocBook-XML to reST content
 # ------------------------------------
 #
-# e.g: make books/debugobjects.html
+# e.g: make books/debugobjects.[html|man|latex|pdf|clean]
 #
 PHONY += $(BOOKS_MIGRATED_CLEAN)
 $(BOOKS_MIGRATED_CLEAN):
@@ -257,22 +277,22 @@ $(BOOKS_MIGRATED_CLEAN):
 
 PHONY += $(BOOKS_MIGRATED_HTML)
 $(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_FOLDER)/books_migrated)
+	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_MIGRATED_FOLDER))
 
 PHONY += $(BOOKS_MIGRATED_MAN)
 $(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(BOOKS_FOLDER)/books_migrated)
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(BOOKS_MIGRATED_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
-# PHONY += $(BOOKS_MIGRATED_PDF)
-# $(BOOKS_MIGRATED_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
+PHONY += $(BOOKS_MIGRATED_LATEX)
+$(BOOKS_MIGRATED_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
+	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(BOOKS_MIGRATED_FOLDER))
 
 
 # kernel's sphinx-books
 # ------------------------------------
 #
-# e.g: make books/gpu.html
+# e.g: make books/gpu.[html|man|latex|pdf|clean]
 #
 
 PHONY += $(KERNEL_BOOKS_CLEAN)
@@ -285,14 +305,12 @@ $(KERNEL_BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
 
 PHONY += $(KERNEL_BOOKS_MAN)
 $(KERNEL_BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
-	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),/man,$(KERNEL_FOLDER))
+	$(call cmd,sphinx,kernel-doc-man,$(patsubst books/%.man,%,$@),man,$(KERNEL_FOLDER))
 	$(Q)find $(DIST_BOOKS)/$(patsubst books/%.man,%,$@)/man -name '*.9' -exec gzip -nf {} +
 
-# PHONY += $(KERNEL_BOOKS_PDF)
-# $(KERNEL_BOOKS_PDF): sphinx-builder rst2pdf-pkg | $(DIST_BOOKS)
-# 	$(call cmd,sphinx,pdf,$(patsubst books/%.pdf,%,$@),/rst2pdf,books_migrated/)
-
-
+PHONY += $(KERNEL_BOOKS_LATEX)
+$(KERNEL_BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
+	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(KERNEL_FOLDER))
 
 # ------------------------------------------------------------------------------
 # intro page
@@ -349,21 +367,16 @@ dbxml2rst.post:
 $(DB2RST):
 	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
-# # reST-book --> (Xe)LaTeX --> PDF
-# # -----------------------------------
+# reST-book --> (Xe)LaTeX --> PDF
+# -----------------------------------
+
+#MAKEINDEX := makeindex
 
 # RST2TEX := $(patsubst %, %.tex, $(BOOKS))
 # TEX2PDF := $(patsubst %, %.pdf, $(BOOKS))
-# PDFLATEX       := xelatex
-# MAKEINDEX      := makeindex
-# PAPER       := a4
 
-# PAPEROPT_a4     = -D latex_paper_size=a4
-# PAPEROPT_letter = -D latex_paper_size=letter
-# ALLSPHINXOPTS   = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
-
-# # the i18n builder cannot share the environment and doctrees with the others
-# I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
+# the i18n builder cannot share the environment and doctrees with the others
+#I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
 
 # DIST_BOOKS     := $(DIST)/books-pdf
 # export DIST_BOOKS
