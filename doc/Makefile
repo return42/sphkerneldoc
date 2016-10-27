@@ -96,30 +96,6 @@ sphinx-builder:
 	@:
 endif
 
-PHONY += msg-rst2pdf-pkg rst2pdf-pkg
-
-msg-rst2pdf-pkg:
-	$(Q)echo "\n\
-Building PDF output requires te python package rst2pdf:\n\n\
-  Make sure you have an updated rst2pdf installed, grab it from\n\
-  https://github.com/rst2pdf/rst2pdf or install it with pip::\n\n\
-    pip install rst2pdf\n\n\
-  If the installation fails, this might be due to missed header files\n\
-  needed by pillow which is a requirement of rst2pdf. For details take\n\
-  a look at: \n\n\
-    https://github.com/python-pillow/Pillow/blob/master/docs/installation.rst#external-libraries\n\n\
-  Mostly the jpeg headers are missed. On debian based OS these requirements\n\
-  are installed by::\n\n\
-    sudo apt-get install libjpeg-dev"
-
-ifeq ($(shell python -c "import rst2pdf" >/dev/null 2>&1; echo $$?), 1)
-rst2pdf-pkg: msg-rst2pdf-pkg
-	$(error The python module rst2pdf was not found)
-else
-rst2pdf-pkg:
-	@:
-endif
-
 PHONY += msg-texlive texlive
 
 ifeq ($(shell which $(PDFLATEX) >/dev/null 2>&1; echo $$?), 1)
@@ -148,7 +124,7 @@ TeX output requires TexLive:\n\n\
 
 PHONY += help help-rqmts
 
-help-rqmts: msg-sphinx-builder msg-rst2pdf-pkg msg-texlive
+help-rqmts: msg-sphinx-builder msg-texlive
 
 help:
 	$(Q)echo "Please use 'make <target>' where <target> is one of ..."
@@ -163,11 +139,6 @@ help:
 	$(Q)echo
 	$(Q)echo "books/{name}.html : build only the HTML of document {name}"
 	$(Q)echo "    valid values for books/{name}.html are: \n\n    $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML)" | $(FMT)
-	$(Q)echo
-	$(Q)echo "books.pdf : builds all PDF targets (with the buggy rstpdf):"
-	$(Q)echo
-	$(Q)echo "  books/{name}.pdf : build only the PDF of document {name}"
-	$(Q)echo "    valid values for books/{name}.pdf are: \n\n    $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)" | $(FMT)
 	$(Q)echo
 	$(Q)echo "books.man : builds all man page targets:"
 	$(Q)echo
@@ -217,9 +188,8 @@ PHONY += all-HTML books.html books.pdf books.man books.clean
 all-HTML:    sphinx-builder books.html src.html
 books.html:  sphinx-builder $(BOOKS_HTML) $(BOOKS_MIGRATED_HTML) $(KERNEL_BOOKS_HTML) intro.html
 books.man:   sphinx-builder $(BOOKS_MAN) $(BOOKS_MIGRATED_MAN) $(KERNEL_BOOKS_MAN)
-books.pdf:   rst2pdf $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
+#books.pdf:   $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
 books.clean: $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN) intro.clean
-#books-rqmts: msg-sphinx-builder msg-rst2pdf-pkg
 
 PHONY += clean
 clean: intro.clean books.clean
