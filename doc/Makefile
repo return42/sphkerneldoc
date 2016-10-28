@@ -355,17 +355,17 @@ DB2RST := $(patsubst %.tmpl,%.rst,$(DOCBOOKS))
 dbxml2rst: dbxml2rst.clean $(DB2RST) dbxml2rst.post
 
 dbxml2rst.clean:
-	rm -f $(MIGRATION_FOLDER)/*/*.rst
+	rm -f $(BOOKS_MIGRATED_FOLDER)/*/*.rst
 
 dbxml2rst.post:
 	$(Q)echo
-	$(Q)echo "CHECK IF SOME OF THE $(MIGRATION_FOLDER)/*/conf.py ARE OBSOLETE!"
+	$(Q)echo "CHECK IF SOME OF THE $(BOOKS_MIGRATED_FOLDER)/*/conf.py ARE OBSOLETE!"
 	$(Q)echo "IF SO, DROP THOSE FOLDERS."
 	$(Q)echo
 
 .PHONY:	$(DB2RST)
 $(DB2RST):
-	$(DBTOOLS_SCRIPT) --out=$(MIGRATION_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
+	$(DBTOOLS_SCRIPT) --out=$(BOOKS_MIGRATED_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
 # reST-book --> (Xe)LaTeX --> PDF
 # -----------------------------------
