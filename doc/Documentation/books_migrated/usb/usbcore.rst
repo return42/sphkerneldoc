@@ -8,7 +8,7 @@ USB Core APIs
 
 There are two basic I/O models in the USB API. The most elemental one is
 asynchronous: drivers submit requests in the form of an URB, and the
-URB's completion callback handle the next step. All USB transfer types
+URB's completion callback handles the next step. All USB transfer types
 support that model, although there are special cases for control URBs
 (which always have setup and status stages, but may not have a data
 stage) and isochronous URBs (which allow large packets and include

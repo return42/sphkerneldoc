@@ -21,20 +21,25 @@ The device model seen by USB drivers is relatively complex.
    scheduled to provide guaranteed bandwidth.
 
 -  The device description model includes one or more "configurations"
-   per device, only one of which is active at a time. Devices that are
-   capable of high-speed operation must also support full-speed
-   configurations, along with a way to ask about the "other speed"
-   configurations which might be used.
+   per device, only one of which is active at a time. Devices are
+   supposed to be capable of operating at lower than their top speeds
+   and may provide a BOS descriptor showing the lowest speed they remain
+   fully operational at.
 
--  Configurations have one or more "interfaces", each of which may have
-   "alternate settings". Interfaces may be standardized by USB "Class"
-   specifications, or may be specific to a vendor or device.
+-  From USB 3.0 on configurations have one or more "functions", which
+   provide a common functionality and are grouped together for purposes
+   of power management.
+
+-  Configurations or functions have one or more "interfaces", each of
+   which may have "alternate settings". Interfaces may be standardized
+   by USB "Class" specifications, or may be specific to a vendor or
+   device.
 
    USB device drivers actually bind to interfaces, not devices. Think of
    them as "interface drivers", though you may not see many devices
    where the distinction is important. *Most USB devices are simple,
-   with only one configuration, one interface, and one alternate
-   setting.*
+   with only one configuration, one function, one interface, and one
+   alternate setting.*
 
 -  Interfaces have one or more "endpoints", each of which supports one
    type and direction of data transfer such as "bulk out" or "interrupt
@@ -52,23 +57,22 @@ The device model seen by USB drivers is relatively complex.
    Blocks).
 
 Accordingly, the USB Core API exposed to device drivers covers quite a
-lot of territory. You'll probably need to consult the USB 2.0
+lot of territory. You'll probably need to consult the USB 3.0
 specification, available online from www.usb.org at no cost, as well as
 class or device specifications.
 
 The only host-side drivers that actually touch hardware (reading/writing
 registers, handling IRQs, and so on) are the HCDs. In theory, all HCDs
 provide the same functionality through the same API. In practice, that's
-becoming more true on the 2.5 kernels, but there are still differences
-that crop up especially with fault handling. Different controllers don't
-necessarily report the same aspects of failures, and recovery from
-faults (including software-induced ones like unlinking an URB) isn't yet
-fully consistent. Device driver authors should make a point of doing
-disconnect testing (while the device is active) with each different host
-controller driver, to make sure drivers don't have bugs of their own as
-well as to make sure they aren't relying on some HCD-specific behavior.
-(You will need external USB 1.1 and/or USB 2.0 hubs to perform all those
-tests.)
+becoming mostly true, but there are still differences that crop up
+especially with fault handling on the less common controllers. Different
+controllers don't necessarily report the same aspects of failures, and
+recovery from faults (including software-induced ones like unlinking an
+URB) isn't yet fully consistent. Device driver authors should make a
+point of doing disconnect testing (while the device is active) with each
+different host controller driver, to make sure drivers don't have bugs
+of thei1r own as well as to make sure they aren't relying on some
+HCD-specific behavior.
 
 
 .. ------------------------------------------------------------------------------

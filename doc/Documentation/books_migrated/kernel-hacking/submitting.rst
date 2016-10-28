@@ -40,8 +40,9 @@ make a neat patch, there's administrative work to be done:
    when changes are made to a subsystem, and hear about bugs; it implies
    a more-than-passing commitment to some part of the code.
 
--  Finally, don't forget to read ``Documentation/SubmittingPatches`` and
-   possibly ``Documentation/SubmittingDrivers``.
+-  Finally, don't forget to read
+   ``Documentation/process/submitting-patches.rst`` and possibly
+   ``Documentation/process/submitting-drivers.rst``.
 
 
 .. ------------------------------------------------------------------------------
