@@ -46,10 +46,10 @@ Reasons to migrate to reST + Sphinx-Doc
 The Sphinx-Doc generator's approach is complete different to XML applications,
 while the reST syntax definition is simple and unambiguously. Coders (the
 kernel-doc authors) who gets familiar with reST will love the markup. The
-readers appreciate the presentation, build by `sphinx-doc`_ . But, compare it by
-yourself: DocBook authoring/rendering versus a reST markup with a `sphinx-doc`_
-toolchain ...
+readers appreciate the presentation which is build by `sphinx-doc`_ . But,
+compare it by yourself: DocBook authoring/rendering versus a reST markup with a
+`sphinx-doc`_ toolchain ...
 
 * authoring: origin `DocBook XML books`_ and `reST books`_
-* rendering: origin `HTML DocBook books`_ and :ref:`HTML reST books <xref_migrated_docbock>`.
+* rendering: origin `HTML DocBook books`_ and :ref:`HTML reST books <xref_migrated_docbook>`.
 

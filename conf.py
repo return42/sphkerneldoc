@@ -24,7 +24,6 @@ sys.setrecursionlimit(5000)
 BASE_FOLDER = []
 for folder in dirname(__file__).split(os.sep):
     if folder == "cache":
-        BASE_FOLDER.append("doc")
         break
     BASE_FOLDER.append(folder)
 BASE_FOLDER = os.sep.join(BASE_FOLDER)
@@ -47,23 +46,33 @@ author    = 'The kernel development community'
 # release   = 'v4.7-rc2'
 
 # ------------------------------------------------------------------------------
-def loadPrjConfig():
+def loadConfig(namespace):
 # ------------------------------------------------------------------------------
 
-    from sphinx.util.pycompat import execfile_
-    from sphinx.util.osutil import cd
+    u"""Load an additional configuration file into *namespace*.
 
-    config_file = os.environ.get("SPHPROJ_CONF", None)
-    if config_file is not None and exists(config_file):
-        config_file = abspath(config_file)
-        main_name   = splitext(basename(config_file))[0]
-        config = globals().copy()
-        config.update({
-            "main_name" : main_name
-        })
-        config['__file__'] = config_file
-        execfile_(config_file, config)
-        globals().update(config)
+    The name of the configuration file is taken from the environment
+    ``SPHINX_CONF``. The external configuration file extends (or overwrites) the
+    configuration values from the origin ``conf.py``.  With this you are able to
+    maintain *build themes*.  """
+
+    config_file = os.environ.get("SPHINX_CONF", None)
+    if (config_file is not None
+        and os.path.normpath(namespace["__file__"]) != os.path.normpath(config_file) ):
+        config_file = os.path.abspath(config_file)
+
+        if os.path.isfile(config_file):
+            sys.stdout.write("load additional sphinx-config: %s\n" % config_file)
+            config = namespace.copy()
+            config['__file__'] = config_file
+            execfile_(config_file, config)
+            del config['__file__']
+            namespace.update(config)
+        else:
+            sys.stderr.write("WARNING: additional sphinx-config not found: %s\n" % config_file)
+    else:
+        sys.stdout.write("no additional sphinx-config\n")
+
 
 # ------------------------------------------------------------------------------
 # extensions
@@ -112,10 +121,6 @@ extlinks = {
 
 intersphinx_mapping = {}
 intersphinx_mapping['linux'] = ('https://return42.github.io/sphkerneldoc/linux_src_doc/', None)
-intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
-intersphinx_mapping['template-book'] = ('http://return42.github.io/sphkerneldoc/books/template-book/', None)
-intersphinx_mapping['linuxdoc'] =  ('http://return42.github.io/linuxdoc', None)
-intersphinx_mapping['dbxml2rst'] =  ('http://return42.github.io/dbxml2rst', None)
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -160,7 +165,7 @@ master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '_tex', 'sphinx-static']
+exclude_patterns = ['_build', '_tex', 'sphinx-staticxxxx']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -505,5 +510,7 @@ epub_exclude_files = ['search.html']
 #epub_use_index = True
 
 # ------------------------------------------------------------------------------
-loadPrjConfig()
+# Since loadConfig overwrites settings from the global namespace, it has to be
+# the last statement in the conf.py file
 # ------------------------------------------------------------------------------
+loadConfig(globals())

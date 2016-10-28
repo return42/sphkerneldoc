@@ -7,7 +7,6 @@ PAPER     := a4
 # The font size ('10pt', '11pt' or '12pt')
 FONTSIZE  := 11
 
-
 srctree=/share/linux-docs-next
 export srctree
 
@@ -92,10 +91,10 @@ msg-sphinx-builder:
 The base documentation build system requires sphinx-doc:\n\n\
   Make sure you have an updated Sphinx installed, grab it from\n\
   http://sphinx-doc.org or install it from the python package\n\
-  manager (pip). On debian based OS these requirements are \n\
+  manager (pip). On debian based OS these requirements are\n\
   installed by::\n\n\
-    sudo apt-get install pip\n\
-    pip install Sphinx"
+    sudo apt-get install pip3\n\
+    pip3 install --user -U Sphinx sphinx_rtd_theme"
 
 ifeq ($(shell which $(SPHINXBUILD) >/dev/null 2>&1; echo $$?), 1)
 sphinx-builder: msg-sphinx-builder
@@ -117,7 +116,7 @@ endif
 
 msg-TeXLive:
 	$(Q)echo "\n\
-TeX output requires TexLive:\n\n\
+The TeX and PDF output and the *math* extension require TexLive:\n\n\
   Make sure you have a updated TeXLive with XeTeX engine installed, grab it\n\
   it from https://www.tug.org/texlive or install it from your package manager.\n\n\
   Sphinx-doc produce (Xe)LaTeX files which might use additional TeX-packages\n\
@@ -134,7 +133,7 @@ TeX output requires TexLive:\n\n\
 
 PHONY += help help-rqmts
 
-help-rqmts: msg-sphinx-builder msg-texlive
+help-rqmts: msg-sphinx-builder msg-TeXLive
 
 help:
 	$(Q)echo "Please use 'make <target>' where <target> is one of ..."
@@ -189,6 +188,10 @@ help:
 # main targets
 # ------------------------------------------------------------------------------
 
+ALLSPHINXOPTS = $(SPHINXOPTS)\
+	-D latex_paper_size=$(PAPER) -D latex_font_size=$(FONTSIZE)\
+	-D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
+
 # update reST in reposetory
 PHONY += all-reST
 all-reST: dbxml2rst src2rst
@@ -206,10 +209,6 @@ clean: intro.clean books.clean
 
 $(DIST_BOOKS):
 	mkdir -p $(DIST_BOOKS)
-
-ALLSPHINXOPTS = $(SPHINXOPTS)\
-	-D latex_paper_size=$(PAPER) -D latex_font_size=$(FONTSIZE)\
-	-D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
 
 
 # $2 sphinx builder e.g. "html"
@@ -233,7 +232,7 @@ quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
 # $2 name of the book / e.g. "gpu", used to clean:
 #    * dest folder relative to $(DIST_BOOKS) and
 #    * cache folder relative to $(CACHE_BOOKS)
-quiet_cmd_sphinx_clean = CLEAN  $@
+quiet_cmd_sphinx_clean = CLEAN   $@
       cmd_sphinx_clean = rm -rf $(CACHE_BOOKS)/$2 $(DIST_BOOKS)/$2
 
 # ------------------------------------------------------------------------------
@@ -242,11 +241,6 @@ quiet_cmd_sphinx_clean = CLEAN  $@
 #
 # e.g.: make books/template-book.[html|man|latex|pdf|clean]
 #
-
-PHONY += $(BOOKS_CLEAN)
-$(BOOKS_CLEAN):
-	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
-
 PHONY += $(BOOKS_HTML)
 $(BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
 	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(BOOKS_FOLDER))
@@ -265,15 +259,16 @@ PHONY += $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
 $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
 	$(MAKE) PDFLATEX=xelatex -C $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex
 
+# clean is for all books the same
+PHONY += $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN)
+$(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN):
+	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
 
 # migrated DocBook-XML to reST content
 # ------------------------------------
 #
 # e.g: make books/debugobjects.[html|man|latex|pdf|clean]
 #
-PHONY += $(BOOKS_MIGRATED_CLEAN)
-$(BOOKS_MIGRATED_CLEAN):
-	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
 
 PHONY += $(BOOKS_MIGRATED_HTML)
 $(BOOKS_MIGRATED_HTML): sphinx-builder | $(DIST_BOOKS)
@@ -295,10 +290,6 @@ $(BOOKS_MIGRATED_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
 # e.g: make books/gpu.[html|man|latex|pdf|clean]
 #
 
-PHONY += $(KERNEL_BOOKS_CLEAN)
-$(KERNEL_BOOKS_CLEAN):
-	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
-
 PHONY += $(KERNEL_BOOKS_HTML)
 $(KERNEL_BOOKS_HTML): sphinx-builder | $(DIST_BOOKS)
 	$(call cmd,sphinx,html,$(patsubst books/%.html,%,$@),,$(KERNEL_FOLDER))
@@ -317,39 +308,31 @@ $(KERNEL_BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
 # ------------------------------------------------------------------------------
 
 INDEX_CACHE    = $(CACHE)/index-page
-INDEX_ARTICLES = $(filter-out index.rst,$(patsubst $(BOOKS_FOLDER)/%,%,$(wildcard $(BOOKS_FOLDER)/*.rst)))
-INDEX_REL = ../../Documentation/
 
-PHONY += intro.html intro.clean
-
-quiet_cmd_intro_clean = CLEAN  $@
+quiet_cmd_intro_clean = CLEAN   $@
       cmd_intro_clean = \
 	rm -rf $(INDEX_CACHE);\
-	rm -rf $(addprefix $(DIST)/, _sources _static articles);\
-	rm -f  $(addprefix $(DIST)/, .buildinfo genindex.html index.html objects.inv search.html searchindex.js)
+	rm -rf $(DIST)/.buildinfo $(filter-out $(DIST)/books $(DIST)/.git $(DIST)/.gitignore $(DIST)/linux_src_doc,$(wildcard $(DIST)/*))
 
-quiet_cmd_intro = CLEAN  $@
-      cmd_intro = \
-	rm -rf $(INDEX_CACHE)/articles   ;\
-	mkdir -p $(INDEX_CACHE)/articles ;\
-	ln -s -t $(INDEX_CACHE)/articles $(addprefix ../$(INDEX_REL),$(INDEX_ARTICLES) article_refs.txt ) ;\
-	ln -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL), article_refs.txt ) ;\
-	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst poc_sphkerneldoc) ;\
-	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../,conf.py) ;\
-	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2\
-		-d $(INDEX_CACHE)/.doctrees \
-		$(INDEX_CACHE) \
-		$(DIST)
+quiet_cmd_intro = SPHINX  $@ --> file://$(abspath $(DIST))/index.html
+      cmd_intro = SPHPROJ_CONF=$(abspath $(BOOKS_FOLDER)/intro/conf.py) \
+	$(SPHINXBUILD) \
+	$(ALLSPHINXOPTS) \
+	-b html \
+	-c $(obj) \
+	-d $(INDEX_CACHE) \
+	$(abspath $(obj)/intro) \
+	$(abspath $(DIST))
+
+PHONY += intro.html intro.clean
+intro.html: sphinx-builder | $(DIST_BOOKS)
+	$(call cmd,intro,html,../,,$(BOOKS_FOLDER))
 
 intro.clean:
 	$(call cmd,intro_clean)
 
-intro.html: sphinx-builder | $(DIST)
-	$(call cmd,intro,html)
-
-
 # DocBook-XML (tmpl) --> reST
-# --------------------
+# ---------------------------
 
 DB2RST := $(patsubst %.tmpl,%.rst,$(DOCBOOKS))
 dbxml2rst: dbxml2rst.clean $(DB2RST) dbxml2rst.post
@@ -367,38 +350,6 @@ dbxml2rst.post:
 $(DB2RST):
 	$(DBTOOLS_SCRIPT) --out=$(BOOKS_MIGRATED_FOLDER) db2rst $(srctree) $(patsubst %.rst,%.tmpl,${@})
 
-# reST-book --> (Xe)LaTeX --> PDF
-# -----------------------------------
-
-#MAKEINDEX := makeindex
-
-# RST2TEX := $(patsubst %, %.tex, $(BOOKS))
-# TEX2PDF := $(patsubst %, %.pdf, $(BOOKS))
-
-# the i18n builder cannot share the environment and doctrees with the others
-#I18NSPHINXOPTS  = $(PAPEROPT_$(PAPER)) $(SPHINXOPTS) .
-
-# DIST_BOOKS     := $(DIST)/books-pdf
-# export DIST_BOOKS
-
-# .PHONY: pdfbooks
-# pdfbooks: texlive sphinx-builder $(TEX2PDF)
-
-# .PHONY: $(RST2TEX)
-# $(RST2TEX): texlive sphinx-builder
-# 	@echo "building $@ ..."
-# 	rm -rf $(CACHE)/$(patsubst books/%,%,$@)
-# 	SPHPROJ_CONF=$(patsubst %.tex,conf.py,$@) $(SPHINXBUILD) $(ALLSPHINXOPTS) -c . -b xelatex \
-# # 		$(PAPEROPT_$(PAPER)) \
-# # 		-d $(CACHE)/doctrees/$(patsubst %.tex,%,$@) \
-# # 		$(patsubst %.tex,%,$@) \
-# # 		$(CACHE)/$(patsubst books/%,%,$@)
-
-
-# $(TEX2PDF): %.pdf : %.tex texlive
-# 	@echo "building $@ ..."
-# 	$(MAKE) -C $(CACHE)/$(patsubst books/%.pdf,%.tex,$@) all-pdf
-# 	$(MAKE) -C $(CACHE)/$(patsubst books/%.pdf,%.tex,$@) dist-pdf
 
 # ------------------------------------------------------------------------------
 # source-code

@@ -16,18 +16,7 @@ reST nano HOWTO
 
 A *loose reST article* is just a ordinary text file with reST markup in and a
 ``.rst`` file extension. All files matching ``Documentaton/*.rst`` are bundled
-into one build. Theirs html output is build by the 'books-index' target, which
-is also a prerequisite of the main target 'htmldocs'. There is also a
-'books-index.clean' target to get rid of all intermadiate and output files.
-
-
-.. code-block:: sh
-
-   $ make books-index
-   Running Sphinx v1.4.4
-   ...
-   build succeeded.
-     SPHINX  books-index --> file:///linux/Documentation/dist/index.html
+into one build.
 
 It is recommend to add a mode-line and a include directive on top of these
 files:
@@ -45,7 +34,7 @@ OK, thats all you have to know for the start. You see, a *loose reST article* is
 nothing more than a trival text file, but with *batteries included* ;-) ... see
 :ref:`kernel-doc-extensions`.
 
-.. _xref_faq:
+.. _xref_rest_and_sphinx:
 
 ===================
 reST and sphinx-doc
