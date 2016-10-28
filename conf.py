@@ -6,7 +6,7 @@
 # * http://www.sphinx-doc.org/en/stable/config.html
 #
 # Project (book) specific configuration is read from a file given by the
-# SPHPROJ_CONF environment (see function loadPrjConfig).
+# SPHINX_CONF environment (see function loadConfig).
 
 import sys
 import os
@@ -56,6 +56,8 @@ def loadConfig(namespace):
     configuration values from the origin ``conf.py``.  With this you are able to
     maintain *build themes*.  """
 
+    from sphinx.util.pycompat import execfile_
+
     config_file = os.environ.get("SPHINX_CONF", None)
     if (config_file is not None
         and os.path.normpath(namespace["__file__"]) != os.path.normpath(config_file) ):
@@ -64,7 +66,8 @@ def loadConfig(namespace):
         if os.path.isfile(config_file):
             sys.stdout.write("load additional sphinx-config: %s\n" % config_file)
             config = namespace.copy()
-            config['__file__'] = config_file
+            config['__file__']  = config_file
+            config['main_name'] = splitext(basename(config_file))[0]
             execfile_(config_file, config)
             del config['__file__']
             namespace.update(config)

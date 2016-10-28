@@ -220,7 +220,7 @@ $(DIST_BOOKS):
 #    e.g. "$(BOOKS_FOLDER)/books_migrated" for the migrated books
 
 quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
-      cmd_sphinx = SPHPROJ_CONF=$(abspath $5/$3/conf.py) \
+      cmd_sphinx = SPHINX_CONF=$(abspath $5/$3/conf.py) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
 	-b $2 \
@@ -257,7 +257,7 @@ $(BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
 # latex to PDF is for all books the same
 PHONY += $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
 $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
-	$(MAKE) PDFLATEX=xelatex -C $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex
+	$(MAKE) -C $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex all-pdf
 
 # clean is for all books the same
 PHONY += $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN)
@@ -315,7 +315,7 @@ quiet_cmd_intro_clean = CLEAN   $@
 	rm -rf $(DIST)/.buildinfo $(filter-out $(DIST)/books $(DIST)/.git $(DIST)/.gitignore $(DIST)/linux_src_doc,$(wildcard $(DIST)/*))
 
 quiet_cmd_intro = SPHINX  $@ --> file://$(abspath $(DIST))/index.html
-      cmd_intro = SPHPROJ_CONF=$(abspath $(BOOKS_FOLDER)/intro/conf.py) \
+      cmd_intro = SPHINX_CONF=$(abspath $(BOOKS_FOLDER)/intro/conf.py) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
 	-b html \

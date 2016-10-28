@@ -77,8 +77,8 @@ needed).
 
 .. _xref_migrated_docbook:
 
-DocBook content
-===============
+Linux Kernel's documentation (DocBook)
+======================================
 
 This section list DocBooks (`ref <https://www.kernel.org/doc/htmldocs>`__)
 content, which was has been automatic converted by this POC to the reST markup
