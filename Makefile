@@ -26,7 +26,7 @@ include Kbuild.include
 
 PHONY =
 
-objtree = $(abspath ..)
+objtree = .
 obj = .
 Q = @
 
@@ -37,8 +37,10 @@ ifndef $(KERNELRELEASE)
 endif
 
 CACHE          := $(objtree)/cache
-AUTODOC_FOLDER := $(objtree)/doc/linux_src_doc
+AUTODOC_FOLDER := $(objtree)/linux_src_doc
 DIST           := $(objtree)/dist
+DIST_BOOKS = $(DIST)/books
+CACHE_BOOKS = $(CACHE)/books
 
 
 # Sphinx projects, we call them *books* which is more common to authors.
@@ -209,8 +211,6 @@ ALLSPHINXOPTS = $(SPHINXOPTS)\
 	-D latex_paper_size=$(PAPER) -D latex_font_size=$(FONTSIZE)\
 	-D version=$(KERNELVERSION) -D release=$(KERNELRELEASE)
 
-DIST_BOOKS = $(DIST)/books
-CACHE_BOOKS = $(CACHE)/books
 
 # $2 sphinx builder e.g. "html"
 # $3 name of the book / e.g. "gpu", used as:
@@ -318,7 +318,7 @@ $(KERNEL_BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
 
 INDEX_CACHE    = $(CACHE)/index-page
 INDEX_ARTICLES = $(filter-out index.rst,$(patsubst $(BOOKS_FOLDER)/%,%,$(wildcard $(BOOKS_FOLDER)/*.rst)))
-INDEX_REL = ../../doc/Documentation/
+INDEX_REL = ../../Documentation/
 
 PHONY += intro.html intro.clean
 
@@ -335,7 +335,7 @@ quiet_cmd_intro = CLEAN  $@
 	ln -s -t $(INDEX_CACHE)/articles $(addprefix ../$(INDEX_REL),$(INDEX_ARTICLES) article_refs.txt ) ;\
 	ln -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL), article_refs.txt ) ;\
 	ln -f -s -t $(INDEX_CACHE) $(addprefix $(INDEX_REL),index.rst poc_sphkerneldoc) ;\
-	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../doc/,conf.py) ;\
+	ln -f -s -t $(INDEX_CACHE) $(addprefix ../../,conf.py) ;\
 	$(SPHINXBUILD) $(ALLSPHINXOPTS) -b $2\
 		-d $(INDEX_CACHE)/.doctrees \
 		$(INDEX_CACHE) \
