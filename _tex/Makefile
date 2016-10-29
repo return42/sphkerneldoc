@@ -1,7 +1,7 @@
 # -*- coding: utf-8; mode: make -*-
 
 # Additional LaTeX options
-LATEXOPTS = -interaction=nonstopmode -file-line-error
+LATEXOPTS := -file-line-error -interaction=errorstopmode
 LATEX_ENV = max_print_line=240
 
 ALLDOCS   = $(basename $(wildcard *.tex))

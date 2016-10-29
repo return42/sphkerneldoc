@@ -12,6 +12,7 @@ import sys
 import os
 from os.path import join as pathjoin
 from os.path import abspath, dirname, splitext, basename, exists
+from glob import glob
 import sphinx
 
 # Get Sphinx version
@@ -395,13 +396,7 @@ latex_elements.update({
 # the title page.
 latex_logo = pathjoin(BASE_FOLDER, "_tex", "logo.png")
 
-latex_additional_files = [
-    pathjoin(BASE_FOLDER,   "_tex", "Makefile")
-    , pathjoin(BASE_FOLDER, "_tex", "darmarITCI.sty")
-    , pathjoin(BASE_FOLDER, "_tex", "darmarITArticle.cls")
-    , pathjoin(BASE_FOLDER, "_tex", "icon_left.png")
-    , pathjoin(BASE_FOLDER, "_tex", "icon_right.png")
-]
+latex_additional_files = glob(pathjoin(BASE_FOLDER,   "_tex", "*"))
 
 # If true, show page references after internal links.
 # latex_show_pagerefs = False

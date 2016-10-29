@@ -57,7 +57,11 @@ BOOKS_HTML  = $(patsubst %,%.html, $(BOOKS))
 BOOKS_CLEAN = $(patsubst %,%.clean, $(BOOKS))
 BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
 BOOKS_LATEX = $(patsubst %,%.latex, $(BOOKS))
-BOOKS_PDF   = $(patsubst %,%.pdf, $(BOOKS)) $(patsubst %,%.pdf, $(BOOKS_MIGRATED)) $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
+
+# FIXME: media.pdf and kernel-doc-HOWTO.pdf not yet work
+BOOKS_PDF   = $(patsubst %,%.pdf, $(filter-out books/kernel-doc-HOWTO, $(BOOKS)))\
+	      $(patsubst %,%.pdf, $(BOOKS_MIGRATED))\
+	      $(patsubst %,books/%.pdf, $(filter-out media, $(KERNEL_BOOKS)))
 
 # for the period of transition from books_migrated
 BOOKS_MIGRATED_FOLDER=$(BOOKS_FOLDER)/books_migrated
