@@ -29,16 +29,20 @@ objtree = .
 obj = .
 Q = @
 
+DOCUTILSCONFIG=$(objtree)/docutils.conf:
+export DOCUTILSCONFIG
+
 KERNELVERSION := $(shell make -C $(srctree) kernelversion | grep "^[0-9]")
 
 ifndef $(KERNELRELEASE)
   KERNELRELEASE = $(KERNELVERSION)
 endif
 
-CACHE          := $(objtree)/cache
-AUTODOC_FOLDER := $(objtree)/linux_src_doc
-DIST           := $(objtree)/dist
-DIST_BOOKS = $(DIST)/books
+CACHE          := $(abspath $(objtree)/cache)
+AUTODOC_FOLDER := $(abspath $(objtree)/linux_src_doc)
+DIST           := $(abspath $(objtree)/dist)
+
+DIST_BOOKS  = $(DIST)/books
 CACHE_BOOKS = $(CACHE)/books
 
 
@@ -217,9 +221,9 @@ $(DIST_BOOKS):
 #    * cache folder relative to $(CACHE_BOOKS)
 # $4 dest subfolder e.g. "man" for man pages at gpu/man
 # $5 reST source folder,
-#    e.g. "$(BOOKS_FOLDER)/books_migrated" for the migrated books
+#    e.g. "$(BOOKS_MIGRATED_FOLDER)" for the migrated books
 
-quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
+quiet_cmd_sphinx = $(shell echo "$2" | tr '[:lower:]' '[:upper:]')  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
       cmd_sphinx = SPHINX_CONF=$(abspath $5/$3/conf.py) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
@@ -228,6 +232,23 @@ quiet_cmd_sphinx = SPHINX  $@ --> file://$(abspath $(DIST_BOOKS)/$3/$4)
 	-d $(CACHE_BOOKS)/$3 \
 	$(abspath $5/$3) \
 	$(abspath $(DIST_BOOKS)/$3/$4)
+
+# $2 name of the book / e.g. "gpu", used as:
+#    * cache folder relative to $(CACHE_BOOKS)
+#    * dest subfolder relative to $(CACHE_BOOKS)
+# $3 reST source folder,
+#    e.g. "$(BOOKS_MIGRATED_FOLDER)" for the migrated books
+
+quiet_cmd_latex = LATEX   $@ --> file://$(abspath $(CACHE_BOOKS)/$2/latex)
+      cmd_latex = SPHINX_CONF=$(abspath $3/$2/conf.py) \
+	$(SPHINXBUILD) \
+	$(ALLSPHINXOPTS) \
+	-b latex \
+	-c $(obj) \
+	-d $(CACHE_BOOKS)/$2 \
+	$(abspath $3/$2) \
+	$(abspath $(CACHE_BOOKS)/$2/latex)
+
 
 # $2 name of the book / e.g. "gpu", used to clean:
 #    * dest folder relative to $(DIST_BOOKS) and
@@ -252,17 +273,25 @@ $(BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
 
 PHONY += $(BOOKS_LATEX)
 $(BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
-	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(BOOKS_FOLDER))
+	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(BOOKS_FOLDER))
 
 # latex to PDF is for all books the same
 PHONY += $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF)
 $(BOOKS_PDF) $(BOOKS_MIGRATED_PDF) $(KERNEL_BOOKS_PDF): %.pdf : %.latex
-	$(MAKE) -C $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex all-pdf
+	$(Q) DIST_BOOKS=$(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/ \
+		$(MAKE) -C $(CACHE_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex all-pdf dist-pdf
+
+
+
+#$(Q) mkdir -p $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf
+#	$(Q) cp $(CACHE_BOOKS)/$(patsubst books/%.pdf,%,$@)/latex/*.pdf $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/
+#	$(Q) echo "  PDF    $@ --> file://$(abspath $(DIST_BOOKS)/$(patsubst books/%.pdf,%,$@)/pdf/)"
 
 # clean is for all books the same
 PHONY += $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN)
 $(BOOKS_CLEAN) $(BOOKS_MIGRATED_CLEAN) $(KERNEL_BOOKS_CLEAN):
 	$(call cmd,sphinx_clean,$(patsubst books/%.clean,%,$@))
+
 
 # migrated DocBook-XML to reST content
 # ------------------------------------
@@ -281,7 +310,7 @@ $(BOOKS_MIGRATED_MAN): sphinx-builder | $(DIST_BOOKS)
 
 PHONY += $(BOOKS_MIGRATED_LATEX)
 $(BOOKS_MIGRATED_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
-	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(BOOKS_MIGRATED_FOLDER))
+	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(BOOKS_MIGRATED_FOLDER))
 
 
 # kernel's sphinx-books
@@ -301,7 +330,7 @@ $(KERNEL_BOOKS_MAN): sphinx-builder | $(DIST_BOOKS)
 
 PHONY += $(KERNEL_BOOKS_LATEX)
 $(KERNEL_BOOKS_LATEX): sphinx-builder texlive | $(DIST_BOOKS)
-	$(call cmd,sphinx,latex,$(patsubst books/%.latex,%,$@),latex,$(KERNEL_FOLDER))
+	$(call cmd,latex,$(patsubst books/%.latex,%,$@),$(KERNEL_FOLDER))
 
 # ------------------------------------------------------------------------------
 # intro page
@@ -312,10 +341,14 @@ INDEX_CACHE    = $(CACHE)/index-page
 quiet_cmd_intro_clean = CLEAN   $@
       cmd_intro_clean = \
 	rm -rf $(INDEX_CACHE);\
-	rm -rf $(DIST)/.buildinfo $(filter-out $(DIST)/books $(DIST)/.git $(DIST)/.gitignore $(DIST)/linux_src_doc,$(wildcard $(DIST)/*))
+	rm -rf $(DIST)/.buildinfo   $(DIST)/genindex.html $(DIST)/index.html\
+		$(DIST)/objects.inv $(DIST)/search.html   $(DIST)/searchindex.js \
+		$(DIST)/_sources $(DIST)/_static \
+		$(DIST)/reST-nano-HOWTO.html \
+		$(DIST)/poc_sphkerneldoc
 
 quiet_cmd_intro = SPHINX  $@ --> file://$(abspath $(DIST))/index.html
-      cmd_intro = SPHINX_CONF=$(abspath $(BOOKS_FOLDER)/intro/conf.py) \
+      cmd_intro = SPHINX_CONF=$(abspath $(obj)/intro/conf.py) \
 	$(SPHINXBUILD) \
 	$(ALLSPHINXOPTS) \
 	-b html \

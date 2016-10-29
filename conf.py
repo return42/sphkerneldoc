@@ -168,7 +168,7 @@ master_doc = 'index'
 
 # List of patterns, relative to source directory, that match files and
 # directories to ignore when looking for source files.
-exclude_patterns = ['_build', '_tex', 'sphinx-staticxxxx']
+exclude_patterns = ['_build', '_tex', 'sphinx-static']
 
 # The name of the Pygments (syntax highlighting) style to use.
 pygments_style = 'sphinx'
@@ -347,7 +347,8 @@ latex_elements.update({
 
     'preamble' : latex_preamble
 
-    , 'docclass' :  'darmarITArticle'
+    , 'wrapperclass' : 'darmarITArticle'
+
     # Set these values via make environment PAPER and FONTSIZE (see Makefile)
     #, 'papersize'  : 'a4paper'  # The paper size ('letter' or 'a4').
     #, 'pointsize'  : '12pt'     # The font size ('10pt', '11pt' or '12pt').

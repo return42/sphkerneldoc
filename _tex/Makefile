@@ -1,20 +1,12 @@
-# Makefile for Sphinx LaTeX output
-
-ALLDOCS = $(basename $(wildcard *.tex))
-ALLPDF = $(addsuffix .pdf,$(ALLDOCS))
-ALLDVI = $(addsuffix .dvi,$(ALLDOCS))
-
-# Prefix for archive names
-ARCHIVEPRREFIX =
+# -*- coding: utf-8; mode: make -*-
 
 # Additional LaTeX options
-LATEXOPTS = -interaction=nonstopmode
+LATEXOPTS = -interaction=nonstopmode -file-line-error
 LATEX_ENV = max_print_line=240
 
-# format: pdf or dvi
-FMT = pdf
+ALLDOCS   = $(basename $(wildcard *.tex))
+ALLPDF    = $(addsuffix .pdf,$(ALLDOCS))
 
-LATEX     = $(LATEX_ENV) latex
 PDFLATEX  = $(LATEX_ENV) xelatex
 MAKEINDEX = $(LATEX_ENV) makeindex
 
@@ -23,66 +15,39 @@ all: $(ALLPDF)
 all-pdf: $(ALLPDF)
 
 dist-pdf:
-	mkdir -p $(DIST_BOOKS)
-	cp $(ALLPDF) $(DIST_BOOKS)
+	@echo "  PDF    $@ --> file://$(abspath $(DIST_BOOKS))"
+	@mkdir -p $(DIST_BOOKS)
+	@cp $(ALLPDF) $(DIST_BOOKS)
 
 all-dvi: $(ALLDVI)
 
 all-ps: all-dvi
 	for f in *.dvi; do dvips $$f; done
 
-all-pdf-ja:
-	for f in *.pdf *.png *.gif *.jpg *.jpeg; do extractbb $$f; done
-	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
-	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
-	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
-	-for f in *.idx; do mendex -U -f -d "`basename $$f .idx`.dic" -s python.ist $$f; done
-	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
-	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
-	for f in *.dvi; do dvipdfmx $$f; done
-
-zip: all-$(FMT)
-	mkdir $(ARCHIVEPREFIX)docs-$(FMT)
-	cp $(ALLPDF) $(ARCHIVEPREFIX)docs-$(FMT)
-	zip -q -r -9 $(ARCHIVEPREFIX)docs-$(FMT).zip $(ARCHIVEPREFIX)docs-$(FMT)
-	rm -r $(ARCHIVEPREFIX)docs-$(FMT)
-
-tar: all-$(FMT)
-	mkdir $(ARCHIVEPREFIX)docs-$(FMT)
-	cp $(ALLPDF) $(ARCHIVEPREFIX)docs-$(FMT)
-	tar cf $(ARCHIVEPREFIX)docs-$(FMT).tar $(ARCHIVEPREFIX)docs-$(FMT)
-	rm -r $(ARCHIVEPREFIX)docs-$(FMT)
-
-gz: tar
-	gzip -9 < $(ARCHIVEPREFIX)docs-$(FMT).tar > $(ARCHIVEPREFIX)docs-$(FMT).tar.gz
-
-bz2: tar
-	bzip2 -9 -k $(ARCHIVEPREFIX)docs-$(FMT).tar
-
-xz: tar
-	xz -9 -k $(ARCHIVEPREFIX)docs-$(FMT).tar
+# all-pdf-ja:
+# 	for f in *.pdf *.png *.gif *.jpg *.jpeg; do extractbb $$f; done
+# 	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
+# 	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
+# 	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
+# 	-for f in *.idx; do mendex -U -f -d "`basename $$f .idx`.dic" -s python.ist $$f; done
+# 	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
+# 	for f in *.tex; do platex -kanji=utf8 $(LATEXOPTS) $$f; done
+# 	for f in *.dvi; do dvipdfmx $$f; done
 
 # The number of LaTeX runs is quite conservative, but I don't expect it
 # to get run often, so the little extra time won't hurt.
-%.dvi: %.tex
-	$(LATEX) $(LATEXOPTS) '$<'
-	$(LATEX) $(LATEXOPTS) '$<'
-	$(LATEX) $(LATEXOPTS) '$<'
-	-$(MAKEINDEX) -s python.ist '$(basename $<).idx'
-	$(LATEX) $(LATEXOPTS) '$<'
-	$(LATEX) $(LATEXOPTS) '$<'
 
 %.pdf: %.tex
 	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
+	@$(PDFLATEX) $(LATEXOPTS) '$<'
+	@$(PDFLATEX) $(LATEXOPTS) '$<'
 	-$(MAKEINDEX) -s python.ist '$(basename $<).idx'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
-	$(PDFLATEX) $(LATEXOPTS) '$<'
+	@$(PDFLATEX) $(LATEXOPTS) '$<'
+	@$(PDFLATEX) $(LATEXOPTS) '$<'
 
 clean:
-	rm -f *.log *.ind *.aux *.toc *.syn *.idx *.out *.ilg *.pla *.ps *.tar *.tar.gz *.tar.bz2 *.tar.xz $(ALLPDF) $(ALLDVI)
+	rm -f *.log *.ind *.aux *.toc *.syn *.idx *.out *.ilg *.pla *.ps $(ALLPDF)
 
-.PHONY: all all-pdf all-dvi all-ps clean zip tar gz bz2 xz
-.PHONY: all-pdf-ja
+.PHONY: all all-pdf all-dvi all-ps clean
+# .PHONY: all-pdf-ja
 
