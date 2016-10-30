@@ -58,10 +58,10 @@ BOOKS_CLEAN = $(patsubst %,%.clean, $(BOOKS))
 BOOKS_MAN   = $(patsubst %,%.man, $(BOOKS))
 BOOKS_LATEX = $(patsubst %,%.latex, $(BOOKS))
 
-# FIXME: media.pdf and kernel-doc-HOWTO.pdf not yet work
+# FIXME: kernel-doc-HOWTO.pdf not yet work
 BOOKS_PDF   = $(patsubst %,%.pdf, $(filter-out books/kernel-doc-HOWTO, $(BOOKS)))\
 	      $(patsubst %,%.pdf, $(BOOKS_MIGRATED))\
-	      $(patsubst %,books/%.pdf, $(filter-out media, $(KERNEL_BOOKS)))
+	      $(patsubst %,books/%.pdf, $(KERNEL_BOOKS))
 
 # for the period of transition from books_migrated
 BOOKS_MIGRATED_FOLDER=$(BOOKS_FOLDER)/books_migrated
@@ -73,7 +73,8 @@ BOOKS_MIGRATED_LATEX = $(patsubst %,%.latex, $(BOOKS_MIGRATED))
 
 # kernel's sphinx-books
 KERNEL_FOLDER=$(srctree)/Documentation
-KERNEL_BOOKS=$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py))
+# FIXME: media not yet work
+KERNEL_BOOKS=$(filter-out media,$(patsubst $(srctree)/Documentation/%/conf.py,%,$(wildcard $(KERNEL_FOLDER)/*/conf.py)))
 KERNEL_BOOKS_HTML  = $(patsubst %,books/%.html, $(KERNEL_BOOKS))
 KERNEL_BOOKS_CLEAN = $(patsubst %,books/%.clean, $(KERNEL_BOOKS))
 KERNEL_BOOKS_MAN   = $(patsubst %,books/%.man, $(KERNEL_BOOKS))
