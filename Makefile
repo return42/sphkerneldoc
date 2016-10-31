@@ -349,6 +349,7 @@ quiet_cmd_intro_clean = CLEAN   $@
 	rm -rf $(DIST)/.buildinfo   $(DIST)/genindex.html $(DIST)/index.html\
 		$(DIST)/objects.inv $(DIST)/search.html   $(DIST)/searchindex.js \
 		$(DIST)/_sources $(DIST)/_static \
+		$(DIST)/docs.html\
 		$(DIST)/reST-nano-HOWTO.html \
 		$(DIST)/poc_sphkerneldoc
 
