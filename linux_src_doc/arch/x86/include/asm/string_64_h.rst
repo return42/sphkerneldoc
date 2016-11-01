@@ -25,6 +25,9 @@ Description
 -----------
 
 Low level memory copy function that catches machine checks
+We only call into the "safe" function on systems that can
+actually do machine check recovery. Everyone else can just
+use \ :c:func:`memcpy`\ .
 
 Return 0 for success, -EFAULT for fail
 

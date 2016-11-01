@@ -40,17 +40,17 @@ code
     input event code (KEY\_\*, SW\_\*)
 
 gpio
-    \ ``-1``\  if this key does not support gpio
+    %-1 if this key does not support gpio
 
 active_low
-    \ ``true``\  indicates that button is considered
+    %true indicates that button is considered
     depressed when gpio is low
 
 desc
     label that will be attached to button's gpio
 
 type
-    input event type (\ ``EV_KEY``\ , \ ``EV_SW``\ , \ ``EV_ABS``\ )
+    input event type (%EV_KEY, \ ``EV_SW``\ , \ ``EV_ABS``\ )
 
 wakeup
     configure the button as a wake-up source
@@ -59,7 +59,7 @@ debounce_interval
     debounce ticks interval in msecs
 
 can_disable
-    \ ``true``\  indicates that userspace is allowed to
+    %true indicates that userspace is allowed to
     disable button via sysfs
 
 value
@@ -103,7 +103,7 @@ Members
 -------
 
 buttons
-    pointer to array of \ :c:type:`struct gpio_keys_button <gpio_keys_button>` structures
+    pointer to array of \ :c:type:`struct gpio_keys_button <gpio_keys_button>`\  structures
     describing buttons attached to the device
 
 nbuttons

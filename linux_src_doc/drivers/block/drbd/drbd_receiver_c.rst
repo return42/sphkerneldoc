@@ -91,7 +91,7 @@ drbd_bump_write_ordering
 drbd_submit_peer_request
 ========================
 
-.. c:function:: int drbd_submit_peer_request(struct drbd_device *device, struct drbd_peer_request *peer_req, const unsigned rw, const int fault_type)
+.. c:function:: int drbd_submit_peer_request(struct drbd_device *device, struct drbd_peer_request *peer_req, const unsigned op, const unsigned op_flags, const int fault_type)
 
     :param struct drbd_device \*device:
         DRBD device.
@@ -99,8 +99,11 @@ drbd_submit_peer_request
     :param struct drbd_peer_request \*peer_req:
         peer request
 
-    :param const unsigned rw:
-        flag field, see bio->bi_rw
+    :param const unsigned op:
+        *undescribed*
+
+    :param const unsigned op_flags:
+        *undescribed*
 
     :param const int fault_type:
         *undescribed*

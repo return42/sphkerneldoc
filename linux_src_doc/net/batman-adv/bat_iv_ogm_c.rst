@@ -512,6 +512,176 @@ batadv_iv_ogm_orig_print
     :param struct batadv_hard_iface \*if_outgoing:
         the outgoing interface for which this should be printed
 
+.. _`batadv_iv_ogm_neigh_get_tq_avg`:
+
+batadv_iv_ogm_neigh_get_tq_avg
+==============================
+
+.. c:function:: bool batadv_iv_ogm_neigh_get_tq_avg(struct batadv_neigh_node *neigh_node, struct batadv_hard_iface *if_outgoing, u8 *tq_avg)
+
+    Get the TQ average for a neighbour on a given outgoing interface.
+
+    :param struct batadv_neigh_node \*neigh_node:
+        Neighbour of interest
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        Outgoing interface of interest
+
+    :param u8 \*tq_avg:
+        Pointer of where to store the TQ average
+
+.. _`batadv_iv_ogm_neigh_get_tq_avg.return`:
+
+Return
+------
+
+False if no average TQ available, otherwise true.
+
+.. _`batadv_iv_ogm_orig_dump_subentry`:
+
+batadv_iv_ogm_orig_dump_subentry
+================================
+
+.. c:function:: int batadv_iv_ogm_orig_dump_subentry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_hard_iface *if_outgoing, struct batadv_orig_node *orig_node, struct batadv_neigh_node *neigh_node, bool best)
+
+    Dump an originator subentry into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        Limit dump to entries with this outgoing interface
+
+    :param struct batadv_orig_node \*orig_node:
+        Originator to dump
+
+    :param struct batadv_neigh_node \*neigh_node:
+        Single hops neighbour
+
+    :param bool best:
+        Is the best originator
+
+.. _`batadv_iv_ogm_orig_dump_subentry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_ogm_orig_dump_entry`:
+
+batadv_iv_ogm_orig_dump_entry
+=============================
+
+.. c:function:: int batadv_iv_ogm_orig_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_hard_iface *if_outgoing, struct batadv_orig_node *orig_node, int *sub_s)
+
+    Dump an originator entry into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        Limit dump to entries with this outgoing interface
+
+    :param struct batadv_orig_node \*orig_node:
+        Originator to dump
+
+    :param int \*sub_s:
+        Number of sub entries to skip
+
+.. _`batadv_iv_ogm_orig_dump_entry.description`:
+
+Description
+-----------
+
+This function assumes the caller holds \ :c:func:`rcu_read_lock`\ .
+
+.. _`batadv_iv_ogm_orig_dump_entry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_ogm_orig_dump_bucket`:
+
+batadv_iv_ogm_orig_dump_bucket
+==============================
+
+.. c:function:: int batadv_iv_ogm_orig_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_hard_iface *if_outgoing, struct hlist_head *head, int *idx_s, int *sub)
+
+    Dump an originator bucket into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        Limit dump to entries with this outgoing interface
+
+    :param struct hlist_head \*head:
+        Bucket to be dumped
+
+    :param int \*idx_s:
+        Number of entries to be skipped
+
+    :param int \*sub:
+        Number of sub entries to be skipped
+
+.. _`batadv_iv_ogm_orig_dump_bucket.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_ogm_orig_dump`:
+
+batadv_iv_ogm_orig_dump
+=======================
+
+.. c:function:: void batadv_iv_ogm_orig_dump(struct sk_buff *msg, struct netlink_callback *cb, struct batadv_priv *bat_priv, struct batadv_hard_iface *if_outgoing)
+
+    Dump the originators into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Control block containing additional options
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        Limit dump to entries with this outgoing interface
+
 .. _`batadv_iv_hardif_neigh_print`:
 
 batadv_iv_hardif_neigh_print
@@ -541,6 +711,136 @@ batadv_iv_neigh_print
 
     :param struct seq_file \*seq:
         neighbour table seq_file struct
+
+.. _`batadv_iv_ogm_neigh_diff`:
+
+batadv_iv_ogm_neigh_diff
+========================
+
+.. c:function:: bool batadv_iv_ogm_neigh_diff(struct batadv_neigh_node *neigh1, struct batadv_hard_iface *if_outgoing1, struct batadv_neigh_node *neigh2, struct batadv_hard_iface *if_outgoing2, int *diff)
+
+    calculate tq difference of two neighbors
+
+    :param struct batadv_neigh_node \*neigh1:
+        the first neighbor object of the comparison
+
+    :param struct batadv_hard_iface \*if_outgoing1:
+        outgoing interface for the first neighbor
+
+    :param struct batadv_neigh_node \*neigh2:
+        the second neighbor object of the comparison
+
+    :param struct batadv_hard_iface \*if_outgoing2:
+        outgoing interface for the second neighbor
+
+    :param int \*diff:
+        pointer to integer receiving the calculated difference
+
+.. _`batadv_iv_ogm_neigh_diff.description`:
+
+Description
+-----------
+
+The content of \*@diff is only valid when this function returns true.
+It is less, equal to or greater than 0 if the metric via neigh1 is lower,
+the same as or higher than the metric via neigh2
+
+.. _`batadv_iv_ogm_neigh_diff.return`:
+
+Return
+------
+
+true when the difference could be calculated, false otherwise
+
+.. _`batadv_iv_ogm_neigh_dump_neigh`:
+
+batadv_iv_ogm_neigh_dump_neigh
+==============================
+
+.. c:function:: int batadv_iv_ogm_neigh_dump_neigh(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_hardif_neigh_node *hardif_neigh)
+
+    Dump a neighbour into a netlink message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_hardif_neigh_node \*hardif_neigh:
+        Neighbour to be dumped
+
+.. _`batadv_iv_ogm_neigh_dump_neigh.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_ogm_neigh_dump_hardif`:
+
+batadv_iv_ogm_neigh_dump_hardif
+===============================
+
+.. c:function:: int batadv_iv_ogm_neigh_dump_hardif(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_hard_iface *hard_iface, int *idx_s)
+
+    Dump the neighbours of a hard interface into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*hard_iface:
+        Hard interface to dump the neighbours for
+
+    :param int \*idx_s:
+        Number of entries to skip
+
+.. _`batadv_iv_ogm_neigh_dump_hardif.description`:
+
+Description
+-----------
+
+This function assumes the caller holds \ :c:func:`rcu_read_lock`\ .
+
+.. _`batadv_iv_ogm_neigh_dump_hardif.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_ogm_neigh_dump`:
+
+batadv_iv_ogm_neigh_dump
+========================
+
+.. c:function:: void batadv_iv_ogm_neigh_dump(struct sk_buff *msg, struct netlink_callback *cb, struct batadv_priv *bat_priv, struct batadv_hard_iface *single_hardif)
+
+    Dump the neighbours into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Control block containing additional options
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_hard_iface \*single_hardif:
+        Limit dump to this hard interfaace
 
 .. _`batadv_iv_ogm_neigh_cmp`:
 
@@ -599,6 +899,55 @@ Return
 
 true if the metric via neigh1 is equally good or better than
 the metric via neigh2, false otherwise.
+
+.. _`batadv_iv_gw_dump_entry`:
+
+batadv_iv_gw_dump_entry
+=======================
+
+.. c:function:: int batadv_iv_gw_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_gw_node *gw_node)
+
+    Dump a gateway into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_gw_node \*gw_node:
+        Gateway to be dumped
+
+.. _`batadv_iv_gw_dump_entry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_iv_gw_dump`:
+
+batadv_iv_gw_dump
+=================
+
+.. c:function:: void batadv_iv_gw_dump(struct sk_buff *msg, struct netlink_callback *cb, struct batadv_priv *bat_priv)
+
+    Dump gateways into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Control block containing additional options
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
 
 .. This file was automatic generated / don't edit.
 

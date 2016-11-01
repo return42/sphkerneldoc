@@ -287,7 +287,7 @@ v9fs_vfs_rmdir
 v9fs_vfs_rename
 ===============
 
-.. c:function:: int v9fs_vfs_rename(struct inode *old_dir, struct dentry *old_dentry, struct inode *new_dir, struct dentry *new_dentry)
+.. c:function:: int v9fs_vfs_rename(struct inode *old_dir, struct dentry *old_dentry, struct inode *new_dir, struct dentry *new_dentry, unsigned int flags)
 
     VFS hook to rename an inode
 
@@ -302,6 +302,9 @@ v9fs_vfs_rename
 
     :param struct dentry \*new_dentry:
         new dentry
+
+    :param unsigned int flags:
+        *undescribed*
 
 .. _`v9fs_vfs_getattr`:
 

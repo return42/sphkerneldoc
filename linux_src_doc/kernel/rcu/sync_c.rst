@@ -16,6 +16,24 @@ rcu_sync_init
     :param enum rcu_sync_type type:
         Flavor of RCU with which to synchronize rcu_sync structure
 
+.. _`rcu_sync_enter_start`:
+
+rcu_sync_enter_start
+====================
+
+.. c:function:: void rcu_sync_enter_start(struct rcu_sync *rsp)
+
+    :param struct rcu_sync \*rsp:
+        *undescribed*
+
+.. _`rcu_sync_enter_start.description`:
+
+Description
+-----------
+
+Ensures \ :c:func:`rcu_sync_is_idle`\  returns false and rcu_sync_{enter,exit}()
+pairs turn into NO-OPs.
+
 .. _`rcu_sync_enter`:
 
 rcu_sync_enter

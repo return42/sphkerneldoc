@@ -41,8 +41,8 @@ Definition
         size_t (*get_slave_size)(const struct net_device *dev,const struct net_device *slave_dev);
         int (*fill_slave_info)(struct sk_buff *skb,const struct net_device *dev,const struct net_device *slave_dev);
         struct net *(*get_link_net)(const struct net_device *dev);
-        size_t (*get_linkxstats_size)(const struct net_device *dev);
-        int (*fill_linkxstats)(struct sk_buff *skb,const struct net_device *dev,int *prividx);
+        size_t (*get_linkxstats_size)(const struct net_device *dev,int attr);
+        int (*fill_linkxstats)(struct sk_buff *skb,const struct net_device *dev,int *prividx, int attr);
     }
 
 .. _`rtnl_link_ops.members`:

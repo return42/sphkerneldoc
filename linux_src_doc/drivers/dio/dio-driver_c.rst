@@ -80,7 +80,7 @@ dio_bus_match
         the DIO device structure to match against
 
     :param struct device_driver \*drv:
-        the \ :c:type:`struct device_driver <device_driver>` that points to the array of DIO device id structures to search
+        the \ :c:type:`struct device_driver <device_driver>`\  that points to the array of DIO device id structures to search
 
 .. _`dio_bus_match.description`:
 

@@ -38,14 +38,14 @@ task->task_state_flags, and then the return value of ABORT TASK.
 
 If the task has task state bit SAS_TASK_STATE_DONE set, then the
 task was completed successfully prior to it being aborted.  The
-caller of ABORT TASK has responsibility to call task->\ :c:func:`task_done`\ 
+caller of ABORT TASK has responsibility to call task->task_done()
 xor free the task, depending on their framework.  The return code
 is TMF_RESP_FUNC_FAILED in this case.
 
 Else the SAS_TASK_STATE_DONE bit is not set,
 If the return code is TMF_RESP_FUNC_COMPLETE, then
 the task was aborted successfully.  The caller of
-ABORT TASK has responsibility to call task->\ :c:func:`task_done`\ 
+ABORT TASK has responsibility to call task->task_done()
 to finish the task, xor free the task depending on their
 framework.
 else

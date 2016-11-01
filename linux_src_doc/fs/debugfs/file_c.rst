@@ -29,7 +29,7 @@ the removal functions, you may safely access it after a successful
 call to \ :c:func:`debugfs_use_file_start`\  without worrying about
 lifetime issues.
 
-If -\ ``EIO``\  is returned, the file has already been removed and thus,
+If -%EIO is returned, the file has already been removed and thus,
 it is not safe to access any of its data. If, on the other hand,
 it is allowed to access the file data, zero is returned.
 
@@ -97,9 +97,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_u16`:
@@ -140,9 +140,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_u32`:
@@ -183,9 +183,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_u64`:
@@ -226,9 +226,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_ulong`:
@@ -269,9 +269,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_x8`:
@@ -456,9 +456,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_blob`:
@@ -499,9 +499,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_u32_array`:
@@ -541,7 +541,7 @@ Writing is not supported. Seek within the file is also not supported.
 Once array is created its size can not be changed.
 
 The function returns a pointer to dentry on success. If debugfs is not
-enabled in the kernel, the value -\ ``ENODEV``\  will be returned.
+enabled in the kernel, the value -%ENODEV will be returned.
 
 .. _`debugfs_print_regs32`:
 
@@ -618,9 +618,9 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
+\ ``NULL``\  or !%NULL instead as to eliminate the need for #ifdef in the calling
 code.
 
 .. _`debugfs_create_devm_seqfile`:

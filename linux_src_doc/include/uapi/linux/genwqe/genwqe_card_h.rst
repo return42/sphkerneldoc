@@ -20,13 +20,13 @@ Description
 Author
 ------
 
-Frank Haverkamp <haver\ ``linux``\ .vnet.ibm.com>
+Frank Haverkamp <haver@linux.vnet.ibm.com>
 
-Joerg-Stephan Vogt <jsvogt\ ``de``\ .ibm.com>
+Joerg-Stephan Vogt <jsvogt@de.ibm.com>
 
-Michael Jung <mijung\ ``gmx``\ .net>
+Michael Jung <mijung@gmx.net>
 
-Michael Ruettger <michael\ ``ibmra``\ .de>
+Michael Ruettger <michael@ibmra.de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (version 2 only)

@@ -19,9 +19,9 @@ Description
 -----------
 
 Copyright (C) 2004-2006 International Business Machines Corp.
-Author(s): Michael A. Halcrow <mhalcrow\ ``us``\ .ibm.com>
-Michael C. Thompson <mcthomps\ ``us``\ .ibm.com>
-Trevor S. Highland <trevor.highland\ ``gmail``\ .com>
+Author(s): Michael A. Halcrow <mhalcrow@us.ibm.com>
+Michael C. Thompson <mcthomps@us.ibm.com>
+Trevor S. Highland <trevor.highland@gmail.com>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as

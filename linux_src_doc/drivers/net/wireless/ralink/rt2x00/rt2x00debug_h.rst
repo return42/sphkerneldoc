@@ -28,7 +28,7 @@ Constants
 
 RT2X00DEBUGFS_OFFSET
     rt2x00lib should pass the register offset
-    as argument when using the callback function \ :c:func:`read`\ /\ :c:func:`write`\ 
+    as argument when using the callback function \ :c:func:`read`\ /write()
 
 .. This file was automatic generated / don't edit.
 

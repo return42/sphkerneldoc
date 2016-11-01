@@ -21,7 +21,7 @@ ntfs_debug
 Description
 -----------
 
-\ :c:func:`ntfs_debug`\  writes a DEBUG level message to the syslog but only if the
+ntfs_debug() writes a DEBUG level message to the syslog but only if the
 driver was compiled with -DDEBUG. Otherwise, the call turns into a NOP.
 
 .. This file was automatic generated / don't edit.

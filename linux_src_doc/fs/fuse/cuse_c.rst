@@ -27,11 +27,11 @@ cuse_parse_one
 Description
 -----------
 
-\*\ ``pp``\  points to packed strings - "key0=val0\0key1=val1\0" which ends
-at \ ``end``\  - 1.  This function parses one pair and set \*\ ``keyp``\  to the
-start of the key and \*\ ``valp``\  to the start of the value.  Note that
+\*@pp points to packed strings - "key0=val0\0key1=val1\0" which ends
+at \ ``end``\  - 1.  This function parses one pair and set \*@keyp to the
+start of the key and \*@valp to the start of the value.  Note that
 the original string is modified such that the key string is
-terminated with '\0'.  \*\ ``pp``\  is updated to point to the next string.
+terminated with '\0'.  \*@pp is updated to point to the next string.
 
 .. _`cuse_parse_one.return`:
 

@@ -7,4 +7,5 @@ mdc
 .. toctree::
     :maxdepth: 1
 
+    mdc_lib_c
     mdc_request_c

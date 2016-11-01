@@ -575,7 +575,7 @@ ccw_dev_id_is_equal
 Return
 ------
 
-\ ``1``\  if the two structures are equal field-by-field,
+%1 if the two structures are equal field-by-field,
 \ ``0``\  if not.
 
 .. _`ccw_dev_id_is_equal.context`:

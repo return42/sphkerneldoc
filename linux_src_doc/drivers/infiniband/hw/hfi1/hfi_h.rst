@@ -8,7 +8,7 @@ sc_to_vlt
 
 .. c:function:: u8 sc_to_vlt(struct hfi1_devdata *dd, u8 sc5)
 
-    \ ``dd``\  - devdata \ ``sc5``\  - 5 bit sc
+    @dd - devdata \ ``sc5``\  - 5 bit sc
 
     :param struct hfi1_devdata \*dd:
         *undescribed*

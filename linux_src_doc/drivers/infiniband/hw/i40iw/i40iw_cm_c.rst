@@ -432,7 +432,7 @@ i40iw_schedule_cm_timer
 
 .. c:function:: int i40iw_schedule_cm_timer(struct i40iw_cm_node *cm_node, struct i40iw_puda_buf *sqbuf, enum i40iw_timer_type type, int send_retrans, int close_when_complete)
 
-    @\ ``cm_node``\ : connection's node
+    @@cm_node: connection's node
 
     :param struct i40iw_cm_node \*cm_node:
         *undescribed*
@@ -457,7 +457,7 @@ Description
 note - cm_node needs to be protected before calling this. Encase in:
 i40iw_rem_ref_cm_node(cm_core, cm_node);
 i40iw_schedule_cm_timer(...)
-atomic_inc(\ :c:type:`cm_node->ref_count <cm_node>`\ );
+atomic_inc(&cm_node->ref_count);
 
 .. _`i40iw_retrans_expired`:
 
@@ -1182,18 +1182,6 @@ i40iw_cm_disconn
 
     :param struct i40iw_qp \*iwqp:
         associate qp for the connection
-
-.. _`i40iw_loopback_nop`:
-
-i40iw_loopback_nop
-==================
-
-.. c:function:: void i40iw_loopback_nop(struct i40iw_sc_qp *qp)
-
-    Send a nop
-
-    :param struct i40iw_sc_qp \*qp:
-        associated hw qp
 
 .. _`i40iw_qp_disconnect`:
 

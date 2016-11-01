@@ -68,7 +68,7 @@ nilfs_cpfile_get_checkpoint
 Description
 -----------
 
-\ :c:func:`nilfs_cpfile_get_checkpoint`\  acquires the checkpoint
+nilfs_cpfile_get_checkpoint() acquires the checkpoint
 specified by \ ``cno``\ . A new checkpoint will be created if \ ``cno``\  is the current
 checkpoint number and \ ``create``\  is nonzero.
 
@@ -113,7 +113,7 @@ nilfs_cpfile_put_checkpoint
 Description
 -----------
 
-\ :c:func:`nilfs_cpfile_put_checkpoint`\  releases the checkpoint
+nilfs_cpfile_put_checkpoint() releases the checkpoint
 specified by \ ``cno``\ . \ ``bh``\  must be the buffer head which has been returned by
 a previous call to \ :c:func:`nilfs_cpfile_get_checkpoint`\  with \ ``cno``\ .
 
@@ -140,7 +140,7 @@ nilfs_cpfile_delete_checkpoints
 Description
 -----------
 
-\ :c:func:`nilfs_cpfile_delete_checkpoints`\  deletes the checkpoints in
+nilfs_cpfile_delete_checkpoints() deletes the checkpoints in
 the period from \ ``start``\  to \ ``end``\ , excluding \ ``end``\  itself. The checkpoints
 which have been already deleted are ignored.
 
@@ -247,7 +247,7 @@ nilfs_cpfile_change_cpmode
 Description
 -----------
 
-\ :c:func:`nilfs_change_cpmode`\  changes the mode of the checkpoint
+nilfs_change_cpmode() changes the mode of the checkpoint
 specified by \ ``cno``\ . The mode \ ``mode``\  is NILFS_CHECKPOINT or NILFS_SNAPSHOT.
 
 .. _`nilfs_cpfile_change_cpmode.return-value`:
@@ -284,7 +284,7 @@ nilfs_cpfile_get_stat
 Description
 -----------
 
-\ :c:func:`nilfs_cpfile_get_stat`\  returns information about checkpoints.
+nilfs_cpfile_get_stat() returns information about checkpoints.
 
 .. _`nilfs_cpfile_get_stat.return-value`:
 

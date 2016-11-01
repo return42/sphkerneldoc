@@ -222,81 +222,6 @@ BATADV_TT_RESPONSE
 BATADV_TT_FULL_TABLE
     contains full table to replace existing table
 
-.. _`batadv_tt_client_flags`:
-
-enum batadv_tt_client_flags
-===========================
-
-.. c:type:: enum batadv_tt_client_flags
-
-    TT client specific flags
-
-.. _`batadv_tt_client_flags.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum batadv_tt_client_flags {
-        BATADV_TT_CLIENT_DEL,
-        BATADV_TT_CLIENT_ROAM,
-        BATADV_TT_CLIENT_WIFI,
-        BATADV_TT_CLIENT_ISOLA,
-        BATADV_TT_CLIENT_NOPURGE,
-        BATADV_TT_CLIENT_NEW,
-        BATADV_TT_CLIENT_PENDING,
-        BATADV_TT_CLIENT_TEMP
-    };
-
-.. _`batadv_tt_client_flags.constants`:
-
-Constants
----------
-
-BATADV_TT_CLIENT_DEL
-    the client has to be deleted from the table
-
-BATADV_TT_CLIENT_ROAM
-    the client roamed to/from another node and the new
-    update telling its new real location has not been received/sent yet
-
-BATADV_TT_CLIENT_WIFI
-    this client is connected through a wifi interface.
-    This information is used by the "AP Isolation" feature
-
-BATADV_TT_CLIENT_ISOLA
-    this client is considered "isolated". This
-    information is used by the Extended Isolation feature
-
-BATADV_TT_CLIENT_NOPURGE
-    this client should never be removed from the table
-
-BATADV_TT_CLIENT_NEW
-    this client has been added to the local table but has
-    not been announced yet
-
-BATADV_TT_CLIENT_PENDING
-    this client is marked for removal but it is kept
-    in the table for one more originator interval for consistency purposes
-
-BATADV_TT_CLIENT_TEMP
-    this global client has been detected to be part of
-    the network but no nnode has already announced it
-
-.. _`batadv_tt_client_flags.description`:
-
-Description
------------
-
-Bits from 0 to 7 are called \_remote flags\_ because they are sent on the wire.
-Bits from 8 to 15 are called \_local flags\_ because they are used for local
-computations only.
-
-Bits from 4 to 7 - a subset of remote flags - are ensured to be in sync with
-the other nodes in the network. To achieve this goal these flags are included
-in the TT CRC computation.
-
 .. _`batadv_vlan_flags`:
 
 enum batadv_vlan_flags
@@ -537,6 +462,38 @@ seqno
 elp_interval
     currently used ELP sending interval in ms
 
+.. _`batadv_icmp_user_cmd_type`:
+
+enum batadv_icmp_user_cmd_type
+==============================
+
+.. c:type:: enum batadv_icmp_user_cmd_type
+
+    types for batman-adv icmp cmd modes
+
+.. _`batadv_icmp_user_cmd_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum batadv_icmp_user_cmd_type {
+        BATADV_TP_START,
+        BATADV_TP_STOP
+    };
+
+.. _`batadv_icmp_user_cmd_type.constants`:
+
+Constants
+---------
+
+BATADV_TP_START
+    start a throughput meter run
+
+BATADV_TP_STOP
+    stop a throughput meter run
+
 .. _`batadv_icmp_header`:
 
 struct batadv_icmp_header
@@ -661,6 +618,109 @@ reserved
 
 seqno
     ICMP sequence number
+
+.. _`batadv_icmp_tp_packet`:
+
+struct batadv_icmp_tp_packet
+============================
+
+.. c:type:: struct batadv_icmp_tp_packet
+
+    ICMP TP Meter packet
+
+.. _`batadv_icmp_tp_packet.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct batadv_icmp_tp_packet {
+        u8 packet_type;
+        u8 version;
+        u8 ttl;
+        u8 msg_type;
+        u8 dst[ETH_ALEN];
+        u8 orig[ETH_ALEN];
+        u8 uid;
+        u8 subtype;
+        u8 session[2];
+        __be32 seqno;
+        __be32 timestamp;
+    }
+
+.. _`batadv_icmp_tp_packet.members`:
+
+Members
+-------
+
+packet_type
+    batman-adv packet type, part of the general header
+
+version
+    batman-adv protocol version, part of the genereal header
+
+ttl
+    time to live for this packet, part of the genereal header
+
+msg_type
+    ICMP packet type
+
+dst
+    address of the destination node
+
+orig
+    address of the source node
+
+uid
+    local ICMP socket identifier
+
+subtype
+    TP packet subtype (see batadv_icmp_tp_subtype)
+
+session
+    TP session identifier
+
+seqno
+    the TP sequence number
+
+timestamp
+    time when the packet has been sent. This value is filled in a
+    TP_MSG and echoed back in the next TP_ACK so that the sender can compute the
+    RTT. Since it is read only by the host which wrote it, there is no need to
+    store it using network order
+
+.. _`batadv_icmp_tp_subtype`:
+
+enum batadv_icmp_tp_subtype
+===========================
+
+.. c:type:: enum batadv_icmp_tp_subtype
+
+    ICMP TP Meter packet subtypes
+
+.. _`batadv_icmp_tp_subtype.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum batadv_icmp_tp_subtype {
+        BATADV_TP_MSG,
+        BATADV_TP_ACK
+    };
+
+.. _`batadv_icmp_tp_subtype.constants`:
+
+Constants
+---------
+
+BATADV_TP_MSG
+    Msg from sender to receiver
+
+BATADV_TP_ACK
+    acknowledgment from receiver to sender
 
 .. _`batadv_icmp_packet_rr`:
 
@@ -832,9 +892,11 @@ Definition
         u8 ttl;
     #if defined(__BIG_ENDIAN_BITFIELD)
         u8 no:4;
-        u8 reserved:4;
+        u8 priority:3;
+        u8 reserved:1;
     #elif defined(__LITTLE_ENDIAN_BITFIELD)
-        u8 reserved:4;
+        u8 reserved:1;
+        u8 priority:3;
         u8 no:4;
     #else
     #error "unknown bitfield endianness"
@@ -862,11 +924,17 @@ ttl
 no
     fragment number within this sequence
 
+priority
+    priority of frame, from ToS IP precedence or 802.1p
+
 reserved
     reserved byte for alignment
 
 reserved
     reserved byte for alignment
+
+priority
+    priority of frame, from ToS IP precedence or 802.1p
 
 no
     fragment number within this sequence

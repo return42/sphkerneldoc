@@ -306,7 +306,7 @@ list.
 schedule_erase
 ==============
 
-.. c:function:: int schedule_erase(struct ubi_device *ubi, struct ubi_wl_entry *e, int vol_id, int lnum, int torture)
+.. c:function:: int schedule_erase(struct ubi_device *ubi, struct ubi_wl_entry *e, int vol_id, int lnum, int torture, bool nested)
 
     schedule an erase work.
 
@@ -324,6 +324,9 @@ schedule_erase
 
     :param int torture:
         if the physical eraseblock has to be tortured
+
+    :param bool nested:
+        *undescribed*
 
 .. _`schedule_erase.description`:
 

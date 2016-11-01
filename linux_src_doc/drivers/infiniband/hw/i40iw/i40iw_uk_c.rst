@@ -282,7 +282,7 @@ i40iw_cq_post_entries
 i40iw_cq_poll_completion
 ========================
 
-.. c:function:: enum i40iw_status_code i40iw_cq_poll_completion(struct i40iw_cq_uk *cq, struct i40iw_cq_poll_info *info, bool post_cq)
+.. c:function:: enum i40iw_status_code i40iw_cq_poll_completion(struct i40iw_cq_uk *cq, struct i40iw_cq_poll_info *info)
 
     get cq completion info
 
@@ -291,9 +291,6 @@ i40iw_cq_poll_completion
 
     :param struct i40iw_cq_poll_info \*info:
         cq poll information returned
-
-    :param bool post_cq:
-        update cq tail
 
 .. _`i40iw_get_wqe_shift`:
 

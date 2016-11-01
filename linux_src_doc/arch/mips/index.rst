@@ -12,6 +12,7 @@ mips
     kernel/index
     kvm/index
     lib/index
+    math-emu/index
     mm/index
     net/index
     netlogic/index

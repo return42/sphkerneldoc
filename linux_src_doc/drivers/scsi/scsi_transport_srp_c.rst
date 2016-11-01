@@ -143,7 +143,7 @@ is in progress. One possible strategy is to invoke this function from
 the context of the SCSI EH thread only. Another possible strategy is to
 lock the rport mutex inside each SCSI LLD callback that can be invoked by
 the SCSI EH (the scsi_host_template.eh\_\*() functions and also the
-scsi_host_template.\ :c:func:`queuecommand`\  function).
+scsi_host_template.queuecommand() function).
 
 .. _`srp_timed_out`:
 

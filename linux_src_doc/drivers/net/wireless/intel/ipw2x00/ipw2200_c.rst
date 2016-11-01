@@ -18,7 +18,7 @@ ipw_alive
 Description
 -----------
 
-\ ``param``\  priv
+@param priv
 \ ``return``\  1 if card is present, 0 otherwise
 
 .. _`ipw_rx_queue_space`:
@@ -88,7 +88,7 @@ ipw_queue_init
 Description
 -----------
 
-\ ``param``\  q                queue to init
+@param q                queue to init
 \ ``param``\  count            Number of BD's to allocate. Should be power of 2
 \ ``param``\  read_register    Address for 'read' register
 (not offset within BAR, full address)
@@ -119,7 +119,7 @@ ipw_queue_tx_free_tfd
 Description
 -----------
 
-\ ``param``\  dev
+@param dev
 \ ``param``\  txq
 
 .. _`ipw_queue_tx_free`:
@@ -161,7 +161,7 @@ ipw_tx_queue_free
 Description
 -----------
 
-\ ``param``\  priv
+@param priv
 
 .. _`ipw_rx_notification`:
 
@@ -193,7 +193,7 @@ ipw_queue_reset
 Description
 -----------
 
-\ ``param``\  priv
+@param priv
 \ ``return``\  error code
 
 .. _`ipw_queue_tx_reclaim`:

@@ -71,7 +71,7 @@ Allocate \ ``count``\  clusters preferably starting at cluster \ ``start_lcn``\ 
 current allocator position if \ ``start_lcn``\  is -1, on the mounted ntfs volume
 \ ``vol``\ . \ ``zone``\  is either DATA_ZONE for allocation of normal clusters or
 MFT_ZONE for allocation of clusters for the master file table, i.e. the
-\ ``$MFT``\ /\ ``$DATA``\  attribute.
+\ ``$MFT``\ /$DATA attribute.
 
 \ ``start_vcn``\  specifies the vcn of the first allocated cluster.  This makes
 merging the resulting runlist with the old runlist easier.
@@ -184,16 +184,16 @@ deallocated.  Thus, to completely free all clusters in a runlist, use
 \ ``start_vcn``\  = 0 and \ ``count``\  = -1.
 
 If \ ``ctx``\  is specified, it is an active search context of \ ``ni``\  and its base mft
-record.  This is needed when \\ :c:func:`__ntfs_cluster_free`\  encounters unmapped
+record.  This is needed when \__ntfs_cluster_free() encounters unmapped
 runlist fragments and allows their mapping.  If you do not have the mft
-record mapped, you can specify \ ``ctx``\  as NULL and \\ :c:func:`__ntfs_cluster_free`\  will
+record mapped, you can specify \ ``ctx``\  as NULL and \__ntfs_cluster_free() will
 perform the necessary mapping and unmapping.
 
-Note, \\ :c:func:`__ntfs_cluster_free`\  saves the state of \ ``ctx``\  on entry and restores it
+Note, \__ntfs_cluster_free() saves the state of \ ``ctx``\  on entry and restores it
 before returning.  Thus, \ ``ctx``\  will be left pointing to the same attribute on
 return as on entry.  However, the actual pointers in \ ``ctx``\  may point to
 different memory locations on return, so you must remember to reset any
-cached pointers from the \ ``ctx``\ , i.e. after the call to \\ :c:func:`__ntfs_cluster_free`\ ,
+cached pointers from the \ ``ctx``\ , i.e. after the call to \__ntfs_cluster_free(),
 
 .. _`__ntfs_cluster_free.you-will-probably-want-to-do`:
 
@@ -208,7 +208,7 @@ you cache ctx->mrec in a variable \ ``m``\  of type MFT_RECORD \*.
 \ ``is_rollback``\  should always be 'false', it is for internal use to rollback
 errors.  You probably want to use \ :c:func:`ntfs_cluster_free`\  instead.
 
-Note, \\ :c:func:`__ntfs_cluster_free`\  does not modify the runlist, so you have to
+Note, \__ntfs_cluster_free() does not modify the runlist, so you have to
 remove from the runlist or mark sparse the freed runs later.
 
 Return the number of deallocated clusters (not counting sparse ones) on
@@ -220,10 +220,10 @@ WARNING
 -------
 
 If \ ``ctx``\  is supplied, regardless of whether success or failure is
-returned, you need to check IS_ERR(\ ``ctx``\ ->mrec) and if 'true' the \ ``ctx``\ 
+returned, you need to check IS_ERR(@ctx->mrec) and if 'true' the \ ``ctx``\ 
 is no longer valid, i.e. you need to either call
 \ :c:func:`ntfs_attr_reinit_search_ctx`\  or \ :c:func:`ntfs_attr_put_search_ctx`\  on it.
-In that case PTR_ERR(\ ``ctx``\ ->mrec) will give you the error code for
+In that case PTR_ERR(@ctx->mrec) will give you the error code for
 why the mapping of the old inode failed.
 
 .. _`__ntfs_cluster_free.locking`:

@@ -108,7 +108,6 @@ Definition
     struct axienet_local {
         struct net_device *ndev;
         struct device *dev;
-        struct phy_device *phy_dev;
         struct device_node *phy_node;
         struct mii_bus *mii_bus;
         void __iomem *regs;
@@ -145,9 +144,6 @@ ndev
 
 dev
     Pointer to device structure
-
-phy_dev
-    Pointer to PHY device structure attached to the axienet_local
 
 phy_node
     Pointer to device node structure

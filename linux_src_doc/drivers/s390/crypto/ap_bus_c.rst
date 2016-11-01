@@ -133,19 +133,19 @@ Description
 
 Returns AP queue status.
 
-.. _`ap_query_configuration`:
+.. _`__ap_query_configuration`:
 
-ap_query_configuration
-======================
+__ap_query_configuration
+========================
 
-.. c:function:: int ap_query_configuration( void)
+.. c:function:: int __ap_query_configuration( void)
 
     Get AP configuration data
 
     :param  void:
         no arguments
 
-.. _`ap_query_configuration.description`:
+.. _`__ap_query_configuration.description`:
 
 Description
 -----------
@@ -317,6 +317,25 @@ Description
 -----------
 
 Returns AP_WAIT_NONE, AP_WAIT_AGAIN, or AP_WAIT_INTERRUPT
+
+.. _`ap_sm_suspend_read`:
+
+ap_sm_suspend_read
+==================
+
+.. c:function:: enum ap_wait ap_sm_suspend_read(struct ap_device *ap_dev)
+
+    Receive pending reply messages from an AP device without changing the device state in between. In suspend mode we don't allow sending new requests, therefore just fetch pending replies.
+
+    :param struct ap_device \*ap_dev:
+        pointer to the AP device
+
+.. _`ap_sm_suspend_read.description`:
+
+Description
+-----------
+
+Returns AP_WAIT_NONE or AP_WAIT_AGAIN
 
 .. _`ap_sm_write`:
 

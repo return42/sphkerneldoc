@@ -32,7 +32,7 @@ xhci_debug_segment
 Description
 -----------
 
-\ ``return``\  The Link TRB of the segment, or NULL if there is no Link TRB
+@return The Link TRB of the segment, or NULL if there is no Link TRB
 (which is a bug, since all segments must have a Link TRB).
 
 Prints out all TRBs in the segment, even those after the Link TRB.

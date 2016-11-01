@@ -18,7 +18,7 @@ get_arch_regstr
 Description
 -----------
 
-\ :c:func:`get_arch_regstr`\  returns the name of the register in struct
+get_arch_regstr() returns the name of the register in struct
 regdwarfnum_table from it's DWARF register number. If the register is not
 found in the table, this returns NULL;
 

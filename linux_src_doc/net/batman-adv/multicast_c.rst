@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/multicast.c
 
+.. _`batadv_mcast_get_bridge`:
+
+batadv_mcast_get_bridge
+=======================
+
+.. c:function:: struct net_device *batadv_mcast_get_bridge(struct net_device *soft_iface)
+
+    get the bridge on top of the softif if it exists
+
+    :param struct net_device \*soft_iface:
+        netdev struct of the mesh interface
+
+.. _`batadv_mcast_get_bridge.description`:
+
+Description
+-----------
+
+If the given soft interface has a bridge on top then the refcount
+of the according net device is increased.
+
+.. _`batadv_mcast_get_bridge.return`:
+
+Return
+------
+
+NULL if no such bridge exists. Otherwise the net device of the
+bridge.
+
 .. _`batadv_mcast_mla_softif_get`:
 
 batadv_mcast_mla_softif_get
@@ -21,8 +49,15 @@ batadv_mcast_mla_softif_get
 Description
 -----------
 
-Collect multicast addresses of the local multicast listeners
-on the given soft interface, dev, in the given mcast_list.
+Collects multicast addresses of multicast listeners residing
+on this kernel on the given soft interface, dev, in
+the given mcast_list. In general, multicast listeners provided by
+your multicast receiving applications run directly on this node.
+
+If there is a bridge interface on top of dev, collects from that one
+instead. Just like with IP addresses and routes, multicast listeners
+will(/should) register to the bridge interface instead of an
+enslaved bat0.
 
 .. _`batadv_mcast_mla_softif_get.return`:
 
@@ -54,6 +89,66 @@ Return
 
 true if the given address is already in the given list.
 Otherwise returns false.
+
+.. _`batadv_mcast_mla_br_addr_cpy`:
+
+batadv_mcast_mla_br_addr_cpy
+============================
+
+.. c:function:: void batadv_mcast_mla_br_addr_cpy(char *dst, const struct br_ip *src)
+
+    copy a bridge multicast address
+
+    :param char \*dst:
+        destination to write to - a multicast MAC address
+
+    :param const struct br_ip \*src:
+        source to read from - a multicast IP address
+
+.. _`batadv_mcast_mla_br_addr_cpy.description`:
+
+Description
+-----------
+
+Converts a given multicast IPv4/IPv6 address from a bridge
+to its matching multicast MAC address and copies it into the given
+destination buffer.
+
+Caller needs to make sure the destination buffer can hold
+at least ETH_ALEN bytes.
+
+.. _`batadv_mcast_mla_bridge_get`:
+
+batadv_mcast_mla_bridge_get
+===========================
+
+.. c:function:: int batadv_mcast_mla_bridge_get(struct net_device *dev, struct hlist_head *mcast_list)
+
+    get bridged-in multicast listeners
+
+    :param struct net_device \*dev:
+        a bridge slave whose bridge to collect multicast addresses from
+
+    :param struct hlist_head \*mcast_list:
+        a list to put found addresses into
+
+.. _`batadv_mcast_mla_bridge_get.description`:
+
+Description
+-----------
+
+Collects multicast addresses of multicast listeners residing
+on foreign, non-mesh devices which we gave access to our mesh via
+a bridge on top of the given soft interface, dev, in the given
+mcast_list.
+
+.. _`batadv_mcast_mla_bridge_get.return`:
+
+Return
+------
+
+-ENOMEM on memory allocation error or the number of
+items added to the mcast_list otherwise.
 
 .. _`batadv_mcast_mla_list_free`:
 
@@ -151,6 +246,111 @@ Return
 
 true if there is a bridge, false otherwise.
 
+.. _`batadv_mcast_querier_log`:
+
+batadv_mcast_querier_log
+========================
+
+.. c:function:: void batadv_mcast_querier_log(struct batadv_priv *bat_priv, char *str_proto, struct batadv_mcast_querier_state *old_state, struct batadv_mcast_querier_state *new_state)
+
+    debug output regarding the querier status on link
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param char \*str_proto:
+        a string for the querier protocol (e.g. "IGMP" or "MLD")
+
+    :param struct batadv_mcast_querier_state \*old_state:
+        the previous querier state on our link
+
+    :param struct batadv_mcast_querier_state \*new_state:
+        the new querier state on our link
+
+.. _`batadv_mcast_querier_log.description`:
+
+Description
+-----------
+
+Outputs debug messages to the logging facility with log level 'mcast'
+regarding changes to the querier status on the link which are relevant
+to our multicast optimizations.
+
+Usually this is about whether a querier appeared or vanished in
+our mesh or whether the querier is in the suboptimal position of being
+
+.. _`batadv_mcast_querier_log.behind-our-local-bridge-segment`:
+
+behind our local bridge segment
+-------------------------------
+
+Snooping switches will directly
+forward listener reports to the querier, therefore batman-adv and
+the bridge will potentially not see these listeners - the querier is
+potentially shadowing listeners from us then.
+
+This is only interesting for nodes with a bridge on top of their
+soft interface.
+
+.. _`batadv_mcast_bridge_log`:
+
+batadv_mcast_bridge_log
+=======================
+
+.. c:function:: void batadv_mcast_bridge_log(struct batadv_priv *bat_priv, bool bridged, struct batadv_mcast_querier_state *querier_ipv4, struct batadv_mcast_querier_state *querier_ipv6)
+
+    debug output for topology changes in bridged setups
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param bool bridged:
+        a flag about whether the soft interface is currently bridged or not
+
+    :param struct batadv_mcast_querier_state \*querier_ipv4:
+        (maybe) new status of a potential, selected IGMP querier
+
+    :param struct batadv_mcast_querier_state \*querier_ipv6:
+        (maybe) new status of a potential, selected MLD querier
+
+.. _`batadv_mcast_bridge_log.description`:
+
+Description
+-----------
+
+If no bridges are ever used on this node, then this function does nothing.
+
+Otherwise this function outputs debug information to the 'mcast' log level
+which might be relevant to our multicast optimizations.
+
+More precisely, it outputs information when a bridge interface is added or
+removed from a soft interface. And when a bridge is present, it further
+outputs information about the querier state which is relevant for the
+multicast flags this node is going to set.
+
+.. _`batadv_mcast_flags_log`:
+
+batadv_mcast_flags_log
+======================
+
+.. c:function:: void batadv_mcast_flags_log(struct batadv_priv *bat_priv, u8 flags)
+
+    output debug information about mcast flag changes
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param u8 flags:
+        flags indicating the new multicast state
+
+.. _`batadv_mcast_flags_log.description`:
+
+Description
+-----------
+
+Whenever the multicast flags this nodes announces changes (@mcast_flags vs.
+bat_priv->mcast.flags), this notifies userspace via the 'mcast' log level.
+
 .. _`batadv_mcast_mla_tvlv_update`:
 
 batadv_mcast_mla_tvlv_update
@@ -176,8 +376,8 @@ capabilities and inabilities.
 Return
 ------
 
-true if the tvlv container is registered afterwards. Otherwise
-returns false.
+false if we want all IPv4 && IPv6 multicast traffic and true
+otherwise.
 
 .. _`batadv_mcast_mla_update`:
 
@@ -198,6 +398,34 @@ Description
 
 Updates the own multicast listener announcements in the translation
 table as well as the own, announced multicast tvlv container.
+
+.. _`batadv_mcast_is_report_ipv4`:
+
+batadv_mcast_is_report_ipv4
+===========================
+
+.. c:function:: bool batadv_mcast_is_report_ipv4(struct sk_buff *skb)
+
+    check for IGMP reports
+
+    :param struct sk_buff \*skb:
+        the ethernet frame destined for the mesh
+
+.. _`batadv_mcast_is_report_ipv4.description`:
+
+Description
+-----------
+
+This call might reallocate skb data.
+
+Checks whether the given frame is a valid IGMP report.
+
+.. _`batadv_mcast_is_report_ipv4.return`:
+
+Return
+------
+
+If so then true, otherwise false.
 
 .. _`batadv_mcast_forw_mode_check_ipv4`:
 
@@ -232,6 +460,34 @@ Return
 
 If so then 0. Otherwise -EINVAL or -ENOMEM in case of memory
 allocation failure.
+
+.. _`batadv_mcast_is_report_ipv6`:
+
+batadv_mcast_is_report_ipv6
+===========================
+
+.. c:function:: bool batadv_mcast_is_report_ipv6(struct sk_buff *skb)
+
+    check for MLD reports
+
+    :param struct sk_buff \*skb:
+        the ethernet frame destined for the mesh
+
+.. _`batadv_mcast_is_report_ipv6.description`:
+
+Description
+-----------
+
+This call might reallocate skb data.
+
+Checks whether the given frame is a valid MLD report.
+
+.. _`batadv_mcast_is_report_ipv6.return`:
+
+Return
+------
+
+If so then true, otherwise false.
 
 .. _`batadv_mcast_forw_mode_check_ipv6`:
 
@@ -541,12 +797,12 @@ toggled then this method updates counter and list accordingly.
 
 Caller needs to hold orig->mcast_handler_lock.
 
-.. _`batadv_mcast_tvlv_ogm_handler_v1`:
+.. _`batadv_mcast_tvlv_ogm_handler`:
 
-batadv_mcast_tvlv_ogm_handler_v1
-================================
+batadv_mcast_tvlv_ogm_handler
+=============================
 
-.. c:function:: void batadv_mcast_tvlv_ogm_handler_v1(struct batadv_priv *bat_priv, struct batadv_orig_node *orig, u8 flags, void *tvlv_value, u16 tvlv_value_len)
+.. c:function:: void batadv_mcast_tvlv_ogm_handler(struct batadv_priv *bat_priv, struct batadv_orig_node *orig, u8 flags, void *tvlv_value, u16 tvlv_value_len)
 
     process incoming multicast tvlv container
 
@@ -576,6 +832,60 @@ batadv_mcast_init
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
+
+.. _`batadv_mcast_flags_print_header`:
+
+batadv_mcast_flags_print_header
+===============================
+
+.. c:function:: void batadv_mcast_flags_print_header(struct batadv_priv *bat_priv, struct seq_file *seq)
+
+    print own mcast flags to debugfs table
+
+    :param struct batadv_priv \*bat_priv:
+        the bat priv with all the soft interface information
+
+    :param struct seq_file \*seq:
+        debugfs table seq_file struct
+
+.. _`batadv_mcast_flags_print_header.description`:
+
+Description
+-----------
+
+Prints our own multicast flags including a more specific reason why
+they are set, that is prints the bridge and querier state too, to
+the debugfs table specified via \ ``seq``\ .
+
+.. _`batadv_mcast_flags_seq_print_text`:
+
+batadv_mcast_flags_seq_print_text
+=================================
+
+.. c:function:: int batadv_mcast_flags_seq_print_text(struct seq_file *seq, void *offset)
+
+    print the mcast flags of other nodes
+
+    :param struct seq_file \*seq:
+        seq file to print on
+
+    :param void \*offset:
+        not used
+
+.. _`batadv_mcast_flags_seq_print_text.description`:
+
+Description
+-----------
+
+This prints a table of (primary) originators and their according
+multicast flags, including (in the header) our own.
+
+.. _`batadv_mcast_flags_seq_print_text.return`:
+
+Return
+------
+
+always 0
 
 .. _`batadv_mcast_free`:
 

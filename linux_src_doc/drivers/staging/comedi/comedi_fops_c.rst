@@ -122,7 +122,7 @@ comedi_is_subdevice_running
 Return
 ------
 
-\ ``true``\  if an asynchronous COMEDI command is active on the
+%true if an asynchronous COMEDI command is active on the
 subdevice, else \ ``false``\ .
 
 .. _`comedi_set_spriv_auto_free`:
@@ -198,7 +198,7 @@ comedi_event
 Context
 -------
 
-\ :c:func:`in_interrupt`\  (usually), \ ``s``\ ->spin_lock spin-lock not held.
+in_interrupt() (usually), \ ``s``\ ->spin_lock spin-lock not held.
 
 .. _`comedi_event.description`:
 

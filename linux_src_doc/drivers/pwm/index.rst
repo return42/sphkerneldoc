@@ -9,6 +9,7 @@ pwm
 
     core_c
     pwm-crc_c
+    pwm-cros-ec_c
     pwm-samsung_c
     pwm-spear_c
     pwm-tiehrpwm_c

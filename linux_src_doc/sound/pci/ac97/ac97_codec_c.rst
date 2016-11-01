@@ -27,7 +27,7 @@ Description
 Writes a value on the given register.  This will invoke the write
 callback directly after the register check.
 This function doesn't change the register cache unlike
-#\ :c:func:`snd_ca97_write_cache`\ , so use this only when you don't want to
+#snd_ca97_write_cache(), so use this only when you don't want to
 reflect the change to the suspend/resume state.
 
 .. _`snd_ac97_read`:

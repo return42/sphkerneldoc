@@ -18,7 +18,7 @@ User code should arrange data in memory like this
 
 struct wil_memio io;
 struct ifreq ifr = {
-.ifr_data = \ :c:type:`struct io <io>`,
+.ifr_data = \ :c:type:`struct io <io>`\ ,
 };
 
 .. _`wil_ioctl_memio_block`:
@@ -39,7 +39,7 @@ struct wil_memio_block io = {
 .block = buf,
 };
 struct ifreq ifr = {
-.ifr_data = \ :c:type:`struct io <io>`,
+.ifr_data = \ :c:type:`struct io <io>`\ ,
 };
 
 .. This file was automatic generated / don't edit.

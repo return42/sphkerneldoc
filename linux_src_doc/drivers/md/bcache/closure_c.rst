@@ -45,7 +45,7 @@ closure_wait
 Description
 -----------
 
-\ ``waitlist``\  will own a ref on \ ``cl``\ , which will be released when
+@waitlist will own a ref on \ ``cl``\ , which will be released when
 \ :c:func:`closure_wake_up`\  is called on \ ``waitlist``\ .
 
 .. _`closure_sync`:
@@ -55,7 +55,7 @@ closure_sync
 
 .. c:function:: void closure_sync(struct closure *cl)
 
-    sleep until a closure a closure has nothing left to wait on
+    sleep until a closure has nothing left to wait on
 
     :param struct closure \*cl:
         *undescribed*

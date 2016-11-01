@@ -22,9 +22,9 @@ Copyright (C) 2012-2013 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Keshava Munegowda <keshava_mgowda\ ``ti``\ .com>
+Keshava Munegowda <keshava_mgowda@ti.com>
 
-Roger Quadros <rogerq\ ``ti``\ .com>
+Roger Quadros <rogerq@ti.com>
 
 .. _`usbtll_driver_name.this-program-is-free-software`:
 

@@ -187,6 +187,7 @@ Definition
         STA_KEY_FLG_CCM,
         STA_KEY_FLG_TKIP,
         STA_KEY_FLG_EXT,
+        STA_KEY_FLG_GCMP,
         STA_KEY_FLG_CMAC,
         STA_KEY_FLG_ENC_UNKNOWN,
         STA_KEY_FLG_EN_MSK,
@@ -195,6 +196,7 @@ Definition
         STA_KEY_FLG_KEYID_MSK,
         STA_KEY_NOT_VALID,
         STA_KEY_FLG_WEP_13BYTES,
+        STA_KEY_FLG_KEY_32BYTES,
         STA_KEY_MULTICAST,
         STA_KEY_MFP
     };
@@ -218,6 +220,9 @@ STA_KEY_FLG_TKIP
 
 STA_KEY_FLG_EXT
     extended cipher algorithm (depends on the FW support)
+
+STA_KEY_FLG_GCMP
+    GCMP encryption algorithm
 
 STA_KEY_FLG_CMAC
     CMAC encryption algorithm
@@ -243,6 +248,10 @@ STA_KEY_NOT_VALID
 
 STA_KEY_FLG_WEP_13BYTES
     set for 13 bytes WEP key
+    \ ``STA_KEY_FLG_KEY_32BYTES``\  for non-wep key set for 32 bytes key
+
+STA_KEY_FLG_KEY_32BYTES
+    *undescribed*
 
 STA_KEY_MULTICAST
     set for multical key
@@ -681,8 +690,7 @@ Definition
         u8 sta_id;
         u8 key_offset;
         __le16 key_flags;
-        u8 key[16];
-        u8 key2[16];
+        u8 key[32];
         u8 rx_secur_seq_cnt[16];
         u8 tkip_rx_tsc_byte2;
         u8 reserved;
@@ -704,9 +712,6 @@ key_flags
     type \ ``iwl_sta_key_flag``\ 
 
 key
-    key material data
-
-key2
     key material data
 
 rx_secur_seq_cnt
@@ -791,6 +796,55 @@ Members
 sta_id
     the station id of the station to be removed
 
+.. _`iwl_mvm_mgmt_mcast_key_cmd_v1`:
+
+struct iwl_mvm_mgmt_mcast_key_cmd_v1
+====================================
+
+.. c:type:: struct iwl_mvm_mgmt_mcast_key_cmd_v1
+
+    ( MGMT_MCAST_KEY = 0x1f )
+
+.. _`iwl_mvm_mgmt_mcast_key_cmd_v1.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_mgmt_mcast_key_cmd_v1 {
+        __le32 ctrl_flags;
+        u8 igtk[16];
+        u8 k1[16];
+        u8 k2[16];
+        __le32 key_id;
+        __le32 sta_id;
+        __le64 receive_seq_cnt;
+    }
+
+.. _`iwl_mvm_mgmt_mcast_key_cmd_v1.members`:
+
+Members
+-------
+
+ctrl_flags
+    %iwl_sta_key_flag
+
+k1
+    unused
+
+k2
+    unused
+
+key_id
+    *undescribed*
+
+sta_id
+    station ID that support IGTK
+
+receive_seq_cnt
+    initial RSC/PN needed for replay check
+
 .. _`iwl_mvm_mgmt_mcast_key_cmd`:
 
 struct iwl_mvm_mgmt_mcast_key_cmd
@@ -809,9 +863,7 @@ Definition
 
     struct iwl_mvm_mgmt_mcast_key_cmd {
         __le32 ctrl_flags;
-        u8 IGTK[16];
-        u8 K1[16];
-        u8 K2[16];
+        u8 igtk[32];
         __le32 key_id;
         __le32 sta_id;
         __le64 receive_seq_cnt;
@@ -823,13 +875,10 @@ Members
 -------
 
 ctrl_flags
-    \ ``iwl_sta_key_flag``\ 
+    %iwl_sta_key_flag
 
-K1
-    unused
-
-K2
-    unused
+igtk
+    IGTK master key
 
 key_id
     *undescribed*

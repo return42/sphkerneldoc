@@ -45,7 +45,7 @@ pointer must be passed to the \ :c:func:`tracefs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If tracefs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If tracefs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`tracefs_create_dir`:
@@ -77,7 +77,7 @@ This function will return a pointer to a dentry if it succeeds.  This
 pointer must be passed to the \ :c:func:`tracefs_remove`\  function when the file is
 to be removed. If an error occurs, \ ``NULL``\  will be returned.
 
-If tracing is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If tracing is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`tracefs_create_instance_dir`:
@@ -110,7 +110,7 @@ Only one instances directory is allowed.
 
 The instances directory is special as it allows for mkdir and rmdir to
 to be done by userspace. When a mkdir or rmdir is performed, the inode
-locks are released and the methhods passed in (\ ``mkdir``\  and \ ``rmdir``\ ) are
+locks are released and the methhods passed in (@mkdir and \ ``rmdir``\ ) are
 called without locks and with the name of the directory being created
 within the instances directory.
 

@@ -6,12 +6,12 @@
 meson_get_bank
 ==============
 
-.. c:function:: int meson_get_bank(struct meson_domain *domain, unsigned int pin, struct meson_bank **bank)
+.. c:function:: int meson_get_bank(struct meson_pinctrl *pc, unsigned int pin, struct meson_bank **bank)
 
     find the bank containing a given pin
 
-    :param struct meson_domain \*domain:
-        the domain containing the pin
+    :param struct meson_pinctrl \*pc:
+        the pinctrl instance
 
     :param unsigned int pin:
         the pin number
@@ -20,34 +20,6 @@ meson_get_bank
         the found bank
 
 .. _`meson_get_bank.return`:
-
-Return
-------
-
-0 on success, a negative value on error
-
-.. _`meson_get_domain_and_bank`:
-
-meson_get_domain_and_bank
-=========================
-
-.. c:function:: int meson_get_domain_and_bank(struct meson_pinctrl *pc, unsigned int pin, struct meson_domain **domain, struct meson_bank **bank)
-
-    find domain and bank containing a given pin
-
-    :param struct meson_pinctrl \*pc:
-        Meson pin controller device
-
-    :param unsigned int pin:
-        the pin number
-
-    :param struct meson_domain \*\*domain:
-        the found domain
-
-    :param struct meson_bank \*\*bank:
-        the found bank
-
-.. _`meson_get_domain_and_bank.return`:
 
 Return
 ------

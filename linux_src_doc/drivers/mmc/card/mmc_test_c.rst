@@ -8,7 +8,7 @@ struct mmc_test_pages
 
 .. c:type:: struct mmc_test_pages
 
-    pages allocated by '\ :c:func:`alloc_pages`\ '.
+    pages allocated by 'alloc_pages()'.
 
 .. _`mmc_test_pages.definition`:
 

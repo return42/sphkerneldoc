@@ -9,6 +9,7 @@ remoteproc
 
     da8xx_remoteproc_c
     omap_remoteproc_c
+    qcom_mdt_loader_c
     remoteproc_core_c
     remoteproc_elf_loader_c
     remoteproc_internal_h

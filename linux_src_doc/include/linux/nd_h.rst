@@ -61,7 +61,7 @@ Definition
         struct nd_namespace_common common;
         struct resource res;
         resource_size_t size;
-        void __pmem *addr;
+        void *addr;
         struct badblocks bb;
     }
 
@@ -77,7 +77,7 @@ res
     struct resource conversion of a NFIT SPA table
 
 size
-    cached resource_size(\ ``res``\ ) for fast path size checks
+    cached resource_size(@res) for fast path size checks
 
 addr
     virtual address to access the namespace range
@@ -105,6 +105,7 @@ Definition
         struct nd_namespace_io nsio;
         char *alt_name;
         u8 *uuid;
+        int id;
     }
 
 .. _`nd_namespace_pmem.members`:
@@ -120,6 +121,9 @@ alt_name
 
 uuid
     namespace name supplied in the dimm label
+
+id
+    ida allocated id
 
 .. _`nd_namespace_blk`:
 
@@ -203,7 +207,7 @@ nvdimm_read_bytes
 Description
 -----------
 
-\ ``buf``\  is up-to-date upon return from this routine.
+@buf is up-to-date upon return from this routine.
 
 .. _`nvdimm_write_bytes`:
 

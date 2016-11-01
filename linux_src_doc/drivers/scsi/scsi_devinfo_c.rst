@@ -192,7 +192,7 @@ scsi_get_device_flags
     get device specific flags from the dynamic device list.
 
     :param struct scsi_device \*sdev:
-        \ :c:type:`struct scsi_device <scsi_device>` to get flags for
+        &scsi_device to get flags for
 
     :param const unsigned char \*vendor:
         vendor name
@@ -220,7 +220,7 @@ scsi_get_device_flags_keyed
     get device specific flags from the dynamic device list
 
     :param struct scsi_device \*sdev:
-        \ :c:type:`struct scsi_device <scsi_device>` to get flags for
+        &scsi_device to get flags for
 
     :param const unsigned char \*vendor:
         vendor name

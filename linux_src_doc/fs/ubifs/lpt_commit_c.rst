@@ -670,7 +670,7 @@ lpt_gc
 Description
 -----------
 
-Select a LPT LEB for LPT garbage collection and call '\ :c:func:`lpt_gc_lnum`\ '.
+Select a LPT LEB for LPT garbage collection and call 'lpt_gc_lnum()'.
 Returns \ ``0``\  on success and a negative error code on failure.
 
 .. _`ubifs_lpt_start_commit`:
@@ -726,7 +726,7 @@ Description
 -----------
 
 This function has to be called when the commit operation finishes. It
-flushes the changes which were "frozen" by '\ :c:func:`ubifs_lprops_start_commit`\ ' to
+flushes the changes which were "frozen" by 'ubifs_lprops_start_commit()' to
 the media. Returns zero in case of success and a negative error code in case
 of failure.
 
@@ -771,7 +771,7 @@ Description
 -----------
 
 This function returns a pointer to the nnode found or \ ``NULL``\  if no nnode is
-found. This function is a helper to '\ :c:func:`ubifs_lpt_free`\ '.
+found. This function is a helper to 'ubifs_lpt_free()'.
 
 .. _`next_nnode`:
 
@@ -797,7 +797,7 @@ Description
 -----------
 
 This function returns a pointer to the nnode found or \ ``NULL``\  if no nnode is
-found. This function is a helper to '\ :c:func:`ubifs_lpt_free`\ '.
+found. This function is a helper to 'ubifs_lpt_free()'.
 
 .. _`ubifs_lpt_free`:
 
@@ -1065,7 +1065,7 @@ dbg_populate_lsave
 
 .. c:function:: int dbg_populate_lsave(struct ubifs_info *c)
 
-    debugging version of '\ :c:func:`populate_lsave`\ '
+    debugging version of 'populate_lsave()'
 
     :param struct ubifs_info \*c:
         UBIFS file-system description object
@@ -1075,7 +1075,7 @@ dbg_populate_lsave
 Description
 -----------
 
-This is a debugging version for '\ :c:func:`populate_lsave`\ ' which populates lsave
+This is a debugging version for 'populate_lsave()' which populates lsave
 with random LEBs instead of useful LEBs, which is good for test coverage.
 Returns zero if lsave has not been populated (this debugging feature is
 disabled) an non-zero if lsave has been populated.

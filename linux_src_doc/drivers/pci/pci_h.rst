@@ -20,6 +20,7 @@ Definition
     struct pci_platform_pm_ops {
         bool (*is_manageable)(struct pci_dev *dev);
         int (*set_state)(struct pci_dev *dev, pci_power_t state);
+        pci_power_t (*get_state)(struct pci_dev *dev);
         pci_power_t (*choose_state)(struct pci_dev *dev);
         int (*sleep_wake)(struct pci_dev *dev, bool enable);
         int (*run_wake)(struct pci_dev *dev, bool enable);
@@ -37,6 +38,9 @@ is_manageable
 
 set_state
     invokes the platform firmware to set the device's power state
+
+get_state
+    queries the platform firmware for a device's current power state
 
 choose_state
     returns PCI power state of given device preferred by the

@@ -18,7 +18,7 @@ blk_rq_set_mixed_merge
 Description
 -----------
 
-\ ``rq``\  is about to be mixed merged.  Make sure the attributes
+@rq is about to be mixed merged.  Make sure the attributes
 which can be mixed are set in each bio and mark \ ``rq``\  as mixed
 merged.
 

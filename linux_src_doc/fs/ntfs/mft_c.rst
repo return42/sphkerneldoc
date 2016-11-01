@@ -255,7 +255,7 @@ Description
 -----------
 
 Write the mapped, mst protected (extent) mft record \ ``m``\  with mft record
-number \ ``mft_no``\  to the mft mirror (\ ``$MFTMirr``\ ) of the ntfs volume \ ``vol``\ ,
+number \ ``mft_no``\  to the mft mirror ($MFTMirr) of the ntfs volume \ ``vol``\ ,
 bypassing the page cache and the \ ``$MFTMirr``\  inode itself.
 
 This function is only for use at umount time when the mft mirror inode has
@@ -302,7 +302,7 @@ Description
 -----------
 
 Write the mapped, mst protected (extent) mft record \ ``m``\  with mft record
-number \ ``mft_no``\  to the mft mirror (\ ``$MFTMirr``\ ) of the ntfs volume \ ``vol``\ .
+number \ ``mft_no``\  to the mft mirror ($MFTMirr) of the ntfs volume \ ``vol``\ .
 
 On success return 0.  On error return -errno and set the volume errors flag
 in the ntfs volume \ ``vol``\ .
@@ -352,7 +352,7 @@ the mft mirror, that is also updated.
 We only write the mft record if the ntfs inode \ ``ni``\  is dirty and the first
 buffer belonging to its mft record is dirty, too.  We ignore the dirty state
 of subsequent buffers because we could have raced with
-fs/ntfs/aops.c::\ :c:func:`mark_ntfs_record_dirty`\ .
+fs/ntfs/aops.c::mark_ntfs_record_dirty().
 
 On success, clean the mft record and return 0.  On error, leave the mft
 record dirty and return -errno.
@@ -477,7 +477,7 @@ dirty mft records with clean ntfs inodes in memory.  None of the described
 cases would result in the dirty mft records being written out if we only
 relied on the vfs inode dirty code paths.  And these cases can really occur
 during allocation of new mft records and in particular when the
-initialized_size of the \ ``$MFT``\ /\ ``$DATA``\  attribute is extended and the new space
+initialized_size of the \ ``$MFT``\ /$DATA attribute is extended and the new space
 is initialized using \ :c:func:`ntfs_mft_record_format`\ .  The clean inode can then
 appear if the mft record is reused for a new inode before it got written
 out.
@@ -690,7 +690,7 @@ ntfs_mft_record_format
 Description
 -----------
 
-Format the mft record \ ``mft_no``\  in \ ``$MFT``\ /\ ``$DATA``\ , i.e. lay out an empty, unused
+Format the mft record \ ``mft_no``\  in \ ``$MFT``\ /$DATA, i.e. lay out an empty, unused
 mft record into the appropriate place of the mft data attribute.  This is
 used when extending the mft data attribute.
 
@@ -722,7 +722,7 @@ ntfs_mft_record_alloc
 Description
 -----------
 
-Allocate an mft record in \ ``$MFT``\ /\ ``$DATA``\  of an open ntfs volume \ ``vol``\ .
+Allocate an mft record in \ ``$MFT``\ /$DATA of an open ntfs volume \ ``vol``\ .
 
 If \ ``base_ni``\  is NULL make the mft record a base mft record, i.e. a file or
 direvctory inode, and allocate it at the default allocator position.  In
@@ -737,9 +737,9 @@ case \ ``mode``\  must be 0 as it is meaningless for extent inodes.
 
 You need to check the return value with \ :c:func:`IS_ERR`\ .  If false, the function
 was successful and the return value is the now opened ntfs inode of the
-allocated mft record.  \*\ ``mrec``\  is then set to the allocated, mapped, pinned,
+allocated mft record.  \*@mrec is then set to the allocated, mapped, pinned,
 and locked mft record.  If \ :c:func:`IS_ERR`\  is true, the function failed and the
-error code is obtained from PTR_ERR(return value).  \*\ ``mrec``\  is undefined in
+error code is obtained from PTR_ERR(return value).  \*@mrec is undefined in
 this case.
 
 .. _`ntfs_mft_record_alloc.allocation-strategy`:
@@ -764,8 +764,8 @@ doing this at some later time, it does not matter much for now.
 
 When scanning the mft bitmap, we only search up to the last allocated mft
 record.  If there are no free records left in the range 24 to number of
-allocated mft records, then we extend the \ ``$MFT``\ /\ ``$DATA``\  attribute in order to
-create free mft records.  We extend the allocated size of \ ``$MFT``\ /\ ``$DATA``\  by 16
+allocated mft records, then we extend the \ ``$MFT``\ /$DATA attribute in order to
+create free mft records.  We extend the allocated size of \ ``$MFT``\ /$DATA by 16
 records at a time or one cluster, if cluster size is above 16kiB.  If there
 is not sufficient space to do this, we try to extend by a single mft record
 or one cluster, if cluster size is above the mft record size.
@@ -783,7 +783,7 @@ cluster if required.  The bitmap data size has to be at least equal to the
 number of mft records in the mft, but it can be bigger, in which case the
 superflous bits are padded with zeroes.
 
-Thus, when we return successfully (\ :c:func:`IS_ERR`\  is false), we will have:
+Thus, when we return successfully (IS_ERR() is false), we will have:
 - initialized / extended the mft bitmap if necessary,
 - initialized / extended the mft data if necessary,
 - set the bit corresponding to the mft record being allocated in the
@@ -803,7 +803,7 @@ the base mft record and an attribute list is used, it is very important that
 the extension mft records used to store the \ ``$DATA``\  attribute of \ ``$MFT``\  can be
 reached without having to read the information contained inside them, as
 this would make it impossible to find them in the first place after the
-volume is unmounted.  \ ``$MFT``\ /\ ``$BITMAP``\  probably does not need to follow this
+volume is unmounted.  \ ``$MFT``\ /$BITMAP probably does not need to follow this
 rule because the bitmap is not essential for finding the mft records, but on
 the other hand, handling the bitmap in this special way would make life
 easier because otherwise there might be circular invocations of functions

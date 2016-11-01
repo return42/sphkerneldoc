@@ -128,7 +128,7 @@ __swahw32p
 Description
 -----------
 
-See \\ :c:func:`__swahw32`\  for details of wordswapping.
+See \__swahw32() for details of wordswapping.
 
 .. _`__swahb32p`:
 
@@ -147,7 +147,7 @@ __swahb32p
 Description
 -----------
 
-See \\ :c:func:`__swahb32`\  for details of high/low byteswapping.
+See \__swahb32() for details of high/low byteswapping.
 
 .. _`__swab16s`:
 
@@ -202,7 +202,7 @@ __swahw32s
 Description
 -----------
 
-See \\ :c:func:`__swahw32`\  for details of wordswapping
+See \__swahw32() for details of wordswapping
 
 .. _`__swahb32s`:
 
@@ -221,7 +221,7 @@ __swahb32s
 Description
 -----------
 
-See \\ :c:func:`__swahb32`\  for details of high and low byte swapping
+See \__swahb32() for details of high and low byte swapping
 
 .. This file was automatic generated / don't edit.
 

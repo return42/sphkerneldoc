@@ -14,7 +14,7 @@ generic_permission
         inode to check access rights for
 
     :param int mask:
-        right to check for (\ ``MAY_READ``\ , \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ , ...)
+        right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ , ...)
 
 .. _`generic_permission.description`:
 
@@ -43,7 +43,7 @@ __inode_permission
         Inode to check permission on
 
     :param int mask:
-        Right to check for (\ ``MAY_READ``\ , \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
+        Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
 
 .. _`__inode_permission.description`:
 
@@ -73,7 +73,7 @@ sb_permission
         Inode to check permission on
 
     :param int mask:
-        Right to check for (\ ``MAY_READ``\ , \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
+        Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
 
 .. _`sb_permission.description`:
 
@@ -95,7 +95,7 @@ inode_permission
         Inode to check permission on
 
     :param int mask:
-        Right to check for (\ ``MAY_READ``\ , \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
+        Right to check for (%MAY_READ, \ ``MAY_WRITE``\ , \ ``MAY_EXEC``\ )
 
 .. _`inode_permission.description`:
 
@@ -319,36 +319,6 @@ vfs_path_lookup
 
     :param struct path \*path:
         pointer to struct path to fill
-
-.. _`lookup_hash`:
-
-lookup_hash
-===========
-
-.. c:function:: struct dentry *lookup_hash(const struct qstr *name, struct dentry *base)
-
-    lookup single pathname component on already hashed name
-
-    :param const struct qstr \*name:
-        name and hash to lookup
-
-    :param struct dentry \*base:
-        base directory to lookup from
-
-.. _`lookup_hash.description`:
-
-Description
------------
-
-The name must have been verified and hashed (see \ :c:func:`lookup_one_len`\ ).  Using
-this after just \ :c:func:`full_name_hash`\  is unsafe.
-
-This function also doesn't check for search permission on base directory.
-
-Use \ :c:func:`lookup_one_len_unlocked`\  instead, unless you really know what you are
-doing.
-
-Do not hold i_mutex; this helper takes i_mutex if necessary.
 
 .. _`lookup_one_len`:
 
@@ -653,7 +623,7 @@ move will be locked.  Thus we can rank directories by the tree
 (ancestors first) and rank all non-directories after them.
 That works since everybody except rename does "lock parent, lookup,
 lock child" and rename is under ->s_vfs_rename_mutex.
-HOWEVER, it relies on the assumption that any object with ->\ :c:func:`lookup`\ 
+HOWEVER, it relies on the assumption that any object with ->lookup()
 has no more than 1 dentry.  If "hybrid" objects will ever appear,
 we'd better make sure that there's no link(2) for them.
 d) conversion from fhandle to dentry may come in the wrong moment - when
@@ -661,6 +631,32 @@ we are removing the target. Solution: we will have to grab ->i_mutex
 in the fhandle_to_dentry code. [FIXME - current nfsfh.c relies on
 ->i_mutex on parents, which works but leads to some truly excessive
 locking].
+
+.. _`vfs_get_link`:
+
+vfs_get_link
+============
+
+.. c:function:: const char *vfs_get_link(struct dentry *dentry, struct delayed_call *done)
+
+    get symlink body
+
+    :param struct dentry \*dentry:
+        dentry on which to get symbolic link
+
+    :param struct delayed_call \*done:
+        caller needs to free returned data with this
+
+.. _`vfs_get_link.description`:
+
+Description
+-----------
+
+Calls security hook and i_op->get_link() on the supplied inode.
+
+It does not touch atime.  That's up to the caller if necessary.
+
+Does not work on "special" symlinks like /proc/$$/fd/N
 
 .. This file was automatic generated / don't edit.
 

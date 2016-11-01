@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/hda/ext/hdac_ext_controller.c
 
-.. _`snd_hdac_ext_bus_parse_capabilities`:
-
-snd_hdac_ext_bus_parse_capabilities
-===================================
-
-.. c:function:: int snd_hdac_ext_bus_parse_capabilities(struct hdac_ext_bus *ebus)
-
-    parse capablity structure
-
-    :param struct hdac_ext_bus \*ebus:
-        the pointer to extended bus object
-
-.. _`snd_hdac_ext_bus_parse_capabilities.description`:
-
-Description
------------
-
-Returns 0 if successful, or a negative error code.
-
 .. _`snd_hdac_ext_bus_ppcap_enable`:
 
 snd_hdac_ext_bus_ppcap_enable

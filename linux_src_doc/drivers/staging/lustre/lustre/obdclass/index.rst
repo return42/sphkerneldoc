@@ -13,6 +13,7 @@ obdclass
     cl_page_c
     genops_c
     kernelcomm_c
+    linkea_c
     lprocfs_status_c
     lu_object_c
     obd_config_c

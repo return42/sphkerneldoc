@@ -398,6 +398,33 @@ Please note
 
 Use only when any Ethernet address may not be u16 aligned.
 
+.. _`ether_addr_equal_masked`:
+
+ether_addr_equal_masked
+=======================
+
+.. c:function:: bool ether_addr_equal_masked(const u8 *addr1, const u8 *addr2, const u8 *mask)
+
+    Compare two Ethernet addresses with a mask
+
+    :param const u8 \*addr1:
+        Pointer to a six-byte array containing the 1st Ethernet address
+
+    :param const u8 \*addr2:
+        Pointer to a six-byte array containing the 2nd Ethernet address
+
+    :param const u8 \*mask:
+        Pointer to a six-byte array containing the Ethernet address bitmask
+
+.. _`ether_addr_equal_masked.description`:
+
+Description
+-----------
+
+Compare two Ethernet addresses with a mask, returns true if for every bit
+set in the bitmask the equivalent bits in the ethernet addresses are equal.
+Using a mask with all bits set is a slower ether_addr_equal.
+
 .. _`is_etherdev_addr`:
 
 is_etherdev_addr

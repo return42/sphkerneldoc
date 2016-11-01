@@ -224,7 +224,7 @@ flush
     from it
 
 event
-    event handler for events sent \_to\_ the device, like EV_LED
+    event handler for events sent _to_ the device, like EV_LED
     or EV_SND. The device is expected to carry out the requested
     action (turn on a LED, play sound, etc.) The call is protected
     by \ ``event_lock``\  and must not sleep
@@ -235,7 +235,7 @@ grab
     recipient for all input events coming from the device
 
 event_lock
-    this spinlock is is taken when input core receives
+    this spinlock is taken when input core receives
     and processes a new event for the device (in \ :c:func:`input_event`\ ).
     Code that accesses and/or modifies parameters of a device
     (such as keymap or absmin, absmax, absfuzz, etc.) after device
@@ -247,13 +247,13 @@ mutex
 users
     stores number of users (input handlers) that opened this
     device. It is used by \ :c:func:`input_open_device`\  and \ :c:func:`input_close_device`\ 
-    to make sure that dev->\ :c:func:`open`\  is only called when the first
-    user opens device and dev->\ :c:func:`close`\  is called when the very
+    to make sure that dev->open() is only called when the first
+    user opens device and dev->close() is called when the very
     last user closes the device
 
 going_away
     marks devices that are in a middle of unregistering and
-    causes input_open_device\*() fail with -ENODEV.
+    causes input_open_device*() fail with -ENODEV.
 
 dev
     driver model's view of this device

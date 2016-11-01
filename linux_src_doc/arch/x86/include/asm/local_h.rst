@@ -6,7 +6,7 @@
 local_sub_and_test
 ==================
 
-.. c:function:: int local_sub_and_test(long i, local_t *l)
+.. c:function:: bool local_sub_and_test(long i, local_t *l)
 
     subtract value from variable and test result
 
@@ -30,7 +30,7 @@ other cases.
 local_dec_and_test
 ==================
 
-.. c:function:: int local_dec_and_test(local_t *l)
+.. c:function:: bool local_dec_and_test(local_t *l)
 
     decrement and test
 
@@ -51,7 +51,7 @@ cases.
 local_inc_and_test
 ==================
 
-.. c:function:: int local_inc_and_test(local_t *l)
+.. c:function:: bool local_inc_and_test(local_t *l)
 
     increment and test
 
@@ -72,7 +72,7 @@ other cases.
 local_add_negative
 ==================
 
-.. c:function:: int local_add_negative(long i, local_t *l)
+.. c:function:: bool local_add_negative(long i, local_t *l)
 
     add and test if negative
 

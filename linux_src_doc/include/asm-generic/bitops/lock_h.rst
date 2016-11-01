@@ -66,7 +66,7 @@ __clear_bit_unlock
 Description
 -----------
 
-A weaker form of \ :c:func:`clear_bit_unlock`\  as used by \\ :c:func:`__bit_lock_unlock`\ . If all
+A weaker form of \ :c:func:`clear_bit_unlock`\  as used by \__bit_lock_unlock(). If all
 the bits in the word are protected by this lock some archs can use weaker
 ops to safely unlock.
 

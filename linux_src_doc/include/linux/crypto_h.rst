@@ -359,8 +359,8 @@ cra_type
     Type of the cryptographic transformation. This is a pointer to
     struct crypto_type, which implements callbacks common for all
     transformation types. There are multiple options:
-    \ :c:type:`struct crypto_blkcipher_type <crypto_blkcipher_type>`, \ :c:type:`struct crypto_ablkcipher_type <crypto_ablkcipher_type>`,
-    \ :c:type:`struct crypto_ahash_type <crypto_ahash_type>`, \ :c:type:`struct crypto_rng_type <crypto_rng_type>`.
+    \ :c:type:`struct crypto_blkcipher_type <crypto_blkcipher_type>`\ , \ :c:type:`struct crypto_ablkcipher_type <crypto_ablkcipher_type>`\ ,
+    \ :c:type:`struct crypto_ahash_type <crypto_ahash_type>`\ , \ :c:type:`struct crypto_rng_type <crypto_rng_type>`\ .
     This field might be empty. In that case, there are no common
     callbacks. This is the case for: cipher, compress, shash.
 
@@ -400,42 +400,6 @@ Description
 The struct crypto_alg describes a generic Crypto API algorithm and is common
 for all of the transformations. Any variable not documented here shall not
 be used by a cipher implementation as it is internal to the Crypto API.
-
-.. _`crypto_alloc_ablkcipher`:
-
-crypto_alloc_ablkcipher
-=======================
-
-.. c:function:: struct crypto_ablkcipher *crypto_alloc_ablkcipher(const char *alg_name, u32 type, u32 mask)
-
-    allocate asynchronous block cipher handle
-
-    :param const char \*alg_name:
-        is the cra_name / name or cra_driver_name / driver name of the
-        ablkcipher cipher
-
-    :param u32 type:
-        specifies the type of the cipher
-
-    :param u32 mask:
-        specifies the mask for the cipher
-
-.. _`crypto_alloc_ablkcipher.description`:
-
-Description
------------
-
-Allocate a cipher handle for an ablkcipher. The returned struct
-crypto_ablkcipher is the cipher handle that is required for any subsequent
-API invocation for that ablkcipher.
-
-.. _`crypto_alloc_ablkcipher.return`:
-
-Return
-------
-
-allocated cipher handle in case of success; \ :c:func:`IS_ERR`\  is true in case
-of an error, \ :c:func:`PTR_ERR`\  returns the error code.
 
 .. _`crypto_free_ablkcipher`:
 

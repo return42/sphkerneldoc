@@ -38,7 +38,7 @@ alloc_workqueue
         printf format for the name of the workqueue
 
     :param  flags:
-        WQ\_\* flags
+        WQ_* flags
 
     :param  max_active:
         max in-flight work items, 0 for default
@@ -52,9 +52,9 @@ Description
 -----------
 
 Allocate a workqueue with the specified parameters.  For detailed
-information on WQ\_\* flags, please refer to Documentation/workqueue.txt.
+information on WQ_* flags, please refer to Documentation/workqueue.txt.
 
-The \__lock_name macro dance is to guarantee that single lock_class_key
+The __lock_name macro dance is to guarantee that single lock_class_key
 doesn't end up with different namesm, which isn't allowed by lockdep.
 
 .. _`alloc_workqueue.return`:
@@ -77,7 +77,7 @@ alloc_ordered_workqueue
         printf format for the name of the workqueue
 
     :param  flags:
-        WQ\_\* flags (only WQ_FREEZABLE and WQ_MEM_RECLAIM are meaningful)
+        WQ_* flags (only WQ_FREEZABLE and WQ_MEM_RECLAIM are meaningful)
 
     :param  args...:
         args for \ ``fmt``\ 
@@ -171,7 +171,7 @@ mod_delayed_work
 Description
 -----------
 
-\ :c:func:`mod_delayed_work_on`\  on local CPU.
+mod_delayed_work_on() on local CPU.
 
 .. _`schedule_work_on`:
 
@@ -248,10 +248,10 @@ will lead to deadlock
 ---------------------
 
 
-One of the work items currently on the workqueue needs to acquire
-a lock held by your code or its caller.
+     One of the work items currently on the workqueue needs to acquire
+     a lock held by your code or its caller.
 
-Your code is running in the context of a work routine.
+     Your code is running in the context of a work routine.
 
 They will be detected by lockdep when they occur, but the first might not
 occur very often.  It depends on what work items are on the workqueue and

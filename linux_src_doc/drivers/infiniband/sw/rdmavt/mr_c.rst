@@ -190,6 +190,106 @@ Return
 
 the memory region on success, otherwise return an errno.
 
+.. _`rvt_set_page`:
+
+rvt_set_page
+============
+
+.. c:function:: int rvt_set_page(struct ib_mr *ibmr, u64 addr)
+
+    page assignment function called by ib_sg_to_pages
+
+    :param struct ib_mr \*ibmr:
+        memory region
+
+    :param u64 addr:
+        dma address of mapped page
+
+.. _`rvt_set_page.return`:
+
+Return
+------
+
+0 on success
+
+.. _`rvt_map_mr_sg`:
+
+rvt_map_mr_sg
+=============
+
+.. c:function:: int rvt_map_mr_sg(struct ib_mr *ibmr, struct scatterlist *sg, int sg_nents, unsigned int *sg_offset)
+
+    map sg list and set it the memory region
+
+    :param struct ib_mr \*ibmr:
+        memory region
+
+    :param struct scatterlist \*sg:
+        dma mapped scatterlist
+
+    :param int sg_nents:
+        number of entries in sg
+
+    :param unsigned int \*sg_offset:
+        offset in bytes into sg
+
+.. _`rvt_map_mr_sg.return`:
+
+Return
+------
+
+number of sg elements mapped to the memory region
+
+.. _`rvt_fast_reg_mr`:
+
+rvt_fast_reg_mr
+===============
+
+.. c:function:: int rvt_fast_reg_mr(struct rvt_qp *qp, struct ib_mr *ibmr, u32 key, int access)
+
+    fast register physical MR
+
+    :param struct rvt_qp \*qp:
+        the queue pair where the work request comes from
+
+    :param struct ib_mr \*ibmr:
+        the memory region to be registered
+
+    :param u32 key:
+        updated key for this memory region
+
+    :param int access:
+        access flags for this memory region
+
+.. _`rvt_fast_reg_mr.description`:
+
+Description
+-----------
+
+Returns 0 on success.
+
+.. _`rvt_invalidate_rkey`:
+
+rvt_invalidate_rkey
+===================
+
+.. c:function:: int rvt_invalidate_rkey(struct rvt_qp *qp, u32 rkey)
+
+    invalidate an MR rkey
+
+    :param struct rvt_qp \*qp:
+        queue pair associated with the invalidate op
+
+    :param u32 rkey:
+        rkey to invalidate
+
+.. _`rvt_invalidate_rkey.description`:
+
+Description
+-----------
+
+Returns 0 on success.
+
 .. _`rvt_alloc_fmr`:
 
 rvt_alloc_fmr

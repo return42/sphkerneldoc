@@ -37,7 +37,7 @@ themselves.
 Return
 ------
 
-\ ``0``\  if all \ ``chanlist``\  elements are valid (success),
+%0 if all \ ``chanlist``\  elements are valid (success),
 \ ``-EINVAL``\  if one or more elements are invalid.
 
 .. This file was automatic generated / don't edit.

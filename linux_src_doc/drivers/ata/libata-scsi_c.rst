@@ -390,7 +390,7 @@ ata_scsi_slave_destroy
 Description
 -----------
 
-\ ``sdev``\  is about to be destroyed for hot/warm unplugging.  If
+@sdev is about to be destroyed for hot/warm unplugging.  If
 this unplugging was initiated by libata as indicated by NULL
 dev->sdev, this function doesn't have to do anything.
 Otherwise, SCSI layer initiated warm-unplug is in progress.
@@ -708,7 +708,7 @@ ata_scsi_translate
 Description
 -----------
 
-Our ->\ :c:func:`queuecommand`\  function has decided that the SCSI
+Our ->queuecommand() function has decided that the SCSI
 command issued can be directly translated into an ATA
 command, rather than handled internally.
 
@@ -791,7 +791,7 @@ ata_scsi_rbuf_put
         copy out result
 
     :param unsigned long \*flags:
-        \ ``flags``\  passed to \ :c:func:`ata_scsi_rbuf_get`\ 
+        @flags passed to \ :c:func:`ata_scsi_rbuf_get`\ 
 
 .. _`ata_scsi_rbuf_put.description`:
 
@@ -1090,12 +1090,12 @@ LOCKING
 
 None.
 
-.. _`ata_msense_ctl_mode`:
+.. _`ata_msense_control`:
 
-ata_msense_ctl_mode
-===================
+ata_msense_control
+==================
 
-.. c:function:: unsigned int ata_msense_ctl_mode(struct ata_device *dev, u8 *buf, bool changeable)
+.. c:function:: unsigned int ata_msense_control(struct ata_device *dev, u8 *buf, bool changeable)
 
     Simulate MODE SENSE control mode page
 
@@ -1108,14 +1108,14 @@ ata_msense_ctl_mode
     :param bool changeable:
         whether changeable parameters are requested
 
-.. _`ata_msense_ctl_mode.description`:
+.. _`ata_msense_control.description`:
 
 Description
 -----------
 
 Generate a generic MODE SENSE control mode page.
 
-.. _`ata_msense_ctl_mode.locking`:
+.. _`ata_msense_control.locking`:
 
 LOCKING
 -------
@@ -1331,6 +1331,152 @@ Return
 
 Zero on success, non-zero on failure.
 
+.. _`ata_format_dsm_trim_descr`:
+
+ata_format_dsm_trim_descr
+=========================
+
+.. c:function:: size_t ata_format_dsm_trim_descr(struct scsi_cmnd *cmd, u32 trmax, u64 sector, u32 count)
+
+    SATL Write Same to DSM Trim
+
+    :param struct scsi_cmnd \*cmd:
+        SCSI command being translated
+
+    :param u32 trmax:
+        Maximum number of entries that will fit in sector_size bytes.
+
+    :param u64 sector:
+        Starting sector
+
+    :param u32 count:
+        Total Range of request in logical sectors
+
+.. _`ata_format_dsm_trim_descr.description`:
+
+Description
+-----------
+
+Rewrite the WRITE SAME descriptor to be a DSM TRIM little-endian formatted
+descriptor.
+
+.. _`ata_format_dsm_trim_descr.upto-64-entries-of-the-format`:
+
+Upto 64 entries of the format
+-----------------------------
+
+63:48 Range Length
+47:0  LBA
+
+Range Length of 0 is ignored.
+LBA's should be sorted order and not overlap.
+
+.. _`ata_format_dsm_trim_descr.note`:
+
+NOTE
+----
+
+this is the same format as ADD LBA(S) TO NV CACHE PINNED SET
+
+.. _`ata_format_dsm_trim_descr.return`:
+
+Return
+------
+
+Number of bytes copied into sglist.
+
+.. _`ata_format_sct_write_same`:
+
+ata_format_sct_write_same
+=========================
+
+.. c:function:: size_t ata_format_sct_write_same(struct scsi_cmnd *cmd, u64 lba, u64 num)
+
+    SATL Write Same to ATA SCT Write Same
+
+    :param struct scsi_cmnd \*cmd:
+        SCSI command being translated
+
+    :param u64 lba:
+        Starting sector
+
+    :param u64 num:
+        Number of sectors to be zero'd.
+
+.. _`ata_format_sct_write_same.description`:
+
+Description
+-----------
+
+Rewrite the WRITE SAME payload to be an SCT Write Same formatted
+descriptor.
+
+.. _`ata_format_sct_write_same.note`:
+
+NOTE
+----
+
+Writes a pattern (0's) in the foreground.
+
+.. _`ata_format_sct_write_same.return`:
+
+Return
+------
+
+Number of bytes copied into sglist.
+
+.. _`ata_scsi_write_same_xlat`:
+
+ata_scsi_write_same_xlat
+========================
+
+.. c:function:: unsigned int ata_scsi_write_same_xlat(struct ata_queued_cmd *qc)
+
+    SATL Write Same to ATA SCT Write Same
+
+    :param struct ata_queued_cmd \*qc:
+        Command to be translated
+
+.. _`ata_scsi_write_same_xlat.description`:
+
+Description
+-----------
+
+Translate a SCSI WRITE SAME command to be either a DSM TRIM command or
+an SCT Write Same command.
+Based on WRITE SAME has the UNMAP flag
+When set translate to DSM TRIM
+When clear translate to SCT Write Same
+
+.. _`ata_scsiop_maint_in`:
+
+ata_scsiop_maint_in
+===================
+
+.. c:function:: unsigned int ata_scsiop_maint_in(struct ata_scsi_args *args, u8 *rbuf)
+
+    Simulate a subset of MAINTENANCE_IN
+
+    :param struct ata_scsi_args \*args:
+        device MAINTENANCE_IN data / SCSI command of interest.
+
+    :param u8 \*rbuf:
+        Response buffer, to which simulated SCSI cmd output is sent.
+
+.. _`ata_scsiop_maint_in.description`:
+
+Description
+-----------
+
+Yields a subset to satisfy \ :c:func:`scsi_report_opcode`\ 
+
+.. _`ata_scsiop_maint_in.locking`:
+
+LOCKING
+-------
+
+spin_lock_irqsave(host lock)
+
 .. _`ata_scsi_report_zones_complete`:
 
 ata_scsi_report_zones_complete
@@ -1541,7 +1687,7 @@ ATA host lock
 Return
 ------
 
-Return value from \\ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
+Return value from \__ata_scsi_queuecmd() if \ ``cmd``\  can be queued,
 0 otherwise.
 
 .. _`ata_scsi_simulate`:
@@ -1950,7 +2096,7 @@ ata_sas_queuecmd
 Return
 ------
 
-Return value from \\ :c:func:`__ata_scsi_queuecmd`\  if \ ``cmd``\  can be queued,
+Return value from \__ata_scsi_queuecmd() if \ ``cmd``\  can be queued,
 0 otherwise.
 
 .. This file was automatic generated / don't edit.

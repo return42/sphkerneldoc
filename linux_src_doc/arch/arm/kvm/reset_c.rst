@@ -19,7 +19,7 @@ Description
 -----------
 
 This function finds the right table above and sets the registers on the
-virtual CPU struct to their architectually defined reset values.
+virtual CPU struct to their architecturally defined reset values.
 
 .. This file was automatic generated / don't edit.
 

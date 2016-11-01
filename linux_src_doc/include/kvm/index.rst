@@ -7,4 +7,4 @@ kvm
 .. toctree::
     :maxdepth: 1
 
-    vgic/index
+    arm_vgic_h

@@ -169,10 +169,10 @@ rt2x00queue_index_inc
     Index incrementation function
 
     :param struct queue_entry \*entry:
-        Queue entry (\ :c:type:`struct queue_entry <queue_entry>`\ ) to perform the action on.
+        Queue entry (&struct queue_entry) to perform the action on.
 
     :param enum queue_index index:
-        Index type (\ :c:type:`enum queue_index <queue_index>`\ ) to perform the action on.
+        Index type (&enum queue_index) to perform the action on.
 
 .. _`rt2x00queue_index_inc.description`:
 
@@ -248,7 +248,7 @@ Description
 -----------
 
 This start the link tuner periodic work, this work will
-be executed periodically until \ :c:type:`struct rt2x00link_stop_tuner <rt2x00link_stop_tuner>` has
+be executed periodically until \ :c:type:`struct rt2x00link_stop_tuner <rt2x00link_stop_tuner>`\  has
 been called.
 
 .. _`rt2x00link_stop_tuner`:
@@ -269,7 +269,7 @@ Description
 -----------
 
 After this function completed the link tuner will not
-be running until \ :c:type:`struct rt2x00link_start_tuner <rt2x00link_start_tuner>` is called.
+be running until \ :c:type:`struct rt2x00link_start_tuner <rt2x00link_start_tuner>`\  is called.
 
 .. _`rt2x00link_reset_tuner`:
 
@@ -323,7 +323,7 @@ Description
 -----------
 
 This start the watchdog periodic work, this work will
-be executed periodically until \ :c:type:`struct rt2x00link_stop_watchdog <rt2x00link_stop_watchdog>` has
+be executed periodically until \ :c:type:`struct rt2x00link_stop_watchdog <rt2x00link_stop_watchdog>`\  has
 been called.
 
 .. _`rt2x00link_stop_watchdog`:
@@ -344,7 +344,7 @@ Description
 -----------
 
 After this function completed the watchdog monitoring will not
-be running until \ :c:type:`struct rt2x00link_start_watchdog <rt2x00link_start_watchdog>` is called.
+be running until \ :c:type:`struct rt2x00link_start_watchdog <rt2x00link_start_watchdog>`\  is called.
 
 .. _`rt2x00link_start_agc`:
 

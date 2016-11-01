@@ -111,7 +111,7 @@ cells
 cmd_lock
     Mutex used to serialize all the requests to the core
     device. This filed should not be used directly. Instead
-    \ :c:func:`si476x_core_lock`\ /\ :c:func:`si476x_core_unlock`\  should be used to get
+    \ :c:func:`si476x_core_lock`\ /si476x_core_unlock() should be used to get
     exclusive access to the "core" device.
 
 users

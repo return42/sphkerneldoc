@@ -94,7 +94,7 @@ Returns 0 for success else error.
 snd_soc_dapm_dai_get_connected_widgets
 ======================================
 
-.. c:function:: int snd_soc_dapm_dai_get_connected_widgets(struct snd_soc_dai *dai, int stream, struct snd_soc_dapm_widget_list **list)
+.. c:function:: int snd_soc_dapm_dai_get_connected_widgets(struct snd_soc_dai *dai, int stream, struct snd_soc_dapm_widget_list **list, bool (*custom_stop_condition)(struct snd_soc_dapm_widget *, enum snd_soc_dapm_direction))
 
     query audio path and it's widgets.
 
@@ -107,14 +107,23 @@ snd_soc_dapm_dai_get_connected_widgets
     :param struct snd_soc_dapm_widget_list \*\*list:
         list of active widgets for this stream.
 
+    :param bool (\*custom_stop_condition)(struct snd_soc_dapm_widget \*, enum snd_soc_dapm_direction):
+        (optional) a function meant to stop the widget graph
+        walk based on custom logic.
+
 .. _`snd_soc_dapm_dai_get_connected_widgets.description`:
 
 Description
 -----------
 
-Queries DAPM graph as to whether an valid audio stream path exists for
+Queries DAPM graph as to whether a valid audio stream path exists for
 the initial stream specified by name. This takes into account
 current mixer and mux kcontrol settings. Creates list of valid widgets.
+
+Optionally, can be supplied with a function acting as a stopping condition.
+This function takes the dapm widget currently being examined and the walk
+direction as an arguments, it should return true if the walk should be
+stopped and false otherwise.
 
 Returns the number of valid paths or negative error.
 
@@ -506,7 +515,7 @@ Requires external locking.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_enable_pin`:
@@ -537,7 +546,7 @@ a valid audio route and active audio stream.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_force_enable_pin_unlocked`:
@@ -571,7 +580,7 @@ Requires external locking.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_force_enable_pin`:
@@ -603,7 +612,7 @@ jack detection.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_disable_pin_unlocked`:
@@ -635,7 +644,7 @@ Requires external locking.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_disable_pin`:
@@ -665,7 +674,7 @@ Disables input/output pin and its parents or children widgets.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_nc_pin_unlocked`:
@@ -701,7 +710,7 @@ Requires external locking.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_nc_pin`:
@@ -735,7 +744,7 @@ paths through the pin.
 NOTE
 ----
 
-\ :c:func:`snd_soc_dapm_sync`\  needs to be called after this for DAPM to
+snd_soc_dapm_sync() needs to be called after this for DAPM to
 do any widget power switching.
 
 .. _`snd_soc_dapm_get_pin_status`:

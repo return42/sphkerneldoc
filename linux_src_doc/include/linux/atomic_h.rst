@@ -79,20 +79,5 @@ Return
 
 0 if increment was not done, 1 otherwise.
 
-.. _`atomic_fetch_or`:
-
-atomic_fetch_or
-===============
-
-.. c:function:: int atomic_fetch_or(int mask, atomic_t *p)
-
-    perform \*p \|= mask and return old value of \*p
-
-    :param int mask:
-        mask to OR on the atomic_t
-
-    :param atomic_t \*p:
-        pointer to atomic_t
-
 .. This file was automatic generated / don't edit.
 

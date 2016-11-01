@@ -77,6 +77,33 @@ If successful, returns a pointer to the phy_device with the embedded
 struct device refcount incremented by one, or NULL on failure. The
 refcount must be dropped by calling \ :c:func:`phy_disconnect`\  or \ :c:func:`phy_detach`\ .
 
+.. _`of_phy_get_and_connect`:
+
+of_phy_get_and_connect
+======================
+
+.. c:function:: struct phy_device *of_phy_get_and_connect(struct net_device *dev, struct device_node *np, void (*hndlr)(struct net_device *))
+
+    - Get phy node and connect to the phy described in the device tree
+
+    :param struct net_device \*dev:
+        pointer to net_device claiming the phy
+
+    :param struct device_node \*np:
+        Pointer to device tree node for the net_device claiming the phy
+
+    :param void (\*hndlr)(struct net_device \*):
+        Link state callback for the network device
+
+.. _`of_phy_get_and_connect.description`:
+
+Description
+-----------
+
+If successful, returns a pointer to the phy_device with the embedded
+struct device refcount incremented by one, or NULL on failure. The
+refcount must be dropped by calling \ :c:func:`phy_disconnect`\  or \ :c:func:`phy_detach`\ .
+
 .. _`of_phy_attach`:
 
 of_phy_attach

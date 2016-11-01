@@ -110,7 +110,7 @@ UI_GET_SYSNAME
 Description
 -----------
 
-\ ``return``\  the sysfs name of the created virtual input device.
+@return the sysfs name of the created virtual input device.
 The complete sysfs path is then /sys/devices/virtual/input/--NAME--
 Usually, it is in the form "inputN"
 

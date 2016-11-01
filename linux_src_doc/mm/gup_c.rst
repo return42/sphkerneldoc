@@ -27,7 +27,7 @@ follow_page_mask
 Description
 -----------
 
-\ ``flags``\  can have FOLL\_ flags set, defined in <linux/mm.h>
+@flags can have FOLL\_ flags set, defined in <linux/mm.h>
 
 Returns the mapped (struct page \*), \ ``NULL``\  if no mapping exists, or
 an error pointer if there is a mapping to something not represented
@@ -103,7 +103,7 @@ before put_page is called.
 
 If \ ``nonblocking``\  != NULL, \__get_user_pages will not wait for disk IO
 or mmap_sem contention, and if waiting is needed to pin all pages,
-\*\ ``nonblocking``\  will be set to 0.  Further, if \ ``gup_flags``\  does not
+\*@nonblocking will be set to 0.  Further, if \ ``gup_flags``\  does not
 include FOLL_NOWAIT, the mmap_sem will be released via \ :c:func:`up_read`\  in
 this case.
 
@@ -152,7 +152,7 @@ If \ ``nonblocking``\  is NULL, it may be held for read or write and will
 be unperturbed.
 
 If \ ``nonblocking``\  is non-NULL, it must held for read only and may be
-released.  If it's released, \*\ ``nonblocking``\  will be set to 0.
+released.  If it's released, \*@nonblocking will be set to 0.
 
 .. _`get_dump_page`:
 

@@ -329,7 +329,7 @@ audit_log_end
 Description
 -----------
 
-\ :c:func:`netlink_unicast`\  cannot be called inside an irq context because it blocks
+netlink_unicast() cannot be called inside an irq context because it blocks
 (last arg, flags, is not set to MSG_DONTWAIT), so the audit buffer is placed
 on a queue and a tasklet is scheduled to remove them from the queue outside
 the irq context.  May be called in any context.

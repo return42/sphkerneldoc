@@ -39,7 +39,7 @@ pads
     array of device specific pads
 
 pads_cnt
-    \ :c:func:`ARRAY_SIZE`\  of pads
+    ARRAY_SIZE() of pads
 
 .. _`omap_mux_partition`:
 

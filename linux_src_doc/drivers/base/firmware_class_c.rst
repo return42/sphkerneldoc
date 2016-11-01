@@ -27,9 +27,9 @@ timeout_store
 Description
 -----------
 
-Sets the number of seconds to wait for the firmware.  Once
-this expires an error will be returned to the driver and no
-firmware will be provided.
+     Sets the number of seconds to wait for the firmware.  Once
+     this expires an error will be returned to the driver and no
+     firmware will be provided.
 
 .. _`timeout_store.note`:
 
@@ -65,9 +65,9 @@ The relevant values are
 -----------------------
 
 
-1: Start a load, discarding any previous partial load.
-0: Conclude the load and hand the data to the driver code.
--1: Conclude the load with an error and discard any written data.
+      1: Start a load, discarding any previous partial load.
+      0: Conclude the load and hand the data to the driver code.
+     -1: Conclude the load with an error and discard any written data.
 
 .. _`firmware_data_write`:
 
@@ -101,8 +101,8 @@ firmware_data_write
 Description
 -----------
 
-Data written to the 'data' attribute will be later handed to
-the driver as a firmware image.
+     Data written to the 'data' attribute will be later handed to
+     the driver as a firmware image.
 
 .. _`request_firmware`:
 
@@ -127,19 +127,19 @@ request_firmware
 Description
 -----------
 
-\ ``firmware_p``\  will be used to return a firmware image by the name
-of \ ``name``\  for device \ ``device``\ .
+     \ ``firmware_p``\  will be used to return a firmware image by the name
+     of \ ``name``\  for device \ ``device``\ .
 
-Should be called from user context where sleeping is allowed.
+     Should be called from user context where sleeping is allowed.
 
-\ ``name``\  will be used as \ ``$FIRMWARE``\  in the uevent environment and
-should be distinctive enough not to be confused with any other
-firmware image for this or any other device.
+     \ ``name``\  will be used as \ ``$FIRMWARE``\  in the uevent environment and
+     should be distinctive enough not to be confused with any other
+     firmware image for this or any other device.
 
-Caller must hold the reference count of \ ``device``\ .
+     Caller must hold the reference count of \ ``device``\ .
 
-The function can be called safely inside device's suspend and
-resume callback.
+     The function can be called safely inside device's suspend and
+     resume callback.
 
 .. _`request_firmware_direct`:
 
@@ -168,6 +168,42 @@ This function works pretty much like \ :c:func:`request_firmware`\ , but this do
 fall back to usermode helper even if the firmware couldn't be loaded
 directly from fs.  Hence it's useful for loading optional firmwares, which
 aren't always present, without extra long timeouts of udev.
+
+.. _`request_firmware_into_buf`:
+
+request_firmware_into_buf
+=========================
+
+.. c:function:: int request_firmware_into_buf(const struct firmware **firmware_p, const char *name, struct device *device, void *buf, size_t size)
+
+    load firmware into a previously allocated buffer
+
+    :param const struct firmware \*\*firmware_p:
+        pointer to firmware image
+
+    :param const char \*name:
+        name of firmware file
+
+    :param struct device \*device:
+        device for which firmware is being loaded and DMA region allocated
+
+    :param void \*buf:
+        address of buffer to load firmware into
+
+    :param size_t size:
+        size of buffer
+
+.. _`request_firmware_into_buf.description`:
+
+Description
+-----------
+
+This function works pretty much like \ :c:func:`request_firmware`\ , but it doesn't
+allocate a buffer to hold the firmware data. Instead, the firmware
+is loaded directly into the buffer pointed to by \ ``buf``\  and the \ ``firmware_p``\ 
+data member is pointed at \ ``buf``\ .
+
+This function doesn't cache firmware either.
 
 .. _`release_firmware`:
 
@@ -219,15 +255,15 @@ request_firmware_nowait
 Description
 -----------
 
-Caller must hold the reference count of \ ``device``\ .
+     Caller must hold the reference count of \ ``device``\ .
 
-Asynchronous variant of \ :c:func:`request_firmware`\  for user contexts:
-- sleep for as small periods as possible since it may
-increase kernel boot time of built-in device drivers
-requesting firmware in their ->\ :c:func:`probe`\  methods, if
-\ ``gfp``\  is GFP_KERNEL.
+     Asynchronous variant of \ :c:func:`request_firmware`\  for user contexts:
+             - sleep for as small periods as possible since it may
+             increase kernel boot time of built-in device drivers
+             requesting firmware in their ->probe() methods, if
+             \ ``gfp``\  is GFP_KERNEL.
 
-- can't sleep at all if \ ``gfp``\  is GFP_ATOMIC.
+             - can't sleep at all if \ ``gfp``\  is GFP_ATOMIC.
 
 .. _`cache_firmware`:
 

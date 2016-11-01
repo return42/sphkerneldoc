@@ -36,16 +36,16 @@ node
     also includes the expiration time.
 
 timer
-    *undescribed*
+    hrtimer used to schedule events while running
 
 function
     Function pointer to be executed when the timer fires.
 
 type
-    Alarm type (BOOTTIME/REALTIME)
+    Alarm type (BOOTTIME/REALTIME).
 
 state
-    *undescribed*
+    Flag that represents if the alarm is set to fire or not.
 
 data
     Internal data value.

@@ -156,7 +156,7 @@ name
 get_target_freq
     Returns desired operating frequency for the device.
     Basically, get_target_freq will run
-    devfreq_dev_profile.\ :c:func:`get_dev_status`\  to get the
+    devfreq_dev_profile.get_dev_status() to get the
     status of the device (load = busy_time / total_time).
     If no_central_polling is set, this callback is called
     only with \ :c:func:`update_devfreq`\  notified by OPP.

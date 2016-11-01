@@ -27,7 +27,7 @@ Description
 Calls befs_read_datastream to read in the btree superblock and
 makes sure it is in cpu byteorder, byteswapping if necessary.
 
-On success, returns BEFS_OK and \*\ ``sup``\  contains the btree superblock,
+On success, returns BEFS_OK and \*@sup contains the btree superblock,
 in cpu byte order.
 
 On failure, BEFS_ERR is returned.
@@ -67,10 +67,10 @@ necessary.
 Note
 ----
 
-node->bh must be NULL when this function called first
-time. Don't forget brelse(node->bh) after last call.
+node->bh must be NULL when this function is called the first time.
+Don't forget brelse(node->bh) after last call.
 
-On success, returns BEFS_OK and \*\ ``node``\  contains the btree node that
+On success, returns BEFS_OK and \*@node contains the btree node that
 starts at \ ``node_off``\ , with the node->head fields in cpu byte order.
 
 On failure, BEFS_ERR is returned.
@@ -101,7 +101,7 @@ befs_btree_find
 Description
 -----------
 
-On success, returns BEFS_OK and sets \*\ ``value``\  to the value stored
+On success, returns BEFS_OK and sets \*@value to the value stored
 with \ ``key``\  (usually the disk block number of an inode).
 
 On failure, returns BEFS_ERR or BEFS_BT_NOT_FOUND.
@@ -114,7 +114,7 @@ Algorithm
 Read the superblock and rootnode of the b+tree.
 Drill down through the interior nodes using \ :c:func:`befs_find_key`\ .
 Once at the correct leaf node, use \ :c:func:`befs_find_key`\  again to get the
-actuall value stored with the key.
+actual value stored with the key.
 
 .. _`befs_find_key`:
 
@@ -142,16 +142,12 @@ befs_find_key
 Description
 -----------
 
-finds exact match if one exists, and returns BEFS_BT_MATCH
-If no exact match, finds first key in node that is greater
-(alphabetically) than the search key and returns BEFS_BT_PARMATCH
-(for partial match, I guess). Can you think of something better to
-call it?
+Finds exact match if one exists, and returns BEFS_BT_MATCH.
+If there is no match and node's value array is too small for key, return
+BEFS_BT_OVERFLOW.
+If no match and node should countain this key, return BEFS_BT_NOT_FOUND.
 
-If no key was a match or greater than the search key, return
-BEFS_BT_NOT_FOUND.
-
-Use binary search instead of a linear.
+Uses binary search instead of a linear.
 
 .. _`befs_btree_read`:
 
@@ -183,12 +179,12 @@ befs_btree_read
     :param befs_off_t \*value:
         Value stored with the returned key
 
-.. _`befs_btree_read.heres-how-it-works`:
+.. _`befs_btree_read.description`:
 
-Heres how it works
-------------------
+Description
+-----------
 
-Key_no is the index of the key/value pair to
+Here's how it works: Key_no is the index of the key/value pair to
 return in keybuf/value.
 Bufsize is the size of keybuf (BEFS_NAME_LEN+1 is a good size). Keysize is
 the number of characters in the key (just a convenience).
@@ -232,7 +228,6 @@ befs_btree_seekleaf
 Description
 -----------
 
-
 Helper function for btree traverse. Moves the current position to the
 start of the first leaf node.
 
@@ -275,7 +270,7 @@ Description
 -----------
 
 Returns a pointer to the start of the key length index array
-of the B+tree node \*\ ``node``\ 
+of the B+tree node \*@node
 
 "The length of all the keys in the node is added to the size of the
 header and then rounded up to a multiple of four to get the beginning
@@ -350,7 +345,7 @@ Description
 -----------
 
 Returns a valid pointer into \ ``node``\  on success.
-Returns NULL on failure (bad input) and sets \*\ ``keylen``\  = 0
+Returns NULL on failure (bad input) and sets \*@keylen = 0
 
 .. _`befs_compare_strings`:
 
@@ -380,7 +375,7 @@ Description
 
 Returns 0 if \ ``key1``\  and \ ``key2``\  are equal.
 Returns >0 if \ ``key1``\  is greater.
-Returns <0 if \ ``key2``\  is greater..
+Returns <0 if \ ``key2``\  is greater.
 
 .. This file was automatic generated / don't edit.
 

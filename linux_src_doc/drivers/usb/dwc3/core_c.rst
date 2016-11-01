@@ -1,37 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/usb/dwc3/core.c
 
-.. _`dwc3_set_mode`:
+.. _`dwc3_default_autosuspend_delay`:
 
-dwc3_set_mode
-=============
+DWC3_DEFAULT_AUTOSUSPEND_DELAY
+==============================
 
-.. c:function:: void dwc3_set_mode(struct dwc3 *dwc, u32 mode)
+.. c:function::  DWC3_DEFAULT_AUTOSUSPEND_DELAY()
 
     DesignWare USB3 DRD Controller Core file
 
-    :param struct dwc3 \*dwc:
-        *undescribed*
-
-    :param u32 mode:
-        *undescribed*
-
-.. _`dwc3_set_mode.description`:
+.. _`dwc3_default_autosuspend_delay.description`:
 
 Description
 -----------
 
 Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 
-.. _`dwc3_set_mode.authors`:
+.. _`dwc3_default_autosuspend_delay.authors`:
 
 Authors
 -------
 
-Felipe Balbi <balbi\ ``ti``\ .com>,
-Sebastian Andrzej Siewior <bigeasy\ ``linutronix``\ .de>
+Felipe Balbi <balbi@ti.com>,
+Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
-.. _`dwc3_set_mode.this-program-is-free-software`:
+.. _`dwc3_default_autosuspend_delay.this-program-is-free-software`:
 
 This program is free software
 -----------------------------
@@ -47,6 +41,18 @@ GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
+
+.. _`dwc3_get_dr_mode`:
+
+dwc3_get_dr_mode
+================
+
+.. c:function:: int dwc3_get_dr_mode(struct dwc3 *dwc)
+
+    Validates and sets dr_mode
+
+    :param struct dwc3 \*dwc:
+        pointer to our context structure
 
 .. _`dwc3_core_soft_reset`:
 

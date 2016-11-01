@@ -134,14 +134,14 @@ be in video memory.
 amdgpu_gart_unbind
 ==================
 
-.. c:function:: void amdgpu_gart_unbind(struct amdgpu_device *adev, unsigned offset, int pages)
+.. c:function:: void amdgpu_gart_unbind(struct amdgpu_device *adev, uint64_t offset, int pages)
 
     unbind pages from the gart page table
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-    :param unsigned offset:
+    :param uint64_t offset:
         offset into the GPU's gart aperture
 
     :param int pages:
@@ -160,14 +160,14 @@ replaces them with the dummy page (all asics).
 amdgpu_gart_bind
 ================
 
-.. c:function:: int amdgpu_gart_bind(struct amdgpu_device *adev, unsigned offset, int pages, struct page **pagelist, dma_addr_t *dma_addr, uint32_t flags)
+.. c:function:: int amdgpu_gart_bind(struct amdgpu_device *adev, uint64_t offset, int pages, struct page **pagelist, dma_addr_t *dma_addr, uint32_t flags)
 
     bind pages into the gart page table
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
 
-    :param unsigned offset:
+    :param uint64_t offset:
         offset into the GPU's gart aperture
 
     :param int pages:

@@ -18,23 +18,27 @@ intlog2
 to use rational values you can use the following method
 -------------------------------------------------------
 
-intlog2(value) = intlog2(value \* 2^x) - x \* 2^24
+
+  intlog2(value) = intlog2(value * 2^x) - x * 2^24
 
 .. _`intlog2.some-usecase-examples`:
 
 Some usecase examples
 ---------------------
 
-intlog2(8) will give 3 << 24 = 3 \* 2^24
-intlog2(9) will give 3 << 24 + ... = 3.16... \* 2^24
-intlog2(1.5) = intlog2(3) - 2^24 = 0.584... \* 2^24
+
+     intlog2(8) will give 3 << 24 = 3 * 2^24
+
+     intlog2(9) will give 3 << 24 + ... = 3.16... * 2^24
+
+     intlog2(1.5) = intlog2(3) - 2^24 = 0.584... * 2^24
 
 .. _`intlog2.return`:
 
 Return
 ------
 
-log2(value) \* 2^24
+log2(value) * 2^24
 
 .. _`intlog10`:
 
@@ -53,15 +57,18 @@ intlog10
 to use rational values you can use the following method
 -------------------------------------------------------
 
-intlog10(value) = intlog10(value \* 10^x) - x \* 2^24
+
+  intlog10(value) = intlog10(value * 10^x) - x * 2^24
 
 .. _`intlog10.an-usecase-example`:
 
 An usecase example
 ------------------
 
-intlog10(1000) will give 3 << 24 = 3 \* 2^24
-due to the implementation intlog10(1000) might be not exactly 3 \* 2^24
+
+     intlog10(1000) will give 3 << 24 = 3 * 2^24
+
+  due to the implementation intlog10(1000) might be not exactly 3 * 2^24
 
 look at intlog2 for similar examples
 
@@ -70,7 +77,7 @@ look at intlog2 for similar examples
 Return
 ------
 
-log10(value) \* 2^24
+log10(value) * 2^24
 
 .. This file was automatic generated / don't edit.
 

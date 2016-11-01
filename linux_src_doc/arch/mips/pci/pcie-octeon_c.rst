@@ -27,7 +27,7 @@ cvmx_pcie_get_io_size
 
 .. c:function:: uint64_t cvmx_pcie_get_io_size(int pcie_port)
 
-    \ :c:func:`cvmx_pcie_get_io_base_address`\ 
+    cvmx_pcie_get_io_base_address()
 
     :param int pcie_port:
         PCIe port the IO is for
@@ -65,7 +65,7 @@ cvmx_pcie_get_mem_size
 
 .. c:function:: uint64_t cvmx_pcie_get_mem_size(int pcie_port)
 
-    \ :c:func:`cvmx_pcie_get_mem_base_address`\ 
+    cvmx_pcie_get_mem_base_address()
 
     :param int pcie_port:
         PCIe port the IO is for

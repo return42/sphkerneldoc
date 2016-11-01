@@ -45,7 +45,7 @@ Description
 -----------
 
 Add a fence to a shared slot, obj->lock must be held, and
-reservation_object_reserve_shared_fence has been called.
+\ :c:func:`reservation_object_reserve_shared`\  has been called.
 
 .. _`reservation_object_add_excl_fence`:
 

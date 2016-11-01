@@ -25,7 +25,7 @@ tda827x_attach
 Description
 -----------
 
-\ ``param``\  fe Frontend to attach to.
+@param fe Frontend to attach to.
 \ ``param``\  addr i2c address of the tuner.
 \ ``param``\  i2c i2c adapter to use.
 \ ``param``\  cfg optional callback function pointers.

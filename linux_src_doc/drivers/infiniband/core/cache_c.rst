@@ -38,7 +38,7 @@ ib_cache_gid_find_by_filter
 Description
 -----------
 
-\ :c:func:`ib_cache_gid_find_by_filter`\  searches for the specified GID value
+ib_cache_gid_find_by_filter() searches for the specified GID value
 of which the filter function returns true in the port's GID table.
 This function is only supported on RoCE ports.
 

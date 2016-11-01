@@ -102,7 +102,7 @@ It returns the size of unflattened device tree or error code
 __unflatten_device_tree
 =======================
 
-.. c:function:: void *__unflatten_device_tree(const void *blob, struct device_node *dad, struct device_node **mynodes, void *(*dt_alloc)(u64 size, u64 align))
+.. c:function:: void *__unflatten_device_tree(const void *blob, struct device_node *dad, struct device_node **mynodes, void *(*dt_alloc)(u64 size, u64 align), bool detached)
 
     create tree of device_nodes from flat blob
 
@@ -118,6 +118,9 @@ __unflatten_device_tree
     :param void \*(\*dt_alloc)(u64 size, u64 align):
         An allocator that provides a virtual address to memory
         for the resulting tree
+
+    :param bool detached:
+        *undescribed*
 
 .. _`__unflatten_device_tree.description`:
 
@@ -267,6 +270,22 @@ Description
 This function is used to scan the flattened device-tree, it is
 used to extract the memory information at boot before we can
 unflatten the tree
+
+.. _`of_get_flat_dt_subnode_by_name`:
+
+of_get_flat_dt_subnode_by_name
+==============================
+
+.. c:function:: int of_get_flat_dt_subnode_by_name(unsigned long node, const char *uname)
+
+    get the subnode by given name
+
+    :param unsigned long node:
+        the parent node
+
+    :param const char \*uname:
+        the name of subnode
+        \ ``return``\  offset of the subnode, or -FDT_ERR_NOTFOUND if there is none
 
 .. _`of_get_flat_dt_root`:
 

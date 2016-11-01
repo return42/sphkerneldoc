@@ -6,12 +6,15 @@
 acpi_register_lapic
 ===================
 
-.. c:function:: int acpi_register_lapic(int id, u8 enabled)
+.. c:function:: int acpi_register_lapic(int id, u32 acpiid, u8 enabled)
 
     register a local apic and generates a logic cpu number
 
     :param int id:
         local apic id to register
+
+    :param u32 acpiid:
+        ACPI id to register
 
     :param u8 enabled:
         this cpu is enabled or not
@@ -44,7 +47,7 @@ Description
 -----------
 
 Assume caller holds some type of lock to serialize \ :c:func:`acpi_ioapic_registered`\ 
-with \ :c:func:`acpi_register_ioapic`\ /\ :c:func:`acpi_unregister_ioapic`\ .
+with \ :c:func:`acpi_register_ioapic`\ /acpi_unregister_ioapic().
 
 .. This file was automatic generated / don't edit.
 

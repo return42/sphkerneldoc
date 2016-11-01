@@ -206,7 +206,7 @@ error will be specified by the return code from this function.
 Return
 ------
 
-see @\ :c:func:`nx842_powernv_function`\ 
+see \ ``nx842_powernv_function``\ ()
 
 .. _`nx842_powernv_decompress`:
 
@@ -250,7 +250,7 @@ error will be specified by the return code from this function.
 Return
 ------
 
-see @\ :c:func:`nx842_powernv_function`\ 
+see \ ``nx842_powernv_function``\ ()
 
 .. This file was automatic generated / don't edit.
 

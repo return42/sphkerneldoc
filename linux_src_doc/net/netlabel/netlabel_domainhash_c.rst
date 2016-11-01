@@ -49,12 +49,15 @@ hash table lock.
 netlbl_domhsh_search
 ====================
 
-.. c:function:: struct netlbl_dom_map *netlbl_domhsh_search(const char *domain)
+.. c:function:: struct netlbl_dom_map *netlbl_domhsh_search(const char *domain, u16 family)
 
     Search for a domain entry
 
     :param const char \*domain:
         the domain
+
+    :param u16 family:
+        the address family
 
 .. _`netlbl_domhsh_search.description`:
 
@@ -62,7 +65,8 @@ Description
 -----------
 
 Searches the domain hash table and returns a pointer to the hash table
-entry if found, otherwise NULL is returned.  The caller is responsible for
+entry if found, otherwise NULL is returned.  \ ``family``\  may be \ ``AF_UNSPEC``\ 
+which matches any address family entries.  The caller is responsible for
 ensuring that the hash table is protected with either a RCU read lock or the
 hash table lock.
 
@@ -71,12 +75,15 @@ hash table lock.
 netlbl_domhsh_search_def
 ========================
 
-.. c:function:: struct netlbl_dom_map *netlbl_domhsh_search_def(const char *domain)
+.. c:function:: struct netlbl_dom_map *netlbl_domhsh_search_def(const char *domain, u16 family)
 
     Search for a domain entry
 
     :param const char \*domain:
         the domain
+
+    :param u16 family:
+        the address family
 
 .. _`netlbl_domhsh_search_def.description`:
 
@@ -86,7 +93,8 @@ Description
 Searches the domain hash table and returns a pointer to the hash table
 entry if an exact match is found, if an exact match is not present in the
 hash table then the default entry is returned if valid otherwise NULL is
-returned.  The caller is responsible ensuring that the hash table is
+returned.  \ ``family``\  may be \ ``AF_UNSPEC``\  which matches any address family
+entries.  The caller is responsible ensuring that the hash table is
 protected with either a RCU read lock or the hash table lock.
 
 .. _`netlbl_domhsh_audit_add`:
@@ -184,8 +192,11 @@ Description
 -----------
 
 Adds a new entry to the domain hash table and handles any updates to the
-lower level protocol handler (i.e. CIPSO).  Returns zero on success,
-negative on failure.
+lower level protocol handler (i.e. CIPSO).  \ ``entry``\ ->family may be set to
+\ ``AF_UNSPEC``\  which will add an entry that matches all address families.  This
+is only useful for the unlabelled type and will only succeed if there is no
+existing entry for any address family with the same domain.  Returns zero
+on success, negative on failure.
 
 .. _`netlbl_domhsh_add_default`:
 
@@ -266,17 +277,50 @@ Removes an individual address selector from a domain mapping and potentially
 the entire mapping if it is empty.  Returns zero on success, negative values
 on failure.
 
+.. _`netlbl_domhsh_remove_af6`:
+
+netlbl_domhsh_remove_af6
+========================
+
+.. c:function:: int netlbl_domhsh_remove_af6(const char *domain, const struct in6_addr *addr, const struct in6_addr *mask, struct netlbl_audit *audit_info)
+
+    Removes an address selector entry
+
+    :param const char \*domain:
+        the domain
+
+    :param const struct in6_addr \*addr:
+        IPv6 address
+
+    :param const struct in6_addr \*mask:
+        IPv6 address mask
+
+    :param struct netlbl_audit \*audit_info:
+        NetLabel audit information
+
+.. _`netlbl_domhsh_remove_af6.description`:
+
+Description
+-----------
+
+Removes an individual address selector from a domain mapping and potentially
+the entire mapping if it is empty.  Returns zero on success, negative values
+on failure.
+
 .. _`netlbl_domhsh_remove`:
 
 netlbl_domhsh_remove
 ====================
 
-.. c:function:: int netlbl_domhsh_remove(const char *domain, struct netlbl_audit *audit_info)
+.. c:function:: int netlbl_domhsh_remove(const char *domain, u16 family, struct netlbl_audit *audit_info)
 
     Removes an entry from the domain hash table
 
     :param const char \*domain:
         the domain to remove
+
+    :param u16 family:
+        address family
 
     :param struct netlbl_audit \*audit_info:
         NetLabel audit information
@@ -287,17 +331,21 @@ Description
 -----------
 
 Removes an entry from the domain hash table and handles any updates to the
-lower level protocol handler (i.e. CIPSO).  Returns zero on success,
-negative on failure.
+lower level protocol handler (i.e. CIPSO).  \ ``family``\  may be \ ``AF_UNSPEC``\  which
+removes all address family entries.  Returns zero on success, negative on
+failure.
 
 .. _`netlbl_domhsh_remove_default`:
 
 netlbl_domhsh_remove_default
 ============================
 
-.. c:function:: int netlbl_domhsh_remove_default(struct netlbl_audit *audit_info)
+.. c:function:: int netlbl_domhsh_remove_default(u16 family, struct netlbl_audit *audit_info)
 
     Removes the default entry from the table
+
+    :param u16 family:
+        address family
 
     :param struct netlbl_audit \*audit_info:
         NetLabel audit information
@@ -307,21 +355,25 @@ netlbl_domhsh_remove_default
 Description
 -----------
 
-Removes/resets the default entry for the domain hash table and handles any
-updates to the lower level protocol handler (i.e. CIPSO).  Returns zero on
-success, non-zero on failure.
+Removes/resets the default entry corresponding to \ ``family``\  from the domain
+hash table and handles any updates to the lower level protocol handler
+(i.e. CIPSO).  \ ``family``\  may be \ ``AF_UNSPEC``\  which removes all address family
+entries.  Returns zero on success, negative on failure.
 
 .. _`netlbl_domhsh_getentry`:
 
 netlbl_domhsh_getentry
 ======================
 
-.. c:function:: struct netlbl_dom_map *netlbl_domhsh_getentry(const char *domain)
+.. c:function:: struct netlbl_dom_map *netlbl_domhsh_getentry(const char *domain, u16 family)
 
     Get an entry from the domain hash table
 
     :param const char \*domain:
         the domain name to search for
+
+    :param u16 family:
+        address family
 
 .. _`netlbl_domhsh_getentry.description`:
 
@@ -329,8 +381,9 @@ Description
 -----------
 
 Look through the domain hash table searching for an entry to match \ ``domain``\ ,
-return a pointer to a copy of the entry or NULL.  The caller is responsible
-for ensuring that rcu_read_[un]\ :c:func:`lock`\  is called.
+with address family \ ``family``\ , return a pointer to a copy of the entry or
+NULL.  The caller is responsible for ensuring that rcu_read_[un]lock() is
+called.
 
 .. _`netlbl_domhsh_getentry_af4`:
 
@@ -354,7 +407,7 @@ Description
 
 Look through the domain hash table searching for an entry to match \ ``domain``\ 
 and \ ``addr``\ , return a pointer to a copy of the entry or NULL.  The caller is
-responsible for ensuring that rcu_read_[un]\ :c:func:`lock`\  is called.
+responsible for ensuring that rcu_read_[un]lock() is called.
 
 .. _`netlbl_domhsh_getentry_af6`:
 
@@ -378,7 +431,7 @@ Description
 
 Look through the domain hash table searching for an entry to match \ ``domain``\ 
 and \ ``addr``\ , return a pointer to a copy of the entry or NULL.  The caller is
-responsible for ensuring that rcu_read_[un]\ :c:func:`lock`\  is called.
+responsible for ensuring that rcu_read_[un]lock() is called.
 
 .. _`netlbl_domhsh_walk`:
 

@@ -18,7 +18,7 @@ mpt_get_cb_idx
 Description
 -----------
 
-Returns cb_idx, or zero means it wasn't found
+     Returns cb_idx, or zero means it wasn't found
 
 .. _`mpt_is_discovery_complete`:
 
@@ -91,16 +91,16 @@ mpt_interrupt
 Description
 -----------
 
-This routine is registered via the \ :c:func:`request_irq`\  kernel API call,
-and handles all interrupts generated from a specific MPT adapter
-(also referred to as a IO Controller or IOC).
-This routine must clear the interrupt from the adapter and does
-so by reading the reply FIFO.  Multiple replies may be processed
-per single call to this routine.
+     This routine is registered via the \ :c:func:`request_irq`\  kernel API call,
+     and handles all interrupts generated from a specific MPT adapter
+     (also referred to as a IO Controller or IOC).
+     This routine must clear the interrupt from the adapter and does
+     so by reading the reply FIFO.  Multiple replies may be processed
+     per single call to this routine.
 
-This routine handles register-level access of the adapter but
-dispatches (calls) a protocol-specific callback routine to handle
-the protocol-specific details of the MPT request completion.
+     This routine handles register-level access of the adapter but
+     dispatches (calls) a protocol-specific callback routine to handle
+     the protocol-specific details of the MPT request completion.
 
 .. _`mptbase_reply`:
 
@@ -125,12 +125,12 @@ mptbase_reply
 Description
 -----------
 
-MPT base driver's callback routine; all base driver
-"internal" request/reply processing is routed here.
-Currently used for EventNotification and EventAck handling.
+     MPT base driver's callback routine; all base driver
+     "internal" request/reply processing is routed here.
+     Currently used for EventNotification and EventAck handling.
 
-Returns 1 indicating original alloc'd request frame ptr
-should be freed, or 0 if it shouldn't.
+     Returns 1 indicating original alloc'd request frame ptr
+     should be freed, or 0 if it shouldn't.
 
 .. _`mpt_register`:
 
@@ -145,7 +145,7 @@ mpt_register
         callback function pointer
 
     :param MPT_DRIVER_CLASS dclass:
-        Protocol driver's class (\ ``MPT_DRIVER_CLASS``\  enum value)
+        Protocol driver's class (%MPT_DRIVER_CLASS enum value)
 
     :param char \*func_name:
         call function's name
@@ -155,10 +155,10 @@ mpt_register
 Description
 -----------
 
-This routine is called by a protocol-specific driver (SCSI host,
-LAN, SCSI target) to register its reply callback routine.  Each
-protocol-specific driver must do this before it will be able to
-use any IOC resources, such as obtaining request frames.
+     This routine is called by a protocol-specific driver (SCSI host,
+     LAN, SCSI target) to register its reply callback routine.  Each
+     protocol-specific driver must do this before it will be able to
+     use any IOC resources, such as obtaining request frames.
 
 .. _`mpt_register.notes`:
 
@@ -166,13 +166,13 @@ NOTES
 -----
 
 The SCSI protocol driver currently calls this routine thrice
-in order to register separate callbacks; one for "normal" SCSI IO;
-one for MptScsiTaskMgmt requests; one for Scan/DV requests.
+     in order to register separate callbacks; one for "normal" SCSI IO;
+     one for MptScsiTaskMgmt requests; one for Scan/DV requests.
 
-Returns u8 valued "handle" in the range (and S.O.D. order)
-{N,...,7,6,5,...,1} if successful.
-A return value of MPT_MAX_PROTOCOL_DRIVERS (including zero!) should be
-considered an error by the caller.
+     Returns u8 valued "handle" in the range (and S.O.D. order)
+     {N,...,7,6,5,...,1} if successful.
+     A return value of MPT_MAX_PROTOCOL_DRIVERS (including zero!) should be
+     considered an error by the caller.
 
 .. _`mpt_deregister`:
 
@@ -191,8 +191,8 @@ mpt_deregister
 Description
 -----------
 
-Each protocol-specific driver should call this routine when its
-module is unloaded.
+     Each protocol-specific driver should call this routine when its
+     module is unloaded.
 
 .. _`mpt_event_register`:
 
@@ -214,10 +214,10 @@ mpt_event_register
 Description
 -----------
 
-This routine can be called by one or more protocol-specific drivers
-if/when they choose to be notified of MPT events.
+     This routine can be called by one or more protocol-specific drivers
+     if/when they choose to be notified of MPT events.
 
-Returns 0 for success.
+     Returns 0 for success.
 
 .. _`mpt_event_deregister`:
 
@@ -236,9 +236,9 @@ mpt_event_deregister
 Description
 -----------
 
-Each protocol-specific driver should call this routine
-when it does not (or can no longer) handle events,
-or when its module is unloaded.
+     Each protocol-specific driver should call this routine
+     when it does not (or can no longer) handle events,
+     or when its module is unloaded.
 
 .. _`mpt_reset_register`:
 
@@ -260,10 +260,10 @@ mpt_reset_register
 Description
 -----------
 
-This routine can be called by one or more protocol-specific drivers
-if/when they choose to be notified of IOC resets.
+     This routine can be called by one or more protocol-specific drivers
+     if/when they choose to be notified of IOC resets.
 
-Returns 0 for success.
+     Returns 0 for success.
 
 .. _`mpt_reset_deregister`:
 
@@ -282,9 +282,9 @@ mpt_reset_deregister
 Description
 -----------
 
-Each protocol-specific driver should call this routine
-when it does not (or can no longer) handle IOC reset handling,
-or when its module is unloaded.
+     Each protocol-specific driver should call this routine
+     when it does not (or can no longer) handle IOC reset handling,
+     or when its module is unloaded.
 
 .. _`mpt_device_driver_register`:
 
@@ -333,11 +333,11 @@ mpt_get_msg_frame
 Description
 -----------
 
-Obtain an MPT request frame from the pool (of 1024) that are
-allocated per MPT adapter.
+     Obtain an MPT request frame from the pool (of 1024) that are
+     allocated per MPT adapter.
 
-Returns pointer to a MPT request frame or \ ``NULL``\  if none are available
-or IOC is not active.
+     Returns pointer to a MPT request frame or \ ``NULL``\  if none are available
+     or IOC is not active.
 
 .. _`mpt_put_msg_frame`:
 
@@ -362,8 +362,8 @@ mpt_put_msg_frame
 Description
 -----------
 
-This routine posts an MPT request frame to the request post FIFO of a
-specific MPT adapter.
+     This routine posts an MPT request frame to the request post FIFO of a
+     specific MPT adapter.
 
 .. _`mpt_put_msg_frame_hi_pri`:
 
@@ -388,11 +388,11 @@ mpt_put_msg_frame_hi_pri
 Description
 -----------
 
-Send a protocol-specific MPT request frame to an IOC using
-hi-priority request queue.
+     Send a protocol-specific MPT request frame to an IOC using
+     hi-priority request queue.
 
-This routine posts an MPT request frame to the request post FIFO of a
-specific MPT adapter.
+     This routine posts an MPT request frame to the request post FIFO of a
+     specific MPT adapter.
 
 .. _`mpt_free_msg_frame`:
 
@@ -414,8 +414,8 @@ mpt_free_msg_frame
 Description
 -----------
 
-This routine places a MPT request frame back on the MPT adapter's
-FreeQ.
+     This routine places a MPT request frame back on the MPT adapter's
+     FreeQ.
 
 .. _`mpt_add_sge`:
 
@@ -440,8 +440,8 @@ mpt_add_sge
 Description
 -----------
 
-This routine places a MPT request frame back on the MPT adapter's
-FreeQ.
+     This routine places a MPT request frame back on the MPT adapter's
+     FreeQ.
 
 .. _`mpt_add_sge_64bit`:
 
@@ -466,8 +466,8 @@ mpt_add_sge_64bit
 Description
 -----------
 
-This routine places a MPT request frame back on the MPT adapter's
-FreeQ.
+     This routine places a MPT request frame back on the MPT adapter's
+     FreeQ.
 
 .. _`mpt_add_sge_64bit_1078`:
 
@@ -492,8 +492,8 @@ mpt_add_sge_64bit_1078
 Description
 -----------
 
-This routine places a MPT request frame back on the MPT adapter's
-FreeQ.
+     This routine places a MPT request frame back on the MPT adapter's
+     FreeQ.
 
 .. _`mpt_add_chain`:
 
@@ -566,8 +566,8 @@ mpt_send_handshake_request
 Description
 -----------
 
-This routine is used exclusively to send MptScsiTaskMgmt
-requests since they are required to be sent via doorbell handshake.
+     This routine is used exclusively to send MptScsiTaskMgmt
+     requests since they are required to be sent via doorbell handshake.
 
 .. _`mpt_send_handshake_request.note`:
 
@@ -575,9 +575,9 @@ NOTE
 ----
 
 It is the callers responsibility to byte-swap fields in the
-request which are greater than 1 byte in size.
+     request which are greater than 1 byte in size.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`mpt_host_page_access_control`:
 
@@ -633,8 +633,8 @@ mpt_host_page_alloc
 Description
 -----------
 
-If we already allocated memory in past, then resend the same pointer.
-Returns 0 for success, non-zero for failure.
+     If we already allocated memory in past, then resend the same pointer.
+     Returns 0 for success, non-zero for failure.
 
 .. _`mpt_verify_adapter`:
 
@@ -656,11 +656,11 @@ mpt_verify_adapter
 Description
 -----------
 
-Given a unique IOC identifier, set pointer to the associated MPT
-adapter structure.
+     Given a unique IOC identifier, set pointer to the associated MPT
+     adapter structure.
 
-Returns iocid and sets iocpp if iocid is found.
-Returns -1 if iocid is not found.
+     Returns iocid and sets iocpp if iocid is found.
+     Returns -1 if iocid is not found.
 
 .. _`mpt_get_product_name`:
 
@@ -685,8 +685,8 @@ mpt_get_product_name
 Description
 -----------
 
-Returns product string displayed when driver loads,
-in /proc/mpt/summary and /sysfs/class/scsi_host/host<X>/version_product
+     Returns product string displayed when driver loads,
+     in /proc/mpt/summary and /sysfs/class/scsi_host/host<X>/version_product
 
 .. _`mpt_mapresources`:
 
@@ -720,22 +720,17 @@ mpt_attach
 Description
 -----------
 
-This routine performs all the steps necessary to bring the IOC of
-a MPT adapter to a OPERATIONAL state.  This includes registering
-memory regions, registering the interrupt, and allocating request
-and reply memory pools.
+     This routine performs all the steps necessary to bring the IOC of
+     a MPT adapter to a OPERATIONAL state.  This includes registering
+     memory regions, registering the interrupt, and allocating request
+     and reply memory pools.
 
-This routine also pre-fetches the LAN MAC address of a Fibre Channel
-MPT adapter.
+     This routine also pre-fetches the LAN MAC address of a Fibre Channel
+     MPT adapter.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
-.. _`mpt_attach.todo`:
-
-TODO
-----
-
-Add support for polled controllers
+     TODO: Add support for polled controllers
 
 .. _`mpt_detach`:
 
@@ -799,24 +794,24 @@ mpt_do_ioc_recovery
 Description
 -----------
 
-This routine performs all the steps necessary to bring the IOC
-to a OPERATIONAL state.
+     This routine performs all the steps necessary to bring the IOC
+     to a OPERATIONAL state.
 
-This routine also pre-fetches the LAN MAC address of a Fibre Channel
-MPT adapter.
+     This routine also pre-fetches the LAN MAC address of a Fibre Channel
+     MPT adapter.
 
 .. _`mpt_do_ioc_recovery.return`:
 
 Return
 ------
 
-0 for success
--1 if failed to get board READY
--2 if READY but IOCFacts Failed
--3 if READY but PrimeIOCFifos Failed
--4 if READY but IOCInit Failed
--5 if failed to enable_device and/or request_selected_regions
--6 if failed to upload firmware
+              0 for success
+             -1 if failed to get board READY
+             -2 if READY but IOCFacts Failed
+             -3 if READY but PrimeIOCFifos Failed
+             -4 if READY but IOCInit Failed
+             -5 if failed to enable_device and/or request_selected_regions
+             -6 if failed to upload firmware
 
 .. _`mpt_detect_bound_ports`:
 
@@ -838,12 +833,12 @@ mpt_detect_bound_ports
 Description
 -----------
 
-Search for PCI bus/dev_function which matches
-PCI bus/dev_function (+/-1) for newly discovered 929,
-929X, 1030 or 1035.
+     Search for PCI bus/dev_function which matches
+     PCI bus/dev_function (+/-1) for newly discovered 929,
+     929X, 1030 or 1035.
 
-If match on PCI dev_function +/-1 is found, bind the two MPT adapters
-using alt_ioc pointer fields in their \ ``MPT_ADAPTER``\  structures.
+     If match on PCI dev_function +/-1 is found, bind the two MPT adapters
+     using alt_ioc pointer fields in their \ ``MPT_ADAPTER``\  structures.
 
 .. _`mpt_adapter_disable`:
 
@@ -874,8 +869,8 @@ mpt_adapter_dispose
 Description
 -----------
 
-This routine unregisters h/w resources and frees all alloc'd memory
-associated with a MPT adapter structure.
+     This routine unregisters h/w resources and frees all alloc'd memory
+     associated with a MPT adapter structure.
 
 .. _`mptdisplayioccapabilities`:
 
@@ -912,12 +907,12 @@ MakeIocReady
 Return
 ------
 
-1 - DIAG reset and READY
-0 - READY initially OR soft reset and READY
--1 - Any failure on KickStart
--2 - Msg Unit Reset Failed
--3 - IO Unit Reset Failed
--4 - IOC owned by a PEER
+              1 - DIAG reset and READY
+              0 - READY initially OR soft reset and READY
+             -1 - Any failure on KickStart
+             -2 - Msg Unit Reset Failed
+             -3 - IO Unit Reset Failed
+             -4 - IOC owned by a PEER
 
 .. _`mpt_getiocstate`:
 
@@ -939,8 +934,8 @@ mpt_GetIocState
 Description
 -----------
 
-Returns all IOC Doorbell register bits if cooked==0, else just the
-Doorbell bits in MPI_IOC_STATE_MASK.
+     Returns all IOC Doorbell register bits if cooked==0, else just the
+     Doorbell bits in MPI_IOC_STATE_MASK.
 
 .. _`getiocfacts`:
 
@@ -965,7 +960,7 @@ GetIocFacts
 Description
 -----------
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`getportfacts`:
 
@@ -990,7 +985,7 @@ GetPortFacts
 Description
 -----------
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`sendiocinit`:
 
@@ -1012,9 +1007,9 @@ SendIocInit
 Description
 -----------
 
-Send IOCInit followed by PortEnable to bring IOC to OPERATIONAL state.
+     Send IOCInit followed by PortEnable to bring IOC to OPERATIONAL state.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`sendportenable`:
 
@@ -1039,9 +1034,9 @@ SendPortEnable
 Description
 -----------
 
-Send PortEnable to bring IOC to OPERATIONAL state.
+     Send PortEnable to bring IOC to OPERATIONAL state.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`mpt_alloc_fw_memory`:
 
@@ -1063,10 +1058,10 @@ mpt_alloc_fw_memory
 Description
 -----------
 
-If memory has already been allocated, the same (cached) value
-is returned.
+     If memory has already been allocated, the same (cached) value
+     is returned.
 
-Return 0 if successful, or non-zero for failure
+     Return 0 if successful, or non-zero for failure
 
 .. _`mpt_free_fw_memory`:
 
@@ -1085,8 +1080,8 @@ mpt_free_fw_memory
 Description
 -----------
 
-If alt_img is NULL, delete from ioc structure.
-Else, delete a secondary image in same format.
+     If alt_img is NULL, delete from ioc structure.
+     Else, delete a secondary image in same format.
 
 .. _`mpt_do_upload`:
 
@@ -1108,18 +1103,13 @@ mpt_do_upload
 Description
 -----------
 
-Returns 0 for success, >0 for handshake failure
-<0 for fw upload failure.
+     Returns 0 for success, >0 for handshake failure
+             <0 for fw upload failure.
 
-.. _`mpt_do_upload.remark`:
-
-Remark
-------
-
-If bound IOC and a successful FWUpload was performed
-on the bound IOC, the second image is discarded
-and memory is free'd. Both channels must upload to prevent
-IOC from running in degraded mode.
+     Remark: If bound IOC and a successful FWUpload was performed
+     on the bound IOC, the second image is discarded
+     and memory is free'd. Both channels must upload to prevent
+     IOC from running in degraded mode.
 
 .. _`mpt_downloadboot`:
 
@@ -1144,12 +1134,12 @@ mpt_downloadboot
 Description
 -----------
 
-FwDownloadBoot requires Programmed IO access.
+     FwDownloadBoot requires Programmed IO access.
 
-Returns 0 for success
--1 FW Image size is 0
--2 No valid cached_fw Pointer
-<0 for fw upload failure.
+     Returns 0 for success
+             -1 FW Image size is 0
+             -2 No valid cached_fw Pointer
+             <0 for fw upload failure.
 
 .. _`kickstart`:
 
@@ -1174,33 +1164,28 @@ KickStart
 Description
 -----------
 
-This routine places MPT adapter in diagnostic mode via the
-WriteSequence register, and then performs a hard reset of adapter
-via the Diagnostic register.
+     This routine places MPT adapter in diagnostic mode via the
+     WriteSequence register, and then performs a hard reset of adapter
+     via the Diagnostic register.
 
-.. _`kickstart.inputs`:
-
-Inputs
-------
-
-sleepflag - CAN_SLEEP (non-interrupt thread)
-or NO_SLEEP (interrupt thread, use mdelay)
-force - 1 if doorbell active, board fault state
-board operational, IOC_RECOVERY or
-IOC_BRINGUP and there is an alt_ioc.
-0 else
+     Inputs:   sleepflag - CAN_SLEEP (non-interrupt thread)
+                     or NO_SLEEP (interrupt thread, use mdelay)
+               force - 1 if doorbell active, board fault state
+                             board operational, IOC_RECOVERY or
+                             IOC_BRINGUP and there is an alt_ioc.
+                       0 else
 
 .. _`kickstart.return`:
 
 Return
 ------
 
-1 - hard reset, READY
-0 - no reset due to History bit, READY
--1 - no reset due to History bit but not READY
-OR reset but failed to come READY
--2 - no reset, could not enter DIAG mode
--3 - reset but bad FW bit
+              1 - hard reset, READY
+              0 - no reset due to History bit, READY
+             -1 - no reset due to History bit but not READY
+                  OR reset but failed to come READY
+             -2 - no reset, could not enter DIAG mode
+             -3 - reset but bad FW bit
 
 .. _`mpt_diag_reset`:
 
@@ -1227,10 +1212,10 @@ mpt_diag_reset
 Description
 -----------
 
-This routine places the adapter in diagnostic mode via the
-WriteSequence register and then performs a hard reset of adapter
-via the Diagnostic register. Adapter should be in ready state
-upon successful completion.
+     This routine places the adapter in diagnostic mode via the
+     WriteSequence register and then performs a hard reset of adapter
+     via the Diagnostic register. Adapter should be in ready state
+     upon successful completion.
 
 .. _`mpt_diag_reset.return`:
 
@@ -1238,9 +1223,9 @@ Return
 ------
 
 1  hard reset successful
-0  no reset performed because reset history bit set
--2  enabling diagnostic mode failed
--3  diagnostic reset failed
+               0  no reset performed because reset history bit set
+              -2  enabling diagnostic mode failed
+              -3  diagnostic reset failed
 
 .. _`sendiocreset`:
 
@@ -1266,9 +1251,9 @@ SendIocReset
 Description
 -----------
 
-Send IOCReset request to the MPT adapter.
+     Send IOCReset request to the MPT adapter.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`initchainbuffers`:
 
@@ -1287,8 +1272,8 @@ initChainBuffers
 Description
 -----------
 
-Allocates memory for and initializes chain buffers,
-chain buffer control arrays and spinlock.
+     Allocates memory for and initializes chain buffers,
+     chain buffer control arrays and spinlock.
 
 .. _`primeiocfifos`:
 
@@ -1307,11 +1292,11 @@ PrimeIocFifos
 Description
 -----------
 
-This routine allocates memory for the MPT reply and request frame
-pools (if necessary), and primes the IOC reply FIFO with
-reply frames.
+     This routine allocates memory for the MPT reply and request frame
+     pools (if necessary), and primes the IOC reply FIFO with
+     reply frames.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`mpt_handshake_req_reply_wait`:
 
@@ -1349,11 +1334,11 @@ NOTES
 -----
 
 It is the callers responsibility to byte-swap fields in the
-request which are greater than 1 byte in size.  It is also the
-callers responsibility to byte-swap response fields which are
-greater than 1 byte in size.
+     request which are greater than 1 byte in size.  It is also the
+     callers responsibility to byte-swap response fields which are
+     greater than 1 byte in size.
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`waitfordoorbellack`:
 
@@ -1378,11 +1363,11 @@ WaitForDoorbellAck
 Description
 -----------
 
-This routine waits (up to ~2 seconds max) for IOC doorbell
-handshake ACKnowledge, indicated by the IOP_DOORBELL_STATUS
-bit in its IntStatus register being clear.
+     This routine waits (up to ~2 seconds max) for IOC doorbell
+     handshake ACKnowledge, indicated by the IOP_DOORBELL_STATUS
+     bit in its IntStatus register being clear.
 
-Returns a negative value on failure, else wait loop count.
+     Returns a negative value on failure, else wait loop count.
 
 .. _`waitfordoorbellint`:
 
@@ -1407,10 +1392,10 @@ WaitForDoorbellInt
 Description
 -----------
 
-This routine waits (up to ~2 seconds max) for IOC doorbell interrupt
-(MPI_HIS_DOORBELL_INTERRUPT) to be set in the IntStatus register.
+     This routine waits (up to ~2 seconds max) for IOC doorbell interrupt
+     (MPI_HIS_DOORBELL_INTERRUPT) to be set in the IntStatus register.
 
-Returns a negative value on failure, else wait loop count.
+     Returns a negative value on failure, else wait loop count.
 
 .. _`waitfordoorbellreply`:
 
@@ -1435,11 +1420,11 @@ WaitForDoorbellReply
 Description
 -----------
 
-This routine polls the IOC for a handshake reply, 16 bits at a time.
-Reply is cached to IOC private area large enough to hold a maximum
-of 128 bytes of reply data.
+     This routine polls the IOC for a handshake reply, 16 bits at a time.
+     Reply is cached to IOC private area large enough to hold a maximum
+     of 128 bytes of reply data.
 
-Returns a negative value on failure, else size of reply in WORDS.
+     Returns a negative value on failure, else size of reply in WORDS.
 
 .. _`getlanconfigpages`:
 
@@ -1459,10 +1444,10 @@ Return
 ------
 
 0 for success
--ENOMEM if no memory available
--EPERM if not allowed due to ISR context
--EAGAIN if no msg frames currently available
--EFAULT for non-successful reply or no reply (timeout)
+     -ENOMEM if no memory available
+             -EPERM if not allowed due to ISR context
+             -EAGAIN if no msg frames currently available
+             -EFAULT for non-successful reply or no reply (timeout)
 
 .. _`mptbase_sas_persist_operation`:
 
@@ -1484,9 +1469,9 @@ mptbase_sas_persist_operation
 Description
 -----------
 
-MPI_SAS_OP_CLEAR_NOT_PRESENT - Free all persist TargetID mappings for
-devices not currently present.
-MPI_SAS_OP_CLEAR_ALL_PERSISTENT - Clear al persist TargetID mappings
+     MPI_SAS_OP_CLEAR_NOT_PRESENT - Free all persist TargetID mappings for
+             devices not currently present.
+     MPI_SAS_OP_CLEAR_ALL_PERSISTENT - Clear al persist TargetID mappings
 
 .. _`mptbase_sas_persist_operation.note`:
 
@@ -1495,7 +1480,7 @@ NOTE
 
 Don't use not this function during interrupt time.
 
-Returns 0 for success, non-zero error
+     Returns 0 for success, non-zero error
 
 .. _`getiounitpage2`:
 
@@ -1515,10 +1500,10 @@ Return
 ------
 
 0 for success
--ENOMEM if no memory available
--EPERM if not allowed due to ISR context
--EAGAIN if no msg frames currently available
--EFAULT for non-successful reply or no reply (timeout)
+     -ENOMEM if no memory available
+             -EPERM if not allowed due to ISR context
+             -EAGAIN if no msg frames currently available
+             -EFAULT for non-successful reply or no reply (timeout)
 
 .. _`mpt_getscsiportsettings`:
 
@@ -1541,19 +1526,19 @@ Return
 ------
 
 -EFAULT if read of config page header fails
-or if no nvram
-If read of SCSI Port Page 0 fails,
-NVRAM = MPT_HOST_NVRAM_INVALID  (0xFFFFFFFF)
-Adapter settings: async, narrow
-Return 1
-If read of SCSI Port Page 2 fails,
-Adapter settings valid
-NVRAM = MPT_HOST_NVRAM_INVALID  (0xFFFFFFFF)
-Return 1
-Else
-Both valid
-Return 0
-CHECK - what type of locking mechanisms should be used????
+                     or if no nvram
+     If read of SCSI Port Page 0 fails,
+             NVRAM = MPT_HOST_NVRAM_INVALID  (0xFFFFFFFF)
+             Adapter settings: async, narrow
+             Return 1
+     If read of SCSI Port Page 2 fails,
+             Adapter settings valid
+             NVRAM = MPT_HOST_NVRAM_INVALID  (0xFFFFFFFF)
+             Return 1
+     Else
+             Both valid
+             Return 0
+     CHECK - what type of locking mechanisms should be used????
 
 .. _`mpt_readscsidevicepageheaders`:
 
@@ -1576,7 +1561,7 @@ Return
 ------
 
 -EFAULT if read of config page header fails
-or 0 if success.
+             or 0 if success.
 
 .. _`mpt_inactive_raid_list_free`:
 
@@ -1631,9 +1616,9 @@ mpt_raid_phys_disk_pg0
 Return
 ------
 
-0 on success
--EFAULT if read of config page header fails or data pointer not NULL
--ENOMEM if pci_alloc failed
+     0 on success
+     -EFAULT if read of config page header fails or data pointer not NULL
+     -ENOMEM if pci_alloc failed
 
 .. _`mpt_raid_phys_disk_get_num_paths`:
 
@@ -1655,7 +1640,7 @@ mpt_raid_phys_disk_get_num_paths
 Return
 ------
 
-returns number paths
+     returns number paths
 
 .. _`mpt_raid_phys_disk_pg1`:
 
@@ -1680,9 +1665,9 @@ mpt_raid_phys_disk_pg1
 Return
 ------
 
-0 on success
--EFAULT if read of config page header fails or data pointer not NULL
--ENOMEM if pci_alloc failed
+     0 on success
+     -EFAULT if read of config page header fails or data pointer not NULL
+     -ENOMEM if pci_alloc failed
 
 .. _`mpt_findimvolumes`:
 
@@ -1701,9 +1686,9 @@ mpt_findImVolumes
 Return
 ------
 
-0 on success
--EFAULT if read of config page header fails or data pointer not NULL
--ENOMEM if pci_alloc failed
+     0 on success
+     -EFAULT if read of config page header fails or data pointer not NULL
+     -ENOMEM if pci_alloc failed
 
 .. _`sendeventnotification`:
 
@@ -1761,10 +1746,10 @@ mpt_config
 Description
 -----------
 
-Returns 0 for success
--EPERM if not allowed due to ISR context
--EAGAIN if no msg frames currently available
--EFAULT for non-successful reply or no reply (timeout)
+     Returns 0 for success
+     -EPERM if not allowed due to ISR context
+     -EAGAIN if no msg frames currently available
+     -EFAULT for non-successful reply or no reply (timeout)
 
 .. _`mpt_ioc_reset`:
 
@@ -1781,12 +1766,12 @@ mpt_ioc_reset
     :param int reset_phase:
         Indicates pre- or post-reset functionality
 
-.. _`mpt_ioc_reset.remark`:
+.. _`mpt_ioc_reset.description`:
 
-Remark
-------
+Description
+-----------
 
-Frees resources with internally generated commands.
+     Remark: Frees resources with internally generated commands.
 
 .. _`procmpt_create`:
 
@@ -1805,7 +1790,7 @@ procmpt_create
 Description
 -----------
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`procmpt_destroy`:
 
@@ -1824,7 +1809,7 @@ procmpt_destroy
 Description
 -----------
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`mpt_print_ioc_summary`:
 
@@ -1855,8 +1840,8 @@ mpt_print_ioc_summary
 Description
 -----------
 
-This routine writes (english readable) ASCII text, which represents
-a summary of IOC information, to a buffer.
+     This routine writes (english readable) ASCII text, which represents
+     a summary of IOC information, to a buffer.
 
 .. _`mpt_set_taskmgmt_in_progress_flag`:
 
@@ -1875,9 +1860,9 @@ mpt_set_taskmgmt_in_progress_flag
 Description
 -----------
 
-Returns 0 for SUCCESS or -1 if FAILED.
+     Returns 0 for SUCCESS or -1 if FAILED.
 
-If -1 is return, then it was not possible to set the flags
+     If -1 is return, then it was not possible to set the flags
 
 .. _`mpt_clear_taskmgmt_in_progress_flag`:
 
@@ -1923,13 +1908,13 @@ mpt_SoftResetHandler
 Description
 -----------
 
-Returns 0 for SUCCESS or -1 if FAILED.
+     Returns 0 for SUCCESS or -1 if FAILED.
 
-Message Unit Reset - instructs the IOC to reset the Reply Post and
-Free FIFO's. All the Message Frames on Reply Free FIFO are discarded.
-All posted buffers are freed, and event notification is turned off.
-IOC doesn't reply to any outstanding request. This will transfer IOC
-to READY state.
+     Message Unit Reset - instructs the IOC to reset the Reply Post and
+     Free FIFO's. All the Message Frames on Reply Free FIFO are discarded.
+     All posted buffers are freed, and event notification is turned off.
+     IOC doesn't reply to any outstanding request. This will transfer IOC
+     to READY state.
 
 .. _`mpt_soft_hard_resethandler`:
 
@@ -1951,9 +1936,9 @@ mpt_Soft_Hard_ResetHandler
 Description
 -----------
 
-Returns 0 for SUCCESS or -1 if FAILED.
-Try for softreset first, only if it fails go for expensive
-HardReset.
+     Returns 0 for SUCCESS or -1 if FAILED.
+     Try for softreset first, only if it fails go for expensive
+     HardReset.
 
 .. _`mpt_hardresethandler`:
 
@@ -1975,16 +1960,11 @@ mpt_HardResetHandler
 Description
 -----------
 
-Issues SCSI Task Management call based on input arg values.
-If TaskMgmt fails, returns associated SCSI request.
+     Issues SCSI Task Management call based on input arg values.
+     If TaskMgmt fails, returns associated SCSI request.
 
-.. _`mpt_hardresethandler.remark`:
-
-Remark
-------
-
-_HardResetHandler can be invoked from an interrupt thread (timer)
-or a non-interrupt thread.  In the former, must not call \ :c:func:`schedule`\ .
+     Remark: _HardResetHandler can be invoked from an interrupt thread (timer)
+     or a non-interrupt thread.  In the former, must not call \ :c:func:`schedule`\ .
 
 .. _`mpt_hardresethandler.note`:
 
@@ -1992,9 +1972,9 @@ Note
 ----
 
 A return of -1 is a FATAL error case, as it means a
-FW reload/initialization failed.
+     FW reload/initialization failed.
 
-Returns 0 for SUCCESS or -1 if FAILED.
+     Returns 0 for SUCCESS or -1 if FAILED.
 
 .. _`processeventnotification`:
 
@@ -2019,9 +1999,9 @@ ProcessEventNotification
 Description
 -----------
 
-Routes a received EventNotificationReply to all currently registered
-event handlers.
-Returns sum of event handlers return values.
+     Routes a received EventNotificationReply to all currently registered
+     event handlers.
+     Returns sum of event handlers return values.
 
 .. _`mpt_fc_log_info`:
 
@@ -2043,7 +2023,7 @@ mpt_fc_log_info
 Description
 -----------
 
-Refer to lsi/mpi_log_fc.h.
+     Refer to lsi/mpi_log_fc.h.
 
 .. _`mpt_spi_log_info`:
 
@@ -2065,7 +2045,7 @@ mpt_spi_log_info
 Description
 -----------
 
-Refer to lsi/sp_log.h.
+     Refer to lsi/sp_log.h.
 
 .. _`mpt_sas_log_info`:
 
@@ -2090,7 +2070,7 @@ mpt_sas_log_info
 Description
 -----------
 
-Refer to lsi/mpi_log_sas.h.
+     Refer to lsi/mpi_log_sas.h.
 
 .. _`mpt_iocstatus_info_config`:
 
@@ -2115,7 +2095,7 @@ mpt_iocstatus_info_config
 Description
 -----------
 
-Refer to lsi/mpi.h.
+     Refer to lsi/mpi.h.
 
 .. _`mpt_iocstatus_info`:
 
@@ -2140,7 +2120,7 @@ mpt_iocstatus_info
 Description
 -----------
 
-Refer to lsi/mpi.h.
+     Refer to lsi/mpi.h.
 
 .. _`fusion_init`:
 
@@ -2159,7 +2139,7 @@ fusion_init
 Description
 -----------
 
-Returns 0 for success, non-zero for failure.
+     Returns 0 for success, non-zero for failure.
 
 .. _`fusion_exit`:
 
@@ -2178,8 +2158,8 @@ fusion_exit
 Description
 -----------
 
-This routine frees all resources associated with each MPT adapter
-and removes all \ ``MPT_PROCFS_MPTBASEDIR``\  entries.
+     This routine frees all resources associated with each MPT adapter
+     and removes all \ ``MPT_PROCFS_MPTBASEDIR``\  entries.
 
 .. This file was automatic generated / don't edit.
 

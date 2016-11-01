@@ -11,6 +11,7 @@ crypto
     async_tx/index
     aes_generic_c
     crypto_engine_c
+    ecc_h
     jitterentropy_c
     rsa_helper_c
     wp512_c

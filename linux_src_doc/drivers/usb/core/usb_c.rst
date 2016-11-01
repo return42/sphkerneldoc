@@ -211,7 +211,7 @@ usb_alloc_dev
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_alloc_dev.description`:
 

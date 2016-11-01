@@ -27,7 +27,7 @@ amd_set_mtrr
 Description
 -----------
 
-\ ``reg``\  The register to set.
+@reg The register to set.
 \ ``base``\  The base address of the region.
 \ ``size``\  The size of the region. If this is 0 the region is disabled.
 \ ``type``\  The type of the region.

@@ -113,7 +113,7 @@ sk_alloc
         protocol family
 
     :param gfp_t priority:
-        for allocation (\ ``GFP_KERNEL``\ , \ ``GFP_ATOMIC``\ , etc)
+        for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
 
     :param struct proto \*prot:
         struct proto associated with this new sock instance
@@ -134,7 +134,7 @@ sk_clone_lock
         the socket to clone
 
     :param const gfp_t priority:
-        for allocation (\ ``GFP_KERNEL``\ , \ ``GFP_ATOMIC``\ , etc)
+        for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
 
 .. _`sk_clone_lock.description`:
 

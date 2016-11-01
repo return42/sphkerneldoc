@@ -7,6 +7,6 @@ ion
 .. toctree::
     :maxdepth: 1
 
-    ion_c
     ion_h
     ion_priv_h
+    ion_system_heap_c

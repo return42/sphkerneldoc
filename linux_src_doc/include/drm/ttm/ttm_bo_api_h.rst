@@ -1,94 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/ttm/ttm_bo_api.h
 
-.. _`ttm_place`:
-
-struct ttm_place
-================
-
-.. c:type:: struct ttm_place
-
-
-.. _`ttm_place.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct ttm_place {
-        unsigned fpfn;
-        unsigned lpfn;
-        uint32_t flags;
-    }
-
-.. _`ttm_place.members`:
-
-Members
--------
-
-fpfn
-    first valid page frame number to put the object
-
-lpfn
-    last valid page frame number to put the object
-
-flags
-    memory domain and caching flags for the object
-
-.. _`ttm_place.description`:
-
-Description
------------
-
-Structure indicating a possible place to put an object.
-
-.. _`ttm_placement`:
-
-struct ttm_placement
-====================
-
-.. c:type:: struct ttm_placement
-
-
-.. _`ttm_placement.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct ttm_placement {
-        unsigned num_placement;
-        const struct ttm_place *placement;
-        unsigned num_busy_placement;
-        const struct ttm_place *busy_placement;
-    }
-
-.. _`ttm_placement.members`:
-
-Members
--------
-
-num_placement
-    number of preferred placements
-
-placement
-    preferred placements
-
-num_busy_placement
-    number of preferred placements when need to evict buffer
-
-busy_placement
-    preferred placements when need to evict buffer
-
-.. _`ttm_placement.description`:
-
-Description
------------
-
-Structure indicating the placement you request for an object.
-
 .. _`ttm_bus_placement`:
 
 struct ttm_bus_placement
@@ -282,7 +194,7 @@ Definition
         struct list_head ddestroy;
         struct list_head swap;
         struct list_head io_reserve_lru;
-        unsigned long priv_flags;
+        struct fence *moving;
         struct drm_vma_offset_node vma_node;
         uint64_t offset;
         uint32_t cur_placement;
@@ -355,8 +267,8 @@ swap
 io_reserve_lru
     *undescribed*
 
-priv_flags
-    Flags describing buffer object internal state.
+moving
+    Fence set when BO is moving
 
 vma_node
     Address space manager node.

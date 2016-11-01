@@ -86,7 +86,7 @@ __genpd_runtime_suspend
 
 .. c:function:: int __genpd_runtime_suspend(struct device *dev)
 
-    walk the hierarchy of ->\ :c:func:`runtime_suspend`\  callbacks
+    walk the hierarchy of ->runtime_suspend() callbacks
 
     :param struct device \*dev:
         Device to handle.
@@ -98,7 +98,7 @@ __genpd_runtime_resume
 
 .. c:function:: int __genpd_runtime_resume(struct device *dev)
 
-    walk the hierarchy of ->\ :c:func:`runtime_resume`\  callbacks
+    walk the hierarchy of ->runtime_resume() callbacks
 
     :param struct device \*dev:
         Device to handle.
@@ -169,22 +169,19 @@ pm_genpd_present
     :param const struct generic_pm_domain \*genpd:
         PM domain to check.
 
-.. _`pm_genpd_sync_poweroff`:
+.. _`genpd_sync_poweroff`:
 
-pm_genpd_sync_poweroff
-======================
+genpd_sync_poweroff
+===================
 
-.. c:function:: void pm_genpd_sync_poweroff(struct generic_pm_domain *genpd, bool timed)
+.. c:function:: void genpd_sync_poweroff(struct generic_pm_domain *genpd)
 
     Synchronously power off a PM domain and its masters.
 
     :param struct generic_pm_domain \*genpd:
         PM domain to power off, if possible.
 
-    :param bool timed:
-        True if latency measurements are allowed.
-
-.. _`pm_genpd_sync_poweroff.description`:
+.. _`genpd_sync_poweroff.description`:
 
 Description
 -----------
@@ -197,22 +194,19 @@ transitions, so it need not acquire locks (all of the "noirq" callbacks are
 executed sequentially, so it is guaranteed that it will never run twice in
 parallel).
 
-.. _`pm_genpd_sync_poweron`:
+.. _`genpd_sync_poweron`:
 
-pm_genpd_sync_poweron
-=====================
+genpd_sync_poweron
+==================
 
-.. c:function:: void pm_genpd_sync_poweron(struct generic_pm_domain *genpd, bool timed)
+.. c:function:: void genpd_sync_poweron(struct generic_pm_domain *genpd)
 
     Synchronously power on a PM domain and its masters.
 
     :param struct generic_pm_domain \*genpd:
         PM domain to power on.
 
-    :param bool timed:
-        True if latency measurements are allowed.
-
-.. _`pm_genpd_sync_poweron.description`:
+.. _`genpd_sync_poweron.description`:
 
 Description
 -----------
@@ -275,48 +269,6 @@ under the assumption that its pm_domain field points to the domain member of
 an object of type struct generic_pm_domain representing a PM domain
 consisting of I/O devices.
 
-.. _`pm_genpd_suspend`:
-
-pm_genpd_suspend
-================
-
-.. c:function:: int pm_genpd_suspend(struct device *dev)
-
-    Suspend a device belonging to an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to suspend.
-
-.. _`pm_genpd_suspend.description`:
-
-Description
------------
-
-Suspend a device under the assumption that its pm_domain field points to the
-domain member of an object of type struct generic_pm_domain representing
-a PM domain consisting of I/O devices.
-
-.. _`pm_genpd_suspend_late`:
-
-pm_genpd_suspend_late
-=====================
-
-.. c:function:: int pm_genpd_suspend_late(struct device *dev)
-
-    Late suspend of a device from an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to suspend.
-
-.. _`pm_genpd_suspend_late.description`:
-
-Description
------------
-
-Carry out a late suspend of a device under the assumption that its
-pm_domain field points to the domain member of an object of type
-struct generic_pm_domain representing a PM domain consisting of I/O devices.
-
 .. _`pm_genpd_suspend_noirq`:
 
 pm_genpd_suspend_noirq
@@ -355,92 +307,6 @@ Description
 -----------
 
 Restore power to the device's PM domain, if necessary, and start the device.
-
-.. _`pm_genpd_resume_early`:
-
-pm_genpd_resume_early
-=====================
-
-.. c:function:: int pm_genpd_resume_early(struct device *dev)
-
-    Early resume of a device in an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to resume.
-
-.. _`pm_genpd_resume_early.description`:
-
-Description
------------
-
-Carry out an early resume of a device under the assumption that its
-pm_domain field points to the domain member of an object of type
-struct generic_pm_domain representing a power domain consisting of I/O
-devices.
-
-.. _`pm_genpd_resume`:
-
-pm_genpd_resume
-===============
-
-.. c:function:: int pm_genpd_resume(struct device *dev)
-
-    Resume of device in an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to resume.
-
-.. _`pm_genpd_resume.description`:
-
-Description
------------
-
-Resume a device under the assumption that its pm_domain field points to the
-domain member of an object of type struct generic_pm_domain representing
-a power domain consisting of I/O devices.
-
-.. _`pm_genpd_freeze`:
-
-pm_genpd_freeze
-===============
-
-.. c:function:: int pm_genpd_freeze(struct device *dev)
-
-    Freezing a device in an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to freeze.
-
-.. _`pm_genpd_freeze.description`:
-
-Description
------------
-
-Freeze a device under the assumption that its pm_domain field points to the
-domain member of an object of type struct generic_pm_domain representing
-a power domain consisting of I/O devices.
-
-.. _`pm_genpd_freeze_late`:
-
-pm_genpd_freeze_late
-====================
-
-.. c:function:: int pm_genpd_freeze_late(struct device *dev)
-
-    Late freeze of a device in an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to freeze.
-
-.. _`pm_genpd_freeze_late.description`:
-
-Description
------------
-
-Carry out a late freeze of a device under the assumption that its
-pm_domain field points to the domain member of an object of type
-struct generic_pm_domain representing a power domain consisting of I/O
-devices.
 
 .. _`pm_genpd_freeze_noirq`:
 
@@ -483,49 +349,6 @@ Description
 
 Start the device, unless power has been removed from the domain already
 before the system transition.
-
-.. _`pm_genpd_thaw_early`:
-
-pm_genpd_thaw_early
-===================
-
-.. c:function:: int pm_genpd_thaw_early(struct device *dev)
-
-    Early thaw of device in an I/O PM domain.
-
-    :param struct device \*dev:
-        Device to thaw.
-
-.. _`pm_genpd_thaw_early.description`:
-
-Description
------------
-
-Carry out an early thaw of a device under the assumption that its
-pm_domain field points to the domain member of an object of type
-struct generic_pm_domain representing a power domain consisting of I/O
-devices.
-
-.. _`pm_genpd_thaw`:
-
-pm_genpd_thaw
-=============
-
-.. c:function:: int pm_genpd_thaw(struct device *dev)
-
-    Thaw a device belonging to an I/O power domain.
-
-    :param struct device \*dev:
-        Device to thaw.
-
-.. _`pm_genpd_thaw.description`:
-
-Description
------------
-
-Thaw a device under the assumption that its pm_domain field points to the
-domain member of an object of type struct generic_pm_domain representing
-a power domain consisting of I/O devices.
 
 .. _`pm_genpd_restore_noirq`:
 
@@ -660,7 +483,7 @@ pm_genpd_remove_subdomain
 pm_genpd_init
 =============
 
-.. c:function:: void pm_genpd_init(struct generic_pm_domain *genpd, struct dev_power_governor *gov, bool is_off)
+.. c:function:: int pm_genpd_init(struct generic_pm_domain *genpd, struct dev_power_governor *gov, bool is_off)
 
     Initialize a generic I/O PM domain object.
 
@@ -672,6 +495,39 @@ pm_genpd_init
 
     :param bool is_off:
         Initial value of the domain's power_is_off field.
+
+.. _`pm_genpd_init.description`:
+
+Description
+-----------
+
+Returns 0 on successful initialization, else a negative error code.
+
+.. _`pm_genpd_remove`:
+
+pm_genpd_remove
+===============
+
+.. c:function:: int pm_genpd_remove(struct generic_pm_domain *genpd)
+
+    Remove a generic I/O PM domain
+
+    :param struct generic_pm_domain \*genpd:
+        Pointer to PM domain that is to be removed.
+
+.. _`pm_genpd_remove.description`:
+
+Description
+-----------
+
+To remove the PM domain, this function:
+- Removes the PM domain as a subdomain to any parent domains,
+if it was added.
+- Removes the PM domain from the list of registered PM domains.
+
+The PM domain will only be removed, if the associated provider has
+been removed, it is not a parent to any other PM domain and has no
+devices associated with it.
 
 .. _`of_genpd_provider`:
 
@@ -714,12 +570,12 @@ xlate
 data
     context pointer to be passed into \ ``xlate``\  callback
 
-.. _`__of_genpd_xlate_simple`:
+.. _`genpd_xlate_simple`:
 
-__of_genpd_xlate_simple
-=======================
+genpd_xlate_simple
+==================
 
-.. c:function:: struct generic_pm_domain *__of_genpd_xlate_simple(struct of_phandle_args *genpdspec, void *data)
+.. c:function:: struct generic_pm_domain *genpd_xlate_simple(struct of_phandle_args *genpdspec, void *data)
 
     Xlate function for direct node-domain mapping
 
@@ -729,7 +585,7 @@ __of_genpd_xlate_simple
     :param void \*data:
         xlate function private data - pointer to struct generic_pm_domain
 
-.. _`__of_genpd_xlate_simple.description`:
+.. _`genpd_xlate_simple.description`:
 
 Description
 -----------
@@ -738,12 +594,12 @@ This is a generic xlate function that can be used to model PM domains that
 have their own device tree nodes. The private data of xlate function needs
 to be a valid pointer to struct generic_pm_domain.
 
-.. _`__of_genpd_xlate_onecell`:
+.. _`genpd_xlate_onecell`:
 
-__of_genpd_xlate_onecell
-========================
+genpd_xlate_onecell
+===================
 
-.. c:function:: struct generic_pm_domain *__of_genpd_xlate_onecell(struct of_phandle_args *genpdspec, void *data)
+.. c:function:: struct generic_pm_domain *genpd_xlate_onecell(struct of_phandle_args *genpdspec, void *data)
 
     Xlate function using a single index.
 
@@ -753,7 +609,7 @@ __of_genpd_xlate_onecell
     :param void \*data:
         xlate function private data - pointer to struct genpd_onecell_data
 
-.. _`__of_genpd_xlate_onecell.description`:
+.. _`genpd_xlate_onecell.description`:
 
 Description
 -----------
@@ -763,12 +619,12 @@ controllers that have one device tree node and provide multiple PM domains.
 A single cell is used as an index into an array of PM domains specified in
 the genpd_onecell_data struct when registering the provider.
 
-.. _`__of_genpd_add_provider`:
+.. _`genpd_add_provider`:
 
-__of_genpd_add_provider
-=======================
+genpd_add_provider
+==================
 
-.. c:function:: int __of_genpd_add_provider(struct device_node *np, genpd_xlate_t xlate, void *data)
+.. c:function:: int genpd_add_provider(struct device_node *np, genpd_xlate_t xlate, void *data)
 
     Register a PM domain provider for a node
 
@@ -780,6 +636,36 @@ __of_genpd_add_provider
 
     :param void \*data:
         Context pointer for \ ``xlate``\  callback.
+
+.. _`of_genpd_add_provider_simple`:
+
+of_genpd_add_provider_simple
+============================
+
+.. c:function:: int of_genpd_add_provider_simple(struct device_node *np, struct generic_pm_domain *genpd)
+
+    Register a simple PM domain provider
+
+    :param struct device_node \*np:
+        Device node pointer associated with the PM domain provider.
+
+    :param struct generic_pm_domain \*genpd:
+        Pointer to PM domain associated with the PM domain provider.
+
+.. _`of_genpd_add_provider_onecell`:
+
+of_genpd_add_provider_onecell
+=============================
+
+.. c:function:: int of_genpd_add_provider_onecell(struct device_node *np, struct genpd_onecell_data *data)
+
+    Register a onecell PM domain provider
+
+    :param struct device_node \*np:
+        Device node pointer associated with the PM domain provider.
+
+    :param struct genpd_onecell_data \*data:
+        Pointer to the data associated with the PM domain provider.
 
 .. _`of_genpd_del_provider`:
 
@@ -793,19 +679,19 @@ of_genpd_del_provider
     :param struct device_node \*np:
         Device node pointer associated with the PM domain provider
 
-.. _`of_genpd_get_from_provider`:
+.. _`genpd_get_from_provider`:
 
-of_genpd_get_from_provider
-==========================
+genpd_get_from_provider
+=======================
 
-.. c:function:: struct generic_pm_domain *of_genpd_get_from_provider(struct of_phandle_args *genpdspec)
+.. c:function:: struct generic_pm_domain *genpd_get_from_provider(struct of_phandle_args *genpdspec)
 
     Look-up PM domain
 
     :param struct of_phandle_args \*genpdspec:
         OF phandle args to use for look-up
 
-.. _`of_genpd_get_from_provider.description`:
+.. _`genpd_get_from_provider.description`:
 
 Description
 -----------
@@ -816,6 +702,79 @@ domain.
 
 Returns a valid pointer to struct generic_pm_domain on success or \ :c:func:`ERR_PTR`\ 
 on failure.
+
+.. _`of_genpd_add_device`:
+
+of_genpd_add_device
+===================
+
+.. c:function:: int of_genpd_add_device(struct of_phandle_args *genpdspec, struct device *dev)
+
+    Add a device to an I/O PM domain
+
+    :param struct of_phandle_args \*genpdspec:
+        OF phandle args to use for look-up PM domain
+
+    :param struct device \*dev:
+        Device to be added.
+
+.. _`of_genpd_add_device.description`:
+
+Description
+-----------
+
+Looks-up an I/O PM domain based upon phandle args provided and adds
+the device to the PM domain. Returns a negative error code on failure.
+
+.. _`of_genpd_add_subdomain`:
+
+of_genpd_add_subdomain
+======================
+
+.. c:function:: int of_genpd_add_subdomain(struct of_phandle_args *parent_spec, struct of_phandle_args *subdomain_spec)
+
+    Add a subdomain to an I/O PM domain.
+
+    :param struct of_phandle_args \*parent_spec:
+        OF phandle args to use for parent PM domain look-up
+
+    :param struct of_phandle_args \*subdomain_spec:
+        OF phandle args to use for subdomain look-up
+
+.. _`of_genpd_add_subdomain.description`:
+
+Description
+-----------
+
+Looks-up a parent PM domain and subdomain based upon phandle args
+provided and adds the subdomain to the parent PM domain. Returns a
+negative error code on failure.
+
+.. _`of_genpd_remove_last`:
+
+of_genpd_remove_last
+====================
+
+.. c:function:: struct generic_pm_domain *of_genpd_remove_last(struct device_node *np)
+
+    Remove the last PM domain registered for a provider
+
+    :param struct device_node \*np:
+        *undescribed*
+
+.. _`of_genpd_remove_last.description`:
+
+Description
+-----------
+
+Find the last PM domain that was added by a particular provider and
+remove this PM domain from the list of PM domains. The provider is
+identified by the 'provider' device structure that is passed. The PM
+domain will only be removed, if the provider associated with domain
+has been removed.
+
+Returns a valid pointer to struct generic_pm_domain on success or
+\ :c:func:`ERR_PTR`\  on failure.
 
 .. _`genpd_dev_pm_detach`:
 

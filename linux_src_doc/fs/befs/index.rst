@@ -10,4 +10,3 @@ befs
     btree_c
     datastream_c
     linuxvfs_c
-    super_c

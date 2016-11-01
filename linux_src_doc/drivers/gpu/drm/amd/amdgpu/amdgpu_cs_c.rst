@@ -79,5 +79,24 @@ Search the buffer objects in the command submission context for a certain
 virtual memory address. Returns allocation structure when found, NULL
 otherwise.
 
+.. _`amdgpu_cs_sysvm_access_required`:
+
+amdgpu_cs_sysvm_access_required
+===============================
+
+.. c:function:: int amdgpu_cs_sysvm_access_required(struct amdgpu_cs_parser *parser)
+
+    make BOs accessible by the system VM
+
+    :param struct amdgpu_cs_parser \*parser:
+        command submission parser context
+
+.. _`amdgpu_cs_sysvm_access_required.description`:
+
+Description
+-----------
+
+Helper for UVD/VCE VM emulation, make sure BOs are accessible by the system VM.
+
 .. This file was automatic generated / don't edit.
 

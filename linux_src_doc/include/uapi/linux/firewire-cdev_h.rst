@@ -78,10 +78,10 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; set by \ ``FW_CDEV_IOC_GET_INFO``\  ioctl
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; set by \ ``FW_CDEV_IOC_GET_INFO``\  ioctl
 
 type
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; always \ ``FW_CDEV_EVENT_BUS_RESET``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_BUS_RESET``\ 
 
 node_id
     New node ID of this node
@@ -144,12 +144,12 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; set by \ ``FW_CDEV_IOC_SEND_REQUEST``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; set by \ ``FW_CDEV_IOC_SEND_REQUEST``\ 
     or \ ``FW_CDEV_IOC_SEND_BROADCAST_REQUEST``\ 
     or \ ``FW_CDEV_IOC_SEND_STREAM_PACKET``\  ioctl
 
 type
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; always \ ``FW_CDEV_EVENT_RESPONSE``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_RESPONSE``\ 
 
 rcode
     Response code returned by the remote node
@@ -182,7 +182,7 @@ struct fw_cdev_event_request
 
 .. c:type:: struct fw_cdev_event_request
 
-    Old version of \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`
+    Old version of \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`\ 
 
 .. _`fw_cdev_event_request.definition`:
 
@@ -210,7 +210,7 @@ closure
     *undescribed*
 
 type
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; always \ ``FW_CDEV_EVENT_REQUEST``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_REQUEST``\ 
 
 tcode
     *undescribed*
@@ -229,9 +229,9 @@ length
 Description
 -----------
 
-This event is sent instead of \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>` if the kernel or
-the client implements ABI version <= 3.  \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>` lacks
-essential information; use \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>` instead.
+This event is sent instead of \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`\  if the kernel or
+the client implements ABI version <= 3.  \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`\  lacks
+essential information; use \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`\  instead.
 
 .. _`fw_cdev_event_request2`:
 
@@ -269,10 +269,10 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; set by \ ``FW_CDEV_IOC_ALLOCATE``\  ioctl
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; set by \ ``FW_CDEV_IOC_ALLOCATE``\  ioctl
 
 type
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; always \ ``FW_CDEV_EVENT_REQUEST2``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_REQUEST2``\ 
 
 tcode
     Transaction code of the incoming request
@@ -315,15 +315,15 @@ using the same \ ``handle``\ .
 The payload data for requests carrying data (write and lock requests)
 follows immediately and can be accessed through the \ ``data``\  field.
 
-Unlike \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`, \ ``tcode``\  of lock requests is one of the
-firewire-core specific \ ``TCODE_LOCK_MASK_SWAP``\ ...\ ``TCODE_LOCK_VENDOR_DEPENDENT``\ ,
+Unlike \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`\ , \ ``tcode``\  of lock requests is one of the
+firewire-core specific \ ``TCODE_LOCK_MASK_SWAP``\ ...%TCODE_LOCK_VENDOR_DEPENDENT,
 i.e. encodes the extended transaction code.
 
 \ ``card``\  may differ from \ :c:type:`fw_cdev_get_info.card <fw_cdev_get_info>`\  because requests are received
 from all cards of the Linux host.  \ ``source_node_id``\ , \ ``destination_node_id``\ , and
 \ ``generation``\  pertain to that card.  Destination node ID and bus generation may
 therefore differ from the corresponding fields of the last
-\ :c:type:`struct fw_cdev_event_bus_reset <fw_cdev_event_bus_reset>`.
+\ :c:type:`struct fw_cdev_event_bus_reset <fw_cdev_event_bus_reset>`\ .
 
 \ ``destination_node_id``\  may also differ from the current node ID because of a
 non-local bus ID part or in case of a broadcast write request.  Note, a
@@ -338,7 +338,7 @@ release the kernel-side pending request, though another response won't be
 sent.
 
 If the client subsequently needs to initiate requests to the sender node of
-an \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`, it needs to use a device file with matching
+an \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`\ , it needs to use a device file with matching
 card index, node ID, and generation for outbound requests.
 
 .. _`fw_cdev_event_iso_interrupt`:
@@ -371,11 +371,11 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`;
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ;
     set by \ ``FW_CDEV_CREATE_ISO_CONTEXT``\  ioctl
 
 type
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; always \ ``FW_CDEV_EVENT_ISO_INTERRUPT``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; always \ ``FW_CDEV_EVENT_ISO_INTERRUPT``\ 
 
 cycle
     Cycle counter of the last completed packet
@@ -391,7 +391,7 @@ header
 Description
 -----------
 
-This event is sent when the controller has completed an \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`
+This event is sent when the controller has completed an \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\ 
 with the \ ``FW_CDEV_ISO_INTERRUPT``\  bit set, when explicitly requested with
 \ ``FW_CDEV_IOC_FLUSH_ISO``\ , or when there have been so many completed packets
 without the interrupt bit set that the kernel's internal buffer for \ ``header``\ 
@@ -400,10 +400,10 @@ up to the next interrupt packet.)
 
 Isochronous transmit events (context type \ ``FW_CDEV_ISO_CONTEXT_TRANSMIT``\ ):
 
-In version 3 and some implementations of version 2 of the ABI, \ :c:type:`struct header_length <header_length>`
-is a multiple of 4 and \ :c:type:`struct header <header>` contains timestamps of all packets up until
+In version 3 and some implementations of version 2 of the ABI, \ :c:type:`struct header_length <header_length>`\ 
+is a multiple of 4 and \ :c:type:`struct header <header>`\  contains timestamps of all packets up until
 the interrupt packet.  The format of the timestamps is as described below for
-isochronous reception.  In version 1 of the ABI, \ :c:type:`struct header_length <header_length>` was 0.
+isochronous reception.  In version 1 of the ABI, \ :c:type:`struct header_length <header_length>`\  was 0.
 
 Isochronous receive events (context type \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\ ):
 
@@ -415,7 +415,7 @@ packet is as specified at iso context creation by
 Hence, \_interrupt.header_length / \_context.header_size is the number of
 packets received in this interrupt event.  The client can now iterate
 through the \ :c:func:`mmap`\ 'ed DMA buffer according to this number of packets and
-to the buffer sizes as the client specified in \ :c:type:`struct fw_cdev_queue_iso <fw_cdev_queue_iso>`.
+to the buffer sizes as the client specified in \ :c:type:`struct fw_cdev_queue_iso <fw_cdev_queue_iso>`\ .
 
 Since version 2 of this ABI, the portion for each packet in \_interrupt.header
 consists of the 1394 isochronous packet header, followed by a timestamp
@@ -472,11 +472,11 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`;
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ;
     set by \ ``FW_CDEV_CREATE_ISO_CONTEXT``\  ioctl
 
 type
-    \ ``FW_CDEV_EVENT_ISO_INTERRUPT_MULTICHANNEL``\ 
+    %FW_CDEV_EVENT_ISO_INTERRUPT_MULTICHANNEL
 
 completed
     Offset into the receive buffer; data before this offset is valid
@@ -487,19 +487,19 @@ Description
 -----------
 
 This event is sent in multichannel contexts (context type
-\ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ ) for \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>` buffer
+\ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ ) for \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  buffer
 chunks that have been completely filled and that have the
 \ ``FW_CDEV_ISO_INTERRUPT``\  bit set, or when explicitly requested with
 \ ``FW_CDEV_IOC_FLUSH_ISO``\ .
 
 The buffer is continuously filled with the following data, per packet:
-- the 1394 iso packet header as described at \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`,
+- the 1394 iso packet header as described at \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ ,
 but in little endian byte order,
 - packet payload (as many bytes as specified in the data_length field of
 the 1394 iso packet header) in big endian byte order,
 - 0...3 padding bytes as needed to align the following trailer quadlet,
 - trailer quadlet, containing the reception timestamp as described at
-\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`, but in little endian byte order.
+\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\ , but in little endian byte order.
 
 Hence the per-packet size is data_length (rounded up to a multiple of 4) + 8.
 When processing the data, stop before a packet that would cross the
@@ -540,11 +540,11 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`;
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ;
     set by \ ``FW_CDEV_IOC_``\ (DE)ALLOCATE_ISO_RESOURCE(_ONCE) ioctl
 
 type
-    \ ``FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED``\  or
+    %FW_CDEV_EVENT_ISO_RESOURCE_ALLOCATED or
     \ ``FW_CDEV_EVENT_ISO_RESOURCE_DEALLOCATED``\ 
 
 handle
@@ -602,14 +602,14 @@ Members
 -------
 
 closure
-    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`; set by \ ``FW_CDEV_IOC_SEND_PHY_PACKET``\ 
+    See \ :c:type:`struct fw_cdev_event_common <fw_cdev_event_common>`\ ; set by \ ``FW_CDEV_IOC_SEND_PHY_PACKET``\ 
     or \ ``FW_CDEV_IOC_RECEIVE_PHY_PACKETS``\  ioctl
 
 type
-    \ ``FW_CDEV_EVENT_PHY_PACKET_SENT``\  or %..._RECEIVED
+    %FW_CDEV_EVENT_PHY_PACKET_SENT or %..._RECEIVED
 
 rcode
-    \ ``RCODE_``\ ..., indicates success or failure of transmission
+    %RCODE_..., indicates success or failure of transmission
 
 length
     Data length in bytes
@@ -766,7 +766,7 @@ bus_reset
     of the bus.  This does not cause a bus reset to happen.
 
 bus_reset_closure
-    Value of \ :c:type:`struct closure <closure>` in this and subsequent bus reset events
+    Value of \ :c:type:`struct closure <closure>`\  in this and subsequent bus reset events
 
 card
     The index of the card this device belongs to
@@ -838,7 +838,7 @@ Description
 Send a request to the device.  This ioctl implements all outgoing requests.
 Both quadlet and block request specify the payload as a pointer to the data
 in the \ ``data``\  field.  Once the transaction completes, the kernel writes an
-\ :c:type:`struct fw_cdev_event_response <fw_cdev_event_response>` event back.  The \ ``closure``\  field is passed back to
+\ :c:type:`struct fw_cdev_event_response <fw_cdev_event_response>`\  event back.  The \ ``closure``\  field is passed back to
 user space in the response event.
 
 .. _`fw_cdev_send_response`:
@@ -879,7 +879,7 @@ data
     Userspace pointer to payload
 
 handle
-    The handle from the \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`
+    The handle from the \ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`\ 
 
 .. _`fw_cdev_send_response.description`:
 
@@ -944,9 +944,9 @@ Description
 Allocate an address range in the 48-bit address space on the local node
 (the controller).  This allows userspace to listen for requests with an
 offset within that address range.  Every time when the kernel receives a
-request within the range, an \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>` event will be emitted.
+request within the range, an \ :c:type:`struct fw_cdev_event_request2 <fw_cdev_event_request2>`\  event will be emitted.
 (If the kernel or the client implements ABI version <= 3, an
-\ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>` will be generated instead.)
+\ :c:type:`struct fw_cdev_event_request <fw_cdev_event_request>`\  will be generated instead.)
 
 The \ ``closure``\  field is passed back to userspace in these request events.
 The \ ``handle``\  field is an out parameter, returning a handle to the allocated
@@ -958,7 +958,7 @@ exclusive address region is already in use, the ioctl fails with errno set
 to \ ``EBUSY``\ .
 
 If kernel and client implement ABI version >= 4, the kernel looks up a free
-spot of size \ ``length``\  inside [\ ``offset``\ ..\ ``region_end``\ ) and, if found, writes
+spot of size \ ``length``\  inside [@offset..@region_end) and, if found, writes
 the start address of the new CSR back in \ ``offset``\ .  I.e. \ ``offset``\  is an
 in and out parameter.  If this automatic placement of a CSR in a bigger
 address range is not desired, the client simply needs to set \ ``region_end``\ 
@@ -1025,7 +1025,7 @@ Members
 -------
 
 type
-    \ ``FW_CDEV_SHORT_RESET``\  or \ ``FW_CDEV_LONG_RESET``\ 
+    %FW_CDEV_SHORT_RESET or \ ``FW_CDEV_LONG_RESET``\ 
 
 .. _`fw_cdev_initiate_bus_reset.description`:
 
@@ -1036,7 +1036,7 @@ Initiate a bus reset for the bus this device is on.  The bus reset can be
 either the original (long) bus reset or the arbitrated (short) bus reset
 introduced in 1394a-2000.
 
-The ioctl returns immediately.  A subsequent \ :c:type:`struct fw_cdev_event_bus_reset <fw_cdev_event_bus_reset>`
+The ioctl returns immediately.  A subsequent \ :c:type:`struct fw_cdev_event_bus_reset <fw_cdev_event_bus_reset>`\ 
 indicates when the reset actually happened.  Since ABI v4, this may be
 considerably later than the ioctl because the kernel ensures a grace period
 between subsequent bus resets as per IEEE 1394 bus management specification.
@@ -1180,7 +1180,7 @@ Members
 -------
 
 type
-    \ ``FW_CDEV_ISO_CONTEXT_TRANSMIT``\  or \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\  or
+    %FW_CDEV_ISO_CONTEXT_TRANSMIT or \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\  or
     \ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ 
 
 header_size
@@ -1193,8 +1193,8 @@ speed
     Transmission speed
 
 closure
-    To be returned in \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>` or
-    \ :c:type:`struct fw_cdev_event_iso_interrupt_multichannel <fw_cdev_event_iso_interrupt_multichannel>`
+    To be returned in \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  or
+    \ :c:type:`struct fw_cdev_event_iso_interrupt_multichannel <fw_cdev_event_iso_interrupt_multichannel>`\ 
 
 handle
     Handle to context, written back by kernel
@@ -1268,7 +1268,7 @@ handle
 Description
 -----------
 
-\ ``channels``\  is the bitwise or of 1ULL << n for each channel n to listen to.
+@channels is the bitwise or of 1ULL << n for each channel n to listen to.
 
 The ioctl fails with errno \ ``EBUSY``\  if there is already another receive context
 on a channel in \ ``channels``\ .  In that case, the bitmask of all unoccupied
@@ -1314,7 +1314,7 @@ header
 Description
 -----------
 
-\ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  is used to describe isochronous packet queues.
+&struct fw_cdev_iso_packet is used to describe isochronous packet queues.
 Use the FW_CDEV_ISO\_ macros to fill in \ ``control``\ .
 The \ ``header``\  array is empty in case of receive contexts.
 
@@ -1332,7 +1332,7 @@ The \ ``control``\ .SKIP flag specifies that no packet is to be sent in a frame.
 When using this, all other fields except \ ``control``\ .INTERRUPT must be zero.
 
 When a packet with the \ ``control``\ .INTERRUPT flag set has been completed, an
-\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>` event will be sent.
+\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  event will be sent.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_RECEIVE``\ :
 
@@ -1347,7 +1347,7 @@ packet with a sy field is received which matches \ :c:type:`fw_cdev_start_iso.sy
 
 \ ``control``\ .PAYLOAD_LENGTH defines how many payload bytes can be received for
 one packet (in addition to payload quadlets that have been defined as headers
-and are stripped and returned in the \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>` structure).
+and are stripped and returned in the \ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  structure).
 If more bytes are received, the additional bytes are dropped.  If less bytes
 are received, the remaining bytes in this part of the payload buffer will not
 be written to, not even by the next packet.  I.e., packets received in
@@ -1356,12 +1356,12 @@ entry has queued multiple packets, the PAYLOAD_LENGTH is divided equally
 among them.
 
 When a packet with the \ ``control``\ .INTERRUPT flag set has been completed, an
-\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>` event will be sent.  An entry that has queued
+\ :c:type:`struct fw_cdev_event_iso_interrupt <fw_cdev_event_iso_interrupt>`\  event will be sent.  An entry that has queued
 multiple receive packets is completed when its last packet is completed.
 
 Context type \ ``FW_CDEV_ISO_CONTEXT_RECEIVE_MULTICHANNEL``\ :
 
-Here, \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>` would be more aptly named \_iso_buffer_chunk since
+Here, \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  would be more aptly named \_iso_buffer_chunk since
 it specifies a chunk of the \ :c:func:`mmap`\ 'ed buffer, while the number and alignment
 of packets to be placed into the buffer chunk is not known beforehand.
 
@@ -1373,7 +1373,7 @@ It must be a multiple of 4.
 for single-channel reception.
 
 When a buffer chunk with the \ ``control``\ .INTERRUPT flag set has been filled
-entirely, an \ :c:type:`struct fw_cdev_event_iso_interrupt_mc <fw_cdev_event_iso_interrupt_mc>` event will be sent.
+entirely, an \ :c:type:`struct fw_cdev_event_iso_interrupt_mc <fw_cdev_event_iso_interrupt_mc>`\  event will be sent.
 
 .. _`fw_cdev_queue_iso`:
 
@@ -1404,7 +1404,7 @@ Members
 -------
 
 packets
-    Userspace pointer to an array of \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`
+    Userspace pointer to an array of \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\ 
 
 data
     Pointer into \ :c:func:`mmap`\ 'ed payload buffer
@@ -1421,7 +1421,7 @@ Description
 -----------
 
 Queue a number of isochronous packets for reception or transmission.
-This ioctl takes a pointer to an array of \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>` structs,
+This ioctl takes a pointer to an array of \ :c:type:`struct fw_cdev_iso_packet <fw_cdev_iso_packet>`\  structs,
 which describe how to transmit from or receive into a contiguous region
 of a \ :c:func:`mmap`\ 'ed payload buffer.  As part of transmit packet descriptors,
 a series of headers can be supplied, which will be prepended to the
@@ -1800,7 +1800,7 @@ Description
 
 The \ ``FW_CDEV_IOC_SEND_STREAM_PACKET``\  ioctl sends an asynchronous stream packet
 to every device which is listening to the specified channel.  The kernel
-writes an \ :c:type:`struct fw_cdev_event_response <fw_cdev_event_response>` event which indicates success or failure of
+writes an \ :c:type:`struct fw_cdev_event_response <fw_cdev_event_response>`\  event which indicates success or failure of
 the transmission.
 
 .. _`fw_cdev_send_phy_packet`:

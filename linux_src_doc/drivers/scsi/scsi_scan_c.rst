@@ -56,7 +56,7 @@ scsi_alloc_sdev
     allocate and setup a scsi_Device
 
     :param struct scsi_target \*starget:
-        which target to allocate a \ :c:type:`struct scsi_device <scsi_device>` for
+        which target to allocate a \ :c:type:`struct scsi_device <scsi_device>`\  for
 
     :param u64 lun:
         which lun
@@ -210,7 +210,7 @@ Probe the lun associated with \ ``req``\  using a standard SCSI INQUIRY;
 
 If the INQUIRY is successful, zero is returned and the
 INQUIRY data is in \ ``inq_result``\ ; the scsi_level and INQUIRY length
-are copied to the scsi_device any flags value is stored in \*\ ``bflags``\ .
+are copied to the scsi_device any flags value is stored in \*@bflags.
 
 .. _`scsi_add_lun`:
 
@@ -239,7 +239,7 @@ Description
 -----------
 
 Initialize the scsi_device \ ``sdev``\ .  Optionally set fields based
-on values in \*\ ``bflags``\ .
+on values in \*@bflags.
 
 .. _`scsi_add_lun.scsi_scan_no_response`:
 

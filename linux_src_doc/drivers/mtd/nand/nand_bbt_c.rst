@@ -286,6 +286,69 @@ Description
 
 Search and read the bad block table(s).
 
+.. _`get_bbt_block`:
+
+get_bbt_block
+=============
+
+.. c:function:: int get_bbt_block(struct nand_chip *this, struct nand_bbt_descr *td, struct nand_bbt_descr *md, int chip)
+
+    Get the first valid eraseblock suitable to store a BBT
+
+    :param struct nand_chip \*this:
+        the NAND device
+
+    :param struct nand_bbt_descr \*td:
+        the BBT description
+
+    :param struct nand_bbt_descr \*md:
+        the mirror BBT descriptor
+
+    :param int chip:
+        the CHIP selector
+
+.. _`get_bbt_block.description`:
+
+Description
+-----------
+
+This functions returns a positive block number pointing a valid eraseblock
+suitable to store a BBT (i.e. in the range reserved for BBT), or -ENOSPC if
+all blocks are already used of marked bad. If td->pages[chip] was already
+pointing to a valid block we re-use it, otherwise we search for the next
+valid one.
+
+.. _`mark_bbt_block_bad`:
+
+mark_bbt_block_bad
+==================
+
+.. c:function:: void mark_bbt_block_bad(struct nand_chip *this, struct nand_bbt_descr *td, int chip, int block)
+
+    Mark one of the block reserved for BBT bad
+
+    :param struct nand_chip \*this:
+        the NAND device
+
+    :param struct nand_bbt_descr \*td:
+        the BBT description
+
+    :param int chip:
+        the CHIP selector
+
+    :param int block:
+        the BBT block to mark
+
+.. _`mark_bbt_block_bad.description`:
+
+Description
+-----------
+
+Blocks reserved for BBT can become bad. This functions is an helper to mark
+such blocks as bad. It takes care of updating the in-memory BBT, marking the
+block as bad using a bad block marker and invalidating the associated
+td->pages[] entry.
+
 .. _`write_bbt`:
 
 write_bbt

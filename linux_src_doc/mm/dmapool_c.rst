@@ -30,7 +30,7 @@ dma_pool_create
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`dma_pool_create.description`:
 
@@ -66,7 +66,7 @@ dma_pool_destroy
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`dma_pool_destroy.description`:
 

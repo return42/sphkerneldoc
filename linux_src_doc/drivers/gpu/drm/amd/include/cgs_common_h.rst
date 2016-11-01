@@ -71,6 +71,7 @@ Definition
         CGS_IND_REG__SMC,
         CGS_IND_REG__UVD_CTX,
         CGS_IND_REG__DIDT,
+        CGS_IND_REG_GC_CAC,
         CGS_IND_REG__AUDIO_ENDPT
     };
 
@@ -92,6 +93,9 @@ CGS_IND_REG__UVD_CTX
     *undescribed*
 
 CGS_IND_REG__DIDT
+    *undescribed*
+
+CGS_IND_REG_GC_CAC
     *undescribed*
 
 CGS_IND_REG__AUDIO_ENDPT
@@ -294,9 +298,11 @@ Definition
 
     struct cgs_firmware_info {
         uint16_t version;
+        uint16_t fw_version;
         uint16_t feature_version;
         uint32_t image_size;
         uint64_t mc_addr;
+        uint32_t ucode_start_address;
         void *kptr;
     }
 
@@ -308,6 +314,9 @@ Members
 version
     *undescribed*
 
+fw_version
+    *undescribed*
+
 feature_version
     *undescribed*
 
@@ -315,6 +324,9 @@ image_size
     *undescribed*
 
 mc_addr
+    *undescribed*
+
+ucode_start_address
     *undescribed*
 
 kptr

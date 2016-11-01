@@ -412,7 +412,7 @@ Note
 ----
 
 The frame will be freed either by a direct call to fc_frame_free(fp)
-or indirectly by calling libfc_function_template.\ :c:func:`frame_send`\ .
+or indirectly by calling libfc_function_template.frame_send().
 
 .. _`fc_seq_alloc`:
 
@@ -527,7 +527,7 @@ fc_invoke_resp
 
 .. c:function:: bool fc_invoke_resp(struct fc_exch *ep, struct fc_seq *sp, struct fc_frame *fp)
 
-    invoke ep->\ :c:func:`resp`\ 
+    invoke ep->resp()
 
     :param struct fc_exch \*ep:
         *undescribed*
@@ -553,7 +553,7 @@ this function is invoked, the first \ :c:func:`spin_lock_bh`\  call in this func
 will wait until \ :c:func:`fc_seq_set_resp`\  has finished modifying these variables.
 
 Since \ :c:func:`fc_exch_done`\  invokes \ :c:func:`fc_seq_set_resp`\  it is guaranteed that that
-ep->\ :c:func:`resp`\  won't be invoked after \ :c:func:`fc_exch_done`\  has returned.
+ep->resp() won't be invoked after \ :c:func:`fc_exch_done`\  has returned.
 
 The response handler itself may invoke \ :c:func:`fc_exch_done`\ , which will clear the
 ep->resp pointer.
@@ -893,7 +893,7 @@ fc_seq_assign
 Description
 -----------
 
-On success, the sequence pointer will be returned and also in fr_seq(\ ``fp``\ ).
+On success, the sequence pointer will be returned and also in fr_seq(@fp).
 A reference will be held on the exchange/sequence for the caller, which
 must call \ :c:func:`fc_seq_release`\ .
 

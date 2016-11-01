@@ -24,7 +24,7 @@ perf_evsel__read_on_cpu
 Description
 -----------
 
-\ ``evsel``\  - event selector to read value
+@evsel - event selector to read value
 \ ``cpu``\  - CPU of interest
 \ ``thread``\  - thread of interest
 
@@ -51,7 +51,7 @@ perf_evsel__read_on_cpu_scaled
 Description
 -----------
 
-\ ``evsel``\  - event selector to read value
+@evsel - event selector to read value
 \ ``cpu``\  - CPU of interest
 \ ``thread``\  - thread of interest
 
@@ -72,7 +72,7 @@ perf_evsel__is_group_leader
 Description
 -----------
 
-\ ``evsel``\  - evsel selector to be tested
+@evsel - evsel selector to be tested
 
 Return \ ``true``\  if \ ``evsel``\  is a group leader or a stand-alone event
 
@@ -93,31 +93,10 @@ perf_evsel__is_group_event
 Description
 -----------
 
-\ ``evsel``\  - evsel selector to be tested
+@evsel - evsel selector to be tested
 
 Return \ ``true``\  iff event group view is enabled and \ ``evsel``\  is a actual group
 leader which has other members in the group
-
-.. _`perf_evsel__is_function_event`:
-
-perf_evsel__is_function_event
-=============================
-
-.. c:function:: bool perf_evsel__is_function_event(struct perf_evsel *evsel)
-
-    Return whether given evsel is a function trace event
-
-    :param struct perf_evsel \*evsel:
-        *undescribed*
-
-.. _`perf_evsel__is_function_event.description`:
-
-Description
------------
-
-\ ``evsel``\  - evsel selector to be tested
-
-Return \ ``true``\  if event is function trace event
 
 .. This file was automatic generated / don't edit.
 

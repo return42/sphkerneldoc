@@ -57,6 +57,22 @@ ttm_bo_delayed_delete
     :param bool remove_all:
         *undescribed*
 
+.. _`ttm_bo_add_move_fence`:
+
+ttm_bo_add_move_fence
+=====================
+
+.. c:function:: int ttm_bo_add_move_fence(struct ttm_buffer_object *bo, struct ttm_mem_type_manager *man, struct ttm_mem_reg *mem)
+
+    :param struct ttm_buffer_object \*bo:
+        *undescribed*
+
+    :param struct ttm_mem_type_manager \*man:
+        *undescribed*
+
+    :param struct ttm_mem_reg \*mem:
+        *undescribed*
+
 .. _`ttm_bo_mem_force_space`:
 
 ttm_bo_mem_force_space

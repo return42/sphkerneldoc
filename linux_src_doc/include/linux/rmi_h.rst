@@ -222,7 +222,7 @@ doze_interval
 Description
 -----------
 
-\ ``nosleep``\  - specifies whether the device is permitted to sleep or doze (that
+@nosleep - specifies whether the device is permitted to sleep or doze (that
 is, enter a temporary low power state) when no fingers are touching the
 sensor.
 \ ``wakeup_threshold``\  - controls the capacitance threshold at which the touch
@@ -305,7 +305,7 @@ cs_assert
 Description
 -----------
 
-\ ``block_delay``\  - for standard SPI transactions consisting of both a read and
+@block_delay - for standard SPI transactions consisting of both a read and
 write operation, the delay (in microseconds) between the read and write
 operations.
 \ ``split_read_block_delay_us``\  - for V2 SPI transactions consisting of both a
@@ -380,7 +380,7 @@ f30_data
 Description
 -----------
 
-\ ``reset_delay_ms``\  - after issuing a reset command to the touch sensor, the
+@reset_delay_ms - after issuing a reset command to the touch sensor, the
 driver waits a few milliseconds to give the firmware a chance to
 to re-initialize.  You can override the default wait period here.
 

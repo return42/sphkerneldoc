@@ -1,12 +1,60 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_plane_helper.c
 
+.. _`drm_plane_helper_check_state`:
+
+drm_plane_helper_check_state
+============================
+
+.. c:function:: int drm_plane_helper_check_state(struct drm_plane_state *state, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled)
+
+    Check plane state for validity
+
+    :param struct drm_plane_state \*state:
+        plane state to check
+
+    :param const struct drm_rect \*clip:
+        integer clipping coordinates
+
+    :param int min_scale:
+        minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+
+    :param int max_scale:
+        maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
+
+    :param bool can_position:
+        is it legal to position the plane such that it
+        doesn't cover the entire crtc?  This will generally
+        only be false for primary planes.
+
+    :param bool can_update_disabled:
+        can the plane be updated while the crtc
+        is disabled?
+
+.. _`drm_plane_helper_check_state.description`:
+
+Description
+-----------
+
+Checks that a desired plane update is valid, and updates various
+bits of derived state (clipped coordinates etc.). Drivers that provide
+their own plane handling rather than helper-provided implementations may
+still wish to call this function to avoid duplication of error checking
+code.
+
+.. _`drm_plane_helper_check_state.return`:
+
+Return
+------
+
+Zero if update appears valid, error code on failure
+
 .. _`drm_plane_helper_check_update`:
 
 drm_plane_helper_check_update
 =============================
 
-.. c:function:: int drm_plane_helper_check_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_rect *src, struct drm_rect *dest, const struct drm_rect *clip, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool *visible)
+.. c:function:: int drm_plane_helper_check_update(struct drm_plane *plane, struct drm_crtc *crtc, struct drm_framebuffer *fb, struct drm_rect *src, struct drm_rect *dst, const struct drm_rect *clip, unsigned int rotation, int min_scale, int max_scale, bool can_position, bool can_update_disabled, bool *visible)
 
     Check plane update for validity
 
@@ -22,17 +70,20 @@ drm_plane_helper_check_update
     :param struct drm_rect \*src:
         source coordinates in 16.16 fixed point
 
-    :param struct drm_rect \*dest:
+    :param struct drm_rect \*dst:
         integer destination coordinates
 
     :param const struct drm_rect \*clip:
         integer clipping coordinates
 
+    :param unsigned int rotation:
+        plane rotation
+
     :param int min_scale:
-        minimum \ ``src``\ :\ ``dest``\  scaling factor in 16.16 fixed point
+        minimum \ ``src``\ :@dest scaling factor in 16.16 fixed point
 
     :param int max_scale:
-        maximum \ ``src``\ :\ ``dest``\  scaling factor in 16.16 fixed point
+        maximum \ ``src``\ :@dest scaling factor in 16.16 fixed point
 
     :param bool can_position:
         is it legal to position the plane such that it
@@ -121,10 +172,12 @@ return an error.
 
 Note that we make some assumptions about hardware limitations that may not be
 true for all hardware --
-1) Primary plane cannot be repositioned.
-2) Primary plane cannot be scaled.
-3) Primary plane must cover the entire CRTC.
-4) Subpixel positioning is not supported.
+
+1. Primary plane cannot be repositioned.
+2. Primary plane cannot be scaled.
+3. Primary plane must cover the entire CRTC.
+4. Subpixel positioning is not supported.
+
 Drivers for hardware that don't have these restrictions can provide their
 own implementation rather than using this helper.
 
@@ -191,39 +244,6 @@ Description
 Provides a default plane destroy handler for primary planes.  This handler
 is called during CRTC destruction.  We disable the primary plane, remove
 it from the DRM plane list, and deallocate the plane structure.
-
-.. _`drm_crtc_init`:
-
-drm_crtc_init
-=============
-
-.. c:function:: int drm_crtc_init(struct drm_device *dev, struct drm_crtc *crtc, const struct drm_crtc_funcs *funcs)
-
-    Legacy CRTC initialization function
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param struct drm_crtc \*crtc:
-        CRTC object to init
-
-    :param const struct drm_crtc_funcs \*funcs:
-        callbacks for the new CRTC
-
-.. _`drm_crtc_init.description`:
-
-Description
------------
-
-Initialize a CRTC object with a default helper-provided primary plane and no
-cursor plane.
-
-.. _`drm_crtc_init.return`:
-
-Return
-------
-
-Zero on success, error code on failure.
 
 .. _`drm_plane_helper_update`:
 

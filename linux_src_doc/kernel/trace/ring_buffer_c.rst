@@ -1097,7 +1097,7 @@ for example
 rpage = ring_buffer_alloc_read_page(buffer, cpu);
 if (!rpage)
 return error;
-ret = ring_buffer_read_page(buffer, \ :c:type:`struct rpage <rpage>`, len, cpu, 0);
+ret = ring_buffer_read_page(buffer, \ :c:type:`struct rpage <rpage>`\ , len, cpu, 0);
 if (ret >= 0)
 process_page(rpage, ret);
 

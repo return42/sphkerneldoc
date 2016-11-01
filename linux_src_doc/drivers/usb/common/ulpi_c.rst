@@ -28,25 +28,28 @@ Copyright (C) 2015 Intel Corporation
 Author
 ------
 
-Heikki Krogerus <heikki.krogerus\ ``linux``\ .intel.com>
+Heikki Krogerus <heikki.krogerus@linux.intel.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as
 published by the Free Software Foundation.
 
-.. _`ulpi_register_driver`:
+.. _`__ulpi_register_driver`:
 
-ulpi_register_driver
-====================
+__ulpi_register_driver
+======================
 
-.. c:function:: int ulpi_register_driver(struct ulpi_driver *drv)
+.. c:function:: int __ulpi_register_driver(struct ulpi_driver *drv, struct module *module)
 
     register a driver with the ULPI bus
 
     :param struct ulpi_driver \*drv:
         driver being registered
 
-.. _`ulpi_register_driver.description`:
+    :param struct module \*module:
+        *undescribed*
+
+.. _`__ulpi_register_driver.description`:
 
 Description
 -----------
@@ -77,14 +80,14 @@ Unregisters a driver with the ULPI bus.
 ulpi_register_interface
 =======================
 
-.. c:function:: struct ulpi *ulpi_register_interface(struct device *dev, struct ulpi_ops *ops)
+.. c:function:: struct ulpi *ulpi_register_interface(struct device *dev, const struct ulpi_ops *ops)
 
     instantiate new ULPI device
 
     :param struct device \*dev:
         USB controller's device interface
 
-    :param struct ulpi_ops \*ops:
+    :param const struct ulpi_ops \*ops:
         ULPI register access
 
 .. _`ulpi_register_interface.description`:

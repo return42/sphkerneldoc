@@ -39,33 +39,6 @@ If DIO_LOCKING is not set, the filesystem takes care of its own locking.
 As with \ :c:func:`do_blockdev_direct_IO`\ , we increment i_dio_count while the I/O
 is in progress.
 
-.. _`__dax_fault`:
-
-__dax_fault
-===========
-
-.. c:function:: int __dax_fault(struct vm_area_struct *vma, struct vm_fault *vmf, get_block_t get_block)
-
-    handle a page fault on a DAX file
-
-    :param struct vm_area_struct \*vma:
-        The virtual memory area where the fault occurred
-
-    :param struct vm_fault \*vmf:
-        The description of the fault
-
-    :param get_block_t get_block:
-        The filesystem method used to translate file offsets to blocks
-
-.. _`__dax_fault.description`:
-
-Description
------------
-
-When a page fault occurs, filesystems may call this helper in their
-fault handler for DAX files. \\ :c:func:`__dax_fault`\  assumes the caller has done all
-the necessary locking for the page fault to proceed successfully.
-
 .. _`dax_fault`:
 
 dax_fault
@@ -90,7 +63,8 @@ Description
 -----------
 
 When a page fault occurs, filesystems may call this helper in their
-fault handler for DAX files.
+fault handler for DAX files. \ :c:func:`dax_fault`\  assumes the caller has done all
+the necessary locking for the page fault to proceed successfully.
 
 .. _`dax_pmd_fault`:
 
@@ -195,6 +169,60 @@ Description
 
 Similar to \ :c:func:`block_truncate_page`\ , this function can be called by a
 filesystem when it is truncating a DAX file to handle the partial page.
+
+.. _`iomap_dax_rw`:
+
+iomap_dax_rw
+============
+
+.. c:function:: ssize_t iomap_dax_rw(struct kiocb *iocb, struct iov_iter *iter, struct iomap_ops *ops)
+
+    Perform I/O to a DAX file
+
+    :param struct kiocb \*iocb:
+        The control block for this I/O
+
+    :param struct iov_iter \*iter:
+        The addresses to do I/O from or to
+
+    :param struct iomap_ops \*ops:
+        iomap ops passed from the file system
+
+.. _`iomap_dax_rw.description`:
+
+Description
+-----------
+
+This function performs read and write operations to directly mapped
+persistent memory.  The callers needs to take care of read/write exclusion
+and evicting any page cache pages in the region under I/O.
+
+.. _`iomap_dax_fault`:
+
+iomap_dax_fault
+===============
+
+.. c:function:: int iomap_dax_fault(struct vm_area_struct *vma, struct vm_fault *vmf, struct iomap_ops *ops)
+
+    handle a page fault on a DAX file
+
+    :param struct vm_area_struct \*vma:
+        The virtual memory area where the fault occurred
+
+    :param struct vm_fault \*vmf:
+        The description of the fault
+
+    :param struct iomap_ops \*ops:
+        iomap ops passed from the file system
+
+.. _`iomap_dax_fault.description`:
+
+Description
+-----------
+
+When a page fault occurs, filesystems may call this helper in their fault
+or mkwrite handler for DAX files. Assumes the caller has done all the
+necessary locking for the page fault to proceed successfully.
 
 .. This file was automatic generated / don't edit.
 

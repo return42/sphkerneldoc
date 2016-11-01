@@ -23,13 +23,13 @@ Description
 Author
 ------
 
-Frank Haverkamp <haver\ ``linux``\ .vnet.ibm.com>
+Frank Haverkamp <haver@linux.vnet.ibm.com>
 
-Joerg-Stephan Vogt <jsvogt\ ``de``\ .ibm.com>
+Joerg-Stephan Vogt <jsvogt@de.ibm.com>
 
-Michael Jung <mijung\ ``gmx``\ .net>
+Michael Jung <mijung@gmx.net>
 
-Michael Ruettger <michael\ ``ibmra``\ .de>
+Michael Ruettger <michael@ibmra.de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (version 2 only)
@@ -228,7 +228,7 @@ Return
 -EINVAL when unknown error condition
 
 When an error is returned the called needs to ensure that
-\ :c:func:`purge_ddcb`\  is being called to get the \ :c:type:`struct req <req>` removed from the
+\ :c:func:`purge_ddcb`\  is being called to get the \ :c:type:`struct req <req>`\  removed from the
 queue.
 
 .. _`get_next_ddcb`:

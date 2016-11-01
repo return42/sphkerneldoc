@@ -126,7 +126,7 @@ nilfs_dirty_inode
 Description
 -----------
 
-\ :c:func:`nilfs_dirty_inode`\  loads a inode block containing the specified
+nilfs_dirty_inode() loads a inode block containing the specified
 \ ``inode``\  and copies data from a nilfs_inode to a corresponding inode
 entry in the inode block. This operation is excluded from the segment
 construction. This function can be called both as a single operation

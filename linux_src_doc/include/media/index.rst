@@ -10,20 +10,28 @@ media
     davinci/index
     drv-intf/index
     i2c/index
+    cec-edid_h
+    cec_h
     lirc_dev_h
     media-device_h
     media-devnode_h
     media-entity_h
     rc-core_h
+    rc-map_h
     soc_camera_h
     tuner-types_h
     tuner_h
     tveeprom_h
     v4l2-async_h
+    v4l2-common_h
     v4l2-ctrls_h
+    v4l2-dev_h
+    v4l2-device_h
     v4l2-dv-timings_h
     v4l2-event_h
+    v4l2-fh_h
     v4l2-flash-led-class_h
+    v4l2-ioctl_h
     v4l2-mc_h
     v4l2-mediabus_h
     v4l2-mem2mem_h

@@ -23,6 +23,28 @@ Description
 
 use the WiFi enable regulator to enable/disable the WiFi unit.
 
+.. _`wl12xx_spi_set_block_size`:
+
+wl12xx_spi_set_block_size
+=========================
+
+.. c:function:: void wl12xx_spi_set_block_size(struct device *child, unsigned int blksz)
+
+    :param struct device \*child:
+        *undescribed*
+
+    :param unsigned int blksz:
+        *undescribed*
+
+.. _`wl12xx_spi_set_block_size.description`:
+
+Description
+-----------
+
+This function is not needed for spi mode, but need to be present.
+Without it defined the wlcore fallback to use the wrong packet
+allignment on tx.
+
 .. _`wlcore_probe_of`:
 
 wlcore_probe_of

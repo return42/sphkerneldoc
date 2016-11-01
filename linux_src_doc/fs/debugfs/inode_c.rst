@@ -45,7 +45,7 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`debugfs_create_file_unsafe`:
@@ -82,14 +82,14 @@ debugfs_create_file_unsafe
 Description
 -----------
 
-\ :c:func:`debugfs_create_file_unsafe`\  is completely analogous to
+debugfs_create_file_unsafe() is completely analogous to
 \ :c:func:`debugfs_create_file`\ , the only difference being that the fops
 handed it will not get protected against file removals by the
 debugfs core.
 
 It is your responsibility to protect your struct file_operation
 methods against file removals by means of \ :c:func:`debugfs_use_file_start`\ 
-and \ :c:func:`debugfs_use_file_finish`\ . ->\ :c:func:`open`\  is still protected by
+and \ :c:func:`debugfs_use_file_finish`\ . ->open() is still protected by
 debugfs though.
 
 Any struct file_operations defined by means of
@@ -143,7 +143,7 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`debugfs_create_dir`:
@@ -176,7 +176,7 @@ pointer must be passed to the \ :c:func:`debugfs_remove`\  function when the fil
 to be removed (no automatic cleanup happens if your module is unloaded,
 you are responsible here.)  If an error occurs, \ ``NULL``\  will be returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`debugfs_create_automount`:
@@ -207,7 +207,7 @@ debugfs_create_automount
 Description
 -----------
 
-\ ``f``\  should return what ->\ :c:func:`d_automount`\  would.
+@f should return what ->d_automount() would.
 
 .. _`debugfs_create_symlink`:
 
@@ -246,7 +246,7 @@ link is to be removed (no automatic cleanup happens if your module is
 unloaded, you are responsible here.)  If an error occurs, \ ``NULL``\  will be
 returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`debugfs_remove`:
@@ -337,7 +337,7 @@ This function will return a pointer to old_dentry (which is updated to
 reflect renaming) if it succeeds. If an error occurs, \ ``NULL``\  will be
 returned.
 
-If debugfs is not enabled in the kernel, the value -\ ``ENODEV``\  will be
+If debugfs is not enabled in the kernel, the value -%ENODEV will be
 returned.
 
 .. _`debugfs_initialized`:

@@ -678,7 +678,7 @@ dfll_init_clks
 
 .. c:function:: int dfll_init_clks(struct tegra_dfll *td)
 
-    \ :c:func:`clk_get`\  the DFLL source clocks
+    clk_get() the DFLL source clocks
 
     :param struct tegra_dfll \*td:
         DFLL instance

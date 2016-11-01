@@ -348,19 +348,19 @@ GFP_KERNEL allocations are not so marked, so can escape to the
 nearest enclosing hardwalled ancestor cpuset.
 
 Scanning up parent cpusets requires callback_lock.  The
-\\ :c:func:`__alloc_pages`\  routine only calls here with \__GFP_HARDWALL bit
+\__alloc_pages() routine only calls here with \__GFP_HARDWALL bit
 \_not\_ set if it's a GFP_KERNEL allocation, and all nodes in the
 current tasks mems_allowed came up empty on the first pass over
 the zonelist.  So only GFP_KERNEL allocations, if all nodes in the
 cpuset are short of memory, might require taking the callback_lock.
 
-The first call here from mm/page_alloc:\ :c:func:`get_page_from_freelist`\ 
+The first call here from mm/page_alloc:get_page_from_freelist()
 has \__GFP_HARDWALL set in gfp_mask, enforcing hardwall cpusets,
 so no allocation on a node outside the cpuset is allowed (unless
 in interrupt, of course).
 
 The second pass through \ :c:func:`get_page_from_freelist`\  doesn't even call
-here for GFP_ATOMIC calls.  For those calls, the \\ :c:func:`__alloc_pages`\ 
+here for GFP_ATOMIC calls.  For those calls, the \__alloc_pages()
 variable 'wait' is not set, and the bit ALLOC_CPUSET is not set
 in alloc_flags.  That logic and the checks below have the combined
 
@@ -410,7 +410,7 @@ should not be possible for the following code to return an
 offline node.  But if it did, that would be ok, as this routine
 is not returning the node where the allocation must be, only
 the node where the search should start.  The zonelist passed to
-\\ :c:func:`__alloc_pages`\  will include all nodes.  If the slab allocator
+\__alloc_pages() will include all nodes.  If the slab allocator
 is passed an offline node, it will fall back to the local node.
 See \ :c:func:`kmem_cache_alloc_node`\ .
 

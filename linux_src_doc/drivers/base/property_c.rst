@@ -279,7 +279,7 @@ stores the value into \ ``val``\  if found. The value is checked to be a string.
 Return
 ------
 
-\ ``0``\  if the property was found (success),
+%0 if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property type is not a string.
@@ -316,7 +316,7 @@ index back.
 Return
 ------
 
-\ ``0``\  if the property was found (success),
+%0 if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  if the property is not an array of strings,
@@ -563,7 +563,7 @@ Read property \ ``propname``\  from the given firmware node and store the value 
 Return
 ------
 
-\ ``0``\  if the property was found (success),
+%0 if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  or \ ``-EILSEQ``\  if the property is not a string,
@@ -600,7 +600,7 @@ index back.
 Return
 ------
 
-\ ``0``\  if the property was found (success),
+%0 if the property was found (success),
 \ ``-EINVAL``\  if given arguments are not valid,
 \ ``-ENODATA``\  if the property does not have a value,
 \ ``-EPROTO``\  if the property is not an array of strings,
@@ -713,6 +713,21 @@ device_get_next_child_node
 
     :param struct fwnode_handle \*child:
         Handle to one of the device's child nodes or a null handle.
+
+.. _`device_get_named_child_node`:
+
+device_get_named_child_node
+===========================
+
+.. c:function:: struct fwnode_handle *device_get_named_child_node(struct device *dev, const char *childname)
+
+    Return first matching named child node handle
+
+    :param struct device \*dev:
+        Device to find the named child node for.
+
+    :param const char \*childname:
+        String to match child node name against.
 
 .. _`fwnode_handle_put`:
 

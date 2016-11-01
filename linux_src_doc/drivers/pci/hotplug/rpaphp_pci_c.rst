@@ -11,7 +11,7 @@ rpaphp_enable_slot
     record slot state, config pci device
 
     :param struct slot \*slot:
-        target \ :c:type:`struct slot <slot>`
+        target \ :c:type:`struct slot <slot>`\ 
 
 .. _`rpaphp_enable_slot.description`:
 

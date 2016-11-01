@@ -157,7 +157,6 @@ Definition
         struct exynos_video_entity ve;
         struct v4l2_device *v4l2_dev;
         struct v4l2_fh fh;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct v4l2_subdev subdev;
         struct media_pad vd_pad;
         struct media_pad subdev_pads[FLITE_SD_PADS_NUM];
@@ -205,9 +204,6 @@ v4l2_dev
 
 fh
     v4l2 file handle
-
-alloc_ctx
-    videobuf2 memory allocator context
 
 subdev
     FIMC-LITE subdev

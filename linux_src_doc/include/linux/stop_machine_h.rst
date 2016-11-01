@@ -14,10 +14,10 @@ stop_machine
         the function to run
 
     :param void \*data:
-        the data ptr for the @\ :c:func:`fn`\ 
+        the data ptr for the \ ``fn``\ ()
 
     :param const struct cpumask \*cpus:
-        the cpus to run the @\ :c:func:`fn`\  on (NULL = any online cpu)
+        the cpus to run the \ ``fn``\ () on (NULL = any online cpu)
 
 .. _`stop_machine.description`:
 
@@ -27,7 +27,7 @@ Description
 This causes a thread to be scheduled on every cpu,
 each of which disables interrupts.  The result is that no one is
 holding a spinlock or inside any other preempt-disabled region when
-@\ :c:func:`fn`\  runs.
+\ ``fn``\ () runs.
 
 This can be thought of as a very heavy write lock, equivalent to
 

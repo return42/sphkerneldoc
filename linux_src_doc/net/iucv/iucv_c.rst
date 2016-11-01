@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/iucv/iucv.c
 
-.. _`iucv_call_b2f0`:
+.. _`__iucv_call_b2f0`:
 
-iucv_call_b2f0
-==============
+__iucv_call_b2f0
+================
 
-.. c:function:: int iucv_call_b2f0(int command, union iucv_param *parm)
+.. c:function:: int __iucv_call_b2f0(int command, union iucv_param *parm)
 
     :param int command:
         *undescribed*
@@ -14,7 +14,7 @@ iucv_call_b2f0
     :param union iucv_param \*parm:
         pointer to a struct iucv_parm block
 
-.. _`iucv_call_b2f0.description`:
+.. _`__iucv_call_b2f0.description`:
 
 Description
 -----------
@@ -23,17 +23,20 @@ Calls CP to execute IUCV commands.
 
 Returns the result of the CP IUCV call.
 
-.. _`iucv_query_maxconn`:
+.. _`__iucv_query_maxconn`:
 
-iucv_query_maxconn
-==================
+__iucv_query_maxconn
+====================
 
-.. c:function:: int iucv_query_maxconn( void)
+.. c:function:: int __iucv_query_maxconn(void *param, unsigned long *max_pathid)
 
-    :param  void:
-        no arguments
+    :param void \*param:
+        *undescribed*
 
-.. _`iucv_query_maxconn.description`:
+    :param unsigned long \*max_pathid:
+        *undescribed*
+
+.. _`__iucv_query_maxconn.description`:
 
 Description
 -----------

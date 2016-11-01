@@ -22,7 +22,7 @@ qt1010_attach
 Description
 -----------
 
-\ ``param``\  fe   frontend to attach to
+@param fe   frontend to attach to
 \ ``param``\  i2c  i2c adapter to use
 \ ``param``\  cfg  tuner hw based configuration
 \ ``return``\  fe  pointer on success, NULL on failure

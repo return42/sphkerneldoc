@@ -114,7 +114,7 @@ __clk_determine_rate
         determine the rate of this clock
 
     :param struct clk_rate_request \*req:
-        *undescribed*
+        target rate request
 
 .. _`__clk_determine_rate.description`:
 

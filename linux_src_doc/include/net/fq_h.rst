@@ -147,9 +147,12 @@ Definition
         u32 flows_cnt;
         u32 perturbation;
         u32 limit;
+        u32 memory_limit;
+        u32 memory_usage;
         u32 quantum;
         u32 backlog;
         u32 overlimit;
+        u32 overmemory;
         u32 collisions;
     }
 
@@ -177,6 +180,12 @@ perturbation
 limit
     max number of packets that can be queued across all flows
 
+memory_limit
+    *undescribed*
+
+memory_usage
+    *undescribed*
+
 quantum
     *undescribed*
 
@@ -184,6 +193,9 @@ backlog
     number of packets queued across all flows
 
 overlimit
+    *undescribed*
+
+overmemory
     *undescribed*
 
 collisions

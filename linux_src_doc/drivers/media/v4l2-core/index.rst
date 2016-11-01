@@ -13,8 +13,8 @@ v4l2-core
     v4l2-dv-timings_c
     v4l2-mem2mem_c
     v4l2-of_c
-    v4l2-subdev_c
     videobuf-core_c
     videobuf-dma-contig_c
+    videobuf2-dma-contig_c
     videobuf2-memops_c
     videobuf2-v4l2_c

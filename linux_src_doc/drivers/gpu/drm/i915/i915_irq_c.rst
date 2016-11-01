@@ -18,18 +18,12 @@ i915_hotplug_interrupt_update
 
     :param uint32_t bits:
         bits to enable
-
-.. _`i915_hotplug_interrupt_update.note`:
-
-NOTE
-----
-
-the HPD enable bits are modified both inside and outside
-of an interrupt context. To avoid that read-modify-write cycles
-interfer, these bits are protected by a spinlock. Since this
-function is usually not called from a context where the lock is
-held already, this function acquires the lock itself. A non-locking
-version is also available.
+        NOTE: the HPD enable bits are modified both inside and outside
+        of an interrupt context. To avoid that read-modify-write cycles
+        interfer, these bits are protected by a spinlock. Since this
+        function is usually not called from a context where the lock is
+        held already, this function acquires the lock itself. A non-locking
+        version is also available.
 
 .. _`ilk_update_display_irq`:
 
@@ -147,12 +141,12 @@ ibx_display_interrupt_update
 i915_enable_asle_pipestat
 =========================
 
-.. c:function:: void i915_enable_asle_pipestat(struct drm_device *dev)
+.. c:function:: void i915_enable_asle_pipestat(struct drm_i915_private *dev_priv)
 
     enable ASLE pipestat for OpRegion
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`ivybridge_parity_work`:
 
@@ -180,12 +174,12 @@ it is likely the same row is more likely to go bad again.
 i915_reset_and_wakeup
 =====================
 
-.. c:function:: void i915_reset_and_wakeup(struct drm_device *dev)
+.. c:function:: void i915_reset_and_wakeup(struct drm_i915_private *dev_priv)
 
     do process context error handling work
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`i915_reset_and_wakeup.description`:
 
@@ -200,12 +194,12 @@ was detected.
 i915_handle_error
 =================
 
-.. c:function:: void i915_handle_error(struct drm_device *dev, u32 engine_mask, const char *fmt,  ...)
+.. c:function:: void i915_handle_error(struct drm_i915_private *dev_priv, u32 engine_mask, const char *fmt,  ...)
 
     handle a gpu error
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
     :param u32 engine_mask:
         mask representing engines that are hung
@@ -216,7 +210,7 @@ i915_handle_error
         of a ring dump etc.).
 
     :param const char \*fmt:
-        *undescribed*
+        Error message format string
 
     :param ... :
         variable arguments

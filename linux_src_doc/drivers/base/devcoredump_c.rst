@@ -92,7 +92,7 @@ dev_coredumpm
         the module that contains the read/free functions, use \ ``THIS_MODULE``\ 
 
     :param void \*data:
-        data cookie for the \ ``read``\ /\ ``free``\  functions
+        data cookie for the \ ``read``\ /@free functions
 
     :param size_t datalen:
         length of the data

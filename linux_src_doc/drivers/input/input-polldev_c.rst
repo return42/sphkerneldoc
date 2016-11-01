@@ -42,7 +42,7 @@ Returns prepared \ :c:type:`struct input_polled_dev <input_polled_dev>`\  or \ `
 
 Managed polled input devices do not need to be explicitly unregistered
 or freed as it will be done automatically when owner device unbinds
-from \* its driver (or binding fails). Once such managed polled device
+from * its driver (or binding fails). Once such managed polled device
 is allocated, it is ready to be set up and registered in the same
 fashion as regular polled input devices (using
 \ :c:func:`input_register_polled_device`\  function).

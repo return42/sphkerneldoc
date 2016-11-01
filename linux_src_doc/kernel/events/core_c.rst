@@ -32,7 +32,7 @@ be on the current CPU, which just calls the function directly
 Return
 ------
 
-\ ``func``\  return value, or
+@func return value, or
 -ESRCH  - when the process isn't running
 -EAGAIN - when the process moved away
 
@@ -66,7 +66,7 @@ Calls the function \ ``func``\  on the remote cpu.
 Return
 ------
 
-\ ``func``\  return value or -ENXIO when the cpu is offline
+@func return value or -ENXIO when the cpu is offline
 
 .. _`sys_perf_event_open`:
 

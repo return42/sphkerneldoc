@@ -76,7 +76,6 @@ Definition
         struct v4l2_pix_format format;
         const struct xvip_video_format *fmtinfo;
         struct vb2_queue queue;
-        void *alloc_ctx;
         unsigned int sequence;
         struct list_head queued_bufs;
         spinlock_t queued_lock;
@@ -120,9 +119,6 @@ fmtinfo
 
 queue
     vb2 buffers queue
-
-alloc_ctx
-    allocation context for the vb2 \ ``queue``\ 
 
 sequence
     V4L2 buffers sequence number

@@ -347,7 +347,6 @@ Definition
         u16 id;
         struct bdisp_m2m_device m2m;
         unsigned long state;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct clk *clock;
         void __iomem *regs;
         wait_queue_head_t irq_queue;
@@ -387,9 +386,6 @@ m2m
 
 state
     flags used to synchronize m2m and capture mode operation
-
-alloc_ctx
-    videobuf2 memory allocator context
 
 clock
     IP clock

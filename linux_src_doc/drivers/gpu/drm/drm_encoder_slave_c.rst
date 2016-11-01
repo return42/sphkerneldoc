@@ -32,7 +32,7 @@ Description
 
 Create an I2C device on the specified bus (the module containing its
 driver is transparently loaded) and attach it to the specified
-\ :c:type:`struct drm_encoder_slave <drm_encoder_slave>`. The \ ``slave_funcs``\  field will be initialized with
+\ :c:type:`struct drm_encoder_slave <drm_encoder_slave>`\ . The \ ``slave_funcs``\  field will be initialized with
 the hooks provided by the slave driver.
 
 If \ ``info``\ ->platform_data is non-NULL it will be used as the initial

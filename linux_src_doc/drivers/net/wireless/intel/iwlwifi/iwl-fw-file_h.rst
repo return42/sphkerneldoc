@@ -21,21 +21,15 @@ Definition
         IWL_UCODE_TLV_FLAGS_PAN,
         IWL_UCODE_TLV_FLAGS_NEWSCAN,
         IWL_UCODE_TLV_FLAGS_MFP,
-        IWL_UCODE_TLV_FLAGS_P2P,
-        IWL_UCODE_TLV_FLAGS_DW_BC_TABLE,
         IWL_UCODE_TLV_FLAGS_SHORT_BL,
         IWL_UCODE_TLV_FLAGS_D3_6_IPV6_ADDRS,
         IWL_UCODE_TLV_FLAGS_NO_BASIC_SSID,
         IWL_UCODE_TLV_FLAGS_NEW_NSOFFL_SMALL,
         IWL_UCODE_TLV_FLAGS_NEW_NSOFFL_LARGE,
-        IWL_UCODE_TLV_FLAGS_P2P_PM,
-        IWL_UCODE_TLV_FLAGS_BSS_P2P_PS_DCM,
-        IWL_UCODE_TLV_FLAGS_BSS_P2P_PS_SCM,
         IWL_UCODE_TLV_FLAGS_UAPSD_SUPPORT,
         IWL_UCODE_TLV_FLAGS_EBS_SUPPORT,
         IWL_UCODE_TLV_FLAGS_P2P_PS_UAPSD,
-        IWL_UCODE_TLV_FLAGS_BCAST_FILTERING,
-        IWL_UCODE_TLV_FLAGS_GO_UAPSD
+        IWL_UCODE_TLV_FLAGS_BCAST_FILTERING
     };
 
 .. _`iwl_ucode_tlv_flag.constants`:
@@ -53,12 +47,6 @@ IWL_UCODE_TLV_FLAGS_NEWSCAN
 
 IWL_UCODE_TLV_FLAGS_MFP
     This uCode image supports MFP (802.11w).
-
-IWL_UCODE_TLV_FLAGS_P2P
-    This uCode image supports P2P.
-
-IWL_UCODE_TLV_FLAGS_DW_BC_TABLE
-    The SCD byte count table is in DWORDS
 
 IWL_UCODE_TLV_FLAGS_SHORT_BL
     16 entries of black list instead of 64 in scan
@@ -78,15 +66,6 @@ IWL_UCODE_TLV_FLAGS_NEW_NSOFFL_SMALL
 IWL_UCODE_TLV_FLAGS_NEW_NSOFFL_LARGE
     new NS offload (large version)
 
-IWL_UCODE_TLV_FLAGS_P2P_PM
-    P2P client supports PM as a stand alone MAC
-
-IWL_UCODE_TLV_FLAGS_BSS_P2P_PS_DCM
-    *undescribed*
-
-IWL_UCODE_TLV_FLAGS_BSS_P2P_PS_SCM
-    *undescribed*
-
 IWL_UCODE_TLV_FLAGS_UAPSD_SUPPORT
     General support for uAPSD
 
@@ -98,9 +77,6 @@ IWL_UCODE_TLV_FLAGS_P2P_PS_UAPSD
 
 IWL_UCODE_TLV_FLAGS_BCAST_FILTERING
     uCode supports broadcast filtering.
-
-IWL_UCODE_TLV_FLAGS_GO_UAPSD
-    AP/GO interfaces support uAPSD clients
 
 .. _`iwl_ucode_tlv_api`:
 
@@ -121,11 +97,9 @@ Definition
     enum iwl_ucode_tlv_api {
         IWL_UCODE_TLV_API_FRAGMENTED_SCAN,
         IWL_UCODE_TLV_API_WIFI_MCC_UPDATE,
-        IWL_UCODE_TLV_API_WIDE_CMD_HDR,
         IWL_UCODE_TLV_API_LQ_SS_PARAMS,
         IWL_UCODE_TLV_API_NEW_VERSION,
-        IWL_UCODE_TLV_API_EXT_SCAN_PRIORITY,
-        IWL_UCODE_TLV_API_TX_POWER_CHAIN,
+        IWL_UCODE_TLV_API_SCAN_TSF_REPORT,
         NUM_IWL_UCODE_TLV_API
     };
 
@@ -141,22 +115,17 @@ IWL_UCODE_TLV_API_FRAGMENTED_SCAN
 IWL_UCODE_TLV_API_WIFI_MCC_UPDATE
     ucode supports MCC updates with source.
 
-IWL_UCODE_TLV_API_WIDE_CMD_HDR
-    ucode supports wide command header
-
 IWL_UCODE_TLV_API_LQ_SS_PARAMS
     Configure STBC/BFER via LQ CMD ss_params
 
 IWL_UCODE_TLV_API_NEW_VERSION
     new versioning format
 
-IWL_UCODE_TLV_API_EXT_SCAN_PRIORITY
-    scan APIs use 8-level priority
-    instead of 3.
-
-IWL_UCODE_TLV_API_TX_POWER_CHAIN
-    TX power API has larger command size
-    (command version 3) that supports per-chain limits
+IWL_UCODE_TLV_API_SCAN_TSF_REPORT
+    Scan start time reported in scan
+    iteration complete notification, and the timestamp reported for RX
+    received during scan, are reported in TSF of the mac specified in the
+    scan request.
 
 NUM_IWL_UCODE_TLV_API
     number of bits used
@@ -195,7 +164,7 @@ Definition
         IWL_UCODE_TLV_CAPA_DC2DC_CONFIG_SUPPORT,
         IWL_UCODE_TLV_CAPA_CSUM_SUPPORT,
         IWL_UCODE_TLV_CAPA_RADIO_BEACON_STATS,
-        IWL_UCODE_TLV_CAPA_P2P_STANDALONE_UAPSD,
+        IWL_UCODE_TLV_CAPA_P2P_SCM_UAPSD,
         IWL_UCODE_TLV_CAPA_BT_COEX_PLCR,
         IWL_UCODE_TLV_CAPA_LAR_MULTI_MCC,
         IWL_UCODE_TLV_CAPA_BT_COEX_RRC,
@@ -204,6 +173,7 @@ Definition
         IWL_UCODE_TLV_CAPA_SHORT_PM_TIMEOUTS,
         IWL_UCODE_TLV_CAPA_BT_MPLUT_SUPPORT,
         IWL_UCODE_TLV_CAPA_MULTI_QUEUE_RX_SUPPORT,
+        IWL_UCODE_TLV_CAPA_CSA_AND_TBTT_OFFLOAD,
         IWL_UCODE_TLV_CAPA_BEACON_ANT_SELECTION,
         IWL_UCODE_TLV_CAPA_BEACON_STORING,
         IWL_UCODE_TLV_CAPA_LAR_SUPPORT_V2,
@@ -213,6 +183,7 @@ Definition
         IWL_UCODE_TLV_CAPA_USNIFFER_UNIFIED,
         IWL_UCODE_TLV_CAPA_EXTEND_SHARED_MEM_CFG,
         IWL_UCODE_TLV_CAPA_LQM_SUPPORT,
+        IWL_UCODE_TLV_CAPA_TX_POWER_ACK,
         NUM_IWL_UCODE_TLV_CAPA
     };
 
@@ -277,8 +248,9 @@ IWL_UCODE_TLV_CAPA_CSUM_SUPPORT
 IWL_UCODE_TLV_CAPA_RADIO_BEACON_STATS
     support radio and beacon statistics
 
-IWL_UCODE_TLV_CAPA_P2P_STANDALONE_UAPSD
-    support p2p standalone U-APSD
+IWL_UCODE_TLV_CAPA_P2P_SCM_UAPSD
+    supports U-APSD on p2p interface when it
+    is standalone or with a BSS station interface in the same binding.
 
 IWL_UCODE_TLV_CAPA_BT_COEX_PLCR
     enabled BT Coex packet level co-running
@@ -306,6 +278,11 @@ IWL_UCODE_TLV_CAPA_BT_MPLUT_SUPPORT
 
 IWL_UCODE_TLV_CAPA_MULTI_QUEUE_RX_SUPPORT
     *undescribed*
+
+IWL_UCODE_TLV_CAPA_CSA_AND_TBTT_OFFLOAD
+    the firmware supports CSA
+    countdown offloading. Beacon notifications are not sent to the host.
+    The fw also offloads TBTT alignment.
 
 IWL_UCODE_TLV_CAPA_BEACON_ANT_SELECTION
     firmware will decide on what
@@ -338,6 +315,11 @@ IWL_UCODE_TLV_CAPA_EXTEND_SHARED_MEM_CFG
 
 IWL_UCODE_TLV_CAPA_LQM_SUPPORT
     supports Link Quality Measurement
+
+IWL_UCODE_TLV_CAPA_TX_POWER_ACK
+    reduced TX power API has larger
+    command size (command version 4) that supports toggling ACK TX
+    power reduction.
 
 NUM_IWL_UCODE_TLV_CAPA
     number of bits used
@@ -435,7 +417,7 @@ Members
 -------
 
 op
-    \ ``enum``\  iwl_fw_dbg_reg_operator
+    %enum iwl_fw_dbg_reg_operator
 
 addr
     offset of the register
@@ -605,7 +587,7 @@ version
     version of the TLV - currently 0
 
 monitor_mode
-    \ ``enum``\  iwl_fw_dbg_monitor_mode
+    %enum iwl_fw_dbg_monitor_mode
 
 size_power
     buffer size will be 2^(size_power + 11)
@@ -765,10 +747,10 @@ Members
 -------
 
 id
-    \ ``enum``\  iwl_fw_dbg_trigger
+    %enum iwl_fw_dbg_trigger
 
 vif_type
-    \ ``enum``\  iwl_fw_dbg_trigger_vif_type
+    %enum iwl_fw_dbg_trigger_vif_type
 
 stop_conf_ids
     bitmap of configurations this trigger relates to.
@@ -781,7 +763,7 @@ stop_delay
     after the STOP trigger fires.
 
 mode
-    \ ``enum``\  iwl_fw_dbg_trigger_mode - can be stop / start of both
+    %enum iwl_fw_dbg_trigger_mode - can be stop / start of both
 
 start_conf_id
     if mode is \ ``IWL_FW_DBG_TRIGGER_START``\ , this defines what

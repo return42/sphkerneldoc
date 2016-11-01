@@ -12,4 +12,5 @@ gadget
     composite_c
     config_c
     epautoconf_c
+    u_f_h
     usbstring_c

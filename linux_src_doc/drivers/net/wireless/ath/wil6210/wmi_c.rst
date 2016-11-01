@@ -8,7 +8,7 @@ wmi_addr_remap
 
 .. c:function:: u32 wmi_addr_remap(u32 x)
 
-    \ ``x``\  - internal address If address have no valid AHB mapping, return 0
+    @x - internal address If address have no valid AHB mapping, return 0
 
     :param u32 x:
         *undescribed*
@@ -20,7 +20,7 @@ wmi_buffer
 
 .. c:function:: void __iomem *wmi_buffer(struct wil6210_priv *wil, __le32 ptr_)
 
-    \ ``ptr``\  - internal (linker) fw/ucode address
+    @ptr - internal (linker) fw/ucode address
 
     :param struct wil6210_priv \*wil:
         *undescribed*

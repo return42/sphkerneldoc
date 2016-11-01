@@ -45,7 +45,7 @@ to indicate that it doesn't care, or a negative integer to indicate
 that it expects something not of the given type.
 
 \ ``access``\  is formed from the NFSD_MAY\_\* constants defined in
-include/linux/nfsd/nfsd.h.
+fs/nfsd/vfs.h.
 
 .. This file was automatic generated / don't edit.
 

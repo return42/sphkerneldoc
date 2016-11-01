@@ -1,18 +1,20 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/crypto/fname.c
 
-.. _`dir_crypt_complete`:
+.. _`fname_crypt_complete`:
 
-dir_crypt_complete
-==================
+fname_crypt_complete
+====================
 
-.. c:function:: void dir_crypt_complete(struct crypto_async_request *req, int res)
+.. c:function:: void fname_crypt_complete(struct crypto_async_request *req, int res)
+
+    completion callback for filename crypto
 
     :param struct crypto_async_request \*req:
-        *undescribed*
+        The asynchronous cipher request context
 
     :param int res:
-        *undescribed*
+        The result of the cipher operation
 
 .. _`fname_encrypt`:
 
@@ -20,6 +22,8 @@ fname_encrypt
 =============
 
 .. c:function:: int fname_encrypt(struct inode *inode, const struct qstr *iname, struct fscrypt_str *oname)
+
+    encrypt a filename
 
     :param struct inode \*inode:
         *undescribed*
@@ -35,9 +39,46 @@ fname_encrypt
 Description
 -----------
 
-This function encrypts the input filename, and returns the length of the
-ciphertext. Errors are returned as negative numbers.  We trust the caller to
-allocate sufficient memory to oname string.
+The caller must have allocated sufficient memory for the \ ``oname``\  string.
+
+.. _`fname_encrypt.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
+.. _`fname_decrypt`:
+
+fname_decrypt
+=============
+
+.. c:function:: int fname_decrypt(struct inode *inode, const struct fscrypt_str *iname, struct fscrypt_str *oname)
+
+    decrypt a filename
+
+    :param struct inode \*inode:
+        *undescribed*
+
+    :param const struct fscrypt_str \*iname:
+        *undescribed*
+
+    :param struct fscrypt_str \*oname:
+        *undescribed*
+
+.. _`fname_decrypt.description`:
+
+Description
+-----------
+
+The caller must have allocated sufficient memory for the \ ``oname``\  string.
+
+.. _`fname_decrypt.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. _`digest_encode`:
 
@@ -128,6 +169,20 @@ fscrypt_fname_disk_to_usr
     :param struct fscrypt_str \*oname:
         *undescribed*
 
+.. _`fscrypt_fname_disk_to_usr.description`:
+
+Description
+-----------
+
+The caller must have allocated sufficient memory for the \ ``oname``\  string.
+
+.. _`fscrypt_fname_disk_to_usr.return`:
+
+Return
+------
+
+0 on success, -errno on failure
+
 .. _`fscrypt_fname_usr_to_disk`:
 
 fscrypt_fname_usr_to_disk
@@ -145,6 +200,20 @@ fscrypt_fname_usr_to_disk
 
     :param struct fscrypt_str \*oname:
         *undescribed*
+
+.. _`fscrypt_fname_usr_to_disk.description`:
+
+Description
+-----------
+
+The caller must have allocated sufficient memory for the \ ``oname``\  string.
+
+.. _`fscrypt_fname_usr_to_disk.return`:
+
+Return
+------
+
+0 on success, -errno on failure
 
 .. This file was automatic generated / don't edit.
 

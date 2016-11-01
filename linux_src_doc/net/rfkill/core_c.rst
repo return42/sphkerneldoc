@@ -69,8 +69,8 @@ rfkill_switch_all
 Description
 -----------
 
-Acquires rfkill_global_mutex and calls \__rfkill_switch_all(\ ``type``\ , \ ``state``\ ).
-Please refer to \\ :c:func:`__rfkill_switch_all`\  for details.
+Acquires rfkill_global_mutex and calls \__rfkill_switch_all(@type, \ ``state``\ ).
+Please refer to \__rfkill_switch_all() for details.
 
 Does nothing if the EPO lock is active.
 

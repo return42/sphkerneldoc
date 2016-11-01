@@ -100,7 +100,7 @@ osc_ldlm_blocking_ast
 
 .. c:function:: int osc_ldlm_blocking_ast(struct ldlm_lock *dlmlock, struct ldlm_lock_desc *new, void *data, int flag)
 
-    some other lock, or is canceled. This function is installed as a ldlm_lock::\ :c:func:`l_blocking_ast`\  for client extent locks.
+    some other lock, or is canceled. This function is installed as a ldlm_lock::l_blocking_ast() for client extent locks.
 
     :param struct ldlm_lock \*dlmlock:
         *undescribed*
@@ -120,7 +120,7 @@ Description
 -----------
 
 Control flow is tricky, because ldlm uses the same call-back
-(ldlm_lock::\ :c:func:`l_blocking_ast`\ ) for both blocking and cancellation ast's.
+(ldlm_lock::l_blocking_ast()) for both blocking and cancellation ast's.
 
 \param dlmlock lock for which ast occurred.
 
@@ -205,7 +205,7 @@ osc_lock_enqueue
 
 .. c:function:: int osc_lock_enqueue(const struct lu_env *env, const struct cl_lock_slice *slice, struct cl_io *unused, struct cl_sync_io *anchor)
 
-    :\ :c:func:`clo_enqueue`\  method for osc layer. This initiates ldlm enqueue:
+    :clo_enqueue() method for osc layer. This initiates ldlm enqueue:
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -224,7 +224,7 @@ osc_lock_enqueue
 Description
 -----------
 
-- cancels conflicting locks early (\ :c:func:`osc_lock_enqueue_wait`\ );
+- cancels conflicting locks early (osc_lock_enqueue_wait());
 
 - calls \ :c:func:`osc_enqueue_base`\  to do actual enqueue.
 
@@ -254,7 +254,7 @@ osc_lock_cancel
 
 .. c:function:: void osc_lock_cancel(const struct lu_env *env, const struct cl_lock_slice *slice)
 
-    :\ :c:func:`clo_cancel`\  method for osc layer. This is called (as part of \ :c:func:`cl_lock_cancel`\ ) when lock is canceled either voluntary (LRU pressure, early cancellation, umount, etc.) or due to the conflict with some other lock some where in the cluster. This function does the
+    :clo_cancel() method for osc layer. This is called (as part of \ :c:func:`cl_lock_cancel`\ ) when lock is canceled either voluntary (LRU pressure, early cancellation, umount, etc.) or due to the conflict with some other lock some where in the cluster. This function does the
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -273,7 +273,7 @@ ones to the server, as necessary);
 
 - decref's underlying ldlm lock;
 
-- cancels ldlm lock (\ :c:func:`ldlm_cli_cancel`\ ).
+- cancels ldlm lock (ldlm_cli_cancel()).
 
 .. _`osc_dlmlock_at_pgoff`:
 

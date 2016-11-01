@@ -74,6 +74,8 @@ Definition
         struct usb_ep endpoint;
         struct list_head pending_list;
         struct list_head started_list;
+        spinlock_t lock;
+        void __iomem *regs;
         struct dwc3_trb *trb_pool;
         dma_addr_t trb_pool_dma;
         const struct usb_ss_ep_comp_descriptor *comp_desc;
@@ -92,6 +94,8 @@ Definition
         u8 number;
         u8 type;
         u8 resource_index;
+        u32 allocated_requests;
+        u32 queued_requests;
         u32 interval;
         char name[20];
         unsigned direction:1;
@@ -111,6 +115,12 @@ pending_list
 
 started_list
     list of started requests on this endpoint
+
+lock
+    spinlock for endpoint request queue traversal
+
+regs
+    pointer to first endpoint register
 
 trb_pool
     array of transaction buffers
@@ -144,6 +154,12 @@ type
 
 resource_index
     Resource transfer index
+
+allocated_requests
+    number of requests allocated
+
+queued_requests
+    number of requests queued for transfer
 
 interval
     the interval on which the ISOC transfer is started
@@ -217,6 +233,8 @@ Definition
         struct usb_request request;
         struct list_head list;
         struct dwc3_ep *dep;
+        struct scatterlist *sg;
+        unsigned num_pending_sgs;
         u8 first_trb_index;
         u8 epnum;
         struct dwc3_trb *trb;
@@ -239,6 +257,12 @@ list
 
 dep
     struct dwc3_ep owning this request
+
+sg
+    pointer to first incomplete sg
+
+num_pending_sgs
+    counter to pending sgs
 
 first_trb_index
     index to first trb used by this request
@@ -305,8 +329,9 @@ Definition
         void __iomem *regs;
         size_t regs_size;
         enum usb_dr_mode dr_mode;
-        u32 dcfg;
-        u32 gctl;
+        enum usb_phy_interface hsphy_mode;
+        u32 fladj;
+        u32 irq_gadget;
         u32 nr_scratch;
         u32 u1u2;
         u32 maximum_speed;
@@ -330,8 +355,10 @@ Definition
     #define DWC3_REVISION_260A 0x5533260a
     #define DWC3_REVISION_270A 0x5533270a
     #define DWC3_REVISION_280A 0x5533280a
+    #define DWC3_REVISION_300A 0x5533300a
+    #define DWC3_REVISION_310A 0x5533310a
     #define DWC3_REVISION_IS_DWC31 0x80000000
-    #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_USB31)
+    #define DWC3_USB31_REVISION_110A (0x3131302a | DWC3_REVISION_IS_DWC31)
         enum dwc3_ep0_next ep0_next_event;
         enum dwc3_ep0_state ep0state;
         enum dwc3_link_state link_state;
@@ -352,6 +379,7 @@ Definition
         u8 lpm_nyet_threshold;
         u8 hird_threshold;
         const char *hsphy_interface;
+        unsigned connected:1;
         unsigned delayed_status:1;
         unsigned ep0_bounced:1;
         unsigned ep0_expect_in:1;
@@ -359,6 +387,7 @@ Definition
         unsigned has_lpm_erratum:1;
         unsigned is_utmi_l1_suspend:1;
         unsigned is_fpga:1;
+        unsigned pending_events:1;
         unsigned pullups_connected:1;
         unsigned setup_packet_pending:1;
         unsigned three_stage_setup:1;
@@ -375,6 +404,8 @@ Definition
         unsigned dis_u2_susphy_quirk:1;
         unsigned dis_enblslpm_quirk:1;
         unsigned dis_rxdet_inp3_quirk:1;
+        unsigned dis_u2_freeclk_exists_quirk:1;
+        unsigned dis_del_phy_power_chg_quirk:1;
         unsigned tx_de_emphasis_quirk:1;
         unsigned tx_de_emphasis:2;
     }
@@ -459,11 +490,16 @@ regs_size
 dr_mode
     requested mode of operation
 
-dcfg
-    saved contents of DCFG register
+hsphy_mode
+    UTMI phy mode, one of following:
+    - USBPHY_INTERFACE_MODE_UTMI
+    - USBPHY_INTERFACE_MODE_UTMIW
 
-gctl
-    saved contents of GCTL register
+fladj
+    frame length adjustment
+
+irq_gadget
+    peripheral controller's IRQ number
 
 nr_scratch
     number of scratch buffers
@@ -537,6 +573,9 @@ hird_threshold
 hsphy_interface
     "utmi" or "ulpi"
 
+connected
+    true when we're connected to a host, false otherwise
+
 delayed_status
     true when gadget driver asks for delayed status
 
@@ -560,6 +599,9 @@ is_utmi_l1_suspend
 
 is_fpga
     true when we are using the FPGA board
+
+pending_events
+    true when we have pending IRQs to be handled
 
 pullups_connected
     true when Run/Stop bit is set
@@ -609,6 +651,15 @@ dis_enblslpm_quirk
 
 dis_rxdet_inp3_quirk
     *undescribed*
+
+dis_u2_freeclk_exists_quirk
+    set if we clear u2_freeclk_exists
+    in GUSB2PHYCFG, specify that USB2 PHY doesn't
+    provide a free-running PHY clock.
+
+dis_del_phy_power_chg_quirk
+    set if we disable delay phy power
+    change quirk.
 
 tx_de_emphasis_quirk
     set if we enable Tx de-emphasis quirk

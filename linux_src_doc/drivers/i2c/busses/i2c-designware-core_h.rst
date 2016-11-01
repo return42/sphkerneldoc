@@ -44,6 +44,7 @@ Definition
         unsigned int tx_fifo_depth;
         unsigned int rx_fifo_depth;
         int rx_outstanding;
+        u32 clk_freq;
         u32 sda_hold_time;
         u32 sda_falling_time;
         u32 scl_falling_time;
@@ -51,9 +52,14 @@ Definition
         u16 ss_lcnt;
         u16 fs_hcnt;
         u16 fs_lcnt;
+        u16 fp_hcnt;
+        u16 fp_lcnt;
+        u16 hs_hcnt;
+        u16 hs_lcnt;
         int (*acquire_lock)(struct dw_i2c_dev *dev);
         void (*release_lock)(struct dw_i2c_dev *dev);
         bool pm_runtime_disabled;
+        bool dynamic_tar_update_enabled;
     }
 
 .. _`dw_i2c_dev.members`:
@@ -141,6 +147,9 @@ rx_fifo_depth
 rx_outstanding
     current master-rx elements in tx fifo
 
+clk_freq
+    bus clock frequency
+
 sda_hold_time
     *undescribed*
 
@@ -162,6 +171,18 @@ fs_hcnt
 fs_lcnt
     fast speed LCNT value
 
+fp_hcnt
+    fast plus HCNT value
+
+fp_lcnt
+    fast plus LCNT value
+
+hs_hcnt
+    high speed HCNT value
+
+hs_lcnt
+    high speed LCNT value
+
 acquire_lock
     function to acquire a hardware lock on the bus
 
@@ -170,6 +191,9 @@ release_lock
 
 pm_runtime_disabled
     true if pm runtime is disabled
+
+dynamic_tar_update_enabled
+    *undescribed*
 
 .. _`dw_i2c_dev.description`:
 

@@ -24,7 +24,7 @@ gfs2_update_stats
 Description
 -----------
 
-\ ``delta``\  is the difference between the current rtt sample and the
+@delta is the difference between the current rtt sample and the
 running average srtt. We add 1/8 of that to the srtt in order to
 update the current srtt estimate. The variance estimate is a bit
 more complicated. We subtract the abs value of the \ ``delta``\  from

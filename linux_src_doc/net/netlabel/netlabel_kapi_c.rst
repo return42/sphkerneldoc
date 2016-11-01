@@ -221,6 +221,85 @@ Add a new NetLabel/LSM domain mapping for the given CIPSO DOI to the NetLabel
 subsystem.  A \ ``domain``\  value of NULL adds a new default domain mapping.
 Returns zero on success, negative values on failure.
 
+.. _`netlbl_cfg_calipso_add`:
+
+netlbl_cfg_calipso_add
+======================
+
+.. c:function:: int netlbl_cfg_calipso_add(struct calipso_doi *doi_def, struct netlbl_audit *audit_info)
+
+    Add a new CALIPSO DOI definition
+
+    :param struct calipso_doi \*doi_def:
+        CALIPSO DOI definition
+
+    :param struct netlbl_audit \*audit_info:
+        NetLabel audit information
+
+.. _`netlbl_cfg_calipso_add.description`:
+
+Description
+-----------
+
+Add a new CALIPSO DOI definition as defined by \ ``doi_def``\ .  Returns zero on
+success and negative values on failure.
+
+.. _`netlbl_cfg_calipso_del`:
+
+netlbl_cfg_calipso_del
+======================
+
+.. c:function:: void netlbl_cfg_calipso_del(u32 doi, struct netlbl_audit *audit_info)
+
+    Remove an existing CALIPSO DOI definition
+
+    :param u32 doi:
+        CALIPSO DOI
+
+    :param struct netlbl_audit \*audit_info:
+        NetLabel audit information
+
+.. _`netlbl_cfg_calipso_del.description`:
+
+Description
+-----------
+
+Remove an existing CALIPSO DOI definition matching \ ``doi``\ .  Returns zero on
+success and negative values on failure.
+
+.. _`netlbl_cfg_calipso_map_add`:
+
+netlbl_cfg_calipso_map_add
+==========================
+
+.. c:function:: int netlbl_cfg_calipso_map_add(u32 doi, const char *domain, const struct in6_addr *addr, const struct in6_addr *mask, struct netlbl_audit *audit_info)
+
+    Add a new CALIPSO DOI mapping
+
+    :param u32 doi:
+        the CALIPSO DOI
+
+    :param const char \*domain:
+        the domain mapping to add
+
+    :param const struct in6_addr \*addr:
+        IP address
+
+    :param const struct in6_addr \*mask:
+        IP address mask
+
+    :param struct netlbl_audit \*audit_info:
+        NetLabel audit information
+
+.. _`netlbl_cfg_calipso_map_add.description`:
+
+Description
+-----------
+
+Add a new NetLabel/LSM domain mapping for the given CALIPSO DOI to the
+NetLabel subsystem.  A \ ``domain``\  value of NULL adds a new default domain
+mapping.  Returns zero on success, negative values on failure.
+
 .. _`_netlbl_catmap_getnode`:
 
 _netlbl_catmap_getnode
@@ -413,6 +492,62 @@ Description
 Import the bitmap specified in \ ``bitmap``\  into \ ``catmap``\ , using the offset
 in \ ``offset``\ .  The offset must be aligned to an unsigned long.  Returns zero
 on success, negative values on failure.
+
+.. _`netlbl_bitmap_walk`:
+
+netlbl_bitmap_walk
+==================
+
+.. c:function:: int netlbl_bitmap_walk(const unsigned char *bitmap, u32 bitmap_len, u32 offset, u8 state)
+
+    Walk a bitmap looking for a bit
+
+    :param const unsigned char \*bitmap:
+        the bitmap
+
+    :param u32 bitmap_len:
+        length in bits
+
+    :param u32 offset:
+        starting offset
+
+    :param u8 state:
+        if non-zero, look for a set (1) bit else look for a cleared (0) bit
+
+.. _`netlbl_bitmap_walk.description`:
+
+Description
+-----------
+
+Starting at \ ``offset``\ , walk the bitmap from left to right until either the
+desired bit is found or we reach the end.  Return the bit offset, -1 if
+not found, or -2 if error.
+
+.. _`netlbl_bitmap_setbit`:
+
+netlbl_bitmap_setbit
+====================
+
+.. c:function:: void netlbl_bitmap_setbit(unsigned char *bitmap, u32 bit, u8 state)
+
+    Sets a single bit in a bitmap
+
+    :param unsigned char \*bitmap:
+        the bitmap
+
+    :param u32 bit:
+        the bit
+
+    :param u8 state:
+        if non-zero, set the bit (1) else clear the bit (0)
+
+.. _`netlbl_bitmap_setbit.description`:
+
+Description
+-----------
+
+Set a single bit in the bitmask.  Returns zero on success, negative values
+on error.
 
 .. _`netlbl_enabled`:
 
@@ -641,12 +776,15 @@ failure.
 netlbl_skbuff_err
 =================
 
-.. c:function:: void netlbl_skbuff_err(struct sk_buff *skb, int error, int gateway)
+.. c:function:: void netlbl_skbuff_err(struct sk_buff *skb, u16 family, int error, int gateway)
 
     Handle a LSM error on a sk_buff
 
     :param struct sk_buff \*skb:
         the packet
+
+    :param u16 family:
+        the family
 
     :param int error:
         the error code
@@ -689,12 +827,15 @@ error.
 netlbl_cache_add
 ================
 
-.. c:function:: int netlbl_cache_add(const struct sk_buff *skb, const struct netlbl_lsm_secattr *secattr)
+.. c:function:: int netlbl_cache_add(const struct sk_buff *skb, u16 family, const struct netlbl_lsm_secattr *secattr)
 
     Add an entry to a NetLabel protocol cache
 
     :param const struct sk_buff \*skb:
         the packet
+
+    :param u16 family:
+        the family
 
     :param const struct netlbl_lsm_secattr \*secattr:
         the packet's security attributes

@@ -193,31 +193,31 @@ bus_bm_retries
     device initialization be retried? Different models of the same
     device might need different values, hence it is set by the
     bus-specific driver. Note this value is used in two places,
-    \ :c:func:`i2400m_fw_dnload`\  and \\ :c:func:`__i2400m_dev_start`\ ; they won't become
-    multiplicative (\ :c:func:`__i2400m_dev_start`\  calling N times
+    \ :c:func:`i2400m_fw_dnload`\  and \__i2400m_dev_start(); they won't become
+    multiplicative (__i2400m_dev_start() calling N times
     \ :c:func:`i2400m_fw_dnload`\  and this trying N times to download the
-    firmware), as if \\ :c:func:`__i2400m_dev_start`\  only retries if the
+    firmware), as if \__i2400m_dev_start() only retries if the
     firmware crashed while initializing the device (not in a
     general case).
 
 bus_setup
     [optional fill] Function called by the bus-generic code
-    [\ :c:func:`i2400m_setup`\ ] to setup the basic bus-specific communications
+    [i2400m_setup()] to setup the basic bus-specific communications
     to the the device needed to load firmware. See LIFE CYCLE above.
 
 bus_dev_start
     [optional fill] Function called by the bus-generic
-    code [\ :c:func:`i2400m_dev_start`\ ] to do things needed to start the
+    code [i2400m_dev_start()] to do things needed to start the
     device. See LIFE CYCLE above.
 
 bus_dev_stop
     [optional fill] Function called by the bus-generic
-    code [\ :c:func:`i2400m_dev_stop`\ ] to do things needed for stopping the
+    code [i2400m_dev_stop()] to do things needed for stopping the
     device. See LIFE CYCLE above.
 
 bus_release
     [optional fill] Function called by the bus-generic
-    code [\ :c:func:`i2400m_release`\ ] to shutdown the basic bus-specific
+    code [i2400m_release()] to shutdown the basic bus-specific
     communications to the the device needed to load firmware. See
     LIFE CYCLE above.
 
@@ -496,7 +496,7 @@ Description
 Members marked with [fill] must be filled out/initialized before
 calling \ :c:func:`i2400m_setup`\ .
 
-Note the \ ``bus_setup``\ /\ ``bus_release``\ , \ ``bus_dev_start``\ /\ ``bus_dev_release``\ 
+Note the \ ``bus_setup``\ /@bus_release, \ ``bus_dev_start``\ /@bus_dev_release
 call pairs are very much doing almost the same, and depending on
 the underlying bus, some stuff has to be put in one or the
 other. The idea of setup/release is that they setup the minimal

@@ -76,7 +76,7 @@ ecryptfs_mount
 
 .. c:function:: struct dentry *ecryptfs_mount(struct file_system_type *fs_type, int flags, const char *dev_name, void *raw_data)
 
-    \ ``fs_type``\  \ ``flags``\ 
+    @fs_type \ ``flags``\ 
 
     :param struct file_system_type \*fs_type:
         *undescribed*

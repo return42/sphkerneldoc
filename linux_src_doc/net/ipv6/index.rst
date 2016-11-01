@@ -8,6 +8,7 @@ ipv6
     :maxdepth: 1
 
     ah6_c
+    calipso_c
     exthdrs_c
     ip6_gre_c
     ip6_output_c

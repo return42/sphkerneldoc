@@ -424,12 +424,22 @@ The imp->imp_lock must be held.
 ptlrpc_console_allow
 ====================
 
-.. c:function:: int ptlrpc_console_allow(struct ptlrpc_request *req)
+.. c:function:: bool ptlrpc_console_allow(struct ptlrpc_request *req)
 
-    should be printed to the console or not. Makes it's decision on request status and other properties. Returns 1 to print error on the system console or 0 if not.
+    Makes its decision based on request type, status, and failure frequency.
 
     :param struct ptlrpc_request \*req:
         *undescribed*
+
+.. _`ptlrpc_console_allow.description`:
+
+Description
+-----------
+
+\param[in] req  request that failed and may need a console message
+
+\retval false if no message should be printed
+\retval true  if console message should be printed
 
 .. _`ptlrpc_check_status`:
 
@@ -499,7 +509,7 @@ ptlrpc_check_set
 NOTE
 ----
 
-This function contains a potential schedule point (\ :c:func:`cond_resched`\ ).
+This function contains a potential schedule point (cond_resched()).
 
 .. _`ptlrpc_expire_one_request`:
 

@@ -324,7 +324,6 @@ Definition
         u8 colorfx_cb;
         u8 colorfx_cr;
         struct camif_vp vp[CAMIF_VP_NUM];
-        struct vb2_alloc_ctx *alloc_ctx;
         const struct s3c_camif_variant *variant;
         struct device *dev;
         struct s3c_camif_plat_data pdata;
@@ -377,9 +376,6 @@ colorfx_cr
 
 vp
     video path (DMA) description (codec/preview)
-
-alloc_ctx
-    memory buffer allocator context
 
 variant
     variant information for this device

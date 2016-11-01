@@ -35,84 +35,22 @@ Return
 
 0 on success, <0 on failure.
 
-.. _`mei_amthif_read`:
-
-mei_amthif_read
-===============
-
-.. c:function:: int mei_amthif_read(struct mei_device *dev, struct file *file, char __user *ubuf, size_t length, loff_t *offset)
-
-    read data from AMTHIF client
-
-    :param struct mei_device \*dev:
-        the device structure
-
-    :param struct file \*file:
-        pointer to file object
-
-    :param char __user \*ubuf:
-        pointer to user data in user space
-
-    :param size_t length:
-        data length to read
-
-    :param loff_t \*offset:
-        data read offset
-
-.. _`mei_amthif_read.locking`:
-
-Locking
--------
-
-called under "dev->device_lock" lock
-
-.. _`mei_amthif_read.return`:
-
-Return
-------
-
-returned data length on success,
-zero if no data to read,
-negative on failure.
-
 .. _`mei_amthif_read_start`:
 
 mei_amthif_read_start
 =====================
 
-.. c:function:: int mei_amthif_read_start(struct mei_cl *cl, const struct file *file)
+.. c:function:: int mei_amthif_read_start(struct mei_cl *cl, const struct file *fp)
 
     queue message for sending read credential
 
     :param struct mei_cl \*cl:
         host client
 
-    :param const struct file \*file:
+    :param const struct file \*fp:
         file pointer of message recipient
 
 .. _`mei_amthif_read_start.return`:
-
-Return
-------
-
-0 on success, <0 on failure.
-
-.. _`mei_amthif_send_cmd`:
-
-mei_amthif_send_cmd
-===================
-
-.. c:function:: int mei_amthif_send_cmd(struct mei_cl *cl, struct mei_cl_cb *cb)
-
-    send amthif command to the ME
-
-    :param struct mei_cl \*cl:
-        the host client
-
-    :param struct mei_cl_cb \*cb:
-        mei call back struct
-
-.. _`mei_amthif_send_cmd.return`:
 
 Return
 ------
@@ -165,12 +103,9 @@ Return
 mei_amthif_poll
 ===============
 
-.. c:function:: unsigned int mei_amthif_poll(struct mei_device *dev, struct file *file, poll_table *wait)
+.. c:function:: unsigned int mei_amthif_poll(struct file *file, poll_table *wait)
 
     the amthif poll function
-
-    :param struct mei_device \*dev:
-        the device structure
 
     :param struct file \*file:
         pointer to file structure
@@ -262,12 +197,9 @@ mei_amthif_complete
 mei_clear_list
 ==============
 
-.. c:function:: bool mei_clear_list(struct mei_device *dev, const struct file *file, struct list_head *mei_cb_list)
+.. c:function:: void mei_clear_list(const struct file *file, struct list_head *mei_cb_list)
 
     removes all callbacks associated with file from mei_cb_list
-
-    :param struct mei_device \*dev:
-        device structure.
 
     :param const struct file \*file:
         file structure
@@ -282,43 +214,6 @@ Description
 
 mei_clear_list is called to clear resources associated with file
 when application calls close function or Ctrl-C was pressed
-
-.. _`mei_clear_list.return`:
-
-Return
-------
-
-true if callback removed from the list, false otherwise
-
-.. _`mei_clear_lists`:
-
-mei_clear_lists
-===============
-
-.. c:function:: bool mei_clear_lists(struct mei_device *dev, const struct file *file)
-
-    removes all callbacks associated with file
-
-    :param struct mei_device \*dev:
-        device structure
-
-    :param const struct file \*file:
-        file structure
-
-.. _`mei_clear_lists.description`:
-
-Description
------------
-
-mei_clear_lists is called to clear resources associated with file
-when application calls close function or Ctrl-C was pressed
-
-.. _`mei_clear_lists.return`:
-
-Return
-------
-
-true if callback removed from the list, false otherwise
 
 .. _`mei_amthif_release`:
 

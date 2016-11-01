@@ -35,6 +35,7 @@ dma
     mmp_pdma_c
     mv_xor_c
     mv_xor_h
+    mv_xor_v2_c
     nbpfaxi_c
     of-dma_c
     ste_dma40_c

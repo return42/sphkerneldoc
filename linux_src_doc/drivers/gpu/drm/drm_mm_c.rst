@@ -299,7 +299,7 @@ drm_mm_scan_remove_block
 Description
 -----------
 
-Nodes \_must\_ be removed in the exact same order from the scan list as they
+Nodes _must_ be removed in the exact same order from the scan list as they
 have been added, otherwise the internal state of the memory manager will be
 corrupted.
 

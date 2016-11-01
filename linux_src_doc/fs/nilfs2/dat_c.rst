@@ -85,7 +85,7 @@ nilfs_dat_freev
 Description
 -----------
 
-\ :c:func:`nilfs_dat_freev`\  frees the virtual block numbers specified by
+nilfs_dat_freev() frees the virtual block numbers specified by
 \ ``vblocknrs``\  and \ ``nitems``\ .
 
 .. _`nilfs_dat_freev.return-value`:
@@ -125,7 +125,7 @@ nilfs_dat_move
 Description
 -----------
 
-\ :c:func:`nilfs_dat_move`\  changes the block number associated with
+nilfs_dat_move() changes the block number associated with
 \ ``vblocknr``\  to \ ``blocknr``\ .
 
 .. _`nilfs_dat_move.return-value`:
@@ -163,7 +163,7 @@ nilfs_dat_translate
 Description
 -----------
 
-\ :c:func:`nilfs_dat_translate`\  maps the virtual block number \ ``vblocknr``\ 
+nilfs_dat_translate() maps the virtual block number \ ``vblocknr``\ 
 to the corresponding block number.
 
 .. _`nilfs_dat_translate.return-value`:

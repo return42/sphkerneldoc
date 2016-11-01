@@ -57,7 +57,7 @@ Description
 Did you call \ :c:func:`uwb_rc_init`\  on your rc?
 
 We assume that this is being called with a > 0 refcount on
-it [through ops->{get\|put}\ :c:func:`_device`\ . We'll take our own, though.
+it [through ops->{get\|put}_device(). We'll take our own, though.
 
 \ ``parent_dev``\  is our real device, the one that provides the actual UWB device
 
@@ -76,7 +76,7 @@ __uwb_rc_try_get
 Description
 -----------
 
-\ ``returns``\  NULL if the rc does not exist or is quiescing; the ptr to
+@returns NULL if the rc does not exist or is quiescing; the ptr to
 it otherwise.
 
 .. _`uwb_rc_get_by_grandpa`:
@@ -96,7 +96,7 @@ uwb_rc_get_by_grandpa
 Description
 -----------
 
-\ ``grandpa_dev``\   Pointer to the 'grandparent' device structure.
+@grandpa_dev  Pointer to the 'grandparent' device structure.
 \ ``returns``\  NULL If the rc does not exist or is quiescing; the ptr to
 it otherwise, properly referenced.
 
@@ -127,7 +127,7 @@ find_rc_dev
 Description
 -----------
 
-\ ``returns``\  the pointer to the radio controller, properly referenced
+@returns the pointer to the radio controller, properly referenced
 
 .. _`uwb_rc_put`:
 

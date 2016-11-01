@@ -185,7 +185,7 @@ v4l2_mc_create_media_graph
     create Media Controller links at the graph.
 
     :param struct media_device \*mdev:
-        pointer to the \ :c:type:`struct media_device <media_device>` struct.
+        pointer to the \ :c:type:`struct media_device <media_device>`\  struct.
 
 .. _`v4l2_mc_create_media_graph.description`:
 
@@ -193,25 +193,16 @@ Description
 -----------
 
 Add links between the entities commonly found on PC customer's hardware at
-
-.. _`v4l2_mc_create_media_graph.the-v4l2-side`:
-
-the V4L2 side
--------------
-
-camera sensors, audio and video PLL-IF decoders, tuners,
+the V4L2 side: camera sensors, audio and video PLL-IF decoders, tuners,
 analog TV decoder and I/O entities (video, VBI and Software Defined Radio).
 
-.. _`v4l2_mc_create_media_graph.note`:
+.. note::
 
-NOTE
-----
-
-webcams are modelled on a very simple way: the sensor is
-connected directly to the I/O entity. All dirty details, like
-scaler and crop HW are hidden. While such mapping is enough for v4l2
-interface centric PC-consumer's hardware, V4L2 subdev centric camera
-hardware should not use this routine, as it will not build the right graph.
+   Webcams are modelled on a very simple way: the sensor is
+   connected directly to the I/O entity. All dirty details, like
+   scaler and crop HW are hidden. While such mapping is enough for v4l2
+   interface centric PC-consumer's hardware, V4L2 subdev centric camera
+   hardware should not use this routine, as it will not build the right graph.
 
 .. _`v4l_enable_media_source`:
 
@@ -322,7 +313,7 @@ v4l2_pipeline_link_notify
         New link flags that will be applied
 
     :param unsigned int notification:
-        The link's state change notification type (MEDIA_DEV_NOTIFY\_\*)
+        The link's state change notification type (MEDIA_DEV_NOTIFY_*)
 
 .. _`v4l2_pipeline_link_notify.description`:
 

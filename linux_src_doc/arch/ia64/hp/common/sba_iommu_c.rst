@@ -283,7 +283,7 @@ allocation routine helps keep that true.
 sba_map_page
 ============
 
-.. c:function:: dma_addr_t sba_map_page(struct device *dev, struct page *page, unsigned long poff, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t sba_map_page(struct device *dev, struct page *page, unsigned long poff, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     map one buffer and return IOVA for DMA
 
@@ -302,7 +302,7 @@ sba_map_page
     :param enum dma_data_direction dir:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sba_map_page.description`:
@@ -317,7 +317,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_unmap_page
 ==============
 
-.. c:function:: void sba_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void sba_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     unmap one IOVA and free resources
 
@@ -333,7 +333,7 @@ sba_unmap_page
     :param enum dma_data_direction dir:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sba_unmap_page.description`:
@@ -348,7 +348,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_alloc_coherent
 ==================
 
-.. c:function:: void *sba_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, struct dma_attrs *attrs)
+.. c:function:: void *sba_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, unsigned long attrs)
 
     allocate/map shared mem for DMA
 
@@ -364,7 +364,7 @@ sba_alloc_coherent
     :param gfp_t flags:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_alloc_coherent.description`:
@@ -379,7 +379,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_free_coherent
 =================
 
-.. c:function:: void sba_free_coherent(struct device *dev, size_t size, void *vaddr, dma_addr_t dma_handle, struct dma_attrs *attrs)
+.. c:function:: void sba_free_coherent(struct device *dev, size_t size, void *vaddr, dma_addr_t dma_handle, unsigned long attrs)
 
     free/unmap shared mem for DMA
 
@@ -395,7 +395,7 @@ sba_free_coherent
     :param dma_addr_t dma_handle:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_free_coherent.description`:
@@ -470,7 +470,7 @@ the sglist do both.
 sba_map_sg_attrs
 ================
 
-.. c:function:: int sba_map_sg_attrs(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: int sba_map_sg_attrs(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     map Scatter/Gather list
 
@@ -486,7 +486,7 @@ sba_map_sg_attrs
     :param enum dma_data_direction dir:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sba_map_sg_attrs.description`:
@@ -501,7 +501,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_unmap_sg_attrs
 ==================
 
-.. c:function:: void sba_unmap_sg_attrs(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void sba_unmap_sg_attrs(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     unmap Scatter/Gather list
 
@@ -517,7 +517,7 @@ sba_unmap_sg_attrs
     :param enum dma_data_direction dir:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sba_unmap_sg_attrs.description`:

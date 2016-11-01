@@ -16,4 +16,5 @@ nvdimm
     label_c
     label_h
     namespace_devs_c
+    nd-core_h
     region_devs_c

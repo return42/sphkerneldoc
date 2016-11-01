@@ -66,7 +66,7 @@ fman_port_cfg_buf_prefix_content
 
 .. c:function:: int fman_port_cfg_buf_prefix_content(struct fman_port *port, struct fman_buffer_prefix_content *buffer_prefix_content)
 
-    \ ``port``\                         A pointer to a FM Port module. \ ``buffer_prefix_content``\        A structure of parameters describing the structure of the buffer. Out parameter: Start margin - offset of data from start of external buffer. Defines the structure, size and content of the application buffer. The prefix, in Tx ports, if 'pass_prs_result', the application should set a value to their offsets in the prefix of the FM will save the first 'priv_data_size', than, depending on 'pass_prs_result' and 'pass_time_stamp', copy parse result and timeStamp, and the packet itself (in this order), to the application buffer, and to offset. Calling this routine changes the buffer margins definitions in the internal
+    @port                        A pointer to a FM Port module. \ ``buffer_prefix_content``\        A structure of parameters describing the structure of the buffer. Out parameter: Start margin - offset of data from start of external buffer. Defines the structure, size and content of the application buffer. The prefix, in Tx ports, if 'pass_prs_result', the application should set a value to their offsets in the prefix of the FM will save the first 'priv_data_size', than, depending on 'pass_prs_result' and 'pass_time_stamp', copy parse result and timeStamp, and the packet itself (in this order), to the application buffer, and to offset. Calling this routine changes the buffer margins definitions in the internal
 
     :param struct fman_port \*port:
         *undescribed*

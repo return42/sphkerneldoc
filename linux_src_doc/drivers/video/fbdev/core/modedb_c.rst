@@ -27,9 +27,9 @@ fb_try_mode
 Description
 -----------
 
-Tries a video mode to test it's validity for device \ ``info``\ .
+     Tries a video mode to test it's validity for device \ ``info``\ .
 
-Returns 1 on success.
+     Returns 1 on success.
 
 .. _`fb_find_mode`:
 
@@ -66,40 +66,40 @@ fb_find_mode
 Description
 -----------
 
-Finds a suitable video mode, starting with the specified mode
-in \ ``mode_option``\  with fallback to \ ``default_mode``\ .  If
-\ ``default_mode``\  fails, all modes in the video mode database will
-be tried.
+    Finds a suitable video mode, starting with the specified mode
+    in \ ``mode_option``\  with fallback to \ ``default_mode``\ .  If
+    \ ``default_mode``\  fails, all modes in the video mode database will
+    be tried.
 
-Valid mode specifiers for \ ``mode_option``\ :
+    Valid mode specifiers for \ ``mode_option``\ :
 
-<xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m] or
-<name>[-<bpp>][@<refresh>]
+    <xres>x<yres>[M][R][-<bpp>][@<refresh>][i][m] or
+    <name>[-<bpp>][@<refresh>]
 
-with <xres>, <yres>, <bpp> and <refresh> decimal numbers and
-<name> a string.
+    with <xres>, <yres>, <bpp> and <refresh> decimal numbers and
+    <name> a string.
 
-If 'M' is present after yres (and before refresh/bpp if present),
-the function will compute the timings using VESA(tm) Coordinated
-Video Timings (CVT).  If 'R' is present after 'M', will compute with
-reduced blanking (for flatpanels).  If 'i' is present, compute
-interlaced mode.  If 'm' is present, add margins equal to 1.8%
-of xres rounded down to 8 pixels, and 1.8% of yres. The char
-'i' and 'm' must be after 'M' and 'R'. Example:
+     If 'M' is present after yres (and before refresh/bpp if present),
+     the function will compute the timings using VESA(tm) Coordinated
+     Video Timings (CVT).  If 'R' is present after 'M', will compute with
+     reduced blanking (for flatpanels).  If 'i' is present, compute
+     interlaced mode.  If 'm' is present, add margins equal to 1.8%
+     of xres rounded down to 8 pixels, and 1.8% of yres. The char
+     'i' and 'm' must be after 'M' and 'R'. Example:
 
-1024x768MR-8\ ``60m``\  - Reduced blank with margins at 60Hz.
+     1024x768MR-8@60m - Reduced blank with margins at 60Hz.
 
 .. _`fb_find_mode.note`:
 
 NOTE
 ----
 
-The passed struct \ ``var``\  is \_not\_ cleared!  This allows you
-to supply values for e.g. the grayscale and accel_flags fields.
+The passed struct \ ``var``\  is _not_ cleared!  This allows you
+    to supply values for e.g. the grayscale and accel_flags fields.
 
-Returns zero for failure, 1 if using specified \ ``mode_option``\ ,
-2 if using specified \ ``mode_option``\  with an ignored refresh rate,
-3 if default mode is used, 4 if fall back to any valid mode.
+    Returns zero for failure, 1 if using specified \ ``mode_option``\ ,
+    2 if using specified \ ``mode_option``\  with an ignored refresh rate,
+    3 if default mode is used, 4 if fall back to any valid mode.
 
 .. _`fb_var_to_videomode`:
 

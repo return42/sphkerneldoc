@@ -35,7 +35,7 @@ init_qpmap_table
 
 .. c:function:: void init_qpmap_table(struct hfi1_devdata *dd, u32 first_ctxt, u32 last_ctxt)
 
-    \ ``dd``\  - device data \ ``first_ctxt``\  - first context \ ``last_ctxt``\  - first context
+    @dd - device data \ ``first_ctxt``\  - first context \ ``last_ctxt``\  - first context
 
     :param struct hfi1_devdata \*dd:
         *undescribed*

@@ -316,7 +316,7 @@ completion_done
 Return
 ------
 
-0 if there are waiters (\ :c:func:`wait_for_completion`\  in progress)
+0 if there are waiters (wait_for_completion() in progress)
 1 if there are no waiters.
 
 .. This file was automatic generated / don't edit.

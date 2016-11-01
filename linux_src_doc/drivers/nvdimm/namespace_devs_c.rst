@@ -44,6 +44,49 @@ Assumes resources are ordered.  Starting from the end try to
 allocation delete it and find the 'new' last allocation in the label
 set.
 
+.. _`space_valid`:
+
+space_valid
+===========
+
+.. c:function:: void space_valid(struct nd_region *nd_region, struct nvdimm_drvdata *ndd, struct nd_label_id *label_id, struct resource *prev, struct resource *next, struct resource *exist, resource_size_t n, struct resource *valid)
+
+    validate free dpa space against constraints
+
+    :param struct nd_region \*nd_region:
+        hosting region of the free space
+
+    :param struct nvdimm_drvdata \*ndd:
+        dimm device data for debug
+
+    :param struct nd_label_id \*label_id:
+        namespace id to allocate space
+
+    :param struct resource \*prev:
+        potential allocation that precedes free space
+
+    :param struct resource \*next:
+        allocation that follows the given free space range
+
+    :param struct resource \*exist:
+        first allocation with same id in the mapping
+
+    :param resource_size_t n:
+        range that must satisfied for pmem allocations
+
+    :param struct resource \*valid:
+        free space range to validate
+
+.. _`space_valid.description`:
+
+Description
+-----------
+
+BLK-space is valid as long as it does not precede a PMEM
+allocation in a given region. PMEM-space must be contiguous
+and adjacent to an existing existing allocation (if one
+exists).  If reserving PMEM any space is valid.
+
 .. _`grow_dpa_allocation`:
 
 grow_dpa_allocation
@@ -95,20 +138,20 @@ namespace_update_uuid
     :param u8 \*\*old_uuid:
         reference to the uuid storage location in the namespace object
 
-.. _`find_pmem_label_set`:
+.. _`create_namespace_pmem`:
 
-find_pmem_label_set
-===================
+create_namespace_pmem
+=====================
 
-.. c:function:: int find_pmem_label_set(struct nd_region *nd_region, struct nd_namespace_pmem *nspm)
+.. c:function:: struct device *create_namespace_pmem(struct nd_region *nd_region, struct nd_namespace_label *nd_label)
 
     validate interleave set labelling, retrieve label0
 
     :param struct nd_region \*nd_region:
         region with mappings to validate
 
-    :param struct nd_namespace_pmem \*nspm:
-        *undescribed*
+    :param struct nd_namespace_label \*nd_label:
+        target pmem namespace label to evaluate
 
 .. This file was automatic generated / don't edit.
 

@@ -35,7 +35,7 @@ TODO
 ----
 
 When modesetting has fully transitioned to atomic, the below
-\ :c:func:`drm_can_sleep`\  can be removed and \ :c:func:`in_atomic`\ /!\ :c:func:`in_atomic`\  asserts
+\ :c:func:`drm_can_sleep`\  can be removed and \ :c:func:`in_atomic`\ /!in_atomic() asserts
 added.
 
 .. _`disable_rpm_wakeref_asserts`:

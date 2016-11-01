@@ -7,6 +7,7 @@ irq
 .. toctree::
     :maxdepth: 1
 
+    affinity_c
     autoprobe_c
     chip_c
     cpuhotplug_c

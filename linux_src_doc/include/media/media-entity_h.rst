@@ -70,7 +70,7 @@ Members
 -------
 
 mdev
-    Pointer to the struct media_device that owns the object
+    Pointer to the struct \ :c:type:`struct media_device <media_device>`\  that owns the object
 
 id
     Non-zero object ID identifier. The ID should be unique
@@ -159,6 +159,38 @@ ent_enum
 top
     The top of the stack
 
+.. _`media_pipeline`:
+
+struct media_pipeline
+=====================
+
+.. c:type:: struct media_pipeline
+
+    Media pipeline related information
+
+.. _`media_pipeline.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct media_pipeline {
+        int streaming_count;
+        struct media_entity_graph graph;
+    }
+
+.. _`media_pipeline.members`:
+
+Members
+-------
+
+streaming_count
+    Streaming start count - streaming stop count
+
+graph
+    Media graph walk during pipeline start / stop
+
 .. _`media_link`:
 
 struct media_link
@@ -205,7 +237,7 @@ reverse
     link.
 
 flags
-    Link flags, as defined in uapi/media.h (MEDIA_LNK_FL\_\*)
+    Link flags, as defined in uapi/media.h (MEDIA_LNK_FL_*)
 
 is_backlink
     Indicate if the link is a backlink.
@@ -248,7 +280,9 @@ index
     Pad index in the entity pads array, numbered from 0 to n
 
 flags
-    Pad flags, as defined in uapi/media.h (MEDIA_PAD_FL\_\*)
+    Pad flags, as defined in
+    :ref:`include/uapi/linux/media.h <media_header>`
+    (seek for ``MEDIA_PAD_FL_*``)
 
 .. _`media_entity_operations`:
 
@@ -286,13 +320,15 @@ link_validate
     view. The \ :c:func:`media_entity_pipeline_start`\  function
     validates all links by calling this operation. Optional.
 
-.. _`media_entity_operations.note`:
+.. _`media_entity_operations.description`:
 
-Note
-----
+Description
+-----------
 
-Those these callbacks are called with struct media_device.\ ``graph_mutex``\ 
-mutex held.
+.. note::
+
+   Those these callbacks are called with struct \ :c:type:`media_device.graph_mutex <media_device>`\ 
+   mutex held.
 
 .. _`media_entity_type`:
 
@@ -343,7 +379,7 @@ structure that implements a media entity instance.
 This allows runtime type identification of media entities and safe casting to
 the correct object type. For instance, a media entity structure instance
 embedded in a v4l2_subdev structure instance will have the type
-MEDIA_ENTITY_TYPE_V4L2_SUBDEV and can safely be cast to a v4l2_subdev
+\ ``MEDIA_ENTITY_TYPE_V4L2_SUBDEV``\  and can safely be cast to a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
 structure using the \ :c:func:`container_of`\  macro.
 
 .. _`media_entity`:
@@ -396,11 +432,14 @@ obj_type
     Type of the object that implements the media_entity.
 
 function
-    Entity main function, as defined in uapi/media.h
-    (MEDIA_ENT_F\_\*)
+    Entity main function, as defined in
+    :ref:`include/uapi/linux/media.h <media_header>`
+    (seek for ``MEDIA_ENT_F_*``)
 
 flags
-    Entity flags, as defined in uapi/media.h (MEDIA_ENT_FL\_\*)
+    Entity flags, as defined in
+    :ref:`include/uapi/linux/media.h <media_header>`
+    (seek for ``MEDIA_ENT_FL_*``)
 
 num_pads
     Number of sink and source pads.
@@ -437,14 +476,17 @@ info
     Union with devnode information.  Kept just for backward
     compatibility.
 
-.. _`media_entity.note`:
+.. _`media_entity.description`:
 
-NOTE
-----
+Description
+-----------
 
-\ ``stream_count``\  and \ ``use_count``\  reference counts must never be
-negative, but are signed integers on purpose: a simple WARN_ON(<0) check
-can be used to detect reference count bugs that would make them negative.
+.. note::
+
+   \ ``stream_count``\  and \ ``use_count``\  reference counts must never be
+   negative, but are signed integers on purpose: a simple ``WARN_ON(<0)``
+   check can be used to detect reference count bugs that would make them
+   negative.
 
 .. _`media_interface`:
 
@@ -481,12 +523,23 @@ links
     List of links pointing to graph entities
 
 type
-    Type of the interface as defined in the
-    uapi/media/media.h header, e. g.
-    MEDIA_INTF_T\_\*
+    Type of the interface as defined in
+    :ref:`include/uapi/linux/media.h <media_header>`
+    (seek for ``MEDIA_INTF_T_*``)
 
 flags
-    Interface flags as defined in uapi/media/media.h
+    Interface flags as defined in
+    :ref:`include/uapi/linux/media.h <media_header>`
+    (seek for ``MEDIA_INTF_FL_*``)
+
+.. _`media_interface.description`:
+
+Description
+-----------
+
+.. note::
+
+   Currently, no flags for \ :c:type:`struct media_interface <media_interface>`\  is defined.
 
 .. _`media_intf_devnode`:
 
@@ -534,7 +587,7 @@ media_entity_id
     return the media entity graph object id
 
     :param struct media_entity \*entity:
-        pointer to entity
+        pointer to \ :c:type:`struct media_entity <media_entity>`\ 
 
 .. _`media_type`:
 
@@ -546,7 +599,7 @@ media_type
     return the media object type
 
     :param struct media_gobj \*gobj:
-        pointer to the media graph object
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
 
 .. _`media_id`:
 
@@ -558,7 +611,7 @@ media_id
     return the media object ID
 
     :param struct media_gobj \*gobj:
-        pointer to the media graph object
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
 
 .. _`media_gobj_gen_id`:
 
@@ -570,10 +623,10 @@ media_gobj_gen_id
     encapsulates type and ID on at the object ID
 
     :param enum media_gobj_type type:
-        object type as define at enum \ :c:type:`struct media_gobj_type <media_gobj_type>`.
+        object type as define at enum \ :c:type:`struct media_gobj_type <media_gobj_type>`\ .
 
     :param u64 local_id:
-        next ID, from struct \ :c:type:`struct media_device <media_device>`.\ ``id``\ .
+        next ID, from struct \ :c:type:`media_device.id <media_device>`\ .
 
 .. _`is_media_entity_v4l2_video_device`:
 
@@ -592,9 +645,9 @@ is_media_entity_v4l2_video_device
 Return
 ------
 
-true if the entity is an instance of a video_device object and can
+%true if the entity is an instance of a video_device object and can
 safely be cast to a struct video_device using the \ :c:func:`container_of`\  macro, or
-false otherwise.
+\ ``false``\  otherwise.
 
 .. _`is_media_entity_v4l2_subdev`:
 
@@ -613,9 +666,9 @@ is_media_entity_v4l2_subdev
 Return
 ------
 
-true if the entity is an instance of a v4l2_subdev object and can
-safely be cast to a struct v4l2_subdev using the \ :c:func:`container_of`\  macro, or
-false otherwise.
+%true if the entity is an instance of a \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  object and can
+safely be cast to a struct \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\  using the \ :c:func:`container_of`\  macro, or
+\ ``false``\  otherwise.
 
 .. _`__media_entity_enum_init`:
 
@@ -713,7 +766,7 @@ media_entity_enum_test
 Description
 -----------
 
-Returns true if the entity was marked.
+Returns \ ``true``\  if the entity was marked.
 
 .. _`media_entity_enum_test_and_set`:
 
@@ -735,7 +788,7 @@ media_entity_enum_test_and_set
 Description
 -----------
 
-Returns true if the entity was marked, and mark it before doing so.
+Returns \ ``true``\  if the entity was marked, and mark it before doing so.
 
 .. _`media_entity_enum_empty`:
 
@@ -749,12 +802,12 @@ media_entity_enum_empty
     :param struct media_entity_enum \*ent_enum:
         Entity enumeration
 
-.. _`media_entity_enum_empty.description`:
+.. _`media_entity_enum_empty.return`:
 
-Description
------------
+Return
+------
 
-Returns true if the entity was marked.
+%true if the entity was empty.
 
 .. _`media_entity_enum_intersects`:
 
@@ -771,12 +824,73 @@ media_entity_enum_intersects
     :param struct media_entity_enum \*ent_enum2:
         Second entity enumeration
 
-.. _`media_entity_enum_intersects.description`:
+.. _`media_entity_enum_intersects.return`:
 
-Description
------------
+Return
+------
 
-Returns true if entity enumerations e and f intersect, otherwise false.
+%true if entity enumerations \ ``ent_enum1``\  and \ ``ent_enum2``\  intersect,
+otherwise \ ``false``\ .
+
+.. _`gobj_to_entity`:
+
+gobj_to_entity
+==============
+
+.. c:function::  gobj_to_entity( gobj)
+
+    returns the struct \ :c:type:`struct media_entity <media_entity>`\  pointer from the \ ``gobj``\  contained on it.
+
+    :param  gobj:
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+
+.. _`gobj_to_pad`:
+
+gobj_to_pad
+===========
+
+.. c:function::  gobj_to_pad( gobj)
+
+    returns the struct \ :c:type:`struct media_pad <media_pad>`\  pointer from the \ ``gobj``\  contained on it.
+
+    :param  gobj:
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+
+.. _`gobj_to_link`:
+
+gobj_to_link
+============
+
+.. c:function::  gobj_to_link( gobj)
+
+    returns the struct \ :c:type:`struct media_link <media_link>`\  pointer from the \ ``gobj``\  contained on it.
+
+    :param  gobj:
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+
+.. _`gobj_to_intf`:
+
+gobj_to_intf
+============
+
+.. c:function::  gobj_to_intf( gobj)
+
+    returns the struct \ :c:type:`struct media_interface <media_interface>`\  pointer from the \ ``gobj``\  contained on it.
+
+    :param  gobj:
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
+
+.. _`intf_to_devnode`:
+
+intf_to_devnode
+===============
+
+.. c:function::  intf_to_devnode( intf)
+
+    returns the struct media_intf_devnode pointer from the \ ``intf``\  contained on it.
+
+    :param  intf:
+        Pointer to struct \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\ 
 
 .. _`media_gobj_create`:
 
@@ -788,24 +902,24 @@ media_gobj_create
     Initialize a graph object
 
     :param struct media_device \*mdev:
-        Pointer to the media_device that contains the object
+        Pointer to the \ :c:type:`struct media_device <media_device>`\  that contains the object
 
     :param enum media_gobj_type type:
         Type of the object
 
     :param struct media_gobj \*gobj:
-        Pointer to the graph object
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
 
 .. _`media_gobj_create.description`:
 
 Description
 -----------
 
-This routine initializes the embedded struct media_gobj inside a
-media graph object. It is called automatically if media\_\*\\ :c:func:`_create`\ 
-calls are used. However, if the object (entity, link, pad, interface)
-is embedded on some other object, this function should be called before
-registering the object at the media controller.
+This routine initializes the embedded struct \ :c:type:`struct media_gobj <media_gobj>`\  inside a
+media graph object. It is called automatically if ``media_*_create``
+function calls are used. However, if the object (entity, link, pad,
+interface) is embedded on some other object, this function should be
+called before registering the object at the media controller.
 
 .. _`media_gobj_destroy`:
 
@@ -817,7 +931,7 @@ media_gobj_destroy
     Stop using a graph object on a media device
 
     :param struct media_gobj \*gobj:
-        Pointer to the graph object
+        Pointer to the struct \ :c:type:`struct media_gobj <media_gobj>`\  graph object
 
 .. _`media_gobj_destroy.description`:
 
@@ -851,11 +965,11 @@ Description
 -----------
 
 The pads array is managed by the entity driver and passed to
-\ :c:func:`media_entity_pads_init`\  where its pointer will be stored in the entity
-structure.
+\ :c:func:`media_entity_pads_init`\  where its pointer will be stored in the
+\ :c:type:`struct media_entity <media_entity>`\  structure.
 
 If no pads are needed, drivers could either directly fill
-\ :c:type:`struct media_entity <media_entity>`->\ ``num_pads``\  with 0 and \ :c:type:`struct media_entity <media_entity>`->\ ``pads``\  with NULL or call
+\ :c:type:`media_entity->num_pads <media_entity>`\  with 0 and \ :c:type:`media_entity->pads <media_entity>`\  with \ ``NULL``\  or call
 this function that will do the same.
 
 As the number of pads is known in advance, the pads array is not allocated
@@ -895,42 +1009,42 @@ media_create_pad_link
     creates a link between two entities.
 
     :param struct media_entity \*source:
-        pointer to \ :c:type:`struct media_entity <media_entity>` of the source pad.
+        pointer to \ :c:type:`struct media_entity <media_entity>`\  of the source pad.
 
     :param u16 source_pad:
         number of the source pad in the pads array
 
     :param struct media_entity \*sink:
-        pointer to \ :c:type:`struct media_entity <media_entity>` of the sink pad.
+        pointer to \ :c:type:`struct media_entity <media_entity>`\  of the sink pad.
 
     :param u16 sink_pad:
         number of the sink pad in the pads array.
 
     :param u32 flags:
-        Link flags, as defined in include/uapi/linux/media.h.
+        Link flags, as defined in
+        :ref:`include/uapi/linux/media.h <media_header>`
+        ( seek for ``MEDIA_LNK_FL_*``)
 
 .. _`media_create_pad_link.valid-values-for-flags`:
 
 Valid values for flags
 ----------------------
 
-A \ ``MEDIA_LNK_FL_ENABLED``\  flag indicates that the link is enabled and can be
-used to transfer media data. When two or more links target a sink pad,
-only one of them can be enabled at a time.
 
-A \ ``MEDIA_LNK_FL_IMMUTABLE``\  flag indicates that the link enabled state can't
-be modified at runtime. If \ ``MEDIA_LNK_FL_IMMUTABLE``\  is set, then
-\ ``MEDIA_LNK_FL_ENABLED``\  must also be set since an immutable link is
-always enabled.
+\ ``MEDIA_LNK_FL_ENABLED``\ 
+  Indicates that the link is enabled and can be used to transfer media data.
+  When two or more links target a sink pad, only one of them can be
+  enabled at a time.
 
-.. _`media_create_pad_link.note`:
+\ ``MEDIA_LNK_FL_IMMUTABLE``\ 
+  Indicates that the link enabled state can't be modified at runtime. If
+  \ ``MEDIA_LNK_FL_IMMUTABLE``\  is set, then \ ``MEDIA_LNK_FL_ENABLED``\  must also be
+  set, since an immutable link is always enabled.
 
-NOTE
-----
+.. note::
 
-
-Before calling this function, \ :c:func:`media_entity_pads_init`\  and
-\ :c:func:`media_device_register_entity`\  should be called previously for both ends.
+   Before calling this function, \ :c:func:`media_entity_pads_init`\  and
+   \ :c:func:`media_device_register_entity`\  should be called previously for both ends.
 
 .. _`media_create_pad_links`:
 
@@ -949,7 +1063,7 @@ media_create_pad_links
         NULL.
 
     :param struct media_entity \*source:
-        pointer to \ :c:type:`struct media_entity <media_entity>` of the source pad. If NULL, it will use
+        pointer to \ :c:type:`struct media_entity <media_entity>`\  of the source pad. If NULL, it will use
         all entities that matches the \ ``sink_function``\ .
 
     :param const u16 source_pad:
@@ -959,7 +1073,7 @@ media_create_pad_links
         Function of the sink entities. Used only if \ ``sink``\  is NULL.
 
     :param struct media_entity \*sink:
-        pointer to \ :c:type:`struct media_entity <media_entity>` of the sink pad. If NULL, it will use
+        pointer to \ :c:type:`struct media_entity <media_entity>`\  of the sink pad. If NULL, it will use
         all entities that matches the \ ``sink_function``\ .
 
     :param const u16 sink_pad:
@@ -969,10 +1083,10 @@ media_create_pad_links
         Link flags, as defined in include/uapi/linux/media.h.
 
     :param const bool allow_both_undefined:
-        if true, then both \ ``source``\  and \ ``sink``\  can be NULL.
+        if \ ``true``\ , then both \ ``source``\  and \ ``sink``\  can be NULL.
         In such case, it will create a crossbar between all entities that
         matches \ ``source_function``\  to all entities that matches \ ``sink_function``\ .
-        If false, it will return 0 and won't create any link if both \ ``source``\ 
+        If \ ``false``\ , it will return 0 and won't create any link if both \ ``source``\ 
         and \ ``sink``\  are NULL.
 
 .. _`media_create_pad_links.valid-values-for-flags`:
@@ -980,29 +1094,27 @@ media_create_pad_links
 Valid values for flags
 ----------------------
 
+
 A \ ``MEDIA_LNK_FL_ENABLED``\  flag indicates that the link is enabled and can be
-used to transfer media data. If multiple links are created and this
-flag is passed as an argument, only the first created link will have
-this flag.
+     used to transfer media data. If multiple links are created and this
+     flag is passed as an argument, only the first created link will have
+     this flag.
 
 A \ ``MEDIA_LNK_FL_IMMUTABLE``\  flag indicates that the link enabled state can't
-be modified at runtime. If \ ``MEDIA_LNK_FL_IMMUTABLE``\  is set, then
-\ ``MEDIA_LNK_FL_ENABLED``\  must also be set since an immutable link is
-always enabled.
+     be modified at runtime. If \ ``MEDIA_LNK_FL_IMMUTABLE``\  is set, then
+     \ ``MEDIA_LNK_FL_ENABLED``\  must also be set since an immutable link is
+     always enabled.
 
 It is common for some devices to have multiple source and/or sink entities
 of the same type that should be linked. While \ :c:func:`media_create_pad_link`\ 
 creates link by link, this function is meant to allow 1:n, n:1 and even
 cross-bar (n:n) links.
 
-.. _`media_create_pad_links.note`:
+.. note::
 
-NOTE
-----
-
-Before calling this function, \ :c:func:`media_entity_pads_init`\  and
-\ :c:func:`media_device_register_entity`\  should be called previously for the entities
-to be linked.
+   Before calling this function, \ :c:func:`media_entity_pads_init`\  and
+   \ :c:func:`media_device_register_entity`\  should be called previously for the
+   entities to be linked.
 
 .. _`media_entity_remove_links`:
 
@@ -1014,15 +1126,17 @@ media_entity_remove_links
     remove all links associated with an entity
 
     :param struct media_entity \*entity:
-        pointer to \ :c:type:`struct media_entity <media_entity>`
+        pointer to \ :c:type:`struct media_entity <media_entity>`\ 
 
-.. _`media_entity_remove_links.note`:
+.. _`media_entity_remove_links.description`:
 
-Note
-----
+Description
+-----------
 
-this is called automatically when an entity is unregistered via
-\ :c:func:`media_device_register_entity`\ .
+.. note::
+
+   This is called automatically when an entity is unregistered via
+   \ :c:func:`media_device_register_entity`\ .
 
 .. _`__media_entity_setup_link`:
 
@@ -1063,7 +1177,7 @@ media_entity_setup_link
     changes the link flags properties in runtime
 
     :param struct media_link \*link:
-        pointer to \ :c:type:`struct media_link <media_link>`
+        pointer to \ :c:type:`struct media_link <media_link>`\ 
 
     :param u32 flags:
         the requested new link flags
@@ -1084,7 +1198,7 @@ link_setup call is made on the first entity to restore the original link
 flags.
 
 Media device drivers can be notified of link setup operations by setting the
-media_device::link_notify pointer to a callback function. If provided, the
+\ :c:type:`media_device.link_notify <media_device>`\  pointer to a callback function. If provided, the
 notification callback will be called before enabling and after disabling
 links.
 
@@ -1094,17 +1208,14 @@ the configuration information to be applied later.
 
 Link configuration must not have any side effect on other links. If an
 enabled link at a sink pad prevents another link at the same pad from
-being enabled, the link_setup operation must return -EBUSY and can't
+being enabled, the link_setup operation must return \ ``-EBUSY``\  and can't
 implicitly disable the first enabled link.
 
-.. _`media_entity_setup_link.note`:
+.. note::
 
-NOTE
-----
-
-the valid values of the flags for the link is the same as described
-on \ :c:func:`media_create_pad_link`\ , for pad to pad links or the same as described
-on \ :c:func:`media_create_intf_link`\ , for interface to entity links.
+   The valid values of the flags for the link is the same as described
+   on \ :c:func:`media_create_pad_link`\ , for pad to pad links or the same as described
+   on \ :c:func:`media_create_intf_link`\ , for interface to entity links.
 
 .. _`media_entity_find_link`:
 
@@ -1121,13 +1232,13 @@ media_entity_find_link
     :param struct media_pad \*sink:
         Sink pad
 
-.. _`media_entity_find_link.description`:
+.. _`media_entity_find_link.return`:
 
-Description
------------
+Return
+------
 
-Return a pointer to the link between the two entities. If no such link
-exists, return NULL.
+returns a pointer to the link between the two entities. If no
+such link exists, return \ ``NULL``\ .
 
 .. _`media_entity_remote_pad`:
 
@@ -1149,8 +1260,13 @@ Description
 Search for a remote pad connected to the given pad by iterating over all
 links originating or terminating at that pad until an enabled link is found.
 
-Return a pointer to the pad at the remote end of the first found enabled
-link, or NULL if no enabled link has been found.
+.. _`media_entity_remote_pad.return`:
+
+Return
+------
+
+returns a pointer to the pad at the remote end of the first found
+enabled link, or \ ``NULL``\  if no enabled link has been found.
 
 .. _`media_entity_get`:
 
@@ -1171,9 +1287,29 @@ Description
 
 Get a reference to the parent media device module.
 
-The function will return immediately if \ ``entity``\  is NULL.
+The function will return immediately if \ ``entity``\  is \ ``NULL``\ .
 
-Return a pointer to the entity on success or NULL on failure.
+.. _`media_entity_get.return`:
+
+Return
+------
+
+returns a pointer to the entity on success or \ ``NULL``\  on failure.
+
+.. _`media_entity_graph_walk_init`:
+
+media_entity_graph_walk_init
+============================
+
+.. c:function:: int media_entity_graph_walk_init(struct media_entity_graph *graph, struct media_device *mdev)
+
+    Allocate resources used by graph walk.
+
+    :param struct media_entity_graph \*graph:
+        Media graph structure that will be used to walk the graph
+
+    :param struct media_device \*mdev:
+        Pointer to the \ :c:type:`struct media_device <media_device>`\  that contains the object
 
 .. _`media_entity_graph_walk_cleanup`:
 
@@ -1206,7 +1342,7 @@ Description
 
 Release the reference count acquired by \ :c:func:`media_entity_get`\ .
 
-The function will return immediately if \ ``entity``\  is NULL.
+The function will return immediately if \ ``entity``\  is \ ``NULL``\ .
 
 .. _`media_entity_graph_walk_start`:
 
@@ -1258,8 +1394,13 @@ Perform a depth-first traversal of the given media entities graph.
 The graph structure must have been previously initialized with a call to
 \ :c:func:`media_entity_graph_walk_start`\ .
 
-Return the next entity in the graph or NULL if the whole graph have been
-traversed.
+.. _`media_entity_graph_walk_next.return`:
+
+Return
+------
+
+returns the next entity in the graph or \ ``NULL``\  if the whole graph
+have been traversed.
 
 .. _`media_entity_pipeline_start`:
 
@@ -1282,8 +1423,8 @@ Description
 -----------
 
 Mark all entities connected to a given entity through enabled links, either
-directly or indirectly, as streaming. The given pipeline object is assigned to
-every entity in the pipeline and stored in the media_entity pipe field.
+directly or indirectly, as streaming. The given pipeline object is assigned
+to every entity in the pipeline and stored in the media_entity pipe field.
 
 Calls to this function can be nested, in which case the same number of
 \ :c:func:`media_entity_pipeline_stop`\  calls will be required to stop streaming. The
@@ -1305,12 +1446,12 @@ __media_entity_pipeline_start
     :param struct media_pipeline \*pipe:
         Media pipeline to be assigned to all entities in the pipeline.
 
-.. _`__media_entity_pipeline_start.note`:
+.. _`__media_entity_pipeline_start.description`:
 
-Note
-----
+Description
+-----------
 
-This is the non-locking version of \ :c:func:`media_entity_pipeline_start`\ 
+..note:: This is the non-locking version of \ :c:func:`media_entity_pipeline_start`\ 
 
 .. _`media_entity_pipeline_stop`:
 
@@ -1331,7 +1472,7 @@ Description
 
 Mark all entities connected to a given entity through enabled links, either
 directly or indirectly, as not streaming. The media_entity pipe field is
-reset to NULL.
+reset to \ ``NULL``\ .
 
 If multiple calls to \ :c:func:`media_entity_pipeline_start`\  have been made, the same
 number of calls to this function are required to mark the pipeline as not
@@ -1349,12 +1490,12 @@ __media_entity_pipeline_stop
     :param struct media_entity \*entity:
         Starting entity
 
-.. _`__media_entity_pipeline_stop.note`:
+.. _`__media_entity_pipeline_stop.description`:
 
-Note
-----
+Description
+-----------
 
-This is the non-locking version of \ :c:func:`media_entity_pipeline_stop`\ 
+.. note:: This is the non-locking version of \ :c:func:`media_entity_pipeline_stop`\ 
 
 .. _`media_devnode_create`:
 
@@ -1366,14 +1507,17 @@ media_devnode_create
     creates and initializes a device node interface
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
     :param u32 type:
-        type of the interface, as given by MEDIA_INTF_T\_\* macros
-        as defined in the uapi/media/media.h header.
+        type of the interface, as given by
+        :ref:`include/uapi/linux/media.h <media_header>`
+        ( seek for ``MEDIA_INTF_T_*``) macros.
 
     :param u32 flags:
-        Interface flags as defined in uapi/media/media.h.
+        Interface flags, as defined in
+        :ref:`include/uapi/linux/media.h <media_header>`
+        ( seek for ``MEDIA_INTF_FL_*``)
 
     :param u32 major:
         Device node major number.
@@ -1387,7 +1531,11 @@ Return
 ------
 
 if succeeded, returns a pointer to the newly allocated
-\ :c:type:`struct media_intf_devnode <media_intf_devnode>` pointer.
+     \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\  pointer.
+
+.. note::
+
+   Currently, no flags for \ :c:type:`struct media_interface <media_interface>`\  is defined.
 
 .. _`media_devnode_remove`:
 
@@ -1399,7 +1547,7 @@ media_devnode_remove
     removes a device node interface
 
     :param struct media_intf_devnode \*devnode:
-        pointer to \ :c:type:`struct media_intf_devnode <media_intf_devnode>` to be freed.
+        pointer to \ :c:type:`struct media_intf_devnode <media_intf_devnode>`\  to be freed.
 
 .. _`media_devnode_remove.description`:
 
@@ -1425,7 +1573,9 @@ media_create_intf_link
         pointer to \ ``media_interface``\ 
 
     :param u32 flags:
-        Link flags, as defined in include/uapi/linux/media.h.
+        Link flags, as defined in
+        :ref:`include/uapi/linux/media.h <media_header>`
+        ( seek for ``MEDIA_LNK_FL_*``)
 
 .. _`media_create_intf_link.valid-values-for-flags`:
 
@@ -1433,24 +1583,23 @@ Valid values for flags
 ----------------------
 
 
-The \ ``MEDIA_LNK_FL_ENABLED``\  flag indicates that the interface is connected to
-the entity hardware. That's the default value for interfaces. An
-interface may be disabled if the hardware is busy due to the usage
-of some other interface that it is currently controlling the hardware.
-A typical example is an hybrid TV device that handle only one type of
-stream on a given time. So, when the digital TV is streaming,
-the V4L2 interfaces won't be enabled, as such device is not able to
-also stream analog TV or radio.
 
-.. _`media_create_intf_link.note`:
+\ ``MEDIA_LNK_FL_ENABLED``\ 
+  Indicates that the interface is connected to the entity hardware.
+  That's the default value for interfaces. An interface may be disabled if
+  the hardware is busy due to the usage of some other interface that it is
+  currently controlling the hardware.
 
-Note
-----
+  A typical example is an hybrid TV device that handle only one type of
+  stream on a given time. So, when the digital TV is streaming,
+  the V4L2 interfaces won't be enabled, as such device is not able to
+  also stream analog TV or radio.
 
+.. note::
 
-Before calling this function, \ :c:func:`media_devnode_create`\  should be called for
-the interface and \ :c:func:`media_device_register_entity`\  should be called for the
-interface that will be part of the link.
+   Before calling this function, \ :c:func:`media_devnode_create`\  should be called for
+   the interface and \ :c:func:`media_device_register_entity`\  should be called for the
+   interface that will be part of the link.
 
 .. _`__media_remove_intf_link`:
 
@@ -1462,14 +1611,14 @@ __media_remove_intf_link
     remove a single interface link
 
     :param struct media_link \*link:
-        pointer to \ :c:type:`struct media_link <media_link>`.
+        pointer to \ :c:type:`struct media_link <media_link>`\ .
 
-.. _`__media_remove_intf_link.note`:
+.. _`__media_remove_intf_link.description`:
 
-Note
-----
+Description
+-----------
 
-this is an unlocked version of \ :c:func:`media_remove_intf_link`\ 
+.. note:: This is an unlocked version of \ :c:func:`media_remove_intf_link`\ 
 
 .. _`media_remove_intf_link`:
 
@@ -1481,14 +1630,14 @@ media_remove_intf_link
     remove a single interface link
 
     :param struct media_link \*link:
-        pointer to \ :c:type:`struct media_link <media_link>`.
+        pointer to \ :c:type:`struct media_link <media_link>`\ .
 
-.. _`media_remove_intf_link.note`:
+.. _`media_remove_intf_link.description`:
 
-Note
-----
+Description
+-----------
 
-prefer to use this one, instead of \\ :c:func:`__media_remove_intf_link`\ 
+.. note:: Prefer to use this one, instead of \ :c:func:`__media_remove_intf_link`\ 
 
 .. _`__media_remove_intf_links`:
 
@@ -1500,14 +1649,14 @@ __media_remove_intf_links
     remove all links associated with an interface
 
     :param struct media_interface \*intf:
-        pointer to \ :c:type:`struct media_interface <media_interface>`
+        pointer to \ :c:type:`struct media_interface <media_interface>`\ 
 
-.. _`__media_remove_intf_links.note`:
+.. _`__media_remove_intf_links.description`:
 
-Note
-----
+Description
+-----------
 
-this is an unlocked version of \ :c:func:`media_remove_intf_links`\ .
+.. note:: This is an unlocked version of \ :c:func:`media_remove_intf_links`\ .
 
 .. _`media_remove_intf_links`:
 
@@ -1519,18 +1668,46 @@ media_remove_intf_links
     remove all links associated with an interface
 
     :param struct media_interface \*intf:
-        pointer to \ :c:type:`struct media_interface <media_interface>`
+        pointer to \ :c:type:`struct media_interface <media_interface>`\ 
 
-.. _`media_remove_intf_links.notes`:
+.. _`media_remove_intf_links.description`:
 
-Notes
------
+Description
+-----------
 
+.. note::
 
-this is called automatically when an entity is unregistered via
-\ :c:func:`media_device_register_entity`\  and by \ :c:func:`media_devnode_remove`\ .
+  #) This is called automatically when an entity is unregistered via
+     \ :c:func:`media_device_register_entity`\  and by \ :c:func:`media_devnode_remove`\ .
 
-Prefer to use this one, instead of \\ :c:func:`__media_remove_intf_links`\ .
+  #) Prefer to use this one, instead of \ :c:func:`__media_remove_intf_links`\ .
+
+.. _`media_entity_call`:
+
+media_entity_call
+=================
+
+.. c:function::  media_entity_call( entity,  operation,  args...)
+
+    Calls a struct media_entity_operations operation on an entity
+
+    :param  entity:
+        entity where the \ ``operation``\  will be called
+
+    :param  operation:
+        type of the operation. Should be the name of a member of
+        struct \ :c:type:`struct media_entity_operations <media_entity_operations>`\ .
+
+    :param  args...:
+        variable arguments
+
+.. _`media_entity_call.description`:
+
+Description
+-----------
+
+This helper function will check if \ ``operation``\  is not \ ``NULL``\ . On such case,
+it will issue a call to \ ``operation``\ (@entity, \ ``args``\ \).
 
 .. This file was automatic generated / don't edit.
 

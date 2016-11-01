@@ -21,13 +21,13 @@ parport_open
 Description
 -----------
 
-This function is similar to \ :c:func:`parport_register_device`\ , except
-that it locates a device by its number rather than by the port
-it is attached to.
+     This function is similar to \ :c:func:`parport_register_device`\ , except
+     that it locates a device by its number rather than by the port
+     it is attached to.
 
-All parameters except for \ ``devnum``\  are the same as for
-\ :c:func:`parport_register_device`\ .  The return value is the same as
-for \ :c:func:`parport_register_device`\ .
+     All parameters except for \ ``devnum``\  are the same as for
+     \ :c:func:`parport_register_device`\ .  The return value is the same as
+     for \ :c:func:`parport_register_device`\ .
 
 .. _`parport_close`:
 
@@ -46,8 +46,8 @@ parport_close
 Description
 -----------
 
-This is to \ :c:func:`parport_open`\  as \ :c:func:`parport_unregister_device`\  is to
-\ :c:func:`parport_register_device`\ .
+     This is to \ :c:func:`parport_open`\  as \ :c:func:`parport_unregister_device`\  is to
+     \ :c:func:`parport_register_device`\ .
 
 .. This file was automatic generated / don't edit.
 

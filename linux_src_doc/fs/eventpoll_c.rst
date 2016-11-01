@@ -63,7 +63,7 @@ ep_scan_ready_list
 
 .. c:function:: int ep_scan_ready_list(struct eventpoll *ep, int (*sproc)(struct eventpoll *, struct list_head *, void *), void *priv, int depth, bool ep_locked)
 
-    Scans the ready list in a way that makes possible for the scan code, to call f_op->\ :c:func:`poll`\ . Also allows for O(NumReady) performance.
+    Scans the ready list in a way that makes possible for the scan code, to call f_op->poll(). Also allows for O(NumReady) performance.
 
     :param struct eventpoll \*ep:
         Pointer to the epoll private data structure.
@@ -148,7 +148,7 @@ ep_loop_check_proc
 
 .. c:function:: int ep_loop_check_proc(void *priv, void *cookie, int call_nests)
 
-    Callback function to be passed to the @\ :c:func:`ep_call_nested`\  API, to verify that adding an epoll file inside another epoll structure, does not violate the constraints, in terms of closed loops, or too deep chains (which can result in excessive stack usage).
+    Callback function to be passed to the \ ``ep_call_nested``\ () API, to verify that adding an epoll file inside another epoll structure, does not violate the constraints, in terms of closed loops, or too deep chains (which can result in excessive stack usage).
 
     :param void \*priv:
         Pointer to the epoll file to be currently checked.
@@ -158,7 +158,7 @@ ep_loop_check_proc
         data structure pointer.
 
     :param int call_nests:
-        Current dept of the @\ :c:func:`ep_call_nested`\  call stack.
+        Current dept of the \ ``ep_call_nested``\ () call stack.
 
 .. _`ep_loop_check_proc.return`:
 
@@ -175,7 +175,7 @@ ep_loop_check
 
 .. c:function:: int ep_loop_check(struct eventpoll *ep, struct file *file)
 
-    Performs a check to verify that adding an epoll file (\ ``file``\ ) another epoll file (represented by \ ``ep``\ ) does not create closed loops or too deep chains.
+    Performs a check to verify that adding an epoll file (@file) another epoll file (represented by \ ``ep``\ ) does not create closed loops or too deep chains.
 
     :param struct eventpoll \*ep:
         Pointer to the epoll private data structure.

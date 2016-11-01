@@ -155,7 +155,7 @@ hwarc_filter_cmd_WUSB_0100
 Description
 -----------
 
-The routine managing commands to the device (\ :c:func:`uwb_rc_cmd`\ ) will call the
+The routine managing commands to the device (uwb_rc_cmd()) will call the
 filtering function pointer (if it exists) before it passes any data to
 the device. At this time the command has been formatted according to
 WHCI 0.95 and is ready to be sent to the device.
@@ -354,7 +354,7 @@ Description
 Note this is effectively a parallel thread; it knows that
 hwarc->uwb_rc always exists because the existence of a 'hwarc'
 means that there is a reverence on the hwarc->uwb_rc (see
-\\ :c:func:`_probe`\ ), and thus \\ :c:func:`_neep_cb`\  can execute safely.
+\_probe()), and thus \_neep_cb() can execute safely.
 
 .. _`hwarc_get_version`:
 

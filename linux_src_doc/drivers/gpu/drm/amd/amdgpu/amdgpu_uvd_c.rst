@@ -157,5 +157,27 @@ Description
 
 Parse the command stream, patch in addresses as necessary.
 
+.. _`amdgpu_uvd_ring_test_ib`:
+
+amdgpu_uvd_ring_test_ib
+=======================
+
+.. c:function:: int amdgpu_uvd_ring_test_ib(struct amdgpu_ring *ring, long timeout)
+
+    test ib execution
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu_ring pointer
+
+    :param long timeout:
+        *undescribed*
+
+.. _`amdgpu_uvd_ring_test_ib.description`:
+
+Description
+-----------
+
+Test if we can successfully execute an IB
+
 .. This file was automatic generated / don't edit.
 

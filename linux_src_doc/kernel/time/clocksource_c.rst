@@ -217,10 +217,10 @@ __clocksource_update_freq_scale
 Description
 -----------
 
-This should only be called from the clocksource->\ :c:func:`enable`\  method.
+This should only be called from the clocksource->enable() method.
 
 This \*SHOULD NOT\* be called directly! Please use the
-\\ :c:func:`__clocksource_update_freq_hz`\  or \\ :c:func:`__clocksource_update_freq_khz`\  helper
+\__clocksource_update_freq_hz() or \__clocksource_update_freq_khz() helper
 functions.
 
 .. _`__clocksource_register_scale`:

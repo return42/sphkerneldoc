@@ -193,7 +193,7 @@ ipc_offset
     offset within the regmap
 
 ipc_bit
-    bit in regmap\ ``offset``\  to kick to signal remote processor
+    bit in regmap@offset to kick to signal remote processor
 
 inbound
     list of inbound entries

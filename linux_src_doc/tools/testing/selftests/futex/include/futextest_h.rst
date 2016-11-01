@@ -37,7 +37,7 @@ futex
 Description
 -----------
 
-\ :c:func:`futex`\  is used by all the following futex op wrappers. It can also be
+futex() is used by all the following futex op wrappers. It can also be
 used for misuse and abuse testing. Generally, the specific op wrappers
 should be used instead. It is a macro instead of an static inline function as
 some of the types over overloaded (timeout is used for nr_requeue for

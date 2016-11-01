@@ -342,6 +342,8 @@ Definition
         struct net_device *real_dev;
         struct pcpu_secy_stats __percpu *stats;
         struct list_head secys;
+        struct gro_cells gro_cells;
+        unsigned int nest_level;
     }
 
 .. _`macsec_dev.members`:
@@ -360,6 +362,12 @@ stats
 
 secys
     linked list of SecY's on the underlying device
+
+gro_cells
+    *undescribed*
+
+nest_level
+    *undescribed*
 
 .. _`macsec_rxh_data`:
 

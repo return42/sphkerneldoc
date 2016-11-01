@@ -288,7 +288,7 @@ This function is used inside our interrupt handler to determine the reason
 for the interrupt by reading Primary Interrupt Status Register. Returns an
 abstract interrupt status mask which is mostly ISR with some uncommon bits
 being mapped on some standard non hw-specific positions
-(check out \ :c:type:`struct ath5k_int <ath5k_int>`).
+(check out \ :c:type:`struct ath5k_int <ath5k_int>`\ ).
 
 .. _`ath5k_hw_get_isr.note`:
 

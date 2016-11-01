@@ -170,6 +170,9 @@ Definition
         void *j_private;
         struct crypto_shash *j_chksum_driver;
         __u32 j_csum_seed;
+    #ifdef CONFIG_DEBUG_LOCK_ALLOC
+        struct lockdep_map j_trans_commit_map;
+    #endif
     }
 
 .. _`journal_s.members`:
@@ -357,6 +360,9 @@ j_chksum_driver
 
 j_csum_seed
     *undescribed*
+
+j_trans_commit_map
+    Lockdep entity to track transaction commit dependencies
 
 .. This file was automatic generated / don't edit.
 

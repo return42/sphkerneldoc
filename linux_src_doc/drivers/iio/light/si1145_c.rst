@@ -1,0 +1,145 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/light/si1145.c
+
+.. _`si1145_data`:
+
+struct si1145_data
+==================
+
+.. c:type:: struct si1145_data
+
+    si1145 chip state data
+
+.. _`si1145_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct si1145_data {
+        struct i2c_client *client;
+        struct mutex lock;
+        struct mutex cmdlock;
+        int rsp_seq;
+        const struct si1145_part_info *part_info;
+        unsigned long scan_mask;
+        bool autonomous;
+        struct iio_trigger *trig;
+        int meas_rate;
+    }
+
+.. _`si1145_data.members`:
+
+Members
+-------
+
+client
+    I2C client
+
+lock
+    mutex to protect shared state.
+
+cmdlock
+    Low-level mutex to protect command execution only
+
+rsp_seq
+    Next expected response number or -1 if counter reset required
+
+part_info
+    Part information
+
+scan_mask
+    Saved scan mask to avoid duplicate set_chlist
+
+autonomous
+    If automatic measurements are active (for buffer support)
+
+trig
+    Pointer to iio trigger
+
+meas_rate
+    Value of MEAS_RATE register. Only set in HW in auto mode
+
+.. _`__si1145_command_reset`:
+
+__si1145_command_reset
+======================
+
+.. c:function:: int __si1145_command_reset(struct si1145_data *data)
+
+    Send CMD_NOP and wait for response 0
+
+    :param struct si1145_data \*data:
+        *undescribed*
+
+.. _`__si1145_command_reset.description`:
+
+Description
+-----------
+
+Does not modify data->rsp_seq
+
+.. _`__si1145_command_reset.return`:
+
+Return
+------
+
+0 on success and -errno on error.
+
+.. _`si1145_command`:
+
+si1145_command
+==============
+
+.. c:function:: int si1145_command(struct si1145_data *data, u8 cmd)
+
+    Execute a command and poll the response register
+
+    :param struct si1145_data \*data:
+        *undescribed*
+
+    :param u8 cmd:
+        *undescribed*
+
+.. _`si1145_command.description`:
+
+Description
+-----------
+
+All conversion overflows are reported as -EOVERFLOW
+INVALID_SETTING is reported as -EINVAL
+Timeouts are reported as -ETIMEDOUT
+
+.. _`si1145_command.return`:
+
+Return
+------
+
+0 on success or -errno on failure
+
+.. _`si1145_trigger_set_state`:
+
+si1145_trigger_set_state
+========================
+
+.. c:function:: int si1145_trigger_set_state(struct iio_trigger *trig, bool state)
+
+    Set trigger state
+
+    :param struct iio_trigger \*trig:
+        *undescribed*
+
+    :param bool state:
+        *undescribed*
+
+.. _`si1145_trigger_set_state.description`:
+
+Description
+-----------
+
+When not using triggers interrupts are disabled and measurement rate is
+set to zero in order to minimize power consumption.
+
+.. This file was automatic generated / don't edit.
+

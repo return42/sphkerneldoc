@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/nilfs2/super.c
 
-.. _`nilfs_error`:
+.. _`__nilfs_error`:
 
-nilfs_error
-===========
+__nilfs_error
+=============
 
-.. c:function:: void nilfs_error(struct super_block *sb, const char *function, const char *fmt,  ...)
+.. c:function:: void __nilfs_error(struct super_block *sb, const char *function, const char *fmt,  ...)
 
     report failure condition on a filesystem
 
@@ -22,19 +22,20 @@ nilfs_error
     :param ... :
         variable arguments
 
-.. _`nilfs_error.description`:
+.. _`__nilfs_error.description`:
 
 Description
 -----------
 
-\ :c:func:`nilfs_error`\  sets an ERROR_FS flag on the superblock as well as
-reporting an error message.  It should be called when NILFS detects
-incoherences or defects of meta data on disk.  As for sustainable
-errors such as a single-shot I/O error, \ :c:func:`nilfs_warning`\  or the \ :c:func:`printk`\ 
-function should be used instead.
+__nilfs_error() sets an ERROR_FS flag on the superblock as well as
+reporting an error message.  This function should be called when
+NILFS detects incoherences or defects of meta data on disk.
 
-The segment constructor must not call this function because it can
-kill itself.
+This implements the body of \ :c:func:`nilfs_error`\  macro.  Normally,
+\ :c:func:`nilfs_error`\  should be used.  As for sustainable errors such as a
+single-shot I/O error, \ :c:func:`nilfs_msg`\  should be used instead.
+
+Callers should not add a trailing newline since this will do it.
 
 .. _`nilfs_cleanup_super`:
 

@@ -81,6 +81,7 @@ Definition
         void (*irq_ack)(void __iomem *reg);
         void (*control)(void __iomem *reg, bool on);
         int (*get_temp)(struct chip_tsadc_table table,int chn, void __iomem *reg, int *temp);
+        void (*set_alarm_temp)(struct chip_tsadc_table table,int chn, void __iomem *reg, int temp);
         void (*set_tshut_temp)(struct chip_tsadc_table table,int chn, void __iomem *reg, int temp);
         void (*set_tshut_mode)(int chn, void __iomem *reg, enum tshut_mode m);
         struct chip_tsadc_table table;
@@ -117,6 +118,9 @@ control
 
 get_temp
     get the temperature
+
+set_alarm_temp
+    set the high temperature interrupt
 
 set_tshut_temp
     set the hardware-controlled shutdown temperature

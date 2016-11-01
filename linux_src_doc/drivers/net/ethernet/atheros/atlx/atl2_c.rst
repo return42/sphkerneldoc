@@ -51,7 +51,7 @@ atl2_configure
 
 .. c:function:: int atl2_configure(struct atl2_adapter *adapter)
 
-    Configure Transmit\ :c:type:`struct Receive <Receive>` Unit after Reset
+    Configure Transmit&Receive Unit after Reset
 
     :param struct atl2_adapter \*adapter:
         board private structure

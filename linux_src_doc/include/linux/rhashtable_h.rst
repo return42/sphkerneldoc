@@ -195,6 +195,7 @@ Definition
         unsigned int key_len;
         unsigned int elasticity;
         struct rhashtable_params p;
+        bool rhlist;
         struct work_struct run_work;
         struct mutex mutex;
         spinlock_t lock;
@@ -220,6 +221,9 @@ elasticity
 p
     Configuration parameters
 
+rhlist
+    True if this is an rhltable
+
 run_work
     Deferred worker to expand/shrink asynchronously
 
@@ -228,6 +232,34 @@ mutex
 
 lock
     Spin lock to protect walker list
+
+.. _`rhltable`:
+
+struct rhltable
+===============
+
+.. c:type:: struct rhltable
+
+    Hash table with duplicate objects in a list
+
+.. _`rhltable.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct rhltable {
+        struct rhashtable ht;
+    }
+
+.. _`rhltable.members`:
+
+Members
+-------
+
+ht
+    Underlying rhtable
 
 .. _`rhashtable_walker`:
 
@@ -268,7 +300,7 @@ struct rhashtable_iter
 
 .. c:type:: struct rhashtable_iter
 
-    Hash table iterator, fits into netlink cb
+    Hash table iterator
 
 .. _`rhashtable_iter.definition`:
 
@@ -280,7 +312,8 @@ Definition
     struct rhashtable_iter {
         struct rhashtable *ht;
         struct rhash_head *p;
-        struct rhashtable_walker *walker;
+        struct rhlist_head *list;
+        struct rhashtable_walker walker;
         unsigned int slot;
         unsigned int skip;
     }
@@ -295,6 +328,9 @@ ht
 
 p
     Current pointer
+
+list
+    Current hash list pointer
 
 walker
     Associated rhashtable walker
@@ -616,6 +652,88 @@ This hash chain list-traversal primitive may safely run concurrently with
 the \_rcu mutation primitives such as \ :c:func:`rhashtable_insert`\  as long as the
 traversal is guarded by \ :c:func:`rcu_read_lock`\ .
 
+.. _`rhl_for_each_rcu`:
+
+rhl_for_each_rcu
+================
+
+.. c:function::  rhl_for_each_rcu( pos,  list)
+
+    iterate over rcu hash table list
+
+    :param  pos:
+        the \ :c:type:`struct rlist_head <rlist_head>`\  to use as a loop cursor.
+
+    :param  list:
+        the head of the list
+
+.. _`rhl_for_each_rcu.description`:
+
+Description
+-----------
+
+This hash chain list-traversal primitive should be used on the
+list returned by rhltable_lookup.
+
+.. _`rhl_for_each_entry_rcu`:
+
+rhl_for_each_entry_rcu
+======================
+
+.. c:function::  rhl_for_each_entry_rcu( tpos,  pos,  list,  member)
+
+    iterate over rcu hash table list of given type
+
+    :param  tpos:
+        the type \* to use as a loop cursor.
+
+    :param  pos:
+        the \ :c:type:`struct rlist_head <rlist_head>`\  to use as a loop cursor.
+
+    :param  list:
+        the head of the list
+
+    :param  member:
+        name of the \ :c:type:`struct rlist_head <rlist_head>`\  within the hashable struct.
+
+.. _`rhl_for_each_entry_rcu.description`:
+
+Description
+-----------
+
+This hash chain list-traversal primitive should be used on the
+list returned by rhltable_lookup.
+
+.. _`rhashtable_lookup`:
+
+rhashtable_lookup
+=================
+
+.. c:function:: void *rhashtable_lookup(struct rhashtable *ht, const void *key, const struct rhashtable_params params)
+
+    search hash table
+
+    :param struct rhashtable \*ht:
+        hash table
+
+    :param const void \*key:
+        the pointer to the key
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhashtable_lookup.description`:
+
+Description
+-----------
+
+Computes the hash value for the key and traverses the bucket chain looking
+for a entry with an identical key. The first matching entry is returned.
+
+This must only be called under the RCU read lock.
+
+Returns the first entry on which the compare function returned true.
+
 .. _`rhashtable_lookup_fast`:
 
 rhashtable_lookup_fast
@@ -623,7 +741,7 @@ rhashtable_lookup_fast
 
 .. c:function:: void *rhashtable_lookup_fast(struct rhashtable *ht, const void *key, const struct rhashtable_params params)
 
-    search hash table, inlined version
+    search hash table, without RCU read lock
 
     :param struct rhashtable \*ht:
         hash table
@@ -642,7 +760,41 @@ Description
 Computes the hash value for the key and traverses the bucket chain looking
 for a entry with an identical key. The first matching entry is returned.
 
+Only use this function when you have other mechanisms guaranteeing
+that the object won't go away after the RCU read lock is released.
+
 Returns the first entry on which the compare function returned true.
+
+.. _`rhltable_lookup`:
+
+rhltable_lookup
+===============
+
+.. c:function:: struct rhlist_head *rhltable_lookup(struct rhltable *hlt, const void *key, const struct rhashtable_params params)
+
+    search hash list table
+
+    :param struct rhltable \*hlt:
+        hash table
+
+    :param const void \*key:
+        the pointer to the key
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhltable_lookup.description`:
+
+Description
+-----------
+
+Computes the hash value for the key and traverses the bucket chain looking
+for a entry with an identical key.  All matching entries are returned
+in a list.
+
+This must only be called under the RCU read lock.
+
+Returns the list of entries that match the given key.
 
 .. _`rhashtable_insert_fast`:
 
@@ -663,6 +815,75 @@ rhashtable_insert_fast
         hash table parameters
 
 .. _`rhashtable_insert_fast.description`:
+
+Description
+-----------
+
+Will take a per bucket spinlock to protect against mutual mutations
+on the same bucket. Multiple insertions may occur in parallel unless
+they map to the same bucket lock.
+
+It is safe to call this function from atomic context.
+
+Will trigger an automatic deferred table resizing if the size grows
+beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
+to \ :c:func:`rhashtable_init`\ .
+
+.. _`rhltable_insert_key`:
+
+rhltable_insert_key
+===================
+
+.. c:function:: int rhltable_insert_key(struct rhltable *hlt, const void *key, struct rhlist_head *list, const struct rhashtable_params params)
+
+    insert object into hash list table
+
+    :param struct rhltable \*hlt:
+        hash list table
+
+    :param const void \*key:
+        the pointer to the key
+
+    :param struct rhlist_head \*list:
+        pointer to hash list head inside object
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhltable_insert_key.description`:
+
+Description
+-----------
+
+Will take a per bucket spinlock to protect against mutual mutations
+on the same bucket. Multiple insertions may occur in parallel unless
+they map to the same bucket lock.
+
+It is safe to call this function from atomic context.
+
+Will trigger an automatic deferred table resizing if the size grows
+beyond the watermark indicated by \ :c:func:`grow_decision`\  which can be passed
+to \ :c:func:`rhashtable_init`\ .
+
+.. _`rhltable_insert`:
+
+rhltable_insert
+===============
+
+.. c:function:: int rhltable_insert(struct rhltable *hlt, struct rhlist_head *list, const struct rhashtable_params params)
+
+    insert object into hash list table
+
+    :param struct rhltable \*hlt:
+        hash list table
+
+    :param struct rhlist_head \*list:
+        pointer to hash list head inside object
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhltable_insert.description`:
 
 Description
 -----------
@@ -755,6 +976,36 @@ to \ :c:func:`rhashtable_init`\ .
 
 Returns zero on success.
 
+.. _`rhashtable_lookup_get_insert_key`:
+
+rhashtable_lookup_get_insert_key
+================================
+
+.. c:function:: void *rhashtable_lookup_get_insert_key(struct rhashtable *ht, const void *key, struct rhash_head *obj, const struct rhashtable_params params)
+
+    lookup and insert object into hash table
+
+    :param struct rhashtable \*ht:
+        hash table
+
+    :param const void \*key:
+        *undescribed*
+
+    :param struct rhash_head \*obj:
+        pointer to hash head inside object
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhashtable_lookup_get_insert_key.description`:
+
+Description
+-----------
+
+Just like \ :c:func:`rhashtable_lookup_insert_key`\ , but this function returns the
+object if it exists, NULL if it does not and the insertion was successful,
+and an ERR_PTR otherwise.
+
 .. _`rhashtable_remove_fast`:
 
 rhashtable_remove_fast
@@ -774,6 +1025,38 @@ rhashtable_remove_fast
         hash table parameters
 
 .. _`rhashtable_remove_fast.description`:
+
+Description
+-----------
+
+Since the hash chain is single linked, the removal operation needs to
+walk the bucket chain upon removal. The removal operation is thus
+considerable slow if the hash table is not correctly sized.
+
+Will automatically shrink the table via \ :c:func:`rhashtable_expand`\  if the
+shrink_decision function specified at \ :c:func:`rhashtable_init`\  returns true.
+
+Returns zero on success, -ENOENT if the entry could not be found.
+
+.. _`rhltable_remove`:
+
+rhltable_remove
+===============
+
+.. c:function:: int rhltable_remove(struct rhltable *hlt, struct rhlist_head *list, const struct rhashtable_params params)
+
+    remove object from hash list table
+
+    :param struct rhltable \*hlt:
+        hash list table
+
+    :param struct rhlist_head \*list:
+        pointer to hash list head inside object
+
+    :param const struct rhashtable_params params:
+        hash table parameters
+
+.. _`rhltable_remove.description`:
 
 Description
 -----------
@@ -819,6 +1102,66 @@ table here.
 
 Returns zero on success, -ENOENT if the entry could not be found,
 -EINVAL if hash is not the same for the old and new objects.
+
+.. _`rhltable_walk_enter`:
+
+rhltable_walk_enter
+===================
+
+.. c:function:: void rhltable_walk_enter(struct rhltable *hlt, struct rhashtable_iter *iter)
+
+    Initialise an iterator
+
+    :param struct rhltable \*hlt:
+        Table to walk over
+
+    :param struct rhashtable_iter \*iter:
+        Hash table Iterator
+
+.. _`rhltable_walk_enter.description`:
+
+Description
+-----------
+
+This function prepares a hash table walk.
+
+Note that if you restart a walk after rhashtable_walk_stop you
+may see the same object twice.  Also, you may miss objects if
+there are removals in between rhashtable_walk_stop and the next
+call to rhashtable_walk_start.
+
+For a completely stable walk you should construct your own data
+structure outside the hash table.
+
+This function may sleep so you must not call it from interrupt
+context or with spin locks held.
+
+You must call rhashtable_walk_exit after this function returns.
+
+.. _`rhltable_free_and_destroy`:
+
+rhltable_free_and_destroy
+=========================
+
+.. c:function:: void rhltable_free_and_destroy(struct rhltable *hlt, void (*free_fn)(void *ptr, void *arg), void *arg)
+
+    free elements and destroy hash list table
+
+    :param struct rhltable \*hlt:
+        the hash list table to destroy
+
+    :param void (\*free_fn)(void \*ptr, void \*arg):
+        callback to release resources of element
+
+    :param void \*arg:
+        pointer passed to free_fn
+
+.. _`rhltable_free_and_destroy.description`:
+
+Description
+-----------
+
+See documentation for rhashtable_free_and_destroy.
 
 .. This file was automatic generated / don't edit.
 

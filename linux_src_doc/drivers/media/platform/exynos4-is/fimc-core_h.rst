@@ -380,7 +380,6 @@ Definition
 
     struct fimc_vid_cap {
         struct fimc_ctx *ctx;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct v4l2_subdev subdev;
         struct exynos_video_entity ve;
         struct media_pad vd_pad;
@@ -409,9 +408,6 @@ Members
 
 ctx
     hardware context data
-
-alloc_ctx
-    *undescribed*
 
 subdev
     subdev exposing the FIMC processing block
@@ -668,7 +664,6 @@ Definition
         struct fimc_m2m_device m2m;
         struct fimc_vid_cap vid_cap;
         unsigned long state;
-        struct vb2_alloc_ctx *alloc_ctx;
     }
 
 .. _`fimc_dev.members`:
@@ -720,9 +715,6 @@ vid_cap
 
 state
     flags used to synchronize m2m and capture mode operation
-
-alloc_ctx
-    videobuf2 memory allocator context
 
 .. _`fimc_ctrls`:
 

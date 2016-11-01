@@ -28,7 +28,7 @@ did not complete, or 0 upon success.
 XXX Most of this code should be moved to the omap_hwmod.c layer
 during a normal merge window.  \ :c:func:`omap_hwmod_softreset`\  should be
 renamed to \ :c:func:`omap_hwmod_set_ocp_softreset`\ , and \ :c:func:`omap_hwmod_softreset`\ 
-should call the hwmod \\ :c:func:`_ocp_softreset`\  code.
+should call the hwmod \_ocp_softreset() code.
 
 .. This file was automatic generated / don't edit.
 

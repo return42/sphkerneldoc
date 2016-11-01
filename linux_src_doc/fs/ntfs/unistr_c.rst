@@ -191,14 +191,14 @@ Convert the input string \ ``ins``\ , which is in whatever format the loaded NLS
 map dictates, into a little endian, 2-byte Unicode string.
 
 This function allocates the string and the caller is responsible for
-calling kmem_cache_free(ntfs_name_cache, \*\ ``outs``\ ); when finished with it.
+calling kmem_cache_free(ntfs_name_cache, \*@outs); when finished with it.
 
 On success the function returns the number of Unicode characters written to
-the output string \*\ ``outs``\  (>= 0), not counting the terminating Unicode NULL
-character. \*\ ``outs``\  is set to the allocated output string buffer.
+the output string \*@outs (>= 0), not counting the terminating Unicode NULL
+character. \*@outs is set to the allocated output string buffer.
 
 On error, a negative number corresponding to the error code is returned. In
-that case the output string is not allocated. Both \*\ ``outs``\  and \*\ ``outs_len``\ 
+that case the output string is not allocated. Both \*@outs and \*@outs_len
 are then undefined.
 
 This might look a bit odd due to fast path optimization...
@@ -235,16 +235,16 @@ Description
 Convert the input little endian, 2-byte Unicode string \ ``ins``\ , of length
 \ ``ins_len``\  into the string format dictated by the loaded NLS.
 
-If \*\ ``outs``\  is NULL, this function allocates the string and the caller is
-responsible for calling kfree(\*\ ``outs``\ ); when finished with it. In this case
+If \*@outs is NULL, this function allocates the string and the caller is
+responsible for calling kfree(\*@outs); when finished with it. In this case
 \ ``outs_len``\  is ignored and can be 0.
 
 On success the function returns the number of bytes written to the output
-string \*\ ``outs``\  (>= 0), not counting the terminating NULL byte. If the output
-string buffer was allocated, \*\ ``outs``\  is set to it.
+string \*@outs (>= 0), not counting the terminating NULL byte. If the output
+string buffer was allocated, \*@outs is set to it.
 
 On error, a negative number corresponding to the error code is returned. In
-that case the output string is not allocated. The contents of \*\ ``outs``\  are
+that case the output string is not allocated. The contents of \*@outs are
 then undefined.
 
 This might look a bit odd due to fast path optimization...

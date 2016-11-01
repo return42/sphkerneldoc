@@ -30,7 +30,7 @@ sys_name_to_handle_at
 Description
 -----------
 
-\ ``handle``\ ->handle_size indicate the space available to store the
+@handle->handle_size indicate the space available to store the
 variable part of the file handle in bytes. If there is not
 enough space, the field is updated to return the minimum
 value required.
@@ -58,7 +58,7 @@ sys_open_by_handle_at
 Description
 -----------
 
-\ ``mountdirfd``\  indicate the directory file descriptor
+@mountdirfd indicate the directory file descriptor
 of the mount point. file handle is decoded relative
 to the vfsmount pointed by the \ ``mountdirfd``\ . \ ``flags``\ 
 value is same as the open(2) flags.

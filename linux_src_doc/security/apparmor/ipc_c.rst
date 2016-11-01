@@ -24,7 +24,7 @@ aa_audit_ptrace
 Return
 ------
 
-\ ``0``\  or error code
+%0 or error code
 
 .. _`aa_may_ptrace`:
 
@@ -49,7 +49,7 @@ aa_may_ptrace
 Return
 ------
 
-\ ``0``\  else error code if permission denied or error
+%0 else error code if permission denied or error
 
 .. _`aa_ptrace`:
 
@@ -74,7 +74,7 @@ aa_ptrace
 Return
 ------
 
-\ ``0``\  else error code if permission denied or error
+%0 else error code if permission denied or error
 
 .. This file was automatic generated / don't edit.
 

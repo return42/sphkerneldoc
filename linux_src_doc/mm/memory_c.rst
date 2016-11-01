@@ -154,7 +154,7 @@ If you allocate a compound page, you need to have marked it as
 such (__GFP_COMP), or manually just split the page up yourself
 (see \ :c:func:`split_page`\ ).
 
-NOTE! Traditionally this was done with "\ :c:func:`remap_pfn_range`\ " which
+NOTE! Traditionally this was done with "remap_pfn_range()" which
 took an arbitrary page protection parameter. This doesn't allow
 that. Your vma protection will have to be set up correctly, which
 means that if you want a shared writable mapping, you'd better
@@ -162,7 +162,7 @@ ask for a shared writable mapping!
 
 The page does not need to be reserved.
 
-Usually this function is called from f_op->\ :c:func:`mmap`\  handler
+Usually this function is called from f_op->mmap() handler
 under mm->mmap_sem write-lock, so it can change vma->vm_flags.
 Caller must set VM_MIXEDMAP on vma if it wants to call this
 function from other places, for example from page-fault handler.
@@ -324,39 +324,30 @@ unmap_mapping_range
         1 when truncating a file, unmap even private COWed pages;
         but 0 when invalidating pagecache, don't throw away private data.
 
-.. _`do_set_pte`:
+.. _`alloc_set_pte`:
 
-do_set_pte
-==========
+alloc_set_pte
+=============
 
-.. c:function:: void do_set_pte(struct vm_area_struct *vma, unsigned long address, struct page *page, pte_t *pte, bool write, bool anon)
+.. c:function:: int alloc_set_pte(struct fault_env *fe, struct mem_cgroup *memcg, struct page *page)
 
-    setup new PTE entry for given page and add reverse page mapping.
+    setup new PTE entry for given page and add reverse page mapping. If needed, the fucntion allocates page table or use pre-allocated.
 
-    :param struct vm_area_struct \*vma:
-        virtual memory area
+    :param struct fault_env \*fe:
+        fault environment
 
-    :param unsigned long address:
-        user virtual address
+    :param struct mem_cgroup \*memcg:
+        memcg to charge page (only for private mappings)
 
     :param struct page \*page:
         page to map
 
-    :param pte_t \*pte:
-        pointer to target page table entry
-
-    :param bool write:
-        true, if new entry is writable
-
-    :param bool anon:
-        true, if it's anonymous page
-
-.. _`do_set_pte.description`:
+.. _`alloc_set_pte.description`:
 
 Description
 -----------
 
-Caller must hold page table lock relevant for \ ``pte``\ .
+Caller must take care of unlocking fe->ptl, if fe->pte is non-NULL on return.
 
 Target users are page handler itself and implementations of
 vm_ops->map_pages.

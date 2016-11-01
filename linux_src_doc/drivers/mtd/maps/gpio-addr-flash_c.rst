@@ -198,7 +198,7 @@ struct resource flash_resource[] = {
 };
 struct platform_device flash_device = {
 .name          = "gpio-addr-flash",
-.dev           = { .platform_data = \ :c:type:`struct flash_data <flash_data>`, },
+.dev           = { .platform_data = \ :c:type:`struct flash_data <flash_data>`\ , },
 .num_resources = ARRAY_SIZE(flash_resource),
 .resource      = flash_resource,
 ...

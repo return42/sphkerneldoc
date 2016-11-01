@@ -6,7 +6,7 @@
 intel_idle
 ==========
 
-.. c:function:: int intel_idle(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
+.. c:function:: __cpuidle int intel_idle(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
 
     :param struct cpuidle_device \*dev:
         cpuidle_device

@@ -91,9 +91,9 @@ Description
 -----------
 
 This function returns a code that indicates whether the scan should continue
-(\ ``LPT_SCAN_CONTINUE``\ ), whether the LEB properties should be added to the tree
-in main memory (\ ``LPT_SCAN_ADD``\ ), or whether the scan should stop
-(\ ``LPT_SCAN_STOP``\ ).
+(%LPT_SCAN_CONTINUE), whether the LEB properties should be added to the tree
+in main memory (%LPT_SCAN_ADD), or whether the scan should stop
+(%LPT_SCAN_STOP).
 
 .. _`scan_for_dirty`:
 
@@ -203,9 +203,9 @@ Description
 -----------
 
 This function returns a code that indicates whether the scan should continue
-(\ ``LPT_SCAN_CONTINUE``\ ), whether the LEB properties should be added to the tree
-in main memory (\ ``LPT_SCAN_ADD``\ ), or whether the scan should stop
-(\ ``LPT_SCAN_STOP``\ ).
+(%LPT_SCAN_CONTINUE), whether the LEB properties should be added to the tree
+in main memory (%LPT_SCAN_ADD), or whether the scan should stop
+(%LPT_SCAN_STOP).
 
 .. _`do_find_free_space`:
 
@@ -298,9 +298,9 @@ Description
 -----------
 
 This function returns a code that indicates whether the scan should continue
-(\ ``LPT_SCAN_CONTINUE``\ ), whether the LEB properties should be added to the tree
-in main memory (\ ``LPT_SCAN_ADD``\ ), or whether the scan should stop
-(\ ``LPT_SCAN_STOP``\ ).
+(%LPT_SCAN_CONTINUE), whether the LEB properties should be added to the tree
+in main memory (%LPT_SCAN_ADD), or whether the scan should stop
+(%LPT_SCAN_STOP).
 
 .. _`scan_for_leb_for_idx`:
 
@@ -391,9 +391,9 @@ Description
 -----------
 
 This function returns a code that indicates whether the scan should continue
-(\ ``LPT_SCAN_CONTINUE``\ ), whether the LEB properties should be added to the tree
-in main memory (\ ``LPT_SCAN_ADD``\ ), or whether the scan should stop
-(\ ``LPT_SCAN_STOP``\ ).
+(%LPT_SCAN_CONTINUE), whether the LEB properties should be added to the tree
+in main memory (%LPT_SCAN_ADD), or whether the scan should stop
+(%LPT_SCAN_STOP).
 
 .. _`find_dirty_idx_leb`:
 

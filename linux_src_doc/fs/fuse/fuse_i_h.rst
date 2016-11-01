@@ -456,7 +456,7 @@ If the child_nodeid is non-zero and:
 - matches the inode number for the dentry matching parent/name,
 - is not a mount point
 - is a file or oan empty directory
-then the dentry is unhashed (\ :c:func:`d_delete`\ ).
+then the dentry is unhashed (d_delete()).
 
 .. This file was automatic generated / don't edit.
 

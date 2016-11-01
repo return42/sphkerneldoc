@@ -1,6 +1,47 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/regmap.h
 
+.. _`regmap_read_poll_timeout`:
+
+regmap_read_poll_timeout
+========================
+
+.. c:function::  regmap_read_poll_timeout( map,  addr,  val,  cond,  sleep_us,  timeout_us)
+
+    Poll until a condition is met or a timeout occurs
+
+    :param  map:
+        Regmap to read from
+
+    :param  addr:
+        Address to poll
+
+    :param  val:
+        Unsigned integer variable to read the value into
+
+    :param  cond:
+        Break condition (usually involving \ ``val``\ )
+
+    :param  sleep_us:
+        Maximum time to sleep between reads in us (0
+        tight-loops).  Should be less than ~20ms since usleep_range
+        is used (see Documentation/timers/timers-howto.txt).
+
+    :param  timeout_us:
+        Timeout in us, 0 means never timeout
+
+.. _`regmap_read_poll_timeout.description`:
+
+Description
+-----------
+
+Returns 0 on success and -ETIMEDOUT upon a timeout or the regmap_read
+error return value in case of a error read. In the two former cases,
+the last read value at \ ``addr``\  is stored in \ ``val``\ . Must not be called
+from atomic context if sleep_us or timeout_us are used.
+
+This is modelled after the readx_poll_timeout macros in linux/iopoll.h.
+
 .. _`regmap_init`:
 
 regmap_init

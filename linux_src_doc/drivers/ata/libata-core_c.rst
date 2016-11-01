@@ -1800,7 +1800,7 @@ ata_std_prereset
 Description
 -----------
 
-\ ``link``\  is about to be reset.  Initialize it.  Failure from
+@link is about to be reset.  Initialize it.  Failure from
 prereset makes libata abort whole reset sequence and give up
 that port, so prereset should be best-effort.  It does its
 best to prepare for reset sequence but if things go wrong, it
@@ -1856,7 +1856,7 @@ allowed to not specify \ ``check_ready``\  and wait itself after this
 function returns.  Device classification is LLD's
 responsibility.
 
-\*\ ``online``\  is set to one iff reset succeeded and \ ``link``\  is online
+\*@online is set to one iff reset succeeded and \ ``link``\  is online
 after reset.
 
 .. _`sata_link_hardreset.locking`:
@@ -2646,7 +2646,7 @@ sata_scr_read
 Description
 -----------
 
-Read SCR register \ ``reg``\  of \ ``link``\  into \*\ ``val``\ .  This function is
+Read SCR register \ ``reg``\  of \ ``link``\  into \*@val.  This function is
 guaranteed to succeed if \ ``link``\  is ap->link, the cable type of
 the port is SATA and the port implements ->scr_read.
 
@@ -3568,7 +3568,7 @@ Waiting for some bits of register to change is a common
 operation for ATA controllers.  This function reads 32bit LE
 IO-mapped register \ ``reg``\  and tests for the following condition.
 
-(\*\ ``reg``\  & mask) != val
+(\*@reg & mask) != val
 
 If the condition is met, it returns; otherwise, the process is
 repeated after \ ``interval_msec``\  until timeout.

@@ -546,7 +546,7 @@ Returns 0 for success, or error
 i40e_rm_default_mac_filter
 ==========================
 
-.. c:function:: int i40e_rm_default_mac_filter(struct i40e_vsi *vsi, u8 *macaddr)
+.. c:function:: void i40e_rm_default_mac_filter(struct i40e_vsi *vsi, u8 *macaddr)
 
     Remove the default MAC filter set by NVM
 
@@ -561,8 +561,8 @@ i40e_rm_default_mac_filter
 Description
 -----------
 
-Some older firmware configurations set up a default promiscuous VLAN
-filter that needs to be removed.
+Remove whatever filter the firmware set up so the driver can manage
+its own filtering intelligently.
 
 .. _`i40e_add_filter`:
 
@@ -635,6 +635,15 @@ NOTE
 This function is expected to be called with mac_filter_list_lock
 being held.
 
+.. _`i40e_del_filter.another-note`:
+
+ANOTHER NOTE
+------------
+
+This function MUST be called from within the context of
+the "safe" variants of any list iterators, e.g. \ :c:func:`list_for_each_entry_safe`\ 
+instead of \ :c:func:`list_for_each_entry`\ .
+
 .. _`i40e_set_mac`:
 
 i40e_set_mac
@@ -697,26 +706,6 @@ i40e_set_rx_mode
     :param struct net_device \*netdev:
         network interface device structure
 
-.. _`i40e_mac_filter_entry_clone`:
-
-i40e_mac_filter_entry_clone
-===========================
-
-.. c:function:: struct i40e_mac_filter *i40e_mac_filter_entry_clone(struct i40e_mac_filter *src)
-
-    Clones a MAC filter entry
-
-    :param struct i40e_mac_filter \*src:
-        source MAC filter entry to be clones
-
-.. _`i40e_mac_filter_entry_clone.description`:
-
-Description
------------
-
-Returns the pointer to newly cloned MAC filter entry or NULL
-in case of error
-
 .. _`i40e_undo_del_filter_entries`:
 
 i40e_undo_del_filter_entries
@@ -740,36 +729,34 @@ Description
 
 MAC filter entries from list were slated to be removed from device.
 
-.. _`i40e_undo_add_filter_entries`:
+.. _`i40e_update_filter_state`:
 
-i40e_undo_add_filter_entries
-============================
+i40e_update_filter_state
+========================
 
-.. c:function:: void i40e_undo_add_filter_entries(struct i40e_vsi *vsi)
+.. c:function:: int i40e_update_filter_state(int count, struct i40e_aqc_add_macvlan_element_data *add_list, struct i40e_mac_filter *add_head, int aq_err)
 
-    Undo the changes made to MAC filter entries
+    Update filter state based on return data from firmware
 
-    :param struct i40e_vsi \*vsi:
-        pointer to vsi struct
+    :param int count:
+        Number of filters added
 
-.. _`i40e_undo_add_filter_entries.description`:
+    :param struct i40e_aqc_add_macvlan_element_data \*add_list:
+        return data from fw
+
+    :param struct i40e_mac_filter \*add_head:
+        *undescribed*
+
+    :param int aq_err:
+        status from fw
+
+.. _`i40e_update_filter_state.description`:
 
 Description
 -----------
 
-MAC filter entries from list were slated to be added from device.
-
-.. _`i40e_cleanup_add_list`:
-
-i40e_cleanup_add_list
-=====================
-
-.. c:function:: void i40e_cleanup_add_list(struct list_head *add_list)
-
-    Deletes the element from add list and release memory
-
-    :param struct list_head \*add_list:
-        Pointer to list which contains MAC filter entries
+MAC filter entries from list were slated to be added to device. Returns
+number of successful filters. Note that 0 does NOT mean success!
 
 .. _`i40e_sync_vsi_filters`:
 
@@ -969,6 +956,30 @@ Description
 -----------
 
 net_device_ops implementation for removing vlan ids
+
+.. _`i40e_macaddr_init`:
+
+i40e_macaddr_init
+=================
+
+.. c:function:: int i40e_macaddr_init(struct i40e_vsi *vsi, u8 *macaddr)
+
+    explicitly write the mac address filters
+
+    :param struct i40e_vsi \*vsi:
+        pointer to the vsi
+
+    :param u8 \*macaddr:
+        the MAC address
+
+.. _`i40e_macaddr_init.description`:
+
+Description
+-----------
+
+This is needed when the macaddr has been obtained by other
+means than the default, e.g., from Open Firmware or IDPROM.
+Returns 0 on success, negative on failure
 
 .. _`i40e_restore_vlan`:
 
@@ -3178,18 +3189,6 @@ i40e_config_rss_aq
     :param u16 lut_size:
         *undescribed*
 
-.. _`i40e_vsi_config_rss`:
-
-i40e_vsi_config_rss
-===================
-
-.. c:function:: int i40e_vsi_config_rss(struct i40e_vsi *vsi)
-
-    Prepare for VSI(VMDq) RSS if used
-
-    :param struct i40e_vsi \*vsi:
-        VSI structure
-
 .. _`i40e_get_rss_aq`:
 
 i40e_get_rss_aq
@@ -3217,6 +3216,18 @@ Description
 -----------
 
 Return 0 on success, negative on failure
+
+.. _`i40e_vsi_config_rss`:
+
+i40e_vsi_config_rss
+===================
+
+.. c:function:: int i40e_vsi_config_rss(struct i40e_vsi *vsi)
+
+    Prepare for VSI(VMDq) RSS if used
+
+    :param struct i40e_vsi \*vsi:
+        VSI structure
 
 .. _`i40e_config_rss_reg`:
 
@@ -3467,6 +3478,18 @@ Description
 
 returns a bool to indicate if reset needs to happen
 
+.. _`i40e_clear_rss_lut`:
+
+i40e_clear_rss_lut
+==================
+
+.. c:function:: void i40e_clear_rss_lut(struct i40e_vsi *vsi)
+
+    clear the rx hash lookup table
+
+    :param struct i40e_vsi \*vsi:
+        the VSI being configured
+
 .. _`i40e_set_features`:
 
 i40e_set_features
@@ -3504,77 +3527,35 @@ Description
 
 Returns the index number or I40E_MAX_PF_UDP_OFFLOAD_PORTS if port not found
 
-.. _`i40e_add_vxlan_port`:
+.. _`i40e_udp_tunnel_add`:
 
-i40e_add_vxlan_port
+i40e_udp_tunnel_add
 ===================
 
-.. c:function:: void i40e_add_vxlan_port(struct net_device *netdev, sa_family_t sa_family, __be16 port)
+.. c:function:: void i40e_udp_tunnel_add(struct net_device *netdev, struct udp_tunnel_info *ti)
 
-    Get notifications about VXLAN ports that come up
+    Get notifications about UDP tunnel ports that come up
 
     :param struct net_device \*netdev:
         This physical port's netdev
 
-    :param sa_family_t sa_family:
-        Socket Family that VXLAN is notifying us about
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
-    :param __be16 port:
-        New UDP port number that VXLAN started listening to
+.. _`i40e_udp_tunnel_del`:
 
-.. _`i40e_del_vxlan_port`:
-
-i40e_del_vxlan_port
+i40e_udp_tunnel_del
 ===================
 
-.. c:function:: void i40e_del_vxlan_port(struct net_device *netdev, sa_family_t sa_family, __be16 port)
+.. c:function:: void i40e_udp_tunnel_del(struct net_device *netdev, struct udp_tunnel_info *ti)
 
-    Get notifications about VXLAN ports that go away
-
-    :param struct net_device \*netdev:
-        This physical port's netdev
-
-    :param sa_family_t sa_family:
-        Socket Family that VXLAN is notifying us about
-
-    :param __be16 port:
-        UDP port number that VXLAN stopped listening to
-
-.. _`i40e_add_geneve_port`:
-
-i40e_add_geneve_port
-====================
-
-.. c:function:: void i40e_add_geneve_port(struct net_device *netdev, sa_family_t sa_family, __be16 port)
-
-    Get notifications about GENEVE ports that come up
+    Get notifications about UDP tunnel ports that go away
 
     :param struct net_device \*netdev:
         This physical port's netdev
 
-    :param sa_family_t sa_family:
-        Socket Family that GENEVE is notifying us about
-
-    :param __be16 port:
-        New UDP port number that GENEVE started listening to
-
-.. _`i40e_del_geneve_port`:
-
-i40e_del_geneve_port
-====================
-
-.. c:function:: void i40e_del_geneve_port(struct net_device *netdev, sa_family_t sa_family, __be16 port)
-
-    Get notifications about GENEVE ports that go away
-
-    :param struct net_device \*netdev:
-        This physical port's netdev
-
-    :param sa_family_t sa_family:
-        Socket Family that GENEVE is notifying us about
-
-    :param __be16 port:
-        UDP port number that GENEVE stopped listening to
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
 .. _`i40e_ndo_fdb_add`:
 
@@ -3826,30 +3807,6 @@ This re-allocates a vsi's queue resources.
 
 Returns pointer to the successfully allocated and configured VSI sw struct
 on success, otherwise returns NULL on failure.
-
-.. _`i40e_macaddr_init`:
-
-i40e_macaddr_init
-=================
-
-.. c:function:: int i40e_macaddr_init(struct i40e_vsi *vsi, u8 *macaddr)
-
-    explicitly write the mac address filters.
-
-    :param struct i40e_vsi \*vsi:
-        pointer to the vsi.
-
-    :param u8 \*macaddr:
-        the MAC address
-
-.. _`i40e_macaddr_init.description`:
-
-Description
------------
-
-This is needed when the macaddr has been obtained by other
-means than the default, e.g., from Open Firmware or IDPROM.
-Returns 0 on success, negative on failure
 
 .. _`i40e_vsi_setup`:
 

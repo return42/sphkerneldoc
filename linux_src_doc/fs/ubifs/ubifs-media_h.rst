@@ -33,7 +33,7 @@ Members
 -------
 
 magic
-    UBIFS node magic number (\ ``UBIFS_NODE_MAGIC``\ )
+    UBIFS node magic number (%UBIFS_NODE_MAGIC)
 
 crc
     CRC-32 checksum of the node header
@@ -192,7 +192,7 @@ mode
     access flags
 
 flags
-    per-inode flags (\ ``UBIFS_COMPR_FL``\ , \ ``UBIFS_SYNC_FL``\ , etc)
+    per-inode flags (%UBIFS_COMPR_FL, \ ``UBIFS_SYNC_FL``\ , etc)
 
 data_len
     inode data length
@@ -229,7 +229,7 @@ nodes of this inode may be compressed with different compressor - this
 happens if compression type is changed while the inode already has data
 nodes. But \ ``compr_type``\  will be use for further writes to the inode.
 
-Note, do not forget to amend '\ :c:func:`zero_ino_node_unused`\ ' function when changing
+Note, do not forget to amend 'zero_ino_node_unused()' function when changing
 the padding fields.
 
 .. _`ubifs_dent_node`:
@@ -277,7 +277,7 @@ padding1
     reserved for future, zeroes
 
 type
-    type of the target inode (\ ``UBIFS_ITYPE_REG``\ , \ ``UBIFS_ITYPE_DIR``\ , etc)
+    type of the target inode (%UBIFS_ITYPE_REG, \ ``UBIFS_ITYPE_DIR``\ , etc)
 
 nlen
     name length
@@ -293,7 +293,7 @@ name
 Description
 -----------
 
-Note, do not forget to amend '\ :c:func:`zero_dent_node_unused`\ ' function when
+Note, do not forget to amend 'zero_dent_node_unused()' function when
 changing the padding fields.
 
 .. _`ubifs_data_node`:
@@ -336,7 +336,7 @@ size
     uncompressed data size in bytes
 
 compr_type
-    compression type (\ ``UBIFS_COMPR_NONE``\ , \ ``UBIFS_COMPR_LZO``\ , etc)
+    compression type (%UBIFS_COMPR_NONE, \ ``UBIFS_COMPR_LZO``\ , etc)
 
 padding
     reserved for future, zeroes
@@ -349,7 +349,7 @@ data
 Description
 -----------
 
-Note, do not forget to amend '\ :c:func:`zero_data_node_unused`\ ' function when
+Note, do not forget to amend 'zero_data_node_unused()' function when
 changing the padding fields.
 
 .. _`ubifs_trun_node`:
@@ -402,7 +402,7 @@ Description
 -----------
 
 This node exists only in the journal and never goes to the main area. Note,
-do not forget to amend '\ :c:func:`zero_trun_node_unused`\ ' function when changing the
+do not forget to amend 'zero_trun_node_unused()' function when changing the
 padding fields.
 
 .. _`ubifs_pad_node`:
@@ -500,7 +500,7 @@ key_fmt
     format of the key
 
 flags
-    file-system flags (\ ``UBIFS_FLG_BIGLPT``\ , etc)
+    file-system flags (%UBIFS_FLG_BIGLPT, etc)
 
 min_io_size
     minimal input/output unit size
@@ -539,7 +539,7 @@ fmt_version
     UBIFS on-flash format version
 
 default_compr
-    default compression algorithm (\ ``UBIFS_COMPR_LZO``\ , etc)
+    default compression algorithm (%UBIFS_COMPR_LZO, etc)
 
 padding1
     reserved for future, zeroes
@@ -629,7 +629,7 @@ cmt_no
     commit number
 
 flags
-    various flags (\ ``UBIFS_MST_DIRTY``\ , etc)
+    various flags (%UBIFS_MST_DIRTY, etc)
 
 log_lnum
     start of the log
@@ -644,7 +644,7 @@ root_len
     root indexing node length
 
 gc_lnum
-    LEB reserved for garbage collection (\ ``-1``\  value means the LEB was
+    LEB reserved for garbage collection (%-1 value means the LEB was
     not reserved and should be reserved on mount)
 
 ihead_lnum

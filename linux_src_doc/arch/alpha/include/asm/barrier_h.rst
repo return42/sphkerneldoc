@@ -34,14 +34,14 @@ not even by data dependencies.  See the documentation for
 \ :c:func:`memory_barrier`\  for examples and URLs to more information.
 
 For example, the following code would force ordering (the initial
-value of "a" is zero, "b" is one, and "p" is "\ :c:type:`struct a <a>`"):
+value of "a" is zero, "b" is one, and "p" is "&a"):
 
 <programlisting>
 CPU 0                           CPU 1
 
 b = 2;
 \ :c:func:`memory_barrier`\ ;
-p = \ :c:type:`struct b <b>`;                         q = p;
+p = \ :c:type:`struct b <b>`\ ;                         q = p;
 \ :c:func:`read_barrier_depends`\ ;
 d = \*q;
 </programlisting>

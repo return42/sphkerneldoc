@@ -1,25 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/page-writeback.c
 
-.. _`zone_dirtyable_memory`:
+.. _`node_dirtyable_memory`:
 
-zone_dirtyable_memory
+node_dirtyable_memory
 =====================
 
-.. c:function:: unsigned long zone_dirtyable_memory(struct zone *zone)
+.. c:function:: unsigned long node_dirtyable_memory(struct pglist_data *pgdat)
 
-    number of dirtyable pages in a zone
+    number of dirtyable pages in a node
 
-    :param struct zone \*zone:
-        the zone
+    :param struct pglist_data \*pgdat:
+        the node
 
-.. _`zone_dirtyable_memory.description`:
+.. _`node_dirtyable_memory.description`:
 
 Description
 -----------
 
-Returns the zone's number of pages potentially available for dirty
-page cache.  This is the base value for the per-zone dirty limits.
+Returns the node's number of pages potentially available for dirty
+page cache.  This is the base value for the per-node dirty limits.
 
 .. _`global_dirtyable_memory`:
 
@@ -87,44 +87,44 @@ Description
 Calculate bg_thresh and thresh for global_wb_domain.  See
 \ :c:func:`domain_dirty_limits`\  for details.
 
-.. _`zone_dirty_limit`:
+.. _`node_dirty_limit`:
 
-zone_dirty_limit
+node_dirty_limit
 ================
 
-.. c:function:: unsigned long zone_dirty_limit(struct zone *zone)
+.. c:function:: unsigned long node_dirty_limit(struct pglist_data *pgdat)
 
-    maximum number of dirty pages allowed in a zone
+    maximum number of dirty pages allowed in a node
 
-    :param struct zone \*zone:
-        the zone
+    :param struct pglist_data \*pgdat:
+        the node
 
-.. _`zone_dirty_limit.description`:
+.. _`node_dirty_limit.description`:
 
 Description
 -----------
 
-Returns the maximum number of dirty pages allowed in a zone, based
-on the zone's dirtyable memory.
+Returns the maximum number of dirty pages allowed in a node, based
+on the node's dirtyable memory.
 
-.. _`zone_dirty_ok`:
+.. _`node_dirty_ok`:
 
-zone_dirty_ok
+node_dirty_ok
 =============
 
-.. c:function:: bool zone_dirty_ok(struct zone *zone)
+.. c:function:: bool node_dirty_ok(struct pglist_data *pgdat)
 
-    tells whether a zone is within its dirty limits
+    tells whether a node is within its dirty limits
 
-    :param struct zone \*zone:
-        the zone to check
+    :param struct pglist_data \*pgdat:
+        the node to check
 
-.. _`zone_dirty_ok.description`:
+.. _`node_dirty_ok.description`:
 
 Description
 -----------
 
-Returns \ ``true``\  when the dirty pages in \ ``zone``\  are within the zone's
+Returns \ ``true``\  when the dirty pages in \ ``pgdat``\  are within the node's
 dirty limit, \ ``false``\  if the limit is exceeded.
 
 .. _`__wb_calc_thresh`:
@@ -134,7 +134,7 @@ __wb_calc_thresh
 
 .. c:function:: unsigned long __wb_calc_thresh(struct dirty_throttle_control *dtc)
 
-    \ ``wb``\ 's share of dirty throttling threshold
+    @wb's share of dirty throttling threshold
 
     :param struct dirty_throttle_control \*dtc:
         dirty_throttle_context of interest
@@ -251,7 +251,7 @@ write_cache_pages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*\ ``wbc``\ ->nr_to_write
+        subtract the number of written pages from \*@wbc->nr_to_write
 
     :param writepage_t writepage:
         function called for each page
@@ -292,7 +292,7 @@ generic_writepages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*\ ``wbc``\ ->nr_to_write
+        subtract the number of written pages from \*@wbc->nr_to_write
 
 .. _`generic_writepages.description`:
 

@@ -35,10 +35,10 @@ data_nodes_cmp
         UBIFS file-system description object
 
     :param struct list_head \*a:
-        second data node
+        first data node
 
     :param struct list_head \*b:
-        *undescribed*
+        second data node
 
 .. _`data_nodes_cmp.description`:
 
@@ -86,7 +86,7 @@ nodes with higher block number;
 Non-data nodes are sorted as follows.
 o First go inode nodes - they are sorted in descending length order.
 o Then go directory entry nodes - they are sorted in hash order, which
-should supposedly optimize '\ :c:func:`readdir`\ '. Direntry nodes with lower parent
+should supposedly optimize 'readdir()'. Direntry nodes with lower parent
 inode number go before direntry nodes with higher parent inode number,
 and direntry nodes with lower name hash values go before direntry nodes
 with higher name hash values.

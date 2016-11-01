@@ -21,25 +21,6 @@ Description
 Return true if the PCI device is bridge whether it has subordinate
 or not.
 
-.. _`define_pci_device_table`:
-
-DEFINE_PCI_DEVICE_TABLE
-=======================
-
-.. c:function::  DEFINE_PCI_DEVICE_TABLE( _table)
-
-    macro used to describe a pci device table
-
-    :param  _table:
-        device table name
-
-.. _`define_pci_device_table.description`:
-
-Description
------------
-
-This macro is deprecated and should not be used in new code.
-
 .. _`pci_device`:
 
 PCI_DEVICE

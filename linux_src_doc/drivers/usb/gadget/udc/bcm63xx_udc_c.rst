@@ -1323,7 +1323,7 @@ bcm63xx_udc_cleanup_debugfs
 Description
 -----------
 
-\ :c:func:`debugfs_remove`\  is safe to call with a NULL argument.
+debugfs_remove() is safe to call with a NULL argument.
 
 .. _`bcm63xx_udc_probe`:
 

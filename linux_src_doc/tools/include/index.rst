@@ -9,3 +9,4 @@ include
 
     asm-generic/index
     linux/index
+    uapi/index

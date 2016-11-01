@@ -23,7 +23,7 @@ Description
 
 Registers the specified DRM device driver and platform device with the DRM
 subsystem, initializing a drm_device structure and calling the driver's
-.\ :c:func:`load`\  function.
+.load() function.
 
 .. _`drm_platform_init.note`:
 
@@ -31,7 +31,7 @@ NOTE
 ----
 
 This function is deprecated, please use \ :c:func:`drm_dev_alloc`\  and
-\ :c:func:`drm_dev_register`\  instead and remove your ->\ :c:func:`load`\  callback.
+\ :c:func:`drm_dev_register`\  instead and remove your ->load() callback.
 
 .. _`drm_platform_init.return`:
 

@@ -6,7 +6,7 @@
 rxrpc_kernel_begin_call
 =======================
 
-.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, gfp_t gfp)
+.. c:function:: struct rxrpc_call *rxrpc_kernel_begin_call(struct socket *sock, struct sockaddr_rxrpc *srx, struct key *key, unsigned long user_call_ID, gfp_t gfp, rxrpc_notify_rx_t notify_rx)
 
     Allow a kernel service to begin a call
 
@@ -14,7 +14,7 @@ rxrpc_kernel_begin_call
         The socket on which to make the call
 
     :param struct sockaddr_rxrpc \*srx:
-        The address of the peer to contact (defaults to socket setting)
+        The address of the peer to contact
 
     :param struct key \*key:
         The security context to use (defaults to socket setting)
@@ -23,7 +23,10 @@ rxrpc_kernel_begin_call
         The ID to use
 
     :param gfp_t gfp:
-        *undescribed*
+        The allocation constraints
+
+    :param rxrpc_notify_rx_t notify_rx:
+        Where to send notifications instead of socket queue
 
 .. _`rxrpc_kernel_begin_call.description`:
 
@@ -42,9 +45,12 @@ supplying \ ``srx``\  and \ ``key``\ .
 rxrpc_kernel_end_call
 =====================
 
-.. c:function:: void rxrpc_kernel_end_call(struct rxrpc_call *call)
+.. c:function:: void rxrpc_kernel_end_call(struct socket *sock, struct rxrpc_call *call)
 
     Allow a kernel service to end a call it was using
+
+    :param struct socket \*sock:
+        The socket the call is on
 
     :param struct rxrpc_call \*call:
         The call to end
@@ -57,31 +63,30 @@ Description
 Allow a kernel service to end a call it was using.  The call must be
 complete before this is called (the call should be aborted if necessary).
 
-.. _`rxrpc_kernel_intercept_rx_messages`:
+.. _`rxrpc_kernel_new_call_notification`:
 
-rxrpc_kernel_intercept_rx_messages
+rxrpc_kernel_new_call_notification
 ==================================
 
-.. c:function:: void rxrpc_kernel_intercept_rx_messages(struct socket *sock, rxrpc_interceptor_t interceptor)
+.. c:function:: void rxrpc_kernel_new_call_notification(struct socket *sock, rxrpc_notify_new_call_t notify_new_call, rxrpc_discard_new_call_t discard_new_call)
 
-    Intercept received RxRPC messages
+    Get notifications of new calls
 
     :param struct socket \*sock:
         The socket to intercept received messages on
 
-    :param rxrpc_interceptor_t interceptor:
-        The function to pass the messages to
+    :param rxrpc_notify_new_call_t notify_new_call:
+        Function to be called when new calls appear
 
-.. _`rxrpc_kernel_intercept_rx_messages.description`:
+    :param rxrpc_discard_new_call_t discard_new_call:
+        Function to discard preallocated calls
+
+.. _`rxrpc_kernel_new_call_notification.description`:
 
 Description
 -----------
 
-Allow a kernel service to intercept messages heading for the Rx queue on an
-RxRPC socket.  They get passed to the specified function instead.
-\ ``interceptor``\  should free the socket buffers it is given.  \ ``interceptor``\  is
-called with the socket receive queue spinlock held and softirqs disabled -
-this ensures that the messages will be delivered in the right order.
+Allow a kernel service to be given notifications about new calls.
 
 .. This file was automatic generated / don't edit.
 

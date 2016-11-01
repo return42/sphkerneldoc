@@ -80,7 +80,7 @@ devm_lcd_device_register
 Description
 -----------
 
-\ ``return``\  a struct lcd on success, or an ERR_PTR on error
+@return a struct lcd on success, or an ERR_PTR on error
 
 Managed \ :c:func:`lcd_device_register`\ . The lcd_device returned from this function
 are automatically freed on driver detach. See \ :c:func:`lcd_device_register`\ 

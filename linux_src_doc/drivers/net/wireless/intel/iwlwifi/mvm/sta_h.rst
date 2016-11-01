@@ -80,6 +80,7 @@ Definition
         u16 txq_id;
         u16 ssn;
         u16 tx_time;
+        bool is_tid_active;
     }
 
 .. _`iwl_mvm_tid_data.members`:
@@ -118,6 +119,11 @@ ssn
 
 tx_time
     medium time consumed by this A-MPDU
+
+is_tid_active
+    has this TID sent traffic in the last
+    \ ``IWL_MVM_DQA_QUEUE_TIMEOUT``\  time period. If \ ``txq_id``\  is invalid, this
+    field should be ignored.
 
 .. _`iwl_mvm_rxq_dup_data`:
 
@@ -191,6 +197,7 @@ Definition
         bool tlc_amsdu;
         u8 agg_tids;
         u8 sleep_tx_count;
+        u8 avg_energy;
     }
 
 .. _`iwl_mvm_sta.members`:
@@ -275,6 +282,9 @@ sleep_tx_count
     gets empty before all the frames were sent, which can happen when
     we are sending frames from an AMPDU queue and there was a hole in
     the BA window. To be used for UAPSD only.
+
+avg_energy
+    *undescribed*
 
 .. _`iwl_mvm_sta.description`:
 

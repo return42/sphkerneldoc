@@ -12,5 +12,7 @@ host
     pci-keystone_c
     pci-xgene_c
     pcie-iproc_c
+    pcie-rockchip_c
     pcie-xilinx-nwl_c
     pcie-xilinx_c
+    vmd_c

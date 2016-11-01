@@ -42,7 +42,7 @@ qla4_83xx_poll_reg
         Mask value read with "test_mask"
 
     :param uint32_t test_result:
-        Compare (value\ :c:type:`struct test_mask <test_mask>`) with test_result.
+        Compare (value&test_mask) with test_result.
 
 .. _`qla4_83xx_read_reset_template`:
 

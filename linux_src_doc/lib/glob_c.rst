@@ -22,7 +22,7 @@ Description
 -----------
 
 Perform shell-style glob matching, returning true (1) if the match
-succeeds, or false (0) if it fails.  Equivalent to !fnmatch(\ ``pat``\ , \ ``str``\ , 0).
+succeeds, or false (0) if it fails.  Equivalent to !fnmatch(@pat, \ ``str``\ , 0).
 
 Pattern metacharacters are ?, \*, [ and \.
 (And, inside character classes, !, - and ].)
@@ -36,12 +36,12 @@ does not preprocess the patterns.  It is non-recursive, and run-time
 is at most quadratic
 --------------------
 
-strlen(\ ``str``\ )\*strlen(\ ``pat``\ ).
+strlen(@str)\*strlen(@pat).
 
 An example of the worst case is glob_match("\*aaaaa", "aaaaaaaaaa");
 it takes 6 passes over the pattern before matching the string.
 
-Like !fnmatch(\ ``pat``\ , \ ``str``\ , 0) and unlike the shell, this does NOT
+Like !fnmatch(@pat, \ ``str``\ , 0) and unlike the shell, this does NOT
 treat / or leading . specially; it isn't actually used for pathnames.
 
 Note that according to glob(7) (and unlike bash), character classes

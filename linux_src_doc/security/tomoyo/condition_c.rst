@@ -14,7 +14,7 @@ tomoyo_argv
         Index number of \ ``arg_ptr``\ .
 
     :param const char \*arg_ptr:
-        Contents of argv[\ ``index``\ ].
+        Contents of argv[@index].
 
     :param const int argc:
         Length of \ ``argv``\ .
@@ -23,7 +23,7 @@ tomoyo_argv
         Pointer to "struct tomoyo_argv".
 
     :param u8 \*checked:
-        Set to true if \ ``argv``\ [\ ``index``\ ] was found.
+        Set to true if \ ``argv``\ [@index] was found.
 
 .. _`tomoyo_argv.description`:
 
@@ -54,7 +54,7 @@ tomoyo_envp
         Pointer to "struct tomoyo_envp".
 
     :param u8 \*checked:
-        Set to true if \ ``envp``\ [\ ``env_name``\ ] was found.
+        Set to true if \ ``envp``\ [@env_name] was found.
 
 .. _`tomoyo_envp.description`:
 
@@ -126,7 +126,7 @@ tomoyo_get_dqword
 
 .. c:function:: const struct tomoyo_path_info *tomoyo_get_dqword(char *start)
 
-    \ :c:func:`tomoyo_get_name`\  for a quoted string.
+    tomoyo_get_name() for a quoted string.
 
     :param char \*start:
         String to save.

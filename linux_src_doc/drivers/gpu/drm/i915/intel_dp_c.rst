@@ -26,12 +26,15 @@ will return true, and false otherwise.
 intel_dp_set_drrs_state
 =======================
 
-.. c:function:: void intel_dp_set_drrs_state(struct drm_device *dev, int refresh_rate)
+.. c:function:: void intel_dp_set_drrs_state(struct drm_i915_private *dev_priv, struct intel_crtc_state *crtc_state, int refresh_rate)
 
     program registers for RR switch to take effect
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+    :param struct intel_crtc_state \*crtc_state:
+        a pointer to the active intel_crtc_state
 
     :param int refresh_rate:
         RR to be programmed
@@ -53,12 +56,15 @@ The caller of this function needs to take a lock on dev_priv->drrs.
 intel_edp_drrs_enable
 =====================
 
-.. c:function:: void intel_edp_drrs_enable(struct intel_dp *intel_dp)
+.. c:function:: void intel_edp_drrs_enable(struct intel_dp *intel_dp, struct intel_crtc_state *crtc_state)
 
     init drrs struct if supported
 
     :param struct intel_dp \*intel_dp:
         DP struct
+
+    :param struct intel_crtc_state \*crtc_state:
+        A pointer to the active crtc state.
 
 .. _`intel_edp_drrs_enable.description`:
 
@@ -72,26 +78,29 @@ Initializes frontbuffer_bits and drrs.dp
 intel_edp_drrs_disable
 ======================
 
-.. c:function:: void intel_edp_drrs_disable(struct intel_dp *intel_dp)
+.. c:function:: void intel_edp_drrs_disable(struct intel_dp *intel_dp, struct intel_crtc_state *old_crtc_state)
 
     Disable DRRS
 
     :param struct intel_dp \*intel_dp:
         DP struct
 
+    :param struct intel_crtc_state \*old_crtc_state:
+        Pointer to old crtc_state.
+
 .. _`intel_edp_drrs_invalidate`:
 
 intel_edp_drrs_invalidate
 =========================
 
-.. c:function:: void intel_edp_drrs_invalidate(struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_edp_drrs_invalidate(struct drm_i915_private *dev_priv, unsigned int frontbuffer_bits)
 
     Disable Idleness DRRS
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
-    :param unsigned frontbuffer_bits:
+    :param unsigned int frontbuffer_bits:
         frontbuffer plane tracking bits
 
 .. _`intel_edp_drrs_invalidate.description`:
@@ -109,14 +118,14 @@ Dirty frontbuffers relevant to DRRS are tracked in busy_frontbuffer_bits.
 intel_edp_drrs_flush
 ====================
 
-.. c:function:: void intel_edp_drrs_flush(struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_edp_drrs_flush(struct drm_i915_private *dev_priv, unsigned int frontbuffer_bits)
 
     Restart Idleness DRRS
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
-    :param unsigned frontbuffer_bits:
+    :param unsigned int frontbuffer_bits:
         frontbuffer plane tracking bits
 
 .. _`intel_edp_drrs_flush.description`:

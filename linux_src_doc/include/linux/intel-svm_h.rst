@@ -28,7 +28,7 @@ Description
 -----------
 
 This function attempts to enable PASID support for the given device.
-If the \ ``pasid``\  argument is non-\ ``NULL``\ , a PASID is allocated for access
+If the \ ``pasid``\  argument is non-%NULL, a PASID is allocated for access
 to the MM of the current process.
 
 By using a \ ``NULL``\  value for the \ ``pasid``\  argument, this function can

@@ -6,15 +6,15 @@
 cvm_oct_do_interrupt
 ====================
 
-.. c:function:: irqreturn_t cvm_oct_do_interrupt(int cpl, void *dev_id)
+.. c:function:: irqreturn_t cvm_oct_do_interrupt(int irq, void *napi_id)
 
     interrupt handler.
 
-    :param int cpl:
-        Interrupt number. Unused
+    :param int irq:
+        Interrupt number.
 
-    :param void \*dev_id:
-        Cookie to identify the device. Unused
+    :param void \*napi_id:
+        Cookie to identify the NAPI instance.
 
 .. _`cvm_oct_do_interrupt.description`:
 
@@ -52,7 +52,7 @@ cvm_oct_napi_poll
     the NAPI poll function.
 
     :param struct napi_struct \*napi:
-        The NAPI instance, or null if called from cvm_oct_poll_controller
+        The NAPI instance.
 
     :param int budget:
         Maximum number of packets to receive.

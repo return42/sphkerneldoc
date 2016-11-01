@@ -116,7 +116,7 @@ regulator_map_voltage_iterate
 
 .. c:function:: int regulator_map_voltage_iterate(struct regulator_dev *rdev, int min_uV, int max_uV)
 
-    \ :c:func:`map_voltage`\  based on \ :c:func:`list_voltage`\ 
+    map_voltage() based on \ :c:func:`list_voltage`\ 
 
     :param struct regulator_dev \*rdev:
         Regulator to operate on
@@ -144,7 +144,7 @@ regulator_map_voltage_ascend
 
 .. c:function:: int regulator_map_voltage_ascend(struct regulator_dev *rdev, int min_uV, int max_uV)
 
-    \ :c:func:`map_voltage`\  for ascendant voltage list
+    map_voltage() for ascendant voltage list
 
     :param struct regulator_dev \*rdev:
         Regulator to operate on
@@ -170,7 +170,7 @@ regulator_map_voltage_linear
 
 .. c:function:: int regulator_map_voltage_linear(struct regulator_dev *rdev, int min_uV, int max_uV)
 
-    \ :c:func:`map_voltage`\  for simple linear mappings
+    map_voltage() for simple linear mappings
 
     :param struct regulator_dev \*rdev:
         Regulator to operate on
@@ -196,7 +196,7 @@ regulator_map_voltage_linear_range
 
 .. c:function:: int regulator_map_voltage_linear_range(struct regulator_dev *rdev, int min_uV, int max_uV)
 
-    \ :c:func:`map_voltage`\  for multiple linear ranges
+    map_voltage() for multiple linear ranges
 
     :param struct regulator_dev \*rdev:
         Regulator to operate on

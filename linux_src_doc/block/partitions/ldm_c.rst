@@ -18,9 +18,9 @@ ldm_debug
 Description
 -----------
 
-Copyright (C) 2001,2002 Richard Russon <ldm\ ``flatcap``\ .org>
+Copyright (C) 2001,2002 Richard Russon <ldm@flatcap.org>
 Copyright (c) 2001-2012 Anton Altaparmakov
-Copyright (C) 2001,2002 Jakob Kemi <jakob.kemi\ ``telia``\ .com>
+Copyright (C) 2001,2002 Jakob Kemi <jakob.kemi@telia.com>
 
 Documentation is available at http://www.linux-ntfs.org/doku.php?id=downloads
 

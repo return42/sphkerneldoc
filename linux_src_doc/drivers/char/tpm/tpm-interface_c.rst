@@ -107,6 +107,25 @@ Description
 Returns 0 on success, < 0 in case of fatal error or a value > 0 representing
 a TPM error code.
 
+.. _`tpm1_auto_startup`:
+
+tpm1_auto_startup
+=================
+
+.. c:function:: int tpm1_auto_startup(struct tpm_chip *chip)
+
+    Perform the standard automatic TPM initialization sequence
+
+    :param struct tpm_chip \*chip:
+        TPM chip to use
+
+.. _`tpm1_auto_startup.description`:
+
+Description
+-----------
+
+Returns 0 on success, < 0 in case of fatal error.
+
 .. _`tpm_get_random`:
 
 tpm_get_random

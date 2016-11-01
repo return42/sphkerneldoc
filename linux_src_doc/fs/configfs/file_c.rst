@@ -94,11 +94,11 @@ descriptor is in the file's ->d_fsdata. The target item is in the
 directory's ->d_fsdata.
 
 We check whether we need to refill the buffer. If so we will
-call the attributes' attr->\ :c:func:`read`\  twice. The first time we
+call the attributes' attr->read() twice. The first time we
 will pass a NULL as a buffer pointer, which the attributes' method
 will use to return the size of the buffer required. If no error
 occurs we will allocate the buffer using vmalloc and call
-attr->\ :c:func:`read`\  again passing that buffer as an argument.
+attr->read() again passing that buffer as an argument.
 Then we just copy to user-space using simple_read_from_buffer.
 
 .. _`fill_write_buffer`:

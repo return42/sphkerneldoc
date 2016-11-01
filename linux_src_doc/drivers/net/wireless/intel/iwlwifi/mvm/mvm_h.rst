@@ -116,7 +116,7 @@ enum iwl_power_scheme
 
 .. c:type:: enum iwl_power_scheme
 
-    \ ``IWL_POWER_LEVEL_CAM``\  - Continuously Active Mode \ ``IWL_POWER_LEVEL_BPS``\  - Balanced Power Save (default) \ ``IWL_POWER_LEVEL_LP``\   - Low Power
+    @IWL_POWER_LEVEL_CAM - Continuously Active Mode \ ``IWL_POWER_LEVEL_BPS``\  - Balanced Power Save (default) \ ``IWL_POWER_LEVEL_LP``\   - Low Power
 
 .. _`iwl_power_scheme.definition`:
 
@@ -252,6 +252,7 @@ Definition
         u8 uapsd_misbehaving_bssid[ETH_ALEN];
         bool csa_countdown;
         bool csa_failed;
+        u16 csa_target_freq;
         netdev_features_t features;
         bool lqm_active;
     }
@@ -356,6 +357,9 @@ csa_countdown
 
 csa_failed
     CSA failed to schedule time event, report an error later
+
+csa_target_freq
+    *undescribed*
 
 features
     hw features active for this vif

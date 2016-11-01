@@ -6,29 +6,26 @@
 i915_gem_evict_something
 ========================
 
-.. c:function:: int i915_gem_evict_something(struct drm_device *dev, struct i915_address_space *vm, int min_size, unsigned alignment, unsigned cache_level, unsigned long start, unsigned long end, unsigned flags)
+.. c:function:: int i915_gem_evict_something(struct i915_address_space *vm, u64 min_size, u64 alignment, unsigned cache_level, u64 start, u64 end, unsigned flags)
 
     Evict vmas to make room for binding a new one
-
-    :param struct drm_device \*dev:
-        drm_device
 
     :param struct i915_address_space \*vm:
         address space to evict from
 
-    :param int min_size:
+    :param u64 min_size:
         size of the desired free space
 
-    :param unsigned alignment:
+    :param u64 alignment:
         alignment constraint of the desired free space
 
     :param unsigned cache_level:
         cache_level for the desired space
 
-    :param unsigned long start:
+    :param u64 start:
         start (inclusive) of the range from which to evict objects
 
-    :param unsigned long end:
+    :param u64 end:
         end (exclusive) of the range from which to evict objects
 
     :param unsigned flags:
@@ -49,12 +46,7 @@ Since this function is only used to free up virtual address space it only
 ignores pinned vmas, and not object where the backing storage itself is
 pinned. Hence obj->pages_pin_count does not protect against eviction.
 
-.. _`i915_gem_evict_something.to-clarify`:
-
-To clarify
-----------
-
-This is for freeing up virtual address space, not for freeing
+To clarify: This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
 
 .. _`i915_gem_evict_vm`:
@@ -83,12 +75,7 @@ evicted the \ ``do_idle``\  needs to be set to true.
 This is used by the execbuf code as a last-ditch effort to defragment the
 address space.
 
-.. _`i915_gem_evict_vm.to-clarify`:
-
-To clarify
-----------
-
-This is for freeing up virtual address space, not for freeing
+To clarify: This is for freeing up virtual address space, not for freeing
 memory in e.g. the shrinker.
 
 .. This file was automatic generated / don't edit.

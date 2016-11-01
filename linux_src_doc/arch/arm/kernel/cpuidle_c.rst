@@ -49,8 +49,7 @@ Description
 This function calls the underlying arch specific low level PM code as
 registered at the init time.
 
-Returns -EOPNOTSUPP if no suspend callback is defined, the result of the
-callback otherwise.
+Returns the result of the suspend callback.
 
 .. _`arm_cpuidle_get_ops`:
 
@@ -100,7 +99,8 @@ cpuidle_ops are tagged \__initconst and will be unloaded after the init
 process.
 
 Return 0 on sucess, -ENOENT if no 'enable-method' is defined, -EOPNOTSUPP if
-no cpuidle_ops is registered for the 'enable-method'.
+no cpuidle_ops is registered for the 'enable-method', or if either init or
+suspend callback isn't defined.
 
 .. _`arm_cpuidle_init`:
 
@@ -130,7 +130,8 @@ Return
 
 0 on success,
 -ENODEV if it fails to find the cpu node in the device tree,
--EOPNOTSUPP if it does not find a registered cpuidle_ops for this cpu,
+-EOPNOTSUPP if it does not find a registered and valid cpuidle_ops for
+this cpu,
 -ENOENT if it fails to find an 'enable-method' property,
 -ENXIO if the HW reports a failure or a misconfiguration,
 -ENOMEM if the HW report an memory allocation failure

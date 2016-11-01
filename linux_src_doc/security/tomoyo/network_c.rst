@@ -164,7 +164,7 @@ tomoyo_merge_inet_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_inet_acl.description`:
 
@@ -189,7 +189,7 @@ tomoyo_merge_unix_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_unix_acl.description`:
 

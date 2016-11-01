@@ -21,4 +21,4 @@ dac
     ad5764_c
     ad5791_c
     ad7303_c
-    stx104_c
+    cio-dac_c

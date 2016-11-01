@@ -62,7 +62,7 @@ local_add_return
 Description
 -----------
 
-Atomically adds \ ``i``\  to \ ``l``\  and return (\ ``i``\  + \ ``l``\ ).
+Atomically adds \ ``i``\  to \ ``l``\  and return (@i + \ ``l``\ ).
 
 .. _`local_sub_return`:
 
@@ -84,7 +84,7 @@ local_sub_return
 Description
 -----------
 
-Atomically subtracts \ ``i``\  from \ ``l``\  and return (\ ``l``\  - \ ``i``\ ).
+Atomically subtracts \ ``i``\  from \ ``l``\  and return (@l - \ ``i``\ ).
 
 .. _`local_add`:
 

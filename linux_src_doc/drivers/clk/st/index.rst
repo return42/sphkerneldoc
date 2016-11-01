@@ -8,5 +8,4 @@ st
     :maxdepth: 1
 
     clkgen-fsyn_c
-    clkgen-mux_c
     clkgen-pll_c

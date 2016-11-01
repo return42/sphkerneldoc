@@ -8,7 +8,7 @@ ll_invalidatepage
 
 .. c:function:: void ll_invalidatepage(struct page *vmpage, unsigned int offset, unsigned int length)
 
-    :\ :c:func:`invalidatepage`\  method. This method is called when the page is truncate from a file, either as a result of explicit truncate, or when inode is removed from memory (as a result of final \ :c:func:`iput`\ , umount, or memory pressure induced icache shrinking).
+    :invalidatepage() method. This method is called when the page is truncate from a file, either as a result of explicit truncate, or when inode is removed from memory (as a result of final \ :c:func:`iput`\ , umount, or memory pressure induced icache shrinking).
 
     :param struct page \*vmpage:
         *undescribed*

@@ -15,5 +15,28 @@ QETH_CMD_BUFFER_NO
 
 .. c:function::  QETH_CMD_BUFFER_NO()
 
+.. _`qeth_get_elements_for_range`:
+
+qeth_get_elements_for_range
+===========================
+
+.. c:function:: int qeth_get_elements_for_range(addr_t start, addr_t end)
+
+    find number of SBALEs to cover range.
+
+    :param addr_t start:
+        Start of the address range.
+
+    :param addr_t end:
+        Address after the end of the range.
+
+.. _`qeth_get_elements_for_range.description`:
+
+Description
+-----------
+
+Returns the number of pages, and thus QDIO buffer elements, needed to cover
+the specified address range.
+
 .. This file was automatic generated / don't edit.
 

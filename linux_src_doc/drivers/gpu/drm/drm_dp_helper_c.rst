@@ -182,6 +182,115 @@ Description
 
 Returns 0 on success or a negative error code on failure.
 
+.. _`drm_dp_downstream_max_clock`:
+
+drm_dp_downstream_max_clock
+===========================
+
+.. c:function:: int drm_dp_downstream_max_clock(const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4])
+
+    extract branch device max pixel rate for legacy VGA converter or max TMDS clock rate for others
+
+    :param const u8 dpcd:
+        DisplayPort configuration data
+
+    :param const u8 port_cap:
+        port capabilities
+
+.. _`drm_dp_downstream_max_clock.description`:
+
+Description
+-----------
+
+Returns max clock in kHz on success or 0 if max clock not defined
+
+.. _`drm_dp_downstream_max_bpc`:
+
+drm_dp_downstream_max_bpc
+=========================
+
+.. c:function:: int drm_dp_downstream_max_bpc(const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4])
+
+    extract branch device max bits per component
+
+    :param const u8 dpcd:
+        DisplayPort configuration data
+
+    :param const u8 port_cap:
+        port capabilities
+
+.. _`drm_dp_downstream_max_bpc.description`:
+
+Description
+-----------
+
+Returns max bpc on success or 0 if max bpc not defined
+
+.. _`drm_dp_downstream_id`:
+
+drm_dp_downstream_id
+====================
+
+.. c:function:: int drm_dp_downstream_id(struct drm_dp_aux *aux, char id[6])
+
+    identify branch device
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+    :param char id:
+        DisplayPort branch device id
+
+.. _`drm_dp_downstream_id.description`:
+
+Description
+-----------
+
+Returns branch device id on success or NULL on failure
+
+.. _`drm_dp_downstream_debug`:
+
+drm_dp_downstream_debug
+=======================
+
+.. c:function:: void drm_dp_downstream_debug(struct seq_file *m, const u8 dpcd[DP_RECEIVER_CAP_SIZE], const u8 port_cap[4], struct drm_dp_aux *aux)
+
+    debug DP branch devices
+
+    :param struct seq_file \*m:
+        pointer for debugfs file
+
+    :param const u8 dpcd:
+        DisplayPort configuration data
+
+    :param const u8 port_cap:
+        port capabilities
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+.. _`drm_dp_aux_init`:
+
+drm_dp_aux_init
+===============
+
+.. c:function:: void drm_dp_aux_init(struct drm_dp_aux *aux)
+
+    minimally initialise an aux channel
+
+    :param struct drm_dp_aux \*aux:
+        DisplayPort AUX channel
+
+.. _`drm_dp_aux_init.description`:
+
+Description
+-----------
+
+If you need to use the drm_dp_aux's i2c adapter prior to registering it
+with the outside world, call \ :c:func:`drm_dp_aux_init`\  first. You must still
+call \ :c:func:`drm_dp_aux_register`\  once the connector has been registered to
+allow userspace access to the auxiliary DP channel.
+
 .. _`drm_dp_aux_register`:
 
 drm_dp_aux_register
@@ -199,6 +308,8 @@ drm_dp_aux_register
 Description
 -----------
 
+Automatically calls \ :c:func:`drm_dp_aux_init`\  if this hasn't been done yet.
+
 Returns 0 on success or a negative error code on failure.
 
 .. _`drm_dp_aux_unregister`:
@@ -212,6 +323,26 @@ drm_dp_aux_unregister
 
     :param struct drm_dp_aux \*aux:
         DisplayPort AUX channel
+
+.. _`drm_dp_psr_setup_time`:
+
+drm_dp_psr_setup_time
+=====================
+
+.. c:function:: int drm_dp_psr_setup_time(const u8 psr_cap[EDP_PSR_RECEIVER_CAP_SIZE])
+
+    PSR setup in time usec
+
+    :param const u8 psr_cap:
+        PSR capabilities from DPCD
+
+.. _`drm_dp_psr_setup_time.return`:
+
+Return
+------
+
+PSR setup time for the panel in microseconds,  negative
+error code on failure.
 
 .. This file was automatic generated / don't edit.
 

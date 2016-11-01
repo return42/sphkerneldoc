@@ -99,6 +99,25 @@ queued_read_unlock
     :param struct qrwlock \*lock:
         Pointer to queue rwlock structure
 
+.. _`__qrwlock_write_byte`:
+
+__qrwlock_write_byte
+====================
+
+.. c:function:: u8 *__qrwlock_write_byte(struct qrwlock *lock)
+
+    retrieve the write byte address of a queue rwlock
+
+    :param struct qrwlock \*lock:
+        Pointer to queue rwlock structure
+
+.. _`__qrwlock_write_byte.return`:
+
+Return
+------
+
+the write byte address of a queue rwlock
+
 .. _`queued_write_unlock`:
 
 queued_write_unlock

@@ -52,7 +52,7 @@ Description
 
 Output port descriptor, used by switch driver to tell which output
 port this output device corresponds to. Filled in at output device's
-probe time by switch::\ :c:func:`assign`\ . Passed from output device driver to
+probe time by switch::assign(). Passed from output device driver to
 switch related code to enable/disable its port.
 
 .. _`intel_th_device`:
@@ -203,13 +203,13 @@ disable
     disable tracing for a given output device
 
 irq
-    *undescribed*
+    interrupt callback
 
 activate
-    *undescribed*
+    enable tracing on the output's side
 
 deactivate
-    *undescribed*
+    disable tracing on the output's side
 
 fops
     file operations for device nodes
@@ -251,6 +251,9 @@ Definition
         struct intel_th_device *hub;
         int id;
         int major;
+    #ifdef CONFIG_MODULES
+        struct work_struct request_module_work;
+    #endif
     #ifdef CONFIG_INTEL_TH_DEBUG
         struct dentry *dbg;
     #endif
@@ -275,6 +278,9 @@ id
 
 major
     device node major for output devices
+
+request_module_work
+    *undescribed*
 
 dbg
     *undescribed*

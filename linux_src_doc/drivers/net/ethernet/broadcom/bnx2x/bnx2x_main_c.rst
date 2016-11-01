@@ -63,7 +63,7 @@ bnx2x_get_common_flags
 Description
 -----------
 
-\ ``bp``\           device handle
+@bp          device handle
 \ ``fp``\           queue handle
 \ ``zero_stats``\   TRUE if statistics zeroing is needed
 

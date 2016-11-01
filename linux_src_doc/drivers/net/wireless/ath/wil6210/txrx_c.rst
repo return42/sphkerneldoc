@@ -141,7 +141,7 @@ wil_tx_desc_offload_setup_tso
 
 .. c:function:: void wil_tx_desc_offload_setup_tso(struct vring_tx_desc *d, struct sk_buff *skb, int tso_desc_type, bool is_ipv4, int tcp_hdr_len, int skb_net_hdr_len)
 
-    \ ``skb``\  is used to obtain the protocol and headers length.
+    @skb is used to obtain the protocol and headers length.
 
     :param struct vring_tx_desc \*d:
         *undescribed*
@@ -169,7 +169,7 @@ wil_tx_desc_offload_setup
 
 .. c:function:: int wil_tx_desc_offload_setup(struct vring_tx_desc *d, struct sk_buff *skb)
 
-    \ ``skb``\  is used to obtain the protocol and headers length.
+    @skb is used to obtain the protocol and headers length.
 
     :param struct vring_tx_desc \*d:
         *undescribed*

@@ -27,7 +27,7 @@ nilfs_bmap_lookup_at_level
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_lookup_at_level`\  finds a record whose key
+nilfs_bmap_lookup_at_level() finds a record whose key
 matches \ ``key``\  in the block at \ ``level``\  of the bmap.
 
 .. _`nilfs_bmap_lookup_at_level.return-value`:
@@ -68,7 +68,7 @@ nilfs_bmap_insert
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_insert`\  inserts the new key-record pair specified
+nilfs_bmap_insert() inserts the new key-record pair specified
 by \ ``key``\  and \ ``rec``\  into \ ``bmap``\ .
 
 .. _`nilfs_bmap_insert.return-value`:
@@ -108,7 +108,7 @@ nilfs_bmap_seek_key
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_seek_key`\  seeks a valid key on \ ``bmap``\ 
+nilfs_bmap_seek_key() seeks a valid key on \ ``bmap``\ 
 starting from \ ``start``\ , and stores it to \ ``keyp``\  if found.
 
 .. _`nilfs_bmap_seek_key.return-value`:
@@ -145,7 +145,7 @@ nilfs_bmap_delete
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_delete`\  deletes the key-record pair specified by
+nilfs_bmap_delete() deletes the key-record pair specified by
 \ ``key``\  from \ ``bmap``\ .
 
 .. _`nilfs_bmap_delete.return-value`:
@@ -182,7 +182,7 @@ nilfs_bmap_truncate
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_truncate`\  removes key-record pairs whose keys are
+nilfs_bmap_truncate() removes key-record pairs whose keys are
 greater than or equal to \ ``key``\  from \ ``bmap``\ .
 
 .. _`nilfs_bmap_truncate.return-value`:
@@ -214,7 +214,7 @@ nilfs_bmap_clear
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_clear`\  frees resources associated with \ ``bmap``\ .
+nilfs_bmap_clear() frees resources associated with \ ``bmap``\ .
 
 .. _`nilfs_bmap_propagate`:
 
@@ -236,7 +236,7 @@ nilfs_bmap_propagate
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_propagate`\  marks the buffers that directly or
+nilfs_bmap_propagate() marks the buffers that directly or
 indirectly refer to the block specified by \ ``bh``\  dirty.
 
 .. _`nilfs_bmap_propagate.return-value`:
@@ -290,7 +290,7 @@ nilfs_bmap_assign
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_assign`\  assigns the block number \ ``blocknr``\  to the
+nilfs_bmap_assign() assigns the block number \ ``blocknr``\  to the
 buffer specified by \ ``bh``\ .
 
 .. _`nilfs_bmap_assign.return-value`:
@@ -330,7 +330,7 @@ nilfs_bmap_mark
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_mark`\  marks the block specified by \ ``key``\  and \ ``level``\ 
+nilfs_bmap_mark() marks the block specified by \ ``key``\  and \ ``level``\ 
 as dirty.
 
 .. _`nilfs_bmap_mark.return-value`:
@@ -362,7 +362,7 @@ nilfs_bmap_test_and_clear_dirty
 Description
 -----------
 
-\ :c:func:`nilfs_test_and_clear`\  is the atomic operation to test and
+nilfs_test_and_clear() is the atomic operation to test and
 clear the dirty state of \ ``bmap``\ .
 
 .. _`nilfs_bmap_test_and_clear_dirty.return-value`:
@@ -392,7 +392,7 @@ nilfs_bmap_read
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_read`\  initializes the bmap \ ``bmap``\ .
+nilfs_bmap_read() initializes the bmap \ ``bmap``\ .
 
 .. _`nilfs_bmap_read.return-value`:
 
@@ -424,7 +424,7 @@ nilfs_bmap_write
 Description
 -----------
 
-\ :c:func:`nilfs_bmap_write`\  stores \ ``bmap``\  in \ ``raw_inode``\ .
+nilfs_bmap_write() stores \ ``bmap``\  in \ ``raw_inode``\ .
 
 .. This file was automatic generated / don't edit.
 

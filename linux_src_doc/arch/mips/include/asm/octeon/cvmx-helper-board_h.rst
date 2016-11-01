@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/include/asm/octeon/cvmx-helper-board.h
 
-.. _`cvmx_helper_link_info_t`:
-
-cvmx_helper_link_info_t
-=======================
-
-.. c:function::  cvmx_helper_link_info_t(*cvmx_override_board_link_get)
-
-    pointer. It is meant to allow customization of the process of talking to a PHY to determine link speed. It is called every time a PHY must be polled for link status. Users should set this pointer to a function before calling any cvmx-helper operations.
-
-    :param \*cvmx_override_board_link_get:
-        *undescribed*
-
 .. _`cvmx_helper_board_get_mii_address`:
 
 cvmx_helper_board_get_mii_address
@@ -37,33 +25,6 @@ fact that every Octeon board receives a unique board type
 enumeration from the bootloader.
 
 Returns MII PHY address and bus number or -1.
-
-.. _`cvmx_helper_board_link_set_phy`:
-
-cvmx_helper_board_link_set_phy
-==============================
-
-.. c:function:: int cvmx_helper_board_link_set_phy(int phy_addr, cvmx_helper_board_set_phy_link_flags_types_t link_flags, cvmx_helper_link_info_t link_info)
-
-    speed, duplex, and autonegotiation. This programs the PHY and not Octeon. This can be used to force Octeon's links to specific settings.
-
-    :param int phy_addr:
-        The address of the PHY to program
-
-    :param cvmx_helper_board_set_phy_link_flags_types_t link_flags:
-        Flags to control autonegotiation.  Bit 0 is autonegotiation
-        enable/disable to maintain backward compatibility.
-
-    :param cvmx_helper_link_info_t link_info:
-        Link speed to program. If the speed is zero and autonegotiation
-        is enabled, all possible negotiation speeds are advertised.
-
-.. _`cvmx_helper_board_link_set_phy.description`:
-
-Description
------------
-
-Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_board_link_get`:
 

@@ -6,11 +6,11 @@
 ostid_build_res_name
 ====================
 
-.. c:function:: void ostid_build_res_name(struct ost_id *oi, struct ldlm_res_id *name)
+.. c:function:: void ostid_build_res_name(const struct ost_id *oi, struct ldlm_res_id *name)
 
     finally, when we replace ost_id with FID in data stack.
 
-    :param struct ost_id \*oi:
+    :param const struct ost_id \*oi:
         *undescribed*
 
     :param struct ldlm_res_id \*name:
@@ -40,12 +40,12 @@ res[1] = f_oid + f_ver.
 ostid_res_name_eq
 =================
 
-.. c:function:: int ostid_res_name_eq(struct ost_id *oi, struct ldlm_res_id *name)
+.. c:function:: int ostid_res_name_eq(const struct ost_id *oi, const struct ldlm_res_id *name)
 
-    :param struct ost_id \*oi:
+    :param const struct ost_id \*oi:
         *undescribed*
 
-    :param struct ldlm_res_id \*name:
+    :param const struct ldlm_res_id \*name:
         *undescribed*
 
 .. _`fid_flatten`:

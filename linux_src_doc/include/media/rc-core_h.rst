@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/rc-core.h
 
+.. _`rc_driver_type`:
+
+enum rc_driver_type
+===================
+
+.. c:type:: enum rc_driver_type
+
+    type of the RC output
+
+.. _`rc_driver_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum rc_driver_type {
+        RC_DRIVER_SCANCODE,
+        RC_DRIVER_IR_RAW
+    };
+
+.. _`rc_driver_type.constants`:
+
+Constants
+---------
+
+RC_DRIVER_SCANCODE
+    Driver or hardware generates a scancode
+
+RC_DRIVER_IR_RAW
+    Driver or hardware generates pulse/space sequences.
+    It needs a Infra-Red pulse/space decoder
+
 .. _`rc_scancode_filter`:
 
 struct rc_scancode_filter
@@ -137,6 +170,7 @@ Definition
         int (*s_carrier_report)(struct rc_dev *dev, int enable);
         int (*s_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
         int (*s_wakeup_filter)(struct rc_dev *dev,struct rc_scancode_filter *filter);
+        int (*s_timeout)(struct rc_dev *dev,unsigned int timeout);
     }
 
 .. _`rc_dev.members`:
@@ -191,16 +225,16 @@ idle
     used to keep track of RX state
 
 allowed_protocols
-    bitmask with the supported RC_BIT\_\* protocols
+    bitmask with the supported RC_BIT_* protocols
 
 enabled_protocols
-    bitmask with the enabled RC_BIT\_\* protocols
+    bitmask with the enabled RC_BIT_* protocols
 
 allowed_wakeup_protocols
-    bitmask with the supported RC_BIT\_\* wakeup protocols
+    bitmask with the supported RC_BIT_* wakeup protocols
 
 enabled_wakeup_protocols
-    bitmask with the enabled RC_BIT\_\* wakeup protocols
+    bitmask with the enabled RC_BIT_* wakeup protocols
 
 scancode_filter
     scancode filter
@@ -305,6 +339,88 @@ s_filter
 
 s_wakeup_filter
     set the wakeup scancode filter
+
+s_timeout
+    set hardware timeout in ns
+
+.. _`rc_allocate_device`:
+
+rc_allocate_device
+==================
+
+.. c:function:: struct rc_dev *rc_allocate_device( void)
+
+    Allocates a RC device
+
+    :param  void:
+        no arguments
+
+.. _`rc_allocate_device.description`:
+
+Description
+-----------
+
+returns a pointer to struct rc_dev.
+
+.. _`rc_free_device`:
+
+rc_free_device
+==============
+
+.. c:function:: void rc_free_device(struct rc_dev *dev)
+
+    Frees a RC device
+
+    :param struct rc_dev \*dev:
+        pointer to struct rc_dev.
+
+.. _`rc_register_device`:
+
+rc_register_device
+==================
+
+.. c:function:: int rc_register_device(struct rc_dev *dev)
+
+    Registers a RC device
+
+    :param struct rc_dev \*dev:
+        pointer to struct rc_dev.
+
+.. _`rc_unregister_device`:
+
+rc_unregister_device
+====================
+
+.. c:function:: void rc_unregister_device(struct rc_dev *dev)
+
+    Unregisters a RC device
+
+    :param struct rc_dev \*dev:
+        pointer to struct rc_dev.
+
+.. _`rc_open`:
+
+rc_open
+=======
+
+.. c:function:: int rc_open(struct rc_dev *rdev)
+
+    Opens a RC device
+
+    :param struct rc_dev \*rdev:
+        pointer to struct rc_dev.
+
+.. _`rc_close`:
+
+rc_close
+========
+
+.. c:function:: void rc_close(struct rc_dev *rdev)
+
+    Closes a RC device
+
+    :param struct rc_dev \*rdev:
+        pointer to struct rc_dev.
 
 .. This file was automatic generated / don't edit.
 

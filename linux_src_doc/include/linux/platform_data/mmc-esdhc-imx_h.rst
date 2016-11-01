@@ -26,6 +26,7 @@ Definition
         bool support_vsel;
         unsigned int delay_line;
         unsigned int tuning_step;
+        unsigned int tuning_start_tap;
     }
 
 .. _`esdhc_platform_data.members`:
@@ -55,6 +56,9 @@ delay_line
     *undescribed*
 
 tuning_step
+    *undescribed*
+
+tuning_start_tap
     *undescribed*
 
 .. _`esdhc_platform_data.description`:

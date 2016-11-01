@@ -20,6 +20,7 @@ Definition
     struct the_nilfs {
         unsigned long ns_flags;
         int ns_flushed_device;
+        struct super_block *ns_sb;
         struct block_device *ns_bdev;
         struct rw_semaphore ns_sem;
         struct mutex ns_snapshot_mount_mutex;
@@ -86,6 +87,9 @@ ns_flags
 
 ns_flushed_device
     flag indicating if all volatile data was flushed
+
+ns_sb
+    back pointer to super block instance
 
 ns_bdev
     block device

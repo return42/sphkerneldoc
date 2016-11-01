@@ -494,7 +494,7 @@ pti_port_activate
 Description
 -----------
 
-\ ``port``\ - The tty port number of the PTI device.
+@port- The tty port number of the PTI device.
 \ ``tty``\ -  The tty struct associated with this device.
 
 .. _`pti_port_activate.return`:
@@ -530,7 +530,7 @@ pti_port_shutdown
 Description
 -----------
 
-\ ``port``\ - The tty port number of the PTI device.
+@port- The tty port number of the PTI device.
 
 .. _`pti_port_shutdown.notes`:
 
@@ -561,7 +561,7 @@ pti_pci_probe
 Description
 -----------
 
-\ ``pdev``\ - pci_dev struct values for pti.
+@pdev- pci_dev struct values for pti.
 \ ``ent``\ -  pci_device_id struct for pti driver.
 
 .. _`pti_pci_probe.return`:

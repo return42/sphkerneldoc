@@ -137,5 +137,65 @@ bufs
 user
     the user who created this pipe
 
+.. _`pipe_buf_get`:
+
+pipe_buf_get
+============
+
+.. c:function:: void pipe_buf_get(struct pipe_inode_info *pipe, struct pipe_buffer *buf)
+
+    get a reference to a pipe_buffer
+
+    :param struct pipe_inode_info \*pipe:
+        the pipe that the buffer belongs to
+
+    :param struct pipe_buffer \*buf:
+        the buffer to get a reference to
+
+.. _`pipe_buf_release`:
+
+pipe_buf_release
+================
+
+.. c:function:: void pipe_buf_release(struct pipe_inode_info *pipe, struct pipe_buffer *buf)
+
+    put a reference to a pipe_buffer
+
+    :param struct pipe_inode_info \*pipe:
+        the pipe that the buffer belongs to
+
+    :param struct pipe_buffer \*buf:
+        the buffer to put a reference to
+
+.. _`pipe_buf_confirm`:
+
+pipe_buf_confirm
+================
+
+.. c:function:: int pipe_buf_confirm(struct pipe_inode_info *pipe, struct pipe_buffer *buf)
+
+    verify contents of the pipe buffer
+
+    :param struct pipe_inode_info \*pipe:
+        the pipe that the buffer belongs to
+
+    :param struct pipe_buffer \*buf:
+        the buffer to confirm
+
+.. _`pipe_buf_steal`:
+
+pipe_buf_steal
+==============
+
+.. c:function:: int pipe_buf_steal(struct pipe_inode_info *pipe, struct pipe_buffer *buf)
+
+    attempt to take ownership of a pipe_buffer
+
+    :param struct pipe_inode_info \*pipe:
+        the pipe that the buffer belongs to
+
+    :param struct pipe_buffer \*buf:
+        the buffer to attempt to steal
+
 .. This file was automatic generated / don't edit.
 

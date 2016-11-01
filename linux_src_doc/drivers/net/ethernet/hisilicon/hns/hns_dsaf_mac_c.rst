@@ -62,7 +62,7 @@ hns_mac_port_config_bc_en
 
 .. c:function:: int hns_mac_port_config_bc_en(struct hns_mac_cb *mac_cb, u32 port_num, u16 vlan_id, bool enable)
 
-    set broadcast rx\ :c:type:`struct tx <tx>` enable \ ``mac_cb``\ : mac device \ ``queue``\ : queue number \ ``en``\ :enable retuen 0 - success , negative --fail
+    set broadcast rx&tx enable \ ``mac_cb``\ : mac device \ ``queue``\ : queue number \ ``en``\ :enable retuen 0 - success , negative --fail
 
     :param struct hns_mac_cb \*mac_cb:
         *undescribed*
@@ -83,7 +83,7 @@ hns_mac_vm_config_bc_en
 
 .. c:function:: int hns_mac_vm_config_bc_en(struct hns_mac_cb *mac_cb, u32 vmid, bool enable)
 
-    set broadcast rx\ :c:type:`struct tx <tx>` enable \ ``mac_cb``\ : mac device \ ``vmid``\ : vm id \ ``en``\ :enable retuen 0 - success , negative --fail
+    set broadcast rx&tx enable \ ``mac_cb``\ : mac device \ ``vmid``\ : vm id \ ``en``\ :enable retuen 0 - success , negative --fail
 
     :param struct hns_mac_cb \*mac_cb:
         *undescribed*

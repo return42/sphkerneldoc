@@ -350,7 +350,7 @@ idx = 0;
 msg[0].addr = client->addr;
 msg[0].flags = 0x0;
 msg[0].len = 1;
-msg[0].buf = \ :c:type:`struct idx <idx>`;
+msg[0].buf = \ :c:type:`struct idx <idx>`\ ;
 
 msg[1].addr = client->addr;
 msg[1].flags = I2C_M_RD;

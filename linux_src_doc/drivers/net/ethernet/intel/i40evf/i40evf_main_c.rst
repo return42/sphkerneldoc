@@ -639,7 +639,7 @@ i40evf_configure
 i40evf_up_complete
 ==================
 
-.. c:function:: int i40evf_up_complete(struct i40evf_adapter *adapter)
+.. c:function:: void i40evf_up_complete(struct i40evf_adapter *adapter)
 
     Finish the last steps of bringing up a connection
 

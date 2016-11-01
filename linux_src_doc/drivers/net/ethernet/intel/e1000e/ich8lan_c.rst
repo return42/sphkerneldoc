@@ -1526,7 +1526,7 @@ PCH also does not have an "always on" or "always off" mode which
 complicates the ID feature.  Instead of using the "on" mode to indicate
 in ledctl_mode2 the LEDs to use for ID (see \ :c:func:`e1000e_id_led_init_generic`\ ),
 use "link_up" mode.  The LEDs will still ID on request if there is no
-link based on logic in e1000_led_[on\|off]\ :c:func:`_pchlan`\ .
+link based on logic in e1000_led_[on\|off]_pchlan().
 
 .. _`e1000_get_bus_info_ich8lan`:
 

@@ -601,7 +601,7 @@ blkcg_policy_unregister
 Description
 -----------
 
-Undo blkcg_policy_register(\ ``pol``\ ).  Might sleep.
+Undo blkcg_policy_register(@pol).  Might sleep.
 
 .. This file was automatic generated / don't edit.
 

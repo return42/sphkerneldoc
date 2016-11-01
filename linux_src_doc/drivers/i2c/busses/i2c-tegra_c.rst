@@ -104,6 +104,7 @@ Definition
         u16 clk_divisor_non_hs_mode;
         bool is_suspended;
         bool is_multimaster_mode;
+        spinlock_t xfer_lock;
     }
 
 .. _`tegra_i2c_dev.members`:
@@ -169,6 +170,9 @@ is_suspended
     prevents i2c controller accesses after suspend is called
 
 is_multimaster_mode
+    *undescribed*
+
+xfer_lock
     *undescribed*
 
 .. This file was automatic generated / don't edit.

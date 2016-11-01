@@ -306,18 +306,6 @@ xs_data_ready
     :param struct sock \*sk:
         socket with data to read
 
-.. _`xs_tcp_data_ready`:
-
-xs_tcp_data_ready
-=================
-
-.. c:function:: void xs_tcp_data_ready(struct sock *sk)
-
-    "data ready" callback for TCP sockets
-
-    :param struct sock \*sk:
-        socket with data to read
-
 .. _`xs_tcp_state_change`:
 
 xs_tcp_state_change

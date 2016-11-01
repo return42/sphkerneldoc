@@ -342,7 +342,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_unmap_page
 ==============
 
-.. c:function:: void sba_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: void sba_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction direction, unsigned long attrs)
 
     unmap one IOVA and free resources
 
@@ -358,7 +358,7 @@ sba_unmap_page
     :param enum dma_data_direction direction:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_unmap_page.description`:
@@ -373,7 +373,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_alloc
 =========
 
-.. c:function:: void *sba_alloc(struct device *hwdev, size_t size, dma_addr_t *dma_handle, gfp_t gfp, struct dma_attrs *attrs)
+.. c:function:: void *sba_alloc(struct device *hwdev, size_t size, dma_addr_t *dma_handle, gfp_t gfp, unsigned long attrs)
 
     allocate/map shared mem for DMA
 
@@ -389,7 +389,7 @@ sba_alloc
     :param gfp_t gfp:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_alloc.description`:
@@ -404,7 +404,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_free
 ========
 
-.. c:function:: void sba_free(struct device *hwdev, size_t size, void *vaddr, dma_addr_t dma_handle, struct dma_attrs *attrs)
+.. c:function:: void sba_free(struct device *hwdev, size_t size, void *vaddr, dma_addr_t dma_handle, unsigned long attrs)
 
     free/unmap shared mem for DMA
 
@@ -420,7 +420,7 @@ sba_free
     :param dma_addr_t dma_handle:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_free.description`:
@@ -435,7 +435,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_map_sg
 ==========
 
-.. c:function:: int sba_map_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: int sba_map_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, unsigned long attrs)
 
     map Scatter/Gather list
 
@@ -451,7 +451,7 @@ sba_map_sg
     :param enum dma_data_direction direction:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_map_sg.description`:
@@ -466,7 +466,7 @@ See Documentation/DMA-API-HOWTO.txt
 sba_unmap_sg
 ============
 
-.. c:function:: void sba_unmap_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: void sba_unmap_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, unsigned long attrs)
 
     unmap Scatter/Gather list
 
@@ -482,7 +482,7 @@ sba_unmap_sg
     :param enum dma_data_direction direction:
         R/W or both.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sba_unmap_sg.description`:

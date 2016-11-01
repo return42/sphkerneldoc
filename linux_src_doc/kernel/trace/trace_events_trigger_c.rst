@@ -190,7 +190,7 @@ Description
 For each trigger, the triggering event has its tm_ref decremented
 via \ :c:func:`trace_event_trigger_enable_disable`\ , and any associated event
 (in the case of enable/disable_event triggers) will have its sm_ref
-decremented via \ :c:func:`free`\ ->\ :c:func:`trace_event_enable_disable`\ .  That
+decremented via \ :c:func:`free`\ ->trace_event_enable_disable().  That
 combination effectively reverses the soft-mode/trigger state added
 by trigger registration.
 

@@ -7,6 +7,7 @@ pinctrl
 .. toctree::
     :maxdepth: 1
 
+    aspeed/index
     bcm/index
     freescale/index
     intel/index

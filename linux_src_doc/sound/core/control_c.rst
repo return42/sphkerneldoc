@@ -14,7 +14,7 @@ snd_ctl_notify
         the card to send notification
 
     :param unsigned int mask:
-        the event mask, SNDRV_CTL_EVENT\_\*
+        the event mask, SNDRV_CTL_EVENT_*
 
     :param struct snd_ctl_elem_id \*id:
         the ctl element id to send notification
@@ -55,8 +55,8 @@ Description
 -----------
 
 Allocates a memory object for a new control instance. The instance has
-elements as many as the given number (\ ``count``\ ). Each element has given
-access permissions (\ ``access``\ ). Each element is locked when \ ``file``\  is given.
+elements as many as the given number (@count). Each element has given
+access permissions (@access). Each element is locked when \ ``file``\  is given.
 
 .. _`snd_ctl_new.return`:
 
@@ -208,7 +208,7 @@ Description
 
 Removes the control from the card and then releases the instance.
 You don't need to call \ :c:func:`snd_ctl_free_one`\ . You must be in
-the write lock - down_write(\ :c:type:`card->controls_rwsem <card>`\ ).
+the write lock - down_write(&card->controls_rwsem).
 
 .. _`snd_ctl_remove.return`:
 

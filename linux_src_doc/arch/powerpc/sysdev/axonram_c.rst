@@ -23,7 +23,7 @@ axon_ram_make_request
 
 .. c:function:: blk_qc_t axon_ram_make_request(struct request_queue *queue, struct bio *bio)
 
-    \ :c:func:`make_request`\  method for block device
+    make_request() method for block device
 
     :param struct request_queue \*queue:
         see \ :c:func:`blk_queue_make_request`\ 
@@ -36,9 +36,9 @@ axon_ram_make_request
 axon_ram_direct_access
 ======================
 
-.. c:function:: long axon_ram_direct_access(struct block_device *device, sector_t sector, void __pmem **kaddr, pfn_t *pfn, long size)
+.. c:function:: long axon_ram_direct_access(struct block_device *device, sector_t sector, void **kaddr, pfn_t *pfn, long size)
 
-    \ :c:func:`direct_access`\  method for block device
+    direct_access() method for block device
 
     :param struct block_device \*device:
         see block_device_operations method
@@ -46,7 +46,7 @@ axon_ram_direct_access
     :param sector_t sector:
         *undescribed*
 
-    :param void __pmem \*\*kaddr:
+    :param void \*\*kaddr:
         *undescribed*
 
     :param pfn_t \*pfn:
@@ -62,7 +62,7 @@ axon_ram_probe
 
 .. c:function:: int axon_ram_probe(struct platform_device *device)
 
-    \ :c:func:`probe`\  method for platform driver
+    probe() method for platform driver
 
     :param struct platform_device \*device:
         see platform_driver method
@@ -74,7 +74,7 @@ axon_ram_remove
 
 .. c:function:: int axon_ram_remove(struct platform_device *device)
 
-    \ :c:func:`remove`\  method for platform driver
+    remove() method for platform driver
 
     :param struct platform_device \*device:
         see of_platform_driver method

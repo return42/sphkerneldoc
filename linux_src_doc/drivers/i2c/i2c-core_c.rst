@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/i2c/i2c-core.c
 
-.. _`acpi_i2c_register_devices`:
+.. _`i2c_acpi_register_devices`:
 
-acpi_i2c_register_devices
+i2c_acpi_register_devices
 =========================
 
-.. c:function:: void acpi_i2c_register_devices(struct i2c_adapter *adap)
+.. c:function:: void i2c_acpi_register_devices(struct i2c_adapter *adap)
 
     enumerate I2C slave devices behind adapter
 
     :param struct i2c_adapter \*adap:
         pointer to adapter
 
-.. _`acpi_i2c_register_devices.description`:
+.. _`i2c_acpi_register_devices.description`:
 
 Description
 -----------
@@ -21,6 +21,28 @@ Description
 Enumerate all I2C slave devices behind this adapter by walking the ACPI
 namespace. When a device is found it will be added to the Linux device
 model and bound to the corresponding ACPI handle.
+
+.. _`i2c_acpi_find_bus_speed`:
+
+i2c_acpi_find_bus_speed
+=======================
+
+.. c:function:: u32 i2c_acpi_find_bus_speed(struct device *dev)
+
+    find I2C bus speed from ACPI
+
+    :param struct device \*dev:
+        The device owning the bus
+
+.. _`i2c_acpi_find_bus_speed.description`:
+
+Description
+-----------
+
+Find the I2C bus speed by walking the ACPI namespace for all I2C slaves
+devices connected to this bus and use the speed of slowest device.
+
+Returns the speed in Hz or zero
 
 .. _`i2c_verify_client`:
 
@@ -40,7 +62,7 @@ Description
 -----------
 
 When traversing the driver model tree, perhaps using driver model
-iterators like @\ :c:func:`device_for_each_child`\ , you can't assume very much
+iterators like \ ``device_for_each_child``\ (), you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_client.
 
@@ -120,7 +142,7 @@ Description
 -----------
 
 Create an i2c device. Binding is handled through driver model
-\ :c:func:`probe`\ /\ :c:func:`remove`\  methods.  A driver may be bound to this device when we
+\ :c:func:`probe`\ /remove() methods.  A driver may be bound to this device when we
 return from this function, or any later moment (e.g. maybe hotplugging will
 load the driver module).  This call is not appropriate for use by mainboard
 initialization logic, which usually runs during an \ :c:func:`arch_initcall`\  long
@@ -187,6 +209,50 @@ different driver.
 This returns the new i2c client, which should be saved for later use with
 \ :c:func:`i2c_unregister_device`\ ; or NULL to indicate an error.
 
+.. _`i2c_new_secondary_device`:
+
+i2c_new_secondary_device
+========================
+
+.. c:function:: struct i2c_client *i2c_new_secondary_device(struct i2c_client *client, const char *name, u16 default_addr)
+
+    Helper to get the instantiated secondary address and create the associated device
+
+    :param struct i2c_client \*client:
+        Handle to the primary client
+
+    :param const char \*name:
+        Handle to specify which secondary address to get
+
+    :param u16 default_addr:
+        Used as a fallback if no secondary address was specified
+
+.. _`i2c_new_secondary_device.context`:
+
+Context
+-------
+
+can sleep
+
+.. _`i2c_new_secondary_device.description`:
+
+Description
+-----------
+
+I2C clients can be composed of multiple I2C slaves bound together in a single
+component. The I2C client driver then binds to the master I2C slave and needs
+to create I2C dummy clients to communicate with all the other slaves.
+
+This function creates and returns an I2C dummy client whose I2C address is
+retrieved from the platform firmware based on the given slave name. If no
+address is specified by the firmware default_addr is used.
+
+On DT-based platforms the address is retrieved from the "reg" property entry
+cell whose "reg-names" value matches the slave name.
+
+This returns the new i2c client, which should be saved for later use with
+\ :c:func:`i2c_unregister_device`\ ; or NULL to indicate an error.
+
 .. _`i2c_verify_adapter`:
 
 i2c_verify_adapter
@@ -205,7 +271,7 @@ Description
 -----------
 
 When traversing the driver model tree, perhaps using driver model
-iterators like @\ :c:func:`device_for_each_child`\ , you can't assume very much
+iterators like \ ``device_for_each_child``\ (), you can't assume very much
 about the nodes you find.  Use this function to avoid oopses caused
 by wrongly treating some non-I2C device as an i2c_adapter.
 
@@ -407,13 +473,7 @@ Description
 
 Each live reference to a client should be refcounted. The driver model does
 that automatically as part of driver binding, so that most drivers don't
-
-.. _`i2c_use_client.need-to-do-this-explicitly`:
-
-need to do this explicitly
---------------------------
-
-they hold a reference until they're unbound
+need to do this explicitly: they hold a reference until they're unbound
 from the device.
 
 A pointer to the client with the incremented reference counter is returned.
@@ -763,7 +823,7 @@ i2c_smbus_xfer
         Address of SMBus slave on that bus
 
     :param unsigned short flags:
-        I2C_CLIENT\_\* flags (usually zero or I2C_CLIENT_PEC)
+        I2C_CLIENT_* flags (usually zero or I2C_CLIENT_PEC)
 
     :param char read_write:
         I2C_SMBUS_READ or I2C_SMBUS_WRITE

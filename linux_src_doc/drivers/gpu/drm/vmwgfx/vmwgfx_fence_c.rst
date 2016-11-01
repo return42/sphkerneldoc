@@ -225,7 +225,7 @@ vmw_fence_obj_add_action
 Description
 -----------
 
-\ ``fence``\  - The fence object.
+@fence - The fence object.
 \ ``action``\  - The action to add.
 
 Note that the action callbacks may be executed before this function

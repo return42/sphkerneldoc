@@ -125,7 +125,7 @@ ioc4_attach_local
 
 .. c:function:: int inline ioc4_attach_local(struct ioc4_driver_data *idd)
 
-    Device initialization. Called at \*\\ :c:func:`_attach`\  time for each IOC4 with serial ports in the system.
+    Device initialization. Called at \*\_attach() time for each IOC4 with serial ports in the system.
 
     :param struct ioc4_driver_data \*idd:
         Master module data for this IOC4

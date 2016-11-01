@@ -13,34 +13,34 @@ hns_nic_get_link
     :param struct net_device \*net_dev:
         *undescribed*
 
-.. _`hns_nic_get_settings`:
+.. _`hns_nic_get_link_ksettings`:
 
-hns_nic_get_settings
-====================
+hns_nic_get_link_ksettings
+==========================
 
-.. c:function:: int hns_nic_get_settings(struct net_device *net_dev, struct ethtool_cmd *cmd)
+.. c:function:: int hns_nic_get_link_ksettings(struct net_device *net_dev, struct ethtool_link_ksettings *cmd)
 
-    implement ethtool get settings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_cmd retuen 0 - success , negative --fail
-
-    :param struct net_device \*net_dev:
-        *undescribed*
-
-    :param struct ethtool_cmd \*cmd:
-        *undescribed*
-
-.. _`hns_nic_set_settings`:
-
-hns_nic_set_settings
-====================
-
-.. c:function:: int hns_nic_set_settings(struct net_device *net_dev, struct ethtool_cmd *cmd)
-
-    implement ethtool set settings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_cmd retuen 0 - success , negative --fail
+    implement ethtool get link ksettings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_link_ksettings retuen 0 - success , negative --fail
 
     :param struct net_device \*net_dev:
         *undescribed*
 
-    :param struct ethtool_cmd \*cmd:
+    :param struct ethtool_link_ksettings \*cmd:
+        *undescribed*
+
+.. _`hns_nic_set_link_ksettings`:
+
+hns_nic_set_link_ksettings
+==========================
+
+.. c:function:: int hns_nic_set_link_ksettings(struct net_device *net_dev, const struct ethtool_link_ksettings *cmd)
+
+    implement ethtool set link ksettings \ ``net_dev``\ : net_device \ ``cmd``\ : ethtool_link_ksettings retuen 0 - success , negative --fail
+
+    :param struct net_device \*net_dev:
+        *undescribed*
+
+    :param const struct ethtool_link_ksettings \*cmd:
         *undescribed*
 
 .. _`__lb_run_test`:

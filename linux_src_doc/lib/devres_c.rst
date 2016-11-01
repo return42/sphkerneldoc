@@ -127,7 +127,7 @@ Returns a pointer to the remapped memory or an \ :c:func:`ERR_PTR`\  encoded err
 on failure. Usage example:
 
 res = platform_get_resource(pdev, IORESOURCE_MEM, 0);
-base = devm_ioremap_resource(\ :c:type:`pdev->dev <pdev>`\ , res);
+base = devm_ioremap_resource(&pdev->dev, res);
 if (IS_ERR(base))
 return PTR_ERR(base);
 

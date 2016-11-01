@@ -21,9 +21,9 @@ panic
 Description
 -----------
 
-Display a message, then perform cleanups.
+     Display a message, then perform cleanups.
 
-This function never returns.
+     This function never returns.
 
 .. _`print_tainted`:
 
@@ -42,24 +42,24 @@ print_tainted
 Description
 -----------
 
-'P' - Proprietary module has been loaded.
-'F' - Module has been forcibly loaded.
-'S' - SMP with CPUs not designed for SMP.
-'R' - User forced a module unload.
-'M' - System experienced a machine check exception.
-'B' - System has hit bad_page.
-'U' - Userspace-defined naughtiness.
-'D' - Kernel has oopsed before
-'A' - ACPI table overridden.
-'W' - Taint on warning.
-'C' - modules from drivers/staging are loaded.
-'I' - Working around severe firmware bug.
-'O' - Out-of-tree module has been loaded.
-'E' - Unsigned module has been loaded.
-'L' - A soft lockup has previously occurred.
-'K' - Kernel has been live patched.
+ 'P' - Proprietary module has been loaded.
+ 'F' - Module has been forcibly loaded.
+ 'S' - SMP with CPUs not designed for SMP.
+ 'R' - User forced a module unload.
+ 'M' - System experienced a machine check exception.
+ 'B' - System has hit bad_page.
+ 'U' - Userspace-defined naughtiness.
+ 'D' - Kernel has oopsed before
+ 'A' - ACPI table overridden.
+ 'W' - Taint on warning.
+ 'C' - modules from drivers/staging are loaded.
+ 'I' - Working around severe firmware bug.
+ 'O' - Out-of-tree module has been loaded.
+ 'E' - Unsigned module has been loaded.
+ 'L' - A soft lockup has previously occurred.
+ 'K' - Kernel has been live patched.
 
-The string is overwritten by the next call to \ :c:func:`print_tainted`\ .
+     The string is overwritten by the next call to \ :c:func:`print_tainted`\ .
 
 .. _`add_taint`:
 
@@ -71,7 +71,7 @@ add_taint
     add a taint flag if not already set.
 
     :param unsigned flag:
-        one of the TAINT\_\* constants.
+        one of the TAINT_* constants.
 
     :param enum lockdep_ok lockdep_ok:
         whether lock debugging is still OK.

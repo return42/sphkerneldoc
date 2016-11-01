@@ -30,7 +30,7 @@ audit_iface
 Return
 ------
 
-\ ``0``\  or error
+%0 or error
 
 .. _`unpack_u16_chunk`:
 

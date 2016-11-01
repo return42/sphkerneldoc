@@ -17,6 +17,7 @@ trace
     trace_events_trigger_c
     trace_functions_graph_c
     trace_h
+    trace_hwlat_c
     trace_output_c
     trace_seq_c
     tracing_map_c

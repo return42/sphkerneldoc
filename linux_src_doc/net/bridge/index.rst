@@ -7,5 +7,6 @@ bridge
 .. toctree::
     :maxdepth: 1
 
+    br_forward_c
     br_multicast_c
     br_private_h

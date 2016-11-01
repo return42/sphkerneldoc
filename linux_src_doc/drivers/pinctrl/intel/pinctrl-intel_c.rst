@@ -19,7 +19,7 @@ Definition
 
     struct intel_pinctrl {
         struct device *dev;
-        spinlock_t lock;
+        raw_spinlock_t lock;
         struct pinctrl_desc pctldesc;
         struct pinctrl_dev *pctldev;
         struct gpio_chip chip;
@@ -27,6 +27,7 @@ Definition
         struct intel_community *communities;
         size_t ncommunities;
         struct intel_pinctrl_context context;
+        int irq;
     }
 
 .. _`intel_pinctrl.members`:
@@ -60,6 +61,9 @@ ncommunities
 
 context
     Configuration saved over system sleep
+
+irq
+    pinctrl/GPIO chip irq number
 
 .. This file was automatic generated / don't edit.
 

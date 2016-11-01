@@ -24,7 +24,7 @@ state_show
 Description
 -----------
 
-\ :c:func:`show`\  returns available sleep state labels, which may be "mem", "standby",
+show() returns available sleep state labels, which may be "mem", "standby",
 "freeze" and "disk" (hibernation).  See Documentation/power/states.txt for a
 description of what they mean.
 

@@ -141,5 +141,58 @@ Return
 
 0 if no protection exception, or PGM_PROTECTION if protected.
 
+.. _`kvm_s390_shadow_tables`:
+
+kvm_s390_shadow_tables
+======================
+
+.. c:function:: int kvm_s390_shadow_tables(struct gmap *sg, unsigned long saddr, unsigned long *pgt, int *dat_protection, int *fake)
+
+    walk the guest page table and create shadow tables
+
+    :param struct gmap \*sg:
+        pointer to the shadow guest address space structure
+
+    :param unsigned long saddr:
+        faulting address in the shadow gmap
+
+    :param unsigned long \*pgt:
+        pointer to the page table address result
+
+    :param int \*dat_protection:
+        *undescribed*
+
+    :param int \*fake:
+        pgt references contiguous guest memory block, not a pgtable
+
+.. _`kvm_s390_shadow_fault`:
+
+kvm_s390_shadow_fault
+=====================
+
+.. c:function:: int kvm_s390_shadow_fault(struct kvm_vcpu *vcpu, struct gmap *sg, unsigned long saddr)
+
+    handle fault on a shadow page table
+
+    :param struct kvm_vcpu \*vcpu:
+        virtual cpu
+
+    :param struct gmap \*sg:
+        pointer to the shadow guest address space structure
+
+    :param unsigned long saddr:
+        faulting address in the shadow gmap
+
+.. _`kvm_s390_shadow_fault.return`:
+
+Return
+------
+
+- 0 if the shadow fault was successfully resolved
+- > 0 (pgm exception code) on exceptions while faulting
+- -EAGAIN if the caller can retry immediately
+- -EFAULT when accessing invalid guest addresses
+- -ENOMEM if out of memory
+
 .. This file was automatic generated / don't edit.
 

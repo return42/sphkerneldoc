@@ -19,6 +19,7 @@ Definition
 
     struct channel_space {
         void __iomem *base;
+        phys_addr_t phys;
         unsigned long *guaranteed;
     }
 
@@ -29,6 +30,9 @@ Members
 
 base
     memory mapped base address where channels start.
+
+phys
+    physical base address of channel region.
 
 guaranteed
     *undescribed*

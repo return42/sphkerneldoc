@@ -30,7 +30,6 @@ Definition
         unsigned int input;
         int disabled;
         spinlock_t slock;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct vb2_queue vb_vidq;
         struct list_head buffer_list;
         unsigned int sequence;
@@ -83,9 +82,6 @@ disabled
 
 slock
     for excluse acces of registers
-
-alloc_ctx
-    context for videobuf2
 
 vb_vidq
     queue maintained by videobuf2 layer

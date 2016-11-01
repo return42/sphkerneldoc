@@ -63,7 +63,7 @@ blk_start_queue_async
 Description
 -----------
 
-\ :c:func:`blk_start_queue_async`\  will clear the stop flag on the queue, and
+blk_start_queue_async() will clear the stop flag on the queue, and
 ensure that the request_fn for the queue is run from an async
 context.
 
@@ -84,7 +84,7 @@ blk_start_queue
 Description
 -----------
 
-\ :c:func:`blk_start_queue`\  will clear the stop flag on the queue, and call
+blk_start_queue() will clear the stop flag on the queue, and call
 the request_fn for the queue if it was in a stopped state when
 entered. Also see \ :c:func:`blk_stop_queue`\ . Queue lock must be held.
 
@@ -359,7 +359,7 @@ it didn't succeed.
 Note
 ----
 
-\ :c:func:`blk_init_queue`\  must be paired with a \ :c:func:`blk_cleanup_queue`\  call
+blk_init_queue() must be paired with a \ :c:func:`blk_cleanup_queue`\  call
 when the block device is deactivated (such as at module unload).
 
 .. _`rq_ioc`:
@@ -387,15 +387,18 @@ Determine io_context to use for request allocation for \ ``bio``\ .  May return
 __get_request
 =============
 
-.. c:function:: struct request *__get_request(struct request_list *rl, int rw_flags, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *__get_request(struct request_list *rl, int op, int op_flags, struct bio *bio, gfp_t gfp_mask)
 
     get a free request
 
     :param struct request_list \*rl:
         request list to allocate from
 
-    :param int rw_flags:
-        RW and SYNC flags
+    :param int op:
+        REQ_OP_READ/REQ_OP_WRITE
+
+    :param int op_flags:
+        rq_flag_bits
 
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
@@ -420,15 +423,18 @@ Returns request pointer on success, with \ ``q``\ ->queue_lock \*not held\*.
 get_request
 ===========
 
-.. c:function:: struct request *get_request(struct request_queue *q, int rw_flags, struct bio *bio, gfp_t gfp_mask)
+.. c:function:: struct request *get_request(struct request_queue *q, int op, int op_flags, struct bio *bio, gfp_t gfp_mask)
 
     get a free request
 
     :param struct request_queue \*q:
         request_queue to allocate request from
 
-    :param int rw_flags:
-        RW and SYNC flags
+    :param int op:
+        REQ_OP_READ/REQ_OP_WRITE
+
+    :param int op_flags:
+        rq_flag_bits
 
     :param struct bio \*bio:
         bio to allocate request for (can be \ ``NULL``\ )
@@ -447,59 +453,6 @@ this function keeps retrying under memory pressure and fails iff \ ``q``\  is de
 Must be called with \ ``q``\ ->queue_lock held and,
 Returns ERR_PTR on failure, with \ ``q``\ ->queue_lock held.
 Returns request pointer on success, with \ ``q``\ ->queue_lock \*not held\*.
-
-.. _`blk_make_request`:
-
-blk_make_request
-================
-
-.. c:function:: struct request *blk_make_request(struct request_queue *q, struct bio *bio, gfp_t gfp_mask)
-
-    given a bio, allocate a corresponding struct request.
-
-    :param struct request_queue \*q:
-        target request queue
-
-    :param struct bio \*bio:
-        The bio describing the memory mappings that will be submitted for IO.
-        It may be a chained-bio properly constructed by block/bio layer.
-
-    :param gfp_t gfp_mask:
-        gfp flags to be used for memory allocation
-
-.. _`blk_make_request.description`:
-
-Description
------------
-
-blk_make_request is the parallel of generic_make_request for BLOCK_PC
-type commands. Where the struct request needs to be farther initialized by
-the caller. It is passed a \ :c:type:`struct bio <bio>`\ , which describes the memory info of
-the I/O transfer.
-
-The caller of blk_make_request must make sure that bi_io_vec
-are set to describe the memory buffers. That \ :c:func:`bio_data_dir`\  will return
-the needed direction of the request. (And all bio's in the passed bio-chain
-are properly set accordingly)
-
-If called under none-sleepable conditions, mapped bio buffers must not
-need bouncing, by calling the appropriate masked or flagged allocator,
-suitable for the target device. Otherwise the call to blk_queue_bounce will
-BUG.
-
-.. _`blk_make_request.warning`:
-
-WARNING
--------
-
-When allocating/cloning a bio-chain, careful consideration should be
-given to how you allocate bios. In particular, you cannot use
-\__GFP_DIRECT_RECLAIM for anything but the first bio in the chain. Otherwise
-you risk waiting for IO completion of a bio that hasn't been submitted yet,
-thus resulting in a deadlock. Alternatively bios should be allocated using
-\ :c:func:`bio_kmalloc`\  instead of \ :c:func:`bio_alloc`\ , as that avoids the mempool deadlock.
-If possible a big IO should be split into smaller parts when allocation
-fails. Partial allocation should not be an error, or you risk a live-lock.
 
 .. _`blk_rq_set_block_pc`:
 
@@ -659,7 +612,7 @@ generic_make_request
 Description
 -----------
 
-\ :c:func:`generic_make_request`\  is used to make I/O requests of block
+generic_make_request() is used to make I/O requests of block
 devices. It is passed a \ :c:type:`struct bio <bio>`\ , which describes the I/O that needs
 to be done.
 
@@ -684,12 +637,9 @@ means the bio should NOT be touched after the call to ->make_request_fn.
 submit_bio
 ==========
 
-.. c:function:: blk_qc_t submit_bio(int rw, struct bio *bio)
+.. c:function:: blk_qc_t submit_bio(struct bio *bio)
 
     submit a bio to the block device layer for I/O
-
-    :param int rw:
-        whether to \ ``READ``\  or \ ``WRITE``\ , or maybe to \ ``READA``\  (read ahead)
 
     :param struct bio \*bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O
@@ -699,7 +649,7 @@ submit_bio
 Description
 -----------
 
-\ :c:func:`submit_bio`\  is very similar in purpose to \ :c:func:`generic_make_request`\ , and
+submit_bio() is very similar in purpose to \ :c:func:`generic_make_request`\ , and
 uses that function to do most of the work. Both are fairly rough
 interfaces; \ ``bio``\  must be presetup and ready for I/O.
 
@@ -723,7 +673,7 @@ blk_cloned_rq_check_limits
 Description
 -----------
 
-\ ``rq``\  may have been made based on weaker limitations of upper-level queues
+@rq may have been made based on weaker limitations of upper-level queues
 in request stacking drivers, and it may violate the limitation of \ ``q``\ .
 Since the block layer and the underlying device driver trust \ ``rq``\ 
 after it is inserted to \ ``q``\ , it should be checked against \ ``q``\  before
@@ -898,7 +848,7 @@ blk_update_request
         the request being processed
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``req``\ 
@@ -924,7 +874,7 @@ Passing the result of \ :c:func:`blk_rq_bytes`\  as \ ``nr_bytes``\  guarantees
 Return
 ------
 
-\ ``false``\  - this request doesn't have any more data
+%false - this request doesn't have any more data
 \ ``true``\   - this request has more data
 
 .. _`blk_unprep_request`:
@@ -963,7 +913,7 @@ blk_end_bidi_request
         the request to complete
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``rq``\ 
@@ -986,7 +936,7 @@ just ignored.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`__blk_end_bidi_request`:
@@ -1002,7 +952,7 @@ __blk_end_bidi_request
         the request to complete
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
     :param unsigned int nr_bytes:
         number of bytes to complete \ ``rq``\ 
@@ -1023,7 +973,7 @@ assumed to be locked on entry and remains so on return.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`blk_end_request`:
@@ -1039,7 +989,7 @@ blk_end_request
         the request being processed
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
     :param unsigned int nr_bytes:
         number of bytes to complete
@@ -1057,7 +1007,7 @@ If \ ``rq``\  has leftover, sets it up for the next range of segments.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`blk_end_request_all`:
@@ -1073,7 +1023,7 @@ blk_end_request_all
         the request to finish
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
 .. _`blk_end_request_all.description`:
 
@@ -1095,7 +1045,7 @@ blk_end_request_cur
         the request to finish the current chunk for
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
 .. _`blk_end_request_cur.description`:
 
@@ -1109,7 +1059,7 @@ Complete the current consecutively mapped chunk from \ ``rq``\ .
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`blk_end_request_err`:
@@ -1139,7 +1089,7 @@ Complete \ ``rq``\  till the next failure boundary.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`__blk_end_request`:
@@ -1155,7 +1105,7 @@ __blk_end_request
         the request being processed
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
     :param unsigned int nr_bytes:
         number of bytes to complete
@@ -1172,7 +1122,7 @@ Must be called with queue lock held unlike \ :c:func:`blk_end_request`\ .
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`__blk_end_request_all`:
@@ -1188,7 +1138,7 @@ __blk_end_request_all
         the request to finish
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
 .. _`__blk_end_request_all.description`:
 
@@ -1210,7 +1160,7 @@ __blk_end_request_cur
         the request to finish the current chunk for
 
     :param int error:
-        \ ``0``\  for success, < \ ``0``\  for error
+        %0 for success, < \ ``0``\  for error
 
 .. _`__blk_end_request_cur.description`:
 
@@ -1225,7 +1175,7 @@ be called with queue lock held.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`__blk_end_request_err`:
@@ -1256,7 +1206,7 @@ with queue lock held.
 Return
 ------
 
-\ ``false``\  - we are done with this request
+%false - we are done with this request
 \ ``true``\   - still buffers pending for this request
 
 .. _`rq_flush_dcache_pages`:

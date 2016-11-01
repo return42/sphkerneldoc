@@ -291,16 +291,16 @@ Description
 -----------
 
 Copies the sequence buffer into the userspace memory pointed to
-by \ ``ubuf``\ . It starts from the last read position (\ ``s``\ ->readpos)
+by \ ``ubuf``\ . It starts from the last read position (@s->readpos)
 and writes up to \ ``cnt``\  characters or till it reaches the end of
-the content in the buffer (\ ``s``\ ->len), which ever comes first.
+the content in the buffer (@s->len), which ever comes first.
 
 On success, it returns a positive number of the number of bytes
 it copied.
 
 On failure it returns -EBUSY if all of the content in the
 sequence has been already read, which includes nothing in the
-sequence (\ ``s``\ ->len == \ ``s``\ ->readpos).
+sequence (@s->len == \ ``s``\ ->readpos).
 
 Returns -EFAULT if the copy to userspace fails.
 

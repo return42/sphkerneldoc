@@ -30,7 +30,7 @@ octeon_init_droq
 Description
 -----------
 
-\ ``param``\   oct_dev    - pointer to the octeon device structure
+@param  oct_dev    - pointer to the octeon device structure
 \ ``param``\   q_no       - droq no. ranges from 0 - 3.
 \ ``param``\  app_ctx     - pointer to application context
 
@@ -52,7 +52,7 @@ octeon_delete_droq
 Description
 -----------
 
-\ ``param``\  oct_dev - pointer to the octeon device structure
+@param oct_dev - pointer to the octeon device structure
 \ ``param``\  q_no    - droq no. ranges from 0 - 3.
 
 .. This file was automatic generated / don't edit.

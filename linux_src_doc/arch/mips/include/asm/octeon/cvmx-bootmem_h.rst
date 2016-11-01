@@ -248,7 +248,7 @@ cvmx_bootmem_phy_named_block_alloc
 Description
 -----------
 
-\ ``param``\  size      size of region to allocate.  All requests are rounded
+@param size      size of region to allocate.  All requests are rounded
 up to be a multiple CVMX_BOOTMEM_ALIGNMENT_SIZE
 bytes size
 \ ``param``\  min_addr Minimum address that block can occupy.

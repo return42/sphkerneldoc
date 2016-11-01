@@ -230,12 +230,15 @@ Page does not have to be locked.
 page_add_file_rmap
 ==================
 
-.. c:function:: void page_add_file_rmap(struct page *page)
+.. c:function:: void page_add_file_rmap(struct page *page, bool compound)
 
     add pte mapping to a file page
 
     :param struct page \*page:
         the page to add the mapping to
+
+    :param bool compound:
+        *undescribed*
 
 .. _`page_add_file_rmap.description`:
 

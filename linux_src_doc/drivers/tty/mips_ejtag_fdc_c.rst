@@ -51,7 +51,7 @@ rx_buf
 xmit_lock
     Lock for xmit\_\*, and port.xmit_buf.
     This protects between user context and kernel thread.
-    It is used from \ :c:func:`chars_in_buffer`\ /\ :c:func:`write_room`\  TTY
+    It is used from \ :c:func:`chars_in_buffer`\ /write_room() TTY
     callbacks which are used during wait operations, so a
     mutex is unsuitable.
 

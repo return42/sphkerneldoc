@@ -50,7 +50,7 @@ device_block_probing
 Description
 -----------
 
-It will disable probing of devices and defer their probes instead.
+     It will disable probing of devices and defer their probes instead.
 
 .. _`device_unblock_probing`:
 
@@ -69,7 +69,7 @@ device_unblock_probing
 Description
 -----------
 
-It will restore normal behavior and trigger re-probing of deferred
+     It will restore normal behavior and trigger re-probing of deferred
 devices.
 
 .. _`deferred_probe_initcall`:

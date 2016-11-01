@@ -215,7 +215,7 @@ acpi_dev_free_resource_list
 
 .. c:function:: void acpi_dev_free_resource_list(struct list_head *list)
 
-    Free resource from %\ :c:func:`acpi_dev_get_resources`\ .
+    Free resource from \ ``acpi_dev_get_resources``\ ().
 
     :param struct list_head \*list:
         The head of the resource list to free.
@@ -247,17 +247,17 @@ Description
 -----------
 
 Evaluate the \_CRS method for the given device node and process its output by
-(1) executing the @\ :c:func:`preproc`\  rountine provided by the caller, passing the
+(1) executing the \ ``preproc``\ () rountine provided by the caller, passing the
 resource pointer and \ ``preproc_data``\  to it as arguments, for each ACPI resource
 returned and (2) converting all of the returned ACPI resources into struct
-resource objects if possible.  If the return value of @\ :c:func:`preproc`\  in step (1)
+resource objects if possible.  If the return value of \ ``preproc``\ () in step (1)
 is different from 0, step (2) is not applied to the given ACPI resource and
 if that value is negative, the whole processing is aborted and that value is
 returned as the final error code.
 
 The resultant struct resource objects are put on the list pointed to by
 \ ``list``\ , that must be empty initially, as members of struct resource_entry
-objects.  Callers of this routine should use %\ :c:func:`acpi_dev_free_resource_list`\  to
+objects.  Callers of this routine should use \ ``acpi_dev_free_resource_list``\ () to
 free that list.
 
 The number of resources in the output list is returned on success, an error

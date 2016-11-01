@@ -506,7 +506,7 @@ link
     Link ptr in last TX desc
 
 q
-    Transmit queue (\ :c:type:`struct list_head <list_head>`\ )
+    Transmit queue (&struct list_head)
 
 lock
     Lock on q and link

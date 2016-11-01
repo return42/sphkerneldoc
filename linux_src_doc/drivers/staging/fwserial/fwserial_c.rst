@@ -223,7 +223,7 @@ Description
 -----------
 
 This port operation is polled after a tty has been opened and is waiting for
-carrier detect -- see drivers/tty/tty_port:\ :c:func:`tty_port_block_til_ready`\ .
+carrier detect -- see drivers/tty/tty_port:tty_port_block_til_ready().
 
 .. _`fwtty_port_shutdown`:
 

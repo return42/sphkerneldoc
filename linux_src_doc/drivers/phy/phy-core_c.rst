@@ -322,7 +322,7 @@ devm_of_phy_get_by_index
 Description
 -----------
 
-Gets the phy using \\ :c:func:`_of_phy_get`\ , then gets a refcount to it,
+Gets the phy using \_of_phy_get(), then gets a refcount to it,
 and associates a device with it using devres. On driver detach,
 release function is invoked on the devres data,
 then, devres data is freed.

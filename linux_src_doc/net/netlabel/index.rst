@@ -9,6 +9,7 @@ netlabel
 
     netlabel_addrlist_c
     netlabel_addrlist_h
+    netlabel_calipso_c
     netlabel_cipso_v4_c
     netlabel_domainhash_c
     netlabel_kapi_c

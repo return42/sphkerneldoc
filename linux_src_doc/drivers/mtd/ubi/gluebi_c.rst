@@ -72,7 +72,7 @@ Description
 This function seraches for gluebi device corresponding to UBI device
 \ ``ubi_num``\  and UBI volume \ ``vol_id``\ . Returns the gluebi device description
 object in case of success and \ ``NULL``\  in case of failure. The caller has to
-have the \ :c:type:`struct devices_mutex <devices_mutex>` locked.
+have the \ :c:type:`struct devices_mutex <devices_mutex>`\  locked.
 
 .. _`gluebi_get_device`:
 

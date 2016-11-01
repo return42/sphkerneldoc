@@ -25,7 +25,7 @@ Description
 -----------
 
 Provide the tty layer wit ha link from a tty (specified by \ ``index``\ ) to a
-tty_port (\ ``port``\ ). Use this only if neither tty_port_register_device nor
+tty_port (@port). Use this only if neither tty_port_register_device nor
 tty_port_install is used in the driver. If used, this has to be called before
 tty_register_driver.
 

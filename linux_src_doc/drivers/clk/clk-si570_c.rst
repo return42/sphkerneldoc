@@ -152,8 +152,8 @@ si570_calc_divs
 Description
 -----------
 
-Calculate the clock dividers (\ ``out_hs_div``\ , \ ``out_n1``\ ) and clock multiplier
-(\ ``out_rfreq``\ ) for a given target \ ``frequency``\ .
+Calculate the clock dividers (@out_hs_div, \ ``out_n1``\ ) and clock multiplier
+(@out_rfreq) for a given target \ ``frequency``\ .
 
 .. _`si570_set_frequency`:
 

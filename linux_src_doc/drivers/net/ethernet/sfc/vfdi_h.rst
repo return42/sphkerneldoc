@@ -253,7 +253,7 @@ reserved1
 
 peer_count
     Total number of peers in the complete peer list. If larger
-    than ARRAY_SIZE(\ ``peers``\ ), then the VF must provide sufficient
+    than ARRAY_SIZE(%peers), then the VF must provide sufficient
     additional pages each of which is filled with vfdi_endpoint structures.
 
 reserved2

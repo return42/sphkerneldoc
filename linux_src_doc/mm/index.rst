@@ -17,7 +17,7 @@ mm
     frame_vector_c
     gup_c
     highmem_c
-    huge_memory_c
+    khugepaged_c
     kmemleak_c
     ksm_c
     maccess_c

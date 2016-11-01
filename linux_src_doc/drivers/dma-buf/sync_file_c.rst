@@ -42,6 +42,26 @@ Description
 Ensures \ ``fd``\  references a valid sync_file, increments the refcount of the
 backing file. Returns the sync_file or NULL in case of error.
 
+.. _`sync_file_get_fence`:
+
+sync_file_get_fence
+===================
+
+.. c:function:: struct fence *sync_file_get_fence(int fd)
+
+    get the fence related to the sync_file fd
+
+    :param int fd:
+        sync_file fd to get the fence from
+
+.. _`sync_file_get_fence.description`:
+
+Description
+-----------
+
+Ensures \ ``fd``\  references a valid sync_file and returns a fence that
+represents all fence in the sync_file. On error NULL is returned.
+
 .. _`sync_file_merge`:
 
 sync_file_merge

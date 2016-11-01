@@ -8,7 +8,6 @@ asm
     :maxdepth: 1
 
     hardware/index
-    cacheflush_h
     cti_h
     dma-mapping_h
     kexec_h

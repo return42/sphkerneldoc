@@ -1546,7 +1546,7 @@ nla_need_padding_for_64bit
 Description
 -----------
 
-Return true if padding is needed to align the next attribute (\ :c:func:`nla_data`\ ) to
+Return true if padding is needed to align the next attribute (nla_data()) to
 a 64-bit aligned area.
 
 .. _`nla_align_64bit`:

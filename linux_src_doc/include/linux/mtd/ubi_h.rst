@@ -55,7 +55,7 @@ used_ebs
     data
 
 vol_type
-    volume type (\ ``UBI_DYNAMIC_VOLUME``\  or \ ``UBI_STATIC_VOLUME``\ )
+    volume type (%UBI_DYNAMIC_VOLUME or \ ``UBI_STATIC_VOLUME``\ )
 
 corrupted
     non-zero if the volume is corrupted (static volumes only)
@@ -112,13 +112,13 @@ I.e., the \ ``corrupted``\  flag is never set if the \ ``upd_marker``\  flag is 
 The \ ``used_bytes``\  and \ ``used_ebs``\  fields are only really needed for static
 volumes and contain the number of bytes stored in this static volume and how
 many eraseblock this data occupies. In case of dynamic volumes, the
-\ ``used_bytes``\  field is equivalent to \ ``size``\ \*\ ``usable_leb_size``\ , and the \ ``used_ebs``\ 
+\ ``used_bytes``\  field is equivalent to \ ``size``\ \*@usable_leb_size, and the \ ``used_ebs``\ 
 field is equivalent to \ ``size``\ .
 
 In general, logical eraseblock size is a property of the UBI device, not
 of the UBI volume. Indeed, the logical eraseblock size depends on the
 physical eraseblock size and on how much bytes UBI headers consume. But
-because of the volume alignment (\ ``alignment``\ ), the usable size of logical
+because of the volume alignment (@alignment), the usable size of logical
 eraseblocks if a volume may be less. The following equation is true:
 \ ``usable_leb_size``\  = LEB size - (LEB size mod \ ``alignment``\ ),
 where LEB size is the logical eraseblock size defined by the UBI device.
@@ -160,7 +160,7 @@ list_pos
     current position in \ ``sg``\ []
 
 page_pos
-    current position in \ ``sg``\ [\ ``list_pos``\ ]
+    current position in \ ``sg``\ [@list_pos]
 
 sg
     the scatter gather list itself
@@ -269,7 +269,7 @@ underneath, in which case \ ``min_io_size``\  can be physical min. I/O size of
 single flash chip, while \ ``max_write_size``\  can be N \* \ ``min_io_size``\ .
 
 The \ ``max_write_size``\  field is always greater or equivalent to \ ``min_io_size``\ .
-E.g., some NOR flashes may have (\ ``min_io_size``\  = 1, \ ``max_write_size``\  = 64). In
+E.g., some NOR flashes may have (@min_io_size = 1, \ ``max_write_size``\  = 64). In
 contrast, NAND flashes usually have \ ``min_io_size``\  = \ ``max_write_size``\  = NAND
 page size.
 

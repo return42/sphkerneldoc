@@ -247,8 +247,8 @@ ll_xattr_cache_get
 Description
 -----------
 
-Get the xattr value (\ ``valid``\  has OBD_MD_FLXATTR set) of \ ``name``\  or
-list xattr names (\ ``valid``\  has OBD_MD_FLXATTRLS set) for \ ``inode``\ .
+Get the xattr value (@valid has OBD_MD_FLXATTR set) of \ ``name``\  or
+list xattr names (@valid has OBD_MD_FLXATTRLS set) for \ ``inode``\ .
 The resulting value/list is stored in \ ``buffer``\  if the former
 is not larger than \ ``size``\ .
 

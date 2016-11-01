@@ -176,7 +176,7 @@ Description
 -----------
 
 Generate a new header and prepare for the new packet.  Return 0 on
-success, or -\ ``ENOMEM``\  if failed to alloc header.
+success, or -%ENOMEM if failed to alloc header.
 
 .. _`efx_enqueue_skb_tso`:
 

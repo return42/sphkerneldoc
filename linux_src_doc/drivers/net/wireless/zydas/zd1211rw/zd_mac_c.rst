@@ -65,7 +65,7 @@ zd_mac_tx_to_dev
     callback for USB layer
 
     :param struct sk_buff \*skb:
-        a \ :c:type:`struct sk_buff <sk_buff>` pointer
+        a \ :c:type:`struct sk_buff <sk_buff>`\  pointer
 
     :param int error:
         error value, 0 if transmission successful

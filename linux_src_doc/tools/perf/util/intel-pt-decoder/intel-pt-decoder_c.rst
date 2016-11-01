@@ -30,7 +30,7 @@ there is one, otherwise the buffer pointer is unchanged.  If \ ``buf``\  is upda
 Return
 ------
 
-\ ``true``\  if a PSB packet is found, \ ``false``\  otherwise.
+%true if a PSB packet is found, \ ``false``\  otherwise.
 
 .. _`intel_pt_step_psb`:
 
@@ -61,7 +61,7 @@ pointer is unchanged.  If \ ``buf``\  is updated, \ ``len``\  is adjusted accord
 Return
 ------
 
-\ ``true``\  if a PSB packet is found, \ ``false``\  otherwise.
+%true if a PSB packet is found, \ ``false``\  otherwise.
 
 .. _`intel_pt_last_psb`:
 
@@ -124,7 +124,7 @@ PSBEND packet is found.
 Return
 ------
 
-\ ``true``\  if TSC is found, false otherwise.
+%true if TSC is found, false otherwise.
 
 .. _`intel_pt_tsc_cmp`:
 
@@ -156,7 +156,7 @@ less than half the maximum difference.
 Return
 ------
 
-\ ``-1``\  if \ ``tsc1``\  is before \ ``tsc2``\ , \ ``0``\  if \ ``tsc1``\  == \ ``tsc2``\ , \ ``1``\  if \ ``tsc1``\  is
+%-1 if \ ``tsc1``\  is before \ ``tsc2``\ , \ ``0``\  if \ ``tsc1``\  == \ ``tsc2``\ , \ ``1``\  if \ ``tsc1``\  is
 after \ ``tsc2``\ .
 
 .. _`intel_pt_find_overlap_tsc`:

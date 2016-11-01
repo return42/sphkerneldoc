@@ -17,7 +17,7 @@ SIM_CONTROL_SET_TRACING
 
 .. c:function::  SIM_CONTROL_SET_TRACING()
 
-    sets the tracing mask to the given mask. See "\ :c:func:`sim_set_tracing`\ ".
+    sets the tracing mask to the given mask. See "sim_set_tracing()".
 
 .. _`sim_control_dump`:
 
@@ -168,7 +168,7 @@ SIM_CONTROL_SYSCALL
 
 .. c:function::  SIM_CONTROL_SYSCALL()
 
-    See "\ :c:func:`sim_syscall`\ " for more info.
+    See "sim_syscall()" for more info.
 
 .. _`sim_control_os_fork_parent`:
 

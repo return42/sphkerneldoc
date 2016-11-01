@@ -27,7 +27,7 @@ rtc_device_register
 Description
 -----------
 
-\ :c:func:`rtc_device_unregister`\  must be called when the class device is no
+rtc_device_unregister() must be called when the class device is no
 longer needed.
 
 Returns the pointer to the new struct class device.
@@ -70,7 +70,7 @@ devm_rtc_device_register
 Description
 -----------
 
-\ ``return``\  a struct rtc on success, or an ERR_PTR on error
+@return a struct rtc on success, or an ERR_PTR on error
 
 Managed \ :c:func:`rtc_device_register`\ . The rtc_device returned from this function
 are automatically freed on driver detach. See \ :c:func:`rtc_device_register`\ 

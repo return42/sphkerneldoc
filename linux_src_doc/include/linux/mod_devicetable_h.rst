@@ -141,7 +141,7 @@ Members
 
 phy_id
     The result of
-    (mdio_read(\ :c:type:`struct MII_PHYSID1 <MII_PHYSID1>`) << 16 \| mdio_read(\ :c:type:`struct PHYSID2 <PHYSID2>`)) & \ ``phy_id_mask``\ 
+    (mdio_read(&MII_PHYSID1) << 16 \| mdio_read(&PHYSID2)) & \ ``phy_id_mask``\ 
     for this PHY type
 
 phy_id_mask
@@ -308,6 +308,46 @@ Description
 
 Identifies a RapidIO device based on both the device/vendor IDs and
 the assembly device/vendor IDs.
+
+.. _`fsl_mc_device_id`:
+
+struct fsl_mc_device_id
+=======================
+
+.. c:type:: struct fsl_mc_device_id
+
+    MC object device identifier
+
+.. _`fsl_mc_device_id.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct fsl_mc_device_id {
+        __u16 vendor;
+        const char obj_type[16];
+    }
+
+.. _`fsl_mc_device_id.members`:
+
+Members
+-------
+
+vendor
+    vendor ID
+
+obj_type
+    MC object type
+
+.. _`fsl_mc_device_id.description`:
+
+Description
+-----------
+
+Type of entries in the "device Id" table for MC object devices supported by
+a MC object device driver. The last entry of the table has vendor set to 0x0
 
 .. This file was automatic generated / don't edit.
 

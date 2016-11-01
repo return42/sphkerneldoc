@@ -25,7 +25,7 @@ This function attempts to put the ccwgroup device into the online state.
 Return
 ------
 
-\ ``0``\  on success and a negative error value on failure.
+%0 on success and a negative error value on failure.
 
 .. _`ccwgroup_set_offline`:
 
@@ -51,7 +51,7 @@ This function attempts to put the ccwgroup device into the offline state.
 Return
 ------
 
-\ ``0``\  on success and a negative error value on failure.
+%0 on success and a negative error value on failure.
 
 .. _`ccwgroup_create_dev`:
 
@@ -87,7 +87,7 @@ devices are obtained from the list of bus ids given in \ ``buf``\ .
 Return
 ------
 
-\ ``0``\  on success and an error code on failure.
+%0 on success and an error code on failure.
 
 .. _`ccwgroup_create_dev.context`:
 

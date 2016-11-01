@@ -381,19 +381,19 @@ event (such as the CPU going online/offline).
 
 It is expected to already be called from the appropriate CPU.
 
-.. _`mips_cdmm_bus_down`:
+.. _`mips_cdmm_cpu_down_prep`:
 
-mips_cdmm_bus_down
-==================
+mips_cdmm_cpu_down_prep
+=======================
 
-.. c:function:: long mips_cdmm_bus_down(void *data)
+.. c:function:: int mips_cdmm_cpu_down_prep(unsigned int cpu)
 
-    Tear down the CDMM bus.
+    Callback for CPUHP DOWN_PREP: Tear down the CDMM bus.
 
-    :param void \*data:
-        Pointer to unsigned int CPU number.
+    :param unsigned int cpu:
+        unsigned int CPU number.
 
-.. _`mips_cdmm_bus_down.description`:
+.. _`mips_cdmm_cpu_down_prep.description`:
 
 Description
 -----------
@@ -401,19 +401,19 @@ Description
 This function is executed on the hotplugged CPU and calls the CDMM
 driver cpu_down callback for all devices on that CPU.
 
-.. _`mips_cdmm_bus_up`:
+.. _`mips_cdmm_cpu_online`:
 
-mips_cdmm_bus_up
-================
+mips_cdmm_cpu_online
+====================
 
-.. c:function:: long mips_cdmm_bus_up(void *data)
+.. c:function:: int mips_cdmm_cpu_online(unsigned int cpu)
 
-    Bring up the CDMM bus.
+    Callback for CPUHP ONLINE: Bring up the CDMM bus.
 
-    :param void \*data:
-        Pointer to unsigned int CPU number.
+    :param unsigned int cpu:
+        unsigned int CPU number.
 
-.. _`mips_cdmm_bus_up.description`:
+.. _`mips_cdmm_cpu_online.description`:
 
 Description
 -----------
@@ -425,42 +425,6 @@ devices already discovered on that CPU.
 It is used as work_on_cpu callback function during
 initialisation. When CPUs are brought online the function is
 invoked directly on the hotplugged CPU.
-
-.. _`mips_cdmm_cpu_notify`:
-
-mips_cdmm_cpu_notify
-====================
-
-.. c:function:: int mips_cdmm_cpu_notify(struct notifier_block *nb, unsigned long action, void *data)
-
-    Take action when a CPU is going online or offline.
-
-    :param struct notifier_block \*nb:
-        CPU notifier block .
-
-    :param unsigned long action:
-        Event that has taken place (CPU\_\*).
-
-    :param void \*data:
-        CPU number.
-
-.. _`mips_cdmm_cpu_notify.description`:
-
-Description
------------
-
-This notifier is used to keep the CDMM buses updated as CPUs are offlined and
-onlined. When CPUs go offline or come back online, so does their CDMM bus, so
-devices must be informed. Also when CPUs come online for the first time the
-devices on the CDMM bus need discovering.
-
-.. _`mips_cdmm_cpu_notify.return`:
-
-Return
-------
-
-NOTIFY_OK if event was used.
-NOTIFY_DONE if we didn't care.
 
 .. _`mips_cdmm_init`:
 

@@ -14,7 +14,7 @@ Description
 -----------
 
 Copyright (C) Intuitive Aerial AB
-Written by Marten Svanfeldt, marten\ ``intuitiveaerial``\ .com
+Written by Marten Svanfeldt, marten@intuitiveaerial.com
 Copyright (C) 2012, Analog Device Inc.
 
 .. _`hrtimer_default_sampling_frequency.author`:
@@ -22,7 +22,7 @@ Copyright (C) 2012, Analog Device Inc.
 Author
 ------
 
-Lars-Peter Clausen <lars\ ``metafoo``\ .de>
+Lars-Peter Clausen <lars@metafoo.de>
 Copyright (C) 2015, Intel Corporation
 
 This program is free software; you can redistribute it and/or modify it

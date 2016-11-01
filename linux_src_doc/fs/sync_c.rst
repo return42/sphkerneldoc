@@ -27,7 +27,7 @@ vfs_fsync_range
 Description
 -----------
 
-Write back data in range \ ``start``\ ..\ ``end``\  and metadata for \ ``file``\  to disk.  If
+Write back data in range \ ``start``\ ..@end and metadata for \ ``file``\  to disk.  If
 \ ``datasync``\  is set only metadata needed to access modified file data is
 written.
 

@@ -48,7 +48,7 @@ method defined in the address space operations of \ ``mapping``\  and the page i
 added to the page cache of \ ``mapping``\  in the process.
 
 If the page belongs to an mst protected attribute and it is marked as such
-in its ntfs inode (\ :c:func:`NInoMstProtected`\ ) the mst fixups are applied but no
+in its ntfs inode (NInoMstProtected()) the mst fixups are applied but no
 error checking is performed.  This means the caller has to verify whether
 the ntfs record(s) contained in the page are valid or not using one of the
 ntfs_is_XXXX_record{,p}() macros, where XXXX is the record type you are
@@ -66,7 +66,7 @@ When finished with the page, the caller has to call \ :c:func:`ntfs_unmap_page`\
 unpin, unmap and release the page.
 
 Note this does not grant exclusive access. If such is desired, the caller
-must provide it independently of the ntfs_{un}\ :c:func:`map_page`\  calls by using
+must provide it independently of the ntfs_{un}map_page() calls by using
 a {rw_}semaphore or other means of serialization. A spin lock cannot be
 used as \ :c:func:`ntfs_map_page`\  can block.
 

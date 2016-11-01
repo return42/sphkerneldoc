@@ -8,7 +8,7 @@ struct mma_chip_info
 
 .. c:type:: struct mma_chip_info
 
-    chip specific data for Freescale's accelerometers
+    chip specific data
 
 .. _`mma_chip_info.definition`:
 

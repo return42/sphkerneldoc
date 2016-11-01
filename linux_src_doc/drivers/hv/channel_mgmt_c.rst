@@ -30,7 +30,7 @@ vmbus_prep_negotiate_resp
 Description
 -----------
 
-\ ``icmsghdrp``\  is of type \ :c:type:`struct icmsg_hdr <icmsg_hdr>`\ .
+@icmsghdrp is of type \ :c:type:`struct icmsg_hdr <icmsg_hdr>`\ .
 \ ``negop``\  is of type \ :c:type:`struct icmsg_negotiate <icmsg_negotiate>`\ .
 Set up and fill in default negotiate response message.
 

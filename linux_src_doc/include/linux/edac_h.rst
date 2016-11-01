@@ -239,7 +239,7 @@ MEM_RDDR4
 Description
 -----------
 
-\ ``MEM_EMPTY``\            Empty csrow
+@MEM_EMPTY           Empty csrow
 
 .. _`edac_type`:
 
@@ -499,11 +499,11 @@ EDAC_DIMM_OFF
 Description
 -----------
 
-For 1 layer, this macro returns \ :c:type:`struct var <var>`[layer0] - \ :c:type:`struct var <var>`
+For 1 layer, this macro returns \ :c:type:`struct var <var>`\ [layer0] - \ :c:type:`struct var <var>`\ 
 For 2 layers, this macro is similar to allocate a bi-dimensional array
-and to return "\ :c:type:`struct var <var>`[layer0][layer1] - \ :c:type:`struct var <var>`"
+and to return "&var[layer0][layer1] - \ :c:type:`struct var <var>`\ "
 For 3 layers, this macro is similar to allocate a tri-dimensional array
-and to return "\ :c:type:`struct var <var>`[layer0][layer1][layer2] - \ :c:type:`struct var <var>`"
+and to return "&var[layer0][layer1][layer2] - \ :c:type:`struct var <var>`\ "
 
 A loop could be used here to make it more generic, but, as we only have
 3 layers, this is a little faster.
@@ -545,11 +545,11 @@ EDAC_DIMM_PTR
 Description
 -----------
 
-For 1 layer, this macro returns \ :c:type:`struct var <var>`[layer0]
+For 1 layer, this macro returns \ :c:type:`struct var <var>`\ [layer0]
 For 2 layers, this macro is similar to allocate a bi-dimensional array
-and to return "\ :c:type:`struct var <var>`[layer0][layer1]"
+and to return "&var[layer0][layer1]"
 For 3 layers, this macro is similar to allocate a tri-dimensional array
-and to return "\ :c:type:`struct var <var>`[layer0][layer1][layer2]"
+and to return "&var[layer0][layer1][layer2]"
 
 .. _`rank_info`:
 

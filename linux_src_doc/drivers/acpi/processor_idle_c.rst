@@ -18,7 +18,7 @@ acpi_idle_bm_check
 acpi_idle_do_entry
 ==================
 
-.. c:function:: void acpi_idle_do_entry(struct acpi_processor_cx *cx)
+.. c:function:: void __cpuidle acpi_idle_do_entry(struct acpi_processor_cx *cx)
 
     enter idle state using the appropriate method
 
@@ -65,20 +65,48 @@ acpi_idle_enter_bm
     :param bool timer_bc:
         Whether or not to change timer mode to broadcast
 
-.. _`acpi_processor_setup_cpuidle_cx`:
+.. _`combine_lpi_states`:
 
-acpi_processor_setup_cpuidle_cx
-===============================
+combine_lpi_states
+==================
 
-.. c:function:: int acpi_processor_setup_cpuidle_cx(struct acpi_processor *pr, struct cpuidle_device *dev)
+.. c:function:: bool combine_lpi_states(struct acpi_lpi_state *local, struct acpi_lpi_state *parent, struct acpi_lpi_state *result)
 
-    prepares and configures CPUIDLE device i.e. per-cpu data
+    combine local and parent LPI states to form a composite LPI state
 
-    :param struct acpi_processor \*pr:
-        the ACPI processor
+    :param struct acpi_lpi_state \*local:
+        local LPI state
+
+    :param struct acpi_lpi_state \*parent:
+        parent LPI state
+
+    :param struct acpi_lpi_state \*result:
+        composite LPI state
+
+.. _`acpi_idle_lpi_enter`:
+
+acpi_idle_lpi_enter
+===================
+
+.. c:function:: int acpi_idle_lpi_enter(struct cpuidle_device *dev, struct cpuidle_driver *drv, int index)
+
+    enters an ACPI any LPI state
 
     :param struct cpuidle_device \*dev:
-        the cpuidle device
+        the target CPU
+
+    :param struct cpuidle_driver \*drv:
+        cpuidle driver containing cpuidle state info
+
+    :param int index:
+        index of target state
+
+.. _`acpi_idle_lpi_enter.return`:
+
+Return
+------
+
+0 for success or negative value for error
 
 .. _`acpi_processor_setup_cpuidle_states`:
 
@@ -91,6 +119,21 @@ acpi_processor_setup_cpuidle_states
 
     :param struct acpi_processor \*pr:
         the ACPI processor
+
+.. _`acpi_processor_setup_cpuidle_dev`:
+
+acpi_processor_setup_cpuidle_dev
+================================
+
+.. c:function:: int acpi_processor_setup_cpuidle_dev(struct acpi_processor *pr, struct cpuidle_device *dev)
+
+    prepares and configures CPUIDLE device i.e. per-cpu data
+
+    :param struct acpi_processor \*pr:
+        the ACPI processor
+
+    :param struct cpuidle_device \*dev:
+        the cpuidle device
 
 .. This file was automatic generated / don't edit.
 

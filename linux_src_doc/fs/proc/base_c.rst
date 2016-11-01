@@ -23,8 +23,8 @@ proc (proc_mnt) and from all the namespaces' procs this task was seen
 in. This call is supposed to do all of this job.
 
 Looks in the dcache for
-/proc/\ ``pid``\ 
-/proc/\ ``tgid``\ /task/\ ``pid``\ 
+/proc/@pid
+/proc/@tgid/task/@pid
 if either directory is present flushes it and all of it'ts children
 from the dcache.
 

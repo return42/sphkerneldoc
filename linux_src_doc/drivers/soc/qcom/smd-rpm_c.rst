@@ -172,7 +172,7 @@ qcom_rpm_smd_write
 
 .. c:function:: int qcom_rpm_smd_write(struct qcom_smd_rpm *rpm, int state, u32 type, u32 id, void *buf, size_t count)
 
-    write \ ``buf``\  to \ ``type``\ :\ ``id``\ 
+    write \ ``buf``\  to \ ``type``\ :@id
 
     :param struct qcom_smd_rpm \*rpm:
         rpm handle

@@ -210,11 +210,11 @@ void read(void)
 bool x, y;
 
 do {
-int s = read_seqcount_begin(\ :c:type:`struct seq <seq>`);
+int s = read_seqcount_begin(&seq);
 
 x = X; y = Y;
 
-} while (read_seqcount_retry(\ :c:type:`struct seq <seq>`, s));
+} while (read_seqcount_retry(&seq, s));
 
 BUG_ON(!x && !y);
 }
@@ -310,7 +310,7 @@ struct entry \*entry;
 unsigned seq, idx;
 
 do {
-seq = raw_read_seqcount_latch(\ :c:type:`latch->seq <latch>`\ );
+seq = raw_read_seqcount_latch(&latch->seq);
 
 idx = seq & 0x01;
 entry = data_query(latch->data[idx], ...);

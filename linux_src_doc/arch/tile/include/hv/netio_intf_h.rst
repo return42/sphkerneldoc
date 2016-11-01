@@ -17,7 +17,7 @@ typedef netio_size_t
 
 .. c:type:: typedef netio_size_t
 
-    \ ``ingroup``\  setup
+    @ingroup setup
 
 .. _`_netio_pkt_handle_base`:
 

@@ -71,7 +71,7 @@ Definition
         unsigned long clk_rate;
         enum s3c_nand_clk_state clk_state;
         enum s3c_cpu_type cpu_type;
-    #ifdef CONFIG_CPU_FREQ
+    #ifdef CONFIG_ARM_S3C24XX_CPUFREQ
         struct notifier_block freq_transition;
     #endif
     }

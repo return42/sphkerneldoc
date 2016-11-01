@@ -9,3 +9,4 @@ msm
 
     mdp/index
     msm_atomic_c
+    msm_gem_shrinker_c

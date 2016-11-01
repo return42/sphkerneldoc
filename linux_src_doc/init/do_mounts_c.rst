@@ -44,7 +44,7 @@ The function will return the first partition which contains a matching
 UUID value in its partition_meta_info struct.  This does not search
 by filesystem UUIDs.
 
-If \ ``uuid_str``\  is followed by a "/PARTNROFF=\ ``d``\ ", then the number will be
+If \ ``uuid_str``\  is followed by a "/PARTNROFF=%d", then the number will be
 extracted and used as an offset from the partition identified by the UUID.
 
 Returns the matching dev_t on success or 0 on failure.

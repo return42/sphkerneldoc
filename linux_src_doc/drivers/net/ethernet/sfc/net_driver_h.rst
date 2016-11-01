@@ -566,7 +566,7 @@ Definition
         bool eventq_init;
         bool enabled;
         int irq;
-        unsigned int irq_moderation;
+        unsigned int irq_moderation_us;
         struct net_device *napi_dev;
         struct napi_struct napi_str;
     #ifdef CONFIG_NET_RX_BUSY_POLL
@@ -625,8 +625,8 @@ enabled
 irq
     IRQ number (MSI and MSI-X only)
 
-irq_moderation
-    IRQ moderation value (in hardware ticks)
+irq_moderation_us
+    IRQ moderation value (in microseconds)
 
 napi_dev
     Net device used with NAPI
@@ -695,11 +695,11 @@ n_rx_merge_packets
 
 rx_pkt_n_frags
     Number of fragments in next packet to be delivered by
-    \\ :c:func:`__efx_rx_packet`\ , or zero if there is none
+    \__efx_rx_packet(), or zero if there is none
 
 rx_pkt_index
     Ring index of first buffer for next packet to be delivered
-    by \\ :c:func:`__efx_rx_packet`\ , if \ ``rx_pkt_n_frags``\  != 0
+    by \__efx_rx_packet(), if \ ``rx_pkt_n_frags``\  != 0
 
 rx_queue
     RX queue for this channel
@@ -1062,8 +1062,10 @@ Definition
         void __iomem *membase;
         enum efx_int_mode interrupt_mode;
         unsigned int timer_quantum_ns;
+        unsigned int timer_max_ns;
         bool irq_rx_adaptive;
-        unsigned int irq_rx_moderation;
+        unsigned int irq_mod_step_us;
+        unsigned int irq_rx_moderation_us;
         u32 msg_enable;
         enum nic_state state;
         unsigned long reset_pending;
@@ -1117,6 +1119,7 @@ Definition
         bool mc_bist_for_other_fn;
         bool port_initialized;
         struct net_device *net_dev;
+        netdev_features_t fixed_features;
         struct efx_buffer stats_buffer;
         u64 rx_nodesc_drops_total;
         u64 rx_nodesc_drops_while_down;
@@ -1161,7 +1164,6 @@ Definition
         int last_irq_cpu;
         spinlock_t stats_lock;
         atomic_t n_rx_noskb_drops;
-        bool mc_promisc;
     }
 
 .. _`efx_nic.members`:
@@ -1176,7 +1178,7 @@ node
     List node for maintaning primary/secondary function lists
 
 primary
-    \ :c:type:`struct efx_nic <efx_nic>`\  instance for the primary function of this
+    &struct efx_nic instance for the primary function of this
     controller.  May be the same structure, and may be \ ``NULL``\  if no
     primary function is bound.  Serialised by rtnl_lock.
 
@@ -1222,17 +1224,23 @@ interrupt_mode
 timer_quantum_ns
     Interrupt timer quantum, in nanoseconds
 
+timer_max_ns
+    Interrupt timer maximum value, in nanoseconds
+
 irq_rx_adaptive
     Adaptive IRQ moderation enabled for RX event queues
 
-irq_rx_moderation
+irq_mod_step_us
+    *undescribed*
+
+irq_rx_moderation_us
     IRQ moderation time for RX event queues
 
 msg_enable
     Log message enable flags
 
 state
-    Device state number (\ ``STATE``\ \_\*). Serialised by the rtnl_lock.
+    Device state number (%STATE\_\*). Serialised by the rtnl_lock.
 
 reset_pending
     Bitmask for pending resets
@@ -1389,6 +1397,9 @@ port_initialized
 net_dev
     Operating system network device. Consider holding the rtnl lock
 
+fixed_features
+    Features which cannot be turned off
+
 stats_buffer
     DMA buffer for statistics
 
@@ -1520,9 +1531,6 @@ stats_lock
 n_rx_noskb_drops
     Count of RX packets dropped due to failure to allocate an skb
 
-mc_promisc
-    Whether in multicast promiscuous mode when last changed
-
 .. _`efx_nic.description`:
 
 Description
@@ -1589,7 +1597,7 @@ Definition
         int (*mcdi_poll_reboot)(struct efx_nic *efx);
         void (*mcdi_reboot_detected)(struct efx_nic *efx);
         void (*irq_enable_master)(struct efx_nic *efx);
-        void (*irq_test_generate)(struct efx_nic *efx);
+        int (*irq_test_generate)(struct efx_nic *efx);
         void (*irq_disable_non_ev)(struct efx_nic *efx);
         irqreturn_t (*irq_handle_msi)(int irq, void *dev_id);
         irqreturn_t (*irq_handle_legacy)(int irq, void *dev_id);
@@ -1637,6 +1645,8 @@ Definition
         int (*ptp_set_ts_sync_events)(struct efx_nic *efx, bool en, bool temp);
         int (*ptp_set_ts_config)(struct efx_nic *efx,struct hwtstamp_config *init);
         int (*sriov_configure)(struct efx_nic *efx, int num_vfs);
+        int (*vlan_rx_add_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
+        int (*vlan_rx_kill_vid)(struct efx_nic *efx, __be16 proto, u16 vid);
         int (*sriov_init)(struct efx_nic *efx);
         void (*sriov_fini)(struct efx_nic *efx);
         bool (*sriov_wanted)(struct efx_nic *efx);
@@ -1965,6 +1975,12 @@ ptp_set_ts_config
     must validate and update rx_filter.
 
 sriov_configure
+    *undescribed*
+
+vlan_rx_add_vid
+    *undescribed*
+
+vlan_rx_kill_vid
     *undescribed*
 
 sriov_init

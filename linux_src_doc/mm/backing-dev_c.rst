@@ -155,12 +155,12 @@ next write to be completed.
 wait_iff_congested
 ==================
 
-.. c:function:: long wait_iff_congested(struct zone *zone, int sync, long timeout)
+.. c:function:: long wait_iff_congested(struct pglist_data *pgdat, int sync, long timeout)
 
-    Conditionally wait for a backing_dev to become uncongested or a zone to complete writes
+    Conditionally wait for a backing_dev to become uncongested or a pgdat to complete writes
 
-    :param struct zone \*zone:
-        A zone to check if it is heavily congested
+    :param struct pglist_data \*pgdat:
+        A pgdat to check if it is heavily congested
 
     :param int sync:
         SYNC or ASYNC IO
@@ -174,11 +174,11 @@ Description
 -----------
 
 In the event of a congested backing_dev (any backing_dev) and the given
-\ ``zone``\  has experienced recent congestion, this waits for up to \ ``timeout``\ 
+\ ``pgdat``\  has experienced recent congestion, this waits for up to \ ``timeout``\ 
 jiffies for either a BDI to exit congestion of the given \ ``sync``\  queue
 or a write to complete.
 
-In the absence of zone congestion, \ :c:func:`cond_resched`\  is called to yield
+In the absence of pgdat congestion, \ :c:func:`cond_resched`\  is called to yield
 the processor if necessary but otherwise does not sleep.
 
 The return value is 0 if the sleep is for the full timeout. Otherwise,

@@ -7,7 +7,6 @@ kernel
 .. toctree::
     :maxdepth: 1
 
-    bios32_c
     cpuidle_c
     crash_dump_c
     devtree_c

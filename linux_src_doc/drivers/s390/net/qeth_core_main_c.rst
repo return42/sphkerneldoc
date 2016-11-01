@@ -90,5 +90,59 @@ qeth_get_priority_queue
     :param int cast_type:
         *undescribed*
 
+.. _`qeth_get_elements_for_frags`:
+
+qeth_get_elements_for_frags
+===========================
+
+.. c:function:: int qeth_get_elements_for_frags(struct sk_buff *skb)
+
+    find number of SBALEs for skb frags.
+
+    :param struct sk_buff \*skb:
+        SKB address
+
+.. _`qeth_get_elements_for_frags.description`:
+
+Description
+-----------
+
+Returns the number of pages, and thus QDIO buffer elements, needed to cover
+fragmented part of the SKB. Returns zero for linear SKB.
+
+.. _`qeth_get_elements_no`:
+
+qeth_get_elements_no
+====================
+
+.. c:function:: int qeth_get_elements_no(struct qeth_card *card, struct sk_buff *skb, int extra_elems)
+
+    find number of SBALEs for skb data, inc. frags.
+
+    :param struct qeth_card \*card:
+        qeth card structure, to check max. elems.
+
+    :param struct sk_buff \*skb:
+        SKB address
+
+    :param int extra_elems:
+        extra elems needed, to check against max.
+
+.. _`qeth_get_elements_no.description`:
+
+Description
+-----------
+
+Returns the number of pages, and thus QDIO buffer elements, needed to cover
+skb data, including linear part and fragments. Checks if the result plus
+extra_elems fits under the limit for the card. Returns 0 if it does not.
+
+.. _`qeth_get_elements_no.note`:
+
+Note
+----
+
+extra_elems is not included in the returned result.
+
 .. This file was automatic generated / don't edit.
 

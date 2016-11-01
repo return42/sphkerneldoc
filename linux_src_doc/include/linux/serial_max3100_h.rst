@@ -60,7 +60,7 @@ static struct plat_max3100 max3100_plat_data = {
 static struct spi_board_info spi_board_info[] = {
 {
 .modalias   = "max3100",
-.platform_data      = \ :c:type:`struct max3100_plat_data <max3100_plat_data>`,
+.platform_data      = \ :c:type:`struct max3100_plat_data <max3100_plat_data>`\ ,
 .irq                = IRQ_EINT12,
 .max_speed_hz       = 5\*1000\*1000,
 .chip_select        = 0,

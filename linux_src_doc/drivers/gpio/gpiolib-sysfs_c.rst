@@ -72,7 +72,7 @@ gpiod_unexport
 
 .. c:function:: void gpiod_unexport(struct gpio_desc *desc)
 
-    reverse effect of \ :c:func:`gpio_export`\ 
+    reverse effect of \ :c:func:`gpiod_export`\ 
 
     :param struct gpio_desc \*desc:
         *undescribed*
@@ -82,7 +82,7 @@ gpiod_unexport
 Description
 -----------
 
-This is implicit on \ :c:func:`gpio_free`\ .
+This is implicit on \ :c:func:`gpiod_free`\ .
 
 .. This file was automatic generated / don't edit.
 

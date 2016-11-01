@@ -95,45 +95,5 @@ Description
 
 All writes must be in half page chunks (half page == 64 bits).
 
-.. _`bfin_otp_init`:
-
-bfin_otp_init
-=============
-
-.. c:function:: int bfin_otp_init( void)
-
-    Initialize module
-
-    :param  void:
-        no arguments
-
-.. _`bfin_otp_init.description`:
-
-Description
------------
-
-Registers the device and notifier handler. Actual device
-initialization is handled by \ :c:func:`bfin_otp_open`\ .
-
-.. _`bfin_otp_exit`:
-
-bfin_otp_exit
-=============
-
-.. c:function:: void __exit bfin_otp_exit( void)
-
-    Deinitialize module
-
-    :param  void:
-        no arguments
-
-.. _`bfin_otp_exit.description`:
-
-Description
------------
-
-Unregisters the device and notifier handler. Actual device
-deinitialization is handled by \ :c:func:`bfin_otp_close`\ .
-
 .. This file was automatic generated / don't edit.
 

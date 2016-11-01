@@ -428,7 +428,8 @@ Definition
         struct hlist_node hlist_entry;
         struct list_head active_entry;
         int nr_siblings;
-        int group_flags;
+        int event_caps;
+        int group_caps;
         struct perf_event *group_leader;
         struct pmu *pmu;
         void *pmu_private;
@@ -481,6 +482,10 @@ Definition
         u64 (*clock)(void);
         perf_overflow_handler_t overflow_handler;
         void *overflow_handler_context;
+    #ifdef CONFIG_BPF_SYSCALL
+        perf_overflow_handler_t orig_overflow_handler;
+        struct bpf_prog *prog;
+    #endif
     #ifdef CONFIG_EVENT_TRACING
         struct trace_event_call *tp_event;
         struct event_filter *filter;
@@ -492,6 +497,7 @@ Definition
         struct perf_cgroup *cgrp;
         int cgrp_defer_enabled;
     #endif
+        struct list_head sb_list;
     #endif
     }
 
@@ -521,7 +527,10 @@ active_entry
 nr_siblings
     *undescribed*
 
-group_flags
+event_caps
+    *undescribed*
+
+group_caps
     *undescribed*
 
 group_leader
@@ -680,6 +689,12 @@ overflow_handler
 overflow_handler_context
     *undescribed*
 
+orig_overflow_handler
+    *undescribed*
+
+prog
+    *undescribed*
+
 tp_event
     *undescribed*
 
@@ -693,6 +708,9 @@ cgrp
     *undescribed*
 
 cgrp_defer_enabled
+    *undescribed*
+
+sb_list
     *undescribed*
 
 .. _`perf_event_context`:
@@ -733,7 +751,9 @@ Definition
         u64 parent_gen;
         u64 generation;
         int pin_count;
+    #ifdef CONFIG_CGROUP_PERF
         int nr_cgroups;
+    #endif
         void *task_ctx_data;
         struct rcu_head rcu_head;
     }
@@ -841,7 +861,11 @@ Definition
         ktime_t hrtimer_interval;
         unsigned int hrtimer_active;
         struct pmu *unique_pmu;
+    #ifdef CONFIG_CGROUP_PERF
         struct perf_cgroup *cgrp;
+    #endif
+        struct list_head sched_cb_entry;
+        int sched_cb_usage;
     }
 
 .. _`perf_cpu_context.members`:
@@ -877,6 +901,12 @@ unique_pmu
     *undescribed*
 
 cgrp
+    *undescribed*
+
+sched_cb_entry
+    *undescribed*
+
+sched_cb_usage
     *undescribed*
 
 .. This file was automatic generated / don't edit.

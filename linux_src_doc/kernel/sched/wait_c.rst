@@ -90,43 +90,6 @@ Sets current thread back to running state and removes
 the wait descriptor from the given waitqueue if still
 queued.
 
-.. _`abort_exclusive_wait`:
-
-abort_exclusive_wait
-====================
-
-.. c:function:: void abort_exclusive_wait(wait_queue_head_t *q, wait_queue_t *wait, unsigned int mode, void *key)
-
-    abort exclusive waiting in a queue
-
-    :param wait_queue_head_t \*q:
-        waitqueue waited on
-
-    :param wait_queue_t \*wait:
-        wait descriptor
-
-    :param unsigned int mode:
-        runstate of the waiter to be woken
-
-    :param void \*key:
-        key to identify a wait bit queue or \ ``NULL``\ 
-
-.. _`abort_exclusive_wait.description`:
-
-Description
------------
-
-Sets current thread back to running state and removes
-the wait descriptor from the given waitqueue if still
-queued.
-
-Wakes up the next waiter if the caller is concurrently
-woken up through the queue.
-
-This prevents waiter starvation where an exclusive waiter
-aborts and is woken up concurrently and no one wakes up
-the next waiter.
-
 .. _`wake_up_bit`:
 
 wake_up_bit

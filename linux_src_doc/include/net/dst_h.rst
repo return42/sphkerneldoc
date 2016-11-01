@@ -101,7 +101,7 @@ __skb_tunnel_rx
 Description
 -----------
 
-After decapsulation, packet is going to re-enter (\ :c:func:`netif_rx`\ ) our stack,
+After decapsulation, packet is going to re-enter (netif_rx()) our stack,
 so make some cleanups. (no accounting done)
 
 .. _`skb_tunnel_rx`:
@@ -127,7 +127,7 @@ skb_tunnel_rx
 Description
 -----------
 
-After decapsulation, packet is going to re-enter (\ :c:func:`netif_rx`\ ) our stack,
+After decapsulation, packet is going to re-enter (netif_rx()) our stack,
 so make some cleanups, and perform accounting.
 
 .. _`skb_tunnel_rx.note`:

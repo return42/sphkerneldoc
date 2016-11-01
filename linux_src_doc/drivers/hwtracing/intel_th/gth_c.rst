@@ -104,7 +104,7 @@ intel_th_gth_disable
 
 .. c:function:: void intel_th_gth_disable(struct intel_th_device *thdev, struct intel_th_output *output)
 
-    enable tracing to an output device
+    disable tracing to an output device
 
     :param struct intel_th_device \*thdev:
         GTH device

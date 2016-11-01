@@ -36,16 +36,40 @@ ASTs and the LVB is returned to the caller, and lock holder(s) may CANCEL
 their lock(s) if they are idle. If the resource is not locked, the server
 may grant the lock.
 
+.. _`ldlm_cp_timeout`:
+
+ldlm_cp_timeout
+===============
+
+.. c:function:: unsigned int ldlm_cp_timeout(struct ldlm_lock *lock)
+
+    lock cancel, and their replies). Used for lock completion timeout on the client side.
+
+    :param struct ldlm_lock \*lock:
+        *undescribed*
+
+.. _`ldlm_cp_timeout.description`:
+
+Description
+-----------
+
+\param[in] lock      lock which is waiting the completion callback
+
+\retval              timeout in seconds to wait for the server reply
+
 .. _`ldlm_completion_tail`:
 
 ldlm_completion_tail
 ====================
 
-.. c:function:: int ldlm_completion_tail(struct ldlm_lock *lock)
+.. c:function:: int ldlm_completion_tail(struct ldlm_lock *lock, void *data)
 
     actually granted.
 
     :param struct ldlm_lock \*lock:
+        *undescribed*
+
+    :param void \*data:
         *undescribed*
 
 .. _`ldlm_completion_ast_async`:
@@ -55,7 +79,7 @@ ldlm_completion_ast_async
 
 .. c:function:: int ldlm_completion_ast_async(struct ldlm_lock *lock, __u64 flags, void *data)
 
-    >\ :c:func:`l_completion_ast`\  for a client, that doesn't wait until lock is granted. Suitable for locks enqueued through ptlrpcd, of other threads that cannot block for long.
+    >l_completion_ast() for a client, that doesn't wait until lock is granted. Suitable for locks enqueued through ptlrpcd, of other threads that cannot block for long.
 
     :param struct ldlm_lock \*lock:
         *undescribed*
@@ -88,7 +112,7 @@ Description
 -----------
 
 - when a reply to an ENQUEUE RPC is received from the server
-(\ :c:func:`ldlm_cli_enqueue_fini`\ ). Lock might be granted or not granted at
+(ldlm_cli_enqueue_fini()). Lock might be granted or not granted at
 this point (determined by flags);
 
 - when LDLM_CP_CALLBACK RPC comes to client to notify it that lock has
@@ -97,7 +121,7 @@ been granted;
 - when ldlm_lock_match(LDLM_FL_LVB_READY) is about to wait until lock
 gets correct lvb;
 
-- to force all locks when resource is destroyed (\ :c:func:`cleanup_resource`\ );
+- to force all locks when resource is destroyed (cleanup_resource());
 
 - during lock conversion (not used currently).
 
@@ -109,7 +133,7 @@ or penultimate cases happen in some other thread.
 ldlm_cli_enqueue_fini
 =====================
 
-.. c:function:: int ldlm_cli_enqueue_fini(struct obd_export *exp, struct ptlrpc_request *req, enum ldlm_type type, __u8 with_policy, enum ldlm_mode mode, __u64 *flags, void *lvb, __u32 lvb_len, struct lustre_handle *lockh, int rc)
+.. c:function:: int ldlm_cli_enqueue_fini(struct obd_export *exp, struct ptlrpc_request *req, enum ldlm_type type, __u8 with_policy, enum ldlm_mode mode, __u64 *flags, void *lvb, __u32 lvb_len, const struct lustre_handle *lockh, int rc)
 
     :param struct obd_export \*exp:
         *undescribed*
@@ -135,7 +159,7 @@ ldlm_cli_enqueue_fini
     :param __u32 lvb_len:
         *undescribed*
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param int rc:
@@ -327,9 +351,9 @@ ldlm_cli_update_pool
 ldlm_cli_cancel
 ===============
 
-.. c:function:: int ldlm_cli_cancel(struct lustre_handle *lockh, enum ldlm_cancel_flags cancel_flags)
+.. c:function:: int ldlm_cli_cancel(const struct lustre_handle *lockh, enum ldlm_cancel_flags cancel_flags)
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param enum ldlm_cancel_flags cancel_flags:
@@ -656,6 +680,7 @@ Description
 -----------
 
 If flags & LCF_LOCAL, throw the locks away without trying
+to notify the server.
 
 .. _`ldlm_cancel_unused_locks_for_replay`:
 

@@ -304,9 +304,7 @@ Iterate over all AGP resources and remove them. But keep the AGP head
 intact so it can still be used. It is safe to call this if AGP is disabled or
 was already removed.
 
-If DRIVER_MODESET is active, nothing is done to protect the modesetting
-resources from getting destroyed. Drivers are responsible of cleaning them up
-during device shutdown.
+Cleanup is only done for drivers who have DRIVER_LEGACY set.
 
 .. _`drm_agp_bind_pages`:
 

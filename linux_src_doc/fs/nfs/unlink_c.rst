@@ -60,14 +60,14 @@ rpc_task would be freed too.
 nfs_async_unlink
 ================
 
-.. c:function:: int nfs_async_unlink(struct dentry *dentry, struct qstr *name)
+.. c:function:: int nfs_async_unlink(struct dentry *dentry, const struct qstr *name)
 
     asynchronous unlinking of a file
 
     :param struct dentry \*dentry:
         dentry to unlink
 
-    :param struct qstr \*name:
+    :param const struct qstr \*name:
         *undescribed*
 
 .. _`nfs_complete_unlink`:

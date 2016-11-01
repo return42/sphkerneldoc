@@ -537,6 +537,31 @@ Description
 This callback is called when the error recovery driver tells us that
 its OK to resume normal operation.
 
+.. _`fm10k_io_reset_notify`:
+
+fm10k_io_reset_notify
+=====================
+
+.. c:function:: void fm10k_io_reset_notify(struct pci_dev *pdev, bool prepare)
+
+    called when PCI function is reset
+
+    :param struct pci_dev \*pdev:
+        Pointer to PCI device
+
+    :param bool prepare:
+        *undescribed*
+
+.. _`fm10k_io_reset_notify.description`:
+
+Description
+-----------
+
+This callback is called when the PCI function is reset such as from
+/sys/class/net/<enpX>/device/reset or similar. When prepare is true, it
+means we should prepare for a function reset. If prepare is false, it means
+the function reset just occurred.
+
 .. _`fm10k_register_pci_driver`:
 
 fm10k_register_pci_driver

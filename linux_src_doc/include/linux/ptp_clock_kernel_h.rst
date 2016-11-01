@@ -140,6 +140,16 @@ ptp_clock_register
     :param struct device \*parent:
         Pointer to the parent device of the new clock.
 
+.. _`ptp_clock_register.description`:
+
+Description
+-----------
+
+Returns a valid pointer on success or PTR_ERR on failure.  If PHC
+support is missing at the configuration level, this function
+returns NULL, and drivers are expected to gracefully handle that
+case separately.
+
 .. _`ptp_clock_unregister`:
 
 ptp_clock_unregister

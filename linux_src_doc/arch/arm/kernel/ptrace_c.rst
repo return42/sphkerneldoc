@@ -18,7 +18,7 @@ regs_query_register_offset
 Description
 -----------
 
-\ :c:func:`regs_query_register_offset`\  returns the offset of a register in struct
+regs_query_register_offset() returns the offset of a register in struct
 pt_regs from its name. If the name is invalid, this returns -EINVAL;
 
 .. _`regs_query_register_name`:
@@ -38,7 +38,7 @@ regs_query_register_name
 Description
 -----------
 
-\ :c:func:`regs_query_register_name`\  returns the name of a register from its
+regs_query_register_name() returns the name of a register from its
 offset in struct pt_regs. If the \ ``offset``\  is invalid, this returns NULL;
 
 .. _`regs_within_kernel_stack`:
@@ -61,7 +61,7 @@ regs_within_kernel_stack
 Description
 -----------
 
-\ :c:func:`regs_within_kernel_stack`\  checks \ ``addr``\  is within the kernel stack page(s).
+regs_within_kernel_stack() checks \ ``addr``\  is within the kernel stack page(s).
 If \ ``addr``\  is within the kernel stack, it returns true. If not, returns false.
 
 .. _`regs_get_kernel_stack_nth`:
@@ -84,7 +84,7 @@ regs_get_kernel_stack_nth
 Description
 -----------
 
-\ :c:func:`regs_get_kernel_stack_nth`\  returns \ ``n``\  th entry of the kernel stack which
+regs_get_kernel_stack_nth() returns \ ``n``\  th entry of the kernel stack which
 is specified by \ ``regs``\ . If the \ ``n``\  th entry is NOT in the kernel stack,
 this returns 0.
 

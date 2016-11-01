@@ -8,7 +8,7 @@ flush_dcache_mft_record_page
 
 .. c:function:: void flush_dcache_mft_record_page(ntfs_inode *ni)
 
-    \ :c:func:`flush_dcache_page`\  for mft records
+    flush_dcache_page() for mft records
 
     :param ntfs_inode \*ni:
         ntfs inode structure of mft record
@@ -81,7 +81,7 @@ no race conditions between writing the mft record via the dirty inode code
 paths and via the page cache write back code paths or between writing
 neighbouring mft records residing in the same page.
 
-Locking the page also serializes us against ->\ :c:func:`readpage`\  if the page is not
+Locking the page also serializes us against ->readpage() if the page is not
 uptodate.
 
 On success, clean the mft record and return 0.  On error, leave the mft

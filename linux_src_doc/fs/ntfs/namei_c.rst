@@ -44,11 +44,11 @@ Only if an actual error occurs, do we return an error via \ :c:func:`ERR_PTR`\ .
 
 In order to handle the case insensitivity issues of NTFS with regards to the
 dcache and the dcache requiring only one dentry per directory, we deal with
-dentry aliases that only differ in case in ->\ :c:func:`ntfs_lookup`\  while maintaining
+dentry aliases that only differ in case in ->ntfs_lookup() while maintaining
 a case sensitive dcache. This means that we get the full benefit of dcache
 speed when the file/directory is looked up with the same case as returned by
-->\ :c:func:`ntfs_readdir`\  but that a lookup for any other case (or for the short file
-name) will not find anything in dcache and will enter ->\ :c:func:`ntfs_lookup`\ 
+->ntfs_readdir() but that a lookup for any other case (or for the short file
+name) will not find anything in dcache and will enter ->ntfs_lookup()
 instead, where we search the directory for a fully matching file name
 (including case) and if that is not found, we search for a file name that
 matches with different case and if that has non-POSIX semantics we return
@@ -115,21 +115,21 @@ Description
 
 Find the dentry for the parent directory of the directory specified by the
 dentry \ ``child_dent``\ .  This function is called from
-fs/exportfs/expfs.c::\ :c:func:`find_exported_dentry`\  which in turn is called from the
-default ->\ :c:func:`decode_fh`\  which is \ :c:func:`export_decode_fh`\  in the same file.
+fs/exportfs/expfs.c::find_exported_dentry() which in turn is called from the
+default ->decode_fh() which is \ :c:func:`export_decode_fh`\  in the same file.
 
-The code is based on the ext3 ->\ :c:func:`get_parent`\  implementation found in
-fs/ext3/namei.c::\ :c:func:`ext3_get_parent`\ .
+The code is based on the ext3 ->get_parent() implementation found in
+fs/ext3/namei.c::ext3_get_parent().
 
 .. _`ntfs_get_parent.note`:
 
 Note
 ----
 
-\ :c:func:`ntfs_get_parent`\  is called with \ ``d_inode``\ (child_dent)->i_mutex down.
+ntfs_get_parent() is called with \ ``d_inode``\ (child_dent)->i_mutex down.
 
 Return the dentry of the parent directory on success or the error code on
-error (\ :c:func:`IS_ERR`\  is true).
+error (IS_ERR() is true).
 
 .. This file was automatic generated / don't edit.
 

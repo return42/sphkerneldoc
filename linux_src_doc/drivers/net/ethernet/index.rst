@@ -31,6 +31,7 @@ ethernet
     nvidia/index
     oki-semi/index
     qlogic/index
+    qualcomm/index
     samsung/index
     sfc/index
     sis/index

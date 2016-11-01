@@ -30,7 +30,6 @@ Definition
         unsigned int irq;
         struct clk *clk;
         struct device *dev;
-        void *alloc_ctx;
         int ref_count;
     }
 
@@ -74,9 +73,6 @@ clk
 
 dev
     JPEG IP struct device
-
-alloc_ctx
-    videobuf2 memory allocator's context
 
 ref_count
     reference counter

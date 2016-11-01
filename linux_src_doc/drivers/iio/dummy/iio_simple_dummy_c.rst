@@ -121,12 +121,12 @@ reset the device to known state etc.
 iio_dummy_probe
 ===============
 
-.. c:function:: int iio_dummy_probe(int index)
+.. c:function:: struct iio_sw_device *iio_dummy_probe(const char *name)
 
     device instance probe
 
-    :param int index:
-        an id number for this instance.
+    :param const char \*name:
+        *undescribed*
 
 .. _`iio_dummy_probe.description`:
 
@@ -155,12 +155,12 @@ iio_dummy_probe(struct spi_device \*spi)
 iio_dummy_remove
 ================
 
-.. c:function:: void iio_dummy_remove(int index)
+.. c:function:: int iio_dummy_remove(struct iio_sw_device *swd)
 
     device instance removal function
 
-    :param int index:
-        device index.
+    :param struct iio_sw_device \*swd:
+        pointer to software IIO device abstraction
 
 .. _`iio_dummy_remove.description`:
 
@@ -168,60 +168,6 @@ Description
 -----------
 
 Parameters follow those of iio_dummy_probe for buses.
-
-.. _`iio_dummy_init`:
-
-iio_dummy_init
-==============
-
-.. c:function:: int iio_dummy_init( void)
-
-    device driver registration
-
-    :param  void:
-        no arguments
-
-.. _`iio_dummy_init.description`:
-
-Description
------------
-
-Varies depending on bus type of the device. As there is no device
-here, call probe directly. For information on device registration
-
-.. _`iio_dummy_init.i2c`:
-
-i2c
----
-
-Documentation/i2c/writing-clients
-
-.. _`iio_dummy_init.spi`:
-
-spi
----
-
-Documentation/spi/spi-summary
-
-.. _`iio_dummy_exit`:
-
-iio_dummy_exit
-==============
-
-.. c:function:: __exit void iio_dummy_exit( void)
-
-    device driver removal
-
-    :param  void:
-        no arguments
-
-.. _`iio_dummy_exit.description`:
-
-Description
------------
-
-Varies depending on bus type of the device.
-As there is no device here, call remove directly.
 
 .. This file was automatic generated / don't edit.
 

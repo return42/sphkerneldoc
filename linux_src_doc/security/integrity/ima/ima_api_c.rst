@@ -6,7 +6,7 @@
 ima_get_action
 ==============
 
-.. c:function:: int ima_get_action(struct inode *inode, int mask, enum ima_hooks func)
+.. c:function:: int ima_get_action(struct inode *inode, int mask, enum ima_hooks func, int *pcr)
 
     appraise & measure decision based on policy.
 
@@ -18,6 +18,9 @@ ima_get_action
 
     :param enum ima_hooks func:
         caller identifier
+
+    :param int \*pcr:
+        pointer filled in if matched measure policy sets pcr=
 
 .. _`ima_get_action.the-policy-is-defined-in-terms-of-keypairs`:
 

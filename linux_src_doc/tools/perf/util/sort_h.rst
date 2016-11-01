@@ -44,7 +44,7 @@ rb_node
 Description
 -----------
 
-\ ``row_offset``\  - offset from the first callchain expanded to appear on screen
+@row_offset - offset from the first callchain expanded to appear on screen
 \ ``nr_rows``\  - rows expanded in callchain, recalculated on folding/unfolding
 
 .. This file was automatic generated / don't edit.

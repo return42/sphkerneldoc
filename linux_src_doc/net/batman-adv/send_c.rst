@@ -71,8 +71,11 @@ attempted.
 Return
 ------
 
-NET_XMIT_SUCCESS on success, NET_XMIT_DROP on failure, or
-NET_XMIT_POLICED if the skb is buffered for later transmit.
+-1 on failure (and the skb is not consumed), -EINPROGRESS if the
+skb is buffered for later transmit or the NET_XMIT status returned by the
+lower routine if the packet has been passed down.
+
+If the returning value is not -1 the skb has been consumed.
 
 .. _`batadv_send_skb_push_fill_unicast`:
 
@@ -184,8 +187,7 @@ Description
 
 Wrap the given skb into a batman-adv unicast or unicast-4addr header
 depending on whether BATADV_UNICAST or BATADV_UNICAST_4ADDR was supplied
-as packet_type. Then send this frame to the given orig_node and release a
-reference to this orig_node.
+as packet_type. Then send this frame to the given orig_node.
 
 .. _`batadv_send_skb_unicast.return`:
 
@@ -272,6 +274,63 @@ Return
 ------
 
 NET_XMIT_DROP in case of error or NET_XMIT_SUCCESS otherwise.
+
+.. _`batadv_forw_packet_free`:
+
+batadv_forw_packet_free
+=======================
+
+.. c:function:: void batadv_forw_packet_free(struct batadv_forw_packet *forw_packet)
+
+    free a forwarding packet
+
+    :param struct batadv_forw_packet \*forw_packet:
+        The packet to free
+
+.. _`batadv_forw_packet_free.description`:
+
+Description
+-----------
+
+This frees a forwarding packet and releases any resources it might
+have claimed.
+
+.. _`batadv_forw_packet_alloc`:
+
+batadv_forw_packet_alloc
+========================
+
+.. c:function:: struct batadv_forw_packet *batadv_forw_packet_alloc(struct batadv_hard_iface *if_incoming, struct batadv_hard_iface *if_outgoing, atomic_t *queue_left, struct batadv_priv *bat_priv)
+
+    allocate a forwarding packet
+
+    :param struct batadv_hard_iface \*if_incoming:
+        The (optional) if_incoming to be grabbed
+
+    :param struct batadv_hard_iface \*if_outgoing:
+        The (optional) if_outgoing to be grabbed
+
+    :param atomic_t \*queue_left:
+        The (optional) queue counter to decrease
+
+    :param struct batadv_priv \*bat_priv:
+        The bat_priv for the mesh of this forw_packet
+
+.. _`batadv_forw_packet_alloc.description`:
+
+Description
+-----------
+
+Allocates a forwarding packet and tries to get a reference to the
+(optional) if_incoming, if_outgoing and queue_left. If queue_left
+is NULL then bat_priv is optional, too.
+
+.. _`batadv_forw_packet_alloc.return`:
+
+Return
+------
+
+An allocated forwarding packet on success, NULL otherwise.
 
 .. _`batadv_add_bcast_packet_to_list`:
 

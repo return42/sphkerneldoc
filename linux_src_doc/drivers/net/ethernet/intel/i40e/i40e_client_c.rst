@@ -233,7 +233,7 @@ Returns non NULL on success or NULL for failure
 i40e_client_add_instance
 ========================
 
-.. c:function:: struct i40e_client_instance *i40e_client_add_instance(struct i40e_pf *pf, struct i40e_client *client)
+.. c:function:: struct i40e_client_instance *i40e_client_add_instance(struct i40e_pf *pf, struct i40e_client *client, bool *existing)
 
     add a client instance struct to the instance list
 
@@ -243,12 +243,15 @@ i40e_client_add_instance
     :param struct i40e_client \*client:
         pointer to a client struct in the client list.
 
+    :param bool \*existing:
+        if there was already an existing instance
+
 .. _`i40e_client_add_instance.description`:
 
 Description
 -----------
 
-Returns cdev ptr on success, NULL on failure
+Returns cdev ptr on success or if already exists, NULL on failure
 
 .. _`i40e_client_del_instance`:
 

@@ -136,7 +136,7 @@ fcoe_ctlr_reset_fcfs
 Description
 -----------
 
-Called with \ :c:type:`struct fcoe_ctlr <fcoe_ctlr>` lock held.
+Called with \ :c:type:`struct fcoe_ctlr <fcoe_ctlr>`\  lock held.
 
 .. _`fcoe_ctlr_destroy`:
 
@@ -155,7 +155,7 @@ fcoe_ctlr_destroy
 Description
 -----------
 
-This is called by FCoE drivers before freeing the \ :c:type:`struct fcoe_ctlr <fcoe_ctlr>`.
+This is called by FCoE drivers before freeing the \ :c:type:`struct fcoe_ctlr <fcoe_ctlr>`\ .
 
 The receive handler will have been deleted before this to guarantee
 that no more recv_work will be scheduled.
@@ -1120,6 +1120,87 @@ Description
 Returns non-zero if the frame is dropped.
 Always consumes the frame.
 
+.. _`fcoe_ctlr_vlan_parse`:
+
+fcoe_ctlr_vlan_parse
+====================
+
+.. c:function:: int fcoe_ctlr_vlan_parse(struct fcoe_ctlr *fip, struct sk_buff *skb, struct fc_rport_priv *rdata)
+
+    parse vlan discovery request or response
+
+    :param struct fcoe_ctlr \*fip:
+        The FCoE controller
+
+    :param struct sk_buff \*skb:
+        incoming packet
+
+    :param struct fc_rport_priv \*rdata:
+        buffer for resulting parsed VLAN entry plus fcoe_rport
+
+.. _`fcoe_ctlr_vlan_parse.description`:
+
+Description
+-----------
+
+Returns non-zero error number on error.
+Does not consume the packet.
+
+.. _`fcoe_ctlr_vlan_send`:
+
+fcoe_ctlr_vlan_send
+===================
+
+.. c:function:: void fcoe_ctlr_vlan_send(struct fcoe_ctlr *fip, enum fip_vlan_subcode sub, const u8 *dest)
+
+    Send a FIP VLAN Notification
+
+    :param struct fcoe_ctlr \*fip:
+        The FCoE controller
+
+    :param enum fip_vlan_subcode sub:
+        sub-opcode for vlan notification or vn2vn vlan notification
+
+    :param const u8 \*dest:
+        The destination Ethernet MAC address
+
+.. _`fcoe_ctlr_vlan_disc_reply`:
+
+fcoe_ctlr_vlan_disc_reply
+=========================
+
+.. c:function:: void fcoe_ctlr_vlan_disc_reply(struct fcoe_ctlr *fip, struct fc_rport_priv *rdata)
+
+    send FIP VLAN Discovery Notification.
+
+    :param struct fcoe_ctlr \*fip:
+        The FCoE controller
+
+    :param struct fc_rport_priv \*rdata:
+        *undescribed*
+
+.. _`fcoe_ctlr_vlan_disc_reply.description`:
+
+Description
+-----------
+
+Called with ctlr_mutex held.
+
+.. _`fcoe_ctlr_vlan_recv`:
+
+fcoe_ctlr_vlan_recv
+===================
+
+.. c:function:: int fcoe_ctlr_vlan_recv(struct fcoe_ctlr *fip, struct sk_buff *skb)
+
+    vlan request receive handler for VN2VN mode.
+
+    :param struct fcoe_ctlr \*fip:
+        *undescribed*
+
+    :param struct sk_buff \*skb:
+        *undescribed*
+
 .. _`fcoe_ctlr_disc_recv`:
 
 fcoe_ctlr_disc_recv
@@ -1209,7 +1290,7 @@ fcoe_ctlr_vn_timeout
 fcoe_ctlr_mode_set
 ==================
 
-.. c:function:: void fcoe_ctlr_mode_set(struct fc_lport *lport, struct fcoe_ctlr *fip, enum fip_state fip_mode)
+.. c:function:: void fcoe_ctlr_mode_set(struct fc_lport *lport, struct fcoe_ctlr *fip, enum fip_mode fip_mode)
 
     Set or reset the ctlr's mode
 
@@ -1219,7 +1300,7 @@ fcoe_ctlr_mode_set
     :param struct fcoe_ctlr \*fip:
         The FCoE controller whose mode is changing
 
-    :param enum fip_state fip_mode:
+    :param enum fip_mode fip_mode:
         The new fip mode
 
 .. _`fcoe_ctlr_mode_set.description`:

@@ -488,7 +488,7 @@ Members
 -------
 
 device
-    ptr to the dma device who supplies this channel, always !\ ``NULL``\ 
+    ptr to the dma device who supplies this channel, always !%NULL
 
 cookie
     last cookie value returned to client
@@ -839,6 +839,7 @@ Definition
         dma_cookie_t (*tx_submit)(struct dma_async_tx_descriptor *tx);
         int (*desc_free)(struct dma_async_tx_descriptor *tx);
         dma_async_tx_callback callback;
+        dma_async_tx_callback_result callback_result;
         void *callback_param;
         struct dmaengine_unmap_data *unmap;
     #ifdef CONFIG_ASYNC_TX_ENABLE_CHANNEL_SWITCH
@@ -869,13 +870,16 @@ chan
 
 tx_submit
     accept the descriptor, assign ordered cookie and mark the
-    descriptor pending. To be pushed on .\ :c:func:`issue_pending`\  call
+    descriptor pending. To be pushed on .issue_pending() call
 
 desc_free
     *undescribed*
 
 callback
     routine to call after this operation is complete
+
+callback_result
+    *undescribed*
 
 callback_param
     general parameter to pass to the callback routine
@@ -1448,7 +1452,7 @@ dma_async_is_complete
 Description
 -----------
 
-\ :c:func:`dma_async_is_complete`\  is used in \ :c:func:`dma_async_is_tx_complete`\ 
+dma_async_is_complete() is used in \ :c:func:`dma_async_is_tx_complete`\ 
 the test logic is separated for lightweight testing of multiple cookies
 
 .. This file was automatic generated / don't edit.

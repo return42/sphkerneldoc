@@ -151,7 +151,7 @@ ulist_next
         ulist to iterate
 
     :param struct ulist_iterator \*uiter:
-        iterator variable, initialized with ULIST_ITER_INIT(\ :c:type:`struct iterator <iterator>`)
+        iterator variable, initialized with ULIST_ITER_INIT(&iterator)
 
 .. _`ulist_next.note`:
 

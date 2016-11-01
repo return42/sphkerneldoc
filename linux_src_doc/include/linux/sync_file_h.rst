@@ -24,10 +24,9 @@ Definition
     #ifdef CONFIG_DEBUG_FS
         struct list_head sync_file_list;
     #endif
-        int num_fences;
         wait_queue_head_t wq;
-        atomic_t status;
-        struct sync_file_cb cbs[];
+        struct fence *fence;
+        struct fence_cb cb;
     }
 
 .. _`sync_file.members`:
@@ -47,17 +46,14 @@ name
 sync_file_list
     membership in global file list
 
-num_fences
-    number of sync_pts in the fence
-
 wq
     wait queue for fence signaling
 
-status
-    0: signaled, >0:active, <0: error
+fence
+    fence with the fences in the sync_file
 
-cbs
-    sync_pts callback information
+cb
+    fence callback information
 
 .. This file was automatic generated / don't edit.
 

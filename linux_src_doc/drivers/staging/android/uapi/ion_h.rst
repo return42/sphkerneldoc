@@ -23,8 +23,7 @@ Definition
         ION_HEAP_TYPE_CARVEOUT,
         ION_HEAP_TYPE_CHUNK,
         ION_HEAP_TYPE_DMA,
-        ION_HEAP_TYPE_CUSTOM,
-        ION_NUM_HEAPS
+        ION_HEAP_TYPE_CUSTOM
     };
 
 .. _`ion_heap_type.constants`:
@@ -51,11 +50,6 @@ ION_HEAP_TYPE_DMA
 
 ION_HEAP_TYPE_CUSTOM
     *undescribed*
-
-ION_NUM_HEAPS
-    helper for iterating over heaps, a bit mask
-    is used to identify the heaps, so only 32
-    total heap types are supported
 
 .. _`ion_flag_cached`:
 
@@ -227,6 +221,95 @@ Description
 -----------
 
 This works just like the regular cmd and arg fields of an ioctl.
+
+.. _`ion_heap_data`:
+
+struct ion_heap_data
+====================
+
+.. c:type:: struct ion_heap_data
+
+    data about a heap \ ``name``\  - first 32 characters of the heap name \ ``type``\  - heap type \ ``heap_id``\  - heap id for the heap
+
+.. _`ion_heap_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ion_heap_data {
+        char name[MAX_HEAP_NAME];
+        __u32 type;
+        __u32 heap_id;
+        __u32 reserved0;
+        __u32 reserved1;
+        __u32 reserved2;
+    }
+
+.. _`ion_heap_data.members`:
+
+Members
+-------
+
+type
+    *undescribed*
+
+heap_id
+    *undescribed*
+
+reserved0
+    *undescribed*
+
+reserved1
+    *undescribed*
+
+reserved2
+    *undescribed*
+
+.. _`ion_heap_query`:
+
+struct ion_heap_query
+=====================
+
+.. c:type:: struct ion_heap_query
+
+    collection of data about all heaps \ ``cnt``\  - total number of heaps to be copied \ ``heaps``\  - buffer to copy heap data
+
+.. _`ion_heap_query.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ion_heap_query {
+        __u32 cnt;
+        __u32 reserved0;
+        __u64 heaps;
+        __u32 reserved1;
+        __u32 reserved2;
+    }
+
+.. _`ion_heap_query.members`:
+
+Members
+-------
+
+cnt
+    *undescribed*
+
+reserved0
+    *undescribed*
+
+heaps
+    *undescribed*
+
+reserved1
+    *undescribed*
+
+reserved2
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

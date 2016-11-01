@@ -13,6 +13,62 @@ ll_dirent_type_get
     :param struct lu_dirent \*ent:
         *undescribed*
 
+.. _`ll_dir_setdirstripe`:
+
+ll_dir_setdirstripe
+===================
+
+.. c:function:: int ll_dir_setdirstripe(struct inode *parent, struct lmv_user_md *lump, const char *dirname, umode_t mode)
+
+    :param struct inode \*parent:
+        *undescribed*
+
+    :param struct lmv_user_md \*lump:
+        *undescribed*
+
+    :param const char \*dirname:
+        *undescribed*
+
+    :param umode_t mode:
+        *undescribed*
+
+.. _`ll_dir_setdirstripe.description`:
+
+Description
+-----------
+
+param[in] parent     the parent of the directory.
+param[in] lump       the specified stripes.
+param[in] dirname    the name of the directory.
+param[in] mode       the specified mode of the directory.
+
+retval               =0 if striped directory is being created successfully.
+<0 if the creation is failed.
+
+.. _`ll_dir_getstripe`:
+
+ll_dir_getstripe
+================
+
+.. c:function:: int ll_dir_getstripe(struct inode *inode, void **plmm, int *plmm_size, struct ptlrpc_request **request, u64 valid)
+
+    @valid will be used to indicate which stripe it will retrieve OBD_MD_MEA              LMV stripe EA OBD_MD_DEFAULT_MEA      Default LMV stripe EA otherwise               Default LOV EA. Each time, it can only retrieve 1 stripe EA
+
+    :param struct inode \*inode:
+        *undescribed*
+
+    :param void \*\*plmm:
+        *undescribed*
+
+    :param int \*plmm_size:
+        *undescribed*
+
+    :param struct ptlrpc_request \*\*request:
+        *undescribed*
+
+    :param u64 valid:
+        *undescribed*
+
 .. _`ll_ioc_copy_start`:
 
 ll_ioc_copy_start

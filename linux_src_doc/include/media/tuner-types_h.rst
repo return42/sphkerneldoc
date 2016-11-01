@@ -92,8 +92,12 @@ Please notice that digital tuners like xc3028/xc4000/xc5000 don't use
 those ranges, as they're defined inside the driver. This is used by
 analog tuners that are compatible with the "Philips way" to setup the
 tuners. On those devices, the tuner set is done via 4 bytes:
-divider byte1 (DB1), divider byte 2 (DB2), Control byte (CB) and
-band switch byte (BB).
+
+     #) divider byte1 (DB1)
+     #) divider byte 2 (DB2)
+     #) Control byte (CB)
+     #) band switch byte (BB)
+
 Some tuners also have an additional optional Auxiliary byte (AB).
 
 .. _`tuner_params`:

@@ -215,6 +215,25 @@ netpoll
 nest_level
     *undescribed*
 
+.. _`eth_type_vlan`:
+
+eth_type_vlan
+=============
+
+.. c:function:: bool eth_type_vlan(__be16 ethertype)
+
+    check for valid vlan ether type.
+
+    :param __be16 ethertype:
+        ether type to check
+
+.. _`eth_type_vlan.description`:
+
+Description
+-----------
+
+Returns true if the ether type is a vlan ether type.
+
 .. _`__vlan_insert_tag`:
 
 __vlan_insert_tag

@@ -109,7 +109,7 @@ NOTE
 ----
 
 This function is deprecated, please use \ :c:func:`drm_dev_alloc`\  and
-\ :c:func:`drm_dev_register`\  instead and remove your ->\ :c:func:`load`\  callback.
+\ :c:func:`drm_dev_register`\  instead and remove your ->load() callback.
 
 .. _`drm_get_pci_dev.return`:
 

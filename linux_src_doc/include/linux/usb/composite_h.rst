@@ -180,7 +180,7 @@ Definition
         int (*get_alt)(struct usb_function *,unsigned interface);
         void (*disable)(struct usb_function *);
         int (*setup)(struct usb_function *,const struct usb_ctrlrequest *);
-        bool (*req_match)(struct usb_function *,const struct usb_ctrlrequest *);
+        bool (*req_match)(struct usb_function *,const struct usb_ctrlrequest *,bool config0);
         void (*suspend)(struct usb_function *);
         void (*resume)(struct usb_function *);
         int (*get_status)(struct usb_function *);
@@ -201,28 +201,28 @@ strings
 
 fs_descriptors
     Table of full (or low) speed descriptors, using interface and
-    string identifiers assigned during @\ :c:func:`bind`\ .  If this pointer is null,
+    string identifiers assigned during \ ``bind``\ ().  If this pointer is null,
     the function will not be available at full speed (or at low speed).
 
 hs_descriptors
     Table of high speed descriptors, using interface and
-    string identifiers assigned during @\ :c:func:`bind`\ .  If this pointer is null,
+    string identifiers assigned during \ ``bind``\ ().  If this pointer is null,
     the function will not be available at high speed.
 
 ss_descriptors
     Table of super speed descriptors, using interface and
-    string identifiers assigned during @\ :c:func:`bind`\ . If this
+    string identifiers assigned during \ ``bind``\ (). If this
     pointer is null after initiation, the function will not
     be available at super speed.
 
 ssp_descriptors
     Table of super speed plus descriptors, using
-    interface and string identifiers assigned during @\ :c:func:`bind`\ . If
+    interface and string identifiers assigned during \ ``bind``\ (). If
     this pointer is null after initiation, the function will not
     be available at super speed plus.
 
 config
-    assigned when @\ :c:func:`usb_add_function`\  is called; this is the
+    assigned when \ ``usb_add_function``\ () is called; this is the
     configuration with which this function is associated.
 
 os_desc_table
@@ -289,10 +289,10 @@ Description
 
 A single USB function uses one or more interfaces, and should in most
 cases support operation at both full and high speeds.  Each function is
-associated by @\ :c:func:`usb_add_function`\  with a one configuration; that function
-causes @\ :c:func:`bind`\  to be called so resources can be allocated as part of
+associated by \ ``usb_add_function``\ () with a one configuration; that function
+causes \ ``bind``\ () to be called so resources can be allocated as part of
 setting up a gadget driver.  Those resources include endpoints, which
-should be allocated using @\ :c:func:`usb_ep_autoconfig`\ .
+should be allocated using \ ``usb_ep_autoconfig``\ ().
 
 To support dual speed operation, a function driver provides descriptors
 for both high and full speed operation.  Except in rare cases that don't
@@ -348,7 +348,7 @@ label
     For diagnostics, describes the configuration.
 
 strings
-    Tables of strings, keyed by identifiers assigned during @\ :c:func:`bind`\ 
+    Tables of strings, keyed by identifiers assigned during \ ``bind``\ ()
     and by language IDs provided in control requests.
 
 descriptors
@@ -377,7 +377,7 @@ MaxPower
     configuration descriptor after considering the bus speed.
 
 cdev
-    assigned by @\ :c:func:`usb_add_config`\  before calling @\ :c:func:`bind`\ ; this is
+    assigned by \ ``usb_add_config``\ () before calling \ ``bind``\ (); this is
     the device associated with this configuration.
 
 .. _`usb_configuration.description`:
@@ -396,10 +396,10 @@ Composite devices are, by definition, ones with configurations which
 include more than one function.
 
 The lifecycle of a usb_configuration includes allocation, initialization
-of the fields described above, and calling @\ :c:func:`usb_add_config`\  to set up
+of the fields described above, and calling \ ``usb_add_config``\ () to set up
 internal data and bind it to a specific device.  The configuration's
-@\ :c:func:`bind`\  method is then used to initialize all the functions and then
-call @\ :c:func:`usb_add_function`\  for them.
+\ ``bind``\ () method is then used to initialize all the functions and then
+call \ ``usb_add_function``\ () for them.
 
 Those functions would normally be independent of each other, but that's
 not mandatory.  CDC WMC devices are an example where functions often
@@ -466,7 +466,7 @@ needs_serial
 bind
     (REQUIRED) Used to allocate resources that are shared across the
     whole device, such as string IDs, and add its configurations using
-    @\ :c:func:`usb_add_config`\ . This may fail by returning a negative errno
+    \ ``usb_add_config``\ (). This may fail by returning a negative errno
     value; it should return zero on successful initialization.
 
 unbind

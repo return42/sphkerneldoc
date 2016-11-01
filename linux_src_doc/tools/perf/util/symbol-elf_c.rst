@@ -106,7 +106,122 @@ modules have not been loaded or unloaded while the copies were taking place.
 Return
 ------
 
-\ ``0``\  on success, \ ``-1``\  on failure.
+%0 on success, \ ``-1``\  on failure.
+
+.. _`populate_sdt_note`:
+
+populate_sdt_note
+=================
+
+.. c:function:: int populate_sdt_note(Elf **elf, const char *data, size_t len, struct list_head *sdt_notes)
+
+    Parse raw data and identify SDT note
+
+    :param Elf \*\*elf:
+        elf of the opened file
+
+    :param const char \*data:
+        raw data of a section with description offset applied
+
+    :param size_t len:
+        note description size
+
+    :param struct list_head \*sdt_notes:
+        List to add the SDT note
+
+.. _`populate_sdt_note.description`:
+
+Description
+-----------
+
+Responsible for parsing the \ ``data``\  in section .note.stapsdt in \ ``elf``\  and
+if its an SDT note, it appends to \ ``sdt_notes``\  list.
+
+.. _`construct_sdt_notes_list`:
+
+construct_sdt_notes_list
+========================
+
+.. c:function:: int construct_sdt_notes_list(Elf *elf, struct list_head *sdt_notes)
+
+    constructs a list of SDT notes
+
+    :param Elf \*elf:
+        elf to look into
+
+    :param struct list_head \*sdt_notes:
+        empty list_head
+
+.. _`construct_sdt_notes_list.description`:
+
+Description
+-----------
+
+Scans the sections in 'elf' for the section
+.note.stapsdt. It, then calls populate_sdt_note to find
+out the SDT events and populates the 'sdt_notes'.
+
+.. _`get_sdt_note_list`:
+
+get_sdt_note_list
+=================
+
+.. c:function:: int get_sdt_note_list(struct list_head *head, const char *target)
+
+    Wrapper to construct a list of sdt notes
+
+    :param struct list_head \*head:
+        empty list_head
+
+    :param const char \*target:
+        file to find SDT notes from
+
+.. _`get_sdt_note_list.description`:
+
+Description
+-----------
+
+This opens the file, initializes
+the ELF and then calls construct_sdt_notes_list.
+
+.. _`cleanup_sdt_note_list`:
+
+cleanup_sdt_note_list
+=====================
+
+.. c:function:: int cleanup_sdt_note_list(struct list_head *sdt_notes)
+
+    free the sdt notes' list
+
+    :param struct list_head \*sdt_notes:
+        sdt notes' list
+
+.. _`cleanup_sdt_note_list.description`:
+
+Description
+-----------
+
+Free up the SDT notes in \ ``sdt_notes``\ .
+Returns the number of SDT notes free'd.
+
+.. _`sdt_notes__get_count`:
+
+sdt_notes__get_count
+====================
+
+.. c:function:: int sdt_notes__get_count(struct list_head *start)
+
+    Counts the number of sdt events
+
+    :param struct list_head \*start:
+        list_head to sdt_notes list
+
+.. _`sdt_notes__get_count.description`:
+
+Description
+-----------
+
+Returns the number of SDT notes in a list
 
 .. This file was automatic generated / don't edit.
 

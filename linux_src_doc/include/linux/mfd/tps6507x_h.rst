@@ -47,7 +47,7 @@ struct tps6507x_dev
 
 .. c:type:: struct tps6507x_dev
 
-    tps6507x sub-driver chip access routines @\ :c:func:`read_dev`\  - I2C register read function @\ :c:func:`write_dev`\  - I2C register write function
+    tps6507x sub-driver chip access routines \ ``read_dev``\ () - I2C register read function \ ``write_dev``\ () - I2C register write function
 
 .. _`tps6507x_dev.definition`:
 

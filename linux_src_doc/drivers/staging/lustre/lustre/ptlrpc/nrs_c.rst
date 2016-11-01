@@ -132,7 +132,7 @@ set.
 \retval NULL           resource hierarchy references not obtained
 \retval valid-pointer  the bottom level of the resource hierarchy
 
-\see ptlrpc_nrs_pol_ops::\ :c:func:`op_res_get`\ 
+\see ptlrpc_nrs_pol_ops::op_res_get()
 
 .. _`nrs_resource_get_safe`:
 
@@ -170,7 +170,7 @@ policy on the HP NRS head (via
 \ :c:func:`ldlm_lock_reorder_req`\ ). It signifies that
 allocations to get resources should be atomic; for
 a full explanation, see comment in
-ptlrpc_nrs_pol_ops::\ :c:func:`op_res_get`\ .
+ptlrpc_nrs_pol_ops::op_res_get().
 
 .. _`nrs_resource_put_safe`:
 
@@ -442,7 +442,7 @@ Description
 \retval -ve error
 \retval   0 success
 
-\pre mutex_is_locked(\ :c:type:`nrs_core.nrs_mutex <nrs_core>`\ )
+\pre mutex_is_locked(&nrs_core.nrs_mutex)
 
 \see \ :c:func:`ptlrpc_service_nrs_setup`\ 
 
@@ -472,7 +472,7 @@ Description
 \retval -ve error
 \retval   0 success
 
-\pre mutex_is_locked(\ :c:type:`nrs_core.nrs_mutex <nrs_core>`\ )
+\pre mutex_is_locked(&nrs_core.nrs_mutex)
 
 .. _`nrs_svcpt_setup_locked`:
 
@@ -493,7 +493,7 @@ Description
 
 \param[in,out] svcpt the PTLRPC service partition to setup
 
-\pre mutex_is_locked(\ :c:type:`nrs_core.nrs_mutex <nrs_core>`\ )
+\pre mutex_is_locked(&nrs_core.nrs_mutex)
 
 .. _`nrs_svcpt_cleanup_locked`:
 
@@ -514,7 +514,7 @@ Description
 
 \param[in] svcpt the PTLRPC service partition
 
-\pre mutex_is_locked(\ :c:type:`nrs_core.nrs_mutex <nrs_core>`\ )
+\pre mutex_is_locked(&nrs_core.nrs_mutex)
 
 .. _`nrs_policy_find_desc_locked`:
 
@@ -558,8 +558,8 @@ Description
 \retval -ve error
 \retval  0  successfully unregistered policy on all supported NRS heads
 
-\pre mutex_is_locked(\ :c:type:`nrs_core.nrs_mutex <nrs_core>`\ )
-\pre mutex_is_locked(\ :c:type:`struct ptlrpc_all_services_mutex <ptlrpc_all_services_mutex>`)
+\pre mutex_is_locked(&nrs_core.nrs_mutex)
+\pre mutex_is_locked(&ptlrpc_all_services_mutex)
 
 .. _`ptlrpc_nrs_policy_register`:
 

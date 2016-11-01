@@ -67,25 +67,36 @@ fdt_init_reserved_mem
     :param  void:
         no arguments
 
-.. _`of_reserved_mem_device_init`:
+.. _`of_reserved_mem_device_init_by_idx`:
 
-of_reserved_mem_device_init
-===========================
+of_reserved_mem_device_init_by_idx
+==================================
 
-.. c:function:: int of_reserved_mem_device_init(struct device *dev)
+.. c:function:: int of_reserved_mem_device_init_by_idx(struct device *dev, struct device_node *np, int idx)
 
     assign reserved memory region to given device
 
     :param struct device \*dev:
-        *undescribed*
+        Pointer to the device to configure
 
-.. _`of_reserved_mem_device_init.description`:
+    :param struct device_node \*np:
+        Pointer to the device_node with 'reserved-memory' property
+
+    :param int idx:
+        Index of selected region
+
+.. _`of_reserved_mem_device_init_by_idx.description`:
 
 Description
 -----------
 
-This function assign memory region pointed by "memory-region" device tree
-property to the given device.
+This function assigns respective DMA-mapping operations based on reserved
+memory region specified by 'memory-region' property in \ ``np``\  node to the \ ``dev``\ 
+device. When driver needs to use more than one reserved memory region, it
+should allocate child devices and initialize regions by name for each of
+child device.
+
+Returns error code or zero on success.
 
 .. _`of_reserved_mem_device_release`:
 
@@ -97,7 +108,7 @@ of_reserved_mem_device_release
     release reserved memory device structures
 
     :param struct device \*dev:
-        *undescribed*
+        Pointer to the device to deconfigure
 
 .. _`of_reserved_mem_device_release.description`:
 

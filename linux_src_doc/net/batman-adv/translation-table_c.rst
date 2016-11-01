@@ -132,6 +132,18 @@ Return
 a pointer to the corresponding tt_global_entry struct if the client
 is found, NULL otherwise.
 
+.. _`batadv_tt_local_entry_free_rcu`:
+
+batadv_tt_local_entry_free_rcu
+==============================
+
+.. c:function:: void batadv_tt_local_entry_free_rcu(struct rcu_head *rcu)
+
+    free the tt_local_entry
+
+    :param struct rcu_head \*rcu:
+        rcu pointer of the tt_local_entry
+
 .. _`batadv_tt_local_entry_release`:
 
 batadv_tt_local_entry_release
@@ -155,6 +167,18 @@ batadv_tt_local_entry_put
 
     :param struct batadv_tt_local_entry \*tt_local_entry:
         tt_local_entry to be free'd
+
+.. _`batadv_tt_global_entry_free_rcu`:
+
+batadv_tt_global_entry_free_rcu
+===============================
+
+.. c:function:: void batadv_tt_global_entry_free_rcu(struct rcu_head *rcu)
+
+    free the tt_global_entry
+
+    :param struct rcu_head \*rcu:
+        rcu pointer of the tt_global_entry
 
 .. _`batadv_tt_global_entry_release`:
 
@@ -301,6 +325,18 @@ batadv_tt_global_size_dec
 
     :param unsigned short vid:
         the vlan identifier
+
+.. _`batadv_tt_orig_list_entry_free_rcu`:
+
+batadv_tt_orig_list_entry_free_rcu
+==================================
+
+.. c:function:: void batadv_tt_orig_list_entry_free_rcu(struct rcu_head *rcu)
+
+    free the orig_entry
+
+    :param struct rcu_head \*rcu:
+        rcu pointer of the orig_entry
 
 .. _`batadv_tt_orig_list_entry_release`:
 
@@ -521,6 +557,93 @@ batadv_tt_tvlv_container_update
 
     :param struct batadv_priv \*bat_priv:
         the bat priv with all the soft interface information
+
+.. _`batadv_tt_local_dump_entry`:
+
+batadv_tt_local_dump_entry
+==========================
+
+.. c:function:: int batadv_tt_local_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_tt_common_entry *common)
+
+    Dump one TT local entry into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_tt_common_entry \*common:
+        tt local & tt global common data
+
+.. _`batadv_tt_local_dump_entry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_tt_local_dump_bucket`:
+
+batadv_tt_local_dump_bucket
+===========================
+
+.. c:function:: int batadv_tt_local_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct hlist_head *head, int *idx_s)
+
+    Dump one TT local bucket into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct hlist_head \*head:
+        Pointer to the list containing the local tt entries
+
+    :param int \*idx_s:
+        Number of entries to skip
+
+.. _`batadv_tt_local_dump_bucket.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_tt_local_dump`:
+
+batadv_tt_local_dump
+====================
+
+.. c:function:: int batadv_tt_local_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    Dump TT local entries into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Parameters from query
+
+.. _`batadv_tt_local_dump.return`:
+
+Return
+------
+
+Error code, or 0 on success
 
 .. _`batadv_tt_local_remove`:
 
@@ -748,6 +871,140 @@ Description
 -----------
 
 This functon assumes the caller holds \ :c:func:`rcu_read_lock`\ .
+
+.. _`batadv_tt_global_dump_subentry`:
+
+batadv_tt_global_dump_subentry
+==============================
+
+.. c:function:: int batadv_tt_global_dump_subentry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_tt_common_entry *common, struct batadv_tt_orig_list_entry *orig, bool best)
+
+    Dump all TT local entries into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_tt_common_entry \*common:
+        tt local & tt global common data
+
+    :param struct batadv_tt_orig_list_entry \*orig:
+        Originator node announcing a non-mesh client
+
+    :param bool best:
+        Is the best originator for the TT entry
+
+.. _`batadv_tt_global_dump_subentry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_tt_global_dump_entry`:
+
+batadv_tt_global_dump_entry
+===========================
+
+.. c:function:: int batadv_tt_global_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct batadv_tt_common_entry *common, int *sub_s)
+
+    Dump one TT global entry into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct batadv_tt_common_entry \*common:
+        tt local & tt global common data
+
+    :param int \*sub_s:
+        Number of entries to skip
+
+.. _`batadv_tt_global_dump_entry.description`:
+
+Description
+-----------
+
+This function assumes the caller holds \ :c:func:`rcu_read_lock`\ .
+
+.. _`batadv_tt_global_dump_entry.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_tt_global_dump_bucket`:
+
+batadv_tt_global_dump_bucket
+============================
+
+.. c:function:: int batadv_tt_global_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_priv *bat_priv, struct hlist_head *head, int *idx_s, int *sub)
+
+    Dump one TT local bucket into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param u32 portid:
+        Port making netlink request
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_priv \*bat_priv:
+        The bat priv with all the soft interface information
+
+    :param struct hlist_head \*head:
+        Pointer to the list containing the global tt entries
+
+    :param int \*idx_s:
+        Number of entries to skip
+
+    :param int \*sub:
+        Number of entries to skip
+
+.. _`batadv_tt_global_dump_bucket.return`:
+
+Return
+------
+
+Error code, or 0 on success
+
+.. _`batadv_tt_global_dump`:
+
+batadv_tt_global_dump
+=====================
+
+.. c:function:: int batadv_tt_global_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    Dump TT global entries into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Parameters from query
+
+.. _`batadv_tt_global_dump.return`:
+
+Return
+------
+
+Error code, or length of message on success
 
 .. _`_batadv_tt_global_del_orig_entry`:
 
@@ -1623,6 +1880,37 @@ Return
 
 true if the client is marked with the TT_CLIENT_ISOLA flag, false
 otherwise
+
+.. _`batadv_tt_cache_init`:
+
+batadv_tt_cache_init
+====================
+
+.. c:function:: int batadv_tt_cache_init( void)
+
+    Initialize tt memory object cache
+
+    :param  void:
+        no arguments
+
+.. _`batadv_tt_cache_init.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure.
+
+.. _`batadv_tt_cache_destroy`:
+
+batadv_tt_cache_destroy
+=======================
+
+.. c:function:: void batadv_tt_cache_destroy( void)
+
+    Destroy tt memory object cache
+
+    :param  void:
+        no arguments
 
 .. This file was automatic generated / don't edit.
 

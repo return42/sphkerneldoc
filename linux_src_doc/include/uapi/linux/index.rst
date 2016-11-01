@@ -16,6 +16,7 @@ linux
     netfilter/index
     spi/index
     usb/index
+    batman_adv_h
     can_h
     cycx_cfm_h
     dcbnl_h
@@ -36,6 +37,8 @@ linux
     mic_common_h
     net_tstamp_h
     nfc_h
+    nilfs2_api_h
+    nilfs2_ondisk_h
     nl80211_h
     omap3isp_h
     openvswitch_h

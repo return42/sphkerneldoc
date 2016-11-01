@@ -100,44 +100,50 @@ mem_cgroup_iter_break
     :param struct mem_cgroup \*prev:
         last visited hierarchy member as returned by \ :c:func:`mem_cgroup_iter`\ 
 
-.. _`mem_cgroup_zone_lruvec`:
+.. _`mem_cgroup_scan_tasks`:
 
-mem_cgroup_zone_lruvec
-======================
+mem_cgroup_scan_tasks
+=====================
 
-.. c:function:: struct lruvec *mem_cgroup_zone_lruvec(struct zone *zone, struct mem_cgroup *memcg)
+.. c:function:: int mem_cgroup_scan_tasks(struct mem_cgroup *memcg, int (*fn)(struct task_struct *, void *), void *arg)
 
-    get the lru list vector for a zone and memcg
-
-    :param struct zone \*zone:
-        zone of the wanted lruvec
+    iterate over tasks of a memory cgroup hierarchy
 
     :param struct mem_cgroup \*memcg:
-        memcg of the wanted lruvec
+        hierarchy root
 
-.. _`mem_cgroup_zone_lruvec.description`:
+    :param int (\*fn)(struct task_struct \*, void \*):
+        function to call for each task
+
+    :param void \*arg:
+        argument passed to \ ``fn``\ 
+
+.. _`mem_cgroup_scan_tasks.description`:
 
 Description
 -----------
 
-Returns the lru list vector holding pages for the given \ ``zone``\  and
-\ ``mem``\ .  This can be the global zone lruvec, if the memory controller
-is disabled.
+This function iterates over tasks attached to \ ``memcg``\  or to any of its
+descendants and calls \ ``fn``\  for each task. If \ ``fn``\  returns a non-zero
+value, the function breaks the iteration loop and returns the value.
+Otherwise, it will iterate over all tasks and return 0.
+
+This function must not be called for the root memory cgroup.
 
 .. _`mem_cgroup_page_lruvec`:
 
 mem_cgroup_page_lruvec
 ======================
 
-.. c:function:: struct lruvec *mem_cgroup_page_lruvec(struct page *page, struct zone *zone)
+.. c:function:: struct lruvec *mem_cgroup_page_lruvec(struct page *page, struct pglist_data *pgdat)
 
     return lruvec for isolating/putting an LRU page
 
     :param struct page \*page:
         the page
 
-    :param struct zone \*zone:
-        zone of the page
+    :param struct pglist_data \*pgdat:
+        *undescribed*
 
 .. _`mem_cgroup_page_lruvec.description`:
 
@@ -221,7 +227,7 @@ mem_cgroup_print_oom_info
 NOTE
 ----
 
-\ ``memcg``\  and \ ``p``\ 's mem_cgroup can be different when hierarchy is
+@memcg and \ ``p``\ 's mem_cgroup can be different when hierarchy is
 enabled
 
 .. _`test_mem_cgroup_node_reclaimable`:
@@ -337,6 +343,115 @@ service an allocation will refill the stock.
 
 returns true if successful, false otherwise.
 
+.. _`memcg_kmem_get_cache`:
+
+memcg_kmem_get_cache
+====================
+
+.. c:function:: struct kmem_cache *memcg_kmem_get_cache(struct kmem_cache *cachep)
+
+    select the correct per-memcg cache for allocation
+
+    :param struct kmem_cache \*cachep:
+        the original global kmem cache
+
+.. _`memcg_kmem_get_cache.description`:
+
+Description
+-----------
+
+Return the kmem_cache we're supposed to use for a slab allocation.
+We try to use the current memcg's version of the cache.
+
+If the cache does not exist yet, if we are the first user of it, we
+create it asynchronously in a workqueue and let the current allocation
+go through with the original cache.
+
+This function takes a reference to the cache it returns to assure it
+won't get destroyed while we are working with it. Once the caller is
+done with it, \ :c:func:`memcg_kmem_put_cache`\  must be called to release the
+reference.
+
+.. _`memcg_kmem_put_cache`:
+
+memcg_kmem_put_cache
+====================
+
+.. c:function:: void memcg_kmem_put_cache(struct kmem_cache *cachep)
+
+    drop reference taken by memcg_kmem_get_cache
+
+    :param struct kmem_cache \*cachep:
+        the cache returned by memcg_kmem_get_cache
+
+.. _`memcg_kmem_charge_memcg`:
+
+memcg_kmem_charge_memcg
+=======================
+
+.. c:function:: int memcg_kmem_charge_memcg(struct page *page, gfp_t gfp, int order, struct mem_cgroup *memcg)
+
+    charge a kmem page
+
+    :param struct page \*page:
+        page to charge
+
+    :param gfp_t gfp:
+        reclaim mode
+
+    :param int order:
+        allocation order
+
+    :param struct mem_cgroup \*memcg:
+        memory cgroup to charge
+
+.. _`memcg_kmem_charge_memcg.description`:
+
+Description
+-----------
+
+Returns 0 on success, an error code on failure.
+
+.. _`memcg_kmem_charge`:
+
+memcg_kmem_charge
+=================
+
+.. c:function:: int memcg_kmem_charge(struct page *page, gfp_t gfp, int order)
+
+    charge a kmem page to the current memory cgroup
+
+    :param struct page \*page:
+        page to charge
+
+    :param gfp_t gfp:
+        reclaim mode
+
+    :param int order:
+        allocation order
+
+.. _`memcg_kmem_charge.description`:
+
+Description
+-----------
+
+Returns 0 on success, an error code on failure.
+
+.. _`memcg_kmem_uncharge`:
+
+memcg_kmem_uncharge
+===================
+
+.. c:function:: void memcg_kmem_uncharge(struct page *page, int order)
+
+    uncharge a kmem page
+
+    :param struct page \*page:
+        page to uncharge
+
+    :param int order:
+        allocation order
+
 .. _`mem_cgroup_move_swap_account`:
 
 mem_cgroup_move_swap_account
@@ -405,7 +520,7 @@ A memcg's headroom is "min(max, high) - used".  In the hierarchy, the
 headroom is calculated as the lowest headroom of itself and the
 ancestors.  Note that this doesn't consider the actual amount of
 available memory in the system.  The caller should further cap
-\*\ ``pheadroom``\  accordingly.
+\*@pheadroom accordingly.
 
 .. _`mem_cgroup_from_id`:
 
@@ -465,7 +580,7 @@ mem_cgroup_move_account
         the page
 
     :param bool compound:
-        *undescribed*
+        charge the page as compound or small page
 
     :param struct mem_cgroup \*from:
         mem_cgroup which the page is moved from.
@@ -478,7 +593,7 @@ mem_cgroup_move_account
 Description
 -----------
 
-The caller must make sure the page is not on LRU (\ :c:func:`isolate_page`\  is useful.)
+The caller must make sure the page is not on LRU (isolate_page() is useful.)
 
 This function doesn't do "charge" to new cgroup and doesn't do "uncharge"
 from old cgroup.
@@ -565,7 +680,7 @@ mem_cgroup_try_charge
         charged memcg return
 
     :param bool compound:
-        *undescribed*
+        charge the page as compound or small page
 
 .. _`mem_cgroup_try_charge.description`:
 
@@ -575,7 +690,7 @@ Description
 Try to charge \ ``page``\  to the memcg that \ ``mm``\  belongs to, reclaiming
 pages according to \ ``gfp_mask``\  if necessary.
 
-Returns 0 on success, with \*\ ``memcgp``\  pointing to the charged memcg.
+Returns 0 on success, with \*@memcgp pointing to the charged memcg.
 Otherwise, an error code is returned.
 
 After page->mapping has been set up, the caller must finalize the
@@ -601,7 +716,7 @@ mem_cgroup_commit_charge
         page might be on LRU already
 
     :param bool compound:
-        *undescribed*
+        charge the page as compound or small page
 
 .. _`mem_cgroup_commit_charge.description`:
 
@@ -634,7 +749,7 @@ mem_cgroup_cancel_charge
         memcg to charge the page to
 
     :param bool compound:
-        *undescribed*
+        charge the page as compound or small page
 
 .. _`mem_cgroup_cancel_charge.description`:
 

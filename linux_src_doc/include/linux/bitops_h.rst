@@ -158,6 +158,25 @@ sign_extend64
     :param int index:
         0 based bit index (0<=index<64) to sign bit
 
+.. _`get_count_order_long`:
+
+get_count_order_long
+====================
+
+.. c:function:: int get_count_order_long(unsigned long l)
+
+    get order after rounding \ ``l``\  up to power of 2
+
+    :param unsigned long l:
+        parameter
+
+.. _`get_count_order_long.description`:
+
+Description
+-----------
+
+it is same as \ :c:func:`get_count_order`\  but with long type parameter
+
 .. _`__ffs64`:
 
 __ffs64

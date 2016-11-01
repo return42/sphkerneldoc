@@ -246,7 +246,7 @@ Description
 -----------
 
 Packet processing changes the seqcount only if no recursion happened
-\ :c:func:`get_counters`\  can use \ :c:func:`read_seqcount_begin`\ /\ :c:func:`read_seqcount_retry`\ ,
+\ :c:func:`get_counters`\  can use \ :c:func:`read_seqcount_begin`\ /read_seqcount_retry(),
 because we use the normal seqcount convention :
 Low order bit set to 1 if a writer is active.
 

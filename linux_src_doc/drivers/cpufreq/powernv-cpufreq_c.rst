@@ -18,11 +18,11 @@ Definition
 .. code-block:: c
 
     struct global_pstate_info {
-        int highest_lpstate;
+        int highest_lpstate_idx;
         unsigned int elapsed_time;
         unsigned int last_sampled_time;
-        int last_lpstate;
-        int last_gpstate;
+        int last_lpstate_idx;
+        int last_gpstate_idx;
         spinlock_t gpstate_lock;
         struct timer_list timer;
     }
@@ -32,21 +32,24 @@ Definition
 Members
 -------
 
-highest_lpstate
-    The local pstate from which we are ramping down
+highest_lpstate_idx
+    The local pstate index from which we are
+    ramping down
 
 elapsed_time
     Time in ms spent in ramping down from
-    highest_lpstate
+    highest_lpstate_idx
 
 last_sampled_time
     Time from boot in ms when global pstates were
     last set
+    \ ``last_lpstate_idx``\ ,           Last set value of local pstate and global
+    last_gpstate_idx             pstate in terms of cpufreq table index
 
-last_lpstate
-    Last set values for local and global pstates
+last_lpstate_idx
+    *undescribed*
 
-last_gpstate
+last_gpstate_idx
     *undescribed*
 
 gpstate_lock
@@ -63,17 +66,17 @@ timer
 calc_global_pstate
 ==================
 
-.. c:function:: int calc_global_pstate(unsigned int elapsed_time, int highest_lpstate, int local_pstate)
+.. c:function:: int calc_global_pstate(unsigned int elapsed_time, int highest_lpstate_idx, int local_pstate_idx)
 
     Calculate global pstate
 
     :param unsigned int elapsed_time:
         Elapsed time in milliseconds
 
-    :param int highest_lpstate:
+    :param int highest_lpstate_idx:
         pstate from which its ramping down
 
-    :param int local_pstate:
+    :param int local_pstate_idx:
         New local pstate
 
 .. _`calc_global_pstate.description`:

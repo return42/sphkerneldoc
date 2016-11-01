@@ -22,7 +22,7 @@ Copyright (C) 2010-2013 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-WingMan Kwok <w-kwok2\ ``ti``\ .com>
+WingMan Kwok <w-kwok2@ti.com>
 
 .. _`usbss_revision.this-program-is-free-software`:
 

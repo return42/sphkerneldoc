@@ -6,11 +6,11 @@
 ks_dw_pcie_set_dbi_mode
 =======================
 
-.. c:function:: void ks_dw_pcie_set_dbi_mode(void __iomem *reg_virt)
+.. c:function:: void ks_dw_pcie_set_dbi_mode(struct keystone_pcie *ks_pcie)
 
     Set DBI mode to access overlaid BAR mask registers
 
-    :param void __iomem \*reg_virt:
+    :param struct keystone_pcie \*ks_pcie:
         *undescribed*
 
 .. _`ks_dw_pcie_set_dbi_mode.description`:
@@ -26,11 +26,11 @@ status back to ensure the transition is complete.
 ks_dw_pcie_clear_dbi_mode
 =========================
 
-.. c:function:: void ks_dw_pcie_clear_dbi_mode(void __iomem *reg_virt)
+.. c:function:: void ks_dw_pcie_clear_dbi_mode(struct keystone_pcie *ks_pcie)
 
     Disable DBI mode
 
-    :param void __iomem \*reg_virt:
+    :param struct keystone_pcie \*ks_pcie:
         *undescribed*
 
 .. _`ks_dw_pcie_clear_dbi_mode.description`:

@@ -17,7 +17,7 @@ inet_csk_clone_lock
         request_sock
 
     :param const gfp_t priority:
-        for allocation (\ ``GFP_KERNEL``\ , \ ``GFP_ATOMIC``\ , etc)
+        for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
 
 .. _`inet_csk_clone_lock.description`:
 

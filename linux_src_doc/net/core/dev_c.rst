@@ -18,7 +18,7 @@ dev_add_pack
 Description
 -----------
 
-Add a protocol handler to the networking stack. The passed \ :c:type:`struct packet_type <packet_type>`
+Add a protocol handler to the networking stack. The passed \ :c:type:`struct packet_type <packet_type>`\ 
 is linked into kernel lists and may not be freed until it has been
 removed from the kernel lists.
 
@@ -44,7 +44,7 @@ Description
 -----------
 
 Remove a protocol handler that was previously added to the kernel
-protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>` is removed
+protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
 from the kernel lists and can be freed or reused once this function
 returns.
 
@@ -70,7 +70,7 @@ Description
 -----------
 
 Remove a protocol handler that was previously added to the kernel
-protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>` is removed
+protocol handlers by \ :c:func:`dev_add_pack`\ . The passed \ :c:type:`struct packet_type <packet_type>`\  is removed
 from the kernel lists and can be freed or reused once this function
 returns.
 
@@ -95,7 +95,7 @@ Description
 -----------
 
 Add protocol offload handlers to the networking stack. The passed
-\ :c:type:`struct proto_offload <proto_offload>` is linked into kernel lists and may not be freed until
+\ :c:type:`struct proto_offload <proto_offload>`\  is linked into kernel lists and may not be freed until
 it has been removed from the kernel lists.
 
 This call does not sleep therefore it can not
@@ -120,7 +120,7 @@ Description
 -----------
 
 Remove a protocol offload handler that was previously added to the
-kernel offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`
+kernel offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\ 
 is removed from the kernel lists and can be freed or reused once this
 function returns.
 
@@ -146,7 +146,7 @@ Description
 -----------
 
 Remove a packet offload handler that was previously added to the kernel
-offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>` is
+offload handlers by \ :c:func:`dev_add_offload`\ . The passed \ :c:type:`struct offload_type <offload_type>`\  is
 removed from the kernel lists and can be freed or reused once this
 function returns.
 
@@ -549,7 +549,7 @@ __dev_alloc_name
 Description
 -----------
 
-Passed a format string - eg "lt\ ``d``\ " it will try and find a suitable
+Passed a format string - eg "lt%d" it will try and find a suitable
 id. It scans list of devices to build up a free map, then chooses
 the first empty slot. The caller must hold the dev_base or rtnl lock
 while allocating the name and adding the device in order to avoid
@@ -577,7 +577,7 @@ dev_alloc_name
 Description
 -----------
 
-Passed a format string - eg "lt\ ``d``\ " it will try and find a suitable
+Passed a format string - eg "lt%d" it will try and find a suitable
 id. It scans list of devices to build up a free map, then chooses
 the first empty slot. The caller must hold the dev_base or rtnl lock
 while allocating the name and adding the device in order to avoid
@@ -605,7 +605,7 @@ dev_change_name
 Description
 -----------
 
-Change name of a device, can pass format strings "eth\ ``d``\ ".
+Change name of a device, can pass format strings "eth%d".
 for wildcarding.
 
 .. _`dev_set_alias`:
@@ -1193,6 +1193,28 @@ return values
 NET_RX_SUCCESS  (no congestion)
 NET_RX_DROP     (packet was dropped)
 
+.. _`netdev_is_rx_handler_busy`:
+
+netdev_is_rx_handler_busy
+=========================
+
+.. c:function:: bool netdev_is_rx_handler_busy(struct net_device *dev)
+
+    check if receive handler is registered
+
+    :param struct net_device \*dev:
+        device to check
+
+.. _`netdev_is_rx_handler_busy.description`:
+
+Description
+-----------
+
+Check if a receive handler is already registered for a given device.
+Return true if there one.
+
+The caller must hold the rtnl_mutex.
+
 .. _`netdev_rx_handler_register`:
 
 netdev_rx_handler_register
@@ -1262,7 +1284,7 @@ netif_receive_skb
 Description
 -----------
 
-\ :c:func:`netif_receive_skb`\  is the main receive data processing function.
+netif_receive_skb() is the main receive data processing function.
 It always succeeds. The buffer may be dropped during processing
 for congestion control or by the protocol layers.
 
@@ -1303,7 +1325,7 @@ Description
 -----------
 
 The entry's receive function will be scheduled to run.
-Consider using \\ :c:func:`__napi_schedule_irqoff`\  if hard irqs are masked.
+Consider using \__napi_schedule_irqoff() if hard irqs are masked.
 
 .. _`__napi_schedule_irqoff`:
 
@@ -1322,7 +1344,7 @@ __napi_schedule_irqoff
 Description
 -----------
 
-Variant of \\ :c:func:`__napi_schedule`\  assuming hard irqs are masked
+Variant of \__napi_schedule() assuming hard irqs are masked
 
 .. _`netdev_has_upper_dev`:
 
@@ -1506,6 +1528,54 @@ Gets the next netdev_adjacent from the dev's lower neighbour
 list, starting from iter position. The caller must hold RTNL lock or
 its own locking that guarantees that the neighbour lower
 list will remain unchanged.
+
+.. _`netdev_all_lower_get_next`:
+
+netdev_all_lower_get_next
+=========================
+
+.. c:function:: struct net_device *netdev_all_lower_get_next(struct net_device *dev, struct list_head **iter)
+
+    Get the next device from all lower neighbour list
+
+    :param struct net_device \*dev:
+        device
+
+    :param struct list_head \*\*iter:
+        list_head \*\* of the current position
+
+.. _`netdev_all_lower_get_next.description`:
+
+Description
+-----------
+
+Gets the next netdev_adjacent from the dev's all lower neighbour
+list, starting from iter position. The caller must hold RTNL lock or
+its own locking that guarantees that the neighbour all lower
+list will remain unchanged.
+
+.. _`netdev_all_lower_get_next_rcu`:
+
+netdev_all_lower_get_next_rcu
+=============================
+
+.. c:function:: struct net_device *netdev_all_lower_get_next_rcu(struct net_device *dev, struct list_head **iter)
+
+    Get the next device from all lower neighbour list, RCU variant
+
+    :param struct net_device \*dev:
+        device
+
+    :param struct list_head \*\*iter:
+        list_head \*\* of the current position
+
+.. _`netdev_all_lower_get_next_rcu.description`:
+
+Description
+-----------
+
+Gets the next netdev_adjacent from the dev's all lower neighbour
+list, starting from iter position. The caller must hold RCU read lock.
 
 .. _`netdev_lower_get_first_private_rcu`:
 
@@ -1918,6 +1988,28 @@ Description
 
 This info can be used by switch drivers to set the phys state of the
 port.
+
+.. _`dev_change_xdp_fd`:
+
+dev_change_xdp_fd
+=================
+
+.. c:function:: int dev_change_xdp_fd(struct net_device *dev, int fd)
+
+    set or clear a bpf program for a device rx path
+
+    :param struct net_device \*dev:
+        device
+
+    :param int fd:
+        new program fd or negative value to clear
+
+.. _`dev_change_xdp_fd.description`:
+
+Description
+-----------
+
+Set or clear a bpf program for a device
 
 .. _`dev_new_index`:
 

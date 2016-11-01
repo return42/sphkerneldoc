@@ -23,7 +23,7 @@ kmap_high
     map a highmem page into memory
 
     :param struct page \*page:
-        \ :c:type:`struct page <page>`\  to map
+        &struct page to map
 
 .. _`kmap_high.description`:
 
@@ -44,7 +44,7 @@ kmap_high_get
     pin a highmem page into memory
 
     :param struct page \*page:
-        \ :c:type:`struct page <page>`\  to pin
+        &struct page to pin
 
 .. _`kmap_high_get.description`:
 
@@ -67,7 +67,7 @@ kunmap_high
     unmap a highmem page into memory
 
     :param struct page \*page:
-        \ :c:type:`struct page <page>`\  to unmap
+        &struct page to unmap
 
 .. _`kunmap_high.description`:
 
@@ -87,7 +87,7 @@ page_address
     get the mapped virtual address of a page
 
     :param const struct page \*page:
-        \ :c:type:`struct page <page>`\  to get the virtual address of
+        &struct page to get the virtual address of
 
 .. _`page_address.description`:
 
@@ -106,7 +106,7 @@ set_page_address
     set a page's virtual address
 
     :param struct page \*page:
-        \ :c:type:`struct page <page>`\  to set
+        &struct page to set
 
     :param void \*virtual:
         virtual address to use

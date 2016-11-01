@@ -278,6 +278,44 @@ Bit fields
 FH_MEM_RSSR_SHARED_CTRL_REG and FH_MEM_RSSR_RX_ENABLE_ERR_IRQ2DRV
 contain default values that should not be altered by the driver.
 
+.. _`rfh_gen_status`:
+
+RFH_GEN_STATUS
+==============
+
+.. c:function::  RFH_GEN_STATUS()
+
+.. _`rfh_gen_status.bit-29`:
+
+Bit 29
+------
+
+RBD_FETCH_IDLE
+This status flag is set by the RFH when there is no active RBD fetch from
+DRAM.
+Once the RFH RBD controller starts fetching (or when there is a pending
+RBD read response from DRAM), this flag is immediately turned off.
+
+.. _`rfh_gen_status.bit-30`:
+
+Bit 30
+------
+
+SRAM_DMA_IDLE
+This status flag is set by the RFH when there is no active transaction from
+SRAM to DRAM.
+Once the SRAM to DRAM DMA is active, this flag is immediately turned off.
+
+.. _`rfh_gen_status.bit-31`:
+
+Bit 31
+------
+
+RXF_DMA_IDLE
+This status flag is set by the RFH when there is no active transaction from
+RXF to DRAM.
+Once the RXF-to-DRAM DMA is active, this flag is immediately turned off.
+
 .. _`fh_tcsr_lower_bound`:
 
 FH_TCSR_LOWER_BOUND
@@ -432,29 +470,70 @@ Description
 
 This structure contains dma address and length of transmission address
 
-.. _`iwl_tfd`:
+.. _`iwl_tfh_tb`:
 
-struct iwl_tfd
-==============
+struct iwl_tfh_tb
+=================
 
-.. c:type:: struct iwl_tfd
+.. c:type:: struct iwl_tfh_tb
 
 
-.. _`iwl_tfd.definition`:
+.. _`iwl_tfh_tb.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_tfd {
-        u8 __reserved1[3];
-        u8 num_tbs;
-        struct iwl_tfd_tb tbs[IWL_NUM_OF_TBS];
+    struct iwl_tfh_tb {
+        __le16 tb_len;
+        __le64 addr;
+    }
+
+.. _`iwl_tfh_tb.members`:
+
+Members
+-------
+
+tb_len
+    *undescribed*
+
+addr
+    *undescribed*
+
+.. _`iwl_tfh_tb.description`:
+
+Description
+-----------
+
+This structure contains dma address and length of transmission address
+
+\ ``tb_len``\  length of the tx buffer
+\ ``addr``\  64 bits dma address
+
+.. _`iwl_tfh_tfd`:
+
+struct iwl_tfh_tfd
+==================
+
+.. c:type:: struct iwl_tfh_tfd
+
+    Transmit Frame Descriptor (TFD) @ num_tbs 0-4 number of active tbs 5 -15   reserved @ tbs[25]    transmit frame buffer descriptors @ \__pad      padding
+
+.. _`iwl_tfh_tfd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_tfh_tfd {
+        __le16 num_tbs;
+        struct iwl_tfh_tb tbs[IWL_TFH_NUM_TBS];
         __le32 __pad;
     }
 
-.. _`iwl_tfd.members`:
+.. _`iwl_tfh_tfd.members`:
 
 Members
 -------
@@ -465,36 +544,6 @@ num_tbs
 __pad
     *undescribed*
 
-.. _`iwl_tfd.description`:
-
-Description
------------
-
-Transmit Frame Descriptor (TFD)
-
-@ \__reserved1[3] reserved
-@ num_tbs 0-4 number of active tbs
-5   reserved
-6-7 padding (not used)
-@ tbs[20]    transmit frame buffer descriptors
-@ \__pad      padding
-
-Each Tx queue uses a circular buffer of 256 TFDs stored in host DRAM.
-Both driver and device share these circular buffers, each of which must be
-contiguous 256 TFDs x 128 bytes-per-TFD = 32 KBytes
-
-Driver must indicate the physical address of the base of each
-circular buffer via the FH_MEM_CBBC_QUEUE registers.
-
-Each TFD contains pointer/size information for up to 20 data buffers
-in host DRAM.  These buffers collectively contain the (one) frame described
-by the TFD.  Each buffer must be a single contiguous block of memory within
-itself, but buffers may be scattered in host DRAM.  Each buffer has max size
-of (4K - 4).  The concatenates all of a TFD's buffers into a single
-Tx frame, up to 8 KBytes in size.
-
-A maximum of 255 (not 256!) TFDs may be on a queue waiting for Tx.
-
 .. _`iwlagn_scd_bc_tbl`:
 
 struct iwlagn_scd_bc_tbl
@@ -502,7 +551,7 @@ struct iwlagn_scd_bc_tbl
 
 .. c:type:: struct iwlagn_scd_bc_tbl
 
-    base physical address provided by SCD_DRAM_BASE_ADDR \ ``tfd_offset``\   0-12 - tx command byte count 12-16 - station index
+    base physical address provided by SCD_DRAM_BASE_ADDR
 
 .. _`iwlagn_scd_bc_tbl.definition`:
 
@@ -519,6 +568,23 @@ Definition
 
 Members
 -------
+
+.. _`iwlagn_scd_bc_tbl.for-devices-up-to-a000`:
+
+For devices up to a000
+----------------------
+
+@tfd_offset  0-12 - tx command byte count
+12-16 - station index
+
+.. _`iwlagn_scd_bc_tbl.for-a000-and-on`:
+
+For a000 and on
+---------------
+
+@tfd_offset  0-12 - tx command byte count
+12-13 - number of 64 byte chunks
+14-16 - reserved
 
 .. This file was automatic generated / don't edit.
 

@@ -197,12 +197,12 @@ Description
 Returns an initialized irq_chip_generic structure. The chip defaults
 to the primary (index 0) irq_chip_type and \ ``handler``\ 
 
-.. _`irq_alloc_domain_generic_chips`:
+.. _`__irq_alloc_domain_generic_chips`:
 
-irq_alloc_domain_generic_chips
-==============================
+__irq_alloc_domain_generic_chips
+================================
 
-.. c:function:: int irq_alloc_domain_generic_chips(struct irq_domain *d, int irqs_per_chip, int num_ct, const char *name, irq_flow_handler_t handler, unsigned int clr, unsigned int set, enum irq_gc_flags gcflags)
+.. c:function:: int __irq_alloc_domain_generic_chips(struct irq_domain *d, int irqs_per_chip, int num_ct, const char *name, irq_flow_handler_t handler, unsigned int clr, unsigned int set, enum irq_gc_flags gcflags)
 
     Allocate generic chips for an irq domain
 
@@ -210,7 +210,7 @@ irq_alloc_domain_generic_chips
         irq domain for which to allocate chips
 
     :param int irqs_per_chip:
-        Number of interrupts each chip handles
+        Number of interrupts each chip handles (max 32)
 
     :param int num_ct:
         Number of irq_chip_type instances associated with this
@@ -298,7 +298,7 @@ irq_setup_alt_chip
 Description
 -----------
 
-Only to be called from chip->\ :c:func:`irq_set_type`\  callbacks.
+Only to be called from chip->irq_set_type() callbacks.
 
 .. _`irq_remove_generic_chip`:
 

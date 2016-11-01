@@ -18,6 +18,7 @@ Definition
 .. code-block:: c
 
     struct adc_jack_data {
+        struct device *dev;
         struct extcon_dev *edev;
         const unsigned int **cable_names;
         struct adc_jack_cond *adc_conditions;
@@ -26,12 +27,16 @@ Definition
         unsigned long handling_delay;
         struct delayed_work handler;
         struct iio_channel *chan;
+        bool wakeup_source;
     }
 
 .. _`adc_jack_data.members`:
 
 Members
 -------
+
+dev
+    *undescribed*
 
 edev
     extcon device.
@@ -57,6 +62,9 @@ handler
 
 chan
     iio channel being queried.
+
+wakeup_source
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

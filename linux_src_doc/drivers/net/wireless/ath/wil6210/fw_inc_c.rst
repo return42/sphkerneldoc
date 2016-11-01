@@ -29,14 +29,14 @@ records are not validated.
 
 Return file size or negative error
 
-.. _`wil_fw_load`:
+.. _`wil_fw_process`:
 
-wil_fw_load
-===========
+wil_fw_process
+==============
 
-.. c:function:: int wil_fw_load(struct wil6210_priv *wil, const void *data, size_t size)
+.. c:function:: int wil_fw_process(struct wil6210_priv *wil, const void *data, size_t size, bool load)
 
-    load FW into device
+    process section from FW file
 
     :param struct wil6210_priv \*wil:
         *undescribed*
@@ -47,13 +47,17 @@ wil_fw_load
     :param size_t size:
         *undescribed*
 
-.. _`wil_fw_load.description`:
+    :param bool load:
+        *undescribed*
 
-Description
------------
+.. _`wil_fw_process.if-load-is-true`:
 
-Load the FW and uCode code and data to the corresponding device
-memory regions
+if load is true
+---------------
+
+Load the FW and uCode code and data to the
+corresponding device memory regions,
+otherwise only parse and look for capabilities
 
 Return error code
 
@@ -62,9 +66,9 @@ Return error code
 wil_request_firmware
 ====================
 
-.. c:function:: int wil_request_firmware(struct wil6210_priv *wil, const char *name)
+.. c:function:: int wil_request_firmware(struct wil6210_priv *wil, const char *name, bool load)
 
-    Request firmware and load to device
+    Request firmware
 
     :param struct wil6210_priv \*wil:
         *undescribed*
@@ -72,12 +76,17 @@ wil_request_firmware
     :param const char \*name:
         *undescribed*
 
+    :param bool load:
+        *undescribed*
+
 .. _`wil_request_firmware.description`:
 
 Description
 -----------
 
-Request firmware image from the file and load it to device
+Request firmware image from the file
+If load is true, load firmware to device, otherwise
+only parse and extract capabilities
 
 Return error code
 

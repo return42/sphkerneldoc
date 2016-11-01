@@ -95,7 +95,7 @@ when we have to write less data we add padding node to the write-buffer and
 pad it to the next minimal I/O unit's boundary. Padding nodes help when the
 media is being scanned. If the amount of wasted space is not enough to fit a
 padding node which takes \ ``UBIFS_PAD_NODE_SZ``\  bytes, we write padding bytes
-pattern (\ ``UBIFS_PADDING_BYTE``\ ).
+pattern (%UBIFS_PADDING_BYTE).
 
 Padding nodes are also used to fill gaps when the "commit-in-gaps" method is
 used.
@@ -263,7 +263,7 @@ ubifs_wbuf_seek_nolock
 Description
 -----------
 
-This function targets the write-buffer to logical eraseblock \ ``lnum``\ :\ ``offs``\ .
+This function targets the write-buffer to logical eraseblock \ ``lnum``\ :@offs.
 The write-buffer has to be empty. Returns zero in case of success and a
 negative error code in case of failure.
 
@@ -313,7 +313,7 @@ Description
 
 This function writes data to flash via write-buffer \ ``wbuf``\ . This means that
 the last piece of the node won't reach the flash media immediately if it
-does not take whole max. write unit (\ ``c``\ ->max_write_size). Instead, the node
+does not take whole max. write unit (@c->max_write_size). Instead, the node
 will sit in RAM until the write-buffer is synchronized (e.g., by timer, or
 because more data are appended to the write-buffer).
 

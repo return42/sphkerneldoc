@@ -20,6 +20,12 @@ Definition
     struct ion_buffer {
         struct kref ref;
         union {unnamed_union};
+        struct ion_device *dev;
+        struct ion_heap *heap;
+        unsigned long flags;
+        unsigned long private_flags;
+        size_t size;
+        void *priv_virt;
         struct mutex lock;
         int kmap_cnt;
         void *vaddr;
@@ -43,6 +49,25 @@ ref
 {unnamed_union}
     anonymous
 
+
+dev
+    back pointer to the ion_device
+
+heap
+    back pointer to the heap the buffer came from
+
+flags
+    buffer specific flags
+
+private_flags
+    internal buffer specific flags
+
+size
+    size of the buffer
+
+priv_virt
+    private data to the buffer representable as
+    a void \*
 
 lock
     protects the buffers cnt fields
@@ -77,6 +102,151 @@ pid
     pid of last client to reference this buffer in a
     handle, used for debugging
 
+.. _`ion_device`:
+
+struct ion_device
+=================
+
+.. c:type:: struct ion_device
+
+    the metadata of the ion device node
+
+.. _`ion_device.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ion_device {
+        struct miscdevice dev;
+        struct rb_root buffers;
+        struct mutex buffer_lock;
+        struct rw_semaphore lock;
+        struct plist_head heaps;
+        long (*custom_ioctl)(struct ion_client *client, unsigned int cmd,unsigned long arg);
+        struct rb_root clients;
+        struct dentry *debug_root;
+        struct dentry *heaps_debug_root;
+        struct dentry *clients_debug_root;
+        int heap_cnt;
+    }
+
+.. _`ion_device.members`:
+
+Members
+-------
+
+dev
+    the actual misc device
+
+buffers
+    an rb tree of all the existing buffers
+
+buffer_lock
+    lock protecting the tree of buffers
+
+lock
+    rwsem protecting the tree of heaps and clients
+
+heaps
+    list of all the heaps in the system
+
+custom_ioctl
+    *undescribed*
+
+clients
+    *undescribed*
+
+debug_root
+    *undescribed*
+
+heaps_debug_root
+    *undescribed*
+
+clients_debug_root
+    *undescribed*
+
+heap_cnt
+    *undescribed*
+
+.. _`ion_client`:
+
+struct ion_client
+=================
+
+.. c:type:: struct ion_client
+
+    a process/hw block local address space
+
+.. _`ion_client.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ion_client {
+        struct rb_node node;
+        struct ion_device *dev;
+        struct rb_root handles;
+        struct idr idr;
+        struct mutex lock;
+        const char *name;
+        char *display_name;
+        int display_serial;
+        struct task_struct *task;
+        pid_t pid;
+        struct dentry *debug_root;
+    }
+
+.. _`ion_client.members`:
+
+Members
+-------
+
+node
+    node in the tree of all clients
+
+dev
+    backpointer to ion device
+
+handles
+    an rb tree of all the handles in this client
+
+idr
+    an idr space for allocating handle ids
+
+lock
+    lock protecting the tree of handles
+
+name
+    used for debugging
+
+display_name
+    used for debugging (unique version of \ ``name``\ )
+
+display_serial
+    used for debugging (to make display_name unique)
+
+task
+    used for debugging
+
+pid
+    *undescribed*
+
+debug_root
+    *undescribed*
+
+.. _`ion_client.description`:
+
+Description
+-----------
+
+A client represents a list of buffers this client may access.
+The mutex stored here is used to protect both handles tree
+as well as the handles themselves, and should be held while modifying either.
+
 .. _`ion_heap_ops`:
 
 struct ion_heap_ops
@@ -96,9 +266,6 @@ Definition
     struct ion_heap_ops {
         int (*allocate)(struct ion_heap *heap,struct ion_buffer *buffer, unsigned long len,unsigned long align, unsigned long flags);
         void (*free)(struct ion_buffer *buffer);
-        int (*phys)(struct ion_heap *heap, struct ion_buffer *buffer,ion_phys_addr_t *addr, size_t *len);
-        struct sg_table * (*map_dma)(struct ion_heap *heap,struct ion_buffer *buffer);
-        void (*unmap_dma)(struct ion_heap *heap, struct ion_buffer *buffer);
         void * (*map_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
         void (*unmap_kernel)(struct ion_heap *heap, struct ion_buffer *buffer);
         int (*map_user)(struct ion_heap *mapper, struct ion_buffer *buffer,struct vm_area_struct *vma);
@@ -115,22 +282,9 @@ allocate
 
 free
     free memory
-    \ ``phys``\                 get physical address of a buffer (only define on
-    physically contiguous heaps)
-    \ ``map_dma``\              map the memory for dma to a scatterlist
-    \ ``unmap_dma``\            unmap the memory for dma
     \ ``map_kernel``\           map memory to the kernel
     \ ``unmap_kernel``\         unmap memory to the kernel
     \ ``map_user``\             map memory to userspace
-
-phys
-    *undescribed*
-
-map_dma
-    *undescribed*
-
-unmap_dma
-    *undescribed*
 
 map_kernel
     *undescribed*
@@ -510,33 +664,6 @@ ion_heap_create
 
     :param struct ion_platform_heap \*:
         *undescribed*
-
-.. _`ion_carveout_allocate`:
-
-ion_carveout_allocate
-=====================
-
-.. c:function:: ion_phys_addr_t ion_carveout_allocate(struct ion_heap *heap, unsigned long size, unsigned long align)
-
-    - used when carveout is used to back an architecture specific custom heap
-
-    :param struct ion_heap \*heap:
-        *undescribed*
-
-    :param unsigned long size:
-        *undescribed*
-
-    :param unsigned long align:
-        *undescribed*
-
-.. _`ion_carveout_allocate_fail`:
-
-ION_CARVEOUT_ALLOCATE_FAIL
-==========================
-
-.. c:function::  ION_CARVEOUT_ALLOCATE_FAIL()
-
-    physical address, this is used to indicate allocation failed
 
 .. _`ion_pages_sync_for_device`:
 

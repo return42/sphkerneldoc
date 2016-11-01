@@ -328,7 +328,7 @@ dma_dir
     or \ ``DMA_NONE``\  if pages allocated from regular memory.
 
 refcount
-    \ :c:type:`struct kref <kref>`\  reference counter used to free the buffer.
+    &struct kref reference counter used to free the buffer.
 
 .. _`comedi_buf_map.description`:
 
@@ -534,7 +534,7 @@ enum comedi_cb
 
 .. c:type:: enum comedi_cb
 
-    \ :c:type:`struct comedi_async <comedi_async>`\  callback "events"
+    &struct comedi_async callback "events"
 
 .. _`comedi_cb.definition`:
 
@@ -783,7 +783,7 @@ mutex
     Generic mutex for use by the COMEDI core module.
 
 attach_lock
-    \ :c:type:`struct rw_semaphore <rw_semaphore>`\  used to guard against the COMEDI device
+    &struct rw_semaphore used to guard against the COMEDI device
     being detached while an operation is in progress.  The \ :c:func:`down_write`\ 
     operation is only allowed while \ ``mutex``\  is held and is used when
     changing \ ``attached``\  and \ ``detach_count``\  and calling the low-level driver's
@@ -791,7 +791,7 @@ attach_lock
     holding \ ``mutex``\ .
 
 refcount
-    \ :c:type:`struct kref <kref>`\  reference counter for freeing COMEDI device.
+    &struct kref reference counter for freeing COMEDI device.
 
 n_subdevices
     Number of COMEDI subdevices allocated by the low-level
@@ -924,7 +924,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is bipolar.
+%true if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_range_is_unipolar`:
@@ -958,7 +958,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is unipolar.
+%true if the range is unipolar.
 \ ``false``\  if the range is bipolar.
 
 .. _`comedi_range_is_external`:
@@ -992,7 +992,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is external.
+%true if the range is external.
 \ ``false``\  if the range is internal.
 
 .. _`comedi_chan_range_is_bipolar`:
@@ -1029,7 +1029,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is bipolar.
+%true if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_chan_range_is_unipolar`:
@@ -1066,7 +1066,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is unipolar.
+%true if the range is unipolar.
 \ ``false``\  if the range is bipolar.
 
 .. _`comedi_chan_range_is_external`:
@@ -1103,7 +1103,7 @@ channel-specific range table list.
 Return
 ------
 
-\ ``true``\  if the range is bipolar.
+%true if the range is bipolar.
 \ ``false``\  if the range is unipolar.
 
 .. _`comedi_offset_munge`:
@@ -1267,8 +1267,8 @@ triggers as \ ``TRIG_ANY``\  and get back a bitmask of the valid trigger sources
 Return
 ------
 
-0 if trigger sources in \*\ ``src``\  are all supported.
--EINVAL if any trigger source in \*\ ``src``\  is unsupported.
+0 if trigger sources in \*@src are all supported.
+-EINVAL if any trigger source in \*@src is unsupported.
 
 .. _`comedi_check_trigger_is_unique`:
 
@@ -1310,15 +1310,15 @@ comedi_check_trigger_arg_is
 Description
 -----------
 
-Forces \*\ ``arg``\  to be \ ``val``\ .
+Forces \*@arg to be \ ``val``\ .
 
 .. _`comedi_check_trigger_arg_is.return`:
 
 Return
 ------
 
-0 if \*\ ``arg``\  was already \ ``val``\ .
--EINVAL if \*\ ``arg``\  differed from \ ``val``\ .
+0 if \*@arg was already \ ``val``\ .
+-EINVAL if \*@arg differed from \ ``val``\ .
 
 .. _`comedi_check_trigger_arg_min`:
 
@@ -1340,15 +1340,15 @@ comedi_check_trigger_arg_min
 Description
 -----------
 
-Forces \*\ ``arg``\  to be at least \ ``val``\ , setting it to \ ``val``\  if necessary.
+Forces \*@arg to be at least \ ``val``\ , setting it to \ ``val``\  if necessary.
 
 .. _`comedi_check_trigger_arg_min.return`:
 
 Return
 ------
 
-0 if \*\ ``arg``\  was already at least \ ``val``\ .
--EINVAL if \*\ ``arg``\  was less than \ ``val``\ .
+0 if \*@arg was already at least \ ``val``\ .
+-EINVAL if \*@arg was less than \ ``val``\ .
 
 .. _`comedi_check_trigger_arg_max`:
 
@@ -1370,15 +1370,15 @@ comedi_check_trigger_arg_max
 Description
 -----------
 
-Forces \*\ ``arg``\  to be no more than \ ``val``\ , setting it to \ ``val``\  if necessary.
+Forces \*@arg to be no more than \ ``val``\ , setting it to \ ``val``\  if necessary.
 
 .. _`comedi_check_trigger_arg_max.return`:
 
 Return
 ------
 
-0 if\*\ ``arg``\  was already no more than \ ``val``\ .
--EINVAL if \*\ ``arg``\  was greater than \ ``val``\ .
+0 if\*@arg was already no more than \ ``val``\ .
+-EINVAL if \*@arg was greater than \ ``val``\ .
 
 .. _`comedi_buf_n_bytes_ready`:
 

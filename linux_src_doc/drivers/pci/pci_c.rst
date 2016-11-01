@@ -221,6 +221,30 @@ Description
 For given resource region of given device, return the resource
 region of parent bus the given region is contained in.
 
+.. _`pci_find_resource`:
+
+pci_find_resource
+=================
+
+.. c:function:: struct resource *pci_find_resource(struct pci_dev *dev, struct resource *res)
+
+    Return matching PCI device resource
+
+    :param struct pci_dev \*dev:
+        PCI device to query
+
+    :param struct resource \*res:
+        Resource to look for
+
+.. _`pci_find_resource.description`:
+
+Description
+-----------
+
+Goes over standard PCI resources (BARs) and checks if the given resource
+is partially or fully contained in any of them. In that case the
+matching resource is returned, \ ``NULL``\  otherwise.
+
 .. _`pci_find_pcie_root_port`:
 
 pci_find_pcie_root_port
@@ -319,13 +343,25 @@ pci_update_current_state
 
 .. c:function:: void pci_update_current_state(struct pci_dev *dev, pci_power_t state)
 
-    Read PCI power state of given device from its PCI PM registers and cache it
+    Read power state of given device and cache it
 
     :param struct pci_dev \*dev:
         PCI device to handle.
 
     :param pci_power_t state:
         State to cache in case the device doesn't have the PM capability
+
+.. _`pci_update_current_state.description`:
+
+Description
+-----------
+
+The power state is read from the PMCSR register, which however is
+inaccessible in D3cold.  The platform firmware is therefore queried first
+to detect accessibility of the register.  In case the platform firmware
+reports an incorrect state or the device isn't power manageable by the
+platform at all, we try to detect D3cold by testing accessibility of the
+vendor ID in config space.
 
 .. _`pci_power_up`:
 
@@ -1175,6 +1211,109 @@ If the device is runtime suspended and wakeup-capable, enable PME for it as
 it might have been disabled during the prepare phase of system suspend if
 the device was not configured for system wakeup.
 
+.. _`pci_bridge_d3_possible`:
+
+pci_bridge_d3_possible
+======================
+
+.. c:function:: bool pci_bridge_d3_possible(struct pci_dev *bridge)
+
+    Is it possible to put the bridge into D3
+
+    :param struct pci_dev \*bridge:
+        Bridge to check
+
+.. _`pci_bridge_d3_possible.description`:
+
+Description
+-----------
+
+This function checks if it is possible to move the bridge to D3.
+Currently we only allow D3 for recent enough PCIe ports.
+
+.. _`pci_bridge_d3_device_changed`:
+
+pci_bridge_d3_device_changed
+============================
+
+.. c:function:: void pci_bridge_d3_device_changed(struct pci_dev *dev)
+
+    Update bridge D3 capabilities on change
+
+    :param struct pci_dev \*dev:
+        PCI device that was changed
+
+.. _`pci_bridge_d3_device_changed.description`:
+
+Description
+-----------
+
+If a device is added or its PM configuration, such as is it allowed to
+enter D3cold, is changed this function updates upstream bridge PM
+capabilities accordingly.
+
+.. _`pci_bridge_d3_device_removed`:
+
+pci_bridge_d3_device_removed
+============================
+
+.. c:function:: void pci_bridge_d3_device_removed(struct pci_dev *dev)
+
+    Update bridge D3 capabilities on remove
+
+    :param struct pci_dev \*dev:
+        PCI device being removed
+
+.. _`pci_bridge_d3_device_removed.description`:
+
+Description
+-----------
+
+Function updates upstream bridge PM capabilities based on other devices
+still left on the bus.
+
+.. _`pci_d3cold_enable`:
+
+pci_d3cold_enable
+=================
+
+.. c:function:: void pci_d3cold_enable(struct pci_dev *dev)
+
+    Enable D3cold for device
+
+    :param struct pci_dev \*dev:
+        PCI device to handle
+
+.. _`pci_d3cold_enable.description`:
+
+Description
+-----------
+
+This function can be used in drivers to enable D3cold from the device
+they handle.  It also updates upstream PCI bridge PM capabilities
+accordingly.
+
+.. _`pci_d3cold_disable`:
+
+pci_d3cold_disable
+==================
+
+.. c:function:: void pci_d3cold_disable(struct pci_dev *dev)
+
+    Disable D3cold for device
+
+    :param struct pci_dev \*dev:
+        PCI device to handle
+
+.. _`pci_d3cold_disable.description`:
+
+Description
+-----------
+
+This function can be used in drivers to disable D3cold from the device
+they handle.  It also updates upstream PCI bridge PM capabilities
+accordingly.
+
 .. _`pci_pm_init`:
 
 pci_pm_init
@@ -1656,6 +1795,27 @@ and the CPU physical address \ ``phys_addr``\  into virtual address space.
 Only architectures that have memory mapped IO functions defined
 (and the PCI_IOBASE value defined) should call this function.
 
+.. _`pci_unmap_iospace`:
+
+pci_unmap_iospace
+=================
+
+.. c:function:: void pci_unmap_iospace(struct resource *res)
+
+    Unmap the memory mapped I/O space
+
+    :param struct resource \*res:
+        resource to be unmapped
+
+.. _`pci_unmap_iospace.description`:
+
+Description
+-----------
+
+Unmap the CPU virtual address \ ``res``\  from virtual address space.
+Only architectures that have memory mapped IO functions defined
+(and the PCI_IOBASE value defined) should call this function.
+
 .. _`pcibios_setup`:
 
 pcibios_setup
@@ -1748,7 +1908,7 @@ Description
 
 Helper function for pci_set_mwi.
 Originally copied from drivers/net/acenic.c.
-Copyright 1998-2001 by Jes Sorensen, <jes\ ``trained``\ -monkey.org>.
+Copyright 1998-2001 by Jes Sorensen, <jes@trained-monkey.org>.
 
 .. _`pci_set_cacheline_size.return`:
 

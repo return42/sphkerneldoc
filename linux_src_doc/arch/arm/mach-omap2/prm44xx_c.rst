@@ -180,7 +180,7 @@ Description
 -----------
 
 Return 1 if any bits were set in the \*\_CONTEXT\_\* register
-identified by (\ ``part``\ , \ ``inst``\ , \ ``idx``\ ), which means that some context
+identified by (@part, \ ``inst``\ , \ ``idx``\ ), which means that some context
 was lost for that module; otherwise, return 0.
 
 .. _`omap44xx_prm_clear_context_loss_flags_old`:
@@ -207,7 +207,7 @@ Description
 -----------
 
 Clear hardware context loss bits for the module identified by
-(\ ``part``\ , \ ``inst``\ , \ ``idx``\ ).  No return value.  XXX Writes to reserved bits;
+(@part, \ ``inst``\ , \ ``idx``\ ).  No return value.  XXX Writes to reserved bits;
 is there a way to avoid this?
 
 .. _`omap4_pwrdm_read_prev_logic_pwrst`:

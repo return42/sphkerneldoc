@@ -117,5 +117,52 @@ that the property conforms with the Power ePAPR document.
 It returns zero if the range parsing has been successful or a standard error
 value if it failed.
 
+.. _`of_pci_map_rid`:
+
+of_pci_map_rid
+==============
+
+.. c:function:: int of_pci_map_rid(struct device_node *np, u32 rid, const char *map_name, const char *map_mask_name, struct device_node **target, u32 *id_out)
+
+    Translate a requester ID through a downstream mapping.
+
+    :param struct device_node \*np:
+        root complex device node.
+
+    :param u32 rid:
+        PCI requester ID to map.
+
+    :param const char \*map_name:
+        property name of the map to use.
+
+    :param const char \*map_mask_name:
+        optional property name of the mask to use.
+
+    :param struct device_node \*\*target:
+        optional pointer to a target device node.
+
+    :param u32 \*id_out:
+        optional pointer to receive the translated ID.
+
+.. _`of_pci_map_rid.description`:
+
+Description
+-----------
+
+Given a PCI requester ID, look up the appropriate implementation-defined
+platform ID and/or the target device which receives transactions on that
+ID, as per the "iommu-map" and "msi-map" bindings. Either of \ ``target``\  or
+\ ``id_out``\  may be NULL if only the other is required. If \ ``target``\  points to
+a non-NULL device node pointer, only entries targeting that node will be
+matched; if it points to a NULL value, it will receive the device node of
+the first matching target phandle, with a reference held.
+
+.. _`of_pci_map_rid.return`:
+
+Return
+------
+
+0 on success or a standard error code on failure.
+
 .. This file was automatic generated / don't edit.
 

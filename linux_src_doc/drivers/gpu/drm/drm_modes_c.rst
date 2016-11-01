@@ -243,23 +243,21 @@ This function is to create the modeline based on the GTF algorithm.
 Generalized Timing Formula is derived from
 ------------------------------------------
 
-GTF Spreadsheet by Andy Morrish (1/5/97)
-available at http://www.vesa.org
+
+     GTF Spreadsheet by Andy Morrish (1/5/97)
+     available at http://www.vesa.org
 
 And it is copied from the file of xserver/hw/xfree86/modes/xf86gtf.c.
 What I have done is to translate it by using integer calculation.
 I also refer to the function of fb_get_mode in the file of
 drivers/video/fbmon.c
 
-.. _`drm_gtf_mode.standard-gtf-parameters`:
+Standard GTF parameters::
 
-Standard GTF parameters
------------------------
-
-M = 600
-C = 40
-K = 128
-J = 20
+    M = 600
+    C = 40
+    K = 128
+    J = 20
 
 .. _`drm_gtf_mode.return`:
 
@@ -314,12 +312,35 @@ Description
 
 Fills out \ ``vm``\  using the display mode specified in \ ``dmode``\ .
 
+.. _`drm_bus_flags_from_videomode`:
+
+drm_bus_flags_from_videomode
+============================
+
+.. c:function:: void drm_bus_flags_from_videomode(const struct videomode *vm, u32 *bus_flags)
+
+    extract information about pixelclk and DE polarity from videomode and store it in a separate variable
+
+    :param const struct videomode \*vm:
+        videomode structure to use
+
+    :param u32 \*bus_flags:
+        information about pixelclk and DE polarity will be stored here
+
+.. _`drm_bus_flags_from_videomode.description`:
+
+Description
+-----------
+
+Sets DRM_BUS_FLAG_DE_(LOW|HIGH) and DRM_BUS_FLAG_PIXDATA_(POS|NEG)EDGE
+in \ ``bus_flags``\  according to DISPLAY_FLAGS found in \ ``vm``\ 
+
 .. _`of_get_drm_display_mode`:
 
 of_get_drm_display_mode
 =======================
 
-.. c:function:: int of_get_drm_display_mode(struct device_node *np, struct drm_display_mode *dmode, int index)
+.. c:function:: int of_get_drm_display_mode(struct device_node *np, struct drm_display_mode *dmode, u32 *bus_flags, int index)
 
     get a drm_display_mode from devicetree
 
@@ -328,6 +349,9 @@ of_get_drm_display_mode
 
     :param struct drm_display_mode \*dmode:
         will be set to the return value
+
+    :param u32 \*bus_flags:
+        information about pixelclk and DE polarity
 
     :param int index:
         index into the list of display timings in devicetree
@@ -385,7 +409,7 @@ drm_mode_hsync
 Return
 ------
 
-\ ``modes``\ 's hsync rate in kHz, rounded to the nearest integer. Calculates the
+@modes's hsync rate in kHz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
 
 .. _`drm_mode_vrefresh`:
@@ -405,7 +429,7 @@ drm_mode_vrefresh
 Return
 ------
 
-\ ``modes``\ 's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
+@modes's vrefresh rate in Hz, rounded to the nearest integer. Calculates the
 value first if it is not yet set.
 
 .. _`drm_mode_set_crtcinfo`:
@@ -431,12 +455,12 @@ Description
 Setup the CRTC modesetting timing parameters for \ ``p``\ , adjusting if necessary.
 
 - The CRTC_INTERLACE_HALVE_V flag can be used to halve vertical timings of
-interlaced modes.
+  interlaced modes.
 - The CRTC_STEREO_DOUBLE flag can be used to compute the timings for
-buffers containing two eyes (only adjust the timings when needed, eg. for
-"frame packing" or "side by side full").
-- The CRTC_NO_DBLSCAN and CRTC_NO_VSCAN flags request that adjustment \*not\*
-be performed for doublescan and vscan > 1 modes respectively.
+  buffers containing two eyes (only adjust the timings when needed, eg. for
+  "frame packing" or "side by side full").
+- The CRTC_NO_DBLSCAN and CRTC_NO_VSCAN flags request that adjustment *not*
+  be performed for doublescan and vscan > 1 modes respectively.
 
 .. _`drm_mode_copy`:
 

@@ -37,7 +37,7 @@ are used to bind "new style" I2C drivers to the devices.  The bus number
 for any device declared using this routine is not available for dynamic
 allocation.
 
-The board info passed can safely be \__initdata, but be careful of embedded
+The board info passed can safely be __initdata, but be careful of embedded
 pointers (for platform_data, functions, etc) since that won't be copied.
 
 .. This file was automatic generated / don't edit.

@@ -89,12 +89,9 @@ programmed on the same DMA channel.
 __scif_rma_destroy_tcw
 ======================
 
-.. c:function:: void __scif_rma_destroy_tcw(struct scif_mmu_notif *mmn, struct scif_endpt *ep, u64 start, u64 len)
+.. c:function:: void __scif_rma_destroy_tcw(struct scif_mmu_notif *mmn, u64 start, u64 len)
 
     :param struct scif_mmu_notif \*mmn:
-        *undescribed*
-
-    :param struct scif_endpt \*ep:
         *undescribed*
 
     :param u64 start:
@@ -141,7 +138,7 @@ Description
 -----------
 
 Create a temporary registered window. The peer will not know about this
-window. This API is used for \ :c:func:`scif_vreadfrom`\ /\ :c:func:`scif_vwriteto`\  API's.
+window. This API is used for \ :c:func:`scif_vreadfrom`\ /scif_vwriteto() API's.
 
 .. _`scif_rma_destroy_windows`:
 

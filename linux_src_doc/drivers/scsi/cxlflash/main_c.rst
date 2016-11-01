@@ -332,6 +332,31 @@ Description
 
 Safe to call with AFU/MC in partially allocated/initialized state.
 
+.. _`notify_shutdown`:
+
+notify_shutdown
+===============
+
+.. c:function:: void notify_shutdown(struct cxlflash_cfg *cfg, bool wait)
+
+    notifies device of pending shutdown
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+    :param bool wait:
+        Whether to wait for shutdown processing to complete.
+
+.. _`notify_shutdown.description`:
+
+Description
+-----------
+
+This function will notify the AFU that the adapter is being shutdown
+and will wait for shutdown processing to complete if wait is true.
+This notification should flush pending I/Os to the device and halt
+further I/Os until the next AFU reset is issued and device restarted.
+
 .. _`cxlflash_remove`:
 
 cxlflash_remove
@@ -530,7 +555,7 @@ FALSE (0) when the specified port fails to go offline after timeout
 afu_set_wwpn
 ============
 
-.. c:function:: int afu_set_wwpn(struct afu *afu, int port, __be64 __iomem *fc_regs, u64 wwpn)
+.. c:function:: void afu_set_wwpn(struct afu *afu, int port, __be64 __iomem *fc_regs, u64 wwpn)
 
     configures the WWPN for the specified host FC port
 
@@ -556,14 +581,6 @@ sequence to configure the WWPN, the port is toggled offline and then back
 online. This toggling action can cause this routine to delay up to a few
 seconds. When configured to use the internal LUN feature of the AFU, a
 failure to come online is overridden.
-
-.. _`afu_set_wwpn.return`:
-
-Return
-------
-
-0 when the WWPN is successfully written and the port comes back online
--1 when the port fails to go offline or come back up online
 
 .. _`afu_link_reset`:
 
@@ -909,6 +926,26 @@ Return
 
 0 on success, -errno on failure
 
+.. _`drain_ioctls`:
+
+drain_ioctls
+============
+
+.. c:function:: void drain_ioctls(struct cxlflash_cfg *cfg)
+
+    wait until all currently executing ioctls have completed
+
+    :param struct cxlflash_cfg \*cfg:
+        Internal structure associated with the host.
+
+.. _`drain_ioctls.description`:
+
+Description
+-----------
+
+Obtain write access to read/write semaphore that wraps ioctl
+handling to 'drain' ioctls currently executing.
+
 .. _`cxlflash_eh_device_reset_handler`:
 
 cxlflash_eh_device_reset_handler
@@ -940,6 +977,16 @@ cxlflash_eh_host_reset_handler
 
     :param struct scsi_cmnd \*scp:
         SCSI command from stack identifying host.
+
+.. _`cxlflash_eh_host_reset_handler.description`:
+
+Description
+-----------
+
+Following a reset, the state is evaluated again in case an EEH occurred
+during the reset. In such a scenario, the host reset will either yield
+until the EEH recovery is complete or return success or failure based
+upon the current device state.
 
 .. _`cxlflash_eh_host_reset_handler.return`:
 
@@ -1293,26 +1340,6 @@ Return
 
 0 on success, -errno on failure
 
-.. _`drain_ioctls`:
-
-drain_ioctls
-============
-
-.. c:function:: void drain_ioctls(struct cxlflash_cfg *cfg)
-
-    wait until all currently executing ioctls have completed
-
-    :param struct cxlflash_cfg \*cfg:
-        Internal structure associated with the host.
-
-.. _`drain_ioctls.description`:
-
-Description
------------
-
-Obtain write access to read/write semaphore that wraps ioctl
-handling to 'drain' ioctls currently executing.
-
 .. _`cxlflash_pci_error_detected`:
 
 cxlflash_pci_error_detected
@@ -1327,6 +1354,14 @@ cxlflash_pci_error_detected
 
     :param pci_channel_state_t state:
         PCI channel state.
+
+.. _`cxlflash_pci_error_detected.description`:
+
+Description
+-----------
+
+When an EEH occurs during an active reset, wait until the reset is
+complete and then take action based upon the device state.
 
 .. _`cxlflash_pci_error_detected.return`:
 

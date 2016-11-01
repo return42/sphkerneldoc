@@ -8,7 +8,7 @@ notify_user_space
 
 .. c:function:: int notify_user_space(struct thermal_zone_device *tz, int trip)
 
-    Notifies user space about thermal events \ ``tz``\  - thermal_zone_device
+    Notifies user space about thermal events \ ``tz``\  - thermal_zone_device \ ``trip``\  - Trip point index
 
     :param struct thermal_zone_device \*tz:
         *undescribed*

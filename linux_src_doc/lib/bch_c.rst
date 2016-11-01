@@ -77,16 +77,16 @@ separately (using \ :c:func:`encode_bch`\ ), this function should be called with
 the following parameter configurations -
 
 by providing \ ``data``\  and \ ``recv_ecc``\  only:
-decode_bch(\ ``bch``\ , \ ``data``\ , \ ``len``\ , \ ``recv_ecc``\ , NULL, NULL, \ ``errloc``\ )
+decode_bch(@bch, \ ``data``\ , \ ``len``\ , \ ``recv_ecc``\ , NULL, NULL, \ ``errloc``\ )
 
 by providing \ ``recv_ecc``\  and \ ``calc_ecc``\ :
-decode_bch(\ ``bch``\ , NULL, \ ``len``\ , \ ``recv_ecc``\ , \ ``calc_ecc``\ , NULL, \ ``errloc``\ )
+decode_bch(@bch, NULL, \ ``len``\ , \ ``recv_ecc``\ , \ ``calc_ecc``\ , NULL, \ ``errloc``\ )
 
 by providing ecc = recv_ecc XOR calc_ecc:
-decode_bch(\ ``bch``\ , NULL, \ ``len``\ , NULL, ecc, NULL, \ ``errloc``\ )
+decode_bch(@bch, NULL, \ ``len``\ , NULL, ecc, NULL, \ ``errloc``\ )
 
 by providing syndrome results \ ``syn``\ :
-decode_bch(\ ``bch``\ , NULL, \ ``len``\ , NULL, NULL, \ ``syn``\ , \ ``errloc``\ )
+decode_bch(@bch, NULL, \ ``len``\ , NULL, NULL, \ ``syn``\ , \ ``errloc``\ )
 
 Once \ :c:func:`decode_bch`\  has successfully returned with a positive value, error
 locations returned in array \ ``errloc``\  should be interpreted as follows -

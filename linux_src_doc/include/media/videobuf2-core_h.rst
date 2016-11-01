@@ -1,6 +1,51 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/media/videobuf2-core.h
 
+.. _`vb2_memory`:
+
+enum vb2_memory
+===============
+
+.. c:type:: enum vb2_memory
+
+    type of memory model used to make the buffers visible on userspace.
+
+.. _`vb2_memory.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vb2_memory {
+        VB2_MEMORY_UNKNOWN,
+        VB2_MEMORY_MMAP,
+        VB2_MEMORY_USERPTR,
+        VB2_MEMORY_DMABUF
+    };
+
+.. _`vb2_memory.constants`:
+
+Constants
+---------
+
+VB2_MEMORY_UNKNOWN
+    Buffer status is unknown or it is not used yet on
+    userspace.
+
+VB2_MEMORY_MMAP
+    The buffers are allocated by the Kernel and it is
+    memory mapped via \ :c:func:`mmap`\  ioctl. This model is
+    also used when the user is using the buffers via
+    \ :c:func:`read`\  or \ :c:func:`write`\  system calls.
+
+VB2_MEMORY_USERPTR
+    The buffers was allocated in userspace and it is
+    memory mapped via \ :c:func:`mmap`\  ioctl.
+
+VB2_MEMORY_DMABUF
+    The buffers are passed to userspace via DMA buffer.
+
 .. _`vb2_mem_ops`:
 
 struct vb2_mem_ops
@@ -18,14 +63,14 @@ Definition
 .. code-block:: c
 
     struct vb2_mem_ops {
-        void *(*alloc)(void *alloc_ctx, unsigned long size,enum dma_data_direction dma_dir,gfp_t gfp_flags);
+        void *(*alloc)(struct device *dev, unsigned long attrs,unsigned long size,enum dma_data_direction dma_dir,gfp_t gfp_flags);
         void (*put)(void *buf_priv);
         struct dma_buf *(*get_dmabuf)(void *buf_priv, unsigned long flags);
-        void *(*get_userptr)(void *alloc_ctx, unsigned long vaddr,unsigned long size,enum dma_data_direction dma_dir);
+        void *(*get_userptr)(struct device *dev, unsigned long vaddr,unsigned long size,enum dma_data_direction dma_dir);
         void (*put_userptr)(void *buf_priv);
         void (*prepare)(void *buf_priv);
         void (*finish)(void *buf_priv);
-        void *(*attach_dmabuf)(void *alloc_ctx, struct dma_buf *dbuf,unsigned long size,enum dma_data_direction dma_dir);
+        void *(*attach_dmabuf)(struct device *dev,struct dma_buf *dbuf,unsigned long size,enum dma_data_direction dma_dir);
         void (*detach_dmabuf)(void *buf_priv);
         int (*map_dmabuf)(void *buf_priv);
         void (*unmap_dmabuf)(void *buf_priv);
@@ -42,9 +87,9 @@ Members
 
 alloc
     allocate video memory and, optionally, allocator private data,
-    return NULL on failure or a pointer to allocator private,
+    return \ :c:func:`ERR_PTR`\  on failure or a pointer to allocator private,
     per-buffer data on success; the returned private structure
-    will then be passed as buf_priv argument to other ops in this
+    will then be passed as \ ``buf_priv``\  argument to other ops in this
     structure. Additional gfp_flags to use when allocating the
     are also passed to this operation. These flags are from the
     gfp_flags field of vb2_queue.
@@ -52,7 +97,7 @@ alloc
 put
     inform the allocator that the buffer will no longer be used;
     usually will result in the allocator freeing the buffer (if
-    no other users of this buffer are present); the buf_priv
+    no other users of this buffer are present); the \ ``buf_priv``\ 
     argument is the allocator private per-buffer structure
     previously returned from the alloc callback.
 
@@ -65,8 +110,8 @@ get_userptr
     USERPTR memory types; vaddr is the address passed to the
     videobuf layer when queuing a video buffer of USERPTR type;
     should return an allocator private per-buffer structure
-    associated with the buffer on success, NULL on failure;
-    the returned private structure will then be passed as buf_priv
+    associated with the buffer on success, \ :c:func:`ERR_PTR`\  on failure;
+    the returned private structure will then be passed as \ ``buf_priv``\ 
     argument to other ops in this structure.
 
 put_userptr
@@ -83,14 +128,14 @@ finish
 
 attach_dmabuf
     attach a shared struct dma_buf for a hardware operation;
-    used for DMABUF memory types; alloc_ctx is the alloc context
-    dbuf is the shared dma_buf; returns NULL on failure;
+    used for DMABUF memory types; dev is the alloc device
+    dbuf is the shared dma_buf; returns \ :c:func:`ERR_PTR`\  on failure;
     allocator private per-buffer structure on success;
     this needs to be used for further accesses to the buffer.
 
 detach_dmabuf
     inform the exporter of the buffer that the current DMABUF
-    buffer is no longer used; the buf_priv argument is the
+    buffer is no longer used; the \ ``buf_priv``\  argument is the
     allocator private per-buffer structure previously returned
     from the attach_dmabuf callback.
 
@@ -122,28 +167,23 @@ mmap
     setup a userspace mapping for a given memory buffer under
     the provided virtual memory region.
 
-.. _`vb2_mem_ops.required-ops-for-userptr-types`:
+.. _`vb2_mem_ops.description`:
 
-Required ops for USERPTR types
-------------------------------
+Description
+-----------
 
-get_userptr, put_userptr.
+Those operations are used by the videobuf2 core to implement the memory
+handling/memory allocators for each type of supported streaming I/O method.
 
-.. _`vb2_mem_ops.required-ops-for-mmap-types`:
+.. note::
+   #) Required ops for USERPTR types: get_userptr, put_userptr.
 
-Required ops for MMAP types
----------------------------
+   #) Required ops for MMAP types: alloc, put, num_users, mmap.
 
-alloc, put, num_users, mmap.
-Required ops for read/write access types: alloc, put, num_users, vaddr.
+   #) Required ops for read/write access types: alloc, put, num_users, vaddr.
 
-.. _`vb2_mem_ops.required-ops-for-dmabuf-types`:
-
-Required ops for DMABUF types
------------------------------
-
-attach_dmabuf, detach_dmabuf, map_dmabuf,
-unmap_dmabuf.
+   #) Required ops for DMABUF types: attach_dmabuf, detach_dmabuf,
+      map_dmabuf, unmap_dmabuf.
 
 .. _`vb2_plane`:
 
@@ -197,7 +237,7 @@ min_length
     \ ``length``\  is always greater or equal to \ ``min_length``\ .
 
 m
-    Union with memtype-specific data (\ ``offset``\ , \ ``userptr``\  or
+    Union with memtype-specific data (@offset, \ ``userptr``\  or
     \ ``fd``\ ).
 
 data_offset
@@ -380,7 +420,7 @@ Definition
 .. code-block:: c
 
     struct vb2_ops {
-        int (*queue_setup)(struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes,unsigned int sizes[], void *alloc_ctxs[]);
+        int (*queue_setup)(struct vb2_queue *q,unsigned int *num_buffers, unsigned int *num_planes,unsigned int sizes[], struct device *alloc_devs[]);
         void (*wait_prepare)(struct vb2_queue *q);
         void (*wait_finish)(struct vb2_queue *q);
         int (*buf_init)(struct vb2_buffer *vb);
@@ -398,7 +438,7 @@ Members
 -------
 
 queue_setup
-    called from VIDIOC_REQBUFS and VIDIOC_CREATE_BUFS
+    called from \ :c:func:`VIDIOC_REQBUFS`\  and \ :c:func:`VIDIOC_CREATE_BUFS`\ 
     handlers before memory allocation. It can be called
     twice: if the original number of requested buffers
     could not be allocated, then it will be called a
@@ -407,17 +447,17 @@ queue_setup
     The driver should return the required number of buffers
     in \*num_buffers, the required number of planes per
     buffer in \*num_planes, the size of each plane should be
-    set in the sizes[] array and optional per-plane
-    allocator specific context in the alloc_ctxs[] array.
-    When called from VIDIOC_REQBUFS, \*num_planes == 0, the
-    driver has to use the currently configured format to
+    set in the sizes\[\] array and optional per-plane
+    allocator specific device in the alloc_devs\[\] array.
+    When called from VIDIOC_REQBUFS,() \*num_planes == 0,
+    the driver has to use the currently configured format to
     determine the plane sizes and \*num_buffers is the total
     number of buffers that are being allocated. When called
-    from VIDIOC_CREATE_BUFS, \*num_planes != 0 and it
-    describes the requested number of planes and sizes[]
+    from VIDIOC_CREATE_BUFS,() \*num_planes != 0 and it
+    describes the requested number of planes and sizes\[\]
     contains the requested plane sizes. If either
     \*num_planes or the requested sizes are invalid callback
-    must return -EINVAL. In this case \*num_buffers are
+    must return \ ``-EINVAL``\ . In this case \*num_buffers are
     being allocated additionally to q->num_buffers.
 
 wait_prepare
@@ -440,11 +480,11 @@ buf_init
 
 buf_prepare
     called every time the buffer is queued from userspace
-    and from the VIDIOC_PREPARE_BUF ioctl; drivers may
+    and from the \ :c:func:`VIDIOC_PREPARE_BUF`\  ioctl; drivers may
     perform any initialization required before each
     hardware operation in this callback; drivers can
     access/modify the buffer here as it is still synced for
-    the CPU; drivers that support VIDIOC_CREATE_BUFS must
+    the CPU; drivers that support \ :c:func:`VIDIOC_CREATE_BUFS`\  must
     also validate the buffer size; if an error is returned,
     the buffer will not be queued in driver; optional.
 
@@ -454,12 +494,12 @@ buf_finish
     can access/modify the buffer contents; drivers may
     perform any operations required before userspace
     accesses the buffer; optional. The buffer state can be
-    one of the following: DONE and ERROR occur while
-    streaming is in progress, and the PREPARED state occurs
+    one of the following: \ ``DONE``\  and \ ``ERROR``\  occur while
+    streaming is in progress, and the \ ``PREPARED``\  state occurs
     when the queue has been canceled and all pending
-    buffers are being returned to their default DEQUEUED
+    buffers are being returned to their default \ ``DEQUEUED``\ 
     state. Typically you only have to do something if the
-    state is VB2_BUF_STATE_DONE, since in all other cases
+    state is \ ``VB2_BUF_STATE_DONE``\ , since in all other cases
     the buffer contents will be ignored anyway.
 
 buf_cleanup
@@ -468,34 +508,35 @@ buf_cleanup
 
 start_streaming
     called once to enter 'streaming' state; the driver may
-    receive buffers with \ ``buf_queue``\  callback before
-    \ ``start_streaming``\  is called; the driver gets the number
-    of already queued buffers in count parameter; driver
-    can return an error if hardware fails, in that case all
-    buffers that have been already given by the \ ``buf_queue``\ 
-    callback are to be returned by the driver by calling
-    \ ``vb2_buffer_done``\ (VB2_BUF_STATE_QUEUED).
+    receive buffers with \ ``buf_queue``\  callback
+    before \ ``start_streaming``\  is called; the driver gets the
+    number of already queued buffers in count parameter;
+    driver can return an error if hardware fails, in that
+    case all buffers that have been already given by
+    the \ ``buf_queue``\  callback are to be returned by the driver
+    by calling \ :c:func:`vb2_buffer_done`\  with \ ``VB2_BUF_STATE_QUEUED``\ .
     If you need a minimum number of buffers before you can
     start streaming, then set \ ``min_buffers_needed``\  in the
     vb2_queue structure. If that is non-zero then
-    start_streaming won't be called until at least that
+    \ ``start_streaming``\  won't be called until at least that
     many buffers have been queued up by userspace.
 
 stop_streaming
     called when 'streaming' state must be disabled; driver
     should stop any DMA transactions or wait until they
-    finish and give back all buffers it got from \ :c:func:`buf_queue`\ 
-    callback by calling @\ :c:func:`vb2_buffer_done`\  with either
-    VB2_BUF_STATE_DONE or VB2_BUF_STATE_ERROR; may use
+    finish and give back all buffers it got from \ :c:type:`struct buf_queue <buf_queue>`\ 
+    callback by calling \ :c:func:`vb2_buffer_done`\  with either
+    \ ``VB2_BUF_STATE_DONE``\  or \ ``VB2_BUF_STATE_ERROR``\ ; may use
     \ :c:func:`vb2_wait_for_all_buffers`\  function
 
 buf_queue
     passes buffer vb to the driver; driver may start
     hardware operation on this buffer; driver should give
     the buffer back by calling \ :c:func:`vb2_buffer_done`\  function;
-    it is allways called after calling STREAMON ioctl;
-    might be called before start_streaming callback if user
-    pre-queued buffers before calling STREAMON.
+    it is allways called after calling \ :c:func:`VIDIOC_STREAMON`\ 
+    ioctl; might be called before \ ``start_streaming``\  callback
+    if user pre-queued buffers before calling
+    \ :c:func:`VIDIOC_STREAMON`\ .
 
 .. _`vb2_buf_ops`:
 
@@ -543,6 +584,577 @@ copy_timestamp
     copy the timestamp from a userspace structure to
     the vb2_buffer struct.
 
+.. _`vb2_plane_vaddr`:
+
+vb2_plane_vaddr
+===============
+
+.. c:function:: void *vb2_plane_vaddr(struct vb2_buffer *vb, unsigned int plane_no)
+
+    Return a kernel virtual address of a given plane
+
+    :param struct vb2_buffer \*vb:
+        vb2_buffer to which the plane in question belongs to
+
+    :param unsigned int plane_no:
+        plane number for which the address is to be returned
+
+.. _`vb2_plane_vaddr.description`:
+
+Description
+-----------
+
+This function returns a kernel virtual address of a given plane if
+such a mapping exist, NULL otherwise.
+
+.. _`vb2_plane_cookie`:
+
+vb2_plane_cookie
+================
+
+.. c:function:: void *vb2_plane_cookie(struct vb2_buffer *vb, unsigned int plane_no)
+
+    Return allocator specific cookie for the given plane
+
+    :param struct vb2_buffer \*vb:
+        vb2_buffer to which the plane in question belongs to
+
+    :param unsigned int plane_no:
+        plane number for which the cookie is to be returned
+
+.. _`vb2_plane_cookie.description`:
+
+Description
+-----------
+
+This function returns an allocator specific cookie for a given plane if
+available, NULL otherwise. The allocator should provide some simple static
+inline function, which would convert this cookie to the allocator specific
+type that can be used directly by the driver to access the buffer. This can
+be for example physical address, pointer to scatter list or IOMMU mapping.
+
+.. _`vb2_buffer_done`:
+
+vb2_buffer_done
+===============
+
+.. c:function:: void vb2_buffer_done(struct vb2_buffer *vb, enum vb2_buffer_state state)
+
+    inform videobuf that an operation on a buffer is finished
+
+    :param struct vb2_buffer \*vb:
+        vb2_buffer returned from the driver
+
+    :param enum vb2_buffer_state state:
+        either \ ``VB2_BUF_STATE_DONE``\  if the operation finished
+        successfully, \ ``VB2_BUF_STATE_ERROR``\  if the operation finished
+        with an error or \ ``VB2_BUF_STATE_QUEUED``\  if the driver wants to
+        requeue buffers. If start_streaming fails then it should return
+        buffers with state \ ``VB2_BUF_STATE_QUEUED``\  to put them back into
+        the queue.
+
+.. _`vb2_buffer_done.description`:
+
+Description
+-----------
+
+This function should be called by the driver after a hardware operation on
+a buffer is finished and the buffer may be returned to userspace. The driver
+cannot use this buffer anymore until it is queued back to it by videobuf
+by the means of \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  callback. Only buffers previously queued
+to the driver by \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  can be passed to this function.
+
+While streaming a buffer can only be returned in state DONE or ERROR.
+The start_streaming op can also return them in case the DMA engine cannot
+be started for some reason. In that case the buffers should be returned with
+state QUEUED.
+
+.. _`vb2_discard_done`:
+
+vb2_discard_done
+================
+
+.. c:function:: void vb2_discard_done(struct vb2_queue *q)
+
+    discard all buffers marked as DONE
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+.. _`vb2_discard_done.description`:
+
+Description
+-----------
+
+This function is intended to be used with suspend/resume operations. It
+discards all 'done' buffers as they would be too old to be requested after
+resume.
+
+Drivers must stop the hardware and synchronize with interrupt handlers and/or
+delayed works before calling this function to make sure no buffer will be
+touched by the driver and/or hardware.
+
+.. _`vb2_wait_for_all_buffers`:
+
+vb2_wait_for_all_buffers
+========================
+
+.. c:function:: int vb2_wait_for_all_buffers(struct vb2_queue *q)
+
+    wait until all buffers are given back to vb2
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+.. _`vb2_wait_for_all_buffers.description`:
+
+Description
+-----------
+
+This function will wait until all buffers that have been given to the driver
+by \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  are given back to vb2 with \ :c:func:`vb2_buffer_done`\ . It
+doesn't call \ :c:func:`wait_prepare`\ /wait_finish() pair. It is intended to be called
+with all locks taken, for example from \ :c:type:`vb2_ops->stop_streaming <vb2_ops>`\  callback.
+
+.. _`vb2_core_querybuf`:
+
+vb2_core_querybuf
+=================
+
+.. c:function:: void vb2_core_querybuf(struct vb2_queue *q, unsigned int index, void *pb)
+
+    query video buffer information
+
+    :param struct vb2_queue \*q:
+        videobuf queue
+
+    :param unsigned int index:
+        id number of the buffer
+
+    :param void \*pb:
+        buffer struct passed from userspace
+
+.. _`vb2_core_querybuf.description`:
+
+Description
+-----------
+
+Should be called from vidioc_querybuf ioctl handler in driver.
+The passed buffer should have been verified.
+This function fills the relevant information for the userspace.
+
+.. _`vb2_core_reqbufs`:
+
+vb2_core_reqbufs
+================
+
+.. c:function:: int vb2_core_reqbufs(struct vb2_queue *q, enum vb2_memory memory, unsigned int *count)
+
+    Initiate streaming
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param enum vb2_memory memory:
+        memory type
+
+    :param unsigned int \*count:
+        requested buffer count
+
+.. _`vb2_core_reqbufs.description`:
+
+Description
+-----------
+
+Should be called from vidioc_reqbufs ioctl handler of a driver.
+
+.. _`vb2_core_reqbufs.this-function`:
+
+This function
+-------------
+
+
+#) verifies streaming parameters passed from the userspace,
+#) sets up the queue,
+#) negotiates number of buffers and planes per buffer with the driver
+   to be used during streaming,
+#) allocates internal buffer structures (struct vb2_buffer), according to
+   the agreed parameters,
+#) for MMAP memory type, allocates actual video memory, using the
+   memory handling/allocation routines provided during queue initialization
+
+If req->count is 0, all the memory will be freed instead.
+If the queue has been allocated previously (by a previous vb2_reqbufs) call
+and the queue is not busy, memory will be reallocated.
+
+The return values from this function are intended to be directly returned
+from vidioc_reqbufs handler in driver.
+
+.. _`vb2_core_create_bufs`:
+
+vb2_core_create_bufs
+====================
+
+.. c:function:: int vb2_core_create_bufs(struct vb2_queue *q, enum vb2_memory memory, unsigned int *count, unsigned int requested_planes, const unsigned int requested_sizes[])
+
+    Allocate buffers and any required auxiliary structs
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param enum vb2_memory memory:
+        memory type
+
+    :param unsigned int \*count:
+        requested buffer count
+
+    :param unsigned int requested_planes:
+        number of planes requested
+
+    :param const unsigned int requested_sizes:
+        array with the size of the planes
+
+.. _`vb2_core_create_bufs.description`:
+
+Description
+-----------
+
+Should be called from \ :c:func:`VIDIOC_CREATE_BUFS`\  ioctl handler of a driver.
+
+.. _`vb2_core_create_bufs.this-function`:
+
+This function
+-------------
+
+
+#) verifies parameter sanity
+#) calls the .queue_setup() queue operation
+#) performs any necessary memory allocations
+
+.. _`vb2_core_create_bufs.return`:
+
+Return
+------
+
+the return values from this function are intended to be directly
+returned from \ :c:func:`VIDIOC_CREATE_BUFS`\  handler in driver.
+
+.. _`vb2_core_prepare_buf`:
+
+vb2_core_prepare_buf
+====================
+
+.. c:function:: int vb2_core_prepare_buf(struct vb2_queue *q, unsigned int index, void *pb)
+
+    Pass ownership of a buffer from userspace to the kernel
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param unsigned int index:
+        id number of the buffer
+
+    :param void \*pb:
+        buffer structure passed from userspace to vidioc_prepare_buf
+        handler in driver
+
+.. _`vb2_core_prepare_buf.description`:
+
+Description
+-----------
+
+Should be called from vidioc_prepare_buf ioctl handler of a driver.
+The passed buffer should have been verified.
+This function calls buf_prepare callback in the driver (if provided),
+in which driver-specific buffer initialization can be performed,
+
+The return values from this function are intended to be directly returned
+from vidioc_prepare_buf handler in driver.
+
+.. _`vb2_core_qbuf`:
+
+vb2_core_qbuf
+=============
+
+.. c:function:: int vb2_core_qbuf(struct vb2_queue *q, unsigned int index, void *pb)
+
+    Queue a buffer from userspace
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param unsigned int index:
+        id number of the buffer
+
+    :param void \*pb:
+        buffer structure passed from userspace to vidioc_qbuf handler
+        in driver
+
+.. _`vb2_core_qbuf.description`:
+
+Description
+-----------
+
+Should be called from vidioc_qbuf ioctl handler of a driver.
+The passed buffer should have been verified.
+
+.. _`vb2_core_qbuf.this-function`:
+
+This function
+-------------
+
+
+#) if necessary, calls buf_prepare callback in the driver (if provided), in
+   which driver-specific buffer initialization can be performed,
+#) if streaming is on, queues the buffer in driver by the means of
+   \ :c:type:`vb2_ops->buf_queue <vb2_ops>`\  callback for processing.
+
+The return values from this function are intended to be directly returned
+from vidioc_qbuf handler in driver.
+
+.. _`vb2_core_dqbuf`:
+
+vb2_core_dqbuf
+==============
+
+.. c:function:: int vb2_core_dqbuf(struct vb2_queue *q, unsigned int *pindex, void *pb, bool nonblocking)
+
+    Dequeue a buffer to the userspace
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param unsigned int \*pindex:
+        pointer to the buffer index. May be NULL
+
+    :param void \*pb:
+        buffer structure passed from userspace to vidioc_dqbuf handler
+        in driver
+
+    :param bool nonblocking:
+        if true, this call will not sleep waiting for a buffer if no
+        buffers ready for dequeuing are present. Normally the driver
+        would be passing (file->f_flags & O_NONBLOCK) here
+
+.. _`vb2_core_dqbuf.description`:
+
+Description
+-----------
+
+Should be called from vidioc_dqbuf ioctl handler of a driver.
+The passed buffer should have been verified.
+
+.. _`vb2_core_dqbuf.this-function`:
+
+This function
+-------------
+
+
+#) calls buf_finish callback in the driver (if provided), in which
+   driver can perform any additional operations that may be required before
+   returning the buffer to userspace, such as cache sync,
+#) the buffer struct members are filled with relevant information for
+   the userspace.
+
+The return values from this function are intended to be directly returned
+from vidioc_dqbuf handler in driver.
+
+.. _`vb2_core_expbuf`:
+
+vb2_core_expbuf
+===============
+
+.. c:function:: int vb2_core_expbuf(struct vb2_queue *q, int *fd, unsigned int type, unsigned int index, unsigned int plane, unsigned int flags)
+
+    Export a buffer as a file descriptor
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param int \*fd:
+        file descriptor associated with DMABUF (set by driver) *
+
+    :param unsigned int type:
+        buffer type
+
+    :param unsigned int index:
+        id number of the buffer
+
+    :param unsigned int plane:
+        index of the plane to be exported, 0 for single plane queues
+
+    :param unsigned int flags:
+        flags for newly created file, currently only O_CLOEXEC is
+        supported, refer to manual of open syscall for more details
+
+.. _`vb2_core_expbuf.description`:
+
+Description
+-----------
+
+The return values from this function are intended to be directly returned
+from vidioc_expbuf handler in driver.
+
+.. _`vb2_core_queue_init`:
+
+vb2_core_queue_init
+===================
+
+.. c:function:: int vb2_core_queue_init(struct vb2_queue *q)
+
+    initialize a videobuf2 queue
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue; this structure should be allocated in driver
+
+.. _`vb2_core_queue_init.description`:
+
+Description
+-----------
+
+The vb2_queue structure should be allocated by the driver. The driver is
+responsible of clearing it's content and setting initial values for some
+required entries before calling this function.
+q->ops, q->mem_ops, q->type and q->io_modes are mandatory. Please refer
+to the struct vb2_queue description in include/media/videobuf2-core.h
+for more information.
+
+.. _`vb2_core_queue_release`:
+
+vb2_core_queue_release
+======================
+
+.. c:function:: void vb2_core_queue_release(struct vb2_queue *q)
+
+    stop streaming, release the queue and free memory
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+.. _`vb2_core_queue_release.description`:
+
+Description
+-----------
+
+This function stops streaming and performs necessary clean ups, including
+freeing video buffer memory. The driver is responsible for freeing
+the vb2_queue structure itself.
+
+.. _`vb2_queue_error`:
+
+vb2_queue_error
+===============
+
+.. c:function:: void vb2_queue_error(struct vb2_queue *q)
+
+    signal a fatal error on the queue
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+.. _`vb2_queue_error.description`:
+
+Description
+-----------
+
+Flag that a fatal unrecoverable error has occurred and wake up all processes
+waiting on the queue. Polling will now set POLLERR and queuing and dequeuing
+buffers will return -EIO.
+
+The error flag will be cleared when cancelling the queue, either from
+vb2_streamoff or vb2_queue_release. Drivers should thus not call this
+function before starting the stream, otherwise the error flag will remain set
+until the queue is released when closing the device node.
+
+.. _`vb2_mmap`:
+
+vb2_mmap
+========
+
+.. c:function:: int vb2_mmap(struct vb2_queue *q, struct vm_area_struct *vma)
+
+    map video buffers into application address space
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param struct vm_area_struct \*vma:
+        vma passed to the mmap file operation handler in the driver
+
+.. _`vb2_mmap.description`:
+
+Description
+-----------
+
+Should be called from mmap file operation handler of a driver.
+This function maps one plane of one of the available video buffers to
+userspace. To map whole video memory allocated on reqbufs, this function
+has to be called once per each plane per each buffer previously allocated.
+
+When the userspace application calls mmap, it passes to it an offset returned
+to it earlier by the means of vidioc_querybuf handler. That offset acts as
+a "cookie", which is then used to identify the plane to be mapped.
+This function finds a plane with a matching offset and a mapping is performed
+by the means of a provided memory operation.
+
+The return values from this function are intended to be directly returned
+from the mmap handler in driver.
+
+.. _`vb2_core_poll`:
+
+vb2_core_poll
+=============
+
+.. c:function:: unsigned int vb2_core_poll(struct vb2_queue *q, struct file *file, poll_table *wait)
+
+    implements poll userspace operation
+
+    :param struct vb2_queue \*q:
+        videobuf2 queue
+
+    :param struct file \*file:
+        file argument passed to the poll file operation handler
+
+    :param poll_table \*wait:
+        wait argument passed to the poll file operation handler
+
+.. _`vb2_core_poll.description`:
+
+Description
+-----------
+
+This function implements poll file operation handler for a driver.
+For CAPTURE queues, if a buffer is ready to be dequeued, the userspace will
+be informed that the file descriptor of a video device is available for
+reading.
+For OUTPUT queues, if a buffer is ready to be dequeued, the file descriptor
+will be reported as available for writing.
+
+The return values from this function are intended to be directly returned
+from poll handler in driver.
+
+.. _`vb2_thread_fnc`:
+
+vb2_thread_fnc
+==============
+
+.. c:function:: int vb2_thread_fnc(struct vb2_buffer *vb, void *priv)
+
+    callback function for use with vb2_thread
+
+    :param struct vb2_buffer \*vb:
+        pointer to struct \ :c:type:`struct vb2_buffer <vb2_buffer>`\ 
+
+    :param void \*priv:
+        pointer to a private pointer
+
+.. _`vb2_thread_fnc.description`:
+
+Description
+-----------
+
+This is called whenever a buffer is dequeued in the thread.
+
 .. _`vb2_thread_start`:
 
 vb2_thread_start
@@ -572,9 +1184,11 @@ Description
 This starts a thread that will queue and dequeue until an error occurs
 or \ ``vb2_thread_stop``\  is called.
 
-This function should not be used for anything else but the videobuf2-dvb
-support. If you think you have another good use-case for this, then please
-contact the linux-media mailinglist first.
+.. attention::
+
+  This function should not be used for anything else but the videobuf2-dvb
+  support. If you think you have another good use-case for this, then please
+  contact the linux-media mailing list first.
 
 .. _`vb2_thread_stop`:
 
@@ -727,6 +1341,41 @@ vb2_clear_last_buffer_dequeued
 
     :param struct vb2_queue \*q:
         videobuf queue
+
+.. _`vb2_buffer_in_use`:
+
+vb2_buffer_in_use
+=================
+
+.. c:function:: bool vb2_buffer_in_use(struct vb2_queue *q, struct vb2_buffer *vb)
+
+    return true if the buffer is in use and the queue cannot be freed (by the means of REQBUFS(0)) call
+
+    :param struct vb2_queue \*q:
+        videobuf queue
+
+    :param struct vb2_buffer \*vb:
+        buffer for which plane size should be returned
+
+.. _`vb2_verify_memory_type`:
+
+vb2_verify_memory_type
+======================
+
+.. c:function:: int vb2_verify_memory_type(struct vb2_queue *q, enum vb2_memory memory, unsigned int type)
+
+    Check whether the memory type and buffer type passed to a buffer operation are compatible with the queue.
+
+    :param struct vb2_queue \*q:
+        videobuf queue
+
+    :param enum vb2_memory memory:
+        memory model, as defined by enum \ :c:type:`struct vb2_memory <vb2_memory>`\ .
+
+    :param unsigned int type:
+        private buffer type whose content is defined by the vb2-core
+        caller. For example, for V4L2, it should match
+        the types defined on enum \ :c:type:`struct v4l2_buf_type <v4l2_buf_type>`\ 
 
 .. This file was automatic generated / don't edit.
 

@@ -8,6 +8,7 @@ firmware
     :maxdepth: 1
 
     efi/index
+    meson/index
     dcdbas_c
     dmi_scan_c
     edd_c

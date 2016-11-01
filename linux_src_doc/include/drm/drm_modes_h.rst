@@ -273,33 +273,33 @@ name
 status
 
     Status of the mode, used to filter out modes not supported by the
-    hardware. See enum \ :c:type:`struct drm_mode_status <drm_mode_status>`.
+    hardware. See enum \ :c:type:`struct drm_mode_status <drm_mode_status>`\ .
 
 type
 
     A bitmask of flags, mostly about the source of a mode. Possible flags
     are:
 
-    - DRM_MODE_TYPE_BUILTIN: Meant for hard-coded modes, effectively
-    unused.
-    - DRM_MODE_TYPE_PREFERRED: Preferred mode, usually the native
-    resolution of an LCD panel. There should only be one preferred
-    mode per connector at any given time.
-    - DRM_MODE_TYPE_DRIVER: Mode created by the driver, which is all of
-    them really. Drivers must set this bit for all modes they create
-    and expose to userspace.
+     - DRM_MODE_TYPE_BUILTIN: Meant for hard-coded modes, effectively
+       unused.
+     - DRM_MODE_TYPE_PREFERRED: Preferred mode, usually the native
+       resolution of an LCD panel. There should only be one preferred
+       mode per connector at any given time.
+     - DRM_MODE_TYPE_DRIVER: Mode created by the driver, which is all of
+       them really. Drivers must set this bit for all modes they create
+       and expose to userspace.
 
     Plus a big list of flags which shouldn't be used at all, but are
     still around since these flags are also used in the userspace ABI:
 
-    - DRM_MODE_TYPE_DEFAULT: Again a leftover, use
-    DRM_MODE_TYPE_PREFERRED instead.
-    - DRM_MODE_TYPE_CLOCK_C and DRM_MODE_TYPE_CRTC_C: Define leftovers
-    which are stuck around for hysterical raisins only. No one has an
-    idea what they were meant for. Don't use.
-    - DRM_MODE_TYPE_USERDEF: Mode defined by userspace, again a vestige
-    from older kms designs where userspace had to first add a custom
-    mode to the kernel's mode list before it could use it. Don't use.
+     - DRM_MODE_TYPE_DEFAULT: Again a leftover, use
+       DRM_MODE_TYPE_PREFERRED instead.
+     - DRM_MODE_TYPE_CLOCK_C and DRM_MODE_TYPE_CRTC_C: Define leftovers
+       which are stuck around for hysterical raisins only. No one has an
+       idea what they were meant for. Don't use.
+     - DRM_MODE_TYPE_USERDEF: Mode defined by userspace, again a vestige
+       from older kms designs where userspace had to first add a custom
+       mode to the kernel's mode list before it could use it. Don't use.
 
 clock
 
@@ -339,34 +339,34 @@ flags
 
     Sync and timing flags:
 
-    - DRM_MODE_FLAG_PHSYNC: horizontal sync is active high.
-    - DRM_MODE_FLAG_NHSYNC: horizontal sync is active low.
-    - DRM_MODE_FLAG_PVSYNC: vertical sync is active high.
-    - DRM_MODE_FLAG_NVSYNC: vertical sync is active low.
-    - DRM_MODE_FLAG_INTERLACE: mode is interlaced.
-    - DRM_MODE_FLAG_DBLSCAN: mode uses doublescan.
-    - DRM_MODE_FLAG_CSYNC: mode uses composite sync.
-    - DRM_MODE_FLAG_PCSYNC: composite sync is active high.
-    - DRM_MODE_FLAG_NCSYNC: composite sync is active low.
-    - DRM_MODE_FLAG_HSKEW: hskew provided (not used?).
-    - DRM_MODE_FLAG_BCAST: not used?
-    - DRM_MODE_FLAG_PIXMUX: not used?
-    - DRM_MODE_FLAG_DBLCLK: double-clocked mode.
-    - DRM_MODE_FLAG_CLKDIV2: half-clocked mode.
+     - DRM_MODE_FLAG_PHSYNC: horizontal sync is active high.
+     - DRM_MODE_FLAG_NHSYNC: horizontal sync is active low.
+     - DRM_MODE_FLAG_PVSYNC: vertical sync is active high.
+     - DRM_MODE_FLAG_NVSYNC: vertical sync is active low.
+     - DRM_MODE_FLAG_INTERLACE: mode is interlaced.
+     - DRM_MODE_FLAG_DBLSCAN: mode uses doublescan.
+     - DRM_MODE_FLAG_CSYNC: mode uses composite sync.
+     - DRM_MODE_FLAG_PCSYNC: composite sync is active high.
+     - DRM_MODE_FLAG_NCSYNC: composite sync is active low.
+     - DRM_MODE_FLAG_HSKEW: hskew provided (not used?).
+     - DRM_MODE_FLAG_BCAST: not used?
+     - DRM_MODE_FLAG_PIXMUX: not used?
+     - DRM_MODE_FLAG_DBLCLK: double-clocked mode.
+     - DRM_MODE_FLAG_CLKDIV2: half-clocked mode.
 
     Additionally there's flags to specify how 3D modes are packed:
 
-    - DRM_MODE_FLAG_3D_NONE: normal, non-3D mode.
-    - DRM_MODE_FLAG_3D_FRAME_PACKING: 2 full frames for left and right.
-    - DRM_MODE_FLAG_3D_FIELD_ALTERNATIVE: interleaved like fields.
-    - DRM_MODE_FLAG_3D_LINE_ALTERNATIVE: interleaved lines.
-    - DRM_MODE_FLAG_3D_SIDE_BY_SIDE_FULL: side-by-side full frames.
-    - DRM_MODE_FLAG_3D_L_DEPTH: ?
-    - DRM_MODE_FLAG_3D_L_DEPTH_GFX_GFX_DEPTH: ?
-    - DRM_MODE_FLAG_3D_TOP_AND_BOTTOM: frame split into top and bottom
-    parts.
-    - DRM_MODE_FLAG_3D_SIDE_BY_SIDE_HALF: frame split into left and
-    right parts.
+     - DRM_MODE_FLAG_3D_NONE: normal, non-3D mode.
+     - DRM_MODE_FLAG_3D_FRAME_PACKING: 2 full frames for left and right.
+     - DRM_MODE_FLAG_3D_FIELD_ALTERNATIVE: interleaved like fields.
+     - DRM_MODE_FLAG_3D_LINE_ALTERNATIVE: interleaved lines.
+     - DRM_MODE_FLAG_3D_SIDE_BY_SIDE_FULL: side-by-side full frames.
+     - DRM_MODE_FLAG_3D_L_DEPTH: ?
+     - DRM_MODE_FLAG_3D_L_DEPTH_GFX_GFX_DEPTH: ?
+     - DRM_MODE_FLAG_3D_TOP_AND_BOTTOM: frame split into top and bottom
+       parts.
+     - DRM_MODE_FLAG_3D_SIDE_BY_SIDE_HALF: frame split into left and
+       right parts.
 
 width_mm
 
@@ -467,18 +467,20 @@ Description
 
 The horizontal and vertical timings are defined per the following diagram.
 
+::
 
-Active                 Front           Sync           Back
-Region                 Porch                          Porch
-<-----------------------><----------------><-------------><-------------->
-//////////////////////\|
-////////////////////// \|
-//////////////////////  \|..................               ................
-\______________\_
-<----- [hv]display ----->
-<------------- [hv]sync_start ------------>
-<--------------------- [hv]sync_end --------------------->
-<-------------------------------- [hv]total ----------------------------->\*
+
+              Active                 Front           Sync           Back
+             Region                 Porch                          Porch
+    <-----------------------><----------------><-------------><-------------->
+      //////////////////////|
+     ////////////////////// |
+    //////////////////////  |..................               ................
+                                               _______________
+    <----- [hv]display ----->
+    <------------- [hv]sync_start ------------>
+    <--------------------- [hv]sync_end --------------------->
+    <-------------------------------- [hv]total ----------------------------->*
 
 This structure contains two copies of timings. First are the plain timings,
 which specify the logical mode, as it would be for a progressive 1:1 scanout

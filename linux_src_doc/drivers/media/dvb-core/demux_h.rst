@@ -8,7 +8,7 @@ enum ts_filter_type
 
 .. c:type:: enum ts_filter_type
 
-    filter type bitmap for dmx_ts_feed.\ :c:func:`set`\ 
+    filter type bitmap for dmx_ts_feed.set(\)
 
 .. _`ts_filter_type.definition`:
 
@@ -63,7 +63,7 @@ Definition
         int is_filtering;
         struct dmx_demux *parent;
         void *priv;
-        int (*set)(struct dmx_ts_feed *feed,u16 pid,int type,enum dmx_ts_pes pes_type,size_t circular_buffer_size,struct timespec timeout);
+        int (*set)(struct dmx_ts_feed *feed,u16 pid,int type,enum dmx_ts_pes pes_type,size_t circular_buffer_size,ktime_t timeout);
         int (*start_filtering)(struct dmx_ts_feed *feed);
         int (*stop_filtering)(struct dmx_ts_feed *feed);
     }
@@ -266,12 +266,12 @@ Description
 
 This function callback prototype, provided by the client of the demux API,
 is called from the demux code. The function is only called when filtering
-on ae TS feed has been enabled using the \ :c:func:`start_filtering`\  function at
-the \ :c:type:`struct dmx_demux <dmx_demux>`.
+on a TS feed has been enabled using the start_filtering(\) function at
+the \ :c:type:`struct dmx_demux <dmx_demux>`\ .
 Any TS packets that match the filter settings are copied to a circular
 buffer. The filtered TS packets are delivered to the client using this
 callback function. The size of the circular buffer is controlled by the
-circular_buffer_size parameter of the \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set``\  function.
+circular_buffer_size parameter of the \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\ .@set function.
 It is expected that the \ ``buffer1``\  and \ ``buffer2``\  callback parameters point to
 addresses within the circular buffer, but other implementations are also
 possible. Note that the called party should not try to free the memory
@@ -301,8 +301,8 @@ the demux driver should discard any TS packets received while the buffer
 is full and return -EOVERFLOW.
 
 The type of data returned to the callback can be selected by the
-\ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set``\  function. The type parameter decides if the raw
-TS packet (TS_PACKET) or just the payload (TS_PACKET\|TS_PAYLOAD_ONLY)
+\ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\ .@set function. The type parameter decides if the raw
+TS packet (TS_PACKET) or just the payload (TS_PACKET|TS_PAYLOAD_ONLY)
 should be returned. If additionally the TS_DECODER bit is set the stream
 will also be sent to the hardware MPEG decoder.
 
@@ -311,8 +311,10 @@ will also be sent to the hardware MPEG decoder.
 Return
 ------
 
-0, on success;
--EOVERFLOW, on buffer overflow.
+
+- 0, on success;
+
+- -EOVERFLOW, on buffer overflow.
 
 .. _`dmx_section_cb`:
 
@@ -352,7 +354,7 @@ Description
 This function callback prototype, provided by the client of the demux API,
 is called from the demux code. The function is only called when
 filtering of sections has been enabled using the function
-\ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``start_filtering``\ . When the demux driver has received a
+\ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\ .@start_filtering. When the demux driver has received a
 complete section that matches at least one section filter, the client
 is notified via this callback function. Normally this function is called
 for each received section; however, it is also possible to deliver
@@ -364,7 +366,7 @@ implementation should maintain a circular buffer for received sections.
 However, this is not necessary if the Section Feed API is implemented as
 a client of the TS Feed API, because the TS Feed implementation then
 buffers the received data. The size of the circular buffer can be
-configured using the \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`.\ ``set``\  function in the Section Feed API.
+configured using the \ :c:type:`struct dmx_ts_feed <dmx_ts_feed>`\ .@set function in the Section Feed API.
 If there is no room in the circular buffer when a new section is received,
 the section must be discarded. If this happens, the value of the success
 parameter should be DMX_OVERRUN_ERROR on the next callback.
@@ -437,13 +439,13 @@ connectivity_list
 source
     Type of the frontend.
 
-.. _`dmx_frontend.fixme`:
+.. _`dmx_frontend.description`:
 
-FIXME
------
+Description
+-----------
 
-this structure should likely be replaced soon by some
-media-controller based logic.
+FIXME: this structure should likely be replaced soon by some
+     media-controller based logic.
 
 .. _`dmx_demux_caps`:
 
@@ -486,7 +488,19 @@ DMX_MEMORY_BASED_FILTERING
 Description
 -----------
 
-Those flags are OR'ed in the \ :c:type:`struct dmx_demux <dmx_demux>`.\ :c:type:`struct capabilities <capabilities>` field
+Those flags are OR'ed in the \ :c:type:`dmx_demux.capabilities <dmx_demux>`\  field
+
+.. _`dmx_fe_entry`:
+
+DMX_FE_ENTRY
+============
+
+.. c:function::  DMX_FE_ENTRY( list)
+
+    Casts elements in the list of registered front-ends from the generic type struct list_head to the type * struct dmx_frontend
+
+    :param  list:
+        list of struct dmx_frontend
 
 .. _`dmx_demux`:
 
@@ -546,7 +560,9 @@ open
     \ ``open``\  is called and decrement it when \ ``close``\  is called.
     The \ ``demux``\  function parameter contains a pointer to the demux API and
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EUSERS, if maximum usage count was reached;
     -EINVAL, on bad parameter.
@@ -560,7 +576,9 @@ close
     \ ``open``\  is called and decrement it when \ ``close``\  is called.
     The \ ``demux``\  function parameter contains a pointer to the demux API and
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -ENODEV, if demux was not in use (e. g. no users);
     -EINVAL, on bad parameter.
@@ -579,7 +597,9 @@ write
     The \ ``buf``\  function parameter contains a pointer to the TS data in
     kernel-space memory.
     The \ ``count``\  function parameter contains the length of the TS data.
-    It returns
+
+    It returns:
+
     0 on success;
     -ERESTARTSYS, if mutex lock was interrupted;
     -EINTR, if a signal handling is pending;
@@ -596,7 +616,9 @@ allocate_ts_feed
     instance data.
     The \ ``callback``\  function parameter contains a pointer to the callback
     function for passing received TS packet.
-    It returns
+
+    It returns:
+
     0 on success;
     -ERESTARTSYS, if mutex lock was interrupted;
     -EBUSY, if no more TS feeds is available;
@@ -610,7 +632,9 @@ release_ts_feed
     instance data.
     The \ ``feed``\  function parameter contains a pointer to the TS feed API and
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL on bad parameter.
 
@@ -629,7 +653,9 @@ allocate_section_feed
     instance data.
     The \ ``callback``\  function parameter contains a pointer to the callback
     function for passing received TS packet.
-    It returns
+
+    It returns:
+
     0 on success;
     -EBUSY, if no more TS feeds is available;
     -EINVAL, on bad parameter.
@@ -643,7 +669,9 @@ release_section_feed
     instance data.
     The \ ``feed``\  function parameter contains a pointer to the TS feed API and
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL, on bad parameter.
 
@@ -660,7 +688,9 @@ add_frontend
     instance data.
     The \ ``frontend``\  function parameter contains a pointer to the front-end
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL, on bad parameter.
 
@@ -677,7 +707,9 @@ remove_frontend
     instance data.
     The \ ``frontend``\  function parameter contains a pointer to the front-end
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -ENODEV, if the front-end was not found,
     -EINVAL, on bad parameter.
@@ -687,8 +719,8 @@ get_frontends
     registered for this demux. Any of the front-ends obtained with this
     call can be used as a parameter for \ ``connect_frontend``\ . The include
     file demux.h contains the macro \ :c:func:`DMX_FE_ENTRY`\  for converting an
-    element of the generic type struct \ :c:type:`struct list_head <list_head>` \* to the type
-    struct \ :c:type:`struct dmx_frontend <dmx_frontend>` \*. The caller must not free the memory of any of
+    element of the generic type struct \ :c:type:`struct list_head <list_head>`\  * to the type
+    struct \ :c:type:`struct dmx_frontend <dmx_frontend>`\  *. The caller must not free the memory of any of
     the elements obtained via this function call.
     The \ ``demux``\  function parameter contains a pointer to the demux API and
     instance data.
@@ -706,7 +738,9 @@ connect_frontend
     instance data.
     The \ ``frontend``\  function parameter contains a pointer to the front-end
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL, on bad parameter.
 
@@ -715,7 +749,9 @@ disconnect_frontend
     connected by a \ ``connect_frontend``\  call.
     The \ ``demux``\  function parameter contains a pointer to the demux API and
     instance data.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL on bad parameter.
 
@@ -726,7 +762,9 @@ get_pes_pids
     instance data.
     The \ ``pids``\  function parameter contains an array with five u16 elements
     where the PIDs will be stored.
-    It returns
+
+    It returns:
+
     0 on success;
     -EINVAL on bad parameter.
 

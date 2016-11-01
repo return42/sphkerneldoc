@@ -6,7 +6,7 @@
 nilfs_btree_node_broken
 =======================
 
-.. c:function:: int nilfs_btree_node_broken(const struct nilfs_btree_node *node, size_t size, sector_t blocknr)
+.. c:function:: int nilfs_btree_node_broken(const struct nilfs_btree_node *node, size_t size, struct inode *inode, sector_t blocknr)
 
     verify consistency of btree node
 
@@ -15,6 +15,9 @@ nilfs_btree_node_broken
 
     :param size_t size:
         node size (in bytes)
+
+    :param struct inode \*inode:
+        host inode of btree
 
     :param sector_t blocknr:
         block number
@@ -31,15 +34,15 @@ If node is broken, 1 is returned. Otherwise, 0 is returned.
 nilfs_btree_root_broken
 =======================
 
-.. c:function:: int nilfs_btree_root_broken(const struct nilfs_btree_node *node, unsigned long ino)
+.. c:function:: int nilfs_btree_root_broken(const struct nilfs_btree_node *node, struct inode *inode)
 
     verify consistency of btree root node
 
     :param const struct nilfs_btree_node \*node:
         btree root node to be examined
 
-    :param unsigned long ino:
-        inode number
+    :param struct inode \*inode:
+        host inode of btree
 
 .. _`nilfs_btree_root_broken.return-value`:
 

@@ -326,8 +326,8 @@ This is a default implementation of a mask function which makes use of the
 HWMASKEXT registers available in newer versions.
 
 Earlier versions without these registers should use SoC level IRQ masking
-which call the meta_intc\_\*\\ :c:func:`_simple`\  functions above, or if that isn't
-available should use the fallback meta_intc\_\*\\ :c:func:`_nomask`\  functions below.
+which call the meta_intc\_\*\_simple() functions above, or if that isn't
+available should use the fallback meta_intc\_\*\_nomask() functions below.
 
 .. _`meta_intc_unmask_irq`:
 

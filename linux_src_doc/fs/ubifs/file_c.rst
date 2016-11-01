@@ -48,7 +48,7 @@ allocate_budget
 
 .. c:function:: int allocate_budget(struct ubifs_info *c, struct page *page, struct ubifs_inode *ui, int appending)
 
-    allocate budget for '\ :c:func:`ubifs_write_begin`\ '.
+    allocate budget for 'ubifs_write_begin()'.
 
     :param struct ubifs_info \*c:
         UBIFS file-system description object
@@ -67,7 +67,7 @@ allocate_budget
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_write_begin`\ ' which allocates budget
+This is a helper function for 'ubifs_write_begin()' which allocates budget
 for the operation. The budget is allocated differently depending on whether
 this is appending, whether the page is dirty or not, and so on. This
 function leaves the \ ``ui``\ ->ui_mutex locked in case of appending. Returns zero
@@ -215,7 +215,7 @@ do_truncation
 Description
 -----------
 
-This function implements VFS '->\ :c:func:`setattr`\ ' call when the inode is truncated
+This function implements VFS '->setattr()' call when the inode is truncated
 to a smaller size. Returns zero in case of success and a negative error code
 in case of failure.
 
@@ -242,7 +242,7 @@ do_setattr
 Description
 -----------
 
-This function implements VFS '->\ :c:func:`setattr`\ ' call for all cases except
+This function implements VFS '->setattr()' call for all cases except
 truncations to smaller size. Returns zero in case of success and a negative
 error code in case of failure.
 

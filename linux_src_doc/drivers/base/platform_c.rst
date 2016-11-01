@@ -27,9 +27,9 @@ manipulate any relevant information in the pdev_archdata they can do
 --------------------------------------------------------------------
 
 
-\ :c:func:`platform_device_alloc`\ 
-... manipulate ...
-\ :c:func:`platform_device_add`\ 
+     \ :c:func:`platform_device_alloc`\ 
+     ... manipulate ...
+     \ :c:func:`platform_device_add`\ 
 
 And if they don't care they can just call \ :c:func:`platform_device_register`\  and
 everything will just work out.
@@ -152,7 +152,7 @@ Description
 -----------
 
 Free all memory associated with a platform device.  This function must
-\_only\_ be externally called in error cases.  All other usage is a bug.
+_only_ be externally called in error cases.  All other usage is a bug.
 
 .. _`platform_device_alloc`:
 
@@ -273,7 +273,7 @@ Description
 -----------
 
 This is part 2 of \ :c:func:`platform_device_register`\ , though may be called
-separately \_iff\_ pdev was allocated by \ :c:func:`platform_device_alloc`\ .
+separately _iff_ pdev was allocated by \ :c:func:`platform_device_alloc`\ .
 
 .. _`platform_device_del`:
 
@@ -293,8 +293,8 @@ Description
 -----------
 
 Note that this function will also release all memory- and port-based
-resources owned by the device (\ ``dev``\ ->resource).  This function must
-\_only\_ be externally called in error cases.  All other usage is a bug.
+resources owned by the device (@dev->resource).  This function must
+_only_ be externally called in error cases.  All other usage is a bug.
 
 .. _`platform_device_register`:
 
@@ -388,7 +388,7 @@ __platform_driver_probe
         platform driver structure
 
     :param int (\*probe)(struct platform_device \*):
-        the driver probe routine, probably from an \__init section
+        the driver probe routine, probably from an __init section
 
     :param struct module \*module:
         module which will be the owner of the driver
@@ -425,7 +425,7 @@ __platform_create_bundle
         platform driver structure
 
     :param int (\*probe)(struct platform_device \*):
-        the driver probe routine, probably from an \__init section
+        the driver probe routine, probably from an __init section
 
     :param struct resource \*res:
         set of resources that needs to be allocated for the device

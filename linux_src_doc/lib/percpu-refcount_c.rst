@@ -53,7 +53,7 @@ Description
 
 This function exits \ ``ref``\ .  The caller is responsible for ensuring that
 \ ``ref``\  is no longer in active use.  The usual places to invoke this
-function from are the \ ``ref``\ ->\ :c:func:`release`\  callback or in init failure path
+function from are the \ ``ref``\ ->release() callback or in init failure path
 where \ :c:func:`percpu_ref_init`\  succeeded but other parts of the initialization
 of the embedding object failed.
 
@@ -88,14 +88,9 @@ the get/put operations and can safely be mixed with kill and reinit
 operations.  Note that \ ``ref``\  will stay in atomic mode across kill/reinit
 cycles until \ :c:func:`percpu_ref_switch_to_percpu`\  is called.
 
-This function normally doesn't block and can be called from any context
-but it may block if \ ``confirm_kill``\  is specified and \ ``ref``\  is already in
-the process of switching to atomic mode.  In such cases, \ ``confirm_switch``\ 
-will be invoked after the switching is complete.
-
-Due to the way percpu_ref is implemented, \ ``confirm_switch``\  will be called
-after at least one full sched RCU grace period has passed but this is an
-implementation detail and must not be depended upon.
+This function may block if \ ``ref``\  is in the process of switching to atomic
+mode.  If the caller ensures that \ ``ref``\  is not in the process of
+switching to atomic mode, this function can be called from any context.
 
 .. _`percpu_ref_switch_to_percpu`:
 
@@ -124,9 +119,9 @@ by PERCPU_REF_INIT_ATOMIC or \ :c:func:`percpu_ref_switch_to_atomic`\ .  If \ ``
 dying or dead, the actual switching takes place on the following
 \ :c:func:`percpu_ref_reinit`\ .
 
-This function normally doesn't block and can be called from any context
-but it may block if \ ``ref``\  is in the process of switching to atomic mode
-by \ :c:func:`percpu_ref_switch_atomic`\ .
+This function may block if \ ``ref``\  is in the process of switching to atomic
+mode.  If the caller ensures that \ ``ref``\  is not in the process of
+switching to atomic mode, this function can be called from any context.
 
 .. _`percpu_ref_kill_and_confirm`:
 
@@ -156,11 +151,7 @@ further invocations of \ :c:func:`percpu_ref_tryget_live`\  will fail.  See
 
 This function normally doesn't block and can be called from any context
 but it may block if \ ``confirm_kill``\  is specified and \ ``ref``\  is in the
-process of switching to atomic mode by \ :c:func:`percpu_ref_switch_atomic`\ .
-
-Due to the way percpu_ref is implemented, \ ``confirm_switch``\  will be called
-after at least one full sched RCU grace period has passed but this is an
-implementation detail and must not be depended upon.
+process of switching to atomic mode by \ :c:func:`percpu_ref_switch_to_atomic`\ .
 
 .. _`percpu_ref_reinit`:
 

@@ -18,8 +18,8 @@ Description
 Copyright (C) 1997-2004 Erez Zadok
 Copyright (C) 2001-2004 Stony Brook University
 Copyright (C) 2004-2007 International Business Machines Corp.
-Author(s): Michael A. Halcrow <mahalcro\ ``us``\ .ibm.com>
-Michael C. Thompson <mcthomps\ ``us``\ .ibm.com>
+Author(s): Michael A. Halcrow <mahalcro@us.ibm.com>
+Michael C. Thompson <mcthomps@us.ibm.com>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
@@ -359,7 +359,7 @@ ecryptfs_compute_root_iv
 
 .. c:function:: int ecryptfs_compute_root_iv(struct ecryptfs_crypt_stat *crypt_stat)
 
-    \ ``crypt_stats``\ 
+    @crypt_stats
 
     :param struct ecryptfs_crypt_stat \*crypt_stat:
         *undescribed*
@@ -845,7 +845,7 @@ Description
 -----------
 
 Searches for cached key_tfm matching \ ``cipher_name``\ 
-Must be called with \ :c:type:`struct key_tfm_list_mutex <key_tfm_list_mutex>` held
+Must be called with \ :c:type:`struct key_tfm_list_mutex <key_tfm_list_mutex>`\  held
 Returns 1 if found, with \ ``key_tfm``\  set
 Returns 0 if not found, with \ ``key_tfm``\  set to NULL
 

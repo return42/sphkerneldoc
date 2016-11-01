@@ -1157,7 +1157,7 @@ Description
 -----------
 
 This routine performs a roundrobin SCSI command to SLI4 FCP WQ index
-distribution.  This is called by \\ :c:func:`__lpfc_sli_issue_iocb_s4`\  with the hbalock
+distribution.  This is called by \__lpfc_sli_issue_iocb_s4() with the hbalock
 held.
 If scsi-mq is enabled, get the default block layer mapping of software queues
 to hardware queues. This information is saved in request tag.
@@ -1944,7 +1944,7 @@ non-0 - Error
 lpfc_enable_oas_lun
 ===================
 
-.. c:function:: bool lpfc_enable_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun)
+.. c:function:: bool lpfc_enable_oas_lun(struct lpfc_hba *phba, struct lpfc_name *vport_wwpn, struct lpfc_name *target_wwpn, uint64_t lun, uint8_t pri)
 
     enables a lun for OAS operations
 
@@ -1959,6 +1959,9 @@ lpfc_enable_oas_lun
 
     :param uint64_t lun:
         Lun
+
+    :param uint8_t pri:
+        *undescribed*
 
 .. _`lpfc_enable_oas_lun.description`:
 

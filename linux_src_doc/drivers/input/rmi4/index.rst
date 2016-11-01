@@ -10,4 +10,5 @@ rmi4
     rmi_bus_c
     rmi_bus_h
     rmi_driver_c
+    rmi_f54_c
     rmi_i2c_c

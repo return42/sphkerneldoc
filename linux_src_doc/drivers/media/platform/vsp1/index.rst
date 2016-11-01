@@ -11,4 +11,5 @@ vsp1
     vsp1_drm_c
     vsp1_entity_c
     vsp1_entity_h
-    vsp1_rwpf_h
+    vsp1_pipe_c
+    vsp1_video_c

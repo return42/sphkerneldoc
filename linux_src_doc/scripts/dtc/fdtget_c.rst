@@ -48,7 +48,7 @@ list_properties
 Description
 -----------
 
-\ ``param``\  blob          FDT blob
+@param blob          FDT blob
 \ ``param``\  node          Node to display
 \ ``return``\  0 if ok, or FDT_ERR... if not.
 
@@ -70,7 +70,7 @@ list_subnodes
 Description
 -----------
 
-\ ``param``\  blob          FDT blob
+@param blob          FDT blob
 \ ``param``\  node          Node to display
 \ ``return``\  0 if ok, or FDT_ERR... if not.
 
@@ -100,7 +100,7 @@ show_data_for_item
 Description
 -----------
 
-\ ``param``\  blob          FDT blob
+@param blob          FDT blob
 \ ``param``\  disp          Display information / options
 \ ``param``\  node          Node to display
 \ ``param``\  property      Name of property to display, or NULL if none
@@ -133,7 +133,7 @@ do_fdtget
 Description
 -----------
 
-\ ``param``\  disp          Display information / options
+@param disp          Display information / options
 \ ``param``\  filename      Filename of blob file
 \ ``param``\  arg           List of arguments to process
 \ ``param``\  arg_count     Number of arguments

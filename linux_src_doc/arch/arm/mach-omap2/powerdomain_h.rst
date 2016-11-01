@@ -137,7 +137,7 @@ timer
 Description
 -----------
 
-\ ``prcm_partition``\  possible values are defined in mach-omap2/prcm44xx.h.
+@prcm_partition possible values are defined in mach-omap2/prcm44xx.h.
 
 .. _`pwrdm_ops`:
 

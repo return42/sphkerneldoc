@@ -10,9 +10,11 @@ dvb-frontends
     drx39xyj/index
     a8293_h
     ascot2e_h
+    cxd2820r_h
     dib8000_c
     drxk_h
     dvb-pll_h
+    helene_h
     horus3a_h
     ix2505v_c
     lnbh25_c

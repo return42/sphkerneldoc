@@ -104,7 +104,7 @@ Description
 
 This routine just performs benign initialization and does not
 allocate the remote_node_context which is left to
-sci_remote_device_[de]\ :c:func:`a_construct`\ .  \ :c:func:`sci_remote_device_destruct`\ 
+sci_remote_device_[de]a_construct().  \ :c:func:`sci_remote_device_destruct`\ 
 frees the remote_node_context(s) for the device.
 
 .. _`sci_remote_device_da_construct`:

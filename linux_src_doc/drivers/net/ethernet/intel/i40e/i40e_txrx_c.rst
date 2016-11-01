@@ -1,6 +1,24 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/intel/i40e/i40e_txrx.c
 
+.. _`i40e_fdir`:
+
+i40e_fdir
+=========
+
+.. c:function:: void i40e_fdir(struct i40e_ring *tx_ring, struct i40e_fdir_filter *fdata, bool add)
+
+    Generate a Flow Director descriptor based on fdata
+
+    :param struct i40e_ring \*tx_ring:
+        Tx ring to send buffer on
+
+    :param struct i40e_fdir_filter \*fdata:
+        Flow director filter data
+
+    :param bool add:
+        Indicate if we are adding a rule or deleting one
+
 .. _`i40e_program_fdir_filter`:
 
 i40e_program_fdir_filter

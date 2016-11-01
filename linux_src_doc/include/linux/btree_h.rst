@@ -109,7 +109,7 @@ Description
 
 This function allocates the memory pool that the
 btree needs. Returns zero or a negative error code
-(-\ ``ENOMEM``\ ) when memory allocation fails.
+(-%ENOMEM) when memory allocation fails.
 
 .. _`btree_destroy`:
 
@@ -215,7 +215,7 @@ Description
 -----------
 
 This function returns 0 if the update was successful, or
--\ ``ENOENT``\  if the key could not be found.
+-%ENOENT if the key could not be found.
 
 .. _`btree_remove`:
 

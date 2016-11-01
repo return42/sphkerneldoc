@@ -262,7 +262,7 @@ Description
 
 The current HV requires the spu shadow regs to be mapped with the
 PTE page protection bits set as read-only (PP=3).  This implementation
-uses the low level \\ :c:func:`__ioremap`\  to bypass the page protection settings
+uses the low level \__ioremap() to bypass the page protection settings
 inforced by \ :c:func:`ioremap_prot`\  to get the needed PTE bits set for the
 shadow regs.
 

@@ -8,9 +8,9 @@ drm
     :maxdepth: 1
 
     amd/index
+    bridge/index
     exynos/index
     gma500/index
-    i2c/index
     i810/index
     i915/index
     mediatek/index
@@ -21,6 +21,7 @@ drm
     r128/index
     radeon/index
     rcar-du/index
+    rockchip/index
     sti/index
     tegra/index
     ttm/index
@@ -31,24 +32,29 @@ drm
     drm_atomic_c
     drm_atomic_helper_c
     drm_auth_c
+    drm_blend_c
     drm_bridge_c
     drm_bufs_c
+    drm_color_mgmt_c
+    drm_connector_c
     drm_context_c
     drm_crtc_c
     drm_crtc_helper_c
     drm_debugfs_c
     drm_dma_c
-    drm_dp_aux_dev_c
     drm_dp_dual_mode_helper_c
     drm_dp_helper_c
     drm_dp_mst_topology_c
     drm_drv_c
     drm_edid_c
+    drm_encoder_c
     drm_encoder_slave_c
     drm_fb_cma_helper_c
     drm_fb_helper_c
     drm_flip_work_c
     drm_fops_c
+    drm_fourcc_c
+    drm_framebuffer_c
     drm_gem_c
     drm_gem_cma_helper_c
     drm_info_c
@@ -58,16 +64,21 @@ drm
     drm_lock_c
     drm_mipi_dsi_c
     drm_mm_c
+    drm_mode_object_c
     drm_modes_c
+    drm_modeset_helper_c
     drm_modeset_lock_c
     drm_of_c
     drm_panel_c
     drm_pci_c
+    drm_plane_c
     drm_plane_helper_c
     drm_platform_c
     drm_prime_c
     drm_probe_helper_c
+    drm_property_c
     drm_rect_c
+    drm_simple_kms_helper_c
     drm_sysfs_c
     drm_vm_c
     drm_vma_manager_c

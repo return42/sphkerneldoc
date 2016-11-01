@@ -1,6 +1,34 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/power/snapshot.c
 
+.. _`get_image_page`:
+
+get_image_page
+==============
+
+.. c:function:: void *get_image_page(gfp_t gfp_mask, int safe_needed)
+
+    Allocate a page for a hibernation image.
+
+    :param gfp_t gfp_mask:
+        GFP mask for the allocation.
+
+    :param int safe_needed:
+        Get pages that were not used before hibernation (restore only)
+
+.. _`get_image_page.description`:
+
+Description
+-----------
+
+During image restoration, for storing the PBE list and the image data, we can
+only use memory pages that do not conflict with the pages used before
+hibernation.  The "unsafe" pages have PageNosaveFree set and we count them
+using allocated_unsafe_pages.
+
+Each allocated image page is marked as PageNosave and PageNosaveFree so that
+\ :c:func:`swsusp_free`\  can release it.
+
 .. _`free_image_page`:
 
 free_image_page
@@ -8,71 +36,21 @@ free_image_page
 
 .. c:function:: void free_image_page(void *addr, int clear_nosave_free)
 
-    free page represented by \ ``addr``\ , allocated with get_image_page (page flags set by it must be cleared)
+    Free a page allocated for hibernation image.
 
     :param void \*addr:
-        *undescribed*
+        Address of the page to free.
 
     :param int clear_nosave_free:
-        *undescribed*
+        If set, clear the PageNosaveFree bit for the page.
 
-.. _`chain_allocator`:
-
-struct chain_allocator
-======================
-
-.. c:type:: struct chain_allocator
-
-    a linked list of pages called 'the chain'.
-
-.. _`chain_allocator.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct chain_allocator {
-        struct linked_page *chain;
-        unsigned int used_space;
-        gfp_t gfp_mask;
-        int safe_needed;
-    }
-
-.. _`chain_allocator.members`:
-
-Members
--------
-
-chain
-    *undescribed*
-
-used_space
-    *undescribed*
-
-gfp_mask
-    *undescribed*
-
-safe_needed
-    *undescribed*
-
-.. _`chain_allocator.description`:
+.. _`free_image_page.description`:
 
 Description
 -----------
 
-The chain grows each time when there is no room for a new object in
-the current page.  The allocated objects cannot be freed individually.
-It is only possible to free them all at once, by freeing the entire
-chain.
-
-.. _`chain_allocator.note`:
-
-NOTE
-----
-
-The chain allocator may be inefficient if the allocated objects
-are not much smaller than PAGE_SIZE.
+The page to free should have been allocated by \ :c:func:`get_image_page`\  (page flags
+set by it are affected).
 
 .. _`bm_end_of_map`:
 
@@ -110,7 +88,7 @@ top for now, but let's avoid making unnecessary assumptions ;-).
 struct zone_bitmap contains a pointer to a list of bitmap block
 objects and a pointer to the bitmap block object that has been
 most recently used for setting bits.  Additionally, it contains the
-pfns that correspond to the start and end of the represented zone.
+PFNs that correspond to the start and end of the represented zone.
 
 struct bm_block contains a pointer to the memory page in which
 information is stored (in the form of a block of bitmap)
@@ -128,6 +106,123 @@ access of the memory bitmap.
 
 The struct rtree_node represents one node of the radix tree.
 
+.. _`alloc_rtree_node`:
+
+alloc_rtree_node
+================
+
+.. c:function:: struct rtree_node *alloc_rtree_node(gfp_t gfp_mask, int safe_needed, struct chain_allocator *ca, struct list_head *list)
+
+    Allocate a new node and add it to the radix tree.
+
+    :param gfp_t gfp_mask:
+        *undescribed*
+
+    :param int safe_needed:
+        *undescribed*
+
+    :param struct chain_allocator \*ca:
+        *undescribed*
+
+    :param struct list_head \*list:
+        *undescribed*
+
+.. _`alloc_rtree_node.description`:
+
+Description
+-----------
+
+This function is used to allocate inner nodes as well as the
+leave nodes of the radix tree. It also adds the node to the
+corresponding linked list passed in by the \*list parameter.
+
+.. _`add_rtree_block`:
+
+add_rtree_block
+===============
+
+.. c:function:: int add_rtree_block(struct mem_zone_bm_rtree *zone, gfp_t gfp_mask, int safe_needed, struct chain_allocator *ca)
+
+    Add a new leave node to the radix tree.
+
+    :param struct mem_zone_bm_rtree \*zone:
+        *undescribed*
+
+    :param gfp_t gfp_mask:
+        *undescribed*
+
+    :param int safe_needed:
+        *undescribed*
+
+    :param struct chain_allocator \*ca:
+        *undescribed*
+
+.. _`add_rtree_block.description`:
+
+Description
+-----------
+
+The leave nodes need to be allocated in order to keep the leaves
+linked list in order. This is guaranteed by the zone->blocks
+counter.
+
+.. _`create_zone_bm_rtree`:
+
+create_zone_bm_rtree
+====================
+
+.. c:function:: struct mem_zone_bm_rtree *create_zone_bm_rtree(gfp_t gfp_mask, int safe_needed, struct chain_allocator *ca, unsigned long start, unsigned long end)
+
+    Create a radix tree for one zone.
+
+    :param gfp_t gfp_mask:
+        *undescribed*
+
+    :param int safe_needed:
+        *undescribed*
+
+    :param struct chain_allocator \*ca:
+        *undescribed*
+
+    :param unsigned long start:
+        *undescribed*
+
+    :param unsigned long end:
+        *undescribed*
+
+.. _`create_zone_bm_rtree.description`:
+
+Description
+-----------
+
+Allocated the mem_zone_bm_rtree structure and initializes it.
+This function also allocated and builds the radix tree for the
+zone.
+
+.. _`free_zone_bm_rtree`:
+
+free_zone_bm_rtree
+==================
+
+.. c:function:: void free_zone_bm_rtree(struct mem_zone_bm_rtree *zone, int clear_nosave_free)
+
+    Free the memory of the radix tree.
+
+    :param struct mem_zone_bm_rtree \*zone:
+        *undescribed*
+
+    :param int clear_nosave_free:
+        *undescribed*
+
+.. _`free_zone_bm_rtree.description`:
+
+Description
+-----------
+
+Free all node pages of the radix tree. The mem_zone_bm_rtree
+structure itself is not freed here nor are the rtree_node
+structs.
+
 .. _`free_mem_extents`:
 
 free_mem_extents
@@ -135,10 +230,10 @@ free_mem_extents
 
 .. c:function:: void free_mem_extents(struct list_head *list)
 
-    free a list of memory extents \ ``list``\  - list of extents to empty
+    Free a list of memory extents.
 
     :param struct list_head \*list:
-        *undescribed*
+        List of extents to free.
 
 .. _`create_mem_extents`:
 
@@ -147,13 +242,20 @@ create_mem_extents
 
 .. c:function:: int create_mem_extents(struct list_head *list, gfp_t gfp_mask)
 
-    create a list of memory extents representing contiguous ranges of PFNs \ ``list``\  - list to put the extents into \ ``gfp_mask``\  - mask to use for memory allocations
+    Create a list of memory extents.
 
     :param struct list_head \*list:
-        *undescribed*
+        List to put the extents into.
 
     :param gfp_t gfp_mask:
-        *undescribed*
+        Mask to use for memory allocations.
+
+.. _`create_mem_extents.description`:
+
+Description
+-----------
+
+The extents represent contiguous ranges of PFNs.
 
 .. _`memory_bm_create`:
 
@@ -162,7 +264,7 @@ memory_bm_create
 
 .. c:function:: int memory_bm_create(struct memory_bitmap *bm, gfp_t gfp_mask, int safe_needed)
 
-    allocate memory for a memory bitmap
+    Allocate memory for a memory bitmap.
 
     :param struct memory_bitmap \*bm:
         *undescribed*
@@ -180,10 +282,10 @@ memory_bm_free
 
 .. c:function:: void memory_bm_free(struct memory_bitmap *bm, int clear_nosave_free)
 
-    free memory occupied by the memory bitmap \ ``bm``\ 
+    Free memory occupied by the memory bitmap.
 
     :param struct memory_bitmap \*bm:
-        *undescribed*
+        Memory bitmap.
 
     :param int clear_nosave_free:
         *undescribed*
@@ -195,7 +297,7 @@ memory_bm_find_bit
 
 .. c:function:: int memory_bm_find_bit(struct memory_bitmap *bm, unsigned long pfn, void **addr, unsigned int *bit_nr)
 
-    Find the bit for pfn in the memory bitmap
+    Find the bit for a given PFN in a memory bitmap.
 
     :param struct memory_bitmap \*bm:
         *undescribed*
@@ -214,11 +316,11 @@ memory_bm_find_bit
 Description
 -----------
 
-Find the bit in the bitmap \ ``bm``\  that corresponds to given pfn.
-The cur.zone, cur.block and cur.node_pfn member of \ ``bm``\  are
-updated.
-It walks the radix tree to find the page which contains the bit for
-pfn and returns the bit position in \*\*addr and \*bit_nr.
+Find the bit in memory bitmap \ ``bm``\  that corresponds to the given PFN.
+The cur.zone, cur.block and cur.node_pfn members of \ ``bm``\  are updated.
+
+Walk the radix tree to find the page containing the bit that represents \ ``pfn``\ 
+and return the position of the bit in \ ``addr``\  and \ ``bit_nr``\ .
 
 .. _`memory_bm_next_pfn`:
 
@@ -227,22 +329,22 @@ memory_bm_next_pfn
 
 .. c:function:: unsigned long memory_bm_next_pfn(struct memory_bitmap *bm)
 
-    Find the next set bit in the bitmap \ ``bm``\ 
+    Find the next set bit in a memory bitmap.
 
     :param struct memory_bitmap \*bm:
-        *undescribed*
+        Memory bitmap.
 
 .. _`memory_bm_next_pfn.description`:
 
 Description
 -----------
 
-Starting from the last returned position this function searches
-for the next set bit in the memory bitmap and returns its
-number. If no more bit is set BM_END_OF_MAP is returned.
+Starting from the last returned position this function searches for the next
+set bit in \ ``bm``\  and returns the PFN represented by it.  If no more bits are
+set, BM_END_OF_MAP is returned.
 
-It is required to run \ :c:func:`memory_bm_position_reset`\  before the
-first call to this function.
+It is required to run \ :c:func:`memory_bm_position_reset`\  before the first call to
+this function for the given memory bitmap.
 
 .. _`__register_nosave_region`:
 
@@ -251,7 +353,7 @@ __register_nosave_region
 
 .. c:function:: void __register_nosave_region(unsigned long start_pfn, unsigned long end_pfn, int use_kmalloc)
 
-    register a range of page frames the contents of which should not be saved during the suspend (to be used in the early initialization code)
+    Register a region of unsaveable memory.
 
     :param unsigned long start_pfn:
         *undescribed*
@@ -262,6 +364,14 @@ __register_nosave_region
     :param int use_kmalloc:
         *undescribed*
 
+.. _`__register_nosave_region.description`:
+
+Description
+-----------
+
+Register a range of page frames the contents of which should not be saved
+during hibernation (to be used in the early initialization code).
+
 .. _`mark_nosave_pages`:
 
 mark_nosave_pages
@@ -269,10 +379,18 @@ mark_nosave_pages
 
 .. c:function:: void mark_nosave_pages(struct memory_bitmap *bm)
 
-    set bits corresponding to the page frames the contents of which should not be saved in a given bitmap.
+    Mark pages that should not be saved.
 
     :param struct memory_bitmap \*bm:
-        *undescribed*
+        Memory bitmap.
+
+.. _`mark_nosave_pages.description`:
+
+Description
+-----------
+
+Set the bits in \ ``bm``\  that correspond to the page frames the contents of which
+should not be saved.
 
 .. _`create_basic_memory_bitmaps`:
 
@@ -281,10 +399,20 @@ create_basic_memory_bitmaps
 
 .. c:function:: int create_basic_memory_bitmaps( void)
 
-    create bitmaps needed for marking page frames that should not be saved and free page frames.  The pointers forbidden_pages_map and free_pages_map are only modified if everything goes well, because we don't want the bits to be used before both bitmaps are set up.
+    Create bitmaps to hold basic page information.
 
     :param  void:
         no arguments
+
+.. _`create_basic_memory_bitmaps.description`:
+
+Description
+-----------
+
+Create bitmaps needed for marking page frames that should not be saved and
+free page frames.  The forbidden_pages_map and free_pages_map pointers are
+only modified if everything goes well, because we don't want the bits to be
+touched before both bitmaps are set up.
 
 .. _`free_basic_memory_bitmaps`:
 
@@ -293,10 +421,19 @@ free_basic_memory_bitmaps
 
 .. c:function:: void free_basic_memory_bitmaps( void)
 
-    free memory bitmaps allocated by \ :c:func:`create_basic_memory_bitmaps`\ .  The auxiliary pointers are necessary so that the bitmaps themselves are not referred to while they are being freed.
+    Free memory bitmaps holding basic information.
 
     :param  void:
         no arguments
+
+.. _`free_basic_memory_bitmaps.description`:
+
+Description
+-----------
+
+Free memory bitmaps allocated by \ :c:func:`create_basic_memory_bitmaps`\ .  The
+auxiliary pointers are necessary so that the bitmaps themselves are not
+referred to while they are being freed.
 
 .. _`snapshot_additional_pages`:
 
@@ -305,10 +442,19 @@ snapshot_additional_pages
 
 .. c:function:: unsigned int snapshot_additional_pages(struct zone *zone)
 
-    estimate the number of additional pages be needed for setting up the suspend image data structures for given zone (usually the returned value is greater than the exact number)
+    Estimate the number of extra pages needed.
 
     :param struct zone \*zone:
-        *undescribed*
+        Memory zone to carry out the computation for.
+
+.. _`snapshot_additional_pages.description`:
+
+Description
+-----------
+
+Estimate the number of additional pages needed for setting up a hibernation
+image data structures for \ ``zone``\  (usually, the returned value is greater than
+the exact number).
 
 .. _`count_free_highmem_pages`:
 
@@ -317,10 +463,17 @@ count_free_highmem_pages
 
 .. c:function:: unsigned int count_free_highmem_pages( void)
 
-    compute the total number of free highmem pages, system-wide.
+    Compute the total number of free highmem pages.
 
     :param  void:
         no arguments
+
+.. _`count_free_highmem_pages.description`:
+
+Description
+-----------
+
+The returned number is system-wide.
 
 .. _`saveable_highmem_page`:
 
@@ -329,7 +482,7 @@ saveable_highmem_page
 
 .. c:function:: struct page *saveable_highmem_page(struct zone *zone, unsigned long pfn)
 
-    Determine whether a highmem page should be included in the suspend image.
+    Check if a highmem page is saveable.
 
     :param struct zone \*zone:
         *undescribed*
@@ -342,8 +495,10 @@ saveable_highmem_page
 Description
 -----------
 
+Determine whether a highmem page should be included in a hibernation image.
+
 We should save the page if it isn't Nosave or NosaveFree, or Reserved,
-and it isn't a part of a free chunk of pages.
+and it isn't part of a free chunk of pages.
 
 .. _`count_highmem_pages`:
 
@@ -352,7 +507,7 @@ count_highmem_pages
 
 .. c:function:: unsigned int count_highmem_pages( void)
 
-    compute the total number of saveable highmem pages.
+    Compute the total number of saveable highmem pages.
 
     :param  void:
         no arguments
@@ -364,7 +519,7 @@ saveable_page
 
 .. c:function:: struct page *saveable_page(struct zone *zone, unsigned long pfn)
 
-    Determine whether a non-highmem page should be included in the suspend image.
+    Check if the given page is saveable.
 
     :param struct zone \*zone:
         *undescribed*
@@ -377,8 +532,11 @@ saveable_page
 Description
 -----------
 
+Determine whether a non-highmem page should be included in a hibernation
+image.
+
 We should save the page if it isn't Nosave, and is not in the range
-of pages statically defined as 'unsaveable', and it isn't a part of
+of pages statically defined as 'unsaveable', and it isn't part of
 a free chunk of pages.
 
 .. _`count_data_pages`:
@@ -388,7 +546,7 @@ count_data_pages
 
 .. c:function:: unsigned int count_data_pages( void)
 
-    compute the total number of saveable non-highmem pages.
+    Compute the total number of saveable non-highmem pages.
 
     :param  void:
         no arguments
@@ -400,13 +558,22 @@ safe_copy_page
 
 .. c:function:: void safe_copy_page(void *dst, struct page *s_page)
 
-    check if the page we are going to copy is marked as present in the kernel page tables (this always is the case if CONFIG_DEBUG_PAGEALLOC is not set and in that case \ :c:func:`kernel_page_present`\  always returns 'true').
+    Copy a page in a safe way.
 
     :param void \*dst:
         *undescribed*
 
     :param struct page \*s_page:
         *undescribed*
+
+.. _`safe_copy_page.description`:
+
+Description
+-----------
+
+Check if the page we are going to copy is marked as present in the kernel
+page tables (this always is the case if CONFIG_DEBUG_PAGEALLOC is not set
+and in that case \ :c:func:`kernel_page_present`\  always returns 'true').
 
 .. _`swsusp_free`:
 
@@ -415,7 +582,7 @@ swsusp_free
 
 .. c:function:: void swsusp_free( void)
 
-    free pages allocated for the suspend.
+    Free pages allocated for hibernation image.
 
     :param  void:
         no arguments
@@ -425,8 +592,8 @@ swsusp_free
 Description
 -----------
 
-Suspend pages are alocated before the atomic copy is made, so we
-need to release them after the resume.
+Image pages are alocated before snapshot creation, so they need to be
+released after resume.
 
 .. _`preallocate_image_pages`:
 
@@ -435,7 +602,7 @@ preallocate_image_pages
 
 .. c:function:: unsigned long preallocate_image_pages(unsigned long nr_pages, gfp_t mask)
 
-    Allocate a number of pages for hibernation image
+    Allocate a number of pages for hibernation image.
 
     :param unsigned long nr_pages:
         Number of page frames to allocate.
@@ -457,7 +624,7 @@ __fraction
 
 .. c:function:: unsigned long __fraction(u64 x, u64 multiplier, u64 base)
 
-    Compute (an approximation of) x \* (multiplier / base)
+    Compute (an approximation of) x \* (multiplier / base).
 
     :param u64 x:
         *undescribed*
@@ -475,7 +642,7 @@ free_unnecessary_pages
 
 .. c:function:: unsigned long free_unnecessary_pages( void)
 
-    Release preallocated pages not needed for the image
+    Release preallocated pages not needed for the image.
 
     :param  void:
         no arguments
@@ -487,7 +654,7 @@ minimum_image_size
 
 .. c:function:: unsigned long minimum_image_size(unsigned long saveable)
 
-    Estimate the minimum acceptable size of an image
+    Estimate the minimum acceptable size of an image.
 
     :param unsigned long saveable:
         Number of saveable pages in the system.
@@ -516,7 +683,7 @@ hibernate_preallocate_memory
 
 .. c:function:: int hibernate_preallocate_memory( void)
 
-    Preallocate memory for hibernation image
+    Preallocate memory for hibernation image.
 
     :param  void:
         no arguments
@@ -552,10 +719,18 @@ count_pages_for_highmem
 
 .. c:function:: unsigned int count_pages_for_highmem(unsigned int nr_highmem)
 
-    compute the number of non-highmem pages that will be necessary for creating copies of highmem pages.
+    Count non-highmem pages needed for copying highmem.
 
     :param unsigned int nr_highmem:
         *undescribed*
+
+.. _`count_pages_for_highmem.description`:
+
+Description
+-----------
+
+Compute the number of non-highmem pages that will be necessary for creating
+copies of highmem pages.
 
 .. _`enough_free_mem`:
 
@@ -564,7 +739,7 @@ enough_free_mem
 
 .. c:function:: int enough_free_mem(unsigned int nr_pages, unsigned int nr_highmem)
 
-    Make sure we have enough free memory for the snapshot image.
+    Check if there is enough free memory for the image.
 
     :param unsigned int nr_pages:
         *undescribed*
@@ -579,10 +754,18 @@ get_highmem_buffer
 
 .. c:function:: int get_highmem_buffer(int safe_needed)
 
-    if there are some highmem pages in the suspend image, we may need the buffer to copy them and/or load their data.
+    Allocate a buffer for highmem pages.
 
     :param int safe_needed:
         *undescribed*
+
+.. _`get_highmem_buffer.description`:
+
+Description
+-----------
+
+If there are some highmem pages in the hibernation image, we may need a
+buffer to copy them and/or load their data.
 
 .. _`alloc_highmem_pages`:
 
@@ -591,13 +774,21 @@ alloc_highmem_pages
 
 .. c:function:: unsigned int alloc_highmem_pages(struct memory_bitmap *bm, unsigned int nr_highmem)
 
-    allocate some highmem pages for the image. Try to allocate as many pages as needed, but if the number of free highmem pages is lesser than that, allocate them all.
+    Allocate some highmem pages for the image.
 
     :param struct memory_bitmap \*bm:
         *undescribed*
 
     :param unsigned int nr_highmem:
         *undescribed*
+
+.. _`alloc_highmem_pages.description`:
+
+Description
+-----------
+
+Try to allocate as many pages as needed, but if the number of free highmem
+pages is less than that, allocate them all.
 
 .. _`swsusp_alloc`:
 
@@ -606,7 +797,7 @@ swsusp_alloc
 
 .. c:function:: int swsusp_alloc(struct memory_bitmap *orig_bm, struct memory_bitmap *copy_bm, unsigned int nr_pages, unsigned int nr_highmem)
 
-    allocate memory for the suspend image
+    Allocate memory for hibernation image.
 
     :param struct memory_bitmap \*orig_bm:
         *undescribed*
@@ -640,13 +831,21 @@ pack_pfns
 
 .. c:function:: void pack_pfns(unsigned long *buf, struct memory_bitmap *bm)
 
-    pfns corresponding to the set bits found in the bitmap \ ``bm``\  are stored in the array \ ``buf``\ [] (1 page at a time)
+    Prepare PFNs for saving.
 
     :param unsigned long \*buf:
-        *undescribed*
+        Memory buffer to store the PFNs in.
 
     :param struct memory_bitmap \*bm:
-        *undescribed*
+        Memory bitmap.
+
+.. _`pack_pfns.description`:
+
+Description
+-----------
+
+PFNs corresponding to set bits in \ ``bm``\  are stored in the area of memory
+pointed to by \ ``buf``\  (1 page at a time).
 
 .. _`snapshot_read_next`:
 
@@ -655,40 +854,47 @@ snapshot_read_next
 
 .. c:function:: int snapshot_read_next(struct snapshot_handle *handle)
 
-    used for reading the system memory snapshot.
+    Get the address to read the next image page from.
 
     :param struct snapshot_handle \*handle:
-        *undescribed*
+        Snapshot handle to be used for the reading.
 
 .. _`snapshot_read_next.description`:
 
 Description
 -----------
 
-On the first call to it \ ``handle``\  should point to a zeroed
-snapshot_handle structure.  The structure gets updated and a pointer
-to it should be passed to this function every next time.
+On the first call, \ ``handle``\  should point to a zeroed snapshot_handle
+structure.  The structure gets populated then and a pointer to it should be
+passed to this function every next time.
 
-On success the function returns a positive number.  Then, the caller
+On success, the function returns a positive number.  Then, the caller
 is allowed to read up to the returned number of bytes from the memory
 location computed by the \ :c:func:`data_of`\  macro.
 
-The function returns 0 to indicate the end of data stream condition,
-and a negative number is returned on error.  In such cases the
-structure pointed to by \ ``handle``\  is not updated and should not be used
-any more.
+The function returns 0 to indicate the end of the data stream condition,
+and negative numbers are returned on errors.  If that happens, the structure
+pointed to by \ ``handle``\  is not updated and should not be used any more.
 
 .. _`mark_unsafe_pages`:
 
 mark_unsafe_pages
 =================
 
-.. c:function:: int mark_unsafe_pages(struct memory_bitmap *bm)
+.. c:function:: void mark_unsafe_pages(struct memory_bitmap *bm)
 
-    mark the pages that cannot be used for storing the image during resume, because they conflict with the pages that had been used before suspend
+    Mark pages that were used before hibernation.
 
     :param struct memory_bitmap \*bm:
         *undescribed*
+
+.. _`mark_unsafe_pages.description`:
+
+Description
+-----------
+
+Mark the pages that cannot be used for storing the image during restoration,
+because they conflict with the pages that had been used before hibernation.
 
 .. _`load_header`:
 
@@ -697,7 +903,7 @@ load_header
 
 .. c:function:: int load_header(struct swsusp_info *info)
 
-    check the image header and copy data from it
+    Check the image header and copy the data from it.
 
     :param struct swsusp_info \*info:
         *undescribed*
@@ -709,13 +915,21 @@ unpack_orig_pfns
 
 .. c:function:: int unpack_orig_pfns(unsigned long *buf, struct memory_bitmap *bm)
 
-    for each element of \ ``buf``\ [] (1 page at a time) set the corresponding bit in the memory bitmap \ ``bm``\ 
+    Set bits corresponding to given PFNs in a memory bitmap.
 
     :param unsigned long \*buf:
-        *undescribed*
+        Area of memory containing the PFNs.
 
     :param struct memory_bitmap \*bm:
-        *undescribed*
+        Memory bitmap.
+
+.. _`unpack_orig_pfns.description`:
+
+Description
+-----------
+
+For each element of the array pointed to by \ ``buf``\  (1 page at a time), set the
+corresponding bit in \ ``bm``\ .
 
 .. _`count_highmem_image_pages`:
 
@@ -724,10 +938,85 @@ count_highmem_image_pages
 
 .. c:function:: unsigned int count_highmem_image_pages(struct memory_bitmap *bm)
 
-    compute the number of highmem pages in the suspend image.  The bits in the memory bitmap \ ``bm``\  that correspond to the image pages are assumed to be set.
+    Compute the number of highmem pages in the image.
 
     :param struct memory_bitmap \*bm:
+        Memory bitmap.
+
+.. _`count_highmem_image_pages.description`:
+
+Description
+-----------
+
+The bits in \ ``bm``\  that correspond to image pages are assumed to be set.
+
+.. _`prepare_highmem_image`:
+
+prepare_highmem_image
+=====================
+
+.. c:function:: int prepare_highmem_image(struct memory_bitmap *bm, unsigned int *nr_highmem_p)
+
+    Allocate memory for loading highmem data from image.
+
+    :param struct memory_bitmap \*bm:
+        Pointer to an uninitialized memory bitmap structure.
+
+    :param unsigned int \*nr_highmem_p:
+        Pointer to the number of highmem image pages.
+
+.. _`prepare_highmem_image.description`:
+
+Description
+-----------
+
+Try to allocate as many highmem pages as there are highmem image pages
+(@nr_highmem_p points to the variable containing the number of highmem image
+pages).  The pages that are "safe" (ie. will not be overwritten when the
+hibernation image is restored entirely) have the corresponding bits set in
+\ ``bm``\  (it must be unitialized).
+
+.. _`prepare_highmem_image.note`:
+
+NOTE
+----
+
+This function should not be called if there are no highmem image pages.
+
+.. _`get_highmem_page_buffer`:
+
+get_highmem_page_buffer
+=======================
+
+.. c:function:: void *get_highmem_page_buffer(struct page *page, struct chain_allocator *ca)
+
+    Prepare a buffer to store a highmem image page.
+
+    :param struct page \*page:
         *undescribed*
+
+    :param struct chain_allocator \*ca:
+        *undescribed*
+
+.. _`get_highmem_page_buffer.description`:
+
+Description
+-----------
+
+For a given highmem image page get a buffer that \ :c:func:`suspend_write_next`\  should
+return to its caller to write to.
+
+If the page is to be saved to its "original" page frame or a copy of
+the page is to be made in the highmem, \ ``buffer``\  is returned.  Otherwise,
+the copy of the page is to be made in normal memory, so the address of
+the copy is returned.
+
+If \ ``buffer``\  is returned, the caller of \ :c:func:`suspend_write_next`\  will write
+the page's contents to \ ``buffer``\ , so they will have to be copied to the
+right location on the next call to \ :c:func:`suspend_write_next`\  and it is done
+with the help of \ :c:func:`copy_last_highmem_page`\ .  For this purpose, if
+\ ``buffer``\  is returned, \ ``last_highmem_page``\  is set to the page to which
+the data will have to be copied from \ ``buffer``\ .
 
 .. _`copy_last_highmem_page`:
 
@@ -736,31 +1025,49 @@ copy_last_highmem_page
 
 .. c:function:: void copy_last_highmem_page( void)
 
-    copy the contents of a highmem image from \ ``buffer``\ , where the caller of \ :c:func:`snapshot_write_next`\  has place them, to the right location represented by \ ``last_highmem_page``\  .
+    Copy most the most recent highmem image page.
 
     :param  void:
         no arguments
 
-.. _`pbes_per_linked_page`:
-
-PBES_PER_LINKED_PAGE
-====================
-
-.. c:function::  PBES_PER_LINKED_PAGE()
-
-    use the memory bitmap \ ``bm``\  to mark the pages that will be overwritten in the process of restoring the system memory state from the suspend image ("unsafe" pages) and allocate memory for the image.
-
-.. _`pbes_per_linked_page.description`:
+.. _`copy_last_highmem_page.description`:
 
 Description
 -----------
 
+Copy the contents of a highmem image from \ ``buffer``\ , where the caller of
+\ :c:func:`snapshot_write_next`\  has stored them, to the right location represented by
+\ ``last_highmem_page``\  .
+
+.. _`prepare_image`:
+
+prepare_image
+=============
+
+.. c:function:: int prepare_image(struct memory_bitmap *new_bm, struct memory_bitmap *bm)
+
+    Make room for loading hibernation image.
+
+    :param struct memory_bitmap \*new_bm:
+        Unitialized memory bitmap structure.
+
+    :param struct memory_bitmap \*bm:
+        Memory bitmap with unsafe pages marked.
+
+.. _`prepare_image.description`:
+
+Description
+-----------
+
+Use \ ``bm``\  to mark the pages that will be overwritten in the process of
+restoring the system memory state from the suspend image ("unsafe" pages)
+and allocate memory for the image.
+
 The idea is to allocate a new memory bitmap first and then allocate
-as many pages as needed for the image data, but not to assign these
-pages to specific tasks initially.  Instead, we just mark them as
-allocated and create a lists of "safe" pages that will be used
-later.  On systems with high memory a list of "safe" highmem pages is
-also created.
+as many pages as needed for image data, but without specifying what those
+pages will be used for just yet.  Instead, we mark them all as allocated and
+create a lists of "safe" pages to be used later.  On systems with high
+memory a list of "safe" highmem pages is created too.
 
 .. _`get_buffer`:
 
@@ -769,13 +1076,21 @@ get_buffer
 
 .. c:function:: void *get_buffer(struct memory_bitmap *bm, struct chain_allocator *ca)
 
-    compute the address that \ :c:func:`snapshot_write_next`\  should set for its caller to write to.
+    Get the address to store the next image data page.
 
     :param struct memory_bitmap \*bm:
         *undescribed*
 
     :param struct chain_allocator \*ca:
         *undescribed*
+
+.. _`get_buffer.description`:
+
+Description
+-----------
+
+Get the address that \ :c:func:`snapshot_write_next`\  should return to its caller to
+write to.
 
 .. _`snapshot_write_next`:
 
@@ -784,28 +1099,27 @@ snapshot_write_next
 
 .. c:function:: int snapshot_write_next(struct snapshot_handle *handle)
 
-    used for writing the system memory snapshot.
+    Get the address to store the next image page.
 
     :param struct snapshot_handle \*handle:
-        *undescribed*
+        Snapshot handle structure to guide the writing.
 
 .. _`snapshot_write_next.description`:
 
 Description
 -----------
 
-On the first call to it \ ``handle``\  should point to a zeroed
-snapshot_handle structure.  The structure gets updated and a pointer
-to it should be passed to this function every next time.
+On the first call, \ ``handle``\  should point to a zeroed snapshot_handle
+structure.  The structure gets populated then and a pointer to it should be
+passed to this function every next time.
 
-On success the function returns a positive number.  Then, the caller
+On success, the function returns a positive number.  Then, the caller
 is allowed to write up to the returned number of bytes to the memory
 location computed by the \ :c:func:`data_of`\  macro.
 
-The function returns 0 to indicate the "end of file" condition,
-and a negative number is returned on error.  In such cases the
-structure pointed to by \ ``handle``\  is not updated and should not be used
-any more.
+The function returns 0 to indicate the "end of file" condition.  Negative
+numbers are returned on errors, in which cases the structure pointed to by
+\ ``handle``\  is not updated and should not be used any more.
 
 .. _`snapshot_write_finalize`:
 
@@ -814,10 +1128,20 @@ snapshot_write_finalize
 
 .. c:function:: void snapshot_write_finalize(struct snapshot_handle *handle)
 
-    must be called after the last call to \ :c:func:`snapshot_write_next`\  in case the last page in the image happens to be a highmem page and its contents should be stored in the highmem.  Additionally, it releases the memory that will not be used any more.
+    Complete the loading of a hibernation image.
 
     :param struct snapshot_handle \*handle:
         *undescribed*
+
+.. _`snapshot_write_finalize.description`:
+
+Description
+-----------
+
+Must be called after the last call to \ :c:func:`snapshot_write_next`\  in case the last
+page in the image happens to be a highmem page and its contents should be
+stored in highmem.  Additionally, it recycles bitmap memory that's not
+necessary any more.
 
 .. _`restore_highmem`:
 
@@ -826,7 +1150,7 @@ restore_highmem
 
 .. c:function:: int restore_highmem( void)
 
-    for each highmem page that was allocated before the suspend and included in the suspend image, and also has been allocated by the "resume" kernel swap its current (ie. "before resume") contents with the previous (ie. "before suspend") one.
+    Put highmem image pages into their original locations.
 
     :param  void:
         no arguments
@@ -836,8 +1160,12 @@ restore_highmem
 Description
 -----------
 
-If the resume eventually fails, we can call this function once
-again and restore the "before resume" highmem state.
+For each highmem page that was in use before hibernation and is included in
+the image, and also has been allocated by the "restore" kernel, swap its
+current contents with the previous (ie. "before hibernation") ones.
+
+If the restore eventually fails, we can call this function once again and
+restore the highmem state as seen by the restore kernel.
 
 .. This file was automatic generated / don't edit.
 

@@ -122,7 +122,7 @@ il4965_txq_ctx_alloc
 Description
 -----------
 
-\ ``param``\  il
+@param il
 \ ``return``\  error code
 
 .. _`il4965_txq_ctx_stop`:

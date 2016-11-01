@@ -13,12 +13,12 @@ pnp_register_protocol
     :param struct pnp_protocol \*protocol:
         pointer to the corresponding pnp_protocol structure
 
-.. _`pnp_register_protocol.ex-protocols`:
+.. _`pnp_register_protocol.description`:
 
-Ex protocols
-------------
+Description
+-----------
 
-ISAPNP, PNPBIOS, etc
+ Ex protocols: ISAPNP, PNPBIOS, etc
 
 .. _`pnp_unregister_protocol`:
 

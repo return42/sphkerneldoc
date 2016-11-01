@@ -27,7 +27,41 @@ hwmon_device_register_with_groups
 Description
 -----------
 
-\ :c:func:`hwmon_device_unregister`\  must be called when the device is no
+hwmon_device_unregister() must be called when the device is no
+longer needed.
+
+Returns the pointer to the new device.
+
+.. _`hwmon_device_register_with_info`:
+
+hwmon_device_register_with_info
+===============================
+
+.. c:function:: struct device *hwmon_device_register_with_info(struct device *dev, const char *name, void *drvdata, const struct hwmon_chip_info *chip, const struct attribute_group **groups)
+
+    register w/ hwmon
+
+    :param struct device \*dev:
+        the parent device
+
+    :param const char \*name:
+        hwmon name attribute
+
+    :param void \*drvdata:
+        driver data to attach to created device
+
+    :param const struct hwmon_chip_info \*chip:
+        *undescribed*
+
+    :param const struct attribute_group \*\*groups:
+        *undescribed*
+
+.. _`hwmon_device_register_with_info.description`:
+
+Description
+-----------
+
+hwmon_device_unregister() must be called when the device is no
 longer needed.
 
 Returns the pointer to the new device.
@@ -49,7 +83,7 @@ hwmon_device_register
 Description
 -----------
 
-\ :c:func:`hwmon_device_unregister`\  must be called when the device is no
+hwmon_device_unregister() must be called when the device is no
 longer needed.
 
 Returns the pointer to the new device.
@@ -88,6 +122,38 @@ devm_hwmon_device_register_with_groups
         List of attribute groups to create
 
 .. _`devm_hwmon_device_register_with_groups.description`:
+
+Description
+-----------
+
+Returns the pointer to the new device. The new device is automatically
+unregistered with the parent device.
+
+.. _`devm_hwmon_device_register_with_info`:
+
+devm_hwmon_device_register_with_info
+====================================
+
+.. c:function:: struct device *devm_hwmon_device_register_with_info(struct device *dev, const char *name, void *drvdata, const struct hwmon_chip_info *chip, const struct attribute_group **groups)
+
+    register w/ hwmon
+
+    :param struct device \*dev:
+        the parent device
+
+    :param const char \*name:
+        hwmon name attribute
+
+    :param void \*drvdata:
+        driver data to attach to created device
+
+    :param const struct hwmon_chip_info \*chip:
+        *undescribed*
+
+    :param const struct attribute_group \*\*groups:
+        *undescribed*
+
+.. _`devm_hwmon_device_register_with_info.description`:
 
 Description
 -----------

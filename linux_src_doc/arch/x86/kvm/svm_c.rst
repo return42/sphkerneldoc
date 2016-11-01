@@ -26,5 +26,36 @@ avic_set_running
     :param bool is_run:
         *undescribed*
 
+.. _`get_pi_vcpu_info`:
+
+get_pi_vcpu_info
+================
+
+.. c:function:: int get_pi_vcpu_info(struct kvm *kvm, struct kvm_kernel_irq_routing_entry *e, struct vcpu_data *vcpu_info, struct vcpu_svm **svm)
+
+    The HW cannot support posting multicast/broadcast interrupts to a vCPU. So, we still use legacy interrupt remapping for these kind of interrupts.
+
+    :param struct kvm \*kvm:
+        *undescribed*
+
+    :param struct kvm_kernel_irq_routing_entry \*e:
+        *undescribed*
+
+    :param struct vcpu_data \*vcpu_info:
+        *undescribed*
+
+    :param struct vcpu_svm \*\*svm:
+        *undescribed*
+
+.. _`get_pi_vcpu_info.description`:
+
+Description
+-----------
+
+For lowest-priority interrupts, we only support
+those with single CPU as the destination, e.g. user
+configures the interrupts via /proc/irq or uses
+irqbalance to make the interrupts single-CPU.
+
 .. This file was automatic generated / don't edit.
 

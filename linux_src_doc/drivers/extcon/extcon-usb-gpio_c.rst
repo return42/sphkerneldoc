@@ -22,7 +22,7 @@ Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Roger Quadros <rogerq\ ``ti``\ .com>
+Roger Quadros <rogerq@ti.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as

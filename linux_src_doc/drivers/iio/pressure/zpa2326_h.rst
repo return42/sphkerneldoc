@@ -1,0 +1,48 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/pressure/zpa2326.h
+
+.. _`zpa2326_probe`:
+
+zpa2326_probe
+=============
+
+.. c:function:: int zpa2326_probe(struct device *parent, const char *name, int irq, unsigned int hwid, struct regmap *regmap)
+
+    Instantiate and register core ZPA2326 IIO device
+
+    :param struct device \*parent:
+        Hardware sampling device the created IIO device will be a child of.
+
+    :param const char \*name:
+        Arbitrary name to identify the device.
+
+    :param int irq:
+        Interrupt line, negative if none.
+
+    :param unsigned int hwid:
+        Expected device hardware id.
+
+    :param struct regmap \*regmap:
+        Registers map used to abstract underlying bus accesses.
+
+.. _`zpa2326_probe.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_remove`:
+
+zpa2326_remove
+==============
+
+.. c:function:: void zpa2326_remove(const struct device *parent)
+
+    Unregister and destroy core ZPA2326 IIO device.
+
+    :param const struct device \*parent:
+        Hardware sampling device the IIO device to remove is a child of.
+
+.. This file was automatic generated / don't edit.
+

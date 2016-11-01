@@ -38,7 +38,7 @@ freed by the ACPI core automatically during the removal of \ ``data``\ .
 Return
 ------
 
-\ ``0``\  if property with \ ``name``\  has been found (success),
+%0 if property with \ ``name``\  has been found (success),
 \ ``-EINVAL``\  if the arguments are invalid,
 \ ``-EINVAL``\  if the property doesn't exist,
 \ ``-EPROTO``\  if the property value type doesn't match \ ``type``\ .
@@ -119,23 +119,23 @@ freed by the ACPI core automatically during the removal of \ ``data``\ .
 Return
 ------
 
-\ ``0``\  if array property (package) with \ ``name``\  has been found (success),
+%0 if array property (package) with \ ``name``\  has been found (success),
 \ ``-EINVAL``\  if the arguments are invalid,
 \ ``-EINVAL``\  if the property doesn't exist,
 \ ``-EPROTO``\  if the property is not a package or the type of its elements
 doesn't match \ ``type``\ .
 
-.. _`acpi_data_get_property_reference`:
+.. _`__acpi_node_get_property_reference`:
 
-acpi_data_get_property_reference
-================================
+__acpi_node_get_property_reference
+==================================
 
-.. c:function:: int acpi_data_get_property_reference(struct acpi_device_data *data, const char *propname, size_t index, struct acpi_reference_args *args)
+.. c:function:: int __acpi_node_get_property_reference(struct fwnode_handle *fwnode, const char *propname, size_t index, size_t num_args, struct acpi_reference_args *args)
 
     returns handle to the referenced object
 
-    :param struct acpi_device_data \*data:
-        ACPI device data object containing the property
+    :param struct fwnode_handle \*fwnode:
+        Firmware node to get the property from
 
     :param const char \*propname:
         Name of the property
@@ -143,10 +143,13 @@ acpi_data_get_property_reference
     :param size_t index:
         Index of the reference to return
 
+    :param size_t num_args:
+        Maximum number of arguments after each reference
+
     :param struct acpi_reference_args \*args:
         Location to store the returned reference with optional arguments
 
-.. _`acpi_data_get_property_reference.description`:
+.. _`__acpi_node_get_property_reference.description`:
 
 Description
 -----------
@@ -159,33 +162,35 @@ them in the \ ``args``\ ->args[] array.
 If there's more than one reference in the property value package, \ ``index``\  is
 used to select the one to return.
 
-.. _`acpi_data_get_property_reference.return`:
+It is possible to leave holes in the property value set like in the
+
+.. _`__acpi_node_get_property_reference.example-below`:
+
+example below
+-------------
+
+
+Package () {
+"cs-gpios",
+Package () {
+^GPIO, 19, 0, 0,
+^GPIO, 20, 0, 0,
+0,
+^GPIO, 21, 0, 0,
+}
+}
+
+Calling this function with index \ ``2``\  return \ ``-ENOENT``\  and with index \ ``3``\ 
+returns the last entry. If the property does not contain any more values
+\ ``-ENODATA``\  is returned. The NULL entry must be single integer and
+preferably contain value \ ``0``\ .
+
+.. _`__acpi_node_get_property_reference.return`:
 
 Return
 ------
 
-\ ``0``\  on success, negative error code on failure.
-
-.. _`acpi_node_get_property_reference`:
-
-acpi_node_get_property_reference
-================================
-
-.. c:function:: int acpi_node_get_property_reference(struct fwnode_handle *fwnode, const char *name, size_t index, struct acpi_reference_args *args)
-
-    get a handle to the referenced object.
-
-    :param struct fwnode_handle \*fwnode:
-        Firmware node to get the property from.
-
-    :param const char \*name:
-        *undescribed*
-
-    :param size_t index:
-        Index of the reference to return.
-
-    :param struct acpi_reference_args \*args:
-        Location to store the returned reference with optional arguments.
+%0 on success, negative error code on failure.
 
 .. _`acpi_node_prop_read`:
 

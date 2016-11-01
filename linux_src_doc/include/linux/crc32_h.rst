@@ -36,7 +36,7 @@ __crc32c_le_shift
 
 .. c:function:: u32 __attribute_const__ __crc32c_le_shift(u32 crc, size_t len)
 
-    Combine two crc32c check values into one. For two sequences of bytes, seq1 and seq2 with lengths len1 and len2, \\ :c:func:`__crc32c_le`\  check values were calculated for each, crc1 and crc2.
+    Combine two crc32c check values into one. For two sequences of bytes, seq1 and seq2 with lengths len1 and len2, \__crc32c_le() check values were calculated for each, crc1 and crc2.
 
     :param u32 crc:
         *undescribed*
@@ -49,10 +49,10 @@ __crc32c_le_shift
 Return
 ------
 
-The \\ :c:func:`__crc32c_le`\  check value of seq1 and seq2 concatenated,
+The \__crc32c_le() check value of seq1 and seq2 concatenated,
 requiring only crc1, crc2, and len2. Note: If seq_full denotes
 the concatenated memory area of seq1 with seq2, and crc_full
-the \\ :c:func:`__crc32c_le`\  value of seq_full, then crc_full ==
+the \__crc32c_le() value of seq_full, then crc_full ==
 \__crc32c_le_combine(crc1, crc2, len2) when crc_full was
 seeded with the same initializer as crc1, and crc2 seed
 was 0. See also \ :c:func:`crc32c_combine_test`\ .

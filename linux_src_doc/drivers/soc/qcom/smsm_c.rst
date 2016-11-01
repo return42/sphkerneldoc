@@ -288,7 +288,7 @@ smsm_parse_ipc
 
 .. c:function:: int smsm_parse_ipc(struct qcom_smsm *smsm, unsigned host_id)
 
-    parses a qcom,ipc-\ ``d``\  device tree property
+    parses a qcom,ipc-%d device tree property
 
     :param struct qcom_smsm \*smsm:
         smsm driver context

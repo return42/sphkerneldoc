@@ -37,6 +37,46 @@ sev
 event
     The event itself.
 
+.. _`v4l2_subscribed_event_ops`:
+
+struct v4l2_subscribed_event_ops
+================================
+
+.. c:type:: struct v4l2_subscribed_event_ops
+
+    Subscribed event operations.
+
+.. _`v4l2_subscribed_event_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct v4l2_subscribed_event_ops {
+        int (*add)(struct v4l2_subscribed_event *sev, unsigned int elems);
+        void (*del)(struct v4l2_subscribed_event *sev);
+        void (*replace)(struct v4l2_event *old, const struct v4l2_event *new);
+        void (*merge)(const struct v4l2_event *old, struct v4l2_event *new);
+    }
+
+.. _`v4l2_subscribed_event_ops.members`:
+
+Members
+-------
+
+add
+    Optional callback, called when a new listener is added
+
+del
+    Optional callback, called when a listener stops listening
+
+replace
+    Optional callback that can replace event 'old' with event 'new'.
+
+merge
+    Optional callback that can merge event 'old' into event 'new'.
+
 .. _`v4l2_subscribed_event`:
 
 struct v4l2_subscribed_event
@@ -61,9 +101,9 @@ Definition
         struct v4l2_fh *fh;
         struct list_head node;
         const struct v4l2_subscribed_event_ops *ops;
-        unsigned elems;
-        unsigned first;
-        unsigned in_use;
+        unsigned int elems;
+        unsigned int first;
+        unsigned int in_use;
         struct v4l2_kevent events[];
     }
 
@@ -88,7 +128,8 @@ fh
     Filehandle that subscribed to this event.
 
 node
-    List node that hooks into the object's event list (if there is one).
+    List node that hooks into the object's event list
+    (if there is one).
 
 ops
     v4l2_subscribed_event_ops
@@ -104,6 +145,215 @@ in_use
 
 events
     An array of \ ``elems``\  events.
+
+.. _`v4l2_event_dequeue`:
+
+v4l2_event_dequeue
+==================
+
+.. c:function:: int v4l2_event_dequeue(struct v4l2_fh *fh, struct v4l2_event *event, int nonblocking)
+
+    Dequeue events from video device.
+
+    :param struct v4l2_fh \*fh:
+        pointer to struct v4l2_fh
+
+    :param struct v4l2_event \*event:
+        pointer to struct v4l2_event
+
+    :param int nonblocking:
+        if not zero, waits for an event to arrive
+
+.. _`v4l2_event_queue`:
+
+v4l2_event_queue
+================
+
+.. c:function:: void v4l2_event_queue(struct video_device *vdev, const struct v4l2_event *ev)
+
+    Queue events to video device.
+
+    :param struct video_device \*vdev:
+        pointer to \ :c:type:`struct video_device <video_device>`\ 
+
+    :param const struct v4l2_event \*ev:
+        pointer to \ :c:type:`struct v4l2_event <v4l2_event>`\ 
+
+.. _`v4l2_event_queue.description`:
+
+Description
+-----------
+
+The event will be queued for all \ :c:type:`struct v4l2_fh <v4l2_fh>`\  file handlers.
+
+.. note::
+   The driver's only responsibility is to fill in the type and the data
+   fields.The other fields will be filled in by  V4L2.
+
+.. _`v4l2_event_queue_fh`:
+
+v4l2_event_queue_fh
+===================
+
+.. c:function:: void v4l2_event_queue_fh(struct v4l2_fh *fh, const struct v4l2_event *ev)
+
+    Queue events to video device.
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param const struct v4l2_event \*ev:
+        pointer to \ :c:type:`struct v4l2_event <v4l2_event>`\ 
+
+.. _`v4l2_event_queue_fh.description`:
+
+Description
+-----------
+
+
+The event will be queued only for the specified \ :c:type:`struct v4l2_fh <v4l2_fh>`\  file handler.
+
+.. note::
+   The driver's only responsibility is to fill in the type and the data
+   fields.The other fields will be filled in by  V4L2.
+
+.. _`v4l2_event_pending`:
+
+v4l2_event_pending
+==================
+
+.. c:function:: int v4l2_event_pending(struct v4l2_fh *fh)
+
+    Check if an event is available
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+.. _`v4l2_event_pending.description`:
+
+Description
+-----------
+
+Returns the number of pending events.
+
+.. _`v4l2_event_subscribe`:
+
+v4l2_event_subscribe
+====================
+
+.. c:function:: int v4l2_event_subscribe(struct v4l2_fh *fh, const struct v4l2_event_subscription *sub, unsigned int elems, const struct v4l2_subscribed_event_ops *ops)
+
+    Subscribes to an event
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param const struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+    :param unsigned int elems:
+        size of the events queue
+
+    :param const struct v4l2_subscribed_event_ops \*ops:
+        pointer to \ :c:type:`struct v4l2_subscribed_event_ops <v4l2_subscribed_event_ops>`\ 
+
+.. _`v4l2_event_subscribe.description`:
+
+Description
+-----------
+
+.. note::
+
+   if \ ``elems``\  is zero, the framework will fill in a default value,
+   with is currently 1 element.
+
+.. _`v4l2_event_unsubscribe`:
+
+v4l2_event_unsubscribe
+======================
+
+.. c:function:: int v4l2_event_unsubscribe(struct v4l2_fh *fh, const struct v4l2_event_subscription *sub)
+
+    Unsubscribes to an event
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param const struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+.. _`v4l2_event_unsubscribe_all`:
+
+v4l2_event_unsubscribe_all
+==========================
+
+.. c:function:: void v4l2_event_unsubscribe_all(struct v4l2_fh *fh)
+
+    Unsubscribes to all events
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+.. _`v4l2_event_subdev_unsubscribe`:
+
+v4l2_event_subdev_unsubscribe
+=============================
+
+.. c:function:: int v4l2_event_subdev_unsubscribe(struct v4l2_subdev *sd, struct v4l2_fh *fh, struct v4l2_event_subscription *sub)
+
+    Subdev variant of \ :c:func:`v4l2_event_unsubscribe`\ 
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+.. _`v4l2_event_subdev_unsubscribe.description`:
+
+Description
+-----------
+
+.. note::
+
+     This function should be used for the \ :c:type:`struct v4l2_subdev_core_ops <v4l2_subdev_core_ops>`\ 
+     \ ``unsubscribe_event``\  field.
+
+.. _`v4l2_src_change_event_subscribe`:
+
+v4l2_src_change_event_subscribe
+===============================
+
+.. c:function:: int v4l2_src_change_event_subscribe(struct v4l2_fh *fh, const struct v4l2_event_subscription *sub)
+
+    helper function that calls \ :c:func:`v4l2_event_subscribe`\  if the event is \ ``V4L2_EVENT_SOURCE_CHANGE``\ .
+
+    :param struct v4l2_fh \*fh:
+        pointer to struct v4l2_fh
+
+    :param const struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+.. _`v4l2_src_change_event_subdev_subscribe`:
+
+v4l2_src_change_event_subdev_subscribe
+======================================
+
+.. c:function:: int v4l2_src_change_event_subdev_subscribe(struct v4l2_subdev *sd, struct v4l2_fh *fh, struct v4l2_event_subscription *sub)
+
+    Variant of \ :c:func:`v4l2_event_subscribe`\ , meant to subscribe only events of the type \ ``V4L2_EVENT_SOURCE_CHANGE``\ .
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
 
 .. This file was automatic generated / don't edit.
 

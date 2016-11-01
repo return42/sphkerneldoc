@@ -228,92 +228,83 @@ Description
 
 This function allocates a range of glorts for this interface to use.
 
-.. _`fm10k_del_vxlan_port_all`:
+.. _`fm10k_free_udp_port_info`:
 
-fm10k_del_vxlan_port_all
+fm10k_free_udp_port_info
 ========================
 
-.. c:function:: void fm10k_del_vxlan_port_all(struct fm10k_intfc *interface)
+.. c:function:: void fm10k_free_udp_port_info(struct fm10k_intfc *interface)
 
     :param struct fm10k_intfc \*interface:
         board private structure
 
-.. _`fm10k_del_vxlan_port_all.description`:
+.. _`fm10k_free_udp_port_info.description`:
 
 Description
 -----------
 
-This function frees the entire vxlan_port list
+This function frees both geneve_port and vxlan_port structures
 
-.. _`fm10k_restore_vxlan_port`:
+.. _`fm10k_restore_udp_port_info`:
 
-fm10k_restore_vxlan_port
-========================
+fm10k_restore_udp_port_info
+===========================
 
-.. c:function:: void fm10k_restore_vxlan_port(struct fm10k_intfc *interface)
+.. c:function:: void fm10k_restore_udp_port_info(struct fm10k_intfc *interface)
 
     :param struct fm10k_intfc \*interface:
         board private structure
 
-.. _`fm10k_restore_vxlan_port.description`:
+.. _`fm10k_restore_udp_port_info.description`:
 
 Description
 -----------
 
-This function restores the value in the tunnel_cfg register after reset
+This function restores the value in the tunnel_cfg register(s) after reset
 
-.. _`fm10k_add_vxlan_port`:
+.. _`fm10k_udp_tunnel_add`:
 
-fm10k_add_vxlan_port
+fm10k_udp_tunnel_add
 ====================
 
-.. c:function:: void fm10k_add_vxlan_port(struct net_device *dev, sa_family_t sa_family, __be16 port)
+.. c:function:: void fm10k_udp_tunnel_add(struct net_device *dev, struct udp_tunnel_info *ti)
 
     :param struct net_device \*dev:
         *undescribed*
 
-    :param sa_family_t sa_family:
-        Address family of new port
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
-    :param __be16 port:
-        port number used for VXLAN
-
-.. _`fm10k_add_vxlan_port.description`:
+.. _`fm10k_udp_tunnel_add.description`:
 
 Description
 -----------
 
-This function is called when a new VXLAN interface has added a new port
-number to the range that is currently in use for VXLAN.  The new port
-number is always added to the tail so that the port number list should
-match the order in which the ports were allocated.  The head of the list
-is always used as the VXLAN port number for offloads.
+This function is called when a new UDP tunnel port has been added.
+Due to hardware restrictions, only one port per type can be offloaded at
+once.
 
-.. _`fm10k_del_vxlan_port`:
+.. _`fm10k_udp_tunnel_del`:
 
-fm10k_del_vxlan_port
+fm10k_udp_tunnel_del
 ====================
 
-.. c:function:: void fm10k_del_vxlan_port(struct net_device *dev, sa_family_t sa_family, __be16 port)
+.. c:function:: void fm10k_udp_tunnel_del(struct net_device *dev, struct udp_tunnel_info *ti)
 
     :param struct net_device \*dev:
         *undescribed*
 
-    :param sa_family_t sa_family:
-        Address family of freed port
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
-    :param __be16 port:
-        port number used for VXLAN
-
-.. _`fm10k_del_vxlan_port.description`:
+.. _`fm10k_udp_tunnel_del.description`:
 
 Description
 -----------
 
-This function is called when a new VXLAN interface has freed a port
-number from the range that is currently in use for VXLAN.  The freed
-port is removed from the list and the new head is used to determine
-the port number for offloads.
+This function is called when a new UDP tunnel port is deleted. The freed
+port will be removed from the list, then we reprogram the offloaded port
+based on the head of the list.
 
 .. _`fm10k_open`:
 

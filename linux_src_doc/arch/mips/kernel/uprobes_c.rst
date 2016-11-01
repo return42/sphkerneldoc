@@ -72,34 +72,6 @@ Return 0 (success) or a negative errno.
 This version overrides the weak version in kernel/events/uprobes.c.
 It is required to handle MIPS16 and microMIPS.
 
-.. _`set_orig_insn`:
-
-set_orig_insn
-=============
-
-.. c:function:: int set_orig_insn(struct arch_uprobe *auprobe, struct mm_struct *mm, unsigned long vaddr)
-
-    Restore the original instruction.
-
-    :param struct arch_uprobe \*auprobe:
-        arch specific probepoint information.
-
-    :param struct mm_struct \*mm:
-        the probed process address space.
-
-    :param unsigned long vaddr:
-        the virtual address to insert the opcode.
-
-.. _`set_orig_insn.description`:
-
-Description
------------
-
-For mm \ ``mm``\ , restore the original opcode (opcode) at \ ``vaddr``\ .
-Return 0 (success) or a negative errno.
-
-This overrides the weak version in kernel/events/uprobes.c.
-
 .. _`uprobe_get_swbp_addr`:
 
 uprobe_get_swbp_addr

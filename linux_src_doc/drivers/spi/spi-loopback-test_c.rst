@@ -27,7 +27,7 @@ spi_test_execute_msg
 spi
 ---
 
-\ ``spi_device``\  on which to run the \ ``spi_message``\ 
+@spi_device on which to run the \ ``spi_message``\ 
 
 .. _`spi_test_execute_msg.test`:
 
@@ -109,7 +109,7 @@ spi_test_run_tests
 Return
 ------
 
-status errors as per @\ :c:func:`spi_test_run_test`\ 
+status errors as per \ ``spi_test_run_test``\ ()
 
 .. This file was automatic generated / don't edit.
 

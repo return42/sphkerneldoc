@@ -52,5 +52,38 @@ acquired recursively.  We lock on the first instance.
 In the case of a BTT instance on top of PMEM, we only acquire a lane
 for the BTT metadata updates.
 
+.. _`nvdimm_flush`:
+
+nvdimm_flush
+============
+
+.. c:function:: void nvdimm_flush(struct nd_region *nd_region)
+
+    flush any posted write queues between the cpu and pmem media
+
+    :param struct nd_region \*nd_region:
+        blk or interleaved pmem region
+
+.. _`nvdimm_has_flush`:
+
+nvdimm_has_flush
+================
+
+.. c:function:: int nvdimm_has_flush(struct nd_region *nd_region)
+
+    determine write flushing requirements
+
+    :param struct nd_region \*nd_region:
+        blk or interleaved pmem region
+
+.. _`nvdimm_has_flush.description`:
+
+Description
+-----------
+
+Returns 1 if writes require flushing
+Returns 0 if writes do not require flushing
+Returns -ENXIO if flushing capability can not be determined
+
 .. This file was automatic generated / don't edit.
 

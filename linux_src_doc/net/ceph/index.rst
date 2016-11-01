@@ -8,3 +8,4 @@ ceph
     :maxdepth: 1
 
     crush/index
+    cls_lock_client_c

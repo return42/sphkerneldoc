@@ -131,7 +131,7 @@ Description
 -----------
 
 Return 1 if any bits were set in the \*\_CONTEXT\_\* register
-identified by (\ ``part``\ , \ ``inst``\ , \ ``idx``\ ), which means that some context
+identified by (@part, \ ``inst``\ , \ ``idx``\ ), which means that some context
 was lost for that module; otherwise, return 0.  XXX Deprecated;
 callers need to use a less-SoC-dependent way to identify hardware
 IP blocks.
@@ -160,7 +160,7 @@ Description
 -----------
 
 Clear hardware context loss bits for the module identified by
-(\ ``part``\ , \ ``inst``\ , \ ``idx``\ ).  No return value.  XXX Deprecated; callers
+(@part, \ ``inst``\ , \ ``idx``\ ).  No return value.  XXX Deprecated; callers
 need to use a less-SoC-dependent way to identify hardware IP
 blocks.
 

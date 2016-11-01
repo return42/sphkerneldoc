@@ -29,6 +29,7 @@ Definition
         bool calls;
         bool returns;
         bool callchain;
+        bool thread_stack;
         bool last_branch;
         unsigned int callchain_sz;
         unsigned int last_branch_sz;
@@ -75,6 +76,9 @@ returns
 
 callchain
     add callchain to 'instructions' events
+
+thread_stack
+    feed branches to the thread_stack
 
 last_branch
     add branch context to 'instruction' events
@@ -274,7 +278,7 @@ mmap_size
     size of the mmap at \ ``mmap_addr``\ 
 
 data_needs_freeing
-    \ ``data``\  was malloc'd so free it when it is no longer
+    @data was malloc'd so free it when it is no longer
     needed
 
 consecutive
@@ -337,7 +341,7 @@ cpu
     in per-cpu mode, the cpu this queue is associated with
 
 set
-    \ ``true``\  once this queue has been dedicated to a specific thread or cpu
+    %true once this queue has been dedicated to a specific thread or cpu
 
 priv
     implementation-specific data
@@ -494,7 +498,7 @@ userpg
     pointer to buffer's perf_event_mmap_page
 
 mask
-    \ ``0``\  if \ ``len``\  is not a power of two, otherwise (\ ``len``\  - \ ``1``\ )
+    %0 if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
 
 len
     size of mapped area
@@ -544,7 +548,7 @@ Members
 -------
 
 mask
-    \ ``0``\  if \ ``len``\  is not a power of two, otherwise (\ ``len``\  - \ ``1``\ )
+    %0 if \ ``len``\  is not a power of two, otherwise (@len - \ ``1``\ )
 
 offset
     file offset of mapped area
@@ -632,6 +636,112 @@ read_finish
 
 alignment
     *undescribed*
+
+.. _`addr_filter`:
+
+struct addr_filter
+==================
+
+.. c:type:: struct addr_filter
+
+    address filter.
+
+.. _`addr_filter.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct addr_filter {
+        struct list_head list;
+        bool range;
+        bool start;
+        const char *action;
+        const char *sym_from;
+        const char *sym_to;
+        int sym_from_idx;
+        int sym_to_idx;
+        u64 addr;
+        u64 size;
+        const char *filename;
+        char *str;
+    }
+
+.. _`addr_filter.members`:
+
+Members
+-------
+
+list
+    list node
+
+range
+    true if it is a range filter
+
+start
+    true if action is 'filter' or 'start'
+
+action
+    'filter', 'start' or 'stop' ('tracestop' is accepted but converted
+    to 'stop')
+
+sym_from
+    symbol name for the filter address
+
+sym_to
+    symbol name that determines the filter size
+
+sym_from_idx
+    selects n'th from symbols with the same name (0 means global
+    and less than 0 means symbol must be unique)
+
+sym_to_idx
+    same as \ ``sym_from_idx``\  but for \ ``sym_to``\ 
+
+addr
+    filter address
+
+size
+    filter region size (for range filters)
+
+filename
+    DSO file name or NULL for the kernel
+
+str
+    allocated string that contains the other string members
+
+.. _`addr_filters`:
+
+struct addr_filters
+===================
+
+.. c:type:: struct addr_filters
+
+    list of address filters.
+
+.. _`addr_filters.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct addr_filters {
+        struct list_head head;
+        int cnt;
+    }
+
+.. _`addr_filters.members`:
+
+Members
+-------
+
+head
+    list of address filters
+
+cnt
+    number of address filters
 
 .. This file was automatic generated / don't edit.
 

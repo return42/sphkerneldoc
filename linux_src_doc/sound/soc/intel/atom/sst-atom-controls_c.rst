@@ -261,7 +261,7 @@ Description
 Fills the widget pointer in the kcontrol private data, and also fills the
 kcontrol pointer in the widget private data.
 
-Widget pointer is used to send the algo/gain in the .\ :c:func:`put`\  handler if the
+Widget pointer is used to send the algo/gain in the .put() handler if the
 widget is powerd on.
 
 Kcontrol pointer is used to send the algo/gain in the widget power ON/OFF

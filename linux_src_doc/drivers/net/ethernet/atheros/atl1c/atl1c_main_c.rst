@@ -232,7 +232,7 @@ atl1c_configure_mac
 
 .. c:function:: int atl1c_configure_mac(struct atl1c_adapter *adapter)
 
-    Configure Transmit\ :c:type:`struct Receive <Receive>` Unit after Reset
+    Configure Transmit&Receive Unit after Reset
 
     :param struct atl1c_adapter \*adapter:
         board private structure

@@ -29,7 +29,7 @@ be called again.
 Caveats
 -------
 
-\ :c:func:`open`\  should only be successful the first time a
+open() should only be successful the first time a
 SW entity calls it.
 
 .. _`n_tracesink_close`:

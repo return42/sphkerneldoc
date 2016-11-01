@@ -31,5 +31,17 @@ __virtio_clear_bit
     :param unsigned int fbit:
         the feature bit
 
+.. _`virtio_has_iommu_quirk`:
+
+virtio_has_iommu_quirk
+======================
+
+.. c:function:: bool virtio_has_iommu_quirk(const struct virtio_device *vdev)
+
+    determine whether this device has the iommu quirk
+
+    :param const struct virtio_device \*vdev:
+        the device
+
 .. This file was automatic generated / don't edit.
 

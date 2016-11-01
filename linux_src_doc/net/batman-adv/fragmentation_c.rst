@@ -261,7 +261,7 @@ the new fragment, NULL on error.
 batadv_frag_send_packet
 =======================
 
-.. c:function:: bool batadv_frag_send_packet(struct sk_buff *skb, struct batadv_orig_node *orig_node, struct batadv_neigh_node *neigh_node)
+.. c:function:: int batadv_frag_send_packet(struct sk_buff *skb, struct batadv_orig_node *orig_node, struct batadv_neigh_node *neigh_node)
 
     create up to 16 fragments from the passed skb
 
@@ -279,7 +279,8 @@ batadv_frag_send_packet
 Return
 ------
 
-true on success, false otherwise.
+the netdev tx status or -1 in case of error.
+When -1 is returned the skb is not consumed.
 
 .. This file was automatic generated / don't edit.
 

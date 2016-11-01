@@ -84,6 +84,7 @@ Definition
         unsigned int (*get_mode)(struct regulator_dev *);
         int (*enable_time)(struct regulator_dev *);
         int (*set_ramp_delay)(struct regulator_dev *, int ramp_delay);
+        int (*set_voltage_time)(struct regulator_dev *, int old_uV,int new_uV);
         int (*set_voltage_time_sel)(struct regulator_dev *,unsigned int old_selector,unsigned int new_selector);
         int (*set_soft_start)(struct regulator_dev *);
         int (*get_status)(struct regulator_dev *);
@@ -168,11 +169,17 @@ set_ramp_delay
     Set the ramp delay for the regulator. The driver should
     select ramp delay equal to or less than(closest) ramp_delay.
 
+set_voltage_time
+    Time taken for the regulator voltage output voltage
+    to stabilise after being set to a new value, in microseconds.
+    The function receives the from and to voltage as input, it
+    should return the worst case.
+
 set_voltage_time_sel
     Time taken for the regulator voltage output voltage
     to stabilise after being set to a new value, in microseconds.
-    The function provides the from and to voltage selector, the
-    function should return the worst case.
+    The function receives the from and to voltage selector as
+    input, it should return the worst case.
 
 set_soft_start
     Enable soft start for the regulator.
@@ -320,7 +327,7 @@ continuous_voltage_range
     voltage within constrains range.
 
 n_voltages
-    Number of selectors available for ops.\ :c:func:`list_voltage`\ .
+    Number of selectors available for ops.list_voltage().
 
 ops
     Regulator operations table.

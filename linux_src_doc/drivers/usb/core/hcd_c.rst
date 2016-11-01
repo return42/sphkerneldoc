@@ -109,7 +109,7 @@ usb_register_bus
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_register_bus.description`:
 
@@ -143,7 +143,7 @@ usb_deregister_bus
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_deregister_bus.description`:
 
@@ -342,7 +342,7 @@ usb_hcd_giveback_urb
 Context
 -------
 
-\ :c:func:`in_interrupt`\ 
+in_interrupt()
 
 .. _`usb_hcd_giveback_urb.description`:
 
@@ -369,7 +369,7 @@ usb_hcd_alloc_bandwidth
     check whether a new bandwidth setting exceeds the bus bandwidth
 
     :param struct usb_device \*udev:
-        target \ :c:type:`struct usb_device <usb_device>`
+        target \ :c:type:`struct usb_device <usb_device>`\ 
 
     :param struct usb_host_config \*new_config:
         new configuration to install
@@ -545,7 +545,7 @@ usb_bus_start_enum
 Context
 -------
 
-\ :c:func:`in_interrupt`\ 
+in_interrupt()
 
 .. _`usb_bus_start_enum.description`:
 
@@ -592,7 +592,7 @@ Checks whether the controller is now dead.
 Return
 ------
 
-\ ``IRQ_HANDLED``\  if the IRQ was handled. \ ``IRQ_NONE``\  otherwise.
+%IRQ_HANDLED if the IRQ was handled. \ ``IRQ_NONE``\  otherwise.
 
 .. _`usb_hc_died`:
 
@@ -644,7 +644,7 @@ usb_create_shared_hcd
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_create_shared_hcd.description`:
 
@@ -686,7 +686,7 @@ usb_create_hcd
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_create_hcd.description`:
 
@@ -749,7 +749,7 @@ usb_remove_hcd
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_remove_hcd.description`:
 

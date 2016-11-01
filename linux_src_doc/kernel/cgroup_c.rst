@@ -18,7 +18,7 @@ cgroup_ssid_enabled
 Description
 -----------
 
-\ :c:func:`cgroup_subsys_enabled`\  can only be used with literal subsys names which
+cgroup_subsys_enabled() can only be used with literal subsys names which
 is fine for individual subsystems but unsuitable for cgroup core.  This
 is slower \ :c:func:`static_key_enabled`\  based test indexed by \ ``ssid``\ .
 
@@ -105,7 +105,7 @@ cgroup_css
         the cgroup of interest
 
     :param struct cgroup_subsys \*ss:
-        the subsystem of interest (\ ``NULL``\  returns \ ``cgrp``\ ->self)
+        the subsystem of interest (%NULL returns \ ``cgrp``\ ->self)
 
 .. _`cgroup_css.description`:
 
@@ -131,7 +131,7 @@ cgroup_e_css
         the cgroup of interest
 
     :param struct cgroup_subsys \*ss:
-        the subsystem of interest (\ ``NULL``\  returns \ ``cgrp``\ ->self)
+        the subsystem of interest (%NULL returns \ ``cgrp``\ ->self)
 
 .. _`cgroup_e_css.description`:
 
@@ -323,7 +323,7 @@ css_set_update_populated
 Description
 -----------
 
-\ ``cset``\  is either getting the first task or losing the last.  Update the
+@cset is either getting the first task or losing the last.  Update the
 ->populated_cnt of all associated cgroups accordingly.
 
 .. _`css_set_move_task`:
@@ -608,7 +608,7 @@ On failure, no file is added.
 task_cgroup_path
 ================
 
-.. c:function:: char *task_cgroup_path(struct task_struct *task, char *buf, size_t buflen)
+.. c:function:: int task_cgroup_path(struct task_struct *task, char *buf, size_t buflen)
 
     cgroup path of a task in the first cgroup hierarchy
 
@@ -678,7 +678,7 @@ cgroup_taskset_first
 Description
 -----------
 
-\ ``tset``\  iteration is initialized and the first task is returned.
+@tset iteration is initialized and the first task is returned.
 
 .. _`cgroup_taskset_next`:
 
@@ -858,8 +858,8 @@ responsible for invoking \ :c:func:`cgroup_migrate_add_src`\  and
 \ :c:func:`cgroup_migrate_prepare_dst`\  on the targets before invoking this
 function and following up with \ :c:func:`cgroup_migrate_finish`\ .
 
-As long as a controller's ->\ :c:func:`can_attach`\  doesn't fail, this function is
-guaranteed to succeed.  This means that, excluding ->\ :c:func:`can_attach`\ 
+As long as a controller's ->can_attach() doesn't fail, this function is
+guaranteed to succeed.  This means that, excluding ->can_attach()
 failure, when migrating multiple targets, the success or failure can be
 decided for all targets by invoking \ :c:func:`group_migrate_prepare_dst`\  before
 actually starting migrating.
@@ -921,7 +921,7 @@ cgroup_update_dfl_csses
 Description
 -----------
 
-\ ``cgrp``\ 's control masks have changed and its subtree's css associations
+@cgrp's control masks have changed and its subtree's css associations
 need to be updated accordingly.  This function looks up all css_sets
 which are attached to the subtree, creates the matching updated css_sets
 and migrates the tasks to the new ones.
@@ -1057,7 +1057,7 @@ Walk \ ``cgrp``\ 's subtree and kill and hide csses so that they match
 A css is hidden when the userland requests it to be disabled while other
 subsystems are still depending on it.  The css must not actively control
 resources and be in the vanilla state if it's made visible again later.
-Controllers which may be depended upon should provide ->\ :c:func:`css_reset`\  for
+Controllers which may be depended upon should provide ->css_reset() for
 this purpose.
 
 .. _`cgroup_apply_control`:
@@ -1257,7 +1257,7 @@ cgroup_file_notify
 Description
 -----------
 
-\ ``cfile``\  must have been obtained by setting cftype->file_offset.
+@cfile must have been obtained by setting cftype->file_offset.
 
 .. _`cgroup_task_count`:
 
@@ -1276,7 +1276,9 @@ cgroup_task_count
 Description
 -----------
 
-Return the number of tasks in the cgroup.
+Return the number of tasks in the cgroup.  The returned number can be
+higher than the actual number of tasks due to css_set references from
+namespace roots and temporary usages.
 
 .. _`css_next_child`:
 
@@ -1288,7 +1290,7 @@ css_next_child
     find the next child of a given css
 
     :param struct cgroup_subsys_state \*pos:
-        the current position (\ ``NULL``\  to initiate traversal)
+        the current position (%NULL to initiate traversal)
 
     :param struct cgroup_subsys_state \*parent:
         css whose children to walk
@@ -1303,11 +1305,11 @@ under either cgroup_mutex or RCU read lock.  The only requirement is
 that \ ``parent``\  and \ ``pos``\  are accessible.  The next sibling is guaranteed to
 be returned regardless of their states.
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 .. _`css_next_descendant_pre`:
@@ -1320,7 +1322,7 @@ css_next_descendant_pre
     find the next descendant for pre-order walk
 
     :param struct cgroup_subsys_state \*pos:
-        the current position (\ ``NULL``\  to initiate traversal)
+        the current position (%NULL to initiate traversal)
 
     :param struct cgroup_subsys_state \*root:
         css whose descendants to walk
@@ -1339,11 +1341,11 @@ doesn't require the whole traversal to be contained in a single critical
 section.  This function will return the correct next descendant as long
 as both \ ``pos``\  and \ ``root``\  are accessible and \ ``pos``\  is a descendant of \ ``root``\ .
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 .. _`css_rightmost_descendant`:
@@ -1382,7 +1384,7 @@ css_next_descendant_post
     find the next descendant for post-order walk
 
     :param struct cgroup_subsys_state \*pos:
-        the current position (\ ``NULL``\  to initiate traversal)
+        the current position (%NULL to initiate traversal)
 
     :param struct cgroup_subsys_state \*root:
         css whose descendants to walk
@@ -1402,11 +1404,11 @@ section.  This function will return the correct next descendant as long
 as both \ ``pos``\  and \ ``cgroup``\  are accessible and \ ``pos``\  is a descendant of
 \ ``cgroup``\ .
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 .. _`css_has_online_children`:
@@ -1606,7 +1608,7 @@ Description
 -----------
 
 This function initiates destruction of \ ``css``\  by removing cgroup interface
-files and putting its base reference.  ->\ :c:func:`css_offline`\  will be invoked
+files and putting its base reference.  ->css_offline() will be invoked
 asynchronously once \ :c:func:`css_tryget_online`\  is guaranteed to fail and when
 the reference count reaches zero, \ ``css``\  will be released.
 
@@ -1630,7 +1632,7 @@ Description
 css's make use of percpu refcnts whose killing latency shouldn't be
 exposed to userland and are RCU protected.  Also, cgroup core needs to
 guarantee that \ :c:func:`css_tryget_online`\  won't succeed by the time
-->\ :c:func:`css_offline`\  is invoked.  To satisfy all the requirements,
+->css_offline() is invoked.  To satisfy all the requirements,
 destruction is implemented in the following two steps.
 
 s1. Verify \ ``cgrp``\  can be destroyed and mark it dying.  Remove all
@@ -1638,7 +1640,7 @@ userland visible parts and start killing the percpu refcnts of
 css's.  Set up so that the next stage will be kicked off once all
 the percpu refcnts are confirmed to be killed.
 
-s2. Invoke ->\ :c:func:`css_offline`\ , mark the cgroup dead and proceed with the
+s2. Invoke ->css_offline(), mark the cgroup dead and proceed with the
 rest of destruction.  Once all cgroup references are gone, the
 cgroup is RCU-freed.
 
@@ -1872,6 +1874,28 @@ Find the cgroup at \ ``path``\  on the default hierarchy, increment its
 reference count and return it.  Returns pointer to the found cgroup on
 success, ERR_PTR(-ENOENT) if \ ``path``\  doens't exist and ERR_PTR(-ENOTDIR)
 if \ ``path``\  points to a non-directory.
+
+.. _`cgroup_get_from_fd`:
+
+cgroup_get_from_fd
+==================
+
+.. c:function:: struct cgroup *cgroup_get_from_fd(int fd)
+
+    get a cgroup pointer from a fd
+
+    :param int fd:
+        fd obtained by open(cgroup2_dir)
+
+.. _`cgroup_get_from_fd.description`:
+
+Description
+-----------
+
+Find the cgroup from a fd which should be obtained
+by opening a cgroup directory.  Returns a pointer to the
+cgroup on success. ERR_PTR is returned if the cgroup
+cannot be found.
 
 .. This file was automatic generated / don't edit.
 

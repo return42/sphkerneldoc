@@ -19,6 +19,7 @@ iio
     imu/index
     light/index
     magnetometer/index
+    pressure/index
     trigger/index
     iio_core_trigger_h
     industrialio-buffer_c

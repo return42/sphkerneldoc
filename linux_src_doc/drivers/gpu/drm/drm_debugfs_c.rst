@@ -60,8 +60,8 @@ Description
 \param root DRI debugfs dir entry.
 
 Create the DRI debugfs root entry "/sys/kernel/debug/dri", the device debugfs root entry
-"/sys/kernel/debug/dri/\ ``minor``\ %/", and each entry in debugfs_list as
-"/sys/kernel/debug/dri/\ ``minor``\ %/\ ``name``\ %".
+"/sys/kernel/debug/dri/%minor%/", and each entry in debugfs_list as
+"/sys/kernel/debug/dri/%minor%/%name%".
 
 .. _`drm_debugfs_remove_files`:
 

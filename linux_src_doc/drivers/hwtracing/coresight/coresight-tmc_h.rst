@@ -28,6 +28,7 @@ Definition
         dma_addr_t paddr;
         void __iomem *vaddr;
         u32 size;
+        u32 len;
         local_t mode;
         enum tmc_config_type config_type;
         enum tmc_mem_intf_width memwidth;
@@ -67,7 +68,10 @@ vaddr
     virtual representation of \ ``paddr``\ .
 
 size
-    \ ``buf``\  size.
+    trace buffer size.
+
+len
+    size of the available trace.
 
 mode
     how this TMC is being used.

@@ -134,7 +134,31 @@ log
     log the value.
 
 validate
-    validate the value. Return 0 on success and a negative value otherwise.
+    validate the value. Return 0 on success and a negative value
+    otherwise.
+
+.. _`v4l2_ctrl_notify_fnc`:
+
+v4l2_ctrl_notify_fnc
+====================
+
+.. c:function:: void v4l2_ctrl_notify_fnc(struct v4l2_ctrl *ctrl, void *priv)
+
+    typedef for a notify argument with a function that should be called when a control value has changed.
+
+    :param struct v4l2_ctrl \*ctrl:
+        pointer to struct \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\ 
+
+    :param void \*priv:
+        control private data
+
+.. _`v4l2_ctrl_notify_fnc.description`:
+
+Description
+-----------
+
+This typedef definition is used as an argument to \ :c:func:`v4l2_ctrl_notify`\ 
+and as an argument at struct \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ .
 
 .. _`v4l2_ctrl`:
 
@@ -157,7 +181,7 @@ Definition
         struct list_head ev_subs;
         struct v4l2_ctrl_handler *handler;
         struct v4l2_ctrl **cluster;
-        unsigned ncontrols;
+        unsigned int ncontrols;
         unsigned int done:1;
         unsigned int is_new:1;
         unsigned int has_changed:1;
@@ -212,7 +236,7 @@ done
 
 is_new
     Set when the user specified a new value for this control. It
-    is also set when called from v4l2_ctrl_handler_setup. Drivers
+    is also set when called from \ :c:func:`v4l2_ctrl_handler_setup`\ . Drivers
     should never set this flag.
 
 has_changed
@@ -235,12 +259,12 @@ is_int
     uses ctrl->val).
 
 is_string
-    If set, then this control has type V4L2_CTRL_TYPE_STRING.
+    If set, then this control has type \ ``V4L2_CTRL_TYPE_STRING``\ .
 
 is_ptr
-    If set, then this control is an array and/or has type >= V4L2_CTRL_COMPOUND_TYPES
-    and/or has type V4L2_CTRL_TYPE_STRING. In other words, struct
-    v4l2_ext_control uses field p to point to the data.
+    If set, then this control is an array and/or has type >=
+    \ ``V4L2_CTRL_COMPOUND_TYPES``\ 
+    and/or has type \ ``V4L2_CTRL_TYPE_STRING``\ . In other words, \ :c:type:`struct v4l2_ext_control <v4l2_ext_control>`\  uses field p to point to the data.
 
 is_array
     If set, then this control contains an N-dimensional array.
@@ -347,7 +371,8 @@ ctrl
     The actual control information.
 
 helper
-    Pointer to helper struct. Used internally in \ :c:func:`prepare_ext_ctrls`\ .
+    Pointer to helper struct. Used internally in
+    ``prepare_ext_ctrls`` function at ``v4l2-ctrl.c``.
 
 .. _`v4l2_ctrl_ref.description`:
 
@@ -365,7 +390,7 @@ struct v4l2_ctrl_handler
 
 .. c:type:: struct v4l2_ctrl_handler
 
-    The control handler keeps track of all the
+    The control handler keeps track of all the controls: both the controls owned by the handler and those inherited from other handlers.
 
 .. _`v4l2_ctrl_handler.definition`:
 
@@ -414,7 +439,8 @@ buckets
     Buckets for the hashing. Allows for quick control lookup.
 
 notify
-    A notify callback that is called whenever the control changes value.
+    A notify callback that is called whenever the control changes
+    value.
     Note that the handler's lock is held when the notify function
     is called!
 
@@ -426,14 +452,6 @@ nr_of_buckets
 
 error
     The error code of the first failed control addition.
-
-.. _`v4l2_ctrl_handler.controls`:
-
-controls
---------
-
-both the controls owned by the handler and those inherited
-from other handlers.
 
 .. _`v4l2_ctrl_config`:
 
@@ -520,7 +538,7 @@ menu_skip_mask
     then this will have to be extended to a bit array.
 
 qmenu
-    A const char \* array for all menu items. Array entries that are
+    A const char * array for all menu items. Array entries that are
     empty strings ("") correspond to non-existing menu items (this
     is in addition to the menu_skip_mask above). The last entry
     must be NULL.
@@ -533,19 +551,71 @@ is_private
     If set, then this control is private to its handler and it
     will not be added to any other handlers.
 
+.. _`v4l2_ctrl_fill`:
+
+v4l2_ctrl_fill
+==============
+
+.. c:function:: void v4l2_ctrl_fill(u32 id, const char **name, enum v4l2_ctrl_type *type, s64 *min, s64 *max, u64 *step, s64 *def, u32 *flags)
+
+    Fill in the control fields based on the control ID.
+
+    :param u32 id:
+        ID of the control
+
+    :param const char \*\*name:
+        name of the control
+
+    :param enum v4l2_ctrl_type \*type:
+        type of the control
+
+    :param s64 \*min:
+        minimum value for the control
+
+    :param s64 \*max:
+        maximum value for the control
+
+    :param u64 \*step:
+        control step
+
+    :param s64 \*def:
+        default value for the control
+
+    :param u32 \*flags:
+        flags to be used on the control
+
+.. _`v4l2_ctrl_fill.description`:
+
+Description
+-----------
+
+This works for all standard V4L2 controls.
+For non-standard controls it will only fill in the given arguments
+and \ ``name``\  will be \ ``NULL``\ .
+
+This function will overwrite the contents of \ ``name``\ , \ ``type``\  and \ ``flags``\ .
+The contents of \ ``min``\ , \ ``max``\ , \ ``step``\  and \ ``def``\  may be modified depending on
+the type.
+
+.. note::
+
+   Do not use in drivers! It is used internally for backwards compatibility
+   control handling only. Once all drivers are converted to use the new
+   control framework this function will no longer be exported.
+
 .. _`v4l2_ctrl_handler_init_class`:
 
 v4l2_ctrl_handler_init_class
 ============================
 
-.. c:function:: int v4l2_ctrl_handler_init_class(struct v4l2_ctrl_handler *hdl, unsigned nr_of_controls_hint, struct lock_class_key *key, const char *name)
+.. c:function:: int v4l2_ctrl_handler_init_class(struct v4l2_ctrl_handler *hdl, unsigned int nr_of_controls_hint, struct lock_class_key *key, const char *name)
 
     Initialize the control handler.
 
     :param struct v4l2_ctrl_handler \*hdl:
         The control handler.
 
-    :param unsigned nr_of_controls_hint:
+    :param unsigned int nr_of_controls_hint:
         A hint of how many controls this handler is
         expected to refer to. This is the total number, so including
         any inherited controls. It doesn't have to be precise, but if
@@ -565,11 +635,50 @@ v4l2_ctrl_handler_init_class
 Description
 -----------
 
-Returns an error if the buckets could not be allocated. This error will
-also be stored in \ ``hdl``\ ->error.
+.. attention::
 
-Never use this call directly, always use the v4l2_ctrl_handler_init
-macro that hides the \ ``key``\  and \ ``name``\  arguments.
+   Never use this call directly, always use the \ :c:func:`v4l2_ctrl_handler_init`\ 
+   macro that hides the \ ``key``\  and \ ``name``\  arguments.
+
+.. _`v4l2_ctrl_handler_init_class.return`:
+
+Return
+------
+
+returns an error if the buckets could not be allocated. This
+error will also be stored in \ ``hdl``\ ->error.
+
+.. _`v4l2_ctrl_handler_init`:
+
+v4l2_ctrl_handler_init
+======================
+
+.. c:function::  v4l2_ctrl_handler_init( hdl,  nr_of_controls_hint)
+
+    helper function to create a static struct \ :c:type:`struct lock_class_key <lock_class_key>`\  and calls \ :c:func:`v4l2_ctrl_handler_init_class`\ 
+
+    :param  hdl:
+        The control handler.
+
+    :param  nr_of_controls_hint:
+        A hint of how many controls this handler is
+        expected to refer to. This is the total number, so including
+        any inherited controls. It doesn't have to be precise, but if
+        it is way off, then you either waste memory (too many buckets
+        are allocated) or the control lookup becomes slower (not enough
+        buckets are allocated, so there are more slow list lookups).
+        It will always work, though.
+
+.. _`v4l2_ctrl_handler_init.description`:
+
+Description
+-----------
+
+This helper function creates a static struct \ :c:type:`struct lock_class_key <lock_class_key>`\  and
+calls \ :c:func:`v4l2_ctrl_handler_init_class`\ , providing a proper name for the lock
+validador.
+
+Use this helper function to initialize a control handler.
 
 .. _`v4l2_ctrl_handler_free`:
 
@@ -685,7 +794,7 @@ v4l2_ctrl_new_custom
 Description
 -----------
 
-If the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>` struct could not be allocated then NULL is returned
+If the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\  struct could not be allocated then NULL is returned
 and \ ``hdl``\ ->error is set to the error code (if it wasn't set already).
 
 .. _`v4l2_ctrl_new_std`:
@@ -723,7 +832,7 @@ v4l2_ctrl_new_std
 Description
 -----------
 
-If the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>` struct could not be allocated, or the control
+If the \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\  struct could not be allocated, or the control
 ID is not known, then NULL is returned and \ ``hdl``\ ->error is set to the
 appropriate error code (if it wasn't set already).
 
@@ -851,14 +960,27 @@ Description
 Same as \ :c:func:`v4l2_ctrl_new_std_menu`\ , but \ ``mask``\  is set to 0 and it additionaly
 takes as an argument an array of integers determining the menu items.
 
-If \ ``id``\  refers to a non-integer-menu control, then this function will return NULL.
+If \ ``id``\  refers to a non-integer-menu control, then this function will
+return \ ``NULL``\ .
+
+.. _`v4l2_ctrl_filter`:
+
+v4l2_ctrl_filter
+================
+
+.. c:function:: bool v4l2_ctrl_filter(const struct v4l2_ctrl *ctrl)
+
+    Typedef to define the filter function to be used when adding a control handler.
+
+    :param const struct v4l2_ctrl \*ctrl:
+        pointer to struct \ :c:type:`struct v4l2_ctrl <v4l2_ctrl>`\ .
 
 .. _`v4l2_ctrl_add_handler`:
 
 v4l2_ctrl_add_handler
 =====================
 
-.. c:function:: int v4l2_ctrl_add_handler(struct v4l2_ctrl_handler *hdl, struct v4l2_ctrl_handler *add, bool (*filter)(const struct v4l2_ctrl *ctrl))
+.. c:function:: int v4l2_ctrl_add_handler(struct v4l2_ctrl_handler *hdl, struct v4l2_ctrl_handler *add, v4l2_ctrl_filter filter)
 
     Add all controls from handler \ ``add``\  to handler \ ``hdl``\ .
 
@@ -869,7 +991,7 @@ v4l2_ctrl_add_handler
         The control handler whose controls you want to add to
         the \ ``hdl``\  control handler.
 
-    :param bool (\*filter)(const struct v4l2_ctrl \*ctrl):
+    :param v4l2_ctrl_filter filter:
         This function will filter which controls should be added.
 
 .. _`v4l2_ctrl_add_handler.description`:
@@ -901,7 +1023,7 @@ Description
 -----------
 
 This will return true for any controls that are valid for radio device
-nodes. Those are all of the V4L2_CID_AUDIO\_\* user controls and all FM
+nodes. Those are all of the V4L2_CID_AUDIO_* user controls and all FM
 transmitter class controls.
 
 This function is to be used with \ :c:func:`v4l2_ctrl_add_handler`\ .
@@ -911,11 +1033,11 @@ This function is to be used with \ :c:func:`v4l2_ctrl_add_handler`\ .
 v4l2_ctrl_cluster
 =================
 
-.. c:function:: void v4l2_ctrl_cluster(unsigned ncontrols, struct v4l2_ctrl **controls)
+.. c:function:: void v4l2_ctrl_cluster(unsigned int ncontrols, struct v4l2_ctrl **controls)
 
     Mark all controls in the cluster as belonging to that cluster.
 
-    :param unsigned ncontrols:
+    :param unsigned int ncontrols:
         The number of controls in this cluster.
 
     :param struct v4l2_ctrl \*\*controls:
@@ -926,11 +1048,11 @@ v4l2_ctrl_cluster
 v4l2_ctrl_auto_cluster
 ======================
 
-.. c:function:: void v4l2_ctrl_auto_cluster(unsigned ncontrols, struct v4l2_ctrl **controls, u8 manual_val, bool set_volatile)
+.. c:function:: void v4l2_ctrl_auto_cluster(unsigned int ncontrols, struct v4l2_ctrl **controls, u8 manual_val, bool set_volatile)
 
     Mark all controls in the cluster as belonging to that cluster and set it up for autofoo/foo-type handling.
 
-    :param unsigned ncontrols:
+    :param unsigned int ncontrols:
         The number of controls in this cluster.
 
     :param struct v4l2_ctrl \*\*controls:
@@ -969,8 +1091,8 @@ When the autofoo control is set to manual, then any manual controls will
 be marked active, and any reads will just return the current value without
 going through g_volatile_ctrl.
 
-In addition, this function will set the V4L2_CTRL_FLAG_UPDATE flag
-on the autofoo control and V4L2_CTRL_FLAG_INACTIVE on the foo control(s)
+In addition, this function will set the \ ``V4L2_CTRL_FLAG_UPDATE``\  flag
+on the autofoo control and \ ``V4L2_CTRL_FLAG_INACTIVE``\  on the foo control(s)
 if autofoo is in auto mode.
 
 .. _`v4l2_ctrl_find`:
@@ -994,7 +1116,7 @@ Description
 -----------
 
 If \ ``hdl``\  == NULL this will return NULL as well. Will lock the handler so
-do not use from inside \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`.
+do not use from inside \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\ .
 
 .. _`v4l2_ctrl_activate`:
 
@@ -1242,7 +1364,7 @@ Description
 
 This returns the control's value safely by going through the control
 framework. This function will lock the control's handler, so it cannot be
-used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
+used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
 
 This function is for integer type controls only.
 
@@ -1259,16 +1381,42 @@ __v4l2_ctrl_s_ctrl
         The control.
 
     :param s32 val:
-        The new value.
+        TheControls name new value.
 
 .. _`__v4l2_ctrl_s_ctrl.description`:
 
 Description
 -----------
 
-This set the control's new value safely by going through the control
+This sets the control's new value safely by going through the control
+framework. This function assumes the control's handler is already locked,
+allowing it to be used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
+
+This function is for integer type controls only.
+
+.. _`v4l2_ctrl_s_ctrl`:
+
+v4l2_ctrl_s_ctrl
+================
+
+.. c:function:: int v4l2_ctrl_s_ctrl(struct v4l2_ctrl *ctrl, s32 val)
+
+    Helper function to set the control's value from within a driver.
+
+    :param struct v4l2_ctrl \*ctrl:
+        The control.
+
+    :param s32 val:
+        The new value.
+
+.. _`v4l2_ctrl_s_ctrl.description`:
+
+Description
+-----------
+
+This sets the control's new value safely by going through the control
 framework. This function will lock the control's handler, so it cannot be
-used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
+used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
 
 This function is for integer type controls only.
 
@@ -1291,7 +1439,7 @@ Description
 
 This returns the control's value safely by going through the control
 framework. This function will lock the control's handler, so it cannot be
-used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
+used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
 
 This function is for 64-bit integer type controls only.
 
@@ -1315,11 +1463,397 @@ __v4l2_ctrl_s_ctrl_int64
 Description
 -----------
 
-This set the control's new value safely by going through the control
-framework. This function will lock the control's handler, so it cannot be
-used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>` functions.
+This sets the control's new value safely by going through the control
+framework. This function assumes the control's handler is already locked,
+allowing it to be used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
 
 This function is for 64-bit integer type controls only.
+
+.. _`v4l2_ctrl_s_ctrl_int64`:
+
+v4l2_ctrl_s_ctrl_int64
+======================
+
+.. c:function:: int v4l2_ctrl_s_ctrl_int64(struct v4l2_ctrl *ctrl, s64 val)
+
+    Helper function to set a 64-bit control's value from within a driver.
+
+    :param struct v4l2_ctrl \*ctrl:
+        The control.
+
+    :param s64 val:
+        The new value.
+
+.. _`v4l2_ctrl_s_ctrl_int64.description`:
+
+Description
+-----------
+
+This sets the control's new value safely by going through the control
+framework. This function will lock the control's handler, so it cannot be
+used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
+
+This function is for 64-bit integer type controls only.
+
+.. _`__v4l2_ctrl_s_ctrl_string`:
+
+__v4l2_ctrl_s_ctrl_string
+=========================
+
+.. c:function:: int __v4l2_ctrl_s_ctrl_string(struct v4l2_ctrl *ctrl, const char *s)
+
+    Unlocked variant of \ :c:func:`v4l2_ctrl_s_ctrl_string`\ .
+
+    :param struct v4l2_ctrl \*ctrl:
+        The control.
+
+    :param const char \*s:
+        The new string.
+
+.. _`__v4l2_ctrl_s_ctrl_string.description`:
+
+Description
+-----------
+
+This sets the control's new string safely by going through the control
+framework. This function assumes the control's handler is already locked,
+allowing it to be used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
+
+This function is for string type controls only.
+
+.. _`v4l2_ctrl_s_ctrl_string`:
+
+v4l2_ctrl_s_ctrl_string
+=======================
+
+.. c:function:: int v4l2_ctrl_s_ctrl_string(struct v4l2_ctrl *ctrl, const char *s)
+
+    Helper function to set a control's string value from within a driver.
+
+    :param struct v4l2_ctrl \*ctrl:
+        The control.
+
+    :param const char \*s:
+        The new string.
+        Controls name
+        This sets the control's new string safely by going through the control
+        framework. This function will lock the control's handler, so it cannot be
+        used from within the \ :c:type:`struct v4l2_ctrl_ops <v4l2_ctrl_ops>`\  functions.
+
+.. _`v4l2_ctrl_s_ctrl_string.description`:
+
+Description
+-----------
+
+This function is for string type controls only.
+
+.. _`v4l2_ctrl_replace`:
+
+v4l2_ctrl_replace
+=================
+
+.. c:function:: void v4l2_ctrl_replace(struct v4l2_event *old, const struct v4l2_event *new)
+
+    Function to be used as a callback to \ :c:type:`struct v4l2_subscribed_event_ops <v4l2_subscribed_event_ops>`\  replace(\)
+
+    :param struct v4l2_event \*old:
+        pointer to struct \ :c:type:`struct v4l2_event <v4l2_event>`\  with the reported
+        event;
+
+    :param const struct v4l2_event \*new:
+        pointer to struct \ :c:type:`struct v4l2_event <v4l2_event>`\  with the modified
+        event;
+
+.. _`v4l2_ctrl_merge`:
+
+v4l2_ctrl_merge
+===============
+
+.. c:function:: void v4l2_ctrl_merge(const struct v4l2_event *old, struct v4l2_event *new)
+
+    Function to be used as a callback to \ :c:type:`struct v4l2_subscribed_event_ops <v4l2_subscribed_event_ops>`\  merge(\)
+
+    :param const struct v4l2_event \*old:
+        pointer to struct \ :c:type:`struct v4l2_event <v4l2_event>`\  with the reported
+        event;
+
+    :param struct v4l2_event \*new:
+        pointer to struct \ :c:type:`struct v4l2_event <v4l2_event>`\  with the merged
+        event;
+
+.. _`v4l2_ctrl_log_status`:
+
+v4l2_ctrl_log_status
+====================
+
+.. c:function:: int v4l2_ctrl_log_status(struct file *file, void *fh)
+
+    helper function to implement \ ``VIDIOC_LOG_STATUS``\  ioctl
+
+    :param struct file \*file:
+        pointer to struct file
+
+    :param void \*fh:
+        unused. Kept just to be compatible to the arguments expected by
+        \ :c:type:`struct v4l2_ioctl_ops <v4l2_ioctl_ops>`\ .vidioc_log_status.
+
+.. _`v4l2_ctrl_log_status.description`:
+
+Description
+-----------
+
+Can be used as a vidioc_log_status function that just dumps all controls
+associated with the filehandle.
+
+.. _`v4l2_ctrl_subscribe_event`:
+
+v4l2_ctrl_subscribe_event
+=========================
+
+.. c:function:: int v4l2_ctrl_subscribe_event(struct v4l2_fh *fh, const struct v4l2_event_subscription *sub)
+
+    Subscribes to an event
+
+    :param struct v4l2_fh \*fh:
+        pointer to struct v4l2_fh
+
+    :param const struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+.. _`v4l2_ctrl_subscribe_event.description`:
+
+Description
+-----------
+
+Can be used as a vidioc_subscribe_event function that just subscribes
+control events.
+
+.. _`v4l2_ctrl_poll`:
+
+v4l2_ctrl_poll
+==============
+
+.. c:function:: unsigned int v4l2_ctrl_poll(struct file *file, struct poll_table_struct *wait)
+
+    function to be used as a callback to the \ :c:func:`poll`\  That just polls for control events.
+
+    :param struct file \*file:
+        pointer to struct file
+
+    :param struct poll_table_struct \*wait:
+        pointer to struct poll_table_struct
+
+.. _`v4l2_queryctrl`:
+
+v4l2_queryctrl
+==============
+
+.. c:function:: int v4l2_queryctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_queryctrl *qc)
+
+    Helper function to implement :ref:`VIDIOC_QUERYCTRL <vidioc_queryctrl>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_queryctrl \*qc:
+        pointer to \ :c:type:`struct v4l2_queryctrl <v4l2_queryctrl>`\ 
+
+.. _`v4l2_queryctrl.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_query_ext_ctrl`:
+
+v4l2_query_ext_ctrl
+===================
+
+.. c:function:: int v4l2_query_ext_ctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_query_ext_ctrl *qc)
+
+    Helper function to implement :ref:`VIDIOC_QUERY_EXT_CTRL <vidioc_queryctrl>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_query_ext_ctrl \*qc:
+        pointer to \ :c:type:`struct v4l2_query_ext_ctrl <v4l2_query_ext_ctrl>`\ 
+
+.. _`v4l2_query_ext_ctrl.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_querymenu`:
+
+v4l2_querymenu
+==============
+
+.. c:function:: int v4l2_querymenu(struct v4l2_ctrl_handler *hdl, struct v4l2_querymenu *qm)
+
+    Helper function to implement :ref:`VIDIOC_QUERYMENU <vidioc_queryctrl>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_querymenu \*qm:
+        pointer to \ :c:type:`struct v4l2_querymenu <v4l2_querymenu>`\ 
+
+.. _`v4l2_querymenu.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_g_ctrl`:
+
+v4l2_g_ctrl
+===========
+
+.. c:function:: int v4l2_g_ctrl(struct v4l2_ctrl_handler *hdl, struct v4l2_control *ctrl)
+
+    Helper function to implement :ref:`VIDIOC_G_CTRL <vidioc_g_ctrl>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_control \*ctrl:
+        pointer to \ :c:type:`struct v4l2_control <v4l2_control>`\ 
+
+.. _`v4l2_g_ctrl.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_s_ctrl`:
+
+v4l2_s_ctrl
+===========
+
+.. c:function:: int v4l2_s_ctrl(struct v4l2_fh *fh, struct v4l2_ctrl_handler *hdl, struct v4l2_control *ctrl)
+
+    Helper function to implement :ref:`VIDIOC_S_CTRL <vidioc_g_ctrl>` ioctl
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_control \*ctrl:
+        pointer to \ :c:type:`struct v4l2_control <v4l2_control>`\ 
+
+.. _`v4l2_s_ctrl.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_g_ext_ctrls`:
+
+v4l2_g_ext_ctrls
+================
+
+.. c:function:: int v4l2_g_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c)
+
+    Helper function to implement :ref:`VIDIOC_G_EXT_CTRLS <vidioc_g_ext_ctrls>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_ext_controls \*c:
+        pointer to \ :c:type:`struct v4l2_ext_controls <v4l2_ext_controls>`\ 
+
+.. _`v4l2_g_ext_ctrls.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_try_ext_ctrls`:
+
+v4l2_try_ext_ctrls
+==================
+
+.. c:function:: int v4l2_try_ext_ctrls(struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c)
+
+    Helper function to implement :ref:`VIDIOC_TRY_EXT_CTRLS <vidioc_g_ext_ctrls>` ioctl
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_ext_controls \*c:
+        pointer to \ :c:type:`struct v4l2_ext_controls <v4l2_ext_controls>`\ 
+
+.. _`v4l2_try_ext_ctrls.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_s_ext_ctrls`:
+
+v4l2_s_ext_ctrls
+================
+
+.. c:function:: int v4l2_s_ext_ctrls(struct v4l2_fh *fh, struct v4l2_ctrl_handler *hdl, struct v4l2_ext_controls *c)
+
+    Helper function to implement :ref:`VIDIOC_S_EXT_CTRLS <vidioc_g_ext_ctrls>` ioctl
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param struct v4l2_ctrl_handler \*hdl:
+        pointer to \ :c:type:`struct v4l2_ctrl_handler <v4l2_ctrl_handler>`\ 
+
+    :param struct v4l2_ext_controls \*c:
+        pointer to \ :c:type:`struct v4l2_ext_controls <v4l2_ext_controls>`\ 
+
+.. _`v4l2_s_ext_ctrls.description`:
+
+Description
+-----------
+
+If hdl == NULL then they will all return -EINVAL.
+
+.. _`v4l2_ctrl_subdev_subscribe_event`:
+
+v4l2_ctrl_subdev_subscribe_event
+================================
+
+.. c:function:: int v4l2_ctrl_subdev_subscribe_event(struct v4l2_subdev *sd, struct v4l2_fh *fh, struct v4l2_event_subscription *sub)
+
+    Helper function to implement as a \ :c:type:`struct v4l2_subdev_core_ops <v4l2_subdev_core_ops>`\  subscribe_event function that just subscribes control events.
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
+
+    :param struct v4l2_fh \*fh:
+        pointer to \ :c:type:`struct v4l2_fh <v4l2_fh>`\ 
+
+    :param struct v4l2_event_subscription \*sub:
+        pointer to \ :c:type:`struct v4l2_event_subscription <v4l2_event_subscription>`\ 
+
+.. _`v4l2_ctrl_subdev_log_status`:
+
+v4l2_ctrl_subdev_log_status
+===========================
+
+.. c:function:: int v4l2_ctrl_subdev_log_status(struct v4l2_subdev *sd)
+
+    Log all controls owned by subdev's control handler.
+
+    :param struct v4l2_subdev \*sd:
+        pointer to \ :c:type:`struct v4l2_subdev <v4l2_subdev>`\ 
 
 .. This file was automatic generated / don't edit.
 

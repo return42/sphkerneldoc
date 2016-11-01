@@ -7,4 +7,6 @@ internal
 .. toctree::
     :maxdepth: 1
 
+    aead_h
     akcipher_h
+    kpp_h

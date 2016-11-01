@@ -8,4 +8,6 @@ host
     :maxdepth: 1
 
     core_c
+    fabrics_c
+    fabrics_h
     pci_c

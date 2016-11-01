@@ -212,24 +212,5 @@ Description
 
 Invoked when AER root service driver is loaded.
 
-.. _`aer_service_exit`:
-
-aer_service_exit
-================
-
-.. c:function:: void __exit aer_service_exit( void)
-
-    unregister AER root service driver
-
-    :param  void:
-        no arguments
-
-.. _`aer_service_exit.description`:
-
-Description
------------
-
-Invoked when AER root service driver is unloaded.
-
 .. This file was automatic generated / don't edit.
 

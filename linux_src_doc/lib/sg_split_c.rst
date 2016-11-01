@@ -43,8 +43,8 @@ Description
 This function splits the input sg list into nb_splits sg lists, which are
 allocated and stored into out.
 The \ ``in``\  is split into :
-- \ ``out``\ [0], which covers bytes [\ ``skip``\  .. \ ``skip``\  + \ ``split_sizes``\ [0] - 1] of \ ``in``\ 
-- \ ``out``\ [1], which covers bytes [\ ``skip``\  + split_sizes[0] ..
+- \ ``out``\ [0], which covers bytes [@skip .. \ ``skip``\  + \ ``split_sizes``\ [0] - 1] of \ ``in``\ 
+- \ ``out``\ [1], which covers bytes [@skip + split_sizes[0] ..
 \ ``skip``\  + \ ``split_sizes``\ [0] + \ ``split_sizes``\ [1] -1]
 etc ...
 It will be the caller's duty to \ :c:func:`kfree`\  out array members.

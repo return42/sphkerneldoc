@@ -8,3 +8,4 @@ sti
     :maxdepth: 1
 
     bdisp/index
+    hva/index

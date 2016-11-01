@@ -225,7 +225,7 @@ radar_enabled
 
 drv_priv
     data area for driver use, will always be aligned to
-    sizeof(void \*), size is determined in hw information.
+    sizeof(void *), size is determined in hw information.
 
 .. _`ieee80211_chanctx_conf.description`:
 
@@ -319,7 +319,7 @@ Description
 
 This is structure is used to pass information about a vif that
 needs to switch from one chanctx to another.  The
-\ :c:type:`struct ieee80211_chanctx_switch_mode <ieee80211_chanctx_switch_mode>` defines how the switch should be
+\ :c:type:`struct ieee80211_chanctx_switch_mode <ieee80211_chanctx_switch_mode>`\  defines how the switch should be
 done.
 
 .. _`ieee80211_bss_change`:
@@ -701,7 +701,7 @@ Members
 -------
 
 sta
-    pointer to the \ :c:type:`struct ieee80211_sta <ieee80211_sta>` to which this event relates
+    pointer to the \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  to which this event relates
 
 tid
     the tid
@@ -893,7 +893,10 @@ sync_device_ts
 
 sync_dtim_count
     Only valid when \ ``IEEE80211_HW_TIMING_BEACON_ONLY``\ 
-    is requested, see \ ``sync_tsf``\ /\ ``sync_device_ts``\ .
+    is requested, see \ ``sync_tsf``\ /@sync_device_ts.
+    IMPORTANT: These three sync_* parameters would possibly be out of sync
+    by the time the driver will use them. The synchronized view is currently
+    guaranteed only in certain callbacks.
 
 basic_rates
     bitmap of basic rates, each bit stands for an
@@ -986,15 +989,6 @@ Description
 
 This structure keeps information about a BSS (and an association
 to that BSS) that can change during the lifetime of the BSS.
-
-.. _`ieee80211_bss_conf.important`:
-
-IMPORTANT
----------
-
-These three sync\_\* parameters would possibly be out of sync
-by the time the driver will use them. The synchronized view is currently
-guaranteed only in certain callbacks.
 
 .. _`mac80211_tx_info_flags`:
 
@@ -1209,7 +1203,7 @@ IEEE80211_TX_STAT_NOACK_TRANSMITTED
 Description
 -----------
 
-These flags are used with the \ ``flags``\  member of \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`.
+These flags are used with the \ ``flags``\  member of \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\ .
 
 .. _`mac80211_tx_info_flags.note`:
 
@@ -1217,7 +1211,7 @@ Note
 ----
 
 If you have to add new flags to the enumeration, then don't
-forget to update \ ``IEEE80211_TX_TEMPORARY_FLAGS``\  when necessary.
+      forget to update \ ``IEEE80211_TX_TEMPORARY_FLAGS``\  when necessary.
 
 .. _`mac80211_tx_control_flags`:
 
@@ -1239,7 +1233,8 @@ Definition
         IEEE80211_TX_CTRL_PORT_CTRL_PROTO,
         IEEE80211_TX_CTRL_PS_RESPONSE,
         IEEE80211_TX_CTRL_RATE_INJECT,
-        IEEE80211_TX_CTRL_AMSDU
+        IEEE80211_TX_CTRL_AMSDU,
+        IEEE80211_TX_CTRL_FAST_XMIT
     };
 
 .. _`mac80211_tx_control_flags.constants`:
@@ -1260,6 +1255,9 @@ IEEE80211_TX_CTRL_RATE_INJECT
 
 IEEE80211_TX_CTRL_AMSDU
     This frame is an A-MSDU frame
+
+IEEE80211_TX_CTRL_FAST_XMIT
+    This frame is going through the fast_xmit path
 
 .. _`mac80211_tx_control_flags.description`:
 
@@ -1384,7 +1382,7 @@ count
     number of tries in this rate before going to the next rate
 
 flags
-    rate control flags (\ :c:type:`enum mac80211_rate_control_flags <mac80211_rate_control_flags>`\ )
+    rate control flags (&enum mac80211_rate_control_flags)
 
 .. _`ieee80211_tx_rate.description`:
 
@@ -1402,13 +1400,13 @@ in the control information, and it will be filled by the rate
 control algorithm according to what should be sent. For example,
 if this array contains, in the format { <idx>, <count> } the
 information
-{ 3, 2 }, { 2, 2 }, { 1, 4 }, { -1, 0 }, { -1, 0 }
+   { 3, 2 }, { 2, 2 }, { 1, 4 }, { -1, 0 }, { -1, 0 }
 then this means that the frame should be transmitted
 up to twice at rate 3, up to twice at rate 2, and up to four
 times at rate 1 if it doesn't get acknowledged. Say it gets
 acknowledged by the peer after the fifth attempt, the status
 information should then contain
-{ 3, 2 }, { 2, 2 }, { 1, 1 }, { -1, 0 } ...
+  { 3, 2 }, { 2, 2 }, { 1, 1 }, { -1, 0 } ...
 since it was transmitted twice at rate 3, twice at rate 2
 and once at rate 1 after which we received an acknowledgement.
 
@@ -1463,9 +1461,9 @@ Description
 -----------
 
 This structure is placed in skb->cb for three uses:
-(1) mac80211 TX control - mac80211 tells the driver what to do
-(2) driver internal use (if applicable)
-(3) TX status information - driver tells mac80211 what happened
+ (1) mac80211 TX control - mac80211 tells the driver what to do
+ (2) driver internal use (if applicable)
+ (3) TX status information - driver tells mac80211 what happened
 
 .. _`ieee80211_scan_ies`:
 
@@ -1544,8 +1542,8 @@ NOTE
 ----
 
 You can only use this function if you do NOT use
-info->driver_data! Use info->rate_driver_data
-instead if you need only the less space that allows.
+      info->driver_data! Use info->rate_driver_data
+      instead if you need only the less space that allows.
 
 .. _`mac80211_rx_flags`:
 
@@ -1612,7 +1610,7 @@ RX_FLAG_DECRYPTED
     This frame was decrypted in hardware.
 
 RX_FLAG_MACTIME_PLCP_START
-    The timestamp passed in the RX status (\ ``mactime``\ 
+    The timestamp passed in the RX status (@mactime
     field) is valid and contains the time the SYNC preamble was received.
 
 RX_FLAG_MMIC_STRIPPED
@@ -1633,7 +1631,7 @@ RX_FLAG_FAILED_PLCP_CRC
     the frame.
 
 RX_FLAG_MACTIME_START
-    The timestamp passed in the RX status (\ ``mactime``\ 
+    The timestamp passed in the RX status (@mactime
     field) is valid and contains the time the first symbol of the MPDU
     was received. This is useful in monitor mode and for proper IBSS
     merging.
@@ -1661,7 +1659,7 @@ RX_FLAG_HT_GF
 
 RX_FLAG_AMPDU_DETAILS
     A-MPDU details are known, in particular the reference
-    number (\ ``ampdu_reference``\ ) must be populated and be a distinct number for
+    number (@ampdu_reference) must be populated and be a distinct number for
     each A-MPDU
 
 RX_FLAG_PN_VALIDATED
@@ -1690,7 +1688,7 @@ RX_FLAG_AMPDU_DELIM_CRC_KNOWN
     is stored in the \ ``ampdu_delimiter_crc``\  field)
 
 RX_FLAG_MACTIME_END
-    The timestamp passed in the RX status (\ ``mactime``\ 
+    The timestamp passed in the RX status (@mactime
     field) is valid and contains the time the last symbol of the MPDU
     (including FCS) was received.
 
@@ -1795,7 +1793,7 @@ Description
 -----------
 
 These flags are used with the \ ``vht_flag``\  member of
-\ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ .
+     \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ .
 
 .. _`ieee80211_rx_status`:
 
@@ -1854,7 +1852,7 @@ ampdu_reference
     each A-MPDU but the same for each subframe within one A-MPDU
 
 flag
-    \ ``RX_FLAG``\ \_\*
+    %RX_FLAG_*
 
 freq
     frequency the radio was tuned to when receiving this frame, in MHz
@@ -1862,11 +1860,11 @@ freq
     for data (other) frames - for those it only affects radiotap reporting.
 
 vht_flag
-    \ ``RX_VHT_FLAG``\ \_\*
+    %RX_VHT_FLAG_*
 
 rate_idx
     index of data rate into band's supported rates or MCS index if
-    HT or VHT is used (\ ``RX_FLAG_HT``\ /\ ``RX_FLAG_VHT``\ )
+    HT or VHT is used (%RX_FLAG_HT/%RX_FLAG_VHT)
 
 vht_nss
     number of streams (VHT only)
@@ -1883,7 +1881,7 @@ antenna
 signal
     signal strength when receiving this frame, either in dBm, in dB or
     unspecified depending on the hardware capabilities flags
-    \ ``IEEE80211_HW_SIGNAL``\ \_\*
+    \ ``IEEE80211_HW_SIGNAL_``\ *
 
 chains
     bitmask of receive chains for which separate signal strength
@@ -2422,7 +2420,7 @@ probe_req_reg
 
 drv_priv
     data area for driver use, will always be aligned to
-    sizeof(void \*).
+    sizeof(void *).
 
 .. _`ieee80211_vif.description`:
 
@@ -2630,6 +2628,12 @@ keylen
 key
     key material. For ALG_TKIP the key is encoded as a 256-bit (32 byte)
 
+    data block:
+
+    - Temporal Encryption Key (128 bits)
+    - Temporal Authenticator Tx MIC Key (64 bits)
+    - Temporal Authenticator Rx MIC Key (64 bits)
+
 .. _`ieee80211_key_conf.description`:
 
 Description
@@ -2637,15 +2641,6 @@ Description
 
 This key information is given by mac80211 to the driver by
 the \ :c:func:`set_key`\  callback in \ :c:type:`struct ieee80211_ops <ieee80211_ops>`\ .
-
-.. _`ieee80211_key_conf.data-block`:
-
-data block
-----------
-
-- Temporal Encryption Key (128 bits)
-- Temporal Authenticator Tx MIC Key (64 bits)
-- Temporal Authenticator Rx MIC Key (64 bits)
 
 .. _`ieee80211_key_seq`:
 
@@ -2733,6 +2728,10 @@ key_idx_mask
 key_idx_shift
     a bit shift needed to get key_idx
 
+    key_idx value calculation:
+
+    (sec_header_base[key_idx_off] & key_idx_mask) >> key_idx_shift
+
 mic_len
     a mic length in bytes
 
@@ -2743,13 +2742,6 @@ Description
 
 This structure contains a cipher scheme information defining
 the secure packet crypto handling.
-
-.. _`ieee80211_cipher_scheme.key_idx-value-calculation`:
-
-key_idx value calculation
--------------------------
-
-(sec_header_base[key_idx_off] & key_idx_mask) >> key_idx_shift
 
 .. _`set_key_cmd`:
 
@@ -2877,13 +2869,13 @@ IEEE80211_STA_RX_BW_160
     station can receive up to 160 MHz
     (including 80+80 MHz)
 
-.. _`ieee80211_sta_rx_bandwidth.implementation-note`:
+.. _`ieee80211_sta_rx_bandwidth.description`:
 
-Implementation note
--------------------
+Description
+-----------
 
-20 must be zero to be initialized
-correctly, the values must be sorted.
+Implementation note: 20 must be zero to be initialized
+     correctly, the values must be sorted.
 
 .. _`ieee80211_sta_rates`:
 
@@ -2940,6 +2932,7 @@ Definition
         u16 aid;
         struct ieee80211_sta_ht_cap ht_cap;
         struct ieee80211_sta_vht_cap vht_cap;
+        u8 max_rx_aggregation_subframes;
         bool wme;
         u8 uapsd_queues;
         u8 max_sp;
@@ -2977,6 +2970,11 @@ ht_cap
 
 vht_cap
     VHT capabilities of this STA; restricted to our own capabilities
+
+max_rx_aggregation_subframes
+    maximal amount of frames in a single AMPDU
+    that this station is allowed to transmit to us.
+    Can be modified by driver.
 
 wme
     indicates whether the STA supports QoS/WME (if local devices does,
@@ -3041,7 +3039,7 @@ txq
 
 drv_priv
     data area for driver use, will always be aligned to
-    sizeof(void \*), size is determined in hw information.
+    sizeof(void *), size is determined in hw information.
 
 .. _`ieee80211_sta.description`:
 
@@ -3154,7 +3152,7 @@ Members
 -------
 
 vif
-    \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+    &struct ieee80211_vif pointer from the add_interface callback.
 
 sta
     station table entry, \ ``NULL``\  for per-vif queue
@@ -3230,6 +3228,7 @@ Definition
         IEEE80211_HW_USES_RSS,
         IEEE80211_HW_TX_AMSDU,
         IEEE80211_HW_TX_FRAG_LIST,
+        IEEE80211_HW_REPORTS_LOW_ACK,
         NUM_IEEE80211_HW_FLAGS
     };
 
@@ -3346,7 +3345,7 @@ IEEE80211_HW_AP_LINK_PS
     autonomously manages the PS status of connected stations. When
     this flag is set mac80211 will not trigger PS mode for connected
     stations based on the PM bit of incoming frames.
-    Use \ :c:func:`ieee80211_start_ps`\ /\ :c:func:`ieee8021_end_ps`\  to manually configure
+    Use \ :c:func:`ieee80211_start_ps`\ /ieee8021_end_ps() to manually configure
     the PS mode of connected stations.
 
 IEEE80211_HW_TX_AMPDU_SETUP_IN_HW
@@ -3425,6 +3424,12 @@ IEEE80211_HW_TX_FRAG_LIST
     Hardware (or driver) supports sending frag_list
     skbs, needed for zero-copy software A-MSDU.
 
+IEEE80211_HW_REPORTS_LOW_ACK
+    The driver (or firmware) reports low ack event
+    by \ :c:func:`ieee80211_report_low_ack`\  based on its own algorithm. For such
+    drivers, mac80211 packet loss mechanism will not be triggered and driver
+    is completely depending on firmware event for station kickout.
+
 NUM_IEEE80211_HW_FLAGS
     number of hardware flags, used for sizing arrays
 
@@ -3479,12 +3484,13 @@ Definition
         u8 offchannel_tx_hw_queue;
         u8 radiotap_mcs_details;
         u16 radiotap_vht_details;
+        struct radiotap_timestamp;
         netdev_features_t netdev_features;
         u8 uapsd_queues;
         u8 uapsd_max_sp_len;
         u8 n_cipher_schemes;
         const struct ieee80211_cipher_scheme *cipher_schemes;
-        int txq_ac_max_pending;
+        u8 max_nan_de_entries;
     }
 
 .. _`ieee80211_hw.members`:
@@ -3493,7 +3499,7 @@ Members
 -------
 
 conf
-    \ :c:type:`struct ieee80211_conf <ieee80211_conf>`\ , device configuration, don't use.
+    &struct ieee80211_conf, device configuration, don't use.
 
 wiphy
     This points to the \ :c:type:`struct wiphy <wiphy>`\  allocated for this
@@ -3587,14 +3593,23 @@ offchannel_tx_hw_queue
 
 radiotap_mcs_details
     lists which MCS information can the HW
-    reports, by default it is set to \_MCS, \_GI and \_BW but doesn't
-    include \_FMT. Use \ ``IEEE80211_RADIOTAP_MCS_HAVE``\ \_\* values, only
-    adding \_BW is supported today.
+    reports, by default it is set to _MCS, _GI and _BW but doesn't
+    include _FMT. Use \ ``IEEE80211_RADIOTAP_MCS_HAVE_``\ * values, only
+    adding _BW is supported today.
 
 radiotap_vht_details
     lists which VHT MCS information the HW reports,
-    the default is \_GI \| \_BANDWIDTH.
-    Use the \ ``IEEE80211_RADIOTAP_VHT_KNOWN``\ \_\* values.
+    the default is _GI | _BANDWIDTH.
+    Use the \ ``IEEE80211_RADIOTAP_VHT_KNOWN_``\ * values.
+
+radiotap_timestamp
+    Information for the radiotap timestamp field; if the
+    'units_pos' member is set to a non-negative value it must be set to
+    a combination of a IEEE80211_RADIOTAP_TIMESTAMP_UNIT_* and a
+    IEEE80211_RADIOTAP_TIMESTAMP_SPOS_* value, and then the timestamp
+    field will be added and populated from the \ :c:type:`struct ieee80211_rx_status <ieee80211_rx_status>`\ 
+    device_timestamp. If the 'accuracy' member is non-negative, it's put
+    into the accuracy radiotap field and the accuracy known flag is set.
 
 netdev_features
     netdev features to be set in each netdev created
@@ -3604,7 +3619,7 @@ netdev_features
 uapsd_queues
     This bitmap is included in (re)association frame to indicate
     for each access category if it is uAPSD trigger-enabled and delivery-
-    enabled. Use IEEE80211_WMM_IE_STA_QOSINFO_AC\_\* to set this bitmap.
+    enabled. Use IEEE80211_WMM_IE_STA_QOSINFO_AC_* to set this bitmap.
     Each bit corresponds to different AC. Value '1' in specific bit means
     that corresponding AC is both trigger- and delivery-enabled. '0' means
     neither enabled.
@@ -3612,7 +3627,7 @@ uapsd_queues
 uapsd_max_sp_len
     maximum number of total buffered frames the WMM AP may
     deliver to a WMM STA during any Service Period triggered by the WMM STA.
-    Use IEEE80211_WMM_IE_STA_QOSINFO_SP\_\* for correct values.
+    Use IEEE80211_WMM_IE_STA_QOSINFO_SP_* for correct values.
 
 n_cipher_schemes
     a size of an array of cipher schemes definitions.
@@ -3621,9 +3636,9 @@ cipher_schemes
     a pointer to an array of cipher scheme definitions
     supported by HW.
 
-txq_ac_max_pending
-    maximum number of frames per AC pending in all txq
-    entries for a vif.
+max_nan_de_entries
+    maximum number of NAN DE functions supported by the
+    device.
 
 .. _`ieee80211_hw.description`:
 
@@ -4233,7 +4248,6 @@ Definition
         int (*sta_remove)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,struct ieee80211_sta *sta);
     #ifdef CONFIG_MAC80211_DEBUGFS
         void (*sta_add_debugfs)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta,struct dentry *dir);
-        void (*sta_remove_debugfs)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta,struct dentry *dir);
     #endif
         void (*sta_notify)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,enum sta_notify_cmd, struct ieee80211_sta *sta);
         int (*sta_state)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,struct ieee80211_sta *sta,enum ieee80211_sta_state old_state,enum ieee80211_sta_state new_state);
@@ -4244,6 +4258,7 @@ Definition
         int (*conf_tx)(struct ieee80211_hw *hw,struct ieee80211_vif *vif, u16 ac,const struct ieee80211_tx_queue_params *params);
         u64 (*get_tsf)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
         void (*set_tsf)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,u64 tsf);
+        void (*offset_tsf)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,s64 offset);
         void (*reset_tsf)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
         int (*tx_last_beacon)(struct ieee80211_hw *hw);
         int (*ampdu_action)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_ampdu_params *params);
@@ -4287,13 +4302,18 @@ Definition
         int (*post_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif);
         int (*join_ibss)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
         void (*leave_ibss)(struct ieee80211_hw *hw, struct ieee80211_vif *vif);
-        u32 (*get_expected_throughput)(struct ieee80211_sta *sta);
+        u32 (*get_expected_throughput)(struct ieee80211_hw *hw,struct ieee80211_sta *sta);
         int (*get_txpower)(struct ieee80211_hw *hw, struct ieee80211_vif *vif,int *dbm);
         int (*tdls_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta, u8 oper_class,struct cfg80211_chan_def *chandef,struct sk_buff *tmpl_skb, u32 ch_sw_tm_ie);
         void (*tdls_cancel_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_sta *sta);
         void (*tdls_recv_channel_switch)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct ieee80211_tdls_ch_sw_params *params);
         void (*wake_tx_queue)(struct ieee80211_hw *hw,struct ieee80211_txq *txq);
         void (*sync_rx_queues)(struct ieee80211_hw *hw);
+        int (*start_nan)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct cfg80211_nan_conf *conf);
+        int (*stop_nan)(struct ieee80211_hw *hw,struct ieee80211_vif *vif);
+        int (*nan_change_conf)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,struct cfg80211_nan_conf *conf, u32 changes);
+        int (*add_nan_func)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,const struct cfg80211_nan_func *nan_func);
+        void (*del_nan_func)(struct ieee80211_hw *hw,struct ieee80211_vif *vif,u8 instance_id);
     }
 
 .. _`ieee80211_ops.members`:
@@ -4421,7 +4441,7 @@ config_iface_filter
     Configure the interface's RX filter.
     This callback is optional and is used to configure which frames
     should be passed to mac80211. The filter_flags is the combination
-    of FIF\_\* flags. The changed_flags is a bit mask that indicates
+    of FIF_* flags. The changed_flags is a bit mask that indicates
     which flags are changed.
     This callback can sleep.
 
@@ -4538,12 +4558,8 @@ sta_remove
 sta_add_debugfs
     Drivers can use this callback to add debugfs files
     when a station is added to mac80211's station list. This callback
-    and \ ``sta_remove_debugfs``\  should be within a CONFIG_MAC80211_DEBUGFS
-    conditional. This callback can sleep.
-
-sta_remove_debugfs
-    Remove the debugfs files which were added using
-    \ ``sta_add_debugfs``\ . This callback can sleep.
+    should be within a CONFIG_MAC80211_DEBUGFS conditional. This
+    callback can sleep.
 
 sta_notify
     Notifies low level driver about power state transition of an
@@ -4554,7 +4570,7 @@ sta_notify
 sta_state
     Notifies low level driver about state transition of a
     station (which can be the AP, a client, IBSS/WDS/mesh peer etc.)
-    This callback is mutually exclusive with \ ``sta_add``\ /\ ``sta_remove``\ .
+    This callback is mutually exclusive with \ ``sta_add``\ /@sta_remove.
     It must not fail for down transitions but may fail for transitions
     up the list of states. Also note that after the callback returns it
     isn't safe to use the pointer, not even RCU protected - no RCU grace
@@ -4575,7 +4591,7 @@ sta_rc_update
     used to transmit to the station. The changes are advertised with bits
     from \ :c:type:`enum ieee80211_rate_control_changed <ieee80211_rate_control_changed>`\  and the values are reflected
     in the station data. This callback should only be used when the driver
-    uses hardware rate control (\ ``IEEE80211_HW_HAS_RATE_CONTROL``\ ) since
+    uses hardware rate control (%IEEE80211_HW_HAS_RATE_CONTROL) since
     otherwise the rate control algorithm is notified directly.
     Must be atomic.
 
@@ -4611,6 +4627,13 @@ set_tsf
     required function.
     The callback can sleep.
 
+offset_tsf
+    Offset the TSF timer by the specified value in the
+    firmware/hardware.  Preferred to set_tsf as it avoids delay between
+    calling \ :c:func:`set_tsf`\  and hardware getting programmed, which will show up
+    as TSF delay. Is not a required function.
+    The callback can sleep.
+
 reset_tsf
     Reset the TSF timer and allow firmware/hardware to synchronize
     with other STAs in the IBSS. This is only used in IBSS mode. This
@@ -4634,6 +4657,16 @@ ampdu_action
     may neither send aggregates containing more subframes than \ ``buf_size``\ 
     nor send aggregates in a way that lost frames would exceed the
     buffer size. If just limiting the aggregate size, this would be
+
+    possible with a buf_size of 8:
+
+    - TX: 1.....7
+    - RX:  2....7 (lost frame #1)
+    - TX:        8..1...
+    which is invalid since #1 was now re-transmitted well past the
+    buffer size of 8. Correct ways to retransmit #1 would be:
+    - TX:       1 or 18 or 81
+    Even "189" would be wrong since 1 could be lost again.
 
 get_survey
     Return per-channel survey information
@@ -4791,7 +4824,7 @@ mgd_protect_tdls_discover
     setup-response is a direct packet not buffered by the AP.
     mac80211 will call this function just before the transmission of a TDLS
     discovery-request. The recommended period of protection is at least
-    2 \* (DTIM period).
+    2 * (DTIM period).
     The callback is optional and can sleep.
 
 add_chanctx
@@ -4822,7 +4855,7 @@ switch_vif_chanctx
     switch a number of vifs from one chanctx to
     another, as specified in the list of
     \ ``ieee80211_vif_chanctx_switch``\  passed to the driver, according
-    to the mode defined in \ :c:type:`struct ieee80211_chanctx_switch_mode <ieee80211_chanctx_switch_mode>`.
+    to the mode defined in \ :c:type:`struct ieee80211_chanctx_switch_mode <ieee80211_chanctx_switch_mode>`\ .
     This callback may sleep.
 
 reconfig_complete
@@ -4908,6 +4941,30 @@ sync_rx_queues
     pending frames that were received prior to the control path action
     currently taken (e.g. disassociation) but are not processed yet.
 
+start_nan
+    join an existing NAN cluster, or create a new one.
+
+stop_nan
+    leave the NAN cluster.
+
+nan_change_conf
+    change NAN configuration. The data in cfg80211_nan_conf
+    contains full new configuration and changes specify which parameters
+    are changed with respect to the last NAN config.
+    The driver gets both full configuration and the changed parameters since
+    some devices may need the full configuration while others need only the
+    changed parameters.
+
+add_nan_func
+    Add a NAN function. Returns 0 on success. The data in
+    cfg80211_nan_func must not be referenced outside the scope of
+    this call.
+
+del_nan_func
+    Remove a NAN function. The driver must call
+    \ :c:func:`ieee80211_nan_func_terminated`\  with
+    NL80211_NAN_FUNC_TERM_REASON_USER_REQUEST reason code upon removal.
+
 .. _`ieee80211_ops.description`:
 
 Description
@@ -4917,21 +4974,8 @@ This structure contains various callbacks that the driver may
 handle or, in some cases, must handle, for example to configure
 the hardware to a new channel or to transmit a frame.
 
-.. _`ieee80211_ops.possible-with-a-buf_size-of-8`:
-
-possible with a buf_size of 8
------------------------------
-
-- TX: 1.....7
-- RX:  2....7 (lost frame #1)
-- TX:        8..1...
-which is invalid since #1 was now re-transmitted well past the
-buffer size of 8. Correct ways to retransmit #1 would be:
-- TX:       1 or 18 or 81
-Even "189" would be wrong since 1 could be lost again.
-
-Returns a negative error code on failure.
-The callback can sleep.
+     Returns a negative error code on failure.
+     The callback can sleep.
 
 .. _`ieee80211_alloc_hw_nm`:
 
@@ -4950,7 +4994,7 @@ ieee80211_alloc_hw_nm
 
     :param const char \*requested_name:
         Requested name for this device.
-        NULL is valid value, and means use the default naming (phy\ ``d``\ )
+        NULL is valid value, and means use the default naming (phy%d)
 
 .. _`ieee80211_alloc_hw_nm.description`:
 
@@ -5243,7 +5287,7 @@ ieee80211_create_tpt_led_trigger
 Return
 ------
 
-\ ``NULL``\  (in case of error, or if no LED triggers are
+%NULL (in case of error, or if no LED triggers are
 configured) or the name of the new trigger.
 
 .. _`ieee80211_create_tpt_led_trigger.note`:
@@ -5315,7 +5359,7 @@ Call this function when the hardware was restarted for some reason
 (hardware error, ...) and the driver is unable to restore its state
 by itself. mac80211 assumes that at this point the driver/hardware
 is completely uninitialised and stopped, it starts the process by
-calling the ->\ :c:func:`start`\  operation. The driver will need to reset all
+calling the ->start() operation. The driver will need to reset all
 internal state that it has prior to calling this function.
 
 .. _`ieee80211_rx_napi`:
@@ -5574,7 +5618,7 @@ ieee80211_sta_set_buffered
     inform mac80211 about driver-buffered frames
 
     :param struct ieee80211_sta \*sta:
-        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer for the sleeping station
+        &struct ieee80211_sta pointer for the sleeping station
 
     :param u8 tid:
         the TID that has buffered frames
@@ -5601,7 +5645,7 @@ then the driver needs to inform mac80211 that there no longer are
 frames buffered. However, when the station wakes up mac80211 assumes
 that all buffered frames will be transmitted and clears this data,
 drivers need to make sure they inform mac80211 about all buffered
-frames on the sleep transition (\ :c:func:`sta_notify`\  with \ ``STA_NOTIFY_SLEEP``\ ).
+frames on the sleep transition (sta_notify() with \ ``STA_NOTIFY_SLEEP``\ ).
 
 Note that technically mac80211 only needs to know this per AC, not per
 TID, but since driver buffering will inevitably happen per TID (since
@@ -5619,7 +5663,7 @@ ieee80211_get_tx_rates
     get the selected transmit rates for a packet
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param struct ieee80211_sta \*sta:
         the receiver station to which this packet is sent.
@@ -5830,10 +5874,10 @@ ieee80211_beacon_get_template
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param struct ieee80211_mutable_offsets \*offs:
-        \ :c:type:`struct ieee80211_mutable_offsets <ieee80211_mutable_offsets>`\  pointer to struct that will
+        &struct ieee80211_mutable_offsets pointer to struct that will
         receive the offsets that may be updated by the driver.
 
 .. _`ieee80211_beacon_get_template.description`:
@@ -5871,7 +5915,7 @@ ieee80211_beacon_get_tim
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param u16 \*tim_offset:
         pointer to variable that will receive the TIM IE offset.
@@ -5917,7 +5961,7 @@ ieee80211_beacon_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_beacon_get.description`:
 
@@ -5943,7 +5987,7 @@ ieee80211_csa_update_counter
     request mac80211 to decrement the csa counter
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_csa_update_counter.description`:
 
@@ -5973,7 +6017,7 @@ ieee80211_csa_finish
     notify mac80211 about channel switch
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_csa_finish.description`:
 
@@ -5994,7 +6038,7 @@ ieee80211_csa_is_complete
     find out if counters reached 1
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_csa_is_complete.description`:
 
@@ -6016,7 +6060,7 @@ ieee80211_proberesp_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_proberesp_get.description`:
 
@@ -6048,7 +6092,7 @@ ieee80211_pspoll_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_pspoll_get.description`:
 
@@ -6065,7 +6109,7 @@ Note
 ----
 
 Caller (or hardware) is responsible for setting the
-\ :c:type:`struct IEEE80211_FCTL_PM <IEEE80211_FCTL_PM>` bit.
+\ :c:type:`struct IEEE80211_FCTL_PM <IEEE80211_FCTL_PM>`\  bit.
 
 .. _`ieee80211_pspoll_get.return`:
 
@@ -6087,7 +6131,7 @@ ieee80211_nullfunc_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_nullfunc_get.description`:
 
@@ -6104,7 +6148,7 @@ Note
 ----
 
 Caller (or hardware) is responsible for setting the
-\ :c:type:`struct IEEE80211_FCTL_PM <IEEE80211_FCTL_PM>` bit as well as Duration and Sequence Control fields.
+\ :c:type:`struct IEEE80211_FCTL_PM <IEEE80211_FCTL_PM>`\  bit as well as Duration and Sequence Control fields.
 
 .. _`ieee80211_nullfunc_get.return`:
 
@@ -6165,7 +6209,7 @@ ieee80211_rts_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param const void \*frame:
         pointer to the frame that is going to be protected by the RTS.
@@ -6174,7 +6218,7 @@ ieee80211_rts_get
         the frame length (in octets).
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+        &struct ieee80211_tx_info of the frame.
 
     :param struct ieee80211_rts \*rts:
         The buffer where to store the RTS frame.
@@ -6202,13 +6246,13 @@ ieee80211_rts_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param size_t frame_len:
         the length of the frame that is going to be protected by the RTS.
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+        &struct ieee80211_tx_info of the frame.
 
 .. _`ieee80211_rts_duration.description`:
 
@@ -6239,7 +6283,7 @@ ieee80211_ctstoself_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param const void \*frame:
         pointer to the frame that is going to be protected by the CTS-to-self.
@@ -6248,7 +6292,7 @@ ieee80211_ctstoself_get
         the frame length (in octets).
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+        &struct ieee80211_tx_info of the frame.
 
     :param struct ieee80211_cts \*cts:
         The buffer where to store the CTS-to-self frame.
@@ -6276,13 +6320,13 @@ ieee80211_ctstoself_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param size_t frame_len:
         the length of the frame that is going to be protected by the CTS-to-self.
 
     :param const struct ieee80211_tx_info \*frame_txctl:
-        \ :c:type:`struct ieee80211_tx_info <ieee80211_tx_info>`\  of the frame.
+        &struct ieee80211_tx_info of the frame.
 
 .. _`ieee80211_ctstoself_duration.description`:
 
@@ -6313,7 +6357,7 @@ ieee80211_generic_frame_duration
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param enum nl80211_band band:
         the band to calculate the frame duration on
@@ -6352,7 +6396,7 @@ ieee80211_get_buffered_bc
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_get_buffered_bc.description`:
 
@@ -6609,7 +6653,7 @@ time this function is called, it is not deleted in the hardware but
 instead assumed to have been removed already.
 
 Note that due to locking considerations this function can (currently)
-only be called during key iteration (\ :c:func:`ieee80211_iter_keys`\ .)
+only be called during key iteration (ieee80211_iter_keys().)
 
 .. _`ieee80211_gtk_rekey_add`:
 
@@ -6650,12 +6694,7 @@ of the reconfiguration.
 Note that the driver should also call \ :c:func:`ieee80211_set_key_rx_seq`\ 
 for the new key for each TID to set up sequence counters properly.
 
-.. _`ieee80211_gtk_rekey_add.important`:
-
-IMPORTANT
----------
-
-If this replaces a key that is present in the hardware,
+IMPORTANT: If this replaces a key that is present in the hardware,
 then it will attempt to remove it during this call. In many cases
 this isn't what you want, so call \ :c:func:`ieee80211_remove_key`\  first for
 the key that's being replaced.
@@ -6752,7 +6791,7 @@ Drivers should use this function instead of netif_stop_queue.
 Return
 ------
 
-\ ``true``\  if the queue is stopped. \ ``false``\  otherwise.
+%true if the queue is stopped. \ ``false``\  otherwise.
 
 .. _`ieee80211_stop_queues`:
 
@@ -6797,15 +6836,15 @@ Drivers should use this function instead of netif_wake_queue.
 ieee80211_scan_completed
 ========================
 
-.. c:function:: void ieee80211_scan_completed(struct ieee80211_hw *hw, bool aborted)
+.. c:function:: void ieee80211_scan_completed(struct ieee80211_hw *hw, struct cfg80211_scan_info *info)
 
     completed hardware scan
 
     :param struct ieee80211_hw \*hw:
         the hardware that finished the scan
 
-    :param bool aborted:
-        set to true if scan was aborted
+    :param struct cfg80211_scan_info \*info:
+        information about the completed scan
 
 .. _`ieee80211_scan_completed.description`:
 
@@ -7142,7 +7181,7 @@ ieee80211_start_tx_ba_cb_irqsafe
     low level driver ready to aggregate.
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+        &struct ieee80211_vif pointer from the add_interface callback
 
     :param const u8 \*ra:
         receiver address of the BA session recipient.
@@ -7195,7 +7234,7 @@ ieee80211_stop_tx_ba_cb_irqsafe
     low level driver ready to stop aggregate.
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+        &struct ieee80211_vif pointer from the add_interface callback
 
     :param const u8 \*ra:
         receiver address of the BA session recipient.
@@ -7281,12 +7320,12 @@ NOTE
 ----
 
 You may pass NULL for localaddr, but then you will just get
-the first STA that matches the remote address 'addr'.
-We can have multiple STA associated with multiple
-logical stations (e.g. consider a station connecting to another
-BSSID on the same AP hardware without disconnecting first).
-In this case, the result of this method with localaddr NULL
-is not reliable.
+     the first STA that matches the remote address 'addr'.
+     We can have multiple STA associated with multiple
+     logical stations (e.g. consider a station connecting to another
+     BSSID on the same AP hardware without disconnecting first).
+     In this case, the result of this method with localaddr NULL
+     is not reliable.
 
 DO NOT USE THIS FUNCTION with localaddr NULL if at all possible.
 
@@ -7358,15 +7397,15 @@ mac80211 in the TX status about the EOSP, it must clear the
 \ ``IEEE80211_TX_STATUS_EOSP``\  bit and call this function instead.
 This applies for PS-Poll as well as uAPSD.
 
-Note that just like with \\ :c:func:`_tx_status`\  and \\ :c:func:`_rx`\  drivers must
+Note that just like with \ :c:func:`_tx_status`\  and \ :c:func:`_rx`\  drivers must
 not mix calls to irqsafe/non-irqsafe versions, this function
 must not be mixed with those either. Use the all irqsafe, or
 all non-irqsafe, don't mix!
 
-NB: the \_irqsafe version of this function doesn't exist, no
-driver needs it right now. Don't call this function if
-you'd need the \_irqsafe version, look at the git history
-and restore the \_irqsafe version!
+NB: the _irqsafe version of this function doesn't exist, no
+    driver needs it right now. Don't call this function if
+    you'd need the _irqsafe version, look at the git history
+    and restore the _irqsafe version!
 
 .. _`ieee80211_send_eosp_nullfunc`:
 
@@ -7523,7 +7562,7 @@ ieee80211_ap_probereq_get
         pointer obtained from \ :c:func:`ieee80211_alloc_hw`\ .
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_ap_probereq_get.description`:
 
@@ -7554,7 +7593,7 @@ ieee80211_beacon_loss
     inform hardware does not receive beacons
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_beacon_loss.description`:
 
@@ -7575,7 +7614,7 @@ ieee80211_connection_loss
     inform hardware has lost connection to the AP
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_connection_loss.description`:
 
@@ -7601,7 +7640,7 @@ ieee80211_resume_disconnect
     disconnect from AP after resume
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
 .. _`ieee80211_resume_disconnect.description`:
 
@@ -7634,7 +7673,7 @@ ieee80211_cqm_rssi_notify
     inform a configured connection quality monitoring rssi threshold triggered
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param enum nl80211_cqm_rssi_threshold_event rssi_event:
         the RSSI trigger event type
@@ -7661,7 +7700,7 @@ ieee80211_cqm_beacon_loss_notify
     inform CQM of beacon loss
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param gfp_t gfp:
         context flags
@@ -7688,7 +7727,7 @@ ieee80211_chswitch_done
     Complete channel switch process
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param bool success:
         make the channel switch successful or not
@@ -7711,7 +7750,7 @@ ieee80211_request_smps
     request SM PS transition
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param enum ieee80211_smps_mode smps_mode:
         new SM PS mode
@@ -7759,7 +7798,7 @@ ieee80211_stop_rx_ba_session
     callback to stop existing BA sessions
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param u16 ba_rx_bitmap:
         Bit map of open rx ba per tid
@@ -7824,7 +7863,7 @@ ieee80211_send_bar
     send a BlockAckReq frame
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback.
+        &struct ieee80211_vif pointer from the add_interface callback.
 
     :param u8 \*ra:
         the peer's destination address
@@ -7853,7 +7892,7 @@ ieee80211_start_rx_ba_session_offl
     start a Rx BA session
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+        &struct ieee80211_vif pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -7883,7 +7922,7 @@ ieee80211_stop_rx_ba_session_offl
     stop a Rx BA session
 
     :param struct ieee80211_vif \*vif:
-        \ :c:type:`struct ieee80211_vif <ieee80211_vif>`\  pointer from the add_interface callback
+        &struct ieee80211_vif pointer from the add_interface callback
 
     :param const u8 \*addr:
         station mac address
@@ -7988,7 +8027,7 @@ rate_control_send_low
     helper for drivers for management/no-ack frames
 
     :param struct ieee80211_sta \*sta:
-        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination. Note
+        &struct ieee80211_sta pointer to the target destination. Note
         that this may be null.
 
     :param void \*priv_sta:
@@ -8025,7 +8064,7 @@ rate_control_set_rates
         pointer as obtained from \ :c:func:`ieee80211_alloc_hw`\ 
 
     :param struct ieee80211_sta \*pubsta:
-        \ :c:type:`struct ieee80211_sta <ieee80211_sta>`\  pointer to the target destination.
+        &struct ieee80211_sta pointer to the target destination.
 
     :param struct ieee80211_sta_rates \*rates:
         new tx rate set to be used for this station.
@@ -8380,6 +8419,62 @@ Description
 The values are not guaranteed to be coherent with regard to each other, i.e.
 txq state can change half-way of this function and the caller may end up
 with "new" frame_cnt and "old" byte_cnt or vice-versa.
+
+.. _`ieee80211_nan_func_terminated`:
+
+ieee80211_nan_func_terminated
+=============================
+
+.. c:function:: void ieee80211_nan_func_terminated(struct ieee80211_vif *vif, u8 inst_id, enum nl80211_nan_func_term_reason reason, gfp_t gfp)
+
+    notify about NAN function termination.
+
+    :param struct ieee80211_vif \*vif:
+        &struct ieee80211_vif pointer from the add_interface callback.
+
+    :param u8 inst_id:
+        the local instance id
+
+    :param enum nl80211_nan_func_term_reason reason:
+        termination reason (one of the NL80211_NAN_FUNC_TERM_REASON_*)
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`ieee80211_nan_func_terminated.description`:
+
+Description
+-----------
+
+This function is used to notify mac80211 about NAN function termination.
+Note that this function can't be called from hard irq.
+
+.. _`ieee80211_nan_func_match`:
+
+ieee80211_nan_func_match
+========================
+
+.. c:function:: void ieee80211_nan_func_match(struct ieee80211_vif *vif, struct cfg80211_nan_match_params *match, gfp_t gfp)
+
+    notify about NAN function match event.
+
+    :param struct ieee80211_vif \*vif:
+        &struct ieee80211_vif pointer from the add_interface callback.
+
+    :param struct cfg80211_nan_match_params \*match:
+        match event information
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`ieee80211_nan_func_match.description`:
+
+Description
+-----------
+
+This function is used to notify mac80211 about NAN function match. The
+cookie inside the match struct will be assigned by mac80211.
+Note that this function can't be called from hard irq.
 
 .. This file was automatic generated / don't edit.
 

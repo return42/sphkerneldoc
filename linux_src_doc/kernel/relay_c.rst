@@ -162,11 +162,11 @@ Returns 1 if the buffer is full, 0 otherwise.
 wakeup_readers
 ==============
 
-.. c:function:: void wakeup_readers(unsigned long data)
+.. c:function:: void wakeup_readers(struct irq_work *work)
 
     wake up readers waiting on a channel
 
-    :param unsigned long data:
+    :param struct irq_work \*work:
         contains the channel buffer
 
 .. _`wakeup_readers.description`:
@@ -174,7 +174,7 @@ wakeup_readers
 Description
 -----------
 
-This is the timer function used to defer reader waking.
+This is the function used to defer reader waking
 
 .. _`__relay_reset`:
 
@@ -243,31 +243,6 @@ Marks the buffer finalized and restores the default callbacks.
 The channel buffer and channel buffer data structure are then freed
 automatically when the last reference is given up.
 
-.. _`relay_hotcpu_callback`:
-
-relay_hotcpu_callback
-=====================
-
-.. c:function:: int relay_hotcpu_callback(struct notifier_block *nb, unsigned long action, void *hcpu)
-
-    CPU hotplug callback
-
-    :param struct notifier_block \*nb:
-        notifier block
-
-    :param unsigned long action:
-        hotplug action to take
-
-    :param void \*hcpu:
-        CPU number
-
-.. _`relay_hotcpu_callback.description`:
-
-Description
------------
-
-Returns the success/failure of the operation. (\ ``NOTIFY_OK``\ , \ ``NOTIFY_BAD``\ )
-
 .. _`relay_open`:
 
 relay_open
@@ -307,6 +282,10 @@ attributes specified.  The created channel buffer files
 will be named base_filename0...base_filenameN-1.  File
 permissions will be \ ``S_IRUSR``\ .
 
+If opening a buffer (@parent = NULL) that you later wish to register
+in a filesystem, call \ :c:func:`relay_late_setup_files`\  once the \ ``parent``\  dentry
+is available.
+
 .. _`relay_late_setup_files`:
 
 relay_late_setup_files
@@ -332,8 +311,12 @@ Description
 
 Returns 0 if successful, non-zero otherwise.
 
-Use to setup files for a previously buffer-only channel.
-Useful to do early tracing in kernel, before VFS is up, for example.
+Use to setup files for a previously buffer-only channel created
+by \ :c:func:`relay_open`\  with a NULL parent dentry.
+
+For example, this is useful for perfomring early tracing in kernel,
+before VFS is up and then exposing the early results once the dentry
+is available.
 
 .. _`relay_switch_subbuf`:
 

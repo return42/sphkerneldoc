@@ -43,5 +43,26 @@ This function returns the position (counting backwards) of the event id
 (PERF_SAMPLE_ID or PERF_SAMPLE_IDENTIFIER) in a non-sample event i.e. if
 sample_id_all is used there is an id sample appended to non-sample events.
 
+.. _`perf_evsel__is_function_event`:
+
+perf_evsel__is_function_event
+=============================
+
+.. c:function:: bool perf_evsel__is_function_event(struct perf_evsel *evsel)
+
+    Return whether given evsel is a function trace event
+
+    :param struct perf_evsel \*evsel:
+        *undescribed*
+
+.. _`perf_evsel__is_function_event.description`:
+
+Description
+-----------
+
+@evsel - evsel selector to be tested
+
+Return \ ``true``\  if event is function trace event
+
 .. This file was automatic generated / don't edit.
 

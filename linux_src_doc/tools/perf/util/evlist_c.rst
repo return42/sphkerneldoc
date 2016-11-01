@@ -64,7 +64,7 @@ consumption using \ :c:func:`auxtrace_mmap__write_tail`\ .
 Return
 ------
 
-\ ``0``\  on success, negative error code otherwise.
+%0 on success, negative error code otherwise.
 
 .. This file was automatic generated / don't edit.
 

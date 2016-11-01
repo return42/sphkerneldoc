@@ -19,7 +19,7 @@ Description
 -----------
 
 This function must be called by textsearch modules to announce
-their presence. The specified &\ ``ops``\  must have \ ``name``\  set to a
+their presence. The specified &@ops must have \ ``name``\  set to a
 unique identifier and the callbacks \ :c:func:`find`\ , \ :c:func:`init`\ , \ :c:func:`get_pattern`\ ,
 and \ :c:func:`get_pattern_len`\  must be implemented.
 
@@ -45,7 +45,7 @@ Description
 
 This function must be called by textsearch modules to announce
 their disappearance for examples when the module gets unloaded.
-The \ :c:type:`struct ops <ops>` parameter must be the same as the one during the
+The \ :c:type:`struct ops <ops>`\  parameter must be the same as the one during the
 registration.
 
 Returns 0 on success or -ENOENT if no matching textsearch

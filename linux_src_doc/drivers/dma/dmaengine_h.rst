@@ -93,5 +93,97 @@ Description
 Report the status of the cookie, filling in the state structure if
 non-NULL.  No locking is required.
 
+.. _`dmaengine_desc_get_callback`:
+
+dmaengine_desc_get_callback
+===========================
+
+.. c:function:: void dmaengine_desc_get_callback(struct dma_async_tx_descriptor *tx, struct dmaengine_desc_callback *cb)
+
+    get the passed in callback function
+
+    :param struct dma_async_tx_descriptor \*tx:
+        tx descriptor
+
+    :param struct dmaengine_desc_callback \*cb:
+        temp struct to hold the callback info
+
+.. _`dmaengine_desc_get_callback.description`:
+
+Description
+-----------
+
+Fill the passed in cb struct with what's available in the passed in
+tx descriptor struct
+No locking is required.
+
+.. _`dmaengine_desc_callback_invoke`:
+
+dmaengine_desc_callback_invoke
+==============================
+
+.. c:function:: void dmaengine_desc_callback_invoke(struct dmaengine_desc_callback *cb, const struct dmaengine_result *result)
+
+    call the callback function in cb struct
+
+    :param struct dmaengine_desc_callback \*cb:
+        temp struct that is holding the callback info
+
+    :param const struct dmaengine_result \*result:
+        transaction result
+
+.. _`dmaengine_desc_callback_invoke.description`:
+
+Description
+-----------
+
+Call the callback function provided in the cb struct with the parameter
+in the cb struct.
+Locking is dependent on the driver.
+
+.. _`dmaengine_desc_get_callback_invoke`:
+
+dmaengine_desc_get_callback_invoke
+==================================
+
+.. c:function:: void dmaengine_desc_get_callback_invoke(struct dma_async_tx_descriptor *tx, const struct dmaengine_result *result)
+
+    get the callback in tx descriptor and then immediately call the callback.
+
+    :param struct dma_async_tx_descriptor \*tx:
+        dma async tx descriptor
+
+    :param const struct dmaengine_result \*result:
+        transaction result
+
+.. _`dmaengine_desc_get_callback_invoke.description`:
+
+Description
+-----------
+
+Call \ :c:func:`dmaengine_desc_get_callback`\  and \ :c:func:`dmaengine_desc_callback_invoke`\ 
+in a single function since no work is necessary in between for the driver.
+Locking is dependent on the driver.
+
+.. _`dmaengine_desc_callback_valid`:
+
+dmaengine_desc_callback_valid
+=============================
+
+.. c:function:: bool dmaengine_desc_callback_valid(struct dmaengine_desc_callback *cb)
+
+    verify the callback is valid in cb
+
+    :param struct dmaengine_desc_callback \*cb:
+        callback info struct
+
+.. _`dmaengine_desc_callback_valid.description`:
+
+Description
+-----------
+
+Return a bool that verifies whether callback in cb is valid or not.
+No locking is required.
+
 .. This file was automatic generated / don't edit.
 

@@ -1,6 +1,58 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_lock.c
 
+.. _`drm_lock_take`:
+
+drm_lock_take
+=============
+
+.. c:function:: int drm_lock_take(struct drm_lock_data *lock_data, unsigned int context)
+
+    :param struct drm_lock_data \*lock_data:
+        *undescribed*
+
+    :param unsigned int context:
+        *undescribed*
+
+.. _`drm_lock_take.description`:
+
+Description
+-----------
+
+\param lock lock pointer.
+\param context locking context.
+\return one if the lock is held, or zero otherwise.
+
+Attempt to mark the lock as held by the given context, via the \p cmpxchg instruction.
+
+.. _`drm_lock_transfer`:
+
+drm_lock_transfer
+=================
+
+.. c:function:: int drm_lock_transfer(struct drm_lock_data *lock_data, unsigned int context)
+
+    inside \*\_unlock to give lock to kernel before calling \*\_dma_schedule.
+
+    :param struct drm_lock_data \*lock_data:
+        *undescribed*
+
+    :param unsigned int context:
+        *undescribed*
+
+.. _`drm_lock_transfer.description`:
+
+Description
+-----------
+
+\param dev DRM device.
+\param lock lock pointer.
+\param context locking context.
+\return always one.
+
+Resets the lock file pointer.
+Marks the lock as held by the given context, via the \p cmpxchg instruction.
+
 .. _`drm_legacy_lock`:
 
 drm_legacy_lock
@@ -58,84 +110,6 @@ Description
 \return zero on success or negative number on failure.
 
 Transfer and free the lock.
-
-.. _`drm_lock_take`:
-
-drm_lock_take
-=============
-
-.. c:function:: int drm_lock_take(struct drm_lock_data *lock_data, unsigned int context)
-
-    :param struct drm_lock_data \*lock_data:
-        *undescribed*
-
-    :param unsigned int context:
-        *undescribed*
-
-.. _`drm_lock_take.description`:
-
-Description
------------
-
-\param lock lock pointer.
-\param context locking context.
-\return one if the lock is held, or zero otherwise.
-
-Attempt to mark the lock as held by the given context, via the \p cmpxchg instruction.
-
-.. _`drm_lock_transfer`:
-
-drm_lock_transfer
-=================
-
-.. c:function:: int drm_lock_transfer(struct drm_lock_data *lock_data, unsigned int context)
-
-    inside \*\_unlock to give lock to kernel before calling \*\_dma_schedule.
-
-    :param struct drm_lock_data \*lock_data:
-        *undescribed*
-
-    :param unsigned int context:
-        *undescribed*
-
-.. _`drm_lock_transfer.description`:
-
-Description
------------
-
-\param dev DRM device.
-\param lock lock pointer.
-\param context locking context.
-\return always one.
-
-Resets the lock file pointer.
-Marks the lock as held by the given context, via the \p cmpxchg instruction.
-
-.. _`drm_legacy_lock_free`:
-
-drm_legacy_lock_free
-====================
-
-.. c:function:: int drm_legacy_lock_free(struct drm_lock_data *lock_data, unsigned int context)
-
-    :param struct drm_lock_data \*lock_data:
-        *undescribed*
-
-    :param unsigned int context:
-        *undescribed*
-
-.. _`drm_legacy_lock_free.description`:
-
-Description
------------
-
-\param dev DRM device.
-\param lock lock.
-\param context context.
-
-Resets the lock file pointer.
-Marks the lock as not held, via the \p cmpxchg instruction. Wakes any task
-waiting on the lock queue.
 
 .. _`drm_legacy_idlelock_take`:
 

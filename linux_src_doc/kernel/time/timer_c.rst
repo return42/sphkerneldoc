@@ -21,7 +21,7 @@ __round_jiffies
 Description
 -----------
 
-\ :c:func:`__round_jiffies`\  rounds an absolute time in the future (in jiffies)
+__round_jiffies() rounds an absolute time in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -56,7 +56,7 @@ __round_jiffies_relative
 Description
 -----------
 
-\ :c:func:`__round_jiffies_relative`\  rounds a time delta  in the future (in jiffies)
+__round_jiffies_relative() rounds a time delta  in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -88,7 +88,7 @@ round_jiffies
 Description
 -----------
 
-\ :c:func:`round_jiffies`\  rounds an absolute time in the future (in jiffies)
+round_jiffies() rounds an absolute time in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -116,7 +116,7 @@ round_jiffies_relative
 Description
 -----------
 
-\ :c:func:`round_jiffies_relative`\  rounds a time delta  in the future (in jiffies)
+round_jiffies_relative() rounds a time delta  in the future (in jiffies)
 up or down to (approximately) full seconds. This is useful for timers
 for which the exact time they fire does not matter too much, as long as
 they fire approximately every X seconds.
@@ -147,7 +147,7 @@ __round_jiffies_up
 Description
 -----------
 
-This is the same as \\ :c:func:`__round_jiffies`\  except that it will never
+This is the same as \ :c:func:`__round_jiffies`\  except that it will never
 round down.  This is useful for timeouts for which the exact time
 of firing does not matter too much, as long as they don't fire too
 early.
@@ -172,7 +172,7 @@ __round_jiffies_up_relative
 Description
 -----------
 
-This is the same as \\ :c:func:`__round_jiffies_relative`\  except that it will never
+This is the same as \ :c:func:`__round_jiffies_relative`\  except that it will never
 round down.  This is useful for timeouts for which the exact time
 of firing does not matter too much, as long as they don't fire too
 early.
@@ -221,34 +221,6 @@ round down.  This is useful for timeouts for which the exact time
 of firing does not matter too much, as long as they don't fire too
 early.
 
-.. _`set_timer_slack`:
-
-set_timer_slack
-===============
-
-.. c:function:: void set_timer_slack(struct timer_list *timer, int slack_hz)
-
-    set the allowed slack for a timer
-
-    :param struct timer_list \*timer:
-        the timer to be modified
-
-    :param int slack_hz:
-        the amount of time (in jiffies) allowed for rounding
-
-.. _`set_timer_slack.description`:
-
-Description
------------
-
-Set the amount of time, in jiffies, that a certain timer has
-in terms of slack. By setting this value, the timer subsystem
-will schedule the actual timer somewhere between
-the time \ :c:func:`mod_timer`\  asks for, and that time plus the slack.
-
-By setting the slack to -1, a percentage of the delay is used
-instead.
-
 .. _`init_timer_key`:
 
 init_timer_key
@@ -276,7 +248,7 @@ init_timer_key
 Description
 -----------
 
-\ :c:func:`init_timer_key`\  must be done to a timer prior calling \*any\* of the
+init_timer_key() must be done to a timer prior calling *any* of the
 other timer functions.
 
 .. _`mod_timer_pending`:
@@ -299,7 +271,7 @@ mod_timer_pending
 Description
 -----------
 
-\ :c:func:`mod_timer_pending`\  is the same for pending timers as \ :c:func:`mod_timer`\ ,
+mod_timer_pending() is the same for pending timers as \ :c:func:`mod_timer`\ ,
 but will not re-activate and modify already deleted timers.
 
 It is useful for unserialized use of timers.
@@ -324,12 +296,12 @@ mod_timer
 Description
 -----------
 
-\ :c:func:`mod_timer`\  is a more efficient way to update the expire field of an
+mod_timer() is a more efficient way to update the expire field of an
 active timer (if the timer is inactive it will be activated)
 
 mod_timer(timer, expires) is equivalent to:
 
-del_timer(timer); timer->expires = expires; add_timer(timer);
+    del_timer(timer); timer->expires = expires; add_timer(timer);
 
 Note that if there are multiple unserialized concurrent users of the
 same timer, then \ :c:func:`mod_timer`\  is the only safe way to modify the timeout,
@@ -338,40 +310,6 @@ since \ :c:func:`add_timer`\  cannot modify an already running timer.
 The function returns whether it has modified a pending timer or not.
 (ie. \ :c:func:`mod_timer`\  of an inactive timer returns 0, \ :c:func:`mod_timer`\  of an
 active timer returns 1.)
-
-.. _`mod_timer_pinned`:
-
-mod_timer_pinned
-================
-
-.. c:function:: int mod_timer_pinned(struct timer_list *timer, unsigned long expires)
-
-    modify a timer's timeout
-
-    :param struct timer_list \*timer:
-        the timer to be modified
-
-    :param unsigned long expires:
-        new timeout in jiffies
-
-.. _`mod_timer_pinned.description`:
-
-Description
------------
-
-\ :c:func:`mod_timer_pinned`\  is a way to update the expire field of an
-active timer (if the timer is inactive it will be activated)
-and to ensure that the timer is scheduled on the current CPU.
-
-Note that this does not prevent the timer from being migrated
-when the current CPU goes offline.  If this is a problem for
-you, use CPU-hotplug notifiers to handle it correctly, for
-example, cancelling the timer when the corresponding CPU goes
-offline.
-
-mod_timer_pinned(timer, expires) is equivalent to:
-
-del_timer(timer); timer->expires = expires; add_timer(timer);
 
 .. _`add_timer`:
 
@@ -439,7 +377,7 @@ del_timer
 Description
 -----------
 
-\ :c:func:`del_timer`\  deactivates a timer - this works on both active and inactive
+del_timer() deactivates a timer - this works on both active and inactive
 timers.
 
 The function returns whether it has deactivated a pending timer or not.
@@ -487,12 +425,7 @@ This function only differs from \ :c:func:`del_timer`\  on SMP: besides deactiva
 the timer it also makes sure the handler has finished executing on other
 CPUs.
 
-.. _`del_timer_sync.synchronization-rules`:
-
-Synchronization rules
----------------------
-
-Callers must prevent restarting of the timer,
+Synchronization rules: Callers must prevent restarting of the timer,
 otherwise this function is meaningless. It must not be called from
 interrupt contexts unless the timer is an irqsafe one. The caller must
 not hold locks which would prevent completion of the timer's
@@ -505,45 +438,25 @@ Note
 ----
 
 For !irqsafe timers, you must not hold locks that are held in
-interrupt context while calling this function. Even if the lock has
-nothing to do with the timer in question.  Here's why:
+  interrupt context while calling this function. Even if the lock has
+  nothing to do with the timer in question.  Here's why:
 
-CPU0                             CPU1
-----                             ----
-<SOFTIRQ>
-\ :c:func:`call_timer_fn`\ ;
-base->running_timer = mytimer;
-spin_lock_irq(somelock);
-<IRQ>
-spin_lock(somelock);
-del_timer_sync(mytimer);
-while (base->running_timer == mytimer);
+   CPU0                             CPU1
+   ----                             ----
+                                  <SOFTIRQ>
+                                  \ :c:func:`call_timer_fn`\ ;
+                                    base->running_timer = mytimer;
+ spin_lock_irq(somelock);
+                                    <IRQ>
+                                       spin_lock(somelock);
+ del_timer_sync(mytimer);
+  while (base->running_timer == mytimer);
 
 Now \ :c:func:`del_timer_sync`\  will never return and never release somelock.
 The interrupt on the other CPU is waiting to grab somelock but
 it has interrupted the softirq that CPU0 is waiting to finish.
 
 The function returns whether it has deactivated a pending timer or not.
-
-.. _`__run_timers`:
-
-__run_timers
-============
-
-.. c:function:: void __run_timers(struct tvec_base *base)
-
-    run all expired timers (if any) on this CPU.
-
-    :param struct tvec_base \*base:
-        the timer vector to be processed.
-
-.. _`__run_timers.description`:
-
-Description
------------
-
-This function cascades all vectors and executes all expired timer
-vectors.
 
 .. _`get_next_timer_interrupt`:
 
@@ -567,6 +480,37 @@ Description
 
 Returns the tick aligned clock monotonic time of the next pending
 timer or KTIME_MAX if no timer is pending.
+
+.. _`timer_clear_idle`:
+
+timer_clear_idle
+================
+
+.. c:function:: void timer_clear_idle( void)
+
+    Clear the idle state of the timer base
+
+    :param  void:
+        no arguments
+
+.. _`timer_clear_idle.description`:
+
+Description
+-----------
+
+Called with interrupts disabled
+
+.. _`__run_timers`:
+
+__run_timers
+============
+
+.. c:function:: void __run_timers(struct timer_base *base)
+
+    run all expired timers (if any) on this CPU.
+
+    :param struct timer_base \*base:
+        the timer vector to be processed.
 
 .. _`schedule_timeout`:
 
@@ -638,13 +582,24 @@ usleep_range
 
 .. c:function:: void __sched usleep_range(unsigned long min, unsigned long max)
 
-    Drop in replacement for udelay where wakeup is flexible
+    Sleep for an approximate time
 
     :param unsigned long min:
         Minimum time in usecs to sleep
 
     :param unsigned long max:
         Maximum time in usecs to sleep
+
+.. _`usleep_range.description`:
+
+Description
+-----------
+
+In non-atomic context where the exact wakeup time is flexible, use
+\ :c:func:`usleep_range`\  instead of \ :c:func:`udelay`\ .  The sleep improves responsiveness
+by avoiding the CPU-hogging busy-wait of \ :c:func:`udelay`\ , and the range reduces
+power usage by allowing hrtimers to take advantage of an already-
+scheduled interrupt instead of scheduling a new one just for this sleep.
 
 .. This file was automatic generated / don't edit.
 

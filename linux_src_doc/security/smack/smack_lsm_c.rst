@@ -2843,7 +2843,7 @@ smack_audit_rule_init
 Description
 -----------
 
-Prepare to audit cases where (\ ``field``\  \ ``op``\  \ ``rulestr``\ ) is true.
+Prepare to audit cases where (@field \ ``op``\  \ ``rulestr``\ ) is true.
 The label to be audited is created if necessay.
 
 .. _`smack_audit_rule_known`:

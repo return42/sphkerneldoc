@@ -207,6 +207,33 @@ Description
 Sets ring parameters. TX and RX rings are controlled separately, but the
 number of rings is not specified, so all rings get the same settings.
 
+.. _`__i40evf_get_coalesce`:
+
+__i40evf_get_coalesce
+=====================
+
+.. c:function:: int __i40evf_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
+
+    get per-queue coalesce settings
+
+    :param struct net_device \*netdev:
+        the netdev to check
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce data structure
+
+    :param int queue:
+        which queue to pick
+
+.. _`__i40evf_get_coalesce.description`:
+
+Description
+-----------
+
+Gets the per-queue settings for coalescence. Specifically Rx and Tx usecs
+are per queue. If queue is <0 then we default to queue 0 as the
+representative value.
+
 .. _`i40evf_get_coalesce`:
 
 i40evf_get_coalesce
@@ -229,7 +256,83 @@ Description
 
 Returns current coalescing settings. This is referred to elsewhere in the
 driver as Interrupt Throttle Rate, as this is how the hardware describes
-this functionality.
+this functionality. Note that if per-queue settings have been modified this
+only represents the settings of queue 0.
+
+.. _`i40evf_get_per_queue_coalesce`:
+
+i40evf_get_per_queue_coalesce
+=============================
+
+.. c:function:: int i40evf_get_per_queue_coalesce(struct net_device *netdev, u32 queue, struct ethtool_coalesce *ec)
+
+    get coalesce values for specific queue
+
+    :param struct net_device \*netdev:
+        netdev to read
+
+    :param u32 queue:
+        the queue to read
+
+    :param struct ethtool_coalesce \*ec:
+        coalesce settings from ethtool
+
+.. _`i40evf_get_per_queue_coalesce.description`:
+
+Description
+-----------
+
+Read specific queue's coalesce settings.
+
+.. _`i40evf_set_itr_per_queue`:
+
+i40evf_set_itr_per_queue
+========================
+
+.. c:function:: void i40evf_set_itr_per_queue(struct i40evf_adapter *adapter, struct ethtool_coalesce *ec, int queue)
+
+    set ITR values for specific queue
+
+    :param struct i40evf_adapter \*adapter:
+        *undescribed*
+
+    :param struct ethtool_coalesce \*ec:
+        coalesce settings from ethtool
+
+    :param int queue:
+        the queue to modify
+
+.. _`i40evf_set_itr_per_queue.description`:
+
+Description
+-----------
+
+Change the ITR settings for a specific queue.
+
+.. _`__i40evf_set_coalesce`:
+
+__i40evf_set_coalesce
+=====================
+
+.. c:function:: int __i40evf_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
+
+    set coalesce settings for particular queue
+
+    :param struct net_device \*netdev:
+        the netdev to change
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce settings
+
+    :param int queue:
+        the queue to change
+
+.. _`__i40evf_set_coalesce.description`:
+
+Description
+-----------
+
+Sets the coalesce settings for a particular queue.
 
 .. _`i40evf_set_coalesce`:
 
@@ -251,7 +354,32 @@ i40evf_set_coalesce
 Description
 -----------
 
-Change current coalescing settings.
+Change current coalescing settings for every queue.
+
+.. _`i40evf_set_per_queue_coalesce`:
+
+i40evf_set_per_queue_coalesce
+=============================
+
+.. c:function:: int i40evf_set_per_queue_coalesce(struct net_device *netdev, u32 queue, struct ethtool_coalesce *ec)
+
+    set specific queue's coalesce settings
+
+    :param struct net_device \*netdev:
+        the netdev to change
+
+    :param u32 queue:
+        the queue to modify
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool's coalesce settings
+
+.. _`i40evf_set_per_queue_coalesce.description`:
+
+Description
+-----------
+
+Modifies a specific queue's coalesce settings.
 
 .. _`i40evf_get_rxnfc`:
 

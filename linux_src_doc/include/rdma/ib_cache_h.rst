@@ -31,7 +31,7 @@ ib_get_cached_gid
 Description
 -----------
 
-\ :c:func:`ib_get_cached_gid`\  fetches the specified GID table entry stored in
+ib_get_cached_gid() fetches the specified GID table entry stored in
 the local software cache.
 
 .. _`ib_find_cached_gid`:
@@ -67,7 +67,7 @@ ib_find_cached_gid
 Description
 -----------
 
-\ :c:func:`ib_find_cached_gid`\  searches for the specified GID value in
+ib_find_cached_gid() searches for the specified GID value in
 the local software cache.
 
 .. _`ib_find_cached_gid_by_port`:
@@ -104,7 +104,7 @@ ib_find_cached_gid_by_port
 Description
 -----------
 
-\ :c:func:`ib_find_cached_gid`\  searches for the specified GID value in
+ib_find_cached_gid() searches for the specified GID value in
 the local software cache.
 
 .. _`ib_get_cached_pkey`:
@@ -133,7 +133,7 @@ ib_get_cached_pkey
 Description
 -----------
 
-\ :c:func:`ib_get_cached_pkey`\  fetches the specified PKey table entry stored in
+ib_get_cached_pkey() fetches the specified PKey table entry stored in
 the local software cache.
 
 .. _`ib_find_cached_pkey`:
@@ -162,7 +162,7 @@ ib_find_cached_pkey
 Description
 -----------
 
-\ :c:func:`ib_find_cached_pkey`\  searches the specified PKey table in
+ib_find_cached_pkey() searches the specified PKey table in
 the local software cache.
 
 .. _`ib_find_exact_cached_pkey`:
@@ -191,7 +191,7 @@ ib_find_exact_cached_pkey
 Description
 -----------
 
-\ :c:func:`ib_find_exact_cached_pkey`\  searches the specified PKey table in
+ib_find_exact_cached_pkey() searches the specified PKey table in
 the local software cache.
 
 .. _`ib_get_cached_lmc`:
@@ -217,7 +217,7 @@ ib_get_cached_lmc
 Description
 -----------
 
-\ :c:func:`ib_get_cached_lmc`\  fetches the specified lmc table entry stored in
+ib_get_cached_lmc() fetches the specified lmc table entry stored in
 the local software cache.
 
 .. This file was automatic generated / don't edit.

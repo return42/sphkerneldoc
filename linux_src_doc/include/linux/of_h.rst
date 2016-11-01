@@ -1,6 +1,152 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/of.h
 
+.. _`of_property_read_u8_array`:
+
+of_property_read_u8_array
+=========================
+
+.. c:function:: int of_property_read_u8_array(const struct device_node *np, const char *propname, u8 *out_values, size_t sz)
+
+    Find and read an array of u8 from a property.
+
+    :param const struct device_node \*np:
+        device node from which the property value is to be read.
+
+    :param const char \*propname:
+        name of the property to be searched.
+
+    :param u8 \*out_values:
+        pointer to return value, modified only if return value is 0.
+
+    :param size_t sz:
+        number of array elements to read
+
+.. _`of_property_read_u8_array.description`:
+
+Description
+-----------
+
+Search for a property in a device node and read 8-bit value(s) from
+it. Returns 0 on success, -EINVAL if the property does not exist,
+-ENODATA if property does not have a value, and -EOVERFLOW if the
+property data isn't large enough.
+
+.. _`of_property_read_u8_array.dts-entry-of-array-should-be-like`:
+
+dts entry of array should be like
+---------------------------------
+
+property = /bits/ 8 <0x50 0x60 0x70>;
+
+The out_values is modified only if a valid u8 value can be decoded.
+
+.. _`of_property_read_u16_array`:
+
+of_property_read_u16_array
+==========================
+
+.. c:function:: int of_property_read_u16_array(const struct device_node *np, const char *propname, u16 *out_values, size_t sz)
+
+    Find and read an array of u16 from a property.
+
+    :param const struct device_node \*np:
+        device node from which the property value is to be read.
+
+    :param const char \*propname:
+        name of the property to be searched.
+
+    :param u16 \*out_values:
+        pointer to return value, modified only if return value is 0.
+
+    :param size_t sz:
+        number of array elements to read
+
+.. _`of_property_read_u16_array.description`:
+
+Description
+-----------
+
+Search for a property in a device node and read 16-bit value(s) from
+it. Returns 0 on success, -EINVAL if the property does not exist,
+-ENODATA if property does not have a value, and -EOVERFLOW if the
+property data isn't large enough.
+
+.. _`of_property_read_u16_array.dts-entry-of-array-should-be-like`:
+
+dts entry of array should be like
+---------------------------------
+
+property = /bits/ 16 <0x5000 0x6000 0x7000>;
+
+The out_values is modified only if a valid u16 value can be decoded.
+
+.. _`of_property_read_u32_array`:
+
+of_property_read_u32_array
+==========================
+
+.. c:function:: int of_property_read_u32_array(const struct device_node *np, const char *propname, u32 *out_values, size_t sz)
+
+    Find and read an array of 32 bit integers from a property.
+
+    :param const struct device_node \*np:
+        device node from which the property value is to be read.
+
+    :param const char \*propname:
+        name of the property to be searched.
+
+    :param u32 \*out_values:
+        pointer to return value, modified only if return value is 0.
+
+    :param size_t sz:
+        number of array elements to read
+
+.. _`of_property_read_u32_array.description`:
+
+Description
+-----------
+
+Search for a property in a device node and read 32-bit value(s) from
+it. Returns 0 on success, -EINVAL if the property does not exist,
+-ENODATA if property does not have a value, and -EOVERFLOW if the
+property data isn't large enough.
+
+The out_values is modified only if a valid u32 value can be decoded.
+
+.. _`of_property_read_u64_array`:
+
+of_property_read_u64_array
+==========================
+
+.. c:function:: int of_property_read_u64_array(const struct device_node *np, const char *propname, u64 *out_values, size_t sz)
+
+    Find and read an array of 64 bit integers from a property.
+
+    :param const struct device_node \*np:
+        device node from which the property value is to be read.
+
+    :param const char \*propname:
+        name of the property to be searched.
+
+    :param u64 \*out_values:
+        pointer to return value, modified only if return value is 0.
+
+    :param size_t sz:
+        number of array elements to read
+
+.. _`of_property_read_u64_array.description`:
+
+Description
+-----------
+
+Search for a property in a device node and read 64-bit value(s) from
+it. Returns 0 on success, -EINVAL if the property does not exist,
+-ENODATA if property does not have a value, and -EOVERFLOW if the
+property data isn't large enough.
+
+The out_values is modified only if a valid u64 value can be decoded.
+
 .. _`of_property_count_u8_elems`:
 
 of_property_count_u8_elems

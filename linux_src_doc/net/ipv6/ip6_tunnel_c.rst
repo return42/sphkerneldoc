@@ -104,7 +104,7 @@ ip6_tnl_locate
 Description
 -----------
 
-\ :c:func:`ip6_tnl_locate`\  first tries to locate an existing tunnel
+ip6_tnl_locate() first tries to locate an existing tunnel
 based on \ ``parms``\ . If this is unsuccessful, but \ ``create``\  is set a new
 tunnel device is created and registered for use.
 
@@ -132,7 +132,7 @@ ip6_tnl_dev_uninit
 Description
 -----------
 
-\ :c:func:`ip6_tnl_dev_uninit`\  removes tunnel from its list
+ip6_tnl_dev_uninit() removes tunnel from its list
 
 .. _`ip6_tnl_parse_tlv_enc_lim`:
 
@@ -195,7 +195,7 @@ ip6_tnl_err
 Description
 -----------
 
-\ :c:func:`ip6_tnl_err`\  should handle errors in the tunnel according
+ip6_tnl_err() should handle errors in the tunnel according
 to the specifications in RFC 2473.
 
 .. _`ip6_tnl_addr_conflict`:
@@ -296,7 +296,7 @@ ip6_tnl_change
 Description
 -----------
 
-\ :c:func:`ip6_tnl_change`\  updates the tunnel parameters
+ip6_tnl_change() updates the tunnel parameters
 
 .. _`ip6_tnl_ioctl`:
 
@@ -321,7 +321,7 @@ ip6_tnl_ioctl
 Description
 -----------
 
-\ :c:func:`ip6_tnl_ioctl`\  is used for managing IPv6 tunnels
+ip6_tnl_ioctl() is used for managing IPv6 tunnels
 from userspace.
 
 .. _`ip6_tnl_ioctl.the-possible-commands-are-the-following`:
@@ -329,7 +329,7 @@ from userspace.
 The possible commands are the following
 ---------------------------------------
 
-\ ``SIOCGETTUNNEL``\ : get tunnel parameters for device
+%SIOCGETTUNNEL: get tunnel parameters for device
 \ ``SIOCADDTUNNEL``\ : add tunnel matching given tunnel parameters
 \ ``SIOCCHGTUNNEL``\ : change tunnel parameters to those given
 \ ``SIOCDELTUNNEL``\ : delete tunnel

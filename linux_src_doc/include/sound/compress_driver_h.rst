@@ -88,6 +88,7 @@ Definition
         struct snd_compr_ops *ops;
         struct snd_compr_runtime *runtime;
         struct snd_compr *device;
+        struct delayed_work error_work;
         enum snd_compr_direction direction;
         bool metadata_set;
         bool next_track;
@@ -110,6 +111,9 @@ runtime
 
 device
     device pointer
+
+error_work
+    delayed work used when closing the stream due to an error
 
 direction
     stream direction, playback/recording

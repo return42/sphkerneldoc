@@ -57,7 +57,7 @@ Description
 
 Returns 0 on success, on failure the \ ``CRYPTO_TFM_RES_BAD_KEY_LEN``\  flag in tfm
 is set. The function uses \ :c:func:`crypto_aes_expand_key`\  to expand the key.
-\ :c:type:`struct crypto_aes_ctx <crypto_aes_ctx>` \_must\_ be the private data embedded in \ ``tfm``\  which is
+\ :c:type:`struct crypto_aes_ctx <crypto_aes_ctx>`\  \_must\_ be the private data embedded in \ ``tfm``\  which is
 retrieved with \ :c:func:`crypto_tfm_ctx`\ .
 
 .. This file was automatic generated / don't edit.

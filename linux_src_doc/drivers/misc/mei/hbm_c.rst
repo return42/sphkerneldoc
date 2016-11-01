@@ -85,7 +85,7 @@ mei_hbm_cl_hdr
 mei_hbm_cl_write
 ================
 
-.. c:function:: int mei_hbm_cl_write(struct mei_device *dev, struct mei_cl *cl, u8 hbm_cmd, size_t len)
+.. c:function:: int mei_hbm_cl_write(struct mei_device *dev, struct mei_cl *cl, u8 hbm_cmd, u8 *buf, size_t len)
 
     write simple hbm client message
 
@@ -97,6 +97,9 @@ mei_hbm_cl_write
 
     :param u8 hbm_cmd:
         host bus message command
+
+    :param u8 \*buf:
+        message buffer
 
     :param size_t len:
         buffer length
@@ -459,41 +462,41 @@ Return
 
 -EIO on write failure
 
-.. _`mei_hbm_add_single_flow_creds`:
+.. _`mei_hbm_add_single_tx_flow_ctrl_creds`:
 
-mei_hbm_add_single_flow_creds
-=============================
+mei_hbm_add_single_tx_flow_ctrl_creds
+=====================================
 
-.. c:function:: int mei_hbm_add_single_flow_creds(struct mei_device *dev, struct hbm_flow_control *flow)
+.. c:function:: int mei_hbm_add_single_tx_flow_ctrl_creds(struct mei_device *dev, struct hbm_flow_control *fctrl)
 
     adds single buffer credentials.
 
     :param struct mei_device \*dev:
         the device structure
 
-    :param struct hbm_flow_control \*flow:
-        flow control.
+    :param struct hbm_flow_control \*fctrl:
+        flow control response bus message
 
-.. _`mei_hbm_add_single_flow_creds.return`:
+.. _`mei_hbm_add_single_tx_flow_ctrl_creds.return`:
 
 Return
 ------
 
 0 on success, < 0 otherwise
 
-.. _`mei_hbm_cl_flow_control_res`:
+.. _`mei_hbm_cl_tx_flow_ctrl_creds_res`:
 
-mei_hbm_cl_flow_control_res
-===========================
+mei_hbm_cl_tx_flow_ctrl_creds_res
+=================================
 
-.. c:function:: void mei_hbm_cl_flow_control_res(struct mei_device *dev, struct hbm_flow_control *flow_control)
+.. c:function:: void mei_hbm_cl_tx_flow_ctrl_creds_res(struct mei_device *dev, struct hbm_flow_control *fctrl)
 
     flow control response from me
 
     :param struct mei_device \*dev:
         the device structure
 
-    :param struct hbm_flow_control \*flow_control:
+    :param struct hbm_flow_control \*fctrl:
         flow control response bus message
 
 .. _`mei_hbm_cl_disconnect_req`:

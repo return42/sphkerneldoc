@@ -197,19 +197,19 @@ sk_padding
     *undescribed*
 
 sk_no_check_tx
-    \ ``SO_NO_CHECK``\  setting, set checksum in TX packets
+    %SO_NO_CHECK setting, set checksum in TX packets
 
 sk_no_check_rx
     allow zero checksum in RX packets
 
 sk_userlocks
-    \ ``SO_SNDBUF``\  and \ ``SO_RCVBUF``\  settings
+    %SO_SNDBUF and \ ``SO_RCVBUF``\  settings
 
 sk_protocol
     which protocol this socket belongs in this network family
 
 sk_type
-    socket type (\ ``SOCK_STREAM``\ , etc)
+    socket type (%SOCK_STREAM, etc)
 
 sk_wmem_queued
     persistent queue size
@@ -221,7 +221,7 @@ sk_pacing_rate
     Pacing rate (if supported by transport/packet scheduler)
 
 sk_max_pacing_rate
-    Maximum pacing rate (\ ``SO_MAX_PACING_RATE``\ )
+    Maximum pacing rate (%SO_MAX_PACING_RATE)
 
 sk_route_caps
     route capabilities (e.g. \ ``NETIF_F_TSO``\ )
@@ -239,10 +239,10 @@ sk_gso_max_segs
     Maximum number of GSO segments
 
 sk_rcvlowat
-    \ ``SO_RCVLOWAT``\  setting
+    %SO_RCVLOWAT setting
 
 sk_lingertime
-    \ ``SO_LINGER``\  l_linger setting
+    %SO_LINGER l_linger setting
 
 sk_error_queue
     rarely used
@@ -268,22 +268,22 @@ sk_max_ack_backlog
     listen backlog set in \ :c:func:`listen`\ 
 
 sk_priority
-    \ ``SO_PRIORITY``\  setting
+    %SO_PRIORITY setting
 
 sk_mark
     generic packet mark
 
 sk_peer_pid
-    \ :c:type:`struct pid <pid>`\  for this socket's peer
+    &struct pid for this socket's peer
 
 sk_peer_cred
-    \ ``SO_PEERCRED``\  setting
+    %SO_PEERCRED setting
 
 sk_rcvtimeo
-    \ ``SO_RCVTIMEO``\  setting
+    %SO_RCVTIMEO setting
 
 sk_sndtimeo
-    \ ``SO_SNDTIMEO``\  setting
+    %SO_SNDTIMEO setting
 
 sk_timer
     sock cleanup timer
@@ -490,8 +490,8 @@ tp->rcv_nxt check   sock_def_readable
 ...                 {
 schedule               \ :c:func:`rcu_read_lock`\ ;
 wq = rcu_dereference(sk->sk_wq);
-if (wq && waitqueue_active(\ :c:type:`wq->wait <wq>`\ ))
-wake_up_interruptible(\ :c:type:`wq->wait <wq>`\ )
+if (wq && waitqueue_active(&wq->wait))
+wake_up_interruptible(&wq->wait)
 ...
 }
 

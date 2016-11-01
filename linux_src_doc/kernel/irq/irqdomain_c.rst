@@ -50,7 +50,7 @@ __irq_domain_add
     Allocate a new irq_domain data structure
 
     :param struct fwnode_handle \*fwnode:
-        *undescribed*
+        firmware node for the interrupt controller
 
     :param int size:
         Size of linear map; 0 for radix mapping only
@@ -437,7 +437,7 @@ Note
 
 don't use this function unless your interrupt controller explicitly
 supports both one and two cell bindings.  For the majority of controllers
-the \\ :c:func:`_onecell`\  or \\ :c:func:`_twocell`\  variants above should be used.
+the \_onecell() or \_twocell() variants above should be used.
 
 .. _`irq_domain_create_hierarchy`:
 
@@ -602,7 +602,7 @@ irq_domain_free_irqs_top
 __irq_domain_alloc_irqs
 =======================
 
-.. c:function:: int __irq_domain_alloc_irqs(struct irq_domain *domain, int irq_base, unsigned int nr_irqs, int node, void *arg, bool realloc)
+.. c:function:: int __irq_domain_alloc_irqs(struct irq_domain *domain, int irq_base, unsigned int nr_irqs, int node, void *arg, bool realloc, const struct cpumask *affinity)
 
     Allocate IRQs from domain
 
@@ -624,6 +624,9 @@ __irq_domain_alloc_irqs
     :param bool realloc:
         IRQ descriptors have already been allocated if true
 
+    :param const struct cpumask \*affinity:
+        Optional irq affinity mask for multiqueue devices
+
 .. _`__irq_domain_alloc_irqs.description`:
 
 Description
@@ -635,7 +638,7 @@ Parameter \ ``realloc``\  is mainly to support legacy IRQs.
 Returns error code or allocated IRQ number
 
 The whole process to setup an IRQ has been split into two steps.
-The first step, \\ :c:func:`__irq_domain_alloc_irqs`\ , is to allocate IRQ
+The first step, \__irq_domain_alloc_irqs(), is to allocate IRQ
 descriptor and required hardware resources. The second step,
 \ :c:func:`irq_domain_activate_irq`\ , is to program hardwares with preallocated
 resources. In this way, it's easier to rollback when failing to

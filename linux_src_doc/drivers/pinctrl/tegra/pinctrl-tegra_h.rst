@@ -62,12 +62,10 @@ Definition
         s16 pupd_reg;
         s16 tri_reg;
         s16 drv_reg;
-        s16 parked_reg;
         u32 mux_bank:2;
         u32 pupd_bank:2;
         u32 tri_bank:2;
         u32 drv_bank:2;
-        u32 parked_bank:2;
         s32 mux_bit:6;
         s32 pupd_bit:6;
         s32 tri_bit:6;
@@ -121,9 +119,6 @@ drv_reg
     This register contains hsm, schmitt, lpmd, drvdn,
     drvup, slwr, slwf, and drvtype parameters.
 
-parked_reg
-    Parked register offset. -1 if unsupported.
-
 mux_bank
     Mux register bank.
 
@@ -136,9 +131,6 @@ tri_bank
 drv_bank
     Drive fields register bank.
 
-parked_bank
-    Parked register bank. 0 if unsupported.
-
 mux_bit
     Mux register bit.
 
@@ -149,7 +141,7 @@ tri_bit
     Tri-state register bit.
 
 parked_bit
-    Parked register bit. 0 if unsupported.
+    Parked register bit. -1 if unsupported.
 
 einput_bit
     Enable-input register bit.

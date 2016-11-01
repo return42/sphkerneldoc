@@ -153,7 +153,7 @@ drm_dp_mst_detect_port
     get connection status for an MST port
 
     :param struct drm_connector \*connector:
-        *undescribed*
+        DRM connector for this port
 
     :param struct drm_dp_mst_topology_mgr \*mgr:
         manager for this port

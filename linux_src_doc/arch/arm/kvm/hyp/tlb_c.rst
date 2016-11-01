@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/arm/kvm/hyp/tlb.c
 
-.. _`__tlb_flush_vmid`:
+.. _`__kvm_tlb_flush_vmid`:
 
-__tlb_flush_vmid
-================
+__kvm_tlb_flush_vmid
+====================
 
-.. c:function:: void __hyp_text __tlb_flush_vmid(struct kvm *kvm)
+.. c:function:: void __hyp_text __kvm_tlb_flush_vmid(struct kvm *kvm)
 
     VMID TLBs
 
     :param struct kvm \*kvm:
         *undescribed*
 
-.. _`__tlb_flush_vmid.description`:
+.. _`__kvm_tlb_flush_vmid.description`:
 
 Description
 -----------

@@ -45,7 +45,7 @@ nilfs_page_buffers_clean
 Description
 -----------
 
-\ :c:func:`nilfs_page_buffers_clean`\  returns zero if the page has dirty buffers.
+nilfs_page_buffers_clean() returns zero if the page has dirty buffers.
 Otherwise, it returns non-zero value.
 
 .. _`nilfs_copy_page`:

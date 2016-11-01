@@ -33,7 +33,7 @@ task_current_syscall
 Description
 -----------
 
-If \ ``target``\  is blocked in a system call, returns zero with \*\ ``callno``\ 
+If \ ``target``\  is blocked in a system call, returns zero with \*@callno
 set to the the call's number and \ ``args``\  filled in with its arguments.
 Registers not used for system call arguments may not be available and
 it is not kosher to use \ :c:type:`struct user_regset <user_regset>`\  calls while the system
@@ -42,13 +42,13 @@ has finished its system call but not yet returned to user mode, such
 as when it's stopped for signal handling or syscall exit tracing.
 
 If \ ``target``\  is blocked in the kernel during a fault or exception,
-returns zero with \*\ ``callno``\  set to -1 and does not fill in \ ``args``\ .
+returns zero with \*@callno set to -1 and does not fill in \ ``args``\ .
 If so, it's now safe to examine \ ``target``\  using \ :c:type:`struct user_regset <user_regset>`\ 
 \ :c:func:`get`\  calls as long as we're sure \ ``target``\  won't return to user mode.
 
-Returns -\ ``EAGAIN``\  if \ ``target``\  does not remain blocked.
+Returns -%EAGAIN if \ ``target``\  does not remain blocked.
 
-Returns -\ ``EINVAL``\  if \ ``maxargs``\  is too large (maximum is six).
+Returns -%EINVAL if \ ``maxargs``\  is too large (maximum is six).
 
 .. This file was automatic generated / don't edit.
 

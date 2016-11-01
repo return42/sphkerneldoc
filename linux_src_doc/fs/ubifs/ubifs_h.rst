@@ -270,7 +270,7 @@ ui_size
     inode size used by UBIFS when writing to flash
 
 flags
-    inode flags (\ ``UBIFS_COMPR_FL``\ , etc)
+    inode flags (@UBIFS_COMPR_FL, etc)
 
 last_page_read
     page number of last page read (for bulk read)
@@ -289,10 +289,10 @@ data
 Description
 -----------
 
-\ ``ui_mutex``\  exists for two main reasons. At first it prevents inodes from
+@ui_mutex exists for two main reasons. At first it prevents inodes from
 being written back while UBIFS changing them, being in the middle of an VFS
 operation. This way UBIFS makes sure the inode fields are consistent. For
-example, in '\ :c:func:`ubifs_rename`\ ' we change 3 inodes simultaneously, and
+example, in 'ubifs_rename()' we change 3 inodes simultaneously, and
 write-back must not write any of them before we have finished.
 
 The second reason is budgeting - UBIFS has to budget all operations. If an
@@ -307,14 +307,14 @@ So UBIFS has its own inode dirty flag and its own mutex to serialize
 "clean <-> dirty" transitions.
 
 The \ ``synced_i_size``\  field is used to make sure we never write pages which are
-beyond last synchronized inode size. See '\ :c:func:`ubifs_writepage`\ ' for more
+beyond last synchronized inode size. See 'ubifs_writepage()' for more
 information.
 
 The \ ``ui_size``\  is a "shadow" variable for \ ``inode``\ ->i_size and UBIFS uses
 \ ``ui_size``\  instead of \ ``inode``\ ->i_size. The reason for this is that UBIFS cannot
 make sure \ ``inode``\ ->i_size is always changed under \ ``ui_mutex``\ , because it
-cannot call '\ :c:func:`truncate_setsize`\ ' with \ ``ui_mutex``\  locked, because it would
-deadlock with '\ :c:func:`ubifs_writepage`\ ' (see file.c). All the other inode fields
+cannot call 'truncate_setsize()' with \ ``ui_mutex``\  locked, because it would
+deadlock with 'ubifs_writepage()' (see file.c). All the other inode fields
 are changed under \ ``ui_mutex``\ , so they do not need "shadow" fields. Note, one
 could consider to rework locking and base it on "shadow" fields.
 
@@ -561,7 +561,7 @@ cnext
     next cnode to commit
 
 flags
-    flags (\ ``DIRTY_LPT_NODE``\  or \ ``OBSOLETE_LPT_NODE``\ )
+    flags (%DIRTY_LPT_NODE or \ ``OBSOLETE_LPT_NODE``\ )
 
 iip
     index in parent
@@ -610,7 +610,7 @@ cnext
     next cnode to commit
 
 flags
-    flags (\ ``DIRTY_LPT_NODE``\  or \ ``OBSOLETE_LPT_NODE``\ )
+    flags (%DIRTY_LPT_NODE or \ ``OBSOLETE_LPT_NODE``\ )
 
 iip
     index in parent
@@ -699,7 +699,7 @@ cnext
     next cnode to commit
 
 flags
-    flags (\ ``DIRTY_LPT_NODE``\  or \ ``OBSOLETE_LPT_NODE``\ )
+    flags (%DIRTY_LPT_NODE or \ ``OBSOLETE_LPT_NODE``\ )
 
 iip
     index in parent
@@ -817,11 +817,11 @@ used
     number of used bytes in the write-buffer
 
 size
-    write-buffer size (in [\ ``c``\ ->min_io_size, \ ``c``\ ->max_write_size] range)
+    write-buffer size (in [@c->min_io_size, \ ``c``\ ->max_write_size] range)
 
 jhead
     journal head the mutex belongs to (note, needed only to shut lockdep
-    up by '\ :c:func:`mutex_lock_nested`\ ).
+    up by 'mutex_lock_nested()).
 
 sync_callback
     write-buffer synchronization callback
@@ -1050,7 +1050,7 @@ cnext
     next znode to commit
 
 flags
-    znode flags (\ ``DIRTY_ZNODE``\ , \ ``COW_ZNODE``\  or \ ``OBSOLETE_ZNODE``\ )
+    znode flags (%DIRTY_ZNODE, \ ``COW_ZNODE``\  or \ ``OBSOLETE_ZNODE``\ )
 
 time
     last access time (seconds)
@@ -1077,7 +1077,7 @@ len
     length  of the corresponding indexing node
 
 zbranch
-    array of znode branches (\ ``c``\ ->fanout elements)
+    array of znode branches (@c->fanout elements)
 
 .. _`ubifs_znode.description`:
 
@@ -1214,7 +1214,7 @@ Members
 -------
 
 compr_type
-    compressor type (\ ``UBIFS_COMPR_LZO``\ , etc)
+    compressor type (%UBIFS_COMPR_LZO, etc)
 
 cc
     cryptoapi compressor handle
@@ -1352,7 +1352,7 @@ dd_growth
 Description
 -----------
 
-\ ``idx_growth``\ , \ ``data_growth``\  and \ ``dd_growth``\  are not used in budget request. The
+@idx_growth, \ ``data_growth``\  and \ ``dd_growth``\  are not used in budget request. The
 budgeting subsystem caches index and data growth values there to avoid
 re-calculating them when the budget is released. However, if \ ``idx_growth``\  is
 \ ``-1``\ , it is calculated by the release function using other fields.
@@ -1417,13 +1417,13 @@ inum
     inode number
 
 new
-    \ ``1``\  => added since the last commit, otherwise \ ``0``\ 
+    %1 => added since the last commit, otherwise \ ``0``\ 
 
 cmt
-    \ ``1``\  => commit pending, otherwise \ ``0``\ 
+    %1 => commit pending, otherwise \ ``0``\ 
 
 del
-    \ ``1``\  => delete pending, otherwise \ ``0``\ 
+    %1 => delete pending, otherwise \ ``0``\ 
 
 .. _`ubifs_mount_opts`:
 
@@ -1455,23 +1455,23 @@ Members
 -------
 
 unmount_mode
-    selected unmount mode (\ ``0``\  default, \ ``1``\  normal, \ ``2``\  fast)
+    selected unmount mode (%0 default, \ ``1``\  normal, \ ``2``\  fast)
 
 bulk_read
-    enable/disable bulk-reads (\ ``0``\  default, \ ``1``\  disable, \ ``2``\  enable)
+    enable/disable bulk-reads (%0 default, \ ``1``\  disable, \ ``2``\  enable)
 
 chk_data_crc
     enable/disable CRC data checking when reading data nodes
-    (\ ``0``\  default, \ ``1``\  disable, \ ``2``\  enable)
+    (%0 default, \ ``1``\  disable, \ ``2``\  enable)
 
 override_compr
-    override default compressor (\ ``0``\  - do not override and use
+    override default compressor (%0 - do not override and use
     superblock compressor, \ ``1``\  - override and use compressor
     specified in \ ``compr_type``\ )
 
 compr_type
     compressor type to override the superblock compressor with
-    (\ ``UBIFS_COMPR_NONE``\ , etc)
+    (%UBIFS_COMPR_NONE, etc)
 
 .. _`ubifs_budg_info`:
 
@@ -1872,7 +1872,7 @@ bulk_read
     enable bulk-reads
 
 default_compr
-    default compression algorithm (\ ``UBIFS_COMPR_LZO``\ , etc)
+    default compression algorithm (%UBIFS_COMPR_LZO, etc)
 
 rw_incompat
     the media is not R/W compatible
@@ -1921,7 +1921,7 @@ old_idx
     tree of index nodes obsoleted since the last commit start
 
 bottom_up_buf
-    a buffer which is used by '\ :c:func:`dirty_cow_bottom_up`\ ' in tnc.c
+    a buffer which is used by 'dirty_cow_bottom_up()' in tnc.c
 
 mst_node
     master node
@@ -2022,7 +2022,7 @@ half_leb_size
 
 idx_leb_size
     how many bytes of an LEB are effectively available when it is
-    used to store indexing nodes (\ ``leb_size``\  - \ ``max_idx_node_sz``\ )
+    used to store indexing nodes (@leb_size - \ ``max_idx_node_sz``\ )
 
 leb_cnt
     count of logical eraseblocks
@@ -2339,22 +2339,22 @@ rp_gid
     reserved pool group ID
 
 empty
-    \ ``1``\  if the UBI device is empty
+    %1 if the UBI device is empty
 
 need_recovery
-    \ ``1``\  if the file-system needs recovery
+    %1 if the file-system needs recovery
 
 replaying
-    \ ``1``\  during journal replay
+    %1 during journal replay
 
 mounting
-    \ ``1``\  while mounting
+    %1 while mounting
 
 remounting_rw
-    \ ``1``\  while re-mounting from R/O mode to R/W mode
+    %1 while re-mounting from R/O mode to R/W mode
 
 probing
-    \ ``1``\  while attempting to mount if MS_SILENT mount flag is set
+    %1 while attempting to mount if MS_SILENT mount flag is set
 
 replay_list
     temporary list used during journal replay

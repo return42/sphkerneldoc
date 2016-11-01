@@ -22,7 +22,6 @@ asm
     pmem_h
     ptrace_h
     qspinlock_h
-    special_insns_h
     string_64_h
     sync_bitops_h
     uaccess_32_h

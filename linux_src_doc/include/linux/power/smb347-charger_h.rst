@@ -75,22 +75,22 @@ usb_hc_current_limit
 
 chip_temp_threshold
     die temperature where device starts limiting charge
-    current [\ ``100``\  - \ ``130``\ ] (in degree C)
+    current [%100 - \ ``130``\ ] (in degree C)
 
 soft_cold_temp_limit
-    soft cold temperature limit [\ ``0``\  - \ ``15``\ ] (in degree C),
+    soft cold temperature limit [%0 - \ ``15``\ ] (in degree C),
     granularity is 5 deg C.
 
 soft_hot_temp_limit
-    soft hot temperature limit [\ ``40``\  - \ ``55``\ ] (in degree  C),
+    soft hot temperature limit [%40 - \ ``55``\ ] (in degree  C),
     granularity is 5 deg C.
 
 hard_cold_temp_limit
-    hard cold temperature limit [\ ``-5``\  - \ ``10``\ ] (in degree C),
+    hard cold temperature limit [%-5 - \ ``10``\ ] (in degree C),
     granularity is 5 deg C.
 
 hard_hot_temp_limit
-    hard hot temperature limit [\ ``50``\  - \ ``65``\ ] (in degree C),
+    hard hot temperature limit [%50 - \ ``65``\ ] (in degree C),
     granularity is 5 deg C.
 
 suspend_on_hard_temp_limit
@@ -114,7 +114,7 @@ use_usb_otg
     USB OTG output can be used (not implemented yet)
 
 irq_gpio
-    GPIO number used for interrupts (\ ``-1``\  if not used)
+    GPIO number used for interrupts (%-1 if not used)
 
 enable_control
     how charging enable/disable is controlled
@@ -125,7 +125,7 @@ enable_control
 Description
 -----------
 
-\ ``use_main``\ , \ ``use_usb``\ , and \ ``use_usb_otg``\  are means to enable/disable
+@use_main, \ ``use_usb``\ , and \ ``use_usb_otg``\  are means to enable/disable
 hardware support for these. This is useful when we want to have for
 example OTG charging controlled via OTG transceiver driver and not by
 the SMB347 hardware.

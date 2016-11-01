@@ -16,6 +16,9 @@ llite
     llite_internal_h
     llite_lib_c
     llite_mmap_c
+    lproc_llite_c
+    namei_c
+    range_lock_c
     rw26_c
     rw_c
     statahead_c

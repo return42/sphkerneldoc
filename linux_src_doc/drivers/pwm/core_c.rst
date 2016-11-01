@@ -220,6 +220,31 @@ pwm_apply_state
         if the requested config is not achievable, for example,
         ->duty_cycle and ->period might be approximated.
 
+.. _`pwm_capture`:
+
+pwm_capture
+===========
+
+.. c:function:: int pwm_capture(struct pwm_device *pwm, struct pwm_capture *result, unsigned long timeout)
+
+    capture and report a PWM signal
+
+    :param struct pwm_device \*pwm:
+        PWM device
+
+    :param struct pwm_capture \*result:
+        structure to fill with capture result
+
+    :param unsigned long timeout:
+        time to wait, in milliseconds, before giving up on capture
+
+.. _`pwm_capture.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
 .. _`pwm_adjust_config`:
 
 pwm_adjust_config

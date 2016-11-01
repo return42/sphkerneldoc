@@ -1468,7 +1468,7 @@ Synchronizes page for reuse by the adapter
 igb_add_rx_frag
 ===============
 
-.. c:function:: bool igb_add_rx_frag(struct igb_ring *rx_ring, struct igb_rx_buffer *rx_buffer, union e1000_adv_rx_desc *rx_desc, struct sk_buff *skb)
+.. c:function:: bool igb_add_rx_frag(struct igb_ring *rx_ring, struct igb_rx_buffer *rx_buffer, unsigned int size, union e1000_adv_rx_desc *rx_desc, struct sk_buff *skb)
 
     Add contents of Rx buffer to sk_buff
 
@@ -1477,6 +1477,9 @@ igb_add_rx_frag
 
     :param struct igb_rx_buffer \*rx_buffer:
         buffer containing page to add
+
+    :param unsigned int size:
+        *undescribed*
 
     :param union e1000_adv_rx_desc \*rx_desc:
         descriptor containing length of buffer written by hardware

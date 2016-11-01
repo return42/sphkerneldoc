@@ -11,7 +11,7 @@ insn_init
     initialize struct insn
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  to be initialized
+        &struct insn to be initialized
 
     :param const void \*kaddr:
         address (in kernel memory) of instruction (or copy thereof)
@@ -32,7 +32,7 @@ insn_get_prefixes
     scan x86 instruction prefix bytes
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_prefixes.description`:
 
@@ -53,7 +53,7 @@ insn_get_opcode
     collect opcode(s)
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_opcode.description`:
 
@@ -76,7 +76,7 @@ insn_get_modrm
     collect ModRM byte, if any
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_modrm.description`:
 
@@ -97,7 +97,7 @@ insn_rip_relative
     Does instruction use RIP-relative addressing mode?
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_rip_relative.description`:
 
@@ -117,7 +117,7 @@ insn_get_sib
     Get the SIB byte of instruction
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_sib.description`:
 
@@ -137,7 +137,7 @@ insn_get_displacement
     Get the displacement of instruction
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_displacement.description`:
 
@@ -158,7 +158,7 @@ insn_get_immediate
     Get the immediates of instruction
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_immediate.description`:
 
@@ -180,7 +180,7 @@ insn_get_length
     Get the length of instruction
 
     :param struct insn \*insn:
-        \ :c:type:`struct insn <insn>`\  containing instruction
+        &struct insn containing instruction
 
 .. _`insn_get_length.description`:
 

@@ -285,7 +285,7 @@ unlock_page
 Description
 -----------
 
-Unlocks the page and wakes up sleepers in \\ :c:func:`___wait_on_page_locked`\ .
+Unlocks the page and wakes up sleepers in \___wait_on_page_locked().
 Also wakes sleepers in \ :c:func:`wait_on_page_writeback`\  because the wakeup
 mechanism between PageLocked pages and PageWriteback pages is shared.
 But that's OK - sleepers in \ :c:func:`wait_on_page_writeback`\  just go back to sleep.
@@ -550,7 +550,7 @@ find_get_entries
 Description
 -----------
 
-\ :c:func:`find_get_entries`\  will search for and return a group of up to
+find_get_entries() will search for and return a group of up to
 \ ``nr_entries``\  entries in the mapping.  The entries are placed at
 \ ``entries``\ .  \ :c:func:`find_get_entries`\  takes a reference against any actual
 pages it returns.
@@ -591,7 +591,7 @@ find_get_pages
 Description
 -----------
 
-\ :c:func:`find_get_pages`\  will search for and return a group of up to
+find_get_pages() will search for and return a group of up to
 \ ``nr_pages``\  pages in the mapping.  The pages are placed at \ ``pages``\ .
 \ :c:func:`find_get_pages`\  takes a reference against the returned pages.
 
@@ -626,7 +626,7 @@ find_get_pages_contig
 Description
 -----------
 
-\ :c:func:`find_get_pages_contig`\  works exactly like \ :c:func:`find_get_pages`\ , except
+find_get_pages_contig() works exactly like \ :c:func:`find_get_pages`\ , except
 that the returned number of pages are guaranteed to be contiguous.
 
 \ :c:func:`find_get_pages_contig`\  returns the number of pages which were found.
@@ -725,7 +725,7 @@ Description
 -----------
 
 This is a generic file read routine, and uses the
-mapping->a_ops->\ :c:func:`readpage`\  function for the actual low-level stuff.
+mapping->a_ops->readpage() function for the actual low-level stuff.
 
 This is really ugly. But the goto's actually try to clarify some
 of the logic when it comes to error handling etc.
@@ -750,7 +750,7 @@ generic_file_read_iter
 Description
 -----------
 
-This is the "\ :c:func:`read_iter`\ " routine for all filesystems
+This is the "read_iter()" routine for all filesystems
 that can use the page cache directly.
 
 .. _`page_cache_read`:
@@ -799,7 +799,7 @@ filemap_fault
 Description
 -----------
 
-\ :c:func:`filemap_fault`\  is invoked via the vma operations vector for a
+filemap_fault() is invoked via the vma operations vector for a
 mapped memory region to read in file data during a page fault.
 
 The goto's are kind of ugly, but this streamlines the normal case of having
@@ -811,7 +811,7 @@ vma->vm_mm->mmap_sem must be held on entry.
 If our return value has VM_FAULT_RETRY set, it's because
 \ :c:func:`lock_page_or_retry`\  returned 0.
 The mmap_sem has usually been released in this case.
-See \\ :c:func:`__lock_page_or_retry`\  for the exception.
+See \__lock_page_or_retry() for the exception.
 
 If our return value does not have VM_FAULT_RETRY set, the mmap_sem
 has not been released.
@@ -929,7 +929,7 @@ generic_file_write_iter
 Description
 -----------
 
-This is a wrapper around \\ :c:func:`__generic_file_write_iter`\  to be used by most
+This is a wrapper around \__generic_file_write_iter() to be used by most
 filesystems. It takes care of syncing the file in case of O_SYNC file
 and acquires i_mutex as needed.
 

@@ -30,7 +30,7 @@ pci_msi_unmask_irq
 msi_capability_init
 ===================
 
-.. c:function:: int msi_capability_init(struct pci_dev *dev, int nvec)
+.. c:function:: int msi_capability_init(struct pci_dev *dev, int nvec, bool affinity)
 
     configure device's MSI capability structure
 
@@ -39,6 +39,9 @@ msi_capability_init
 
     :param int nvec:
         number of interrupts to allocate
+
+    :param bool affinity:
+        *undescribed*
 
 .. _`msi_capability_init.description`:
 
@@ -56,7 +59,7 @@ which could have been allocated.
 msix_capability_init
 ====================
 
-.. c:function:: int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries, int nvec)
+.. c:function:: int msix_capability_init(struct pci_dev *dev, struct msix_entry *entries, int nvec, bool affinity)
 
     configure device's MSI-X capability
 
@@ -68,6 +71,9 @@ msix_capability_init
 
     :param int nvec:
         number of \ ``entries``\ 
+
+    :param bool affinity:
+        *undescribed*
 
 .. _`msix_capability_init.description`:
 
@@ -154,7 +160,7 @@ pci_enable_msix
         pointer to the pci_dev data structure of MSI-X device function
 
     :param struct msix_entry \*entries:
-        pointer to an array of MSI-X entries
+        pointer to an array of MSI-X entries (optional)
 
     :param int nvec:
         number of MSI-X irqs requested for allocation by device driver
@@ -255,6 +261,91 @@ hardware device function. It returns a negative errno if an error occurs.
 If it succeeds, it returns the actual number of interrupts allocated and
 indicates the successful configuration of MSI-X capability structure
 with new allocated MSI-X interrupts.
+
+.. _`pci_alloc_irq_vectors`:
+
+pci_alloc_irq_vectors
+=====================
+
+.. c:function:: int pci_alloc_irq_vectors(struct pci_dev *dev, unsigned int min_vecs, unsigned int max_vecs, unsigned int flags)
+
+    allocate multiple IRQs for a device
+
+    :param struct pci_dev \*dev:
+        PCI device to operate on
+
+    :param unsigned int min_vecs:
+        minimum number of vectors required (must be >= 1)
+
+    :param unsigned int max_vecs:
+        maximum (desired) number of vectors
+
+    :param unsigned int flags:
+        flags or quirks for the allocation
+
+.. _`pci_alloc_irq_vectors.description`:
+
+Description
+-----------
+
+Allocate up to \ ``max_vecs``\  interrupt vectors for \ ``dev``\ , using MSI-X or MSI
+vectors if available, and fall back to a single legacy vector
+if neither is available.  Return the number of vectors allocated,
+(which might be smaller than \ ``max_vecs``\ ) if successful, or a negative
+error code on error. If less than \ ``min_vecs``\  interrupt vectors are
+available for \ ``dev``\  the function will fail with -ENOSPC.
+
+To get the Linux IRQ number used for a vector that can be passed to
+\ :c:func:`request_irq`\  use the \ :c:func:`pci_irq_vector`\  helper.
+
+.. _`pci_free_irq_vectors`:
+
+pci_free_irq_vectors
+====================
+
+.. c:function:: void pci_free_irq_vectors(struct pci_dev *dev)
+
+    free previously allocated IRQs for a device
+
+    :param struct pci_dev \*dev:
+        PCI device to operate on
+
+.. _`pci_free_irq_vectors.description`:
+
+Description
+-----------
+
+Undoes the allocations and enabling in \ :c:func:`pci_alloc_irq_vectors`\ .
+
+.. _`pci_irq_vector`:
+
+pci_irq_vector
+==============
+
+.. c:function:: int pci_irq_vector(struct pci_dev *dev, unsigned int nr)
+
+    return Linux IRQ number of a device vector
+
+    :param struct pci_dev \*dev:
+        PCI device to operate on
+
+    :param unsigned int nr:
+        device-relative interrupt vector index (0-based).
+
+.. _`pci_irq_get_affinity`:
+
+pci_irq_get_affinity
+====================
+
+.. c:function:: const struct cpumask *pci_irq_get_affinity(struct pci_dev *dev, int nr)
+
+    return the affinity of a particular msi vector
+
+    :param struct pci_dev \*dev:
+        PCI device to operate on
+
+    :param int nr:
+        device-relative interrupt vector index (0-based).
 
 .. _`pci_msi_domain_write_msg`:
 

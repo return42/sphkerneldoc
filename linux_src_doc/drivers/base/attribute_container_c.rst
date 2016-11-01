@@ -133,7 +133,7 @@ attribute_container_device_trigger
 Description
 -----------
 
-This funcion is for executing a trigger when you need to know both
+This function is for executing a trigger when you need to know both
 the container and the classdev.  If you only care about the
 container, then use \ :c:func:`attribute_container_trigger`\  instead.
 

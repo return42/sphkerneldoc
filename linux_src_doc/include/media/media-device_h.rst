@@ -45,6 +45,35 @@ Description
 Drivers may register a callback to take action when
 new entities get registered with the media device.
 
+.. _`media_device_ops`:
+
+struct media_device_ops
+=======================
+
+.. c:type:: struct media_device_ops
+
+    Media device operations
+
+.. _`media_device_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct media_device_ops {
+        int (*link_notify)(struct media_link *link, u32 flags,unsigned int notification);
+    }
+
+.. _`media_device_ops.members`:
+
+Members
+-------
+
+link_notify
+    Link state change notification callback. This callback is
+    called with the graph_mutex held.
+
 .. _`media_device`:
 
 struct media_device
@@ -63,7 +92,7 @@ Definition
 
     struct media_device {
         struct device *dev;
-        struct media_devnode devnode;
+        struct media_devnode *devnode;
         char model[32];
         char driver_name[32];
         char serial[40];
@@ -84,7 +113,7 @@ Definition
         void *source_priv;
         int (*enable_source)(struct media_entity *entity,struct media_pipeline *pipe);
         void (*disable_source)(struct media_entity *entity);
-        int (*link_notify)(struct media_link *link, u32 flags,unsigned int notification);
+        const struct media_device_ops *ops;
     }
 
 .. _`media_device.members`:
@@ -103,7 +132,7 @@ model
 
 driver_name
     Optional device driver name. If not set, calls to
-    \ ``MEDIA_IOC_DEVICE_INFO``\  will return dev->driver->name.
+    \ ``MEDIA_IOC_DEVICE_INFO``\  will return ``dev->driver->name``.
     This is needed for USB drivers for example, as otherwise
     they'll all appear as if the driver name was "usb".
 
@@ -164,9 +193,8 @@ enable_source
 disable_source
     Disable Source Handler function pointer
 
-link_notify
-    Link state change notification callback. This callback is
-    called with the graph_mutex held.
+ops
+    Operation handler callbacks
 
 .. _`media_device.description`:
 
@@ -192,21 +220,18 @@ accessing the source.
 sink entity  and deactivate the link between them. Drivers
 should call this handler to release the source.
 
-.. _`media_device.note`:
-
-Note
-----
-
-Bridge driver is expected to implement and set the
-handler when media_device is registered or when
-bridge driver finds the media_device during probe.
-Bridge driver sets source_priv with information
-necessary to run enable/disable source handlers.
-
 Use-case: find tuner entity connected to the decoder
 entity and check if it is available, and activate the
-the link between them from enable_source and deactivate
-from disable_source.
+the link between them from \ ``enable_source``\  and deactivate
+from \ ``disable_source``\ .
+
+.. note::
+
+   Bridge driver is expected to implement and set the
+   handler when \ :c:type:`struct media_device <media_device>`\  is registered or when
+   bridge driver finds the media_device during probe.
+   Bridge driver sets source_priv with information
+   necessary to run \ ``enable_source``\  and \ ``disable_source``\  handlers.
 
 .. _`media_entity_enum_init`:
 
@@ -223,12 +248,12 @@ media_entity_enum_init
     :param struct media_device \*mdev:
         The related media device
 
-.. _`media_entity_enum_init.description`:
+.. _`media_entity_enum_init.return`:
 
-Description
------------
+Return
+------
 
-Returns zero on success or a negative error code.
+zero on success or a negative error code.
 
 .. _`media_device_init`:
 
@@ -240,7 +265,7 @@ media_device_init
     Initializes a media device element
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
 .. _`media_device_init.description`:
 
@@ -266,7 +291,7 @@ media_device_cleanup
     Cleanups a media device element
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
 .. _`media_device_cleanup.description`:
 
@@ -286,7 +311,7 @@ __media_device_register
     Registers a media device element
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
     :param struct module \*owner:
         should be filled with \ ``THIS_MODULE``\ 
@@ -298,14 +323,15 @@ Description
 
 Users, should, instead, call the \ :c:func:`media_device_register`\  macro.
 
-The caller is responsible for initializing the media_device structure before
-registration. The following fields must be set:
+The caller is responsible for initializing the \ :c:type:`struct media_device <media_device>`\  structure
+before registration. The following fields of \ :c:type:`struct media_device <media_device>`\  must be set:
 
-- dev must point to the parent device (usually a \ :c:type:`struct pci_dev <pci_dev>`, \ :c:type:`struct usb_interface <usb_interface>` or
-\ :c:type:`struct platform_device <platform_device>` instance).
+ - \ :c:type:`media_entity.dev <media_entity>`\  must point to the parent device (usually a \ :c:type:`struct pci_dev <pci_dev>`\ ,
+   \ :c:type:`struct usb_interface <usb_interface>`\  or \ :c:type:`struct platform_device <platform_device>`\  instance).
 
-- model must be filled with the device model name as a NUL-terminated UTF-8
-string. The device/model revision must not be stored in this field.
+ - \ :c:type:`media_entity.model <media_entity>`\  must be filled with the device model name as a
+   NUL-terminated UTF-8 string. The device/model revision must not be
+   stored in this field.
 
 .. _`__media_device_register.the-following-fields-are-optional`:
 
@@ -313,37 +339,32 @@ The following fields are optional
 ---------------------------------
 
 
-- serial is a unique serial number stored as a NUL-terminated ASCII string.
-The field is big enough to store a GUID in text form. If the hardware
-doesn't provide a unique serial number this field must be left empty.
+ - \ :c:type:`media_entity.serial <media_entity>`\  is a unique serial number stored as a
+   NUL-terminated ASCII string. The field is big enough to store a GUID
+   in text form. If the hardware doesn't provide a unique serial number
+   this field must be left empty.
 
-- bus_info represents the location of the device in the system as a
-NUL-terminated ASCII string. For PCI/PCIe devices bus_info must be set to
-"PCI:" (or "PCIe:") followed by the value of \ :c:func:`pci_name`\ . For USB devices,
-the \ :c:func:`usb_make_path`\  function must be used. This field is used by
-applications to distinguish between otherwise identical devices that don't
-provide a serial number.
+ - \ :c:type:`media_entity.bus_info <media_entity>`\  represents the location of the device in the
+   system as a NUL-terminated ASCII string. For PCI/PCIe devices
+   \ :c:type:`media_entity.bus_info <media_entity>`\  must be set to "PCI:" (or "PCIe:") followed by
+   the value of \ :c:func:`pci_name`\ . For USB devices,the \ :c:func:`usb_make_path`\  function
+   must be used. This field is used by applications to distinguish between
+   otherwise identical devices that don't provide a serial number.
 
-- hw_revision is the hardware device revision in a driver-specific format.
-When possible the revision should be formatted with the KERNEL_VERSION
-macro.
+ - \ :c:type:`media_entity.hw_revision <media_entity>`\  is the hardware device revision in a
+   driver-specific format. When possible the revision should be formatted
+   with the \ :c:func:`KERNEL_VERSION`\  macro.
 
-- driver_version is formatted with the KERNEL_VERSION macro. The version
-minor must be incremented when new features are added to the userspace API
-without breaking binary compatibility. The version major must be
-incremented when binary compatibility is broken.
+ - \ :c:type:`media_entity.driver_version <media_entity>`\  is formatted with the \ :c:func:`KERNEL_VERSION`\ 
+   macro. The version minor must be incremented when new features are added
+   to the userspace API without breaking binary compatibility. The version
+   major must be incremented when binary compatibility is broken.
 
-.. _`__media_device_register.notes`:
+.. note::
 
-Notes
------
+   #) Upon successful registration a character device named media[0-9]+ is created. The device major and minor numbers are dynamic. The model name is exported as a sysfs attribute.
 
-
-Upon successful registration a character device named media[0-9]+ is created.
-The device major and minor numbers are dynamic. The model name is exported as
-a sysfs attribute.
-
-Unregistering a media device that hasn't been registered is \*NOT\* safe.
+   #) Unregistering a media device that hasn't been registered is **NOT** safe.
 
 .. _`__media_device_register.return`:
 
@@ -351,6 +372,26 @@ Return
 ------
 
 returns zero on success or a negative error code.
+
+.. _`media_device_register`:
+
+media_device_register
+=====================
+
+.. c:function::  media_device_register( mdev)
+
+    Registers a media device element
+
+    :param  mdev:
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+
+.. _`media_device_register.description`:
+
+Description
+-----------
+
+This macro calls \ :c:func:`__media_device_register`\  passing \ ``THIS_MODULE``\  as
+the \ :c:func:`__media_device_register`\  second argument (**owner**).
 
 .. _`media_device_unregister`:
 
@@ -362,13 +403,12 @@ media_device_unregister
     Unregisters a media device element
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
 .. _`media_device_unregister.description`:
 
 Description
 -----------
-
 
 It is safe to call this function on an unregistered (but initialised)
 media device.
@@ -383,10 +423,10 @@ media_device_register_entity
     registers a media entity inside a previously registered media device.
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
     :param struct media_entity \*entity:
-        pointer to struct \ :c:type:`struct media_entity <media_entity>` to be registered
+        pointer to struct \ :c:type:`struct media_entity <media_entity>`\  to be registered
 
 .. _`media_device_register_entity.description`:
 
@@ -406,7 +446,7 @@ standard structures can have some of those fields set by the higher-level
 framework.
 
 If the device has pads, \ :c:func:`media_entity_pads_init`\  should be called before
-this function. Otherwise, the \ :c:type:`struct media_entity <media_entity>`.\ ``pad``\  and \ :c:type:`struct media_entity <media_entity>`.\ ``num_pads``\ 
+this function. Otherwise, the \ :c:type:`media_entity.pad <media_entity>`\  and \ :c:type:`media_entity.num_pads <media_entity>`\ 
 should be zeroed before calling this function.
 
 .. _`media_device_register_entity.entities-have-flags-that-describe-the-entity-capabilities-and-state`:
@@ -415,18 +455,47 @@ Entities have flags that describe the entity capabilities and state
 -------------------------------------------------------------------
 
 
-\ ``MEDIA_ENT_FL_DEFAULT``\  indicates the default entity for a given type.
-This can be used to report the default audio and video devices or the
-default camera sensor.
+\ ``MEDIA_ENT_FL_DEFAULT``\ 
+   indicates the default entity for a given type.
+   This can be used to report the default audio and video devices or the
+   default camera sensor.
 
-.. _`media_device_register_entity.note`:
+.. note::
 
-NOTE
-----
+   Drivers should set the entity function before calling this function.
+   Please notice that the values \ ``MEDIA_ENT_F_V4L2_SUBDEV_UNKNOWN``\  and
+   \ ``MEDIA_ENT_F_UNKNOWN``\  should not be used by the drivers.
 
-Drivers should set the entity function before calling this function.
-Please notice that the values \ ``MEDIA_ENT_F_V4L2_SUBDEV_UNKNOWN``\  and
-\ ``MEDIA_ENT_F_UNKNOWN``\  should not be used by the drivers.
+.. _`media_device_unregister_entity`:
+
+media_device_unregister_entity
+==============================
+
+.. c:function:: void media_device_unregister_entity(struct media_entity *entity)
+
+    unregisters a media entity.
+
+    :param struct media_entity \*entity:
+        pointer to struct \ :c:type:`struct media_entity <media_entity>`\  to be unregistered
+
+.. _`media_device_unregister_entity.description`:
+
+Description
+-----------
+
+All links associated with the entity and all PADs are automatically
+unregistered from the media_device when this function is called.
+
+Unregistering an entity will not change the IDs of the other entities and
+the previoully used ID will never be reused for a newly registered entities.
+
+When a media device is unregistered, all its entities are unregistered
+automatically. No manual entities unregistration is then required.
+
+.. note::
+
+   The media_entity instance itself must be freed explicitly by
+   the driver if required.
 
 .. _`media_device_register_entity_notify`:
 
@@ -443,13 +512,15 @@ media_device_register_entity_notify
     :param struct media_entity_notify \*nptr:
         The media_entity_notify
 
-.. _`media_device_register_entity_notify.note`:
+.. _`media_device_register_entity_notify.description`:
 
-Note
-----
+Description
+-----------
 
-When a new entity is registered, all the registered
-media_entity_notify callbacks are invoked.
+.. note::
+
+   When a new entity is registered, all the registered
+   media_entity_notify callbacks are invoked.
 
 .. _`media_device_unregister_entity_notify`:
 
@@ -476,21 +547,21 @@ media_device_get_devres
     get media device as device resource creates if one doesn't exist
 
     :param struct device \*dev:
-        pointer to struct \ :c:type:`struct device <device>`.
+        pointer to struct \ :c:type:`struct device <device>`\ .
 
 .. _`media_device_get_devres.description`:
 
 Description
 -----------
 
-Sometimes, the media controller \ :c:type:`struct media_device <media_device>` needs to be shared by more
+Sometimes, the media controller \ :c:type:`struct media_device <media_device>`\  needs to be shared by more
 than one driver. This function adds support for that, by dynamically
-allocating the \ :c:type:`struct media_device <media_device>` and allowing it to be obtained from the
-struct \ :c:type:`struct device <device>` associated with the common device where all sub-device
+allocating the \ :c:type:`struct media_device <media_device>`\  and allowing it to be obtained from the
+struct \ :c:type:`struct device <device>`\  associated with the common device where all sub-device
 components belong. So, for example, on an USB device with multiple
 interfaces, each interface may be handled by a separate per-interface
-drivers. While each interface have its own \ :c:type:`struct device <device>`, they all share a
-common \ :c:type:`struct device <device>` associated with the hole USB device.
+drivers. While each interface have its own \ :c:type:`struct device <device>`\ , they all share a
+common \ :c:type:`struct device <device>`\  associated with the hole USB device.
 
 .. _`media_device_find_devres`:
 
@@ -502,7 +573,7 @@ media_device_find_devres
     find media device as device resource
 
     :param struct device \*dev:
-        pointer to struct \ :c:type:`struct device <device>`.
+        pointer to struct \ :c:type:`struct device <device>`\ .
 
 .. _`media_device_pci_init`:
 
@@ -511,10 +582,10 @@ media_device_pci_init
 
 .. c:function:: void media_device_pci_init(struct media_device *mdev, struct pci_dev *pci_dev, const char *name)
 
-    create and initialize a struct \ :c:type:`struct media_device <media_device>` from a PCI device.
+    create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
     :param struct pci_dev \*pci_dev:
         pointer to struct pci_dev
@@ -530,10 +601,10 @@ __media_device_usb_init
 
 .. c:function:: void __media_device_usb_init(struct media_device *mdev, struct usb_device *udev, const char *board_name, const char *driver_name)
 
-    create and initialize a struct \ :c:type:`struct media_device <media_device>` from a PCI device.
+    create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
 
     :param struct media_device \*mdev:
-        pointer to struct \ :c:type:`struct media_device <media_device>`
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
 
     :param struct usb_device \*udev:
         pointer to struct usb_device
@@ -544,16 +615,46 @@ __media_device_usb_init
 
     :param const char \*driver_name:
         name of the driver. if \ ``NULL``\ , the routine will use the name
-        given by udev->dev->driver->name, with is usually the wrong
+        given by ``udev->dev->driver->name``, with is usually the wrong
         thing to do.
 
-.. _`__media_device_usb_init.note`:
+.. _`__media_device_usb_init.description`:
 
-NOTE
-----
+Description
+-----------
 
-It is better to call \ :c:func:`media_device_usb_init`\  instead, as
-such macro fills driver_name with \ ``KBUILD_MODNAME``\ .
+.. note::
+
+   It is better to call \ :c:func:`media_device_usb_init`\  instead, as
+   such macro fills driver_name with \ ``KBUILD_MODNAME``\ .
+
+.. _`media_device_usb_init`:
+
+media_device_usb_init
+=====================
+
+.. c:function::  media_device_usb_init( mdev,  udev,  name)
+
+    create and initialize a struct \ :c:type:`struct media_device <media_device>`\  from a PCI device.
+
+    :param  mdev:
+        pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+
+    :param  udev:
+        pointer to struct usb_device
+
+    :param  name:
+        media device name. If \ ``NULL``\ , the routine will use the usb
+        product name, if available.
+
+.. _`media_device_usb_init.description`:
+
+Description
+-----------
+
+This macro calls \ :c:func:`media_device_usb_init`\  passing the
+\ :c:func:`media_device_usb_init`\  **driver_name** parameter filled with
+\ ``KBUILD_MODNAME``\ .
 
 .. This file was automatic generated / don't edit.
 

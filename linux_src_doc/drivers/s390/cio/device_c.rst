@@ -26,7 +26,7 @@ given, and then disables \ ``cdev``\ .
 Return
 ------
 
-\ ``0``\  on success and a negative error value on failure.
+%0 on success and a negative error value on failure.
 
 .. _`ccw_device_set_offline.context`:
 
@@ -61,7 +61,7 @@ disabled again.
 Return
 ------
 
-\ ``0``\  on success and a negative error value on failure.
+%0 on success and a negative error value on failure.
 
 .. _`ccw_device_set_online.context`:
 
@@ -218,7 +218,7 @@ This function is mainly a wrapper around \ :c:func:`driver_register`\ .
 Return
 ------
 
-\ ``0``\  on success and a negative error value on failure.
+%0 on success and a negative error value on failure.
 
 .. _`ccw_driver_unregister`:
 

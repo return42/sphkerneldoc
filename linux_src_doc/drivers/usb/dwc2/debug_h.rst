@@ -19,7 +19,7 @@ Description
 -----------
 
 Copyright (C) 2015 Intel Corporation
-Mian Yousaf Kaukab <yousaf.kaukab\ ``intel``\ .com>
+Mian Yousaf Kaukab <yousaf.kaukab@intel.com>
 
 .. _`dwc2_debugfs_init.this-program-is-free-software`:
 

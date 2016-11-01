@@ -20,6 +20,7 @@ Definition
         dma_addr_t page_dma;
         struct page *page;
         u16 vid;
+        bool invalid;
         struct list_head list;
     }
 
@@ -36,6 +37,9 @@ page
 
 vid
     index of this rxb in the global table
+
+invalid
+    rxb is in driver ownership - not owned by HW
 
 list
     *undescribed*
@@ -311,10 +315,9 @@ Definition
 .. code-block:: c
 
     struct iwl_txq {
-        struct iwl_queue q;
-        struct iwl_tfd *tfds;
-        struct iwl_pcie_txq_scratch_buf *scratchbufs;
-        dma_addr_t scratchbufs_dma;
+        void *tfds;
+        struct iwl_pcie_first_tb_buf *first_tb_bufs;
+        dma_addr_t first_tb_dma;
         struct iwl_pcie_txq_entry *entries;
         spinlock_t lock;
         unsigned long frozen_expiry_remainder;
@@ -327,6 +330,13 @@ Definition
         bool block;
         unsigned long wd_timeout;
         struct sk_buff_head overflow_q;
+        int write_ptr;
+        int read_ptr;
+        dma_addr_t dma_addr;
+        int n_window;
+        u32 id;
+        int low_mark;
+        int high_mark;
     }
 
 .. _`iwl_txq.members`:
@@ -334,19 +344,16 @@ Definition
 Members
 -------
 
-q
-    generic Rx/Tx queue descriptor
-
 tfds
     transmit frame descriptors (DMA memory)
 
-scratchbufs
+first_tb_bufs
     start of command headers, including scratch buffers, for
     the writeback -- this is DMA memory and an array holding one buffer
     for each command on the queue
 
-scratchbufs_dma
-    DMA address for the scratchbufs start
+first_tb_dma
+    DMA address for the first_tb_bufs start
 
 entries
     transmit entries (driver state)
@@ -384,6 +391,27 @@ wd_timeout
 overflow_q
     *undescribed*
 
+write_ptr
+    1-st empty entry (index) host_w
+
+read_ptr
+    last used entry (index) host_r
+
+dma_addr
+    physical addr for BD's
+
+n_window
+    safe queue window
+
+id
+    queue id
+
+low_mark
+    low watermark, resume queue if free space more than this
+
+high_mark
+    high watermark, stop queue if free space less than this
+
 .. _`iwl_txq.description`:
 
 Description
@@ -391,6 +419,67 @@ Description
 
 A Tx queue consists of circular buffer of BDs (a.k.a. TFDs, transmit frame
 descriptors) and required locking structures.
+
+.. _`iwl_txq.note-the-difference-between-tfd_queue_size_max-and-n_window`:
+
+Note the difference between TFD_QUEUE_SIZE_MAX and n_window
+-----------------------------------------------------------
+
+the hardware
+always assumes 256 descriptors, so TFD_QUEUE_SIZE_MAX is always 256 (unless
+there might be HW changes in the future). For the normal TX
+queues, n_window, which is the size of the software queue data
+is also 256; however, for the command queue, n_window is only
+32 since we don't need so many commands pending. Since the HW
+still uses 256 BDs for DMA though, TFD_QUEUE_SIZE_MAX stays 256.
+
+.. _`iwl_txq.hw-entries`:
+
+HW entries
+----------
+
+\| 0 \| ... \| N \* 32 \| ... \| N \* 32 + 31 \| ... \| 255 \|
+
+.. _`iwl_txq.sw-entries`:
+
+SW entries
+----------
+
+\| 0      \| ... \| 31          \|
+where N is a number between 0 and 7. This means that the SW
+data is a window overlayed over the HW queue.
+
+.. _`iwl_shared_irq_flags`:
+
+enum iwl_shared_irq_flags
+=========================
+
+.. c:type:: enum iwl_shared_irq_flags
+
+    level of sharing for irq
+
+.. _`iwl_shared_irq_flags.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_shared_irq_flags {
+        IWL_SHARED_IRQ_NON_RX,
+        IWL_SHARED_IRQ_FIRST_RSS
+    };
+
+.. _`iwl_shared_irq_flags.constants`:
+
+Constants
+---------
+
+IWL_SHARED_IRQ_NON_RX
+    interrupt vector serves non rx causes.
+
+IWL_SHARED_IRQ_FIRST_RSS
+    interrupt vector serves first RSS queue.
 
 .. _`iwl_trans_pcie`:
 
@@ -414,7 +503,6 @@ Definition
         struct iwl_rx_mem_buffer  *global_table[RX_POOL_SIZE];
         struct iwl_rb_allocator rba;
         struct iwl_trans *trans;
-        struct iwl_drv *drv;
         struct net_device napi_dev;
         struct __percpu iwl_tso_hdr_page *tso_hdr_page;
         __le32 *ict_tbl;
@@ -438,15 +526,18 @@ Definition
         wait_queue_head_t ucode_write_waitq;
         wait_queue_head_t wait_command_queue;
         wait_queue_head_t d0i3_waitq;
+        u8 page_offs;
+        u8 dev_cmd_offs;
         u8 cmd_queue;
         u8 cmd_fifo;
         unsigned int cmd_q_wdg_timeout;
         u8 n_no_reclaim_cmds;
         u8 no_reclaim_cmds[MAX_NO_RECLAIM_CMDS];
+        u8 max_tbs;
+        u16 tfd_size;
         enum iwl_amsdu_size rx_buf_size;
         bool bc_table_dword;
         bool scd_set_active;
-        bool wide_cmd_header;
         bool sw_csum_tx;
         u32 rx_page_order;
         spinlock_t reg_lock;
@@ -457,12 +548,14 @@ Definition
         u32 fw_mon_size;
         struct msix_entry msix_entries[IWL_MAX_RX_HW_QUEUES];
         bool msix_enabled;
-        u32 allocated_vector;
-        u32 default_irq_num;
+        u8 shared_vec_mask;
+        u32 alloc_vecs;
+        u32 def_irq;
         u32 fh_init_mask;
         u32 hw_init_mask;
         u32 fh_mask;
         u32 hw_mask;
+        cpumask_t affinity_mask[IWL_MAX_RX_HW_QUEUES];
     }
 
 .. _`iwl_trans_pcie.members`:
@@ -481,13 +574,9 @@ global_table
 
 rba
     allocator for RX replenishing
-    \ ``drv``\  - pointer to iwl_drv
 
 trans
     pointer to the generic transport area
-
-drv
-    *undescribed*
 
 napi_dev
     *undescribed*
@@ -553,6 +642,12 @@ wait_command_queue
 d0i3_waitq
     *undescribed*
 
+page_offs
+    *undescribed*
+
+dev_cmd_offs
+    *undescribed*
+
 cmd_queue
     *undescribed*
 
@@ -565,6 +660,12 @@ cmd_q_wdg_timeout
 n_no_reclaim_cmds
     *undescribed*
 
+max_tbs
+    *undescribed*
+
+tfd_size
+    *undescribed*
+
 rx_buf_size
     Rx buffer size
 
@@ -573,9 +674,6 @@ bc_table_dword
 
 scd_set_active
     should the transport configure the SCD for HCMD queue
-
-wide_cmd_header
-    true when ucode supports wide command header format
 
 sw_csum_tx
     if true, then the transport will compute the csum of the TXed
@@ -608,11 +706,15 @@ msix_entries
 msix_enabled
     true if managed to enable MSI-X
 
-allocated_vector
-    the number of interrupt vector allocated by the OS
+shared_vec_mask
+    the type of causes the shared vector handles
+    (see iwl_shared_irq_flags).
 
-default_irq_num
-    default irq for non rx interrupt
+alloc_vecs
+    the number of interrupt vectors allocated by the OS
+
+def_irq
+    default irq for non rx causes
 
 fh_init_mask
     initial unmasked fh causes

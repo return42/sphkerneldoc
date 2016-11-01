@@ -52,7 +52,7 @@ map_dma_buf
     returns list of scatter pages allocated, increases usecount
     of the buffer. Requires atleast one attach to be called
     before. Returned sg list should already be mapped into
-    \_device\_ address space. This call may sleep. May also return
+    _device_ address space. This call may sleep. May also return
     -EINTR. Should return -EINVAL if attach hasn't been called yet.
 
 unmap_dma_buf

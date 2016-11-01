@@ -8,6 +8,7 @@ host
     :maxdepth: 1
 
     whci/index
+    bcma-hcd_c
     ehci-fsl_c
     ehci-omap_c
     ehci-pmcmsp_c

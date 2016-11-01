@@ -407,7 +407,6 @@ Definition
         struct timer_list watchdog_timer;
         struct workqueue_struct *watchdog_workqueue;
         struct work_struct watchdog_work;
-        void  *alloc_ctx[2];
         unsigned long enter_suspend;
         struct s5p_mfc_priv_buf ctx_buf;
         int warn_start;
@@ -520,9 +519,6 @@ watchdog_workqueue
 watchdog_work
     worker for the watchdog
 
-alloc_ctx
-    videobuf2 allocator contexts for two memory banks
-
 enter_suspend
     flag set when entering suspend
 
@@ -539,13 +535,20 @@ mfc_cmds
     cmd structure holding HW commands function pointers
 
 mfc_regs
-    *undescribed*
+    structure holding MFC registers
 
 fw_ver
     loaded firmware sub-version
 
 risc_on
     *undescribed*
+
+.. _`s5p_mfc_dev.risc_on`:
+
+risc_on
+-------
+
+flag indicates RISC is on or off
 
 .. _`s5p_mfc_h264_enc_params`:
 

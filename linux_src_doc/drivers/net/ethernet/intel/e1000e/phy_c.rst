@@ -1373,7 +1373,7 @@ step 5 is done by \ :c:func:`e1000_disable_phy_wakeup_reg_access_bm`\ .
 
 Assumes semaphore is already acquired.  When page_set==true, assumes
 the PHY page is set to BM_WUC_PAGE (i.e. a function in the call stack
-is responsible for calls to e1000_[enable\|disable]\ :c:func:`_phy_wakeup_reg_bm`\ ).
+is responsible for calls to e1000_[enable\|disable]_phy_wakeup_reg_bm()).
 
 .. _`e1000_power_up_phy_copper`:
 

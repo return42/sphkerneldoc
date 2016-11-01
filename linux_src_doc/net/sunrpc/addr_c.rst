@@ -116,7 +116,7 @@ rpc_uaddr2sockaddr
 Description
 -----------
 
-\ ``uaddr``\  does not have to be '\0'-terminated, but \ :c:func:`kstrtou8`\  and
+@uaddr does not have to be '\0'-terminated, but \ :c:func:`kstrtou8`\  and
 \ :c:func:`rpc_pton`\  require proper string termination to be successful.
 
 Returns the size of the socket address if successful; otherwise

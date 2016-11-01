@@ -21,6 +21,44 @@ Return
 ERR_PTR(errno) if error, else pointer
 to mbox channel.
 
+.. _`pcc_map_interrupt`:
+
+pcc_map_interrupt
+=================
+
+.. c:function:: int pcc_map_interrupt(u32 interrupt, u32 flags)
+
+    Map a PCC subspace GSI to a linux IRQ number
+
+    :param u32 interrupt:
+        GSI number.
+
+    :param u32 flags:
+        interrupt flags
+
+.. _`pcc_map_interrupt.return`:
+
+Return
+------
+
+a valid linux IRQ number on success
+0 or -EINVAL on failure
+
+.. _`pcc_mbox_irq`:
+
+pcc_mbox_irq
+============
+
+.. c:function:: irqreturn_t pcc_mbox_irq(int irq, void *p)
+
+    PCC mailbox interrupt handler
+
+    :param int irq:
+        *undescribed*
+
+    :param void \*p:
+        *undescribed*
+
 .. _`pcc_mbox_request_channel`:
 
 pcc_mbox_request_channel
@@ -99,6 +137,30 @@ parse_pcc_subspace
         End of subtable entry.
 
 .. _`parse_pcc_subspace.return`:
+
+Return
+------
+
+0 for Success, else errno.
+
+This gets called for each entry in the PCC table.
+
+.. _`pcc_parse_subspace_irq`:
+
+pcc_parse_subspace_irq
+======================
+
+.. c:function:: int pcc_parse_subspace_irq(int id, struct acpi_pcct_hw_reduced *pcct_ss)
+
+    Parse the PCC IRQ and PCC ACK register There should be one entry per PCC client.
+
+    :param int id:
+        PCC subspace index.
+
+    :param struct acpi_pcct_hw_reduced \*pcct_ss:
+        Pointer to the ACPI subtable header under the PCCT.
+
+.. _`pcc_parse_subspace_irq.return`:
 
 Return
 ------

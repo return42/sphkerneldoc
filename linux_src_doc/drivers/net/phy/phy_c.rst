@@ -213,7 +213,7 @@ phy_mii_ioctl
         the phy_device struct
 
     :param struct ifreq \*ifr:
-        \ :c:type:`struct ifreq <ifreq>`\  for socket ioctl's
+        &struct ifreq for socket ioctl's
 
     :param int cmd:
         ioctl cmd to execute
@@ -271,6 +271,26 @@ which tracks whether the PHY is starting up, negotiating,
 etc.  This function starts the timer which tracks the state
 of the PHY.  If you want to maintain your own state machine,
 do not call this function.
+
+.. _`phy_trigger_machine`:
+
+phy_trigger_machine
+===================
+
+.. c:function:: void phy_trigger_machine(struct phy_device *phydev)
+
+    trigger the state machine to run
+
+    :param struct phy_device \*phydev:
+        the phy_device struct
+
+.. _`phy_trigger_machine.description`:
+
+Description
+-----------
+
+There has been a change in state which requires that the
+state machine runs.
 
 .. _`phy_stop_machine`:
 

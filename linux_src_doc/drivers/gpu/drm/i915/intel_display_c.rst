@@ -1,50 +1,22 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/intel_display.c
 
-.. _`intel_pipe_has_type`:
-
-intel_pipe_has_type
-===================
-
-.. c:function:: bool intel_pipe_has_type(struct intel_crtc *crtc, enum intel_output_type type)
-
-    :param struct intel_crtc \*crtc:
-        *undescribed*
-
-    :param enum intel_output_type type:
-        *undescribed*
-
-.. _`intel_pipe_will_have_type`:
-
-intel_pipe_will_have_type
-=========================
-
-.. c:function:: bool intel_pipe_will_have_type(const struct intel_crtc_state *crtc_state, int type)
-
-    type after a staged modeset is complete, i.e., the same as \ :c:func:`intel_pipe_has_type`\  but looking at encoder->new_crtc instead of encoder->crtc.
-
-    :param const struct intel_crtc_state \*crtc_state:
-        *undescribed*
-
-    :param int type:
-        *undescribed*
-
 .. _`intel_pll_is_valid`:
 
 intel_PLL_is_valid
 ==================
 
-.. c:function:: bool intel_PLL_is_valid(struct drm_device *dev, const intel_limit_t *limit, const intel_clock_t *clock)
+.. c:function:: bool intel_PLL_is_valid(struct drm_device *dev, const struct intel_limit *limit, const struct dpll *clock)
 
     the given connectors.
 
     :param struct drm_device \*dev:
         *undescribed*
 
-    :param const intel_limit_t \*limit:
+    :param const struct intel_limit \*limit:
         *undescribed*
 
-    :param const intel_clock_t \*clock:
+    :param const struct dpll \*clock:
         *undescribed*
 
 .. _`i9xx_disable_pll`:
@@ -301,8 +273,8 @@ FIXME
 -----
 
 Atomic modeset support for i915 is not yet complete.  At the moment
-we can only handle plane-related operations and do not yet support
-nonblocking commit.
+nonblocking commits are only safe for pure plane updates. Everything else
+should work though.
 
 RETURNS
 Zero for success or -errno.
@@ -312,14 +284,14 @@ Zero for success or -errno.
 intel_prepare_plane_fb
 ======================
 
-.. c:function:: int intel_prepare_plane_fb(struct drm_plane *plane, const struct drm_plane_state *new_state)
+.. c:function:: int intel_prepare_plane_fb(struct drm_plane *plane, struct drm_plane_state *new_state)
 
     Prepare fb for usage on plane
 
     :param struct drm_plane \*plane:
         drm plane to prepare for
 
-    :param const struct drm_plane_state \*new_state:
+    :param struct drm_plane_state \*new_state:
         *undescribed*
 
 .. _`intel_prepare_plane_fb.description`:
@@ -341,14 +313,14 @@ Returns 0 on success, negative error code on failure.
 intel_cleanup_plane_fb
 ======================
 
-.. c:function:: void intel_cleanup_plane_fb(struct drm_plane *plane, const struct drm_plane_state *old_state)
+.. c:function:: void intel_cleanup_plane_fb(struct drm_plane *plane, struct drm_plane_state *old_state)
 
     Cleans up an fb after plane use
 
     :param struct drm_plane \*plane:
         drm plane to clean up for
 
-    :param const struct drm_plane_state \*old_state:
+    :param struct drm_plane_state \*old_state:
         *undescribed*
 
 .. _`intel_cleanup_plane_fb.description`:

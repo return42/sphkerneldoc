@@ -98,7 +98,7 @@ Description
 -----------
 
 This functions destroys an ematch tree previously created by
-\ :c:func:`tcf_em_tree_validate`\ /\ :c:func:`tcf_em_tree_change`\ . You must ensure that
+\ :c:func:`tcf_em_tree_validate`\ /tcf_em_tree_change(). You must ensure that
 the ematch tree is not in use before calling this function.
 
 .. _`tcf_em_tree_dump`:

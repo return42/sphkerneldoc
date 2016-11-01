@@ -40,7 +40,7 @@ kvm_arm_copy_reg_indices
 Description
 -----------
 
-We do core registers right here, then we apppend coproc regs.
+We do core registers right here, then we append coproc regs.
 
 .. This file was automatic generated / don't edit.
 

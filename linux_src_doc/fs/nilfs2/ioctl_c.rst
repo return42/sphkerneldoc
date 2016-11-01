@@ -27,7 +27,7 @@ nilfs_ioctl_wrap_copy
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_wrap_copy`\  gets/sets metadata info by means of
+nilfs_ioctl_wrap_copy() gets/sets metadata info by means of
 calling \ :c:func:`dofunc`\  function on the basis of \ ``argv``\  argument.
 
 .. _`nilfs_ioctl_wrap_copy.return-value`:
@@ -119,7 +119,7 @@ nilfs_ioctl_change_cpmode
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_change_cpmode`\  function changes mode of
+nilfs_ioctl_change_cpmode() function changes mode of
 given checkpoint between checkpoint and snapshot state. This ioctl
 is used in chcp and mkcp utilities.
 
@@ -162,7 +162,7 @@ nilfs_ioctl_delete_checkpoint
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_delete_checkpoint`\  function removes
+nilfs_ioctl_delete_checkpoint() function removes
 checkpoint from NILFS2 file system. This ioctl is used in rmcp
 utility.
 
@@ -211,7 +211,7 @@ nilfs_ioctl_do_get_cpinfo
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_do_get_cpinfo`\  function returns info about
+nilfs_ioctl_do_get_cpinfo() function returns info about
 requested checkpoints. The NILFS_IOCTL_GET_CPINFO ioctl is used in
 lscp utility and by nilfs_cleanerd daemon.
 
@@ -248,7 +248,7 @@ nilfs_ioctl_get_cpstat
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_get_cpstat`\  returns information about checkpoints.
+nilfs_ioctl_get_cpstat() returns information about checkpoints.
 The NILFS_IOCTL_GET_CPSTAT ioctl is used by lscp, rmcp utilities
 and by nilfs_cleanerd daemon.
 
@@ -299,7 +299,7 @@ nilfs_ioctl_do_get_suinfo
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_do_get_suinfo`\  function returns segment usage
+nilfs_ioctl_do_get_suinfo() function returns segment usage
 info about requested segments. The NILFS_IOCTL_GET_SUINFO ioctl is used
 in lssu, nilfs_resize utilities and by nilfs_cleanerd daemon.
 
@@ -336,7 +336,7 @@ nilfs_ioctl_get_sustat
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_get_sustat`\  returns segment usage statistics.
+nilfs_ioctl_get_sustat() returns segment usage statistics.
 The NILFS_IOCTL_GET_SUSTAT ioctl is used in lssu, nilfs_resize utilities
 and by nilfs_cleanerd daemon.
 
@@ -387,7 +387,7 @@ nilfs_ioctl_do_get_vinfo
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_do_get_vinfo`\  function returns information
+nilfs_ioctl_do_get_vinfo() function returns information
 on virtual block addresses. The NILFS_IOCTL_GET_VINFO ioctl is used
 by nilfs_cleanerd daemon.
 
@@ -430,7 +430,7 @@ nilfs_ioctl_do_get_bdescs
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_do_get_bdescs`\  function returns information
+nilfs_ioctl_do_get_bdescs() function returns information
 about descriptors of disk block numbers. The NILFS_IOCTL_GET_BDESCS ioctl
 is used by nilfs_cleanerd daemon.
 
@@ -467,7 +467,7 @@ nilfs_ioctl_get_bdescs
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_do_get_bdescs`\  function returns information
+nilfs_ioctl_do_get_bdescs() function returns information
 about descriptors of disk block numbers. The NILFS_IOCTL_GET_BDESCS ioctl
 is used by nilfs_cleanerd daemon.
 
@@ -511,7 +511,7 @@ nilfs_ioctl_move_inode_block
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_move_inode_block`\  function registers data/node
+nilfs_ioctl_move_inode_block() function registers data/node
 buffer in the GC pagecache and submit read request.
 
 .. _`nilfs_ioctl_move_inode_block.return-value`:
@@ -553,7 +553,7 @@ nilfs_ioctl_move_blocks
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_move_blocks`\  function reads valid data/node
+nilfs_ioctl_move_blocks() function reads valid data/node
 blocks that garbage collector specified with the array of nilfs_vdesc
 structures and stores them into page caches of GC inodes.
 
@@ -588,7 +588,7 @@ nilfs_ioctl_delete_checkpoints
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_delete_checkpoints`\  function deletes checkpoints
+nilfs_ioctl_delete_checkpoints() function deletes checkpoints
 in the period from p_start to p_end, excluding p_end itself. The checkpoints
 which have been already deleted are ignored.
 
@@ -629,7 +629,7 @@ nilfs_ioctl_free_vblocknrs
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_free_vblocknrs`\  function frees
+nilfs_ioctl_free_vblocknrs() function frees
 the virtual block numbers specified by \ ``buf``\  and \ ``argv``\ ->v_nmembs.
 
 .. _`nilfs_ioctl_free_vblocknrs.return-value`:
@@ -669,7 +669,7 @@ nilfs_ioctl_mark_blocks_dirty
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_mark_blocks_dirty`\  function marks
+nilfs_ioctl_mark_blocks_dirty() function marks
 metadata file or data blocks as dirty.
 
 .. _`nilfs_ioctl_mark_blocks_dirty.return-value`:
@@ -712,7 +712,7 @@ nilfs_ioctl_clean_segments
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_clean_segments`\  function makes garbage
+nilfs_ioctl_clean_segments() function makes garbage
 collection operation in the environment of requested parameters
 from userspace. The NILFS_IOCTL_CLEAN_SEGMENTS ioctl is used by
 nilfs_cleanerd daemon.
@@ -750,7 +750,7 @@ nilfs_ioctl_sync
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_sync`\  function constructs a logical segment
+nilfs_ioctl_sync() function constructs a logical segment
 for checkpointing.  This function guarantees that all modified data
 and metadata are written out to the device when it successfully
 returned.
@@ -851,7 +851,7 @@ nilfs_ioctl_set_alloc_range
 Decription
 ----------
 
-\ :c:func:`nilfs_ioctl_set_alloc_range`\  function defines lower limit
+nilfs_ioctl_set_alloc_range() function defines lower limit
 of segments in bytes and upper limit of segments in bytes.
 The NILFS_IOCTL_SET_ALLOC_RANGE is used by nilfs_resize utility.
 
@@ -894,7 +894,7 @@ nilfs_ioctl_get_info
 Description
 -----------
 
-\ :c:func:`nilfs_ioctl_get_info`\  gets metadata info by means of
+nilfs_ioctl_get_info() gets metadata info by means of
 calling \ :c:func:`dofunc`\  function.
 
 .. _`nilfs_ioctl_get_info.return-value`:

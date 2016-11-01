@@ -452,6 +452,7 @@ Definition
         struct dma_pool *op_pool;
         struct dma_pool *cache_pool;
         struct dma_pool *padding_pool;
+        struct dma_pool *iv_pool;
     }
 
 .. _`mv_cesa_dev_dma.members`:
@@ -472,6 +473,9 @@ cache_pool
 padding_pool
     padding pool (used by hash implementation when hardware
     padding cannot be used)
+
+iv_pool
+    *undescribed*
 
 .. _`mv_cesa_dev_dma.description`:
 
@@ -502,7 +506,6 @@ Definition
         struct device *dev;
         unsigned int sram_size;
         spinlock_t lock;
-        struct crypto_queue queue;
         struct mv_cesa_engine *engines;
         struct mv_cesa_dev_dma *dma;
     }
@@ -526,9 +529,6 @@ sram_size
 
 lock
     device lock
-
-queue
-    crypto request queue
 
 engines
     array of engines
@@ -571,6 +571,10 @@ Definition
         size_t max_req_len;
         u32 int_mask;
         struct gen_pool *pool;
+        struct crypto_queue queue;
+        atomic_t load;
+        struct mv_cesa_tdma_chain chain;
+        struct list_head complete_queue;
     }
 
 .. _`mv_cesa_engine.members`:
@@ -612,6 +616,19 @@ pool
     memory pool pointing to the memory region reserved in
     SRAM
 
+queue
+    fifo of the pending crypto requests
+
+load
+    engine load counter, useful for load balancing
+
+chain
+    list of the current tdma descriptors being processed
+    by this engine.
+
+complete_queue
+    fifo of the processed requests by the engine
+
 .. _`mv_cesa_engine.description`:
 
 Description
@@ -636,19 +653,16 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_req_ops {
-        void (*prepare)(struct crypto_async_request *req,struct mv_cesa_engine *engine);
         int (*process)(struct crypto_async_request *req, u32 status);
         void (*step)(struct crypto_async_request *req);
         void (*cleanup)(struct crypto_async_request *req);
+        void (*complete)(struct crypto_async_request *req);
     }
 
 .. _`mv_cesa_req_ops.members`:
 
 Members
 -------
-
-prepare
-    prepare a request to be executed on the specified engine
 
 process
     process a request chunk result (should return 0 if the
@@ -660,6 +674,10 @@ step
 
 cleanup
     cleanup the crypto request (release associated data)
+
+complete
+    complete the request, i.e copy result or context from sram when
+    needed.
 
 .. _`mv_cesa_ctx`:
 
@@ -819,8 +837,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_req {
-        enum mv_cesa_req_type type;
         struct mv_cesa_engine *engine;
+        struct mv_cesa_tdma_chain chain;
     }
 
 .. _`mv_cesa_req.members`:
@@ -828,43 +846,11 @@ Definition
 Members
 -------
 
-type
-    request type
-
 engine
     engine associated with this request
 
-.. _`mv_cesa_tdma_req`:
-
-struct mv_cesa_tdma_req
-=======================
-
-.. c:type:: struct mv_cesa_tdma_req
-
-    CESA TDMA request
-
-.. _`mv_cesa_tdma_req.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct mv_cesa_tdma_req {
-        struct mv_cesa_req base;
-        struct mv_cesa_tdma_chain chain;
-    }
-
-.. _`mv_cesa_tdma_req.members`:
-
-Members
--------
-
-base
-    base information
-
 chain
-    TDMA chain
+    list of tdma descriptors associated  with this request
 
 .. _`mv_cesa_sg_std_iter`:
 
@@ -915,7 +901,6 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_ablkcipher_std_req {
-        struct mv_cesa_req base;
         struct mv_cesa_op_ctx op;
         unsigned int offset;
         unsigned int size;
@@ -926,9 +911,6 @@ Definition
 
 Members
 -------
-
-base
-    base information
 
 op
     operation context
@@ -959,7 +941,8 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_ablkcipher_req {
-        union req;
+        struct mv_cesa_req base;
+        struct mv_cesa_ablkcipher_std_req std;
         int src_nents;
         int dst_nents;
     }
@@ -969,8 +952,11 @@ Definition
 Members
 -------
 
-req
-    type specific request information
+base
+    *undescribed*
+
+std
+    *undescribed*
 
 src_nents
     number of entries in the src sg list
@@ -995,7 +981,6 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_ahash_std_req {
-        struct mv_cesa_req base;
         unsigned int offset;
     }
 
@@ -1003,9 +988,6 @@ Definition
 
 Members
 -------
-
-base
-    base information
 
 offset
     current operation offset
@@ -1027,7 +1009,6 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_ahash_dma_req {
-        struct mv_cesa_tdma_req base;
         u8 *padding;
         dma_addr_t padding_dma;
         u8 *cache;
@@ -1038,9 +1019,6 @@ Definition
 
 Members
 -------
-
-base
-    base information
 
 padding
     padding buffer
@@ -1071,6 +1049,7 @@ Definition
 .. code-block:: c
 
     struct mv_cesa_ahash_req {
+        struct mv_cesa_req base;
         union req;
         struct mv_cesa_op_ctx op_tmpl;
         u8 cache[CESA_MAX_HASH_BLOCK_SIZE];
@@ -1086,6 +1065,9 @@ Definition
 
 Members
 -------
+
+base
+    *undescribed*
 
 req
     type specific request information

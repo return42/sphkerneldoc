@@ -37,7 +37,7 @@ Handle path name lookup.
 Return
 ------
 
-\ ``0``\  else error code if path lookup fails
+%0 else error code if path lookup fails
 When no error the path name is returned in \ ``name``\  which points to
 to a position in \ ``buf``\ 
 
@@ -73,7 +73,7 @@ get_name_to_buffer
 Return
 ------
 
-\ ``0``\  else error on failure
+%0 else error on failure
 
 .. _`aa_path_name`:
 
@@ -104,7 +104,7 @@ aa_path_name
 Description
 -----------
 
-\ ``name``\  is a pointer to the beginning of the pathname (which usually differs
+@name is a pointer to the beginning of the pathname (which usually differs
 from the beginning of the buffer), or NULL.  If there is an error \ ``name``\ 
 may contain a partial or invalid name that can be used for audit purposes,
 but it can not be used for mediation.
@@ -118,7 +118,7 @@ file type.
 Return
 ------
 
-\ ``0``\  else error code if could retrieve name
+%0 else error code if could retrieve name
 
 .. This file was automatic generated / don't edit.
 

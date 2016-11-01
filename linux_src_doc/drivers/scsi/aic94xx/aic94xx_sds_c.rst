@@ -115,7 +115,7 @@ asd_find_ll_by_id
 Description
 -----------
 
-\ ``start``\  has to be the \_base\_ element start, since the
+@start has to be the \_base\_ element start, since the
 linked list entries's offset is from this pointer.
 Some linked list entries use only the first id, in which case
 you can pass 0xFF for the second.

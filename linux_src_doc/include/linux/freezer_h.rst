@@ -23,7 +23,7 @@ target frozen state is reached.  IOW, the current task will be
 considered frozen enough by freezers.
 
 The caller shouldn't do anything which isn't allowed for a frozen task
-until \ :c:func:`freezer_cont`\  is called.  Usually, freezer[_do_not]\ :c:func:`_count`\  pair
+until \ :c:func:`freezer_cont`\  is called.  Usually, freezer[_do_not]_count() pair
 wrap a scheduling operation and nothing much else.
 
 .. _`freezer_count`:

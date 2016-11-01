@@ -300,20 +300,14 @@ to a RIO device on success or NULL on failure.
 rio_sport_is_active
 ===================
 
-.. c:function:: int rio_sport_is_active(struct rio_mport *port, u16 destid, u8 hopcount, int sport)
+.. c:function:: int rio_sport_is_active(struct rio_dev *rdev, int sp)
 
     Tests if a switch port has an active connection.
 
-    :param struct rio_mport \*port:
-        Master port to send transaction
+    :param struct rio_dev \*rdev:
+        RapidIO device object
 
-    :param u16 destid:
-        Associated destination ID for switch
-
-    :param u8 hopcount:
-        Hopcount to reach switch
-
-    :param int sport:
+    :param int sp:
         Switch port number
 
 .. _`rio_sport_is_active.description`:

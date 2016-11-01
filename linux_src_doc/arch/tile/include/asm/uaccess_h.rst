@@ -161,7 +161,7 @@ the specified block with \ :c:func:`access_ok`\  before calling this function.
 Returns number of bytes that could not be copied.
 On success, this will be zero.
 
-An alternate version - \\ :c:func:`__copy_to_user_inatomic`\  - is designed
+An alternate version - \__copy_to_user_inatomic() - is designed
 to be called from atomic context, typically bracketed by calls
 to \ :c:func:`pagefault_disable`\  and \ :c:func:`pagefault_enable`\ .
 
@@ -205,7 +205,7 @@ On success, this will be zero.
 If some data could not be copied, this function will pad the copied
 data to the requested size using zero bytes.
 
-An alternate version - \\ :c:func:`__copy_from_user_inatomic`\  - is designed
+An alternate version - \__copy_from_user_inatomic() - is designed
 to be called from atomic context, typically bracketed by calls
 to \ :c:func:`pagefault_disable`\  and \ :c:func:`pagefault_enable`\ .  This version
 does \*NOT\* pad with zeros.

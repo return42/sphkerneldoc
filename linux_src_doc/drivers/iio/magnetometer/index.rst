@@ -7,5 +7,6 @@ magnetometer
 .. toctree::
     :maxdepth: 1
 
+    ak8974_c
     hmc5843_h
     mmc35240_c

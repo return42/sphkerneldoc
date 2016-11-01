@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/net/ethernet/ti/davinci_emac.c
 
-.. _`emac_dump_regs`:
-
-emac_dump_regs
-==============
-
-.. c:function:: void emac_dump_regs(struct emac_priv *priv)
-
-    Dump important EMAC registers to debug terminal
-
-    :param struct emac_priv \*priv:
-        The DaVinci EMAC private adapter structure
-
-.. _`emac_dump_regs.description`:
-
-Description
------------
-
-Executes ethtool set cmd & sets phy mode
-
 .. _`emac_get_drvinfo`:
 
 emac_get_drvinfo
@@ -41,50 +22,6 @@ Description
 -----------
 
 Returns EMAC driver information (name and version)
-
-.. _`emac_get_settings`:
-
-emac_get_settings
-=================
-
-.. c:function:: int emac_get_settings(struct net_device *ndev, struct ethtool_cmd *ecmd)
-
-    Get EMAC settings
-
-    :param struct net_device \*ndev:
-        The DaVinci EMAC network adapter
-
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command
-
-.. _`emac_get_settings.description`:
-
-Description
------------
-
-Executes ethool get command
-
-.. _`emac_set_settings`:
-
-emac_set_settings
-=================
-
-.. c:function:: int emac_set_settings(struct net_device *ndev, struct ethtool_cmd *ecmd)
-
-    Set EMAC settings
-
-    :param struct net_device \*ndev:
-        The DaVinci EMAC network adapter
-
-    :param struct ethtool_cmd \*ecmd:
-        ethtool command
-
-.. _`emac_set_settings.description`:
-
-Description
------------
-
-Executes ethool set command
 
 .. _`emac_get_coalesce`:
 
@@ -169,12 +106,12 @@ Description
 
 Calculates hash value from mac address
 
-.. _`hash_add`:
+.. _`emac_hash_add`:
 
-hash_add
-========
+emac_hash_add
+=============
 
-.. c:function:: int hash_add(struct emac_priv *priv, u8 *mac_addr)
+.. c:function:: int emac_hash_add(struct emac_priv *priv, u8 *mac_addr)
 
     Hash function to add mac addr from hash table
 
@@ -184,19 +121,19 @@ hash_add
     :param u8 \*mac_addr:
         mac address to delete from hash table
 
-.. _`hash_add.description`:
+.. _`emac_hash_add.description`:
 
 Description
 -----------
 
 Adds mac address to the internal hash table
 
-.. _`hash_del`:
+.. _`emac_hash_del`:
 
-hash_del
-========
+emac_hash_del
+=============
 
-.. c:function:: int hash_del(struct emac_priv *priv, u8 *mac_addr)
+.. c:function:: int emac_hash_del(struct emac_priv *priv, u8 *mac_addr)
 
     Hash function to delete mac addr from hash table
 
@@ -206,7 +143,7 @@ hash_del
     :param u8 \*mac_addr:
         mac address to delete from hash table
 
-.. _`hash_del.description`:
+.. _`emac_hash_del.description`:
 
 Description
 -----------

@@ -90,7 +90,6 @@ Definition
         const char *drv_version;
         void (*set_mac_speed)(void *priv, unsigned int speed);
         struct device *dev;
-        struct phy_device *phy_dev;
         struct mii_bus *bus;
         struct arc_emac_mdio_bus_data bus_data;
         void __iomem *regs;
@@ -126,9 +125,6 @@ set_mac_speed
 
 dev
     Pointer to the current device.
-
-phy_dev
-    Pointer to attached PHY device.
 
 bus
     Pointer to the current MII bus.

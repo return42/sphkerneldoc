@@ -80,6 +80,7 @@ Definition
         struct iio_subirq subirqs[CONFIG_IIO_CONSUMERS_PER_TRIGGER];
         unsigned long pool[BITS_TO_LONGS(CONFIG_IIO_CONSUMERS_PER_TRIGGER)];
         struct mutex pool_lock;
+        bool attached_own_device;
     }
 
 .. _`iio_trigger.members`:
@@ -122,6 +123,11 @@ pool
 
 pool_lock
     [INTERN] protection of the irq pool.
+
+attached_own_device
+    [INTERN] if we are using our own device as trigger,
+    i.e. if we registered a poll function to the same
+    device as the one providing the trigger.
 
 .. _`iio_trigger_set_drvdata`:
 
@@ -189,6 +195,29 @@ iio_trigger_unregister
     :param struct iio_trigger \*trig_info:
         trigger to be unregistered
 
+.. _`iio_trigger_set_immutable`:
+
+iio_trigger_set_immutable
+=========================
+
+.. c:function:: int iio_trigger_set_immutable(struct iio_dev *indio_dev, struct iio_trigger *trig)
+
+    set an immutable trigger on destination
+
+    :param struct iio_dev \*indio_dev:
+        *undescribed*
+
+    :param struct iio_trigger \*trig:
+        *undescribed*
+
+.. _`iio_trigger_set_immutable.description`:
+
+Description
+-----------
+
+@indio_dev - IIO device structure containing the device
+\ ``trig``\  - trigger to assign to device
+
 .. _`iio_trigger_poll`:
 
 iio_trigger_poll
@@ -207,6 +236,18 @@ Description
 -----------
 
 Typically called in relevant hardware interrupt handler.
+
+.. _`iio_trigger_using_own`:
+
+iio_trigger_using_own
+=====================
+
+.. c:function:: bool iio_trigger_using_own(struct iio_dev *indio_dev)
+
+    tells us if we use our own HW trigger ourselves
+
+    :param struct iio_dev \*indio_dev:
+        device to check
 
 .. This file was automatic generated / don't edit.
 

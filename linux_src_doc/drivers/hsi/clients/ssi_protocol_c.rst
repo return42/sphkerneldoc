@@ -21,7 +21,7 @@ Definition
         unsigned int main_state;
         unsigned int send_state;
         unsigned int recv_state;
-        unsigned int waketest:1;
+        unsigned long flags;
         u8 rxid;
         u8 txid;
         unsigned int txqueue_len;
@@ -32,6 +32,7 @@ Definition
         struct net_device *netdev;
         struct list_head txqueue;
         struct list_head cmdqueue;
+        struct work_struct work;
         struct hsi_client *cl;
         struct list_head link;
         atomic_t tx_usecnt;
@@ -53,8 +54,8 @@ send_state
 recv_state
     RX state machine
 
-waketest
-    Flag to follow wake line test
+flags
+    Flags, currently only used to follow wake line test
 
 rxid
     RX data id
@@ -85,6 +86,9 @@ txqueue
 
 cmdqueue
     Queue of free commands
+
+work
+    *undescribed*
 
 cl
     HSI client own reference

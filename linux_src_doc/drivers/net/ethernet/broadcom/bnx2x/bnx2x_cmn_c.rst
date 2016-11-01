@@ -136,7 +136,7 @@ bnx2x_link_report
 Description
 -----------
 
-Calls the \\ :c:func:`__bnx2x_link_report`\  under the same locking scheme
+Calls the \__bnx2x_link_report() under the same locking scheme
 as a link/PHY state managing code to ensure a consistent link
 reporting.
 
@@ -207,9 +207,9 @@ will be the holes at the end of each group of 16 ETh L2 indices (0..15,
 16..31,...) with indices that are not coupled with any real Tx queue.
 
 The proper configuration of skb->queue_mapping is handled by
-\ :c:func:`bnx2x_select_queue`\  and \\ :c:func:`__skb_tx_hash`\ .
+\ :c:func:`bnx2x_select_queue`\  and \__skb_tx_hash().
 
-\ :c:func:`bnx2x_setup_tc`\  takes care of the proper TC mappings so that \\ :c:func:`__skb_tx_hash`\ 
+\ :c:func:`bnx2x_setup_tc`\  takes care of the proper TC mappings so that \__skb_tx_hash()
 will return a proper Tx index if TC is enabled (netdev->num_tc > 0).
 
 .. _`bnx2x_bz_fp`:

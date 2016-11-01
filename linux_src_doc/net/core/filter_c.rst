@@ -11,7 +11,7 @@ sk_filter_trim_cap
     run a packet through a socket filter
 
     :param struct sock \*sk:
-        sock associated with \ :c:type:`struct sk_buff <sk_buff>`
+        sock associated with \ :c:type:`struct sk_buff <sk_buff>`\ 
 
     :param struct sk_buff \*skb:
         buffer to filter
@@ -65,12 +65,12 @@ Conversion workflow
 
 
 1) First pass for calculating the new program length:
-bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`)
+bpf_convert_filter(old_prog, old_len, NULL, \ :c:type:`struct new_len <new_len>`\ )
 
 2) 2nd pass to remap in two passes: 1st pass finds new
 jump offsets, 2nd pass remapping:
 new_prog = kmalloc(sizeof(struct bpf_insn) \* new_len);
-bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`);
+bpf_convert_filter(old_prog, old_len, new_prog, \ :c:type:`struct new_len <new_len>`\ );
 
 .. _`bpf_check_classic`:
 

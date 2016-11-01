@@ -647,14 +647,29 @@ ufshcd_prepare_utp_query_req_upiu
     :param u32 upiu_flags:
         flags
 
-.. _`ufshcd_compose_upiu`:
+.. _`ufshcd_comp_devman_upiu`:
 
-ufshcd_compose_upiu
-===================
+ufshcd_comp_devman_upiu
+=======================
 
-.. c:function:: int ufshcd_compose_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
+.. c:function:: int ufshcd_comp_devman_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
 
-    form UFS Protocol Information Unit(UPIU) \ ``hba``\  - per adapter instance \ ``lrb``\  - pointer to local reference block
+    UFS Protocol Information Unit(UPIU) for Device Management Purposes \ ``hba``\  - per adapter instance \ ``lrb``\  - pointer to local reference block
+
+    :param struct ufs_hba \*hba:
+        *undescribed*
+
+    :param struct ufshcd_lrb \*lrbp:
+        *undescribed*
+
+.. _`ufshcd_comp_scsi_upiu`:
+
+ufshcd_comp_scsi_upiu
+=====================
+
+.. c:function:: int ufshcd_comp_scsi_upiu(struct ufs_hba *hba, struct ufshcd_lrb *lrbp)
+
+    UFS Protocol Information Unit(UPIU) for SCSI Purposes \ ``hba``\  - per adapter instance \ ``lrb``\  - pointer to local reference block
 
     :param struct ufs_hba \*hba:
         *undescribed*

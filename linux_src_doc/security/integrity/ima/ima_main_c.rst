@@ -8,7 +8,7 @@ ima_file_free
 
 .. c:function:: void ima_file_free(struct file *file)
 
-    called on \\ :c:func:`__fput`\ 
+    called on \__fput()
 
     :param struct file \*file:
         pointer to file structure being freed

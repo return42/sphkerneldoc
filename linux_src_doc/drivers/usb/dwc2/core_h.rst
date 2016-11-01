@@ -37,7 +37,9 @@ Definition
         unsigned int periodic:1;
         unsigned int isochronous:1;
         unsigned int send_zlp:1;
-        unsigned int has_correct_parity:1;
+        unsigned int target_frame;
+    #define TARGET_FRAME_INITIAL 0xFFFFFFFF
+        bool frame_overrun;
         char name[10];
     }
 
@@ -91,7 +93,7 @@ index
 
 mc
     Multi Count - number of transactions per microframe
-    \ ``interval``\  - Interval for periodic endpoints
+    \ ``interval``\  - Interval for periodic endpoints, in frames or microframes.
 
 interval
     *undescribed*
@@ -108,8 +110,11 @@ isochronous
 send_zlp
     Set if we need to send a zero-length packet.
 
-has_correct_parity
-    *undescribed*
+target_frame
+    Targeted frame num to setup next ISOC transfer
+
+frame_overrun
+    Indicates SOF number overrun in DSTS
 
 name
     The name array passed to the USB core.
@@ -836,6 +841,7 @@ Definition
         void *priv;
         int irq;
         struct clk *clk;
+        struct reset_control *reset;
         unsigned int queuing_high_bandwidth:1;
         unsigned int srp_success:1;
         struct workqueue_struct *wq_otg;
@@ -852,6 +858,7 @@ Definition
     #define DWC2_CORE_REV_2_92a 0x4f54292a
     #define DWC2_CORE_REV_2_94a 0x4f54294a
     #define DWC2_CORE_REV_3_00a 0x4f54300a
+    #define DWC2_CORE_REV_3_10a 0x4f54310a
     #if IS_ENABLED(CONFIG_USB_DWC2_HOST) || IS_ENABLED(CONFIG_USB_DWC2_DUAL_ROLE)
         union dwc2_hcd_internal_flags flags;
         struct list_head non_periodic_sched_inactive;
@@ -1001,6 +1008,9 @@ irq
     *undescribed*
 
 clk
+    *undescribed*
+
+reset
     *undescribed*
 
 queuing_high_bandwidth

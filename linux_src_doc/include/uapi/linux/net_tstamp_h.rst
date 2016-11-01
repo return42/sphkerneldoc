@@ -8,7 +8,7 @@ struct hwtstamp_config
 
 .. c:type:: struct hwtstamp_config
 
-    \ ``SIOCGHWTSTAMP``\  and \ ``SIOCSHWTSTAMP``\  parameter
+    %SIOCGHWTSTAMP and \ ``SIOCSHWTSTAMP``\  parameter
 
 .. _`hwtstamp_config.definition`:
 
@@ -42,7 +42,7 @@ rx_filter
 Description
 -----------
 
-\ ``SIOCGHWTSTAMP``\  and \ ``SIOCSHWTSTAMP``\  expect a \ :c:type:`struct ifreq <ifreq>`\  with a
+%SIOCGHWTSTAMP and \ ``SIOCSHWTSTAMP``\  expect a \ :c:type:`struct ifreq <ifreq>`\  with a
 ifr_data pointer to this structure.  For \ ``SIOCSHWTSTAMP``\ , if the
 driver or hardware does not support the requested \ ``rx_filter``\  value,
 the driver may use a more general filter mode.  In this case

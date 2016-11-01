@@ -101,7 +101,7 @@ nilfs_sufile_set_error
 Description
 -----------
 
-\ :c:func:`nilfs_sufile_set_error`\  marks the segment specified by
+nilfs_sufile_set_error() marks the segment specified by
 \ ``segnum``\  as erroneous. The error segment will never be used again.
 
 .. _`nilfs_sufile_set_error.return-value`:

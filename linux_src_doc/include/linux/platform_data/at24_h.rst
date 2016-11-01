@@ -21,10 +21,12 @@ Definition
         u32 byte_len;
         u16 page_size;
         u8 flags;
-    #define AT24_FLAG_ADDR16 0x80
-    #define AT24_FLAG_READONLY 0x40
-    #define AT24_FLAG_IRUGO 0x20
-    #define AT24_FLAG_TAKE8ADDR 0x10
+    #define AT24_FLAG_ADDR16 BIT(7)
+    #define AT24_FLAG_READONLY BIT(6)
+    #define AT24_FLAG_IRUGO BIT(5)
+    #define AT24_FLAG_TAKE8ADDR BIT(4)
+    #define AT24_FLAG_SERIAL BIT(3)
+    #define AT24_FLAG_MAC BIT(2)
         void (*setup)(struct nvmem_device *nvmem, void *context);
         void *context;
     }

@@ -27,6 +27,7 @@ Definition
         int (*init_clkdm)(struct omap_hwmod *oh);
         void (*update_context_lost)(struct omap_hwmod *oh);
         int (*get_context_lost)(struct omap_hwmod *oh);
+        int (*disable_direct_prcm)(struct omap_hwmod *oh);
     }
 
 .. _`omap_hwmod_soc_ops.members`:
@@ -59,6 +60,9 @@ update_context_lost
     *undescribed*
 
 get_context_lost
+    *undescribed*
+
+disable_direct_prcm
     *undescribed*
 
 .. _`omap_hwmod_soc_ops.description`:
@@ -286,7 +290,7 @@ Description
 
 Wait until the IP block represented by \ ``oh``\  reports that its OCP
 softreset is complete.  This can be triggered by software (see
-\\ :c:func:`_ocp_softreset`\ ) or by hardware upon returning from off-mode (one
+\_ocp_softreset()) or by hardware upon returning from off-mode (one
 example is HSMMC).  Waits for up to MAX_MODULE_SOFTRESET_WAIT
 microseconds.  Returns the number of microseconds waited.
 
@@ -495,9 +499,9 @@ _init_main_clk
 Description
 -----------
 
-Called from \\ :c:func:`_init_clocks`\ .  Populates the \ ``oh``\  \_clk (main
-functional clock pointer) if a main_clk is present.  Returns 0 on
-success or -EINVAL on error.
+Called from \_init_clocks().  Populates the \ ``oh``\  \_clk (main
+functional clock pointer) if a clock matching the hwmod name is found,
+or a main_clk is present.  Returns 0 on success or -EINVAL on error.
 
 .. _`_init_interface_clks`:
 
@@ -516,7 +520,7 @@ _init_interface_clks
 Description
 -----------
 
-Called from \\ :c:func:`_init_clocks`\ .  Populates the \ ``oh``\  OCP slave interface
+Called from \_init_clocks().  Populates the \ ``oh``\  OCP slave interface
 clock pointers.  Returns 0 on success or -EINVAL on error.
 
 .. _`_init_opt_clks`:
@@ -536,7 +540,7 @@ _init_opt_clks
 Description
 -----------
 
-Called from \\ :c:func:`_init_clocks`\ .  Populates the \ ``oh``\  omap_hwmod_opt_clk
+Called from \_init_clocks().  Populates the \ ``oh``\  omap_hwmod_opt_clk
 clock pointers.  Returns 0 on success or -EINVAL on error.
 
 .. _`_enable_clocks`:
@@ -618,7 +622,7 @@ Description
 Wait for a module \ ``oh``\  to enter slave idle.  Returns 0 if the module
 does not have an IDLEST bit or if the module successfully enters
 slave idle; otherwise, pass along the return value of the
-appropriate \*\_cm\*\\ :c:func:`_wait_module_idle`\  function.
+appropriate \*\_cm\*\_wait_module_idle() function.
 
 .. _`_count_mpu_irqs`:
 
@@ -968,7 +972,7 @@ _init_clocks
 
 .. c:function:: int _init_clocks(struct omap_hwmod *oh, void *data)
 
-    \ :c:func:`clk_get`\  all clocks associated with this hwmod. Retrieve as well the clockdomain.
+    clk_get() all clocks associated with this hwmod. Retrieve as well the clockdomain.
 
     :param struct omap_hwmod \*oh:
         struct omap_hwmod \*
@@ -1035,7 +1039,7 @@ Some IP like dsp, ipu or iva contain processor that require an HW
 reset line to be assert / deassert in order to enable fully the IP.
 Returns -EINVAL if \ ``oh``\  is null, -ENOSYS if we have no way of
 asserting the hardreset line on the currently-booted SoC, or passes
-along the return value from \\ :c:func:`_lookup_hardreset`\  or the SoC's
+along the return value from \_lookup_hardreset() or the SoC's
 assert_hardreset code.
 
 .. _`_deassert_hardreset`:
@@ -1062,7 +1066,7 @@ Some IP like dsp, ipu or iva contain processor that require an HW
 reset line to be assert / deassert in order to enable fully the IP.
 Returns -EINVAL if \ ``oh``\  is null, -ENOSYS if we have no way of
 deasserting the hardreset line on the currently-booted SoC, or passes
-along the return value from \\ :c:func:`_lookup_hardreset`\  or the SoC's
+along the return value from \_lookup_hardreset() or the SoC's
 deassert_hardreset code.
 
 .. _`_read_hardreset`:
@@ -1088,7 +1092,7 @@ Description
 Return the state of the reset line.  Returns -EINVAL if \ ``oh``\  is
 null, -ENOSYS if we have no way of reading the hardreset line
 status on the currently-booted SoC, or passes along the return
-value from \\ :c:func:`_lookup_hardreset`\  or the SoC's is_hardreset_asserted
+value from \_lookup_hardreset() or the SoC's is_hardreset_asserted
 code.
 
 .. _`_are_all_hardreset_lines_asserted`:
@@ -1222,12 +1226,12 @@ IVA) have idiosyncratic reset sequences.  So for these relatively
 rare cases, custom reset code can be supplied in the struct
 omap_hwmod_class .reset function pointer.
 
-\\ :c:func:`_set_dmadisable`\  is called to set the DMADISABLE bit so that it
+\_set_dmadisable() is called to set the DMADISABLE bit so that it
 does not prevent idling of the system. This is necessary for cases
 where ROMCODE/BOOTLOADER uses dma and transfers control to the
 kernel without disabling dma.
 
-Passes along the return value from either \\ :c:func:`_ocp_softreset`\  or the
+Passes along the return value from either \_ocp_softreset() or the
 custom reset function - these must return -EINVAL if the hwmod
 cannot be reset this way or if the hwmod is in the wrong state,
 -ETIMEDOUT if the module did not reset in time, or 0 upon success.
@@ -1305,7 +1309,7 @@ _enable_preprogram
 
 .. c:function:: int _enable_preprogram(struct omap_hwmod *oh)
 
-    Pre-program an IP block during the \\ :c:func:`_enable`\  process
+    Pre-program an IP block during the \_enable() process
 
     :param struct omap_hwmod \*oh:
         struct omap_hwmod \*
@@ -1339,7 +1343,7 @@ Description
 
 Enables an omap_hwmod \ ``oh``\  such that the MPU can access the hwmod's
 register target.  Returns -EINVAL if the hwmod is in the wrong
-state or passes along the return value of \\ :c:func:`_wait_target_ready`\ .
+state or passes along the return value of \_wait_target_ready().
 
 .. _`_idle`:
 
@@ -1546,7 +1550,7 @@ Description
 
 Place an IP block represented by \ ``oh``\  into a "post-setup" state --
 either IDLE, ENABLED, or DISABLED.  ("post-setup" simply means that
-this function is called at the end of \\ :c:func:`_setup`\ .)  The postsetup
+this function is called at the end of \_setup().)  The postsetup
 state for an IP block can be changed by calling
 \ :c:func:`omap_hwmod_enter_postsetup_state`\  early in the boot process,
 before one of the omap_hwmod_setup\*() functions are called for the
@@ -1763,7 +1767,7 @@ Description
 Wait for a module \ ``oh``\  to leave slave idle.  Returns 0 if the module
 does not have an IDLEST bit or if the module successfully leaves
 slave idle; otherwise, pass along the return value of the
-appropriate \*\_cm\*\\ :c:func:`_wait_module_ready`\  function.
+appropriate \*\_cm\*\_wait_module_ready() function.
 
 .. _`_omap4_wait_target_ready`:
 
@@ -1785,7 +1789,7 @@ Description
 Wait for a module \ ``oh``\  to leave slave idle.  Returns 0 if the module
 does not have an IDLEST bit or if the module successfully leaves
 slave idle; otherwise, pass along the return value of the
-appropriate \*\_cm\*\\ :c:func:`_wait_module_ready`\  function.
+appropriate \*\_cm\*\_wait_module_ready() function.
 
 .. _`_omap2_assert_hardreset`:
 
@@ -1946,6 +1950,27 @@ Only intended for use as an soc_ops function pointer.  Passes along
 the return value from \ :c:func:`omap4_prminst_is_hardreset_asserted`\ .  XXX
 This function is scheduled for removal when the PRM code is moved
 into drivers/.
+
+.. _`_omap4_disable_direct_prcm`:
+
+_omap4_disable_direct_prcm
+==========================
+
+.. c:function:: int _omap4_disable_direct_prcm(struct omap_hwmod *oh)
+
+    disable direct PRCM control for hwmod
+
+    :param struct omap_hwmod \*oh:
+        struct omap_hwmod \* to disable control for
+
+.. _`_omap4_disable_direct_prcm.description`:
+
+Description
+-----------
+
+Disables direct PRCM clkctrl done by hwmod core. Instead, the hwmod
+will be using its main_clk to enable/disable the module. Returns
+0 if successful.
 
 .. _`_am33xx_deassert_hardreset`:
 
@@ -2111,7 +2136,7 @@ Initialize and set up a single hwmod.  Intended to be used for a
 small number of early devices, such as the timer IP blocks used for
 the scheduler clock.  Must be called after \ :c:func:`omap2_clk_init`\ .
 Resolves the struct clk names to struct clk pointers for each
-registered omap_hwmod.  Also calls \\ :c:func:`_setup`\  on each hwmod.  Returns
+registered omap_hwmod.  Also calls \_setup() on each hwmod.  Returns
 -EINVAL upon error or 0 upon success.
 
 .. _`omap_hwmod_setup_all`:
@@ -2134,7 +2159,7 @@ Description
 Initialize and set up all IP blocks registered with the hwmod code.
 Must be called after \ :c:func:`omap2_clk_init`\ .  Resolves the struct clk
 names to struct clk pointers for each registered omap_hwmod.  Also
-calls \\ :c:func:`_setup`\  on each hwmod.  Returns 0 upon success.
+calls \_setup() on each hwmod.  Returns 0 upon success.
 
 .. _`omap_hwmod_enable`:
 
@@ -2154,7 +2179,7 @@ Description
 -----------
 
 Enable an omap_hwmod \ ``oh``\ .  Intended to be called by \ :c:func:`omap_device_enable`\ .
-Returns -EINVAL on error or passes along the return value from \\ :c:func:`_enable`\ .
+Returns -EINVAL on error or passes along the return value from \_enable().
 
 .. _`omap_hwmod_idle`:
 
@@ -2174,7 +2199,7 @@ Description
 -----------
 
 Idle an omap_hwmod \ ``oh``\ .  Intended to be called by \ :c:func:`omap_device_idle`\ .
-Returns -EINVAL on error or passes along the return value from \\ :c:func:`_idle`\ .
+Returns -EINVAL on error or passes along the return value from \_idle().
 
 .. _`omap_hwmod_shutdown`:
 
@@ -2195,7 +2220,7 @@ Description
 
 Shutdown an omap_hwmod \ ``oh``\ .  Intended to be called by
 \ :c:func:`omap_device_shutdown`\ .  Returns -EINVAL on error or passes along
-the return value from \\ :c:func:`_shutdown`\ .
+the return value from \_shutdown().
 
 .. _`omap_hwmod_count_resources`:
 
@@ -2440,7 +2465,7 @@ Some IP like dsp, ipu or iva contain processor that require
 an HW reset line to be assert / deassert in order to enable fully
 the IP.  Returns -EINVAL if \ ``oh``\  is null or if the operation is not
 yet supported on this OMAP; otherwise, passes along the return value
-from \\ :c:func:`_assert_hardreset`\ .
+from \_assert_hardreset().
 
 .. _`omap_hwmod_deassert_hardreset`:
 
@@ -2466,7 +2491,7 @@ Some IP like dsp, ipu or iva contain processor that require
 an HW reset line to be assert / deassert in order to enable fully
 the IP.  Returns -EINVAL if \ ``oh``\  is null or if the operation is not
 yet supported on this OMAP; otherwise, passes along the return value
-from \\ :c:func:`_deassert_hardreset`\ .
+from \_deassert_hardreset().
 
 .. _`omap_hwmod_for_each_by_class`:
 
@@ -2504,22 +2529,22 @@ omap_hwmod_set_postsetup_state
 
 .. c:function:: int omap_hwmod_set_postsetup_state(struct omap_hwmod *oh, u8 state)
 
-    set the post-\ :c:func:`_setup`\  state for this hwmod
+    set the post-_setup() state for this hwmod
 
     :param struct omap_hwmod \*oh:
         struct omap_hwmod \*
 
     :param u8 state:
-        state that \\ :c:func:`_setup`\  should leave the hwmod in
+        state that \_setup() should leave the hwmod in
 
 .. _`omap_hwmod_set_postsetup_state.description`:
 
 Description
 -----------
 
-Sets the hwmod state that \ ``oh``\  will enter at the end of \\ :c:func:`_setup`\ 
+Sets the hwmod state that \ ``oh``\  will enter at the end of \_setup()
 (called by omap_hwmod_setup\_\*()).  See also the documentation
-for \\ :c:func:`_setup_postsetup`\ , above.  Returns 0 upon success or
+for \_setup_postsetup(), above.  Returns 0 upon success or
 -EINVAL if there is a problem with the arguments or if the hwmod is
 in the wrong state.
 

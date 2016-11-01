@@ -85,6 +85,34 @@ Description
 
 Unregisters the expr typefor use with nf_tables.
 
+.. _`nft_parse_u32_check`:
+
+nft_parse_u32_check
+===================
+
+.. c:function:: unsigned int nft_parse_u32_check(const struct nlattr *attr, int max, u32 *dest)
+
+    fetch u32 attribute and check for maximum value
+
+    :param const struct nlattr \*attr:
+        netlink attribute to fetch value from
+
+    :param int max:
+        maximum value to be stored in dest
+
+    :param u32 \*dest:
+        pointer to the variable
+
+.. _`nft_parse_u32_check.description`:
+
+Description
+-----------
+
+Parse, check and store a given u32 netlink attribute into variable.
+This function returns -ERANGE if the value goes over maximum value.
+Otherwise a 0 is returned and the attribute value is stored in the
+destination variable.
+
 .. _`nft_parse_register`:
 
 nft_parse_register

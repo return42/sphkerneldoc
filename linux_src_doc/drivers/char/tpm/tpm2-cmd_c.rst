@@ -89,7 +89,7 @@ tpm2_buf_append_auth
 
 .. c:function:: void tpm2_buf_append_auth(struct tpm_buf *buf, u32 session_handle, const u8 *nonce, u16 nonce_len, u8 attributes, const u8 *hmac, u16 hmac_len)
 
-    \ :c:func:`tpm_buf_alloc`\ .
+    tpm_buf_alloc().
 
     :param struct tpm_buf \*buf:
         *undescribed*
@@ -119,7 +119,7 @@ tpm2_seal_trusted
 
 .. c:function:: int tpm2_seal_trusted(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options)
 
-    seal a trusted key
+    seal the payload of a trusted key
 
     :param struct tpm_chip \*chip:
         *undescribed*
@@ -130,12 +130,99 @@ tpm2_seal_trusted
     :param struct trusted_key_options \*options:
         authentication values and other options
 
-.. _`tpm2_seal_trusted.description`:
+.. _`tpm2_seal_trusted.return`:
 
-Description
------------
+Return
+------
 
-Returns < 0 on error and 0 on success.
+< 0 on error and 0 on success.
+
+.. _`tpm2_load_cmd`:
+
+tpm2_load_cmd
+=============
+
+.. c:function:: int tpm2_load_cmd(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options, u32 *blob_handle, unsigned int flags)
+
+    execute a TPM2_Load command
+
+    :param struct tpm_chip \*chip:
+        *undescribed*
+
+    :param struct trusted_key_payload \*payload:
+        the key data in clear and encrypted form
+
+    :param struct trusted_key_options \*options:
+        authentication values and other options
+
+    :param u32 \*blob_handle:
+        *undescribed*
+
+    :param unsigned int flags:
+        *undescribed*
+
+.. _`tpm2_load_cmd.return`:
+
+Return
+------
+
+same as with tpm_transmit_cmd
+
+.. _`tpm2_flush_context_cmd`:
+
+tpm2_flush_context_cmd
+======================
+
+.. c:function:: void tpm2_flush_context_cmd(struct tpm_chip *chip, u32 handle, unsigned int flags)
+
+    execute a TPM2_FlushContext command
+
+    :param struct tpm_chip \*chip:
+        *undescribed*
+
+    :param u32 handle:
+        *undescribed*
+
+    :param unsigned int flags:
+        *undescribed*
+
+.. _`tpm2_flush_context_cmd.return`:
+
+Return
+------
+
+same as with tpm_transmit_cmd
+
+.. _`tpm2_unseal_cmd`:
+
+tpm2_unseal_cmd
+===============
+
+.. c:function:: int tpm2_unseal_cmd(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options, u32 blob_handle, unsigned int flags)
+
+    execute a TPM2_Unload command
+
+    :param struct tpm_chip \*chip:
+        *undescribed*
+
+    :param struct trusted_key_payload \*payload:
+        the key data in clear and encrypted form
+
+    :param struct trusted_key_options \*options:
+        authentication values and other options
+
+    :param u32 blob_handle:
+        *undescribed*
+
+    :param unsigned int flags:
+        *undescribed*
+
+.. _`tpm2_unseal_cmd.return`:
+
+Return
+------
+
+same as with tpm_transmit_cmd
 
 .. _`tpm2_unseal_trusted`:
 
@@ -144,7 +231,7 @@ tpm2_unseal_trusted
 
 .. c:function:: int tpm2_unseal_trusted(struct tpm_chip *chip, struct trusted_key_payload *payload, struct trusted_key_options *options)
 
-    unseal a trusted key
+    unseal the payload of a trusted key
 
     :param struct tpm_chip \*chip:
         *undescribed*
@@ -155,12 +242,12 @@ tpm2_unseal_trusted
     :param struct trusted_key_options \*options:
         authentication values and other options
 
-.. _`tpm2_unseal_trusted.description`:
+.. _`tpm2_unseal_trusted.return`:
 
-Description
------------
+Return
+------
 
-Returns < 0 on error and 0 on success.
+< 0 on error and 0 on success.
 
 .. _`tpm2_get_tpm_pt`:
 
@@ -284,27 +371,6 @@ Waiting is done by issuing PCR read until it executes successfully.
 returned it remarks a POSIX error code. If a positive number is returned
 it remarks a TPM error.
 
-.. _`tpm2_gen_interrupt`:
-
-tpm2_gen_interrupt
-==================
-
-.. c:function:: int tpm2_gen_interrupt(struct tpm_chip *chip)
-
-    generate an interrupt
-
-    :param struct tpm_chip \*chip:
-        TPM chip to use
-
-.. _`tpm2_gen_interrupt.description`:
-
-Description
------------
-
-0 is returned when the operation is successful. If a negative number is
-returned it remarks a POSIX error code. If a positive number is returned
-it remarks a TPM error.
-
 .. _`tpm2_probe`:
 
 tpm2_probe
@@ -324,6 +390,25 @@ Description
 
 Send idempotent TPM 2.0 command and see whether TPM 2.0 chip replied based on
 the reply tag.
+
+.. _`tpm2_auto_startup`:
+
+tpm2_auto_startup
+=================
+
+.. c:function:: int tpm2_auto_startup(struct tpm_chip *chip)
+
+    Perform the standard automatic TPM initialization sequence
+
+    :param struct tpm_chip \*chip:
+        TPM chip to use
+
+.. _`tpm2_auto_startup.description`:
+
+Description
+-----------
+
+Returns 0 on success, < 0 in case of fatal error.
 
 .. This file was automatic generated / don't edit.
 

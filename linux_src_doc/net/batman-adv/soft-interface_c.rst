@@ -239,26 +239,6 @@ batadv_set_lockdep_class
     :param struct net_device \*dev:
         network device to modify
 
-.. _`batadv_softif_destroy_finish`:
-
-batadv_softif_destroy_finish
-============================
-
-.. c:function:: void batadv_softif_destroy_finish(struct work_struct *work)
-
-    cleans up the remains of a softif
-
-    :param struct work_struct \*work:
-        work queue item
-
-.. _`batadv_softif_destroy_finish.description`:
-
-Description
------------
-
-Free the parts of the soft interface which can not be removed under
-rtnl lock (to prevent deadlock situations).
-
 .. _`batadv_softif_init_late`:
 
 batadv_softif_init_late

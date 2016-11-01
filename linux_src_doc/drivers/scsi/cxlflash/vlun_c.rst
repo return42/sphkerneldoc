@@ -373,7 +373,7 @@ Description
 On successful return, the user is informed of the new size (in blocks)
 of the virtual LUN in last LBA format. When the size of the virtual
 LUN is zero, the last LBA is reflected as -1. See comment in the
-prologue for \\ :c:func:`_cxlflash_disk_release`\  regarding AFU syncs and contexts
+prologue for \_cxlflash_disk_release() regarding AFU syncs and contexts
 on the error recovery list.
 
 .. _`_cxlflash_vlun_resize.return`:

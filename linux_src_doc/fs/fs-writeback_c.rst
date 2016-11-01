@@ -161,7 +161,7 @@ wbc_attach_and_unlock_inode
 Description
 -----------
 
-\ ``inode``\  is locked and about to be written back under the control of \ ``wbc``\ .
+@inode is locked and about to be written back under the control of \ ``wbc``\ .
 Record \ ``inode``\ 's writeback context into \ ``wbc``\  and unlock the i_lock.  On
 writeback completion, \ :c:func:`wbc_detach_inode`\  should be called.  This is used
 to track the cgroup writeback context.
@@ -239,7 +239,7 @@ wbc_account_io
 Description
 -----------
 
-\ ``bytes``\  from \ ``page``\  are about to written out during the writeback
+@bytes from \ ``page``\  are about to written out during the writeback
 controlled by \ ``wbc``\ .  Keep the book for foreign inode detection.  See
 \ :c:func:`wbc_detach_inode`\ .
 
@@ -576,7 +576,7 @@ sync_inode
 Description
 -----------
 
-\ :c:func:`sync_inode`\  will write an inode and its pages to disk.  It will also
+sync_inode() will write an inode and its pages to disk.  It will also
 correctly update the inode on its superblock's dirty inode lists and will
 update inode->i_state.
 

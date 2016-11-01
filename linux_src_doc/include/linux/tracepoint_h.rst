@@ -20,7 +20,7 @@ Description
 
 If constant strings are being used in tracepoints, it is faster and
 more efficient to just save the pointer to the string and reference
-that with a printf "\ ``s``\ " instead of saving the string in the ring buffer
+that with a printf "%s" instead of saving the string in the ring buffer
 and wasting space and time.
 
 The problem with the above approach is that userspace tools that read

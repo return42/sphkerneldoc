@@ -31,6 +31,39 @@ This will check to make sure that committing the transaction will actually
 get us somewhere and then commit the transaction if it does.  Otherwise it
 will return -ENOSPC.
 
+.. _`__reserve_metadata_bytes`:
+
+__reserve_metadata_bytes
+========================
+
+.. c:function:: int __reserve_metadata_bytes(struct btrfs_root *root, struct btrfs_space_info *space_info, u64 orig_bytes, enum btrfs_reserve_flush_enum flush)
+
+    try to reserve bytes from the block_rsv's space \ ``root``\  - the root we're allocating for \ ``space_info``\  - the space info we want to allocate from \ ``orig_bytes``\  - the number of bytes we want \ ``flush``\  - whether or not we can flush to make our reservation
+
+    :param struct btrfs_root \*root:
+        *undescribed*
+
+    :param struct btrfs_space_info \*space_info:
+        *undescribed*
+
+    :param u64 orig_bytes:
+        *undescribed*
+
+    :param enum btrfs_reserve_flush_enum flush:
+        *undescribed*
+
+.. _`__reserve_metadata_bytes.description`:
+
+Description
+-----------
+
+This will reserve orig_bytes number of bytes from the space info associated
+with the block_rsv.  If there is not enough space it will make an attempt to
+flush out space to make room.  It will do this by flushing delalloc if
+possible or committing the transaction.  If flush is 0 then no attempts to
+regain reservations will be made and this will fail if there is not enough
+space already.
+
 .. _`reserve_metadata_bytes`:
 
 reserve_metadata_bytes
@@ -57,7 +90,7 @@ reserve_metadata_bytes
 Description
 -----------
 
-This will reserve orig_bytes number of bytes from the space info associated
+This will reserve orgi_bytes number of bytes from the space info associated
 with the block_rsv.  If there is not enough space it will make an attempt to
 flush out space to make room.  It will do this by flushing delalloc if
 possible or committing the transaction.  If flush is 0 then no attempts to
@@ -165,12 +198,10 @@ btrfs_delalloc_reserve_space
     :param u64 len:
         how long the range we are writing to
 
-.. _`btrfs_delalloc_reserve_space.todo`:
+.. _`btrfs_delalloc_reserve_space.description`:
 
-TODO
-----
-
-This function will finally replace old \ :c:func:`btrfs_delalloc_reserve_space`\ 
+Description
+-----------
 
 This will do the following things
 
@@ -220,12 +251,50 @@ decrement ->delalloc_bytes and remove it from the fs_info delalloc_inodes
 list if there are no delalloc bytes left.
 Also it will handle the qgroup reserved space.
 
-.. _`btrfs_update_reserved_bytes`:
+.. _`btrfs_add_reserved_bytes`:
 
-btrfs_update_reserved_bytes
-===========================
+btrfs_add_reserved_bytes
+========================
 
-.. c:function:: int btrfs_update_reserved_bytes(struct btrfs_block_group_cache *cache, u64 num_bytes, int reserve, int delalloc)
+.. c:function:: int btrfs_add_reserved_bytes(struct btrfs_block_group_cache *cache, u64 ram_bytes, u64 num_bytes, int delalloc)
+
+    update the block_group and space info counters
+
+    :param struct btrfs_block_group_cache \*cache:
+        The cache we are manipulating
+
+    :param u64 ram_bytes:
+        The number of bytes of file content, and will be same to
+        \ ``num_bytes``\  except for the compress path.
+
+    :param u64 num_bytes:
+        The number of bytes in question
+
+    :param int delalloc:
+        The blocks are allocated for the delalloc write
+
+.. _`btrfs_add_reserved_bytes.description`:
+
+Description
+-----------
+
+This is called by the allocator when it reserves space. Metadata
+reservations should be called with RESERVE_ALLOC so we do the proper
+ENOSPC accounting.  For data we handle the reservation through clearing the
+delalloc bits in the io_tree.  We have to do this since we could end up
+allocating less disk space for the amount of data we have reserved in the
+case of compression.
+
+If this is a reservation and the block group has become read only we cannot
+make the reservation and return -EAGAIN, otherwise this function always
+succeeds.
+
+.. _`btrfs_free_reserved_bytes`:
+
+btrfs_free_reserved_bytes
+=========================
+
+.. c:function:: int btrfs_free_reserved_bytes(struct btrfs_block_group_cache *cache, u64 num_bytes, int delalloc)
 
     update the block_group and space info counters
 
@@ -235,32 +304,18 @@ btrfs_update_reserved_bytes
     :param u64 num_bytes:
         The number of bytes in question
 
-    :param int reserve:
-        One of the reservation enums
-
     :param int delalloc:
         The blocks are allocated for the delalloc write
 
-.. _`btrfs_update_reserved_bytes.description`:
+.. _`btrfs_free_reserved_bytes.description`:
 
 Description
 -----------
 
-This is called by the allocator when it reserves space, or by somebody who is
-freeing space that was never actually used on disk.  For example if you
-reserve some space for a new leaf in transaction A and before transaction A
-commits you free that leaf, you call this with reserve set to 0 in order to
-clear the reservation.
-
-Metadata reservations should be called with RESERVE_ALLOC so we do the proper
-ENOSPC accounting.  For data we handle the reservation through clearing the
-delalloc bits in the io_tree.  We have to do this since we could end up
-allocating less disk space for the amount of data we have reserved in the
-case of compression.
-
-If this is a reservation and the block group has become read only we cannot
-make the reservation and return -EAGAIN, otherwise this function always
-succeeds.
+This is called by somebody who is freeing space that was never actually used
+on disk.  For example if you reserve some space for a new leaf in transaction
+A and before transaction A commits you free that leaf, you call this with
+reserve set to 0 in order to clear the reservation.
 
 .. This file was automatic generated / don't edit.
 

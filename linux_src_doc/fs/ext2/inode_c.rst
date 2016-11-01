@@ -81,11 +81,11 @@ verify that chain did not change) and buffer_heads hosting these
 numbers.
 
 Function stops when it stumbles upon zero pointer (absent block)
-(pointer to last triple returned, \*\ ``err``\  == 0)
+(pointer to last triple returned, \*@err == 0)
 or when it gets an IO error reading an indirect block
-(ditto, \*\ ``err``\  == -EIO)
+(ditto, \*@err == -EIO)
 or when it notices that chain had been changed while it was reading
-(ditto, \*\ ``err``\  == -EAGAIN)
+(ditto, \*@err == -EAGAIN)
 or when it reads all \ ``depth``\ -1 indirect blocks successfully and finds
 the whole chain, all way to the data (returns \ ``NULL``\ , \*err == 0).
 
@@ -336,7 +336,7 @@ of branch may require special attention - pageout below the truncation
 point might try to populate it.
 
 We atomically detach the top of branch from the tree, store the block
-number of its root in \*\ ``top``\ , pointers to buffer_heads of partially
+number of its root in \*@top, pointers to buffer_heads of partially
 truncated blocks - in \ ``chain``\ [].bh and pointers to their last elements
 that should not be removed - in \ ``chain``\ [].p. Return value is the pointer
 to last filled element of \ ``chain``\ .
@@ -346,9 +346,9 @@ to last filled element of \ ``chain``\ .
 The work left to caller to do the actual freeing of subtrees
 ------------------------------------------------------------
 
-a) free the subtree starting from \*\ ``top``\ 
+a) free the subtree starting from \*@top
 b) free the subtrees whose roots are stored in
-(\ ``chain``\ [i].p+1 .. end of \ ``chain``\ [i].bh->b_data)
+(@chain[i].p+1 .. end of \ ``chain``\ [i].bh->b_data)
 c) free the subtrees growing from the inode past the \ ``chain``\ [0].p
 (no partially truncated stuff there).
 

@@ -38,7 +38,7 @@ to trace the new domain
 Return
 ------
 
-\ ``0``\  or error if change not allowed
+%0 or error if change not allowed
 
 .. _`change_profile_perms`:
 
@@ -101,7 +101,7 @@ xmatch_len are preferred.
 Requires
 --------
 
-\ ``head``\  not be shared or have appropriate locks held
+@head not be shared or have appropriate locks held
 
 .. _`__attach_match.return`:
 
@@ -257,7 +257,7 @@ apparmor_bprm_set_creds
 Return
 ------
 
-\ ``0``\  or error on failure
+%0 or error on failure
 
 .. _`apparmor_bprm_secureexec`:
 
@@ -276,7 +276,7 @@ apparmor_bprm_secureexec
 Return
 ------
 
-\ ``1``\  if secureexec is needed else \ ``0``\ 
+%1 if secureexec is needed else \ ``0``\ 
 
 .. _`apparmor_bprm_committing_creds`:
 

@@ -93,7 +93,7 @@ irq
 Description
 -----------
 
-\ ``name``\  should be something short, e.g., "tx" or "rx".  It is for use
+@name should be something short, e.g., "tx" or "rx".  It is for use
 by \ :c:func:`platform_get_resource_byname`\ .  It is defined locally to the
 hwmod.
 
@@ -134,7 +134,7 @@ dma_req
 Description
 -----------
 
-\ ``name``\  should be something short, e.g., "tx" or "rx".  It is for use
+@name should be something short, e.g., "tx" or "rx".  It is for use
 by \ :c:func:`platform_get_resource_byname`\ .  It is defined locally to the
 hwmod.
 
@@ -179,7 +179,7 @@ st_shift
 Description
 -----------
 
-\ ``name``\  should be something short, e.g., "cpu0" or "rst". It is defined
+@name should be something short, e.g., "cpu0" or "rst". It is defined
 locally to the hwmod.
 
 .. _`omap_hwmod_opt_clk`:
@@ -507,7 +507,7 @@ clockact
 Description
 -----------
 
-\ ``clockact``\  describes to the module which clocks are likely to be
+@clockact describes to the module which clocks are likely to be
 disabled when the PRCM issues its idle request to the module.  Some
 modules have separate clockdomains for the interface clock and main
 functional clock, and can check whether they should acknowledge the
@@ -568,7 +568,7 @@ idlest_stdby_bit
 Description
 -----------
 
-\ ``prcm_reg_id``\  and \ ``module_bit``\  are specific to the AUTOIDLE, WKST,
+@prcm_reg_id and \ ``module_bit``\  are specific to the AUTOIDLE, WKST,
 WKEN, GRPSEL registers.  In an ideal world, no extra information
 would be needed for IDLEST information, but alas, there are some
 exceptions, so \ ``idlest_reg_id``\ , \ ``idlest_idle_bit``\ , \ ``idlest_stdby_bit``\ 
@@ -717,7 +717,7 @@ or some negative error upon failure.  Returning an error will cause
 error.
 
 If \ ``reset``\  is defined, then the function it points to will be
-executed in place of the standard hwmod \\ :c:func:`_reset`\  code in
+executed in place of the standard hwmod \_reset() code in
 mach-omap2/omap_hwmod.c.  This is needed for IP blocks which have
 unusual reset sequences - usually processor IP blocks like the IVA.
 
@@ -912,7 +912,7 @@ _state
     internal-use hwmod state
 
 _postsetup_state
-    internal-use state to leave the hwmod in after \\ :c:func:`_setup`\ 
+    internal-use state to leave the hwmod in after \_setup()
 
 parent_hwmod
     (temporary) a pointer to the hierarchical parent of this hwmod
@@ -922,7 +922,7 @@ parent_hwmod
 Description
 -----------
 
-\ ``main_clk``\  refers to this module's "main clock," which for our
+@main_clk refers to this module's "main clock," which for our
 purposes is defined as "the functional clock needed for register
 accesses to complete."  Modules may not have a main clock if the
 interface clock also serves as a main clock.

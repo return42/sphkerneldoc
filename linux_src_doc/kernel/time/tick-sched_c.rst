@@ -22,8 +22,8 @@ Called from interrupt entry when the CPU was idle
 
 In case the sched_tick was stopped on this CPU, we have to check if jiffies
 must be updated. Otherwise an interrupt handler could use a stale jiffy
-value. We do this unconditionally on any cpu, as we don't know whether the
-cpu, which has the update task assigned is in a long sleep.
+value. We do this unconditionally on any CPU, as we don't know whether the
+CPU, which has the update task assigned is in a long sleep.
 
 .. _`get_cpu_idle_time_us`:
 
@@ -32,7 +32,7 @@ get_cpu_idle_time_us
 
 .. c:function:: u64 get_cpu_idle_time_us(int cpu, u64 *last_update_time)
 
-    get the total idle time of a cpu
+    get the total idle time of a CPU
 
     :param int cpu:
         CPU number to query
@@ -46,7 +46,7 @@ get_cpu_idle_time_us
 Description
 -----------
 
-Return the cummulative idle time (since boot) for a given
+Return the cumulative idle time (since boot) for a given
 CPU, in microseconds.
 
 This time is measured via accounting rather than sampling,
@@ -61,7 +61,7 @@ get_cpu_iowait_time_us
 
 .. c:function:: u64 get_cpu_iowait_time_us(int cpu, u64 *last_update_time)
 
-    get the total iowait time of a cpu
+    get the total iowait time of a CPU
 
     :param int cpu:
         CPU number to query
@@ -75,7 +75,7 @@ get_cpu_iowait_time_us
 Description
 -----------
 
-Return the cummulative iowait time (since boot) for a given
+Return the cumulative iowait time (since boot) for a given
 CPU, in microseconds.
 
 This time is measured via accounting rather than sampling,

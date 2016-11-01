@@ -29,7 +29,7 @@ Calculate the intersection of rectangles \ ``r1``\  and \ ``r2``\ .
 Return
 ------
 
-\ ``true``\  if rectangle \ ``r1``\  is still visible after the operation,
+%true if rectangle \ ``r1``\  is still visible after the operation,
 \ ``false``\  otherwise.
 
 .. _`drm_rect_clip_scaled`:
@@ -69,7 +69,7 @@ same amounts multiplied by \ ``hscale``\  and \ ``vscale``\ .
 Return
 ------
 
-\ ``true``\  if rectangle \ ``dst``\  is still visible after being clipped,
+%true if rectangle \ ``dst``\  is still visible after being clipped,
 \ ``false``\  otherwise
 
 .. _`drm_rect_calc_hscale`:
@@ -99,7 +99,7 @@ Description
 -----------
 
 Calculate the horizontal scaling factor as
-(\ ``src``\  width) / (\ ``dst``\  width).
+(@src width) / (@dst width).
 
 .. _`drm_rect_calc_hscale.return`:
 
@@ -135,7 +135,7 @@ Description
 -----------
 
 Calculate the vertical scaling factor as
-(\ ``src``\  height) / (\ ``dst``\  height).
+(@src height) / (@dst height).
 
 .. _`drm_rect_calc_vscale.return`:
 
@@ -171,7 +171,7 @@ Description
 -----------
 
 Calculate the horizontal scaling factor as
-(\ ``src``\  width) / (\ ``dst``\  width).
+(@src width) / (@dst width).
 
 If the calculated scaling factor is below \ ``min_vscale``\ ,
 decrease the height of rectangle \ ``dst``\  to compensate.
@@ -213,7 +213,7 @@ Description
 -----------
 
 Calculate the vertical scaling factor as
-(\ ``src``\  height) / (\ ``dst``\  height).
+(@src height) / (@dst height).
 
 If the calculated scaling factor is below \ ``min_vscale``\ ,
 decrease the height of rectangle \ ``dst``\  to compensate.
@@ -319,8 +319,8 @@ coordinate space, so that you never have to flip
 them when doing a rotatation and its inverse.
 That is, if you do:
 
-drm_rotate(\ :c:type:`struct r <r>`, width, height, rotation);
-drm_rotate_inv(\ :c:type:`struct r <r>`, width, height, rotation);
+drm_rotate(&r, width, height, rotation);
+drm_rotate_inv(&r, width, height, rotation);
 
 you will always get back the original rectangle.
 

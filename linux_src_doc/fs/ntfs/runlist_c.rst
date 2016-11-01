@@ -682,7 +682,7 @@ fully mapped runlists to this function.
 Locking
 -------
 
-\ ``rl``\  must be locked on entry (either for reading or writing), it
+@rl must be locked on entry (either for reading or writing), it
 remains locked throughout, and is left locked upon return.
 
 .. _`ntfs_write_significant_bytes`:
@@ -766,12 +766,12 @@ at the end of the runlist is created.
 
 If \ ``rl``\  is NULL, just write a single terminator byte to \ ``dst``\ .
 
-On success or -ENOSPC error, if \ ``stop_vcn``\  is not NULL, \*\ ``stop_vcn``\  is set to
+On success or -ENOSPC error, if \ ``stop_vcn``\  is not NULL, \*@stop_vcn is set to
 the first vcn outside the destination buffer.  Note that on error, \ ``dst``\  has
 been filled with all the mapping pairs that will fit, thus it can be treated
 as partial success, in that a new attribute extent needs to be created or
 the next extent has to be used and the mapping pairs build has to be
-continued with \ ``first_vcn``\  set to \*\ ``stop_vcn``\ .
+continued with \ ``first_vcn``\  set to \*@stop_vcn.
 
 Return 0 on success and -errno on error.  The following error codes are
 
@@ -790,7 +790,7 @@ fully mapped runlists to this function.
 Locking
 -------
 
-\ ``rl``\  must be locked on entry (either for reading or writing), it
+@rl must be locked on entry (either for reading or writing), it
 remains locked throughout, and is left locked upon return.
 
 .. _`ntfs_rl_truncate_nolock`:

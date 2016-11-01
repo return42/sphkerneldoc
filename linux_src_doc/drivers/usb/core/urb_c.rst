@@ -360,7 +360,7 @@ method has returned.  The disconnect function should synchronize with
 a driver's I/O routines to insure that all URB-related activity has
 completed before it returns.
 
-This request is asynchronous, however the HCD might call the ->\ :c:func:`complete`\ 
+This request is asynchronous, however the HCD might call the ->complete()
 callback during unlink. Therefore when drivers call \ :c:func:`usb_unlink_urb`\ , they
 must not hold any locks that may be taken by the completion function.
 Success is indicated by returning -EINPROGRESS, at which time the URB will

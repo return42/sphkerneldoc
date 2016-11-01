@@ -44,6 +44,15 @@ OPCODE_COMMON_ISCSI_CFG_POST_SGL_PAGES
 
     used by CMD_SUBSYSTEM_ISCSI These opcodes are unique for each subsystem defined above
 
+.. _`be_boot_invalid_shandle`:
+
+BE_BOOT_INVALID_SHANDLE
+=======================
+
+.. c:function::  BE_BOOT_INVALID_SHANDLE()
+
+    configured boot target.
+
 .. _`db_wrb_post_cid_mask`:
 
 DB_WRB_POST_CID_MASK

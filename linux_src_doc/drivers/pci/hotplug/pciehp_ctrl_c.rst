@@ -11,7 +11,7 @@ board_added
     Called after a board has been added to the system.
 
     :param struct slot \*p_slot:
-        \ :c:type:`struct slot <slot>` where board is added
+        &slot where board is added
 
 .. _`board_added.description`:
 
@@ -43,7 +43,7 @@ pciehp_power_thread
     handle pushbutton events
 
     :param struct work_struct \*work:
-        \ :c:type:`struct work_struct <work_struct>`\  describing work to be done
+        &struct work_struct describing work to be done
 
 .. _`pciehp_power_thread.description`:
 

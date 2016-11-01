@@ -39,6 +39,13 @@ ns_connect_lru_resize
     :param struct ldlm_namespace \*ns:
         *undescribed*
 
+.. _`ldlm_gid_any`:
+
+LDLM_GID_ANY
+============
+
+.. c:function::  LDLM_GID_ANY()
+
 .. _`ldlm_debug_nolock`:
 
 LDLM_DEBUG_NOLOCK
@@ -146,7 +153,7 @@ LDLM_LOCK_PUT
 
 .. c:function::  LDLM_LOCK_PUT( lock)
 
-    \ :c:func:`__ldlm_handle2lock`\ .
+    __ldlm_handle2lock().
 
     :param  lock:
         *undescribed*
@@ -158,7 +165,7 @@ LDLM_LOCK_RELEASE
 
 .. c:function::  LDLM_LOCK_RELEASE( lock)
 
-    \ :c:func:`LDLM_LOCK_PUT`\ ).
+    LDLM_LOCK_PUT()).
 
     :param  lock:
         *undescribed*

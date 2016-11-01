@@ -19,7 +19,7 @@ Description
 -----------
 
 Copyright (C) 2006 International Business Machines Corp.
-Author(s): Michael A. Halcrow <mahalcro\ ``us``\ .ibm.com>
+Author(s): Michael A. Halcrow <mahalcro@us.ibm.com>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as

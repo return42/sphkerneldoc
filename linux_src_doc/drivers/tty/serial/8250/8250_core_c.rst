@@ -19,7 +19,7 @@ Description
 -----------
 
 This function retrieves struct uart_8250_port for the specific line.
-This struct \*must\* \*not\* be used to perform a 8250 or serial core operation
+This struct *must* *not* be used to perform a 8250 or serial core operation
 which is not accessible otherwise. Its only purpose is to make the struct
 accessible to the runtime-pm callbacks for context suspend/restore.
 The lock assumption made here is none because runtime-pm suspend/resume
@@ -52,15 +52,15 @@ univ8250_console_match
 Only attempts to match console command lines of the form
 --------------------------------------------------------
 
-console=uart[8250],io\|mmio\|mmio16\|mmio32,<addr>[,<options>]
-console=uart[8250],0x<addr>[,<options>]
-This form is used to register an initial earlycon boot console and
-replace it with the serial8250_console at 8250 driver init.
+         console=uart[8250],io|mmio|mmio16|mmio32,<addr>[,<options>]
+         console=uart[8250],0x<addr>[,<options>]
+     This form is used to register an initial earlycon boot console and
+     replace it with the serial8250_console at 8250 driver init.
 
-Performs console setup for a match (as required by interface)
-If no <options> are specified, then assume the h/w is already setup.
+     Performs console setup for a match (as required by interface)
+     If no <options> are specified, then assume the h/w is already setup.
 
-Returns 0 if console matches; otherwise non-zero to use default matching
+     Returns 0 if console matches; otherwise non-zero to use default matching
 
 .. _`serial8250_suspend_port`:
 
@@ -79,7 +79,7 @@ serial8250_suspend_port
 Description
 -----------
 
-Suspend one serial port.
+     Suspend one serial port.
 
 .. _`serial8250_resume_port`:
 
@@ -98,7 +98,7 @@ serial8250_resume_port
 Description
 -----------
 
-Resume one serial port.
+     Resume one serial port.
 
 .. _`serial8250_register_8250_port`:
 
@@ -117,14 +117,14 @@ serial8250_register_8250_port
 Description
 -----------
 
-Configure the serial port specified by the request. If the
-port exists and is in use, it is hung up and unregistered
-first.
+     Configure the serial port specified by the request. If the
+     port exists and is in use, it is hung up and unregistered
+     first.
 
-The port is then probed and if necessary the IRQ is autodetected
-If this fails an error is returned.
+     The port is then probed and if necessary the IRQ is autodetected
+     If this fails an error is returned.
 
-On success the port is ready to use and the line number is returned.
+     On success the port is ready to use and the line number is returned.
 
 .. _`serial8250_unregister_port`:
 
@@ -143,8 +143,8 @@ serial8250_unregister_port
 Description
 -----------
 
-Remove one serial port.  This may not be called from interrupt
-context.  We hand the port back to the our control.
+     Remove one serial port.  This may not be called from interrupt
+     context.  We hand the port back to the our control.
 
 .. This file was automatic generated / don't edit.
 

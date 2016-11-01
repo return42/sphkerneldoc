@@ -101,44 +101,20 @@ Description
 Has to be called with oom_lock held and never after
 oom has been disabled already.
 
+tsk->mm has to be non NULL and caller has to guarantee it is stable (either
+under task_lock or operate on the current).
+
 .. _`exit_oom_victim`:
 
 exit_oom_victim
 ===============
 
-.. c:function:: void exit_oom_victim(struct task_struct *tsk)
+.. c:function:: void exit_oom_victim( void)
 
     note the exit of an OOM victim
 
-    :param struct task_struct \*tsk:
-        *undescribed*
-
-.. _`oom_killer_disable`:
-
-oom_killer_disable
-==================
-
-.. c:function:: bool oom_killer_disable( void)
-
-    disable OOM killer
-
     :param  void:
         no arguments
-
-.. _`oom_killer_disable.description`:
-
-Description
------------
-
-Forces all page allocations to fail rather than trigger OOM killer.
-Will block and wait until all OOM victims are killed.
-
-The function cannot be called when there are runnable user tasks because
-the userspace would see unexpected allocation failures as a result. Any
-new usage of this function should be consulted with MM people.
-
-Returns true if successful and false if the OOM killer cannot be
-disabled.
 
 .. _`oom_killer_enable`:
 
@@ -151,6 +127,34 @@ oom_killer_enable
 
     :param  void:
         no arguments
+
+.. _`oom_killer_disable`:
+
+oom_killer_disable
+==================
+
+.. c:function:: bool oom_killer_disable(signed long timeout)
+
+    disable OOM killer
+
+    :param signed long timeout:
+        maximum timeout to wait for oom victims in jiffies
+
+.. _`oom_killer_disable.description`:
+
+Description
+-----------
+
+Forces all page allocations to fail rather than trigger OOM killer.
+Will block and wait until all OOM victims are killed or the given
+timeout expires.
+
+The function cannot be called when there are runnable user tasks because
+the userspace would see unexpected allocation failures as a result. Any
+new usage of this function should be consulted with MM people.
+
+Returns true if successful and false if the OOM killer cannot be
+disabled.
 
 .. _`out_of_memory`:
 

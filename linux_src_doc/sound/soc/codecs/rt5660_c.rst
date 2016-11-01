@@ -1,0 +1,23 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: sound/soc/codecs/rt5660.c
+
+.. _`rt5660_set_dmic_clk`:
+
+rt5660_set_dmic_clk
+===================
+
+.. c:function:: int rt5660_set_dmic_clk(struct snd_soc_dapm_widget *w, struct snd_kcontrol *kcontrol, int event)
+
+    Set parameter of dmic.
+
+    :param struct snd_soc_dapm_widget \*w:
+        DAPM widget.
+
+    :param struct snd_kcontrol \*kcontrol:
+        The kcontrol of this widget.
+
+    :param int event:
+        Event id.
+
+.. This file was automatic generated / don't edit.
+

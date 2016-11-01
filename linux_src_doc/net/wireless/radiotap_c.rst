@@ -39,10 +39,10 @@ present headers and handles them.
 How to use
 ----------
 
-call \\ :c:func:`__ieee80211_radiotap_iterator_init`\  to init a semi-opaque iterator
+call \__ieee80211_radiotap_iterator_init() to init a semi-opaque iterator
 struct ieee80211_radiotap_iterator (no need to init the struct beforehand)
 checking for a good 0 return code.  Then loop calling
-\\ :c:func:`__ieee80211_radiotap_iterator_next`\ ... it returns either 0,
+\__ieee80211_radiotap_iterator_next()... it returns either 0,
 -ENOENT if there are no more args to parse, or -EINVAL if there is a problem.
 The iterator's \ ``this_arg``\  member points to the start of the argument
 associated with the current argument index that is present, which can be

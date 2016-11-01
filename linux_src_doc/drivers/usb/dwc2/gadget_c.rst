@@ -20,7 +20,7 @@ Description
 
 Copyright 2008 Openmoko, Inc.
 Copyright 2008 Simtec Electronics
-Ben Dooks <ben\ ``simtec``\ .co.uk>
+Ben Dooks <ben@simtec.co.uk>
 http://armlinux.simtec.co.uk/
 
 S3C USB2.0 High-speed / OtG driver
@@ -60,6 +60,26 @@ a core reset. This means we either need to fix the gadgets to take
 account of DMA alignment, or add bounce buffers (yuerk).
 
 g_using_dma is set depending on dts flag.
+
+.. _`dwc2_gadget_incr_frame_num`:
+
+dwc2_gadget_incr_frame_num
+==========================
+
+.. c:function:: void dwc2_gadget_incr_frame_num(struct dwc2_hsotg_ep *hs_ep)
+
+    Increments the targeted frame number.
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        The endpoint
+
+.. _`dwc2_gadget_incr_frame_num.description`:
+
+Description
+-----------
+
+This function will also check if the frame number overruns DSTS_SOFFN_LIMIT.
+If an overrun occurs it will wrap the value and set the frame_overrun flag.
 
 .. _`dwc2_hsotg_en_gsint`:
 
@@ -231,6 +251,25 @@ Description
 Return the maximum data that can be queued in one go on a given endpoint
 so that transfers that are too long can be split.
 
+.. _`dwc2_hsotg_read_frameno`:
+
+dwc2_hsotg_read_frameno
+=======================
+
+.. c:function:: u32 dwc2_hsotg_read_frameno(struct dwc2_hsotg *hsotg)
+
+    read current frame number
+
+    :param struct dwc2_hsotg \*hsotg:
+        The device instance
+
+.. _`dwc2_hsotg_read_frameno.description`:
+
+Description
+-----------
+
+Return the current frame number
+
 .. _`dwc2_hsotg_start_req`:
 
 dwc2_hsotg_start_req
@@ -288,6 +327,26 @@ is correctly setup for DMA. If we've been passed an extant DMA address
 then ensure the buffer has been synced to memory. If our buffer has no
 DMA memory, then we map the memory and mark our request to allow us to
 cleanup on completion.
+
+.. _`dwc2_gadget_target_frame_elapsed`:
+
+dwc2_gadget_target_frame_elapsed
+================================
+
+.. c:function:: bool dwc2_gadget_target_frame_elapsed(struct dwc2_hsotg_ep *hs_ep)
+
+    Checks target frame
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        The driver endpoint to check
+
+.. _`dwc2_gadget_target_frame_elapsed.description`:
+
+Description
+-----------
+
+Returns 1 if targeted frame elapsed. If returned 1 then we need to drop
+corresponding transfer.
 
 .. _`dwc2_hsotg_complete_oursetup`:
 
@@ -413,6 +472,27 @@ Description
 -----------
 
 Get the first request on the endpoint.
+
+.. _`dwc2_gadget_start_next_request`:
+
+dwc2_gadget_start_next_request
+==============================
+
+.. c:function:: void dwc2_gadget_start_next_request(struct dwc2_hsotg_ep *hs_ep)
+
+    Starts next request from ep queue
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        Endpoint structure
+
+.. _`dwc2_gadget_start_next_request.description`:
+
+Description
+-----------
+
+If queue is empty and EP is ISOC-OUT - unmasks OUTTKNEPDIS which is masked
+in its handler. Hence we need to unmask it here to be able to do
+resynchronization.
 
 .. _`dwc2_hsotg_process_req_feature`:
 
@@ -625,25 +705,6 @@ The RXFIFO has delivered an OutDone event, which means that the data
 transfer for an OUT endpoint has been completed, either by a short
 packet or by the finish of a transfer.
 
-.. _`dwc2_hsotg_read_frameno`:
-
-dwc2_hsotg_read_frameno
-=======================
-
-.. c:function:: u32 dwc2_hsotg_read_frameno(struct dwc2_hsotg *hsotg)
-
-    read current frame number
-
-    :param struct dwc2_hsotg \*hsotg:
-        The device instance
-
-.. _`dwc2_hsotg_read_frameno.description`:
-
-Description
------------
-
-Return the current frame number
-
 .. _`dwc2_hsotg_handle_rx`:
 
 dwc2_hsotg_handle_rx
@@ -775,6 +836,115 @@ Description
 An IN transfer has been completed, update the transfer's state and then
 call the relevant completion routines.
 
+.. _`dwc2_gadget_read_ep_interrupts`:
+
+dwc2_gadget_read_ep_interrupts
+==============================
+
+.. c:function:: u32 dwc2_gadget_read_ep_interrupts(struct dwc2_hsotg *hsotg, unsigned int idx, int dir_in)
+
+    reads interrupts for given ep
+
+    :param struct dwc2_hsotg \*hsotg:
+        The device state.
+
+    :param unsigned int idx:
+        Index of ep.
+
+    :param int dir_in:
+        Endpoint direction 1-in 0-out.
+
+.. _`dwc2_gadget_read_ep_interrupts.description`:
+
+Description
+-----------
+
+Reads for endpoint with given index and direction, by masking
+epint_reg with coresponding mask.
+
+.. _`dwc2_gadget_handle_ep_disabled`:
+
+dwc2_gadget_handle_ep_disabled
+==============================
+
+.. c:function:: void dwc2_gadget_handle_ep_disabled(struct dwc2_hsotg_ep *hs_ep)
+
+    handle DXEPINT_EPDISBLD
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        The endpoint on which interrupt is asserted.
+
+.. _`dwc2_gadget_handle_ep_disabled.description`:
+
+Description
+-----------
+
+This interrupt indicates that the endpoint has been disabled per the
+application's request.
+
+For IN endpoints flushes txfifo, in case of BULK clears DCTL_CGNPINNAK,
+in case of ISOC completes current request.
+
+For ISOC-OUT endpoints completes expired requests. If there is remaining
+request starts it.
+
+.. _`dwc2_gadget_handle_out_token_ep_disabled`:
+
+dwc2_gadget_handle_out_token_ep_disabled
+========================================
+
+.. c:function:: void dwc2_gadget_handle_out_token_ep_disabled(struct dwc2_hsotg_ep *ep)
+
+    handle DXEPINT_OUTTKNEPDIS
+
+    :param struct dwc2_hsotg_ep \*ep:
+        *undescribed*
+
+.. _`dwc2_gadget_handle_out_token_ep_disabled.description`:
+
+Description
+-----------
+
+This is starting point for ISOC-OUT transfer, synchronization done with
+first out token received from host while corresponding EP is disabled.
+
+Device does not know initial frame in which out token will come. For this
+HW generates OUTTKNEPDIS - out token is received while EP is disabled. Upon
+getting this interrupt SW starts calculation for next transfer frame.
+
+.. _`dwc2_gadget_handle_nak`:
+
+dwc2_gadget_handle_nak
+======================
+
+.. c:function:: void dwc2_gadget_handle_nak(struct dwc2_hsotg_ep *hs_ep)
+
+    handle NAK interrupt
+
+    :param struct dwc2_hsotg_ep \*hs_ep:
+        The endpoint on which interrupt is asserted.
+
+.. _`dwc2_gadget_handle_nak.description`:
+
+Description
+-----------
+
+This is starting point for ISOC-IN transfer, synchronization done with
+first IN token received from host while corresponding EP is disabled.
+
+Device does not know when first one token will arrive from host. On first
+
+.. _`dwc2_gadget_handle_nak.token-arrival-hw-generates-2-interrupts`:
+
+token arrival HW generates 2 interrupts
+---------------------------------------
+
+'in token received while FIFO empty'
+and 'NAK'. NAK interrupt for ISOC-IN means that token has arrived and ZLP was
+sent in response to that as there was no data in FIFO. SW is basing on this
+interrupt to obtain frame in which token has come and then based on the
+interval calculates next frame for transfer.
+
 .. _`dwc2_hsotg_epint`:
 
 dwc2_hsotg_epint
@@ -903,6 +1073,66 @@ Description
 -----------
 
 Issue a soft reset to the core, and await the core finishing it.
+
+.. _`dwc2_gadget_handle_incomplete_isoc_in`:
+
+dwc2_gadget_handle_incomplete_isoc_in
+=====================================
+
+.. c:function:: void dwc2_gadget_handle_incomplete_isoc_in(struct dwc2_hsotg *hsotg)
+
+    handle incomplete ISO IN Interrupt.
+
+    :param struct dwc2_hsotg \*hsotg:
+        The device state:
+
+.. _`dwc2_gadget_handle_incomplete_isoc_in.description`:
+
+Description
+-----------
+
+This interrupt indicates one of the following conditions occurred while
+transmitting an ISOC transaction.
+- Corrupted IN Token for ISOC EP.
+- Packet not complete in FIFO.
+
+.. _`dwc2_gadget_handle_incomplete_isoc_in.the-following-actions-will-be-taken`:
+
+The following actions will be taken
+-----------------------------------
+
+- Determine the EP
+- Disable EP; when 'Endpoint Disabled' interrupt is received Flush FIFO
+
+.. _`dwc2_gadget_handle_incomplete_isoc_out`:
+
+dwc2_gadget_handle_incomplete_isoc_out
+======================================
+
+.. c:function:: void dwc2_gadget_handle_incomplete_isoc_out(struct dwc2_hsotg *hsotg)
+
+    handle incomplete ISO OUT Interrupt
+
+    :param struct dwc2_hsotg \*hsotg:
+        The device state:
+
+.. _`dwc2_gadget_handle_incomplete_isoc_out.description`:
+
+Description
+-----------
+
+This interrupt indicates one of the following conditions occurred while
+transmitting an ISOC transaction.
+- Corrupted OUT Token for ISOC EP.
+- Packet not complete in FIFO.
+
+.. _`dwc2_gadget_handle_incomplete_isoc_out.the-following-actions-will-be-taken`:
+
+The following actions will be taken
+-----------------------------------
+
+- Determine the EP
+- Set DCTL_SGOUTNAK and unmask GOUTNAKEFF if target frame elapsed.
 
 .. _`dwc2_hsotg_irq`:
 

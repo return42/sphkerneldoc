@@ -253,7 +253,7 @@ printk_timed_ratelimit
 Description
 -----------
 
-\ :c:func:`printk_timed_ratelimit`\  returns true if more than \ ``interval_msecs``\ 
+printk_timed_ratelimit() returns true if more than \ ``interval_msecs``\ 
 milliseconds have elapsed since the last time \ :c:func:`printk_timed_ratelimit`\ 
 returned true.
 
@@ -427,7 +427,7 @@ Description
 -----------
 
 Start at the end of the kmsg buffer and fill the provided buffer
-with as many of the the \*youngest\* kmsg records that fit into it.
+with as many of the the *youngest* kmsg records that fit into it.
 If the buffer is large enough, all available kmsg records will be
 copied with a single call.
 
@@ -456,7 +456,7 @@ Description
 
 Reset the dumper's iterator so that \ :c:func:`kmsg_dump_get_line`\  and
 \ :c:func:`kmsg_dump_get_buffer`\  can be called again and used multiple
-times within the same dumper.\ :c:func:`dump`\  callback.
+times within the same dumper.dump() callback.
 
 The function is similar to \ :c:func:`kmsg_dump_rewind`\ , but grabs no locks.
 
@@ -479,7 +479,7 @@ Description
 
 Reset the dumper's iterator so that \ :c:func:`kmsg_dump_get_line`\  and
 \ :c:func:`kmsg_dump_get_buffer`\  can be called again and used multiple
-times within the same dumper.\ :c:func:`dump`\  callback.
+times within the same dumper.dump() callback.
 
 .. _`dump_stack_set_arch_desc`:
 
@@ -543,7 +543,7 @@ show_regs_print_info
 Description
 -----------
 
-\ :c:func:`show_regs`\  implementations can use this function to print out generic
+show_regs() implementations can use this function to print out generic
 debug information.
 
 .. This file was automatic generated / don't edit.

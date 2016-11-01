@@ -155,6 +155,34 @@ Description
 Remove the QP from the table so it can't be found asynchronously by
 the receive routine.
 
+.. _`rvt_init_qp`:
+
+rvt_init_qp
+===========
+
+.. c:function:: void rvt_init_qp(struct rvt_dev_info *rdi, struct rvt_qp *qp, enum ib_qp_type type)
+
+    initialize the QP state to the reset state
+
+    :param struct rvt_dev_info \*rdi:
+        *undescribed*
+
+    :param struct rvt_qp \*qp:
+        the QP to init or reinit
+
+    :param enum ib_qp_type type:
+        the QP type
+
+.. _`rvt_init_qp.description`:
+
+Description
+-----------
+
+This function is called from both \ :c:func:`rvt_create_qp`\  and
+\ :c:func:`rvt_reset_qp`\ .   The difference is that the reset
+patch the necessary locks to protect against concurent
+access.
+
 .. _`rvt_reset_qp`:
 
 rvt_reset_qp
@@ -172,7 +200,13 @@ rvt_reset_qp
 
     :param enum ib_qp_type type:
         the QP type
-        r and s lock are required to be held by the caller
+
+.. _`rvt_reset_qp.description`:
+
+Description
+-----------
+
+r_lock, s_hlock, and s_lock are required to be held by the caller
 
 .. _`rvt_create_qp`:
 
@@ -356,27 +390,71 @@ Return
 
 0 on success otherwise errno
 
-.. _`qp_get_savail`:
+.. _`rvt_qp_valid_operation`:
 
-qp_get_savail
-=============
+rvt_qp_valid_operation
+======================
 
-.. c:function:: u32 qp_get_savail(struct rvt_qp *qp)
+.. c:function:: int rvt_qp_valid_operation(struct rvt_qp *qp, const struct rvt_operation_params *post_parms, struct ib_send_wr *wr)
 
-    return number of avail send entries
+    validate post send wr request \ ``qp``\  - the qp \ ``post``\ -parms - the post send table for the driver \ ``wr``\  - the work request
 
     :param struct rvt_qp \*qp:
         *undescribed*
 
-.. _`qp_get_savail.description`:
+    :param const struct rvt_operation_params \*post_parms:
+        *undescribed*
+
+    :param struct ib_send_wr \*wr:
+        *undescribed*
+
+.. _`rvt_qp_valid_operation.description`:
 
 Description
 -----------
 
-\ ``qp``\  - the qp
+The routine validates the operation based on the
+validation table an returns the length of the operation
+which can extend beyond the ib_send_bw.  Operation
+dependent flags key atomic operation validation.
+
+There is an exception for UD qps that validates the pd and
+overrides the length to include the additional UD specific
+length.
+
+Returns a negative error or the length of the work request
+for building the swqe.
+
+.. _`rvt_qp_is_avail`:
+
+rvt_qp_is_avail
+===============
+
+.. c:function:: int rvt_qp_is_avail(struct rvt_qp *qp, struct rvt_dev_info *rdi, bool reserved_op)
+
+    determine queue capacity \ ``qp``\  - the qp \ ``rdi``\  - the rdmavt device \ ``reserved_op``\  - is reserved operation
+
+    :param struct rvt_qp \*qp:
+        *undescribed*
+
+    :param struct rvt_dev_info \*rdi:
+        *undescribed*
+
+    :param bool reserved_op:
+        *undescribed*
+
+.. _`rvt_qp_is_avail.description`:
+
+Description
+-----------
 
 This assumes the s_hlock is held but the s_last
 qp variable is uncontrolled.
+
+For non reserved operations, the qp->s_avail
+may be changed.
+
+The return value is zero or a -ENOMEM.
 
 .. _`rvt_post_one_wr`:
 

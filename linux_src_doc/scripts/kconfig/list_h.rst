@@ -128,7 +128,7 @@ list_del
 Note
 ----
 
-\ :c:func:`list_empty`\  on entry does not return true after this, the entry is
+list_empty() on entry does not return true after this, the entry is
 in an undefined state.
 
 .. This file was automatic generated / don't edit.

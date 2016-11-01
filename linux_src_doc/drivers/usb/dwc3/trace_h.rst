@@ -22,7 +22,7 @@ Copyright (C) 2014 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Felipe Balbi <balbi\ ``ti``\ .com>
+Felipe Balbi <balbi@ti.com>
 
 .. _`trace_system.this-program-is-free-software`:
 

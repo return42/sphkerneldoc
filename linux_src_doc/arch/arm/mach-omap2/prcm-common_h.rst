@@ -167,7 +167,7 @@ base_irq
     base dynamic IRQ number, returned from \ :c:func:`irq_alloc_descs`\  in init
 
 suspended
-    set to true after Linux suspend code has called our ->\ :c:func:`prepare`\ 
+    set to true after Linux suspend code has called our ->prepare()
 
 suspend_save_flag
     set to true after IRQ masks have been saved and disabled
@@ -177,7 +177,7 @@ suspend_save_flag
 Description
 -----------
 
-\ ``saved_mask``\ , \ ``priority_mask``\ , \ ``base_irq``\ , \ ``suspended``\ , and
+@saved_mask, \ ``priority_mask``\ , \ ``base_irq``\ , \ ``suspended``\ , and
 \ ``suspend_save_flag``\  are populated dynamically, and are not to be
 specified in static initializers.
 

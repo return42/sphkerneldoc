@@ -1,29 +1,31 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/attr.c
 
-.. _`inode_change_ok`:
+.. _`setattr_prepare`:
 
-inode_change_ok
+setattr_prepare
 ===============
 
-.. c:function:: int inode_change_ok(const struct inode *inode, struct iattr *attr)
+.. c:function:: int setattr_prepare(struct dentry *dentry, struct iattr *attr)
 
-    check if attribute changes to an inode are allowed
+    check if attribute changes to a dentry are allowed
 
-    :param const struct inode \*inode:
-        inode to check
+    :param struct dentry \*dentry:
+        dentry to check
 
     :param struct iattr \*attr:
         attributes to change
 
-.. _`inode_change_ok.description`:
+.. _`setattr_prepare.description`:
 
 Description
 -----------
 
 Check if we are allowed to change the attributes contained in \ ``attr``\ 
-in the given inode.  This includes the normal unix access permission
-checks, as well as checks for rlimits and others.
+in the given dentry.  This includes the normal unix access permission
+checks, as well as checks for rlimits and others. The function also clears
+SGID bit from mode if user is not allowed to set it. Also file capabilities
+and IMA extended attributes are cleared if ATTR_KILL_PRIV is set.
 
 Should be called as the first thing in ->setattr implementations,
 possibly after taking additional locks.

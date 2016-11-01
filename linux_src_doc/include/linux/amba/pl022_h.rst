@@ -42,7 +42,7 @@ SSP_INTERFACE_NATIONAL_MICROWIRE
 
 SSP_INTERFACE_UNIDIRECTIONAL
     Unidirectional interface (STn8810
-    \ :c:type:`struct STn8815 <STn8815>` only)
+    \ :c:type:`struct STn8815 <STn8815>`\  only)
 
 .. _`ssp_hierarchy`:
 

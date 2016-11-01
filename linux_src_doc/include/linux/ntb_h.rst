@@ -391,7 +391,7 @@ drv
     Linux driver object.
 
 ops
-    See \ :c:type:`struct ntb_client_ops <ntb_client_ops>`.
+    See \ :c:type:`struct ntb_client_ops <ntb_client_ops>`\ .
 
 .. _`ntb_dev`:
 
@@ -433,13 +433,13 @@ topo
     Detected topology of the ntb.
 
 ops
-    See \ :c:type:`struct ntb_dev_ops <ntb_dev_ops>`.
+    See \ :c:type:`struct ntb_dev_ops <ntb_dev_ops>`\ .
 
 ctx
-    See \ :c:type:`struct ntb_ctx_ops <ntb_ctx_ops>`.
+    See \ :c:type:`struct ntb_ctx_ops <ntb_ctx_ops>`\ .
 
 ctx_ops
-    See \ :c:type:`struct ntb_ctx_ops <ntb_ctx_ops>`.
+    See \ :c:type:`struct ntb_ctx_ops <ntb_ctx_ops>`\ .
 
 .. _`ntb_register_client`:
 

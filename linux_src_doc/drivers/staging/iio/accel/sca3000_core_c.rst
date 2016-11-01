@@ -160,6 +160,69 @@ sca3000_store_measurement_mode
     :param size_t len:
         *undescribed*
 
+.. _`__sca3000_get_base_freq`:
+
+__sca3000_get_base_freq
+=======================
+
+.. c:function:: int __sca3000_get_base_freq(struct sca3000_state *st, const struct sca3000_chip_info *info, int *base_freq)
+
+    :param struct sca3000_state \*st:
+        *undescribed*
+
+    :param const struct sca3000_chip_info \*info:
+        *undescribed*
+
+    :param int \*base_freq:
+        *undescribed*
+
+.. _`__sca3000_get_base_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`read_raw_samp_freq`:
+
+read_raw_samp_freq
+==================
+
+.. c:function:: int read_raw_samp_freq(struct sca3000_state *st, int *val)
+
+    :param struct sca3000_state \*st:
+        *undescribed*
+
+    :param int \*val:
+        *undescribed*
+
+.. _`read_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
+.. _`write_raw_samp_freq`:
+
+write_raw_samp_freq
+===================
+
+.. c:function:: int write_raw_samp_freq(struct sca3000_state *st, int val)
+
+    :param struct sca3000_state \*st:
+        *undescribed*
+
+    :param int val:
+        *undescribed*
+
+.. _`write_raw_samp_freq.description`:
+
+Description
+-----------
+
+lock must be held
+
 .. _`sca3000_read_av_freq`:
 
 sca3000_read_av_freq
@@ -185,64 +248,6 @@ The later modes are only relevant to the ring buffer - and depend on current
 mode. Note that data sheet gives rather wide tolerances for these so integer
 division will give good enough answer and not all chips have them specified
 at all.
-
-.. _`__sca3000_get_base_freq`:
-
-__sca3000_get_base_freq
-=======================
-
-.. c:function:: int __sca3000_get_base_freq(struct sca3000_state *st, const struct sca3000_chip_info *info, int *base_freq)
-
-    :param struct sca3000_state \*st:
-        *undescribed*
-
-    :param const struct sca3000_chip_info \*info:
-        *undescribed*
-
-    :param int \*base_freq:
-        *undescribed*
-
-.. _`__sca3000_get_base_freq.description`:
-
-Description
------------
-
-lock must be held
-
-.. _`sca3000_read_frequency`:
-
-sca3000_read_frequency
-======================
-
-.. c:function:: ssize_t sca3000_read_frequency(struct device *dev, struct device_attribute *attr, char *buf)
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param struct device_attribute \*attr:
-        *undescribed*
-
-    :param char \*buf:
-        *undescribed*
-
-.. _`sca3000_set_frequency`:
-
-sca3000_set_frequency
-=====================
-
-.. c:function:: ssize_t sca3000_set_frequency(struct device *dev, struct device_attribute *attr, const char *buf, size_t len)
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param struct device_attribute \*attr:
-        *undescribed*
-
-    :param const char \*buf:
-        *undescribed*
-
-    :param size_t len:
-        *undescribed*
 
 .. _`sca3000_read_thresh`:
 

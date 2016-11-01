@@ -25,7 +25,7 @@ This function shrinks UBIFS liability by means of writing back some amount
 of dirty inodes and their pages.
 
 Note, this function synchronizes even VFS inodes which are locked
-(\ ``i_mutex``\ ) by the caller of the budgeting function, because write-back does
+(@i_mutex) by the caller of the budgeting function, because write-back does
 not touch \ ``i_mutex``\ .
 
 .. _`run_gc`:
@@ -303,7 +303,7 @@ ubifs_release_budget
 Description
 -----------
 
-This function releases the space budgeted by '\ :c:func:`ubifs_budget_space`\ '. Note,
+This function releases the space budgeted by 'ubifs_budget_space()'. Note,
 since the index changes (which were budgeted for in \ ``req``\ ->idx_growth) will
 only be written to the media on commit, this function moves the index budget
 from \ ``c``\ ->bi.idx_growth to \ ``c``\ ->bi.uncommitted_idx. The latter will be zeroed
@@ -377,7 +377,7 @@ Description
 
 This function calculates amount of free space which will be reported to
 user-space. User-space application tend to expect that if the file-system
-(e.g., via the '\ :c:func:`statfs`\ ' call) reports that it has N bytes available, they
+(e.g., via the 'statfs()' call) reports that it has N bytes available, they
 are able to write a file of size N. UBIFS attaches node headers to each data
 node and it has to write indexing nodes as well. This introduces additional
 overhead, and UBIFS has to report slightly less free space to meet the above

@@ -399,7 +399,7 @@ This function checks that data stored in the volume identifier header
 ubi_io_read_vid_hdr
 ===================
 
-.. c:function:: int ubi_io_read_vid_hdr(struct ubi_device *ubi, int pnum, struct ubi_vid_hdr *vid_hdr, int verbose)
+.. c:function:: int ubi_io_read_vid_hdr(struct ubi_device *ubi, int pnum, struct ubi_vid_io_buf *vidb, int verbose)
 
     read and check a volume identifier header.
 
@@ -409,9 +409,8 @@ ubi_io_read_vid_hdr
     :param int pnum:
         physical eraseblock number to read from
 
-    :param struct ubi_vid_hdr \*vid_hdr:
-        \ :c:type:`struct ubi_vid_hdr <ubi_vid_hdr>`\  object where to store the read volume
-        identifier header
+    :param struct ubi_vid_io_buf \*vidb:
+        the volume identifier buffer to store data in
 
     :param int verbose:
         be verbose if the header is corrupted or wasn't found
@@ -422,19 +421,19 @@ Description
 -----------
 
 This function reads the volume identifier header from physical eraseblock
-\ ``pnum``\  and stores it in \ ``vid_hdr``\ . It also checks CRC checksum of the read
+\ ``pnum``\  and stores it in \ ``vidb``\ . It also checks CRC checksum of the read
 volume identifier header. The error codes are the same as in
-'\ :c:func:`ubi_io_read_ec_hdr`\ '.
+'ubi_io_read_ec_hdr()'.
 
 Note, the implementation of this function is also very similar to
-'\ :c:func:`ubi_io_read_ec_hdr`\ ', so refer commentaries in '\ :c:func:`ubi_io_read_ec_hdr`\ '.
+'ubi_io_read_ec_hdr()', so refer commentaries in 'ubi_io_read_ec_hdr()'.
 
 .. _`ubi_io_write_vid_hdr`:
 
 ubi_io_write_vid_hdr
 ====================
 
-.. c:function:: int ubi_io_write_vid_hdr(struct ubi_device *ubi, int pnum, struct ubi_vid_hdr *vid_hdr)
+.. c:function:: int ubi_io_write_vid_hdr(struct ubi_device *ubi, int pnum, struct ubi_vid_io_buf *vidb)
 
     write a volume identifier header.
 
@@ -444,8 +443,8 @@ ubi_io_write_vid_hdr
     :param int pnum:
         the physical eraseblock number to write to
 
-    :param struct ubi_vid_hdr \*vid_hdr:
-        the volume identifier header to write
+    :param struct ubi_vid_io_buf \*vidb:
+        the volume identifier buffer to write
 
 .. _`ubi_io_write_vid_hdr.description`:
 
@@ -454,8 +453,8 @@ Description
 
 This function writes the volume identifier header described by \ ``vid_hdr``\  to
 physical eraseblock \ ``pnum``\ . This function automatically fills the
-\ ``vid_hdr``\ ->magic and the \ ``vid_hdr``\ ->version fields, as well as calculates
-header CRC checksum and stores it at vid_hdr->hdr_crc.
+\ ``vidb``\ ->hdr->magic and the \ ``vidb``\ ->hdr->version fields, as well as calculates
+header CRC checksum and stores it at vidb->hdr->hdr_crc.
 
 This function returns zero in case of success and a negative error code in
 case of failure. If \ ``-EIO``\  is returned, the physical eraseblock probably went

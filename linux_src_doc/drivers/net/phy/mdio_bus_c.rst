@@ -144,7 +144,7 @@ Description
 
 Called by a bus driver to bring up all the PHYs
 on a given bus, and attach them to the bus. Drivers should use
-\ :c:func:`mdiobus_register`\  rather than \\ :c:func:`__mdiobus_register`\  unless they
+\ :c:func:`mdiobus_register`\  rather than \__mdiobus_register() unless they
 need to pass a specific owner module. MDIO devices which are not
 PHYs will not be brought up by this function. They are expected to
 to be explicitly listed in DT and instantiated by \ :c:func:`of_mdiobus_register`\ .

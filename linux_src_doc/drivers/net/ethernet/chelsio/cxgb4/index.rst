@@ -12,5 +12,7 @@ cxgb4
     cxgb4_fcoe_c
     cxgb4_h
     cxgb4_main_c
+    cxgb4_uld_c
+    sched_c
     sge_c
     t4_hw_c

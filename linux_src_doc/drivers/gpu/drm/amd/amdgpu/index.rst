@@ -18,6 +18,7 @@ amdgpu
     amdgpu_gart_c
     amdgpu_gem_c
     amdgpu_gfx_c
+    amdgpu_gtt_mgr_c
     amdgpu_ib_c
     amdgpu_ih_c
     amdgpu_irq_c
@@ -39,7 +40,10 @@ amdgpu
     cz_ih_c
     dce_v10_0_c
     dce_v11_0_c
+    dce_v6_0_c
     dce_v8_0_c
+    dce_virtual_c
+    gfx_v6_0_c
     gfx_v7_0_c
     gfx_v8_0_c
     gmc_v7_0_c
@@ -47,6 +51,8 @@ amdgpu
     iceland_ih_c
     sdma_v2_4_c
     sdma_v3_0_c
+    si_dma_c
+    si_dpm_c
     tonga_ih_c
     uvd_v4_2_c
     uvd_v5_0_c

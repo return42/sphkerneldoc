@@ -1,33 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/llite/rw.c
 
-.. _`ll_cl_fini`:
-
-ll_cl_fini
-==========
-
-.. c:function:: void ll_cl_fini(struct ll_cl_context *lcc)
-
-    data before exiting typical address_space operation. Dual to \ :c:func:`ll_cl_init`\ .
-
-    :param struct ll_cl_context \*lcc:
-        *undescribed*
-
-.. _`ll_cl_init`:
-
-ll_cl_init
-==========
-
-.. c:function:: struct ll_cl_context *ll_cl_init(struct file *file, struct page *vmpage)
-
-    data at the typical address_space operation entry point.
-
-    :param struct file \*file:
-        *undescribed*
-
-    :param struct page \*vmpage:
-        *undescribed*
-
 .. _`ll_ra_count_get`:
 
 ll_ra_count_get

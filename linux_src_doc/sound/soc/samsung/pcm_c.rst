@@ -25,8 +25,8 @@ Definition
         unsigned int idleclk;
         struct clk *pclk;
         struct clk *cclk;
-        struct s3c_dma_params *dma_playback;
-        struct s3c_dma_params *dma_capture;
+        struct snd_dmaengine_dai_dma_data *dma_playback;
+        struct snd_dmaengine_dai_dma_data *dma_capture;
     }
 
 .. _`s3c_pcm_info.members`:

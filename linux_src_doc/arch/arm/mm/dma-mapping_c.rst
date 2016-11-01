@@ -6,7 +6,7 @@
 arm_dma_map_page
 ================
 
-.. c:function:: dma_addr_t arm_dma_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t arm_dma_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     map a portion of a page for streaming DMA
 
@@ -25,7 +25,7 @@ arm_dma_map_page
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_dma_map_page.description`:
@@ -44,7 +44,7 @@ can regain ownership by calling \ :c:func:`dma_unmap_page`\ .
 arm_dma_unmap_page
 ==================
 
-.. c:function:: void arm_dma_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_dma_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     unmap a buffer previously mapped through \ :c:func:`dma_map_page`\ 
 
@@ -60,7 +60,7 @@ arm_dma_unmap_page
     :param enum dma_data_direction dir:
         DMA transfer direction (same as passed to dma_map_page)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_dma_unmap_page.description`:
@@ -80,7 +80,7 @@ whatever the device wrote there.
 arm_dma_map_sg
 ==============
 
-.. c:function:: int arm_dma_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: int arm_dma_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     map a set of SG buffers for streaming mode DMA
 
@@ -96,7 +96,7 @@ arm_dma_map_sg
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_dma_map_sg.description`:
@@ -118,7 +118,7 @@ here.
 arm_dma_unmap_sg
 ================
 
-.. c:function:: void arm_dma_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_dma_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     unmap a set of SG buffers mapped by dma_map_sg
 
@@ -134,7 +134,7 @@ arm_dma_unmap_sg
     :param enum dma_data_direction dir:
         DMA transfer direction (same as was passed to dma_map_sg)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_dma_unmap_sg.description`:
@@ -188,7 +188,7 @@ arm_dma_sync_sg_for_device
 arm_coherent_iommu_map_sg
 =========================
 
-.. c:function:: int arm_coherent_iommu_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: int arm_coherent_iommu_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     map a set of SG buffers for streaming mode DMA
 
@@ -204,7 +204,7 @@ arm_coherent_iommu_map_sg
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_coherent_iommu_map_sg.description`:
@@ -222,7 +222,7 @@ obtained via sg_dma_{address,length}.
 arm_iommu_map_sg
 ================
 
-.. c:function:: int arm_iommu_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: int arm_iommu_map_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     map a set of SG buffers for streaming mode DMA
 
@@ -238,7 +238,7 @@ arm_iommu_map_sg
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_iommu_map_sg.description`:
@@ -256,7 +256,7 @@ sg_dma_{address,length}.
 arm_coherent_iommu_unmap_sg
 ===========================
 
-.. c:function:: void arm_coherent_iommu_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_coherent_iommu_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     unmap a set of SG buffers mapped by dma_map_sg
 
@@ -272,7 +272,7 @@ arm_coherent_iommu_unmap_sg
     :param enum dma_data_direction dir:
         DMA transfer direction (same as was passed to dma_map_sg)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_coherent_iommu_unmap_sg.description`:
@@ -288,7 +288,7 @@ rules concerning calls here are the same as for \ :c:func:`dma_unmap_single`\ .
 arm_iommu_unmap_sg
 ==================
 
-.. c:function:: void arm_iommu_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_iommu_unmap_sg(struct device *dev, struct scatterlist *sg, int nents, enum dma_data_direction dir, unsigned long attrs)
 
     unmap a set of SG buffers mapped by dma_map_sg
 
@@ -304,7 +304,7 @@ arm_iommu_unmap_sg
     :param enum dma_data_direction dir:
         DMA transfer direction (same as was passed to dma_map_sg)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_iommu_unmap_sg.description`:
@@ -358,7 +358,7 @@ arm_iommu_sync_sg_for_device
 arm_coherent_iommu_map_page
 ===========================
 
-.. c:function:: dma_addr_t arm_coherent_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t arm_coherent_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     :param struct device \*dev:
         valid struct device pointer
@@ -375,7 +375,7 @@ arm_coherent_iommu_map_page
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_coherent_iommu_map_page.description`:
@@ -390,7 +390,7 @@ Coherent IOMMU aware version of \ :c:func:`arm_dma_map_page`\
 arm_iommu_map_page
 ==================
 
-.. c:function:: dma_addr_t arm_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t arm_iommu_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     :param struct device \*dev:
         valid struct device pointer
@@ -407,7 +407,7 @@ arm_iommu_map_page
     :param enum dma_data_direction dir:
         DMA transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_iommu_map_page.description`:
@@ -422,7 +422,7 @@ IOMMU aware version of \ :c:func:`arm_dma_map_page`\
 arm_coherent_iommu_unmap_page
 =============================
 
-.. c:function:: void arm_coherent_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_coherent_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     :param struct device \*dev:
         valid struct device pointer
@@ -436,7 +436,7 @@ arm_coherent_iommu_unmap_page
     :param enum dma_data_direction dir:
         DMA transfer direction (same as passed to dma_map_page)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_coherent_iommu_unmap_page.description`:
@@ -451,7 +451,7 @@ Coherent IOMMU aware version of \ :c:func:`arm_dma_unmap_page`\
 arm_iommu_unmap_page
 ====================
 
-.. c:function:: void arm_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void arm_iommu_unmap_page(struct device *dev, dma_addr_t handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     :param struct device \*dev:
         valid struct device pointer
@@ -465,7 +465,7 @@ arm_iommu_unmap_page
     :param enum dma_data_direction dir:
         DMA transfer direction (same as passed to dma_map_page)
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`arm_iommu_unmap_page.description`:
@@ -474,6 +474,54 @@ Description
 -----------
 
 IOMMU aware version of \ :c:func:`arm_dma_unmap_page`\ 
+
+.. _`arm_iommu_map_resource`:
+
+arm_iommu_map_resource
+======================
+
+.. c:function:: dma_addr_t arm_iommu_map_resource(struct device *dev, phys_addr_t phys_addr, size_t size, enum dma_data_direction dir, unsigned long attrs)
+
+    map a device resource for DMA
+
+    :param struct device \*dev:
+        valid struct device pointer
+
+    :param phys_addr_t phys_addr:
+        physical address of resource
+
+    :param size_t size:
+        size of resource to map
+
+    :param enum dma_data_direction dir:
+        DMA transfer direction
+
+    :param unsigned long attrs:
+        *undescribed*
+
+.. _`arm_iommu_unmap_resource`:
+
+arm_iommu_unmap_resource
+========================
+
+.. c:function:: void arm_iommu_unmap_resource(struct device *dev, dma_addr_t dma_handle, size_t size, enum dma_data_direction dir, unsigned long attrs)
+
+    unmap a device DMA resource
+
+    :param struct device \*dev:
+        valid struct device pointer
+
+    :param dma_addr_t dma_handle:
+        DMA address to resource
+
+    :param size_t size:
+        size of resource to map
+
+    :param enum dma_data_direction dir:
+        DMA transfer direction
+
+    :param unsigned long attrs:
+        *undescribed*
 
 .. _`arm_iommu_create_mapping`:
 

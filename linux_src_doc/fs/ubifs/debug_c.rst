@@ -18,7 +18,7 @@ ubifs_dump_index
 Description
 -----------
 
-This function dumps whole UBIFS indexing B-tree, unlike '\ :c:func:`ubifs_dump_tnc`\ '
+This function dumps whole UBIFS indexing B-tree, unlike 'ubifs_dump_tnc()'
 which dumps only in-memory znodes and does not read znodes which from flash.
 
 .. _`dbg_save_space_info`:
@@ -59,7 +59,7 @@ Description
 -----------
 
 This function compares current flash space information with the information
-which was saved when the '\ :c:func:`dbg_save_space_info`\ ' function was called.
+which was saved when the 'dbg_save_space_info()' function was called.
 Returns zero if the information has not changed, and \ ``-EINVAL``\  it it has
 changed.
 
@@ -84,7 +84,7 @@ Description
 -----------
 
 If inode is clean, synchronized inode size has to be equivalent to current
-inode size. This function has to be called only for locked inodes (\ ``i_mutex``\ 
+inode size. This function has to be called only for locked inodes (@i_mutex
 has to be locked). Returns \ ``0``\  if synchronized inode size if correct, and
 \ ``-EINVAL``\  if not.
 
@@ -221,7 +221,7 @@ add_size
 Description
 -----------
 
-This is a helper function for '\ :c:func:`dbg_check_idx_size`\ ' which is called for
+This is a helper function for 'dbg_check_idx_size()' which is called for
 every indexing node and adds its size to the 'long long' variable pointed to
 by \ ``priv``\ .
 
@@ -383,7 +383,7 @@ add_inode
 Description
 -----------
 
-This is a helper function for '\ :c:func:`check_leaf`\ ' which adds information about
+This is a helper function for 'check_leaf()' which adds information about
 inode \ ``ino``\  to the RB-tree of inodes. Returns inode information pointer in
 case of success and a negative error code in case of failure.
 
@@ -407,7 +407,7 @@ search_inode
 Description
 -----------
 
-This is a helper function for '\ :c:func:`check_leaf`\ ' which searches inode \ ``inum``\  in
+This is a helper function for 'check_leaf()' which searches inode \ ``inum``\  in
 the RB-tree of inodes and returns an inode information pointer or \ ``NULL``\  if
 the inode was not found.
 
@@ -434,7 +434,7 @@ read_add_inode
 Description
 -----------
 
-This is a helper function for '\ :c:func:`check_leaf`\ ' which finds inode node \ ``inum``\  in
+This is a helper function for 'check_leaf()' which finds inode node \ ``inum``\  in
 the index, reads it, and adds it to the RB-tree of inodes. Returns inode
 information pointer in case of success and a negative error code in case of
 failure.
@@ -462,7 +462,7 @@ check_leaf
 Description
 -----------
 
-This is a helper function for '\ :c:func:`dbg_check_filesystem`\ ' which is called for
+This is a helper function for 'dbg_check_filesystem()' which is called for
 every single leaf node while walking the indexing tree. It checks that the
 leaf node referred from the indexing tree exists, has correct CRC, and does
 some other basic validation. This function is also responsible for building
@@ -504,7 +504,7 @@ check_inodes
 Description
 -----------
 
-This is a helper function for '\ :c:func:`dbg_check_filesystem`\ ' which walks the
+This is a helper function for 'dbg_check_filesystem()' which walks the
 RB-tree of inodes after the index scan has been finished, and checks that
 inode nlink, size, etc are correct. Returns zero if inodes are fine,
 \ ``-EINVAL``\  if not, and a negative error code in case of failure.
@@ -657,7 +657,7 @@ This function creates all debugfs files for this instance of UBIFS. Returns
 zero in case of success and a negative error code in case of failure.
 
 Note, the only reason we have not merged this function with the
-'\ :c:func:`ubifs_debugging_init`\ ' function is because it is better to initialize
+'ubifs_debugging_init()' function is because it is better to initialize
 debugfs interfaces at the very end of the mount process, and remove them at
 the very beginning of the mount process.
 

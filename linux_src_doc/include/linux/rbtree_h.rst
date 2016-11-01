@@ -27,7 +27,7 @@ rbtree_postorder_for_each_entry_safe
 Description
 -----------
 
-\ :c:func:`rbtree_postorder_for_each_entry_safe`\  provides a similar guarantee as
+rbtree_postorder_for_each_entry_safe() provides a similar guarantee as
 \ :c:func:`list_for_each_entry_safe`\  and allows the iteration to continue independent
 of changes to \ ``pos``\  by the body of the loop.
 

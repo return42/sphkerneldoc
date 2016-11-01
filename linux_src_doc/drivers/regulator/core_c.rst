@@ -112,7 +112,7 @@ set_consumer_device_supply
         regulator source
 
     :param const char \*consumer_dev_name:
-        \ :c:func:`dev_name`\  string for device supply applies to
+        dev_name() string for device supply applies to
 
     :param const char \*supply:
         symbolic name for supply
@@ -357,7 +357,7 @@ regulator_bulk_register_supply_alias
 Description
 -----------
 
-\ ``return``\  0 on success, an errno on failure.
+@return 0 on success, an errno on failure.
 
 This helper function allows drivers to register several supply
 aliases in one operation.  If any of the aliases cannot be
@@ -580,28 +580,6 @@ Note that the device backing this regulator handle can have multiple
 users, so it might be enabled even if \ :c:func:`regulator_enable`\  was never
 called for this particular source.
 
-.. _`regulator_can_change_voltage`:
-
-regulator_can_change_voltage
-============================
-
-.. c:function:: int regulator_can_change_voltage(struct regulator *regulator)
-
-    check if regulator can change voltage
-
-    :param struct regulator \*regulator:
-        regulator source
-
-.. _`regulator_can_change_voltage.description`:
-
-Description
------------
-
-Returns positive if the regulator driver backing the source/client
-can change its voltage, false otherwise. Useful for detecting fixed
-or dummy regulators and disabling voltage change logic in the client
-driver.
-
 .. _`regulator_count_voltages`:
 
 regulator_count_voltages
@@ -650,7 +628,7 @@ can sleep
 Description
 -----------
 
-Returns a voltage that can be passed to @\ :c:func:`regulator_set_voltage`\ ,
+Returns a voltage that can be passed to \ ``regulator_set_voltage``\ (),
 zero if this selector code can't be used on this system, or a
 negative errno.
 
@@ -1168,7 +1146,7 @@ regulator_bulk_get
 Description
 -----------
 
-\ ``return``\  0 on success, an errno on failure.
+@return 0 on success, an errno on failure.
 
 This helper function allows drivers to get several regulator
 consumers in one operation.  If any of the regulators cannot be

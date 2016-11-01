@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/llite/statahead.c
 
-.. _`sa_args_init`:
+.. _`sa_prep_data`:
 
-sa_args_init
+sa_prep_data
 ============
 
-.. c:function:: int sa_args_init(struct inode *dir, struct inode *child, struct ll_sa_entry *entry, struct md_enqueue_info **pmi, struct ldlm_enqueue_info **pei)
+.. c:function:: int sa_prep_data(struct inode *dir, struct inode *child, struct sa_entry *entry, struct md_enqueue_info **pmi, struct ldlm_enqueue_info **pei)
 
     :param struct inode \*dir:
         *undescribed*
@@ -14,7 +14,7 @@ sa_args_init
     :param struct inode \*child:
         *undescribed*
 
-    :param struct ll_sa_entry \*entry:
+    :param struct sa_entry \*entry:
         *undescribed*
 
     :param struct md_enqueue_info \*\*pmi:
@@ -23,45 +23,99 @@ sa_args_init
     :param struct ldlm_enqueue_info \*\*pei:
         *undescribed*
 
-.. _`do_sa_revalidate`:
+.. _`sa_revalidate`:
 
-do_sa_revalidate
-================
+sa_revalidate
+=============
 
-.. c:function:: int do_sa_revalidate(struct inode *dir, struct ll_sa_entry *entry, struct dentry *dentry)
-
-    \retval      1 -- dentry valid \retval      0 -- will send stat-ahead request \retval others -- prepare stat-ahead request failed
+.. c:function:: int sa_revalidate(struct inode *dir, struct sa_entry *entry, struct dentry *dentry)
 
     :param struct inode \*dir:
         *undescribed*
 
-    :param struct ll_sa_entry \*entry:
+    :param struct sa_entry \*entry:
         *undescribed*
 
     :param struct dentry \*dentry:
         *undescribed*
 
-.. _`ll_stop_statahead`:
+.. _`sa_revalidate.description`:
 
-ll_stop_statahead
-=================
+Description
+-----------
 
-.. c:function:: void ll_stop_statahead(struct inode *dir, void *key)
+\retval      1 dentry valid, no RPC sent
+\retval      0 dentry invalid, will send async stat RPC
+\retval      negative number upon error
+
+.. _`revalidate_statahead_dentry`:
+
+revalidate_statahead_dentry
+===========================
+
+.. c:function:: int revalidate_statahead_dentry(struct inode *dir, struct ll_statahead_info *sai, struct dentry **dentryp, bool unplug)
 
     :param struct inode \*dir:
         *undescribed*
 
-    :param void \*key:
+    :param struct ll_statahead_info \*sai:
         *undescribed*
 
-.. _`do_statahead_enter`:
+    :param struct dentry \*\*dentryp:
+        *undescribed*
 
-do_statahead_enter
-==================
+    :param bool unplug:
+        *undescribed*
 
-.. c:function:: int do_statahead_enter(struct inode *dir, struct dentry **dentryp, int only_unplug)
+.. _`revalidate_statahead_dentry.description`:
 
-    Otherwise if a thread is started already, wait it until it is ahead of me. \retval 1       -- find entry with lock in cache, the caller needs to do nothing. \retval 0       -- find entry in cache, but without lock, the caller needs refresh from MDS. \retval others  -- the caller need to process as non-statahead.
+Description
+-----------
+
+\param[in]  dir      parent directory
+\param[in]  sai      sai structure
+\param[out] dentryp  pointer to dentry which will be revalidated
+\param[in]  unplug   unplug statahead window only (normally for negative
+dentry)
+\retval              1 on success, dentry is saved in \ ``dentryp``\ 
+\retval              0 if revalidation failed (no proper lock on client)
+\retval              negative number upon error
+
+.. _`start_statahead_thread`:
+
+start_statahead_thread
+======================
+
+.. c:function:: int start_statahead_thread(struct inode *dir, struct dentry *dentry)
+
+    :param struct inode \*dir:
+        *undescribed*
+
+    :param struct dentry \*dentry:
+        *undescribed*
+
+.. _`start_statahead_thread.description`:
+
+Description
+-----------
+
+\param[in] dir       parent directory
+\param[in] dentry    dentry that triggers statahead, normally the first
+dirent under \ ``dir``\ 
+\retval              -EAGAIN on success, because when this function is
+called, it's already in lookup call, so client should
+do it itself instead of waiting for statahead thread
+to do it asynchronously.
+\retval              negative number upon error
+
+.. _`ll_statahead`:
+
+ll_statahead
+============
+
+.. c:function:: int ll_statahead(struct inode *dir, struct dentry **dentryp, bool unplug)
+
+    will start statahead thread if this is the first dir entry, else revalidate dentry from statahead cache.
 
     :param struct inode \*dir:
         *undescribed*
@@ -69,8 +123,23 @@ do_statahead_enter
     :param struct dentry \*\*dentryp:
         *undescribed*
 
-    :param int only_unplug:
+    :param bool unplug:
         *undescribed*
+
+.. _`ll_statahead.description`:
+
+Description
+-----------
+
+\param[in]  dir      parent directory
+\param[out] dentryp  dentry to getattr
+\param[in]  unplug   unplug statahead window only (normally for negative
+dentry)
+\retval              1 on success
+\retval              0 revalidation from statahead cache failed, caller needs
+to getattr from server directly
+\retval              negative number on error, caller often ignores this and
+then getattr from server
 
 .. This file was automatic generated / don't edit.
 

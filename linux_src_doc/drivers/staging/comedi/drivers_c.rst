@@ -150,7 +150,7 @@ Description
 
 Handles the \ ``INSN_READ``\  instruction for subdevices that use the readback
 array allocated by \ :c:func:`comedi_alloc_subdev_readback`\ .  It may be used
-directly as the subdevice's handler (\ ``s``\ ->insn_read) or called via a
+directly as the subdevice's handler (@s->insn_read) or called via a
 wrapper.
 
 \ ``insn``\ ->n is normally 1, which will read a single value.  If higher, the
@@ -187,7 +187,7 @@ comedi_timeout
 Description
 -----------
 
-Busy-waits for up to a second (\ ``COMEDI_TIMEOUT_MS``\ ) for the condition or
+Busy-waits for up to a second (%COMEDI_TIMEOUT_MS) for the condition or
 some error (other than -EBUSY) to occur.  The parameters \ ``dev``\ , \ ``s``\ , \ ``insn``\ ,
 and \ ``context``\  are passed to the callback function, which returns -EBUSY to
 continue waiting or some other value to stop waiting (generally 0 if the
@@ -234,7 +234,7 @@ Partially handles the \ ``INSN_CONFIG_DIO_INPUT``\ , \ ``INSN_CONFIG_DIO_OUTPUTS
 and \ ``INSN_CONFIG_DIO_QUERY``\  instructions.  The first two update
 \ ``s``\ ->io_bits to record the directions of the masked channels.  The last
 one sets \ ``data``\ [1] to the current direction of the group of channels
-(\ ``COMEDI_INPUT``\ ) or \ ``COMEDI_OUTPUT``\ ) as recorded in \ ``s``\ ->io_bits.
+(%COMEDI_INPUT) or \ ``COMEDI_OUTPUT``\ ) as recorded in \ ``s``\ ->io_bits.
 
 The caller is responsible for updating the DIO direction in the hardware
 registers if this function returns 0.
@@ -350,7 +350,7 @@ Description
 -----------
 
 Returns the number of samples remaining to complete the command, or the
-specified expected number of samples (\ ``nsamples``\ ), whichever is fewer.
+specified expected number of samples (@nsamples), whichever is fewer.
 
 .. _`comedi_inc_scan_progress`:
 
@@ -375,7 +375,7 @@ Description
 Increments the scan progress by the number of bytes specified by \ ``num_bytes``\ .
 If the scan progress reaches or exceeds the scan length in bytes, reduce
 it modulo the scan length in bytes and set the "end of scan" asynchronous
-event flag (\ ``COMEDI_CB_EOS``\ ) to be processed later.
+event flag (%COMEDI_CB_EOS) to be processed later.
 
 .. _`comedi_handle_events`:
 
@@ -398,7 +398,7 @@ Description
 -----------
 
 Handles outstanding asynchronous acquisition event flags associated
-with the subdevice.  Call the subdevice's \ ``s``\ ->\ :c:func:`cancel`\  handler if the
+with the subdevice.  Call the subdevice's \ ``s``\ ->cancel() handler if the
 "end of acquisition", "error" or "overflow" event flags are set in order
 to stop the acquisition at the driver level.
 

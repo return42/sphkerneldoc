@@ -8,7 +8,7 @@ struct machine_desc
 
 .. c:type:: struct machine_desc
 
-    Board specific callbacks, called from ARC common code Provided by each ARC board using \ :c:func:`MACHINE_START`\ /\ :c:func:`MACHINE_END`\ , so a multi-platform kernel builds with array of such descriptors. We extend the early DT scan to also match the DT's "compatible" string against the \ ``dt_compat``\  of all such descriptors, and one with highest "DT score" is selected as global \ ``machine_desc``\ .
+    Board specific callbacks, called from ARC common code Provided by each ARC board using \ :c:func:`MACHINE_START`\ /MACHINE_END(), so a multi-platform kernel builds with array of such descriptors. We extend the early DT scan to also match the DT's "compatible" string against the \ ``dt_compat``\  of all such descriptors, and one with highest "DT score" is selected as global \ ``machine_desc``\ .
 
 .. _`machine_desc.definition`:
 
@@ -45,7 +45,7 @@ init_early
 
 init_per_cpu
     for each CPU as it is coming up (SMP as well as UP)
-    [(M):\ :c:func:`init_IRQ`\ , (o):\ :c:func:`start_kernel_secondary`\ ]
+    [(M):init_IRQ(), (o):start_kernel_secondary()]
 
 init_machine
     arch initcall level callback (e.g. populate static

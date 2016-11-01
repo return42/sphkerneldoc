@@ -391,7 +391,7 @@ dpm_complete
 Description
 -----------
 
-Execute the ->\ :c:func:`complete`\  callbacks for all devices whose PM status is not
+Execute the ->complete() callbacks for all devices whose PM status is not
 DPM_ON (this allows new devices to be registered).
 
 .. _`dpm_resume_end`:
@@ -600,7 +600,7 @@ device_prepare
 Description
 -----------
 
-Execute the ->\ :c:func:`prepare`\  callback(s) for given device.  No new children of the
+Execute the ->prepare() callback(s) for given device.  No new children of the
 device may be registered after this function has returned.
 
 .. _`dpm_prepare`:
@@ -620,7 +620,7 @@ dpm_prepare
 Description
 -----------
 
-Execute the ->\ :c:func:`prepare`\  callback(s) for all devices.
+Execute the ->prepare() callback(s) for all devices.
 
 .. _`dpm_suspend_start`:
 

@@ -347,6 +347,25 @@ Description
 
 Request the PF to set our RSS lookup table
 
+.. _`i40evf_print_link_message`:
+
+i40evf_print_link_message
+=========================
+
+.. c:function:: void i40evf_print_link_message(struct i40evf_adapter *adapter)
+
+    print link up or down
+
+    :param struct i40evf_adapter \*adapter:
+        adapter structure
+
+.. _`i40evf_print_link_message.description`:
+
+Description
+-----------
+
+Log a message telling the world of our wonderous link status
+
 .. _`i40evf_request_reset`:
 
 i40evf_request_reset

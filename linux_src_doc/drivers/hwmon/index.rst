@@ -10,6 +10,7 @@ hwmon
     hih6130_c
     hwmon_c
     iio_hwmon_c
+    ina3221_c
     max197_c
     s3c-hwmon_c
     sht15_c

@@ -151,7 +151,7 @@ Description
 
 Unregister and destroy the cdev occupying the region described by
 \ ``major``\ , \ ``baseminor``\  and \ ``count``\ .  This function undoes what
-\\ :c:func:`__register_chrdev`\  did.
+\__register_chrdev() did.
 
 .. _`cdev_add`:
 
@@ -177,7 +177,7 @@ cdev_add
 Description
 -----------
 
-\ :c:func:`cdev_add`\  adds the device represented by \ ``p``\  to the system, making it
+cdev_add() adds the device represented by \ ``p``\  to the system, making it
 live immediately.  A negative error code is returned on failure.
 
 .. _`cdev_del`:
@@ -197,7 +197,7 @@ cdev_del
 Description
 -----------
 
-\ :c:func:`cdev_del`\  removes \ ``p``\  from the system, possibly freeing the structure
+cdev_del() removes \ ``p``\  from the system, possibly freeing the structure
 itself.
 
 .. _`cdev_alloc`:

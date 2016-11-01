@@ -307,7 +307,7 @@ trace_block_getrq
         pending block IO operation
 
     :param int rw:
-        low bit indicates a read (\ ``0``\ ) or a write (\ ``1``\ )
+        low bit indicates a read (%0) or a write (%1)
 
 .. _`trace_block_getrq.description`:
 
@@ -333,7 +333,7 @@ trace_block_sleeprq
         pending block IO operation
 
     :param int rw:
-        low bit indicates a read (\ ``0``\ ) or a write (\ ``1``\ )
+        low bit indicates a read (%0) or a write (%1)
 
 .. _`trace_block_sleeprq.description`:
 

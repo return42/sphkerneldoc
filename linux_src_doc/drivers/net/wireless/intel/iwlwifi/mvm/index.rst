@@ -15,6 +15,7 @@ mvm
     fw-api-rx_h
     fw-api-scan_h
     fw-api-sta_h
+    fw-api-stats_h
     fw-api-tof_h
     fw-api-tx_h
     fw-api_h

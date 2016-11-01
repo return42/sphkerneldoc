@@ -32,7 +32,7 @@ Members
 -------
 
 prtad
-    PRTAD of the PHY (\ ``MDIO_PRTAD_NONE``\  if not present/unknown)
+    PRTAD of the PHY (%MDIO_PRTAD_NONE if not present/unknown)
 
 mmds
     Mask of MMDs expected to be present in the PHY.  This must be

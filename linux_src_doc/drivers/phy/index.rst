@@ -13,6 +13,7 @@ phy
     phy-omap-control_c
     phy-omap-usb2_c
     phy-qcom-ufs-i_h
+    phy-rockchip-inno-usb2_c
     phy-stih41x-usb_c
     phy-tusb1210_c
     ulpi_phy_h

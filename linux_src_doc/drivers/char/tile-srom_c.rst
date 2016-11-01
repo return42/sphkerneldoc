@@ -106,15 +106,15 @@ Returns number of bytes written, or an error code.
 srom_setup_minor
 ================
 
-.. c:function:: int srom_setup_minor(struct srom_dev *srom, int index)
+.. c:function:: int srom_setup_minor(struct srom_dev *srom, int devhdl)
 
     Initialize per-minor information.
 
     :param struct srom_dev \*srom:
         Per-device SROM state.
 
-    :param int index:
-        Device to set up.
+    :param int devhdl:
+        Partition device handle.
 
 .. This file was automatic generated / don't edit.
 

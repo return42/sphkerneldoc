@@ -133,7 +133,7 @@ rt2x00usb_vendor_request
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
 
     :param const u8 requesttype:
-        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\_\*
+        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
 
     :param const u16 offset:
         Register offset to perform action on
@@ -145,7 +145,7 @@ rt2x00usb_vendor_request
         Buffer where information will be read/written to by device
 
     :param const u16 buffer_length:
-        Size of \ :c:type:`struct buffer <buffer>`
+        Size of \ :c:type:`struct buffer <buffer>`\ 
 
     :param const int timeout:
         Operation timeout
@@ -156,7 +156,7 @@ Description
 -----------
 
 This is the main function to communicate with the device,
-the \ :c:type:`struct buffer <buffer>` argument \_must\_ either be NULL or point to
+the \ :c:type:`struct buffer <buffer>`\  argument \_must\_ either be NULL or point to
 a buffer allocated by kmalloc. Failure to do so can lead
 to unexpected behavior depending on the architecture.
 
@@ -176,7 +176,7 @@ rt2x00usb_vendor_request_buff
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
 
     :param const u8 requesttype:
-        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\_\*
+        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
 
     :param const u16 offset:
         Register offset to perform action on
@@ -185,7 +185,7 @@ rt2x00usb_vendor_request_buff
         Buffer where information will be read/written to by device
 
     :param const u16 buffer_length:
-        Size of \ :c:type:`struct buffer <buffer>`
+        Size of \ :c:type:`struct buffer <buffer>`\ 
 
 .. _`rt2x00usb_vendor_request_buff.description`:
 
@@ -196,7 +196,7 @@ This function will use a previously with kmalloc allocated cache
 to communicate with the device. The contents of the buffer pointer
 will be copied to this cache when writing, or read from the cache
 when reading.
-Buffers send to \ :c:type:`struct rt2x00usb_vendor_request <rt2x00usb_vendor_request>` \_must\_ be allocated with
+Buffers send to \ :c:type:`struct rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\  \_must\_ be allocated with
 kmalloc. Hence the reason for using a previously allocated cache
 which has been allocated properly.
 
@@ -216,7 +216,7 @@ rt2x00usb_vendor_req_buff_lock
         USB vendor command (See \ :c:type:`enum rt2x00usb_vendor_request <rt2x00usb_vendor_request>`\ )
 
     :param const u8 requesttype:
-        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\_\*
+        Request type \ :c:type:`struct USB_VENDOR_REQUEST <USB_VENDOR_REQUEST>`\ \_\*
 
     :param const u16 offset:
         Register offset to perform action on
@@ -225,7 +225,7 @@ rt2x00usb_vendor_req_buff_lock
         Buffer where information will be read/written to by device
 
     :param const u16 buffer_length:
-        Size of \ :c:type:`struct buffer <buffer>`
+        Size of \ :c:type:`struct buffer <buffer>`\ 
 
     :param const int timeout:
         Operation timeout
@@ -235,7 +235,7 @@ rt2x00usb_vendor_req_buff_lock
 Description
 -----------
 
-A version of \ :c:type:`struct rt2x00usb_vendor_request_buff <rt2x00usb_vendor_request_buff>` which must be called
+A version of \ :c:type:`struct rt2x00usb_vendor_request_buff <rt2x00usb_vendor_request_buff>`\  which must be called
 if the usb_cache_mutex is already held.
 
 .. _`rt2x00usb_vendor_request_sw`:

@@ -60,7 +60,7 @@ get_gpmc_timing_reg
     :param bool raw:
         Raw Format Option.
         raw format:  gpmc,name = <value>
-        tick format: gpmc,name = <value> /\ :c:type:`struct zwj <zwj>`;\* x ns -- y ns; x ticks \*\ :c:type:`struct zwj <zwj>`;/
+        tick format: gpmc,name = <value> /&zwj;\* x ns -- y ns; x ticks \*&zwj;/
         Where x ns -- y ns result in the same tick value.
         When \ ``max``\  is exceeded, "invalid" is printed inside comment.
 

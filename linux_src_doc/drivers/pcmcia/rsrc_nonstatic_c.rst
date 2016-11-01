@@ -63,9 +63,9 @@ do_validate_mem
 Description
 -----------
 
-\ :c:func:`do_validate_mem`\  splits up the memory region which is to be checked
-into two parts. Both are passed to the @\ :c:func:`validate`\  function. If
-@\ :c:func:`validate`\  returns non-zero, or the value parameter to @\ :c:func:`validate`\ 
+do_validate_mem() splits up the memory region which is to be checked
+into two parts. Both are passed to the \ ``validate``\ () function. If
+\ ``validate``\ () returns non-zero, or the value parameter to \ ``validate``\ ()
 is zero, or the value parameter is different between both calls,
 the check fails, and -EINVAL is returned. Else, 0 is returned.
 
@@ -98,9 +98,9 @@ do_mem_probe
 Description
 -----------
 
-\ :c:func:`do_mem_probe`\  checks a memory region for use by the PCMCIA subsystem.
+do_mem_probe() checks a memory region for use by the PCMCIA subsystem.
 To do so, the area is split up into sensible parts, and then passed
-into the @\ :c:func:`validate`\  function. Only if @\ :c:func:`validate`\  and @\ :c:func:`fallback`\  fail,
+into the \ ``validate``\ () function. Only if \ ``validate``\ () and \ ``fallback``\ () fail,
 the area is marked as unavaibale for use by the PCMCIA subsystem. The
 function returns the size of the usable memory area.
 

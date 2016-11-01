@@ -265,7 +265,7 @@ m5mols_restore_controls
 Description
 -----------
 
-\ :c:func:`m5mols_do_scenemode`\  handles all parameters for which there is yet no
+m5mols_do_scenemode() handles all parameters for which there is yet no
 individual control. It should be replaced at some point by setting each
 control individually, in required register set up order.
 

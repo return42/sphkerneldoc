@@ -205,17 +205,17 @@ replay_entries_cmp
         UBIFS file-system description object
 
     :param struct list_head \*a:
-        second replay entry
+        first replay entry
 
     :param struct list_head \*b:
-        *undescribed*
+        second replay entry
 
 .. _`replay_entries_cmp.description`:
 
 Description
 -----------
 
-This is a comparios function for '\ :c:func:`list_sort`\ ' which compares 2 replay
+This is a comparios function for 'list_sort()' which compares 2 replay
 entries \ ``a``\  and \ ``b``\  by comparing their sequence numer.  Returns \ ``1``\  if \ ``a``\  has
 greater sequence number and \ ``-1``\  otherwise.
 
@@ -401,7 +401,7 @@ Description
 -----------
 
 This function checks if bud \ ``bud``\  is the last bud in its journal head. This
-information is then used by '\ :c:func:`replay_bud`\ ' to decide whether the bud can
+information is then used by 'replay_bud()' to decide whether the bud can
 have corruptions or not. Indeed, only last buds can be corrupted by power
 cuts. Returns \ ``1``\  if this is the last bud, and \ ``0``\  if not.
 

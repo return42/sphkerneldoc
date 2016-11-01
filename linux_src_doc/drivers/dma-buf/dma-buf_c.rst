@@ -106,7 +106,7 @@ dma_buf_attach
 Description
 -----------
 
-Returns struct dma_buf_attachment \* for this attachment; returns ERR_PTR on
+Returns struct dma_buf_attachment * for this attachment; returns ERR_PTR on
 error.
 
 .. _`dma_buf_detach`:
@@ -131,7 +131,7 @@ dma_buf_map_attachment
 
 .. c:function:: struct sg_table *dma_buf_map_attachment(struct dma_buf_attachment *attach, enum dma_data_direction direction)
 
-    Returns the scatterlist table of the attachment; mapped into \_device\_ address space. Is a wrapper for \ :c:func:`map_dma_buf`\  of the dma_buf_ops.
+    Returns the scatterlist table of the attachment; mapped into _device_ address space. Is a wrapper for \ :c:func:`map_dma_buf`\  of the dma_buf_ops.
 
     :param struct dma_buf_attachment \*attach:
         [in]    attachment whose scatterlist is to be returned

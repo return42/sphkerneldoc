@@ -18,7 +18,7 @@ sched_idle_set_state
 default_idle_call
 =================
 
-.. c:function:: void default_idle_call( void)
+.. c:function:: void __cpuidle default_idle_call( void)
 
     Default CPU idle routine.
 

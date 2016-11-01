@@ -20,4 +20,5 @@ ipv4
     tcp_input_c
     tcp_lp_c
     tcp_output_c
+    tcp_timer_c
     udp_c

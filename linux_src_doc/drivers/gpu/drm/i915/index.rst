@@ -7,10 +7,10 @@ i915
 .. toctree::
     :maxdepth: 1
 
+    gvt/index
     dvo_ivch_c
     i915_cmd_parser_c
     i915_debugfs_c
-    i915_dma_c
     i915_drv_c
     i915_drv_h
     i915_gem_batch_pool_c
@@ -20,6 +20,9 @@ i915
     i915_gem_execbuffer_c
     i915_gem_fence_c
     i915_gem_gtt_c
+    i915_gem_gtt_h
+    i915_gem_request_c
+    i915_gem_request_h
     i915_gem_shrinker_c
     i915_gem_tiling_c
     i915_gem_userptr_c
@@ -27,6 +30,8 @@ i915
     i915_guc_submission_c
     i915_ioc32_c
     i915_irq_c
+    i915_memcpy_c
+    i915_mm_c
     i915_reg_h
     i915_trace_h
     i915_vgpu_c
@@ -41,15 +46,17 @@ i915
     intel_dpll_mgr_c
     intel_drv_h
     intel_dvo_c
+    intel_engine_cs_c
     intel_fbc_c
     intel_fifo_underrun_c
     intel_frontbuffer_c
+    intel_frontbuffer_h
     intel_guc_fwif_h
     intel_guc_loader_c
+    intel_gvt_c
     intel_hotplug_c
     intel_i2c_c
     intel_lrc_c
-    intel_lrc_h
     intel_lvds_c
     intel_mocs_c
     intel_mocs_h

@@ -25,15 +25,15 @@ Copyright (C) 2014 Stmicroelectronics
 Author
 ------
 
-Giuseppe Cavallaro <peppe.cavallaro\ ``st``\ .com>
+Giuseppe Cavallaro <peppe.cavallaro@st.com>
 
 .. _`clkrst_ctrl.contributors`:
 
 Contributors
 ------------
 
-Aymen Bouattay <aymen.bouattay\ ``st``\ .com>
-Peter Griffin <peter.griffin\ ``linaro``\ .org>
+Aymen Bouattay <aymen.bouattay@st.com>
+Peter Griffin <peter.griffin@linaro.org>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -89,7 +89,7 @@ esit
 
 num_budget_microframes
     number of continuous uframes
-    (\ ``repeat``\ ==1) scheduled within the interval
+    (@repeat==1) scheduled within the interval
 
 bw_cost_per_microframe
     bandwidth cost per microframe

@@ -8,6 +8,7 @@ hw
     :maxdepth: 1
 
     hfi1/index
+    hns/index
     i40iw/index
     mlx5/index
     nes/index

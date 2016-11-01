@@ -631,7 +631,7 @@ parport_ip32_frob_control
 Description
 -----------
 
-This differs from \\ :c:func:`__parport_ip32_frob_control`\  in that it only allows to
+This differs from \__parport_ip32_frob_control() in that it only allows to
 change the value of \ ``DCR_STROBE``\ , \ ``DCR_AUTOFD``\ , \ ``DCR_nINIT``\ , and \ ``DCR_SELECT``\ .
 
 .. _`parport_ip32_disable_irq`:
@@ -913,7 +913,7 @@ parport_ip32_fifo_wait_break
 Description
 -----------
 
-\ :c:func:`parport_ip32_fifo_wait_break`\  checks if the waiting function should return
+parport_ip32_fifo_wait_break() checks if the waiting function should return
 immediately or not.  The break conditions are:
 - expired timeout;
 - a pending signal;
@@ -1141,7 +1141,7 @@ parport_ip32_ecp_supported
     check for an ECP port
 
     :param struct parport \*p:
-        pointer to the \ :c:type:`struct parport <parport>` structure
+        pointer to the \ :c:type:`struct parport <parport>`\  structure
 
 .. _`parport_ip32_ecp_supported.description`:
 
@@ -1162,7 +1162,7 @@ parport_ip32_fifo_supported
     check for FIFO parameters
 
     :param struct parport \*p:
-        pointer to the \ :c:type:`struct parport <parport>` structure
+        pointer to the \ :c:type:`struct parport <parport>`\  structure
 
 .. _`parport_ip32_fifo_supported.description`:
 
@@ -1220,7 +1220,7 @@ parport_ip32_probe_port
 Description
 -----------
 
-Returns the new allocated \ :c:type:`struct parport <parport>` structure.  On error, an error code is
+Returns the new allocated \ :c:type:`struct parport <parport>`\  structure.  On error, an error code is
 encoded in return value with the ERR_PTR function.
 
 .. _`parport_ip32_unregister_port`:

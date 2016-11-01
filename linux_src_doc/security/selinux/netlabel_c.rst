@@ -6,12 +6,15 @@
 selinux_netlbl_sidlookup_cached
 ===============================
 
-.. c:function:: int selinux_netlbl_sidlookup_cached(struct sk_buff *skb, struct netlbl_lsm_secattr *secattr, u32 *sid)
+.. c:function:: int selinux_netlbl_sidlookup_cached(struct sk_buff *skb, u16 family, struct netlbl_lsm_secattr *secattr, u32 *sid)
 
     Cache a SID lookup
 
     :param struct sk_buff \*skb:
         the packet
+
+    :param u16 family:
+        *undescribed*
 
     :param struct netlbl_lsm_secattr \*secattr:
         the NetLabel security attributes
@@ -96,12 +99,15 @@ Invalidate the NetLabel security attribute mapping cache.
 selinux_netlbl_err
 ==================
 
-.. c:function:: void selinux_netlbl_err(struct sk_buff *skb, int error, int gateway)
+.. c:function:: void selinux_netlbl_err(struct sk_buff *skb, u16 family, int error, int gateway)
 
     Handle a NetLabel packet error
 
     :param struct sk_buff \*skb:
         the packet
+
+    :param u16 family:
+        *undescribed*
 
     :param int error:
         the error code
@@ -316,6 +322,29 @@ Description
 Fetch the NetLabel security attributes from \ ``skb``\  and perform an access check
 against the receiving socket.  Returns zero on success, negative values on
 error.
+
+.. _`selinux_netlbl_option`:
+
+selinux_netlbl_option
+=====================
+
+.. c:function:: int selinux_netlbl_option(int level, int optname)
+
+    Is this a NetLabel option
+
+    :param int level:
+        the socket level or protocol
+
+    :param int optname:
+        the socket option name
+
+.. _`selinux_netlbl_option.description`:
+
+Description
+-----------
+
+Returns true if \ ``level``\  and \ ``optname``\  refer to a NetLabel option.
+Helper for \ :c:func:`selinux_netlbl_socket_setsockopt`\ .
 
 .. _`selinux_netlbl_socket_setsockopt`:
 

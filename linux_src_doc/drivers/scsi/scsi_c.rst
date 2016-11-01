@@ -489,7 +489,7 @@ __starget_for_each_device
         target whose devices we want to iterate over.
 
     :param void \*data:
-        parameter for callback @\ :c:func:`fn`\ 
+        parameter for callback \ ``fn``\ ()
 
     :param void (\*fn)(struct scsi_device \*, void \*):
         callback function that is invoked for each device

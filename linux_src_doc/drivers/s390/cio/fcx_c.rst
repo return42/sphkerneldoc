@@ -315,7 +315,7 @@ Description
 
 Add a new dcw to the specified tccb by writing the dcw information specified
 by \ ``cmd``\ , \ ``flags``\ , \ ``cd``\ , \ ``cd_count``\  and \ ``count``\  to the tca of the tccb. Return
-a pointer to the newly added dcw on success or -\ ``ENOSPC``\  if the new dcw
+a pointer to the newly added dcw on success or -%ENOSPC if the new dcw
 would exceed the available space as defined by \ ``tccb_size``\ .
 
 .. _`tccb_add_dcw.note`:

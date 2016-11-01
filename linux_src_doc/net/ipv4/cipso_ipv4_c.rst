@@ -1,62 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/ipv4/cipso_ipv4.c
 
-.. _`cipso_v4_bitmap_walk`:
-
-cipso_v4_bitmap_walk
-====================
-
-.. c:function:: int cipso_v4_bitmap_walk(const unsigned char *bitmap, u32 bitmap_len, u32 offset, u8 state)
-
-    Walk a bitmap looking for a bit
-
-    :param const unsigned char \*bitmap:
-        the bitmap
-
-    :param u32 bitmap_len:
-        length in bits
-
-    :param u32 offset:
-        starting offset
-
-    :param u8 state:
-        if non-zero, look for a set (1) bit else look for a cleared (0) bit
-
-.. _`cipso_v4_bitmap_walk.description`:
-
-Description
------------
-
-Starting at \ ``offset``\ , walk the bitmap from left to right until either the
-desired bit is found or we reach the end.  Return the bit offset, -1 if
-not found, or -2 if error.
-
-.. _`cipso_v4_bitmap_setbit`:
-
-cipso_v4_bitmap_setbit
-======================
-
-.. c:function:: void cipso_v4_bitmap_setbit(unsigned char *bitmap, u32 bit, u8 state)
-
-    Sets a single bit in a bitmap
-
-    :param unsigned char \*bitmap:
-        the bitmap
-
-    :param u32 bit:
-        the bit
-
-    :param u8 state:
-        if non-zero, set the bit (1) else clear the bit (0)
-
-.. _`cipso_v4_bitmap_setbit.description`:
-
-Description
------------
-
-Set a single bit in the bitmask.  Returns zero on success, negative values
-on error.
-
 .. _`cipso_v4_cache_entry_free`:
 
 cipso_v4_cache_entry_free
@@ -226,7 +170,7 @@ Description
 -----------
 
 Search the DOI definition list for a DOI definition with a DOI value that
-matches \ ``doi``\ .  The caller is responsible for calling rcu_read_[un]\ :c:func:`lock`\ .
+matches \ ``doi``\ .  The caller is responsible for calling rcu_read_[un]lock().
 Returns a pointer to the DOI definition on success and NULL on failure.
 
 .. _`cipso_v4_doi_add`:

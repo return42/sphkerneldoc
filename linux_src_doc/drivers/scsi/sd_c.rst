@@ -298,7 +298,7 @@ Description
 
 Block layer calls this function if it detects that partitions
 on \ ``disk``\  reach beyond the end of the device.  If the SCSI host
-implements ->\ :c:func:`unlock_native_capacity`\  method, it's invoked to
+implements ->unlock_native_capacity() method, it's invoked to
 give it a chance to adjust the device capacity.
 
 .. _`sd_unlock_native_capacity.context`:

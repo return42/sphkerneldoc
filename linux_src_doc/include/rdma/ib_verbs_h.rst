@@ -8,7 +8,7 @@ struct rdma_hw_stats
 
 .. c:type:: struct rdma_hw_stats
 
-    \ ``timestamp``\  - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(\ ``name``\ ) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
+    @timestamp - Used by the core code to track when the last update was \ ``lifespan``\  - Used by the core code to determine how old the counters should be before being updated again.  Stored in jiffies, defaults to 10 milliseconds, drivers can override the default be specifying their own value during their allocation routine. \ ``name``\  - Array of pointers to static names used for the counters in directory. \ ``num_counters``\  - How many hardware counters there are.  If name is shorter than this number, a kernel oops will result.  Driver authors are encouraged to leave BUILD_BUG_ON(ARRAY_SIZE(@name) < num_counters) in their code to prevent this. \ ``value``\  - Array of u64 counters that are accessed by the sysfs code and filled in by the drivers get_stats routine
 
 .. _`rdma_hw_stats.definition`:
 
@@ -1410,30 +1410,6 @@ ib_req_ncomp_notif
     :param int wc_cnt:
         The number of unreaped completions that should be on the
         CQ before an event is generated.
-
-.. _`ib_get_dma_mr`:
-
-ib_get_dma_mr
-=============
-
-.. c:function:: struct ib_mr *ib_get_dma_mr(struct ib_pd *pd, int mr_access_flags)
-
-    Returns a memory region for system memory that is usable for DMA.
-
-    :param struct ib_pd \*pd:
-        The protection domain associated with the memory region.
-
-    :param int mr_access_flags:
-        Specifies the memory access rights.
-
-.. _`ib_get_dma_mr.description`:
-
-Description
------------
-
-Note that the ib_dma\_\*() functions defined below must be used
-to create/destroy addresses used with the Lkey or Rkey returned
-by \ :c:func:`ib_get_dma_mr`\ .
 
 .. _`ib_dma_mapping_error`:
 

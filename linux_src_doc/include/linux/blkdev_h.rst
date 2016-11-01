@@ -19,7 +19,7 @@ Definition
 
     struct blk_dax_ctl {
         sector_t sector;
-        void __pmem *addr;
+        void *addr;
         long size;
         pfn_t pfn;
     }

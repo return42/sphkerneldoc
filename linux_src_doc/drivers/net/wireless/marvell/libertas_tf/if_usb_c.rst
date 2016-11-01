@@ -18,7 +18,7 @@ if_usb_write_bulk_callback
 Description
 -----------
 
-\ ``param``\  urb          pointer to urb structure
+@param urb          pointer to urb structure
 
 .. _`if_usb_free`:
 
@@ -37,7 +37,7 @@ if_usb_free
 Description
 -----------
 
-\ ``param``\  cardp        pointer if_usb_card
+@param cardp        pointer if_usb_card
 
 .. _`if_usb_probe`:
 
@@ -59,7 +59,7 @@ if_usb_probe
 Description
 -----------
 
-\ ``ifnum``\       interface number
+@ifnum      interface number
 \ ``id``\          pointer to usb_device_id
 
 .. _`if_usb_probe.return`:
@@ -86,7 +86,7 @@ if_usb_disconnect
 Description
 -----------
 
-\ ``intf``\        USB interface structure
+@intf       USB interface structure
 
 .. _`if_usb_send_fw_pkt`:
 
@@ -105,7 +105,7 @@ if_usb_send_fw_pkt
 Description
 -----------
 
-\ ``priv``\        pointer to struct lbtf_private
+@priv       pointer to struct lbtf_private
 
 .. _`if_usb_send_fw_pkt.return`:
 
@@ -140,7 +140,7 @@ usb_tx_block
 Description
 -----------
 
-\ ``priv``\        pointer to struct lbtf_private
+@priv       pointer to struct lbtf_private
 \ ``payload``\     pointer to payload data
 \ ``nb``\          data length
 \ ``data``\        non-zero for data, zero for commands
@@ -169,7 +169,7 @@ if_usb_receive
 Description
 -----------
 
-\ ``urb``\                 pointer to struct urb
+@urb                pointer to struct urb
 
 .. _`if_usb_host_to_card`:
 
@@ -197,7 +197,7 @@ if_usb_host_to_card
 Description
 -----------
 
-\ ``priv``\                pointer to struct lbtf_private structure
+@priv               pointer to struct lbtf_private structure
 \ ``type``\                type of data
 \ ``buf``\                 pointer to data buffer
 \ ``len``\                 number of bytes
@@ -229,7 +229,7 @@ if_usb_issue_boot_command
 Description
 -----------
 
-\ ``ivalue``\    1 boots from FW by USB-Download, 2 boots from FW in EEPROM.
+@ivalue   1 boots from FW by USB-Download, 2 boots from FW in EEPROM.
 
 .. _`if_usb_issue_boot_command.return`:
 
@@ -258,7 +258,7 @@ check_fwfile_format
 Description
 -----------
 
-\ ``data``\        pointer to image
+@data       pointer to image
 \ ``totlen``\      image length
 
 .. _`check_fwfile_format.return`:

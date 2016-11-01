@@ -26,8 +26,8 @@ mappings, drop a reference to it and unmap it if there are no more active
 references to it.
 
 During early init (when acpi_gbl_permanent_mmap has not been set yet) this
-routine simply calls \\ :c:func:`__acpi_unmap_table`\  to get the job done.  Since
-\\ :c:func:`__acpi_unmap_table`\  is an \__init function, the \__ref annotation is needed
+routine simply calls \__acpi_unmap_table() to get the job done.  Since
+\__acpi_unmap_table() is an \__init function, the \__ref annotation is needed
 here.
 
 .. This file was automatic generated / don't edit.

@@ -21,7 +21,7 @@ raw interrupt reports (similar to the Windows HID driver).
 Devices based on the book USB COMPLETE by Jan Axelson may need
 such a compatibility to the Windows HID driver.
 
-Copyright (C) 2005 Michael Hund <mhund\ ``ld``\ -didactic.de>
+Copyright (C) 2005 Michael Hund <mhund@ld-didactic.de>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License as
@@ -29,8 +29,8 @@ published by the Free Software Foundation; either version 2 of
 the License, or (at your option) any later version.
 
 Derived from Lego USB Tower driver
-Copyright (C) 2003 David Glance <advidgsf\ ``sourceforge``\ .net>
-2001-2004 Juergen Stuber <starblue\ ``users``\ .sourceforge.net>
+Copyright (C) 2003 David Glance <advidgsf@sourceforge.net>
+2001-2004 Juergen Stuber <starblue@users.sourceforge.net>
 
 .. _`ld_usb_abort_transfers`:
 

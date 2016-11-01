@@ -727,60 +727,6 @@ Return
 
 True if the RGB quantization range is selectable, false otherwise.
 
-.. _`drm_assign_hdmi_deep_color_info`:
-
-drm_assign_hdmi_deep_color_info
-===============================
-
-.. c:function:: bool drm_assign_hdmi_deep_color_info(struct edid *edid, struct drm_display_info *info, struct drm_connector *connector)
-
-    detect whether monitor supports hdmi deep color modes and update drm_display_info if so.
-
-    :param struct edid \*edid:
-        monitor EDID information
-
-    :param struct drm_display_info \*info:
-        Updated with maximum supported deep color bpc and color format
-        if deep color supported.
-
-    :param struct drm_connector \*connector:
-        DRM connector, used only for debug output
-
-.. _`drm_assign_hdmi_deep_color_info.description`:
-
-Description
------------
-
-Parse the CEA extension according to CEA-861-B.
-Return true if HDMI deep color supported, false if not or unknown.
-
-.. _`drm_add_display_info`:
-
-drm_add_display_info
-====================
-
-.. c:function:: void drm_add_display_info(struct edid *edid, struct drm_display_info *info, struct drm_connector *connector)
-
-    pull display info out if present
-
-    :param struct edid \*edid:
-        EDID data
-
-    :param struct drm_display_info \*info:
-        display info (attached to connector)
-
-    :param struct drm_connector \*connector:
-        connector whose edid is used to build display info
-
-.. _`drm_add_display_info.description`:
-
-Description
------------
-
-Grab any available display info and stuff it into the drm_display_info
-structure that's part of the connector.  Useful for tracking bpp and
-color spaces.
-
 .. _`drm_add_edid_modes`:
 
 drm_add_edid_modes
@@ -801,7 +747,9 @@ drm_add_edid_modes
 Description
 -----------
 
-Add the specified modes to the connector's mode list.
+Add the specified modes to the connector's mode list. Also fills out the
+\ :c:type:`struct drm_display_info <drm_display_info>`\  structure in \ ``connector``\  with any information which can be
+derived from the edid.
 
 .. _`drm_add_edid_modes.return`:
 

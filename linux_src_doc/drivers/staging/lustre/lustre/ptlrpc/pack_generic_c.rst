@@ -6,14 +6,14 @@
 lustre_msg_buflen
 =================
 
-.. c:function:: int lustre_msg_buflen(struct lustre_msg *m, int n)
+.. c:function:: u32 lustre_msg_buflen(struct lustre_msg *m, u32 n)
 
     return the length of buffer \a n in message \a m \param m lustre_msg (request or reply) to look at \param n message index (base 0)
 
     :param struct lustre_msg \*m:
         *undescribed*
 
-    :param int n:
+    :param u32 n:
         *undescribed*
 
 .. _`lustre_msg_buflen.description`:

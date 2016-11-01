@@ -896,7 +896,7 @@ gm200_secboot_prepare_hs_blob
 Description
 -----------
 
-\ ``gsb``\  secure boot instance to prepare for
+@gsb secure boot instance to prepare for
 \ ``fw``\  name of the HS firmware to load
 \ ``blob``\  pointer to gpuobj that will be allocated to receive the HS FW payload
 \ ``bl_desc``\  pointer to the BL descriptor to write for this firmware

@@ -50,7 +50,7 @@ print_result
 Description
 -----------
 
-\ :c:func:`print_result`\  is primarily intended for functional tests.
+print_result() is primarily intended for functional tests.
 
 .. This file was automatic generated / don't edit.
 

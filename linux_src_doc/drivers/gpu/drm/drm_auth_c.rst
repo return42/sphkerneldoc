@@ -1,71 +1,66 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_auth.c
 
-.. _`drm_getmagic`:
+.. _`drm_is_current_master`:
 
-drm_getmagic
-============
+drm_is_current_master
+=====================
 
-.. c:function:: int drm_getmagic(struct drm_device *dev, void *data, struct drm_file *file_priv)
+.. c:function:: bool drm_is_current_master(struct drm_file *fpriv)
 
-    Get unique magic of a client
+    checks whether \ ``priv``\  is the current master
 
-    :param struct drm_device \*dev:
-        DRM device to operate on
+    :param struct drm_file \*fpriv:
+        DRM file private
 
-    :param void \*data:
-        ioctl data containing the drm_auth object
-
-    :param struct drm_file \*file_priv:
-        DRM file that performs the operation
-
-.. _`drm_getmagic.description`:
+.. _`drm_is_current_master.description`:
 
 Description
 -----------
 
-This looks up the unique magic of the passed client and returns it. If the
-client did not have a magic assigned, yet, a new one is registered. The magic
-is stored in the passed drm_auth object.
+Checks whether \ ``fpriv``\  is current master on its device. This decides whether a
+client is allowed to run DRM_MASTER IOCTLs.
 
-.. _`drm_getmagic.return`:
+Most of the modern IOCTL which require DRM_MASTER are for kernel modesetting
+- the current master is assumed to own the non-shareable display hardware.
 
-Return
-------
+.. _`drm_master_get`:
 
-0 on success, negative error code on failure.
+drm_master_get
+==============
 
-.. _`drm_authmagic`:
+.. c:function:: struct drm_master *drm_master_get(struct drm_master *master)
 
-drm_authmagic
-=============
+    reference a master pointer
 
-.. c:function:: int drm_authmagic(struct drm_device *dev, void *data, struct drm_file *file_priv)
+    :param struct drm_master \*master:
+        struct \ :c:type:`struct drm_master <drm_master>`\ 
 
-    Authenticate client with a magic
-
-    :param struct drm_device \*dev:
-        DRM device to operate on
-
-    :param void \*data:
-        ioctl data containing the drm_auth object
-
-    :param struct drm_file \*file_priv:
-        DRM file that performs the operation
-
-.. _`drm_authmagic.description`:
+.. _`drm_master_get.description`:
 
 Description
 -----------
 
-This looks up a DRM client by the passed magic and authenticates it.
+Increments the reference count of \ ``master``\  and returns a pointer to \ ``master``\ .
 
-.. _`drm_authmagic.return`:
+.. _`drm_master_put`:
 
-Return
-------
+drm_master_put
+==============
 
-0 on success, negative error code on failure.
+.. c:function:: void drm_master_put(struct drm_master **master)
+
+    unreference and clear a master pointer
+
+    :param struct drm_master \*\*master:
+        pointer to a pointer of struct \ :c:type:`struct drm_master <drm_master>`\ 
+
+.. _`drm_master_put.description`:
+
+Description
+-----------
+
+This decrements the \ :c:type:`struct drm_master <drm_master>`\  behind \ ``master``\  and sets it to NULL.
 
 .. This file was automatic generated / don't edit.
 

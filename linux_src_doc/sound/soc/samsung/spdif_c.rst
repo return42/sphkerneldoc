@@ -27,7 +27,7 @@ Definition
         u32 saved_clkcon;
         u32 saved_con;
         u32 saved_cstas;
-        struct s3c_dma_params *dma_playback;
+        struct snd_dmaengine_dai_dma_data *dma_playback;
     }
 
 .. _`samsung_spdif_info.members`:

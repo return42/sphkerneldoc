@@ -59,6 +59,7 @@ Definition
     #endif
     #ifdef CONFIG_SPARSE_IRQ
         struct rcu_head rcu;
+        struct kobject kobj;
     #endif
         int parent_irq;
         struct module *owner;
@@ -161,6 +162,9 @@ dir
 
 rcu
     rcu head for delayed free
+
+kobj
+    kobject used to represent this struct in sysfs
 
 parent_irq
     *undescribed*

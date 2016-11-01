@@ -54,7 +54,7 @@ Description
 -----------
 
 Wait for the PRCM to indicate that the module identified by
-(\ ``prcm_mod``\ , \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
+(@prcm_mod, \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
 success or -EBUSY if the module doesn't enable in time.
 
 .. This file was automatic generated / don't edit.

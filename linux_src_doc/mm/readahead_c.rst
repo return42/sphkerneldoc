@@ -46,7 +46,7 @@ page_cache_sync_readahead
         file_ra_state which holds the readahead state
 
     :param struct file \*filp:
-        passed on to ->\ :c:func:`readpage`\  and ->\ :c:func:`readpages`\ 
+        passed on to ->readpage() and ->readpages()
 
     :param pgoff_t offset:
         start offset into \ ``mapping``\ , in pagecache page-sized units
@@ -60,7 +60,7 @@ page_cache_sync_readahead
 Description
 -----------
 
-\ :c:func:`page_cache_sync_readahead`\  should be called when a cache miss happened:
+page_cache_sync_readahead() should be called when a cache miss happened:
 it will submit the read.  The readahead logic may decide to piggyback more
 pages onto the read request if access patterns suggest it will improve
 performance.
@@ -81,7 +81,7 @@ page_cache_async_readahead
         file_ra_state which holds the readahead state
 
     :param struct file \*filp:
-        passed on to ->\ :c:func:`readpage`\  and ->\ :c:func:`readpages`\ 
+        passed on to ->readpage() and ->readpages()
 
     :param struct page \*page:
         the page at \ ``offset``\  which has the PG_readahead flag set
@@ -98,7 +98,7 @@ page_cache_async_readahead
 Description
 -----------
 
-\ :c:func:`page_cache_async_readahead`\  should be called when a page is used which
+page_cache_async_readahead() should be called when a page is used which
 has the PG_readahead flag; this is a marker to suggest that the application
 has used up enough of the readahead window that we should start pulling in
 more pages.

@@ -123,7 +123,7 @@ Description
 Update the HMAC stored in 'security.evm' to reflect the change.
 
 No need to take the i_mutex lock here, as this function is called from
-\\ :c:func:`__vfs_setxattr_noperm`\ .  The caller of which has taken the inode's
+\__vfs_setxattr_noperm().  The caller of which has taken the inode's
 i_mutex lock.
 
 .. _`evm_inode_post_removexattr`:

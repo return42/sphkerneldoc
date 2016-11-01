@@ -20,6 +20,7 @@ clk
     samsung/index
     st/index
     sunxi/index
+    sunxi-ng/index
     tegra/index
     ti/index
     versatile/index
@@ -35,5 +36,6 @@ clk
     clk-si5351_h
     clk-si570_c
     clk-u300_c
+    clk-xgene_c
     clk_c
     clkdev_c

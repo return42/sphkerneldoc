@@ -68,7 +68,7 @@ only be called with interrupts disabled and no other active outer
 cache masters.
 
 It is intended that this function is only used by implementations
-needing to override the outer_cache.\ :c:func:`disable`\  method due to security.
+needing to override the outer_cache.disable() method due to security.
 (Some implementations perform this as a clean followed by an invalidate.)
 
 .. _`outer_disable`:

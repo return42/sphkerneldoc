@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/ptlrpc/sec.c
 
+.. _`import_sec_validate_get`:
+
+import_sec_validate_get
+=======================
+
+.. c:function:: int import_sec_validate_get(struct obd_import *imp, struct ptlrpc_sec **sec)
+
+    \a imp. There is a race condition on client reconnect when the import is being destroyed while there are outstanding client bound requests. In this case do not output any error messages if import secuity is not found.
+
+    :param struct obd_import \*imp:
+        *undescribed*
+
+    :param struct ptlrpc_sec \*\*sec:
+        *undescribed*
+
+.. _`import_sec_validate_get.description`:
+
+Description
+-----------
+
+\param[in] imp obd import associated with client
+\param[out] sec client side ptlrpc security
+
+\retval 0 if security retrieved successfully
+\retval -ve errno if there was a problem
+
 .. _`sptlrpc_req_get_ctx`:
 
 sptlrpc_req_get_ctx

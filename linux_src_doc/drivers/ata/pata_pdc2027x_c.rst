@@ -314,7 +314,7 @@ pdc2027x_init_one
 
 .. c:function:: int pdc2027x_init_one(struct pci_dev *pdev, const struct pci_device_id *ent)
 
-    PCI probe function Called when an instance of PCI adapter is inserted. This function checks whether the hardware is supported, initialize hardware and register an instance of ata_host to libata.  (implements struct pci_driver.\ :c:func:`probe`\  )
+    PCI probe function Called when an instance of PCI adapter is inserted. This function checks whether the hardware is supported, initialize hardware and register an instance of ata_host to libata.  (implements struct pci_driver.probe() )
 
     :param struct pci_dev \*pdev:
         instance of pci_dev found

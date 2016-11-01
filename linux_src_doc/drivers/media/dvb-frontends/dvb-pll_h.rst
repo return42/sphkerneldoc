@@ -27,7 +27,7 @@ dvb_pll_attach
 Description
 -----------
 
-\ ``param``\  fe Frontend to attach to.
+@param fe Frontend to attach to.
 \ ``param``\  pll_addr i2c address of the PLL (if used).
 \ ``param``\  i2c i2c adapter to use (set to NULL if not used).
 \ ``param``\  pll_desc_id dvb_pll_desc to use.

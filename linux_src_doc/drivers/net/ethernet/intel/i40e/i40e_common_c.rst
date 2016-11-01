@@ -828,6 +828,38 @@ Description
 
 Add a VSI context to the hardware.
 
+.. _`i40e_aq_set_default_vsi`:
+
+i40e_aq_set_default_vsi
+=======================
+
+.. c:function:: i40e_status i40e_aq_set_default_vsi(struct i40e_hw *hw, u16 seid, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u16 seid:
+        vsi number
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
+.. _`i40e_aq_clear_default_vsi`:
+
+i40e_aq_clear_default_vsi
+=========================
+
+.. c:function:: i40e_status i40e_aq_clear_default_vsi(struct i40e_hw *hw, u16 seid, struct i40e_asq_cmd_details *cmd_details)
+
+    :param struct i40e_hw \*hw:
+        pointer to the hw struct
+
+    :param u16 seid:
+        vsi number
+
+    :param struct i40e_asq_cmd_details \*cmd_details:
+        pointer to command details structure or NULL
+
 .. _`i40e_aq_set_vsi_unicast_promiscuous`:
 
 i40e_aq_set_vsi_unicast_promiscuous

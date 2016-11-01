@@ -11,7 +11,7 @@ pcmcia_register_socket
     add a new pcmcia socket device
 
     :param struct pcmcia_socket \*socket:
-        the \ :c:type:`struct socket <socket>` to register
+        the \ :c:type:`struct socket <socket>`\  to register
 
 .. _`pcmcia_unregister_socket`:
 
@@ -23,7 +23,7 @@ pcmcia_unregister_socket
     remove a pcmcia socket device
 
     :param struct pcmcia_socket \*socket:
-        the \ :c:type:`struct socket <socket>` to unregister
+        the \ :c:type:`struct socket <socket>`\  to unregister
 
 .. _`pcmcia_parse_uevents`:
 

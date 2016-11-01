@@ -289,7 +289,7 @@ the host adapter, from initialization or from the last list DMAed.
 seq->next_scb keeps the address of this SCB.  The sequencer will
 DMA to the host adapter this list of SCBs.  But the head (first
 element) of this list is not known to the sequencer.  Here we swap
-the head of the list with the known SCB (\ :c:func:`memcpy`\ ).
+the head of the list with the known SCB (memcpy()).
 Only one \ :c:func:`memcpy`\  is required per list so it is in our interest
 to keep the list of SCB as long as possible so that the ratio
 of number of memcpy calls to the number of SCB DMA-ed is as small

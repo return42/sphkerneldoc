@@ -78,7 +78,7 @@ snd_register_device
         the file operations
 
     :param void \*private_data:
-        user pointer for f_ops->\ :c:func:`open`\ 
+        user pointer for f_ops->open()
 
     :param struct device \*device:
         the device to register

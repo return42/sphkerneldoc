@@ -183,9 +183,9 @@ Definition
         struct drm_clip_rect dirty_clip;
         spinlock_t dirty_lock;
         struct work_struct dirty_work;
+        struct work_struct resume_work;
         struct list_head kernel_fb_list;
         bool delayed_hotplug;
-        bool atomic;
     }
 
 .. _`drm_fb_helper.members`:
@@ -233,6 +233,9 @@ dirty_lock
 dirty_work
     worker used to flush the framebuffer
 
+resume_work
+    worker used during resume if the console lock is already taken
+
 kernel_fb_list
 
     Entry on the global kernel_fb_helper_list, used for kgdb entry/exit.
@@ -243,14 +246,6 @@ delayed_hotplug
     device, i.e. another KMS master was active. The output configuration
     needs to be reprobe when fbdev is in control again.
 
-atomic
-
-    Use atomic updates for \ :c:func:`restore_fbdev_mode`\ , etc.  This defaults to
-    true if driver has DRIVER_ATOMIC feature flag, but drivers can
-    override it to true after \ :c:func:`drm_fb_helper_init`\  if they support atomic
-    modeset but do not yet advertise DRIVER_ATOMIC (note that fb-helper
-    does not require ASYNC commits).
-
 .. _`drm_fb_helper.description`:
 
 Description
@@ -258,8 +253,25 @@ Description
 
 This is the main structure used by the fbdev helpers. Drivers supporting
 fbdev emulation should embedded this into their overall driver structure.
-Drivers must also fill out a struct \ :c:type:`struct drm_fb_helper_funcs <drm_fb_helper_funcs>` with a few
+Drivers must also fill out a struct \ :c:type:`struct drm_fb_helper_funcs <drm_fb_helper_funcs>`\  with a few
 operations.
+
+.. _`drm_fb_helper_default_ops`:
+
+DRM_FB_HELPER_DEFAULT_OPS
+=========================
+
+.. c:function::  DRM_FB_HELPER_DEFAULT_OPS()
+
+    helper define for drm drivers
+
+.. _`drm_fb_helper_default_ops.description`:
+
+Description
+-----------
+
+Helper define to register default implementations of drm_fb_helper
+functions. To be used in struct fb_ops of drm drivers.
 
 .. This file was automatic generated / don't edit.
 

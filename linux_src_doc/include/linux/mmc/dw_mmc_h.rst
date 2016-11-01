@@ -68,7 +68,6 @@ Definition
         union {unnamed_union};
         void (*push_data)(struct dw_mci *host, void *buf, int cnt);
         void (*pull_data)(struct dw_mci *host, void *buf, int cnt);
-        u32 quirks;
         bool vqmmc_enabled;
         unsigned long irq_flags;
         int irq;
@@ -241,9 +240,6 @@ push_data
 
 pull_data
     Pointer to FIFO pull function.
-
-quirks
-    Set of quirks that apply to specific versions of the IP.
 
 vqmmc_enabled
     Status of vqmmc, should be true or false.

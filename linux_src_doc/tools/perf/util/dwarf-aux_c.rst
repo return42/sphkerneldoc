@@ -101,6 +101,26 @@ Description
 Walk on function DIEs at given \ ``addr``\  in \ ``cu_die``\ . Passed DIEs
 should be subprogram or inlined-subroutines.
 
+.. _`die_get_linkage_name`:
+
+die_get_linkage_name
+====================
+
+.. c:function:: const char *die_get_linkage_name(Dwarf_Die *dw_die)
+
+    Get the linkage name of the object
+
+    :param Dwarf_Die \*dw_die:
+        A DIE of the object
+
+.. _`die_get_linkage_name.description`:
+
+Description
+-----------
+
+Get the linkage name attiribute of given \ ``dw_die``\ .
+For C++ binary, the linkage name will be the mangled symbol.
+
 .. _`die_compare_name`:
 
 die_compare_name
@@ -130,7 +150,7 @@ die_match_name
 
 .. c:function:: bool die_match_name(Dwarf_Die *dw_die, const char *glob)
 
-    Match diename and glob
+    Match diename/linkage name and glob
 
     :param Dwarf_Die \*dw_die:
         a DIE
@@ -144,6 +164,7 @@ Description
 -----------
 
 Glob matching the name of \ ``dw_die``\  and \ ``glob``\ . Return false if matching fail.
+This also match linkage name.
 
 .. _`die_get_call_lineno`:
 
@@ -185,7 +206,7 @@ die_get_type
 Description
 -----------
 
-Get a DIE of the type of given variable (\ ``vr_die``\ ), and store
+Get a DIE of the type of given variable (@vr_die), and store
 it to die_mem. Return NULL if fails to get a type DIE.
 
 .. _`die_get_real_type`:
@@ -208,7 +229,7 @@ die_get_real_type
 Description
 -----------
 
-Get a DIE of the type of given variable (\ ``vr_die``\ ), and store
+Get a DIE of the type of given variable (@vr_die), and store
 it to die_mem. Return NULL if fails to get a type DIE.
 If the type is qualifiers (e.g. const) or typedef, this skips it
 and tries to find real type (structure or basic types, e.g. int).

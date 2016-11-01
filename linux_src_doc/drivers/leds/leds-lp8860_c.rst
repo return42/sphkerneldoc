@@ -8,7 +8,7 @@ struct lp8860_led
 
 .. c:type:: struct lp8860_led
 
-    \ ``lock``\  - Lock for reading/writing the device \ ``client``\  - Pointer to the I2C client \ ``led_dev``\  - led class device pointer \ ``regmap``\  - Devices register map \ ``eeprom_regmap``\  - EEPROM register map \ ``enable_gpio``\  - VDDIO/EN gpio to enable communication interface \ ``regulator``\  - LED supply regulator pointer \ ``label``\  - LED label
+    @lock - Lock for reading/writing the device \ ``client``\  - Pointer to the I2C client \ ``led_dev``\  - led class device pointer \ ``regmap``\  - Devices register map \ ``eeprom_regmap``\  - EEPROM register map \ ``enable_gpio``\  - VDDIO/EN gpio to enable communication interface \ ``regulator``\  - LED supply regulator pointer \ ``label``\  - LED label
 
 .. _`lp8860_led.definition`:
 

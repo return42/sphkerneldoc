@@ -8,7 +8,7 @@ generic_pipe_buf_steal
 
 .. c:function:: int generic_pipe_buf_steal(struct pipe_inode_info *pipe, struct pipe_buffer *buf)
 
-    attempt to take ownership of a \ :c:type:`struct pipe_buffer <pipe_buffer>`
+    attempt to take ownership of a \ :c:type:`struct pipe_buffer <pipe_buffer>`\ 
 
     :param struct pipe_inode_info \*pipe:
         the pipe that the buffer belongs to

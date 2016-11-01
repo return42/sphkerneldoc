@@ -84,7 +84,7 @@ Description
 -----------
 
 This function is called from the driver IOCTL entry point
-only and is a wrapper for \\ :c:func:`_scif_send`\ .
+only and is a wrapper for \_scif_send().
 
 .. _`scif_user_recv`:
 
@@ -113,7 +113,7 @@ Description
 -----------
 
 This function is called from the driver IOCTL entry point
-only and is a wrapper for \\ :c:func:`_scif_recv`\ .
+only and is a wrapper for \_scif_recv().
 
 .. _`scif_send`:
 
@@ -142,7 +142,7 @@ Description
 -----------
 
 This function is called from the kernel mode only and is
-a wrapper for \\ :c:func:`_scif_send`\ .
+a wrapper for \_scif_send().
 
 .. _`scif_recv`:
 
@@ -171,7 +171,7 @@ Description
 -----------
 
 This function is called from the kernel mode only and is
-a wrapper for \\ :c:func:`_scif_recv`\ .
+a wrapper for \_scif_recv().
 
 .. _`scif_poll`:
 

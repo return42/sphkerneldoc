@@ -136,41 +136,41 @@ Return
 
 0 if success; negative error code otherwise.
 
-.. _`i915_gem_init_ggtt`:
-
-i915_gem_init_ggtt
-==================
-
-.. c:function:: void i915_gem_init_ggtt(struct drm_device *dev)
-
-    Initialize GEM for Global GTT
-
-    :param struct drm_device \*dev:
-        DRM device
-
 .. _`i915_ggtt_cleanup_hw`:
 
 i915_ggtt_cleanup_hw
 ====================
 
-.. c:function:: void i915_ggtt_cleanup_hw(struct drm_device *dev)
+.. c:function:: void i915_ggtt_cleanup_hw(struct drm_i915_private *dev_priv)
 
     Clean up GGTT hardware initialization
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+.. _`i915_ggtt_probe_hw`:
+
+i915_ggtt_probe_hw
+==================
+
+.. c:function:: int i915_ggtt_probe_hw(struct drm_i915_private *dev_priv)
+
+    Probe GGTT hardware location
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
 .. _`i915_ggtt_init_hw`:
 
 i915_ggtt_init_hw
 =================
 
-.. c:function:: int i915_ggtt_init_hw(struct drm_device *dev)
+.. c:function:: int i915_ggtt_init_hw(struct drm_i915_private *dev_priv)
 
     Initialize GGTT hardware
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
 .. _`i915_vma_bind`:
 
@@ -198,28 +198,6 @@ Description
 DMA addresses are taken from the scatter-gather table of this object (or of
 this VMA in case of non-default GGTT views) and PTE entries set up.
 Note that DMA addresses are also the only part of the SG table we care about.
-
-.. _`i915_ggtt_view_size`:
-
-i915_ggtt_view_size
-===================
-
-.. c:function:: size_t i915_ggtt_view_size(struct drm_i915_gem_object *obj, const struct i915_ggtt_view *view)
-
-    Get the size of a GGTT view.
-
-    :param struct drm_i915_gem_object \*obj:
-        Object the view is of.
-
-    :param const struct i915_ggtt_view \*view:
-        The view in question.
-
-.. _`i915_ggtt_view_size.description`:
-
-Description
------------
-
-\ ``return``\  The size of the GGTT view in bytes.
 
 .. This file was automatic generated / don't edit.
 

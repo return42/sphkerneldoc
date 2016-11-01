@@ -60,7 +60,7 @@ become accessible by the hardware.  Neither \ ``find_idlest``\  nor
 \ ``find_companion``\  should be needed; that information is IP
 block-specific; the hwmod code has been created to handle this, but
 until hwmod data is ready and drivers have been converted to use PM
-runtime calls in place of \ :c:func:`clk_enable`\ /\ :c:func:`clk_disable`\ , \ ``find_idlest``\  and
+runtime calls in place of \ :c:func:`clk_enable`\ /clk_disable(), \ ``find_idlest``\  and
 \ ``find_companion``\  must, unfortunately, remain.
 
 .. _`clk`:

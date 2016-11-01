@@ -241,7 +241,7 @@ atl1e_configure
 
 .. c:function:: int atl1e_configure(struct atl1e_adapter *adapter)
 
-    Configure Transmit\ :c:type:`struct Receive <Receive>` Unit after Reset
+    Configure Transmit&Receive Unit after Reset
 
     :param struct atl1e_adapter \*adapter:
         board private structure

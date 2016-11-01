@@ -45,7 +45,7 @@ IOMMU drivers should normally call this from their domain_free callback.
 iommu_dma_init_domain
 =====================
 
-.. c:function:: int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base, u64 size)
+.. c:function:: int iommu_dma_init_domain(struct iommu_domain *domain, dma_addr_t base, u64 size, struct device *dev)
 
     Initialise a DMA mapping domain
 
@@ -58,12 +58,15 @@ iommu_dma_init_domain
     :param u64 size:
         Size of IOVA space
 
+    :param struct device \*dev:
+        Device the domain is being initialised for
+
 .. _`iommu_dma_init_domain.description`:
 
 Description
 -----------
 
-\ ``base``\  and \ ``size``\  should be exact multiples of IOMMU page granularity to
+@base and \ ``size``\  should be exact multiples of IOMMU page granularity to
 avoid rounding surprises. If necessary, we reserve the page at address 0
 to ensure it is an invalid IOVA. It is safe to reinitialise a domain, but
 any change which could make prior IOVAs invalid will fail.

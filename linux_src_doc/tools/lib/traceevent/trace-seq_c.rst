@@ -73,7 +73,7 @@ space, 1 otherwise.
 The tracer may use either sequence operations or its own
 copy to user routines. To simplify formating of a trace
 trace_seq_printf is used to store strings into a special
-buffer (\ ``s``\ ). Then the output may be either used by
+buffer (@s). Then the output may be either used by
 the sequencer or pulled into another buffer.
 
 .. _`trace_seq_vprintf`:
@@ -102,7 +102,7 @@ Description
 The tracer may use either sequence operations or its own
 copy to user routines. To simplify formating of a trace
 trace_seq_printf is used to store strings into a special
-buffer (\ ``s``\ ). Then the output may be either used by
+buffer (@s). Then the output may be either used by
 the sequencer or pulled into another buffer.
 
 .. _`trace_seq_puts`:
@@ -127,7 +127,7 @@ Description
 
 The tracer may use either the sequence operations or its own
 copy to user routines. This function records a simple string
-into a special buffer (\ ``s``\ ) for later retrieval by a sequencer
+into a special buffer (@s) for later retrieval by a sequencer
 or other mechanism.
 
 .. This file was automatic generated / don't edit.

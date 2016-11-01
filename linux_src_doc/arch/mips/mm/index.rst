@@ -8,4 +8,5 @@ mm
     :maxdepth: 1
 
     c-octeon_c
+    c-r4k_c
     gup_c

@@ -51,7 +51,7 @@ Description
 The tracer may use either sequence operations or its own
 copy to user routines. To simplify formating of a trace
 \ :c:func:`trace_seq_printf`\  is used to store strings into a special
-buffer (\ ``s``\ ). Then the output may be either used by
+buffer (@s). Then the output may be either used by
 the sequencer or pulled into another buffer.
 
 .. _`trace_seq_bitmask`:
@@ -105,7 +105,7 @@ Description
 The tracer may use either sequence operations or its own
 copy to user routines. To simplify formating of a trace
 trace_seq_printf is used to store strings into a special
-buffer (\ ``s``\ ). Then the output may be either used by
+buffer (@s). Then the output may be either used by
 the sequencer or pulled into another buffer.
 
 .. _`trace_seq_bprintf`:
@@ -162,7 +162,7 @@ Description
 
 The tracer may use either the sequence operations or its own
 copy to user routines. This function records a simple string
-into a special buffer (\ ``s``\ ) for later retrieval by a sequencer
+into a special buffer (@s) for later retrieval by a sequencer
 or other mechanism.
 
 .. _`trace_seq_putc`:
@@ -187,7 +187,7 @@ Description
 
 The tracer may use either the sequence operations or its own
 copy to user routines. This function records a simple charater
-into a special buffer (\ ``s``\ ) for later retrieval by a sequencer
+into a special buffer (@s) for later retrieval by a sequencer
 or other mechanism.
 
 .. _`trace_seq_putmem`:
@@ -295,16 +295,16 @@ Description
 -----------
 
 Copies the sequence buffer into the userspace memory pointed to
-by \ ``ubuf``\ . It starts from the last read position (\ ``s``\ ->readpos)
+by \ ``ubuf``\ . It starts from the last read position (@s->readpos)
 and writes up to \ ``cnt``\  characters or till it reaches the end of
-the content in the buffer (\ ``s``\ ->len), which ever comes first.
+the content in the buffer (@s->len), which ever comes first.
 
 On success, it returns a positive number of the number of bytes
 it copied.
 
 On failure it returns -EBUSY if all of the content in the
 sequence has been already read, which includes nothing in the
-sequenc (\ ``s``\ ->len == \ ``s``\ ->readpos).
+sequenc (@s->len == \ ``s``\ ->readpos).
 
 Returns -EFAULT if the copy to userspace fails.
 

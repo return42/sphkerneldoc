@@ -145,7 +145,7 @@ Description
 
 If all the phys have been started, then attempt to transition the
 controller to the READY state and inform the user
-(\ :c:func:`sci_cb_controller_start_complete`\ ).
+(sci_cb_controller_start_complete()).
 
 .. _`isci_host_completion_routine`:
 

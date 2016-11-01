@@ -260,6 +260,48 @@ nfs_delegation_reap_unclaimed
     :param struct nfs_client \*clp:
         nfs_client to process
 
+.. _`nfs_mark_test_expired_all_delegations`:
+
+nfs_mark_test_expired_all_delegations
+=====================================
+
+.. c:function:: void nfs_mark_test_expired_all_delegations(struct nfs_client *clp)
+
+    mark all delegations for testing
+
+    :param struct nfs_client \*clp:
+        nfs_client to process
+
+.. _`nfs_mark_test_expired_all_delegations.description`:
+
+Description
+-----------
+
+Iterates through all the delegations associated with this server and
+marks them as needing to be checked for validity.
+
+.. _`nfs_reap_expired_delegations`:
+
+nfs_reap_expired_delegations
+============================
+
+.. c:function:: void nfs_reap_expired_delegations(struct nfs_client *clp)
+
+    reap expired delegations
+
+    :param struct nfs_client \*clp:
+        nfs_client to process
+
+.. _`nfs_reap_expired_delegations.description`:
+
+Description
+-----------
+
+Iterates through all the delegations associated with this server and
+checks if they have may have been revoked. This function is usually
+expected to be called in cases where the server may have lost its
+lease.
+
 .. _`nfs_delegations_present`:
 
 nfs_delegations_present

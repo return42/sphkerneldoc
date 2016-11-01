@@ -3047,8 +3047,8 @@ following values are returned
 -----------------------------
 
 
-\*\ ``pbar2_qoffset``\ : the BAR2 Offset of the \ ``qid``\  Registers
-\*\ ``pbar2_qid``\ : the BAR2 SGE Queue ID or 0 of \ ``qid``\ 
+\*@pbar2_qoffset: the BAR2 Offset of the \ ``qid``\  Registers
+\*@pbar2_qid: the BAR2 SGE Queue ID or 0 of \ ``qid``\ 
 
 If the returned BAR2 Queue ID is 0, then BAR2 SGE registers which
 require the "Inferred Queue ID" ability may be used.  E.g. the
@@ -3415,6 +3415,27 @@ t4_idma_monitor
 
     :param int ticks:
         number of ticks since the last IDMA Monitor call
+
+.. _`t4_set_vf_mac_acl`:
+
+t4_set_vf_mac_acl
+=================
+
+.. c:function:: int t4_set_vf_mac_acl(struct adapter *adapter, unsigned int vf, unsigned int naddr, u8 *addr)
+
+    Set MAC address for the specified VF
+
+    :param struct adapter \*adapter:
+        The adapter
+
+    :param unsigned int vf:
+        one of the VFs instantiated by the specified PF
+
+    :param unsigned int naddr:
+        the number of MAC addresses
+
+    :param u8 \*addr:
+        the MAC address(es) to be set to the specified VF
 
 .. This file was automatic generated / don't edit.
 

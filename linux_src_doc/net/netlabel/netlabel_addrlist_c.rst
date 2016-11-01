@@ -23,7 +23,7 @@ Description
 
 Searches the IPv4 address list given by \ ``head``\ .  If a matching address entry
 is found it is returned, otherwise NULL is returned.  The caller is
-responsible for calling the rcu_read_[un]\ :c:func:`lock`\  functions.
+responsible for calling the rcu_read_[un]lock() functions.
 
 .. _`netlbl_af4list_search_exact`:
 
@@ -50,7 +50,7 @@ Description
 
 Searches the IPv4 address list given by \ ``head``\ .  If an exact match if found
 it is returned, otherwise NULL is returned.  The caller is responsible for
-calling the rcu_read_[un]\ :c:func:`lock`\  functions.
+calling the rcu_read_[un]lock() functions.
 
 .. _`netlbl_af6list_search`:
 
@@ -74,7 +74,7 @@ Description
 
 Searches the IPv6 address list given by \ ``head``\ .  If a matching address entry
 is found it is returned, otherwise NULL is returned.  The caller is
-responsible for calling the rcu_read_[un]\ :c:func:`lock`\  functions.
+responsible for calling the rcu_read_[un]lock() functions.
 
 .. _`netlbl_af6list_search_exact`:
 
@@ -101,7 +101,7 @@ Description
 
 Searches the IPv6 address list given by \ ``head``\ .  If an exact match if found
 it is returned, otherwise NULL is returned.  The caller is responsible for
-calling the rcu_read_[un]\ :c:func:`lock`\  functions.
+calling the rcu_read_[un]lock() functions.
 
 .. _`netlbl_af4list_add`:
 

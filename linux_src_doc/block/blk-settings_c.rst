@@ -127,7 +127,7 @@ Caveat
 
 The driver that does this \*must\* be able to deal appropriately
 with buffers in "highmemory". This can be accomplished by either calling
-\\ :c:func:`__bio_kmap_atomic`\  to get a temporary kernel mapping, or by calling
+\__bio_kmap_atomic() to get a temporary kernel mapping, or by calling
 \ :c:func:`blk_queue_bounce`\  to create a buffer in normal memory.
 
 .. _`blk_queue_bounce_limit`:

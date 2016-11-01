@@ -85,24 +85,43 @@ Description
 
 power of VCE when it's not used any more
 
-.. _`amdgpu_vce_note_usage`:
+.. _`amdgpu_vce_ring_begin_use`:
 
-amdgpu_vce_note_usage
-=====================
+amdgpu_vce_ring_begin_use
+=========================
 
-.. c:function:: void amdgpu_vce_note_usage(struct amdgpu_device *adev)
+.. c:function:: void amdgpu_vce_ring_begin_use(struct amdgpu_ring *ring)
 
     power up VCE
 
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
+    :param struct amdgpu_ring \*ring:
+        amdgpu ring
 
-.. _`amdgpu_vce_note_usage.description`:
+.. _`amdgpu_vce_ring_begin_use.description`:
 
 Description
 -----------
 
 Make sure VCE is powerd up when we want to use it
+
+.. _`amdgpu_vce_ring_end_use`:
+
+amdgpu_vce_ring_end_use
+=======================
+
+.. c:function:: void amdgpu_vce_ring_end_use(struct amdgpu_ring *ring)
+
+    power VCE down
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu ring
+
+.. _`amdgpu_vce_ring_end_use.description`:
+
+Description
+-----------
+
+Schedule work to power VCE down again
 
 .. _`amdgpu_vce_free_handles`:
 
@@ -218,7 +237,7 @@ Patch relocation inside command stream with real buffer address
 amdgpu_vce_validate_handle
 ==========================
 
-.. c:function:: int amdgpu_vce_validate_handle(struct amdgpu_cs_parser *p, uint32_t handle, bool *allocated)
+.. c:function:: int amdgpu_vce_validate_handle(struct amdgpu_cs_parser *p, uint32_t handle, uint32_t *allocated)
 
     validate stream handle
 
@@ -228,7 +247,7 @@ amdgpu_vce_validate_handle
     :param uint32_t handle:
         handle to validate
 
-    :param bool \*allocated:
+    :param uint32_t \*allocated:
         allocated a new handle?
 
 .. _`amdgpu_vce_validate_handle.description`:
@@ -313,12 +332,15 @@ amdgpu_vce_ring_test_ring
 amdgpu_vce_ring_test_ib
 =======================
 
-.. c:function:: int amdgpu_vce_ring_test_ib(struct amdgpu_ring *ring)
+.. c:function:: int amdgpu_vce_ring_test_ib(struct amdgpu_ring *ring, long timeout)
 
     test if VCE IBs are working
 
     :param struct amdgpu_ring \*ring:
         the engine to test on
+
+    :param long timeout:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

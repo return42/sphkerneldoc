@@ -451,7 +451,7 @@ Disables SREP translation regions.
 tsi721_rio_map_inb_mem
 ======================
 
-.. c:function:: int tsi721_rio_map_inb_mem(struct rio_mport *mport, dma_addr_t lstart, u64 rstart, u32 size, u32 flags)
+.. c:function:: int tsi721_rio_map_inb_mem(struct rio_mport *mport, dma_addr_t lstart, u64 rstart, u64 size, u32 flags)
 
     - Mapping inbound memory region.
 
@@ -464,7 +464,7 @@ tsi721_rio_map_inb_mem
     :param u64 rstart:
         RapidIO space start address.
 
-    :param u32 size:
+    :param u64 size:
         The mapping region size.
 
     :param u32 flags:

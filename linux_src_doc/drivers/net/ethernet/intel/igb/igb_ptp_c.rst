@@ -217,6 +217,46 @@ igb_ptp_set_ts_config
     :param struct ifreq \*ifr:
         *undescribed*
 
+.. _`igb_ptp_init`:
+
+igb_ptp_init
+============
+
+.. c:function:: void igb_ptp_init(struct igb_adapter *adapter)
+
+    Initialize PTP functionality
+
+    :param struct igb_adapter \*adapter:
+        Board private structure
+
+.. _`igb_ptp_init.description`:
+
+Description
+-----------
+
+This function is called at device probe to initialize the PTP
+functionality.
+
+.. _`igb_ptp_suspend`:
+
+igb_ptp_suspend
+===============
+
+.. c:function:: void igb_ptp_suspend(struct igb_adapter *adapter)
+
+    Disable PTP work items and prepare for suspend
+
+    :param struct igb_adapter \*adapter:
+        Board private structure
+
+.. _`igb_ptp_suspend.description`:
+
+Description
+-----------
+
+This function stops the overflow check work and PTP Tx timestamp work, and
+will prepare the device for OS suspend.
+
 .. _`igb_ptp_stop`:
 
 igb_ptp_stop

@@ -447,36 +447,12 @@ mei_io_list_free
     :param struct mei_cl \*cl:
         host client
 
-.. _`mei_io_cb_alloc_buf`:
-
-mei_io_cb_alloc_buf
-===================
-
-.. c:function:: int mei_io_cb_alloc_buf(struct mei_cl_cb *cb, size_t length)
-
-    allocate callback buffer
-
-    :param struct mei_cl_cb \*cb:
-        io callback structure
-
-    :param size_t length:
-        size of the buffer
-
-.. _`mei_io_cb_alloc_buf.return`:
-
-Return
-------
-
-0 on success
--EINVAL if cb is NULL
--ENOMEM if allocation failed
-
 .. _`mei_cl_alloc_cb`:
 
 mei_cl_alloc_cb
 ===============
 
-.. c:function:: struct mei_cl_cb *mei_cl_alloc_cb(struct mei_cl *cl, size_t length, enum mei_cb_file_ops type, const struct file *fp)
+.. c:function:: struct mei_cl_cb *mei_cl_alloc_cb(struct mei_cl *cl, size_t length, enum mei_cb_file_ops fop_type, const struct file *fp)
 
     a convenient wrapper for allocating read cb
 
@@ -486,8 +462,8 @@ mei_cl_alloc_cb
     :param size_t length:
         size of the buffer
 
-    :param enum mei_cb_file_ops type:
-        operation type
+    :param enum mei_cb_file_ops fop_type:
+        *undescribed*
 
     :param const struct file \*fp:
         associated file pointer (might be NULL)
@@ -498,6 +474,41 @@ Return
 ------
 
 cb on success and NULL on failure
+
+.. _`mei_cl_enqueue_ctrl_wr_cb`:
+
+mei_cl_enqueue_ctrl_wr_cb
+=========================
+
+.. c:function:: struct mei_cl_cb *mei_cl_enqueue_ctrl_wr_cb(struct mei_cl *cl, size_t length, enum mei_cb_file_ops fop_type, const struct file *fp)
+
+    a convenient wrapper for allocating and enqueuing of the control commands cb
+
+    :param struct mei_cl \*cl:
+        host client
+
+    :param size_t length:
+        size of the buffer
+
+    :param enum mei_cb_file_ops fop_type:
+        *undescribed*
+
+    :param const struct file \*fp:
+        associated file pointer (might be NULL)
+
+.. _`mei_cl_enqueue_ctrl_wr_cb.return`:
+
+Return
+------
+
+cb on success and NULL on failure
+
+.. _`mei_cl_enqueue_ctrl_wr_cb.locking`:
+
+Locking
+-------
+
+called under "dev->device_lock" lock
 
 .. _`mei_cl_read_cb`:
 
@@ -816,7 +827,7 @@ Return
 mei_cl_connect
 ==============
 
-.. c:function:: int mei_cl_connect(struct mei_cl *cl, struct mei_me_client *me_cl, const struct file *file)
+.. c:function:: int mei_cl_connect(struct mei_cl *cl, struct mei_me_client *me_cl, const struct file *fp)
 
     connect host client to the me one
 
@@ -826,7 +837,7 @@ mei_cl_connect
     :param struct mei_me_client \*me_cl:
         me client
 
-    :param const struct file \*file:
+    :param const struct file \*fp:
         pointer to file structure
 
 .. _`mei_cl_connect.locking`:
@@ -862,41 +873,38 @@ Return
 
 cl on success ERR_PTR on failure
 
-.. _`mei_cl_flow_ctrl_creds`:
+.. _`mei_cl_tx_flow_ctrl_creds`:
 
-mei_cl_flow_ctrl_creds
-======================
+mei_cl_tx_flow_ctrl_creds
+=========================
 
-.. c:function:: int mei_cl_flow_ctrl_creds(struct mei_cl *cl, const struct file *fp)
+.. c:function:: int mei_cl_tx_flow_ctrl_creds(struct mei_cl *cl)
 
     checks flow_control credits for cl.
 
     :param struct mei_cl \*cl:
         host client
 
-    :param const struct file \*fp:
-        the file pointer associated with the pointer
-
-.. _`mei_cl_flow_ctrl_creds.return`:
+.. _`mei_cl_tx_flow_ctrl_creds.return`:
 
 Return
 ------
 
-1 if mei_flow_ctrl_creds >0, 0 - otherwise.
+1 if tx_flow_ctrl_creds >0, 0 - otherwise.
 
-.. _`mei_cl_flow_ctrl_reduce`:
+.. _`mei_cl_tx_flow_ctrl_creds_reduce`:
 
-mei_cl_flow_ctrl_reduce
-=======================
+mei_cl_tx_flow_ctrl_creds_reduce
+================================
 
-.. c:function:: int mei_cl_flow_ctrl_reduce(struct mei_cl *cl)
+.. c:function:: int mei_cl_tx_flow_ctrl_creds_reduce(struct mei_cl *cl)
 
-    reduces flow_control.
+    reduces transmit flow control credits for a client
 
     :param struct mei_cl \*cl:
-        private data of the file object
+        host client
 
-.. _`mei_cl_flow_ctrl_reduce.return`:
+.. _`mei_cl_tx_flow_ctrl_creds_reduce.return`:
 
 Return
 ------
@@ -972,14 +980,14 @@ Return
 mei_cl_notify_request
 =====================
 
-.. c:function:: int mei_cl_notify_request(struct mei_cl *cl, const struct file *file, u8 request)
+.. c:function:: int mei_cl_notify_request(struct mei_cl *cl, const struct file *fp, u8 request)
 
     send notification stop/start request
 
     :param struct mei_cl \*cl:
         host client
 
-    :param const struct file \*file:
+    :param const struct file \*fp:
         associate request with file
 
     :param u8 request:
@@ -1049,25 +1057,6 @@ Return
 ------
 
 0 on such and error otherwise.
-
-.. _`mei_cl_is_read_fc_cb`:
-
-mei_cl_is_read_fc_cb
-====================
-
-.. c:function:: bool mei_cl_is_read_fc_cb(struct mei_cl *cl)
-
-    check if read cb is waiting for flow control for given host client
-
-    :param struct mei_cl \*cl:
-        host client
-
-.. _`mei_cl_is_read_fc_cb.return`:
-
-Return
-------
-
-true, if found at least one cb.
 
 .. _`mei_cl_read_start`:
 

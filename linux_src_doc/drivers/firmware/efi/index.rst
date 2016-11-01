@@ -11,5 +11,7 @@ efi
     capsule-loader_c
     capsule_c
     efi-pstore_c
+    efi_c
     efivars_c
+    memmap_c
     vars_c

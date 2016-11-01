@@ -75,7 +75,7 @@ aa_audit_file
 Return
 ------
 
-\ ``0``\  or error on failure
+%0 or error on failure
 
 .. _`map_old_perms`:
 
@@ -177,7 +177,7 @@ is_deleted
 Return
 ------
 
-\ ``1``\  if deleted else \ ``0``\ 
+%1 if deleted else \ ``0``\ 
 
 .. _`aa_path_perm`:
 
@@ -211,7 +211,7 @@ aa_path_perm
 Return
 ------
 
-\ ``0``\  else error if access denied or other error
+%0 else error if access denied or other error
 
 .. _`xindex_is_subset`:
 
@@ -242,7 +242,7 @@ a subset of permissions that the target has.
 Return
 ------
 
-\ ``1``\  if subset else \ ``0``\ 
+%1 if subset else \ ``0``\ 
 
 .. _`aa_path_link`:
 
@@ -284,7 +284,7 @@ on link are a subset of the permission granted to target.
 Return
 ------
 
-\ ``0``\  if allowed else error
+%0 if allowed else error
 
 .. _`aa_file_perm`:
 
@@ -312,7 +312,7 @@ aa_file_perm
 Return
 ------
 
-\ ``0``\  if access allowed else error
+%0 if access allowed else error
 
 .. This file was automatic generated / don't edit.
 

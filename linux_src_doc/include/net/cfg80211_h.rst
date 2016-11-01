@@ -563,6 +563,7 @@ Definition
     struct vif_params {
         int use_4addr;
         u8 macaddr[ETH_ALEN];
+        u8 vht_mumimo_groups[VHT_MUMIMO_GROUPS_DATA_LEN];
     }
 
 .. _`vif_params.members`:
@@ -579,7 +580,11 @@ macaddr
     determine the address as needed.
     This feature is only fully supported by drivers that enable the
     \ ``NL80211_FEATURE_MAC_ON_CREATE``\  flag.  Others may support creating
-    \*     only p2p devices with specified MAC.
+    *     only p2p devices with specified MAC.
+
+vht_mumimo_groups
+    MU-MIMO groupID. used for monitoring only
+    packets belonging to that MU-MIMO groupID.
 
 .. _`key_params`:
 
@@ -740,7 +745,7 @@ cfg80211_chandef_identical
 Return
 ------
 
-\ ``true``\  if the channels defined by the channel definitions are
+%true if the channels defined by the channel definitions are
 identical, \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_compatible`:
@@ -763,7 +768,7 @@ cfg80211_chandef_compatible
 Return
 ------
 
-\ ``NULL``\  if the given channel definitions are incompatible,
+%NULL if the given channel definitions are incompatible,
 chandef1 or chandef2 otherwise.
 
 .. _`cfg80211_chandef_valid`:
@@ -783,7 +788,7 @@ cfg80211_chandef_valid
 Return
 ------
 
-\ ``true``\  if the channel definition is valid. \ ``false``\  otherwise.
+%true if the channel definition is valid. \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_usable`:
 
@@ -808,7 +813,7 @@ cfg80211_chandef_usable
 Return
 ------
 
-\ ``true``\  if secondary channels are usable. \ ``false``\  otherwise.
+%true if secondary channels are usable. \ ``false``\  otherwise.
 
 .. _`cfg80211_chandef_dfs_required`:
 
@@ -833,7 +838,7 @@ cfg80211_chandef_dfs_required
 Return
 ------
 
-1 if radar detection is required, 0 if it is not, < 0 on error
+     1 if radar detection is required, 0 if it is not, < 0 on error
 
 .. _`ieee80211_chandef_rate_flags`:
 
@@ -1052,6 +1057,8 @@ Definition
         bool control_port;
         __be16 control_port_ethertype;
         bool control_port_no_encrypt;
+        struct key_params *wep_keys;
+        int wep_tx_key;
     }
 
 .. _`cfg80211_crypto_settings.members`:
@@ -1091,6 +1098,13 @@ control_port_ethertype
 control_port_no_encrypt
     TRUE to prevent encryption of control port
     protocol frames.
+
+wep_keys
+    static WEP keys, if not NULL points to an array of
+    CFG80211_MAX_WEP_KEYS WEP keys
+
+wep_tx_key
+    key index (0..3) of the default TX static WEP key
 
 .. _`cfg80211_beacon_data`:
 
@@ -1166,7 +1180,7 @@ assocresp_ies_len
     length of assocresp_ies in octets
 
 probe_resp_len
-    length of probe response template (\ ``probe_resp``\ )
+    length of probe response template (@probe_resp)
 
 .. _`cfg80211_acl_data`:
 
@@ -1238,6 +1252,7 @@ Definition
         bool p2p_opp_ps;
         const struct cfg80211_acl_data *acl;
         bool pbss;
+        struct cfg80211_bitrate_mask beacon_rate;
     }
 
 .. _`cfg80211_ap_settings.members`:
@@ -1295,6 +1310,9 @@ acl
 pbss
     If set, start as a PCP instead of AP. Relevant for DMG
     networks.
+
+beacon_rate
+    bitrate to be used for beacons
 
 .. _`cfg80211_ap_settings.description`:
 
@@ -1442,6 +1460,7 @@ Definition
         u32 sta_modify_mask;
         int listen_interval;
         u16 aid;
+        u16 peer_aid;
         u8 supported_rates_len;
         u8 plink_action;
         u8 plink_state;
@@ -1476,11 +1495,11 @@ vlan
 
 sta_flags_mask
     station flags that changed
-    (bitmask of BIT(NL80211_STA_FLAG_...))
+    (bitmask of BIT(%NL80211_STA_FLAG_...))
 
 sta_flags_set
     station flags values
-    (bitmask of BIT(NL80211_STA_FLAG_...))
+    (bitmask of BIT(%NL80211_STA_FLAG_...))
 
 sta_modify_mask
     bitmap indicating which parameters changed
@@ -1492,6 +1511,9 @@ listen_interval
 
 aid
     AID or zero for no change
+
+peer_aid
+    mesh peer AID or zero for no change
 
 supported_rates_len
     number of supported rates
@@ -2069,11 +2091,11 @@ plink_state
 
 signal
     The signal strength, type depends on the wiphy's signal_type.
-    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in \_dBm_.
+    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 signal_avg
     Average signal strength, type depends on the wiphy's signal_type.
-    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in \_dBm_.
+    For CFG80211_SIGNAL_TYPE_MBM, value is expressed in _dBm_.
 
 chains
     bitmask for filled values in \ ``chain_signal``\ , \ ``chain_signal_avg``\ 
@@ -2281,25 +2303,25 @@ Constants
 ---------
 
 MPATH_INFO_FRAME_QLEN
-    \ ``frame_qlen``\  filled
+    @frame_qlen filled
 
 MPATH_INFO_SN
-    \ ``sn``\  filled
+    @sn filled
 
 MPATH_INFO_METRIC
-    \ ``metric``\  filled
+    @metric filled
 
 MPATH_INFO_EXPTIME
-    \ ``exptime``\  filled
+    @exptime filled
 
 MPATH_INFO_DISCOVERY_TIMEOUT
-    \ ``discovery_timeout``\  filled
+    @discovery_timeout filled
 
 MPATH_INFO_DISCOVERY_RETRIES
-    \ ``discovery_retries``\  filled
+    @discovery_retries filled
 
 MPATH_INFO_FLAGS
-    \ ``flags``\  filled
+    @flags filled
 
 .. _`mpath_info_flags.description`:
 
@@ -2661,6 +2683,7 @@ Definition
         u16 beacon_interval;
         int mcast_rate[NUM_NL80211_BANDS];
         u32 basic_rates;
+        struct cfg80211_bitrate_mask beacon_rate;
     }
 
 .. _`mesh_setup.members`:
@@ -2715,6 +2738,9 @@ mcast_rate
 
 basic_rates
     basic rates to use when creating the mesh
+
+beacon_rate
+    bitrate to be used for beacons
 
 .. _`mesh_setup.description`:
 
@@ -2836,6 +2862,45 @@ ssid
 ssid_len
     length of the ssid
 
+.. _`cfg80211_scan_info`:
+
+struct cfg80211_scan_info
+=========================
+
+.. c:type:: struct cfg80211_scan_info
+
+    information about completed scan
+
+.. _`cfg80211_scan_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_scan_info {
+        u64 scan_start_tsf;
+        u8 tsf_bssid[ETH_ALEN];
+        bool aborted;
+    }
+
+.. _`cfg80211_scan_info.members`:
+
+Members
+-------
+
+scan_start_tsf
+    scan start time in terms of the TSF of the BSS that the
+    wireless device that requested the scan is connected to. If this
+    information is not available, this field is left zero.
+
+tsf_bssid
+    the BSSID according to which \ ``scan_start_tsf``\  is set.
+
+aborted
+    set to true if the scan was aborted for any reason,
+    userspace will be notified of that
+
 .. _`cfg80211_scan_request`:
 
 struct cfg80211_scan_request
@@ -2859,6 +2924,8 @@ Definition
         enum nl80211_bss_scan_width scan_width;
         const u8 *ie;
         size_t ie_len;
+        u16 duration;
+        bool duration_mandatory;
         u32 flags;
         u32 rates[NUM_NL80211_BANDS];
         struct wireless_dev *wdev;
@@ -2867,7 +2934,7 @@ Definition
         u8 bssid[ETH_ALEN];
         struct wiphy *wiphy;
         unsigned long scan_start;
-        bool aborted;
+        struct cfg80211_scan_info info;
         bool notified;
         bool no_cck;
         struct ieee80211_channel  *channels[0];
@@ -2896,6 +2963,15 @@ ie
 ie_len
     length of ie in octets
 
+duration
+    how long to listen on each channel, in TUs. If
+    \ ``duration_mandatory``\  is not set, this is the maximum dwell time and
+    the actual dwell time may be shorter.
+
+duration_mandatory
+    if set, the scan duration must be as specified by the
+    \ ``duration``\  field.
+
 flags
     bit field of flags controlling operation
 
@@ -2922,8 +2998,8 @@ wiphy
 scan_start
     time (in jiffies) when the scan started
 
-aborted
-    (internal) scan request was notified as aborted
+info
+    (internal) information about completed scan
 
 notified
     (internal) scan request was notified as done or aborted
@@ -3151,7 +3227,7 @@ CFG80211_SIGNAL_TYPE_NONE
     no signal strength information available
 
 CFG80211_SIGNAL_TYPE_MBM
-    signal strength in mBm (100\*dBm)
+    signal strength in mBm (100*dBm)
 
 CFG80211_SIGNAL_TYPE_UNSPEC
     signal strength, increasing from 0 through 100
@@ -3177,6 +3253,8 @@ Definition
         enum nl80211_bss_scan_width scan_width;
         s32 signal;
         u64 boottime_ns;
+        u64 parent_tsf;
+        u8 parent_bssid[ETH_ALEN];
     }
 
 .. _`cfg80211_inform_bss.members`:
@@ -3201,6 +3279,15 @@ boottime_ns
     buffered on the device) and be accurate to about 10ms.
     If the frame isn't buffered, just passing the return value of
     \ :c:func:`ktime_get_boot_ns`\  is likely appropriate.
+
+parent_tsf
+    the time at the start of reception of the first octet of the
+    timestamp field of the frame. The time is the TSF of the BSS specified
+    by \ ``parent_bssid``\ .
+
+parent_bssid
+    the BSS according to which \ ``parent_tsf``\  is set. This is set to
+    the BSS that requested the scan in which the beacon/probe was received.
 
 .. _`cfg80211_bss_ies`:
 
@@ -3291,7 +3378,7 @@ ies
     the information elements (Note that there is no guarantee that these
     are well-formed!); this is a pointer to either the beacon_ies or
     proberesp_ies depending on whether Probe Response frame has been
-    received. It is always non-\ ``NULL``\ .
+    received. It is always non-%NULL.
 
 beacon_ies
     the information elements from the last Beacon frame
@@ -3359,7 +3446,7 @@ Note that the return value is an RCU-protected pointer, so
 Return
 ------
 
-\ ``NULL``\  if not found.
+%NULL if not found.
 
 .. _`cfg80211_auth_request`:
 
@@ -4050,7 +4137,7 @@ pmkid
 Description
 -----------
 
-This structure is passed to the set/\ :c:func:`del_pmksa`\  method for PMKSA
+This structure is passed to the set/del_pmksa() method for PMKSA
 caching.
 
 .. _`cfg80211_pkt_pattern`:
@@ -4094,12 +4181,12 @@ pattern_len
 pkt_offset
     packet offset (in bytes)
 
-.. _`cfg80211_pkt_pattern.internal-note`:
+.. _`cfg80211_pkt_pattern.description`:
 
-Internal note
--------------
+Description
+-----------
 
-\ ``mask``\  and \ ``pattern``\  are allocated in one chunk of
+Internal note: \ ``mask``\  and \ ``pattern``\  are allocated in one chunk of
 memory, free \ ``mask``\  only!
 
 .. _`cfg80211_wowlan_tcp`:
@@ -4764,6 +4851,230 @@ Description
 
 This struct defines the Interworking QoS map setting for DSCP values
 
+.. _`cfg80211_nan_conf`:
+
+struct cfg80211_nan_conf
+========================
+
+.. c:type:: struct cfg80211_nan_conf
+
+    NAN configuration
+
+.. _`cfg80211_nan_conf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_nan_conf {
+        u8 master_pref;
+        u8 dual;
+    }
+
+.. _`cfg80211_nan_conf.members`:
+
+Members
+-------
+
+master_pref
+    master preference (1 - 255)
+
+dual
+    dual band operation mode, see \ :c:type:`enum nl80211_nan_dual_band_conf <nl80211_nan_dual_band_conf>`\ 
+
+.. _`cfg80211_nan_conf.description`:
+
+Description
+-----------
+
+This struct defines NAN configuration parameters
+
+.. _`cfg80211_nan_conf_changes`:
+
+enum cfg80211_nan_conf_changes
+==============================
+
+.. c:type:: enum cfg80211_nan_conf_changes
+
+    indicates changed fields in NAN configuration
+
+.. _`cfg80211_nan_conf_changes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum cfg80211_nan_conf_changes {
+        CFG80211_NAN_CONF_CHANGED_PREF,
+        CFG80211_NAN_CONF_CHANGED_DUAL
+    };
+
+.. _`cfg80211_nan_conf_changes.constants`:
+
+Constants
+---------
+
+CFG80211_NAN_CONF_CHANGED_PREF
+    master preference
+
+CFG80211_NAN_CONF_CHANGED_DUAL
+    dual band operation
+
+.. _`cfg80211_nan_func_filter`:
+
+struct cfg80211_nan_func_filter
+===============================
+
+.. c:type:: struct cfg80211_nan_func_filter
+
+    a NAN function Rx / Tx filter
+
+.. _`cfg80211_nan_func_filter.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_nan_func_filter {
+        const u8 *filter;
+        u8 len;
+    }
+
+.. _`cfg80211_nan_func_filter.members`:
+
+Members
+-------
+
+filter
+    the content of the filter
+
+len
+    the length of the filter
+
+.. _`cfg80211_nan_func`:
+
+struct cfg80211_nan_func
+========================
+
+.. c:type:: struct cfg80211_nan_func
+
+    a NAN function
+
+.. _`cfg80211_nan_func.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_nan_func {
+        enum nl80211_nan_function_type type;
+        u8 service_id[NL80211_NAN_FUNC_SERVICE_ID_LEN];
+        u8 publish_type;
+        bool close_range;
+        bool publish_bcast;
+        bool subscribe_active;
+        u8 followup_id;
+        u8 followup_reqid;
+        struct mac_address followup_dest;
+        u32 ttl;
+        const u8 *serv_spec_info;
+        u8 serv_spec_info_len;
+        bool srf_include;
+        const u8 *srf_bf;
+        u8 srf_bf_len;
+        u8 srf_bf_idx;
+        struct mac_address *srf_macs;
+        int srf_num_macs;
+        struct cfg80211_nan_func_filter *rx_filters;
+        struct cfg80211_nan_func_filter *tx_filters;
+        u8 num_tx_filters;
+        u8 num_rx_filters;
+        u8 instance_id;
+        u64 cookie;
+    }
+
+.. _`cfg80211_nan_func.members`:
+
+Members
+-------
+
+type
+    &enum nl80211_nan_function_type
+
+service_id
+    the service ID of the function
+
+publish_type
+    &nl80211_nan_publish_type
+
+close_range
+    if true, the range should be limited. Threshold is
+    implementation specific.
+
+publish_bcast
+    if true, the solicited publish should be broadcasted
+
+subscribe_active
+    if true, the subscribe is active
+
+followup_id
+    the instance ID for follow up
+
+followup_reqid
+    the requestor instance ID for follow up
+
+followup_dest
+    MAC address of the recipient of the follow up
+
+ttl
+    time to live counter in DW.
+
+serv_spec_info
+    Service Specific Info
+
+serv_spec_info_len
+    Service Specific Info length
+
+srf_include
+    if true, SRF is inclusive
+
+srf_bf
+    Bloom Filter
+
+srf_bf_len
+    Bloom Filter length
+
+srf_bf_idx
+    Bloom Filter index
+
+srf_macs
+    SRF MAC addresses
+
+srf_num_macs
+    number of MAC addresses in SRF
+
+rx_filters
+    rx filters that are matched with corresponding peer's tx_filter
+
+tx_filters
+    filters that should be transmitted in the SDF.
+
+num_tx_filters
+    length of \ :c:type:`struct tx_filters <tx_filters>`\ .
+
+num_rx_filters
+    length of \ :c:type:`struct rx_filters <rx_filters>`\ .
+
+instance_id
+    driver allocated id of the function.
+
+cookie
+    unique NAN function identifier.
+
 .. _`cfg80211_ops`:
 
 struct cfg80211_ops
@@ -4875,6 +5186,11 @@ Definition
         int (*del_tx_ts)(struct wiphy *wiphy, struct net_device *dev,u8 tsid, const u8 *peer);
         int (*tdls_channel_switch)(struct wiphy *wiphy,struct net_device *dev,const u8 *addr, u8 oper_class,struct cfg80211_chan_def *chandef);
         void (*tdls_cancel_channel_switch)(struct wiphy *wiphy,struct net_device *dev,const u8 *addr);
+        int (*start_nan)(struct wiphy *wiphy, struct wireless_dev *wdev,struct cfg80211_nan_conf *conf);
+        void (*stop_nan)(struct wiphy *wiphy, struct wireless_dev *wdev);
+        int (*add_nan_func)(struct wiphy *wiphy, struct wireless_dev *wdev,struct cfg80211_nan_func *nan_func);
+        void (*del_nan_func)(struct wiphy *wiphy, struct wireless_dev *wdev,u64 cookie);
+        int (*nan_change_conf)(struct wiphy *wiphy,struct wireless_dev *wdev,struct cfg80211_nan_conf *conf,u32 changes);
     }
 
 .. _`cfg80211_ops.members`:
@@ -4921,7 +5237,7 @@ get_key
     not possible to retrieve the key, -ENOENT if it doesn't exist.
 
 del_key
-    remove a key given the \ ``mac_addr``\  (\ ``NULL``\  for a group key)
+    remove a key given the \ ``mac_addr``\  (%NULL for a group key)
     and \ ``key_index``\ , return -ENOENT if the key doesn't exist.
 
 set_default_key
@@ -5049,23 +5365,28 @@ disassoc
 
 connect
     Connect to the ESS with the specified parameters. When connected,
-    call \ :c:func:`cfg80211_connect_result`\  with status code \ ``WLAN_STATUS_SUCCESS``\ .
-    If the connection fails for some reason, call \ :c:func:`cfg80211_connect_result`\ 
-    with the status from the AP. The driver is allowed to roam to other
-    BSSes within the ESS when the other BSS matches the connect parameters.
-    When such roaming is initiated by the driver, the driver is expected to
-    verify that the target matches the configured security parameters and
-    to use Reassociation Request frame instead of Association Request frame.
-    The connect function can also be used to request the driver to perform
-    a specific roam when connected to an ESS. In that case, the prev_bssid
+    call \ :c:func:`cfg80211_connect_result`\ /cfg80211_connect_bss() with status code
+    \ ``WLAN_STATUS_SUCCESS``\ . If the connection fails for some reason, call
+    \ :c:func:`cfg80211_connect_result`\ /cfg80211_connect_bss() with the status code
+    from the AP or \ :c:func:`cfg80211_connect_timeout`\  if no frame with status code
+    was received.
+    The driver is allowed to roam to other BSSes within the ESS when the
+    other BSS matches the connect parameters. When such roaming is initiated
+    by the driver, the driver is expected to verify that the target matches
+    the configured security parameters and to use Reassociation Request
+    frame instead of Association Request frame.
+    The connect function can also be used to request the driver to perform a
+    specific roam when connected to an ESS. In that case, the prev_bssid
     parameter is set to the BSSID of the currently associated BSS as an
-    indication of requesting reassociation. In both the driver-initiated and
-    new \ :c:func:`connect`\  call initiated roaming cases, the result of roaming is
-    indicated with a call to \ :c:func:`cfg80211_roamed`\  or \ :c:func:`cfg80211_roamed_bss`\ .
+    indication of requesting reassociation.
+    In both the driver-initiated and new \ :c:func:`connect`\  call initiated roaming
+    cases, the result of roaming is indicated with a call to
+    \ :c:func:`cfg80211_roamed`\  or \ :c:func:`cfg80211_roamed_bss`\ .
     (invoked with the wireless_dev mutex held)
 
 disconnect
-    Disconnect from the BSS/ESS.
+    Disconnect from the BSS/ESS. Once done, call
+    \ :c:func:`cfg80211_disconnected`\ .
     (invoked with the wireless_dev mutex held)
 
 join_ibss
@@ -5286,6 +5607,29 @@ tdls_cancel_channel_switch
     Stop channel-switching with a TDLS peer. Both
     peers must be on the base channel when the call completes.
 
+start_nan
+    Start the NAN interface.
+
+stop_nan
+    Stop the NAN interface.
+
+add_nan_func
+    Add a NAN function. Returns negative value on failure.
+    On success \ ``nan_func``\  ownership is transferred to the driver and
+    it may access it outside of the scope of this function. The driver
+    should free the \ ``nan_func``\  when no longer needed by calling
+    \ :c:func:`cfg80211_free_nan_func`\ .
+    On success the driver should assign an instance_id in the
+    provided \ ``nan_func``\ .
+
+del_nan_func
+    Delete a NAN function.
+
+nan_change_conf
+    changes NAN configuration. The changed parameters must
+    be specified in \ ``changes``\  (using \ :c:type:`enum cfg80211_nan_conf_changes <cfg80211_nan_conf_changes>`\ );
+    All other parameters must be ignored.
+
 .. _`cfg80211_ops.description`:
 
 Description
@@ -5336,7 +5680,8 @@ Definition
         WIPHY_FLAG_OFFCHAN_TX,
         WIPHY_FLAG_HAS_REMAIN_ON_CHANNEL,
         WIPHY_FLAG_SUPPORTS_5_10_MHZ,
-        WIPHY_FLAG_HAS_CHANNEL_SWITCH
+        WIPHY_FLAG_HAS_CHANNEL_SWITCH,
+        WIPHY_FLAG_HAS_STATIC_WEP
     };
 
 .. _`wiphy_flags.constants`:
@@ -5417,6 +5762,10 @@ WIPHY_FLAG_SUPPORTS_5_10_MHZ
 WIPHY_FLAG_HAS_CHANNEL_SWITCH
     Device supports channel switch in
     beaconing mode (AP, IBSS, Mesh, ...).
+
+WIPHY_FLAG_HAS_STATIC_WEP
+    The device supports static WEP key installation
+    before connection.
 
 .. _`ieee80211_iface_limit`:
 
@@ -5521,47 +5870,53 @@ Examples
 
 1. Allow #STA <= 1, #AP <= 1, matching BI, channels = 1, 2 total:
 
-struct ieee80211_iface_limit limits1[] = {
-{ .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
-{ .max = 1, .types = BIT(NL80211_IFTYPE_AP}, },
-};
-struct ieee80211_iface_combination combination1 = {
-.limits = limits1,
-.n_limits = ARRAY_SIZE(limits1),
-.max_interfaces = 2,
-.beacon_int_infra_match = true,
-};
+   .. code-block:: c
+
+     struct ieee80211_iface_limit limits1[] = {
+             { .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
+             { .max = 1, .types = BIT(NL80211_IFTYPE_AP}, },
+     };
+     struct ieee80211_iface_combination combination1 = {
+             .limits = limits1,
+             .n_limits = ARRAY_SIZE(limits1),
+             .max_interfaces = 2,
+             .beacon_int_infra_match = true,
+     };
 
 
 2. Allow #{AP, P2P-GO} <= 8, channels = 1, 8 total:
 
-struct ieee80211_iface_limit limits2[] = {
-{ .max = 8, .types = BIT(NL80211_IFTYPE_AP) \|
-BIT(NL80211_IFTYPE_P2P_GO), },
-};
-struct ieee80211_iface_combination combination2 = {
-.limits = limits2,
-.n_limits = ARRAY_SIZE(limits2),
-.max_interfaces = 8,
-.num_different_channels = 1,
-};
+   .. code-block:: c
+
+     struct ieee80211_iface_limit limits2[] = {
+             { .max = 8, .types = BIT(NL80211_IFTYPE_AP) |
+                                  BIT(NL80211_IFTYPE_P2P_GO), },
+     };
+     struct ieee80211_iface_combination combination2 = {
+             .limits = limits2,
+             .n_limits = ARRAY_SIZE(limits2),
+             .max_interfaces = 8,
+             .num_different_channels = 1,
+     };
 
 
 3. Allow #STA <= 1, #{P2P-client,P2P-GO} <= 3 on two channels, 4 total.
 
-This allows for an infrastructure connection and three P2P connections.
+   This allows for an infrastructure connection and three P2P connections.
 
-struct ieee80211_iface_limit limits3[] = {
-{ .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
-{ .max = 3, .types = BIT(NL80211_IFTYPE_P2P_GO) \|
-BIT(NL80211_IFTYPE_P2P_CLIENT), },
-};
-struct ieee80211_iface_combination combination3 = {
-.limits = limits3,
-.n_limits = ARRAY_SIZE(limits3),
-.max_interfaces = 4,
-.num_different_channels = 2,
-};
+   .. code-block:: c
+
+     struct ieee80211_iface_limit limits3[] = {
+             { .max = 1, .types = BIT(NL80211_IFTYPE_STATION), },
+             { .max = 3, .types = BIT(NL80211_IFTYPE_P2P_GO) |
+                                  BIT(NL80211_IFTYPE_P2P_CLIENT), },
+     };
+     struct ieee80211_iface_combination combination3 = {
+             .limits = limits3,
+             .n_limits = ARRAY_SIZE(limits3),
+             .max_interfaces = 4,
+             .num_different_channels = 2,
+     };
 
 .. _`wiphy_wowlan_support_flags`:
 
@@ -5679,7 +6034,7 @@ max_nd_match_sets
     maximum number of matchsets for net-detect,
     similar, but not necessarily identical, to max_match_sets for
     scheduled scans.
-    See \ :c:type:`struct cfg80211_sched_scan_request <cfg80211_sched_scan_request>`\ .\ ``match_sets``\  for more
+    See \ :c:type:`struct cfg80211_sched_scan_request <cfg80211_sched_scan_request>`\ .@match_sets for more
     details.
 
 tcp
@@ -5807,7 +6162,7 @@ flags
 
 doit
     callback for the operation, note that wdev is \ ``NULL``\  if the
-    flags didn't ask for a wdev and non-\ ``NULL``\  otherwise; the data
+    flags didn't ask for a wdev and non-%NULL otherwise; the data
     pointer may be \ ``NULL``\  if userspace provided no data at all
 
 dumpit
@@ -5817,6 +6172,50 @@ dumpit
     It's recommended to not have the same sub command with both \ ``doit``\  and
     \ ``dumpit``\ , so that userspace can assume certain ones are get and others
     are used with dump requests.
+
+.. _`wiphy_iftype_ext_capab`:
+
+struct wiphy_iftype_ext_capab
+=============================
+
+.. c:type:: struct wiphy_iftype_ext_capab
+
+    extended capabilities per interface type
+
+.. _`wiphy_iftype_ext_capab.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct wiphy_iftype_ext_capab {
+        enum nl80211_iftype iftype;
+        const u8 *extended_capabilities;
+        const u8 *extended_capabilities_mask;
+        u8 extended_capabilities_len;
+    }
+
+.. _`wiphy_iftype_ext_capab.members`:
+
+Members
+-------
+
+iftype
+    interface type
+
+extended_capabilities
+    extended capabilities supported by the driver,
+    additional capabilities might be supported by userspace; these are the
+    802.11 extended capabilities ("Extended Capabilities element") and are
+    in the same format as in the information element. See IEEE Std
+    802.11-2012 8.4.2.29 for the defined fields.
+
+extended_capabilities_mask
+    mask of the valid values
+
+extended_capabilities_len
+    length of the extended capabilities
 
 .. _`wiphy`:
 
@@ -5881,6 +6280,8 @@ Definition
         const u8 *extended_capabilities;
         const u8 * *extended_capabilities_mask;
         u8 extended_capabilities_len;
+        const struct wiphy_iftype_ext_capab *iftype_ext_capab;
+        unsigned int num_iftype_ext_capab;
         const void *privid;
         struct ieee80211_supported_band  *bands[NUM_NL80211_BANDS];
         void (*reg_notifier)(struct wiphy *wiphy,struct regulatory_request *request);
@@ -5904,6 +6305,7 @@ Definition
         u8 max_num_csa_counters;
         u8 max_adj_channel_rssi_comp;
         u32 bss_select_support;
+        u64 cookie_counter;
         char priv[0];
     }
 
@@ -6077,13 +6479,22 @@ extended_capabilities
     additional capabilities might be supported by userspace; these are
     the 802.11 extended capabilities ("Extended Capabilities element")
     and are in the same format as in the information element. See
-    802.11-2012 8.4.2.29 for the defined fields.
+    802.11-2012 8.4.2.29 for the defined fields. These are the default
+    extended capabilities to be used if the capabilities are not specified
+    for a specific interface type in iftype_ext_capab.
 
 extended_capabilities_mask
     mask of the valid values
 
 extended_capabilities_len
     length of the extended capabilities
+
+iftype_ext_capab
+    array of extended capabilities per interface type
+
+num_iftype_ext_capab
+    number of interface types for which extended
+    capabilities are specified separately.
 
 privid
     a pointer that drivers can use to identify if an arbitrary
@@ -6168,8 +6579,11 @@ max_adj_channel_rssi_comp
 
 bss_select_support
     bitmask indicating the BSS selection criteria supported
-    by the driver in the .\ :c:func:`connect`\  callback. The bit position maps to the
+    by the driver in the .connect() callback. The bit position maps to the
     attribute indices defined in \ :c:type:`enum nl80211_bss_select_attr <nl80211_bss_select_attr>`\ .
+
+cookie_counter
+    unique generic cookie counter, used to identify objects.
 
 priv
     driver private data (sized according to \ :c:func:`wiphy_new`\  parameter)
@@ -6282,7 +6696,7 @@ wiphy_new_nm
 
     :param const char \*requested_name:
         Request a particular name.
-        NULL is valid value, and means use the default phy\ ``d``\  naming.
+        NULL is valid value, and means use the default phy%d naming.
 
 .. _`wiphy_new_nm.description`:
 
@@ -6410,6 +6824,7 @@ Definition
         struct mutex mtx;
         bool use_4addr;
         bool p2p_started;
+        bool nan_started;
         u8 address[ETH_ALEN];
         u8 ssid[IEEE80211_MAX_SSID_LEN];
         u8 ssid_len;
@@ -6477,6 +6892,9 @@ use_4addr
 
 p2p_started
     true if this is a P2P Device that has been started
+
+nan_started
+    true if this is a NAN interface that has been started
 
 address
     The address for this device, valid only if \ ``netdev``\  is \ ``NULL``\ 
@@ -6982,6 +7400,57 @@ Return
 
 The 802.1p/1d tag.
 
+.. _`cfg80211_find_ie_match`:
+
+cfg80211_find_ie_match
+======================
+
+.. c:function:: const u8 *cfg80211_find_ie_match(u8 eid, const u8 *ies, int len, const u8 *match, int match_len, int match_offset)
+
+    match information element and byte array in data
+
+    :param u8 eid:
+        element ID
+
+    :param const u8 \*ies:
+        data consisting of IEs
+
+    :param int len:
+        length of data
+
+    :param const u8 \*match:
+        byte array to match
+
+    :param int match_len:
+        number of bytes in the match array
+
+    :param int match_offset:
+        offset in the IE where the byte array should match.
+        If match_len is zero, this must also be set to zero.
+        Otherwise this must be set to 2 or more, because the first
+        byte is the element id, which is already compared to eid, and
+        the second byte is the IE length.
+
+.. _`cfg80211_find_ie_match.return`:
+
+Return
+------
+
+%NULL if the element ID could not be found or if
+the element is invalid (claims to be longer than the given
+data) or if the byte array doesn't match, or a pointer to the first
+byte of the requested element, that is the byte containing the
+element ID.
+
+.. _`cfg80211_find_ie_match.note`:
+
+Note
+----
+
+There are no checks on the element length other than
+having to fit into the given data and being large enough for the
+byte array to match.
+
 .. _`cfg80211_find_ie`:
 
 cfg80211_find_ie
@@ -7005,7 +7474,7 @@ cfg80211_find_ie
 Return
 ------
 
-\ ``NULL``\  if the element ID could not be found or if
+%NULL if the element ID could not be found or if
 the element is invalid (claims to be longer than the given
 data), or a pointer to the first byte of the requested
 element, that is the byte containing the element ID.
@@ -7044,7 +7513,7 @@ cfg80211_find_vendor_ie
 Return
 ------
 
-\ ``NULL``\  if the vendor specific element ID could not be found or if the
+%NULL if the vendor specific element ID could not be found or if the
 element is invalid (claims to be longer than the given data), or a pointer to
 the first byte of the requested element, that is the byte containing the
 element ID.
@@ -7257,16 +7726,15 @@ proper string representation.
 cfg80211_scan_done
 ==================
 
-.. c:function:: void cfg80211_scan_done(struct cfg80211_scan_request *request, bool aborted)
+.. c:function:: void cfg80211_scan_done(struct cfg80211_scan_request *request, struct cfg80211_scan_info *info)
 
     notify that scan finished
 
     :param struct cfg80211_scan_request \*request:
         the corresponding scan request
 
-    :param bool aborted:
-        set to true if the scan was aborted for any reason,
-        userspace will be notified of that
+    :param struct cfg80211_scan_info \*info:
+        information about the completed scan
 
 .. _`cfg80211_sched_scan_results`:
 
@@ -7549,9 +8017,9 @@ Description
 
 This function is called whenever an authentication, disassociation or
 deauthentication frame has been received and processed in station mode.
-After being asked to authenticate via cfg80211_ops::\ :c:func:`auth`\  the driver must
+After being asked to authenticate via cfg80211_ops::auth() the driver must
 call either this function or \ :c:func:`cfg80211_auth_timeout`\ .
-After being asked to associate via cfg80211_ops::\ :c:func:`assoc`\  the driver must
+After being asked to associate via cfg80211_ops::assoc() the driver must
 call either this function or \ :c:func:`cfg80211_auth_timeout`\ .
 While connected, the driver must calls this for received and processed
 disassociation and deauthentication frames. If the frame couldn't be used
@@ -7613,7 +8081,7 @@ cfg80211_rx_assoc_resp
 Description
 -----------
 
-After being asked to associate via cfg80211_ops::\ :c:func:`assoc`\  the driver must
+After being asked to associate via cfg80211_ops::assoc() the driver must
 call either this function or \ :c:func:`cfg80211_auth_timeout`\ .
 
 This function may sleep. The caller must hold the corresponding wdev's mutex.
@@ -7728,7 +8196,7 @@ Description
 -----------
 
 This function is called whenever the local MAC detects a MIC failure in a
-received frame. This matches with MLME-MICHAELMICFAILURE.\ :c:func:`indication`\ 
+received frame. This matches with MLME-MICHAELMICFAILURE.indication()
 primitive.
 
 .. _`cfg80211_ibss_joined`:
@@ -8125,7 +8593,7 @@ consumes it.
 cfg80211_connect_bss
 ====================
 
-.. c:function:: void cfg80211_connect_bss(struct net_device *dev, const u8 *bssid, struct cfg80211_bss *bss, const u8 *req_ie, size_t req_ie_len, const u8 *resp_ie, size_t resp_ie_len, u16 status, gfp_t gfp)
+.. c:function:: void cfg80211_connect_bss(struct net_device *dev, const u8 *bssid, struct cfg80211_bss *bss, const u8 *req_ie, size_t req_ie_len, const u8 *resp_ie, size_t resp_ie_len, int status, gfp_t gfp)
 
     notify cfg80211 of connection result
 
@@ -8151,7 +8619,7 @@ cfg80211_connect_bss
     :param size_t resp_ie_len:
         assoc response IEs length
 
-    :param u16 status:
+    :param int status:
         status code, 0 for successful connection, use
         \ ``WLAN_STATUS_UNSPECIFIED_FAILURE``\  if your device cannot give you
         the real status code for failures.
@@ -8211,6 +8679,41 @@ Description
 
 It should be called by the underlying driver whenever \ :c:func:`connect`\  has
 succeeded.
+
+.. _`cfg80211_connect_timeout`:
+
+cfg80211_connect_timeout
+========================
+
+.. c:function:: void cfg80211_connect_timeout(struct net_device *dev, const u8 *bssid, const u8 *req_ie, size_t req_ie_len, gfp_t gfp)
+
+    notify cfg80211 of connection timeout
+
+    :param struct net_device \*dev:
+        network device
+
+    :param const u8 \*bssid:
+        the BSSID of the AP
+
+    :param const u8 \*req_ie:
+        association request IEs (maybe be \ ``NULL``\ )
+
+    :param size_t req_ie_len:
+        association request IEs length
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_connect_timeout.description`:
+
+Description
+-----------
+
+It should be called by the underlying driver whenever \ :c:func:`connect`\  has failed
+in a sequence where no explicit authentication/association rejection was
+received from the AP. This could happen, e.g., due to not being able to send
+out the Authentication or Association Request frame or timing out while
+waiting for the response.
 
 .. _`cfg80211_roamed`:
 
@@ -8294,9 +8797,9 @@ called by the underlying driver whenever it roamed from one AP to another
 while connected. Drivers which have roaming implemented in firmware
 may use this function to avoid a race in bss entry timeout where the bss
 entry of the new AP is seen in the driver, but gets timed out by the time
-it is accessed in \\ :c:func:`__cfg80211_roamed`\  due to delay in scheduling
+it is accessed in \ :c:func:`__cfg80211_roamed`\  due to delay in scheduling
 rdev->event_work. In case of any failures, the reference is released
-either in \ :c:func:`cfg80211_roamed_bss`\  or in \\ :c:func:`__cfg80211_romed`\ , Otherwise,
+either in \ :c:func:`cfg80211_roamed_bss`\  or in \ :c:func:`__cfg80211_romed`\ , Otherwise,
 it will be released while diconneting from the current bss.
 
 .. _`cfg80211_disconnected`:
@@ -8513,7 +9016,7 @@ mode interface, but is not processed in kernel.
 Return
 ------
 
-\ ``true``\  if a user space application has registered for this frame.
+%true if a user space application has registered for this frame.
 For action frames, that makes it responsible for rejecting unrecognized
 action frames; \ ``false``\  otherwise, in which case for action frames the
 driver is responsible for rejecting the frame.
@@ -8531,7 +9034,7 @@ cfg80211_mgmt_tx_status
         wireless device receiving the frame
 
     :param u64 cookie:
-        Cookie returned by cfg80211_ops::\ :c:func:`mgmt_tx`\ 
+        Cookie returned by cfg80211_ops::mgmt_tx()
 
     :param const u8 \*buf:
         Management frame (header + body)
@@ -8551,7 +9054,7 @@ Description
 -----------
 
 This function is called whenever a management frame was requested to be
-transmitted with cfg80211_ops::\ :c:func:`mgmt_tx`\  to report the TX status of the
+transmitted with cfg80211_ops::mgmt_tx() to report the TX status of the
 transmission attempt.
 
 .. _`cfg80211_cqm_rssi_notify`:
@@ -8792,7 +9295,7 @@ sender.
 Return
 ------
 
-\ ``true``\  if the frame was passed to userspace (or this failed
+%true if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
 
 .. _`cfg80211_rx_unexpected_4addr_frame`:
@@ -8828,7 +9331,7 @@ station to avoid event flooding.
 Return
 ------
 
-\ ``true``\  if the frame was passed to userspace (or this failed
+%true if the frame was passed to userspace (or this failed
 for a reason other than not having a subscription.)
 
 .. _`cfg80211_probe_status`:
@@ -8911,7 +9414,7 @@ cfg80211_reg_can_beacon
 Return
 ------
 
-\ ``true``\  if there is no secondary channel or the secondary channel(s)
+%true if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.)
 
 .. _`cfg80211_reg_can_beacon_relax`:
@@ -8937,7 +9440,7 @@ cfg80211_reg_can_beacon_relax
 Return
 ------
 
-\ ``true``\  if there is no secondary channel or the secondary channel(s)
+%true if there is no secondary channel or the secondary channel(s)
 can be used for beaconing (i.e. is not a radar channel etc.). This version
 also checks if IR-relaxation conditions apply, to allow beaconing under
 more permissive conditions.
@@ -9112,7 +9615,7 @@ copies its contents to the given buffer.
 Return
 ------
 
-A negative error code (-\ ``EILSEQ``\  or -\ ``ENOENT``\ ) if the data is
+A negative error code (-%EILSEQ or -%ENOENT) if the data is
 malformed or the attribute can't be found (respectively), or the
 length of the found attribute (which can be zero).
 
@@ -9262,7 +9765,7 @@ Description
 
 This function can be called by the driver to indicate it has reverted
 operation back to normal. One reason could be that the duration given
-by .\ :c:func:`crit_proto_start`\  has expired.
+by .crit_proto_start() has expired.
 
 .. _`ieee80211_get_num_supported_channels`:
 
@@ -9302,7 +9805,7 @@ cfg80211_check_combinations
     :param const u8 radar_detect:
         a bitmap where each bit corresponds to a channel
         width where radar detection is needed, as in the definition of
-        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .\ ``radar_detect_widths``\ 
+        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .@radar_detect_widths
 
     :param const int iftype_num:
         array with the numbers of interfaces of each interface
@@ -9336,7 +9839,7 @@ cfg80211_iter_combinations
     :param const u8 radar_detect:
         a bitmap where each bit corresponds to a channel
         width where radar detection is needed, as in the definition of
-        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .\ ``radar_detect_widths``\ 
+        \ :c:type:`struct ieee80211_iface_combination <ieee80211_iface_combination>`\ .@radar_detect_widths
 
     :param const int iftype_num:
         array with the numbers of interfaces of each interface
@@ -9403,7 +9906,7 @@ Description
 -----------
 
 The extended features are flagged in multiple bytes (see
-\ :c:type:`struct wiphy <wiphy>`\ .\ ``ext_features``\ )
+\ :c:type:`struct wiphy <wiphy>`\ .@ext_features)
 
 .. _`wiphy_ext_feature_isset`:
 
@@ -9426,7 +9929,140 @@ Description
 -----------
 
 The extended features are flagged in multiple bytes (see
-\ :c:type:`struct wiphy <wiphy>`\ .\ ``ext_features``\ )
+\ :c:type:`struct wiphy <wiphy>`\ .@ext_features)
+
+.. _`cfg80211_free_nan_func`:
+
+cfg80211_free_nan_func
+======================
+
+.. c:function:: void cfg80211_free_nan_func(struct cfg80211_nan_func *f)
+
+    free NAN function
+
+    :param struct cfg80211_nan_func \*f:
+        NAN function that should be freed
+
+.. _`cfg80211_free_nan_func.description`:
+
+Description
+-----------
+
+Frees all the NAN function and all it's allocated members.
+
+.. _`cfg80211_nan_match_params`:
+
+struct cfg80211_nan_match_params
+================================
+
+.. c:type:: struct cfg80211_nan_match_params
+
+    NAN match parameters
+
+.. _`cfg80211_nan_match_params.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct cfg80211_nan_match_params {
+        enum nl80211_nan_function_type type;
+        u8 inst_id;
+        u8 peer_inst_id;
+        const u8 *addr;
+        u8 info_len;
+        const u8 *info;
+        u64 cookie;
+    }
+
+.. _`cfg80211_nan_match_params.members`:
+
+Members
+-------
+
+type
+    the type of the function that triggered a match. If it is
+    \ ``NL80211_NAN_FUNC_SUBSCRIBE``\  it means that we replied to a subscriber.
+    If it is \ ``NL80211_NAN_FUNC_PUBLISH``\ , it means that we got a discovery
+    result.
+    If it is \ ``NL80211_NAN_FUNC_FOLLOW_UP``\ , we received a follow up.
+
+inst_id
+    the local instance id
+
+peer_inst_id
+    the instance id of the peer's function
+
+addr
+    the MAC address of the peer
+
+info_len
+    the length of the \ :c:type:`struct info <info>`\ 
+
+info
+    the Service Specific Info from the peer (if any)
+
+cookie
+    unique identifier of the corresponding function
+
+.. _`cfg80211_nan_match`:
+
+cfg80211_nan_match
+==================
+
+.. c:function:: void cfg80211_nan_match(struct wireless_dev *wdev, struct cfg80211_nan_match_params *match, gfp_t gfp)
+
+    report a match for a NAN function.
+
+    :param struct wireless_dev \*wdev:
+        the wireless device reporting the match
+
+    :param struct cfg80211_nan_match_params \*match:
+        match notification parameters
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_nan_match.description`:
+
+Description
+-----------
+
+This function reports that the a NAN function had a match. This
+can be a subscribe that had a match or a solicited publish that
+was sent. It can also be a follow up that was received.
+
+.. _`cfg80211_nan_func_terminated`:
+
+cfg80211_nan_func_terminated
+============================
+
+.. c:function:: void cfg80211_nan_func_terminated(struct wireless_dev *wdev, u8 inst_id, enum nl80211_nan_func_term_reason reason, u64 cookie, gfp_t gfp)
+
+    notify about NAN function termination.
+
+    :param struct wireless_dev \*wdev:
+        the wireless device reporting the match
+
+    :param u8 inst_id:
+        the local instance id
+
+    :param enum nl80211_nan_func_term_reason reason:
+        termination reason (one of the NL80211_NAN_FUNC_TERM_REASON_*)
+
+    :param u64 cookie:
+        unique NAN function identifier
+
+    :param gfp_t gfp:
+        allocation flags
+
+.. _`cfg80211_nan_func_terminated.description`:
+
+Description
+-----------
+
+This function reports that the a NAN function is terminated.
 
 .. This file was automatic generated / don't edit.
 

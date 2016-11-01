@@ -24,10 +24,10 @@ mac_vmode_to_var
 Description
 -----------
 
-Converts a MacOS vmode/cmode pair to a frame buffer video
-mode structure.
+     Converts a MacOS vmode/cmode pair to a frame buffer video
+     mode structure.
 
-Returns negative errno on error, or zero for success.
+     Returns negative errno on error, or zero for success.
 
 .. _`mac_var_to_vmode`:
 
@@ -52,10 +52,10 @@ mac_var_to_vmode
 Description
 -----------
 
-Converts a frame buffer video mode structure to a MacOS
-vmode/cmode pair.
+     Converts a frame buffer video mode structure to a MacOS
+     vmode/cmode pair.
 
-Returns negative errno on error, or zero for success.
+     Returns negative errno on error, or zero for success.
 
 .. _`mac_map_monitor_sense`:
 
@@ -74,10 +74,10 @@ mac_map_monitor_sense
 Description
 -----------
 
-Converts a Macintosh monitor sense number to a MacOS
-vmode number.
+     Converts a Macintosh monitor sense number to a MacOS
+     vmode number.
 
-Returns MacOS vmode video mode number.
+     Returns MacOS vmode video mode number.
 
 .. _`mac_find_mode`:
 
@@ -105,21 +105,21 @@ mac_find_mode
 Description
 -----------
 
-Finds a suitable video mode.  Tries to set mode specified
-by \ ``mode_option``\ .  If the name of the wanted mode begins with
-'mac', the Mac video mode database will be used, otherwise it
-will fall back to the standard video mode database.
+     Finds a suitable video mode.  Tries to set mode specified
+     by \ ``mode_option``\ .  If the name of the wanted mode begins with
+     'mac', the Mac video mode database will be used, otherwise it
+     will fall back to the standard video mode database.
 
 .. _`mac_find_mode.note`:
 
 Note
 ----
 
-Function marked as \__init and can only be used during
-system boot.
+Function marked as __init and can only be used during
+     system boot.
 
-Returns error code from fb_find_mode (see fb_find_mode
-function).
+     Returns error code from fb_find_mode (see fb_find_mode
+     function).
 
 .. This file was automatic generated / don't edit.
 

@@ -27,61 +27,6 @@ use of the video_device array.
 
 Returns a free index number.
 
-.. _`__video_register_device`:
-
-__video_register_device
-=======================
-
-.. c:function:: int __video_register_device(struct video_device *vdev, int type, int nr, int warn_if_nr_in_use, struct module *owner)
-
-    register video4linux devices
-
-    :param struct video_device \*vdev:
-        video device structure we want to register
-
-    :param int type:
-        type of device to register
-
-    :param int nr:
-        which device node number (0 == /dev/video0, 1 == /dev/video1, ...
-        -1 == first free)
-
-    :param int warn_if_nr_in_use:
-        warn if the desired device node number
-        was already in use and another number was chosen instead.
-
-    :param struct module \*owner:
-        module that owns the video device node
-
-.. _`__video_register_device.description`:
-
-Description
------------
-
-The registration code assigns minor numbers and device node numbers
-based on the requested type and registers the new device node with
-the kernel.
-
-This function assumes that struct video_device was zeroed when it
-was allocated and does not contain any stale date.
-
-An error is returned if no free minor or device node number could be
-found, or if the registration of the device node failed.
-
-Zero is returned on success.
-
-Valid types are
-
-\ ``VFL_TYPE_GRABBER``\  - A frame grabber
-
-\ ``VFL_TYPE_VBI``\  - Vertical blank data (undecoded)
-
-\ ``VFL_TYPE_RADIO``\  - A radio card
-
-\ ``VFL_TYPE_SUBDEV``\  - A subdevice
-
-\ ``VFL_TYPE_SDR``\  - Software Defined Radio
-
 .. _`video_unregister_device`:
 
 video_unregister_device

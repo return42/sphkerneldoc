@@ -45,7 +45,7 @@ Description
 
 This is called from \ :c:func:`hfi1_do_send`\  to
 forward a WQE addressed to the same HFI.
-Note that although we are single threaded due to the tasklet, we still
+Note that although we are single threaded due to the send engine, we still
 have to protect against \ :c:func:`post_send`\ .  We don't have to worry about
 receive interrupts since this is a connected protocol and all packets
 will pass through here.
@@ -88,7 +88,7 @@ build_ahg
 
 .. c:function:: void build_ahg(struct rvt_qp *qp, u32 npsn)
 
-    create ahg in s_hdr
+    create ahg in s_ahg
 
     :param struct rvt_qp \*qp:
         a pointer to QP
@@ -125,7 +125,7 @@ Description
 -----------
 
 Process entries in the send work queue until credit or queue is
-exhausted.  Only allow one CPU to send a packet per QP (tasklet).
+exhausted.  Only allow one CPU to send a packet per QP.
 Otherwise, two threads could send packets out of order.
 
 .. This file was automatic generated / don't edit.

@@ -38,7 +38,7 @@ range_init
 range_within
 ============
 
-.. c:function:: int range_within(const struct lu_seq_range *range, __u64 s)
+.. c:function:: bool range_within(const struct lu_seq_range *range, __u64 s)
 
     :param const struct lu_seq_range \*range:
         *undescribed*
@@ -51,11 +51,11 @@ range_within
 fid_seq_is_igif
 ===============
 
-.. c:function:: int fid_seq_is_igif(const __u64 seq)
+.. c:function:: bool fid_seq_is_igif(__u64 seq)
 
     \param fid the fid to be tested. \return true if the fid is a igif; otherwise false.
 
-    :param const __u64 seq:
+    :param __u64 seq:
         *undescribed*
 
 .. _`fid_seq_is_idif`:
@@ -63,11 +63,11 @@ fid_seq_is_igif
 fid_seq_is_idif
 ===============
 
-.. c:function:: int fid_seq_is_idif(const __u64 seq)
+.. c:function:: bool fid_seq_is_idif(__u64 seq)
 
     \param fid the fid to be tested. \return true if the fid is a idif; otherwise false.
 
-    :param const __u64 seq:
+    :param __u64 seq:
         *undescribed*
 
 .. _`ostid_set_id`:
@@ -92,7 +92,7 @@ ostid_to_fid
 
 .. c:function:: int ostid_to_fid(struct lu_fid *fid, struct ost_id *ostid, __u32 ost_idx)
 
-    converting all obdo, lmm, lsm, etc. 64-bit id/seq pairs into proper FIDs.  Note that if an id/seq is already in FID/IDIF format it will be passed through unchanged.  Only legacy OST objects in "group 0" will be mapped into the IDIF namespace so that they can fit into the struct lu_fid fields without loss.  For reference see: http://arch.lustre.org/index.php?title=Interoperability_fids_zfs
+    converting all obdo, lmm, lsm, etc. 64-bit id/seq pairs into proper FIDs.  Note that if an id/seq is already in FID/IDIF format it will be passed through unchanged.  Only legacy OST objects in "group 0" will be mapped into the IDIF namespace so that they can fit into the struct lu_fid fields without loss.  For reference see: http://wiki.old.lustre.org/index.php/Architecture_-_Interoperability_fids_zfs
 
     :param struct lu_fid \*fid:
         *undescribed*
@@ -191,6 +191,23 @@ But currently lmm_oi/lsm_oi does not have any "real" usages,
 except for printing some information, and the user can always
 get the real FID from LMA, besides this multiple case check might
 make swab more complicate. So we will keep using id/seq for lmm_oi.
+
+.. _`lustre_fnv_1a_64_prime`:
+
+LUSTRE_FNV_1A_64_PRIME
+======================
+
+.. c:function::  LUSTRE_FNV_1A_64_PRIME()
+
+    1a hash algorithm is as follows: hash = FNV_offset_basis for each octet_of_data to be hashed hash = hash XOR octet_of_data hash = hash × FNV_prime return hash http://en.wikipedia.org/wiki/Fowler–Noll–Vo_hash_function#FNV-1a_hash
+
+.. _`lustre_fnv_1a_64_prime.description`:
+
+Description
+-----------
+
+http://www.isthe.com/chongo/tech/comp/fnv/index.html#FNV-reference-source
+FNV_prime is 2^40 + 2^8 + 0xb3 = 0x100000001b3ULL
 
 .. This file was automatic generated / don't edit.
 

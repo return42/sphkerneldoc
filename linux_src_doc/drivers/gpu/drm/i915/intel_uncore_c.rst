@@ -103,12 +103,12 @@ on the caller to explicitly handle the dev_priv->uncore.lock spinlock.
 gen6_reset_engines
 ==================
 
-.. c:function:: int gen6_reset_engines(struct drm_device *dev, unsigned engine_mask)
+.. c:function:: int gen6_reset_engines(struct drm_i915_private *dev_priv, unsigned engine_mask)
 
     reset individual engines
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
     :param unsigned engine_mask:
         mask of \ :c:func:`intel_ring_flag`\  engines or ALL_ENGINES for full reset
@@ -130,6 +130,85 @@ It is responsibility of the caller to handle the difference between
 asking full domain reset versus reset for all available individual engines.
 
 Returns 0 on success, nonzero on error.
+
+.. _`intel_wait_for_register_fw`:
+
+intel_wait_for_register_fw
+==========================
+
+.. c:function:: int intel_wait_for_register_fw(struct drm_i915_private *dev_priv, i915_reg_t reg, const u32 mask, const u32 value, const unsigned long timeout_ms)
+
+    wait until register matches expected state
+
+    :param struct drm_i915_private \*dev_priv:
+        the i915 device
+
+    :param i915_reg_t reg:
+        the register to read
+
+    :param const u32 mask:
+        mask to apply to register value
+
+    :param const u32 value:
+        :
+
+    :param const unsigned long timeout_ms:
+        timeout in millisecond
+
+.. _`intel_wait_for_register_fw.description`:
+
+Description
+-----------
+
+This routine waits until the target register \ ``reg``\  contains the expected
+
+    (I915_READ_FW(reg) & mask) == value
+
+Otherwise, the wait will timeout after \ ``timeout_ms``\  milliseconds.
+
+Note that this routine assumes the caller holds forcewake asserted, it is
+not suitable for very long waits. See \ :c:func:`intel_wait_for_register`\  if you
+wish to wait without holding forcewake for the duration (i.e. you expect
+the wait to be slow).
+
+Returns 0 if the register matches the desired condition, or -ETIMEOUT.
+
+.. _`intel_wait_for_register`:
+
+intel_wait_for_register
+=======================
+
+.. c:function:: int intel_wait_for_register(struct drm_i915_private *dev_priv, i915_reg_t reg, const u32 mask, const u32 value, const unsigned long timeout_ms)
+
+    wait until register matches expected state
+
+    :param struct drm_i915_private \*dev_priv:
+        the i915 device
+
+    :param i915_reg_t reg:
+        the register to read
+
+    :param const u32 mask:
+        mask to apply to register value
+
+    :param const u32 value:
+        :
+
+    :param const unsigned long timeout_ms:
+        timeout in millisecond
+
+.. _`intel_wait_for_register.description`:
+
+Description
+-----------
+
+This routine waits until the target register \ ``reg``\  contains the expected
+
+    (I915_READ(reg) & mask) == value
+
+Otherwise, the wait will timeout after \ ``timeout_ms``\  milliseconds.
+
+Returns 0 if the register matches the desired condition, or -ETIMEOUT.
 
 .. _`intel_uncore_forcewake_for_reg`:
 

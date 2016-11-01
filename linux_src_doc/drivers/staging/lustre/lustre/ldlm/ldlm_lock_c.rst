@@ -322,11 +322,11 @@ ldlm_add_ast_work_item
 ldlm_lock_addref
 ================
 
-.. c:function:: void ldlm_lock_addref(struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_addref(const struct lustre_handle *lockh, __u32 mode)
 
     r/w reference type is determined by \a mode Calls ldlm_lock_addref_internal.
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param __u32 mode:
@@ -352,11 +352,11 @@ ldlm_lock_addref_internal_nolock
 ldlm_lock_addref_try
 ====================
 
-.. c:function:: int ldlm_lock_addref_try(struct lustre_handle *lockh, __u32 mode)
+.. c:function:: int ldlm_lock_addref_try(const struct lustre_handle *lockh, __u32 mode)
 
     fails if lock is already LDLM_FL_CBPENDING or destroyed.
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param __u32 mode:
@@ -421,9 +421,9 @@ ldlm_lock_decref_internal
 ldlm_lock_decref
 ================
 
-.. c:function:: void ldlm_lock_decref(struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_decref(const struct lustre_handle *lockh, __u32 mode)
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param __u32 mode:
@@ -434,11 +434,11 @@ ldlm_lock_decref
 ldlm_lock_decref_and_cancel
 ===========================
 
-.. c:function:: void ldlm_lock_decref_and_cancel(struct lustre_handle *lockh, __u32 mode)
+.. c:function:: void ldlm_lock_decref_and_cancel(const struct lustre_handle *lockh, __u32 mode)
 
     \a lockh and mark it for subsequent cancellation once r/w refcount drops to zero instead of putting into LRU.
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param __u32 mode:
@@ -865,9 +865,9 @@ ldlm_lock_cancel
 ldlm_lock_set_data
 ==================
 
-.. c:function:: int ldlm_lock_set_data(struct lustre_handle *lockh, void *data)
+.. c:function:: int ldlm_lock_set_data(const struct lustre_handle *lockh, void *data)
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
     :param void \*data:
@@ -878,12 +878,12 @@ ldlm_lock_set_data
 ldlm_lock_dump_handle
 =====================
 
-.. c:function:: void ldlm_lock_dump_handle(int level, struct lustre_handle *lockh)
+.. c:function:: void ldlm_lock_dump_handle(int level, const struct lustre_handle *lockh)
 
     :param int level:
         *undescribed*
 
-    :param struct lustre_handle \*lockh:
+    :param const struct lustre_handle \*lockh:
         *undescribed*
 
 .. _`ldlm_lock_dump_handle.description`:

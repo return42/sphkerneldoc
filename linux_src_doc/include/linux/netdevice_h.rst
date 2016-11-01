@@ -209,7 +209,7 @@ enum netdev_priv_flags
 
 .. c:type:: enum netdev_priv_flags
 
-    \ :c:type:`struct net_device <net_device>`\  priv_flags
+    &struct net_device priv_flags
 
 .. _`netdev_priv_flags.definition`:
 
@@ -270,7 +270,7 @@ IFF_WAN_HDLC
     WAN HDLC device
 
 IFF_XMIT_DST_RELEASE
-    \ :c:func:`dev_hard_start_xmit`\  is allowed to
+    dev_hard_start_xmit() is allowed to
     release skb->dst
 
 IFF_DONT_BRIDGE
@@ -411,6 +411,7 @@ Definition
     #endif
         struct phy_device *phydev;
         struct lock_class_key *qdisc_tx_busylock;
+        struct lock_class_key *qdisc_running_key;
         bool proto_down;
     }
 
@@ -520,7 +521,10 @@ phydev
     for hardware timestamping
 
 qdisc_tx_busylock
-    XXX: need comments on this one
+    lockdep class annotating Qdisc->busylock spinlock
+
+qdisc_running_key
+    lockdep class annotating Qdisc->running seqcount
 
 proto_down
     protocol port state information can be sent to the
@@ -580,7 +584,7 @@ netif_napi_add
 Description
 -----------
 
-\ :c:func:`netif_napi_add`\  must be used to initialize a NAPI context prior to calling
+netif_napi_add() must be used to initialize a NAPI context prior to calling
 \*any\* of the other NAPI-related functions.
 
 .. _`netif_tx_napi_add`:
@@ -630,7 +634,7 @@ netif_napi_del
 Description
 -----------
 
-\ :c:func:`netif_napi_del`\  removes a NAPI context from the network device NAPI list
+netif_napi_del() removes a NAPI context from the network device NAPI list
 
 .. _`netif_start_queue`:
 

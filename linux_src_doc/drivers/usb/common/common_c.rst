@@ -6,12 +6,16 @@
 of_usb_get_dr_mode_by_phy
 =========================
 
-.. c:function:: enum usb_dr_mode of_usb_get_dr_mode_by_phy(struct device_node *phy_np)
+.. c:function:: enum usb_dr_mode of_usb_get_dr_mode_by_phy(struct device_node *np, int arg0)
 
     Get dual role mode for the controller device which is associated with the given phy device_node
 
-    :param struct device_node \*phy_np:
-        *undescribed*
+    :param struct device_node \*np:
+        Pointer to the given phy device_node
+
+    :param int arg0:
+        phandle args[0] for phy's with #phy-cells >= 1, or -1 for
+        phys which do not have phy-cells
 
 .. _`of_usb_get_dr_mode_by_phy.description`:
 

@@ -11,3 +11,4 @@ tpm
     tpm-interface_c
     tpm2-cmd_c
     tpm_ibmvtpm_c
+    tpm_vtpm_proxy_c

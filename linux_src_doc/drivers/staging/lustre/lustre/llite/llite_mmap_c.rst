@@ -41,7 +41,7 @@ ll_fault0
 
 .. c:function:: int ll_fault0(struct vm_area_struct *vma, struct vm_fault *vmf)
 
-    :\ :c:func:`fault`\  method, called by VM to server page fault (both in kernel and user space).
+    :fault() method, called by VM to server page fault (both in kernel and user space).
 
     :param struct vm_area_struct \*vma:
         *undescribed*

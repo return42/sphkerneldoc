@@ -105,7 +105,7 @@ get_dev_pagemap
 Description
 -----------
 
-\ ``pgmap``\  allows the overhead of a lookup to be bypassed when \ ``pfn``\  lands in the
+@pgmap allows the overhead of a lookup to be bypassed when \ ``pfn``\  lands in the
 same mapping.
 
 .. This file was automatic generated / don't edit.

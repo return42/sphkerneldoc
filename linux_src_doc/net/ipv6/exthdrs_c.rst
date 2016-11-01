@@ -1,6 +1,79 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/ipv6/exthdrs.c
 
+.. _`ipv6_renew_options`:
+
+ipv6_renew_options
+==================
+
+.. c:function:: struct ipv6_txoptions *ipv6_renew_options(struct sock *sk, struct ipv6_txoptions *opt, int newtype, struct ipv6_opt_hdr __user *newopt, int newoptlen)
+
+    replace a specific ext hdr with a new one.
+
+    :param struct sock \*sk:
+        sock from which to allocate memory
+
+    :param struct ipv6_txoptions \*opt:
+        original options
+
+    :param int newtype:
+        option type to replace in \ ``opt``\ 
+
+    :param struct ipv6_opt_hdr __user \*newopt:
+        new option of type \ ``newtype``\  to replace (user-mem)
+
+    :param int newoptlen:
+        length of \ ``newopt``\ 
+
+.. _`ipv6_renew_options.description`:
+
+Description
+-----------
+
+Returns a new set of options which is a copy of \ ``opt``\  with the
+option type \ ``newtype``\  replaced with \ ``newopt``\ .
+
+\ ``opt``\  may be NULL, in which case a new set of options is returned
+containing just \ ``newopt``\ .
+
+\ ``newopt``\  may be NULL, in which case the specified option type is
+not copied into the new set of options.
+
+The new set of options is allocated from the socket option memory
+buffer of \ ``sk``\ .
+
+.. _`ipv6_renew_options_kern`:
+
+ipv6_renew_options_kern
+=======================
+
+.. c:function:: struct ipv6_txoptions *ipv6_renew_options_kern(struct sock *sk, struct ipv6_txoptions *opt, int newtype, struct ipv6_opt_hdr *newopt, int newoptlen)
+
+    replace a specific ext hdr with a new one.
+
+    :param struct sock \*sk:
+        sock from which to allocate memory
+
+    :param struct ipv6_txoptions \*opt:
+        original options
+
+    :param int newtype:
+        option type to replace in \ ``opt``\ 
+
+    :param struct ipv6_opt_hdr \*newopt:
+        new option of type \ ``newtype``\  to replace (kernel-mem)
+
+    :param int newoptlen:
+        length of \ ``newopt``\ 
+
+.. _`ipv6_renew_options_kern.description`:
+
+Description
+-----------
+
+See \ :c:func:`ipv6_renew_options`\ .  The difference is that \ ``newopt``\  is
+kernel memory, rather than user memory.
+
 .. _`fl6_update_dst`:
 
 fl6_update_dst

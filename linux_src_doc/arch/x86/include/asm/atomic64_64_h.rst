@@ -92,7 +92,7 @@ Atomically subtracts \ ``i``\  from \ ``v``\ .
 atomic64_sub_and_test
 =====================
 
-.. c:function:: int atomic64_sub_and_test(long i, atomic64_t *v)
+.. c:function:: bool atomic64_sub_and_test(long i, atomic64_t *v)
 
     subtract value from variable and test result
 
@@ -154,7 +154,7 @@ Atomically decrements \ ``v``\  by 1.
 atomic64_dec_and_test
 =====================
 
-.. c:function:: int atomic64_dec_and_test(atomic64_t *v)
+.. c:function:: bool atomic64_dec_and_test(atomic64_t *v)
 
     decrement and test
 
@@ -175,7 +175,7 @@ cases.
 atomic64_inc_and_test
 =====================
 
-.. c:function:: int atomic64_inc_and_test(atomic64_t *v)
+.. c:function:: bool atomic64_inc_and_test(atomic64_t *v)
 
     increment and test
 
@@ -196,7 +196,7 @@ other cases.
 atomic64_add_negative
 =====================
 
-.. c:function:: int atomic64_add_negative(long i, atomic64_t *v)
+.. c:function:: bool atomic64_add_negative(long i, atomic64_t *v)
 
     add and test if negative
 
@@ -242,7 +242,7 @@ Atomically adds \ ``i``\  to \ ``v``\  and returns \ ``i``\  + \ ``v``\
 atomic64_add_unless
 ===================
 
-.. c:function:: int atomic64_add_unless(atomic64_t *v, long a, long u)
+.. c:function:: bool atomic64_add_unless(atomic64_t *v, long a, long u)
 
     add unless the number is a given value
 

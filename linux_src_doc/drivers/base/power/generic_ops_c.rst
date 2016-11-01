@@ -19,7 +19,7 @@ Description
 -----------
 
 If PM operations are defined for the \ ``dev``\ 's driver and they include
-->\ :c:func:`runtime_suspend`\ , execute it and return its error code.  Otherwise,
+->runtime_suspend(), execute it and return its error code.  Otherwise,
 return 0.
 
 .. _`pm_generic_runtime_resume`:
@@ -40,7 +40,7 @@ Description
 -----------
 
 If PM operations are defined for the \ ``dev``\ 's driver and they include
-->\ :c:func:`runtime_resume`\ , execute it and return its error code.  Otherwise,
+->runtime_resume(), execute it and return its error code.  Otherwise,
 return 0.
 
 .. _`pm_generic_prepare`:

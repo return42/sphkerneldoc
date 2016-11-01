@@ -133,6 +133,56 @@ batadv_sysfs_del_vlan
     :param struct batadv_softif_vlan \*vlan:
         the private data of the VLAN to destroy
 
+.. _`batadv_store_mesh_iface_finish`:
+
+batadv_store_mesh_iface_finish
+==============================
+
+.. c:function:: int batadv_store_mesh_iface_finish(struct net_device *net_dev, char ifname[IFNAMSIZ])
+
+    store new hardif mesh_iface state
+
+    :param struct net_device \*net_dev:
+        netdevice to add/remove to/from batman-adv soft-interface
+
+    :param char ifname:
+        name of soft-interface to modify
+
+.. _`batadv_store_mesh_iface_finish.description`:
+
+Description
+-----------
+
+Changes the parts of the hard+soft interface which can not be modified under
+sysfs lock (to prevent deadlock situations).
+
+.. _`batadv_store_mesh_iface_finish.return`:
+
+Return
+------
+
+0 on success, 0 < on failure
+
+.. _`batadv_store_mesh_iface_work`:
+
+batadv_store_mesh_iface_work
+============================
+
+.. c:function:: void batadv_store_mesh_iface_work(struct work_struct *work)
+
+    store new hardif mesh_iface state
+
+    :param struct work_struct \*work:
+        work queue item
+
+.. _`batadv_store_mesh_iface_work.description`:
+
+Description
+-----------
+
+Changes the parts of the hard+soft interface which can not be modified under
+sysfs lock (to prevent deadlock situations).
+
 .. _`batadv_store_throughput_override`:
 
 batadv_store_throughput_override

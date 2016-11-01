@@ -72,7 +72,6 @@ Definition
         struct most_interface most_iface;
         char name[16 + sizeof "dim2-"];
         void __iomem *io_base;
-        unsigned int irq_ahb0;
         int clk_speed;
         struct task_struct *netinfo_task;
         wait_queue_head_t netinfo_waitq;
@@ -99,9 +98,6 @@ most_iface
 
 io_base
     I/O register base address
-
-irq_ahb0
-    dim2 AHB0 irq number
 
 clk_speed
     user selectable (through command line parameter) clock speed

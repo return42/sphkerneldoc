@@ -10,4 +10,4 @@ hsi
     clients/index
     controllers/index
     hsi_boardinfo_c
-    hsi_c
+    hsi_core_c

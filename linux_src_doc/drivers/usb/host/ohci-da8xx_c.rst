@@ -21,7 +21,7 @@ usb_hcd_da8xx_probe
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_da8xx_probe.description`:
 
@@ -52,7 +52,7 @@ usb_hcd_da8xx_remove
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_da8xx_remove.description`:
 

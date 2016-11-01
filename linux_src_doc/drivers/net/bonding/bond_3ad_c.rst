@@ -646,7 +646,7 @@ FIXME
 -----
 
 this function MUST be called with the first agg in the bond, or
-\\ :c:func:`__get_active_agg`\  won't work correctly. This function should be better
+\__get_active_agg() won't work correctly. This function should be better
 called with the bond itself, and retrieve the first agg from it.
 
 .. _`ad_clear_agg`:

@@ -21,7 +21,7 @@ usb_hcd_omap_probe
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_omap_probe.description`:
 
@@ -52,7 +52,7 @@ usb_hcd_omap_remove
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_omap_remove.description`:
 

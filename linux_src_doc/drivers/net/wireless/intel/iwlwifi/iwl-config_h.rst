@@ -119,12 +119,13 @@ Definition
         u16 high_temp:1:1:1:1:1;
         u16 mac_addr_from_csr:1:1:1:1:1:1;
         u16 lp_xtal_workaround:1:1:1:1:1:1:1;
-        u16 no_power_up_nic_in_init:1:1:1:1:1:1:1:1;
-        u16 disable_dummy_notification:1:1:1:1:1:1:1:1:1;
-        u16 apmg_not_supported:1:1:1:1:1:1:1:1:1:1;
-        u16 mq_rx_supported:1:1:1:1:1:1:1:1:1:1:1;
-        u16 vht_mu_mimo_supported:1:1:1:1:1:1:1:1:1:1:1:1;
-        u16 rf_id:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 disable_dummy_notification:1:1:1:1:1:1:1:1;
+        u16 apmg_not_supported:1:1:1:1:1:1:1:1:1;
+        u16 mq_rx_supported:1:1:1:1:1:1:1:1:1:1;
+        u16 vht_mu_mimo_supported:1:1:1:1:1:1:1:1:1:1:1;
+        u16 rf_id:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 integrated:1:1:1:1:1:1:1:1:1:1:1:1:1;
+        u16 use_tfh:1:1:1:1:1:1:1:1:1:1:1:1:1:1;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
         u8 non_shared_ant;
@@ -232,9 +233,6 @@ mac_addr_from_csr
 lp_xtal_workaround
     *undescribed*
 
-no_power_up_nic_in_init
-    *undescribed*
-
 disable_dummy_notification
     *undescribed*
 
@@ -249,6 +247,12 @@ vht_mu_mimo_supported
 
 rf_id
     need to read rf_id to determine the firmware image
+
+integrated
+    discrete or integrated
+
+use_tfh
+    *undescribed*
 
 valid_tx_ant
     valid transmit antenna

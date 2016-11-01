@@ -344,12 +344,15 @@ Returns 0 for success, error for failure.
 sdma_v3_0_ring_test_ib
 ======================
 
-.. c:function:: int sdma_v3_0_ring_test_ib(struct amdgpu_ring *ring)
+.. c:function:: int sdma_v3_0_ring_test_ib(struct amdgpu_ring *ring, long timeout)
 
     test an IB on the DMA engine
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring structure holding ring information
+
+    :param long timeout:
+        *undescribed*
 
 .. _`sdma_v3_0_ring_test_ib.description`:
 
@@ -392,20 +395,17 @@ Update PTEs by copying them from the GART using sDMA (CIK).
 sdma_v3_0_vm_write_pte
 ======================
 
-.. c:function:: void sdma_v3_0_vm_write_pte(struct amdgpu_ib *ib, const dma_addr_t *pages_addr, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void sdma_v3_0_vm_write_pte(struct amdgpu_ib *ib, uint64_t pe, uint64_t value, unsigned count, uint32_t incr)
 
     update PTEs by writing them manually
 
     :param struct amdgpu_ib \*ib:
         indirect buffer to fill with commands
 
-    :param const dma_addr_t \*pages_addr:
-        *undescribed*
-
     :param uint64_t pe:
         addr of the page entry
 
-    :param uint64_t addr:
+    :param uint64_t value:
         dst addr to write into pe
 
     :param unsigned count:
@@ -413,9 +413,6 @@ sdma_v3_0_vm_write_pte
 
     :param uint32_t incr:
         increase next addr by incr bytes
-
-    :param uint32_t flags:
-        access flags
 
 .. _`sdma_v3_0_vm_write_pte.description`:
 

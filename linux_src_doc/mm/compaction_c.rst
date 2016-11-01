@@ -100,7 +100,7 @@ Otherwise, function returns one-past-the-last PFN of isolated page
 try_to_compact_pages
 ====================
 
-.. c:function:: enum compact_result try_to_compact_pages(gfp_t gfp_mask, unsigned int order, unsigned int alloc_flags, const struct alloc_context *ac, enum migrate_mode mode, int *contended)
+.. c:function:: enum compact_result try_to_compact_pages(gfp_t gfp_mask, unsigned int order, unsigned int alloc_flags, const struct alloc_context *ac, enum compact_priority prio)
 
     Direct compact to satisfy a high-order allocation
 
@@ -116,12 +116,8 @@ try_to_compact_pages
     :param const struct alloc_context \*ac:
         The context of current allocation
 
-    :param enum migrate_mode mode:
-        The migration mode for async, sync light, or sync migration
-
-    :param int \*contended:
-        Return value that determines if compaction was aborted due to
-        \ :c:func:`need_resched`\  or lock contention
+    :param enum compact_priority prio:
+        *undescribed*
 
 .. _`try_to_compact_pages.description`:
 

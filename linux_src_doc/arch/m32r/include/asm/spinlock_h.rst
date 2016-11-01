@@ -18,7 +18,7 @@ arch_spin_trylock
 Description
 -----------
 
-\ :c:func:`arch_spin_trylock`\  tries to get the lock and returns a result.
+arch_spin_trylock() tries to get the lock and returns a result.
 On the m32r, the result value is 1 (= Success) or 0 (= Failure).
 
 .. _`arch_read_can_lock`:

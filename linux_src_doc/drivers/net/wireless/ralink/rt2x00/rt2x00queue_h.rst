@@ -95,10 +95,10 @@ Constants
 ---------
 
 SKBDESC_DMA_MAPPED_RX
-    \ :c:type:`struct skb_dma <skb_dma>` field has been mapped for RX
+    &skb_dma field has been mapped for RX
 
 SKBDESC_DMA_MAPPED_TX
-    \ :c:type:`struct skb_dma <skb_dma>` field has been mapped for TX
+    &skb_dma field has been mapped for TX
 
 SKBDESC_IV_STRIPPED
     Frame contained a IV/EIV provided by
@@ -188,7 +188,7 @@ get_skb_frame_desc
     Obtain the rt2x00 frame descriptor from a sk_buff.
 
     :param struct sk_buff \*skb:
-        \ :c:type:`struct sk_buff <sk_buff>`\  from where we obtain the \ :c:type:`struct skb_frame_desc <skb_frame_desc>`\ 
+        &struct sk_buff from where we obtain the \ :c:type:`struct skb_frame_desc <skb_frame_desc>`\ 
 
 .. _`rxdone_entry_desc_flags`:
 
@@ -249,7 +249,7 @@ RXDONE_SIGNAL_MASK
 
 .. c:function::  RXDONE_SIGNAL_MASK()
 
-    Define to mask off all \ :c:type:`struct rxdone_entry_desc_flags <rxdone_entry_desc_flags>` flags except for the RXDONE_SIGNAL\_\* flags. This is useful to convert the dev_flags from \ :c:type:`struct rxdone_entry_desc <rxdone_entry_desc>` to a signal value type.
+    Define to mask off all \ :c:type:`struct rxdone_entry_desc_flags <rxdone_entry_desc_flags>`\  flags except for the RXDONE_SIGNAL\_\* flags. This is useful to convert the dev_flags from \ :c:type:`struct rxdone_entry_desc <rxdone_entry_desc>`\  to a signal value type.
 
 .. _`rxdone_entry_desc`:
 
@@ -369,7 +369,7 @@ TXDONE_FAILURE
     Frame was not successfully send
 
 TXDONE_EXCESSIVE_RETRY
-    In addition to \ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`, the
+    In addition to \ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`\ , the
     frame transmission failed due to excessive retries.
 
 TXDONE_AMPDU
@@ -381,11 +381,11 @@ Description
 -----------
 
 Every txdone report has to contain the basic result of the
-transmission, either \ :c:type:`struct TXDONE_UNKNOWN <TXDONE_UNKNOWN>`, \ :c:type:`struct TXDONE_SUCCESS <TXDONE_SUCCESS>` or
-\ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`. The flag \ :c:type:`struct TXDONE_FALLBACK <TXDONE_FALLBACK>` can be used in
+transmission, either \ :c:type:`struct TXDONE_UNKNOWN <TXDONE_UNKNOWN>`\ , \ :c:type:`struct TXDONE_SUCCESS <TXDONE_SUCCESS>`\  or
+\ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`\ . The flag \ :c:type:`struct TXDONE_FALLBACK <TXDONE_FALLBACK>`\  can be used in
 conjunction with all of these flags but should only be set
-if retires > 0. The flag \ :c:type:`struct TXDONE_EXCESSIVE_RETRY <TXDONE_EXCESSIVE_RETRY>` can only be used
-in conjunction with \ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`.
+if retires > 0. The flag \ :c:type:`struct TXDONE_EXCESSIVE_RETRY <TXDONE_EXCESSIVE_RETRY>`\  can only be used
+in conjunction with \ :c:type:`struct TXDONE_FAILURE <TXDONE_FAILURE>`\ .
 
 .. _`txdone_entry_desc`:
 
@@ -689,7 +689,7 @@ last_action
     Timestamp of last change.
 
 queue
-    The data queue (\ :c:type:`struct data_queue <data_queue>`\ ) to which this entry belongs.
+    The data queue (&struct data_queue) to which this entry belongs.
 
 skb
     The buffer which is currently being transmitted (for TX queue),
@@ -967,8 +967,8 @@ Description
 Using the current queue address we take the address directly
 after the queue to take the next queue. Note that this macro
 should be used carefully since it does not protect against
-moving past the end of the list. (See macros \ :c:type:`struct queue_end <queue_end>` and
-\ :c:type:`struct tx_queue_end <tx_queue_end>` for determining the end of the queue).
+moving past the end of the list. (See macros \ :c:type:`struct queue_end <queue_end>`\  and
+\ :c:type:`struct tx_queue_end <tx_queue_end>`\  for determining the end of the queue).
 
 .. _`queue_loop`:
 
@@ -993,7 +993,7 @@ queue_loop
 Description
 -----------
 
-This macro will loop through all queues between \ :c:type:`struct __start <__start>` and \ :c:type:`struct __end <__end>`.
+This macro will loop through all queues between \ :c:type:`struct __start <__start>`\  and \ :c:type:`struct __end <__end>`\ .
 
 .. _`queue_for_each`:
 
@@ -1076,10 +1076,10 @@ rt2x00queue_for_each_entry
         Pointer to \ ``data_queue``\ 
 
     :param enum queue_index start:
-        \ :c:type:`enum queue_index <queue_index>`\  Pointer to start index
+        &enum queue_index Pointer to start index
 
     :param enum queue_index end:
-        \ :c:type:`enum queue_index <queue_index>`\  Pointer to end index
+        &enum queue_index Pointer to end index
 
     :param void \*data:
         Data to pass to the callback function

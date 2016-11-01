@@ -8,3 +8,4 @@ reset
     :maxdepth: 1
 
     keystone-reset_c
+    reboot-mode_c

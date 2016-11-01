@@ -162,7 +162,7 @@ Description
 
 In the case of error, the return value will be a pointer embedded with
 errno.  Check and handle the return value appropriately with standard
-macros such as @\ :c:func:`IS_ERR`\  and @\ :c:func:`PTR_ERR`\ .
+macros such as \ ``IS_ERR``\ () and \ ``PTR_ERR``\ ().
 
 .. _`snd_hda_jack_detect_enable`:
 

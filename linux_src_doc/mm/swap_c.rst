@@ -139,7 +139,7 @@ deactivate_page
 Description
 -----------
 
-\ :c:func:`deactivate_page`\  moves \ ``page``\  to the inactive list if \ ``page``\  was on the active
+deactivate_page() moves \ ``page``\  to the inactive list if \ ``page``\  was on the active
 list and was not an unevictable page.  This is done to accelerate the reclaim
 of \ ``page``\ .
 
@@ -198,7 +198,7 @@ pagevec_lookup_entries
 Description
 -----------
 
-\ :c:func:`pagevec_lookup_entries`\  will search for and return a group of up
+pagevec_lookup_entries() will search for and return a group of up
 to \ ``nr_entries``\  pages and shadow entries in the mapping.  All
 entries are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup_entries`\  takes a
 reference against actual pages in \ ``pvec``\ .
@@ -227,7 +227,7 @@ pagevec_remove_exceptionals
 Description
 -----------
 
-\ :c:func:`pagevec_lookup_entries`\  fills both pages and exceptional radix
+pagevec_lookup_entries() fills both pages and exceptional radix
 tree entries into the pagevec.  This function prunes all
 exceptionals from \ ``pvec``\  without leaving holes, so that it can be
 passed on to page-only pagevec operations.
@@ -258,7 +258,7 @@ pagevec_lookup
 Description
 -----------
 
-\ :c:func:`pagevec_lookup`\  will search for and return a group of up to \ ``nr_pages``\  pages
+pagevec_lookup() will search for and return a group of up to \ ``nr_pages``\  pages
 in the mapping.  The pages are placed in \ ``pvec``\ .  \ :c:func:`pagevec_lookup`\  takes a
 reference against the pages in \ ``pvec``\ .
 

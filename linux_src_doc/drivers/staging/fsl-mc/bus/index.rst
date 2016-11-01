@@ -13,7 +13,8 @@ bus
     dpmng_c
     dprc-driver_c
     dprc_c
-    mc-allocator_c
-    mc-bus_c
-    mc-msi_c
+    fsl-mc-allocator_c
+    fsl-mc-bus_c
+    fsl-mc-msi_c
+    mc-io_c
     mc-sys_c

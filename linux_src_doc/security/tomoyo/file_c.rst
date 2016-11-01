@@ -333,7 +333,7 @@ tomoyo_merge_path_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_path_acl.description`:
 
@@ -404,7 +404,7 @@ tomoyo_merge_mkdev_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_mkdev_acl.description`:
 
@@ -475,7 +475,7 @@ tomoyo_merge_path2_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_path2_acl.description`:
 
@@ -597,7 +597,7 @@ tomoyo_merge_path_number_acl
         Pointer to "struct tomoyo_acl_info".
 
     :param const bool is_delete:
-        True for \ ``a``\  &= ~\ ``b``\ , false for \ ``a``\  \|= \ ``b``\ .
+        True for \ ``a``\  &= ~@b, false for \ ``a``\  \|= \ ``b``\ .
 
 .. _`tomoyo_merge_path_number_acl.description`:
 

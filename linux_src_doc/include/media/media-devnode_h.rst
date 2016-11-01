@@ -76,13 +76,14 @@ Definition
 .. code-block:: c
 
     struct media_devnode {
+        struct media_device *media_dev;
         const struct media_file_operations *fops;
         struct device dev;
         struct cdev cdev;
         struct device *parent;
         int minor;
         unsigned long flags;
-        void (*release)(struct media_devnode *mdev);
+        void (*release)(struct media_devnode *devnode);
     }
 
 .. _`media_devnode.members`:
@@ -90,11 +91,14 @@ Definition
 Members
 -------
 
+media_dev
+    pointer to struct \ :c:type:`struct media_device <media_device>`\ 
+
 fops
-    pointer to struct \ :c:type:`struct media_file_operations <media_file_operations>` with media device ops
+    pointer to struct \ :c:type:`struct media_file_operations <media_file_operations>`\  with media device ops
 
 dev
-    struct device pointer for the media controller device
+    pointer to struct \ :c:type:`struct device <device>`\  containing the media controller device
 
 cdev
     struct cdev pointer character device
@@ -106,10 +110,11 @@ minor
     device node minor number
 
 flags
-    flags, combination of the MEDIA_FLAG\_\* constants
+    flags, combination of the ``MEDIA_FLAG_*`` constants
 
 release
-    release callback called at the end of \ :c:func:`media_devnode_release`\ 
+    release callback called at the end of ``media_devnode_release()``
+    routine at media-device.c.
 
 .. _`media_devnode.description`:
 
@@ -126,11 +131,14 @@ before registering the node.
 media_devnode_register
 ======================
 
-.. c:function:: int media_devnode_register(struct media_devnode *mdev, struct module *owner)
+.. c:function:: int media_devnode_register(struct media_device *mdev, struct media_devnode *devnode, struct module *owner)
 
     register a media device node
 
-    :param struct media_devnode \*mdev:
+    :param struct media_device \*mdev:
+        struct media_device we want to register a device node
+
+    :param struct media_devnode \*devnode:
         media device node structure we want to register
 
     :param struct module \*owner:
@@ -148,19 +156,43 @@ or if the registration of the device node fails.
 Zero is returned on success.
 
 Note that if the media_devnode_register call fails, the \ :c:func:`release`\  callback of
-the media_devnode structure is \*not\* called, so the caller is responsible for
+the media_devnode structure is *not* called, so the caller is responsible for
 freeing any data.
+
+.. _`media_devnode_unregister_prepare`:
+
+media_devnode_unregister_prepare
+================================
+
+.. c:function:: void media_devnode_unregister_prepare(struct media_devnode *devnode)
+
+    clear the media device node register bit
+
+    :param struct media_devnode \*devnode:
+        the device node to prepare for unregister
+
+.. _`media_devnode_unregister_prepare.description`:
+
+Description
+-----------
+
+This clears the passed device register bit. Future open calls will be met
+with errors. Should be called before \ :c:func:`media_devnode_unregister`\  to avoid
+races with unregister and device file open calls.
+
+This function can safely be called if the device node has never been
+registered or has already been unregistered.
 
 .. _`media_devnode_unregister`:
 
 media_devnode_unregister
 ========================
 
-.. c:function:: void media_devnode_unregister(struct media_devnode *mdev)
+.. c:function:: void media_devnode_unregister(struct media_devnode *devnode)
 
     unregister a media device node
 
-    :param struct media_devnode \*mdev:
+    :param struct media_devnode \*devnode:
         the device node to unregister
 
 .. _`media_devnode_unregister.description`:
@@ -171,8 +203,7 @@ Description
 This unregisters the passed device. Future open calls will be met with
 errors.
 
-This function can safely be called if the device node has never been
-registered or has already been unregistered.
+Should be called after \ :c:func:`media_devnode_unregister_prepare`\ 
 
 .. _`media_devnode_data`:
 
@@ -181,22 +212,29 @@ media_devnode_data
 
 .. c:function:: struct media_devnode *media_devnode_data(struct file *filp)
 
-    returns a pointer to the \ :c:type:`struct media_devnode <media_devnode>`
+    returns a pointer to the \ :c:type:`struct media_devnode <media_devnode>`\ 
 
     :param struct file \*filp:
-        pointer to struct \ :c:type:`struct file <file>`
+        pointer to struct \ :c:type:`struct file <file>`\ 
 
 .. _`media_devnode_is_registered`:
 
 media_devnode_is_registered
 ===========================
 
-.. c:function:: int media_devnode_is_registered(struct media_devnode *mdev)
+.. c:function:: int media_devnode_is_registered(struct media_devnode *devnode)
 
-    returns true if \ :c:type:`struct media_devnode <media_devnode>` is registered; false otherwise.
+    returns true if \ :c:type:`struct media_devnode <media_devnode>`\  is registered; false otherwise.
 
-    :param struct media_devnode \*mdev:
-        pointer to struct \ :c:type:`struct media_devnode <media_devnode>`.
+    :param struct media_devnode \*devnode:
+        pointer to struct \ :c:type:`struct media_devnode <media_devnode>`\ .
+
+.. _`media_devnode_is_registered.note`:
+
+Note
+----
+
+If mdev is NULL, it also returns false.
 
 .. This file was automatic generated / don't edit.
 

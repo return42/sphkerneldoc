@@ -7,4 +7,5 @@ ti
 .. toctree::
     :maxdepth: 1
 
+    davinci_cpdma_c
     davinci_emac_c

@@ -66,6 +66,8 @@ Definition
         uint32_t uniforms_src_size;
         uint32_t num_texture_samples;
         struct vc4_texture_sample_info *texture_samples;
+        uint32_t num_uniform_addr_offsets;
+        uint32_t *uniform_addr_offsets;
     }
 
 .. _`vc4_validated_shader_info.members`:
@@ -83,6 +85,12 @@ num_texture_samples
     *undescribed*
 
 texture_samples
+    *undescribed*
+
+num_uniform_addr_offsets
+    *undescribed*
+
+uniform_addr_offsets
     *undescribed*
 
 .. _`vc4_validated_shader_info.description`:

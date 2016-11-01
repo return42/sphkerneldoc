@@ -523,7 +523,7 @@ Description
 -----------
 
 Called after the last reference to the object has been lost.
-Must be called holding struct\_ mutex
+Must be called holding \ :c:type:`drm_device->struct_mutex <drm_device>`\ .
 
 Frees the object
 
@@ -547,7 +547,7 @@ Description
 This releases a reference to \ ``obj``\ . Callers must not hold the
 dev->struct_mutex lock when calling this function.
 
-See also \\ :c:func:`__drm_gem_object_unreference`\ .
+See also \ :c:func:`__drm_gem_object_unreference`\ .
 
 .. _`drm_gem_object_unreference`:
 

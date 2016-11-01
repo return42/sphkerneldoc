@@ -18,7 +18,7 @@ NTFS_SB
 Description
 -----------
 
-\ :c:func:`NTFS_SB`\  returns the ntfs volume associated with the VFS super block \ ``sb``\ .
+NTFS_SB() returns the ntfs volume associated with the VFS super block \ ``sb``\ .
 
 .. This file was automatic generated / don't edit.
 

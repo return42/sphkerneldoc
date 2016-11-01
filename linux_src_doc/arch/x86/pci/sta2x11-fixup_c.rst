@@ -36,7 +36,7 @@ a2p
 sta2x11_swiotlb_alloc_coherent
 ==============================
 
-.. c:function:: void *sta2x11_swiotlb_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, struct dma_attrs *attrs)
+.. c:function:: void *sta2x11_swiotlb_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, unsigned long attrs)
 
     Allocate swiotlb bounce buffers returns virtual address. This is the only "special" function here.
 
@@ -52,7 +52,7 @@ sta2x11_swiotlb_alloc_coherent
     :param gfp_t flags:
         memory flags
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`dma_capable`:

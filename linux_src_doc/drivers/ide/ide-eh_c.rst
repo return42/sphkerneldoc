@@ -24,7 +24,7 @@ ide_error
 Description
 -----------
 
-\ :c:func:`ide_error`\  takes action based on the error returned by the drive.
+ide_error() takes action based on the error returned by the drive.
 For normal I/O that may well include retries. We deal with
 both new-style (taskfile) and old style command handling here.
 In the case of taskfile command handling there is work left to

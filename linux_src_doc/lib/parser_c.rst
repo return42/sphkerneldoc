@@ -17,7 +17,7 @@ match_one
         the string containing the pattern
 
     :param substring_t args:
-        array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>` elements. Used to return match
+        array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>`\  elements. Used to return match
         locations.
 
 .. _`match_one.description`:
@@ -47,7 +47,7 @@ match_token
         \ :c:type:`struct match_token <match_token>`\  whose pattern is set to the NULL pointer.
 
     :param substring_t args:
-        array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>` elements. Used to return match
+        array of \ ``MAX_OPT_ARGS``\  \ :c:type:`struct substring_t <substring_t>`\  elements. Used to return match
         locations.
 
 .. _`match_token.description`:
@@ -83,7 +83,7 @@ match_number
 Description
 -----------
 
-Given a \ :c:type:`struct substring_t <substring_t>` and a base, attempts to parse the substring
+Given a \ :c:type:`struct substring_t <substring_t>`\  and a base, attempts to parse the substring
 as a number in that base. On success, sets \ ``result``\  to the integer represented
 by the string and returns 0. Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
@@ -107,7 +107,7 @@ match_int
 Description
 -----------
 
-Attempts to parse the \ :c:type:`struct substring_t <substring_t>` \ ``s``\  as a decimal integer. On
+Attempts to parse the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\  as a decimal integer. On
 success, sets \ ``result``\  to the integer represented by the string and returns 0.
 Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
@@ -131,7 +131,7 @@ match_octal
 Description
 -----------
 
-Attempts to parse the \ :c:type:`struct substring_t <substring_t>` \ ``s``\  as an octal integer. On
+Attempts to parse the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\  as an octal integer. On
 success, sets \ ``result``\  to the integer represented by the string and returns
 0. Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
@@ -155,7 +155,7 @@ match_hex
 Description
 -----------
 
-Attempts to parse the \ :c:type:`struct substring_t <substring_t>` \ ``s``\  as a hexadecimal integer.
+Attempts to parse the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\  as a hexadecimal integer.
 On success, sets \ ``result``\  to the integer represented by the string and
 returns 0. Returns -ENOMEM, -EINVAL, or -ERANGE on failure.
 
@@ -198,7 +198,7 @@ match_strlcpy
         where to copy to
 
     :param const substring_t \*src:
-        \ :c:type:`struct substring_t <substring_t>` to copy
+        &substring_t to copy
 
     :param size_t size:
         size of destination buffer
@@ -208,7 +208,7 @@ match_strlcpy
 Description
 -----------
 
-Copy the characters in \ :c:type:`struct substring_t <substring_t>` \ ``src``\  to the
+Copy the characters in \ :c:type:`struct substring_t <substring_t>`\  \ ``src``\  to the
 c-style string \ ``dest``\ .  Copy no more than \ ``size``\  - 1 characters, plus
 the terminating NUL.  Return length of \ ``src``\ .
 
@@ -222,7 +222,7 @@ match_strdup
     - allocate a new string with the contents of a substring_t
 
     :param const substring_t \*s:
-        \ :c:type:`struct substring_t <substring_t>` to copy
+        &substring_t to copy
 
 .. _`match_strdup.description`:
 
@@ -230,7 +230,7 @@ Description
 -----------
 
 Allocates and returns a string filled with the contents of
-the \ :c:type:`struct substring_t <substring_t>` \ ``s``\ . The caller is responsible for freeing the returned
+the \ :c:type:`struct substring_t <substring_t>`\  \ ``s``\ . The caller is responsible for freeing the returned
 string with \ :c:func:`kfree`\ .
 
 .. This file was automatic generated / don't edit.

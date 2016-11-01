@@ -12,3 +12,4 @@ soc
     qcom/index
     tegra/index
     ti/index
+    ux500/index

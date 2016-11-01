@@ -264,7 +264,7 @@ ntfs_read_locked_inode
 Description
 -----------
 
-\ :c:func:`ntfs_read_locked_inode`\  is called from \ :c:func:`ntfs_iget`\  to read the inode
+ntfs_read_locked_inode() is called from \ :c:func:`ntfs_iget`\  to read the inode
 described by \ ``vi``\  into memory from the device.
 
 The only fields in \ ``vi``\  that we need to/can look at when the function is
@@ -306,7 +306,7 @@ ntfs_read_locked_attr_inode
 Description
 -----------
 
-\ :c:func:`ntfs_read_locked_attr_inode`\  is called from \ :c:func:`ntfs_attr_iget`\  to read the
+ntfs_read_locked_attr_inode() is called from \ :c:func:`ntfs_attr_iget`\  to read the
 attribute inode described by \ ``vi``\  into memory from the base mft record
 described by \ ``base_ni``\ .
 
@@ -343,7 +343,7 @@ ntfs_read_locked_index_inode
 Description
 -----------
 
-\ :c:func:`ntfs_read_locked_index_inode`\  is called from \ :c:func:`ntfs_index_iget`\  to read the
+ntfs_read_locked_index_inode() is called from \ :c:func:`ntfs_index_iget`\  to read the
 index inode described by \ ``vi``\  into memory from the base mft record described
 by \ ``base_ni``\ .
 
@@ -352,7 +352,7 @@ reading and looks up the attributes relating to the index described by \ ``vi``\
 before setting up the necessary fields in \ ``vi``\  as well as initializing the
 ntfs inode.
 
-Note, index inodes are essentially attribute inodes (\ :c:func:`NInoAttr`\  is true)
+Note, index inodes are essentially attribute inodes (NInoAttr() is true)
 with the attribute type set to AT_INDEX_ALLOCATION.  Apart from that, they
 are setup like directory inodes since directories are a special case of
 indices ao they need to be treated in much the same way.  Most importantly,
@@ -391,7 +391,7 @@ Description
 Read inode FILE_MFT at mount time, only called with super_block lock
 held from within the \ :c:func:`read_super`\  code path.
 
-This function exists because when it is called the page cache for \ ``$MFT``\ /\ ``$DATA``\ 
+This function exists because when it is called the page cache for \ ``$MFT``\ /$DATA
 is not initialized and hence we cannot get at the contents of mft records
 by calling map_mft_record\*().
 
@@ -402,7 +402,7 @@ we cannot call map_mft_record\*() yet.  Obviously this applies only when an
 attribute list is actually present in \ ``$MFT``\  inode.
 
 We solve these problems by starting with the \ ``$DATA``\  attribute before anything
-else and iterating using ntfs_attr_lookup(\ ``$DATA``\ ) over all extents.  As each
+else and iterating using ntfs_attr_lookup($DATA) over all extents.  As each
 extent is found, we \ :c:func:`ntfs_mapping_pairs_decompress`\  including the implied
 \ :c:func:`ntfs_runlists_merge`\ .  Each step of the iteration necessarily provides
 sufficient information for the next step to complete.
@@ -479,7 +479,7 @@ We only support i_size changes for normal files at present, i.e. not
 compressed and not encrypted.  This is enforced in \ :c:func:`ntfs_setattr`\ , see
 below.
 
-The kernel guarantees that \ ``vi``\  is a regular file (\ :c:func:`S_ISREG`\  is true) and
+The kernel guarantees that \ ``vi``\  is a regular file (S_ISREG() is true) and
 that the change is allowed.
 
 This implies for us that \ ``vi``\  is a file inode rather than a directory, index,

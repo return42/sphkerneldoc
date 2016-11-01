@@ -8,4 +8,6 @@ asm
     :maxdepth: 1
 
     cpu_ops_h
+    kexec_h
     kvm_hyp_h
+    ptrace_h

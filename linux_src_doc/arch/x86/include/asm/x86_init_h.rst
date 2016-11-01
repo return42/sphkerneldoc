@@ -455,7 +455,7 @@ Definition
 
     struct x86_legacy_features {
         int rtc;
-        int ebda_search;
+        int reserve_bios_regions;
         struct x86_legacy_devices devices;
     }
 
@@ -467,9 +467,10 @@ Members
 rtc
     this device has a CMOS real-time clock present
 
-ebda_search
-    it's safe to search for the EBDA signature in the hardware's
-    low RAM
+reserve_bios_regions
+    boot code will search for the EBDA address and the
+    start of the 640k - 1M BIOS region.  If false, the platform must
+    ensure that its memory map correctly reserves sub-1MB regions as needed.
 
 devices
     legacy x86 devices, refer to struct x86_legacy_devices
@@ -492,6 +493,7 @@ Definition
 .. code-block:: c
 
     struct x86_platform_ops {
+        unsigned long (*calibrate_cpu)(void);
         unsigned long (*calibrate_tsc)(void);
         void (*get_wallclock)(struct timespec *ts);
         int (*set_wallclock)(const struct timespec *ts);
@@ -512,8 +514,11 @@ Definition
 Members
 -------
 
+calibrate_cpu
+    calibrate CPU
+
 calibrate_tsc
-    calibrate TSC
+    calibrate TSC, if different from CPU
 
 get_wallclock
     get time from HW clock like RTC etc.

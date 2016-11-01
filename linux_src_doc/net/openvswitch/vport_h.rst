@@ -139,7 +139,7 @@ type
     New vport's type.
 
 options
-    \ ``OVS_VPORT_ATTR_OPTIONS``\  attribute from Netlink message, \ ``NULL``\  if
+    %OVS_VPORT_ATTR_OPTIONS attribute from Netlink message, \ ``NULL``\  if
     none was supplied.
 
 dp
@@ -184,7 +184,7 @@ Members
 -------
 
 type
-    \ ``OVS_VPORT_TYPE``\ \_\* value for this type of virtual port.
+    %OVS_VPORT_TYPE\_\* value for this type of virtual port.
 
 create
     Create a new vport configured as specified.  On success returns

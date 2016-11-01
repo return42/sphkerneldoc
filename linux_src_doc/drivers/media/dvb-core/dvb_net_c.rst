@@ -22,7 +22,7 @@ Description
 -----------
 
 stolen from eth.c out of the linux kernel, hacked for dvb-device
-by Michael Holzt <kju\ ``debian``\ .org>
+by Michael Holzt <kju@debian.org>
 
 .. _`dvb_net_ule`:
 

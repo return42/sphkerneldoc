@@ -49,7 +49,7 @@ thread).
 Return
 ------
 
-\ ``false``\ , if \ ``p``\  is not freezing or already frozen; \ ``true``\ , otherwise
+%false, if \ ``p``\  is not freezing or already frozen; \ ``true``\ , otherwise
 
 .. _`set_freezable`:
 

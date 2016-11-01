@@ -10,4 +10,3 @@ android
     ion/index
     uapi/index
     ashmem_c
-    sync_h

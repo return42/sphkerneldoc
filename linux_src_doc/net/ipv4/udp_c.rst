@@ -47,7 +47,7 @@ udp4_hwcsum
 first_packet_length
 ===================
 
-.. c:function:: unsigned int first_packet_length(struct sock *sk)
+.. c:function:: int first_packet_length(struct sock *sk)
 
     return length of first packet in receive queue
 
@@ -60,7 +60,7 @@ Description
 -----------
 
 Drops all bad checksum frames, until a valid one is found.
-Returns the length of found skb, or 0 if none is found.
+Returns the length of found skb, or -1 if none is found.
 
 .. _`udp_poll`:
 

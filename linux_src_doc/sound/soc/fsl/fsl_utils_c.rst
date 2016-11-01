@@ -28,7 +28,7 @@ fsl_asoc_get_dma_channel
 Author
 ------
 
-Timur Tabi <timur\ ``freescale``\ .com>
+Timur Tabi <timur@freescale.com>
 
 Copyright 2010 Freescale Semiconductor, Inc.
 

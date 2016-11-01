@@ -63,7 +63,7 @@ __blk_queue_free_tags
 Notes
 -----
 
-\ :c:func:`blk_cleanup_queue`\  will take care of calling this function, if tagging
+blk_cleanup_queue() will take care of calling this function, if tagging
 has been used. So there's no need to call this directly.
 
 .. _`blk_queue_free_tags`:
@@ -205,7 +205,7 @@ Description
 -----------
 
 This can either be used as a stand-alone helper, or possibly be
-assigned as the queue \ :c:type:`struct prep_rq_fn <prep_rq_fn>` (in which case \ :c:type:`struct request <request>`\ 
+assigned as the queue \ :c:type:`struct prep_rq_fn <prep_rq_fn>`\  (in which case \ :c:type:`struct request <request>`\ 
 automagically gets a tag assigned). Note that this function
 assumes that any type of request can be queued! if this is not
 true for your device, you must check the request type before

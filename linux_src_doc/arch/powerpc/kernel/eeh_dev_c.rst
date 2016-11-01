@@ -6,15 +6,12 @@
 eeh_dev_init
 ============
 
-.. c:function:: void *eeh_dev_init(struct pci_dn *pdn, void *data)
+.. c:function:: struct eeh_dev *eeh_dev_init(struct pci_dn *pdn)
 
     Create EEH device according to OF node
 
     :param struct pci_dn \*pdn:
         PCI device node
-
-    :param void \*data:
-        PHB
 
 .. _`eeh_dev_init.description`:
 

@@ -111,7 +111,7 @@ route
     diagnostic route
 
 mdd
-    model-dependent data (\ ``route``\  dependent)
+    model-dependent data (@route dependent)
 
 .. _`sclp_diag_sccb`:
 

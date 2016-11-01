@@ -8,7 +8,7 @@ sim_is_simulator
 
 .. c:function:: int sim_is_simulator( void)
 
-    rather than on real hardware.  If running on hardware, other "\ :c:func:`sim_xxx`\ " calls have no useful effect.
+    rather than on real hardware.  If running on hardware, other "sim_xxx()" calls have no useful effect.
 
     :param  void:
         no arguments
@@ -138,7 +138,7 @@ sim_print
 Description
 -----------
 
-\ ``param``\  str The string to be written.
+@param str The string to be written.
 
 .. _`sim_print_string`:
 
@@ -155,7 +155,7 @@ sim_print_string
 Description
 -----------
 
-\ ``param``\  str The string to be written (a newline is automatically added).
+@param str The string to be written (a newline is automatically added).
 
 .. _`sim_command`:
 
@@ -222,7 +222,7 @@ _sim_syscall
 Description
 -----------
 
-\ ``param``\  syscall_num The simulator syscall number.
+@param syscall_num The simulator syscall number.
 \ ``param``\  nr The number of additional arguments provided.
 
 \ ``return``\  Varies by syscall.
@@ -251,7 +251,7 @@ sim_set_shaping
 Description
 -----------
 
-\ ``param``\  type The type of shaping. This should be the same type of
+@param type The type of shaping. This should be the same type of
 shaping that is already in place on the shim. One of:
 SIM_CONTROL_SHAPING_MULTIPLIER
 SIM_CONTROL_SHAPING_PPS
@@ -298,7 +298,7 @@ sim_profiler_set_enabled
 Description
 -----------
 
-\ ``param``\  enabled If true, turns on profiling. If false, turns it off.
+@param enabled If true, turns on profiling. If false, turns it off.
 
 Note that this has no effect if run in an environment without
 profiling support (thus, the proper flags to the simulator must

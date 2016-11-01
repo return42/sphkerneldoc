@@ -985,6 +985,93 @@ Return
 
 always 0
 
+.. _`batadv_bla_claim_dump_entry`:
+
+batadv_bla_claim_dump_entry
+===========================
+
+.. c:function:: int batadv_bla_claim_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_hard_iface *primary_if, struct batadv_bla_claim *claim)
+
+    dump one entry of the claim table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_hard_iface \*primary_if:
+        primary interface
+
+    :param struct batadv_bla_claim \*claim:
+        entry to dump
+
+.. _`batadv_bla_claim_dump_entry.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_bla_claim_dump_bucket`:
+
+batadv_bla_claim_dump_bucket
+============================
+
+.. c:function:: int batadv_bla_claim_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_hard_iface *primary_if, struct hlist_head *head, int *idx_skip)
+
+    dump one bucket of the claim table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_hard_iface \*primary_if:
+        primary interface
+
+    :param struct hlist_head \*head:
+        bucket to dump
+
+    :param int \*idx_skip:
+        How many entries to skip
+
+.. _`batadv_bla_claim_dump_bucket.return`:
+
+Return
+------
+
+always 0.
+
+.. _`batadv_bla_claim_dump`:
+
+batadv_bla_claim_dump
+=====================
+
+.. c:function:: int batadv_bla_claim_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    dump claim table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param struct netlink_callback \*cb:
+        callback structure containing arguments
+
+.. _`batadv_bla_claim_dump.return`:
+
+Return
+------
+
+message length.
+
 .. _`batadv_bla_backbone_table_seq_print_text`:
 
 batadv_bla_backbone_table_seq_print_text
@@ -1006,6 +1093,93 @@ Return
 ------
 
 always 0
+
+.. _`batadv_bla_backbone_dump_entry`:
+
+batadv_bla_backbone_dump_entry
+==============================
+
+.. c:function:: int batadv_bla_backbone_dump_entry(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_hard_iface *primary_if, struct batadv_bla_backbone_gw *backbone_gw)
+
+    dump one entry of the backbone table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_hard_iface \*primary_if:
+        primary interface
+
+    :param struct batadv_bla_backbone_gw \*backbone_gw:
+        entry to dump
+
+.. _`batadv_bla_backbone_dump_entry.return`:
+
+Return
+------
+
+0 or error code.
+
+.. _`batadv_bla_backbone_dump_bucket`:
+
+batadv_bla_backbone_dump_bucket
+===============================
+
+.. c:function:: int batadv_bla_backbone_dump_bucket(struct sk_buff *msg, u32 portid, u32 seq, struct batadv_hard_iface *primary_if, struct hlist_head *head, int *idx_skip)
+
+    dump one bucket of the backbone table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param u32 portid:
+        netlink port
+
+    :param u32 seq:
+        Sequence number of netlink message
+
+    :param struct batadv_hard_iface \*primary_if:
+        primary interface
+
+    :param struct hlist_head \*head:
+        bucket to dump
+
+    :param int \*idx_skip:
+        How many entries to skip
+
+.. _`batadv_bla_backbone_dump_bucket.return`:
+
+Return
+------
+
+always 0.
+
+.. _`batadv_bla_backbone_dump`:
+
+batadv_bla_backbone_dump
+========================
+
+.. c:function:: int batadv_bla_backbone_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    dump backbone table to a netlink socket
+
+    :param struct sk_buff \*msg:
+        buffer for the message
+
+    :param struct netlink_callback \*cb:
+        callback structure containing arguments
+
+.. _`batadv_bla_backbone_dump.return`:
+
+Return
+------
+
+message length.
 
 .. This file was automatic generated / don't edit.
 

@@ -203,7 +203,7 @@ cl_page_state::CPS_FREEING instead of cl_page_state::CPS_CACHED).
 or, page was owned by another thread, or in IO.
 
 \see \ :c:func:`cl_page_disown`\ 
-\see cl_page_operations::\ :c:func:`cpo_own`\ 
+\see cl_page_operations::cpo_own()
 \see \ :c:func:`cl_page_own_try`\ 
 \see cl_page_own
 
@@ -279,7 +279,7 @@ Called when page is already locked by the hosting VM.
 \pre !cl_page_is_owned(pg, io)
 \post cl_page_is_owned(pg, io)
 
-\see cl_page_operations::\ :c:func:`cpo_assume`\ 
+\see cl_page_operations::cpo_assume()
 
 .. _`cl_page_unassume`:
 
@@ -337,7 +337,7 @@ Moves page into cl_page_state::CPS_CACHED.
 \post !cl_page_is_owned(pg, io)
 
 \see \ :c:func:`cl_page_own`\ 
-\see cl_page_operations::\ :c:func:`cpo_disown`\ 
+\see cl_page_operations::cpo_disown()
 
 .. _`cl_page_discard`:
 
@@ -362,11 +362,11 @@ cl_page_discard
 Description
 -----------
 
-Calls cl_page_operations::\ :c:func:`cpo_discard`\  top-to-bottom.
+Calls cl_page_operations::cpo_discard() top-to-bottom.
 
 \pre cl_page_is_owned(pg, io)
 
-\see cl_page_operations::\ :c:func:`cpo_discard`\ 
+\see cl_page_operations::cpo_discard()
 
 .. _`cl_page_delete0`:
 
@@ -375,7 +375,7 @@ cl_page_delete0
 
 .. c:function:: void cl_page_delete0(const struct lu_env *env, struct cl_page *pg)
 
-    pages, e.g,. in a error handling \ :c:func:`cl_page_find`\ ->\ :c:func:`cl_page_delete0`\  path. Doesn't check page invariant.
+    pages, e.g,. in a error handling \ :c:func:`cl_page_find`\ ->cl_page_delete0() path. Doesn't check page invariant.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -402,7 +402,7 @@ Description
 -----------
 
 Notifies all layers about page destruction by calling
-cl_page_operations::\ :c:func:`cpo_delete`\  method top-to-bottom.
+cl_page_operations::cpo_delete() method top-to-bottom.
 
 Moves page into cl_page_state::CPS_FREEING state (this is the only place
 where transition to this state happens).
@@ -425,7 +425,7 @@ drain after some time, at which point page will be recycled.
 \pre  VM page is locked
 \post pg->cp_state == CPS_FREEING
 
-\see cl_page_operations::\ :c:func:`cpo_delete`\ 
+\see cl_page_operations::cpo_delete()
 
 .. _`cl_page_export`:
 
@@ -450,11 +450,11 @@ cl_page_export
 Description
 -----------
 
-Call cl_page_operations::\ :c:func:`cpo_export`\  through all layers top-to-bottom. The
+Call cl_page_operations::cpo_export() through all layers top-to-bottom. The
 layer responsible for VM interaction has to mark/clear page as up-to-date
 by the \a uptodate argument.
 
-\see cl_page_operations::\ :c:func:`cpo_export`\ 
+\see cl_page_operations::cpo_export()
 
 .. _`cl_page_is_vmlocked`:
 
@@ -478,7 +478,7 @@ cl_page_prep
 
 .. c:function:: int cl_page_prep(const struct lu_env *env, struct cl_io *io, struct cl_page *pg, enum cl_req_type crt)
 
-    :\ :c:func:`cpo_prep`\  is called top-to-bottom. Every layer either agrees to submit this page (by returning 0), or requests to omit this page (by returning -EALREADY). Layer handling interactions with the VM also has to inform VM that page is under transfer now.
+    :cpo_prep() is called top-to-bottom. Every layer either agrees to submit this page (by returning 0), or requests to omit this page (by returning -EALREADY). Layer handling interactions with the VM also has to inform VM that page is under transfer now.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -526,7 +526,7 @@ and can release locks safely.
 \pre  pg->cp_state == CPS_PAGEIN \|\| pg->cp_state == CPS_PAGEOUT
 \post pg->cp_state == CPS_CACHED
 
-\see cl_page_operations::\ :c:func:`cpo_completion`\ 
+\see cl_page_operations::cpo_completion()
 
 .. _`cl_page_make_ready`:
 
@@ -554,7 +554,7 @@ Description
 \pre  pg->cp_state == CPS_CACHED
 \post pg->cp_state == CPS_PAGEIN \|\| pg->cp_state == CPS_PAGEOUT
 
-\see cl_page_operations::\ :c:func:`cpo_make_ready`\ 
+\see cl_page_operations::cpo_make_ready()
 
 .. _`cl_page_flush`:
 
@@ -580,7 +580,7 @@ Description
 \pre  cl_page_is_owned(pg, io)
 \post ergo(result == 0, pg->cp_state == CPS_PAGEOUT)
 
-\see cl_page_operations::\ :c:func:`cpo_flush`\ 
+\see cl_page_operations::cpo_flush()
 
 .. _`cl_page_is_under_lock`:
 
@@ -608,8 +608,8 @@ cl_page_is_under_lock
 Description
 -----------
 
-\return the same as in cl_page_operations::\ :c:func:`cpo_is_under_lock`\  method.
-\see cl_page_operations::\ :c:func:`cpo_is_under_lock`\ 
+\return the same as in cl_page_operations::cpo_is_under_lock() method.
+\see cl_page_operations::cpo_is_under_lock()
 
 .. _`cl_page_clip`:
 
@@ -635,7 +635,7 @@ cl_page_clip
 Description
 -----------
 
-\see cl_page_operations::\ :c:func:`cpo_clip`\ 
+\see cl_page_operations::cpo_clip()
 
 .. _`cl_page_header_print`:
 
@@ -741,11 +741,43 @@ cl_page_slice_add
 Description
 -----------
 
-This is called by cl_object_operations::\ :c:func:`coo_page_init`\  methods to add a
+This is called by cl_object_operations::coo_page_init() methods to add a
 per-layer state to the page. New state is added at the end of
 cl_page::cp_layers list, that is, it is at the bottom of the stack.
 
 \see \ :c:func:`cl_lock_slice_add`\ , \ :c:func:`cl_req_slice_add`\ , \ :c:func:`cl_io_slice_add`\ 
+
+.. _`cl_cache_init`:
+
+cl_cache_init
+=============
+
+.. c:function:: struct cl_client_cache *cl_cache_init(unsigned long lru_page_max)
+
+    :param unsigned long lru_page_max:
+        *undescribed*
+
+.. _`cl_cache_incref`:
+
+cl_cache_incref
+===============
+
+.. c:function:: void cl_cache_incref(struct cl_client_cache *cache)
+
+    :param struct cl_client_cache \*cache:
+        *undescribed*
+
+.. _`cl_cache_decref`:
+
+cl_cache_decref
+===============
+
+.. c:function:: void cl_cache_decref(struct cl_client_cache *cache)
+
+    Since llite, lov and osc all hold cl_cache refcount, the free will not cause race. (LU-6173)
+
+    :param struct cl_client_cache \*cache:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

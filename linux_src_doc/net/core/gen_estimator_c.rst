@@ -6,7 +6,7 @@
 gen_new_estimator
 =================
 
-.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, struct nlattr *opt)
+.. c:function:: int gen_new_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
 
     create a new rate estimator
 
@@ -22,6 +22,9 @@ gen_new_estimator
     :param spinlock_t \*stats_lock:
         statistics lock
 
+    :param seqcount_t \*running:
+        qdisc running seqcount
+
     :param struct nlattr \*opt:
         rate estimator configuration TLV
 
@@ -30,11 +33,11 @@ gen_new_estimator
 Description
 -----------
 
-Creates a new rate estimator with \ :c:type:`struct bstats <bstats>` as source and \ :c:type:`struct rate_est <rate_est>`
+Creates a new rate estimator with \ :c:type:`struct bstats <bstats>`\  as source and \ :c:type:`struct rate_est <rate_est>`\ 
 as destination. A new timer with the interval specified in the
 configuration TLV is created. Upon each interval, the latest statistics
-will be read from \ :c:type:`struct bstats <bstats>` and the estimated rate will be stored in
-\ :c:type:`struct rate_est <rate_est>` with the statistics lock grabbed during this period.
+will be read from \ :c:type:`struct bstats <bstats>`\  and the estimated rate will be stored in
+\ :c:type:`struct rate_est <rate_est>`\  with the statistics lock grabbed during this period.
 
 Returns 0 on success or a negative error code.
 
@@ -58,7 +61,7 @@ gen_kill_estimator
 Description
 -----------
 
-Removes the rate estimator specified by \ :c:type:`struct bstats <bstats>` and \ :c:type:`struct rate_est <rate_est>`.
+Removes the rate estimator specified by \ :c:type:`struct bstats <bstats>`\  and \ :c:type:`struct rate_est <rate_est>`\ .
 
 Note : Caller should respect an RCU grace period before freeing stats_lock
 
@@ -67,7 +70,7 @@ Note : Caller should respect an RCU grace period before freeing stats_lock
 gen_replace_estimator
 =====================
 
-.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, struct nlattr *opt)
+.. c:function:: int gen_replace_estimator(struct gnet_stats_basic_packed *bstats, struct gnet_stats_basic_cpu __percpu *cpu_bstats, struct gnet_stats_rate_est64 *rate_est, spinlock_t *stats_lock, seqcount_t *running, struct nlattr *opt)
 
     replace rate estimator configuration
 
@@ -82,6 +85,9 @@ gen_replace_estimator
 
     :param spinlock_t \*stats_lock:
         statistics lock
+
+    :param seqcount_t \*running:
+        qdisc running seqcount (might be NULL)
 
     :param struct nlattr \*opt:
         rate estimator configuration TLV

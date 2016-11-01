@@ -7,7 +7,6 @@ btrfs
 .. toctree::
     :maxdepth: 1
 
-    tests/index
     backref_c
     extent-tree_c
     extent_io_c

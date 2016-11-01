@@ -24,7 +24,7 @@ kmemleak_alloc
         the object is ignored (not scanned and not reported as a leak)
 
     :param gfp_t gfp:
-        \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
+        kmalloc() flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_alloc.description`:
 
@@ -203,7 +203,7 @@ kmemleak_scan_area
         size of the scan area
 
     :param gfp_t gfp:
-        \ :c:func:`kmalloc`\  flags used for kmemleak internal memory allocations
+        kmalloc() flags used for kmemleak internal memory allocations
 
 .. _`kmemleak_scan_area.description`:
 
@@ -235,6 +235,66 @@ This function notifies kmemleak not to scan the given memory block. Useful
 in situations where it is known that the given object does not contain any
 references to other objects. Kmemleak will not scan such objects reducing
 the number of false negatives.
+
+.. _`kmemleak_alloc_phys`:
+
+kmemleak_alloc_phys
+===================
+
+.. c:function:: void __ref kmemleak_alloc_phys(phys_addr_t phys, size_t size, int min_count, gfp_t gfp)
+
+    similar to kmemleak_alloc but taking a physical address argument
+
+    :param phys_addr_t phys:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
+    :param int min_count:
+        *undescribed*
+
+    :param gfp_t gfp:
+        *undescribed*
+
+.. _`kmemleak_free_part_phys`:
+
+kmemleak_free_part_phys
+=======================
+
+.. c:function:: void __ref kmemleak_free_part_phys(phys_addr_t phys, size_t size)
+
+    similar to kmemleak_free_part but taking a physical address argument
+
+    :param phys_addr_t phys:
+        *undescribed*
+
+    :param size_t size:
+        *undescribed*
+
+.. _`kmemleak_not_leak_phys`:
+
+kmemleak_not_leak_phys
+======================
+
+.. c:function:: void __ref kmemleak_not_leak_phys(phys_addr_t phys)
+
+    similar to kmemleak_not_leak but taking a physical address argument
+
+    :param phys_addr_t phys:
+        *undescribed*
+
+.. _`kmemleak_ignore_phys`:
+
+kmemleak_ignore_phys
+====================
+
+.. c:function:: void __ref kmemleak_ignore_phys(phys_addr_t phys)
+
+    similar to kmemleak_ignore but taking a physical address argument
+
+    :param phys_addr_t phys:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

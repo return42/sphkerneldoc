@@ -21,8 +21,9 @@ Definition
         struct device *dev;
         struct qcom_smd_channel *channel;
         struct completion ack;
+        struct completion cbc;
         int ack_status;
-        struct work_struct download_nv_work;
+        struct work_struct probe_work;
     }
 
 .. _`wcnss_ctrl.members`:
@@ -39,10 +40,13 @@ channel
 ack
     completion for outstanding requests
 
+cbc
+    completion for cbc complete indication
+
 ack_status
     status of the outstanding request
 
-download_nv_work
+probe_work
     worker for uploading nv binary
 
 .. _`wcnss_msg_hdr`:
@@ -239,12 +243,40 @@ wcnss_request_version
 wcnss_download_nv
 =================
 
-.. c:function:: void wcnss_download_nv(struct work_struct *work)
+.. c:function:: int wcnss_download_nv(struct wcnss_ctrl *wcnss, bool *expect_cbc)
 
     send nv binary to WCNSS
 
-    :param struct work_struct \*work:
-        work struct to acquire wcnss context
+    :param struct wcnss_ctrl \*wcnss:
+        wcnss_ctrl state handle
+
+    :param bool \*expect_cbc:
+        indicator to caller that an cbc event is expected
+
+.. _`wcnss_download_nv.description`:
+
+Description
+-----------
+
+Returns 0 on success. Negative errno on failure.
+
+.. _`qcom_wcnss_open_channel`:
+
+qcom_wcnss_open_channel
+=======================
+
+.. c:function:: struct qcom_smd_channel *qcom_wcnss_open_channel(void *wcnss, const char *name, qcom_smd_cb_t cb)
+
+    open additional SMD channel to WCNSS
+
+    :param void \*wcnss:
+        wcnss handle, retrieved from drvdata
+
+    :param const char \*name:
+        SMD channel name
+
+    :param qcom_smd_cb_t cb:
+        callback to handle incoming data on the channel
 
 .. This file was automatic generated / don't edit.
 

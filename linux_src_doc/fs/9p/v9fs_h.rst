@@ -92,7 +92,7 @@ Members
 -------
 
 flags
-    session options of type \ :c:type:`struct p9_session_flags <p9_session_flags>`
+    session options of type \ :c:type:`struct p9_session_flags <p9_session_flags>`\ 
 
 nodev
     set to 1 to disable device mapping
@@ -104,7 +104,7 @@ afid
     authentication handle
 
 cache
-    cache mode of type \ :c:type:`struct p9_cache_modes <p9_cache_modes>`
+    cache mode of type \ :c:type:`struct p9_cache_modes <p9_cache_modes>`\ 
 
 cachetag
     the tag of the cache associated with this session

@@ -82,7 +82,7 @@ is safe to call from atomic context. We can't use the i2400m's
 queue as we are going to destroy it and reinitialize it as part of
 the driver bringup/bringup process.
 
-See \\ :c:func:`__i2400m_dev_reset_handle`\  for details; that takes care of
+See \__i2400m_dev_reset_handle() for details; that takes care of
 reinitializing the driver to handle the reset, calling into the
 bus-specific functions ops as needed.
 

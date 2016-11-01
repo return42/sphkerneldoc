@@ -8,7 +8,7 @@ lu_printer_t
 
 .. c:function:: int lu_printer_t(const struct lu_env *env, void *cookie, const char *format, ...)__printf(3# 4)
 
-    :\ :c:func:`loo_object_print`\  method.
+    :loo_object_print() method.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -258,6 +258,30 @@ lu_site_stats_print
 
     :param struct seq_file \*m:
         *undescribed*
+
+.. _`lu_name_is_valid_2`:
+
+lu_name_is_valid_2
+==================
+
+.. c:function:: bool lu_name_is_valid_2(const char *name, size_t name_len)
+
+    :param const char \*name:
+        *undescribed*
+
+    :param size_t name_len:
+        *undescribed*
+
+.. _`lu_name_is_valid_2.description`:
+
+Description
+-----------
+
+To be valid \a name must be non-empty, '\0' terminated of length \a
+name_len, and not contain '/'. The maximum length of a name (before
+say -ENAMETOOLONG will be returned) is really controlled by llite
+and the server. We only check for something insane coming from bad
+integer handling here.
 
 .. _`lu_global_init`:
 

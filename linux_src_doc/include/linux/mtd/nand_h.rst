@@ -227,6 +227,257 @@ Description
 Do not change the order of buffers. databuf and oobrbuf must be in
 consecutive order.
 
+.. _`nand_sdr_timings`:
+
+struct nand_sdr_timings
+=======================
+
+.. c:type:: struct nand_sdr_timings
+
+    SDR NAND chip timings
+
+.. _`nand_sdr_timings.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_sdr_timings {
+        u32 tALH_min;
+        u32 tADL_min;
+        u32 tALS_min;
+        u32 tAR_min;
+        u32 tCEA_max;
+        u32 tCEH_min;
+        u32 tCH_min;
+        u32 tCHZ_max;
+        u32 tCLH_min;
+        u32 tCLR_min;
+        u32 tCLS_min;
+        u32 tCOH_min;
+        u32 tCS_min;
+        u32 tDH_min;
+        u32 tDS_min;
+        u32 tFEAT_max;
+        u32 tIR_min;
+        u32 tITC_max;
+        u32 tRC_min;
+        u32 tREA_max;
+        u32 tREH_min;
+        u32 tRHOH_min;
+        u32 tRHW_min;
+        u32 tRHZ_max;
+        u32 tRLOH_min;
+        u32 tRP_min;
+        u32 tRR_min;
+        u64 tRST_max;
+        u32 tWB_max;
+        u32 tWC_min;
+        u32 tWH_min;
+        u32 tWHR_min;
+        u32 tWP_min;
+        u32 tWW_min;
+    }
+
+.. _`nand_sdr_timings.members`:
+
+Members
+-------
+
+tALH_min
+    ALE hold time
+
+tADL_min
+    ALE to data loading time
+
+tALS_min
+    ALE setup time
+
+tAR_min
+    ALE to RE# delay
+
+tCEA_max
+    CE# access time
+
+tCEH_min
+    *undescribed*
+
+tCH_min
+    CE# hold time
+
+tCHZ_max
+    CE# high to output hi-Z
+
+tCLH_min
+    CLE hold time
+
+tCLR_min
+    CLE to RE# delay
+
+tCLS_min
+    CLE setup time
+
+tCOH_min
+    CE# high to output hold
+
+tCS_min
+    CE# setup time
+
+tDH_min
+    Data hold time
+
+tDS_min
+    Data setup time
+
+tFEAT_max
+    Busy time for Set Features and Get Features
+
+tIR_min
+    Output hi-Z to RE# low
+
+tITC_max
+    Interface and Timing Mode Change time
+
+tRC_min
+    RE# cycle time
+
+tREA_max
+    RE# access time
+
+tREH_min
+    RE# high hold time
+
+tRHOH_min
+    RE# high to output hold
+
+tRHW_min
+    RE# high to WE# low
+
+tRHZ_max
+    RE# high to output hi-Z
+
+tRLOH_min
+    RE# low to output hold
+
+tRP_min
+    RE# pulse width
+
+tRR_min
+    Ready to RE# low (data only)
+
+tRST_max
+    Device reset time, measured from the falling edge of R/B# to the
+    rising edge of R/B#.
+
+tWB_max
+    WE# high to SR[6] low
+
+tWC_min
+    WE# cycle time
+
+tWH_min
+    WE# high hold time
+
+tWHR_min
+    WE# high to RE# low
+
+tWP_min
+    WE# pulse width
+
+tWW_min
+    WP# transition to WE# low
+
+.. _`nand_sdr_timings.description`:
+
+Description
+-----------
+
+This struct defines the timing requirements of a SDR NAND chip.
+These information can be found in every NAND datasheets and the timings
+
+.. _`nand_sdr_timings.meaning-are-described-in-the-onfi-specifications`:
+
+meaning are described in the ONFI specifications
+------------------------------------------------
+
+www.onfi.org/~/media/ONFI/specs/onfi_3_1_spec.pdf (chapter 4.15 Timing
+Parameters)
+
+All these timings are expressed in picoseconds.
+
+.. _`nand_data_interface_type`:
+
+enum nand_data_interface_type
+=============================
+
+.. c:type:: enum nand_data_interface_type
+
+    NAND interface timing type
+
+.. _`nand_data_interface_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nand_data_interface_type {
+        NAND_SDR_IFACE
+    };
+
+.. _`nand_data_interface_type.constants`:
+
+Constants
+---------
+
+NAND_SDR_IFACE
+    Single Data Rate interface
+
+.. _`nand_data_interface`:
+
+struct nand_data_interface
+==========================
+
+.. c:type:: struct nand_data_interface
+
+    NAND interface timing
+
+.. _`nand_data_interface.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct nand_data_interface {
+        enum nand_data_interface_type type;
+        union timings;
+    }
+
+.. _`nand_data_interface.members`:
+
+Members
+-------
+
+type
+    type of the timing
+
+timings
+    The timing, type according to \ ``type``\ 
+
+.. _`nand_get_sdr_timings`:
+
+nand_get_sdr_timings
+====================
+
+.. c:function:: const struct nand_sdr_timings *nand_get_sdr_timings(const struct nand_data_interface *conf)
+
+    get SDR timing from data interface
+
+    :param const struct nand_data_interface \*conf:
+        The data interface
+
 .. _`nand_chip`:
 
 struct nand_chip
@@ -266,6 +517,7 @@ Definition
         int (*onfi_set_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
         int (*onfi_get_features)(struct mtd_info *mtd, struct nand_chip *chip,int feature_addr, uint8_t *subfeature_para);
         int (*setup_read_retry)(struct mtd_info *mtd, int retry_mode);
+        int (*setup_data_interface)(struct mtd_info *mtd,const struct nand_data_interface *conf,bool check_only);
         int chip_delay;
         unsigned int options;
         unsigned int bbt_options;
@@ -288,6 +540,7 @@ Definition
         int onfi_version;
         int jedec_version;
         union {unnamed_union};
+        struct nand_data_interface *data_interface;
         int read_retries;
         flstate_t state;
         uint8_t *oob_poi;
@@ -385,6 +638,9 @@ setup_read_retry
     [FLASHSPECIFIC] flash (vendor) specific function for
     setting the read-retry mode. Mostly needed for MLC NAND.
 
+setup_data_interface
+    [OPTIONAL] setup the data interface and timing
+
 chip_delay
     [BOARDSPECIFIC] chip dependent delay for transferring
     data from array to read regs (tR).
@@ -447,10 +703,9 @@ ecc_step_ds
 
 onfi_timing_mode_default
     [INTERN] default ONFI timing mode. This field is
-    either deduced from the datasheet if the NAND
-    chip is not ONFI compliant or set to 0 if it is
-    (an ONFI chip is always configured in mode 0
-    after a NAND reset)
+    set to the actually used ONFI mode if the chip is
+    ONFI compliant or deduced from the datasheet if
+    the NAND chip is not ONFI compliant.
 
 badblockpos
     [INTERN] position of the bad block marker in the oob
@@ -472,6 +727,9 @@ jedec_version
 {unnamed_union}
     anonymous
 
+
+data_interface
+    *undescribed*
 
 read_retries
     [INTERN] the number of read retry modes supported

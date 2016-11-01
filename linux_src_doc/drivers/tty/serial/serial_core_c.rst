@@ -24,8 +24,8 @@ uart_update_timeout
 Description
 -----------
 
-Set the port FIFO timeout value.  The \ ``cflag``\  value should
-reflect the actual hardware settings.
+     Set the port FIFO timeout value.  The \ ``cflag``\  value should
+     reflect the actual hardware settings.
 
 .. _`uart_get_baud_rate`:
 
@@ -56,16 +56,16 @@ uart_get_baud_rate
 Description
 -----------
 
-Decode the termios structure into a numeric baud rate,
-taking account of the magic 38400 baud rate (with spd\_\*
-flags), and mapping the \ ``B0``\  rate to 9600 baud.
+     Decode the termios structure into a numeric baud rate,
+     taking account of the magic 38400 baud rate (with spd_*
+     flags), and mapping the \ ``B0``\  rate to 9600 baud.
 
-If the new baud rate is invalid, try the old termios setting.
-If it's still invalid, we try 9600 baud.
+     If the new baud rate is invalid, try the old termios setting.
+     If it's still invalid, we try 9600 baud.
 
-Update the \ ``termios``\  structure to reflect the baud rate
-we're actually going to be using. Don't do this for the case
-where B0 is requested ("hang up").
+     Update the \ ``termios``\  structure to reflect the baud rate
+     we're actually going to be using. Don't do this for the case
+     where B0 is requested ("hang up").
 
 .. _`uart_get_divisor`:
 
@@ -87,7 +87,7 @@ uart_get_divisor
 Description
 -----------
 
-Calculate the uart clock divisor for the port.
+     Calculate the uart clock divisor for the port.
 
 .. _`uart_get_lsr_info`:
 
@@ -133,7 +133,7 @@ uart_console_write
 uart_parse_earlycon
 ===================
 
-.. c:function:: int uart_parse_earlycon(char *p, unsigned char *iotype, unsigned long *addr, char **options)
+.. c:function:: int uart_parse_earlycon(char *p, unsigned char *iotype, resource_size_t *addr, char **options)
 
     Parse earlycon options
 
@@ -143,7 +143,7 @@ uart_parse_earlycon
     :param unsigned char \*iotype:
         ptr for decoded iotype (out)
 
-    :param unsigned long \*addr:
+    :param resource_size_t \*addr:
         ptr for decoded mapbase/iobase (out)
 
     :param char \*\*options:
@@ -154,16 +154,16 @@ uart_parse_earlycon
 Description
 -----------
 
-Decodes earlycon kernel command line parameters of the form
-earlycon=<name>,io\|mmio\|mmio16\|mmio32\|mmio32be\|mmio32native,<addr>,<options>
-console=<name>,io\|mmio\|mmio16\|mmio32\|mmio32be\|mmio32native,<addr>,<options>
+     Decodes earlycon kernel command line parameters of the form
+        earlycon=<name>,io|mmio|mmio16|mmio32|mmio32be|mmio32native,<addr>,<options>
+        console=<name>,io|mmio|mmio16|mmio32|mmio32be|mmio32native,<addr>,<options>
 
-The optional form
-earlycon=<name>,0x<addr>,<options>
-console=<name>,0x<addr>,<options>
-is also accepted; the returned \ ``iotype``\  will be UPIO_MEM.
+     The optional form
+        earlycon=<name>,0x<addr>,<options>
+        console=<name>,0x<addr>,<options>
+     is also accepted; the returned \ ``iotype``\  will be UPIO_MEM.
 
-Returns 0 on success or -EINVAL on failure
+     Returns 0 on success or -EINVAL on failure
 
 .. _`uart_parse_options`:
 
@@ -194,9 +194,9 @@ uart_parse_options
 Description
 -----------
 
-uart_parse_options decodes a string containing the serial console
-options.  The format of the string is <baud><parity><bits><flow>,
-eg: 115200n8r
+     uart_parse_options decodes a string containing the serial console
+     options.  The format of the string is <baud><parity><bits><flow>,
+     eg: 115200n8r
 
 .. _`uart_set_options`:
 
@@ -240,12 +240,12 @@ uart_change_pm
     :param enum uart_pm_state pm_state:
         new state
 
-.. _`uart_change_pm.locking`:
+.. _`uart_change_pm.description`:
 
-Locking
--------
+Description
+-----------
 
-port->mutex has to be held
+Locking: port->mutex has to be held
 
 .. _`uart_register_driver`:
 
@@ -264,14 +264,14 @@ uart_register_driver
 Description
 -----------
 
-Register a uart driver with the core driver.  We in turn register
-with the tty layer, and initialise the core driver per-port state.
+     Register a uart driver with the core driver.  We in turn register
+     with the tty layer, and initialise the core driver per-port state.
 
-We have a proc file in /proc/tty/driver which is named after the
-normal driver.
+     We have a proc file in /proc/tty/driver which is named after the
+     normal driver.
 
-drv->port should be NULL, and the per-port structures should be
-registered using uart_add_one_port after this call has succeeded.
+     drv->port should be NULL, and the per-port structures should be
+     registered using uart_add_one_port after this call has succeeded.
 
 .. _`uart_unregister_driver`:
 
@@ -290,10 +290,10 @@ uart_unregister_driver
 Description
 -----------
 
-Remove all references to a driver from the core driver.  The low
-level driver must have removed all its ports via the
-\ :c:func:`uart_remove_one_port`\  if it registered them with \ :c:func:`uart_add_one_port`\ .
-(ie, drv->port == NULL)
+     Remove all references to a driver from the core driver.  The low
+     level driver must have removed all its ports via the
+     \ :c:func:`uart_remove_one_port`\  if it registered them with \ :c:func:`uart_add_one_port`\ .
+     (ie, drv->port == NULL)
 
 .. _`uart_add_one_port`:
 
@@ -315,10 +315,10 @@ uart_add_one_port
 Description
 -----------
 
-This allows the driver to register its own uart_port structure
-with the core driver.  The main purpose is to allow the low
-level uart drivers to expand uart_port, rather than having yet
-more levels of structures.
+     This allows the driver to register its own uart_port structure
+     with the core driver.  The main purpose is to allow the low
+     level uart drivers to expand uart_port, rather than having yet
+     more levels of structures.
 
 .. _`uart_remove_one_port`:
 
@@ -340,9 +340,9 @@ uart_remove_one_port
 Description
 -----------
 
-This unhooks (and hangs up) the specified port structure from the
-core driver.  No further calls will be made to the low-level code
-for this port.
+     This unhooks (and hangs up) the specified port structure from the
+     core driver.  No further calls will be made to the low-level code
+     for this port.
 
 .. _`uart_handle_dcd_change`:
 
@@ -364,7 +364,7 @@ uart_handle_dcd_change
 Description
 -----------
 
-Caller must hold uport->lock
+     Caller must hold uport->lock
 
 .. _`uart_handle_cts_change`:
 
@@ -386,7 +386,7 @@ uart_handle_cts_change
 Description
 -----------
 
-Caller must hold uport->lock
+     Caller must hold uport->lock
 
 .. _`uart_insert_char`:
 

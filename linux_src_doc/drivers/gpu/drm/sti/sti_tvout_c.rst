@@ -60,7 +60,7 @@ tvout_vip_set_rnd
 tvout_vip_set_sel_input
 =======================
 
-.. c:function:: void tvout_vip_set_sel_input(struct sti_tvout *tvout, int reg, bool main_path, bool sel_input_logic_inverted, enum sti_tvout_video_out_type video_out)
+.. c:function:: void tvout_vip_set_sel_input(struct sti_tvout *tvout, int reg, bool main_path, enum sti_tvout_video_out_type video_out)
 
     :param struct sti_tvout \*tvout:
         tvout structure
@@ -70,9 +70,6 @@ tvout_vip_set_sel_input
 
     :param bool main_path:
         main or auxiliary path
-
-    :param bool sel_input_logic_inverted:
-        need to invert the logic
 
     :param enum sti_tvout_video_out_type video_out:
         *undescribed*

@@ -259,7 +259,7 @@ dvb_register_device
         stored
 
     :param const struct dvb_device \*template:
-        Template used to create \ :c:type:`struct pdvbdev <pdvbdev>`;
+        Template used to create \ :c:type:`struct pdvbdev <pdvbdev>`\ ;
 
     :param void \*priv:
         private data

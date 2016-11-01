@@ -23,6 +23,7 @@ Definition
         u8 dst_id;
         u8 m_master;
         u8 p_master;
+        bool hs_polarity;
     }
 
 .. _`dw_dma_slave.members`:
@@ -45,6 +46,9 @@ m_master
 p_master
     peripheral master for transfers on allocated channel
 
+hs_polarity
+    set active low polarity of handshake interface
+
 .. _`dw_dma_platform_data`:
 
 struct dw_dma_platform_data
@@ -65,6 +69,7 @@ Definition
         unsigned int nr_channels;
         bool is_private;
         bool is_memcpy;
+        bool is_nollp;
     #define CHAN_ALLOCATION_ASCENDING 0
     #define CHAN_ALLOCATION_DESCENDING 1
         unsigned char chan_allocation_order;
@@ -90,6 +95,9 @@ is_private
 
 is_memcpy
     The device channels do support memory-to-memory transfers.
+
+is_nollp
+    The device channels does not support multi block transfers.
 
 chan_allocation_order
     Allocate channels starting from 0 or 7

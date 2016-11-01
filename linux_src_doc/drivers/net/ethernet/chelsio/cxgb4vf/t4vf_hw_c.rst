@@ -249,8 +249,8 @@ following values are returned
 -----------------------------
 
 
-\*\ ``pbar2_qoffset``\ : the BAR2 Offset of the \ ``qid``\  Registers
-\*\ ``pbar2_qid``\ : the BAR2 SGE Queue ID or 0 of \ ``qid``\ 
+\*@pbar2_qoffset: the BAR2 Offset of the \ ``qid``\  Registers
+\*@pbar2_qid: the BAR2 SGE Queue ID or 0 of \ ``qid``\ 
 
 If the returned BAR2 Queue ID is 0, then BAR2 SGE registers which
 require the "Inferred Queue ID" ability may be used.  E.g. the
@@ -839,6 +839,35 @@ Description
 -----------
 
 Processes a firmware message, such as link state change messages.
+
+.. _`t4vf_get_vf_mac_acl`:
+
+t4vf_get_vf_mac_acl
+===================
+
+.. c:function:: int t4vf_get_vf_mac_acl(struct adapter *adapter, unsigned int pf, unsigned int *naddr, u8 *addr)
+
+    Get the MAC address to be set to the VI of this VF.
+
+    :param struct adapter \*adapter:
+        The adapter
+
+    :param unsigned int pf:
+        The pf associated with vf
+
+    :param unsigned int \*naddr:
+        the number of ACL MAC addresses returned in addr
+
+    :param u8 \*addr:
+        Placeholder for MAC addresses
+
+.. _`t4vf_get_vf_mac_acl.description`:
+
+Description
+-----------
+
+Find the MAC address to be set to the VF's VI. The requested MAC address
+is from the host OS via callback in the PF driver.
 
 .. This file was automatic generated / don't edit.
 

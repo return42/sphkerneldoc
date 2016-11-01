@@ -6,12 +6,12 @@
 i915_capture_error_state
 ========================
 
-.. c:function:: void i915_capture_error_state(struct drm_device *dev, u32 engine_mask, const char *error_msg)
+.. c:function:: void i915_capture_error_state(struct drm_i915_private *dev_priv, u32 engine_mask, const char *error_msg)
 
     capture an error record for later analysis
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        *undescribed*
 
     :param u32 engine_mask:
         *undescribed*

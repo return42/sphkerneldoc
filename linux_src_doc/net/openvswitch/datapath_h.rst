@@ -44,7 +44,7 @@ n_lost
 
 n_mask_hit
     Number of masks looked up for flow match.
-    \ ``n_mask_hit``\  / (\ ``n_hit``\  + \ ``n_missed``\ )  will be the average masks looked
+    \ ``n_mask_hit``\  / (@n_hit + \ ``n_missed``\ )  will be the average masks looked
     up per packet.
 
 syncp
@@ -135,6 +135,7 @@ Definition
     struct ovs_skb_cb {
         struct vport *input_vport;
         u16 mru;
+        u32 cutlen;
     }
 
 .. _`ovs_skb_cb.members`:
@@ -148,6 +149,9 @@ input_vport
 
 mru
     The maximum received fragement size; 0 if the packet is not
+
+cutlen
+    The number of bytes from the packet end to be removed.
     fragmented.
 
 .. _`dp_upcall_info`:

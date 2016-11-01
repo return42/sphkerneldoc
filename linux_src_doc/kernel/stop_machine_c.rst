@@ -24,7 +24,7 @@ stop_one_cpu
 Description
 -----------
 
-Execute \ ``fn``\ (\ ``arg``\ ) on \ ``cpu``\ .  \ ``fn``\  is run in a process context with
+Execute \ ``fn``\ (@arg) on \ ``cpu``\ .  \ ``fn``\  is run in a process context with
 the highest priority preempting any task on the cpu and
 monopolizing it.  This function returns after the execution is
 complete.
@@ -47,7 +47,7 @@ Might sleep.
 Return
 ------
 
--ENOENT if \ ``fn``\ (\ ``arg``\ ) was not executed because \ ``cpu``\  was offline;
+-ENOENT if \ ``fn``\ (@arg) was not executed because \ ``cpu``\  was offline;
 otherwise, the return value of \ ``fn``\ .
 
 .. _`stop_two_cpus`:
@@ -148,7 +148,7 @@ stop_cpus
 Description
 -----------
 
-Execute \ ``fn``\ (\ ``arg``\ ) on online cpus in \ ``cpumask``\ .  On each target cpu,
+Execute \ ``fn``\ (@arg) on online cpus in \ ``cpumask``\ .  On each target cpu,
 \ ``fn``\  is run in a process context with the highest priority
 preempting any task on the cpu and monopolizing it.  This function
 returns after all executions are complete.
@@ -174,7 +174,7 @@ Might sleep.
 Return
 ------
 
--ENOENT if \ ``fn``\ (\ ``arg``\ ) was not executed at all because all cpus in
+-ENOENT if \ ``fn``\ (@arg) was not executed at all because all cpus in
 \ ``cpumask``\  were offline; otherwise, 0 if all executions of \ ``fn``\ 
 returned 0, any non zero return value if any returned non zero.
 
@@ -217,7 +217,7 @@ Return
 ------
 
 -EAGAIN if someone else is already stopping cpus, -ENOENT if
-\ ``fn``\ (\ ``arg``\ ) was not executed at all because all cpus in \ ``cpumask``\  were
+\ ``fn``\ (@arg) was not executed at all because all cpus in \ ``cpumask``\  were
 offline; otherwise, 0 if all executions of \ ``fn``\  returned 0, any non
 zero return value if any returned non zero.
 
@@ -228,16 +228,16 @@ stop_machine_from_inactive_cpu
 
 .. c:function:: int stop_machine_from_inactive_cpu(cpu_stop_fn_t fn, void *data, const struct cpumask *cpus)
 
-    \ :c:func:`stop_machine`\  from inactive CPU
+    stop_machine() from inactive CPU
 
     :param cpu_stop_fn_t fn:
         the function to run
 
     :param void \*data:
-        the data ptr for the @\ :c:func:`fn`\ 
+        the data ptr for the \ ``fn``\ ()
 
     :param const struct cpumask \*cpus:
-        the cpus to run the @\ :c:func:`fn`\  on (NULL = any online cpu)
+        the cpus to run the \ ``fn``\ () on (NULL = any online cpu)
 
 .. _`stop_machine_from_inactive_cpu.description`:
 

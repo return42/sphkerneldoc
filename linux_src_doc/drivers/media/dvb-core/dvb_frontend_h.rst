@@ -141,10 +141,10 @@ mode
 
 audmode
     Audio mode as defined for the rxsubchans field at videodev2.h,
-    e. g. V4L2_TUNER_MODE\_\*
+    e. g. V4L2_TUNER_MODE_*
 
 std
-    TV standard bitmap as defined at videodev2.h, e. g. V4L2_STD\_\*
+    TV standard bitmap as defined at videodev2.h, e. g. V4L2_STD_*
 
 .. _`analog_parameters.description`:
 
@@ -356,7 +356,7 @@ get_status
 get_rf_strength
     returns the RF signal strengh. Used mostly to support
     analog TV and radio. Digital TV should report, instead,
-    via DVBv5 API (\ ``dvb_frontend``\ .dtv_property_cache;).
+    via DVBv5 API (@dvb_frontend.dtv_property_cache;).
 
 get_afc
     Used only by analog TV core. Reports the frequency
@@ -591,27 +591,27 @@ read_status
 read_ber
     legacy callback function to return the bit error rate.
     Newer drivers should provide such info via DVBv5 API,
-    e. g. \ ``set_frontend``\ ;/\ ``get_frontend``\ ;, implementing this
+    e. g. \ ``set_frontend``\ ;/@get_frontend;, implementing this
     callback only if DVBv3 API compatibility is wanted.
 
 read_signal_strength
     legacy callback function to return the signal
     strength. Newer drivers should provide such info via
-    DVBv5 API, e. g. \ ``set_frontend``\ ;/\ ``get_frontend``\ ;,
+    DVBv5 API, e. g. \ ``set_frontend``\ ;/@get_frontend;,
     implementing this callback only if DVBv3 API
     compatibility is wanted.
 
 read_snr
     legacy callback function to return the Signal/Noise
     rate. Newer drivers should provide such info via
-    DVBv5 API, e. g. \ ``set_frontend``\ ;/\ ``get_frontend``\ ;,
+    DVBv5 API, e. g. \ ``set_frontend``\ ;/@get_frontend;,
     implementing this callback only if DVBv3 API
     compatibility is wanted.
 
 read_ucblocks
     legacy callback function to return the Uncorrected Error
     Blocks. Newer drivers should provide such info via
-    DVBv5 API, e. g. \ ``set_frontend``\ ;/\ ``get_frontend``\ ;,
+    DVBv5 API, e. g. \ ``set_frontend``\ ;/@get_frontend;,
     implementing this callback only if DVBv3 API
     compatibility is wanted.
 
@@ -648,7 +648,7 @@ dishnetwork_send_legacy_command
     FE_DISHNETWORK_SEND_LEGACY_CMD ioctl (only Satellite).
     Drivers should not use this, except when the DVB
     core emulation fails to provide proper support (e.g.
-    if \ :c:func:`set_voltage`\  takes more than 8ms to work), and
+    if \ ``set_voltage``\  takes more than 8ms to work), and
     when backward compatibility with this legacy API is
     required.
 
@@ -1105,13 +1105,13 @@ Description
 This function prepares a Digital TV frontend to suspend.
 
 In order to prepare the tuner to suspend, if
-\ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .\ :c:func:`suspend`\  is available, it calls it. Otherwise,
-it will call \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .\ :c:func:`sleep`\ , if available.
+\ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .suspend(\) is available, it calls it. Otherwise,
+it will call \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .sleep(\), if available.
 
-It will also call \ :c:type:`dvb_frontend_ops.\ :c:func:`sleep`\  <dvb_frontend_ops>`\  to put the demod to suspend.
+It will also call \ :c:type:`dvb_frontend_ops.sleep <dvb_frontend_ops>`\ (\) to put the demod to suspend.
 
-The drivers should also call \ :c:func:`dvb_frontend_suspend`\  as part of their
-handler for the \ :c:type:`device_driver.\ :c:func:`suspend`\  <device_driver>`\ .
+The drivers should also call dvb_frontend_suspend(\) as part of their
+handler for the \ :c:type:`device_driver.suspend <device_driver>`\ (\).
 
 .. _`dvb_frontend_resume`:
 
@@ -1132,17 +1132,17 @@ Description
 
 This function resumes the usual operation of the tuner after resume.
 
-In order to resume the frontend, it calls the demod \ :c:type:`dvb_frontend_ops.\ :c:func:`init`\  <dvb_frontend_ops>`\ .
+In order to resume the frontend, it calls the demod \ :c:type:`dvb_frontend_ops.init <dvb_frontend_ops>`\ (\).
 
-If \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .\ :c:func:`resume`\  is available, It, it calls it.
-Otherwise,t will call \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .\ :c:func:`init`\ , if available.
+If \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .resume(\) is available, It, it calls it.
+Otherwise,t will call \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .init(\), if available.
 
 Once tuner and demods are resumed, it will enforce that the SEC voltage and
 tone are restored to their previous values and wake up the frontend's
 kthread in order to retune the frontend.
 
 The drivers should also call \ :c:func:`dvb_frontend_resume`\  as part of their
-handler for the \ :c:type:`device_driver.\ :c:func:`resume`\  <device_driver>`\ .
+handler for the \ :c:type:`device_driver.resume <device_driver>`\ (\).
 
 .. _`dvb_frontend_reinitialise`:
 
@@ -1161,7 +1161,7 @@ dvb_frontend_reinitialise
 Description
 -----------
 
-Calls \ :c:type:`dvb_frontend_ops.\ :c:func:`init`\  <dvb_frontend_ops>`\  and \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .\ :c:func:`init`\ ,
+Calls \ :c:type:`dvb_frontend_ops.init <dvb_frontend_ops>`\ (\) and \ :c:type:`dvb_frontend_ops.tuner_ops <dvb_frontend_ops>`\ .init(\),
 and resets SEC tone and voltage (for Satellite systems).
 
 .. _`dvb_frontend_reinitialise.note`:
@@ -1199,7 +1199,7 @@ as possible, as it affects the detection of the dish tone command at the
 satellite subsystem.
 
 Its used internally by the DVB frontend core, in order to emulate
-\ ``FE_DISHNETWORK_SEND_LEGACY_CMD``\  using the \ :c:type:`dvb_frontend_ops.\ :c:func:`set_voltage`\  <dvb_frontend_ops>`\ 
+\ ``FE_DISHNETWORK_SEND_LEGACY_CMD``\  using the \ :c:type:`dvb_frontend_ops.set_voltage <dvb_frontend_ops>`\ (\)
 callback.
 
 .. _`dvb_frontend_sleep_until.note`:
@@ -1211,7 +1211,7 @@ it should not be used at the drivers, as the emulation for the
 legacy callback is provided by the Kernel. The only situation where this
 should be at the drivers is when there are some bugs at the hardware that
 would prevent the core emulation to work. On such cases, the driver would
-be writing a \ :c:type:`dvb_frontend_ops.\ :c:func:`dishnetwork_send_legacy_command`\  <dvb_frontend_ops>`\  and
+be writing a \ :c:type:`dvb_frontend_ops.dishnetwork_send_legacy_command <dvb_frontend_ops>`\ (\) and
 calling this function directly.
 
 .. This file was automatic generated / don't edit.

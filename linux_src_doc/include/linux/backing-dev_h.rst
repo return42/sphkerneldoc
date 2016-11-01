@@ -157,7 +157,7 @@ function determines the wb associated with \ ``inode``\  and ensures that the
 association doesn't change until the transaction is finished with
 \ :c:func:`unlocked_inode_to_wb_end`\ .
 
-The caller must call \ :c:func:`unlocked_inode_to_wb_end`\  with \*\ ``lockdep``\ 
+The caller must call \ :c:func:`unlocked_inode_to_wb_end`\  with \*@lockdep
 afterwards and can't sleep during transaction.  IRQ may or may not be
 disabled on return.
 
@@ -174,7 +174,7 @@ unlocked_inode_to_wb_end
         target inode
 
     :param bool locked:
-        \*\ ``lockedp``\  from \ :c:func:`unlocked_inode_to_wb_begin`\ 
+        \*@lockedp from \ :c:func:`unlocked_inode_to_wb_begin`\ 
 
 .. This file was automatic generated / don't edit.
 

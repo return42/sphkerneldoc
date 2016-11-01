@@ -9,3 +9,4 @@ brcm80211
 
     brcmfmac/index
     brcmsmac/index
+    include/index

@@ -42,6 +42,7 @@ Definition
         dma_addr_t dummy_dst_addr;
         u32 saved_config_reg;
         u32 saved_int_mask_reg;
+        struct mv_xor_device *xordev;
     }
 
 .. _`mv_xor_chan.members`:
@@ -113,6 +114,9 @@ saved_config_reg
     *undescribed*
 
 saved_int_mask_reg
+    *undescribed*
+
+xordev
     *undescribed*
 
 .. _`mv_xor_desc_slot`:

@@ -18,9 +18,9 @@ register_framebuffer
 Description
 -----------
 
-Registers a frame buffer device \ ``fb_info``\ .
+     Registers a frame buffer device \ ``fb_info``\ .
 
-Returns negative errno on error, or zero for success.
+     Returns negative errno on error, or zero for success.
 
 .. _`unregister_framebuffer`:
 
@@ -39,17 +39,17 @@ unregister_framebuffer
 Description
 -----------
 
-Unregisters a frame buffer device \ ``fb_info``\ .
+     Unregisters a frame buffer device \ ``fb_info``\ .
 
-Returns negative errno on error, or zero for success.
+     Returns negative errno on error, or zero for success.
 
-This function will also notify the framebuffer console
-to release the driver.
+     This function will also notify the framebuffer console
+     to release the driver.
 
-This is meant to be called within a driver's \ :c:func:`module_exit`\ 
-function. If this is called outside \ :c:func:`module_exit`\ , ensure
-that the driver implements \ :c:func:`fb_open`\  and \ :c:func:`fb_release`\  to
-check that no processes are using the device.
+     This is meant to be called within a driver's \ :c:func:`module_exit`\ 
+     function. If this is called outside \ :c:func:`module_exit`\ , ensure
+     that the driver implements \ :c:func:`fb_open`\  and \ :c:func:`fb_release`\  to
+     check that no processes are using the device.
 
 .. _`fb_set_suspend`:
 
@@ -71,9 +71,9 @@ fb_set_suspend
 Description
 -----------
 
-This is meant to be used by low level drivers to
-signal suspend/resume to the core & clients.
-It must be called with the console semaphore held
+     This is meant to be used by low level drivers to
+     signal suspend/resume to the core & clients.
+     It must be called with the console semaphore held
 
 .. _`fbmem_init`:
 
@@ -92,14 +92,14 @@ fbmem_init
 Description
 -----------
 
-Initialize the frame buffer subsystem.
+     Initialize the frame buffer subsystem.
 
 .. _`fbmem_init.note`:
 
 NOTE
 ----
 
-This function is \_only\_ to be called by drivers/char/mem.c.
+This function is _only_ to be called by drivers/char/mem.c.
 
 .. This file was automatic generated / don't edit.
 

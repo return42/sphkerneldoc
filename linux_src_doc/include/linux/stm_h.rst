@@ -165,12 +165,12 @@ Description
 
 Fill out this structure before calling \ :c:func:`stm_register_device`\  to create
 an STM device and \ :c:func:`stm_unregister_device`\  to destroy it. It will also be
-passed back to @\ :c:func:`packet`\ , @\ :c:func:`mmio_addr`\ , @\ :c:func:`link`\ , @\ :c:func:`unlink`\  and @\ :c:func:`set_options`\ 
+passed back to \ ``packet``\ (), \ ``mmio_addr``\ (), \ ``link``\ (), \ ``unlink``\ () and \ ``set_options``\ ()
 callbacks.
 
 Normally, an STM device will have a range of masters available to software
 and the rest being statically assigned to various hardware trace sources.
-The former is defined by the the range [\ ``sw_start``\ ..\ ``sw_end``\ ] of the device
+The former is defined by the the range [@sw_start..@sw_end] of the device
 description. That is, the lowest master that can be allocated to software
 writers is \ ``sw_start``\  and data from this writer will appear is \ ``sw_start``\ 
 master in the STP stream.

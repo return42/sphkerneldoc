@@ -125,7 +125,7 @@ Return
 
 unrefcounted policy that match \ ``str``\  or NULL if not found
 
-if \ ``len``\  == strlen(\ ``strlen``\ ) then this is equiv to \__policy_find
+if \ ``len``\  == strlen(@strlen) then this is equiv to \__policy_find
 other wise it allows searching for policy by a partial match of name
 
 .. _`aa_ns_visible`:
@@ -451,7 +451,7 @@ aa_alloc_root_ns
 Return
 ------
 
-\ ``0``\  on success else error
+%0 on success else error
 
 .. _`aa_free_profile`:
 
@@ -750,7 +750,7 @@ replacement_allowed
 Return
 ------
 
-\ ``0``\  if replacement allowed else error code
+%0 if replacement allowed else error code
 
 .. _`audit_policy`:
 

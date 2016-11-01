@@ -75,7 +75,7 @@ private
 NOTE
 ----
 
-the read\_\*, write\_\* and poll_slot_status functions will be
+the read_*, write_* and poll_slot_status functions will be
 called for different slots concurrently and need to use locks where
 and if appropriate. There will be no concurrent access to one slot.
 
@@ -95,7 +95,7 @@ dvb_ca_en50221_camchange_irq
         Slot concerned.
 
     :param int change_type:
-        One of the DVB_CA_CAMCHANGE\_\* values
+        One of the DVB_CA_CAMCHANGE_* values
 
 .. _`dvb_ca_en50221_camready_irq`:
 
@@ -143,7 +143,7 @@ dvb_ca_en50221_init
         The dvb_ca instance.
 
     :param int flags:
-        Flags describing the CA device (DVB_CA_EN50221_FLAG\_\*).
+        Flags describing the CA device (DVB_CA_EN50221_FLAG_*).
 
     :param int slot_count:
         Number of slots supported.
@@ -153,7 +153,7 @@ dvb_ca_en50221_init
 Description
 -----------
 
-\ ``return``\  0 on success, nonzero on failure
+@return 0 on success, nonzero on failure
 
 .. _`dvb_ca_en50221_release`:
 

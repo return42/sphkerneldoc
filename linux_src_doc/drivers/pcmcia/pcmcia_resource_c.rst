@@ -67,7 +67,7 @@ pcmcia_access_config
 Description
 -----------
 
-\ :c:func:`pcmcia_access_config`\  reads and writes configuration registers in
+pcmcia_access_config() reads and writes configuration registers in
 attribute memory.  Memory window 0 is reserved for this and the tuple
 reading services. Drivers must use \ :c:func:`pcmcia_read_config_byte`\  or
 \ :c:func:`pcmcia_write_config_byte`\ .
@@ -95,7 +95,7 @@ pcmcia_read_config_byte
 Description
 -----------
 
-\ :c:func:`pcmcia_read_config_byte`\  reads a byte from a configuration register in
+pcmcia_read_config_byte() reads a byte from a configuration register in
 attribute memory.
 
 .. _`pcmcia_write_config_byte`:
@@ -121,7 +121,7 @@ pcmcia_write_config_byte
 Description
 -----------
 
-\ :c:func:`pcmcia_write_config_byte`\  writes a byte to a configuration register in
+pcmcia_write_config_byte() writes a byte to a configuration register in
 attribute memory.
 
 .. _`pcmcia_map_mem_page`:
@@ -147,7 +147,7 @@ pcmcia_map_mem_page
 Description
 -----------
 
-\ :c:func:`pcmcia_map_mem_page`\  modifies what can be read and written by accessing
+pcmcia_map_mem_page() modifies what can be read and written by accessing
 an iomem range previously enabled by \ :c:func:`pcmcia_request_window`\ , by setting
 the card_offset value to \ ``offset``\ .
 
@@ -168,7 +168,7 @@ pcmcia_fixup_iowidth
 Description
 -----------
 
-\ :c:func:`pcmcia_fixup_iowidth`\  allows a PCMCIA device driver to reduce the
+pcmcia_fixup_iowidth() allows a PCMCIA device driver to reduce the
 IO width to 8bit after having called \ :c:func:`pcmcia_enable_device`\ 
 previously.
 
@@ -192,7 +192,7 @@ pcmcia_fixup_vpp
 Description
 -----------
 
-\ :c:func:`pcmcia_fixup_vpp`\  allows a PCMCIA device driver to set Vpp to
+pcmcia_fixup_vpp() allows a PCMCIA device driver to set Vpp to
 a new voltage level between calls to \ :c:func:`pcmcia_enable_device`\ 
 and \ :c:func:`pcmcia_disable_device`\ .
 
@@ -213,7 +213,7 @@ pcmcia_release_configuration
 Description
 -----------
 
-\ :c:func:`pcmcia_release_configuration`\  is the 1:1 counterpart to
+pcmcia_release_configuration() is the 1:1 counterpart to
 \ :c:func:`pcmcia_enable_device`\ : If a PCMCIA device is no longer used by any
 driver, the Vpp voltage is set to 0, IRQs will no longer be generated,
 and I/O ranges will be disabled. As \ :c:func:`pcmcia_release_io`\  and
@@ -237,7 +237,7 @@ pcmcia_release_io
 Description
 -----------
 
-\ :c:func:`pcmcia_release_io`\  releases the I/O ranges allocated by a PCMCIA
+pcmcia_release_io() releases the I/O ranges allocated by a PCMCIA
 device.  This may be invoked some time after a card ejection has
 already dumped the actual socket configuration, so if the client is
 "stale", we don't bother checking the port ranges against the
@@ -263,7 +263,7 @@ pcmcia_release_window
 Description
 -----------
 
-\ :c:func:`pcmcia_release_window`\  releases \ :c:type:`struct resource <resource>`\  \*res which was
+pcmcia_release_window() releases \ :c:type:`struct resource <resource>`\  \*res which was
 previously reserved by calling \ :c:func:`pcmcia_request_window`\ .
 
 .. _`pcmcia_enable_device`:
@@ -283,7 +283,7 @@ pcmcia_enable_device
 Description
 -----------
 
-\ :c:func:`pcmcia_enable_device`\  physically enables a PCMCIA device. It parses
+pcmcia_enable_device() physically enables a PCMCIA device. It parses
 the flags passed to in \ ``flags``\  and stored in \ ``p_dev``\ ->flags and sets up
 the Vpp voltage, enables the speaker line, I/O ports and store proper
 values to configuration registers.
@@ -305,7 +305,7 @@ pcmcia_request_io
 Description
 -----------
 
-\ :c:func:`pcmcia_request_io`\  attempts to reserve the IO port ranges specified in
+pcmcia_request_io() attempts to reserve the IO port ranges specified in
 \ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev``\ ->resource[0] and \ ``p_dev``\ ->resource[1]. The
 "start" value is the requested start of the IO port resource; "end"
 reflects the number of ports requested. The number of IO lines requested
@@ -331,7 +331,7 @@ pcmcia_request_irq
 Description
 -----------
 
-\ :c:func:`pcmcia_request_irq`\  is a wrapper around \ :c:func:`request_irq`\  which allows
+pcmcia_request_irq() is a wrapper around \ :c:func:`request_irq`\  which allows
 the PCMCIA core to clean up the registration in \ :c:func:`pcmcia_disable_device`\ .
 Drivers are free to use \ :c:func:`request_irq`\  directly, but then they need to
 call \ :c:func:`free_irq`\  themselfves, too. Also, only \ ``IRQF_SHARED``\  capable IRQ
@@ -357,7 +357,7 @@ __pcmcia_request_exclusive_irq
 Description
 -----------
 
-\ :c:func:`pcmcia_request_exclusive_irq`\  is a wrapper around \ :c:func:`request_irq`\  which
+pcmcia_request_exclusive_irq() is a wrapper around \ :c:func:`request_irq`\  which
 attempts first to request an exclusive IRQ. If it fails, it also accepts
 a shared IRQ, but prints out a warning. PCMCIA drivers should allow for
 IRQ sharing and either use request_irq directly (then they need to call
@@ -417,7 +417,7 @@ pcmcia_request_window
         the associated PCMCIA device
 
     :param struct resource \*res:
-        \ :c:type:`struct resource <resource>`\  pointing to p_dev->resource[2..5]
+        &struct resource pointing to p_dev->resource[2..5]
 
     :param unsigned int speed:
         access speed
@@ -427,7 +427,7 @@ pcmcia_request_window
 Description
 -----------
 
-\ :c:func:`pcmcia_request_window`\  attepts to reserve an iomem ranges specified in
+pcmcia_request_window() attepts to reserve an iomem ranges specified in
 \ :c:type:`struct resource <resource>`\  \ ``res``\  pointing to one of the entries in
 \ :c:type:`struct pcmcia_device <pcmcia_device>`\  \ ``p_dev``\ ->resource[2..5]. The "start" value is the
 requested start of the IO mem resource; "end" reflects the size
@@ -450,7 +450,7 @@ pcmcia_disable_device
 Description
 -----------
 
-\ :c:func:`pcmcia_disable_device`\  is the driver-callable counterpart to
+pcmcia_disable_device() is the driver-callable counterpart to
 \ :c:func:`pcmcia_enable_device`\ : If a PCMCIA device is no longer used,
 drivers are expected to clean up and disable the device by calling
 this function. Any I/O ranges (iomem and ioports) will be released,

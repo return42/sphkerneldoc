@@ -22,7 +22,6 @@ Definition
         unsigned long io_base_addr;
         struct spi_master *master;
         struct work_struct work;
-        struct workqueue_struct *wk;
         wait_queue_head_t wait;
         u8 transfer_complete;
         u8 bcurrent_msg_processing;
@@ -64,10 +63,6 @@ master
 
 work
     Reference to work queue handler
-
-wk
-    Workqueue for carrying out execution of the
-    requests
 
 wait
     Wait queue for waking up upon receiving an

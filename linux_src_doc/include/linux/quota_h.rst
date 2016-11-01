@@ -87,5 +87,20 @@ make_kqid_projid
     :param kprojid_t projid:
         The kprojid to make the quota identifier from
 
+.. _`qid_has_mapping`:
+
+qid_has_mapping
+===============
+
+.. c:function:: bool qid_has_mapping(struct user_namespace *ns, struct kqid qid)
+
+    Report if a qid maps into a user namespace.
+
+    :param struct user_namespace \*ns:
+        The user namespace to see if a value maps into.
+
+    :param struct kqid qid:
+        The kernel internal quota identifier to test.
+
 .. This file was automatic generated / don't edit.
 

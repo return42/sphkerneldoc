@@ -18,7 +18,7 @@ lbtf_setup_firmware
 Description
 -----------
 
-\ ``priv``\     A pointer to struct lbtf_private structure
+@priv    A pointer to struct lbtf_private structure
 
 .. _`lbtf_setup_firmware.return`:
 
@@ -59,7 +59,7 @@ lbtf_add_card
 Description
 -----------
 
-\ ``card``\     A pointer to card
+@card    A pointer to card
 
 .. _`lbtf_add_card.return`:
 

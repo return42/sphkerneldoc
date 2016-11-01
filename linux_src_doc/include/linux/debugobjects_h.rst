@@ -83,10 +83,9 @@ name
 debug_hint
     function returning address, which have associated
     kernel symbol, to allow identify the object
-    \ ``is_static_object``\     return true if the obj is static, otherwise return false
 
 is_static_object
-    *undescribed*
+    return true if the obj is static, otherwise return false
 
 fixup_init
     fixup function, which is called when the init check

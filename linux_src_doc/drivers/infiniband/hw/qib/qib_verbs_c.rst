@@ -45,14 +45,14 @@ qib_skip_sge
 qib_qp_rcv
 ==========
 
-.. c:function:: void qib_qp_rcv(struct qib_ctxtdata *rcd, struct qib_ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
+.. c:function:: void qib_qp_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
 
     processing an incoming packet on a QP
 
     :param struct qib_ctxtdata \*rcd:
         the context pointer
 
-    :param struct qib_ib_header \*hdr:
+    :param struct ib_header \*hdr:
         the packet header
 
     :param int has_grh:
@@ -110,14 +110,14 @@ interrupt level. Tlen is the length of the header + data + CRC in bytes.
 qib_verbs_send
 ==============
 
-.. c:function:: int qib_verbs_send(struct rvt_qp *qp, struct qib_ib_header *hdr, u32 hdrwords, struct rvt_sge_state *ss, u32 len)
+.. c:function:: int qib_verbs_send(struct rvt_qp *qp, struct ib_header *hdr, u32 hdrwords, struct rvt_sge_state *ss, u32 len)
 
     send a packet
 
     :param struct rvt_qp \*qp:
         the QP to send on
 
-    :param struct qib_ib_header \*hdr:
+    :param struct ib_header \*hdr:
         the packet header
 
     :param u32 hdrwords:

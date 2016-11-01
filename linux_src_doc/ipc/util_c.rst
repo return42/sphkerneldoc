@@ -373,7 +373,7 @@ Description
 -----------
 
 Turn the kernel object \ ``in``\  into a set of permissions descriptions
-for returning to userspace (\ ``out``\ ).
+for returning to userspace (@out).
 
 .. _`ipc64_perm_to_ipc_perm`:
 
@@ -476,7 +476,7 @@ ipcget
 
 .. c:function:: int ipcget(struct ipc_namespace *ns, struct ipc_ids *ids, const struct ipc_ops *ops, struct ipc_params *params)
 
-    Common sys\_\*\ :c:func:`get`\  code
+    Common sys\_\*get() code
 
     :param struct ipc_namespace \*ns:
         namespace

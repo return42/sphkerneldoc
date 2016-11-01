@@ -28,7 +28,7 @@ Processes the interrupt for MPU401-UART i/o.
 Return
 ------
 
-\ ``IRQ_HANDLED``\  if the interrupt was handled. \ ``IRQ_NONE``\  otherwise.
+%IRQ_HANDLED if the interrupt was handled. \ ``IRQ_NONE``\  otherwise.
 
 .. _`snd_mpu401_uart_interrupt_tx`:
 
@@ -57,7 +57,7 @@ Processes the interrupt for MPU401-UART output.
 Return
 ------
 
-\ ``IRQ_HANDLED``\  if the interrupt was handled. \ ``IRQ_NONE``\  otherwise.
+%IRQ_HANDLED if the interrupt was handled. \ ``IRQ_NONE``\  otherwise.
 
 .. _`snd_mpu401_uart_new`:
 

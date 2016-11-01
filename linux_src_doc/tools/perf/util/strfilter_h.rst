@@ -22,7 +22,7 @@ Description
 -----------
 
 Parse \ ``rules``\  and return new strfilter. Return NULL if an error detected.
-In that case, \*\ ``err``\  will indicate where it is detected, and \*\ ``err``\  is NULL
+In that case, \*@err will indicate where it is detected, and \*@err is NULL
 if a memory allocation is failed.
 
 .. _`strfilter__or`:

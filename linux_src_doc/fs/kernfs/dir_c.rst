@@ -66,13 +66,9 @@ OR
 
 /../..
 
-.. _`kernfs_path_from_node_locked.return-value`:
-
-return value
-------------
-
-length of the string.  If greater than buflen,
-then contents of buf are undefined.  On error, -1 is returned.
+Returns the length of the full path.  If the full length is equal to or
+greater than \ ``buflen``\ , \ ``buf``\  contains the truncated path with the trailing
+'\0'.  On error, -errno is returned.
 
 .. _`kernfs_name`:
 
@@ -102,25 +98,6 @@ similar to \ :c:func:`strlcpy`\ .  It returns the length of \ ``kn``\ 's name an
 isn't long enough, it's filled upto \ ``buflen``\ -1 and nul terminated.
 
 This function can be called from any context.
-
-.. _`kernfs_path_len`:
-
-kernfs_path_len
-===============
-
-.. c:function:: size_t kernfs_path_len(struct kernfs_node *kn)
-
-    determine the length of the full path of a given node
-
-    :param struct kernfs_node \*kn:
-        kernfs_node of interest
-
-.. _`kernfs_path_len.description`:
-
-Description
------------
-
-The returned length doesn't include the space for the terminating '\0'.
 
 .. _`kernfs_path_from_node`:
 
@@ -153,36 +130,9 @@ be on the same kernfs-root. If \ ``from``\  is not parent of \ ``to``\ , then a 
 path (which includes '..'s) as needed to reach from \ ``from``\  to \ ``to``\  is
 returned.
 
-If \ ``buf``\  isn't long enough, the return value will be greater than \ ``buflen``\ 
-and \ ``buf``\  contents are undefined.
-
-.. _`kernfs_path`:
-
-kernfs_path
-===========
-
-.. c:function:: char *kernfs_path(struct kernfs_node *kn, char *buf, size_t buflen)
-
-    build full path of a given node
-
-    :param struct kernfs_node \*kn:
-        kernfs_node of interest
-
-    :param char \*buf:
-        buffer to copy \ ``kn``\ 's name into
-
-    :param size_t buflen:
-        size of \ ``buf``\ 
-
-.. _`kernfs_path.description`:
-
-Description
------------
-
-Builds and returns the full path of \ ``kn``\  in \ ``buf``\  of \ ``buflen``\  bytes.  The
-path is built from the end of \ ``buf``\  so the returned pointer usually
-doesn't match \ ``buf``\ .  If \ ``buf``\  isn't long enough, \ ``buf``\  is nul terminated
-and \ ``NULL``\  is returned.
+Returns the length of the full path.  If the full length is equal to or
+greater than \ ``buflen``\ , \ ``buf``\  contains the truncated path with the trailing
+'\0'.  On error, -errno is returned.
 
 .. _`pr_cont_kernfs_name`:
 
@@ -665,7 +615,7 @@ kernfs_next_descendant_post
     find the next descendant for post-order walk
 
     :param struct kernfs_node \*pos:
-        the current position (\ ``NULL``\  to initiate traversal)
+        the current position (%NULL to initiate traversal)
 
     :param struct kernfs_node \*root:
         kernfs_node whose descendants to walk

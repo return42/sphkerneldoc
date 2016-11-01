@@ -8,5 +8,6 @@ unisys
     :maxdepth: 1
 
     include/index
+    visorbus/index
     visorhba/index
     visornic/index

@@ -1,6 +1,59 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mfd/stmpe.c
 
+.. _`stmpe_platform_data`:
+
+struct stmpe_platform_data
+==========================
+
+.. c:type:: struct stmpe_platform_data
+
+    STMPE platform data
+
+.. _`stmpe_platform_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct stmpe_platform_data {
+        int id;
+        unsigned int blocks;
+        unsigned int irq_trigger;
+        bool autosleep;
+        bool irq_over_gpio;
+        int irq_gpio;
+        int autosleep_timeout;
+    }
+
+.. _`stmpe_platform_data.members`:
+
+Members
+-------
+
+id
+    device id to distinguish between multiple STMPEs on the same board
+
+blocks
+    bitmask of blocks to enable (use STMPE_BLOCK\_\*)
+
+irq_trigger
+    IRQ trigger to use for the interrupt to the host
+
+autosleep
+    bool to enable/disable stmpe autosleep
+
+irq_over_gpio
+    true if gpio is used to get irq
+
+irq_gpio
+    gpio number over which irq will be requested (significant only if
+    irq_over_gpio is true)
+
+autosleep_timeout
+    inactivity timeout in milliseconds for autosleep
+
 .. _`stmpe_enable`:
 
 stmpe_enable
@@ -150,7 +203,7 @@ stmpe_set_altfunc
 Description
 -----------
 
-\ ``pins``\  is assumed to have a bit set for each of the bits whose alternate
+@pins is assumed to have a bit set for each of the bits whose alternate
 function is to be changed, numbered according to the GPIOXY numbers.
 
 If the GPIO module is not enabled, this function automatically enables it in

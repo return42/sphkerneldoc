@@ -66,12 +66,54 @@ We use this hashed waitqueue, instead of a normal wait_queue_t, so
 we can wake only the relevant ones (hashed queues may be shared).
 
 A futex_q has a woken state, just like tasks have TASK_RUNNING.
-It is considered woken when plist_node_empty(\ :c:type:`q->list <q>`\ ) \|\| q->lock_ptr == 0.
+It is considered woken when plist_node_empty(&q->list) \|\| q->lock_ptr == 0.
 The order of wakeup is always to make the first condition true, then
 the second.
 
 PI futexes are typically woken before they are removed from the hash list via
 the rt_mutex code. See \ :c:func:`unqueue_me_pi`\ .
+
+.. _`hash_futex`:
+
+hash_futex
+==========
+
+.. c:function:: struct futex_hash_bucket *hash_futex(union futex_key *key)
+
+    Return the hash bucket in the global hash
+
+    :param union futex_key \*key:
+        Pointer to the futex key for which the hash is calculated
+
+.. _`hash_futex.description`:
+
+Description
+-----------
+
+We hash on the keys returned from get_futex_key (see below) and return the
+corresponding hash bucket in the global hash.
+
+.. _`match_futex`:
+
+match_futex
+===========
+
+.. c:function:: int match_futex(union futex_key *key1, union futex_key *key2)
+
+    Check whether two futex keys are equal
+
+    :param union futex_key \*key1:
+        Pointer to key1
+
+    :param union futex_key \*key2:
+        Pointer to key2
+
+.. _`match_futex.description`:
+
+Description
+-----------
+
+Return 1 if two futex_keys are equal, 0 otherwise.
 
 .. _`get_futex_key`:
 
@@ -342,7 +384,7 @@ futex_requeue
         number of waiters to requeue (0-INT_MAX)
 
     :param u32 \*cmpval:
-        \ ``uaddr1``\  expected value (or \ ``NULL``\ )
+        @uaddr1 expected value (or \ ``NULL``\ )
 
     :param int requeue_pi:
         if we are attempting to requeue from a non-pi futex to a
@@ -462,7 +504,7 @@ futex_wait_queue_me
 
 .. c:function:: void futex_wait_queue_me(struct futex_hash_bucket *hb, struct futex_q *q, struct hrtimer_sleeper *timeout)
 
-    \ :c:func:`queue_me`\  and wait for wakeup, timeout, or signal
+    queue_me() and wait for wakeup, timeout, or signal
 
     :param struct futex_hash_bucket \*hb:
         the futex hash bucket, must be locked by the caller

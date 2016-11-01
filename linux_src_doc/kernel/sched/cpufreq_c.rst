@@ -6,7 +6,7 @@
 cpufreq_add_update_util_hook
 ============================
 
-.. c:function:: void cpufreq_add_update_util_hook(int cpu, struct update_util_data *data, void (*func)(struct update_util_data *data, u64 time, unsigned long util, unsigned long max))
+.. c:function:: void cpufreq_add_update_util_hook(int cpu, struct update_util_data *data, void (*func)(struct update_util_data *data, u64 time, unsigned int flags))
 
     Populate the CPU's update_util_data pointer.
 
@@ -16,7 +16,7 @@ cpufreq_add_update_util_hook
     :param struct update_util_data \*data:
         New pointer value.
 
-    :param void (\*func)(struct update_util_data \*data, u64 time, unsigned long util, unsigned long max):
+    :param void (\*func)(struct update_util_data \*data, u64 time, unsigned int flags):
         Callback function to set for the CPU.
 
 .. _`cpufreq_add_update_util_hook.description`:

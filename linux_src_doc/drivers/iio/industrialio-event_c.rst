@@ -75,6 +75,11 @@ Note
 The caller must make sure that this function is not running
 concurrently for the same indio_dev more than once.
 
+This function may be safely used as soon as a valid reference to iio_dev has
+been obtained via \ :c:func:`iio_device_alloc`\ , but any events that are submitted
+before \ :c:func:`iio_device_register`\  has successfully completed will be silently
+discarded.
+
 .. _`iio_event_poll`:
 
 iio_event_poll

@@ -57,10 +57,10 @@ This checks if the \ ``type``\  pool driver is available.  This will try to load
 the requested module, if needed, but there is no guarantee the module will
 still be loaded and available immediately after calling.  If this returns
 true, the caller should assume the pool is available, but must be prepared
-to handle the @\ :c:func:`zpool_create_pool`\  returning failure.  However if this
+to handle the \ ``zpool_create_pool``\ () returning failure.  However if this
 returns false, the caller should assume the requested pool type is not
 available; either the requested pool type module does not exist, or could
-not be loaded, and calling @\ :c:func:`zpool_create_pool`\  with the pool type will
+not be loaded, and calling \ ``zpool_create_pool``\ () with the pool type will
 fail.
 
 The \ ``type``\  string must be null-terminated.

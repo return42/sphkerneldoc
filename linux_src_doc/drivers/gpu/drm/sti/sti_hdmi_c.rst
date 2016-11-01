@@ -125,5 +125,26 @@ HDMI_TIMEOUT_SWRESET
 
 .. c:function::  HDMI_TIMEOUT_SWRESET()
 
+.. _`sti_hdmi_audio_get_non_coherent_n`:
+
+sti_hdmi_audio_get_non_coherent_n
+=================================
+
+.. c:function:: int sti_hdmi_audio_get_non_coherent_n(unsigned int audio_fs)
+
+    get N parameter for non-coherent clocks. None-coherent clocks means that audio and TMDS clocks have not the same source (drifts between clocks). In this case assumption is that CTS is automatically calculated by hardware.
+
+    :param unsigned int audio_fs:
+        audio frame clock frequency in Hz
+
+.. _`sti_hdmi_audio_get_non_coherent_n.description`:
+
+Description
+-----------
+
+Values computed are based on table described in HDMI specification 1.4b
+
+Returns n value.
+
 .. This file was automatic generated / don't edit.
 

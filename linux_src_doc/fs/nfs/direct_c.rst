@@ -14,7 +14,7 @@ nfs_direct_IO
         target I/O control block
 
     :param struct iov_iter \*iter:
-        *undescribed*
+        I/O buffer
 
 .. _`nfs_direct_io.description`:
 

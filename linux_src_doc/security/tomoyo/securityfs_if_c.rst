@@ -30,7 +30,7 @@ tomoyo_write_self
 
 .. c:function:: ssize_t tomoyo_write_self(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    \ :c:func:`write`\  for /sys/kernel/security/tomoyo/self_domain interface.
+    write() for /sys/kernel/security/tomoyo/self_domain interface.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -61,7 +61,7 @@ tomoyo_read_self
 
 .. c:function:: ssize_t tomoyo_read_self(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 
-    \ :c:func:`read`\  for /sys/kernel/security/tomoyo/self_domain interface.
+    read() for /sys/kernel/security/tomoyo/self_domain interface.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -89,7 +89,7 @@ tomoyo_open
 
 .. c:function:: int tomoyo_open(struct inode *inode, struct file *file)
 
-    \ :c:func:`open`\  for /sys/kernel/security/tomoyo/ interface.
+    open() for /sys/kernel/security/tomoyo/ interface.
 
     :param struct inode \*inode:
         Pointer to "struct inode".
@@ -111,7 +111,7 @@ tomoyo_release
 
 .. c:function:: int tomoyo_release(struct inode *inode, struct file *file)
 
-    \ :c:func:`close`\  for /sys/kernel/security/tomoyo/ interface.
+    close() for /sys/kernel/security/tomoyo/ interface.
 
     :param struct inode \*inode:
         *undescribed*
@@ -126,7 +126,7 @@ tomoyo_poll
 
 .. c:function:: unsigned int tomoyo_poll(struct file *file, poll_table *wait)
 
-    \ :c:func:`poll`\  for /sys/kernel/security/tomoyo/ interface.
+    poll() for /sys/kernel/security/tomoyo/ interface.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -149,7 +149,7 @@ tomoyo_read
 
 .. c:function:: ssize_t tomoyo_read(struct file *file, char __user *buf, size_t count, loff_t *ppos)
 
-    \ :c:func:`read`\  for /sys/kernel/security/tomoyo/ interface.
+    read() for /sys/kernel/security/tomoyo/ interface.
 
     :param struct file \*file:
         Pointer to "struct file".
@@ -177,7 +177,7 @@ tomoyo_write
 
 .. c:function:: ssize_t tomoyo_write(struct file *file, const char __user *buf, size_t count, loff_t *ppos)
 
-    \ :c:func:`write`\  for /sys/kernel/security/tomoyo/ interface.
+    write() for /sys/kernel/security/tomoyo/ interface.
 
     :param struct file \*file:
         Pointer to "struct file".

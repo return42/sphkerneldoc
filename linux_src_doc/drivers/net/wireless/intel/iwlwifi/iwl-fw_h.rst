@@ -197,6 +197,38 @@ max_number_of_white_listed_ssid
 max_number_of_black_listed_ssid
     max number of black listed SSIDs.
 
+.. _`iwl_fw_type`:
+
+enum iwl_fw_type
+================
+
+.. c:type:: enum iwl_fw_type
+
+    iwlwifi firmware type
+
+.. _`iwl_fw_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_fw_type {
+        IWL_FW_DVM,
+        IWL_FW_MVM
+    };
+
+.. _`iwl_fw_type.constants`:
+
+Constants
+---------
+
+IWL_FW_DVM
+    DVM firmware
+
+IWL_FW_MVM
+    MVM firmware
+
 .. _`iwl_fw`:
 
 struct iwl_fw
@@ -229,8 +261,8 @@ Definition
         u32 phy_config;
         u8 valid_tx_ant;
         u8 valid_rx_ant;
-        bool mvm_fw;
-        struct ieee80211_cipher_scheme cs[IWL_UCODE_MAX_CS];
+        enum iwl_fw_type type;
+        struct iwl_fw_cipher_scheme cs[IWL_UCODE_MAX_CS];
         u8 human_readable[FW_VER_HUMAN_READABLE_SZ];
         u32 sdio_adma_addr;
         struct iwl_fw_dbg_dest_tlv *dbg_dest_tlv;
@@ -291,8 +323,8 @@ valid_tx_ant
 valid_rx_ant
     *undescribed*
 
-mvm_fw
-    indicates this is MVM firmware
+type
+    firmware type (&enum iwl_fw_type)
 
 human_readable
     human readable version

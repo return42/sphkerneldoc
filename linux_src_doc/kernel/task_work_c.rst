@@ -8,7 +8,7 @@ task_work_add
 
 .. c:function:: int task_work_add(struct task_struct *task, struct callback_head *work, bool notify)
 
-    ask the \ ``task``\  to execute \ ``work``\ ->\ :c:func:`func`\ 
+    ask the \ ``task``\  to execute \ ``work``\ ->func()
 
     :param struct task_struct \*task:
         the task which should run the callback
@@ -26,7 +26,7 @@ Description
 
 Queue \ ``work``\  for \ :c:func:`task_work_run`\  below and notify the \ ``task``\  if \ ``notify``\ .
 Fails if the \ ``task``\  is exiting/exited and thus it can't process this \ ``work``\ .
-Otherwise \ ``work``\ ->\ :c:func:`func`\  will be called when the \ ``task``\  returns from kernel
+Otherwise \ ``work``\ ->func() will be called when the \ ``task``\  returns from kernel
 mode or exits.
 
 This is like the signal handler which runs in kernel mode, but it doesn't

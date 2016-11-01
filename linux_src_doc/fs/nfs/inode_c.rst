@@ -136,24 +136,6 @@ Description
 
 Updates inode attribute information by retrieving the data from the server.
 
-.. _`__nfs_revalidate_mapping`:
-
-__nfs_revalidate_mapping
-========================
-
-.. c:function:: int __nfs_revalidate_mapping(struct inode *inode, struct address_space *mapping, bool may_lock)
-
-    Revalidate the pagecache \ ``inode``\  - pointer to host inode \ ``mapping``\  - pointer to mapping \ ``may_lock``\  - take inode->i_mutex?
-
-    :param struct inode \*inode:
-        *undescribed*
-
-    :param struct address_space \*mapping:
-        *undescribed*
-
-    :param bool may_lock:
-        *undescribed*
-
 .. _`nfs_revalidate_mapping`:
 
 nfs_revalidate_mapping
@@ -168,29 +150,6 @@ nfs_revalidate_mapping
 
     :param struct address_space \*mapping:
         *undescribed*
-
-.. _`nfs_revalidate_mapping_protected`:
-
-nfs_revalidate_mapping_protected
-================================
-
-.. c:function:: int nfs_revalidate_mapping_protected(struct inode *inode, struct address_space *mapping)
-
-    Revalidate the pagecache \ ``inode``\  - pointer to host inode \ ``mapping``\  - pointer to mapping
-
-    :param struct inode \*inode:
-        *undescribed*
-
-    :param struct address_space \*mapping:
-        *undescribed*
-
-.. _`nfs_revalidate_mapping_protected.description`:
-
-Description
------------
-
-Differs from \ :c:func:`nfs_revalidate_mapping`\  in that it grabs the inode->i_mutex
-while invalidating the mapping.
 
 .. _`nfs_check_inode_attributes`:
 
@@ -349,7 +308,7 @@ After an operation that has changed the inode metadata, mark the
 attribute cache as being invalid, then try to update it. Fake up
 weak cache consistency data, if none exist.
 
-This function is mainly designed to be used by the ->\ :c:func:`write_done`\  functions.
+This function is mainly designed to be used by the ->write_done() functions.
 
 .. _`nfs_post_op_update_inode_force_wcc`:
 
@@ -375,7 +334,7 @@ After an operation that has changed the inode metadata, mark the
 attribute cache as being invalid, then try to update it. Fake up
 weak cache consistency data, if none exist.
 
-This function is mainly designed to be used by the ->\ :c:func:`write_done`\  functions.
+This function is mainly designed to be used by the ->write_done() functions.
 
 .. This file was automatic generated / don't edit.
 

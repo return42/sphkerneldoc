@@ -137,15 +137,6 @@ LNET_MD_OP_PUT
 
     :options.
 
-.. _`lnet_kiov_t`:
-
-typedef lnet_kiov_t
-===================
-
-.. c:type:: typedef lnet_kiov_t
-
-    based fragment of a MD.
-
 .. _`lnet_event_kind_t`:
 
 typedef lnet_event_kind_t

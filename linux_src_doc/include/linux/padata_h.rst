@@ -277,7 +277,7 @@ Definition
 .. code-block:: c
 
     struct padata_instance {
-        struct notifier_block cpu_notifier;
+        struct hlist_node node;
         struct workqueue_struct *wq;
         struct parallel_data *pd;
         struct padata_cpumask cpumask;
@@ -295,8 +295,8 @@ Definition
 Members
 -------
 
-cpu_notifier
-    cpu hotplug notifier.
+node
+    *undescribed*
 
 wq
     The workqueue in use.

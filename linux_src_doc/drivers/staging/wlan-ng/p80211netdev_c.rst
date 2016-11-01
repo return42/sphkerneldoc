@@ -6,11 +6,11 @@
 p80211_convert_to_ether
 =======================
 
-.. c:function:: int p80211_convert_to_ether(wlandevice_t *wlandev, struct sk_buff *skb)
+.. c:function:: int p80211_convert_to_ether(struct wlandevice *wlandev, struct sk_buff *skb)
 
     conversion from 802.11 frame to ethernet frame
 
-    :param wlandevice_t \*wlandev:
+    :param struct wlandevice \*wlandev:
         pointer to WLAN device
 
     :param struct sk_buff \*skb:

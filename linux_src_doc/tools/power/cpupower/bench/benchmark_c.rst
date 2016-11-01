@@ -21,7 +21,7 @@ calculate_timespace
 Description
 -----------
 
-\ ``param``\  load aimed load time in µs
+@param load aimed load time in µs
 
 \ ``retval``\  rounds of calculation
 
@@ -42,7 +42,7 @@ start_benchmark
 Description
 -----------
 
-\ ``param``\  config config values for the benchmark
+@param config config values for the benchmark
 
 .. This file was automatic generated / don't edit.
 

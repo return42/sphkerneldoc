@@ -27,25 +27,6 @@ Return value
 0 -Sucess
 Non-zero - Failure
 
-.. _`ibmvtpm_get_data`:
-
-ibmvtpm_get_data
-================
-
-.. c:function:: struct ibmvtpm_dev *ibmvtpm_get_data(const struct device *dev)
-
-    Retrieve ibm vtpm data
-
-    :param const struct device \*dev:
-        device struct
-
-.. _`ibmvtpm_get_data.return-value`:
-
-Return value
-------------
-
-vtpm device struct
-
 .. _`tpm_ibmvtpm_recv`:
 
 tpm_ibmvtpm_recv

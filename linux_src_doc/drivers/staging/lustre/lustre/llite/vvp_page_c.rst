@@ -32,7 +32,7 @@ vvp_page_make_ready
 
 .. c:function:: int vvp_page_make_ready(const struct lu_env *env, const struct cl_page_slice *slice)
 
-    :\ :c:func:`cpo_make_ready`\  method.
+    :cpo_make_ready() method.
 
     :param const struct lu_env \*env:
         *undescribed*

@@ -1157,6 +1157,30 @@ e1000e_down
     :param bool reset:
         boolean flag to reset the hardware or not
 
+.. _`e1000e_sanitize_systim`:
+
+e1000e_sanitize_systim
+======================
+
+.. c:function:: cycle_t e1000e_sanitize_systim(struct e1000_hw *hw, cycle_t systim)
+
+    sanitize raw cycle counter reads
+
+    :param struct e1000_hw \*hw:
+        pointer to the HW structure
+
+    :param cycle_t systim:
+        cycle_t value read, sanitized and returned
+
+.. _`e1000e_sanitize_systim.description`:
+
+Description
+-----------
+
+Errata for 82574/82583 possible bad bits read from SYSTIMH/L:
+check to see that the time is incrementing at a reasonable
+rate and is a multiple of incvalue.
+
 .. _`e1000e_cyclecounter_read`:
 
 e1000e_cyclecounter_read

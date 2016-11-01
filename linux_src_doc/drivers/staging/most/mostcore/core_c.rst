@@ -409,23 +409,23 @@ Examples
 --------
 
 
-Input: "mdev0:ch0\ ``ep_81``\ :my_channel\n" or
-"mdev0:ch0\ ``ep_81``\ :my_channel"
+Input: "mdev0:ch0@ep_81:my_channel\n" or
+"mdev0:ch0@ep_81:my_channel"
 
 .. _`split_string.output`:
 
 Output
 ------
 
-\*a -> "mdev0", \*b -> "ch0\ ``ep_81``\ ", \*c -> "my_channel"
+\*a -> "mdev0", \*b -> "ch0@ep_81", \*c -> "my_channel"
 
-Input: "mdev0:ch0\ ``ep_81``\ \n"
+Input: "mdev0:ch0@ep_81\n"
 
-\*a -> "mdev0", \*b -> "ch0\ ``ep_81``\ ", \*c -> ""
+\*a -> "mdev0", \*b -> "ch0@ep_81", \*c -> ""
 
-Input: "mdev0:ch0\ ``ep_81``\ "
+Input: "mdev0:ch0@ep_81"
 
-\*a -> "mdev0", \*b -> "ch0\ ``ep_81``\ ", \*c == NULL
+\*a -> "mdev0", \*b -> "ch0@ep_81", \*c == NULL
 
 .. _`get_channel_by_name`:
 
@@ -456,7 +456,7 @@ store_add_link
 
 .. c:function:: ssize_t store_add_link(struct most_aim_obj *aim_obj, struct most_aim_attribute *attr, const char *buf, size_t len)
 
-    \ :c:func:`store`\  function for add_link attribute
+    store() function for add_link attribute
 
     :param struct most_aim_obj \*aim_obj:
         pointer to AIM object
@@ -628,7 +628,7 @@ Returns the number of allocated and enqueued MBOs.
 most_submit_mbo
 ===============
 
-.. c:function:: int most_submit_mbo(struct mbo *mbo)
+.. c:function:: void most_submit_mbo(struct mbo *mbo)
 
     submits an MBO to fifo
 

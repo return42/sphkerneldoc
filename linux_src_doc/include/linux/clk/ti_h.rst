@@ -174,7 +174,7 @@ DPLL_J_TYPE
 XXX Some DPLLs have multiple bypass inputs, so it's not technically
 correct to only have one \ ``clk_bypass``\  pointer.
 
-XXX The runtime-variable fields (\ ``last_rounded_rate``\ , \ ``last_rounded_m``\ ,
+XXX The runtime-variable fields (@last_rounded_rate, \ ``last_rounded_m``\ ,
 \ ``last_rounded_n``\ ) should be separated from the runtime-fixed fields
 and placed into a different structure, so that the runtime-fixed data
 can be placed into read-only space.

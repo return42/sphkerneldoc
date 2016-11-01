@@ -151,7 +151,7 @@ Description
 
 Double the size of the \ ``type``\  regions array. If memblock is being used to
 allocate memory for a new reserved regions array and there is a previously
-allocated memory range [\ ``new_area_start``\ ,\ ``new_area_start``\ +\ ``new_area_size``\ ]
+allocated memory range [@new_area_start,@new_area_start+@new_area_size]
 waiting to be reserved, ensure the memory used by the new array does
 not overlap.
 
@@ -213,8 +213,8 @@ memblock_insert_region
 Description
 -----------
 
-Insert new memblock region [\ ``base``\ ,\ ``base``\ +\ ``size``\ ) into \ ``type``\  at \ ``idx``\ .
-\ ``type``\  must already have extra room to accomodate the new region.
+Insert new memblock region [@base,@base+@size) into \ ``type``\  at \ ``idx``\ .
+\ ``type``\  must already have extra room to accommodate the new region.
 
 .. _`memblock_add_range`:
 
@@ -245,7 +245,7 @@ memblock_add_range
 Description
 -----------
 
-Add new memblock region [\ ``base``\ ,\ ``base``\ +\ ``size``\ ) into \ ``type``\ .  The new region
+Add new memblock region [@base,@base+@size) into \ ``type``\ .  The new region
 is allowed to overlap with existing ones - overlaps don't affect already
 existing regions.  \ ``type``\  is guaranteed to be minimal (all neighbouring
 compatible regions are merged) after the addition.
@@ -287,9 +287,9 @@ Description
 -----------
 
 Walk \ ``type``\  and ensure that regions don't cross the boundaries defined by
-[\ ``base``\ ,\ ``base``\ +\ ``size``\ ).  Crossing regions are split at the boundaries,
+[@base,@base+@size).  Crossing regions are split at the boundaries,
 which may create at most two more regions.  The index of the first
-region inside the range is returned in \*\ ``start_rgn``\  and end in \*\ ``end_rgn``\ .
+region inside the range is returned in \*@start_rgn and end in \*@end_rgn.
 
 .. _`memblock_isolate_range.return`:
 
@@ -449,9 +449,9 @@ __next_mem_range
 Description
 -----------
 
-Find the first area from \*\ ``idx``\  which matches \ ``nid``\ , fill the out
-parameters, and update \*\ ``idx``\  for the next iteration.  The lower 32bit of
-\*\ ``idx``\  contains index into type_a and the upper 32bit indexes the
+Find the first area from \*@idx which matches \ ``nid``\ , fill the out
+parameters, and update \*@idx for the next iteration.  The lower 32bit of
+\*@idx contains index into type_a and the upper 32bit indexes the
 areas before each region in type_b.  For example, if type_b regions
 look like the following,
 
@@ -471,7 +471,7 @@ __next_mem_range_rev
 
 .. c:function:: void __init_memblock __next_mem_range_rev(u64 *idx, int nid, ulong flags, struct memblock_type *type_a, struct memblock_type *type_b, phys_addr_t *out_start, phys_addr_t *out_end, int *out_nid)
 
-    generic next function for for_each\_\*\\ :c:func:`_range_rev`\ 
+    generic next function for for_each\_\*\_range_rev()
 
     :param u64 \*idx:
         pointer to u64 loop variable
@@ -505,7 +505,7 @@ Description
 Finds the next range from type_a which is not marked as unsuitable
 in type_b.
 
-Reverse of \\ :c:func:`__next_mem_range`\ .
+Reverse of \__next_mem_range().
 
 .. _`memblock_set_node`:
 
@@ -533,7 +533,7 @@ memblock_set_node
 Description
 -----------
 
-Set the nid of memblock \ ``type``\  regions in [\ ``base``\ ,\ ``base``\ +\ ``size``\ ) to \ ``nid``\ .
+Set the nid of memblock \ ``type``\  regions in [@base,@base+@size) to \ ``nid``\ .
 Regions which cross the area boundaries are split as necessary.
 
 .. _`memblock_set_node.return`:
@@ -627,7 +627,7 @@ memblock_virt_alloc_try_nid_nopanic
 Description
 -----------
 
-Public version of \\ :c:func:`_memblock_virt_alloc_try_nid_nopanic`\  which provides
+Public version of \_memblock_virt_alloc_try_nid_nopanic() which provides
 additional debug information (including caller info), if enabled.
 
 .. _`memblock_virt_alloc_try_nid_nopanic.return`:
@@ -669,7 +669,7 @@ memblock_virt_alloc_try_nid
 Description
 -----------
 
-Public panicking version of \\ :c:func:`_memblock_virt_alloc_try_nid_nopanic`\ 
+Public panicking version of \_memblock_virt_alloc_try_nid_nopanic()
 which provides debug information (including caller info), if enabled,
 and panics if the request can not be satisfied.
 
@@ -723,7 +723,7 @@ memblock_is_region_memory
 Description
 -----------
 
-Check if the region [\ ``base``\ , \ ``base``\ +\ ``size``\ ) is a subset of a memory block.
+Check if the region [@base, \ ``base``\ +@size) is a subset of a memory block.
 
 .. _`memblock_is_region_memory.return`:
 
@@ -752,7 +752,7 @@ memblock_is_region_reserved
 Description
 -----------
 
-Check if the region [\ ``base``\ , \ ``base``\ +\ ``size``\ ) intersects a reserved memory block.
+Check if the region [@base, \ ``base``\ +@size) intersects a reserved memory block.
 
 .. _`memblock_is_region_reserved.return`:
 

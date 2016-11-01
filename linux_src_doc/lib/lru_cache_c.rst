@@ -154,7 +154,7 @@ lc_del
 Description
 -----------
 
-\ ``e``\  must be unused (refcnt == 0). Moves \ ``e``\  from "lru" to "free" list,
+@e must be unused (refcnt == 0). Moves \ ``e``\  from "lru" to "free" list,
 sets \ ``e``\ ->enr to \ ``LC_FREE``\ .
 
 .. _`lc_get`:
@@ -193,8 +193,8 @@ Return values
 NULL
 The cache was marked \ ``LC_STARVING``\ ,
 or the requested label was not in the active set
-and a changing transaction is still pending (\ ``lc``\  was marked \ ``LC_DIRTY``\ ).
-Or no unused or free element could be recycled (\ ``lc``\  will be marked as
+and a changing transaction is still pending (@lc was marked \ ``LC_DIRTY``\ ).
+Or no unused or free element could be recycled (@lc will be marked as
 \ ``LC_STARVING``\ , blocking further \ :c:func:`lc_get`\  operations).
 
 pointer to the element with the REQUESTED element number.

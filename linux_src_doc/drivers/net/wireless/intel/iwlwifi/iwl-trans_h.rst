@@ -125,8 +125,7 @@ Definition
         CMD_SEND_IN_IDLE,
         CMD_MAKE_TRANS_IDLE,
         CMD_WAKE_UP_TRANS,
-        CMD_WANT_ASYNC_CALLBACK,
-        CMD_TB_BITMAP_POS
+        CMD_WANT_ASYNC_CALLBACK
     };
 
 .. _`cmd_mode.constants`:
@@ -162,10 +161,6 @@ CMD_WAKE_UP_TRANS
 CMD_WANT_ASYNC_CALLBACK
     the op_mode's async callback function must be
     called after this command completes. Valid only with CMD_ASYNC.
-
-CMD_TB_BITMAP_POS
-    Position of the first bit for the TB bitmap. We need to
-    check that we leave enough room for the TBs bitmap which needs 20 bits.
 
 .. _`iwl_device_cmd`:
 
@@ -380,11 +375,11 @@ Definition
         enum iwl_amsdu_size rx_buf_size;
         bool bc_table_dword;
         bool scd_set_active;
-        bool wide_cmd_header;
         bool sw_csum_tx;
         const struct iwl_hcmd_arr *command_groups;
         int command_groups_size;
         u32 sdio_adma_addr;
+        u8 cb_data_offs;
     }
 
 .. _`iwl_trans_config.members`:
@@ -425,9 +420,6 @@ bc_table_dword
 scd_set_active
     should the transport configure the SCD for HCMD queue
 
-wide_cmd_header
-    firmware supports wide host command header
-
 sw_csum_tx
     transport should compute the TCP checksum
 
@@ -441,6 +433,10 @@ command_groups_size
 sdio_adma_addr
     the default address to set for the ADMA in SDIO mode until
     we get the ALIVE from the uCode
+
+cb_data_offs
+    offset inside skb->cb to store transport data at, must have
+    space for at least two pointers
 
 .. _`iwl_trans_ops`:
 
@@ -472,6 +468,8 @@ Definition
         void (*reclaim)(struct iwl_trans *trans, int queue, int ssn,struct sk_buff_head *skbs);
         void (*txq_enable)(struct iwl_trans *trans, int queue, u16 ssn,const struct iwl_trans_txq_scd_cfg *cfg,unsigned int queue_wdg_timeout);
         void (*txq_disable)(struct iwl_trans *trans, int queue,bool configure_scd);
+        void (*txq_set_shared_mode)(struct iwl_trans *trans, u32 txq_id,bool shared);
+        dma_addr_t (*get_txq_byte_table)(struct iwl_trans *trans, int txq_id);
         int (*wait_tx_queue_empty)(struct iwl_trans *trans, u32 txq_bm);
         void (*freeze_txq_timer)(struct iwl_trans *trans, unsigned long txqs,bool freeze);
         void (*block_txq_ptrs)(struct iwl_trans *trans, bool block);
@@ -526,8 +524,8 @@ stop_device
     the HW. If low_power is true, the NIC will be put in low power state.
     From that point on, the HW will be stopped but will still issue an
     interrupt if the HW RF kill switch is triggered.
-    This callback must do the right thing and not crash even if %\ :c:func:`start_hw`\ 
-    was called but not &\ :c:func:`start_fw`\ . May sleep.
+    This callback must do the right thing and not crash even if \ ``start_hw``\ ()
+    was called but not \ :c:type:`struct start_fw <start_fw>`\ (). May sleep.
 
 d3_suspend
     put the device into the correct mode for WoWLAN during
@@ -567,6 +565,12 @@ txq_enable
 txq_disable
     de-configure a Tx queue to send AMPDUs
     Must be atomic
+
+txq_set_shared_mode
+    change Tx queue shared/unshared marking
+
+get_txq_byte_table
+    *undescribed*
 
 wait_tx_queue_empty
     wait until tx queues are empty. May sleep.
@@ -755,6 +759,7 @@ Definition
         const struct iwl_trans_ops *ops;
         struct iwl_op_mode *op_mode;
         const struct iwl_cfg *cfg;
+        struct iwl_drv *drv;
         enum iwl_trans_state state;
         unsigned long status;
         struct device *dev;
@@ -769,6 +774,7 @@ Definition
         bool ltr_enabled;
         const struct iwl_hcmd_arr *command_groups;
         int command_groups_size;
+        bool wide_cmd_header;
         u8 num_rx_queues;
         struct kmem_cache *dev_cmd_pool;
         size_t dev_cmd_headroom;
@@ -803,6 +809,9 @@ op_mode
     *undescribed*
 
 cfg
+    *undescribed*
+
+drv
     *undescribed*
 
 state
@@ -852,6 +861,9 @@ command_groups
 
 command_groups_size
     *undescribed*
+
+wide_cmd_header
+    true when ucode supports wide command header format
 
 num_rx_queues
     number of RX queues allocated by the transport;
@@ -917,9 +929,10 @@ suspending
 Description
 -----------
 
-\ ``ops``\  - pointer to iwl_trans_ops
+@ops - pointer to iwl_trans_ops
 \ ``op_mode``\  - pointer to the op_mode
 \ ``cfg``\  - pointer to the configuration
+\ ``drv``\  - pointer to iwl_drv
 
 .. This file was automatic generated / don't edit.
 

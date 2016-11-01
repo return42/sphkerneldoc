@@ -23,8 +23,8 @@ Definition
         u8 CountryIeBuf[MAX_IE_LEN];
         u8 CountryIeSrcAddr[6];
         u8 CountryIeWatchdog;
-        u8 channel_map[MAX_CHANNEL_NUMBER+1];
-        u8 MaxTxPwrDbmList[MAX_CHANNEL_NUMBER+1];
+        u8 channel_map[MAX_CHANNEL_NUMBER + 1];
+        u8 MaxTxPwrDbmList[MAX_CHANNEL_NUMBER + 1];
         enum dot11d_state State;
     }
 

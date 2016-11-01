@@ -22,7 +22,7 @@ MIPS R6 Compact branches and forbidden slots
 --------------------------------------------
 
 Compact branches do not throw exceptions because they do
-not have delay slots. The forbidden slot instruction (\ ``$PC``\ +4)
+not have delay slots. The forbidden slot instruction ($PC+4)
 is only executed if the branch was not taken. Otherwise the
 forbidden slot is skipped entirely. This means that the
 only possible reason to be here because of a MIPS R6 compact

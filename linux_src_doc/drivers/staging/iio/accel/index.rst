@@ -7,9 +7,6 @@ accel
 .. toctree::
     :maxdepth: 1
 
-    lis3l02dq_core_c
-    lis3l02dq_h
-    lis3l02dq_ring_c
     sca3000_core_c
     sca3000_h
     sca3000_ring_c

@@ -909,12 +909,12 @@ Description
 Tear down the driver info (all asics).
 Called at driver shutdown.
 
-.. _`amdgpu_suspend_kms`:
+.. _`amdgpu_device_suspend`:
 
-amdgpu_suspend_kms
-==================
+amdgpu_device_suspend
+=====================
 
-.. c:function:: int amdgpu_suspend_kms(struct drm_device *dev, bool suspend, bool fbcon)
+.. c:function:: int amdgpu_device_suspend(struct drm_device *dev, bool suspend, bool fbcon)
 
     initiate device suspend
 
@@ -927,7 +927,7 @@ amdgpu_suspend_kms
     :param bool fbcon:
         *undescribed*
 
-.. _`amdgpu_suspend_kms.description`:
+.. _`amdgpu_device_suspend.description`:
 
 Description
 -----------
@@ -936,12 +936,12 @@ Puts the hw in the suspend state (all asics).
 Returns 0 for success or an error on failure.
 Called at driver suspend.
 
-.. _`amdgpu_resume_kms`:
+.. _`amdgpu_device_resume`:
 
-amdgpu_resume_kms
-=================
+amdgpu_device_resume
+====================
 
-.. c:function:: int amdgpu_resume_kms(struct drm_device *dev, bool resume, bool fbcon)
+.. c:function:: int amdgpu_device_resume(struct drm_device *dev, bool resume, bool fbcon)
 
     initiate device resume
 
@@ -954,7 +954,7 @@ amdgpu_resume_kms
     :param bool fbcon:
         *undescribed*
 
-.. _`amdgpu_resume_kms.description`:
+.. _`amdgpu_device_resume.description`:
 
 Description
 -----------

@@ -25,6 +25,8 @@ Definition
         int irq;
         u8 *tx_buf;
         size_t tx_buf_size;
+        struct regulator_bulk_data supplies[2];
+        u32 startup_delay;
     }
 
 .. _`rmi_i2c_xport.members`:
@@ -52,6 +54,9 @@ tx_buf
 
 tx_buf_size
     Size of the buffer
+
+startup_delay
+    *undescribed*
 
 .. This file was automatic generated / don't edit.
 

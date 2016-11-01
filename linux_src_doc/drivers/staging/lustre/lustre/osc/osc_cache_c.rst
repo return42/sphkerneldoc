@@ -79,7 +79,7 @@ osc_extent_release
 osc_extent_find
 ===============
 
-.. c:function:: struct osc_extent *osc_extent_find(const struct lu_env *env, struct osc_object *obj, pgoff_t index, int *grants)
+.. c:function:: struct osc_extent *osc_extent_find(const struct lu_env *env, struct osc_object *obj, pgoff_t index, unsigned int *grants)
 
     extent tree.
 
@@ -92,7 +92,7 @@ osc_extent_find
     :param pgoff_t index:
         *undescribed*
 
-    :param int \*grants:
+    :param unsigned int \*grants:
         *undescribed*
 
 .. _`osc_extent_finish`:
@@ -119,7 +119,7 @@ osc_extent_finish
 osc_extent_wait
 ===============
 
-.. c:function:: int osc_extent_wait(const struct lu_env *env, struct osc_extent *ext, int state)
+.. c:function:: int osc_extent_wait(const struct lu_env *env, struct osc_extent *ext, enum osc_extent_state state)
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -127,7 +127,7 @@ osc_extent_wait
     :param struct osc_extent \*ext:
         *undescribed*
 
-    :param int state:
+    :param enum osc_extent_state state:
         *undescribed*
 
 .. _`osc_extent_truncate`:
@@ -137,7 +137,7 @@ osc_extent_truncate
 
 .. c:function:: int osc_extent_truncate(struct osc_extent *ext, pgoff_t trunc_index, bool partial)
 
-    \ ``size``\ , then partial truncate happens.
+    @size, then partial truncate happens.
 
     :param struct osc_extent \*ext:
         *undescribed*
@@ -168,7 +168,7 @@ osc_extent_make_ready
 osc_extent_expand
 =================
 
-.. c:function:: int osc_extent_expand(struct osc_extent *ext, pgoff_t index, int *grants)
+.. c:function:: int osc_extent_expand(struct osc_extent *ext, pgoff_t index, unsigned int *grants)
 
     called to expand the extent for the same IO. To expand the extent, the page index must be in the same or next chunk of ext->oe_end.
 
@@ -178,7 +178,7 @@ osc_extent_expand
     :param pgoff_t index:
         *undescribed*
 
-    :param int \*grants:
+    :param unsigned int \*grants:
         *undescribed*
 
 .. _`osc_reserve_grant`:
@@ -224,7 +224,7 @@ osc_free_grant
 Description
 -----------
 
-\ ``lost_grant``\  is used to remember how many grants we have allocated but not
+@lost_grant is used to remember how many grants we have allocated but not
 used, we should return these grants to OST. There're two cases where grants
 
 .. _`osc_free_grant.can-be-lost`:
@@ -303,24 +303,12 @@ Description
 
 The process will be put into sleep if it's already run out of grant.
 
-.. _`osc_dec_unstable_pages`:
-
-osc_dec_unstable_pages
-======================
-
-.. c:function:: void osc_dec_unstable_pages(struct ptlrpc_request *req)
-
-    increment operations performed in osc_inc_unstable_pages. It is registered as the RPC request callback, and is executed when the bulk RPC is committed on the server. Thus at this point, the pages involved in the bulk transfer are no longer considered unstable.
-
-    :param struct ptlrpc_request \*req:
-        *undescribed*
-
 .. _`try_to_add_extent_for_io`:
 
 try_to_add_extent_for_io
 ========================
 
-.. c:function:: int try_to_add_extent_for_io(struct client_obd *cli, struct osc_extent *ext, struct list_head *rpclist, int *pc, unsigned int *max_pages)
+.. c:function:: int try_to_add_extent_for_io(struct client_obd *cli, struct osc_extent *ext, struct list_head *rpclist, unsigned int *pc, unsigned int *max_pages)
 
     - # of pages must not be over max_pages_per_rpc - extent must be compatible with previous ones
 
@@ -333,7 +321,7 @@ try_to_add_extent_for_io
     :param struct list_head \*rpclist:
         *undescribed*
 
-    :param int \*pc:
+    :param unsigned int \*pc:
         *undescribed*
 
     :param unsigned int \*max_pages:
@@ -344,9 +332,9 @@ try_to_add_extent_for_io
 get_write_extents
 =================
 
-.. c:function:: int get_write_extents(struct osc_object *obj, struct list_head *rpclist)
+.. c:function:: unsigned int get_write_extents(struct osc_object *obj, struct list_head *rpclist)
 
-    \ :c:func:`get_write_extent`\  takes all appropriate extents in atomic.
+    get_write_extent() takes all appropriate extents in atomic.
 
     :param struct osc_object \*obj:
         *undescribed*
@@ -572,7 +560,7 @@ Description
 long and set \*resched = 1, in that case caller should implement a retry
 logic.
 
-Gang tree lookup (\ :c:func:`radix_tree_gang_lookup`\ ) optimization is absolutely
+Gang tree lookup (radix_tree_gang_lookup()) optimization is absolutely
 crucial in the face of [offset, EOF] locks.
 
 Return at least one page in \ ``queue``\  unless there is no covered page.

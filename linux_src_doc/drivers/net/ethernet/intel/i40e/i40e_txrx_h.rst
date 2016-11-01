@@ -125,5 +125,17 @@ i40e_rx_is_fcoe
     :param u16 ptype:
         the packet type field from Rx descriptor write-back
 
+.. _`txring_txq`:
+
+txring_txq
+==========
+
+.. c:function:: struct netdev_queue *txring_txq(const struct i40e_ring *ring)
+
+    Find the netdev Tx ring based on the i40e Tx ring
+
+    :param const struct i40e_ring \*ring:
+        Tx ring to find the netdev equivalent of
+
 .. This file was automatic generated / don't edit.
 

@@ -70,9 +70,12 @@ validate for command submission.
 amdgpu_vm_get_pt_bos
 ====================
 
-.. c:function:: void amdgpu_vm_get_pt_bos(struct amdgpu_vm *vm, struct list_head *duplicates)
+.. c:function:: void amdgpu_vm_get_pt_bos(struct amdgpu_device *adev, struct amdgpu_vm *vm, struct list_head *duplicates)
 
     add the vm BOs to a duplicates list
+
+    :param struct amdgpu_device \*adev:
+        amdgpu device pointer
 
     :param struct amdgpu_vm \*vm:
         vm providing the BOs
@@ -115,7 +118,7 @@ Move the PT BOs to the tail of the LRU.
 amdgpu_vm_grab_id
 =================
 
-.. c:function:: int amdgpu_vm_grab_id(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct fence *fence, unsigned *vm_id, uint64_t *vm_pd_addr)
+.. c:function:: int amdgpu_vm_grab_id(struct amdgpu_vm *vm, struct amdgpu_ring *ring, struct amdgpu_sync *sync, struct fence *fence, struct amdgpu_job *job)
 
     allocate the next free VMID
 
@@ -131,10 +134,7 @@ amdgpu_vm_grab_id
     :param struct fence \*fence:
         fence protecting ID from reuse
 
-    :param unsigned \*vm_id:
-        *undescribed*
-
-    :param uint64_t \*vm_pd_addr:
+    :param struct amdgpu_job \*job:
         *undescribed*
 
 .. _`amdgpu_vm_grab_id.description`:
@@ -149,35 +149,14 @@ Allocate an id for the vm, adding fences to the sync obj as necessary.
 amdgpu_vm_flush
 ===============
 
-.. c:function:: int amdgpu_vm_flush(struct amdgpu_ring *ring, unsigned vm_id, uint64_t pd_addr, uint32_t gds_base, uint32_t gds_size, uint32_t gws_base, uint32_t gws_size, uint32_t oa_base, uint32_t oa_size)
+.. c:function:: int amdgpu_vm_flush(struct amdgpu_ring *ring, struct amdgpu_job *job)
 
     hardware flush the vm
 
     :param struct amdgpu_ring \*ring:
         ring to use for flush
 
-    :param unsigned vm_id:
-        vmid number to use
-
-    :param uint64_t pd_addr:
-        address of the page directory
-
-    :param uint32_t gds_base:
-        *undescribed*
-
-    :param uint32_t gds_size:
-        *undescribed*
-
-    :param uint32_t gws_base:
-        *undescribed*
-
-    :param uint32_t gws_size:
-        *undescribed*
-
-    :param uint32_t oa_base:
-        *undescribed*
-
-    :param uint32_t oa_size:
+    :param struct amdgpu_job \*job:
         *undescribed*
 
 .. _`amdgpu_vm_flush.description`:
@@ -235,20 +214,17 @@ Returns the found bo_va or NULL if none is found
 
 Object has to be reserved!
 
-.. _`amdgpu_vm_update_pages`:
+.. _`amdgpu_vm_do_set_ptes`:
 
-amdgpu_vm_update_pages
-======================
+amdgpu_vm_do_set_ptes
+=====================
 
-.. c:function:: void amdgpu_vm_update_pages(struct amdgpu_device *adev, struct amdgpu_vm_update_params *vm_update_params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+.. c:function:: void amdgpu_vm_do_set_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
 
     helper to call the right asic function
 
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm_update_params \*vm_update_params:
-        see amdgpu_vm_update_params definition
+    :param struct amdgpu_pte_update_params \*params:
+        see amdgpu_pte_update_params definition
 
     :param uint64_t pe:
         addr of the page entry
@@ -265,13 +241,47 @@ amdgpu_vm_update_pages
     :param uint32_t flags:
         hw access flags
 
-.. _`amdgpu_vm_update_pages.description`:
+.. _`amdgpu_vm_do_set_ptes.description`:
 
 Description
 -----------
 
 Traces the parameters and calls the right asic functions
 to setup the page table using the DMA.
+
+.. _`amdgpu_vm_do_copy_ptes`:
+
+amdgpu_vm_do_copy_ptes
+======================
+
+.. c:function:: void amdgpu_vm_do_copy_ptes(struct amdgpu_pte_update_params *params, uint64_t pe, uint64_t addr, unsigned count, uint32_t incr, uint32_t flags)
+
+    copy the PTEs from the GART
+
+    :param struct amdgpu_pte_update_params \*params:
+        see amdgpu_pte_update_params definition
+
+    :param uint64_t pe:
+        addr of the page entry
+
+    :param uint64_t addr:
+        dst addr to write into pe
+
+    :param unsigned count:
+        number of page entries to update
+
+    :param uint32_t incr:
+        increase next addr by incr bytes
+
+    :param uint32_t flags:
+        hw access flags
+
+.. _`amdgpu_vm_do_copy_ptes.description`:
+
+Description
+-----------
+
+Traces the parameters and calls the DMA function to copy the PTEs.
 
 .. _`amdgpu_vm_clear_bo`:
 
@@ -321,71 +331,17 @@ Description
 Look up the physical address of the page that the pte resolves
 to and return the pointer for the page table entry.
 
-.. _`amdgpu_vm_update_page_directory`:
-
-amdgpu_vm_update_page_directory
-===============================
-
-.. c:function:: int amdgpu_vm_update_page_directory(struct amdgpu_device *adev, struct amdgpu_vm *vm)
-
-    make sure that page directory is valid
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm \*vm:
-        requested vm
-
-.. _`amdgpu_vm_update_page_directory.description`:
-
-Description
------------
-
-Allocates new page tables if necessary
-and updates the page directory.
-Returns 0 for success, error for failure.
-
-.. _`amdgpu_vm_frag_ptes`:
-
-amdgpu_vm_frag_ptes
-===================
-
-.. c:function:: void amdgpu_vm_frag_ptes(struct amdgpu_device *adev, struct amdgpu_vm_update_params *vm_update_params, uint64_t pe_start, uint64_t pe_end, uint64_t addr, uint32_t flags)
-
-    add fragment information to PTEs
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm_update_params \*vm_update_params:
-        see amdgpu_vm_update_params definition
-
-    :param uint64_t pe_start:
-        first PTE to handle
-
-    :param uint64_t pe_end:
-        last PTE to handle
-
-    :param uint64_t addr:
-        addr those PTEs should point to
-
-    :param uint32_t flags:
-        hw mapping flags
-
 .. _`amdgpu_vm_update_ptes`:
 
 amdgpu_vm_update_ptes
 =====================
 
-.. c:function:: void amdgpu_vm_update_ptes(struct amdgpu_device *adev, struct amdgpu_vm_update_params *vm_update_params, struct amdgpu_vm *vm, uint64_t start, uint64_t end, uint64_t dst, uint32_t flags)
+.. c:function:: void amdgpu_vm_update_ptes(struct amdgpu_pte_update_params *params, struct amdgpu_vm *vm, uint64_t start, uint64_t end, uint64_t dst, uint32_t flags)
 
     make sure that page tables are valid
 
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-    :param struct amdgpu_vm_update_params \*vm_update_params:
-        see amdgpu_vm_update_params definition
+    :param struct amdgpu_pte_update_params \*params:
+        see amdgpu_pte_update_params definition
 
     :param struct amdgpu_vm \*vm:
         requested vm
@@ -397,7 +353,7 @@ amdgpu_vm_update_ptes
         end of GPU address range
 
     :param uint64_t dst:
-        destination address to map to
+        destination address to map to, the next dst inside the function
 
     :param uint32_t flags:
         mapping flags
@@ -414,12 +370,15 @@ Update the page tables in the range \ ``start``\  - \ ``end``\ .
 amdgpu_vm_bo_update_mapping
 ===========================
 
-.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint32_t flags, uint64_t addr, struct fence **fence)
+.. c:function:: int amdgpu_vm_bo_update_mapping(struct amdgpu_device *adev, struct fence *exclusive, uint64_t src, dma_addr_t *pages_addr, struct amdgpu_vm *vm, uint64_t start, uint64_t last, uint32_t flags, uint64_t addr, struct fence **fence)
 
     update a mapping in the vm page table
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
+
+    :param struct fence \*exclusive:
+        fence we need to sync to
 
     :param uint64_t src:
         address where to copy page table entries from
@@ -458,12 +417,15 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_split_mapping
 ==========================
 
-.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, uint32_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint32_t flags, uint64_t addr, struct fence **fence)
+.. c:function:: int amdgpu_vm_bo_split_mapping(struct amdgpu_device *adev, struct fence *exclusive, uint32_t gtt_flags, dma_addr_t *pages_addr, struct amdgpu_vm *vm, struct amdgpu_bo_va_mapping *mapping, uint32_t flags, uint64_t addr, struct fence **fence)
 
     split a mapping into smaller chunks
 
     :param struct amdgpu_device \*adev:
         amdgpu_device pointer
+
+    :param struct fence \*exclusive:
+        fence we need to sync to
 
     :param uint32_t gtt_flags:
         flags as they are used for GTT
@@ -500,7 +462,7 @@ Returns 0 for success, -EINVAL for failure.
 amdgpu_vm_bo_update
 ===================
 
-.. c:function:: int amdgpu_vm_bo_update(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, struct ttm_mem_reg *mem)
+.. c:function:: int amdgpu_vm_bo_update(struct amdgpu_device *adev, struct amdgpu_bo_va *bo_va, bool clear)
 
     update all BO mappings in the vm page table
 
@@ -510,8 +472,8 @@ amdgpu_vm_bo_update
     :param struct amdgpu_bo_va \*bo_va:
         requested BO and VM object
 
-    :param struct ttm_mem_reg \*mem:
-        ttm mem
+    :param bool clear:
+        if true clear the entries
 
 .. _`amdgpu_vm_bo_update.description`:
 
@@ -520,8 +482,6 @@ Description
 
 Fill in the page table entries for \ ``bo_va``\ .
 Returns 0 for success, -EINVAL for failure.
-
-Object have to be reserved and mutex must be locked!
 
 .. _`amdgpu_vm_clear_freed`:
 

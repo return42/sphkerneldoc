@@ -6,12 +6,15 @@
 zfcp_dbf_hba_fsf_res
 ====================
 
-.. c:function:: void zfcp_dbf_hba_fsf_res(char *tag, struct zfcp_fsf_req *req)
+.. c:function:: void zfcp_dbf_hba_fsf_res(char *tag, int level, struct zfcp_fsf_req *req)
 
     trace event for fsf responses
 
     :param char \*tag:
         tag indicating which kind of unsolicited status has been received
+
+    :param int level:
+        *undescribed*
 
     :param struct zfcp_fsf_req \*req:
         request for which a response was received
@@ -131,6 +134,24 @@ zfcp_dbf_rec_run
     :param struct zfcp_erp_action \*erp:
         erp_action running
 
+.. _`zfcp_dbf_rec_run_wka`:
+
+zfcp_dbf_rec_run_wka
+====================
+
+.. c:function:: void zfcp_dbf_rec_run_wka(char *tag, struct zfcp_fc_wka_port *wka_port, u64 req_id)
+
+    trace wka port event with info like running recovery
+
+    :param char \*tag:
+        identifier for event
+
+    :param struct zfcp_fc_wka_port \*wka_port:
+        well known address port
+
+    :param u64 req_id:
+        request ID to correlate with potential HBA trace record
+
 .. _`zfcp_dbf_san_req`:
 
 zfcp_dbf_san_req
@@ -191,12 +212,15 @@ zfcp_dbf_san_in_els
 zfcp_dbf_scsi
 =============
 
-.. c:function:: void zfcp_dbf_scsi(char *tag, struct scsi_cmnd *sc, struct zfcp_fsf_req *fsf)
+.. c:function:: void zfcp_dbf_scsi(char *tag, int level, struct scsi_cmnd *sc, struct zfcp_fsf_req *fsf)
 
     trace event for scsi commands
 
     :param char \*tag:
         identifier for event
+
+    :param int level:
+        *undescribed*
 
     :param struct scsi_cmnd \*sc:
         pointer to struct scsi_cmnd

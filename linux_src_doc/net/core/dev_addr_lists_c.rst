@@ -56,7 +56,7 @@ __hw_addr_unsync_dev
 Description
 -----------
 
-Remove all addresses that were added to the device by \\ :c:func:`__hw_addr_sync_dev`\ .
+Remove all addresses that were added to the device by \__hw_addr_sync_dev().
 This function is intended to be called from the ndo_stop or ndo_open
 functions on devices that require explicit address add/remove
 notifications.  If the unsync function pointer is NULL then this function

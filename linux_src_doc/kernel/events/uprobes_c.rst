@@ -6,7 +6,7 @@
 __replace_page
 ==============
 
-.. c:function:: int __replace_page(struct vm_area_struct *vma, unsigned long addr, struct page *page, struct page *kpage)
+.. c:function:: int __replace_page(struct vm_area_struct *vma, unsigned long addr, struct page *old_page, struct page *new_page)
 
     replace page in vma by new page. based on replace_page in mm/ksm.c
 
@@ -16,11 +16,11 @@ __replace_page
     :param unsigned long addr:
         address the old \ ``page``\  is mapped at
 
-    :param struct page \*page:
-        the cowed page we are replacing by kpage
+    :param struct page \*old_page:
+        *undescribed*
 
-    :param struct page \*kpage:
-        the modified page we replace page by
+    :param struct page \*new_page:
+        *undescribed*
 
 .. _`__replace_page.description`:
 

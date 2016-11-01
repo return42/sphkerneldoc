@@ -53,7 +53,7 @@ wakeup_source_drop
 Description
 -----------
 
-Callers must ensure that \\ :c:func:`__pm_stay_awake`\  or \\ :c:func:`__pm_wakeup_event`\  will never
+Callers must ensure that \__pm_stay_awake() or \__pm_wakeup_event() will never
 be run in parallel with this function for the same wakeup source object.
 
 .. _`wakeup_source_destroy`:
@@ -485,7 +485,7 @@ Description
 -----------
 
 Call this function for wakeup events whose processing started with calling
-\\ :c:func:`__pm_stay_awake`\ .
+\__pm_stay_awake().
 
 It is safe to call it from interrupt context.
 
@@ -506,7 +506,7 @@ pm_relax
 Description
 -----------
 
-Execute \\ :c:func:`__pm_relax`\  for the \ ``dev``\ 's wakeup source object.
+Execute \__pm_relax() for the \ ``dev``\ 's wakeup source object.
 
 .. _`pm_wakeup_timer_fn`:
 
@@ -576,7 +576,7 @@ pm_wakeup_event
 Description
 -----------
 
-Call \\ :c:func:`__pm_wakeup_event`\  for the \ ``dev``\ 's wakeup source object.
+Call \__pm_wakeup_event() for the \ ``dev``\ 's wakeup source object.
 
 .. _`pm_wakeup_pending`:
 

@@ -37,7 +37,7 @@ Returns 0 on success, or a kernel error code on failure.
 efivar_entry_add
 ================
 
-.. c:function:: void efivar_entry_add(struct efivar_entry *entry, struct list_head *head)
+.. c:function:: int efivar_entry_add(struct efivar_entry *entry, struct list_head *head)
 
     add entry to variable list
 
@@ -47,17 +47,31 @@ efivar_entry_add
     :param struct list_head \*head:
         list head
 
+.. _`efivar_entry_add.description`:
+
+Description
+-----------
+
+Returns 0 on success, or a kernel error code on failure.
+
 .. _`efivar_entry_remove`:
 
 efivar_entry_remove
 ===================
 
-.. c:function:: void efivar_entry_remove(struct efivar_entry *entry)
+.. c:function:: int efivar_entry_remove(struct efivar_entry *entry)
 
     remove entry from variable list
 
     :param struct efivar_entry \*entry:
         entry to remove from list
+
+.. _`efivar_entry_remove.description`:
+
+Description
+-----------
+
+Returns 0 on success, or a kernel error code on failure.
 
 .. _`__efivar_entry_delete`:
 
@@ -108,8 +122,8 @@ Delete the variable from the firmware and remove \ ``entry``\  from the
 variable list. It is the caller's responsibility to free \ ``entry``\ 
 once we return.
 
-Returns 0 on success, or a converted EFI status code if
-\ :c:func:`set_variable`\  fails.
+Returns 0 on success, -EINTR if we can't grab the semaphore,
+converted EFI status code if \ :c:func:`set_variable`\  fails.
 
 .. _`efivar_entry_set`:
 
@@ -149,9 +163,9 @@ space is checked to ensure there is enough room available.
 If \ ``head``\  is not NULL a lookup is performed to determine whether
 the entry is already on the list.
 
-Returns 0 on success, -EEXIST if a lookup is performed and the entry
-already exists on the list, or a converted EFI status code if
-\ :c:func:`set_variable`\  fails.
+Returns 0 on success, -EINTR if we can't grab the semaphore,
+-EEXIST if a lookup is performed and the entry already exists on
+the list, or a converted EFI status code if \ :c:func:`set_variable`\  fails.
 
 .. _`efivar_entry_set_safe`:
 
@@ -343,7 +357,7 @@ If the EFI variable does not exist when calling \ :c:func:`set_variable`\
 efivar_entry_iter_begin
 =======================
 
-.. c:function:: void efivar_entry_iter_begin( void)
+.. c:function:: int efivar_entry_iter_begin( void)
 
     begin iterating the variable list
 
@@ -357,7 +371,7 @@ Description
 
 Lock the variable list to prevent entry insertion and removal until
 \ :c:func:`efivar_entry_iter_end`\  is called. This function is usually used in
-conjunction with \\ :c:func:`__efivar_entry_iter`\  or \ :c:func:`efivar_entry_iter`\ .
+conjunction with \__efivar_entry_iter() or \ :c:func:`efivar_entry_iter`\ .
 
 .. _`efivar_entry_iter_end`:
 
@@ -502,7 +516,7 @@ efivars_register
         efivars operations
 
     :param struct kobject \*kobject:
-        \ ``efivars``\ -specific kobject
+        @efivars-specific kobject
 
 .. _`efivars_register.description`:
 

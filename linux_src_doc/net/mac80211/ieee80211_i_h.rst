@@ -383,6 +383,95 @@ Description
 This is used for channel context in-place reservations that require channel
 context switch/swap.
 
+.. _`txq_info`:
+
+struct txq_info
+===============
+
+.. c:type:: struct txq_info
+
+    per tid queue
+
+.. _`txq_info.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct txq_info {
+        struct fq_tin tin;
+        struct fq_flow def_flow;
+        struct codel_vars def_cvars;
+        struct codel_stats cstats;
+        struct sk_buff_head frags;
+        unsigned long flags;
+        struct ieee80211_txq txq;
+    }
+
+.. _`txq_info.members`:
+
+Members
+-------
+
+tin
+    contains packets split into multiple flows
+
+def_flow
+    used as a fallback flow when a packet destined to \ ``tin``\  hashes to
+    a fq_flow which is already owned by a different tin
+
+def_cvars
+    codel vars for \ ``def_flow``\ 
+
+cstats
+    *undescribed*
+
+frags
+    used to keep fragments created after dequeue
+
+flags
+    *undescribed*
+
+txq
+    *undescribed*
+
+.. _`ieee80211_if_nan`:
+
+struct ieee80211_if_nan
+=======================
+
+.. c:type:: struct ieee80211_if_nan
+
+    NAN state
+
+.. _`ieee80211_if_nan.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ieee80211_if_nan {
+        struct cfg80211_nan_conf conf;
+        spinlock_t func_lock;
+        struct idr function_inst_ids;
+    }
+
+.. _`ieee80211_if_nan.members`:
+
+Members
+-------
+
+conf
+    current NAN configuration
+
+func_lock
+    *undescribed*
+
+function_inst_ids
+    *undescribed*
+
 .. _`mac80211_scan_state`:
 
 enum mac80211_scan_state

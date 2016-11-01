@@ -452,7 +452,7 @@ ixgbevf_hv_check_mac_link_vf
 ixgbevf_set_rlpml_vf
 ====================
 
-.. c:function:: void ixgbevf_set_rlpml_vf(struct ixgbe_hw *hw, u16 max_size)
+.. c:function:: s32 ixgbevf_set_rlpml_vf(struct ixgbe_hw *hw, u16 max_size)
 
     Set the maximum receive packet length
 
@@ -467,7 +467,7 @@ ixgbevf_set_rlpml_vf
 ixgbevf_hv_set_rlpml_vf
 =======================
 
-.. c:function:: void ixgbevf_hv_set_rlpml_vf(struct ixgbe_hw *hw, u16 max_size)
+.. c:function:: s32 ixgbevf_hv_set_rlpml_vf(struct ixgbe_hw *hw, u16 max_size)
 
     Set the maximum receive packet length
 

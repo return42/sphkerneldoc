@@ -6,7 +6,10 @@
 kvm_arch_dev_ioctl_check_extension
 ==================================
 
-.. c:function:: int kvm_arch_dev_ioctl_check_extension(long ext)
+.. c:function:: int kvm_arch_dev_ioctl_check_extension(struct kvm *kvm, long ext)
+
+    :param struct kvm \*kvm:
+        *undescribed*
 
     :param long ext:
         *undescribed*
@@ -37,7 +40,7 @@ Description
 -----------
 
 This function finds the right table above and sets the registers on
-the virtual CPU struct to their architectually defined reset
+the virtual CPU struct to their architecturally defined reset
 values.
 
 .. This file was automatic generated / don't edit.

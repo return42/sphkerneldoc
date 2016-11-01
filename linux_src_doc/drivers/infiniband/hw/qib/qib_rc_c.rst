@@ -6,7 +6,7 @@
 qib_make_rc_ack
 ===============
 
-.. c:function:: int qib_make_rc_ack(struct qib_ibdev *dev, struct rvt_qp *qp, struct qib_other_headers *ohdr, u32 pmtu)
+.. c:function:: int qib_make_rc_ack(struct qib_ibdev *dev, struct rvt_qp *qp, struct ib_other_headers *ohdr, u32 pmtu)
 
     construct a response packet (ACK, NAK, or RDMA read)
 
@@ -16,7 +16,7 @@ qib_make_rc_ack
     :param struct rvt_qp \*qp:
         a pointer to the QP
 
-    :param struct qib_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         a pointer to the IB header being constructed
 
     :param u32 pmtu:
@@ -142,14 +142,14 @@ Returns 1 if OK, 0 if current operation should be aborted (NAK).
 qib_rc_rcv_resp
 ===============
 
-.. c:function:: void qib_rc_rcv_resp(struct qib_ibport *ibp, struct qib_other_headers *ohdr, void *data, u32 tlen, struct rvt_qp *qp, u32 opcode, u32 psn, u32 hdrsize, u32 pmtu, struct qib_ctxtdata *rcd)
+.. c:function:: void qib_rc_rcv_resp(struct qib_ibport *ibp, struct ib_other_headers *ohdr, void *data, u32 tlen, struct rvt_qp *qp, u32 opcode, u32 psn, u32 hdrsize, u32 pmtu, struct qib_ctxtdata *rcd)
 
     process an incoming RC response packet
 
     :param struct qib_ibport \*ibp:
         the port this packet came in on
 
-    :param struct qib_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         the other headers for this packet
 
     :param void \*data:
@@ -190,11 +190,11 @@ Called at interrupt level.
 qib_rc_rcv_error
 ================
 
-.. c:function:: int qib_rc_rcv_error(struct qib_other_headers *ohdr, void *data, struct rvt_qp *qp, u32 opcode, u32 psn, int diff, struct qib_ctxtdata *rcd)
+.. c:function:: int qib_rc_rcv_error(struct ib_other_headers *ohdr, void *data, struct rvt_qp *qp, u32 opcode, u32 psn, int diff, struct qib_ctxtdata *rcd)
 
     process an incoming duplicate or error RC packet
 
-    :param struct qib_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         the other headers for this packet
 
     :param void \*data:
@@ -231,14 +231,14 @@ schedule a response to be sent.
 qib_rc_rcv
 ==========
 
-.. c:function:: void qib_rc_rcv(struct qib_ctxtdata *rcd, struct qib_ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
+.. c:function:: void qib_rc_rcv(struct qib_ctxtdata *rcd, struct ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
 
     process an incoming RC packet
 
     :param struct qib_ctxtdata \*rcd:
         the context pointer
 
-    :param struct qib_ib_header \*hdr:
+    :param struct ib_header \*hdr:
         the header of this packet
 
     :param int has_grh:

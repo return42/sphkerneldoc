@@ -1509,41 +1509,35 @@ ixgbe_setup_tc
     :param u8 tc:
         number of traffic classes to enable
 
-.. _`ixgbe_add_vxlan_port`:
+.. _`ixgbe_add_udp_tunnel_port`:
 
-ixgbe_add_vxlan_port
-====================
+ixgbe_add_udp_tunnel_port
+=========================
 
-.. c:function:: void ixgbe_add_vxlan_port(struct net_device *dev, sa_family_t sa_family, __be16 port)
+.. c:function:: void ixgbe_add_udp_tunnel_port(struct net_device *dev, struct udp_tunnel_info *ti)
 
-    Get notifications about VXLAN ports that come up
-
-    :param struct net_device \*dev:
-        The port's netdev
-
-    :param sa_family_t sa_family:
-        Socket Family that VXLAN is notifiying us about
-
-    :param __be16 port:
-        New UDP port number that VXLAN started listening to
-
-.. _`ixgbe_del_vxlan_port`:
-
-ixgbe_del_vxlan_port
-====================
-
-.. c:function:: void ixgbe_del_vxlan_port(struct net_device *dev, sa_family_t sa_family, __be16 port)
-
-    Get notifications about VXLAN ports that go away
+    Get notifications about adding UDP tunnel ports
 
     :param struct net_device \*dev:
         The port's netdev
 
-    :param sa_family_t sa_family:
-        Socket Family that VXLAN is notifying us about
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
-    :param __be16 port:
-        UDP port number that VXLAN stopped listening to
+.. _`ixgbe_del_udp_tunnel_port`:
+
+ixgbe_del_udp_tunnel_port
+=========================
+
+.. c:function:: void ixgbe_del_udp_tunnel_port(struct net_device *dev, struct udp_tunnel_info *ti)
+
+    Get notifications about removing UDP tunnel ports
+
+    :param struct net_device \*dev:
+        The port's netdev
+
+    :param struct udp_tunnel_info \*ti:
+        Tunnel endpoint information
 
 .. _`ixgbe_configure_bridge_mode`:
 

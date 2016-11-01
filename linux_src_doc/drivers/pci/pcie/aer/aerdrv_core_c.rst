@@ -239,24 +239,5 @@ Description
 
 Invoked, as DPC, when root port records new detected error
 
-.. _`aer_init`:
-
-aer_init
-========
-
-.. c:function:: int aer_init(struct pcie_device *dev)
-
-    provide AER initialization
-
-    :param struct pcie_device \*dev:
-        pointer to AER pcie device
-
-.. _`aer_init.description`:
-
-Description
------------
-
-Invoked when AER service driver is loaded.
-
 .. This file was automatic generated / don't edit.
 

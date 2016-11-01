@@ -51,7 +51,7 @@ disable_11n
     use IWL_[DIS,EN]ABLE_HT\_\* constants
 
 amsdu_size
-    enable 8K amsdu size, default = 4K. enum iwl_amsdu_size.
+    See \ :c:type:`enum iwl_amsdu_size <iwl_amsdu_size>`\ .
 
 restart_fw
     restart firmware, default = 1

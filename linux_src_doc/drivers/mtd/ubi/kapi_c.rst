@@ -21,7 +21,7 @@ ubi_do_get_device_info
 Description
 -----------
 
-This function is the same as '\ :c:func:`ubi_get_device_info`\ ', but it assumes the UBI
+This function is the same as 'ubi_get_device_info()', but it assumes the UBI
 device is locked and cannot disappear.
 
 .. _`ubi_get_device_info`:
@@ -138,7 +138,7 @@ ubi_open_volume_nm
 Description
 -----------
 
-This function is similar to '\ :c:func:`ubi_open_volume`\ ', but opens a volume by name.
+This function is similar to 'ubi_open_volume()', but opens a volume by name.
 
 .. _`ubi_open_volume_path`:
 
@@ -160,7 +160,7 @@ ubi_open_volume_path
 Description
 -----------
 
-This function is similar to '\ :c:func:`ubi_open_volume`\ ', but opens a volume the path
+This function is similar to 'ubi_open_volume()', but opens a volume the path
 to its character device node.
 
 .. _`ubi_close_volume`:
@@ -548,7 +548,7 @@ Description
 -----------
 
 This function registers a volume notifier, which means that
-'nb->\ :c:func:`notifier_call`\ ' will be invoked when an UBI  volume is created,
+'nb->notifier_call()' will be invoked when an UBI  volume is created,
 removed, re-sized, re-named, or updated. The first argument of the function
 is the notification type. The second argument is pointer to a
 \ :c:type:`struct ubi_notification <ubi_notification>`\  object which describes the notification event.

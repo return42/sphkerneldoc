@@ -6,7 +6,7 @@
 xhci_ring_alloc
 ===============
 
-.. c:function:: struct xhci_ring *xhci_ring_alloc(struct xhci_hcd *xhci, unsigned int num_segs, unsigned int cycle_state, enum xhci_ring_type type, gfp_t flags)
+.. c:function:: struct xhci_ring *xhci_ring_alloc(struct xhci_hcd *xhci, unsigned int num_segs, unsigned int cycle_state, enum xhci_ring_type type, unsigned int max_packet, gfp_t flags)
 
     :param struct xhci_hcd \*xhci:
         *undescribed*
@@ -18,6 +18,9 @@ xhci_ring_alloc
         *undescribed*
 
     :param enum xhci_ring_type type:
+        *undescribed*
+
+    :param unsigned int max_packet:
         *undescribed*
 
     :param gfp_t flags:

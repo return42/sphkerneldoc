@@ -607,7 +607,7 @@ and -ENODATA if the property does not have a value.
 of_find_property_value_of_size
 ==============================
 
-.. c:function:: void *of_find_property_value_of_size(const struct device_node *np, const char *propname, u32 len)
+.. c:function:: void *of_find_property_value_of_size(const struct device_node *np, const char *propname, u32 min, u32 max, size_t *len)
 
     :param const struct device_node \*np:
         device node from which the property value is to be read.
@@ -615,8 +615,14 @@ of_find_property_value_of_size
     :param const char \*propname:
         name of the property to be searched.
 
-    :param u32 len:
-        requested length of property value
+    :param u32 min:
+        minimum allowed length of property value
+
+    :param u32 max:
+        maximum allowed length of property value (0 means unlimited)
+
+    :param size_t \*len:
+        if !=NULL, actual length is written to here
 
 .. _`of_find_property_value_of_size.description`:
 
@@ -626,7 +632,7 @@ Description
 Search for a property in a device node and valid the requested size.
 Returns the property value on success, -EINVAL if the property does not
 exist, -ENODATA if property does not have a value, and -EOVERFLOW if the
-property data isn't large enough.
+property data is too small or too large.
 
 .. _`of_property_read_u32_index`:
 
@@ -661,14 +667,14 @@ property data isn't large enough.
 
 The out_value is modified only if a valid u32 value can be decoded.
 
-.. _`of_property_read_u8_array`:
+.. _`of_property_read_variable_u8_array`:
 
-of_property_read_u8_array
-=========================
+of_property_read_variable_u8_array
+==================================
 
-.. c:function:: int of_property_read_u8_array(const struct device_node *np, const char *propname, u8 *out_values, size_t sz)
+.. c:function:: int of_property_read_variable_u8_array(const struct device_node *np, const char *propname, u8 *out_values, size_t sz_min, size_t sz_max)
 
-    Find and read an array of u8 from a property.
+    Find and read an array of u8 from a property, with bounds on the minimum and maximum array size.
 
     :param const struct device_node \*np:
         device node from which the property value is to be read.
@@ -679,20 +685,25 @@ of_property_read_u8_array
     :param u8 \*out_values:
         pointer to return value, modified only if return value is 0.
 
-    :param size_t sz:
-        number of array elements to read
+    :param size_t sz_min:
+        minimum number of array elements to read
 
-.. _`of_property_read_u8_array.description`:
+    :param size_t sz_max:
+        maximum number of array elements to read, if zero there is no
+        upper limit on the number of elements in the dts entry but only
+        sz_min will be read.
+
+.. _`of_property_read_variable_u8_array.description`:
 
 Description
 -----------
 
 Search for a property in a device node and read 8-bit value(s) from
-it. Returns 0 on success, -EINVAL if the property does not exist,
--ENODATA if property does not have a value, and -EOVERFLOW if the
-property data isn't large enough.
+it. Returns number of elements read on success, -EINVAL if the property
+does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
+if the property data is smaller than sz_min or longer than sz_max.
 
-.. _`of_property_read_u8_array.dts-entry-of-array-should-be-like`:
+.. _`of_property_read_variable_u8_array.dts-entry-of-array-should-be-like`:
 
 dts entry of array should be like
 ---------------------------------
@@ -701,14 +712,14 @@ property = /bits/ 8 <0x50 0x60 0x70>;
 
 The out_values is modified only if a valid u8 value can be decoded.
 
-.. _`of_property_read_u16_array`:
+.. _`of_property_read_variable_u16_array`:
 
-of_property_read_u16_array
-==========================
+of_property_read_variable_u16_array
+===================================
 
-.. c:function:: int of_property_read_u16_array(const struct device_node *np, const char *propname, u16 *out_values, size_t sz)
+.. c:function:: int of_property_read_variable_u16_array(const struct device_node *np, const char *propname, u16 *out_values, size_t sz_min, size_t sz_max)
 
-    Find and read an array of u16 from a property.
+    Find and read an array of u16 from a property, with bounds on the minimum and maximum array size.
 
     :param const struct device_node \*np:
         device node from which the property value is to be read.
@@ -719,20 +730,25 @@ of_property_read_u16_array
     :param u16 \*out_values:
         pointer to return value, modified only if return value is 0.
 
-    :param size_t sz:
-        number of array elements to read
+    :param size_t sz_min:
+        minimum number of array elements to read
 
-.. _`of_property_read_u16_array.description`:
+    :param size_t sz_max:
+        maximum number of array elements to read, if zero there is no
+        upper limit on the number of elements in the dts entry but only
+        sz_min will be read.
+
+.. _`of_property_read_variable_u16_array.description`:
 
 Description
 -----------
 
 Search for a property in a device node and read 16-bit value(s) from
-it. Returns 0 on success, -EINVAL if the property does not exist,
--ENODATA if property does not have a value, and -EOVERFLOW if the
-property data isn't large enough.
+it. Returns number of elements read on success, -EINVAL if the property
+does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
+if the property data is smaller than sz_min or longer than sz_max.
 
-.. _`of_property_read_u16_array.dts-entry-of-array-should-be-like`:
+.. _`of_property_read_variable_u16_array.dts-entry-of-array-should-be-like`:
 
 dts entry of array should be like
 ---------------------------------
@@ -741,14 +757,14 @@ property = /bits/ 16 <0x5000 0x6000 0x7000>;
 
 The out_values is modified only if a valid u16 value can be decoded.
 
-.. _`of_property_read_u32_array`:
+.. _`of_property_read_variable_u32_array`:
 
-of_property_read_u32_array
-==========================
+of_property_read_variable_u32_array
+===================================
 
-.. c:function:: int of_property_read_u32_array(const struct device_node *np, const char *propname, u32 *out_values, size_t sz)
+.. c:function:: int of_property_read_variable_u32_array(const struct device_node *np, const char *propname, u32 *out_values, size_t sz_min, size_t sz_max)
 
-    Find and read an array of 32 bit integers from a property.
+    Find and read an array of 32 bit integers from a property, with bounds on the minimum and maximum array size.
 
     :param const struct device_node \*np:
         device node from which the property value is to be read.
@@ -759,18 +775,23 @@ of_property_read_u32_array
     :param u32 \*out_values:
         pointer to return value, modified only if return value is 0.
 
-    :param size_t sz:
-        number of array elements to read
+    :param size_t sz_min:
+        minimum number of array elements to read
 
-.. _`of_property_read_u32_array.description`:
+    :param size_t sz_max:
+        maximum number of array elements to read, if zero there is no
+        upper limit on the number of elements in the dts entry but only
+        sz_min will be read.
+
+.. _`of_property_read_variable_u32_array.description`:
 
 Description
 -----------
 
 Search for a property in a device node and read 32-bit value(s) from
-it. Returns 0 on success, -EINVAL if the property does not exist,
--ENODATA if property does not have a value, and -EOVERFLOW if the
-property data isn't large enough.
+it. Returns number of elements read on success, -EINVAL if the property
+does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
+if the property data is smaller than sz_min or longer than sz_max.
 
 The out_values is modified only if a valid u32 value can be decoded.
 
@@ -804,14 +825,14 @@ property data isn't large enough.
 
 The out_value is modified only if a valid u64 value can be decoded.
 
-.. _`of_property_read_u64_array`:
+.. _`of_property_read_variable_u64_array`:
 
-of_property_read_u64_array
-==========================
+of_property_read_variable_u64_array
+===================================
 
-.. c:function:: int of_property_read_u64_array(const struct device_node *np, const char *propname, u64 *out_values, size_t sz)
+.. c:function:: int of_property_read_variable_u64_array(const struct device_node *np, const char *propname, u64 *out_values, size_t sz_min, size_t sz_max)
 
-    Find and read an array of 64 bit integers from a property.
+    Find and read an array of 64 bit integers from a property, with bounds on the minimum and maximum array size.
 
     :param const struct device_node \*np:
         device node from which the property value is to be read.
@@ -822,18 +843,23 @@ of_property_read_u64_array
     :param u64 \*out_values:
         pointer to return value, modified only if return value is 0.
 
-    :param size_t sz:
-        number of array elements to read
+    :param size_t sz_min:
+        minimum number of array elements to read
 
-.. _`of_property_read_u64_array.description`:
+    :param size_t sz_max:
+        maximum number of array elements to read, if zero there is no
+        upper limit on the number of elements in the dts entry but only
+        sz_min will be read.
+
+.. _`of_property_read_variable_u64_array.description`:
 
 Description
 -----------
 
 Search for a property in a device node and read 64-bit value(s) from
-it. Returns 0 on success, -EINVAL if the property does not exist,
--ENODATA if property does not have a value, and -EOVERFLOW if the
-property data isn't large enough.
+it. Returns number of elements read on success, -EINVAL if the property
+does not exist, -ENODATA if property does not have a value, and -EOVERFLOW
+if the property data is smaller than sz_min or longer than sz_max.
 
 The out_values is modified only if a valid u64 value can be decoded.
 
@@ -1009,11 +1035,11 @@ node2 {
 }
 
 node3 {
-list = <\ :c:type:`struct phandle1 <phandle1>` 1 2 \ :c:type:`struct phandle2 <phandle2>` 3>;
+list = <&phandle1 1 2 \ :c:type:`struct phandle2 <phandle2>`\  3>;
 }
 
 To get a device_node of the \`node2' node you may call this:
-of_parse_phandle_with_args(node3, "list", "#list-cells", 1, \ :c:type:`struct args <args>`);
+of_parse_phandle_with_args(node3, "list", "#list-cells", 1, \ :c:type:`struct args <args>`\ );
 
 .. _`of_parse_phandle_with_fixed_args`:
 
@@ -1068,11 +1094,11 @@ node2 {
 }
 
 node3 {
-list = <\ :c:type:`struct phandle1 <phandle1>` 0 2 \ :c:type:`struct phandle2 <phandle2>` 2 3>;
+list = <&phandle1 0 2 \ :c:type:`struct phandle2 <phandle2>`\  2 3>;
 }
 
 To get a device_node of the \`node2' node you may call this:
-of_parse_phandle_with_fixed_args(node3, "list", 2, 1, \ :c:type:`struct args <args>`);
+of_parse_phandle_with_fixed_args(node3, "list", 2, 1, \ :c:type:`struct args <args>`\ );
 
 .. _`of_count_phandle_with_args`:
 

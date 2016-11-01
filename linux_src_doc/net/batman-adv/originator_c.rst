@@ -404,14 +404,14 @@ Return
 
 neighbor when found. Othwerwise NULL
 
-.. _`batadv_neigh_node_new`:
+.. _`batadv_neigh_node_create`:
 
-batadv_neigh_node_new
-=====================
+batadv_neigh_node_create
+========================
 
-.. c:function:: struct batadv_neigh_node *batadv_neigh_node_new(struct batadv_orig_node *orig_node, struct batadv_hard_iface *hard_iface, const u8 *neigh_addr)
+.. c:function:: struct batadv_neigh_node *batadv_neigh_node_create(struct batadv_orig_node *orig_node, struct batadv_hard_iface *hard_iface, const u8 *neigh_addr)
 
-    create and init a new neigh_node object
+    create a neigh node object
 
     :param struct batadv_orig_node \*orig_node:
         originator object representing the neighbour
@@ -422,19 +422,44 @@ batadv_neigh_node_new
     :param const u8 \*neigh_addr:
         the mac address of the neighbour interface
 
-.. _`batadv_neigh_node_new.description`:
+.. _`batadv_neigh_node_create.description`:
 
 Description
 -----------
 
 Allocates a new neigh_node object and initialises all the generic fields.
 
-.. _`batadv_neigh_node_new.return`:
+.. _`batadv_neigh_node_create.return`:
 
 Return
 ------
 
-neighbor when found. Othwerwise NULL
+the neighbour node if found or created or NULL otherwise.
+
+.. _`batadv_neigh_node_get_or_create`:
+
+batadv_neigh_node_get_or_create
+===============================
+
+.. c:function:: struct batadv_neigh_node *batadv_neigh_node_get_or_create(struct batadv_orig_node *orig_node, struct batadv_hard_iface *hard_iface, const u8 *neigh_addr)
+
+    retrieve or create a neigh node object
+
+    :param struct batadv_orig_node \*orig_node:
+        originator object representing the neighbour
+
+    :param struct batadv_hard_iface \*hard_iface:
+        the interface where the neighbour is connected to
+
+    :param const u8 \*neigh_addr:
+        the mac address of the neighbour interface
+
+.. _`batadv_neigh_node_get_or_create.return`:
+
+Return
+------
+
+the neighbour node if found or created or NULL otherwise.
 
 .. _`batadv_hardif_neigh_seq_print_text`:
 
@@ -457,6 +482,28 @@ Return
 ------
 
 always 0
+
+.. _`batadv_hardif_neigh_dump`:
+
+batadv_hardif_neigh_dump
+========================
+
+.. c:function:: int batadv_hardif_neigh_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    Dump to netlink the neighbor infos for a specific outgoing interface
+
+    :param struct sk_buff \*msg:
+        message to dump into
+
+    :param struct netlink_callback \*cb:
+        parameters for the dump
+
+.. _`batadv_hardif_neigh_dump.return`:
+
+Return
+------
+
+0 or error value
 
 .. _`batadv_orig_ifinfo_release`:
 
@@ -683,6 +730,28 @@ Return
 ------
 
 0
+
+.. _`batadv_orig_dump`:
+
+batadv_orig_dump
+================
+
+.. c:function:: int batadv_orig_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    Dump to netlink the originator infos for a specific outgoing interface
+
+    :param struct sk_buff \*msg:
+        message to dump into
+
+    :param struct netlink_callback \*cb:
+        parameters for the dump
+
+.. _`batadv_orig_dump.return`:
+
+Return
+------
+
+0 or error value
 
 .. This file was automatic generated / don't edit.
 

@@ -9,6 +9,7 @@ xprtrdma
 
     backchannel_c
     frwr_ops_c
+    rpc_rdma_c
     svc_rdma_marshal_c
     svc_rdma_transport_c
     transport_c

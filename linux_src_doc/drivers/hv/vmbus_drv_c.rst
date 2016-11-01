@@ -24,9 +24,9 @@ __vmbus_driver_register
 Description
 -----------
 
-Registers the given driver with Linux through the '\ :c:func:`driver_register`\ ' call
+Registers the given driver with Linux through the 'driver_register()' call
 and sets up the hyper-v vmbus handling for this driver.
-It will return the state of the '\ :c:func:`driver_register`\ ' call.
+It will return the state of the 'driver_register()' call.
 
 .. _`vmbus_driver_unregister`:
 

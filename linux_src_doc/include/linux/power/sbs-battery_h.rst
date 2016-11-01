@@ -18,22 +18,14 @@ Definition
 .. code-block:: c
 
     struct sbs_platform_data {
-        int battery_detect;
-        int battery_detect_present;
-        int i2c_retry_count;
-        int poll_retry_count;
+        u32 i2c_retry_count;
+        u32 poll_retry_count;
     }
 
 .. _`sbs_platform_data.members`:
 
 Members
 -------
-
-battery_detect
-    GPIO which is used to detect battery presence
-
-battery_detect_present
-    gpio state when battery is present (0 / 1)
 
 i2c_retry_count
     # of times to retry on i2c IO failure

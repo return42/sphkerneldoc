@@ -75,6 +75,7 @@ Definition
         unsigned long flags;
     #define CLK_CPU_HAS_DIV1 (1 << 0)
     #define CLK_CPU_NEEDS_DEBUG_ALT_DIV (1 << 1)
+    #define CLK_CPU_HAS_E5433_REGS_LAYOUT (1 << 2)
     }
 
 .. _`exynos_cpuclk.members`:

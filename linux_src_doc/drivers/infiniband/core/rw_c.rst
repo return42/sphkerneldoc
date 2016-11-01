@@ -35,7 +35,7 @@ rdma_rw_ctx_init
         remote key to operate on
 
     :param enum dma_data_direction dir:
-        \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+        %DMA_TO_DEVICE for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
 
 .. _`rdma_rw_ctx_init.description`:
 
@@ -85,7 +85,7 @@ rdma_rw_ctx_signature_init
         remote key to operate on
 
     :param enum dma_data_direction dir:
-        \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+        %DMA_TO_DEVICE for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
 
 .. _`rdma_rw_ctx_signature_init.description`:
 
@@ -190,7 +190,7 @@ rdma_rw_ctx_destroy
         number of entries in \ ``sg``\ 
 
     :param enum dma_data_direction dir:
-        \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+        %DMA_TO_DEVICE for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
 
 .. _`rdma_rw_ctx_destroy_signature`:
 
@@ -223,7 +223,7 @@ rdma_rw_ctx_destroy_signature
         number of entries in \ ``prot_sg``\ 
 
     :param enum dma_data_direction dir:
-        \ ``DMA_TO_DEVICE``\  for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
+        %DMA_TO_DEVICE for RDMA WRITE, \ ``DMA_FROM_DEVICE``\  for RDMA READ
 
 .. This file was automatic generated / don't edit.
 

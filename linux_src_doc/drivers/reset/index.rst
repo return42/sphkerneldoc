@@ -9,3 +9,4 @@ reset
 
     sti/index
     core_c
+    reset-ti-syscon_c

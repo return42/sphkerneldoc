@@ -34,7 +34,7 @@ Returns true on rule match, false on failure.
 ima_match_policy
 ================
 
-.. c:function:: int ima_match_policy(struct inode *inode, enum ima_hooks func, int mask, int flags)
+.. c:function:: int ima_match_policy(struct inode *inode, enum ima_hooks func, int mask, int flags, int *pcr)
 
     decision based on LSM and other conditions
 
@@ -49,6 +49,9 @@ ima_match_policy
 
     :param int flags:
         *undescribed*
+
+    :param int \*pcr:
+        set the pcr to extend
 
 .. _`ima_match_policy.description`:
 

@@ -234,7 +234,7 @@ Members
 func
     The trigger 'probe' function called when the triggering
     event occurs.  The data passed into this callback is the data
-    that was supplied to the event_command @\ :c:func:`reg`\  function that
+    that was supplied to the event_command \ ``reg``\ () function that
     registered the trigger (see struct event_command) along with
     the trace record, rec.
 
@@ -244,23 +244,23 @@ init
     function).  This can be used to perform per-trigger
     initialization such as incrementing a per-trigger reference
     count, for instance.  This is usually implemented by the
-    generic utility function @\ :c:func:`event_trigger_init`\  (see
+    generic utility function \ ``event_trigger_init``\ () (see
     trace_event_triggers.c).
 
 free
     An optional de-initialization function called for the
     trigger when the trigger is unregistered (via the
-    event_command @\ :c:func:`reg`\  function).  This can be used to perform
+    event_command \ ``reg``\ () function).  This can be used to perform
     per-trigger de-initialization such as decrementing a
     per-trigger reference count and freeing corresponding trigger
     data, for instance.  This is usually implemented by the
-    generic utility function @\ :c:func:`event_trigger_free`\  (see
+    generic utility function \ ``event_trigger_free``\ () (see
     trace_event_triggers.c).
 
 print
     The callback function invoked to have the trigger print
     itself.  This is usually implemented by a wrapper function
-    that calls the generic utility function @\ :c:func:`event_trigger_print`\ 
+    that calls the generic utility function \ ``event_trigger_print``\ ()
     (see trace_event_triggers.c).
 
 .. _`event_trigger_ops.description`:
@@ -271,7 +271,7 @@ Description
 The methods in this structure provide per-event trigger hooks for
 various trigger operations.
 
-All the methods below, except for @\ :c:func:`init`\  and @\ :c:func:`free`\ , must be
+All the methods below, except for \ ``init``\ () and \ ``free``\ (), must be
 implemented.
 
 .. _`event_command`:
@@ -326,7 +326,7 @@ trigger_type
     also used as a bit value for deferring the actual trigger
     action until after the current event is finished.  Some
     commands need to do this if they themselves log to the trace
-    buffer (see the @\ :c:func:`post_trigger`\  member below).  \ ``trigger_type``\ 
+    buffer (see the \ ``post_trigger``\ () member below).  \ ``trigger_type``\ 
     values are defined by adding new values to the trigger_type
     enum in include/linux/trace_events.h.
 
@@ -340,24 +340,24 @@ func
     the appropriate trace event.  It makes use of the other
     event_command callback functions to orchestrate this, and is
     usually implemented by the generic utility function
-    @\ :c:func:`event_trigger_callback`\  (see trace_event_triggers.c).
+    \ ``event_trigger_callback``\ () (see trace_event_triggers.c).
 
 reg
     Adds the trigger to the list of triggers associated with the
     event, and enables the event trigger itself, after
-    initializing it (via the event_trigger_ops @\ :c:func:`init`\  function).
+    initializing it (via the event_trigger_ops \ ``init``\ () function).
     This is also where commands can use the \ ``trigger_type``\  value to
     make the decision as to whether or not multiple instances of
     the trigger should be allowed.  This is usually implemented by
-    the generic utility function @\ :c:func:`register_trigger`\  (see
+    the generic utility function \ ``register_trigger``\ () (see
     trace_event_triggers.c).
 
 unreg
     Removes the trigger from the list of triggers associated
     with the event, and disables the event trigger itself, after
-    initializing it (via the event_trigger_ops @\ :c:func:`free`\  function).
+    initializing it (via the event_trigger_ops \ ``free``\ () function).
     This is usually implemented by the generic utility function
-    @\ :c:func:`unregister_trigger`\  (see trace_event_triggers.c).
+    \ ``unregister_trigger``\ () (see trace_event_triggers.c).
 
 unreg_all
     An optional function called to remove all the triggers
@@ -366,10 +366,10 @@ unreg_all
 
 set_filter
     An optional function called to parse and set a filter
-    for the trigger.  If no @\ :c:func:`set_filter`\  method is set for the
+    for the trigger.  If no \ ``set_filter``\ () method is set for the
     event command, filters set by the user for the command will be
     ignored.  This is usually implemented by the generic utility
-    function @\ :c:func:`set_trigger_filter`\  (see trace_event_triggers.c).
+    function \ ``set_trigger_filter``\ () (see trace_event_triggers.c).
 
 get_trigger_ops
     The callback function invoked to retrieve the
@@ -394,7 +394,7 @@ for various event commands.
 All the data members below, except for \ ``post_trigger``\ , must be set
 for each event command.
 
-All the methods below, except for @\ :c:func:`set_filter`\  and @\ :c:func:`unreg_all`\ ,
+All the methods below, except for \ ``set_filter``\ () and \ ``unreg_all``\ (),
 must be implemented.
 
 .. _`event_command_flags`:

@@ -27,7 +27,7 @@ already registered by the provided name, or 0 upon success.
 _pwrdm_save_clkdm_state_and_activate
 ====================================
 
-.. c:function:: u8 _pwrdm_save_clkdm_state_and_activate(struct powerdomain *pwrdm, u8 curr_pwrst, u8 pwrst, bool *hwsup)
+.. c:function:: u8 _pwrdm_save_clkdm_state_and_activate(struct powerdomain *pwrdm, u8 curr_pwrst, u8 pwrst)
 
     prepare for power state change
 
@@ -39,9 +39,6 @@ _pwrdm_save_clkdm_state_and_activate
 
     :param u8 pwrst:
         power state to switch to
-
-    :param bool \*hwsup:
-        ptr to a bool to return whether the clkdm is hardware-supervised
 
 .. _`_pwrdm_save_clkdm_state_and_activate.description`:
 
@@ -61,7 +58,7 @@ Returns the power state switch mode currently in use (see the
 _pwrdm_restore_clkdm_state
 ==========================
 
-.. c:function:: void _pwrdm_restore_clkdm_state(struct powerdomain *pwrdm, u8 sleep_switch, bool hwsup)
+.. c:function:: void _pwrdm_restore_clkdm_state(struct powerdomain *pwrdm, u8 sleep_switch)
 
     restore the clkdm hwsup state after pwrst change
 
@@ -69,10 +66,7 @@ _pwrdm_restore_clkdm_state
         struct powerdomain \* to operate on
 
     :param u8 sleep_switch:
-        return value from \\ :c:func:`_pwrdm_save_clkdm_state_and_activate`\ 
-
-    :param bool hwsup:
-        should \ ``pwrdm``\ 's first clockdomain be set to hardware-supervised mode?
+        return value from \_pwrdm_save_clkdm_state_and_activate()
 
 .. _`_pwrdm_restore_clkdm_state.description`:
 
@@ -80,7 +74,7 @@ Description
 -----------
 
 Restore the clockdomain state perturbed by
-\\ :c:func:`_pwrdm_save_clkdm_state_and_activate`\ , and call the power state
+\_pwrdm_save_clkdm_state_and_activate(), and call the power state
 bookkeeping code.  Called by \ :c:func:`omap_set_pwrdm_state`\ .  NOTE that if
 the powerdomain contains multiple clockdomains, this assumes that
 the first associated clockdomain supports either

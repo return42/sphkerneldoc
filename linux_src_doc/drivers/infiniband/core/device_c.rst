@@ -153,7 +153,7 @@ ib_get_client_data
 Description
 -----------
 
-\ :c:func:`ib_get_client_data`\  returns client context set with
+ib_get_client_data() returns client context set with
 \ :c:func:`ib_set_client_data`\ .
 
 .. _`ib_set_client_data`:
@@ -179,7 +179,7 @@ ib_set_client_data
 Description
 -----------
 
-\ :c:func:`ib_set_client_data`\  sets client context that can be retrieved with
+ib_set_client_data() sets client context that can be retrieved with
 \ :c:func:`ib_get_client_data`\ .
 
 .. _`ib_register_event_handler`:
@@ -199,7 +199,7 @@ ib_register_event_handler
 Description
 -----------
 
-\ :c:func:`ib_register_event_handler`\  registers an event handler that will be
+ib_register_event_handler() registers an event handler that will be
 called back when asynchronous IB events occur (as defined in
 chapter 11 of the InfiniBand Architecture Specification).  This
 callback may occur in interrupt context.
@@ -268,7 +268,7 @@ ib_query_port
 Description
 -----------
 
-\ :c:func:`ib_query_port`\  returns the attributes of a port through the
+ib_query_port() returns the attributes of a port through the
 \ ``port_attr``\  pointer.
 
 .. _`ib_query_gid`:
@@ -301,7 +301,7 @@ ib_query_gid
 Description
 -----------
 
-\ :c:func:`ib_query_gid`\  fetches the specified GID table entry.
+ib_query_gid() fetches the specified GID table entry.
 
 .. _`ib_enum_roce_netdev`:
 
@@ -392,7 +392,7 @@ ib_query_pkey
 Description
 -----------
 
-\ :c:func:`ib_query_pkey`\  fetches the specified P_Key table entry.
+ib_query_pkey() fetches the specified P_Key table entry.
 
 .. _`ib_modify_device`:
 
@@ -417,7 +417,7 @@ ib_modify_device
 Description
 -----------
 
-\ :c:func:`ib_modify_device`\  changes a device's attributes as specified by
+ib_modify_device() changes a device's attributes as specified by
 the \ ``device_modify_mask``\  and \ ``device_modify``\  structure.
 
 .. _`ib_modify_port`:
@@ -447,7 +447,7 @@ ib_modify_port
 Description
 -----------
 
-\ :c:func:`ib_modify_port`\  changes a port's attributes as specified by the
+ib_modify_port() changes a port's attributes as specified by the
 \ ``port_modify_mask``\  and \ ``port_modify``\  structure.
 
 .. _`ib_find_gid`:

@@ -40,7 +40,7 @@ ds2482_calculate_config
 
 .. c:function:: u8 ds2482_calculate_config(u8 conf)
 
-    \ ``param``\  conf the raw config value \ ``return``\  the value w/ complements that can be written to register
+    @param conf the raw config value \ ``return``\  the value w/ complements that can be written to register
 
     :param u8 conf:
         *undescribed*
@@ -52,7 +52,7 @@ ds2482_select_register
 
 .. c:function:: int ds2482_select_register(struct ds2482_data *pdev, u8 read_ptr)
 
-    \ ``param``\  pdev          The ds2482 client pointer \ ``param``\  read_ptr      see DS2482_PTR_CODE_xxx above \ ``return``\  -1 on failure, 0 on success
+    @param pdev          The ds2482 client pointer \ ``param``\  read_ptr      see DS2482_PTR_CODE_xxx above \ ``return``\  -1 on failure, 0 on success
 
     :param struct ds2482_data \*pdev:
         *undescribed*
@@ -67,7 +67,7 @@ ds2482_send_cmd
 
 .. c:function:: int ds2482_send_cmd(struct ds2482_data *pdev, u8 cmd)
 
-    \ ``param``\  pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_RESET, DS2482_CMD_1WIRE_RESET, DS2482_CMD_1WIRE_READ_BYTE \ ``return``\  -1 on failure, 0 on success
+    @param pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_RESET, DS2482_CMD_1WIRE_RESET, DS2482_CMD_1WIRE_READ_BYTE \ ``return``\  -1 on failure, 0 on success
 
     :param struct ds2482_data \*pdev:
         *undescribed*
@@ -82,7 +82,7 @@ ds2482_send_cmd_data
 
 .. c:function:: int ds2482_send_cmd_data(struct ds2482_data *pdev, u8 cmd, u8 byte)
 
-    \ ``param``\  pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_WRITE_CONFIG, DS2482_CMD_1WIRE_SINGLE_BIT, DS2482_CMD_1WIRE_WRITE_BYTE, DS2482_CMD_1WIRE_TRIPLET \ ``param``\  byte  The data to send \ ``return``\  -1 on failure, 0 on success
+    @param pdev  The ds2482 client pointer \ ``param``\  cmd   DS2482_CMD_WRITE_CONFIG, DS2482_CMD_1WIRE_SINGLE_BIT, DS2482_CMD_1WIRE_WRITE_BYTE, DS2482_CMD_1WIRE_TRIPLET \ ``param``\  byte  The data to send \ ``return``\  -1 on failure, 0 on success
 
     :param struct ds2482_data \*pdev:
         *undescribed*
@@ -110,7 +110,7 @@ ds2482_wait_1wire_idle
 Description
 -----------
 
-\ ``param``\  pdev Pointer to the device structure
+@param pdev Pointer to the device structure
 \ ``return``\  the last value read from status or -1 (failure)
 
 .. _`ds2482_set_channel`:
@@ -133,7 +133,7 @@ ds2482_set_channel
 Description
 -----------
 
-\ ``param``\  pdev          The ds2482 client pointer
+@param pdev          The ds2482 client pointer
 \ ``param``\  channel       0-7
 \ ``return``\               -1 (failure) or 0 (success)
 
@@ -157,7 +157,7 @@ ds2482_w1_touch_bit
 Description
 -----------
 
-\ ``param``\  data  The ds2482 channel pointer
+@param data  The ds2482 channel pointer
 
 .. _`ds2482_w1_triplet`:
 
@@ -201,7 +201,7 @@ ds2482_w1_write_byte
 Description
 -----------
 
-\ ``param``\  data  The ds2482 channel pointer
+@param data  The ds2482 channel pointer
 \ ``param``\  byte  The value to write
 
 .. _`ds2482_w1_read_byte`:
@@ -219,7 +219,7 @@ ds2482_w1_read_byte
 Description
 -----------
 
-\ ``param``\  data  The ds2482 channel pointer
+@param data  The ds2482 channel pointer
 \ ``return``\       The value read
 
 .. _`ds2482_w1_reset_bus`:
@@ -239,7 +239,7 @@ ds2482_w1_reset_bus
 Description
 -----------
 
-\ ``param``\  data  The ds2482 channel pointer
+@param data  The ds2482 channel pointer
 \ ``return``\       0=Device present, 1=No device present or error
 
 .. This file was automatic generated / don't edit.

@@ -31,8 +31,8 @@ Description
 -----------
 
 Platform drivers that implement mem suspend only and only need to check for
-that in their .\ :c:func:`valid`\  callback can use this instead of rolling their own
-.\ :c:func:`valid`\  callback.
+that in their .valid() callback can use this instead of rolling their own
+.valid() callback.
 
 .. _`suspend_prepare`:
 

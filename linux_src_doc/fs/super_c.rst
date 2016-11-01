@@ -25,7 +25,7 @@ Frees a superblock.
 alloc_super
 ===========
 
-.. c:function:: struct super_block *alloc_super(struct file_system_type *type, int flags)
+.. c:function:: struct super_block *alloc_super(struct file_system_type *type, int flags, struct user_namespace *user_ns)
 
     create new superblock
 
@@ -34,6 +34,9 @@ alloc_super
 
     :param int flags:
         the mount flags
+
+    :param struct user_namespace \*user_ns:
+        User namespace for the super_block
 
 .. _`alloc_super.description`:
 
@@ -141,7 +144,7 @@ generic_shutdown_super
 
 .. c:function:: void generic_shutdown_super(struct super_block *sb)
 
-    common helper for ->\ :c:func:`kill_sb`\ 
+    common helper for ->kill_sb()
 
     :param struct super_block \*sb:
         superblock to kill
@@ -151,8 +154,8 @@ generic_shutdown_super
 Description
 -----------
 
-\ :c:func:`generic_shutdown_super`\  does all fs-independent work on superblock
-shutdown.  Typical ->\ :c:func:`kill_sb`\  should pick all fs-specific objects
+generic_shutdown_super() does all fs-independent work on superblock
+shutdown.  Typical ->kill_sb() should pick all fs-specific objects
 that need destruction out of superblock, call \ :c:func:`generic_shutdown_super`\ 
 and release aforementioned objects.  Note: dentries and inodes \_are\_
 taken care of and do not need specific handling.
@@ -160,6 +163,33 @@ taken care of and do not need specific handling.
 Upon calling this function, the filesystem may no longer alter or
 rearrange the set of dentries belonging to this super_block, nor may it
 change the attachments of dentries to inodes.
+
+.. _`sget_userns`:
+
+sget_userns
+===========
+
+.. c:function:: struct super_block *sget_userns(struct file_system_type *type, int (*test)(struct super_block *,void *), int (*set)(struct super_block *,void *), int flags, struct user_namespace *user_ns, void *data)
+
+    find or create a superblock
+
+    :param struct file_system_type \*type:
+        filesystem type superblock should belong to
+
+    :param int (\*test)(struct super_block \*,void \*):
+        comparison callback
+
+    :param int (\*set)(struct super_block \*,void \*):
+        setup callback
+
+    :param int flags:
+        mount flags
+
+    :param struct user_namespace \*user_ns:
+        User namespace for the super_block
+
+    :param void \*data:
+        argument to each of them
 
 .. _`sget`:
 
@@ -408,7 +438,7 @@ The file system is frozen. Now all internal sources of fs
 modification are blocked (e.g. XFS preallocation truncation on inode
 reclaim). This is usually implemented by blocking new transactions for
 filesystems that have them and need this additional guard. After all
-internal writers are finished we call ->\ :c:func:`freeze_fs`\  to finish filesystem
+internal writers are finished we call ->freeze_fs() to finish filesystem
 freezing. Then we transition to SB_FREEZE_COMPLETE state. This state is
 mostly auxiliary for filesystems to verify they do not modify frozen fs.
 

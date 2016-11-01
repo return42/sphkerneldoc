@@ -19,7 +19,7 @@ Description
 -----------
 
 This macro declares and initializes a completion structure. Generally used
-for static declarations. You should use the \_ONSTACK variant for automatic
+for static declarations. You should use the _ONSTACK variant for automatic
 variables.
 
 .. _`declare_completion_onstack`:

@@ -325,7 +325,7 @@ Description
 -----------
 
 Determine whether a file system with \ ``num_blocks``\  blocks (and a
-block size of 2\*\*\ ``blocksize_bits``\ ) is addressable by the sector_t
+block size of 2\*\*@blocksize_bits) is addressable by the sector_t
 and page cache of the system.  Return 0 if so and -EFBIG otherwise.
 
 .. _`simple_nosetlease`:

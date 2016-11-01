@@ -181,6 +181,44 @@ Description
 
 Write a fence and a trap command to the ring.
 
+.. _`uvd_v5_0_ring_emit_hdp_flush`:
+
+uvd_v5_0_ring_emit_hdp_flush
+============================
+
+.. c:function:: void uvd_v5_0_ring_emit_hdp_flush(struct amdgpu_ring *ring)
+
+    emit an hdp flush
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu_ring pointer
+
+.. _`uvd_v5_0_ring_emit_hdp_flush.description`:
+
+Description
+-----------
+
+Emits an hdp flush.
+
+.. _`uvd_v5_0_ring_emit_hdp_invalidate`:
+
+uvd_v5_0_ring_emit_hdp_invalidate
+=================================
+
+.. c:function:: void uvd_v5_0_ring_emit_hdp_invalidate(struct amdgpu_ring *ring)
+
+    emit an hdp invalidate
+
+    :param struct amdgpu_ring \*ring:
+        amdgpu_ring pointer
+
+.. _`uvd_v5_0_ring_emit_hdp_invalidate.description`:
+
+Description
+-----------
+
+Emits an hdp invalidate.
+
 .. _`uvd_v5_0_ring_test_ring`:
 
 uvd_v5_0_ring_test_ring
@@ -227,25 +265,6 @@ Description
 -----------
 
 Write ring commands to execute the indirect buffer
-
-.. _`uvd_v5_0_ring_test_ib`:
-
-uvd_v5_0_ring_test_ib
-=====================
-
-.. c:function:: int uvd_v5_0_ring_test_ib(struct amdgpu_ring *ring)
-
-    test ib execution
-
-    :param struct amdgpu_ring \*ring:
-        amdgpu_ring pointer
-
-.. _`uvd_v5_0_ring_test_ib.description`:
-
-Description
------------
-
-Test if we can successfully execute an IB
 
 .. This file was automatic generated / don't edit.
 

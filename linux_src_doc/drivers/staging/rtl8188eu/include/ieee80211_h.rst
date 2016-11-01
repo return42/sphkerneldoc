@@ -59,23 +59,5 @@ Description
 
 Channel flags set by the regulatory control code.
 
-.. _`for_each_ie`:
-
-for_each_ie
-===========
-
-.. c:function::  for_each_ie( ie,  buf,  buf_len)
-
-    iterate over continuous IEs
-
-    :param  ie:
-        *undescribed*
-
-    :param  buf:
-        *undescribed*
-
-    :param  buf_len:
-        *undescribed*
-
 .. This file was automatic generated / don't edit.
 

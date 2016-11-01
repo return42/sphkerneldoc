@@ -83,5 +83,185 @@ consumer
     whatever is using it, will be NULL if there is no current user but may
     also be NULL if the consumer doesn't set this up
 
+.. _`gpiohandle_request`:
+
+struct gpiohandle_request
+=========================
+
+.. c:type:: struct gpiohandle_request
+
+    Information about a GPIO handle request
+
+.. _`gpiohandle_request.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gpiohandle_request {
+        __u32 lineoffsets[GPIOHANDLES_MAX];
+        __u32 flags;
+        __u8 default_values[GPIOHANDLES_MAX];
+        char consumer_label[32];
+        __u32 lines;
+        int fd;
+    }
+
+.. _`gpiohandle_request.members`:
+
+Members
+-------
+
+lineoffsets
+    an array desired lines, specified by offset index for the
+    associated GPIO device
+
+flags
+    desired flags for the desired GPIO lines, such as
+    GPIOHANDLE_REQUEST_OUTPUT, GPIOHANDLE_REQUEST_ACTIVE_LOW etc, OR:ed
+    together. Note that even if multiple lines are requested, the same flags
+    must be applicable to all of them, if you want lines with individual
+    flags set, request them one by one. It is possible to select
+    a batch of input or output lines, but they must all have the same
+    characteristics, i.e. all inputs or all outputs, all active low etc
+
+default_values
+    if the GPIOHANDLE_REQUEST_OUTPUT is set for a requested
+    line, this specifies the default output value, should be 0 (low) or
+    1 (high), anything else than 0 or 1 will be interpreted as 1 (high)
+
+consumer_label
+    a desired consumer label for the selected GPIO line(s)
+    such as "my-bitbanged-relay"
+
+lines
+    number of lines requested in this request, i.e. the number of
+    valid fields in the above arrays, set to 1 to request a single line
+
+fd
+    if successful this field will contain a valid anonymous file handle
+    after a GPIO_GET_LINEHANDLE_IOCTL operation, zero or negative value
+    means error
+
+.. _`gpiohandle_data`:
+
+struct gpiohandle_data
+======================
+
+.. c:type:: struct gpiohandle_data
+
+    Information of values on a GPIO handle
+
+.. _`gpiohandle_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gpiohandle_data {
+        __u8 values[GPIOHANDLES_MAX];
+    }
+
+.. _`gpiohandle_data.members`:
+
+Members
+-------
+
+values
+    when getting the state of lines this contains the current
+    state of a line, when setting the state of lines these should contain
+    the desired target state
+
+.. _`gpioevent_request`:
+
+struct gpioevent_request
+========================
+
+.. c:type:: struct gpioevent_request
+
+    Information about a GPIO event request
+
+.. _`gpioevent_request.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gpioevent_request {
+        __u32 lineoffset;
+        __u32 handleflags;
+        __u32 eventflags;
+        char consumer_label[32];
+        int fd;
+    }
+
+.. _`gpioevent_request.members`:
+
+Members
+-------
+
+lineoffset
+    the desired line to subscribe to events from, specified by
+    offset index for the associated GPIO device
+
+handleflags
+    desired handle flags for the desired GPIO line, such as
+    GPIOHANDLE_REQUEST_ACTIVE_LOW or GPIOHANDLE_REQUEST_OPEN_DRAIN
+
+eventflags
+    desired flags for the desired GPIO event line, such as
+    GPIOEVENT_REQUEST_RISING_EDGE or GPIOEVENT_REQUEST_FALLING_EDGE
+
+consumer_label
+    a desired consumer label for the selected GPIO line(s)
+    such as "my-listener"
+
+fd
+    if successful this field will contain a valid anonymous file handle
+    after a GPIO_GET_LINEEVENT_IOCTL operation, zero or negative value
+    means error
+
+.. _`gpioevent_event_rising_edge`:
+
+GPIOEVENT_EVENT_RISING_EDGE
+===========================
+
+.. c:function::  GPIOEVENT_EVENT_RISING_EDGE()
+
+.. _`gpioevent_data`:
+
+struct gpioevent_data
+=====================
+
+.. c:type:: struct gpioevent_data
+
+    The actual event being pushed to userspace
+
+.. _`gpioevent_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct gpioevent_data {
+        __u64 timestamp;
+        __u32 id;
+    }
+
+.. _`gpioevent_data.members`:
+
+Members
+-------
+
+timestamp
+    best estimate of time of event occurrence, in nanoseconds
+
+id
+    event identifier
+
 .. This file was automatic generated / don't edit.
 

@@ -1,6 +1,26 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/nfs/nfs4proc.c
 
+.. _`nfs41_check_expired_locks`:
+
+nfs41_check_expired_locks
+=========================
+
+.. c:function:: int nfs41_check_expired_locks(struct nfs4_state *state)
+
+    possibly free a lock stateid
+
+    :param struct nfs4_state \*state:
+        NFSv4 state for an inode
+
+.. _`nfs41_check_expired_locks.description`:
+
+Description
+-----------
+
+Returns NFS_OK if recovery for this stateid is now finished.
+Otherwise a negative NFS4ERR value is returned.
+
 .. _`nfs41_check_open_stateid`:
 
 nfs41_check_open_stateid
@@ -105,26 +125,6 @@ Description
 
 Returns zero, a negative errno, or a negative NFS4ERR status code.
 
-.. _`nfs41_check_expired_locks`:
-
-nfs41_check_expired_locks
-=========================
-
-.. c:function:: int nfs41_check_expired_locks(struct nfs4_state *state)
-
-    possibly free a lock stateid
-
-    :param struct nfs4_state \*state:
-        NFSv4 state for an inode
-
-.. _`nfs41_check_expired_locks.description`:
-
-Description
------------
-
-Returns NFS_OK if recovery for this stateid is now finished.
-Otherwise a negative NFS4ERR value is returned.
-
 .. _`nfs4_proc_get_locations`:
 
 nfs4_proc_get_locations
@@ -211,6 +211,35 @@ _nfs4_proc_secinfo
     :param bool use_integrity:
         *undescribed*
 
+.. _`nfs4_test_session_trunk`:
+
+nfs4_test_session_trunk
+=======================
+
+.. c:function:: int nfs4_test_session_trunk(struct rpc_clnt *clnt, struct rpc_xprt *xprt, void *data)
+
+    :param struct rpc_clnt \*clnt:
+        struct rpc_clnt to get new transport
+
+    :param struct rpc_xprt \*xprt:
+        the rpc_xprt to test
+
+    :param void \*data:
+        call data for \_nfs4_proc_exchange_id.
+
+.. _`nfs4_test_session_trunk.description`:
+
+Description
+-----------
+
+This is an \ :c:func:`add_xprt_test`\  test function called from
+rpc_clnt_setup_test_and_add_xprt.
+
+The rpc_xprt_switch is referrenced by rpc_clnt_setup_test_and_add_xprt
+and is dereferrenced in nfs4_exchange_id_release
+
+Upon success, add the new transport to the rpc_clnt
+
 .. _`_nfs41_proc_secinfo_no_name`:
 
 _nfs41_proc_secinfo_no_name
@@ -267,26 +296,28 @@ failed or the state ID is not currently valid.
 nfs41_free_stateid
 ==================
 
-.. c:function:: int nfs41_free_stateid(struct nfs_server *server, nfs4_stateid *stateid, struct rpc_cred *cred)
+.. c:function:: int nfs41_free_stateid(struct nfs_server *server, const nfs4_stateid *stateid, struct rpc_cred *cred, bool is_recovery)
 
     perform a FREE_STATEID operation
 
     :param struct nfs_server \*server:
         server / transport on which to perform the operation
 
-    :param nfs4_stateid \*stateid:
+    :param const nfs4_stateid \*stateid:
         state ID to release
 
     :param struct rpc_cred \*cred:
         credential
 
-.. _`nfs41_free_stateid.description`:
+    :param bool is_recovery:
+        set to true if this call needs to be privileged
 
-Description
------------
+.. _`nfs41_free_stateid.note`:
 
-Returns NFS_OK if the server freed "stateid".  Otherwise a
-negative NFS4ERR value is returned.
+Note
+----
+
+this function is always asynchronous.
 
 .. This file was automatic generated / don't edit.
 

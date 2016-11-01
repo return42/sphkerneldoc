@@ -138,6 +138,7 @@ Definition
         OVS_PACKET_ATTR_UNUSED2,
         OVS_PACKET_ATTR_PROBE,
         OVS_PACKET_ATTR_MRU,
+        OVS_PACKET_ATTR_LEN,
         __OVS_PACKET_ATTR_MAX
     };
 
@@ -192,6 +193,9 @@ OVS_PACKET_ATTR_PROBE
 
 OVS_PACKET_ATTR_MRU
     Present for an \ ``OVS_PACKET_CMD_ACTION``\  and
+
+OVS_PACKET_ATTR_LEN
+    Packet size before truncation.
     \ ``OVS_PACKET_ATTR_USERSPACE``\  action specify the Maximum received fragment
     size.
 
@@ -391,7 +395,7 @@ OVS_FLOW_ATTR_ACTIONS
     an \ ``OVS_FLOW_ATTR_ACTIONS``\  without any nested attributes must be given.
 
 OVS_FLOW_ATTR_STATS
-    \ :c:type:`struct ovs_flow_stats <ovs_flow_stats>`\  giving statistics for this
+    &struct ovs_flow_stats giving statistics for this
     flow.  Present in notifications if the stats would be nonzero.  Ignored in
     requests.
 
@@ -573,7 +577,7 @@ struct ovs_action_push_mpls
 
 .. c:type:: struct ovs_action_push_mpls
 
-    \ ``OVS_ACTION_ATTR_PUSH_MPLS``\  action argument.
+    %OVS_ACTION_ATTR_PUSH_MPLS action argument.
 
 .. _`ovs_action_push_mpls.definition`:
 
@@ -613,7 +617,7 @@ struct ovs_action_push_vlan
 
 .. c:type:: struct ovs_action_push_vlan
 
-    \ ``OVS_ACTION_ATTR_PUSH_VLAN``\  action argument.
+    %OVS_ACTION_ATTR_PUSH_VLAN action argument.
 
 .. _`ovs_action_push_vlan.definition`:
 
@@ -644,10 +648,10 @@ vlan_tci
 Description
 -----------
 
-The \ ``vlan_tpid``\  value is typically \ ``ETH_P_8021Q``\ .  The only acceptable TPID
-values are those that the kernel module also parses as 802.1Q headers, to
-prevent \ ``OVS_ACTION_ATTR_PUSH_VLAN``\  followed by \ ``OVS_ACTION_ATTR_POP_VLAN``\ 
-from having surprising results.
+The \ ``vlan_tpid``\  value is typically \ ``ETH_P_8021Q``\  or \ ``ETH_P_8021AD``\ .
+The only acceptable TPID values are those that the kernel module also parses
+as 802.1Q or 802.1AD headers, to prevent \ ``OVS_ACTION_ATTR_PUSH_VLAN``\  followed
+by \ ``OVS_ACTION_ATTR_POP_VLAN``\  from having surprising results.
 
 .. _`ovs_ct_attr`:
 
@@ -699,7 +703,7 @@ OVS_CT_ATTR_MARK
     tracking mark field in the connection.
 
 OVS_CT_ATTR_LABELS
-    \ ``OVS_CT_LABELS_LEN``\  value followed by \ ``OVS_CT_LABELS_LEN``\ 
+    %OVS_CT_LABELS_LEN value followed by \ ``OVS_CT_LABELS_LEN``\ 
     mask. For each bit set in the mask, the corresponding bit in the value is
     copied to the connection tracking label field in the connection.
 
@@ -756,7 +760,7 @@ OVS_NAT_ATTR_SRC
 
 OVS_NAT_ATTR_DST
     Flag for Destination NAT (mangle destination
-    address/port).  Only one of (\ ``OVS_NAT_ATTR_SRC``\ , \ ``OVS_NAT_ATTR_DST``\ ) may be
+    address/port).  Only one of (@OVS_NAT_ATTR_SRC, \ ``OVS_NAT_ATTR_DST``\ ) may be
     specified.  Effective only for packets for ct_state NEW connections.
     Packets of committed connections are mangled by the NAT action according to
     the committed NAT type regardless of the flags specified.  As a corollary, a
@@ -820,6 +824,7 @@ Definition
         OVS_ACTION_ATTR_POP_MPLS,
         OVS_ACTION_ATTR_SET_MASKED,
         OVS_ACTION_ATTR_CT,
+        OVS_ACTION_ATTR_TRUNC,
         __OVS_ACTION_ATTR_MAX,
         OVS_ACTION_ATTR_SET_TO_MASKED
     };
@@ -845,11 +850,12 @@ OVS_ACTION_ATTR_SET
     value.
 
 OVS_ACTION_ATTR_PUSH_VLAN
-    Push a new outermost 802.1Q header onto the
-    packet.
+    Push a new outermost 802.1Q or 802.1ad header
+    onto the packet.
 
 OVS_ACTION_ATTR_POP_VLAN
-    Pop the outermost 802.1Q header off the packet.
+    Pop the outermost 802.1Q or 802.1ad header
+    from the packet.
 
 OVS_ACTION_ATTR_SAMPLE
     Probabilitically executes actions, as specified in
@@ -885,6 +891,9 @@ OVS_ACTION_ATTR_SET_MASKED
 OVS_ACTION_ATTR_CT
     Track the connection. Populate the conntrack-related
     entries in the flow key.
+
+OVS_ACTION_ATTR_TRUNC
+    Output packet to port with truncated packet size.
 
 __OVS_ACTION_ATTR_MAX
     *undescribed*

@@ -36,7 +36,7 @@ lov_lock_enqueue
 
 .. c:function:: int lov_lock_enqueue(const struct lu_env *env, const struct cl_lock_slice *slice, struct cl_io *io, struct cl_sync_io *anchor)
 
-    :\ :c:func:`clo_enqueue`\  for lov layer. This function is rather subtle, as it enqueues top-lock (i.e., advances top-lock state machine from CLS_QUEUING to CLS_ENQUEUED states) by juggling sub-lock state machines in the face of sub-locks sharing (by multiple top-locks), and concurrent sub-lock cancellations.
+    :clo_enqueue() for lov layer. This function is rather subtle, as it enqueues top-lock (i.e., advances top-lock state machine from CLS_QUEUING to CLS_ENQUEUED states) by juggling sub-lock state machines in the face of sub-locks sharing (by multiple top-locks), and concurrent sub-lock cancellations.
 
     :param const struct lu_env \*env:
         *undescribed*

@@ -1,76 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drm_crtc.h
 
-.. _`drm_framebuffer_funcs`:
-
-struct drm_framebuffer_funcs
-============================
-
-.. c:type:: struct drm_framebuffer_funcs
-
-    framebuffer hooks
-
-.. _`drm_framebuffer_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_framebuffer_funcs {
-        void (*destroy)(struct drm_framebuffer *framebuffer);
-        int (*create_handle)(struct drm_framebuffer *fb,struct drm_file *file_priv,unsigned int *handle);
-        int (*dirty)(struct drm_framebuffer *framebuffer,struct drm_file *file_priv, unsigned flags,unsigned color, struct drm_clip_rect *clips,unsigned num_clips);
-    }
-
-.. _`drm_framebuffer_funcs.members`:
-
-Members
--------
-
-destroy
-
-    Clean up framebuffer resources, specifically also unreference the
-    backing storage. The core guarantees to call this function for every
-    framebuffer successfully created by ->\ :c:func:`fb_create`\  in
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`. Drivers must also call
-    \ :c:func:`drm_framebuffer_cleanup`\  to release DRM core resources for this
-    framebuffer.
-
-create_handle
-
-    Create a buffer handle in the driver-specific buffer manager (either
-    GEM or TTM) valid for the passed-in struct \ :c:type:`struct drm_file <drm_file>`. This is used by
-    the core to implement the GETFB IOCTL, which returns (for
-    sufficiently priviledged user) also a native buffer handle. This can
-    be used for seamless transitions between modesetting clients by
-    copying the current screen contents to a private buffer and blending
-    between that and the new contents.
-
-    GEM based drivers should call \ :c:func:`drm_gem_handle_create`\  to create the
-    handle.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-dirty
-
-    Optional callback for the dirty fb IOCTL.
-
-    Userspace can notify the driver via this callback that an area of the
-    framebuffer has changed and should be flushed to the display
-    hardware. This can also be used internally, e.g. by the fbdev
-    emulation, though that's not the case currently.
-
-    See documentation in drm_mode.h for the struct drm_mode_fb_dirty_cmd
-    for more information as all the semantics and arguments have a one to
-    one mapping on this function.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
 .. _`drm_crtc_state`:
 
 struct drm_crtc_state
@@ -95,6 +25,7 @@ Definition
         bool mode_changed:1;
         bool active_changed:1;
         bool connectors_changed:1;
+        bool zpos_changed:1;
         bool color_mgmt_changed:1;
         u32 plane_mask;
         u32 connector_mask;
@@ -136,6 +67,9 @@ active_changed
 connectors_changed
     connectors to this crtc have been updated
 
+zpos_changed
+    zpos values of planes on this crtc have been updated
+
 color_mgmt_changed
     color management properties have changed (degamma or
     gamma LUT or CSC matrix)
@@ -160,7 +94,7 @@ mode
     current mode timings
 
 mode_blob
-    *undescribed*
+    &drm_property_blob for \ ``mode``\ 
 
 degamma_lut
     Lookup table for converting framebuffer pixel data
@@ -174,8 +108,43 @@ gamma_lut
     conversion matrix
 
 event
-    optional pointer to a DRM event to signal upon completion of the
-    state update
+
+    Optional pointer to a DRM event to signal upon completion of the
+    state update. The driver must send out the event when the atomic
+    commit operation completes. There are two cases:
+
+     - The event is for a CRTC which is being disabled through this
+       atomic commit. In that case the event can be send out any time
+       after the hardware has stopped scanning out the current
+       framebuffers. It should contain the timestamp and counter for the
+       last vblank before the display pipeline was shut off.
+
+     - For a CRTC which is enabled at the end of the commit (even when it
+       undergoes an full modeset) the vblank timestamp and counter must
+       be for the vblank right before the first frame that scans out the
+       new set of buffers. Again the event can only be sent out after the
+       hardware has stopped scanning out the old buffers.
+
+     - Events for disabled CRTCs are not allowed, and drivers can ignore
+       that case.
+
+    This can be handled by the \ :c:func:`drm_crtc_send_vblank_event`\  function,
+    which the driver should call on the provided event upon completion of
+    the atomic commit. Note that if the driver supports vblank signalling
+    and timestamping the vblank counters and timestamps must agree with
+    the ones returned from page flip events. With the current vblank
+    helper infrastructure this can be achieved by holding a vblank
+    reference while the page flip is pending, acquired through
+    \ :c:func:`drm_crtc_vblank_get`\  and released with \ :c:func:`drm_crtc_vblank_put`\ .
+    Drivers are free to implement their own vblank counter and timestamp
+    tracking though, e.g. if they have accurate timestamp registers in
+    hardware.
+
+    For hardware which supports some means to synchronize vblank
+    interrupt delivery with committing display state there's also
+    \ :c:func:`drm_crtc_arm_vblank_event`\ . See the documentation of that function
+    for a detailed discussion of the constraints it needs to be used
+    safely.
 
 state
     backpointer to global drm_atomic_state
@@ -212,15 +181,18 @@ Definition
         int (*cursor_set)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height);
         int (*cursor_set2)(struct drm_crtc *crtc, struct drm_file *file_priv,uint32_t handle, uint32_t width, uint32_t height,int32_t hot_x, int32_t hot_y);
         int (*cursor_move)(struct drm_crtc *crtc, int x, int y);
-        void (*gamma_set)(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t start, uint32_t size);
+        int (*gamma_set)(struct drm_crtc *crtc, u16 *r, u16 *g, u16 *b,uint32_t size);
         void (*destroy)(struct drm_crtc *crtc);
         int (*set_config)(struct drm_mode_set *set);
         int (*page_flip)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags);
+        int (*page_flip_target)(struct drm_crtc *crtc,struct drm_framebuffer *fb,struct drm_pending_vblank_event *event,uint32_t flags, uint32_t target);
         int (*set_property)(struct drm_crtc *crtc,struct drm_property *property, uint64_t val);
         struct drm_crtc_state *(*atomic_duplicate_state)(struct drm_crtc *crtc);
         void (*atomic_destroy_state)(struct drm_crtc *crtc,struct drm_crtc_state *state);
         int (*atomic_set_property)(struct drm_crtc *crtc,struct drm_crtc_state *state,struct drm_property *property,uint64_t val);
         int (*atomic_get_property)(struct drm_crtc *crtc,const struct drm_crtc_state *state,struct drm_property *property,uint64_t *val);
+        int (*late_register)(struct drm_crtc *crtc);
+        void (*early_unregister)(struct drm_crtc *crtc);
     }
 
 .. _`drm_crtc_funcs.members`:
@@ -314,7 +286,7 @@ set_config
 
     This is the main legacy entry point to change the modeset state on a
     CRTC. All the details of the desired configuration are passed in a
-    struct \ :c:type:`struct drm_mode_set <drm_mode_set>` - see there for details.
+    struct \ :c:type:`struct drm_mode_set <drm_mode_set>`\  - see there for details.
 
     Drivers implementing atomic modeset should use
     \ :c:func:`drm_atomic_helper_set_config`\  to implement this hook.
@@ -333,7 +305,7 @@ page_flip
     through the DRM_MODE_PAGE_FLIP_ASYNC flag). When an application
     requests a page flip the DRM core verifies that the new frame buffer
     is large enough to be scanned out by the CRTC in the currently
-    configured mode and then calls the CRTC ->\ :c:func:`page_flip`\  operation with a
+    configured mode and then calls the CRTC ->page_flip() operation with a
     pointer to the new frame buffer.
 
     The driver must wait for any pending rendering to the new framebuffer
@@ -342,7 +314,7 @@ page_flip
     shared dma-buf.
 
     An application can request to be notified when the page flip has
-    completed. The drm core will supply a struct \ :c:type:`struct drm_event <drm_event>` in the event
+    completed. The drm core will supply a struct \ :c:type:`struct drm_event <drm_event>`\  in the event
     parameter in this case. This can be handled by the
     \ :c:func:`drm_crtc_send_vblank_event`\  function, which the driver should call on
     the provided event upon completion of the flip. Note that if
@@ -354,16 +326,6 @@ page_flip
     \ :c:func:`drm_crtc_vblank_put`\ . Drivers are free to implement their own vblank
     counter and timestamp tracking though, e.g. if they have accurate
     timestamp registers in hardware.
-
-    FIXME:
-
-    Up to that point drivers need to manage events themselves and can use
-    even->base.list freely for that. Specifically they need to ensure
-    that they don't send out page flip (or vblank) events for which the
-    corresponding drm file has been closed already. The drm core
-    unfortunately does not (yet) take care of that. Therefore drivers
-    currently must clean up and release pending events in their
-    ->preclose driver function.
 
     This callback is optional.
 
@@ -379,11 +341,23 @@ page_flip
     RETURNS:
 
     0 on success or a negative error code on failure. Note that if a
-    ->\ :c:func:`page_flip`\  operation is already pending the callback should return
+    ->page_flip() operation is already pending the callback should return
     -EBUSY. Pageflips on a disabled CRTC (either by setting a NULL mode
     or just runtime disabled through DPMS respectively the new atomic
     "ACTIVE" state) should result in an -EINVAL error code. Note that
     \ :c:func:`drm_atomic_helper_page_flip`\  checks this already for atomic drivers.
+
+page_flip_target
+
+    Same as \ ``page_flip``\  but with an additional parameter specifying the
+    absolute target vertical blank period (as reported by
+    \ :c:func:`drm_crtc_vblank_count`\ ) when the flip should take effect.
+
+    Note that the core code calls drm_crtc_vblank_get before this entry
+    point, and will call drm_crtc_vblank_put if this entry point returns
+    any non-0 error code. It's the driver's responsibility to call
+    drm_crtc_vblank_put after this entry point returns 0, typically when
+    the flip completes.
 
 set_property
 
@@ -405,14 +379,14 @@ atomic_duplicate_state
     Duplicate the current atomic state for this CRTC and return it.
     The core and helpers gurantee that any atomic state duplicated with
     this hook and still owned by the caller (i.e. not transferred to the
-    driver by calling ->\ :c:func:`atomic_commit`\  from struct
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`) will be cleaned up by calling the
+    driver by calling ->atomic_commit() from struct
+    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`\ ) will be cleaned up by calling the
     \ ``atomic_destroy_state``\  hook in this structure.
 
-    Atomic drivers which don't subclass struct \ :c:type:`struct drm_crtc <drm_crtc>` should use
+    Atomic drivers which don't subclass struct \ :c:type:`struct drm_crtc <drm_crtc>`\  should use
     \ :c:func:`drm_atomic_helper_crtc_duplicate_state`\ . Drivers that subclass the
     state structure to extend it with driver-private state should use
-    \\ :c:func:`__drm_atomic_helper_crtc_duplicate_state`\  to make sure shared state is
+    \ :c:func:`__drm_atomic_helper_crtc_duplicate_state`\  to make sure shared state is
     duplicated in a consistent fashion across drivers.
 
     It is an error to call this hook before crtc->state has been
@@ -491,6 +465,26 @@ atomic_get_property
     driver (which should never happen, the core only asks for
     properties attached to this CRTC).
 
+late_register
+
+    This optional hook can be used to register additional userspace
+    interfaces attached to the crtc like debugfs interfaces.
+    It is called late in the driver load sequence from \ :c:func:`drm_dev_register`\ .
+    Everything added from this callback should be unregistered in
+    the early_unregister callback.
+
+    Returns:
+
+    0 on success, or a negative error code on failure.
+
+early_unregister
+
+    This optional hook should be used to unregister the additional
+    userspace interfaces attached to the crtc from
+    \ :c:func:`late_unregister`\ . It is called from \ :c:func:`drm_dev_unregister`\ ,
+    early in the driver unload sequence to disable userspace access
+    before data structures are torndown.
+
 .. _`drm_crtc_funcs.description`:
 
 Description
@@ -530,6 +524,7 @@ Definition
         struct drm_mode_object base;
         struct drm_plane *primary;
         struct drm_plane *cursor;
+        unsigned index;
         int cursor_x;
         int cursor_y;
         bool enabled;
@@ -543,6 +538,8 @@ Definition
         const struct drm_crtc_helper_funcs *helper_private;
         struct drm_object_properties properties;
         struct drm_crtc_state *state;
+        struct list_head commit_list;
+        spinlock_t commit_lock;
         struct drm_modeset_acquire_ctx *acquire_ctx;
     }
 
@@ -561,10 +558,14 @@ head
     list management
 
 name
-    *undescribed*
+    human readable name, can be overwritten by the driver
 
 mutex
-    per-CRTC locking
+
+    This provides a read lock for the overall crtc state (mode, dpms
+    state, ...) and a write lock for everything which can be update
+    without a full modeset (fb, cursor data, crtc properties ...). Full
+    modeset also need to grab dev->mode_config.connection_mutex.
 
 base
     base KMS object for ID tracking etc.
@@ -574,6 +575,9 @@ primary
 
 cursor
     cursor plane for this CRTC
+
+index
+    Position inside the mode_config.list, can be used as an arrayindex. It is invariant over the lifetime of the CRTC.
 
 cursor_x
     current x position of the cursor, used for universal cursor planes
@@ -612,11 +616,26 @@ properties
     property tracking for this CRTC
 
 state
-    current atomic state for this CRTC
+
+    Current atomic state for this CRTC.
+
+commit_list
+
+    List of \ :c:type:`struct drm_crtc_commit <drm_crtc_commit>`\  structures tracking pending commits.
+    Protected by \ ``commit_lock``\ . This list doesn't hold its own full
+    reference, but burrows it from the ongoing commit. Commit entries
+    must be removed from this list once the commit is fully completed,
+    but before it's correspoding \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  gets destroyed.
+
+commit_lock
+
+    Spinlock to protect \ ``commit_list``\ .
 
 acquire_ctx
-    per-CRTC implicit acquire context used by atomic drivers for
-    legacy IOCTLs
+
+    Per-CRTC implicit acquire context used by atomic drivers for legacy
+    IOCTLs, so that atomic drivers can get at the locking acquire
+    context.
 
 .. _`drm_crtc.description`:
 
@@ -625,1253 +644,6 @@ Description
 
 Each CRTC may have one or more connectors associated with it.  This structure
 allows the CRTC to be controlled.
-
-.. _`drm_connector_state`:
-
-struct drm_connector_state
-==========================
-
-.. c:type:: struct drm_connector_state
-
-    mutable connector state
-
-.. _`drm_connector_state.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_connector_state {
-        struct drm_connector *connector;
-        struct drm_crtc *crtc;
-        struct drm_encoder *best_encoder;
-        struct drm_atomic_state *state;
-    }
-
-.. _`drm_connector_state.members`:
-
-Members
--------
-
-connector
-    backpointer to the connector
-
-crtc
-    CRTC to connect connector to, NULL if disabled
-
-best_encoder
-    can be used by helpers and drivers to select the encoder
-
-state
-    backpointer to global drm_atomic_state
-
-.. _`drm_connector_funcs`:
-
-struct drm_connector_funcs
-==========================
-
-.. c:type:: struct drm_connector_funcs
-
-    control connectors on a given device
-
-.. _`drm_connector_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_connector_funcs {
-        int (*dpms)(struct drm_connector *connector, int mode);
-        void (*reset)(struct drm_connector *connector);
-        enum drm_connector_status (*detect)(struct drm_connector *connector,bool force);
-        void (*force)(struct drm_connector *connector);
-        int (*fill_modes)(struct drm_connector *connector, uint32_t max_width, uint32_t max_height);
-        int (*set_property)(struct drm_connector *connector, struct drm_property *property,uint64_t val);
-        void (*destroy)(struct drm_connector *connector);
-        struct drm_connector_state *(*atomic_duplicate_state)(struct drm_connector *connector);
-        void (*atomic_destroy_state)(struct drm_connector *connector,struct drm_connector_state *state);
-        int (*atomic_set_property)(struct drm_connector *connector,struct drm_connector_state *state,struct drm_property *property,uint64_t val);
-        int (*atomic_get_property)(struct drm_connector *connector,const struct drm_connector_state *state,struct drm_property *property,uint64_t *val);
-    }
-
-.. _`drm_connector_funcs.members`:
-
-Members
--------
-
-dpms
-
-    Legacy entry point to set the per-connector DPMS state. Legacy DPMS
-    is exposed as a standard property on the connector, but diverted to
-    this callback in the drm core. Note that atomic drivers don't
-    implement the 4 level DPMS support on the connector any more, but
-    instead only have an on/off "ACTIVE" property on the CRTC object.
-
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_connector_dpms`\  to implement this hook.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-reset
-
-    Reset connector hardware and software state to off. This function isn't
-    called by the core directly, only through \ :c:func:`drm_mode_config_reset`\ .
-    It's not a helper hook only for historical reasons.
-
-    Atomic drivers can use \ :c:func:`drm_atomic_helper_connector_reset`\  to reset
-    atomic state using this hook.
-
-detect
-
-    Check to see if anything is attached to the connector. The parameter
-    force is set to false whilst polling, true when checking the
-    connector due to a user request. force can be used by the driver to
-    avoid expensive, destructive operations during automated probing.
-
-    FIXME:
-
-    Note that this hook is only called by the probe helper. It's not in
-    the helper library vtable purely for historical reasons. The only DRM
-    core entry point to probe connector state is \ ``fill_modes``\ .
-
-    RETURNS:
-
-    drm_connector_status indicating the connector's status.
-
-force
-
-    This function is called to update internal encoder state when the
-    connector is forced to a certain state by userspace, either through
-    the sysfs interfaces or on the kernel cmdline. In that case the
-    \ ``detect``\  callback isn't called.
-
-    FIXME:
-
-    Note that this hook is only called by the probe helper. It's not in
-    the helper library vtable purely for historical reasons. The only DRM
-    core entry point to probe connector state is \ ``fill_modes``\ .
-
-fill_modes
-
-    Entry point for output detection and basic mode validation. The
-    driver should reprobe the output if needed (e.g. when hotplug
-    handling is unreliable), add all detected modes to connector->modes
-    and filter out any the device can't support in any configuration. It
-    also needs to filter out any modes wider or higher than the
-    parameters max_width and max_height indicate.
-
-    The drivers must also prune any modes no longer valid from
-    connector->modes. Furthermore it must update connector->status and
-    connector->edid.  If no EDID has been received for this output
-    connector->edid must be NULL.
-
-    Drivers using the probe helpers should use
-    \ :c:func:`drm_helper_probe_single_connector_modes`\  or
-    \ :c:func:`drm_helper_probe_single_connector_modes_nomerge`\  to implement this
-    function.
-
-    RETURNS:
-
-    The number of modes detected and filled into connector->modes.
-
-set_property
-
-    This is the legacy entry point to update a property attached to the
-    connector.
-
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_connector_set_property`\  to implement this hook.
-
-    This callback is optional if the driver does not support any legacy
-    driver-private properties.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-destroy
-
-    Clean up connector resources. This is called at driver unload time
-    through \ :c:func:`drm_mode_config_cleanup`\ . It can also be called at runtime
-    when a connector is being hot-unplugged for drivers that support
-    connector hotplugging (e.g. DisplayPort MST).
-
-atomic_duplicate_state
-
-    Duplicate the current atomic state for this connector and return it.
-    The core and helpers gurantee that any atomic state duplicated with
-    this hook and still owned by the caller (i.e. not transferred to the
-    driver by calling ->\ :c:func:`atomic_commit`\  from struct
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`) will be cleaned up by calling the
-    \ ``atomic_destroy_state``\  hook in this structure.
-
-    Atomic drivers which don't subclass struct \ :c:type:`struct drm_connector_state <drm_connector_state>` should use
-    \ :c:func:`drm_atomic_helper_connector_duplicate_state`\ . Drivers that subclass the
-    state structure to extend it with driver-private state should use
-    \\ :c:func:`__drm_atomic_helper_connector_duplicate_state`\  to make sure shared state is
-    duplicated in a consistent fashion across drivers.
-
-    It is an error to call this hook before connector->state has been
-    initialized correctly.
-
-    NOTE:
-
-    If the duplicate state references refcounted resources this hook must
-    acquire a reference for each of them. The driver must release these
-    references again in \ ``atomic_destroy_state``\ .
-
-    RETURNS:
-
-    Duplicated atomic state or NULL when the allocation failed.
-
-atomic_destroy_state
-
-    Destroy a state duplicated with \ ``atomic_duplicate_state``\  and release
-    or unreference all resources it references
-
-atomic_set_property
-
-    Decode a driver-private property value and store the decoded value
-    into the passed-in state structure. Since the atomic core decodes all
-    standardized properties (even for extensions beyond the core set of
-    properties which might not be implemented by all drivers) this
-    requires drivers to subclass the state structure.
-
-    Such driver-private properties should really only be implemented for
-    truly hardware/vendor specific state. Instead it is preferred to
-    standardize atomic extension and decode the properties used to expose
-    such an extension in the core.
-
-    Do not call this function directly, use
-    \ :c:func:`drm_atomic_connector_set_property`\  instead.
-
-    This callback is optional if the driver does not support any
-    driver-private atomic properties.
-
-    NOTE:
-
-    This function is called in the state assembly phase of atomic
-    modesets, which can be aborted for any reason (including on
-    userspace's request to just check whether a configuration would be
-    possible). Drivers MUST NOT touch any persistent state (hardware or
-    software) or data structures except the passed in \ ``state``\  parameter.
-
-    Also since userspace controls in which order properties are set this
-    function must not do any input validation (since the state update is
-    incomplete and hence likely inconsistent). Instead any such input
-    validation must be done in the various atomic_check callbacks.
-
-    RETURNS:
-
-    0 if the property has been found, -EINVAL if the property isn't
-    implemented by the driver (which shouldn't ever happen, the core only
-    asks for properties attached to this connector). No other validation
-    is allowed by the driver. The core already checks that the property
-    value is within the range (integer, valid enum value, ...) the driver
-    set when registering the property.
-
-atomic_get_property
-
-    Reads out the decoded driver-private property. This is used to
-    implement the GETCONNECTOR IOCTL.
-
-    Do not call this function directly, use
-    \ :c:func:`drm_atomic_connector_get_property`\  instead.
-
-    This callback is optional if the driver does not support any
-    driver-private atomic properties.
-
-    RETURNS:
-
-    0 on success, -EINVAL if the property isn't implemented by the
-    driver (which shouldn't ever happen, the core only asks for
-    properties attached to this connector).
-
-.. _`drm_connector_funcs.description`:
-
-Description
------------
-
-Each CRTC may have one or more connectors attached to it.  The functions
-below allow the core DRM code to control connectors, enumerate available modes,
-etc.
-
-.. _`drm_encoder_funcs`:
-
-struct drm_encoder_funcs
-========================
-
-.. c:type:: struct drm_encoder_funcs
-
-    encoder controls
-
-.. _`drm_encoder_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_encoder_funcs {
-        void (*reset)(struct drm_encoder *encoder);
-        void (*destroy)(struct drm_encoder *encoder);
-    }
-
-.. _`drm_encoder_funcs.members`:
-
-Members
--------
-
-reset
-
-    Reset encoder hardware and software state to off. This function isn't
-    called by the core directly, only through \ :c:func:`drm_mode_config_reset`\ .
-    It's not a helper hook only for historical reasons.
-
-destroy
-
-    Clean up encoder resources. This is only called at driver unload time
-    through \ :c:func:`drm_mode_config_cleanup`\  since an encoder cannot be
-    hotplugged in DRM.
-
-.. _`drm_encoder_funcs.description`:
-
-Description
------------
-
-Encoders sit between CRTCs and connectors.
-
-.. _`drm_encoder`:
-
-struct drm_encoder
-==================
-
-.. c:type:: struct drm_encoder
-
-    central DRM encoder structure
-
-.. _`drm_encoder.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_encoder {
-        struct drm_device *dev;
-        struct list_head head;
-        struct drm_mode_object base;
-        char *name;
-        int encoder_type;
-        uint32_t possible_crtcs;
-        uint32_t possible_clones;
-        struct drm_crtc *crtc;
-        struct drm_bridge *bridge;
-        const struct drm_encoder_funcs *funcs;
-        const struct drm_encoder_helper_funcs *helper_private;
-    }
-
-.. _`drm_encoder.members`:
-
-Members
--------
-
-dev
-    parent DRM device
-
-head
-    list management
-
-base
-    base KMS object
-
-name
-    encoder name
-
-encoder_type
-    one of the \ ``DRM_MODE_ENCODER_``\ <foo> types in drm_mode.h
-
-possible_crtcs
-    bitmask of potential CRTC bindings
-
-possible_clones
-    bitmask of potential sibling encoders for cloning
-
-crtc
-    currently bound CRTC
-
-bridge
-    bridge associated to the encoder
-
-funcs
-    control functions
-
-helper_private
-    mid-layer private data
-
-.. _`drm_encoder.description`:
-
-Description
------------
-
-CRTCs drive pixels to encoders, which convert them into signals
-appropriate for a given connector or set of connectors.
-
-.. _`drm_connector`:
-
-struct drm_connector
-====================
-
-.. c:type:: struct drm_connector
-
-    central DRM connector control structure
-
-.. _`drm_connector.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_connector {
-        struct drm_device *dev;
-        struct device *kdev;
-        struct device_attribute *attr;
-        struct list_head head;
-        struct drm_mode_object base;
-        char *name;
-        int connector_id;
-        int connector_type;
-        int connector_type_id;
-        bool interlace_allowed;
-        bool doublescan_allowed;
-        bool stereo_allowed;
-        struct list_head modes;
-        enum drm_connector_status status;
-        struct list_head probed_modes;
-        struct drm_display_info display_info;
-        const struct drm_connector_funcs *funcs;
-        struct drm_property_blob *edid_blob_ptr;
-        struct drm_object_properties properties;
-        struct drm_property_blob *path_blob_ptr;
-        struct drm_property_blob *tile_blob_ptr;
-        uint8_t polled;
-        int dpms;
-        const struct drm_connector_helper_funcs *helper_private;
-        struct drm_cmdline_mode cmdline_mode;
-        enum drm_connector_force force;
-        bool override_edid;
-        uint32_t encoder_ids[DRM_CONNECTOR_MAX_ENCODER];
-        struct drm_encoder *encoder;
-        uint8_t eld[MAX_ELD_BYTES];
-        bool dvi_dual;
-        int max_tmds_clock;
-        bool latency_present[2];
-        int video_latency[2];
-        int audio_latency[2];
-        int null_edid_counter;
-        unsigned bad_edid_counter;
-        bool edid_corrupt;
-        struct dentry *debugfs_entry;
-        struct drm_connector_state *state;
-        bool has_tile;
-        struct drm_tile_group *tile_group;
-        bool tile_is_single_monitor;
-        uint8_t num_h_tile;
-        uint8_t num_v_tile;
-        uint8_t tile_h_loc;
-        uint8_t tile_v_loc;
-        uint16_t tile_h_size;
-        uint16_t tile_v_size;
-    }
-
-.. _`drm_connector.members`:
-
-Members
--------
-
-dev
-    parent DRM device
-
-kdev
-    kernel device for sysfs attributes
-
-attr
-    sysfs attributes
-
-head
-    list management
-
-base
-    base KMS object
-
-name
-    connector name
-
-connector_id
-    *undescribed*
-
-connector_type
-    one of the \ ``DRM_MODE_CONNECTOR_``\ <foo> types from drm_mode.h
-
-connector_type_id
-    index into connector type enum
-
-interlace_allowed
-    can this connector handle interlaced modes?
-
-doublescan_allowed
-    can this connector handle doublescan?
-
-stereo_allowed
-    can this connector handle stereo modes?
-
-modes
-    modes available on this connector (from \ :c:func:`fill_modes`\  + user)
-
-status
-    one of the drm_connector_status enums (connected, not, or unknown)
-
-probed_modes
-    list of modes derived directly from the display
-
-display_info
-    information about attached display (e.g. from EDID)
-
-funcs
-    connector control functions
-
-edid_blob_ptr
-    DRM property containing EDID if present
-
-properties
-    property tracking for this connector
-
-path_blob_ptr
-    DRM blob property data for the DP MST path property
-
-tile_blob_ptr
-    *undescribed*
-
-polled
-    a \ ``DRM_CONNECTOR_POLL_``\ <foo> value for core driven polling
-
-dpms
-    current dpms state
-
-helper_private
-    mid-layer private data
-
-cmdline_mode
-    mode line parsed from the kernel cmdline for this connector
-
-force
-    a \ ``DRM_FORCE_``\ <foo> state for forced mode sets
-
-override_edid
-    has the EDID been overwritten through debugfs for testing?
-
-encoder_ids
-    valid encoders for this connector
-
-encoder
-    encoder driving this connector, if any
-
-eld
-    EDID-like data, if present
-
-dvi_dual
-    dual link DVI, if found
-
-max_tmds_clock
-    max clock rate, if found
-
-latency_present
-    AV delay info from ELD, if found
-
-video_latency
-    video latency info from ELD, if found
-
-audio_latency
-    audio latency info from ELD, if found
-
-null_edid_counter
-    track sinks that give us all zeros for the EDID
-
-bad_edid_counter
-    track sinks that give us an EDID with invalid checksum
-
-edid_corrupt
-    indicates whether the last read EDID was corrupt
-
-debugfs_entry
-    debugfs directory for this connector
-
-state
-    current atomic state for this connector
-
-has_tile
-    is this connector connected to a tiled monitor
-
-tile_group
-    tile group for the connected monitor
-
-tile_is_single_monitor
-    whether the tile is one monitor housing
-
-num_h_tile
-    number of horizontal tiles in the tile group
-
-num_v_tile
-    number of vertical tiles in the tile group
-
-tile_h_loc
-    horizontal location of this tile
-
-tile_v_loc
-    vertical location of this tile
-
-tile_h_size
-    horizontal size of this tile.
-
-tile_v_size
-    vertical size of this tile.
-
-.. _`drm_connector.description`:
-
-Description
------------
-
-Each connector may be connected to one or more CRTCs, or may be clonable by
-another connector if they can share a CRTC.  Each connector also has a specific
-position in the broader display (referred to as a 'screen' though it could
-span multiple monitors).
-
-.. _`drm_plane_state`:
-
-struct drm_plane_state
-======================
-
-.. c:type:: struct drm_plane_state
-
-    mutable plane state
-
-.. _`drm_plane_state.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_plane_state {
-        struct drm_plane *plane;
-        struct drm_crtc *crtc;
-        struct drm_framebuffer *fb;
-        struct fence *fence;
-        int32_t crtc_x;
-        int32_t crtc_y;
-        uint32_t crtc_w;
-        uint32_t crtc_h;
-        uint32_t src_x;
-        uint32_t src_y;
-        uint32_t src_h;
-        uint32_t src_w;
-        unsigned int rotation;
-        struct drm_atomic_state *state;
-    }
-
-.. _`drm_plane_state.members`:
-
-Members
--------
-
-plane
-    backpointer to the plane
-
-crtc
-    currently bound CRTC, NULL if disabled
-
-fb
-    currently bound framebuffer
-
-fence
-    optional fence to wait for before scanning out \ ``fb``\ 
-
-crtc_x
-    left position of visible portion of plane on crtc
-
-crtc_y
-    upper position of visible portion of plane on crtc
-
-crtc_w
-    width of visible portion of plane on crtc
-
-crtc_h
-    height of visible portion of plane on crtc
-
-src_x
-    left position of visible portion of plane within
-    plane (in 16.16)
-
-src_y
-    upper position of visible portion of plane within
-    plane (in 16.16)
-
-src_h
-    height of visible portion of plane (in 16.16)
-
-src_w
-    width of visible portion of plane (in 16.16)
-
-rotation
-    *undescribed*
-
-state
-    backpointer to global drm_atomic_state
-
-.. _`drm_plane_funcs`:
-
-struct drm_plane_funcs
-======================
-
-.. c:type:: struct drm_plane_funcs
-
-    driver plane control functions
-
-.. _`drm_plane_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_plane_funcs {
-        int (*update_plane)(struct drm_plane *plane,struct drm_crtc *crtc, struct drm_framebuffer *fb,int crtc_x, int crtc_y,unsigned int crtc_w, unsigned int crtc_h,uint32_t src_x, uint32_t src_y,uint32_t src_w, uint32_t src_h);
-        int (*disable_plane)(struct drm_plane *plane);
-        void (*destroy)(struct drm_plane *plane);
-        void (*reset)(struct drm_plane *plane);
-        int (*set_property)(struct drm_plane *plane,struct drm_property *property, uint64_t val);
-        struct drm_plane_state *(*atomic_duplicate_state)(struct drm_plane *plane);
-        void (*atomic_destroy_state)(struct drm_plane *plane,struct drm_plane_state *state);
-        int (*atomic_set_property)(struct drm_plane *plane,struct drm_plane_state *state,struct drm_property *property,uint64_t val);
-        int (*atomic_get_property)(struct drm_plane *plane,const struct drm_plane_state *state,struct drm_property *property,uint64_t *val);
-    }
-
-.. _`drm_plane_funcs.members`:
-
-Members
--------
-
-update_plane
-
-    This is the legacy entry point to enable and configure the plane for
-    the given CRTC and framebuffer. It is never called to disable the
-    plane, i.e. the passed-in crtc and fb paramters are never NULL.
-
-    The source rectangle in frame buffer memory coordinates is given by
-    the src_x, src_y, src_w and src_h parameters (as 16.16 fixed point
-    values). Devices that don't support subpixel plane coordinates can
-    ignore the fractional part.
-
-    The destination rectangle in CRTC coordinates is given by the
-    crtc_x, crtc_y, crtc_w and crtc_h parameters (as integer values).
-    Devices scale the source rectangle to the destination rectangle. If
-    scaling is not supported, and the source rectangle size doesn't match
-    the destination rectangle size, the driver must return a
-    -<errorname>EINVAL</errorname> error.
-
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_update_plane`\  to implement this hook.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-disable_plane
-
-    This is the legacy entry point to disable the plane. The DRM core
-    calls this method in response to a DRM_IOCTL_MODE_SETPLANE IOCTL call
-    with the frame buffer ID set to 0.  Disabled planes must not be
-    processed by the CRTC.
-
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_disable_plane`\  to implement this hook.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-destroy
-
-    Clean up plane resources. This is only called at driver unload time
-    through \ :c:func:`drm_mode_config_cleanup`\  since a plane cannot be hotplugged
-    in DRM.
-
-reset
-
-    Reset plane hardware and software state to off. This function isn't
-    called by the core directly, only through \ :c:func:`drm_mode_config_reset`\ .
-    It's not a helper hook only for historical reasons.
-
-    Atomic drivers can use \ :c:func:`drm_atomic_helper_plane_reset`\  to reset
-    atomic state using this hook.
-
-set_property
-
-    This is the legacy entry point to update a property attached to the
-    plane.
-
-    Drivers implementing atomic modeset should use
-    \ :c:func:`drm_atomic_helper_plane_set_property`\  to implement this hook.
-
-    This callback is optional if the driver does not support any legacy
-    driver-private properties.
-
-    RETURNS:
-
-    0 on success or a negative error code on failure.
-
-atomic_duplicate_state
-
-    Duplicate the current atomic state for this plane and return it.
-    The core and helpers gurantee that any atomic state duplicated with
-    this hook and still owned by the caller (i.e. not transferred to the
-    driver by calling ->\ :c:func:`atomic_commit`\  from struct
-    \ :c:type:`struct drm_mode_config_funcs <drm_mode_config_funcs>`) will be cleaned up by calling the
-    \ ``atomic_destroy_state``\  hook in this structure.
-
-    Atomic drivers which don't subclass struct \ :c:type:`struct drm_plane_state <drm_plane_state>` should use
-    \ :c:func:`drm_atomic_helper_plane_duplicate_state`\ . Drivers that subclass the
-    state structure to extend it with driver-private state should use
-    \\ :c:func:`__drm_atomic_helper_plane_duplicate_state`\  to make sure shared state is
-    duplicated in a consistent fashion across drivers.
-
-    It is an error to call this hook before plane->state has been
-    initialized correctly.
-
-    NOTE:
-
-    If the duplicate state references refcounted resources this hook must
-    acquire a reference for each of them. The driver must release these
-    references again in \ ``atomic_destroy_state``\ .
-
-    RETURNS:
-
-    Duplicated atomic state or NULL when the allocation failed.
-
-atomic_destroy_state
-
-    Destroy a state duplicated with \ ``atomic_duplicate_state``\  and release
-    or unreference all resources it references
-
-atomic_set_property
-
-    Decode a driver-private property value and store the decoded value
-    into the passed-in state structure. Since the atomic core decodes all
-    standardized properties (even for extensions beyond the core set of
-    properties which might not be implemented by all drivers) this
-    requires drivers to subclass the state structure.
-
-    Such driver-private properties should really only be implemented for
-    truly hardware/vendor specific state. Instead it is preferred to
-    standardize atomic extension and decode the properties used to expose
-    such an extension in the core.
-
-    Do not call this function directly, use
-    \ :c:func:`drm_atomic_plane_set_property`\  instead.
-
-    This callback is optional if the driver does not support any
-    driver-private atomic properties.
-
-    NOTE:
-
-    This function is called in the state assembly phase of atomic
-    modesets, which can be aborted for any reason (including on
-    userspace's request to just check whether a configuration would be
-    possible). Drivers MUST NOT touch any persistent state (hardware or
-    software) or data structures except the passed in \ ``state``\  parameter.
-
-    Also since userspace controls in which order properties are set this
-    function must not do any input validation (since the state update is
-    incomplete and hence likely inconsistent). Instead any such input
-    validation must be done in the various atomic_check callbacks.
-
-    RETURNS:
-
-    0 if the property has been found, -EINVAL if the property isn't
-    implemented by the driver (which shouldn't ever happen, the core only
-    asks for properties attached to this plane). No other validation is
-    allowed by the driver. The core already checks that the property
-    value is within the range (integer, valid enum value, ...) the driver
-    set when registering the property.
-
-atomic_get_property
-
-    Reads out the decoded driver-private property. This is used to
-    implement the GETPLANE IOCTL.
-
-    Do not call this function directly, use
-    \ :c:func:`drm_atomic_plane_get_property`\  instead.
-
-    This callback is optional if the driver does not support any
-    driver-private atomic properties.
-
-    RETURNS:
-
-    0 on success, -EINVAL if the property isn't implemented by the
-    driver (which should never happen, the core only asks for
-    properties attached to this plane).
-
-.. _`drm_plane`:
-
-struct drm_plane
-================
-
-.. c:type:: struct drm_plane
-
-    central DRM plane control structure
-
-.. _`drm_plane.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_plane {
-        struct drm_device *dev;
-        struct list_head head;
-        char *name;
-        struct drm_modeset_lock mutex;
-        struct drm_mode_object base;
-        uint32_t possible_crtcs;
-        uint32_t *format_types;
-        unsigned int format_count;
-        bool format_default;
-        struct drm_crtc *crtc;
-        struct drm_framebuffer *fb;
-        struct drm_framebuffer *old_fb;
-        const struct drm_plane_funcs *funcs;
-        struct drm_object_properties properties;
-        enum drm_plane_type type;
-        const struct drm_plane_helper_funcs *helper_private;
-        struct drm_plane_state *state;
-    }
-
-.. _`drm_plane.members`:
-
-Members
--------
-
-dev
-    DRM device this plane belongs to
-
-head
-    for list management
-
-name
-    *undescribed*
-
-mutex
-    *undescribed*
-
-base
-    base mode object
-
-possible_crtcs
-    pipes this plane can be bound to
-
-format_types
-    array of formats supported by this plane
-
-format_count
-    number of formats supported
-
-format_default
-    driver hasn't supplied supported formats for the plane
-
-crtc
-    currently bound CRTC
-
-fb
-    currently bound fb
-
-old_fb
-    Temporary tracking of the old fb while a modeset is ongoing. Used by
-    \ :c:func:`drm_mode_set_config_internal`\  to implement correct refcounting.
-
-funcs
-    helper functions
-
-properties
-    property tracking for this plane
-
-type
-    type of plane (overlay, primary, cursor)
-
-helper_private
-    *undescribed*
-
-state
-    current atomic state for this plane
-
-.. _`drm_bridge_funcs`:
-
-struct drm_bridge_funcs
-=======================
-
-.. c:type:: struct drm_bridge_funcs
-
-    drm_bridge control functions
-
-.. _`drm_bridge_funcs.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_bridge_funcs {
-        int (*attach)(struct drm_bridge *bridge);
-        bool (*mode_fixup)(struct drm_bridge *bridge,const struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        void (*disable)(struct drm_bridge *bridge);
-        void (*post_disable)(struct drm_bridge *bridge);
-        void (*mode_set)(struct drm_bridge *bridge,struct drm_display_mode *mode,struct drm_display_mode *adjusted_mode);
-        void (*pre_enable)(struct drm_bridge *bridge);
-        void (*enable)(struct drm_bridge *bridge);
-    }
-
-.. _`drm_bridge_funcs.members`:
-
-Members
--------
-
-attach
-    Called during drm_bridge_attach
-
-mode_fixup
-
-    This callback is used to validate and adjust a mode. The paramater
-    mode is the display mode that should be fed to the next element in
-    the display chain, either the final \ :c:type:`struct drm_connector <drm_connector>` or the next
-    \ :c:type:`struct drm_bridge <drm_bridge>`. The parameter adjusted_mode is the input mode the bridge
-    requires. It can be modified by this callback and does not need to
-    match mode.
-
-    This is the only hook that allows a bridge to reject a modeset. If
-    this function passes all other callbacks must succeed for this
-    configuration.
-
-    NOTE:
-
-    This function is called in the check phase of atomic modesets, which
-    can be aborted for any reason (including on userspace's request to
-    just check whether a configuration would be possible). Drivers MUST
-    NOT touch any persistent state (hardware or software) or data
-    structures except the passed in \ ``state``\  parameter.
-
-    RETURNS:
-
-    True if an acceptable configuration is possible, false if the modeset
-    operation should be rejected.
-
-disable
-
-    This callback should disable the bridge. It is called right before
-    the preceding element in the display pipe is disabled. If the
-    preceding element is a bridge this means it's called before that
-    bridge's ->\ :c:func:`disable`\  function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>` it's called right before the encoder's ->\ :c:func:`disable`\ ,
-    ->\ :c:func:`prepare`\  or ->\ :c:func:`dpms`\  hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`.
-
-    The bridge can assume that the display pipe (i.e. clocks and timing
-    signals) feeding it is still running when this callback is called.
-
-    The disable callback is optional.
-
-post_disable
-
-    This callback should disable the bridge. It is called right after
-    the preceding element in the display pipe is disabled. If the
-    preceding element is a bridge this means it's called after that
-    bridge's ->\ :c:func:`post_disable`\  function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>` it's called right after the encoder's ->\ :c:func:`disable`\ ,
-    ->\ :c:func:`prepare`\  or ->\ :c:func:`dpms`\  hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`.
-
-    The bridge must assume that the display pipe (i.e. clocks and timing
-    singals) feeding it is no longer running when this callback is
-    called.
-
-    The post_disable callback is optional.
-
-mode_set
-
-    This callback should set the given mode on the bridge. It is called
-    after the ->\ :c:func:`mode_set`\  callback for the preceding element in the
-    display pipeline has been called already. The display pipe (i.e.
-    clocks and timing signals) is off when this function is called.
-
-pre_enable
-
-    This callback should enable the bridge. It is called right before
-    the preceding element in the display pipe is enabled. If the
-    preceding element is a bridge this means it's called before that
-    bridge's ->\ :c:func:`pre_enable`\  function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>` it's called right before the encoder's ->\ :c:func:`enable`\ ,
-    ->\ :c:func:`commit`\  or ->\ :c:func:`dpms`\  hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`.
-
-    The display pipe (i.e. clocks and timing signals) feeding this bridge
-    will not yet be running when this callback is called. The bridge must
-    not enable the display link feeding the next bridge in the chain (if
-    there is one) when this callback is called.
-
-    The pre_enable callback is optional.
-
-enable
-
-    This callback should enable the bridge. It is called right after
-    the preceding element in the display pipe is enabled. If the
-    preceding element is a bridge this means it's called after that
-    bridge's ->\ :c:func:`enable`\  function. If the preceding element is a
-    \ :c:type:`struct drm_encoder <drm_encoder>` it's called right after the encoder's ->\ :c:func:`enable`\ ,
-    ->\ :c:func:`commit`\  or ->\ :c:func:`dpms`\  hook from struct \ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`.
-
-    The bridge can assume that the display pipe (i.e. clocks and timing
-    signals) feeding it is running when this callback is called. This
-    callback must enable the display link feeding the next bridge in the
-    chain if there is one.
-
-    The enable callback is optional.
-
-.. _`drm_bridge`:
-
-struct drm_bridge
-=================
-
-.. c:type:: struct drm_bridge
-
-    central DRM bridge control structure
-
-.. _`drm_bridge.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_bridge {
-        struct drm_device *dev;
-        struct drm_encoder *encoder;
-        struct drm_bridge *next;
-    #ifdef CONFIG_OF
-        struct device_node *of_node;
-    #endif
-        struct list_head list;
-        const struct drm_bridge_funcs *funcs;
-        void *driver_private;
-    }
-
-.. _`drm_bridge.members`:
-
-Members
--------
-
-dev
-    DRM device this bridge belongs to
-
-encoder
-    encoder to which this bridge is connected
-
-next
-    the next bridge in the encoder chain
-
-of_node
-    device node pointer to the bridge
-
-list
-    to keep track of all added bridges
-
-funcs
-    control functions
-
-driver_private
-    pointer to the bridge driver's internal context
-
-.. _`drm_atomic_state`:
-
-struct drm_atomic_state
-=======================
-
-.. c:type:: struct drm_atomic_state
-
-    the global state object for atomic updates
-
-.. _`drm_atomic_state.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_atomic_state {
-        struct drm_device *dev;
-        bool allow_modeset:1;
-        bool legacy_cursor_update:1;
-        bool legacy_set_config:1;
-        struct drm_plane **planes;
-        struct drm_plane_state **plane_states;
-        struct drm_crtc **crtcs;
-        struct drm_crtc_state **crtc_states;
-        int num_connector;
-        struct drm_connector **connectors;
-        struct drm_connector_state **connector_states;
-        struct drm_modeset_acquire_ctx *acquire_ctx;
-    }
-
-.. _`drm_atomic_state.members`:
-
-Members
--------
-
-dev
-    parent DRM device
-
-allow_modeset
-    allow full modeset
-
-legacy_cursor_update
-    hint to enforce legacy cursor IOCTL semantics
-
-legacy_set_config
-    Disable conflicting encoders instead of failing with -EINVAL.
-
-planes
-    pointer to array of plane pointers
-
-plane_states
-    pointer to array of plane states pointers
-
-crtcs
-    pointer to array of CRTC pointers
-
-crtc_states
-    pointer to array of CRTC states pointers
-
-num_connector
-    size of the \ ``connectors``\  and \ ``connector_states``\  arrays
-
-connectors
-    pointer to array of connector pointers
-
-connector_states
-    pointer to array of connector states pointers
-
-acquire_ctx
-    acquire context for this atomic modeset state update
 
 .. _`drm_mode_set`:
 
@@ -1970,11 +742,11 @@ fb_create
 
     Create a new framebuffer object. The core does basic checks on the
     requested metadata, but most of that is left to the driver. See
-    struct \ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>` for details.
+    struct \ :c:type:`struct drm_mode_fb_cmd2 <drm_mode_fb_cmd2>`\  for details.
 
     If the parameters are deemed valid and the backing storage objects in
     the underlying memory manager all exist, then the driver allocates
-    a new \ :c:type:`struct drm_framebuffer <drm_framebuffer>` structure, subclassed to contain
+    a new \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\  structure, subclassed to contain
     driver-specific information (like the internal native buffer object
     references). It also needs to fill out all relevant metadata, which
     should be done by calling \ :c:func:`drm_helper_mode_fill_fb_struct`\ .
@@ -2009,48 +781,48 @@ atomic_check
     or driver doesn't support. This includes but is of course not limited
     to:
 
-    - Checking that the modes, framebuffers, scaling and placement
-    requirements and so on are within the limits of the hardware.
+     - Checking that the modes, framebuffers, scaling and placement
+       requirements and so on are within the limits of the hardware.
 
-    - Checking that any hidden shared resources are not oversubscribed.
-    This can be shared PLLs, shared lanes, overall memory bandwidth,
-    display fifo space (where shared between planes or maybe even
-    CRTCs).
+     - Checking that any hidden shared resources are not oversubscribed.
+       This can be shared PLLs, shared lanes, overall memory bandwidth,
+       display fifo space (where shared between planes or maybe even
+       CRTCs).
 
-    - Checking that virtualized resources exported to userspace are not
-    oversubscribed. For various reasons it can make sense to expose
-    more planes, crtcs or encoders than which are physically there. One
-    example is dual-pipe operations (which generally should be hidden
-    from userspace if when lockstepped in hardware, exposed otherwise),
-    where a plane might need 1 hardware plane (if it's just on one
-    pipe), 2 hardware planes (when it spans both pipes) or maybe even
-    shared a hardware plane with a 2nd plane (if there's a compatible
-    plane requested on the area handled by the other pipe).
+     - Checking that virtualized resources exported to userspace are not
+       oversubscribed. For various reasons it can make sense to expose
+       more planes, crtcs or encoders than which are physically there. One
+       example is dual-pipe operations (which generally should be hidden
+       from userspace if when lockstepped in hardware, exposed otherwise),
+       where a plane might need 1 hardware plane (if it's just on one
+       pipe), 2 hardware planes (when it spans both pipes) or maybe even
+       shared a hardware plane with a 2nd plane (if there's a compatible
+       plane requested on the area handled by the other pipe).
 
-    - Check that any transitional state is possible and that if
-    requested, the update can indeed be done in the vblank period
-    without temporarily disabling some functions.
+     - Check that any transitional state is possible and that if
+       requested, the update can indeed be done in the vblank period
+       without temporarily disabling some functions.
 
-    - Check any other constraints the driver or hardware might have.
+     - Check any other constraints the driver or hardware might have.
 
-    - This callback also needs to correctly fill out the \ :c:type:`struct drm_crtc_state <drm_crtc_state>`
-    in this update to make sure that \ :c:func:`drm_atomic_crtc_needs_modeset`\ 
-    reflects the nature of the possible update and returns true if and
-    only if the update cannot be applied without tearing within one
-    vblank on that CRTC. The core uses that information to reject
-    updates which require a full modeset (i.e. blanking the screen, or
-    at least pausing updates for a substantial amount of time) if
-    userspace has disallowed that in its request.
+     - This callback also needs to correctly fill out the \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ 
+       in this update to make sure that \ :c:func:`drm_atomic_crtc_needs_modeset`\ 
+       reflects the nature of the possible update and returns true if and
+       only if the update cannot be applied without tearing within one
+       vblank on that CRTC. The core uses that information to reject
+       updates which require a full modeset (i.e. blanking the screen, or
+       at least pausing updates for a substantial amount of time) if
+       userspace has disallowed that in its request.
 
-    - The driver also does not need to repeat basic input validation
-    like done for the corresponding legacy entry points. The core does
-    that before calling this hook.
+     - The driver also does not need to repeat basic input validation
+       like done for the corresponding legacy entry points. The core does
+       that before calling this hook.
 
     See the documentation of \ ``atomic_commit``\  for an exhaustive list of
     error conditions which don't have to be checked at the
-    ->\ :c:func:`atomic_check`\  stage?
+    ->atomic_check() stage?
 
-    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>` for how exactly
+    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
     an atomic modeset update is described.
 
     Drivers using the atomic helpers can implement this hook using
@@ -2061,19 +833,19 @@ atomic_check
 
     0 on success or one of the below negative error codes:
 
-    - -EINVAL, if any of the above constraints are violated.
+     - -EINVAL, if any of the above constraints are violated.
 
-    - -EDEADLK, when returned from an attempt to acquire an additional
-    \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>` through \ :c:func:`drm_modeset_lock`\ .
+     - -EDEADLK, when returned from an attempt to acquire an additional
+       \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\  through \ :c:func:`drm_modeset_lock`\ .
 
-    - -ENOMEM, if allocating additional state sub-structures failed due
-    to lack of memory.
+     - -ENOMEM, if allocating additional state sub-structures failed due
+       to lack of memory.
 
-    - -EINTR, -EAGAIN or -ERESTARTSYS, if the IOCTL should be restarted.
-    This can either be due to a pending signal, or because the driver
-    needs to completely bail out to recover from an exceptional
-    situation like a GPU hang. From a userspace point all errors are
-    treated equally.
+     - -EINTR, -EAGAIN or -ERESTARTSYS, if the IOCTL should be restarted.
+       This can either be due to a pending signal, or because the driver
+       needs to completely bail out to recover from an exceptional
+       situation like a GPU hang. From a userspace point all errors are
+       treated equally.
 
 atomic_commit
 
@@ -2082,7 +854,7 @@ atomic_commit
     calling this function, and that nothing has been changed in the
     interim.
 
-    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>` for how exactly
+    See the documentation for struct \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  for how exactly
     an atomic modeset update is described.
 
     Drivers using the atomic helpers can implement this hook using
@@ -2107,20 +879,12 @@ atomic_commit
 
     An application can request to be notified when the atomic commit has
     completed. These events are per-CRTC and can be distinguished by the
-    CRTC index supplied in \ :c:type:`struct drm_event <drm_event>` to userspace.
+    CRTC index supplied in \ :c:type:`struct drm_event <drm_event>`\  to userspace.
 
-    The drm core will supply a struct \ :c:type:`struct drm_event <drm_event>` in the event
-    member of each CRTC's \ :c:type:`struct drm_crtc_state <drm_crtc_state>` structure. This can be handled by the
-    \ :c:func:`drm_crtc_send_vblank_event`\  function, which the driver should call on
-    the provided event upon completion of the atomic commit. Note that if
-    the driver supports vblank signalling and timestamping the vblank
-    counters and timestamps must agree with the ones returned from page
-    flip events. With the current vblank helper infrastructure this can
-    be achieved by holding a vblank reference while the page flip is
-    pending, acquired through \ :c:func:`drm_crtc_vblank_get`\  and released with
-    \ :c:func:`drm_crtc_vblank_put`\ . Drivers are free to implement their own vblank
-    counter and timestamp tracking though, e.g. if they have accurate
-    timestamp registers in hardware.
+    The drm core will supply a struct \ :c:type:`struct drm_event <drm_event>`\  in the event
+    member of each CRTC's \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  structure. See the
+    documentation for \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for more details about the precise
+    semantics of this event.
 
     NOTE:
 
@@ -2133,28 +897,28 @@ atomic_commit
 
     0 on success or one of the below negative error codes:
 
-    - -EBUSY, if a nonblocking updated is requested and there is
-    an earlier updated pending. Drivers are allowed to support a queue
-    of outstanding updates, but currently no driver supports that.
-    Note that drivers must wait for preceding updates to complete if a
-    synchronous update is requested, they are not allowed to fail the
-    commit in that case.
+     - -EBUSY, if a nonblocking updated is requested and there is
+       an earlier updated pending. Drivers are allowed to support a queue
+       of outstanding updates, but currently no driver supports that.
+       Note that drivers must wait for preceding updates to complete if a
+       synchronous update is requested, they are not allowed to fail the
+       commit in that case.
 
-    - -ENOMEM, if the driver failed to allocate memory. Specifically
-    this can happen when trying to pin framebuffers, which must only
-    be done when committing the state.
+     - -ENOMEM, if the driver failed to allocate memory. Specifically
+       this can happen when trying to pin framebuffers, which must only
+       be done when committing the state.
 
-    - -ENOSPC, as a refinement of the more generic -ENOMEM to indicate
-    that the driver has run out of vram, iommu space or similar GPU
-    address space needed for framebuffer.
+     - -ENOSPC, as a refinement of the more generic -ENOMEM to indicate
+       that the driver has run out of vram, iommu space or similar GPU
+       address space needed for framebuffer.
 
-    - -EIO, if the hardware completely died.
+     - -EIO, if the hardware completely died.
 
-    - -EINTR, -EAGAIN or -ERESTARTSYS, if the IOCTL should be restarted.
-    This can either be due to a pending signal, or because the driver
-    needs to completely bail out to recover from an exceptional
-    situation like a GPU hang. From a userspace point of view all errors are
-    treated equally.
+     - -EINTR, -EAGAIN or -ERESTARTSYS, if the IOCTL should be restarted.
+       This can either be due to a pending signal, or because the driver
+       needs to completely bail out to recover from an exceptional
+       situation like a GPU hang. From a userspace point of view all errors are
+       treated equally.
 
     This list is exhaustive. Specifically this hook is not allowed to
     return -EINVAL (any invalid requests should be caught in
@@ -2164,19 +928,19 @@ atomic_commit
 atomic_state_alloc
 
     This optional hook can be used by drivers that want to subclass struct
-    \ :c:type:`struct drm_atomic_state <drm_atomic_state>` to be able to track their own driver-private global
+    \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  to be able to track their own driver-private global
     state easily. If this hook is implemented, drivers must also
     implement \ ``atomic_state_clear``\  and \ ``atomic_state_free``\ .
 
     RETURNS:
 
-    A new \ :c:type:`struct drm_atomic_state <drm_atomic_state>` on success or NULL on failure.
+    A new \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\  on success or NULL on failure.
 
 atomic_state_clear
 
     This hook must clear any driver private state duplicated into the
-    passed-in \ :c:type:`struct drm_atomic_state <drm_atomic_state>`. This hook is called when the caller
-    encountered a \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>` deadlock and needs to drop all
+    passed-in \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ . This hook is called when the caller
+    encountered a \ :c:type:`struct drm_modeset_lock <drm_modeset_lock>`\  deadlock and needs to drop all
     already acquired locks as part of the deadlock avoidance dance
     implemented in \ :c:func:`drm_modeset_lock_backoff`\ .
 
@@ -2189,7 +953,7 @@ atomic_state_clear
 
 atomic_state_free
 
-    This hook needs driver private resources and the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`
+    This hook needs driver private resources and the \ :c:type:`struct drm_atomic_state <drm_atomic_state>`\ 
     itself. Note that the core first calls \ :c:func:`drm_atomic_state_clear`\  to
     avoid code duplicate between the clear and free hooks.
 
@@ -2288,7 +1052,6 @@ Definition
         struct drm_property *tv_hue_property;
         struct drm_property *scaling_mode_property;
         struct drm_property *aspect_ratio_property;
-        struct drm_property *dirty_info_property;
         struct drm_property *degamma_lut_property;
         struct drm_property *degamma_lut_size_property;
         struct drm_property *ctm_property;
@@ -2302,6 +1065,7 @@ Definition
         bool allow_fb_modifiers;
         uint32_t cursor_width;
         uint32_t cursor_height;
+        struct drm_mode_config_helper_funcs *helper_private;
     }
 
 .. _`drm_mode_config.members`:
@@ -2320,13 +1084,19 @@ acquire_ctx
     legacy IOCTLs
 
 idr_mutex
-    mutex for KMS ID allocation and management
+
+    Mutex for KMS ID allocation and management. Protects both \ ``crtc_idr``\ 
+    and \ ``tile_idr``\ .
 
 crtc_idr
-    main KMS ID tracking object
+
+    Main KMS ID tracking object. Use this idr for all IDs, fb, crtc,
+    connector, modes - just makes life easier to have only one.
 
 tile_idr
-    *undescribed*
+
+    Use this idr for allocating new IDs for tiled sinks like use in some
+    high-res DP MST screens.
 
 fb_lock
     mutex to protect fb state and lists
@@ -2338,13 +1108,13 @@ fb_list
     list of framebuffers available
 
 num_connector
-    number of connectors on this device
+    Number of connectors on this device.
 
 connector_ida
-    *undescribed*
+    ID allocator for connector indices.
 
 connector_list
-    list of connector objects
+    List of connector objects.
 
 num_encoder
     number of encoders on this device
@@ -2395,150 +1165,148 @@ poll_running
     track polling status for this device
 
 delayed_event
-    *undescribed*
+    track delayed poll uevent deliver for this device
 
 output_poll_work
     delayed work for polling in process context
 
 blob_lock
     mutex for blob property allocation and management
-    @\*\_property: core property tracking
+    @*_property: core property tracking
 
 property_blob_list
     list of all the blob property objects
 
 edid_property
-    *undescribed*
+    Default connector property to hold the EDID of thecurrently connected sink, if any.
 
 dpms_property
-    *undescribed*
+    Default connector property to control theconnector's DPMS state.
 
 path_property
-    *undescribed*
+    Default connector property to hold the DP MST pathfor the port.
 
 tile_property
-    *undescribed*
+    Default connector property to store the tileposition of a tiled screen, for sinks which need to be driven with
+    multiple CRTCs.
 
 plane_type_property
-    *undescribed*
+    Default plane property to differentiateCURSOR, PRIMARY and OVERLAY legacy uses of planes.
 
 rotation_property
-    *undescribed*
+    Optional property for planes or CRTCs to specifiyrotation.
 
 prop_src_x
-    *undescribed*
+    Default atomic plane property for the plane sourceposition in the connected \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
 
 prop_src_y
-    *undescribed*
+    Default atomic plane property for the plane sourceposition in the connected \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
 
 prop_src_w
-    *undescribed*
+    Default atomic plane property for the plane sourceposition in the connected \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
 
 prop_src_h
-    *undescribed*
+    Default atomic plane property for the plane sourceposition in the connected \ :c:type:`struct drm_framebuffer <drm_framebuffer>`\ .
 
 prop_crtc_x
-    *undescribed*
+    Default atomic plane property for the plane destinationposition in the \ :c:type:`struct drm_crtc <drm_crtc>`\  is is being shown on.
 
 prop_crtc_y
-    *undescribed*
+    Default atomic plane property for the plane destinationposition in the \ :c:type:`struct drm_crtc <drm_crtc>`\  is is being shown on.
 
 prop_crtc_w
-    *undescribed*
+    Default atomic plane property for the plane destinationposition in the \ :c:type:`struct drm_crtc <drm_crtc>`\  is is being shown on.
 
 prop_crtc_h
-    *undescribed*
+    Default atomic plane property for the plane destinationposition in the \ :c:type:`struct drm_crtc <drm_crtc>`\  is is being shown on.
 
 prop_fb_id
-    *undescribed*
+    Default atomic plane property to specify the&drm_framebuffer.
 
 prop_crtc_id
-    *undescribed*
+    Default atomic plane property to specify the&drm_crtc.
 
 prop_active
-    *undescribed*
+    Default atomic CRTC property to control the activestate, which is the simplified implementation for DPMS in atomic
+    drivers.
 
 prop_mode_id
-    *undescribed*
+    Default atomic CRTC property to set the mode for aCRTC. A 0 mode implies that the CRTC is entirely disabled - all
+    connectors must be of and active must be set to disabled, too.
 
 dvi_i_subconnector_property
-    *undescribed*
+    Optional DVI-I property todifferentiate between analog or digital mode.
 
 dvi_i_select_subconnector_property
-    *undescribed*
+    Optional DVI-I property toselect between analog or digital mode.
 
 tv_subconnector_property
-    *undescribed*
+    Optional TV property to differentiatebetween different TV connector types.
 
 tv_select_subconnector_property
-    *undescribed*
+    Optional TV property to selectbetween different TV connector types.
 
 tv_mode_property
-    *undescribed*
+    Optional TV property to selectthe output TV mode.
 
 tv_left_margin_property
-    *undescribed*
+    Optional TV property to set the leftmargin.
 
 tv_right_margin_property
-    *undescribed*
+    Optional TV property to set the rightmargin.
 
 tv_top_margin_property
-    *undescribed*
+    Optional TV property to set the rightmargin.
 
 tv_bottom_margin_property
-    *undescribed*
+    Optional TV property to set the rightmargin.
 
 tv_brightness_property
-    *undescribed*
+    Optional TV property to set thebrightness.
 
 tv_contrast_property
-    *undescribed*
+    Optional TV property to set thecontrast.
 
 tv_flicker_reduction_property
-    *undescribed*
+    Optional TV property to control theflicker reduction mode.
 
 tv_overscan_property
-    *undescribed*
+    Optional TV property to control the overscansetting.
 
 tv_saturation_property
-    *undescribed*
+    Optional TV property to set thesaturation.
 
 tv_hue_property
-    *undescribed*
+    Optional TV property to set the hue.
 
 scaling_mode_property
-    *undescribed*
+    Optional connector property to control theupscaling, mostly used for built-in panels.
 
 aspect_ratio_property
-    *undescribed*
-
-dirty_info_property
-    *undescribed*
+    Optional connector property to control theHDMI infoframe aspect ratio setting.
 
 degamma_lut_property
-    LUT used to convert the framebuffer's colors to linear
-    gamma
+    Optional CRTC property to set the LUT used toconvert the framebuffer's colors to linear gamma.
 
 degamma_lut_size_property
-    size of the degamma LUT as supported by the
-    driver (read-only)
+    Optional CRTC property for the size ofthe degamma LUT as supported by the driver (read-only).
 
 ctm_property
-    Matrix used to convert colors after the lookup in the
-    degamma LUT
+    Optional CRTC property to set thematrix used to convert colors after the lookup in the
+    degamma LUT.
 
 gamma_lut_property
-    LUT used to convert the colors, after the CSC matrix, to
-    the gamma space of the connected screen (read-only)
+    Optional CRTC property to set the LUT used toconvert the colors, after the CTM matrix, to the gamma space of the
+    connected screen.
 
 gamma_lut_size_property
-    size of the gamma LUT as supported by the driver
+    Optional CRTC property for the size of thegamma LUT as supported by the driver (read-only).
 
 suggested_x_property
-    *undescribed*
+    Optional connector property with a hint forthe position of the output on the host's screen.
 
 suggested_y_property
-    *undescribed*
+    Optional connector property with a hint forthe position of the output on the host's screen.
 
 preferred_depth
     preferred RBG pixel depth, used by fb helpers
@@ -2547,16 +1315,20 @@ prefer_shadow
     hint to userspace to prefer shadow-fb rendering
 
 async_page_flip
-    does this device support async flips on the primary plane?
+    Does this device support async flips on the primaryplane?
 
 allow_fb_modifiers
-    *undescribed*
+
+    Whether the driver supports fb modifiers in the ADDFB2.1 ioctl call.
 
 cursor_width
     hint to userspace for max cursor width
 
 cursor_height
     hint to userspace for max cursor height
+
+helper_private
+    mid-layer private data
 
 .. _`drm_mode_config.description`:
 
@@ -2567,55 +1339,25 @@ Core mode resource tracking structure.  All CRTC, encoders, and connectors
 enumerated by the driver are added here, as are global properties.  Some
 global restrictions are also here, e.g. dimension restrictions.
 
-.. _`drm_for_each_plane_mask`:
+.. _`drm_crtc_index`:
 
-drm_for_each_plane_mask
-=======================
+drm_crtc_index
+==============
 
-.. c:function::  drm_for_each_plane_mask( plane,  dev,  plane_mask)
+.. c:function:: unsigned int drm_crtc_index(const struct drm_crtc *crtc)
 
-    iterate over planes specified by bitmask
+    find the index of a registered CRTC
 
-    :param  plane:
-        the loop cursor
+    :param const struct drm_crtc \*crtc:
+        CRTC to find index for
 
-    :param  dev:
-        the DRM device
-
-    :param  plane_mask:
-        bitmask of plane indices
-
-.. _`drm_for_each_plane_mask.description`:
+.. _`drm_crtc_index.description`:
 
 Description
 -----------
 
-Iterate over all planes specified by bitmask.
-
-.. _`drm_for_each_encoder_mask`:
-
-drm_for_each_encoder_mask
-=========================
-
-.. c:function::  drm_for_each_encoder_mask( encoder,  dev,  encoder_mask)
-
-    iterate over encoders specified by bitmask
-
-    :param  encoder:
-        the loop cursor
-
-    :param  dev:
-        the DRM device
-
-    :param  encoder_mask:
-        bitmask of encoder indices
-
-.. _`drm_for_each_encoder_mask.description`:
-
-Description
------------
-
-Iterate over all encoders specified by bitmask.
+Given a registered CRTC, return the index of that CRTC within a DRM
+device's list of CRTCs.
 
 .. _`drm_crtc_mask`:
 
@@ -2636,146 +1378,6 @@ Description
 
 Given a registered CRTC, return the mask bit of that CRTC for an
 encoder's possible_crtcs field.
-
-.. _`drm_encoder_crtc_ok`:
-
-drm_encoder_crtc_ok
-===================
-
-.. c:function:: bool drm_encoder_crtc_ok(struct drm_encoder *encoder, struct drm_crtc *crtc)
-
-    can a given crtc drive a given encoder?
-
-    :param struct drm_encoder \*encoder:
-        encoder to test
-
-    :param struct drm_crtc \*crtc:
-        crtc to test
-
-.. _`drm_encoder_crtc_ok.description`:
-
-Description
------------
-
-Return false if \ ``encoder``\  can't be driven by \ ``crtc``\ , true otherwise.
-
-.. _`drm_connector_lookup`:
-
-drm_connector_lookup
-====================
-
-.. c:function:: struct drm_connector *drm_connector_lookup(struct drm_device *dev, uint32_t id)
-
-    lookup connector object
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param uint32_t id:
-        connector object id
-
-.. _`drm_connector_lookup.description`:
-
-Description
------------
-
-This function looks up the connector object specified by id
-add takes a reference to it.
-
-.. _`drm_framebuffer_reference`:
-
-drm_framebuffer_reference
-=========================
-
-.. c:function:: void drm_framebuffer_reference(struct drm_framebuffer *fb)
-
-    incr the fb refcnt
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer
-
-.. _`drm_framebuffer_reference.description`:
-
-Description
------------
-
-This functions increments the fb's refcount.
-
-.. _`drm_framebuffer_unreference`:
-
-drm_framebuffer_unreference
-===========================
-
-.. c:function:: void drm_framebuffer_unreference(struct drm_framebuffer *fb)
-
-    unref a framebuffer
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer to unref
-
-.. _`drm_framebuffer_unreference.description`:
-
-Description
------------
-
-This functions decrements the fb's refcount and frees it if it drops to zero.
-
-.. _`drm_framebuffer_read_refcount`:
-
-drm_framebuffer_read_refcount
-=============================
-
-.. c:function:: uint32_t drm_framebuffer_read_refcount(struct drm_framebuffer *fb)
-
-    read the framebuffer reference count.
-
-    :param struct drm_framebuffer \*fb:
-        framebuffer
-
-.. _`drm_framebuffer_read_refcount.description`:
-
-Description
------------
-
-This functions returns the framebuffer's reference count.
-
-.. _`drm_connector_reference`:
-
-drm_connector_reference
-=======================
-
-.. c:function:: void drm_connector_reference(struct drm_connector *connector)
-
-    incr the connector refcnt
-
-    :param struct drm_connector \*connector:
-        connector
-
-.. _`drm_connector_reference.description`:
-
-Description
------------
-
-This function increments the connector's refcount.
-
-.. _`drm_connector_unreference`:
-
-drm_connector_unreference
-=========================
-
-.. c:function:: void drm_connector_unreference(struct drm_connector *connector)
-
-    unref a connector
-
-    :param struct drm_connector \*connector:
-        connector to unref
-
-.. _`drm_connector_unreference.description`:
-
-Description
------------
-
-This function decrements the connector's refcount and frees it if it drops to zero.
 
 .. This file was automatic generated / don't edit.
 

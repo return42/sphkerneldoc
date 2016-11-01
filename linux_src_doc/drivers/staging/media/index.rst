@@ -9,4 +9,3 @@ media
 
     davinci_vpfe/index
     lirc/index
-    mx3/index

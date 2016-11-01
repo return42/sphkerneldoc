@@ -37,7 +37,7 @@ zd_usb_enable_tx
 Description
 -----------
 
-This function enables transmission and prepares the \ :c:type:`struct zd_usb_tx <zd_usb_tx>` data
+This function enables transmission and prepares the \ :c:type:`struct zd_usb_tx <zd_usb_tx>`\  data
 structure.
 
 .. _`tx_urb_complete`:

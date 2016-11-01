@@ -21,7 +21,7 @@ inherit_flags
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_new_inode`\ ' which inherits flag of the
+This is a helper function for 'ubifs_new_inode()' which inherits flag of the
 parent directory inode \ ``dir``\ . UBIFS inodes inherit the following flags:
 o \ ``UBIFS_COMPR_FL``\ , which is useful to switch compression on/of on
 sub-directory basis;
@@ -140,12 +140,12 @@ This function checks if directory \ ``dir``\  is empty. Returns zero if the
 directory is empty, \ ``-ENOTEMPTY``\  if it is not, and other negative error codes
 in case of of errors.
 
-.. _`lock_3_inodes`:
+.. _`lock_4_inodes`:
 
-lock_3_inodes
+lock_4_inodes
 =============
 
-.. c:function:: void lock_3_inodes(struct inode *inode1, struct inode *inode2, struct inode *inode3)
+.. c:function:: void lock_4_inodes(struct inode *inode1, struct inode *inode2, struct inode *inode3, struct inode *inode4)
 
     a wrapper for locking three UBIFS inodes.
 
@@ -158,24 +158,27 @@ lock_3_inodes
     :param struct inode \*inode3:
         third inode
 
-.. _`lock_3_inodes.description`:
+    :param struct inode \*inode4:
+        fouth inode
+
+.. _`lock_4_inodes.description`:
 
 Description
 -----------
 
-This function is used for '\ :c:func:`ubifs_rename`\ ' and \ ``inode1``\  may be the same as
-\ ``inode2``\  whereas \ ``inode3``\  may be \ ``NULL``\ .
+This function is used for 'ubifs_rename()' and \ ``inode1``\  may be the same as
+\ ``inode2``\  whereas \ ``inode3``\  and \ ``inode4``\  may be \ ``NULL``\ .
 
 We do not implement any tricks to guarantee strict lock ordering, because
 VFS has already done it for us on the \ ``i_mutex``\ . So this is just a simple
 wrapper function.
 
-.. _`unlock_3_inodes`:
+.. _`unlock_4_inodes`:
 
-unlock_3_inodes
+unlock_4_inodes
 ===============
 
-.. c:function:: void unlock_3_inodes(struct inode *inode1, struct inode *inode2, struct inode *inode3)
+.. c:function:: void unlock_4_inodes(struct inode *inode1, struct inode *inode2, struct inode *inode3, struct inode *inode4)
 
     a wrapper for unlocking three UBIFS inodes for rename.
 
@@ -187,6 +190,9 @@ unlock_3_inodes
 
     :param struct inode \*inode3:
         third inode
+
+    :param struct inode \*inode4:
+        fouth inode
 
 .. This file was automatic generated / don't edit.
 

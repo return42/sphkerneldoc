@@ -131,7 +131,7 @@ bytes
     volume size in bytes
 
 vol_type
-    volume type (\ ``UBI_DYNAMIC_VOLUME``\  or \ ``UBI_STATIC_VOLUME``\ )
+    volume type (%UBI_DYNAMIC_VOLUME or \ ``UBI_STATIC_VOLUME``\ )
 
 padding1
     reserved for future, not used, has to be zeroed
@@ -156,7 +156,7 @@ This structure is used by user-space programs when creating new volumes. The
 The \ ``alignment``\  field specifies the required alignment of the volume logical
 eraseblock. This means, that the size of logical eraseblocks will be aligned
 to this number, i.e.,
-(UBI device logical eraseblock size) mod (\ ``alignment``\ ) = 0.
+(UBI device logical eraseblock size) mod (@alignment) = 0.
 
 To put it differently, the logical eraseblock of this volume may be slightly
 shortened in order to make it properly aligned. The alignment has to be
@@ -407,7 +407,7 @@ Members
 -------
 
 property
-    property to set (\ ``UBI_VOL_PROP_DIRECT_WRITE``\ )
+    property to set (%UBI_VOL_PROP_DIRECT_WRITE)
 
 padding
     reserved for future, not used, has to be zeroed

@@ -79,7 +79,7 @@ req_capsule_set
 req_capsule_filled_sizes
 ========================
 
-.. c:function:: int req_capsule_filled_sizes(struct req_capsule *pill, enum req_location loc)
+.. c:function:: size_t req_capsule_filled_sizes(struct req_capsule *pill, enum req_location loc)
 
     yet. \a rc_area is an array of REQ_MAX_FIELD_NR elements, used to store sizes of variable-sized fields.  The field sizes come from the declared \a rmf_size field of a \a pill's \a rc_fmt's RMF's.
 
@@ -113,7 +113,7 @@ this function).
 __req_capsule_offset
 ====================
 
-.. c:function:: int __req_capsule_offset(const struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc)
+.. c:function:: u32 __req_capsule_offset(const struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc)
 
     corresponding to the given RMF (\a field).
 
@@ -190,7 +190,7 @@ Description
 
 The buffer will be swabbed using the given \a swabber.  If \a swabber == NULL
 then the \a rmf_swabber from the RMF will be used.  Soon there will be no
-calls to \\ :c:func:`__req_capsule_get`\  with a non-NULL \a swabber; \a swabber will then
+calls to \__req_capsule_get() with a non-NULL \a swabber; \a swabber will then
 be removed.  Fields with the \a RMF_F_STRUCT_ARRAY flag set will have each
 element of the array swabbed.
 
@@ -238,7 +238,7 @@ unused too.
 req_capsule_client_sized_get
 ============================
 
-.. c:function:: void *req_capsule_client_sized_get(struct req_capsule *pill, const struct req_msg_field *field, int len)
+.. c:function:: void *req_capsule_client_sized_get(struct req_capsule *pill, const struct req_msg_field *field, u32 len)
 
     :param struct req_capsule \*pill:
         *undescribed*
@@ -246,7 +246,7 @@ req_capsule_client_sized_get
     :param const struct req_msg_field \*field:
         *undescribed*
 
-    :param int len:
+    :param u32 len:
         *undescribed*
 
 .. _`req_capsule_client_sized_get.description`:
@@ -302,7 +302,7 @@ swabbing done outside this capsule abstraction.
 req_capsule_server_sized_get
 ============================
 
-.. c:function:: void *req_capsule_server_sized_get(struct req_capsule *pill, const struct req_msg_field *field, int len)
+.. c:function:: void *req_capsule_server_sized_get(struct req_capsule *pill, const struct req_msg_field *field, u32 len)
 
     :param struct req_capsule \*pill:
         *undescribed*
@@ -310,7 +310,7 @@ req_capsule_server_sized_get
     :param const struct req_msg_field \*field:
         *undescribed*
 
-    :param int len:
+    :param u32 len:
         *undescribed*
 
 .. _`req_capsule_server_sized_get.description`:
@@ -327,7 +327,7 @@ returned.
 req_capsule_set_size
 ====================
 
-.. c:function:: void req_capsule_set_size(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, int size)
+.. c:function:: void req_capsule_set_size(struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc, u32 size)
 
     field of the given \a pill.
 
@@ -340,7 +340,7 @@ req_capsule_set_size
     :param enum req_location loc:
         *undescribed*
 
-    :param int size:
+    :param u32 size:
         *undescribed*
 
 .. _`req_capsule_set_size.description`:
@@ -356,7 +356,7 @@ request or reply.
 req_capsule_get_size
 ====================
 
-.. c:function:: int req_capsule_get_size(const struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc)
+.. c:function:: u32 req_capsule_get_size(const struct req_capsule *pill, const struct req_msg_field *field, enum req_location loc)
 
     for the given \a pill's given \a field.
 
@@ -383,7 +383,7 @@ returns the message buflen[offset], maybe we should use another name.
 req_capsule_msg_size
 ====================
 
-.. c:function:: int req_capsule_msg_size(struct req_capsule *pill, enum req_location loc)
+.. c:function:: u32 req_capsule_msg_size(struct req_capsule *pill, enum req_location loc)
 
     given \a pill's request or reply (\a loc) given the field size recorded in the \a pill's rc_area.
 
@@ -405,7 +405,7 @@ See also \ :c:func:`req_capsule_set_size`\ .
 req_capsule_fmt_size
 ====================
 
-.. c:function:: int req_capsule_fmt_size(__u32 magic, const struct req_format *fmt, enum req_location loc)
+.. c:function:: u32 req_capsule_fmt_size(__u32 magic, const struct req_format *fmt, enum req_location loc)
 
     (\a loc) given a \a pill's \a rc_area, this function computes the size of a PTLRPC request or reply given only an RQF (\a fmt).
 
@@ -501,7 +501,7 @@ req_capsule_field_present
 req_capsule_shrink
 ==================
 
-.. c:function:: void req_capsule_shrink(struct req_capsule *pill, const struct req_msg_field *field, unsigned int newlen, enum req_location loc)
+.. c:function:: void req_capsule_shrink(struct req_capsule *pill, const struct req_msg_field *field, u32 newlen, enum req_location loc)
 
     request or reply (\a loc).
 
@@ -511,7 +511,7 @@ req_capsule_shrink
     :param const struct req_msg_field \*field:
         *undescribed*
 
-    :param unsigned int newlen:
+    :param u32 newlen:
         *undescribed*
 
     :param enum req_location loc:

@@ -133,7 +133,7 @@ __snd_rawmidi_transmit_ack
 Description
 -----------
 
-This is a variant of \\ :c:func:`__snd_rawmidi_transmit_ack`\  without spinlock.
+This is a variant of \ :c:func:`__snd_rawmidi_transmit_ack`\  without spinlock.
 
 .. _`snd_rawmidi_transmit_ack`:
 

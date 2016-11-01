@@ -77,5 +77,26 @@ fops
 refcnt
     reference counter
 
+.. _`module_w1_family`:
+
+module_w1_family
+================
+
+.. c:function::  module_w1_family( __w1_family)
+
+    Helper macro for registering a 1-Wire families
+
+    :param  __w1_family:
+        w1_family struct
+
+.. _`module_w1_family.description`:
+
+Description
+-----------
+
+Helper macro for 1-Wire families which do not do anything special in module
+init/exit. This eliminates a lot of boilerplate. Each module may only
+use this macro once, and calling it replaces \ :c:func:`module_init`\  and \ :c:func:`module_exit`\ 
+
 .. This file was automatic generated / don't edit.
 

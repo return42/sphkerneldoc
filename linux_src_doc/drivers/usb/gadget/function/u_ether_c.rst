@@ -71,7 +71,7 @@ may sleep
 Description
 -----------
 
-This is called to free all resources allocated by @\ :c:func:`gether_setup`\ .
+This is called to free all resources allocated by \ ``gether_setup``\ ().
 
 .. _`gether_connect`:
 

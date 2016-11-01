@@ -16,7 +16,7 @@ get_time
 Description
 -----------
 
-\ ``retval``\  time
+@retval time
 
 .. _`set_cpufreq_governor`:
 
@@ -36,7 +36,7 @@ set_cpufreq_governor
 Description
 -----------
 
-\ ``param``\  governor cpufreq governor name
+@param governor cpufreq governor name
 \ ``param``\  cpu cpu for which the governor should be set
 
 \ ``retval``\  0 on success
@@ -57,7 +57,7 @@ set_cpu_affinity
 Description
 -----------
 
-\ ``param``\  cpu cpu# to which the affinity should be set
+@param cpu cpu# to which the affinity should be set
 
 \ ``retval``\  0 on success
 \ ``retval``\  -1 when setting the affinity failed
@@ -77,7 +77,7 @@ set_process_priority
 Description
 -----------
 
-\ ``param``\  priority priority value
+@param priority priority value
 
 \ ``retval``\  0 on success
 \ ``retval``\  -1 when setting the priority failed
@@ -97,7 +97,7 @@ prepare_user
 Description
 -----------
 
-\ ``param``\  config benchmark config values
+@param config benchmark config values
 
 .. _`prepare_system`:
 
@@ -114,7 +114,7 @@ prepare_system
 Description
 -----------
 
-\ ``param``\  config benchmark config values
+@param config benchmark config values
 
 .. This file was automatic generated / don't edit.
 

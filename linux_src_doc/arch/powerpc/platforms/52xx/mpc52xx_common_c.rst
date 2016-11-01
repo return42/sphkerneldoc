@@ -65,7 +65,7 @@ to the SYS_XTAL_IN pin, or 0 if it cannot be determined.
 mpc52xx_restart
 ===============
 
-.. c:function:: void mpc52xx_restart(char *cmd)
+.. c:function:: void __noreturn mpc52xx_restart(char *cmd)
 
     ppc_md->restart hook for mpc5200 using the watchdog timer
 

@@ -1,6 +1,159 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/trace/trace.c
 
+.. _`trace_find_filtered_pid`:
+
+trace_find_filtered_pid
+=======================
+
+.. c:function:: bool trace_find_filtered_pid(struct trace_pid_list *filtered_pids, pid_t search_pid)
+
+    check if a pid exists in a filtered_pid list
+
+    :param struct trace_pid_list \*filtered_pids:
+        The list of pids to check
+
+    :param pid_t search_pid:
+        The PID to find in \ ``filtered_pids``\ 
+
+.. _`trace_find_filtered_pid.description`:
+
+Description
+-----------
+
+Returns true if \ ``search_pid``\  is fonud in \ ``filtered_pids``\ , and false otherwis.
+
+.. _`trace_ignore_this_task`:
+
+trace_ignore_this_task
+======================
+
+.. c:function:: bool trace_ignore_this_task(struct trace_pid_list *filtered_pids, struct task_struct *task)
+
+    should a task be ignored for tracing
+
+    :param struct trace_pid_list \*filtered_pids:
+        The list of pids to check
+
+    :param struct task_struct \*task:
+        The task that should be ignored if not filtered
+
+.. _`trace_ignore_this_task.description`:
+
+Description
+-----------
+
+Checks if \ ``task``\  should be traced or not from \ ``filtered_pids``\ .
+Returns true if \ ``task``\  should \*NOT\* be traced.
+Returns false if \ ``task``\  should be traced.
+
+.. _`trace_filter_add_remove_task`:
+
+trace_filter_add_remove_task
+============================
+
+.. c:function:: void trace_filter_add_remove_task(struct trace_pid_list *pid_list, struct task_struct *self, struct task_struct *task)
+
+    Add or remove a task from a pid_list
+
+    :param struct trace_pid_list \*pid_list:
+        The list to modify
+
+    :param struct task_struct \*self:
+        The current task for fork or NULL for exit
+
+    :param struct task_struct \*task:
+        The task to add or remove
+
+.. _`trace_filter_add_remove_task.description`:
+
+Description
+-----------
+
+If adding a task, if \ ``self``\  is defined, the task is only added if \ ``self``\ 
+is also included in \ ``pid_list``\ . This happens on fork and tasks should
+only be added when the parent is listed. If \ ``self``\  is NULL, then the
+\ ``task``\  pid will be removed from the list, which would happen on exit
+of a task.
+
+.. _`trace_pid_next`:
+
+trace_pid_next
+==============
+
+.. c:function:: void *trace_pid_next(struct trace_pid_list *pid_list, void *v, loff_t *pos)
+
+    Used for seq_file to get to the next pid of a pid_list
+
+    :param struct trace_pid_list \*pid_list:
+        The pid list to show
+
+    :param void \*v:
+        The last pid that was shown (+1 the actual pid to let zero be displayed)
+
+    :param loff_t \*pos:
+        The position of the file
+
+.. _`trace_pid_next.description`:
+
+Description
+-----------
+
+This is used by the seq_file "next" operation to iterate the pids
+listed in a trace_pid_list structure.
+
+Returns the pid+1 as we want to display pid of zero, but NULL would
+stop the iteration.
+
+.. _`trace_pid_start`:
+
+trace_pid_start
+===============
+
+.. c:function:: void *trace_pid_start(struct trace_pid_list *pid_list, loff_t *pos)
+
+    Used for seq_file to start reading pid lists
+
+    :param struct trace_pid_list \*pid_list:
+        The pid list to show
+
+    :param loff_t \*pos:
+        The position of the file
+
+.. _`trace_pid_start.description`:
+
+Description
+-----------
+
+This is used by seq_file "start" operation to start the iteration
+of listing pids.
+
+Returns the pid+1 as we want to display pid of zero, but NULL would
+stop the iteration.
+
+.. _`trace_pid_show`:
+
+trace_pid_show
+==============
+
+.. c:function:: int trace_pid_show(struct seq_file *m, void *v)
+
+    show the current pid in seq_file processing
+
+    :param struct seq_file \*m:
+        The seq_file structure to write into
+
+    :param void \*v:
+        A void pointer of the pid (+1) value to display
+
+.. _`trace_pid_show.description`:
+
+Description
+-----------
+
+Can be directly used by seq_file operations to display the current
+pid value.
+
 .. _`tracing_is_enabled`:
 
 tracing_is_enabled

@@ -22,14 +22,14 @@ Copyright (C) 2014 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Andreas Dannenberg <dannenberg\ ``ti``\ .com>
+Andreas Dannenberg <dannenberg@ti.com>
 
 .. _`opt3001_result.based-on-previous-work-from`:
 
 Based on previous work from
 ---------------------------
 
-Felipe Balbi <balbi\ ``ti``\ .com>
+Felipe Balbi <balbi@ti.com>
 
 .. _`opt3001_result.this-program-is-free-software`:
 

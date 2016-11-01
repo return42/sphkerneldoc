@@ -467,22 +467,6 @@ show_rev
     :param char \*buf:
         *undescribed*
 
-.. _`show_fw_ver`:
-
-show_fw_ver
-===========
-
-.. c:function:: ssize_t show_fw_ver(struct device *dev, struct device_attribute *attr, char *buf)
-
-    :param struct device \*dev:
-        *undescribed*
-
-    :param struct device_attribute \*attr:
-        *undescribed*
-
-    :param char \*buf:
-        *undescribed*
-
 .. _`show_hca`:
 
 show_hca

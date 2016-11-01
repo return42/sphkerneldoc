@@ -99,9 +99,9 @@ enabled
 in_handle_ep
     number of recursions of \ :c:func:`handle_ep`\  function
     Prevents deadlocks or infinite recursions of types :
-    irq->\ :c:func:`handle_ep`\ ->\ :c:func:`req_done`\ ->req.\ :c:func:`complete`\ ->\ :c:func:`pxa_ep_queue`\ ->\ :c:func:`handle_ep`\ 
+    irq->handle_ep()->req_done()->req.complete()->pxa_ep_queue()->handle_ep()
     or
-    \ :c:func:`pxa_ep_queue`\ ->\ :c:func:`handle_ep`\ ->\ :c:func:`req_done`\ ->req.\ :c:func:`complete`\ ->\ :c:func:`pxa_ep_queue`\ 
+    \ :c:func:`pxa_ep_queue`\ ->handle_ep()->req_done()->req.complete()->pxa_ep_queue()
 
 idx
     endpoint index (1 => epA, 2 => epB, ..., 24 => epX)

@@ -18,7 +18,7 @@ tty_buffer_lock_exclusive
 Description
 -----------
 
-\ ``port``\  - tty_port owning the flip buffer
+@port - tty_port owning the flip buffer
 
 Guarantees safe use of the line discipline's \ :c:func:`receive_buf`\  method by
 excluding the buffer work and any pending flush from using the flip

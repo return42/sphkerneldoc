@@ -333,8 +333,10 @@ Definition
         u64 stats[EF10_STAT_COUNT];
         bool workaround_35388;
         bool workaround_26807;
+        bool workaround_61265;
         bool must_check_datapath_caps;
         u32 datapath_caps;
+        u32 datapath_caps2;
         unsigned int rx_dpcpu_fw_id;
         unsigned int tx_dpcpu_fw_id;
         unsigned int vport_id;
@@ -346,6 +348,8 @@ Definition
         struct ef10_vf *vf;
     #endif
         u8 vport_mac[ETH_ALEN];
+        struct list_head vlan_list;
+        struct mutex vlan_lock;
     }
 
 .. _`efx_ef10_nic_data.members`:
@@ -405,12 +409,19 @@ workaround_35388
 workaround_26807
     Flag: firmware supports workaround for bug 26807
 
+workaround_61265
+    Flag: firmware supports workaround for bug 61265
+
 must_check_datapath_caps
     Flag: \ ``datapath_caps``\  needs to be revalidated
     after MC reboot
 
 datapath_caps
     Capabilities of datapath firmware (FLAGS1 field of
+    \ ``MC_CMD_GET_CAPABILITIES``\  response)
+
+datapath_caps2
+    Further Capabilities of datapath firmware (FLAGS2 field of
     \ ``MC_CMD_GET_CAPABILITIES``\  response)
 
 rx_dpcpu_fw_id
@@ -433,6 +444,15 @@ vf_index
 
 vf
     Pointer to VF data structure
+
+vport_mac
+    The MAC address on the vport, only for PFs; VFs will be zero
+
+vlan_list
+    List of VLANs added over the interface. Serialised by vlan_lock.
+
+vlan_lock
+    Lock to serialize access to vlan_list.
 
 .. This file was automatic generated / don't edit.
 

@@ -132,7 +132,7 @@ Description
 We want to use the line-size of the outer-most cache.  We assume
 that this line-size is the same for all CPUs.
 
-Code mostly taken from arch/ia64/kernel/palinfo.c:\ :c:func:`cache_info`\ .
+Code mostly taken from arch/ia64/kernel/palinfo.c:cache_info().
 
 .. This file was automatic generated / don't edit.
 

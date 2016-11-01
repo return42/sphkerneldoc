@@ -1,77 +1,28 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_irq.c
 
-.. _`drm_reset_vblank_timestamp`:
+.. _`drm_accurate_vblank_count`:
 
-drm_reset_vblank_timestamp
-==========================
+drm_accurate_vblank_count
+=========================
 
-.. c:function:: void drm_reset_vblank_timestamp(struct drm_device *dev, unsigned int pipe)
+.. c:function:: u32 drm_accurate_vblank_count(struct drm_crtc *crtc)
 
-    reset the last timestamp to the last vblank
+    retrieve the master vblank counter
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_crtc \*crtc:
+        which counter to retrieve
 
-    :param unsigned int pipe:
-        index of CRTC for which to reset the timestamp
-
-.. _`drm_reset_vblank_timestamp.description`:
+.. _`drm_accurate_vblank_count.description`:
 
 Description
 -----------
 
-Reset the stored timestamp for the current vblank count to correspond
-to the last vblank occurred.
+This function is similar to \ ``drm_crtc_vblank_count``\  but this
+function interpolates to handle a race with vblank irq's.
 
-Only to be called from \ :c:func:`drm_vblank_on`\ .
-
-.. _`drm_reset_vblank_timestamp.note`:
-
-Note
-----
-
-caller must hold dev->vbl_lock since this reads & writes
-device vblank fields.
-
-.. _`drm_update_vblank_count`:
-
-drm_update_vblank_count
-=======================
-
-.. c:function:: void drm_update_vblank_count(struct drm_device *dev, unsigned int pipe, unsigned long flags)
-
-    update the master vblank counter
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        counter to update
-
-    :param unsigned long flags:
-        *undescribed*
-
-.. _`drm_update_vblank_count.description`:
-
-Description
------------
-
-Call back into the driver to update the appropriate vblank counter
-(specified by \ ``pipe``\ ).  Deal with wraparound, if it occurred, and
-update the last read value so we can deal with wraparound on the next
-call if necessary.
-
-Only necessary when going from off->on, to account for frames we
-didn't get an interrupt for.
-
-.. _`drm_update_vblank_count.note`:
-
-Note
-----
-
-caller must hold dev->vbl_lock since this reads & writes
-device vblank fields.
+This is mostly useful for hardware that can obtain the scanout
+position, but doesn't have a frame counter.
 
 .. _`drm_vblank_cleanup`:
 
@@ -261,7 +212,7 @@ extension specification. The timestamp corresponds to the end of
 the vblank interval, aka start of scanout of topmost-leftmost display
 pixel in the following video frame.
 
-Requires support for optional dev->driver->\ :c:func:`get_scanout_position`\ 
+Requires support for optional dev->driver->get_scanout_position()
 in kms driver, plus a bit of setup code to provide a drm_display_mode
 that corresponds to the true scanout timing.
 
@@ -282,10 +233,10 @@ video mode
 ----------
 
 
--EINVAL   - Invalid CRTC.
--EAGAIN   - Temporary unavailable, e.g., called before initial modeset.
--ENOTSUPP - Function not supported in current display mode.
--EIO      - Failed, e.g., due to failed scanout position query.
+-EINVAL    Invalid CRTC.
+-EAGAIN    Temporary unavailable, e.g., called before initial modeset.
+-ENOTSUPP  Function not supported in current display mode.
+-EIO       Failed, e.g., due to failed scanout position query.
 
 Returns or'ed positive status flags on success:
 
@@ -452,42 +403,6 @@ vblank events since the system was booted, including lost events due to
 modesetting activity. Returns corresponding system timestamp of the time
 of the vblank interval that corresponds to the current vblank counter value.
 
-This is the native KMS version of \ :c:func:`drm_vblank_count_and_time`\ .
-
-.. _`drm_arm_vblank_event`:
-
-drm_arm_vblank_event
-====================
-
-.. c:function:: void drm_arm_vblank_event(struct drm_device *dev, unsigned int pipe, struct drm_pending_vblank_event *e)
-
-    arm vblank event after pageflip
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-    :param struct drm_pending_vblank_event \*e:
-        the event to prepare to send
-
-.. _`drm_arm_vblank_event.description`:
-
-Description
------------
-
-A lot of drivers need to generate vblank events for the very next vblank
-interrupt. For example when the page flip interrupt happens when the page
-flip gets armed, but not when it actually executes within the next vblank
-period. This helper function implements exactly the required vblank arming
-behaviour.
-
-Caller must hold event lock. Caller must also hold a vblank reference for
-the event \ ``e``\ , which will be dropped when the next vblank arrives.
-
-This is the legacy version of \ :c:func:`drm_crtc_arm_vblank_event`\ .
-
 .. _`drm_crtc_arm_vblank_event`:
 
 drm_crtc_arm_vblank_event
@@ -514,38 +429,43 @@ flip gets armed, but not when it actually executes within the next vblank
 period. This helper function implements exactly the required vblank arming
 behaviour.
 
+.. _`drm_crtc_arm_vblank_event.note`:
+
+NOTE
+----
+
+Drivers using this to send out the event in struct \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\ 
+as part of an atomic commit must ensure that the next vblank happens at
+exactly the same time as the atomic commit is committed to the hardware. This
+function itself does **not** protect again the next vblank interrupt racing
+with either this function call or the atomic commit operation. A possible
+
+.. _`drm_crtc_arm_vblank_event.sequence-could-be`:
+
+sequence could be
+-----------------
+
+
+1. Driver commits new hardware state into vblank-synchronized registers.
+2. A vblank happens, committing the hardware state. Also the corresponding
+   vblank interrupt is fired off and fully processed by the interrupt
+   handler.
+3. The atomic commit operation proceeds to call \ :c:func:`drm_crtc_arm_vblank_event`\ .
+4. The event is only send out for the next vblank, which is wrong.
+
+An equivalent race can happen when the driver calls
+\ :c:func:`drm_crtc_arm_vblank_event`\  before writing out the new hardware state.
+
+The only way to make this work safely is to prevent the vblank from firing
+(and the hardware from committing anything else) until the entire atomic
+commit sequence has run to completion. If the hardware does not have such a
+feature (e.g. using a "go" bit), then it is unsafe to use this functions.
+Instead drivers need to manually send out the event from their interrupt
+handler by calling \ :c:func:`drm_crtc_send_vblank_event`\  and make sure that there's no
+possible race with the hardware committing the atomic update.
+
 Caller must hold event lock. Caller must also hold a vblank reference for
 the event \ ``e``\ , which will be dropped when the next vblank arrives.
-
-This is the native KMS version of \ :c:func:`drm_arm_vblank_event`\ .
-
-.. _`drm_send_vblank_event`:
-
-drm_send_vblank_event
-=====================
-
-.. c:function:: void drm_send_vblank_event(struct drm_device *dev, unsigned int pipe, struct drm_pending_vblank_event *e)
-
-    helper to send vblank event after pageflip
-
-    :param struct drm_device \*dev:
-        DRM device
-
-    :param unsigned int pipe:
-        CRTC index
-
-    :param struct drm_pending_vblank_event \*e:
-        the event to send
-
-.. _`drm_send_vblank_event.description`:
-
-Description
------------
-
-Updates sequence # and timestamp on event, and sends it to userspace.
-Caller must hold event lock.
-
-This is the legacy version of \ :c:func:`drm_crtc_send_vblank_event`\ .
 
 .. _`drm_crtc_send_vblank_event`:
 
@@ -567,10 +487,11 @@ drm_crtc_send_vblank_event
 Description
 -----------
 
-Updates sequence # and timestamp on event, and sends it to userspace.
-Caller must hold event lock.
+Updates sequence # and timestamp on event for the most recently processed
+vblank, and sends it to userspace.  Caller must hold event lock.
 
-This is the native KMS version of \ :c:func:`drm_send_vblank_event`\ .
+See \ :c:func:`drm_crtc_arm_vblank_event`\  for a helper which can be used in certain
+situation, especially to send out events for atomic commit operations.
 
 .. _`drm_vblank_enable`:
 
@@ -646,8 +567,6 @@ Description
 Acquire a reference count on vblank events to avoid having them disabled
 while in use.
 
-This is the native kms version of \ :c:func:`drm_vblank_get`\ .
-
 .. _`drm_crtc_vblank_get.return`:
 
 Return
@@ -699,8 +618,6 @@ Description
 
 Release ownership of a given vblank counter, turning off interrupts
 if possible. Disable interrupts after drm_vblank_offdelay milliseconds.
-
-This is the native kms version of \ :c:func:`drm_vblank_put`\ .
 
 .. _`drm_wait_one_vblank`:
 
@@ -998,7 +915,7 @@ drm_vblank_no_hw_counter
 
 .. c:function:: u32 drm_vblank_no_hw_counter(struct drm_device *dev, unsigned int pipe)
 
-    "No hw counter" implementation of .\ :c:func:`get_vblank_counter`\ 
+    "No hw counter" implementation of .get_vblank_counter()
 
     :param struct drm_device \*dev:
         DRM device
@@ -1011,7 +928,7 @@ drm_vblank_no_hw_counter
 Description
 -----------
 
-Drivers can plug this into the .\ :c:func:`get_vblank_counter`\  function if
+Drivers can plug this into the .get_vblank_counter() function if
 there is no useable hardware frame counter available.
 
 .. _`drm_vblank_no_hw_counter.return`:

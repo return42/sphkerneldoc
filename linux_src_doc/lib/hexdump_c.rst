@@ -18,7 +18,7 @@ hex_to_bin
 Description
 -----------
 
-\ :c:func:`hex_to_bin`\  converts one hex digit to its actual value or -1 in case of bad
+hex_to_bin() converts one hex digit to its actual value or -1 in case of bad
 input.
 
 .. _`hex2bin`:
@@ -99,7 +99,7 @@ hex_dump_to_buffer
 Description
 -----------
 
-\ :c:func:`hex_dump_to_buffer`\  works on one "line" of output at a time, i.e.,
+hex_dump_to_buffer() works on one "line" of output at a time, i.e.,
 16 or 32 bytes of input data converted to hex + ASCII output.
 
 Given a buffer of u8 data, \ :c:func:`hex_dump_to_buffer`\  converts the input data
@@ -145,7 +145,7 @@ print_hex_dump
 
     :param int prefix_type:
         controls whether prefix of an offset, address, or none
-        is printed (\ ``DUMP_PREFIX_OFFSET``\ , \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
+        is printed (%DUMP_PREFIX_OFFSET, \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
 
     :param int rowsize:
         number of bytes to print per line; must be 16 or 32
@@ -212,7 +212,7 @@ print_hex_dump_bytes
 
     :param int prefix_type:
         controls whether prefix of an offset, address, or none
-        is printed (\ ``DUMP_PREFIX_OFFSET``\ , \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
+        is printed (%DUMP_PREFIX_OFFSET, \ ``DUMP_PREFIX_ADDRESS``\ , \ ``DUMP_PREFIX_NONE``\ )
 
     :param const void \*buf:
         data blob to dump

@@ -147,6 +147,7 @@ Definition
         u32 dst_ops;
         u32 comp_tag;
         u32 phys_efptr;
+        u32 phys_rmap;
         u32 em_efptr;
         u64 dma_mask;
         struct rio_driver *driver;
@@ -215,6 +216,9 @@ comp_tag
 
 phys_efptr
     RIO device extended features pointer
+
+phys_rmap
+    LP-Serial Register Map Type (1 or 2)
 
 em_efptr
     RIO Error Management features pointer
@@ -353,8 +357,8 @@ Definition
         unsigned char id;
         unsigned char index;
         unsigned int sys_size;
-        enum rio_phy_type phy_type;
         u32 phys_efptr;
+        u32 phys_rmap;
         unsigned char name[RIO_MAX_MPORT_NAME];
         struct device dev;
         void *priv;
@@ -416,11 +420,11 @@ index
 sys_size
     RapidIO common transport system size
 
-phy_type
-    RapidIO phy type
-
 phys_efptr
     RIO port extended features pointer
+
+phys_rmap
+    LP-Serial EFB Register Mapping type (1 or 2).
 
 name
     Port name string
@@ -581,7 +585,7 @@ Definition
         int (*add_outb_message)(struct rio_mport *mport, struct rio_dev *rdev,int mbox, void *buffer, size_t len);
         int (*add_inb_buffer)(struct rio_mport *mport, int mbox, void *buf);
         void *(*get_inb_message)(struct rio_mport *mport, int mbox);
-        int (*map_inb)(struct rio_mport *mport, dma_addr_t lstart,u64 rstart, u32 size, u32 flags);
+        int (*map_inb)(struct rio_mport *mport, dma_addr_t lstart,u64 rstart, u64 size, u32 flags);
         void (*unmap_inb)(struct rio_mport *mport, dma_addr_t lstart);
         int (*query_mport)(struct rio_mport *mport,struct rio_mport_attr *attr);
         int (*map_outb)(struct rio_mport *mport, u16 destid, u64 rstart,u32 size, u32 flags, dma_addr_t *laddr);

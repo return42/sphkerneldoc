@@ -187,6 +187,25 @@ mei_connect_timeout
     :param struct mei_cl \*cl:
         host client
 
+.. _`mei_schedule_stall_timer`:
+
+mei_schedule_stall_timer
+========================
+
+.. c:function:: void mei_schedule_stall_timer(struct mei_device *dev)
+
+    re-arm stall_timer work
+
+    :param struct mei_device \*dev:
+        the device structure
+
+.. _`mei_schedule_stall_timer.description`:
+
+Description
+-----------
+
+Schedule stall timer
+
 .. _`mei_timer`:
 
 mei_timer

@@ -43,7 +43,7 @@ drbd_chk_io_error
 Description
 -----------
 
-See also drbd_main.c:\ :c:func:`after_state_ch`\  if (os.disk > D_FAILED && ns.disk == D_FAILED)
+See also drbd_main.c:after_state_ch() if (os.disk > D_FAILED && ns.disk == D_FAILED)
 
 .. _`drbd_md_first_sector`:
 

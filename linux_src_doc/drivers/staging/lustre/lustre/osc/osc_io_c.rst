@@ -8,7 +8,7 @@ osc_io_submit
 
 .. c:function:: int osc_io_submit(const struct lu_env *env, const struct cl_io_slice *ios, enum cl_req_type crt, struct cl_2queue *queue)
 
-    :\ :c:func:`cio_io_submit`\  method for osc layer. Iterates over pages in the in-queue, prepares each for io by calling \ :c:func:`cl_page_prep`\  and then either submits them through \ :c:func:`osc_io_submit_page`\  or, if page is already submitted, changes osc flags through \ :c:func:`osc_set_async_flags`\ .
+    :cio_io_submit() method for osc layer. Iterates over pages in the in-queue, prepares each for io by calling \ :c:func:`cl_page_prep`\  and then either submits them through \ :c:func:`osc_io_submit_page`\  or, if page is already submitted, changes osc flags through \ :c:func:`osc_set_async_flags`\ .
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -27,7 +27,7 @@ osc_io_submit
 osc_page_touch_at
 =================
 
-.. c:function:: void osc_page_touch_at(const struct lu_env *env, struct cl_object *obj, pgoff_t idx, unsigned to)
+.. c:function:: void osc_page_touch_at(const struct lu_env *env, struct cl_object *obj, pgoff_t idx, size_t to)
 
     new page, if one were missing (i.e., if there were a hole at that place in the file, or accessed page is beyond the current file size).
 
@@ -40,7 +40,7 @@ osc_page_touch_at
     :param pgoff_t idx:
         *undescribed*
 
-    :param unsigned to:
+    :param size_t to:
         *undescribed*
 
 .. _`osc_page_touch_at.description`:
@@ -76,7 +76,7 @@ osc_req_attr_set
 
 .. c:function:: void osc_req_attr_set(const struct lu_env *env, const struct cl_req_slice *slice, const struct cl_object *obj, struct cl_req_attr *attr, u64 flags)
 
-    :\ :c:func:`cro_attr_set`\  for osc layer. osc is responsible for struct obdo::o_id and struct obdo::o_seq fields.
+    :cro_attr_set() for osc layer. osc is responsible for struct obdo::o_id and struct obdo::o_seq fields.
 
     :param const struct lu_env \*env:
         *undescribed*

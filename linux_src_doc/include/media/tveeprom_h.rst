@@ -96,22 +96,22 @@ has_MAC_address
     0: no MAC, 1: MAC present, 2: unknown.
 
 tuner_type
-    type of the tuner (TUNER\_\*, as defined at
+    type of the tuner (TUNER_*, as defined at
     include/media/tuner.h).
 
 tuner_formats
-    Supported analog TV standards (V4L2_STD\_\*).
+    Supported analog TV standards (V4L2_STD_*).
 
 tuner_hauppauge_model
     Hauppauge's code for the device model number.
 
 tuner2_type
-    type of the second tuner (TUNER\_\*, as defined
+    type of the second tuner (TUNER_*, as defined
     at include/media/tuner.h).
 
 tuner2_formats
     Tuner 2 supported analog TV standards
-    (V4L2_STD\_\*).
+    (V4L2_STD_*).
 
 tuner2_hauppauge_model
     tuner 2 Hauppauge's code for the device model

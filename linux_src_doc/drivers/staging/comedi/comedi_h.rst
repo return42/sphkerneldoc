@@ -310,37 +310,37 @@ Description
 These are used with the \ ``INSN_CONFIG_DIGITAL_TRIG``\  configuration instruction.
 The data for the configuration instruction is as follows...
 
-data[\ ``0``\ ] = \ ``INSN_CONFIG_DIGITAL_TRIG``\ 
+data[%0] = \ ``INSN_CONFIG_DIGITAL_TRIG``\ 
 
-data[\ ``1``\ ] = trigger ID
+data[%1] = trigger ID
 
-data[\ ``2``\ ] = configuration operation
+data[%2] = configuration operation
 
-data[\ ``3``\ ] = configuration parameter 1
+data[%3] = configuration parameter 1
 
-data[\ ``4``\ ] = configuration parameter 2
+data[%4] = configuration parameter 2
 
-data[\ ``5``\ ] = configuration parameter 3
+data[%5] = configuration parameter 3
 
-The trigger ID (data[\ ``1``\ ]) is used to differentiate multiple digital triggers
-belonging to the same subdevice.  The configuration operation (data[\ ``2``\ ]) is
+The trigger ID (data[%1]) is used to differentiate multiple digital triggers
+belonging to the same subdevice.  The configuration operation (data[%2]) is
 one of the enum comedi_digital_trig_op values.  The configuration
-parameters (data[\ ``3``\ ], data[\ ``4``\ ], and data[\ ``5``\ ]) depend on the operation; they
+parameters (data[%3], data[%4], and data[%5]) depend on the operation; they
 are not used with \ ``COMEDI_DIGITAL_TRIG_DISABLE``\ .
 
 For \ ``COMEDI_DIGITAL_TRIG_ENABLE_EDGES``\  and \ ``COMEDI_DIGITAL_TRIG_ENABLE_LEVELS``\ ,
-configuration parameter 1 (data[\ ``3``\ ]) contains a "left-shift" value that
+configuration parameter 1 (data[%3]) contains a "left-shift" value that
 specifies the input corresponding to bit 0 of configuration parameters 2
 and 3.  This is useful if the trigger has more than 32 inputs.
 
-For \ ``COMEDI_DIGITAL_TRIG_ENABLE_EDGES``\ , configuration parameter 2 (data[\ ``4``\ ])
+For \ ``COMEDI_DIGITAL_TRIG_ENABLE_EDGES``\ , configuration parameter 2 (data[%4])
 specifies which of up to 32 inputs have rising-edge sensitivity, and
-configuration parameter 3 (data[\ ``5``\ ]) specifies which of up to 32 inputs
+configuration parameter 3 (data[%5]) specifies which of up to 32 inputs
 have falling-edge sensitivity that can fire the trigger.
 
-For \ ``COMEDI_DIGITAL_TRIG_ENABLE_LEVELS``\ , configuration parameter 2 (data[\ ``4``\ ])
+For \ ``COMEDI_DIGITAL_TRIG_ENABLE_LEVELS``\ , configuration parameter 2 (data[%4])
 specifies which of up to 32 inputs must be at a high level, and
-configuration parameter 3 (data[\ ``5``\ ]) specifies which of up to 32 inputs
+configuration parameter 3 (data[%5]) specifies which of up to 32 inputs
 must be at a low level for the trigger to fire.
 
 Some sequences of \ ``INSN_CONFIG_DIGITAL_TRIG``\  instructions may have a (partly)
@@ -504,7 +504,7 @@ Members
 -------
 
 insn
-    COMEDI instruction type (\ ``INSN_xxx``\ ).
+    COMEDI instruction type (%INSN_xxx).
 
 n
     Length of \ ``data``\ [].
@@ -613,10 +613,10 @@ subdev
     Subdevice index.
 
 flags
-    Command flags (\ ``CMDF_xxx``\ ).
+    Command flags (%CMDF_xxx).
 
 start_src
-    "Start acquisition" trigger source (\ ``TRIG_xxx``\ ).
+    "Start acquisition" trigger source (%TRIG_xxx).
 
 start_arg
     "Start acquisition" trigger argument.
@@ -877,12 +877,12 @@ mapping from sample values to physical units is assumed to be nomimally
 linear (for the purpose of describing the range), with sample value \ ``0``\ 
 mapping to \ ``min``\ , and the 'maxdata' sample value mapping to \ ``max``\ .
 
-The currently defined units are \ ``UNIT_volt``\  (\ ``0``\ ), \ ``UNIT_mA``\  (\ ``1``\ ), and
-\ ``UNIT_none``\  (\ ``2``\ ).  The \ ``min``\  and \ ``max``\  values are the physical range multiplied
+The currently defined units are \ ``UNIT_volt``\  (%0), \ ``UNIT_mA``\  (%1), and
+\ ``UNIT_none``\  (%2).  The \ ``min``\  and \ ``max``\  values are the physical range multiplied
 by 1e6, so a \ ``max``\  value of \ ``1000000``\  (with \ ``UNIT_volt``\ ) represents a maximal
 value of 1 volt.
 
-The only defined flag value is \ ``RF_EXTERNAL``\  (\ ``0x100``\ ), indicating that the
+The only defined flag value is \ ``RF_EXTERNAL``\  (%0x100), indicating that the
 the range needs to be multiplied by an external reference.
 
 .. _`comedi_subdinfo`:
@@ -911,7 +911,7 @@ Definition
         unsigned int flags;
         unsigned int range_type;
         unsigned int settling_time_0;
-        unsigned insn_bits_support;
+        unsigned int insn_bits_support;
         unsigned int unused[8];
     }
 
@@ -1035,7 +1035,7 @@ command data).
 \ ``SDF_PACKED``\  - the subdevice packs several DIO samples into a single sample
 (for asynchronous command data).
 
-No "channel flags" (\ ``flags``\ ) values are currently defined.
+No "channel flags" (@flags) values are currently defined.
 
 .. _`comedi_devinfo`:
 
@@ -1081,10 +1081,10 @@ board_name
     Null-terminated COMEDI board name.
 
 read_subdevice
-    Index of the current "read" subdevice (\ ``-1``\  if none).
+    Index of the current "read" subdevice (%-1 if none).
 
 write_subdevice
-    Index of the current "write" subdevice (\ ``-1``\  if none).
+    Index of the current "write" subdevice (%-1 if none).
 
 unused
     Reserved for future use.

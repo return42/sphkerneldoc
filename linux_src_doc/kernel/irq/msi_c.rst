@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/irq/msi.c
 
+.. _`alloc_msi_entry`:
+
+alloc_msi_entry
+===============
+
+.. c:function:: struct msi_desc *alloc_msi_entry(struct device *dev, int nvec, const struct cpumask *affinity)
+
+    Allocate an initialize msi_entry
+
+    :param struct device \*dev:
+        Pointer to the device for which this is allocated
+
+    :param int nvec:
+        The number of vectors used in this entry
+
+    :param const struct cpumask \*affinity:
+        Optional pointer to an affinity mask array size of \ ``nvec``\ 
+
+.. _`alloc_msi_entry.description`:
+
+Description
+-----------
+
+If \ ``affinity``\  is not NULL then a an affinity array[@nvec] is allocated
+and the affinity masks from \ ``affinity``\  are copied.
+
 .. _`msi_domain_set_affinity`:
 
 msi_domain_set_affinity

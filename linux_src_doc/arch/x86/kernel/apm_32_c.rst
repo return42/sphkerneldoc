@@ -407,7 +407,7 @@ Description
 -----------
 
 Activate or deactivate power management on either a specific device
-or the entire system (\ ``APM_DEVICE_ALL``\ ).
+or the entire system (%APM_DEVICE_ALL).
 
 .. _`apm_console_blank`:
 

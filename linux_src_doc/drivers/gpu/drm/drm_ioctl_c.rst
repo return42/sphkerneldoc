@@ -124,7 +124,7 @@ shouldn't be used by any drivers.
 Return
 ------
 
-True if the \ ``nr``\  corresponds to a DRM core ioctl numer, false otherwise.
+True if the \ ``nr``\  corresponds to a DRM core ioctl number, false otherwise.
 
 .. This file was automatic generated / don't edit.
 

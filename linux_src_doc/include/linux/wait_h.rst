@@ -25,22 +25,22 @@ returns true if the wait list is not empty
 NOTE
 ----
 
-this function is lockless and requires care, incorrect usage \_will\_
+this function is lockless and requires care, incorrect usage _will_
 lead to sporadic and non-obvious failure.
 
 Use either while holding wait_queue_head_t::lock or when used for wakeups
 with an extra \ :c:func:`smp_mb`\  like:
 
-CPU0 - waker                    CPU1 - waiter
+     CPU0 - waker                    CPU1 - waiter
 
-for (;;) {
-\ ``cond``\  = true;                     prepare_to_wait(\ :c:type:`struct wq <wq>`, \ :c:type:`struct wait <wait>`, state);
-\ :c:func:`smp_mb`\ ;                         // \ :c:func:`smp_mb`\  from \ :c:func:`set_current_state`\ 
-if (waitqueue_active(wq))         if (\ ``cond``\ )
-wake_up(wq);                      break;
-\ :c:func:`schedule`\ ;
-}
-finish_wait(\ :c:type:`struct wq <wq>`, \ :c:type:`struct wait <wait>`);
+                                     for (;;) {
+     \ ``cond``\  = true;                     prepare_to_wait(&wq, \ :c:type:`struct wait <wait>`\ , state);
+     \ :c:func:`smp_mb`\ ;                         // \ :c:func:`smp_mb`\  from \ :c:func:`set_current_state`\ 
+     if (waitqueue_active(wq))         if (@cond)
+       wake_up(wq);                      break;
+                                       \ :c:func:`schedule`\ ;
+                                     }
+                                     finish_wait(&wq, \ :c:type:`struct wait <wait>`\ );
 
 Because without the explicit \ :c:func:`smp_mb`\  it's possible for the
 \ :c:func:`waitqueue_active`\  load to get hoisted over the \ ``cond``\  store such that we'll
@@ -265,7 +265,7 @@ Return
 0 if the \ ``condition``\  evaluated to \ ``false``\  after the \ ``timeout``\  elapsed,
 1 if the \ ``condition``\  evaluated to \ ``true``\  after the \ ``timeout``\  elapsed,
 the remaining jiffies (at least 1) if the \ ``condition``\  evaluated
-to \ ``true``\  before the \ ``timeout``\  elapsed, or -\ ``ERESTARTSYS``\  if it was
+to \ ``true``\  before the \ ``timeout``\  elapsed, or -%ERESTARTSYS if it was
 interrupted by a signal.
 
 .. _`wait_event_hrtimeout`:
@@ -362,7 +362,7 @@ It must be called with wq.lock being held.  This spinlock is
 unlocked while sleeping but \ ``condition``\  testing is done while lock
 is held and when this macro exits the lock is held.
 
-The lock is locked/unlocked using \ :c:func:`spin_lock`\ /\ :c:func:`spin_unlock`\ 
+The lock is locked/unlocked using \ :c:func:`spin_lock`\ /spin_unlock()
 functions which must match the way they are locked/unlocked outside
 of this macro.
 
@@ -400,7 +400,7 @@ It must be called with wq.lock being held.  This spinlock is
 unlocked while sleeping but \ ``condition``\  testing is done while lock
 is held and when this macro exits the lock is held.
 
-The lock is locked/unlocked using \ :c:func:`spin_lock_irq`\ /\ :c:func:`spin_unlock_irq`\ 
+The lock is locked/unlocked using \ :c:func:`spin_lock_irq`\ /spin_unlock_irq()
 functions which must match the way they are locked/unlocked outside
 of this macro.
 
@@ -438,7 +438,7 @@ It must be called with wq.lock being held.  This spinlock is
 unlocked while sleeping but \ ``condition``\  testing is done while lock
 is held and when this macro exits the lock is held.
 
-The lock is locked/unlocked using \ :c:func:`spin_lock`\ /\ :c:func:`spin_unlock`\ 
+The lock is locked/unlocked using \ :c:func:`spin_lock`\ /spin_unlock()
 functions which must match the way they are locked/unlocked outside
 of this macro.
 
@@ -480,7 +480,7 @@ It must be called with wq.lock being held.  This spinlock is
 unlocked while sleeping but \ ``condition``\  testing is done while lock
 is held and when this macro exits the lock is held.
 
-The lock is locked/unlocked using \ :c:func:`spin_lock_irq`\ /\ :c:func:`spin_unlock_irq`\ 
+The lock is locked/unlocked using \ :c:func:`spin_lock_irq`\ /spin_unlock_irq()
 functions which must match the way they are locked/unlocked outside
 of this macro.
 

@@ -13,5 +13,15 @@ uclogic_tablet_enable
     :param struct hid_device \*hdev:
         HID device
 
+.. _`uclogic_button_enable`:
+
+uclogic_button_enable
+=====================
+
+.. c:function:: int uclogic_button_enable(struct hid_device *hdev)
+
+    :param struct hid_device \*hdev:
+        HID device
+
 .. This file was automatic generated / don't edit.
 

@@ -25,7 +25,7 @@ execution noise would be catastrophic." -- Colin Cross
 
 So, this function implements KGDB/KDB knocking on the serial line: we won't
 enter the debugger until we receive a known magic phrase (which is actually
-"\ ``$3``\ #33", known as "escape to KDB" command. There is also a relaxed variant
+"$3#33", known as "escape to KDB" command. There is also a relaxed variant
 of knocking, i.e. just pressing the return key is enough to enter the
 debugger. And if knocking is disabled, the function always returns 1.
 

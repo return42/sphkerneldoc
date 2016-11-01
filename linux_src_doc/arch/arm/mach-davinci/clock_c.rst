@@ -53,7 +53,7 @@ This is used to support boards which use a reference clock different
 than that used by default in <soc>.c file. The reference clock rate
 should be updated early in the boot process; ideally soon after the
 clock tree has been initialized once with the default reference clock
-rate (\ :c:func:`davinci_clk_init`\ ).
+rate (davinci_clk_init()).
 
 Returns 0 on success, error otherwise.
 

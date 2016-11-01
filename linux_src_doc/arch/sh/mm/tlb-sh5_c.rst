@@ -82,7 +82,7 @@ sh64_setup_tlb_slot
 Description
 -----------
 
-Load up a virtual<->physical translation for \ ``eaddr``\ <->\ ``paddr``\  in the
+Load up a virtual<->physical translation for \ ``eaddr``\ <->@paddr in the
 pre-allocated TLB slot \ ``config_addr``\  (see sh64_get_wired_dtlb_entry).
 
 .. _`sh64_teardown_tlb_slot`:

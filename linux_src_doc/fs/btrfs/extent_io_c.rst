@@ -57,7 +57,7 @@ extent_write_cache_pages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*\ ``wbc``\ ->nr_to_write
+        subtract the number of written pages from \*@wbc->nr_to_write
 
     :param writepage_t writepage:
         function called for each page

@@ -26,7 +26,7 @@ from directory entry inside \ :c:func:`gfs2_inode_lookup`\ .
 gfs2_inode_lookup
 =================
 
-.. c:function:: struct inode *gfs2_inode_lookup(struct super_block *sb, unsigned int type, u64 no_addr, u64 no_formal_ino)
+.. c:function:: struct inode *gfs2_inode_lookup(struct super_block *sb, unsigned int type, u64 no_addr, u64 no_formal_ino, unsigned int blktype)
 
     Lookup an inode
 
@@ -40,7 +40,22 @@ gfs2_inode_lookup
         The inode number
 
     :param u64 no_formal_ino:
-        *undescribed*
+        The inode generation number
+
+    :param unsigned int blktype:
+        Requested block type (GFS2_BLKST_DINODE or GFS2_BLKST_UNLINKED;
+        GFS2_BLKST_FREE do indicate not to verify)
+
+.. _`gfs2_inode_lookup.description`:
+
+Description
+-----------
+
+If \ ``type``\  is DT_UNKNOWN, the inode type is fetched from disk.
+
+If \ ``blktype``\  is anything other than GFS2_BLKST_FREE (which is used as a
+placeholder because it doesn't otherwise make sense), the on-disk block type
+is verified to be \ ``blktype``\ .
 
 .. _`gfs2_inode_lookup.return`:
 

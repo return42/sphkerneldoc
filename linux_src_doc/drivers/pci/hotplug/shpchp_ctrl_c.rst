@@ -11,7 +11,7 @@ board_added
     Called after a board has been added to the system.
 
     :param struct slot \*p_slot:
-        target \ :c:type:`struct slot <slot>`
+        target \ :c:type:`struct slot <slot>`\ 
 
 .. _`board_added.description`:
 
@@ -31,7 +31,7 @@ remove_board
     Turns off slot and LEDs
 
     :param struct slot \*p_slot:
-        target \ :c:type:`struct slot <slot>`
+        target \ :c:type:`struct slot <slot>`\ 
 
 .. _`shpchp_pushbutton_thread`:
 
@@ -43,7 +43,7 @@ shpchp_pushbutton_thread
     handle pushbutton events
 
     :param struct work_struct \*work:
-        \ :c:type:`struct work_struct <work_struct>`\  to be handled
+        &struct work_struct to be handled
 
 .. _`shpchp_pushbutton_thread.description`:
 

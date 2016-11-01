@@ -286,7 +286,7 @@ devfreq_dev_release
 Description
 -----------
 
-This calls \\ :c:func:`_remove_devfreq`\  if \\ :c:func:`_remove_devfreq`\  is not called.
+This calls \_remove_devfreq() if \_remove_devfreq() is not called.
 
 .. _`devfreq_add_device`:
 

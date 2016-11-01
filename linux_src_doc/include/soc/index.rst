@@ -8,3 +8,4 @@ soc
     :maxdepth: 1
 
     bcm2835/index
+    fsl/index

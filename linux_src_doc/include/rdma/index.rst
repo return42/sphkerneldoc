@@ -20,3 +20,4 @@ rdma
     rdma_cm_ib_h
     rdma_netlink_h
     rdma_vt_h
+    rdmavt_qp_h

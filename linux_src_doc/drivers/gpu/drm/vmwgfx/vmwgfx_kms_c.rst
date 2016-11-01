@@ -187,7 +187,7 @@ vmw_guess_mode_timing
 Description
 -----------
 
-\ ``mode``\  - Pointer to a struct drm_display_mode with hdisplay and vdisplay
+@mode - Pointer to a struct drm_display_mode with hdisplay and vdisplay
 members filled in.
 
 .. _`vmw_kms_helper_dirty`:
@@ -257,7 +257,7 @@ vmw_kms_helper_buffer_prepare
 Description
 -----------
 
-\ ``dev_priv``\ . Pointer to a device private structure.
+@dev_priv. Pointer to a device private structure.
 
 Returns 0 on success, negative error code on failure, -ERESTARTSYS if
 interrupted by a signal.

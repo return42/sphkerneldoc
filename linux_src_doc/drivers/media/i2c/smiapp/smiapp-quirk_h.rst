@@ -65,7 +65,7 @@ flags
 Description
 -----------
 
-\ ``write``\ : Is this read (false) or write (true) access?
+@write: Is this read (false) or write (true) access?
 \ ``reg``\ : Pointer to the register to access
 \ ``value``\ : Register value, set by the caller on write, or
 by the quirk on read

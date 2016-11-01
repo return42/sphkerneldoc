@@ -10,5 +10,6 @@ rcu
     srcu_c
     sync_c
     tree_c
+    tree_exp_h
     tree_plugin_h
     update_c

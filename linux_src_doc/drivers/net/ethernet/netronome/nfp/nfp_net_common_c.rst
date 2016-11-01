@@ -209,7 +209,7 @@ nfp_net_irqs_disable
 Description
 -----------
 
-Undoes what @\ :c:func:`nfp_net_irqs_alloc`\  does.
+Undoes what \ ``nfp_net_irqs_alloc``\ () does.
 
 .. _`nfp_net_irq_rxtx`:
 
@@ -436,7 +436,7 @@ nfp_net_tx_ring_stop
 Description
 -----------
 
-Safely stop TX ring.  Remember that while we are running .\ :c:func:`start_xmit`\ 
+Safely stop TX ring.  Remember that while we are running .start_xmit()
 someone else may be cleaning the TX ring completions so we need to be
 extra careful here.
 
@@ -747,32 +747,6 @@ nfp_net_rx_csum
     :param struct sk_buff \*skb:
         Pointer to SKB
 
-.. _`nfp_net_set_hash`:
-
-nfp_net_set_hash
-================
-
-.. c:function:: void nfp_net_set_hash(struct net_device *netdev, struct sk_buff *skb, struct nfp_net_rx_desc *rxd)
-
-    Set SKB hash data
-
-    :param struct net_device \*netdev:
-        adapter's net_device structure
-
-    :param struct sk_buff \*skb:
-        SKB to set the hash data on
-
-    :param struct nfp_net_rx_desc \*rxd:
-        RX descriptor
-
-.. _`nfp_net_set_hash.description`:
-
-Description
------------
-
-The RSS hash and hash-type are pre-pended to the packet data.
-Extract and decode it and set the skb fields.
-
 .. _`nfp_net_rx`:
 
 nfp_net_rx
@@ -958,22 +932,21 @@ nfp_net_coalesce_write_cfg
 nfp_net_write_mac_addr
 ======================
 
-.. c:function:: void nfp_net_write_mac_addr(struct nfp_net *nn, const u8 *mac)
+.. c:function:: void nfp_net_write_mac_addr(struct nfp_net *nn)
 
-    Write mac address to device registers
+    Write mac address to the device control BAR
 
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure
-
-    :param const u8 \*mac:
-        Six-byte MAC address to be written
 
 .. _`nfp_net_write_mac_addr.description`:
 
 Description
 -----------
 
-We do a bit of byte swapping dance because firmware is LE.
+Writes the MAC address from the netdev to the device control BAR.  Does not
+perform the required reconfig.  We do a bit of byte swapping dance because
+firmware is LE.
 
 .. _`nfp_net_clear_config_and_disable`:
 
@@ -1141,7 +1114,7 @@ nfp_net_netdev_free
 
 .. c:function:: void nfp_net_netdev_free(struct nfp_net *nn)
 
-    Undo what @\ :c:func:`nfp_net_netdev_alloc`\  did
+    Undo what \ ``nfp_net_netdev_alloc``\ () did
 
     :param struct nfp_net \*nn:
         NFP Net device to reconfigure

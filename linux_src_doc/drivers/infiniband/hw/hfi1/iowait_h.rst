@@ -314,7 +314,7 @@ iowait_get_txhead
 Description
 -----------
 
-\ ``wait``\  wait struture
+@wait wait struture
 
 .. This file was automatic generated / don't edit.
 

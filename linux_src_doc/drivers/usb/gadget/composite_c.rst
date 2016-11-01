@@ -157,7 +157,7 @@ Description
 -----------
 
 After initialization, each configuration must have one or more
-functions added to it.  Adding a function involves calling its @\ :c:func:`bind`\ 
+functions added to it.  Adding a function involves calling its \ ``bind``\ ()
 method to allocate resources such as interface and string identifiers
 and endpoints.
 
@@ -183,7 +183,7 @@ Description
 
 Blocks response of the gadget driver to host enumeration by
 preventing the data line pullup from being activated.  This is
-normally called during @\ :c:func:`bind`\  processing to change from the
+normally called during \ ``bind``\ () processing to change from the
 initial "ready to respond" state, or when a required resource
 becomes available.
 
@@ -246,7 +246,7 @@ single threaded during gadget setup
 Description
 -----------
 
-\ :c:func:`usb_interface_id`\  is called from usb_function.\ :c:func:`bind`\  callbacks to
+usb_interface_id() is called from usb_function.bind() callbacks to
 allocate new interface IDs.  The function driver will then store that
 ID in interface, association, CDC union, and other descriptors.  It
 will also handle any control requests targeted at that interface,
@@ -315,10 +315,10 @@ single threaded during gadget setup
 Description
 -----------
 
-One of the main tasks of a composite @\ :c:func:`bind`\  routine is to
+One of the main tasks of a composite \ ``bind``\ () routine is to
 add each of the configurations it supports, using this routine.
 
-This function returns the value of the configuration's @\ :c:func:`bind`\ , which
+This function returns the value of the configuration's \ ``bind``\ (), which
 is zero for success else a negative errno value.  Binding configurations
 assigns global resources including string IDs, and per-configuration
 resources such as interface IDs and endpoints.
@@ -371,12 +371,12 @@ single threaded during gadget setup
 Description
 -----------
 
-@\ :c:func:`usb_string_id`\  is called from \ :c:func:`bind`\  callbacks to allocate
+@usb_string_id() is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then store that ID in the appropriate descriptors and string table.
 
 All string identifier should be allocated using this,
-@\ :c:func:`usb_string_ids_tab`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure
+\ ``usb_string_ids_tab``\ () or \ ``usb_string_ids_n``\ () routine, to ensure
 that for example different functions don't wrongly assign different
 meanings to the same identifier.
 
@@ -407,13 +407,13 @@ single threaded during gadget setup
 Description
 -----------
 
-@\ :c:func:`usb_string_ids`\  is called from \ :c:func:`bind`\  callbacks to allocate
+@usb_string_ids() is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then copy IDs from the string table to the appropriate descriptors
 and string table for other languages.
 
 All string identifier should be allocated using this,
-@\ :c:func:`usb_string_id`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure that for
+\ ``usb_string_id``\ () or \ ``usb_string_ids_n``\ () routine, to ensure that for
 example different functions don't wrongly assign different meanings
 to the same identifier.
 
@@ -488,12 +488,12 @@ Returns the first requested ID.  This ID and next \ ``n``\ -1 IDs are now
 valid IDs.  At least provided that \ ``n``\  is non-zero because if it
 is, returns last requested ID which is now very useful information.
 
-@\ :c:func:`usb_string_ids_n`\  is called from \ :c:func:`bind`\  callbacks to allocate
+\ ``usb_string_ids_n``\ () is called from \ :c:func:`bind`\  callbacks to allocate
 string IDs.  Drivers for functions, configurations, or gadgets will
 then store that ID in the appropriate descriptors and string table.
 
 All string identifier should be allocated using this,
-@\ :c:func:`usb_string_id`\  or @\ :c:func:`usb_string_ids_n`\  routine, to ensure that for
+\ ``usb_string_id``\ () or \ ``usb_string_ids_n``\ () routine, to ensure that for
 example different functions don't wrongly assign different meanings
 to the same identifier.
 

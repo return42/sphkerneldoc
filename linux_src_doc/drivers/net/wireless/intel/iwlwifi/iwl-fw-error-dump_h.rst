@@ -32,6 +32,7 @@ Definition
         IWL_FW_ERROR_DUMP_PAGING,
         IWL_FW_ERROR_DUMP_RADIO_REG,
         IWL_FW_ERROR_DUMP_INTERNAL_TXF,
+        IWL_FW_ERROR_DUMP_EXTERNAL,
         IWL_FW_ERROR_DUMP_MAX
     };
 
@@ -87,6 +88,11 @@ IWL_FW_ERROR_DUMP_RADIO_REG
 IWL_FW_ERROR_DUMP_INTERNAL_TXF
     *undescribed*
 
+IWL_FW_ERROR_DUMP_EXTERNAL
+    used only by external code utilities, and
+    for that reason is not in use in any other place in the Linux Wi-Fi
+    stack.
+
 IWL_FW_ERROR_DUMP_MAX
     *undescribed*
 
@@ -118,7 +124,7 @@ Members
 -------
 
 type
-    \ ``enum``\  iwl_fw_error_dump_type
+    %enum iwl_fw_error_dump_type
 
 len
     the length starting from \ ``data``\ 
@@ -399,7 +405,7 @@ Members
 -------
 
 type
-    \ ``enum``\  iwl_fw_error_dump_mem_type
+    %enum iwl_fw_error_dump_mem_type
 
 offset
     the offset from which the memory was read
@@ -626,7 +632,7 @@ Members
 -------
 
 type
-    \ ``enum``\  iwl_fw_dbg_trigger
+    %enum iwl_fw_dbg_trigger
 
 data
     raw data about what happened

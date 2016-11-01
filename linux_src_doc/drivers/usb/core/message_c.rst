@@ -559,7 +559,7 @@ function should be used to clear halt ("stall") status.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Returns 0 and the status value in \*\ ``data``\  (in host byte order) on success,
+Returns 0 and the status value in \*@data (in host byte order) on success,
 or else the status code from the underlying \ :c:func:`usb_control_msg`\  call.
 
 .. _`usb_clear_halt`:
@@ -912,6 +912,44 @@ Return
 0 if the request was successfully queued, error code otherwise.
 The caller has no way to know whether the queued request will eventually
 succeed.
+
+.. _`cdc_parse_cdc_header`:
+
+cdc_parse_cdc_header
+====================
+
+.. c:function:: int cdc_parse_cdc_header(struct usb_cdc_parsed_header *hdr, struct usb_interface *intf, u8 *buffer, int buflen)
+
+    parse the extra headers present in CDC devices
+
+    :param struct usb_cdc_parsed_header \*hdr:
+        the place to put the results of the parsing
+
+    :param struct usb_interface \*intf:
+        the interface for which parsing is requested
+
+    :param u8 \*buffer:
+        pointer to the extra headers to be parsed
+
+    :param int buflen:
+        length of the extra headers
+
+.. _`cdc_parse_cdc_header.description`:
+
+Description
+-----------
+
+This evaluates the extra headers present in CDC devices which
+bind the interfaces for data and control and provide details
+about the capabilities of the device.
+
+.. _`cdc_parse_cdc_header.return`:
+
+Return
+------
+
+number of descriptors parsed or -EINVAL
+if the header is contradictory beyond salvage
 
 .. This file was automatic generated / don't edit.
 

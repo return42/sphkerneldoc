@@ -303,7 +303,7 @@ Members
 -------
 
 clnt
-    back pointer to instantiating \ :c:type:`struct p9_client <p9_client>`
+    back pointer to instantiating \ :c:type:`struct p9_client <p9_client>`\ 
 
 fid
     numeric identifier for this handle
@@ -312,7 +312,7 @@ mode
     current mode of this fid (enum?)
 
 qid
-    the \ :c:type:`struct p9_qid <p9_qid>` server identifier this handle points to
+    the \ :c:type:`struct p9_qid <p9_qid>`\  server identifier this handle points to
 
 iounit
     the server reported maximum transaction size for this file

@@ -1,6 +1,110 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/mtdcore.c
 
+.. _`mtd_wunit_to_pairing_info`:
+
+mtd_wunit_to_pairing_info
+=========================
+
+.. c:function:: int mtd_wunit_to_pairing_info(struct mtd_info *mtd, int wunit, struct mtd_pairing_info *info)
+
+    get pairing information of a wunit
+
+    :param struct mtd_info \*mtd:
+        pointer to new MTD device info structure
+
+    :param int wunit:
+        *undescribed*
+
+    :param struct mtd_pairing_info \*info:
+        returned pairing information
+
+.. _`mtd_wunit_to_pairing_info.description`:
+
+Description
+-----------
+
+Retrieve pairing information associated to the wunit.
+This is mainly useful when dealing with MLC/TLC NANDs where pages can be
+paired together, and where programming a page may influence the page it is
+paired with.
+The notion of page is replaced by the term wunit (write-unit) to stay
+consistent with the ->writesize field.
+
+The \ ``wunit``\  argument can be extracted from an absolute offset using
+\ :c:func:`mtd_offset_to_wunit`\ . \ ``info``\  is filled with the pairing information attached
+to \ ``wunit``\ .
+
+From the pairing info the MTD user can find all the wunits paired with
+
+for (i = 0; i < mtd_pairing_groups(mtd); i++) {
+info.pair = i;
+mtd_pairing_info_to_wunit(mtd, \ :c:type:`struct info <info>`\ );
+...
+}
+
+.. _`mtd_pairing_info_to_wunit`:
+
+mtd_pairing_info_to_wunit
+=========================
+
+.. c:function:: int mtd_pairing_info_to_wunit(struct mtd_info *mtd, const struct mtd_pairing_info *info)
+
+    get wunit from pairing information
+
+    :param struct mtd_info \*mtd:
+        pointer to new MTD device info structure
+
+    :param const struct mtd_pairing_info \*info:
+        pairing information struct
+
+.. _`mtd_pairing_info_to_wunit.description`:
+
+Description
+-----------
+
+Returns a positive number representing the wunit associated to the info
+struct, or a negative error code.
+
+This is the reverse of \ :c:func:`mtd_wunit_to_pairing_info`\ , and can help one to
+iterate over all wunits of a given pair (see \ :c:func:`mtd_wunit_to_pairing_info`\ 
+doc).
+
+It can also be used to only program the first page of each pair (i.e.
+page attached to group 0), which allows one to use an MLC NAND in
+software-emulated SLC mode:
+
+info.group = 0;
+npairs = mtd_wunit_per_eb(mtd) / mtd_pairing_groups(mtd);
+for (info.pair = 0; info.pair < npairs; info.pair++) {
+wunit = mtd_pairing_info_to_wunit(mtd, \ :c:type:`struct info <info>`\ );
+mtd_write(mtd, mtd_wunit_to_offset(mtd, blkoffs, wunit),
+mtd->writesize, \ :c:type:`struct retlen <retlen>`\ , buf + (i \* mtd->writesize));
+}
+
+.. _`mtd_pairing_groups`:
+
+mtd_pairing_groups
+==================
+
+.. c:function:: int mtd_pairing_groups(struct mtd_info *mtd)
+
+    get the number of pairing groups
+
+    :param struct mtd_info \*mtd:
+        pointer to new MTD device info structure
+
+.. _`mtd_pairing_groups.description`:
+
+Description
+-----------
+
+Returns the number of pairing groups.
+
+This number is usually equal to the number of bits exposed by a single
+cell, and can be used in conjunction with \ :c:func:`mtd_pairing_info_to_wunit`\ 
+to iterate over all pages of a given pair.
+
 .. _`add_mtd_device`:
 
 add_mtd_device
@@ -58,7 +162,7 @@ mtd_device_parse_register
 
     :param const char \* const \*types:
         the list of MTD partition probes to try, see
-        '\ :c:func:`parse_mtd_partitions`\ ' for more information
+        'parse_mtd_partitions()' for more information
 
     :param struct mtd_part_parser_data \*parser_data:
         MTD partition parser-specific data
@@ -77,7 +181,7 @@ Description
 -----------
 
 This function aggregates MTD partitions parsing (done by
-'\ :c:func:`parse_mtd_partitions`\ ') and MTD device and partitions registering. It
+'parse_mtd_partitions()') and MTD device and partitions registering. It
 
 .. _`mtd_device_parse_register.basically-follows-the-most-common-pattern-found-in-many-mtd-drivers`:
 
@@ -87,9 +191,9 @@ basically follows the most common pattern found in many MTD drivers
 
 \* It first tries to probe partitions on MTD device \ ``mtd``\  using parsers
 specified in \ ``types``\  (if \ ``types``\  is \ ``NULL``\ , then the default list of parsers
-is used, see '\ :c:func:`parse_mtd_partitions`\ ' for more information). If none are
+is used, see 'parse_mtd_partitions()' for more information). If none are
 found this functions tries to fallback to information specified in
-\ ``parts``\ /\ ``nr_parts``\ .
+\ ``parts``\ /@nr_parts.
 \* If any partitioning info was found, this function registers the found
 partitions. If the MTD_PARTITIONED_MASTER option is set, then the device
 as a whole is registered first.
@@ -300,7 +404,7 @@ This functions returns the section id and oobregion information of a
 specific byte. For example, say you want to know where the 4th ECC byte is
 stored, you'll use:
 
-mtd_ooblayout_find_region(mtd, 3, \ :c:type:`struct section <section>`, \ :c:type:`struct oobregion <oobregion>`, mtd_ooblayout_ecc);
+mtd_ooblayout_find_region(mtd, 3, \ :c:type:`struct section <section>`\ , \ :c:type:`struct oobregion <oobregion>`\ , mtd_ooblayout_ecc);
 
 Returns zero on success, a negative error code otherwise.
 

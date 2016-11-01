@@ -53,20 +53,20 @@ Return
 An allocated and initialized encryption context on success; error
 value or NULL otherwise.
 
-.. _`fscrypt_complete`:
+.. _`page_crypt_complete`:
 
-fscrypt_complete
-================
+page_crypt_complete
+===================
 
-.. c:function:: void fscrypt_complete(struct crypto_async_request *req, int res)
+.. c:function:: void page_crypt_complete(struct crypto_async_request *req, int res)
 
-    The completion callback for page encryption
+    completion callback for page crypto
 
     :param struct crypto_async_request \*req:
-        The asynchronous encryption request context
+        The asynchronous cipher request context
 
     :param int res:
-        The result of the encryption operation
+        The result of the cipher operation
 
 .. _`fscrypt_encrypt_page`:
 

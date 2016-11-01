@@ -561,7 +561,7 @@ Members
 -------
 
 flags
-    \ ``iwl_card_state_flags``\ 
+    %iwl_card_state_flags
 
 .. _`iwl_missed_beacons_notif`:
 
@@ -800,7 +800,7 @@ Members
 -------
 
 offset_type
-    \ :c:type:`enum iwl_mvm_bcast_filter_attr_offset <iwl_mvm_bcast_filter_attr_offset>`\ .
+    &enum iwl_mvm_bcast_filter_attr_offset.
 
 offset
     starting offset of this pattern.
@@ -880,7 +880,7 @@ discard
     discard frame (1) or let it pass (0).
 
 frame_type
-    \ :c:type:`enum iwl_mvm_bcast_filter_frame_type <iwl_mvm_bcast_filter_frame_type>`\ .
+    &enum iwl_mvm_bcast_filter_frame_type.
 
 num_attrs
     number of valid attributes in this filter.
@@ -1634,6 +1634,82 @@ membership_status
 user_position
     the position of station in a group. If the station is in the
     group then bits (group \* 2) is the position -1
+
+.. _`iwl_dbg_mem_access_cmd`:
+
+struct iwl_dbg_mem_access_cmd
+=============================
+
+.. c:type:: struct iwl_dbg_mem_access_cmd
+
+    Request the device to read/write memory
+
+.. _`iwl_dbg_mem_access_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_dbg_mem_access_cmd {
+        __le32 op;
+        __le32 addr;
+        __le32 len;
+        __le32 data[];
+    }
+
+.. _`iwl_dbg_mem_access_cmd.members`:
+
+Members
+-------
+
+op
+    DEBUG_MEM_OP\_\*
+
+addr
+    address to read/write from/to
+
+len
+    in dwords, to read/write
+
+data
+    for write opeations, contains the source buffer
+
+.. _`iwl_dbg_mem_access_rsp`:
+
+struct iwl_dbg_mem_access_rsp
+=============================
+
+.. c:type:: struct iwl_dbg_mem_access_rsp
+
+    Response to debug mem commands
+
+.. _`iwl_dbg_mem_access_rsp.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_dbg_mem_access_rsp {
+        __le32 status;
+        __le32 len;
+        __le32 data[];
+    }
+
+.. _`iwl_dbg_mem_access_rsp.members`:
+
+Members
+-------
+
+status
+    DEBUG_MEM_STATUS\_\*
+
+len
+    read dwords (0 for write operations)
+
+data
+    contains the read DWs
 
 .. This file was automatic generated / don't edit.
 

@@ -894,7 +894,7 @@ A non-zero return value will cause the caller destroy the CM ID.
 Note
 ----
 
-\ :c:func:`srpt_cm_handler`\  must only return a non-zero value when transferring
+srpt_cm_handler() must only return a non-zero value when transferring
 ownership of the cm_id to a channel by \ :c:func:`srpt_cm_req_recv`\  failed. Returning
 a non-zero value in any other case will trigger a race with the
 \ :c:func:`ib_destroy_cm_id`\  call in \ :c:func:`srpt_release_channel`\ .
@@ -977,7 +977,7 @@ Description
 
 Callback function invoked by the TCM core to clean up sessions associated
 with a node ACL when the user invokes
-rmdir /sys/kernel/config/target/\ ``$driver``\ /\ ``$port``\ /\ ``$tpg``\ /acls/\ ``$i_port_id``\ 
+rmdir /sys/kernel/config/target/$driver/$port/$tpg/acls/$i_port_id
 
 .. _`srpt_sess_get_index`:
 
@@ -1023,7 +1023,7 @@ srpt_make_tpg
 
 .. c:function:: struct se_portal_group *srpt_make_tpg(struct se_wwn *wwn, struct config_group *group, const char *name)
 
-    mkdir /sys/kernel/config/target/\ ``$driver``\ /\ ``$port``\ /\ ``$tpg``\ 
+    mkdir /sys/kernel/config/target/$driver/$port/$tpg
 
     :param struct se_wwn \*wwn:
         *undescribed*
@@ -1041,7 +1041,7 @@ srpt_drop_tpg
 
 .. c:function:: void srpt_drop_tpg(struct se_portal_group *tpg)
 
-    rmdir /sys/kernel/config/target/\ ``$driver``\ /\ ``$port``\ /\ ``$tpg``\ 
+    rmdir /sys/kernel/config/target/$driver/$port/$tpg
 
     :param struct se_portal_group \*tpg:
         *undescribed*
@@ -1053,7 +1053,7 @@ srpt_make_tport
 
 .. c:function:: struct se_wwn *srpt_make_tport(struct target_fabric_configfs *tf, struct config_group *group, const char *name)
 
-    mkdir /sys/kernel/config/target/\ ``$driver``\ /\ ``$port``\ 
+    mkdir /sys/kernel/config/target/$driver/$port
 
     :param struct target_fabric_configfs \*tf:
         *undescribed*
@@ -1071,7 +1071,7 @@ srpt_drop_tport
 
 .. c:function:: void srpt_drop_tport(struct se_wwn *wwn)
 
-    rmdir /sys/kernel/config/target/\ ``$driver``\ /\ ``$port``\ 
+    rmdir /sys/kernel/config/target/$driver/$port
 
     :param struct se_wwn \*wwn:
         *undescribed*
@@ -1094,7 +1094,7 @@ Note
 ----
 
 Since \ :c:func:`ib_register_client`\  registers callback functions, and since at
-least one of these callback functions (\ :c:func:`srpt_add_one`\ ) calls target core
+least one of these callback functions (srpt_add_one()) calls target core
 functions, this driver must be registered with the target core before
 \ :c:func:`ib_register_client`\  is called.
 

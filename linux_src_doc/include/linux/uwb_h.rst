@@ -438,7 +438,7 @@ uwb_dev_for_each_f
         'uwb_dev = container_of(dev, struct uwb_dev, dev)'
 
     :param void \*priv:
-        Data passed by the caller to 'uwb_{dev,rc}\ :c:func:`_foreach`\ '.
+        Data passed by the caller to 'uwb_{dev,rc}_foreach()'.
 
 .. _`uwb_rsv_is_owner`:
 

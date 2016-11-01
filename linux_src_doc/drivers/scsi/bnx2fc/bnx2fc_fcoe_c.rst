@@ -114,13 +114,13 @@ bnx2fc_fip_recv
         the received skb
 
     :param struct net_device \*dev:
-        associated \ :c:type:`struct net_device <net_device>`
+        associated \ :c:type:`struct net_device <net_device>`\ 
 
     :param struct packet_type \*ptype:
-        the \ :c:type:`struct packet_type <packet_type>` structure which was used to register this handler.
+        the \ :c:type:`struct packet_type <packet_type>`\  structure which was used to register this handler.
 
     :param struct net_device \*orig_dev:
-        original receive \ :c:type:`struct net_device <net_device>`, in case @ dev is a bond.
+        original receive \ :c:type:`struct net_device <net_device>`\ , in case @ dev is a bond.
 
 .. _`bnx2fc_fip_recv.return`:
 
@@ -392,14 +392,14 @@ here.
 _bnx2fc_create
 ==============
 
-.. c:function:: int _bnx2fc_create(struct net_device *netdev, enum fip_state fip_mode, enum bnx2fc_create_link_state link_state)
+.. c:function:: int _bnx2fc_create(struct net_device *netdev, enum fip_mode fip_mode, enum bnx2fc_create_link_state link_state)
 
     Create bnx2fc FCoE interface
 
     :param struct net_device \*netdev:
         The net_device object the Ethernet interface to create on
 
-    :param enum fip_state fip_mode:
+    :param enum fip_mode fip_mode:
         The FIP mode for this creation
 
     :param enum bnx2fc_create_link_state link_state:
@@ -429,14 +429,14 @@ Return
 bnx2fc_create
 =============
 
-.. c:function:: int bnx2fc_create(struct net_device *netdev, enum fip_state fip_mode)
+.. c:function:: int bnx2fc_create(struct net_device *netdev, enum fip_mode fip_mode)
 
     Create a bnx2fc interface
 
     :param struct net_device \*netdev:
         The net_device object the Ethernet interface to create on
 
-    :param enum fip_state fip_mode:
+    :param enum fip_mode fip_mode:
         The FIP mode for this creation
 
 .. _`bnx2fc_create.description`:
@@ -506,7 +506,7 @@ bnx2fc_ulp_exit
 Description
 -----------
 
-\ ``dev``\          cnic device handle
+@dev         cnic device handle
 
 .. _`bnx2fc_fcoe_reset`:
 

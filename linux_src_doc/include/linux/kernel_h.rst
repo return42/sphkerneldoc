@@ -200,7 +200,7 @@ Note
 ----
 
 __trace_printk is an internal function for trace_printk and
-the \ ``ip``\  is passed in via the trace_printk macro.
+      the \ ``ip``\  is passed in via the trace_printk macro.
 
 This function allows a kernel developer to debug fast path sections
 that printk is not appropriate for. By scattering in various
@@ -217,7 +217,7 @@ argument, there's no need to scan the string for printf formats.
 The \ :c:func:`trace_puts`\  will suffice. But how can we take advantage of
 using \ :c:func:`trace_puts`\  when \ :c:func:`trace_printk`\  has only one argument?
 By stringifying the args and checking the size we can tell
-whether or not there are args. \__stringify((__VA_ARGS__)) will
+whether or not there are args. __stringify((__VA_ARGS__)) will
 turn into "()\0" with a size of 3 when there are no args, anything
 else will be bigger. All we need to do is define a string to this,
 and then take its size and compare to 3. If it's bigger, use
@@ -242,7 +242,7 @@ Note
 ----
 
 __trace_bputs is an internal function for trace_puts and
-the \ ``ip``\  is passed in via the trace_puts macro.
+      the \ ``ip``\  is passed in via the trace_puts macro.
 
 This is similar to \ :c:func:`trace_printk`\  but is made for those really fast
 paths that a developer wants the least amount of "Heisenbug" affects,
@@ -264,7 +264,7 @@ Return
 ------
 
 0 if nothing was written, positive # if string was.
-(1 when \__trace_bputs is used, strlen(str) when \__trace_puts is used)
+ (1 when __trace_bputs is used, strlen(str) when __trace_puts is used)
 
 .. _`min_not_zero`:
 
@@ -273,7 +273,7 @@ min_not_zero
 
 .. c:function::  min_not_zero( x,  y)
 
-    return the minimum that is \_not\_ zero, unless both are zero
+    return the minimum that is _not_ zero, unless both are zero
 
     :param  x:
         value1

@@ -66,7 +66,7 @@ Description
 Register a watch on the given \ ``path``\ , using the given xenbus_watch
 structure for storage, and the given \ ``callback``\  function as the callback.
 Return 0 on success, or -errno on error.  On success, the watched path
-(\ ``path``\ /\ ``path2``\ ) will be saved as \ ``watch``\ ->node, and becomes the caller's to
+(@path/@path2) will be saved as \ ``watch``\ ->node, and becomes the caller's to
 \ :c:func:`kfree`\ .  On error, watch->node will be NULL, so the caller has nothing to
 free, the device will switch to \ ``XenbusStateClosing``\ , and the error will be
 saved in the store.

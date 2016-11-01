@@ -1,19 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/llite/vvp_io.c
 
-.. _`cl_is_normalio`:
-
-cl_is_normalio
-==============
-
-.. c:function:: int cl_is_normalio(const struct lu_env *env, const struct cl_io *io)
-
-    :param const struct lu_env \*env:
-        *undescribed*
-
-    :param const struct cl_io \*io:
-        *undescribed*
-
 .. _`can_populate_pages`:
 
 can_populate_pages
@@ -76,7 +63,7 @@ vvp_io_setattr_lock
 
 .. c:function:: int vvp_io_setattr_lock(const struct lu_env *env, const struct cl_io_slice *ios)
 
-    :\ :c:func:`vio_lock`\  method for CIT_SETATTR io.
+    :vio_lock() method for CIT_SETATTR io.
 
     :param const struct lu_env \*env:
         *undescribed*

@@ -40,7 +40,7 @@ uwb_est_grow
 Description
 -----------
 
-\ ``returns``\  0 if ok, < 0 errno no error.
+@returns 0 if ok, < 0 errno no error.
 
 .. _`uwb_est_register`:
 

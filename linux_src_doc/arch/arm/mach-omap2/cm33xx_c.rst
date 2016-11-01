@@ -70,7 +70,7 @@ _clktrctrl_write
 Description
 -----------
 
-\ ``c``\  must be the unshifted value for CLKTRCTRL - i.e., this function
+@c must be the unshifted value for CLKTRCTRL - i.e., this function
 will handle the shift itself.
 
 .. _`am33xx_cm_is_clkdm_in_hwsup`:
@@ -93,7 +93,7 @@ am33xx_cm_is_clkdm_in_hwsup
 Description
 -----------
 
-Returns true if the clockdomain referred to by (\ ``inst``\ , \ ``cdoffs``\ )
+Returns true if the clockdomain referred to by (@inst, \ ``cdoffs``\ )
 is in hardware-supervised idle mode, or 0 otherwise.
 
 .. _`am33xx_cm_clkdm_enable_hwsup`:
@@ -116,7 +116,7 @@ am33xx_cm_clkdm_enable_hwsup
 Description
 -----------
 
-Put a clockdomain referred to by (\ ``inst``\ , \ ``cdoffs``\ ) into
+Put a clockdomain referred to by (@inst, \ ``cdoffs``\ ) into
 hardware-supervised idle mode.  No return value.
 
 .. _`am33xx_cm_clkdm_disable_hwsup`:
@@ -139,7 +139,7 @@ am33xx_cm_clkdm_disable_hwsup
 Description
 -----------
 
-Put a clockdomain referred to by (\ ``inst``\ , \ ``cdoffs``\ ) into
+Put a clockdomain referred to by (@inst, \ ``cdoffs``\ ) into
 software-supervised idle mode, i.e., controlled manually by the
 Linux OMAP clockdomain code.  No return value.
 
@@ -163,7 +163,7 @@ am33xx_cm_clkdm_force_sleep
 Description
 -----------
 
-Put a clockdomain referred to by (\ ``inst``\ , \ ``cdoffs``\ ) into idle
+Put a clockdomain referred to by (@inst, \ ``cdoffs``\ ) into idle
 No return value.
 
 .. _`am33xx_cm_clkdm_force_wakeup`:
@@ -186,7 +186,7 @@ am33xx_cm_clkdm_force_wakeup
 Description
 -----------
 
-Take a clockdomain referred to by (\ ``inst``\ , \ ``cdoffs``\ ) out of idle,
+Take a clockdomain referred to by (@inst, \ ``cdoffs``\ ) out of idle,
 waking it up.  No return value.
 
 .. _`am33xx_cm_wait_module_ready`:

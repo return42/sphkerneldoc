@@ -1,6 +1,54 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/clk/versatile/clk-icst.c
 
+.. _`icst_control_type`:
+
+enum icst_control_type
+======================
+
+.. c:type:: enum icst_control_type
+
+    the type of ICST control register
+
+.. _`icst_control_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum icst_control_type {
+        ICST_VERSATILE,
+        ICST_INTEGRATOR_AP_CM,
+        ICST_INTEGRATOR_AP_SYS,
+        ICST_INTEGRATOR_AP_PCI,
+        ICST_INTEGRATOR_CP_CM_CORE,
+        ICST_INTEGRATOR_CP_CM_MEM
+    };
+
+.. _`icst_control_type.constants`:
+
+Constants
+---------
+
+ICST_VERSATILE
+    *undescribed*
+
+ICST_INTEGRATOR_AP_CM
+    *undescribed*
+
+ICST_INTEGRATOR_AP_SYS
+    *undescribed*
+
+ICST_INTEGRATOR_AP_PCI
+    *undescribed*
+
+ICST_INTEGRATOR_CP_CM_CORE
+    *undescribed*
+
+ICST_INTEGRATOR_CP_CM_MEM
+    *undescribed*
+
 .. _`clk_icst`:
 
 struct clk_icst
@@ -24,6 +72,7 @@ Definition
         u32 lockreg_off;
         struct icst_params *params;
         unsigned long rate;
+        enum icst_control_type ctype;
     }
 
 .. _`clk_icst.members`:
@@ -48,6 +97,9 @@ params
 
 rate
     current rate
+
+ctype
+    the type of control register for the ICST
 
 .. _`vco_get`:
 

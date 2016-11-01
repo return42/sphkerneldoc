@@ -58,12 +58,12 @@ It is however valid to have concurrent lookups if they are RCU protected.
 It is valid to have concurrent insertions and deletions protected by per
 bucket locks or concurrent RCU protected lookups and traversals.
 
-.. _`rhashtable_walk_init`:
+.. _`rhashtable_walk_enter`:
 
-rhashtable_walk_init
-====================
+rhashtable_walk_enter
+=====================
 
-.. c:function:: int rhashtable_walk_init(struct rhashtable *ht, struct rhashtable_iter *iter, gfp_t gfp)
+.. c:function:: void rhashtable_walk_enter(struct rhashtable *ht, struct rhashtable_iter *iter)
 
     Initialise an iterator
 
@@ -73,10 +73,7 @@ rhashtable_walk_init
     :param struct rhashtable_iter \*iter:
         Hash table Iterator
 
-    :param gfp_t gfp:
-        GFP flags for allocations
-
-.. _`rhashtable_walk_init.description`:
+.. _`rhashtable_walk_enter.description`:
 
 Description
 -----------
@@ -94,8 +91,7 @@ structure outside the hash table.
 This function may sleep so you must not call it from interrupt
 context or with spin locks held.
 
-You must call rhashtable_walk_exit if this function returns
-successfully.
+You must call rhashtable_walk_exit after this function returns.
 
 .. _`rhashtable_walk_exit`:
 
@@ -253,6 +249,30 @@ struct rhashtable_params params = {
 .hashfn = jhash,
 .obj_hashfn = my_hash_fn,
 };
+
+.. _`rhltable_init`:
+
+rhltable_init
+=============
+
+.. c:function:: int rhltable_init(struct rhltable *hlt, const struct rhashtable_params *params)
+
+    initialize a new hash list table
+
+    :param struct rhltable \*hlt:
+        hash list table to be initialized
+
+    :param const struct rhashtable_params \*params:
+        configuration parameters
+
+.. _`rhltable_init.description`:
+
+Description
+-----------
+
+Initializes a new hash list table.
+
+See documentation for rhashtable_init.
 
 .. _`rhashtable_free_and_destroy`:
 

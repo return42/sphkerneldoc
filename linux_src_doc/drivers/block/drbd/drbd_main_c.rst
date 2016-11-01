@@ -48,7 +48,7 @@ _tl_restart
 Description
 -----------
 
-\ ``what``\  might be one of CONNECTION_LOST_WHILE_PENDING, RESEND, FAIL_FROZEN_DISK_IO,
+@what might be one of CONNECTION_LOST_WHILE_PENDING, RESEND, FAIL_FROZEN_DISK_IO,
 RESTART_FROZEN_DISK_IO.
 
 .. _`tl_clear`:

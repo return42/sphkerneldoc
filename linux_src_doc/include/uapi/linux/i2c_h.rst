@@ -64,9 +64,9 @@ Description
 -----------
 
 An i2c_msg is the low level representation of one segment of an I2C
-transaction.  It is visible to drivers in the @\ :c:func:`i2c_transfer`\  procedure,
+transaction.  It is visible to drivers in the \ ``i2c_transfer``\ () procedure,
 to userspace from i2c-dev, and to I2C adapter drivers through the
-\ ``i2c_adapter``\ .@\ :c:func:`master_xfer`\  method.
+\ ``i2c_adapter``\ .@master_xfer() method.
 
 Except when I2C "protocol mangling" is used, all I2C adapters implement
 the standard rules for I2C transactions.  Each transaction begins with a

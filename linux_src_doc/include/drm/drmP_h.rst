@@ -1,12 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/drm/drmP.h
 
-.. _`drm_error`:
+.. _`drm_dev_error`:
 
-DRM_ERROR
-=========
+DRM_DEV_ERROR
+=============
 
-.. c:function::  DRM_ERROR( fmt,  ...)
+.. c:function::  DRM_DEV_ERROR( dev,  fmt,  ...)
+
+    :param  dev:
+        *undescribed*
 
     :param  fmt:
         *undescribed*
@@ -14,7 +17,7 @@ DRM_ERROR
     :param ... :
         variable arguments
 
-.. _`drm_error.description`:
+.. _`drm_dev_error.description`:
 
 Description
 -----------
@@ -22,12 +25,15 @@ Description
 \param fmt \ :c:func:`printf`\  like format string.
 \param arg arguments
 
-.. _`drm_error_ratelimited`:
+.. _`drm_dev_error_ratelimited`:
 
-DRM_ERROR_RATELIMITED
-=====================
+DRM_DEV_ERROR_RATELIMITED
+=========================
 
-.. c:function::  DRM_ERROR_RATELIMITED( fmt,  ...)
+.. c:function::  DRM_DEV_ERROR_RATELIMITED( dev,  fmt,  ...)
+
+    :param  dev:
+        *undescribed*
 
     :param  fmt:
         *undescribed*
@@ -35,7 +41,7 @@ DRM_ERROR_RATELIMITED
     :param ... :
         variable arguments
 
-.. _`drm_error_ratelimited.description`:
+.. _`drm_dev_error_ratelimited.description`:
 
 Description
 -----------
@@ -43,12 +49,15 @@ Description
 \param fmt \ :c:func:`printf`\  like format string.
 \param arg arguments
 
-.. _`drm_debug`:
+.. _`drm_dev_debug`:
 
-DRM_DEBUG
-=========
+DRM_DEV_DEBUG
+=============
 
-.. c:function::  DRM_DEBUG( fmt,  args...)
+.. c:function::  DRM_DEV_DEBUG( dev,  fmt,  args...)
+
+    :param  dev:
+        *undescribed*
 
     :param  fmt:
         *undescribed*
@@ -56,7 +65,31 @@ DRM_DEBUG
     :param  args...:
         variable arguments
 
-.. _`drm_debug.description`:
+.. _`drm_dev_debug.description`:
+
+Description
+-----------
+
+\param fmt \ :c:func:`printf`\  like format string.
+\param arg arguments
+
+.. _`drm_dev_debug_ratelimited`:
+
+DRM_DEV_DEBUG_RATELIMITED
+=========================
+
+.. c:function::  DRM_DEV_DEBUG_RATELIMITED( dev,  fmt,  args...)
+
+    :param  dev:
+        *undescribed*
+
+    :param  fmt:
+        *undescribed*
+
+    :param  args...:
+        variable arguments
+
+.. _`drm_dev_debug_ratelimited.description`:
 
 Description
 -----------
@@ -107,78 +140,6 @@ DRM_IOCTL_DEF_DRV
 
     :param  _flags:
         *undescribed*
-
-.. _`drm_master`:
-
-struct drm_master
-=================
-
-.. c:type:: struct drm_master
-
-    drm master structure
-
-.. _`drm_master.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct drm_master {
-        struct kref refcount;
-        struct drm_minor *minor;
-        char *unique;
-        int unique_len;
-        struct idr magic_map;
-        struct drm_lock_data lock;
-        void *driver_priv;
-    }
-
-.. _`drm_master.members`:
-
-Members
--------
-
-refcount
-    Refcount for this master object.
-
-minor
-    Link back to minor char device we are master for. Immutable.
-
-unique
-    Unique identifier: e.g. busid. Protected by drm_global_mutex.
-
-unique_len
-    Length of unique field. Protected by drm_global_mutex.
-
-magic_map
-    Map of used authentication tokens. Protected by struct_mutex.
-
-lock
-    DRI lock information.
-
-driver_priv
-    Pointer to driver-private information.
-
-.. _`drm_crtc_vblank_waitqueue`:
-
-drm_crtc_vblank_waitqueue
-=========================
-
-.. c:function:: wait_queue_head_t *drm_crtc_vblank_waitqueue(struct drm_crtc *crtc)
-
-    get vblank waitqueue for the CRTC
-
-    :param struct drm_crtc \*crtc:
-        which CRTC's vblank waitqueue to retrieve
-
-.. _`drm_crtc_vblank_waitqueue.description`:
-
-Description
------------
-
-This function returns a pointer to the vblank waitqueue for the CRTC.
-Drivers can use this to implement vblank waits using \ :c:func:`wait_event`\  & co.
 
 .. This file was automatic generated / don't edit.
 

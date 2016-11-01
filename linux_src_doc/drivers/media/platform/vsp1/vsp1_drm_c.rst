@@ -48,12 +48,12 @@ vsp1_du_atomic_begin
     :param struct device \*dev:
         the VSP device
 
-.. _`vsp1_du_atomic_update_ext`:
+.. _`vsp1_du_atomic_update`:
 
-vsp1_du_atomic_update_ext
-=========================
+vsp1_du_atomic_update
+=====================
 
-.. c:function:: int vsp1_du_atomic_update_ext(struct device *dev, unsigned int rpf_index, u32 pixelformat, unsigned int pitch, dma_addr_t mem[2], const struct v4l2_rect *src, const struct v4l2_rect *dst, unsigned int alpha, unsigned int zpos)
+.. c:function:: int vsp1_du_atomic_update(struct device *dev, unsigned int rpf_index, const struct vsp1_du_atomic_config *cfg)
 
     Setup one RPF input of the VSP pipeline
 
@@ -63,50 +63,32 @@ vsp1_du_atomic_update_ext
     :param unsigned int rpf_index:
         index of the RPF to setup (0-based)
 
-    :param u32 pixelformat:
-        V4L2 pixel format for the RPF memory input
+    :param const struct vsp1_du_atomic_config \*cfg:
+        the RPF configuration
 
-    :param unsigned int pitch:
-        number of bytes per line in the image stored in memory
-
-    :param dma_addr_t mem:
-        DMA addresses of the memory buffers (one per plane)
-
-    :param const struct v4l2_rect \*src:
-        the source crop rectangle for the RPF
-
-    :param const struct v4l2_rect \*dst:
-        the destination compose rectangle for the BRU input
-
-    :param unsigned int alpha:
-        global alpha value for the input
-
-    :param unsigned int zpos:
-        the Z-order position of the input
-
-.. _`vsp1_du_atomic_update_ext.description`:
+.. _`vsp1_du_atomic_update.description`:
 
 Description
 -----------
 
-Configure the VSP to perform composition of the image referenced by \ ``mem``\ 
-through RPF \ ``rpf_index``\ , using the \ ``src``\  crop rectangle and the \ ``dst``\ 
+Configure the VSP to perform image composition through RPF \ ``rpf_index``\  as
+described by the \ ``cfg``\  configuration. The image to compose is referenced by
+\ ``cfg``\ .mem and composed using the \ ``cfg``\ .src crop rectangle and the \ ``cfg``\ .dst
 composition rectangle. The Z-order is configurable with higher \ ``zpos``\  values
 displayed on top.
 
-Image format as stored in memory is expressed as a V4L2 \ ``pixelformat``\  value.
-As a special case, setting the pixel format to 0 will disable the RPF. The
-\ ``pitch``\ , \ ``mem``\ , \ ``src``\  and \ ``dst``\  parameters are ignored in that case. Calling the
+If the \ ``cfg``\  configuration is NULL, the RPF will be disabled. Calling the
 function on a disabled RPF is allowed.
 
-The memory pitch is configurable to allow for padding at end of lines, or
-simple for images that extend beyond the crop rectangle boundaries. The
-\ ``pitch``\  value is expressed in bytes and applies to all planes for multiplanar
-formats.
+Image format as stored in memory is expressed as a V4L2 \ ``cfg``\ .pixelformat
+value. The memory pitch is configurable to allow for padding at end of lines,
+or simply for images that extend beyond the crop rectangle boundaries. The
+\ ``cfg``\ .pitch value is expressed in bytes and applies to all planes for
+multiplanar formats.
 
 The source memory buffer is referenced by the DMA address of its planes in
-the \ ``mem``\  array. Up to two planes are supported. The second plane DMA address
-is ignored for formats using a single plane.
+the \ ``cfg``\ .mem array. Up to two planes are supported. The second plane DMA
+address is ignored for formats using a single plane.
 
 This function isn't reentrant, the caller needs to serialize calls.
 

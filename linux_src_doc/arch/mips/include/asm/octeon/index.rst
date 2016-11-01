@@ -22,7 +22,6 @@ octeon
     cvmx-helper_h
     cvmx-ipd_h
     cvmx-l2c_h
-    cvmx-mdio_h
     cvmx-pip_h
     cvmx-pko_h
     cvmx-pow_h

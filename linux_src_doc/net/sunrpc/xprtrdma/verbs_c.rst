@@ -16,12 +16,12 @@ rpcrdma_wc_send
     :param struct ib_wc \*wc:
         completed WR
 
-.. _`rpcrdma_receive_wc`:
+.. _`rpcrdma_wc_receive`:
 
-rpcrdma_receive_wc
+rpcrdma_wc_receive
 ==================
 
-.. c:function:: void rpcrdma_receive_wc(struct ib_cq *cq, struct ib_wc *wc)
+.. c:function:: void rpcrdma_wc_receive(struct ib_cq *cq, struct ib_wc *wc)
 
     Invoked by RDMA provider for each polled Receive WC
 
@@ -36,15 +36,15 @@ rpcrdma_receive_wc
 rpcrdma_alloc_regbuf
 ====================
 
-.. c:function:: struct rpcrdma_regbuf *rpcrdma_alloc_regbuf(struct rpcrdma_ia *ia, size_t size, gfp_t flags)
+.. c:function:: struct rpcrdma_regbuf *rpcrdma_alloc_regbuf(size_t size, enum dma_data_direction direction, gfp_t flags)
 
-    kmalloc and register memory for SEND/RECV buffers
-
-    :param struct rpcrdma_ia \*ia:
-        controlling rpcrdma_ia
+    allocate and DMA-map memory for SEND/RECV buffers
 
     :param size_t size:
         size of buffer to be allocated, in bytes
+
+    :param enum dma_data_direction direction:
+        direction of data movement
 
     :param gfp_t flags:
         GFP flags
@@ -54,26 +54,36 @@ rpcrdma_alloc_regbuf
 Description
 -----------
 
-Returns pointer to private header of an area of internally
-registered memory, or an ERR_PTR. The registered buffer follows
-the end of the private header.
+Returns an ERR_PTR, or a pointer to a regbuf, a buffer that
+can be persistently DMA-mapped for I/O.
 
 xprtrdma uses a regbuf for posting an outgoing RDMA SEND, or for
-receiving the payload of RDMA RECV operations. regbufs are not
-used for RDMA READ/WRITE operations, thus are registered only for
-LOCAL access.
+receiving the payload of RDMA RECV operations. During Long Calls
+or Replies they may be registered externally via ro_map.
+
+.. _`__rpcrdma_dma_map_regbuf`:
+
+__rpcrdma_dma_map_regbuf
+========================
+
+.. c:function:: bool __rpcrdma_dma_map_regbuf(struct rpcrdma_ia *ia, struct rpcrdma_regbuf *rb)
+
+    DMA-map a regbuf
+
+    :param struct rpcrdma_ia \*ia:
+        controlling rpcrdma_ia
+
+    :param struct rpcrdma_regbuf \*rb:
+        regbuf to be mapped
 
 .. _`rpcrdma_free_regbuf`:
 
 rpcrdma_free_regbuf
 ===================
 
-.. c:function:: void rpcrdma_free_regbuf(struct rpcrdma_ia *ia, struct rpcrdma_regbuf *rb)
+.. c:function:: void rpcrdma_free_regbuf(struct rpcrdma_regbuf *rb)
 
     deregister and free registered buffer
-
-    :param struct rpcrdma_ia \*ia:
-        controlling rpcrdma_ia
 
     :param struct rpcrdma_regbuf \*rb:
         regbuf to be deregistered and freed

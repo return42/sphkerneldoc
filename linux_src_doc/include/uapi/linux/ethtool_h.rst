@@ -483,7 +483,7 @@ Members
 -------
 
 cmd
-    \ ``ETHTOOL_GMODULEINFO``\ 
+    %ETHTOOL_GMODULEINFO
 
 type
     Standard the module information conforms to \ ``ETH_MODULE_SFF_xxxx``\ 
@@ -1695,7 +1695,7 @@ size of the rule table, plus the flag \ ``RX_CLS_LOC_SPECIAL``\  if the
 driver supports any special location values.  If that flag is not
 set in \ ``data``\  then special location values should not be used.
 
-For \ ``ETHTOOL_GRXCLSRULE``\ , \ ``fs``\ .\ ``location``\  specifies the location of an
+For \ ``ETHTOOL_GRXCLSRULE``\ , \ ``fs``\ .@location specifies the location of an
 existing rule on entry and \ ``fs``\  contains the rule on return.
 
 For \ ``ETHTOOL_GRXCLSRLALL``\ , \ ``rule_cnt``\  specifies the array size of the
@@ -1705,11 +1705,11 @@ of the rule table, \ ``rule_cnt``\  is the number of defined rules, and
 must use the second parameter to \ :c:func:`get_rxnfc`\  instead of \ ``rule_locs``\ .
 
 For \ ``ETHTOOL_SRXCLSRLINS``\ , \ ``fs``\  specifies the rule to add or update.
-\ ``fs``\ .\ ``location``\  either specifies the location to use or is a special
+\ ``fs``\ .@location either specifies the location to use or is a special
 location value with \ ``RX_CLS_LOC_SPECIAL``\  flag set.  On return,
-\ ``fs``\ .\ ``location``\  is the actual rule location.
+\ ``fs``\ .@location is the actual rule location.
 
-For \ ``ETHTOOL_SRXCLSRLDEL``\ , \ ``fs``\ .\ ``location``\  specifies the location of an
+For \ ``ETHTOOL_SRXCLSRLDEL``\ , \ ``fs``\ .@location specifies the location of an
 existing rule on entry.
 
 A driver supporting the special location values for
@@ -1720,7 +1720,7 @@ values are \ ``RX_CLS_LOC_ANY``\ , selecting any location;
 \ ``RX_CLS_LOC_FIRST``\ , selecting the first suitable location (maximum
 priority); and \ ``RX_CLS_LOC_LAST``\ , selecting the last suitable
 location (minimum priority).  Additional special values may be
-defined in future and drivers must return -\ ``EINVAL``\  for any
+defined in future and drivers must return -%EINVAL for any
 unrecognised value.
 
 .. _`ethtool_rxfh_indir`:
@@ -2364,7 +2364,7 @@ and \ ``link_mode_masks_nwords``\  fields (any change to them overwritten
 by kernel), and rely only on kernel's internal
 \ ``__ETHTOOL_LINK_MODE_MASK_NBITS``\  and
 \ ``ethtool_link_mode_mask_t``\ . Drivers that implement
-%\ :c:func:`set_link_ksettings`\  should validate all fields other than \ ``cmd``\ 
+\ ``set_link_ksettings``\ () should validate all fields other than \ ``cmd``\ 
 and \ ``link_mode_masks_nwords``\  that are not described as read-only or
 deprecated, and must ignore all fields described as read-only.
 
@@ -2373,12 +2373,12 @@ deprecated, and must ignore all fields described as read-only.
 succeeded
 ---------
 
-stick to \ ``ETHTOOL_GLINKSETTINGS``\ /\ ``SLINKSETTINGS``\  in
+stick to \ ``ETHTOOL_GLINKSETTINGS``\ /%SLINKSETTINGS in
 that case.  Conversely, if \ ``ETHTOOL_GLINKSETTINGS``\  fails, use
 \ ``ETHTOOL_GSET``\  to query and \ ``ETHTOOL_SSET``\  to change link
 settings; do not use \ ``ETHTOOL_SLINKSETTINGS``\  if
 \ ``ETHTOOL_GLINKSETTINGS``\  failed: stick to
-\ ``ETHTOOL_GSET``\ /\ ``ETHTOOL_SSET``\  in that case.
+\ ``ETHTOOL_GSET``\ /%ETHTOOL_SSET in that case.
 
 .. _`ethtool_link_settings.request-size-unsupported-by-kernel`:
 

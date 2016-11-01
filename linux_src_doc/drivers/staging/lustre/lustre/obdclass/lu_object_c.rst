@@ -1,6 +1,15 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/lustre/lustre/obdclass/lu_object.c
 
+.. _`lu_site_bkt_bits`:
+
+LU_SITE_BKT_BITS
+================
+
+.. c:function::  LU_SITE_BKT_BITS()
+
+    - consume too much memory - avoid unbalanced LRU list
+
 .. _`lu_object_put`:
 
 lu_object_put
@@ -271,26 +280,23 @@ lu_site_print
 lu_htable_order
 ===============
 
-.. c:function:: int lu_htable_order( void)
+.. c:function:: unsigned long lu_htable_order(struct lu_device *top)
 
-    :param  void:
-        no arguments
+    :param struct lu_device \*top:
+        *undescribed*
 
-.. _`lu_site_bits_min`:
+.. _`lu_site_init`:
 
-LU_SITE_BITS_MIN
-================
+lu_site_init
+============
 
-.. c:function::  LU_SITE_BITS_MIN()
+.. c:function:: int lu_site_init(struct lu_site *s, struct lu_device *top)
 
-.. _`lu_site_bkt_bits`:
+    :param struct lu_site \*s:
+        *undescribed*
 
-LU_SITE_BKT_BITS
-================
-
-.. c:function::  LU_SITE_BKT_BITS()
-
-    - consume too much memory - avoid unbalanced LRU list
+    :param struct lu_device \*top:
+        *undescribed*
 
 .. _`lu_site_fini`:
 
@@ -401,7 +407,7 @@ lu_object_add_top
 Description
 -----------
 
-This is typically called by the ->\ :c:func:`ldo_object_alloc`\  method of top-level
+This is typically called by the ->ldo_object_alloc() method of top-level
 device.
 
 .. _`lu_object_add`:
@@ -422,7 +428,7 @@ lu_object_add
 Description
 -----------
 
-This is typically called by the ->\ :c:func:`ldo_object_alloc`\  method of \a
+This is typically called by the ->ldo_object_alloc() method of \a
 before->lo_dev.
 
 .. _`lu_object_header_init`:
@@ -479,8 +485,8 @@ Description
 -----------
 
 Finalize device stack by purging object cache, and calling
-lu_device_type_operations::\ :c:func:`ldto_device_fini`\  and
-lu_device_type_operations::\ :c:func:`ldto_device_free`\  on all devices in the stack.
+lu_device_type_operations::ldto_device_fini() and
+lu_device_type_operations::ldto_device_free() on all devices in the stack.
 
 .. _`lu_context_key_register`:
 
@@ -704,9 +710,24 @@ lu_kmem_fini
 
 .. c:function:: void lu_kmem_fini(struct lu_kmem_descr *caches)
 
-    \ :c:func:`lu_kmem_init`\ .
+    lu_kmem_init().
 
     :param struct lu_kmem_descr \*caches:
+        *undescribed*
+
+.. _`lu_buf_check_and_grow`:
+
+lu_buf_check_and_grow
+=====================
+
+.. c:function:: int lu_buf_check_and_grow(struct lu_buf *buf, size_t len)
+
+    preserves old data in buffer old buffer remains unchanged on error \retval 0 or -ENOMEM
+
+    :param struct lu_buf \*buf:
+        *undescribed*
+
+    :param size_t len:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

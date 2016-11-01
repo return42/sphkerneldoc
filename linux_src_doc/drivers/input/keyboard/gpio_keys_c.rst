@@ -11,7 +11,7 @@ get_n_events_by_type
     returns maximum number of events per \ ``type``\ 
 
     :param int type:
-        type of button (\ ``EV_KEY``\ , \ ``EV_SW``\ )
+        type of button (%EV_KEY, \ ``EV_SW``\ )
 
 .. _`get_n_events_by_type.description`:
 
@@ -34,7 +34,7 @@ get_bm_events_by_type
         *undescribed*
 
     :param int type:
-        type of button (\ ``EV_KEY``\ , \ ``EV_SW``\ )
+        type of button (%EV_KEY, \ ``EV_SW``\ )
 
 .. _`get_bm_events_by_type.description`:
 
@@ -109,7 +109,7 @@ gpio_keys_attr_show_helper
         buffer where stringified bitmap is written
 
     :param unsigned int type:
-        button type (\ ``EV_KEY``\ , \ ``EV_SW``\ )
+        button type (%EV_KEY, \ ``EV_SW``\ )
 
     :param bool only_disabled:
         does caller want only those buttons that are
@@ -142,7 +142,7 @@ gpio_keys_attr_store_helper
         buffer from userspace that contains stringified bitmap
 
     :param unsigned int type:
-        button type (\ ``EV_KEY``\ , \ ``EV_SW``\ )
+        button type (%EV_KEY, \ ``EV_SW``\ )
 
 .. _`gpio_keys_attr_store_helper.description`:
 

@@ -29,7 +29,7 @@ are cleared.
 Return
 ------
 
-\ ``0``\  on success, -\ ``EINVAL``\  on an invalid flag combination.
+%0 on success, -%EINVAL on an invalid flag combination.
 
 .. _`ccw_device_set_options`:
 
@@ -58,7 +58,7 @@ All flags specified in \ ``flags``\  are set, the remainder is left untouched.
 Return
 ------
 
-\ ``0``\  on success, -\ ``EINVAL``\  if an invalid flag combination would ensue.
+%0 on success, -%EINVAL if an invalid flag combination would ensue.
 
 .. _`ccw_device_clear_options`:
 
@@ -142,16 +142,16 @@ ccw_device_clear
 Description
 -----------
 
-\ :c:func:`ccw_device_clear`\  calls csch on \ ``cdev``\ 's subchannel.
+ccw_device_clear() calls csch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_clear.return`:
 
 Return
 ------
 
-\ ``0``\  on success,
--\ ``ENODEV``\  on device not operational,
--\ ``EINVAL``\  on invalid device state.
+%0 on success,
+-%ENODEV on device not operational,
+-%EINVAL on invalid device state.
 
 .. _`ccw_device_clear.context`:
 
@@ -205,10 +205,10 @@ or sense required) or never (no IRQ handler registered).
 Return
 ------
 
-\ ``0``\ , if the operation was successful;
--\ ``EBUSY``\ , if the device is busy, or status pending;
--\ ``EACCES``\ , if no path specified in \ ``lpm``\  is operational;
--\ ``ENODEV``\ , if the device is not operational.
+%0, if the operation was successful;
+-%EBUSY, if the device is busy, or status pending;
+-%EACCES, if no path specified in \ ``lpm``\  is operational;
+-%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_key.context`:
 
@@ -262,17 +262,17 @@ or sense required) or never (no IRQ handler registered).
 This function notifies the device driver if the channel program has not
 completed during the time specified by \ ``expires``\ . If a timeout occurs, the
 channel program is terminated via xsch, hsch or csch, and the device's
-interrupt handler will be called with an irb containing ERR_PTR(-\ ``ETIMEDOUT``\ ).
+interrupt handler will be called with an irb containing ERR_PTR(-%ETIMEDOUT).
 
 .. _`ccw_device_start_timeout_key.return`:
 
 Return
 ------
 
-\ ``0``\ , if the operation was successful;
--\ ``EBUSY``\ , if the device is busy, or status pending;
--\ ``EACCES``\ , if no path specified in \ ``lpm``\  is operational;
--\ ``ENODEV``\ , if the device is not operational.
+%0, if the operation was successful;
+-%EBUSY, if the device is busy, or status pending;
+-%EACCES, if no path specified in \ ``lpm``\  is operational;
+-%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_timeout_key.context`:
 
@@ -323,10 +323,10 @@ or sense required) or never (no IRQ handler registered).
 Return
 ------
 
-\ ``0``\ , if the operation was successful;
--\ ``EBUSY``\ , if the device is busy, or status pending;
--\ ``EACCES``\ , if no path specified in \ ``lpm``\  is operational;
--\ ``ENODEV``\ , if the device is not operational.
+%0, if the operation was successful;
+-%EBUSY, if the device is busy, or status pending;
+-%EACCES, if no path specified in \ ``lpm``\  is operational;
+-%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start.context`:
 
@@ -377,17 +377,17 @@ or sense required) or never (no IRQ handler registered).
 This function notifies the device driver if the channel program has not
 completed during the time specified by \ ``expires``\ . If a timeout occurs, the
 channel program is terminated via xsch, hsch or csch, and the device's
-interrupt handler will be called with an irb containing ERR_PTR(-\ ``ETIMEDOUT``\ ).
+interrupt handler will be called with an irb containing ERR_PTR(-%ETIMEDOUT).
 
 .. _`ccw_device_start_timeout.return`:
 
 Return
 ------
 
-\ ``0``\ , if the operation was successful;
--\ ``EBUSY``\ , if the device is busy, or status pending;
--\ ``EACCES``\ , if no path specified in \ ``lpm``\  is operational;
--\ ``ENODEV``\ , if the device is not operational.
+%0, if the operation was successful;
+-%EBUSY, if the device is busy, or status pending;
+-%EACCES, if no path specified in \ ``lpm``\  is operational;
+-%ENODEV, if the device is not operational.
 
 .. _`ccw_device_start_timeout.context`:
 
@@ -418,17 +418,17 @@ ccw_device_halt
 Description
 -----------
 
-\ :c:func:`ccw_device_halt`\  calls hsch on \ ``cdev``\ 's subchannel.
+ccw_device_halt() calls hsch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_halt.return`:
 
 Return
 ------
 
-\ ``0``\  on success,
--\ ``ENODEV``\  on device not operational,
--\ ``EINVAL``\  on invalid device state,
--\ ``EBUSY``\  on device busy or interrupt pending.
+%0 on success,
+-%ENODEV on device not operational,
+-%EINVAL on invalid device state,
+-%EBUSY on device busy or interrupt pending.
 
 .. _`ccw_device_halt.context`:
 
@@ -454,17 +454,17 @@ ccw_device_resume
 Description
 -----------
 
-\ :c:func:`ccw_device_resume`\  calls rsch on \ ``cdev``\ 's subchannel.
+ccw_device_resume() calls rsch on \ ``cdev``\ 's subchannel.
 
 .. _`ccw_device_resume.return`:
 
 Return
 ------
 
-\ ``0``\  on success,
--\ ``ENODEV``\  on device not operational,
--\ ``EINVAL``\  on invalid device state,
--\ ``EBUSY``\  on device busy or interrupt pending.
+%0 on success,
+-%ENODEV on device not operational,
+-%EINVAL on invalid device state,
+-%EBUSY on device busy or interrupt pending.
 
 .. _`ccw_device_resume.context`:
 
@@ -503,7 +503,7 @@ type in the extended sense data.
 Return
 ------
 
-\ ``NULL``\  if no extended sense data has been stored or if no CIW of the
+%NULL if no extended sense data has been stored or if no CIW of the
 specified command type could be found,
 else a pointer to the CIW of the specified command type.
 
@@ -524,7 +524,7 @@ ccw_device_get_path_mask
 Return
 ------
 
-\ ``0``\  if no subchannel for the device is available,
+%0 if no subchannel for the device is available,
 else the mask of currently available paths for the ccw device's subchannel.
 
 .. _`ccw_device_get_chp_desc`:

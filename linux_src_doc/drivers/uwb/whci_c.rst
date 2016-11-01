@@ -33,7 +33,7 @@ whci_wait_for
 Description
 -----------
 
-Polls (for at most \ ``max_ms``\  ms) until '\*\ ``reg``\  & \ ``mask``\  == \ ``result``\ '.
+Polls (for at most \ ``max_ms``\  ms) until '\*@reg & \ ``mask``\  == \ ``result``\ '.
 
 .. This file was automatic generated / don't edit.
 

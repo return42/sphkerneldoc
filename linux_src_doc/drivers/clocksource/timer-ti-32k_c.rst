@@ -24,11 +24,11 @@ Update to use new clocksource/clockevent layers
 Author
 ------
 
-Kevin Hilman, MontaVista Software, Inc. <source\ ``mvista``\ .com>
+Kevin Hilman, MontaVista Software, Inc. <source@mvista.com>
 Copyright (C) 2007 MontaVista Software, Inc.
 
-Paul Mundt <paul.mundt\ ``nokia``\ .com>
-Juha Yrjölä <juha.yrjola\ ``nokia``\ .com>
+Paul Mundt <paul.mundt@nokia.com>
+Juha Yrjölä <juha.yrjola@nokia.com>
 OMAP Dual-mode timer framework support by Timo Teras
 
 Some parts based off of TI's 24xx code:
@@ -36,7 +36,7 @@ Some parts based off of TI's 24xx code:
 Copyright (C) 2004-2009 Texas Instruments, Inc.
 
 Roughly modelled after the OMAP1 MPU timer code.
-Added OMAP4 support - Santosh Shilimkar <santosh.shilimkar\ ``ti``\ .com>
+Added OMAP4 support - Santosh Shilimkar <santosh.shilimkar@ti.com>
 
 Copyright (C) 2015 Texas Instruments Incorporated - http://www.ti.com
 

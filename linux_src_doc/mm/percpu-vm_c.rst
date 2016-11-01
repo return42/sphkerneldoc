@@ -55,7 +55,7 @@ pcpu_free_pages
 Description
 -----------
 
-Free pages [\ ``page_start``\  and \ ``page_end``\ ) in \ ``pages``\  for all units.
+Free pages [@page_start and \ ``page_end``\ ) in \ ``pages``\  for all units.
 The pages were allocated for \ ``chunk``\ .
 
 .. _`pcpu_alloc_pages`:
@@ -84,7 +84,7 @@ pcpu_alloc_pages
 Description
 -----------
 
-Allocate pages [\ ``page_start``\ ,\ ``page_end``\ ) into \ ``pages``\  for all units.
+Allocate pages [@page_start,@page_end) into \ ``pages``\  for all units.
 The allocation is for \ ``chunk``\ .  Percpu core doesn't care about the
 content of \ ``pages``\  and will pass it verbatim to \ :c:func:`pcpu_map_pages`\ .
 
@@ -111,7 +111,7 @@ pcpu_pre_unmap_flush
 Description
 -----------
 
-Pages in [\ ``page_start``\ ,\ ``page_end``\ ) of \ ``chunk``\  are about to be
+Pages in [@page_start,@page_end) of \ ``chunk``\  are about to be
 unmapped.  Flush cache.  As each flushing trial can be very
 expensive, issue flush on the whole region at once rather than
 doing it for each cpu.  This could be an overkill but is more
@@ -143,7 +143,7 @@ pcpu_unmap_pages
 Description
 -----------
 
-For each cpu, unmap pages [\ ``page_start``\ ,\ ``page_end``\ ) out of \ ``chunk``\ .
+For each cpu, unmap pages [@page_start,@page_end) out of \ ``chunk``\ .
 Corresponding elements in \ ``pages``\  were cleared by the caller and can
 be used to carry information to \ :c:func:`pcpu_free_pages`\  which will be
 called after all unmaps are finished.  The caller should call
@@ -172,7 +172,7 @@ pcpu_post_unmap_tlb_flush
 Description
 -----------
 
-Pages [\ ``page_start``\ ,\ ``page_end``\ ) of \ ``chunk``\  have been unmapped.  Flush
+Pages [@page_start,@page_end) of \ ``chunk``\  have been unmapped.  Flush
 TLB for the regions.  This can be skipped if the area is to be
 returned to vmalloc as vmalloc will handle TLB flushing lazily.
 
@@ -205,7 +205,7 @@ pcpu_map_pages
 Description
 -----------
 
-For each cpu, map pages [\ ``page_start``\ ,\ ``page_end``\ ) into \ ``chunk``\ .  The
+For each cpu, map pages [@page_start,@page_end) into \ ``chunk``\ .  The
 caller is responsible for calling \ :c:func:`pcpu_post_map_flush`\  after all
 mappings are complete.
 
@@ -235,7 +235,7 @@ pcpu_post_map_flush
 Description
 -----------
 
-Pages [\ ``page_start``\ ,\ ``page_end``\ ) of \ ``chunk``\  have been mapped.  Flush
+Pages [@page_start,@page_end) of \ ``chunk``\  have been mapped.  Flush
 cache.
 
 As with \ :c:func:`pcpu_pre_unmap_flush`\ , TLB flushing also is done at once
@@ -264,7 +264,7 @@ pcpu_populate_chunk
 Description
 -----------
 
-For each cpu, populate and map pages [\ ``page_start``\ ,\ ``page_end``\ ) into
+For each cpu, populate and map pages [@page_start,@page_end) into
 \ ``chunk``\ .
 
 .. _`pcpu_populate_chunk.context`:
@@ -297,7 +297,7 @@ pcpu_depopulate_chunk
 Description
 -----------
 
-For each cpu, depopulate and unmap pages [\ ``page_start``\ ,\ ``page_end``\ )
+For each cpu, depopulate and unmap pages [@page_start,@page_end)
 from \ ``chunk``\ .
 
 .. _`pcpu_depopulate_chunk.context`:

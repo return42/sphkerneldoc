@@ -74,7 +74,7 @@ Description
 
 This function reserves space in journal head \ ``head``\ . If the reservation
 succeeded, the journal head stays locked and later has to be unlocked using
-'\ :c:func:`release_head`\ '. '\ :c:func:`write_node`\ ' and '\ :c:func:`write_head`\ ' functions also unlock
+'release_head()'. 'write_node()' and 'write_head()' functions also unlock
 it. Returns zero in case of success, \ ``-EAGAIN``\  if commit has to be done, and
 other negative error codes in case of other failures.
 
@@ -149,7 +149,7 @@ write_head
 Description
 -----------
 
-This function is the same as '\ :c:func:`write_node`\ ' but it does not assume the
+This function is the same as 'write_node()' but it does not assume the
 buffer it is writing is a node, so it does not prepare it (which means
 initializing common header and calculating CRC).
 
@@ -178,7 +178,7 @@ Description
 
 This function makes space reservation in journal head \ ``jhead``\ . The function
 takes the commit lock and locks the journal head, and the caller has to
-unlock the head and finish the reservation with '\ :c:func:`finish_reservation`\ '.
+unlock the head and finish the reservation with 'finish_reservation()'.
 Returns zero in case of success and a negative error code in case of
 failure.
 
@@ -207,8 +207,8 @@ Description
 -----------
 
 This function releases journal head \ ``jhead``\  which was locked by
-the '\ :c:func:`make_reservation`\ ' function. It has to be called after each successful
-'\ :c:func:`make_reservation`\ ' invocation.
+the 'make_reservation()' function. It has to be called after each successful
+'make_reservation()' invocation.
 
 .. _`finish_reservation`:
 
@@ -228,7 +228,7 @@ Description
 -----------
 
 This function finishes journal space reservation. It must be called after
-'\ :c:func:`make_reservation`\ '.
+'make_reservation()'.
 
 .. _`get_dent_type`:
 
@@ -285,7 +285,7 @@ Description
 
 This helper function marks UBIFS inode \ ``ui``\  as clean by cleaning the
 \ ``ui``\ ->dirty flag and releasing its budget. Note, VFS may still treat the
-inode as dirty and try to write it back, but '\ :c:func:`ubifs_write_inode`\ ' would
+inode as dirty and try to write it back, but 'ubifs_write_inode()' would
 just do nothing.
 
 .. _`ubifs_jnl_update`:
@@ -326,13 +326,13 @@ host inode) to the journal.
 
 The function writes the host inode \ ``dir``\  last, which is important in case of
 extended attributes. Indeed, then we guarantee that if the host inode gets
-synchronized (with '\ :c:func:`fsync`\ '), and the write-buffer it sits in gets flushed,
+synchronized (with 'fsync()'), and the write-buffer it sits in gets flushed,
 the extended attribute inode gets flushed too. And this is exactly what the
 user expects - synchronizing the host inode synchronizes its extended
 attributes. Similarly, this guarantees that if \ ``dir``\  is synchronized, its
 directory entry corresponding to \ ``nm``\  gets synchronized too.
 
-If the inode (\ ``inode``\ ) or the parent directory (\ ``dir``\ ) are synchronous, this
+If the inode (@inode) or the parent directory (@dir) are synchronous, this
 function synchronizes the write-buffer.
 
 This function marks the \ ``dir``\  and \ ``inode``\  inodes as clean and returns zero on
@@ -419,31 +419,68 @@ deleting it from TNC and, in some cases, writing a deletion inode to the
 journal.
 
 When regular file inodes are unlinked or a directory inode is removed, the
-'\ :c:func:`ubifs_jnl_update`\ ' function writes a corresponding deletion inode and
+'ubifs_jnl_update()' function writes a corresponding deletion inode and
 direntry to the media, and adds the inode to orphans. After this, when the
 last reference to this inode has been dropped, this function is called. In
 general, it has to write one more deletion inode to the media, because if
-a commit happened between '\ :c:func:`ubifs_jnl_update`\ ' and
-'\ :c:func:`ubifs_jnl_delete_inode`\ ', the deletion inode is not in the journal
+a commit happened between 'ubifs_jnl_update()' and
+'ubifs_jnl_delete_inode()', the deletion inode is not in the journal
 anymore, and in fact it might not be on the flash anymore, because it might
 have been garbage-collected already. And for optimization reasons UBIFS does
 not read the orphan area if it has been unmounted cleanly, so it would have
 no indication in the journal that there is a deleted inode which has to be
 removed from TNC.
 
-However, if there was no commit between '\ :c:func:`ubifs_jnl_update`\ ' and
-'\ :c:func:`ubifs_jnl_delete_inode`\ ', then there is no need to write the deletion
+However, if there was no commit between 'ubifs_jnl_update()' and
+'ubifs_jnl_delete_inode()', then there is no need to write the deletion
 inode to the media for the second time. And this is quite a typical case.
 
 This function returns zero in case of success and a negative error code in
 case of failure.
+
+.. _`ubifs_jnl_xrename`:
+
+ubifs_jnl_xrename
+=================
+
+.. c:function:: int ubifs_jnl_xrename(struct ubifs_info *c, const struct inode *fst_dir, const struct dentry *fst_dentry, const struct inode *snd_dir, const struct dentry *snd_dentry, int sync)
+
+    cross rename two directory entries.
+
+    :param struct ubifs_info \*c:
+        UBIFS file-system description object
+
+    :param const struct inode \*fst_dir:
+        parent inode of 1st directory entry to exchange
+
+    :param const struct dentry \*fst_dentry:
+        1st directory entry to exchange
+
+    :param const struct inode \*snd_dir:
+        parent inode of 2nd directory entry to exchange
+
+    :param const struct dentry \*snd_dentry:
+        2nd directory entry to exchange
+
+    :param int sync:
+        non-zero if the write-buffer has to be synchronized
+
+.. _`ubifs_jnl_xrename.description`:
+
+Description
+-----------
+
+This function implements the cross rename operation which may involve
+writing 2 inodes and 2 directory entries. It marks the written inodes as clean
+and returns zero on success. In case of failure, a negative error code is
+returned.
 
 .. _`ubifs_jnl_rename`:
 
 ubifs_jnl_rename
 ================
 
-.. c:function:: int ubifs_jnl_rename(struct ubifs_info *c, const struct inode *old_dir, const struct dentry *old_dentry, const struct inode *new_dir, const struct dentry *new_dentry, int sync)
+.. c:function:: int ubifs_jnl_rename(struct ubifs_info *c, const struct inode *old_dir, const struct dentry *old_dentry, const struct inode *new_dir, const struct dentry *new_dentry, const struct inode *whiteout, int sync)
 
     rename a directory entry.
 
@@ -462,6 +499,9 @@ ubifs_jnl_rename
     :param const struct dentry \*new_dentry:
         new directory entry (or directory entry to replace)
 
+    :param const struct inode \*whiteout:
+        *undescribed*
+
     :param int sync:
         non-zero if the write-buffer has to be synchronized
 
@@ -471,7 +511,7 @@ Description
 -----------
 
 This function implements the re-name operation which may involve writing up
-to 3 inodes and 2 directory entries. It marks the written inodes as clean
+to 4 inodes and 2 directory entries. It marks the written inodes as clean
 and returns zero on success. In case of failure, a negative error code is
 returned.
 
@@ -592,7 +632,7 @@ Description
 This function writes the updated version of an extended attribute inode and
 the host inode to the journal (to the base head). The host inode is written
 after the extended attribute inode in order to guarantee that the extended
-attribute will be flushed when the inode is synchronized by '\ :c:func:`fsync`\ ' and
+attribute will be flushed when the inode is synchronized by 'fsync()' and
 consequently, the write-buffer is synchronized. This function returns zero
 in case of success and a negative error code in case of failure.
 

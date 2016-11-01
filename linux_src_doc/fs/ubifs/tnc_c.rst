@@ -35,7 +35,7 @@ may be dirty, but they must not be erased until the next successful commit
 That means that the garbage collection and the in-the-gaps method of
 committing must be able to determine if an index node is in the old index.
 Most of the old index nodes can be found by looking up the TNC using the
-'\ :c:func:`lookup_znode`\ ' function. However, some of the old index nodes may have
+'lookup_znode()' function. However, some of the old index nodes may have
 been deleted from the current index or may have been changed so much that
 they cannot be easily found. In those cases, an entry is added to an RB-tree.
 That is what this function does. The RB-tree is ordered by LEB number and
@@ -495,7 +495,7 @@ fallible_matches_name
 Description
 -----------
 
-This is a "fallible" version of '\ :c:func:`matches_name`\ ' function which does not
+This is a "fallible" version of 'matches_name()' function which does not
 panic if the direntry/xentry referred by \ ``zbr``\  does not exist on the media.
 
 This function checks if xentry/direntry referred by zbranch \ ``zbr``\  matches name
@@ -536,7 +536,7 @@ fallible_resolve_collision
 Description
 -----------
 
-This is a "fallible" version of the '\ :c:func:`resolve_collision`\ ' function which
+This is a "fallible" version of the 'resolve_collision()' function which
 does not panic if one of the nodes referred to by TNC does not exist on the
 media. This may happen when replaying the journal if a deleted node was
 Garbage-collected and the commit was not done. A branch that refers to a node
@@ -577,7 +577,7 @@ matches_position
 Description
 -----------
 
-This function returns \ ``1``\  if \ ``lnum``\ :\ ``offs``\  matches, and \ ``0``\  otherwise.
+This function returns \ ``1``\  if \ ``lnum``\ :@offs matches, and \ ``0``\  otherwise.
 
 .. _`resolve_collision_directly`:
 
@@ -613,10 +613,10 @@ Description
 
 This function is used for "hashed" keys to make sure the found directory or
 extended attribute entry node is what was looked for. It is used when the
-flash address of the right node is known (\ ``lnum``\ :\ ``offs``\ ) which makes it much
+flash address of the right node is known (@lnum:@offs) which makes it much
 easier to resolve collisions (no need to read entries and match full
 names). This function returns \ ``1``\  and sets \ ``zn``\  and \ ``n``\  if the collision is
-resolved, \ ``0``\  if \ ``lnum``\ :\ ``offs``\  is not found and \ ``zn``\  and \ ``n``\  are set to the
+resolved, \ ``0``\  if \ ``lnum``\ :@offs is not found and \ ``zn``\  and \ ``n``\  are set to the
 previous directory entry. Otherwise a negative error code is returned.
 
 .. _`dirty_cow_bottom_up`:
@@ -824,7 +824,7 @@ Lookup consecutive data node keys for the same inode that reside
 consecutively in the same LEB. This function returns zero in case of success
 and a negative error code in case of failure.
 
-Note, if the bulk-read buffer length (\ ``bu``\ ->buf_len) is known, this function
+Note, if the bulk-read buffer length (@bu->buf_len) is known, this function
 makes sure bulk-read nodes fit the buffer. Otherwise, this function prepares
 maximum possible amount of nodes for bulk-read.
 
@@ -905,7 +905,7 @@ Description
 -----------
 
 This functions reads and validates the data nodes that were identified by the
-'\ :c:func:`ubifs_tnc_get_bu_keys`\ ' function. This functions returns \ ``0``\  on success,
+'ubifs_tnc_get_bu_keys()' function. This functions returns \ ``0``\  on success,
 -EAGAIN to indicate a race with GC, or another negative error code on
 failure.
 
@@ -993,7 +993,7 @@ correct_parent_keys
 Description
 -----------
 
-This is a helper function for '\ :c:func:`tnc_insert`\ '. When the key of the leftmost
+This is a helper function for 'tnc_insert()'. When the key of the leftmost
 zbranch changes, keys of parent znodes have to be corrected. This helper
 function is called in such situations and corrects the keys if needed.
 
@@ -1020,7 +1020,7 @@ insert_zbranch
 Description
 -----------
 
-This is a helper function for '\ :c:func:`tnc_insert`\ '. UBIFS does not allow "gaps" in
+This is a helper function for 'tnc_insert()'. UBIFS does not allow "gaps" in
 znode's array of zbranches and keeps zbranches consolidated, so when a new
 zbranch has to be inserted to the \ ``znode``\ ->zbranches[]' array at the \ ``n``\ -th
 slot, zbranches starting from \ ``n``\  have to be moved right.
@@ -1160,7 +1160,7 @@ ubifs_tnc_add_nm
 Description
 -----------
 
-This is the same as '\ :c:func:`ubifs_tnc_add`\ ' but it should be used with keys which
+This is the same as 'ubifs_tnc_add()' but it should be used with keys which
 may have collisions, like directory entry keys.
 
 .. _`tnc_delete`:
@@ -1339,7 +1339,7 @@ Description
 -----------
 
 This function finds and reads the next directory or extended attribute entry
-after the given key (\ ``key``\ ) if there is one. \ ``nm``\  is used to resolve
+after the given key (@key) if there is one. \ ``nm``\  is used to resolve
 collisions.
 
 If the name of the current entry is not known and only the key is known,
@@ -1462,18 +1462,18 @@ Description
 -----------
 
 This function searches an indexing node by its first key \ ``key``\  and its
-address \ ``lnum``\ :\ ``offs``\ . It looks up the indexing tree by pulling all indexing
+address \ ``lnum``\ :@offs. It looks up the indexing tree by pulling all indexing
 nodes it traverses to TNC. This function is called for indexing nodes which
 were found on the media by scanning, for example when garbage-collecting or
 when doing in-the-gaps commit. This means that the indexing node which is
 looked for does not have to have exactly the same leftmost key \ ``key``\ , because
 the leftmost key may have been changed, in which case TNC will contain a
-dirty znode which still refers the same \ ``lnum``\ :\ ``offs``\ . This function is clever
+dirty znode which still refers the same \ ``lnum``\ :@offs. This function is clever
 enough to recognize such indexing nodes.
 
 Note, if a znode was deleted or changed too much, then this function will
 not find it. For situations like this UBIFS has the old index RB-tree
-(indexed by \ ``lnum``\ :\ ``offs``\ ).
+(indexed by \ ``lnum``\ :@offs).
 
 This function returns a pointer to the znode found or \ ``NULL``\  if it is not
 found. A negative error code is returned on failure.
@@ -1643,7 +1643,7 @@ dbg_check_inode_size
 Description
 -----------
 
-This function makes sure that the inode size (\ ``size``\ ) is correct and it does
+This function makes sure that the inode size (@size) is correct and it does
 not have any pages beyond \ ``size``\ . Returns zero if the inode is OK, \ ``-EINVAL``\ 
 if it has a data page beyond \ ``size``\ , and other negative error code in case of
 other errors.

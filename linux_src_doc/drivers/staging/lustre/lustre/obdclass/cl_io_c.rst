@@ -30,7 +30,7 @@ cl_io_fini
 
 .. c:function:: void cl_io_fini(const struct lu_env *env, struct cl_io *io)
 
-    :\ :c:func:`cio_fini`\  bottom-to-top.
+    :cio_fini() bottom-to-top.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -45,7 +45,7 @@ cl_io_sub_init
 
 .. c:function:: int cl_io_sub_init(const struct lu_env *env, struct cl_io *io, enum cl_io_type iot, struct cl_object *obj)
 
-    io, by calling cl_io_operations::\ :c:func:`cio_init`\  top-to-bottom.
+    io, by calling cl_io_operations::cio_init() top-to-bottom.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -73,7 +73,7 @@ cl_io_init
 
 .. c:function:: int cl_io_init(const struct lu_env *env, struct cl_io *io, enum cl_io_type iot, struct cl_object *obj)
 
-    :\ :c:func:`cio_init`\  top-to-bottom.
+    :cio_init() top-to-bottom.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -146,7 +146,7 @@ cl_io_lock
 Description
 -----------
 
-Calls cl_io_operations::\ :c:func:`cio_lock`\  top-to-bottom to collect locks required
+Calls cl_io_operations::cio_lock() top-to-bottom to collect locks required
 by layers for the current iteration. Then sort locks (to avoid dead-locks),
 and acquire them.
 
@@ -181,7 +181,7 @@ cl_io_iter_init
 Description
 -----------
 
-Calls cl_io_operations::\ :c:func:`cio_iter_init`\  top-to-bottom. This exists to give
+Calls cl_io_operations::cio_iter_init() top-to-bottom. This exists to give
 layers a chance to modify io parameters, e.g., so that lov can restrict io
 to a single stripe.
 
@@ -203,7 +203,7 @@ cl_io_iter_fini
 Description
 -----------
 
-Calls cl_io_operations::\ :c:func:`cio_iter_fini`\  bottom-to-top.
+Calls cl_io_operations::cio_iter_fini() bottom-to-top.
 
 .. _`cl_io_rw_advance`:
 
@@ -260,7 +260,7 @@ cl_io_start
 
 .. c:function:: int cl_io_start(const struct lu_env *env, struct cl_io *io)
 
-    :\ :c:func:`cio_start`\  top-to-bottom.
+    :cio_start() top-to-bottom.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -275,7 +275,7 @@ cl_io_end
 
 .. c:function:: void cl_io_end(const struct lu_env *env, struct cl_io *io)
 
-    cl_io_operations::\ :c:func:`cio_end`\  bottom-to-top.
+    cl_io_operations::cio_end() bottom-to-top.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -304,7 +304,7 @@ cl_io_read_page
 Description
 -----------
 
-\see cl_io_operations::\ :c:func:`cio_read_page`\ 
+\see cl_io_operations::cio_read_page()
 
 .. _`cl_io_commit_async`:
 
@@ -337,7 +337,7 @@ Description
 -----------
 
 \returns 0 if all pages committed, or errcode if error occurred.
-\see cl_io_operations::\ :c:func:`cio_commit_async`\ 
+\see cl_io_operations::cio_commit_async()
 
 .. _`cl_io_submit_rw`:
 
@@ -368,7 +368,7 @@ queue->c2_qout queue, and queue->c2_qin contain both the pages don't need
 to be submitted, and the pages are errant to submit.
 
 \returns 0 if at least one page was submitted, error code otherwise.
-\see cl_io_operations::\ :c:func:`cio_submit`\ 
+\see cl_io_operations::cio_submit()
 
 .. _`cl_io_submit_sync`:
 
@@ -452,7 +452,7 @@ cl_io_slice_add
 Description
 -----------
 
-This is called by cl_object_operations::\ :c:func:`coo_io_init`\  methods to add a
+This is called by cl_object_operations::coo_io_init() methods to add a
 per-layer state to the io. New state is added at the end of
 cl_io::ci_layers list, that is, it is at the bottom of the stack.
 
@@ -722,7 +722,7 @@ cl_req_slice_add
 Description
 -----------
 
-This is called by cl_device_operations::\ :c:func:`cdo_req_init`\  methods to add a
+This is called by cl_device_operations::cdo_req_init() methods to add a
 per-layer state to the request. New state is added at the end of
 cl_req::crq_layers list, that is, it is at the bottom of the stack.
 
@@ -735,7 +735,7 @@ cl_req_completion
 
 .. c:function:: void cl_req_completion(const struct lu_env *env, struct cl_req *req, int rc)
 
-    request transfer completion call-backs (cl_req_operations::\ :c:func:`cro_completion`\ ) bottom-to-top.
+    request transfer completion call-backs (cl_req_operations::cro_completion()) bottom-to-top.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -801,7 +801,7 @@ cl_req_prep
 
 .. c:function:: int cl_req_prep(const struct lu_env *env, struct cl_req *req)
 
-    cl_req_operations::\ :c:func:`cro_prep`\  top-to-bottom.
+    cl_req_operations::cro_prep() top-to-bottom.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -853,7 +853,7 @@ cl_sync_io_wait
 
 .. c:function:: int cl_sync_io_wait(const struct lu_env *env, struct cl_sync_io *anchor, long timeout)
 
-    \ :c:func:`cl_sync_io_note`\  for every entity.
+    cl_sync_io_note() for every entity.
 
     :param const struct lu_env \*env:
         *undescribed*

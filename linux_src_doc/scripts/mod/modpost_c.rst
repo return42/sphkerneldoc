@@ -133,7 +133,7 @@ atsym   = \__param_ops\_\*
 Pattern 1a
 ----------
 
-\ :c:func:`module_param_call`\  ops can refer to \__init set function if permissions=0
+module_param_call() ops can refer to \__init set function if permissions=0
 
 .. _`secref_whitelist.pattern-2`:
 

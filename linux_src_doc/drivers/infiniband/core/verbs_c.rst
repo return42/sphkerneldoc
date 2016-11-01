@@ -1,19 +1,25 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/infiniband/core/verbs.c
 
-.. _`ib_alloc_pd`:
+.. _`__ib_alloc_pd`:
 
-ib_alloc_pd
-===========
+__ib_alloc_pd
+=============
 
-.. c:function:: struct ib_pd *ib_alloc_pd(struct ib_device *device)
+.. c:function:: struct ib_pd *__ib_alloc_pd(struct ib_device *device, unsigned int flags, const char *caller)
 
     Allocates an unused protection domain.
 
     :param struct ib_device \*device:
         The device on which to allocate the protection domain.
 
-.. _`ib_alloc_pd.description`:
+    :param unsigned int flags:
+        *undescribed*
+
+    :param const char \*caller:
+        *undescribed*
+
+.. _`__ib_alloc_pd.description`:
 
 Description
 -----------
@@ -72,6 +78,64 @@ Memory registeration page/sg lists must not exceed max_num_sg.
 For mr_type IB_MR_TYPE_MEM_REG, the total length cannot exceed
 max_num_sg \* used_page_size.
 
+.. _`ib_create_wq`:
+
+ib_create_wq
+============
+
+.. c:function:: struct ib_wq *ib_create_wq(struct ib_pd *pd, struct ib_wq_init_attr *wq_attr)
+
+    Creates a WQ associated with the specified protection domain.
+
+    :param struct ib_pd \*pd:
+        The protection domain associated with the WQ.
+
+    :param struct ib_wq_init_attr \*wq_attr:
+        *undescribed*
+
+.. _`ib_create_wq.description`:
+
+Description
+-----------
+
+wq_init_attr->max_wr and wq_init_attr->max_sge determine
+the requested size of the WQ, and set to the actual values allocated
+on return.
+If \ :c:func:`ib_create_wq`\  succeeds, then max_wr and max_sge will always be
+at least as large as the requested values.
+
+.. _`ib_destroy_wq`:
+
+ib_destroy_wq
+=============
+
+.. c:function:: int ib_destroy_wq(struct ib_wq *wq)
+
+    Destroys the specified WQ.
+
+    :param struct ib_wq \*wq:
+        The WQ to destroy.
+
+.. _`ib_modify_wq`:
+
+ib_modify_wq
+============
+
+.. c:function:: int ib_modify_wq(struct ib_wq *wq, struct ib_wq_attr *wq_attr, u32 wq_attr_mask)
+
+    Modifies the specified WQ.
+
+    :param struct ib_wq \*wq:
+        The WQ to modify.
+
+    :param struct ib_wq_attr \*wq_attr:
+        On input, specifies the WQ attributes to modify.
+
+    :param u32 wq_attr_mask:
+        A bit-mask used to specify which attributes of the WQ
+        are being modified.
+        On output, the current values of selected WQ attributes are returned.
+
 .. _`ib_map_mr_sg`:
 
 ib_map_mr_sg
@@ -102,13 +166,13 @@ Constraints
 -----------
 
 - The first sg element is allowed to have an offset.
-- Each sg element must be aligned to page_size (or physically
-contiguous to the previous element). In case an sg element has a
-non contiguous offset, the mapping prefix will not include it.
+- Each sg element must either be aligned to page_size or virtually
+contiguous to the previous element. In case an sg element has a
+non-contiguous offset, the mapping prefix will not include it.
 - The last sg element is allowed to have length less than page_size.
 - If sg_nents total byte length exceeds the mr max_num_sge \* page_size
 then only max_num_sg entries will be mapped.
-- If the MR was allocated with type IB_MR_TYPE_SG_GAPS_REG, non of these
+- If the MR was allocated with type IB_MR_TYPE_SG_GAPS, none of these
 constraints holds and the page_size argument is ignored.
 
 Returns the number of sg elements that were mapped to the memory region.
@@ -175,7 +239,7 @@ Description
 
 If the device has a provider-specific drain function, then
 call that.  Otherwise call the generic drain function
-\\ :c:func:`__ib_drain_sq`\ .
+\__ib_drain_sq().
 
 .. _`ib_drain_sq.the-caller-must`:
 
@@ -211,7 +275,7 @@ Description
 
 If the device has a provider-specific drain function, then
 call that.  Otherwise call the generic drain function
-\\ :c:func:`__ib_drain_rq`\ .
+\__ib_drain_rq().
 
 .. _`ib_drain_rq.the-caller-must`:
 

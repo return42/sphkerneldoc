@@ -79,7 +79,7 @@ addr
     I2C address used to control the tuner device/chipset
 
 type
-    Type of the tuner, as defined at the TUNER\_\* macros.
+    Type of the tuner, as defined at the TUNER_* macros.
     Each different tuner model should have an unique
     identifier.
 

@@ -32,7 +32,7 @@ before any other locomo-specific code.
 Return
 ------
 
-\ ``-ENODEV``\         device not found.
+%-ENODEV        device not found.
 \ ``-EBUSY``\          physical address already marked in-use.
 \ ``0``\               successful.
 

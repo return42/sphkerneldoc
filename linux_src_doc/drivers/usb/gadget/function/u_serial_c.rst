@@ -66,7 +66,7 @@ hardware flow control.
 Caller needs to have set up the endpoints and USB function in \ ``dev``\ 
 before calling this, as well as the appropriate (speed-specific)
 endpoint descriptors, and also have allocate \ ``port_num``\  by calling
-@\ :c:func:`gserial_alloc_line`\ .
+\ ``gserial_alloc_line``\ ().
 
 Returns negative errno or zero.
 On success, ep->driver_data will be overwritten.

@@ -1,137 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem.c
 
-.. _`i915_gem_create_ioctl`:
-
-i915_gem_create_ioctl
-=====================
-
-.. c:function:: int i915_gem_create_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
-
-    :param struct drm_device \*dev:
-        *undescribed*
-
-    :param void \*data:
-        *undescribed*
-
-    :param struct drm_file \*file:
-        *undescribed*
-
-.. _`i915_gem_pread_ioctl`:
-
-i915_gem_pread_ioctl
-====================
-
-.. c:function:: int i915_gem_pread_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
-
-    :param struct drm_device \*dev:
-        *undescribed*
-
-    :param void \*data:
-        *undescribed*
-
-    :param struct drm_file \*file:
-        *undescribed*
-
-.. _`i915_gem_pread_ioctl.description`:
-
-Description
------------
-
-On error, the contents of \*data are undefined.
-
-.. _`i915_gem_gtt_pwrite_fast`:
-
-i915_gem_gtt_pwrite_fast
-========================
-
-.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_device *dev, struct drm_i915_gem_object *obj, struct drm_i915_gem_pwrite *args, struct drm_file *file)
-
-    user into the GTT, uncached.
-
-    :param struct drm_device \*dev:
-        *undescribed*
-
-    :param struct drm_i915_gem_object \*obj:
-        *undescribed*
-
-    :param struct drm_i915_gem_pwrite \*args:
-        *undescribed*
-
-    :param struct drm_file \*file:
-        *undescribed*
-
-.. _`i915_gem_pwrite_ioctl`:
-
-i915_gem_pwrite_ioctl
-=====================
-
-.. c:function:: int i915_gem_pwrite_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
-
-    :param struct drm_device \*dev:
-        *undescribed*
-
-    :param void \*data:
-        *undescribed*
-
-    :param struct drm_file \*file:
-        *undescribed*
-
-.. _`i915_gem_pwrite_ioctl.description`:
-
-Description
------------
-
-On error, the contents of the buffer that were to be modified are undefined.
-
-.. _`__i915_wait_request`:
-
-__i915_wait_request
-===================
-
-.. c:function:: int __i915_wait_request(struct drm_i915_gem_request *req, bool interruptible, s64 *timeout, struct intel_rps_client *rps)
-
-    wait until execution of request has finished
-
-    :param struct drm_i915_gem_request \*req:
-        duh!
-
-    :param bool interruptible:
-        do an interruptible wait (normally yes)
-
-    :param s64 \*timeout:
-        in - how long to wait (NULL forever); out - how much time remaining
-
-    :param struct intel_rps_client \*rps:
-        *undescribed*
-
-.. _`__i915_wait_request.note`:
-
-Note
-----
-
-It is of utmost importance that the passed in seqno and reset_counter
-values have been read by the caller in an smp safe manner. Where read-side
-locks are involved, it is sufficient to read the reset_counter before
-unlocking the lock that protects the seqno. For lockless tricks, the
-reset_counter \_must\_ be read before, and an appropriate smp_rmb must be
-inserted.
-
-Returns 0 if the request was found within the alloted time. Else returns the
-errno with remaining time filled in timeout argument.
-
-.. _`i915_wait_request`:
-
-i915_wait_request
-=================
-
-.. c:function:: int i915_wait_request(struct drm_i915_gem_request *req)
-
-    request and object lists appropriately for that event.
-
-    :param struct drm_i915_gem_request \*req:
-        *undescribed*
-
 .. _`i915_gem_object_wait_rendering`:
 
 i915_gem_object_wait_rendering
@@ -142,10 +11,93 @@ i915_gem_object_wait_rendering
     safe to unbind from the GTT or access from the CPU.
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        i915 gem object
 
     :param bool readonly:
-        *undescribed*
+        waiting for just read access or read-write access
+
+.. _`i915_gem_create_ioctl`:
+
+i915_gem_create_ioctl
+=====================
+
+.. c:function:: int i915_gem_create_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+
+    :param struct drm_device \*dev:
+        drm device pointer
+
+    :param void \*data:
+        ioctl data blob
+
+    :param struct drm_file \*file:
+        drm file pointer
+
+.. _`i915_gem_pread_ioctl`:
+
+i915_gem_pread_ioctl
+====================
+
+.. c:function:: int i915_gem_pread_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+
+    :param struct drm_device \*dev:
+        drm device pointer
+
+    :param void \*data:
+        ioctl data blob
+
+    :param struct drm_file \*file:
+        drm file pointer
+
+.. _`i915_gem_pread_ioctl.description`:
+
+Description
+-----------
+
+On error, the contents of *data are undefined.
+
+.. _`i915_gem_gtt_pwrite_fast`:
+
+i915_gem_gtt_pwrite_fast
+========================
+
+.. c:function:: int i915_gem_gtt_pwrite_fast(struct drm_i915_private *i915, struct drm_i915_gem_object *obj, struct drm_i915_gem_pwrite *args, struct drm_file *file)
+
+    user into the GTT, uncached.
+
+    :param struct drm_i915_private \*i915:
+        i915 device private data
+
+    :param struct drm_i915_gem_object \*obj:
+        i915 gem object
+
+    :param struct drm_i915_gem_pwrite \*args:
+        pwrite arguments structure
+
+    :param struct drm_file \*file:
+        drm file pointer
+
+.. _`i915_gem_pwrite_ioctl`:
+
+i915_gem_pwrite_ioctl
+=====================
+
+.. c:function:: int i915_gem_pwrite_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
+
+    :param struct drm_device \*dev:
+        drm device
+
+    :param void \*data:
+        ioctl data blob
+
+    :param struct drm_file \*file:
+        drm file
+
+.. _`i915_gem_pwrite_ioctl.description`:
+
+Description
+-----------
+
+On error, the contents of the buffer that were to be modified are undefined.
 
 .. _`i915_gem_set_domain_ioctl`:
 
@@ -157,13 +109,13 @@ i915_gem_set_domain_ioctl
     through the mmap ioctl's mapping or a GTT mapping.
 
     :param struct drm_device \*dev:
-        *undescribed*
+        drm device
 
     :param void \*data:
-        *undescribed*
+        ioctl data blob
 
     :param struct drm_file \*file:
-        *undescribed*
+        drm file
 
 .. _`i915_gem_sw_finish_ioctl`:
 
@@ -173,13 +125,13 @@ i915_gem_sw_finish_ioctl
 .. c:function:: int i915_gem_sw_finish_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
     :param struct drm_device \*dev:
-        *undescribed*
+        drm device
 
     :param void \*data:
-        *undescribed*
+        ioctl data blob
 
     :param struct drm_file \*file:
-        *undescribed*
+        drm file
 
 .. _`i915_gem_mmap_ioctl`:
 
@@ -188,16 +140,16 @@ i915_gem_mmap_ioctl
 
 .. c:function:: int i915_gem_mmap_ioctl(struct drm_device *dev, void *data, struct drm_file *file)
 
-    into.
+    Maps the contents of an object, returning the address it is mapped to.
 
     :param struct drm_device \*dev:
-        *undescribed*
+        drm device
 
     :param void \*data:
-        *undescribed*
+        ioctl data blob
 
     :param struct drm_file \*file:
-        *undescribed*
+        drm file
 
 .. _`i915_gem_mmap_ioctl.description`:
 
@@ -221,17 +173,82 @@ That way debug tooling like valgrind will understand what's going on, hiding
 the mmap call in a driver private ioctl will break that. The i915 driver only
 does cpu mmaps this way because we didn't know better.
 
+.. _`i915_gem_mmap_gtt_version`:
+
+i915_gem_mmap_gtt_version
+=========================
+
+.. c:function:: int i915_gem_mmap_gtt_version( void)
+
+    report the current feature set for GTT mmaps
+
+    :param  void:
+        no arguments
+
+.. _`i915_gem_mmap_gtt_version.a-history-of-the-gtt-mmap-interface`:
+
+A history of the GTT mmap interface
+-----------------------------------
+
+
+0 - Everything had to fit into the GTT. Both parties of a memcpy had to
+    aligned and suitable for fencing, and still fit into the available
+    mappable space left by the pinned display objects. A classic problem
+    we called the page-fault-of-doom where we would ping-pong between
+    two objects that could not fit inside the GTT and so the memcpy
+    would page one object in at the expense of the other between every
+    single byte.
+
+1 - Objects can be any size, and have any compatible fencing (X Y, or none
+    as set via \ :c:func:`i915_gem_set_tiling`\  [DRM_I915_GEM_SET_TILING]). If the
+    object is too large for the available space (or simply too large
+    for the mappable aperture!), a view is created instead and faulted
+    into userspace. (This view is aligned and sized appropriately for
+    fenced access.)
+
+.. _`i915_gem_mmap_gtt_version.restrictions`:
+
+Restrictions
+------------
+
+
+ * snoopable objects cannot be accessed via the GTT. It can cause machine
+   hangs on some architectures, corruption on others. An attempt to service
+   a GTT page fault from a snoopable object will generate a SIGBUS.
+
+ * the object must be able to fit into RAM (physical memory, though no
+   limited to the mappable aperture).
+
+.. _`i915_gem_mmap_gtt_version.caveats`:
+
+Caveats
+-------
+
+
+ * a new GTT page fault will synchronize rendering from the GPU and flush
+   all data to system memory. Subsequent access will not be synchronized.
+
+ * all mappings are revoked on runtime device suspend.
+
+ * there are only 8, 16 or 32 fence registers to share between all users
+   (older machines require fence register for display and blitter access
+   as well). Contention of the fence registers will cause the previous users
+   to be unmapped and any new access will generate new page faults.
+
+ * running out of memory while servicing a fault may generate a SIGBUS,
+   rather than the expected SIGSEGV.
+
 .. _`i915_gem_fault`:
 
 i915_gem_fault
 ==============
 
-.. c:function:: int i915_gem_fault(struct vm_area_struct *vma, struct vm_fault *vmf)
+.. c:function:: int i915_gem_fault(struct vm_area_struct *area, struct vm_fault *vmf)
 
     fault a page into the GTT
 
-    :param struct vm_area_struct \*vma:
-        VMA in question
+    :param struct vm_area_struct \*area:
+        CPU VMA in question
 
     :param struct vm_fault \*vmf:
         fault info
@@ -251,6 +268,9 @@ Note that the faulting process may involve evicting existing objects
 from the GTT and/or fence registers to make room.  So performance may
 suffer if the GTT working set is large or there are few fence registers
 left.
+
+The current feature set supported by \ :c:func:`i915_gem_fault`\  and thus GTT mmaps
+is exposed via I915_PARAM_MMAP_GTT_VERSION (see i915_gem_mmap_gtt_version).
 
 .. _`i915_gem_release_mmap`:
 
@@ -279,33 +299,59 @@ aperture, than pages mapped into userspace must be revoked. Removing the
 mapping will then trigger a page fault on the next user access, allowing
 fixup by \ :c:func:`i915_gem_fault`\ .
 
-.. _`i915_gem_get_gtt_alignment`:
+.. _`i915_gem_get_ggtt_size`:
 
-i915_gem_get_gtt_alignment
-==========================
+i915_gem_get_ggtt_size
+======================
 
-.. c:function:: uint32_t i915_gem_get_gtt_alignment(struct drm_device *dev, uint32_t size, int tiling_mode, bool fenced)
+.. c:function:: u64 i915_gem_get_ggtt_size(struct drm_i915_private *dev_priv, u64 size, int tiling_mode)
 
-    return required GTT alignment for an object
+    return required global GTT size for an object
 
-    :param struct drm_device \*dev:
-        *undescribed*
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
-    :param uint32_t size:
-        *undescribed*
+    :param u64 size:
+        object size
 
     :param int tiling_mode:
-        *undescribed*
+        tiling mode
 
-    :param bool fenced:
-        *undescribed*
-
-.. _`i915_gem_get_gtt_alignment.description`:
+.. _`i915_gem_get_ggtt_size.description`:
 
 Description
 -----------
 
-Return the required GTT alignment for an object, taking into account
+Return the required global GTT size for an object, taking into account
+potential fence register mapping.
+
+.. _`i915_gem_get_ggtt_alignment`:
+
+i915_gem_get_ggtt_alignment
+===========================
+
+.. c:function:: u64 i915_gem_get_ggtt_alignment(struct drm_i915_private *dev_priv, u64 size, int tiling_mode, bool fenced)
+
+    return required global GTT alignment
+
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
+
+    :param u64 size:
+        object size
+
+    :param int tiling_mode:
+        tiling mode
+
+    :param bool fenced:
+        is fenced alignment required or not
+
+.. _`i915_gem_get_ggtt_alignment.description`:
+
+Description
+-----------
+
+Return the required global GTT alignment for an object, taking into account
 potential fence register mapping.
 
 .. _`i915_gem_mmap_gtt_ioctl`:
@@ -340,54 +386,6 @@ The fault handler will take care of binding the object into the GTT
 a fence register, and mapping the appropriate aperture address into
 userspace.
 
-.. _`i915_gem_request_alloc`:
-
-i915_gem_request_alloc
-======================
-
-.. c:function:: struct drm_i915_gem_request *i915_gem_request_alloc(struct intel_engine_cs *engine, struct intel_context *ctx)
-
-    allocate a request structure
-
-    :param struct intel_engine_cs \*engine:
-        engine that we wish to issue the request on.
-
-    :param struct intel_context \*ctx:
-        context that the request will be associated with.
-        This can be NULL if the request is not directly related to
-        any specific user context, in which case this function will
-        choose an appropriate context to use.
-
-.. _`i915_gem_request_alloc.description`:
-
-Description
------------
-
-Returns a pointer to the allocated request if successful,
-or an error code if not.
-
-.. _`i915_gem_retire_requests_ring`:
-
-i915_gem_retire_requests_ring
-=============================
-
-.. c:function:: void i915_gem_retire_requests_ring(struct intel_engine_cs *engine)
-
-    :param struct intel_engine_cs \*engine:
-        *undescribed*
-
-.. _`i915_gem_object_flush_active`:
-
-i915_gem_object_flush_active
-============================
-
-.. c:function:: int i915_gem_object_flush_active(struct drm_i915_gem_object *obj)
-
-    busy by flushing any required write domains, emitting any outstanding lazy request and retiring and completed requests.
-
-    :param struct drm_i915_gem_object \*obj:
-        *undescribed*
-
 .. _`i915_gem_wait_ioctl`:
 
 i915_gem_wait_ioctl
@@ -398,13 +396,13 @@ i915_gem_wait_ioctl
     implements DRM_IOCTL_I915_GEM_WAIT
 
     :param struct drm_device \*dev:
-        *undescribed*
+        drm device pointer
 
     :param void \*data:
-        *undescribed*
+        ioctl data blob
 
     :param struct drm_file \*file:
-        *undescribed*
+        drm file pointer
 
 .. _`i915_gem_wait_ioctl.description`:
 
@@ -413,96 +411,58 @@ Description
 
 Returns 0 if successful, else an error is returned with the remaining time in
 the timeout parameter.
--ETIME: object is still busy after timeout
--ERESTARTSYS: signal interrupted the wait
--ENONENT: object doesn't exist
+ -ETIME: object is still busy after timeout
+ -ERESTARTSYS: signal interrupted the wait
+ -ENONENT: object doesn't exist
 Also possible, but rare:
--EAGAIN: GPU wedged
--ENOMEM: damn
--ENODEV: Internal IRQ fail
--E?: The add request failed
+ -EAGAIN: GPU wedged
+ -ENOMEM: damn
+ -ENODEV: Internal IRQ fail
+ -E?: The add request failed
 
 The wait ioctl with a timeout of 0 reimplements the busy ioctl. With any
 non-zero timeout parameter the wait ioctl will wait for the given number of
 nanoseconds on an object becoming unbusy. Since the wait itself does so
 without holding struct_mutex the object may become re-busied before this
-function completes. A similar but shorter \* race condition exists in the busy
+function completes. A similar but shorter * race condition exists in the busy
 ioctl
 
-.. _`i915_gem_object_sync`:
+.. _`i915_vma_insert`:
 
-i915_gem_object_sync
-====================
+i915_vma_insert
+===============
 
-.. c:function:: int i915_gem_object_sync(struct drm_i915_gem_object *obj, struct intel_engine_cs *to, struct drm_i915_gem_request **to_req)
+.. c:function:: int i915_vma_insert(struct i915_vma *vma, u64 size, u64 alignment, u64 flags)
 
-    sync an object to a ring.
+    finds a slot for the vma in its address space
 
-    :param struct drm_i915_gem_object \*obj:
-        object which may be in use on another ring.
+    :param struct i915_vma \*vma:
+        the vma
 
-    :param struct intel_engine_cs \*to:
-        ring we wish to use the object on. May be NULL.
+    :param u64 size:
+        requested size in bytes (can be larger than the VMA)
 
-    :param struct drm_i915_gem_request \*\*to_req:
-        request we wish to use the object for. See below.
-        This will be allocated and returned if a request is
-        required but not passed in.
+    :param u64 alignment:
+        required alignment
 
-.. _`i915_gem_object_sync.description`:
+    :param u64 flags:
+        mask of PIN_* flags to use
+
+.. _`i915_vma_insert.description`:
 
 Description
 -----------
 
-This code is meant to abstract object synchronization with the GPU.
-Calling with NULL implies synchronizing the object with the CPU
-rather than a particular GPU ring. Conceptually we serialise writes
-between engines inside the GPU. We only allow one engine to write
-into a buffer at any time, but multiple readers. To ensure each has
-a coherent view of memory, we must:
+First we try to allocate some free space that meets the requirements for
+the VMA. Failiing that, if the flags permit, it will evict an old VMA,
+preferrably the oldest idle entry to make room for the new VMA.
 
-- If there is an outstanding write request to the object, the new
-request must wait for it to complete (either CPU or in hw, requests
-on the same ring will be naturally ordered).
+.. _`i915_vma_insert.return`:
 
-- If we are a write request (pending_write_domain is set), the new
-request must wait for outstanding read requests to complete.
+Return
+------
 
-For CPU synchronisation (NULL to) no request is required. For syncing with
-rings to_req must be non-NULL. However, a request does not have to be
-pre-allocated. If \*to_req is NULL and sync commands will be emitted then a
-request will be allocated automatically and returned through \*to_req. Note
-that it is not guaranteed that commands will be emitted (because the system
-might already be idle). Hence there is no need to create a request that
-might never have any work submitted. Note further that if a request is
-returned in \*to_req, it is the responsibility of the caller to submit
-that request (after potentially adding more work to it).
-
-Returns 0 if successful, else propagates up the lower layer error.
-
-.. _`i915_gem_object_bind_to_vm`:
-
-i915_gem_object_bind_to_vm
-==========================
-
-.. c:function:: struct i915_vma *i915_gem_object_bind_to_vm(struct drm_i915_gem_object *obj, struct i915_address_space *vm, const struct i915_ggtt_view *ggtt_view, unsigned alignment, uint64_t flags)
-
-    there.
-
-    :param struct drm_i915_gem_object \*obj:
-        *undescribed*
-
-    :param struct i915_address_space \*vm:
-        *undescribed*
-
-    :param const struct i915_ggtt_view \*ggtt_view:
-        *undescribed*
-
-    :param unsigned alignment:
-        *undescribed*
-
-    :param uint64_t flags:
-        *undescribed*
+0 on success, negative error code otherwise.
 
 .. _`i915_gem_object_set_to_gtt_domain`:
 
@@ -512,10 +472,10 @@ i915_gem_object_set_to_gtt_domain
 .. c:function:: int i915_gem_object_set_to_gtt_domain(struct drm_i915_gem_object *obj, bool write)
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        object to act on
 
     :param bool write:
-        *undescribed*
+        ask for write access or read only
 
 .. _`i915_gem_object_set_to_gtt_domain.description`:
 
@@ -535,10 +495,10 @@ i915_gem_object_set_cache_level
     level of an object across all VMA.
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        object to act on
 
     :param enum i915_cache_level cache_level:
-        *undescribed*
+        new cache level to set for the object
 
 .. _`i915_gem_object_set_cache_level.description`:
 
@@ -563,10 +523,10 @@ i915_gem_object_set_to_cpu_domain
 .. c:function:: int i915_gem_object_set_to_cpu_domain(struct drm_i915_gem_object *obj, bool write)
 
     :param struct drm_i915_gem_object \*obj:
-        *undescribed*
+        object to act on
 
     :param bool write:
-        *undescribed*
+        requesting write or read-only access
 
 .. _`i915_gem_object_set_to_cpu_domain.description`:
 

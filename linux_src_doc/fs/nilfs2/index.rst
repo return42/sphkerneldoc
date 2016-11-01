@@ -17,7 +17,6 @@ nilfs2
     btree_h
     cpfile_c
     dat_c
-    direct_h
     export_h
     gcinode_c
     ifile_c

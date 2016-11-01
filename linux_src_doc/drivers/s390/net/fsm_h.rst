@@ -119,7 +119,7 @@ init_fsm
 Description
 -----------
 
-\ ``param``\  name        Name of this instance for logging purposes.
+@param name        Name of this instance for logging purposes.
 \ ``param``\  state_names An array of names for all states for logging purposes.
 \ ``param``\  event_names An array of names for all events for logging purposes.
 \ ``param``\  nr_states   Number of states for this instance.
@@ -143,7 +143,7 @@ kfree_fsm
 Description
 -----------
 
-\ ``param``\  fi Pointer to an FSM, previously created with init_fsm.
+@param fi Pointer to an FSM, previously created with init_fsm.
 
 .. _`fsm_event`:
 
@@ -168,7 +168,7 @@ fsm_event
 Description
 -----------
 
-\ ``param``\  fi    Pointer to FSM which should receive the event.
+@param fi    Pointer to FSM which should receive the event.
 \ ``param``\  event The event do be delivered.
 \ ``param``\  arg   A generic argument, handed to the action function.
 
@@ -196,7 +196,7 @@ fsm_newstate
 Description
 -----------
 
-\ ``param``\  fi    Pointer to FSM
+@param fi    Pointer to FSM
 \ ``param``\  state The new state for this FSM.
 
 .. _`fsm_getstate`:
@@ -214,7 +214,7 @@ fsm_getstate
 Description
 -----------
 
-\ ``param``\  fi Pointer to FSM
+@param fi Pointer to FSM
 
 \ ``return``\  The current state of the FSM.
 
@@ -233,7 +233,7 @@ fsm_getstate_str
 Description
 -----------
 
-\ ``param``\  fi Pointer to FSM
+@param fi Pointer to FSM
 
 \ ``return``\  The current state of the FSM in a human readable form.
 
@@ -257,7 +257,7 @@ fsm_settimer
 Description
 -----------
 
-\ ``param``\  fi    Pointer to FSM
+@param fi    Pointer to FSM
 \ ``param``\  timer The timer to be initialized.
 
 .. _`fsm_deltimer`:
@@ -275,7 +275,7 @@ fsm_deltimer
 Description
 -----------
 
-\ ``param``\  timer The timer to clear.
+@param timer The timer to clear.
 
 .. _`fsm_addtimer`:
 
@@ -301,7 +301,7 @@ fsm_addtimer
 Description
 -----------
 
-\ ``param``\  timer    The timer to be added. The field fi of that timer
+@param timer    The timer to be added. The field fi of that timer
 must have been set to point to the instance.
 \ ``param``\  millisec Duration, after which the timer should expire.
 \ ``param``\  event    Event, to trigger if timer expires.
@@ -333,7 +333,7 @@ fsm_modtimer
 Description
 -----------
 
-\ ``param``\  timer    The timer to modify.
+@param timer    The timer to modify.
 \ ``param``\  millisec Duration, after which the timer should expire.
 \ ``param``\  event    Event, to trigger if timer expires.
 \ ``param``\  arg      Generic argument, provided to expiry function.

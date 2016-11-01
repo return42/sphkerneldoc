@@ -31,7 +31,7 @@ Members
 -------
 
 flags
-    media bus (V4L2_MBUS\_\*) flags
+    media bus (V4L2_MBUS_*) flags
 
 data_lanes
     an array of physical data lane indexes
@@ -74,7 +74,7 @@ Members
 -------
 
 flags
-    media bus (V4L2_MBUS\_\*) flags
+    media bus (V4L2_MBUS_*) flags
 
 bus_width
     bus width in bits

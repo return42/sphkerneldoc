@@ -48,6 +48,33 @@ Start background operations whenever requested.
 When the urgent BKOPS bit is set in a R1 command response
 then background operations should be started immediately.
 
+.. _`mmc_is_req_done`:
+
+mmc_is_req_done
+===============
+
+.. c:function:: bool mmc_is_req_done(struct mmc_host *host, struct mmc_request *mrq)
+
+    Determine if a 'cap_cmd_during_tfr' request is done
+
+    :param struct mmc_host \*host:
+        MMC host
+
+    :param struct mmc_request \*mrq:
+        MMC request
+
+.. _`mmc_is_req_done.description`:
+
+Description
+-----------
+
+mmc_is_req_done() is used with requests that have
+mrq->cap_cmd_during_tfr = true. \ :c:func:`mmc_is_req_done`\  must be called after
+starting a request and before waiting for it to complete. That is,
+either in between calls to \ :c:func:`mmc_start_req`\ , or after \ :c:func:`mmc_wait_for_req`\ 
+and before \ :c:func:`mmc_wait_for_req_done`\ . If it is called at other times the
+result is not meaningful.
+
 .. _`mmc_pre_req`:
 
 mmc_pre_req
@@ -72,7 +99,7 @@ mmc_pre_req
 Description
 -----------
 
-\ :c:func:`mmc_pre_req`\  is called in prior to \ :c:func:`mmc_start_req`\  to let
+mmc_pre_req() is called in prior to \ :c:func:`mmc_start_req`\  to let
 host prepare for the new request. Preparation of a request may be
 performed while another request is running on the host.
 
@@ -156,8 +183,11 @@ Description
 -----------
 
 Start a new MMC custom command request for a host, and wait
-for the command to complete. Does not attempt to parse the
-response.
+for the command to complete. In the case of 'cap_cmd_during_tfr'
+requests, the transfer is ongoing and the caller can issue further
+commands that do not use the data lines, and then wait by calling
+\ :c:func:`mmc_wait_for_req_done`\ .
+Does not attempt to parse the response.
 
 .. _`mmc_interrupt_hpi`:
 

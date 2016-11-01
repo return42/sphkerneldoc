@@ -653,7 +653,7 @@ Members
 -------
 
 type
-    8-bit type \ :c:type:`struct p9_qid_t <p9_qid_t>`
+    8-bit type \ :c:type:`struct p9_qid_t <p9_qid_t>`\ 
 
 version
     16-bit monotonically incrementing version number
@@ -729,10 +729,10 @@ dev
     the sub-type of the server (equivalent to a minor number)
 
 qid
-    unique id from the server of type \ :c:type:`struct p9_qid <p9_qid>`
+    unique id from the server of type \ :c:type:`struct p9_qid <p9_qid>`\ 
 
 mode
-    Plan 9 format permissions of type \ :c:type:`struct p9_perm_t <p9_perm_t>`
+    Plan 9 format permissions of type \ :c:type:`struct p9_perm_t <p9_perm_t>`\ 
 
 atime
     Last access/read time
@@ -869,7 +869,7 @@ size
     prefixed length of the structure
 
 id
-    protocol operating identifier of type \ :c:type:`struct p9_msg_t <p9_msg_t>`
+    protocol operating identifier of type \ :c:type:`struct p9_msg_t <p9_msg_t>`\ 
 
 tag
     transaction id of the request
@@ -888,7 +888,7 @@ sdata
 Description
 -----------
 
-\ :c:type:`struct p9_fcall <p9_fcall>` represents the structure for all 9P RPC
+&p9_fcall represents the structure for all 9P RPC
 transactions.  Requests are packaged into fcalls, and reponses
 must be extracted from them.
 

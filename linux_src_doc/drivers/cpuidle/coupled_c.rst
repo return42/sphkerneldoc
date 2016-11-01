@@ -528,31 +528,5 @@ Description
 Enables coupled cpuidle on a coupled set of cpus.  Used to ensure that
 cpu_online_mask doesn't change while cpus are coordinating coupled idle.
 
-.. _`cpuidle_coupled_cpu_notify`:
-
-cpuidle_coupled_cpu_notify
-==========================
-
-.. c:function:: int cpuidle_coupled_cpu_notify(struct notifier_block *nb, unsigned long action, void *hcpu)
-
-    notifier called during hotplug transitions
-
-    :param struct notifier_block \*nb:
-        notifier block
-
-    :param unsigned long action:
-        hotplug transition
-
-    :param void \*hcpu:
-        target cpu number
-
-.. _`cpuidle_coupled_cpu_notify.description`:
-
-Description
------------
-
-Called when a cpu is brought on or offline using hotplug.  Updates the
-coupled cpu set appropriately
-
 .. This file was automatic generated / don't edit.
 

@@ -177,7 +177,7 @@ deleted
 Description
 -----------
 
-\ ``virtio_id``\  - Virtio device id.
+@virtio_id - Virtio device id.
 \ ``waitq``\  - Waitqueue to allow ring3 apps to poll.
 \ ``vpdev``\  - pointer to VOP bus device.
 \ ``poll_wake``\  - Used for waking up threads blocked in poll.

@@ -144,7 +144,7 @@ __bio_clone_fast
 Description
 -----------
 
-Clone a \ :c:type:`struct bio <bio>`. Caller will own the returned bio, but not
+Clone a \ :c:type:`struct bio <bio>`\ . Caller will own the returned bio, but not
 the actual data it points to. Reference count of returned
 bio will be one.
 
@@ -271,12 +271,9 @@ if either bio->bi_vcnt == bio->bi_max_vecs or it's a cloned bio.
 submit_bio_wait
 ===============
 
-.. c:function:: int submit_bio_wait(int rw, struct bio *bio)
+.. c:function:: int submit_bio_wait(struct bio *bio)
 
     submit a bio, and wait until it completes
-
-    :param int rw:
-        whether to \ ``READ``\  or \ ``WRITE``\ , or maybe to \ ``READA``\  (read ahead)
 
     :param struct bio \*bio:
         The \ :c:type:`struct bio <bio>`\  which describes the I/O
@@ -588,7 +585,7 @@ bio_endio
 Description
 -----------
 
-\ :c:func:`bio_endio`\  will end I/O on the whole bio. \ :c:func:`bio_endio`\  is the preferred
+bio_endio() will end I/O on the whole bio. \ :c:func:`bio_endio`\  is the preferred
 way to end I/O on a bio. No one should call \ :c:func:`bi_end_io`\  directly on a
 bio unless they own it and thus know that it has an end_io function.
 
@@ -757,6 +754,21 @@ bio_disassociate_task
 
     :param struct bio \*bio:
         target bio
+
+.. _`bio_clone_blkcg_association`:
+
+bio_clone_blkcg_association
+===========================
+
+.. c:function:: void bio_clone_blkcg_association(struct bio *dst, struct bio *src)
+
+    clone blkcg association from src to dst bio
+
+    :param struct bio \*dst:
+        destination bio
+
+    :param struct bio \*src:
+        source bio
 
 .. This file was automatic generated / don't edit.
 

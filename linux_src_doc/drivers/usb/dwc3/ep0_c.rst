@@ -28,8 +28,8 @@ Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 Authors
 -------
 
-Felipe Balbi <balbi\ ``ti``\ .com>,
-Sebastian Andrzej Siewior <bigeasy\ ``linutronix``\ .de>
+Felipe Balbi <balbi@ti.com>,
+Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
 .. _`__dwc3_ep0_do_control_status.this-program-is-free-software`:
 

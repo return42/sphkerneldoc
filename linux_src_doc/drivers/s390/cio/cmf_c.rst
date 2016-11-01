@@ -301,6 +301,14 @@ Description
 
 Returns \ ``0``\  for success or a negative error value.
 
+.. _`enable_cmf.note`:
+
+Note
+----
+
+If this is called on a device for which channel measurement is already
+enabled a reset of the measurement data is triggered.
+
 .. _`enable_cmf.context`:
 
 Context

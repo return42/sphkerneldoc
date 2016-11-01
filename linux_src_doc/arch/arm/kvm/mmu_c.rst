@@ -94,25 +94,6 @@ Description
 Go through the stage 2 page tables and invalidate any cache lines
 backing memory already mapped to the VM.
 
-.. _`free_boot_hyp_pgd`:
-
-free_boot_hyp_pgd
-=================
-
-.. c:function:: void free_boot_hyp_pgd( void)
-
-    free HYP boot page tables
-
-    :param  void:
-        no arguments
-
-.. _`free_boot_hyp_pgd.description`:
-
-Description
------------
-
-Free the HYP boot page tables. The bounce page is also freed.
-
 .. _`free_hyp_pgds`:
 
 free_hyp_pgds
@@ -142,7 +123,7 @@ boot_hyp_pgd should only map two pages for the init code.
 create_hyp_mappings
 ===================
 
-.. c:function:: int create_hyp_mappings(void *from, void *to)
+.. c:function:: int create_hyp_mappings(void *from, void *to, pgprot_t prot)
 
     duplicate a kernel virtual address range in Hyp mode
 
@@ -151,6 +132,9 @@ create_hyp_mappings
 
     :param void \*to:
         The virtual kernel end address of the range (exclusive)
+
+    :param pgprot_t prot:
+        The protection to be applied to this range
 
 .. _`create_hyp_mappings.description`:
 

@@ -17,8 +17,8 @@ Description
 
 Copyright (C) 2008-2009 Nokia Corporation
 
-Written by Peter De Schrijver <peter.de-schrijver\ ``nokia``\ .com>
-Several fixes by Felipe Balbi <felipe.balbi\ ``nokia``\ .com>
+Written by Peter De Schrijver <peter.de-schrijver@nokia.com>
+Several fixes by Felipe Balbi <felipe.balbi@nokia.com>
 
 This file is subject to the terms and conditions of the GNU General
 Public License. See the file "COPYING" in the main directory of this

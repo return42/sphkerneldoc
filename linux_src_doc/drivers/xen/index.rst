@@ -12,3 +12,4 @@ xen
     xenbus/index
     balloon_c
     grant-table_c
+    xlate_mmu_c

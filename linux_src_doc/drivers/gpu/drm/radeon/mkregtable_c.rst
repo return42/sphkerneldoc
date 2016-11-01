@@ -82,7 +82,7 @@ list_del
 Note
 ----
 
-\ :c:func:`list_empty`\  on entry does not return true after this, the entry is
+list_empty() on entry does not return true after this, the entry is
 in an undefined state.
 
 .. _`list_replace`:
@@ -204,7 +204,7 @@ NOTE
 using \ :c:func:`list_empty_careful`\  without synchronization
 can only be safe if the only activity that can happen
 to the list entry is \ :c:func:`list_del_init`\ . Eg. it cannot be used
-if another CPU could re-\ :c:func:`list_add`\  it.
+if another CPU could re-list_add() it.
 
 .. _`list_is_singular`:
 

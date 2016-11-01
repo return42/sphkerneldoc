@@ -25,7 +25,7 @@ cl_lock_slice_add
 Description
 -----------
 
-This is called by cl_object_operations::\ :c:func:`coo_lock_init`\  methods to add a
+This is called by cl_object_operations::coo_lock_init() methods to add a
 per-layer state to the lock. New state is added at the end of
 cl_lock::cll_layers list, that is, it is at the bottom of the stack.
 

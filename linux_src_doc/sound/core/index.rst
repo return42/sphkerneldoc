@@ -8,6 +8,7 @@ core
     :maxdepth: 1
 
     oss/index
+    seq/index
     compress_offload_c
     control_c
     device_c

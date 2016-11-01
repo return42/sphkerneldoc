@@ -8,4 +8,5 @@ phy
     :maxdepth: 1
 
     of_c
+    phy-msm-usb_c
     phy_c

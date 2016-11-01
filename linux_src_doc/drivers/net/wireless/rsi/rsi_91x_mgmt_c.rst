@@ -441,7 +441,7 @@ rsi_send_block_unblock_frame
 Description
 -----------
 
-\ ``param``\  common Pointer to the driver private structure.
+@param common Pointer to the driver private structure.
 \ ``param``\  block event - block if true, unblock if false
 \ ``return``\  0 on success, -1 on failure.
 

@@ -42,11 +42,11 @@ dwc3_gadget_link_string
 dwc3_gadget_event_string
 ========================
 
-.. c:function:: const char *dwc3_gadget_event_string(u8 event)
+.. c:function:: const char *dwc3_gadget_event_string(const struct dwc3_event_devt *event)
 
     returns event name
 
-    :param u8 event:
+    :param const struct dwc3_event_devt \*event:
         the event code
 
 .. _`dwc3_ep_event_string`:
@@ -54,11 +54,11 @@ dwc3_gadget_event_string
 dwc3_ep_event_string
 ====================
 
-.. c:function:: const char *dwc3_ep_event_string(u8 event)
+.. c:function:: const char *dwc3_ep_event_string(const struct dwc3_event_depevt *event)
 
     returns event name
 
-    :param u8 event:
+    :param const struct dwc3_event_depevt \*event:
         then event code
 
 .. _`dwc3_gadget_event_type_string`:

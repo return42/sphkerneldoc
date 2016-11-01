@@ -6,11 +6,11 @@
 cfqg_scale_charge
 =================
 
-.. c:function:: u64 cfqg_scale_charge(unsigned long charge, unsigned int vfraction)
+.. c:function:: u64 cfqg_scale_charge(u64 charge, unsigned int vfraction)
 
     scale disk time charge according to cfqg weight
 
-    :param unsigned long charge:
+    :param u64 charge:
         disk time being charged
 
     :param unsigned int vfraction:

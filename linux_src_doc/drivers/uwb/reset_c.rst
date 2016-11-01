@@ -26,7 +26,7 @@ __uwb_rc_cmd
         Pointer to where to store the reply
 
     :param size_t reply_size:
-        \ ``reply``\ 's size
+        @reply's size
 
     :param u8 expected_type:
         Expected type in the return event

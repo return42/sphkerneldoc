@@ -27,7 +27,7 @@ CP0_Cause.DC bit or the count_ctl.DC bit.
 kvm_mips_ktime_to_count
 =======================
 
-.. c:function:: uint32_t kvm_mips_ktime_to_count(struct kvm_vcpu *vcpu, ktime_t now)
+.. c:function:: u32 kvm_mips_ktime_to_count(struct kvm_vcpu *vcpu, ktime_t now)
 
     Scale ktime_t to a 32-bit count.
 
@@ -44,7 +44,7 @@ Description
 
 Caches the dynamic nanosecond bias in vcpu->arch.count_dyn_bias.
 
-Assumes !kvm_mips_count_disabled(\ ``vcpu``\ ) (guest CP0_Count timer is running).
+Assumes !kvm_mips_count_disabled(@vcpu) (guest CP0_Count timer is running).
 
 .. _`kvm_mips_count_time`:
 
@@ -79,7 +79,7 @@ Effective monotonic ktime for CP0_Count.
 kvm_mips_read_count_running
 ===========================
 
-.. c:function:: uint32_t kvm_mips_read_count_running(struct kvm_vcpu *vcpu, ktime_t now)
+.. c:function:: u32 kvm_mips_read_count_running(struct kvm_vcpu *vcpu, ktime_t now)
 
     Read the current count value as if running.
 
@@ -109,7 +109,7 @@ The current value of the guest CP0_Count register.
 kvm_mips_read_count
 ===================
 
-.. c:function:: uint32_t kvm_mips_read_count(struct kvm_vcpu *vcpu)
+.. c:function:: u32 kvm_mips_read_count(struct kvm_vcpu *vcpu)
 
     Read the current count value.
 
@@ -136,14 +136,14 @@ The current guest CP0_Count value.
 kvm_mips_freeze_hrtimer
 =======================
 
-.. c:function:: ktime_t kvm_mips_freeze_hrtimer(struct kvm_vcpu *vcpu, uint32_t *count)
+.. c:function:: ktime_t kvm_mips_freeze_hrtimer(struct kvm_vcpu *vcpu, u32 *count)
 
     Safely stop the hrtimer.
 
     :param struct kvm_vcpu \*vcpu:
         Virtual CPU.
 
-    :param uint32_t \*count:
+    :param u32 \*count:
         Output pointer for CP0_Count value at point of freeze.
 
 .. _`kvm_mips_freeze_hrtimer.description`:
@@ -158,7 +158,7 @@ the point it was frozen are handled, and none after that point.
 This is useful where the time/CP0_Count is needed in the calculation of the
 new parameters.
 
-Assumes !kvm_mips_count_disabled(\ ``vcpu``\ ) (guest CP0_Count timer is running).
+Assumes !kvm_mips_count_disabled(@vcpu) (guest CP0_Count timer is running).
 
 .. _`kvm_mips_freeze_hrtimer.return`:
 
@@ -172,7 +172,7 @@ The ktime at the point of freeze.
 kvm_mips_resume_hrtimer
 =======================
 
-.. c:function:: void kvm_mips_resume_hrtimer(struct kvm_vcpu *vcpu, ktime_t now, uint32_t count)
+.. c:function:: void kvm_mips_resume_hrtimer(struct kvm_vcpu *vcpu, ktime_t now, u32 count)
 
     Resume hrtimer, updating expiry.
 
@@ -182,7 +182,7 @@ kvm_mips_resume_hrtimer
     :param ktime_t now:
         ktime at point of resume.
 
-    :param uint32_t count:
+    :param u32 count:
         CP0_Count at point of resume.
 
 .. _`kvm_mips_resume_hrtimer.description`:
@@ -198,21 +198,21 @@ It is guaranteed that a timer interrupt immediately after resume will be
 handled, but not if CP_Compare is exactly at \ ``count``\ . That case is already
 handled by \ :c:func:`kvm_mips_freeze_timer`\ .
 
-Assumes !kvm_mips_count_disabled(\ ``vcpu``\ ) (guest CP0_Count timer is running).
+Assumes !kvm_mips_count_disabled(@vcpu) (guest CP0_Count timer is running).
 
 .. _`kvm_mips_write_count`:
 
 kvm_mips_write_count
 ====================
 
-.. c:function:: void kvm_mips_write_count(struct kvm_vcpu *vcpu, uint32_t count)
+.. c:function:: void kvm_mips_write_count(struct kvm_vcpu *vcpu, u32 count)
 
     Modify the count and update timer.
 
     :param struct kvm_vcpu \*vcpu:
         Virtual CPU.
 
-    :param uint32_t count:
+    :param u32 count:
         Guest CP0_Count value to set.
 
 .. _`kvm_mips_write_count.description`:
@@ -278,14 +278,14 @@ Return
 kvm_mips_write_compare
 ======================
 
-.. c:function:: void kvm_mips_write_compare(struct kvm_vcpu *vcpu, uint32_t compare, bool ack)
+.. c:function:: void kvm_mips_write_compare(struct kvm_vcpu *vcpu, u32 compare, bool ack)
 
     Modify compare and update timer.
 
     :param struct kvm_vcpu \*vcpu:
         Virtual CPU.
 
-    :param uint32_t compare:
+    :param u32 compare:
         New CP0_Compare value.
 
     :param bool ack:
@@ -462,6 +462,29 @@ Return
 ------
 
 The hrtimer_restart value to return to the hrtimer subsystem.
+
+.. _`kvm_mips_invalidate_guest_tlb`:
+
+kvm_mips_invalidate_guest_tlb
+=============================
+
+.. c:function:: void kvm_mips_invalidate_guest_tlb(struct kvm_vcpu *vcpu, struct kvm_mips_tlb *tlb)
+
+    Indicates a change in guest MMU map.
+
+    :param struct kvm_vcpu \*vcpu:
+        VCPU with changed mappings.
+
+    :param struct kvm_mips_tlb \*tlb:
+        TLB entry being removed.
+
+.. _`kvm_mips_invalidate_guest_tlb.description`:
+
+Description
+-----------
+
+This is called to indicate a single change in guest MMU mappings, so that we
+can arrange TLB flushes on this and other CPUs.
 
 .. _`kvm_mips_config1_wrmask`:
 

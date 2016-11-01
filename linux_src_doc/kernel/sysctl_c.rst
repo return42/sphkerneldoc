@@ -14,7 +14,7 @@ proc_dostring
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -121,7 +121,7 @@ proc_dointvec
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -142,6 +142,40 @@ values from/to the user buffer, treated as an ASCII string.
 
 Returns 0 on success.
 
+.. _`proc_douintvec`:
+
+proc_douintvec
+==============
+
+.. c:function:: int proc_douintvec(struct ctl_table *table, int write, void __user *buffer, size_t *lenp, loff_t *ppos)
+
+    read a vector of unsigned integers
+
+    :param struct ctl_table \*table:
+        the sysctl table
+
+    :param int write:
+        %TRUE if this is a write to the sysctl file
+
+    :param void __user \*buffer:
+        the user buffer
+
+    :param size_t \*lenp:
+        the size of the user buffer
+
+    :param loff_t \*ppos:
+        file position
+
+.. _`proc_douintvec.description`:
+
+Description
+-----------
+
+Reads/writes up to table->maxlen/sizeof(unsigned int) unsigned integer
+values from/to the user buffer, treated as an ASCII string.
+
+Returns 0 on success.
+
 .. _`proc_dointvec_minmax`:
 
 proc_dointvec_minmax
@@ -155,7 +189,7 @@ proc_dointvec_minmax
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -192,7 +226,7 @@ proc_doulongvec_minmax
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -229,7 +263,7 @@ proc_doulongvec_ms_jiffies_minmax
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -267,7 +301,7 @@ proc_dointvec_jiffies
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -303,7 +337,7 @@ proc_dointvec_userhz_jiffies
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -339,7 +373,7 @@ proc_dointvec_ms_jiffies
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer
@@ -375,7 +409,7 @@ proc_do_large_bitmap
         the sysctl table
 
     :param int write:
-        \ ``TRUE``\  if this is a write to the sysctl file
+        %TRUE if this is a write to the sysctl file
 
     :param void __user \*buffer:
         the user buffer

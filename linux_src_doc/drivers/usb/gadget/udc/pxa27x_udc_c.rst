@@ -89,7 +89,7 @@ update_pxa_ep_matches
 Context
 -------
 
-\ :c:func:`in_interrupt`\ 
+in_interrupt()
 
 .. _`update_pxa_ep_matches.description`:
 
@@ -1158,7 +1158,7 @@ pxa_udc_pullup
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`pxa_udc_pullup.description`:
 
@@ -1212,7 +1212,7 @@ pxa_udc_vbus_draw
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`pxa_udc_vbus_draw.description`:
 
@@ -1223,6 +1223,33 @@ Called after a configuration was chosen by a USB host, to inform how much
 current can be drawn by the device from VBus line.
 
 Returns 0 or -EOPNOTSUPP if no transceiver is handling the udc
+
+.. _`pxa_udc_phy_event`:
+
+pxa_udc_phy_event
+=================
+
+.. c:function:: int pxa_udc_phy_event(struct notifier_block *nb, unsigned long action, void *data)
+
+    Called by phy upon VBus event
+
+    :param struct notifier_block \*nb:
+        notifier block
+
+    :param unsigned long action:
+        phy action, is vbus connect or disconnect
+
+    :param void \*data:
+        the usb_gadget structure in pxa_udc
+
+.. _`pxa_udc_phy_event.description`:
+
+Description
+-----------
+
+Called by the USB Phy when a cable connect or disconnect is sensed.
+
+Returns 0
 
 .. _`udc_disable`:
 
@@ -1326,15 +1353,12 @@ Returns 0 if no error, -EINVAL, -ENODEV, -EBUSY otherwise
 stop_activity
 =============
 
-.. c:function:: void stop_activity(struct pxa_udc *udc, struct usb_gadget_driver *driver)
+.. c:function:: void stop_activity(struct pxa_udc *udc)
 
     Stops udc endpoints
 
     :param struct pxa_udc \*udc:
         udc device
-
-    :param struct usb_gadget_driver \*driver:
-        gadget driver
 
 .. _`stop_activity.description`:
 

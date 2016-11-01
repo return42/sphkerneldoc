@@ -7,6 +7,8 @@ kvm
 .. toctree::
     :maxdepth: 1
 
+    dyntrans_c
     emulate_c
-    tlb_c
+    entry_c
+    mmu_c
     trap_emul_c

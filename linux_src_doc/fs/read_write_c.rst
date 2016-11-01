@@ -186,5 +186,60 @@ userspace expects the seek to succeed but the (device) file is actually not
 able to perform the seek. In this case you use \ :c:func:`noop_llseek`\  instead of
 falling back to the default implementation of ->llseek.
 
+.. _`rw_copy_check_uvector`:
+
+rw_copy_check_uvector
+=====================
+
+.. c:function:: ssize_t rw_copy_check_uvector(int type, const struct iovec __user *uvector, unsigned long nr_segs, unsigned long fast_segs, struct iovec *fast_pointer, struct iovec **ret_pointer)
+
+    Copy an array of \ :c:type:`struct iovec <iovec>`\  from userspace into the kernel and check that it is valid.
+
+    :param int type:
+        One of \ ``CHECK_IOVEC_ONLY``\ , \ ``READ``\ , or \ ``WRITE``\ .
+
+    :param const struct iovec __user \*uvector:
+        Pointer to the userspace array.
+
+    :param unsigned long nr_segs:
+        Number of elements in userspace array.
+
+    :param unsigned long fast_segs:
+        Number of elements in \ ``fast_pointer``\ .
+
+    :param struct iovec \*fast_pointer:
+        Pointer to (usually small on-stack) kernel array.
+
+    :param struct iovec \*\*ret_pointer:
+        (output parameter) Pointer to a variable that will point to
+        either \ ``fast_pointer``\ , a newly allocated kernel array, or NULL,
+        depending on which array was used.
+
+.. _`rw_copy_check_uvector.description`:
+
+Description
+-----------
+
+This function copies an array of \ :c:type:`struct iovec <iovec>`\  of \ ``nr_segs``\  from
+userspace into the kernel and checks that each element is valid (e.g.
+it does not point to a kernel address or cause overflow by being too
+large, etc.).
+
+As an optimization, the caller may provide a pointer to a small
+on-stack array in \ ``fast_pointer``\ , typically \ ``UIO_FASTIOV``\  elements long
+(the size of this array, or 0 if unused, should be given in \ ``fast_segs``\ ).
+
+\ ``ret_pointer``\  will always point to the array that was used, so the
+caller must take care not to call \ :c:func:`kfree`\  on it e.g. in case the
+\ ``fast_pointer``\  array was used and it was allocated on the stack.
+
+.. _`rw_copy_check_uvector.return`:
+
+Return
+------
+
+The total number of bytes covered by the iovec array on success
+or a negative error code on error.
+
 .. This file was automatic generated / don't edit.
 

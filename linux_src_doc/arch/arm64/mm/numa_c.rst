@@ -6,7 +6,7 @@
 numa_add_memblk
 ===============
 
-.. c:function:: int numa_add_memblk(int nid, u64 start, u64 size)
+.. c:function:: int numa_add_memblk(int nid, u64 start, u64 end)
 
     Set node id to memblk
 
@@ -16,8 +16,8 @@ numa_add_memblk
     :param u64 start:
         Start address of the new memblk
 
-    :param u64 size:
-        Size of the new memblk
+    :param u64 end:
+        End address of the new memblk
 
 .. _`numa_add_memblk.return`:
 

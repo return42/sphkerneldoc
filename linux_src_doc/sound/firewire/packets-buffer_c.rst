@@ -23,7 +23,7 @@ iso_packets_buffer_init
         the (maximum) size of a packet, in bytes
 
     :param enum dma_data_direction direction:
-        \ ``DMA_TO_DEVICE``\  or \ ``DMA_FROM_DEVICE``\ 
+        %DMA_TO_DEVICE or \ ``DMA_FROM_DEVICE``\ 
 
 .. _`iso_packets_buffer_destroy`:
 

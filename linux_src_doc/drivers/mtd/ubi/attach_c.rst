@@ -1,6 +1,119 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/ubi/attach.c
 
+.. _`find_or_add_av`:
+
+find_or_add_av
+==============
+
+.. c:function:: struct ubi_ainf_volume *find_or_add_av(struct ubi_attach_info *ai, int vol_id, unsigned int flags, bool *created)
+
+    internal function to find a volume, add a volume or do both (find and add if missing).
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param int vol_id:
+        the requested volume ID
+
+    :param unsigned int flags:
+        a combination of the \ ``AV_FIND``\  and \ ``AV_ADD``\  flags describing the
+        expected operation. If only \ ``AV_ADD``\  is set, -EEXIST is returned
+        if the volume already exists. If only \ ``AV_FIND``\  is set, NULL is
+        returned if the volume does not exist. And if both flags are
+        set, the helper first tries to find an existing volume, and if
+        it does not exist it creates a new one.
+
+    :param bool \*created:
+        in value used to inform the caller whether it"s a newly created
+        volume or not.
+
+.. _`find_or_add_av.description`:
+
+Description
+-----------
+
+This function returns a pointer to a volume description or an ERR_PTR if
+the operation failed. It can also return NULL if only \ ``AV_FIND``\  is set and
+the volume does not exist.
+
+.. _`ubi_find_or_add_av`:
+
+ubi_find_or_add_av
+==================
+
+.. c:function:: struct ubi_ainf_volume *ubi_find_or_add_av(struct ubi_attach_info *ai, int vol_id, bool *created)
+
+    search for a volume in the attaching information and add one if it does not exist.
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param int vol_id:
+        the requested volume ID
+
+    :param bool \*created:
+        whether the volume has been created or not
+
+.. _`ubi_find_or_add_av.description`:
+
+Description
+-----------
+
+This function returns a pointer to the new volume description or an
+ERR_PTR if the operation failed.
+
+.. _`ubi_alloc_aeb`:
+
+ubi_alloc_aeb
+=============
+
+.. c:function:: struct ubi_ainf_peb *ubi_alloc_aeb(struct ubi_attach_info *ai, int pnum, int ec)
+
+    allocate an aeb element
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param int pnum:
+        physical eraseblock number
+
+    :param int ec:
+        erase counter of the physical eraseblock
+
+.. _`ubi_alloc_aeb.description`:
+
+Description
+-----------
+
+Allocate an aeb object and initialize the pnum and ec information.
+vol_id and lnum are set to UBI_UNKNOWN, and the other fields are
+initialized to zero.
+Note that the element is not added in any list or RB tree.
+
+.. _`ubi_free_aeb`:
+
+ubi_free_aeb
+============
+
+.. c:function:: void ubi_free_aeb(struct ubi_attach_info *ai, struct ubi_ainf_peb *aeb)
+
+    free an aeb element
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param struct ubi_ainf_peb \*aeb:
+        the element to free
+
+.. _`ubi_free_aeb.description`:
+
+Description
+-----------
+
+Free an aeb object. The caller must have removed the element from any list
+or RB tree.
+
 .. _`add_to_list`:
 
 add_to_list
@@ -74,6 +187,38 @@ This function allocates a 'struct ubi_ainf_peb' object for a corrupted
 physical eraseblock \ ``pnum``\  and adds it to the 'corr' list.  The corruption
 was presumably not caused by a power cut. Returns zero in case of success
 and a negative error code in case of failure.
+
+.. _`add_fastmap`:
+
+add_fastmap
+===========
+
+.. c:function:: int add_fastmap(struct ubi_attach_info *ai, int pnum, struct ubi_vid_hdr *vid_hdr, int ec)
+
+    add a Fastmap related physical eraseblock.
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param int pnum:
+        physical eraseblock number the VID header came from
+
+    :param struct ubi_vid_hdr \*vid_hdr:
+        the volume identifier header
+
+    :param int ec:
+        erase counter of the physical eraseblock
+
+.. _`add_fastmap.description`:
+
+Description
+-----------
+
+This function allocates a 'struct ubi_ainf_peb' object for a Fastamp
+physical eraseblock \ ``pnum``\  and adds it to the 'fastmap' list.
+Such blocks can be Fastmap super and data blocks from both the most
+recent Fastmap we're attaching from or from old Fastmaps which will
+be erased.
 
 .. _`validate_vid_hdr`:
 
@@ -254,6 +399,29 @@ eraseblock belonging to the same logical eraseblock, and the newer one has
 to be picked, while the older one has to be dropped. This function returns
 zero in case of success and a negative error code in case of failure.
 
+.. _`ubi_add_av`:
+
+ubi_add_av
+==========
+
+.. c:function:: struct ubi_ainf_volume *ubi_add_av(struct ubi_attach_info *ai, int vol_id)
+
+    add volume to the attaching information.
+
+    :param struct ubi_attach_info \*ai:
+        attaching information
+
+    :param int vol_id:
+        the requested volume ID
+
+.. _`ubi_add_av.description`:
+
+Description
+-----------
+
+This function returns a pointer to the new volume description or an
+ERR_PTR if the operation failed.
+
 .. _`ubi_find_av`:
 
 ubi_find_av
@@ -311,7 +479,7 @@ early_erase_peb
         physical eraseblock number to erase;
 
     :param int ec:
-        erase counter value to write (\ ``UBI_UNKNOWN``\  if it is unknown)
+        erase counter value to write (%UBI_UNKNOWN if it is unknown)
 
 .. _`early_erase_peb.description`:
 
@@ -379,8 +547,8 @@ Description
 This is a helper function which is used to distinguish between VID header
 corruptions caused by power cuts and other reasons. If the PEB contains only
 0xFF bytes in the data area, the VID header is most probably corrupted
-because of a power cut (\ ``0``\  is returned in this case). Otherwise, it was
-probably corrupted for some other reasons (\ ``1``\  is returned in this case). A
+because of a power cut (%0 is returned in this case). Otherwise, it was
+probably corrupted for some other reasons (%1 is returned in this case). A
 negative error code is returned if a read error occurred.
 
 If the corruption reason was a power cut, UBI can safely erase this PEB.
@@ -392,7 +560,7 @@ information.
 scan_peb
 ========
 
-.. c:function:: int scan_peb(struct ubi_device *ubi, struct ubi_attach_info *ai, int pnum, int *vid, unsigned long long *sqnum)
+.. c:function:: int scan_peb(struct ubi_device *ubi, struct ubi_attach_info *ai, int pnum, bool fast)
 
     scan and process UBI headers of a PEB.
 
@@ -405,11 +573,8 @@ scan_peb
     :param int pnum:
         the physical eraseblock number
 
-    :param int \*vid:
-        The volume ID of the found volume will be stored in this pointer
-
-    :param unsigned long long \*sqnum:
-        The sqnum of the found volume will be stored in this pointer
+    :param bool fast:
+        true if we're scanning for a Fastmap
 
 .. _`scan_peb.description`:
 
@@ -452,7 +617,7 @@ should proceed with attaching the MTD device, and \ ``-EINVAL``\  if we should n
 destroy_av
 ==========
 
-.. c:function:: void destroy_av(struct ubi_attach_info *ai, struct ubi_ainf_volume *av)
+.. c:function:: void destroy_av(struct ubi_attach_info *ai, struct ubi_ainf_volume *av, struct list_head *list)
 
     free volume attaching information.
 
@@ -461,6 +626,9 @@ destroy_av
 
     :param struct ubi_ainf_volume \*av:
         volume attaching information
+
+    :param struct list_head \*list:
+        put the aeb elements in there if !NULL, otherwise free them
 
 .. _`destroy_av.description`:
 

@@ -9,6 +9,7 @@ asm-generic
 
     bitops/index
     atomic_h
+    barrier_h
     futex_h
     getorder_h
     io_h

@@ -50,7 +50,7 @@ Description
 -----------
 
 Copyright (c) 2008 Applied Micro Circuits Corporation.
-All rights reserved. James Hsiao <jhsiao\ ``amcc``\ .com>
+All rights reserved. James Hsiao <jhsiao@amcc.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

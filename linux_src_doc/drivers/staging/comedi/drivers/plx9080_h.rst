@@ -1,0 +1,91 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/staging/comedi/drivers/plx9080.h
+
+.. _`plx_dma_desc`:
+
+struct plx_dma_desc
+===================
+
+.. c:type:: struct plx_dma_desc
+
+    DMA descriptor format for PLX PCI 9080
+
+.. _`plx_dma_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct plx_dma_desc {
+        __le32 pci_start_addr;
+        __le32 local_start_addr;
+        __le32 transfer_size;
+        __le32 next;
+    }
+
+.. _`plx_dma_desc.members`:
+
+Members
+-------
+
+pci_start_addr
+    PCI Bus address for transfer (DMAPADR).
+
+local_start_addr
+    Local Bus address for transfer (DMALADR).
+
+transfer_size
+    Transfer size in bytes (max 8 MiB) (DMASIZ).
+
+next
+    Address of next descriptor + flags (DMADPR).
+
+.. _`plx_dma_desc.description`:
+
+Description
+-----------
+
+Describes the format of a scatter-gather DMA descriptor for the PLX
+PCI 9080.  All members are raw, little-endian register values that
+will be transferred by the DMA engine from local or PCI memory into
+corresponding registers for the DMA channel.
+
+The DMA descriptors must be aligned on a 16-byte boundary.  Bits 3:0
+of \ ``next``\  contain flags describing the address space of the next
+descriptor (local or PCI), an "end of chain" marker, an "interrupt on
+terminal count" bit, and a data transfer direction.
+
+.. _`plx9080_abort_dma`:
+
+plx9080_abort_dma
+=================
+
+.. c:function:: int plx9080_abort_dma(void __iomem *iobase, unsigned int channel)
+
+    Abort a PLX PCI 9080 DMA transfer
+
+    :param void __iomem \*iobase:
+        Remapped base address of configuration registers.
+
+    :param unsigned int channel:
+        DMA channel number (0 or 1).
+
+.. _`plx9080_abort_dma.description`:
+
+Description
+-----------
+
+Aborts the DMA transfer on the channel, which must have been enabled
+and started beforehand.
+
+.. _`plx9080_abort_dma.return`:
+
+Return
+------
+
+%0 on success.
+-%ETIMEDOUT if timed out waiting for abort to complete.
+
+.. This file was automatic generated / don't edit.
+

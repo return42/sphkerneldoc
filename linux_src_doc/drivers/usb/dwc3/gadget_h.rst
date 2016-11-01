@@ -6,15 +6,12 @@
 dwc3_gadget_ep_get_transfer_index
 =================================
 
-.. c:function:: u32 dwc3_gadget_ep_get_transfer_index(struct dwc3 *dwc, u8 number)
+.. c:function:: u32 dwc3_gadget_ep_get_transfer_index(struct dwc3_ep *dep)
 
     Gets transfer index from HW
 
-    :param struct dwc3 \*dwc:
-        DesignWare USB3 Pointer
-
-    :param u8 number:
-        DWC endpoint number
+    :param struct dwc3_ep \*dep:
+        *undescribed*
 
 .. _`dwc3_gadget_ep_get_transfer_index.description`:
 

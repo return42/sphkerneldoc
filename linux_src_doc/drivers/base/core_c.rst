@@ -189,7 +189,7 @@ This prepares the device for use by other layers by initializing
 its fields.
 It is the first half of \ :c:func:`device_register`\ , if called by
 that function, though it can also be called separately, so one
-may use \ ``dev``\ 's fields. In particular, \ :c:func:`get_device`\ /\ :c:func:`put_device`\ 
+may use \ ``dev``\ 's fields. In particular, \ :c:func:`get_device`\ /put_device()
 may be used for reference counting of \ ``dev``\  after calling this
 function.
 
@@ -266,7 +266,7 @@ Description
 -----------
 
 This is part 2 of \ :c:func:`device_register`\ , though may be called
-separately \_iff\_ \ :c:func:`device_initialize`\  has been called separately.
+separately _iff_ \ :c:func:`device_initialize`\  has been called separately.
 
 This adds \ ``dev``\  to the kobject hierarchy via \ :c:func:`kobject_add`\ , adds it
 to the global and sibling lists for the device, then
@@ -284,7 +284,7 @@ and register a fresh new struct device instead.
 NOTE
 ----
 
-_Never\_ directly free \ ``dev``\  after calling this function, even
+_Never_ directly free \ ``dev``\  after calling this function, even
 if it returned an error! Always use \ :c:func:`put_device`\  to give up your
 reference instead.
 
@@ -320,7 +320,7 @@ and \ :c:func:`device_add`\ .
 NOTE
 ----
 
-_Never\_ directly free \ ``dev``\  after calling this function, even
+_Never_ directly free \ ``dev``\  after calling this function, even
 if it returned an error! Always use \ :c:func:`put_device`\  to give up the
 reference initialized in this function instead.
 
@@ -385,7 +385,7 @@ from the kobject hierarchy.
 NOTE
 ----
 
-this should be called manually \_iff\_ \ :c:func:`device_add`\  was
+this should be called manually _iff_ \ :c:func:`device_add`\  was
 also called manually.
 
 .. _`device_unregister`:
@@ -560,9 +560,9 @@ device_offline
 Description
 -----------
 
-Execute the device bus type's .\ :c:func:`offline`\  callback, if present, to prepare
+Execute the device bus type's .offline() callback, if present, to prepare
 the device for a subsequent hot-removal.  If that succeeds, the device must
-not be used until either it is removed or its bus type's .\ :c:func:`online`\  callback
+not be used until either it is removed or its bus type's .online() callback
 is executed.
 
 Call under device_hotplug_lock.
@@ -585,7 +585,7 @@ Description
 -----------
 
 If \ :c:func:`device_offline`\  has been successfully executed for \ ``dev``\ , but the device
-has not been removed subsequently, execute its bus type's .\ :c:func:`online`\  callback
+has not been removed subsequently, execute its bus type's .online() callback
 to indicate that the device can be used again.
 
 Call under device_hotplug_lock.
@@ -893,8 +893,8 @@ other things than (driver-core wise very simple) network devices.
 We are currently about to change network renaming in udev to completely
 disallow renaming of devices in the same namespace as the kernel uses,
 because we can't solve the problems properly, that arise with swapping names
-of multiple interfaces without races. Means, renaming of eth[0-9]\* will only
-be allowed to some other name than eth[0-9]\*, for the aforementioned
+of multiple interfaces without races. Means, renaming of eth[0-9]* will only
+be allowed to some other name than eth[0-9]*, for the aforementioned
 reasons.
 
 Make up a "real" name in the driver before you register anything, or add
@@ -928,7 +928,7 @@ device_shutdown
 
 .. c:function:: void device_shutdown( void)
 
-    call ->\ :c:func:`shutdown`\  on each device to shutdown.
+    call ->shutdown() on each device to shutdown.
 
     :param  void:
         no arguments

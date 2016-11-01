@@ -30,7 +30,7 @@ software blinking if there is no hardware blinking or if
 the LED refuses the passed values.
 
 Note that if software blinking is active, simply calling
-led_cdev->\ :c:func:`brightness_set`\  will not stop the blinking,
+led_cdev->brightness_set() will not stop the blinking,
 use \ :c:func:`led_classdev_brightness_set`\  instead.
 
 .. _`led_blink_set_oneshot`:

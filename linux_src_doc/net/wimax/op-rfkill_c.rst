@@ -31,7 +31,7 @@ well, as the change is propagated it will come back as a request to
 change the software state to mirror the hardware state.
 
 If the device doesn't have a hardware kill switch, just report
-it on initialization as always on (\ ``WIMAX_RF_ON``\ , radio on).
+it on initialization as always on (%WIMAX_RF_ON, radio on).
 
 .. _`wimax_report_rfkill_sw`:
 
@@ -89,8 +89,8 @@ Return
 is returned as a bitmap, bit 0 being the hardware RF state, bit 1
 the software RF state.
 
-0 means disabled (\ ``WIMAX_RF_ON``\ , radio on), 1 means enabled radio
-off (\ ``WIMAX_RF_OFF``\ ).
+0 means disabled (%WIMAX_RF_ON, radio on), 1 means enabled radio
+off (%WIMAX_RF_OFF).
 
 .. _`wimax_rfkill.description`:
 
@@ -99,7 +99,7 @@ Description
 
 
 Called by the user when he wants to request the WiMAX radio to be
-switched on (\ ``WIMAX_RF_ON``\ ) or off (\ ``WIMAX_RF_OFF``\ ). With
+switched on (%WIMAX_RF_ON) or off (%WIMAX_RF_OFF). With
 \ ``WIMAX_RF_QUERY``\ , just the current state is returned.
 
 .. _`wimax_rfkill.note`:

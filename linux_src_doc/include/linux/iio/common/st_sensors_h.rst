@@ -277,6 +277,7 @@ Definition
         unsigned int (*get_irq_data_ready)(struct iio_dev *indio_dev);
         const struct st_sensor_transfer_function *tf;
         struct st_sensor_transfer_buffer tb;
+        bool edge_irq;
         bool hw_irq_trigger;
         s64 hw_timestamp;
     }
@@ -333,6 +334,9 @@ tf
 
 tb
     Transfer buffers and mutex used by I/O operations.
+
+edge_irq
+    the IRQ triggers on edges and need special handling.
 
 hw_irq_trigger
     if we're using the hardware interrupt on the sensor.

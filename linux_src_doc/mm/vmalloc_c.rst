@@ -180,7 +180,7 @@ map_kernel_range_noflush
 Description
 -----------
 
-Map PFN_UP(\ ``size``\ ) pages at \ ``addr``\ .  The VM area \ ``addr``\  and \ ``size``\ 
+Map PFN_UP(@size) pages at \ ``addr``\ .  The VM area \ ``addr``\  and \ ``size``\ 
 specify should have been allocated using \ :c:func:`get_vm_area`\  and its
 friends.
 
@@ -220,7 +220,7 @@ unmap_kernel_range_noflush
 Description
 -----------
 
-Unmap PFN_UP(\ ``size``\ ) pages at \ ``addr``\ .  The VM area \ ``addr``\  and \ ``size``\ 
+Unmap PFN_UP(@size) pages at \ ``addr``\ .  The VM area \ ``addr``\  and \ ``size``\ 
 specify should have been allocated using \ :c:func:`get_vm_area`\  and its
 friends.
 
@@ -269,7 +269,7 @@ get_vm_area
         size of the area
 
     :param unsigned long flags:
-        \ ``VM_IOREMAP``\  for I/O mappings or VM_ALLOC
+        %VM_IOREMAP for I/O mappings or VM_ALLOC
 
 .. _`get_vm_area.description`:
 
@@ -340,7 +340,7 @@ Description
 -----------
 
 Free the virtually continuous memory area starting at \ ``addr``\ , as
-obtained from \ :c:func:`vmalloc`\ , \ :c:func:`vmalloc_32`\  or \\ :c:func:`__vmalloc`\ . If \ ``addr``\  is
+obtained from \ :c:func:`vmalloc`\ , \ :c:func:`vmalloc_32`\  or \__vmalloc(). If \ ``addr``\  is
 NULL, no operation is performed.
 
 Must not be called in NMI context (strictly speaking, only if we don't
@@ -506,7 +506,7 @@ Description
 -----------
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vzalloc`:
 
@@ -529,7 +529,7 @@ Description
 -----------
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vmalloc_user`:
 
@@ -575,7 +575,7 @@ Allocate enough pages to cover \ ``size``\  from the page level
 allocator and map them into contiguous kernel virtual space.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vzalloc_node`:
 
@@ -602,7 +602,7 @@ allocator and map them into contiguous kernel virtual space.
 The memory allocated is set to zero.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc_node`\  instead.
+use \__vmalloc_node() instead.
 
 .. _`vmalloc_exec`:
 
@@ -626,7 +626,7 @@ the page level allocator and map them into contiguous and
 executable kernel virtual space.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vmalloc_32`:
 
@@ -879,7 +879,7 @@ pvm_find_next_prev
 Return
 ------
 
-\ ``true``\  if either or both of next and prev are found,
+%true if either or both of next and prev are found,
 \ ``false``\  if no vmap_area exists
 
 Find vmap_areas end addresses of which enclose \ ``end``\ .  ie. if not
@@ -910,12 +910,12 @@ Return
 
 determined end address
 
-Find the highest aligned address between \*\ ``pnext``\  and \*\ ``pprev``\  below
-VMALLOC_END.  \*\ ``pnext``\  and \*\ ``pprev``\  are adjusted so that the aligned
+Find the highest aligned address between \*@pnext and \*@pprev below
+VMALLOC_END.  \*@pnext and \*@pprev are adjusted so that the aligned
 down address is between the end addresses of the two vmap_areas.
 
 Please note that the address returned by this function may fall
-inside \*\ ``pnext``\  vmap_area.  The caller is responsible for checking
+inside \*@pnext vmap_area.  The caller is responsible for checking
 that.
 
 .. _`pcpu_get_vm_areas`:

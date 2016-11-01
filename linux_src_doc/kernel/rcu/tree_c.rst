@@ -221,7 +221,7 @@ Description
 
 Return true if RCU is watching the running CPU, which means that
 this CPU can safely enter RCU read-side critical sections.  Unlike
-\ :c:func:`rcu_is_watching`\ , the caller of \\ :c:func:`__rcu_is_watching`\  must have at
+\ :c:func:`rcu_is_watching`\ , the caller of \ :c:func:`__rcu_is_watching`\  must have at
 least disabled preemption.
 
 .. _`rcu_is_watching`:
@@ -462,36 +462,6 @@ Yes, this function does not take counter wrap into account.  But
 counter wrap is harmless.  If the counter wraps, we have waited for
 more than 2 billion grace periods (and way more on a 64-bit system!),
 so waiting for one additional grace period should be just fine.
-
-.. _`synchronize_sched_expedited`:
-
-synchronize_sched_expedited
-===========================
-
-.. c:function:: void synchronize_sched_expedited( void)
-
-    Brute-force RCU-sched grace period
-
-    :param  void:
-        no arguments
-
-.. _`synchronize_sched_expedited.description`:
-
-Description
------------
-
-Wait for an RCU-sched grace period to elapse, but use a "big hammer"
-approach to force the grace period to end quickly.  This consumes
-significant time on all CPUs and is unfriendly to real-time workloads,
-so is thus not recommended for any sort of common-case code.  In fact,
-if you are using \ :c:func:`synchronize_sched_expedited`\  in a loop, please
-restructure your code to batch your updates, and then use a single
-\ :c:func:`synchronize_sched`\  instead.
-
-This implementation can be thought of as an application of sequence
-locking to expedited grace periods, but using the sequence counter to
-determine when someone else has already done the work instead of for
-retrying readers.
 
 .. _`rcu_barrier_bh`:
 

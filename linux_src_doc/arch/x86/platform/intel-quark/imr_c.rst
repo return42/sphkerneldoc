@@ -19,7 +19,7 @@ Description
 -----------
 
 Copyright(c) 2013 Intel Corporation.
-Copyright(c) 2015 Bryan O'Donoghue <pure.logic\ ``nexus``\ -software.ie>
+Copyright(c) 2015 Bryan O'Donoghue <pure.logic@nexus-software.ie>
 
 IMR registers define an isolated region of memory that can
 be masked to prohibit certain system agents from accessing memory.

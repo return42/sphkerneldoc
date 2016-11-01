@@ -108,6 +108,27 @@ Description
 
 This happens under session_lock until submission to chip
 
+.. _`beiscsi_complete_pdu`:
+
+beiscsi_complete_pdu
+====================
+
+.. c:function:: unsigned int beiscsi_complete_pdu(struct beiscsi_conn *beiscsi_conn, struct pdu_base *phdr, void *pdata, unsigned int dlen)
+
+    a. Unsolicited NOP-In (target initiated NOP-In) b. ASYNC Messages c. Reject PDU d. Login response These headers arrive unprocessed by the EP firmware. iSCSI layer processes them.
+
+    :param struct beiscsi_conn \*beiscsi_conn:
+        *undescribed*
+
+    :param struct pdu_base \*phdr:
+        *undescribed*
+
+    :param void \*pdata:
+        *undescribed*
+
+    :param unsigned int dlen:
+        *undescribed*
+
 .. _`beiscsi_process_cq`:
 
 beiscsi_process_cq
@@ -176,41 +197,6 @@ Description
 -----------
 
 CPU count is used for creating EQ.
-
-.. _`beiscsi_get_boot_info`:
-
-beiscsi_get_boot_info
-=====================
-
-.. c:function:: int beiscsi_get_boot_info(struct beiscsi_hba *phba)
-
-    Get the boot session info
-
-    :param struct beiscsi_hba \*phba:
-        The device priv structure instance
-
-.. _`beiscsi_get_boot_info.description`:
-
-Description
------------
-
-Get the boot target info and store in driver priv structure
-
-return values
-
-.. _`beiscsi_get_boot_info.success`:
-
-Success
--------
-
-0
-
-.. _`beiscsi_get_boot_info.failure`:
-
-Failure
--------
-
-Non-Zero Value
 
 .. _`beiscsi_free_mgmt_task_handles`:
 

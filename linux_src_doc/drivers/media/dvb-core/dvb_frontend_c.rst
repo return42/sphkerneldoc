@@ -19,7 +19,7 @@ dvb_frontend_swzigzag_autotune
 Description
 -----------
 
-\ ``param``\  fe The frontend concerned.
+@param fe The frontend concerned.
 \ ``param``\  check_wrapped Checks if an iteration has completed. DO NOT SET ON THE FIRST ATTEMPT
 \ ``returns``\  Number of complete iterations that have been performed.
 

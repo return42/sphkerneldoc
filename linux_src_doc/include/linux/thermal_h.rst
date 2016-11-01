@@ -33,6 +33,8 @@ Definition
         int last_temperature;
         int emul_temperature;
         int passive;
+        int prev_low_trip;
+        int prev_high_trip;
         unsigned int forced_passive;
         atomic_t need_update;
         struct thermal_zone_device_ops *ops;
@@ -44,6 +46,7 @@ Definition
         struct mutex lock;
         struct list_head node;
         struct delayed_work poll_queue;
+        enum thermal_notify_event notify_event;
     }
 
 .. _`thermal_zone_device.members`:
@@ -58,7 +61,7 @@ type
     the thermal zone device type
 
 device
-    \ :c:type:`struct device <device>`\  for this thermal zone
+    &struct device for this thermal zone
 
 trip_temp_attrs
     attributes for trip points for sysfs: trip temperature
@@ -102,6 +105,12 @@ emul_temperature
 passive
     1 if you've crossed a passive trip point, 0 otherwise.
 
+prev_low_trip
+    the low current temperature if you've crossed a passive
+
+prev_high_trip
+    the above current temperature if you've crossed a
+
 forced_passive
     If > 0, temperature at which to switch on all ACPI
     processor cooling devices.  Currently only used by the
@@ -111,7 +120,7 @@ need_update
     if equals 1, thermal_zone_device_update needs to be invoked.
 
 ops
-    operations this \ :c:type:`struct thermal_zone_device <thermal_zone_device>` supports
+    operations this \ :c:type:`struct thermal_zone_device <thermal_zone_device>`\  supports
 
 tzp
     thermal zone parameters
@@ -126,7 +135,7 @@ thermal_instances
     list of \ :c:type:`struct thermal_instance <thermal_instance>`\  of this thermal zone
 
 idr
-    \ :c:type:`struct idr <idr>`\  to generate unique id for this zone's cooling
+    &struct idr to generate unique id for this zone's cooling
     devices
 
 lock
@@ -137,6 +146,9 @@ node
 
 poll_queue
     delayed work for polling
+
+notify_event
+    Last notification event
 
 .. _`thermal_governor`:
 
@@ -204,7 +216,8 @@ Definition
 
     struct thermal_zone_of_device_ops {
         int (*get_temp)(void *, int *);
-        int (*get_trend)(void *, long *);
+        int (*get_trend)(void *, int, enum thermal_trend *);
+        int (*set_trips)(void *, int, int);
         int (*set_emul_temp)(void *, int);
         int (*set_trip_temp)(void *, int, int);
     }
@@ -219,6 +232,11 @@ get_temp
 
 get_trend
     a pointer to a function that reads the sensor temperature trend.
+
+set_trips
+    a pointer to a function that sets a temperature window. When
+    this window is left the driver must inform the thermal core via
+    thermal_zone_device_update.
 
 set_emul_temp
     a pointer to a function that sets sensor emulated

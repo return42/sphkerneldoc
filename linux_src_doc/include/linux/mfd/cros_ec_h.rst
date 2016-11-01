@@ -37,6 +37,10 @@ Definition
         int (*cmd_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
         int (*pkt_xfer)(struct cros_ec_device *ec,struct cros_ec_command *msg);
         struct mutex lock;
+        bool mkbp_event_supported;
+        struct blocking_notifier_head event_notifier;
+        struct ec_response_get_next_event event_data;
+        int event_size;
     }
 
 .. _`cros_ec_device.members`:
@@ -112,6 +116,18 @@ pkt_xfer
 
 lock
     one transaction at a time
+
+mkbp_event_supported
+    true if this EC supports the MKBP event protocol.
+
+event_notifier
+    interrupt event notifier for transport devices.
+
+event_data
+    raw payload transferred with the MKBP event.
+
+event_size
+    size in bytes of the event data.
 
 .. _`cros_ec_suspend`:
 
@@ -230,6 +246,31 @@ Description
 Call this to send a command to the ChromeOS EC.  This should be used
 instead of calling the EC's \ :c:func:`cmd_xfer`\  callback directly.
 
+.. _`cros_ec_cmd_xfer_status`:
+
+cros_ec_cmd_xfer_status
+=======================
+
+.. c:function:: int cros_ec_cmd_xfer_status(struct cros_ec_device *ec_dev, struct cros_ec_command *msg)
+
+    Send a command to the ChromeOS EC
+
+    :param struct cros_ec_device \*ec_dev:
+        EC device
+
+    :param struct cros_ec_command \*msg:
+        Message to write
+
+.. _`cros_ec_cmd_xfer_status.description`:
+
+Description
+-----------
+
+This function is identical to cros_ec_cmd_xfer, except it returns success
+status only if both the command was transmitted successfully and the EC
+replied with success status. It's not necessary to check msg->result when
+using this function.
+
 .. _`cros_ec_remove`:
 
 cros_ec_remove
@@ -283,6 +324,25 @@ cros_ec_query_all
     :param struct cros_ec_device \*ec_dev:
         Device to register
         \ ``return``\  0 if ok, -ve on error
+
+.. _`cros_ec_get_next_event`:
+
+cros_ec_get_next_event
+======================
+
+.. c:function:: int cros_ec_get_next_event(struct cros_ec_device *ec_dev)
+
+    Fetch next event from the ChromeOS EC
+
+    :param struct cros_ec_device \*ec_dev:
+        Device to fetch event from
+
+.. _`cros_ec_get_next_event.return`:
+
+Return
+------
+
+0 on success, Linux error number on failure
 
 .. This file was automatic generated / don't edit.
 

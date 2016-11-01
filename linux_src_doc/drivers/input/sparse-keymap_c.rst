@@ -60,7 +60,7 @@ sparse_keymap_setup
         Input device
 
     :param const struct key_entry \*keymap:
-        Keymap in form of array of \ :c:type:`struct key_entry <key_entry>` structures ending
+        Keymap in form of array of \ :c:type:`struct key_entry <key_entry>`\  structures ending
         with \ ``KE_END``\  type entry
 
     :param int (\*setup)(struct input_dev \*, struct key_entry \*):

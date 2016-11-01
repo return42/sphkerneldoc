@@ -47,7 +47,7 @@ offset
     offset of the I/O space where registers are located
 
 hsu
-    struct hsu_dma that is filed by ->\ :c:func:`probe`\ 
+    struct hsu_dma that is filed by ->probe()
 
 .. This file was automatic generated / don't edit.
 

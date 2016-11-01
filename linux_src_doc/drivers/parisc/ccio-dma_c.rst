@@ -229,7 +229,7 @@ This function implements the pci_map_single function.
 ccio_unmap_page
 ===============
 
-.. c:function:: void ccio_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: void ccio_unmap_page(struct device *dev, dma_addr_t iova, size_t size, enum dma_data_direction direction, unsigned long attrs)
 
     Unmap an address range from the IOMMU.
 
@@ -245,7 +245,7 @@ ccio_unmap_page
     :param enum dma_data_direction direction:
         The direction of the DMA transaction (to/from device).
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`ccio_alloc`:
@@ -253,7 +253,7 @@ ccio_unmap_page
 ccio_alloc
 ==========
 
-.. c:function:: void *ccio_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flag, struct dma_attrs *attrs)
+.. c:function:: void *ccio_alloc(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flag, unsigned long attrs)
 
     Allocate a consistent DMA mapping.
 
@@ -269,7 +269,7 @@ ccio_alloc
     :param gfp_t flag:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`ccio_alloc.description`:
@@ -284,7 +284,7 @@ This function implements the pci_alloc_consistent function.
 ccio_free
 =========
 
-.. c:function:: void ccio_free(struct device *dev, size_t size, void *cpu_addr, dma_addr_t dma_handle, struct dma_attrs *attrs)
+.. c:function:: void ccio_free(struct device *dev, size_t size, void *cpu_addr, dma_addr_t dma_handle, unsigned long attrs)
 
     Free a consistent DMA mapping.
 
@@ -300,7 +300,7 @@ ccio_free
     :param dma_addr_t dma_handle:
         The device address returned from the ccio_alloc_consistent.
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`ccio_free.description`:
@@ -315,7 +315,7 @@ This function implements the pci_free_consistent function.
 ccio_map_sg
 ===========
 
-.. c:function:: int ccio_map_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: int ccio_map_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, unsigned long attrs)
 
     Map the scatter/gather list into the IOMMU.
 
@@ -331,7 +331,7 @@ ccio_map_sg
     :param enum dma_data_direction direction:
         The direction of the DMA transaction (to/from device).
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`ccio_map_sg.description`:
@@ -346,7 +346,7 @@ This function implements the pci_map_sg function.
 ccio_unmap_sg
 =============
 
-.. c:function:: void ccio_unmap_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, struct dma_attrs *attrs)
+.. c:function:: void ccio_unmap_sg(struct device *dev, struct scatterlist *sglist, int nents, enum dma_data_direction direction, unsigned long attrs)
 
     Unmap the scatter/gather list from the IOMMU.
 
@@ -362,7 +362,7 @@ ccio_unmap_sg
     :param enum dma_data_direction direction:
         The direction of the DMA transaction (to/from device).
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`ccio_unmap_sg.description`:

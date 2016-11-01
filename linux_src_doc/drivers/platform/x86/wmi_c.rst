@@ -18,8 +18,8 @@ wmi_evaluate_method
 
     :param u32 method_id:
         Method ID to call
-        \ :c:type:`struct in <in>`: Buffer containing input for the method call
-        \ :c:type:`struct out <out>`: Empty buffer to return the method results
+        \ :c:type:`struct in <in>`\ : Buffer containing input for the method call
+        \ :c:type:`struct out <out>`\ : Empty buffer to return the method results
 
     :param const struct acpi_buffer \*in:
         *undescribed*
@@ -48,7 +48,7 @@ wmi_query_block
 
     :param u8 instance:
         Instance index
-        \ :c:type:`struct out <out>`: Empty buffer to return the contents of the data block to
+        \ :c:type:`struct out <out>`\ : Empty buffer to return the contents of the data block to
 
     :param struct acpi_buffer \*out:
         *undescribed*
@@ -74,7 +74,7 @@ wmi_set_block
 
     :param u8 instance:
         Instance index
-        \ :c:type:`struct in <in>`: Buffer containing new values for the data block
+        \ :c:type:`struct in <in>`\ : Buffer containing new values for the data block
 
     :param const struct acpi_buffer \*in:
         *undescribed*

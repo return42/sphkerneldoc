@@ -21,7 +21,7 @@ splice_to_pipe
 Description
 -----------
 
-\ ``spd``\  contains a map of pages and len/offset tuples, along with
+@spd contains a map of pages and len/offset tuples, along with
 the struct pipe_buf_operations associated with these pages. This
 function will link that data to the pipe.
 
@@ -55,8 +55,7 @@ Description
 -----------
 
 Will read pages from given file and fill them into a pipe. Can be
-used as long as the address_space operations for the source implements
-a \ :c:func:`readpage`\  hook.
+used as long as it has more or less sane ->read_iter().
 
 .. _`splice_from_pipe_feed`:
 
@@ -84,13 +83,13 @@ Description
 This function loops over the pipe and calls \ ``actor``\  to do the
 actual moving of a single struct pipe_buffer to the desired
 destination.  It returns when there's no more buffers left in
-the pipe or if the requested number of bytes (\ ``sd``\ ->total_len)
+the pipe or if the requested number of bytes (@sd->total_len)
 have been copied.  It returns a positive number (one) if the
 pipe needs to be filled with more data, zero if the required
 number of bytes have been copied and -errno on error.
 
 This, together with splice_from_pipe_{begin,end,next}, may be
-used to implement the functionality of \\ :c:func:`__splice_from_pipe`\  when
+used to implement the functionality of \__splice_from_pipe() when
 locking is required around copying the pipe buffers to the
 destination.
 
@@ -224,7 +223,7 @@ Description
 -----------
 
 See \__splice_from_pipe. This function locks the pipe inode,
-otherwise it's identical to \\ :c:func:`__splice_from_pipe`\ .
+otherwise it's identical to \__splice_from_pipe().
 
 .. _`iter_file_splice_write`:
 

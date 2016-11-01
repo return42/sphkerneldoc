@@ -181,16 +181,49 @@ dentry or it may be a lower dentry pinned by the upper.
 
 Normal filesystems should not use this to access their own dentries.
 
+.. _`d_real`:
+
+d_real
+======
+
+.. c:function:: struct dentry *d_real(struct dentry *dentry, const struct inode *inode, unsigned int flags)
+
+    Return the real dentry
+
+    :param struct dentry \*dentry:
+        the dentry to query
+
+    :param const struct inode \*inode:
+        inode to select the dentry from multiple layers (can be NULL)
+
+    :param unsigned int flags:
+        open flags to control copy-up behavior
+
+.. _`d_real.description`:
+
+Description
+-----------
+
+If dentry is on an union/overlay, then return the underlying, real dentry.
+Otherwise return the dentry itself.
+
+.. _`d_real.see-also`:
+
+See also
+--------
+
+Documentation/filesystems/vfs.txt
+
 .. _`d_real_inode`:
 
 d_real_inode
 ============
 
-.. c:function:: struct inode *d_real_inode(struct dentry *dentry)
+.. c:function:: struct inode *d_real_inode(const struct dentry *dentry)
 
     Return the real inode
 
-    :param struct dentry \*dentry:
+    :param const struct dentry \*dentry:
         The dentry to query
 
 .. _`d_real_inode.description`:

@@ -96,7 +96,6 @@ Definition
 
     struct ttm_dma_tt {
         struct ttm_tt ttm;
-        void **cpu_address;
         dma_addr_t *dma_address;
         struct list_head pages_list;
     }
@@ -108,9 +107,6 @@ Members
 
 ttm
     Base ttm_tt struct.
-
-cpu_address
-    The CPU address of the pages
 
 dma_address
     The DMA (bus) addresses of the pages
@@ -156,8 +152,10 @@ Definition
         struct mutex io_reserve_mutex;
         bool use_io_reserve_lru;
         bool io_reserve_fastpath;
+        spinlock_t move_lock;
         struct list_head io_reserve_lru;
         struct list_head lru;
+        struct fence *move;
     }
 
 .. _`ttm_mem_type_manager.members`:
@@ -208,6 +206,9 @@ use_io_reserve_lru
 
 io_reserve_fastpath
     Only use bdev::driver::io_mem_reserve to obtain
+
+move_lock
+    lock for move fence
     static information. bdev::driver::io_mem_free is never used.
 
 io_reserve_lru
@@ -215,6 +216,9 @@ io_reserve_lru
 
 lru
     The lru list for this memory type.
+
+move
+    The fence of the last pipelined move operation.
 
 .. _`ttm_mem_type_manager.description`:
 
@@ -644,7 +648,7 @@ ttm_tt_set_placement_caching
 Description
 -----------
 
-\ ``ttm``\  A struct ttm_tt the backing pages of which will change caching policy.
+@ttm A struct ttm_tt the backing pages of which will change caching policy.
 
 This function will change caching policy of any default kernel mappings of
 the pages backing \ ``ttm``\ . If changing from cached to uncached or
@@ -991,13 +995,13 @@ Unreserve a previous reservation of \ ``bo``\  made with \ ``ticket``\ .
 ttm_bo_move_ttm
 ===============
 
-.. c:function:: int ttm_bo_move_ttm(struct ttm_buffer_object *bo, bool evict, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_ttm(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param bool evict:
-        1: This is an eviction. Don't try to pipeline.
+    :param bool interruptible:
+        Sleep interruptible if waiting.
 
     :param bool no_wait_gpu:
         Return immediately if the GPU is busy.
@@ -1012,8 +1016,8 @@ Description
 
 Optimized move function for a buffer object with both old and
 new placement backed by a TTM. The function will, if successful,
-free any old aperture space, and set (\ ``new_mem``\ )->mm_node to NULL,
-and update the (\ ``bo``\ )->mem placement flags. If unsuccessful, the old
+free any old aperture space, and set (@new_mem)->mm_node to NULL,
+and update the (@bo)->mem placement flags. If unsuccessful, the old
 data remains untouched, and it's up to the caller to free the
 memory space indicated by \ ``new_mem``\ .
 
@@ -1029,13 +1033,13 @@ Return
 ttm_bo_move_memcpy
 ==================
 
-.. c:function:: int ttm_bo_move_memcpy(struct ttm_buffer_object *bo, bool evict, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_memcpy(struct ttm_buffer_object *bo, bool interruptible, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
 
-    :param bool evict:
-        1: This is an eviction. Don't try to pipeline.
+    :param bool interruptible:
+        Sleep interruptible if waiting.
 
     :param bool no_wait_gpu:
         Return immediately if the GPU is busy.
@@ -1050,8 +1054,8 @@ Description
 
 Fallback move function for a mappable buffer object in mappable memory.
 The function will, if successful,
-free any old aperture space, and set (\ ``new_mem``\ )->mm_node to NULL,
-and update the (\ ``bo``\ )->mem placement flags. If unsuccessful, the old
+free any old aperture space, and set (@new_mem)->mm_node to NULL,
+and update the (@bo)->mem placement flags. If unsuccessful, the old
 data remains untouched, and it's up to the caller to free the
 memory space indicated by \ ``new_mem``\ .
 
@@ -1084,7 +1088,7 @@ Utility function to free an old placement after a successful move.
 ttm_bo_move_accel_cleanup
 =========================
 
-.. c:function:: int ttm_bo_move_accel_cleanup(struct ttm_buffer_object *bo, struct fence *fence, bool evict, bool no_wait_gpu, struct ttm_mem_reg *new_mem)
+.. c:function:: int ttm_bo_move_accel_cleanup(struct ttm_buffer_object *bo, struct fence *fence, bool evict, struct ttm_mem_reg *new_mem)
 
     :param struct ttm_buffer_object \*bo:
         A pointer to a struct ttm_buffer_object.
@@ -1094,9 +1098,6 @@ ttm_bo_move_accel_cleanup
 
     :param bool evict:
         This is an evict move. Don't return until the buffer is idle.
-
-    :param bool no_wait_gpu:
-        Return immediately if the GPU is busy.
 
     :param struct ttm_mem_reg \*new_mem:
         struct ttm_mem_reg indicating where to move.
@@ -1112,6 +1113,33 @@ representing the old placement, and put the sync object on both buffer
 objects. After that the newly created buffer object is unref'd to be
 destroyed when the move is complete. This will help pipeline
 buffer moves.
+
+.. _`ttm_bo_pipeline_move`:
+
+ttm_bo_pipeline_move
+====================
+
+.. c:function:: int ttm_bo_pipeline_move(struct ttm_buffer_object *bo, struct fence *fence, bool evict, struct ttm_mem_reg *new_mem)
+
+    :param struct ttm_buffer_object \*bo:
+        A pointer to a struct ttm_buffer_object.
+
+    :param struct fence \*fence:
+        A fence object that signals when moving is complete.
+
+    :param bool evict:
+        This is an evict move. Don't return until the buffer is idle.
+
+    :param struct ttm_mem_reg \*new_mem:
+        struct ttm_mem_reg indicating where to move.
+
+.. _`ttm_bo_pipeline_move.description`:
+
+Description
+-----------
+
+Function for pipelining accelerated moves. Either free the memory
+immediately or hang it on a temporary buffer object.
 
 .. _`ttm_io_prot`:
 

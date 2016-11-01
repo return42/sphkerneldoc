@@ -55,7 +55,6 @@ Definition
 
     struct regulator_bulk_data {
         const char *supply;
-        bool optional;
         struct regulator *consumer;
     }
 
@@ -67,10 +66,6 @@ Members
 supply
     The name of the supply.  Initialised by the user before
     using the bulk regulator APIs.
-
-optional
-    The supply should be considered optional. Initialised by the user
-    before using the bulk regulator APIs.
 
 consumer
     The regulator consumer for the supply.  This will be managed

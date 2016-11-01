@@ -36,7 +36,7 @@ into a utf8 string.
 The destination string \ ``out``\  is allocated by this function and the caller is
 responsible for freeing it with \ :c:func:`kfree`\ 
 
-On return, \*\ ``out_len``\  is the length of \ ``out``\  in bytes.
+On return, \*@out_len is the length of \ ``out``\  in bytes.
 
 On success, the return value is the number of utf8 characters written to
 the output buffer \ ``out``\ .

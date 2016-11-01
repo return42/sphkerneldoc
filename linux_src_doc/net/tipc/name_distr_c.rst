@@ -37,6 +37,13 @@ named_prepare_buf
     :param u32 dest:
         *undescribed*
 
+.. _`named_prepare_buf.description`:
+
+Description
+-----------
+
+The buffer returned is of size INT_H_SIZE + payload size
+
 .. _`tipc_named_publish`:
 
 tipc_named_publish

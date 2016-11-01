@@ -374,7 +374,7 @@ rdma_disconnect
 rdma_join_multicast
 ===================
 
-.. c:function:: int rdma_join_multicast(struct rdma_cm_id *id, struct sockaddr *addr, void *context)
+.. c:function:: int rdma_join_multicast(struct rdma_cm_id *id, struct sockaddr *addr, u8 join_state, void *context)
 
     Join the multicast group specified by the given address.
 
@@ -383,6 +383,10 @@ rdma_join_multicast
 
     :param struct sockaddr \*addr:
         Multicast address identifying the group to join.
+
+    :param u8 join_state:
+        Multicast JoinState bitmap requested by port.
+        Bitmap is based on IB_SA_MCMEMBER_REC_JOIN_STATE bits.
 
     :param void \*context:
         User-defined context associated with the join request, returned

@@ -24,7 +24,7 @@ module_param
 Description
 -----------
 
-\ ``value``\  becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
+@value becomes the module parameter, or (prefixed by KBUILD_MODNAME and a
 ".") the kernel commandline parameter.  Note that - is changed to _, so
 the user can use "foo-bar=1" even for variable "foo_bar".
 
@@ -190,7 +190,7 @@ Description
 
 core_param is just like \ :c:func:`module_param`\ , but cannot be modular and
 doesn't add a prefix (such as "printk.").  This is for compatibility
-with \\ :c:func:`__setup`\ , and it makes sense as truly core parameters aren't
+with \__setup(), and it makes sense as truly core parameters aren't
 tied to the particular file they're in.
 
 .. _`core_param_unsafe`:
@@ -320,7 +320,7 @@ Description
 Input and output are as comma-separated values.  Commas inside values
 don't work properly (eg. an array of charp).
 
-ARRAY_SIZE(\ ``name``\ ) is used to determine the number of elements in the
+ARRAY_SIZE(@name) is used to determine the number of elements in the
 array, so the definition must be visible.
 
 .. _`module_param_array_named`:

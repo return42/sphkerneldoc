@@ -1,0 +1,41 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/hwmon/ina3221.c
+
+.. _`ina3221_data`:
+
+struct ina3221_data
+===================
+
+.. c:type:: struct ina3221_data
+
+    device specific information
+
+.. _`ina3221_data.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ina3221_data {
+        struct regmap *regmap;
+        struct regmap_field  *fields[F_MAX_FIELDS];
+        int shunt_resistors[INA3221_NUM_CHANNELS];
+    }
+
+.. _`ina3221_data.members`:
+
+Members
+-------
+
+regmap
+    Register map of the device
+
+fields
+    Register fields of the device
+
+shunt_resistors
+    Array of resistor values per channel
+
+.. This file was automatic generated / don't edit.
+

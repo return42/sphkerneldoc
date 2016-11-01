@@ -85,9 +85,9 @@ Description
 
 Check if the specified region partially overlaps or fully eclipses a
 resource identified by \ ``flags``\  and \ ``desc``\  (optional with IORES_DESC_NONE).
-Return REGION_DISJOINT if the region does not overlap \ ``flags``\ /\ ``desc``\ ,
-return REGION_MIXED if the region overlaps \ ``flags``\ /\ ``desc``\  and another
-resource, and return REGION_INTERSECTS if the region overlaps \ ``flags``\ /\ ``desc``\ 
+Return REGION_DISJOINT if the region does not overlap \ ``flags``\ /@desc,
+return REGION_MIXED if the region overlaps \ ``flags``\ /@desc and another
+resource, and return REGION_INTERSECTS if the region overlaps \ ``flags``\ /@desc
 and no other defined resource. Note that REGION_INTERSECTS is also
 returned in the case when the specified region overlaps RAM and undefined
 memory holes.

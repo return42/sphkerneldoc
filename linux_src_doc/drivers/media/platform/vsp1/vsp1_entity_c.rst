@@ -24,6 +24,9 @@ vsp1_entity_get_pad_config
 Description
 -----------
 
+When called with which set to V4L2_SUBDEV_FORMAT_ACTIVE the caller must hold
+the entity lock to access the returned configuration.
+
 Return the pad configuration requested by the which argument. The TRY
 configuration is passed explicitly to the function through the cfg argument
 and simply returned when requested. The ACTIVE configuration comes from the
@@ -54,6 +57,36 @@ Description
 
 Return the format stored in the given configuration for an entity's pad. The
 configuration can be an ACTIVE or TRY configuration.
+
+.. _`vsp1_entity_get_pad_selection`:
+
+vsp1_entity_get_pad_selection
+=============================
+
+.. c:function:: struct v4l2_rect *vsp1_entity_get_pad_selection(struct vsp1_entity *entity, struct v4l2_subdev_pad_config *cfg, unsigned int pad, unsigned int target)
+
+    Get a pad selection from storage for entity
+
+    :param struct vsp1_entity \*entity:
+        the entity
+
+    :param struct v4l2_subdev_pad_config \*cfg:
+        the configuration storage
+
+    :param unsigned int pad:
+        the pad number
+
+    :param unsigned int target:
+        the selection target
+
+.. _`vsp1_entity_get_pad_selection.description`:
+
+Description
+-----------
+
+Return the selection rectangle stored in the given configuration for an
+entity's pad. The configuration can be an ACTIVE or TRY configuration. The
+selection target can be COMPOSE or CROP.
 
 .. This file was automatic generated / don't edit.
 

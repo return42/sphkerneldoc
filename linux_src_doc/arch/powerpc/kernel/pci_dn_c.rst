@@ -29,7 +29,7 @@ dynamic lpar operation of adding a PHB to a running system.
 pci_devs_phb_init
 =================
 
-.. c:function:: void pci_devs_phb_init( void)
+.. c:function:: int pci_devs_phb_init( void)
 
     Initialize phbs and pci devs under them.
 

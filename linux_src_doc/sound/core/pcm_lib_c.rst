@@ -130,7 +130,7 @@ snd_interval_muldivk
 Description
 -----------
 
-c = a \* b / k
+c = a * b / k
 
 Returns non-zero if the value is changed, zero if not changed.
 
@@ -160,7 +160,7 @@ snd_interval_mulkdiv
 Description
 -----------
 
-c = a \* k / b
+c = a * k / b
 
 Returns non-zero if the value is changed, zero if not changed.
 
@@ -734,7 +734,7 @@ Return
 ------
 
 The value for field \ ``var``\  if it's fixed in configuration space
-defined by \ ``params``\ . -\ ``EINVAL``\  otherwise.
+defined by \ ``params``\ . -%EINVAL otherwise.
 
 .. _`snd_pcm_hw_param_first`:
 

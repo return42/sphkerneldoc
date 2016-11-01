@@ -34,7 +34,6 @@ Definition
         struct napi_struct napi;
         u32 msg_enable;
         spinlock_t lock;
-        struct phy_device *phy;
         struct mii_bus *mdio;
         struct clk *clk;
         s8 phy_id;
@@ -92,9 +91,6 @@ msg_enable
 
 lock
     device lock
-
-phy
-    attached PHY
 
 mdio
     MDIO bus for PHY access

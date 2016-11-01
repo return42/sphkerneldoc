@@ -54,7 +54,7 @@ handler
 Description
 -----------
 
-\ ``handler``\  is a member of the device rather than the driver since a driver
+@handler is a member of the device rather than the driver since a driver
 can have different interrupt handlers for different ccw devices
 (multi-subchannel drivers).
 

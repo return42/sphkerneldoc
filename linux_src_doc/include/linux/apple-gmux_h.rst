@@ -26,7 +26,7 @@ and Mac Pros, e.g. for deferred probing, runtime pm and backlight.
 Return
 ------
 
-\ ``true``\  if gmux is present and the kernel was configured
+%true if gmux is present and the kernel was configured
 with CONFIG_APPLE_GMUX, \ ``false``\  otherwise.
 
 .. This file was automatic generated / don't edit.

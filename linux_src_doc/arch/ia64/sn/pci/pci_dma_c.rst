@@ -54,7 +54,7 @@ Set \ ``dev``\ 's DMA mask if the hw supports it.
 sn_dma_alloc_coherent
 =====================
 
-.. c:function:: void *sn_dma_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, struct dma_attrs *attrs)
+.. c:function:: void *sn_dma_alloc_coherent(struct device *dev, size_t size, dma_addr_t *dma_handle, gfp_t flags, unsigned long attrs)
 
     allocate memory for coherent DMA
 
@@ -70,7 +70,7 @@ sn_dma_alloc_coherent
     :param gfp_t flags:
         memory allocation flags
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sn_dma_alloc_coherent.description`:
@@ -78,7 +78,7 @@ sn_dma_alloc_coherent
 Description
 -----------
 
-\ :c:func:`dma_alloc_coherent`\  returns a pointer to a memory region suitable for
+dma_alloc_coherent() returns a pointer to a memory region suitable for
 coherent DMA traffic to/from a PCI device.  On SN platforms, this means
 that \ ``dma_handle``\  will have the \ ``PCIIO_DMA_CMD``\  flag set.
 
@@ -91,7 +91,7 @@ more information.
 sn_dma_free_coherent
 ====================
 
-.. c:function:: void sn_dma_free_coherent(struct device *dev, size_t size, void *cpu_addr, dma_addr_t dma_handle, struct dma_attrs *attrs)
+.. c:function:: void sn_dma_free_coherent(struct device *dev, size_t size, void *cpu_addr, dma_addr_t dma_handle, unsigned long attrs)
 
     free memory associated with coherent DMAable region
 
@@ -107,7 +107,7 @@ sn_dma_free_coherent
     :param dma_addr_t dma_handle:
         DMA address associated with this region
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         *undescribed*
 
 .. _`sn_dma_free_coherent.description`:
@@ -123,7 +123,7 @@ any associated IOMMU mappings.
 sn_dma_map_page
 ===============
 
-.. c:function:: dma_addr_t sn_dma_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t sn_dma_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     map a single page for DMA
 
@@ -142,7 +142,7 @@ sn_dma_map_page
     :param enum dma_data_direction dir:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sn_dma_map_page.description`:
@@ -182,7 +182,7 @@ figure out how to save dmamap handle so can use two step.
 sn_dma_unmap_page
 =================
 
-.. c:function:: void sn_dma_unmap_page(struct device *dev, dma_addr_t dma_addr, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void sn_dma_unmap_page(struct device *dev, dma_addr_t dma_addr, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     unamp a DMA mapped page
 
@@ -198,7 +198,7 @@ sn_dma_unmap_page
     :param enum dma_data_direction dir:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sn_dma_unmap_page.description`:
@@ -215,7 +215,7 @@ coherent, so we just need to free any ATEs associated with this mapping.
 sn_dma_unmap_sg
 ===============
 
-.. c:function:: void sn_dma_unmap_sg(struct device *dev, struct scatterlist *sgl, int nhwentries, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: void sn_dma_unmap_sg(struct device *dev, struct scatterlist *sgl, int nhwentries, enum dma_data_direction dir, unsigned long attrs)
 
     unmap a DMA scatterlist
 
@@ -231,7 +231,7 @@ sn_dma_unmap_sg
     :param enum dma_data_direction dir:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sn_dma_unmap_sg.description`:
@@ -246,7 +246,7 @@ Unmap a set of streaming mode DMA translations.
 sn_dma_map_sg
 =============
 
-.. c:function:: int sn_dma_map_sg(struct device *dev, struct scatterlist *sgl, int nhwentries, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: int sn_dma_map_sg(struct device *dev, struct scatterlist *sgl, int nhwentries, enum dma_data_direction dir, unsigned long attrs)
 
     map a scatterlist for DMA
 
@@ -262,7 +262,7 @@ sn_dma_map_sg
     :param enum dma_data_direction dir:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optional dma attributes
 
 .. _`sn_dma_map_sg.description`:

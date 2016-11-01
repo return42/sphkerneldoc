@@ -18,7 +18,7 @@ comedi_to_usb_interface
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-\ ``NULL``\ , it is assumed to be pointing to a
+Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_interface <usb_interface>`\ .
 
 .. _`comedi_to_usb_interface.return`:
@@ -26,7 +26,7 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_inter
 Return
 ------
 
-Attached USB interface if \ ``dev``\ ->hw_dev is non-\ ``NULL``\ .
+Attached USB interface if \ ``dev``\ ->hw_dev is non-%NULL.
 Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
 
 .. _`comedi_to_usb_dev`:
@@ -46,7 +46,7 @@ comedi_to_usb_dev
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-\ ``NULL``\ , it is assumed to be pointing to a
+Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct usb_interface <usb_interface>`\ .
 
 .. _`comedi_to_usb_dev.return`:
@@ -55,7 +55,7 @@ Return
 ------
 
 USB device to which the USB interface belongs if \ ``dev``\ ->hw_dev is
-non-\ ``NULL``\ .  Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
+non-%NULL.  Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
 
 .. _`comedi_usb_auto_config`:
 
@@ -81,7 +81,7 @@ Description
 -----------
 
 Typically called from the usb_driver (\*probe) function.  Auto-configure a
-COMEDI device, using a pointer to the \ :c:type:`struct device <device>`\  embedded in \*\ ``intf``\  as
+COMEDI device, using a pointer to the \ :c:type:`struct device <device>`\  embedded in \*@intf as
 the hardware device.  The \ ``context``\  value gets passed through to \ ``driver``\ 's
 "auto_attach" handler.  The "auto_attach" handler may call
 \ :c:func:`comedi_to_usb_interface`\  on the passed in COMEDI device to recover \ ``intf``\ .
@@ -91,7 +91,7 @@ the hardware device.  The \ ``context``\  value gets passed through to \ ``drive
 Return
 ------
 
-The result of calling \ :c:func:`comedi_auto_config`\  (\ ``0``\  on success, or
+The result of calling \ :c:func:`comedi_auto_config`\  (%0 on success, or
 a negative error number on failure).
 
 .. _`comedi_usb_auto_unconfig`:
@@ -113,7 +113,7 @@ Description
 
 Typically called from the usb_driver (\*disconnect) function.
 Auto-unconfigure a COMEDI device attached to this USB interface, using a
-pointer to the \ :c:type:`struct device <device>`\  embedded in \*\ ``intf``\  as the hardware device.
+pointer to the \ :c:type:`struct device <device>`\  embedded in \*@intf as the hardware device.
 The COMEDI driver's "detach" handler will be called during unconfiguration
 of the COMEDI device.
 
@@ -150,7 +150,7 @@ use the \ :c:func:`module_comedi_usb_driver`\  helper macro instead.
 Return
 ------
 
-\ ``0``\  on success, or a negative error number on failure.
+%0 on success, or a negative error number on failure.
 
 .. _`comedi_usb_driver_unregister`:
 

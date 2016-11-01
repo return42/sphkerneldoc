@@ -198,10 +198,10 @@ WARNING
 -------
 
 If \ ``ctx``\  is supplied, regardless of whether success or failure is
-returned, you need to check IS_ERR(\ ``ctx``\ ->mrec) and if 'true' the \ ``ctx``\ 
+returned, you need to check IS_ERR(@ctx->mrec) and if 'true' the \ ``ctx``\ 
 is no longer valid, i.e. you need to either call
 \ :c:func:`ntfs_attr_reinit_search_ctx`\  or \ :c:func:`ntfs_attr_put_search_ctx`\  on it.
-In that case PTR_ERR(\ ``ctx``\ ->mrec) will give you the error code for
+In that case PTR_ERR(@ctx->mrec) will give you the error code for
 why the mapping of the old inode failed.
 
 .. _`ntfs_attr_find_vcn_nolock.locking`:
@@ -389,7 +389,7 @@ in there and return it.
 
 On first search \ ``ctx``\ ->ntfs_ino must be the base mft record and \ ``ctx``\  must
 have been obtained from a call to \ :c:func:`ntfs_attr_get_search_ctx`\ .  On subsequent
-calls \ ``ctx``\ ->ntfs_ino can be any extent inode, too (\ ``ctx``\ ->base_ntfs_ino is
+calls \ ``ctx``\ ->ntfs_ino can be any extent inode, too (@ctx->base_ntfs_ino is
 then the base inode).
 
 After finishing with the attribute/mft record you need to call
@@ -928,7 +928,7 @@ and this is returned.  This means the caller must check the returned size to
 determine if the extension was partial.  If \ ``data_start``\  is -1 then partial
 allocations are not performed.
 
-Do not call \ :c:func:`ntfs_attr_extend_allocation`\  for \ ``$MFT``\ /\ ``$DATA``\ .
+Do not call \ :c:func:`ntfs_attr_extend_allocation`\  for \ ``$MFT``\ /$DATA.
 
 .. _`ntfs_attr_extend_allocation.locking`:
 

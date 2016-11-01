@@ -54,7 +54,7 @@ Description
 -----------
 
 Returns an async_cookie_t that may be used for checkpointing later.
-\ ``domain``\  may be used in the async_synchronize\_\*\\ :c:func:`_domain`\  functions to
+\ ``domain``\  may be used in the async_synchronize\_\*\_domain() functions to
 wait within a certain synchronization domain rather than globally.  A
 synchronization domain is specified via \ ``domain``\ .  Note: This function
 may be called from atomic or non-atomic contexts.
@@ -95,7 +95,7 @@ async_unregister_domain
 Description
 -----------
 
-async_synchronize_{cookie\|full}\ :c:func:`_domain`\  are not flushed since callers
+async_synchronize_{cookie\|full}_domain() are not flushed since callers
 of these routines should know the lifetime of \ ``domain``\ 
 
 Prefer \ :c:func:`ASYNC_DOMAIN_EXCLUSIVE`\  declarations over flushing
@@ -133,7 +133,7 @@ async_synchronize_cookie_domain
         async_cookie_t to use as checkpoint
 
     :param struct async_domain \*domain:
-        the domain to synchronize (\ ``NULL``\  for all registered domains)
+        the domain to synchronize (%NULL for all registered domains)
 
 .. _`async_synchronize_cookie_domain.description`:
 

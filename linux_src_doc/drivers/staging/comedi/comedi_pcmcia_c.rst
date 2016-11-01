@@ -18,7 +18,7 @@ comedi_to_pcmcia_dev
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-\ ``NULL``\ , it is assumed to be pointing to a
+Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .
 
 .. _`comedi_to_pcmcia_dev.return`:
@@ -26,7 +26,7 @@ a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_de
 Return
 ------
 
-Attached PCMCIA device if \ ``dev``\ ->hw_dev is non-\ ``NULL``\ .
+Attached PCMCIA device if \ ``dev``\ ->hw_dev is non-%NULL.
 Return \ ``NULL``\  if \ ``dev``\ ->hw_dev is \ ``NULL``\ .
 
 .. _`comedi_pcmcia_enable`:
@@ -50,7 +50,7 @@ comedi_pcmcia_enable
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-\ ``NULL``\ , it is assumed to be pointing to a a
+Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a a
 \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .  The comedi PCMCIA
 driver needs to set the 'config_flags' member in the \ :c:type:`struct pcmcia_device <pcmcia_device>`\ ,
 as appropriate for that driver, before calling this function in order to
@@ -59,7 +59,7 @@ allow \ :c:func:`pcmcia_loop_config`\  to do its internal autoconfiguration.
 If \ ``conf_check``\  is \ ``NULL``\  it is set to a default function.  If is
 passed to \ :c:func:`pcmcia_loop_config`\  and should return \ ``0``\  if the configuration
 is valid and I/O regions requested successfully, otherwise it should return
-a negative error value.  The default function returns -\ ``EINVAL``\  if the
+a negative error value.  The default function returns -%EINVAL if the
 'config_index' member is \ ``0``\ , otherwise it calls \ :c:func:`pcmcia_request_io`\  and
 returns the result.
 
@@ -75,7 +75,7 @@ Return
 ------
 
 0 on success,
--\ ``ENODEV``\  id \ ``dev``\ ->hw_dev is \ ``NULL``\ ,
+-%ENODEV id \ ``dev``\ ->hw_dev is \ ``NULL``\ ,
 a negative error number from \ :c:func:`pcmcia_loop_config`\  if it fails,
 or a negative error number from \ :c:func:`pcmcia_enable_device`\  if it fails.
 
@@ -96,7 +96,7 @@ comedi_pcmcia_disable
 Description
 -----------
 
-Assuming \ ``dev``\ ->hw_dev is non-\ ``NULL``\ , it is assumed to be pointing to a
+Assuming \ ``dev``\ ->hw_dev is non-%NULL, it is assumed to be pointing to a
 a \ :c:type:`struct device <device>`\  embedded in a \ :c:type:`struct pcmcia_device <pcmcia_device>`\ .  Call
 \ :c:func:`pcmcia_disable_device`\  to disable and clean up the PCMCIA device.
 
@@ -121,7 +121,7 @@ Description
 -----------
 
 Typically called from the pcmcia_driver (\*probe) function.  Auto-configure
-a COMEDI device, using a pointer to the \ :c:type:`struct device <device>`\  embedded in \*\ ``link``\ 
+a COMEDI device, using a pointer to the \ :c:type:`struct device <device>`\  embedded in \*@link
 as the hardware device.  The \ ``driver``\ 's "auto_attach" handler may call
 \ :c:func:`comedi_to_pcmcia_dev`\  on the passed in COMEDI device to recover \ ``link``\ .
 
@@ -152,7 +152,7 @@ Description
 
 Typically called from the pcmcia_driver (\*remove) function.
 Auto-unconfigure a COMEDI device attached to this PCMCIA device, using a
-pointer to the \ :c:type:`struct device <device>`\  embedded in \*\ ``link``\  as the hardware device.
+pointer to the \ :c:type:`struct device <device>`\  embedded in \*@link as the hardware device.
 The COMEDI driver's "detach" handler will be called during unconfiguration
 of the COMEDI device.
 

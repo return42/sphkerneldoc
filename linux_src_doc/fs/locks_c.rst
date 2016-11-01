@@ -96,7 +96,7 @@ locks_mandatory_area
         lastbyte in the file to check
 
     :param unsigned char type:
-        \ ``F_WRLCK``\  for a write lock, else \ ``F_RDLCK``\ 
+        %F_WRLCK for a write lock, else \ ``F_RDLCK``\ 
 
 .. _`locks_mandatory_area.description`:
 
@@ -449,17 +449,17 @@ Description
 A caller that doesn't care about the conflicting lock may pass NULL
 as the final argument.
 
-If the filesystem defines a private ->\ :c:func:`lock`\  method, then \ ``conf``\  will
+If the filesystem defines a private ->lock() method, then \ ``conf``\  will
 be left unchanged; so a caller that cares should initialize it to
 some acceptable default.
 
 To avoid blocking kernel daemons, such as lockd, that need to acquire POSIX
-locks, the ->\ :c:func:`lock`\  interface may return asynchronously, before the lock has
+locks, the ->lock() interface may return asynchronously, before the lock has
 been granted or denied by the underlying filesystem, if (and only if)
-lm_grant is set. Callers expecting ->\ :c:func:`lock`\  to return asynchronously
+lm_grant is set. Callers expecting ->lock() to return asynchronously
 will only use F_SETLK, not F_SETLKW; they will set FL_SLEEP if (and only if)
-the request is for a blocking lock. When ->\ :c:func:`lock`\  does return asynchronously,
-it must return FILE_LOCK_DEFERRED, and call ->\ :c:func:`lm_grant`\  when the lock
+the request is for a blocking lock. When ->lock() does return asynchronously,
+it must return FILE_LOCK_DEFERRED, and call ->lm_grant() when the lock
 request completes.
 If the request is for non-blocking lock the file system should return
 FILE_LOCK_DEFERRED then try to get the lock and call the callback routine
@@ -469,7 +469,7 @@ system is also responsible to keep a corresponding posix lock when it
 grants a lock so the VFS can find out which locks are locally held and do
 the correct lock cleanup when required.
 The underlying filesystem must not drop the kernel lock or call
-->\ :c:func:`lm_grant`\  before returning to the caller with a FILE_LOCK_DEFERRED
+->lm_grant() before returning to the caller with a FILE_LOCK_DEFERRED
 return code.
 
 .. _`posix_unblock_lock`:

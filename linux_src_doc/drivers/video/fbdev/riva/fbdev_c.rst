@@ -43,7 +43,7 @@ parameters) will be updated.
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_cursor`\ 
+rivafb_cursor()
 
 .. _`riva_wclut`:
 
@@ -81,7 +81,7 @@ Sets color register \ ``regnum``\ .
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_setcolreg`\ 
+rivafb_setcolreg()
 
 .. _`riva_rclut`:
 
@@ -119,7 +119,7 @@ Reads red, green, and blue from color register \ ``regnum``\ .
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_setcolreg`\ 
+rivafb_setcolreg()
 
 .. _`riva_save_state`:
 
@@ -148,7 +148,7 @@ Saves current chip state to \ ``regs``\ .
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_probe`\ 
+rivafb_probe()
 
 .. _`riva_load_state`:
 
@@ -177,7 +177,7 @@ Loads chip state from \ ``regs``\ .
 CALLED FROM
 -----------
 
-\ :c:func:`riva_load_video_mode`\ 
+riva_load_video_mode()
 \ :c:func:`rivafb_probe`\ 
 \ :c:func:`rivafb_remove`\ 
 
@@ -205,7 +205,7 @@ Calculate some timings and then send em off to \ :c:func:`riva_load_state`\ .
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_set_par`\ 
+rivafb_set_par()
 
 .. _`rivafb_do_maximize`:
 
@@ -245,7 +245,7 @@ Return
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_check_var`\ 
+rivafb_check_var()
 
 .. _`riva_get_cmap_len`:
 
@@ -278,7 +278,7 @@ Length of color map
 CALLED FROM
 -----------
 
-\ :c:func:`rivafb_setcolreg`\ 
+rivafb_setcolreg()
 
 .. _`rivafb_pan_display`:
 
@@ -349,7 +349,7 @@ Return != 0 for invalid regno.
 CALLED FROM
 -----------
 
-fbcmap.c:\ :c:func:`fb_set_cmap`\ 
+fbcmap.c:fb_set_cmap()
 
 .. _`rivafb_fillrect`:
 

@@ -73,21 +73,6 @@ Description
 
 Return 0 on success, negative on failure
 
-.. _`hns_mdio_bus_name`:
-
-hns_mdio_bus_name
-=================
-
-.. c:function:: void hns_mdio_bus_name(char *name, struct device_node *np)
-
-    get mdio bus name
-
-    :param char \*name:
-        mdio bus name
-
-    :param struct device_node \*np:
-        mdio device node pointer
-
 .. _`hns_mdio_probe`:
 
 hns_mdio_probe

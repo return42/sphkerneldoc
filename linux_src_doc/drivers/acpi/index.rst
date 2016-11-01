@@ -7,18 +7,19 @@ acpi
 .. toctree::
     :maxdepth: 1
 
+    arm64/index
     pmic/index
     acpi_apd_c
     acpi_lpat_c
     acpi_lpss_c
     acpi_platform_c
+    acpi_watchdog_c
     bus_c
     cppc_acpi_c
     device_pm_c
     device_sysfs_c
     dock_c
     gsi_c
-    nfit_c
     numa_c
     nvs_c
     osl_c
@@ -30,6 +31,7 @@ acpi
     resource_c
     scan_c
     sleep_c
+    spcr_c
     tables_c
     utils_c
     wakeup_c

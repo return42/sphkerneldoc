@@ -36,7 +36,7 @@ try_to_wake_up
         the mask of task states that can be woken
 
     :param int wake_flags:
-        wake modifier flags (WF\_\*)
+        wake modifier flags (WF_*)
 
 .. _`try_to_wake_up.description`:
 
@@ -54,7 +54,7 @@ runnable without the overhead of this.
 Return
 ------
 
-\ ``true``\  if \ ``p``\  was woken up, \ ``false``\  if it was already running.
+%true if \ ``p``\  was woken up, \ ``false``\  if it was already running.
 or \ ``state``\  didn't match \ ``p``\ 's state.
 
 .. _`try_to_wake_up_local`:
@@ -70,7 +70,7 @@ try_to_wake_up_local
         the thread to be awakened
 
     :param struct pin_cookie cookie:
-        *undescribed*
+        context's cookie for pinning
 
 .. _`try_to_wake_up_local.description`:
 
@@ -140,7 +140,7 @@ preempt_notifier_unregister
 Description
 -----------
 
-This is \*not\* safe to call from within a preemption notifier.
+This is *not* safe to call from within a preemption notifier.
 
 .. _`prepare_task_switch`:
 
@@ -610,7 +610,8 @@ sys_sched_getaffinity
 Return
 ------
 
-0 on success. An error code otherwise.
+size of CPU mask copied to user_mask_ptr on success. An
+error code otherwise.
 
 .. _`sys_sched_yield`:
 
@@ -669,7 +670,7 @@ Typical broken usage is
 
 
 while (!event)
-\ :c:func:`yield`\ ;
+     \ :c:func:`yield`\ ;
 
 where one assumes that \ :c:func:`yield`\  will let 'the other' process run that will
 make event true. If the current task is a SCHED_FIFO task that will never
@@ -707,9 +708,9 @@ can't go away on us before we can do any checks.
 Return
 ------
 
-true (>0) if we indeed boosted the target task.
-false (0) if we failed to boost the target.
--ESRCH if there's no task to yield to.
+     true (>0) if we indeed boosted the target task.
+     false (0) if we failed to boost the target.
+     -ESRCH if there's no task to yield to.
 
 .. _`sys_sched_get_priority_max`:
 
@@ -833,12 +834,12 @@ Return
 
 The current task for \ ``cpu``\ .
 
-.. _`set_curr_task`:
+.. _`ia64_set_curr_task`:
 
-set_curr_task
-=============
+ia64_set_curr_task
+==================
 
-.. c:function:: void set_curr_task(int cpu, struct task_struct *p)
+.. c:function:: void ia64_set_curr_task(int cpu, struct task_struct *p)
 
     set the current task for a given cpu.
 
@@ -848,7 +849,7 @@ set_curr_task
     :param struct task_struct \*p:
         the task pointer to set.
 
-.. _`set_curr_task.description`:
+.. _`ia64_set_curr_task.description`:
 
 Description
 -----------

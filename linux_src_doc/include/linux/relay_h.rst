@@ -28,7 +28,7 @@ Writes data into the current cpu's channel buffer.
 
 Protects the buffer by disabling interrupts.  Use this
 if you might be logging from interrupt context.  Try
-\\ :c:func:`__relay_write`\  if you know you won't be logging from
+\__relay_write() if you know you won't be logging from
 interrupt context.
 
 .. _`__relay_write`:

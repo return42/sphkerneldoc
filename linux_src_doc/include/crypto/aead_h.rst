@@ -79,6 +79,7 @@ Definition
         const char *geniv;
         unsigned int ivsize;
         unsigned int maxauthsize;
+        unsigned int chunksize;
         struct crypto_alg base;
     }
 
@@ -88,7 +89,7 @@ Members
 -------
 
 setkey
-    see struct ablkcipher_alg
+    see struct skcipher_alg
 
 setauthsize
     Set authentication size for the AEAD transformation. This
@@ -100,10 +101,10 @@ setauthsize
     validity.
 
 encrypt
-    see struct ablkcipher_alg
+    see struct skcipher_alg
 
 decrypt
-    see struct ablkcipher_alg
+    see struct skcipher_alg
 
 init
     Initialize the cryptographic transformation object. This function
@@ -121,10 +122,10 @@ exit
     \ ``init``\ .
 
 geniv
-    see struct ablkcipher_alg
+    see struct skcipher_alg
 
 ivsize
-    see struct ablkcipher_alg
+    see struct skcipher_alg
 
 maxauthsize
     Set the maximum authentication tag size supported by the
@@ -133,6 +134,9 @@ maxauthsize
     integrity of the encrypted data, a consumer typically wants the
     largest authentication tag possible as defined by this
     variable.
+
+chunksize
+    see struct skcipher_alg
 
 base
     Definition of a generic crypto cipher algorithm.
@@ -610,8 +614,8 @@ ciphertext and the authentication tag while the encryption
 invocation must only point to the plaintext data size. The
 following code snippet illustrates the memory usage
 buffer = kmalloc(ptbuflen + (enc ? authsize : 0));
-sg_init_one(\ :c:type:`struct sg <sg>`, buffer, ptbuflen + (enc ? authsize : 0));
-aead_request_set_crypt(req, \ :c:type:`struct sg <sg>`, \ :c:type:`struct sg <sg>`, ptbuflen, iv);
+sg_init_one(&sg, buffer, ptbuflen + (enc ? authsize : 0));
+aead_request_set_crypt(req, \ :c:type:`struct sg <sg>`\ , \ :c:type:`struct sg <sg>`\ , ptbuflen, iv);
 
 .. _`aead_request_set_ad`:
 

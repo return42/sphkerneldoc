@@ -144,7 +144,7 @@ Description
 -----------
 
 Note that \ :c:func:`rtc_irq_set_freq`\  should previously have been used to
-specify the desired frequency of periodic IRQ task->\ :c:func:`func`\  callbacks.
+specify the desired frequency of periodic IRQ task->func() callbacks.
 
 .. _`rtc_irq_set_freq`:
 
@@ -162,7 +162,7 @@ rtc_irq_set_freq
         currently registered with \ :c:func:`rtc_irq_register`\ 
 
     :param int freq:
-        positive frequency with which task->\ :c:func:`func`\  will be called
+        positive frequency with which task->func() will be called
 
 .. _`rtc_irq_set_freq.context`:
 

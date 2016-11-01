@@ -14,3 +14,4 @@ drivers
     comedi_isadma_h
     mite_c
     ni_tio_c
+    plx9080_h

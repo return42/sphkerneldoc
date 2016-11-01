@@ -86,7 +86,7 @@ usb_remove_device
 Context
 -------
 
-\ ``udev``\  locked, must be able to sleep.
+@udev locked, must be able to sleep.
 
 .. _`usb_remove_device.description`:
 
@@ -464,15 +464,15 @@ Corner cases
 - Scheduling two resets at the same time from two different drivers
 attached to two different interfaces of the same device is
 possible; depending on how the driver attached to each interface
-handles ->\ :c:func:`pre_reset`\ , the second reset might happen or not.
+handles ->pre_reset(), the second reset might happen or not.
 
 - If the reset is delayed so long that the interface is unbound from
 its driver, the reset will be skipped.
 
-- This function can be called during .\ :c:func:`probe`\ .  It can also be called
-during .\ :c:func:`disconnect`\ , but doing so is pointless because the reset
+- This function can be called during .probe().  It can also be called
+during .disconnect(), but doing so is pointless because the reset
 will not occur.  If you really want to reset the device during
-.\ :c:func:`disconnect`\ , call \ :c:func:`usb_reset_device`\  directly -- but watch out
+.disconnect(), call \ :c:func:`usb_reset_device`\  directly -- but watch out
 for nested unbinding issues!
 
 .. _`usb_hub_find_child`:
@@ -504,7 +504,7 @@ pointer.
 Return
 ------
 
-\ ``NULL``\  if input param is invalid and
+%NULL if input param is invalid and
 child's usb_device pointer if non-NULL.
 
 .. _`usb_get_hub_port_acpi_handle`:

@@ -172,8 +172,8 @@ Description
 
 This saves a temporary CPU mask in many places.  It is equivalent to:
 struct cpumask tmp;
-cpumask_and(\ :c:type:`struct tmp <tmp>`, \ :c:type:`struct mask <mask>`, \ :c:type:`struct and <and>`);
-for_each_cpu(cpu, \ :c:type:`struct tmp <tmp>`)
+cpumask_and(&tmp, \ :c:type:`struct mask <mask>`\ , \ :c:type:`struct and <and>`\ );
+for_each_cpu(cpu, \ :c:type:`struct tmp <tmp>`\ )
 ...
 
 After the loop, cpu is >= nr_cpu_ids.
@@ -325,7 +325,7 @@ cpumask_and
 Description
 -----------
 
-If \*\ ``dstp``\  is empty, returns 0, else returns 1
+If \*@dstp is empty, returns 0, else returns 1
 
 .. _`cpumask_or`:
 
@@ -386,7 +386,7 @@ cpumask_andnot
 Description
 -----------
 
-If \*\ ``dstp``\  is empty, returns 0, else returns 1
+If \*@dstp is empty, returns 0, else returns 1
 
 .. _`cpumask_complement`:
 
@@ -453,7 +453,7 @@ cpumask_subset
 Description
 -----------
 
-Returns 1 if \*\ ``src1p``\  is a subset of \*\ ``src2p``\ , else returns 0
+Returns 1 if \*@src1p is a subset of \*@src2p, else returns 0
 
 .. _`cpumask_empty`:
 
@@ -674,7 +674,7 @@ cpumask_parse
 
 .. c:function:: int cpumask_parse(const char *buf, struct cpumask *dstp)
 
-    extract a cpumask from from a string
+    extract a cpumask from a string
 
     :param const char \*buf:
         the buffer to extract from

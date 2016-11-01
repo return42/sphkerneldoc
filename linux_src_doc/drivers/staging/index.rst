@@ -13,6 +13,7 @@ staging
     fbtft/index
     fsl-mc/index
     fwserial/index
+    greybus/index
     iio/index
     lustre/index
     media/index
@@ -25,10 +26,10 @@ staging
     rtl8192e/index
     rtl8192u/index
     rtl8712/index
-    rtl8723au/index
     rts5208/index
     skein/index
     speakup/index
     unisys/index
+    vc04_services/index
     vt6655/index
     wlan-ng/index

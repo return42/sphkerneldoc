@@ -22,6 +22,7 @@ Definition
         const char *name;
         int min_uV;
         int max_uV;
+        int strobe;
     }
 
 .. _`tps_info.members`:
@@ -40,6 +41,9 @@ min_uV
 
 max_uV
     minimum micro volts
+
+strobe
+    sequencing strobe value for the regulator
 
 .. _`tps_info.description`:
 
@@ -67,6 +71,7 @@ Definition
     struct tps65218 {
         struct device *dev;
         unsigned int id;
+        u8 rev;
         struct mutex tps_lock;
         int irq;
         u32 irq_mask;
@@ -85,6 +90,9 @@ dev
     *undescribed*
 
 id
+    *undescribed*
+
+rev
     *undescribed*
 
 tps_lock

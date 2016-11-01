@@ -32,12 +32,15 @@ supplied to \ :c:func:`intel_pipe_update_end`\  for error checking.
 intel_pipe_update_end
 =====================
 
-.. c:function:: void intel_pipe_update_end(struct intel_crtc *crtc)
+.. c:function:: void intel_pipe_update_end(struct intel_crtc *crtc, struct intel_flip_work *work)
 
     end update of a set of display registers
 
     :param struct intel_crtc \*crtc:
         the crtc of which the registers were updated
+
+    :param struct intel_flip_work \*work:
+        *undescribed*
 
 .. _`intel_pipe_update_end.description`:
 

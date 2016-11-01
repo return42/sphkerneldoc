@@ -166,6 +166,179 @@ i40e_set_wol
     :param struct ethtool_wolinfo \*wol:
         the ethtool WoL setting data
 
+.. _`__i40e_get_coalesce`:
+
+__i40e_get_coalesce
+===================
+
+.. c:function:: int __i40e_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
+
+    get per-queue coalesce settings
+
+    :param struct net_device \*netdev:
+        the netdev to check
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce data structure
+
+    :param int queue:
+        which queue to pick
+
+.. _`__i40e_get_coalesce.description`:
+
+Description
+-----------
+
+Gets the per-queue settings for coalescence. Specifically Rx and Tx usecs
+are per queue. If queue is <0 then we default to queue 0 as the
+representative value.
+
+.. _`i40e_get_coalesce`:
+
+i40e_get_coalesce
+=================
+
+.. c:function:: int i40e_get_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec)
+
+    get a netdev's coalesce settings
+
+    :param struct net_device \*netdev:
+        the netdev to check
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce data structure
+
+.. _`i40e_get_coalesce.description`:
+
+Description
+-----------
+
+Gets the coalesce settings for a particular netdev. Note that if user has
+modified per-queue settings, this only guarantees to represent queue 0. See
+\__i40e_get_coalesce for more details.
+
+.. _`i40e_get_per_queue_coalesce`:
+
+i40e_get_per_queue_coalesce
+===========================
+
+.. c:function:: int i40e_get_per_queue_coalesce(struct net_device *netdev, u32 queue, struct ethtool_coalesce *ec)
+
+    gets coalesce settings for particular queue
+
+    :param struct net_device \*netdev:
+        netdev structure
+
+    :param u32 queue:
+        the particular queue to read
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool's coalesce settings
+
+.. _`i40e_get_per_queue_coalesce.description`:
+
+Description
+-----------
+
+Will read a specific queue's coalesce settings
+
+.. _`i40e_set_itr_per_queue`:
+
+i40e_set_itr_per_queue
+======================
+
+.. c:function:: void i40e_set_itr_per_queue(struct i40e_vsi *vsi, struct ethtool_coalesce *ec, int queue)
+
+    set ITR values for specific queue
+
+    :param struct i40e_vsi \*vsi:
+        the VSI to set values for
+
+    :param struct ethtool_coalesce \*ec:
+        coalesce settings from ethtool
+
+    :param int queue:
+        the queue to modify
+
+.. _`i40e_set_itr_per_queue.description`:
+
+Description
+-----------
+
+Change the ITR settings for a specific queue.
+
+.. _`__i40e_set_coalesce`:
+
+__i40e_set_coalesce
+===================
+
+.. c:function:: int __i40e_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec, int queue)
+
+    set coalesce settings for particular queue
+
+    :param struct net_device \*netdev:
+        the netdev to change
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce settings
+
+    :param int queue:
+        the queue to change
+
+.. _`__i40e_set_coalesce.description`:
+
+Description
+-----------
+
+Sets the coalesce settings for a particular queue.
+
+.. _`i40e_set_coalesce`:
+
+i40e_set_coalesce
+=================
+
+.. c:function:: int i40e_set_coalesce(struct net_device *netdev, struct ethtool_coalesce *ec)
+
+    set coalesce settings for every queue on the netdev
+
+    :param struct net_device \*netdev:
+        the netdev to change
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool coalesce settings
+
+.. _`i40e_set_coalesce.description`:
+
+Description
+-----------
+
+This will set each queue to the same coalesce settings.
+
+.. _`i40e_set_per_queue_coalesce`:
+
+i40e_set_per_queue_coalesce
+===========================
+
+.. c:function:: int i40e_set_per_queue_coalesce(struct net_device *netdev, u32 queue, struct ethtool_coalesce *ec)
+
+    set specific queue's coalesce settings
+
+    :param struct net_device \*netdev:
+        the netdev to change
+
+    :param u32 queue:
+        the queue to change
+
+    :param struct ethtool_coalesce \*ec:
+        ethtool's coalesce settings
+
+.. _`i40e_set_per_queue_coalesce.description`:
+
+Description
+-----------
+
+Sets the specified queue's coalesce settings.
+
 .. _`i40e_get_rss_hash_opts`:
 
 i40e_get_rss_hash_opts
@@ -265,6 +438,29 @@ Description
 -----------
 
 Returns Success if the command is supported.
+
+.. _`i40e_get_rss_hash_bits`:
+
+i40e_get_rss_hash_bits
+======================
+
+.. c:function:: u64 i40e_get_rss_hash_bits(struct ethtool_rxnfc *nfc, u64 i_setc)
+
+    Read RSS Hash bits from register
+
+    :param struct ethtool_rxnfc \*nfc:
+        pointer to user request
+        \ ``i_setc``\  bits currently set
+
+    :param u64 i_setc:
+        *undescribed*
+
+.. _`i40e_get_rss_hash_bits.description`:
+
+Description
+-----------
+
+Returns value of bits to be set per user request
 
 .. _`i40e_set_rss_hash_opt`:
 

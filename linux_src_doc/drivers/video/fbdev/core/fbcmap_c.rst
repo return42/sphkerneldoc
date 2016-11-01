@@ -27,10 +27,10 @@ fb_alloc_cmap_gfp
 Description
 -----------
 
-Allocates memory for a colormap \ ``cmap``\ .  \ ``len``\  is the
-number of entries in the palette.
+     Allocates memory for a colormap \ ``cmap``\ .  \ ``len``\  is the
+     number of entries in the palette.
 
-Returns negative errno on error, or zero on success.
+     Returns negative errno on error, or zero on success.
 
 .. _`fb_dealloc_cmap`:
 
@@ -49,8 +49,8 @@ fb_dealloc_cmap
 Description
 -----------
 
-Deallocates a colormap that was previously allocated with
-\ :c:func:`fb_alloc_cmap`\ .
+     Deallocates a colormap that was previously allocated with
+     \ :c:func:`fb_alloc_cmap`\ .
 
 .. _`fb_copy_cmap`:
 
@@ -72,7 +72,7 @@ fb_copy_cmap
 Description
 -----------
 
-Copy contents of colormap from \ ``from``\  to \ ``to``\ .
+     Copy contents of colormap from \ ``from``\  to \ ``to``\ .
 
 .. _`fb_set_cmap`:
 
@@ -94,9 +94,9 @@ fb_set_cmap
 Description
 -----------
 
-Sets the colormap \ ``cmap``\  for a screen of device \ ``info``\ .
+     Sets the colormap \ ``cmap``\  for a screen of device \ ``info``\ .
 
-Returns negative errno on error, or zero on success.
+     Returns negative errno on error, or zero on success.
 
 .. _`fb_default_cmap`:
 
@@ -115,10 +115,10 @@ fb_default_cmap
 Description
 -----------
 
-Gets the default colormap for a specific screen depth.  \ ``len``\ 
-is the size of the palette for a particular screen depth.
+     Gets the default colormap for a specific screen depth.  \ ``len``\ 
+     is the size of the palette for a particular screen depth.
 
-Returns pointer to a frame buffer colormap structure.
+     Returns pointer to a frame buffer colormap structure.
 
 .. _`fb_invert_cmaps`:
 
@@ -137,7 +137,7 @@ fb_invert_cmaps
 Description
 -----------
 
-Invert all default colormaps.
+     Invert all default colormaps.
 
 .. This file was automatic generated / don't edit.
 

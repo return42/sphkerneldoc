@@ -239,7 +239,7 @@ divvy_up_power
 Description
 -----------
 
-This function divides the total allocated power (\ ``power_range``\ )
+This function divides the total allocated power (@power_range)
 fairly between the actors.  It first tries to give each actor a
 share of the \ ``power_range``\  according to how much power it requested
 compared to the rest of the actors.  For example, if only one actor

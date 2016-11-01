@@ -6,7 +6,7 @@
 fence_context_alloc
 ===================
 
-.. c:function:: unsigned fence_context_alloc(unsigned num)
+.. c:function:: u64 fence_context_alloc(unsigned num)
 
     allocate an array of fence contexts
 
@@ -150,17 +150,11 @@ to a fence, but a callback can only be registered to one fence at a time.
 
 Note that the callback can be called from an atomic context.  If
 fence is already signaled, this function will return -ENOENT (and
-\*not\* call the callback)
+*not* call the callback)
 
 Add a software callback to the fence. Same restrictions apply to
 refcount as it does to fence_wait, however the caller doesn't need to
-
-.. _`fence_add_callback.keep-a-refcount-to-fence-afterwards`:
-
-keep a refcount to fence afterwards
------------------------------------
-
-when software access is enabled,
+keep a refcount to fence afterwards: when software access is enabled,
 the creator of the fence is required to keep the fence alive until
 after it signals with fence_signal. The callback itself can be called
 from irq context.
@@ -189,7 +183,7 @@ Remove a previously queued callback from the fence. This function returns
 true if the callback is successfully removed, or false if the fence has
 already been signaled.
 
-\*WARNING\*:
+*WARNING*:
 Cancelling a callback should only be done if you really know what you're
 doing, since deadlocks and race conditions could occur all too easily. For
 this reason, it should only ever be done on hardware lockup recovery,
@@ -260,7 +254,7 @@ fence might be freed before return, resulting in undefined behavior.
 fence_init
 ==========
 
-.. c:function:: void fence_init(struct fence *fence, const struct fence_ops *ops, spinlock_t *lock, unsigned context, unsigned seqno)
+.. c:function:: void fence_init(struct fence *fence, const struct fence_ops *ops, spinlock_t *lock, u64 context, unsigned seqno)
 
     Initialize a custom fence.
 
@@ -273,7 +267,7 @@ fence_init
     :param spinlock_t \*lock:
         [in]    the irqsafe spinlock to use for locking this fence
 
-    :param unsigned context:
+    :param u64 context:
         [in]    the execution context this fence is run on
 
     :param unsigned seqno:

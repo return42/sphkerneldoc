@@ -162,7 +162,7 @@ ubifs_wbuf_sync
 Description
 -----------
 
-This is the same as as '\ :c:func:`ubifs_wbuf_sync_nolock`\ ' but it does not assume
+This is the same as as 'ubifs_wbuf_sync_nolock()' but it does not assume
 that the write-buffer is already locked.
 
 .. _`ubifs_encode_dev`:
@@ -345,7 +345,7 @@ Description
 -----------
 
 This function locks lprops. Lprops have to be unlocked by
-'\ :c:func:`ubifs_release_lprops`\ '.
+'ubifs_release_lprops()'.
 
 .. _`ubifs_release_lprops`:
 
@@ -364,7 +364,7 @@ ubifs_release_lprops
 Description
 -----------
 
-This function has to be called after each '\ :c:func:`ubifs_get_lprops`\ ' call to
+This function has to be called after each 'ubifs_get_lprops()' call to
 unlock lprops.
 
 .. _`ubifs_next_log_lnum`:

@@ -12,5 +12,6 @@ crypto
     akcipher_h
     algapi_h
     hash_h
+    kpp_h
     rng_h
     skcipher_h

@@ -18,7 +18,7 @@ tzic_enable_wake
 Description
 -----------
 
-\ ``return``\                       0 if successful; non-zero otherwise
+@return                      0 if successful; non-zero otherwise
 
 This function provides an interrupt synchronization point that is required
 by tzic enabled platforms before entering imx specific low power modes (ie,

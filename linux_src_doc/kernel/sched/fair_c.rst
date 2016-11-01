@@ -1,6 +1,117 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: kernel/sched/fair.c
 
+.. _`update_tg_load_avg`:
+
+update_tg_load_avg
+==================
+
+.. c:function:: void update_tg_load_avg(struct cfs_rq *cfs_rq, int force)
+
+    update the tg's load avg
+
+    :param struct cfs_rq \*cfs_rq:
+        the cfs_rq whose avg changed
+
+    :param int force:
+        update regardless of how small the difference
+
+.. _`update_tg_load_avg.description`:
+
+Description
+-----------
+
+This function 'ensures': tg->load_avg := \Sum tg->cfs_rq[]->avg.load.
+However, because tg->load_avg is a global value there are performance
+considerations.
+
+In order to avoid having to look at the other cfs_rq's, we use a
+differential update where we store the last value we propagated. This in
+turn allows skipping updates if the differential is 'small'.
+
+Updating tg's load_avg is necessary before \ :c:func:`update_cfs_share`\  (which is
+done) and \ :c:func:`effective_load`\  (which is not done because it is too costly).
+
+.. _`update_cfs_rq_load_avg`:
+
+update_cfs_rq_load_avg
+======================
+
+.. c:function:: int update_cfs_rq_load_avg(u64 now, struct cfs_rq *cfs_rq, bool update_freq)
+
+    update the cfs_rq's load/util averages
+
+    :param u64 now:
+        current time, as per \ :c:func:`cfs_rq_clock_task`\ 
+
+    :param struct cfs_rq \*cfs_rq:
+        cfs_rq to update
+
+    :param bool update_freq:
+        should we call \ :c:func:`cfs_rq_util_change`\  or will the call do so
+
+.. _`update_cfs_rq_load_avg.description`:
+
+Description
+-----------
+
+The cfs_rq avg is the direct sum of all its entities (blocked and runnable)
+avg. The immediate corollary is that all (fair) tasks must be attached, see
+\ :c:func:`post_init_entity_util_avg`\ .
+
+cfs_rq->avg is used for \ :c:func:`task_h_load`\  and \ :c:func:`update_cfs_share`\  for example.
+
+Returns true if the load decayed or we removed load.
+
+Since both these conditions indicate a changed cfs_rq->avg.load we should
+call \ :c:func:`update_tg_load_avg`\  when this function returns true.
+
+.. _`attach_entity_load_avg`:
+
+attach_entity_load_avg
+======================
+
+.. c:function:: void attach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
+
+    attach this entity to its cfs_rq load avg
+
+    :param struct cfs_rq \*cfs_rq:
+        cfs_rq to attach to
+
+    :param struct sched_entity \*se:
+        sched_entity to attach
+
+.. _`attach_entity_load_avg.description`:
+
+Description
+-----------
+
+Must call \ :c:func:`update_cfs_rq_load_avg`\  before this, since we rely on
+cfs_rq->avg.last_update_time being current.
+
+.. _`detach_entity_load_avg`:
+
+detach_entity_load_avg
+======================
+
+.. c:function:: void detach_entity_load_avg(struct cfs_rq *cfs_rq, struct sched_entity *se)
+
+    detach this entity from its cfs_rq load avg
+
+    :param struct cfs_rq \*cfs_rq:
+        cfs_rq to detach from
+
+    :param struct sched_entity \*se:
+        sched_entity to detach
+
+.. _`detach_entity_load_avg.description`:
+
+Description
+-----------
+
+Must call \ :c:func:`update_cfs_rq_load_avg`\  before this, since we rely on
+cfs_rq->avg.last_update_time being current.
+
 .. _`cpu_load_update`:
 
 cpu_load_update
@@ -33,26 +144,26 @@ This function computes a decaying average
 -----------------------------------------
 
 
-load[i]' = (1 - 1/2^i) \* load[i] + (1/2^i) \* load
+  load[i]' = (1 - 1/2^i) * load[i] + (1/2^i) * load
 
 Because of NOHZ it might not get called on every tick which gives need for
 the \ ``pending_updates``\  argument.
 
-load[i]_n = (1 - 1/2^i) \* load[i]_n-1 + (1/2^i) \* load_n-1
-= A \* load[i]_n-1 + B ; A := (1 - 1/2^i), B := (1/2^i) \* load
-= A \* (A \* load[i]_n-2 + B) + B
-= A \* (A \* (A \* load[i]_n-3 + B) + B) + B
-= A^3 \* load[i]_n-3 + (A^2 + A + 1) \* B
-= A^n \* load[i]_0 + (A^(n-1) + A^(n-2) + ... + 1) \* B
-= A^n \* load[i]_0 + ((1 - A^n) / (1 - A)) \* B
-= (1 - 1/2^i)^n \* (load[i]_0 - load) + load
+  load[i]_n = (1 - 1/2^i) * load[i]_n-1 + (1/2^i) * load_n-1
+            = A * load[i]_n-1 + B ; A := (1 - 1/2^i), B := (1/2^i) * load
+            = A * (A * load[i]_n-2 + B) + B
+            = A * (A * (A * load[i]_n-3 + B) + B) + B
+            = A^3 * load[i]_n-3 + (A^2 + A + 1) * B
+            = A^n * load[i]_0 + (A^(n-1) + A^(n-2) + ... + 1) * B
+            = A^n * load[i]_0 + ((1 - A^n) / (1 - A)) * B
+            = (1 - 1/2^i)^n * (load[i]_0 - load) + load
 
 In the above we've assumed load_n := load, which is true for NOHZ_FULL as
 any change in load would have resulted in the tick being turned back on.
 
 For regular NOHZ, this reduces to:
 
-load[i]_n = (1 - 1/2^i)^n \* load[i]_0
+  load[i]_n = (1 - 1/2^i)^n * load[i]_0
 
 see \ :c:func:`decay_load_misses`\ . For NOHZ_FULL we get to subtract and add the extra
 term.
@@ -140,7 +251,7 @@ busiest group.
 Return
 ------
 
-\ ``true``\  if \ ``sg``\  is a busier group than the previously selected
+%true if \ ``sg``\  is a busier group than the previously selected
 busiest group. \ ``false``\  otherwise.
 
 .. _`update_sd_lb_stats`:
@@ -197,7 +308,7 @@ Return
 ------
 
 1 when packing is required and a task should be moved to
-this CPU.  The amount of the imbalance is returned in \*imbalance.
+this CPU.  The amount of the imbalance is returned in *imbalance.
 
 .. _`fix_small_imbalance`:
 

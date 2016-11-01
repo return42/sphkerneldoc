@@ -357,7 +357,9 @@ Definition
         __le32 flags;
         __le32 uid;
         __le32 ooc_priority;
-        __le32 general_flags;
+        __le16 general_flags;
+        u8 reserved2;
+        u8 scan_start_mac_id;
         u8 extended_dwell;
         u8 active_dwell;
         u8 passive_dwell;
@@ -377,7 +379,7 @@ Members
 -------
 
 flags
-    \ :c:type:`enum iwl_umac_scan_flags <iwl_umac_scan_flags>`\ 
+    &enum iwl_umac_scan_flags
 
 uid
     scan id, \ :c:type:`enum iwl_umac_scan_uid_offsets <iwl_umac_scan_uid_offsets>`\ 
@@ -386,7 +388,13 @@ ooc_priority
     out of channel priority - \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
 
 general_flags
-    \ :c:type:`enum iwl_umac_scan_general_flags <iwl_umac_scan_general_flags>`\ 
+    &enum iwl_umac_scan_general_flags
+
+reserved2
+    for future use and alignment
+
+scan_start_mac_id
+    report the scan start TSF time according to this mac TSF
 
 extended_dwell
     dwell time for channels 1, 6 and 11
@@ -410,7 +418,7 @@ scan_priority
     scan internal prioritization \ :c:type:`enum iwl_scan_priority <iwl_scan_priority>`\ 
 
 channel_flags
-    \ :c:type:`enum iwl_scan_channel_flags <iwl_scan_channel_flags>`\ 
+    &enum iwl_scan_channel_flags
 
 n_channels
     num of channels in scan request
@@ -419,7 +427,7 @@ reserved
     for future use and alignment
 
 data
-    \ :c:type:`struct iwl_scan_channel_cfg_umac <iwl_scan_channel_cfg_umac>`\  and
+    &struct iwl_scan_channel_cfg_umac and
     \ :c:type:`struct iwl_scan_req_umac_tail <iwl_scan_req_umac_tail>`\ 
 
 .. _`iwl_umac_scan_abort`:
@@ -496,7 +504,7 @@ status
     *undescribed*
 
 ebs_status
-    \ :c:type:`enum iwl_scan_ebs_status <iwl_scan_ebs_status>`\ 
+    &enum iwl_scan_ebs_status
 
 time_from_last_iter
     time elapsed from last iteration
@@ -636,8 +644,7 @@ Definition
         u8 status;
         u8 bt_status;
         u8 last_channel;
-        __le32 tsf_low;
-        __le32 tsf_high;
+        __le64 start_tsf;
         struct iwl_scan_results_notif results[];
     }
 
@@ -662,11 +669,9 @@ bt_status
 last_channel
     last channel that was scanned
 
-tsf_low
-    TSF timer (lower half) in usecs
-
-tsf_high
-    TSF timer (higher half) in usecs
+start_tsf
+    TSF timer in usecs of the scan start time for the mac specified
+    in \ :c:type:`struct iwl_scan_req_umac <iwl_scan_req_umac>`\ .
 
 results
     array of scan results, only "scanned_channels" of them are valid

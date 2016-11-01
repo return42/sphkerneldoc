@@ -62,7 +62,7 @@ dvb_ca_en50221_wait_if_status
 Description
 -----------
 
-\ ``return``\  0 on success, nonzero on error.
+@return 0 on success, nonzero on error.
 
 .. _`dvb_ca_en50221_link_init`:
 
@@ -84,7 +84,7 @@ dvb_ca_en50221_link_init
 Description
 -----------
 
-\ ``return``\  0 on success, nonzero on failure.
+@return 0 on success, nonzero on failure.
 
 .. _`dvb_ca_en50221_read_tuple`:
 
@@ -118,7 +118,7 @@ dvb_ca_en50221_read_tuple
 Description
 -----------
 
-\ ``return``\  0 on success, nonzero on error.
+@return 0 on success, nonzero on error.
 
 .. _`dvb_ca_en50221_parse_attributes`:
 
@@ -140,7 +140,7 @@ dvb_ca_en50221_parse_attributes
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on failure.
+@return 0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_set_configoption`:
 
@@ -184,7 +184,7 @@ dvb_ca_en50221_read_data
 Description
 -----------
 
-\ ``return``\  Number of bytes read, or < 0 on error
+@return Number of bytes read, or < 0 on error
 
 .. _`dvb_ca_en50221_write_data`:
 
@@ -212,7 +212,7 @@ dvb_ca_en50221_write_data
 Description
 -----------
 
-\ ``return``\  Number of bytes written, or < 0 on error.
+@return Number of bytes written, or < 0 on error.
 
 .. _`dvb_ca_en50221_slot_shutdown`:
 
@@ -333,7 +333,7 @@ CA_SEND_MSG/CA_GET_MSG ioctls have userspace buffers passed to them.
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on error.
+@return 0 on success, <0 on error.
 
 .. _`dvb_ca_en50221_io_ioctl`:
 
@@ -356,7 +356,7 @@ dvb_ca_en50221_io_ioctl
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on error.
+@return 0 on success, <0 on error.
 
 .. _`dvb_ca_en50221_io_write`:
 
@@ -382,7 +382,7 @@ dvb_ca_en50221_io_write
 Description
 -----------
 
-\ ``return``\  Number of bytes read, or <0 on error.
+@return Number of bytes read, or <0 on error.
 
 .. _`dvb_ca_en50221_io_read_condition`:
 
@@ -424,7 +424,7 @@ dvb_ca_en50221_io_read
 Description
 -----------
 
-\ ``return``\  Number of bytes read, or <0 on error.
+@return Number of bytes read, or <0 on error.
 
 .. _`dvb_ca_en50221_io_open`:
 
@@ -444,7 +444,7 @@ dvb_ca_en50221_io_open
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on failure.
+@return 0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_io_release`:
 
@@ -464,7 +464,7 @@ dvb_ca_en50221_io_release
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on failure.
+@return 0 on success, <0 on failure.
 
 .. _`dvb_ca_en50221_io_poll`:
 
@@ -484,7 +484,7 @@ dvb_ca_en50221_io_poll
 Description
 -----------
 
-\ ``return``\  Standard poll mask.
+@return Standard poll mask.
 
 .. _`dvb_ca_en50221_init`:
 
@@ -510,7 +510,7 @@ dvb_ca_en50221_init
 Description
 -----------
 
-\ ``return``\  0 on success, nonzero on failure
+@return 0 on success, nonzero on failure
 
 .. _`dvb_ca_en50221_release`:
 

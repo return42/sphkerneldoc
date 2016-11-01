@@ -77,12 +77,11 @@ This function creates a directory in securityfs with the given \ ``name``\ .
 This function returns a pointer to a dentry if it succeeds.  This
 pointer must be passed to the \ :c:func:`securityfs_remove`\  function when the file is
 to be removed (no automatic cleanup happens if your module is unloaded,
-you are responsible here).  If an error occurs, \ ``NULL``\  will be returned.
+you are responsible here).  If an error occurs, the function will return
+the error value (via ERR_PTR).
 
 If securityfs is not enabled in the kernel, the value \ ``-ENODEV``\  is
-returned.  It is not wise to check for this value, but rather, check for
-\ ``NULL``\  or !\ ``NULL``\  instead as to eliminate the need for #ifdef in the calling
-code.
+returned.
 
 .. _`securityfs_remove`:
 

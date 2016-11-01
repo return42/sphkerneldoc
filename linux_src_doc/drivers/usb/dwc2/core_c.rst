@@ -52,6 +52,56 @@ dwc2_enter_hibernation
     :param struct dwc2_hsotg \*hsotg:
         Programming view of the DWC_otg controller
 
+.. _`dwc2_wait_for_mode`:
+
+dwc2_wait_for_mode
+==================
+
+.. c:function:: void dwc2_wait_for_mode(struct dwc2_hsotg *hsotg, bool host_mode)
+
+    Waits for the controller mode.
+
+    :param struct dwc2_hsotg \*hsotg:
+        Programming view of the DWC_otg controller.
+
+    :param bool host_mode:
+        If true, waits for host mode, otherwise device mode.
+
+.. _`dwc2_iddig_filter_enabled`:
+
+dwc2_iddig_filter_enabled
+=========================
+
+.. c:function:: bool dwc2_iddig_filter_enabled(struct dwc2_hsotg *hsotg)
+
+    Returns true if the IDDIG debounce filter is enabled.
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
+.. _`dwc2_clear_force_mode`:
+
+dwc2_clear_force_mode
+=====================
+
+.. c:function:: void dwc2_clear_force_mode(struct dwc2_hsotg *hsotg)
+
+    Clears the force mode bits.
+
+    :param struct dwc2_hsotg \*hsotg:
+        *undescribed*
+
+.. _`dwc2_clear_force_mode.description`:
+
+Description
+-----------
+
+After clearing the bits, wait up to 100 ms to account for any
+potential IDDIG filter delay. We can't know if we expect this delay
+or not because the value of the connector ID status is affected by
+the force mode. We only need to call this once during probe if
+dr_mode == OTG.
+
 .. _`dwc2_dump_host_registers`:
 
 dwc2_dump_host_registers

@@ -143,7 +143,7 @@ __bnx2x_vlan_mac_h_exec_pending
 Description
 -----------
 
-\ ``details``\  Should be called under execution queue lock; notice it might release
+@details Should be called under execution queue lock; notice it might release
 and reclaim it during its run.
 
 .. _`__bnx2x_vlan_mac_h_pend`:
@@ -169,7 +169,7 @@ __bnx2x_vlan_mac_h_pend
 Description
 -----------
 
-\ ``details``\  Should be called under execution queue lock.
+@details Should be called under execution queue lock.
 
 .. _`__bnx2x_vlan_mac_h_write_unlock`:
 
@@ -191,7 +191,7 @@ __bnx2x_vlan_mac_h_write_unlock
 Description
 -----------
 
-\ ``details``\  Should be called under execution queue lock. Notice if a pending
+@details Should be called under execution queue lock. Notice if a pending
 execution exists, it would perform it - possibly releasing and
 reclaiming the execution queue lock.
 
@@ -215,7 +215,7 @@ __bnx2x_vlan_mac_h_read_lock
 Description
 -----------
 
-\ ``details``\  Should be called under the execution queue lock. May sleep. May
+@details Should be called under the execution queue lock. May sleep. May
 release and reclaim execution queue lock during its run.
 
 .. _`bnx2x_vlan_mac_h_read_lock`:
@@ -238,7 +238,7 @@ bnx2x_vlan_mac_h_read_lock
 Description
 -----------
 
-\ ``details``\  May sleep. Claims and releases execution queue lock during its run.
+@details May sleep. Claims and releases execution queue lock during its run.
 
 .. _`__bnx2x_vlan_mac_h_read_unlock`:
 
@@ -260,7 +260,7 @@ __bnx2x_vlan_mac_h_read_unlock
 Description
 -----------
 
-\ ``details``\  Should be called under execution queue lock. Notice if a pending
+@details Should be called under execution queue lock. Notice if a pending
 execution exists, it would be performed if this was the last
 reader. possibly releasing and reclaiming the execution queue lock.
 
@@ -284,7 +284,7 @@ bnx2x_vlan_mac_h_read_unlock
 Description
 -----------
 
-\ ``details``\  Notice if a pending execution exists, it would be performed if this
+@details Notice if a pending execution exists, it would be performed if this
 was the last reader. Claims and releases the execution queue lock
 during its run.
 

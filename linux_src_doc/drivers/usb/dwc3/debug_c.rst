@@ -31,7 +31,7 @@ Copyright (C) 2014 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Felipe Balbi <balbi\ ``ti``\ .com>
+Felipe Balbi <balbi@ti.com>
 
 .. _`dwc3_trace.this-program-is-free-software`:
 

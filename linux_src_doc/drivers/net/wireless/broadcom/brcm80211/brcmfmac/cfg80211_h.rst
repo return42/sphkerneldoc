@@ -191,7 +191,6 @@ Definition
         struct wireless_dev wdev;
         struct brcmf_cfg80211_profile profile;
         unsigned long sme_state;
-        bool pm_block;
         struct vif_saved_ie saved_ie;
         struct list_head list;
         u16 mgmt_rx_reg;
@@ -215,9 +214,6 @@ profile
 
 sme_state
     SME state using enum brcmf_vif_status bits.
-
-pm_block
-    power-management blocked.
 
 saved_ie
     *undescribed*
@@ -252,7 +248,7 @@ Definition
 
     struct brcmf_cfg80211_vif_event {
         wait_queue_head_t vif_wq;
-        struct mutex vif_event_lock;
+        spinlock_t vif_event_lock;
         u8 action;
         struct brcmf_cfg80211_vif *vif;
     }

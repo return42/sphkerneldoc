@@ -490,7 +490,7 @@ llc_sk_alloc
         upper layer protocol family
 
     :param gfp_t priority:
-        for allocation (\ ``GFP_KERNEL``\ , \ ``GFP_ATOMIC``\ , etc)
+        for allocation (%GFP_KERNEL, \ ``GFP_ATOMIC``\ , etc)
 
     :param struct proto \*prot:
         *undescribed*

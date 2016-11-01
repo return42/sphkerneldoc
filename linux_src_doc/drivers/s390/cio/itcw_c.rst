@@ -172,7 +172,7 @@ itcw_init
         number of bytes in buffer
 
     :param int op:
-        \ ``ITCW_OP_READ``\  for a read operation tcw, \ ``ITCW_OP_WRITE``\  for a write
+        %ITCW_OP_READ for a read operation tcw, \ ``ITCW_OP_WRITE``\  for a write
         operation tcw
 
     :param int intrg:
@@ -243,7 +243,7 @@ Description
 
 Add a new dcw to the specified itcw by writing the dcw information specified
 by \ ``cmd``\ , \ ``flags``\ , \ ``cd``\ , \ ``cd_count``\  and \ ``count``\  to the tca of the tccb. Return
-a pointer to the newly added dcw on success or -\ ``ENOSPC``\  if the new dcw
+a pointer to the newly added dcw on success or -%ENOSPC if the new dcw
 would exceed the available space.
 
 .. _`itcw_add_dcw.note`:
@@ -282,7 +282,7 @@ Description
 
 Add a new tidaw to the input/output data tidaw-list of the specified itcw
 (depending on the value of the r-flag and w-flag). Return a pointer to
-the new tidaw on success or -\ ``ENOSPC``\  if the new tidaw would exceed the
+the new tidaw on success or -%ENOSPC if the new tidaw would exceed the
 available space.
 
 .. _`itcw_add_tidaw.note`:

@@ -74,7 +74,7 @@ Definition
         struct kref refcnt;
         struct mei_client_properties props;
         u8 client_id;
-        u8 mei_flow_ctrl_creds;
+        u8 tx_flow_ctrl_creds;
         u8 connect_count;
         u8 bus_added;
     }
@@ -96,7 +96,7 @@ props
 client_id
     me client id
 
-mei_flow_ctrl_creds
+tx_flow_ctrl_creds
     flow control credits
 
 connect_count
@@ -192,10 +192,11 @@ Definition
         struct fasync_struct *ev_async;
         int status;
         struct mei_me_client *me_cl;
+        const struct file *fp;
         u8 host_client_id;
-        u8 mei_flow_ctrl_creds;
+        u8 tx_flow_ctrl_creds;
+        u8 rx_flow_ctrl_creds;
         u8 timer_count;
-        u8 reserved;
         u8 notify_en;
         u8 notify_ev;
         enum mei_file_transaction_states writing_state;
@@ -239,17 +240,20 @@ status
 me_cl
     fw client connected
 
+fp
+    file associated with client
+
 host_client_id
     host id
 
-mei_flow_ctrl_creds
+tx_flow_ctrl_creds
     transmit flow credentials
+
+rx_flow_ctrl_creds
+    receive flow credentials
 
 timer_count
     watchdog timer for operation completion
-
-reserved
-    reserved for alignment
 
 notify_en
     notification - enabled/disabled
@@ -489,7 +493,6 @@ Definition
         u32 rd_msg_hdr;
         u8 hbuf_depth;
         bool hbuf_is_ready;
-        struct wr_msg;
         struct hbm_version version;
         unsigned int hbm_f_pg_supported:1;
         unsigned int hbm_f_dc_supported:1;
@@ -504,9 +507,7 @@ Definition
         bool allow_fixed_address;
         bool override_fixed_address;
         struct mei_cl_cb amthif_cmd_list;
-        const struct file *iamthif_fp;
         struct mei_cl iamthif_cl;
-        struct mei_cl_cb *iamthif_current_cb;
         long iamthif_open_count;
         u32 iamthif_stall_timer;
         enum iamthif_states iamthif_state;
@@ -602,9 +603,6 @@ hbuf_depth
 hbuf_is_ready
     query if the host host/write buffer is ready
 
-wr_msg
-    the buffer for hbm control messages
-
 version
     HBM protocol version in use
 
@@ -647,14 +645,8 @@ override_fixed_address
 amthif_cmd_list
     amthif list for cmd waiting
 
-iamthif_fp
-    file for current amthif operation
-
 iamthif_cl
     amthif host client
-
-iamthif_current_cb
-    amthif current operation callback
 
 iamthif_open_count
     number of opened amthif connections

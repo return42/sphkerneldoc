@@ -20,6 +20,7 @@ block
     blk-lib_c
     blk-map_c
     blk-merge_c
+    blk-mq-pci_c
     blk-mq-tag_c
     blk-mq_c
     blk-settings_c

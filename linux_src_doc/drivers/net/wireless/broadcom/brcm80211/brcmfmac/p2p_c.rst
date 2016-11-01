@@ -597,7 +597,7 @@ Description
 -----------
 
 Prepare the scan appropriately for type of scan requested. Overrides the
-escan .\ :c:func:`run`\  callback for peer-to-peer scanning.
+escan .run() callback for peer-to-peer scanning.
 
 .. _`brcmf_p2p_discover_listen`:
 

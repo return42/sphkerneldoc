@@ -29,7 +29,7 @@ Description
 
 Allocate devres of \ ``size``\  bytes.  The allocated area is zeroed, then
 associated with \ ``release``\ .  The returned pointer can be passed to
-other devres\_\*() functions.
+other devres_*() functions.
 
 .. _`devres_alloc_node.return`:
 
@@ -78,7 +78,7 @@ and for which \ ``match``\  returns 1.
 Return
 ------
 
-void
+     void
 
 .. _`devres_free`:
 
@@ -673,7 +673,7 @@ devm_get_free_pages
 
 .. c:function:: unsigned long devm_get_free_pages(struct device *dev, gfp_t gfp_mask, unsigned int order)
 
-    Resource-managed \__get_free_pages
+    Resource-managed __get_free_pages
 
     :param struct device \*dev:
         Device to allocate memory for

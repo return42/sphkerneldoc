@@ -11,7 +11,7 @@ alloc_pages_vma
     Allocate a page for a VMA.
 
     :param gfp_t gfp:
-        \ ``GFP_USER``\     user allocation.
+        %GFP_USER    user allocation.
         \ ``GFP_KERNEL``\   kernel allocations,
         \ ``GFP_HIGHMEM``\  highmem/user allocations,
         \ ``GFP_FS``\       allocation should not call back into a file system.
@@ -54,7 +54,7 @@ alloc_pages_current
     Allocate pages.
 
     :param gfp_t gfp:
-        \ ``GFP_USER``\    user allocation,
+        %GFP_USER   user allocation,
         \ ``GFP_KERNEL``\  kernel allocation,
         \ ``GFP_HIGHMEM``\  highmem allocation,
         \ ``GFP_FS``\      don't call back into a file system.

@@ -43,33 +43,6 @@ Return
 -ERESTARTSYS: A wait for the buffer to become unreserved was interrupted by
 a signal. Release all buffer reservations and return to user-space.
 
-.. _`amdgpu_bo_gpu_offset`:
-
-amdgpu_bo_gpu_offset
-====================
-
-.. c:function:: u64 amdgpu_bo_gpu_offset(struct amdgpu_bo *bo)
-
-    return GPU offset of bo
-
-    :param struct amdgpu_bo \*bo:
-        amdgpu object for which we query the offset
-
-.. _`amdgpu_bo_gpu_offset.description`:
-
-Description
------------
-
-Returns current GPU offset of the object.
-
-.. _`amdgpu_bo_gpu_offset.note`:
-
-Note
-----
-
-object should either be pinned or reserved when calling this
-function, it might be useful to add check for this for debugging.
-
 .. _`amdgpu_bo_mmap_offset`:
 
 amdgpu_bo_mmap_offset

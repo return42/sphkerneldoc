@@ -50,7 +50,7 @@ surface uses those parameters (CIK).
 gfx_v7_0_select_se_sh
 =====================
 
-.. c:function:: void gfx_v7_0_select_se_sh(struct amdgpu_device *adev, u32 se_num, u32 sh_num)
+.. c:function:: void gfx_v7_0_select_se_sh(struct amdgpu_device *adev, u32 se_num, u32 sh_num, u32 instance)
 
     select which SE, SH to address
 
@@ -62,6 +62,9 @@ gfx_v7_0_select_se_sh
 
     :param u32 sh_num:
         sh block to address
+
+    :param u32 instance:
+        *undescribed*
 
 .. _`gfx_v7_0_select_se_sh.description`:
 
@@ -350,12 +353,15 @@ on the gfx ring for execution by the GPU.
 gfx_v7_0_ring_test_ib
 =====================
 
-.. c:function:: int gfx_v7_0_ring_test_ib(struct amdgpu_ring *ring)
+.. c:function:: int gfx_v7_0_ring_test_ib(struct amdgpu_ring *ring, long timeout)
 
     basic ring IB test
 
     :param struct amdgpu_ring \*ring:
         amdgpu_ring structure holding ring information
+
+    :param long timeout:
+        *undescribed*
 
 .. _`gfx_v7_0_ring_test_ib.description`:
 
@@ -489,7 +495,7 @@ gfx_v7_0_cp_compute_load_microcode
 Description
 -----------
 
-Loads the compute MEC1\ :c:type:`struct 2 <2>` ucode.
+Loads the compute MEC1&2 ucode.
 Returns 0 for success, -EINVAL if the ucode is not available.
 
 .. _`gfx_v7_0_cp_compute_fini`:

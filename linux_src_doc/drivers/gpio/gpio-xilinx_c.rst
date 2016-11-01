@@ -101,6 +101,32 @@ Description
 This function writes the specified value in to the specified signal of the
 GPIO device.
 
+.. _`xgpio_set_multiple`:
+
+xgpio_set_multiple
+==================
+
+.. c:function:: void xgpio_set_multiple(struct gpio_chip *gc, unsigned long *mask, unsigned long *bits)
+
+    Write the specified signals of the GPIO device.
+
+    :param struct gpio_chip \*gc:
+        Pointer to gpio_chip device structure.
+
+    :param unsigned long \*mask:
+        Mask of the GPIOS to modify.
+
+    :param unsigned long \*bits:
+        Value to be wrote on each GPIO
+
+.. _`xgpio_set_multiple.description`:
+
+Description
+-----------
+
+This function writes the specified values into the specified signals of the
+GPIO devices.
+
 .. _`xgpio_dir_in`:
 
 xgpio_dir_in

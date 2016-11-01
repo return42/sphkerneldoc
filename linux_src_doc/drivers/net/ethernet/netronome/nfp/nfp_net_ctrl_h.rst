@@ -30,6 +30,13 @@ NFP_NET_LSO_MAX_HDR_SZ
 
 .. c:function::  NFP_NET_LSO_MAX_HDR_SZ()
 
+.. _`nfp_net_meta_field_size`:
+
+NFP_NET_META_FIELD_SIZE
+=======================
+
+.. c:function::  NFP_NET_META_FIELD_SIZE()
+
 .. _`nfp_net_rss_none`:
 
 NFP_NET_RSS_NONE
@@ -98,6 +105,15 @@ NFP_NET_CFG_VXLAN_PORT
 
     VXLAN/UDP encap configuration
 
+.. _`nfp_net_cfg_bpf_abi`:
+
+NFP_NET_CFG_BPF_ABI
+===================
+
+.. c:function::  NFP_NET_CFG_BPF_ABI()
+
+    BPF section
+
 .. _`nfp_net_cfg_reserved`:
 
 NFP_NET_CFG_RESERVED
@@ -141,7 +157,7 @@ NFP_NET_CFG_ICR_BASE
 
 .. c:function::  NFP_NET_CFG_ICR_BASE()
 
-    0x0d00) These registers are only used when MSI-X auto-masking is not enabled (\ ``NFP_NET_CFG_CTRL_MSIXAUTO``\  not set).  The array is index by MSI-X entry and are 1B in size.  If an entry is zero, the corresponding entry is enabled.  If the FW generates an interrupt, it writes a cause into the corresponding field.  This also masks the MSI-X entry and the host driver must clear the register to re-enable the interrupt.
+    0x0d00) These registers are only used when MSI-X auto-masking is not enabled (@NFP_NET_CFG_CTRL_MSIXAUTO not set).  The array is index by MSI-X entry and are 1B in size.  If an entry is zero, the corresponding entry is enabled.  If the FW generates an interrupt, it writes a cause into the corresponding field.  This also masks the MSI-X entry and the host driver must clear the register to re-enable the interrupt.
 
 .. _`nfp_net_cfg_stats_base`:
 

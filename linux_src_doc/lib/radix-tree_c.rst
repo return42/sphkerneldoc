@@ -62,7 +62,7 @@ at position \ ``index``\  in the radix tree \ ``root``\ .
 
 Until there is more than one item in the tree, no nodes are
 allocated and \ ``root``\ ->rnode is used as a direct slot instead of
-pointing to a node, in which case \*\ ``nodep``\  will be NULL.
+pointing to a node, in which case \*@nodep will be NULL.
 
 Returns -ENOMEM, or 0 for success.
 
@@ -125,7 +125,7 @@ tree \ ``root``\ .
 
 Until there is more than one item in the tree, no nodes are
 allocated and \ ``root``\ ->rnode is used as a direct slot instead of
-pointing to a node, in which case \*\ ``nodep``\  will be NULL.
+pointing to a node, in which case \*@nodep will be NULL.
 
 .. _`radix_tree_lookup`:
 
@@ -322,8 +322,8 @@ Description
 -----------
 
 Performs an index-ascending scan of the tree for present items.  Places
-them at \*\ ``results``\  and returns the number of items which were placed at
-\*\ ``results``\ .
+them at \*@results and returns the number of items which were placed at
+\*@results.
 
 The implementation is naive.
 
@@ -364,8 +364,8 @@ Description
 -----------
 
 Performs an index-ascending scan of the tree for present items.  Places
-their slots at \*\ ``results``\  and returns the number of items which were
-placed at \*\ ``results``\ .
+their slots at \*@results and returns the number of items which were
+placed at \*@results.
 
 The implementation is naive.
 
@@ -403,8 +403,8 @@ Description
 -----------
 
 Performs an index-ascending scan of the tree for present items which
-have the tag indexed by \ ``tag``\  set.  Places the items at \*\ ``results``\  and
-returns the number of items which were placed at \*\ ``results``\ .
+have the tag indexed by \ ``tag``\  set.  Places the items at \*@results and
+returns the number of items which were placed at \*@results.
 
 .. _`radix_tree_gang_lookup_tag_slot`:
 
@@ -436,8 +436,8 @@ Description
 -----------
 
 Performs an index-ascending scan of the tree for present items which
-have the tag indexed by \ ``tag``\  set.  Places the slots at \*\ ``results``\  and
-returns the number of slots which were placed at \*\ ``results``\ .
+have the tag indexed by \ ``tag``\  set.  Places the slots at \*@results and
+returns the number of slots which were placed at \*@results.
 
 .. _`radix_tree_locate_item`:
 

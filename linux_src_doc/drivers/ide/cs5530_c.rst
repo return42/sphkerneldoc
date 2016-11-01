@@ -43,7 +43,7 @@ cs5530_udma_filter
 Description
 -----------
 
-\ :c:func:`cs5530_udma_filter`\  does UDMA mask filtering for the given drive
+cs5530_udma_filter() does UDMA mask filtering for the given drive
 taking into the consideration capabilities of the mate device.
 
 The CS5530 specifies that two drives sharing a cable cannot mix

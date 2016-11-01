@@ -67,7 +67,7 @@ resume_device_irqs
 Description
 -----------
 
-Enable all non-\ ``IRQF_EARLY_RESUME``\  interrupt lines previously
+Enable all non-%IRQF_EARLY_RESUME interrupt lines previously
 disabled by \ :c:func:`suspend_device_irqs`\  that have the IRQS_SUSPENDED flag
 set as well as those with \ ``IRQF_FORCE_RESUME``\ .
 

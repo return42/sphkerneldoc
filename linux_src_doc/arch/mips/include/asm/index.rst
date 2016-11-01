@@ -17,8 +17,11 @@ asm
     bootinfo_h
     cdmm_h
     clocksource_h
+    dsemul_h
+    i8259_h
     local_h
     maar_h
+    machine_h
     mips-cm_h
     mips-cpc_h
     msa_h

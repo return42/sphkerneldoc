@@ -167,8 +167,8 @@ Description
 -----------
 
 Free an sg table previously allocated and setup with
-\\ :c:func:`__sg_alloc_table`\ .  The \ ``max_ents``\  value must be identical to
-that previously used with \\ :c:func:`__sg_alloc_table`\ .
+\__sg_alloc_table().  The \ ``max_ents``\  value must be identical to
+that previously used with \__sg_alloc_table().
 
 .. _`sg_free_table`:
 
@@ -225,7 +225,7 @@ Notes
 -----
 
 If this function returns non-0 (eg failure), the caller must call
-\\ :c:func:`__sg_free_table`\  to cleanup any leftover allocations.
+\__sg_free_table() to cleanup any leftover allocations.
 
 .. _`sg_alloc_table`:
 

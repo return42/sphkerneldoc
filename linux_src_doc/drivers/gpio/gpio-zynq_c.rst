@@ -63,6 +63,7 @@ Definition
 
     struct zynq_platform_data {
         const char *label;
+        u32 quirks;
         u16 ngpio;
         int max_bank;
         int bank_min[ZYNQMP_GPIO_MAX_BANK];
@@ -76,6 +77,9 @@ Members
 
 label
     string to store in gpio->label
+
+quirks
+    *undescribed*
 
 ngpio
     max number of gpio pins

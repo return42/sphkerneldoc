@@ -1581,10 +1581,10 @@ submission and if so, creates a command buffer of suitable size and
 copies the user data into that buffer.
 
 On successful return, the function returns a pointer to the data in the
-command buffer and \*\ ``header``\  is set to non-NULL.
+command buffer and \*@header is set to non-NULL.
 If command buffers could not be used, the function will return the value
 of \ ``kernel_commands``\  on function call. That value may be NULL. In that case,
-the value of \*\ ``header``\  will be set to NULL.
+the value of \*@header will be set to NULL.
 If an error is encountered, the function will return a pointer error value.
 If the function is interrupted by a signal while sleeping, it will return
 -ERESTARTSYS casted to a pointer error value.

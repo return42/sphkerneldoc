@@ -63,7 +63,7 @@ desc
     Pointer to device descriptor
 
 desc_dma
-    DMA pointer to \ :c:type:`struct desc <desc>`.
+    DMA pointer to \ :c:type:`struct desc <desc>`\ .
 
 .. _`rt2x00mmio_rxdone`:
 

@@ -18,19 +18,21 @@ nvdimm_init_nsarea
 nd_blk_available_dpa
 ====================
 
-.. c:function:: resource_size_t nd_blk_available_dpa(struct nd_mapping *nd_mapping)
+.. c:function:: resource_size_t nd_blk_available_dpa(struct nd_region *nd_region)
 
     account the unused dpa of BLK region
 
-    :param struct nd_mapping \*nd_mapping:
-        container of dpa-resource-root + labels
+    :param struct nd_region \*nd_region:
+        *undescribed*
 
 .. _`nd_blk_available_dpa.description`:
 
 Description
 -----------
 
-Unlike PMEM, BLK namespaces can occupy discontiguous DPA ranges.
+Unlike PMEM, BLK namespaces can occupy discontiguous DPA ranges, but
+we arrange for them to never start at an lower dpa than the last
+PMEM allocation in an aliased region.
 
 .. _`nd_pmem_available_dpa`:
 

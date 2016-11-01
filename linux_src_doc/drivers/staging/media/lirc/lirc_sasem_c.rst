@@ -21,14 +21,14 @@ vfd_open
 vfd_ioctl
 =========
 
-.. c:function:: long vfd_ioctl(struct file *file, unsigned cmd, unsigned long arg)
+.. c:function:: long vfd_ioctl(struct file *file, unsigned int cmd, unsigned long arg)
 
     is closed by the application.
 
     :param struct file \*file:
         *undescribed*
 
-    :param unsigned cmd:
+    :param unsigned int cmd:
         *undescribed*
 
     :param unsigned long arg:

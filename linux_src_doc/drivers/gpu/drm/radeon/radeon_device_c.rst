@@ -842,7 +842,7 @@ radeon_gart_size_auto
 Description
 -----------
 
-\ ``family``\  ASIC family name
+@family ASIC family name
 
 .. _`radeon_check_arguments`:
 

@@ -95,15 +95,18 @@ array, processing both kinds of data.
 gfs2_log_flush_bio
 ==================
 
-.. c:function:: void gfs2_log_flush_bio(struct gfs2_sbd *sdp, int rw)
+.. c:function:: void gfs2_log_flush_bio(struct gfs2_sbd *sdp, int op, int op_flags)
 
     Submit any pending log bio
 
     :param struct gfs2_sbd \*sdp:
         The superblock
 
-    :param int rw:
-        The rw flags
+    :param int op:
+        REQ_OP
+
+    :param int op_flags:
+        rq_flag_bits
 
 .. _`gfs2_log_flush_bio.description`:
 

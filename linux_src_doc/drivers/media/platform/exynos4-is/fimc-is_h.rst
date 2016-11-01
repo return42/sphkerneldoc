@@ -27,7 +27,6 @@ Definition
         struct fimc_isp isp;
         struct fimc_is_sensor sensor[FIMC_IS_SENSORS_NUM];
         struct fimc_is_setfile setfile;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct v4l2_ctrl_handler ctrl_handler;
         struct mutex lock;
         spinlock_t slock;
@@ -79,9 +78,6 @@ isp
 
 setfile
     *undescribed*
-
-alloc_ctx
-    videobuf2 memory allocator context
 
 ctrl_handler
     *undescribed*

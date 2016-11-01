@@ -42,7 +42,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 Author
 ------
 
-Kent Yoder <yoder1\ ``us``\ .ibm.com>
+Kent Yoder <yoder1@us.ibm.com>
 
 .. _`nx_build_sg_list`:
 

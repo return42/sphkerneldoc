@@ -71,6 +71,26 @@ irq_can_set_affinity
     :param unsigned int irq:
         Interrupt to check
 
+.. _`irq_can_set_affinity_usr`:
+
+irq_can_set_affinity_usr
+========================
+
+.. c:function:: bool irq_can_set_affinity_usr(unsigned int irq)
+
+    Check if affinity of a irq can be set from user space
+
+    :param unsigned int irq:
+        Interrupt to check
+
+.. _`irq_can_set_affinity_usr.description`:
+
+Description
+-----------
+
+Like \ :c:func:`irq_can_set_affinity`\  above, but additionally checks for the
+AFFINITY_MANAGED flag.
+
 .. _`irq_set_thread_affinity`:
 
 irq_set_thread_affinity

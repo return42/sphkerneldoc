@@ -59,52 +59,49 @@ Post-sync nonzero is what triggered this second workaround, so we
 can't use that one either.  Notify enable is IRQs, which aren't
 really our business.  That leaves only stall at scoreboard.
 
-.. _`gen6_add_request`:
+.. _`gen6_sema_emit_request`:
 
-gen6_add_request
-================
+gen6_sema_emit_request
+======================
 
-.. c:function:: int gen6_add_request(struct drm_i915_gem_request *req)
+.. c:function:: int gen6_sema_emit_request(struct drm_i915_gem_request *req)
 
     Update the semaphore mailbox registers
 
     :param struct drm_i915_gem_request \*req:
         *undescribed*
 
-.. _`gen6_add_request.description`:
+.. _`gen6_sema_emit_request.description`:
 
 Description
 -----------
 
-\ ``request``\  - request to write to the ring
+@request - request to write to the ring
 
 Update the mailbox registers in the \*other\* rings with the current seqno.
 This acts like a signal in the canonical semaphore.
 
-.. _`gen8_ring_sync`:
+.. _`gen8_ring_sync_to`:
 
-gen8_ring_sync
-==============
+gen8_ring_sync_to
+=================
 
-.. c:function:: int gen8_ring_sync(struct drm_i915_gem_request *waiter_req, struct intel_engine_cs *signaller, u32 seqno)
+.. c:function:: int gen8_ring_sync_to(struct drm_i915_gem_request *req, struct drm_i915_gem_request *signal)
 
     sync the waiter to the signaller on seqno
 
-    :param struct drm_i915_gem_request \*waiter_req:
+    :param struct drm_i915_gem_request \*req:
         *undescribed*
 
-    :param struct intel_engine_cs \*signaller:
+    :param struct drm_i915_gem_request \*signal:
         *undescribed*
 
-    :param u32 seqno:
-        *undescribed*
-
-.. _`gen8_ring_sync.description`:
+.. _`gen8_ring_sync_to.description`:
 
 Description
 -----------
 
-\ ``waiter``\  - ring that is waiting
+@waiter - ring that is waiting
 \ ``signaller``\  - ring which has, or will signal
 \ ``seqno``\  - seqno which the waiter will block on
 
@@ -113,9 +110,9 @@ Description
 intel_init_bsd2_ring_buffer
 ===========================
 
-.. c:function:: int intel_init_bsd2_ring_buffer(struct drm_device *dev)
+.. c:function:: int intel_init_bsd2_ring_buffer(struct intel_engine_cs *engine)
 
-    :param struct drm_device \*dev:
+    :param struct intel_engine_cs \*engine:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

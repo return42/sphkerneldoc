@@ -61,7 +61,7 @@ irq_free_descs
 __irq_alloc_descs
 =================
 
-.. c:function:: int __ref __irq_alloc_descs(int irq, unsigned int from, unsigned int cnt, int node, struct module *owner)
+.. c:function:: int __ref __irq_alloc_descs(int irq, unsigned int from, unsigned int cnt, int node, struct module *owner, const struct cpumask *affinity)
 
     allocate and initialize a range of irq descriptors
 
@@ -79,6 +79,11 @@ __irq_alloc_descs
 
     :param struct module \*owner:
         Owning module (can be NULL)
+
+    :param const struct cpumask \*affinity:
+        Optional pointer to an affinity mask array of size \ ``cnt``\  which
+        hints where the irq descriptors should be allocated and which
+        default affinities to use
 
 .. _`__irq_alloc_descs.description`:
 

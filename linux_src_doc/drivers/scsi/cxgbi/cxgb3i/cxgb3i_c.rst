@@ -75,20 +75,6 @@ ddp_setup_conn_digest
         request reply from h/w
         set up the iscsi digest settings for a connection identified by tid
 
-.. _`t3_ddp_cleanup`:
-
-t3_ddp_cleanup
-==============
-
-.. c:function:: void t3_ddp_cleanup(struct cxgbi_device *cdev)
-
-    release the cxgb3 adapter's ddp resource
-
-    :param struct cxgbi_device \*cdev:
-        cxgb3i adapter
-        release all the resource held by the ddp pagepod manager for a given
-        adapter if needed
-
 .. _`cxgb3i_ddp_init`:
 
 cxgb3i_ddp_init

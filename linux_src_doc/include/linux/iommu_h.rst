@@ -74,6 +74,7 @@ Definition
         int (*domain_set_attr)(struct iommu_domain *domain,enum iommu_attr attr, void *data);
         void (*get_dm_regions)(struct device *dev, struct list_head *list);
         void (*put_dm_regions)(struct device *dev, struct list_head *list);
+        void (*apply_dm_region)(struct device *dev, struct iommu_domain *domain,struct iommu_dm_region *region);
         int (*domain_window_enable)(struct iommu_domain *domain, u32 wnd_nr,phys_addr_t paddr, u64 size, int prot);
         void (*domain_window_disable)(struct iommu_domain *domain, u32 wnd_nr);
         int (*domain_set_windows)(struct iommu_domain *domain, u32 w_count);
@@ -135,6 +136,9 @@ get_dm_regions
 
 put_dm_regions
     Free list of direct mapping requirements for a device
+
+apply_dm_region
+    Temporary helper call-back for iova reserved ranges
 
 domain_window_enable
     Configure and enable a particular window for a domain
@@ -200,6 +204,50 @@ to tell whether it succeeded or not according to this return value).
 Specifically, -ENOSYS is returned if a fault handler isn't installed
 (though fault handlers can also return -ENOSYS, in case they want to
 elicit the default behavior of the IOMMU drivers).
+
+.. _`iommu_fwspec`:
+
+struct iommu_fwspec
+===================
+
+.. c:type:: struct iommu_fwspec
+
+    per-device IOMMU instance data
+
+.. _`iommu_fwspec.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iommu_fwspec {
+        const struct iommu_ops *ops;
+        struct fwnode_handle *iommu_fwnode;
+        void *iommu_priv;
+        unsigned int num_ids;
+        u32 ids[1];
+    }
+
+.. _`iommu_fwspec.members`:
+
+Members
+-------
+
+ops
+    ops for this device's IOMMU
+
+iommu_fwnode
+    firmware handle for this device's IOMMU
+
+iommu_priv
+    IOMMU driver private data for this device
+
+num_ids
+    number of associated device IDs
+
+ids
+    IDs which this device may present to the IOMMU
 
 .. This file was automatic generated / don't edit.
 

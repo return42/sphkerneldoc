@@ -21,6 +21,7 @@ Definition
         struct drm_plane_state state;
         const struct rcar_du_format_info *format;
         unsigned int alpha;
+        unsigned int zpos;
     }
 
 .. _`rcar_du_vsp_plane_state.members`:
@@ -36,6 +37,9 @@ format
 
 alpha
     value of the plane alpha property
+
+zpos
+    value of the plane zpos property
 
 .. This file was automatic generated / don't edit.
 

@@ -117,7 +117,7 @@ fail if called from an IRQ context.)
 Note
 ----
 
-neither \__GFP_NOMEMALLOC nor \__GFP_ZERO are supported.
+using \__GFP_ZERO is not supported.
 
 .. _`mempool_free`:
 

@@ -8,7 +8,7 @@ lov_attr_get_empty
 
 .. c:function:: int lov_attr_get_empty(const struct lu_env *env, struct cl_object *obj, struct cl_attr *attr)
 
-    :\ :c:func:`coo_attr_get`\  method for an object without stripes (LLT_EMPTY layout type).
+    :coo_attr_get() method for an object without stripes (LLT_EMPTY layout type).
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -80,7 +80,7 @@ lov_io_init
 
 .. c:function:: int lov_io_init(const struct lu_env *env, struct cl_object *obj, struct cl_io *io)
 
-    :\ :c:func:`clo_io_init`\  method for lov layer. Dispatches to the appropriate layout io initialization method.
+    :clo_io_init() method for lov layer. Dispatches to the appropriate layout io initialization method.
 
     :param const struct lu_env \*env:
         *undescribed*
@@ -98,7 +98,7 @@ lov_attr_get
 
 .. c:function:: int lov_attr_get(const struct lu_env *env, struct cl_object *obj, struct cl_attr *attr)
 
-    :\ :c:func:`clo_attr_get`\  method for lov layer. For raid0 layout this collects and merges attributes of all sub-objects.
+    :clo_attr_get() method for lov layer. For raid0 layout this collects and merges attributes of all sub-objects.
 
     :param const struct lu_env \*env:
         *undescribed*

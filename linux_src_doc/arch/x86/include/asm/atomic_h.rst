@@ -91,7 +91,7 @@ Atomically subtracts \ ``i``\  from \ ``v``\ .
 atomic_sub_and_test
 ===================
 
-.. c:function:: int atomic_sub_and_test(int i, atomic_t *v)
+.. c:function:: bool atomic_sub_and_test(int i, atomic_t *v)
 
     subtract value from variable and test result
 
@@ -153,7 +153,7 @@ Atomically decrements \ ``v``\  by 1.
 atomic_dec_and_test
 ===================
 
-.. c:function:: int atomic_dec_and_test(atomic_t *v)
+.. c:function:: bool atomic_dec_and_test(atomic_t *v)
 
     decrement and test
 
@@ -174,7 +174,7 @@ cases.
 atomic_inc_and_test
 ===================
 
-.. c:function:: int atomic_inc_and_test(atomic_t *v)
+.. c:function:: bool atomic_inc_and_test(atomic_t *v)
 
     increment and test
 
@@ -195,7 +195,7 @@ other cases.
 atomic_add_negative
 ===================
 
-.. c:function:: int atomic_add_negative(int i, atomic_t *v)
+.. c:function:: bool atomic_add_negative(int i, atomic_t *v)
 
     add and test if negative
 

@@ -184,6 +184,37 @@ Note
 The caller is expected to handle the ack, clear, mask and
 unmask issues if necessary.
 
+.. _`handle_untracked_irq`:
+
+handle_untracked_irq
+====================
+
+.. c:function:: void handle_untracked_irq(struct irq_desc *desc)
+
+    Simple and software-decoded IRQs.
+
+    :param struct irq_desc \*desc:
+        the interrupt description structure for this irq
+
+.. _`handle_untracked_irq.description`:
+
+Description
+-----------
+
+Untracked interrupts are sent from a demultiplexing interrupt
+handler when the demultiplexer does not know which device it its
+multiplexed irq domain generated the interrupt. IRQ's handled
+through here are not subjected to stats tracking, randomness, or
+spurious interrupt detection.
+
+.. _`handle_untracked_irq.note`:
+
+Note
+----
+
+Like handle_simple_irq, the caller is expected to handle
+the ack, clear, mask and unmask issues if necessary.
+
 .. _`handle_level_irq`:
 
 handle_level_irq
@@ -223,7 +254,7 @@ handle_fasteoi_irq
 Only a single callback will be issued to the chip
 -------------------------------------------------
 
-an ->\ :c:func:`eoi`\ 
+an ->eoi()
 call when the interrupt has been serviced. This enables support
 for modern forms of interrupt handlers, which handle the flow
 details in hardware, transparently.
@@ -336,7 +367,7 @@ irq_cpu_online
 Description
 -----------
 
-Iterate through all irqs and invoke the chip.\ :c:func:`irq_cpu_online`\ 
+Iterate through all irqs and invoke the chip.irq_cpu_online()
 for each.
 
 .. _`irq_cpu_offline`:
@@ -356,7 +387,7 @@ irq_cpu_offline
 Description
 -----------
 
-Iterate through all irqs and invoke the chip.\ :c:func:`irq_cpu_offline`\ 
+Iterate through all irqs and invoke the chip.irq_cpu_offline()
 for each.
 
 .. _`irq_chip_enable_parent`:
@@ -558,6 +589,47 @@ Description
 For hierarchical domains we find the first chip in the hierarchy
 which implements the irq_compose_msi_msg callback. For non
 hierarchical we use the top level chip.
+
+.. _`irq_chip_pm_get`:
+
+irq_chip_pm_get
+===============
+
+.. c:function:: int irq_chip_pm_get(struct irq_data *data)
+
+    Enable power for an IRQ chip
+
+    :param struct irq_data \*data:
+        Pointer to interrupt specific data
+
+.. _`irq_chip_pm_get.description`:
+
+Description
+-----------
+
+Enable the power to the IRQ chip referenced by the interrupt data
+structure.
+
+.. _`irq_chip_pm_put`:
+
+irq_chip_pm_put
+===============
+
+.. c:function:: int irq_chip_pm_put(struct irq_data *data)
+
+    Disable power for an IRQ chip
+
+    :param struct irq_data \*data:
+        Pointer to interrupt specific data
+
+.. _`irq_chip_pm_put.description`:
+
+Description
+-----------
+
+Disable the power to the IRQ chip referenced by the interrupt data
+structure, belongs. Note that power will only be disabled, once this
+function has been called for all IRQs that have called \ :c:func:`irq_chip_pm_get`\ .
 
 .. This file was automatic generated / don't edit.
 

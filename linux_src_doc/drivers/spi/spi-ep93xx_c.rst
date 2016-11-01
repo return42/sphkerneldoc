@@ -66,7 +66,7 @@ rx
     current byte in transfer to receive
 
 fifo_level
-    how full is FIFO (\ ``0``\ ..\ ``SPI_FIFO_SIZE``\  - \ ``1``\ ). Receiving one
+    how full is FIFO (%0..%SPI_FIFO_SIZE - \ ``1``\ ). Receiving one
     frame decreases this level and sending one frame increases it.
 
 dma_rx

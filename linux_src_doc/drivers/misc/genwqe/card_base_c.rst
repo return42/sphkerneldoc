@@ -23,13 +23,13 @@ Description
 Author
 ------
 
-Frank Haverkamp <haver\ ``linux``\ .vnet.ibm.com>
+Frank Haverkamp <haver@linux.vnet.ibm.com>
 
-Joerg-Stephan Vogt <jsvogt\ ``de``\ .ibm.com>
+Joerg-Stephan Vogt <jsvogt@de.ibm.com>
 
-Michael Jung <mijung\ ``gmx``\ .net>
+Michael Jung <mijung@gmx.net>
 
-Michael Ruettger <michael\ ``ibmra``\ .de>
+Michael Ruettger <michael@ibmra.de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (version 2 only)
@@ -76,7 +76,7 @@ genwqe_bus_reset
 Description
 -----------
 
-\ :c:func:`pci_reset_function`\  will recover the device and ensure that the
+pci_reset_function() will recover the device and ensure that the
 registers are accessible again when it completes with success. If
 not, the card will stay dead and registers will be unaccessible
 still.
@@ -254,7 +254,7 @@ genwqe_pci_fundamental_reset
 Note
 ----
 
-\ :c:func:`pci_set_pcie_reset_state`\  is not implemented on all archs, so this
+pci_set_pcie_reset_state() is not implemented on all archs, so this
 reset method will not work in all cases.
 
 .. _`genwqe_pci_fundamental_reset.return`:
@@ -368,6 +368,29 @@ Description
 -----------
 
 Or when driver is unloaded respecitively when unbind is done.
+
+.. _`genwqe_devnode`:
+
+genwqe_devnode
+==============
+
+.. c:function:: char *genwqe_devnode(struct device *dev, umode_t *mode)
+
+    Set default access mode for genwqe devices.
+
+    :param struct device \*dev:
+        *undescribed*
+
+    :param umode_t \*mode:
+        *undescribed*
+
+.. _`genwqe_devnode.description`:
+
+Description
+-----------
+
+Default mode should be rw for everybody. Do not change default
+device name.
 
 .. _`genwqe_init_module`:
 

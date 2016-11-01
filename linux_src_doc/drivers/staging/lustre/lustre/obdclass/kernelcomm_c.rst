@@ -23,7 +23,7 @@ libcfs_kkuc_group_foreach
 
 .. c:function:: int libcfs_kkuc_group_foreach(unsigned int group, libcfs_kkuc_cb_t cb_func, void *cb_arg)
 
-    \ ``param``\  group the group to call the function on. \ ``param``\  cb_func the function to be called. \ ``param``\  cb_arg extra argument to be passed to the callback function.
+    @param group the group to call the function on. \ ``param``\  cb_func the function to be called. \ ``param``\  cb_arg extra argument to be passed to the callback function.
 
     :param unsigned int group:
         *undescribed*

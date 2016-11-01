@@ -162,7 +162,7 @@ or at last \ :c:func:`iput`\ .
 It is being called in three cases
 ---------------------------------
 
-\ :c:func:`ext2_release_file`\ : last writer closes the file
+ext2_release_file(): last writer closes the file
 \ :c:func:`ext2_clear_inode`\ : last \ :c:func:`iput`\ , when nobody links to this file.
 \ :c:func:`ext2_truncate`\ : when the block indirect map is about to change.
 

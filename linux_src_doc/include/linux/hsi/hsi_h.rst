@@ -297,7 +297,7 @@ Definition
         int (*start_tx)(struct hsi_client *cl);
         int (*stop_tx)(struct hsi_client *cl);
         int (*release)(struct hsi_client *cl);
-        struct atomic_notifier_head n_head;
+        struct blocking_notifier_head n_head;
     }
 
 .. _`hsi_port.members`:

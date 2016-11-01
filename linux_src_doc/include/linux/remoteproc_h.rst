@@ -407,7 +407,7 @@ Definition
         u32 align;
         u32 num;
         u32 notifyid;
-        u32 reserved;
+        u32 pa;
     }
 
 .. _`fw_rsc_vdev_vring.members`:
@@ -430,8 +430,8 @@ num
 notifyid
     *undescribed*
 
-reserved
-    reserved (must be zero)
+pa
+    physical address
 
 .. _`fw_rsc_vdev_vring.description`:
 
@@ -772,14 +772,14 @@ Definition
         struct idr notifyids;
         int index;
         struct work_struct crash_handler;
-        unsigned crash_cnt;
+        unsigned int crash_cnt;
         struct completion crash_comp;
         bool recovery_disabled;
         int max_notifyid;
         struct resource_table *table_ptr;
         struct resource_table *cached_table;
-        u32 table_csum;
         bool has_iommu;
+        bool auto_boot;
     }
 
 .. _`rproc.members`:
@@ -871,11 +871,11 @@ table_ptr
 cached_table
     copy of the resource table
 
-table_csum
-    checksum of the resource table
-
 has_iommu
     flag to indicate if remote processor is behind an MMU
+
+auto_boot
+    *undescribed*
 
 .. _`rproc_vring`:
 

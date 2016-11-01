@@ -8,7 +8,7 @@ _EMIT_BUG_ENTRY
 
 .. c:function::  _EMIT_BUG_ENTRY()
 
-    \ ``1``\  - \__FILE_\_ \ ``2``\  - \__LINE_\_ \ ``3``\  - trap type \ ``4``\  - sizeof(struct bug_entry)
+    %1 - \__FILE_\_ \ ``2``\  - \__LINE_\_ \ ``3``\  - trap type \ ``4``\  - sizeof(struct bug_entry)
 
 .. _`_emit_bug_entry.description`:
 

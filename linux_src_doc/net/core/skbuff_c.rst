@@ -61,7 +61,7 @@ __alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>`. The returned buffer has no headroom and a
+Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\ . The returned buffer has no headroom and a
 tail room of at least size bytes. The object has a reference count
 of one. The return is the buffer. On a failure the return is \ ``NULL``\ .
 
@@ -88,7 +88,7 @@ __build_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>`. Caller provides space holding head and
+Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\ . Caller provides space holding head and
 skb_shared_info. \ ``data``\  must have been allocated by \ :c:func:`kmalloc`\  only if
 \ ``frag_size``\  is 0, otherwise data should come from the page allocator
 or \ :c:func:`vmalloc`\ 
@@ -145,7 +145,7 @@ __netdev_alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>` and assign it a usage count of one. The
+Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
 buffer has NET_SKB_PAD headroom built in. Users should allocate
 the headroom they think they need without accounting for the
 built in space. The built in space is used for optimisations.
@@ -339,7 +339,7 @@ skb_clone
 Description
 -----------
 
-Duplicate an \ :c:type:`struct sk_buff <sk_buff>`. The new one is not owned by a socket. Both
+Duplicate an \ :c:type:`struct sk_buff <sk_buff>`\ . The new one is not owned by a socket. Both
 copies share the same packet data but not structure. The new
 buffer has a reference count of 1. If the allocation fails the
 function returns \ ``NULL``\  otherwise the new buffer is returned.
@@ -367,13 +367,13 @@ skb_copy
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>` and its data. This is used when the
+Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data. This is used when the
 caller wishes to modify the data and needs a private copy of the
 data to alter. Returns \ ``NULL``\  on failure or the pointer to the buffer
 on success. The returned buffer has a reference count of 1.
 
-As by-product this function converts non-linear \ :c:type:`struct sk_buff <sk_buff>` to linear
-one, so that \ :c:type:`struct sk_buff <sk_buff>` becomes completely private and caller is allowed
+As by-product this function converts non-linear \ :c:type:`struct sk_buff <sk_buff>`\  to linear
+one, so that \ :c:type:`struct sk_buff <sk_buff>`\  becomes completely private and caller is allowed
 to modify all the data of returned buffer. This means that this
 function is not recommended for use in circumstances when only
 header is going to be modified. Use \ :c:func:`pskb_copy`\  instead.
@@ -406,9 +406,9 @@ __pskb_copy_fclone
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>` and part of its data, located
+Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and part of its data, located
 in header. Fragmented data remain shared. This is used when
-the caller wishes to modify only header of \ :c:type:`struct sk_buff <sk_buff>` and needs
+the caller wishes to modify only header of \ :c:type:`struct sk_buff <sk_buff>`\  and needs
 private copy of the header to alter. Returns \ ``NULL``\  on failure
 or the pointer to the buffer on success.
 The returned buffer has a reference count of 1.
@@ -420,7 +420,7 @@ pskb_expand_head
 
 .. c:function:: int pskb_expand_head(struct sk_buff *skb, int nhead, int ntail, gfp_t gfp_mask)
 
-    reallocate header of \ :c:type:`struct sk_buff <sk_buff>`
+    reallocate header of \ :c:type:`struct sk_buff <sk_buff>`\ 
 
     :param struct sk_buff \*skb:
         buffer to reallocate
@@ -440,9 +440,9 @@ Description
 -----------
 
 Expands (or creates identical copy, if \ ``nhead``\  and \ ``ntail``\  are zero)
-header of \ ``skb``\ . \ :c:type:`struct sk_buff <sk_buff>` itself is not changed. \ :c:type:`struct sk_buff <sk_buff>` MUST have
+header of \ ``skb``\ . \ :c:type:`struct sk_buff <sk_buff>`\  itself is not changed. \ :c:type:`struct sk_buff <sk_buff>`\  MUST have
 reference count of 1. Returns zero in the case of success or error,
-if expansion failed. In the last case, \ :c:type:`struct sk_buff <sk_buff>` is not changed.
+if expansion failed. In the last case, \ :c:type:`struct sk_buff <sk_buff>`\  is not changed.
 
 All the pointers pointing into skb header may change and must be
 reloaded after call to this function.
@@ -473,7 +473,7 @@ skb_copy_expand
 Description
 -----------
 
-Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>` and its data and while doing so
+Make a copy of both an \ :c:type:`struct sk_buff <sk_buff>`\  and its data and while doing so
 allocate additional space.
 
 This is used when the caller wishes to modify the data and needs a
@@ -656,13 +656,13 @@ __pskb_pull_tail
 Description
 -----------
 
-The function makes a sense only on a fragmented \ :c:type:`struct sk_buff <sk_buff>`,
+The function makes a sense only on a fragmented \ :c:type:`struct sk_buff <sk_buff>`\ ,
 it expands header moving its tail forward and copying necessary
 data from fragmented part.
 
-\ :c:type:`struct sk_buff <sk_buff>` MUST have reference count of 1.
+\ :c:type:`struct sk_buff <sk_buff>`\  MUST have reference count of 1.
 
-Returns \ ``NULL``\  (and \ :c:type:`struct sk_buff <sk_buff>` does not change) if pull failed
+Returns \ ``NULL``\  (and \ :c:type:`struct sk_buff <sk_buff>`\  does not change) if pull failed
 or value of new tail of skb in the case of success.
 
 All the pointers pointing into skb header may change and must be
@@ -832,9 +832,31 @@ skb_queue_purge
 Description
 -----------
 
-Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>` list. Each buffer is removed from
+Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
 the list and one reference dropped. This function takes the list
 lock and is atomic with respect to other list locking functions.
+
+.. _`skb_rbtree_purge`:
+
+skb_rbtree_purge
+================
+
+.. c:function:: void skb_rbtree_purge(struct rb_root *root)
+
+    empty a skb rbtree
+
+    :param struct rb_root \*root:
+        root of the rbtree to empty
+
+.. _`skb_rbtree_purge.description`:
+
+Description
+-----------
+
+Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  rbtree. Each buffer is removed from
+the list and one reference dropped. This function does not take
+any lock. Synchronization should be handled by the caller (e.g., TCP
+out-of-order queue is protected by the socket lock).
 
 .. _`skb_queue_head`:
 
@@ -857,7 +879,7 @@ Description
 -----------
 
 Queue a buffer at the start of the list. This function takes the
-list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>` functions
+list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
 safely.
 
 A buffer cannot be placed on two lists at the same time.
@@ -883,7 +905,7 @@ Description
 -----------
 
 Queue a buffer at the tail of the list. This function takes the
-list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>` functions
+list lock and can be used safely with other locking \ :c:type:`struct sk_buff <sk_buff>`\  functions
 safely.
 
 A buffer cannot be placed on two lists at the same time.
@@ -1479,7 +1501,7 @@ skb_scrub_packet can be used after encapsulating or decapsulting a packet
 into/from a tunnel. Some information have to be cleared during these
 operations.
 skb_scrub_packet can also be used to clean a skb before injecting it in
-another namespace (\ ``xnet``\  == true). We have to clear all information in the
+another namespace (@xnet == true). We have to clear all information in the
 skb that could impact namespace isolation.
 
 .. _`skb_gso_transport_seglen`:
@@ -1503,6 +1525,29 @@ skb_gso_transport_seglen is used to determine the real size of the
 individual segments, including Layer4 headers (TCP/UDP).
 
 The MAC/L2 or network (IP, IPv6) headers are not accounted for.
+
+.. _`skb_gso_validate_mtu`:
+
+skb_gso_validate_mtu
+====================
+
+.. c:function:: bool skb_gso_validate_mtu(const struct sk_buff *skb, unsigned int mtu)
+
+    Return in case such skb fits a given MTU
+
+    :param const struct sk_buff \*skb:
+        GSO skb
+
+    :param unsigned int mtu:
+        MTU to validate against
+
+.. _`skb_gso_validate_mtu.description`:
+
+Description
+-----------
+
+skb_gso_validate_mtu validates if a given skb will fit a wanted MTU
+once split.
 
 .. _`alloc_skb_with_frags`:
 

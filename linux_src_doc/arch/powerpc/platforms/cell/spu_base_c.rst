@@ -45,7 +45,7 @@ spu_setup_kernel_slbs
 Description
 -----------
 
-Because the lscsa and code may cross segment boundaires, we check to see
+Because the lscsa and code may cross segment boundaries, we check to see
 if mappings are required for the start and end of each range. We currently
 assume that the mappings are smaller that one segment - if not, something
 is seriously wrong.

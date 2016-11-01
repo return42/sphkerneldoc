@@ -1,0 +1,779 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/pressure/zpa2326.c
+
+.. _`zpa2326_frequency`:
+
+struct zpa2326_frequency
+========================
+
+.. c:type:: struct zpa2326_frequency
+
+    Hardware sampling frequency descriptor
+
+.. _`zpa2326_frequency.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct zpa2326_frequency {
+        int hz;
+        u16 odr;
+    }
+
+.. _`zpa2326_frequency.members`:
+
+Members
+-------
+
+hz
+    Frequency in Hertz.
+
+odr
+    Output Data Rate word as expected by \ ``ZPA2326_CTRL_REG3_REG``\ .
+
+.. _`zpa2326_private`:
+
+struct zpa2326_private
+======================
+
+.. c:type:: struct zpa2326_private
+
+    Per-device internal private state
+
+.. _`zpa2326_private.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct zpa2326_private {
+        s64 timestamp;
+        struct regmap *regmap;
+        int result;
+        struct completion data_ready;
+        struct iio_trigger *trigger;
+        bool waken;
+        int irq;
+        const struct zpa2326_frequency *frequency;
+        struct regulator *vref;
+        struct regulator *vdd;
+    }
+
+.. _`zpa2326_private.members`:
+
+Members
+-------
+
+timestamp
+    Buffered samples ready datum.
+
+regmap
+    Underlying I2C / SPI bus adapter used to abstract slave register
+    accesses.
+
+result
+    Allows sampling logic to get completion status of operations
+    that interrupt handlers perform asynchronously.
+
+data_ready
+    Interrupt handler uses this to wake user context up at sampling
+    operation completion.
+
+trigger
+    Optional hardware / interrupt driven trigger used to notify
+    external devices a new sample is ready.
+
+waken
+    Flag indicating whether or not device has just been powered on.
+
+irq
+    Optional interrupt line: negative or zero if not declared into
+    DT, in which case sampling logic keeps polling status register
+    to detect completion.
+
+frequency
+    Current hardware sampling frequency.
+
+vref
+    Power / voltage reference.
+
+vdd
+    Power supply.
+
+.. _`zpa2326_enable_device`:
+
+zpa2326_enable_device
+=====================
+
+.. c:function:: int zpa2326_enable_device(const struct iio_dev *indio_dev)
+
+    Enable device, i.e. get out of low power mode.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the hardware to enable.
+
+.. _`zpa2326_enable_device.description`:
+
+Description
+-----------
+
+Required to access complete register space and to perform any sampling
+or control operations.
+
+.. _`zpa2326_enable_device.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_sleep`:
+
+zpa2326_sleep
+=============
+
+.. c:function:: int zpa2326_sleep(const struct iio_dev *indio_dev)
+
+    Disable device, i.e. switch to low power mode.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the hardware to disable.
+
+.. _`zpa2326_sleep.description`:
+
+Description
+-----------
+
+Only \ ``ZPA2326_DEVICE_ID_REG``\  and \ ``ZPA2326_CTRL_REG0_REG``\  registers may be
+accessed once device is in the disabled state.
+
+.. _`zpa2326_sleep.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_reset_device`:
+
+zpa2326_reset_device
+====================
+
+.. c:function:: int zpa2326_reset_device(const struct iio_dev *indio_dev)
+
+    Reset device to default hardware state.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the hardware to reset.
+
+.. _`zpa2326_reset_device.description`:
+
+Description
+-----------
+
+Disable sampling and empty hardware FIFO.
+Device must be enabled before reset, i.e. not in low power mode.
+
+.. _`zpa2326_reset_device.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_start_oneshot`:
+
+zpa2326_start_oneshot
+=====================
+
+.. c:function:: int zpa2326_start_oneshot(const struct iio_dev *indio_dev)
+
+    Start a single sampling cycle, i.e. in one shot mode.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_start_oneshot.description`:
+
+Description
+-----------
+
+Device must have been previously enabled and configured for one shot mode.
+Device will be switched back to low power mode at end of cycle.
+
+.. _`zpa2326_start_oneshot.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_power_on`:
+
+zpa2326_power_on
+================
+
+.. c:function:: int zpa2326_power_on(const struct iio_dev *indio_dev, const struct zpa2326_private *private)
+
+    Power on device to allow subsequent configuration.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param const struct zpa2326_private \*private:
+        Internal private state related to \ ``indio_dev``\ .
+
+.. _`zpa2326_power_on.description`:
+
+Description
+-----------
+
+Sampling will be disabled, preventing strange things from happening in our
+back. Hardware FIFO content will be cleared.
+When successful, device will be left in the enabled state to allow further
+configuration.
+
+.. _`zpa2326_power_on.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_power_off`:
+
+zpa2326_power_off
+=================
+
+.. c:function:: void zpa2326_power_off(const struct iio_dev *indio_dev, const struct zpa2326_private *private)
+
+    Power off device, i.e. disable attached power regulators.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param const struct zpa2326_private \*private:
+        Internal private state related to \ ``indio_dev``\ .
+
+.. _`zpa2326_power_off.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_config_oneshot`:
+
+zpa2326_config_oneshot
+======================
+
+.. c:function:: int zpa2326_config_oneshot(const struct iio_dev *indio_dev, int irq)
+
+    Setup device for one shot / on demand mode.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param int irq:
+        Optional interrupt line the hardware uses to notify new data
+        samples are ready. Negative or zero values indicate no interrupts
+        are available, meaning polling is required.
+
+.. _`zpa2326_config_oneshot.description`:
+
+Description
+-----------
+
+Output Data Rate is configured for the highest possible rate so that
+conversion time and power consumption are reduced to a minimum.
+Note that hardware internal averaging machinery (not implemented in this
+driver) is not applicable in this mode.
+
+Device must have been previously enabled before calling
+\ :c:func:`zpa2326_config_oneshot`\ .
+
+.. _`zpa2326_config_oneshot.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_clear_fifo`:
+
+zpa2326_clear_fifo
+==================
+
+.. c:function:: int zpa2326_clear_fifo(const struct iio_dev *indio_dev, unsigned int min_count)
+
+    Clear remaining entries in hardware FIFO.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param unsigned int min_count:
+        Number of samples present within hardware FIFO.
+
+.. _`zpa2326_clear_fifo.description`:
+
+Description
+-----------
+
+@min_count argument is a hint corresponding to the known minimum number of
+samples currently living in the FIFO. This allows to reduce the number of bus
+accesses by skipping status register read operation as long as we know for
+sure there are still entries left.
+
+.. _`zpa2326_clear_fifo.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_dequeue_pressure`:
+
+zpa2326_dequeue_pressure
+========================
+
+.. c:function:: int zpa2326_dequeue_pressure(const struct iio_dev *indio_dev, u32 *pressure)
+
+    Retrieve the most recent pressure sample from hardware FIFO.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param u32 \*pressure:
+        Sampled pressure output.
+
+.. _`zpa2326_dequeue_pressure.description`:
+
+Description
+-----------
+
+Note that ZPA2326 hardware FIFO stores pressure samples only.
+
+.. _`zpa2326_dequeue_pressure.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_fill_sample_buffer`:
+
+zpa2326_fill_sample_buffer
+==========================
+
+.. c:function:: int zpa2326_fill_sample_buffer(struct iio_dev *indio_dev, const struct zpa2326_private *private)
+
+    Enqueue new channel samples to IIO buffer.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param const struct zpa2326_private \*private:
+        Internal private state related to \ ``indio_dev``\ .
+
+.. _`zpa2326_fill_sample_buffer.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_resume`:
+
+zpa2326_resume
+==============
+
+.. c:function:: int zpa2326_resume(const struct iio_dev *indio_dev)
+
+    Request the PM layer to power supply the device.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_resume.return`:
+
+Return
+------
+
+< 0 - a negative error code meaning failure ;
+0 - success, device has just been powered up ;
+1 - success, device was already powered.
+
+.. _`zpa2326_suspend`:
+
+zpa2326_suspend
+===============
+
+.. c:function:: void zpa2326_suspend(struct iio_dev *indio_dev)
+
+    Schedule a power down using autosuspend feature of PM layer.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_suspend.description`:
+
+Description
+-----------
+
+Device is switched to low power mode at first to save power even when
+attached regulator is a "dummy" one.
+
+.. _`zpa2326_handle_irq`:
+
+zpa2326_handle_irq
+==================
+
+.. c:function:: irqreturn_t zpa2326_handle_irq(int irq, void *data)
+
+    Process hardware interrupts.
+
+    :param int irq:
+        Interrupt line the hardware uses to notify new data has arrived.
+
+    :param void \*data:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_handle_irq.description`:
+
+Description
+-----------
+
+Timestamp buffered samples as soon as possible then schedule threaded bottom
+half.
+
+.. _`zpa2326_handle_irq.return`:
+
+Return
+------
+
+Always successful.
+
+.. _`zpa2326_handle_threaded_irq`:
+
+zpa2326_handle_threaded_irq
+===========================
+
+.. c:function:: irqreturn_t zpa2326_handle_threaded_irq(int irq, void *data)
+
+    Interrupt bottom-half handler.
+
+    :param int irq:
+        Interrupt line the hardware uses to notify new data has arrived.
+
+    :param void \*data:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_handle_threaded_irq.description`:
+
+Description
+-----------
+
+Mainly ensures interrupt is caused by a real "new sample available"
+condition. This relies upon the ability to perform blocking / sleeping bus
+accesses to slave's registers. This is why \ :c:func:`zpa2326_handle_threaded_irq`\  is
+called from within a thread, i.e. not called from hard interrupt context.
+
+When device is using its own internal hardware trigger in continuous sampling
+mode, data are available into hardware FIFO once interrupt has occurred. All
+we have to do is to dispatch the trigger, which in turn will fetch data and
+fill IIO buffer.
+
+When not using its own internal hardware trigger, the device has been
+configured in one-shot mode either by an external trigger or the IIO read_raw
+hook. This means one of the latter is currently waiting for sampling
+completion, in which case we must simply wake it up.
+
+See \ :c:func:`zpa2326_trigger_handler`\ .
+
+.. _`zpa2326_handle_threaded_irq.return`:
+
+Return
+------
+
+%IRQ_NONE - no consistent interrupt happened ;
+\ ``IRQ_HANDLED``\  - there was new samples available.
+
+.. _`zpa2326_wait_oneshot_completion`:
+
+zpa2326_wait_oneshot_completion
+===============================
+
+.. c:function:: int zpa2326_wait_oneshot_completion(const struct iio_dev *indio_dev, struct zpa2326_private *private)
+
+    Wait for oneshot data ready interrupt.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param struct zpa2326_private \*private:
+        Internal private state related to \ ``indio_dev``\ .
+
+.. _`zpa2326_wait_oneshot_completion.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_poll_oneshot_completion`:
+
+zpa2326_poll_oneshot_completion
+===============================
+
+.. c:function:: int zpa2326_poll_oneshot_completion(const struct iio_dev *indio_dev)
+
+    Actively poll for one shot data ready.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_poll_oneshot_completion.description`:
+
+Description
+-----------
+
+Loop over registers content to detect end of sampling cycle. Used when DT
+declared no valid interrupt lines.
+
+.. _`zpa2326_poll_oneshot_completion.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_fetch_raw_sample`:
+
+zpa2326_fetch_raw_sample
+========================
+
+.. c:function:: int zpa2326_fetch_raw_sample(const struct iio_dev *indio_dev, enum iio_chan_type type, int *value)
+
+    Retrieve a raw sample and convert it to CPU endianness.
+
+    :param const struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param enum iio_chan_type type:
+        Type of measurement / channel to fetch from.
+
+    :param int \*value:
+        Sample output.
+
+.. _`zpa2326_fetch_raw_sample.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_sample_oneshot`:
+
+zpa2326_sample_oneshot
+======================
+
+.. c:function:: int zpa2326_sample_oneshot(struct iio_dev *indio_dev, enum iio_chan_type type, int *value)
+
+    Perform a complete one shot sampling cycle.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param enum iio_chan_type type:
+        Type of measurement / channel to fetch from.
+
+    :param int \*value:
+        Sample output.
+
+.. _`zpa2326_sample_oneshot.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_trigger_handler`:
+
+zpa2326_trigger_handler
+=======================
+
+.. c:function:: irqreturn_t zpa2326_trigger_handler(int irq, void *data)
+
+    Perform an IIO buffered sampling round in one shot mode.
+
+    :param int irq:
+        The software interrupt assigned to \ ``data``\ 
+
+    :param void \*data:
+        The IIO poll function dispatched by external trigger our device is
+        attached to.
+
+.. _`zpa2326_trigger_handler.description`:
+
+Description
+-----------
+
+Bottom-half handler called by the IIO trigger to which our device is
+currently attached. Allows us to synchronize this device buffered sampling
+either with external events (such as timer expiration, external device sample
+ready, etc...) or with its own interrupt (internal hardware trigger).
+
+When using an external trigger, basically run the same sequence of operations
+as for \ :c:func:`zpa2326_sample_oneshot`\  with the following hereafter. Hardware FIFO
+is not cleared since already done at buffering enable time and samples
+dequeueing always retrieves the most recent value.
+
+Otherwise, when internal hardware trigger has dispatched us, just fetch data
+from hardware FIFO.
+
+Fetched data will pushed unprocessed to IIO buffer since samples conversion
+is delegated to userspace in buffered mode (endianness, etc...).
+
+.. _`zpa2326_trigger_handler.return`:
+
+Return
+------
+
+%IRQ_NONE - no consistent interrupt happened ;
+\ ``IRQ_HANDLED``\  - there was new samples available.
+
+.. _`zpa2326_preenable_buffer`:
+
+zpa2326_preenable_buffer
+========================
+
+.. c:function:: int zpa2326_preenable_buffer(struct iio_dev *indio_dev)
+
+    Prepare device for configuring triggered sampling modes.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_preenable_buffer.description`:
+
+Description
+-----------
+
+Basically power up device.
+Called with IIO device's lock held.
+
+.. _`zpa2326_preenable_buffer.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_postenable_buffer`:
+
+zpa2326_postenable_buffer
+=========================
+
+.. c:function:: int zpa2326_postenable_buffer(struct iio_dev *indio_dev)
+
+    Configure device for triggered sampling.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+.. _`zpa2326_postenable_buffer.description`:
+
+Description
+-----------
+
+Basically setup one-shot mode if plugging external trigger.
+Otherwise, let internal trigger configure continuous sampling :
+see \ :c:func:`zpa2326_set_trigger_state`\ .
+
+If an error is returned, IIO layer will call our postdisable hook for us,
+i.e. no need to explicitly power device off here.
+Called with IIO device's lock held.
+
+Called with IIO device's lock held.
+
+.. _`zpa2326_postenable_buffer.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_set_trigger_state`:
+
+zpa2326_set_trigger_state
+=========================
+
+.. c:function:: int zpa2326_set_trigger_state(struct iio_trigger *trig, bool state)
+
+    Start / stop continuous sampling.
+
+    :param struct iio_trigger \*trig:
+        The trigger being attached to IIO device associated with the sampling
+        hardware.
+
+    :param bool state:
+        Tell whether to start (true) or stop (false)
+
+.. _`zpa2326_set_trigger_state.description`:
+
+Description
+-----------
+
+Basically enable / disable hardware continuous sampling mode.
+
+Called with IIO device's lock held at \ :c:func:`postenable`\  or \ :c:func:`predisable`\  time.
+
+.. _`zpa2326_set_trigger_state.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. _`zpa2326_init_managed_trigger`:
+
+zpa2326_init_managed_trigger
+============================
+
+.. c:function:: int zpa2326_init_managed_trigger(struct device *parent, struct iio_dev *indio_dev, struct zpa2326_private *private, int irq)
+
+    Create an interrupt driven / hardware trigger allowing to notify external devices a new sample is ready.
+
+    :param struct device \*parent:
+        Hardware sampling device \ ``indio_dev``\  is a child of.
+
+    :param struct iio_dev \*indio_dev:
+        The IIO device associated with the sampling hardware.
+
+    :param struct zpa2326_private \*private:
+        Internal private state related to \ ``indio_dev``\ .
+
+    :param int irq:
+        Optional interrupt line the hardware uses to notify new data
+        samples are ready. Negative or zero values indicate no interrupts
+        are available, meaning polling is required.
+
+.. _`zpa2326_init_managed_trigger.description`:
+
+Description
+-----------
+
+Only relevant when DT declares a valid interrupt line.
+
+.. _`zpa2326_init_managed_trigger.return`:
+
+Return
+------
+
+Zero when successful, a negative error code otherwise.
+
+.. This file was automatic generated / don't edit.
+

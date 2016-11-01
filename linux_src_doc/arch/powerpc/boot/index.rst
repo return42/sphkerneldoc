@@ -7,4 +7,4 @@ boot
 .. toctree::
     :maxdepth: 1
 
-    gunzip_util_c
+    decompress_c

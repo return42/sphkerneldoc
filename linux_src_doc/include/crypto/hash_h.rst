@@ -141,7 +141,7 @@ setkey
     the driver. This function can store the key in the transformation
     context or can outright program it into the hardware. In the former
     case, one must be careful to program the key into the hardware at
-    appropriate time and one must be careful that .\ :c:func:`setkey`\  can be
+    appropriate time and one must be careful that .setkey() can be
     called multiple times during the existence of the transformation
     object. Not  all hashing algorithms do implement this function as it
     is only needed for keyed message digests. SHAx/MDx/CRCx do NOT
@@ -645,8 +645,8 @@ crypto_ahash_update
 Description
 -----------
 
-Updates the message digest state of the \ :c:type:`struct ahash_request <ahash_request>` handle. The input data
-is pointed to by the scatter/gather list registered in the \ :c:type:`struct ahash_request <ahash_request>`
+Updates the message digest state of the \ :c:type:`struct ahash_request <ahash_request>`\  handle. The input data
+is pointed to by the scatter/gather list registered in the \ :c:type:`struct ahash_request <ahash_request>`\ 
 handle
 
 .. _`crypto_ahash_update.return`:
@@ -753,7 +753,7 @@ ahash_request_set_callback
         related functionality, it may need to access data structures of the
         related functionality which can be referenced using this pointer. The
         callback function can access the memory via the "data" field in the
-        \ :c:type:`struct crypto_async_request <crypto_async_request>` data structure provided to the callback function.
+        \ :c:type:`struct crypto_async_request <crypto_async_request>`\  data structure provided to the callback function.
 
 .. _`ahash_request_set_callback.description`:
 
@@ -763,7 +763,7 @@ Description
 This function allows setting the callback function that is triggered once
 the cipher operation completes.
 
-The callback function is registered with the \ :c:type:`struct ahash_request <ahash_request>` handle and
+The callback function is registered with the \ :c:type:`struct ahash_request <ahash_request>`\  handle and
 must comply with the following template
 
 void callback_function(struct crypto_async_request \*req, int error)

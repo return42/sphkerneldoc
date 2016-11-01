@@ -21,7 +21,7 @@ validate_inode
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_iget`\ ' which validates various fields
+This is a helper function for 'ubifs_iget()' which validates various fields
 of a newly built inode to make sure they contain sane values and prevent
 possible vulnerabilities. Returns zero if the inode is all right and
 a non-zero error code if not.

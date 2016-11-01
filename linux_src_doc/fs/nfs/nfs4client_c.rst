@@ -72,18 +72,15 @@ Returns zero on success, or a negative errno if some error occurred.
 nfs4_init_client
 ================
 
-.. c:function:: struct nfs_client *nfs4_init_client(struct nfs_client *clp, const struct rpc_timeout *timeparms, const char *ip_addr)
+.. c:function:: struct nfs_client *nfs4_init_client(struct nfs_client *clp, const struct nfs_client_initdata *cl_init)
 
     Initialise an NFS4 client record
 
     :param struct nfs_client \*clp:
         nfs_client to initialise
 
-    :param const struct rpc_timeout \*timeparms:
-        timeout parameters for underlying RPC transport
-
-    :param const char \*ip_addr:
-        callback IP address in presentation format
+    :param const struct nfs_client_initdata \*cl_init:
+        *undescribed*
 
 .. _`nfs4_init_client.description`:
 
@@ -120,6 +117,44 @@ If zero is returned, an nfs_client pointer is planted in "result."
 
 NB: \ :c:func:`nfs40_walk_client_list`\  relies on the new nfs_client being
 the last nfs_client on the list.
+
+.. _`nfs4_detect_session_trunking`:
+
+nfs4_detect_session_trunking
+============================
+
+.. c:function:: int nfs4_detect_session_trunking(struct nfs_client *clp, struct nfs41_exchange_id_res *res, struct rpc_xprt *xprt)
+
+    Checks for session trunking.
+
+    :param struct nfs_client \*clp:
+        original mount nfs_client
+
+    :param struct nfs41_exchange_id_res \*res:
+        result structure from an exchange_id using the original mount
+        nfs_client with a new multi_addr transport
+
+    :param struct rpc_xprt \*xprt:
+        *undescribed*
+
+.. _`nfs4_detect_session_trunking.description`:
+
+Description
+-----------
+
+Called after a successful EXCHANGE_ID on a multi-addr connection.
+Upon success, add the transport.
+
+Returns zero on success, otherwise -EINVAL
+
+.. _`nfs4_detect_session_trunking.note`:
+
+Note
+----
+
+since the exchange_id for the new multi_addr transport uses the
+same nfs_client from the original mount, the cl_owner_id is reused,
+so eir_clientowner is the same.
 
 .. _`nfs41_walk_client_list`:
 

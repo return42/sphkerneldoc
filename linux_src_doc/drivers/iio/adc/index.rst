@@ -17,5 +17,7 @@ adc
     palmas_gpadc_c
     qcom-spmi-iadc_c
     qcom-spmi-vadc_c
+    rockchip_saradc_c
+    stx104_c
     twl4030-madc_c
     twl6030-gpadc_c

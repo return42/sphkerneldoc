@@ -396,6 +396,7 @@ Definition
         unsigned is_vf:1;
         unsigned is_nfp3200:1;
         unsigned fw_loaded:1;
+        unsigned bpf_offload_skip_sw:1;
         u32 ctrl;
         u32 fl_bufsz;
         u32 rx_offset;
@@ -417,6 +418,11 @@ Definition
         u32 rss_cfg;
         u8 rss_key[NFP_NET_CFG_RSS_KEY_SZ];
         u8 rss_itbl[NFP_NET_CFG_RSS_ITBL_SZ];
+        struct nfp_stat_pair rx_filter;
+        struct nfp_stat_pair rx_filter_prev;
+        unsigned long rx_filter_change;
+        struct timer_list rx_filter_stats_timer;
+        spinlock_t rx_filter_lock;
         int max_tx_rings;
         int max_rx_rings;
         int num_tx_rings;
@@ -480,6 +486,9 @@ is_nfp3200
 fw_loaded
     Is the firmware loaded?
 
+bpf_offload_skip_sw
+    Offloaded BPF program will not be rerun by cls_bpf
+
 ctrl
     Local copy of the control register/word.
 
@@ -536,6 +545,21 @@ rss_key
 
 rss_itbl
     RSS indirection table
+
+rx_filter
+    Filter offload statistics - dropped packets/bytes
+
+rx_filter_prev
+    Filter offload statistics - values from previous update
+
+rx_filter_change
+    Jiffies when statistics last changed
+
+rx_filter_stats_timer
+    Timer for polling filter offload statistics
+
+rx_filter_lock
+    Lock protecting timer state changes (teardown)
 
 max_tx_rings
     Maximum number of TX rings supported by the Firmware

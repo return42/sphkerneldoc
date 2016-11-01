@@ -21,8 +21,8 @@ ccw_device_notify
 Return
 ------
 
--\ ``EINVAL``\  if the device is offline or has no driver.
--\ ``EOPNOTSUPP``\  if the device's driver has no notifier registered.
+-%EINVAL if the device is offline or has no driver.
+-%EOPNOTSUPP if the device's driver has no notifier registered.
 \ ``NOTIFY_OK``\  if the driver wants to keep the device.
 \ ``NOTIFY_BAD``\  if the driver doesn't want to keep the device.
 

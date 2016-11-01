@@ -66,7 +66,7 @@ ptrace_event_enabled
         ptracee of interest
 
     :param int event:
-        \ ``PTRACE_EVENT``\ \_\* to test
+        %PTRACE_EVENT\_\* to test
 
 .. _`ptrace_event_enabled.description`:
 
@@ -87,7 +87,7 @@ ptrace_event
     possibly stop for a ptrace event notification
 
     :param int event:
-        \ ``PTRACE_EVENT``\ \_\* value to report
+        %PTRACE_EVENT\_\* value to report
 
     :param unsigned long message:
         value for \ ``PTRACE_GETEVENTMSG``\  to return
@@ -112,7 +112,7 @@ ptrace_event_pid
     possibly stop for a ptrace event notification
 
     :param int event:
-        \ ``PTRACE_EVENT``\ \_\* value to report
+        %PTRACE_EVENT\_\* value to report
 
     :param struct pid \*pid:
         process identifier for \ ``PTRACE_GETEVENTMSG``\  to return
@@ -151,7 +151,7 @@ Description
 This is called immediately after adding \ ``child``\  to its parent's children
 list.  \ ``ptrace``\  is false in the normal case, and true to ptrace \ ``child``\ .
 
-Called with current's siglock and write_lock_irq(\ :c:type:`struct tasklist_lock <tasklist_lock>`) held.
+Called with current's siglock and write_lock_irq(&tasklist_lock) held.
 
 .. _`ptrace_release_task`:
 
@@ -170,7 +170,7 @@ ptrace_release_task
 Description
 -----------
 
-Called with write_lock(\ :c:type:`struct tasklist_lock <tasklist_lock>`) held.
+Called with write_lock(&tasklist_lock) held.
 
 .. _`arch_has_single_step`:
 

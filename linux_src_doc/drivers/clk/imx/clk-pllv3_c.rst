@@ -20,8 +20,8 @@ Definition
     struct clk_pllv3 {
         struct clk_hw hw;
         void __iomem *base;
+        u32 power_bit;
         bool powerup_set;
-        u32 powerdown;
         u32 div_mask;
         u32 div_shift;
         unsigned long ref_clock;
@@ -38,11 +38,11 @@ hw
 base
     base address of PLL registers
 
-powerup_set
-    set POWER bit to power up the PLL
+power_bit
+    pll power bit mask
 
-powerdown
-    pll powerdown offset bit
+powerup_set
+    set power_bit to power up the PLL
 
 div_mask
     mask of divider bits

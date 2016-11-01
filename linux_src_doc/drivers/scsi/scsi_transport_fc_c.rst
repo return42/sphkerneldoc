@@ -203,7 +203,7 @@ fc_remove_host
     called to terminate any fc_transport-related elements for a scsi host.
 
     :param struct Scsi_Host \*shost:
-        Which \ :c:type:`struct Scsi_Host <Scsi_Host>`
+        Which \ :c:type:`struct Scsi_Host <Scsi_Host>`\ 
 
 .. _`fc_remove_host.description`:
 

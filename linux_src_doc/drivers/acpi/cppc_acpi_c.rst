@@ -6,11 +6,11 @@
 acpi_get_psd_map
 ================
 
-.. c:function:: int acpi_get_psd_map(struct cpudata **all_cpu_data)
+.. c:function:: int acpi_get_psd_map(struct cppc_cpudata **all_cpu_data)
 
     Map the CPUs in a common freq domain.
 
-    :param struct cpudata \*\*all_cpu_data:
+    :param struct cppc_cpudata \*\*all_cpu_data:
         Ptrs to CPU specific CPPC data including PSD info.
 
 .. _`acpi_get_psd_map.return`:
@@ -19,6 +19,33 @@ Return
 ------
 
 0 for success or negative value for err.
+
+.. _`cpc_ffh_supported`:
+
+cpc_ffh_supported
+=================
+
+.. c:function:: bool cpc_ffh_supported( void)
+
+    check if FFH reading supported
+
+    :param  void:
+        no arguments
+
+.. _`cpc_ffh_supported.description`:
+
+Description
+-----------
+
+Check if the architecture has support for functional fixed hardware
+read/write capability.
+
+.. _`cpc_ffh_supported.return`:
+
+Return
+------
+
+true for supported, false for not supported
 
 .. _`acpi_cppc_processor_probe`:
 
@@ -57,6 +84,70 @@ Return
 ------
 
 Void
+
+.. _`cpc_read_ffh`:
+
+cpc_read_ffh
+============
+
+.. c:function:: int cpc_read_ffh(int cpunum, struct cpc_reg *reg, u64 *val)
+
+    Read FFH register
+
+    :param int cpunum:
+        cpu number to read
+
+    :param struct cpc_reg \*reg:
+        cppc register information
+
+    :param u64 \*val:
+        place holder for return value
+
+.. _`cpc_read_ffh.description`:
+
+Description
+-----------
+
+Read bit_width bits from a specified address and bit_offset
+
+.. _`cpc_read_ffh.return`:
+
+Return
+------
+
+0 for success and error code
+
+.. _`cpc_write_ffh`:
+
+cpc_write_ffh
+=============
+
+.. c:function:: int cpc_write_ffh(int cpunum, struct cpc_reg *reg, u64 val)
+
+    Write FFH register
+
+    :param int cpunum:
+        cpu number to write
+
+    :param struct cpc_reg \*reg:
+        cppc register information
+
+    :param u64 val:
+        value to write
+
+.. _`cpc_write_ffh.description`:
+
+Description
+-----------
+
+Write value of bit_width bits to a specified address and bit_offset
+
+.. _`cpc_write_ffh.return`:
+
+Return
+------
+
+0 for success and error code
 
 .. _`cppc_get_perf_caps`:
 
@@ -123,6 +214,28 @@ Return
 ------
 
 0 for success, -ERRNO otherwise.
+
+.. _`cppc_get_transition_latency`:
+
+cppc_get_transition_latency
+===========================
+
+.. c:function:: unsigned int cppc_get_transition_latency(int cpu_num)
+
+    returns frequency transition latency in ns
+
+    :param int cpu_num:
+        *undescribed*
+
+.. _`cppc_get_transition_latency.description`:
+
+Description
+-----------
+
+ACPI CPPC does not explicitly specifiy how a platform can specify the
+transition latency for perfromance change requests. The closest we have
+is the timing information from the PCCT tables which provides the info
+on the number and frequency of PCC commands the platform can handle.
 
 .. This file was automatic generated / don't edit.
 

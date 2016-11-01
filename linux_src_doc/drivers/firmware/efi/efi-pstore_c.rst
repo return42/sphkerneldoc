@@ -22,7 +22,7 @@ efi_pstore_scan_sysfs_enter
 __efi_pstore_scan_sysfs_exit
 ============================
 
-.. c:function:: void __efi_pstore_scan_sysfs_exit(struct efivar_entry *entry, bool turn_off_scanning)
+.. c:function:: int __efi_pstore_scan_sysfs_exit(struct efivar_entry *entry, bool turn_off_scanning)
 
     :param struct efivar_entry \*entry:
         deleting entry
@@ -35,7 +35,7 @@ __efi_pstore_scan_sysfs_exit
 efi_pstore_scan_sysfs_exit
 ==========================
 
-.. c:function:: void efi_pstore_scan_sysfs_exit(struct efivar_entry *pos, struct efivar_entry *next, struct list_head *head, bool stop)
+.. c:function:: int efi_pstore_scan_sysfs_exit(struct efivar_entry *pos, struct efivar_entry *next, struct list_head *head, bool stop)
 
     :param struct efivar_entry \*pos:
         scanning entry
@@ -80,7 +80,7 @@ To begin iterating from the beginning of the list \ ``pos``\  must be \ ``NULL``
 efi_pstore_read
 ===============
 
-.. c:function:: ssize_t efi_pstore_read(u64 *id, enum pstore_type_id *type, int *count, struct timespec *timespec, char **buf, bool *compressed, struct pstore_info *psi)
+.. c:function:: ssize_t efi_pstore_read(u64 *id, enum pstore_type_id *type, int *count, struct timespec *timespec, char **buf, bool *compressed, ssize_t *ecc_notice_size, struct pstore_info *psi)
 
     :param u64 \*id:
         *undescribed*
@@ -98,6 +98,9 @@ efi_pstore_read
         *undescribed*
 
     :param bool \*compressed:
+        *undescribed*
+
+    :param ssize_t \*ecc_notice_size:
         *undescribed*
 
     :param struct pstore_info \*psi:

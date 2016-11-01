@@ -140,10 +140,10 @@ mgr
     topology manager this port lives under.
 
 cached_edid
-    *undescribed*
+    for DP logical ports - make tiling work by ensuringthat the EDID for all connectors is read immediately.
 
 has_audio
-    *undescribed*
+    Tracks whether the sink connector to this port isaudio-capable.
 
 .. _`drm_dp_mst_port.description`:
 
@@ -271,7 +271,6 @@ Definition
         int total_pbn;
         struct mutex qlock;
         struct list_head tx_msg_downq;
-        bool tx_down_in_progress;
         struct mutex payload_lock;
         struct drm_dp_vcpi **proposed_vcpis;
         struct drm_dp_payload *payloads;
@@ -295,94 +294,94 @@ dev
 
 cbs
     callbacks for connector addition and destruction.
-    \ ``max_dpcd_transaction_bytes``\  - maximum number of bytes to read/write in one go.
 
 max_dpcd_transaction_bytes
-    *undescribed*
+    maximum number of bytes to read/writein one go.
 
 aux
-    aux channel for the DP connector.
+    AUX channel for the DP MST connector this topolgy mgr iscontrolling.
 
 max_payloads
     maximum number of payloads the GPU can generate.
 
 conn_base_id
-    DRM connector ID this mgr is connected to.
+    DRM connector ID this mgr is connected to. Only usedto build the MST connector path value.
 
 down_rep_recv
-    msg receiver state for down replies.
+    Message receiver state for down replies. This and@up_req_recv are only ever access from the work item, which is
+    serialised.
 
 up_req_recv
-    msg receiver state for up requests.
+    Message receiver state for up requests. This and@down_rep_recv are only ever access from the work item, which is
+    serialised.
 
 lock
     protects mst state, primary, dpcd.
 
 mst_state
-    if this manager is enabled for an MST capable port.
+    If this manager is enabled for an MST capable port. Falseif no MST sink/branch devices is connected.
 
 mst_primary
-    pointer to the primary branch device.
+    Pointer to the primary/first branch device.
 
 dpcd
-    cache of DPCD for primary port.
+    Cache of DPCD for primary port.
 
 sink_count
-    *undescribed*
+    Sink count from DEVICE_SERVICE_IRQ_VECTOR_ESI0.
 
 pbn_div
     PBN to slots divisor.
 
 total_slots
-    *undescribed*
+    Total slots that can be allocated.
 
 avail_slots
-    *undescribed*
+    Still available slots that can be allocated.
 
 total_pbn
-    *undescribed*
+    Total PBN count.
 
 qlock
-    *undescribed*
+    protects \ ``tx_msg_downq``\ , the tx_slots in struct&drm_dp_mst_branch and txmsg->state once they are queued
 
 tx_msg_downq
-    *undescribed*
-
-tx_down_in_progress
-    *undescribed*
+    List of pending down replies.
 
 payload_lock
-    *undescribed*
+    Protect payload information.
 
 proposed_vcpis
-    *undescribed*
+    Array of pointers for the new VCPI allocation. TheVCPI structure itself is embedded into the corresponding
+    \ :c:type:`struct drm_dp_mst_port <drm_dp_mst_port>`\  structure.
 
 payloads
-    *undescribed*
+    Array of payloads.
 
 payload_mask
-    *undescribed*
+    Elements of \ ``payloads``\  actually in use. Sincereallocation of active outputs isn't possible gaps can be created by
+    disabling outputs out of order compared to how they've been enabled.
 
 vcpi_mask
-    *undescribed*
+    Similar to \ ``payload_mask``\ , but for \ ``proposed_vcpis``\ .
 
 tx_waitq
-    *undescribed*
+    Wait to queue stall for the tx worker.
 
 work
-    *undescribed*
+    Probe work.
 
 tx_work
-    *undescribed*
+    Sideband transmit worker. This can nest within the main@work worker for each transaction \ ``work``\  launches.
 
 destroy_connector_list
-    *undescribed*
+    List of to be destroyed connectors.
 
 destroy_connector_lock
-    *undescribed*
+    Protects \ ``connector_list``\ .
 
 destroy_connector_work
-    *undescribed*
+    Work item to destroy connectors. Needed toavoid locking inversion.
 
 .. _`drm_dp_mst_topology_mgr.description`:
 

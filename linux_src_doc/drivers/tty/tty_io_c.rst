@@ -184,7 +184,7 @@ a controlling terminal.
 Caller must hold
 ----------------
 
-\ :c:func:`tty_lock`\ 
+tty_lock()
 a readlock on tasklist_lock
 sighand lock
 
@@ -1086,7 +1086,7 @@ Description
 Performs the driver lookup, checks for a reopen, or otherwise
 performs the first-time tty initialization.
 
-Returns the locked initialized or re-opened \ :c:type:`struct tty_struct <tty_struct>`
+Returns the locked initialized or re-opened \ :c:type:`struct tty_struct <tty_struct>`\ 
 
 .. _`tty_open_by_driver.claims-the-global-tty_mutex-to-serialize`:
 
@@ -1398,7 +1398,7 @@ Locking
 
 Takes \ :c:func:`tty_lock`\  to serialize \ :c:func:`proc_set_tty`\  for this tty
 Takes tasklist_lock internally to walk sessions
-Takes ->\ :c:func:`siglock`\  when updating signal->tty
+Takes ->siglock() when updating signal->tty
 
 .. _`tty_get_pgrp`:
 

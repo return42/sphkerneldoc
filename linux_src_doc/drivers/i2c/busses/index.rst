@@ -20,7 +20,9 @@ busses
     i2c-meson_c
     i2c-mxs_c
     i2c-nomadik_c
-    i2c-octeon_c
+    i2c-octeon-core_c
+    i2c-octeon-core_h
+    i2c-octeon-platdrv_c
     i2c-pnx_c
     i2c-qup_c
     i2c-rk3x_c

@@ -231,22 +231,22 @@ is not called on this node concurrently.
 drm_vma_node_verify_access
 ==========================
 
-.. c:function:: int drm_vma_node_verify_access(struct drm_vma_offset_node *node, struct file *filp)
+.. c:function:: int drm_vma_node_verify_access(struct drm_vma_offset_node *node, struct drm_file *tag)
 
     Access verification helper for TTM
 
     :param struct drm_vma_offset_node \*node:
         Offset node
 
-    :param struct file \*filp:
-        Open-file
+    :param struct drm_file \*tag:
+        Tag of file to check
 
 .. _`drm_vma_node_verify_access.description`:
 
 Description
 -----------
 
-This checks whether \ ``filp``\  is granted access to \ ``node``\ . It is the same as
+This checks whether \ ``tag``\  is granted access to \ ``node``\ . It is the same as
 \ :c:func:`drm_vma_node_is_allowed`\  but suitable as drop-in helper for TTM
 \ :c:func:`verify_access`\  callbacks.
 

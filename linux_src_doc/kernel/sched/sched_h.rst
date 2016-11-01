@@ -42,45 +42,25 @@ group_first_cpu
 cpufreq_update_util
 ===================
 
-.. c:function:: void cpufreq_update_util(u64 time, unsigned long util, unsigned long max)
+.. c:function:: void cpufreq_update_util(struct rq *rq, unsigned int flags)
 
     Take a note about CPU utilization changes.
 
-    :param u64 time:
-        Current time.
+    :param struct rq \*rq:
+        Runqueue to carry out the update for.
 
-    :param unsigned long util:
-        Current utilization.
-
-    :param unsigned long max:
-        Utilization ceiling.
+    :param unsigned int flags:
+        Update reason flags.
 
 .. _`cpufreq_update_util.description`:
 
 Description
 -----------
 
-This function is called by the scheduler on every invocation of
-\ :c:func:`update_load_avg`\  on the CPU whose utilization is being updated.
+This function is called by the scheduler on the CPU whose utilization is
+being updated.
 
 It can only be called from RCU-sched read-side critical sections.
-
-.. _`cpufreq_trigger_update`:
-
-cpufreq_trigger_update
-======================
-
-.. c:function:: void cpufreq_trigger_update(u64 time)
-
-    Trigger CPU performance state evaluation if needed.
-
-    :param u64 time:
-        Current time.
-
-.. _`cpufreq_trigger_update.description`:
-
-Description
------------
 
 The way cpufreq is currently arranged requires it to evaluate the CPU
 performance state (frequency/voltage) on a regular basis to prevent it from

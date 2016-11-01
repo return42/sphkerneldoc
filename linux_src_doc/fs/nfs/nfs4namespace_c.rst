@@ -39,7 +39,7 @@ Please call \ :c:func:`rpc_shutdown_client`\  when you are done with this rpc cl
 nfs4_negotiate_security
 =======================
 
-.. c:function:: struct rpc_clnt *nfs4_negotiate_security(struct rpc_clnt *clnt, struct inode *inode, struct qstr *name)
+.. c:function:: struct rpc_clnt *nfs4_negotiate_security(struct rpc_clnt *clnt, struct inode *inode, const struct qstr *name)
 
     in response to an NFS4ERR_WRONGSEC on lookup, return an rpc_clnt that uses the best available security flavor with respect to the secinfo flavor list and the sec= mount options.
 
@@ -49,7 +49,7 @@ nfs4_negotiate_security
     :param struct inode \*inode:
         directory inode
 
-    :param struct qstr \*name:
+    :param const struct qstr \*name:
         lookup name
 
 .. _`nfs4_negotiate_security.description`:

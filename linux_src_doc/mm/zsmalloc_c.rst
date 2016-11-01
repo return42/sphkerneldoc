@@ -1,6 +1,39 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: mm/zsmalloc.c
 
+.. _`obj_to_location`:
+
+obj_to_location
+===============
+
+.. c:function:: void obj_to_location(unsigned long obj, struct page **page, unsigned int *obj_idx)
+
+    get (<page>, <obj_idx>) from encoded object value
+
+    :param unsigned long obj:
+        *undescribed*
+
+    :param struct page \*\*page:
+        page object resides in zspage
+
+    :param unsigned int \*obj_idx:
+        object index
+
+.. _`location_to_obj`:
+
+location_to_obj
+===============
+
+.. c:function:: unsigned long location_to_obj(struct page *page, unsigned int obj_idx)
+
+    get obj value encoded from (<page>, <obj_idx>)
+
+    :param struct page \*page:
+        page object resides in zspage
+
+    :param unsigned int obj_idx:
+        object index
+
 .. _`zs_map_object`:
 
 zs_map_object
@@ -49,7 +82,7 @@ zs_malloc
         size of block to allocate
 
     :param gfp_t gfp:
-        *undescribed*
+        gfp flags when allocating object
 
 .. _`zs_malloc.description`:
 
@@ -70,7 +103,7 @@ zs_create_pool
     Creates an allocation pool to work from.
 
     :param const char \*name:
-        *undescribed*
+        pool name to be created
 
 .. _`zs_create_pool.description`:
 

@@ -28,7 +28,6 @@ Definition
         struct v4l2_pix_format format;
         unsigned input;
         struct vb2_queue queue;
-        struct vb2_alloc_ctx *alloc_ctx;
         spinlock_t qlock;
         struct list_head buf_list;
         unsigned field;
@@ -69,9 +68,6 @@ input
 
 queue
     vb2 video capture queue
-
-alloc_ctx
-    vb2 contiguous DMA context
 
 qlock
     spinlock controlling access to buf_list and sequence

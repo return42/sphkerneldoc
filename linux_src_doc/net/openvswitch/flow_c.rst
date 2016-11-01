@@ -1,6 +1,21 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/openvswitch/flow.c
 
+.. _`parse_vlan_tag`:
+
+parse_vlan_tag
+==============
+
+.. c:function:: int parse_vlan_tag(struct sk_buff *skb, struct vlan_head *key_vh)
+
+    Returns ERROR on memory error. Returns 0 if it encounters a non-vlan or incomplete packet. Returns 1 after successfully parsing vlan tag.
+
+    :param struct sk_buff \*skb:
+        *undescribed*
+
+    :param struct vlan_head \*key_vh:
+        *undescribed*
+
 .. _`key_extract`:
 
 key_extract

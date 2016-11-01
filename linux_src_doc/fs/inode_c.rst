@@ -464,7 +464,7 @@ with the returned inode.  You probably should be using \ :c:func:`ilookup5`\  in
 Note2
 -----
 
-\ ``test``\  is called with the inode_hash_lock held, so can't sleep.
+@test is called with the inode_hash_lock held, so can't sleep.
 
 .. _`ilookup5`:
 
@@ -505,7 +505,7 @@ inode number is not sufficient for unique identification of an inode.
 Note
 ----
 
-\ ``test``\  is called with the inode_hash_lock held, so can't sleep.
+@test is called with the inode_hash_lock held, so can't sleep.
 
 .. _`ilookup`:
 
@@ -567,7 +567,7 @@ the inode_hash_lock spinlock held.
 
 This is a even more generalized version of \ :c:func:`ilookup5`\  when the
 function must never block --- \ :c:func:`find_inode`\  can block in
-\\ :c:func:`__wait_on_freeing_inode`\  --- or when the caller can not increment
+\__wait_on_freeing_inode() --- or when the caller can not increment
 the reference count because the resulting \ :c:func:`iput`\  might cause an
 inode eviction.  The tradeoff is that the \ ``match``\  funtion must be
 very carefully implemented.
@@ -620,12 +620,12 @@ That is, asked for block 4 of inode 1 the function will return the
 disk block relative to the disk start that holds that block of the
 file.
 
-.. _`atime_needs_update`:
+.. _`__atime_needs_update`:
 
-atime_needs_update
-==================
+__atime_needs_update
+====================
 
-.. c:function:: bool atime_needs_update(const struct path *path, struct inode *inode)
+.. c:function:: bool __atime_needs_update(const struct path *path, struct inode *inode, bool rcu)
 
     update the access time
 
@@ -635,7 +635,10 @@ atime_needs_update
     :param struct inode \*inode:
         inode to update
 
-.. _`atime_needs_update.description`:
+    :param bool rcu:
+        *undescribed*
+
+.. _`__atime_needs_update.description`:
 
 Description
 -----------
@@ -729,6 +732,29 @@ proceed with a truncate or equivalent operation.
 
 Must be called under a lock that serializes taking new references
 to i_dio_count, usually by inode->i_mutex.
+
+.. _`current_time`:
+
+current_time
+============
+
+.. c:function:: struct timespec current_time(struct inode *inode)
+
+    Return FS time
+
+    :param struct inode \*inode:
+        inode.
+
+.. _`current_time.description`:
+
+Description
+-----------
+
+Return the current time truncated to the time granularity supported by
+the fs.
+
+Note that inode and inode->sb cannot be NULL.
+Otherwise, the function warns and returns time without truncation.
 
 .. This file was automatic generated / don't edit.
 

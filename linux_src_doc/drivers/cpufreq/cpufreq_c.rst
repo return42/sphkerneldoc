@@ -151,6 +151,36 @@ cpufreq_disable_fast_switch
     :param struct cpufreq_policy \*policy:
         cpufreq policy to disable fast frequency switching for.
 
+.. _`cpufreq_driver_resolve_freq`:
+
+cpufreq_driver_resolve_freq
+===========================
+
+.. c:function:: unsigned int cpufreq_driver_resolve_freq(struct cpufreq_policy *policy, unsigned int target_freq)
+
+    Map a target frequency to a driver-supported one.
+
+    :param struct cpufreq_policy \*policy:
+        *undescribed*
+
+    :param unsigned int target_freq:
+        target frequency to resolve.
+
+.. _`cpufreq_driver_resolve_freq.description`:
+
+Description
+-----------
+
+The target to driver frequency mapping is cached in the policy.
+
+.. _`cpufreq_driver_resolve_freq.return`:
+
+Return
+------
+
+Lowest driver-supported frequency greater than or equal to the
+given target_freq, subject to policy (min/max) and driver limitations.
+
 .. _`cpufreq_parse_governor`:
 
 cpufreq_parse_governor
@@ -605,7 +635,7 @@ Description
 
 Carry out a fast frequency switch without sleeping.
 
-The driver's ->\ :c:func:`fast_switch`\  callback invoked by this function must be
+The driver's ->fast_switch() callback invoked by this function must be
 suitable for being called from within RCU-sched read-side critical sections
 and it is expected to select the minimum available frequency greater than or
 equal to \ ``target_freq``\  (CPUFREQ_RELATION_L).
@@ -614,9 +644,9 @@ This function must not be called if policy->fast_switch_enabled is unset.
 
 Governors calling this function must guarantee that it will never be invoked
 twice in parallel for the same policy and that it will never be called in
-parallel with either ->\ :c:func:`target`\  or ->\ :c:func:`target_index`\  for the same policy.
+parallel with either ->target() or ->target_index() for the same policy.
 
-If CPUFREQ_ENTRY_INVALID is returned by the driver's ->\ :c:func:`fast_switch`\ 
+If CPUFREQ_ENTRY_INVALID is returned by the driver's ->fast_switch()
 callback to indicate an error condition, the hardware configuration must be
 preserved.
 

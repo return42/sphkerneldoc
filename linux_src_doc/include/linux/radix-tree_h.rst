@@ -278,7 +278,7 @@ radix_tree_for_each_slot
 Description
 -----------
 
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
+@slot points to radix tree slot, \ ``iter``\ ->index contains its index.
 
 .. _`radix_tree_for_each_contig`:
 
@@ -306,7 +306,7 @@ radix_tree_for_each_contig
 Description
 -----------
 
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
+@slot points to radix tree slot, \ ``iter``\ ->index contains its index.
 
 .. _`radix_tree_for_each_tagged`:
 
@@ -337,7 +337,7 @@ radix_tree_for_each_tagged
 Description
 -----------
 
-\ ``slot``\  points to radix tree slot, \ ``iter``\ ->index contains its index.
+@slot points to radix tree slot, \ ``iter``\ ->index contains its index.
 
 .. This file was automatic generated / don't edit.
 

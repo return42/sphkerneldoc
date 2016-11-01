@@ -47,7 +47,7 @@ kvm_arm_copy_reg_indices
 Description
 -----------
 
-We do core registers right here, then we apppend system regs.
+We do core registers right here, then we append system regs.
 
 .. _`kvm_arch_vcpu_ioctl_set_guest_debug`:
 

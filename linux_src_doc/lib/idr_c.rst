@@ -58,7 +58,7 @@ sub_alloc
 Description
 -----------
 
-Allocate an id in range [\ ``starting_id``\ , INT_MAX] from \ ``idp``\  without
+Allocate an id in range [@starting_id, INT_MAX] from \ ``idp``\  without
 growing its depth.  Returns
 
 the allocated id >= 0 if successful,
@@ -275,7 +275,7 @@ Description
 -----------
 
 Returns pointer to registered object with id, which is next number to
-given id. After being looked up, \*\ ``nextidp``\  will be updated for the next
+given id. After being looked up, \*@nextidp will be updated for the next
 iteration.
 
 This function can be called under \ :c:func:`rcu_read_lock`\ , given that the leaf
@@ -327,7 +327,7 @@ idr_init
 Description
 -----------
 
-This function is use to set up the handle (\ ``idp``\ ) that you will pass
+This function is use to set up the handle (@idp) that you will pass
 to the rest of the functions.
 
 .. _`ida_pre_get`:
@@ -479,7 +479,7 @@ ida_init
 Description
 -----------
 
-This function is use to set up the handle (\ ``ida``\ ) that you will pass
+This function is use to set up the handle (@ida) that you will pass
 to the rest of the functions.
 
 .. This file was automatic generated / don't edit.

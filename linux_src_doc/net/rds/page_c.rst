@@ -24,7 +24,7 @@ rds_page_remainder_alloc
 Description
 -----------
 
-\ ``gfp``\  is always ored with \__GFP_HIGHMEM.  Callers must be prepared to
+@gfp is always ored with \__GFP_HIGHMEM.  Callers must be prepared to
 kmap the pages, etc.
 
 If \ ``bytes``\  is at least a full page then this just returns a page from

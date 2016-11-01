@@ -23,7 +23,6 @@ Definition
         u64 aperf;
         u64 mperf;
         u64 tsc;
-        int freq;
         u64 time;
     }
 
@@ -52,9 +51,6 @@ mperf
 tsc
     Difference of time stamp counter between last and
     current sample
-
-freq
-    Effective frequency calculated from APERF/MPERF
 
 time
     Current time from scheduler
@@ -258,6 +254,7 @@ Definition
         struct pstate_data pstate;
         struct vid_data vid;
         struct _pid pid;
+        u64 last_update;
         u64 last_sample_time;
         u64 prev_aperf;
         u64 prev_mperf;
@@ -268,6 +265,7 @@ Definition
         struct acpi_processor_performance acpi_perf_data;
         bool valid_pss_table;
     #endif
+        unsigned int iowait_boost;
     }
 
 .. _`cpudata.members`:
@@ -293,6 +291,9 @@ vid
 pid
     Stores PID parameters for this CPU
 
+last_update
+    Time of the last update.
+
 last_sample_time
     Last Sample time
 
@@ -317,6 +318,9 @@ acpi_perf_data
 
 valid_pss_table
     Set to true for valid ACPI \_PSS entries found
+
+iowait_boost
+    iowait-related boost fraction
 
 .. _`cpudata.description`:
 
@@ -349,6 +353,7 @@ Definition
         int p_gain_pct;
         int d_gain_pct;
         int i_gain_pct;
+        bool boost_iowait;
     }
 
 .. _`pstate_adjust_policy.members`:
@@ -376,6 +381,9 @@ d_gain_pct
 
 i_gain_pct
     PID integral gain
+
+boost_iowait
+    Whether or not to use iowait boosting.
 
 .. _`pstate_adjust_policy.description`:
 

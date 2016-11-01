@@ -267,7 +267,7 @@ drm_fb_helper_deferred_io
 Description
 -----------
 
-This function is used as the \ :c:type:`struct fb_deferred_io <fb_deferred_io>` ->deferred_io
+This function is used as the \ :c:type:`struct fb_deferred_io <fb_deferred_io>`\  ->deferred_io
 callback function for flushing the fbdev mmap writes.
 
 .. _`drm_fb_helper_sys_read`:
@@ -463,22 +463,54 @@ A wrapper around cfb_imageblit implemented by fbdev core
 drm_fb_helper_set_suspend
 =========================
 
-.. c:function:: void drm_fb_helper_set_suspend(struct drm_fb_helper *fb_helper, int state)
+.. c:function:: void drm_fb_helper_set_suspend(struct drm_fb_helper *fb_helper, bool suspend)
 
     wrapper around fb_set_suspend
 
     :param struct drm_fb_helper \*fb_helper:
         driver-allocated fbdev helper
 
-    :param int state:
-        desired state, zero to resume, non-zero to suspend
+    :param bool suspend:
+        whether to suspend or resume
 
 .. _`drm_fb_helper_set_suspend.description`:
 
 Description
 -----------
 
-A wrapper around fb_set_suspend implemented by fbdev core
+A wrapper around fb_set_suspend implemented by fbdev core.
+Use \ :c:func:`drm_fb_helper_set_suspend_unlocked`\  if you don't need to take
+the lock yourself
+
+.. _`drm_fb_helper_set_suspend_unlocked`:
+
+drm_fb_helper_set_suspend_unlocked
+==================================
+
+.. c:function:: void drm_fb_helper_set_suspend_unlocked(struct drm_fb_helper *fb_helper, bool suspend)
+
+    wrapper around fb_set_suspend that also takes the console lock
+
+    :param struct drm_fb_helper \*fb_helper:
+        driver-allocated fbdev helper
+
+    :param bool suspend:
+        whether to suspend or resume
+
+.. _`drm_fb_helper_set_suspend_unlocked.description`:
+
+Description
+-----------
+
+A wrapper around \ :c:func:`fb_set_suspend`\  that takes the console lock. If the lock
+isn't available on resume, a worker is tasked with waiting for the lock
+to become available. The console lock can be pretty contented on resume
+due to all the printk activity.
+
+This function can be called multiple times with the same state since
+\ :c:type:`fb_info->state <fb_info>`\  is checked to see if fbdev is running or not before locking.
+
+Use \ :c:func:`drm_fb_helper_set_suspend`\  if you need to take the lock yourself.
 
 .. _`drm_fb_helper_setcmap`:
 
@@ -692,7 +724,7 @@ Description
 -----------
 
 Scan the connectors attached to the fb_helper and try to put together a
-setup after \*notification of a change in output configuration.
+setup after notification of a change in output configuration.
 
 Called at runtime, takes the mode config locks to be able to check/change the
 modeset configuration. Must be run from process context (which usually means

@@ -99,7 +99,7 @@ Description
 Check if the device's runtime PM status allows it to be suspended.  If
 another idle notification has been started earlier, return immediately.  If
 the RPM_ASYNC flag is set then queue an idle-notification request; otherwise
-run the ->\ :c:func:`runtime_idle`\  callback directly. If the ->runtime_idle callback
+run the ->runtime_idle() callback directly. If the ->runtime_idle callback
 doesn't exist or if it returns 0, call rpm_suspend with the RPM_AUTO flag.
 
 This function must be called under dev->power.lock with interrupts disabled.
@@ -144,7 +144,7 @@ Cancel a pending idle notification, autosuspend or suspend. If
 another suspend has been started earlier, either return immediately
 or wait for it to finish, depending on the RPM_NOWAIT and RPM_ASYNC
 flags. If the RPM_ASYNC flag is set then queue a suspend request;
-otherwise run the ->\ :c:func:`runtime_suspend`\  callback directly. When
+otherwise run the ->runtime_suspend() callback directly. When
 ->runtime_suspend succeeded, if a deferred resume was requested while
 the callback was running then carry it out, otherwise send an idle
 notification for its parent (if the suspend succeeded and both
@@ -182,7 +182,7 @@ RPM_NOWAIT and RPM_ASYNC flags.  Similarly, if there's a suspend running in
 parallel with this function, either tell the other process to resume after
 suspending (deferred_resume) or wait for it to finish.  If the RPM_ASYNC
 flag is set then queue a resume request; otherwise run the
-->\ :c:func:`runtime_resume`\  callback directly.  Queue an idle notification for the
+->runtime_resume() callback directly.  Queue an idle notification for the
 device if the resume succeeded.
 
 This function must be called under dev->power.lock with interrupts disabled.
@@ -371,7 +371,7 @@ However, if the device has a parent and the parent is not active, and the
 parent's power.ignore_children flag is unset, the device's status cannot be
 set to RPM_ACTIVE, so -EBUSY is returned in that case.
 
-If successful, \\ :c:func:`__pm_runtime_set_status`\  clears the power.runtime_error field
+If successful, \__pm_runtime_set_status() clears the power.runtime_error field
 and the device parent's counter of unsuspended children is modified to
 reflect the new status.  If the new status is RPM_SUSPENDED, an idle
 notification request for the parent is submitted.
@@ -455,7 +455,7 @@ operations in progress to complete.  The device can be either active or
 suspended after its runtime PM has been disabled.
 
 If \ ``check_resume``\  is set and there's a resume request pending when
-\\ :c:func:`__pm_runtime_disable`\  is called and power.disable_depth is zero, the
+\__pm_runtime_disable() is called and power.disable_depth is zero, the
 function will wake up the device before disabling its runtime PM.
 
 .. _`pm_runtime_enable`:
@@ -549,7 +549,7 @@ Description
 -----------
 
 Set the power.irq_safe flag, which tells the PM core that the
-->\ :c:func:`runtime_suspend`\  and ->\ :c:func:`runtime_resume`\  callbacks for this device should
+->runtime_suspend() and ->runtime_resume() callbacks for this device should
 always be invoked with the spinlock held and interrupts disabled.  It also
 causes the parent's usage counter to be permanently incremented, preventing
 the parent from runtime suspending -- otherwise an irq-safe child might have

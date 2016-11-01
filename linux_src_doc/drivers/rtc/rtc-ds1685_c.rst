@@ -90,6 +90,28 @@ Description
 
 Returns the value, converted to BCD if originally in BIN and bcd_mode TRUE.
 
+.. _`ds1685_rtc_check_mday`:
+
+ds1685_rtc_check_mday
+=====================
+
+.. c:function:: int ds1685_rtc_check_mday(struct ds1685_priv *rtc, u8 mday)
+
+    check validity of the day of month.
+
+    :param struct ds1685_priv \*rtc:
+        pointer to the ds1685 rtc structure.
+
+    :param u8 mday:
+        day of month.
+
+.. _`ds1685_rtc_check_mday.description`:
+
+Description
+-----------
+
+Returns -EDOM if the day of month is not within 1..31 range.
+
 .. _`ds1685_rtc_switch_to_bank0`:
 
 ds1685_rtc_switch_to_bank0

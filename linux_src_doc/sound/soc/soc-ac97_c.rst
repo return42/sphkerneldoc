@@ -19,8 +19,8 @@ Description
 -----------
 
 Allocated a new snd_ac97 device and intializes it, but does not yet register
-it. The caller is responsible to either call device_add(\ :c:type:`ac97->dev <ac97>`\ ) to
-register the device, or to call put_device(\ :c:type:`ac97->dev <ac97>`\ ) to free the device.
+it. The caller is responsible to either call device_add(&ac97->dev) to
+register the device, or to call put_device(&ac97->dev) to free the device.
 
 .. _`snd_soc_alloc_ac97_codec.return`:
 

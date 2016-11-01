@@ -23,6 +23,7 @@ Definition
         struct clk *pclk;
         unsigned int baud;
         struct notifier_block clk_rate_change_nb;
+        u32 quirks;
     }
 
 .. _`cdns_uart.members`:
@@ -44,6 +45,50 @@ baud
 
 clk_rate_change_nb
     Notifier block for clock changes
+
+quirks
+    *undescribed*
+
+.. _`cdns_uart_handle_rx`:
+
+cdns_uart_handle_rx
+===================
+
+.. c:function:: void cdns_uart_handle_rx(void *dev_id, unsigned int isrstatus)
+
+    Handle the received bytes along with Rx errors.
+
+    :param void \*dev_id:
+        Id of the UART port
+
+    :param unsigned int isrstatus:
+        The interrupt status register value as read
+
+.. _`cdns_uart_handle_rx.return`:
+
+Return
+------
+
+None
+
+.. _`cdns_uart_handle_tx`:
+
+cdns_uart_handle_tx
+===================
+
+.. c:function:: void cdns_uart_handle_tx(void *dev_id)
+
+    Handle the bytes to be Txed.
+
+    :param void \*dev_id:
+        Id of the UART port
+
+.. _`cdns_uart_handle_tx.return`:
+
+Return
+------
+
+None
 
 .. _`cdns_uart_isr`:
 

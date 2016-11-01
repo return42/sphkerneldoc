@@ -28,7 +28,7 @@ Description
 -----------
 
 Wait for the PRCM to indicate that the module identified by
-(\ ``prcm_mod``\ , \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
+(@prcm_mod, \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
 success or -EBUSY if the module doesn't enable in time.
 
 .. _`omap3xxx_cm_split_idlest_reg`:

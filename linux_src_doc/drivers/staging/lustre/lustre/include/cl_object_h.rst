@@ -75,6 +75,47 @@ CL_PAGE_HEADER
     :param ... :
         variable arguments
 
+.. _`__page_in_use`:
+
+__page_in_use
+=============
+
+.. c:function:: bool __page_in_use(const struct cl_page *page, int refc)
+
+    :param const struct cl_page \*page:
+        *undescribed*
+
+    :param int refc:
+        *undescribed*
+
+.. _`__page_in_use.description`:
+
+Description
+-----------
+
+Client cache holds a refcount, this refcount will be dropped when
+the page is taken out of cache, see \ :c:func:`vvp_page_delete`\ .
+
+.. _`cl_page_in_use`:
+
+cl_page_in_use
+==============
+
+.. c:function::  cl_page_in_use( pg)
+
+    :param  pg:
+        *undescribed*
+
+.. _`cl_page_in_use_noref`:
+
+cl_page_in_use_noref
+====================
+
+.. c:function::  cl_page_in_use_noref( pg)
+
+    :param  pg:
+        *undescribed*
+
 .. _`cl_site_stats_print`:
 
 cl_site_stats_print
@@ -111,6 +152,16 @@ cl_object_refc
 .. c:function:: int cl_object_refc(struct cl_object *clob)
 
     :param struct cl_object \*clob:
+        *undescribed*
+
+.. _`cl_cache_init`:
+
+cl_cache_init
+=============
+
+.. c:function:: struct cl_client_cache *cl_cache_init(unsigned long lru_page_max)
+
+    :param unsigned long lru_page_max:
         *undescribed*
 
 .. _`cl_io_is_append`:

@@ -6,12 +6,12 @@
 get_next_freq
 =============
 
-.. c:function:: unsigned int get_next_freq(struct cpufreq_policy *policy, unsigned long util, unsigned long max)
+.. c:function:: unsigned int get_next_freq(struct sugov_cpu *sg_cpu, unsigned long util, unsigned long max)
 
     Compute a new frequency for a given cpufreq policy.
 
-    :param struct cpufreq_policy \*policy:
-        cpufreq policy object to compute the new frequency for.
+    :param struct sugov_cpu \*sg_cpu:
+        schedutil cpu object to compute the new frequency for.
 
     :param unsigned long util:
         Current CPU utilization.
@@ -35,6 +35,10 @@ util_raw \* (curr_freq / max_freq) which leads to
 next_freq = C \* curr_freq \* util_raw / max
 
 Take C = 1.25 for the frequency tipping point at (util / max) = 0.8.
+
+The lowest driver-supported frequency which is equal or greater than the raw
+next_freq (as calculated above) is returned, subject to policy min/max and
+cpufreq driver limitations.
 
 .. This file was automatic generated / don't edit.
 

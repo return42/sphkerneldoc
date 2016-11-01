@@ -802,9 +802,12 @@ hns_dsaf_get_stats
 hns_dsaf_get_sset_count
 =======================
 
-.. c:function:: int hns_dsaf_get_sset_count(int stringset)
+.. c:function:: int hns_dsaf_get_sset_count(struct dsaf_device *dsaf_dev, int stringset)
 
     get dsaf string set count \ ``stringset``\ : type of values in data return dsaf string name count
+
+    :param struct dsaf_device \*dsaf_dev:
+        *undescribed*
 
     :param int stringset:
         *undescribed*
@@ -814,7 +817,7 @@ hns_dsaf_get_sset_count
 hns_dsaf_get_strings
 ====================
 
-.. c:function:: void hns_dsaf_get_strings(int stringset, u8 *data, int port)
+.. c:function:: void hns_dsaf_get_strings(int stringset, u8 *data, int port, struct dsaf_device *dsaf_dev)
 
     get dsaf string set \ ``stringset``\ :srting set index \ ``data``\ :strings name value \ ``port``\ :port index
 
@@ -825,6 +828,9 @@ hns_dsaf_get_strings
         *undescribed*
 
     :param int port:
+        *undescribed*
+
+    :param struct dsaf_device \*dsaf_dev:
         *undescribed*
 
 .. _`hns_dsaf_get_regs_count`:
@@ -863,6 +869,21 @@ hns_dsaf_remove
 
     :param struct platform_device \*pdev:
         dasf platform device
+
+.. _`hns_dsaf_roce_reset`:
+
+hns_dsaf_roce_reset
+===================
+
+.. c:function:: int hns_dsaf_roce_reset(struct fwnode_handle *dsaf_fwnode, bool dereset)
+
+    reset dsaf and roce
+
+    :param struct fwnode_handle \*dsaf_fwnode:
+        Pointer to framework node for the dasf
+
+    :param bool dereset:
+        *undescribed*
 
 .. This file was automatic generated / don't edit.
 

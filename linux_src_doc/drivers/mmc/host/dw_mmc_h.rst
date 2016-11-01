@@ -60,9 +60,8 @@ clock
     Clock rate configured by \ :c:func:`set_ios`\ . Protected by host->lock.
 
 __clk_old
-    The last updated clock with reflecting clock divider.
-    Keeping track of this helps us to avoid spamming the console
-    with CONFIG_MMC_CLKGATE.
+    The last clock value that was requested from core.
+    Keeping track of this helps us to avoid spamming the console.
 
 flags
     Random state bits associated with the slot.

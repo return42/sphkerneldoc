@@ -1,13 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/be2iscsi/be_main.h
 
-.. _`be_adapter_link_up`:
-
-BE_ADAPTER_LINK_UP
-==================
-
-.. c:function::  BE_ADAPTER_LINK_UP()
-
 .. _`hwi_get_async_pdu_ctx`:
 
 HWI_GET_ASYNC_PDU_CTX

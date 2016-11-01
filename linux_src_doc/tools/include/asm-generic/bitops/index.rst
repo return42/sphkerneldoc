@@ -8,4 +8,7 @@ bitops
     :maxdepth: 1
 
     __ffs_h
+    __fls_h
     find_h
+    fls64_h
+    fls_h

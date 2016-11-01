@@ -6,14 +6,14 @@
 st_reg_complete
 ===============
 
-.. c:function:: void st_reg_complete(struct st_data_s *st_gdata, char err)
+.. c:function:: void st_reg_complete(struct st_data_s *st_gdata, int err)
 
     to call registration complete callbacks of all protocol stack drivers This function is being called with spin lock held, protocol drivers are only expected to complete their waits and do nothing more than that.
 
     :param struct st_data_s \*st_gdata:
         *undescribed*
 
-    :param char err:
+    :param int err:
         *undescribed*
 
 .. _`st_wakeup_ack`:

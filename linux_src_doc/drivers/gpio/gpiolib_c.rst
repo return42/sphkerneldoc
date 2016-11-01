@@ -79,6 +79,103 @@ gpio_name_to_desc
     :param const char \* const name:
         *undescribed*
 
+.. _`linehandle_state`:
+
+struct linehandle_state
+=======================
+
+.. c:type:: struct linehandle_state
+
+    contains the state of a userspace handle
+
+.. _`linehandle_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct linehandle_state {
+        struct gpio_device *gdev;
+        const char *label;
+        struct gpio_desc  *descs[GPIOHANDLES_MAX];
+        u32 numdescs;
+    }
+
+.. _`linehandle_state.members`:
+
+Members
+-------
+
+gdev
+    the GPIO device the handle pertains to
+
+label
+    consumer label used to tag descriptors
+
+descs
+    the GPIO descriptors held by this handle
+
+numdescs
+    the number of descriptors held in the descs array
+
+.. _`lineevent_state`:
+
+struct lineevent_state
+======================
+
+.. c:type:: struct lineevent_state
+
+    contains the state of a userspace event
+
+.. _`lineevent_state.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct lineevent_state {
+        struct gpio_device *gdev;
+        const char *label;
+        struct gpio_desc *desc;
+        u32 eflags;
+        int irq;
+        wait_queue_head_t wait;
+        DECLARE_KFIFO(events# struct gpioevent_data# 16);
+        struct mutex read_lock;
+    }
+
+.. _`lineevent_state.members`:
+
+Members
+-------
+
+gdev
+    the GPIO device the event pertains to
+
+label
+    consumer label used to tag descriptors
+
+desc
+    the GPIO descriptor held by this event
+
+eflags
+    the event flags this line was requested with
+
+irq
+    the interrupt that trigger in response to events on this GPIO
+
+wait
+    wait queue that handles blocking reads of events
+
+16)
+    *undescribed*
+
+read_lock
+    mutex lock to protect reads from colliding with adding
+    new events to the FIFO
+
 .. _`gpio_ioctl`:
 
 gpio_ioctl

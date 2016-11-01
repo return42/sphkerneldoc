@@ -8,6 +8,5 @@ b43
     :maxdepth: 1
 
     b43_h
-    phy_a_h
     phy_common_c
     phy_common_h

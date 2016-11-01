@@ -48,7 +48,7 @@ cnt
     current number of entries
 
 bits
-    hashtable size (\ ``sz``\  = 2^\ ``bits``\ )
+    hashtable size (@sz = 2^@bits)
 
 .. This file was automatic generated / don't edit.
 

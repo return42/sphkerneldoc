@@ -471,7 +471,7 @@ This routine checks whether there are more remaining Port Logins
 (PLOGI) to be issued for the \ ``vport``\ . If so, it will invoke the routine
 \ :c:func:`lpfc_els_disc_plogi`\  to go through the Node Port Recovery (NPR) nodes
 to issue ELS PLOGIs up to the configured discover threads with the
-\ ``vport``\  (\ ``vport``\ ->cfg_discovery_threads). The function also decrement
+\ ``vport``\  (@vport->cfg_discovery_threads). The function also decrement
 the \ ``vport``\ 's num_disc_node by 1 if it is not already 0.
 
 .. _`lpfc_plogi_confirm_nport`:
@@ -1024,7 +1024,7 @@ Description
 -----------
 
 This routine issues a Fibre Channel Address Resolution Response
-(FARPR) to a node on a vport. The remote node N_Port identifier (\ ``nportid``\ )
+(FARPR) to a node on a vport. The remote node N_Port identifier (@nportid)
 is passed into the function. It first search the \ ``vport``\  node list to find
 the matching ndlp. If no such ndlp is found, a new ndlp shall be created
 for this (FARPR) purpose. An IOCB is allocated, payload prepared, and the
@@ -2822,7 +2822,7 @@ Description
 -----------
 
 This routine prepares and issues a Fabric Discover (FDISC) IOCB to
-a remote node (\ ``ndlp``\ ) off a \ ``vport``\ . It uses the \ :c:func:`lpfc_issue_fabric_iocb`\ 
+a remote node (@ndlp) off a \ ``vport``\ . It uses the \ :c:func:`lpfc_issue_fabric_iocb`\ 
 routine to issue the IOCB, which makes sure only one outstanding fabric
 IOCB will be sent off HBA at any given time.
 

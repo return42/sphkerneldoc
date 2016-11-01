@@ -18,7 +18,7 @@ hcd_buffer_create
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`hcd_buffer_create.description`:
 
@@ -55,7 +55,7 @@ hcd_buffer_destroy
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`hcd_buffer_destroy.description`:
 

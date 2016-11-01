@@ -22,11 +22,11 @@ Return
 \ ``0``\  if ok and a warm reset was done (the device still exists in
 the system).
 
--\ ``ENODEV``\  if a cold/bus reset had to be done (device has
+-%ENODEV if a cold/bus reset had to be done (device has
 disconnected and reconnected, so current handle is not valid
 any more).
 
--\ ``EINVAL``\  if the device is not even registered.
+-%EINVAL if the device is not even registered.
 
 Any other negative error code shall be considered as
 non-recoverable.

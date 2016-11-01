@@ -25,7 +25,7 @@ Copyright (C) 2011 Texas Instruments Incorporated - http://www.ti.com
 Authors
 -------
 
-Felipe Balbi <balbi\ ``ti``\ .com>,
+Felipe Balbi <balbi@ti.com>,
 
 .. _`dwc3_host_init.this-program-is-free-software`:
 

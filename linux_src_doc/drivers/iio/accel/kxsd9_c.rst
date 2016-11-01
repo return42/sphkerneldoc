@@ -18,10 +18,11 @@ Definition
 .. code-block:: c
 
     struct kxsd9_state {
-        struct mutex buf_lock;
-        struct spi_device *us;
-        u8 rx[KXSD9_STATE_RX_SIZE] ____cacheline_aligned;
-        u8 tx[KXSD9_STATE_TX_SIZE];
+        struct device *dev;
+        struct regmap *map;
+        struct iio_mount_matrix orientation;
+        struct regulator_bulk_data regs[2];
+        u8 scale;
     }
 
 .. _`kxsd9_state.members`:
@@ -29,17 +30,20 @@ Definition
 Members
 -------
 
-buf_lock
-    protect the rx and tx buffers.
+dev
+    pointer to the parent device
 
-us
-    spi device
+map
+    regmap to the device
 
-rx
-    single rx buffer storage
+orientation
+    mounting matrix, flipped axis etc
 
-tx
-    single tx buffer storage
+regs
+    regulators for this device, VDD and IOVDD
+
+scale
+    the current scaling setting
 
 .. This file was automatic generated / don't edit.
 

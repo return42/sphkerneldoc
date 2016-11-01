@@ -57,7 +57,7 @@ ib_ud_header_pack
 Description
 -----------
 
-\ :c:func:`ib_ud_header_pack`\  packs the UD header structure \ ``header``\  into wire
+ib_ud_header_pack() packs the UD header structure \ ``header``\  into wire
 format in the buffer \ ``buf``\ .
 
 .. _`ib_ud_header_unpack`:
@@ -80,7 +80,7 @@ ib_ud_header_unpack
 Description
 -----------
 
-\ :c:func:`ib_ud_header_pack`\  unpacks the UD header structure \ ``header``\  from wire
+ib_ud_header_pack() unpacks the UD header structure \ ``header``\  from wire
 format in the buffer \ ``buf``\ .
 
 .. This file was automatic generated / don't edit.

@@ -92,7 +92,7 @@ blkg_to_pd
 Description
 -----------
 
-Return pointer to private data associated with the \ ``blkg``\ -\ ``pol``\  pair.
+Return pointer to private data associated with the \ ``blkg``\ -@pol pair.
 
 .. _`pd_to_blkg`:
 
@@ -111,7 +111,7 @@ pd_to_blkg
 Description
 -----------
 
-\ ``pd``\  is policy private data.  Determine the blkg it's associated with.
+@pd is policy private data.  Determine the blkg it's associated with.
 
 .. _`blkg_path`:
 
@@ -247,7 +247,7 @@ Description
 
 The caller wants to allocate a request from \ ``q``\  to use for \ ``bio``\ .  Find
 the request_list to use and obtain a reference on it.  Should be called
-under queue_lock.  This function is guaranteed to return non-\ ``NULL``\ 
+under queue_lock.  This function is guaranteed to return non-%NULL
 request_list.
 
 .. _`blk_put_rl`:
@@ -408,15 +408,18 @@ Add \ ``from``\ 's count including the aux one to \ ``to``\ 's aux count.
 blkg_rwstat_add
 ===============
 
-.. c:function:: void blkg_rwstat_add(struct blkg_rwstat *rwstat, int rw, uint64_t val)
+.. c:function:: void blkg_rwstat_add(struct blkg_rwstat *rwstat, int op, int op_flags, uint64_t val)
 
     add a value to a blkg_rwstat
 
     :param struct blkg_rwstat \*rwstat:
         target blkg_rwstat
 
-    :param int rw:
-        mask of REQ_{WRITE\|SYNC}
+    :param int op:
+        REQ_OP
+
+    :param int op_flags:
+        rq_flag_bits
 
     :param uint64_t val:
         value to add

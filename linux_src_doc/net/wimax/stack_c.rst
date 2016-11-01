@@ -38,7 +38,7 @@ optional payload with information about the new state).
 NOTE
 ----
 
-\ ``wimax_dev``\  must be locked
+@wimax_dev must be locked
 
 .. _`wimax_state_get`:
 

@@ -455,7 +455,7 @@ struct iwl_mvm_internal_rxq_notif
 
 .. c:type:: struct iwl_mvm_internal_rxq_notif
 
-    Internal representation of the data sent in \ :c:type:`struct iwl_rxq_sync_cmd <iwl_rxq_sync_cmd>`. Should be DWORD aligned. FW is agnostic to the payload, so there are no endianity requirements.
+    Internal representation of the data sent in \ :c:type:`struct iwl_rxq_sync_cmd <iwl_rxq_sync_cmd>`\ . Should be DWORD aligned. FW is agnostic to the payload, so there are no endianity requirements.
 
 .. _`iwl_mvm_internal_rxq_notif.definition`:
 
@@ -477,7 +477,7 @@ Members
 -------
 
 type
-    value from \ :c:type:`struct iwl_mvm_rxq_notif_type <iwl_mvm_rxq_notif_type>`
+    value from \ :c:type:`struct iwl_mvm_rxq_notif_type <iwl_mvm_rxq_notif_type>`\ 
 
 sync
     ctrl path is waiting for all notifications to be received

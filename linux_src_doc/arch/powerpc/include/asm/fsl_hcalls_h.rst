@@ -235,7 +235,7 @@ fh_partition_memcpy
         the ID of the partition to copy to
 
     :param phys_addr_t sg_list:
-        guest physical address of an array of \ :c:type:`struct fh_sg_list <fh_sg_list>` structures
+        guest physical address of an array of \ :c:type:`struct fh_sg_list <fh_sg_list>`\  structures
 
     :param unsigned int count:
         the number of entries in \ ``sg_list``\ 

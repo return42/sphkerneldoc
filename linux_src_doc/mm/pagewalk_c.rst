@@ -25,7 +25,7 @@ Description
 -----------
 
 Recursively walk the page table tree of the process represented by \ ``walk``\ ->mm
-within the virtual address range [\ ``start``\ , \ ``end``\ ). During walking, we can do
+within the virtual address range [@start, \ ``end``\ ). During walking, we can do
 some caller-specific works for each entry, by setting up \ :c:func:`pmd_entry`\ ,
 \ :c:func:`pte_entry`\ , and/or \ :c:func:`hugetlb_entry`\ . If you don't set up for some of these
 callbacks, the associated entries/pages are just ignored.
@@ -44,7 +44,7 @@ with error code.
 
 Before starting to walk page table, some callers want to check whether
 they really want to walk over the current vma, typically by checking
-its vm_flags. \ :c:func:`walk_page_test`\  and \ ``walk``\ ->\ :c:func:`test_walk`\  are used for this
+its vm_flags. \ :c:func:`walk_page_test`\  and \ ``walk``\ ->test_walk() are used for this
 purpose.
 
 struct mm_walk keeps current values of some common data like vma and pmd,

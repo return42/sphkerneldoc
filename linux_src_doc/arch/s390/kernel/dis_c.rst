@@ -33,7 +33,7 @@ mnemonic into \ ``buf``\  of length \ ``len``\ .
 Return
 ------
 
-\ ``0``\  on success, \ ``-ENOENT``\  if the instruction was not found.
+%0 on success, \ ``-ENOENT``\  if the instruction was not found.
 
 .. This file was automatic generated / don't edit.
 

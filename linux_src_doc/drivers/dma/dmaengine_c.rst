@@ -297,7 +297,7 @@ dma_async_device_register
     registers DMA devices found
 
     :param struct dma_device \*device:
-        \ :c:type:`struct dma_device <dma_device>`
+        &dma_device
 
 .. _`dma_async_device_unregister`:
 
@@ -309,7 +309,7 @@ dma_async_device_unregister
     unregister a DMA device
 
     :param struct dma_device \*device:
-        \ :c:type:`struct dma_device <dma_device>`
+        &dma_device
 
 .. _`dma_async_device_unregister.description`:
 

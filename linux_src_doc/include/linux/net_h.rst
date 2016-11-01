@@ -95,13 +95,13 @@ Members
 -------
 
 state
-    socket state (\ ``SS_CONNECTED``\ , etc)
+    socket state (%SS_CONNECTED, etc)
 
 type
-    socket type (\ ``SOCK_STREAM``\ , etc)
+    socket type (%SOCK_STREAM, etc)
 
 flags
-    socket flags (\ ``SOCK_NOSPACE``\ , etc)
+    socket flags (%SOCK_NOSPACE, etc)
 
 wq
     wait queue for several uses

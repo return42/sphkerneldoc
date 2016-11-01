@@ -38,6 +38,26 @@ list.
 This will probably be deleted in favor of a more scalable approach to
 alloc tx's.
 
+.. _`sdma_engine_get_vl`:
+
+sdma_engine_get_vl
+==================
+
+.. c:function:: int sdma_engine_get_vl(struct sdma_engine *sde)
+
+    return vl for a given sdma engine
+
+    :param struct sdma_engine \*sde:
+        sdma engine
+
+.. _`sdma_engine_get_vl.description`:
+
+Description
+-----------
+
+This function returns the vl mapped to a given engine, or an error if
+the mapping can't be found. The mapping fields are protected by RCU.
+
 .. _`sdma_select_engine_vl`:
 
 sdma_select_engine_vl
@@ -90,6 +110,31 @@ Description
 
 
 This function returns an engine based on the selector and an sc.
+
+.. _`sdma_seqfile_dump_cpu_list`:
+
+sdma_seqfile_dump_cpu_list
+==========================
+
+.. c:function:: void sdma_seqfile_dump_cpu_list(struct seq_file *s, struct hfi1_devdata *dd, unsigned long cpuid)
+
+    debugfs dump the cpu to sdma mappings
+
+    :param struct seq_file \*s:
+        seq file
+
+    :param struct hfi1_devdata \*dd:
+        hfi1_devdata
+
+    :param unsigned long cpuid:
+        cpu id
+
+.. _`sdma_seqfile_dump_cpu_list.description`:
+
+Description
+-----------
+
+This routine dumps the process to sde mappings per cpu
 
 .. _`sdma_map_init`:
 
@@ -340,7 +385,7 @@ ring (wait == NULL)
 sdma_send_txlist
 ================
 
-.. c:function:: int sdma_send_txlist(struct sdma_engine *sde, struct iowait *wait, struct list_head *tx_list)
+.. c:function:: int sdma_send_txlist(struct sdma_engine *sde, struct iowait *wait, struct list_head *tx_list, u32 *count_out)
 
     submit a list of tx req to ring
 
@@ -352,6 +397,9 @@ sdma_send_txlist
 
     :param struct list_head \*tx_list:
         list of sdma_txreqs to submit
+
+    :param u32 \*count_out:
+        *undescribed*
 
 .. _`sdma_send_txlist.description`:
 
@@ -375,7 +423,7 @@ side locking.
 Return
 ------
 
-> 0 - Success (value is number of sdma_txreq's submitted),
+0 - Success,
 -EINVAL - sdma_txreq incomplete, -EBUSY - no space in ring (wait == NULL)
 -EIOCBQUEUED - tx queued to iowait, -ECOMM bad sdma state
 

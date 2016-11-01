@@ -498,6 +498,36 @@ Description
 
 Configures the integrated KR PHY for X550EM_x.
 
+.. _`ixgbe_led_on_t_x550em`:
+
+ixgbe_led_on_t_x550em
+=====================
+
+.. c:function:: s32 ixgbe_led_on_t_x550em(struct ixgbe_hw *hw, u32 led_idx)
+
+    Turns on the software controllable LEDs.
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param u32 led_idx:
+        led number to turn on
+
+.. _`ixgbe_led_off_t_x550em`:
+
+ixgbe_led_off_t_x550em
+======================
+
+.. c:function:: s32 ixgbe_led_off_t_x550em(struct ixgbe_hw *hw, u32 led_idx)
+
+    Turns off the software controllable LEDs.
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+    :param u32 led_idx:
+        led number to turn off
+
 .. _`ixgbe_setup_fc_x550em`:
 
 ixgbe_setup_fc_x550em

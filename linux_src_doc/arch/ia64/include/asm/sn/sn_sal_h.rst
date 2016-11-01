@@ -142,7 +142,7 @@ we want to look at the FIT entries on the chips.
 Return
 ------
 
-\ ``SALRET_OK``\  if ok
+%SALRET_OK if ok
 \ ``SALRET_INVALID_ARG``\  if index too big
 \ ``SALRET_NOT_IMPLEMENTED``\  if running on older PROM
 ??? if nasid invalid OR banner buffer not large enough

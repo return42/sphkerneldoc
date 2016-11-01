@@ -134,6 +134,7 @@ Definition
 .. code-block:: c
 
     struct irq_chip {
+        struct device *parent_device;
         const char *name;
         unsigned int (*irq_startup)(struct irq_data *data);
         void (*irq_shutdown)(struct irq_data *data);
@@ -173,6 +174,9 @@ Definition
 
 Members
 -------
+
+parent_device
+    pointer to parent device for irqchip
 
 name
     name for /proc/interrupts

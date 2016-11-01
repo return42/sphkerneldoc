@@ -79,7 +79,7 @@ Description
 -----------
 
 Wait for the PRCM to indicate that the module identified by
-(\ ``prcm_mod``\ , \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
+(@prcm_mod, \ ``idlest_id``\ , \ ``idlest_shift``\ ) is clocked.  Return 0 upon
 success, -EBUSY if the module doesn't enable in time, or -EINVAL if
 no per-SoC \ :c:func:`wait_module_ready`\  function pointer has been registered
 or if the idlest register is unknown on the SoC.
@@ -111,7 +111,7 @@ Description
 -----------
 
 Wait for the PRCM to indicate that the module identified by
-(\ ``prcm_mod``\ , \ ``idlest_id``\ , \ ``idlest_shift``\ ) is no longer clocked.  Return
+(@prcm_mod, \ ``idlest_id``\ , \ ``idlest_shift``\ ) is no longer clocked.  Return
 0 upon success, -EBUSY if the module doesn't enable in time, or
 -EINVAL if no per-SoC \ :c:func:`wait_module_idle`\  function pointer has been
 registered or if the idlest register is unknown on the SoC.
@@ -142,7 +142,7 @@ omap_cm_module_enable
 Description
 -----------
 
-Enables clocks for a module identified by (\ ``part``\ , \ ``inst``\ , \ ``clkctrl_offs``\ )
+Enables clocks for a module identified by (@part, \ ``inst``\ , \ ``clkctrl_offs``\ )
 making its IO space accessible. Return 0 upon success, -EINVAL if no
 per-SoC \ :c:func:`module_enable`\  function pointer has been registered.
 
@@ -169,7 +169,7 @@ omap_cm_module_disable
 Description
 -----------
 
-Disables clocks for a module identified by (\ ``part``\ , \ ``inst``\ , \ ``clkctrl_offs``\ )
+Disables clocks for a module identified by (@part, \ ``inst``\ , \ ``clkctrl_offs``\ )
 makings its IO space inaccessible. Return 0 upon success, -EINVAL if
 no per-SoC \ :c:func:`module_disable`\  function pointer has been registered.
 

@@ -80,7 +80,7 @@ ubifs_write_sb_node
         UBIFS file-system description object
 
     :param struct ubifs_sb_node \*sup:
-        superblock node read with '\ :c:func:`ubifs_read_sb_node`\ '
+        superblock node read with 'ubifs_read_sb_node()'
 
 .. _`ubifs_write_sb_node.description`:
 

@@ -1,0 +1,27 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: drivers/iio/accel/mma7660.c
+
+.. _`mma7660_driver_name`:
+
+MMA7660_DRIVER_NAME
+===================
+
+.. c:function::  MMA7660_DRIVER_NAME()
+
+    Axis Accelerometer
+
+.. _`mma7660_driver_name.description`:
+
+Description
+-----------
+
+Copyright (c) 2016, Intel Corporation.
+
+This file is subject to the terms and conditions of version 2 of
+the GNU General Public License. See the file COPYING in the main
+directory of this archive for more details.
+
+IIO driver for Freescale MMA7660FC; 7-bit I2C address: 0x4c.
+
+.. This file was automatic generated / don't edit.
+

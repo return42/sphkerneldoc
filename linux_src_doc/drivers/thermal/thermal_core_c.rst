@@ -93,7 +93,7 @@ power_actor_get_max_power
     get the maximum power that a cdev can consume
 
     :param struct thermal_cooling_device \*cdev:
-        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`
+        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -127,7 +127,7 @@ power_actor_get_min_power
     get the mainimum power that a cdev can consume
 
     :param struct thermal_cooling_device \*cdev:
-        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`
+        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -161,7 +161,7 @@ power_actor_set_power
     limit the maximum power that a cooling device can consume
 
     :param struct thermal_cooling_device \*cdev:
-        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`
+        pointer to \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>`\ 
 
     :param struct thermal_instance \*instance:
         thermal instance to update
@@ -400,7 +400,7 @@ thermal_cooling_device_unregister
 Description
 -----------
 
-\ :c:func:`thermal_cooling_device_unregister`\  must be called when the device is no
+thermal_cooling_device_unregister() must be called when the device is no
 longer needed.
 
 .. _`thermal_notify_framework`:
@@ -505,7 +505,7 @@ This interface function adds a new thermal zone device (sensor) to
 /sys/class/thermal folder as thermal_zone[0-\*]. It tries to bind all the
 thermal cooling devices registered at the same time.
 \ :c:func:`thermal_zone_device_unregister`\  must be called when the device is no
-longer needed. The passive cooling depends on the .\ :c:func:`get_trend`\  return value.
+longer needed. The passive cooling depends on the .get_trend() return value.
 
 .. _`thermal_zone_device_register.return`:
 
@@ -555,6 +555,46 @@ Return
 On success returns a reference to an unique thermal zone with
 matching name equals to \ ``name``\ , an ERR_PTR otherwise (-EINVAL for invalid
 paramenters, -ENODEV for not found and -EEXIST for multiple matches).
+
+.. _`thermal_zone_get_slope`:
+
+thermal_zone_get_slope
+======================
+
+.. c:function:: int thermal_zone_get_slope(struct thermal_zone_device *tz)
+
+    return the slope attribute of the thermal zone
+
+    :param struct thermal_zone_device \*tz:
+        thermal zone device with the slope attribute
+
+.. _`thermal_zone_get_slope.return`:
+
+Return
+------
+
+If the thermal zone device has a slope attribute, return it, else
+return 1.
+
+.. _`thermal_zone_get_offset`:
+
+thermal_zone_get_offset
+=======================
+
+.. c:function:: int thermal_zone_get_offset(struct thermal_zone_device *tz)
+
+    return the offset attribute of the thermal zone
+
+    :param struct thermal_zone_device \*tz:
+        thermal zone device with the offset attribute
+
+.. _`thermal_zone_get_offset.return`:
+
+Return
+------
+
+If the thermal zone device has a offset attribute, return it, else
+return 0.
 
 .. This file was automatic generated / don't edit.
 

@@ -24,7 +24,7 @@ Definition
         u16 buffer_size_packet;
         u16 num_buffers_streaming;
         u16 buffer_size_streaming;
-        char *name_suffix;
+        const char *name_suffix;
     }
 
 .. _`most_channel_capability.members`:
@@ -234,7 +234,7 @@ most_deregister_interface
 
 .. c:function:: void most_deregister_interface(struct most_interface *iface)
 
-    \ ``intf_instance``\  Pointer to the interface instance description.
+    @intf_instance Pointer to the interface instance description.
 
     :param struct most_interface \*iface:
         *undescribed*

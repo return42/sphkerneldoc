@@ -574,7 +574,7 @@ rio_unmap_outb_region
 rio_mport_get_physefb
 =====================
 
-.. c:function:: u32 rio_mport_get_physefb(struct rio_mport *port, int local, u16 destid, u8 hopcount)
+.. c:function:: u32 rio_mport_get_physefb(struct rio_mport *port, int local, u16 destid, u8 hopcount, u32 *rmap)
 
     Helper function that returns register offset for Physical Layer Extended Features Block.
 
@@ -589,6 +589,9 @@ rio_mport_get_physefb
 
     :param u8 hopcount:
         Number of switch hops to the device
+
+    :param u32 \*rmap:
+        pointer to location to store register map type info
 
 .. _`rio_get_comptag`:
 
@@ -759,6 +762,18 @@ rio_clr_err_stopped
     :param u32 err_status:
         port error status (if 0 reads register from device)
 
+.. _`rio_clr_err_stopped.todo`:
+
+TODO
+----
+
+Currently this routine is not compatible with recovery process
+specified for idt_gen3 RapidIO switch devices. It has to be reviewed
+to implement universal recovery process that is compatible full range
+off available devices.
+IDT gen3 switch driver now implements HW-specific error handler that
+issues soft port reset to the port to reset ERR_STOP bits and ackIDs.
+
 .. _`rio_inb_pwrite_handler`:
 
 rio_inb_pwrite_handler
@@ -839,20 +854,7 @@ Description
 Tell if a device supports a given RapidIO capability.
 Returns the offset of the requested extended feature
 block within the device's RIO configuration space or
-0 in case the device does not support it.  Possible
-values for \ ``ftr``\ :
-
-\ ``RIO_EFB_PAR_EP_ID``\            LP/LVDS EP Devices
-
-\ ``RIO_EFB_PAR_EP_REC_ID``\        LP/LVDS EP Recovery Devices
-
-\ ``RIO_EFB_PAR_EP_FREE_ID``\       LP/LVDS EP Free Devices
-
-\ ``RIO_EFB_SER_EP_ID``\            LP/Serial EP Devices
-
-\ ``RIO_EFB_SER_EP_REC_ID``\        LP/Serial EP Recovery Devices
-
-\ ``RIO_EFB_SER_EP_FREE_ID``\       LP/Serial EP Free Devices
+0 in case the device does not support it.
 
 .. _`rio_get_asm`:
 
@@ -1241,7 +1243,14 @@ Description
 Initializes RapidIO capable DMA channel for the specified data transfer.
 Uses DMA channel private extension to pass information related to remote
 target RIO device.
-Returns pointer to DMA transaction descriptor or NULL if failed.
+
+.. _`rio_dma_prep_xfer.return`:
+
+Return
+------
+
+pointer to DMA transaction descriptor if successful,
+error-valued pointer or NULL if failed.
 
 .. _`rio_dma_prep_slave_sg`:
 
@@ -1275,7 +1284,14 @@ Description
 Initializes RapidIO capable DMA channel for the specified data transfer.
 Uses DMA channel private extension to pass information related to remote
 target RIO device.
-Returns pointer to DMA transaction descriptor or NULL if failed.
+
+.. _`rio_dma_prep_slave_sg.return`:
+
+Return
+------
+
+pointer to DMA transaction descriptor if successful,
+error-valued pointer or NULL if failed.
 
 .. _`rio_find_mport`:
 

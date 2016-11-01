@@ -18,7 +18,7 @@ NTFS_I
 Description
 -----------
 
-\ :c:func:`NTFS_I`\  returns the ntfs inode associated with the VFS \ ``inode``\ .
+NTFS_I() returns the ntfs inode associated with the VFS \ ``inode``\ .
 
 .. _`ntfs_attr`:
 
@@ -35,7 +35,7 @@ Description
 -----------
 
 This structure exists only to provide a small structure for the
-ntfs_{attr_}\ :c:func:`iget`\ /\ :c:func:`ntfs_test_inode`\ /\ :c:func:`ntfs_init_locked_inode`\  mechanism.
+ntfs_{attr_}iget()/ntfs_test_inode()/ntfs_init_locked_inode() mechanism.
 
 .. _`ntfs_attr.note`:
 

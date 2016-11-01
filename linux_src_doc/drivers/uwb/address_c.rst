@@ -26,7 +26,7 @@ uwb_rc_dev_addr_mgmt
 Description
 -----------
 
-\ ``cmd``\  has to be allocated because USB cannot grok USB or vmalloc
+@cmd has to be allocated because USB cannot grok USB or vmalloc
 buffers depending on your combination of host architecture.
 
 .. _`uwb_rc_addr_set`:

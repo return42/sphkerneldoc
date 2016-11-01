@@ -21,7 +21,8 @@ fc_rport_lookup
 Description
 -----------
 
-The caller must hold either disc_mutex or \ :c:func:`rcu_read_lock`\ .
+The reference count of the fc_rport_priv structure is
+increased by one.
 
 .. _`fc_rport_create`:
 

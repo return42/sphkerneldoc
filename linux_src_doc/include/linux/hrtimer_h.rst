@@ -41,8 +41,8 @@ node
     the absolute expiry time in the hrtimers internal
     representation. The time is related to the clock on
     which the timer is based. Is setup by adding
-    slack to the \_softexpires value. For non range timers
-    identical to \_softexpires.
+    slack to the _softexpires value. For non range timers
+    identical to _softexpires.
 
 _softexpires
     the absolute earliest expiry time of the hrtimer.

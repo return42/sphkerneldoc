@@ -31,7 +31,7 @@ Description
 -----------
 
 Compute a set of access vector decisions based on the
-SID pair (\ ``ssid``\ , \ ``tsid``\ ) for the permissions in \ ``tclass``\ .
+SID pair (@ssid, \ ``tsid``\ ) for the permissions in \ ``tclass``\ .
 
 .. _`security_sid_to_context`:
 
@@ -88,7 +88,7 @@ Description
 
 Obtains a SID associated with the security context that
 has the string representation specified by \ ``scontext``\ .
-Returns -\ ``EINVAL``\  if the context is invalid, -\ ``ENOMEM``\  if insufficient
+Returns -%EINVAL if the context is invalid, -%ENOMEM if insufficient
 memory is available, or 0 on success.
 
 .. _`security_context_to_sid_default`:
@@ -126,7 +126,7 @@ The default SID is passed to the MLS layer to be used to allow
 kernel labeling of the MLS field if the MLS field is not present
 (for upgrading to MLS without full relabel).
 Implicitly forces adding of the context even if it cannot be mapped yet.
-Returns -\ ``EINVAL``\  if the context is invalid, -\ ``ENOMEM``\  if insufficient
+Returns -%EINVAL if the context is invalid, -%ENOMEM if insufficient
 memory is available, or 0 on success.
 
 .. _`security_transition_sid`:
@@ -159,8 +159,8 @@ Description
 -----------
 
 Compute a SID to use for labeling a new subject or object in the
-class \ ``tclass``\  based on a SID pair (\ ``ssid``\ , \ ``tsid``\ ).
-Return -\ ``EINVAL``\  if any of the parameters are invalid, -\ ``ENOMEM``\ 
+class \ ``tclass``\  based on a SID pair (@ssid, \ ``tsid``\ ).
+Return -%EINVAL if any of the parameters are invalid, -%ENOMEM
 if insufficient memory is available, or \ ``0``\  if the new SID was
 computed successfully.
 
@@ -191,8 +191,8 @@ Description
 -----------
 
 Compute a SID to use when selecting a member of a polyinstantiated
-object of class \ ``tclass``\  based on a SID pair (\ ``ssid``\ , \ ``tsid``\ ).
-Return -\ ``EINVAL``\  if any of the parameters are invalid, -\ ``ENOMEM``\ 
+object of class \ ``tclass``\  based on a SID pair (@ssid, \ ``tsid``\ ).
+Return -%EINVAL if any of the parameters are invalid, -%ENOMEM
 if insufficient memory is available, or \ ``0``\  if the SID was
 computed successfully.
 
@@ -223,8 +223,8 @@ Description
 -----------
 
 Compute a SID to use for relabeling an object of class \ ``tclass``\ 
-based on a SID pair (\ ``ssid``\ , \ ``tsid``\ ).
-Return -\ ``EINVAL``\  if any of the parameters are invalid, -\ ``ENOMEM``\ 
+based on a SID pair (@ssid, \ ``tsid``\ ).
+Return -%EINVAL if any of the parameters are invalid, -%ENOMEM
 if insufficient memory is available, or \ ``0``\  if the SID was
 computed successfully.
 
@@ -335,8 +335,8 @@ Description
 
 Generate the set of SIDs for legal security contexts
 for a given user that can be reached by \ ``fromsid``\ .
-Set \*\ ``sids``\  to point to a dynamically allocated
-array containing the set of SIDs.  Set \*\ ``nel``\  to the
+Set \*@sids to point to a dynamically allocated
+array containing the set of SIDs.  Set \*@nel to the
 number of elements in the array.
 
 .. _`__security_genfs_sid`:
@@ -397,7 +397,7 @@ security_genfs_sid
 Description
 -----------
 
-Acquire policy_rwlock before calling \\ :c:func:`__security_genfs_sid`\  and release
+Acquire policy_rwlock before calling \__security_genfs_sid() and release
 it afterward.
 
 .. _`security_fs_use`:

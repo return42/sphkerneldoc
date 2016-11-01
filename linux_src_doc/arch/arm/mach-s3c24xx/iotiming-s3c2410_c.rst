@@ -296,7 +296,7 @@ Description
 -----------
 
 Calculate the \ ``timings``\  timing information from the current frequency
-information in \ ``cfg``\ , and the new frequency configur
+information in \ ``cfg``\ , and the new frequency configuration
 through all the IO banks, reading the state and then updating \ ``iot``\ 
 as necessary.
 

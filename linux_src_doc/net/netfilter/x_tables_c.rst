@@ -79,6 +79,43 @@ Return
 
 0 on success, negative errno on failure.
 
+.. _`xt_alloc_entry_offsets`:
+
+xt_alloc_entry_offsets
+======================
+
+.. c:function:: unsigned int *xt_alloc_entry_offsets(unsigned int size)
+
+    allocate array to store rule head offsets
+
+    :param unsigned int size:
+        number of entries
+
+.. _`xt_alloc_entry_offsets.return`:
+
+Return
+------
+
+NULL or kmalloc'd or vmalloc'd array
+
+.. _`xt_find_jump_offset`:
+
+xt_find_jump_offset
+===================
+
+.. c:function:: bool xt_find_jump_offset(const unsigned int *offsets, unsigned int target, unsigned int size)
+
+    check if target is a valid jump offset
+
+    :param const unsigned int \*offsets:
+        array containing all valid rule start offsets of a rule blob
+
+    :param unsigned int target:
+        the jump target to search for
+
+    :param unsigned int size:
+        entries in \ ``offset``\ 
+
 .. _`xt_copy_counters_from_user`:
 
 xt_copy_counters_from_user

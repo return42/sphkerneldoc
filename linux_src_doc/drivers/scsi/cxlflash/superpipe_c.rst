@@ -412,14 +412,13 @@ destroy_context
 Description
 -----------
 
-This routine is safe to be called with a a non-initialized context
-and is tolerant of being called with the context's mutex held (it
-will be unlocked if necessary before freeing). Also note that the
-routine conditionally checks for the existence of the context control
-map before clearing the RHT registers and context capabilities because
-it is possible to destroy a context while the context is in the error
-state (previous mapping was removed [so there is no need to worry about
-clearing] and context is waiting for a new mapping).
+This routine is safe to be called with a a non-initialized context.
+Also note that the routine conditionally checks for the existence
+of the context control map before clearing the RHT registers and
+context capabilities because it is possible to destroy a context
+while the context is in the error state (previous mapping was
+removed [so there is no need to worry about clearing] and context
+is waiting for a new mapping).
 
 .. _`create_context`:
 
@@ -445,7 +444,7 @@ Allocated context on success, NULL on failure
 init_context
 ============
 
-.. c:function:: void init_context(struct ctx_info *ctxi, struct cxlflash_cfg *cfg, struct cxl_context *ctx, int ctxid, int adap_fd, struct file *file, u32 perms)
+.. c:function:: void init_context(struct ctx_info *ctxi, struct cxlflash_cfg *cfg, struct cxl_context *ctx, int ctxid, struct file *file, u32 perms)
 
     initializes a previously allocated context
 
@@ -461,22 +460,32 @@ init_context
     :param int ctxid:
         Previously obtained process element associated with CXL context.
 
-    :param int adap_fd:
-        Previously obtained adapter fd associated with CXL context.
-
     :param struct file \*file:
         Previously obtained file associated with CXL context.
 
     :param u32 perms:
         User-specified permissions.
 
-.. _`init_context.description`:
+.. _`remove_context`:
+
+remove_context
+==============
+
+.. c:function:: void remove_context(struct kref *kref)
+
+    context kref release handler
+
+    :param struct kref \*kref:
+        Kernel reference associated with context to be removed.
+
+.. _`remove_context.description`:
 
 Description
 -----------
 
-Upon return, the context is marked as initialized and the context's mutex
-is locked.
+When a context no longer has any references it can safely be removed
+from global access and destroyed. Note that it is assumed the thread
+relinquishing access to the context holds its mutex.
 
 .. _`_cxlflash_disk_detach`:
 
@@ -534,34 +543,18 @@ Description
 
 This routine is the release handler for the fops registered with
 the CXL services on an initial attach for a context. It is called
-when a close is performed on the adapter file descriptor returned
-to the user. Programmatically, the user is not required to perform
-the close, as it is handled internally via the detach ioctl when
-a context is being removed. Note that nothing prevents the user
-from performing a close, but the user should be aware that doing
-so is considered catastrophic and subsequent usage of the superpipe
-API with previously saved off tokens will fail.
+when a close (explicity by the user or as part of a process tear
+down) is performed on the adapter file descriptor returned to the
+user. The user should be aware that explicitly performing a close
+considered catastrophic and subsequent usage of the superpipe API
+with previously saved off tokens will fail.
 
-When initiated from an external close (either by the user or via
-a process tear down), the routine derives the context reference
-and calls detach for each LUN associated with the context. The
-final detach operation will cause the context itself to be freed.
-Note that the saved off lfd is reset prior to calling detach to
-signify that the final detach should not perform a close.
-
-When initiated from a detach operation as part of the tear down
-of a context, the context is first completely freed and then the
-close is performed. This routine will fail to derive the context
-reference (due to the context having already been freed) and then
-call into the CXL release entry point.
-
-Thus, with exception to when the CXL process element (context id)
-lookup fails (a case that should theoretically never occur), every
-call into this routine results in a complete freeing of a context.
-
-As part of the detach, all per-context resources associated with the LUN
-are cleaned up. When detaching the last LUN for a context, the context
-itself is cleaned up and released.
+This routine derives the context reference and calls detach for
+each LUN associated with the context.The final detach operation
+causes the context itself to be freed. With exception to when the
+CXL process element (context id) lookup fails (a case that should
+theoretically never occur), every call into this routine results
+in a complete freeing of a context.
 
 .. _`cxlflash_cxl_release.return`:
 
@@ -770,7 +763,7 @@ Return
 recover_context
 ===============
 
-.. c:function:: int recover_context(struct cxlflash_cfg *cfg, struct ctx_info *ctxi)
+.. c:function:: int recover_context(struct cxlflash_cfg *cfg, struct ctx_info *ctxi, int *adap_fd)
 
     recovers a context in error
 
@@ -779,6 +772,9 @@ recover_context
 
     :param struct ctx_info \*ctxi:
         Context to release.
+
+    :param int \*adap_fd:
+        Adapter file descriptor associated with new/recovered context.
 
 .. _`recover_context.description`:
 

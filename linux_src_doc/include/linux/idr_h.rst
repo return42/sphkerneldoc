@@ -71,7 +71,7 @@ idr_for_each_entry
 Description
 -----------
 
-\ ``entry``\  and \ ``id``\  do not need to be initialized before the loop, and
+@entry and \ ``id``\  do not need to be initialized before the loop, and
 after normal terminatinon \ ``entry``\  is left with the value NULL.  This
 is convenient for a "not found" value.
 

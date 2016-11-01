@@ -9,6 +9,7 @@ coresight
 
     coresight-etb10_c
     coresight-etm-perf_c
+    coresight-etm-perf_h
     coresight-etm3x_c
     coresight-etm4x_h
     coresight-etm_h

@@ -87,7 +87,7 @@ kernfs_mount_ns
 Description
 -----------
 
-This is to be called from each kernfs user's file_system_type->\ :c:func:`mount`\ 
+This is to be called from each kernfs user's file_system_type->mount()
 implementation, which should pass through the specified \ ``fs_type``\  and
 \ ``flags``\ , and specify the hierarchy and namespace tag to mount via \ ``root``\ 
 and \ ``ns``\ , respectively.
@@ -111,7 +111,7 @@ kernfs_kill_sb
 Description
 -----------
 
-This can be used directly for file_system_type->\ :c:func:`kill_sb`\ .  If a kernfs
+This can be used directly for file_system_type->kill_sb().  If a kernfs
 user needs extra cleanup, it can implement its own \ :c:func:`kill_sb`\  and call
 this function at the end.
 
@@ -136,7 +136,7 @@ Description
 -----------
 
 Pin the superblock so the superblock won't be destroyed in subsequent
-operations.  This can be used to block ->\ :c:func:`kill_sb`\  which may be useful
+operations.  This can be used to block ->kill_sb() which may be useful
 for kernfs users which dynamically manage superblocks.
 
 Returns NULL if there's no superblock associated to this kernfs_root, or

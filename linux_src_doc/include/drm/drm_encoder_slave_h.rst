@@ -84,7 +84,7 @@ Description
 -----------
 
 Most of its members are analogous to the function pointers in
-\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>` and they can optionally be used to
+\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\  and they can optionally be used to
 initialize the latter. Connector-like methods (e.g. \ ``get_modes``\  and
 \ ``set_property``\ ) will typically be wrapped around and only be called
 if the encoder is the currently selected one for the connector.
@@ -134,7 +134,7 @@ bus_priv
 Description
 -----------
 
-A \ :c:type:`struct drm_encoder_slave <drm_encoder_slave>` has two sets of callbacks, \ ``slave_funcs``\  and the
+A \ :c:type:`struct drm_encoder_slave <drm_encoder_slave>`\  has two sets of callbacks, \ ``slave_funcs``\  and the
 ones in \ ``base``\ . The former are never actually called by the common
 CRTC code, it's just a convenience for splitting the encoder
 functions in an upper, GPU-specific layer and a (hopefully)

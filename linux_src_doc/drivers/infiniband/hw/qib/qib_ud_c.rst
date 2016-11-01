@@ -55,14 +55,14 @@ Return 1 if constructed; otherwise, return 0.
 qib_ud_rcv
 ==========
 
-.. c:function:: void qib_ud_rcv(struct qib_ibport *ibp, struct qib_ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
+.. c:function:: void qib_ud_rcv(struct qib_ibport *ibp, struct ib_header *hdr, int has_grh, void *data, u32 tlen, struct rvt_qp *qp)
 
     receive an incoming UD packet
 
     :param struct qib_ibport \*ibp:
         the port the packet came in on
 
-    :param struct qib_ib_header \*hdr:
+    :param struct ib_header \*hdr:
         the packet header
 
     :param int has_grh:

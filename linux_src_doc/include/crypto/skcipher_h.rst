@@ -85,6 +85,116 @@ giv
 creq
     The crypto request itself
 
+.. _`skcipher_alg`:
+
+struct skcipher_alg
+===================
+
+.. c:type:: struct skcipher_alg
+
+    symmetric key cipher definition
+
+.. _`skcipher_alg.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct skcipher_alg {
+        int (*setkey)(struct crypto_skcipher *tfm, const u8 *key,unsigned int keylen);
+        int (*encrypt)(struct skcipher_request *req);
+        int (*decrypt)(struct skcipher_request *req);
+        int (*init)(struct crypto_skcipher *tfm);
+        void (*exit)(struct crypto_skcipher *tfm);
+        unsigned int min_keysize;
+        unsigned int max_keysize;
+        unsigned int ivsize;
+        unsigned int chunksize;
+        struct crypto_alg base;
+    }
+
+.. _`skcipher_alg.members`:
+
+Members
+-------
+
+setkey
+    Set key for the transformation. This function is used to either
+    program a supplied key into the hardware or store the key in the
+    transformation context for programming it later. Note that this
+    function does modify the transformation context. This function can
+    be called multiple times during the existence of the transformation
+    object, so one must make sure the key is properly reprogrammed into
+    the hardware. This function is also responsible for checking the key
+    length for validity. In case a software fallback was put in place in
+    the \ ``cra_init``\  call, this function might need to use the fallback if
+    the algorithm doesn't support all of the key sizes.
+
+encrypt
+    Encrypt a scatterlist of blocks. This function is used to encrypt
+    the supplied scatterlist containing the blocks of data. The crypto
+    API consumer is responsible for aligning the entries of the
+    scatterlist properly and making sure the chunks are correctly
+    sized. In case a software fallback was put in place in the
+    \ ``cra_init``\  call, this function might need to use the fallback if
+    the algorithm doesn't support all of the key sizes. In case the
+    key was stored in transformation context, the key might need to be
+    re-programmed into the hardware in this function. This function
+    shall not modify the transformation context, as this function may
+    be called in parallel with the same transformation object.
+
+decrypt
+    Decrypt a single block. This is a reverse counterpart to \ ``encrypt``\ 
+    and the conditions are exactly the same.
+
+init
+    Initialize the cryptographic transformation object. This function
+    is used to initialize the cryptographic transformation object.
+    This function is called only once at the instantiation time, right
+    after the transformation context was allocated. In case the
+    cryptographic hardware has some special requirements which need to
+    be handled by software, this function shall check for the precise
+    requirement of the transformation and put any software fallbacks
+    in place.
+
+exit
+    Deinitialize the cryptographic transformation object. This is a
+    counterpart to \ ``init``\ , used to remove various changes set in
+    \ ``init``\ .
+
+min_keysize
+    Minimum key size supported by the transformation. This is the
+    smallest key length supported by this transformation algorithm.
+    This must be set to one of the pre-defined values as this is
+    not hardware specific. Possible values for this field can be
+    found via git grep "_MIN_KEY_SIZE" include/crypto/
+
+max_keysize
+    Maximum key size supported by the transformation. This is the
+    largest key length supported by this transformation algorithm.
+    This must be set to one of the pre-defined values as this is
+    not hardware specific. Possible values for this field can be
+    found via git grep "_MAX_KEY_SIZE" include/crypto/
+
+ivsize
+    IV size applicable for transformation. The consumer must provide an
+    IV of exactly that size to perform the encrypt or decrypt operation.
+
+chunksize
+    Equal to the block size except for stream ciphers such as
+    CTR where it is set to the underlying block size.
+
+base
+    Definition of a generic crypto algorithm.
+
+.. _`skcipher_alg.description`:
+
+Description
+-----------
+
+All fields except \ ``ivsize``\  are mandatory and must be filled.
+
 .. _`crypto_alloc_skcipher`:
 
 crypto_alloc_skcipher
@@ -160,6 +270,33 @@ Return
 true when the skcipher is known to the kernel crypto API; false
 otherwise
 
+.. _`crypto_has_skcipher2`:
+
+crypto_has_skcipher2
+====================
+
+.. c:function:: int crypto_has_skcipher2(const char *alg_name, u32 type, u32 mask)
+
+    Search for the availability of an skcipher.
+
+    :param const char \*alg_name:
+        is the cra_name / name or cra_driver_name / driver name of the
+        skcipher
+
+    :param u32 type:
+        specifies the type of the skcipher
+
+    :param u32 mask:
+        specifies the mask for the skcipher
+
+.. _`crypto_has_skcipher2.return`:
+
+Return
+------
+
+true when the skcipher is known to the kernel crypto API; false
+otherwise
+
 .. _`crypto_skcipher_ivsize`:
 
 crypto_skcipher_ivsize
@@ -186,6 +323,35 @@ Return
 ------
 
 IV size in bytes
+
+.. _`crypto_skcipher_chunksize`:
+
+crypto_skcipher_chunksize
+=========================
+
+.. c:function:: unsigned int crypto_skcipher_chunksize(struct crypto_skcipher *tfm)
+
+    obtain chunk size
+
+    :param struct crypto_skcipher \*tfm:
+        cipher handle
+
+.. _`crypto_skcipher_chunksize.description`:
+
+Description
+-----------
+
+The block size is set to one for ciphers such as CTR.  However,
+you still need to provide incremental updates in multiples of
+the underlying block size as the IV does not have sub-block
+granularity.  This is known in this API as the chunk size.
+
+.. _`crypto_skcipher_chunksize.return`:
+
+Return
+------
+
+chunk size in bytes
 
 .. _`crypto_skcipher_blocksize`:
 

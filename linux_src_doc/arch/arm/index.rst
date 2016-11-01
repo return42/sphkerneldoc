@@ -24,7 +24,6 @@ arm
     mach-rockchip/index
     mach-s3c24xx/index
     mach-sa1100/index
-    mach-ux500/index
     mach-vexpress/index
     mach-zynq/index
     mm/index

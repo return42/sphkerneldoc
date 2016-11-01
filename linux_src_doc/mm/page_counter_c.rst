@@ -111,7 +111,7 @@ page_counter_memparse
 
 .. c:function:: int page_counter_memparse(const char *buf, const char *max, unsigned long *nr_pages)
 
-    \ :c:func:`memparse`\  for page counter limits
+    memparse() for page counter limits
 
     :param const char \*buf:
         string to parse

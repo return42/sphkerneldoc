@@ -41,7 +41,7 @@ _driver_status
     one of BUS_NOTIFY\_\*\_DRIVER from <linux/device.h>
 
 hwmods_cnt
-    \ :c:func:`ARRAY_SIZE`\  of \ ``hwmods``\ 
+    ARRAY_SIZE() of \ ``hwmods``\ 
 
 _state
     one of OMAP_DEVICE_STATE\_\* (see above)

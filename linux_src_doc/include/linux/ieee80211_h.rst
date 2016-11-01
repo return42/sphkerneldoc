@@ -1859,6 +1859,30 @@ ieee80211_is_public_action
     :param size_t len:
         length of the frame
 
+.. _`_ieee80211_is_group_privacy_action`:
+
+_ieee80211_is_group_privacy_action
+==================================
+
+.. c:function:: bool _ieee80211_is_group_privacy_action(struct ieee80211_hdr *hdr)
+
+    check if frame is a group addressed privacy action frame
+
+    :param struct ieee80211_hdr \*hdr:
+        the frame
+
+.. _`ieee80211_is_group_privacy_action`:
+
+ieee80211_is_group_privacy_action
+=================================
+
+.. c:function:: bool ieee80211_is_group_privacy_action(struct sk_buff *skb)
+
+    check if frame is a group addressed privacy action frame
+
+    :param struct sk_buff \*skb:
+        the skb containing the frame, length will be checked
+
 .. _`ieee80211_tu_to_usec`:
 
 ieee80211_tu_to_usec

@@ -21,7 +21,7 @@ ptlrpcd_add_req
 
 .. c:function:: void ptlrpcd_add_req(struct ptlrpc_request *req)
 
-    ptlrpcd_check->\ :c:func:`ptlrpc_check_set`\ .
+    ptlrpcd_check->ptlrpc_check_set().
 
     :param struct ptlrpc_request \*req:
         *undescribed*

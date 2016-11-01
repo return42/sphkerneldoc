@@ -40,7 +40,7 @@ filter
 Description
 -----------
 
-\ ``filter``\  must only be accessed from the context of current as there
+@filter must only be accessed from the context of current as there
 is no read locking.
 
 .. This file was automatic generated / don't edit.

@@ -21,7 +21,7 @@ set_bit
 Description
 -----------
 
-This function is atomic and may not be reordered.  See \\ :c:func:`__set_bit`\ 
+This function is atomic and may not be reordered.  See \__set_bit()
 if you do not require the atomic guarantees.
 
 .. _`set_bit.note`:
@@ -80,7 +80,7 @@ clear_bit
 Description
 -----------
 
-\ :c:func:`clear_bit`\  is atomic and may not be reordered.  However, it does
+clear_bit() is atomic and may not be reordered.  However, it does
 not contain a memory barrier, so if it is used for locking purposes,
 you should call \ :c:func:`smp_mb__before_atomic`\  and/or \ :c:func:`smp_mb__after_atomic`\ 
 in order to ensure changes are visible on other processors.
@@ -129,7 +129,7 @@ change_bit
 Description
 -----------
 
-\ :c:func:`change_bit`\  is atomic and may not be reordered.
+change_bit() is atomic and may not be reordered.
 Note that \ ``nr``\  may be almost arbitrarily large; this function is not
 restricted to acting on a single-word quantity.
 
@@ -138,7 +138,7 @@ restricted to acting on a single-word quantity.
 test_and_set_bit
 ================
 
-.. c:function:: int test_and_set_bit(long nr, volatile unsigned long *addr)
+.. c:function:: bool test_and_set_bit(long nr, volatile unsigned long *addr)
 
     Set a bit and return its old value
 
@@ -161,7 +161,7 @@ It also implies a memory barrier.
 test_and_set_bit_lock
 =====================
 
-.. c:function:: int test_and_set_bit_lock(long nr, volatile unsigned long *addr)
+.. c:function:: bool test_and_set_bit_lock(long nr, volatile unsigned long *addr)
 
     Set a bit and return its old value for lock
 
@@ -183,7 +183,7 @@ This is the same as test_and_set_bit on x86.
 __test_and_set_bit
 ==================
 
-.. c:function:: int __test_and_set_bit(long nr, volatile unsigned long *addr)
+.. c:function:: bool __test_and_set_bit(long nr, volatile unsigned long *addr)
 
     Set a bit and return its old value
 
@@ -207,7 +207,7 @@ but actually fail.  You must protect multiple accesses with a lock.
 test_and_clear_bit
 ==================
 
-.. c:function:: int test_and_clear_bit(long nr, volatile unsigned long *addr)
+.. c:function:: bool test_and_clear_bit(long nr, volatile unsigned long *addr)
 
     Clear a bit and return its old value
 
@@ -230,7 +230,7 @@ It also implies a memory barrier.
 __test_and_clear_bit
 ====================
 
-.. c:function:: int __test_and_clear_bit(long nr, volatile unsigned long *addr)
+.. c:function:: bool __test_and_clear_bit(long nr, volatile unsigned long *addr)
 
     Clear a bit and return its old value
 
@@ -272,7 +272,7 @@ this without also updating arch/x86/kernel/kvm.c
 test_and_change_bit
 ===================
 
-.. c:function:: int test_and_change_bit(long nr, volatile unsigned long *addr)
+.. c:function:: bool test_and_change_bit(long nr, volatile unsigned long *addr)
 
     Change a bit and return its old value
 
@@ -295,7 +295,7 @@ It also implies a memory barrier.
 test_bit
 ========
 
-.. c:function:: int test_bit(int nr, const volatile unsigned long *addr)
+.. c:function:: bool test_bit(int nr, const volatile unsigned long *addr)
 
     Determine whether a bit is set
 

@@ -1,29 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_crtc_helper.c
 
-.. _`drm_helper_move_panel_connectors_to_head`:
-
-drm_helper_move_panel_connectors_to_head
-========================================
-
-.. c:function:: void drm_helper_move_panel_connectors_to_head(struct drm_device *dev)
-
-    move panels to the front in the connector list
-
-    :param struct drm_device \*dev:
-        drm device to operate on
-
-.. _`drm_helper_move_panel_connectors_to_head.description`:
-
-Description
------------
-
-Some userspace presumes that the first connected connector is the main
-display, where it's supposed to display e.g. the login screen. For
-laptops, this should be the main panel. Use this function to sort all
-(eDP/LVDS) panels to the front of the connector list, instead of
-painstakingly trying to initialize them in the right order.
-
 .. _`drm_helper_encoder_in_use`:
 
 drm_helper_encoder_in_use
@@ -111,7 +88,7 @@ NOTE
 
 This function is part of the legacy modeset helper library and will cause
 major confusion with atomic drivers. This is because atomic helpers guarantee
-to never call ->\ :c:func:`disable`\  hooks on a disabled function, or ->\ :c:func:`enable`\  hooks
+to never call ->disable() hooks on a disabled function, or ->enable() hooks
 on an enabled functions. \ :c:func:`drm_helper_disable_unused_functions`\  on the other
 hand throws such guarantees into the wind and calls disable hooks
 unconditionally on unused functions.
@@ -179,10 +156,10 @@ Description
 -----------
 
 The \ :c:func:`drm_crtc_helper_set_config`\  helper function implements the set_config
-callback of struct \ :c:type:`struct drm_crtc_funcs <drm_crtc_funcs>` for drivers using the legacy CRTC helpers.
+callback of struct \ :c:type:`struct drm_crtc_funcs <drm_crtc_funcs>`\  for drivers using the legacy CRTC helpers.
 
 It first tries to locate the best encoder for each connector by calling the
-connector ->\ :c:func:`best_encoder`\  (struct \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`) helper
+connector ->best_encoder() (struct \ :c:type:`struct drm_connector_helper_funcs <drm_connector_helper_funcs>`\ ) helper
 operation.
 
 After locating the appropriate encoders, the helper function will call the
@@ -194,16 +171,16 @@ any other operation.
 
 If the adjusted mode is identical to the current mode but changes to the
 frame buffer need to be applied, the \ :c:func:`drm_crtc_helper_set_config`\  function
-will call the CRTC ->\ :c:func:`mode_set_base`\  (struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`) helper
+will call the CRTC ->mode_set_base() (struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\ ) helper
 operation.
 
 If the adjusted mode differs from the current mode, or if the
-->\ :c:func:`mode_set_base`\  helper operation is not provided, the helper function
-performs a full mode set sequence by calling the ->\ :c:func:`prepare`\ , ->\ :c:func:`mode_set`\ 
-and ->\ :c:func:`commit`\  CRTC and encoder helper operations, in that order.
+->mode_set_base() helper operation is not provided, the helper function
+performs a full mode set sequence by calling the ->prepare(), ->mode_set()
+and ->commit() CRTC and encoder helper operations, in that order.
 Alternatively it can also use the dpms and disable helper operations. For
-details see struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>` and struct
-\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`.
+details see struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\  and struct
+\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\ .
 
 This function is deprecated.  New drivers must implement atomic modeset
 support, for which this function is unsuitable. Instead drivers should use
@@ -236,14 +213,14 @@ drm_helper_connector_dpms
 Description
 -----------
 
-The \ :c:func:`drm_helper_connector_dpms`\  helper function implements the ->\ :c:func:`dpms`\ 
-callback of struct \ :c:type:`struct drm_connector_funcs <drm_connector_funcs>` for drivers using the legacy CRTC helpers.
+The \ :c:func:`drm_helper_connector_dpms`\  helper function implements the ->dpms()
+callback of struct \ :c:type:`struct drm_connector_funcs <drm_connector_funcs>`\  for drivers using the legacy CRTC helpers.
 
 This is the main helper function provided by the CRTC helper framework for
 implementing the DPMS connector attribute. It computes the new desired DPMS
-state for all encoders and CRTCs in the output mesh and calls the ->\ :c:func:`dpms`\ 
-callbacks provided by the driver in struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>` and struct
-\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>` appropriately.
+state for all encoders and CRTCs in the output mesh and calls the ->dpms()
+callbacks provided by the driver in struct \ :c:type:`struct drm_crtc_helper_funcs <drm_crtc_helper_funcs>`\  and struct
+\ :c:type:`struct drm_encoder_helper_funcs <drm_encoder_helper_funcs>`\  appropriately.
 
 This function is deprecated.  New drivers must implement atomic modeset
 support, for which this function is unsuitable. Instead drivers should use
@@ -255,29 +232,6 @@ Return
 ------
 
 Always returns 0.
-
-.. _`drm_helper_mode_fill_fb_struct`:
-
-drm_helper_mode_fill_fb_struct
-==============================
-
-.. c:function:: void drm_helper_mode_fill_fb_struct(struct drm_framebuffer *fb, const struct drm_mode_fb_cmd2 *mode_cmd)
-
-    fill out framebuffer metadata
-
-    :param struct drm_framebuffer \*fb:
-        drm_framebuffer object to fill out
-
-    :param const struct drm_mode_fb_cmd2 \*mode_cmd:
-        metadata from the userspace fb creation request
-
-.. _`drm_helper_mode_fill_fb_struct.description`:
-
-Description
------------
-
-This helper can be used in a drivers fb_create callback to pre-fill the fb's
-metadata fields.
 
 .. _`drm_helper_resume_force_mode`:
 
@@ -320,7 +274,7 @@ setting and use the atomic suspend/resume helpers.
 See also
 --------
 
-\ :c:func:`drm_atomic_helper_suspend`\ , \ :c:func:`drm_atomic_helper_resume`\ 
+drm_atomic_helper_suspend(), \ :c:func:`drm_atomic_helper_resume`\ 
 
 .. _`drm_helper_crtc_mode_set`:
 
@@ -394,33 +348,6 @@ functions for the primary plane.
 
 This is a transitional helper useful for converting drivers to the atomic
 interfaces.
-
-.. _`drm_helper_crtc_enable_color_mgmt`:
-
-drm_helper_crtc_enable_color_mgmt
-=================================
-
-.. c:function:: void drm_helper_crtc_enable_color_mgmt(struct drm_crtc *crtc, int degamma_lut_size, int gamma_lut_size)
-
-    enable color management properties
-
-    :param struct drm_crtc \*crtc:
-        DRM CRTC
-
-    :param int degamma_lut_size:
-        the size of the degamma lut (before CSC)
-
-    :param int gamma_lut_size:
-        the size of the gamma lut (after CSC)
-
-.. _`drm_helper_crtc_enable_color_mgmt.description`:
-
-Description
------------
-
-This function lets the driver enable the color correction properties on a
-CRTC. This includes 3 degamma, csc and gamma properties that userspace can
-set and 2 size properties to inform the userspace of the lut sizes.
 
 .. This file was automatic generated / don't edit.
 

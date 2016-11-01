@@ -62,6 +62,7 @@ Definition
     struct s3c64xx_spi_info {
         int src_clk_nr;
         int num_cs;
+        bool no_cs;
         int (*cfg_gpio)(void);
         dma_filter_fn filter;
         void *dma_tx;
@@ -78,6 +79,9 @@ src_clk_nr
 
 num_cs
     Number of CS this controller emulates.
+
+no_cs
+    *undescribed*
 
 cfg_gpio
     Configure pins for this SPI controller.

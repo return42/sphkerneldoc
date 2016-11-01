@@ -8,3 +8,4 @@ vga
     :maxdepth: 1
 
     vga_switcheroo_c
+    vgaarb_c

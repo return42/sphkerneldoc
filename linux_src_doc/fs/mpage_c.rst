@@ -20,7 +20,7 @@ mpage_readpages
         issued in \ ``pages``\ ->prev to \ ``pages``\ ->next order.
 
     :param unsigned nr_pages:
-        The number of pages at \*\ ``pages``\ 
+        The number of pages at \*@pages
 
     :param get_block_t get_block:
         The filesystem's block mapper function.
@@ -85,7 +85,7 @@ mpage_writepages
         address space structure to write
 
     :param struct writeback_control \*wbc:
-        subtract the number of written pages from \*\ ``wbc``\ ->nr_to_write
+        subtract the number of written pages from \*@wbc->nr_to_write
 
     :param get_block_t get_block:
         the filesystem's block mapper function.

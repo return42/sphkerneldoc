@@ -176,6 +176,20 @@ FUSE_PARALLEL_DIROPS
 
 allow parallel lookups and readdir
 
+.. _`fuse_async_read.fuse_handle_killpriv`:
+
+FUSE_HANDLE_KILLPRIV
+--------------------
+
+fs handles killing suid/sgid/cap on write/chown/trunc
+
+.. _`fuse_async_read.fuse_posix_acl`:
+
+FUSE_POSIX_ACL
+--------------
+
+filesystem supports posix acls
+
 .. _`cuse_unrestricted_ioctl`:
 
 CUSE_UNRESTRICTED_IOCTL

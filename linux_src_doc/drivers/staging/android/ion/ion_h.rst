@@ -101,28 +101,6 @@ Description
 
 Provided by the board file in the form of platform data to a platform device.
 
-.. _`ion_reserve`:
-
-ion_reserve
-===========
-
-.. c:function:: void ion_reserve(struct ion_platform_data *data)
-
-    reserve memory for ion heaps if applicable
-
-    :param struct ion_platform_data \*data:
-        platform data specifying starting physical address and
-        size
-
-.. _`ion_reserve.description`:
-
-Description
------------
-
-Calls memblock reserve to set aside memory for heaps that are
-located at specific memory addresses or of specific sizes not
-managed by the kernel
-
 .. _`ion_client_create`:
 
 ion_client_create
@@ -216,64 +194,6 @@ Description
 -----------
 
 Free the provided handle.
-
-.. _`ion_phys`:
-
-ion_phys
-========
-
-.. c:function:: int ion_phys(struct ion_client *client, struct ion_handle *handle, ion_phys_addr_t *addr, size_t *len)
-
-    returns the physical address and len of a handle
-
-    :param struct ion_client \*client:
-        the client
-
-    :param struct ion_handle \*handle:
-        the handle
-
-    :param ion_phys_addr_t \*addr:
-        a pointer to put the address in
-
-    :param size_t \*len:
-        a pointer to put the length in
-
-.. _`ion_phys.description`:
-
-Description
------------
-
-This function queries the heap for a particular handle to get the
-handle's physical address.  It't output is only correct if
-a heap returns physically contiguous memory -- in other cases
-this api should not be implemented -- ion_sg_table should be used
-instead.  Returns -EINVAL if the handle is invalid.  This has
-no implications on the reference counting of the handle --
-the returned value may not be valid if the caller is not
-holding a reference.
-
-.. _`ion_sg_table`:
-
-ion_sg_table
-============
-
-.. c:function:: struct sg_table *ion_sg_table(struct ion_client *client, struct ion_handle *handle)
-
-    return an sg_table describing a handle
-
-    :param struct ion_client \*client:
-        the client
-
-    :param struct ion_handle \*handle:
-        the handle
-
-.. _`ion_sg_table.description`:
-
-Description
------------
-
-This function returns the sg_table describing
-a particular ion handle.
 
 .. _`ion_map_kernel`:
 

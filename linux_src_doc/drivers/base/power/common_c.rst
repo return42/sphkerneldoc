@@ -64,7 +64,7 @@ Description
 
 The \ ``dev``\  may only be attached to a single PM domain. By iterating through
 the available alternatives we try to find a valid PM domain for the device.
-As attachment succeeds, the ->\ :c:func:`detach`\  callback in the struct dev_pm_domain
+As attachment succeeds, the ->detach() callback in the struct dev_pm_domain
 should be assigned by the corresponding attach function.
 
 This function should typically be invoked from subsystem level code during

@@ -114,6 +114,22 @@ atomctrl_get_pp_assign_pin
     :param pp_atomctrl_gpio_pin_assignment \*gpio_pin_assignment:
         *undescribed*
 
+.. _`atomctrl_get_voltage_evv`:
+
+atomctrl_get_voltage_evv
+========================
+
+.. c:function:: int atomctrl_get_voltage_evv(struct pp_hwmgr *hwmgr, uint16_t virtual_voltage_id, uint16_t *voltage)
+
+    :param struct pp_hwmgr \*hwmgr:
+        *undescribed*
+
+    :param uint16_t virtual_voltage_id:
+        *undescribed*
+
+    :param uint16_t \*voltage:
+        *undescribed*
+
 .. _`atomctrl_get_mpll_reference_clock`:
 
 atomctrl_get_mpll_reference_clock

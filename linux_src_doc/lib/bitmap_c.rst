@@ -129,7 +129,7 @@ Description
 
 Commas group hex digits into chunks.  Each chunk defines exactly 32
 bits of the resultant bitmask.  No chunk may specify a value larger
-than 32 bits (\ ``-EOVERFLOW``\ ), and if a chunk specifies a smaller value
+than 32 bits (%-EOVERFLOW), and if a chunk specifies a smaller value
 then leading 0-bits are prepended.  \ ``-EINVAL``\  is returned for illegal
 characters and for grouping errors such as "1,,5", ",44", "," and "".
 Leading and trailing whitespace accepted, but not embedded whitespace.
@@ -161,7 +161,7 @@ bitmap_parse_user
 Description
 -----------
 
-Wrapper for \\ :c:func:`__bitmap_parse`\ , providing it with user buffer.
+Wrapper for \__bitmap_parse(), providing it with user buffer.
 
 We cannot have this as an inline function in bitmap.h because it needs
 linux/uaccess.h to get the \ :c:func:`access_ok`\  declaration and this causes
@@ -235,6 +235,11 @@ Input format is a comma-separated list of decimal numbers and
 ranges.  Consecutively set bits are shown as two hyphen-separated
 decimal numbers, the smallest and largest bit numbers set in
 the range.
+Optionally each range can be postfixed to denote that only parts of it
+should be set. The range will divided to groups of specific size.
+From each group will be used only defined amount of bits.
+Syntax: range:used_size/group_size
+Example: 0-1023:2/256 ==> 0,1,256,257,512,513,768,769
 
 Returns 0 on success, -errno on invalid input strings.
 
@@ -243,7 +248,7 @@ Returns 0 on success, -errno on invalid input strings.
 Error values
 ------------
 
-\ ``-EINVAL``\ : second number in range smaller than first
+%-EINVAL: second number in range smaller than first
 \ ``-EINVAL``\ : invalid character in string
 \ ``-ERANGE``\ : bit number specified too large for mask
 
@@ -620,7 +625,7 @@ Description
 
 Find a region of free (zero) bits in a \ ``bitmap``\  of \ ``bits``\  bits and
 allocate them (set them to one).  Only consider regions of length
-a power (\ ``order``\ ) of two, aligned to that power of two, which
+a power (@order) of two, aligned to that power of two, which
 makes the search algorithm much faster.
 
 Return the bit offset in bitmap of the allocated region,
@@ -649,7 +654,7 @@ bitmap_release_region
 Description
 -----------
 
-This is the complement to \\ :c:func:`__bitmap_find_free_region`\  and releases
+This is the complement to \__bitmap_find_free_region() and releases
 the found region (by clearing it in the bitmap).
 
 No return value.

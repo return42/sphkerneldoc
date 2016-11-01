@@ -67,7 +67,7 @@ We only enforce allocated_size limit because i_size is checked for in
 
 Return 0 on success and -errno on error.
 
-Contains an adapted version of fs/buffer.c::\ :c:func:`block_read_full_page`\ .
+Contains an adapted version of fs/buffer.c::block_read_full_page().
 
 .. _`ntfs_readpage`:
 
@@ -137,7 +137,7 @@ particular a dirty page containing clean buffers for example.)
 
 Return 0 on success and -errno on error.
 
-Based on \ :c:func:`ntfs_read_block`\  and \\ :c:func:`__block_write_full_page`\ .
+Based on \ :c:func:`ntfs_read_block`\  and \__block_write_full_page().
 
 .. _`ntfs_write_mst_block`:
 
@@ -161,7 +161,7 @@ Description
 
 This function is for writing pages belonging to non-resident, mst protected
 attributes to their backing store.  The only supported attributes are index
-allocation and \ ``$MFT``\ /\ ``$DATA``\ .  Both directory inodes and index inodes are
+allocation and \ ``$MFT``\ /$DATA.  Both directory inodes and index inodes are
 supported for the index allocation case.
 
 The page must remain locked for the duration of the write because we apply
@@ -170,7 +170,7 @@ page before undoing the fixups, any other user of the page will see the
 page contents as corrupt.
 
 We clear the page uptodate flag for the duration of the function to ensure
-exclusion for the \ ``$MFT``\ /\ ``$DATA``\  case against someone mapping an mft record we
+exclusion for the \ ``$MFT``\ /$DATA case against someone mapping an mft record we
 are about to apply the mst fixups to.
 
 Return 0 on success and -errno on error.
@@ -212,7 +212,7 @@ The mft record is then marked dirty and written out asynchronously via the
 vfs inode dirty code path for the inode the mft record belongs to or via the
 vm page dirty code path for the page the mft record is in.
 
-Based on \ :c:func:`ntfs_readpage`\  and fs/buffer.c::\ :c:func:`block_write_full_page`\ .
+Based on \ :c:func:`ntfs_readpage`\  and fs/buffer.c::block_write_full_page().
 
 Return 0 on success and -errno on error.
 

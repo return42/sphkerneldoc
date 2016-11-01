@@ -16,7 +16,7 @@ string_to_prio
 Description
 -----------
 
-\ ``param``\  str string that represents a scheduler priority
+@param str string that represents a scheduler priority
 
 \ ``retval``\  priority
 \ ``retval``\  SCHED_ERR when the priority doesn't exit
@@ -36,7 +36,7 @@ prepare_output
 Description
 -----------
 
-\ ``param``\  dir directory in which the logfile should be created
+@param dir directory in which the logfile should be created
 
 \ ``retval``\  logfile on success
 \ ``retval``\  NULL when the file can't be created
@@ -56,7 +56,7 @@ prepare_default_config
 Description
 -----------
 
-\ ``retval``\  default config on success
+@retval default config on success
 \ ``retval``\  NULL when the output file can't be created
 
 .. _`prepare_config`:
@@ -77,7 +77,7 @@ prepare_config
 Description
 -----------
 
-\ ``param``\  path config file name
+@param path config file name
 
 \ ``retval``\  1 on error
 \ ``retval``\  0 on success

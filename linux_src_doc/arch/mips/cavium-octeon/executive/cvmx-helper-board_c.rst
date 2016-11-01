@@ -1,18 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: arch/mips/cavium-octeon/executive/cvmx-helper-board.c
 
-.. _`cvmx_helper_link_info_t`:
-
-cvmx_helper_link_info_t
-=======================
-
-.. c:function::  cvmx_helper_link_info_t(*cvmx_override_board_link_get)
-
-    pointer. It is meant to allow customization of the process of talking to a PHY to determine link speed. It is called every time a PHY must be polled for link status. Users should set this pointer to a function before calling any cvmx-helper operations.
-
-    :param \*cvmx_override_board_link_get:
-        *undescribed*
-
 .. _`cvmx_helper_board_get_mii_address`:
 
 cvmx_helper_board_get_mii_address
@@ -64,32 +52,6 @@ enumeration from the bootloader.
 
 Returns The ports link status. If the link isn't fully resolved, this must
 return zero.
-
-.. _`cvmx_helper_board_link_set_phy`:
-
-cvmx_helper_board_link_set_phy
-==============================
-
-.. c:function:: int cvmx_helper_board_link_set_phy(int phy_addr, cvmx_helper_board_set_phy_link_flags_types_t link_flags, cvmx_helper_link_info_t link_info)
-
-    speed, duplex, and auto-negotiation. This programs the PHY and not Octeon. This can be used to force Octeon's links to specific settings.
-
-    :param int phy_addr:
-        The address of the PHY to program
-
-    :param cvmx_helper_board_set_phy_link_flags_types_t link_flags:
-        *undescribed*
-
-    :param cvmx_helper_link_info_t link_info:
-        Link speed to program. If the speed is zero and auto-negotiation
-        is enabled, all possible negotiation speeds are advertised.
-
-.. _`cvmx_helper_board_link_set_phy.description`:
-
-Description
------------
-
-Returns Zero on success, negative on failure
 
 .. _`__cvmx_helper_board_interface_probe`:
 

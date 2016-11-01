@@ -27,7 +27,7 @@ dln2_event_cb_t
 Description
 -----------
 
-\ ``pdev``\  - the sub-device that registered this callback
+@pdev - the sub-device that registered this callback
 \ ``echo``\  - the echo header field received in the message
 \ ``data``\  - the data payload
 \ ``len``\   - the data payload length
@@ -59,7 +59,7 @@ dln2_register_event_cb
 Description
 -----------
 
-\ ``pdev``\  - the sub-device that registers the callback
+@pdev - the sub-device that registers the callback
 \ ``event``\  - the event for which to register a callback
 \ ``event_cb``\  - the callback function
 
@@ -85,7 +85,7 @@ dln2_unregister_event_cb
 Description
 -----------
 
-\ ``pdev``\  - the sub-device that registered the callback
+@pdev - the sub-device that registered the callback
 \ ``event``\  - the event for which to register a callback
 
 .. _`dln2_transfer`:
@@ -120,7 +120,7 @@ dln2_transfer
 Description
 -----------
 
-\ ``pdev``\  - the sub-device which is issuing this transfer
+@pdev - the sub-device which is issuing this transfer
 \ ``cmd``\  - the command to be sent to the device
 \ ``obuf``\  - the buffer to be sent to the device; it can be NULL if the user
 doesn't need to transmit data with this command
@@ -139,7 +139,7 @@ dln2_transfer_rx
 
 .. c:function:: int dln2_transfer_rx(struct platform_device *pdev, u16 cmd, void *ibuf, unsigned *ibuf_len)
 
-    variant of @\ :c:func:`dln2_transfer`\  where TX buffer is not needed
+    variant of \ ``dln2_transfer``\ () where TX buffer is not needed
 
     :param struct platform_device \*pdev:
         *undescribed*
@@ -158,7 +158,7 @@ dln2_transfer_rx
 Description
 -----------
 
-\ ``pdev``\  - the sub-device which is issuing this transfer
+@pdev - the sub-device which is issuing this transfer
 \ ``cmd``\  - the command to be sent to the device
 \ ``ibuf``\  - any data associated with the response will be copied here; it can be
 NULL if the user doesn't need the response data
@@ -174,7 +174,7 @@ dln2_transfer_tx
 
 .. c:function:: int dln2_transfer_tx(struct platform_device *pdev, u16 cmd, const void *obuf, unsigned obuf_len)
 
-    variant of @\ :c:func:`dln2_transfer`\  where RX buffer is not needed
+    variant of \ ``dln2_transfer``\ () where RX buffer is not needed
 
     :param struct platform_device \*pdev:
         *undescribed*
@@ -193,7 +193,7 @@ dln2_transfer_tx
 Description
 -----------
 
-\ ``pdev``\  - the sub-device which is issuing this transfer
+@pdev - the sub-device which is issuing this transfer
 \ ``cmd``\  - the command to be sent to the device
 \ ``obuf``\  - the buffer to be sent to the device; it can be NULL if the
 user doesn't need to transmit data with this command

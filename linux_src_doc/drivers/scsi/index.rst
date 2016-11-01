@@ -22,6 +22,7 @@ scsi
     fnic/index
     hisi_sas/index
     ibmvscsi/index
+    ibmvscsi_tgt/index
     isci/index
     libfc/index
     libsas/index

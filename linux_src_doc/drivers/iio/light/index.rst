@@ -11,5 +11,6 @@ light
     cm3232_c
     opt3001_c
     rpr0521_c
+    si1145_c
     stk3310_c
     us5182d_c

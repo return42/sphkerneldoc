@@ -7,4 +7,7 @@ rpmsg
 .. toctree::
     :maxdepth: 1
 
+    qcom_smd_c
+    rpmsg_core_c
+    rpmsg_internal_h
     virtio_rpmsg_bus_c

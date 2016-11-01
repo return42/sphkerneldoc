@@ -19,7 +19,7 @@ Definition
 
     struct udp_media_addr {
         __be16 proto;
-        __be16 udp_port;
+        __be16 port;
         union {unnamed_union};
     }
 
@@ -31,7 +31,7 @@ Members
 proto
     *undescribed*
 
-udp_port
+port
     *undescribed*
 
 {unnamed_union}
@@ -67,6 +67,7 @@ Definition
         struct socket *ubsock;
         u32 ifindex;
         struct work_struct work;
+        struct udp_replicast rcast;
     }
 
 .. _`udp_bearer.members`:
@@ -86,26 +87,26 @@ ifindex
 work
     used to schedule deferred work on a bearer
 
-.. _`parse_options`:
+rcast
+    *undescribed*
 
-parse_options
-=============
+.. _`tipc_parse_udp_addr`:
 
-.. c:function:: int parse_options(struct nlattr  *attrs[], struct udp_bearer *ub, struct udp_media_addr *local, struct udp_media_addr *remote)
+tipc_parse_udp_addr
+===================
 
-    build local/remote addresses from configuration
+.. c:function:: int tipc_parse_udp_addr(struct nlattr *nla, struct udp_media_addr *addr, u32 *scope_id)
 
-    :param struct nlattr  \*attrs:
-        netlink config data
+    build udp media address from netlink data
 
-    :param struct udp_bearer \*ub:
-        UDP bearer instance
+    :param struct nlattr \*nla:
+        *undescribed*
 
-    :param struct udp_media_addr \*local:
-        local bearer IP address/port
+    :param struct udp_media_addr \*addr:
+        tipc media address to fill with address, port and protocol type
 
-    :param struct udp_media_addr \*remote:
-        peer or multicast IP/port
+    :param u32 \*scope_id:
+        IPv6 scope id pointer, not NULL indicates it's required
 
 .. _`tipc_udp_enable`:
 

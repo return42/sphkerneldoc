@@ -9,3 +9,4 @@ exynos
 
     exynos7_drm_decon_c
     exynos_drm_fimd_c
+    exynos_drm_g2d_c

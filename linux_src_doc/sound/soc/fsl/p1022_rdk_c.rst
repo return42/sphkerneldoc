@@ -13,7 +13,7 @@ CCSR_GUTS_PMUXCR_UART0_I2C1_MASK
 Author
 ------
 
-Timur Tabi <timur\ ``freescale``\ .com>
+Timur Tabi <timur@freescale.com>
 
 Copyright 2012 Freescale Semiconductor, Inc.
 

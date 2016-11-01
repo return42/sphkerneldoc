@@ -7,5 +7,4 @@ soc_camera
 .. toctree::
     :maxdepth: 1
 
-    pxa_camera_c
     soc_camera_c

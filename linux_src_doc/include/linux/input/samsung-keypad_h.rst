@@ -32,7 +32,7 @@ Members
 -------
 
 keymap_data
-    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`.
+    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`\ .
 
 rows
     number of keypad row supported.

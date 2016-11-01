@@ -153,7 +153,7 @@ Description
 -----------
 
 This is called for non-resident attributes from \ :c:func:`ntfs_file_buffered_write`\ 
-with i_mutex held on the inode (\ ``pages``\ [0]->mapping->host).  There are
+with i_mutex held on the inode (@pages[0]->mapping->host).  There are
 \ ``nr_pages``\  pages in \ ``pages``\  which are locked but not \ :c:func:`kmap`\ ped.  The source
 data has not yet been copied into the \ ``pages``\ .
 
@@ -225,7 +225,7 @@ Description
 -----------
 
 This is called from \ :c:func:`ntfs_file_buffered_write`\  with i_mutex held on the inode
-(\ ``pages``\ [0]->mapping->host).  There are \ ``nr_pages``\  pages in \ ``pages``\  which are
+(@pages[0]->mapping->host).  There are \ ``nr_pages``\  pages in \ ``pages``\  which are
 locked but not \ :c:func:`kmap`\ ped.  The source data has already been copied into the
 \ ``page``\ .  \ :c:func:`ntfs_prepare_pages_for_non_resident_write`\  has been called before
 the data was copied (for non-resident attributes only) and it returned
@@ -240,7 +240,7 @@ Setting the buffers dirty ensures that they get written out later when
 Finally, we need to update i_size and initialized_size as appropriate both
 in the inode and the mft record.
 
-This is modelled after fs/buffer.c::\ :c:func:`generic_commit_write`\ , which marks
+This is modelled after fs/buffer.c::generic_commit_write(), which marks
 buffers uptodate and dirty, sets the page uptodate if all buffers in the
 page are uptodate, and updates i_size if the end of io is beyond i_size.  In
 that case, it also marks the inode dirty.
@@ -322,7 +322,7 @@ Description
 -----------
 
 Data integrity sync of a file to disk.  Used for fsync, fdatasync, and msync
-system calls.  This function is inspired by fs/buffer.c::\ :c:func:`file_fsync`\ .
+system calls.  This function is inspired by fs/buffer.c::file_fsync().
 
 If \ ``datasync``\  is false, write the mft record and all associated extent mft
 records as well as the \ ``$DATA``\  attribute and then sync the block device.

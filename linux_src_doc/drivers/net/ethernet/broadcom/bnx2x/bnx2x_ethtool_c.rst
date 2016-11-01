@@ -24,7 +24,7 @@ bnx2x_read_pages_regs
 Description
 -----------
 
-\ ``bp``\           device handle
+@bp          device handle
 \ ``p``\            output buffer
 
 Reads "paged" memories: memories that may only be read by first writing to a

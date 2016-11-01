@@ -11,10 +11,10 @@ sound
     drivers/index
     firewire/index
     hda/index
+    oss/index
     pci/index
     pcmcia/index
     soc/index
     usb/index
     ac97_bus_c
     sound_core_c
-    sound_firmware_c

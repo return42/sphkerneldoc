@@ -63,53 +63,6 @@ Description
 
 Reset the driver's copy of the wptr (all asics).
 
-.. _`amdgpu_ring_backup`:
-
-amdgpu_ring_backup
-==================
-
-.. c:function:: unsigned amdgpu_ring_backup(struct amdgpu_ring *ring, uint32_t **data)
-
-    Back up the content of a ring
-
-    :param struct amdgpu_ring \*ring:
-        the ring we want to back up
-
-    :param uint32_t \*\*data:
-        *undescribed*
-
-.. _`amdgpu_ring_backup.description`:
-
-Description
------------
-
-Saves all unprocessed commits from a ring, returns the number of dwords saved.
-
-.. _`amdgpu_ring_restore`:
-
-amdgpu_ring_restore
-===================
-
-.. c:function:: int amdgpu_ring_restore(struct amdgpu_ring *ring, unsigned size, uint32_t *data)
-
-    append saved commands to the ring again
-
-    :param struct amdgpu_ring \*ring:
-        ring to append commands to
-
-    :param unsigned size:
-        number of dwords we want to write
-
-    :param uint32_t \*data:
-        saved commands
-
-.. _`amdgpu_ring_restore.description`:
-
-Description
------------
-
-Allocates space on the ring and restore the previously saved commands.
-
 .. _`amdgpu_ring_init`:
 
 amdgpu_ring_init

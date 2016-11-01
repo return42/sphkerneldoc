@@ -8,7 +8,19 @@ native_calibrate_tsc
 
 .. c:function:: unsigned long native_calibrate_tsc( void)
 
-    calibrate the tsc on boot
+    Determine TSC frequency via CPUID, else return 0.
+
+    :param  void:
+        no arguments
+
+.. _`native_calibrate_cpu`:
+
+native_calibrate_cpu
+====================
+
+.. c:function:: unsigned long native_calibrate_cpu( void)
+
+    calibrate the cpu on boot
 
     :param  void:
         no arguments

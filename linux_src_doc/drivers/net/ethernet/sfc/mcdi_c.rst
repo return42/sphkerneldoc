@@ -51,8 +51,8 @@ Return
 A negative error code, or zero if successful.  The error
 code may come from the MCDI response or may indicate a failure
 to communicate with the MC.  In the former case, the response
-will still be copied to \ ``outbuf``\  and \*\ ``outlen_actual``\  will be
-set accordingly.  In the latter case, \*\ ``outlen_actual``\  will be
+will still be copied to \ ``outbuf``\  and \*@outlen_actual will be
+set accordingly.  In the latter case, \*@outlen_actual will be
 set to zero.
 
 .. _`efx_mcdi_rpc_async`:

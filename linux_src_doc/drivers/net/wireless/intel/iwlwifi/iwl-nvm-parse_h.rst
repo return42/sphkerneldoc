@@ -88,5 +88,27 @@ to be fed into the regulatory core. An ERR_PTR is returned on error.
 If not given to the regulatory core, the user is responsible for freeing
 the regdomain returned here with kfree.
 
+.. _`iwl_get_bios_mcc`:
+
+iwl_get_bios_mcc
+================
+
+.. c:function:: int iwl_get_bios_mcc(struct device *dev, char *mcc)
+
+    read MCC from BIOS, if available
+
+    :param struct device \*dev:
+        the struct device
+
+    :param char \*mcc:
+        output buffer (3 bytes) that will get the MCC
+
+.. _`iwl_get_bios_mcc.description`:
+
+Description
+-----------
+
+This function tries to read the current MCC from ACPI if available.
+
 .. This file was automatic generated / don't edit.
 

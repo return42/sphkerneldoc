@@ -14,6 +14,7 @@ gpio
     gpio-altera_c
     gpio-crystalcove_c
     gpio-davinci_c
+    gpio-gpio-mm_c
     gpio-it87_c
     gpio-max730x_c
     gpio-mcp23s08_c

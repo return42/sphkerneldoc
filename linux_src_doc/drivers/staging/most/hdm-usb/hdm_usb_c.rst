@@ -1,46 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/staging/most/hdm-usb/hdm_usb.c
 
-.. _`buf_anchor`:
-
-struct buf_anchor
-=================
-
-.. c:type:: struct buf_anchor
-
-    used to create a list of pending URBs
-
-.. _`buf_anchor.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct buf_anchor {
-        struct urb *urb;
-        struct work_struct clear_work_obj;
-        struct list_head list;
-        struct completion urb_compl;
-    }
-
-.. _`buf_anchor.members`:
-
-Members
--------
-
-urb
-    pointer to USB request block
-
-clear_work_obj
-    *undescribed*
-
-list
-    linked list
-
-urb_compl
-    *undescribed*
-
 .. _`most_dci_obj`:
 
 struct most_dci_obj
@@ -60,6 +20,7 @@ Definition
     struct most_dci_obj {
         struct kobject kobj;
         struct usb_device *usb_device;
+        u16 reg_addr;
     }
 
 .. _`most_dci_obj.members`:
@@ -72,6 +33,9 @@ kobj
 
 usb_device
     pointer to the usb device
+
+reg_addr
+    register address for arbitrary DCI access
 
 .. _`most_dev`:
 
@@ -101,10 +65,11 @@ Definition
         u16 link_stat;
         char description[MAX_STRING_LEN];
         char suffix[MAX_NUM_ENDPOINTS][MAX_SUFFIX_LEN];
-        spinlock_t anchor_list_lock[MAX_NUM_ENDPOINTS];
+        spinlock_t channel_lock[MAX_NUM_ENDPOINTS];
         bool padding_active[MAX_NUM_ENDPOINTS];
         bool is_channel_healthy[MAX_NUM_ENDPOINTS];
-        struct list_head *anchor_list;
+        struct clear_hold_work clear_work[MAX_NUM_ENDPOINTS];
+        struct usb_anchor *busy_urbs;
         struct mutex io_mutex;
         struct timer_list link_stat_timer;
         struct work_struct poll_work_obj;
@@ -148,8 +113,8 @@ description
 suffix
     suffix for channel name
 
-anchor_list_lock
-    locks list access
+channel_lock
+    synchronize channel access
 
 padding_active
     indicates channel uses padding
@@ -157,7 +122,7 @@ padding_active
 is_channel_healthy
     health status table of each channel
 
-anchor_list
+busy_urbs
     list of anchored items
 
 io_mutex
@@ -224,7 +189,7 @@ This is writes data to INIC's direct register communication interface
 free_anchored_buffers
 =====================
 
-.. c:function:: void free_anchored_buffers(struct most_dev *mdev, unsigned int channel)
+.. c:function:: void free_anchored_buffers(struct most_dev *mdev, unsigned int channel, enum mbo_status_flags status)
 
     free device's anchored items
 
@@ -233,6 +198,9 @@ free_anchored_buffers
 
     :param unsigned int channel:
         channel ID
+
+    :param enum mbo_status_flags status:
+        status of MBO termination
 
 .. _`get_stream_frame_size`:
 

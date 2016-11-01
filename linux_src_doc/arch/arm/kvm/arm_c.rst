@@ -82,7 +82,7 @@ need_new_vmid_gen
     check that the VMID is still valid
 
     :param struct kvm \*kvm:
-        The VM's VMID to checkt
+        The VM's VMID to check
 
 .. _`need_new_vmid_gen.description`:
 

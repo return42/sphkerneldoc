@@ -121,6 +121,7 @@ Definition
         struct clkdm_dep *wkdep_srcs;
         struct clkdm_dep *sleepdep_srcs;
         int usecount;
+        int forcewake_count;
         struct list_head node;
     }
 
@@ -165,6 +166,9 @@ sleepdep_srcs
 usecount
     Usecount tracking
 
+forcewake_count
+    Usecount for forcing the domain active
+
 node
     list_head to link all clockdomains together
 
@@ -173,7 +177,7 @@ node
 Description
 -----------
 
-\ ``prcm_partition``\  should be a macro from mach-omap2/prcm44xx.h (OMAP4 only)
+@prcm_partition should be a macro from mach-omap2/prcm44xx.h (OMAP4 only)
 \ ``cm_inst``\  should be a macro ending in \_INST from the OMAP4 CM instance
 definitions (OMAP4 only)
 \ ``clkdm_offs``\  should be a macro ending in \_CDOFFS from the OMAP4 CM instance

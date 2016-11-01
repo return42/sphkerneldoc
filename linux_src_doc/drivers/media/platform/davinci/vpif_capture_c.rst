@@ -27,7 +27,7 @@ or user address is converted into  physical address
 vpif_buffer_queue_setup
 =======================
 
-.. c:function:: int vpif_buffer_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers, unsigned int *nplanes, unsigned int sizes[], void  *alloc_ctxs[])
+.. c:function:: int vpif_buffer_queue_setup(struct vb2_queue *vq, unsigned int *nbuffers, unsigned int *nplanes, unsigned int sizes[], struct device  *alloc_devs[])
 
     Callback function for buffer setup.
 
@@ -43,7 +43,7 @@ vpif_buffer_queue_setup
     :param unsigned int sizes:
         contains the size (in bytes) of each plane.
 
-    :param void  \*alloc_ctxs:
+    :param struct device  \*alloc_devs:
         ptr to allocation context
 
 .. _`vpif_buffer_queue_setup.description`:

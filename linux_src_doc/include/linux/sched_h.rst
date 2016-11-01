@@ -75,10 +75,10 @@ Members
 -------
 
 utime
-    time spent in user mode, in \ :c:type:`struct cputime_t <cputime_t>` units
+    time spent in user mode, in \ :c:type:`struct cputime_t <cputime_t>`\  units
 
 stime
-    time spent in kernel mode, in \ :c:type:`struct cputime_t <cputime_t>` units
+    time spent in kernel mode, in \ :c:type:`struct cputime_t <cputime_t>`\  units
 
 sum_exec_runtime
     total time spent on the CPU, in nanoseconds
@@ -230,6 +230,31 @@ Return
 
 1 if \ ``p``\  is an idle task. 0 otherwise.
 
+.. _`set_restore_sigmask`:
+
+set_restore_sigmask
+===================
+
+.. c:function:: void set_restore_sigmask( void)
+
+    make sure saved_sigmask processing gets done
+
+    :param  void:
+        no arguments
+
+.. _`set_restore_sigmask.description`:
+
+Description
+-----------
+
+This sets TIF_RESTORE_SIGMASK and ensures that the arch signal code
+will run before returning to user mode, to process the flag.  For
+all callers, TIF_SIGPENDING is already set or it's no harm to set
+it.  TIF_RESTORE_SIGMASK need not be in the set of bits that the
+arch code will notice on return to user mode, in case those bits
+are scarce.  We set TIF_SIGPENDING here to ensure that the arch
+signal code always gets run when TIF_RESTORE_SIGMASK is set.
+
 .. _`threadgroup_change_begin`:
 
 threadgroup_change_begin
@@ -250,7 +275,7 @@ Description
 All operations which modify a threadgroup - a new thread joining the
 group, death of a member thread (the assertion of PF_EXITING) and
 exec(2) dethreading the process and replacing the leader - are wrapped
-by threadgroup_change_{begin\|end}().  This is to provide a place which
+by threadgroup_change_{begin|end}().  This is to provide a place which
 subsystems needing threadgroup stability can hook into for
 synchronization.
 

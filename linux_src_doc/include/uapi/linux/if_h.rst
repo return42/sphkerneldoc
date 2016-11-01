@@ -8,7 +8,7 @@ enum net_device_flags
 
 .. c:type:: enum net_device_flags
 
-    \ :c:type:`struct net_device <net_device>`\  flags
+    &struct net_device flags
 
 .. _`net_device_flags.definition`:
 

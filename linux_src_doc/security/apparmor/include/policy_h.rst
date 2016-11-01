@@ -25,7 +25,7 @@ pointer to \ ``p``\  if \ ``p``\  is NULL will return NULL
 Requires
 --------
 
-\ ``p``\  must be held with valid refcount when called
+@p must be held with valid refcount when called
 
 .. _`aa_get_profile_not0`:
 
@@ -51,7 +51,7 @@ pointer to \ ``p``\  if \ ``p``\  is NULL will return NULL
 Requires
 --------
 
-\ ``p``\  must be held with valid refcount when called
+@p must be held with valid refcount when called
 
 .. _`aa_get_profile_rcu`:
 
@@ -130,7 +130,7 @@ pointer to \ ``ns``\ , if \ ``ns``\  is NULL returns NULL
 Requires
 --------
 
-\ ``ns``\  must be held with valid refcount when called
+@ns must be held with valid refcount when called
 
 .. _`aa_put_namespace`:
 

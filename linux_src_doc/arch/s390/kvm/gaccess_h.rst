@@ -226,7 +226,7 @@ copying any data (key protection is currently not implemented).
 
 This function modifies the 'struct kvm_s390_pgm_info pgm' member of \ ``vcpu``\ .
 In case of an access exception (e.g. protection exception) pgm will contain
-all data necessary so that a subsequent call to '\ :c:func:`kvm_s390_inject_prog_vcpu`\ '
+all data necessary so that a subsequent call to 'kvm_s390_inject_prog_vcpu()'
 will inject a correct exception into the guest.
 If no access exception happened, the contents of pgm are undefined when
 this function returns.

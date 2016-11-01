@@ -24,7 +24,7 @@ nilfs_transaction_begin
 Description
 -----------
 
-\ :c:func:`nilfs_transaction_begin`\  acquires a reader/writer semaphore, called
+nilfs_transaction_begin() acquires a reader/writer semaphore, called
 the segment semaphore, to make a segment construction and write tasks
 exclusive.  The function is used with \ :c:func:`nilfs_transaction_commit`\  in pairs.
 The region enclosed by these two functions can be nested.  To avoid a
@@ -67,7 +67,7 @@ nilfs_transaction_commit
 Description
 -----------
 
-\ :c:func:`nilfs_transaction_commit`\  releases the read semaphore which is
+nilfs_transaction_commit() releases the read semaphore which is
 acquired by \ :c:func:`nilfs_transaction_begin`\ . This is only performed
 in outermost call of this function.  If a commit flag is set,
 \ :c:func:`nilfs_transaction_commit`\  sets a timer to start the segment
@@ -268,7 +268,7 @@ nilfs_segctor_thread
 Description
 -----------
 
-\ :c:func:`nilfs_segctor_thread`\  initializes a timer and serves as a daemon
+nilfs_segctor_thread() initializes a timer and serves as a daemon
 to execute segment constructions.
 
 .. _`nilfs_segctor_destroy`:
@@ -288,7 +288,7 @@ nilfs_segctor_destroy
 Description
 -----------
 
-\ :c:func:`nilfs_segctor_destroy`\  kills the segctord thread and frees
+nilfs_segctor_destroy() kills the segctord thread and frees
 the nilfs_sc_info struct.
 Caller must hold the segment semaphore.
 

@@ -25,7 +25,7 @@ Description
 -----------
 
 Returns -1 for error.  If you need to distinguish the error more
-strictly, use \\ :c:func:`_snd_hdac_read_parm`\  directly.
+strictly, use \_snd_hdac_read_parm() directly.
 
 .. This file was automatic generated / don't edit.
 

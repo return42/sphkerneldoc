@@ -14,7 +14,7 @@ prism54_mib_mode_helper
         *undescribed*
 
     :param u32 iw_mode:
-        new mode (\ ``IW_MODE``\ \_\*)
+        new mode (%IW_MODE\_\*)
 
 .. _`prism54_mib_mode_helper.description`:
 

@@ -14,7 +14,7 @@ syscall_get_nr
         task of interest, must be blocked
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
 .. _`syscall_get_nr.description`:
 
@@ -45,7 +45,7 @@ syscall_rollback
         task of interest, must be in system call exit tracing
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
 .. _`syscall_rollback.description`:
 
@@ -76,7 +76,7 @@ syscall_get_error
         task of interest, must be blocked
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
 .. _`syscall_get_error.description`:
 
@@ -101,7 +101,7 @@ syscall_get_return_value
         task of interest, must be blocked
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
 .. _`syscall_get_return_value.description`:
 
@@ -127,7 +127,7 @@ syscall_set_return_value
         task of interest, must be blocked
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
     :param int error:
         negative error code, or zero to indicate success
@@ -161,7 +161,7 @@ syscall_get_arguments
         task of interest, must be blocked
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
     :param unsigned int i:
         argument index [0,5]
@@ -199,7 +199,7 @@ syscall_set_arguments
         task of interest, must be in system call entry tracing
 
     :param struct pt_regs \*regs:
-        \ :c:func:`task_pt_regs`\  of \ ``task``\ 
+        task_pt_regs() of \ ``task``\ 
 
     :param unsigned int i:
         argument index [0,5]

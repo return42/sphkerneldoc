@@ -41,7 +41,7 @@ If \ ``tree``\  is set, vmpressure is in traditional userspace reporting
 mode
 ----
 
-\ ``memcg``\  is considered the pressure root and userspace is
+@memcg is considered the pressure root and userspace is
 notified of the entire subtree's reclaim efficiency.
 
 If \ ``tree``\  is not set, reclaim efficiency is recorded for \ ``memcg``\ , and

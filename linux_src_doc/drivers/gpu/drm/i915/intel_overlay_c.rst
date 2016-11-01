@@ -6,11 +6,11 @@
 intel_panel_fitter_pipe
 =======================
 
-.. c:function:: int intel_panel_fitter_pipe(struct drm_device *dev)
+.. c:function:: int intel_panel_fitter_pipe(struct drm_i915_private *dev_priv)
 
     or -1 if the panel fitter is not present or not in use
 
-    :param struct drm_device \*dev:
+    :param struct drm_i915_private \*dev_priv:
         *undescribed*
 
 .. This file was automatic generated / don't edit.

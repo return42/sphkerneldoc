@@ -79,10 +79,10 @@ hrtimer_try_to_cancel
 Return
 ------
 
-0 when the timer was not active
-1 when the timer was active
+ 0 when the timer was not active
+ 1 when the timer was active
 -1 when the timer is currently excuting the callback function and
-cannot be stopped
+   cannot be stopped
 
 .. _`hrtimer_cancel`:
 
@@ -101,8 +101,8 @@ hrtimer_cancel
 Return
 ------
 
-0 when the timer was not active
-1 when the timer was active
+ 0 when the timer was not active
+ 1 when the timer was active
 
 .. _`__hrtimer_get_remaining`:
 
@@ -206,7 +206,7 @@ the current task state has been set (see \ :c:func:`set_current_state`\ ).
 
 The \ ``delta``\  argument gives the kernel the freedom to schedule the
 actual wakeup to a time that is both power and performance friendly.
-The kernel give the normal best effort behavior for "\ ``expires``\ +\ ``delta``\ ",
+The kernel give the normal best effort behavior for "@expires+@delta",
 but may decide to fire the timer earlier, but no earlier than \ ``expires``\ .
 
 You can set the task state as follows -

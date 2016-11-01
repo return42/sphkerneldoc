@@ -21,7 +21,7 @@ usb_hcd_s3c2410_probe
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_s3c2410_probe.description`:
 

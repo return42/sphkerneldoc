@@ -63,7 +63,7 @@ ntfs_write_volume_flags
 Description
 -----------
 
-Internal function.  You probably want to use ntfs_{set,clear}\ :c:func:`_volume_flags`\ 
+Internal function.  You probably want to use ntfs_{set,clear}_volume_flags()
 instead (see below).
 
 Replace the volume information flags on the volume \ ``vol``\  with the value
@@ -178,7 +178,7 @@ is_boot_sector_ntfs
 Description
 -----------
 
-\ :c:func:`is_boot_sector_ntfs`\  checks whether the boot sector \ ``b``\  is a valid NTFS boot
+is_boot_sector_ntfs() checks whether the boot sector \ ``b``\  is a valid NTFS boot
 sector. Returns 'true' if it is valid and 'false' if not.
 
 \ ``sb``\  is only needed for warning/error output, i.e. it can be NULL when silent
@@ -408,7 +408,7 @@ Return 'true' on success or 'false' on error.
 If \ ``$UsnJrnl``\  is not present or in the process of being disabled, we set
 \ :c:func:`NVolUsnJrnlStamped`\  and return success.
 
-If the \ ``$UsnJrnl``\  \ ``$DATA``\ /\ ``$J``\  attribute has a size equal to the lowest valid usn,
+If the \ ``$UsnJrnl``\  \ ``$DATA``\ /$J attribute has a size equal to the lowest valid usn,
 i.e. transaction logging has only just been enabled or the journal has been
 stamped and nothing has been logged since, we also set \ :c:func:`NVolUsnJrnlStamped`\ 
 and return success.
@@ -490,7 +490,7 @@ ntfs_put_super
 Description
 -----------
 
-\ :c:func:`ntfs_put_super`\  is called by the VFS (from fs/super.c::\ :c:func:`do_umount`\ ) when
+ntfs_put_super() is called by the VFS (from fs/super.c::do_umount()) when
 the volume is being unmounted (umount system call has been invoked) and it
 releases all inodes and memory belonging to the NTFS specific part of the
 super block.
@@ -622,7 +622,7 @@ ntfs_fill_super
 Description
 -----------
 
-\ :c:func:`ntfs_fill_super`\  is called by the VFS to mount the device described by \ ``sb``\ 
+ntfs_fill_super() is called by the VFS to mount the device described by \ ``sb``\ 
 with the mount otions in \ ``data``\  with the NTFS filesystem.
 
 If \ ``silent``\  is true, remain silent even if errors are detected. This is used
@@ -637,7 +637,7 @@ fact this is what is supposed to happen.
 NOTE
 ----
 
-\ ``sb``\ ->s_flags contains the mount options flags.
+@sb->s_flags contains the mount options flags.
 
 .. This file was automatic generated / don't edit.
 

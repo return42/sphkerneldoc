@@ -25,7 +25,7 @@ Definition
         NFT_REG_4,
         __NFT_REG_MAX,
         NFT_REG32_00,
-        MFT_REG32_01,
+        NFT_REG32_01,
         NFT_REG32_02,
         NFT_REG32_03,
         NFT_REG32_04,
@@ -68,7 +68,7 @@ __NFT_REG_MAX
 NFT_REG32_00
     *undescribed*
 
-MFT_REG32_01
+NFT_REG32_01
     *undescribed*
 
 NFT_REG32_02
@@ -1446,6 +1446,86 @@ NFTA_CMP_DATA
 __NFTA_CMP_MAX
     *undescribed*
 
+.. _`nft_range_ops`:
+
+enum nft_range_ops
+==================
+
+.. c:type:: enum nft_range_ops
+
+    nf_tables range operator
+
+.. _`nft_range_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_range_ops {
+        NFT_RANGE_EQ,
+        NFT_RANGE_NEQ
+    };
+
+.. _`nft_range_ops.constants`:
+
+Constants
+---------
+
+NFT_RANGE_EQ
+    equal
+
+NFT_RANGE_NEQ
+    not equal
+
+.. _`nft_range_attributes`:
+
+enum nft_range_attributes
+=========================
+
+.. c:type:: enum nft_range_attributes
+
+    nf_tables range expression netlink attributes
+
+.. _`nft_range_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_range_attributes {
+        NFTA_RANGE_UNSPEC,
+        NFTA_RANGE_SREG,
+        NFTA_RANGE_OP,
+        NFTA_RANGE_FROM_DATA,
+        NFTA_RANGE_TO_DATA,
+        __NFTA_RANGE_MAX
+    };
+
+.. _`nft_range_attributes.constants`:
+
+Constants
+---------
+
+NFTA_RANGE_UNSPEC
+    *undescribed*
+
+NFTA_RANGE_SREG
+    source register of data to compare (NLA_U32: nft_registers)
+
+NFTA_RANGE_OP
+    cmp operation (NLA_U32: nft_cmp_ops)
+
+NFTA_RANGE_FROM_DATA
+    data range from (NLA_NESTED: nft_data_attributes)
+
+NFTA_RANGE_TO_DATA
+    data range to (NLA_NESTED: nft_data_attributes)
+
+__NFTA_RANGE_MAX
+    *undescribed*
+
 .. _`nft_lookup_attributes`:
 
 enum nft_lookup_attributes
@@ -1468,6 +1548,7 @@ Definition
         NFTA_LOOKUP_SREG,
         NFTA_LOOKUP_DREG,
         NFTA_LOOKUP_SET_ID,
+        NFTA_LOOKUP_FLAGS,
         __NFTA_LOOKUP_MAX
     };
 
@@ -1490,6 +1571,9 @@ NFTA_LOOKUP_DREG
 
 NFTA_LOOKUP_SET_ID
     uniquely identifies a set in a transaction (NLA_U32)
+
+NFTA_LOOKUP_FLAGS
+    flags (NLA_U32: enum nft_lookup_flags)
 
 __NFTA_LOOKUP_MAX
     *undescribed*
@@ -1520,6 +1604,7 @@ Definition
         NFTA_DYNSET_TIMEOUT,
         NFTA_DYNSET_EXPR,
         NFTA_DYNSET_PAD,
+        NFTA_DYNSET_FLAGS,
         __NFTA_DYNSET_MAX
     };
 
@@ -1554,6 +1639,9 @@ NFTA_DYNSET_EXPR
 
 NFTA_DYNSET_PAD
     *undescribed*
+
+NFTA_DYNSET_FLAGS
+    flags (NLA_U32)
 
 __NFTA_DYNSET_MAX
     *undescribed*
@@ -1857,6 +1945,62 @@ NFT_META_CGROUP
 
 NFT_META_PRANDOM
     a 32bit pseudo-random number
+
+.. _`nft_hash_attributes`:
+
+enum nft_hash_attributes
+========================
+
+.. c:type:: enum nft_hash_attributes
+
+    nf_tables hash expression netlink attributes
+
+.. _`nft_hash_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_hash_attributes {
+        NFTA_HASH_UNSPEC,
+        NFTA_HASH_SREG,
+        NFTA_HASH_DREG,
+        NFTA_HASH_LEN,
+        NFTA_HASH_MODULUS,
+        NFTA_HASH_SEED,
+        NFTA_HASH_OFFSET,
+        __NFTA_HASH_MAX
+    };
+
+.. _`nft_hash_attributes.constants`:
+
+Constants
+---------
+
+NFTA_HASH_UNSPEC
+    *undescribed*
+
+NFTA_HASH_SREG
+    source register (NLA_U32)
+
+NFTA_HASH_DREG
+    destination register (NLA_U32)
+
+NFTA_HASH_LEN
+    source data length (NLA_U32)
+
+NFTA_HASH_MODULUS
+    modulus value (NLA_U32)
+
+NFTA_HASH_SEED
+    seed value (NLA_U32)
+
+NFTA_HASH_OFFSET
+    add this offset value to hash result (NLA_U32)
+
+__NFTA_HASH_MAX
+    *undescribed*
 
 .. _`nft_meta_attributes`:
 
@@ -2215,6 +2359,7 @@ Definition
         NFTA_QUEUE_NUM,
         NFTA_QUEUE_TOTAL,
         NFTA_QUEUE_FLAGS,
+        NFTA_QUEUE_SREG_QNUM,
         __NFTA_QUEUE_MAX
     };
 
@@ -2235,7 +2380,54 @@ NFTA_QUEUE_TOTAL
 NFTA_QUEUE_FLAGS
     various flags (NLA_U16)
 
+NFTA_QUEUE_SREG_QNUM
+    source register of queue number (NLA_U32: nft_registers)
+
 __NFTA_QUEUE_MAX
+    *undescribed*
+
+.. _`nft_quota_attributes`:
+
+enum nft_quota_attributes
+=========================
+
+.. c:type:: enum nft_quota_attributes
+
+    nf_tables quota expression netlink attributes
+
+.. _`nft_quota_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_quota_attributes {
+        NFTA_QUOTA_UNSPEC,
+        NFTA_QUOTA_BYTES,
+        NFTA_QUOTA_FLAGS,
+        NFTA_QUOTA_PAD,
+        __NFTA_QUOTA_MAX
+    };
+
+.. _`nft_quota_attributes.constants`:
+
+Constants
+---------
+
+NFTA_QUOTA_UNSPEC
+    *undescribed*
+
+NFTA_QUOTA_BYTES
+    quota in bytes (NLA_U16)
+
+NFTA_QUOTA_FLAGS
+    flags (NLA_U32)
+
+NFTA_QUOTA_PAD
+    *undescribed*
+
+__NFTA_QUOTA_MAX
     *undescribed*
 
 .. _`nft_reject_types`:
@@ -2657,23 +2849,23 @@ NFTA_GEN_ID
 __NFTA_GEN_MAX
     *undescribed*
 
-.. _`nft_trace_attibutes`:
+.. _`nft_trace_attributes`:
 
-enum nft_trace_attibutes
-========================
+enum nft_trace_attributes
+=========================
 
-.. c:type:: enum nft_trace_attibutes
+.. c:type:: enum nft_trace_attributes
 
     nf_tables trace netlink attributes
 
-.. _`nft_trace_attibutes.definition`:
+.. _`nft_trace_attributes.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    enum nft_trace_attibutes {
+    enum nft_trace_attributes {
         NFTA_TRACE_UNSPEC,
         NFTA_TRACE_TABLE,
         NFTA_TRACE_CHAIN,
@@ -2695,7 +2887,7 @@ Definition
         __NFTA_TRACE_MAX
     };
 
-.. _`nft_trace_attibutes.constants`:
+.. _`nft_trace_attributes.constants`:
 
 Constants
 ---------
@@ -2755,6 +2947,54 @@ NFTA_TRACE_PAD
     *undescribed*
 
 __NFTA_TRACE_MAX
+    *undescribed*
+
+.. _`nft_ng_attributes`:
+
+enum nft_ng_attributes
+======================
+
+.. c:type:: enum nft_ng_attributes
+
+    nf_tables number generator expression netlink attributes
+
+.. _`nft_ng_attributes.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum nft_ng_attributes {
+        NFTA_NG_UNSPEC,
+        NFTA_NG_DREG,
+        NFTA_NG_MODULUS,
+        NFTA_NG_TYPE,
+        NFTA_NG_OFFSET,
+        __NFTA_NG_MAX
+    };
+
+.. _`nft_ng_attributes.constants`:
+
+Constants
+---------
+
+NFTA_NG_UNSPEC
+    *undescribed*
+
+NFTA_NG_DREG
+    destination register (NLA_U32)
+
+NFTA_NG_MODULUS
+    maximum counter value (NLA_U32)
+
+NFTA_NG_TYPE
+    operation type (NLA_U32)
+
+NFTA_NG_OFFSET
+    offset to be added to the counter (NLA_U32)
+
+__NFTA_NG_MAX
     *undescribed*
 
 .. This file was automatic generated / don't edit.

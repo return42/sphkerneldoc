@@ -319,11 +319,11 @@ Definition
 .. code-block:: c
 
     struct nft_set_ops {
-        bool (*lookup)(const struct nft_set *set,const u32 *key,const struct nft_set_ext **ext);
+        bool (*lookup)(const struct net *net,const struct nft_set *set,const u32 *key,const struct nft_set_ext **ext);
         bool (*update)(struct nft_set *set,const u32 *key,void *(*new);
-        int (*insert)(const struct nft_set *set,const struct nft_set_elem *elem);
-        void (*activate)(const struct nft_set *set,const struct nft_set_elem *elem);
-        void * (*deactivate)(const struct nft_set *set,const struct nft_set_elem *elem);
+        int (*insert)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem,struct nft_set_ext **ext);
+        void (*activate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
+        void * (*deactivate)(const struct net *net,const struct nft_set *set,const struct nft_set_elem *elem);
         void (*remove)(const struct nft_set *set,const struct nft_set_elem *elem);
         void (*walk)(const struct nft_ctx *ctx,const struct nft_set *set,struct nft_set_iter *iter);
         unsigned int (*privsize)(const struct nlattr * const nla[]);
@@ -417,8 +417,8 @@ Definition
         u16 udlen;
         unsigned char *udata;
         const struct nft_set_ops *ops ____cacheline_aligned;
-        possible_net_t pnet;
-        u16 flags;
+        u16 flags:14;
+        u16 genmask:14:2;
         u8 klen;
         u8 dlen;
         unsigned char data[]__attribute__((aligned(__alignof__(u64))));
@@ -471,11 +471,11 @@ udata
 ____cacheline_aligned
     *undescribed*
 
-pnet
-    network namespace
-
 flags
     set flags
+
+genmask
+    generation mask
 
 klen
     key length
@@ -917,7 +917,8 @@ Definition
         u64 handle;
         u32 use;
         u16 level;
-        u8 flags;
+        u8 flags:6;
+        u8 genmask:6:2;
         char name[NFT_CHAIN_MAXNAMELEN];
     }
 
@@ -946,6 +947,9 @@ level
 
 flags
     bitmask of enum nft_chain_flags
+
+genmask
+    *undescribed*
 
 name
     name of the chain
@@ -1016,7 +1020,6 @@ Definition
 
     struct nft_base_chain {
         struct nf_hook_ops ops[NFT_HOOK_OPS_MAX];
-        possible_net_t pnet;
         const struct nf_chain_type *type;
         u8 policy;
         u8 flags;
@@ -1032,9 +1035,6 @@ Members
 
 ops
     netfilter hook ops
-
-pnet
-    net namespace that this chain belongs to
 
 type
     chain type
@@ -1076,7 +1076,8 @@ Definition
         struct list_head sets;
         u64 hgenerator;
         u32 use;
-        u16 flags;
+        u16 flags:14;
+        u16 genmask:14:2;
         char name[NFT_TABLE_MAXNAMELEN];
     }
 
@@ -1102,6 +1103,9 @@ use
 
 flags
     table flag (see enum nft_table_flags)
+
+genmask
+    generation mask
 
 name
     name of the table

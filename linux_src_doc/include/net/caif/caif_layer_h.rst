@@ -28,7 +28,7 @@ enum caif_ctrlcmd
 
 .. c:type:: enum caif_ctrlcmd
 
-    CAIF Stack Control Signaling sent in layer.\ :c:func:`ctrlcmd`\ .
+    CAIF Stack Control Signaling sent in layer.ctrlcmd().
 
 .. _`caif_ctrlcmd.definition`:
 

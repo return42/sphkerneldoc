@@ -6,23 +6,26 @@
 cpuhp_invoke_callback
 =====================
 
-.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state step, int (*cb)(unsigned int))
+.. c:function:: int cpuhp_invoke_callback(unsigned int cpu, enum cpuhp_state state, bool bringup, struct hlist_node *node)
 
     :param unsigned int cpu:
         The cpu for which the callback should be invoked
 
-    :param enum cpuhp_state step:
-        The step in the state machine
+    :param enum cpuhp_state state:
+        *undescribed*
 
-    :param int (\*cb)(unsigned int):
-        The callback function to invoke
+    :param bool bringup:
+        True if the bringup callback should be invoked
+
+    :param struct hlist_node \*node:
+        *undescribed*
 
 .. _`cpuhp_invoke_callback.description`:
 
 Description
 -----------
 
-Called from cpu hotplug and from the state register machinery
+Called from cpu hotplug and from the state register machinery.
 
 .. _`clear_tasks_mm_cpumask`:
 
@@ -56,7 +59,7 @@ notify_cpu_starting
 
 .. c:function:: void notify_cpu_starting(unsigned int cpu)
 
-    call the CPU_STARTING notifiers
+    Invoke the callbacks on the starting CPU
 
     :param unsigned int cpu:
         cpu that just started
@@ -66,16 +69,15 @@ notify_cpu_starting
 Description
 -----------
 
-This function calls the cpu_chain notifiers with CPU_STARTING.
 It must be called by the arch code on the new cpu, before the new cpu
-enables interrupts and before the "boot" cpu returns from \\ :c:func:`__cpu_up`\ .
+enables interrupts and before the "boot" cpu returns from \__cpu_up().
 
 .. _`__cpuhp_setup_state`:
 
 __cpuhp_setup_state
 ===================
 
-.. c:function:: int __cpuhp_setup_state(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu))
+.. c:function:: int __cpuhp_setup_state(enum cpuhp_state state, const char *name, bool invoke, int (*startup)(unsigned int cpu), int (*teardown)(unsigned int cpu), bool multi_instance)
 
     Setup the callbacks for an hotplug machine state
 
@@ -94,6 +96,9 @@ __cpuhp_setup_state
 
     :param int (\*teardown)(unsigned int cpu):
         teardown callback function
+
+    :param bool multi_instance:
+        *undescribed*
 
 .. _`__cpuhp_setup_state.description`:
 

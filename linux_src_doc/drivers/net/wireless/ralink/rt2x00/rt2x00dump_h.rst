@@ -50,7 +50,7 @@ DUMP_FRAME_BEACON
 Description
 -----------
 
-These values are used for the \ ``type``\  member of \ :c:type:`struct rt2x00dump_hdr <rt2x00dump_hdr>`.
+These values are used for the \ ``type``\  member of \ :c:type:`struct rt2x00dump_hdr <rt2x00dump_hdr>`\ .
 
 .. _`rt2x00dump_hdr`:
 
@@ -95,7 +95,7 @@ version
     handle this frame.
 
 header_length
-    The length of the \ :c:type:`struct rt2x00dump_hdr <rt2x00dump_hdr>` structure. This is
+    The length of the \ :c:type:`struct rt2x00dump_hdr <rt2x00dump_hdr>`\  structure. This is
     used for compatibility reasons so userspace can easily determine
     the location of the next field in the dump.
 
@@ -115,7 +115,7 @@ chip_rev
     Chipset revision
 
 type
-    The frame type (\ :c:type:`struct rt2x00_dump_type <rt2x00_dump_type>`)
+    The frame type (&rt2x00_dump_type)
 
 queue_index
     The index number of the data queue.

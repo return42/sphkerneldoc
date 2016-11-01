@@ -18,8 +18,8 @@ Description
 Structure must be initialized to zero before the first call to one of the
 attribute search functions. Initialize \ ``mrec``\  to point to the mft record to
 search, and \ ``attr``\  to point to the first attribute within \ ``mrec``\  (not necessary
-if calling the \\ :c:func:`_first`\  functions), and set \ ``is_first``\  to 'true' (not necessary
-if calling the \\ :c:func:`_first`\  functions).
+if calling the \_first() functions), and set \ ``is_first``\  to 'true' (not necessary
+if calling the \_first() functions).
 
 If \ ``is_first``\  is 'true', the search begins with \ ``attr``\ . If \ ``is_first``\  is 'false',
 the search begins after \ ``attr``\ . This is so that, after the first call to one

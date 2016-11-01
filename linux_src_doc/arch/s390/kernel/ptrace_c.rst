@@ -21,7 +21,7 @@ regs_get_kernel_stack_nth
 Description
 -----------
 
-\ :c:func:`regs_get_kernel_stack_nth`\  returns \ ``n``\  th entry of the kernel stack which
+regs_get_kernel_stack_nth() returns \ ``n``\  th entry of the kernel stack which
 is specifined by \ ``regs``\ . If the \ ``n``\  th entry is NOT in the kernel stack,
 this returns 0.
 

@@ -1,21 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: fs/dcache.c
 
-.. _`dentry_rcuwalk_invalidate`:
-
-dentry_rcuwalk_invalidate
-=========================
-
-.. c:function:: void dentry_rcuwalk_invalidate(struct dentry *dentry)
-
-    invalidate in-progress rcu-walk lookups
-
-    :param struct dentry \*dentry:
-        the target dentry
-        After this call, in-progress rcu-walk path lookup will fail. This
-        should be called after unhashing, and after changing d_inode (if
-        the dentry has not already been unhashed).
-
 .. _`__d_drop`:
 
 __d_drop
@@ -33,7 +18,7 @@ __d_drop
 Description
 -----------
 
-\ :c:func:`d_drop`\  unhashes the entry from the parent dentry hashes, so that it won't
+d_drop() unhashes the entry from the parent dentry hashes, so that it won't
 be found through a VFS lookup any more. Note that this is different from
 deleting the dentry - d_delete will try to mark the dentry negative if
 possible, giving a successful \_negative\_ lookup, while d_drop will
@@ -171,7 +156,7 @@ d_walk
         start of walk
 
     :param void \*data:
-        data passed to @\ :c:func:`enter`\  and @\ :c:func:`finish`\ 
+        data passed to \ ``enter``\ () and \ ``finish``\ ()
 
     :param enum d_walk_ret (\*enter)(void \*, struct dentry \*):
         callback when first entering the dentry
@@ -184,7 +169,7 @@ d_walk
 Description
 -----------
 
-The @\ :c:func:`enter`\  and @\ :c:func:`finish`\  callbacks are called with d_lock held.
+The \ ``enter``\ () and \ ``finish``\ () callbacks are called with d_lock held.
 
 .. _`have_submounts`:
 
@@ -704,14 +689,14 @@ Parent directory should be locked.
 dentry_update_name_case
 =======================
 
-.. c:function:: void dentry_update_name_case(struct dentry *dentry, struct qstr *name)
+.. c:function:: void dentry_update_name_case(struct dentry *dentry, const struct qstr *name)
 
     update case insensitive dentry with a new name
 
     :param struct dentry \*dentry:
         dentry to be updated
 
-    :param struct qstr \*name:
+    :param const struct qstr \*name:
         new name
 
 .. _`dentry_update_name_case.description`:
@@ -800,7 +785,7 @@ being already hashed only in the final case.
 prepend_name
 ============
 
-.. c:function:: int prepend_name(char **buffer, int *buflen, struct qstr *name)
+.. c:function:: int prepend_name(char **buffer, int *buflen, const struct qstr *name)
 
     prepend a pathname in front of current buffer pointer
 
@@ -810,7 +795,7 @@ prepend_name
     :param int \*buflen:
         allocated length of the buffer
 
-    :param struct qstr \*name:
+    :param const struct qstr \*name:
         name string and length qstr structure
 
 .. _`prepend_name.description`:

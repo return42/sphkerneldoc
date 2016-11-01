@@ -14,6 +14,7 @@ core
     hcd_c
     hub_c
     hub_h
+    ledtrig-usbport_c
     message_c
     notify_c
     of_c

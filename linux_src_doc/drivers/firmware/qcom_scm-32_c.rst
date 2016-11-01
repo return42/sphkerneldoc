@@ -62,7 +62,7 @@ An SCM command is laid out in memory as follows
 -------------------
 
 There can be arbitrary padding between the headers and buffers so
-you should always use the appropriate qcom_scm_get\_\*\\ :c:func:`_buffer`\  routines
+you should always use the appropriate qcom_scm_get\_\*\_buffer() routines
 to access the buffers in a safe manner.
 
 .. _`qcom_scm_response`:
@@ -100,50 +100,6 @@ buf_offset
 
 is_complete
     indicates if the command has finished processing
-
-.. _`alloc_qcom_scm_command`:
-
-alloc_qcom_scm_command
-======================
-
-.. c:function:: struct qcom_scm_command *alloc_qcom_scm_command(size_t cmd_size, size_t resp_size)
-
-    Allocate an SCM command
-
-    :param size_t cmd_size:
-        size of the command buffer
-
-    :param size_t resp_size:
-        size of the response buffer
-
-.. _`alloc_qcom_scm_command.description`:
-
-Description
------------
-
-Allocate an SCM command, including enough room for the command
-and response headers as well as the command and response buffers.
-
-Returns a valid \ :c:type:`struct qcom_scm_command <qcom_scm_command>` on success or \ ``NULL``\  if the allocation fails.
-
-.. _`free_qcom_scm_command`:
-
-free_qcom_scm_command
-=====================
-
-.. c:function:: void free_qcom_scm_command(struct qcom_scm_command *cmd)
-
-    Free an SCM command
-
-    :param struct qcom_scm_command \*cmd:
-        command to free
-
-.. _`free_qcom_scm_command.description`:
-
-Description
------------
-
-Free an SCM command.
 
 .. _`qcom_scm_command_to_response`:
 
@@ -207,9 +163,12 @@ Returns a pointer to a response buffer of a response.
 qcom_scm_call
 =============
 
-.. c:function:: int qcom_scm_call(u32 svc_id, u32 cmd_id, const void *cmd_buf, size_t cmd_len, void *resp_buf, size_t resp_len)
+.. c:function:: int qcom_scm_call(struct device *dev, u32 svc_id, u32 cmd_id, const void *cmd_buf, size_t cmd_len, void *resp_buf, size_t resp_len)
 
     Send an SCM command
+
+    :param struct device \*dev:
+        struct device
 
     :param u32 svc_id:
         service identifier
@@ -273,6 +232,35 @@ Description
 This shall only be used with commands that are guaranteed to be
 uninterruptable, atomic and SMP safe.
 
+.. _`qcom_scm_call_atomic2`:
+
+qcom_scm_call_atomic2
+=====================
+
+.. c:function:: s32 qcom_scm_call_atomic2(u32 svc, u32 cmd, u32 arg1, u32 arg2)
+
+    Send an atomic SCM command with two arguments
+
+    :param u32 svc:
+        *undescribed*
+
+    :param u32 cmd:
+        *undescribed*
+
+    :param u32 arg1:
+        first argument
+
+    :param u32 arg2:
+        second argument
+
+.. _`qcom_scm_call_atomic2.description`:
+
+Description
+-----------
+
+This shall only be used with commands that are guaranteed to be
+uninterruptable, atomic and SMP safe.
+
 .. _`__qcom_scm_set_cold_boot_addr`:
 
 __qcom_scm_set_cold_boot_addr
@@ -301,9 +289,12 @@ range would be removed from the cpu present mask.
 __qcom_scm_set_warm_boot_addr
 =============================
 
-.. c:function:: int __qcom_scm_set_warm_boot_addr(void *entry, const cpumask_t *cpus)
+.. c:function:: int __qcom_scm_set_warm_boot_addr(struct device *dev, void *entry, const cpumask_t *cpus)
 
     Set the warm boot address for cpus
+
+    :param struct device \*dev:
+        *undescribed*
 
     :param void \*entry:
         Entry point function for the cpus

@@ -79,7 +79,7 @@ Members
 -------
 
 keymap_data
-    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`
+    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`\ 
 
 row_gpios
     pointer to array of gpio numbers representing rows

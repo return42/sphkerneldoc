@@ -1,30 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/compiler.h
 
-.. _`smp_cond_acquire`:
-
-smp_cond_acquire
-================
-
-.. c:function::  smp_cond_acquire( cond)
-
-    Spin wait for cond with ACQUIRE ordering
-
-    :param  cond:
-        boolean expression to wait for
-
-.. _`smp_cond_acquire.description`:
-
-Description
------------
-
-Equivalent to using \ :c:func:`smp_load_acquire`\  on the condition variable but employs
-the control dependency of the wait to reduce the barrier on many platforms.
-
-The control dependency provides a LOAD->STORE order, the additional RMB
-provides LOAD->LOAD order, together they provide LOAD->{LOAD,STORE} order,
-aka. ACQUIRE.
-
 .. _`compiletime_assert`:
 
 compiletime_assert
@@ -69,6 +45,10 @@ Description
 Similar to \ :c:func:`rcu_dereference`\ , but for situations where the pointed-to
 object's lifetime is managed by something other than RCU.  That
 "something other" might be reference counting or simple immortality.
+
+The seemingly unused variable \___typecheck_p validates that \ ``p``\  is
+indeed a pointer type by using a pointer to typeof(\*p) as the type.
+Taking a pointer to typeof(\*p) again is needed in case p is void \*.
 
 .. This file was automatic generated / don't edit.
 

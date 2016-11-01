@@ -144,7 +144,7 @@ Description
 -----------
 
 Add a name to the list of audit names for this context.
-Called from fs/namei.c:\ :c:func:`getname`\ .
+Called from fs/namei.c:getname().
 
 .. _`__audit_inode`:
 
@@ -239,7 +239,7 @@ Description
 
 Returns 0.
 
-Called (set) from fs/proc/base.c::\ :c:func:`proc_loginuid_write`\ .
+Called (set) from fs/proc/base.c::proc_loginuid_write().
 
 .. _`__audit_mq_open`:
 

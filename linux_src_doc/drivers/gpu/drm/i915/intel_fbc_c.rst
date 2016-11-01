@@ -20,12 +20,7 @@ Description
 
 This function is used to verify the current state of FBC.
 
-.. _`intel_fbc_is_active.fixme`:
-
-FIXME
------
-
-This should be tracked in the plane config eventually
+FIXME: This should be tracked in the plane config eventually
 instead of queried at runtime for most callers.
 
 .. _`intel_fbc_choose_crtc`:
@@ -60,12 +55,18 @@ enable FBC for the chosen CRTC. If it does, it will set dev_priv->fbc.crtc.
 intel_fbc_enable
 ================
 
-.. c:function:: void intel_fbc_enable(struct intel_crtc *crtc)
+.. c:function:: void intel_fbc_enable(struct intel_crtc *crtc, struct intel_crtc_state *crtc_state, struct intel_plane_state *plane_state)
 
     tries to enable FBC on the CRTC
 
     :param struct intel_crtc \*crtc:
         the CRTC
+
+    :param struct intel_crtc_state \*crtc_state:
+        corresponding \ :c:type:`struct drm_crtc_state <drm_crtc_state>`\  for \ ``crtc``\ 
+
+    :param struct intel_plane_state \*plane_state:
+        corresponding \ :c:type:`struct drm_plane_state <drm_plane_state>`\  for the primary plane of \ ``crtc``\ 
 
 .. _`intel_fbc_enable.description`:
 

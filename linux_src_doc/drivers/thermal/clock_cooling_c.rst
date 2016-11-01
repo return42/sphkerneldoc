@@ -403,7 +403,7 @@ Description
 -----------
 
 This interface function registers the clock cooling device with the name
-"thermal-clock-\ ``x``\ ". The cooling device is based on clock frequencies.
+"thermal-clock-%x". The cooling device is based on clock frequencies.
 The struct device is assumed to be capable of DVFS transitions.
 The OPP layer is used to fetch and fill the available frequencies for
 the referred device. The ordered frequency table is used to control
@@ -435,7 +435,7 @@ clock_cooling_unregister
 Description
 -----------
 
-This interface function unregisters the "thermal-clock-\ ``x``\ " cooling device.
+This interface function unregisters the "thermal-clock-%x" cooling device.
 
 .. This file was automatic generated / don't edit.
 

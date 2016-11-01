@@ -436,7 +436,7 @@ lbs_get_free_cmd_node
 Return
 ------
 
-A pointer to \ :c:type:`struct cmd_ctrl_node <cmd_ctrl_node>` structure on success
+A pointer to \ :c:type:`struct cmd_ctrl_node <cmd_ctrl_node>`\  structure on success
 or \ ``NULL``\  on error
 
 .. _`lbs_execute_next_command`:

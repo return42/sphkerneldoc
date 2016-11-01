@@ -663,7 +663,7 @@ condition disrupts normal operation of the port.  Frozen port
 is not allowed to perform any operation until the port is
 thawed, which usually follows a successful reset.
 
-ap->ops->\ :c:func:`freeze`\  callback can be used for freezing the port
+ap->ops->freeze() callback can be used for freezing the port
 hardware-wise (e.g. mask interrupt and stop DMA engine).  If a
 port cannot be frozen hardware-wise, the interrupt handler
 must ack and clear interrupts unconditionally while the port

@@ -128,6 +128,28 @@ batadv_gw_node_update
     :param struct batadv_tvlv_gateway_data \*gateway:
         announced bandwidth information
 
+.. _`batadv_gw_dump`:
+
+batadv_gw_dump
+==============
+
+.. c:function:: int batadv_gw_dump(struct sk_buff *msg, struct netlink_callback *cb)
+
+    Dump gateways into a message
+
+    :param struct sk_buff \*msg:
+        Netlink message to dump into
+
+    :param struct netlink_callback \*cb:
+        Control block containing additional options
+
+.. _`batadv_gw_dump.return`:
+
+Return
+------
+
+Error code, or length of message
+
 .. _`batadv_gw_dhcp_recipient_get`:
 
 batadv_gw_dhcp_recipient_get

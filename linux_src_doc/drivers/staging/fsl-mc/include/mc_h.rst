@@ -19,7 +19,7 @@ Definition
 
     struct fsl_mc_driver {
         struct device_driver driver;
-        const struct fsl_mc_device_match_id *match_id_table;
+        const struct fsl_mc_device_id *match_id_table;
         int (*probe)(struct fsl_mc_device *dev);
         int (*remove)(struct fsl_mc_device *dev);
         void (*shutdown)(struct fsl_mc_device *dev);
@@ -61,54 +61,6 @@ Description
 Generic DPAA device driver object for device drivers that are registered
 with a DPRC bus. This structure is to be embedded in each device-specific
 driver structure.
-
-.. _`fsl_mc_device_match_id`:
-
-struct fsl_mc_device_match_id
-=============================
-
-.. c:type:: struct fsl_mc_device_match_id
-
-    MC object device Id entry for driver matching
-
-.. _`fsl_mc_device_match_id.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct fsl_mc_device_match_id {
-        u16 vendor;
-        const char obj_type[16];
-        u32 ver_major;
-        u32 ver_minor;
-    }
-
-.. _`fsl_mc_device_match_id.members`:
-
-Members
--------
-
-vendor
-    vendor ID
-
-obj_type
-    MC object type
-
-ver_major
-    MC object version major number
-
-ver_minor
-    MC object version minor number
-
-.. _`fsl_mc_device_match_id.description`:
-
-Description
------------
-
-Type of entries in the "device Id" table for MC object devices supported by
-a MC object device driver. The last entry of the table has vendor set to 0x0
 
 .. _`fsl_mc_pool_type`:
 
@@ -263,15 +215,6 @@ FSL_MC_IS_DPRC
 
 .. c:function::  FSL_MC_IS_DPRC()
 
-.. _`fsl_mc_default_dma_mask`:
-
-FSL_MC_DEFAULT_DMA_MASK
-=======================
-
-.. c:function::  FSL_MC_DEFAULT_DMA_MASK()
-
-    mc bus
-
 .. _`fsl_mc_device`:
 
 struct fsl_mc_device
@@ -360,7 +303,7 @@ allocating MC portals for them by calling \ :c:func:`fsl_mc_portal_allocate`\ .
 - Some types of MC objects (e.g., DP_OBJ_DPBP, DP_OBJ_DPCON) are
 treated as resources that can be allocated/deallocated from the
 corresponding resource pool in the object's parent DPRC, using the
-\ :c:func:`fsl_mc_object_allocate`\ /\ :c:func:`fsl_mc_object_free`\  functions. These MC objects
+\ :c:func:`fsl_mc_object_allocate`\ /fsl_mc_object_free() functions. These MC objects
 are known as "allocatable" objects. For them, the corresponding
 fsl_mc_device's 'resource' points to the associated resource object.
 For MC objects that are not allocatable (e.g., DP_OBJ_DPRC, DP_OBJ_DPNI),

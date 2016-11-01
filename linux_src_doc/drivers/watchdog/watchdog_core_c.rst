@@ -111,5 +111,29 @@ Description
 Unregister a watchdog device that was previously successfully
 registered with \ :c:func:`watchdog_register_device`\ .
 
+.. _`devm_watchdog_register_device`:
+
+devm_watchdog_register_device
+=============================
+
+.. c:function:: int devm_watchdog_register_device(struct device *dev, struct watchdog_device *wdd)
+
+    resource managed \ :c:func:`watchdog_register_device`\ 
+
+    :param struct device \*dev:
+        device that is registering this watchdog device
+
+    :param struct watchdog_device \*wdd:
+        watchdog device
+
+.. _`devm_watchdog_register_device.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`watchdog_register_device`\ . For watchdog device registered by this
+function,  \ :c:func:`watchdog_unregister_device`\  is automatically called on driver
+detach. See \ :c:func:`watchdog_register_device`\  for more information.
+
 .. This file was automatic generated / don't edit.
 

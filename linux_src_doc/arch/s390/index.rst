@@ -13,4 +13,3 @@ s390
     lib/index
     mm/index
     numa/index
-    oprofile/index

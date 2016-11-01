@@ -1,25 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/scsi_transport_sas.c
 
-.. _`is_sas_attached`:
-
-is_sas_attached
-===============
-
-.. c:function:: int is_sas_attached(struct scsi_device *sdev)
-
-    check if device is SAS attached
-
-    :param struct scsi_device \*sdev:
-        scsi device to check
-
-.. _`is_sas_attached.description`:
-
-Description
------------
-
-returns true if the device is SAS attached
-
 .. _`sas_remove_children`:
 
 sas_remove_children
@@ -250,7 +231,7 @@ scsi_is_sas_phy
 Return
 ------
 
-\ ``1``\  if the device represents a SAS PHY, \ ``0``\  else
+%1 if the device represents a SAS PHY, \ ``0``\  else
 
 .. _`sas_port_add`:
 
@@ -335,7 +316,7 @@ scsi_is_sas_port
 Return
 ------
 
-\ ``1``\  if the device represents a SAS Port, \ ``0``\  else
+%1 if the device represents a SAS Port, \ ``0``\  else
 
 .. _`sas_port_get_phy`:
 
@@ -595,7 +576,7 @@ scsi_is_sas_rphy
 Return
 ------
 
-\ ``1``\  if the device represents a SAS remote PHY, \ ``0``\  else
+%1 if the device represents a SAS remote PHY, \ ``0``\  else
 
 .. _`sas_attach_transport`:
 

@@ -169,7 +169,7 @@ acpi_node_get_gpiod
 Description
 -----------
 
-If \ ``fwnode``\  is an ACPI device object, call %\ :c:func:`acpi_get_gpiod_by_index`\  for it.
+If \ ``fwnode``\  is an ACPI device object, call \ ``acpi_get_gpiod_by_index``\ () for it.
 Otherwise (ie. it is a data-only non-device object), use the property-based
 GPIO lookup to get to the GPIO resource with the relevant information and use
 that to obtain the GPIO descriptor to return.
@@ -203,7 +203,7 @@ number.
 Return
 ------
 
-Linux IRQ number (>\ ``0``\ ) on success, negative errno on failure.
+Linux IRQ number (>%0) on success, negative errno on failure.
 
 .. _`acpi_gpio_count`:
 

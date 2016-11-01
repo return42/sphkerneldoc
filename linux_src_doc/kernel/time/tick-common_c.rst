@@ -144,8 +144,8 @@ Description
 Check if this is the last online CPU executing the function and if so,
 suspend timekeeping.  Otherwise suspend the local tick.
 
-Call with interrupts disabled.  Must be balanced with %\ :c:func:`tick_unfreeze`\ .
-Interrupts must not be enabled before the subsequent %\ :c:func:`tick_unfreeze`\ .
+Call with interrupts disabled.  Must be balanced with \ ``tick_unfreeze``\ ().
+Interrupts must not be enabled before the subsequent \ ``tick_unfreeze``\ ().
 
 .. _`tick_unfreeze`:
 
@@ -167,8 +167,8 @@ Description
 Check if this is the first CPU executing the function and if so, resume
 timekeeping.  Otherwise resume the local tick.
 
-Call with interrupts disabled.  Must be balanced with %\ :c:func:`tick_freeze`\ .
-Interrupts must not be enabled after the preceding %\ :c:func:`tick_freeze`\ .
+Call with interrupts disabled.  Must be balanced with \ ``tick_freeze``\ ().
+Interrupts must not be enabled after the preceding \ ``tick_freeze``\ ().
 
 .. _`tick_init`:
 

@@ -79,6 +79,31 @@ The power-management code will take control of the clock reference, so
 callers should not call \ :c:func:`clk_put`\  on \ ``clk``\  after this function sucessfully
 returned.
 
+.. _`of_pm_clk_add_clk`:
+
+of_pm_clk_add_clk
+=================
+
+.. c:function:: int of_pm_clk_add_clk(struct device *dev, const char *name)
+
+    Start using a device clock for power management.
+
+    :param struct device \*dev:
+        Device whose clock is going to be used for power management.
+
+    :param const char \*name:
+        Name of clock that is going to be used for power management.
+
+.. _`of_pm_clk_add_clk.description`:
+
+Description
+-----------
+
+Add the clock described in the 'clocks' device-tree node that matches
+with the 'name' provided, to the list of clocks used for the power
+management of \ ``dev``\ . On success, returns 0. Returns a negative error
+code if the clock is not found or cannot be added.
+
 .. _`of_pm_clk_add_clks`:
 
 of_pm_clk_add_clks

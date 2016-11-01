@@ -26,7 +26,6 @@ Definition
         u32 peer_bearer_id;
         u32 bearer_id;
         u32 tolerance;
-        unsigned long keepalive_intv;
         u32 abort_limit;
         u32 state;
         u16 peer_caps;
@@ -35,6 +34,7 @@ Definition
         char if_name[TIPC_MAX_IF_NAME];
         u32 priority;
         char net_plane;
+        struct tipc_mon_state mon_state;
         u16 rst_cnt;
         u16 drop_point;
         struct sk_buff *failover_reasm_skb;
@@ -58,7 +58,10 @@ Definition
         u16 acked;
         struct tipc_link *bc_rcvlink;
         struct tipc_link *bc_sndlink;
-        int nack_state;
+        unsigned long prev_retr;
+        u16 prev_from;
+        u16 prev_to;
+        u8 nack_state;
         bool bc_peer_is_up;
         struct tipc_stats stats;
     }
@@ -92,9 +95,6 @@ bearer_id
 tolerance
     minimum link continuity loss needed to reset link [in ms]
 
-keepalive_intv
-    link keepalive timer interval
-
 abort_limit
     # of unacknowledged continuity probes needed to reset link
 
@@ -115,6 +115,9 @@ priority
 
 net_plane
     current link network plane ('A' through 'H')
+
+mon_state
+    cookie with information needed by link monitor
 
 rst_cnt
     *undescribed*
@@ -180,6 +183,15 @@ bc_rcvlink
     *undescribed*
 
 bc_sndlink
+    *undescribed*
+
+prev_retr
+    *undescribed*
+
+prev_from
+    *undescribed*
+
+prev_to
     *undescribed*
 
 nack_state

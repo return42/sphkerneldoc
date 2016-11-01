@@ -308,7 +308,7 @@ Description
 
 This function removes the sensor callbacks and private data from the
 thermal zone device registered with \ :c:func:`thermal_zone_of_sensor_register`\ 
-API. It will also silent the zone by remove the .\ :c:func:`get_temp`\  and .\ :c:func:`get_trend`\ 
+API. It will also silent the zone by remove the .get_temp() and .get_trend()
 thermal zone device callbacks.
 
 .. _`thermal_zone_of_sensor_unregister.todo`:
@@ -358,7 +358,7 @@ Return
 On success returns a valid struct thermal_zone_device,
 otherwise, it returns a corresponding \ :c:func:`ERR_PTR`\ . Caller must
 check the return value with help of \ :c:func:`IS_ERR`\  helper.
-Registered hermal_zone_device device will automatically be
+Registered thermal_zone_device device will automatically be
 released when device is unbounded.
 
 .. _`devm_thermal_zone_of_sensor_unregister`:
@@ -383,7 +383,7 @@ Description
 
 This function removes the sensor callbacks and private data from the
 thermal zone device registered with \ :c:func:`devm_thermal_zone_of_sensor_register`\ 
-API. It will also silent the zone by remove the .\ :c:func:`get_temp`\  and .\ :c:func:`get_trend`\ 
+API. It will also silent the zone by remove the .get_temp() and .get_trend()
 thermal zone device callbacks.
 Normally this function will not need to be called and the resource
 management code will ensure that the resource is freed.

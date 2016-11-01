@@ -21,7 +21,7 @@ drm_open
 Description
 -----------
 
-This function must be used by drivers as their .\ :c:func:`open`\  #file_operations
+This function must be used by drivers as their .open() #file_operations
 method. It looks up the correct DRM device and instantiates all the per-file
 resources for it.
 
@@ -53,7 +53,7 @@ drm_release
 Description
 -----------
 
-This function must be used by drivers as their .\ :c:func:`release`\  #file_operations
+This function must be used by drivers as their .release() #file_operations
 method. It frees any resources associated with the open file, and if this is
 the last open file for the DRM device also proceeds to call \ :c:func:`drm_lastclose`\ .
 
@@ -91,13 +91,13 @@ drm_read
 Description
 -----------
 
-This function must be used by drivers as their .\ :c:func:`read`\  #file_operations
+This function must be used by drivers as their .read() #file_operations
 method iff they use DRM events for asynchronous signalling to userspace.
 Since events are used by the KMS API for vblank and page flip completion this
 means all modern display drivers must use it.
 
 \ ``offset``\  is ignore, DRM events are read like a pipe. Therefore drivers also
-must set the .\ :c:func:`llseek`\  #file_operation to \ :c:func:`no_llseek`\ . Polling support is
+must set the .llseek() #file_operation to \ :c:func:`no_llseek`\ . Polling support is
 provided by \ :c:func:`drm_poll`\ .
 
 This function will only ever read a full event. Therefore userspace must
@@ -134,7 +134,7 @@ drm_poll
 Description
 -----------
 
-This function must be used by drivers as their .\ :c:func:`read`\  #file_operations
+This function must be used by drivers as their .read() #file_operations
 method iff they use DRM events for asynchronous signalling to userspace.
 Since events are used by the KMS API for vblank and page flip completion this
 means all modern display drivers must use it.

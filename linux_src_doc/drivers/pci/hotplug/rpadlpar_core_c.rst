@@ -11,7 +11,7 @@ find_php_slot
     return hotplug slot structure for device node
 
     :param struct device_node \*dn:
-        target \ :c:type:`struct device_node <device_node>`
+        target \ :c:type:`struct device_node <device_node>`\ 
 
 .. _`find_php_slot.description`:
 
@@ -66,7 +66,7 @@ dlpar_remove_vio_slot
         drc-name of newly added slot
 
     :param struct device_node \*dn:
-        \ :c:type:`struct device_node <device_node>`
+        &device_node
 
 .. _`dlpar_remove_vio_slot.description`:
 
@@ -96,7 +96,7 @@ dlpar_remove_pci_slot
         drc-name of newly added slot
 
     :param struct device_node \*dn:
-        \ :c:type:`struct device_node <device_node>`
+        &device_node
 
 .. _`dlpar_remove_pci_slot.description`:
 

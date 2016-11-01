@@ -196,6 +196,32 @@ available for use, false if not.
 This sets PF_SUPERPRIV on the task if the capability is available on the
 assumption that it's about to be used.
 
+.. _`ns_capable_noaudit`:
+
+ns_capable_noaudit
+==================
+
+.. c:function:: bool ns_capable_noaudit(struct user_namespace *ns, int cap)
+
+    Determine if the current task has a superior capability (unaudited) in effect
+
+    :param struct user_namespace \*ns:
+        The usernamespace we want the capability in
+
+    :param int cap:
+        The capability to be tested for
+
+.. _`ns_capable_noaudit.description`:
+
+Description
+-----------
+
+Return true if the current task has the given superior capability currently
+available for use, false if not.
+
+This sets PF_SUPERPRIV on the task if the capability is available on the
+assumption that it's about to be used.
+
 .. _`capable`:
 
 capable

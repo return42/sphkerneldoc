@@ -46,7 +46,7 @@ netprio_set_prio
 Description
 -----------
 
-Set netprio to \ ``prio``\  on \ ``css``\ -\ ``dev``\  pair.  Should be called under rtnl
+Set netprio to \ ``prio``\  on \ ``css``\ -@dev pair.  Should be called under rtnl
 lock and may fail under memory pressure for non-zero \ ``prio``\ .
 
 .. This file was automatic generated / don't edit.

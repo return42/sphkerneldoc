@@ -8,7 +8,7 @@ KMEMCHECK_ENABLED
 
 .. c:function::  KMEMCHECK_ENABLED()
 
-    a heavyweight memory checker for the linux kernel Copyright (C) 2007, 2008  Vegard Nossum <vegardno\ ``ifi``\ .uio.no> (With a lot of help from Ingo Molnar and Pekka Enberg.)
+    a heavyweight memory checker for the linux kernel Copyright (C) 2007, 2008  Vegard Nossum <vegardno@ifi.uio.no> (With a lot of help from Ingo Molnar and Pekka Enberg.)
 
 .. _`kmemcheck_enabled.description`:
 

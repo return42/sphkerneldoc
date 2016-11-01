@@ -21,7 +21,7 @@ bch_next_delay
 Description
 -----------
 
-\ ``d``\  - the struct bch_ratelimit to update
+@d - the struct bch_ratelimit to update
 \ ``done``\  - the amount of work done, in arbitrary units
 
 Returns the amount of time to delay by, in jiffies

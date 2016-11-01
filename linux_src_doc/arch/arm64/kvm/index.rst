@@ -8,7 +8,6 @@ kvm
     :maxdepth: 1
 
     debug_c
-    emulate_c
     guest_c
     handle_exit_c
     inject_fault_c

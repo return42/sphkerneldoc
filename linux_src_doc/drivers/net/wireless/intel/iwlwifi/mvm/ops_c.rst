@@ -70,7 +70,7 @@ cmd_id
     command id
 
 context
-    see \ :c:type:`struct iwl_rx_handler_context <iwl_rx_handler_context>`
+    see \ :c:type:`struct iwl_rx_handler_context <iwl_rx_handler_context>`\ 
 
 fn
     the function is called when notification is received

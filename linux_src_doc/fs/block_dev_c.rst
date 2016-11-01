@@ -247,14 +247,14 @@ Test whether \ ``bdev``\  can be claimed by \ ``holder``\ .
 Context
 -------
 
-spin_lock(\ :c:type:`struct bdev_lock <bdev_lock>`).
+spin_lock(&bdev_lock).
 
 .. _`bd_may_claim.return`:
 
 Return
 ------
 
-\ ``true``\  if \ ``bdev``\  can be claimed, \ ``false``\  otherwise.
+%true if \ ``bdev``\  can be claimed, \ ``false``\  otherwise.
 
 .. _`bd_prepare_to_claim`:
 
@@ -289,7 +289,7 @@ return, the caller has ownership of bd_claiming and bd_holder[s].
 Context
 -------
 
-spin_lock(\ :c:type:`struct bdev_lock <bdev_lock>`).  Might release bdev_lock, sleep and regrab
+spin_lock(&bdev_lock).  Might release bdev_lock, sleep and regrab
 it multiple times.
 
 .. _`bd_prepare_to_claim.return`:
@@ -319,7 +319,7 @@ bd_start_claiming
 Description
 -----------
 
-\ ``bdev``\  is about to be opened exclusively.  Check \ ``bdev``\  can be opened
+@bdev is about to be opened exclusively.  Check \ ``bdev``\  can be opened
 exclusively and mark that an exclusive open is in progress.  Each
 successful call to this function must be matched with a call to
 either \ :c:func:`bd_finish_claiming`\  or \ :c:func:`bd_abort_claiming`\  (which do not

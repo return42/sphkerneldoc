@@ -196,8 +196,7 @@ acpi_subsystem_init
 Description
 -----------
 
-Switch over the platform to the ACPI mode (if possible), initialize the
-handling of ACPI events, install the interrupt and global lock handlers.
+Switch over the platform to the ACPI mode (if possible).
 
 Doing this too early is generally unsafe, but at the same time it needs to be
 done before all things that really depend on ACPI.  The right spot appears to

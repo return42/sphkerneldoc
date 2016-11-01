@@ -71,14 +71,15 @@ Definition
         struct list_head txqueue[SSI_MAX_CHANNELS];
         struct list_head rxqueue[SSI_MAX_CHANNELS];
         struct list_head brkqueue;
+        struct list_head errqueue;
+        struct delayed_work errqueue_work;
         unsigned int irq;
         int wake_irq;
         struct gpio_desc *wake_gpio;
-        struct tasklet_struct pio_tasklet;
-        struct tasklet_struct wake_tasklet;
         bool wktest:1;
-        bool wkin_cken:1;
+        unsigned long flags;
         unsigned int wk_refcount;
+        struct work_struct work;
         u32 sys_mpu_enable;
         struct omap_ssm_ctx sst;
         struct omap_ssm_ctx ssr;
@@ -130,6 +131,12 @@ rxqueue
 brkqueue
     Queue of incoming HWBREAK requests (FRAME mode)
 
+errqueue
+    Queue for failed messages
+
+errqueue_work
+    Delayed Work for failed messages
+
 irq
     IRQ number
 
@@ -139,20 +146,17 @@ wake_irq
 wake_gpio
     GPIO number for incoming wake line (-1 if none)
 
-pio_tasklet
-    Bottom half for PIO transfers and events
-
-wake_tasklet
-    Bottom half for incoming wake events
-
 wktest
     *undescribed*
 
-wkin_cken
-    Keep track of clock references due to the incoming wake line
+flags
+    flags to keep track of states
 
 wk_refcount
     Reference count for output wake line
+
+work
+    worker for starting TX
 
 sys_mpu_enable
     Context for the interrupt enable register for irq 0
@@ -233,7 +237,6 @@ Definition
         unsigned long fck_rate;
         u32 loss_count;
         u32 max_speed;
-        u32 sysconfig;
         u32 gdd_gcr;
         int (*get_loss)(struct device *dev);
         struct omap_ssi_port **port;
@@ -282,9 +285,6 @@ loss_count
 
 max_speed
     Maximum TX speed (Kb/s) set by the clients.
-
-sysconfig
-    SSI controller saved context
 
 gdd_gcr
     SSI GDD saved context

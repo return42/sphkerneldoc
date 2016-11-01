@@ -13,20 +13,48 @@ batadv_hardif_release
     :param struct kref \*ref:
         kref pointer of the hard interface
 
+.. _`batadv_getlink_net`:
+
+batadv_getlink_net
+==================
+
+.. c:function:: const struct net *batadv_getlink_net(const struct net_device *netdev, const struct net *fallback_net)
+
+    return link net namespace (of use fallback)
+
+    :param const struct net_device \*netdev:
+        net_device to check
+
+    :param const struct net \*fallback_net:
+        return in case get_link_net is not available for \ ``netdev``\ 
+
+.. _`batadv_getlink_net.return`:
+
+Return
+------
+
+result of rtnl_link_ops->get_link_net or \ ``fallback_net``\ 
+
 .. _`batadv_mutual_parents`:
 
 batadv_mutual_parents
 =====================
 
-.. c:function:: bool batadv_mutual_parents(const struct net_device *dev1, const struct net_device *dev2)
+.. c:function:: bool batadv_mutual_parents(const struct net_device *dev1, const struct net *net1, const struct net_device *dev2, const struct net *net2)
 
     check if two devices are each others parent
 
     :param const struct net_device \*dev1:
-        1st net_device
+        1st net dev
+
+    :param const struct net \*net1:
+        1st devices netns
 
     :param const struct net_device \*dev2:
-        2nd net_device
+        2nd net dev
+
+    :param const struct net \*net2:
+        2nd devices netns
 
 .. _`batadv_mutual_parents.description`:
 
@@ -133,26 +161,6 @@ Return
 ------
 
 0 on success, a negative value representing the error otherwise
-
-.. _`batadv_hardif_remove_interface_finish`:
-
-batadv_hardif_remove_interface_finish
-=====================================
-
-.. c:function:: void batadv_hardif_remove_interface_finish(struct work_struct *work)
-
-    cleans up the remains of a hardif
-
-    :param struct work_struct \*work:
-        work queue item
-
-.. _`batadv_hardif_remove_interface_finish.description`:
-
-Description
------------
-
-Free the parts of the hard interface which can not be removed under
-rtnl lock (to prevent deadlock situations).
 
 .. This file was automatic generated / don't edit.
 

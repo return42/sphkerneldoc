@@ -21,9 +21,9 @@ user_regset_active_fn
 Description
 -----------
 
-Return -\ ``ENODEV``\  if not available on the hardware found.
+Return -%ENODEV if not available on the hardware found.
 Return \ ``0``\  if no interesting state in this thread.
-Return >\ ``0``\  number of \ ``size``\  units of interesting state.
+Return >%0 number of \ ``size``\  units of interesting state.
 Any get call fetching state beyond that number will
 see the default initialization state for this data,
 so a caller that knows what the default state is need
@@ -63,11 +63,11 @@ user_regset_get_fn
 Description
 -----------
 
-Fetch register values.  Return \ ``0``\  on success; -\ ``EIO``\  or -\ ``ENODEV``\ 
+Fetch register values.  Return \ ``0``\  on success; -%EIO or -%ENODEV
 are usual failure returns.  The \ ``pos``\  and \ ``count``\  values are in
 bytes, but must be properly aligned.  If \ ``kbuf``\  is non-null, that
 buffer is used and \ ``ubuf``\  is ignored.  If \ ``kbuf``\  is \ ``NULL``\ , then
-ubuf gives a userland pointer to access directly, and an -\ ``EFAULT``\ 
+ubuf gives a userland pointer to access directly, and an -%EFAULT
 return value is possible.
 
 .. _`user_regset_set_fn`:
@@ -102,11 +102,11 @@ user_regset_set_fn
 Description
 -----------
 
-Store register values.  Return \ ``0``\  on success; -\ ``EIO``\  or -\ ``ENODEV``\ 
+Store register values.  Return \ ``0``\  on success; -%EIO or -%ENODEV
 are usual failure returns.  The \ ``pos``\  and \ ``count``\  values are in
 bytes, but must be properly aligned.  If \ ``kbuf``\  is non-null, that
 buffer is used and \ ``ubuf``\  is ignored.  If \ ``kbuf``\  is \ ``NULL``\ , then
-ubuf gives a userland pointer to access directly, and an -\ ``EFAULT``\ 
+ubuf gives a userland pointer to access directly, and an -%EFAULT
 return value is possible.
 
 .. _`user_regset_writeback_fn`:
@@ -143,8 +143,8 @@ is nonzero, it must be written to the user memory so uaccess or
 \ :c:func:`access_process_vm`\  can see it when this call returns; if zero,
 then it must be written back by the time the task completes a
 context switch (as synchronized with \ :c:func:`wait_task_inactive`\ ).
-Return \ ``0``\  on success or if there was nothing to do, -\ ``EFAULT``\  for
-a memory problem (bad stack pointer or whatever), or -\ ``EIO``\  for a
+Return \ ``0``\  on success or if there was nothing to do, -%EFAULT for
+a memory problem (bad stack pointer or whatever), or -%EIO for a
 hardware problem.
 
 .. _`user_regset`:
@@ -242,7 +242,7 @@ NT_PRSTATUS is a special case in that the regset data starts at
 offsetof(struct elf_prstatus, pr_reg) into the note data; that is
 part of the per-machine ELF formats userland knows about.  In
 other cases, the core file note contains exactly the whole regset
-(\ ``n``\  \* \ ``size``\ ) and nothing else.  The core file note is normally
+(@n \* \ ``size``\ ) and nothing else.  The core file note is normally
 omitted when there is an \ ``active``\  function and it returns zero.
 
 .. _`user_regset_view`:
@@ -291,14 +291,14 @@ e_machine
     ELF header \ ``e_machine``\  \ ``EM``\ \_\* value written in core dumps.
 
 ei_osabi
-    ELF header \ ``e_ident``\ [\ ``EI_OSABI``\ ] value written in core dumps.
+    ELF header \ ``e_ident``\ [%EI_OSABI] value written in core dumps.
 
 .. _`user_regset_view.description`:
 
 Description
 -----------
 
-A regset view is a collection of regsets (\ :c:type:`struct user_regset <user_regset>`\ ,
+A regset view is a collection of regsets (&struct user_regset,
 above).  This describes all the state of a thread that can be seen
 from a given architecture/ABI environment.  More than one view might
 refer to the same \ :c:type:`struct user_regset <user_regset>`\ , or more than one regset
@@ -341,7 +341,7 @@ copy_regset_to_user
         thread to be examined
 
     :param const struct user_regset_view \*view:
-        \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
+        &struct user_regset_view describing user thread machine state
 
     :param unsigned int setno:
         index in \ ``view``\ ->regsets
@@ -368,7 +368,7 @@ copy_regset_from_user
         thread to be examined
 
     :param const struct user_regset_view \*view:
-        \ :c:type:`struct user_regset_view <user_regset_view>`\  describing user thread machine state
+        &struct user_regset_view describing user thread machine state
 
     :param unsigned int setno:
         index in \ ``view``\ ->regsets

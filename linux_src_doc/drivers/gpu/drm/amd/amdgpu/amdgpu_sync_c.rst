@@ -152,50 +152,47 @@ Description
 
 Sync to the fence
 
-.. _`amdgpu_sync_is_idle`:
+.. _`amdgpu_sync_peek_fence`:
 
-amdgpu_sync_is_idle
-===================
+amdgpu_sync_peek_fence
+======================
 
-.. c:function:: bool amdgpu_sync_is_idle(struct amdgpu_sync *sync)
+.. c:function:: struct fence *amdgpu_sync_peek_fence(struct amdgpu_sync *sync, struct amdgpu_ring *ring)
 
-    test if all fences are signaled
+    get the next fence not signaled yet
 
     :param struct amdgpu_sync \*sync:
         the sync object
 
-.. _`amdgpu_sync_is_idle.description`:
+    :param struct amdgpu_ring \*ring:
+        optional ring to use for test
+
+.. _`amdgpu_sync_peek_fence.description`:
 
 Description
 -----------
 
-Returns true if all fences in the sync object are signaled.
+Returns the next fence not signaled yet without removing it from the sync
+object.
 
-.. _`amdgpu_sync_cycle_fences`:
+.. _`amdgpu_sync_get_fence`:
 
-amdgpu_sync_cycle_fences
-========================
+amdgpu_sync_get_fence
+=====================
 
-.. c:function:: int amdgpu_sync_cycle_fences(struct amdgpu_sync *dst, struct amdgpu_sync *src, struct fence *fence)
+.. c:function:: struct fence *amdgpu_sync_get_fence(struct amdgpu_sync *sync)
 
-    move fences from one sync object into another
+    get the next fence from the sync object
 
-    :param struct amdgpu_sync \*dst:
-        the destination sync object
+    :param struct amdgpu_sync \*sync:
+        sync object to use
 
-    :param struct amdgpu_sync \*src:
-        the source sync object
-
-    :param struct fence \*fence:
-        fence to add to source
-
-.. _`amdgpu_sync_cycle_fences.description`:
+.. _`amdgpu_sync_get_fence.description`:
 
 Description
 -----------
 
-Remove all fences from source and put them into destination and add
-fence as new one into source.
+Get and removes the next fence from the sync object not signaled yet.
 
 .. _`amdgpu_sync_free`:
 

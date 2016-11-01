@@ -18,15 +18,15 @@ cryp_wait_until_done
 Author
 ------
 
-Shujuan Chen <shujuan.chen\ ``stericsson``\ .com> for ST-Ericsson.
+Shujuan Chen <shujuan.chen@stericsson.com> for ST-Ericsson.
 
-Jonas Linde <jonas.linde\ ``stericsson``\ .com> for ST-Ericsson.
+Jonas Linde <jonas.linde@stericsson.com> for ST-Ericsson.
 
-Niklas Hernaeus <niklas.hernaeus\ ``stericsson``\ .com> for ST-Ericsson.
+Niklas Hernaeus <niklas.hernaeus@stericsson.com> for ST-Ericsson.
 
-Joakim Bech <joakim.xx.bech\ ``stericsson``\ .com> for ST-Ericsson.
+Joakim Bech <joakim.xx.bech@stericsson.com> for ST-Ericsson.
 
-Berne Hebark <berne.herbark\ ``stericsson``\ .com> for ST-Ericsson.
+Berne Hebark <berne.herbark@stericsson.com> for ST-Ericsson.
 
 .. _`cryp_wait_until_done.license-terms`:
 

@@ -10,6 +10,6 @@ include
     dpbp_h
     dpmng_h
     dprc_h
-    mc-private_h
+    mc-bus_h
     mc-sys_h
     mc_h

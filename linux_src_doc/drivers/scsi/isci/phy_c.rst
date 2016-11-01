@@ -61,7 +61,7 @@ sci_phy_setup_transport
 Description
 -----------
 
-\ ``iphy``\  The phy for which the direct attached device id is to
+@iphy The phy for which the direct attached device id is to
 be assigned.
 \ ``device_id``\  The direct attached device ID to assign to the phy.
 This will either be the RNi for the device or an invalid RNi if there

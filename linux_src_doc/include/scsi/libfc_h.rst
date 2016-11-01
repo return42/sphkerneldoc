@@ -868,12 +868,12 @@ seq
     The sequence in use on this exchange
 
 resp_active
-    Number of tasks that are concurrently executing @\ :c:func:`resp`\ .
+    Number of tasks that are concurrently executing \ ``resp``\ ().
 
 resp_task
-    If \ ``resp_active``\  > 0, either the task executing @\ :c:func:`resp`\ , the
+    If \ ``resp_active``\  > 0, either the task executing \ ``resp``\ (), the
     task that has been interrupted to execute the soft-IRQ
-    executing @\ :c:func:`resp`\  or NULL if more than one task is executing
+    executing \ ``resp``\ () or NULL if more than one task is executing
     \ ``resp``\  concurrently.
 
 resp_wq
@@ -1003,6 +1003,7 @@ Definition
         struct libfc_function_template tt;
         u8 link_up;
         u8 qfull;
+        u16 vlan;
         enum fc_lport_state state;
         unsigned long boot_time;
         struct fc_host_statistics host_stats;
@@ -1079,6 +1080,9 @@ link_up
 
 qfull
     Queue state (1 queue is full, 0 queue is not full)
+
+vlan
+    *undescribed*
 
 state
     Identifies the state

@@ -173,7 +173,7 @@ Implementation Note
 We need to inline list_for_each_entry in order to be able to set hole_start
 and hole_end on each iteration while keeping the macro sane.
 
-The \__drm_mm_for_each_hole version is similar, but with added support for
+The __drm_mm_for_each_hole version is similar, but with added support for
 going backwards.
 
 .. _`drm_mm_insert_node`:

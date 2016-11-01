@@ -219,7 +219,7 @@ scif_send_fence_signal
 
 .. c:function:: int scif_send_fence_signal(scif_epd_t epd, off_t roff, u64 rval, off_t loff, u64 lval, int flags)
 
-    \ ``epd``\  - endpoint descriptor \ ``loff``\  - local offset \ ``lval``\  - local value to write to loffset \ ``roff``\  - remote offset \ ``rval``\  - remote value to write to roffset \ ``flags``\  - flags
+    @epd - endpoint descriptor \ ``loff``\  - local offset \ ``lval``\  - local value to write to loffset \ ``roff``\  - remote offset \ ``rval``\  - remote value to write to roffset \ ``flags``\  - flags
 
     :param scif_epd_t epd:
         *undescribed*

@@ -38,6 +38,7 @@ lib
     idr_c
     int_sqrt_c
     iomap_copy_c
+    iov_iter_c
     irq_poll_c
     klist_c
     kobject_c
@@ -75,3 +76,4 @@ lib
     timerqueue_c
     uuid_c
     vsprintf_c
+    win_minmax_c

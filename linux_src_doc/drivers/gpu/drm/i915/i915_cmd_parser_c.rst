@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_cmd_parser.c
 
-.. _`i915_cmd_parser_init_ring`:
+.. _`intel_engine_init_cmd_parser`:
 
-i915_cmd_parser_init_ring
-=========================
+intel_engine_init_cmd_parser
+============================
 
-.. c:function:: int i915_cmd_parser_init_ring(struct intel_engine_cs *engine)
+.. c:function:: void intel_engine_init_cmd_parser(struct intel_engine_cs *engine)
 
-    set cmd parser related fields for a ringbuffer
+    set cmd parser related fields for an engine
 
     :param struct intel_engine_cs \*engine:
-        *undescribed*
+        the engine to initialize
 
-.. _`i915_cmd_parser_init_ring.description`:
+.. _`intel_engine_init_cmd_parser.description`:
 
 Description
 -----------
@@ -22,46 +22,39 @@ Optionally initializes fields related to batch buffer command parsing in the
 struct intel_engine_cs based on whether the platform requires software
 command parsing.
 
-.. _`i915_cmd_parser_init_ring.return`:
+.. _`intel_engine_cleanup_cmd_parser`:
 
-Return
-------
+intel_engine_cleanup_cmd_parser
+===============================
 
-non-zero if initialization fails
-
-.. _`i915_cmd_parser_fini_ring`:
-
-i915_cmd_parser_fini_ring
-=========================
-
-.. c:function:: void i915_cmd_parser_fini_ring(struct intel_engine_cs *engine)
+.. c:function:: void intel_engine_cleanup_cmd_parser(struct intel_engine_cs *engine)
 
     clean up cmd parser related fields
 
     :param struct intel_engine_cs \*engine:
-        *undescribed*
+        the engine to clean up
 
-.. _`i915_cmd_parser_fini_ring.description`:
+.. _`intel_engine_cleanup_cmd_parser.description`:
 
 Description
 -----------
 
 Releases any resources related to command parsing that may have been
-initialized for the specified ring.
+initialized for the specified engine.
 
-.. _`i915_needs_cmd_parser`:
+.. _`intel_engine_needs_cmd_parser`:
 
-i915_needs_cmd_parser
-=====================
+intel_engine_needs_cmd_parser
+=============================
 
-.. c:function:: bool i915_needs_cmd_parser(struct intel_engine_cs *engine)
+.. c:function:: bool intel_engine_needs_cmd_parser(struct intel_engine_cs *engine)
 
-    should a given ring use software command parsing?
+    should a given engine use software command parsing?
 
     :param struct intel_engine_cs \*engine:
-        *undescribed*
+        the engine in question
 
-.. _`i915_needs_cmd_parser.description`:
+.. _`intel_engine_needs_cmd_parser.description`:
 
 Description
 -----------
@@ -69,24 +62,24 @@ Description
 Only certain platforms require software batch buffer command parsing, and
 only when enabled via module parameter.
 
-.. _`i915_needs_cmd_parser.return`:
+.. _`intel_engine_needs_cmd_parser.return`:
 
 Return
 ------
 
-true if the ring requires software command parsing
+true if the engine requires software command parsing
 
-.. _`i915_parse_cmds`:
+.. _`intel_engine_cmd_parser`:
 
-i915_parse_cmds
-===============
+intel_engine_cmd_parser
+=======================
 
-.. c:function:: int i915_parse_cmds(struct intel_engine_cs *engine, struct drm_i915_gem_object *batch_obj, struct drm_i915_gem_object *shadow_batch_obj, u32 batch_start_offset, u32 batch_len, bool is_master)
+.. c:function:: int intel_engine_cmd_parser(struct intel_engine_cs *engine, struct drm_i915_gem_object *batch_obj, struct drm_i915_gem_object *shadow_batch_obj, u32 batch_start_offset, u32 batch_len, bool is_master)
 
     parse a submitted batch buffer for privilege violations
 
     :param struct intel_engine_cs \*engine:
-        *undescribed*
+        the engine on which the batch is to execute
 
     :param struct drm_i915_gem_object \*batch_obj:
         the batch buffer in question
@@ -103,7 +96,7 @@ i915_parse_cmds
     :param bool is_master:
         is the submitting process the drm master?
 
-.. _`i915_parse_cmds.description`:
+.. _`intel_engine_cmd_parser.description`:
 
 Description
 -----------
@@ -111,7 +104,7 @@ Description
 Parses the specified batch buffer looking for privilege violations as
 described in the overview.
 
-.. _`i915_parse_cmds.return`:
+.. _`intel_engine_cmd_parser.return`:
 
 Return
 ------
@@ -124,12 +117,12 @@ if the batch appears legal but should use hardware parsing
 i915_cmd_parser_get_version
 ===========================
 
-.. c:function:: int i915_cmd_parser_get_version( void)
+.. c:function:: int i915_cmd_parser_get_version(struct drm_i915_private *dev_priv)
 
     get the cmd parser version number
 
-    :param  void:
-        no arguments
+    :param struct drm_i915_private \*dev_priv:
+        i915 device private
 
 .. _`i915_cmd_parser_get_version.description`:
 

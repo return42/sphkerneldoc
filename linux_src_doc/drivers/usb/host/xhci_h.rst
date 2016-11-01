@@ -511,7 +511,7 @@ struct xhci_device_context_array
 
 .. c:type:: struct xhci_device_context_array
 
-    \ ``dev_context_ptr``\      array of 64-bit DMA addresses for device contexts
+    @dev_context_ptr     array of 64-bit DMA addresses for device contexts
 
 .. _`xhci_device_context_array.definition`:
 

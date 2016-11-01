@@ -173,7 +173,7 @@ vio_cmo_bus_probe
 Description
 -----------
 
-\ ``viodev``\  - Pointer to struct vio_dev for device
+@viodev - Pointer to struct vio_dev for device
 
 Determine the devices IO memory entitlement needs, attempting
 to satisfy the system minimum entitlement at first and scheduling
@@ -205,7 +205,7 @@ vio_cmo_bus_remove
 Description
 -----------
 
-\ ``viodev``\  - Pointer to struct vio_dev for device
+@viodev - Pointer to struct vio_dev for device
 
 Remove the device from the cmo device list.  The minimum entitlement
 will be reserved for the device as long as it is in the system.  The
@@ -253,7 +253,7 @@ vio_h_cop_sync
 Description
 -----------
 
-\ ``vdev``\  - Pointer to a struct vio_dev for device
+@vdev - Pointer to a struct vio_dev for device
 \ ``op``\  - Pointer to a struct vio_pfo_op for the operation parameters
 
 Calls the hypervisor to synchronously perform the PFO operation

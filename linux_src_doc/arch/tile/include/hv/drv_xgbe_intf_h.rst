@@ -8,7 +8,7 @@ typedef size
 
 .. c:type:: typedef size
 
-    \ ``ingroup``\  types
+    @ingroup types
 
 .. _`size.description`:
 

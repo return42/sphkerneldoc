@@ -148,7 +148,7 @@ As EP93xx DMA controller doesn't support real chained DMA descriptors we
 will have slightly different scheme here
 ----------------------------------------
 
-\ ``active``\  points to a head of
+@active points to a head of
 flattened DMA descriptor chain.
 
 \ ``queue``\  holds pending transactions. These are linked through the first

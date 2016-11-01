@@ -48,7 +48,7 @@ WIMAX_ST_DOWN
     power as possible.
     This state is the default after a call to \ :c:func:`wimax_dev_add`\ . It
     is ok to have drivers move directly to \ ``WIMAX_ST_UNINITIALIZED``\ 
-    or \ ``WIMAX_ST_RADIO_OFF``\  in \\ :c:func:`_probe`\  after the call to
+    or \ ``WIMAX_ST_RADIO_OFF``\  in \_probe() after the call to
     \ :c:func:`wimax_dev_add`\ .
     It is recommended that the driver leaves this state when
     calling 'ifconfig DEV up' and enters it back on 'ifconfig DEV
@@ -113,7 +113,7 @@ All API operations [with well defined exceptions] will take the
 device mutex before starting and then check the state. If the state
 is \ ``__WIMAX_ST_NULL``\ , \ ``WIMAX_ST_DOWN``\ , \ ``WIMAX_ST_UNINITIALIZED``\  or
 \ ``__WIMAX_ST_QUIESCING``\ , it will drop the lock and quit with
--\ ``EINVAL``\ , -\ ``ENOMEDIUM``\ , -\ ``ENOTCONN``\  or -\ ``ESHUTDOWN``\ .
+-%EINVAL, -%ENOMEDIUM, -%ENOTCONN or -%ESHUTDOWN.
 
 The order of the definitions is important, so we can do numerical
 comparisons (eg: < \ ``WIMAX_ST_RADIO_OFF``\  means the device is not ready

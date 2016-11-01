@@ -378,7 +378,7 @@ ubifs_change_lp
 Description
 -----------
 
-This function changes LEB properties (\ ``free``\ , \ ``dirty``\  or \ ``flag``\ ). However, the
+This function changes LEB properties (@free, \ ``dirty``\  or \ ``flag``\ ). However, the
 property which has the \ ``LPROPS_NC``\  value is not changed. Returns a pointer to
 the updated LEB properties on success and a negative error code on failure.
 
@@ -399,7 +399,7 @@ ubifs_get_lp_stats
         UBIFS file-system description object
 
     :param struct ubifs_lp_stats \*lst:
-        *undescribed*
+        return statistics
 
 .. _`ubifs_change_one_lp`:
 
@@ -437,8 +437,8 @@ Description
 -----------
 
 This function changes properties of LEB \ ``lnum``\ . It is a helper wrapper over
-'\ :c:func:`ubifs_change_lp`\ ' which hides lprops get/release. The arguments are the
-same as in case of '\ :c:func:`ubifs_change_lp`\ '. Returns zero in case of success and
+'ubifs_change_lp()' which hides lprops get/release. The arguments are the
+same as in case of 'ubifs_change_lp()'. Returns zero in case of success and
 a negative error code in case of failure.
 
 .. _`ubifs_update_one_lp`:
@@ -473,7 +473,7 @@ ubifs_update_one_lp
 Description
 -----------
 
-This function is the same as '\ :c:func:`ubifs_change_one_lp`\ ' but \ ``dirty``\  is added to
+This function is the same as 'ubifs_change_one_lp()' but \ ``dirty``\  is added to
 current dirty space, not substitutes it.
 
 .. _`ubifs_read_one_lp`:
@@ -629,9 +629,9 @@ Description
 -----------
 
 This function returns a code that indicates whether the scan should continue
-(\ ``LPT_SCAN_CONTINUE``\ ), whether the LEB properties should be added to the tree
-in main memory (\ ``LPT_SCAN_ADD``\ ), or whether the scan should stop
-(\ ``LPT_SCAN_STOP``\ ).
+(%LPT_SCAN_CONTINUE), whether the LEB properties should be added to the tree
+in main memory (%LPT_SCAN_ADD), or whether the scan should stop
+(%LPT_SCAN_STOP).
 
 .. _`dbg_check_lprops`:
 

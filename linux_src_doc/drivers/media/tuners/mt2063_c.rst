@@ -1,29 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/media/tuners/mt2063.c
 
-.. _`mt2063_gcd`:
-
-MT2063_gcd
-==========
-
-.. c:function:: u32 MT2063_gcd(u32 u, u32 v)
-
-    Uses Euclid's algorithm
-
-    :param u32 u:
-        Unsigned values whose GCD is desired.
-
-    :param u32 v:
-        *undescribed*
-
-.. _`mt2063_gcd.description`:
-
-Description
------------
-
-Returns THE greatest common divisor of u and v, if either value is 0,
-the other value is returned as the result.
-
 .. _`isspurinband`:
 
 IsSpurInBand

@@ -10,6 +10,7 @@ drivers
     acpi/index
     amba/index
     ata/index
+    auxdisplay/index
     base/index
     bcma/index
     block/index

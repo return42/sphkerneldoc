@@ -19,8 +19,6 @@ Definition
 
     struct visor_driver {
         const char *name;
-        const char *version;
-        const char *vertag;
         struct module *owner;
         struct visor_channeltype_descriptor *channel_types;
         int (*probe)(struct visor_device *dev);
@@ -29,7 +27,6 @@ Definition
         int (*pause)(struct visor_device *dev,visorbus_state_complete_func complete_func);
         int (*resume)(struct visor_device *dev,visorbus_state_complete_func complete_func);
         struct device_driver driver;
-        struct driver_attribute version_attr;
     }
 
 .. _`visor_driver.members`:
@@ -40,31 +37,25 @@ Members
 name
     Name of the visor driver.
 
-version
-    The numbered version of the driver (x.x.xxx).
-
-vertag
-    A human readable version string.
-
 owner
     The module owner.
 
 channel_types
     Types of channels handled by this driver, ending with
-    a zero GUID. Our specialized BUS.\ :c:func:`match`\  method knows
+    a zero GUID. Our specialized BUS.match() method knows
     about this list, and uses it to determine whether this
     driver will in fact handle a new device that it has
     detected.
 
 probe
     Called when a new device comes online, by our \ :c:func:`probe`\ 
-    function specified by driver.\ :c:func:`probe`\  (triggered
+    function specified by driver.probe() (triggered
     ultimately by some call to \ :c:func:`driver_register`\ ,
     \ :c:func:`bus_add_driver`\ , or \ :c:func:`driver_attach`\ ).
 
 remove
     Called when a new device is removed, by our \ :c:func:`remove`\ 
-    function specified by driver.\ :c:func:`remove`\  (triggered
+    function specified by driver.remove() (triggered
     ultimately by some call to \ :c:func:`device_release_driver`\ ).
 
 channel_interrupt
@@ -88,9 +79,6 @@ driver
     Private reference to the device driver. For use by bus
     driver only.
 
-version_attr
-    Private version field. For use by bus driver only.
-
 .. _`visor_device`:
 
 struct visor_device
@@ -112,9 +100,10 @@ Definition
         uuid_le channel_type_guid;
         struct device device;
         struct list_head list_all;
-        struct periodic_work *periodic_work;
+        struct timer_list timer;
+        bool timer_active;
         bool being_removed;
-        struct semaphore visordriver_callback_lock;
+        struct mutex visordriver_callback_lock;
         bool pausing;
         bool resuming;
         u32 chipset_bus_no;
@@ -133,186 +122,70 @@ Members
 -------
 
 visorchannel
-    *undescribed*
+    Points to the channel that the device is
+    associated with.
 
 channel_type_guid
-    *undescribed*
+    Identifies the channel type to the bus driver.
 
 device
-    *undescribed*
+    Device struct meant for use by the bus driver
+    only.
 
 list_all
-    *undescribed*
+    Used by the bus driver to enumerate devices.
 
-periodic_work
+timer
+    Timer fired periodically to do interrupt-type
+    activity.
+
+timer_active
     *undescribed*
 
 being_removed
-    *undescribed*
+    Indicates that the device is being removed from
+    the bus. Private bus driver use only.
 
 visordriver_callback_lock
-    *undescribed*
+    Used by the bus driver to lock when handling
+    channel events.
 
 pausing
-    *undescribed*
+    Indicates that a change towards a paused state.
+    is in progress. Only modified by the bus driver.
 
 resuming
-    *undescribed*
+    Indicates that a change towards a running state
+    is in progress. Only modified by the bus driver.
 
 chipset_bus_no
-    *undescribed*
+    Private field used by the bus driver.
 
 chipset_dev_no
-    *undescribed*
+    Private field used the bus driver.
 
 state
-    *undescribed*
+    Used to indicate the current state of the
+    device.
 
 inst
-    *undescribed*
+    Unique GUID for this instance of the device.
 
 name
-    *undescribed*
+    Name of the device.
 
 pending_msg_hdr
-    *undescribed*
+    For private use by bus driver to respond to
+    hypervisor requests.
 
 vbus_hdr_info
-    *undescribed*
+    A pointer to header info. Private use by bus
+    driver.
 
 partition_uuid
-    *undescribed*
-
-.. _`visor_device.visorchannel`:
-
-visorchannel
-------------
-
-Points to the channel that the device is
-associated with.
-
-.. _`visor_device.channel_type_guid`:
-
-channel_type_guid
------------------
-
-Identifies the channel type to the bus driver.
-
-.. _`visor_device.device`:
-
-device
-------
-
-Device struct meant for use by the bus driver
-only.
-
-.. _`visor_device.list_all`:
-
-list_all
---------
-
-Used by the bus driver to enumerate devices.
-
-.. _`visor_device.periodic_work`:
-
-periodic_work
--------------
-
-Device work queue. Private use by bus driver
-only.
-
-.. _`visor_device.being_removed`:
-
-being_removed
--------------
-
-Indicates that the device is being removed from
-the bus. Private bus driver use only.
-
-.. _`visor_device.visordriver_callback_lock`:
-
-visordriver_callback_lock
--------------------------
-
-Used by the bus driver to lock when handling
-channel events.
-
-.. _`visor_device.pausing`:
-
-pausing
--------
-
-Indicates that a change towards a paused state.
-is in progress. Only modified by the bus driver.
-
-.. _`visor_device.resuming`:
-
-resuming
---------
-
-Indicates that a change towards a running state
-is in progress. Only modified by the bus driver.
-
-.. _`visor_device.chipset_bus_no`:
-
-chipset_bus_no
---------------
-
-Private field used by the bus driver.
-
-.. _`visor_device.chipset_dev_no`:
-
-chipset_dev_no
---------------
-
-Private field used the bus driver.
-
-.. _`visor_device.state`:
-
-state
------
-
-Used to indicate the current state of the
-device.
-
-.. _`visor_device.inst`:
-
-inst
-----
-
-Unique GUID for this instance of the device.
-
-.. _`visor_device.name`:
-
-name
-----
-
-Name of the device.
-
-.. _`visor_device.pending_msg_hdr`:
-
-pending_msg_hdr
----------------
-
-For private use by bus driver to respond to
-hypervisor requests.
-
-.. _`visor_device.vbus_hdr_info`:
-
-vbus_hdr_info
--------------
-
-A pointer to header info. Private use by bus
-driver.
-
-.. _`visor_device.partition_uuid`:
-
-partition_uuid
---------------
-
-Indicates client partion id. This should be the
-same across all visor_devices in the current
-guest. Private use by bus driver only.
+    Indicates client partion id. This should be the
+    same across all visor_devices in the current
+    guest. Private use by bus driver only.
 
 .. This file was automatic generated / don't edit.
 

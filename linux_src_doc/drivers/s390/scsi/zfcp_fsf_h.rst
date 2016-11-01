@@ -24,6 +24,7 @@ Definition
         void *handler_data;
         struct zfcp_port *port;
         int status;
+        u32 d_id;
     }
 
 .. _`zfcp_fsf_ct_els.members`:
@@ -48,6 +49,9 @@ port
 
 status
     used to pass error status to calling function
+
+d_id
+    Destination ID of either open WKA port for CT or of D_ID for ELS
 
 .. This file was automatic generated / don't edit.
 

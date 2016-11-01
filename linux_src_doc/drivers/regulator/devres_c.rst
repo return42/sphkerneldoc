@@ -117,7 +117,7 @@ devm_regulator_bulk_get
 Description
 -----------
 
-\ ``return``\  0 on success, an errno on failure.
+@return 0 on success, an errno on failure.
 
 This helper function allows drivers to get several regulator
 consumers in one operation with management, the regulators will
@@ -262,7 +262,7 @@ devm_regulator_bulk_register_supply_alias
 Description
 -----------
 
-\ ``return``\  0 on success, an errno on failure.
+@return 0 on success, an errno on failure.
 
 This helper function allows drivers to register several supply
 aliases in one operation, the aliases will be automatically

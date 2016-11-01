@@ -124,7 +124,7 @@ Theory of Operation
 -------------------
 
 
-About 3/4 of the mailboxes (\ :c:func:`get_mb_rx_first`\ ...\ :c:func:`get_mb_rx_last`\ )
+About 3/4 of the mailboxes (get_mb_rx_first()...get_mb_rx_last())
 on the chip are reserved for RX. We split them into 2 groups. The
 lower group ranges from \ :c:func:`get_mb_rx_first`\  to \ :c:func:`get_mb_rx_low_last`\ .
 

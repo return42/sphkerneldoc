@@ -64,7 +64,7 @@ kthread_freezable_should_stop
 Description
 -----------
 
-\ :c:func:`kthread_should_stop`\  for freezable kthreads, which will enter
+kthread_should_stop() for freezable kthreads, which will enter
 refrigerator if necessary.  This function is safe from \ :c:func:`kthread_stop`\  /
 freezer deadlock and freezable kthreads should use this function instead
 of calling \ :c:func:`try_to_freeze`\  directly.
@@ -90,24 +90,24 @@ Return the data value specified when kthread \ ``task``\  was created.
 The caller is responsible for ensuring the validity of \ ``task``\  when
 calling this function.
 
-.. _`probe_kthread_data`:
+.. _`kthread_probe_data`:
 
-probe_kthread_data
+kthread_probe_data
 ==================
 
-.. c:function:: void *probe_kthread_data(struct task_struct *task)
+.. c:function:: void *kthread_probe_data(struct task_struct *task)
 
     speculative version of \ :c:func:`kthread_data`\ 
 
     :param struct task_struct \*task:
         possible kthread task in question
 
-.. _`probe_kthread_data.description`:
+.. _`kthread_probe_data.description`:
 
 Description
 -----------
 
-\ ``task``\  could be a kthread task.  Return the data value specified when it
+@task could be a kthread task.  Return the data value specified when it
 was created if accessible.  If \ ``task``\  isn't a kthread task or its data is
 inaccessible for any reason, \ ``NULL``\  is returned.  This function requires
 that \ ``task``\  itself is safe to dereference.
@@ -148,10 +148,10 @@ is affine to all CPUs.
 
 If thread is going to be bound on a particular cpu, give its node
 in \ ``node``\ , to get NUMA affinity for kthread stack, or else give NUMA_NO_NODE.
-When woken, the thread will run @\ :c:func:`threadfn`\  with \ ``data``\  as its
-argument. @\ :c:func:`threadfn`\  can either call \ :c:func:`do_exit`\  directly if it is a
+When woken, the thread will run \ ``threadfn``\ () with \ ``data``\  as its
+argument. \ ``threadfn``\ () can either call \ :c:func:`do_exit`\  directly if it is a
 standalone thread for which no one will call \ :c:func:`kthread_stop`\ , or
-return when '\ :c:func:`kthread_should_stop`\ ' is true (which means
+return when 'kthread_should_stop()' is true (which means
 \ :c:func:`kthread_stop`\  has been called).  The return value should be zero
 or a negative error number; it will be passed to \ :c:func:`kthread_stop`\ .
 
@@ -201,7 +201,7 @@ kthread_create_on_cpu
 
     :param const char \*namefmt:
         printf-style name for the thread. Format is restricted
-        to "name.\*\ ``u``\ ". Code fills in cpu number.
+        to "name.*%u". Code fills in cpu number.
 
 .. _`kthread_create_on_cpu.description`:
 
@@ -302,23 +302,86 @@ kthread_worker_fn
 Description
 -----------
 
-This function can be used as \ ``threadfn``\  to \ :c:func:`kthread_create`\  or
-\ :c:func:`kthread_run`\  with \ ``worker_ptr``\  argument pointing to an initialized
-kthread_worker.  The started kthread will process work_list until
-the it is stopped with \ :c:func:`kthread_stop`\ .  A kthread can also call
-this function directly after extra initialization.
+This function implements the main cycle of kthread worker. It processes
+work_list until it is stopped with \ :c:func:`kthread_stop`\ . It sleeps when the queue
+is empty.
 
-Different kthreads can be used for the same kthread_worker as long
-as there's only one kthread attached to it at any given time.  A
-kthread_worker without an attached kthread simply collects queued
-kthread_works.
+The works are not allowed to keep any locks, disable preemption or interrupts
+when they finish. There is defined a safe point for freezing when one work
+finishes and before a new one is started.
 
-.. _`queue_kthread_work`:
+Also the works must not be handled by more than one worker at the same time,
+see also \ :c:func:`kthread_queue_work`\ .
 
-queue_kthread_work
+.. _`kthread_create_worker`:
+
+kthread_create_worker
+=====================
+
+.. c:function:: struct kthread_worker *kthread_create_worker(unsigned int flags, const char namefmt[],  ...)
+
+    create a kthread worker
+
+    :param unsigned int flags:
+        flags modifying the default behavior of the worker
+
+    :param const char namefmt:
+        printf-style name for the kthread worker (task).
+
+    :param ... :
+        variable arguments
+
+.. _`kthread_create_worker.description`:
+
+Description
+-----------
+
+Returns a pointer to the allocated worker on success, ERR_PTR(-ENOMEM)
+when the needed structures could not get allocated, and ERR_PTR(-EINTR)
+when the worker was SIGKILLed.
+
+.. _`kthread_create_worker_on_cpu`:
+
+kthread_create_worker_on_cpu
+============================
+
+.. c:function:: struct kthread_worker *kthread_create_worker_on_cpu(int cpu, unsigned int flags, const char namefmt[],  ...)
+
+    create a kthread worker and bind it it to a given CPU and the associated NUMA node.
+
+    :param int cpu:
+        CPU number
+
+    :param unsigned int flags:
+        flags modifying the default behavior of the worker
+
+    :param const char namefmt:
+        printf-style name for the kthread worker (task).
+
+    :param ... :
+        variable arguments
+
+.. _`kthread_create_worker_on_cpu.description`:
+
+Description
+-----------
+
+Use a valid CPU number if you want to bind the kthread worker
+to the given CPU and the associated NUMA node.
+
+A good practice is to add the cpu number also into the worker name.
+For example, use kthread_create_worker_on_cpu(cpu, "helper/%d", cpu).
+
+Returns a pointer to the allocated worker on success, ERR_PTR(-ENOMEM)
+when the needed structures could not get allocated, and ERR_PTR(-EINTR)
+when the worker was SIGKILLed.
+
+.. _`kthread_queue_work`:
+
+kthread_queue_work
 ==================
 
-.. c:function:: bool queue_kthread_work(struct kthread_worker *worker, struct kthread_work *work)
+.. c:function:: bool kthread_queue_work(struct kthread_worker *worker, struct kthread_work *work)
 
     queue a kthread_work
 
@@ -328,7 +391,7 @@ queue_kthread_work
     :param struct kthread_work \*work:
         kthread_work to queue
 
-.. _`queue_kthread_work.description`:
+.. _`kthread_queue_work.description`:
 
 Description
 -----------
@@ -337,44 +400,229 @@ Queue \ ``work``\  to work processor \ ``task``\  for async execution.  \ ``task
 must have been created with \ :c:func:`kthread_worker_create`\ .  Returns \ ``true``\ 
 if \ ``work``\  was successfully queued, \ ``false``\  if it was already pending.
 
-.. _`flush_kthread_work`:
+Reinitialize the work if it needs to be used by another worker.
+For example, when the worker was stopped and started again.
 
-flush_kthread_work
+.. _`kthread_delayed_work_timer_fn`:
+
+kthread_delayed_work_timer_fn
+=============================
+
+.. c:function:: void kthread_delayed_work_timer_fn(unsigned long __data)
+
+    callback that queues the associated kthread delayed work when the timer expires.
+
+    :param unsigned long __data:
+        pointer to the data associated with the timer
+
+.. _`kthread_delayed_work_timer_fn.description`:
+
+Description
+-----------
+
+The format of the function is defined by struct timer_list.
+It should have been called from irqsafe timer with irq already off.
+
+.. _`kthread_queue_delayed_work`:
+
+kthread_queue_delayed_work
+==========================
+
+.. c:function:: bool kthread_queue_delayed_work(struct kthread_worker *worker, struct kthread_delayed_work *dwork, unsigned long delay)
+
+    queue the associated kthread work after a delay.
+
+    :param struct kthread_worker \*worker:
+        target kthread_worker
+
+    :param struct kthread_delayed_work \*dwork:
+        kthread_delayed_work to queue
+
+    :param unsigned long delay:
+        number of jiffies to wait before queuing
+
+.. _`kthread_queue_delayed_work.description`:
+
+Description
+-----------
+
+If the work has not been pending it starts a timer that will queue
+the work after the given \ ``delay``\ . If \ ``delay``\  is zero, it queues the
+work immediately.
+
+.. _`kthread_queue_delayed_work.return`:
+
+Return
+------
+
+%false if the \ ``work``\  has already been pending. It means that
+either the timer was running or the work was queued. It returns \ ``true``\ 
+otherwise.
+
+.. _`kthread_flush_work`:
+
+kthread_flush_work
 ==================
 
-.. c:function:: void flush_kthread_work(struct kthread_work *work)
+.. c:function:: void kthread_flush_work(struct kthread_work *work)
 
     flush a kthread_work
 
     :param struct kthread_work \*work:
         work to flush
 
-.. _`flush_kthread_work.description`:
+.. _`kthread_flush_work.description`:
 
 Description
 -----------
 
 If \ ``work``\  is queued or executing, wait for it to finish execution.
 
-.. _`flush_kthread_worker`:
+.. _`kthread_mod_delayed_work`:
 
-flush_kthread_worker
+kthread_mod_delayed_work
+========================
+
+.. c:function:: bool kthread_mod_delayed_work(struct kthread_worker *worker, struct kthread_delayed_work *dwork, unsigned long delay)
+
+    modify delay of or queue a kthread delayed work
+
+    :param struct kthread_worker \*worker:
+        kthread worker to use
+
+    :param struct kthread_delayed_work \*dwork:
+        kthread delayed work to queue
+
+    :param unsigned long delay:
+        number of jiffies to wait before queuing
+
+.. _`kthread_mod_delayed_work.description`:
+
+Description
+-----------
+
+If \ ``dwork``\  is idle, equivalent to \ :c:func:`kthread_queue_delayed_work`\ . Otherwise,
+modify \ ``dwork``\ 's timer so that it expires after \ ``delay``\ . If \ ``delay``\  is zero,
+\ ``work``\  is guaranteed to be queued immediately.
+
+.. _`kthread_mod_delayed_work.return`:
+
+Return
+------
+
+%true if \ ``dwork``\  was pending and its timer was modified,
+\ ``false``\  otherwise.
+
+A special case is when the work is being canceled in parallel.
+It might be caused either by the real \ :c:func:`kthread_cancel_delayed_work_sync`\ 
+or yet another \ :c:func:`kthread_mod_delayed_work`\  call. We let the other command
+win and return \ ``false``\  here. The caller is supposed to synchronize these
+operations a reasonable way.
+
+This function is safe to call from any context including IRQ handler.
+See \ :c:func:`__kthread_cancel_work`\  and \ :c:func:`kthread_delayed_work_timer_fn`\ 
+for details.
+
+.. _`kthread_cancel_work_sync`:
+
+kthread_cancel_work_sync
+========================
+
+.. c:function:: bool kthread_cancel_work_sync(struct kthread_work *work)
+
+    cancel a kthread work and wait for it to finish
+
+    :param struct kthread_work \*work:
+        the kthread work to cancel
+
+.. _`kthread_cancel_work_sync.description`:
+
+Description
+-----------
+
+Cancel \ ``work``\  and wait for its execution to finish.  This function
+can be used even if the work re-queues itself. On return from this
+function, \ ``work``\  is guaranteed to be not pending or executing on any CPU.
+
+kthread_cancel_work_sync(&delayed_work->work) must not be used for
+delayed_work's. Use \ :c:func:`kthread_cancel_delayed_work_sync`\  instead.
+
+The caller must ensure that the worker on which \ ``work``\  was last
+queued can't be destroyed before this function returns.
+
+.. _`kthread_cancel_work_sync.return`:
+
+Return
+------
+
+%true if \ ``work``\  was pending, \ ``false``\  otherwise.
+
+.. _`kthread_cancel_delayed_work_sync`:
+
+kthread_cancel_delayed_work_sync
+================================
+
+.. c:function:: bool kthread_cancel_delayed_work_sync(struct kthread_delayed_work *dwork)
+
+    cancel a kthread delayed work and wait for it to finish.
+
+    :param struct kthread_delayed_work \*dwork:
+        the kthread delayed work to cancel
+
+.. _`kthread_cancel_delayed_work_sync.description`:
+
+Description
+-----------
+
+This is \ :c:func:`kthread_cancel_work_sync`\  for delayed works.
+
+.. _`kthread_cancel_delayed_work_sync.return`:
+
+Return
+------
+
+%true if \ ``dwork``\  was pending, \ ``false``\  otherwise.
+
+.. _`kthread_flush_worker`:
+
+kthread_flush_worker
 ====================
 
-.. c:function:: void flush_kthread_worker(struct kthread_worker *worker)
+.. c:function:: void kthread_flush_worker(struct kthread_worker *worker)
 
     flush all current works on a kthread_worker
 
     :param struct kthread_worker \*worker:
         worker to flush
 
-.. _`flush_kthread_worker.description`:
+.. _`kthread_flush_worker.description`:
 
 Description
 -----------
 
 Wait until all currently executing or pending works on \ ``worker``\  are
 finished.
+
+.. _`kthread_destroy_worker`:
+
+kthread_destroy_worker
+======================
+
+.. c:function:: void kthread_destroy_worker(struct kthread_worker *worker)
+
+    destroy a kthread worker
+
+    :param struct kthread_worker \*worker:
+        worker to be destroyed
+
+.. _`kthread_destroy_worker.description`:
+
+Description
+-----------
+
+Flush and destroy \ ``worker``\ .  The simple flush is enough because the kthread
+worker API is used only in trivial scenarios.  There are no multi-step state
+machines needed.
 
 .. This file was automatic generated / don't edit.
 

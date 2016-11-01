@@ -195,7 +195,7 @@ Other code can also call this, e.g. a particular add-on board might provide
 SPI devices through its expansion connector, so code initializing that board
 would naturally declare its SPI devices.
 
-The board info passed can safely be \__initdata ... but be careful of
+The board info passed can safely be __initdata ... but be careful of
 any embedded pointers (platform_data, etc), they're copied as-is.
 
 .. _`spi_register_board_info.return`:
@@ -231,7 +231,7 @@ transfer has finished and the next one may be scheduled.
 __spi_pump_messages
 ===================
 
-.. c:function:: void __spi_pump_messages(struct spi_master *master, bool in_kthread, bool bus_locked)
+.. c:function:: void __spi_pump_messages(struct spi_master *master, bool in_kthread)
 
     function which processes spi message queue
 
@@ -240,9 +240,6 @@ __spi_pump_messages
 
     :param bool in_kthread:
         true if we are in the context of the message pump thread
-
-    :param bool bus_locked:
-        true if the bus mutex is held when calling this function
 
 .. _`__spi_pump_messages.description`:
 
@@ -662,7 +659,7 @@ Return
 ------
 
 pointer to \ ``spi_replaced_transfers``\ ,
-PTR_ERR(...) in case of errors.
+         PTR_ERR(...) in case of errors.
 
 .. _`spi_split_transfers_maxsize`:
 

@@ -83,7 +83,7 @@ Definition
 
     struct fcoe_ctlr {
         enum fip_state state;
-        enum fip_state mode;
+        enum fip_mode mode;
         struct fc_lport *lp;
         struct fcoe_fcf *sel_fcf;
         struct list_head fcfs;
@@ -104,7 +104,8 @@ Definition
         u16 flogi_oxid;
         u8 flogi_req_send;
         u8 flogi_count;
-        u8 map_dest;
+        bool map_dest;
+        bool fip_resp;
         u8 spma;
         u8 probe_tries;
         u8 priority;
@@ -129,7 +130,7 @@ mode
     LLD-selected mode.
 
 lp
-    \ :c:type:`struct fc_lport <fc_lport>`: libfc local port.
+    &fc_lport: libfc local port.
 
 sel_fcf
     currently selected FCF, or NULL.
@@ -159,10 +160,10 @@ timer
     timer struct used for all delayed events.
 
 timer_work
-    \ :c:type:`struct work_struct <work_struct>` for doing keep-alives and resets.
+    &work_struct for doing keep-alives and resets.
 
 recv_work
-    \ :c:type:`struct work_struct <work_struct>` for receiving FIP frames.
+    &work_struct for receiving FIP frames.
 
 fip_recv_list
     list of received FIP frames.
@@ -191,6 +192,9 @@ flogi_count
 map_dest
     use the FC_MAP mode for destination MAC addresses.
 
+fip_resp
+    start FIP VLAN discovery responder
+
 spma
     supports SPMA server-provided MACs mode
 
@@ -198,7 +202,7 @@ probe_tries
     number of FC_IDs probed
 
 priority
-    *undescribed*
+    DCBx FCoE APP priority
 
 dest_addr
     MAC address of the selected FC forwarder.
@@ -419,7 +423,8 @@ Definition
 .. code-block:: c
 
     struct fcoe_percpu_s {
-        struct task_struct *thread;
+        struct task_struct *kthread;
+        struct work_struct work;
         struct sk_buff_head fcoe_rx_list;
         struct page *crc_eof_page;
         int crc_eof_offset;
@@ -430,8 +435,11 @@ Definition
 Members
 -------
 
-thread
-    The thread context
+kthread
+    The thread context (used by bnx2fc)
+
+work
+    The work item (used by fcoe)
 
 fcoe_rx_list
     The queue of pending packets to process

@@ -198,7 +198,7 @@ Definition
         u8 pfa_led_on;
         u8 pend_sas_rphy_add;
         u8 enclosure_level;
-        u8 connector_name[4];
+        u8 connector_name[5];
         struct kref refcount;
     }
 
@@ -795,38 +795,6 @@ affinity_hint
 
 list
     this list
-
-.. _`mutex_type`:
-
-enum mutex_type
-===============
-
-.. c:type:: enum mutex_type
-
-    task management mutex type
-
-.. _`mutex_type.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum mutex_type {
-        TM_MUTEX_OFF,
-        TM_MUTEX_ON
-    };
-
-.. _`mutex_type.constants`:
-
-Constants
----------
-
-TM_MUTEX_OFF
-    mutex is not required becuase calling function is acquiring it
-
-TM_MUTEX_ON
-    mutex is required
 
 .. _`mpt3sas_adapter`:
 

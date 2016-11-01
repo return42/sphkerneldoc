@@ -280,7 +280,7 @@ Description
 
 Use this instead of calling crtc->atomic_set_property directly.
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_set_property`\  for driver properties.  To ensure
+driver's ->atomic_set_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -318,7 +318,7 @@ Description
 -----------
 
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_get_property`\  for driver properties.  To ensure
+driver's ->atomic_get_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -420,7 +420,7 @@ Description
 
 Use this instead of calling plane->atomic_set_property directly.
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_set_property`\  for driver properties.  To ensure
+driver's ->atomic_set_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -458,7 +458,7 @@ Description
 -----------
 
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_get_property`\  for driver properties.  To ensure
+driver's ->atomic_get_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -560,7 +560,7 @@ Description
 
 Use this instead of calling connector->atomic_set_property directly.
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_set_property`\  for driver properties.  To ensure
+driver's ->atomic_set_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -598,7 +598,7 @@ Description
 -----------
 
 This function handles generic/core properties and calls out to
-driver's ->\ :c:func:`atomic_get_property`\  for driver properties.  To ensure
+driver's ->atomic_get_property() for driver properties.  To ensure
 consistent behavior you must call this function rather than the
 driver hook directly.
 
@@ -864,7 +864,7 @@ drm_atomic_nonblocking_commit
 
 .. c:function:: int drm_atomic_nonblocking_commit(struct drm_atomic_state *state)
 
-    atomic\ :c:type:`struct nonblocking <nonblocking>` configuration commit
+    atomic&nonblocking configuration commit
 
     :param struct drm_atomic_state \*state:
         atomic configuration to check

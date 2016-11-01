@@ -8,7 +8,7 @@ struct afe4403_data
 
 .. c:type:: struct afe4403_data
 
-    \ ``dev``\  - Device structure \ ``spi``\  - SPI device handle \ ``regmap``\  - Register map of the device \ ``regulator``\  - Pointer to the regulator for the IC \ ``trig``\  - IIO trigger for this device \ ``irq``\  - ADC_RDY line interrupt number
+    AFE4403 device instance data
 
 .. _`afe4403_data.definition`:
 
@@ -21,6 +21,7 @@ Definition
         struct device *dev;
         struct spi_device *spi;
         struct regmap *regmap;
+        struct regmap_field  *fields[F_MAX_FIELDS];
         struct regulator *regulator;
         struct iio_trigger *trig;
         int irq;
@@ -32,22 +33,25 @@ Members
 -------
 
 dev
-    *undescribed*
+    Device structure
 
 spi
-    *undescribed*
+    SPI device handle
 
 regmap
-    *undescribed*
+    Register map of the device
+
+fields
+    Register fields of the device
 
 regulator
-    *undescribed*
+    Pointer to the regulator for the IC
 
 trig
-    *undescribed*
+    IIO trigger for this device
 
 irq
-    *undescribed*
+    ADC_RDY line interrupt number
 
 .. This file was automatic generated / don't edit.
 

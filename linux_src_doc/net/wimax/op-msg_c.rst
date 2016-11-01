@@ -30,7 +30,7 @@ wimax_msg_alloc
 Return
 ------
 
-\ ``0``\  if ok, negative errno code on error
+%0 if ok, negative errno code on error
 
 .. _`wimax_msg_alloc.description`:
 
@@ -51,7 +51,7 @@ IMPORTANT
 ---------
 
 
-Don't use \ :c:func:`skb_push`\ /\ :c:func:`skb_pull`\ /\ :c:func:`skb_reserve`\  on the skb, as
+Don't use \ :c:func:`skb_push`\ /skb_pull()/skb_reserve() on the skb, as
 \ :c:func:`wimax_msg_send`\  depends on skb->data being placed at the
 beginning of the user message.
 
@@ -120,7 +120,7 @@ wimax_msg_send
         WiMAX device descriptor
 
     :param struct sk_buff \*skb:
-        \ :c:type:`struct sk_buff <sk_buff>`\  returned by \ :c:func:`wimax_msg_alloc`\ . Note the
+        &struct sk_buff returned by \ :c:func:`wimax_msg_alloc`\ . Note the
         ownership of \ ``skb``\  is transferred to this function.
 
 .. _`wimax_msg_send.return`:
@@ -148,7 +148,7 @@ IMPORTANT
 ---------
 
 
-Don't use \ :c:func:`skb_push`\ /\ :c:func:`skb_pull`\ /\ :c:func:`skb_reserve`\  on the skb, as
+Don't use \ :c:func:`skb_push`\ /skb_pull()/skb_reserve() on the skb, as
 \ :c:func:`wimax_msg_send`\  depends on skb->data being placed at the
 beginning of the user message.
 
@@ -187,7 +187,7 @@ wimax_msg
 Return
 ------
 
-\ ``0``\  if ok, negative errno code on error.
+%0 if ok, negative errno code on error.
 
 .. _`wimax_msg.description`:
 

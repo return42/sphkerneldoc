@@ -207,6 +207,21 @@ fm10k_receive_skb
     :param struct sk_buff \*skb:
         packet to send up
 
+.. _`fm10k_get_tx_pending`:
+
+fm10k_get_tx_pending
+====================
+
+.. c:function:: u64 fm10k_get_tx_pending(struct fm10k_ring *ring, bool in_sw)
+
+    how many Tx descriptors not processed
+
+    :param struct fm10k_ring \*ring:
+        the ring structure
+
+    :param bool in_sw:
+        is tx_pending being checked in SW or in HW?
+
 .. _`fm10k_tx_timeout_reset`:
 
 fm10k_tx_timeout_reset

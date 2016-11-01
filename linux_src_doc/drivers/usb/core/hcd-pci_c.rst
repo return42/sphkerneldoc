@@ -21,7 +21,7 @@ usb_hcd_pci_probe
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_pci_probe.description`:
 
@@ -58,7 +58,7 @@ usb_hcd_pci_remove
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`usb_hcd_pci_remove.description`:
 

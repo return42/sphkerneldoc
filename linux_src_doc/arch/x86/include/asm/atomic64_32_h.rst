@@ -111,7 +111,7 @@ atomic64_add_return
 Description
 -----------
 
-Atomically adds \ ``i``\  to \ ``v``\  and returns \ ``i``\  + \*\ ``v``\ 
+Atomically adds \ ``i``\  to \ ``v``\  and returns \ ``i``\  + \*@v
 
 .. _`atomic64_add`:
 

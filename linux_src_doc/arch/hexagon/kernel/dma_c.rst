@@ -6,7 +6,7 @@
 hexagon_map_page
 ================
 
-.. c:function:: dma_addr_t hexagon_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, struct dma_attrs *attrs)
+.. c:function:: dma_addr_t hexagon_map_page(struct device *dev, struct page *page, unsigned long offset, size_t size, enum dma_data_direction dir, unsigned long attrs)
 
     maps an address for device DMA
 
@@ -25,7 +25,7 @@ hexagon_map_page
     :param enum dma_data_direction dir:
         transfer direction
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         pointer to DMA attrs (not used)
 
 .. _`hexagon_map_page.description`:

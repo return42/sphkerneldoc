@@ -225,7 +225,7 @@ intel_power_domains_init_hw
         i915 device instance
 
     :param bool resume:
-        *undescribed*
+        Called from resume code paths or not
 
 .. _`intel_power_domains_init_hw.description`:
 
@@ -321,7 +321,7 @@ Description
 This function grabs a device-level runtime pm reference (mostly used for GEM
 code to ensure the GTT or GT is on).
 
-It will \_not\_ power up the device but instead only check that it's powered
+It will _not_ power up the device but instead only check that it's powered
 on.  Therefore it is only valid to call this functions from contexts where
 the device is known to be powered up and where trying to power it up would
 result in hilarity and deadlocks. That pretty much means only the system

@@ -8,6 +8,7 @@ thermal
     :maxdepth: 1
 
     int340x_thermal/index
+    qcom/index
     samsung/index
     tegra/index
     ti-soc-thermal/index
@@ -16,6 +17,7 @@ thermal
     devfreq_cooling_c
     fair_share_c
     gov_bang_bang_c
+    max77620_thermal_c
     mtk_thermal_c
     of-thermal_c
     power_allocator_c

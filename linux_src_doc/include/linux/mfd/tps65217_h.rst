@@ -60,6 +60,11 @@ Definition
         unsigned long id;
         struct regulator_desc desc[TPS65217_NUM_REGULATOR];
         struct regmap *regmap;
+        u8 *strobes;
+        struct irq_domain *irq_domain;
+        struct mutex irq_lock;
+        u8 irq_mask;
+        int irq;
     }
 
 .. _`tps65217.members`:
@@ -77,6 +82,21 @@ id
     *undescribed*
 
 regmap
+    *undescribed*
+
+strobes
+    *undescribed*
+
+irq_domain
+    *undescribed*
+
+irq_lock
+    *undescribed*
+
+irq_mask
+    *undescribed*
+
+irq
     *undescribed*
 
 .. _`tps65217.description`:

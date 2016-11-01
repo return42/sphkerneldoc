@@ -134,7 +134,7 @@ Description
 Determine whether area map of \ ``chunk``\  needs to be extended.  If
 \ ``is_atomic``\ , only the amount necessary for a new allocation is
 considered; however, async extension is scheduled if the left amount is
-low.  If !\ ``is_atomic``\ , it aims for more empty space.  Combined, this
+low.  If !@is_atomic, it aims for more empty space.  Combined, this
 ensures that the map is likely to have enough available space to
 accomodate atomic allocations which can't extend maps directly.
 
@@ -337,7 +337,7 @@ pcpu_chunk_populated
 Description
 -----------
 
-Pages in [\ ``page_start``\ ,\ ``page_end``\ ) have been populated to \ ``chunk``\ .  Update
+Pages in [@page_start,@page_end) have been populated to \ ``chunk``\ .  Update
 the bookkeeping information accordingly.  Must be called after each
 successful population.
 
@@ -364,7 +364,7 @@ pcpu_chunk_depopulated
 Description
 -----------
 
-Pages in [\ ``page_start``\ ,\ ``page_end``\ ) have been depopulated from \ ``chunk``\ .
+Pages in [@page_start,@page_end) have been depopulated from \ ``chunk``\ .
 Update the bookkeeping information accordingly.  Must be called after
 each successful depopulation.
 
@@ -589,7 +589,7 @@ static percpu areas are not considered.  For those, use
 Return
 ------
 
-\ ``true``\  if \ ``addr``\  is from in-kernel static percpu area, \ ``false``\  otherwise.
+%true if \ ``addr``\  is from in-kernel static percpu area, \ ``false``\  otherwise.
 
 .. _`per_cpu_ptr_to_phys`:
 

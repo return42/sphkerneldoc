@@ -142,7 +142,7 @@ If \ ``ia_page``\  is not NULL it is the locked page containing the index
 allocation block containing the index entry \ ``ie``\ .
 
 Note, we drop (and then reacquire) the page lock on \ ``ia_page``\  across the
-@\ :c:func:`filldir`\  call otherwise we would deadlock with NFSd when it calls ->lookup
+\ ``filldir``\ () call otherwise we would deadlock with NFSd when it calls ->lookup
 since \ :c:func:`ntfs_lookup`\  will lock the same page.  As an optimization, we do not
 retake the lock if we are returning a non-zero value as \ :c:func:`ntfs_readdir`\ 
 would need to drop the lock immediately anyway.
@@ -205,7 +205,7 @@ Description
 -----------
 
 Data integrity sync of a directory to disk.  Used for fsync, fdatasync, and
-msync system calls.  This function is based on file.c::\ :c:func:`ntfs_file_fsync`\ .
+msync system calls.  This function is based on file.c::ntfs_file_fsync().
 
 Write the mft record and all associated extent mft records as well as the
 \ ``$INDEX_ALLOCATION``\  and \ ``$BITMAP``\  attributes and then sync the block device.

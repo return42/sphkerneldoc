@@ -23,12 +23,15 @@ Definition
         struct snd_card *snd_card;
         char name[32];
         unsigned int type;
+        unsigned int dma_mode;
         struct pci_dev *pci_dev;
         __u32 __iomem *mmio;
-        void *alloc_ctx;
+        const struct tw686x_dma_ops *dma_ops;
         struct tw686x_video_channel *video_channels;
         struct tw686x_audio_channel *audio_channels;
         int audio_rate;
+        int period_size;
+        int audio_enabled;
         struct timer_list dma_delay_timer;
         u32 pending_dma_en;
         u32 pending_dma_cmd;
@@ -52,13 +55,16 @@ snd_card
 type
     *undescribed*
 
+dma_mode
+    *undescribed*
+
 pci_dev
     *undescribed*
 
 mmio
     *undescribed*
 
-alloc_ctx
+dma_ops
     *undescribed*
 
 video_channels
@@ -68,6 +74,12 @@ audio_channels
     *undescribed*
 
 audio_rate
+    *undescribed*
+
+period_size
+    *undescribed*
+
+audio_enabled
     *undescribed*
 
 dma_delay_timer

@@ -150,15 +150,15 @@ device in the \ ``__WIMAX_ST_NULL``\  state.
 5. Call \ :c:func:`wimax_dev_add`\  \*after\* registering the network
 device. This will leave the WiMAX device in the \ ``WIMAX_ST_DOWN``\ 
 state.
-Protect the driver's net_device->\ :c:func:`open`\  against succeeding if
+Protect the driver's net_device->open() against succeeding if
 the wimax device state is lower than \ ``WIMAX_ST_DOWN``\ .
 
 6. Select when the device is going to be turned on/initialized;
 for example, it could be initialized on 'ifconfig up' (when the
-netdev op '\ :c:func:`open`\ ' is called on the driver).
+netdev op 'open()' is called on the driver).
 
 When the device is initialized (at \`ifconfig up\` time, or right
-after calling \ :c:func:`wimax_dev_add`\  from \\ :c:func:`_probe`\ , make sure the
+after calling \ :c:func:`wimax_dev_add`\  from \_probe(), make sure the
 following steps are taken
 
 a. Move the device to \ ``WIMAX_ST_UNINITIALIZED``\ . This is needed so

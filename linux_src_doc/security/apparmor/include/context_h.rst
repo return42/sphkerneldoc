@@ -125,7 +125,7 @@ __aa_task_profile
 Return
 ------
 
-\ ``task``\ 's profile without incrementing its ref count
+@task's profile without incrementing its ref count
 
 If \ ``task``\  != current needs to be called in RCU safe critical section
 

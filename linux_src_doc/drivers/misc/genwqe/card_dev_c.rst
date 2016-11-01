@@ -23,13 +23,13 @@ Description
 Author
 ------
 
-Frank Haverkamp <haver\ ``linux``\ .vnet.ibm.com>
+Frank Haverkamp <haver@linux.vnet.ibm.com>
 
-Joerg-Stephan Vogt <jsvogt\ ``de``\ .ibm.com>
+Joerg-Stephan Vogt <jsvogt@de.ibm.com>
 
-Michael Jung <mijung\ ``gmx``\ .net>
+Michael Jung <mijung@gmx.net>
 
-Michael Ruettger <michael\ ``ibmra``\ .de>
+Michael Ruettger <michael@ibmra.de>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License (version 2 only)
@@ -176,7 +176,7 @@ Sending a signal is working as following
 
 
 if (cdev->async_queue)
-kill_fasync(\ :c:type:`cdev->async_queue <cdev>`\ , SIGIO, POLL_IN);
+kill_fasync(&cdev->async_queue, SIGIO, POLL_IN);
 
 Some devices also implement asynchronous notification to indicate
 when the device can be written; in this case, of course,

@@ -612,6 +612,98 @@ Description
 
 Wait for command done. This applies to erase and program only.
 
+.. _`nand_reset_data_interface`:
+
+nand_reset_data_interface
+=========================
+
+.. c:function:: int nand_reset_data_interface(struct nand_chip *chip)
+
+    Reset data interface and timings
+
+    :param struct nand_chip \*chip:
+        The NAND chip
+
+.. _`nand_reset_data_interface.description`:
+
+Description
+-----------
+
+Reset the Data interface and timings to ONFI mode 0.
+
+Returns 0 for success or negative error code otherwise.
+
+.. _`nand_setup_data_interface`:
+
+nand_setup_data_interface
+=========================
+
+.. c:function:: int nand_setup_data_interface(struct nand_chip *chip)
+
+    Setup the best data interface and timings
+
+    :param struct nand_chip \*chip:
+        The NAND chip
+
+.. _`nand_setup_data_interface.description`:
+
+Description
+-----------
+
+Find and configure the best data interface and NAND timings supported by
+the chip and the driver.
+First tries to retrieve supported timing modes from ONFI information,
+and if the NAND chip does not support ONFI, relies on the
+->onfi_timing_mode_default specified in the nand_ids table.
+
+Returns 0 for success or negative error code otherwise.
+
+.. _`nand_init_data_interface`:
+
+nand_init_data_interface
+========================
+
+.. c:function:: int nand_init_data_interface(struct nand_chip *chip)
+
+    find the best data interface and timings
+
+    :param struct nand_chip \*chip:
+        The NAND chip
+
+.. _`nand_init_data_interface.description`:
+
+Description
+-----------
+
+Find the best data interface and NAND timings supported by the chip
+and the driver.
+First tries to retrieve supported timing modes from ONFI information,
+and if the NAND chip does not support ONFI, relies on the
+->onfi_timing_mode_default specified in the nand_ids table. After this
+function nand_chip->data_interface is initialized with the best timing mode
+available.
+
+Returns 0 for success or negative error code otherwise.
+
+.. _`nand_reset`:
+
+nand_reset
+==========
+
+.. c:function:: int nand_reset(struct nand_chip *chip)
+
+    Reset and initialize a NAND device
+
+    :param struct nand_chip \*chip:
+        The NAND chip
+
+.. _`nand_reset.description`:
+
+Description
+-----------
+
+Returns 0 for success or negative error code otherwise
+
 .. _`__nand_unlock`:
 
 __nand_unlock
@@ -1868,6 +1960,18 @@ This fills out all the uninitialized function pointers with the defaults.
 The flash ID is read and the mtd/chip structures are filled with the
 appropriate values.
 
+.. _`nand_cleanup`:
+
+nand_cleanup
+============
+
+.. c:function:: void nand_cleanup(struct nand_chip *chip)
+
+    [NAND Interface] Free resources held by the NAND device
+
+    :param struct nand_chip \*chip:
+        NAND chip object
+
 .. _`nand_release`:
 
 nand_release
@@ -1875,7 +1979,7 @@ nand_release
 
 .. c:function:: void nand_release(struct mtd_info *mtd)
 
-    [NAND Interface] Free resources held by the NAND device
+    [NAND Interface] Unregister the MTD device and free resources held by the NAND device
 
     :param struct mtd_info \*mtd:
         MTD device structure

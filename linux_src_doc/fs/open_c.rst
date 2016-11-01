@@ -27,9 +27,9 @@ finish_open
 Description
 -----------
 
-This can be used to finish opening a file passed to i_op->\ :c:func:`atomic_open`\ .
+This can be used to finish opening a file passed to i_op->atomic_open().
 
-If the open callback is set to NULL, then the standard f_op->\ :c:func:`open`\ 
+If the open callback is set to NULL, then the standard f_op->open()
 filesystem callback is substituted.
 
 NB: the dentry reference is \_not\_ consumed.  If, for example, the dentry is
@@ -37,7 +37,7 @@ the return value of \ :c:func:`d_splice_alias`\ , then the caller needs to perfo
 on it after \ :c:func:`finish_open`\ .
 
 On successful return \ ``file``\  is a fully instantiated open file.  After this, if
-an error occurs in ->\ :c:func:`atomic_open`\ , it needs to clean up with \ :c:func:`fput`\ .
+an error occurs in ->atomic_open(), it needs to clean up with \ :c:func:`fput`\ .
 
 Returns zero on success or -errno if the open failed.
 
@@ -48,25 +48,25 @@ finish_no_open
 
 .. c:function:: int finish_no_open(struct file *file, struct dentry *dentry)
 
-    finish ->\ :c:func:`atomic_open`\  without opening the file
+    finish ->atomic_open() without opening the file
 
     :param struct file \*file:
         file pointer
 
     :param struct dentry \*dentry:
-        dentry or NULL (as returned from ->\ :c:func:`lookup`\ )
+        dentry or NULL (as returned from ->lookup())
 
 .. _`finish_no_open.description`:
 
 Description
 -----------
 
-This can be used to set the result of a successful lookup in ->\ :c:func:`atomic_open`\ .
+This can be used to set the result of a successful lookup in ->atomic_open().
 
 NB: unlike \ :c:func:`finish_open`\  this function does consume the dentry reference and
 the caller need not \ :c:func:`dput`\  it.
 
-Returns "1" which must be the return value of ->\ :c:func:`atomic_open`\  after having
+Returns "1" which must be the return value of ->atomic_open() after having
 called this function.
 
 .. _`vfs_open`:

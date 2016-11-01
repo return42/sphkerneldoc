@@ -398,18 +398,6 @@ Description
 Returns true if the channels supports reporting values for the given info
 attribute type, false otherwise.
 
-.. _`iio_get_time_ns`:
-
-iio_get_time_ns
-===============
-
-.. c:function:: s64 iio_get_time_ns( void)
-
-    utility function to get a time stamp for events etc
-
-    :param  void:
-        no arguments
-
 .. _`iio_info`:
 
 struct iio_info
@@ -609,6 +597,7 @@ Definition
         bool scan_timestamp;
         unsigned scan_index_timestamp;
         struct iio_trigger *trig;
+        bool trig_readonly;
         struct iio_poll_func *pollfunc;
         struct iio_poll_func *pollfunc_event;
         struct iio_chan_spec const *channels;
@@ -617,6 +606,7 @@ Definition
         struct attribute_group chan_attr_group;
         const char *name;
         const struct iio_info *info;
+        clockid_t clock_id;
         struct mutex info_exist_lock;
         const struct iio_buffer_setup_ops *setup_ops;
         struct cdev chrdev;
@@ -682,6 +672,10 @@ scan_index_timestamp
 
 trig
     [INTERN] current device trigger (buffer modes)
+    \ ``trig_readonly``\        [INTERN] mark the current trigger immutable
+
+trig_readonly
+    *undescribed*
 
 pollfunc
     [DRIVER] function run on trigger being received
@@ -707,6 +701,9 @@ name
 
 info
     [DRIVER] callbacks and constant info from driver
+
+clock_id
+    [INTERN] timestamping clock posix identifier
 
 info_exist_lock
     [INTERN] lock to prevent use during removal
@@ -743,6 +740,18 @@ iio_device_put
     reference counted deallocation of struct device
 
     :param struct iio_dev \*indio_dev:
+        IIO device structure containing the device
+
+.. _`iio_device_get_clock`:
+
+iio_device_get_clock
+====================
+
+.. c:function:: clockid_t iio_device_get_clock(const struct iio_dev *indio_dev)
+
+    Retrieve current timestamping clock for the device
+
+    :param const struct iio_dev \*indio_dev:
         IIO device structure containing the device
 
 .. _`dev_to_iio_dev`:

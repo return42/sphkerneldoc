@@ -21,7 +21,7 @@ Description
 This is called when either policy gets assigned to an stm device or an
 stm_source device gets linked to an stm device.
 
-This grabs device's reference (\ :c:func:`get_device`\ ) and module reference, both
+This grabs device's reference (get_device()) and module reference, both
 of which the calling path needs to make sure to drop with \ :c:func:`stm_put_device`\ .
 
 .. _`stm_find_device.return`:

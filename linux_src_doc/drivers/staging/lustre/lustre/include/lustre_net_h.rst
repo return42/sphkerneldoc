@@ -59,6 +59,13 @@ of ?_NBUFS is added to the pool.
 Messages larger than ?_MAXREQSIZE are dropped.  Request buffers are
 considered full when less than ?_MAXREQSIZE is left in them.
 
+.. _`ost_maxreqsize`:
+
+OST_MAXREQSIZE
+==============
+
+.. c:function::  OST_MAXREQSIZE()
+
 .. _`nrs_pol_desc_compat_t`:
 
 nrs_pol_desc_compat_t
@@ -107,12 +114,12 @@ ptlrpc_req_interpret
 lustre_req_swabbed
 ==================
 
-.. c:function:: int lustre_req_swabbed(struct ptlrpc_request *req, int index)
+.. c:function:: int lustre_req_swabbed(struct ptlrpc_request *req, size_t index)
 
     :param struct ptlrpc_request \*req:
         *undescribed*
 
-    :param int index:
+    :param size_t index:
         *undescribed*
 
 .. _`lustre_rep_swabbed`:
@@ -120,12 +127,12 @@ lustre_req_swabbed
 lustre_rep_swabbed
 ==================
 
-.. c:function:: int lustre_rep_swabbed(struct ptlrpc_request *req, int index)
+.. c:function:: int lustre_rep_swabbed(struct ptlrpc_request *req, size_t index)
 
     :param struct ptlrpc_request \*req:
         *undescribed*
 
-    :param int index:
+    :param size_t index:
         *undescribed*
 
 .. _`ptlrpc_req_need_swab`:
@@ -153,12 +160,12 @@ ptlrpc_rep_need_swab
 lustre_set_req_swabbed
 ======================
 
-.. c:function:: void lustre_set_req_swabbed(struct ptlrpc_request *req, int index)
+.. c:function:: void lustre_set_req_swabbed(struct ptlrpc_request *req, size_t index)
 
     :param struct ptlrpc_request \*req:
         *undescribed*
 
-    :param int index:
+    :param size_t index:
         *undescribed*
 
 .. _`lustre_set_rep_swabbed`:
@@ -166,12 +173,12 @@ lustre_set_req_swabbed
 lustre_set_rep_swabbed
 ======================
 
-.. c:function:: void lustre_set_rep_swabbed(struct ptlrpc_request *req, int index)
+.. c:function:: void lustre_set_rep_swabbed(struct ptlrpc_request *req, size_t index)
 
     :param struct ptlrpc_request \*req:
         *undescribed*
 
-    :param int index:
+    :param size_t index:
         *undescribed*
 
 .. _`ptlrpc_phase2str`:
@@ -294,7 +301,7 @@ Description
 \retval false The policy is not compatible with the service
 \retval true  The policy is compatible with the service
 
-\see ptlrpc_nrs_pol_desc::\ :c:func:`pd_compat`\ 
+\see ptlrpc_nrs_pol_desc::pd_compat()
 
 .. _`request_out_callback`:
 
@@ -374,7 +381,7 @@ ptlrpc_connect_import
 ptlrpc_buf_need_swab
 ====================
 
-.. c:function:: int ptlrpc_buf_need_swab(struct ptlrpc_request *req, const int inout, int index)
+.. c:function:: int ptlrpc_buf_need_swab(struct ptlrpc_request *req, const int inout, u32 index)
 
     :param struct ptlrpc_request \*req:
         *undescribed*
@@ -382,7 +389,7 @@ ptlrpc_buf_need_swab
     :param const int inout:
         *undescribed*
 
-    :param int index:
+    :param u32 index:
         *undescribed*
 
 .. _`ptlrpc_buf_need_swab.description`:

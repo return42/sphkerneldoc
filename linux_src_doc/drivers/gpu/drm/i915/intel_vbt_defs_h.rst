@@ -34,7 +34,7 @@ Members
 -------
 
 signature
-    VBT signature, always starts with "\ ``$VBT``\ "
+    VBT signature, always starts with "$VBT"
 
 version
     Version of this structure

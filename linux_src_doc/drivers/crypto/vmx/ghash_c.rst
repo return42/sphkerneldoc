@@ -33,7 +33,7 @@ Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 Author
 ------
 
-Marcelo Henrique Cerri <mhcerri\ ``br``\ .ibm.com>
+Marcelo Henrique Cerri <mhcerri@br.ibm.com>
 
 .. This file was automatic generated / don't edit.
 

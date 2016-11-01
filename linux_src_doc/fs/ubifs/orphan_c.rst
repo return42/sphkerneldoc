@@ -305,7 +305,7 @@ insert_dead_orphan
 Description
 -----------
 
-This function is a helper to the '\ :c:func:`do_kill_orphans`\ ' function. The orphan
+This function is a helper to the 'do_kill_orphans()' function. The orphan
 must be kept until the next commit, so it is added to the rb-tree and the
 deletion list.
 
@@ -338,7 +338,7 @@ do_kill_orphans
 Description
 -----------
 
-This function is a helper to the '\ :c:func:`kill_orphans`\ ' function. It goes through
+This function is a helper to the 'kill_orphans()' function. It goes through
 every orphan node in a LEB and for every inode number recorded, removes
 all keys for that inode from the TNC.
 

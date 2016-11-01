@@ -1,17 +1,43 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_guc_submission.c
 
+.. _`i915_guc_wq_reserve`:
+
+i915_guc_wq_reserve
+===================
+
+.. c:function:: int i915_guc_wq_reserve(struct drm_i915_gem_request *request)
+
+    reserve space in the GuC's workqueue
+
+    :param struct drm_i915_gem_request \*request:
+        request associated with the commands
+
+.. _`i915_guc_wq_reserve.return`:
+
+Return
+------
+
+0 if space is available
+             -EAGAIN if space is not currently available
+
+This function must be called (and must return 0) before a request
+is submitted to the GuC via \ :c:func:`i915_guc_submit`\  below. Once a result
+of 0 has been returned, it must be balanced by a corresponding
+call to \ :c:func:`submit`\ .
+
+Reservation allows the caller to determine in advance that space
+will be available for the next submission before committing resources
+to it, and helps avoid late failures with complicated recovery paths.
+
 .. _`i915_guc_submit`:
 
 i915_guc_submit
 ===============
 
-.. c:function:: int i915_guc_submit(struct i915_guc_client *client, struct drm_i915_gem_request *rq)
+.. c:function:: void i915_guc_submit(struct drm_i915_gem_request *rq)
 
     Submit commands through GuC
-
-    :param struct i915_guc_client \*client:
-        the guc client where commands will go through
 
     :param struct drm_i915_gem_request \*rq:
         request associated with the commands
@@ -21,70 +47,75 @@ i915_guc_submit
 Return
 ------
 
-0 if succeed
+0 on success, otherwise an errno.
+             (Note: nonzero really shouldn't happen!)
 
-.. _`gem_allocate_guc_obj`:
+The caller must have already called \ :c:func:`i915_guc_wq_reserve`\  above with
+a result of 0 (success), guaranteeing that there is space in the work
+queue for the new request, so enqueuing the item cannot fail.
 
-gem_allocate_guc_obj
-====================
+Bad Things Will Happen if the caller violates this protocol e.g. calls
+\ :c:func:`submit`\  when \ :c:func:`_reserve`\  says there's no space, or calls \ :c:func:`_submit`\ 
+a different number of times from (successful) calls to \ :c:func:`_reserve`\ .
 
-.. c:function:: struct drm_i915_gem_object *gem_allocate_guc_obj(struct drm_device *dev, u32 size)
+The only error here arises if the doorbell hardware isn't functioning
+as expected, which really shouln't happen.
 
-    Allocate gem object for GuC usage
+.. _`guc_allocate_vma`:
 
-    :param struct drm_device \*dev:
-        drm device
+guc_allocate_vma
+================
+
+.. c:function:: struct i915_vma *guc_allocate_vma(struct intel_guc *guc, u32 size)
+
+    Allocate a GGTT VMA for GuC usage
+
+    :param struct intel_guc \*guc:
+        the guc
 
     :param u32 size:
-        size of object
+        size of area to allocate (both virtual space and memory)
 
-.. _`gem_allocate_guc_obj.description`:
+.. _`guc_allocate_vma.description`:
 
 Description
 -----------
 
-This is a wrapper to create a gem obj. In order to use it inside GuC, the
-object needs to be pinned lifetime. Also we must pin it to gtt space other
-than [0, GUC_WOPCM_TOP) because this range is reserved inside GuC.
+This is a wrapper to create an object for use with the GuC. In order to
+use it inside the GuC, an object needs to be pinned lifetime, so we allocate
+both some backing storage and a range inside the Global GTT. We must pin
+it in the GGTT somewhere other than than [0, GUC_WOPCM_TOP) because that
+range is reserved inside GuC.
 
-.. _`gem_allocate_guc_obj.return`:
+.. _`guc_allocate_vma.return`:
 
 Return
 ------
 
-A drm_i915_gem_object if successful, otherwise NULL.
-
-.. _`gem_release_guc_obj`:
-
-gem_release_guc_obj
-===================
-
-.. c:function:: void gem_release_guc_obj(struct drm_i915_gem_object *obj)
-
-    Release gem object allocated for GuC usage
-
-    :param struct drm_i915_gem_object \*obj:
-        gem obj to be released
+A i915_vma if successful, otherwise an ERR_PTR.
 
 .. _`guc_client_alloc`:
 
 guc_client_alloc
 ================
 
-.. c:function:: struct i915_guc_client *guc_client_alloc(struct drm_device *dev, uint32_t priority, struct intel_context *ctx)
+.. c:function:: struct i915_guc_client *guc_client_alloc(struct drm_i915_private *dev_priv, uint32_t engines, uint32_t priority, struct i915_gem_context *ctx)
 
     Allocate an i915_guc_client
 
-    :param struct drm_device \*dev:
-        drm device
+    :param struct drm_i915_private \*dev_priv:
+        driver private data structure
+
+    :param uint32_t engines:
+        The set of engines to enable for this client
 
     :param uint32_t priority:
-        four levels priority \_CRITICAL, \_HIGH, \_NORMAL and \_LOW
+        four levels priority _CRITICAL, _HIGH, _NORMAL and _LOW
         The kernel client to replace ExecList submission is created with
         NORMAL priority. Priority of a client for scheduler can be HIGH,
         while a preemption context can use CRITICAL.
 
-    :param struct intel_context \*ctx:
+    :param struct i915_gem_context \*ctx:
         the context that owns the client (we use the default render
         context)
 

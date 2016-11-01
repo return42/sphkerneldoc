@@ -91,7 +91,7 @@ size
     size of port region
 
 porttype
-    type of port (see UIO_PORT\_\* below)
+    type of port (see UIO_PORT_* below)
 
 portio
     for use by the UIO core only.

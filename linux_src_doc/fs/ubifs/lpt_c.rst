@@ -913,7 +913,7 @@ lpt_init_wr
 Description
 -----------
 
-'\ :c:func:`lpt_init_rd`\ ' must have been called already.
+'lpt_init_rd()' must have been called already.
 
 This function returns \ ``0``\  on success and a negative error code on failure.
 

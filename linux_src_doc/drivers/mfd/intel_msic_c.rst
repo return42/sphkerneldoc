@@ -107,7 +107,7 @@ intel_msic_reg_update
         value to write to the register
 
     :param u8 mask:
-        specifies which of the bits are updated (\ ``0``\  = don't update,
+        specifies which of the bits are updated (%0 = don't update,
         \ ``1``\  = update)
 
 .. _`intel_msic_reg_update.description`:

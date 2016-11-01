@@ -18,7 +18,7 @@ fsl_ehci_drv_remove
 Context
 -------
 
-!\ :c:func:`in_interrupt`\ 
+!in_interrupt()
 
 .. _`fsl_ehci_drv_remove.description`:
 

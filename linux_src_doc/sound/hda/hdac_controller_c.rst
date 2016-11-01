@@ -91,6 +91,25 @@ Description
 
 Returns zero if a value is read, or a negative error code.
 
+.. _`snd_hdac_bus_parse_capabilities`:
+
+snd_hdac_bus_parse_capabilities
+===============================
+
+.. c:function:: int snd_hdac_bus_parse_capabilities(struct hdac_bus *bus)
+
+    parse capability structure
+
+    :param struct hdac_bus \*bus:
+        the pointer to bus object
+
+.. _`snd_hdac_bus_parse_capabilities.description`:
+
+Description
+-----------
+
+Returns 0 if successful, or a negative error code.
+
 .. _`snd_hdac_bus_enter_link_reset`:
 
 snd_hdac_bus_enter_link_reset

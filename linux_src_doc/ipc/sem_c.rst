@@ -257,10 +257,10 @@ do_smart_update
 Description
 -----------
 
-\ :c:func:`do_smart_update`\  does the required calls to update_queue and wakeup_zero,
+do_smart_update() does the required calls to update_queue and wakeup_zero,
 based on the actual changes that were performed on the semaphore array.
 Note that the function does not do the actual wake-up: the caller is
-responsible for calling wake_up_sem_queue_do(\ ``pt``\ ).
+responsible for calling wake_up_sem_queue_do(@pt).
 It is safe to perform this call after dropping all locks.
 
 .. _`find_alloc_undo`:

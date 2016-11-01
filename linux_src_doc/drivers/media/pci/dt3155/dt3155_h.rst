@@ -22,7 +22,6 @@ Definition
         struct video_device vdev;
         struct pci_dev *pdev;
         struct vb2_queue vidq;
-        struct vb2_alloc_ctx *alloc_ctx;
         struct vb2_v4l2_buffer *curr_buf;
         struct mutex mux;
         struct list_head dmaq;
@@ -53,9 +52,6 @@ pdev
 
 vidq
     vb2_queue structure
-
-alloc_ctx
-    dma_contig allocation context
 
 curr_buf
     pointer to curren buffer

@@ -31,20 +31,20 @@ and may be nested.
 
 Note that all CPUs must agree that the grace period extended beyond
 all pre-existing RCU read-side critical section.  On systems with more
-than one CPU, this means that when "\ :c:func:`func`\ " is invoked, each CPU is
+than one CPU, this means that when "func()" is invoked, each CPU is
 guaranteed to have executed a full memory barrier since the end of its
 last RCU read-side critical section whose beginning preceded the call
 to \ :c:func:`call_rcu`\ .  It also means that each CPU executing an RCU read-side
-critical section that continues beyond the start of "\ :c:func:`func`\ " must have
+critical section that continues beyond the start of "func()" must have
 executed a memory barrier after the \ :c:func:`call_rcu`\  but before the beginning
 of that RCU read-side critical section.  Note that these guarantees
 include CPUs that are offline, idle, or executing in user mode, as
 well as CPUs that are executing in the kernel.
 
 Furthermore, if CPU A invoked \ :c:func:`call_rcu`\  and CPU B invoked the
-resulting RCU callback function "\ :c:func:`func`\ ", then both CPU A and CPU B are
+resulting RCU callback function "func()", then both CPU A and CPU B are
 guaranteed to execute a full memory barrier during the time interval
-between the call to \ :c:func:`call_rcu`\  and the invocation of "\ :c:func:`func`\ " -- even
+between the call to \ :c:func:`call_rcu`\  and the invocation of "func()" -- even
 if CPU A and CPU B are the same CPU (but again only if the system has
 more than one CPU).
 
@@ -141,7 +141,7 @@ on concurrent RCU and RCU-bh grace periods.  Waiting on a give SRCU
 domain requires you to write a wrapper function for that SRCU domain's
 \ :c:func:`call_srcu`\  function, supplying the corresponding srcu_struct.
 
-If Tiny RCU, tell \\ :c:func:`_wait_rcu_gp`\  not to bother waiting for RCU
+If Tiny RCU, tell \_wait_rcu_gp() not to bother waiting for RCU
 or RCU-bh, given that anywhere \ :c:func:`synchronize_rcu_mult`\  can be called
 is automatically a grace period.
 
@@ -206,13 +206,14 @@ in the inner idle loop.
 This macro provides the way out
 -------------------------------
 
-RCU_NONIDLE(\ :c:func:`do_something_with_RCU`\ )
-will tell RCU that it needs to pay attending, invoke its argument
-(in this example, a call to the \ :c:func:`do_something_with_RCU`\  function),
+RCU_NONIDLE(do_something_with_RCU())
+will tell RCU that it needs to pay attention, invoke its argument
+(in this example, calling the \ :c:func:`do_something_with_RCU`\  function),
 and then tell RCU to go back to ignoring this CPU.  It is permissible
-to nest \ :c:func:`RCU_NONIDLE`\  wrappers, but the nesting level is currently
-quite limited.  If deeper nesting is required, it will be necessary
-to adjust DYNTICK_TASK_NESTING_VALUE accordingly.
+to nest \ :c:func:`RCU_NONIDLE`\  wrappers, but not indefinitely (but the limit is
+on the order of a million or so, even on 32-bit systems).  It is
+not legal to block within \ :c:func:`RCU_NONIDLE`\ , nor is it permissible to
+transfer control either into or out of \ :c:func:`RCU_NONIDLE`\ 's statement.
 
 .. _`cond_resched_rcu_qs`:
 
@@ -387,7 +388,7 @@ dereference will take place are correct.  Typically the conditions
 indicate the various locking conditions that should be held at that
 point.  The check should return true if the conditions are satisfied.
 An implicit check for being in an RCU read-side critical section
-(\ :c:func:`rcu_read_lock`\ ) is included.
+(rcu_read_lock()) is included.
 
 .. _`rcu_dereference_check.for-example`:
 
@@ -395,7 +396,7 @@ For example
 -----------
 
 
-bar = rcu_dereference_check(foo->bar, lockdep_is_held(\ :c:type:`foo->lock <foo>`\ ));
+bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock));
 
 could be used to indicate to lockdep that foo->bar may only be dereferenced
 if either \ :c:func:`rcu_read_lock`\  is held, or that the lock required to replace
@@ -410,8 +411,8 @@ target struct
 -------------
 
 
-bar = rcu_dereference_check(foo->bar, lockdep_is_held(\ :c:type:`foo->lock <foo>`\ ) \|\|
-atomic_read(\ :c:type:`foo->usage <foo>`\ ) == 0);
+bar = rcu_dereference_check(foo->bar, lockdep_is_held(&foo->lock) \|\|
+atomic_read(&foo->usage) == 0);
 
 Inserts memory barriers on architectures that require them
 (currently only the Alpha), prevents the compiler from refetching
@@ -676,7 +677,7 @@ Unfortunately, this function acquires the scheduler's runqueue and
 priority-inheritance spinlocks.  This means that deadlock could result
 if the caller of \ :c:func:`rcu_read_unlock`\  already holds one of these locks or
 any lock that is ever acquired while holding them; or any lock which
-can be taken from interrupt context because \ :c:func:`rcu_boost`\ ->\ :c:func:`rt_mutex_lock`\ 
+can be taken from interrupt context because \ :c:func:`rcu_boost`\ ->rt_mutex_lock()
 does not disable irqs while taking ->wait_lock.
 
 That said, RCU readers are never priority boosted unless they were
@@ -869,7 +870,7 @@ encodes the offset of the rcu_head structure within the base structure.
 Because the functions are not allowed in the low-order 4096 bytes of
 kernel virtual memory, offsets up to 4095 bytes can be accommodated.
 If the offset is larger than 4095 bytes, a compile-time error will
-be generated in \\ :c:func:`__kfree_rcu`\ .  If this error is triggered, you can
+be generated in \__kfree_rcu().  If this error is triggered, you can
 either fall back to use of \ :c:func:`call_rcu`\  or rearrange the structure to
 position the rcu_head structure into the first 4096 bytes.
 

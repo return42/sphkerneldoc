@@ -19,7 +19,7 @@ Description
 -----------
 
 Copyright (C) 2015 Intel Corporation
-Mian Yousaf Kaukab <yousaf.kaukab\ ``intel``\ .com>
+Mian Yousaf Kaukab <yousaf.kaukab@intel.com>
 
 .. _`is_enabled.this-program-is-free-software`:
 

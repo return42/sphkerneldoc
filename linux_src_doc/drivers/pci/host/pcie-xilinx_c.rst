@@ -23,7 +23,8 @@ Definition
         unsigned long msi_pages;
         u8 root_busno;
         struct device *dev;
-        struct irq_domain *irq_domain;
+        struct irq_domain *msi_domain;
+        struct irq_domain *leg_domain;
         struct list_head resources;
     }
 
@@ -47,8 +48,11 @@ root_busno
 dev
     Device pointer
 
-irq_domain
-    IRQ domain pointer
+msi_domain
+    MSI IRQ domain pointer
+
+leg_domain
+    Legacy IRQ domain pointer
 
 resources
     Bus Resources
@@ -130,12 +134,12 @@ xilinx_pcie_destroy_msi
 xilinx_pcie_assign_msi
 ======================
 
-.. c:function:: int xilinx_pcie_assign_msi(struct xilinx_pcie_port *port)
+.. c:function:: int xilinx_pcie_assign_msi( void)
 
     Allocate MSI number
 
-    :param struct xilinx_pcie_port \*port:
-        PCIe port structure
+    :param  void:
+        no arguments
 
 .. _`xilinx_pcie_assign_msi.return`:
 
@@ -268,18 +272,6 @@ Return
 
 IRQ_HANDLED on success and IRQ_NONE on failure
 
-.. _`xilinx_pcie_free_irq_domain`:
-
-xilinx_pcie_free_irq_domain
-===========================
-
-.. c:function:: void xilinx_pcie_free_irq_domain(struct xilinx_pcie_port *port)
-
-    Free IRQ domain
-
-    :param struct xilinx_pcie_port \*port:
-        PCIe port information
-
 .. _`xilinx_pcie_init_irq_domain`:
 
 xilinx_pcie_init_irq_domain
@@ -348,25 +340,6 @@ Return
 ------
 
 '0' on success and error value on failure
-
-.. _`xilinx_pcie_remove`:
-
-xilinx_pcie_remove
-==================
-
-.. c:function:: int xilinx_pcie_remove(struct platform_device *pdev)
-
-    Remove function
-
-    :param struct platform_device \*pdev:
-        Platform device pointer
-
-.. _`xilinx_pcie_remove.return`:
-
-Return
-------
-
-'0' always
 
 .. This file was automatic generated / don't edit.
 

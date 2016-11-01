@@ -18,7 +18,7 @@ hlist_nulls_del_init_rcu
 Note
 ----
 
-\ :c:func:`hlist_nulls_unhashed`\  on the node return true after this. It is
+hlist_nulls_unhashed() on the node return true after this. It is
 useful for RCU based read lockfree traversal if the writer side
 must know if the list entry is still hashed or already unhashed.
 
@@ -51,7 +51,7 @@ hlist_nulls_del_rcu
 Note
 ----
 
-\ :c:func:`hlist_nulls_unhashed`\  on entry does not return true after this,
+hlist_nulls_unhashed() on entry does not return true after this,
 the entry is in an undefined state. It is useful for RCU based
 lockfree traversal.
 

@@ -40,57 +40,6 @@ Description
 This function is called to change the duplex setting after auto negotiation
 is done by the PHY.
 
-.. _`arc_emac_get_settings`:
-
-arc_emac_get_settings
-=====================
-
-.. c:function:: int arc_emac_get_settings(struct net_device *ndev, struct ethtool_cmd *cmd)
-
-    Get PHY settings.
-
-    :param struct net_device \*ndev:
-        Pointer to net_device structure.
-
-    :param struct ethtool_cmd \*cmd:
-        Pointer to ethtool_cmd structure.
-
-.. _`arc_emac_get_settings.description`:
-
-Description
------------
-
-This implements ethtool command for getting PHY settings. If PHY could
-not be found, the function returns -ENODEV. This function calls the
-relevant PHY ethtool API to get the PHY settings.
-Issue "ethtool ethX" under linux prompt to execute this function.
-
-.. _`arc_emac_set_settings`:
-
-arc_emac_set_settings
-=====================
-
-.. c:function:: int arc_emac_set_settings(struct net_device *ndev, struct ethtool_cmd *cmd)
-
-    Set PHY settings as passed in the argument.
-
-    :param struct net_device \*ndev:
-        Pointer to net_device structure.
-
-    :param struct ethtool_cmd \*cmd:
-        Pointer to ethtool_cmd structure.
-
-.. _`arc_emac_set_settings.description`:
-
-Description
------------
-
-This implements ethtool command for setting various PHY settings. If PHY
-could not be found, the function returns -ENODEV. This function calls the
-relevant PHY ethtool API to set the PHY.
-Issue e.g. "ethtool -s ethX speed 1000" under linux prompt to execute this
-function.
-
 .. _`arc_emac_get_drvinfo`:
 
 arc_emac_get_drvinfo

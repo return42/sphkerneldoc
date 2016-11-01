@@ -24,7 +24,7 @@ lbtf_cmd_copyback
 Description
 -----------
 
-\ ``priv``\        A pointer to struct lbtf_private structure
+@priv       A pointer to struct lbtf_private structure
 \ ``extra``\       A pointer to the original command structure for which
 'resp' is a response
 \ ``resp``\        A pointer to the command response
@@ -53,7 +53,7 @@ lbtf_update_hw_spec
 Description
 -----------
 
-\ ``priv``\        A pointer to struct lbtf_private structure
+@priv       A pointer to struct lbtf_private structure
 
 .. _`lbtf_update_hw_spec.return`:
 
@@ -82,7 +82,7 @@ lbtf_set_channel
 Description
 -----------
 
-\ ``priv``\        A pointer to struct lbtf_private structure
+@priv       A pointer to struct lbtf_private structure
 \ ``channel``\     The desired channel, or 0 to clear a locked channel
 
 .. _`lbtf_set_channel.return`:
@@ -124,7 +124,7 @@ lbtf_allocate_cmd_buffer
 Description
 -----------
 
-\ ``priv``\        A pointer to struct lbtf_private structure
+@priv       A pointer to struct lbtf_private structure
 
 .. _`lbtf_allocate_cmd_buffer.return`:
 
@@ -150,7 +150,7 @@ lbtf_free_cmd_buffer
 Description
 -----------
 
-\ ``priv``\        A pointer to struct lbtf_private structure
+@priv       A pointer to struct lbtf_private structure
 
 .. _`lbtf_free_cmd_buffer.return`:
 
@@ -176,7 +176,7 @@ lbtf_get_cmd_ctrl_node
 Description
 -----------
 
-\ ``priv``\                A pointer to struct lbtf_private structure
+@priv               A pointer to struct lbtf_private structure
 
 .. _`lbtf_get_cmd_ctrl_node.return`:
 
@@ -202,7 +202,7 @@ lbtf_execute_next_command
 Description
 -----------
 
-\ ``priv``\      A pointer to struct lbtf_private structure
+@priv     A pointer to struct lbtf_private structure
 
 .. _`lbtf_execute_next_command.return`:
 

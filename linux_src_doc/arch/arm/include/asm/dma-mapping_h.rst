@@ -6,7 +6,7 @@
 arm_dma_alloc
 =============
 
-.. c:function:: void *arm_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle, gfp_t gfp, struct dma_attrs *attrs)
+.. c:function:: void *arm_dma_alloc(struct device *dev, size_t size, dma_addr_t *handle, gfp_t gfp, unsigned long attrs)
 
     allocate consistent memory for DMA
 
@@ -22,7 +22,7 @@ arm_dma_alloc
     :param gfp_t gfp:
         *undescribed*
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optinal attributes that specific mapping properties
 
 .. _`arm_dma_alloc.description`:
@@ -39,7 +39,7 @@ to be the device-viewed address.
 arm_dma_free
 ============
 
-.. c:function:: void arm_dma_free(struct device *dev, size_t size, void *cpu_addr, dma_addr_t handle, struct dma_attrs *attrs)
+.. c:function:: void arm_dma_free(struct device *dev, size_t size, void *cpu_addr, dma_addr_t handle, unsigned long attrs)
 
     free memory allocated by arm_dma_alloc
 
@@ -55,7 +55,7 @@ arm_dma_free
     :param dma_addr_t handle:
         device-view address returned from dma_alloc_coherent
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optinal attributes that specific mapping properties
 
 .. _`arm_dma_free.description`:
@@ -74,7 +74,7 @@ during and after this call executing are illegal.
 arm_dma_mmap
 ============
 
-.. c:function:: int arm_dma_mmap(struct device *dev, struct vm_area_struct *vma, void *cpu_addr, dma_addr_t dma_addr, size_t size, struct dma_attrs *attrs)
+.. c:function:: int arm_dma_mmap(struct device *dev, struct vm_area_struct *vma, void *cpu_addr, dma_addr_t dma_addr, size_t size, unsigned long attrs)
 
     map a coherent DMA allocation into user space
 
@@ -93,7 +93,7 @@ arm_dma_mmap
     :param size_t size:
         size of memory originally requested in dma_alloc_coherent
 
-    :param struct dma_attrs \*attrs:
+    :param unsigned long attrs:
         optinal attributes that specific mapping properties
 
 .. _`arm_dma_mmap.description`:

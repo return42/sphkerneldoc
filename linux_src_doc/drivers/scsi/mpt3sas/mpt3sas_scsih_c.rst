@@ -214,7 +214,7 @@ Description
 -----------
 
 Used for sending internal scsi commands to devices within this module.
-Refer to \\ :c:func:`_scsi_send_scsi_io`\ .
+Refer to \_scsi_send_scsi_io().
 
 .. _`_scsih_set_debug_level`:
 
@@ -394,7 +394,7 @@ to scsi-ml or sas transport, this purpose is for persistent boot device.
 There are primary, alternate, and current entries in bios page 2. The order
 priority is primary, alternate, then current.  This routine saves
 the corresponding device object and is_raid flag in the ioc object.
-The saved data to be used later in \\ :c:func:`_scsih_probe_boot_devices`\ .
+The saved data to be used later in \_scsih_probe_boot_devices().
 
 .. _`mpt3sas_get_sdev_by_addr`:
 
@@ -1355,7 +1355,7 @@ During taskmangement request, we need to freeze the device queue.
 mpt3sas_scsih_issue_tm
 ======================
 
-.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, uint channel, uint id, uint lun, u8 type, u16 smid_task, ulong timeout, enum mutex_type m_type)
+.. c:function:: int mpt3sas_scsih_issue_tm(struct MPT3SAS_ADAPTER *ioc, u16 handle, uint channel, uint id, uint lun, u8 type, u16 smid_task, ulong timeout)
 
     main routine for sending tm requests
 
@@ -1382,9 +1382,6 @@ mpt3sas_scsih_issue_tm
 
     :param ulong timeout:
         timeout in seconds
-
-    :param enum mutex_type m_type:
-        TM_MUTEX_ON or TM_MUTEX_OFF
 
 .. _`mpt3sas_scsih_issue_tm.context`:
 
@@ -3831,7 +3828,7 @@ Description
 
 If specified in bios page 2, this routine reports the 1st
 device scsi-ml or sas transport for persistent boot device
-purposes.  Please refer to function \\ :c:func:`_scsih_determine_boot_device`\ 
+purposes.  Please refer to function \_scsih_determine_boot_device()
 
 .. _`_scsih_probe_raid`:
 

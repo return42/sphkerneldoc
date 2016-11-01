@@ -162,5 +162,62 @@ Description
 
 Free iio_trigger allocated with \ :c:func:`devm_iio_trigger_alloc`\ .
 
+.. _`devm_iio_trigger_register`:
+
+devm_iio_trigger_register
+=========================
+
+.. c:function:: int devm_iio_trigger_register(struct device *dev, struct iio_trigger *trig_info)
+
+    Resource-managed \ :c:func:`iio_trigger_register`\ 
+
+    :param struct device \*dev:
+        device this trigger was allocated for
+
+    :param struct iio_trigger \*trig_info:
+        trigger to register
+
+.. _`devm_iio_trigger_register.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`iio_trigger_register`\ .  The IIO trigger registered with this
+function is automatically unregistered on driver detach. This function
+calls \ :c:func:`iio_trigger_register`\  internally. Refer to that function for more
+information.
+
+If an iio_trigger registered with this function needs to be unregistered
+separately, \ :c:func:`devm_iio_trigger_unregister`\  must be used.
+
+.. _`devm_iio_trigger_register.return`:
+
+Return
+------
+
+0 on success, negative error number on failure.
+
+.. _`devm_iio_trigger_unregister`:
+
+devm_iio_trigger_unregister
+===========================
+
+.. c:function:: void devm_iio_trigger_unregister(struct device *dev, struct iio_trigger *trig_info)
+
+    Resource-managed \ :c:func:`iio_trigger_unregister`\ 
+
+    :param struct device \*dev:
+        device this iio_trigger belongs to
+
+    :param struct iio_trigger \*trig_info:
+        the trigger associated with the device
+
+.. _`devm_iio_trigger_unregister.description`:
+
+Description
+-----------
+
+Unregister trigger registered with \ :c:func:`devm_iio_trigger_register`\ .
+
 .. This file was automatic generated / don't edit.
 

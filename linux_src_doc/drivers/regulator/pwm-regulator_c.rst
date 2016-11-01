@@ -1,12 +1,12 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/regulator/pwm-regulator.c
 
-.. _`pwm_regulator_get_voltage_sel`:
+.. _`pwm_regulator_init_state`:
 
-pwm_regulator_get_voltage_sel
-=============================
+pwm_regulator_init_state
+========================
 
-.. c:function:: int pwm_regulator_get_voltage_sel(struct regulator_dev *rdev)
+.. c:function:: void pwm_regulator_init_state(struct regulator_dev *rdev)
 
     backs
 

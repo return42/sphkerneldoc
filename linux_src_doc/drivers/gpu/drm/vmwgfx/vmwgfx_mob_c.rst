@@ -21,8 +21,8 @@ vmw_mob_assign_ppn
 Description
 -----------
 
-Assigns a value to a page table entry pointed to by \*\ ``addr``\  and increments
-\*\ ``addr``\  according to the page table entry size.
+Assigns a value to a page table entry pointed to by \*@addr and increments
+\*@addr according to the page table entry size.
 
 .. This file was automatic generated / don't edit.
 

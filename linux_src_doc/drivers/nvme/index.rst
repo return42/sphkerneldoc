@@ -8,3 +8,4 @@ nvme
     :maxdepth: 1
 
     host/index
+    target/index

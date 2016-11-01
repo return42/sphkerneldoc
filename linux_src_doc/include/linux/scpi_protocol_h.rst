@@ -28,6 +28,8 @@ Definition
         int (*sensor_get_capability)(u16 *sensors);
         int (*sensor_get_info)(u16 sensor_id, struct scpi_sensor_info *);
         int (*sensor_get_value)(u16, u64 *);
+        int (*device_get_power_state)(u16);
+        int (*device_set_power_state)(u16, u8);
     }
 
 .. _`scpi_ops.members`:
@@ -68,6 +70,12 @@ sensor_get_info
     *undescribed*
 
 sensor_get_value
+    *undescribed*
+
+device_get_power_state
+    *undescribed*
+
+device_set_power_state
     *undescribed*
 
 .. This file was automatic generated / don't edit.

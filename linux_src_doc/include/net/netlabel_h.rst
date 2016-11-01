@@ -129,6 +129,108 @@ NETLBL_SECATTR\_\* defines.  The domain field is typically set by the LSM to
 specify domain specific configuration settings and is not usually used by
 NetLabel itself when returning security attributes to the LSM.
 
+.. _`netlbl_calipso_ops`:
+
+struct netlbl_calipso_ops
+=========================
+
+.. c:type:: struct netlbl_calipso_ops
+
+    NetLabel CALIPSO operations
+
+.. _`netlbl_calipso_ops.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct netlbl_calipso_ops {
+        int (*doi_add)(struct calipso_doi *doi_def,struct netlbl_audit *audit_info);
+        void (*doi_free)(struct calipso_doi *doi_def);
+        int (*doi_remove)(u32 doi, struct netlbl_audit *audit_info);
+        struct calipso_doi *(*doi_getdef)(u32 doi);
+        void (*doi_putdef)(struct calipso_doi *doi_def);
+        int (*doi_walk)(u32 *skip_cnt,int (*callback);
+        int (*sock_getattr)(struct sock *sk,struct netlbl_lsm_secattr *secattr);
+        int (*sock_setattr)(struct sock *sk,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        void (*sock_delattr)(struct sock *sk);
+        int (*req_setattr)(struct request_sock *req,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        void (*req_delattr)(struct request_sock *req);
+        int (*opt_getattr)(const unsigned char *calipso,struct netlbl_lsm_secattr *secattr);
+        unsigned char *(*skbuff_optptr)(const struct sk_buff *skb);
+        int (*skbuff_setattr)(struct sk_buff *skb,const struct calipso_doi *doi_def,const struct netlbl_lsm_secattr *secattr);
+        int (*skbuff_delattr)(struct sk_buff *skb);
+        void (*cache_invalidate)(void);
+        int (*cache_add)(const unsigned char *calipso_ptr,const struct netlbl_lsm_secattr *secattr);
+    }
+
+.. _`netlbl_calipso_ops.members`:
+
+Members
+-------
+
+doi_add
+    add a CALIPSO DOI
+
+doi_free
+    free a CALIPSO DOI
+
+doi_remove
+    *undescribed*
+
+doi_getdef
+    returns a reference to a DOI
+
+doi_putdef
+    releases a reference of a DOI
+
+doi_walk
+    enumerate the DOI list
+
+sock_getattr
+    retrieve the socket's attr
+
+sock_setattr
+    set the socket's attr
+
+sock_delattr
+    remove the socket's attr
+
+req_setattr
+    set the req socket's attr
+
+req_delattr
+    remove the req socket's attr
+
+opt_getattr
+    retrieve attr from memory block
+
+skbuff_optptr
+    find option in packet
+
+skbuff_setattr
+    set the skbuff's attr
+
+skbuff_delattr
+    remove the skbuff's attr
+
+cache_invalidate
+    invalidate cache
+
+cache_add
+    add cache entry
+
+.. _`netlbl_calipso_ops.description`:
+
+Description
+-----------
+
+This structure is filled out by the CALIPSO engine and passed
+to the NetLabel core via a call to \ :c:func:`netlbl_calipso_ops_register`\ .
+It enables the CALIPSO engine (and hence IPv6) to be compiled
+as a module.
+
 .. _`netlbl_secattr_cache_alloc`:
 
 netlbl_secattr_cache_alloc

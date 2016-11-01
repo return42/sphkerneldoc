@@ -6,12 +6,12 @@
 alloc_nilfs
 ===========
 
-.. c:function:: struct the_nilfs *alloc_nilfs(struct block_device *bdev)
+.. c:function:: struct the_nilfs *alloc_nilfs(struct super_block *sb)
 
     allocate a nilfs object
 
-    :param struct block_device \*bdev:
-        block device to which the_nilfs is related
+    :param struct super_block \*sb:
+        super block instance
 
 .. _`alloc_nilfs.return-value`:
 
@@ -53,7 +53,7 @@ nilfs_store_log_cursor
 Description
 -----------
 
-\ :c:func:`nilfs_store_log_cursor`\  reads the last position of the log
+nilfs_store_log_cursor() reads the last position of the log
 containing a super root from a given super block, and initializes
 relevant information on the nilfs object preparatory for log
 scanning and recovery.
@@ -78,7 +78,7 @@ load_nilfs
 Description
 -----------
 
-\ :c:func:`load_nilfs`\  searches and load the latest super root,
+load_nilfs() searches and load the latest super root,
 attaches the last segment, and does recovery if needed.
 The caller must call this exclusively for simultaneous mounts.
 
@@ -120,7 +120,7 @@ init_nilfs
 Description
 -----------
 
-\ :c:func:`init_nilfs`\  performs common initialization per block device (e.g.
+init_nilfs() performs common initialization per block device (e.g.
 reading the super block, getting disk layout information, initializing
 shared fields in the_nilfs).
 

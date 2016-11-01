@@ -401,7 +401,7 @@ lbs_mesh_stop
     close the mshX interface
 
     :param struct net_device \*dev:
-        A pointer to \ :c:type:`struct net_device <net_device>` structure
+        A pointer to \ :c:type:`struct net_device <net_device>`\  structure
 
 .. _`lbs_mesh_stop.return`:
 
@@ -420,7 +420,7 @@ lbs_mesh_dev_open
     open the mshX interface
 
     :param struct net_device \*dev:
-        A pointer to \ :c:type:`struct net_device <net_device>` structure
+        A pointer to \ :c:type:`struct net_device <net_device>`\  structure
 
 .. _`lbs_mesh_dev_open.return`:
 

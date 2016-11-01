@@ -1,19 +1,19 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/i915/i915_gem_fence.c
 
-.. _`i915_gem_object_put_fence`:
+.. _`i915_vma_put_fence`:
 
-i915_gem_object_put_fence
-=========================
+i915_vma_put_fence
+==================
 
-.. c:function:: int i915_gem_object_put_fence(struct drm_i915_gem_object *obj)
+.. c:function:: int i915_vma_put_fence(struct i915_vma *vma)
 
-    force-remove fence for an object
+    force-remove fence for a VMA
 
-    :param struct drm_i915_gem_object \*obj:
-        object to map through a fence reg
+    :param struct i915_vma \*vma:
+        vma to map linearly (not through a fence reg)
 
-.. _`i915_gem_object_put_fence.description`:
+.. _`i915_vma_put_fence.description`:
 
 Description
 -----------
@@ -21,7 +21,7 @@ Description
 This function force-removes any fence from the given object, which is useful
 if the kernel wants to do untiled GTT access.
 
-.. _`i915_gem_object_put_fence.return`:
+.. _`i915_vma_put_fence.return`:
 
 Return
 ------
@@ -29,19 +29,19 @@ Return
 
 0 on success, negative error code on failure.
 
-.. _`i915_gem_object_get_fence`:
+.. _`i915_vma_get_fence`:
 
-i915_gem_object_get_fence
-=========================
+i915_vma_get_fence
+==================
 
-.. c:function:: int i915_gem_object_get_fence(struct drm_i915_gem_object *obj)
+.. c:function:: int i915_vma_get_fence(struct i915_vma *vma)
 
-    set up fencing for an object
+    set up fencing for a vma
 
-    :param struct drm_i915_gem_object \*obj:
-        object to map through a fence reg
+    :param struct i915_vma \*vma:
+        vma to map through a fence reg
 
-.. _`i915_gem_object_get_fence.description`:
+.. _`i915_vma_get_fence.description`:
 
 Description
 -----------
@@ -56,66 +56,13 @@ and tiling format.
 
 For an untiled surface, this removes any existing fence.
 
-.. _`i915_gem_object_get_fence.return`:
+.. _`i915_vma_get_fence.return`:
 
 Return
 ------
 
 
 0 on success, negative error code on failure.
-
-.. _`i915_gem_object_pin_fence`:
-
-i915_gem_object_pin_fence
-=========================
-
-.. c:function:: bool i915_gem_object_pin_fence(struct drm_i915_gem_object *obj)
-
-    pin fencing state
-
-    :param struct drm_i915_gem_object \*obj:
-        object to pin fencing for
-
-.. _`i915_gem_object_pin_fence.description`:
-
-Description
------------
-
-This pins the fencing state (whether tiled or untiled) to make sure the
-object is ready to be used as a scanout target. Fencing status must be
-synchronize first by calling \ :c:func:`i915_gem_object_get_fence`\ :
-
-The resulting fence pin reference must be released again with
-\ :c:func:`i915_gem_object_unpin_fence`\ .
-
-.. _`i915_gem_object_pin_fence.return`:
-
-Return
-------
-
-
-True if the object has a fence, false otherwise.
-
-.. _`i915_gem_object_unpin_fence`:
-
-i915_gem_object_unpin_fence
-===========================
-
-.. c:function:: void i915_gem_object_unpin_fence(struct drm_i915_gem_object *obj)
-
-    unpin fencing state
-
-    :param struct drm_i915_gem_object \*obj:
-        object to unpin fencing for
-
-.. _`i915_gem_object_unpin_fence.description`:
-
-Description
------------
-
-This releases the fence pin reference acquired through
-i915_gem_object_pin_fence. It will handle both objects with and without an
-attached fence correctly, callers do not need to distinguish this.
 
 .. _`i915_gem_restore_fences`:
 

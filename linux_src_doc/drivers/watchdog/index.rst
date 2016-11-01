@@ -17,11 +17,14 @@ watchdog
     octeon-wdt-main_c
     pc87413_wdt_c
     pcwd_usb_c
+    pretimeout_noop_c
+    pretimeout_panic_c
     s3c2410_wdt_c
     sbsa_gwdt_c
     sp805_wdt_c
     ts72xx_wdt_c
     watchdog_core_c
+    wdat_wdt_c
     wdrtas_c
     wdt_c
     wdt_pci_c

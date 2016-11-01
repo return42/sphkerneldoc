@@ -47,11 +47,11 @@ Description
 
 Walk \ ``parent``\ 's children.  Must be called under \ :c:func:`rcu_read_lock`\ .
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 It is allowed to temporarily drop RCU read lock during iteration.  The
@@ -81,28 +81,28 @@ Description
 Walk \ ``root``\ 's descendants.  \ ``root``\  is included in the iteration and the
 first node to be visited.  Must be called under \ :c:func:`rcu_read_lock`\ .
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 For example, the following guarantees that a descendant can't escape
 state updates of its ancestors.
 
-my_online(\ ``css``\ )
+my_online(@css)
 {
 Lock \ ``css``\ 's parent and \ ``css``\ ;
 Inherit state from the parent;
 Unlock both.
 }
 
-my_update_state(\ ``css``\ )
+my_update_state(@css)
 {
-css_for_each_descendant_pre(\ ``pos``\ , \ ``css``\ ) {
+css_for_each_descendant_pre(@pos, \ ``css``\ ) {
 Lock \ ``pos``\ ;
-if (\ ``pos``\  == \ ``css``\ )
+if (@pos == \ ``css``\ )
 Update \ ``css``\ 's state;
 else
 Verify \ ``pos``\  is alive and inherit state from its parent;
@@ -122,7 +122,7 @@ If checking parent's state requires locking the parent, each inheriting
 iteration should lock and unlock both \ ``pos``\ ->parent and \ ``pos``\ .
 
 Alternatively, a subsystem may choose to use a single global lock to
-synchronize ->\ :c:func:`css_online`\  and ->\ :c:func:`css_offline`\  against tree-walking
+synchronize ->css_online() and ->css_offline() against tree-walking
 operations.
 
 It is allowed to temporarily drop RCU read lock during iteration.  The
@@ -153,11 +153,11 @@ Similar to \ :c:func:`css_for_each_descendant_pre`\  but performs post-order
 traversal instead.  \ ``root``\  is included in the iteration and the last
 node to be visited.
 
-If a subsystem synchronizes ->\ :c:func:`css_online`\  and the start of iteration, a
-css which finished ->\ :c:func:`css_online`\  is guaranteed to be visible in the
+If a subsystem synchronizes ->css_online() and the start of iteration, a
+css which finished ->css_online() is guaranteed to be visible in the
 future iterations and will stay visible until the last reference is put.
-A css which hasn't finished ->\ :c:func:`css_online`\  or already finished
-->\ :c:func:`css_offline`\  may show up during traversal.  It's each subsystem's
+A css which hasn't finished ->css_online() or already finished
+->css_offline() may show up during traversal.  It's each subsystem's
 responsibility to synchronize against on/offlining.
 
 Note that the walk visibility guarantee example described in pre-order
@@ -186,7 +186,7 @@ cgroup_taskset_for_each
 Description
 -----------
 
-\ ``tset``\  may contain multiple tasks and they may belong to multiple
+@tset may contain multiple tasks and they may belong to multiple
 processes.
 
 On the v2 hierarchy, there may be tasks from multiple processes and they
@@ -376,7 +376,7 @@ task_css_check
 Description
 -----------
 
-Return the cgroup_subsys_state for the (\ ``task``\ , \ ``subsys_id``\ ) pair.  The
+Return the cgroup_subsys_state for the (@task, \ ``subsys_id``\ ) pair.  The
 synchronization rules are the same as \ :c:func:`task_css_set_check`\ .
 
 .. _`task_css_set`:
@@ -440,7 +440,7 @@ task_get_css
 Description
 -----------
 
-Find the css for the (\ ``task``\ , \ ``subsys_id``\ ) combination, increment a
+Find the css for the (@task, \ ``subsys_id``\ ) combination, increment a
 reference on and return it.  This function is guaranteed to return a
 valid css.
 
@@ -490,6 +490,30 @@ Description
 Test whether \ ``cgrp``\  is a descendant of \ ``ancestor``\ .  It also returns \ ``true``\ 
 if \ ``cgrp``\  == \ ``ancestor``\ .  This function is safe to call as long as \ ``cgrp``\ 
 and \ ``ancestor``\  are accessible.
+
+.. _`task_under_cgroup_hierarchy`:
+
+task_under_cgroup_hierarchy
+===========================
+
+.. c:function:: bool task_under_cgroup_hierarchy(struct task_struct *task, struct cgroup *ancestor)
+
+    test task's membership of cgroup ancestry
+
+    :param struct task_struct \*task:
+        the task to be tested
+
+    :param struct cgroup \*ancestor:
+        possible ancestor of \ ``task``\ 's cgroup
+
+.. _`task_under_cgroup_hierarchy.description`:
+
+Description
+-----------
+
+Tests whether \ ``task``\ 's default cgroup hierarchy is a descendant of \ ``ancestor``\ .
+It follows all the same rules as cgroup_is_descendant, and only applies
+to the default hierarchy.
 
 .. This file was automatic generated / don't edit.
 

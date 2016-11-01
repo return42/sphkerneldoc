@@ -24,7 +24,6 @@ Definition
         enum rcar_du_plane_source source;
         unsigned int alpha;
         unsigned int colorkey;
-        unsigned int zpos;
     }
 
 .. _`rcar_du_plane_state.members`:
@@ -49,9 +48,6 @@ alpha
 
 colorkey
     value of the plane colorkey property
-
-zpos
-    value of the plane zpos property
 
 .. This file was automatic generated / don't edit.
 

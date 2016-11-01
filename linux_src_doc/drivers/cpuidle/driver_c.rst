@@ -225,7 +225,7 @@ Register the driver under a lock to prevent concurrent attempts to
 [un]register the driver from occuring at the same time.
 
 Returns 0 on success, a negative error code (returned by
-\\ :c:func:`__cpuidle_register_driver`\ ) otherwise.
+\__cpuidle_register_driver()) otherwise.
 
 .. _`cpuidle_unregister_driver`:
 

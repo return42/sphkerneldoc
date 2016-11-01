@@ -286,7 +286,7 @@ _ctl_fasync
 
 .. c:function:: int _ctl_fasync(int fd, struct file *filep, int mode)
 
-    \ ``fd``\  - \ ``filep``\  - \ ``mode``\  -
+    @fd - \ ``filep``\  - \ ``mode``\  -
 
     :param int fd:
         *undescribed*
@@ -311,7 +311,7 @@ _ctl_poll
 
 .. c:function:: unsigned int _ctl_poll(struct file *filep, poll_table *wait)
 
-    \ ``file``\  - \ ``wait``\  -
+    @file - \ ``wait``\  -
 
     :param struct file \*filep:
         *undescribed*

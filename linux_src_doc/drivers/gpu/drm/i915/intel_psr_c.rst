@@ -44,12 +44,12 @@ This function needs to be called before disabling pipe.
 intel_psr_single_frame_update
 =============================
 
-.. c:function:: void intel_psr_single_frame_update(struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_psr_single_frame_update(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits)
 
     Single Frame Update
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
@@ -69,12 +69,12 @@ hardware requires this to be done before a page flip.
 intel_psr_invalidate
 ====================
 
-.. c:function:: void intel_psr_invalidate(struct drm_device *dev, unsigned frontbuffer_bits)
+.. c:function:: void intel_psr_invalidate(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits)
 
     Invalidade PSR
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits
@@ -96,12 +96,12 @@ Dirty frontbuffers relevant to PSR are tracked in busy_frontbuffer_bits."
 intel_psr_flush
 ===============
 
-.. c:function:: void intel_psr_flush(struct drm_device *dev, unsigned frontbuffer_bits, enum fb_op_origin origin)
+.. c:function:: void intel_psr_flush(struct drm_i915_private *dev_priv, unsigned frontbuffer_bits, enum fb_op_origin origin)
 
     Flush PSR
 
-    :param struct drm_device \*dev:
-        DRM device
+    :param struct drm_i915_private \*dev_priv:
+        i915 device
 
     :param unsigned frontbuffer_bits:
         frontbuffer plane tracking bits

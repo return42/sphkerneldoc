@@ -287,6 +287,7 @@ Definition
         int (*suspend)(struct ufs_hba *, enum ufs_pm_op);
         int (*resume)(struct ufs_hba *, enum ufs_pm_op);
         void (*dbg_register_dump)(struct ufs_hba *hba);
+        int (*phy_initialization)(struct ufs_hba *);
     }
 
 .. _`ufs_hba_variant_ops.members`:
@@ -336,6 +337,9 @@ resume
 
 dbg_register_dump
     used to dump controller debug information
+
+phy_initialization
+    used to initialize phys
 
 .. _`ufs_clk_gating`:
 

@@ -1,6 +1,32 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/drm_prime.c
 
+.. _`drm_gem_dmabuf_export`:
+
+drm_gem_dmabuf_export
+=====================
+
+.. c:function:: struct dma_buf *drm_gem_dmabuf_export(struct drm_device *dev, struct dma_buf_export_info *exp_info)
+
+    dma_buf export implementation for GEM
+
+    :param struct drm_device \*dev:
+        parent device for the exported dmabuf
+
+    :param struct dma_buf_export_info \*exp_info:
+        the export information used by \ :c:func:`dma_buf_export`\ 
+
+.. _`drm_gem_dmabuf_export.description`:
+
+Description
+-----------
+
+This wraps \ :c:func:`dma_buf_export`\  for use by generic GEM drivers that are using
+\ :c:func:`drm_gem_dmabuf_release`\ . In addition to calling \ :c:func:`dma_buf_export`\ , we take
+a reference to the drm_device which is released by \ :c:func:`drm_gem_dmabuf_release`\ .
+
+Returns the new dmabuf.
+
 .. _`drm_gem_dmabuf_release`:
 
 drm_gem_dmabuf_release
@@ -20,6 +46,8 @@ Description
 
 Generic release function for dma_bufs exported as PRIME buffers. GEM drivers
 must use this in their dma_buf ops structure as the release callback.
+\ :c:func:`drm_gem_dmabuf_release`\  should be used in conjunction with
+\ :c:func:`drm_gem_dmabuf_export`\ .
 
 .. _`drm_gem_prime_export`:
 

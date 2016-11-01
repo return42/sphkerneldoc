@@ -1,14 +1,17 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/sunrpc/sched.c
 
-.. _`__rpc_do_wake_up_task`:
+.. _`__rpc_do_wake_up_task_on_wq`:
 
-__rpc_do_wake_up_task
-=====================
+__rpc_do_wake_up_task_on_wq
+===========================
 
-.. c:function:: void __rpc_do_wake_up_task(struct rpc_wait_queue *queue, struct rpc_task *task)
+.. c:function:: void __rpc_do_wake_up_task_on_wq(struct workqueue_struct *wq, struct rpc_wait_queue *queue, struct rpc_task *task)
 
     wake up a single rpc_task
+
+    :param struct workqueue_struct \*wq:
+        workqueue on which to run task
 
     :param struct rpc_wait_queue \*queue:
         wait queue
@@ -16,7 +19,7 @@ __rpc_do_wake_up_task
     :param struct rpc_task \*task:
         task to be woken up
 
-.. _`__rpc_do_wake_up_task.description`:
+.. _`__rpc_do_wake_up_task_on_wq.description`:
 
 Description
 -----------
@@ -69,25 +72,26 @@ Grabs queue->lock
 rpc_malloc
 ==========
 
-.. c:function:: void *rpc_malloc(struct rpc_task *task, size_t size)
+.. c:function:: int rpc_malloc(struct rpc_task *task)
 
-    allocate an RPC buffer
+    allocate RPC buffer resources
 
     :param struct rpc_task \*task:
-        RPC task that will use this buffer
-
-    :param size_t size:
-        requested byte size
+        RPC task
 
 .. _`rpc_malloc.description`:
 
 Description
 -----------
 
+A single memory region is allocated, which is split between the
+RPC call and RPC reply that this task is being used for. When
+this RPC is retired, the memory is released by calling rpc_free.
+
 To prevent rpciod from hanging, this allocator never sleeps,
-returning NULL and suppressing warning if the request cannot be serviced
-immediately.
-The caller can arrange to sleep in a way that is safe for rpciod.
+returning -ENOMEM and suppressing warning if the request cannot
+be serviced immediately. The caller can arrange to sleep in a
+way that is safe for rpciod.
 
 Most requests are 'small' (under 2KiB) and can be serviced from a
 mempool, ensuring that NFS reads and writes can always proceed,
@@ -101,12 +105,12 @@ NFS requests, we avoid using GFP_KERNEL.
 rpc_free
 ========
 
-.. c:function:: void rpc_free(void *buffer)
+.. c:function:: void rpc_free(struct rpc_task *task)
 
-    free buffer allocated via rpc_malloc
+    free RPC buffer resources allocated via rpc_malloc
 
-    :param void \*buffer:
-        buffer to free
+    :param struct rpc_task \*task:
+        RPC task
 
 .. This file was automatic generated / don't edit.
 

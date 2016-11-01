@@ -279,6 +279,28 @@ Whilst this may allow direct reading if all buffers are disabled, the
 primary aim is to allow drivers that are consuming a channel to query
 things like scaling of the channel.
 
+.. _`iio_channel_cb_get_iio_dev`:
+
+iio_channel_cb_get_iio_dev
+==========================
+
+.. c:function:: struct iio_dev *iio_channel_cb_get_iio_dev(const struct iio_cb_buffer *cb_buffer)
+
+    get access to the underlying device.
+
+    :param const struct iio_cb_buffer \*cb_buffer:
+        The callback buffer from whom we want the device
+        information.
+
+.. _`iio_channel_cb_get_iio_dev.description`:
+
+Description
+-----------
+
+This function allows one to obtain information about the device.
+The primary aim is to allow drivers that are consuming a device to query
+things like current trigger.
+
 .. _`iio_read_channel_raw`:
 
 iio_read_channel_raw

@@ -24,6 +24,7 @@ Definition
         int quirks;
         bool high_speed;
         bool clk_from_cmu;
+        bool clk_ioclk;
     }
 
 .. _`s3c64xx_spi_port_config.members`:
@@ -49,6 +50,9 @@ high_speed
 clk_from_cmu
     True, if the controller does not include a clock mux and
     prescaler unit.
+
+clk_ioclk
+    *undescribed*
 
 .. _`s3c64xx_spi_port_config.description`:
 
@@ -80,6 +84,7 @@ Definition
         void __iomem *regs;
         struct clk *clk;
         struct clk *src_clk;
+        struct clk *ioclk;
         struct platform_device *pdev;
         struct spi_master *master;
         struct s3c64xx_spi_info *cntrlr_info;
@@ -110,6 +115,9 @@ clk
 
 src_clk
     Pointer to the clock used to generate SPI signals.
+
+ioclk
+    Pointer to the i/o clock between master and slave
 
 pdev
     *undescribed*

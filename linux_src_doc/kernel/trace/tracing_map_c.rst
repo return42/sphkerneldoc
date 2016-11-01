@@ -428,7 +428,7 @@ tracing_map_sort_entries
 Description
 -----------
 
-\ :c:func:`tracing_map_sort_entries`\  sorts the current set of entries in the
+tracing_map_sort_entries() sorts the current set of entries in the
 map and returns the list of tracing_map_sort_entries containing
 them to the client in the sort_entries param.  The client can
 access the struct tracing_map_elt element of interest directly as

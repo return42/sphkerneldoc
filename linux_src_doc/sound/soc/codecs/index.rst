@@ -13,12 +13,16 @@ codecs
     max98090_c
     nau8825_c
     rl6231_c
+    rt5514-spi_c
+    rt5514-spi_h
     rt5514_c
     rt5631_c
     rt5640_c
     rt5645_c
     rt5651_c
     rt5659_c
+    rt5660_c
+    rt5663_c
     rt5670_c
     rt5677_c
     sigmadsp-i2c_c

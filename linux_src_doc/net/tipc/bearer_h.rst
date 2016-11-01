@@ -144,6 +144,7 @@ Definition
         u32 identity;
         struct tipc_link_req *link_req;
         char net_plane;
+        unsigned long up;
     }
 
 .. _`tipc_bearer.members`:
@@ -192,6 +193,9 @@ link_req
 
 net_plane
     network plane ('A' through 'H') currently associated with bearer
+
+up
+    *undescribed*
 
 .. _`tipc_bearer.note`:
 

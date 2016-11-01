@@ -1576,6 +1576,26 @@ Description
 
 Clears the VLAN filer table, and the VMDq index associated with the filter
 
+.. _`ixgbe_need_crosstalk_fix`:
+
+ixgbe_need_crosstalk_fix
+========================
+
+.. c:function:: bool ixgbe_need_crosstalk_fix(struct ixgbe_hw *hw)
+
+    Determine if we need to do cross talk fix
+
+    :param struct ixgbe_hw \*hw:
+        pointer to hardware structure
+
+.. _`ixgbe_need_crosstalk_fix.description`:
+
+Description
+-----------
+
+Contains the logic to identify if we need to verify link for the
+crosstalk fix
+
 .. _`ixgbe_check_mac_link_generic`:
 
 ixgbe_check_mac_link_generic

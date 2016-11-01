@@ -37,7 +37,7 @@ To use, embed a 'struct edc' somewhere, initialize it with
 \ :c:func:`edc_init`\  and when an error hits:
 
 if (do_something_fails_with_a_soft_error) {
-if (edc_inc(\ :c:type:`my->edc <my>`\ , MAX_ERRORS, MAX_TIMEFRAME))
+if (edc_inc(&my->edc, MAX_ERRORS, MAX_TIMEFRAME))
 Ops, hard error, do something about it
 else
 Retry or ignore, depending on whatever
@@ -125,7 +125,7 @@ rx_kthread
 rx_wq
     waitqueue for the RX kthread to sleep when there is no data
     to receive. When data is available, it is woken up by
-    usb-notif.c:\ :c:func:`i2400mu_notification_grok`\ .
+    usb-notif.c:i2400mu_notification_grok().
 
 rx_pending_count
     number of rx-data-ready notifications that were
@@ -144,7 +144,7 @@ rx_size_cnt
 
 do_autopm
     disable(0)/enable(>0) calling the
-    usb_autopm_get/\ :c:func:`put_interface`\  barriers when executing
+    usb_autopm_get/put_interface() barriers when executing
     commands. See doc in \ :c:func:`i2400mu_suspend`\  for more information.
 
 rx_size_auto_shrink

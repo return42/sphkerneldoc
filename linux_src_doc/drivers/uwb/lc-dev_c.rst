@@ -61,7 +61,7 @@ uwb_dev_try_get
 Description
 -----------
 
-\ ``returns``\  NULL if the device does not exist or is quiescing; the ptr to
+@returns NULL if the device does not exist or is quiescing; the ptr to
 it otherwise.
 
 .. _`__uwb_dev_offair`:

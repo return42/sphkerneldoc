@@ -68,7 +68,7 @@ Saves off the io command that is being handled by the Service
 Partition so that it can be handled when it completes. If new is
 NULL it is assumed the entry refers only to the cmdrsp.
 Returns insert_location where entry was added,
-SCSI_MLQUEUE_DEVICE_BUSY if it can't
+-EBUSY if it can't
 
 .. _`del_scsipending_ent`:
 
@@ -116,6 +116,63 @@ Description
 Each scsipending entry has a cmdrsp in it. The cmdrsp is only valid
 if the "sent" field is not NULL
 Returns a pointer to the cmdrsp.
+
+.. _`simple_idr_get`:
+
+simple_idr_get
+==============
+
+.. c:function:: unsigned int simple_idr_get(struct idr *idrtable, void *p, spinlock_t *lock)
+
+    associate a provided pointer with an int value 1 <= value <= INT_MAX, and return this int value; the pointer value can be obtained later by passing this int value to \ :c:func:`idr_find`\ 
+
+    :param struct idr \*idrtable:
+        the data object maintaining the pointer<-->int mappings
+
+    :param void \*p:
+        the pointer value to be remembered
+
+    :param spinlock_t \*lock:
+        a spinlock used when exclusive access to idrtable is needed
+
+.. _`setup_scsitaskmgmt_handles`:
+
+setup_scsitaskmgmt_handles
+==========================
+
+.. c:function:: void setup_scsitaskmgmt_handles(struct idr *idrtable, spinlock_t *lock, struct uiscmdrsp *cmdrsp, wait_queue_head_t *event, int *result)
+
+    stash the necessary handles so that the completion processing logic for a taskmgmt cmd will be able to find who to wake up and where to stash the result
+
+    :param struct idr \*idrtable:
+        *undescribed*
+
+    :param spinlock_t \*lock:
+        *undescribed*
+
+    :param struct uiscmdrsp \*cmdrsp:
+        *undescribed*
+
+    :param wait_queue_head_t \*event:
+        *undescribed*
+
+    :param int \*result:
+        *undescribed*
+
+.. _`cleanup_scsitaskmgmt_handles`:
+
+cleanup_scsitaskmgmt_handles
+============================
+
+.. c:function:: void cleanup_scsitaskmgmt_handles(struct idr *idrtable, struct uiscmdrsp *cmdrsp)
+
+    forget handles created by \ :c:func:`setup_scsitaskmgmt_handles`\ 
+
+    :param struct idr \*idrtable:
+        *undescribed*
+
+    :param struct uiscmdrsp \*cmdrsp:
+        *undescribed*
 
 .. _`forward_taskmgmt_command`:
 
@@ -303,41 +360,54 @@ Description
 Disk is going away, clean up resources.
 Returns void.
 
-.. _`info_debugfs_read`:
+.. _`info_debugfs_show`:
 
-info_debugfs_read
+info_debugfs_show
 =================
 
-.. c:function:: ssize_t info_debugfs_read(struct file *file, char __user *buf, size_t len, loff_t *offset)
+.. c:function:: int info_debugfs_show(struct seq_file *seq, void *v)
 
     debugfs interface to dump visorhba states
 
-    :param struct file \*file:
-        Debug file
+    :param struct seq_file \*seq:
+        *undescribed*
 
-    :param char __user \*buf:
-        buffer to send back to user
+    :param void \*v:
+        *undescribed*
 
-    :param size_t len:
-        len that can be written to buf
+.. _`info_debugfs_show.this-presents-a-file-in-the-debugfs-tree-named`:
 
-    :param loff_t \*offset:
-        offset into buf
+This presents a file in the debugfs tree named
+----------------------------------------------
 
-.. _`info_debugfs_read.description`:
+/visorhba/vbus<x>:dev<y>/info
+
+.. _`complete_taskmgmt_command`:
+
+complete_taskmgmt_command
+=========================
+
+.. c:function:: void complete_taskmgmt_command(struct idr *idrtable, struct uiscmdrsp *cmdrsp, int result)
+
+    complete task management
+
+    :param struct idr \*idrtable:
+        *undescribed*
+
+    :param struct uiscmdrsp \*cmdrsp:
+        Response from the IOVM
+
+    :param int result:
+        *undescribed*
+
+.. _`complete_taskmgmt_command.description`:
 
 Description
 -----------
 
-Dumps information about the visorhba driver and devices
-
-.. _`info_debugfs_read.todo`:
-
-TODO
-----
-
-Make this per vhba
-Returns bytes_read
+Service Partition returned the result of the task management
+command. Wake up anyone waiting for it.
+Returns void
 
 .. _`visorhba_serverdown_complete`:
 
@@ -450,70 +520,6 @@ Description
 Response returned by the Service Partition, finish it and send
 completion to the scsi midlayer.
 Returns void.
-
-.. _`complete_taskmgmt_command`:
-
-complete_taskmgmt_command
-=========================
-
-.. c:function:: void complete_taskmgmt_command(struct uiscmdrsp *cmdrsp)
-
-    complete task management
-
-    :param struct uiscmdrsp \*cmdrsp:
-        Response from the IOVM
-
-.. _`complete_taskmgmt_command.description`:
-
-Description
------------
-
-Service Partition returned the result of the task management
-command. Wake up anyone waiting for it.
-Returns void
-
-.. _`queue_disk_add_remove`:
-
-queue_disk_add_remove
-=====================
-
-.. c:function:: void queue_disk_add_remove(struct diskaddremove *dar)
-
-    IOSP has sent us a add/remove request
-
-    :param struct diskaddremove \*dar:
-        disk add/remove request
-
-.. _`queue_disk_add_remove.description`:
-
-Description
------------
-
-Queue the work needed to add/remove a disk.
-Returns void
-
-.. _`process_disk_notify`:
-
-process_disk_notify
-===================
-
-.. c:function:: void process_disk_notify(struct Scsi_Host *shost, struct uiscmdrsp *cmdrsp)
-
-    IOSP has sent a process disk notify event
-
-    :param struct Scsi_Host \*shost:
-        Scsi hot
-
-    :param struct uiscmdrsp \*cmdrsp:
-        Response from the IOSP
-
-.. _`process_disk_notify.description`:
-
-Description
------------
-
-Queue it to the work queue.
-Return void.
 
 .. _`drain_queue`:
 

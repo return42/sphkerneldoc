@@ -16,6 +16,30 @@ iio_find_channel_from_si
     :param int si:
         scan index to match
 
+.. _`iio_get_time_ns`:
+
+iio_get_time_ns
+===============
+
+.. c:function:: s64 iio_get_time_ns(const struct iio_dev *indio_dev)
+
+    utility function to get a time stamp for events etc
+
+    :param const struct iio_dev \*indio_dev:
+        device
+
+.. _`iio_get_time_res`:
+
+iio_get_time_res
+================
+
+.. c:function:: unsigned int iio_get_time_res(const struct iio_dev *indio_dev)
+
+    utility function to get time stamp clock resolution in nano seconds.
+
+    :param const struct iio_dev \*indio_dev:
+        device
+
 .. _`of_iio_read_mount_matrix`:
 
 of_iio_read_mount_matrix

@@ -24,9 +24,9 @@ mptscsih_info_scsiio
 Description
 -----------
 
-MPT_DEBUG_REPLY needs to be enabled to obtain this info
+     MPT_DEBUG_REPLY needs to be enabled to obtain this info
 
-Refer to lsi/mpi.h.
+     Refer to lsi/mpi.h.
 
 .. _`mptscsih_info`:
 
@@ -45,9 +45,9 @@ mptscsih_info
 Description
 -----------
 
-(linux scsi_host_template.info routine)
+     (linux scsi_host_template.info routine)
 
-Returns pointer to buffer where information was written.
+     Returns pointer to buffer where information was written.
 
 .. _`mptscsih_qcmd`:
 
@@ -66,11 +66,11 @@ mptscsih_qcmd
 Description
 -----------
 
-(linux scsi_host_template.queuecommand routine)
-This is the primary SCSI IO start routine.  Create a MPI SCSIIORequest
-from a linux scsi_cmnd request and send it to the IOC.
+     (linux scsi_host_template.queuecommand routine)
+     This is the primary SCSI IO start routine.  Create a MPI SCSIIORequest
+     from a linux scsi_cmnd request and send it to the IOC.
 
-Returns 0. (rtn value discarded by linux scsi mid-layer)
+     Returns 0. (rtn value discarded by linux scsi mid-layer)
 
 .. _`mptscsih_issuetaskmgmt`:
 
@@ -102,17 +102,17 @@ mptscsih_IssueTaskMgmt
     :param ulong timeout:
         timeout for task management control
 
-.. _`mptscsih_issuetaskmgmt.remark`:
+.. _`mptscsih_issuetaskmgmt.description`:
 
-Remark
-------
+Description
+-----------
 
-_HardResetHandler can be invoked from an interrupt thread (timer)
-or a non-interrupt thread.  In the former, must not call \ :c:func:`schedule`\ .
+     Remark: _HardResetHandler can be invoked from an interrupt thread (timer)
+     or a non-interrupt thread.  In the former, must not call \ :c:func:`schedule`\ .
 
-Not all fields are meaningfull for all task types.
+     Not all fields are meaningfull for all task types.
 
-Returns 0 for SUCCESS, or FAILED.
+     Returns 0 for SUCCESS, or FAILED.
 
 .. _`mptscsih_abort`:
 
@@ -131,9 +131,9 @@ mptscsih_abort
 Description
 -----------
 
-(linux scsi_host_template.eh_abort_handler routine)
+     (linux scsi_host_template.eh_abort_handler routine)
 
-Returns SUCCESS or FAILED.
+     Returns SUCCESS or FAILED.
 
 .. _`mptscsih_dev_reset`:
 
@@ -152,9 +152,9 @@ mptscsih_dev_reset
 Description
 -----------
 
-(linux scsi_host_template.eh_dev_reset_handler routine)
+     (linux scsi_host_template.eh_dev_reset_handler routine)
 
-Returns SUCCESS or FAILED.
+     Returns SUCCESS or FAILED.
 
 .. _`mptscsih_bus_reset`:
 
@@ -173,9 +173,9 @@ mptscsih_bus_reset
 Description
 -----------
 
-(linux scsi_host_template.eh_bus_reset_handler routine)
+     (linux scsi_host_template.eh_bus_reset_handler routine)
 
-Returns SUCCESS or FAILED.
+     Returns SUCCESS or FAILED.
 
 .. _`mptscsih_host_reset`:
 
@@ -194,9 +194,9 @@ mptscsih_host_reset
 Description
 -----------
 
-(linux scsi_host_template.eh_host_reset_handler routine)
+     (linux scsi_host_template.eh_host_reset_handler routine)
 
-Returns SUCCESS or FAILED.
+     Returns SUCCESS or FAILED.
 
 .. _`mptscsih_taskmgmt_complete`:
 
@@ -221,12 +221,12 @@ mptscsih_taskmgmt_complete
 Description
 -----------
 
-This routine is called from mptbase.c::\ :c:func:`mpt_interrupt`\  at the completion
-of any SCSI task management request.
-This routine is registered with the MPT (base) driver at driver
-load/init time via the \ :c:func:`mpt_register`\  API call.
+     This routine is called from mptbase.c::mpt_interrupt() at the completion
+     of any SCSI task management request.
+     This routine is registered with the MPT (base) driver at driver
+     load/init time via the \ :c:func:`mpt_register`\  API call.
 
-Returns 1 indicating alloc'd request frame ptr should be freed.
+     Returns 1 indicating alloc'd request frame ptr should be freed.
 
 .. _`mptscsih_get_scsi_lookup`:
 
@@ -343,8 +343,8 @@ mptscsih_do_cmd
 Description
 -----------
 
-Issue the specified internally generated command and do command
-specific cleanup. For bus scan / DV only.
+     Issue the specified internally generated command and do command
+     specific cleanup. For bus scan / DV only.
 
 .. _`mptscsih_do_cmd.notes`:
 
@@ -352,25 +352,20 @@ NOTES
 -----
 
 If command is Inquiry and status is good,
-initialize a target structure, save the data
+     initialize a target structure, save the data
 
-.. _`mptscsih_do_cmd.remark`:
-
-Remark
-------
-
-Single threaded access only.
+     Remark: Single threaded access only.
 
 .. _`mptscsih_do_cmd.return`:
 
 Return
 ------
 
-< 0 if an illegal command or no resources
+             < 0 if an illegal command or no resources
 
-0 if good
+                0 if good
 
-> 0 if command complete but some type of completion error.
+              > 0 if command complete but some type of completion error.
 
 .. _`mptscsih_synchronize_cache`:
 
@@ -392,8 +387,8 @@ mptscsih_synchronize_cache
 Description
 -----------
 
-Uses the ISR, but with special processing.
-MUST be single-threaded.
+     Uses the ISR, but with special processing.
+     MUST be single-threaded.
 
 .. This file was automatic generated / don't edit.
 

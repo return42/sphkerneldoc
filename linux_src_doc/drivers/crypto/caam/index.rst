@@ -7,5 +7,6 @@ caam
 .. toctree::
     :maxdepth: 1
 
+    caampkc_c
     ctrl_c
     jr_c

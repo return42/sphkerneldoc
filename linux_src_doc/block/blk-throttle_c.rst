@@ -132,7 +132,7 @@ that the popping order is round-robin.
 
 When the first qnode is removed, its associated throtl_grp should be put
 too.  If \ ``tg_to_put``\  is NULL, this function automatically puts it;
-otherwise, \*\ ``tg_to_put``\  is set to the throtl_grp to put and the caller is
+otherwise, \*@tg_to_put is set to the throtl_grp to put and the caller is
 responsible for putting it.
 
 .. _`throtl_schedule_next_dispatch`:
@@ -260,7 +260,7 @@ blk_throtl_drain
 Description
 -----------
 
-Dispatch all currently throttled bios on \ ``q``\  through ->\ :c:func:`make_request_fn`\ .
+Dispatch all currently throttled bios on \ ``q``\  through ->make_request_fn().
 
 .. This file was automatic generated / don't edit.
 

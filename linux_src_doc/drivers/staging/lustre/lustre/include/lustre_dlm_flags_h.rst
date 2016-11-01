@@ -145,7 +145,7 @@ LDLM_FL_BL_DONE
 
 .. c:function::  LDLM_FL_BL_DONE()
 
-    \ :c:func:`ldlm_callback_handler`\  return EINVAL to the server. It is used when ELC RPC is already prepared and is waiting for rpc_lock, too late to send a separate CANCEL RPC.
+    ldlm_callback_handler() return EINVAL to the server. It is used when ELC RPC is already prepared and is waiting for rpc_lock, too late to send a separate CANCEL RPC.
 
 .. _`ldlm_fl_no_lru`:
 

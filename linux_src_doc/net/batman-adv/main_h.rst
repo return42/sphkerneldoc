@@ -1,57 +1,14 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: net/batman-adv/main.h
 
-.. _`batadv_dbg_level`:
+.. _`batadv_tp_max_num`:
 
-enum batadv_dbg_level
-=====================
+BATADV_TP_MAX_NUM
+=================
 
-.. c:type:: enum batadv_dbg_level
+.. c:function::  BATADV_TP_MAX_NUM()
 
-    available log levels
-
-.. _`batadv_dbg_level.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    enum batadv_dbg_level {
-        BATADV_DBG_BATMAN,
-        BATADV_DBG_ROUTES,
-        BATADV_DBG_TT,
-        BATADV_DBG_BLA,
-        BATADV_DBG_DAT,
-        BATADV_DBG_NC,
-        BATADV_DBG_ALL
-    };
-
-.. _`batadv_dbg_level.constants`:
-
-Constants
----------
-
-BATADV_DBG_BATMAN
-    OGM and TQ computations related messages
-
-BATADV_DBG_ROUTES
-    route added / changed / deleted
-
-BATADV_DBG_TT
-    translation table messages
-
-BATADV_DBG_BLA
-    bridge loop avoidance messages
-
-BATADV_DBG_DAT
-    ARP snooping and DAT related messages
-
-BATADV_DBG_NC
-    network coding related messages
-
-BATADV_DBG_ALL
-    the union of all the above log levels
+    maximum number of simultaneously active tp sessions
 
 .. _`batadv_compare_eth`:
 

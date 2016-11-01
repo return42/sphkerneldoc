@@ -7,7 +7,10 @@ accel
 .. toctree::
     :maxdepth: 1
 
+    bma220_spi_c
     kxsd9_c
+    mc3230_c
+    mma7660_c
     mma8452_c
     mma9551_core_c
     stk8312_c

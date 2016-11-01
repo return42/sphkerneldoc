@@ -73,7 +73,7 @@ After the transaction is completed successfully or unsuccessfully, the
 \ ``callback``\  will be called.  Among its parameters is the response code which
 is either one of the rcodes per IEEE 1394 or, in case of internal errors,
 the firewire-core specific \ ``RCODE_SEND_ERROR``\ .  The other firewire-core
-specific rcodes (\ ``RCODE_CANCELLED``\ , \ ``RCODE_BUSY``\ , \ ``RCODE_GENERATION``\ ,
+specific rcodes (%RCODE_CANCELLED, \ ``RCODE_BUSY``\ , \ ``RCODE_GENERATION``\ ,
 \ ``RCODE_NO_ACK``\ ) denote transaction timeout, busy responder, stale request
 generation, or missing ACK respectively.
 
@@ -82,7 +82,7 @@ generation, or missing ACK respectively.
 Note some timing corner cases
 -----------------------------
 
-\ :c:func:`fw_send_request`\  may complete much earlier
+fw_send_request() may complete much earlier
 than when the request packet actually hits the wire.  On the other hand,
 transaction completion and hence execution of \ ``callback``\  may happen even
 before \ :c:func:`fw_send_request`\  returns.
@@ -189,7 +189,7 @@ Description
 
 To be called in process context.
 
-When \ :c:func:`fw_core_remove_address_handler`\  returns, \ ``handler``\ ->\ :c:func:`callback`\  is
+When \ :c:func:`fw_core_remove_address_handler`\  returns, \ ``handler``\ ->callback() is
 guaranteed to not run on any CPU anymore.
 
 .. _`fw_get_request_speed`:

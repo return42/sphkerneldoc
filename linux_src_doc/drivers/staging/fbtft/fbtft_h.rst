@@ -19,7 +19,7 @@ Definition
 
     struct fbtft_gpio {
         char name[FBTFT_GPIO_NAME_SIZE];
-        unsigned gpio;
+        unsigned int gpio;
     }
 
 .. _`fbtft_gpio.members`:
@@ -57,7 +57,7 @@ Definition
         void (*set_addr_win)(struct fbtft_par *par,int xs, int ys, int xe, int ye);
         void (*reset)(struct fbtft_par *par);
         void (*mkdirty)(struct fb_info *info, int from, int to);
-        void (*update_display)(struct fbtft_par *par,unsigned start_line, unsigned end_line);
+        void (*update_display)(struct fbtft_par *par,unsigned int start_line, unsigned int end_line);
         int (*init_display)(struct fbtft_par *par);
         int (*blank)(struct fbtft_par *par, bool on);
         unsigned long (*request_gpios_match)(struct fbtft_par *par,const struct fbtft_gpio *gpio);
@@ -151,14 +151,14 @@ Definition
 .. code-block:: c
 
     struct fbtft_display {
-        unsigned width;
-        unsigned height;
-        unsigned regwidth;
-        unsigned buswidth;
-        unsigned backlight;
+        unsigned int width;
+        unsigned int height;
+        unsigned int regwidth;
+        unsigned int buswidth;
+        unsigned int backlight;
         struct fbtft_ops fbtftops;
-        unsigned bpp;
-        unsigned fps;
+        unsigned int bpp;
+        unsigned int fps;
         int txbuflen;
         int *init_sequence;
         char *gamma;
@@ -240,9 +240,9 @@ Definition
     struct fbtft_platform_data {
         struct fbtft_display display;
         const struct fbtft_gpio *gpios;
-        unsigned rotate;
+        unsigned int rotate;
         bool bgr;
-        unsigned fps;
+        unsigned int fps;
         int txbuflen;
         u8 startbyte;
         char *gamma;

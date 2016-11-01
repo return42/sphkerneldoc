@@ -51,7 +51,7 @@ vti6_locate
 Description
 -----------
 
-\ :c:func:`vti6_locate`\  first tries to locate an existing tunnel
+vti6_locate() first tries to locate an existing tunnel
 based on \ ``parms``\ . If this is unsuccessful, but \ ``create``\  is set a new
 tunnel device is created and registered for use.
 
@@ -79,7 +79,7 @@ vti6_dev_uninit
 Description
 -----------
 
-\ :c:func:`vti6_dev_uninit`\  removes tunnel from its list
+vti6_dev_uninit() removes tunnel from its list
 
 .. _`vti6_addr_conflict`:
 
@@ -150,7 +150,7 @@ vti6_tnl_change
 Description
 -----------
 
-\ :c:func:`vti6_tnl_change`\  updates the tunnel parameters
+vti6_tnl_change() updates the tunnel parameters
 
 .. _`vti6_ioctl`:
 
@@ -175,7 +175,7 @@ vti6_ioctl
 Description
 -----------
 
-\ :c:func:`vti6_ioctl`\  is used for managing vti6 tunnels
+vti6_ioctl() is used for managing vti6 tunnels
 from userspace.
 
 .. _`vti6_ioctl.the-possible-commands-are-the-following`:
@@ -183,7 +183,7 @@ from userspace.
 The possible commands are the following
 ---------------------------------------
 
-\ ``SIOCGETTUNNEL``\ : get tunnel parameters for device
+%SIOCGETTUNNEL: get tunnel parameters for device
 \ ``SIOCADDTUNNEL``\ : add tunnel matching given tunnel parameters
 \ ``SIOCCHGTUNNEL``\ : change tunnel parameters to those given
 \ ``SIOCDELTUNNEL``\ : delete tunnel

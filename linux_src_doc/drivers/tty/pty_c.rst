@@ -99,7 +99,7 @@ pty_start
 
 .. c:function:: void pty_start(struct tty_struct *tty)
 
-    \ :c:func:`start`\  handler pty_stop  - \ :c:func:`stop`\  handler
+    start() handler pty_stop  - \ :c:func:`stop`\  handler
 
     :param struct tty_struct \*tty:
         tty being flow-controlled
@@ -112,7 +112,7 @@ Description
 Propagates the TIOCPKT status to the master pty.
 
 NB: only the master pty can be in packet mode so only the slave
-needs \ :c:func:`start`\ /\ :c:func:`stop`\  handlers
+needs \ :c:func:`start`\ /stop() handlers
 
 .. _`pty_common_install`:
 

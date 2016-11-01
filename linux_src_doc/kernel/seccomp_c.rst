@@ -87,11 +87,11 @@ Returns 0 if the rule set is legal or -EINVAL if not.
 seccomp_run_filters
 ===================
 
-.. c:function:: u32 seccomp_run_filters(struct seccomp_data *sd)
+.. c:function:: u32 seccomp_run_filters(const struct seccomp_data *sd)
 
     evaluates all seccomp filters against \ ``syscall``\ 
 
-    :param struct seccomp_data \*sd:
+    :param const struct seccomp_data \*sd:
         *undescribed*
 
 .. _`seccomp_run_filters.description`:
@@ -228,63 +228,6 @@ Description
 -----------
 
 Forces a SIGSYS with a code of SYS_SECCOMP and related sigsys info.
-
-.. _`seccomp_phase1`:
-
-seccomp_phase1
-==============
-
-.. c:function:: u32 seccomp_phase1(struct seccomp_data *sd)
-
-    run fast path seccomp checks on the current syscall
-
-    :param struct seccomp_data \*sd:
-        *undescribed*
-
-.. _`seccomp_phase1.description`:
-
-Description
------------
-
-This only reads pt_regs via the syscall_xyz helpers.  The only change
-it will make to pt_regs is via syscall_set_return_value, and it will
-only do that if it returns SECCOMP_PHASE1_SKIP.
-
-If sd is provided, it will not read pt_regs at all.
-
-It may also call do_exit or force a signal; these actions must be
-safe.
-
-If it returns SECCOMP_PHASE1_OK, the syscall passes checks and should
-be processed normally.
-
-If it returns SECCOMP_PHASE1_SKIP, then the syscall should not be
-invoked.  In this case, seccomp_phase1 will have set the return value
-using syscall_set_return_value.
-
-If it returns anything else, then the return value should be passed
-to seccomp_phase2 from a context in which ptrace hooks are safe.
-
-.. _`seccomp_phase2`:
-
-seccomp_phase2
-==============
-
-.. c:function:: int seccomp_phase2(u32 phase1_result)
-
-    finish slow path seccomp work for the current syscall
-
-    :param u32 phase1_result:
-        The return value from \ :c:func:`seccomp_phase1`\ 
-
-.. _`seccomp_phase2.description`:
-
-Description
------------
-
-This must be called from a context in which ptrace hooks can be used.
-
-Returns 0 if the syscall should be processed or -1 to skip the syscall.
 
 .. _`seccomp_set_mode_strict`:
 

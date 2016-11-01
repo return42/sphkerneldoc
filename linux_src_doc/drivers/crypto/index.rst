@@ -10,6 +10,7 @@ crypto
     amcc/index
     caam/index
     ccp/index
+    chelsio/index
     marvell/index
     nx/index
     qat/index

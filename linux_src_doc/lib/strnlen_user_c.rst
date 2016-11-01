@@ -39,7 +39,7 @@ On exception (or invalid count), returns 0.
 NOTE! You should basically never use this function. There is
 almost never any valid case for using the length of a user space
 string, since the string can be changed at any time by other
-threads. Use "\ :c:func:`strncpy_from_user`\ " instead to get a stable copy
+threads. Use "strncpy_from_user()" instead to get a stable copy
 of the string.
 
 .. _`strlen_user`:

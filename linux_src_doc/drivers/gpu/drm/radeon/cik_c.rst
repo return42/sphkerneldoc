@@ -689,7 +689,7 @@ cik_cp_compute_load_microcode
 Description
 -----------
 
-Loads the compute MEC1\ :c:type:`struct 2 <2>` ucode.
+Loads the compute MEC1&2 ucode.
 Returns 0 for success, -EINVAL if the ucode is not available.
 
 .. _`cik_cp_compute_start`:

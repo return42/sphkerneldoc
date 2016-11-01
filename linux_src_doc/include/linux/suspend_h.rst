@@ -46,35 +46,35 @@ valid
 
 begin
     Initialise a transition to given system sleep state.
-    @\ :c:func:`begin`\  is executed right prior to suspending devices.  The information
-    conveyed to the platform code by @\ :c:func:`begin`\  should be disregarded by it as
-    soon as @\ :c:func:`end`\  is executed.  If @\ :c:func:`begin`\  fails (ie. returns nonzero),
-    @\ :c:func:`prepare`\ , @\ :c:func:`enter`\  and @\ :c:func:`finish`\  will not be called by the PM core.
+    \ ``begin``\ () is executed right prior to suspending devices.  The information
+    conveyed to the platform code by \ ``begin``\ () should be disregarded by it as
+    soon as \ ``end``\ () is executed.  If \ ``begin``\ () fails (ie. returns nonzero),
+    \ ``prepare``\ (), \ ``enter``\ () and \ ``finish``\ () will not be called by the PM core.
     This callback is optional.  However, if it is implemented, the argument
-    passed to @\ :c:func:`enter`\  is redundant and should be ignored.
+    passed to \ ``enter``\ () is redundant and should be ignored.
 
 prepare
     Prepare the platform for entering the system sleep state indicated
-    by @\ :c:func:`begin`\ .
-    @\ :c:func:`prepare`\  is called right after devices have been suspended (ie. the
-    appropriate .\ :c:func:`suspend`\  method has been executed for each device) and
+    by \ ``begin``\ ().
+    \ ``prepare``\ () is called right after devices have been suspended (ie. the
+    appropriate .suspend() method has been executed for each device) and
     before device drivers' late suspend callbacks are executed.  It returns
     0 on success or a negative error code otherwise, in which case the
-    system cannot enter the desired sleep state (@\ :c:func:`prepare_late`\ , @\ :c:func:`enter`\ ,
-    and @\ :c:func:`wake`\  will not be called in that case).
+    system cannot enter the desired sleep state (@prepare_late(), \ ``enter``\ (),
+    and \ ``wake``\ () will not be called in that case).
 
 prepare_late
     Finish preparing the platform for entering the system sleep
-    state indicated by @\ :c:func:`begin`\ .
+    state indicated by \ ``begin``\ ().
     \ ``prepare_late``\  is called before disabling nonboot CPUs and after
     device drivers' late suspend callbacks have been executed.  It returns
     0 on success or a negative error code otherwise, in which case the
-    system cannot enter the desired sleep state (@\ :c:func:`enter`\  will not be
+    system cannot enter the desired sleep state (@enter() will not be
     executed).
 
 enter
-    Enter the system sleep state indicated by @\ :c:func:`begin`\  or represented by
-    the argument if @\ :c:func:`begin`\  is not implemented.
+    Enter the system sleep state indicated by \ ``begin``\ () or represented by
+    the argument if \ ``begin``\ () is not implemented.
     This callback is mandatory.  It returns 0 on success or a negative
     error code otherwise, in which case the system cannot enter the desired
     sleep state.
@@ -84,16 +84,16 @@ wake
     the nonboot CPUs have been enabled and before device drivers' early
     resume callbacks are executed.
     This callback is optional, but should be implemented by the platforms
-    that implement @\ :c:func:`prepare_late`\ .  If implemented, it is always called
-    after \ ``prepare_late``\  and @\ :c:func:`enter`\ , even if one of them fails.
+    that implement \ ``prepare_late``\ ().  If implemented, it is always called
+    after \ ``prepare_late``\  and \ ``enter``\ (), even if one of them fails.
 
 finish
     Finish wake-up of the platform.
     \ ``finish``\  is called right prior to calling device drivers' regular suspend
     callbacks.
     This callback is optional, but should be implemented by the platforms
-    that implement @\ :c:func:`prepare`\ .  If implemented, it is always called after
-    @\ :c:func:`enter`\  and @\ :c:func:`wake`\ , even if any of them fails.  It is executed after
+    that implement \ ``prepare``\ ().  If implemented, it is always called after
+    \ ``enter``\ () and \ ``wake``\ (), even if any of them fails.  It is executed after
     a failing \ ``prepare``\ .
 
 suspend_again
@@ -109,9 +109,9 @@ end
     the platform that the system has returned to the working state or
     the transition to the sleep state has been aborted.
     This callback is optional, but should be implemented by the platforms
-    that implement @\ :c:func:`begin`\ .  Accordingly, platforms implementing @\ :c:func:`begin`\ 
-    should also provide a @\ :c:func:`end`\  which cleans up transitions aborted before
-    @\ :c:func:`enter`\ .
+    that implement \ ``begin``\ ().  Accordingly, platforms implementing \ ``begin``\ ()
+    should also provide a \ ``end``\ () which cleans up transitions aborted before
+    \ ``enter``\ ().
 
 recover
     Recover the platform from a suspend failure.
@@ -240,7 +240,7 @@ enter
 
 leave
     Perform the first stage of the cleanup after the system sleep state
-    indicated by @\ :c:func:`set_target`\  has been left.
+    indicated by \ ``set_target``\ () has been left.
     Called right after the control has been passed from the boot kernel to
     the image kernel, before the nonboot CPUs are enabled and before devices
     are resumed.  Executed with interrupts disabled.
@@ -269,7 +269,7 @@ Description
 The methods in this structure allow a platform to carry out special
 operations required by it during a hibernation transition.
 
-All the methods below, except for @\ :c:func:`recover`\ , must be implemented.
+All the methods below, except for \ ``recover``\ (), must be implemented.
 
 .. This file was automatic generated / don't edit.
 

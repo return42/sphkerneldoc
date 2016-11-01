@@ -37,7 +37,7 @@ lbs_get_firmware
     Retrieves two-stage firmware
 
     :param struct device \*dev:
-        A pointer to \ :c:type:`struct device <device>` structure
+        A pointer to \ :c:type:`struct device <device>`\  structure
 
     :param u32 card_model:
         Bus-specific card model ID used to filter firmware table

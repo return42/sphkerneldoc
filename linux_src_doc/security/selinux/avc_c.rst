@@ -83,7 +83,7 @@ Description
 -----------
 
 Look up an AVC entry that is valid for the
-(\ ``ssid``\ , \ ``tsid``\ ), interpreting the permissions
+(@ssid, \ ``tsid``\ ), interpreting the permissions
 based on \ ``tclass``\ .  If a valid AVC entry exists,
 then this function returns the avc_node.
 Otherwise, this function returns NULL.
@@ -118,7 +118,7 @@ Description
 -----------
 
 Insert an AVC entry for the SID pair
-(\ ``ssid``\ , \ ``tsid``\ ) and class \ ``tclass``\ .
+(@ssid, \ ``tsid``\ ) and class \ ``tclass``\ .
 The access vectors and the sequence number are
 normally provided by the security server in
 response to a \ :c:func:`security_compute_av`\  call.  If the
@@ -178,7 +178,7 @@ Description
 -----------
 
 Register a callback function for events in the set \ ``events``\ .
-Returns \ ``0``\  on success or -\ ``ENOMEM``\  if insufficient memory
+Returns \ ``0``\  on success or -%ENOMEM if insufficient memory
 exists to add the callback.
 
 .. _`avc_update_node`:
@@ -285,11 +285,11 @@ Description
 -----------
 
 Check the AVC to determine whether the \ ``requested``\  permissions are granted
-for the SID pair (\ ``ssid``\ , \ ``tsid``\ ), interpreting the permissions
+for the SID pair (@ssid, \ ``tsid``\ ), interpreting the permissions
 based on \ ``tclass``\ , and call the security server on a cache miss to obtain
 a new decision and add it to the cache.  Return a copy of the decisions
 in \ ``avd``\ .  Return \ ``0``\  if all \ ``requested``\  permissions are granted,
--\ ``EACCES``\  if any permissions are denied, or another -errno upon
+-%EACCES if any permissions are denied, or another -errno upon
 other errors.  This function is typically called by \ :c:func:`avc_has_perm`\ ,
 but may also be called directly to separate permission checking from
 auditing, e.g. in cases where a lock must be held for the check but
@@ -325,11 +325,11 @@ Description
 -----------
 
 Check the AVC to determine whether the \ ``requested``\  permissions are granted
-for the SID pair (\ ``ssid``\ , \ ``tsid``\ ), interpreting the permissions
+for the SID pair (@ssid, \ ``tsid``\ ), interpreting the permissions
 based on \ ``tclass``\ , and call the security server on a cache miss to obtain
 a new decision and add it to the cache.  Audit the granting or denial of
 permissions in accordance with the policy.  Return \ ``0``\  if all \ ``requested``\ 
-permissions are granted, -\ ``EACCES``\  if any permissions are denied, or
+permissions are granted, -%EACCES if any permissions are denied, or
 another -errno upon other errors.
 
 .. This file was automatic generated / don't edit.

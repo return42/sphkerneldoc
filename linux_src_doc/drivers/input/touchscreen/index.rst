@@ -12,4 +12,5 @@ touchscreen
     of_touchscreen_c
     s3c2410_ts_c
     stmpe-ts_c
+    surface3_spi_c
     wm97xx-core_c

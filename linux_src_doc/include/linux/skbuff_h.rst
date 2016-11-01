@@ -42,7 +42,7 @@ hwtstamps can only be compared against other hwtstamps from
 the same device.
 
 This structure is attached to packets as part of the
-\ :c:type:`struct skb_shared_info <skb_shared_info>`. Use \ :c:func:`skb_hwtstamps`\  to get a pointer.
+\ :c:type:`struct skb_shared_info <skb_shared_info>`\ . Use \ :c:func:`skb_hwtstamps`\  to get a pointer.
 
 .. _`skb_mstamp`:
 
@@ -474,7 +474,7 @@ Description
 Drop a reference to the header part of the buffer.  This is done
 by acquiring a payload reference.  You must not read from the header
 part of skb->data after this.
-Note : Check if you can use \\ :c:func:`__skb_header_release`\  instead.
+Note : Check if you can use \__skb_header_release() instead.
 
 .. _`__skb_header_release`:
 
@@ -579,7 +579,7 @@ skb_peek
 
 .. c:function:: struct sk_buff *skb_peek(const struct sk_buff_head *list_)
 
-    peek at the head of an \ :c:type:`struct sk_buff_head <sk_buff_head>`
+    peek at the head of an \ :c:type:`struct sk_buff_head <sk_buff_head>`\ 
 
     :param const struct sk_buff_head \*list_:
         list to peek at
@@ -589,7 +589,7 @@ skb_peek
 Description
 -----------
 
-Peek an \ :c:type:`struct sk_buff <sk_buff>`. Unlike most other operations you \_MUST\_
+Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you \_MUST\_
 be careful with this one. A peek leaves the buffer on the
 list and someone else may run off with it. You must hold
 the appropriate locks or have a private queue to do this.
@@ -629,7 +629,7 @@ skb_peek_tail
 
 .. c:function:: struct sk_buff *skb_peek_tail(const struct sk_buff_head *list_)
 
-    peek at the tail of an \ :c:type:`struct sk_buff_head <sk_buff_head>`
+    peek at the tail of an \ :c:type:`struct sk_buff_head <sk_buff_head>`\ 
 
     :param const struct sk_buff_head \*list_:
         list to peek at
@@ -639,7 +639,7 @@ skb_peek_tail
 Description
 -----------
 
-Peek an \ :c:type:`struct sk_buff <sk_buff>`. Unlike most other operations you \_MUST\_
+Peek an \ :c:type:`struct sk_buff <sk_buff>`\ . Unlike most other operations you \_MUST\_
 be careful with this one. A peek leaves the buffer on the
 list and someone else may run off with it. You must hold
 the appropriate locks or have a private queue to do this.
@@ -665,7 +665,7 @@ skb_queue_len
 Description
 -----------
 
-Return the length of an \ :c:type:`struct sk_buff <sk_buff>` queue.
+Return the length of an \ :c:type:`struct sk_buff <sk_buff>`\  queue.
 
 .. _`__skb_queue_head_init`:
 
@@ -914,7 +914,7 @@ __skb_fill_page_desc
 Description
 -----------
 
-Initialises the \ ``i``\ 'th fragment of \ ``skb``\  to point to \ :c:type:`struct size <size>` bytes at
+Initialises the \ ``i``\ 'th fragment of \ ``skb``\  to point to \ :c:type:`struct size <size>`\  bytes at
 offset \ ``off``\  within \ ``page``\ .
 
 Does not take any additional reference on the fragment.
@@ -948,7 +948,7 @@ skb_fill_page_desc
 Description
 -----------
 
-As per \\ :c:func:`__skb_fill_page_desc`\  -- initialises the \ ``i``\ 'th fragment of
+As per \__skb_fill_page_desc() -- initialises the \ ``i``\ 'th fragment of
 \ ``skb``\  to point to \ ``size``\  bytes at offset \ ``off``\  within \ ``page``\ . In
 addition updates \ ``skb``\  such that \ ``i``\  is the last fragment.
 
@@ -971,7 +971,7 @@ skb_headroom
 Description
 -----------
 
-Return the number of bytes of free space at the head of an \ :c:type:`struct sk_buff <sk_buff>`.
+Return the number of bytes of free space at the head of an \ :c:type:`struct sk_buff <sk_buff>`\ .
 
 .. _`skb_tailroom`:
 
@@ -1032,7 +1032,7 @@ skb_reserve
 Description
 -----------
 
-Increase the headroom of an empty \ :c:type:`struct sk_buff <sk_buff>` by reducing the tail
+Increase the headroom of an empty \ :c:type:`struct sk_buff <sk_buff>`\  by reducing the tail
 room. This is only allowed for an empty buffer.
 
 .. _`skb_tailroom_reserve`:
@@ -1150,7 +1150,7 @@ skb_queue_purge
 Description
 -----------
 
-Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>` list. Each buffer is removed from
+Delete all buffers on an \ :c:type:`struct sk_buff <sk_buff>`\  list. Each buffer is removed from
 the list and one reference dropped. This function does not take the
 list lock and the caller must hold the relevant locks to use it.
 
@@ -1174,7 +1174,7 @@ netdev_alloc_skb
 Description
 -----------
 
-Allocate a new \ :c:type:`struct sk_buff <sk_buff>` and assign it a usage count of one. The
+Allocate a new \ :c:type:`struct sk_buff <sk_buff>`\  and assign it a usage count of one. The
 buffer has unspecified headroom built in. Users should allocate
 the headroom they think they need without accounting for the
 built in space. The built in space is used for optimisations.
@@ -1453,7 +1453,7 @@ skb_frag_dma_map
         the number of bytes to map
 
     :param enum dma_data_direction dir:
-        the direction of the mapping (\ ``PCI_DMA``\ \_\*)
+        the direction of the mapping (%PCI_DMA\_\*)
 
 .. _`skb_frag_dma_map.description`:
 
@@ -1625,7 +1625,7 @@ Description
 -----------
 
 Return true if the skb has at least one frag that might be modified
-by an external entity (as in \ :c:func:`vmsplice`\ /\ :c:func:`sendfile`\ )
+by an external entity (as in \ :c:func:`vmsplice`\ /sendfile())
 
 .. _`skb_linearize_cow`:
 
@@ -1673,6 +1673,32 @@ Description
 After doing a pull on a received packet, you need to call this to
 update the CHECKSUM_COMPLETE checksum, or set ip_summed to
 CHECKSUM_NONE so that it can be recomputed from scratch.
+
+.. _`skb_postpush_rcsum`:
+
+skb_postpush_rcsum
+==================
+
+.. c:function:: void skb_postpush_rcsum(struct sk_buff *skb, const void *start, unsigned int len)
+
+    update checksum for received skb after push
+
+    :param struct sk_buff \*skb:
+        buffer to update
+
+    :param const void \*start:
+        start of data after push
+
+    :param unsigned int len:
+        length of data pushed
+
+.. _`skb_postpush_rcsum.description`:
+
+Description
+-----------
+
+After doing a push on a received packet, you need to call this to
+update the CHECKSUM_COMPLETE checksum.
 
 .. _`skb_push_rcsum`:
 

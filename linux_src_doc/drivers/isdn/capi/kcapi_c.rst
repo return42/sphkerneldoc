@@ -250,7 +250,7 @@ Description
 Register an application's presence with CAPI.
 A unique application ID is assigned and stored in \ ``ap``\ ->applid.
 After this function returns successfully, the message receive
-callback function \ ``ap``\ ->\ :c:func:`recv_message`\  may be called at any time
+callback function \ ``ap``\ ->recv_message() may be called at any time
 until \ :c:func:`capi20_release`\  has been called for the same \ ``ap``\ .
 
 .. _`capi20_register.return-value`:
@@ -279,7 +279,7 @@ Description
 
 Terminate an application's registration with CAPI.
 After this function returns successfully, the message receive
-callback function \ ``ap``\ ->\ :c:func:`recv_message`\  will no longer be called.
+callback function \ ``ap``\ ->recv_message() will no longer be called.
 
 .. _`capi20_release.return-value`:
 

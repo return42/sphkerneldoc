@@ -1,6 +1,152 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: sound/soc/codecs/nau8825.c
 
+.. _`nau8825_sema_acquire`:
+
+nau8825_sema_acquire
+====================
+
+.. c:function:: int nau8825_sema_acquire(struct nau8825 *nau8825, long timeout)
+
+    acquire the semaphore of nau88l25
+
+    :param struct nau8825 \*nau8825:
+        component to register the codec private data with
+
+    :param long timeout:
+        how long in jiffies to wait before failure or zero to wait
+        until release
+
+.. _`nau8825_sema_acquire.description`:
+
+Description
+-----------
+
+Attempts to acquire the semaphore with number of jiffies. If no more
+tasks are allowed to acquire the semaphore, calling this function will
+put the task to sleep. If the semaphore is not released within the
+specified number of jiffies, this function returns.
+Acquires the semaphore without jiffies. If no more tasks are allowed
+to acquire the semaphore, calling this function will put the task to
+sleep until the semaphore is released.
+If the semaphore is not released within the specified number of jiffies,
+this function returns -ETIME.
+If the sleep is interrupted by a signal, this function will return -EINTR.
+It returns 0 if the semaphore was acquired successfully.
+
+.. _`nau8825_sema_release`:
+
+nau8825_sema_release
+====================
+
+.. c:function:: void nau8825_sema_release(struct nau8825 *nau8825)
+
+    release the semaphore of nau88l25
+
+    :param struct nau8825 \*nau8825:
+        component to register the codec private data with
+
+.. _`nau8825_sema_release.description`:
+
+Description
+-----------
+
+Release the semaphore which may be called from any context and
+even by tasks which have never called \ :c:func:`down`\ .
+
+.. _`nau8825_sema_reset`:
+
+nau8825_sema_reset
+==================
+
+.. c:function:: void nau8825_sema_reset(struct nau8825 *nau8825)
+
+    reset the semaphore for nau88l25
+
+    :param struct nau8825 \*nau8825:
+        component to register the codec private data with
+
+.. _`nau8825_sema_reset.description`:
+
+Description
+-----------
+
+Reset the counter of the semaphore. Call this function to restart
+a new round task management.
+
+.. _`nau8825_hpvol_ramp`:
+
+nau8825_hpvol_ramp
+==================
+
+.. c:function:: void nau8825_hpvol_ramp(struct nau8825 *nau8825, unsigned int vol_from, unsigned int vol_to, unsigned int step)
+
+    :param struct nau8825 \*nau8825:
+        component to register the codec private data with
+
+    :param unsigned int vol_from:
+        the volume to start up
+
+    :param unsigned int vol_to:
+        the target volume
+
+    :param unsigned int step:
+        the volume span to move on
+
+.. _`nau8825_hpvol_ramp.description`:
+
+Description
+-----------
+
+The headphone volume is from 0dB to minimum -54dB and -1dB per step.
+If the volume changes sharp, there is a pop noise heard in headphone. We
+provide the function to ramp up the volume up or down by delaying 10ms
+per step.
+
+.. _`nau8825_intlog10_dec3`:
+
+nau8825_intlog10_dec3
+=====================
+
+.. c:function:: u32 nau8825_intlog10_dec3(u32 value)
+
+    tion takes reference to dvb-math. The source code locates as the following. Linux/drivers/media/dvb-core/dvb_math.c
+
+    :param u32 value:
+        *undescribed*
+
+.. _`nau8825_intlog10_dec3.description`:
+
+Description
+-----------
+
+return log10(value) \* 1000
+
+.. _`nau8825_xtalk_sidetone`:
+
+nau8825_xtalk_sidetone
+======================
+
+.. c:function:: u32 nau8825_xtalk_sidetone(u32 sig_org, u32 sig_cros)
+
+    :param u32 sig_org:
+        orignal signal level
+
+    :param u32 sig_cros:
+        cross talk signal level
+
+.. _`nau8825_xtalk_sidetone.description`:
+
+Description
+-----------
+
+The orignal and cross talk signal vlues need to be characterized.
+Once these values have been characterized, this sidetone value
+can be converted to decibel with the equation below.
+sidetone = 20 \* log (original signal level / crosstalk signal level)
+
+return cross talk sidetone gain
+
 .. _`nau8825_enable_jack_detect`:
 
 nau8825_enable_jack_detect

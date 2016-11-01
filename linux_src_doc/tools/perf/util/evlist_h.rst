@@ -55,89 +55,89 @@ auxtrace_mmap
 Description
 -----------
 
-\ ``refcnt``\  - e.g. code using PERF_EVENT_IOC_SET_OUTPUT to share this
+@refcnt - e.g. code using PERF_EVENT_IOC_SET_OUTPUT to share this
 
-.. _`__evlist__for_each`:
+.. _`__evlist__for_each_entry`:
 
-__evlist__for_each
-==================
-
-.. c:function::  __evlist__for_each( list,  evsel)
-
-    iterate thru all the evsels
-
-    :param  list:
-        list_head instance to iterate
-
-    :param  evsel:
-        struct evsel iterator
-
-.. _`evlist__for_each`:
-
-evlist__for_each
-================
-
-.. c:function::  evlist__for_each( evlist,  evsel)
-
-    iterate thru all the evsels
-
-    :param  evlist:
-        evlist instance to iterate
-
-    :param  evsel:
-        struct evsel iterator
-
-.. _`__evlist__for_each_continue`:
-
-__evlist__for_each_continue
-===========================
-
-.. c:function::  __evlist__for_each_continue( list,  evsel)
-
-    continue iteration thru all the evsels
-
-    :param  list:
-        list_head instance to iterate
-
-    :param  evsel:
-        struct evsel iterator
-
-.. _`evlist__for_each_continue`:
-
-evlist__for_each_continue
-=========================
-
-.. c:function::  evlist__for_each_continue( evlist,  evsel)
-
-    continue iteration thru all the evsels
-
-    :param  evlist:
-        evlist instance to iterate
-
-    :param  evsel:
-        struct evsel iterator
-
-.. _`__evlist__for_each_reverse`:
-
-__evlist__for_each_reverse
-==========================
-
-.. c:function::  __evlist__for_each_reverse( list,  evsel)
-
-    iterate thru all the evsels in reverse order
-
-    :param  list:
-        list_head instance to iterate
-
-    :param  evsel:
-        struct evsel iterator
-
-.. _`evlist__for_each_reverse`:
-
-evlist__for_each_reverse
+__evlist__for_each_entry
 ========================
 
-.. c:function::  evlist__for_each_reverse( evlist,  evsel)
+.. c:function::  __evlist__for_each_entry( list,  evsel)
+
+    iterate thru all the evsels
+
+    :param  list:
+        list_head instance to iterate
+
+    :param  evsel:
+        struct evsel iterator
+
+.. _`evlist__for_each_entry`:
+
+evlist__for_each_entry
+======================
+
+.. c:function::  evlist__for_each_entry( evlist,  evsel)
+
+    iterate thru all the evsels
+
+    :param  evlist:
+        evlist instance to iterate
+
+    :param  evsel:
+        struct evsel iterator
+
+.. _`__evlist__for_each_entry_continue`:
+
+__evlist__for_each_entry_continue
+=================================
+
+.. c:function::  __evlist__for_each_entry_continue( list,  evsel)
+
+    continue iteration thru all the evsels
+
+    :param  list:
+        list_head instance to iterate
+
+    :param  evsel:
+        struct evsel iterator
+
+.. _`evlist__for_each_entry_continue`:
+
+evlist__for_each_entry_continue
+===============================
+
+.. c:function::  evlist__for_each_entry_continue( evlist,  evsel)
+
+    continue iteration thru all the evsels
+
+    :param  evlist:
+        evlist instance to iterate
+
+    :param  evsel:
+        struct evsel iterator
+
+.. _`__evlist__for_each_entry_reverse`:
+
+__evlist__for_each_entry_reverse
+================================
+
+.. c:function::  __evlist__for_each_entry_reverse( list,  evsel)
+
+    iterate thru all the evsels in reverse order
+
+    :param  list:
+        list_head instance to iterate
+
+    :param  evsel:
+        struct evsel iterator
+
+.. _`evlist__for_each_entry_reverse`:
+
+evlist__for_each_entry_reverse
+==============================
+
+.. c:function::  evlist__for_each_entry_reverse( evlist,  evsel)
 
     iterate thru all the evsels in reverse order
 
@@ -147,12 +147,12 @@ evlist__for_each_reverse
     :param  evsel:
         struct evsel iterator
 
-.. _`__evlist__for_each_safe`:
+.. _`__evlist__for_each_entry_safe`:
 
-__evlist__for_each_safe
-=======================
+__evlist__for_each_entry_safe
+=============================
 
-.. c:function::  __evlist__for_each_safe( list,  tmp,  evsel)
+.. c:function::  __evlist__for_each_entry_safe( list,  tmp,  evsel)
 
     safely iterate thru all the evsels
 
@@ -165,12 +165,12 @@ __evlist__for_each_safe
     :param  evsel:
         struct evsel iterator
 
-.. _`evlist__for_each_safe`:
+.. _`evlist__for_each_entry_safe`:
 
-evlist__for_each_safe
-=====================
+evlist__for_each_entry_safe
+===========================
 
-.. c:function::  evlist__for_each_safe( evlist,  tmp,  evsel)
+.. c:function::  evlist__for_each_entry_safe( evlist,  tmp,  evsel)
 
     safely iterate thru all the evsels
 

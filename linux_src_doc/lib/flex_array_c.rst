@@ -27,7 +27,7 @@ Note
 all locking must be provided by the caller.
 
 \ ``total``\  is used to size internal structures.  If the user ever
-accesses any array indexes >=\ ``total``\ , it will produce errors.
+accesses any array indexes >=@total, it will produce errors.
 
 .. _`flex_array_alloc.the-maximum-number-of-elements-is-defined-as`:
 
@@ -42,7 +42,7 @@ integer math):
 (PAGE_SIZE/element_size) \* (PAGE_SIZE-8)/sizeof(void \*)
 
 Here's a table showing example capacities.  Note that the maximum
-index that the get/\ :c:func:`put`\  functions is just nr_objects-1.   This
+index that the get/put() functions is just nr_objects-1.   This
 basically means that you get 4MB of storage on 32-bit and 2MB on
 64-bit.
 
@@ -114,7 +114,7 @@ Description
 
 Note that this \*copies\* the contents of \ ``src``\  into
 the array.  If you are trying to store an array of
-pointers, make sure to pass in \ :c:type:`struct ptr <ptr>` instead of ptr.
+pointers, make sure to pass in \ :c:type:`struct ptr <ptr>`\  instead of ptr.
 You may instead wish to use the \ :c:func:`flex_array_put_ptr`\ 
 helper function.
 
@@ -197,7 +197,7 @@ Description
 
 Returns a pointer to the data at index \ ``element_nr``\ .  Note
 that this is a copy of the data that was passed in.  If you
-are using this to store pointers, you'll get back \ :c:type:`struct ptr <ptr>`.  You
+are using this to store pointers, you'll get back \ :c:type:`struct ptr <ptr>`\ .  You
 may instead wish to use the flex_array_get_ptr helper.
 
 Locking must be provided by the caller.
@@ -224,7 +224,7 @@ Description
 
 Returns the pointer placed in the flex array at element_nr using
 \ :c:func:`flex_array_put_ptr`\ .  This function should not be called if the
-element in question was not set using the \\ :c:func:`_put_ptr`\  helper.
+element in question was not set using the \_put_ptr() helper.
 
 .. _`flex_array_shrink`:
 

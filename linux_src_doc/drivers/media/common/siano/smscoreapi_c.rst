@@ -37,7 +37,7 @@ smscore_unregister_hotplug
 Description
 -----------
 
-\ ``param``\  hotplug callback
+@param hotplug callback
 
 .. _`smscore_register_device`:
 
@@ -62,7 +62,7 @@ smscore_register_device
 Description
 -----------
 
-\ ``param``\  params device pointer to struct with device specific parameters
+@param params device pointer to struct with device specific parameters
 and handlers
 \ ``param``\  coredev pointer to a value that receives created coredev object
 
@@ -83,7 +83,7 @@ smscore_init_ir
 Description
 -----------
 
-\ ``return``\  0 on success, < 0 on error.
+@return 0 on success, < 0 on error.
 
 .. _`smscore_configure_board`:
 
@@ -100,7 +100,7 @@ smscore_configure_board
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 
 \ ``return``\  0 on success, <0 on error.
@@ -120,7 +120,7 @@ smscore_start_device
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 
 \ ``return``\  0 on success, <0 on error.
@@ -145,7 +145,7 @@ smscore_get_fw_filename
 Description
 -----------
 
-\ ``return``\  0 on success, <0 on error.
+@return 0 on success, <0 on error.
 
 .. _`smscore_load_firmware_from_file`:
 
@@ -168,7 +168,7 @@ smscore_load_firmware_from_file
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 \ ``param``\  filename null-terminated string specifies firmware file name
 \ ``param``\  loadfirmware_handler device handler that loads firmware
@@ -192,7 +192,7 @@ smscore_unregister_device
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 
 \ ``return``\  0 on success, <0 on error.
@@ -215,7 +215,7 @@ smscore_init_device
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 \ ``param``\  mode requested mode of operation
 
@@ -262,7 +262,7 @@ smscore_get_device_mode
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 
 \ ``return``\  current mode
@@ -290,7 +290,7 @@ smscore_find_client
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 \ ``param``\  data_type client data type (SMS_DONT_CARE for all types)
 \ ``param``\  id client id (SMS_DONT_CARE for all id)
@@ -315,7 +315,7 @@ smscore_onresponse
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 \ ``param``\  cb pointer to response buffer descriptor
 
@@ -334,7 +334,7 @@ get_entry
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 
 \ ``return``\  pointer to descriptor on success, NULL on error.
@@ -357,7 +357,7 @@ smscore_putbuffer
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object returned by
+@param coredev pointer to a coredev object returned by
 smscore_register_device
 \ ``param``\  cb pointer buffer descriptor
 
@@ -382,7 +382,7 @@ smscore_register_client
 Description
 -----------
 
-\ ``param``\  coredev pointer to a coredev object from clients hotplug
+@param coredev pointer to a coredev object from clients hotplug
 \ ``param``\  initial_id all messages with this id would be sent to this client
 \ ``param``\  data_type all messages of this type would be sent to this client
 \ ``param``\  onresponse_handler client handler that is called to
@@ -408,7 +408,7 @@ smscore_unregister_client
 Description
 -----------
 
-\ ``param``\  client pointer to smsclient object returned by
+@param client pointer to smsclient object returned by
 smscore_register_client
 
 .. _`smsclient_sendrequest`:
@@ -434,7 +434,7 @@ smsclient_sendrequest
 Description
 -----------
 
-\ ``param``\  client pointer to smsclient object returned by
+@param client pointer to smsclient object returned by
 smscore_register_client
 \ ``param``\  buffer pointer to a request buffer
 \ ``param``\  size size (in bytes) of request buffer

@@ -67,7 +67,7 @@ This is kinda tricky, but fortunately, Intel spelled it out for us cleanly:
 What does that mean for us? Well, \ :c:func:`stop_machine`\  will ensure that
 the rendezvous handler is started on each CPU. And in lockstep they
 do the state transition of disabling interrupts, updating MTRR's
-(the CPU vendors may each do it differently, so we call mtrr_if->\ :c:func:`set`\ 
+(the CPU vendors may each do it differently, so we call mtrr_if->set()
 callback and let them take care of it.) and enabling interrupts.
 
 Note that the mechanism is the same for UP systems, too; all the SMP stuff

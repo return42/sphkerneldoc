@@ -35,7 +35,7 @@ Members
 -------
 
 magic
-    erase counter header magic number (\ ``UBI_EC_HDR_MAGIC``\ )
+    erase counter header magic number (%UBI_EC_HDR_MAGIC)
 
 version
     version of UBI implementation which is supposed to accept this
@@ -129,21 +129,21 @@ Members
 -------
 
 magic
-    volume identifier header magic number (\ ``UBI_VID_HDR_MAGIC``\ )
+    volume identifier header magic number (%UBI_VID_HDR_MAGIC)
 
 version
     UBI implementation version which is supposed to accept this UBI
-    image (\ ``UBI_VERSION``\ )
+    image (%UBI_VERSION)
 
 vol_type
-    volume type (\ ``UBI_VID_DYNAMIC``\  or \ ``UBI_VID_STATIC``\ )
+    volume type (%UBI_VID_DYNAMIC or \ ``UBI_VID_STATIC``\ )
 
 copy_flag
     if this logical eraseblock was copied from another physical
     eraseblock (for wear-leveling reasons)
 
 compat
-    compatibility of this volume (\ ``0``\ , \ ``UBI_COMPAT_DELETE``\ ,
+    compatibility of this volume (%0, \ ``UBI_COMPAT_DELETE``\ ,
     \ ``UBI_COMPAT_IGNORE``\ , \ ``UBI_COMPAT_PRESERVE``\ , or \ ``UBI_COMPAT_REJECT``\ )
 
 vol_id
@@ -327,7 +327,7 @@ data_pad
     eraseblock to satisfy the requested alignment
 
 vol_type
-    volume type (\ ``UBI_DYNAMIC_VOLUME``\  or \ ``UBI_STATIC_VOLUME``\ )
+    volume type (%UBI_DYNAMIC_VOLUME or \ ``UBI_STATIC_VOLUME``\ )
 
 upd_marker
     if volume update was started but not finished
@@ -339,7 +339,7 @@ name
     the volume name
 
 flags
-    volume flags (\ ``UBI_VTBL_AUTORESIZE_FLG``\ )
+    volume flags (%UBI_VTBL_AUTORESIZE_FLG)
 
 padding
     reserved, zeroes
@@ -410,7 +410,7 @@ Members
 -------
 
 magic
-    fastmap super block magic number (\ ``UBI_FM_SB_MAGIC``\ )
+    fastmap super block magic number (%UBI_FM_SB_MAGIC)
 
 version
     format version of this fastmap
@@ -463,7 +463,7 @@ Members
 -------
 
 magic
-    fastmap header magic number (\ ``UBI_FM_HDR_MAGIC``\ )
+    fastmap header magic number (%UBI_FM_HDR_MAGIC)
 
 free_peb_count
     number of free PEBs known by this fastmap
@@ -513,7 +513,7 @@ Members
 -------
 
 magic
-    pool magic numer (\ ``UBI_FM_POOL_MAGIC``\ )
+    pool magic numer (%UBI_FM_POOL_MAGIC)
 
 size
     current pool size
@@ -589,7 +589,7 @@ Members
 -------
 
 magic
-    Fastmap volume header magic number (\ ``UBI_FM_VHDR_MAGIC``\ )
+    Fastmap volume header magic number (%UBI_FM_VHDR_MAGIC)
 
 vol_id
     volume id of the fastmapped volume

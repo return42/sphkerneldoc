@@ -136,7 +136,7 @@ lpfc_sli4_clear_fcf_rr_bmask
 
 .. c:function:: void lpfc_sli4_clear_fcf_rr_bmask(struct lpfc_hba *phba)
 
-    \ ``phba``\  pointer to the struct lpfc_hba for this port. This fucnction resets the round robin bit mask and clears the fcf priority list. The list deletions are done while holding the hbalock. The ON_LIST flag and the FLOGI_FAILED flags are cleared from the lpfc_fcf_pri record.
+    @phba pointer to the struct lpfc_hba for this port. This fucnction resets the round robin bit mask and clears the fcf priority list. The list deletions are done while holding the hbalock. The ON_LIST flag and the FLOGI_FAILED flags are cleared from the lpfc_fcf_pri record.
 
     :param struct lpfc_hba \*phba:
         *undescribed*

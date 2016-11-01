@@ -40,7 +40,7 @@ base
 Description
 -----------
 
-See @\ :c:func:`update_fast_timekeeper`\  below.
+See \ ``update_fast_timekeeper``\ () below.
 
 .. _`tk_setup_internals`:
 
@@ -723,7 +723,7 @@ timekeeping_rtc_skipsuspend
 
 .. c:function:: bool timekeeping_rtc_skipsuspend( void)
 
-    \ :c:func:`timekeeping_resume`\  which is invoked after \ :c:func:`rtc_suspend`\ , so we can't skip \ :c:func:`rtc_suspend`\  surely if system has 1).
+    timekeeping_resume() which is invoked after \ :c:func:`rtc_suspend`\ , so we can't skip \ :c:func:`rtc_suspend`\  surely if system has 1).
 
     :param  void:
         no arguments

@@ -55,7 +55,7 @@ Return
 mpi_write_to_sgl
 ================
 
-.. c:function:: int mpi_write_to_sgl(MPI a, struct scatterlist *sgl, unsigned *nbytes, int *sign)
+.. c:function:: int mpi_write_to_sgl(MPI a, struct scatterlist *sgl, unsigned nbytes, int *sign)
 
     Funnction exports MPI to an sgl (msb first)
 
@@ -66,12 +66,9 @@ mpi_write_to_sgl
         scatterlist to write to. Needs to be at least
         mpi_get_size(a) long.
 
-    :param unsigned \*nbytes:
-        in/out param - it has the be set to the maximum number of
-        bytes that can be written to sgl. This has to be at least
-        the size of the integer a. On return it receives the actual
-        length of the data written on success or the data that would
-        be written if buffer was too small.
+    :param unsigned nbytes:
+        the number of bytes to write.  Leading bytes will be
+        filled with zero.
 
     :param int \*sign:
         if not NULL, it will be set to the sign of a.

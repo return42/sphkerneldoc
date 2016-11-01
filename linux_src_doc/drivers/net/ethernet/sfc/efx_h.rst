@@ -35,10 +35,10 @@ as follows.
 1. If the existing filters have lower priority, or \ ``replace_equal``\ 
 is set and they have equal priority, replace them.
 
-2. If the existing filters have higher priority, return -\ ``EPERM``\ .
+2. If the existing filters have higher priority, return -%EPERM.
 
-3. If !efx_filter_is_mc_recipient(\ ``spec``\ ), or the NIC does not
-support delivery to multiple recipients, return -\ ``EEXIST``\ .
+3. If !efx_filter_is_mc_recipient(@spec), or the NIC does not
+support delivery to multiple recipients, return -%EEXIST.
 
 This implies that filters for multiple multicast recipients must
 all be inserted with the same priority and \ ``replace_equal``\  = \ ``false``\ .

@@ -34,7 +34,7 @@ address
     address of the (first) register to access
 
 request
-    contains the type of transaction (see DP_AUX\_\* macros)
+    contains the type of transaction (see DP_AUX_* macros)
 
 reply
     upon completion, contains the reply type of the transaction
@@ -92,10 +92,10 @@ transfer
     transfers a message representing a single AUX transaction
 
 i2c_nack_count
-    *undescribed*
+    Counts I2C NACKs, used for DP validation.
 
 i2c_defer_count
-    *undescribed*
+    Counts I2C DEFERs, used for DP validation.
 
 .. _`drm_dp_aux.description`:
 
@@ -109,17 +109,17 @@ The .name field may be used to specify the name of the I2C adapter. If set to
 NULL, \ :c:func:`dev_name`\  of .dev will be used.
 
 Drivers provide a hardware-specific implementation of how transactions
-are executed via the .\ :c:func:`transfer`\  function. A pointer to a drm_dp_aux_msg
+are executed via the .transfer() function. A pointer to a drm_dp_aux_msg
 structure describing the transaction is passed into this function. Upon
 success, the implementation should return the number of payload bytes
 that were transferred, or a negative error-code on failure. Helpers
-propagate errors from the .\ :c:func:`transfer`\  function, with the exception of
+propagate errors from the .transfer() function, with the exception of
 the -EBUSY error, which causes a transaction to be retried. On a short,
 helpers will return -EPROTO to make it simpler to check for failure.
 
 An AUX channel can also be used to transport I2C messages to a sink. A
 typical application of that is to access an EDID that's present in the
-sink device. The .\ :c:func:`transfer`\  function can also be used to execute such
+sink device. The .transfer() function can also be used to execute such
 transactions. The \ :c:func:`drm_dp_aux_register`\  function registers an I2C
 adapter that can be passed to \ :c:func:`drm_probe_ddc`\ . Upon removal, drivers
 should call \ :c:func:`drm_dp_aux_unregister`\  to remove the I2C adapter.
@@ -127,7 +127,7 @@ The I2C adapter uses long transfers by default; if a partial response is
 received, the adapter will drop down to the size given by the partial
 response for this transaction only.
 
-Note that the aux helper code assumes that the .\ :c:func:`transfer`\  function
+Note that the aux helper code assumes that the .transfer() function
 only modifies the reply field of the drm_dp_aux_msg structure.  The
 retry logic and i2c helpers assume this is the case.
 

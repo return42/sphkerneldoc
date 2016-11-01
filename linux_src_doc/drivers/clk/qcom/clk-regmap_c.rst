@@ -69,7 +69,7 @@ this as their \ :c:func:`disable`\  operation, saving some code.
 devm_clk_register_regmap
 ========================
 
-.. c:function:: struct clk *devm_clk_register_regmap(struct device *dev, struct clk_regmap *rclk)
+.. c:function:: int devm_clk_register_regmap(struct device *dev, struct clk_regmap *rclk)
 
     register a clk_regmap clock
 

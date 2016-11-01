@@ -48,11 +48,11 @@ snd_card_new
 Description
 -----------
 
-Creates and initializes a soundcard structure.
+ Creates and initializes a soundcard structure.
 
-The function allocates snd_card instance via kzalloc with the given
-space for the driver to use freely.  The allocated struct is stored
-in the given card_ret pointer.
+ The function allocates snd_card instance via kzalloc with the given
+ space for the driver to use freely.  The allocated struct is stored
+ in the given card_ret pointer.
 
 .. _`snd_card_new.return`:
 
@@ -78,7 +78,7 @@ snd_card_disconnect
 Description
 -----------
 
-Disconnects all APIs from the file-operations (user space).
+ Disconnects all APIs from the file-operations (user space).
 
 .. _`snd_card_disconnect.return`:
 
@@ -93,7 +93,7 @@ Note
 ----
 
 The current implementation replaces all active file->f_op with special
-dummy file operations (they do nothing except release).
+       dummy file operations (they do nothing except release).
 
 .. _`snd_card_free_when_closed`:
 
@@ -168,8 +168,8 @@ snd_card_set_id
 Description
 -----------
 
-This function sets the card identification and checks for name
-collisions.
+ This function sets the card identification and checks for name
+ collisions.
 
 .. _`snd_card_add_dev_attr`:
 
@@ -203,10 +203,10 @@ snd_card_register
 Description
 -----------
 
-This function registers all the devices assigned to the soundcard.
-Until calling this, the ALSA control interface is blocked from the
-external accesses.  Thus, you should call this function at the end
-of the initialization of the card.
+ This function registers all the devices assigned to the soundcard.
+ Until calling this, the ALSA control interface is blocked from the
+ external accesses.  Thus, you should call this function at the end
+ of the initialization of the card.
 
 .. _`snd_card_register.return`:
 
@@ -235,8 +235,8 @@ snd_component_add
 Description
 -----------
 
-This function adds the component id string to the supported list.
-The component can be referred from the alsa-lib.
+ This function adds the component id string to the supported list.
+ The component can be referred from the alsa-lib.
 
 .. _`snd_component_add.return`:
 
@@ -265,9 +265,9 @@ snd_card_file_add
 Description
 -----------
 
-This function adds the file to the file linked-list of the card.
-This linked-list is used to keep tracking the connection state,
-and to avoid the release of busy resources by hotplug.
+ This function adds the file to the file linked-list of the card.
+ This linked-list is used to keep tracking the connection state,
+ and to avoid the release of busy resources by hotplug.
 
 .. _`snd_card_file_add.return`:
 
@@ -296,11 +296,11 @@ snd_card_file_remove
 Description
 -----------
 
-This function removes the file formerly added to the card via
-\ :c:func:`snd_card_file_add`\  function.
-If all files are removed and \ :c:func:`snd_card_free_when_closed`\  was
-called beforehand, it processes the pending release of
-resources.
+ This function removes the file formerly added to the card via
+ \ :c:func:`snd_card_file_add`\  function.
+ If all files are removed and \ :c:func:`snd_card_free_when_closed`\  was
+ called beforehand, it processes the pending release of
+ resources.
 
 .. _`snd_card_file_remove.return`:
 
@@ -329,7 +329,7 @@ snd_power_wait
 Description
 -----------
 
-Waits until the power-state is changed.
+ Waits until the power-state is changed.
 
 .. _`snd_power_wait.return`:
 

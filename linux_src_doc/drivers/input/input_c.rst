@@ -35,7 +35,7 @@ devices to report input events. See also \ :c:func:`input_inject_event`\ .
 NOTE
 ----
 
-\ :c:func:`input_event`\  may be safely used right after input device was
+input_event() may be safely used right after input device was
 allocated with \ :c:func:`input_allocate_device`\ , even before it is registered
 with \ :c:func:`input_register_device`\ , but the event will not reach any of the
 input handlers. Such early invocation of \ :c:func:`input_event`\  may be used
@@ -318,7 +318,7 @@ Managed input devices do not need to be explicitly unregistered or
 freed as it will be done automatically when owner device unbinds from
 its driver (or binding fails). Once managed input device is allocated,
 it is ready to be set up and registered in the same fashion as regular
-input device. There are no special devm_input_device_[un]\ :c:func:`register`\ 
+input device. There are no special devm_input_device_[un]register()
 variants, regular ones work with both managed and unmanaged devices,
 should you need them. In most cases however, managed input device need
 not be explicitly unregistered or freed.

@@ -74,7 +74,7 @@ ecryptfs_evict_inode
 
 .. c:function:: void ecryptfs_evict_inode(struct inode *inode)
 
-    \ ``inode``\  - The ecryptfs inode
+    @inode - The ecryptfs inode
 
     :param struct inode \*inode:
         *undescribed*

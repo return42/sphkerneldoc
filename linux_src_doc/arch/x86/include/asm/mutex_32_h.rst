@@ -70,7 +70,7 @@ In the failure case, this function is allowed to either set the value
 to 1, or to set it to a value lower than 1.
 
 If the implementation sets it to a value of lower than 1, the
-\\ :c:func:`__mutex_slowpath_needs_to_unlock`\  macro needs to return 1, it needs
+\__mutex_slowpath_needs_to_unlock() macro needs to return 1, it needs
 to return 0 otherwise.
 
 .. _`__mutex_fastpath_trylock`:

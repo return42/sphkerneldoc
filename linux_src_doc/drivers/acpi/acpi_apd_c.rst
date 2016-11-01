@@ -29,6 +29,7 @@ Definition
     struct apd_device_desc {
         unsigned int flags;
         unsigned int fixed_clk_rate;
+        struct property_entry *properties;
         int (*setup)(struct apd_private_data *pdata);
     }
 
@@ -43,6 +44,9 @@ flags
 fixed_clk_rate
     fixed rate input clock source for acpi device;
     0 means no fixed rate input clock source
+
+properties
+    *undescribed*
 
 setup
     a hook routine to set device resource during create platform device

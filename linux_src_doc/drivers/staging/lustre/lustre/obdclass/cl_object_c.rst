@@ -122,7 +122,7 @@ Description
 Data-attributes are protected by the cl_object_header::coh_attr_guard
 spin-lock in the top-object.
 
-\see cl_attr, \ :c:func:`cl_object_attr_lock`\ , cl_object_operations::\ :c:func:`coo_attr_get`\ .
+\see cl_attr, \ :c:func:`cl_object_attr_lock`\ , cl_object_operations::coo_attr_get().
 
 .. _`cl_object_attr_lock`:
 
@@ -143,7 +143,7 @@ Description
 
 Prevents data-attributes from changing, until lock is released by
 \ :c:func:`cl_object_attr_unlock`\ . This has to be called before calls to
-\ :c:func:`cl_object_attr_get`\ , \ :c:func:`cl_object_attr_set`\ .
+\ :c:func:`cl_object_attr_get`\ , \ :c:func:`cl_object_attr_update`\ .
 
 .. _`cl_object_attr_unlock`:
 
@@ -180,16 +180,16 @@ cl_object_attr_get
 Description
 -----------
 
-Every layer is asked (by calling cl_object_operations::\ :c:func:`coo_attr_get`\ )
+Every layer is asked (by calling cl_object_operations::coo_attr_get())
 top-to-bottom to fill in parts of \a attr that this layer is responsible
 for.
 
-.. _`cl_object_attr_set`:
+.. _`cl_object_attr_update`:
 
-cl_object_attr_set
-==================
+cl_object_attr_update
+=====================
 
-.. c:function:: int cl_object_attr_set(const struct lu_env *env, struct cl_object *obj, const struct cl_attr *attr, unsigned v)
+.. c:function:: int cl_object_attr_update(const struct lu_env *env, struct cl_object *obj, const struct cl_attr *attr, unsigned int v)
 
     attributes of an object \a obj.
 
@@ -202,17 +202,17 @@ cl_object_attr_set
     :param const struct cl_attr \*attr:
         *undescribed*
 
-    :param unsigned v:
+    :param unsigned int v:
         *undescribed*
 
-.. _`cl_object_attr_set.description`:
+.. _`cl_object_attr_update.description`:
 
 Description
 -----------
 
 Only attributes, mentioned in a validness bit-mask \a v are
-updated. Calls cl_object_operations::\ :c:func:`coo_attr_set`\  on every layer, bottom
-to top.
+updated. Calls cl_object_operations::coo_attr_update() on every layer,
+bottom to top.
 
 .. _`cl_object_glimpse`:
 
@@ -240,7 +240,7 @@ Description
 Layers have to fill \a lvb fields with information that will be shipped
 back to glimpse issuer.
 
-\see cl_lock_operations::\ :c:func:`clo_glimpse`\ 
+\see cl_lock_operations::clo_glimpse()
 
 .. _`cl_conf_set`:
 
@@ -269,6 +269,22 @@ cl_object_prune
         *undescribed*
 
     :param struct cl_object \*obj:
+        *undescribed*
+
+.. _`cl_object_getstripe`:
+
+cl_object_getstripe
+===================
+
+.. c:function:: int cl_object_getstripe(const struct lu_env *env, struct cl_object *obj, struct lov_user_md __user *uarg)
+
+    :param const struct lu_env \*env:
+        *undescribed*
+
+    :param struct cl_object \*obj:
+        *undescribed*
+
+    :param struct lov_user_md __user \*uarg:
         *undescribed*
 
 .. _`cl_object_kill`:
@@ -312,7 +328,7 @@ cl_site_init
 Description
 -----------
 
-Perform common initialization (\ :c:func:`lu_site_init`\ ), and initialize statistical
+Perform common initialization (lu_site_init()), and initialize statistical
 counters. Also perform global initializations on the first call.
 
 .. _`cl_site_fini`:

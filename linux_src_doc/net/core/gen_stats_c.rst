@@ -85,9 +85,12 @@ Returns 0 on success or -1 if the room in the socket buffer was not sufficient.
 gnet_stats_copy_basic
 =====================
 
-.. c:function:: int gnet_stats_copy_basic(struct gnet_dump *d, struct gnet_stats_basic_cpu __percpu *cpu, struct gnet_stats_basic_packed *b)
+.. c:function:: int gnet_stats_copy_basic(const seqcount_t *running, struct gnet_dump *d, struct gnet_stats_basic_cpu __percpu *cpu, struct gnet_stats_basic_packed *b)
 
     copy basic statistics into statistic TLV
+
+    :param const seqcount_t \*running:
+        seqcount_t pointer
 
     :param struct gnet_dump \*d:
         dumping handle

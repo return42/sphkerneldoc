@@ -37,7 +37,7 @@ scale
     scale values from one range to another
 
     :param uint32_t source_val:
-        value in range [\ ``source_min``\ ..\ ``source_max``\ ]
+        value in range [@source_min..@source_max]
 
     :param uint32_t source_min:
         *undescribed*
@@ -56,8 +56,8 @@ scale
 Description
 -----------
 
-Return \ ``source_val``\  in range [\ ``source_min``\ ..\ ``source_max``\ ] scaled to range
-[\ ``target_min``\ ..\ ``target_max``\ ].
+Return \ ``source_val``\  in range [@source_min..@source_max] scaled to range
+[@target_min..@target_max].
 
 .. This file was automatic generated / don't edit.
 

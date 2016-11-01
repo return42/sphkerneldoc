@@ -11,6 +11,7 @@ mtd
     maps/index
     nand/index
     onenand/index
+    spi-nor/index
     ubi/index
     mtdcore_c
     mtdpart_c

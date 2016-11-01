@@ -42,6 +42,18 @@ Description
 Destroys iSCSI session instance and releases
 resources allocated for it.
 
+.. _`beiscsi_session_fail`:
+
+beiscsi_session_fail
+====================
+
+.. c:function:: void beiscsi_session_fail(struct iscsi_cls_session *cls_session)
+
+    Closing session with appropriate error
+
+    :param struct iscsi_cls_session \*cls_session:
+        ptr to session
+
 .. _`beiscsi_conn_create`:
 
 beiscsi_conn_create
@@ -103,12 +115,12 @@ Description
 
 This function binds the TCP Conn with iSCSI Connection and Session.
 
-.. _`beiscsi_set_vlan_tag`:
+.. _`beiscsi_iface_config_vlan`:
 
-beiscsi_set_vlan_tag
-====================
+beiscsi_iface_config_vlan
+=========================
 
-.. c:function:: int beiscsi_set_vlan_tag(struct Scsi_Host *shost, struct iscsi_iface_param_info *iface_param)
+.. c:function:: int beiscsi_iface_config_vlan(struct Scsi_Host *shost, struct iscsi_iface_param_info *iface_param)
 
     Set the VLAN TAG
 
@@ -118,7 +130,7 @@ beiscsi_set_vlan_tag
     :param struct iscsi_iface_param_info \*iface_param:
         Interface paramters
 
-.. _`beiscsi_set_vlan_tag.description`:
+.. _`beiscsi_iface_config_vlan.description`:
 
 Description
 -----------
@@ -128,14 +140,14 @@ the VLAN config
 
 returns
 
-.. _`beiscsi_set_vlan_tag.success`:
+.. _`beiscsi_iface_config_vlan.success`:
 
 Success
 -------
 
 0
 
-.. _`beiscsi_set_vlan_tag.failure`:
+.. _`beiscsi_iface_config_vlan.failure`:
 
 Failure
 -------

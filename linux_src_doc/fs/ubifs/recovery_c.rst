@@ -283,7 +283,7 @@ drop_last_group
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_recover_leb`\ ' which drops the last
+This is a helper function for 'ubifs_recover_leb()' which drops the last
 group of nodes of the scanned LEB.
 
 .. _`drop_last_node`:
@@ -306,7 +306,7 @@ drop_last_node
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_recover_leb`\ ' which drops the last
+This is a helper function for 'ubifs_recover_leb()' which drops the last
 node of the scanned LEB.
 
 .. _`ubifs_recover_leb`:
@@ -331,7 +331,7 @@ ubifs_recover_leb
         LEB-sized buffer to use
 
     :param int jhead:
-        journal head number this LEB belongs to (\ ``-1``\  if the LEB does not
+        journal head number this LEB belongs to (%-1 if the LEB does not
         belong to any journal head)
 
 .. _`ubifs_recover_leb.description`:
@@ -538,8 +538,8 @@ grab_empty_leb
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubifs_rcvry_gc_commit`\ ' which grabs an empty
-LEB to be used as GC LEB (\ ``c``\ ->gc_lnum), and then runs the commit. Returns
+This is a helper function for 'ubifs_rcvry_gc_commit()' which grabs an empty
+LEB to be used as GC LEB (@c->gc_lnum), and then runs the commit. Returns
 zero in case of success and a negative error code in case of failure.
 
 .. _`ubifs_rcvry_gc_commit`:
@@ -763,7 +763,7 @@ Description
 -----------
 
 This function attempts to fix inode size discrepancies identified by the
-'\ :c:func:`ubifs_recover_size_accum`\ ' function.
+'ubifs_recover_size_accum()' function.
 
 This functions returns \ ``0``\  on success and a negative error code on failure.
 

@@ -78,7 +78,7 @@ This is fine
 ------------
 
 
-u64 full = cnt32_to_63(\ :c:func:`get_hw_count`\ );
+u64 full = cnt32_to_63(get_hw_count());
 return full;
 
 Note that the top bit (bit 63) in the returned value should be considered

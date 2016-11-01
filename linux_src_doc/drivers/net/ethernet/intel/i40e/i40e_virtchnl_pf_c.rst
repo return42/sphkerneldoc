@@ -1147,7 +1147,7 @@ program VF mac address
 i40e_ndo_set_vf_port_vlan
 =========================
 
-.. c:function:: int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos)
+.. c:function:: int i40e_ndo_set_vf_port_vlan(struct net_device *netdev, int vf_id, u16 vlan_id, u8 qos, __be16 vlan_proto)
 
     :param struct net_device \*netdev:
         network interface device structure
@@ -1160,6 +1160,9 @@ i40e_ndo_set_vf_port_vlan
 
     :param u8 qos:
         priority setting
+
+    :param __be16 vlan_proto:
+        vlan protocol
 
 .. _`i40e_ndo_set_vf_port_vlan.description`:
 

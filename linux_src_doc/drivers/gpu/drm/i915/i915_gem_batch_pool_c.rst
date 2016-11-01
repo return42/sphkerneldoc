@@ -6,12 +6,12 @@
 i915_gem_batch_pool_init
 ========================
 
-.. c:function:: void i915_gem_batch_pool_init(struct drm_device *dev, struct i915_gem_batch_pool *pool)
+.. c:function:: void i915_gem_batch_pool_init(struct intel_engine_cs *engine, struct i915_gem_batch_pool *pool)
 
     initialize a batch buffer pool
 
-    :param struct drm_device \*dev:
-        the drm device
+    :param struct intel_engine_cs \*engine:
+        the associated request submission engine
 
     :param struct i915_gem_batch_pool \*pool:
         the batch buffer pool

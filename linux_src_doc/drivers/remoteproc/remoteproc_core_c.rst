@@ -92,15 +92,15 @@ device features, vrings information, virtio config space, etc...
 Before registering the vdev, the vrings are allocated from non-cacheable
 physically contiguous memory. Currently we only support two vrings per
 remote processor (temporary limitation). We might also want to consider
-doing the vring allocation only later when ->\ :c:func:`find_vqs`\  is invoked, and
-then release them upon ->\ :c:func:`del_vqs`\ .
+doing the vring allocation only later when ->find_vqs() is invoked, and
+then release them upon ->del_vqs().
 
 .. _`rproc_handle_vdev.note`:
 
 Note
 ----
 
-\ ``da``\  is currently not really handled correctly: we dynamically
+@da is currently not really handled correctly: we dynamically
 allocate it using the DMA API, ignoring requested hard coded addresses,
 and we don't take care of any required IOMMU programming. This is all
 going to be taken care of when the generic iommu-based DMA API will be
@@ -266,7 +266,7 @@ rproc_trigger_recovery
 Description
 -----------
 
-The recovery is done by reseting all the virtio devices, that way all the
+The recovery is done by resetting all the virtio devices, that way all the
 rpmsg drivers will be reseted along with the remote processor making the
 remoteproc functional again.
 
@@ -518,7 +518,29 @@ Note
 ----
 
 _never\_ directly deallocate \ ``rproc``\ , even if it was not registered
-yet. Instead, when you need to unroll \ :c:func:`rproc_alloc`\ , use \ :c:func:`rproc_put`\ .
+yet. Instead, when you need to unroll \ :c:func:`rproc_alloc`\ , use \ :c:func:`rproc_free`\ .
+
+.. _`rproc_free`:
+
+rproc_free
+==========
+
+.. c:function:: void rproc_free(struct rproc *rproc)
+
+    unroll \ :c:func:`rproc_alloc`\ 
+
+    :param struct rproc \*rproc:
+        the remote processor handle
+
+.. _`rproc_free.description`:
+
+Description
+-----------
+
+This function decrements the rproc dev refcount.
+
+If no one holds any reference to rproc anymore, then its refcount would
+now drop to zero, and it would be freed.
 
 .. _`rproc_put`:
 
@@ -527,7 +549,7 @@ rproc_put
 
 .. c:function:: void rproc_put(struct rproc *rproc)
 
-    unroll \ :c:func:`rproc_alloc`\ 
+    release rproc reference
 
     :param struct rproc \*rproc:
         the remote processor handle
@@ -566,7 +588,7 @@ has completed successfully.
 
 After \ :c:func:`rproc_del`\  returns, \ ``rproc``\  isn't freed yet, because
 of the outstanding reference created by rproc_alloc. To decrement that
-one last refcount, one still needs to call \ :c:func:`rproc_put`\ .
+one last refcount, one still needs to call \ :c:func:`rproc_free`\ .
 
 Returns 0 on success and -EINVAL if \ ``rproc``\  isn't valid.
 

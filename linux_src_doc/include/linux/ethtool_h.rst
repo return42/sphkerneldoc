@@ -203,14 +203,14 @@ Members
 -------
 
 get_settings
-    DEPRECATED, use \ ``get_link_ksettings``\ /\ ``set_link_ksettings``\ 
+    DEPRECATED, use \ ``get_link_ksettings``\ /%set_link_ksettings
     API. Get various device settings including Ethernet link
     settings. The \ ``cmd``\  parameter is expected to have been cleared
     before get_settings is called. Returns a negative error code
     or zero.
 
 set_settings
-    DEPRECATED, use \ ``get_link_ksettings``\ /\ ``set_link_ksettings``\ 
+    DEPRECATED, use \ ``get_link_ksettings``\ /%set_link_ksettings
     API. Set various device settings including Ethernet link
     settings.  Returns a negative error code or zero.
 

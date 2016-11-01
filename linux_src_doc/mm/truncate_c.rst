@@ -24,7 +24,7 @@ do_invalidatepage
 Description
 -----------
 
-\ :c:func:`do_invalidatepage`\  is called when all or part of the page has become
+do_invalidatepage() is called when all or part of the page has become
 invalidated by a truncate operation.
 
 \ :c:func:`do_invalidatepage`\  does not have to release all buffers, but it must
@@ -70,7 +70,7 @@ We pass down the cache-hot hint to the page freeing code.  Even if the
 mapping is large, it is probably the case that the final pages are the most
 recently touched, and freeing happens in ascending file offset order.
 
-Note that since ->\ :c:func:`invalidatepage`\  accepts range to invalidate
+Note that since ->invalidatepage() accepts range to invalidate
 truncate_inode_pages_range is able to handle cases where lend + 1 is not
 page aligned properly.
 
@@ -102,7 +102,7 @@ Note
 ----
 
 When this function returns, there can be a page in the process of
-deletion (inside \\ :c:func:`__delete_from_page_cache`\ ) in the specified range.  Thus
+deletion (inside \__delete_from_page_cache()) in the specified range.  Thus
 mapping->nrpages can be non-zero when this function returns even after
 truncation of the whole mapping.
 

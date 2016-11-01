@@ -40,6 +40,7 @@ platform_data
     efm32-uart_h
     elm_h
     emif_plat_h
+    gpio-htc-egpio_h
     gpio-ts5500_h
     hwmon-s3c_h
     i2c-imx_h

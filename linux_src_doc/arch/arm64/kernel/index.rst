@@ -9,5 +9,6 @@ kernel
 
     cpuidle_c
     hw_breakpoint_c
-    pci_c
+    machine_kexec_c
+    ptrace_c
     setup_c

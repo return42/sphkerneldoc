@@ -197,11 +197,11 @@ MAX_JIFFY_OFFSET values] mean 'infinite timeout' too.
 - all other values are converted to jiffies by either multiplying
 the input value by a factor or dividing it with a factor and
 handling any 32-bit overflows.
-for the details see \\ :c:func:`__msecs_to_jiffies`\ 
+for the details see \__msecs_to_jiffies()
 
 \ :c:func:`msecs_to_jiffies`\  checks for the passed in value being a constant
-via \\ :c:func:`__builtin_constant_p`\  allowing gcc to eliminate most of the
-code, \\ :c:func:`__msecs_to_jiffies`\  is called if the value passed does not
+via \__builtin_constant_p() allowing gcc to eliminate most of the
+code, \__msecs_to_jiffies() is called if the value passed does not
 allow constant folding and the actual conversion must be done at
 runtime.
 the \_msecs_to_jiffies helpers are the HZ dependent conversion

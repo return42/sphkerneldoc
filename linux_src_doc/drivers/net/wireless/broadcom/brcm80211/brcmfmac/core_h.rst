@@ -106,7 +106,6 @@ Definition
         struct brcmf_cfg80211_vif *vif;
         struct net_device *ndev;
         struct net_device_stats stats;
-        struct work_struct setmacaddr_work;
         struct work_struct multicast_work;
         struct work_struct ndoffload_work;
         struct brcmf_fws_mac_descriptor *fws_desc;
@@ -137,9 +136,6 @@ ndev
 
 stats
     interface specific network statistics.
-
-setmacaddr_work
-    worker object for setting mac address.
 
 multicast_work
     worker object for multicast provisioning.

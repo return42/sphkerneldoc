@@ -18,7 +18,7 @@ Definition
 .. code-block:: c
 
     struct qcom_smd_edge {
-        struct qcom_smd *smd;
+        struct device dev;
         struct device_node *of_node;
         unsigned edge_id;
         unsigned remote_pid;
@@ -40,8 +40,8 @@ Definition
 Members
 -------
 
-smd
-    handle to qcom_smd
+dev
+    device for this edge
 
 of_node
     of_node handle for information related to this edge
@@ -120,7 +120,6 @@ Definition
         int pkt_size;
         void *drvdata;
         struct list_head list;
-        struct list_head dev_list;
     }
 
 .. _`qcom_smd_channel.members`:
@@ -181,45 +180,6 @@ drvdata
 
 list
     lite entry for \ ``channels``\  in qcom_smd_edge
-
-dev_list
-    *undescribed*
-
-.. _`qcom_smd`:
-
-struct qcom_smd
-===============
-
-.. c:type:: struct qcom_smd
-
-    smd struct
-
-.. _`qcom_smd.definition`:
-
-Definition
-----------
-
-.. code-block:: c
-
-    struct qcom_smd {
-        struct device *dev;
-        unsigned num_edges;
-        struct qcom_smd_edge edges[0];
-    }
-
-.. _`qcom_smd.members`:
-
-Members
--------
-
-dev
-    device struct
-
-num_edges
-    number of entries in \ ``edges``\ 
-
-edges
-    array of edges to be handled
 
 .. _`qcom_smd_alloc_entry`:
 
@@ -338,6 +298,54 @@ Description
 
 Returns a channel handle on success, or -EPROBE_DEFER if the channel isn't
 ready.
+
+Any channels returned must be closed with a call to \ :c:func:`qcom_smd_close_channel`\ 
+
+.. _`qcom_smd_close_channel`:
+
+qcom_smd_close_channel
+======================
+
+.. c:function:: void qcom_smd_close_channel(struct qcom_smd_channel *channel)
+
+    close an additionally opened channel
+
+    :param struct qcom_smd_channel \*channel:
+        channel handle, returned by \ :c:func:`qcom_smd_open_channel`\ 
+
+.. _`qcom_smd_register_edge`:
+
+qcom_smd_register_edge
+======================
+
+.. c:function:: struct qcom_smd_edge *qcom_smd_register_edge(struct device *parent, struct device_node *node)
+
+    register an edge based on an device_node
+
+    :param struct device \*parent:
+        parent device for the edge
+
+    :param struct device_node \*node:
+        device_node describing the edge
+
+.. _`qcom_smd_register_edge.description`:
+
+Description
+-----------
+
+Returns an edge reference, or negative \ :c:func:`ERR_PTR`\  on failure.
+
+.. _`qcom_smd_unregister_edge`:
+
+qcom_smd_unregister_edge
+========================
+
+.. c:function:: int qcom_smd_unregister_edge(struct qcom_smd_edge *edge)
+
+    release an edge and its children
+
+    :param struct qcom_smd_edge \*edge:
+        edge reference acquired from qcom_smd_register_edge
 
 .. This file was automatic generated / don't edit.
 

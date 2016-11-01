@@ -21,8 +21,8 @@ device model. It also has low level function to chnage the timer
 input clock source.
 
 Copyright (C) 2011 Texas Instruments Incorporated - http://www.ti.com/
-Tarun Kanti DebBarma <tarun.kanti\ ``ti``\ .com>
-Thara Gopinath <thara\ ``ti``\ .com>
+Tarun Kanti DebBarma <tarun.kanti@ti.com>
+Thara Gopinath <thara@ti.com>
 
 This program is free software; you can redistribute it and/or modify
 it under the terms of the GNU General Public License version 2 as

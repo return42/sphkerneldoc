@@ -308,7 +308,7 @@ per_cpu_init
 Description
 -----------
 
-\ :c:func:`find_pernode_space`\  does most of this already, we just need to set
+find_pernode_space() does most of this already, we just need to set
 local_per_cpu_offset
 
 .. _`call_pernode_memory`:
@@ -334,7 +334,7 @@ call_pernode_memory
 Description
 -----------
 
-\ :c:func:`efi_memmap_walk`\  knows nothing about layout of memory across nodes. Find
+efi_memmap_walk() knows nothing about layout of memory across nodes. Find
 out to which node a block of memory belongs.  Ignore memory that we cannot
 identify, and split blocks that run across multiple nodes.
 
@@ -386,7 +386,7 @@ paging_init
 Description
 -----------
 
-\ :c:func:`paging_init`\  sets up the page tables for each node of the system and frees
+paging_init() sets up the page tables for each node of the system and frees
 the bootmem allocator memory for general use.
 
 .. This file was automatic generated / don't edit.

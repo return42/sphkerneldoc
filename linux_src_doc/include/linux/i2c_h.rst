@@ -23,7 +23,7 @@ Definition
         int (*probe)(struct i2c_client *, const struct i2c_device_id *);
         int (*remove)(struct i2c_client *);
         void (*shutdown)(struct i2c_client *);
-        void (*alert)(struct i2c_client *, unsigned int data);
+        void (*alert)(struct i2c_client *, enum i2c_alert_protocol protocol,unsigned int data);
         int (*command)(struct i2c_client *client, unsigned int cmd, void *arg);
         struct device_driver driver;
         const struct i2c_device_id *id_table;
@@ -309,7 +309,7 @@ smbus_xfer
 
 functionality
     Return the flags that this algorithm/adapter pair supports
-    from the I2C_FUNC\_\* flags.
+    from the I2C_FUNC_* flags.
 
 reg_slave
     Register given client to I2C slave mode of this adapter
@@ -329,6 +329,49 @@ to name two of the most common.
 The return codes from the \ ``master_xfer``\  field should indicate the type of
 error code that occurred during the transfer, as documented in the kernel
 Documentation file Documentation/i2c/fault-codes.
+
+.. _`i2c_lock_operations`:
+
+struct i2c_lock_operations
+==========================
+
+.. c:type:: struct i2c_lock_operations
+
+    represent I2C locking operations
+
+.. _`i2c_lock_operations.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct i2c_lock_operations {
+        void (*lock_bus)(struct i2c_adapter *, unsigned int flags);
+        int (*trylock_bus)(struct i2c_adapter *, unsigned int flags);
+        void (*unlock_bus)(struct i2c_adapter *, unsigned int flags);
+    }
+
+.. _`i2c_lock_operations.members`:
+
+Members
+-------
+
+lock_bus
+    Get exclusive access to an I2C bus segment
+
+trylock_bus
+    Try to get exclusive access to an I2C bus segment
+
+unlock_bus
+    Release exclusive access to an I2C bus segment
+
+.. _`i2c_lock_operations.description`:
+
+Description
+-----------
+
+The main operations are wrapped by i2c_lock_bus and i2c_unlock_bus.
 
 .. _`i2c_timings`:
 
@@ -468,7 +511,7 @@ Members
 -------
 
 flags
-    see I2C_AQ\_\* for possible flags and read below
+    see I2C_AQ_* for possible flags and read below
 
 max_num_msgs
     maximum number of messages per transfer
@@ -485,17 +528,17 @@ max_comb_1st_msg_len
 max_comb_2nd_msg_len
     maximum length of the second msg in a combined message
 
-.. _`i2c_adapter_quirks.note-about-combined-messages`:
+.. _`i2c_adapter_quirks.description`:
 
-Note about combined messages
-----------------------------
+Description
+-----------
 
-Some I2C controllers can only send one message
+Note about combined messages: Some I2C controllers can only send one message
 per transfer, plus something called combined message or write-then-read.
 This is (usually) a small write message followed by a read message and
 barely enough to access register based devices like EEPROMs. There is a flag
 to support this mode. It implies max_num_msg = 2 and does the length checks
-with max_comb\_\*\_len because combined message mode usually has its own
+with max_comb_*_len because combined message mode usually has its own
 limitations. Because of HW implementations, some controllers can actually do
 write-then-anything or other variants. To support that, write-then-read has
 been broken out into smaller bits like write-first and read-second which can
@@ -516,6 +559,29 @@ i2c_lock_bus
     :param unsigned int flags:
         I2C_LOCK_ROOT_ADAPTER locks the root i2c adapter, I2C_LOCK_SEGMENT
         locks only this branch in the adapter tree
+
+.. _`i2c_trylock_bus`:
+
+i2c_trylock_bus
+===============
+
+.. c:function:: int i2c_trylock_bus(struct i2c_adapter *adapter, unsigned int flags)
+
+    Try to get exclusive access to an I2C bus segment
+
+    :param struct i2c_adapter \*adapter:
+        Target I2C bus segment
+
+    :param unsigned int flags:
+        I2C_LOCK_ROOT_ADAPTER tries to locks the root i2c adapter,
+        I2C_LOCK_SEGMENT tries to lock only this branch in the adapter tree
+
+.. _`i2c_trylock_bus.return`:
+
+Return
+------
+
+true if the I2C bus segment is locked, false otherwise
 
 .. _`i2c_unlock_bus`:
 

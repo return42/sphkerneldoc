@@ -130,7 +130,7 @@ Definition
 
     struct srp_target_port {
         spinlock_t lock;
-        struct ib_mr *global_mr;
+        struct ib_pd *pd;
         struct srp_rdma_ch *ch;
         u32 ch_count;
         u32 lkey;
@@ -175,7 +175,7 @@ Members
 lock
     *undescribed*
 
-global_mr
+pd
     *undescribed*
 
 ch

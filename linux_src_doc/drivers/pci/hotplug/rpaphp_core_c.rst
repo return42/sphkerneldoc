@@ -11,7 +11,7 @@ set_attention_status
     set attention LED
 
     :param struct hotplug_slot \*hotplug_slot:
-        target \ :c:type:`struct hotplug_slot <hotplug_slot>`
+        target \ :c:type:`struct hotplug_slot <hotplug_slot>`\ 
 
     :param u8 value:
         LED control value
@@ -65,7 +65,7 @@ is_php_dn
     return 1 if this is a hotpluggable pci slot, else 0
 
     :param struct device_node \*dn:
-        target \ :c:type:`struct device_node <device_node>`
+        target \ :c:type:`struct device_node <device_node>`\ 
 
     :param const int \*\*indexes:
         passed to \ :c:func:`get_children_props`\ 

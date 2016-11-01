@@ -43,25 +43,22 @@ structs. If you are using callbacks you must allocate one of these
 or another struct of your own definition which has this struct
 as it's first element and pass it to \ :c:func:`ext4_journal_callback_add`\ .
 
-.. _`ext4_journal_callback_add`:
+.. _`_ext4_journal_callback_add`:
 
-ext4_journal_callback_add
-=========================
+_ext4_journal_callback_add
+==========================
 
-.. c:function:: void ext4_journal_callback_add(handle_t *handle, void (*func)(struct super_block *sb, struct ext4_journal_cb_entry *jce, int rc), struct ext4_journal_cb_entry *jce)
+.. c:function:: void _ext4_journal_callback_add(handle_t *handle, struct ext4_journal_cb_entry *jce)
 
     add a function to call after transaction commit
 
     :param handle_t \*handle:
         active journal transaction handle to register callback on
 
-    :param void (\*func)(struct super_block \*sb, struct ext4_journal_cb_entry \*jce, int rc):
-        callback function to call after the transaction has committed:
-
     :param struct ext4_journal_cb_entry \*jce:
         journal callback data (internal and function private data struct)
 
-.. _`ext4_journal_callback_add.description`:
+.. _`_ext4_journal_callback_add.description`:
 
 Description
 -----------

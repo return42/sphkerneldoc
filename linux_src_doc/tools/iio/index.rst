@@ -7,6 +7,6 @@ iio
 .. toctree::
     :maxdepth: 1
 
-    generic_buffer_c
+    iio_generic_buffer_c
     iio_utils_c
     iio_utils_h

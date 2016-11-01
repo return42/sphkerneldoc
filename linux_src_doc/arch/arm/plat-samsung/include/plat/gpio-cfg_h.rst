@@ -36,7 +36,7 @@ get_pull
     Read the current pull configuration for the GPIO
 
 set_pull
-    Set the current pull configuraiton for the GPIO
+    Set the current pull configuration for the GPIO
 
 get_config
     Read the current configuration for the GPIO

@@ -8,8 +8,7 @@ rxrpc
     :maxdepth: 1
 
     af_rxrpc_c
-    ar-accept_c
-    ar-key_c
-    ar-output_c
-    ar-recvmsg_c
-    ar-skbuff_c
+    key_c
+    peer_object_c
+    recvmsg_c
+    sendmsg_c

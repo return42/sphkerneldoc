@@ -8,48 +8,6 @@ MC_CMD_COMPLETION_TIMEOUT_MS
 
 .. c:function::  MC_CMD_COMPLETION_TIMEOUT_MS()
 
-.. _`fsl_create_mc_io`:
-
-fsl_create_mc_io
-================
-
-.. c:function:: int fsl_create_mc_io(struct device *dev, phys_addr_t mc_portal_phys_addr, u32 mc_portal_size, struct fsl_mc_device *dpmcp_dev, u32 flags, struct fsl_mc_io **new_mc_io)
-
-    :param struct device \*dev:
-        device to be associated with the MC I/O object
-
-    :param phys_addr_t mc_portal_phys_addr:
-        physical address of the MC portal to use
-
-    :param u32 mc_portal_size:
-        size in bytes of the MC portal
-
-    :param struct fsl_mc_device \*dpmcp_dev:
-        *undescribed*
-
-    :param u32 flags:
-        flags for the new MC I/O object
-
-    :param struct fsl_mc_io \*\*new_mc_io:
-        Area to return pointer to newly created MC I/O object
-
-.. _`fsl_create_mc_io.description`:
-
-Description
------------
-
-Returns '0' on Success; Error code otherwise.
-
-.. _`fsl_destroy_mc_io`:
-
-fsl_destroy_mc_io
-=================
-
-.. c:function:: void fsl_destroy_mc_io(struct fsl_mc_io *mc_io)
-
-    :param struct fsl_mc_io \*mc_io:
-        MC I/O object to destroy
-
 .. _`mc_write_command`:
 
 mc_write_command
@@ -94,7 +52,7 @@ mc_polling_wait_preemptible
 
 .. c:function:: int mc_polling_wait_preemptible(struct fsl_mc_io *mc_io, struct mc_command *cmd, enum mc_cmd_status *mc_status)
 
-    \ :c:func:`uslepp_range`\  is called between polling iterations.
+    uslepp_range() is called between polling iterations.
 
     :param struct fsl_mc_io \*mc_io:
         MC I/O object to be used
@@ -112,7 +70,7 @@ mc_polling_wait_atomic
 
 .. c:function:: int mc_polling_wait_atomic(struct fsl_mc_io *mc_io, struct mc_command *cmd, enum mc_cmd_status *mc_status)
 
-    \ :c:func:`udelay`\  is called between polling iterations.
+    udelay() is called between polling iterations.
 
     :param struct fsl_mc_io \*mc_io:
         MC I/O object to be used

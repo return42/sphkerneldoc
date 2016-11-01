@@ -21,7 +21,7 @@ Description
 This tells the low-level filesystem that a write is about to be performed to
 it, and makes sure that writes are allowed (mnt it read-write) before
 returning success. This operation does not protect against filesystem being
-frozen. When the write operation is finished, \\ :c:func:`__mnt_drop_write`\  must be
+frozen. When the write operation is finished, \__mnt_drop_write() must be
 called. This is effectively a refcount.
 
 .. _`mnt_want_write`:
@@ -130,7 +130,7 @@ Description
 
 Tells the low-level filesystem that we are done
 performing writes to it.  Must be matched with
-\\ :c:func:`__mnt_want_write`\  call above.
+\__mnt_want_write() call above.
 
 .. _`mnt_drop_write`:
 

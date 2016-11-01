@@ -112,6 +112,35 @@ Return
 
 0 for success
 
+.. _`fcoe_fip_vlan_recv`:
+
+fcoe_fip_vlan_recv
+==================
+
+.. c:function:: int fcoe_fip_vlan_recv(struct sk_buff *skb, struct net_device *netdev, struct packet_type *ptype, struct net_device *orig_dev)
+
+    Handler for received FIP VLAN discovery frames
+
+    :param struct sk_buff \*skb:
+        The receive skb
+
+    :param struct net_device \*netdev:
+        The associated net device
+
+    :param struct packet_type \*ptype:
+        The packet_type structure which was used to register this handler
+
+    :param struct net_device \*orig_dev:
+        The original net_device the the skb was received on.
+        (in case dev is a bond)
+
+.. _`fcoe_fip_vlan_recv.return`:
+
+Return
+------
+
+0 for success
+
 .. _`fcoe_port_send`:
 
 fcoe_port_send
@@ -520,66 +549,6 @@ Return
 
 0 on success
 
-.. _`fcoe_percpu_thread_create`:
-
-fcoe_percpu_thread_create
-=========================
-
-.. c:function:: void fcoe_percpu_thread_create(unsigned int cpu)
-
-    Create a receive thread for an online CPU
-
-    :param unsigned int cpu:
-        The CPU index of the CPU to create a receive thread for
-
-.. _`fcoe_percpu_thread_destroy`:
-
-fcoe_percpu_thread_destroy
-==========================
-
-.. c:function:: void fcoe_percpu_thread_destroy(unsigned int cpu)
-
-    Remove the receive thread of a CPU
-
-    :param unsigned int cpu:
-        The CPU index of the CPU whose receive thread is to be destroyed
-
-.. _`fcoe_percpu_thread_destroy.description`:
-
-Description
------------
-
-Destroys a per-CPU Rx thread. Any pending skbs are moved to the
-current CPU's Rx thread. If the thread being destroyed is bound to
-the CPU processing this context the skbs will be freed.
-
-.. _`fcoe_cpu_callback`:
-
-fcoe_cpu_callback
-=================
-
-.. c:function:: int fcoe_cpu_callback(struct notifier_block *nfb, unsigned long action, void *hcpu)
-
-    Handler for CPU hotplug events
-
-    :param struct notifier_block \*nfb:
-        The callback data block
-
-    :param unsigned long action:
-        The event triggering the callback
-
-    :param void \*hcpu:
-        The index of the CPU that the event is for
-
-.. _`fcoe_cpu_callback.description`:
-
-Description
------------
-
-This creates or destroys per-CPU data for fcoe
-
-Returns NOTIFY_OK always.
-
 .. _`fcoe_select_cpu`:
 
 fcoe_select_cpu
@@ -687,18 +656,6 @@ Return
 
 0 for success
 
-.. _`fcoe_percpu_flush_done`:
-
-fcoe_percpu_flush_done
-======================
-
-.. c:function:: void fcoe_percpu_flush_done(struct sk_buff *skb)
-
-    Indicate per-CPU queue flush completion
-
-    :param struct sk_buff \*skb:
-        The completed skb (argument required by destructor)
-
 .. _`fcoe_filter_frames`:
 
 fcoe_filter_frames
@@ -733,24 +690,17 @@ fcoe_recv_frame
     :param struct sk_buff \*skb:
         frame to process
 
-.. _`fcoe_percpu_receive_thread`:
+.. _`fcoe_receive_work`:
 
-fcoe_percpu_receive_thread
-==========================
+fcoe_receive_work
+=================
 
-.. c:function:: int fcoe_percpu_receive_thread(void *arg)
+.. c:function:: void fcoe_receive_work(struct work_struct *work)
 
-    The per-CPU packet receive thread
+    The per-CPU worker
 
-    :param void \*arg:
-        The per-CPU context
-
-.. _`fcoe_percpu_receive_thread.return`:
-
-Return
-------
-
-0 for success
+    :param struct work_struct \*work:
+        The work struct
 
 .. _`fcoe_dev_setup`:
 
@@ -890,6 +840,27 @@ calls fcoe_enable or fcoe_disable, both of which are deprecated.
 When those routines are removed the functionality can be merged
 here.
 
+.. _`fcoe_ctlr_mode`:
+
+fcoe_ctlr_mode
+==============
+
+.. c:function:: void fcoe_ctlr_mode(struct fcoe_ctlr_device *ctlr_dev)
+
+    Switch FIP mode
+
+    :param struct fcoe_ctlr_device \*ctlr_dev:
+        *undescribed*
+
+.. _`fcoe_ctlr_mode.description`:
+
+Description
+-----------
+
+When the FIP mode has been changed we need to update
+the multicast addresses to ensure we get the correct
+frames.
+
 .. _`fcoe_destroy`:
 
 fcoe_destroy
@@ -972,14 +943,14 @@ fcoe_dcb_create
 _fcoe_create
 ============
 
-.. c:function:: int _fcoe_create(struct net_device *netdev, enum fip_state fip_mode, enum fcoe_create_link_state link_state)
+.. c:function:: int _fcoe_create(struct net_device *netdev, enum fip_mode fip_mode, enum fcoe_create_link_state link_state)
 
     (internal) Create a fcoe interface
 
     :param struct net_device \*netdev:
         The net_device object the Ethernet interface to create on
 
-    :param enum fip_state fip_mode:
+    :param enum fip_mode fip_mode:
         The FIP mode for this creation
 
     :param enum fcoe_create_link_state link_state:
@@ -1002,14 +973,14 @@ removed.
 fcoe_create
 ===========
 
-.. c:function:: int fcoe_create(struct net_device *netdev, enum fip_state fip_mode)
+.. c:function:: int fcoe_create(struct net_device *netdev, enum fip_mode fip_mode)
 
     Create a fcoe interface
 
     :param struct net_device \*netdev:
         The net_device object the Ethernet interface to create on
 
-    :param enum fip_state fip_mode:
+    :param enum fip_mode fip_mode:
         The FIP mode for this creation
 
 .. _`fcoe_create.description`:
@@ -1088,10 +1059,9 @@ Description
 
 Must be called with fcoe_create_mutex held to single-thread completion.
 
-This flushes the pending skbs by adding a new skb to each queue and
-waiting until they are all freed.  This assures us that not only are
-there no packets that will be handled by the lport, but also that any
-threads already handling packet have returned.
+This flushes the pending skbs by flush the work item for each CPU. The work
+item on each possible CPU is flushed because we may have used the per-CPU
+struct of an offline CPU.
 
 .. _`fcoe_reset`:
 

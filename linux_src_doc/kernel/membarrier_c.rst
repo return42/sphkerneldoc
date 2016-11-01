@@ -29,7 +29,7 @@ until reboot.
 
 All memory accesses performed in program order from each targeted thread
 is guaranteed to be ordered with respect to \ :c:func:`sys_membarrier`\ . If we use
-the semantic "\ :c:func:`barrier`\ " to represent a compiler barrier forcing memory
+the semantic "barrier()" to represent a compiler barrier forcing memory
 accesses to be performed in program order across the barrier, and
 \ :c:func:`smp_mb`\  to represent explicit memory barriers forcing full memory
 ordering across the barrier, we have the following ordering table for

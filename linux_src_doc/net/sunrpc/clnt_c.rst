@@ -408,6 +408,40 @@ rpc_clnt_test_and_add_xprt
     :param void \*dummy:
         unused
 
+.. _`rpc_clnt_setup_test_and_add_xprt`:
+
+rpc_clnt_setup_test_and_add_xprt
+================================
+
+.. c:function:: int rpc_clnt_setup_test_and_add_xprt(struct rpc_clnt *clnt, struct rpc_xprt_switch *xps, struct rpc_xprt *xprt, void *data)
+
+    :param struct rpc_clnt \*clnt:
+        struct rpc_clnt to get the new transport
+
+    :param struct rpc_xprt_switch \*xps:
+        the rpc_xprt_switch to hold the new transport
+
+    :param struct rpc_xprt \*xprt:
+        the rpc_xprt to test
+
+    :param void \*data:
+        a struct rpc_add_xprt_test pointer that holds the test function
+        and test function call data
+
+.. _`rpc_clnt_setup_test_and_add_xprt.description`:
+
+Description
+-----------
+
+This is an rpc_clnt_add_xprt \ :c:func:`setup`\  function which returns 1 so:
+1) caller of the test function must dereference the rpc_xprt_switch
+and the rpc_xprt.
+2) test function must call rpc_xprt_switch_add_xprt, usually in
+the rpc_call_done routine.
+
+Upon success (return of 1), the test function adds the new
+transport to the rpc_clnt xprt switch
+
 .. _`rpc_clnt_add_xprt`:
 
 rpc_clnt_add_xprt

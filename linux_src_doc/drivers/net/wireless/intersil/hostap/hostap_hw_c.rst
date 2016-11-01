@@ -131,7 +131,7 @@ hfa384x_cmd_callback
         value for Param0 register
 
     :param void (\*callback)(struct net_device \*dev, long context, u16 resp0, u16 status):
-        command completion callback function (\ ``NULL``\  = no callback)
+        command completion callback function (%NULL = no callback)
 
     :param long context:
         context data to be given to the callback function

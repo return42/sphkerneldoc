@@ -6,7 +6,7 @@
 hfsplus_submit_bio
 ==================
 
-.. c:function:: int hfsplus_submit_bio(struct super_block *sb, sector_t sector, void *buf, void **data, int rw)
+.. c:function:: int hfsplus_submit_bio(struct super_block *sb, sector_t sector, void *buf, void **data, int op, int op_flags)
 
     Perform block I/O
 
@@ -22,8 +22,11 @@ hfsplus_submit_bio
     :param void \*\*data:
         output pointer for location of requested data
 
-    :param int rw:
+    :param int op:
         direction of I/O
+
+    :param int op_flags:
+        request op flags
 
 .. _`hfsplus_submit_bio.description`:
 

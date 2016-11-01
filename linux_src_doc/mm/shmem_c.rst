@@ -99,7 +99,7 @@ Description
 
 This behaves as a tmpfs "read_cache_page_gfp(mapping, index, gfp)",
 with any new page allocations done using the specified allocation flags.
-But \ :c:func:`read_cache_page_gfp`\  uses the ->\ :c:func:`readpage`\  method: which does not
+But \ :c:func:`read_cache_page_gfp`\  uses the ->readpage() method: which does not
 suit tmpfs, since it may have pages in swapcache, and needs to find those
 for itself; although drivers/gpu/drm i915 and ttm rely upon this support.
 

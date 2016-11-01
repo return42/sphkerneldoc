@@ -112,5 +112,126 @@ Description
 
 Write HDCP register(s) through SCM.
 
+.. _`qcom_scm_pas_supported`:
+
+qcom_scm_pas_supported
+======================
+
+.. c:function:: bool qcom_scm_pas_supported(u32 peripheral)
+
+    Check if the peripheral authentication service is available for the given peripherial
+
+    :param u32 peripheral:
+        peripheral id
+
+.. _`qcom_scm_pas_supported.description`:
+
+Description
+-----------
+
+Returns true if PAS is supported for this peripheral, otherwise false.
+
+.. _`qcom_scm_pas_init_image`:
+
+qcom_scm_pas_init_image
+=======================
+
+.. c:function:: int qcom_scm_pas_init_image(u32 peripheral, const void *metadata, size_t size)
+
+    Initialize peripheral authentication service state machine for a given peripheral, using the metadata
+
+    :param u32 peripheral:
+        peripheral id
+
+    :param const void \*metadata:
+        pointer to memory containing ELF header, program header table
+        and optional blob of data used for authenticating the metadata
+        and the rest of the firmware
+
+    :param size_t size:
+        size of the metadata
+
+.. _`qcom_scm_pas_init_image.description`:
+
+Description
+-----------
+
+Returns 0 on success.
+
+.. _`qcom_scm_pas_mem_setup`:
+
+qcom_scm_pas_mem_setup
+======================
+
+.. c:function:: int qcom_scm_pas_mem_setup(u32 peripheral, phys_addr_t addr, phys_addr_t size)
+
+    Prepare the memory related to a given peripheral for firmware loading
+
+    :param u32 peripheral:
+        peripheral id
+
+    :param phys_addr_t addr:
+        start address of memory area to prepare
+
+    :param phys_addr_t size:
+        size of the memory area to prepare
+
+.. _`qcom_scm_pas_mem_setup.description`:
+
+Description
+-----------
+
+Returns 0 on success.
+
+.. _`qcom_scm_pas_auth_and_reset`:
+
+qcom_scm_pas_auth_and_reset
+===========================
+
+.. c:function:: int qcom_scm_pas_auth_and_reset(u32 peripheral)
+
+    Authenticate the given peripheral firmware and reset the remote processor
+
+    :param u32 peripheral:
+        peripheral id
+
+.. _`qcom_scm_pas_auth_and_reset.description`:
+
+Description
+-----------
+
+Return 0 on success.
+
+.. _`qcom_scm_pas_shutdown`:
+
+qcom_scm_pas_shutdown
+=====================
+
+.. c:function:: int qcom_scm_pas_shutdown(u32 peripheral)
+
+    Shut down the remote processor
+
+    :param u32 peripheral:
+        peripheral id
+
+.. _`qcom_scm_pas_shutdown.description`:
+
+Description
+-----------
+
+Returns 0 on success.
+
+.. _`qcom_scm_is_available`:
+
+qcom_scm_is_available
+=====================
+
+.. c:function:: bool qcom_scm_is_available( void)
+
+    Checks if SCM is available
+
+    :param  void:
+        no arguments
+
 .. This file was automatic generated / don't edit.
 

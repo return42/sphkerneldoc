@@ -22,18 +22,19 @@ Definition
         struct list_head t_item;
         struct module *t_owner;
         unsigned int t_prefer_loopback:1;
+        unsigned int t_mp_capable:1:1;
         unsigned int t_type;
         int (*laddr_check)(struct net *net, __be32 addr);
         int (*conn_alloc)(struct rds_connection *conn, gfp_t gfp);
         void (*conn_free)(void *data);
-        int (*conn_connect)(struct rds_connection *conn);
-        void (*conn_shutdown)(struct rds_connection *conn);
-        void (*xmit_prepare)(struct rds_connection *conn);
-        void (*xmit_complete)(struct rds_connection *conn);
+        int (*conn_path_connect)(struct rds_conn_path *cp);
+        void (*conn_path_shutdown)(struct rds_conn_path *conn);
+        void (*xmit_path_prepare)(struct rds_conn_path *cp);
+        void (*xmit_path_complete)(struct rds_conn_path *cp);
         int (*xmit)(struct rds_connection *conn, struct rds_message *rm,unsigned int hdr_off, unsigned int sg, unsigned int off);
         int (*xmit_rdma)(struct rds_connection *conn, struct rm_rdma_op *op);
         int (*xmit_atomic)(struct rds_connection *conn, struct rm_atomic_op *op);
-        int (*recv)(struct rds_connection *conn);
+        int (*recv_path)(struct rds_conn_path *cp);
         int (*inc_copy_to_user)(struct rds_incoming *inc, struct iov_iter *to);
         void (*inc_free)(struct rds_incoming *inc);
         int (*cm_handle_connect)(struct rdma_cm_id *cm_id,struct rdma_cm_event *event);
@@ -61,6 +62,9 @@ t_owner
 t_prefer_loopback
     *undescribed*
 
+t_mp_capable
+    *undescribed*
+
 t_type
     *undescribed*
 
@@ -73,23 +77,16 @@ conn_alloc
 conn_free
     *undescribed*
 
-conn_connect
+conn_path_connect
     *undescribed*
 
-conn_shutdown
-    conn_shutdown stops traffic on the given connection.  Once
-    it returns the connection can not call \ :c:func:`rds_recv_incoming`\ .
-    This will only be called once after conn_connect returns
-    non-zero success and will The caller serializes this with
-    the send and connecting paths (xmit\_\* and conn\_\*).  The
-    transport is responsible for other serialization, including
-    \ :c:func:`rds_recv_incoming`\ .  This is called in process context but
-    should try hard not to block.
-
-xmit_prepare
+conn_path_shutdown
     *undescribed*
 
-xmit_complete
+xmit_path_prepare
+    *undescribed*
+
+xmit_path_complete
     *undescribed*
 
 xmit
@@ -113,7 +110,7 @@ xmit_rdma
 xmit_atomic
     *undescribed*
 
-recv
+recv_path
     *undescribed*
 
 inc_copy_to_user

@@ -10,3 +10,4 @@ intel
     pinctrl-cherryview_c
     pinctrl-intel_c
     pinctrl-intel_h
+    pinctrl-merrifield_c

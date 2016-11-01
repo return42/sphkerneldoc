@@ -8,7 +8,7 @@ WIL_GET_BITS
 
 .. c:function:: u32 WIL_GET_BITS(u32 x, int b0, int b1)
 
-    \ ``b1``\ ] (inclusive) from the value \ ``x``\  it should be \ ``b0``\  <= \ ``b1``\ , or result is incorrect
+    @b1] (inclusive) from the value \ ``x``\  it should be \ ``b0``\  <= \ ``b1``\ , or result is incorrect
 
     :param u32 x:
         *undescribed*
@@ -39,7 +39,7 @@ mk_cidxtid
 Description
 -----------
 
-\ ``cidxtid``\  field encoded as bits 0..3 - CID; 4..7 - TID
+@cidxtid field encoded as bits 0..3 - CID; 4..7 - TID
 
 .. _`parse_cidxtid`:
 
@@ -64,7 +64,7 @@ parse_cidxtid
 Description
 -----------
 
-\ ``cidxtid``\  field encoded as bits 0..3 - CID; 4..7 - TID
+@cidxtid field encoded as bits 0..3 - CID; 4..7 - TID
 
 .. _`wil_ctx`:
 

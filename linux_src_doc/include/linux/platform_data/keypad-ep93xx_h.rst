@@ -30,7 +30,7 @@ Members
 -------
 
 keymap_data
-    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`
+    pointer to \ :c:type:`struct matrix_keymap_data <matrix_keymap_data>`\ 
 
 debounce
     debounce start count; terminal count is 0xff

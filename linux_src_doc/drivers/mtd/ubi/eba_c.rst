@@ -1,6 +1,80 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/ubi/eba.c
 
+.. _`ubi_eba_entry`:
+
+struct ubi_eba_entry
+====================
+
+.. c:type:: struct ubi_eba_entry
+
+    structure encoding a single LEB -> PEB association
+
+.. _`ubi_eba_entry.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ubi_eba_entry {
+        int pnum;
+    }
+
+.. _`ubi_eba_entry.members`:
+
+Members
+-------
+
+pnum
+    the physical eraseblock number attached to the LEB
+
+.. _`ubi_eba_entry.description`:
+
+Description
+-----------
+
+This structure is encoding a LEB -> PEB association. Note that the LEB
+number is not stored here, because it is the index used to access the
+entries table.
+
+.. _`ubi_eba_table`:
+
+struct ubi_eba_table
+====================
+
+.. c:type:: struct ubi_eba_table
+
+    LEB -> PEB association information
+
+.. _`ubi_eba_table.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ubi_eba_table {
+        struct ubi_eba_entry *entries;
+    }
+
+.. _`ubi_eba_table.members`:
+
+Members
+-------
+
+entries
+    the LEB to PEB mapping (one entry per LEB).
+
+.. _`ubi_eba_table.description`:
+
+Description
+-----------
+
+This structure is private to the EBA logic and should be kept here.
+It is encoding the LEB to PEB association table, and is subject to
+changes.
+
 .. _`ubi_next_sqnum`:
 
 ubi_next_sqnum
@@ -44,6 +118,122 @@ Description
 
 This function returns compatibility flags for an internal volume. User
 volumes have no compatibility flags, so \ ``0``\  is returned.
+
+.. _`ubi_eba_get_ldesc`:
+
+ubi_eba_get_ldesc
+=================
+
+.. c:function:: void ubi_eba_get_ldesc(struct ubi_volume *vol, int lnum, struct ubi_eba_leb_desc *ldesc)
+
+    get information about a LEB
+
+    :param struct ubi_volume \*vol:
+        volume description object
+
+    :param int lnum:
+        logical eraseblock number
+
+    :param struct ubi_eba_leb_desc \*ldesc:
+        the LEB descriptor to fill
+
+.. _`ubi_eba_get_ldesc.description`:
+
+Description
+-----------
+
+Used to query information about a specific LEB.
+It is currently only returning the physical position of the LEB, but will be
+extended to provide more information.
+
+.. _`ubi_eba_create_table`:
+
+ubi_eba_create_table
+====================
+
+.. c:function:: struct ubi_eba_table *ubi_eba_create_table(struct ubi_volume *vol, int nentries)
+
+    allocate a new EBA table and initialize it with all LEBs unmapped
+
+    :param struct ubi_volume \*vol:
+        volume containing the EBA table to copy
+
+    :param int nentries:
+        number of entries in the table
+
+.. _`ubi_eba_create_table.description`:
+
+Description
+-----------
+
+Allocate a new EBA table and initialize it with all LEBs unmapped.
+Returns a valid pointer if it succeed, an \ :c:func:`ERR_PTR`\  otherwise.
+
+.. _`ubi_eba_destroy_table`:
+
+ubi_eba_destroy_table
+=====================
+
+.. c:function:: void ubi_eba_destroy_table(struct ubi_eba_table *tbl)
+
+    destroy an EBA table
+
+    :param struct ubi_eba_table \*tbl:
+        the table to destroy
+
+.. _`ubi_eba_destroy_table.description`:
+
+Description
+-----------
+
+Destroy an EBA table.
+
+.. _`ubi_eba_copy_table`:
+
+ubi_eba_copy_table
+==================
+
+.. c:function:: void ubi_eba_copy_table(struct ubi_volume *vol, struct ubi_eba_table *dst, int nentries)
+
+    copy the EBA table attached to vol into another table
+
+    :param struct ubi_volume \*vol:
+        volume containing the EBA table to copy
+
+    :param struct ubi_eba_table \*dst:
+        destination
+
+    :param int nentries:
+        number of entries to copy
+
+.. _`ubi_eba_copy_table.description`:
+
+Description
+-----------
+
+Copy the EBA table stored in vol into the one pointed by dst.
+
+.. _`ubi_eba_replace_table`:
+
+ubi_eba_replace_table
+=====================
+
+.. c:function:: void ubi_eba_replace_table(struct ubi_volume *vol, struct ubi_eba_table *tbl)
+
+    assign a new EBA table to a volume
+
+    :param struct ubi_volume \*vol:
+        volume containing the EBA table to copy
+
+    :param struct ubi_eba_table \*tbl:
+        new EBA table
+
+.. _`ubi_eba_replace_table.description`:
+
+Description
+-----------
+
+Assign a new EBA table to the volume and release the old one.
 
 .. _`ltree_lookup`:
 
@@ -95,7 +285,7 @@ ltree_add_entry
 Description
 -----------
 
-This function adds new entry for logical eraseblock (\ ``vol_id``\ , \ ``lnum``\ ) to the
+This function adds new entry for logical eraseblock (@vol_id, \ ``lnum``\ ) to the
 lock tree. If such entry is already there, its usage counter is increased.
 Returns pointer to the lock tree entry or \ ``-ENOMEM``\  if memory allocation
 failed.
@@ -216,6 +406,28 @@ leb_write_unlock
     :param int lnum:
         logical eraseblock number
 
+.. _`ubi_eba_is_mapped`:
+
+ubi_eba_is_mapped
+=================
+
+.. c:function:: bool ubi_eba_is_mapped(struct ubi_volume *vol, int lnum)
+
+    check if a LEB is mapped.
+
+    :param struct ubi_volume \*vol:
+        volume description object
+
+    :param int lnum:
+        logical eraseblock number
+
+.. _`ubi_eba_is_mapped.description`:
+
+Description
+-----------
+
+This function returns true if the LEB is mapped, false otherwise.
+
 .. _`ubi_eba_unmap_leb`:
 
 ubi_eba_unmap_leb
@@ -326,6 +538,51 @@ This function works exactly like \ :c:func:`ubi_eba_read_leb`\ . But instead of
 storing the read data into a buffer it writes to an UBI scatter gather
 list.
 
+.. _`try_recover_peb`:
+
+try_recover_peb
+===============
+
+.. c:function:: int try_recover_peb(struct ubi_volume *vol, int pnum, int lnum, const void *buf, int offset, int len, struct ubi_vid_io_buf *vidb, bool *retry)
+
+    try to recover from write failure.
+
+    :param struct ubi_volume \*vol:
+        volume description object
+
+    :param int pnum:
+        the physical eraseblock to recover
+
+    :param int lnum:
+        logical eraseblock number
+
+    :param const void \*buf:
+        data which was not written because of the write failure
+
+    :param int offset:
+        offset of the failed write
+
+    :param int len:
+        how many bytes should have been written
+
+    :param struct ubi_vid_io_buf \*vidb:
+        VID buffer
+
+    :param bool \*retry:
+        whether the caller should retry in case of failure
+
+.. _`try_recover_peb.description`:
+
+Description
+-----------
+
+This function is called in case of a write failure and moves all good data
+from the potentially bad physical eraseblock to a good physical eraseblock.
+This function also writes the data which was not written due to the failure.
+Returns 0 in case of success, and a negative error code in case of failure.
+In case of failure, the \ ``retry``\  parameter is set to false if this is a fatal
+error (retrying won't help), and true otherwise.
+
 .. _`recover_peb`:
 
 recover_peb
@@ -364,8 +621,46 @@ Description
 This function is called in case of a write failure and moves all good data
 from the potentially bad physical eraseblock to a good physical eraseblock.
 This function also writes the data which was not written due to the failure.
-Returns new physical eraseblock number in case of success, and a negative
-error code in case of failure.
+Returns 0 in case of success, and a negative error code in case of failure.
+This function tries \ ``UBI_IO_RETRIES``\  before giving up.
+
+.. _`try_write_vid_and_data`:
+
+try_write_vid_and_data
+======================
+
+.. c:function:: int try_write_vid_and_data(struct ubi_volume *vol, int lnum, struct ubi_vid_io_buf *vidb, const void *buf, int offset, int len)
+
+    try to write VID header and data to a new PEB.
+
+    :param struct ubi_volume \*vol:
+        volume description object
+
+    :param int lnum:
+        logical eraseblock number
+
+    :param struct ubi_vid_io_buf \*vidb:
+        the VID buffer to write
+
+    :param const void \*buf:
+        buffer containing the data
+
+    :param int offset:
+        where to start writing data
+
+    :param int len:
+        how many bytes should be written
+
+.. _`try_write_vid_and_data.description`:
+
+Description
+-----------
+
+This function tries to write VID header and data belonging to logical
+eraseblock \ ``lnum``\  of volume \ ``vol``\  to a new physical eraseblock. Returns zero
+in case of success and a negative error code in case of failure.
+In case of error, it is possible that something was still written to the
+flash media, but may be some garbage.
 
 .. _`ubi_eba_write_leb`:
 
@@ -403,6 +698,7 @@ This function writes data to logical eraseblock \ ``lnum``\  of a dynamic volume
 \ ``vol``\ . Returns zero in case of success and a negative error code in case
 of failure. In case of error, it is possible that something was still
 written to the flash media, but may be some garbage.
+This function retries \ ``UBI_IO_RETRIES``\  times before giving up.
 
 .. _`ubi_eba_write_leb_st`:
 
@@ -466,14 +762,14 @@ is_error_sane
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubi_eba_copy_leb`\ ' which is called when we
+This is a helper function for 'ubi_eba_copy_leb()' which is called when we
 cannot read data from the target PEB (an error \ ``err``\  happened). If the error
 code is sane, then we treat this error as non-fatal. Otherwise the error is
 fatal and UBI will be switched to R/O mode later.
 
 The idea is that we try not to switch to R/O mode if the read error is
 something which suggests there was a real read problem. E.g., \ ``-EIO``\ . Or a
-memory allocation failed (-\ ``ENOMEM``\ ). Otherwise, it is safer to switch to R/O
+memory allocation failed (-%ENOMEM). Otherwise, it is safer to switch to R/O
 mode, simply because we do not know what happened at the MTD level, and we
 cannot handle this. E.g., the underlying driver may have become crazy, and
 it is safer to switch to R/O mode to preserve the data.
@@ -486,7 +782,7 @@ which we have just written.
 ubi_eba_copy_leb
 ================
 
-.. c:function:: int ubi_eba_copy_leb(struct ubi_device *ubi, int from, int to, struct ubi_vid_hdr *vid_hdr)
+.. c:function:: int ubi_eba_copy_leb(struct ubi_device *ubi, int from, int to, struct ubi_vid_io_buf *vidb)
 
     copy logical eraseblock.
 
@@ -499,8 +795,8 @@ ubi_eba_copy_leb
     :param int to:
         physical eraseblock number where to copy
 
-    :param struct ubi_vid_hdr \*vid_hdr:
-        VID header of the \ ``from``\  physical eraseblock
+    :param struct ubi_vid_io_buf \*vidb:
+        *undescribed*
 
 .. _`ubi_eba_copy_leb.description`:
 
@@ -534,7 +830,7 @@ print_rsvd_warning
 Description
 -----------
 
-This is a helper function for '\ :c:func:`ubi_eba_init`\ ' which is called when UBI
+This is a helper function for 'ubi_eba_init()' which is called when UBI
 cannot reserve enough PEBs for bad block handling. This function makes a
 decision whether we have to print a warning or not. The algorithm is as
 

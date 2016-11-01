@@ -340,6 +340,8 @@ Definition
     #define SPI_MASTER_MUST_RX BIT(3)
     #define SPI_MASTER_MUST_TX BIT(4)
         size_t (*max_transfer_size)(struct spi_device *spi);
+        size_t (*max_message_size)(struct spi_device *spi);
+        struct mutex io_mutex;
         spinlock_t bus_lock_spinlock;
         struct mutex bus_lock_mutex;
         bool bus_lock_flag;
@@ -427,13 +429,20 @@ flags
 
 max_transfer_size
     function that returns the max transfer size for
-    a \ :c:type:`struct spi_device <spi_device>`; may be \ ``NULL``\ , so the default \ ``SIZE_MAX``\  will be used.
+    a \ :c:type:`struct spi_device <spi_device>`\ ; may be \ ``NULL``\ , so the default \ ``SIZE_MAX``\  will be used.
+
+max_message_size
+    function that returns the max message size for
+    a \ :c:type:`struct spi_device <spi_device>`\ ; may be \ ``NULL``\ , so the default \ ``SIZE_MAX``\  will be used.
+
+io_mutex
+    mutex for physical bus access
 
 bus_lock_spinlock
     spinlock for SPI bus locking
 
 bus_lock_mutex
-    mutex for SPI bus locking
+    mutex for exclusion of multiple callers
 
 bus_lock_flag
     indicates that the SPI bus is locked for exclusive use
@@ -751,7 +760,7 @@ the former uses two bytes per word, the latter uses four bytes.)
 In-memory data values are always in native CPU byte order, translated
 from the wire byte order (big-endian except with SPI_LSB_FIRST).  So
 for example when bits_per_word is sixteen, buffers are 2N bytes long
-(\ ``len``\  = 2N) and hold N sixteen bit words in CPU byte order.
+(@len = 2N) and hold N sixteen bit words in CPU byte order.
 
 When the word size of the SPI transfer is not a power-of-two multiple
 of eight bits, those in-memory words include extra bits.  In-memory
@@ -961,9 +970,50 @@ inserted_transfers
 note
 ----
 
-that \ ``extradata``\  will point to \ ``inserted_transfers``\ [\ ``inserted``\ ]
+that \ ``extradata``\  will point to \ ``inserted_transfers``\ [@inserted]
 if some extra allocation is requested, so alignment will be the same
 as for spi_transfers
+
+.. _`spi_sync_transfer`:
+
+spi_sync_transfer
+=================
+
+.. c:function:: int spi_sync_transfer(struct spi_device *spi, struct spi_transfer *xfers, unsigned int num_xfers)
+
+    synchronous SPI data transfer
+
+    :param struct spi_device \*spi:
+        device with which data will be exchanged
+
+    :param struct spi_transfer \*xfers:
+        An array of spi_transfers
+
+    :param unsigned int num_xfers:
+        Number of items in the xfer array
+
+.. _`spi_sync_transfer.context`:
+
+Context
+-------
+
+can sleep
+
+.. _`spi_sync_transfer.description`:
+
+Description
+-----------
+
+Does a synchronous SPI data transfer of the given spi_transfer array.
+
+For more specific semantics see \ :c:func:`spi_sync`\ .
+
+.. _`spi_sync_transfer.return`:
+
+Return
+------
+
+Return: zero on success, else a negative error code.
 
 .. _`spi_write`:
 
@@ -1044,47 +1094,6 @@ Return
 ------
 
 zero on success, else a negative error code.
-
-.. _`spi_sync_transfer`:
-
-spi_sync_transfer
-=================
-
-.. c:function:: int spi_sync_transfer(struct spi_device *spi, struct spi_transfer *xfers, unsigned int num_xfers)
-
-    synchronous SPI data transfer
-
-    :param struct spi_device \*spi:
-        device with which data will be exchanged
-
-    :param struct spi_transfer \*xfers:
-        An array of spi_transfers
-
-    :param unsigned int num_xfers:
-        Number of items in the xfer array
-
-.. _`spi_sync_transfer.context`:
-
-Context
--------
-
-can sleep
-
-.. _`spi_sync_transfer.description`:
-
-Description
------------
-
-Does a synchronous SPI data transfer of the given spi_transfer array.
-
-For more specific semantics see \ :c:func:`spi_sync`\ .
-
-.. _`spi_sync_transfer.return`:
-
-Return
-------
-
-Return: zero on success, else a negative error code.
 
 .. _`spi_w8r8`:
 
@@ -1230,6 +1239,8 @@ Definition
         u8 opcode_nbits;
         u8 addr_nbits;
         u8 data_nbits;
+        struct sg_table rx_sg;
+        bool cur_msg_mapped;
     }
 
 .. _`spi_flash_read_message.members`:
@@ -1266,6 +1277,12 @@ addr_nbits
 
 data_nbits
     number of lines for data
+
+rx_sg
+    Scatterlist for receive data read from flash
+
+cur_msg_mapped
+    message has been mapped for DMA
 
 .. _`spi_board_info`:
 

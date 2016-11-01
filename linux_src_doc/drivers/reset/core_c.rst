@@ -98,6 +98,30 @@ reset_controller_unregister
     :param struct reset_controller_dev \*rcdev:
         a pointer to the reset controller device
 
+.. _`devm_reset_controller_register`:
+
+devm_reset_controller_register
+==============================
+
+.. c:function:: int devm_reset_controller_register(struct device *dev, struct reset_controller_dev *rcdev)
+
+    resource managed \ :c:func:`reset_controller_register`\ 
+
+    :param struct device \*dev:
+        device that is registering this reset controller
+
+    :param struct reset_controller_dev \*rcdev:
+        a pointer to the initialized reset controller device
+
+.. _`devm_reset_controller_register.description`:
+
+Description
+-----------
+
+Managed \ :c:func:`reset_controller_register`\ . For reset controllers registered by
+this function, \ :c:func:`reset_controller_unregister`\  is automatically called on
+driver detach. See \ :c:func:`reset_controller_register`\  for more information.
+
 .. _`reset_control_reset`:
 
 reset_control_reset

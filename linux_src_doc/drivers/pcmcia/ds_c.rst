@@ -37,7 +37,7 @@ pcmcia_register_driver
     register a PCMCIA driver with the bus core
 
     :param struct pcmcia_driver \*driver:
-        the \ :c:type:`struct driver <driver>` being registered
+        the \ :c:type:`struct driver <driver>`\  being registered
 
 .. _`pcmcia_register_driver.description`:
 
@@ -56,7 +56,7 @@ pcmcia_unregister_driver
     unregister a PCMCIA driver with the bus core
 
     :param struct pcmcia_driver \*driver:
-        the \ :c:type:`struct driver <driver>` being unregistered
+        the \ :c:type:`struct driver <driver>`\  being unregistered
 
 .. _`pcmcia_load_firmware`:
 

@@ -66,8 +66,8 @@ Description
 Creates a filter for \ ``call``\  with \ ``filter_str``\ .  If \ ``set_str``\  is \ ``true``\ ,
 \ ``filter_str``\  is copied and recorded in the new filter.
 
-On success, returns 0 and \*\ ``filterp``\  points to the new filter.  On
-failure, returns -errno and \*\ ``filterp``\  may point to \ ``NULL``\  or to a new
+On success, returns 0 and \*@filterp points to the new filter.  On
+failure, returns -errno and \*@filterp may point to \ ``NULL``\  or to a new
 filter.  In the latter case, the returned filter contains error
 information if \ ``set_str``\  is \ ``true``\  and the caller is responsible for
 freeing it.

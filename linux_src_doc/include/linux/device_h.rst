@@ -49,7 +49,7 @@ name
     The name of the bus.
 
 dev_name
-    Used for subsystems to enumerate devices like ("foo\ ``u``\ ", dev->id).
+    Used for subsystems to enumerate devices like ("foo%u", dev->id).
 
 dev_root
     Default device to use as the parent.
@@ -505,6 +505,7 @@ Definition
         const struct attribute_group **groups;
         void (*release)(struct device *dev);
         struct iommu_group *iommu_group;
+        struct iommu_fwspec *iommu_fwspec;
         bool offline_disabled:1;
         bool offline:1;
     }
@@ -559,7 +560,7 @@ driver_data
 
 power
     For device power management.
-    See Documentation/power/devices.txt for details.
+    See Documentation/power/admin-guide/devices.rst for details.
 
 pm_domain
     Provide callbacks that are executed during system suspend,
@@ -641,11 +642,14 @@ release
 iommu_group
     IOMMU group the device belongs to.
 
+iommu_fwspec
+    IOMMU-specific properties supplied by firmware.
+
 offline_disabled
     If set, the device is permanently online.
 
 offline
-    Set after successful invocation of bus type's .\ :c:func:`offline`\ .
+    Set after successful invocation of bus type's .offline().
 
 .. _`device.description`:
 
@@ -679,7 +683,7 @@ module_driver
         unregister function for this driver type
 
     :param ... :
-        Additional arguments to be passed to \__register and \__unregister.
+        Additional arguments to be passed to __register and __unregister.
 
 .. _`module_driver.description`:
 
@@ -696,7 +700,7 @@ builtin_driver
 
 .. c:function::  builtin_driver( __driver,  __register,  ...)
 
-    Helper macro for drivers that don't do anything special in init and have no exit. This eliminates some boilerplate. Each driver may only use this macro once, and calling it replaces device_initcall (or in some cases, the legacy \__initcall).  This is meant to be a direct parallel of \ :c:func:`module_driver`\  above but without the \__exit stuff that is not used for builtin cases.
+    Helper macro for drivers that don't do anything special in init and have no exit. This eliminates some boilerplate. Each driver may only use this macro once, and calling it replaces device_initcall (or in some cases, the legacy __initcall).  This is meant to be a direct parallel of \ :c:func:`module_driver`\  above but without the __exit stuff that is not used for builtin cases.
 
     :param  __driver:
         driver name
@@ -705,7 +709,7 @@ builtin_driver
         register function for this driver type
 
     :param ... :
-        Additional arguments to be passed to \__register
+        Additional arguments to be passed to __register
 
 .. _`builtin_driver.description`:
 

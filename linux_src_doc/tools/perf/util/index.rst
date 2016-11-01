@@ -10,7 +10,9 @@ util
     intel-pt-decoder/index
     auxtrace_c
     auxtrace_h
+    block-range_c
     call-path_h
+    config_h
     dso_c
     dwarf-aux_c
     evlist_c

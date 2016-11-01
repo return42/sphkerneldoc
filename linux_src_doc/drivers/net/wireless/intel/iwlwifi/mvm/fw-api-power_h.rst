@@ -479,32 +479,33 @@ mac_context_id
 pwr_restriction
     TX power restriction in dBms.
 
-.. _`iwl_dev_tx_power_cmd_v2`:
+.. _`iwl_dev_tx_power_cmd_v3`:
 
-struct iwl_dev_tx_power_cmd_v2
+struct iwl_dev_tx_power_cmd_v3
 ==============================
 
-.. c:type:: struct iwl_dev_tx_power_cmd_v2
+.. c:type:: struct iwl_dev_tx_power_cmd_v3
 
     TX power reduction command
 
-.. _`iwl_dev_tx_power_cmd_v2.definition`:
+.. _`iwl_dev_tx_power_cmd_v3.definition`:
 
 Definition
 ----------
 
 .. code-block:: c
 
-    struct iwl_dev_tx_power_cmd_v2 {
+    struct iwl_dev_tx_power_cmd_v3 {
         __le32 set_mode;
         __le32 mac_context_id;
         __le16 pwr_restriction;
         __le16 dev_24;
         __le16 dev_52_low;
         __le16 dev_52_high;
+        __le16 per_chain_restriction[IWL_NUM_CHAIN_LIMITS][IWL_NUM_SUB_BANDS];
     }
 
-.. _`iwl_dev_tx_power_cmd_v2.members`:
+.. _`iwl_dev_tx_power_cmd_v3.members`:
 
 Members
 -------
@@ -527,6 +528,9 @@ dev_52_low
 dev_52_high
     device TX power restriction upper band - high
 
+per_chain_restriction
+    per chain restrictions
+
 .. _`iwl_dev_tx_power_cmd`:
 
 struct iwl_dev_tx_power_cmd
@@ -544,8 +548,9 @@ Definition
 .. code-block:: c
 
     struct iwl_dev_tx_power_cmd {
-        struct iwl_dev_tx_power_cmd_v2 v2;
-        __le16 per_chain_restriction[IWL_NUM_CHAIN_LIMITS][IWL_NUM_SUB_BANDS];
+        struct iwl_dev_tx_power_cmd_v3 v3;
+        u8 enable_ack_reduction;
+        u8 reserved[3];
     }
 
 .. _`iwl_dev_tx_power_cmd.members`:
@@ -553,11 +558,12 @@ Definition
 Members
 -------
 
-v2
-    version 2 of the command, embedded here for easier software handling
+v3
+    version 3 of the command, embedded here for easier software handling
 
-per_chain_restriction
-    per chain restrictions
+enable_ack_reduction
+    enable or disable close range ack TX power
+    reduction.
 
 .. _`iwl_beacon_filter_cmd`:
 

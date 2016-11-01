@@ -95,6 +95,8 @@ Definition
         irq_flow_handler_t irq_handler;
         unsigned int irq_default_type;
         int irq_parent;
+        bool irq_need_valid_mask;
+        unsigned long *irq_valid_mask;
         struct lock_class_key *lock_key;
     #endif
     #if defined(CONFIG_OF_GPIO)
@@ -189,7 +191,7 @@ names
     number of the gpio.
 
 can_sleep
-    flag must be set iff \ :c:func:`get`\ /\ :c:func:`set`\  methods sleep, as they
+    flag must be set iff \ :c:func:`get`\ /set() methods sleep, as they
     must while accessing GPIO expander chips over I2C or SPI. This
     implies that if the chip supports IRQs, these IRQs need to be threaded
     as the chip access may sleep when e.g. reading out the IRQ status
@@ -260,6 +262,14 @@ irq_parent
     GPIO IRQ chip parent/bank linux irq number,
     provided by GPIO driver
 
+irq_need_valid_mask
+    If set core allocates \ ``irq_valid_mask``\  with all
+    bits set to one
+
+irq_valid_mask
+    If not \ ``NULL``\  holds bitmask of GPIOs which are valid to
+    be included in IRQ domain of the chip
+
 lock_key
     per GPIO IRQ chip lockdep class
 
@@ -293,7 +303,7 @@ Example sources would be SOC controllers, FPGAs, multifunction
 chips, dedicated GPIO expanders, and so on.
 
 Each chip controls a number of signals, identified in method calls
-by "offset" values in the range 0..(\ ``ngpio``\  - 1).  When those signals
+by "offset" values in the range 0..(@ngpio - 1).  When those signals
 are referenced through calls like gpio_get_value(gpio), the offset
 is calculated by subtracting \ ``base``\  from the gpio number.
 

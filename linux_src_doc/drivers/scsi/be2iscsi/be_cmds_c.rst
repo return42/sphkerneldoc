@@ -1,121 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/scsi/be2iscsi/be_cmds.c
 
-.. _`beiscsi_pci_soft_reset`:
-
-beiscsi_pci_soft_reset
-======================
-
-.. c:function:: int beiscsi_pci_soft_reset(struct beiscsi_hba *phba)
-
-    2015 Emulex All rights reserved.
-
-    :param struct beiscsi_hba \*phba:
-        *undescribed*
-
-.. _`beiscsi_pci_soft_reset.description`:
-
-Description
------------
-
-This program is free software; you can redistribute it and/or
-modify it under the terms of the GNU General Public License version 2
-as published by the Free Software Foundation.  The full GNU General
-Public License is included in this distribution in the file called COPYING.
-
-.. _`beiscsi_pci_soft_reset.contact-information`:
-
-Contact Information
--------------------
-
-linux-drivers\ ``avagotech``\ .com
-
-Emulex
-3333 Susan Street
-Costa Mesa, CA 92626
-
-.. _`beiscsi_fail_session`:
-
-beiscsi_fail_session
-====================
-
-.. c:function:: void beiscsi_fail_session(struct iscsi_cls_session *cls_session)
-
-    Closing session with appropriate error
-
-    :param struct iscsi_cls_session \*cls_session:
-        ptr to session
-
-.. _`be_cmd_fw_initialize`:
-
-be_cmd_fw_initialize
-====================
-
-.. c:function:: int be_cmd_fw_initialize(struct be_ctrl_info *ctrl)
-
-    Initialize FW
-
-    :param struct be_ctrl_info \*ctrl:
-        Pointer to function control structure
-
-.. _`be_cmd_fw_initialize.description`:
-
-Description
------------
-
-Send FW initialize pattern for the function.
-
-return
-
-.. _`be_cmd_fw_initialize.success`:
-
-Success
--------
-
-0
-
-.. _`be_cmd_fw_initialize.failure`:
-
-Failure
--------
-
-Non-Zero value
-
-.. _`be_cmd_fw_uninit`:
-
-be_cmd_fw_uninit
-================
-
-.. c:function:: int be_cmd_fw_uninit(struct be_ctrl_info *ctrl)
-
-    Uinitialize FW
-
-    :param struct be_ctrl_info \*ctrl:
-        Pointer to function control structure
-
-.. _`be_cmd_fw_uninit.description`:
-
-Description
------------
-
-Send FW uninitialize pattern for the function
-
-return
-
-.. _`be_cmd_fw_uninit.success`:
-
-Success
--------
-
-0
-
-.. _`be_cmd_fw_uninit.failure`:
-
-Failure
--------
-
-Non-Zero value
-
 .. _`be_cmd_create_default_pdu_queue`:
 
 be_cmd_create_default_pdu_queue
@@ -225,6 +110,103 @@ Set the VLAN_TAG for the adapter or Disable VLAN on adapter
 
 returns
 TAG for the MBX Cmd
+
+.. _`beiscsi_get_fw_config`:
+
+beiscsi_get_fw_config
+=====================
+
+.. c:function:: int beiscsi_get_fw_config(struct be_ctrl_info *ctrl, struct beiscsi_hba *phba)
+
+    Get the FW config for the function
+
+    :param struct be_ctrl_info \*ctrl:
+        ptr to Ctrl Info
+
+    :param struct beiscsi_hba \*phba:
+        ptr to the dev priv structure
+
+.. _`beiscsi_get_fw_config.description`:
+
+Description
+-----------
+
+Get the FW config and resources available for the function.
+The resources are created based on the count received here.
+
+return
+
+.. _`beiscsi_get_fw_config.success`:
+
+Success
+-------
+
+0
+
+.. _`beiscsi_get_fw_config.failure`:
+
+Failure
+-------
+
+Non-Zero Value
+
+.. _`beiscsi_get_port_name`:
+
+beiscsi_get_port_name
+=====================
+
+.. c:function:: int beiscsi_get_port_name(struct be_ctrl_info *ctrl, struct beiscsi_hba *phba)
+
+    Get port name for the function
+
+    :param struct be_ctrl_info \*ctrl:
+        ptr to Ctrl Info
+
+    :param struct beiscsi_hba \*phba:
+        ptr to the dev priv structure
+
+.. _`beiscsi_get_port_name.description`:
+
+Description
+-----------
+
+Get the alphanumeric character for port
+
+.. _`beiscsi_cmd_iscsi_cleanup`:
+
+beiscsi_cmd_iscsi_cleanup
+=========================
+
+.. c:function:: int beiscsi_cmd_iscsi_cleanup(struct beiscsi_hba *phba, unsigned short ulp)
+
+    Inform FW to cleanup EP data structures.
+
+    :param struct beiscsi_hba \*phba:
+        pointer to dev priv structure
+
+    :param unsigned short ulp:
+        ULP number.
+
+.. _`beiscsi_cmd_iscsi_cleanup.description`:
+
+Description
+-----------
+
+return
+
+.. _`beiscsi_cmd_iscsi_cleanup.success`:
+
+Success
+-------
+
+0
+
+.. _`beiscsi_cmd_iscsi_cleanup.failure`:
+
+Failure
+-------
+
+Non-Zero Value
 
 .. This file was automatic generated / don't edit.
 

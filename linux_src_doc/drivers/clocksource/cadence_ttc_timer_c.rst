@@ -137,7 +137,7 @@ ttc_shutdown
 ttc_timer_init
 ==============
 
-.. c:function:: void ttc_timer_init(struct device_node *timer)
+.. c:function:: int ttc_timer_init(struct device_node *timer)
 
     Initialize the timer
 

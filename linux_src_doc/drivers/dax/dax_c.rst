@@ -64,7 +64,7 @@ struct dax_dev
 
 .. c:type:: struct dax_dev
 
-    subdivision of a dax region \ ``region``\  - parent region \ ``dev``\  - device backing the character device \ ``kref``\  - enable this data to be tracked in filp->private_data \ ``alive``\  - !alive + rcu grace period == no new mappings can be established \ ``id``\  - child id in the region \ ``num_resources``\  - number of physical address extents in this device \ ``res``\  - array of physical address ranges
+    subdivision of a dax region \ ``region``\  - parent region \ ``dev``\  - device backing the character device \ ``cdev``\  - core chardev data \ ``alive``\  - !alive + rcu grace period == no new mappings can be established \ ``id``\  - child id in the region \ ``num_resources``\  - number of physical address extents in this device \ ``res``\  - array of physical address ranges
 
 .. _`dax_dev.definition`:
 
@@ -75,8 +75,9 @@ Definition
 
     struct dax_dev {
         struct dax_region *region;
-        struct device *dev;
-        struct kref kref;
+        struct inode *inode;
+        struct device dev;
+        struct cdev cdev;
         bool alive;
         int id;
         int num_resources;
@@ -91,10 +92,13 @@ Members
 region
     *undescribed*
 
+inode
+    *undescribed*
+
 dev
     *undescribed*
 
-kref
+cdev
     *undescribed*
 
 alive

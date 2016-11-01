@@ -138,7 +138,7 @@ hfi1_del_timers_sync
 make_rc_ack
 ===========
 
-.. c:function:: int make_rc_ack(struct hfi1_ibdev *dev, struct rvt_qp *qp, struct hfi1_other_headers *ohdr, struct hfi1_pkt_state *ps)
+.. c:function:: int make_rc_ack(struct hfi1_ibdev *dev, struct rvt_qp *qp, struct ib_other_headers *ohdr, struct hfi1_pkt_state *ps)
 
     construct a response packet (ACK, NAK, or RDMA read)
 
@@ -148,7 +148,7 @@ make_rc_ack
     :param struct rvt_qp \*qp:
         a pointer to the QP
 
-    :param struct hfi1_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         a pointer to the IB header being constructed
 
     :param struct hfi1_pkt_state \*ps:
@@ -212,7 +212,7 @@ Description
 
 This is called from \ :c:func:`hfi1_rc_rcv`\  and \ :c:func:`handle_receive_interrupt`\ .
 Note that RDMA reads and atomics are handled in the
-send side QP state and tasklet.
+send side QP state and send engine.
 
 .. _`reset_psn`:
 
@@ -280,14 +280,14 @@ Returns 1 if OK, 0 if current operation should be aborted (NAK).
 rc_rcv_resp
 ===========
 
-.. c:function:: void rc_rcv_resp(struct hfi1_ibport *ibp, struct hfi1_other_headers *ohdr, void *data, u32 tlen, struct rvt_qp *qp, u32 opcode, u32 psn, u32 hdrsize, u32 pmtu, struct hfi1_ctxtdata *rcd)
+.. c:function:: void rc_rcv_resp(struct hfi1_ibport *ibp, struct ib_other_headers *ohdr, void *data, u32 tlen, struct rvt_qp *qp, u32 opcode, u32 psn, u32 hdrsize, u32 pmtu, struct hfi1_ctxtdata *rcd)
 
     process an incoming RC response packet
 
     :param struct hfi1_ibport \*ibp:
         the port this packet came in on
 
-    :param struct hfi1_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         the other headers for this packet
 
     :param void \*data:
@@ -328,11 +328,11 @@ Called at interrupt level.
 rc_rcv_error
 ============
 
-.. c:function:: int rc_rcv_error(struct hfi1_other_headers *ohdr, void *data, struct rvt_qp *qp, u32 opcode, u32 psn, int diff, struct hfi1_ctxtdata *rcd)
+.. c:function:: int rc_rcv_error(struct ib_other_headers *ohdr, void *data, struct rvt_qp *qp, u32 opcode, u32 psn, int diff, struct hfi1_ctxtdata *rcd)
 
     process an incoming duplicate or error RC packet
 
-    :param struct hfi1_other_headers \*ohdr:
+    :param struct ib_other_headers \*ohdr:
         the other headers for this packet
 
     :param void \*data:

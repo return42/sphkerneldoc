@@ -6,14 +6,14 @@
 octeon_init_instr_queue
 =======================
 
-.. c:function:: int octeon_init_instr_queue(struct octeon_device *octeon_dev, u32 iq_no, u32 num_descs)
+.. c:function:: int octeon_init_instr_queue(struct octeon_device *octeon_dev, union oct_txpciq txpciq, u32 num_descs)
 
-    \ ``param``\  octeon_dev      - pointer to the octeon device structure. \ ``param``\  iq_no           - queue to be initialized (0 <= q_no <= 3).
+    @param octeon_dev      - pointer to the octeon device structure. \ ``param``\  txpciq          - queue to be initialized (0 <= q_no <= 3).
 
     :param struct octeon_device \*octeon_dev:
         *undescribed*
 
-    :param u32 iq_no:
+    :param union oct_txpciq txpciq:
         *undescribed*
 
     :param u32 num_descs:
@@ -34,7 +34,7 @@ octeon_delete_instr_queue
 
 .. c:function:: int octeon_delete_instr_queue(struct octeon_device *octeon_dev, u32 iq_no)
 
-    \ ``param``\  octeon_dev      - pointer to the octeon device structure. \ ``param``\  iq_no           - queue to be deleted (0 <= q_no <= 3).
+    @param octeon_dev      - pointer to the octeon device structure. \ ``param``\  iq_no           - queue to be deleted (0 <= q_no <= 3).
 
     :param struct octeon_device \*octeon_dev:
         *undescribed*

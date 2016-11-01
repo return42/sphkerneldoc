@@ -52,7 +52,7 @@ channels_info
     Additional information for channels (See \ :c:type:`struct channel_info <channel_info>`\ ).
 
 ht
-    Driver HT Capabilities (See \ :c:type:`struct ieee80211_sta_ht_cap <ieee80211_sta_ht_cap>`).
+    Driver HT Capabilities (See \ :c:type:`struct ieee80211_sta_ht_cap <ieee80211_sta_ht_cap>`\ ).
 
 .. _`hw_mode_spec.description`:
 

@@ -509,7 +509,7 @@ Description
 
 Got a receive packet back from the IO Part, handle it and send
 it up the stack.
-Returns void
+Returns 1 iff an skb was receieved, otherwise 0
 
 .. _`devdata_initialize`:
 
@@ -534,7 +534,7 @@ Description
 
 Setup initial values for the visornic based on channel and default
 values.
-Returns a pointer to the devdata if successful, else NULL
+Returns a pointer to the devdata structure
 
 .. _`devdata_release`:
 
@@ -617,7 +617,7 @@ Description
 
 Drain the respones queue of any responses from the IO partition.
 Process the responses as we get them.
-Returns when response queue is empty or when the threadd stops.
+Returns when response queue is empty or when the thread stops.
 
 .. _`poll_for_irq`:
 

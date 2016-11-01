@@ -58,7 +58,7 @@ ubi_volume_notify
         volume description object of the changed volume
 
     :param int ntype:
-        notification type to send (\ ``UBI_VOLUME_ADDED``\ , etc)
+        notification type to send (%UBI_VOLUME_ADDED, etc)
 
 .. _`ubi_volume_notify.description`:
 
@@ -82,7 +82,7 @@ ubi_notify_all
         UBI device description object
 
     :param int ntype:
-        notification type to send (\ ``UBI_VOLUME_ADDED``\ , etc)
+        notification type to send (%UBI_VOLUME_ADDED, etc)
 
     :param struct notifier_block \*nb:
         the notifier to call
@@ -170,7 +170,7 @@ ubi_get_by_major
 Description
 -----------
 
-This function is similar to '\ :c:func:`ubi_get_device`\ ', but it searches the device
+This function is similar to 'ubi_get_device()', but it searches the device
 by its major number.
 
 .. _`ubi_major2num`:
@@ -268,7 +268,7 @@ initialization fails at an early stage, this function frees all the
 resources it allocated, returns an error, and \ ``ref``\  is set to \ ``0``\ . However,
 if the initialization fails after the UBI device was registered in the
 driver core subsystem, this function takes a reference to \ ``ubi``\ ->dev, because
-otherwise the release function ('\ :c:func:`dev_release`\ ') would free whole \ ``ubi``\ 
+otherwise the release function ('dev_release()') would free whole \ ``ubi``\ 
 object. The \ ``ref``\  argument is set to \ ``1``\  in this case. The caller has to put
 this reference.
 
@@ -292,7 +292,7 @@ uif_close
 Description
 -----------
 
-Note, since this function un-registers UBI volume device objects (\ ``vol``\ ->dev),
+Note, since this function un-registers UBI volume device objects (@vol->dev),
 the memory allocated voe the volumes is freed as well (in the release
 function).
 

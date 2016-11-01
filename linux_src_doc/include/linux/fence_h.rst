@@ -23,13 +23,11 @@ Definition
         struct rcu_head rcu;
         struct list_head cb_list;
         spinlock_t *lock;
-        unsigned context;
+        u64 context;
         unsigned seqno;
         unsigned long flags;
         ktime_t timestamp;
         int status;
-        struct list_head child_list;
-        struct list_head active_list;
     }
 
 .. _`fence.members`:
@@ -61,7 +59,7 @@ seqno
     can be compared to decide which fence would be signaled later.
 
 flags
-    A mask of FENCE_FLAG\_\* defined below
+    A mask of FENCE_FLAG_* defined below
 
 timestamp
     Timestamp when the fence was signaled.
@@ -70,28 +68,22 @@ status
     Optional, only valid if < 0, must be set before calling
     fence_signal, indicates that the fence has completed with an error.
 
-child_list
-    list of children fences
-
-active_list
-    list of active fences
-
 .. _`fence.description`:
 
 Description
 -----------
 
 the flags member must be manipulated and read using the appropriate
-atomic ops (bit\_\*), so taking the spinlock will not be needed most
+atomic ops (bit_*), so taking the spinlock will not be needed most
 of the time.
 
 FENCE_FLAG_SIGNALED_BIT - fence is already signaled
-FENCE_FLAG_ENABLE_SIGNAL_BIT - enable_signaling might have been called\*
+FENCE_FLAG_ENABLE_SIGNAL_BIT - enable_signaling might have been called*
 FENCE_FLAG_USER_BITS - start of the unused bits, can be used by the
 implementer of the fence for its own purposes. Can be used in different
 ways by different fence implementers, so do not rely on this.
 
-\*) Since atomic bitops are used, this is not guaranteed to be the case.
+Since atomic bitops are used, this is not guaranteed to be the case.
 Particularly, if the bit was set, but fence_signal was called right
 before this bit was set, it would have been able to set the
 FENCE_FLAG_SIGNALED_BIT, before enable_signaling was called.

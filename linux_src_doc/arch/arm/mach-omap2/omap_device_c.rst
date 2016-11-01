@@ -117,7 +117,7 @@ Callers should consider context for this device lost any time this
 function returns a value different than the value the caller got
 the last time it called this function.
 
-If any hwmods exist for the omap_device assoiated with \ ``pdev``\ ,
+If any hwmods exist for the omap_device associated with \ ``pdev``\ ,
 return the context loss counter for that hwmod, otherwise return
 zero.
 
@@ -352,7 +352,7 @@ enabling clocks, setting SYSCONFIG registers; and in the future may
 involve remuxing pins.  Device drivers should call this function
 indirectly via pm_runtime_get\*().  Returns -EINVAL if called when
 the omap_device is already enabled, or passes along the return
-value of \\ :c:func:`_omap_device_enable_hwmods`\ .
+value of \_omap_device_enable_hwmods().
 
 .. _`omap_device_idle`:
 
@@ -374,7 +374,7 @@ Description
 Idle omap_device \ ``od``\ .  Device drivers call this function indirectly
 via pm_runtime_put\*().  Returns -EINVAL if the omap_device is not
 currently enabled, or passes along the return value of
-\\ :c:func:`_omap_device_idle_hwmods`\ .
+\_omap_device_idle_hwmods().
 
 .. _`omap_device_assert_hardreset`:
 

@@ -11,15 +11,16 @@ mfd
     samsung/index
     ab3100_h
     abx500_h
+    altera-a10sr_h
     axp20x_h
     cros_ec_h
     db8500-prcmu_h
     dbx500-prcmu_h
     dln2_h
-    htc-egpio_h
     intel_msic_h
     ipaq-micro_h
     kempld_h
+    lp873x_h
     max8997_h
     max8998-private_h
     max8998_h

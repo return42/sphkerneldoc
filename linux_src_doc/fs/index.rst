@@ -74,6 +74,7 @@ fs
     namespace_c
     open_c
     pipe_c
+    posix_acl_c
     read_write_c
     select_c
     seq_file_c

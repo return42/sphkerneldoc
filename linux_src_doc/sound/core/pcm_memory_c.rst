@@ -66,7 +66,7 @@ snd_pcm_lib_preallocate_pages
         the pcm substream instance
 
     :param int type:
-        DMA type (SNDRV_DMA_TYPE\_\*)
+        DMA type (SNDRV_DMA_TYPE_*)
 
     :param struct device \*data:
         DMA type dependent data
@@ -104,7 +104,7 @@ snd_pcm_lib_preallocate_pages_for_all
         the pcm instance
 
     :param int type:
-        DMA type (SNDRV_DMA_TYPE\_\*)
+        DMA type (SNDRV_DMA_TYPE_*)
 
     :param void \*data:
         DMA type dependent data

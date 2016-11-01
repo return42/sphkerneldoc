@@ -19,8 +19,8 @@ Description
 -----------
 
 Copyright (C) 2004-2008 International Business Machines Corp.
-Author(s): Michael A. Halcrow <mhalcrow\ ``us``\ .ibm.com>
-Tyler Hicks <tyhicks\ ``ou``\ .edu>
+Author(s): Michael A. Halcrow <mhalcrow@us.ibm.com>
+Tyler Hicks <tyhicks@ou.edu>
 
 This program is free software; you can redistribute it and/or
 modify it under the terms of the GNU General Public License version

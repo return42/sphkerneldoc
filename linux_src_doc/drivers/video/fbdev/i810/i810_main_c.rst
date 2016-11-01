@@ -328,7 +328,7 @@ i810_round_off
 Description
 -----------
 
-\ ``var``\  contains user-defined information for the mode to be set.
+@var contains user-defined information for the mode to be set.
 This will try modify those values to ones nearest the
 capability of the hardware
 

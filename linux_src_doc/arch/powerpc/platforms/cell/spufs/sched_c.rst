@@ -53,7 +53,7 @@ find_victim
     find a lower priority context to preempt
 
     :param struct spu_context \*ctx:
-        canidate context for running
+        candidate context for running
 
 .. _`find_victim.description`:
 

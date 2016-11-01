@@ -26,7 +26,7 @@ The size must be enough to contain
 
 1/ a struct page pointer for each device in the array +2
 2/ room to convert each entry in (1) to its corresponding dma
-(\ :c:func:`dma_map_page`\ ) or page (\ :c:func:`page_address`\ ) address.
+(dma_map_page()) or page (page_address()) address.
 
 .. _`scribble_alloc.note`:
 

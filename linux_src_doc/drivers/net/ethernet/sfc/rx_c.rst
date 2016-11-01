@@ -47,7 +47,7 @@ Description
 -----------
 
 This will aim to fill the RX descriptor queue up to
-\ ``rx_queue``\ ->\ ``max_fill``\ . If there is insufficient atomic
+\ ``rx_queue``\ ->@max_fill. If there is insufficient atomic
 memory to do so, a slow fill will be scheduled.
 
 The caller must provide serialisation (none is used here). In practise,
@@ -71,7 +71,7 @@ efx_filter_is_mc_recipient
 Return
 ------
 
-\ ``true``\  if the specification is a non-drop RX filter that
+%true if the specification is a non-drop RX filter that
 matches a local MAC address I/G bit value of 1 or matches a local
 IPv4 or IPv6 address value in the respective multicast address
 range.  Otherwise \ ``false``\ .

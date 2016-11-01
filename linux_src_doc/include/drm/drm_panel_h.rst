@@ -56,14 +56,14 @@ get_timings
 Description
 -----------
 
-The .\ :c:func:`prepare`\  function is typically called before the display controller
+The .prepare() function is typically called before the display controller
 starts to transmit video data. Panel drivers can use this to turn the panel
 on and wait for it to become ready. If additional configuration is required
 (via a control bus such as I2C, SPI or DSI for example) this is a good time
 to do that.
 
 After the display controller has started transmitting video data, it's safe
-to call the .\ :c:func:`enable`\  function. This will typically enable the backlight to
+to call the .enable() function. This will typically enable the backlight to
 make the image on screen visible. Some panels require a certain amount of
 time or frames before the image is displayed. This function is responsible
 for taking this into account before enabling the backlight to avoid visual
@@ -71,13 +71,13 @@ glitches.
 
 Before stopping video transmission from the display controller it can be
 necessary to turn off the panel to avoid visual glitches. This is done in
-the .\ :c:func:`disable`\  function. Analogously to .\ :c:func:`enable`\  this typically involves
+the .disable() function. Analogously to .enable() this typically involves
 turning off the backlight and waiting for some time to make sure no image
 is visible on the panel. It is then safe for the display controller to
 cease transmission of video data.
 
 To save power when no video data is transmitted, a driver can power down
-the panel. This is the job of the .\ :c:func:`unprepare`\  function.
+the panel. This is the job of the .unprepare() function.
 
 .. _`drm_panel`:
 

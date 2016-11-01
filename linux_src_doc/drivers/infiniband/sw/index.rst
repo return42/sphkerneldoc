@@ -8,3 +8,4 @@ sw
     :maxdepth: 1
 
     rdmavt/index
+    rxe/index

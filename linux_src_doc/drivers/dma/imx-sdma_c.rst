@@ -39,7 +39,7 @@ base_bd_ptr
 Description
 -----------
 
-\ ``current_bd_ptr``\       current buffer descriptor processed
+@current_bd_ptr      current buffer descriptor processed
 \ ``base_bd_ptr``\          first element of buffer descriptor array
 \ ``unused``\               padding. The SDMA engine expects an array of 128 byte
 control blocks
@@ -378,7 +378,7 @@ data
 Description
 -----------
 
-\ ``sdma``\                 pointer to the SDMA engine for this channel
+@sdma                pointer to the SDMA engine for this channel
 \ ``channel``\              the channel number, matches dmaengine chan_id + 1
 \ ``direction``\            transfer type. Needed for setting SDMA script
 \ ``peripheral_type``\      Peripheral type. Needed for setting SDMA script
@@ -445,7 +445,7 @@ ram_code_size
 Description
 -----------
 
-\ ``magic``\                "SDMA"
+@magic               "SDMA"
 \ ``version_major``\        increased whenever layout of struct sdma_script_start_addrs
 changes.
 \ ``version_minor``\        firmware minor version (for binary compatible changes)

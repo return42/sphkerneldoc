@@ -251,7 +251,7 @@ Allocate a dev_t for block device.
 Return
 ------
 
-0 on success, allocated dev_t is returned in \*\ ``devt``\ .  -errno on
+0 on success, allocated dev_t is returned in \*@devt.  -errno on
 failure.
 
 .. _`blk_alloc_devt.context`:
@@ -287,19 +287,22 @@ Context
 
 Might sleep.
 
-.. _`add_disk`:
+.. _`device_add_disk`:
 
-add_disk
-========
+device_add_disk
+===============
 
-.. c:function:: void add_disk(struct gendisk *disk)
+.. c:function:: void device_add_disk(struct device *parent, struct gendisk *disk)
 
     add partitioning information to kernel list
+
+    :param struct device \*parent:
+        parent device for the disk
 
     :param struct gendisk \*disk:
         per-device partitioning information
 
-.. _`add_disk.description`:
+.. _`device_add_disk.description`:
 
 Description
 -----------
@@ -307,7 +310,7 @@ Description
 This function registers the partitioning information in \ ``disk``\ 
 with the kernel.
 
-.. _`add_disk.fixme`:
+.. _`device_add_disk.fixme`:
 
 FIXME
 -----

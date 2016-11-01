@@ -10,3 +10,4 @@ mediatek
     mtk_disp_ovl_c
     mtk_disp_rdma_c
     mtk_drm_crtc_c
+    mtk_hdmi_c

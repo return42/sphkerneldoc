@@ -241,7 +241,7 @@ mcb_release_mem
 Description
 -----------
 
-Release memory that was prior requested via @\ :c:func:`mcb_request_mem`\ .
+Release memory that was prior requested via \ ``mcb_request_mem``\ ().
 
 .. _`mcb_get_irq`:
 

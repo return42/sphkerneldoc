@@ -72,6 +72,8 @@ Definition
         dma_addr_t dma;
         struct vsp1_dl_body body0;
         struct list_head fragments;
+        bool has_chain;
+        struct list_head chain;
     }
 
 .. _`vsp1_dl_list.members`:
@@ -96,6 +98,12 @@ body0
 
 fragments
     list of extra display list bodies
+
+has_chain
+    *undescribed*
+
+chain
+    entry in the display list partition chain
 
 .. _`vsp1_dl_manager`:
 
@@ -122,6 +130,8 @@ Definition
         struct vsp1_dl_list *active;
         struct vsp1_dl_list *queued;
         struct vsp1_dl_list *pending;
+        struct work_struct gc_work;
+        struct list_head gc_fragments;
     }
 
 .. _`vsp1_dl_manager.members`:
@@ -139,7 +149,7 @@ vsp1
     the VSP1 device
 
 lock
-    protects the active, queued and pending lists
+    protects the free, active, queued, pending and gc_fragments lists
 
 free
     array of all free display lists
@@ -152,6 +162,12 @@ queued
 
 pending
     list waiting to be queued to the hardware
+
+gc_work
+    fragments garbage collector work struct
+
+gc_fragments
+    array of display list fragments waiting to be freed
 
 .. _`vsp1_dl_fragment_alloc`:
 
@@ -332,6 +348,38 @@ free it explicitly with \ :c:func:`vsp1_dl_fragment_free`\ .
 
 Fragments are only usable for display lists in header mode. Attempt to
 add a fragment to a header-less display list will return an error.
+
+.. _`vsp1_dl_list_add_chain`:
+
+vsp1_dl_list_add_chain
+======================
+
+.. c:function:: int vsp1_dl_list_add_chain(struct vsp1_dl_list *head, struct vsp1_dl_list *dl)
+
+    Add a display list to a chain
+
+    :param struct vsp1_dl_list \*head:
+        The head display list
+
+    :param struct vsp1_dl_list \*dl:
+        The new display list
+
+.. _`vsp1_dl_list_add_chain.description`:
+
+Description
+-----------
+
+Add a display list to an existing display list chain. The chained lists
+will be automatically processed by the hardware without intervention from
+the CPU. A display list end interrupt will only complete after the last
+display list in the chain has completed processing.
+
+Adding a display list to a chain passes ownership of the display list to
+the head display list item. The chain is released when the head dl item is
+put back with \__vsp1_dl_list_put().
+
+Chained display lists are only usable in header mode. Attempts to add a
+display list to a chain in header-less mode will return an error.
 
 .. This file was automatic generated / don't edit.
 

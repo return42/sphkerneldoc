@@ -45,6 +45,28 @@ Return
 
 0 on success or negative error number in case of failure
 
+.. _`batadv_mcast_flags_open`:
+
+batadv_mcast_flags_open
+=======================
+
+.. c:function:: int batadv_mcast_flags_open(struct inode *inode, struct file *file)
+
+    prepare file handler for reads from mcast_flags
+
+    :param struct inode \*inode:
+        inode which was opened
+
+    :param struct file \*file:
+        file handle to be initialized
+
+.. _`batadv_mcast_flags_open.return`:
+
+Return
+------
+
+0 on success or negative error number in case of failure
+
 .. _`batadv_debugfs_add_hardif`:
 
 batadv_debugfs_add_hardif

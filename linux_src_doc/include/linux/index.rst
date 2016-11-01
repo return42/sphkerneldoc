@@ -9,6 +9,7 @@ linux
 
     amba/index
     can/index
+    ceph/index
     clk/index
     dma/index
     extcon/index
@@ -54,6 +55,7 @@ linux
     backing-dev_h
     bch_h
     bio_h
+    bitfield_h
     bitmap_h
     bitops_h
     blk-cgroup_h
@@ -65,6 +67,7 @@ linux
     cacheinfo_h
     cb710_h
     ccp_h
+    cec_h
     cgroup-defs_h
     cgroup_h
     clk-provider_h
@@ -75,6 +78,7 @@ linux
     cnt32_to_63_h
     compiler_h
     completion_h
+    console_h
     context_tracking_h
     cordic_h
     coresight_h
@@ -92,12 +96,12 @@ linux
     dcache_h
     dccp_h
     dcookies_h
+    debugfs_h
     debugobjects_h
     devfreq-event_h
     devfreq_cooling_h
     devfreq_h
     device_h
-    dma-attrs_h
     dma-buf_h
     dma-contiguous_h
     dma-mapping_h
@@ -109,7 +113,9 @@ linux
     err_h
     etherdevice_h
     ethtool_h
+    exportfs_h
     extcon_h
+    fence-array_h
     fence_h
     fixp-arith_h
     freezer_h
@@ -132,6 +138,7 @@ linux
     highmem_h
     hrtimer_h
     hw_random_h
+    hwmon_h
     hwspinlock_h
     i2c-gpio_h
     i2c-mux-gpio_h
@@ -211,15 +218,16 @@ linux
     netfilter_h
     nfs_fs_h
     nfs_page_h
-    nilfs2_fs_h
     nmi_h
     nodemask_h
     ntb_h
+    nvme-rdma_h
     of_device_h
     of_gpio_h
     of_graph_h
     of_h
     of_platform_h
+    of_reserved_mem_h
     oprofile_h
     padata_h
     page-flags_h
@@ -275,6 +283,7 @@ linux
     rtc_h
     rtmutex_h
     rtnetlink_h
+    sbitmap_h
     scatterlist_h
     sched_h
     scif_h
@@ -309,7 +318,6 @@ linux
     textsearch_fsm_h
     textsearch_h
     thermal_h
-    thread_info_h
     ti_wilink_st_h
     timb_dma_h
     timb_gpio_h

@@ -22,9 +22,9 @@ Copyright (C) 2011-2013 Texas Instruments Incorporated - http://www.ti.com
 Author
 ------
 
-Keshava Munegowda <keshava_mgowda\ ``ti``\ .com>
+Keshava Munegowda <keshava_mgowda@ti.com>
 
-Roger Quadros <rogerq\ ``ti``\ .com>
+Roger Quadros <rogerq@ti.com>
 
 .. _`usbhs_driver_name.this-program-is-free-software`:
 
@@ -48,7 +48,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 omap_usbhs_get_dt_port_mode
 ===========================
 
-.. c:function:: const int omap_usbhs_get_dt_port_mode(const char *mode)
+.. c:function:: int omap_usbhs_get_dt_port_mode(const char *mode)
 
     Get the 'enum usbhs_omap_port_mode' from the port mode string.
 

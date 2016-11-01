@@ -8,7 +8,7 @@ BATADV_SYSFS_VLAN_SUBDIR_PREFIX
 
 .. c:function::  BATADV_SYSFS_VLAN_SUBDIR_PREFIX()
 
-    prefix of the subfolder that will be created in the sysfs hierarchy for each VLAN interface. The subfolder will be named "BATADV_SYSFS_VLAN_SUBDIR_PREFIX\ ``vid``\ ".
+    prefix of the subfolder that will be created in the sysfs hierarchy for each VLAN interface. The subfolder will be named "BATADV_SYSFS_VLAN_SUBDIR_PREFIX%vid".
 
 .. This file was automatic generated / don't edit.
 

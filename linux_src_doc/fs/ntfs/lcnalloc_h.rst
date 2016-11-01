@@ -68,10 +68,10 @@ WARNING
 -------
 
 If \ ``ctx``\  is supplied, regardless of whether success or failure is
-returned, you need to check IS_ERR(\ ``ctx``\ ->mrec) and if 'true' the \ ``ctx``\ 
+returned, you need to check IS_ERR(@ctx->mrec) and if 'true' the \ ``ctx``\ 
 is no longer valid, i.e. you need to either call
 \ :c:func:`ntfs_attr_reinit_search_ctx`\  or \ :c:func:`ntfs_attr_put_search_ctx`\  on it.
-In that case PTR_ERR(\ ``ctx``\ ->mrec) will give you the error code for
+In that case PTR_ERR(@ctx->mrec) will give you the error code for
 why the mapping of the old inode failed.
 
 .. _`ntfs_cluster_free.locking`:

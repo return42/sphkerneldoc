@@ -22,7 +22,7 @@ Description
 -----------
 
 Clear \ ``mask``\  from \ ``task``\ ->jobctl.  \ ``mask``\  must be subset of
-\ ``JOBCTL_PENDING_MASK``\  \| \ ``JOBCTL_STOP_CONSUME``\  \| \ ``JOBCTL_STOP_SIGMASK``\  \|
+\ ``JOBCTL_PENDING_MASK``\  | \ ``JOBCTL_STOP_CONSUME``\  | \ ``JOBCTL_STOP_SIGMASK``\  |
 \ ``JOBCTL_TRAPPING``\ .  If stop signo is being set, the existing signo is
 cleared.  If \ ``task``\  is already being killed or exiting, this function
 becomes noop.
@@ -39,7 +39,7 @@ Must be called with \ ``task``\ ->sighand->siglock held.
 Return
 ------
 
-\ ``true``\  if \ ``mask``\  is set, \ ``false``\  if made noop because \ ``task``\  was dying.
+%true if \ ``mask``\  is set, \ ``false``\  if made noop because \ ``task``\  was dying.
 
 .. _`task_clear_jobctl_trapping`:
 
@@ -121,10 +121,10 @@ task_participate_group_stop
 Description
 -----------
 
-\ ``task``\  has \ ``JOBCTL_STOP_PENDING``\  set and is participating in a group stop.
+@task has \ ``JOBCTL_STOP_PENDING``\  set and is participating in a group stop.
 Group stop states are cleared and the group stop count is consumed if
 \ ``JOBCTL_STOP_CONSUME``\  was set.  If the consumption completes the group
-stop, the appropriate \ ``SIGNAL``\ \_\* flags are set.
+stop, the appropriate \ ``SIGNAL_``\ * flags are set.
 
 .. _`task_participate_group_stop.context`:
 
@@ -138,7 +138,7 @@ Must be called with \ ``task``\ ->sighand->siglock held.
 Return
 ------
 
-\ ``true``\  if group stop completion should be notified to the parent, \ ``false``\ 
+%true if group stop completion should be notified to the parent, \ ``false``\ 
 otherwise.
 
 .. _`ptrace_trap_notify`:
@@ -191,7 +191,7 @@ do_notify_parent_cldstop
         the notification is for ptracer
 
     :param int why:
-        CLD_{CONTINUED\|STOPPED\|TRAPPED} to report
+        CLD_{CONTINUED|STOPPED|TRAPPED} to report
 
 .. _`do_notify_parent_cldstop.description`:
 
@@ -249,7 +249,7 @@ on \ ``true``\  return.
 Return
 ------
 
-\ ``false``\  if group stop is already cancelled or ptrace trap is scheduled.
+%false if group stop is already cancelled or ptrace trap is scheduled.
 \ ``true``\  if participated in group stop.
 
 .. _`do_jobctl_trap`:
@@ -304,7 +304,7 @@ Description
 -----------
 
 This function should be called when a signal has successfully been
-delivered. It updates the blocked signals accordingly (\ ``ksig``\ ->ka.sa.sa_mask
+delivered. It updates the blocked signals accordingly (@ksig->ka.sa.sa_mask
 is always blocked, and the signal itself is blocked unless \ ``SA_NODEFER``\ 
 is set in \ ``ksig``\ ->ka.sa.sa_flags.  Tracing is notified.
 
@@ -453,9 +453,9 @@ sys_tgkill
 Description
 -----------
 
-This syscall also checks the \ ``tgid``\  and returns -ESRCH even if the PID
-exists but it's not belonging to the target process anymore. This
-method solves the problem of threads exiting and PIDs getting reused.
+ This syscall also checks the \ ``tgid``\  and returns -ESRCH even if the PID
+ exists but it's not belonging to the target process anymore. This
+ method solves the problem of threads exiting and PIDs getting reused.
 
 .. _`sys_tkill`:
 
@@ -477,7 +477,7 @@ sys_tkill
 Description
 -----------
 
-Send a signal to only one task, even if it's a CLONE_THREAD task.
+ Send a signal to only one task, even if it's a CLONE_THREAD task.
 
 .. _`sys_rt_sigqueueinfo`:
 

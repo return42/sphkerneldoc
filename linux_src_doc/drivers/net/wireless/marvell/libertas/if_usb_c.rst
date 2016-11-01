@@ -11,7 +11,7 @@ if_usb_write_bulk_callback
     callback function to handle the status of the URB
 
     :param struct urb \*urb:
-        pointer to \ :c:type:`struct urb <urb>` structure
+        pointer to \ :c:type:`struct urb <urb>`\  structure
 
 .. _`if_usb_write_bulk_callback.return`:
 
@@ -30,7 +30,7 @@ if_usb_free
     free tx/rx urb, skb and rx buffer
 
     :param struct if_usb_card \*cardp:
-        pointer to \ :c:type:`struct if_usb_card <if_usb_card>`
+        pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
 
 .. _`if_usb_free.return`:
 
@@ -49,7 +49,7 @@ if_usb_probe
     sets the configuration values
 
     :param struct usb_interface \*intf:
-        \ :c:type:`struct usb_interface <usb_interface>` pointer
+        &usb_interface pointer
 
     :param const struct usb_device_id \*id:
         pointer to usb_device_id
@@ -181,7 +181,7 @@ if_usb_issue_boot_command
     issues Boot command to the Boot2 code
 
     :param struct if_usb_card \*cardp:
-        pointer to \ :c:type:`struct if_usb_card <if_usb_card>`
+        pointer to \ :c:type:`struct if_usb_card <if_usb_card>`\ 
 
     :param int ivalue:
         1:Boot from FW by USB-Download

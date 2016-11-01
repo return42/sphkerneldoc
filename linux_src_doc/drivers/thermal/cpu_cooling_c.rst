@@ -110,7 +110,7 @@ node
     list_head to link all cpufreq_cooling_device together.
 
 last_load
-    load measured by the latest call to \ :c:func:`cpufreq_get_actual_power`\ 
+    load measured by the latest call to \ :c:func:`cpufreq_get_requested_power`\ 
 
 time_in_idle
     previous reading of the absolute time that this cpu was idle
@@ -317,7 +317,7 @@ get_load
     get load for a cpu since last updated
 
     :param struct cpufreq_cooling_device \*cpufreq_device:
-        \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cpu
+        &struct cpufreq_cooling_device for this cpu
 
     :param int cpu:
         cpu number
@@ -343,7 +343,7 @@ get_static_power
     calculate the static power consumed by the cpus
 
     :param struct cpufreq_cooling_device \*cpufreq_device:
-        struct \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>` for this cpu cdev
+        struct \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>`\  for this cpu cdev
 
     :param struct thermal_zone_device \*tz:
         thermal zone device in which we're operating
@@ -382,7 +382,7 @@ get_dynamic_power
     calculate the dynamic power
 
     :param struct cpufreq_cooling_device \*cpufreq_device:
-        \ :c:type:`struct cpufreq_cooling_device <cpufreq_cooling_device>` for this cdev
+        &cpufreq_cooling_device for this cdev
 
     :param unsigned long freq:
         current frequency
@@ -495,7 +495,7 @@ cpufreq_get_requested_power
     get the current power
 
     :param struct thermal_cooling_device \*cdev:
-        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>` pointer
+        &thermal_cooling_device pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -540,7 +540,7 @@ cpufreq_state2power
     convert a cpu cdev state to power consumed
 
     :param struct thermal_cooling_device \*cdev:
-        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>` pointer
+        &thermal_cooling_device pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -579,7 +579,7 @@ cpufreq_power2state
     convert power to a cooling device state
 
     :param struct thermal_cooling_device \*cdev:
-        \ :c:type:`struct thermal_cooling_device <thermal_cooling_device>` pointer
+        &thermal_cooling_device pointer
 
     :param struct thermal_zone_device \*tz:
         a valid thermal zone device pointer
@@ -642,7 +642,7 @@ Description
 -----------
 
 This interface function registers the cpufreq cooling device with the name
-"thermal-cpufreq-\ ``x``\ ". This api can support multiple instances of cpufreq
+"thermal-cpufreq-%x". This api can support multiple instances of cpufreq
 cooling devices. It also gives the opportunity to link the cooling device
 with a device tree node, in order to bind it via the thermal DT code.
 
@@ -672,7 +672,7 @@ Description
 -----------
 
 This interface function registers the cpufreq cooling device with the name
-"thermal-cpufreq-\ ``x``\ ". This api can support multiple instances of cpufreq
+"thermal-cpufreq-%x". This api can support multiple instances of cpufreq
 cooling devices.
 
 .. _`cpufreq_cooling_register.return`:
@@ -704,7 +704,7 @@ Description
 -----------
 
 This interface function registers the cpufreq cooling device with the name
-"thermal-cpufreq-\ ``x``\ ". This api can support multiple instances of cpufreq
+"thermal-cpufreq-%x". This api can support multiple instances of cpufreq
 cooling devices. Using this API, the cpufreq cooling device will be
 linked to the device tree node provided.
 
@@ -741,7 +741,7 @@ Description
 -----------
 
 This interface function registers the cpufreq cooling device with
-the name "thermal-cpufreq-\ ``x``\ ".  This api can support multiple
+the name "thermal-cpufreq-%x".  This api can support multiple
 instances of cpufreq cooling devices.  Using this function, the
 cooling device will implement the power extensions by using a
 simple cpu power model.  The cpus must have registered their OPPs
@@ -787,7 +787,7 @@ Description
 -----------
 
 This interface function registers the cpufreq cooling device with
-the name "thermal-cpufreq-\ ``x``\ ".  This api can support multiple
+the name "thermal-cpufreq-%x".  This api can support multiple
 instances of cpufreq cooling devices.  Using this API, the cpufreq
 cooling device will be linked to the device tree node provided.
 Using this function, the cooling device will implement the power
@@ -823,7 +823,7 @@ cpufreq_cooling_unregister
 Description
 -----------
 
-This interface function unregisters the "thermal-cpufreq-\ ``x``\ " cooling device.
+This interface function unregisters the "thermal-cpufreq-%x" cooling device.
 
 .. This file was automatic generated / don't edit.
 

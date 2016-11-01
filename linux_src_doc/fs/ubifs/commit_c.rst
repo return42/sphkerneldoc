@@ -234,7 +234,7 @@ Description
 -----------
 
 This function records information about the index that will be needed for the
-next old index check i.e. '\ :c:func:`dbg_check_old_index`\ '.
+next old index check i.e. 'dbg_check_old_index()'.
 
 This function returns \ ``0``\  on success and a negative error code on failure.
 

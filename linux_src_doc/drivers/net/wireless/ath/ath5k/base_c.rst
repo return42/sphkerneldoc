@@ -18,7 +18,7 @@ ath5k_drain_tx_buffs
 Description
 -----------
 
-\ ``ah``\  The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
+@ah The \ :c:type:`struct ath5k_hw <ath5k_hw>`\ 
 
 Empty tx buffers from all queues in preparation
 of a reset or during shutdown.

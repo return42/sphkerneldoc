@@ -29,7 +29,7 @@ but doesn't allocate any memory to back the object.
 Return
 ------
 
-A struct drm_gem_cma_object \* on success or an \ :c:func:`ERR_PTR`\ -encoded negative
+A struct drm_gem_cma_object * on success or an \ :c:func:`ERR_PTR`\ -encoded negative
 error code on failure.
 
 .. _`drm_gem_cma_create`:
@@ -61,7 +61,7 @@ set.
 Return
 ------
 
-A struct drm_gem_cma_object \* on success or an \ :c:func:`ERR_PTR`\ -encoded negative
+A struct drm_gem_cma_object * on success or an \ :c:func:`ERR_PTR`\ -encoded negative
 error code on failure.
 
 .. _`drm_gem_cma_create_with_handle`:
@@ -99,7 +99,7 @@ of object associated with the given file and a handle to it is returned.
 Return
 ------
 
-A struct drm_gem_cma_object \* on success or an \ :c:func:`ERR_PTR`\ -encoded negative
+A struct drm_gem_cma_object * on success or an \ :c:func:`ERR_PTR`\ -encoded negative
 error code on failure.
 
 .. _`drm_gem_cma_free_object`:
@@ -122,7 +122,7 @@ Description
 This function frees the backing memory of the CMA GEM object, cleans up the
 GEM object state and frees the memory used to store the object itself.
 Drivers using the CMA helpers should set this as their DRM driver's
-->\ :c:func:`gem_free_object`\  callback.
+->gem_free_object() callback.
 
 .. _`drm_gem_cma_dumb_create_internal`:
 
@@ -150,7 +150,7 @@ Description
 This aligns the pitch and size arguments to the minimum required. This is
 an internal helper that can be wrapped by a driver to account for hardware
 with more specific alignment requirements. It should not be used directly
-as the ->\ :c:func:`dumb_create`\  callback in a DRM driver.
+as the ->dumb_create() callback in a DRM driver.
 
 .. _`drm_gem_cma_dumb_create_internal.return`:
 
@@ -185,7 +185,7 @@ Description
 This function computes the pitch of the dumb buffer and rounds it up to an
 integer number of bytes per pixel. Drivers for hardware that doesn't have
 any additional restrictions on the pitch can directly use this function as
-their ->\ :c:func:`dumb_create`\  callback.
+their ->dumb_create() callback.
 
 For hardware with additional restrictions, drivers can adjust the fields
 set up by userspace and pass the IOCTL data along to the
@@ -226,7 +226,7 @@ Description
 
 This function look up an object by its handle and returns the fake mmap
 offset associated with it. Drivers using the CMA helpers should set this
-as their DRM driver's ->\ :c:func:`dumb_map_offset`\  callback.
+as their DRM driver's ->dumb_map_offset() callback.
 
 .. _`drm_gem_cma_dumb_map_offset.return`:
 
@@ -256,16 +256,10 @@ Description
 -----------
 
 This function implements an augmented version of the GEM DRM file mmap
-
-.. _`drm_gem_cma_mmap.operation-for-cma-objects`:
-
-operation for CMA objects
--------------------------
-
-In addition to the usual GEM VMA setup it
+operation for CMA objects: In addition to the usual GEM VMA setup it
 immediately faults in the entire object instead of using on-demaind
 faulting. Drivers which employ the CMA helpers should use this function
-as their ->\ :c:func:`mmap`\  handler in the DRM device file's file_operations
+as their ->mmap() handler in the DRM device file's file_operations
 structure.
 
 .. _`drm_gem_cma_mmap.return`:
@@ -317,7 +311,7 @@ Description
 
 This function exports a scatter/gather table suitable for PRIME usage by
 calling the standard DMA mapping API. Drivers using the CMA helpers should
-set this as their DRM driver's ->\ :c:func:`gem_prime_get_sg_table`\  callback.
+set this as their DRM driver's ->gem_prime_get_sg_table() callback.
 
 .. _`drm_gem_cma_prime_get_sg_table.return`:
 
@@ -353,7 +347,7 @@ This function imports a scatter/gather table exported via DMA-BUF by
 another driver. Imported buffers must be physically contiguous in memory
 (i.e. the scatter/gather table must contain a single entry). Drivers that
 use the CMA helpers should set this as their DRM driver's
-->\ :c:func:`gem_prime_import_sg_table`\  callback.
+->gem_prime_import_sg_table() callback.
 
 .. _`drm_gem_cma_prime_import_sg_table.return`:
 
@@ -385,7 +379,7 @@ Description
 
 This function maps a buffer imported via DRM PRIME into a userspace
 process's address space. Drivers that use the CMA helpers should set this
-as their DRM driver's ->\ :c:func:`gem_prime_mmap`\  callback.
+as their DRM driver's ->gem_prime_mmap() callback.
 
 .. _`drm_gem_cma_prime_mmap.return`:
 
@@ -415,7 +409,7 @@ This function maps a buffer exported via DRM PRIME into the kernel's
 virtual address space. Since the CMA buffers are already mapped into the
 kernel virtual address space this simply returns the cached virtual
 address. Drivers using the CMA helpers should set this as their DRM
-driver's ->\ :c:func:`gem_prime_vmap`\  callback.
+driver's ->gem_prime_vmap() callback.
 
 .. _`drm_gem_cma_prime_vmap.return`:
 
@@ -447,7 +441,7 @@ Description
 This function removes a buffer exported via DRM PRIME from the kernel's
 virtual address space. This is a no-op because CMA buffers cannot be
 unmapped from kernel space. Drivers using the CMA helpers should set this
-as their DRM driver's ->\ :c:func:`gem_prime_vunmap`\  callback.
+as their DRM driver's ->gem_prime_vunmap() callback.
 
 .. This file was automatic generated / don't edit.
 

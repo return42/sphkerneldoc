@@ -181,6 +181,7 @@ Definition
         const struct chv_gpio_pinrange *gpio_ranges;
         size_t ngpio_ranges;
         size_t ngpios;
+        size_t nirqs;
     }
 
 .. _`chv_community.members`:
@@ -218,6 +219,9 @@ ngpio_ranges
 ngpios
     Total number of GPIOs in this community
 
+nirqs
+    Total number of IRQs this community can generate
+
 .. _`chv_pinctrl`:
 
 struct chv_pinctrl
@@ -240,7 +244,6 @@ Definition
         struct pinctrl_dev *pctldev;
         struct gpio_chip chip;
         void __iomem *regs;
-        raw_spinlock_t lock;
         unsigned intr_lines[16];
         const struct chv_community *community;
         u32 saved_intmask;
@@ -266,9 +269,6 @@ chip
 
 regs
     MMIO registers
-
-lock
-    Lock to serialize register accesses
 
 intr_lines
     Stores mapping between 16 HW interrupt wires and GPIO

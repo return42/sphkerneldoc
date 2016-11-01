@@ -355,7 +355,6 @@ Definition
     struct iser_device {
         struct ib_device *ib_device;
         struct ib_pd *pd;
-        struct ib_mr *mr;
         struct ib_event_handler event_handler;
         struct list_head ig_list;
         int refcount;
@@ -375,9 +374,6 @@ ib_device
 
 pd
     Protection Domain for this device
-
-mr
-    Global DMA memory region
 
 event_handler
     IB events handle routine

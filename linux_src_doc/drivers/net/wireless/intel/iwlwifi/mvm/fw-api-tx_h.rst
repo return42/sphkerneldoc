@@ -36,7 +36,6 @@ Definition
         TX_CMD_FLG_KEEP_SEQ_CTL,
         TX_CMD_FLG_MH_PAD,
         TX_CMD_FLG_RESP_TO_DRV,
-        TX_CMD_FLG_CCMP_AGG,
         TX_CMD_FLG_TKIP_MIC_DONE,
         TX_CMD_FLG_DUR,
         TX_CMD_FLG_FW_DROP,
@@ -110,9 +109,6 @@ TX_CMD_FLG_MH_PAD
 TX_CMD_FLG_RESP_TO_DRV
     zero this if the response should go only to FW
 
-TX_CMD_FLG_CCMP_AGG
-    this frame uses CCMP for aggregation acceleration
-
 TX_CMD_FLG_TKIP_MIC_DONE
     FW already performed TKIP MIC calculation
 
@@ -166,6 +162,61 @@ PM_FRAME_MGMT
 
 PM_FRAME_ASSOC
     fw suspend sleep mode for 10sec
+
+.. _`iwl_tx_cmd_sec_ctrl`:
+
+enum iwl_tx_cmd_sec_ctrl
+========================
+
+.. c:type:: enum iwl_tx_cmd_sec_ctrl
+
+    bitmasks for security control in TX command
+
+.. _`iwl_tx_cmd_sec_ctrl.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum iwl_tx_cmd_sec_ctrl {
+        TX_CMD_SEC_WEP,
+        TX_CMD_SEC_CCM,
+        TX_CMD_SEC_TKIP,
+        TX_CMD_SEC_EXT,
+        TX_CMD_SEC_GCMP,
+        TX_CMD_SEC_KEY128,
+        TX_CMD_SEC_KEY_FROM_TABLE
+    };
+
+.. _`iwl_tx_cmd_sec_ctrl.constants`:
+
+Constants
+---------
+
+TX_CMD_SEC_WEP
+    WEP encryption algorithm.
+
+TX_CMD_SEC_CCM
+    CCM encryption algorithm.
+
+TX_CMD_SEC_TKIP
+    TKIP encryption algorithm.
+
+TX_CMD_SEC_EXT
+    extended cipher algorithm.
+
+TX_CMD_SEC_GCMP
+    GCMP encryption algorithm.
+
+TX_CMD_SEC_KEY128
+    set for 104 bits WEP key.
+
+TX_CMD_SEC_KEY_FROM_TABLE
+    for a non-WEP key, set if the key should be taken
+    from the table instead of from the TX command.
+    If the key is taken from the key table its index should be given by the
+    first byte of the TX command key field.
 
 .. _`iwl_tx_offload_assist_flags_pos`:
 
@@ -586,6 +637,256 @@ reduced_txp
 reserved1
     *undescribed*
 
+.. _`iwl_mvm_compressed_ba_tfd`:
+
+struct iwl_mvm_compressed_ba_tfd
+================================
+
+.. c:type:: struct iwl_mvm_compressed_ba_tfd
+
+    progress of a TFD queue
+
+.. _`iwl_mvm_compressed_ba_tfd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_compressed_ba_tfd {
+        u8 q_num;
+        u8 reserved;
+        __le16 tfd_index;
+    }
+
+.. _`iwl_mvm_compressed_ba_tfd.members`:
+
+Members
+-------
+
+q_num
+    TFD queue number
+
+reserved
+    *undescribed*
+
+tfd_index
+    Index of first un-acked frame in the  TFD queue
+
+.. _`iwl_mvm_compressed_ba_ratid`:
+
+struct iwl_mvm_compressed_ba_ratid
+==================================
+
+.. c:type:: struct iwl_mvm_compressed_ba_ratid
+
+    progress of a RA TID queue
+
+.. _`iwl_mvm_compressed_ba_ratid.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_compressed_ba_ratid {
+        u8 q_num;
+        u8 tid;
+        __le16 ssn;
+    }
+
+.. _`iwl_mvm_compressed_ba_ratid.members`:
+
+Members
+-------
+
+q_num
+    RA TID queue number
+
+tid
+    TID of the queue
+
+ssn
+    BA window current SSN
+
+.. _`iwl_mvm_compressed_ba_notif`:
+
+struct iwl_mvm_compressed_ba_notif
+==================================
+
+.. c:type:: struct iwl_mvm_compressed_ba_notif
+
+    notifies about reception of BA ( BA_NOTIF = 0xc5 )
+
+.. _`iwl_mvm_compressed_ba_notif.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mvm_compressed_ba_notif {
+        __le32 flags;
+        u8 sta_id;
+        u8 reduced_txp;
+        u8 initial_rate;
+        u8 retry_cnt;
+        __le32 query_byte_cnt;
+        __le16 query_frame_cnt;
+        __le16 txed;
+        __le16 done;
+        __le32 wireless_time;
+        __le32 tx_rate;
+        __le16 tfd_cnt;
+        __le16 ra_tid_cnt;
+        struct iwl_mvm_compressed_ba_tfd tfd[1];
+        struct iwl_mvm_compressed_ba_ratid ra_tid[0];
+    }
+
+.. _`iwl_mvm_compressed_ba_notif.members`:
+
+Members
+-------
+
+flags
+    status flag, see the \ :c:type:`struct iwl_mvm_ba_resp_flags <iwl_mvm_ba_resp_flags>`\ 
+
+sta_id
+    Index of recipient (BA-sending) station in fw's station table
+
+reduced_txp
+    power reduced according to TPC. This is the actual value and
+    not a copy from the LQ command. Thus, if not the first rate was used
+    for Tx-ing then this value will be set to 0 by FW.
+
+initial_rate
+    TLC rate info, initial rate index, TLC table color
+
+retry_cnt
+    retry count
+
+query_byte_cnt
+    SCD query byte count
+
+query_frame_cnt
+    SCD query frame count
+
+txed
+    number of frames sent in the aggregation (all-TIDs)
+
+done
+    number of frames that were Acked by the BA (all-TIDs)
+
+wireless_time
+    Wireless-media time
+
+tx_rate
+    the rate the aggregation was sent at
+
+tfd_cnt
+    number of TFD-Q elements
+
+ra_tid_cnt
+    number of RATID-Q elements
+
+.. _`iwl_mac_beacon_cmd_v6`:
+
+struct iwl_mac_beacon_cmd_v6
+============================
+
+.. c:type:: struct iwl_mac_beacon_cmd_v6
+
+    beacon template command
+
+.. _`iwl_mac_beacon_cmd_v6.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mac_beacon_cmd_v6 {
+        struct iwl_tx_cmd tx;
+        __le32 template_id;
+        __le32 tim_idx;
+        __le32 tim_size;
+        struct ieee80211_hdr frame[0];
+    }
+
+.. _`iwl_mac_beacon_cmd_v6.members`:
+
+Members
+-------
+
+tx
+    the tx commands associated with the beacon frame
+
+template_id
+    currently equal to the mac context id of the coresponding
+    mac.
+
+tim_idx
+    the offset of the tim IE in the beacon
+
+tim_size
+    the length of the tim IE
+
+frame
+    the template of the beacon frame
+
+.. _`iwl_mac_beacon_cmd`:
+
+struct iwl_mac_beacon_cmd
+=========================
+
+.. c:type:: struct iwl_mac_beacon_cmd
+
+    beacon template command with offloaded CSA
+
+.. _`iwl_mac_beacon_cmd.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct iwl_mac_beacon_cmd {
+        struct iwl_tx_cmd tx;
+        __le32 template_id;
+        __le32 tim_idx;
+        __le32 tim_size;
+        __le32 ecsa_offset;
+        __le32 csa_offset;
+        struct ieee80211_hdr frame[0];
+    }
+
+.. _`iwl_mac_beacon_cmd.members`:
+
+Members
+-------
+
+tx
+    the tx commands associated with the beacon frame
+
+template_id
+    currently equal to the mac context id of the coresponding
+    mac.
+
+tim_idx
+    the offset of the tim IE in the beacon
+
+tim_size
+    the length of the tim IE
+
+ecsa_offset
+    offset to the ECSA IE if present
+
+csa_offset
+    offset to the CSA IE if present
+
+frame
+    the template of the beacon frame
+
 .. _`iwl_extended_beacon_notif`:
 
 struct iwl_extended_beacon_notif
@@ -738,7 +1039,7 @@ Definition
         u8 sta_id;
         u8 tid;
         u8 scd_queue;
-        u8 enable;
+        u8 action;
         u8 aggregate;
         u8 tx_fifo;
         u8 window;
@@ -763,14 +1064,15 @@ tid
 scd_queue
     scheduler queue to confiug
 
-enable
-    1 queue enable, 0 queue disable
+action
+    1 queue enable, 0 queue disable, 2 change txq's tid owner
+    Value is one of \ ``iwl_scd_cfg_actions``\  options
 
 aggregate
     1 aggregated queue, 0 otherwise
 
 tx_fifo
-    \ ``enum``\  iwl_mvm_tx_fifo
+    %enum iwl_mvm_tx_fifo
 
 window
     BA window size

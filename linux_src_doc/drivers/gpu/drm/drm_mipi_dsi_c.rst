@@ -19,7 +19,7 @@ Return
 ------
 
 A pointer to the MIPI DSI device corresponding to \ ``np``\  or NULL if no
-such device exists (or has not been registered yet).
+   such device exists (or has not been registered yet).
 
 .. _`mipi_dsi_device_register_full`:
 
@@ -646,6 +646,72 @@ mipi_dsi_dcs_set_pixel_format
         pixel format
 
 .. _`mipi_dsi_dcs_set_pixel_format.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`mipi_dsi_dcs_set_tear_scanline`:
+
+mipi_dsi_dcs_set_tear_scanline
+==============================
+
+.. c:function:: int mipi_dsi_dcs_set_tear_scanline(struct mipi_dsi_device *dsi, u16 scanline)
+
+    set the scanline to use as trigger for the Tearing Effect output signal of the display module
+
+    :param struct mipi_dsi_device \*dsi:
+        DSI peripheral device
+
+    :param u16 scanline:
+        scanline to use as trigger
+
+.. _`mipi_dsi_dcs_set_tear_scanline.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure
+
+.. _`mipi_dsi_dcs_set_display_brightness`:
+
+mipi_dsi_dcs_set_display_brightness
+===================================
+
+.. c:function:: int mipi_dsi_dcs_set_display_brightness(struct mipi_dsi_device *dsi, u16 brightness)
+
+    sets the brightness value of the display
+
+    :param struct mipi_dsi_device \*dsi:
+        DSI peripheral device
+
+    :param u16 brightness:
+        brightness value
+
+.. _`mipi_dsi_dcs_set_display_brightness.return`:
+
+Return
+------
+
+0 on success or a negative error code on failure.
+
+.. _`mipi_dsi_dcs_get_display_brightness`:
+
+mipi_dsi_dcs_get_display_brightness
+===================================
+
+.. c:function:: int mipi_dsi_dcs_get_display_brightness(struct mipi_dsi_device *dsi, u16 *brightness)
+
+    gets the current brightness value of the display
+
+    :param struct mipi_dsi_device \*dsi:
+        DSI peripheral device
+
+    :param u16 \*brightness:
+        brightness value
+
+.. _`mipi_dsi_dcs_get_display_brightness.return`:
 
 Return
 ------

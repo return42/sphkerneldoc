@@ -8,7 +8,7 @@ pr_fmt
 
 .. c:function::  pr_fmt( fmt)
 
-    Copyright (c) 2003-2004      Joern Engel <joern\ ``wh``\ .fh-wedel.de>
+    Copyright (c) 2003-2004      Joern Engel <joern@wh.fh-wedel.de>
 
     :param  fmt:
         *undescribed*

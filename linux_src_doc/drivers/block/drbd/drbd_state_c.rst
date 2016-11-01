@@ -64,7 +64,7 @@ Description
 -----------
 
 Should not be called directly, use \ :c:func:`drbd_request_state`\  or
-\\ :c:func:`_drbd_request_state`\ .
+\_drbd_request_state().
 
 .. _`_drbd_request_state`:
 

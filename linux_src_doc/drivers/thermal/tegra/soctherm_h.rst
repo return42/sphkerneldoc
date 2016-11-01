@@ -30,6 +30,9 @@ Definition
         u32 thermtrip_enable_mask;
         u32 thermtrip_any_en_mask;
         u32 thermtrip_threshold_mask;
+        u16 thermctl_lvl0_offset;
+        u32 thermctl_lvl0_up_thresh_mask;
+        u32 thermctl_lvl0_dn_thresh_mask;
     }
 
 .. _`tegra_tsensor_group.members`:
@@ -71,6 +74,15 @@ thermtrip_any_en_mask
     *undescribed*
 
 thermtrip_threshold_mask
+    *undescribed*
+
+thermctl_lvl0_offset
+    *undescribed*
+
+thermctl_lvl0_up_thresh_mask
+    *undescribed*
+
+thermctl_lvl0_dn_thresh_mask
     *undescribed*
 
 .. This file was automatic generated / don't edit.

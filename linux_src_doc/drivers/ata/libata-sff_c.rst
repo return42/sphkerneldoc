@@ -909,7 +909,7 @@ ata_sff_qc_fill_rtf
 Description
 -----------
 
-\ ``qc``\  is finished and result TF needs to be filled.  Fill it
+@qc is finished and result TF needs to be filled.  Fill it
 using ->sff_tf_read.
 
 .. _`ata_sff_qc_fill_rtf.locking`:

@@ -75,7 +75,7 @@ handle_bounds_compressed_page
 
 .. c:function:: void handle_bounds_compressed_page(struct page *page, const loff_t i_size, const s64 initialized_size)
 
-    test for\ :c:type:`struct handle <handle>` out of bounds compressed page
+    test for&handle out of bounds compressed page
 
     :param struct page \*page:
         *undescribed*
@@ -102,13 +102,13 @@ ntfs_decompress
         current index into \ ``dest_pages``\  (IN/OUT)
 
     :param int \*dest_ofs:
-        current offset within \ ``dest_pages``\ [\ ``dest_index``\ ] (IN/OUT)
+        current offset within \ ``dest_pages``\ [@dest_index] (IN/OUT)
 
     :param const int dest_max_index:
         maximum index into \ ``dest_pages``\  (IN)
 
     :param const int dest_max_ofs:
-        maximum offset within \ ``dest_pages``\ [\ ``dest_max_index``\ ] (IN)
+        maximum offset within \ ``dest_pages``\ [@dest_max_index] (IN)
 
     :param const int xpage:
         the target page (-1 if none) (IN)
@@ -138,17 +138,17 @@ the critical section is finished.
 
 This decompresses the compression block \ ``cb_start``\  into the array of
 destination pages \ ``dest_pages``\  starting at index \ ``dest_index``\  into \ ``dest_pages``\ 
-and at offset \ ``dest_pos``\  into the page \ ``dest_pages``\ [\ ``dest_index``\ ].
+and at offset \ ``dest_pos``\  into the page \ ``dest_pages``\ [@dest_index].
 
-When the page \ ``dest_pages``\ [\ ``xpage``\ ] is completed, \ ``xpage_done``\  is set to 1.
+When the page \ ``dest_pages``\ [@xpage] is completed, \ ``xpage_done``\  is set to 1.
 If xpage is -1 or \ ``xpage``\  has not been completed, \ ``xpage_done``\  is not modified.
 
 \ ``cb_start``\  is a pointer to the compression block which needs decompressing
 and \ ``cb_size``\  is the size of \ ``cb_start``\  in bytes (8-64kiB).
 
 Return 0 if success or -EOVERFLOW on error in the compressed stream.
-\ ``xpage_done``\  indicates whether the target page (\ ``dest_pages``\ [\ ``xpage``\ ]) was
-completed during the decompression of the compression block (\ ``cb_start``\ ).
+\ ``xpage_done``\  indicates whether the target page (@dest_pages[@xpage]) was
+completed during the decompression of the compression block (@cb_start).
 
 .. _`ntfs_decompress.warning`:
 

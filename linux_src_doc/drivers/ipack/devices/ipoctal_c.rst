@@ -24,7 +24,7 @@ Author
 
 Nicolas Serafini, EIC2 SA
 
-Samuel Iglesias Gonsalvez <siglesias\ ``igalia``\ .com>
+Samuel Iglesias Gonsalvez <siglesias@igalia.com>
 
 This program is free software; you can redistribute it and/or modify it
 under the terms of the GNU General Public License as published by the Free

@@ -80,7 +80,7 @@ drm_vma_offset_lookup_locked
 Description
 -----------
 
-Find a node given a start address and object size. This returns the \_best\_
+Find a node given a start address and object size. This returns the _best_
 match for the given node. That is, \ ``start``\  may point somewhere into a valid
 region and the given node will be returned, as long as the node spans the
 whole requested area (given the size in number of pages as \ ``pages``\ ).
@@ -96,11 +96,14 @@ Example
 
 .. code-block:: c
 
-    drm_vma_offset_lock_lookup(mgr);
-    node = drm_vma_offset_lookup_locked(mgr);
-    if (node)
-        kref_get_unless_zero(container_of(node, sth, entr));
-    drm_vma_offset_unlock_lookup(mgr);
+
+    ::
+
+        drm_vma_offset_lock_lookup(mgr);
+        node = drm_vma_offset_lookup_locked(mgr);
+        if (node)
+            kref_get_unless_zero(container_of(node, sth, entr));
+        drm_vma_offset_unlock_lookup(mgr);
 
 
 .. _`drm_vma_offset_lookup_locked.return`:
@@ -187,22 +190,22 @@ offset is allocated.
 drm_vma_node_allow
 ==================
 
-.. c:function:: int drm_vma_node_allow(struct drm_vma_offset_node *node, struct file *filp)
+.. c:function:: int drm_vma_node_allow(struct drm_vma_offset_node *node, struct drm_file *tag)
 
     Add open-file to list of allowed users
 
     :param struct drm_vma_offset_node \*node:
         Node to modify
 
-    :param struct file \*filp:
-        Open file to add
+    :param struct drm_file \*tag:
+        Tag of file to remove
 
 .. _`drm_vma_node_allow.description`:
 
 Description
 -----------
 
-Add \ ``filp``\  to the list of allowed open-files for this node. If \ ``filp``\  is
+Add \ ``tag``\  to the list of allowed open-files for this node. If \ ``tag``\  is
 already on this list, the ref-count is incremented.
 
 The list of allowed-users is preserved across \ :c:func:`drm_vma_offset_add`\  and
@@ -226,50 +229,50 @@ Return
 drm_vma_node_revoke
 ===================
 
-.. c:function:: void drm_vma_node_revoke(struct drm_vma_offset_node *node, struct file *filp)
+.. c:function:: void drm_vma_node_revoke(struct drm_vma_offset_node *node, struct drm_file *tag)
 
     Remove open-file from list of allowed users
 
     :param struct drm_vma_offset_node \*node:
         Node to modify
 
-    :param struct file \*filp:
-        Open file to remove
+    :param struct drm_file \*tag:
+        Tag of file to remove
 
 .. _`drm_vma_node_revoke.description`:
 
 Description
 -----------
 
-Decrement the ref-count of \ ``filp``\  in the list of allowed open-files on \ ``node``\ .
-If the ref-count drops to zero, remove \ ``filp``\  from the list. You must call
-this once for every \ :c:func:`drm_vma_node_allow`\  on \ ``filp``\ .
+Decrement the ref-count of \ ``tag``\  in the list of allowed open-files on \ ``node``\ .
+If the ref-count drops to zero, remove \ ``tag``\  from the list. You must call
+this once for every \ :c:func:`drm_vma_node_allow`\  on \ ``tag``\ .
 
 This is locked against concurrent access internally.
 
-If \ ``filp``\  is not on the list, nothing is done.
+If \ ``tag``\  is not on the list, nothing is done.
 
 .. _`drm_vma_node_is_allowed`:
 
 drm_vma_node_is_allowed
 =======================
 
-.. c:function:: bool drm_vma_node_is_allowed(struct drm_vma_offset_node *node, struct file *filp)
+.. c:function:: bool drm_vma_node_is_allowed(struct drm_vma_offset_node *node, struct drm_file *tag)
 
     Check whether an open-file is granted access
 
     :param struct drm_vma_offset_node \*node:
         Node to check
 
-    :param struct file \*filp:
-        Open-file to check for
+    :param struct drm_file \*tag:
+        Tag of file to remove
 
 .. _`drm_vma_node_is_allowed.description`:
 
 Description
 -----------
 
-Search the list in \ ``node``\  whether \ ``filp``\  is currently on the list of allowed
+Search the list in \ ``node``\  whether \ ``tag``\  is currently on the list of allowed
 open-files (see \ :c:func:`drm_vma_node_allow`\ ).
 
 This is locked against concurrent access internally.

@@ -7,6 +7,7 @@ batman-adv
 .. toctree::
     :maxdepth: 1
 
+    bat_algo_c
     bat_iv_ogm_c
     bat_v_c
     bat_v_elp_c
@@ -26,10 +27,12 @@ batman-adv
     hard-interface_h
     hash_h
     icmp_socket_c
+    log_h
     main_c
     main_h
     multicast_c
     multicast_h
+    netlink_c
     network-coding_c
     originator_c
     packet_h
@@ -39,5 +42,7 @@ batman-adv
     soft-interface_c
     sysfs_c
     sysfs_h
+    tp_meter_c
     translation-table_c
+    tvlv_c
     types_h

@@ -52,11 +52,11 @@ drm_bridge_attach
 Description
 -----------
 
-called by a kms driver to link one of our encoder/bridge to the given
+Called by a kms driver to link one of our encoder/bridge to the given
 bridge.
 
 Note that setting up links between the bridge and our encoder/bridge
-objects needs to be handled by the kms driver itself
+objects needs to be handled by the kms driver itself.
 
 .. _`drm_bridge_attach.return`:
 
@@ -64,6 +64,28 @@ Return
 ------
 
 Zero on success, error code on failure
+
+.. _`drm_bridge_detach`:
+
+drm_bridge_detach
+=================
+
+.. c:function:: void drm_bridge_detach(struct drm_bridge *bridge)
+
+    deassociate given bridge from its DRM device
+
+    :param struct drm_bridge \*bridge:
+        bridge control structure
+
+.. _`drm_bridge_detach.description`:
+
+Description
+-----------
+
+Called by a kms driver to unlink the given bridge from its DRM device.
+
+Note that tearing down links between the bridge and our encoder/bridge
+objects needs to be handled by the kms driver itself.
 
 .. _`drm_bridge_mode_fixup`:
 
@@ -88,7 +110,7 @@ drm_bridge_mode_fixup
 Description
 -----------
 
-Calls ->\ :c:func:`mode_fixup`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the
+Calls ->mode_fixup() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the
 encoder chain, starting from the first bridge to the last.
 
 .. _`drm_bridge_mode_fixup.note`:
@@ -112,7 +134,7 @@ drm_bridge_disable
 
 .. c:function:: void drm_bridge_disable(struct drm_bridge *bridge)
 
-    calls ->\ :c:func:`disable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all bridges in the encoder chain.
+    calls ->disable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all bridges in the encoder chain.
 
     :param struct drm_bridge \*bridge:
         bridge control structure
@@ -122,7 +144,7 @@ drm_bridge_disable
 Description
 -----------
 
-Calls ->\ :c:func:`disable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the encoder
+Calls ->disable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the encoder
 chain, starting from the last bridge to the first. These are called before
 calling the encoder's prepare op.
 
@@ -140,7 +162,7 @@ drm_bridge_post_disable
 
 .. c:function:: void drm_bridge_post_disable(struct drm_bridge *bridge)
 
-    calls ->\ :c:func:`post_disable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all bridges in the encoder chain.
+    calls ->post_disable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all bridges in the encoder chain.
 
     :param struct drm_bridge \*bridge:
         bridge control structure
@@ -150,7 +172,7 @@ drm_bridge_post_disable
 Description
 -----------
 
-Calls ->\ :c:func:`post_disable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the
+Calls ->post_disable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the
 encoder chain, starting from the first bridge to the last. These are called
 after completing the encoder's prepare op.
 
@@ -184,7 +206,7 @@ drm_bridge_mode_set
 Description
 -----------
 
-Calls ->\ :c:func:`mode_set`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the
+Calls ->mode_set() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the
 encoder chain, starting from the first bridge to the last.
 
 .. _`drm_bridge_mode_set.note`:
@@ -201,7 +223,7 @@ drm_bridge_pre_enable
 
 .. c:function:: void drm_bridge_pre_enable(struct drm_bridge *bridge)
 
-    calls ->\ :c:func:`pre_enable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all bridges in the encoder chain.
+    calls ->pre_enable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all bridges in the encoder chain.
 
     :param struct drm_bridge \*bridge:
         bridge control structure
@@ -211,7 +233,7 @@ drm_bridge_pre_enable
 Description
 -----------
 
-Calls ->\ :c:func:`pre_enable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the encoder
+Calls ->pre_enable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the encoder
 chain, starting from the last bridge to the first. These are called
 before calling the encoder's commit op.
 
@@ -229,7 +251,7 @@ drm_bridge_enable
 
 .. c:function:: void drm_bridge_enable(struct drm_bridge *bridge)
 
-    calls ->\ :c:func:`enable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all bridges in the encoder chain.
+    calls ->enable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all bridges in the encoder chain.
 
     :param struct drm_bridge \*bridge:
         bridge control structure
@@ -239,7 +261,7 @@ drm_bridge_enable
 Description
 -----------
 
-Calls ->\ :c:func:`enable`\  \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>` op for all the bridges in the encoder
+Calls ->enable() \ :c:type:`struct drm_bridge_funcs <drm_bridge_funcs>`\  op for all the bridges in the encoder
 chain, starting from the first bridge to the last. These are called
 after completing the encoder's commit op.
 

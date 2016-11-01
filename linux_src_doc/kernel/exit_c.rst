@@ -31,7 +31,7 @@ Handle \ :c:func:`sys_wait4`\  work for \ ``p``\  in state \ ``TASK_STOPPED``\  
 Context
 -------
 
-read_lock(\ :c:type:`struct tasklist_lock <tasklist_lock>`), which is released if return value is
+read_lock(&tasklist_lock), which is released if return value is
 non-zero.  Also, grabs and releases \ ``p``\ ->sighand->siglock.
 
 .. _`wait_task_stopped.return`:

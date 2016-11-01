@@ -1,27 +1,6 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/amd/amdgpu/gmc_v8_0.c
 
-.. _`gmc_v8_0_mc_wait_for_idle`:
-
-gmc_v8_0_mc_wait_for_idle
-=========================
-
-.. c:function:: int gmc_v8_0_mc_wait_for_idle(struct amdgpu_device *adev)
-
-    wait for MC idle callback.
-
-    :param struct amdgpu_device \*adev:
-        amdgpu_device pointer
-
-.. _`gmc_v8_0_mc_wait_for_idle.description`:
-
-Description
------------
-
-Wait for the MC (memory controller) to be idle.
-(evergreen+).
-Returns 0 if the MC is idle, -1 if not.
-
 .. _`gmc_v8_0_init_microcode`:
 
 gmc_v8_0_init_microcode

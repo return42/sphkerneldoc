@@ -52,7 +52,7 @@ Allocate enough pages to cover \ ``size``\  from the page level
 allocator and map them into contiguous kernel virtual space.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vzalloc_node`:
 
@@ -79,7 +79,7 @@ allocator and map them into contiguous kernel virtual space.
 The memory allocated is set to zero.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vmalloc_exec`:
 
@@ -103,7 +103,7 @@ the page level allocator and map them into contiguous and
 executable kernel virtual space.
 
 For tight control over page level allocator and protection flags
-use \\ :c:func:`__vmalloc`\  instead.
+use \__vmalloc() instead.
 
 .. _`vmalloc_32`:
 

@@ -378,6 +378,7 @@ Definition
         unsigned long tid_rx_timer_expired[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         unsigned long tid_rx_stop_requested[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         unsigned long agg_session_valid[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
+        unsigned long unexpected_agg[BITS_TO_LONGS(IEEE80211_NUM_TIDS)];
         struct work_struct work;
         struct tid_ampdu_tx __rcu  *tid_tx[IEEE80211_NUM_TIDS];
         struct tid_ampdu_tx  *tid_start_tx[IEEE80211_NUM_TIDS];
@@ -409,6 +410,10 @@ tid_rx_stop_requested
 
 agg_session_valid
     bitmap indicating which TID has a rx BA session open on
+
+unexpected_agg
+    bitmap indicating which TID already sent a delBA due to
+    unexpected aggregation related frames outside a session
 
 work
     work struct for starting/stopping aggregation
@@ -683,7 +688,7 @@ Definition
         struct list_head list;
         struct list_head free_list;
         struct rcu_head rcu_head;
-        struct rhash_head hash_node;
+        struct rhlist_head hash_node;
         u8 addr[ETH_ALEN];
         struct ieee80211_local *local;
         struct ieee80211_sub_if_data *sdata;

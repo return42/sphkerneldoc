@@ -6,7 +6,7 @@
 init_seen
 =========
 
-.. c:function:: int *init_seen(struct ubi_device *ubi)
+.. c:function:: unsigned long *init_seen(struct ubi_device *ubi)
 
     allocate memory for used for debugging.
 
@@ -18,11 +18,11 @@ init_seen
 free_seen
 =========
 
-.. c:function:: void free_seen(int *seen)
+.. c:function:: void free_seen(unsigned long *seen)
 
     free the seen logic integer array.
 
-    :param int \*seen:
+    :param unsigned long \*seen:
         integer array of \ ``ubi``\ ->peb_count size
 
 .. _`set_seen`:
@@ -30,7 +30,7 @@ free_seen
 set_seen
 ========
 
-.. c:function:: void set_seen(struct ubi_device *ubi, int pnum, int *seen)
+.. c:function:: void set_seen(struct ubi_device *ubi, int pnum, unsigned long *seen)
 
     mark a PEB as seen.
 
@@ -40,7 +40,7 @@ set_seen
     :param int pnum:
         The PEB to be makred as seen
 
-    :param int \*seen:
+    :param unsigned long \*seen:
         integer array of \ ``ubi``\ ->peb_count size
 
 .. _`self_check_seen`:
@@ -48,14 +48,14 @@ set_seen
 self_check_seen
 ===============
 
-.. c:function:: int self_check_seen(struct ubi_device *ubi, int *seen)
+.. c:function:: int self_check_seen(struct ubi_device *ubi, unsigned long *seen)
 
     check whether all PEB have been seen by fastmap.
 
     :param struct ubi_device \*ubi:
         UBI device description object
 
-    :param int \*seen:
+    :param unsigned long \*seen:
         integer array of \ ``ubi``\ ->peb_count size
 
 .. _`ubi_calc_fm_size`:
@@ -70,12 +70,12 @@ ubi_calc_fm_size
     :param struct ubi_device \*ubi:
         UBI device description object
 
-.. _`new_fm_vhdr`:
+.. _`new_fm_vbuf`:
 
-new_fm_vhdr
+new_fm_vbuf
 ===========
 
-.. c:function:: struct ubi_vid_hdr *new_fm_vhdr(struct ubi_device *ubi, int vol_id)
+.. c:function:: struct ubi_vid_io_buf *new_fm_vbuf(struct ubi_device *ubi, int vol_id)
 
     allocate a new volume header for fastmap usage.
 
@@ -85,7 +85,7 @@ new_fm_vhdr
     :param int vol_id:
         the VID of the new header
 
-.. _`new_fm_vhdr.description`:
+.. _`new_fm_vbuf.description`:
 
 Description
 -----------
@@ -324,12 +324,24 @@ Description
 Returns 0 on success, UBI_BAD_FASTMAP if the found fastmap was unusable.
 < 0 indicates an internal error.
 
+.. _`find_fm_anchor`:
+
+find_fm_anchor
+==============
+
+.. c:function:: int find_fm_anchor(struct ubi_attach_info *ai)
+
+    find the most recent Fastmap superblock (anchor)
+
+    :param struct ubi_attach_info \*ai:
+        UBI attach info to be filled
+
 .. _`ubi_scan_fastmap`:
 
 ubi_scan_fastmap
 ================
 
-.. c:function:: int ubi_scan_fastmap(struct ubi_device *ubi, struct ubi_attach_info *ai, int fm_anchor)
+.. c:function:: int ubi_scan_fastmap(struct ubi_device *ubi, struct ubi_attach_info *ai, struct ubi_attach_info *scan_ai)
 
     scan the fastmap.
 
@@ -339,8 +351,9 @@ ubi_scan_fastmap
     :param struct ubi_attach_info \*ai:
         UBI attach info to be filled
 
-    :param int fm_anchor:
-        The fastmap starts at this PEB
+    :param struct ubi_attach_info \*scan_ai:
+        UBI attach info from the first 64 PEBs,
+        used to find the most recent Fastmap data structure
 
 .. _`ubi_scan_fastmap.description`:
 

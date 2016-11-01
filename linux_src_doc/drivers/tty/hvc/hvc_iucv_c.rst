@@ -378,7 +378,7 @@ Special notes on hanging up a HVC terminal instantiated as console
 ------------------------------------------------------------------
 
 Hang-up:     1. \ :c:func:`do_tty_hangup`\  replaces file ops (= hung_up_tty_fops)
-2. \ :c:func:`do_tty_hangup`\  calls tty->ops->\ :c:func:`close`\  for console_filp
+2. \ :c:func:`do_tty_hangup`\  calls tty->ops->close() for console_filp
 => no hangup notifier is called by HVC (default)
 2. \ :c:func:`hvc_close`\  returns because of tty_hung_up_p(filp)
 => no delete notifier is called!
@@ -390,7 +390,7 @@ kept active (TTY_OPEN) to be ready for re-connects.
 Locking
 -------
 
-spin_lock(\ :c:type:`priv->lock <priv>`\ ) w/o disabling bh
+spin_lock(&priv->lock) w/o disabling bh
 
 .. _`hvc_iucv_notifier_hangup`:
 
@@ -415,7 +415,7 @@ Description
 
 This routine notifies the HVC back-end that a tty hangup (carrier loss,
 virtual or otherwise) has occurred.
-The z/VM IUCV HVC device driver ignores virtual hangups (\ :c:func:`vhangup`\ )
+The z/VM IUCV HVC device driver ignores virtual hangups (vhangup())
 to keep an existing IUCV communication path established.
 (Background: \ :c:func:`vhangup`\  is called from user space (by getty or login) to
 disable writing to the tty by other applications).

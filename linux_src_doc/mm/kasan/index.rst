@@ -7,4 +7,5 @@ kasan
 .. toctree::
     :maxdepth: 1
 
+    kasan_h
     kasan_init_c

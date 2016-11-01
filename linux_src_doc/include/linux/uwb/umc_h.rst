@@ -175,7 +175,7 @@ NOTE
 ----
 
 we are assuming in this whole scheme that the parent device
-is referenced at \\ :c:func:`_probe`\  time and unreferenced at \\ :c:func:`_remove`\ 
+is referenced at \_probe() time and unreferenced at \_remove()
 time by the parent's subsystem.
 
 .. _`umc_dev_put`:

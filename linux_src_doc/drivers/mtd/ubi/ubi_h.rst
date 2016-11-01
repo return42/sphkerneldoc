@@ -1,6 +1,38 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/mtd/ubi/ubi.h
 
+.. _`ubi_vid_io_buf`:
+
+struct ubi_vid_io_buf
+=====================
+
+.. c:type:: struct ubi_vid_io_buf
+
+    VID buffer used to read/write VID info to/from the flash.
+
+.. _`ubi_vid_io_buf.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ubi_vid_io_buf {
+        struct ubi_vid_hdr *hdr;
+        void *buffer;
+    }
+
+.. _`ubi_vid_io_buf.members`:
+
+Members
+-------
+
+hdr
+    a pointer to the VID header stored in buffer
+
+buffer
+    underlying buffer
+
 .. _`ubi_wl_entry`:
 
 struct ubi_wl_entry
@@ -95,7 +127,7 @@ users
 
 mutex
     read/write mutex to implement read/write access serialization to
-    the (\ ``vol_id``\ , \ ``lnum``\ ) logical eraseblock
+    the (@vol_id, \ ``lnum``\ ) logical eraseblock
 
 .. _`ubi_ltree_entry.description`:
 
@@ -104,7 +136,7 @@ Description
 
 This data structure is used in the EBA sub-system to implement per-LEB
 locking. When a logical eraseblock is being locked - corresponding
-\ :c:type:`struct ubi_ltree_entry <ubi_ltree_entry>`\  object is inserted to the lock tree (\ ``ubi``\ ->ltree).
+\ :c:type:`struct ubi_ltree_entry <ubi_ltree_entry>`\  object is inserted to the lock tree (@ubi->ltree).
 See EBA sub-system for details.
 
 .. _`ubi_rename_entry`:
@@ -254,6 +286,48 @@ A pool gets filled with up to max_size.
 If all PEBs within the pool are used a new fastmap will be written
 to the flash and the pool gets refilled with empty PEBs.
 
+.. _`ubi_eba_leb_desc`:
+
+struct ubi_eba_leb_desc
+=======================
+
+.. c:type:: struct ubi_eba_leb_desc
+
+    EBA logical eraseblock descriptor
+
+.. _`ubi_eba_leb_desc.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct ubi_eba_leb_desc {
+        int lnum;
+        int pnum;
+    }
+
+.. _`ubi_eba_leb_desc.members`:
+
+Members
+-------
+
+lnum
+    the logical eraseblock number
+
+pnum
+    the physical eraseblock where the LEB can be found
+
+.. _`ubi_eba_leb_desc.description`:
+
+Description
+-----------
+
+This structure is here to hide EBA's internal from other part of the
+UBI implementation.
+
+One can query the position of a LEB by calling \ :c:func:`ubi_eba_get_ldesc`\ .
+
 .. _`ubi_volume`:
 
 struct ubi_volume
@@ -295,7 +369,7 @@ Definition
         long long upd_bytes;
         long long upd_received;
         void *upd_buf;
-        int *eba_tbl;
+        struct ubi_eba_table *eba_tbl;
         unsigned int checked:1;
         unsigned int corrupted:1;
         unsigned int upd_marker:1;
@@ -340,7 +414,7 @@ reserved_pebs
     how many physical eraseblocks are reserved for this volume
 
 vol_type
-    volume type (\ ``UBI_DYNAMIC_VOLUME``\  or \ ``UBI_STATIC_VOLUME``\ )
+    volume type (%UBI_DYNAMIC_VOLUME or \ ``UBI_STATIC_VOLUME``\ )
 
 usable_leb_size
     logical eraseblock size without padding
@@ -390,22 +464,22 @@ eba_tbl
     EBA table of this volume (LEB->PEB mapping)
 
 checked
-    \ ``1``\  if this static volume was checked
+    %1 if this static volume was checked
 
 corrupted
-    \ ``1``\  if the volume is corrupted (static volumes only)
+    %1 if the volume is corrupted (static volumes only)
 
 upd_marker
-    \ ``1``\  if the update marker is set for this volume
+    %1 if the update marker is set for this volume
 
 updating
-    \ ``1``\  if the volume is being updated
+    %1 if the volume is being updated
 
 changing_leb
-    \ ``1``\  if the atomic LEB change ioctl command is in progress
+    %1 if the atomic LEB change ioctl command is in progress
 
 direct_writes
-    \ ``1``\  if direct writes are enabled for this volume
+    %1 if direct writes are enabled for this volume
 
 .. _`ubi_volume.description`:
 
@@ -450,7 +524,7 @@ vol
     reference to the corresponding volume description object
 
 mode
-    open mode (\ ``UBI_READONLY``\ , \ ``UBI_READWRITE``\ , \ ``UBI_EXCLUSIVE``\ 
+    open mode (%UBI_READONLY, \ ``UBI_READWRITE``\ , \ ``UBI_EXCLUSIVE``\ 
     or \ ``UBI_METAONLY``\ )
 
 .. _`ubi_debug_info`:
@@ -771,7 +845,7 @@ fm_protect
     that critical sections cannot be interrupted by \ :c:func:`ubi_update_fastmap`\ 
 
 fm_buf
-    \ :c:func:`vmalloc`\ 'd buffer which holds the raw fastmap
+    vmalloc()'d buffer which holds the raw fastmap
 
 fm_size
     fastmap size in bytes
@@ -968,7 +1042,7 @@ Members
 -------
 
 ec
-    erase counter (\ ``UBI_UNKNOWN``\  if it is unknown)
+    erase counter (%UBI_UNKNOWN if it is unknown)
 
 pnum
     physical eraseblock number
@@ -983,7 +1057,7 @@ scrub
     if this physical eraseblock needs scrubbing
 
 copy_flag
-    this LEB is a copy (\ ``copy_flag``\  is set in VID header of this LEB)
+    this LEB is a copy (@copy_flag is set in VID header of this LEB)
 
 sqnum
     sequence number
@@ -1073,7 +1147,7 @@ rb
 
 root
     root of the RB-tree containing all the eraseblock belonging to this
-    volume (\ :c:type:`struct ubi_ainf_peb <ubi_ainf_peb>`\  objects)
+    volume (&struct ubi_ainf_peb objects)
 
 .. _`ubi_ainf_volume.description`:
 
@@ -1105,6 +1179,7 @@ Definition
         struct list_head free;
         struct list_head erase;
         struct list_head alien;
+        struct list_head fastmap;
         int corr_peb_count;
         int empty_peb_count;
         int alien_peb_count;
@@ -1113,6 +1188,7 @@ Definition
         int vols_found;
         int highest_vol_id;
         int is_empty;
+        int force_full_scan;
         int min_ec;
         int max_ec;
         unsigned long long max_sqnum;
@@ -1120,6 +1196,8 @@ Definition
         uint64_t ec_sum;
         int ec_count;
         struct kmem_cache *aeb_slab_cache;
+        struct ubi_ec_hdr *ech;
+        struct ubi_vid_io_buf *vidb;
     }
 
 .. _`ubi_attach_info.members`:
@@ -1142,6 +1220,10 @@ erase
 alien
     list of physical eraseblocks which should not be used by UBI (e.g.,
     those belonging to "preserve"-compatible internal volumes)
+
+fastmap
+    list of physical eraseblocks which relate to fastmap (e.g.,
+    eraseblocks of the current and not yet erased old fastmap blocks)
 
 corr_peb_count
     count of PEBs in the \ ``corr``\  list
@@ -1169,6 +1251,9 @@ highest_vol_id
 is_empty
     flag indicating whether the MTD device is empty or not
 
+force_full_scan
+    flag indicating whether we need to do a full scan and drop
+
 min_ec
     lowest erase counter value
 
@@ -1189,6 +1274,12 @@ ec_count
 
 aeb_slab_cache
     slab cache for \ :c:type:`struct ubi_ainf_peb <ubi_ainf_peb>`\  objects
+
+ech
+    temporary EC header. Only available during scan
+
+vidb
+    *undescribed*
 
 .. _`ubi_attach_info.description`:
 
@@ -1262,44 +1353,62 @@ WL sub-system is shutting down.
 The worker has to return zero in case of success and a negative error code in
 case of failure.
 
-.. _`ubi_zalloc_vid_hdr`:
+.. _`ubi_init_vid_buf`:
 
-ubi_zalloc_vid_hdr
-==================
-
-.. c:function:: struct ubi_vid_hdr *ubi_zalloc_vid_hdr(const struct ubi_device *ubi, gfp_t gfp_flags)
-
-    allocate a volume identifier header object.
-
-    :param const struct ubi_device \*ubi:
-        UBI device description object
-
-    :param gfp_t gfp_flags:
-        GFP flags to allocate with
-
-.. _`ubi_zalloc_vid_hdr.description`:
-
-Description
------------
-
-This function returns a pointer to the newly allocated and zero-filled
-volume identifier header object in case of success and \ ``NULL``\  in case of
-failure.
-
-.. _`ubi_free_vid_hdr`:
-
-ubi_free_vid_hdr
+ubi_init_vid_buf
 ================
 
-.. c:function:: void ubi_free_vid_hdr(const struct ubi_device *ubi, struct ubi_vid_hdr *vid_hdr)
+.. c:function:: void ubi_init_vid_buf(const struct ubi_device *ubi, struct ubi_vid_io_buf *vidb, void *buf)
 
-    free a volume identifier header object.
+    Initialize a VID buffer
 
     :param const struct ubi_device \*ubi:
-        UBI device description object
+        the UBI device
 
-    :param struct ubi_vid_hdr \*vid_hdr:
-        the object to free
+    :param struct ubi_vid_io_buf \*vidb:
+        the VID buffer to initialize
+
+    :param void \*buf:
+        the underlying buffer
+
+.. _`ubi_alloc_vid_buf`:
+
+ubi_alloc_vid_buf
+=================
+
+.. c:function:: struct ubi_vid_io_buf *ubi_alloc_vid_buf(const struct ubi_device *ubi, gfp_t gfp_flags)
+
+    Allocate a VID buffer
+
+    :param const struct ubi_device \*ubi:
+        the UBI device
+
+    :param gfp_t gfp_flags:
+        GFP flags to use for the allocation
+
+.. _`ubi_free_vid_buf`:
+
+ubi_free_vid_buf
+================
+
+.. c:function:: void ubi_free_vid_buf(struct ubi_vid_io_buf *vidb)
+
+    Free a VID buffer
+
+    :param struct ubi_vid_io_buf \*vidb:
+        the VID buffer to free
+
+.. _`ubi_get_vid_hdr`:
+
+ubi_get_vid_hdr
+===============
+
+.. c:function:: struct ubi_vid_hdr *ubi_get_vid_hdr(struct ubi_vid_io_buf *vidb)
+
+    Get the VID header attached to a VID buffer
+
+    :param struct ubi_vid_io_buf \*vidb:
+        VID buffer
 
 .. _`ubi_ro_mode`:
 
@@ -1342,6 +1451,41 @@ idx2vol_id
 
     :param int idx:
         table index
+
+.. _`ubi_is_fm_vol`:
+
+ubi_is_fm_vol
+=============
+
+.. c:function:: bool ubi_is_fm_vol(int vol_id)
+
+    check whether a volume ID is a Fastmap volume.
+
+    :param int vol_id:
+        volume ID
+
+.. _`ubi_find_fm_block`:
+
+ubi_find_fm_block
+=================
+
+.. c:function:: struct ubi_wl_entry *ubi_find_fm_block(const struct ubi_device *ubi, int pnum)
+
+    check whether a PEB is part of the current Fastmap.
+
+    :param const struct ubi_device \*ubi:
+        UBI device description object
+
+    :param int pnum:
+        physical eraseblock to look for
+
+.. _`ubi_find_fm_block.description`:
+
+Description
+-----------
+
+This function returns a wear leveling object if \ ``pnum``\  relates to the current
+fastmap, \ ``NULL``\  otherwise.
 
 .. This file was automatic generated / don't edit.
 

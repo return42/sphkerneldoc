@@ -225,6 +225,51 @@ ieee802154_get_fc_from_skb
     :param const struct sk_buff \*skb:
         skb where the frame control field will be get from
 
+.. _`ieee802154_skb_dst_pan`:
+
+ieee802154_skb_dst_pan
+======================
+
+.. c:function:: unsigned char *ieee802154_skb_dst_pan(__le16 fc, const struct sk_buff *skb)
+
+    get the pointer to destination pan field
+
+    :param __le16 fc:
+        mac header frame control field
+
+    :param const struct sk_buff \*skb:
+        skb where the destination pan pointer will be get from
+
+.. _`ieee802154_skb_src_pan`:
+
+ieee802154_skb_src_pan
+======================
+
+.. c:function:: unsigned char *ieee802154_skb_src_pan(__le16 fc, const struct sk_buff *skb)
+
+    get the pointer to source pan field
+
+    :param __le16 fc:
+        mac header frame control field
+
+    :param const struct sk_buff \*skb:
+        skb where the source pan pointer will be get from
+
+.. _`ieee802154_skb_is_intra_pan_addressing`:
+
+ieee802154_skb_is_intra_pan_addressing
+======================================
+
+.. c:function:: bool ieee802154_skb_is_intra_pan_addressing(__le16 fc, const struct sk_buff *skb)
+
+    checks whenever the mac addressing is an intra pan communication
+
+    :param __le16 fc:
+        mac header frame control field
+
+    :param const struct sk_buff \*skb:
+        skb where the source and destination pan should be get from
+
 .. _`ieee802154_be64_to_le64`:
 
 ieee802154_be64_to_le64

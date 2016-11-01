@@ -1,0 +1,27 @@
+.. -*- coding: utf-8; mode: rst -*-
+.. src-file: arch/mips/include/asm/i8259.h
+
+.. _`i8259_set_poll`:
+
+i8259_set_poll
+==============
+
+.. c:function:: void i8259_set_poll(int (*poll)(void))
+
+    Override the i8259 polling function
+
+    :param int (\*poll)(void):
+        pointer to platform-specific polling function
+
+.. _`i8259_set_poll.description`:
+
+Description
+-----------
+
+Call this to override the generic i8259 polling function, which directly
+accesses i8259 registers, with a platform specific one which may be faster
+in cases where hardware provides a more optimal means of polling for an
+interrupt.
+
+.. This file was automatic generated / don't edit.
+

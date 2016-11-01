@@ -100,7 +100,7 @@ gaudio_cleanup
 Description
 -----------
 
-This is called to free all resources allocated by @\ :c:func:`gaudio_setup`\ .
+This is called to free all resources allocated by \ ``gaudio_setup``\ ().
 
 .. This file was automatic generated / don't edit.
 

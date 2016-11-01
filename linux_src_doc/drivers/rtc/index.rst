@@ -9,6 +9,7 @@ rtc
 
     class_c
     interface_c
+    rtc-ac100_c
     rtc-bfin_c
     rtc-ds1685_c
     rtc-imxdi_c

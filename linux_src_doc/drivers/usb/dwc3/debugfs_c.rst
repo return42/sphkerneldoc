@@ -25,8 +25,8 @@ Copyright (C) 2010-2011 Texas Instruments Incorporated - http://www.ti.com
 Authors
 -------
 
-Felipe Balbi <balbi\ ``ti``\ .com>,
-Sebastian Andrzej Siewior <bigeasy\ ``linutronix``\ .de>
+Felipe Balbi <balbi@ti.com>,
+Sebastian Andrzej Siewior <bigeasy@linutronix.de>
 
 .. _`dump_register.this-program-is-free-software`:
 

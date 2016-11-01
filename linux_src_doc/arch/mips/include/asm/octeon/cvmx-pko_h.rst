@@ -141,7 +141,7 @@ cvmx_pko_send_packet_prepare
 Description
 -----------
 
-\ :c:func:`cvmx_pko_send_packet_finish`\  MUST be called after this function is called,
+cvmx_pko_send_packet_finish() MUST be called after this function is called,
 and must be called with the same port/queue/use_locking arguments.
 
 The use_locking parameter allows the caller to use three

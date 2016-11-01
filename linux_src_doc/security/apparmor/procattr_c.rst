@@ -83,7 +83,7 @@ aa_setprocattr_changehat
 Return
 ------
 
-\ ``0``\  or error code if change_hat fails
+%0 or error code if change_hat fails
 
 .. _`aa_setprocattr_changeprofile`:
 
@@ -108,7 +108,7 @@ aa_setprocattr_changeprofile
 Return
 ------
 
-\ ``0``\  or error code if change_profile fails
+%0 or error code if change_profile fails
 
 .. This file was automatic generated / don't edit.
 

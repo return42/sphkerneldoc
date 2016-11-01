@@ -348,7 +348,7 @@ Return
 ------
 
 NOTIFY_STOP if the rate change should be aborted, NOTIFY_OK
-to acknowedge the change, NOTIFY_DONE if the notification is
+to acknowledge the change, NOTIFY_DONE if the notification is
 considered irrelevant.
 
 .. _`cdns_i2c_runtime_suspend`:

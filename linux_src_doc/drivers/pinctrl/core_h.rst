@@ -299,6 +299,7 @@ Definition
         struct pinctrl_dev *pctldev;
         const char *name;
         bool dynamic_name;
+        void *drv_data;
     #ifdef CONFIG_PINMUX
         unsigned mux_usecount;
         const char *mux_owner;
@@ -321,6 +322,9 @@ name
 
 dynamic_name
     if the name of this pin was dynamically allocated
+
+drv_data
+    driver-defined per-pin data. pinctrl core does not touch this
 
 mux_usecount
     If zero, the pin is not claimed, and \ ``owner``\  should be NULL.

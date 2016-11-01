@@ -41,7 +41,7 @@ __list_del_entry
 Note
 ----
 
-\ :c:func:`list_empty`\  on entry does not return true after this, the entry is
+list_empty() on entry does not return true after this, the entry is
 in an undefined state.
 
 .. _`list_entry`:

@@ -42,7 +42,7 @@ Description
 -----------
 
 Calculates and evaluates the refault distance of the previously
-evicted page in the context of the zone it was allocated in.
+evicted page in the context of the node it was allocated in.
 
 Returns \ ``true``\  if the page should be activated, \ ``false``\  otherwise.
 

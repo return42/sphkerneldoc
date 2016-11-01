@@ -184,7 +184,7 @@ timecounter_cyc2time
         Pointer to time counter.
 
     :param cycle_t cycle_tstamp:
-        a value returned by tc->cc->\ :c:func:`read`\ 
+        a value returned by tc->cc->read()
 
 .. _`timecounter_cyc2time.description`:
 
