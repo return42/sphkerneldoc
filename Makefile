@@ -399,12 +399,12 @@ $(DB2RST):
 
 PHONY += src-reST-Files
 src-reST-Files:
-	kernel-docgrep $(srctree) > src-reST-Files.txt
+	./kernel-docgrep $(KERNEL_FOLDER) > $(CACHE)/src-reST-Files.txt
 
 PHONY += src2rst
 src2rst: src-reST-Files
 	rm -rf $(AUTODOC_FOLDER)
-	$(AUTODOC_SCRIPT)  --markup kernel-doc --rst-files src-reST-Files.txt $(srctree) $(AUTODOC_FOLDER)
+	$(AUTODOC_SCRIPT)  --markup kernel-doc --rst-files $(CACHE)/src-reST-Files.txt $(srctree) $(AUTODOC_FOLDER)
 
 # reST --> HTML
 # -------------
