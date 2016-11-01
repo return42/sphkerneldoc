@@ -13,17 +13,11 @@ Template Book
 This is a template document for the creation of documentation with reST_
 markup. Read on: :ref:`get-started`.
 
-*******
-Content
-*******
-
 .. toctree::
-    :maxdepth: 1
 
     get-started
     refs
     licence
-
 
 .. only:: html
 

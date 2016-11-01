@@ -9,9 +9,9 @@ Get started with reST books
 
 This chapter describes, how to create a reST_ *book* (aka sphinx-project) based
 on the ``Documentation/template-book``. To create only a *loose reST article*
-take a look at ``Documentation/reST-nano-HOWTO.rst``.
+take a look at :ref:`sphkerneldoc:reST-nano-HOWTO`.
 
-To get started copy the template-book folder and the config file.
+To get started, copy the template-book folder and the config file.
 
 .. code-block:: sh
 
@@ -29,40 +29,45 @@ build. Try to build the HTML representation:
 
     cd {linux-kernel}
     make books/my-project.html
-      SPHINX  books/template-book.html --> file://{linux-kernel}/Documentation/dist/books/template-book
+      SPHINX  books/my-project.html --> file://{linux-kernel}/Documentation/dist/books/my-project
 
 The "SPHINX" line shows, where you find the HTML start file, open the
-``index.html`` file within your favorite HTML browser to see what you got ;-)
+``index.html`` file within your favorite HTML browser to see what you get ;-)
 
 While HTML is one *big* side with all content in, PDF documents separate books
 and (or) articles. To get *first* PDF you have to active the pdf_documents line
-in the my_config.py at least.::
+in the ``my-project/config.py`` at least.::
 
-    pdf_documents = [ (master_doc, main_name, project, author) , ]
+  latex_documents = [
+    ('index', 'my-project.tex', 'My Project Title',
+     'The kernel development community', 'manual'),
+  ]
 
 To get a PDF representation build the ".pdf" target:
 
 .. code-block:: sh
 
-    make books/my-project.pdf
+    make books/template-book.pdf
+      LATEX   books/my-project.latex --> file://{linux-kernel}/Documentation/dist/books/my-project/latex
     ...
-    PDF build OK / pdf files stored in:
-        Documentation/dist/rst2pdf
+    Transcript written on TemplateBook.log.
+      PDF    dist-pdf --> file:///share/sphkerneldoc/dist/books/my-project/pdf
 
 .. todo::
 
-   At this time the PDF build process (rst2pdf) is buggy and the layout is far
-   from what a book or an academic article will look like ... this is an ongonig
-   procces.
+   At this time the PDF build process is buggy and the layout is far from what a
+   book or an academic article will look like ... this is an ongoing processes
+   in this POC.
 
 There is also a ".clean" target to get rid of all intermadiate and output files.
 
 To add your project's documentation to the index, edit
-``Documentation/index.rst`` and add a reference, e.g.::
+``intro/docs.rst`` and add a reference, e.g.::
 
   * ...
   * ...
-  * `My Project <books/my-project/index.html>`_
+  * `My Project <books/my-project/index.html>`
+    (`pdf <books/my-project/pdf>`__, `man <books/my-project/man>`__)_
 
 .. _config_file:
 
