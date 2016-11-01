@@ -334,22 +334,20 @@ htmlhelp_basename = 'Kernel-Doc'
 
 latex_preamble = r"""
 
-\usepackage{darmarITCI}
-
-%%\setmainfont{DejaVu Serif}
-%%\setsansfont{DejaVu Sans}
-\setmonofont[Scale=0.7]{DejaVu Sans Mono}
-
 """
 
 # see HEADER in https://github.com/sphinx-doc/sphinx/blob/master/sphinx/writers/latex.py#L34
 latex_elements = dict()
+
+if os.environ.get("DOCCLASS", None):
+    # this HACK disables the *docclass* setting in the latex_documents
+    latex_elements.update({
+        'wrapperclass' : os.environ.get("DOCCLASS")
+    })
+
 latex_elements.update({
 
     'preamble' : latex_preamble
-
-    , 'wrapperclass' : 'darmarITArticle'
-
     # Set these values via make environment PAPER and FONTSIZE (see Makefile)
     #, 'papersize'  : 'a4paper'  # The paper size ('letter' or 'a4').
     #, 'pointsize'  : '12pt'     # The font size ('10pt', '11pt' or '12pt').

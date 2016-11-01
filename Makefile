@@ -6,6 +6,9 @@ SPHINXOPTS =
 PAPER     := a4
 # The font size ('10pt', '11pt' or '12pt')
 FONTSIZE  := 11
+# The LaTeX docclass
+# this HACK disables the *docclass* setting in the latex_documents (see conf.py)
+DOCCLASS  :=
 
 srctree=/share/linux-docs-next
 export srctree
