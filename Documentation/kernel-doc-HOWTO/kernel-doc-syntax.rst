@@ -118,9 +118,11 @@ comments between the ``:`` and the ending ``*/`` marker.
 
 Rendered example: :ref:`example.my_struct`
 
-All descriptions can be multi-line, except the short function description.
-For really longs ``structs``, you can also describe arguments inside the body of
-the ``struct``.
+All descriptions can be multi-line, except the short function description.  For
+really longs ``structs``, you can also describe arguments inside the body of the
+``struct``.  There are two styles, single-line comments where both the opening
+``/**`` and closing ``*/`` are on the same line, and multi-line comments where
+they are each on a line of their own, like all other kernel-doc comments:
 
 .. kernel-doc::  ./all-in-a-tumble.h
     :snippets:  my_long_struct
@@ -128,9 +130,6 @@ the ``struct``.
     :linenos:
 
 Rendered example: :ref:`example.my_long_struct`
-
-This should be used only for struct and enum members.
-
 
 enums and typedefs
 ==================

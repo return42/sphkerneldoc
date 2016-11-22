@@ -84,25 +84,27 @@ struct my_struct {
 };
 /* parse-SNAP: */
 
-
 /* parse-SNIP: my_long_struct */
 /**
  * struct my_long_struct - short description with &my_struct->a and &my_struct->b
- * @a: first member
- * @b: second member
+ * @foo: The Foo member.
  *
  * Longer description
  */
 struct my_long_struct {
-  int a;
-  int b;
-  /**
-   * @c: This is longer description of C.
-   *
-   * You can use paragraphs to describe arguments
-   * using this method.
-   */
-  int c;
+	int foo;
+        /**
+         * @bar: The Bar member.
+         */
+        int bar;
+        /**
+         * @baz: The Baz member.
+         *
+         * Here, the member description may contain several paragraphs.
+         */
+        int baz;
+        /** @foobar: Single line description. */
+        int foobar;
 };
 /* parse-SNAP: */
 
