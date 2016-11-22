@@ -328,12 +328,12 @@ snd_pcm_rate_range_to_bits
     :param unsigned int rate_max:
         the maximum sample rate
 
-.. _`snd_pcm_rate_range_to_bits.this-function-has-an-implicit-assumption`:
+.. _`snd_pcm_rate_range_to_bits.description`:
 
-This function has an implicit assumption
-----------------------------------------
+Description
+-----------
 
-the rates in the given range have
+This function has an implicit assumption: the rates in the given range have
 only the pre-defined rates like 44100 or 16000.
 
 .. _`snd_pcm_rate_range_to_bits.return`:

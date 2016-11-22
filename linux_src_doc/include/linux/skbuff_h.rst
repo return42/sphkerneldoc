@@ -270,7 +270,7 @@ skb_fclone_busy
     check if fclone is busy
 
     :param const struct sock \*sk:
-        *undescribed*
+        socket
 
     :param const struct sk_buff \*skb:
         buffer

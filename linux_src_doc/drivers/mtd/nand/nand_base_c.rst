@@ -690,12 +690,15 @@ Returns 0 for success or negative error code otherwise.
 nand_reset
 ==========
 
-.. c:function:: int nand_reset(struct nand_chip *chip)
+.. c:function:: int nand_reset(struct nand_chip *chip, int chipnr)
 
     Reset and initialize a NAND device
 
     :param struct nand_chip \*chip:
         The NAND chip
+
+    :param int chipnr:
+        Internal die id
 
 .. _`nand_reset.description`:
 

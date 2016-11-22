@@ -249,6 +249,7 @@ Definition
 
     struct cpudata {
         int cpu;
+        unsigned int policy;
         struct update_util_data update_util;
         bool update_util_set;
         struct pstate_data pstate;
@@ -275,6 +276,9 @@ Members
 
 cpu
     CPU number for this instance data
+
+policy
+    CPUFreq policy value
 
 update_util
     CPUFreq utility callback information

@@ -1435,7 +1435,7 @@ Description
 
 This structure identifies USB transfer requests.  URBs must be allocated by
 calling \ :c:func:`usb_alloc_urb`\  and freed with a call to \ :c:func:`usb_free_urb`\ .
-Initialization may be done using various usb_fill\_\*\_urb() functions.  URBs
+Initialization may be done using various usb_fill_*_urb() functions.  URBs
 are submitted using \ :c:func:`usb_submit_urb`\ , and pending requests may be canceled
 using \ :c:func:`usb_unlink_urb`\  or \ :c:func:`usb_kill_urb`\ .
 

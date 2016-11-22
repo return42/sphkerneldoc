@@ -384,7 +384,7 @@ Returns zero and the pfn at \ ``pfn``\  on success, -ve otherwise.
 access_remote_vm
 ================
 
-.. c:function:: int access_remote_vm(struct mm_struct *mm, unsigned long addr, void *buf, int len, int write)
+.. c:function:: int access_remote_vm(struct mm_struct *mm, unsigned long addr, void *buf, int len, unsigned int gup_flags)
 
     access another process' address space
 
@@ -400,8 +400,8 @@ access_remote_vm
     :param int len:
         number of bytes to transfer
 
-    :param int write:
-        whether the access is a write
+    :param unsigned int gup_flags:
+        flags modifying lookup behaviour
 
 .. _`access_remote_vm.description`:
 

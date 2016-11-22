@@ -213,7 +213,7 @@ The ops table must include valid callbacks (at least read and
 write).  The other callbacks, wait and reset, are not mandatory.
 
 The clock is set to 48000.  If another clock is needed, set
-(\*rbus)->clock manually.
+(*rbus)->clock manually.
 
 The AC97 bus instance is registered as a low-level device, so you don't
 have to release it manually.

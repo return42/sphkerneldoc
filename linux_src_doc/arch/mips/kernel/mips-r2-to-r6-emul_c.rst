@@ -606,7 +606,7 @@ mipsr2_decoder
         Instruction to decode and emulate
 
     :param unsigned long \*fcr31:
-        Floating Point Control and Status Register returned
+        Floating Point Control and Status Register Cause bits returned
 
 .. This file was automatic generated / don't edit.
 

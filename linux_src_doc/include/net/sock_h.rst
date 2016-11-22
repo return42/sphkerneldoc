@@ -194,7 +194,7 @@ sk_write_queue
     Packet sending queue
 
 sk_padding
-    *undescribed*
+    unused element for alignment
 
 sk_no_check_tx
     %SO_NO_CHECK setting, set checksum in TX packets
@@ -349,7 +349,7 @@ sk_reuseport_cb
     reuseport group container
 
 sk_rcu
-    *undescribed*
+    used during RCU grace period
 
 .. _`sk_for_each_entry_offset_rcu`:
 

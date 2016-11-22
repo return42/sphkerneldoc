@@ -24,7 +24,7 @@ ascii2desc
 Return
 ------
 
-The number of bytes filled in: 2 + 2\*strlen(s) or \ ``len``\ ,
+The number of bytes filled in: 2 + 2*strlen(s) or \ ``len``\ ,
 whichever is less.
 
 .. _`ascii2desc.note`:
@@ -289,10 +289,10 @@ Return
 0 for no error, otherwise a negative error code (in which case
 the \ :c:func:`dequeue`\  method must fail).  The possible error codes are:
 
--EIDRM: \ ``urb``\  was not submitted or has already completed.
-The completion function may not have been called yet.
+     -EIDRM: \ ``urb``\  was not submitted or has already completed.
+             The completion function may not have been called yet.
 
--EBUSY: \ ``urb``\  has already been unlinked.
+     -EBUSY: \ ``urb``\  has already been unlinked.
 
 .. _`usb_hcd_unlink_urb_from_ep`:
 
@@ -723,12 +723,12 @@ usb_add_hcd
     :param unsigned long irqflags:
         Interrupt type flags
 
-.. _`usb_add_hcd.finish-the-remaining-parts-of-generic-hcd-initialization`:
+.. _`usb_add_hcd.description`:
 
-Finish the remaining parts of generic HCD initialization
---------------------------------------------------------
+Description
+-----------
 
-allocate the
+Finish the remaining parts of generic HCD initialization: allocate the
 buffers of consistent memory, register the bus, request the IRQ line,
 and call the driver's \ :c:func:`reset`\  and \ :c:func:`start`\  routines.
 

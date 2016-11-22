@@ -26,7 +26,7 @@ space for a struct urb on your own.  If you call this function, be
 careful when freeing the memory for your urb that it is no longer in
 use by the USB core.
 
-Only use this function if you \_really\_ understand what you are doing.
+Only use this function if you _really_ understand what you are doing.
 
 .. _`usb_alloc_urb`:
 
@@ -304,12 +304,12 @@ GFP_ATOMIC.
 GFP_NOFS is not ever used, as it has not been implemented yet.
 
 GFP_ATOMIC is used when
-(a) you are inside a completion handler, an interrupt, bottom half,
-tasklet or timer, or
-(b) you are holding a spinlock or rwlock (does not apply to
-semaphores), or
-(c) current->state != TASK_RUNNING, this is the case only after
-you've changed it.
+  (a) you are inside a completion handler, an interrupt, bottom half,
+      tasklet or timer, or
+  (b) you are holding a spinlock or rwlock (does not apply to
+      semaphores), or
+  (c) current->state != TASK_RUNNING, this is the case only after
+      you've changed it.
 
 GFP_NOIO is used in the block io path and error handling of storage
 devices.
@@ -317,17 +317,17 @@ devices.
 All other situations use GFP_KERNEL.
 
 Some more specific rules for mem_flags can be inferred, such as
-(1) start_xmit, timeout, and receive methods of network drivers must
-use GFP_ATOMIC (they are called with a spinlock held);
-(2) queuecommand methods of scsi drivers must use GFP_ATOMIC (also
-called with a spinlock held);
-(3) If you use a kernel thread with a network driver you must use
-GFP_NOIO, unless (b) or (c) apply;
-(4) after you have done a \ :c:func:`down`\  you can use GFP_KERNEL, unless (b) or (c)
-apply or your are in a storage driver's block io path;
-(5) USB probe and disconnect can use GFP_KERNEL unless (b) or (c) apply; and
-(6) changing firmware on a running storage or net device uses
-GFP_NOIO, unless b) or c) apply
+ (1) start_xmit, timeout, and receive methods of network drivers must
+     use GFP_ATOMIC (they are called with a spinlock held);
+ (2) queuecommand methods of scsi drivers must use GFP_ATOMIC (also
+     called with a spinlock held);
+ (3) If you use a kernel thread with a network driver you must use
+     GFP_NOIO, unless (b) or (c) apply;
+ (4) after you have done a \ :c:func:`down`\  you can use GFP_KERNEL, unless (b) or (c)
+     apply or your are in a storage driver's block io path;
+ (5) USB probe and disconnect can use GFP_KERNEL unless (b) or (c) apply; and
+ (6) changing firmware on a running storage or net device uses
+     GFP_NOIO, unless b) or c) apply
 
 .. _`usb_unlink_urb`:
 

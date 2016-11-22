@@ -1399,14 +1399,18 @@ always report the rate along with the flags it used.
 in the control information, and it will be filled by the rate
 control algorithm according to what should be sent. For example,
 if this array contains, in the format { <idx>, <count> } the
-information
+information::
+
    { 3, 2 }, { 2, 2 }, { 1, 4 }, { -1, 0 }, { -1, 0 }
+
 then this means that the frame should be transmitted
 up to twice at rate 3, up to twice at rate 2, and up to four
 times at rate 1 if it doesn't get acknowledged. Say it gets
 acknowledged by the peer after the fifth attempt, the status
-information should then contain
+information should then contain::
+
   { 3, 2 }, { 2, 2 }, { 1, 1 }, { -1, 0 } ...
+
 since it was transmitted twice at rate 3, twice at rate 2
 and once at rate 1 after which we received an acknowledgement.
 
@@ -1852,7 +1856,7 @@ ampdu_reference
     each A-MPDU but the same for each subframe within one A-MPDU
 
 flag
-    %RX_FLAG_*
+    %RX_FLAG_\*
 
 freq
     frequency the radio was tuned to when receiving this frame, in MHz
@@ -1860,7 +1864,7 @@ freq
     for data (other) frames - for those it only affects radiotap reporting.
 
 vht_flag
-    %RX_VHT_FLAG_*
+    %RX_VHT_FLAG_\*
 
 rate_idx
     index of data rate into band's supported rates or MCS index if
@@ -2420,7 +2424,7 @@ probe_req_reg
 
 drv_priv
     data area for driver use, will always be aligned to
-    sizeof(void *).
+    sizeof(void \*).
 
 .. _`ieee80211_vif.description`:
 
@@ -3039,7 +3043,7 @@ txq
 
 drv_priv
     data area for driver use, will always be aligned to
-    sizeof(void *), size is determined in hw information.
+    sizeof(void \*), size is determined in hw information.
 
 .. _`ieee80211_sta.description`:
 
@@ -3594,13 +3598,13 @@ offchannel_tx_hw_queue
 radiotap_mcs_details
     lists which MCS information can the HW
     reports, by default it is set to _MCS, _GI and _BW but doesn't
-    include _FMT. Use \ ``IEEE80211_RADIOTAP_MCS_HAVE_``\ * values, only
+    include _FMT. Use \ ``IEEE80211_RADIOTAP_MCS_HAVE_``\ \* values, only
     adding _BW is supported today.
 
 radiotap_vht_details
     lists which VHT MCS information the HW reports,
     the default is _GI | _BANDWIDTH.
-    Use the \ ``IEEE80211_RADIOTAP_VHT_KNOWN_``\ * values.
+    Use the \ ``IEEE80211_RADIOTAP_VHT_KNOWN_``\ \* values.
 
 radiotap_timestamp
     Information for the radiotap timestamp field; if the

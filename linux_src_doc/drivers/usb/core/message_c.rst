@@ -225,7 +225,7 @@ usb_sg_init
         send every byte identified in the list.
 
     :param gfp_t mem_flags:
-        SLAB\_\* flags affecting memory allocations in this call
+        SLAB_* flags affecting memory allocations in this call
 
 .. _`usb_sg_init.description`:
 
@@ -282,12 +282,12 @@ significantly improve USB throughput.
 
 There are three kinds of completion for this function.
 (1) success, where io->status is zero.  The number of io->bytes
-transferred is as requested.
+    transferred is as requested.
 (2) error, where io->status is a negative errno value.  The number
-of io->bytes transferred before the error is usually less
-than requested, and can be nonzero.
+    of io->bytes transferred before the error is usually less
+    than requested, and can be nonzero.
 (3) cancellation, a type of error with status -ECONNRESET that
-is initiated by \ :c:func:`usb_sg_cancel`\ .
+    is initiated by \ :c:func:`usb_sg_cancel`\ .
 
 When this function returns, all memory allocated through \ :c:func:`usb_sg_init`\  or
 this call will have been freed.  The request block parameter may still be
@@ -350,7 +350,7 @@ usb_get_descriptor
         the device whose descriptor is being retrieved
 
     :param unsigned char type:
-        the descriptor type (USB_DT\_\*)
+        the descriptor type (USB_DT_*)
 
     :param unsigned char index:
         the number of the descriptor
@@ -528,7 +528,7 @@ usb_get_status
         the device whose status is being checked
 
     :param int type:
-        USB_RECIP\_\*; for device, interface, or endpoint
+        USB_RECIP_*; for device, interface, or endpoint
 
     :param int target:
         zero (for device), else interface or endpoint number
@@ -559,7 +559,7 @@ function should be used to clear halt ("stall") status.
 
 This call is synchronous, and may not be used in an interrupt context.
 
-Returns 0 and the status value in \*@data (in host byte order) on success,
+Returns 0 and the status value in *@data (in host byte order) on success,
 or else the status code from the underlying \ :c:func:`usb_control_msg`\  call.
 
 .. _`usb_clear_halt`:

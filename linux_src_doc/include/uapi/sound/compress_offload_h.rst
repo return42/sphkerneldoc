@@ -312,26 +312,7 @@ SNDRV_COMPRESS_IOCTL_VERSION
 
 .. c:function::  SNDRV_COMPRESS_IOCTL_VERSION()
 
-.. _`sndrv_compress_ioctl_version.sndrv_compress_get_caps`:
-
-SNDRV_COMPRESS_GET_CAPS
------------------------
-
-Query capability of DSP
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_get_codec_caps`:
-
-SNDRV_COMPRESS_GET_CODEC_CAPS
------------------------------
-
-Query capability of a codec
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_set_params`:
-
-SNDRV_COMPRESS_SET_PARAMS
--------------------------
-
-Set codec and stream parameters
+    SNDRV_COMPRESS_GET_CAPS: Query capability of DSP SNDRV_COMPRESS_GET_CODEC_CAPS: Query capability of a codec SNDRV_COMPRESS_SET_PARAMS: Set codec and stream parameters
 
 .. _`sndrv_compress_ioctl_version.note`:
 
@@ -339,71 +320,17 @@ Note
 ----
 
 only codec params can be changed runtime and stream params cant be
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_get_params`:
-
-SNDRV_COMPRESS_GET_PARAMS
--------------------------
-
-Query codec params
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_tstamp`:
-
-SNDRV_COMPRESS_TSTAMP
----------------------
-
-get the current timestamp value
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_avail`:
-
-SNDRV_COMPRESS_AVAIL
---------------------
-
-get the current buffer avail value.
+SNDRV_COMPRESS_GET_PARAMS: Query codec params
+SNDRV_COMPRESS_TSTAMP: get the current timestamp value
+SNDRV_COMPRESS_AVAIL: get the current buffer avail value.
 This also queries the tstamp properties
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_pause`:
-
-SNDRV_COMPRESS_PAUSE
---------------------
-
-Pause the running stream
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_resume`:
-
-SNDRV_COMPRESS_RESUME
----------------------
-
-resume a paused stream
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_start`:
-
-SNDRV_COMPRESS_START
---------------------
-
-Start a stream
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_stop`:
-
-SNDRV_COMPRESS_STOP
--------------------
-
-stop a running stream, discarding ring buffer content
+SNDRV_COMPRESS_PAUSE: Pause the running stream
+SNDRV_COMPRESS_RESUME: resume a paused stream
+SNDRV_COMPRESS_START: Start a stream
+SNDRV_COMPRESS_STOP: stop a running stream, discarding ring buffer content
 and the buffers currently with DSP
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_drain`:
-
-SNDRV_COMPRESS_DRAIN
---------------------
-
-Play till end of buffers and stop after that
-
-.. _`sndrv_compress_ioctl_version.sndrv_compress_ioctl_version`:
-
-SNDRV_COMPRESS_IOCTL_VERSION
-----------------------------
-
-Query the API version
+SNDRV_COMPRESS_DRAIN: Play till end of buffers and stop after that
+SNDRV_COMPRESS_IOCTL_VERSION: Query the API version
 
 .. This file was automatic generated / don't edit.
 

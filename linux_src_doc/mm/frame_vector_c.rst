@@ -6,7 +6,7 @@
 get_vaddr_frames
 ================
 
-.. c:function:: int get_vaddr_frames(unsigned long start, unsigned int nr_frames, bool write, bool force, struct frame_vector *vec)
+.. c:function:: int get_vaddr_frames(unsigned long start, unsigned int nr_frames, unsigned int gup_flags, struct frame_vector *vec)
 
     map virtual addresses to pfns
 
@@ -16,12 +16,8 @@ get_vaddr_frames
     :param unsigned int nr_frames:
         number of pages / pfns from start to map
 
-    :param bool write:
-        whether pages will be written to by the caller
-
-    :param bool force:
-        whether to force write access even if user mapping is
-        readonly. See description of the same argument of
+    :param unsigned int gup_flags:
+        flags modifying lookup behaviour
 
     :param struct frame_vector \*vec:
         structure which receives pages / pfns of the addresses mapped.

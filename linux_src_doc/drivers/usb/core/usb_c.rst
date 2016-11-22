@@ -580,7 +580,7 @@ Top I/O rates come from queuing URBs, instead of waiting for each one
 to complete before starting the next I/O.   This is particularly easy
 to do with scatterlists.  Just allocate and submit one URB for each DMA
 mapping entry returned, stopping on the first error or when all succeed.
-Better yet, use the usb_sg\_\*() calls, which do that (and more) for you.
+Better yet, use the usb_sg_*() calls, which do that (and more) for you.
 
 This call would normally be used when translating scatterlist requests,
 rather than \ :c:func:`usb_buffer_map`\ , since on some hardware (with IOMMUs) it

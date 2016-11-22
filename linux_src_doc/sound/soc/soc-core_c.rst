@@ -425,7 +425,7 @@ snd_soc_dai_set_fmt
         DAI
 
     :param unsigned int fmt:
-        SND_SOC_DAIFMT\_ format value.
+        SND_SOC_DAIFMT_ format value.
 
 .. _`snd_soc_dai_set_fmt.description`:
 

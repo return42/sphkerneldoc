@@ -59,7 +59,7 @@ seqno
     can be compared to decide which fence would be signaled later.
 
 flags
-    A mask of FENCE_FLAG_* defined below
+    A mask of FENCE_FLAG\_\* defined below
 
 timestamp
     Timestamp when the fence was signaled.
@@ -74,11 +74,11 @@ Description
 -----------
 
 the flags member must be manipulated and read using the appropriate
-atomic ops (bit_*), so taking the spinlock will not be needed most
+atomic ops (bit\_\*), so taking the spinlock will not be needed most
 of the time.
 
 FENCE_FLAG_SIGNALED_BIT - fence is already signaled
-FENCE_FLAG_ENABLE_SIGNAL_BIT - enable_signaling might have been called*
+FENCE_FLAG_ENABLE_SIGNAL_BIT - enable_signaling might have been called\*
 FENCE_FLAG_USER_BITS - start of the unused bits, can be used by the
 implementer of the fence for its own purposes. Can be used in different
 ways by different fence implementers, so do not rely on this.

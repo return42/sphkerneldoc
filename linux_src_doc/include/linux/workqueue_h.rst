@@ -1,6 +1,52 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: include/linux/workqueue.h
 
+.. _`workqueue_attrs`:
+
+struct workqueue_attrs
+======================
+
+.. c:type:: struct workqueue_attrs
+
+    A struct for workqueue attributes.
+
+.. _`workqueue_attrs.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    struct workqueue_attrs {
+        int nice;
+        cpumask_var_t cpumask;
+        bool no_numa;
+    }
+
+.. _`workqueue_attrs.members`:
+
+Members
+-------
+
+nice
+    nice level
+
+cpumask
+    allowed CPUs
+
+no_numa
+    disable NUMA affinity
+    Unlike other fields, ``no_numa`` isn't a property of a worker_pool. It
+    only modifies how :c:func:`apply_workqueue_attrs` select pools and thus
+    doesn't participate in pool hash calculations or equality comparisons.
+
+.. _`workqueue_attrs.description`:
+
+Description
+-----------
+
+This can be used to change attributes of an unbound workqueue.
+
 .. _`work_pending`:
 
 work_pending
@@ -52,7 +98,8 @@ Description
 -----------
 
 Allocate a workqueue with the specified parameters.  For detailed
-information on WQ_* flags, please refer to Documentation/workqueue.txt.
+information on WQ_* flags, please refer to
+Documentation/core-api/workqueue.rst.
 
 The __lock_name macro dance is to guarantee that single lock_class_key
 doesn't end up with different namesm, which isn't allowed by lockdep.

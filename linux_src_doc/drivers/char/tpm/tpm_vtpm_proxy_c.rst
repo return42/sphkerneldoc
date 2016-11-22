@@ -27,7 +27,7 @@ vtpm_proxy_fops_read
 Return value
 ------------
 
-Number of bytes read or negative error code
+     Number of bytes read or negative error code
 
 .. _`vtpm_proxy_fops_write`:
 
@@ -55,7 +55,7 @@ vtpm_proxy_fops_write
 Return value
 ------------
 
-Number of bytes read or negative error value
+     Number of bytes read or negative error value
 
 .. _`vtpm_proxy_fops_undo_open`:
 

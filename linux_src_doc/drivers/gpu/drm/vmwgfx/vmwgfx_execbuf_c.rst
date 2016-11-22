@@ -1,6 +1,50 @@
 .. -*- coding: utf-8; mode: rst -*-
 .. src-file: drivers/gpu/drm/vmwgfx/vmwgfx_execbuf.c
 
+.. _`vmw_resource_relocation_type`:
+
+enum vmw_resource_relocation_type
+=================================
+
+.. c:type:: enum vmw_resource_relocation_type
+
+    Relocation type for resources
+
+.. _`vmw_resource_relocation_type.definition`:
+
+Definition
+----------
+
+.. code-block:: c
+
+    enum vmw_resource_relocation_type {
+        vmw_res_rel_normal,
+        vmw_res_rel_nop,
+        vmw_res_rel_cond_nop,
+        vmw_res_rel_max
+    };
+
+.. _`vmw_resource_relocation_type.constants`:
+
+Constants
+---------
+
+vmw_res_rel_normal
+    Traditional relocation. The resource id in the
+    command stream is replaced with the actual id after validation.
+
+vmw_res_rel_nop
+    NOP relocation. The command is unconditionally replaced
+    with a NOP.
+
+vmw_res_rel_cond_nop
+    Conditional NOP relocation. If the resource id
+    after validation is -1, the command is replaced with a NOP. Otherwise no
+    action.
+
+vmw_res_rel_max
+    *undescribed*
+
 .. _`vmw_resource_relocation`:
 
 struct vmw_resource_relocation
@@ -20,7 +64,8 @@ Definition
     struct vmw_resource_relocation {
         struct list_head head;
         const struct vmw_resource *res;
-        unsigned long offset;
+        u32 offset:29;
+        enum vmw_resource_relocation_type rel_type:3;
     }
 
 .. _`vmw_resource_relocation.members`:
@@ -35,8 +80,11 @@ res
     Non-ref-counted pointer to the resource.
 
 offset
-    Offset of 4 byte entries into the command buffer where the
+    Offset of single byte entries into the command buffer where the
     id that needs fixup is located.
+
+rel_type
+    Type of relocation.
 
 .. _`vmw_resource_val_node`:
 
@@ -142,6 +190,28 @@ gb_disable
 
 gb_enable
     Whether enabled iff guest-backed objects are available.
+
+.. _`vmw_ptr_diff`:
+
+vmw_ptr_diff
+============
+
+.. c:function:: size_t vmw_ptr_diff(void *a, void *b)
+
+    Compute the offset from a to b in bytes
+
+    :param void \*a:
+        A starting pointer.
+
+    :param void \*b:
+        A pointer offset in the same address space.
+
+.. _`vmw_ptr_diff.return`:
+
+Return
+------
+
+The offset in bytes between the two pointers.
 
 .. _`vmw_resources_unreserve`:
 
@@ -276,7 +346,7 @@ the resource validation list. This is part of the context state reemission
 vmw_resource_relocation_add
 ===========================
 
-.. c:function:: int vmw_resource_relocation_add(struct list_head *list, const struct vmw_resource *res, unsigned long offset)
+.. c:function:: int vmw_resource_relocation_add(struct list_head *list, const struct vmw_resource *res, unsigned long offset, enum vmw_resource_relocation_type rel_type)
 
     Add a relocation to the relocation list
 
@@ -288,7 +358,10 @@ vmw_resource_relocation_add
 
     :param unsigned long offset:
         Offset into the command buffer currently being parsed where the
-        id that needs fixup is located. Granularity is 4 bytes.
+        id that needs fixup is located. Granularity is one byte.
+
+    :param enum vmw_resource_relocation_type rel_type:
+        Relocation type.
 
 .. _`vmw_resource_relocations_free`:
 
@@ -1325,8 +1398,7 @@ Description
 -----------
 
 Check that the view exists, and if it was not created using this
-command batch, make sure it's validated (present in the device) so that
-the remove command will not confuse the device.
+command batch, conditionally make this command a NOP.
 
 .. _`vmw_cmd_dx_define_shader`:
 
@@ -1390,6 +1462,24 @@ vmw_cmd_dx_genmips
 .. c:function:: int vmw_cmd_dx_genmips(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGA3dCmdHeader *header)
 
     Validate an SVGA_3D_CMD_DX_GENMIPS command
+
+    :param struct vmw_private \*dev_priv:
+        Pointer to a device private struct.
+
+    :param struct vmw_sw_context \*sw_context:
+        The software context being used for this batch.
+
+    :param SVGA3dCmdHeader \*header:
+        Pointer to the command header in the command stream.
+
+.. _`vmw_cmd_dx_transfer_from_buffer`:
+
+vmw_cmd_dx_transfer_from_buffer
+===============================
+
+.. c:function:: int vmw_cmd_dx_transfer_from_buffer(struct vmw_private *dev_priv, struct vmw_sw_context *sw_context, SVGA3dCmdHeader *header)
+
+    Validate an SVGA_3D_CMD_DX_TRANSFER_FROM_BUFFER command
 
     :param struct vmw_private \*dev_priv:
         Pointer to a device private struct.

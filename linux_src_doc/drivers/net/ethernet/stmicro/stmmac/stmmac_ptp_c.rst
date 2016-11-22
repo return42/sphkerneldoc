@@ -88,7 +88,7 @@ hardware clock.
 stmmac_ptp_register
 ===================
 
-.. c:function:: int stmmac_ptp_register(struct stmmac_priv *priv)
+.. c:function:: void stmmac_ptp_register(struct stmmac_priv *priv)
 
     :param struct stmmac_priv \*priv:
         driver private structure

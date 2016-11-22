@@ -308,7 +308,7 @@ NOTE
 
 If you called \ :c:func:`usb_register_dev`\ , you still need to call
 \ :c:func:`usb_deregister_dev`\  to clean up your driver's allocated minor numbers,
-this \* call will no longer do it for you.
+this * call will no longer do it for you.
 
 .. _`usb_suspend_both`:
 

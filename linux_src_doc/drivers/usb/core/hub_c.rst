@@ -125,7 +125,7 @@ usb_set_device_state
 Description
 -----------
 
-udev->state is \_not\_ fully protected by the device lock.  Although
+udev->state is _not_ fully protected by the device lock.  Although
 most transitions are made only while holding the lock, the state can
 can change to USB_STATE_NOTATTACHED at almost any time.  This
 is so that devices can be marked as disconnected as soon as possible,
@@ -134,7 +134,7 @@ all changes to any device's state must be protected by the
 device_state_lock spinlock.
 
 Once a device has been added to the device tree, all changes to its state
-should be made using this routine.  The state should \_not\_ be set directly.
+should be made using this routine.  The state should _not_ be set directly.
 
 If udev->state is already USB_STATE_NOTATTACHED then no change is made.
 Otherwise udev->state is set to new_state, and if new_state is
@@ -167,8 +167,8 @@ Description
 
 Something got disconnected. Get rid of it and all of its children.
 
-If \*pdev is a normal device then the parent hub must already be locked.
-If \*pdev is a root hub then the caller must hold the usb_bus_idr_lock,
+If *pdev is a normal device then the parent hub must already be locked.
+If *pdev is a root hub then the caller must hold the usb_bus_idr_lock,
 which protects the set of root hubs as well as the list of buses.
 
 Only hub drivers (including virtual root hub drivers for host
@@ -375,12 +375,7 @@ taken by \ :c:func:`usb_reset_device`\ .  For example, it's safe to use
 new firmware.  For calls that might not occur during \ :c:func:`probe`\ , drivers
 should lock the device using \ :c:func:`usb_lock_device_for_reset`\ .
 
-.. _`usb_reset_and_verify_device.locking-exception`:
-
-Locking exception
------------------
-
-This routine may also be called from within an
+Locking exception: This routine may also be called from within an
 autoresume handler.  Such usage won't conflict with other tasks
 holding the device lock because these tasks should always call
 \ :c:func:`usb_autopm_resume_device`\ , thereby preventing any unwanted
@@ -462,18 +457,18 @@ Corner cases
 
 
 - Scheduling two resets at the same time from two different drivers
-attached to two different interfaces of the same device is
-possible; depending on how the driver attached to each interface
-handles ->pre_reset(), the second reset might happen or not.
+  attached to two different interfaces of the same device is
+  possible; depending on how the driver attached to each interface
+  handles ->pre_reset(), the second reset might happen or not.
 
 - If the reset is delayed so long that the interface is unbound from
-its driver, the reset will be skipped.
+  its driver, the reset will be skipped.
 
 - This function can be called during .probe().  It can also be called
-during .disconnect(), but doing so is pointless because the reset
-will not occur.  If you really want to reset the device during
-.disconnect(), call \ :c:func:`usb_reset_device`\  directly -- but watch out
-for nested unbinding issues!
+  during .disconnect(), but doing so is pointless because the reset
+  will not occur.  If you really want to reset the device during
+  .disconnect(), call \ :c:func:`usb_reset_device`\  directly -- but watch out
+  for nested unbinding issues!
 
 .. _`usb_hub_find_child`:
 

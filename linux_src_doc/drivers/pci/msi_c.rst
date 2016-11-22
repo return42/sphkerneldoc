@@ -41,7 +41,7 @@ msi_capability_init
         number of interrupts to allocate
 
     :param bool affinity:
-        *undescribed*
+        flag to indicate cpu irq affinity mask should be set
 
 .. _`msi_capability_init.description`:
 
@@ -73,7 +73,7 @@ msix_capability_init
         number of \ ``entries``\ 
 
     :param bool affinity:
-        *undescribed*
+        flag to indicate cpu irq affinity mask should be set
 
 .. _`msix_capability_init.description`:
 

@@ -87,10 +87,16 @@ rotation
 
 zpos
     priority of the given plane on crtc (optional)
+    Note that multiple active planes on the same crtc can have an identical
+    zpos value. The rule to solving the conflict is to compare the plane
+    object IDs; the plane with a higher ID must be stacked on top of a
+    plane with a lower ID.
 
 normalized_zpos
     normalized value of zpos: unique, range from 0 to N-1
-    where N is the number of active planes for given crtc
+    where N is the number of active planes for given crtc. Note that
+    the driver must call \ :c:func:`drm_atomic_normalize_zpos`\  to update this before
+    it can be trusted.
 
 src
     clipped source coordinates of the plane (in 16.16)

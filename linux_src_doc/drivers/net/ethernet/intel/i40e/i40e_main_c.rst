@@ -1972,25 +1972,6 @@ Description
 
 Return number of traffic classes enabled for the given PF
 
-.. _`i40e_pf_get_default_tc`:
-
-i40e_pf_get_default_tc
-======================
-
-.. c:function:: u8 i40e_pf_get_default_tc(struct i40e_pf *pf)
-
-    Get bitmap for first enabled TC
-
-    :param struct i40e_pf \*pf:
-        PF being queried
-
-.. _`i40e_pf_get_default_tc.description`:
-
-Description
------------
-
-Return a bitmap for first enabled traffic class for this PF.
-
 .. _`i40e_pf_get_tc_map`:
 
 i40e_pf_get_tc_map
