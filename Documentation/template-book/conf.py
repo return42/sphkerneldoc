@@ -29,6 +29,7 @@ copyright = u'2016, The kernel development community'
 author    = u'The kernel development community'
 
 intersphinx_mapping['kernel-doc'] = ('https://return42.github.io/sphkerneldoc/books/kernel-doc-HOWTO/', None)
+intersphinx_mapping['sphkerneldoc'] = ('https://h2626237.stratoserver.net/kernel/', None)
 
 # ------------------------------------------------------------------------------
 # Options for HTML output
