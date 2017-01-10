@@ -89,15 +89,6 @@ content, which was has been automatic converted by this POC to the reST markup
 The DocBook/reST conversion is done with the reST with the :ref:`DocBook-XML to
 reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 
-* `The ALSA Driver API <books/alsa-driver-api/index.html>`_
-  (`pdf <books/alsa-driver-api/pdf>`__, `man <books/alsa-driver-api/man>`__)
-
-* `Linux Kernel Crypto API <books/crypto-API/index.html>`_
-  (`pdf <books/crypto-API/pdf>`__, `man <books/crypto-API/man>`__)
-
-* `Debug objects life time <books/debugobjects/index.html>`_
-  (`pdf <books/debugobjects/pdf>`__, `man <books/debugobjects/man>`__)
-
 * `Bus-Independent Device Accesses <books/deviceiobook/index.html>`_
   (`pdf <books/deviceiobook/pdf>`__, `man <books/deviceiobook/man>`__)
 
@@ -109,9 +100,6 @@ reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 
 * `Linux generic IRQ handling <books/genericirq/index.html>`_
   (`pdf <books/genericirq/pdf>`__, `man <books/genericirq/man>`__)
-
-* `Industrial I/O driver developer's guide <books/iio/index.html>`_
-  (`pdf <books/iio/pdf>`__, `man <books/iio/man>`__)
 
 * `The Linux Kernel API <books/kernel-api/index.html>`_
   (`pdf <books/kernel-api/pdf>`__, `man <books/kernel-api/man>`__)
@@ -154,9 +142,6 @@ reST project <dbxml2rst:dbxml2rst>` (see :ref:`dbxml2rst_migration`).
 
 * `SuperH Interfaces Guide <books/sh/index.html>`_
   (`pdf <books/sh/pdf>`__, `man <books/sh/man>`__)
-
-* `The Linux Kernel Tracepoint API <books/tracepoint/index.html>`_
-  (`pdf <books/tracepoint/pdf>`__, `man <books/tracepoint/man>`__)
 
 * `The Userspace I/O HOWTO <books/uio-howto/index.html>`_
   (`pdf <books/uio-howto/pdf>`__, `man <books/uio-howto/man>`__)
